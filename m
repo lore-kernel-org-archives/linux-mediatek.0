@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2B9D3B7C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 08:53:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E64FED5A6FD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 08:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rsBgmXC8Lxt1vcy1ZFTWTQKcqqXKnK76ZqW0NYYxWpU=; b=1nG6Gxo5wCJVNlG3SKG4U7efCy
-	PBuJDZAqtxgPqjDMi8+Nini+GTY0wKNO6HqEqUYLdalZX/YUWrHEFt6IsH8+peexE9TS4u+MtVxas
-	LKYIy6HM7CVWsj5AhbnKwP1qNtp7J9AjdD0qrQnYM+GvdpU9hP5miYb9Y/A3uElOcmdT08CjykX4M
-	6X07mXVZMROTIyYvsfGpaUetgpRqJDcTohC96XvtO1ah0cKT1eT0yOdTKjVPXLIHAPuewCKsqEvWQ
-	xPd04Y3O3QG7nFTzZWEte6Ul73C/r1Ph9UDcigiXOlrm7Xeqv/CKGAFz9JapESkp3JcwuIwcw5/sR
-	5YmggXlA==;
+	bh=IP+lnPk+Vn6/2IBq2ri1RuPomxRvMrq4mOKKS17DAek=; b=BzuUzDSQM5LxPBenuAtyfDNPQC
+	YCIlkibCH6+Gh9r+AfkobF8dWbHw03SI1lk0Jxx/ztrgZ53cV9SS+e89ZOYurlnVy60JAkM2vojt6
+	NuKlDT6YokKmbxSnZHH+mE5AV7/ThTI6/oRcqPq9VRdoojzTcLDyASt1O4F4oHGXEHpetC0aWuDI9
+	jxxZhL8SZy3tZBAmjxlGkRp5vDh/sC9WXeNGIcpA7P6hvUkQyQGgKTL7qBTbs/wbhdyl9GrTGy0Kd
+	Qnjf+kvhlQ8h4rtVnhuScuF/cZqjJRnulKaWxgBpFpjm7TXeZPqmix0BV/QoTq+7l2QNDIyHhjXxG
+	FAszADWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrJd-0000000A0Yf-3i2x;
-	Tue, 26 Nov 2024 08:53:01 +0000
+	id 1tFrP1-0000000A1Po-0ImU;
+	Tue, 26 Nov 2024 08:58:35 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrIg-0000000A0NK-0F5n;
-	Tue, 26 Nov 2024 08:52:03 +0000
+	id 1tFrO1-0000000A17L-1O1Z;
+	Tue, 26 Nov 2024 08:57:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732611120;
-	bh=ZNiXeKu3VMMs+mJ7Uwi6rVoXAummZLmskjT7q9ZCRRY=;
+	s=mail; t=1732611451;
+	bh=xu1mpesbXHDe4ZbnZl7wZhH0nVldF/t4bC46HVCJJ9s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UgSfkvuohiJ/eL0XEasFCiJVAiiPRbwOzbGyu6aUkpF5x2Hlo46RU8rF8X8wbUAMd
-	 bAorUi1ky8OaHMZZ3WmJ/m6Zqx4KN3jDhE5d1dhRzEbtvSD0grHRlCh8z40IINJ/KF
-	 0jMu4emeu5GM/bVZA38Xk2Hg6Y/0e/uxtvrcObaLdHs+H2CVDH5dHT5Hruk30HDQcZ
-	 Ml4w9+BDleTqVxnxP5y0fCd8m428B+sbgLoA1omHdCG6v9nNP5K1S5tvuaEYWJyoV2
-	 OPU4RHrISvl6sgIA79t6xor1PO+XzW6YOV7nuEmlEJy8uqIYWObBJQ6A80kWEsHZkY
-	 Th/0Kia2KLO3Q==
+	b=JateNvsEkisnZPfVx1ad1SH0szm2p5O7MLcKnO5dLra6JY2iGU0RPj/SD2ZypXTT5
+	 lzcCSqNTo4uC7y10Hww/cEmRE58Cm2ooWTTjpM6Hn2pJukx4I7mLWEXlK3my3R8hMI
+	 n/JdCMknyt7P0yQrVX793J4zQA46DEwRxhiVnjtoZpN4/zeV0LCsltxxBwc1LVD0ho
+	 u2AcoRO5zcwyQAh3ABRGwOyPP6pIZ+X8oW9TorOo55BLO9X/v4l1UWMGWRQVmLEnRZ
+	 PTUInkonFgJivtMqLLqEYUaxJ/XEH9/dUN/PaHAOpp9LoOtviCFou1gVfLRe8uA+iX
+	 Px1lyoEC+a6LQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB63117E1366;
-	Tue, 26 Nov 2024 09:51:59 +0100 (CET)
-Message-ID: <4901ecf5-8cd1-4d82-a240-f56794f46429@collabora.com>
-Date: Tue, 26 Nov 2024 09:51:59 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4EB717E137D;
+	Tue, 26 Nov 2024 09:57:30 +0100 (CET)
+Message-ID: <4143b793-c5b1-4b6d-8547-26a9dc526957@collabora.com>
+Date: Tue, 26 Nov 2024 09:57:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add property to set
- disconnect threshold
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v1 7/7] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+References: <20241120124512.134278-1-angelogioacchino.delregno@collabora.com>
+ <20241120124512.134278-8-angelogioacchino.delregno@collabora.com>
+ <133167aa2a3fab40547f5dc6602adf2c3d9e01e5.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <133167aa2a3fab40547f5dc6602adf2c3d9e01e5.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_005202_244313_98B21275 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20241126_005733_520421_CA58A959 
+X-CRM114-Status: GOOD (  16.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +93,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/11/24 03:58, Chunfeng Yun ha scritto:
-> Add a property to tune usb2 phy's disconnect threshold.
-> And add a compatible for mt8196.
+Il 26/11/24 08:42, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Wed, 2024-11-20 at 13:45 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+>> found in MediaTek's MT8195, MT8188 SoC and their variants, and
+>> including support for display modes up to 4k60 and for HDMI
+>> Audio, as per the HDMI 2.0 spec.
+>>
+>> HDCP and CEC functionalities are also supported by this hardware,
+>> but are not included in this commit.
+> 
+> Both MT8173 HDMI and MT8173 CEC has hot plug detection interrupt.
+> I don't know why but MT8173 choose CEC to detect hot plug.
+> 
+> Does MT8195 CEC has hot plug detection interrupt?
+> If it has, may we align the hot plug detection flow with MT8173?
 > 
 
-Is this a board-specific property? If so, can you please describe the reason?
+The CEC on MT8195 does have an hotplug detection interrupt, but that *must* be
+used exclusively for CEC for one important reason.
 
-Thanks,
+While on MT8188 we only have the HDMI (TX) Encoder, MT8195 features both HDMI TX
+and HDMI RX and in the specific case of this SoCs, the CEC block is shared between
+the two controllers.
+
+If we use the CEC hotplug detection for HDMI-TX, we wouldn't be able to share the
+block with the HDMI-RX without hacks.
+
+This is why we need to use the HTPLG/PORD provided by the HDMI-TX block instead of
+the CEC one.
+
+> This is not a strong suggestion because I don't know why MT8173 choose CEC to detect.
+> I just want more function to be common.
+
+Yeah, I got the point and I would've asked the same question, but for the reasons
+that I explained, that's unfortunately not possible :-)
+
+Cheers,
 Angelo
 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8 ++++++++
->   1 file changed, 8 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> index a9e3139fd421..2e012d5e1da1 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> @@ -49,6 +49,7 @@ properties:
->         - enum:
->             - mediatek,mt3611-xsphy
->             - mediatek,mt3612-xsphy
-> +          - mediatek,mt8196-xsphy
->         - const: mediatek,xsphy
->   
->     reg:
-> @@ -129,6 +130,13 @@ patternProperties:
->           minimum: 1
->           maximum: 7
->   
-> +      mediatek,discth:
-> +        description:
-> +          The selection of disconnect threshold (U2 phy)
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        minimum: 1
-> +        maximum: 15
-> +
->         mediatek,efuse-intr:
->           description:
->             The selection of Internal Resistor (U2/U3 phy)
+> Regards,
+> CK
+> 
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+> 
+>>
 
 
 
