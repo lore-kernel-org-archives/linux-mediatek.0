@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F1ED3B98B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 12:52:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F4ED3B98B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 13:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ddGXrlsNVofZVqtyw9ZyO42fEPecY4EOHW94yOtt3ck=; b=Lwpaos2FAwYKGHgCe+XxWP6z8k
-	jFLGCMGFRRQQD83lqb0teFdKAp4G+3zLUfOXhabZ/01HkJUMQkY9PjA0EAcUXdWQ+wiM9pTMtyjik
-	Aq9hbbq8MUMsOGiYf3kRRNfT6VsQK23+ZiTh8LsQ34NAtY5hdabjoOkmc5/b4vjq5r1N3p1m4RklK
-	rdSVezAd3YeRZd8SFVlkOCZu6wyNxF5B6xj9GAopAs63bGnSLk52CXNDNbWIhbb9vGSuimoi6isaK
-	5NsoGXaVJNAr0J0i+HnByXImTOah9OAdtGa/GhnbL1U5Hfmx4AN7kEvE2opCaI3hK4uM1gHtihvvb
-	b1kAF4eQ==;
+	bh=z0X2no6hqev04u5CaAup9gW8xIzYF2QpGM2IrZjwkQU=; b=HK4N56z9N4afPKo7qER9BW5MSu
+	OVg0JssNzkFvFu+xvO7hUOIkIfHNsjrJ/SFmAXsunBsbmTS75Lc95XmsA5xODk/AlMChCRWUl/0pE
+	y/qIXCnUuo+yCyprbFhaiK9RnLyZnxkBOGqpekK3LEjWykcw/9i/5VG3GyaiKymrshII4r5nDKev+
+	GDTi1OIvDS87Z312RslAKFfeXpNSuthtzAjK/pOVoTW2p4QtF+38X3Xpiz4Z1impqSd0HfEgiRTEM
+	78b2eQddcJIbSfW1hmju+U1yrCN+oVOgiiPkNpULvpk75Wvmr8G7+aOT5Pz+QhJtS92eSf7/Bwy/m
+	uxypT52A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFv3n-0000000AbyN-0K7G;
-	Tue, 26 Nov 2024 12:52:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tFvbd-0000000AjWF-2qED;
+	Tue, 26 Nov 2024 13:27:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFv1v-0000000AbTZ-0XXZ;
-	Tue, 26 Nov 2024 12:51:00 +0000
-X-UUID: 122d68acabf511ef82ff63e91e7eb18c-20241126
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ddGXrlsNVofZVqtyw9ZyO42fEPecY4EOHW94yOtt3ck=;
-	b=TTPpw5YIT1xQDTVz3JmLjcgvxakL1CmHl4WC4rUfMOA1IqSq7GRchP+yJsXu+LNR/hrs7lo61E9gShBLsyuDjTBCiL4p3VsquugBmt3JjbiY2SZRd5a47T2HDDcjAstYblMJN28OC3iwiiSZOpYSLskDi8ejI0WOBkJnmIbtAsM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.44,REQID:12968b64-a9bf-419f-83d2-7a1cde17ae41,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:464815b,CLOUDID:4f396cb9-596a-4e31-81f2-cae532fa1b81,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0,EDM:-3,IP
-	:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 122d68acabf511ef82ff63e91e7eb18c-20241126
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <andy-ld.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 249743599; Tue, 26 Nov 2024 05:50:53 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 26 Nov 2024 20:50:49 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 26 Nov 2024 20:50:49 +0800
-From: Andy-ld Lu <andy-ld.lu@mediatek.com>
-To: <ulf.hansson@linaro.org>, <angelogioacchino.delregno@collabora.com>,
-	<matthias.bgg@gmail.com>, <avri.altman@wdc.com>, <adrian.hunter@intel.com>,
-	<wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Andy-ld Lu <andy-ld.lu@mediatek.com>
-Subject: [PATCH v2 2/2] mmc: mtk-sd: Add support for ignoring cmd response CRC
-Date: Tue, 26 Nov 2024 20:48:23 +0800
-Message-ID: <20241126125041.16071-3-andy-ld.lu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
-References: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
+	id 1tFvTK-0000000AhCe-0Bw1;
+	Tue, 26 Nov 2024 13:19:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1732627155;
+	bh=9n3DMWiNfsEPU/+nTL+NGjyuioKCWO5RjIWhEr0S1Dc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bvD8CEB2NRi1y2GiRlZ/hRTRGq2xk1RfRWFfRYFeuKXpFRenr6DFgfgew/G/KX1gl
+	 /on3JSQivwHfYIvJ8MKYAFgR1NIuv6aLsoZ6HYDwPeHPp2bXthUlabI/b4yVSTd5WK
+	 tmTEhyVYAr+ohPd1YiBSpIwQDFhN/OgGJyLGq4iX6thE7WcmjRPcx/WQH5WybmzpvE
+	 6pYa2nRyQWPWzp/urldLb92YAS//GDqlziYlW3UIrG0v/hyzUjJmX17VC8jTBxG4dJ
+	 MOtYzDF8vL2zqa+vbKw07tl8sNsZB5YkXYuPPgDkVNjDpUs5dLtTaB5j9HB8IWGSFW
+	 zOWmQahCPhESg==
+Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96A9717E3663;
+	Tue, 26 Nov 2024 14:19:13 +0100 (CET)
+Date: Tue, 26 Nov 2024 08:19:11 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Balsam CHIHI <bchihi@baylibre.com>, kernel@collabora.com,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Hsin-Te Yuan <yuanhsinte@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH 1/5] thermal/drivers/mediatek/lvts: Disable monitor mode
+ during suspend
+Message-ID: <e3e9020b-f3d5-42bb-bf1e-6aa8da2d1708@notapiano>
+References: <20241125-mt8192-lvts-filtered-suspend-fix-v1-0-42e3c0528c6c@collabora.com>
+ <20241125-mt8192-lvts-filtered-suspend-fix-v1-1-42e3c0528c6c@collabora.com>
+ <600f9d78-bdc8-4133-bb43-06d798bcd543@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.369700-8.000000
-X-TMASE-MatchedRID: yALcya1h5KX7W7/9wscjdRuZoNKc6pl+ju+GX08gELBKda7Cp9A+RkJW
-	dVOufBPR/KZpBkEBJHqIY8ivHy/5E6XzgcphDfm8A9lly13c/gHt/okBLaEo+C8zQZ2rR/Op0Fi
-	DqDlQgH4SIx4SDL9Y5uuLFZZYlisfHxPMjOKY7A8LbigRnpKlKZx+7GyJjhAUI51nWVDVVfWhFL
-	FIsK0Cw+lupQ5Bsw7jcU72BTeNXW5Nk8cAoC9YSLojLyfylXvJqPdSBhdySgg0qsN/ix5JTJi88
-	butrgo98jae4OD13tAV7Mc+rowcVKtX/F0pBwVJjSV5hDFby7aUTGVAhB5EbQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.369700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 78C610F20AEBBD1AD5EEE534EEE4D7022F688123028ED1F227EEF820CA4E8EB82000:8
+In-Reply-To: <600f9d78-bdc8-4133-bb43-06d798bcd543@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_045059_167829_B03BE901 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20241126_051918_257464_301DED69 
+X-CRM114-Status: GOOD (  24.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,51 +88,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current process flow does not handle MMC requests that are indicated
-to ignore the command response CRC. For instance, cmd12 and cmd48 from
-mmc_cqe_recovery() are marked to ignore CRC, but they are not matched to
-the appropriate response type in msdc_cmd_find_resp(). As a result, they
-are defaulted to 'MMC_RSP_NONE', which means no response is expected.
+On Tue, Nov 26, 2024 at 10:43:55AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 25/11/24 22:20, Nícolas F. R. A. Prado ha scritto:
+> > When configured in filtered mode, the LVTS thermal controller will
+> > monitor the temperature from the sensors and trigger an interrupt once a
+> > thermal threshold is crossed.
+> > 
+> > Currently this is true even during suspend and resume. The problem with
+> > that is that when enabling the internal clock of the LVTS controller in
+> > lvts_ctrl_set_enable() during resume, the temperature reading can glitch
+> > and appear much higher than the real one, resulting in a spurious
+> > interrupt getting generated.
+> > 
+> > Disable the temperature monitoring and give some time for the signals to
+> > stabilize during suspend in order to prevent such spurious interrupts.
+> > 
+> > Cc: stable@vger.kernel.org
+> > Reported-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > Closes: https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
+> > Fixes: 8137bb90600d ("thermal/drivers/mediatek/lvts_thermal: Add suspend and resume")
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >   drivers/thermal/mediatek/lvts_thermal.c | 36 +++++++++++++++++++++++++++++++--
+> >   1 file changed, 34 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> > index 1997e91bb3be94a3059db619238aa5787edc7675..a92ff2325c40704adc537af6995b34f93c3b0650 100644
+> > --- a/drivers/thermal/mediatek/lvts_thermal.c
+> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> > @@ -860,6 +860,32 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+> >   	return 0;
+> >   }
+> > +static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl, bool enable)
+> > +{
+> > +	/*
+> > +	 * Bitmaps to enable each sensor on filtered mode in the MONCTL0
+> > +	 * register.
+> > +	 */
+> > +	u32 sensor_filt_bitmap[] = { BIT(0), BIT(1), BIT(2), BIT(3) };
+> > +	u32 sensor_map = 0;
+> > +	int i;
+> > +
+> > +	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
+> > +		return;
+> > +
+> 
+> That's easier and shorter:
+> 
+> static void lvts_ctrl_monitor_enable( .... )
+> {
+> 	/* Bitmap to enable each sensor on filtered mode in the MONCTL0 register */
+> 	const u32 sensor_map = GENMASK(3, 0);
+> 
+> 	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
+> 		return;
+> 
+> 	/* Bits 0-3: Sensing points - Bit 9: Single point access flow */
+> 	if (enable)
+> 		writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
 
-This commit applies the flag 'MMC_RSP_R1B_NO_CRC' to fix the response type
-setting in msdc_cmd_find_resp() and adds the logic to ignore CRC in
-msdc_cmd_done().
+Wait, no, here you're enabling all the sensors in the controller. We only want
+to enable ones that are valid, otherwise we might get garbage data and irqs from
+sensors that aren't actually there. That's why I use the
+lvts_for_each_valid_sensor() helper in this patch.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index efb0d2d5716b..e2c385853eef 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1097,11 +1097,12 @@ static inline u32 msdc_cmd_find_resp(struct msdc_host *host,
- 	u32 resp;
- 
- 	switch (mmc_resp_type(cmd)) {
--		/* Actually, R1, R5, R6, R7 are the same */
-+	/* Actually, R1, R5, R6, R7 are the same */
- 	case MMC_RSP_R1:
- 		resp = 0x1;
- 		break;
- 	case MMC_RSP_R1B:
-+	case MMC_RSP_R1B_NO_CRC:
- 		resp = 0x7;
- 		break;
- 	case MMC_RSP_R2:
-@@ -1351,7 +1352,8 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 			 * CRC error.
- 			 */
- 			msdc_reset_hw(host);
--		if (events & MSDC_INT_RSPCRCERR) {
-+		if (events & MSDC_INT_RSPCRCERR &&
-+		    mmc_resp_type(cmd) != MMC_RSP_R1B_NO_CRC) {
- 			cmd->error = -EILSEQ;
- 			host->error |= REQ_CMD_EIO;
- 		} else if (events & MSDC_INT_CMDTMO) {
--- 
-2.46.0
-
+Thanks,
+Nícolas
 
