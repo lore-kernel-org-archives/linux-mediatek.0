@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBC6D3B986
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 11:37:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F11BFD3B98B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 12:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g6r09eGO29hFVlc9g9XHiIyH90sGII+XuoxVlhSLsVI=; b=kRsP7wHyzqakR0SvsqvvPCwLqP
-	BHbmgIhAljF9+0+8t1eh6XW3zmhCJ2xBnVl5e+yUlUbmtXAFQ//9wTRTqyNcSdrt2E138OnPao/J8
-	YYKW+WSFiPk+5/Z3RGfiVNkfhnbjKKJUpqRrGpMGekXreLA3u5/g0r6r0J8Xzqs/ufztm/szwyMUk
-	KskEaenIUG2ZK/9CfpE0YJmWgoI1EWjr7yCJAaEgB67HXgyFvb+J/Bj12yfchRS4ytn57DlshWrhq
-	aatH85sV0q1spQbVliCjpO0jQtV5XDe4DESVjMYAlaAIAPzVHiCx6g2l/l4zL8PnruJ3rdA9jHYCo
-	rWMn7XBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zR28T4HcO7uRDu1sJWB1JUuBH1e3vmJiErnnGI44bIU=; b=iqkgmMfFpZod+tUq4GoYlyA2hR
+	rniVs2WT6N0Nbtx2C8mgVpTcEqhS5GcghiOPM1lSyiy1WzelgDZLGzGFfQGBlUTR46Jyi0Gg2B2vI
+	cEqp4THvjVLZdvwXs74+8MHD/SptYMALbw1OS6b2aVVS+w4ehNVZVPQWtoEQhI1s9IuDUDqfVhT+y
+	K/akg9CHDvI3VToi+XKsHvHRpOJAEI5s9FuRQYH1+T4Jiz2oHpJ2abOq8TLaH/TNqrKqnMrr3qJJQ
+	LRtJBRVAmg1NW6jWSZOWt6YCVrvpB0a0ohc45j/UOXEaVKoDEqOzaO00oOpqcr1JKcECmsuturVbH
+	Rs9ybXyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFtsw-0000000AQmS-45nI;
-	Tue, 26 Nov 2024 11:37:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tFv1u-0000000AbTP-1AIw;
+	Tue, 26 Nov 2024 12:50:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFtqq-0000000AQBg-2Kws;
-	Tue, 26 Nov 2024 11:35:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732620926;
-	bh=QKn+D2JA1x9aHpNwHEHtqeGvHQ9SrMz5QDwoqSS7K8Y=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=VLkKuPDD7AoYEKzEuIF4jtm58yDWLQdccmF9eJSeg4PCGVC9DMyUvD1a+G/+nRsq6
-	 nxtc0jsjw3Z0wdM3mzKvfn2vL5IoNbQcBGJB2pTSCQDgVSqkZt0xGUOcGnC8wcblgX
-	 Dsn1Z4hLNXlAA4XnQJsLik5J+YheWem23AyC8w1oFfkSvInHFTxgYR7hk9FnIMxSIs
-	 e4UusOTHL47OAYP7zam8TIrvZVlb3WAXE4RdDJ/d5m5TiigI6R0baAN5UY4b5tjMHA
-	 iLNajeM+LRTxhDT34dufQ44F0Dcl0vZbP2zS8Xt3e97b7kIifTG8Ip8Q2+KUCttRvW
-	 WzUVK+mjyVydA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5442017E3628;
-	Tue, 26 Nov 2024 12:35:26 +0100 (CET)
-Message-ID: <473283aa-fc84-4b3f-93bc-653c9d83c837@collabora.com>
-Date: Tue, 26 Nov 2024 12:35:26 +0100
+	id 1tFv1r-0000000AbSj-3d8A;
+	Tue, 26 Nov 2024 12:50:57 +0000
+X-UUID: 108fa87aabf511ef9048ed6ed365623b-20241126
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zR28T4HcO7uRDu1sJWB1JUuBH1e3vmJiErnnGI44bIU=;
+	b=GAF+8W9C+XwHpXMEbeMigRrwTGRbIu6Fmwb8J+ygPpGbhznMfXre6+JrpcH3C62uAs7btuHsujXE9vvC4TD3gXA3h220B2DPi3svWsej9RvwVIl2FL/ixNMyXYVTjEcVJ3nlvBqR6gqmtBlOYFFmdobOusasEAta7auNId+VGn0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.44,REQID:772da9ab-fdc8-498e-b919-f20fb6470855,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:464815b,CLOUDID:a9274ee0-1fe5-4c4a-bdf3-d07f9790da32,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 108fa87aabf511ef9048ed6ed365623b-20241126
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <andy-ld.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1296758931; Tue, 26 Nov 2024 05:50:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 26 Nov 2024 20:50:45 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 26 Nov 2024 20:50:45 +0800
+From: Andy-ld Lu <andy-ld.lu@mediatek.com>
+To: <ulf.hansson@linaro.org>, <angelogioacchino.delregno@collabora.com>,
+	<matthias.bgg@gmail.com>, <avri.altman@wdc.com>, <adrian.hunter@intel.com>,
+	<wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Andy-ld Lu <andy-ld.lu@mediatek.com>
+Subject: [PATCH v2 0/2] Add mtk-sd support for ignoring cmd response CRC
+Date: Tue, 26 Nov 2024 20:48:21 +0800
+Message-ID: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: mt8186: Add Starmie device
-To: Wojciech Macek <wmacek@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Rafal Milecki <rafal@milecki.pl>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241126103632.419469-1-wmacek@chromium.org>
- <20241126103632.419469-3-wmacek@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241126103632.419469-3-wmacek@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--0.889200-8.000000
+X-TMASE-MatchedRID: d+baqQ3qUqc9S3IiQd+eNbmR+C0l9vjVc3ewuwbSaG4Y0A95tjAn+9TT
+	TFFPxHv+u2t1gv/FTZu+gPhGSQqXaXAvdl/gU+kWhK8o4aoss8pKPIx+MJF9o5soi2XrUn/J8m+
+	hzBStansUGm4zriL0oQtuKBGekqUpnH7sbImOEBRDozr28CiiojKTexvwXZBrsmqd7uJXrWO/Ml
+	oQ6zIAH/Cy9GvqHOwrPyjHI+FEw3HHHuNqhV1uRVgwOoJTNhLaqeqo7KB4WGHyNp7g4PXe0BXsx
+	z6ujBxUq1f8XSkHBUmNJXmEMVvLtpRMZUCEHkRt
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--0.889200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 31A115BA487A2D1BB3781A4ED6205A89D2BD525579309D2E70C160360EDFE3AB2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_033528_740420_55798F1C 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20241126_045055_910108_A23FB85D 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/11/24 11:36, Wojciech Macek ha scritto:
-> Add support for Starmie Chromebooks.
-> 
-> Signed-off-by: Wojciech Macek <wmacek@chromium.org>
-> ---
-> Changelog v3-v2:
->   - Cleaned up DTS
->     - Re-using dsi_out node
->     - Removed unnecessary delete-nodes
->     - Moved touchpads to per-board dts
->     - Modified 3.3/6V power regulator node
-> Changelog v2-v1:
->   - No changes
->   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->   .../mediatek/mt8186-corsola-starmie-sku0.dts  |  31 ++
->   .../mediatek/mt8186-corsola-starmie-sku1.dts  |  31 ++
->   .../dts/mediatek/mt8186-corsola-starmie.dtsi  | 465 ++++++++++++++++++
->   4 files changed, 529 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie-sku0.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie-sku1.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi
-> 
+Add the process flow in the host driver to handle the R1B cmd response
+type with ignoring CRC, which comes from mmc_cqe_recovery() in the mmc
+core. Additionally, the response type 'MMC_RSP_R1B_NO_CRC' is introduced
+to simplify code.
 
-..snip..
-> +/*
-> + * Battery on Starmie is using a different address than default.
-> + */
-> +&battery {
+---
+Changes in v2:
+- Change mmc_cqe_recovery() to use MMC_RSP_R1B_NO_CRC response type.
+- Remove MMC_RSP_R1_NO_CRC in the host driver after it is dropped.
 
-I didn't ask you to do it this way, and that was for a good reason.
+Link to v1:
+https://patchwork.kernel.org/patch/13883787
 
-Besides, you haven't run dtbs_check before sending this.
-Give it a go and you'll see why.
+---
+Andy-ld Lu (2):
+  mmc: core: Introduce the MMC_RSP_R1B_NO_CRC response
+  mmc: mtk-sd: Add support for ignoring cmd response CRC
 
-Regards,
-Angelo
+ drivers/mmc/core/core.c   | 6 ++----
+ drivers/mmc/host/mtk-sd.c | 6 ++++--
+ include/linux/mmc/core.h  | 2 ++
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
-> +	reg = <0xf>;
-> +};
+-- 
+2.46.0
 
 
