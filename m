@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A33ED3B7C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD3DD3B7C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
+	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fCjvNq4HnreiX1/vgAhPIsIzf4cj5q2MCrhi7thDoGE=; b=MAdZde/9ML1H+/QHC0IprFDOm4
-	pz7nZ5BUYOkxVYJ8U2GEWGraeXbtW0A0Eh1TeCJKrwpJVKp4tfiiIo2dYeku3y1+MCqLTD9+J9f2K
-	7LUNcaLzZXTYNoD9Has2xK68voXOlTSbrvluEGXXCrhBT5lYO39LTVY4n0W5pr7dMFByGMDHbJ50d
-	1vYIdYHNs5+zcn3NnIDLZxrxInKA7hpl289QPbkiQxOhk2sZrfGWe9DRuUW7bdH0+PaO1+BbsHVeo
-	jiExRO/eswwoDtIj1mAerjPwbjovfSXT3hUQL1T4BRAPMikZ5whbZeVLTvo4ri1yArKC8IK3C9/OB
-	5n8ZvmWA==;
+	bh=CpTJ7ep7WjNgRdD+PpFVRfcu1rVLPyYDfT8jjGhsaVw=; b=q2JU1jLClzLl07iFvAWt097iB1
+	s/yC2PM9vbKoZa5GpxNws3gnb3Z0chARAUdD2R+F31bX0kMW18aZTTHWG+4eSbVV4Du2veBikWGMz
+	q4Bz4LjzOGfV3yXIyK/cWmcLWfBdDJmwHIBmlruNWZFWRZVM1I6bp4JuJe4JcoOt77d4+nJDEUwzP
+	qU1m5xfZBc0bvuOqh6zr4DSF6+PnKDK3lcfc1X6H9nBVO4/wiac5tzRVYc2ooJL9Ax/5GtZfqXZup
+	GXiqllHj8yubu/VLDQFNTwwOmMA4FOGi4ZrmGrHBsnQaEqzeRtlxlWRYvWb35gINE916VRFbUrzf+
+	NBS4E8sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFs21-0000000ABUA-2Ofs;
-	Tue, 26 Nov 2024 09:38:53 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tFs2B-0000000ABXl-3sb6;
+	Tue, 26 Nov 2024 09:39:03 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrp2-0000000A8dO-3AjJ;
-	Tue, 26 Nov 2024 09:25:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732613126;
-	bh=q2gcjqVo2CyG1kSniuRv8nGxpUCYXEmQGCKgxWS+XDs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eIHU92X404Ei+eJZb/9Itwx4Rr4WnjIIBxSufR6K2Ir/JF/jE5mvw2sX643UoDhOT
-	 bAj8dMiwIkgt9FONq3ervcV6Viky4Q2fbl2jh6EuFkxJUjeZZbSW2i1x4fkhaf69V+
-	 rJ+CeivsCv6JVSFl17xkWmT0Sc6YzcXuakw9wDssM+R5LDON8vyugxaqZ+PubmJDhR
-	 7G/8NzEBg7KS+U2MAhs8sAI30acXwg+Vp73QUuDvlQRBu1BGOo0yO7X/30bH6QnBgV
-	 Rp9gY8ofr3zYHAAGfrUt/h38gQ3kRa3Xh5g2CuyBQ5kN6k7fSPvEXKFtSqUZdbrq/e
-	 ht+Qn/gi0Mugw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 55AC517E12D3;
-	Tue, 26 Nov 2024 10:25:25 +0100 (CET)
-Message-ID: <f1d16db0-a7e1-4cfd-85c6-8beef4385701@collabora.com>
-Date: Tue, 26 Nov 2024 10:25:24 +0100
+	id 1tFrp4-0000000A8di-1NlC;
+	Tue, 26 Nov 2024 09:25:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=CpTJ7ep7WjNgRdD+PpFVRfcu1rVLPyYDfT8jjGhsaVw=; b=LnPuZ5cM/QCEy7/toUkkCR2DJI
+	Kmc7f/FM73ibcxdv6sLAU1AFBh0/aRfTwx99wKGolnP5yH6geh2UAbUIHttlBji/1UOkqbAK06aVv
+	TIfJ/qp0eftWm07O0Kdc68e6y+MvMl/UgFFte7as5W2iQfmE3sZbU7od5JXmipeosu//+E3XeFxro
+	3gwxNoZhxeTF1iohFsbs+9yT5Ryzld0oYvjEdOyAS4f4YrmUtirsT0ccfwmKCaty3mzm3MxjOLafp
+	MDQCjHy9ZkJMUFzjIks9aiPe7jEny+2bUHFJpqCa6t22ss1TpTy/ggYdUzWbQWPaEnJWpBIwU+ZxK
+	sGC3dkcg==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:35156 helo=rmk-PC.armlinux.org.uk)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1tFros-0006VM-13;
+	Tue, 26 Nov 2024 09:25:18 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1tFroq-005xQk-SU; Tue, 26 Nov 2024 09:25:16 +0000
+In-Reply-To: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
+References: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexander Couzens <lynxis@fe80.eu>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH RFC net-next 12/16] net: pcs: pcs-lynx: implement
+ pcs_inband_caps() method
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 6/6] drm/mediatek: Add support for MT8195 Digital
- Parallel Interface
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "kernel@collabora.com" <kernel@collabora.com>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>, "simona@ffwll.ch"
- <simona@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-References: <20241120124420.133914-1-angelogioacchino.delregno@collabora.com>
- <20241120124420.133914-7-angelogioacchino.delregno@collabora.com>
- <1b966a136f02b5586749a9c3d0bcec6c75224e49.camel@mediatek.com>
- <33acccd3-e543-493e-a61c-282d894ef2b1@collabora.com>
- <fd48c582e99d6c07be4b66919fb6c309379ad752.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <fd48c582e99d6c07be4b66919fb6c309379ad752.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <E1tFroq-005xQk-SU@rmk-PC.armlinux.org.uk>
+Date: Tue, 26 Nov 2024 09:25:16 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_012528_967931_9956F0FF 
-X-CRM114-Status: GOOD (  33.74  )
+X-CRM114-CacheID: sfid-20241126_012530_365970_B7F58785 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,131 +94,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/11/24 04:07, CK Hu (胡俊光) ha scritto:
-> On Mon, 2024-11-25 at 17:55 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> Il 22/11/24 08:23, CK Hu (胡俊光) ha scritto:
->>> Hi, Angelo:
->>>
->>> On Wed, 2024-11-20 at 13:44 +0100, AngeloGioacchino Del Regno wrote:
->>>> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>>>
->>>>
->>>> Add support for the DPI block found in the MT8195 and MT8188 SoCs.
->>>> Inside of the SoC, this block is directly connected to the HDMI IP.
->>>
->>> In MT8173, DPI0 is directly connected to HDMI.
->>> The first version of this driver is just for MT8173 DPI0.
->>> Does MT8173 DPI0 need this modification?
->>> Or this modification is just for MT8188 and MT8195, then the description should be more than 'directly connected'.
->>>
->>
->> This is only for MT8188 and MT8195, and MT8173 does *not* need any modification.
->>
->> Please, what would you like to see in the description of this commit?
-> 
-> This patch does four jobs.
-> 
-> 1. Enable/disable tvd_clk for MT8195/MT8188 DPI.
-> 2. Do not set pixel clock for MT8195/MT8188 DPI.
-> 3. New DPI_INPUT_XXX and DPI_OUTPUT_XXX control for MT8195/MT8188 DPI.
-> 4. Do not power on/off for MT8195/MT8188 DPI.
-> 
-> Maybe you should break into 4 patches and each one has different reason.
+Report the PCS in-band capabilities to phylink for the Lynx PCS.
 
-Yeah I thought about that as well, but there's a fundamental issue with splitting
-the thing in multiple patches...
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/pcs/pcs-lynx.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-For enabling the tvd_clk in a separate patch, there's no problem - however, for the
-others....
-
-1. We need to introduce support for MT8195/88 DPI-HDMI, or the other patches would
-    not make sense (nor apply, anyway); then
-2. We stop setting pixel clock with another patch; then
-3. we don't power on/off, etc etc
-
-The problem with doing it like so is that the patch #1 that I described would be
-introducing *faulty code*, because the support for that really depends on all of
-the others being present (otherwise the block won't work correctly).
-
-So... if you want, I can easily split out the tvd_clk enable/disable, but splitting
-the rest wouldn't be clean.
-
-Besides, keep in mind that... actually... for anything else that is not MT8195/88
-DPI0 (so, for other SoCs' DPI and for 95/88 DPINTF) the tvd_clk is already getting
-enabled by its child.. so, for those ones, a call to enable tvd_clk does exactly
-nothing apart from incrementing (enable) or decrementing (disable) the refcount for
-this clock by 1.
-
-This means that the enablement/disablement of tvd_clk is actually important only
-for the MT8195/88 DPI and has literally no effect on anything else that is
-currently supported by the mtk_dpi driver anyway.
-
-Still - if you want me to split out the tvd_clk en/dis patch, just confirm and I
-will split that one out...
-
-> 
-> For #1 and #2, I've not reviewed the HDMI driver. Is the clock control influenced by new HDMI driver.
-
-It kinda is - the HDMI-TX block gets its clock from the HDMI PHY's clock gen,
-but eventually it is the HDMI driver that tells to the PHY driver what clock it
-actually wants.
-
-For #1, clk_prepare_enable() is ungating the clock that would otherwise gate the
-PHY's PLL output to the HDMI block.
-
-> If it is software reason, maybe we can modify the new HDMI driver and make DPI driver consistent with MT8173.
-> If it is hardware reason. just describe the hardware reason.
-
-Alright - the hardware reason is that the HDMIPHY generates the clock for the HDMI
-TX block, and that enabling the clock assigned to tvd_clk is necessary to ungate
-the PHY's ckgen output to the HDMI-TX (and I think - but not sure as I haven't
-analyzed that yet - that HDMI-RX should have the same gating technique, but that's
-definitely out of scope for this submission).
-
-> 
-> For #4, I don't know why DPI do not control power by its self?
-> Even though other driver may control the same power, power manager has reference count,
-> so each driver could control the same power by its self.
-
-#4 is there both for a SW and for a HW reason.
-
-The HW reason is that the DPI shall be powered on in a specific sequence in regard
-to HDMI-TX, due to the setup that is required by both (and ungating clocks before
-full configuration happens would lock up the hw block).
-
-The SW reason is that mtk_crtc.c calls mtk_crtc_ddp_hw_init()->mtk_ddp_comp_start()
-in its .atomic_enable() callback, which happens in the wrong sequence in regard to
-HDMI because of the "natural" components order in the DRM framework (for MT8195/88!
-because for the others it either is the inverse or it does not matter - so for
-performance it's okay for it to be like that both on older SoCs and on DPINTF for
-95/88) and this means that we *must not* call dpi_power_on() at that time but
-we must rather follow the atomic_enable()/bridge_enable() order imposed by DRM
-*also* for the clock en/dis calls in DPI.
-
-Cheers,
-Angelo
-
-> 
-> Regards,
-> CK
-> 
-> 
->>
->> Cheers,
->> Angelo
->>
->>> Regards,
->>> CK
->>>
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>
->>
-
-
+diff --git a/drivers/net/pcs/pcs-lynx.c b/drivers/net/pcs/pcs-lynx.c
+index b79aedad855b..767a8c0714ac 100644
+--- a/drivers/net/pcs/pcs-lynx.c
++++ b/drivers/net/pcs/pcs-lynx.c
+@@ -35,6 +35,27 @@ enum sgmii_speed {
+ #define phylink_pcs_to_lynx(pl_pcs) container_of((pl_pcs), struct lynx_pcs, pcs)
+ #define lynx_to_phylink_pcs(lynx) (&(lynx)->pcs)
+ 
++static unsigned int lynx_pcs_inband_caps(struct phylink_pcs *pcs,
++					 phy_interface_t interface)
++{
++	switch (interface) {
++	case PHY_INTERFACE_MODE_1000BASEX:
++	case PHY_INTERFACE_MODE_SGMII:
++	case PHY_INTERFACE_MODE_QSGMII:
++		return LINK_INBAND_DISABLE | LINK_INBAND_ENABLE;
++
++	case PHY_INTERFACE_MODE_10GBASER:
++	case PHY_INTERFACE_MODE_2500BASEX:
++		return LINK_INBAND_DISABLE;
++
++	case PHY_INTERFACE_MODE_USXGMII:
++		return LINK_INBAND_ENABLE;
++
++	default:
++		return 0;
++	}
++}
++
+ static void lynx_pcs_get_state_usxgmii(struct mdio_device *pcs,
+ 				       struct phylink_link_state *state)
+ {
+@@ -306,6 +327,7 @@ static void lynx_pcs_link_up(struct phylink_pcs *pcs, unsigned int neg_mode,
+ }
+ 
+ static const struct phylink_pcs_ops lynx_pcs_phylink_ops = {
++	.pcs_inband_caps = lynx_pcs_inband_caps,
+ 	.pcs_get_state = lynx_pcs_get_state,
+ 	.pcs_config = lynx_pcs_config,
+ 	.pcs_an_restart = lynx_pcs_an_restart,
+-- 
+2.30.2
 
 
