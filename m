@@ -4,111 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17685D3B7C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DACFD3B7CA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vSTujhm+41nFZVVxdT162iRX0EXX7Jnr8vBVXGlgN9o=; b=gvjksyJvCVGwk9MTQDlw4XA5OR
-	N6S/KPwXoyGnGQhCA7j06147T/x7OVLOTVcKskPSirua1W6mjD966w9VHCTjKvWWksqAU2UgMaMzx
-	8Cnzhrm6u23s2diQPMLCLIxbBHRc1AtIA21ujZUJvxpVjKsgh0S57zeLa3qxnTB9Gprf97QQLAEgr
-	7X3v5TSCKO0A0I7uq/UVBOd9WmpKjXnuP8hEqF2KKAKqLIKNfKmeTjJCYj8aD61RNX+zqzdWHj8i6
-	5irO4WRLOCCCTgHPQmlo3xuRSQMLIZIoaAT1dBrs5qwqu00lIsdLPV7Cu2GSKF/ykXJ2Bn+vf1lMl
-	WXimoKhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qVPL0RdD4hnmz4XYDjVggcqfPiFjhTjUbOauD820jSM=; b=Q37wriCr41EqM/XOKT2GbwP08f
+	US3I8jTZXUHlCMqxK0FPaDMSZQSo6mr//B08X+sBHd+LLsQld3MuxELXrNBGs8QqHyyst07NX99FX
+	XuDoe06P6KsyuBN5QZ8vAjTFzBag8yC2UGKYBQ7gubmIljWCrBEeUD3l+oPIN8kXRXNgoE60zVyOI
+	G0b4jEB33MG7DF6oM87x7T3m0dPRRVR46weWNy7cLlNZszR87AdlDBLaz6AGFAkxXZJwgmLMedq/J
+	Wypcwxaph75WuL1bOMvSfiJRjHrwumO2Wll+863/3FDoNalSxaFmWwNpSq8SrOjw4zq3zDWLN0ZGm
+	7s0WLMMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrhM-0000000A4Mg-0uV3;
-	Tue, 26 Nov 2024 09:17:32 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1tFrqh-0000000A936-0Lq7;
+	Tue, 26 Nov 2024 09:27:11 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrfL-0000000A3dd-2j9p;
-	Tue, 26 Nov 2024 09:15:29 +0000
-Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AQ96KIe013233;
-	Tue, 26 Nov 2024 10:15:16 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=selector1; bh=vSTujhm+41nFZVVxdT162i
-	RX0EXX7Jnr8vBVXGlgN9o=; b=0PAAs2vrk1CIEumwjtIG7XmJDGmDRPvsFpyBfh
-	cwVH0l4gpwUrlWi8cZ8QUJGGy1fX9Ma2bn1cGtHYTFtd3ujPjn2HJCuYznNYiXVa
-	ZT7Sgi8OwP9kT6Rvox3/11HTDKivabIBkvE9yRmWQnKzsf5KRG9mhsgRXIik7WPk
-	i6ujuLYcsLRXW18S+eUtLWJxQADjPbFgJqLUMeX/Z2D85Hr76LGC5Gh02s7sTyeK
-	xsoZ2XH4farv1WmobIIjzPCvmUO3s2IO7oWvxWF0Z9doMpFM8AKExNJfOkJDIGE1
-	/UanvByBGvZemldS7BaMffe2dN99d/G4XP5jjd4O3Hf/9HYg==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 43352942gg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 26 Nov 2024 10:15:15 +0100 (CET)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 746A540047;
-	Tue, 26 Nov 2024 10:13:21 +0100 (CET)
-Received: from Webmail-eu.st.com (eqndag1node4.st.com [10.75.129.133])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id CB0D326B647;
-	Tue, 26 Nov 2024 10:11:06 +0100 (CET)
-Received: from SAFDAG1NODE1.st.com (10.75.90.17) by EQNDAG1NODE4.st.com
- (10.75.129.133) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Tue, 26 Nov
- 2024 10:11:06 +0100
-Received: from localhost (10.48.86.121) by SAFDAG1NODE1.st.com (10.75.90.17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Tue, 26 Nov
- 2024 10:11:06 +0100
-From: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-To: Bjorn Andersson <andersson@kernel.org>,
-        Mathieu Poirier
-	<mathieu.poirier@linaro.org>,
-        Rob Herring <robh@kernel.org>,
-        "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        "Maxime
- Coquelin" <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Neil Armstrong
-	<neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        "Jerome
- Brunet" <jbrunet@baylibre.com>,
-        Martin Blumenstingl
-	<martin.blumenstingl@googlemail.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Patrice Chotard
-	<patrice.chotard@foss.st.com>,
-        Fabien Dessenne <fabien.dessenne@foss.st.com>,
-        Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <imx@lists.linux.dev>, <linux-amlogic@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>
-Subject: [PATCH v14 0/8] Introduction of a remoteproc tee to load signed firmware
-Date: Tue, 26 Nov 2024 10:10:31 +0100
-Message-ID: <20241126091042.918144-1-arnaud.pouliquen@foss.st.com>
-X-Mailer: git-send-email 2.25.1
+	id 1tFrnt-0000000A8GC-3800;
+	Tue, 26 Nov 2024 09:24:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=qVPL0RdD4hnmz4XYDjVggcqfPiFjhTjUbOauD820jSM=; b=zzT4dMuTJkpC3NnKY2hawXduOh
+	PbEAYhOg6UWAai71+bXosnUAQX6y1wUPJD6QRmHaqz866weG4pV6klHL8w7ALIQ/HBlrMKx7UhAhy
+	QPa4DCqlnTpChq6us+nNiYlPuJtn46kTGpzihoHcKAsXRQwXH+W278+thEykecLaAYtBJtnn+6hAZ
+	u74FUonF6dKYIIHMC4bSZYHatmGFDC2w30VH8lPuJHAq9LNKPHlBeJZBtfgwYM/lEshBf2EYKEudY
+	onFeRs7HfsXC+4n2tNKhOJ39JB4uzciZColpghXrw5eaLUPDxA3lt0KBokpBRX/lNXPhSI3ClukbC
+	KLmGMU3w==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:39506)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tFrnX-0006RQ-2S;
+	Tue, 26 Nov 2024 09:23:56 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tFrnQ-0004Ra-2v;
+	Tue, 26 Nov 2024 09:23:48 +0000
+Date: Tue, 26 Nov 2024 09:23:48 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexander Couzens <lynxis@fe80.eu>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH RFC net-next 00/16] net: add negotiation of in-band
+ capabilities
+Message-ID: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.48.86.121]
-X-ClientProxiedBy: SAFCAS1NODE1.st.com (10.75.90.11) To SAFDAG1NODE1.st.com
- (10.75.90.17)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_011527_978750_52258E5D 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20241126_012418_875050_B6F9EF9A 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,105 +89,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Main updates from version V13[1]:
-- Introduce new rproc_ops operation: load_fw() and release_fw(),
-- Rename load() operation to load_segments() in rproc_ops structure and
-  drivers.
+Hi,
 
-More details are available in each patch commit message.
+Yes, this is one patch over the limit of 15 for netdev - but I think it's
+important to include the last patch to head off review comments like "why
+don't you remove phylink_phy_no_inband() in this series?"
 
-[1] https://lore.kernel.org/linux-arm-kernel/20241104133515.256497-1-arnaud.pouliquen@foss.st.com/T/
+Phylink's handling of in-band has been deficient for a long time, and
+people keep hitting problems with it. Notably, situations with the way-
+to-late standardized 2500Base-X and whether that should or should not
+have in-band enabled. We have also been carrying a hack in the form of
+phylink_phy_no_inband() for a PHY that has been used on a SFP module,
+but has no in-band capabilities, not even for SGMII.
 
-Tested-on: commit 42f7652d3eb5 ("Linux 6.12-rc4")
-Description of the feature:
---------------------------
-This series proposes the implementation of a remoteproc tee driver to
-communicate with a TEE trusted application responsible for authenticating
-and loading the remoteproc firmware image in an Arm secure context.
+When phylink is trying to operate in in-band mode, this series will look
+at the capabilities of the MAC-side PCS and PHY, and work out whether
+in-band can or should be used, programming the PHY as appropriate. This
+includes in-band bypass mode at the PHY.
 
-1) Principle:
+We don't... yet... support that on the MAC side PCS, because that
+requires yet more complexity.
 
-The remoteproc tee driver provides services to communicate with the OP-TEE
-trusted application running on the Trusted Execution Context (TEE).
-The trusted application in TEE manages the remote processor lifecycle:
+Patch 1 passes struct phylink and struct phylink_pcs into
+phylink_pcs_neg_mode() so we can look at more state in this function in
+a future patch.
 
-- authenticating and loading firmware images,
-- isolating and securing the remote processor memories,
-- supporting multi-firmware (e.g., TF-M + Zephyr on a Cortex-M33),
-- managing the start and stop of the firmware by the TEE.
+Patch 2 splits "cur_link_an_mode" (the MLO_AN_* mode) into two separate
+purposes - a requested and an active mode. The active mode is the one
+we will be using for the MAC, which becomes dependent on the result of
+in-band negotiation.
 
-2) Format of the signed image:
+Patch 3 adds debug to phylink_major_config() so we can see what is going
+on with the requested and active AN modes.
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/ta/remoteproc/src/remoteproc_core.c#L18-L57
+Patch 4 adds to phylib a method to get the in-band capabilities of the
+PHY from phylib. Patches 5 and 6 add implementations for BCM84881 and
+some Marvell PHYs found on SFPs.
 
-3) OP-TEE trusted application API:
+Patch 7 adds to phylib a method to configure the PHY in-band signalling,
+and patch 8 implements it for those Marvell PHYs that support the method
+in patch 4.
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/ta/remoteproc/include/ta_remoteproc.h
+Patch 9 does the same as patch 4 but for the MAC-side PCS, with patches
+10 through 14 adding support to several PCS.
 
-4) OP-TEE signature script
+Patch 15 adds the code to phylink_pcs_neg_mode() which looks at the
+capabilities, and works out whether to use in-band or out-band mode for
+driving the link between the MAC PCS and PHY.
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/scripts/sign_rproc_fw.py
+Patch 16 removes the phylink_phy_no_inband() hack now that we are
+publishing the in-band capabilities from the BCM84881 PHY driver.
 
-Example of usage:
-sign_rproc_fw.py --in <fw1.elf> --in <fw2.elf> --out <signed_fw.sign> --key ${OP-TEE_PATH}/keys/default.pem
+ drivers/net/ethernet/marvell/mvneta.c           |  27 +-
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c |  25 +-
+ drivers/net/pcs/pcs-lynx.c                      |  22 ++
+ drivers/net/pcs/pcs-mtk-lynxi.c                 |  16 ++
+ drivers/net/pcs/pcs-xpcs.c                      |  28 ++
+ drivers/net/phy/bcm84881.c                      |  10 +
+ drivers/net/phy/marvell.c                       |  48 ++++
+ drivers/net/phy/phy.c                           |  52 ++++
+ drivers/net/phy/phylink.c                       | 352 +++++++++++++++++++-----
+ include/linux/phy.h                             |  34 +++
+ include/linux/phylink.h                         |  17 ++
+ 11 files changed, 539 insertions(+), 92 deletions(-)
 
-
-5) Impact on User space Application
-
-No sysfs impact. The user only needs to provide the signed firmware image
-instead of the ELF image.
-
-
-For more information about the implementation, a presentation is available here
-(note that the format of the signed image has evolved between the presentation
-and the integration in OP-TEE).
-
-https://resources.linaro.org/en/resource/6c5bGvZwUAjX56fvxthxds
-
-Arnaud Pouliquen (8):
-  remoteproc: core: Introduce rproc_pa_to_va helper
-  remoteproc: Add TEE support
-  remoteproc: Introduce load_fw and release_fw optional operation
-  remoteproc: Rename load() operation to load_segments() in rproc_ops
-    struct
-  remoteproc: Make load_segments and load_fw ops exclusive and optional
-  dt-bindings: remoteproc: Add compatibility for TEE support
-  remoteproc: stm32: Create sub-functions to request shutdown and
-    release
-  remoteproc: stm32: Add support of an OP-TEE TA to load the firmware
-
- .../bindings/remoteproc/st,stm32-rproc.yaml   |  58 +-
- drivers/remoteproc/Kconfig                    |  10 +
- drivers/remoteproc/Makefile                   |   1 +
- drivers/remoteproc/imx_dsp_rproc.c            |   2 +-
- drivers/remoteproc/imx_rproc.c                |   2 +-
- drivers/remoteproc/meson_mx_ao_arc.c          |   2 +-
- drivers/remoteproc/mtk_scp.c                  |   2 +-
- drivers/remoteproc/qcom_q6v5_adsp.c           |   2 +-
- drivers/remoteproc/qcom_q6v5_mss.c            |   2 +-
- drivers/remoteproc/qcom_q6v5_pas.c            |   4 +-
- drivers/remoteproc/qcom_q6v5_wcss.c           |   4 +-
- drivers/remoteproc/qcom_wcnss.c               |   2 +-
- drivers/remoteproc/rcar_rproc.c               |   2 +-
- drivers/remoteproc/remoteproc_core.c          |  68 ++-
- drivers/remoteproc/remoteproc_internal.h      |  20 +-
- drivers/remoteproc/remoteproc_tee.c           | 508 ++++++++++++++++++
- drivers/remoteproc/st_remoteproc.c            |   2 +-
- drivers/remoteproc/st_slim_rproc.c            |   2 +-
- drivers/remoteproc/stm32_rproc.c              | 141 +++--
- drivers/remoteproc/xlnx_r5_remoteproc.c       |   2 +-
- include/linux/remoteproc.h                    |  20 +-
- include/linux/remoteproc_tee.h                | 105 ++++
- 22 files changed, 893 insertions(+), 68 deletions(-)
- create mode 100644 drivers/remoteproc/remoteproc_tee.c
- create mode 100644 include/linux/remoteproc_tee.h
-
-
-base-commit: adc218676eef25575469234709c2d87185ca223a
 -- 
-2.25.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
