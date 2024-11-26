@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EB19D5A6EA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 07:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBF75D5A6EA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 07:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NH2QXtrlg3soMHEH64f1kzx9exe0HexikLoBaolmwxQ=; b=gAFu0kdtt5p9u0KO/ivm8VN36O
-	9EDRJgWbs7gu9CsB8Qb2h38p7bLNkpjmYionIKaaTzKg27bxyEApubUuEL0mH90fEy03Pcz6VbDlL
-	h+gf7GM/ryk9ardjOuyeuO9o2ctCfgl3thMohT7DbnBICxz9akyYWf1a7W7ShLcUA1bi1NoVdZupf
-	a9jN9f3n8acRyzOUjicUcTGabOYjMMX4kJlkaGpsuxwo8cXOCjRBynbjUXr6dXyioTQATCpHsqlah
-	1TUcCTcubbPKIxVRSuu/tvPACmUAIhGHX2Uh+DAeW9Cnz53+zaufmD9gZ6HpACJNPGoPibqdhdMxi
-	8g+E7/ww==;
+	bh=Rx5KtfJjHi8LwfpS9BbKbas/r4F/11KM1vqp23+f41U=; b=lFjOI1nubkj4SbRSQknDswIliz
+	ghqyXPHxd+MxMynNsQ7jG7dLE0biB9vOHEqTDSbXlB70qfZUC86ApICrGNkfZ7b43W/iiQTMjLPo4
+	C28HTIpmAT6+tKrz27oIhkEh2iYgK3BF/c/qxU+bdYmj9tSIPdC+WS56Vrs/hcVgGe0OzaedyOQIT
+	QtUTYlvNNwNWkyi4kNZHDUigKO6iD+ZmWNv2GM5a0S8p+Jb8SEoTCxoB1k62gqfHyv5ZEK6WnHAku
+	uLB2dP0xfTwuSLU2YrNW4OFYz4gu85IQgP1LaOsseHz4N2SzwcSwmG7Sab6lNZC7OuG15T7nze4QD
+	szilRfPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFq9h-00000009rS3-0XHu;
-	Tue, 26 Nov 2024 07:38:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tFqAh-00000009rcQ-03bw;
+	Tue, 26 Nov 2024 07:39:43 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFq8h-00000009rEw-2ddB;
-	Tue, 26 Nov 2024 07:37:40 +0000
+	id 1tFq9e-00000009rRB-2o0H;
+	Tue, 26 Nov 2024 07:38:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ACEC45C5CAF;
-	Tue, 26 Nov 2024 07:36:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21035C4CECF;
-	Tue, 26 Nov 2024 07:37:37 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id DC32AA41AF7;
+	Tue, 26 Nov 2024 07:36:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B314BC4CECF;
+	Tue, 26 Nov 2024 07:38:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732606658;
-	bh=r++3Qo7JVxc4zP3NbHwY47VSgGg58VDRmi+G71l8cAU=;
+	s=k20201202; t=1732606717;
+	bh=xDX7Py7JrUY2WP5pzg+vtaFdg33ZJL+szak3uKude4c=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b+OsL5e2jt0v1wI37WnVDynehv54EZ+19kfRw7zwBXYJs7jGd6/lCUH2E+KuGGMn+
-	 CRs9s1DT7vM9mrsbFkqfXjzE2zcv+PRPT8PRaqhbf6udC5ErysrrMYq+rfqOmVFczx
-	 C3ORS0aQWiCjlScWQ6yzEdarj2RI5x4cTMdL7eXJ/sWxK7ikVlONunFWyetZo9XkMr
-	 O4hUSrMjH4Cj9wpdZSEMzUQD81ROfLBEsbY1Xc24nkuGU8cyN1I+TYs5789waEszgR
-	 mzyEpyVmm5/0WDxdSKa7kKRMCA0HSiCWbjMcPUiiAbULv14b5JOFCh70F1NzLGOtxr
-	 KDCInoFuHzHMw==
-Date: Tue, 26 Nov 2024 08:37:35 +0100
+	b=lITtXb/95txvqxJqpVYepz23JkdUSnFZjSA0VCTHfuxQomF9GwPp6TuQeDtqsTMnM
+	 bQv/UEIURBN4QNiyYZgRzqke0vWnox0lz9KEFcxE6r0tMq4vqS0AWu5CZ5I7SpGqgT
+	 JgMd5ftXlUJq42hVxCDoeXcF47Y5TkrqSM1yOWl8UBIkAKRKoJ/9P/G3i/DSPnqzoM
+	 WiwJ7YXhK+r4e7SBgC22Rzk/Nl+epwwSajHi4+7OvxoySrrRxgn0B8fsDvaEh9wt3b
+	 MEgINWkvNzsWqQJyVPNQVxvQsF/CIaKJWMqnWMIpMf/YbybiUxt9c4tk4nP2C2AeFr
+	 8BY+CwiGHBgDQ==
+Date: Tue, 26 Nov 2024 08:38:34 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mathias Nyman <mathias.nyman@intel.com>, 
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: usb: mtk-xhci: add support mt8196
-Message-ID: <uy22btn4qv3gc3glizyuzdlxawgvvjgk765jjjk6mj4ftadbyv@hh62ph3ug5gg>
-References: <20241126025507.29605-1-chunfeng.yun@mediatek.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add property to
+ set disconnect threshold
+Message-ID: <42p2d3zi6q2ohod6wqfhhp2g56hffftw2asuavtttzrtaa6x4a@qvc4zwkef5hq>
+References: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241126025507.29605-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_233739_706490_E5B5FD54 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20241125_233838_768632_F20CAE74 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,16 +75,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 10:55:06AM +0800, Chunfeng Yun wrote:
-> There are 2 USB controllers on mt8196, each controller's wakeup control is
-> different, add some specific versions for them, and add compatilbe for it.
+On Tue, Nov 26, 2024 at 10:58:58AM +0800, Chunfeng Yun wrote:
+> Add a property to tune usb2 phy's disconnect threshold.
+> And add a compatible for mt8196.
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> index a9e3139fd421..2e012d5e1da1 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> @@ -49,6 +49,7 @@ properties:
+>        - enum:
+>            - mediatek,mt3611-xsphy
+>            - mediatek,mt3612-xsphy
+> +          - mediatek,mt8196-xsphy
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Keep order.
+
+>        - const: mediatek,xsphy
+>  
+>    reg:
+> @@ -129,6 +130,13 @@ patternProperties:
+>          minimum: 1
+>          maximum: 7
+>  
+> +      mediatek,discth:
+> +        description:
+> +          The selection of disconnect threshold (U2 phy)
+
+Threshold in what units?
 
 Best regards,
 Krzysztof
