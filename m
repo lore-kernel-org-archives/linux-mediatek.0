@@ -4,109 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21915D3B7CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 10:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF07DD59D90
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 10:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=937SmNfR01Mmva0l1GY0F63lYHJpf4H92sJtZEkhkuk=; b=GINu7Zz5SHclgGv/HkW18buqd4
-	T+Bza8hQXJfX+SZ2AcRIuv/s90zxYAs5rRNckJOhWsVR0cnDvlRBwIOEFegQVhjd/74gLeYyUpO9J
-	2ab1Iy4R6He+qtnJqNj/jvhYZkE9rEZnk+ZPcEPPd0qHQNyOXEdUZ1ZDftana+HJefdUwgqJaSKBb
-	I2JwWCX3sV07dJmRQWqoFTVCdkHxlKZOr72yH469H97PlOBR/qWNX8qc1QDNZ08X8imsH42qUYdKZ
-	RH+ZAr2rV3g0jBuRt740DydQO0hJLD9A47T5qESZbo49LB8Lk+7TGVthHeoIlLpfw1jlL5Wdw7GMj
-	pW23GecA==;
+	bh=0tb/1VpCPVFgloHLNFl73KUluXt5M3902QRNEkET+pg=; b=O9s7nZPikgLhDcjUZaaj219s4j
+	0EJAOXUf4/WVjoNsTHe9qHchvfnW9l7Z+E4S76juJSj4/vEO5/qPyP+xdOmoSmVi97E+OHEgmLCbg
+	GP4dsDJ6nkZoMxkDbHeQrwZLFkTt7jjUEM1XF6t1/0de6nUY7ngf3Ua0uetokSZJUea0JWfgFXhq4
+	bzdtxtvV3z3eJqxtUZL5OuwFnFUFYgLgDevx0SdRu9CuSQUwY+WvphhJfZc0Bvb3VJ98rHXQ6E1F8
+	GXzhUetC5oU9SU8KoKUUQahms/tjIUNgLIY/2bwZLKbOiZhrnbXYRZU8/Sbbtl+l/5HtIHu8zHzRz
+	t+HEwNOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFsSW-0000000AFb0-18kK;
-	Tue, 26 Nov 2024 10:06:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tFseW-0000000AHYg-0M6s;
+	Tue, 26 Nov 2024 10:18:40 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFsRY-0000000AFUJ-1Kc9;
-	Tue, 26 Nov 2024 10:05:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 407FF5C5C99;
-	Tue, 26 Nov 2024 10:04:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3BF3C4CECF;
-	Tue, 26 Nov 2024 10:05:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732615515;
-	bh=0IcV8TUAfTMMsEZEHaHtgkBnxg7UHa6ubOK4sgYE7Cc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=r4qEN8o9xIDQ/rFzu0OCGFHSCj3ZEnT5tIiy3vI28/f9KVcSmUsFRsqI7YbB/dI97
-	 R7DyxY4rJ1xM7Nol26EEnfdEDHZHaFLGZZ2j7tfb2cUgE+gIQ9D6MaR18S199gQaEA
-	 q8N3f0+hYmzccT0J140CKRbRHOlLlCQ1sQbmx4g9DKJKbHzv72qJUXeceyfyBDuT1z
-	 buaZMquC3uByaexcx/wZr8Q+IokiwZYbah6urkvoVHf5OLKPXOQSR7eZZ+SV6jeF6z
-	 TZqJBACGA3e21F5D5Jca1M2KMjdYjQgdv40UTD+YcwksTkRoSRHLzO2ZVsMj300TJI
-	 hcdsJjCSvkZdg==
-Message-ID: <9004a82a-56a3-4d88-b0be-7e9d45932607@kernel.org>
-Date: Tue, 26 Nov 2024 11:05:09 +0100
+	id 1tFsdH-0000000AHI6-2xgG
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Nov 2024 10:17:24 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5cfc19065ffso7036844a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Nov 2024 02:17:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1732616242; x=1733221042; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0tb/1VpCPVFgloHLNFl73KUluXt5M3902QRNEkET+pg=;
+        b=AVAAkVSgA5VPhQyPNo5lRHkagTxYir27RwuGyKqog+KI0siIHSGb9yZC6CsjlKTGqR
+         wA/fgBDCTBscy830ssVhypsspx7Es9tBip2Ttpson+inipblMqCVFrseu4Wjee9b2Yoq
+         NC04nA5FlH29ySK7sJ4bkiFmVRpdnaAD19YJ8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732616242; x=1733221042;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0tb/1VpCPVFgloHLNFl73KUluXt5M3902QRNEkET+pg=;
+        b=InJzu/L/Vxisx82rWBQiRr+QViqiHP7pAi8ELiLwa8daHg+Ztfy0x/a6n1cKAeP9rw
+         B0ba51wFh9i5VkUSForIlzfbNY986SGCqEVU/THQxbj7eZyAy9kPpprhwFMk/IvkD8sy
+         jo+bObareXpxXApgl4dtX71EOy6KGiUtWZHJA7v3MmqH7bzXl1uogEl0321hJB2FLCYe
+         fSYi/eyxkDJi7fT3YeL4UAM424EpknwEndFjq0gIqO4GVdZCcgNHhh+UNs1V0NKTspe3
+         eNLlwOVXxAxIeQeqIC2GRYmTeJVtDbw/cbijM148/6Ij9lbzXndXU3QN+F21/mx050Ab
+         y0Iw==
+X-Forwarded-Encrypted: i=1; AJvYcCVOgbokNwRKJZy/LCYe63IPkNMkV0bPHh5/xIJ0XYGduaRrgBKXswPnUEK7ejz98u/FSvtND4RRWaEMqYfsUQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw4pd+YIV6Qs7oBHu1WuLJQB2ib46iNKXxhhPAcZXlCllXOr7yS
+	QUNQVxHl1EFMsWtEm4XY/DRsccUlCrC8dLQgEBLhJ67xf56gqWw7e2/c9mDKSC6fqQAtfBMR7Sk
+	Z4g==
+X-Gm-Gg: ASbGncsfSG71vst+Jp6303yywANR+VsijEXjPFEDYC/MREN89DGhel7TgViOJflWzNj
+	FvUVlD7S61B9rJbArdUlXOehk2K4cMYyGqPAC4Feon/4EAAboL+iQHhQlzg7/ii4Eo9tYYsjwLG
+	lXJe39EL7fOb2kAGYF0aM1WOY5kgJDH7dzs31CmEzTv9KfSnm4z3L+fPmZ/mmc256MLSLGGRdBP
+	4ZPqjCMKdmDLe78eoJsTZnOvIuH/r0bYJS4RGRmGVtQDFSu0dVXoiwtwpTXwU21oVSs2W0C+1fT
+	LYHXYyqP05MTZhIZ
+X-Google-Smtp-Source: AGHT+IGpZdbCXA0yjXxYQ5hH2oWMsi55+Gm+uZvc+cmc6+Rdlh5dVYj0cnqXMOKp6T0lUNt6MYEypQ==
+X-Received: by 2002:a05:6402:5212:b0:5cf:e66f:678d with SMTP id 4fb4d7f45d1cf-5d0207a3a02mr14685865a12.28.1732616241457;
+        Tue, 26 Nov 2024 02:17:21 -0800 (PST)
+Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com. [209.85.208.51])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa50b57b6c8sm578295466b.135.2024.11.26.02.17.20
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Nov 2024 02:17:20 -0800 (PST)
+Received: by mail-ed1-f51.google.com with SMTP id 4fb4d7f45d1cf-5cfc18d5259so5732a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Nov 2024 02:17:20 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWmNdTZA/kKkduEkA7YfzpVP7Eg1yOGokcI8XyNYG2uoBaDIs982aaZC7T8HDA4BoWCyvtmtOLmgZo0LRjHPw==@lists.infradead.org
+X-Received: by 2002:a50:9505:0:b0:5d0:b76:3ae1 with SMTP id
+ 4fb4d7f45d1cf-5d06f5111c2mr40797a12.5.1732616240006; Tue, 26 Nov 2024
+ 02:17:20 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND v4] arm64: dts: mt8183: set DMIC one-wire mode on
- Damu
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241126-damu-v4-1-e746eec2cb52@chromium.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241126-damu-v4-1-e746eec2cb52@chromium.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241126-damu-v4-1-e746eec2cb52@chromium.org> <9004a82a-56a3-4d88-b0be-7e9d45932607@kernel.org>
+In-Reply-To: <9004a82a-56a3-4d88-b0be-7e9d45932607@kernel.org>
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Tue, 26 Nov 2024 18:16:43 +0800
+X-Gmail-Original-Message-ID: <CAHc4DNKNrOUPJ+3DE+f+78-SAeQkuqEHqFXmwwaPTG+ni_1MMw@mail.gmail.com>
+Message-ID: <CAHc4DNKNrOUPJ+3DE+f+78-SAeQkuqEHqFXmwwaPTG+ni_1MMw@mail.gmail.com>
+Subject: Re: [PATCH RESEND v4] arm64: dts: mt8183: set DMIC one-wire mode on Damu
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_020516_450762_2D9041D2 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241126_021723_772009_F572B03C 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,29 +108,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/11/2024 10:57, Hsin-Te Yuan wrote:
-> From: Hsin-Yi Wang <hsinyi@chromium.org>
-> 
-> Sets DMIC one-wire mode on Damu.
-> 
-> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, Nov 26, 2024 at 6:05=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
+g> wrote:
+>
+> On 26/11/2024 10:57, Hsin-Te Yuan wrote:
+> > From: Hsin-Yi Wang <hsinyi@chromium.org>
+> >
+> > Sets DMIC one-wire mode on Damu.
+> >
+> > Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board"=
+)
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+>
+> Where did this happen?
+>
+https://lore.kernel.org/all/01020191db901d32-5c318445-b8f4-4f4d-86db-316dc0=
+db04ec-000000@eu-west-1.amazonses.com/
 
-Where did this happen?
+> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>
+> And this?
+>
 
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+https://lore.kernel.org/all/5a668114-2ae6-4217-9614-b690c0870849@gmail.com/
+> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > ---
+> > Changes in v4:
+> > - Add Reviewed-by tag back, which is dropped in v3
+>
+> This resend is very weird. Didn't you get a replies that this was applied=
+?
+>
+>
+> Best regards,
+> Krzysztof
 
-And this?
+This patch had been applied but was dropped due to missing a
+Signed-off-by from the author
+(https://lore.kernel.org/all/20241009071543.5230cf79@canb.auug.org.au/).
 
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
-> Changes in v4:
-> - Add Reviewed-by tag back, which is dropped in v3
-
-This resend is very weird. Didn't you get a replies that this was applied?
-
-
-Best regards,
-Krzysztof
+Regards,
+Hsin-Te
 
