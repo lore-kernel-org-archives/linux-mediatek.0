@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D1F8D65559
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 21:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D5BD65559
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 21:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vmbIlKcAVLKjRxHa4VqPo5WKB6DBh0l4jMgac7lFpys=; b=JB5A9iy68xRw8GuTDZLKdV4HGZ
-	mlZCOIX30UFiD4Xmt7m5jcdM49KYbOcW8gRf9Cvso9EpqsvGlOhWgufzmmrnvsczCi1R4cbyR7dsO
-	h77moVlk0UuM+dXbDorE6LX+jaX6RrPq8lYSehds7KGGLMt1TbWvuWUM5Jb5IDNIn6Cj2MSgZuLAY
-	hupcLjPDwWiDox6rgSsF93BIZwamp+Cz+s7W6MVCaG4NK8KmilmoBu58pGOD9cPxiDGde/o03Shr2
-	erkGbywMF4oRS8JuE5gDcWJp7J41noHPelN0l4skxQvdjwe9pDpextALPtNFCaIVl9hOUJX+707D3
-	J3Yt2anQ==;
+	bh=eK29JLfQGYjMLr8qhnzk5waWYaHeLXYhWdUAvgw0WG4=; b=Qk1IqKa1G6sOKdykGXKKVyIu02
+	tIiScCOgEi45Xvb8teotZ9f0DBiqRdVH4Odwpq5q79/ydDmCFiCuhleXwKKNEpkiEtBEBeCzYw2aB
+	duyqp9ZD1lA/DElynatZmZB95WDs0wZjDBtDNj+9CzKcqP0JhFhNaKBJbwuo2b1Dxxarbqah/eCSu
+	xanknxWUPw8XH2WRToi9YsnGNzz/cMsIcJkbmHOetnl3IzOPRro0Gj9TFbCTJuCW4N8GyQIr5e4tj
+	SKiMGPlCmSNBOdy1J7e2jIabe7kiQHiSMZDYKjy5XNw6tMy4YJGiiz1G+frAZ7UUEfxcw7kA+1lzG
+	MtuuI+5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tG2lw-0000000Bipd-1Eqm;
-	Tue, 26 Nov 2024 21:07:00 +0000
+	id 1tG2ms-0000000Bizh-28s5;
+	Tue, 26 Nov 2024 21:07:58 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tG2ky-0000000BikY-0h03;
-	Tue, 26 Nov 2024 21:06:01 +0000
+	id 1tG2lk-0000000Biod-2S52;
+	Tue, 26 Nov 2024 21:06:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=vmbIlKcAVLKjRxHa4VqPo5WKB6DBh0l4jMgac7lFpys=; b=2YmdRRZZY4+znhtWTOHGszWkHO
-	XKS4VJ6cFoEnwfe+1zYyvj2QNk8+PYK1euFHc8u1Ls3yto/aFg5E3Jrx2mvIr2QwTj5K/P5Hs697N
-	kFoEUXWw6s+MfOGqaj9bY0qlCef+z5uXd7E+0INSpUGiQRVK0o13tIsctWj1ebVHdn1c=;
+	bh=eK29JLfQGYjMLr8qhnzk5waWYaHeLXYhWdUAvgw0WG4=; b=GpeOe90dHC49t0syfVOCe2POOB
+	/n5MKXelcj8x27JmVo5+BfSZRIPrfTx5eYKF8t+cjBAHJhwmGziGafDG8eCH1LEgBHr2a3jKPV37U
+	Lzcvck5apsQ9B/iP07R8Ijtu5MKwCToNWVOM1klEtUtfUmZcvxVcl0vmphpGc/0TXoMs=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1tG2kf-00EZCH-OJ; Tue, 26 Nov 2024 22:05:41 +0100
-Date: Tue, 26 Nov 2024 22:05:41 +0100
+	id 1tG2lZ-00EZDF-5Q; Tue, 26 Nov 2024 22:06:37 +0100
+Date: Tue, 26 Nov 2024 22:06:37 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -57,18 +57,19 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH RFC net-next 09/16] net: phylink: add pcs_inband_caps()
- method
-Message-ID: <7dcf8936-29fb-45f3-9ce9-69ef2a1e9f1e@lunn.ch>
+Subject: Re: [PATCH RFC net-next 10/16] net: mvneta: implement
+ pcs_inband_caps() method
+Message-ID: <6231ab62-91e2-4874-aec7-f53e58a85250@lunn.ch>
 References: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
- <E1tFrob-005xQS-Hz@rmk-PC.armlinux.org.uk>
+ <E1tFrog-005xQY-LH@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <E1tFrob-005xQS-Hz@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1tFrog-005xQY-LH@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_130600_201611_33C211CD 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20241126_130648_620315_477577A1 
+X-CRM114-Status: UNSURE (   7.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,14 +84,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 09:25:01AM +0000, Russell King (Oracle) wrote:
-> Add a pcs_inband_caps() method to query the PCS for its inband link
-> capabilities, and use this to determine whether link modes used with
-> optical SFPs can be supported.
-> 
-> When a PCS does not provide a method, we allow inband negotiation to
-> be either on or off, making this a no-op until the pcs_inband_caps()
-> method is implemented by a PCS driver.
+On Tue, Nov 26, 2024 at 09:25:06AM +0000, Russell King (Oracle) wrote:
+> Report the PCS in-band capabilities to phylink for Marvell NETA
+> interfaces.
 > 
 > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
