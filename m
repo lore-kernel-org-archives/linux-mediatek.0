@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D41BFD3B7C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C720D3B7C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:33:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=el0rVY+c9CrkRzaGqbcKkhlZC6FhAlwE6EzSElpENZM=; b=ajsB56w98rqcQ1HKIPWFy9Vonc
-	OhSip/VB933s49psYzuI/pg087ICJsQwxl6OKYCyYFY47mig1ptHNBCBc/LkxlEn/Jp+ND3iiV+qw
-	UReu0wkwwtPqHSB63i8/0zO+bOw+D0yd3BtsqtJkXq2r4ikLOAp8L2U5YBrSz4gYjd16ScWuPr7IV
-	/jq9gIdBpWxuivOblc+cXrv6mr+O+ouvCvyefPbLiCP7qycqrJ3prt7ixAGyvEHiA5Lr0evJZx5CG
-	B0SWyxDYRO3rXkDKq4w2Mrk/4ChzT9zHUyqg9eknuAoynFgR1ssI+W7f0R5RrYrpL3ilE/lZNOmvb
-	WM7EZygQ==;
+	bh=g+THxpnpB+Pzg6AUVLr1ssu3RzIpCwc8waUglBp2qOw=; b=wR9ECGM1M/+PXQjhvO2SDOHCmE
+	sphJXo6KYKMmdk+SmNOk2EYJR4AJgq3nxeaZiyYxPxECMWWd5XDn+yeaDFcvcBz7kxLU+HI8pOn0f
+	m1kQJE3slHkVeiGnUQNkIg2oI0IyN3SXzeLy1Xz5u257FD8ADtbeOrHs1xacaBtzeBCHZuEr2Brcg
+	44Inl2cTbA6XdYxrsSrp9Hy5M+FRw0vuDzLFLcG7MTZ37+NxhLbEjA3gQkOyE9Usgv27T726Le0P8
+	eg+hiLMQSEemPLiHizzM8eaivO9nGLTIhnkh7jXBM+MM/LFo6X3G0D+pYDNr4B8wLM3QKP96fMItp
+	ZrHoNNyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFrvP-0000000AA57-0APQ;
-	Tue, 26 Nov 2024 09:32:03 +0000
+	id 1tFrwL-0000000AAJ3-01fY;
+	Tue, 26 Nov 2024 09:33:01 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFroT-0000000A8Rw-31Rh;
-	Tue, 26 Nov 2024 09:24:54 +0000
+	id 1tFroZ-0000000A8Th-0Dey;
+	Tue, 26 Nov 2024 09:25:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=el0rVY+c9CrkRzaGqbcKkhlZC6FhAlwE6EzSElpENZM=; b=c2PLDRGD9Ssf7ZkhiapQYuPPQS
-	1ZD+o4FDtCpKZMI0SUXyUFVJKP5Ogvjyi22GEnxGLvO0sDt9H/xOKqq0sXVUWQJ4uftakUuC0MzOc
-	zth8l3K944nGdgSpHcrGLg4lsgoBMqE8+gYwjh5g9/siPz6crxx+xPoYS960XDIGeEJvgwMTZHvCE
-	5J2/vCaS7XRZo7/g95CpNu173tEzl04U14HmM4MM4R9FJBrFcibMNF+4/9JfUeiZEJbcfTQAZd3He
-	eDTmvQmiFq26nr7vG8a9cRabNsjHwe0LwL93jUbHTX70bMlROERn58bIaNK3/TP97ZdZWg9hK3rml
-	ejlf7Qyw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46098 helo=rmk-PC.armlinux.org.uk)
+	bh=g+THxpnpB+Pzg6AUVLr1ssu3RzIpCwc8waUglBp2qOw=; b=GRpm2OY0Zw0dJ0N+JCTvCDY78n
+	u/QvZL7ScctRtwe7RGBf4kpWi7XVw4YtbaM1qwpYF4J05XPZMdNGPeKc8SpLS26YdEQ8yNKmbd7ie
+	kHnui34Z0DMzM+/Hr+YwsbUL0msNZE8MNjBkoB4zbY9p+76eonE4Brx9Zb8jVtsvY07xRu3aouvxz
+	SC0ihPwuX1bbU4rf2u0I9vcEguCHgRnF27k/U5XImtUjHTdMiUwV/EGVBOBnDpGIDYofEs2gxrNQI
+	51ax/HuGD3AJhMe/JtzhWST+IN4pqaOrPowlRqv1GrYXdDQVw5CRYgu+dgSz/Rx/QCPJ0wOtMKvLh
+	8mNWhP4A==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46102 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tFroI-0006Sz-1A;
-	Tue, 26 Nov 2024 09:24:43 +0000
+	id 1tFroN-0006TK-1Q;
+	Tue, 26 Nov 2024 09:24:47 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tFroH-005xQ2-2v; Tue, 26 Nov 2024 09:24:41 +0000
+	id 1tFroM-005xQ8-6e; Tue, 26 Nov 2024 09:24:46 +0000
 In-Reply-To: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
 References: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -69,17 +69,17 @@ Cc: Alexander Couzens <lynxis@fe80.eu>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH RFC net-next 05/16] net: phy: bcm84881: implement
+Subject: [PATCH RFC net-next 06/16] net: phy: marvell: implement
  phy_inband_caps() method
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tFroH-005xQ2-2v@rmk-PC.armlinux.org.uk>
-Date: Tue, 26 Nov 2024 09:24:41 +0000
+Message-Id: <E1tFroM-005xQ8-6e@rmk-PC.armlinux.org.uk>
+Date: Tue, 26 Nov 2024 09:24:46 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_012453_754061_2C46C398 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20241126_012459_095127_BB909FD9 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +94,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-BCM84881 has no support for inband signalling, so this is a trivial
-implementation that returns no support for inband.
+Provide an implementation for phy_inband_caps() for Marvell PHYs used
+on SFP modules, so that phylink knows the PHYs capabilities.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/phy/bcm84881.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/net/phy/marvell.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/drivers/net/phy/bcm84881.c b/drivers/net/phy/bcm84881.c
-index 97da3aee4942..47405bded677 100644
---- a/drivers/net/phy/bcm84881.c
-+++ b/drivers/net/phy/bcm84881.c
-@@ -235,11 +235,21 @@ static int bcm84881_read_status(struct phy_device *phydev)
- 	return genphy_c45_read_mdix(phydev);
+diff --git a/drivers/net/phy/marvell.c b/drivers/net/phy/marvell.c
+index cd50cd6a7f75..3075ebc3f964 100644
+--- a/drivers/net/phy/marvell.c
++++ b/drivers/net/phy/marvell.c
+@@ -717,6 +717,20 @@ static int marvell_config_aneg_fiber(struct phy_device *phydev)
+ 	return genphy_check_and_restart_aneg(phydev, changed);
  }
  
-+/* The Broadcom BCM84881 in the Methode DM7052 is unable to provide a SGMII
-+ * or 802.3z control word, so inband will not work.
-+ */
-+static unsigned int bcm84881_inband_caps(struct phy_device *phydev,
++static unsigned int m88e1111_inband_caps(struct phy_device *phydev,
 +					 phy_interface_t interface)
 +{
-+	return LINK_INBAND_DISABLE;
++	/* In 1000base-X and SGMII modes, the inband mode can be changed
++	 * through the Fibre page BMCR ANENABLE bit.
++	 */
++	if (interface == PHY_INTERFACE_MODE_1000BASEX ||
++	    interface == PHY_INTERFACE_MODE_SGMII)
++		return LINK_INBAND_DISABLE | LINK_INBAND_ENABLE |
++		       LINK_INBAND_BYPASS;
++
++	return 0;
 +}
 +
- static struct phy_driver bcm84881_drivers[] = {
- 	{
- 		.phy_id		= 0xae025150,
- 		.phy_id_mask	= 0xfffffff0,
- 		.name		= "Broadcom BCM84881",
-+		.inband_caps	= bcm84881_inband_caps,
- 		.config_init	= bcm84881_config_init,
- 		.probe		= bcm84881_probe,
- 		.get_features	= bcm84881_get_features,
+ static int m88e1111_config_aneg(struct phy_device *phydev)
+ {
+ 	int extsr = phy_read(phydev, MII_M1111_PHY_EXT_SR);
+@@ -3677,6 +3691,7 @@ static struct phy_driver marvell_drivers[] = {
+ 		.name = "Marvell 88E1112",
+ 		/* PHY_GBIT_FEATURES */
+ 		.probe = marvell_probe,
++		.inband_caps = m88e1111_inband_caps,
+ 		.config_init = m88e1112_config_init,
+ 		.config_aneg = marvell_config_aneg,
+ 		.config_intr = marvell_config_intr,
+@@ -3698,6 +3713,7 @@ static struct phy_driver marvell_drivers[] = {
+ 		/* PHY_GBIT_FEATURES */
+ 		.flags = PHY_POLL_CABLE_TEST,
+ 		.probe = marvell_probe,
++		.inband_caps = m88e1111_inband_caps,
+ 		.config_init = m88e1111gbe_config_init,
+ 		.config_aneg = m88e1111_config_aneg,
+ 		.read_status = marvell_read_status,
+@@ -3721,6 +3737,7 @@ static struct phy_driver marvell_drivers[] = {
+ 		.name = "Marvell 88E1111 (Finisar)",
+ 		/* PHY_GBIT_FEATURES */
+ 		.probe = marvell_probe,
++		.inband_caps = m88e1111_inband_caps,
+ 		.config_init = m88e1111gbe_config_init,
+ 		.config_aneg = m88e1111_config_aneg,
+ 		.read_status = marvell_read_status,
 -- 
 2.30.2
 
