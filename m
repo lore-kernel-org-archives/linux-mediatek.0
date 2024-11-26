@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F4ED3B98B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 13:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0724BD3B98F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 13:38:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z0X2no6hqev04u5CaAup9gW8xIzYF2QpGM2IrZjwkQU=; b=HK4N56z9N4afPKo7qER9BW5MSu
-	OVg0JssNzkFvFu+xvO7hUOIkIfHNsjrJ/SFmAXsunBsbmTS75Lc95XmsA5xODk/AlMChCRWUl/0pE
-	y/qIXCnUuo+yCyprbFhaiK9RnLyZnxkBOGqpekK3LEjWykcw/9i/5VG3GyaiKymrshII4r5nDKev+
-	GDTi1OIvDS87Z312RslAKFfeXpNSuthtzAjK/pOVoTW2p4QtF+38X3Xpiz4Z1impqSd0HfEgiRTEM
-	78b2eQddcJIbSfW1hmju+U1yrCN+oVOgiiPkNpULvpk75Wvmr8G7+aOT5Pz+QhJtS92eSf7/Bwy/m
-	uxypT52A==;
+	bh=WOdLJwfSmV0aCnQspw9D3NG4dorlmbOQM0Z/B6lWEPM=; b=RnPkUXvjylXQS4hXbTDVTF5gFS
+	UJvebFm5Z2/fdtZcsJbezOEw3GiW1UAVlCXtx0Q8ePn+TJrZ89Go4E9/ROmvgUobUXnrGXbpuydd4
+	R7gdJDlyEUNUx4OU5fi8TqveIRNcdeGUfmMaC9pTuUYIaUHsDTPSRqAChaHvuCIgLahlZX2zsD36L
+	dO6kzhDSJE6CJwZqcpdIqxAsC8ZdSO3aCMmFPS7OjqbSNIxEiYYyaK5LO5ynqyBj3U6BWREaVTvjD
+	0hI31IeCTVAqGD3i4+yxRhVz1TLsCeg0zdaUIUICXiNsniQAmIVaFplpHgKofcUrJ8JhWlLO2sEBi
+	HtyxfoWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFvbd-0000000AjWF-2qED;
-	Tue, 26 Nov 2024 13:27:53 +0000
+	id 1tFvlu-0000000AkrO-0GQM;
+	Tue, 26 Nov 2024 13:38:30 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFvTK-0000000AhCe-0Bw1;
-	Tue, 26 Nov 2024 13:19:19 +0000
+	id 1tFvkv-0000000Akj4-2SBt;
+	Tue, 26 Nov 2024 13:37:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732627155;
-	bh=9n3DMWiNfsEPU/+nTL+NGjyuioKCWO5RjIWhEr0S1Dc=;
+	s=mail; t=1732628247;
+	bh=feL856Z/U/ZJKcQL9qTcJgDYB4dVhf8sRnNbDu/43A4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bvD8CEB2NRi1y2GiRlZ/hRTRGq2xk1RfRWFfRYFeuKXpFRenr6DFgfgew/G/KX1gl
-	 /on3JSQivwHfYIvJ8MKYAFgR1NIuv6aLsoZ6HYDwPeHPp2bXthUlabI/b4yVSTd5WK
-	 tmTEhyVYAr+ohPd1YiBSpIwQDFhN/OgGJyLGq4iX6thE7WcmjRPcx/WQH5WybmzpvE
-	 6pYa2nRyQWPWzp/urldLb92YAS//GDqlziYlW3UIrG0v/hyzUjJmX17VC8jTBxG4dJ
-	 MOtYzDF8vL2zqa+vbKw07tl8sNsZB5YkXYuPPgDkVNjDpUs5dLtTaB5j9HB8IWGSFW
-	 zOWmQahCPhESg==
+	b=S+iwmXm2zgbLIiuraQyUO/tZ2d5bScahmmRI2x6Q5US+CxTwuR/hKnMoXa4kN87hw
+	 P9JjVeOSQ72XUjReluFbAJIvK4RYuakk8sb7zEj6/sihkEkdcgpFsgvwgXOhubqm1u
+	 SgXK2zYPwB4PiJs0dzYeDYp4N7LNpYYl3IiAJfCpgNxEHtbwTucngyeL7LZbswNUXc
+	 DdacJtkmfV7WU36E5NIWGwaaChCxTcmaIuCN/dkHzh9MkvygQ9XY7el8RW9fnZwON7
+	 BmWoTq3dxg4IqsWWLKk62bFgdHkKoUkA4yEdLHx/a9MWSyh6/+mQTq7muh7Vtj+pOK
+	 YqIIt1G/2+lRw==
 Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96A9717E3663;
-	Tue, 26 Nov 2024 14:19:13 +0100 (CET)
-Date: Tue, 26 Nov 2024 08:19:11 -0500
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 72C1D17E3686;
+	Tue, 26 Nov 2024 14:37:25 +0100 (CET)
+Date: Tue, 26 Nov 2024 08:37:23 -0500
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>
 Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
 	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Alexandre Mergnat <amergnat@baylibre.com>,
 	Balsam CHIHI <bchihi@baylibre.com>, kernel@collabora.com,
 	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
 	Chen-Yu Tsai <wenst@chromium.org>,
 	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
 	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
 	stable@vger.kernel.org
 Subject: Re: [PATCH 1/5] thermal/drivers/mediatek/lvts: Disable monitor mode
  during suspend
-Message-ID: <e3e9020b-f3d5-42bb-bf1e-6aa8da2d1708@notapiano>
+Message-ID: <f38e4283-7133-4865-b4fe-eafb6bd30534@notapiano>
 References: <20241125-mt8192-lvts-filtered-suspend-fix-v1-0-42e3c0528c6c@collabora.com>
  <20241125-mt8192-lvts-filtered-suspend-fix-v1-1-42e3c0528c6c@collabora.com>
- <600f9d78-bdc8-4133-bb43-06d798bcd543@collabora.com>
+ <CAHc4DNKmGA-MjTWdZhKygiaRwN7mHnMCf8UPUxH_V16uZifzFg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <600f9d78-bdc8-4133-bb43-06d798bcd543@collabora.com>
+In-Reply-To: <CAHc4DNKmGA-MjTWdZhKygiaRwN7mHnMCf8UPUxH_V16uZifzFg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_051918_257464_301DED69 
-X-CRM114-Status: GOOD (  24.52  )
+X-CRM114-CacheID: sfid-20241126_053729_791763_14DD73AF 
+X-CRM114-Status: GOOD (  19.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,70 +88,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 10:43:55AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 25/11/24 22:20, Nícolas F. R. A. Prado ha scritto:
+On Tue, Nov 26, 2024 at 04:00:42PM +0800, Hsin-Te Yuan wrote:
+> On Tue, Nov 26, 2024 at 5:21â€¯AM NÃ­colas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+> >
 > > When configured in filtered mode, the LVTS thermal controller will
 > > monitor the temperature from the sensors and trigger an interrupt once a
 > > thermal threshold is crossed.
-> > 
+> >
 > > Currently this is true even during suspend and resume. The problem with
 > > that is that when enabling the internal clock of the LVTS controller in
 > > lvts_ctrl_set_enable() during resume, the temperature reading can glitch
 > > and appear much higher than the real one, resulting in a spurious
 > > interrupt getting generated.
-> > 
-> > Disable the temperature monitoring and give some time for the signals to
-> > stabilize during suspend in order to prevent such spurious interrupts.
-> > 
-> > Cc: stable@vger.kernel.org
-> > Reported-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> > Closes: https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
-> > Fixes: 8137bb90600d ("thermal/drivers/mediatek/lvts_thermal: Add suspend and resume")
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > ---
-> >   drivers/thermal/mediatek/lvts_thermal.c | 36 +++++++++++++++++++++++++++++++--
-> >   1 file changed, 34 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> > index 1997e91bb3be94a3059db619238aa5787edc7675..a92ff2325c40704adc537af6995b34f93c3b0650 100644
-> > --- a/drivers/thermal/mediatek/lvts_thermal.c
-> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> > @@ -860,6 +860,32 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
-> >   	return 0;
-> >   }
-> > +static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl, bool enable)
-> > +{
-> > +	/*
-> > +	 * Bitmaps to enable each sensor on filtered mode in the MONCTL0
-> > +	 * register.
-> > +	 */
-> > +	u32 sensor_filt_bitmap[] = { BIT(0), BIT(1), BIT(2), BIT(3) };
-> > +	u32 sensor_map = 0;
-> > +	int i;
-> > +
-> > +	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
-> > +		return;
-> > +
-> 
-> That's easier and shorter:
-> 
-> static void lvts_ctrl_monitor_enable( .... )
-> {
-> 	/* Bitmap to enable each sensor on filtered mode in the MONCTL0 register */
-> 	const u32 sensor_map = GENMASK(3, 0);
-> 
-> 	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
-> 		return;
-> 
-> 	/* Bits 0-3: Sensing points - Bit 9: Single point access flow */
-> 	if (enable)
-> 		writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
+> >
+> This sounds weird to me. On my end, the symptom is that the device
+> sometimes cannot suspend.
+> To be more precise, `echo mem > /sys/power/state` returns almost
+> immediately. I think the irq is more
+> likely to be triggered during suspension.
 
-Wait, no, here you're enabling all the sensors in the controller. We only want
-to enable ones that are valid, otherwise we might get garbage data and irqs from
-sensors that aren't actually there. That's why I use the
-lvts_for_each_valid_sensor() helper in this patch.
+Hi Hsin-Te,
+
+please also check the first paragraph of the cover letter, and patch 2, that
+should clarify it. But anyway, I can explain it here too:
+
+The issue you observed is caused by two things combined:
+* When returning from resume with filtered mode enabled, the sensor temperature
+  reading can glitch, appearing much higher. (fixed by this patch)
+* Since the Stage 3 threshold is enabled and configured to take the maximum
+  reading from the sensors, it will be triggered by that glitch and bring the
+  system into a state where it can no longer suspend, it will just resume right
+  away. (fixed by patch 2)
+
+So currently, every so often, during resume both these things will happen, and
+any future suspend will resume right away. That's why this was never observed by
+me when testing a single suspend/resume. It only breaks on resume, and only
+affects future suspends, so you need to test multiple suspend/resumes on the
+same run to observe this issue.
+
+And also since both things are needed to cause this issue, if you apply only
+patch 1 or only patch 2, it will already fix the issue.
+
+Hope this clarifies it.
 
 Thanks,
-Nícolas
+NÃ­colas
 
