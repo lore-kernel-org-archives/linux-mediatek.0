@@ -4,101 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5AB2D609A7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 07:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D504D609B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 08:42:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1oZqeCiNDi+VUMlqaFu0Cj3Hfsp6EOFS1u82qR+tNuM=; b=kp0YwWtwIk1mx7cIWJuJbrlB8G
-	NmlipWvDmCIU6l9aFDuucerRjufqbvwqUVASxeuMmGT2gXvr+L+p8G0fKw0WzBafOf3WgPKAV73m6
-	lAQa3pq6IlsWdeBJZ2EYrR03SaeBl44NtqfhczYZ6B/8jjDz0cShxVRhY8ngEhdbN7y1FhbtnA+iA
-	kinAgoKrgJh6F1R54CJ5NR7Vl6esp0z29hRVRcEnqOvaX6geGOGiIJw9KZCF07hDA7soAy6k6AkNB
-	JypjF/4felkTOh5xJtUEfsDFTAFVob4vbG+iQ8wKav8buJmJUihI/sQKFWOqxLUripqg/z/qRxFEc
-	Ku4qhjLg==;
+	bh=Y/xRkjvEZv9sbcCksa40cCi9Ac35QzxlOX4SfWedbCc=; b=dgflBQE6DLaRDcZL05O4BeOT9M
+	L9qBgSfymJDqPKbUK0S0jrAhaqGEk5w3EDo4AonSxQiW1A7IlEu4Ikigs0bWd+zsWy4aAtK5lG7IB
+	KzMvfXtoL43oWqHRCUKdXg73otNxblUh2wY0DwEiW/QXKZWbbKaf/nXE5vpoVn5CfxXkuaDMQ+x7g
+	moj2GMa0o+FugFnk6yu9YcuI1xUV++5uL5amUB91P2cve5rSHyVJFJfJV6X2Cjz2LKkrptTWbGo2I
+	9hb5QhJntzpCIusWMtHSOB0Ro3sBSszEyQJSGYSN/jrDpYsg2kVwTB7NG/19G8PgWIPs6VOjY/TAQ
+	qRf5ymKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGCSu-0000000CREw-3lPR;
-	Wed, 27 Nov 2024 07:28:00 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1tGDdG-0000000CbRa-1Xp7;
+	Wed, 27 Nov 2024 08:42:46 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGCSs-0000000CRES-20z8
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Nov 2024 07:27:59 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2ffd5b4c0ffso10354511fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Nov 2024 23:27:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1732692476; x=1733297276; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1oZqeCiNDi+VUMlqaFu0Cj3Hfsp6EOFS1u82qR+tNuM=;
-        b=GzXZyAFwgEiqycb6UAPvASzrkyj4FVtce8PKtkZyJqIQsBex+OaHrJMqvXdSLM9IaJ
-         r3CSH9SrFMQAycmROBKL9mjjNe9A0hqxJOGXTXpyvyNUsj3S1NYULGs4dvc+4b5+cpS4
-         opzZjiio+T4+vUX0Fvm7Xr8m1HzDbuf4EPmFc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732692476; x=1733297276;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1oZqeCiNDi+VUMlqaFu0Cj3Hfsp6EOFS1u82qR+tNuM=;
-        b=vNQ0MpXcCDvrMp6BM2g16yLJ19/sJsHJYAa/MXf7rMrY+FpJf5F3f0pQHKRe2wNVHC
-         cPEnuVP31b+h9sqjcc2qAVvy2g7n/0GxgFgjKw6HuGQUxvk0Fyix8S4lT+/hhiUHhuJH
-         n+YdtcLlvzjT/3/hAYpdD8QeBAD2KmzdP1WpdRbp1x3sHrts9A4uO8RnmjFMgybQWU9r
-         fcav2gh4uvojRnpgtjgUOfQbOhFQZsSegnEgeCdArbRlw38cbW2H8oXh95wJvwwq+ahE
-         YkYBa6dyaxHnsUM/Hc8Hbwj2sN6hVR7GFefADiPO6wSgExm2/tC7JNSO/8M/7YPVOwBJ
-         O/Dg==
-X-Forwarded-Encrypted: i=1; AJvYcCVhxYHNkv2xvxrlfFjdsCuJIfdLhLvWU8quKQ3nIbCdrg+gVzSXi+E9ctVTFpcSYoxnBk4cMjzLdv17nl3WaQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yywkr+7Al24JB4M76FXxt+Jv1tNMUpD263lsEgoaekAE0lDMswF
-	IbGpcs/h8tsub7Q3+pPvbAVZRRy5x/CKD/dJYg2S0k56UZAQrpgiUZQXJLhiBnlD6uN4SHjXCBd
-	dDqtY
-X-Gm-Gg: ASbGncuOU+e6gRXjfyswpvc7aAxtnAG7h24YQyFIcuUJWcPZ5YgiM3jGgfxmbgavYRi
-	JvsnPr1BLlE5CtoJGKkcGmt4BC8yjxBOoimoVqd7XsnwNZRBlgmReg2wQuN3P8xdpLylhlmz4uL
-	yp8mQ5cKR9eWmn+cQIetDfRsbJZixt7gij1ckFqJj4QUuLFxR+k5pq64VCJ2JiL0bM5GKjpSQ2f
-	8vYesmQuImAaW+jSM7P21ibio73eIggIJxnAjvFqD+OT5NR7eGb2rdWY35c3HzNOdZdrwXx4oAm
-	OT9+NwlpSDQ7j5Gl
-X-Google-Smtp-Source: AGHT+IGSxRwqwg7H8eXwnoSnwDeAlbnu7TrKlqa7urk37mQMe1hsfkngWaY+o8VL6PIMB19j34QPpA==
-X-Received: by 2002:a05:6512:3b0a:b0:53d:e8f5:f968 with SMTP id 2adb3069b0e04-53df00a9840mr1314802e87.5.1732692474993;
-        Tue, 26 Nov 2024 23:27:54 -0800 (PST)
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com. [209.85.208.47])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa50b5b178dsm672487666b.170.2024.11.26.23.27.53
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Nov 2024 23:27:53 -0800 (PST)
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-5cfc264b8b6so4724a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Nov 2024 23:27:53 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXGzUKnlP4Q8AYKzSwIDyrE7+Z5Gd8JAglvq+T2d5lk0RtrgDNyEMjGMUt3zcHj5AAFm7MaKDpWtda9Wi+jVw==@lists.infradead.org
-X-Received: by 2002:aa7:d80b:0:b0:5d0:3ddd:c773 with SMTP id
- 4fb4d7f45d1cf-5d0819b8bf8mr48974a12.4.1732692472728; Tue, 26 Nov 2024
- 23:27:52 -0800 (PST)
+	id 1tGDcH-0000000CbHY-3fsw;
+	Wed, 27 Nov 2024 08:41:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1732696902;
+	bh=QY0zX5UAJoB0SwbYtPt49iXXD7dMFKMNb+Syf6LpEEM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KlA8V3dfz8u7wjY6YTcZcifvqwJWZCcvfNzWEUWsTxWpBZ6ojidGINQY5JslvLJtB
+	 s79i7FlLsnSXfCuPSxYB2FPsnextL/5MJymBbNcN/uUiJnICGvxj0bs2Sw4ivsDf8M
+	 XwnefSv99MssdHOoT0ztvtxYiJCuS3A/Cfmy701eggpR3QOi/uh7n6t66KVaAnkAad
+	 KBu4mwwNA8UTx84qSUKKEO7nielBWmcRDNbiioOou+UVoXCa7Us2Co4m6VMeLKi4gu
+	 2ih54sFUJnrNd9IP3P2IWniclVpXKAKPFt38BRqQhqSyRmjFM1Azp4HFnZ0NQIapWK
+	 kCf+MVOhOdV3A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 070AF17E1330;
+	Wed, 27 Nov 2024 09:41:41 +0100 (CET)
+Message-ID: <8e70d921-1420-4a57-a994-dc28abda25b7@collabora.com>
+Date: Wed, 27 Nov 2024 09:41:41 +0100
 MIME-Version: 1.0
-References: <20241125-mt8192-lvts-filtered-suspend-fix-v1-0-42e3c0528c6c@collabora.com>
- <20241125-mt8192-lvts-filtered-suspend-fix-v1-1-42e3c0528c6c@collabora.com>
- <CAHc4DNKmGA-MjTWdZhKygiaRwN7mHnMCf8UPUxH_V16uZifzFg@mail.gmail.com> <f38e4283-7133-4865-b4fe-eafb6bd30534@notapiano>
-In-Reply-To: <f38e4283-7133-4865-b4fe-eafb6bd30534@notapiano>
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 27 Nov 2024 15:27:16 +0800
-X-Gmail-Original-Message-ID: <CAHc4DN+S6mBy_VRTWEqp-uA13zUyadtqPoo+-WZTmwYHofpkcg@mail.gmail.com>
-Message-ID: <CAHc4DN+S6mBy_VRTWEqp-uA13zUyadtqPoo+-WZTmwYHofpkcg@mail.gmail.com>
-Subject: Re: [PATCH 1/5] thermal/drivers/mediatek/lvts: Disable monitor mode
- during suspend
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, Balsam CHIHI <bchihi@baylibre.com>, kernel@collabora.com, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 6/6] drm/mediatek: Add support for MT8195 Digital
+ Parallel Interface
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+References: <20241120124420.133914-1-angelogioacchino.delregno@collabora.com>
+ <20241120124420.133914-7-angelogioacchino.delregno@collabora.com>
+ <1b966a136f02b5586749a9c3d0bcec6c75224e49.camel@mediatek.com>
+ <33acccd3-e543-493e-a61c-282d894ef2b1@collabora.com>
+ <fd48c582e99d6c07be4b66919fb6c309379ad752.camel@mediatek.com>
+ <f1d16db0-a7e1-4cfd-85c6-8beef4385701@collabora.com>
+ <a8ca9d1314f12dbb95ac4e4b9e8929adab35eaba.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <a8ca9d1314f12dbb95ac4e4b9e8929adab35eaba.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_232758_523443_5BB3FC7A 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20241127_004146_226336_C5382436 
+X-CRM114-Status: GOOD (  41.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,72 +98,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 9:37=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> On Tue, Nov 26, 2024 at 04:00:42PM +0800, Hsin-Te Yuan wrote:
-> > On Tue, Nov 26, 2024 at 5:21=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-> > <nfraprado@collabora.com> wrote:
-> > >
-> > > When configured in filtered mode, the LVTS thermal controller will
-> > > monitor the temperature from the sensors and trigger an interrupt onc=
-e a
-> > > thermal threshold is crossed.
-> > >
-> > > Currently this is true even during suspend and resume. The problem wi=
-th
-> > > that is that when enabling the internal clock of the LVTS controller =
-in
-> > > lvts_ctrl_set_enable() during resume, the temperature reading can gli=
-tch
-> > > and appear much higher than the real one, resulting in a spurious
-> > > interrupt getting generated.
-> > >
-> > This sounds weird to me. On my end, the symptom is that the device
-> > sometimes cannot suspend.
-> > To be more precise, `echo mem > /sys/power/state` returns almost
-> > immediately. I think the irq is more
-> > likely to be triggered during suspension.
->
-> Hi Hsin-Te,
->
-> please also check the first paragraph of the cover letter, and patch 2, t=
-hat
-> should clarify it. But anyway, I can explain it here too:
->
-> The issue you observed is caused by two things combined:
-> * When returning from resume with filtered mode enabled, the sensor tempe=
-rature
->   reading can glitch, appearing much higher. (fixed by this patch)
-> * Since the Stage 3 threshold is enabled and configured to take the maxim=
-um
->   reading from the sensors, it will be triggered by that glitch and bring=
- the
->   system into a state where it can no longer suspend, it will just resume=
- right
->   away. (fixed by patch 2)
->
-> So currently, every so often, during resume both these things will happen=
-, and
-> any future suspend will resume right away. That's why this was never obse=
-rved by
-> me when testing a single suspend/resume. It only breaks on resume, and on=
-ly
-> affects future suspends, so you need to test multiple suspend/resumes on =
-the
-> same run to observe this issue.
->
-> And also since both things are needed to cause this issue, if you apply o=
-nly
-> patch 1 or only patch 2, it will already fix the issue.
->
-> Hope this clarifies it.
->
-> Thanks,
-> N=C3=ADcolas
+Il 27/11/24 08:02, CK Hu (胡俊光) ha scritto:
+> On Tue, 2024-11-26 at 10:25 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Il 26/11/24 04:07, CK Hu (胡俊光) ha scritto:
+>>> On Mon, 2024-11-25 at 17:55 +0100, AngeloGioacchino Del Regno wrote:
+>>>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>>>
+>>>>
+>>>> Il 22/11/24 08:23, CK Hu (胡俊光) ha scritto:
+>>>>> Hi, Angelo:
+>>>>>
+>>>>> On Wed, 2024-11-20 at 13:44 +0100, AngeloGioacchino Del Regno wrote:
+>>>>>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>>>>>
+>>>>>>
+>>>>>> Add support for the DPI block found in the MT8195 and MT8188 SoCs.
+>>>>>> Inside of the SoC, this block is directly connected to the HDMI IP.
+>>>>>
+>>>>> In MT8173, DPI0 is directly connected to HDMI.
+>>>>> The first version of this driver is just for MT8173 DPI0.
+>>>>> Does MT8173 DPI0 need this modification?
+>>>>> Or this modification is just for MT8188 and MT8195, then the description should be more than 'directly connected'.
+>>>>>
+>>>>
+>>>> This is only for MT8188 and MT8195, and MT8173 does *not* need any modification.
+>>>>
+>>>> Please, what would you like to see in the description of this commit?
+>>>
+>>> This patch does four jobs.
+>>>
+>>> 1. Enable/disable tvd_clk for MT8195/MT8188 DPI.
+>>> 2. Do not set pixel clock for MT8195/MT8188 DPI.
+>>> 3. New DPI_INPUT_XXX and DPI_OUTPUT_XXX control for MT8195/MT8188 DPI.
+>>> 4. Do not power on/off for MT8195/MT8188 DPI.
+>>>
+>>> Maybe you should break into 4 patches and each one has different reason.
+>>
+>> Yeah I thought about that as well, but there's a fundamental issue with splitting
+>> the thing in multiple patches...
+>>
+>> For enabling the tvd_clk in a separate patch, there's no problem - however, for the
+>> others....
+>>
+>> 1. We need to introduce support for MT8195/88 DPI-HDMI, or the other patches would
+>>      not make sense (nor apply, anyway); then
+>> 2. We stop setting pixel clock with another patch; then
+>> 3. we don't power on/off, etc etc
+>>
+>> The problem with doing it like so is that the patch #1 that I described would be
+>> introducing *faulty code*, because the support for that really depends on all of
+>> the others being present (otherwise the block won't work correctly).
+>>
+>> So... if you want, I can easily split out the tvd_clk enable/disable, but splitting
+>> the rest wouldn't be clean.
+>>
+>> Besides, keep in mind that... actually... for anything else that is not MT8195/88
+>> DPI0 (so, for other SoCs' DPI and for 95/88 DPINTF) the tvd_clk is already getting
+>> enabled by its child.. so, for those ones, a call to enable tvd_clk does exactly
+>> nothing apart from incrementing (enable) or decrementing (disable) the refcount for
+>> this clock by 1.
+>>
+>> This means that the enablement/disablement of tvd_clk is actually important only
+>> for the MT8195/88 DPI and has literally no effect on anything else that is
+>> currently supported by the mtk_dpi driver anyway.
+>>
+>> Still - if you want me to split out the tvd_clk en/dis patch, just confirm and I
+>> will split that one out...
+>>
+>>>
+>>> For #1 and #2, I've not reviewed the HDMI driver. Is the clock control influenced by new HDMI driver.
+>>
+>> It kinda is - the HDMI-TX block gets its clock from the HDMI PHY's clock gen,
+>> but eventually it is the HDMI driver that tells to the PHY driver what clock it
+>> actually wants.
+>>
+>> For #1, clk_prepare_enable() is ungating the clock that would otherwise gate the
+>> PHY's PLL output to the HDMI block.
+>>
+>>> If it is software reason, maybe we can modify the new HDMI driver and make DPI driver consistent with MT8173.
+>>> If it is hardware reason. just describe the hardware reason.
+>>
+>> Alright - the hardware reason is that the HDMIPHY generates the clock for the HDMI
+>> TX block, and that enabling the clock assigned to tvd_clk is necessary to ungate
+>> the PHY's ckgen output to the HDMI-TX (and I think - but not sure as I haven't
+>> analyzed that yet - that HDMI-RX should have the same gating technique, but that's
+>> definitely out of scope for this submission).
+> 
+> I think tvd_clk is the clock source of DPI, HDMI, and HDMI-PHY, so these hardware could work in the same frequency.
+> That means drivers of DPI, HDMI, and HDMI-PHY are equal to control tvd_clk.
+> In MT8173. software choose DPI driver to control tvd_clk.
+> In MT8195, software choose HDMI-PHY driver to control tvd_clk.
 
-Thanks for the explanation!
+Yes, but in MT8195 the tvd is gated by a clock that is controller by the HDMI
+driver only, and not by the PHY - so, PHY sets the frequency, mtk_hdmi_v2 ungates
+that to the HDMITX block (with clk_prepare_enable(tvd_clk)).
 
-Regards,
-Hsin-Te
+> 
+> I would like to have the same control flow.
+> If "HDMI-PHY driver to control tvd_clk" is better, we could temporarily let MT8195 has different flow with MT8173.
+> So, is "HDMI-PHY driver to control tvd_clk" better?
+> 
+
+I'm not sure I understand this last part, can you please rephrase?
+
+>>
+>>>
+>>> For #4, I don't know why DPI do not control power by its self?
+>>> Even though other driver may control the same power, power manager has reference count,
+>>> so each driver could control the same power by its self.
+>>
+>> #4 is there both for a SW and for a HW reason.
+>>
+>> The HW reason is that the DPI shall be powered on in a specific sequence in regard
+>> to HDMI-TX, due to the setup that is required by both (and ungating clocks before
+>> full configuration happens would lock up the hw block).
+>>
+>> The SW reason is that mtk_crtc.c calls mtk_crtc_ddp_hw_init()->mtk_ddp_comp_start()
+>> in its .atomic_enable() callback, which happens in the wrong sequence in regard to
+>> HDMI because of the "natural" components order in the DRM framework (for MT8195/88!
+>> because for the others it either is the inverse or it does not matter - so for
+>> performance it's okay for it to be like that both on older SoCs and on DPINTF for
+>> 95/88) and this means that we *must not* call dpi_power_on() at that time but
+>> we must rather follow the atomic_enable()/bridge_enable() order imposed by DRM
+>> *also* for the clock en/dis calls in DPI.
+> 
+> It looks like the #4 could be a separate patch.
+> The commit message is what you describe here.
+> And
+> 
+> if (!dpi->conf->support_hdmi_power_sequence)
+> 	mtk_dpi_power_on();
+> 
+
+This means that I'd have to introduce the "hdmi power sequence" before actually
+introducing the real support for MT8195 HDMI....
+I honestly don't like that "too much", but it's fine, I don't have *too strong*
+opinions about that, so I will separate #4 as you suggested for v2.
+
+Cheers,
+Angelo
+
+> Regards,
+> CK
+> 
+>>
+>> Cheers,
+>> Angelo
+>>
+>>>
+>>> Regards,
+>>> CK
+>>>
+>>>
+>>>>
+>>>> Cheers,
+>>>> Angelo
+>>>>
+>>>>> Regards,
+>>>>> CK
+>>>>>
+>>>>>>
+>>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>>> ---
+>>>>
+>>>>
+>>
+>>
+>>
+
+
 
