@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5024D609CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 10:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F3EED609CE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 10:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A4I5zwip32VE0x80GczpRS+sOgjtsG2u2ASIHfQIlJg=; b=XMgxbK/md90NRyVV5HmhelMOyl
-	czSdRtbMrr9ZUz2lAMo8quzmd2LAKz9M9anA1UlFtqyWb3rnl/+HfOdhqmO6AKfGJ80VDI8Ty2i+B
-	fezvS3MPg+soJkqTIbKMgDPMAMa5MwvpEKNd+Zx6LS87JOd9k4W0q36TNbjMIqzWm4Yte7q/WePcB
-	xGmI+oNJdi9LMHy6EpFJhZykrV6/YdOw1wE+123divp/qDFlenihDzB3/R43eTbVHirXHVALY+ky8
-	XNOq5a+I9+emnN4pOxukQbCuaGeBE1tQVz/fRFA/X3KPcOZMUwcNv2+H5HYLbBSL3xJyyyTujTpd4
-	kR7liM8Q==;
+	bh=Gui8XtOnRhwfSfn8amV6rgpKsWF09Hk0EX9whY3POKs=; b=R053Pr+CjWTVxCrk8N0NKZ9kz6
+	klOoKG9Gwe9UkTdiHqtesavzX60Rl4zEE7ZG+imJvdXirfzUvAtfTsLVbZBBrl5VXvsaTPJJCVznA
+	qeTo7Q4s43N1JAP0TtBGiE1AeC3+FFQ55myVkjnb3o6+6NrQceu+tft+IyamxRYGZUuquYEvxpVe6
+	mo3H7Q2tJi6IdwhmwXkB4ae05t/bzTYlFatmmTWStEzSvLT8YRRe/dtIBLt9gNxUuxHldjecbrw9+
+	vvcJ5IOizmuJYGHy2EJG7C7iXzW09N3nG7gUHerJaK2Dg1RDGRYuWrL2ZRX6AGbj6X7WmCPIC+b7U
+	ZWcEIjnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGF7l-0000000CosJ-3WLc;
-	Wed, 27 Nov 2024 10:18:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tGFRR-0000000CsZd-18Id;
+	Wed, 27 Nov 2024 10:38:41 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGF28-0000000Cnkg-2oMJ;
-	Wed, 27 Nov 2024 10:12:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732702349;
-	bh=IaiHuo4scdpLUjxAuqxQCLHP5S3VKQOFoLobuMRfDP0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Qfpy63VRp+Uzmit3asBeOPNHHgjSk3bdV1jEs4Jb1m48XeD00Q3O78HQ/EG0GJWnp
-	 WNdOWe6jzdj5T3Wbtvi4B8/dvg5s2RggxQ5dOjrvFFmIOJjk3CafjCRHrQ6vQnjCU9
-	 IPmPdv8L6Q1X8eyet3hg2zryrTvaO6UL2l6Es127XCoCSU2HdS+qPP6FQK+lDwmGuM
-	 t1fsdCJ4WFzxeYdjihlZd/840DeGzMyGZZEQzisYJ8YnASUpVk86jTQUmJEM/znADK
-	 oCQnzBw9As4EnwZpuPfgnOmWvj3HBXSO7vKHvSiGB12n0J7pZgOjd1/mKshPitnIUC
-	 JsqHS+pNcP90A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B98B17E35DC;
-	Wed, 27 Nov 2024 11:12:29 +0100 (CET)
-Message-ID: <20bc569f-273d-44c2-b725-250a974730d3@collabora.com>
-Date: Wed, 27 Nov 2024 11:12:28 +0100
+	id 1tGFMU-0000000CrYn-2JLu;
+	Wed, 27 Nov 2024 10:33:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1732703607; x=1733308407; i=frank-w@public-files.de;
+	bh=Gui8XtOnRhwfSfn8amV6rgpKsWF09Hk0EX9whY3POKs=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=KPIbMHNZoioul2frRFk8AOmMqOsOo32BdYVNkXzHMgxGdKDHwAxIPpZwaVPmTjbQ
+	 DKtPhxJvI0OkdKBbbH/3+zJ7YsJ71vA3ee0ApL1Ydc3jOSH98M6SWauPu91NGQB9i
+	 Wa/Ch8omGnoTqaNjicVjU66mJK0cYrsB9HhI2s0hsAMfRYhi+p10wzyBw2EYgZHlv
+	 WhqdHMuW/lhkL6xjcV47rN+ZiUcFNcbHeknAOKLvGFxMRY/ZP5Pg0daKdZSNwX2Su
+	 XWUueIRpKd8SbokcFl5khCzup5MoxIxqTrgP81uMZveP3fNzOW+qxAZCYFfy9C2g0
+	 tE5/qoKf7yFw6mkejQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [157.180.224.21] ([157.180.224.21]) by
+ trinity-msg-rest-gmx-gmx-live-5cd5dd5458-9xbqt (via HTTP); Wed, 27 Nov 2024
+ 10:33:27 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: Check num_codecs is not zero to avoid
- panic during probe
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20241126-asoc-mtk-dummy-panic-v1-1-42d53e168d2e@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241126-asoc-mtk-dummy-panic-v1-1-42d53e168d2e@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-8a99bc44-538d-4d16-90f5-3c3844ca0daf-1732703607019@trinity-msg-rest-gmx-gmx-live-5cd5dd5458-9xbqt>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux@fw-web.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: [RFC v1 00/14] Add some mt7988 DTS labels and new nodes
+Content-Type: text/plain; charset=UTF-8
+Importance: normal
+Date: Wed, 27 Nov 2024 10:33:27 +0000
+Sensitivity: Normal
+In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
+References: <20241029103937.45852-1-linux@fw-web.de>
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:W9g3hUVnLQDmyZ0+hTVVrL0XxLF4xD28aBulqWmq+BNV4tBHhfm6ktQHlmCjxlrStrOoy
+ C5cnUri43ezy6bSapCcvtCBaphop698DCA2wmcz98CK/NHSwBVKzhEUN9Au3jBlCqdoH3Fw5gcvx
+ LQ6xdGYUy8M+JCJ3Bz1X7YI1q7orDFjKYj9Xq355CF+GbbXNpy272FdO0jP4LtoVXQk49queNq0c
+ elwgzH1/pkuhaiN2MzvVS6Q+xti/KzSnhZe1l3EWr3WDi7DQO/qyuqr04xBeSskWJF+9UnExuAMW
+ rnWS0DjhceG056qsWqU1UVhH+byK38myG0XZixO1if/whVMUpKCmVG0U4K21IaubiE=
+UI-OutboundReport: notjunk:1;M01:P0:sU6QkSDhW1Y=;C1S+1doWr/0bG56VwSTwb6J837C
+ E4sPNGg9LHRSxFtFoF/VEm6wZM0ia888CjW62DaJnLELgFmbuMjIC2xjBr7cyRTduj8Gk/v1S
+ SFcD6iZZdg3O2tkUdb3cEhZSczeq0iQ1re9FOQfocQgy45y8pLn9h13dsr2lrntdYYms2k/1u
+ esJSz9CFsrEWN9Vw6H78vctK/V1dx2cr1FeAxNM1Y5iAc5m+vPF6yESsU1xKEbus6Gc7NOLyi
+ x+COSnSWFGTzV8lR0FNbJ1SpK1MspxhyoFsqatjU5t5bNo6PHufIJIlfLa0E9+v/7rmv4F72i
+ ndHicJ09N/T/bh5IF9SJKsw2oa+t1Mxb7YL0cZ7WmepZfBMiCgdOy0nxO51T9NCNIOLZS3XSV
+ Wb0hwOSMm3o/1P/qSsSVaZS7kWpaFiySYvJHgtEXqTtnRO74eJIdkqJEBjJkxvepZuWSGHd5+
+ 21Bs7uEvBIlx4nrnLdETpXUZx0NUTC4Cee0FpIbz4onE53/VUchAji+PDxvz/WXwapOWzB5Oo
+ jfadPdD8QC1cg4gAq75h2JIFYtS/4MtYDpUeD6B3osVq0vqa6QnB/ALX/CsklOjz/Ksf5LPdW
+ 8ljJPGUR5VdK/9orxu8c0a74ACfpJvZJjR9cH8Lx+MH5U2r0kH98wRE4gJtna53oIdZIEn3q0
+ 5BL6hIi6Pmmq5nSfy97lZDWKk9qot0OBwjecn8H8ug==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_021232_860823_E31B2466 
-X-CRM114-Status: GOOD (  17.13  )
+X-CRM114-CacheID: sfid-20241127_023334_870285_67D5BB4C 
+X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +96,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/11/24 21:09, Nícolas F. R. A. Prado ha scritto:
-> Following commit 13f58267cda3 ("ASoC: soc.h: don't create dummy
-> Component via COMP_DUMMY()"), COMP_DUMMY() became an array with zero
-> length, and only gets populated with the dummy struct after the card is
-> registered. Since the sound card driver's probe happens before the card
-> registration, accessing any of the members of a dummy component during
-> probe will result in undefined behavior.
-> 
-> This can be observed in the mt8188 and mt8195 machine sound drivers. By
-> omitting a dai link subnode in the sound card's node in the Devicetree,
-> the default uninitialized dummy codec is used, and when its dai_name
-> pointer gets passed to strcmp() it results in a null pointer dereference
-> and a kernel panic.
-> 
-> In addition to that, set_card_codec_info() in the generic helpers file,
-> mtk-soundcard-driver.c, will populate a dai link with a dummy codec when
-> a dai link node is present in DT but with no codec property.
-> 
-> The result is that at probe time, a dummy codec can either be
-> uninitialized with num_codecs = 0, or be an initialized dummy codec,
-> with num_codecs = 1 and dai_name = "snd-soc-dummy-dai". In order to
-> accommodate for both situations, check that num_codecs is not zero
-> before accessing the codecs' fields but still check for the codec's dai
-> name against "snd-soc-dummy-dai" as needed.
-> 
-> While at it, also drop the check that dai_name is not null in the mt8192
-> driver, introduced in commit 4d4e1b6319e5 ("ASoC: mediatek: mt8192:
-> Check existence of dai_name before dereferencing"), as it is actually
-> redundant given the preceding num_codecs != 0 check.
-> 
-> Fixes: 13f58267cda3 ("ASoC: soc.h: don't create dummy Component via COMP_DUMMY()")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+just a gentle ping...any thoughts about it?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+should i squash the label-commits or can it applied this way?
+
+btw. the series about mt7986/bpi-r3 is also open till half year...and it w=
+as resend too...
+
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240608080530.9=
+436-2-linux@fw-web.de/
+
+regards Frank
 
 
+&gt; Gesendet: Dienstag, 29. Oktober 2024 um 11:39
+&gt; Von: "Frank Wunderlich" <linux@fw-web.de>
+&gt; An: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@k=
+ernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Matthias Brugger" <matt=
+hias.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delreg=
+no@collabora.com>
+&gt; CC: "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.ker=
+nel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.or=
+g, linux-mediatek@lists.infradead.org
+&gt; Betreff: [RFC v1 00/14] Add some mt7988 DTS labels and new nodes
+&gt;
+&gt; From: Frank Wunderlich <frank-w@public-files.de>
+&gt;
+&gt; This series adds some missing labels and new nodes to mt7988 DTS.
+&gt;
+&gt; If wanted i can squash the coommits adding labels to have less patche=
+s,
+&gt; but for first review i let them separate.
+&gt;
+&gt; Frank Wunderlich (14):
+&gt;   arm64: dts: mediatek: mt7988: add missing label for apmixedsys
+&gt;   arm64: dts: mediatek: mt7988: add labels for i2c nodes
+&gt;   arm64: dts: mediatek: mt7988: add labels for usb nodes
+&gt;   arm64: dts: mediatek: mt7988: add serial labels
+&gt;   arm64: dts: mediatek: mt7988: add label for pwm node
+&gt;   arm64: dts: mediatek: mt7988: add label for efuse
+&gt;   arm64: dts: mediatek: mt7988: add mmc support
+&gt;   arm64: dts: mediatek: mt7988: add fixed regulators for 1v8 and 3v3
+&gt;   arm64: dts: mediatek: mt7988: extend efuse node
+&gt;   arm64: dts: mediatek: mt7988: add lvts node
+&gt;   arm64: dts: mediatek: mt7988: add thermal-zone
+&gt;   arm64: dts: mediatek: mt7988: add reserved memory
+&gt;   arm64: dts: mediatek: mt7988: add mcu-sys node for cpu
+&gt;   arm64: dts: mediatek: mt7988: add operating-points
+&gt;
+&gt;  arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 196 ++++++++++++++++++++=
+=2D-
+&gt;  1 file changed, 181 insertions(+), 15 deletions(-)
+&gt;
+&gt; --
+&gt; 2.43.0
+</frank-w@public-files.de></frank-w@public-files.de></angelogioacchino.del=
+regno@collabora.com></matthias.bgg@gmail.com></conor+dt@kernel.org></krzk+=
+dt@kernel.org></robh@kernel.org></linux@fw-web.de>
 
