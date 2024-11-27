@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B89FD6ACCE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 13:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01177D6ACCE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 13:36:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aPtKGPOl9qJbpijDRMSMKYMw3q953l9+5izmnlargr0=; b=L0RukGRgeHOXqWmCfrJSZiq/jo
-	OzfFCXvmh9IgnVBUmYu485rAqUv4Zn/OYRwJoaGTOj4/tFCAKhW3qD+RAjWDETq1KvpAGbq7gMjSy
-	jdGjpcFuZOV7TcSVY5GqkKn+lIh2bGnRvJ5j79bauXvQ4Gs8+IF6kV+T+e7W1Zb1VHLTaQgrl0z00
-	r5FuK8TEBWAvosTlLJBcHWPufaPydoaXkcefRrA4z1jXn0DoBKt8desKQNXgJAjpe5xS1jAF4QoUh
-	ibGHqNHLmVdZaKdG+nHH+VZlHYmkjK1nOeFfOT4iOLmiSj92/8LxfVqN3qFy173Y0igCDOG+HPO9P
-	CRzkRbig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vciVWpHJW5bpmP5BXzA/2bkcrSlG4/wKFXn/vygYTjQ=; b=NQdy0LCo945ps+
+	w0nB4Wxn/gYvvhUJdxv1aWAGxYtxaQPYTRUX8/MWSRfqGRCel/1psuW7Dx9mQFTtkj6Oxd9NdCy5G
+	9uOTz3dc4vlT+CKAwJH59ijp+0YWbx7mqEAOM2O4fDfD9monp3bIKCkEGeKe2AgS6Jat469yapVt1
+	I5vA2SO7PVLPMTwk9gROuMIz/QG0hC/gdhLCH0/xvvIZO2Hmu+IC/HLMLU04Q5nsvzYIjnK1s4K3z
+	DQDdy+jMKKB7oB9HSyBpa1LUYI7z7ZNtqHfy9OhHMyRJidXOA6NgxcNquBgNGhAluO+PJAC0PDVBf
+	3S/sG7kwHF7aGX6PrYow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGI2M-0000000DEJx-2Xc8;
-	Wed, 27 Nov 2024 13:24:58 +0000
+	id 1tGIDp-0000000DFnu-0XZB;
+	Wed, 27 Nov 2024 13:36:49 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGI1M-0000000DE7s-1DNO;
-	Wed, 27 Nov 2024 13:23:58 +0000
+	id 1tGIBt-0000000DFMV-0No2;
+	Wed, 27 Nov 2024 13:34:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732713832;
-	bh=4PWf5BX25DlYJv4Gy2uPbPq/angyB6Ks1Q7dI2dA/K4=;
+	s=mail; t=1732714487;
+	bh=O5oYtOeSE4rI0DjNjJKhJIfR3k7dbcgXA3hmMsI7WCM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z1by+KWf8JcCPAhP3H2Sq4S/s4XGhgKFM0FoTy6rCKufkDu4xFkp4gNH7iY2tRqnl
-	 rGxKpvsDErMi83fPQYj0YZJ2KYrlryVyozyr6C5I2/N+nN0VOYTk5D+Mss9QRV7AZc
-	 t3eHO/34tehyxJcYmdhROz5QsBsXpUXHQQ+x4VC3EQjU2nx1ExHvciaDvy5R6wH66M
-	 r9bgwrij87X+C2cwFQ93LYegsDfI45LxR9F5C56QBLkolvgbjhYEAaIqd+efb8yxVn
-	 QPodYBcMVZgwmkRJOEW5QNwNptoA7UR5UqReLQWOmUV5v1P2ytL7rbrsPRQ9x81VBd
-	 X8OZ453k2sR6w==
+	b=g4z+tzqWqcWJhUP9AcGj0/fS1Om5bDHKaAIoWhb1WVhTla7N1+Dsxubp2x09mrslt
+	 /q8eTuAOnJMTozWOrZIPD1BVqUE3adTUg9R4DtrJ0beOjFvE8zNjBWlk1asvdGclJ8
+	 2U1xUDQBwX7NV4w6V6hivvtYbn9ZBRlFfUPX58l/HDWOzdMW5cZHHRVrL1R0D0D9zL
+	 oSV83Q3SWPEs2/YGhK+EqOaoKaf24prwNu74spAKjIQKIbdTPJF5aJUwl/QYvsTLd2
+	 f74+VtnsdZNQClWS/PxXwnPZ7WA10QzPKBkNiYFns4vlsxk5vWttJFhShQ6gBbefht
+	 4avz03QcKj46A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0551517E36FE;
-	Wed, 27 Nov 2024 14:23:51 +0100 (CET)
-Message-ID: <4549f33c-90d2-4b28-ab7a-1576c587c8cf@collabora.com>
-Date: Wed, 27 Nov 2024 14:23:51 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C3B517E3700;
+	Wed, 27 Nov 2024 14:34:46 +0100 (CET)
+Message-ID: <6660a681-c02a-443a-a1f2-14af5b4477eb@collabora.com>
+Date: Wed, 27 Nov 2024 14:34:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: Aw: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with
- applied overlays for bpi-r3
-To: frank-w@public-files.de, robh+dt@kernel.org, matthias.bgg@gmail.com
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, daniel@makrotopia.org, linux@fw-web.de,
- leith@bade.nz
-References: <20240608080530.9436-1-linux@fw-web.de>
- <20240608080530.9436-2-linux@fw-web.de>
- <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
- <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
- <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
- <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
- <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
+Subject: Re: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add operating-points
+To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+References: <20241029103937.45852-1-linux@fw-web.de>
+ <20241029103937.45852-15-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
+In-Reply-To: <20241029103937.45852-15-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_052357_297480_7EF669C7 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20241127_053449_288010_549D78F9 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,49 +72,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/11/24 19:49, frank-w@public-files.de ha scritto:
-> Hi
+Il 29/10/24 11:39, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> any new state on this??
+> Add operating points defining frequency/voltages of cpu cores.
 > 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240608080530.9436-2-linux@fw-web.de/
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 45 +++++++++++++++++++++--
+>   1 file changed, 41 insertions(+), 4 deletions(-)
 > 
-> regards Frank
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> index e037854666c1..25669d498617 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> @@ -16,32 +16,69 @@ cpus {
+>   		#address-cells = <1>;
+>   		#size-cells = <0>;
+>   
+> -		cpu@0 {
+> +		cpu0: cpu@0 {
 
-I had a look at this one - and this is the situation:
+Where are those cpuX labels used? I don't see any usage.
 
-  1. Your bootloader supports loading DTBO, so you can indeed use DTBOs
-  2. Validation of the DTSO can still be done during kernel build without adding
-     all of those possible X+Y+Z pre-joined DTBs
-  3. What if your hardware had more than 20 possible configurations?
-     Would you write 20 different Makefile entries? "sd+nand+nor",
-     "sd+nand-withoutnor", "emmc+nand+nor", "emmc+nand-withoutnor",
-     "emmc+sd+nor", "emmc+sd-withoutnor", "ufs+emmc", "ufs+emmc+sd",
-     "ufs+sd+nor", "ufs+emmc-withoutnor", "ufs+sd-withoutnor", ......
+>   			compatible = "arm,cortex-a73";
+>   			reg = <0x0>;
+>   			device_type = "cpu";
+>   			enable-method = "psci";
+> +			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
+> +				 <&topckgen CLK_TOP_XTAL>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>   		};
+>   
+> -		cpu@1 {
+> +		cpu1: cpu@1 {
+>   			compatible = "arm,cortex-a73";
+>   			reg = <0x1>;
+>   			device_type = "cpu";
+>   			enable-method = "psci";
+> +			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
+> +				 <&topckgen CLK_TOP_XTAL>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>   		};
+>   
+> -		cpu@2 {
+> +		cpu2: cpu@2 {
+>   			compatible = "arm,cortex-a73";
+>   			reg = <0x2>;
+>   			device_type = "cpu";
+>   			enable-method = "psci";
+> +			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
+> +				 <&topckgen CLK_TOP_XTAL>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>   		};
+>   
+> -		cpu@3 {
+> +		cpu3: cpu@3 {
+>   			compatible = "arm,cortex-a73";
+>   			reg = <0x3>;
+>   			device_type = "cpu";
+>   			enable-method = "psci";
+> +			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
+> +				 <&topckgen CLK_TOP_XTAL>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		cluster0_opp: opp-table-0 {
+> +			compatible = "operating-points-v2";
+> +			opp-shared;
+> +			opp00 {
 
-Looks messy and unfeasible.
+...But you can also be consistent with other devicetrees and follow the pattern
+for the node names of the OPP entries.
 
-However, this is not a *global* no: I'm happy that your bootloader does support
-loading DTBOs and, as far as I remember, even uses straps to vary the DTB(o) to
-actually load - which is something proper and great... so it's a *no* for you,
-but more than just a no, this is "why are you treating your proper bootflow
-like it was a broken one?!?!" :-)
-
-If anyone finds themselves in a situation in which there's no way to update a
-bootloader (and that unfortunately happens more often than anyone would like
-to see...) and in which the only way to apply DTBOs is to pre-overlay them
-during the kernel build, then that's fine and I would (if nice and clean)
-accept that.
-
-But again, you're not in this kind of situation - and you're lucky that you're
-dealing with a fully open device with a proper bootloader and bootflow: don't
-ruin it like that!
-Instead, if necessary, update the userspace tools that you're using to deal with
-multiple DTBOs during system upgrades: that's the right thing to do at this point.
+opp-800000000
+opp-1100000000
+...etc
 
 Cheers,
 Angelo
+
+> +				opp-hz = /bits/ 64 <800000000>;
+> +				opp-microvolt = <850000>;
+> +			};
+> +			opp01 {
+> +				opp-hz = /bits/ 64 <1100000000>;
+> +				opp-microvolt = <850000>;
+> +			};
+> +			opp02 {
+> +				opp-hz = /bits/ 64 <1500000000>;
+> +				opp-microvolt = <850000>;
+> +			};
+> +			opp03 {
+> +				opp-hz = /bits/ 64 <1800000000>;
+> +				opp-microvolt = <900000>;
+> +			};
+>   		};
+>   	};
+>   
+
+
 
