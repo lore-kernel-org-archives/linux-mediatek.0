@@ -4,95 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 053F0D6ACE3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 15:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2CED6ACE4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 15:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=chnjNiuENGgY44cCvyv4JXxrXfS8o1GhWJbEsmfSw9c=; b=mWzrCrFjI112NZT4wA+QZ4+lm2
-	GGzZiiM2uht+SVjwTBtodL98uSpQYF/rVUcKXDKb4KxUA1spMxcZl7YdIl3CbfDUkL3gCv7wCbNbi
-	AqquJ6GYJOL4KlcS3PI3hlz6hkQev8m1Xiq5JLZd7zyfFxeu1UYJwTBTSUsMFvhQpvK5pZ9jTM/uR
-	z7CBI9NKIbTnB0CYtjx6rKiWiqN5wQYYaJA9ESzbOT5IC8B2kToQpIZm8FS5HxGbLiI9kj1c6oY+j
-	MEi6fEC9bFAs+6bP1vsaEtaePqTD24rIUXOO7hI45XVVSFrHThxb6MmRmtEB2EnjPRLS99cxo9/aw
-	BFfZ6MMA==;
+	bh=OCzNHFa9I6qJOkZbyj9gMAOqUciHnfZo1B6Ths20CGs=; b=ZmkfL/fnjelmRZKk/3X2pcuRf4
+	5RZfGoeKqZT1tXJW8QXr5L5/VloYwChks5r3ucEbtkjzRuOiAOhdhsluq1X36jp5yaq3HQwlO0fni
+	f2LsvLy5jwmyrixjaeLKYIUq/YUDguotbYEiEyvTgFsPcZyJlNXHrwn4gCWU4IeTa5DjJ+qzEMGZf
+	IJDlbKFcuBoO9gcjGZa8TMEcDd816FGr7Yu5A6FpsuUpHOrA8g19OR7AQqZcYOU34GAL/kamJdNKU
+	/rOa2cP5ypfIh9e+6gWkh8EZ9NTp87+VssQA6L9aTF1v+9jF2ATL5cZO3K6jNXv4hJGJlHvk7tQc+
+	inc/v/2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJbd-0000000DRoS-0Ivp;
-	Wed, 27 Nov 2024 15:05:29 +0000
+	id 1tGJdm-0000000DSND-2l09;
+	Wed, 27 Nov 2024 15:07:42 +0000
 Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJad-0000000DRcs-0kOK;
-	Wed, 27 Nov 2024 15:04:28 +0000
+	id 1tGJcn-0000000DS7o-0EGr;
+	Wed, 27 Nov 2024 15:06:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1732719843; x=1733324643; i=frank-w@public-files.de;
-	bh=chnjNiuENGgY44cCvyv4JXxrXfS8o1GhWJbEsmfSw9c=;
+	s=s31663417; t=1732719986; x=1733324786; i=frank-w@public-files.de;
+	bh=OCzNHFa9I6qJOkZbyj9gMAOqUciHnfZo1B6Ths20CGs=;
 	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
 	 Content-Type:In-Reply-To:References:Date:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=RCjIA4UEE1Rr/8dYbnl+ikDHL495gYUAX14bI3x0M9UIZYgkDL9cLhSdSfrAI9F+
-	 wCIi4ilD0vwVKDWk1EcFm32cpBlfT6q9K9FnP7Vs1cf68df8KblGBbjz9wNsXmWl1
-	 K3summw0OtFxahaTFEAJ7dTsSlSlWIMxAppXQQX1U5epQv1RyhX+++tr50/rxVgPR
-	 dMYEedNJAilx4dc2VAgHUl7hYmB6HlpL6WQs61+jGPw8g6jB1OTbdl9hHg/eC6dho
-	 39smxSTbF99kRnvH2lDEB2GtJ2xMm36KYmkDREKwbuRuq+ue2sIUOYT64JXLLRrg5
-	 TI43Aeei4juiJPmMhg==
+	b=oXr2+BvsSMWgo8wU9x5FZyWZAxIqgXY3hjHi1amGQUAx+4jDy+czTzgmbv44SH7z
+	 BubGtBVEtNNRPeDrqR1jefEl/ntIr0TC7hhgzoKzTTj2BhzZ5HQT1Z+SPy+v/LW1N
+	 BkJebBo5IKRkgUckwU0shDESG+Fy75RoI7LXdJ2OEHqYPBuJRKiqBnnQptN0VmLLz
+	 ZNMjt3cogp23gipO7lluYcOup2/+p+a6SasPqpUTSh2Jj4xu1yyuEl/DrPbLPdK3A
+	 ir2RWWh6zbLpskuMm0zIYSub9InjC3SAXWVMe4exyCdR+B+kiJsQBoYu/uGXXry72
+	 5XpqtYByqUfZHkB8DQ==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [157.180.224.21] ([157.180.224.21]) by
- trinity-msg-rest-gmx-gmx-live-5cd5dd5458-pz7pz (via HTTP); Wed, 27 Nov 2024
- 15:04:03 +0000
+ trinity-msg-rest-gmx-gmx-live-5cd5dd5458-8s6ml (via HTTP); Wed, 27 Nov 2024
+ 15:06:26 +0000
 MIME-Version: 1.0
-Message-ID: <trinity-78347fc1-fe38-4035-a681-ff72fd4411cf-1732719843709@trinity-msg-rest-gmx-gmx-live-5cd5dd5458-pz7pz>
-From: frank-w@public-files.de
-To: angelogioacchino.delregno@collabora.com, robh+dt@kernel.org,
+Message-ID: <trinity-888f5bdb-1e23-4b5f-83c3-f36ade039908-1732719986576@trinity-msg-rest-gmx-gmx-live-5cd5dd5458-8s6ml>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: angelogioacchino.delregno@collabora.com, linux@fw-web.de,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  matthias.bgg@gmail.com
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, daniel@makrotopia.org, linux@fw-web.de,
- leith@bade.nz
-Subject: Aw: Re: Aw: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs
- with applied overlays for bpi-r3
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add
+ operating-points
 Content-Type: text/plain; charset=UTF-8
-In-Reply-To: <4549f33c-90d2-4b28-ab7a-1576c587c8cf@collabora.com>
+In-Reply-To: <6660a681-c02a-443a-a1f2-14af5b4477eb@collabora.com>
 Importance: normal
-References: <20240608080530.9436-1-linux@fw-web.de>
- <20240608080530.9436-2-linux@fw-web.de>
- <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
- <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
- <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
- <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
- <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
- <4549f33c-90d2-4b28-ab7a-1576c587c8cf@collabora.com>
-Date: Wed, 27 Nov 2024 15:04:03 +0000
+References: <20241029103937.45852-1-linux@fw-web.de>
+ <20241029103937.45852-15-linux@fw-web.de>
+ <6660a681-c02a-443a-a1f2-14af5b4477eb@collabora.com>
+Date: Wed, 27 Nov 2024 15:06:26 +0000
 Sensitivity: Normal
 X-Priority: 3
 X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:BPoFVFm6JHLsWszWY69a+4cyOqrEDA+cKi27DZ6aviyJELU8tIvXA93+W91odNLNw297W
- MygNGVTLZu3wFSrIHxHm0AMW+DkA/swV/oeZnbs3MStebzO7h2r+RazN3ITWiqdaLQWRPUoVM3pX
- 8f9PUsneMQ7FGFHeO5u9dkvgUSiJ78RATXpNJfOn+Ct9U5l8JhXncKj66yjUju3Ia2biEXX0yZcE
- 6MtA9ozOYIEA2D1523HnDrQznMVi4mPrn2YcvlWRWZUBnt7u/CR0T+aP8SW0Ueu/mAPx9T5OdpE8
- U1xzeAySKmlagkwrq2Rqz6eVG9LkxNT5gPibV0nZyGh0VG6z38jLkvpes6+gO7QSd4=
-UI-OutboundReport: notjunk:1;M01:P0:RBccAI9PjjU=;i9JD5OfCgPRbWa2LnBTkhl5iYRl
- yNO1vzZVZe9hS2PT3zba+iIcBMgu1tx6M2td5wfvirTVMlddGBs6zqMkfjhzmfwnb5mfZE6SD
- AqJeCeKliIXd8JpnigEBx5+Rt/GibZ/E4DGnsXuLvTjJkVqohvKM56TFqhHDmr2PSLtfsSamc
- tVX0HrQ2LouXQTtnfxVwqP731+/OgrNTDZguEqndcfgWk8Ls3xMykmGp/Bq4RX2HkxpombIf6
- 2CoHqAXbx1fh3WQSr43NP16z+FIbgh0cz+AnZ3c5USXLdHCidimZuzRrDvLS6PWmQ5jKDOWdg
- IvaS4rz9nc8AJyHoJIIimVrnifT0RqqFFxDGJlmYMkMp1irDr4vCGmh6ksq/g1KOyJyoRIsd5
- VsP3SFv41+LpAHJSSxyrLADB1DsOheFv7MS2XvzVIIhOTQtTyHu9ZsynIeBJiyrosBzyipTyl
- +9AZT3hNCzMKwr9ICzHSkoQATBTsve6EbSR4buieMo8YH9OgRINbnct4BAPRTSZnob0IYksTz
- xtDuxCKya+HhrbAwqlsBZfj8YWXpKdg0V9ST4f3dPV6zdgQJAe2Yw/i518gtLeDyxwhn6uCQL
- Z0dVSQOoHhWqo+xbEKGiDCTYtwP26S3mMHGaspfk5DUVWRlHUCS8seHjS9JVYluqzEMK7UPac
- Wald1VOnFfIj2TaDWiUYnsc6J4yycJ40Y8X8u91EfHVJJnt6IkHjTWYxStZfV5pHnF4m71fme
- potjCUJyNIWpXPGuoQunIbLuvpsN66WdgEri4XN9XSjDtoikeYBvZvQD2h6xZ6mT//wIBroEr
- S/6Abnfi80XNLulsdnAHHvDw5srSuDI55PXecU8QXK+F2A05Y25u5jnc8TTeqdJiumgzreUeP
- K7o7892zvokCawW7tdVN9qMeWnffClt97QSA=
+X-Provags-ID: V03:K1:Exmc3suBEbYFxes52bhTlxtJMDNr4l7FL9SH7h+/VQ0syTJpV3uxFGxpPePdLd0KZKpAX
+ 3GmoRmCXJkg+mhhauNgnEoOhXjyU5w8F9Bcl3s7S69DbPfeF7Z+NnXxNkNQJ6/HShf0GMrdIp8K+
+ tVAh4Tc9WedHBDnDWkV43Y54bVVGl7mEzM5Mq68d7Jtj2JW3bVAQKq/EPJMBjnesych4C231wUAI
+ RI02vDtCyw7W8k2P78AVoxgfrCEefMbOFlIbVyE9VSadaNXTcW6p4Esg3cbtlLnl3pnXbhc4g9hu
+ m4ACFiCkEyA5tPIvIMgp7vVCybw/gC8GqqKfGfVisVUOYYn5IO9/OpE9omlHSZLX9M=
+UI-OutboundReport: notjunk:1;M01:P0:QOVQPzO/mOc=;XQzCyxdnoDtUTc1S6Va0JGAcHd5
+ 7op34K0+FcHB24rjL3QTOzWn+P+xffrgx5QoW0jId3RedgtcZJRKFqeGxS/U1cyFGO+WnmEpg
+ oOVYc2zOPdjOiVksTxkARBNls6jYW3okeg4+6oMVTZ+Ty7cbfkY8MLj1g/4NE8SlWYccGY4pt
+ MR78ZWdASgCkcUzsI5HbL4c/dPj++nNAcfqYw3xoeugUcXOSoNQcQznjn135x8JifA96GBdug
+ 7uYgi7fuE8YLegNHa+oU4CcFVdWVPxnZj09sQWeX5hRocQArhZB0A9f8FaLQHb3F5oAwLy0hn
+ MofI3ADYtRwgTtCYmLzdy5QY84GPVc9t1+R9TK4ZSD7fVJCGpNWLxqiSHhMhgj/d101kKvQaJ
+ LyqZozYNc5AB+IbpiHVtzGOW8H+v/XRVgxmCkWoE8V9vzEmcgdaf3IDb8NEShJOq5yzHoB1+/
+ pWsi3ciootvLrhWZueqVdewpTbKot64jfIVPqTuKL1INWna+SOqATIZmz5VMa18fIJaQaUWxZ
+ x0SgkiRLX/1aN4PW95wxBkhlE2jiaE+T2PxhbGSS7zgntQ76pMYN9Ics0YX97L6CtYIJLWu4r
+ hbMqlKEyioZ2Etfq1cfz4kM3ZAIf6BjeyKt5mbALc5EW22zXurroFUWYAXFS1oVHoAiWOPi7x
+ WBILdYVVuiMDMQtLz8zELrfZuBfIcLL8JHQX0Sax2LkomozX+tZU2MhRnECOVG/9ClwdFwnrC
+ qdORNAwuioKOBFUywIg8qfzxk9LVP3WYc9vfmLvTCaZDx9UZ8wkEH/z/XuUNXsX3HKZEbiyis
+ 0GXmyrf0sylXItBkLHIywoOWrRhmLc487x5xIXZ66+X+rviwIX0ytTWesK+viNJ8Q9Cw/UKTq
+ 8BgJRTI+bAqXjwdsFpTVtoQFKvpeh6XY4cl0=
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_070427_500416_EF86C673 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20241127_070641_378661_A39D60DC 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,105 +102,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-&gt; Gesendet: Mittwoch, 27. November 2024 um 14:23
+&gt; Gesendet: Mittwoch, 27. November 2024 um 14:34
 &gt; Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabor=
 a.com>
-&gt; An: frank-w@public-files.de, robh+dt@kernel.org, matthias.bgg@gmail.c=
-om
-&gt; CC: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel=
-.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead=
-.org, devicetree@vger.kernel.org, daniel@makrotopia.org, linux@fw-web.de, =
-leith@bade.nz
-&gt; Betreff: Re: Aw: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs =
-with applied overlays for bpi-r3
+&gt; An: "Frank Wunderlich" <linux@fw-web.de>, "Rob Herring" <robh@kernel.=
+org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt=
+@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>
+&gt; CC: "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.ker=
+nel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.or=
+g, linux-mediatek@lists.infradead.org
+&gt; Betreff: Re: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add operati=
+ng-points
 &gt;
-&gt; Il 06/11/24 19:49, frank-w@public-files.de ha scritto:
-&gt; &gt; Hi
+&gt; Il 29/10/24 11:39, Frank Wunderlich ha scritto:
+&gt; &gt; From: Frank Wunderlich <frank-w@public-files.de>
 &gt; &gt;
-&gt; &gt; any new state on this??
+&gt; &gt; Add operating points defining frequency/voltages of cpu cores.
 &gt; &gt;
-&gt; &gt; https://patchwork.kernel.org/project/linux-mediatek/patch/202406=
-08080530.9436-2-linux@fw-web.de/
+&gt; &gt; Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+&gt; &gt; ---
+&gt; &gt;   arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 45 +++++++++++++++=
+++++++--
+&gt; &gt;   1 file changed, 41 insertions(+), 4 deletions(-)
 &gt; &gt;
-&gt; &gt; regards Frank
+&gt; &gt; diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/ar=
+m64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; index e037854666c1..25669d498617 100644
+&gt; &gt; --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; @@ -16,32 +16,69 @@ cpus {
+&gt; &gt;   		#address-cells =3D &lt;1&gt;;
+&gt; &gt;   		#size-cells =3D &lt;0&gt;;
+&gt; &gt;
+&gt; &gt; -		cpu@0 {
+&gt; &gt; +		cpu0: cpu@0 {
 &gt;
-&gt; I had a look at this one - and this is the situation:
+&gt; Where are those cpuX labels used? I don't see any usage.
+
+these are used in later patch and needed in uboot when we want to switch t=
+o OF_UPSTREAM.
+
+&gt; &gt;   			compatible =3D "arm,cortex-a73";
+&gt; &gt;   			reg =3D &lt;0x0&gt;;
+&gt; &gt;   			device_type =3D "cpu";
+&gt; &gt;   			enable-method =3D "psci";
+&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
+&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
+&gt; &gt; +			clock-names =3D "cpu", "intermediate";
+&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
+&gt; &gt;   		};
+&gt; &gt;
+&gt; &gt; -		cpu@1 {
+&gt; &gt; +		cpu1: cpu@1 {
+&gt; &gt;   			compatible =3D "arm,cortex-a73";
+&gt; &gt;   			reg =3D &lt;0x1&gt;;
+&gt; &gt;   			device_type =3D "cpu";
+&gt; &gt;   			enable-method =3D "psci";
+&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
+&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
+&gt; &gt; +			clock-names =3D "cpu", "intermediate";
+&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
+&gt; &gt;   		};
+&gt; &gt;
+&gt; &gt; -		cpu@2 {
+&gt; &gt; +		cpu2: cpu@2 {
+&gt; &gt;   			compatible =3D "arm,cortex-a73";
+&gt; &gt;   			reg =3D &lt;0x2&gt;;
+&gt; &gt;   			device_type =3D "cpu";
+&gt; &gt;   			enable-method =3D "psci";
+&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
+&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
+&gt; &gt; +			clock-names =3D "cpu", "intermediate";
+&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
+&gt; &gt;   		};
+&gt; &gt;
+&gt; &gt; -		cpu@3 {
+&gt; &gt; +		cpu3: cpu@3 {
+&gt; &gt;   			compatible =3D "arm,cortex-a73";
+&gt; &gt;   			reg =3D &lt;0x3&gt;;
+&gt; &gt;   			device_type =3D "cpu";
+&gt; &gt;   			enable-method =3D "psci";
+&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
+&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
+&gt; &gt; +			clock-names =3D "cpu", "intermediate";
+&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
+&gt; &gt; +		};
+&gt; &gt; +
+&gt; &gt; +		cluster0_opp: opp-table-0 {
+&gt; &gt; +			compatible =3D "operating-points-v2";
+&gt; &gt; +			opp-shared;
+&gt; &gt; +			opp00 {
 &gt;
-&gt;   1. Your bootloader supports loading DTBO, so you can indeed use DTB=
-Os
-&gt;   2. Validation of the DTSO can still be done during kernel build wit=
-hout adding
-&gt;      all of those possible X+Y+Z pre-joined DTBs
-&gt;   3. What if your hardware had more than 20 possible configurations?
-&gt;      Would you write 20 different Makefile entries? "sd+nand+nor",
-&gt;      "sd+nand-withoutnor", "emmc+nand+nor", "emmc+nand-withoutnor",
-&gt;      "emmc+sd+nor", "emmc+sd-withoutnor", "ufs+emmc", "ufs+emmc+sd",
-&gt;      "ufs+sd+nor", "ufs+emmc-withoutnor", "ufs+sd-withoutnor", ......
+&gt; ...But you can also be consistent with other devicetrees and follow t=
+he pattern
+&gt; for the node names of the OPP entries.
 &gt;
-&gt; Looks messy and unfeasible.
+&gt; opp-800000000
+&gt; opp-1100000000
+&gt; ...etc
 
-right, if we add all possible combinations...that was my point on first ro=
-und of this patch after robs suggestion. So you have same opinion :)
-
-imho rob is afraid that dtso are not checked during build-time and this is=
- noticed at runtime where it can be checked earlier.
-
-maybe we can find a way in the middle (i tried it in this patch doing the =
-full dtb only for the core functionality, not adding e.g. sata).
-
-&gt; However, this is not a *global* no: I'm happy that your bootloader do=
-es support
-&gt; loading DTBOs and, as far as I remember, even uses straps to vary the=
- DTB(o) to
-&gt; actually load - which is something proper and great... so it's a *no*=
- for you,
-&gt; but more than just a no, this is "why are you treating your proper bo=
-otflow
-&gt; like it was a broken one?!?!" :-)
-
-i still use the dtbos in a fit i created and build off-tree where i add th=
-e possible combinations like here as config options and add additional con=
-figs for e.g. sata to be combined by bootloader.
-
-currently we use a "full dtb" in uboot where we can probe for emmc vs. sdc=
-ard (mmc partprobe) and the spi-device (nand/nor via "sf probe"). We can r=
-ead the bootstrap pins defining the device from which board was booted, bu=
-t this is only the half way for hw-detection.
-
-&gt; If anyone finds themselves in a situation in which there's no way to =
-update a
-&gt; bootloader (and that unfortunately happens more often than anyone wou=
-ld like
-&gt; to see...) and in which the only way to apply DTBOs is to pre-overlay=
- them
-&gt; during the kernel build, then that's fine and I would (if nice and cl=
-ean)
-&gt; accept that.
-&gt;
-&gt; But again, you're not in this kind of situation - and you're lucky th=
-at you're
-&gt; dealing with a fully open device with a proper bootloader and bootflo=
-w: don't
-&gt; ruin it like that!
-
-the patch does not break ability to use the dtbos, it only adds second way=
- to create fuill dtbs from them, that of course should not be done extensi=
-vely....4 full dtbs are enough in my PoV and should not be exceeded.
-
-&gt; Instead, if necessary, update the userspace tools that you're using t=
-o deal with
-&gt; multiple DTBOs during system upgrades: that's the right thing to do a=
-t this point.
-
-i simply replace/add the fit image which contains base dtb and all dtbo wi=
-th config options ;)
+ok, will change this..so just adding the opp-hz value to the name (or labe=
+l)?
 
 &gt; Cheers,
 &gt; Angelo
-
-so i would resend the sata-patch alone when rc1 is out, right?
-
-regards Frank</angelogioacchino.delregno@collabora.com>
+&gt;
+&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;800000000&gt;;
+&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
+&gt; &gt; +			};
+&gt; &gt; +			opp01 {
+&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1100000000&gt;;
+&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
+&gt; &gt; +			};
+&gt; &gt; +			opp02 {
+&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1500000000&gt;;
+&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
+&gt; &gt; +			};
+&gt; &gt; +			opp03 {
+&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1800000000&gt;;
+&gt; &gt; +				opp-microvolt =3D &lt;900000&gt;;
+&gt; &gt; +			};
+&gt; &gt;   		};
+&gt; &gt;   	};
+&gt; &gt;
+&gt;
+&gt;
+&gt; </frank-w@public-files.de></frank-w@public-files.de></frank-w@public-=
+files.de></matthias.bgg@gmail.com></conor+dt@kernel.org></krzk+dt@kernel.o=
+rg></robh@kernel.org></linux@fw-web.de></angelogioacchino.delregno@collabo=
+ra.com>
 
