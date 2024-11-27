@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E67ED6ACCA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 13:11:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B89FD6ACCE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 13:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0pJ4f5/AA0Na3QRUimWC4sZ6Mc3cd4bD928BKUzVBg8=; b=cUIdvRAEqlUJB8nPg76OIEA3a7
-	EOzxnz1NSkJMN2UyPqPv9h2tqNzB5mq70qZqlp9s1bMvDQ68V7pzUIxO0QOLeC43thsvjazF5xQT2
-	FOPeHX1c7zEL01ga9UE3f8TWgJ+PQ78hKdkP6f5ec7MdKzJXjhWAmsB6x5kDQpsUEbnD6uJDPnWwa
-	94Z2f4C1br9zxgzLMmpUDU5hmegF1Khe41THdFvVOKE6qtivvd4gJKqc0e9ao7GbTapiDXwj5tPgq
-	0/m6FM0ypXhU8hF4GrNb8Zz7KTu6D4b7pq6dtFoHuAIcuHwEUvwvcRP4Fj0HWWcOQSX9Qyx/eHUXi
-	1YW9i6lQ==;
+	bh=aPtKGPOl9qJbpijDRMSMKYMw3q953l9+5izmnlargr0=; b=L0RukGRgeHOXqWmCfrJSZiq/jo
+	OzfFCXvmh9IgnVBUmYu485rAqUv4Zn/OYRwJoaGTOj4/tFCAKhW3qD+RAjWDETq1KvpAGbq7gMjSy
+	jdGjpcFuZOV7TcSVY5GqkKn+lIh2bGnRvJ5j79bauXvQ4Gs8+IF6kV+T+e7W1Zb1VHLTaQgrl0z00
+	r5FuK8TEBWAvosTlLJBcHWPufaPydoaXkcefRrA4z1jXn0DoBKt8desKQNXgJAjpe5xS1jAF4QoUh
+	ibGHqNHLmVdZaKdG+nHH+VZlHYmkjK1nOeFfOT4iOLmiSj92/8LxfVqN3qFy173Y0igCDOG+HPO9P
+	CRzkRbig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGHpD-0000000DCrN-0mkv;
-	Wed, 27 Nov 2024 13:11:23 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1tGI2M-0000000DEJx-2Xc8;
+	Wed, 27 Nov 2024 13:24:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGHpA-0000000DCqV-3UBE
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Nov 2024 13:11:22 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id 3f1490d57ef6-e3882273bdfso7128377276.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Nov 2024 05:11:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1732713079; x=1733317879; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0pJ4f5/AA0Na3QRUimWC4sZ6Mc3cd4bD928BKUzVBg8=;
-        b=Z+6zxDnk3P0XIjUBuh7ChTz9+5bV8ETw8hwg6mmQlFqcc9ogrlvV9Dk4p84VLdfXUx
-         hUSJgbG2VkQOysQQelEemPU/YB2LTKhzNebUL6EajD6Fe7FJ/w3k0uXsWPVWn4uWsxvY
-         SmjiGWhILizPXpGEgvlSyYrsT53EVZDhtvo3o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732713079; x=1733317879;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0pJ4f5/AA0Na3QRUimWC4sZ6Mc3cd4bD928BKUzVBg8=;
-        b=wAFerykIQ5NjxM84tXDxLBUfcXuVtVQg30eVBFYrIQGFwypHPznPNg4t4kdIysdm4O
-         GeL9rJkfMfUZ3QKIia+OL6x5gvsU0AYiaFDdOd1GZhHpxl+Xqy9vX/ZgaaroyNWcasSP
-         vb6t7Qsrg7N4NoA//dA/JLuM1GHBHqPKwKMUXsQxDCKXBDFFDZUY4o+tQ1vQuzf/Nw/e
-         LOv3wcb968QD0WBcEJ/wDaKwG8118wAbsDXY/fJf955YlSGLTxZW2RkwH24GgtympcF0
-         GX/GUlkjimDnMOyXRtC3H2BUoZYaMwFBMi1ankN9UnL0/qWSKCDU0FJDk5qjAwIHeBK9
-         XD9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWsdkD9uMIxi3AbcZ4MIYGJX/Q5mX70ySzBt7dVU4f9k8O0a40sy91OLPHefnIBGAUW8hUSqoaEzdfx0vxSXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy11CIuC49B6UepRvsgATzuP+08SBNb1ZQprlQsc3lrEwV2QruR
-	hpLR9qFEKlSMsivAoBWAIj0sDA3pQWG3M5GEPSjtNjtAgudLhklJUvxod0ge55q3ugMat7/xvAR
-	DMy1DfihboAELweC7F5URr+KmxAaWrQqSOQkY
-X-Gm-Gg: ASbGncvgboU04sbhOuKreOdD4uYW5CvpksiazGHasUDhD2qr6dNI27p2EXb7Y9X29wE
-	6Uyva13IcR+RYtMfOUBw3BlJYs1MXcdV6
-X-Google-Smtp-Source: AGHT+IGHme/L5ioql1/e+CfRbka6xoxAYc90GtctpaIvtM30KbIeIU6v/mBHT7nNurKZ5GDi7Le2AMYnuUIp2KUuv5k=
-X-Received: by 2002:a05:6902:cc5:b0:e2b:d3da:46c8 with SMTP id
- 3f1490d57ef6-e395b93642dmr2466586276.37.1732713078836; Wed, 27 Nov 2024
- 05:11:18 -0800 (PST)
+	id 1tGI1M-0000000DE7s-1DNO;
+	Wed, 27 Nov 2024 13:23:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1732713832;
+	bh=4PWf5BX25DlYJv4Gy2uPbPq/angyB6Ks1Q7dI2dA/K4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Z1by+KWf8JcCPAhP3H2Sq4S/s4XGhgKFM0FoTy6rCKufkDu4xFkp4gNH7iY2tRqnl
+	 rGxKpvsDErMi83fPQYj0YZJ2KYrlryVyozyr6C5I2/N+nN0VOYTk5D+Mss9QRV7AZc
+	 t3eHO/34tehyxJcYmdhROz5QsBsXpUXHQQ+x4VC3EQjU2nx1ExHvciaDvy5R6wH66M
+	 r9bgwrij87X+C2cwFQ93LYegsDfI45LxR9F5C56QBLkolvgbjhYEAaIqd+efb8yxVn
+	 QPodYBcMVZgwmkRJOEW5QNwNptoA7UR5UqReLQWOmUV5v1P2ytL7rbrsPRQ9x81VBd
+	 X8OZ453k2sR6w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0551517E36FE;
+	Wed, 27 Nov 2024 14:23:51 +0100 (CET)
+Message-ID: <4549f33c-90d2-4b28-ab7a-1576c587c8cf@collabora.com>
+Date: Wed, 27 Nov 2024 14:23:51 +0100
 MIME-Version: 1.0
-References: <20241126103632.419469-1-wmacek@chromium.org> <20241126103632.419469-3-wmacek@chromium.org>
- <473283aa-fc84-4b3f-93bc-653c9d83c837@collabora.com>
-In-Reply-To: <473283aa-fc84-4b3f-93bc-653c9d83c837@collabora.com>
-From: Wojciech Macek <wmacek@chromium.org>
-Date: Wed, 27 Nov 2024 14:11:06 +0100
-Message-ID: <CAJrw_jmqfPaOsoT1pneoFuUg9ws1CsDgy3YdqWPE5SoK7Lrv+g@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: mt8186: Add Starmie device
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Rafal Milecki <rafal@milecki.pl>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: Aw: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with
+ applied overlays for bpi-r3
+To: frank-w@public-files.de, robh+dt@kernel.org, matthias.bgg@gmail.com
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, daniel@makrotopia.org, linux@fw-web.de,
+ leith@bade.nz
+References: <20240608080530.9436-1-linux@fw-web.de>
+ <20240608080530.9436-2-linux@fw-web.de>
+ <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
+ <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
+ <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+ <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
+ <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_051120_869082_C4C96B3E 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20241127_052357_297480_7EF669C7 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,79 +83,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 12:35=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 26/11/24 11:36, Wojciech Macek ha scritto:
-> > Add support for Starmie Chromebooks.
-> >
-> > Signed-off-by: Wojciech Macek <wmacek@chromium.org>
-> > ---
-> > Changelog v3-v2:
-> >   - Cleaned up DTS
-> >     - Re-using dsi_out node
-> >     - Removed unnecessary delete-nodes
-> >     - Moved touchpads to per-board dts
-> >     - Modified 3.3/6V power regulator node
-> > Changelog v2-v1:
-> >   - No changes
-> >   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
-> >   .../mediatek/mt8186-corsola-starmie-sku0.dts  |  31 ++
-> >   .../mediatek/mt8186-corsola-starmie-sku1.dts  |  31 ++
-> >   .../dts/mediatek/mt8186-corsola-starmie.dtsi  | 465 +++++++++++++++++=
-+
-> >   4 files changed, 529 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmi=
-e-sku0.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmi=
-e-sku1.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-starmi=
-e.dtsi
-> >
->
-> ..snip..
-> > +/*
-> > + * Battery on Starmie is using a different address than default.
-> > + */
-> > +&battery {
->
-> I didn't ask you to do it this way, and that was for a good reason.
->
-> Besides, you haven't run dtbs_check before sending this.
-> Give it a go and you'll see why.
->
-> Regards,
-> Angelo
+Il 06/11/24 19:49, frank-w@public-files.de ha scritto:
+> Hi
+> 
+> any new state on this??
+> 
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240608080530.9436-2-linux@fw-web.de/
+> 
+> regards Frank
 
-I'll update patches tomorrow once I get my Starmie back.
-Meanwhile, to limit unnecessary turnarounds, I think I'd like to leave
-the /delete-node/ for battery. In case status=3Ddisabled is used we
-still would end up with the "battery" alias pointing to the old node.
-That might be very misleading if someone ever tries to access battery
-node using &battery link. Something like below.
+I had a look at this one - and this is the situation:
 
- /*
-  * Battery on Starmie is using a different address than default.
-  * Remove old node to avoid "battery" alias pointing to disabled
-  * node.
-  */
-/delete-node/ &battery;
-&i2c_tunnel {
-        battery: sbs-battery@f {
-                compatible =3D "sbs,sbs-battery";
-                reg =3D <0xf>;
-                sbs,i2c-retry-count =3D <2>;
-                sbs,poll-retry-count =3D <1>;
-        };
-};
+  1. Your bootloader supports loading DTBO, so you can indeed use DTBOs
+  2. Validation of the DTSO can still be done during kernel build without adding
+     all of those possible X+Y+Z pre-joined DTBs
+  3. What if your hardware had more than 20 possible configurations?
+     Would you write 20 different Makefile entries? "sd+nand+nor",
+     "sd+nand-withoutnor", "emmc+nand+nor", "emmc+nand-withoutnor",
+     "emmc+sd+nor", "emmc+sd-withoutnor", "ufs+emmc", "ufs+emmc+sd",
+     "ufs+sd+nor", "ufs+emmc-withoutnor", "ufs+sd-withoutnor", ......
 
-Please let me know if you're OK with that.
+Looks messy and unfeasible.
 
-Thanks,
-Wojtek
+However, this is not a *global* no: I'm happy that your bootloader does support
+loading DTBOs and, as far as I remember, even uses straps to vary the DTB(o) to
+actually load - which is something proper and great... so it's a *no* for you,
+but more than just a no, this is "why are you treating your proper bootflow
+like it was a broken one?!?!" :-)
 
->
-> > +     reg =3D <0xf>;
-> > +};
->
+If anyone finds themselves in a situation in which there's no way to update a
+bootloader (and that unfortunately happens more often than anyone would like
+to see...) and in which the only way to apply DTBOs is to pre-overlay them
+during the kernel build, then that's fine and I would (if nice and clean)
+accept that.
+
+But again, you're not in this kind of situation - and you're lucky that you're
+dealing with a fully open device with a proper bootloader and bootflow: don't
+ruin it like that!
+Instead, if necessary, update the userspace tools that you're using to deal with
+multiple DTBOs during system upgrades: that's the right thing to do at this point.
+
+Cheers,
+Angelo
 
