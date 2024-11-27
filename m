@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DDAD609D8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 11:23:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26758D6ACC3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 12:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=12DqePLKoTrEy4MFBKf2pq2QIO8hf39o64WQAb2Jn8w=; b=qPXlDG1AsycCPLsz/M6T7/l0vk
-	qkJiorJt0/OfvppqU84Tx4LmqWqkKDOvrBU+yZN9g9ttbZ+UnPitAVy8BPeP0vFwDsQfFMwJhDFXf
-	TohY/7sjxjiVhNWdRzoDmXxLxXYrDdjgeqWIKz3+1Ue4+9HmwbU0O3cgBfP1Y9mf8GnBOZU0fJFFp
-	EsUXlf00HvhHv+IEvxL51Cei4cDw8evIa36MJtCe1LUj3u1K3/DWFmCG+7uqga9dhVAowBWRPvZNR
-	kq/fD2/mB8tKP9N3gx/b3vptCJdlRYkiDvQCRqllw6uNht1wq6qc1lqviS42bXmALVEMPD1rqOFGr
-	iO3sDTtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oEOL0ptYLtxEqIdAC+9tZlm8gvCy8mQhR6WGhJ022Z0=; b=aTK3QYmwdhvvcG8cr8TRzPX5Ch
+	PH0MXOtAMpcL8YfLuWKkUGW9wm1T3U8ubKEcnlEAj72u/uIOKbEOIL9lvsPwJ+2C0D/lB8+o2kE0Y
+	u5w5xgVTNnAHshug3nD9IJRicj2OHwKQsKWqel+PJ5GJYHh9xaNq56pOOQ//mYtilmBmf7hqD0ByE
+	JXb5FvvJtLgCk57QrTgdezLXlh/SY22piepGuYDooO+rUywnrk9ItM0qJSG1di2CcmwP+o9r9Mvrd
+	nsjoAH6IJ12V8HQFd5+Jiz+eVLe+2zFDDyisbO5fPNoy2k/zpSk/JNxfl3IqGHhSETybBg04KgrQ6
+	NVZkXuvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGG8M-0000000D02u-0cNw;
-	Wed, 27 Nov 2024 11:23:02 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1tGGw5-0000000D6oQ-0qPF;
+	Wed, 27 Nov 2024 12:14:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGG1u-0000000CyZV-1Pdp
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Nov 2024 11:16:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=12Dq
-	ePLKoTrEy4MFBKf2pq2QIO8hf39o64WQAb2Jn8w=; b=CdtAx3KB0YICFDFVfczE
-	4JUiYove8hph0vLsd7cIgmSUVQ+pr+9AoP41cqJHm+SsNM3lvPdNimaJOBFD9oSM
-	H4CoVY6deMuSbMAd+6wiQ9CCGhSgQgvg74txg9RB3uSKqgQAKBg0JmQPIgfpUBsI
-	YnAfUy7D1LChHIKnSabgTcywPNL1py9dTZdHOmDj2Fd+RUkk3sC5Ag2DnAFewOXn
-	yn7nEGSFSUHEKFYhQPm1bHZVl5jZXPjnSe0ovLcfltTFHiUgHYviFDxn17jM1gel
-	Fxj6ic1I5bbDlpYz0ATLWSQIpuhTFklXtxOHShGNbB4426S9gEHtjkgHlXG+lV55
-	+w==
-Received: (qmail 533524 invoked from network); 27 Nov 2024 12:16:16 +0100
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 27 Nov 2024 12:16:16 +0100
-X-UD-Smtp-Session: l3s3148p1@hlggGOMnatMujntz
-Date: Wed, 27 Nov 2024 12:16:15 +0100
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Wolfram Sang <wsa@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v11 0/7] platform/chrome: Introduce DT hardware prober
-Message-ID: <Z0b_f0gg9KgSozPH@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, Wolfram Sang <wsa@kernel.org>,
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-i2c@vger.kernel.org
-References: <20241106093335.1582205-1-wenst@chromium.org>
- <CAGXv+5Fzrz9sBvE=FpV6URpcZtxvchxfY9WE4k4s+S3BzMWw2g@mail.gmail.com>
+	id 1tGGv5-0000000D6bB-2hES;
+	Wed, 27 Nov 2024 12:13:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BAE935C32B5;
+	Wed, 27 Nov 2024 12:12:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C632C4CED2;
+	Wed, 27 Nov 2024 12:13:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732709602;
+	bh=VoLkH65bL3SCOolWXPTIPl3bQkL5q34kt5m/3L5PBvE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=eai+IyX2DHv87NXUhGl5Th2caqMIBIpxVJOrR8c1aFjoeQNCTmBD51LLFMkO+R5ns
+	 Nn7fYNhEWkmKjG9mm6WAEJOqceJmADIRtmbQuszuISP9ytmlJ3Dt3ZURtd4C40f+/g
+	 jYvcoB/sof8oksETHdCT+hak+YCgehTgmAaHcZbw5awtLoWn7lPq7yY5ufdoliBlcX
+	 SlEa3NBpQ3M14MoxixNOQlUDHuWTK3kOCKMU66r9Xsbh/oYJZtARN3iUP+8YSIw8Zc
+	 rAENWa3Pnv8tQtMP7VUWPFsO4ZL9thlAGpq+Q04avat5+34r9wAtyMivjOACi0FXgT
+	 xHFJ6tCgtr4SA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20241126-asoc-mtk-dummy-panic-v1-1-42d53e168d2e@collabora.com>
+References: <20241126-asoc-mtk-dummy-panic-v1-1-42d53e168d2e@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: Check num_codecs is not zero to avoid
+ panic during probe
+Message-Id: <173270960024.162310.7545183344614439367.b4-ty@kernel.org>
+Date: Wed, 27 Nov 2024 12:13:20 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="HQnyox1fdhJ456xp"
-Content-Disposition: inline
-In-Reply-To: <CAGXv+5Fzrz9sBvE=FpV6URpcZtxvchxfY9WE4k4s+S3BzMWw2g@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_031623_228653_F8542133 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241127_041323_722720_4775795E 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +77,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 26 Nov 2024 15:09:43 -0500, Nícolas F. R. A. Prado wrote:
+> Following commit 13f58267cda3 ("ASoC: soc.h: don't create dummy
+> Component via COMP_DUMMY()"), COMP_DUMMY() became an array with zero
+> length, and only gets populated with the dummy struct after the card is
+> registered. Since the sound card driver's probe happens before the card
+> registration, accessing any of the members of a dummy component during
+> probe will result in undefined behavior.
+> 
+> [...]
 
---HQnyox1fdhJ456xp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-> Just checking in. I just wanted to make sure that this is still on
-> track for v6.13-rc1.
+Thanks!
 
-Eeeks, not only Andi was so busy that he lost track of patches. Please
-accept my apologies, I was under the impression that this series was
-still under discussion. I sadly missed that it was ready for prime time.
+[1/1] ASoC: mediatek: Check num_codecs is not zero to avoid panic during probe
+      commit: 2f2020327cc8561d7c520d2f2d9acea84fa7b3a3
 
-That being said, I applied it now and will send it to Linus by the end
-of the week. Sadly, this series was not exposed to -next before, so I
-hope a few days of -next will work for him.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-But I will surely try. Sorry again!
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---HQnyox1fdhJ456xp
-Content-Type: application/pgp-signature; name="signature.asc"
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
+Mark
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmdG/3wACgkQFA3kzBSg
-KbaO8Q//YQ/9g1dt8JdYH661u4RqF4lC38vtKoaZJEADzExdg71xeJQx5nw4Ucg7
-wdvlvIVqq2quH31KM5oOz04t7bglWhsqGlLUUG5CAe3W55tjNpJYgBEnBQs+9ylf
-VdxC/3js3Z2K07RQmCiCGDZuyF7eLkc0AOYrWg6vnGKpnZWO8aTsDRSe6XsDXFPF
-saOY5F3nwjwpoOmUT/qY2ezh/Cls0qClCdXbvoSj5p6+XHcRObtGuMBCSdiYo9uU
-Ec+25hpHSYChlEA0PdlXzw2jObBfp0fOUNWBqadOgAuYsLwK02jI90fvhymPRsiM
-HJD8H1L2oulpK3VayJtRhjQowUW3UrdcdleoOwq91TY32vrlZ6SDtO/C8WphUqT+
-ORaJHqIeBZSW2nwAXBOepoid1JR2pPYiEWZ02kfaKvG0g/sMFoHyXV9OB9GAWyRT
-hNQPXZBFS0LV+6J7pIzmxjXxugwrTnI7AWJlGHGjxYxjc42Y9C8H7H8JfkadRuAW
-w3wcqoPXRJUZsg3GZHBCwIDYtXgr3q7J2iwDPe5h/cDFE5CbtsCL8O8iV9NNqrjF
-T928c/gxQjsRotHFRUBfihhIia/M2zLB8M6Rq+KRzaCCy78UiZkRhiDinstbzlki
-sI0XLrvQAEQVgoJNDsr7K2orxIcijqjlZ0k6pqNf4roXjJJ8Hxc=
-=h8vf
------END PGP SIGNATURE-----
-
---HQnyox1fdhJ456xp--
 
