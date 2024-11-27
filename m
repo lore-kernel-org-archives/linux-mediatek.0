@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7986FD6ACDB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 14:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAE4D6ACDF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 14:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fVpfE1DT7WKEEdAdua79wEXCVTG1srLmglyWX6/q1fo=; b=x+R5+wzcbiIpa55OJj7GwR3sDf
-	mcPxoyY1xj+LsHBXFRVROs6YcRW+OOy55ySoV8VikQ1pSsH7d02k3g2x4/nb+YudxCAIhEn0e5qTV
-	BY/lO7HwvjxjZMyPb8JfDaJJMtuvC3YF1QuhQf7U+Y8cYOFTNDNjtPVZ02T1aokb6IUUdsT0LD0rx
-	/B9QmR65OQitO98vqNxpDll3zIGMxK6D4K6ol5pLqFmnTRndElp75hdzhJlU1Tkjluc8XFL1YQIHa
-	gkLR+7zzaMLN4yyd+XtaFX8yCc0oNLQXgcJosJjLtQxmiuMqSLJk0K3+eb/X/heIBsCdsZpv+SR+5
-	SXqnD6rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l44lRVfYlr0VCU4oy3iGDOdXSYRch7U+K0VitFGvDUg=; b=bppy57G2wZYXfsqK2pBOjiuRkn
+	yuXe+XnGT2WS04rTvfFebNWeAXqEOuI5I5vCvsKVkCXqf/jZVrgfIdDi6pJbUeBNSX6vn81BGre9B
+	v9Lug0PIGYDMj1xjt2k3nJe16xIVAVahTaBDZr1bU4UkK+FkjgNvcYkOi2qFka5EnfeJOrc2kUw7G
+	sk0t8NDRcKRJHCEp1Ra9lpslUk82rWyhABD6w8SNZpid0IV5a4HqrJz8fLcf9x6ZeLvxcKv+PUrji
+	FzqeC+IxCBiIdavTdO1yZ7IIDPJoBvhn5gaMQ/722Np8qpCqCrKk0s+l8p8m33v75Y78wT2bKfKB/
+	fFu2PZ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGIjz-0000000DLRl-1ak5;
-	Wed, 27 Nov 2024 14:10:03 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1tGJ14-0000000DMyd-2eVW;
+	Wed, 27 Nov 2024 14:27:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGIj0-0000000DLMG-13CE;
-	Wed, 27 Nov 2024 14:09:03 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 60A50E0003;
-	Wed, 27 Nov 2024 14:08:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1732716536;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fVpfE1DT7WKEEdAdua79wEXCVTG1srLmglyWX6/q1fo=;
-	b=V0m3y3rQ21r/yw6cqjlYOWFOnXMUo+QMtVx/LlHTBpRZ4b1Fa887ZIv4FbiwotcfJ//V+c
-	aQ0XkMe88euHh+n0M9jT+cODKa8BOoMLjHAj7nDJibFT/0oLWudJfCWxBWrqwKHBjD3MrF
-	rXUiqVIHpv4t364D2z5IyU5aIvguihd6Q7t+BzBG81QdeEmlDJStKytDS/B5++6vW5NhWj
-	UhjsJcDF/YtJGMAKSMKAU2fYpPxJWAiP18eMegipFSTp0PgAJbWZTnzhDXdv7FkEy6RRZJ
-	ngwZog+2QaGkYy9IMoEMQDlR2GpJkLceX8AwbzdgUhTzdb/XkPQDc8IACN2bTw==
-Date: Wed, 27 Nov 2024 15:08:53 +0100
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Alexander Couzens <lynxis@fe80.eu>, Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Daniel Golle
- <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Florian Fainelli
- <florian.fainelli@broadcom.com>, Ioana Ciornei <ioana.ciornei@nxp.com>,
- Jakub Kicinski <kuba@kernel.org>, Jose Abreu <Jose.Abreu@synopsys.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Marcin Wojtas <marcin.s.wojtas@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
- <pabeni@redhat.com>
-Subject: Re: [PATCH RFC net-next 12/16] net: pcs: pcs-lynx: implement
- pcs_inband_caps() method
-Message-ID: <20241127150853.1f38e829@fedora.home>
-In-Reply-To: <E1tFroq-005xQk-SU@rmk-PC.armlinux.org.uk>
-References: <Z0WTpE8wkpjMiv_J@shell.armlinux.org.uk>
-	<E1tFroq-005xQk-SU@rmk-PC.armlinux.org.uk>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1tGJ06-0000000DMsq-1KTv;
+	Wed, 27 Nov 2024 14:26:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5F8125C561C;
+	Wed, 27 Nov 2024 14:25:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 364EFC4CECC;
+	Wed, 27 Nov 2024 14:26:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732717601;
+	bh=kqNvddmDWtm7j0n7cbl9AqMJ+Ww39KyF2qb8khHv7zI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LRLk2Hg5BpC0e6D0gRHZqBuTAPOfn5yC7hHhwuYPB0lNR1lkzn8BPdkRXQND30GiD
+	 kA+REhHwzGNrRa7v6pgsRV7dxWg1QEmPT9Lj6HT+FKmcEh8/pqn4Le5Ac9EjITV+4E
+	 8XyIMonYyRKGN14kythItJj9u66rhGmFmk49A5cEd1EosxgZ57DFaIj8gnAn/6kmY2
+	 dWXcG6zLfbtnzOae30JpagghRoLjg5408etK/cP3/pKPBXR7tptbhgsybi8sjS37dl
+	 A/IP8OjkpLkuL42MfLMib0ANQxoqkaXpKO3LJLvalJ84GkKfj4ftkURwyezrbi31T6
+	 VoU36du1t828Q==
+Date: Wed, 27 Nov 2024 08:26:39 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add property to
+ set disconnect threshold
+Message-ID: <20241127142639.GA3451514-robh@kernel.org>
+References: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-Sasl: maxime.chevallier@bootlin.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241126025859.29923-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_060902_429711_3F644001 
-X-CRM114-Status: UNSURE (   6.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241127_062642_403125_2EF92FD8 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +76,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Russell,
+On Tue, Nov 26, 2024 at 10:58:58AM +0800, Chunfeng Yun wrote:
+> Add a property to tune usb2 phy's disconnect threshold.
+> And add a compatible for mt8196.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> index a9e3139fd421..2e012d5e1da1 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> @@ -49,6 +49,7 @@ properties:
+>        - enum:
+>            - mediatek,mt3611-xsphy
+>            - mediatek,mt3612-xsphy
+> +          - mediatek,mt8196-xsphy
+>        - const: mediatek,xsphy
+>  
+>    reg:
+> @@ -129,6 +130,13 @@ patternProperties:
+>          minimum: 1
+>          maximum: 7
+>  
+> +      mediatek,discth:
 
-On Tue, 26 Nov 2024 09:25:16 +0000
-"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
+That's not understandable. Spell it out: mediatek,disconnect-thres
 
-> Report the PCS in-band capabilities to phylink for the Lynx PCS.
-
-I'm a bit familiar with Lynx for Altera TSE, so my experience with it
-is limited to 1000BaseX/SGMII. I unfortunately no longer have the
-hardware to test it.
-
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-Thanks,
-
-Maxime
+> +        description:
+> +          The selection of disconnect threshold (U2 phy)
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        minimum: 1
+> +        maximum: 15
+> +
+>        mediatek,efuse-intr:
+>          description:
+>            The selection of Internal Resistor (U2/U3 phy)
+> -- 
+> 2.46.0
+> 
 
