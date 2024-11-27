@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2CED6ACE4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 15:07:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552D7D6ACEB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2024 15:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OCzNHFa9I6qJOkZbyj9gMAOqUciHnfZo1B6Ths20CGs=; b=ZmkfL/fnjelmRZKk/3X2pcuRf4
-	5RZfGoeKqZT1tXJW8QXr5L5/VloYwChks5r3ucEbtkjzRuOiAOhdhsluq1X36jp5yaq3HQwlO0fni
-	f2LsvLy5jwmyrixjaeLKYIUq/YUDguotbYEiEyvTgFsPcZyJlNXHrwn4gCWU4IeTa5DjJ+qzEMGZf
-	IJDlbKFcuBoO9gcjGZa8TMEcDd816FGr7Yu5A6FpsuUpHOrA8g19OR7AQqZcYOU34GAL/kamJdNKU
-	/rOa2cP5ypfIh9e+6gWkh8EZ9NTp87+VssQA6L9aTF1v+9jF2ATL5cZO3K6jNXv4hJGJlHvk7tQc+
-	inc/v/2A==;
+	bh=Bhy3lS5xBdtG3cFqlE00X8F14KPxS7oFT22PELuAg0s=; b=B9YYunxSzQKRQoFAh84bLvQTrT
+	Vjj9THBCYo7m2hlhGRY+8nciIlwh6GvxwCIyDNCh6OtZSgdfiuoBjycgAhArABfFEc4sdOsUwnDHy
+	bXoUVpiK/L5PhDEziwK6j/mchncDZv+tBmEKNwKqq6cDl22ddo/NulnvAQRjLzcqiWPm+Kn7MWVss
+	xhvfya7dxTvsHjcugFTopoTKCWl1IrczpgtvffRAiOfsEy8N44xmcTvQ1rC8K9dt1V73fYKzXXA3k
+	HJfDGHsOcyidJwN/KBzXnL5Wjx+22zHN11o/KL92q4Tm+jNXRYlR1HBhYooDcl5YuXkCj6A+1wMS+
+	rUrm9gHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJdm-0000000DSND-2l09;
-	Wed, 27 Nov 2024 15:07:42 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1tGJyY-0000000DVdT-0y7c;
+	Wed, 27 Nov 2024 15:29:10 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJcn-0000000DS7o-0EGr;
-	Wed, 27 Nov 2024 15:06:42 +0000
+	id 1tGJyV-0000000DVd5-1Paa;
+	Wed, 27 Nov 2024 15:29:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1732719986; x=1733324786; i=frank-w@public-files.de;
-	bh=OCzNHFa9I6qJOkZbyj9gMAOqUciHnfZo1B6Ths20CGs=;
+	s=s31663417; t=1732721341; x=1733326141; i=frank-w@public-files.de;
+	bh=Bhy3lS5xBdtG3cFqlE00X8F14KPxS7oFT22PELuAg0s=;
 	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
 	 Content-Type:In-Reply-To:References:Date:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=oXr2+BvsSMWgo8wU9x5FZyWZAxIqgXY3hjHi1amGQUAx+4jDy+czTzgmbv44SH7z
-	 BubGtBVEtNNRPeDrqR1jefEl/ntIr0TC7hhgzoKzTTj2BhzZ5HQT1Z+SPy+v/LW1N
-	 BkJebBo5IKRkgUckwU0shDESG+Fy75RoI7LXdJ2OEHqYPBuJRKiqBnnQptN0VmLLz
-	 ZNMjt3cogp23gipO7lluYcOup2/+p+a6SasPqpUTSh2Jj4xu1yyuEl/DrPbLPdK3A
-	 ir2RWWh6zbLpskuMm0zIYSub9InjC3SAXWVMe4exyCdR+B+kiJsQBoYu/uGXXry72
-	 5XpqtYByqUfZHkB8DQ==
+	b=naTabAUGlSEkFimSF8TxnK5xCkrQh4YbRqrFap3iHQ53cpmZSr/IUu8KeeXuLNf0
+	 I/H1QptBMkKZS8mMEBdaA39kM2q9A0jfE2M3nC2Cuj21jeY65YAXCn+lgn0AYXXby
+	 jlsfOnQAJlY6us9Hr80UA1CGA2T4Xu8qI/dJFlguC+4qzq42GCnuJX8dr0XcZJDMf
+	 AAKTerT3uvIIxzPxuujtVoe9yuvono/1qPYmQudOf7P/AN+bsbfwFE1Wh4jqc0/yF
+	 po4dOt+9Va9J9ZGvetvEc38Uyf5lZjQ9rCgsCGy2hfCYpQs9MzCqrovel+4ZW2aIr
+	 RxttmMDXzCWWGp+7Qw==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.224.21] ([157.180.224.21]) by
- trinity-msg-rest-gmx-gmx-live-5cd5dd5458-8s6ml (via HTTP); Wed, 27 Nov 2024
- 15:06:26 +0000
+Received: from [157.180.224.21] ([157.180.224.21]) by msvc-mesg-gmx103 (via
+ HTTP); Wed, 27 Nov 2024 16:29:01 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-888f5bdb-1e23-4b5f-83c3-f36ade039908-1732719986576@trinity-msg-rest-gmx-gmx-live-5cd5dd5458-8s6ml>
+Message-ID: <trinity-b73d119f-df34-4724-a327-be59ad3410bf-1732721341758@msvc-mesg-gmx103>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: angelogioacchino.delregno@collabora.com, linux@fw-web.de,
  robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  matthias.bgg@gmail.com
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add
- operating-points
+Subject: Aw: Re: [RFC v1 10/14] arm64: dts: mediatek: mt7988: add lvts node
 Content-Type: text/plain; charset=UTF-8
-In-Reply-To: <6660a681-c02a-443a-a1f2-14af5b4477eb@collabora.com>
+In-Reply-To: <6725747d-2db4-4f80-be25-4b314e59ab9a@collabora.com>
 Importance: normal
 References: <20241029103937.45852-1-linux@fw-web.de>
- <20241029103937.45852-15-linux@fw-web.de>
- <6660a681-c02a-443a-a1f2-14af5b4477eb@collabora.com>
-Date: Wed, 27 Nov 2024 15:06:26 +0000
+ <20241029103937.45852-11-linux@fw-web.de>
+ <6725747d-2db4-4f80-be25-4b314e59ab9a@collabora.com>
 Sensitivity: Normal
+Date: Wed, 27 Nov 2024 16:29:01 +0100
 X-Priority: 3
 X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:Exmc3suBEbYFxes52bhTlxtJMDNr4l7FL9SH7h+/VQ0syTJpV3uxFGxpPePdLd0KZKpAX
- 3GmoRmCXJkg+mhhauNgnEoOhXjyU5w8F9Bcl3s7S69DbPfeF7Z+NnXxNkNQJ6/HShf0GMrdIp8K+
- tVAh4Tc9WedHBDnDWkV43Y54bVVGl7mEzM5Mq68d7Jtj2JW3bVAQKq/EPJMBjnesych4C231wUAI
- RI02vDtCyw7W8k2P78AVoxgfrCEefMbOFlIbVyE9VSadaNXTcW6p4Esg3cbtlLnl3pnXbhc4g9hu
- m4ACFiCkEyA5tPIvIMgp7vVCybw/gC8GqqKfGfVisVUOYYn5IO9/OpE9omlHSZLX9M=
-UI-OutboundReport: notjunk:1;M01:P0:QOVQPzO/mOc=;XQzCyxdnoDtUTc1S6Va0JGAcHd5
- 7op34K0+FcHB24rjL3QTOzWn+P+xffrgx5QoW0jId3RedgtcZJRKFqeGxS/U1cyFGO+WnmEpg
- oOVYc2zOPdjOiVksTxkARBNls6jYW3okeg4+6oMVTZ+Ty7cbfkY8MLj1g/4NE8SlWYccGY4pt
- MR78ZWdASgCkcUzsI5HbL4c/dPj++nNAcfqYw3xoeugUcXOSoNQcQznjn135x8JifA96GBdug
- 7uYgi7fuE8YLegNHa+oU4CcFVdWVPxnZj09sQWeX5hRocQArhZB0A9f8FaLQHb3F5oAwLy0hn
- MofI3ADYtRwgTtCYmLzdy5QY84GPVc9t1+R9TK4ZSD7fVJCGpNWLxqiSHhMhgj/d101kKvQaJ
- LyqZozYNc5AB+IbpiHVtzGOW8H+v/XRVgxmCkWoE8V9vzEmcgdaf3IDb8NEShJOq5yzHoB1+/
- pWsi3ciootvLrhWZueqVdewpTbKot64jfIVPqTuKL1INWna+SOqATIZmz5VMa18fIJaQaUWxZ
- x0SgkiRLX/1aN4PW95wxBkhlE2jiaE+T2PxhbGSS7zgntQ76pMYN9Ics0YX97L6CtYIJLWu4r
- hbMqlKEyioZ2Etfq1cfz4kM3ZAIf6BjeyKt5mbALc5EW22zXurroFUWYAXFS1oVHoAiWOPi7x
- WBILdYVVuiMDMQtLz8zELrfZuBfIcLL8JHQX0Sax2LkomozX+tZU2MhRnECOVG/9ClwdFwnrC
- qdORNAwuioKOBFUywIg8qfzxk9LVP3WYc9vfmLvTCaZDx9UZ8wkEH/z/XuUNXsX3HKZEbiyis
- 0GXmyrf0sylXItBkLHIywoOWrRhmLc487x5xIXZ66+X+rviwIX0ytTWesK+viNJ8Q9Cw/UKTq
- 8BgJRTI+bAqXjwdsFpTVtoQFKvpeh6XY4cl0=
+X-Provags-ID: V03:K1:d5qngSojmeo1EodTOgFNr+aD5GS161u469K6Y1PSY2C0svHCDz9iHqSIj5xw8388HO+UN
+ r/l7Y0vdvjqxh0qwOkykUBWoF72Bb9v7l+mzrVcWDd2n12YBRFOkzLsygaowpZFecObIgqcCYKk4
+ bq1Z0eptPBV5n26He2pDKU1lnFKSVrTCcN4GyBaVYYY8kTE8cY9Ic64+ZlvlO9beic0LyEfI6jRf
+ lhM4v8sF+brhfI66h56IgYjY0QFnGR+1z4ctAk/arSKvTqSMZUQN571VnQyHi1ZCoHxLcnwNdyMV
+ cQ=
+UI-OutboundReport: notjunk:1;M01:P0:43DHYM8XJJ4=;agufmWR33nlynwPgFtkwqB3pkMl
+ OPhdL2a6Ggn2cWykbyxebkowWdUh/fFSEf7mFt9Z6woLyqFd8uSAXbhVTAoGe61rPcvmH36w0
+ qrcrYA6lRbJZtDJYf9PSD0dnhOQF+AbeWAezLrL74sL9tbij9mUlUf1U1HlK4N+kloYi2tc2t
+ n1i4Nk/K5dAhzAf3UlwcoWQXfFPAVLO8dABmvX23P97cg2c8NWl5xXPdLaKtVjC+DYSvMzj1+
+ 84p0R+E5ZANoeQh/1A0+t6cuerEV8Fwy0JNRUnKc3hRH81GsQRfk1jT/43BhE5hg1v2l3J/lZ
+ F6kRwQRD/ig0FZuuSXBy8T9VZyYJ+LotK2ifJxCs7Ik9Ty0KyUd7I/LCKAW81U3bsamNdgpD8
+ DPbhdwnFIpPoSWF/pzWKkTFynWWcetHWpIlRE7bAoRB3CM1zpYOjb39njx/YUMreac4Lex1c3
+ 16JcWAjzytmTrRXVTFgMPgvpJJo13qv/N50sigYIOyH7dWcN4iUaeXJpzbr/Vr+KxR8LVa/x7
+ oAFCezLfS+0CEhSIzdOJphQWbCCoN/IfUIy8UHmr6tOaBL2N1azLa0zMHbmZcNpZfkQefCxZk
+ n4R9PGuWgyNnsCRra/nsb4q32GIQj2Xkiq2OwRcHlRSmGULU/Ym0KKfCXKnU4noUynHG21EPr
+ VFImQSitOrdl09SyGoCLnWRlf7dmBvSHgu5B+b1jdkpaSOWXQWwcS160w+nUrJybJ1s/gABgI
+ D18a5AleXeB5fLPN71qC1XWEuS25MK6WRaKQQyGngnFu7ot1/fdCVBGLyagNUjnAvuDGC+y3J
+ sEAS90vHgVzDIfZf5BFE3ADGYI7Jzqeet3iEh5/thTwsTjnYuDzkPCRiFCoqMUhbBefSGr/1S
+ GEq0fYjAmizsm5SbyCBAQidqKgeWpAGOxZ5M=
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_070641_378661_A39D60DC 
-X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-CacheID: sfid-20241127_072907_667501_4248C4A1 
+X-CRM114-Status: UNSURE (   7.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,124 +109,71 @@ org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt=
 &gt; CC: "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.ker=
 nel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.or=
 g, linux-mediatek@lists.infradead.org
-&gt; Betreff: Re: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add operati=
-ng-points
+&gt; Betreff: Re: [RFC v1 10/14] arm64: dts: mediatek: mt7988: add lvts no=
+de
 &gt;
 &gt; Il 29/10/24 11:39, Frank Wunderlich ha scritto:
 &gt; &gt; From: Frank Wunderlich <frank-w@public-files.de>
 &gt; &gt;
-&gt; &gt; Add operating points defining frequency/voltages of cpu cores.
+&gt; &gt; Add Low Voltage Thermal Sensor (LVTS) node for mt7988 SoC.
 &gt; &gt;
 &gt; &gt; Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-&gt; &gt; ---
-&gt; &gt;   arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 45 +++++++++++++++=
-++++++--
-&gt; &gt;   1 file changed, 41 insertions(+), 4 deletions(-)
-&gt; &gt;
-&gt; &gt; diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/ar=
-m64/boot/dts/mediatek/mt7988a.dtsi
-&gt; &gt; index e037854666c1..25669d498617 100644
-&gt; &gt; --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-&gt; &gt; +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-&gt; &gt; @@ -16,32 +16,69 @@ cpus {
-&gt; &gt;   		#address-cells =3D &lt;1&gt;;
-&gt; &gt;   		#size-cells =3D &lt;0&gt;;
-&gt; &gt;
-&gt; &gt; -		cpu@0 {
-&gt; &gt; +		cpu0: cpu@0 {
 &gt;
-&gt; Where are those cpuX labels used? I don't see any usage.
+&gt; Please add the lvts_calibration nvmem entry in this commit instead.
 
-these are used in later patch and needed in uboot when we want to switch t=
-o OF_UPSTREAM.
-
-&gt; &gt;   			compatible =3D "arm,cortex-a73";
-&gt; &gt;   			reg =3D &lt;0x0&gt;;
-&gt; &gt;   			device_type =3D "cpu";
-&gt; &gt;   			enable-method =3D "psci";
-&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
-&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
-&gt; &gt; +			clock-names =3D "cpu", "intermediate";
-&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
-&gt; &gt;   		};
-&gt; &gt;
-&gt; &gt; -		cpu@1 {
-&gt; &gt; +		cpu1: cpu@1 {
-&gt; &gt;   			compatible =3D "arm,cortex-a73";
-&gt; &gt;   			reg =3D &lt;0x1&gt;;
-&gt; &gt;   			device_type =3D "cpu";
-&gt; &gt;   			enable-method =3D "psci";
-&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
-&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
-&gt; &gt; +			clock-names =3D "cpu", "intermediate";
-&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
-&gt; &gt;   		};
-&gt; &gt;
-&gt; &gt; -		cpu@2 {
-&gt; &gt; +		cpu2: cpu@2 {
-&gt; &gt;   			compatible =3D "arm,cortex-a73";
-&gt; &gt;   			reg =3D &lt;0x2&gt;;
-&gt; &gt;   			device_type =3D "cpu";
-&gt; &gt;   			enable-method =3D "psci";
-&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
-&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
-&gt; &gt; +			clock-names =3D "cpu", "intermediate";
-&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
-&gt; &gt;   		};
-&gt; &gt;
-&gt; &gt; -		cpu@3 {
-&gt; &gt; +		cpu3: cpu@3 {
-&gt; &gt;   			compatible =3D "arm,cortex-a73";
-&gt; &gt;   			reg =3D &lt;0x3&gt;;
-&gt; &gt;   			device_type =3D "cpu";
-&gt; &gt;   			enable-method =3D "psci";
-&gt; &gt; +			clocks =3D &lt;&amp;mcusys CLK_MCU_ARM_DIV_SEL&gt;,
-&gt; &gt; +				 &lt;&amp;topckgen CLK_TOP_XTAL&gt;;
-&gt; &gt; +			clock-names =3D "cpu", "intermediate";
-&gt; &gt; +			operating-points-v2 =3D &lt;&amp;cluster0_opp&gt;;
-&gt; &gt; +		};
-&gt; &gt; +
-&gt; &gt; +		cluster0_opp: opp-table-0 {
-&gt; &gt; +			compatible =3D "operating-points-v2";
-&gt; &gt; +			opp-shared;
-&gt; &gt; +			opp00 {
-&gt;
-&gt; ...But you can also be consistent with other devicetrees and follow t=
-he pattern
-&gt; for the node names of the OPP entries.
-&gt;
-&gt; opp-800000000
-&gt; opp-1100000000
-&gt; ...etc
-
-ok, will change this..so just adding the opp-hz value to the name (or labe=
-l)?
+and leaving the other (currently not linked) subnodes?
 
 &gt; Cheers,
 &gt; Angelo
 &gt;
-&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;800000000&gt;;
-&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
-&gt; &gt; +			};
-&gt; &gt; +			opp01 {
-&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1100000000&gt;;
-&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
-&gt; &gt; +			};
-&gt; &gt; +			opp02 {
-&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1500000000&gt;;
-&gt; &gt; +				opp-microvolt =3D &lt;850000&gt;;
-&gt; &gt; +			};
-&gt; &gt; +			opp03 {
-&gt; &gt; +				opp-hz =3D /bits/ 64 &lt;1800000000&gt;;
-&gt; &gt; +				opp-microvolt =3D &lt;900000&gt;;
-&gt; &gt; +			};
-&gt; &gt;   		};
-&gt; &gt;   	};
+&gt; &gt; ---
+&gt; &gt;   arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 13 +++++++++++++
+&gt; &gt;   1 file changed, 13 insertions(+)
 &gt; &gt;
+&gt; &gt; diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/ar=
+m64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; index ed8ce1e6f68b..de9a9ff2edd8 100644
+&gt; &gt; --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+&gt; &gt; @@ -4,6 +4,7 @@
+&gt; &gt;   #include <dt-bindings interrupt-controller=3D"" arm-gic.h=3D""=
+>
+&gt; &gt;   #include <dt-bindings phy=3D"" phy.h=3D"">
+&gt; &gt;   #include <dt-bindings pinctrl=3D"" mt65xx.h=3D"">
+&gt; &gt; +#include <dt-bindings reset=3D"" mediatek,mt7988-resets.h=3D"">
+&gt; &gt;
+&gt; &gt;   / {
+&gt; &gt;   	compatible =3D "mediatek,mt7988a";
+&gt; &gt; @@ -103,6 +104,7 @@ infracfg: clock-controller@10001000 {
+&gt; &gt;   			compatible =3D "mediatek,mt7988-infracfg", "syscon";
+&gt; &gt;   			reg =3D &lt;0 0x10001000 0 0x1000&gt;;
+&gt; &gt;   			#clock-cells =3D &lt;1&gt;;
+&gt; &gt; +			#reset-cells =3D &lt;1&gt;;
+&gt; &gt;   		};
+&gt; &gt;
+&gt; &gt;   		topckgen: clock-controller@1001b000 {
+&gt; &gt; @@ -268,6 +270,17 @@ i2c2: i2c@11005000 {
+&gt; &gt;   			status =3D "disabled";
+&gt; &gt;   		};
+&gt; &gt;
+&gt; &gt; +		lvts: lvts@1100a000 {
+&gt; &gt; +			compatible =3D "mediatek,mt7988-lvts-ap";
+&gt; &gt; +			#thermal-sensor-cells =3D &lt;1&gt;;
+&gt; &gt; +			reg =3D &lt;0 0x1100a000 0 0x1000&gt;;
+&gt; &gt; +			clocks =3D &lt;&amp;infracfg CLK_INFRA_26M_THERM_SYSTEM&gt;;
+&gt; &gt; +			interrupts =3D <gic_spi 138=3D"" irq_type_level_high=3D"">;
+&gt; &gt; +			resets =3D &lt;&amp;infracfg MT7988_INFRA_RST1_THERM_CTRL_SW=
+RST&gt;;
+&gt; &gt; +			nvmem-cells =3D &lt;&amp;lvts_calibration&gt;;
+&gt; &gt; +			nvmem-cell-names =3D "lvts-calib-data-1";
+&gt; &gt; +		};
+&gt; &gt; +
+&gt; &gt;   		ssusb0: usb@11190000 {
+&gt; &gt;   			compatible =3D "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
+&gt; &gt;   			reg =3D &lt;0 0x11190000 0 0x2e00&gt;,
 &gt;
-&gt;
-&gt; </frank-w@public-files.de></frank-w@public-files.de></frank-w@public-=
-files.de></matthias.bgg@gmail.com></conor+dt@kernel.org></krzk+dt@kernel.o=
-rg></robh@kernel.org></linux@fw-web.de></angelogioacchino.delregno@collabo=
-ra.com>
+&gt; </gic_spi></dt-bindings></dt-bindings></dt-bindings></dt-bindings></f=
+rank-w@public-files.de></frank-w@public-files.de></frank-w@public-files.de=
+></matthias.bgg@gmail.com></conor+dt@kernel.org></krzk+dt@kernel.org></rob=
+h@kernel.org></linux@fw-web.de></angelogioacchino.delregno@collabora.com>
 
