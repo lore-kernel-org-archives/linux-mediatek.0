@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F4F3D690F2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943B6D690F5
 	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Nov 2024 10:32:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Cc:To:Subject:
 	From:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=amX4kw3CVdfrIN/iXfvn6zAUV0UHj4azZhnQaAZnrVA=; b=bTBI1YCuY8jNr9
-	gcmosa5rxpOpEwT6s6M+DyhBP/Ghw6a+0tEe+HkpV9Ne4D101P2MqLWx1uzCApIoarM2mChAMsyND
-	IHzs8YKPcV30HviTq2VpIyKHIfpxafaSviZMlb/SL6PFkVMNm1QHSyOd4XYmAuN8QrLyWOCPujPL6
-	TONFBS4cF55dbegTvl2TL3igEEacRpkWA/oBVKv2DOoreZSbvFfK5i251ImNWbNe8hn/JRr8CGn9b
-	Us9BjRoybkNDSL9xAFnDAZpiORRMac4tNw860hCC1PzKCaoRdLt2QRfzBlZNrNqZpuoWgLzPjaAA/
-	Zhbkk9yuf0cOUDi8C0bQ==;
+	List-Owner; bh=CcCdE2mWnlvUPyRfMf+AyhHHu8WQK8CTzbd+erbG+Vw=; b=33p5zB2clWd0M6
+	bcCh9FMCQFS/3LhNcZPngNhfCdNhaQw8NOBwpRbZyWfmw9F6FFyeVTqcwcg6f9VHglc4o7UtuTRFw
+	l9BzebilAnbnFuHyiGwAOK6CtSS9YIe59ZVOcoR0POB/Eqqrr+s+NcZkbgu/AWSz4AM5g9qgwxtzX
+	vGJB5TkDfCTP6GFHtClAW65s0BLTbEH2KTIeUodb+UsJAgUpR4NIvmhEqnnPf9j40ztZO1PH0pd6A
+	VzxEcrbOE0vw2AFo+dmywEQYotgcv9CZibnlaeLA4hocGNAbOIj3aFD7zhcTyX3uewmyi16mr/xMI
+	je0libWDXnJotOVcCz7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGboi-0000000FGGV-2ipn;
+	id 1tGboi-0000000FGGZ-3ykU;
 	Thu, 28 Nov 2024 10:32:12 +0000
 Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJ5Q-0000000DNI3-1ihS
+	id 1tGJAG-0000000DNfz-26Tm
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Nov 2024 14:32:13 +0000
-Date: Wed, 27 Nov 2024 15:24:08 +0100
+	Wed, 27 Nov 2024 14:37:13 +0000
+Date: Wed, 27 Nov 2024 15:28:42 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1732717454; h=from:from:reply-to:reply-to:subject:subject:date:date:
+	s=mail; t=1732717728; h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:  content-transfer-encoding:content-transfer-encoding;
-	bh=amX4kw3CVdfrIN/iXfvn6zAUV0UHj4azZhnQaAZnrVA=;
-	b=pNdAo8IHsdqh4j/ODZL2Zm/kbsHkJM4AM2wMTaAxSEvLJd4ZeN4c9DhiMzO990smXsV21h
-	T1c/rKWNMeRnyAW6LATZZW8OyJ1dbJobS6nbnAodELch9RBWuinns1KOsPiDPxuRlpKxJ4
-	iMUVPIob+uG2wU2yNVMEYob/6CB4+FbyiWKnh76ZrUcUJ5CSYOSmrhOyC7WLw2DADjZuCM
-	kvnWmqN0LMAktwIEHSVyuzxYH1Ci+X4PrYsDGjg+KhyeuAv5TmmZF03Qi8Vzkw7pnnkkGJ
-	axsiwrin6qqA53LTcTRcNobGeTk0U8TKnPSNrfLajQf9KMyJ6QqEk/4oHKA53Q==
+	bh=CcCdE2mWnlvUPyRfMf+AyhHHu8WQK8CTzbd+erbG+Vw=;
+	b=x41x1ZRd7A1+ZeOy28GidZ4cA80opTa3tk4vYnwgpWuGXkCWYfUb7jWapFr64fcZgL1JKb
+	kUVhQb+qL0XPRDRnb7x6nfbSbdbSItkVVhksscgOLJlHvFOBI6u5RyVX6+zrTb3lG3IJ3D
+	+qSMY0GKBYf7p3gcQNvu67CrxKN72vYAw0+/uqQ23oxEH8JWJOfBYFpghYpurhgVWdnyHE
+	vl7WSb/m+APW72v4NqnE1EfN91ZJhaZu576VyKpIJ6P+xRtIX9K8Rzq98mqhOqKd4IeAMT
+	tDhunNbpPvyY6Ss6hqCM06GQRU76fp5/aggbrjodgKuP2fPziDWaWYli8vrK9g==
 From: =?iso-8859-2?q?Micha=B3_Kope=E6?= <michal@nozomi.space>
 Subject: Re: [PATCH v2 1/1] drm/mediatek: Filter modes according to hardware
  capability
-To: shawn.sung@mediatek.corp-partner.google.com
+To: Shawn.Sung@mediatek.com
 Cc: linux-mediatek@lists.infradead.org
-Message-Id: <8C5MNS.UGU9MAZ7F1A73@nozomi.space>
+Message-Id: <UJ5MNS.Y9SOF1FBB3XG@nozomi.space>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-2; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_063212_582435_B5FC7167 
-X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-CacheID: sfid-20241127_063712_673358_06E5CCDA 
+X-CRM114-Status: UNSURE (   8.43  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 28 Nov 2024 02:32:12 -0800
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -68,10 +68,12 @@ Reply-To: 2025e0ddff85a3bfa1f8894587b5e26ba3cfd65b.camel@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+(Re-sending because Shawn's @google email is inactive)
+
 Hi Shawn,
 
 I'm a new owner of the Chromebook Ciri (MT8188) and have run into an=20
-issue which I believe is caused by this patch.
+issue which I believe is related to this patch.
 
 I'm attempting to use a 3440x1440 144Hz monitor over DisplayPort, but=20
 the available resolutions are limited to 2560x1440@120Hz. I found this=20
@@ -96,6 +98,7 @@ how to deal with them
 
 Regards,
 Micha=B3 Kope=E6
+
 
 
 
