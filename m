@@ -4,206 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACAA5D66BA0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Nov 2024 06:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211BAD690ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Nov 2024 08:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AeamX18ru7PA4NYwAgwtiuzDIISH6Vy/Hzd4iQz/IyM=; b=ltOeMFG7goLBq6rZCEoSwasP0T
-	/yGnu6OsABY/r6J/Y5JHoBh9AapQqGkm9TPN19Apfe8Mqeq/7iRR3yO1DUN7AK8z5TCr+ivRd2kdJ
-	+4yVRA+TatgwaVTX1x1Fr3sLsN/1fYIzLt3p9Mwslr6wdTZqQ5gKNAUt5r2jmWv7quKbOaZdr/vS4
-	BXXkOUzBEnWRrArq7HC8LbXhXtinyHfBleulZd9jaxWVVI9zy+bhyhZ+rnoxKznjyw1/ioiSgGDXU
-	qoWEg0EZxKMrOhYQaUYS04QY9Z5BCtFO5xvH/C+9ZO546B2l3cw0cLupgkR0zz/RMgLmVZ/atw8nj
-	z5WP17iA==;
+	bh=f0OxH3wtdemYyz01Yb+Te/k2HhBq/Vf5wfmG702w8ds=; b=yRZocMv1vOso32mYo9JefQ8Udh
+	x4cSDPaf3DApcaOxk0lhg1qmqqPkQHChwPIwI6tW56w1fzOKduT3v3npLXnVrBX8PkJhMnaGah8BJ
+	SZOSDRgWpQZFnHb2b4ayvof6WCG0+F5CEcrNoUVeUwdMd0yHD9nXlr9w2stwqenYB2Dvs+Sysuvhz
+	zgzj5F4vrN6Kq3CaDyZuT0Hwr+e2AqlIT0zE7qopBoSPuTuvcEPHpO78yIb79b1Jj4ewZLN7Ee9AE
+	zgWauuMwtTIxMvBP2nTKcvVG8DnssjnZotATXe3/e5lZi5JRaLNPD2cw8if8SGT9ueueMgUkwxqjg
+	LWFmWrQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGXbm-0000000EloU-2vvu;
-	Thu, 28 Nov 2024 06:02:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tGaIk-0000000F4wW-0XMY;
+	Thu, 28 Nov 2024 08:55:06 +0000
+Received: from mx07-00178001.pphosted.com ([185.132.182.106])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGXbk-0000000Elni-2wSQ;
-	Thu, 28 Nov 2024 06:02:34 +0000
-X-UUID: 593fe058ad4e11ef82ff63e91e7eb18c-20241127
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=AeamX18ru7PA4NYwAgwtiuzDIISH6Vy/Hzd4iQz/IyM=;
-	b=DBFY+DQ6HIDtymYyykOx8lDs4afj21Inq4AvLWuh2C3SfFLDd7E5IEJxhd1lkXY+KsZVYLEuSzGyui8d4ch3LgGswJmSCmUOTJH6fTPJmMA5bLY6BvVSHInd57mQ/ieByCUsjwClatb5io/9PShoFPnO7WZAzOqScBAqvUkrjKQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.44,REQID:3fe2e628-df7e-4c10-9ad6-232950c519dc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:464815b,CLOUDID:ad54a123-634f-4016-85ba-2d63e55c9400,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0,EDM
-	:-3,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 593fe058ad4e11ef82ff63e91e7eb18c-20241127
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 578836156; Wed, 27 Nov 2024 23:02:28 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 28 Nov 2024 14:02:25 +0800
-Received: from HK3PR03CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 28 Nov 2024 14:02:25 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=nhQy3kJHVDl8qV/p5nKC5iwd3B/LJkCnxqzPzePw/OGqj3LLhM8+IfEMwwODzJjlqGrmk+ik6QAJ7v1upgh+kStZ2uTA48c7MQX4aXS0je4mP7TRIyU98GZZ0qrwqzBOKUlS1/0DIJ+vrRaqcRj1tghaXIUcS6yYgFFs6DIz9LRsDrteE59OVeUWQSXV5pext7UtiRIAgwmW4qqoxkPnC3jSD4eSm4Z3BHW9zmOJd//Z5oDandPkvx6fdsCwdmWoQEezUjZlOLa2AMjUBzF8e1utEjAPzM6wVHrQjRcj/MZMVC2rlcXvm9a8W04q/WGUaG2mrNUEUT5fWbQSwWihQw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AeamX18ru7PA4NYwAgwtiuzDIISH6Vy/Hzd4iQz/IyM=;
- b=mpWltzA8Z63sB8DULgwv46PC2UpTa0ZWPCb22UUIuGFmeO1YhQZlo6woQKq/8wI+UkzRHbBQoJb3O5YAy9FLpFLhPefjysS8Gcer7ldC0eGN4zPh7KL7VXgRqMKGwp6i0cZ7EYGMTqRP81kuymPVncotlw0CRjs9X8AtEq6htOv2X1VHX7xHNFEmymf+qY6+Gm8uQoLG6XlA8SS1csJGnyZ6Y5RiImowOf33JEbKsuC1j8vOacDzxEd8cY3emEs/BdbYhP2jrZIbVA4ceBWOhRNyiBeQoV052c1zZ8t1esVVaBhzd1gMDnJ0diVQE061Q0bbOC/PTgzudGgOKf7+Mw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AeamX18ru7PA4NYwAgwtiuzDIISH6Vy/Hzd4iQz/IyM=;
- b=jg8AGb6SFQjgrrFuRxkpxq27qTh3vgn2XfZ7PeHXPzPwBs7dOPvol0TT1QlN/XufiVlqriG9Ibyy7eiyM7WoZoz2tYaEnEX414ktaNrOeuzbsnFBSwx17VoyOoaGBlWzhV3LkOtqs8G2t4q+ycjuimcZGSOlrjnM2oynAbk0diY=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYZPR03MB7553.apcprd03.prod.outlook.com (2603:1096:400:421::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8182.20; Thu, 28 Nov
- 2024 06:02:23 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%3]) with mapi id 15.20.8182.018; Thu, 28 Nov 2024
- 06:02:23 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"tzimmermann@suse.de" <tzimmermann@suse.de>, "simona@ffwll.ch"
-	<simona@ffwll.ch>, "mripard@kernel.org" <mripard@kernel.org>,
-	"kernel@collabora.com" <kernel@collabora.com>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "maarten.lankhorst@linux.intel.com"
-	<maarten.lankhorst@linux.intel.com>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"airlied@gmail.com" <airlied@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-Subject: Re: [PATCH v1 2/7] dt-bindings: display: mediatek: Add binding for
- MT8195 HDMI-TX v2
-Thread-Topic: [PATCH v1 2/7] dt-bindings: display: mediatek: Add binding for
- MT8195 HDMI-TX v2
-Thread-Index: AQHbO0o5ukncxVfT6kWYuLGFTOD1aLLMP5kA
-Date: Thu, 28 Nov 2024 06:02:23 +0000
-Message-ID: <721896498fe9a5ba5a942fe837deb90d461b5090.camel@mediatek.com>
-References: <20241120124512.134278-1-angelogioacchino.delregno@collabora.com>
-	 <20241120124512.134278-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20241120124512.134278-3-angelogioacchino.delregno@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB7553:EE_
-x-ms-office365-filtering-correlation-id: c505953e-886e-468e-d7d3-08dd0f723a2c
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?U2VKeHMyM2JUMnROV0JVSzA4VXlDbnF5T25kMzdaYnkwYXZRQXhMaEN3RGdY?=
- =?utf-8?B?UkxlY1FRVHBFS1dGZ3k1L1JweVhSV1V3anZ5U2VveCtFbnY2Yk11RDhTaEVK?=
- =?utf-8?B?UFdaSGhTUmYrV2YvSkU1Qkg1eDBiN0MrdjZNQTRCOU9sSm83VzhWaDMyTFYv?=
- =?utf-8?B?WXdFbGdjZGdxekFHNk0yUTFwQWNwTU95QXFoN3VyYjc0eWpjWWNzZHhBUXBy?=
- =?utf-8?B?Y0hBSVVIdERGbFpDalQ2NXkxMEI3Wlc0bVhOandvM2pkRU5wV0dFWVhGdjRt?=
- =?utf-8?B?bjM0VFJGc3E2M2F6TVl0YmpFZTVBNXIwM3Z4S2gxNnp1MCthQ2NvU2J6UGpL?=
- =?utf-8?B?d2pUNSszS2VVc0dtbTNIR2VwcDBoM3I2R0JYNmFhSUlPOUJJajdwOFJRL3Iw?=
- =?utf-8?B?cjhtek5JUTZvbWxKSWxaMy9HVG5JV29EdCsrYTk0UGFSTVNnVWZIMUIrc0tY?=
- =?utf-8?B?Q1ZQNTJaYW9hR0pSZk1iY3lXSU1uZURSVkZUcURSWXFzMEFWMG50ckpBNWl0?=
- =?utf-8?B?UEVuZThHQ0JGaXcyZmNndHhOa05JbzZXajB4cW5JcjVIVVZCY0E3Wnc4S3FR?=
- =?utf-8?B?M1pvWDhIUXUrSDFkcXlKS1FtcVpVdU1jeU82OE93eEFKN2FRVWNiTUdyNnBG?=
- =?utf-8?B?Q21OMG1lbDJpdFlLMUZEQmhvVmN3M0Z3dTV1R3ZIQ2JCTjhGM25PK3NocitH?=
- =?utf-8?B?RVY4SVpwbDBNRzNIM3NoZHR5cUdZaE5yYWhTYWU4NmRZTTVVNEU4ZmowRkR6?=
- =?utf-8?B?a1hQcDNaU3A3dHl1U1FET296VkRSVTZ5NjU0NkdnMlQ0K3Yva0o0QUkwU0hN?=
- =?utf-8?B?K0dvQkpQNkRMaFlXcmVFZVUrVTFpQ012TmdJRUhzN01ncUtSQjBnVWRNOVhK?=
- =?utf-8?B?VjFHS1B1Skx1L0tLSmFMdmhBVHpkVGtiUGxwNUVJWVR5WjhtbjdPTGJCWmdD?=
- =?utf-8?B?SUtMMnRLbk5VZmNwbStJMndIOXl5MThkdzl2R2oxUWNYYVo2aGpVUmNLV1FZ?=
- =?utf-8?B?Uy94aVJ1eTlzWG5jMEVpczJyUmF4QS9aSDRKYVhpZWNIckZzT0R1d0pzWW9Q?=
- =?utf-8?B?NnRBNWh6cTBYdEN6OHJlMWJVQWxMQzdnUFZvWXdMQVo1ejRlQVE3ODkya2RW?=
- =?utf-8?B?cG1OU2o1NnBFMmR2THJtT2FYbldmWW1TTlRXa1drcCsrMGhlRjNiRmdXU2I4?=
- =?utf-8?B?OHNiWUo0UVVsajZxYVdCMmZaelZSL0ZuZVJicFo4L3JxS0xzajJWQnQ4QmdH?=
- =?utf-8?B?bFJERm1ad2MvQzlNYUJnVlJKdVhFOXhzaE5yVU4wMHJPUHVPSzhMYmZNWmlu?=
- =?utf-8?B?QmlBeitQQW4wQXpKRS8zemlDMlpwTGRrVVRPL1RjZDc2eTBpcW1RNm5ENjdH?=
- =?utf-8?B?Y0YvdFc4ZkRDWFl6NzdXaDltK2F0bzBGN1ZnUGxYc1BkeGtlWUlnNDArSGdH?=
- =?utf-8?B?TnRLaWJNbjhJenRENWtMb0ZMbTRLVjcwU2MzR0xWV1hINmk2cDJ0c2NiTFNT?=
- =?utf-8?B?TzBXNytKT1paczkvSmVqRzZ6ZVBDbkZkRmYvdGFaQ3UzOUZ5cDg0M1RQUjJK?=
- =?utf-8?B?U2RQQmo2aFJDRVdmVzVldGEzRVVVYTR4ZUVGcmx1SnljWFEyb0RxcWJVTXMy?=
- =?utf-8?B?R2FNY09lME83dXBmVGhFZklGQWZPeFFnVE5KNGk5bVViY253U0FqZDVJcTBo?=
- =?utf-8?B?ekh1MGsrYVA1ZVdVTjN4T2RMbG5idTFtVm40MmhSY0VlYkg4eVFTaVBOWGVY?=
- =?utf-8?B?eTRNdk5Sa2t4cjlwUnU4SVNFMGcxOGQ3YUV1eWl3bG4rVjJWUGE3QTlNMHZE?=
- =?utf-8?Q?A5NBTeDUQf+HKzVoOBncpymhDWLja3AnfPXwg=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RmtYVGVzV1ZTR3ZYNGluMHBDMVJ5SENSbURzeWg1NktaRUxubzkzK1dNNTRz?=
- =?utf-8?B?QjdaQVhSVnJKU1hsNkJQSlUrVXlJeUEyd0IzMzhmQjBSSC9VWGZlcHB6WXBx?=
- =?utf-8?B?bEt5U1lMVlcvS1dTeHh1OUVVM1ZBVllxa2kzemgxZDlZYTVZbEo0NUJ4dlJo?=
- =?utf-8?B?cXhUVklCZjhUN3FmMjN5VVdQTWRhTjFYdkxwbDltNHgyRjQvNmp0R3lPcjNj?=
- =?utf-8?B?V041aERzWGNjZFM5dHJub2krVHVvdWRpdHVtbnVnd0RSMXZRVWt0ZmhwUUpi?=
- =?utf-8?B?YlZqbnRTNmNkRWYrVWQyUkY3Wmd5MU9MMDJjRGpxdWZPMGtIbmFBUkJnUU80?=
- =?utf-8?B?d0NCMExPNXBlVnZKdjNpaGpkdHA1N1FIMGt5Z2tObG9ad1hPY0owN2UreGE5?=
- =?utf-8?B?VTh3YUt3enhrL0FNRjVmVWJYL3dQTlhrdVdwc2NLTFZ5S21NNDZ3RU1zUXV0?=
- =?utf-8?B?TUZZblF6S0lhc0RVZXFCdlZIbTlvOWlwbEpUTkY4SmVJSlVwVDh4Z0NkSCtn?=
- =?utf-8?B?OXNkUjFMTHB1NngvUVFMdmcvajlPVEJzRUpGT0VLMlYwRDVTS0JqQ21MbWZm?=
- =?utf-8?B?THg1ZVpyL2JkbEVjRndJUkFpR2h6Wjl3ZVRQeWtNM0pOWDVrU2dQL2RuU0FC?=
- =?utf-8?B?cVR1M0x3RVl6b3Y1dUNNOEMxcWVzTjRzQ204dHZYTEdzUUVOZE52VzNHVkpz?=
- =?utf-8?B?N1RkeG1NTzF4VjM2SEZlb1lZUmQwQktZUWRheHBwSm1kTEhIczdzQ0JvNGpw?=
- =?utf-8?B?U1VvZWZJNUdXKzZHMWh3R1hZM0dxY1Rvemt6bnora0lTNG5IdWpDN3BJdFpV?=
- =?utf-8?B?NWRQSG0xcEpsK1JDOTBlVVlVc0hiZVdiZ0FJZWk1MjVOa24zVlNiclE1dVV1?=
- =?utf-8?B?N3gzVkFsd1g3THZWVkg3cU9nQzdYbklvTHVvQnFKdGVtcmJsdVYvTUNGQ3lj?=
- =?utf-8?B?eWZMZHdZcVA3TjAvRis1UEJqQlZlRHZ6VjlUMlZiNVB3Z0x2MEFkaVNzM1dN?=
- =?utf-8?B?QmUwVzZlbEQxL25ndTBxS1VkeHFkWHJPYVdHZzhvYUdaMmRQZXNMNmYwelVh?=
- =?utf-8?B?M21QcXNhaWhQQXpTbGZYSjcxY3puUkVRd0JBWHo3bE1VN3NRQlVNcG5wTlF0?=
- =?utf-8?B?Mmk2RHBVRlNwZFppekVFMEhEem1XVDRpNC9TTzFzNEptQzhKUTkwVEp2TDZv?=
- =?utf-8?B?Z3lqZmR4bmxrZTJrVFN2dlVxUWsyem0zUTJ1b0t3M3I0L3YwaGhFOXNIcUph?=
- =?utf-8?B?NkNIcDg4ZjllMUkwZjdjaTdoK2lSQWlWVGYvRlF2QzYyc0xGVnhtZldvcmlw?=
- =?utf-8?B?MHFFL1EwVGhWOEgxbEFkNXlrOE5RckhSZTZoZTlLWEt3dk1Ccm9FbEpONEpp?=
- =?utf-8?B?MFBRaUxzTktMeTQwaFlNWjBsWUUxK2gzSDBDbzlqb2dNMlVnUDEyQVdTaGlM?=
- =?utf-8?B?RGxZOVlKNzdLdTFNWUVUY2N6ZG02Z29DWmV5cjcwOWR5Q3FBV2JWUkdpY1Fs?=
- =?utf-8?B?eE9ZZGM4NWhibkgzOEh1ZjhLdXZ3QnFHMFk4NTNLT3J0SXZsVEJzMldicG5h?=
- =?utf-8?B?ZGdWQ01mbVN1L1FTQzEwc3JYQkRNdXNvTGJiRklDU3QwRzNYNWY1SFd4c0E2?=
- =?utf-8?B?RFRlYUhKTUplSVFheEkzclRCZEd0TEhESURtYWRoUTMycXA1TkFZZzlUNjNP?=
- =?utf-8?B?MTZpVlA0dUtVTWsxNUpJVzgyMFhyV0RpL1dzM21pWFpRUEw3SmxPLzlsNjN5?=
- =?utf-8?B?THVickx5ZmpsVnZ0TXZpc3lyQ2xEN2NYR3RyYk9wVmpqMlVKbWZjMWlBR0hi?=
- =?utf-8?B?MnRHMEFyYTREQ0lHa1FzYXFKdGNEMFZHRlhlb1A5NFRCa1BXS3F4SGVQRVJG?=
- =?utf-8?B?Q1V0S1JqTCt1MHcybzU1ZklWT0JXcjJzMllkdGgzZ2ZhcmJNRHFSSFBnTnNZ?=
- =?utf-8?B?cE5jQ2Z6N0RkRXU1TlpvY2kwMnZmREM0KzQ2VFEzN3VEbm5XaEhnZWlRZElB?=
- =?utf-8?B?L25TM242R2VaaHlFLy9WOXNJMVg4YzRKZzROYVMvcEpGeXQ2aTVhVzRQdXE1?=
- =?utf-8?B?MmxZU1VySzNDSkRDRncyUzlra1pTKy9FaGt5ZGMvd0tDcGpLNjRpamlEU3RH?=
- =?utf-8?B?amliZ1NIUjJDZlB4cmhPV3cvQUJTdlpkMDI3MEhXUFdQU0JNUnp4aWFpL2o2?=
- =?utf-8?B?bmc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <5942E7D5A750C041B2536D3025969353@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1tGaDO-0000000F3oJ-0giw;
+	Thu, 28 Nov 2024 08:49:35 +0000
+Received: from pps.filterd (m0288072.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AS20fp6032587;
+	Thu, 28 Nov 2024 09:49:20 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=selector1; bh=
+	f0OxH3wtdemYyz01Yb+Te/k2HhBq/Vf5wfmG702w8ds=; b=lenFKO0cjBOcKClN
+	3jZQ8Xva9eGXdMPgxgvNBwicqik6OpsLQoGvA3oJPyskO+Cp+pc/o/vG+yPuYceh
+	/a4+2jsMWRKbIzcyTYejBna410M46nvm1MiaqZCUGCj9XdGBg9ZuDS4tS222icL7
+	y3AmgjT4oSyj8dzdnnQ/cD7RZzUjcu9IAvNb/KnybAaVgC96DDwje9O30SJQf3gi
+	muzGBrubh3NNTS22Sp0CPeBQjPuxOh4evjk3KqrFmuvr/dwhwsAgwbmY4FbKeBz5
+	/MEoSBYP9yeCzq2m73CBnkRYiq4yDu/K3AcCMhp0bm0kH153UKO0LPSC1e3UJB2i
+	DUqfpg==
+Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 436713k67r-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 28 Nov 2024 09:49:19 +0100 (CET)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 42D234005E;
+	Thu, 28 Nov 2024 09:47:25 +0100 (CET)
+Received: from Webmail-eu.st.com (eqndag1node5.st.com [10.75.129.134])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id BEB49269609;
+	Thu, 28 Nov 2024 09:43:00 +0100 (CET)
+Received: from SAFDAG1NODE1.st.com (10.75.90.17) by EQNDAG1NODE5.st.com
+ (10.75.129.134) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 28 Nov
+ 2024 09:43:00 +0100
+Received: from localhost (10.48.86.121) by SAFDAG1NODE1.st.com (10.75.90.17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 28 Nov
+ 2024 09:43:00 +0100
+From: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
+To: Bjorn Andersson <andersson@kernel.org>,
+        Mathieu Poirier
+	<mathieu.poirier@linaro.org>,
+        Shawn Guo <shawnguo@kernel.org>,
+        Sascha Hauer
+	<s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Neil Armstrong
+	<neil.armstrong@linaro.org>,
+        Kevin Hilman <khilman@baylibre.com>,
+        "Jerome
+ Brunet" <jbrunet@baylibre.com>,
+        Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Patrice Chotard
+	<patrice.chotard@foss.st.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>
+CC: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
+        kernel test robot
+	<lkp@intel.com>, <linux-remoteproc@vger.kernel.org>,
+        <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>
+Subject: [PATCH v15 4/8] remoteproc: Rename load() operation to load_segments() in rproc_ops struct
+Date: Thu, 28 Nov 2024 09:42:11 +0100
+Message-ID: <20241128084219.2159197-5-arnaud.pouliquen@foss.st.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241128084219.2159197-1-arnaud.pouliquen@foss.st.com>
+References: <20241128084219.2159197-1-arnaud.pouliquen@foss.st.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c505953e-886e-468e-d7d3-08dd0f723a2c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Nov 2024 06:02:23.3161
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WgYi9xhzx+heevPKH1qgqNcqBWceNj2mT48yZ7CPn35rU8srnQ9YYfkKYKb2jFBk5t0A6fK+MsDvmaced1dKYA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7553
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.48.86.121]
+X-ClientProxiedBy: SAFCAS1NODE1.st.com (10.75.90.11) To SAFDAG1NODE1.st.com
+ (10.75.90.17)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_220232_750309_ADDD799F 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20241128_004934_505881_54A40F69 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -218,59 +120,312 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEFuZ2VsbzoNCg0KT24gV2VkLCAyMDI0LTExLTIwIGF0IDEzOjQ1ICswMTAwLCBBbmdlbG9H
-aW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToNCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8g
-bm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwgeW91IGhhdmUgdmVyaWZp
-ZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gDQo+IA0KPiBBZGQgYSBiaW5kaW5nIGZv
-ciB0aGUgSERNSSBUWCB2MiBFbmNvZGVyIGZvdW5kIGluIE1lZGlhVGVrIE1UODE5NQ0KPiBhbmQg
-TVQ4MTg4IFNvQ3MuDQo+IA0KPiBUaGlzIGZ1bGx5IHN1cHBvcnRzIHRoZSBIRE1JIFNwZWNpZmlj
-YXRpb24gMi4wYiwgaGVuY2UgaXQgcHJvdmlkZXMNCj4gc3VwcG9ydCBmb3IgM0QtSERNSSwgUG9s
-YXJpdHkgaW52ZXJzaW9uLCB1cCB0byAxNiBiaXRzIERlZXAgQ29sb3IsDQo+IGNvbG9yIHNwYWNl
-cyBpbmNsdWRpbmcgUkdCNDQ0LCBZQ0JDUjQyMC80MjIvNDQ0IChJVFU2MDEvSVRVNzA5KSBhbmQN
-Cj4geHZZQ0MsIHdpdGggb3V0cHV0IHJlc29sdXRpb25zIHVwIHRvIDM4NDB4MjE2MHBANjBIei4N
-Cj4gDQo+IE1vcmVvdmVyLCBpdCBhbHNvIHN1cHBvcnRzIEhEQ1AgMS40IGFuZCAyLjMsIFZhcmlh
-YmxlIFJlZnJlc2ggUmF0ZQ0KPiAoVlJSKSBhbmQgQ29uc3VtZXIgRWxlY3Ryb25pY3MgQ29udHJv
-bCAoQ0VDKS4NCj4gDQo+IFRoaXMgSVAgYWxzbyBpbmNsdWRlcyBzdXBwb3J0IGZvciBIRE1JIEF1
-ZGlvLCBpbmNsdWRpbmcgSUVDNjA5NTgNCj4gYW5kIElFQzYxOTM3IFNQRElGLCA4LWNoYW5uZWwg
-UENNLCBEU0QsIGFuZCBvdGhlciBsb3NzbGVzcyBhdWRpbw0KPiBhY2NvcmRpbmcgdG8gSERNSSAy
-LjAuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5n
-ZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPg0KPiAtLS0NCj4gIC4uLi9tZWRp
-YXRlay9tZWRpYXRlayxtdDgxOTUtaGRtaS55YW1sICAgICAgICB8IDE1MCArKysrKysrKysrKysr
-KysrKysNCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNTAgaW5zZXJ0aW9ucygrKQ0KPiAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
-dGVrL21lZGlhdGVrLG10ODE5NS1oZG1pLnlhbWwNCj4gDQo+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxtdDgx
-OTUtaGRtaS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
-bWVkaWF0ZWsvbWVkaWF0ZWssbXQ4MTk1LWhkbWkueWFtbA0KPiBuZXcgZmlsZSBtb2RlIDEwMDY0
-NA0KPiBpbmRleCAwMDAwMDAwMDAwMDAuLjI3M2E4ODcxNDYxZQ0KPiAtLS0gL2Rldi9udWxsDQo+
-ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVr
-L21lZGlhdGVrLG10ODE5NS1oZG1pLnlhbWwNCj4gQEAgLTAsMCArMSwxNTAgQEANCj4gKyMgU1BE
-WC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xhdXNlKQ0KPiAr
-JVlBTUwgMS4yDQo+ICstLS0NCj4gKyRpZDogaHR0cHM6Ly91cmxkZWZlbnNlLmNvbS92My9fX2h0
-dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssbXQ4
-MTk1LWhkbWkueWFtbCpfXztJdyEhQ1RSTktBOXdNZzBBUmJ3IWx1MERfQzNUd1EyLTAyaldZQUJu
-TUlROHZFb1V3UDBPNGdiUW5kSm5QVU1wZGk2d1hkQUhyYTlpdkNmQjd6b2VsREk3cXNTMjBZZFJs
-bVA0YkVLQUFCbGV0WEZYJA0KPiArJHNjaGVtYTogaHR0cHM6Ly91cmxkZWZlbnNlLmNvbS92My9f
-X2h0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1sKl9fO0l3ISFDVFJO
-S0E5d01nMEFSYnchbHUwRF9DM1R3UTItMDJqV1lBQm5NSVE4dkVvVXdQME80Z2JRbmRKblBVTXBk
-aTZ3WGRBSHJhOWl2Q2ZCN3pvZWxESTdxc1MyMFlkUmxtUDRiRUtBQUZsblktS1kkDQo+ICsNCj4g
-K3RpdGxlOiBNZWRpYVRlayBIRE1JLVRYIHYyIEVuY29kZXINCj4gKw0KPiArbWFpbnRhaW5lcnM6
-DQo+ICsgIC0gQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
-cmVnbm9AY29sbGFib3JhLmNvbT4NCj4gKyAgLSBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPg0K
-PiArDQo+ICtkZXNjcmlwdGlvbjogfA0KPiArICBUaGUgTWVkaWFUZWsgSERNSS1UWCB2MiBlbmNv
-ZGVyIGNhbiBnZW5lcmF0ZSBIRE1JIGZvcm1hdCBkYXRhIGJhc2VkIG9uDQo+ICsgIHRoZSBIRE1J
-IFNwZWNpZmljYXRpb24gMi4wYi4NCj4gKw0KPiArcHJvcGVydGllczoNCj4gKyAgY29tcGF0aWJs
-ZToNCj4gKyAgICBlbnVtOg0KPiArICAgICAgLSBtZWRpYXRlayxtdDgxODgtaGRtaS10eA0KPiAr
-ICAgICAgLSBtZWRpYXRlayxtdDgxOTUtaGRtaS10eA0KPiArDQo+ICsgIHJlZzoNCj4gKyAgICBt
-YXhJdGVtczogMQ0KPiArDQo+ICsgIGludGVycnVwdHM6DQo+ICsgICAgbWF4SXRlbXM6IDENCj4g
-Kw0KPiArICBjbG9ja3M6DQo+ICsgICAgaXRlbXM6DQo+ICsgICAgICAtIGRlc2NyaXB0aW9uOiBI
-RE1JIEFQQiBjbG9jaw0KPiArICAgICAgLSBkZXNjcmlwdGlvbjogSERDUCB0b3AgY2xvY2sNCj4g
-KyAgICAgIC0gZGVzY3JpcHRpb246IEhEQ1AgcmVmZXJlbmNlIGNsb2NrDQo+ICsgICAgICAtIGRl
-c2NyaXB0aW9uOiBWUFAgSERNSSBTcGxpdCBjbG9jaw0KDQpJIHdvdWxkIGxpa2UgdG8ga25vdyBt
-b3JlIGFib3V0IEhETUkgdjIuDQpXb3VsZCB5b3UgbWFwIGVhY2ggdjIgY2xvY2sgdG8gdjEgY2xv
-Y2s/DQpJZiBvbmUgY2xvY2sgaGFzIG5vIG1hcHBpbmcsIGlzIGl0IGEgbmV3IGZlYXR1cmUgdGhh
-dCB2MSBkb2VzIG5vdCBoYXM/DQoNClJlZ2FyZHMsDQpDSw0KDQo+ICsNCj4gKyAgY2xvY2stbmFt
-ZXM6DQo+ICsgICAgaXRlbXM6DQo+ICsgICAgICAtIGNvbnN0OiBidXMNCj4gKyAgICAgIC0gY29u
-c3Q6IGhkY3ANCj4gKyAgICAgIC0gY29uc3Q6IGhkY3AyNG0NCj4gKyAgICAgIC0gY29uc3Q6IGhk
-bWktc3BsaXQNCj4gKw0KPiANCj4gLS0NCj4gMi40Ny4wDQo+IA0K
+With the introduction of the load_fw() operation in the rproc_ops
+structure, we need to clarify the difference in the use of the load()
+and load_fw() ops.
+
+The legacy load() is dedicated to loading the ELF segments into memory.
+Rename this to a more explicit name: load_segments().
+
+Suggested-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+Signed-off-by: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
+---
+Update vs version V14:
+Fix: Rename missing load() to load_segments() in drivers/remoteproc/pru_rproc.c.
+
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202411281332.Ra70nJAW-lkp@intel.com/
+
+---
+ drivers/remoteproc/imx_dsp_rproc.c       | 2 +-
+ drivers/remoteproc/imx_rproc.c           | 2 +-
+ drivers/remoteproc/meson_mx_ao_arc.c     | 2 +-
+ drivers/remoteproc/mtk_scp.c             | 2 +-
+ drivers/remoteproc/pru_rproc.c           | 2 +-
+ drivers/remoteproc/qcom_q6v5_adsp.c      | 2 +-
+ drivers/remoteproc/qcom_q6v5_mss.c       | 2 +-
+ drivers/remoteproc/qcom_q6v5_pas.c       | 4 ++--
+ drivers/remoteproc/qcom_q6v5_wcss.c      | 4 ++--
+ drivers/remoteproc/qcom_wcnss.c          | 2 +-
+ drivers/remoteproc/rcar_rproc.c          | 2 +-
+ drivers/remoteproc/remoteproc_core.c     | 4 ++--
+ drivers/remoteproc/remoteproc_internal.h | 4 ++--
+ drivers/remoteproc/st_remoteproc.c       | 2 +-
+ drivers/remoteproc/st_slim_rproc.c       | 2 +-
+ drivers/remoteproc/stm32_rproc.c         | 2 +-
+ drivers/remoteproc/xlnx_r5_remoteproc.c  | 2 +-
+ include/linux/remoteproc.h               | 4 ++--
+ 18 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/drivers/remoteproc/imx_dsp_rproc.c b/drivers/remoteproc/imx_dsp_rproc.c
+index 376187ad5754..a4a85fbce907 100644
+--- a/drivers/remoteproc/imx_dsp_rproc.c
++++ b/drivers/remoteproc/imx_dsp_rproc.c
+@@ -934,7 +934,7 @@ static const struct rproc_ops imx_dsp_rproc_ops = {
+ 	.start		= imx_dsp_rproc_start,
+ 	.stop		= imx_dsp_rproc_stop,
+ 	.kick		= imx_dsp_rproc_kick,
+-	.load		= imx_dsp_rproc_elf_load_segments,
++	.load_segments	= imx_dsp_rproc_elf_load_segments,
+ 	.parse_fw	= imx_dsp_rproc_parse_fw,
+ 	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
+ 	.sanity_check	= rproc_elf_sanity_check,
+diff --git a/drivers/remoteproc/imx_rproc.c b/drivers/remoteproc/imx_rproc.c
+index 800015ff7ff9..f45b3207f7e9 100644
+--- a/drivers/remoteproc/imx_rproc.c
++++ b/drivers/remoteproc/imx_rproc.c
+@@ -681,7 +681,7 @@ static const struct rproc_ops imx_rproc_ops = {
+ 	.stop		= imx_rproc_stop,
+ 	.kick		= imx_rproc_kick,
+ 	.da_to_va       = imx_rproc_da_to_va,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.parse_fw	= imx_rproc_parse_fw,
+ 	.find_loaded_rsc_table = imx_rproc_elf_find_loaded_rsc_table,
+ 	.get_loaded_rsc_table = imx_rproc_get_loaded_rsc_table,
+diff --git a/drivers/remoteproc/meson_mx_ao_arc.c b/drivers/remoteproc/meson_mx_ao_arc.c
+index f6744b538323..a1c8c0929ce3 100644
+--- a/drivers/remoteproc/meson_mx_ao_arc.c
++++ b/drivers/remoteproc/meson_mx_ao_arc.c
+@@ -137,7 +137,7 @@ static struct rproc_ops meson_mx_ao_arc_rproc_ops = {
+ 	.stop		= meson_mx_ao_arc_rproc_stop,
+ 	.da_to_va	= meson_mx_ao_arc_rproc_da_to_va,
+ 	.get_boot_addr	= rproc_elf_get_boot_addr,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.sanity_check	= rproc_elf_sanity_check,
+ };
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index e744c07507ee..4e9a8bf3bc6e 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -924,7 +924,7 @@ static int scp_stop(struct rproc *rproc)
+ static const struct rproc_ops scp_ops = {
+ 	.start		= scp_start,
+ 	.stop		= scp_stop,
+-	.load		= scp_load,
++	.load_segments	= scp_load,
+ 	.da_to_va	= scp_da_to_va,
+ 	.parse_fw	= scp_parse_fw,
+ 	.sanity_check	= rproc_elf_sanity_check,
+diff --git a/drivers/remoteproc/pru_rproc.c b/drivers/remoteproc/pru_rproc.c
+index 327f0c7ee3d6..0b2bf2574f74 100644
+--- a/drivers/remoteproc/pru_rproc.c
++++ b/drivers/remoteproc/pru_rproc.c
+@@ -1015,7 +1015,7 @@ static int pru_rproc_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 	/* use a custom load function to deal with PRU-specific quirks */
+-	rproc->ops->load = pru_rproc_load_elf_segments;
++	rproc->ops->load_segments = pru_rproc_load_elf_segments;
+ 
+ 	/* use a custom parse function to deal with PRU-specific resources */
+ 	rproc->ops->parse_fw = pru_rproc_parse_fw;
+diff --git a/drivers/remoteproc/qcom_q6v5_adsp.c b/drivers/remoteproc/qcom_q6v5_adsp.c
+index 572dcb0f055b..aa9896930bcf 100644
+--- a/drivers/remoteproc/qcom_q6v5_adsp.c
++++ b/drivers/remoteproc/qcom_q6v5_adsp.c
+@@ -527,7 +527,7 @@ static const struct rproc_ops adsp_ops = {
+ 	.stop = adsp_stop,
+ 	.da_to_va = adsp_da_to_va,
+ 	.parse_fw = adsp_parse_firmware,
+-	.load = adsp_load,
++	.load_segments = adsp_load,
+ 	.panic = adsp_panic,
+ };
+ 
+diff --git a/drivers/remoteproc/qcom_q6v5_mss.c b/drivers/remoteproc/qcom_q6v5_mss.c
+index 2a42215ce8e0..a8beac1deabe 100644
+--- a/drivers/remoteproc/qcom_q6v5_mss.c
++++ b/drivers/remoteproc/qcom_q6v5_mss.c
+@@ -1687,7 +1687,7 @@ static const struct rproc_ops q6v5_ops = {
+ 	.start = q6v5_start,
+ 	.stop = q6v5_stop,
+ 	.parse_fw = qcom_q6v5_register_dump_segments,
+-	.load = q6v5_load,
++	.load_segments = q6v5_load,
+ 	.panic = q6v5_panic,
+ };
+ 
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index ef82835e98a4..9b269ce390c1 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -436,7 +436,7 @@ static const struct rproc_ops adsp_ops = {
+ 	.stop = adsp_stop,
+ 	.da_to_va = adsp_da_to_va,
+ 	.parse_fw = qcom_register_dump_segments,
+-	.load = adsp_load,
++	.load_segments = adsp_load,
+ 	.panic = adsp_panic,
+ };
+ 
+@@ -446,7 +446,7 @@ static const struct rproc_ops adsp_minidump_ops = {
+ 	.stop = adsp_stop,
+ 	.da_to_va = adsp_da_to_va,
+ 	.parse_fw = qcom_register_dump_segments,
+-	.load = adsp_load,
++	.load_segments = adsp_load,
+ 	.panic = adsp_panic,
+ 	.coredump = adsp_minidump,
+ };
+diff --git a/drivers/remoteproc/qcom_q6v5_wcss.c b/drivers/remoteproc/qcom_q6v5_wcss.c
+index e913dabae992..44b5736dc8b9 100644
+--- a/drivers/remoteproc/qcom_q6v5_wcss.c
++++ b/drivers/remoteproc/qcom_q6v5_wcss.c
+@@ -771,7 +771,7 @@ static const struct rproc_ops q6v5_wcss_ipq8074_ops = {
+ 	.start = q6v5_wcss_start,
+ 	.stop = q6v5_wcss_stop,
+ 	.da_to_va = q6v5_wcss_da_to_va,
+-	.load = q6v5_wcss_load,
++	.load_segments = q6v5_wcss_load,
+ 	.get_boot_addr = rproc_elf_get_boot_addr,
+ };
+ 
+@@ -779,7 +779,7 @@ static const struct rproc_ops q6v5_wcss_qcs404_ops = {
+ 	.start = q6v5_qcs404_wcss_start,
+ 	.stop = q6v5_wcss_stop,
+ 	.da_to_va = q6v5_wcss_da_to_va,
+-	.load = q6v5_wcss_load,
++	.load_segments = q6v5_wcss_load,
+ 	.get_boot_addr = rproc_elf_get_boot_addr,
+ 	.parse_fw = qcom_register_dump_segments,
+ };
+diff --git a/drivers/remoteproc/qcom_wcnss.c b/drivers/remoteproc/qcom_wcnss.c
+index a7bb9da27029..42102bc4c458 100644
+--- a/drivers/remoteproc/qcom_wcnss.c
++++ b/drivers/remoteproc/qcom_wcnss.c
+@@ -335,7 +335,7 @@ static const struct rproc_ops wcnss_ops = {
+ 	.stop = wcnss_stop,
+ 	.da_to_va = wcnss_da_to_va,
+ 	.parse_fw = qcom_register_dump_segments,
+-	.load = wcnss_load,
++	.load_segments = wcnss_load,
+ };
+ 
+ static irqreturn_t wcnss_wdog_interrupt(int irq, void *dev)
+diff --git a/drivers/remoteproc/rcar_rproc.c b/drivers/remoteproc/rcar_rproc.c
+index cc17e8421f65..e36778fec072 100644
+--- a/drivers/remoteproc/rcar_rproc.c
++++ b/drivers/remoteproc/rcar_rproc.c
+@@ -142,7 +142,7 @@ static struct rproc_ops rcar_rproc_ops = {
+ 	.prepare	= rcar_rproc_prepare,
+ 	.start		= rcar_rproc_start,
+ 	.stop		= rcar_rproc_stop,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.parse_fw	= rcar_rproc_parse_fw,
+ 	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
+ 	.sanity_check	= rproc_elf_sanity_check,
+diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+index 8df4b2c59bb6..e4ad024efcda 100644
+--- a/drivers/remoteproc/remoteproc_core.c
++++ b/drivers/remoteproc/remoteproc_core.c
+@@ -2485,11 +2485,11 @@ static int rproc_alloc_ops(struct rproc *rproc, const struct rproc_ops *ops)
+ 	if (!rproc->ops->coredump)
+ 		rproc->ops->coredump = rproc_coredump;
+ 
+-	if (rproc->ops->load || rproc->ops->load_fw)
++	if (rproc->ops->load_segments || rproc->ops->load_fw)
+ 		return 0;
+ 
+ 	/* Default to ELF loader if no load function is specified */
+-	rproc->ops->load = rproc_elf_load_segments;
++	rproc->ops->load_segments = rproc_elf_load_segments;
+ 	rproc->ops->parse_fw = rproc_elf_load_rsc_table;
+ 	rproc->ops->find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table;
+ 	rproc->ops->sanity_check = rproc_elf_sanity_check;
+diff --git a/drivers/remoteproc/remoteproc_internal.h b/drivers/remoteproc/remoteproc_internal.h
+index 2104ca449178..b898494600cf 100644
+--- a/drivers/remoteproc/remoteproc_internal.h
++++ b/drivers/remoteproc/remoteproc_internal.h
+@@ -167,8 +167,8 @@ u64 rproc_get_boot_addr(struct rproc *rproc, const struct firmware *fw)
+ static inline
+ int rproc_load_segments(struct rproc *rproc, const struct firmware *fw)
+ {
+-	if (rproc->ops->load)
+-		return rproc->ops->load(rproc, fw);
++	if (rproc->ops->load_segments)
++		return rproc->ops->load_segments(rproc, fw);
+ 
+ 	return -EINVAL;
+ }
+diff --git a/drivers/remoteproc/st_remoteproc.c b/drivers/remoteproc/st_remoteproc.c
+index 1340be9d0110..8d6b75e91531 100644
+--- a/drivers/remoteproc/st_remoteproc.c
++++ b/drivers/remoteproc/st_remoteproc.c
+@@ -233,7 +233,7 @@ static const struct rproc_ops st_rproc_ops = {
+ 	.start			= st_rproc_start,
+ 	.stop			= st_rproc_stop,
+ 	.parse_fw		= st_rproc_parse_fw,
+-	.load			= rproc_elf_load_segments,
++	.load_segments		= rproc_elf_load_segments,
+ 	.find_loaded_rsc_table	= rproc_elf_find_loaded_rsc_table,
+ 	.sanity_check		= rproc_elf_sanity_check,
+ 	.get_boot_addr		= rproc_elf_get_boot_addr,
+diff --git a/drivers/remoteproc/st_slim_rproc.c b/drivers/remoteproc/st_slim_rproc.c
+index 5412beb0a692..0f91d8f1e7c7 100644
+--- a/drivers/remoteproc/st_slim_rproc.c
++++ b/drivers/remoteproc/st_slim_rproc.c
+@@ -201,7 +201,7 @@ static const struct rproc_ops slim_rproc_ops = {
+ 	.stop		= slim_rproc_stop,
+ 	.da_to_va       = slim_rproc_da_to_va,
+ 	.get_boot_addr	= rproc_elf_get_boot_addr,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.sanity_check	= rproc_elf_sanity_check,
+ };
+ 
+diff --git a/drivers/remoteproc/stm32_rproc.c b/drivers/remoteproc/stm32_rproc.c
+index 8c7f7950b80e..7e8ffd9fcc57 100644
+--- a/drivers/remoteproc/stm32_rproc.c
++++ b/drivers/remoteproc/stm32_rproc.c
+@@ -667,7 +667,7 @@ static const struct rproc_ops st_rproc_ops = {
+ 	.attach		= stm32_rproc_attach,
+ 	.detach		= stm32_rproc_detach,
+ 	.kick		= stm32_rproc_kick,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.parse_fw	= stm32_rproc_parse_fw,
+ 	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
+ 	.get_loaded_rsc_table = stm32_rproc_get_loaded_rsc_table,
+diff --git a/drivers/remoteproc/xlnx_r5_remoteproc.c b/drivers/remoteproc/xlnx_r5_remoteproc.c
+index 5aeedeaf3c41..59cfba0a02e7 100644
+--- a/drivers/remoteproc/xlnx_r5_remoteproc.c
++++ b/drivers/remoteproc/xlnx_r5_remoteproc.c
+@@ -864,7 +864,7 @@ static const struct rproc_ops zynqmp_r5_rproc_ops = {
+ 	.unprepare	= zynqmp_r5_rproc_unprepare,
+ 	.start		= zynqmp_r5_rproc_start,
+ 	.stop		= zynqmp_r5_rproc_stop,
+-	.load		= rproc_elf_load_segments,
++	.load_segments	= rproc_elf_load_segments,
+ 	.parse_fw	= zynqmp_r5_parse_fw,
+ 	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
+ 	.sanity_check	= rproc_elf_sanity_check,
+diff --git a/include/linux/remoteproc.h b/include/linux/remoteproc.h
+index ba6fd560f7ba..55c20424a99f 100644
+--- a/include/linux/remoteproc.h
++++ b/include/linux/remoteproc.h
+@@ -374,7 +374,7 @@ enum rsc_handling_status {
+  * @find_loaded_rsc_table: find the loaded resource table from firmware image
+  * @get_loaded_rsc_table: get resource table installed in memory
+  *			  by external entity
+- * @load:		load firmware to memory, where the remote processor
++ * @load_segments:	load firmware ELF segment to memory, where the remote processor
+  *			expects to find it
+  * @sanity_check:	sanity check the fw image
+  * @get_boot_addr:	get boot address to entry point specified in firmware
+@@ -402,7 +402,7 @@ struct rproc_ops {
+ 				struct rproc *rproc, const struct firmware *fw);
+ 	struct resource_table *(*get_loaded_rsc_table)(
+ 				struct rproc *rproc, size_t *size);
+-	int (*load)(struct rproc *rproc, const struct firmware *fw);
++	int (*load_segments)(struct rproc *rproc, const struct firmware *fw);
+ 	int (*sanity_check)(struct rproc *rproc, const struct firmware *fw);
+ 	u64 (*get_boot_addr)(struct rproc *rproc, const struct firmware *fw);
+ 	unsigned long (*panic)(struct rproc *rproc);
+-- 
+2.25.1
+
 
