@@ -4,111 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38605D690EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Nov 2024 08:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51E0ED690ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Nov 2024 09:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EYr4h/c0WQP59LjcKOXodUNANQzD9BhOLn9fwkTUXdw=; b=ISmO1KxIjOoOVmnzDdGfvX61x6
-	w6qdDJ/vpIMshU1MmklODGFnV5xlQw/HgHC4vIKJylp3gT+U4nJQL0o6Br9V6OmuPH+elyxnJHvA+
-	rGUI7/581J+gKgk+dNg48vlpoGC0zIXa4N4iKwb5dn+FoJUD7U/DXbtw5vz9xQOlkspUqY8Wx/mDf
-	C/0qYB9oBnMxWWVQGYBt41OptIE7p08pCTxSRJAG8R0LdtTPQXiil/PKyrjA0DUs0ScWJzmwO/ECD
-	9r1wMSh0rFrNRkrips4nWta5yJ3KopCYsgoj3+xl71KoFIkEKx+dyUedRBzNuSF9hW3VMlIE2N4Ry
-	TBi9wRuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qKBe2f1d/nSE8/83S7fMxQ2H1MkATAfBQssY2mDkHqw=; b=mHs73KC3g9tBNAQLX/6uQl7y0f
+	Ax9sAMpVxWCqMudry2vVxX2pLyLpg0PkZMFnvfR882MYtsT48208TG54peDip1NW1Q4pxfTNDIT2l
+	oI99tq/djmK9ErpydfkPBYh/JsyPPfYDQ95Cj4YZ46FMiMyIUmG2H979z7iAhlXHQEQolbzQT/k4k
+	3zJ3Q5mweDP7paJnw48VilyshRkMwUAyZuZxALBCjFRTKQlx49j36bW6hfOwYkAyJ0+E1fB5+GVlW
+	mxi2z745g5HTXcbG/0DfZymJvRLArcCjyH5kAQxHK+pgqKAEM7zL5xVOP3o0rPk9mRVzZT30AFJe/
+	gn1/CtEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGaJi-0000000F543-1ITZ;
-	Thu, 28 Nov 2024 08:56:06 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1tGajh-0000000F88N-0DMG;
+	Thu, 28 Nov 2024 09:22:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGaEa-0000000F45G-0G75;
-	Thu, 28 Nov 2024 08:50:49 +0000
-Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AS20mMo014838;
-	Thu, 28 Nov 2024 09:50:30 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=selector1; bh=EYr4h/c0WQP59LjcKOXodU
-	NANQzD9BhOLn9fwkTUXdw=; b=Cq2gG0udCMmyFRXkl+cmmchbQjWFadgBjjPbAx
-	1W4jzoSRgq8pSxF8He9LOfuz6QwwHzsIA8Nedyu/mlRGsWqaUlRX6AcReY7Frsdq
-	Tyv3etwZEnNe0NahQ+dzspPTlP69X1VnvE2Mnauy6z8iI9J+hXCk/sZ+RTy3VSlK
-	QzK9S4YT7f7TdGzXrCu5jeeIgABSC0KC8s4lJVPLTNPK46HOwcePPac/dZrlN8k+
-	jG3zodNPqFljM56OPtXmSXeWPNXfy2tANBrjb9FAKOLKKbQr3zblUJEZcSeYovOl
-	fps5s05Cx5JM08pUjRK9y30alkODhzGiZBvqD2r6skaM74aA==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 436719b4kq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 28 Nov 2024 09:50:30 +0100 (CET)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 249CC4002D;
-	Thu, 28 Nov 2024 09:48:36 +0100 (CET)
-Received: from Webmail-eu.st.com (eqndag1node6.st.com [10.75.129.135])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 82CDD266A56;
-	Thu, 28 Nov 2024 09:42:48 +0100 (CET)
-Received: from SAFDAG1NODE1.st.com (10.75.90.17) by EQNDAG1NODE6.st.com
- (10.75.129.135) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 28 Nov
- 2024 09:42:48 +0100
-Received: from localhost (10.48.86.121) by SAFDAG1NODE1.st.com (10.75.90.17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 28 Nov
- 2024 09:42:47 +0100
-From: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-To: Bjorn Andersson <andersson@kernel.org>,
-        Mathieu Poirier
-	<mathieu.poirier@linaro.org>,
-        Rob Herring <robh@kernel.org>,
-        "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        "Maxime
- Coquelin" <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Neil Armstrong
-	<neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        "Jerome
- Brunet" <jbrunet@baylibre.com>,
-        Martin Blumenstingl
-	<martin.blumenstingl@googlemail.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Patrice Chotard
-	<patrice.chotard@foss.st.com>,
-        Fabien Dessenne <fabien.dessenne@foss.st.com>,
-        Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <imx@lists.linux.dev>, <linux-amlogic@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>
-Subject: [PATCH v15 0/8] Introduction of a remoteproc tee to load signed firmware
-Date: Thu, 28 Nov 2024 09:42:07 +0100
-Message-ID: <20241128084219.2159197-1-arnaud.pouliquen@foss.st.com>
-X-Mailer: git-send-email 2.25.1
+	id 1tGail-0000000F81i-14h7
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 28 Nov 2024 09:21:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=qKBe2f1d/nSE8/83S7fMxQ2H1MkATAfBQssY2mDkHqw=; b=CZnrQEbu7buQpVxu/RPBScF3pL
+	esUg/lRvm+v6Pt6aV4gbyI4NyKYW8kVASUQwG674qrSiZsrrzmKJ88PGa/De0ZFVQowkDWu1UtE2f
+	l1ZiO0ByXxdRwLzllHkG8pozJcYAk2XwsgIdnJMy8dX0ze5b+pKANLPl/O0Ysw+WLlGkXJcNTteBV
+	qk7FnwV0DQ3vHt6TmaagU3eGEVPx9AbYLR35wlP4q49/aKnQ9FbPfaF6fAGNVDamPMFbLW3ONxFz1
+	OKn8oUHwLcf/7tjWoY2YzDheUDyA4WORXqwLtDjkR5jKMIwaA8FOXcgvDGNYDAsKC9gmOAuVGAI4J
+	IkSIU9Pw==;
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tGaii-00000001Zse-0wNQ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Nov 2024 09:21:58 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53df1e0641fso616296e87.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Nov 2024 01:21:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1732785713; x=1733390513; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qKBe2f1d/nSE8/83S7fMxQ2H1MkATAfBQssY2mDkHqw=;
+        b=VZ+3QzlgK/ATfzOnMykFzZQ6EbiAs0lXnrBblqb01Nt+5CNe1Zct/pt47LHJ5YxOQj
+         /OX4YSMuCFUNxuLEI7qmoQQc+SIS5Pugak5V4eiVPaqKDm2FjJl4LGXMpGZzIFGMiafM
+         Uk4W9EY0AbKhcF/NeOussE0H9t3JleHsJNH/Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732785713; x=1733390513;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qKBe2f1d/nSE8/83S7fMxQ2H1MkATAfBQssY2mDkHqw=;
+        b=aXzUbhub4J9uEhRCOXcyGUyhnG+xmmMroBXOgO1JLORvWW8bFdGLhJ5xYuxuVkEFpv
+         mrQpnfoxTc743UgkXnoMUNw8Inq3B4XGMG59vGx2QI+P23uPuqCYJQ9/GcHas3yKmFzm
+         KX9kqbeS01lWkLhrNphEjpI5d25DV+Y6moiMv1TPuixH3N1qWCkbmHd4LjYZmiJKyxGi
+         3nBmoa9Fe3iWbqaDiTQdqyCGo6C2kZr9Ddy3WBdHa+eOGiy+MvWsSolAxy8A4dYdt9wH
+         1HBn1LPUL1eyQx/an8uKrvgfNbwQB/L02uQ2jpvuPbq5KpRPuRU1U84UTeWM89YcmIzk
+         gVEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUdGTrrhjQjkxmo7uWpEGHUdlcXnb/vAR2xceOaDu+IxB9bsXv+zUjjZ6KZQMNe14Zxa3YsSAl+CRcsAVYeOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxr6I8El+yGNM1CEuze3XW/VTdCggcxxQTBxeYbagK6OXI137NN
+	gS3CjEeWBG9AyIQ0yfKIbgFTKjYjItS5NkG9K8j8gz6PJ1eQsRDlJc9TL7W0hymogRpBAVHOxXG
+	cm6vucsm1FyUra3Xlx9vw2KjvKjSY3KvUUQxb
+X-Gm-Gg: ASbGncvvU5hXegr83IP3tspUqyPEYBgKyemJUIctfxH6WCXNjbk/FuHQaqcnQrKyXLH
+	06UZ7cLQIuw0RGetDiPHr87fkl+HoIxZKZ9c2ALvUQ0jH/63L5IxZUn8y94g=
+X-Google-Smtp-Source: AGHT+IGdj/tSc+Vg1n1HINo9pBj3OGBWaUozOoIytbHjWn8FVwKTt7H+aqMvtclp1yALw92qHHQSj6W/RYGN7E3g/EI=
+X-Received: by 2002:a05:6512:3e08:b0:53d:dbec:9fca with SMTP id
+ 2adb3069b0e04-53df001abb1mr3751297e87.0.1732785712733; Thu, 28 Nov 2024
+ 01:21:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.48.86.121]
-X-ClientProxiedBy: SAFCAS1NODE1.st.com (10.75.90.11) To SAFDAG1NODE1.st.com
- (10.75.90.17)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+References: <20241124085739.290556-1-fshao@chromium.org> <20241124085739.290556-3-fshao@chromium.org>
+In-Reply-To: <20241124085739.290556-3-fshao@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 28 Nov 2024 17:21:41 +0800
+Message-ID: <CAGXv+5GeoDK92Zj1vdjwbj-kaTdtmOof9AJySxNYW3EA0960VQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: Introduce MT8188 Geralt
+ platform based Ciri
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241128_005048_392053_DBE086CA 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20241128_092156_384459_B6268043 
+X-CRM114-Status: GOOD (  24.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,110 +107,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Main updates from version V14[1]:
-Fix Rename missing load() to load_segments() in pru_rproc.c.
+On Sun, Nov 24, 2024 at 5:01=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> Introduce MT8188-based Chromebook Ciri, also known commercially as
+> Lenovo Chromebook Duet (11", 9).
+>
+> Ciri is a detachable device based on the Geralt design, where Geralt is
+> the codename for the MT8188 platform. Ciri offers 8 SKUs to accommodate
+> different combinations of second-source components, including:
+> - audio codecs (RT5682S and ES8326)
+> - speaker amps (TAS2563 and MAX98390)
+> - MIPI-DSI panels (BOE nv110wum-l60 and IVO t109nw41)
 
-Main updates from version V13[2]:
-- Introduce new rproc_ops operation: load_fw() and release_fw(),
-- Rename load() operation to load_segments() in rproc_ops structure and
-  drivers.
+Of note, a couple things are not working:
 
-More details are available in each patch commit message.
+- Touchscreen: missing driver for HiMax SPI HID
+- Trackpad on detachable base: missing driver support in CBAS and
+    associated device tree node
 
-[1] https://lore.kernel.org/linux-arm-kernel/20241126091042.918144-1-arnaud.pouliquen@foss.st.com/T/
-[2] https://lore.kernel.org/linux-arm-kernel/20241104133515.256497-1-arnaud.pouliquen@foss.st.com/T/
+A couple things below.
 
-Tested-on: commit adc218676eef ("Linux 6.12")
-Description of the feature:
---------------------------
-This series proposes the implementation of a remoteproc tee driver to
-communicate with a TEE trusted application responsible for authenticating
-and loading the remoteproc firmware image in an Arm secure context.
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+>
+> Changes in v3:
+> - drop scp_mem, scp_pins and SCP declaration per discussion in v2
+> - drop unused (for now) dual-SCP reserved memory range
+> - drop unused touchscreen pinctrl
+> - drop unused HID-I2C touchscreen node in I2C-2
+> - drop unused AP-SAR sensor node in I2C-3
+> - drop trackpad node in I2C-4 (only work with downstream CBAS)
+> - drop mmc1 (unused in public product)
+> - drop eDP panel path (unused in public product)
+> - declare DSI panel compatibles in individual board .dts files
+> - declare CPU TDP target in -geralt.dtsi instead
+> - move spi1 default and sleep pinctrl to -geralt.dtsi
+> - leave memory@40000000 size empty (filled by bootloader)
+> - consolidate audio codec/amplifier, DAI link declaration and
+>   audio-routing property
+> - stop sourcing `arm/cros-ec-sbs.dtsi` in -geralt.dtsi, because all that
+>   does is to declare sbs-battery at address 0xb, which doesn't align
+>   with the final design at 0xf. This saves us a /delete-node/.
+> - minor format fix
+>
+> Changes in v2:
+> - remove invalid or undocumented properties
+>     e.g. mediatek,dai-link, maxim,dsm_param_name etc.
+> - remove touchscreen as the driver is not yet accepted in upstream
+> - update sound DAI link node name to match the binding
+> - add missing pinctrls in audio codec nodes
+>
+>  arch/arm64/boot/dts/mediatek/Makefile         |    8 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku0.dts  |   32 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku1.dts  |   59 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku2.dts  |   59 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku3.dts  |   32 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku4.dts  |   48 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku5.dts  |   72 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku6.dts  |   72 +
+>  .../dts/mediatek/mt8188-geralt-ciri-sku7.dts  |   48 +
+>  .../boot/dts/mediatek/mt8188-geralt-ciri.dtsi |  316 +++++
+>  .../boot/dts/mediatek/mt8188-geralt.dtsi      | 1156 +++++++++++++++++
+>  11 files changed, 1902 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.=
+dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
 
-1) Principle:
+[...]
 
-The remoteproc tee driver provides services to communicate with the OP-TEE
-trusted application running on the Trusted Execution Context (TEE).
-The trusted application in TEE manages the remote processor lifecycle:
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64=
+/boot/dts/mediatek/mt8188-geralt.dtsi
+> new file mode 100644
+> index 000000000000..b6abecbcfa81
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> @@ -0,0 +1,1156 @@
 
-- authenticating and loading firmware images,
-- isolating and securing the remote processor memories,
-- supporting multi-firmware (e.g., TF-M + Zephyr on a Cortex-M33),
-- managing the start and stop of the firmware by the TEE.
+[...]
 
-2) Format of the signed image:
+Looking at the schematic, the following two are actually a TPS65132S
+on i2c3. It should be modeled as such. <&pio 3> is the enable GPIO
+for both positive and negative regulators, while <&pio 4> goes to
+the SYNC pin, which enables higher load on the negative side when
+driven high. The latter is not supported by the driver or binding.
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/ta/remoteproc/src/remoteproc_core.c#L18-L57
+The TPS65132S has a different power sequence requirement compared
+to the other TPS65132 variants.
 
-3) OP-TEE trusted application API:
+> +       ppvar_mipi_disp_avdd: regulator-ppvar-mipi-disp-avdd {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "ppvar_mipi_disp_avdd";
+> +               enable-active-high;
+> +               gpio =3D <&pio 3 GPIO_ACTIVE_HIGH>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&mipi_disp_avdd_en>;
+> +               vin-supply =3D <&pp5000_z1>;
+> +       };
+> +
+> +       ppvar_mipi_disp_avee: regulator-ppvar-mipi-disp-avee {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "ppvar_mipi_disp_avee";
+> +               regulator-enable-ramp-delay =3D <10000>;
+> +               enable-active-high;
+> +               gpio =3D <&pio 4 GPIO_ACTIVE_HIGH>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&mipi_disp_avee_en>;
+> +               vin-supply =3D <&pp5000_z1>;
+> +       };
+> +
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/ta/remoteproc/include/ta_remoteproc.h
+[...]
 
-4) OP-TEE signature script
+> +&i2c2 {
+> +       pinctrl-names =3D "default";
+> +       pinctrl-0 =3D <&i2c2_pins>;
+> +       clock-frequency =3D <400000>;
+> +       status =3D "okay";
+> +};
 
-Refer to:
-https://github.com/OP-TEE/optee_os/blob/master/scripts/sign_rproc_fw.py
-
-Example of usage:
-sign_rproc_fw.py --in <fw1.elf> --in <fw2.elf> --out <signed_fw.sign> --key ${OP-TEE_PATH}/keys/default.pem
-
-
-5) Impact on User space Application
-
-No sysfs impact. The user only needs to provide the signed firmware image
-instead of the ELF image.
-
-
-For more information about the implementation, a presentation is available here
-(note that the format of the signed image has evolved between the presentation
-and the integration in OP-TEE).
-
-https://resources.linaro.org/en/resource/6c5bGvZwUAjX56fvxthxds
-
-Arnaud Pouliquen (8):
-  remoteproc: core: Introduce rproc_pa_to_va helper
-  remoteproc: Add TEE support
-  remoteproc: Introduce load_fw and release_fw optional operation
-  remoteproc: Rename load() operation to load_segments() in rproc_ops
-    struct
-  remoteproc: Make load_segments and load_fw ops exclusive and optional
-  dt-bindings: remoteproc: Add compatibility for TEE support
-  remoteproc: stm32: Create sub-functions to request shutdown and
-    release
-  remoteproc: stm32: Add support of an OP-TEE TA to load the firmware
-
- .../bindings/remoteproc/st,stm32-rproc.yaml   |  58 +-
- drivers/remoteproc/Kconfig                    |  10 +
- drivers/remoteproc/Makefile                   |   1 +
- drivers/remoteproc/imx_dsp_rproc.c            |   2 +-
- drivers/remoteproc/imx_rproc.c                |   2 +-
- drivers/remoteproc/meson_mx_ao_arc.c          |   2 +-
- drivers/remoteproc/mtk_scp.c                  |   2 +-
- drivers/remoteproc/pru_rproc.c                |   2 +-
- drivers/remoteproc/qcom_q6v5_adsp.c           |   2 +-
- drivers/remoteproc/qcom_q6v5_mss.c            |   2 +-
- drivers/remoteproc/qcom_q6v5_pas.c            |   4 +-
- drivers/remoteproc/qcom_q6v5_wcss.c           |   4 +-
- drivers/remoteproc/qcom_wcnss.c               |   2 +-
- drivers/remoteproc/rcar_rproc.c               |   2 +-
- drivers/remoteproc/remoteproc_core.c          |  68 ++-
- drivers/remoteproc/remoteproc_internal.h      |  20 +-
- drivers/remoteproc/remoteproc_tee.c           | 508 ++++++++++++++++++
- drivers/remoteproc/st_remoteproc.c            |   2 +-
- drivers/remoteproc/st_slim_rproc.c            |   2 +-
- drivers/remoteproc/stm32_rproc.c              | 141 +++--
- drivers/remoteproc/xlnx_r5_remoteproc.c       |   2 +-
- include/linux/remoteproc.h                    |  20 +-
- include/linux/remoteproc_tee.h                | 105 ++++
- 23 files changed, 894 insertions(+), 69 deletions(-)
- create mode 100644 drivers/remoteproc/remoteproc_tee.c
- create mode 100644 include/linux/remoteproc_tee.h
+&i2c2 on Ciri is completely unused. Please re-disable it there.
 
 
-base-commit: adc218676eef25575469234709c2d87185ca223a
--- 
-2.25.1
-
+ChenYu
 
