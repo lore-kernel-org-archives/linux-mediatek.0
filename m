@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5071ED72A11
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2024 20:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33170D735E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2024 23:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hXMhlKyNUyXAehCvYmXtBGlWlyuXZ6rNCKB5eusJ9ok=; b=HJN40GbPvkG3hNEbCxpI6oG/mM
-	qVFc1IBvU4eAX/ftAZkdpITTOYkZUn8mBuOYH08rmTZnJw92hY15EXjGSSxIf4+9RaxkD1bbJVrA/
-	QpM3PJA11Gr+zr6SXiOFwL+Ns3UCn1IdSSRR5q7IUFrgXPIcsFWmGrTlkv7OPwELelNcCYOyA7+zp
-	in4rjdBwJrnBYA54VvZ15eaC7rBMp8N85AAsVJU+tj5IiIu378P39/pAd2HXafVByEl/XiSTnA9ue
-	1LGY4ty5ZiArvDrfPcei0LZuj9G2ca1/1GlnnT40FV9JfQnC2x3shUwUBeV6RAmx+1WnoEni37Pta
-	pAVdPuSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UqCAYZFNMu6JnOhaseOWdc80sMo6pY6gxLyDP5it5+M=; b=P8AXaboQKC6AAy
+	2NVi8E7wj1ahqZXWFL2ZIVFYMNsogs0YfF2w0SE3lXfUElKOMj9hKpSCr0tPrzLAJhwNrZF03pFRM
+	nEjFRHV8H3Fgiyqyf2BYA8GWvR+ajG6Y15cHRe1UfG+GKmuvDtQa9Wr5WNI5DmcMx82967pJh03cB
+	xT+aQ7TcFPkiGcqR2Aqs3IV3QzBplHOi6bgD2ACqMwJxAY82VGUuYqp/tORzEmSNrGyiLuim1lOcA
+	Pe0SiOq9PMc1lQpI7MsL/ssDozG29qOYdlnziYIBSf3Ua9Wdfnl4rgmRkUhd3oI1DGe/8qpTNPdEq
+	fWOiaWbDyA2ojlthImHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tH7AV-00000000sce-0qNE;
-	Fri, 29 Nov 2024 20:00:47 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1tHAJt-0000000168b-03st;
+	Fri, 29 Nov 2024 23:22:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tH7AR-00000000sb3-3VuE
-	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Nov 2024 20:00:45 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-434a8b94fb5so13947305e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Nov 2024 12:00:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732910441; x=1733515241; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hXMhlKyNUyXAehCvYmXtBGlWlyuXZ6rNCKB5eusJ9ok=;
-        b=MNpuko6/8Tw16jCgkyfKj6joFlKzTcRMFBqVy6VKEL7w2Z/pYTiMlY481nF0anK/4l
-         ySRQVKIq4bT5WWAALXEH7MOSR169toEqKyxY/str+54A9nJasc3gZH8iFqL5eAdUoZKm
-         UpqehLM5/0ytHCWU6D6n3weaTXPbInjzjTSErWm5R2pLnFa2hA7XQphnHYLdSsTD99S4
-         rCYRjYegmzCesEcnq6qfoak3HpKWUZU9fjS7yZw5HGyt5XS8OB0RTYtBTx6zHy6hezr0
-         GItbn9Ab0q5+qQdAJKrCtABg/aOV2KmxWJpX8YDgwLujFunIZ8toV2X1YMhpQhmWME7K
-         Yr4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732910441; x=1733515241;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hXMhlKyNUyXAehCvYmXtBGlWlyuXZ6rNCKB5eusJ9ok=;
-        b=pgXaR8HcLiEdd+mVUNqeWY1iZ06FIJb8TaF7cpyRRznASkDsFD0x4lQVwKttBerwEp
-         QAoohw8pn11IiDODc+pyL0cCnjI5V4fAO1S6fzVc+kAt6uGgrx6dw1I6qgG4ZDMhFbU5
-         1sbpLu24ewc0XCDJrPeWcz6B4EdtbvTRpzRdqzJBliIMdnEBooPYt84IANkM4hme94HS
-         6UVz/8RoKQ+jwHX6vJERj9wFA9SpHzOt9e0On48L2iVRqGU43HAYT14leoVZI5dIaV3q
-         VZXW+T9nK9Qf3hYNlRe1JrovofMhXTD08kdcYDLHv20ZWIWCygrp4YZaqHBb+2QWacgW
-         NmdA==
-X-Forwarded-Encrypted: i=1; AJvYcCWRytH+YtOvH6luCFUmfTA012lCD69CSjxkwHx2ZNN/1VkMxloSFzsunv7YohoDuU/pQP3Mwj1llM3TAJA9iA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxkZ8tgxPQR8ZHMcCrOyDQwyxureDFK5n36iVaLvmPkfCN4JgKF
-	YC5OKRRgAZPRMoWdHiuQLF2n35d7Wbhek1fp0+HbLDfy4bgZQ0dKap2KAxhifs4=
-X-Gm-Gg: ASbGncuYPATOa6gENBu9IMMILD6YYHcsIUjoLJtU/ebNsYYvzWskIEPsOto4xg9pxqY
-	EJbWjTq/IykgsFVQFVJaa3NouH52K8qSqMDIZLvCBUaaGqafrz1xbcymIfvabUGb69u40DJFw/f
-	hutgJ7rV5dc5PeLhuV9jA8xSTuIcK6ggBRw8E2mxcqlGoOVUnk7DGjSIuwqXW8QRVwbDE2k+hVr
-	ujOvYbIKc7WVwXxqwzNRapDDVa8OPEJ2p3e0ZgjxdfdtsuxkUsIS0a5+hr9ToDfkPbeeN3OwXwm
-	FjMcD/AoRLokKA==
-X-Google-Smtp-Source: AGHT+IERDYwDGnHxt4PkrEbc7nYmk1O9LCWEyDw4b8b+mn5ibUuFnpDyTpQ+9yD3eVcYFhLRJEKXzA==
-X-Received: by 2002:a05:600c:3b16:b0:434:92f8:54a8 with SMTP id 5b1f17b1804b1-434afb29148mr77259745e9.0.1732910441500;
-        Fri, 29 Nov 2024 12:00:41 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-434b0f325fdsm63936945e9.30.2024.11.29.12.00.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 29 Nov 2024 12:00:40 -0800 (PST)
-Message-ID: <20d3a0be-ba5f-439f-80ff-2e2bda3bb144@linaro.org>
-Date: Fri, 29 Nov 2024 21:00:39 +0100
+	id 1tHAIt-000000015w3-1mjY;
+	Fri, 29 Nov 2024 23:21:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2008B5C5DE2;
+	Fri, 29 Nov 2024 23:20:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79A7BC4CECF;
+	Fri, 29 Nov 2024 23:21:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732922492;
+	bh=98GR4l7HhkOrsjECfowwM3AlW16asMwfcWomv8Ndi/c=;
+	h=From:Subject:Date:To:Cc:From;
+	b=AAH7RPpncQuVKhs/wfigtX6eNrbVR53saE8ZK7JKbCSEcC8NTYDpdrTB7tWJwNmvE
+	 NvQDU/F47Xc5MiM3VFPn8ARI8Qs+q4FdrRQuH5AsrjaRN4uReggLx5mrpXJs/vE4mt
+	 5U+HuoPvNzbzT6jb3ID0ZUYfMzJyA99fmNJb83DeTEulBxFrdXuOSNfasACpmgcAyS
+	 6NfPrMTaYJtb9SxhKXDuf9Z6ONcY/b7VSj23GT+YTVS7Ce5NHuwHSwUIdE+WlvkHZq
+	 5yhZHtSfAdiw+P4hXY0rf3d2TpbTBiSRGgzv2bbJcBwYRNKXbLbF5zyTSWRNeYpR6z
+	 HLeGDaQkTHPSw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v5 0/6] PCI: mediatek-gen3: mtk_pcie_en7581_power_up() code
+ refactoring
+Date: Sat, 30 Nov 2024 00:20:09 +0100
+Message-Id: <20241130-pcie-en7581-fixes-v5-0-dbffe41566b3@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] thermal: multi-sensor aggregation support
-To: Nicolas Pitre <nico@fluxnic.net>, "Rafael J . Wysocki"
- <rafael@kernel.org>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, Nicolas Pitre <npitre@baylibre.com>,
- Alexandre Bailon <abailon@baylibre.com>
-References: <20241112052211.3087348-1-nico@fluxnic.net>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20241112052211.3087348-1-nico@fluxnic.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAClMSmcC/33PwQ7CIAwG4FcxnMVAC2Pz5HsYDwhFiWZbwCwas
+ 3eX7TTj4vFv839N3yxTipTZfvNmiYaYY9eWoLcb5q62vRCPvmQGApSUwvDeReLUGl1LHuKTMoe
+ m0kIHD6iRlV6faF6U2vFU8jXmR5de84lBTtN/2iC54DYIVxtAQGcON0ot3XddurCJG2BJNGsEF
+ EKQRatsaBoVfghcELJaI7AQwVjv0QYHhn4ItSTqNUIVAtT5XEkj0PrvR8Zx/AAngwF+fAEAAA=
+ =
+X-Change-ID: 20241107-pcie-en7581-fixes-296505fd2353
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241129_120044_695391_DE9CFE48 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20241129_152139_499511_1A9D18EE 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,39 +88,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/11/2024 06:19, Nicolas Pitre wrote:
-> This series provides support for thermal aggregation of multiple sensors.
-> The "one sensor per zone" model is preserved for all its advantages.
-> Aggregation is performed via the creation of a special zone whose purpose
-> consists in aggregating its associated primary zones using a weighted
-> average.
-> 
-> Motivation for this work stems from use cases where multiple sensors are
-> contained within the same performance domain. In such case it is preferable
-> to apply thermal mitigation while considering all such sensors as a whole.
+Minor fixes and code refactoring in mtk_pcie_en7581_power_up() routine
 
-Do we have a real use case where we can compare the per sensor vs 
-aggregated sensors approach ?
+---
+Changes in v5:
+- fix comment in patch 3/6
+- fix commit log in patch 5/6
+- Link to v4: https://lore.kernel.org/r/20241118-pcie-en7581-fixes-v4-0-24bb61703ad7@kernel.org
 
+Changes in v4:
+- fix comment in patch 4/6
+- Link to v3: https://lore.kernel.org/r/20241116-pcie-en7581-fixes-v3-0-f7add3afc27e@kernel.org
 
+Changes in v3:
+- add trivial patches 5/6 and 6/6 to the series
+- rename err_clk_init in err_clk_prepare_enable
+- fix commit log for patches 2/6 and 3/6
+- Link to v2: https://lore.kernel.org/r/20241109-pcie-en7581-fixes-v2-0-0ea3a4af994f@kernel.org
 
-> Previous incarnation by Alexandre Bailon can be found here:
-> https://patchwork.kernel.org/project/linux-pm/cover/20240613132410.161663-1-abailon@baylibre.com/
-> 
-> diffstat:
->   .../bindings/thermal/thermal-zones.yaml       |   5 +-
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 210 +-----
->   drivers/thermal/Kconfig                       |  27 +
->   drivers/thermal/thermal_core.c                | 643 ++++++++++++++++++
->   drivers/thermal/thermal_core.h                |  14 +
->   drivers/thermal/thermal_of.c                  |  86 ++-
->   6 files changed, 780 insertions(+), 205 deletions(-)
+Changes in v2:
+- added trivial patch 4/4
+- improved commit logs and comments
+- introduced PCIE_MTK_RESET_TIME_US macro
+- Link to v1: https://lore.kernel.org/r/20241107-pcie-en7581-fixes-v1-0-af0c872323c7@kernel.org
 
+---
+Lorenzo Bianconi (6):
+      PCI: mediatek-gen3: Add missing reset_control_deassert() for mac_rst in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: rely on clk_bulk_prepare_enable() in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: Move reset/assert callbacks in .power_up()
+      PCI: mediatek-gen3: Add comment about initialization order in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: Add reset delay in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: rely on msleep() in mtk_pcie_en7581_power_up()
 
+ drivers/clk/clk-en7523.c                    |  1 -
+ drivers/pci/controller/pcie-mediatek-gen3.c | 61 ++++++++++++++++++-----------
+ 2 files changed, 38 insertions(+), 24 deletions(-)
+---
+base-commit: ac9626f643ea9cde795811d924388fa49f2c4c0c
+change-id: 20241107-pcie-en7581-fixes-296505fd2353
+
+Best regards,
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
