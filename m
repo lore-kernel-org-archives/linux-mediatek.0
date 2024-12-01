@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B99EBD7361B
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Dec 2024 00:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D56D7361C
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Dec 2024 00:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AekznUw/DJYmSVBNFKXzyv34fWwrWZN8k5LwtkQDlbE=; b=vntiN8QVPSj2TuZA9GAPalQcHo
-	1aUBtyhERtlmY0W3RO6C9B4aECUEqnQ2vWqcgSYu1ftcuzegE7qsTrsHprVWjHPRpBgZPh0aOOHTM
-	xUBPtsJ/0SWUIu7ijvycuCu9pMngpAJ9WX9zkCgeE9td7NMygVy4OM0pSb8fcJJVjMbQmJ9Zvj3+f
-	GrRTShNfm85nnNUM1eNGUgTsDy1EZyPQJDW/qV71fEstifSl8+SqUX7UFpunji92FJDZDmgFDp4+D
-	VR2KSZ95R4v9N/+GlYLe98mums7vPupbQZKPQ4b9wdkugEJ2wa9T09o/ehC7PEy5O52K/MK747jXf
-	dIJHUm/Q==;
+	bh=0+2GniAkdmp4BwJcsCVeiFyEwNMIk2x1tb1O8W07KrE=; b=lb2MQNxshBw6bs3jHtHXj4USZE
+	tA98GnK3m/1/yhoSarTCuyty/lqH1FUIfO2jDMprF+337w5C1kvUYfPX58d7Ni/lBBDoJSmO/Mptu
+	45L+YxFqDjDMTQN/CypYegtIZiATCb7w4JTtrnftJYO41KwjsQ15x418aWRzNDXnmcfu9iVhvao9C
+	yRHDL4H1yDp1C7II4fltzpW+5U3A0v0glIx/j5lDZoZ+b0SvfFz1WMFKc0dnuEgYufucbU0xXwvrb
+	PixiQU4UwXo5bmgyrRysIZNngDBwpKc32J4+NyfIHmY/175/P2faBo4xUygOyfLfYlQLAgBbtNhWb
+	HOEuMh7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHYBG-00000002q45-3ksq;
-	Sun, 01 Dec 2024 00:51:22 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1tHYBQ-00000002q7k-2ZCD;
+	Sun, 01 Dec 2024 00:51:32 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHY4f-00000002obN-3cNm
+	id 1tHY4i-00000002oda-3gDA
 	for linux-mediatek@lists.infradead.org;
-	Sun, 01 Dec 2024 00:44:35 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-aa5325af6a0so418140166b.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 Nov 2024 16:44:33 -0800 (PST)
+	Sun, 01 Dec 2024 00:44:39 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5d0bdeb0374so1688663a12.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 30 Nov 2024 16:44:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733013872; x=1733618672; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1733013875; x=1733618675; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=AekznUw/DJYmSVBNFKXzyv34fWwrWZN8k5LwtkQDlbE=;
-        b=iQ89gu7NHth0s15p4RfbFXzDbWnjRkXwjY1WabUi+wtpaILwC3jQm2iEwytOPMPsUR
-         Gw7IdixWZiO+zyKz0xeNgL+6u1Tj3JXZ0809Bcl+nV7kyCA7xtZMYUuzv75KfWmfGhlr
-         ieDgeNWmnODsVQs2v3knE0OiT/VW6UFnCkLXKcr+xCvEYIvHQOZ1hWdoboqyyqO5HWBd
-         7aMJTGaZIVtiAgX6h3s+EAUvHt2j/pf/C8jYE0ixru+N1C1qPM91vszm4AfNxVZrWOwS
-         EXZhYRabBUWdRxVt1xGJMDTsW5m6OQZsu4m1Ao/9uUC74d4joGG6/EZDVShhkshasszn
-         HtUQ==
+        bh=0+2GniAkdmp4BwJcsCVeiFyEwNMIk2x1tb1O8W07KrE=;
+        b=zi6xutgD7UG6GDGx92F68BC6pAqVUOFWJrtdrvTJi/3GQzxzB3KL4diI+p9NxRcOdu
+         0+wStTFc+Cf/NGvlACM322n0/LYZydb7qF3mcJxjpjzWhrvIbw8RbBWq0//AHFMnMbwf
+         Zv41Aypg1W06tLglDUgcZS67X3kS/wjjDkAzVxIbszEaboo9bnWC2VFgKihbNVK2c+XQ
+         PQEpyouBTPD0JH0mdKTlLCiZyTXsU6oHDzNHmtMpITgvHgoMAuyznkBFZNu7kEyCQ4xE
+         8fPnK+SJI+gAyVJC2Qm8A732Y71NIDmuDnj3qHS1RJVArwxRpUTkZKPm3+1UW9BZUJ1D
+         z71w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733013872; x=1733618672;
+        d=1e100.net; s=20230601; t=1733013875; x=1733618675;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=AekznUw/DJYmSVBNFKXzyv34fWwrWZN8k5LwtkQDlbE=;
-        b=E73FB1LdMr39T2WNuXlqekka3ETQew9Ebb17Mb+KgF1iHj3/M8Q+GSFdFs+dYaaHcQ
-         o/pOvEyrjE58zr9zrNbbDyxZqoZ8N9aPHo5lGKhY17b3T7hkPzRKu8cQx2EgGpENrfAk
-         wzEzIhac0nq/sS4T0K1/XLktNiRVNzJCuX8unn0oiRhq91ehK0WI4yooRAdv+aLf0efM
-         x0jVD5BLp34CASn5K5lq1CDEyqFX0nTJtfvCevry9Pq52rQWUpmW9jS9sa/IBUaEna5e
-         KTk3+6fpv+ylu0xlyA8XGFDiDI9SoD4oSr/EukZTiIotcb7JZJKJTKd6W/5jytQHvlJY
-         q3Qg==
-X-Forwarded-Encrypted: i=1; AJvYcCV78sqAxEhfzczIQ1O87SKlWzVb9RSLd3/4j6FSds15TOmHc7HtMDx8Qiz4SNxhykspQfo2CiPixtjdZEoU3Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyPXctPhx7aJGg/GL8uVHb5AzXNnKqb/pqjnm34ngHA2lmX9nsI
-	XF1rw2lVJ98wbpqcrDSl/3+MdUEZ9EWPPlo9fDtVqcjurFSNFu1Cxl+Uupi6dO8=
-X-Gm-Gg: ASbGncuAjZfplA1fyWVhliTDwbCpMrKp1vU2S8cc1HRjmKC2HHCxA2t+H7d60qI1pRT
-	kJmAdSJ1dCy4f0F+9yNV3jK0QU+Te1VJ7sBr9ztqcxbtQnxmr0Aw5STvP0Xg2Juob0XtMnrUeri
-	5M5ZlgVumevFFYJ+Q6bZtj4SxmDjzbeEth43Z15ONQRrxGjC7RyNA+ClmGnqYyXTwP8tIXag6DD
-	PKg92VFB/zSu1ta16W0CySFbHX7aNnJ0NCmcFkxsc7jmGbZ21hIXCDUpQ==
-X-Google-Smtp-Source: AGHT+IF0K77MkwwvldGVr80BjUwOmELL9E07KeKBaGPCRtOUdN8bdaAj3EzrCh/1BXcCeTTEMCnHgA==
-X-Received: by 2002:a17:906:23ea:b0:a9e:b281:a212 with SMTP id a640c23a62f3a-aa581073993mr1476511666b.51.1733013872041;
-        Sat, 30 Nov 2024 16:44:32 -0800 (PST)
+        bh=0+2GniAkdmp4BwJcsCVeiFyEwNMIk2x1tb1O8W07KrE=;
+        b=RaoGE+Zpdn+2zswCKDbJL9Y2/+rnMy7+7+TEFb0E7u659qQZ4sVxPPn8jhamSRxdrS
+         /Cgq3rRsCwuaQ+0GJt+d8sOXwdzL15cD6lDisG7264/qHukUpHioGK/AGevq8SXbrjLW
+         SzXMSkVwm0I4hj+8GcMkGdeitj0xtyjSwkhz50NMkFg8GYIpopKazlrKcL4Kgiq3Mx+j
+         8Na9ceSnPPKn9q8gOHpoldwez6AHNXD8N3Z8LfR/6ZIkcicM7jmuCCxUN+lQN5KYAhCw
+         /cNJxgxNK2rQaT/hPkKLQRQadDCPIh1XfqlmJsqpO5PeqAjtfPx2ed/kTy6GEgC1O4MR
+         CV8Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWdskI3Wtu/ImOfjM+aneZlH5h9hX8AGMs8pCRH1OfpV04vF0D/9STurKLFcv2qNhyx5hM7C1TwTGTLBoOCRw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwGxMuW0Xy0g1X8iGtRMbPwHlh+zlB7oz2r9EpQTnzgzA4/YKn+
+	9f/UnkvuMTF9kXIFt2zPyXCRFO0g/GmtukBZ5Xt2P2sSXtY3ENOUB/tNCZbMszM=
+X-Gm-Gg: ASbGncs1LRKMxUdJvreywJGOs9gadxf6fWy+ELrYmXf3QG4GM0Zu7mVaSADxid+b+rT
+	6nFR5pG8i+uo5SqvGzwjZe2jDIwZnOFXmqiIiHS0odcZpvgYquA47iSmb9coySYrnLNXvrPnGOx
+	ZK4LAyUFBK3Ym1Yjmo2fILi82JmqOqcSwoWn37bXsDoCH99sEfo9rPe1ZRqivpSnUzO8+pV0yZZ
+	qfS8rOs1FQHrtFJOY4qpt8nmkSG3v4B1XRHULSuXefLS8ep0SoncfSh5A==
+X-Google-Smtp-Source: AGHT+IEQE3aFNcx/37qoHBi5BMr3sqVY3NtBCKtfjfV7wHKGekaptxA3m+vL9XUBY/7vfCR2ueAcgA==
+X-Received: by 2002:a05:6402:3225:b0:5d0:b7c5:c3fc with SMTP id 4fb4d7f45d1cf-5d0b7c5c655mr10108773a12.3.1733013875542;
+        Sat, 30 Nov 2024 16:44:35 -0800 (PST)
 Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d097e8d817sm3400359a12.63.2024.11.30.16.44.28
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d097e8d817sm3400359a12.63.2024.11.30.16.44.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Nov 2024 16:44:30 -0800 (PST)
+        Sat, 30 Nov 2024 16:44:34 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sun, 01 Dec 2024 02:44:10 +0200
-Subject: [PATCH v5 6/9] drm/display/hdmi: implement connector update
- functions
+Date: Sun, 01 Dec 2024 02:44:11 +0200
+Subject: [PATCH v5 7/9] drm/bridge_connector: hook
+ drm_atomic_helper_connector_hdmi_update_edid()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241201-drm-bridge-hdmi-connector-v5-6-b5316e82f61a@linaro.org>
+Message-Id: <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
 References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
 In-Reply-To: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -108,21 +108,21 @@ Cc: Jani Nikula <jani.nikula@linux.intel.com>,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4091;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4107;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=h4SDlLdLeTf2M3phGYhMa3icgLWVQxFU2Yi+KA0yVFA=;
- b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ7r3xggGN//LkX2OGwV+txgy3vuXMVki+fujBVtzTye9y
- q9pS1zVyWjMwsDIxSArpsjiU9AyNWZTctiHHVPrYQaxMoFN4eIUgBt9joOh27iqbFpIUtNcDtZZ
- E+VVG5nEZcsFbRfqPXNbWnZNvPuYgbuBgYfj2QflllV+25J428zve53mfPtNiu2apdg+hYVyKu3
- tDnuf/9SNNzN6aPNWhd3pxJxr2pmXj5/bpHLHW6lDU/vHgkkTfUu8+FxbDGf9emDpc7VG9oRJgO
- ocyb/JNx6LTnOwza+17atl/3Ph/LIwkwVyoQ5RUTO0I5ru/ubcv44l812kxC82CeP93+oLlmT4/
- VST2sex6/TfE8yXfjw7+idpwjOV2Rd1nDpmLZNKjVnwvGrat0L7O7m3whMOPIrufzLpqaN3167E
- gKWqSpybPTTdG+zz2zYmPj2q82lhYu9bwzXv6g2WsQAA
+ bh=yRmYAaGG5FuJnzbiAwK+r8Wa4ofx1aRyHEGe3Ks/gxw=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnS7FY195bWef1JWzfBClWB4oHD1yzTC9EFWMzD
+ 80mNHc4qGeJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ0uxWAAKCRCLPIo+Aiko
+ 1WzCB/9dbK/ZL6sq0Z7J3uaSWrvo3v868opAAukc6WNxiaV18XuCxz1ddbnDi63j79YdQb5B8GP
+ D0KYTNeGLC5UNMe6kDdKQJdRdGu7ziyexcz8z0ahYZ9B7SzemDlaGs9gLyk0P9W5R368lIIu/Se
+ Bn49wArWPZi4BhJHy1u6QiBWJM9uNBWvGsUqnu329vDvgUYww9US9Iuif3+7YTjhkYVtT8N7avI
+ woTrJfPaHazIr/m+2iKsIgFy6NXIiGqDUgLWv80FAnpxXW5sX25muyz7cAXbC28cNDik6ZPCIYy
+ pgiATl7OmZDXqwI8VuDxI8l378ZDecWH//5U6eNsb1he4Mh6
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241130_164433_931443_2290C482 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20241130_164436_981427_58D3C17C 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,109 +137,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The HDMI Connectors need to perform a variety of tasks when the HDMI
-connector state changes. Such tasks include setting or invalidating CEC
-address, notifying HDMI codec driver, updating scrambler data, etc.
-
-Implementing such tasks in a driver-specific callbacks is error prone.
-Start implementing the generic helper function (currently handling only
-the HDMI Codec framework) to be used by driver utilizing HDMI Connector
-framework.
+Extend drm_bridge_connector code to read the EDID and use it to update
+connector status if the bridge chain implements HDMI bridge. Performing
+it from the generic location minimizes individual bridge's code and
+enforces standard behaviour from all corresponding drivers.
 
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 59 +++++++++++++++++++++++++
- include/drm/display/drm_hdmi_state_helper.h     |  5 +++
- 2 files changed, 64 insertions(+)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 67 ++++++++++++++++++++------
+ 1 file changed, 53 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index feb7a3a759811aed70c679be8704072093e2a79b..2230b7fc92cfee46a9cad2479edce71822d30934 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -748,3 +748,62 @@ drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector *con
- 	return ret;
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
-+
-+/**
-+ * drm_atomic_helper_connector_hdmi_update_edid - Update the HDMI Connector basing on passed EDID
-+ * @connector: A pointer to the HDMI connector
-+ * @drm_edid: EDID to process
-+ *
-+ * This function should be called as a part of the .detect() / .detect_ctx()
-+ * and .force() callbacks, updating the HDMI-specific connector's data. Most of
-+ * the drivers should be able to use @drm_atomic_helper_connector_hdmi_update()
-+ * instead.
-+ *
-+ * Returns:
-+ * Zero on success, error code on failure.
-+ */
-+int
-+drm_atomic_helper_connector_hdmi_update_edid(struct drm_connector *connector,
-+					     const struct drm_edid *drm_edid)
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 12ab9f14cc8a8672478ae2804c9a68d766d88ea5..71ae3b2c9049016d1cc0d39a787f6461633efd53 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -17,6 +17,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_managed.h>
+ #include <drm/drm_modeset_helper_vtables.h>
++#include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/display/drm_hdmi_state_helper.h>
+ 
+@@ -175,17 +176,55 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
+  * Bridge Connector Functions
+  */
+ 
++static const struct drm_edid *
++drm_bridge_connector_read_edid(struct drm_connector *connector,
++			       enum drm_connector_status status)
 +{
-+	drm_edid_connector_update(connector, drm_edid);
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	const struct drm_edid *drm_edid;
++	struct drm_bridge *bridge;
 +
-+	if (!drm_edid) {
-+		drm_connector_hdmi_codec_plugged_notify(connector, false);
++	bridge = bridge_connector->bridge_edid;
++	if (!bridge)
++		return NULL;
 +
-+		// TODO: also handle CEC and scramber, HDMI sink disconnected.
++	if (status != connector_status_connected)
++		return NULL;
 +
-+		return 0;
++	drm_edid = drm_bridge_edid_read(bridge, connector);
++	if (!drm_edid_valid(drm_edid)) {
++		drm_edid_free(drm_edid);
++		return NULL;
 +	}
 +
-+	drm_connector_hdmi_codec_plugged_notify(connector, true);
-+
-+	// TODO: also handle CEC and scramber, HDMI sink is now connected.
-+
-+	return 0;
++	return drm_edid;
 +}
-+EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_update_edid);
 +
-+/**
-+ * drm_atomic_helper_connector_hdmi_update - Update the HDMI Connector after reading the EDID
-+ * @connector: A pointer to the HDMI connector
-+ *
-+ * This function should be called as a part of the .detect() / .detect_ctx()
-+ * and .force() callbacks, updating the HDMI-specific connector's data.
-+ *
-+ * Returns:
-+ * Zero on success, error code on failure.
-+ */
-+int
-+drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector)
-+{
-+	const struct drm_edid *drm_edid;
-+	int ret;
-+
-+	drm_edid = drm_edid_read(connector);
-+	ret = drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
-+	drm_edid_free(drm_edid);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_update);
-diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
-index 2d45fcfa461985065a5e5ad67eddc0b1c556d526..61c43e744051886ba5f2024197fcc90688670ebe 100644
---- a/include/drm/display/drm_hdmi_state_helper.h
-+++ b/include/drm/display/drm_hdmi_state_helper.h
-@@ -6,6 +6,7 @@
- struct drm_atomic_state;
- struct drm_connector;
- struct drm_connector_state;
-+struct drm_edid;
- struct hdmi_audio_infoframe;
+ static enum drm_connector_status
+ drm_bridge_connector_detect(struct drm_connector *connector, bool force)
+ {
+ 	struct drm_bridge_connector *bridge_connector =
+ 		to_drm_bridge_connector(connector);
+ 	struct drm_bridge *detect = bridge_connector->bridge_detect;
++	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+ 	enum drm_connector_status status;
  
- void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
-@@ -20,4 +21,8 @@ int drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector
- int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *connector,
- 						       struct drm_atomic_state *state);
+ 	if (detect) {
+ 		status = detect->funcs->detect(detect);
  
-+int drm_atomic_helper_connector_hdmi_update_edid(struct drm_connector *connector,
-+						 const struct drm_edid *drm_edid);
-+int drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector);
++		if (hdmi) {
++			const struct drm_edid *drm_edid;
++			int ret;
 +
- #endif // DRM_HDMI_STATE_HELPER_H_
++			drm_edid = drm_bridge_connector_read_edid(connector, status);
++			ret = drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
++			if (ret)
++				drm_warn(connector->dev, "updating EDID failed with %d\n", ret);
++
++			drm_edid_free(drm_edid);
++		}
++
+ 		drm_bridge_connector_hpd_notify(connector, status);
+ 	} else {
+ 		switch (connector->connector_type) {
+@@ -246,29 +285,29 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+ static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
+ 					       struct drm_bridge *bridge)
+ {
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+ 	enum drm_connector_status status;
+ 	const struct drm_edid *drm_edid;
+-	int n;
+ 
+ 	status = drm_bridge_connector_detect(connector, false);
+ 	if (status != connector_status_connected)
+-		goto no_edid;
++		return 0;
+ 
+-	drm_edid = drm_bridge_edid_read(bridge, connector);
+-	if (!drm_edid_valid(drm_edid)) {
++	/* In HDMI setup the EDID has been read and handled as a part of .detect() */
++	if (!hdmi) {
++		drm_edid = drm_bridge_connector_read_edid(connector, status);
++		if (!drm_edid) {
++			drm_edid_connector_update(connector, NULL);
++			return 0;
++		}
++
++		drm_edid_connector_update(connector, drm_edid);
+ 		drm_edid_free(drm_edid);
+-		goto no_edid;
+ 	}
+ 
+-	drm_edid_connector_update(connector, drm_edid);
+-	n = drm_edid_connector_add_modes(connector);
+-
+-	drm_edid_free(drm_edid);
+-	return n;
+-
+-no_edid:
+-	drm_edid_connector_update(connector, NULL);
+-	return 0;
++	return drm_edid_connector_add_modes(connector);
+ }
+ 
+ static int drm_bridge_connector_get_modes(struct drm_connector *connector)
 
 -- 
 2.39.5
