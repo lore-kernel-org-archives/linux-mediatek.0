@@ -4,96 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17442D73604
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Nov 2024 13:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE2F2D73619
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Dec 2024 00:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OSHwRqHVpOIG2JrOXS69Jq4ftU8zIW/MyIo0a+5/w9E=; b=qY9JLK4l+g0Tuew2+WDZ0heLFn
-	ZDwt2saYj0BLl2MPMVrIa1K6dswwVOcVLH4cOd0EXKVW6riM7uMT9tj5jJQpWj7gAHbMSEMOu0Rby
-	ImCxOYaISOdS5hyNr6HQSIrYebUqeaMzkillPTi8/ozdtPC7UUqpWIFoXKUb6Gxcx9nagRxNtmOpX
-	3FxjSjvd2YHOr3kMPcwKrjEqM8k+dsDc0g4OgTdITRfRNMax5i8DrZwoXuEjMglUJ6PdhYOicexxj
-	8UuuvR4Eo8PEMWhV6AC8oc+pHf9uJw7DRQQn4/2UQFuurkwY0LunVGfyeu7inU35TioThvZULUNl0
-	3bjDtbYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Knx2vF/XV6x3WtvG+CxxtwnkZCT4oFDg0nDSk74X/xk=; b=wgDH7S55yiej6JdaBwp/ZZeLV8
+	+xwnQtHzynxwRKDlBvylUC5VVyCvOCUfKTvqVYpA7ENCknY8sh+bRkIxYnMlkOpciiS0vj278bwUI
+	dO4frT0jGXmrhYm8SBik+VldPdD+otcpScJmDLYblVQ0eBxjYPavKdiIQQkjeJDnPYb+FY0pPblAS
+	T2+/M+eXoA7is4x1Tc57lXBfZ0IaaeoCodBDTztm72wCqp3K16sHq7bA7qfiGwyPh0Ls93jvGXhDH
+	KyFCGa8mFV5ZuVTlhqzPUwFrb9zPCOIaL7t5gpOFQy24P2f0B4Bl1tFWkSkHO+5kkkhGzB4aVT5NG
+	ia3JSb7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHO0N-000000026ty-0Vb9;
-	Sat, 30 Nov 2024 13:59:27 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1tHY5Q-00000002oug-26gD;
+	Sun, 01 Dec 2024 00:45:20 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHNzN-000000026p2-2Rzl
+	id 1tHY4P-00000002oQj-2k5A
 	for linux-mediatek@lists.infradead.org;
-	Sat, 30 Nov 2024 13:58:28 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-434a766b475so25008985e9.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 Nov 2024 05:58:24 -0800 (PST)
+	Sun, 01 Dec 2024 00:44:18 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5ceb03aadb1so3456769a12.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 30 Nov 2024 16:44:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1732975103; x=1733579903; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OSHwRqHVpOIG2JrOXS69Jq4ftU8zIW/MyIo0a+5/w9E=;
-        b=H/LZFoLBRgWu7XjuSWz/wgRhOH8g7gHMd2y1s/KJtGSmwGH7US7JsTzUxupaGlbKNQ
-         qnIfGQeXJxD+K3HqIzVBwWXmzH6MWq/JuB8ILzEMJXjjXRMv7vA8U1g7xAZwSbGD1WHb
-         lxNsdplEqnNdR/kSJuly02MIUuGGsJHRQaetkg1RDa+t+7a0OryT8Eh8Vry0v1L0NmAs
-         WmSSCh2uUpXnmFjO/DJNtMTeWNNBTLf9aekkIYmzDmeGWrKYRgMoxu3Om+L4mBoq97fq
-         UNRP6RRnTyiNBQ3hHQE3KnD+d/EAXUkzIxVWP9UF/tKMZ+DLfdsZIfB1IpENACwHjqRl
-         tBGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732975103; x=1733579903;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1733013856; x=1733618656; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OSHwRqHVpOIG2JrOXS69Jq4ftU8zIW/MyIo0a+5/w9E=;
-        b=kWe3LOzPnxSWeL/K9VR7PsQU8lIqFNiSJ2ehEtqgFrDzYcC+0wj/TUf2rwyNomeSZC
-         g2oFifVcWATZwOAqCtACXn2qJfdBENionpK+AW4lDc3wZFEJqhBH0u+X2c2HCZsgf0l+
-         gA4y8J4/kilIyP/1rDLFEwGE5lcDcmhyQcJNj7oQdF0HCwe6LpShrASRrJ66fBVOa9Q4
-         ws2qxK99KKRWmln1y9k4oXR4CUxuH5vd2ufIGsZKy1LlWuos/hfRBEgAK1aAKuHPp7SX
-         tU7oSVchjAV5l5o7F04zENLURQLQw+Zq51Ux6D4WR6Fm9ORbPOWSEM9dR2OIQ/uux945
-         8Iqg==
-X-Forwarded-Encrypted: i=1; AJvYcCX6YMSxUnZb4BqoCdmEfHZ6SJIJoCcihShszbQnQzln+o48wRwD9pU7d51hcZY3vMgkoZabUlQ7d/XoWQVHWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOHXvNfZq+i6VddEsRSiwVc8iMA394M59t+U67gxTfnbGoszWA
-	2ppSQX3fpVjkBmhuUgyGGaA7FEMgytdQHMpQzuvdd2Ccv1XXhWeAAYnErURfZF0=
-X-Gm-Gg: ASbGncuVJO+yApTrpJNCxcpNqRS+df4he2z7ay/3qEih0Qb8mVjS9vJ7kcO1kjgQR3J
-	v/C+joGusLn4K3iRFd+2zB2nJBilRIbKL67zLimSVJEqzSI8yGhpYyq5PVs+om/BoJoF3sg0VKF
-	BQ4wDrDJm/zKqHtMhTDPbJ4fFJEiKmroFQbJW/aYPL5dQJsaJnyTeQ4Pz1BGCMyS5yq1iwY/grV
-	xL9Oeo5CigZM6ddSV3265pwnG6/9u06Up2P7uOy5ZyPAf5COEXrnYE=
-X-Google-Smtp-Source: AGHT+IHHBe7d5htoj70/kfSxdm+kZQjM0tjaIphEphbFBlZoaGAn1iAgRxGbS4k2FdQNlTMpb9szHA==
-X-Received: by 2002:a05:600c:1e2a:b0:434:a8ef:442f with SMTP id 5b1f17b1804b1-434a9e0b47amr130603305e9.32.1732975102930;
-        Sat, 30 Nov 2024 05:58:22 -0800 (PST)
-Received: from localhost ([2a02:8071:b783:6940:36f3:9aff:fec2:7e46])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385ccd2db59sm7209061f8f.11.2024.11.30.05.58.21
+        bh=Knx2vF/XV6x3WtvG+CxxtwnkZCT4oFDg0nDSk74X/xk=;
+        b=vGmMObstw6jBd/pUqnJM98dBZfsmC/nTgJgTrtc3rNnsPrBSBGJI009+UjH89d4Uxd
+         rRoVs9sSuPcYouWPWfSN8MuJDl5zJkZT4Xgvy2fWpLcozvR09u/OXFy9nTcQigiXl4ER
+         TIr0A7C+Xc5MVDU+Ni9VcdtkFnmHe7Vu6UpAAtt864gxUFs5xEbF+18r6Nt0CXeLViQK
+         mIxhlYsxhcps6bP2O0AbEl8v3jhQa66DgNwIr+ggKo79O+rcN3w96nPOYOBwDjtLGZih
+         lHddvl07FN7IuRVWb/Gyze6+FKzPhmXCV7iujfV3IZtNP2VXROWBdsTgqwVFkbHZik4f
+         yLNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733013856; x=1733618656;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Knx2vF/XV6x3WtvG+CxxtwnkZCT4oFDg0nDSk74X/xk=;
+        b=ZCEtG43Aae77+3Y4B1MYZXLO84H7BqEJiXMY4Ud5bK+9jtSdWgK4hT0VDS9aNUmPV0
+         zENv5DQXIZFaH1fn1bGi9tI223800H6TMwQF9WfVqqAeflH1oCnNe7DQCfkeFHocSBcP
+         TY1arOGH1hzJecozz80SSY/5Otx4zLeEn0Qe+cus6rKucODjbFYnhPv/yLy2THn6hhWC
+         tti/5IvR4IGgzFZtm7T1HEGsm0l0gQp0Nt8E2vkircdEJcAmSs2+bieiW+HIFpssTUQb
+         4WJVtufppx55mNmC4Yy6uejc8ONO89ptO5WCOZkHtIjAHnMG+ZrB1LLdEYD4/pIlRXtr
+         wX3g==
+X-Forwarded-Encrypted: i=1; AJvYcCXsCJ/hWXwvckeDXLqRBZc//dOQifzw7LoODHZGqVafkAalKWPOyZxb5YB/nniakLYx1f8WAd4fgJXsKyhGrg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzw+voIrCFAOWMwN99Nhzn/JMQAW9H9u02qlzUuqxfoQDqY5Mlf
+	PWYW1i2wFfT0i1+T0shoEdrrR9RGbh4nHDwu4G32Rjjw7Camdy8Is3J+P4fgd/0=
+X-Gm-Gg: ASbGncubVRQtslf56ac17F4D6k2q0wzAC0dHb18dBM2d5dV7kDZTHfJsWUu0uOQLn5R
+	Eh/nsotx1odu4vBtLxh7EXT7dSwbOSnH6B9Jr++vKHBRtoORk+oud5b4wJ0JqYjPWORBIOm4ylf
+	zfSjlvrGGvvanx9EeUAM/cwUa8jkOkUIcQaBoioeBlgu2qoVUNltu5XjNj5+kntoOZdjdBB6Ki3
+	/b2o9i+vlQpxAwE/0kMPqexmRP9JeuVzYbk2siygxKxrocuZalfgOlm/g==
+X-Google-Smtp-Source: AGHT+IG2vkfheouE1mPbocWXKym9yPXudTpq4FYXRE1GdSbbteSVJqBbXoSoXaZUoVfFrUgKdHkWWQ==
+X-Received: by 2002:a05:6402:51ca:b0:5d0:8606:9b92 with SMTP id 4fb4d7f45d1cf-5d08606cd3amr13223060a12.5.1733013856266;
+        Sat, 30 Nov 2024 16:44:16 -0800 (PST)
+Received: from umbar.lan ([192.130.178.90])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d097e8d817sm3400359a12.63.2024.11.30.16.44.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Nov 2024 05:58:21 -0800 (PST)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-sunxi@lists.linux.dev
-Subject: [PATCH] devfreq: Switch back to struct platform_driver::remove()
-Date: Sat, 30 Nov 2024 14:58:11 +0100
-Message-ID: <20241130135813.895628-2-u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.45.2
+        Sat, 30 Nov 2024 16:44:15 -0800 (PST)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Sun, 01 Dec 2024 02:44:05 +0200
+Subject: [PATCH v5 1/9] ASoC: hdmi-codec: pass data to get_dai_id too
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4431; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=uZqTpKr93naOghYTr0iK9IfYdelZY2f/4l+5kxDMpfQ=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBnSxn2/gYVC8rkX/fl3aGkXakkNgP43aHdtARV8 OWxfSCpITGJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZ0sZ9gAKCRCPgPtYfRL+ TtpSB/4zIRpdyNmt2fGjIAeqqboAJR/YHNuFmvrjp8Drq7BhxBmFEjklrLsdnM1D8xJ5bFpqfMt 3g3BmsnnVn5Ievf+Rgcjdad0fazJd8PkmhOKtpmlxhQBHOGgdt3gIMLDcreOU0uSgchS/gRERs6 OQW82e3EqDHrAE6Vc+3Qi61FU/ZlMF1nqYl1+99RsW8bvRLfXVqfnDpu8ICue/NpESiicBfveka TqbEyaEcVjC3oB+UloPneKYxzreyyW/95x403cjGd3zjLiW0e/ZY3NfQI/fj6v+QVkJWdTBa697 6PLuqyWiHcdrpQA+5R1YdF54B/MbB273AjfAkpjaeAGRTtZx
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241201-drm-bridge-hdmi-connector-v5-1-b5316e82f61a@linaro.org>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+In-Reply-To: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5692;
+ i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
+ bh=xKXgCzbJKZ6UUdReZlG7GRuNQSsdN/VrnC+8Pdwptd4=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnS7FXH/RpG/BjQasdBLhNln9hjEHbp3mQ9vf3t
+ EW2Nf56OKuJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ0uxVwAKCRCLPIo+Aiko
+ 1QCuCACR5F9ArBiXX9UAqJoDRn+pFNJYOtdo3Ix28zrT5Ot32SBfkj+oBkksDinkFfP9qDcghsF
+ +9DrlANcyvHqQxPLRZDGCbdW/ozVyJJxp6SVHq5eUZ/BNr2hdTx63IvJ9ULYZW1sUlQy7lA+qX8
+ DtWJ0KLYNtJK7Q6OJ/wruc+tH1Ps/gRkpeYMLzfeyufJhuLnE9ZIgvsQuJrH+cnHqeqJ2j1rn+D
+ BYpByJ8Xo2Mi6oN6B9Dn2juhhYluEZrxH4gc7+4kINUTvRKBN1+/f9comTbBgr4RDwV/w62HfyS
+ 8ka5Cv33H7fZ/JZLnCljjcGlVgs6klKVpgAsUIio7qvbFQZm
+X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
+ fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241130_055825_884409_0F1F1EFF 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20241130_164417_716008_198787A8 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,126 +136,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-return void") .remove() is (again) the right callback to implement for
-platform drivers.
+The upcoming DRM connector HDMI codec implementation is going to use
+codec-specific data in the .get_dai_id to get drm_connector. Pass data
+to the callback, as it is done with other hdmi_codec_ops callbacks.
 
-Convert all platform drivers below drivers/devfreq to use .remove(),
-with the eventual goal to drop struct platform_driver::remove_new(). As
-.remove() and .remove_new() have the same prototypes, conversion is done
-by just changing the structure member name in the driver initializer.
-
-While touching these drivers, make the alignment of the touched
-initializers consistent.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+Acked-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
-Hello,
+ drivers/gpu/drm/bridge/adv7511/adv7511_audio.c      | 3 ++-
+ drivers/gpu/drm/bridge/analogix/anx7625.c           | 3 ++-
+ drivers/gpu/drm/bridge/lontium-lt9611.c             | 3 ++-
+ drivers/gpu/drm/bridge/lontium-lt9611uxc.c          | 3 ++-
+ drivers/gpu/drm/bridge/sii902x.c                    | 3 ++-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 3 ++-
+ include/sound/hdmi-codec.h                          | 3 ++-
+ sound/soc/codecs/hdmi-codec.c                       | 2 +-
+ 8 files changed, 15 insertions(+), 8 deletions(-)
 
-this is based on Friday's next, feel free to drop changes that result in
-a conflict when you come around to apply this. I'll care for the fallout
-at a later time then. (Having said that, if you use b4 am -3 and git am
--3, there should be hardly any conflict.)
-
-This is merge window material.
-
-Best regards
-Uwe
-
- drivers/devfreq/event/exynos-nocp.c | 6 +++---
- drivers/devfreq/event/exynos-ppmu.c | 6 +++---
- drivers/devfreq/mtk-cci-devfreq.c   | 4 ++--
- drivers/devfreq/rk3399_dmc.c        | 8 ++++----
- drivers/devfreq/sun8i-a33-mbus.c    | 2 +-
- 5 files changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/devfreq/event/exynos-nocp.c b/drivers/devfreq/event/exynos-nocp.c
-index 5edc522f715c..9480a92fc265 100644
---- a/drivers/devfreq/event/exynos-nocp.c
-+++ b/drivers/devfreq/event/exynos-nocp.c
-@@ -283,10 +283,10 @@ static void exynos_nocp_remove(struct platform_device *pdev)
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+index 61f4a38e7d2bf6905683cbc9e762b28ecc999d05..51fb9a574b4e28450b2598a92e2930ace5128b71 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+@@ -204,7 +204,8 @@ static void audio_shutdown(struct device *dev, void *data)
  }
  
- static struct platform_driver exynos_nocp_driver = {
--	.probe	= exynos_nocp_probe,
--	.remove_new = exynos_nocp_remove,
-+	.probe = exynos_nocp_probe,
-+	.remove = exynos_nocp_remove,
- 	.driver = {
--		.name	= "exynos-nocp",
-+		.name = "exynos-nocp",
- 		.of_match_table = exynos_nocp_id_match,
- 	},
- };
-diff --git a/drivers/devfreq/event/exynos-ppmu.c b/drivers/devfreq/event/exynos-ppmu.c
-index 7002df20a49e..a738e6145612 100644
---- a/drivers/devfreq/event/exynos-ppmu.c
-+++ b/drivers/devfreq/event/exynos-ppmu.c
-@@ -700,10 +700,10 @@ static void exynos_ppmu_remove(struct platform_device *pdev)
+ static int adv7511_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-					struct device_node *endpoint)
++					struct device_node *endpoint,
++					void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index c036bbc92ba96ec4663c55cca091cd5da9f6d271..943dd3cf57738d8c232d57d793756eb2e3bf1c5a 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -1952,7 +1952,8 @@ static void anx7625_audio_shutdown(struct device *dev, void *data)
  }
  
- static struct platform_driver exynos_ppmu_driver = {
--	.probe	= exynos_ppmu_probe,
--	.remove_new = exynos_ppmu_remove,
-+	.probe = exynos_ppmu_probe,
-+	.remove = exynos_ppmu_remove,
- 	.driver = {
--		.name	= "exynos-ppmu",
-+		.name = "exynos-ppmu",
- 		.of_match_table = exynos_ppmu_id_match,
- 	},
- };
-diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-index 7ad5225b0381..3938878b2279 100644
---- a/drivers/devfreq/mtk-cci-devfreq.c
-+++ b/drivers/devfreq/mtk-cci-devfreq.c
-@@ -429,8 +429,8 @@ static const struct of_device_id mtk_ccifreq_machines[] = {
- MODULE_DEVICE_TABLE(of, mtk_ccifreq_machines);
+ static int anx7625_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				       struct device_node *endpoint)
++				       struct device_node *endpoint,
++				       void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
+index 8f25b338a8d8f95dc0691735ac6343675098f7f7..6bc1b2476847c3bccbbf9874bb384c1f60674da6 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
+@@ -1059,7 +1059,8 @@ static void lt9611_audio_shutdown(struct device *dev, void *data)
+ }
  
- static struct platform_driver mtk_ccifreq_platdrv = {
--	.probe	= mtk_ccifreq_probe,
--	.remove_new = mtk_ccifreq_remove,
-+	.probe = mtk_ccifreq_probe,
-+	.remove = mtk_ccifreq_remove,
- 	.driver = {
- 		.name = "mtk-ccifreq",
- 		.of_match_table = mtk_ccifreq_machines,
-diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index d405cee92c25..158e4bbd08cc 100644
---- a/drivers/devfreq/rk3399_dmc.c
-+++ b/drivers/devfreq/rk3399_dmc.c
-@@ -473,11 +473,11 @@ static const struct of_device_id rk3399dmc_devfreq_of_match[] = {
- MODULE_DEVICE_TABLE(of, rk3399dmc_devfreq_of_match);
+ static int lt9611_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				      struct device_node *endpoint)
++				      struct device_node *endpoint,
++				      void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
+index f89af8203c9d67cb05b629b27f66cf996baedd16..77bc09b875323d88f7346db9d24ea89a355c99b1 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
+@@ -522,7 +522,8 @@ static void lt9611uxc_audio_shutdown(struct device *dev, void *data)
+ }
  
- static struct platform_driver rk3399_dmcfreq_driver = {
--	.probe	= rk3399_dmcfreq_probe,
--	.remove_new = rk3399_dmcfreq_remove,
-+	.probe = rk3399_dmcfreq_probe,
-+	.remove = rk3399_dmcfreq_remove,
- 	.driver = {
--		.name	= "rk3399-dmc-freq",
--		.pm	= &rk3399_dmcfreq_pm,
-+		.name = "rk3399-dmc-freq",
-+		.pm = &rk3399_dmcfreq_pm,
- 		.of_match_table = rk3399dmc_devfreq_of_match,
- 	},
- };
-diff --git a/drivers/devfreq/sun8i-a33-mbus.c b/drivers/devfreq/sun8i-a33-mbus.c
-index bcf654f4ff96..a405bab1a63e 100644
---- a/drivers/devfreq/sun8i-a33-mbus.c
-+++ b/drivers/devfreq/sun8i-a33-mbus.c
-@@ -495,7 +495,7 @@ static SIMPLE_DEV_PM_OPS(sun8i_a33_mbus_pm_ops,
+ static int lt9611uxc_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-					 struct device_node *endpoint)
++					 struct device_node *endpoint,
++					 void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/sii902x.c b/drivers/gpu/drm/bridge/sii902x.c
+index 9be9cc5b902594ebe6e1ac29ab8684623e336796..f0be803cc2274ca2199ed7661cf752b0a91434b6 100644
+--- a/drivers/gpu/drm/bridge/sii902x.c
++++ b/drivers/gpu/drm/bridge/sii902x.c
+@@ -815,7 +815,8 @@ static int sii902x_audio_get_eld(struct device *dev, void *data,
+ }
  
- static struct platform_driver sun8i_a33_mbus_driver = {
- 	.probe	= sun8i_a33_mbus_probe,
--	.remove_new = sun8i_a33_mbus_remove,
-+	.remove	= sun8i_a33_mbus_remove,
- 	.driver	= {
- 		.name		= "sun8i-a33-mbus",
- 		.of_match_table	= sun8i_a33_mbus_of_match,
+ static int sii902x_audio_get_dai_id(struct snd_soc_component *component,
+-				    struct device_node *endpoint)
++				    struct device_node *endpoint,
++				    void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+index 26c187d20d973dc65801a3baa59ecf57d20072eb..86c412e9cbc80bb82bad5db3aa0263a7acd9c2d7 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+@@ -148,7 +148,8 @@ static int dw_hdmi_i2s_get_eld(struct device *dev, void *data, uint8_t *buf,
+ }
+ 
+ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				  struct device_node *endpoint)
++				  struct device_node *endpoint,
++				  void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+index 5e1a9eafd10f5d4f831abbb6f4c0fff661909584..b3407b47b4a7878532ecf3b08eeecd443d6fdb07 100644
+--- a/include/sound/hdmi-codec.h
++++ b/include/sound/hdmi-codec.h
+@@ -105,7 +105,8 @@ struct hdmi_codec_ops {
+ 	 * Optional
+ 	 */
+ 	int (*get_dai_id)(struct snd_soc_component *comment,
+-			  struct device_node *endpoint);
++			  struct device_node *endpoint,
++			  void *data);
+ 
+ 	/*
+ 	 * Hook callback function to handle connector plug event.
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 74caae52e1273fda45ab8dd079ae800827f0231f..abd7c9b0fda9ee6fa6c4efde1f583af667716611 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -981,7 +981,7 @@ static int hdmi_of_xlate_dai_id(struct snd_soc_component *component,
+ 	int ret = -ENOTSUPP; /* see snd_soc_get_dai_id() */
+ 
+ 	if (hcp->hcd.ops->get_dai_id)
+-		ret = hcp->hcd.ops->get_dai_id(component, endpoint);
++		ret = hcp->hcd.ops->get_dai_id(component, endpoint, hcp->hcd.data);
+ 
+ 	return ret;
+ }
 
-base-commit: f486c8aa16b8172f63bddc70116a0c897a7f3f02
 -- 
-2.45.2
+2.39.5
 
 
