@@ -4,56 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2F22D78319
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 13:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF2B6D7831B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 13:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=Uj2/xrmqPhCTuIIoLM1cGtB1WlPOwHRH6yz+7TfAeBw=; b=ff82Pkn3n1/Giem3Lgrdf6di79
-	BRhQ7F8dOHW50tW5liyUxrmFk3ioEksUl1tDq5/DH2nc9+cBcr+1AhJvXtMoQtZ1RbrShdmKAm4VV
-	GQ0opfMMCle/M5zN9LLWEuEPmpS/kAgJKu2FHWq5GIYvsvMrCqaKADQuZWhA5PrcP4KAPerzCguKA
-	gSV2O8xsh5ibtI1Px/8TMDyWOieSMumqIKallNdIgkd5M3xNx8vAY7qljB+/731b7Q/Pasxfv1V0x
-	c93PA1nMRtgUx3BCodmmY/EoDvm88ipE1+C4FJmNQkRjX7nDIETxDwLK7Z2uZM6dkSvagE6tV97Wb
-	iw7OJABg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/VF+nWs6BWtLEi7pKkF8pL4507yNu1NwuQmjk0P5/9g=; b=K4yOUQslBl63XQiya3HcbixZNh
+	/oUtloUQnqK62eIhxX7iQACZrp74lqP9wS0msSeQtmsQEaPi6EylQ8L7rN+pKHGnOd9j26NxokKFR
+	SxTFcpdn/r54YhQ1k5248cVol5gYZGRpDfN+ksPIhTzQ2mQW9TDFGGqSCZDxD59gpcWo1lEF6FR7g
+	K2jNhfKDAi1oZmOEe+FKuVEFa0xF4t3O4eGTInJDX+pCtCv59m8p0HSxO2cXgAqMLwfyR8ZnkVl0q
+	lNWktkmUDvq01c8ONmcZbGSmLoyk5CmXhY4tIaJMpYVJL+KivhUviVY0X9LmXcxRduFWifWOkCNTi
+	8FpelJ8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI630-00000006AI1-3bI4;
-	Mon, 02 Dec 2024 13:01:06 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tI6JL-00000006CrS-32nL;
+	Mon, 02 Dec 2024 13:17:59 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI62y-00000006AGZ-1ShF
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 13:01:05 +0000
+	id 1tI6IL-00000006Cdn-3yx9;
+	Mon, 02 Dec 2024 13:16:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 49D82A40C9B;
-	Mon,  2 Dec 2024 12:59:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD8DEC4CED1;
-	Mon,  2 Dec 2024 13:01:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1733144463;
-	bh=N3SM040uS2rx/W/DIrvVP6TTmJM6NfaQSvcPhiakICI=;
-	h=Subject:To:Cc:From:Date:In-Reply-To:From;
-	b=dwJyLFZP9YM2U2T+KNht/bytfPNfRsM+wszXelGOZ9ivmxC5gtaz8id6OynhjQyhG
-	 MUsmFTByiSpw7uBd6eJzKi2+XAKEYoRf4L9GLp6M2XHvEXgl7R2c04nC+1iZg40PzM
-	 b3My0VnBT1hWBfv9tkNXoQoYmP4RVswX/jnjPEY4=
-Subject: Patch "Revert "arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled"" has been added to the 6.6-stable tree
-To: angelogioacchino.delregno@collabora.com,gregkh@linuxfoundation.org,koichiro.den@canonical.com,linux-mediatek@lists.infradead.org,matthias.bgg@gmail.com,sashal@kernel.org,wenst@chromium.org
-Cc: <stable-commits@vger.kernel.org>
-From: <gregkh@linuxfoundation.org>
-Date: Mon, 02 Dec 2024 14:00:48 +0100
-In-Reply-To: <20241202081552.156183-1-wenst@chromium.org>
-Message-ID: <2024120247-entrust-scoring-a72f@gregkh>
+	by nyc.source.kernel.org (Postfix) with ESMTP id DC4EDA40B5F;
+	Mon,  2 Dec 2024 13:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9CE9C4CED1;
+	Mon,  2 Dec 2024 13:16:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733145417;
+	bh=/VF+nWs6BWtLEi7pKkF8pL4507yNu1NwuQmjk0P5/9g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TlUDTiqGqqVXsTcBbB9DY1Tj4GMlqBKCfLy4MRppqgoZ+hIXX+C1MxEj5vfH9GnPp
+	 pZzbmEljazX/5Fp15FZzjtyQiV1ARa5cluHtszSCNK+WUICMjsXncH/i800kboib3d
+	 5yO6V9WPYE2Gw6PKa8jvyRcXDRMhpGkyfykwfGepEd9RLlf9N+2uRYV1kfFkMrn1rb
+	 va5YB+0NIfOs3QsVhKScTQ1SxXldUT4An8nqBvnsXywUZlmtQRVQHW/x/+juRJpXdN
+	 +RZehDyE3RB5KB4msJrMpBXmF/iSnIGVeQI0SRdGYab574kPnU8kJRIi+YRG9yp/R8
+	 u967dyf3w8Lgg==
+Date: Mon, 2 Dec 2024 13:16:51 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu =?utf-8?B?KOS/nuWutumRqyk=?= <Jiaxin.Yu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"ajye_huang@compal.corp-partner.google.com" <ajye_huang@compal.corp-partner.google.com>,
+	Chunxu Li =?utf-8?B?KOadjuaYpeaXrSk=?= <Chunxu.Li@mediatek.com>,
+	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsik=?= <Allen-KH.Cheng@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>,
+	"andrzej.hajda@intel.com" <andrzej.hajda@intel.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"robert.foss@linaro.org" <robert.foss@linaro.org>,
+	"Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>,
+	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Prado <nfraprado@collabora.com>,
+	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
+Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
+Message-ID: <00d5c728-3eb9-427a-bc60-5828c20fec09@sirena.org.uk>
+References: <Y4Cysgk5Gic5ae9B@sirena.org.uk>
+ <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
+ <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
+ <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
+ <Y4jHAJgmz/P58Q/C@sirena.org.uk>
+ <7023a2c7b471d6888d9079563a6c01f22599201f.camel@mediatek.com>
+ <Y43e+EsNCrCpZSIH@sirena.org.uk>
+ <dc50d0b21795acbcc44c77e5fd81e7cb92c65c67.camel@mediatek.com>
+ <Y5ipwqzHKTK8UdlC@sirena.org.uk>
+ <a699178dcef540fff5caae6291983a444886bff6.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=ANSI_X3.4-1968
-Content-Transfer-Encoding: 8bit
-X-stable: commit
-X-Patchwork-Hint: ignore 
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="NG9fJ4QMkZ8167X3"
+Content-Disposition: inline
+In-Reply-To: <a699178dcef540fff5caae6291983a444886bff6.camel@mediatek.com>
+X-Cookie: (null cookie
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_050104_517509_9369FF23 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20241202_051658_110516_40F1164F 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,64 +96,36 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-This is a note to let you know that I've just added the patch titled
+--NG9fJ4QMkZ8167X3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-    Revert "arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled"
+On Sun, Dec 01, 2024 at 05:15:45PM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=E9=
+=91=AB) wrote:
 
-to the 6.6-stable tree which can be found at:
-    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
+> So I want to ask if I can do it by just adding
+> SOC_DAPM_PIN_SWITCH("Speakers") and SOC_DAPM_PIN_SWITCH("HDMI")?
+> Correspondingly, dapm widget and route path need to be added. That is
+> "SND_SOC_DAPM_SPK("Speakers", NULL)/ SND_SOC_DAPM_LINE("HDMI1", NULL)"
+> and "{"Speakers", NULL, "Speaker"}/ {"HDMI1", NULL, "TX"}".
 
-The filename of the patch is:
-     revert-arm64-dts-mediatek-mt8195-cherry-mark-usb-3.0-on-xhci1-as-disabled.patch
-and it can be found in the queue-6.6 subdirectory.
+Yes, that's what I'd expect to see.
 
-If you, or anyone else, feels it should not be added to the stable tree,
-please let <stable@vger.kernel.org> know about it.
+--NG9fJ4QMkZ8167X3
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-From stable+bounces-95934-greg=kroah.com@vger.kernel.org Mon Dec  2 09:16:23 2024
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon,  2 Dec 2024 16:15:49 +0800
-Subject: Revert "arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled"
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sasha Levin <sashal@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Koichiro Den <koichiro.den@canonical.com>
-Message-ID: <20241202081552.156183-1-wenst@chromium.org>
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmdNs0IACgkQJNaLcl1U
+h9DGvAf+J3hwEq4x3bF91sZy15VQBvz/0kSF2J0M+KaBQnVVFXj/YCUp9AjHd9Py
+svtvltKB2dzk8Cpzti6uG995Vi0ugqWdEFR57tDSFDzyMMEStcr/z+LYr8gmncxg
+0kEyoQrLHpnucIqWa+IJ766YUIsU2FvSM5IP2ZDXfWUeSHI5fzUfpc5M9MrgZJut
+JfoR0eE91G28dKk46pdE+WRc6xsPWl/jRqlgr492lZe5Qew7l8ZRdnvummrx0iDd
+A4z1fW9cZXTepa9GisH8GziS6GP3C+qJWwsAgq+iaKvZ6tBcii8s0sSGVRWbvQQG
+a7poRNcQYuwS88Fimgys4lWYbODVVg==
+=weMB
+-----END PGP SIGNATURE-----
 
-From: Chen-Yu Tsai <wenst@chromium.org>
-
-This reverts commit 090386dbedbc2f099c44a0136eb8eb8713930072.
-
-The hunk was applied to the wrong device node when the commit was
-backported to the 6.6 stable branch.
-
-Revert it to re-do the backport correctly.
-
-Reported-by: Koichiro Den <koichiro.den@canonical.com>
-Closes: https://lore.kernel.org/stable/6itvivhxbjlpky5hn6x2hmc3kzz4regcvmsk226t6ippjad7yk@26xug5lrdqdw/
-Fixes: 090386dbedbc ("arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi |    1 -
- 1 file changed, 1 deletion(-)
-
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -1312,7 +1312,6 @@
- 	usb2-lpm-disable;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
- 	vbus-supply = <&usb_vbus>;
--	mediatek,u3p-dis-msk = <1>;
- };
- 
- #include <arm/cros-ec-keyboard.dtsi>
-
-
-Patches currently in stable-queue which might be from wenst@chromium.org are
-
-queue-6.6/arm64-dts-mediatek-mt8183-kukui-jacuzzi-fix-dp-bridg.patch
-queue-6.6/arm64-dts-mediatek-mt8183-kukui-jacuzzi-add-supplies.patch
-queue-6.6/revert-arm64-dts-mediatek-mt8195-cherry-mark-usb-3.0-on-xhci1-as-disabled.patch
-queue-6.6/arm64-dts-mediatek-mt8173-elm-hana-add-vdd-supply-to.patch
-queue-6.6/arm64-dts-mediatek-mt8195-cherry-mark-usb-3.0-on-xhci1-as-disabled.patch
+--NG9fJ4QMkZ8167X3--
 
