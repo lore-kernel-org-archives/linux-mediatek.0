@@ -4,78 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB354D78311
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 12:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFEEAD78319
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 13:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtL4KQmCLLC3nNu0INNAbv74730ldb7nJ8AzbzK+CVQ=; b=sLGyb6xqk+ByZWIvDDavQJmphf
-	389ZOAGDuK507Nbzz+WGC9qkw4GBEiRDF2BFkDLrBmjM1kdRgjSJ/zIzNPfpC5mgsGKetg2ahDr4o
-	KHuGT/W4wHYY6pxNrmSToRR7xCylhPcxtf48bgAAPJE0YwkMtRzeX5ZsriCYAOYpkMKQ7dGTq9sj6
-	wJGGt0b4y39hOzm96n3lmSEBLQal5rKrnEPApqaWQNz4V566OOSZScNM6JAgN1sWPX5kaUYclheYR
-	B+0uu8OLM01zovND/4Gvq47ZEgoehO1KElaM5wS6uCHl1Qe+W9aZjtD3Y2nirjlR3iq+3S7SiBfUx
-	Nuef3oDw==;
+	bh=VkSc1OtoaIn5i9sUO8D5w8KXAZHM0RoZXTyJeEmffRA=; b=0R2tcbZokaCUMHELOfycgczeBC
+	/2UuvkN6OmTNDYk9stQRpFa98pT0rSw5ToLpbLaVc3FzZCMyAOKxiI5q+m9lOXAezZkKfyVQhd+85
+	Pdl0C2J/5Sq8H7YP4tGbJbVhx2nPcILhml8YTC1kvm68BmiMXRCQdoHwg+JMvehadIM5OmBQkRIO7
+	20CSTfvVPWeBKcypLKSVbQ317jG+f85M90KcpYDU4lNg7caxJFRAa16dLgI4s+kINu2QzbRD78w71
+	c3GF3GfmUCBmPrAZncuVc6MGJ0dBVqyopmPOYu12r9lZYokwDzy12TWRiqo+/VaEqyACYPOOOOKgr
+	yVgsEejQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI5nX-000000067Ti-3lO8;
-	Mon, 02 Dec 2024 12:45:07 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1tI62W-00000006A2d-0aY8;
+	Mon, 02 Dec 2024 13:00:36 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI5kP-000000066uL-48kH;
-	Mon, 02 Dec 2024 12:41:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733143314; x=1764679314;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/6bKU0R/dnuGLOITYR0+vZxxFxDTHlhCvq2y8NVrENE=;
-  b=RCc3lYLpOvtLDYtbtz7B1JmXb1StSAOIOAYF9nbEDzxRLFRtGHw0qvWy
-   8qfseqTJs9jgpMDen7iJyFIKXRfEYDdmffBd60fIH1ntZaFRn66EmcM+X
-   PHXhNMDpFgUAJTBh49u6guQY6jsrA/+Bq938fw2SOUQJm9y3VDf7/1xSH
-   GDOV4aOk9A6InKEYdmvB1ejWQMCAwqZGlL1X8MqgdlyAxU2btuBLXIFRY
-   TZLuRA0csFBLqQT/IA+uHsRwLwMf3rAfNycBC3JOr7pMxi0BEEpYzAdha
-   8yk7i79+5qrAEO/mKf8xBQOL64zo3zzDIzuI5OqZJ05nBQYC0Q5lhqLOu
-   g==;
-X-CSE-ConnectionGUID: qjjrhstgSEa3W1JxHXf7CA==
-X-CSE-MsgGUID: GTxVafjzS8mUyfV0rRgFPg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11274"; a="20899670"
-X-IronPort-AV: E=Sophos;i="6.12,202,1728975600"; 
-   d="scan'208";a="20899670"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Dec 2024 04:41:51 -0800
-X-CSE-ConnectionGUID: mcGNoGCeS0urFo3Yqu+tLA==
-X-CSE-MsgGUID: s3MeUe3iTtmJsdAwONITmA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="98125338"
-Received: from lkp-server02.sh.intel.com (HELO 36a1563c48ff) ([10.239.97.151])
-  by orviesa003.jf.intel.com with ESMTP; 02 Dec 2024 04:41:49 -0800
-Received: from kbuild by 36a1563c48ff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tI5kI-0002QD-2j;
-	Mon, 02 Dec 2024 12:41:46 +0000
-Date: Mon, 2 Dec 2024 20:41:18 +0800
-From: kernel test robot <lkp@intel.com>
-To: chang hao <ot_chhao.chang@mediatek.com>, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
-	linus.walleij@linaro.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Chhao Chang <ot_chhao.chang@mediatek.com>
-Subject: Re: [PATCH] pinctrl: mediatek: add eint new design for mt8196
-Message-ID: <202412022033.G153neOU-lkp@intel.com>
-References: <20241202085024.25375-1-ot_chhao.chang@mediatek.com>
+	id 1tI61W-000000069r8-2uvl;
+	Mon, 02 Dec 2024 12:59:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 31DA5A40C41;
+	Mon,  2 Dec 2024 12:57:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B027C4CED1;
+	Mon,  2 Dec 2024 12:59:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733144373;
+	bh=VkSc1OtoaIn5i9sUO8D5w8KXAZHM0RoZXTyJeEmffRA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DuPBiKxEPZ8hNvu7XY/JeqC22rHjoWHz8J4L9ZjAqJtP/ZLUdfnH0N2+6JuEuZYNS
+	 gjprWPIBrGlbdvouN6ch2AhZJMsdRbpxm/XHYH7Ho2mFhiflGP5NqBIWRyRQr63KY2
+	 dyNZ68wkucnwrhDO/niHJsWMeQYK/FBimmPHVagPS++j3LqGQLD84gN2MFTKCcmPvF
+	 SULgGPyKftHpxm0Puw/mC6m8e4zYDC68fIdm+wmU0/Zy+PXryK15FE7G1HF7Mzv9Dr
+	 DsaxcNzS0UEF+9JnnxJwAPupFgzMBwuSdklY8POOK9d0BHjmTUZCn3XBYh6+RBj7nK
+	 kPkHTUy0duybg==
+Date: Mon, 2 Dec 2024 12:59:22 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Phong LE <ple@baylibre.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 2/9] ASoC: hdmi-codec: move no_capture_mute to struct
+ hdmi_codec_pdata
+Message-ID: <0d4dfb60-e2e6-484a-993a-41d1229c62fb@sirena.org.uk>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-2-b5316e82f61a@linaro.org>
+ <20241202-bald-just-guan-c5d41b@houat>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="26+IIHuKp7C8Awjo"
 Content-Disposition: inline
-In-Reply-To: <20241202085024.25375-1-ot_chhao.chang@mediatek.com>
+In-Reply-To: <20241202-bald-just-guan-c5d41b@houat>
+X-Cookie: (null cookie
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_044154_043742_AE7C6A8C 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20241202_045934_866026_1319DF71 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,224 +109,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi chang,
 
-kernel test robot noticed the following build errors:
+--26+IIHuKp7C8Awjo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-[auto build test ERROR on linusw-pinctrl/devel]
-[also build test ERROR on linusw-pinctrl/for-next linus/master v6.13-rc1 next-20241128]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Mon, Dec 02, 2024 at 01:06:09PM +0100, Maxime Ripard wrote:
+> On Sun, Dec 01, 2024 at 02:44:06AM +0200, Dmitry Baryshkov wrote:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/chang-hao/pinctrl-mediatek-add-eint-new-design-for-mt8196/20241202-165544
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
-patch link:    https://lore.kernel.org/r/20241202085024.25375-1-ot_chhao.chang%40mediatek.com
-patch subject: [PATCH] pinctrl: mediatek: add eint new design for mt8196
-config: arc-randconfig-001-20241202 (https://download.01.org/0day-ci/archive/20241202/202412022033.G153neOU-lkp@intel.com/config)
-compiler: arc-elf-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241202/202412022033.G153neOU-lkp@intel.com/reproduce)
+> > The no_capture_mute flag might differ from platform to platform,
+> > especially in the case of the wrapping implementations, like the
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202412022033.G153neOU-lkp@intel.com/
+> I appreciate it might be a dumb question, but I never really understood
+> what no_capture_mute was all about. And in that context, why some
+> drivers would need / use it, and some won't.
 
-All error/warnings (new ones prefixed by >>):
+It's just what it says, it's a flag saying the device doesn't support
+muting the capture side.
 
->> drivers/pinctrl/mediatek/mtk-eint.c:246:6: warning: no previous prototype for 'mt6983_eint_ack' [-Wmissing-prototypes]
-     246 | void mt6983_eint_ack(struct irq_data *d)
-         |      ^~~~~~~~~~~~~~~
-   drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_do_suspend':
->> drivers/pinctrl/mediatek/mtk-eint.c:605:9: error: implicit declaration of function 'dsb' [-Werror=implicit-function-declaration]
-     605 |         dsb(sy);
-         |         ^~~
->> drivers/pinctrl/mediatek/mtk-eint.c:605:13: error: 'sy' undeclared (first use in this function); did you mean 's8'?
-     605 |         dsb(sy);
-         |             ^~
-         |             s8
-   drivers/pinctrl/mediatek/mtk-eint.c:605:13: note: each undeclared identifier is reported only once for each function it appears in
-   drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_do_resume':
-   drivers/pinctrl/mediatek/mtk-eint.c:626:13: error: 'sy' undeclared (first use in this function); did you mean 's8'?
-     626 |         dsb(sy);
-         |             ^~
-         |             s8
-   drivers/pinctrl/mediatek/mtk-eint.c: At top level:
->> drivers/pinctrl/mediatek/mtk-eint.c:704:14: warning: no previous prototype for 'mtk_eint_get_debounce_en' [-Wmissing-prototypes]
-     704 | unsigned int mtk_eint_get_debounce_en(struct mtk_eint *eint,
-         |              ^~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/pinctrl/mediatek/mtk-eint.c:727:14: warning: no previous prototype for 'mtk_eint_get_debounce_value' [-Wmissing-prototypes]
-     727 | unsigned int mtk_eint_get_debounce_value(struct mtk_eint *eint,
-         |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+--26+IIHuKp7C8Awjo
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-vim +/dsb +605 drivers/pinctrl/mediatek/mtk-eint.c
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmdNrykACgkQJNaLcl1U
+h9BXlAf/b2RCOldUO9D2uv21dvLwptK8t/qpPmm6L0SGtwbwCyejExyCcRcXDK2J
+6VM6BCDUGEH5VIKVo2XFEHzhQi8F4jLnCmdzgwi2kI4Lca8lWjQq/4OwiLPalaeg
+0TNUGBy91LjyXlGGoUoweRt8oc0VbsYIr0gEQayLOLfYujv4RiiWYEyIcw1OPDf1
+9MigRjCV1msQQXnBP2qTdZ1FrZQlZGD+syITQuFbYrmy+sqwEPxbY9/RYtHo4HBV
+A8CBOIE2YuK7W8Dk9VXSPQsN1sSwT3Hj8xvMO0Ka3mK/WjSVva2P8/K3wnBXj9nC
+6yKMam1wXDa8AU52tCUq2bS1snS2yA==
+=5ZI+
+-----END PGP SIGNATURE-----
 
-   589	
-   590	int mtk_eint_do_suspend(struct mtk_eint *eint)
-   591	{
-   592		unsigned int i, j, port;
-   593	
-   594		for (i = 0; i < eint->instance_number; i++) {
-   595			struct mtk_eint_instance inst = eint->instances[i];
-   596	
-   597			for (j = 0; j < inst.number; j += 32) {
-   598				port = j >> 5;
-   599				writel_relaxed(~inst.wake_mask[port],
-   600					       inst.base + port * 4 + eint->comp->regs->mask_set);
-   601				writel_relaxed(inst.wake_mask[port],
-   602					       inst.base + port * 4 + eint->comp->regs->mask_clr);
-   603			}
-   604		}
- > 605		dsb(sy);
-   606	
-   607		return 0;
-   608	}
-   609	EXPORT_SYMBOL_GPL(mtk_eint_do_suspend);
-   610	
-   611	int mtk_eint_do_resume(struct mtk_eint *eint)
-   612	{
-   613		unsigned int i, j, port;
-   614	
-   615		for (i = 0; i < eint->instance_number; i++) {
-   616			struct mtk_eint_instance inst = eint->instances[i];
-   617	
-   618			for (j = 0; j < inst.number; j += 32) {
-   619				port = j >> 5;
-   620				writel_relaxed(~inst.cur_mask[port],
-   621					       inst.base + port * 4 + eint->comp->regs->mask_set);
-   622				writel_relaxed(inst.cur_mask[port],
-   623					       inst.base + port * 4 + eint->comp->regs->mask_clr);
-   624			}
-   625		}
-   626		dsb(sy);
-   627	
-   628		return 0;
-   629	}
-   630	EXPORT_SYMBOL_GPL(mtk_eint_do_resume);
-   631	
-   632	int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
-   633				  unsigned int debounce)
-   634	{
-   635		int virq, eint_offset;
-   636		unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask,
-   637			     dbnc;
-   638		static const unsigned int debounce_time[] = { 156, 313, 625, 1250,
-   639			20000, 40000, 80000, 160000, 320000, 640000 };
-   640		struct irq_data *d;
-   641		unsigned int instance, index;
-   642		void __iomem *reg;
-   643	
-   644		/*
-   645		 * Due to different number of bit field, we only decode
-   646		 * the coordinate here, instead of get the VA.
-   647		 */
-   648		reg = mtk_eint_get_offset(eint, eint_num, MTK_EINT_NO_OFFSET,
-   649					  &instance, &index);
-   650	
-   651		if (!reg) {
-   652			dev_err(eint->dev, "%s invalid eint_num %lu\n",
-   653				__func__, eint_num);
-   654			return 0;
-   655		}
-   656	
-   657		virq = irq_find_mapping(eint->domain, eint_num);
-   658		eint_offset = (index % 4) * 8;
-   659		d = irq_get_irq_data(virq);
-   660	
-   661		reg = eint->instances[instance].base;
-   662		set_offset = (index / 4) * 4 + eint->comp->regs->dbnc_set;
-   663		clr_offset = (index / 4) * 4 + eint->comp->regs->dbnc_clr;
-   664	
-   665		if (!mtk_eint_can_en_debounce(eint, eint_num))
-   666			return -EINVAL;
-   667	
-   668		/*
-   669		 * Check eint number to avoid access out-of-range
-   670		 */
-   671		dbnc = ARRAY_SIZE(debounce_time) - 1;
-   672		for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
-   673			if (debounce <= debounce_time[i]) {
-   674				dbnc = i;
-   675				break;
-   676			}
-   677		}
-   678	
-   679		if (!mtk_eint_get_mask(eint, eint_num)) {
-   680			mtk_eint_mask(d);
-   681			unmask = 1;
-   682		} else {
-   683			unmask = 0;
-   684		}
-   685	
-   686		clr_bit = 0xff << eint_offset;
-   687		writel(clr_bit, reg + clr_offset);
-   688	
-   689		bit = ((dbnc << MTK_EINT_DBNC_SET_DBNC_BITS)
-   690			| MTK_EINT_DBNC_SET_EN) << eint_offset;
-   691		rst = MTK_EINT_DBNC_RST_BIT << eint_offset;
-   692		writel(rst | bit, reg + set_offset);
-   693	
-   694		/* Delay should be (8T @ 32k) from dbc rst to work correctly. */
-   695		udelay(250);
-   696	
-   697		if (unmask == 1)
-   698			mtk_eint_unmask(d);
-   699	
-   700		return 0;
-   701	}
-   702	EXPORT_SYMBOL_GPL(mtk_eint_set_debounce);
-   703	
- > 704	unsigned int mtk_eint_get_debounce_en(struct mtk_eint *eint,
-   705					      unsigned int eint_num)
-   706	{
-   707		unsigned int instance, index, bit;
-   708		void __iomem *reg;
-   709	
-   710		reg = mtk_eint_get_offset(eint, eint_num, MTK_EINT_NO_OFFSET,
-   711					  &instance, &index);
-   712	
-   713		if (!reg) {
-   714			dev_err(eint->dev, "%s invalid eint_num %d\n",
-   715				__func__, eint_num);
-   716			return 0;
-   717		}
-   718	
-   719		reg = eint->instances[instance].base +
-   720			(index / 4) * 4 + eint->comp->regs->dbnc_ctrl;
-   721	
-   722		bit = MTK_EINT_DBNC_SET_EN << ((index % 4) * 8);
-   723	
-   724		return (readl(reg) & bit) ? 1 : 0;
-   725	}
-   726	
- > 727	unsigned int mtk_eint_get_debounce_value(struct mtk_eint *eint,
-   728						 unsigned int eint_num)
-   729	{
-   730		unsigned int instance, index, mask, offset;
-   731		void __iomem *reg;
-   732	
-   733		reg = mtk_eint_get_offset(eint, eint_num, MTK_EINT_NO_OFFSET,
-   734					  &instance, &index);
-   735	
-   736		if (!reg) {
-   737			dev_err(eint->dev, "%s invalid eint_num %d\n",
-   738				__func__, eint_num);
-   739			return 0;
-   740		}
-   741	
-   742		reg = eint->instances[instance].base +
-   743			(index / 4) * 4 + eint->comp->regs->dbnc_ctrl;
-   744	
-   745		offset = MTK_EINT_DBNC_SET_DBNC_BITS + ((index % 4) * 8);
-   746		mask = 0xf << offset;
-   747	
-   748		return ((readl(reg) & mask) >> offset);
-   749	}
-   750	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+--26+IIHuKp7C8Awjo--
 
