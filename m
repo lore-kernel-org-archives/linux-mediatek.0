@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50718D78336
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 16:29:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 054E6D78337
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 16:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5WUmAkMwjks8SKoca+n6vCwmvr+h9lQrDUKc4e+Lsko=; b=jO9YkcHyPx9MQScrotfl97NaEW
-	jyWc3qx/7iZ6ZWIkc1WsmZF2hE916teumOn0gV3caiFUnCneWlBNw9sxcj+pu4s3hdA1zQj2mwvy8
-	tk9lzRML552FN85I5ffXMJ95zcDucvbU51UlsUF+u9pBKjaO2jQFkJoazERCqkgjONoS9yGXBmQpv
-	IVz8pjOBvfqOE3v25LIC1Age50lnVWYrT5USHX8zPNcsVqCx5DyyYzlCDxhjMZgM3qlgRFNcEKhdN
-	HR1VE+mJBiQf5JW28TilAwRCbaMiVC9ntMUldtpZXEAuT2tIzsPMhrSrVbm0UPQLMc715UkMW/5bE
-	yuPfZG8g==;
+	bh=tvNjDNR4u/8lpXBDWhpyFeHStNOdG7Hf2dU2fZODI90=; b=PVGvAiHm0He5lGdM0x9waWTTmm
+	h5K3io4LAZbakhXYn0q4wfk9e0TEhrGlkTOHJ/6A5+SWKBBxi+uP+zR/QfDRTNMoYjJ0nxBxhHBnt
+	3QQ/ihyOdjWkr3KBBTbu5zeLaeqEHBrDzCSCOS6tl9jfv8yHy/V+bNKFv3CILlYiksI6TLu+05Wbi
+	qpcFEoWWtWbM5wGu/lWbbJHzuHmsqnHQUjpN1RgEFnWfFPHB2dh3thMUAPjz72fjEK98lQHg0r1F3
+	mkKN4T4s+DglESUJmQZlE8iFFNjjHzwTwMyRzqpf3TAaAKj0lF1fkVsIzH7gGojToHRf1DPyyoi38
+	7fn91h/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI9J5-00000006qsa-0RHv;
-	Mon, 02 Dec 2024 16:29:55 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1tI9Po-00000006sSf-4B8K;
+	Mon, 02 Dec 2024 16:36:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI94P-00000006nri-3Yso;
-	Mon, 02 Dec 2024 16:14:46 +0000
-X-CSE-ConnectionGUID: xDTSIKo8RRmUjC2IiiVNwg==
-X-CSE-MsgGUID: 3C7I9V5tQNCtHuPb22aL3A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11274"; a="43942111"
-X-IronPort-AV: E=Sophos;i="6.12,202,1728975600"; 
-   d="scan'208";a="43942111"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Dec 2024 08:14:42 -0800
-X-CSE-ConnectionGUID: vjG8tfL3ShOB4efcJxu2NA==
-X-CSE-MsgGUID: K3lM3hHaQ8ClrOhRcJhPSg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,202,1728975600"; 
-   d="scan'208";a="93976735"
-Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Dec 2024 08:14:38 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andy@kernel.org>)
-	id 1tI94E-00000003BnJ-1QEb;
-	Mon, 02 Dec 2024 18:14:34 +0200
-Date: Mon, 2 Dec 2024 18:14:33 +0200
-From: Andy Shevchenko <andy@kernel.org>
+	id 1tI9EJ-00000006q2D-0Vxd;
+	Mon, 02 Dec 2024 16:25:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 344205C6955;
+	Mon,  2 Dec 2024 16:24:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C37E2C4CED1;
+	Mon,  2 Dec 2024 16:24:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733156696;
+	bh=izSs0FmoAiW41CKlfqR52r5gwjKjez8AUBIxKV9qYXg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hgN6GVxvuSg/C+xiVgczYxHNbsPNaJvOLGQrcTatCDKjMlMkfux7IWPgt6plpseK/
+	 /tElV2/5wcC491iK69+WelHtf5qKZk2F7ieh3aCMaXLuI9HX1+Mnn4N2pDwD+i78Ew
+	 EiLqsExR2WmZC3qecZ1CapqQhTOdqydsAFqPDz/u/FE6HVwqzuQSAftPqKVj/8pC2D
+	 QUPP6QSDpYuxZGPPCLMvbOwzhfy0HLThDVifzJHUs/OjbGpGeOPEjU/9njYzQwSrN8
+	 qZc6QkMzDz3zbuWA/e1KNQZx17nnt573cBS9mGqQvXY3s72+4k57HoswRrL9oD4zgb
+	 Veha6oYIPQx+w==
+Date: Mon, 2 Dec 2024 09:24:54 -0700
+From: Nathan Chancellor <nathan@kernel.org>
 To: Ricardo Ribalda <ribalda@chromium.org>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
 	Nick Desaulniers <ndesaulniers@google.com>,
 	Bill Wendling <morbo@google.com>,
 	Justin Stitt <justinstitt@google.com>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Andy Shevchenko <andy@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Tiffany Lin <tiffany.lin@mediatek.com>,
 	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
@@ -64,19 +61,18 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	llvm@lists.linux.dev, linux-staging@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] media: atomisp: Use the actual value of the enum
- instead of the enum
-Message-ID: <Z03c6ZHOP9rUFtP_@smile.fi.intel.com>
+Subject: Re: [PATCH 3/3] media: mediatek: vcodec: Workaround a compiler
+ warning
+Message-ID: <20241202162454.GA2848026@thelio-3990X>
 References: <20241202-fix-llvm9-v1-0-2a50f5acfd0b@chromium.org>
- <20241202-fix-llvm9-v1-2-2a50f5acfd0b@chromium.org>
+ <20241202-fix-llvm9-v1-3-2a50f5acfd0b@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241202-fix-llvm9-v1-2-2a50f5acfd0b@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20241202-fix-llvm9-v1-3-2a50f5acfd0b@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_081445_899541_5964DFC6 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20241202_082459_254194_4E9870EC 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,37 +87,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 02, 2024 at 03:47:16PM +0000, Ricardo Ribalda wrote:
-> hrt_isp_css_irq_sw_pin_0 has a different enum type than
-> irq_sw_channel_id_t.
+ Mon, Dec 02, 2024 at 03:47:17PM +0000, Ricardo Ribalda wrote:
+> llvm identifies that the SCP_IPI_VENC_H264 and IPI_VENC_H264 are from
+> the same enum type, but their are part of the same ternary operator.
 > 
-> Replace it with the actual value of hrt_isp_css_irq_sw_pin_0 to avoid
-> arithmetic operations between different enum types (and make the
-> compiler happy).
+> vpu_inst.id is of type int, so we can just rewrite a bit the code and
+> avoid the following llvm9 warning:
+
+LLVM 19, not LLVM 9, as the minimum version for building the kernel is
+LLVM 13.
+
+> drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c:597:29: warning: conditional expression between different enumeration types ('enum scp_ipi_id' and 'enum ipi_id') [-Wenum-compare-conditional]
 > 
-> It is required to build with llvm 9 without these warnings:
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-9?! Maybe 19?
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
 
-> drivers/staging/media/atomisp/pci/sh_css_hrt.c:68:19: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
-> drivers/staging/media/atomisp/pci/sh_css.c:1233:40: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
-> drivers/staging/media/atomisp/pci/sh_css.c:1237:40: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
-> ro
+FYI, Arnd basically sent the same patch October 18 but I guess it has
+not been picked up?
 
-You can make the above lines shorter by dropping the obvious an duplicated (in
-other places) part, i.e.  drivers/staging/media/atomisp/. I usually replace
-this with "...".
+https://lore.kernel.org/20241018152127.3958436-1-arnd@kernel.org/
 
-.../pci/sh_css_hrt.c:68:19: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
-.../pci/sh_css.c:1233:40: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
-.../pci/sh_css.c:1237:40: warning: arithmetic between different enumeration types ('irq_sw_channel_id_t' and 'enum hrt_isp_css_irq') [-Wenum-enum-conversion]
+Hopefully the new media committers model will help patches like that get
+picked up in a more timely manner.
 
-Otherwise LGTM,
-Reviewed-by: Andy Shevchenko <andy@kernel.org>
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+> ---
+>  drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> index f8145998fcaf..4786062e879a 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> @@ -584,7 +584,6 @@ static void h264_encode_filler(struct venc_h264_inst *inst, void *buf,
+>  
+>  static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
+>  {
+> -	const bool is_ext = MTK_ENC_CTX_IS_EXT(ctx);
+>  	int ret = 0;
+>  	struct venc_h264_inst *inst;
+>  
+> @@ -594,7 +593,10 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
+>  
+>  	inst->ctx = ctx;
+>  	inst->vpu_inst.ctx = ctx;
+> -	inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
+> +	if (MTK_ENC_CTX_IS_EXT(ctx))
+> +		inst->vpu_inst.id = SCP_IPI_VENC_H264;
+> +	else
+> +		inst->vpu_inst.id = IPI_VENC_H264;
+>  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
+>  
+>  	ret = vpu_enc_init(&inst->vpu_inst);
+> 
+> -- 
+> 2.47.0.338.g60cca15819-goog
+> 
 
