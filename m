@@ -4,91 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE2FD7831C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 17:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16437D7831C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 18:00:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=csQeuHYg2kZNLaDRCcKsFmv4O0a8VhN4DqF2quOR8hs=; b=GrO7IlGua+x5E9OtnJhDFoD+B1
-	peeyn60cPXilzXAO9lXVnJ0rzYdbRiQ+aagVUnmNC0YOgZkCdLMWzRDGDW5AWYOqreUOx28xFsVvO
-	2sIItf0Wt2Ef4vdidKMn4qBCAl994lbhAc+fV55zfe7V6W9ZB9gBnP4t9fKZ9x0LZf/kD3jcqS+/6
-	TnyRZFZg8hLnj5cQ5KHShP9mR+CSX7+py5BMEq6kekXPXEMf+GdKUAX8NO1VI0a1CKCK882qguzeQ
-	j9nLEAcr/6HgWVtkt5VFucxcdpqqSJ252sJCdiH4SD8cjg5iXJOd/ZEgppmt7VP9kHPPwudUe3lIK
-	WbixhWQw==;
+	bh=aG5V9bPMmr3yvJlAwQdUJ7OtjiRklUtEDk3XNW725Oo=; b=pV/gqF8RzNZ6TE+Q+hqdIiLzIu
+	C9YLls/zwgHNOzwTUcUGpqS0zcV+sdOW7qdAURuFzLGZJsDyCFYyBajFLENHRYOmDtcsxHyAdD7z/
+	KdLGf31seHa0ZyeNR2589V3m+MNKc/XYPZ2K7y+nfplPdwrqAMWo1Jnwz9DGn5fhJ4/+De/NxN4xt
+	iZBJPFNxwMuKr0+atGFUi0ZrEEaHL6CoB9zXHVXrPPpYseIUtfo6wKqEZYH93VvYIvQuOsn5GJPfE
+	rsbiimVuASAkJl2dbl+vE6XKjroGTsGrp+vEnr4QIqBhP+LsE9IaziTalS9cobv9siycifwFuh+cI
+	o5kSeMUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIAdA-000000075SS-2IWE;
-	Mon, 02 Dec 2024 17:54:44 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1tIAid-000000076Or-04hn;
+	Mon, 02 Dec 2024 18:00:23 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIAd7-000000075RF-2D3J;
-	Mon, 02 Dec 2024 17:54:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1733162075; x=1733766875; i=frank-w@public-files.de;
-	bh=csQeuHYg2kZNLaDRCcKsFmv4O0a8VhN4DqF2quOR8hs=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:In-Reply-To:References:Date:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=XwANpctaXsGrumeeDin4SUTd3kX/sicp8aqf4UJ/qpkBnM9AE97PwY8py6qAkHwq
-	 JoPmDANipdE1SVPj+OZRWnFmf5XY7Ln6RZbMagpIYNDvCAWatUBeHOuxet/pHlvDl
-	 xAowS4ZE/RcUODCwIOwYz5lyv1jyHxT8hPrijJOVf3V+yqiGSSC8Xy6OYvJNlbbc1
-	 dvpJIaMeeuH+4mHh1LKlcnUZ4x39Pwvexl7rHjKvIYbSSUWTtrkODlweY688ZgZiy
-	 H1Ivk3ES1lZ0Ppg5RxQtH8pJfjdcTtaVrLYQQkd28+/jGsi7UfYYhVXItZwaI5jnl
-	 1pRT6Se6bWJuaPke9Q==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.149.104] ([217.61.149.104]) by
- trinity-msg-rest-gmx-gmx-live-5cd5dd5458-t4xzg (via HTTP); Mon, 2 Dec 2024
- 17:54:35 +0000
+	id 1tIAgj-0000000764I-0UOz;
+	Mon, 02 Dec 2024 17:58:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E6869A411CF;
+	Mon,  2 Dec 2024 17:56:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 156DBC4CED1;
+	Mon,  2 Dec 2024 17:58:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733162304;
+	bh=RmCnNjhUcPfj4ZV7oqO8MNtJx7x0NboJ5/JOdBfbFVU=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=UpQWIfe0QTWKVzbmsHY8AvwXql88P2Uo1M7HBqZjVBV3/oGu6U4ZDflItE396DMVk
+	 tHR62hLdfEvCfdSSLl5COy639nYpCxcjAph2rqtvqFC0ZzCxtL7VccaSeFZsTD/Guf
+	 EkhW2E9yv8C1OjWmibIpd0VHi6J+yqNjYxQGztQdQ4oiV9k+bDcDqNOW1KzjHerhXf
+	 vIxjD1j6kQphHn8fqqEiwJmHX3Ln8c8iZShprFNOK9YZWHCrHSZT/9I2RApjZWngEB
+	 azt/+2/HXBqeng28g9WBKGL1r86FA82ahT9EEqJBoBVpcI3dUrlyRan6kxvcDCELNB
+	 8SHJ853O14eKw==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Belin <nbelin@baylibre.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
+References: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
+Subject: Re: [PATCH v1 1/1] ASoc: mediatek: mt8365: Don't use "proxy"
+ headers
+Message-Id: <173316230181.189181.7179970847637835365.b4-ty@kernel.org>
+Date: Mon, 02 Dec 2024 17:58:21 +0000
 MIME-Version: 1.0
-Message-ID: <trinity-1c2ce600-fa6d-485e-93ee-1b66b6cf4939-1733162074956@trinity-msg-rest-gmx-gmx-live-5cd5dd5458-t4xzg>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: krzk@kernel.org, linux@fw-web.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chosen
- node on bpi-r4
-Content-Type: text/plain; charset=UTF-8
-In-Reply-To: <e1343cc5-d5e8-40d6-a6f1-3eaf22a8cd6d@kernel.org>
-Importance: normal
-References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-12-linux@fw-web.de>
- <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
- <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
- <e1343cc5-d5e8-40d6-a6f1-3eaf22a8cd6d@kernel.org>
-Date: Mon, 2 Dec 2024 17:54:35 +0000
-Sensitivity: Normal
-X-Priority: 3
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:wapAPyeB/C9J/AfnRZDwNydyVTVve8Sqeg8lWJg6SWcqV+p/uH8rIefi7WPlQwZkrewTV
- yRp0UIq4OGmLXtfKz64W8L3LL9UvVsIjDD1/ZkY4rSQk9xc7hZ221QIaFn8MA9zNzhq+loeCpArB
- GZq2Lfzu8kLtE4UDUC2zGeaaoK5YbsXhEe5TuZz2xWJ9zNf2sBdrJwtGzrQtOT1gvGqeWwckWnzd
- /7lpvyKQRMOvy9uhSQ6+QBuzr+ubUFi8btoqrzmnkncewKjadOs9/aHdTUcYy3lOUkoHG4EnzwGd
- mB9NkZUqsOoqQ0HjxEJybM/aYJeBWngwtqqBvjl4VVptwD+MjBC8Pw6uM+BHzq2E/c=
-UI-OutboundReport: notjunk:1;M01:P0:gh0nr7QtLMo=;TEJMAFcHDn71LQYYAem+XyUN1AZ
- jmswZ2o9xneClWgIkkBwrE5RPHVANtznA9sDDZC8niFOE+vLIxQWp9siJxZ6PegJWzZzz8U1w
- bamCd7l47a8MVbPxeALfMc222n0qjZ+h1NZh/5Pid3XHBwaUfKk6koQrD2nxhpJBz9Sz1Ug6+
- piHWku+B2G3L0ATtF1i5pROi4qLOENJLnFVPZUJo1+UoLszor+ja8csJpYtFfgewXWhfkA2+u
- 2rL/q356Z2s1KmZanXuTCNWILf8t4CKaqgOdcIyWAeo9gBdbNiRox1FR2EghOWRZK3tWR76sp
- h/MOFctJKtpz8qwHsDhcCSixGILI/D3sWpyLvTLCL/o+g1++2LmYQS7v9UqSG7tg3pyuNKF3O
- HSJ5M0g5ji1fKlonSDPzZ8edPVs17xTi2QRMA7wBcpOCbgdHPN3C1twBt//YlSUJzC17giqwZ
- 9ytBJQU9OMZXktzO1kckGBQi6EoArfo3weALQVHk6T/Hs+/vD3MlVX78RJZNub/97h5+pAJJE
- osB2JfUehZm4NN9d+A7swiDIBh0eXS20olUTA2VtlAZtLTytQzI3Kn4rqLB0YvIAVIkiwP64k
- iQz7hD1xmJNVmW6f+wn+UI9WctskDoCDj2VFKrZ0WIzIvM6m3mxmHgXdXNBjW7sgMXF1fnLA+
- YfcUshNA/84dXYjVHRWrAYDjO5x5b/XL1Z7HFDJEdOVjYO/rz+bMbE0wWKe25j7VEWU9nw2Xl
- ErrOAaUDruOgJS/B43aZOAo2hLZZKWcZxGdfI7upKyjkeQhTd4Wopcxwd3NMsBnyYe+CViC6i
- ZDIPZKogBq6Qxvej5hUKW+dBWUR7Rr69IJixEXNYHiwzaHgRS38EB9zjeEOwWcCfwkXmKfN+K
- 6Z9l9LaOexUYQAfQizQwElzQj+lHqY0NrQnc=
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_095441_849909_FD2D0400 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20241202_095825_220962_C4CA6E69 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,71 +77,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-regards Frank
+On Thu, 31 Oct 2024 12:27:25 +0200, Andy Shevchenko wrote:
+> Update header inclusions to follow IWYU (Include What You Use)
+> principle.
+> 
+> 
 
+Applied to
 
-&gt; Gesendet: Montag, 2. Dezember 2024 um 16:58
-&gt; Von: "Krzysztof Kozlowski" <krzk@kernel.org>
-&gt; An: "Frank Wunderlich" <linux@fw-web.de>, "Rob Herring" <robh@kernel.=
-org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt=
-@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchi=
-no Del Regno" <angelogioacchino.delregno@collabora.com>
-&gt; CC: "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.ker=
-nel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.or=
-g, linux-mediatek@lists.infradead.org
-&gt; Betreff: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chose=
-n node on bpi-r4
-&gt;
-&gt; On 02/12/2024 15:29, Frank Wunderlich wrote:
-&gt; &gt; Am 2. Dezember 2024 14:46:24 MEZ schrieb Krzysztof Kozlowski <kr=
-zk@kernel.org>:
-&gt; &gt;&gt; On 02/12/2024 13:25, Frank Wunderlich wrote:
-&gt; &gt;&gt;&gt; From: Frank Wunderlich <frank-w@public-files.de>
-&gt; &gt;&gt;&gt;
-&gt; &gt;&gt;&gt; Add chosen node on Bananapi R4 board with stdout and def=
-ault bootargs.
-&gt; &gt;&gt;&gt;
-&gt; &gt;&gt;&gt; Signed-off-by: Frank Wunderlich <frank-w@public-files.de=
->
-&gt; &gt;&gt;&gt; ---
-&gt; &gt;&gt;&gt;  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dt=
-s | 5 +++++
-&gt; &gt;&gt;&gt;  1 file changed, 5 insertions(+)
-&gt; &gt;&gt;&gt;
-&gt; &gt;&gt;&gt; diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-banana=
-pi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-&gt; &gt;&gt;&gt; index 9037f35857a9..1c2a806f6f6c 100644
-&gt; &gt;&gt;&gt; --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-=
-r4.dts
-&gt; &gt;&gt;&gt; +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-=
-r4.dts
-&gt; &gt;&gt;&gt; @@ -9,6 +9,11 @@ / {
-&gt; &gt;&gt;&gt;  	model =3D "Banana Pi BPI-R4";
-&gt; &gt;&gt;&gt;  	chassis-type =3D "embedded";
-&gt; &gt;&gt;&gt;
-&gt; &gt;&gt;&gt; +	chosen {
-&gt; &gt;&gt;&gt; +		stdout-path =3D &amp;serial0;
-&gt; &gt;&gt;&gt; +		bootargs =3D "console=3DttyS0,115200n1";
-&gt; &gt;&gt;
-&gt; &gt;&gt; Drop or merge into stdout path.
-&gt; &gt;
-&gt; &gt; Have you an example to pass speed setting to stdout-path? As it =
-is only a phandle it is not clear to me how to merge these 2...
-&gt; It is really trivial to find, considering that 66% of files have it.
-&gt;
-&gt; git grep stdout
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-thanks, wasn't aware that string is here also accepted...found it ("git gr=
-ep stdout-path" is much better here :) )
+Thanks!
 
-will change both lines to this single one:
+[1/1] ASoc: mediatek: mt8365: Don't use "proxy" headers
+      commit: 509544d1b6dbffe7bc1849593ff217f965ec0419
 
-stdout-path =3D "serial0:115200n8";
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-&gt; Best regards,
-&gt; Krzysztof
-&gt; </frank-w@public-files.de></frank-w@public-files.de></krzk@kernel.org=
-></frank-w@public-files.de></angelogioacchino.delregno@collabora.com></mat=
-thias.bgg@gmail.com></conor+dt@kernel.org></krzk+dt@kernel.org></robh@kern=
-el.org></linux@fw-web.de></krzk@kernel.org>
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
