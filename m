@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C0AD4979B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 03:41:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A23D49798
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 04:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9bTlnjRzF2JRQH5FoLyAwJy6PscFmIMIE7nVuxtFSPk=; b=0wpMD2Bmb/2eYBfAdY+LWlSDyO
-	U33TqMEn/aRXU6UzV86kOKG95fgoitHWCnjOWFgrldhjVzjGWOCUIWxe6xIX7t1fEvM0dqYrUSvqj
-	x1dwyoYLYBenSD7MHW0rv4J7SJ2A2Woor09uqy8//G2XKeUAjoH4Iz+JucKHsDD3mmxAc3B/sXfXs
-	h6VHUfoG/7No6y5oRFh6Q0b4HgxvEurRiNY5yJtXAgTq6xvtCIjJr4e8LhVVChY0bo1n0C5swNS3w
-	3laSAnXobTDtvraN0oHIh8WeOp/b/L7g06oyArWLwvBL3PjOfXG6hLlD8ml8VlNw6L/b+ZbpXrCvz
-	gJrEMRUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5jem2dHb0CIqQfqKZWUZqxzpx7Oxum1MlxW1zvUuUsw=; b=xjufM7GPgW7LXj
+	Fk8V1bGhjZzlvwrSlYQe7hmCSnZb9Nl3BXqQ1AxiZyN+Yy7cYYcgf/fxp4ObeI09lUZcwwJZf/y0O
+	BkNQjUgEBQNw7jbX4VdiultbGj1lx54mLXqsOEBdprlmiLkfAUSClvoLh8OB53vOcOk2hZRoQ+sBG
+	3ljXbMeslYnuRSI9DnbCgDiNhotJObzTC9UwY3WKsLVG1nZutJepiItlrTUhjIpfPrs9aLvGCKoxL
+	+fhCiOUpYHYDqGV1qnUt5tdj0cHui8ZvqzpMdS5vtE7tsbI8glbRm4mQRihO1zgNbjRJy8aIuLUJg
+	HDMh1ZtOpWZNxO2e3zPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxJb-00000004ymJ-0qh6;
-	Mon, 02 Dec 2024 03:41:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxJa-00000004ym7-0I0r
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 02 Dec 2024 03:41:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=9bTlnjRzF2JRQH5FoLyAwJy6PscFmIMIE7nVuxtFSPk=; b=SUpHT6nbBx9W3RzGkMBaC4pgLB
-	iCd0Xm/aBAo0WypgOF/hQnuM7ECu/QWRGQ0gqf2VFZUWbkypcXibDaanQRMID7b2CCfc/gItBFUl0
-	LkW0dU6NJmFaIW2oKE1xugoR+0eQLLUgUULA96QqVxlpAQOQfBxu/8y7nlAsI+H3XKx9xcm0Wt5Vm
-	QTT/6q5JCP0gJiPbsfy7cCAWFwwkioLInS2aToHOMk11iILyEMUBbV27ZY5s0VoBmYlYbFNdK/5T3
-	BWFk/F4UuEuAJsU09eYOWA3KeqBMl2rAeBy08TNiogHtXWUVRuhnoABUDFvy+veDxLd3dWX7qvHle
-	PWRG+9Rw==;
+	id 1tHy0O-000000051v4-2UCf;
+	Mon, 02 Dec 2024 04:25:52 +0000
 Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxJW-0000000272f-36Fm
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tHxzO-000000051kb-0yPR
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 03:41:36 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53de6b7da14so3760266e87.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Dec 2024 19:41:33 -0800 (PST)
+	Mon, 02 Dec 2024 04:24:52 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53df6322ea7so6081238e87.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Dec 2024 20:24:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733110891; x=1733715691; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1733113488; x=1733718288; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9bTlnjRzF2JRQH5FoLyAwJy6PscFmIMIE7nVuxtFSPk=;
-        b=ThyDklY2pmEo5BZTZBtd0zi4MvPBfqngm9m0DfOPZ9UOc5N9cp8S0LtSBq61UBepJR
-         +WUcdufo0Ehuz3U5UpC7vUyOdaGqNtoq7emGul5tI59PzjueMgDhD7+yKzo05lZrs4ty
-         xHDv+LlWRPbbwpNcxeA1HIGHJbEReNWbqNsNc=
+        bh=5jem2dHb0CIqQfqKZWUZqxzpx7Oxum1MlxW1zvUuUsw=;
+        b=JA5Q3Bwv16v5r0HxYRNRfRInqUwzoNlYd4NGdqQLgZ3We+cpJnIIiY9uYTZkti7xr0
+         XpuT9d91J1lu3h2RlqCiNhfUIxX80IP+DLEG2K0EskqUgk0YbT1Gjjgnp5hUQWoVlTdI
+         i829JqUhok1u57XMm1gL9lLL44v0fYrX+ghRI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733110891; x=1733715691;
+        d=1e100.net; s=20230601; t=1733113488; x=1733718288;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9bTlnjRzF2JRQH5FoLyAwJy6PscFmIMIE7nVuxtFSPk=;
-        b=VmqLB1r+qOsu1ZQCq66EzfDlaWXtmZnDhhzfB8/Z9pnQCvGuX/BjveogTaqRjlS1fl
-         14Jza144+xm+4xEXgzN/lFHOTAzJhbEmvuy5x/D0Talxqgj3/7vBXNHBNGOvycKnn/WT
-         Irnn3Wca/5lspywl9n2v9da10m3+XFRwXsT6jZEXsyM0VqAwUbgNtcWJNuQ+ISyFVDu0
-         g+gkcQPxT6YPKEB6uoZh/YtgSio6fEWjCW/dZf5wMP8N46ZPHd6vXEcw6gm044x934kn
-         wLoozSKU1oXDv6zBIkLY8Zj/6cBBRSgnPLN6bUDzu7vTPvLgq9+A+KgJqAh3U3L8Gr98
-         BlzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVpgddIvDIpjpKasCvA6/w91Q2i/Yyd65PSSHlGSFJ5BtY42TFU9U50X6V8bGjqRXvAHsQUWaGwkWhkw7RwzQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7J5KADRtxyXiNq61Sd2JyxHMhchdSExi3DcSk5h3VUu2x1MWd
-	Ou5RB8iAhdI5PCnzv1fJD94CnaWMWiDUJXH7uz3p77NRVpX/89RkVZn+WULWcoAg8WBMgaQkQCj
-	IBQtj1ppGI/TidaAtgICUgg4WaAGn1BXbo3zicwlRNU6bfJA=
-X-Gm-Gg: ASbGncsE9QwKirgo0bOuGiibO3WzlAF/ci0IRpBaW7z4mbPbFa07Lxzz+Bln2RAUbCz
-	N6oWCYQHmCDOGCzW+glGSaA+HxGG9WVkoK5rrN6vcd5YDlvR/tiUXRmvyuk0=
-X-Google-Smtp-Source: AGHT+IFBGoFOaRz+qRuU+qOg6hWpwu/Z+nHG5cJ1fZ9YkpTnT8oQX9A4GdCR+xRN4nrprMU5eqtqFpCUbyCnVLzassA=
-X-Received: by 2002:a05:6512:2356:b0:53d:ab10:c273 with SMTP id
- 2adb3069b0e04-53df0104928mr6377365e87.40.1733110891515; Sun, 01 Dec 2024
- 19:41:31 -0800 (PST)
+        bh=5jem2dHb0CIqQfqKZWUZqxzpx7Oxum1MlxW1zvUuUsw=;
+        b=iwWHKiK1uYmByLX8H7kRofGYYx1Bs3FaDZXUFaQdw9PqKMFUIpUmCBKR3DdKNFc9Eo
+         Bj7BoBz5KKfTk6zg7jzGT3TqJeqNLGRP7cQlEAlB7HFbGfkZzMx7Jxgxz269Hgat2qmc
+         ZHOectHmzoz6RUhgCXqxbtX17pBKgNmwH9A8J3t06GRCfalprWtFdG2LF7H61RB+j+pw
+         zL2vyb/ERNm726DaBjoOZApZCGIFcPPtkk68WlsT1CWLUSSXFnYGjg3+3rnO9sPAisL9
+         mSAtsnViWBPsg0F0dM/Ac02qusRbcAEqeI5BOZ5ooRtDrrlPpqgR4y/TAmpSoZJmQ/xa
+         6mRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUOKlHO+J+Y8t3UBQE47hu376aZ1RYKs/MjFOPkl99TGMtXZ4q1j6xv+VL3+jlnEK0Y5Y3DOjgocx9L5DT5KA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxnhOiy+w9O46vvUXCZspcDSX9tIHqWPOnQLfmiVU8/2x1KDxpU
+	2K4MKO3I1PfOfPmo/7NC0qKjRIh7usrL5GJTV0EFV2aN9AKowEfAhA0lFbKSeGU+xZsezuNbB6X
+	FEs1l4snhCOlqRcVksWdXUqQI9mp8LeffxEhw
+X-Gm-Gg: ASbGnctU+kOoWTUo/hmLsUHhB9N0VkfrHHhLSQJgVd2R9kI+KOa6qg1R8NdhSzBZ2se
+	2JXWXP+7rxi7YtSq1vcb5cW5K1UasqfMrEg/NBhLL1Nr8BbKqGHql+XCAJwU=
+X-Google-Smtp-Source: AGHT+IHt/vITEDYHnbNLIeuL8UfGCtEad48V6Gq5+hXkXt9A/7GYxhY5NyWdbJAiTmoRwPFhqaSLnctzzSQH8pUcJcs=
+X-Received: by 2002:ac2:42d1:0:b0:53d:f09e:9a1d with SMTP id
+ 2adb3069b0e04-53df09e9c34mr11711959e87.31.1733113487710; Sun, 01 Dec 2024
+ 20:24:47 -0800 (PST)
 MIME-Version: 1.0
-References: <20241112052211.3087348-1-nico@fluxnic.net> <20d3a0be-ba5f-439f-80ff-2e2bda3bb144@linaro.org>
-In-Reply-To: <20d3a0be-ba5f-439f-80ff-2e2bda3bb144@linaro.org>
+References: <20241001113052.3124869-1-fshao@chromium.org>
+In-Reply-To: <20241001113052.3124869-1-fshao@chromium.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 2 Dec 2024 11:41:20 +0800
-Message-ID: <CAGXv+5H0ocBWxGseoRXWyBo48+5-F-FRLZZcywcM-_vwu4=jVg@mail.gmail.com>
-Subject: Re: [PATCH 0/5] thermal: multi-sensor aggregation support
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Nicolas Pitre <nico@fluxnic.net>, "Rafael J . Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Nicolas Pitre <npitre@baylibre.com>, 
-	Alexandre Bailon <abailon@baylibre.com>
+Date: Mon, 2 Dec 2024 12:24:36 +0800
+Message-ID: <CAGXv+5E4=dKkUo73x5vCMHawcr9AUd71LyLmDbdyOdJZv0ZBaQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/8] MT8188 DT and binding fixes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_034134_982318_71F28CCE 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20241201_202450_282534_3F987E62 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,62 +85,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Xia Jiang <xia.jiang@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Fabien Parent <fparent@baylibre.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>, linux-media@vger.kernel.org, Bin Liu <bin.liu@mediatek.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, MandyJH Liu <mandyjh.liu@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 30, 2024 at 4:00=E2=80=AFAM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> On 12/11/2024 06:19, Nicolas Pitre wrote:
-> > This series provides support for thermal aggregation of multiple sensor=
-s.
-> > The "one sensor per zone" model is preserved for all its advantages.
-> > Aggregation is performed via the creation of a special zone whose purpo=
-se
-> > consists in aggregating its associated primary zones using a weighted
-> > average.
-> >
-> > Motivation for this work stems from use cases where multiple sensors ar=
-e
-> > contained within the same performance domain. In such case it is prefer=
-able
-> > to apply thermal mitigation while considering all such sensors as a who=
-le.
->
-> Do we have a real use case where we can compare the per sensor vs
-> aggregated sensors approach ?
+Hi,
 
-The MediaTek platforms have one sensor per CPU core, but the cores are
-grouped into two clusters, and DVFS is tied together for all the cores
-in each cluster, as is commonly seen on ARM systems.
+On Tue, Oct 1, 2024 at 7:31=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote:
+>
+> Hi,
+>
+> This series is split from a previous series[*] to focus on few fixes and
+> improvements around MediaTek MT8188 device tree and associated bindings,
+> and addressed comments and carried tags from the previous series.
+>
+> [*]: https://lore.kernel.org/all/20240909111535.528624-1-fshao@chromium.o=
+rg/
+> [v1]: https://lore.kernel.org/all/20240925110044.3678055-1-fshao@chromium=
+.org/
+>
+> Regards,
+> Fei
+>
+> Changes in v2:
+> - new patch to MediaTek jpeg and vcodec bindings
+> - new patch to move MT8188 SPI NOR cell properties
+> - revise commit message of vdec power domain changes
+>
+> Fei Shao (8):
 
-Furthermore, there is a hardware block that does minute OPP voltage
-tweaking based on thermal readings, and AFAIK that block wants the
-per-cluster aggregate temperature.
+>   dt-bindings: power: mediatek: Add another nested power-domain layer
+
+This one ^
+
+>   dt-bindings: PCI: mediatek-gen3: Allow exact number of clocks only
+
+>   dt-bindings: media: mediatek,jpeg: Relax IOMMU max item count
+>   dt-bindings: media: mediatek,vcodec: Revise description
+
+and these two ^ have not been picked up, and now v6.13-rc1 has DT
+validation errors for MT8188:
+
+/ssd1/wenst/linux/mtk/arch/arm64/boot/dts/mediatek/mt8188-evb.dtb:
+syscon@10006000:
+power-controller:power-domain@15:power-domain@16:power-domain@29:power-doma=
+in@30:
+Unevaluated properties are not allowed ('power-domain@31',
+'power-domain@32' were unexpected)
+    from schema $id:
+http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml#
+/ssd1/wenst/linux/mtk/arch/arm64/boot/dts/mediatek/mt8188-evb.dtb:
+power-controller:
+power-domain@15:power-domain@16:power-domain@29:power-domain@30:
+Unevaluated properties are not allowed ('power-domain@31',
+'power-domain@32' were unexpected)
+    from schema $id:
+http://devicetree.org/schemas/power/mediatek,power-controller.yaml#
+
+/ssd1/wenst/linux/mtk/arch/arm64/boot/dts/mediatek/mt8188-evb.dtb:
+jpeg-decoder@1a040000: iommus: [[101, 685], [101, 686], [101, 690],
+[101, 691], [101, 692], [101, 693]] is too long
+    from schema $id:
+http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+
+
+Is there any way we can get them into v6.13 as well?
 
 ChenYu
 
-> > Previous incarnation by Alexandre Bailon can be found here:
-> > https://patchwork.kernel.org/project/linux-pm/cover/20240613132410.1616=
-63-1-abailon@baylibre.com/
-> >
-> > diffstat:
-> >   .../bindings/thermal/thermal-zones.yaml       |   5 +-
-> >   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 210 +-----
-> >   drivers/thermal/Kconfig                       |  27 +
-> >   drivers/thermal/thermal_core.c                | 643 +++++++++++++++++=
-+
-> >   drivers/thermal/thermal_core.h                |  14 +
-> >   drivers/thermal/thermal_of.c                  |  86 ++-
-> >   6 files changed, 780 insertions(+), 205 deletions(-)
+>   arm64: dts: mediatek: mt8188: Add missing dma-ranges to soc node
+>   arm64: dts: mediatek: mt8188: Update vppsys node names to syscon
+>   arm64: dts: mediatek: mt8188: Move vdec1 power domain under vdec0
+>   arm64: dts: mediatek: mt8188: Move SPI NOR *-cells properties
 >
+>  .../media/mediatek,vcodec-subdev-decoder.yaml | 100 +++++++++++-------
+>  .../bindings/media/mediatek-jpeg-decoder.yaml |   3 +-
+>  .../bindings/media/mediatek-jpeg-encoder.yaml |   2 +-
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      |   5 +-
+>  .../power/mediatek,power-controller.yaml      |   4 +
+>  arch/arm64/boot/dts/mediatek/mt8188-evb.dts   |   2 -
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi      |  33 +++---
+>  7 files changed, 88 insertions(+), 61 deletions(-)
 >
 > --
-> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
-M SoCs
+> 2.46.1.824.gd892dcdcdd-goog
 >
-> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-> <http://twitter.com/#!/linaroorg> Twitter |
-> <http://www.linaro.org/linaro-blog/> Blog
 >
 
