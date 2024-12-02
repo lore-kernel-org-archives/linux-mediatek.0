@@ -4,97 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33831D7832F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 15:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84269D78336
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 16:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l2F2lVT/48t59mZz2zC2oH5sxyMbSECeGcR5hkq1C/k=; b=ERU5r8ADCiqyB8xy4i0fvrijG8
-	VVhFudRnBASOExb9llKPg3XdceXQ+BvgcjXxDgxSPziW4IgkV34bONqoh4w9oJK0qpZoia30eNU0k
-	J7leYJfueodOz2+LmEZatLHtlY5FIx27oh1s2WXQmrWdVDnpkdNU36oLaf1grneGKcIT3KsHH9QaT
-	/1RqVyNH+e7pqK3jkCLyjaoMymkpw4ebpCu+NOwduZagnY1vedfKIpFlwTBLN3zfPokc9MdgVLx8+
-	oEW48JzI/OHRb94OhoSMezoRLMOdixxQM0+2CgTkQRkQ38x+KAYG46Xofb47c3GX8+SFohyqAmWMv
-	ZtCfDDUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZGTZLqyiKrqe7BzhPHyNmqltDOLbo44Bqwmvhp/DjDE=; b=2Y/VnK5xZ/sRr1
+	IFnPqej4dllyAEA+X9CUiTYCLQkixzhhKS4bE6noAqB3DC2hGXUOX/MDOk8OaccOe1Yo9IBXydZpt
+	0yZE/090rDLpOkl8tauW0yjfSvLWPCHmyRCHsJRtbERivkg3k1MoGGuLZ0RvnjO4T4micUjp7+Ypu
+	cEmlVAi8qdxXwyJt7ZplYW65m8x/33wCEzzHixQjg6FqzLVap1thSD2TBw0tnDW00exn3Bv0Gd+iO
+	BrAbYxWbm5WfMjflVcfwLYZpw77uMBQwoRCIHJpdMd+NKvSAjYewMPRo0RuigKDjs25ciiYp7dbpI
+	Xza6e5ZkelGVb02k0l0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8jM-00000006jd6-0WF8;
-	Mon, 02 Dec 2024 15:53:00 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1tI95Y-00000006o9D-2DFt;
+	Mon, 02 Dec 2024 16:15:56 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8dz-00000006iMc-3e9q
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 15:47:28 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-6d88d3d1eb6so23649956d6.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 07:47:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733154445; x=1733759245; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=l2F2lVT/48t59mZz2zC2oH5sxyMbSECeGcR5hkq1C/k=;
-        b=Aom54JQGAaw5QcfFuJuQ9pz+7+Mi/6a2sO8XiF3jn8abdb0Dilr/K2eRgjV438i/z5
-         dpRkIwlt2X2dhL3dvy6daMcwOqPtmXG4fVqdYzN2QSIFFD9cu9owjNvzwVr+ueuE5X4A
-         Im1HcPD30q6DLxhUz37EGe8f9at/qOWIdFC8k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733154445; x=1733759245;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=l2F2lVT/48t59mZz2zC2oH5sxyMbSECeGcR5hkq1C/k=;
-        b=TcG8lv8pCJzb5GpIi5P6C75HA7cCPVvVyHb8tlkzWeovBjUN74kEZCFO2fakDTdKdy
-         FPjPg2ouREnRtVANCj4mdrzJl9LaN+NmiMzn78Pg75vnjslPqP3frSnEhqXqxTRqAwp9
-         jy2uw/+pBlVoviPz9uvveHoMs3f2OgLZfHyBP7EtSfaa7SFDUPQ7e48uTOw8SKwsIfb2
-         hbLy5TDcmft8+mnuqiWQBhjgSSd5qV2KnYKcBsmkZItgaFIRPoeJVtG3B0/HfN3z97dL
-         YSRnK8YPdQaUk3RzCLr6qCaoa0agbpPVsxRydxLAM8kLkjryBC12ncvaLTrs38L6qwyd
-         juog==
-X-Forwarded-Encrypted: i=1; AJvYcCXq12rmHT/i54VmOi6nxTucJN1Gs3UsCHsv8RSJ0outxh4IOlOoRYNzn2bLIZV9LIMBpqCE2ZmcQ9ppM6Ed8w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxqhfz+H5dHSxTaDBnWvv7MF0IMqvDMMApLPVZE5lpqJlmBugry
-	I+Dxg+05lmjP+P6nwB3iFpIS0xDLpr0jsRwY99bP82aAwLA2ojS7h1pgvp0X8A==
-X-Gm-Gg: ASbGnct3XZvIXEGyW8rRAmefEDH4RMIne3iljkK6oy8ktogn2/cJ8Jr+Lej7VQRyoQX
-	bxlo2D/X6QNWgKTK9yHvfDlJZ8fCEYPbc+1P+cjtiX4BeJWnYBTYoaLInq1VoSlXVwqJRU4xAsM
-	EqGF//QX1sytdhJpZPTBa+WXdotNPHdVypqoEQk9D7kSUj0hMVJzVNx8JN5Gj7qou/55mFxMsEp
-	ylwtT2MasZanLn5ZHinnxVZhnbX6qTM5EEf6b2vlczpbweiLnnrfMNsTV4HlQTrDTpFV5+JIPRF
-	JILnkAfdZB3P3ychMbIC7bDm
-X-Google-Smtp-Source: AGHT+IGi/PMi7HKxN0drYRNoeMrQehkEDZgCgHDgtdOzyjj8HEWJDMxx4Dj3/iwSYHFuTdJy9nQktg==
-X-Received: by 2002:a05:6214:626:b0:6d8:a1b4:b58f with SMTP id 6a1803df08f44-6d8a1b4bb2amr99633466d6.11.1733154445272;
-        Mon, 02 Dec 2024 07:47:25 -0800 (PST)
-Received: from denia.c.googlers.com (5.236.236.35.bc.googleusercontent.com. [35.236.236.5])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5156d0f8ad6sm1159729e0c.49.2024.12.02.07.47.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 07:47:24 -0800 (PST)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 02 Dec 2024 15:47:17 +0000
-Subject: [PATCH 3/3] media: mediatek: vcodec: Workaround a compiler warning
+	id 1tI8p1-00000006km7-2hzU;
+	Mon, 02 Dec 2024 15:58:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 88335A40EEB;
+	Mon,  2 Dec 2024 15:56:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E25F2C4CED1;
+	Mon,  2 Dec 2024 15:58:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733155130;
+	bh=fW1G5fe6jq6m4BjYv6eXDZABakXNo+lmsyCAr91F1L0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QMzZjFk86MGurUZ976h/wSFEhuKhygZnKxCWDeVwuSa0Q1qQFx+X4TVOsfO2uJwCh
+	 gvy0o9sOro8SMI4q6Rc9sH7GdQvKZliY43B8TJ8+kiJz3zc0oUtKG4S5YNAqUPCIlJ
+	 maQVcxGZRv5aFnIlhSAmnYo/9dmRBPVJOWCFS/RBCwtDG3/sj2q1VEF9nPzMkK0ykx
+	 BlBgJ6vtqB58MwUtwQrnhktsltJ0+y6DzKxWqZ3VjadGWCjzgzZ6GOYIrVUjmNMI5G
+	 8nJLSFkTwvW5DRVpkcxWXUc0QcU8Fq5XT1Aqb1zPJ3Gg84J3ckI4ioGqaNsWfFzAVw
+	 wf7Rbl4TtENdw==
+Message-ID: <e1343cc5-d5e8-40d6-a6f1-3eaf22a8cd6d@kernel.org>
+Date: Mon, 2 Dec 2024 16:58:44 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241202-fix-llvm9-v1-3-2a50f5acfd0b@chromium.org>
-References: <20241202-fix-llvm9-v1-0-2a50f5acfd0b@chromium.org>
-In-Reply-To: <20241202-fix-llvm9-v1-0-2a50f5acfd0b@chromium.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nathan Chancellor <nathan@kernel.org>, 
- Nick Desaulniers <ndesaulniers@google.com>, 
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
- Hans de Goede <hdegoede@redhat.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Andy Shevchenko <andy@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chosen node on
+ bpi-r4
+To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- llvm@lists.linux.dev, linux-staging@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ricardo Ribalda <ribalda@chromium.org>
-X-Mailer: b4 0.13.0
+References: <20241202122602.30734-1-linux@fw-web.de>
+ <20241202122602.30734-12-linux@fw-web.de>
+ <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
+ <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_074727_913462_074EB667 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20241202_075851_819608_C649AC10 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,47 +117,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-llvm identifies that the SCP_IPI_VENC_H264 and IPI_VENC_H264 are from
-the same enum type, but their are part of the same ternary operator.
+On 02/12/2024 15:29, Frank Wunderlich wrote:
+> Am 2. Dezember 2024 14:46:24 MEZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
+>> On 02/12/2024 13:25, Frank Wunderlich wrote:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Add chosen node on Bananapi R4 board with stdout and default bootargs.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> ---
+>>>  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> index 9037f35857a9..1c2a806f6f6c 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> @@ -9,6 +9,11 @@ / {
+>>>  	model = "Banana Pi BPI-R4";
+>>>  	chassis-type = "embedded";
+>>>  
+>>> +	chosen {
+>>> +		stdout-path = &serial0;
+>>> +		bootargs = "console=ttyS0,115200n1";
+>>
+>> Drop or merge into stdout path.
+> 
+> Have you an example to pass speed setting to stdout-path? As it is only a phandle it is not clear to me how to merge these 2...
+It is really trivial to find, considering that 66% of files have it.
 
-vpu_inst.id is of type int, so we can just rewrite a bit the code and
-avoid the following llvm9 warning:
-drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c:597:29: warning: conditional expression between different enumeration types ('enum scp_ipi_id' and 'enum ipi_id') [-Wenum-compare-conditional]
+git grep stdout
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
----
- drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-index f8145998fcaf..4786062e879a 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-@@ -584,7 +584,6 @@ static void h264_encode_filler(struct venc_h264_inst *inst, void *buf,
- 
- static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
- {
--	const bool is_ext = MTK_ENC_CTX_IS_EXT(ctx);
- 	int ret = 0;
- 	struct venc_h264_inst *inst;
- 
-@@ -594,7 +593,10 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
- 
- 	inst->ctx = ctx;
- 	inst->vpu_inst.ctx = ctx;
--	inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
-+	if (MTK_ENC_CTX_IS_EXT(ctx))
-+		inst->vpu_inst.id = SCP_IPI_VENC_H264;
-+	else
-+		inst->vpu_inst.id = IPI_VENC_H264;
- 	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
- 
- 	ret = vpu_enc_init(&inst->vpu_inst);
-
--- 
-2.47.0.338.g60cca15819-goog
-
+Best regards,
+Krzysztof
 
