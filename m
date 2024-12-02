@@ -4,106 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED14D78321
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 13:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2ADBD78326
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 14:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Vw3tPV+xnAMdmEICKcie2ky/yWoy25v+/wohiyP0/E=; b=szuWuYXgbpu20r
-	0BpNos6cT8d9zXRpepWWfAOWDF22WwqAd4tw4Kh8v4V5m5MdmMAyyeBZ/T9yEnj+3CRh6R1YCwGep
-	CUHh+SUVazymn1J1GaKO5ta4FaHl89cKgJsjUcaUzl/ZCBLAY9TnegtQ8YqDlOpyhqGC9U434ZSOf
-	EuARhaHLxZzd3itcILOzL7kPicXvaVS7fW5DqXAb5TtKjpz6XbS5klVt17Q6L5Gb92FY82qyj8KFt
-	Pl0WDPALmB4OQpSD2YAM0rLO6ijhnzP0BHs3VX1vy61OUvBF4bqWPw/hgtM1sQ//28LJDgcSIe5bl
-	Lf7dCNdqhKE9aDAui5Dw==;
+	List-Owner; bh=iiCaU9VCsrHrARnis/Mwz30VnwpZh24c7z+5gmG2wQQ=; b=NpjE+eqg2c7Ml7
+	WbjZnrXL4azTqWDkmsiIVv4D/kfkeomZFdTmfrlOSrUnZfHs8T9Wp/LfYWoO/K43WxG6exDubOcFN
+	3DwIOACXXWKdeQ5voQTLOrLI4pnqmtLVCdu+FRI75sYAm6+J1f8EQa2hjZlz8nhjHfGchZ9iAdetl
+	R7dWbOUVKtrdwCsqZwQxhG8veUizkurQBK4Jnnjp1WDSGe/t98J8pdInlrYntMTY2Gqr49ZaHBa2U
+	MjGSh124EfPC5Ko3bQ0BsyxCwOhmJMR/OJDgwUKOEcEtf2qKHgILLWUP1sfxBJNedhIDeIHEUkSVz
+	J486o3AMaz7LsPaBKJiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI6ly-00000006IIR-24fV;
-	Mon, 02 Dec 2024 13:47:34 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tI7Rj-00000006QnF-3o6B;
+	Mon, 02 Dec 2024 14:30:43 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI6kx-00000006I4Z-41z7;
-	Mon, 02 Dec 2024 13:46:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B8153A40C3F;
-	Mon,  2 Dec 2024 13:44:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB09FC4CED1;
-	Mon,  2 Dec 2024 13:46:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733147190;
-	bh=/NSTDjvvY+wAlu1r8FN+e8bDKuQxH4ffI35tRMVD7Nc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uiERZGJMNln1H1SFPtpaBe01iV4Dk6tH9rit9dqBGC+v0k+/lhJDM+SgnpxcDuK6m
-	 1wH3vjb3jLuJEDBW64WHpaGddhjSkEwicNUM/XPxg0XImxJNoWkBf9MwFDmJJsj7c8
-	 DKcfMFnG+uGo13qTAbi46SXVedRCz504y17ZIcw3t8asqRVpMUDgavL0u7w6UCh2wp
-	 jA50V3DH7/2e61gj+00X0w4sRX2UZ/CxFN7nuFeeSDT00zWWFt/LDxr5Vq1A7jYpih
-	 cfehFyxz9jw1P38vg69AM+WWaPi1R1Gi1kcabZugsHXVqAYxJaGmbs30bbxmcsR6Qx
-	 Ht/qeJCuCdq/g==
-Message-ID: <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
-Date: Mon, 2 Dec 2024 14:46:24 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chosen node on
- bpi-r4
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1tI7Qj-00000006QYb-1S2i;
+	Mon, 02 Dec 2024 14:29:42 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout1.routing.net (Postfix) with ESMTP id 8DD39410AF;
+	Mon,  2 Dec 2024 14:29:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1733149777;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iiCaU9VCsrHrARnis/Mwz30VnwpZh24c7z+5gmG2wQQ=;
+	b=QNXhE5p2F5VZToy6Ij+oy/Pp3T8prS8YPnb39rnbgMQTfHrkEdYgKmF3fYbXPBDvAVVYlt
+	8u8W19vzGs4HCYBBtY6JGFOzCRGWZve3fZewwFh+w3C4JYjEUinvrQi9DNOtM112D8cLFN
+	xhshK1jH+y/vfWzcWDmK+fX0lHHuftg=
+Received: from [127.0.0.1] (fttx-pool-217.61.149.104.bambit.de [217.61.149.104])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id DC85A1005FD;
+	Mon,  2 Dec 2024 14:29:36 +0000 (UTC)
+Date: Mon, 02 Dec 2024 15:29:36 +0100
+From: Frank Wunderlich <linux@fw-web.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-12-linux@fw-web.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241202122602.30734-12-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_11/18=5D_arm64=3A_dts=3A_media?=
+ =?US-ASCII?Q?tek=3A_mt7988=3A_add_chosen_node_on_bpi-r4?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
+References: <20241202122602.30734-1-linux@fw-web.de> <20241202122602.30734-12-linux@fw-web.de> <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
+Message-ID: <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: dfd265df-7f00-4998-b30b-86ed5c96f812
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_054632_137514_303C2650 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20241202_062941_539571_90137104 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,30 +78,40 @@ Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/12/2024 13:25, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add chosen node on Bananapi R4 board with stdout and default bootargs.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> index 9037f35857a9..1c2a806f6f6c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> @@ -9,6 +9,11 @@ / {
->  	model = "Banana Pi BPI-R4";
->  	chassis-type = "embedded";
->  
-> +	chosen {
-> +		stdout-path = &serial0;
-> +		bootargs = "console=ttyS0,115200n1";
+Am 2=2E Dezember 2024 14:46:24 MEZ schrieb Krzysztof Kozlowski <krzk@kernel=
+=2Eorg>:
+>On 02/12/2024 13:25, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add chosen node on Bananapi R4 board with stdout and default bootargs=
+=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts | 5 +++++
+>>  1 file changed, 5 insertions(+)
+>>=20
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts=
+ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
+>> index 9037f35857a9=2E=2E1c2a806f6f6c 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
+>> @@ -9,6 +9,11 @@ / {
+>>  	model =3D "Banana Pi BPI-R4";
+>>  	chassis-type =3D "embedded";
+>> =20
+>> +	chosen {
+>> +		stdout-path =3D &serial0;
+>> +		bootargs =3D "console=3DttyS0,115200n1";
+>
+>Drop or merge into stdout path=2E
 
-Drop or merge into stdout path.
+Have you an example to pass speed setting to stdout-path? As it is only a =
+phandle it is not clear to me how to merge these 2=2E=2E=2E
 
-Best regards,
-Krzysztof
+>Best regards,
+>Krzysztof
+
+
+regards Frank
 
