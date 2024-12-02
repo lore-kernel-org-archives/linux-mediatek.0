@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76C5D10DCF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 09:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7366D78307
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 10:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=; b=rWTekoAmGff0EcU46Pn3mT9I7A
-	r6UqEW5gIc+Bz2M1CukdgIvMmhcg8ZLR/1Opr1SwKEs/4jYlL3p7yn/e2X7101feSnkokL63z+yD+
-	UjbNEseJDHa0P/td6G2nv1n3HKsNI4T07O/KFNSGUrdjRL3j/5bHBC8cZ1sLfY7OwA9fS/mHSOzrl
-	dokME2DhbUFh9IBA7qKVMIkjnILmA1ar75zVRmq3UMdRS5+0KRavKa9JLOph8wxpNTMznrrEwOTxs
-	PfXVj79cB8/mtJ++/APz+IxBPDvtkIBnXR2v7ThRvBJVLiwbsJNVR9mg+unFFk0jpu+7pQQVpsrPB
-	jdtsX+wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YoO40zl/s7ZnqzqIb0x9bS2VWKzdum6rohqZrbmtpKY=; b=0PSC0SJ/PsRXcxKf8kIt0lQBbP
+	aYOCsQGl2Ri1p5auDLm5bu0EfmObNddamAPUZRJku22YASNVTB3N5sT/K58zqmBzpJOWoH1dLaIe5
+	i6L276b0f2MnPWbVt2wRNAnm/MOI3aBoC1QitshRi4dQxe5iz41ZIZ7A3sg/NytlqvjRSTm4J57cu
+	BcQjLIFXHEGkEvLwvZaQY2oS1iUd3G2FNiCuJHcF4u7+jWF44sLpWMPX4umwKQ2fGvFNqsFB3axX4
+	1DQzNXTTFkAdMoyoTnUiDSBxS/oQG7YLgE6xR6b2c44cHUmU0+Xl4r/jUX9rFuuD2R+g0DC305XdS
+	bmxZD+2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI2tc-00000005b9B-3Vlg;
-	Mon, 02 Dec 2024 09:39:12 +0000
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+	id 1tI41e-00000005mLX-3Kpl;
+	Mon, 02 Dec 2024 10:51:34 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI2sb-00000005au4-30TE
+	id 1tI40d-00000005mBz-2s42
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 09:38:11 +0000
-Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-71d5984e56fso1809069a34.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 01:38:08 -0800 (PST)
+	Mon, 02 Dec 2024 10:50:33 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e3995f1fe30so1597199276.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 02:50:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1733132288; x=1733737088; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=;
-        b=zwFcXMH3lYwgwu7U196tcIxt2GBsKjeAFh3GtHAsBE/KMyJWjsEGMyVn8GR1DH40rA
-         tIMG7lLp5Ml57iqbJGkTn3XmZItWtcVuS8KkSq+O0CeRGQl0ll9wCFUJ5o3LnEbwpRaM
-         noP/6s9YjLVEyJbSX7NO7kVVgux4fkswc06epou/glotxpx34sUih6jEnbDneCD81rEz
-         hJkY7cN/Ke/E3CiH3vX6g0sPnzPbj+PQIy0+M7hDpYqmP8UStcul3xMu8jWSlkENUR98
-         UbBan02XVXep8amhsASLnL62rmWKowQMi0tGbSPhM2sGrC1DwnFDIvqZ75mPIGj5QaA2
-         bkYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733132288; x=1733737088;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1733136630; x=1733741430; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=;
-        b=T0LoVYtXZ28bagWKOz0LdWfdWfP5RJMsoTi9+GsXU6+4FFLA2rHISLOk5mUaWcVCBS
-         skP5Nldnd2NOae+f5zuS9joA4yjrAJdFoYJd+T/8iTbY6UlSm7gBt+m8olbzU6pTM2f3
-         a6CjUX0jknMFlzalFDkXRNeFt2lH5P7Hp2tN4tyJGZorI1IWujVUs93uHAr86TMmpxge
-         aG62jRfypZVEHyHaoBur+HvLVUfUp78TdECgAJmwufcqZGUjKpl3wgzMUTj5pCJ6GNqu
-         0dhPYx5vixKR0JWrplKz3ZPqkXpJhe/lgFf/SpVrKjQDMdgMCis1wmU0t2YGVK3ZIXvv
-         snEg==
-X-Forwarded-Encrypted: i=1; AJvYcCXUZ/bBr4ujolLzlAX3pLwStOD1vPsi4AUGEAogxUXA4pRB0TSZAZg+PAXiHtGh3rDl9osLUQSMveGFhAkocg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwoapzGwQQ8/77BPif2zAldSC5d59L5D2evGYwxSE0dzbq91Zoo
-	X4pr6288uz8OZp7w2u80IY7wCxQJ4Dhuo6RvHQktRvgcGlxVW3xpyiyV4+xooq69PYCxDmJ3iDq
-	v9urd5oNlhpfXEB1NV43iHiowjnhDY6fBb6Cgvw==
-X-Gm-Gg: ASbGncsC8QZahYtO1HRX9qC+kK7nYSI7ivcN+T8SarojHBDjviD0LHmGlu5YjdpQPw6
-	ezs3uI2CiUHD/SRQlx9gY864kjhKGUg==
-X-Google-Smtp-Source: AGHT+IGFYBkRu+t9Rgm8uEYvRACv3R8GZFuyUPEoCQ2kFsszRxvWlytkFAb4tTArftXgRYmzaFXCGr9/hwxPw8QMZIA=
-X-Received: by 2002:a05:6830:6d84:b0:71d:559d:de29 with SMTP id
- 46e09a7af769-71d65cce8femr13291782a34.17.1733132288329; Mon, 02 Dec 2024
- 01:38:08 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 2 Dec 2024 03:38:07 -0600
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.8.9
-References: <20241128030940.25657-1-liankun.yang@mediatek.com>
-In-Reply-To: <20241128030940.25657-1-liankun.yang@mediatek.com>
+        bh=YoO40zl/s7ZnqzqIb0x9bS2VWKzdum6rohqZrbmtpKY=;
+        b=H59waj9ZahXV6L8y37MYEpQ8bfInOgJFB2EiDjzDOe8FGhM5vZgaOZB/6AYrieSjjs
+         NeNBhrsrz3e8dovt61LhnpwfsCRZ9s7I2ogY9BWP5WMBnL+SyyKU7MR/Fy3dzITQ19ix
+         U6spC0XPSOyCqDupIRk5ewGAuTWzrow8MyLVser8G1ZtwL2doKJ+CVn2H38ojxJ2lhbV
+         RfLAaoSAWiE4nXC7Ng+ajKMdrAtChtDydvkvI4Z/93alK9R+6Qyw5FT9qdWIE387CqoH
+         26ELHsUBX5ciUmmMTud9gF8JDle6n1OyJiQPkKV36RGu1cEjWbf91GiY33SZE8I+WNeO
+         8ALw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733136630; x=1733741430;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YoO40zl/s7ZnqzqIb0x9bS2VWKzdum6rohqZrbmtpKY=;
+        b=LMafQONd5wZ+edN7nQZ+Zk9pPTS1IULSVzujYacIQi/9UOctrU8J9QOHpmgaBkfIax
+         TzHXEo6AjmTaV5pYOV2Vr+4j61Bmj1hSSvKE/tg1r83afj5WhwUCLhKbh47hPhRFWnmA
+         5d2TOowT0CTYWLwP9LwFfkNbmhouqYeZ1ejdNZyF51I7x0zMTJ0cVTpj3D2P9/YlQqcN
+         F8JaK9omvTQBt/Di1yxdKfQjhKLNqbpcShlEzc6noqRExzY14Z+tcT9/Ot7Q0vo9a293
+         1qxkwYGSIxeiQuWRBOlWoJHy1Fh8yX56ydzKt2W/D6NMFzIvJAkmKvgXUklVUmV6LYNU
+         zRew==
+X-Forwarded-Encrypted: i=1; AJvYcCWbEvux5JseqpXvVL1HuBKJWOiHYDr9HOyBAMhURpIQHWulD2xJKCMDVQZhG897/PFKP7vxuZSVLr+gB7w9Eg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVhf8yxbiUGALtG6Tvjm18NNbxgjpbgqATZFd8hQRBTMZloBnv
+	JdheFffW8l4CwF4w5t/2JShLqs8D3YZ+niHr46xzg7SKYN0d+s/bX4zE1xdFsgtPdHOVrf1+daV
+	J9DEMzaW3xa2V/YpN0PYKyHyTe6y2oYvYJ1csww==
+X-Gm-Gg: ASbGncu+HeCH/oe+v2RKT2xOfUy21jGqqqsXjKtuL9GEJJQoGjR36pNBKxg/FacUlEA
+	Y3B015TFdE9t7MlvMY+mBkhx4RtzOvUWZ
+X-Google-Smtp-Source: AGHT+IExerCQ7sAUwgoXkBOkYbDVHSC68g+nFnlF4d2JadWUyhW3V21jeoCT4WtL5P/vbC1ORnld9fcul7IdcQprIzo=
+X-Received: by 2002:a05:6902:c13:b0:e33:67d8:654e with SMTP id
+ 3f1490d57ef6-e395b9548f7mr22613536276.49.1733136630377; Mon, 02 Dec 2024
+ 02:50:30 -0800 (PST)
 MIME-Version: 1.0
-Date: Mon, 2 Dec 2024 03:38:07 -0600
-Message-ID: <CABnWg9tDMkKkFbQpL8YphOBu3_2zr_q4YASnO-UYMrdM22wCuQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] drm/mediatek: Add return value check when reading DPCD
-To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	ck.hu@mediatek.com, dmitry.osipenko@collabora.com, rex-bc.chen@mediatek.com, 
-	jitao.shi@mediatek.com, mac.shen@mediatek.com, peng.liu@mediatek.com, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20241112105030.93337-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20241112105030.93337-1-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 2 Dec 2024 11:50:19 +0100
+Message-ID: <CAFGrd9qe5Q60zBEXyCokcLtFQVk+qa9yajO4_gHZR381i9cVOA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Initialize pointer in mtk_drm_of_ddp_path_build_one()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, matthias.bgg@gmail.com, sui.jingfeng@linux.dev, 
+	ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
+	dan.carpenter@linaro.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_013809_756551_26685394 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241202_025031_722699_E88A5F90 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,58 +96,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Nov 2024 04:08, Liankun Yang <liankun.yang@mediatek.com> wrote:
->Returns the number of bytes transferred (1) on success.
->Check the return value to confirm that AUX communication is successful.
+On Tue, Nov 12, 2024 at 11:50=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
->Fixes: d9e6ea02fc3f ("drm/mediatek: dp: Add MT8195 External DisplayPort support")
+> The struct device_node *next pointer is not initialized, and it is
+> used in an error path in which it may have never been modified by
+> function mtk_drm_of_get_ddp_ep_cid().
 >
->Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
->---
->Changes in V2:
->- Modify Fixes in Commit Message.
->Per suggestion from the previous thread:
->https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.5385-1-liankun.yang@mediatek.com/
->---
-> drivers/gpu/drm/mediatek/mtk_dp.c | 8 +++++++-
-> 1 file changed, 7 insertions(+), 1 deletion(-)
+> Since the error path is relying on that pointer being NULL for the
+> OVL Adaptor and/or invalid component check and since said pointer
+> is being used in prints for %pOF, in the case that it points to a
+> bogus address, the print may cause a KP.
 >
->diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
->index 1cc916b16471..9dc68ec2ff43 100644
->--- a/drivers/gpu/drm/mediatek/mtk_dp.c
->+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
->@@ -2101,6 +2101,7 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
-> 	enum drm_connector_status ret = connector_status_disconnected;
-> 	bool enabled = mtk_dp->enabled;
-> 	u8 sink_count = 0;
->+	size_t value;
+> To resolve that, initialize the *next pointer to NULL before usage.
 >
-> 	if (!mtk_dp->train_info.cable_plugged_in)
-> 		return ret;
->@@ -2115,7 +2116,12 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
-> 	 * function, we just need to check the HPD connection to check
-> 	 * whether we connect to a sink device.
-> 	 */
->-	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
->+	value = drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
->+	if (value < 0) {
->+		drm_err(mtk_dp->drm_dev, "Failed to read DP Sink Count: %zd\n", value);
->+		return ret;
->+	}
->+
-> 	if (DP_GET_SINK_COUNT(sink_count))
-> 		ret = connector_status_connected;
 
-Hi Liankun,
-
-thx for your fix.
-I think your patch could be improved by using the drm_dp_helper
-function drm_dp_read_sink_count() ?
-
-Thx,
-Guillaume.
-
->
->--
->2.45.2
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
