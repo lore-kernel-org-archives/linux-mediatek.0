@@ -4,105 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D72E3D78321
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 15:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0182D78321
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 15:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rju8sEpE6sdROgx04VbEZEe0Z4Dqml8d9fp2hAHZz1Q=; b=1EJxpyY/Ts+WlvhzITufvyP46P
-	nPbo3yNB19SZedpQr+7jhvY24qvZ/IZbwUYTeNBcO1aLwtdx5Z/YoAQ2c5yVdcDkqnyVbUTxNyY1J
-	82OSlSXrbXHpcPrWvb8cOqm5O2G/hfPxq1197ker/WvFlDgFTUgsj0uargVIWuHkcHh0N1p7eLa58
-	grzEuRdkzblY+JIfQ4Awiirmyt6adiUXjbZeTHVIwoZ95MOH4RwipWoLt/J8skRwYqlCFZ4M6UF/6
-	bwMUrWLwW/ptfGaA7I5IIWpzadTZBdwGkU9eMkM/yEuQbMewDlDh+sL6w03bD9hy0ItuxnwX00aOY
-	LmxOcQ1w==;
+	bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=; b=NnDFoovvOhrPDgMEh9cWnr7aGu
+	adZJnrDp1p6ypAxTphMf2yB73w/Sx9rYzfpYfJRK8IrECE5Nejy2mr0kakvrXpinq3lWZ1+8668R1
+	ddddZFVuG97qii59jRdmKLlskAsC6BzbVVdoyg0LPxkAenU11+bo6gVilP0ZwC993nNz3n75q+mu6
+	6qc8alYTyTgdneX18DuGCD7YA1rimCgcHvqOmXWTmZvnxhHfg2EUwWeBqMNzprTccN3glPkw2J/Ul
+	xz2Km+Bvox66VnrDg4krFeB9D5ioU7agqCpusMsmfBNyXkTwSL0Am7tO2Ga85aahfbuzqji36M1OA
+	ltZIHXhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI7ui-00000006Ydw-3jt3;
-	Mon, 02 Dec 2024 15:00:40 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1tI8KO-00000006eO9-0VVZ;
+	Mon, 02 Dec 2024 15:27:12 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI7tH-00000006YJ4-0DyE
+	id 1tI8Hf-00000006dnE-2Job
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 14:59:12 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-53dd2fdcebcso4923075e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 06:59:10 -0800 (PST)
+	Mon, 02 Dec 2024 15:24:24 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id 3f1490d57ef6-e388503c0d7so3040545276.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 07:24:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733151549; x=1733756349; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Rju8sEpE6sdROgx04VbEZEe0Z4Dqml8d9fp2hAHZz1Q=;
-        b=tmMnSBKYQcUbFKLOyUa3APf/TSvndYmHDI+Q+9/TD2HTJH7d7ZfWRNQmd2/SDVaOXY
-         pv7YOnYBfFvv6TG9KhcYxTqlvC3bBbdYIAjH4on7EQV67RsKe+Fch/hg4K3VPU9FiOay
-         48Op9EpNqbyYFVQPUE4KIr5cNcOeTR9hlPpWMTUvijjaH4Vlo/LelOlNXA1G4zC+5X06
-         m0Vkqji9o3okTXUo9dbL7XlvqKX3AtFgwtoYszNi3FpHc0rFD2AC4r0sfK5svCzHG8YJ
-         txpHfhSiQloj2/jZ8+uHCFnMq42nGY8x0elN8keQXtiO38bfPGRDqGFr9g0P8Pwl1PST
-         cfdQ==
+        d=linaro.org; s=google; t=1733153062; x=1733757862; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=;
+        b=H35tgsBKeRxuarT6BYtg4Mmd1wDCo1iFXUoW8PwLaCRhLz2oB9Uvcid8ETG5U6c7r1
+         20dudTWg2hadcqfubYMXQ5InDADS6fKxK7JWt5xYtW8Qe95kf1pWQ0IvO39la0LhxT2v
+         NdLreOc3irFNEDd0QDPjHW2mswwbrcndkc7OR9Yjccg+HcFp6WZroczlqdSNc6cbr/nG
+         SA91IcrrWlsmX+mH2WtRfthCk/hOE/AGpkOygWivP3SuqDpDmJt5Ifzhp4Fi5Aiyy9FJ
+         bn4hnWO8OPGIVoZzKVJMZoGdIa627du/iUXDff+o8IFZP5v2SDTfoKAp+wRt2HSg5i3I
+         Ce+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733151549; x=1733756349;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Rju8sEpE6sdROgx04VbEZEe0Z4Dqml8d9fp2hAHZz1Q=;
-        b=Qs6+42O/3QeSrUefwDnYgOw1S62sMuKcfUlpaiYYply8/ADAWgWGrWZo/NrIxyphPV
-         ze5ffjDdpsj7kkrJZ8aK3Ju/XpEM/0GQBnZd1L+p9v4LZvOSA02CSllxPY00gpViQd7q
-         //KJtVdQ1EHnpzLOpAgfQafUVZ/+0JDGnrfe/dDo2pwRJlFt86MWh4Gq5Im7rfDH9w2U
-         L+mesPRpgteip26s84H6PVp0elAHRIEToMLf9di5vUvPZFNKVTu72p7ukjT+tRmf365M
-         w44g6wPzJdt+OkXeANewcrCKQqKkFalb2+9Lfd0ATXIBRbxQR0V+maweSIFcZNGzaZU8
-         hRng==
-X-Forwarded-Encrypted: i=1; AJvYcCXSQW/TdNVHRX6UW+qANqjb+tNJJr1U43MJJoInIDl/HBTQZNxiV3gA7kT+G7FTBIGu3xeyAKXcqPrKmmD/NQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzQ+FeR7eud/Z82gchGobMYXeEmVorPocCYpDiXiS82lU9OFO7T
-	+IILO8J9kpA3+e6kVyeB+JG84imjRe6SHw43u8cuuh9ELTO3RnOBzIGr+r4d1Yo=
-X-Gm-Gg: ASbGnctTvKVVdyxyqEDYtxkPH0x/t0wSu1zPxq+RQtXfU9GC+MvPRnxcGOBhjScnO3j
-	kzGql46+CXxm0Td4DQOufj+ld1s3MSa/vEuOGebqX0g0e1DFQSL2oVerDl2VTfT3LYAEsXL6ky5
-	GzWlIsIlRYoZLqoVqLcT8GjSQy8mW5GY4joahUJfh8k0Y2uf16Eo3bBkhHwt26VYSPijroSTXDz
-	MQVKhYQ9TSqZhqnECH8jH9RmB+ohGI2L8/aQopAu698TsXZxpWkWw5iwpIeQKYgRbY5TTEPr708
-	kvGPCmPF6xRzViaGpB8Yqnf8wIftjQ==
-X-Google-Smtp-Source: AGHT+IFqUZg6UxbmPBpmmNDChC/PhM5ksog1SlPE5I3zx5OIy0xNoMEVpgKx1uItUxOnsjp3icE8UQ==
-X-Received: by 2002:a05:6512:b26:b0:53d:edba:d40b with SMTP id 2adb3069b0e04-53df00dc8d7mr12039335e87.33.1733151549347;
-        Mon, 02 Dec 2024 06:59:09 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df646f2c3sm1480384e87.126.2024.12.02.06.59.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 06:59:07 -0800 (PST)
-Date: Mon, 2 Dec 2024 16:59:06 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 2/9] ASoC: hdmi-codec: move no_capture_mute to struct
- hdmi_codec_pdata
-Message-ID: <onq2djvtvxvr3a52s6sin3dstwdctyyz2lxpx47lk7ndxtza33@odldgvhryw4d>
-References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
- <20241201-drm-bridge-hdmi-connector-v5-2-b5316e82f61a@linaro.org>
- <20241202-bald-just-guan-c5d41b@houat>
+        d=1e100.net; s=20230601; t=1733153062; x=1733757862;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=;
+        b=lRA8FpGuaJZSvT94PVTKwZo1K6qEkeGzj41ZR4tW/JqTrOj5qP4ds6h+CSLsin7VxJ
+         73q57RQ3tb+N7pkExnzMfHD3heGxWQhgcJCWtvGaYWZ643/qQ923i9MjX+wokE1JsoQX
+         8eqUis0AVwOzeivWzsBJQfe36a0+fRSTxk2/bZ6TsYdA2KfkH6Quc6un68UhK7le55w7
+         LlfzNr1jBIK02J2segM4TnWhINe4KNrNNUBP3sdlrzKEV7UlsyE/B+s4XV9B5DbcItPT
+         HARIleJ8Fju+k4FRR/Czej8QVFoq/Yv0RGkmRne1jI/W6Gl0hcrbzRWD3W5Cv+rE/LaN
+         1d/w==
+X-Forwarded-Encrypted: i=1; AJvYcCUmZDro0xiLjsVfHwnOOhH4Oc9+wiQs+lPvgNc8YlMcNVc7r7+o9gSDT5Nf9DKJpmW21+9RcuBo9BwSqc/yRA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEr0bWkqK9A99Yxdhq9BXoO/mT1wEyMQLgNmpL5a777nEB/bFS
+	al3Z9Mm45eTOlHkUGKs9iQs7dOZWp2zuKHn1i5vchyf28Iq95gnaNepwUD0dxRxemKGcxumCfMo
+	7L0CfFhJ6O4GclUF3w0YwG0YAdJ8p3ClmMMnGvQ==
+X-Gm-Gg: ASbGncvUwq1v6hofaccsMbZ7elo0U3VyCR26XN6EyvMmTC0URrTxx5+gQ7W+C+KR/n1
+	w95BUAKoa/n9/H7SbI5mxWTsQsjmOxorw
+X-Google-Smtp-Source: AGHT+IGecYwU3LhrUSWFanjb/IVeaGfWBi0iqpClqfJtpXMYSm61w6LopRzGpgTzgxbggBLwJS3eaTaanLLSHlemPmE=
+X-Received: by 2002:a05:6902:18c6:b0:e33:1c36:6a4 with SMTP id
+ 3f1490d57ef6-e395b887349mr19416613276.3.1733153062390; Mon, 02 Dec 2024
+ 07:24:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241202-bald-just-guan-c5d41b@houat>
+References: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
+In-Reply-To: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 2 Dec 2024 16:23:46 +0100
+Message-ID: <CAPDyKFpSQj295wZf=mOPmSaLZvi769EdgFTcPJ6QRY0sOHA89w@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] Add mtk-sd support for ignoring cmd response CRC
+To: Andy-ld Lu <andy-ld.lu@mediatek.com>
+Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
+	avri.altman@wdc.com, adrian.hunter@intel.com, wenbin.mei@mediatek.com, 
+	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_065911_099414_5CECDA65 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20241202_072423_581632_D0C3F622 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,33 +92,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 02, 2024 at 01:06:09PM +0100, Maxime Ripard wrote:
-> Hi,
-> 
-> On Sun, Dec 01, 2024 at 02:44:06AM +0200, Dmitry Baryshkov wrote:
-> > The no_capture_mute flag might differ from platform to platform,
-> > especially in the case of the wrapping implementations, like the
-> > upcoming DRM HDMI Codec framework. Move the flag next to all other flags
-> > in struct hdmi_codec_pdata.
-> > 
-> > Acked-by: Mark Brown <broonie@kernel.org>
-> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> 
-> I appreciate it might be a dumb question, but I never really understood
-> what no_capture_mute was all about. And in that context, why some
-> drivers would need / use it, and some won't.
+On Tue, 26 Nov 2024 at 13:50, Andy-ld Lu <andy-ld.lu@mediatek.com> wrote:
+>
+> Add the process flow in the host driver to handle the R1B cmd response
+> type with ignoring CRC, which comes from mmc_cqe_recovery() in the mmc
+> core. Additionally, the response type 'MMC_RSP_R1B_NO_CRC' is introduced
+> to simplify code.
+>
+> ---
+> Changes in v2:
+> - Change mmc_cqe_recovery() to use MMC_RSP_R1B_NO_CRC response type.
+> - Remove MMC_RSP_R1_NO_CRC in the host driver after it is dropped.
+>
+> Link to v1:
+> https://patchwork.kernel.org/patch/13883787
+>
+> ---
+> Andy-ld Lu (2):
+>   mmc: core: Introduce the MMC_RSP_R1B_NO_CRC response
+>   mmc: mtk-sd: Add support for ignoring cmd response CRC
+>
+>  drivers/mmc/core/core.c   | 6 ++----
+>  drivers/mmc/host/mtk-sd.c | 6 ++++--
+>  include/linux/mmc/core.h  | 2 ++
+>  3 files changed, 8 insertions(+), 6 deletions(-)
+>
+> --
+> 2.46.0
+>
 
-Some platforms can not mute the HDMI capture (ARC?) path. See the
-following patches:
-- https://lore.kernel.org/all/1606372608-2329-1-git-send-email-shengjiu.wang@nxp.com/
-- https://lore.kernel.org/all/1606372608-2329-1-git-send-email-shengjiu.wang@nxp.com/
+The series applied for next, thanks!
 
-Russell added a way to disable capture / playback support, but only TDA
-driver uses those. I think generally we should change those flags to be
-opt-in for capture, but that requires carefully reviewing all the
-platforms (and is a separate topic anyway).
-
--- 
-With best wishes
-Dmitry
+Kind regards
+Uffe
 
