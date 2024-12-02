@@ -4,80 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0182D78321
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 15:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A19E6D7832F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 15:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=; b=NnDFoovvOhrPDgMEh9cWnr7aGu
-	adZJnrDp1p6ypAxTphMf2yB73w/Sx9rYzfpYfJRK8IrECE5Nejy2mr0kakvrXpinq3lWZ1+8668R1
-	ddddZFVuG97qii59jRdmKLlskAsC6BzbVVdoyg0LPxkAenU11+bo6gVilP0ZwC993nNz3n75q+mu6
-	6qc8alYTyTgdneX18DuGCD7YA1rimCgcHvqOmXWTmZvnxhHfg2EUwWeBqMNzprTccN3glPkw2J/Ul
-	xz2Km+Bvox66VnrDg4krFeB9D5ioU7agqCpusMsmfBNyXkTwSL0Am7tO2Ga85aahfbuzqji36M1OA
-	ltZIHXhw==;
+	bh=QJFQOhHvRWMfU0TK3Z+kwO6rmT9pNjzCjW1otfK4k08=; b=lyH6K7bbEQ9wMJMyx3xYYso95S
+	AlwPMdRFbFo2jhOLLfjB4ijsQaFGnnXCJ4MPID68KdvTem71KapqXhPTuxjY7lJmPgxemUchwK543
+	rMXN0Q7i6CAjwJbOWU4kWJYbuXImgcQ1Up0GFcV7xjOiD2QDVqJDK4MCzh878pCXkBRASTUKB2iZp
+	B8JdF/68xLuNeE8lmUegF0+QhzDjcGnM4VmPhb1IzDgGpoIPOSVkRbRj32MGaZmioukKpdwsenVMN
+	67pXGRbH5i+mq4SQ9OT6lboch3Qm3OuEdDl/5Vww+W2ZZZB7S8eJyGWisqEZXLmRwgdCzmv3Jea+p
+	G5tWyqwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8KO-00000006eO9-0VVZ;
-	Mon, 02 Dec 2024 15:27:12 +0000
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+	id 1tI8Ou-00000006fJ4-24GJ;
+	Mon, 02 Dec 2024 15:31:52 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8Hf-00000006dnE-2Job
+	id 1tI8Or-00000006fIF-0Iwn
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 15:24:24 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id 3f1490d57ef6-e388503c0d7so3040545276.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 07:24:23 -0800 (PST)
+	Mon, 02 Dec 2024 15:31:51 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 5b1f17b1804b1-434aa222d96so55743205e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 07:31:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733153062; x=1733757862; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=;
-        b=H35tgsBKeRxuarT6BYtg4Mmd1wDCo1iFXUoW8PwLaCRhLz2oB9Uvcid8ETG5U6c7r1
-         20dudTWg2hadcqfubYMXQ5InDADS6fKxK7JWt5xYtW8Qe95kf1pWQ0IvO39la0LhxT2v
-         NdLreOc3irFNEDd0QDPjHW2mswwbrcndkc7OR9Yjccg+HcFp6WZroczlqdSNc6cbr/nG
-         SA91IcrrWlsmX+mH2WtRfthCk/hOE/AGpkOygWivP3SuqDpDmJt5Ifzhp4Fi5Aiyy9FJ
-         bn4hnWO8OPGIVoZzKVJMZoGdIa627du/iUXDff+o8IFZP5v2SDTfoKAp+wRt2HSg5i3I
-         Ce+A==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1733153507; x=1733758307; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=QJFQOhHvRWMfU0TK3Z+kwO6rmT9pNjzCjW1otfK4k08=;
+        b=IfYVFOSUpzuAHGS+/D1WFDR9ofomHQj5aPWoFm/EQfuyIUTekqpMCmcuP3tI5210dC
+         WTtJvZw45/s3dNIkewrwNm9ol0CZPdGVDfbGIrv5UanuXwU5z1HYJSnGR+c6rGXSx/KQ
+         b2CVJDGMg4z6zs0xFlHRgoMl6AckgXAycxE+s6zz1t99gDR85fKMs/FfXSbKqloTp6m4
+         4QmPqrULhqne1blfTUkaHdrhTZ9WVqPrMer1EyToSjMk3tlLy/2mzFJoIcHSvVaHuHzV
+         Ke5kKa4lPyjdy2FO5thNK8tLfJEk8KZMuoQgMpnCYGXltrNL9+hy+AAofYt2IkmZscL0
+         gIXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733153062; x=1733757862;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FIEJcaSGdJPUD8j5XlztkJ0eGqAbM3m0e+k9lVXSNJw=;
-        b=lRA8FpGuaJZSvT94PVTKwZo1K6qEkeGzj41ZR4tW/JqTrOj5qP4ds6h+CSLsin7VxJ
-         73q57RQ3tb+N7pkExnzMfHD3heGxWQhgcJCWtvGaYWZ643/qQ923i9MjX+wokE1JsoQX
-         8eqUis0AVwOzeivWzsBJQfe36a0+fRSTxk2/bZ6TsYdA2KfkH6Quc6un68UhK7le55w7
-         LlfzNr1jBIK02J2segM4TnWhINe4KNrNNUBP3sdlrzKEV7UlsyE/B+s4XV9B5DbcItPT
-         HARIleJ8Fju+k4FRR/Czej8QVFoq/Yv0RGkmRne1jI/W6Gl0hcrbzRWD3W5Cv+rE/LaN
-         1d/w==
-X-Forwarded-Encrypted: i=1; AJvYcCUmZDro0xiLjsVfHwnOOhH4Oc9+wiQs+lPvgNc8YlMcNVc7r7+o9gSDT5Nf9DKJpmW21+9RcuBo9BwSqc/yRA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEr0bWkqK9A99Yxdhq9BXoO/mT1wEyMQLgNmpL5a777nEB/bFS
-	al3Z9Mm45eTOlHkUGKs9iQs7dOZWp2zuKHn1i5vchyf28Iq95gnaNepwUD0dxRxemKGcxumCfMo
-	7L0CfFhJ6O4GclUF3w0YwG0YAdJ8p3ClmMMnGvQ==
-X-Gm-Gg: ASbGncvUwq1v6hofaccsMbZ7elo0U3VyCR26XN6EyvMmTC0URrTxx5+gQ7W+C+KR/n1
-	w95BUAKoa/n9/H7SbI5mxWTsQsjmOxorw
-X-Google-Smtp-Source: AGHT+IGecYwU3LhrUSWFanjb/IVeaGfWBi0iqpClqfJtpXMYSm61w6LopRzGpgTzgxbggBLwJS3eaTaanLLSHlemPmE=
-X-Received: by 2002:a05:6902:18c6:b0:e33:1c36:6a4 with SMTP id
- 3f1490d57ef6-e395b887349mr19416613276.3.1733153062390; Mon, 02 Dec 2024
- 07:24:22 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733153507; x=1733758307;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QJFQOhHvRWMfU0TK3Z+kwO6rmT9pNjzCjW1otfK4k08=;
+        b=FCM2qv7LrZJsEQxoI8okHEHXGRBab6XotKVv28l+E6RJNqDhd+UiwZBzvjwe9P9lBR
+         JqvpohrOkgTKa7YmarTFDR2KjzoM99SS2YQe8YTNWMVBcGflWQz95uIThV/39A7C9CWo
+         lsNOQ9WaWd4hUkghWbHGjHuhBhfyXh2aCSomIET+S/lPOWPt7jexHx4dk2qhLYRb6eK1
+         wsPLDlmANNllynxZZYz1vd5hdPtEcWpyqRiHK38jh5KbdkUXw2/AGEGdR4tqYv/OBiRu
+         14irty/Ip+n4djziluvfLLYzWeqpGLtLyxa9l1GLoONI7E7HldSu6wspjk0a1H88649/
+         GOVw==
+X-Forwarded-Encrypted: i=1; AJvYcCXxuFj7OGHqH/lcZ4c44g1U9Hj3OpZX5nfC6IZ6N/Bmf7Rw9dqg+euz540onkXKsDoh/dLFvVgVVmbxXSKEuQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjkC3hjaevQulnIQPeIbqpA347RqUWFVqe8jFDwV7Yv8/Av95f
+	U26tY89Wh31jSdMpZiQRc0+3xjzjIwwF7dT3rnD6Sa09Nenchm6UlOOlTk8v2pg=
+X-Gm-Gg: ASbGnct3730O0oAeqcY328ArbClbu6oaxak8AlfRMHVvGGEN9Eq1iFyvmJYmGPMchBb
+	cwwy8JA9VXj/h9SB3NmyuhsFr/hrfW6Ylgo7Heph6Yj9YakMuBLgozmX7j9OP/q7v1pObj9gw7A
+	WuvMIUX0OKdvXh86NsoNFrZgAQ5RD8Gvfyn+L+AZj0pF5S/P4HkSo7DRDpw9OGSs4hJftqHOpKI
+	H3jXCaEkG54kN8v1E6FKiy+1oFYrIRD7SC4bvLGKnjI9jCwPID92zE=
+X-Google-Smtp-Source: AGHT+IHMBE300Bcm54Mmq/v3tBkO0lxgfJUVqj14Z7wnWfcFOCNvI3wDAreuaFWCRfOaW1RTUGcZhg==
+X-Received: by 2002:a05:600c:458b:b0:42f:8229:a09e with SMTP id 5b1f17b1804b1-434a9df7b85mr236310305e9.29.1733153507008;
+        Mon, 02 Dec 2024 07:31:47 -0800 (PST)
+Received: from localhost ([2a02:8071:b783:6940:ebc7:b34e:f4a6:7947])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434a5dfc03csm105063765e9.2.2024.12.02.07.31.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Dec 2024 07:31:46 -0800 (PST)
+Date: Mon, 2 Dec 2024 16:31:44 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Chanwoo Choi <cw00.choi@samsung.com>, 
+	MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, linux-pm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH] devfreq: Switch back to struct platform_driver::remove()
+Message-ID: <ecae7326gzjpwpg4a3ba2dgddh4jg362ybsf64xla4lyff3mk4@x3q6bocz2car>
+References: <20241130135813.895628-2-u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-References: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
-In-Reply-To: <20241126125041.16071-1-andy-ld.lu@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 2 Dec 2024 16:23:46 +0100
-Message-ID: <CAPDyKFpSQj295wZf=mOPmSaLZvi769EdgFTcPJ6QRY0sOHA89w@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Add mtk-sd support for ignoring cmd response CRC
-To: Andy-ld Lu <andy-ld.lu@mediatek.com>
-Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
-	avri.altman@wdc.com, adrian.hunter@intel.com, wenbin.mei@mediatek.com, 
-	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="peon3ci7jqimuqo3"
+Content-Disposition: inline
+In-Reply-To: <20241130135813.895628-2-u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_072423_581632_D0C3F622 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20241202_073149_321210_BC67A31F 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,37 +101,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 26 Nov 2024 at 13:50, Andy-ld Lu <andy-ld.lu@mediatek.com> wrote:
->
-> Add the process flow in the host driver to handle the R1B cmd response
-> type with ignoring CRC, which comes from mmc_cqe_recovery() in the mmc
-> core. Additionally, the response type 'MMC_RSP_R1B_NO_CRC' is introduced
-> to simplify code.
->
-> ---
-> Changes in v2:
-> - Change mmc_cqe_recovery() to use MMC_RSP_R1B_NO_CRC response type.
-> - Remove MMC_RSP_R1_NO_CRC in the host driver after it is dropped.
->
-> Link to v1:
-> https://patchwork.kernel.org/patch/13883787
->
-> ---
-> Andy-ld Lu (2):
->   mmc: core: Introduce the MMC_RSP_R1B_NO_CRC response
->   mmc: mtk-sd: Add support for ignoring cmd response CRC
->
->  drivers/mmc/core/core.c   | 6 ++----
->  drivers/mmc/host/mtk-sd.c | 6 ++++--
->  include/linux/mmc/core.h  | 2 ++
->  3 files changed, 8 insertions(+), 6 deletions(-)
->
-> --
-> 2.46.0
->
 
-The series applied for next, thanks!
+--peon3ci7jqimuqo3
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] devfreq: Switch back to struct platform_driver::remove()
+MIME-Version: 1.0
 
-Kind regards
-Uffe
+Hello,
+
+On Sat, Nov 30, 2024 at 02:58:11PM +0100, Uwe Kleine-K=F6nig wrote:
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
+>=20
+> Convert all platform drivers below drivers/devfreq to use .remove(),
+> with the eventual goal to drop struct platform_driver::remove_new(). As
+> .remove() and .remove_new() have the same prototypes, conversion is done
+> by just changing the structure member name in the driver initializer.
+>=20
+> While touching these drivers, make the alignment of the touched
+> initializers consistent.
+>=20
+> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
+
+Note this patch is obsoleted by
+https://git.kernel.org/linus/e70140ba0d2b1a30467d4af6bcfe761327b9ec95
+=2E
+
+Best regards
+Uwe
+
+--peon3ci7jqimuqo3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmdN0t0ACgkQj4D7WH0S
+/k6qNwgAiyaoRUBzt+ES/sXpbjU1ikMyNnk8Olj+yqwh6q3TT7T/cGK/mJZ+n8Jx
+Kf/b7GtwcRk3RScaL6SOlRNRgJCTKyfH7s8Ko1mLum0vsaTXMeCq2v3LWmKvMqk8
+IKYihoDhPxfvbFrY6VlUixTkGip8fHGONhs/PShKhoM0Q5UeBXRq0jtssisQqaDj
+MD4pC+pZn9OtMP1OzIoYDm9txIY+TIQfYil1fC3HJLrS+i19CGizdK1R0gaJPl4t
+YRrVt/aAZ09xtLiGt1FM8hS+DbwwIi4/t5eYPFEEzUMxFE1IAMuSkiwcr2GIQ2Wg
+9eZ8IqZADcB+nKoGJhVo+lkPfeR5fQ==
+=TKo+
+-----END PGP SIGNATURE-----
+
+--peon3ci7jqimuqo3--
 
