@@ -4,108 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84269D78336
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 16:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A515D78333
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 16:24:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZGTZLqyiKrqe7BzhPHyNmqltDOLbo44Bqwmvhp/DjDE=; b=2Y/VnK5xZ/sRr1
-	IFnPqej4dllyAEA+X9CUiTYCLQkixzhhKS4bE6noAqB3DC2hGXUOX/MDOk8OaccOe1Yo9IBXydZpt
-	0yZE/090rDLpOkl8tauW0yjfSvLWPCHmyRCHsJRtbERivkg3k1MoGGuLZ0RvnjO4T4micUjp7+Ypu
-	cEmlVAi8qdxXwyJt7ZplYW65m8x/33wCEzzHixQjg6FqzLVap1thSD2TBw0tnDW00exn3Bv0Gd+iO
-	BrAbYxWbm5WfMjflVcfwLYZpw77uMBQwoRCIHJpdMd+NKvSAjYewMPRo0RuigKDjs25ciiYp7dbpI
-	Xza6e5ZkelGVb02k0l0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PaH2quEaKj8yOu++9MIx8fQjkXZLihRJEM2GwaPWvJ8=; b=3ngPoooUXPVP9DlmYMrko9Vpy0
+	/pAdyU+xrQyQTK566BBWs1XJHGrV6lQz0YQCC1CETT37wTds2pNggqwvMihAjzMv1tnHmLsV4WxA7
+	qin1ZOf1OV5AkKErXK2pIDe/Yy8CJaTX0zfxhYuA7mvD9JXpGl0x9B6llk2DjaIli7moW/0N57mJ1
+	TXOwHsqRhoOo0KgvMscgFiwRFdVT2Vyfkw/VBN4aNm06yzUJ70gVz+azMDPBTVp8LCrokXvdVHh2h
+	479FJYq5dIsrrsq7w4NITxQxn9jWEytnyLyOExPdLTlBnJTpllHblBDecA5fJcVfxWRfobyCzrbr8
+	FXK3en0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI95Y-00000006o9D-2DFt;
-	Mon, 02 Dec 2024 16:15:56 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tI9EG-00000006q0d-0k8z;
+	Mon, 02 Dec 2024 16:24:56 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8p1-00000006km7-2hzU;
-	Mon, 02 Dec 2024 15:58:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 88335A40EEB;
-	Mon,  2 Dec 2024 15:56:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E25F2C4CED1;
-	Mon,  2 Dec 2024 15:58:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733155130;
-	bh=fW1G5fe6jq6m4BjYv6eXDZABakXNo+lmsyCAr91F1L0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QMzZjFk86MGurUZ976h/wSFEhuKhygZnKxCWDeVwuSa0Q1qQFx+X4TVOsfO2uJwCh
-	 gvy0o9sOro8SMI4q6Rc9sH7GdQvKZliY43B8TJ8+kiJz3zc0oUtKG4S5YNAqUPCIlJ
-	 maQVcxGZRv5aFnIlhSAmnYo/9dmRBPVJOWCFS/RBCwtDG3/sj2q1VEF9nPzMkK0ykx
-	 BlBgJ6vtqB58MwUtwQrnhktsltJ0+y6DzKxWqZ3VjadGWCjzgzZ6GOYIrVUjmNMI5G
-	 8nJLSFkTwvW5DRVpkcxWXUc0QcU8Fq5XT1Aqb1zPJ3Gg84J3ckI4ioGqaNsWfFzAVw
-	 wf7Rbl4TtENdw==
-Message-ID: <e1343cc5-d5e8-40d6-a6f1-3eaf22a8cd6d@kernel.org>
-Date: Mon, 2 Dec 2024 16:58:44 +0100
+	id 1tI8y5-00000006mdP-1PXj
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Dec 2024 16:08:14 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-e39779a268bso3182630276.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 08:08:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733155692; x=1733760492; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=PaH2quEaKj8yOu++9MIx8fQjkXZLihRJEM2GwaPWvJ8=;
+        b=g0VDTw1mv7b+4lVVuuYmaj3eXhZVwcDtAs4FEzECP/2Hxn8dopypq9hAtV4EIC4JYw
+         G4/P4Deol763v+/zCoNw8Xx1ktbh0A5OaRRFfJyLmUNHpOCrLBr7xQ60qDo/sTuXtxVq
+         /eyle6UQQ5nY/l33hRM6+EEuQBeEDFvIriVsaV3H+GpWcx4Kx5wQzESNEgfQfRTsERce
+         wC38fuAra9bwIPSaN7iEZcdvWmQV930rYbWEMYxMDvOLT/VMFdkZGZTzVo94FRJwn4zI
+         MOQEyo5dn3V1rRjZ0S948n9JXbYC11a95S2E/5Rwbv6BC7ZcUHU6iCc7GoJUn67X/JLg
+         KW3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733155692; x=1733760492;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PaH2quEaKj8yOu++9MIx8fQjkXZLihRJEM2GwaPWvJ8=;
+        b=JtZfHvIZFmajJS/BEHZHR98z0RzKONJ5CSRSCMtGllRbQOMgJuMVeq+8vchUNQjJ5o
+         Poxo/Mt7sUgHPrh63lUpi14RP4AlJwGFbe9IuWXHeW8Jj5c1Chr4mxeoz4efpvW0qBGd
+         TQudMItpJJXM1xszpGEYATcTGsvCqm/kM0kVs1NAF1NLkS4zdPUw484rQnKT9FfiSl9y
+         gmLcqnRz1gXhE1zjLlw/XDh46mCC35YF/U+qj1Z+n9dMnZziPgDTb19iUACd9vRPeyrv
+         nyJM4E+LqTH1V/l7K1XoKhnpgONPMoBX4sg2m5tUOe08z0Q7SD2Eu+2ojYD0NkASBCP8
+         pVzA==
+X-Forwarded-Encrypted: i=1; AJvYcCVJLy4USEVnnc5GQ3R46SnySP7/HmGddgSPk6ozUVEBf/+ucvC4+gPvLklS48652/wxzoZnYBx2Ibh3qxsM9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyePpTE9Qu9n1lAIsWaVwStYoFz8LX0bfJjUQp+bwBopwhhLOL9
+	skqXQEg+BUtJxlaowtoXZ2NrRk08jhb3GBibXJLvFqntL/S9UbU3pL4FXjyQv83cVlbKrclzW6q
+	iOH6vJN5lXF0+tdda7qTuUmo1HD2zmzwmlOiFmw==
+X-Gm-Gg: ASbGnct68m7bOxdv2fiKoYPXdjqIxwSppDykYC3zOPY97fpBWrToEy06X4ReQwV1iwI
+	cjvyB2qLGBCHqCiaPgwMFvRp+UFT0eGu1
+X-Google-Smtp-Source: AGHT+IG7HwzdQGc2Kvrg8khctxbecpx+AXVlBCSBHTZ8x/NzPHJXof0Ee7iQcAC8+6QwlvR9QUpxPUtKrKBUqfZBBpA=
+X-Received: by 2002:a25:7bc5:0:b0:e38:864a:1522 with SMTP id
+ 3f1490d57ef6-e3971958a74mr15808882276.9.1733155689500; Mon, 02 Dec 2024
+ 08:08:09 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chosen node on
- bpi-r4
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-12-linux@fw-web.de>
- <0fb58a4a-7bad-4623-99c8-67f5763558bb@kernel.org>
- <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <D92CAF3C-F6B7-46DC-BF83-A71907E2D7EA@fw-web.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241001113052.3124869-1-fshao@chromium.org> <20241001113052.3124869-2-fshao@chromium.org>
+In-Reply-To: <20241001113052.3124869-2-fshao@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 2 Dec 2024 17:07:33 +0100
+Message-ID: <CAPDyKFocgdjSdek-sNHy_w1ZQkscgs8Z0TYwXPKC9phUbH-scg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] dt-bindings: power: mediatek: Add another nested
+ power-domain layer
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"Rob Herring (Arm)" <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Fabien Parent <fparent@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	MandyJH Liu <mandyjh.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_075851_819608_C649AC10 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20241202_080813_377270_160EC80A 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,41 +92,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/12/2024 15:29, Frank Wunderlich wrote:
-> Am 2. Dezember 2024 14:46:24 MEZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
->> On 02/12/2024 13:25, Frank Wunderlich wrote:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Add chosen node on Bananapi R4 board with stdout and default bootargs.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>>  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
->>> index 9037f35857a9..1c2a806f6f6c 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
->>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
->>> @@ -9,6 +9,11 @@ / {
->>>  	model = "Banana Pi BPI-R4";
->>>  	chassis-type = "embedded";
->>>  
->>> +	chosen {
->>> +		stdout-path = &serial0;
->>> +		bootargs = "console=ttyS0,115200n1";
->>
->> Drop or merge into stdout path.
-> 
-> Have you an example to pass speed setting to stdout-path? As it is only a phandle it is not clear to me how to merge these 2...
-It is really trivial to find, considering that 66% of files have it.
+On Tue, 1 Oct 2024 at 13:31, Fei Shao <fshao@chromium.org> wrote:
+>
+> The MT8188 SoC has a more in-depth power-domain tree, and the
+> CHECK_DTBS=y check could fail because the current MediaTek power
+> dt-binding is insufficient to cover its CAM_SUBA and CAM_SUBB
+> sub-domains.
+>
+> Add one more nested power-domain layer to pass the check.
+>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Fei Shao <fshao@chromium.org>
 
-git grep stdout
+Applied for fixes (to silence the warning in v6.13-rc[n], thanks!
 
-Best regards,
-Krzysztof
+Kind regards
+Uffe
+
+
+> ---
+>
+> (no changes since v1)
+>
+>  .../devicetree/bindings/power/mediatek,power-controller.yaml  | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> index 8985e2df8a56..a7df4041b745 100644
+> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> @@ -54,6 +54,10 @@ patternProperties:
+>              patternProperties:
+>                "^power-domain@[0-9a-f]+$":
+>                  $ref: "#/$defs/power-domain-node"
+> +                patternProperties:
+> +                  "^power-domain@[0-9a-f]+$":
+> +                    $ref: "#/$defs/power-domain-node"
+> +                    unevaluatedProperties: false
+>                  unevaluatedProperties: false
+>              unevaluatedProperties: false
+>          unevaluatedProperties: false
+> --
+> 2.46.1.824.gd892dcdcdd-goog
+>
 
