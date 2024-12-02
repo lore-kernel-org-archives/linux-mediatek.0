@@ -4,53 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE3ED10DC0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 09:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76C5D10DCF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2024 09:39:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4SsVKfavNtEL8KiAyuhM0WdCxWV7dwsn0eOpgkwr5fY=; b=HPmNBLH55iZpCn5GUZ47SWw8LS
-	bFrWdkWaakTFRMzres5W/Np/US7BST2ZxFOpPMjFOYO9rYqHo8ZPtppuowyZeyNCRZvQ1Oh0IFkug
-	NEFCjW8upUIqduNYUS7Fwc3W5c5E1eR4NQChyts3OUfpy6uJmuet4saF5+2MiJ58MSET3DfWAPP7Z
-	Ca7Km2istgfOgtpXvFVj4VRMzblUvOvj+gMrJ68abiWhtH5A2DGIBVoBhA9Q3uYunSw1JUlJvlFKK
-	GIyTz59dCijve8AM2uiKgayPlzJtZX11yyE02Y4kCfqK+QS5vFuf7Mc7WE1Z6ROd+juHDFML7QtUm
-	XVn92D9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=; b=rWTekoAmGff0EcU46Pn3mT9I7A
+	r6UqEW5gIc+Bz2M1CukdgIvMmhcg8ZLR/1Opr1SwKEs/4jYlL3p7yn/e2X7101feSnkokL63z+yD+
+	UjbNEseJDHa0P/td6G2nv1n3HKsNI4T07O/KFNSGUrdjRL3j/5bHBC8cZ1sLfY7OwA9fS/mHSOzrl
+	dokME2DhbUFh9IBA7qKVMIkjnILmA1ar75zVRmq3UMdRS5+0KRavKa9JLOph8wxpNTMznrrEwOTxs
+	PfXVj79cB8/mtJ++/APz+IxBPDvtkIBnXR2v7ThRvBJVLiwbsJNVR9mg+unFFk0jpu+7pQQVpsrPB
+	jdtsX+wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI2IA-00000005Ua9-0Rdi;
-	Mon, 02 Dec 2024 09:00:30 +0000
-Received: from mail.finteras.pl ([5.249.155.118])
+	id 1tI2tc-00000005b9B-3Vlg;
+	Mon, 02 Dec 2024 09:39:12 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI2I8-00000005UZH-01fT
+	id 1tI2sb-00000005au4-30TE
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Dec 2024 09:00:29 +0000
-Received: by mail.finteras.pl (Postfix, from userid 1002)
-	id 90A1F82D3E; Mon,  2 Dec 2024 10:00:15 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=finteras.pl; s=mail;
-	t=1733130026; bh=4SsVKfavNtEL8KiAyuhM0WdCxWV7dwsn0eOpgkwr5fY=;
-	h=Date:From:To:Subject:From;
-	b=bGB4V8SWTwq31xI+I+NKfJwIbv5Ak7/OnZi1sN2hpVV9boQSX/NKGNVjZNDdB6DeK
-	 g4IFtpdSdy1Ea3BkrSTQu9WqFejzit142vATRDyZsIeRjznJXS9iP+T/b52EiKHMRz
-	 fhWZs6TU/xm3yX1oN7HWhSsW/BpcuUiPvRfjv6RQA/S/RFuplsr6L2qZPd2zj0N5oI
-	 q0FKm44iFRw4P5Uywv409ND4KO9YNa5gLpg3CR4j7Qgfv/MOeQ6U3UFc0mMpGOV+3J
-	 GKHshIA1UZRWXBdXOFk7JbGya6G4I6XBAF7XbVIe6HlQaj+xFLEdCBx+Xspv5X++Rl
-	 +2Orv//cvyWhA==
-Received: by mail.finteras.pl for <linux-mediatek@lists.infradead.org>; Mon,  2 Dec 2024 09:00:12 GMT
-Message-ID: <20241202084500-0.1.57.6r1b.0.64e934r8r2@finteras.pl>
-Date: Mon,  2 Dec 2024 09:00:12 GMT
-From: "Urszula Kurach" <urszula.kurach@finteras.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Pakiety_telemedyczne_dla_pracownik=C3=B3w?=
-X-Mailer: mail.finteras.pl
+	Mon, 02 Dec 2024 09:38:11 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-71d5984e56fso1809069a34.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2024 01:38:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1733132288; x=1733737088; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=;
+        b=zwFcXMH3lYwgwu7U196tcIxt2GBsKjeAFh3GtHAsBE/KMyJWjsEGMyVn8GR1DH40rA
+         tIMG7lLp5Ml57iqbJGkTn3XmZItWtcVuS8KkSq+O0CeRGQl0ll9wCFUJ5o3LnEbwpRaM
+         noP/6s9YjLVEyJbSX7NO7kVVgux4fkswc06epou/glotxpx34sUih6jEnbDneCD81rEz
+         hJkY7cN/Ke/E3CiH3vX6g0sPnzPbj+PQIy0+M7hDpYqmP8UStcul3xMu8jWSlkENUR98
+         UbBan02XVXep8amhsASLnL62rmWKowQMi0tGbSPhM2sGrC1DwnFDIvqZ75mPIGj5QaA2
+         bkYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733132288; x=1733737088;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iTAHukQDOhRmCnoHVRWCZSaR6X9fYnJA+kiQMKbXQ6U=;
+        b=T0LoVYtXZ28bagWKOz0LdWfdWfP5RJMsoTi9+GsXU6+4FFLA2rHISLOk5mUaWcVCBS
+         skP5Nldnd2NOae+f5zuS9joA4yjrAJdFoYJd+T/8iTbY6UlSm7gBt+m8olbzU6pTM2f3
+         a6CjUX0jknMFlzalFDkXRNeFt2lH5P7Hp2tN4tyJGZorI1IWujVUs93uHAr86TMmpxge
+         aG62jRfypZVEHyHaoBur+HvLVUfUp78TdECgAJmwufcqZGUjKpl3wgzMUTj5pCJ6GNqu
+         0dhPYx5vixKR0JWrplKz3ZPqkXpJhe/lgFf/SpVrKjQDMdgMCis1wmU0t2YGVK3ZIXvv
+         snEg==
+X-Forwarded-Encrypted: i=1; AJvYcCXUZ/bBr4ujolLzlAX3pLwStOD1vPsi4AUGEAogxUXA4pRB0TSZAZg+PAXiHtGh3rDl9osLUQSMveGFhAkocg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwoapzGwQQ8/77BPif2zAldSC5d59L5D2evGYwxSE0dzbq91Zoo
+	X4pr6288uz8OZp7w2u80IY7wCxQJ4Dhuo6RvHQktRvgcGlxVW3xpyiyV4+xooq69PYCxDmJ3iDq
+	v9urd5oNlhpfXEB1NV43iHiowjnhDY6fBb6Cgvw==
+X-Gm-Gg: ASbGncsC8QZahYtO1HRX9qC+kK7nYSI7ivcN+T8SarojHBDjviD0LHmGlu5YjdpQPw6
+	ezs3uI2CiUHD/SRQlx9gY864kjhKGUg==
+X-Google-Smtp-Source: AGHT+IGFYBkRu+t9Rgm8uEYvRACv3R8GZFuyUPEoCQ2kFsszRxvWlytkFAb4tTArftXgRYmzaFXCGr9/hwxPw8QMZIA=
+X-Received: by 2002:a05:6830:6d84:b0:71d:559d:de29 with SMTP id
+ 46e09a7af769-71d65cce8femr13291782a34.17.1733132288329; Mon, 02 Dec 2024
+ 01:38:08 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 2 Dec 2024 03:38:07 -0600
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.8.9
+References: <20241128030940.25657-1-liankun.yang@mediatek.com>
+In-Reply-To: <20241128030940.25657-1-liankun.yang@mediatek.com>
 MIME-Version: 1.0
+Date: Mon, 2 Dec 2024 03:38:07 -0600
+Message-ID: <CABnWg9tDMkKkFbQpL8YphOBu3_2zr_q4YASnO-UYMrdM22wCuQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] drm/mediatek: Add return value check when reading DPCD
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org, 
+	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	ck.hu@mediatek.com, dmitry.osipenko@collabora.com, rex-bc.chen@mediatek.com, 
+	jitao.shi@mediatek.com, mac.shen@mediatek.com, peng.liu@mediatek.com, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_010028_188779_A30B63A5 
-X-CRM114-Status: UNSURE (   1.46  )
+X-CRM114-CacheID: sfid-20241202_013809_756551_26685394 
+X-CRM114-Status: UNSURE (   9.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,28 +99,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Szanowni Pa=C5=84stwo,
+On Thu, 28 Nov 2024 04:08, Liankun Yang <liankun.yang@mediatek.com> wrote:
+>Returns the number of bytes transferred (1) on success.
+>Check the return value to confirm that AUX communication is successful.
+>
+>Fixes: d9e6ea02fc3f ("drm/mediatek: dp: Add MT8195 External DisplayPort support")
+>
+>Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+>---
+>Changes in V2:
+>- Modify Fixes in Commit Message.
+>Per suggestion from the previous thread:
+>https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.5385-1-liankun.yang@mediatek.com/
+>---
+> drivers/gpu/drm/mediatek/mtk_dp.c | 8 +++++++-
+> 1 file changed, 7 insertions(+), 1 deletion(-)
+>
+>diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+>index 1cc916b16471..9dc68ec2ff43 100644
+>--- a/drivers/gpu/drm/mediatek/mtk_dp.c
+>+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+>@@ -2101,6 +2101,7 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+> 	enum drm_connector_status ret = connector_status_disconnected;
+> 	bool enabled = mtk_dp->enabled;
+> 	u8 sink_count = 0;
+>+	size_t value;
+>
+> 	if (!mtk_dp->train_info.cable_plugged_in)
+> 		return ret;
+>@@ -2115,7 +2116,12 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+> 	 * function, we just need to check the HPD connection to check
+> 	 * whether we connect to a sink device.
+> 	 */
+>-	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
+>+	value = drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
+>+	if (value < 0) {
+>+		drm_err(mtk_dp->drm_dev, "Failed to read DP Sink Count: %zd\n", value);
+>+		return ret;
+>+	}
+>+
+> 	if (DP_GET_SINK_COUNT(sink_count))
+> 		ret = connector_status_connected;
 
-chcia=C5=82abym zapyta=C4=87, czy byliby Pa=C5=84stwo zainteresowani dost=
-=C4=99pem do nielimitowanej opieki telemedycznej pediatry, ortopedy, neur=
-ologa oraz lekarzy wielu innych specjalizacji?
+Hi Liankun,
 
-Oferujemy 3 r=C3=B3=C5=BCne pakiety, kt=C3=B3re zapewniaj=C4=85 dost=C4=99=
-p do us=C5=82ug dopasowanych do potrzeb Pa=C5=84stwa firmy. Pakiet podsta=
-wowy daje mo=C5=BCliwo=C5=9B=C4=87 korzystania z konsultacji internisty n=
-awet w weekendy i =C5=9Bwi=C4=99ta, natomiast pakiet pe=C5=82ny obejmuje =
-dost=C4=99p do lekarzy 42 specjalizacji, a tak=C5=BCe atrakcyjne rabaty n=
-a badania laboratoryjne i diagnostyk=C4=99 obrazow=C4=85.
+thx for your fix.
+I think your patch could be improved by using the drm_dp_helper
+function drm_dp_read_sink_count() ?
 
-Dzi=C4=99ki takim rozwi=C4=85zaniom, Pa=C5=84stwa pracownicy zyskaj=C4=85=
- warto=C5=9Bciowy benefit pozap=C5=82acowy, a firma zyska zmotywowany zes=
-p=C3=B3=C5=82, mniej absencji chorobowych i dodatkowe oszcz=C4=99dno=C5=9B=
-ci.
+Thx,
+Guillaume.
 
-Czy mog=C4=99 przedstawi=C4=87 wi=C4=99cej szczeg=C3=B3=C5=82=C3=B3w na t=
-emat dost=C4=99pnych pakiet=C3=B3w?
-
-
-Pozdrawiam
-Urszula Kurach
+>
+>--
+>2.45.2
 
