@@ -4,120 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EBEFE6C5E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8028E6C5E4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 01:12:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	Content-Type:Content-Transfer-Encoding:Date:Message-ID:In-Reply-To:CC:To:From
+	:Subject:Mime-Version:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DunB/Cza6j0J9yIEJF1/KVIA9ohiToydy/mrGuBe+NA=; b=rrbnUj6gtO/e2dLfofwD6Xwean
-	YK8gv5p2+Q5FdIybu2YukyEUzkUd80wEiLkblNz9L1IVg768MZl/67fO4/AKNJUbsA9T62/EMgJ0E
-	JtuAEIMIOXnlRn99a6y1yhPA1vB0XvpH30xBJUXKatoXtm3FHJv8ZKBV7jEj+ZbjWphMCZVO5xu8W
-	3lrzffT+pmjJjBEl9a1hBJLkh/sGogPlh6firFigMzrsRa31T7r1VuGB7+Iy6EazNoS8BDSUyzZqQ
-	pPpzmAnb1AypGJ9lx9UEayTzcZd9lmDlsYJ1nujM/Az93tNv3H/0P/nfrv+R4s1z8T11pmYZaCUZp
-	5NoIqXDQ==;
+	bh=B4Sx+xF70GMxFfVfB9+wAhK7C2qf9G7NzE3Mpx8R8Ig=; b=48GVDAWABKZ8Lw4kQxOoIP/7jr
+	aEef2gh/hCK7uFOgFbg1afBM17+63B+sDwmv4VIICJMNEenLlB2L1fM8uxsvkqV445IBp7lvtXS6B
+	j6HraoNITtf8z4D1EgRCbS584S8UPddC97L/sg/ywmb9AE1v7EbSz5SdtG5c9yGOZPFJBXe0y6zPS
+	FykR+zgj3fZlnhxqgjELWnSTt58+t1jCE7yxQsdYv657TSRYiZELYSwOCGuP2qm33iuL5wJ6t+5E0
+	WNp+DMtEPnT+RJdZYcRZ9eqVUVTnRjsbA9x5DcfTRX9hb1UzGGJ2bcCL0gAHnf1JqHJnxCHv7fO4h
+	yHcg42cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGwL-00000007rCg-3FBG;
-	Tue, 03 Dec 2024 00:38:57 +0000
-Received: from pv50p00im-zteg10011501.me.com ([17.58.6.42])
+	id 1tIHSW-00000007uL6-2Ue2;
+	Tue, 03 Dec 2024 01:12:12 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGwJ-00000007rBP-2fua
+	id 1tIHSS-00000007uKH-3ta2
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 00:38:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733186335;
-	bh=DunB/Cza6j0J9yIEJF1/KVIA9ohiToydy/mrGuBe+NA=;
-	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:
-	 x-icloud-hme;
-	b=cNZheBgVFQmN8bDOAgA1O/6ilvMdUYLWH2rCw2sbVyV42b9UfWahOMUwO6MA2D3wu
-	 PS9ynWuFaT87rd3PD4MocTwkv2r4XCW+znolqO/soTSf67giOwZyPuElgZCsDCGjPD
-	 tlxClv/tibYTlDeYlsonl81S7tf7SmWu6omQ3zz/xG2MhX/msIxPaL9v0oyTyFR9Fw
-	 r7B4k0/vLKdn1SsAxgw6R0/+MQJFM4NioFAG0GKYfjVBsizaRIrVhJ2s4itJxOhsB5
-	 Gigjpj8kjdQqUw86WbyZHXCyybV4R7w7adERzs4Ufil2RPDqc7KxPNEscKwkReaaGX
-	 7Wkla79Wkq4hw==
-Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id DD3E54A00A7;
-	Tue,  3 Dec 2024 00:38:34 +0000 (UTC)
-From: Zijun Hu <zijun_hu@icloud.com>
-Date: Tue, 03 Dec 2024 08:33:33 +0800
-Subject: [PATCH v2 11/32] libnvdimm: Simplify nd_namespace_store()
- implementation
-MIME-Version: 1.0
+	Tue, 03 Dec 2024 01:12:10 +0000
+Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
+	by mailout2.samsung.com (KnoxPortal) with ESMTP id 20241203011202epoutp028b92953cc35c440e2c52b01ccceba97d~NhZikjEcI2587225872epoutp02S
+	for <linux-mediatek@lists.infradead.org>; Tue,  3 Dec 2024 01:12:02 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com 20241203011202epoutp028b92953cc35c440e2c52b01ccceba97d~NhZikjEcI2587225872epoutp02S
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1733188322;
+	bh=B4Sx+xF70GMxFfVfB9+wAhK7C2qf9G7NzE3Mpx8R8Ig=;
+	h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
+	b=Q47MkIi51uODx3/CT6Q5FUz+Go1ClLbVJvRDEBbxZGs6wXQabwVAVl7J9WWVFumuY
+	 qZW2hY8XRyINHB7cVBnguJHqgeqosM00gk6EBuWH7P9T0mUZZ0VGM9ASeF9ajqhQZL
+	 4bnayb3AdxaljCkxVh/NSvVR7q2q6vNIun42TFgQ=
+Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
+	epcas1p3.samsung.com (KnoxPortal) with ESMTP id
+	20241203011201epcas1p30b33f73d2a3087a0b1488e64741ef1fc~NhZiF4eJl1180511805epcas1p37;
+	Tue,  3 Dec 2024 01:12:01 +0000 (GMT)
+Received: from epsmgec1p1-new.samsung.com (unknown [182.195.36.134]) by
+	epsnrtp3.localdomain (Postfix) with ESMTP id 4Y2N0c5g3Pz4x9Q2; Tue,  3 Dec
+	2024 01:12:00 +0000 (GMT)
+X-AuditID: b6c32a4c-ad1fe70000007bf7-93-674e5ae0de6d
+Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
+	epsmgec1p1-new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	4B.AB.31735.0EA5E476; Tue,  3 Dec 2024 10:12:00 +0900 (KST)
+Mime-Version: 1.0
+Subject: RE: [PATCH] devfreq: Switch back to struct
+ platform_driver::remove()
+From: MyungJoo Ham <myungjoo.ham@samsung.com>
+To: =?UTF-8?B?VXdlIEtsZWluZS1Lw7ZuaWc=?= <u.kleine-koenig@baylibre.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park
+	<kyungmin.park@samsung.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, ALIM AKHTAR
+	<alim.akhtar@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, "linux-pm@vger.kernel.org"
+	<linux-pm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
+	<linux-samsung-soc@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>
+X-Priority: 3
+X-Content-Kind-Code: NORMAL
+In-Reply-To: <20241130135813.895628-2-u.kleine-koenig@baylibre.com>
+X-Drm-Type: N,general
+X-Msg-Generator: Mail
+X-Msg-Type: PERSONAL
+X-Reply-Demand: N
+Message-ID: <20241203011200epcms1p3fbf79a0ca20c982ea472c5f19a2bfbee@epcms1p3>
+Date: Tue, 03 Dec 2024 10:12:00 +0900
+X-CMS-MailID: 20241203011200epcms1p3fbf79a0ca20c982ea472c5f19a2bfbee
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241203-const_dfc_done-v2-11-7436a98c497f@quicinc.com>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
-In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, 
- Martin Tuma <martin.tuma@digiteqautomotive.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Andreas Noever <andreas.noever@gmail.com>, 
- Michael Jamet <michael.jamet@intel.com>, 
- Mika Westerberg <mika.westerberg@linux.intel.com>, 
- Yehezkel Bernat <YehezkelShB@gmail.com>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
- Dan Williams <dan.j.williams@intel.com>, 
- Vishal Verma <vishal.l.verma@intel.com>, Dave Jiang <dave.jiang@intel.com>, 
- Ira Weiny <ira.weiny@intel.com>, Takashi Sakamoto <o-takashi@sakamocchi.jp>, 
- Jiri Slaby <jirislaby@kernel.org>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- Lee Duncan <lduncan@suse.com>, Chris Leech <cleech@redhat.com>, 
- Mike Christie <michael.christie@oracle.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Nilesh Javali <njavali@marvell.com>, 
- Manish Rangankar <mrangankar@marvell.com>, 
- GR-QLogic-Storage-Upstream@marvell.com, Davidlohr Bueso <dave@stgolabs.net>, 
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- Alison Schofield <alison.schofield@intel.com>, 
- Andreas Larsson <andreas@gaisler.com>, Stuart Yoder <stuyoder@gmail.com>, 
- Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jens Axboe <axboe@kernel.dk>, 
- Sudeep Holla <sudeep.holla@arm.com>, 
- Cristian Marussi <cristian.marussi@arm.com>, 
- Ard Biesheuvel <ardb@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
- Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-usb@vger.kernel.org, 
- linux-gpio@vger.kernel.org, netdev@vger.kernel.org, 
- linux-pwm@vger.kernel.org, nvdimm@lists.linux.dev, 
- linux1394-devel@lists.sourceforge.net, linux-serial@vger.kernel.org, 
- linux-sound@vger.kernel.org, open-iscsi@googlegroups.com, 
- linux-scsi@vger.kernel.org, linux-cxl@vger.kernel.org, 
- sparclinux@vger.kernel.org, linux-block@vger.kernel.org, 
- arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
- linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-X-Mailer: b4 0.14.2
-X-Proofpoint-GUID: Mwb4WO2zvDF-UK70QCmcJRU4qe8f8eTp
-X-Proofpoint-ORIG-GUID: Mwb4WO2zvDF-UK70QCmcJRU4qe8f8eTp
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-02_14,2024-12-02_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulkscore=0
- mlxlogscore=999 mlxscore=0 spamscore=0 suspectscore=0 malwarescore=0
- clxscore=1015 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2412030002
-X-Apple-Remote-Links: v=1;h=KCk=;charset=UTF-8
+CMS-TYPE: 101P
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrAJsWRmVeSWpSXmKPExsWy7bCmvu6DKL90g+OXdCwezNvGZnFppYTF
+	9S/PWS2ez1/HaHH+/AZ2i7NNb9gtNj2+xmpxufkio8Xn3iOMFjPO72OymLJvF5tFU4uxxfNH
+	nWwW879+YrP4eeg8kwO/x/sbreweO+4uYfTY8Gg1q8fOWXfZPTat6mTz2Lyk3uPF5pmMHn1b
+	VjF6vPo6l9Hj8ya5AK6obJuM1MSU1CKF1Lzk/JTMvHRbJe/geOd4UzMDQ11DSwtzJYW8xNxU
+	WyUXnwBdt8wcoCeUFMoSc0qBQgGJxcVK+nY2RfmlJakKGfnFJbZKqQUpOQWmBXrFibnFpXnp
+	enmpJVaGBgZGpkCFCdkZU/auYi/Yz1tx/VZSA+MJni5GTg4JAROJX13v2boYuTiEBPYwSvy4
+	P5+1i5GDg1dAUOLvDmGQGmEBf4nz7+4zgthCAkoSDTf3MUPE9SU6HmwDi7MJ6Eps3XCXBWSO
+	iMAcRommf9+YQRxmgZmsEmu6fzNDbOOVmNH+lAXClpbYvnwrWDengLPEpDswNaISN1e/ZYex
+	3x+bzwhhi0i03jsLVSMo8eDnbqi4pETfnb1MIMskBLYxSuw4MocNwtnPKDHlYRvUJH2JM3NP
+	soHYvAK+Eh/3bwS7gkVAVaLh/WWoqS4SG1dPA7OZBbQlli18zQwKCmYBTYn1u/QhwnwS7772
+	sMI8s2PeEyYIW03i0O4lUKtkJE5PXwg10kPi2/UlzJDg7WKUuHXlJcsERvlZiBCehWTbLIRt
+	CxiZVzFKpRYU56anJhsWGOrmpZbD4zU5P3cTIzgpa/nsYPy+/q/eIUYmDsZDjBIczEoivMvX
+	e6cL8aYkVlalFuXHF5XmpBYfYjQF+nUis5Rocj4wL+SVxBuaWBqYmBkZm1gYmhkqifOeuVKW
+	KiSQnliSmp2aWpBaBNPHxMEp1cDUpRL54bBF82k73dxg2TnTEr9050dHKEoF87RsP8S9l++u
+	fRWnN+v5cKOWBd5zLq4o+bij7fHz9xfZ53zjP6S1+vNto123rj2wXlP2t3fT5+kOi3q9dU7X
+	X6pZ9lDDvla3+8xVgYjeVPUt02O8Lie+Ydyv99s4IOVma8HD6aaWCjkmd9a0zD/6+f/ZdM2k
+	83Evj/CLseXwitRoWx1Kmui1VShkM2vK/iuV+zjPcSaq9e09rGvVKa3PrnjQU3DigfpnV9lL
+	Jd/aRIhO/zNTKn+mMceMbaf/yz3Uu1tfoqD6OOFp5MXJTkyL306Y7eKWE3ucM+pHxuZmoe3Z
+	17wivh8qNDTTOW4lmLuucd6RMl0lluKMREMt5qLiRACtT/jpUwQAAA==
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20241130135828epcas1p405d9dbb7df745f6aa81ae2033b9a281a
+References: <20241130135813.895628-2-u.kleine-koenig@baylibre.com>
+	<CGME20241130135828epcas1p405d9dbb7df745f6aa81ae2033b9a281a@epcms1p3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_163855_695058_B2161804 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20241202_171209_430067_01814A35 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,47 +117,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: myungjoo.ham@samsung.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zijun Hu <quic_zijuhu@quicinc.com>
-
-Simplify nd_namespace_store() implementation by device_find_child_by_name()
-
-Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
----
- drivers/nvdimm/claim.c | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
-
-diff --git a/drivers/nvdimm/claim.c b/drivers/nvdimm/claim.c
-index 030dbde6b0882050c90fb8db106ec15b1baef7ca..9e84ab411564f9d5e7ceb687c6491562564552e3 100644
---- a/drivers/nvdimm/claim.c
-+++ b/drivers/nvdimm/claim.c
-@@ -67,13 +67,6 @@ bool nd_attach_ndns(struct device *dev, struct nd_namespace_common *attach,
- 	return claimed;
- }
- 
--static int namespace_match(struct device *dev, void *data)
--{
--	char *name = data;
--
--	return strcmp(name, dev_name(dev)) == 0;
--}
--
- static bool is_idle(struct device *dev, struct nd_namespace_common *ndns)
- {
- 	struct nd_region *nd_region = to_nd_region(dev->parent);
-@@ -168,7 +161,7 @@ ssize_t nd_namespace_store(struct device *dev,
- 		goto out;
- 	}
- 
--	found = device_find_child(dev->parent, name, namespace_match);
-+	found = device_find_child_by_name(dev->parent, name);
- 	if (!found) {
- 		dev_dbg(dev, "'%s' not found under %s\n", name,
- 				dev_name(dev->parent));
-
--- 
-2.34.1
-
+>After commit 0edb555a65d1 (=22platform: Make platform_driver::remove()
+>return void=22) .remove() is (again) the right callback to implement for
+>platform drivers.
+>
+>Convert all platform drivers below drivers/devfreq to use .remove(),
+>with the eventual goal to drop struct platform_driver::remove_new(). As
+>.remove() and .remove_new() have the same prototypes, conversion is done
+>by just changing the structure member name in the driver initializer.
+>
+>While touching these drivers, make the alignment of the touched
+>initializers consistent.
+>
+>Signed-off-by: Uwe Kleine-K=C3=B6nig=20<u.kleine-koenig=40baylibre.com>=0D=
+=0A=0D=0AAcked-by:=20MyungJoo=20Ham=20<myungjoo.ham=40samsung.com>=0D=0A=0D=
+=0A=0D=0ACheers,=0D=0AMyungJoo=0D=0A=0D=0A>---=0D=0A>Hello,=0D=0A>=0D=0A>th=
+is=20is=20based=20on=20Friday's=20next,=20feel=20free=20to=20drop=20changes=
+=20that=20result=20in=0D=0A>a=20conflict=20when=20you=20come=20around=20to=
+=20apply=20this.=20I'll=20care=20for=20the=20fallout=0D=0A>at=20a=20later=
+=20time=20then.=20(Having=20said=20that,=20if=20you=20use=20b4=20am=20-3=20=
+and=20git=20am=0D=0A>-3,=20there=20should=20be=20hardly=20any=20conflict.)=
+=0D=0A>=0D=0A>This=20is=20merge=20window=20material.=0D=0A>=0D=0A>Best=20re=
+gards=0D=0A>Uwe=0D=0A>=0D=0A>=20drivers/devfreq/event/exynos-nocp.c=20=7C=
+=206=20+++---=0D=0A>=20drivers/devfreq/event/exynos-ppmu.c=20=7C=206=20+++-=
+--=0D=0A>=20drivers/devfreq/mtk-cci-devfreq.c=20=20=20=7C=204=20++--=0D=0A>=
+=20drivers/devfreq/rk3399_dmc.c=20=20=20=20=20=20=20=20=7C=208=20++++----=
+=0D=0A>=20drivers/devfreq/sun8i-a33-mbus.c=20=20=20=20=7C=202=20+-=0D=0A>=
+=205=20files=20changed,=2013=20insertions(+),=2013=20deletions(-)=0D=0A>=0D=
+=0A
 
