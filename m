@@ -4,166 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1435E6C5E5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 02:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8C99E6C5FD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 04:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NIaI2elXEkKBTIlhVG0Yzqw6Bciw63poFYlLyhXrzLk=; b=QrZQD1qCw4vw0mQ03g2FfyJjQ0
-	9q1Q/7iKdbhtYTUVU6qE17sYO+WiAPM4Aajb4JTVuEQg5FZLznOkXQi1Ib7a9WIXITQ/gX1HS5BSR
-	DiSEtncal6E44x8y8qrHbj/Nsho78DBTR21WV42n+FmfjUVWb7GEOaaRjgZBwFUk6t9a/5q6Xxc8e
-	h2R/nV62MrkVdAMqFqGLmgQ0qxPgIitiRAozakZOzDxgxJ944y53tHTWqrLpVyhOfdNnD/bkHI9Rm
-	Ba62RlNiMTyEMGBCGd9MwPyKIXpvup0SNMj9FnbCnVyfODV62b3sbkW+KihlKVYBOkPR16JNmMkQ7
-	zjCc/LVA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=39w8iuhHVlLqBuA/1DwxvFPlALFBTRfVCYCBvpz09Oo=; b=bZ/cQdRbIZXwcpGjJ9SBxDgcCB
+	EMWi9aXBvnnbN0jwNQq7e1pLqxEZUtkmIharHBogiwg5wFAcv1JrBfkO2JV1qOiwdroNiXQlIiTEP
+	oxeo5ihM0vz0djCvJT7IkgeiaTZGr04qZJ7xvKWyLGp4OmoF8du659xtLMswothDgl/Xq0KCphm+M
+	lCg+b/xvcEkaxIEzRZB5WqLOOVVnWm27U+oe7x1nNYKWRDehmJSfOKJuxcNzoJCCl1UGxuzd3W2Fm
+	QVbE60WByerQnTmEQaQbDb/w7bc3m60+FjYXXRZ2yo2RHkSQqyZ9kzmO/fIqZ3p0O7GwV9rwIX3Jt
+	QRMeiTYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIIg3-0000000811C-3f8z;
-	Tue, 03 Dec 2024 02:30:15 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tIKcq-00000008EDO-3o97;
+	Tue, 03 Dec 2024 04:35:04 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIIg2-0000000810J-0TVk;
-	Tue, 03 Dec 2024 02:30:15 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B2JiNhx002455;
-	Tue, 3 Dec 2024 02:29:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	NIaI2elXEkKBTIlhVG0Yzqw6Bciw63poFYlLyhXrzLk=; b=RRde32nSzcRxMrSK
-	3YY48p5GhAm/mS3vg+lg0D3FxoLRUoXHl6L6mFOiaFQ0NUs64z4qP9NXbiSaNwuW
-	UPDyDFwFPQRU0EmYGW3R+htK2LnFtwBpcL9NYc0cTlJz6+KZ7RnCcKlcHFXgdSBs
-	4hOmhReGBmYd+L5FIw+NNGPXBf4XxY1kh1YFOaRQ5bgqAurrXjKPjHQqP8meWo1S
-	FxVJCDc7TPr9tPzg/n2iO1FNFr5TavnqdSHOfxEULmMuF/LuNqWO63aXcR4VMQ/m
-	y/SzLtMKr0fs+aWdYnMz7AWmptfUSpVYKhOKRFY2AAOYWY0RgRGpiI0Fn4re0YZO
-	4VrQfg==
-Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 437ufe6ers-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 03 Dec 2024 02:29:30 +0000 (GMT)
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4B32TTh9004144
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 3 Dec 2024 02:29:29 GMT
-Received: from [10.253.34.13] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 2 Dec 2024
- 18:29:13 -0800
-Message-ID: <e14311a5-6461-4834-9770-e74314d11f44@quicinc.com>
-Date: Tue, 3 Dec 2024 10:29:07 +0800
+	id 1tIKbq-00000008E6S-2s6J;
+	Tue, 03 Dec 2024 04:34:04 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-2ffa3e8e917so56949231fa.3;
+        Mon, 02 Dec 2024 20:34:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733200440; x=1733805240; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=39w8iuhHVlLqBuA/1DwxvFPlALFBTRfVCYCBvpz09Oo=;
+        b=Cs+SoYe6afgIKl1Kgqlyu3nggy0vgw9H/+3KcL2cGc2U4jYy4IRtHxImjJ72wkE3g1
+         IiKAskd7VYNFceZPB8FqIF7u+SJw41GynEtuRPtXRVUPfQOGKGidZ0S65DMv3swibW2k
+         G8u2QH2P8r8fmDsPjCeCdpkzHH6ItwHP9ddCeRbmpgIf8EwwolgRQW0yf7/ptEvCa7Z7
+         SOTTLImuWEYoreH1jmNCXiaRJoKpfY9241Bz6S1b+fQQVXvp8CFHC0LdDuB/X9CDZThy
+         HlmDuHhdYcbJ29eHDWiifDp4604mlCu/VCz+qBjRnntqvRuMJRCKhuXo4bqazcSsxerX
+         2s6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733200440; x=1733805240;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=39w8iuhHVlLqBuA/1DwxvFPlALFBTRfVCYCBvpz09Oo=;
+        b=vAjL7Shhx3DmIWFkl2rMpjzaSBJFRRtj24yQZwqXx2hnPx+tnGm2vrgKW9Anh6ltgo
+         rq/cNccP7L3kr0P1+azlllF02mGjFWxkeD6xDNAoAQ+jIH3Q7nqTe9jawmHw8GUZNM7c
+         ArWP2fW/RJX18cmNivmuci9welZp3nocLc7KLQfS4gkOrupfJ2L+GsV8G16RM4MIAG5K
+         B43NKKEpzoFWrSESckP3jVePraLPEvRCzM9H3Z101ss0ILipRkt9oPFH++Enz8yXQC/h
+         xINb9kVL+7afFU8o8WFCMJIWHTFvzm2eyTI87NCi4qyF9dn1o6EsBlbz1ECeWnGH7RQF
+         W7PQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU3lD5f/INjKSkEY+BWjS1Ht5YnW1+7CVwJztq6kXVVXySb2jTVRk6sC7jlikBs2zZZKRPbq05nYJqHbdc4/Ew=@lists.infradead.org, AJvYcCWaQSg7RItn9ey9KeYH3j3Uqd8xIW2mu3UuxcU/UVP1nmCd8hBaLrIqUyUzUtCq+12vmnxjlKhYTgjg4MTynuw+@lists.infradead.org
+X-Gm-Message-State: AOJu0YzOKtLe6DVZ5VYSITftMTqUNcj6G4gR1ghRzZaPgArB1u+luWYF
+	dVnNt18TovIUDg/DsXiW8WIQXo03PIc0UBhcxx4eztCC+nE3vkd7
+X-Gm-Gg: ASbGncs3odrPPUbW+IjnSO7SYhe42xCieZKhmqdBJbXMHyQwbVFjLKtG/lLFtZCFQbf
+	wwliluY48LZRGpLkInvnx55m5/LSSRZxndp6GMFxYSMI7rEaxPXQBJ1HmlgUnv4ztfJjcwHmjAD
+	W0VxAowKT/QXIozg9BH72B3UaJKS0wxO3/8tCTBLtIcwdiyr1msSVVRkm4VScA81PcO1XSzPYT3
+	bC3bcgyaCSLNWFmgiH6v7rrIJMEfM4lk2zdpR3hpKam7hLm5MnRU9gbXORe
+X-Google-Smtp-Source: AGHT+IGKGrRfxqVUdD5DiHKxFe5Ex6aB7s7ktQE5FUl9w1ZPEdkYdwfxlO6IG0pYexTOTsjgE7WiuQ==
+X-Received: by 2002:a2e:b890:0:b0:2ff:9494:969b with SMTP id 38308e7fff4ca-30009b68e44mr6035061fa.0.1733200439312;
+        Mon, 02 Dec 2024 20:33:59 -0800 (PST)
+Received: from laska.lan ([217.71.227.166])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2ffdfc74a70sm15229881fa.89.2024.12.02.20.33.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Dec 2024 20:33:57 -0800 (PST)
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@gmail.com>
+Subject: [PATCH] arm64: dts: mediatek: mt7986: fix pwn fan settings for sinovoip bpi-r3 board
+Date: Tue,  3 Dec 2024 07:33:55 +0300
+Message-ID: <20241203043355.2565797-1-mikhail.kshevetskiy@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-To: Zijun Hu <zijun_hu@icloud.com>,
-        Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>,
-        "Rafael J. Wysocki" <rafael@kernel.org>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Philipp Zabel
-	<p.zabel@pengutronix.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Jean
- Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
-        Martin Tuma
-	<martin.tuma@digiteqautomotive.com>,
-        Mauro Carvalho Chehab
-	<mchehab@kernel.org>,
-        Andreas Noever <andreas.noever@gmail.com>,
-        Michael
- Jamet <michael.jamet@intel.com>,
-        Mika Westerberg
-	<mika.westerberg@linux.intel.com>,
-        Yehezkel Bernat <YehezkelShB@gmail.com>,
-        Linus Walleij <linus.walleij@linaro.org>,
-        Bartosz Golaszewski
-	<brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
-        Vladimir Oltean
-	<olteanv@gmail.com>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet
-	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni
-	<pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
-        =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
-        Dan Williams
-	<dan.j.williams@intel.com>,
-        Vishal Verma <vishal.l.verma@intel.com>,
-        Dave
- Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>,
-        Takashi
- Sakamoto <o-takashi@sakamocchi.jp>,
-        Jiri Slaby <jirislaby@kernel.org>,
-        Heikki
- Krogerus <heikki.krogerus@linux.intel.com>,
-        Srinivas Kandagatla
-	<srinivas.kandagatla@linaro.org>,
-        Lee Duncan <lduncan@suse.com>, Chris Leech
-	<cleech@redhat.com>,
-        Mike Christie <michael.christie@oracle.com>,
-        "James E.J.
- Bottomley" <James.Bottomley@HansenPartnership.com>,
-        "Martin K. Petersen"
-	<martin.petersen@oracle.com>,
-        Nilesh Javali <njavali@marvell.com>,
-        Manish
- Rangankar <mrangankar@marvell.com>,
-        <GR-QLogic-Storage-Upstream@marvell.com>,
-        Davidlohr Bueso <dave@stgolabs.net>,
-        Jonathan Cameron
-	<jonathan.cameron@huawei.com>,
-        Alison Schofield <alison.schofield@intel.com>,
-        Andreas Larsson <andreas@gaisler.com>,
-        Stuart Yoder <stuyoder@gmail.com>,
-        Laurentiu Tudor <laurentiu.tudor@nxp.com>,
-        Jens Axboe <axboe@kernel.dk>, Sudeep Holla <sudeep.holla@arm.com>,
-        Cristian Marussi
-	<cristian.marussi@arm.com>,
-        Ard Biesheuvel <ardb@kernel.org>,
-        Bjorn Andersson
-	<andersson@kernel.org>,
-        Mathieu Poirier <mathieu.poirier@linaro.org>
-CC: <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-hwmon@vger.kernel.org>,
-        <linux-media@vger.kernel.org>, <linux-usb@vger.kernel.org>,
-        <linux-gpio@vger.kernel.org>, <netdev@vger.kernel.org>,
-        <linux-pwm@vger.kernel.org>, <nvdimm@lists.linux.dev>,
-        <linux1394-devel@lists.sourceforge.net>,
-        <linux-serial@vger.kernel.org>, <linux-sound@vger.kernel.org>,
-        <open-iscsi@googlegroups.com>, <linux-scsi@vger.kernel.org>,
-        <linux-cxl@vger.kernel.org>, <sparclinux@vger.kernel.org>,
-        <linux-block@vger.kernel.org>, <arm-scmi@vger.kernel.org>,
-        <linux-efi@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
-Content-Language: en-US
-From: quic_zijuhu <quic_zijuhu@quicinc.com>
-In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: lKi-wmQMsP51n4Wn2N7vwhZDjLiVDpwn
-X-Proofpoint-GUID: lKi-wmQMsP51n4Wn2N7vwhZDjLiVDpwn
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 suspectscore=0
- spamscore=0 impostorscore=0 lowpriorityscore=0 priorityscore=1501
- mlxlogscore=999 clxscore=1011 adultscore=0 bulkscore=0 mlxscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412030019
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_183014_152269_0859CDE9 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20241202_203402_726752_640CC6F4 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,83 +99,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/3/2024 8:33 AM, Zijun Hu wrote:
-> This patch series is to constify the following API:
-> struct device *device_find_child(struct device *dev, void *data,
-> 		int (*match)(struct device *dev, void *data));
-> To :
-> struct device *device_find_child(struct device *dev, const void *data,
-> 				 device_match_t match);
-> typedef int (*device_match_t)(struct device *dev, const void *data);
-> 
-> Why to constify the API?
-> 
-> - Protect caller's match data @*data which is for comparison and lookup
->   and the API does not actually need to modify @*data.
-> 
-> - Make the API's parameters (@match)() and @data have the same type as
->   all of other device finding APIs (bus|class|driver)_find_device().
-> 
-> - All kinds of existing device matching functions can be directly taken
->   as the API's argument, they were exported by driver core.
-> 
-> How to constify the API?
-> 
-> - Now, no (@match)() argument of the API usages is modifying its match
->   data @*data after previous cleanup, so it is easy and safe to make its
->   parameter @data take const void * as type.
-> 
-> - Simplify involved codes further if it is possbile with benefits
->   brought by constifying the API.
-> 
-> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> ---
-> Changes in v2:
-> - Series v1 have no code review comments and are posted a long time ago, so may ignore differences.
-> - Link to v1: https://lore.kernel.org/r/20240811-const_dfc_done-
-> v1-0-9d85e3f943cb@quicinc.com
-> - Motivation link: https://lore.kernel.org/lkml/917359cc-a421-41dd-93f4-d28937fe2325@icloud.com
-> 
-> ---
-> Zijun Hu (32):
->       driver core: Constify API device_find_child()
->       driver core: Introduce device_match_type() to match device with a device type
->       drm/mediatek: Adapt for constified device_find_child()
->       hwmon: Adapt for constified device_find_child()
->       media: pci: mgb4: Adapt for constified device_find_child()
->       thunderbolt: Adapt for constified device_find_child()
->       gpio: sim: Remove gpio_sim_dev_match_fwnode()
->       net: dsa: Adapt for constified device_find_child()
->       pwm: Adapt for constified device_find_child()
->       nvdimm: Adapt for constified device_find_child()
->       libnvdimm: Simplify nd_namespace_store() implementation
->       firewire: core: Adapt for constified device_find_child()
->       serial: core: Adapt for constified device_find_child()
->       usb: typec: class: Remove both cable_match() and partner_match()
->       usb: typec: class: Adapt for constified device_find_child()
->       slimbus: core: Simplify of_find_slim_device() implementation
->       slimbus: core: Constify slim_eaddr_equal()
->       slimbus: core: Adapt for constified device_find_child()
->       scsi: iscsi: Constify API iscsi_find_flashnode_sess()
->       scsi: qla4xxx: Adapt for constified iscsi_find_flashnode_sess()
->       scsi: iscsi: Adapt for constified device_find_child()
->       cxl/region: Adapt for constified device_find_child()
->       cxl/pmem: Remove match_nvdimm_bridge()
->       cxl/core/pci: Adapt for constified device_find_child()
->       cxl/test: Adapt for constified device_find_child()
->       sparc: vio: Adapt for constified device_find_child()
->       bus: fsl-mc: Adapt for constified device_find_child()
->       block: sunvdc: Adapt for constified device_find_child()
->       firmware: arm_scmi: Adapt for constified device_find_child()
->       efi: dev-path-parser: Adapt for constified device_find_child()
->       rpmsg: core: Adapt for constified device_find_child()
->       driver core: Simplify API device_find_child_by_name() implementation
+Popular bpi-r3 pwm fans like this one
 
-sorry for that only part of this series [0/32, 11/32] were sent out due
-to mail account capability limitation.
+  https://www.amazon.com/youyeetoo-Barebone-Fan-BPI-R3-Integrated/dp/B0CCCTY8PS
 
-will solve the limitation and send out whole patch series as v3.
+will not work properly. Trying different pwm setting using a command
 
-thanks (^^)
+  echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
+
+I found:
+
+  pwm1 value     fan rotation speed   cpu temperature     notes
+  -----------------------------------------------------------------
+    0            maximal              31.5 Celsius        too noisy
+   40            optimal              35.2 Celsius        no noise hearable
+   95            minimal
+   above 95      does not rotate      55.5 Celsius
+  -----------------------------------------------------------------
+
+At the moment we have following cooling levels defined:
+
+  cooling-levels = <255 96 0>;
+
+for cpu-active-low, cpu-active-medium and cpu-active-high modes
+correspondingly. Thus only cpu-active-high and cpu-active-low are usable.
+I think this is wrong.
+
+This patch fixes cpu-active-medium settings for bpi-r3 board.
+
+PS: I know, the patch is not ideal as it can break pwm fan for some users.
+    There are some peoples that use handmade cooling solutions, but:
+      * discussed cooler is the only 'official' pwm cooler for bpi-r3
+        available on the market.
+      * most peoples will use passive cooling available on the market or
+        the discussed cooler.
+      * the pwm-fan dts section was added before the official cooler
+        appears on the market.
+    Thus it should not be a lot of harm from this fix.
+
+This patch may not be enough. Users may wants to tweak their thermal_zone0
+trip points, thus tuning fan rotation speed depending on cpu temperature.
+That can be done on the base of the folloving example:
+
+  === example =========
+  # cpu temterature below 25 Celsius degrees, no rotation
+  echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+  # cpu temperature in [25..32] Celsius degrees, normal rotation speed
+  echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+  # cpu temperature above 50 Celsius degrees, max rotation speed
+  echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+  =====================
+
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@gmail.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+index ed79ad1ae871..b0cc0cbdff0f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+@@ -42,7 +42,7 @@ fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		/* cooling level (0, 1, 2) - pwm inverted */
+-		cooling-levels = <255 96 0>;
++		cooling-levels = <255 40 0>;
+ 		pwms = <&pwm 0 10000>;
+ 		status = "okay";
+ 	};
+-- 
+2.45.2
 
 
