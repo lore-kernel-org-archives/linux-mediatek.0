@@ -4,100 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBEFE74AC2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 16:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7067BE74AC3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 16:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Reply-To:Cc:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+WTzDeex6MvV2fYh0DDtmM+R3bGWHPFsxwrTc0tB2Uk=; b=baCO3/6jnj7wXJVeuxh+jHzjty
-	JEQBQL4M+Qs8Pjr6cIc4ZGnlHkoZzCKBERQSbGCLYiR9gY/ed5dbCEyUQyGu+2S20calbiuxe0nfR
-	VWGIVLe2FuDkOh+obV/sKse3i9ZPchWwtaOIP0mPAjI4s5JabSde1rI2qz9myS7RnbsqZlNS2qdDd
-	dwTfgDXmWrARyqnXFW4sikxAuMefyiKnjlZDbri5mvVFEIJJtKkRdgN/T7tLFAH6VOktR6giO4pW0
-	G9NPOmb0ygtuXlCuLH2pbgcv9EFkRtAEoyplzk+oe6ErFA0QLgrMrzj/kxnsrLYswgY9JyIUPYA0K
-	0nc+shIA==;
+	bh=+YObIQmmbZsc5Mi4mBVccfM+nsPCB05Xo3E3eqTWKzs=; b=CQfKbpOdee2g+waEIB9FPjl33n
+	xKeNAzY0nArLr1odl5vmLRj5Hvo5DELlBUv3XvNiwsiHCKkYscCo1Hl5cIJBzVYejWpLTw3aMWkyf
+	UfEpxqxyZFjEZpVD7YvCUXJg0RnYNtJkg7r0LkZx227H88AA+Gh+CqltQbP5DSjWVPWR1fNygBbK2
+	rK/FNYti+phGemlL4xiNyDI6IUG3q13cDPxqhEwB4b8u7iuTA/HKac0+a9PQMgVsnbwY0RlAnTGbr
+	VNDApED/3QdaAepavXjD7AxZRkHDIKRmq41gMUB8+SsLJvPENUBwH2GLnp3lwBHV81Go5oOORxXVS
+	CHrpHOJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIVNw-0000000A2Ea-3ill;
-	Tue, 03 Dec 2024 16:04:24 +0000
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841])
+	id 1tIVwB-0000000A7jX-2UBn;
+	Tue, 03 Dec 2024 16:39:47 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIVLw-0000000A1rm-3iqp;
-	Tue, 03 Dec 2024 16:02:22 +0000
-Received: by mail-qt1-x841.google.com with SMTP id d75a77b69052e-46686a258c2so49137591cf.2;
-        Tue, 03 Dec 2024 08:02:20 -0800 (PST)
+	id 1tIVw9-0000000A7j5-0BBu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 03 Dec 2024 16:39:46 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-841d8dec299so218471939f.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Dec 2024 08:39:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733241739; x=1733846539; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+WTzDeex6MvV2fYh0DDtmM+R3bGWHPFsxwrTc0tB2Uk=;
-        b=TundCIp7axpdiLFoKhAIV9h5jxKF2um7YDBW+5MVnCetIwSMhqGZIvHQNf2PwZTHem
-         HP82+NjCuV1bvFeBVr88IPhA6pDytVzer6dUuN0Wm3+dpny2VDfEwqy0aE2lZswtFHdC
-         oebzeN9phVPQKcjh/nvyInxoc/sDzaTVn8wI2boDi5qr44gc7t25KDNemx7cY1c1co09
-         cJisGIbwMGzu1XZ+kv2+W64D4oNSXygkHRLju4fkfkby0XEgD4TSi2Da03tAOrMuZU4b
-         aTIvchIpJxAPAkilmv+K6HrQwpsFptHFb4kfSrrOlT2SUf3xhRz2pXGcmPYJEQJN1FBC
-         fyvg==
+        d=qacafe.com; s=google; t=1733243984; x=1733848784; darn=lists.infradead.org;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=+YObIQmmbZsc5Mi4mBVccfM+nsPCB05Xo3E3eqTWKzs=;
+        b=FT9WCVRtW+bfOtkLm7P2iDXVqxJUnzVf9R1vy2BQTl2sVNNwfSVniXBQcc4Odr85CY
+         pg8Biw4hfzinLztvNW0kqw9BUuWvuQES3VE8uhq3Q58lKnh3jy4k1ndnT+RnxsEXXWMQ
+         PXxroAHqX51jy9RTm6mixZH9+SL+QQCsMa4GA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733241739; x=1733846539;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1733243984; x=1733848784;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+WTzDeex6MvV2fYh0DDtmM+R3bGWHPFsxwrTc0tB2Uk=;
-        b=Vt+Qx2ynXB/LmN3MvWNrKNfGjPiETq7twWWMfAHaqCZuN2fs84mt+5AW9x7z950tdL
-         YYPJB9TKn6rRLxC0RX57nea2NDrEz8KwzXHtiS9Tva5QEkd7fpzOA93a7aOkOvhhpESl
-         kK3R6ppEO6zXMj7YP+X3wDJWmKZvMXpiLOEuzVOwUZ0maAJC5YXP0rDUOn4EQ1mb1Fah
-         MJEiENP7KIxgPEmiYI+0yGMwl/9hDNeEKCvxAfX00rE4IWL0ny/2gAMCkyiWG99Xizv3
-         mrqIi8XMnkDdod+EEhpXKqk4R/pHObniD305frFFpxlEyIYgQcTO98mj44XkGdH2C7Ld
-         Cw2w==
-X-Forwarded-Encrypted: i=1; AJvYcCVLvdLJjsHTUqIfquN1dfieiuxm8VyeGvCNX/Uh5MUqSOjhywrMrl8XExs0F4EkPwwWv2KJrDFEHrb0MO6bNJ8i@lists.infradead.org, AJvYcCWkVOOk5aD8Fh3MjkJTId0fbQfuk+akEy2LF1SnY3UXiulaca9J3JxyI4dFMfPdPpZ7ueGh+8WasPxbRsJD/GM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwhDl9ZMqUCbynahFsXJkxfN8ju323muS1QfDErNh1+meAZ8kFE
-	3/3x/GzqAdTDr8BcHMPwbGhWw0mnMctzuJpzmeNF+cemGAVaPNI0
-X-Gm-Gg: ASbGnctA3PxF1iSEohl+6LAh/PUB3pSKGEUj4Y0Omk37nq8dKQXkUDT6OGLBe2GrhaK
-	lElIp8+8bV0bRY/dio8Atbhp5riRO7IP102N66cGj7itnaGVviT/iAM4gmxPzSoTw3T9TOQNIG/
-	dpzYiArbQarQzvqpE9P1TDYCLVP+lixlRr7x7ZuVyefWUGYO0cFIYgoYujEhNKyCIdVhQErV3nc
-	4oOoCUw58FPM/DBsiHsv6+SnyrmTKzfTepNrDY3XS5RZ8pyoAPg11rh4UwvIlsmKugXvjtfDXnk
-	Z9+bdWD+7INtsWMhy893Z81vfemXuSHBeuqLZ+YWc5G9CQsLQpPixetYg5Y=
-X-Google-Smtp-Source: AGHT+IGDeeGWcRCTKyUCOq7c8fevpRJKKIBDhzv1JtFZuhU7+1av0GGQHLhd5L0WUnUDcgzYEzYebw==
-X-Received: by 2002:ac8:5a8b:0:b0:466:ad0d:f0ca with SMTP id d75a77b69052e-4670c6c5432mr40809661cf.50.1733241739116;
-        Tue, 03 Dec 2024 08:02:19 -0800 (PST)
-Received: from localhost.localdomain (host-36-26.ilcul54.champaign.il.us.clients.pavlovmedia.net. [68.180.36.26])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-466c42319b6sm62809341cf.77.2024.12.03.08.02.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Dec 2024 08:02:18 -0800 (PST)
-From: Gax-c <zichenxie0106@gmail.com>
-To: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	thierry.reding@gmail.com,
-	mperttunen@nvidia.com,
-	jonathanh@nvidia.com,
-	kraxel@redhat.com,
-	gurchetansingh@chromium.org,
-	olvaffe@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	mst@redhat.com,
-	airlied@redhat.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Zichen Xie <zichenxie0106@gmail.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] drm: cast calculation to __u64 to fix potential integer overflow
-Date: Tue,  3 Dec 2024 10:02:00 -0600
-Message-Id: <20241203160159.8129-1-zichenxie0106@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        bh=+YObIQmmbZsc5Mi4mBVccfM+nsPCB05Xo3E3eqTWKzs=;
+        b=sf5pBPsqLQ++1gEe2Vp/gNG7CUSI5iEAuJkJdyxzWX1MoTeIKW2rCOKb0bEDQHwjpM
+         i0SatEbMa1CibcZmDyevE2dYHodb3Nvqn+4M0/CceCDojssOMqwEV+Ahkm9WO0wKAM68
+         fss4fgEaVcf0su21LpRjZHY88KeP5OZt7aY9M7DEQkKef6iq1GhsqExDUVpIaBFI5Jo+
+         McJmw/pSNKtJ1aJjUVQJj+ywogm2BPQvzpgLKKNO1cPBE70COpbg7uhbaIqQqsB11Egm
+         6Qkvh6CH8AKQ0/gjuyer4XamL0vC5I16+Jz8xqDukxGhDzxKjhw6Ni8bFy4lScIKnoGV
+         xd3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUiK7v/z9ZHmgh6Jr2y6slGlmtf5Brp+Bd+qqFOiMVAaTWqjY0dxBV1qq6/ejXdUz62aRzKbQ/hPTSUJakxXg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyCPNPcSbFlYG1qZYKQoq7pFXADiFB/8K9naew57EhC/vhcxplX
+	l0eFSZoldQsN0ktDFLKSwoo0dWnjpz6vix/thZsbh8B0Lepg3TH6OyJxiANO3+4D2KZ36dVIU5J
+	t54PZ7FECKaCuaDiqr3GIsoabOe30PzUNjqGJRQ==
+X-Gm-Gg: ASbGncuWVRg0ZgUs3ZOuJeXOyV1uUzDGBK+FbVB+AXIfqKdsPuEcwSyTgnILM6MoxAO
+	xGOe9fdgqSwtoSoJbxgmS2X31JoL+TCM8LR7JW6VthlOuW1hLmDtZrIg35LS5lkVmDw==
+X-Google-Smtp-Source: AGHT+IGuVNIjrosWXLgrBMZgl8otjT1pzj/nKJKcN/StQm3HtIkC0d5yY/D5Uyh6ovGjK5wx4nfZSceUI2s93bVsEUY=
+X-Received: by 2002:a05:6602:6422:b0:82c:e4e1:2e99 with SMTP id
+ ca18e2360f4ac-8445b5cc0e6mr393927639f.11.1733243983774; Tue, 03 Dec 2024
+ 08:39:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Tim Carlin <tc@qacafe.com>
+Date: Tue, 3 Dec 2024 11:39:08 -0500
+Message-ID: <CAEEa6Ls6Tr7npuMNN1Tr07qo3hXMe4NwCDvamyFojZtJ2ZLXWg@mail.gmail.com>
+Subject: MT7916 (mt7915e module) System Crash
+To: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_080220_924557_E32318C3 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20241203_083945_081276_5E5747AB 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,74 +85,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zichen Xie <zichenxie0106@gmail.com>
+Hello,
 
-Like commit b0b0d811eac6 ("drm/mediatek: Fix coverity issue with
-unintentional integer overflow"), directly multiply pitch and
-height may lead to integer overflow. Add a cast to avoid it.
+With a new installation of Rocky 9.5 using a 6.11.7 kernel we have
+observed a system crash related to the unloading/loading of the
+mt7915e kernel module, using the MT7916 hardware.
 
-Fixes: 6d1782919dc9 ("drm/cma: Introduce drm_gem_cma_dumb_create_internal()")
-Fixes: dc5698e80cf7 ("Add virtio gpu driver.")
-Fixes: dc6057ecb39e ("drm/tegra: gem: dumb: pitch and size are outputs")
-Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
-Cc: stable@vger.kernel.org
----
- drivers/gpu/drm/drm_gem_dma_helper.c | 6 +++---
- drivers/gpu/drm/tegra/gem.c          | 2 +-
- drivers/gpu/drm/virtio/virtgpu_gem.c | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+Included below is the output of a kernel warning during unload.
+The system crashes during module load, and so no log output
+is available.  I=E2=80=99ve also included version information.
 
-diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
-index 870b90b78bc4..020c3b17fc02 100644
---- a/drivers/gpu/drm/drm_gem_dma_helper.c
-+++ b/drivers/gpu/drm/drm_gem_dma_helper.c
-@@ -272,8 +272,8 @@ int drm_gem_dma_dumb_create_internal(struct drm_file *file_priv,
- 	if (args->pitch < min_pitch)
- 		args->pitch = min_pitch;
- 
--	if (args->size < args->pitch * args->height)
--		args->size = args->pitch * args->height;
-+	if (args->size < (__u64)args->pitch * args->height)
-+		args->size = (__u64)args->pitch * args->height;
- 
- 	dma_obj = drm_gem_dma_create_with_handle(file_priv, drm, args->size,
- 						 &args->handle);
-@@ -306,7 +306,7 @@ int drm_gem_dma_dumb_create(struct drm_file *file_priv,
- 	struct drm_gem_dma_object *dma_obj;
- 
- 	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
--	args->size = args->pitch * args->height;
-+	args->size = (__u64)args->pitch * args->height;
- 
- 	dma_obj = drm_gem_dma_create_with_handle(file_priv, drm, args->size,
- 						 &args->handle);
-diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
-index d275404ad0e9..a84acdbbbe3f 100644
---- a/drivers/gpu/drm/tegra/gem.c
-+++ b/drivers/gpu/drm/tegra/gem.c
-@@ -548,7 +548,7 @@ int tegra_bo_dumb_create(struct drm_file *file, struct drm_device *drm,
- 	struct tegra_bo *bo;
- 
- 	args->pitch = round_up(min_pitch, tegra->pitch_align);
--	args->size = args->pitch * args->height;
-+	args->size = (__u64)args->pitch * args->height;
- 
- 	bo = tegra_bo_create_with_handle(file, drm, args->size, 0,
- 					 &args->handle);
-diff --git a/drivers/gpu/drm/virtio/virtgpu_gem.c b/drivers/gpu/drm/virtio/virtgpu_gem.c
-index 7db48d17ee3a..d5407316b12e 100644
---- a/drivers/gpu/drm/virtio/virtgpu_gem.c
-+++ b/drivers/gpu/drm/virtio/virtgpu_gem.c
-@@ -72,7 +72,7 @@ int virtio_gpu_mode_dumb_create(struct drm_file *file_priv,
- 		return -EINVAL;
- 
- 	pitch = args->width * 4;
--	args->size = pitch * args->height;
-+	args->size = (__u64)pitch * args->height;
- 	args->size = ALIGN(args->size, PAGE_SIZE);
- 
- 	params.format = virtio_gpu_translate_format(DRM_FORMAT_HOST_XRGB8888);
--- 
-2.34.1
+Usually at most 3-5 cycles of unload/load are needed to generate
+a crash. (e.g. `modprobe -r mt7915e && modprobe mt7915e`).
 
+Would anyone be able to debug this with me?  I would be happy
+to provide more debugging or logging information as needed.
+
+Thank you,
+Tim Carlin
+QA Cafe
+
+Dec  3 11:06:14 localhost kernel: mt7915e 0000:51:00.0: HW/SW Version:
+0x8a108a10, Build Time: 20230202144915a
+Dec  3 11:06:14 localhost kernel: mt7915e 0000:51:00.0: WM Firmware
+Version: ____000000, Build Time: 20230202145005
+Dec  3 11:06:14 localhost kernel: mt7915e 0000:51:00.0: WA Firmware
+Version: DEV_000000, Build Time: 20230202143332
+
+Dec  3 11:09:45 localhost kernel: ------------[ cut here ]------------
+Dec  3 11:09:45 localhost kernel: WARNING: CPU: 16 PID: 2952 at
+net/core/page_pool.c:1057 page_pool_disable_direct_recycling+0x33/0x40
+Dec  3 11:09:45 localhost kernel: Modules linked in: snd_seq_dummy(E)
+snd_hrtimer(E) snd_seq(E) snd_seq_device(E) snd_timer(E) snd(E)
+soundcore(E) nft_fib_inet(E) nft_fib_ipv4(E) nft_fib_ipv6(E)
+nft_fib(E) nft_reject_inet(E) nf_reject_ipv4(E) nf_reject_ipv6(E)
+nft_reject(E) nft_ct(E) nft_chain_nat(E) nf_nat(E) nf_conntrack(E)
+nf_defrag_ipv6(E) nf_defrag_ipv4(E) ip_set(E) nf_tables(E)
+nfnetlink(E) qrtr(E) vfat(E) fat(E) intel_rapl_msr(E)
+intel_rapl_common(E) intel_uncore_frequency(E)
+intel_uncore_frequency_common(E) i10nm_edac(E) skx_edac_common(E)
+nfit(E) libnvdimm(E) x86_pkg_temp_thermal(E) intel_powerclamp(E)
+coretemp(E) iwlmvm(E) kvm_intel(E) mt7915e(E-) mt76_connac_lib(E)
+mt76(E) kvm(E) mac80211(E) iwlwifi(E) rapl(E) libarc4(E)
+intel_cstate(E) cfg80211(E) iTCO_wdt(E) intel_pmc_bxt(E)
+iTCO_vendor_support(E) isst_if_mbox_pci(E) isst_if_mmio(E)
+ipmi_ssif(E) intel_uncore(E) dax_hmem(E) pcspkr(E) isst_if_common(E)
+i2c_i801(E) rfkill(E) i2c_mux(E) ftdi_sio(E) intel_th_gth(E) mei_me(E)
+i2c_smbus(E) mei(E) intel_pch_thermal(E) intel_th_pci(E)
+Dec  3 11:09:45 localhost kernel: intel_vsec(E) ioatdma(E) intel_th(E)
+ipmi_si(E) acpi_power_meter(E) acpi_ipmi(E) ipmi_devintf(E) joydev(E)
+ipmi_msghandler(E) acpi_pad(E) xfs(E) libcrc32c(E) rndis_host(E)
+cdc_ether(E) usbnet(E) mii(E) sd_mod(E) sg(E) ast(E)
+drm_shmem_helper(E) drm_kms_helper(E) crct10dif_pclmul(E) ahci(E)
+crc32_pclmul(E) crc32c_intel(E) polyval_clmulni(E) libahci(E)
+polyval_generic(E) nvme(E) drm(E) libata(E) igb(E) i40e(E)
+ghash_clmulni_intel(E) nvme_core(E) libie(E) dca(E) i2c_algo_bit(E)
+fuse(E)
+Dec  3 11:09:45 localhost kernel: CPU: 16 UID: 0 PID: 2952 Comm:
+modprobe Kdump: loaded Tainted: G        W   E
+6.11.7-1.el9.elrepo.x86_64 #1
+Dec  3 11:09:45 localhost kernel: Tainted: [W]=3DWARN, [E]=3DUNSIGNED_MODUL=
+E
+Dec  3 11:09:45 localhost kernel: Hardware name: Supermicro Super
+Server/X12SPL-F, BIOS 1.9 01/03/2024
+Dec  3 11:09:45 localhost kernel: RIP:
+0010:page_pool_disable_direct_recycling+0x33/0x40
+Dec  3 11:09:45 localhost kernel: Code: c7 47 30 ff ff ff ff 48 85 c0
+74 19 48 8b 50 10 83 e2 01 74 15 8b 40 34 83 f8 ff 75 11 48 c7 47 18
+00 00 00 00 c3 cc cc cc cc <0f> 0b eb e7 0f 0b eb eb 0f 1f 44 00 00 90
+90 90 90 90 90 90 90 90
+Dec  3 11:09:45 localhost kernel: RSP: 0018:ff5df22286b17d78 EFLAGS: 000102=
+46
+Dec  3 11:09:45 localhost kernel: RAX: ff375ee85b302f90 RBX:
+ff375ee850031800 RCX: 0000000000000000
+Dec  3 11:09:45 localhost kernel: RDX: 0000000000000000 RSI:
+ffffffff937e54ce RDI: ff375ee850031800
+Dec  3 11:09:45 localhost kernel: RBP: ff375ee85b302020 R08:
+0000000000000000 R09: ff5df22286b17d57
+Dec  3 11:09:45 localhost kernel: R10: 0000000000000000 R11:
+0000000000000187 R12: ff375ee85b303120
+Dec  3 11:09:45 localhost kernel: R13: ff375ee85b304dd0 R14:
+ff375ee85b3026b8 R15: ffffffffc09d99b8
+Dec  3 11:09:45 localhost kernel: FS:  00007f5bc1182740(0000)
+GS:ff375ef73fc00000(0000) knlGS:0000000000000000
+Dec  3 11:09:45 localhost kernel: CS:  0010 DS: 0000 ES: 0000 CR0:
+0000000080050033
+Dec  3 11:09:45 localhost kernel: CR2: 0000563961080000 CR3:
+000000011eafe006 CR4: 0000000000771ef0
+Dec  3 11:09:45 localhost kernel: DR0: 0000000000000000 DR1:
+0000000000000000 DR2: 0000000000000000
+Dec  3 11:09:45 localhost kernel: DR3: 0000000000000000 DR6:
+00000000fffe0ff0 DR7: 0000000000000400
+Dec  3 11:09:45 localhost kernel: PKRU: 55555554
+Dec  3 11:09:45 localhost kernel: Call Trace:
+Dec  3 11:09:45 localhost kernel: <TASK>
+Dec  3 11:09:45 localhost kernel: ? __warn+0x7f/0x120
+Dec  3 11:09:45 localhost kernel: ? page_pool_disable_direct_recycling+0x33=
+/0x40
+Dec  3 11:09:45 localhost kernel: ? report_bug+0x1c3/0x1d0
+Dec  3 11:09:45 localhost kernel: ? handle_bug+0x5b/0xa0
+Dec  3 11:09:45 localhost kernel: ? exc_invalid_op+0x14/0x70
+Dec  3 11:09:45 localhost kernel: ? asm_exc_invalid_op+0x16/0x20
+Dec  3 11:09:45 localhost kernel: ? page_pool_disable_direct_recycling+0x33=
+/0x40
+Dec  3 11:09:45 localhost kernel: page_pool_destroy+0x41/0x150
+Dec  3 11:09:45 localhost kernel: mt76_dma_cleanup+0x119/0x220 [mt76]
+Dec  3 11:09:45 localhost kernel: mt7915_stop_hardware+0x1e/0x40 [mt7915e]
+Dec  3 11:09:45 localhost kernel: mt7915_unregister_device+0xb6/0xd0 [mt791=
+5e]
+Dec  3 11:09:45 localhost kernel: pci_device_remove+0x3b/0xb0
+Dec  3 11:09:45 localhost kernel: device_release_driver_internal+0x193/0x20=
+0
+Dec  3 11:09:45 localhost kernel: driver_detach+0x44/0x90
+Dec  3 11:09:45 localhost kernel: bus_remove_driver+0x69/0xf0
+Dec  3 11:09:45 localhost kernel: pci_unregister_driver+0x2a/0xb0
+Dec  3 11:09:45 localhost kernel: mt7915_exit+0xc/0xce0 [mt7915e]
+Dec  3 11:09:45 localhost kernel: __do_sys_delete_module.constprop.0+0x176/=
+0x310
+Dec  3 11:09:45 localhost kernel: ? syscall_trace_enter+0xfb/0x190
+Dec  3 11:09:45 localhost kernel: do_syscall_64+0x60/0x180
+Dec  3 11:09:45 localhost kernel: entry_SYSCALL_64_after_hwframe+0x76/0x7e
+Dec  3 11:09:45 localhost kernel: RIP: 0033:0x7f5bc090ef2b
+Dec  3 11:09:45 localhost kernel: Code: 73 01 c3 48 8b 0d ed 9e 0e 00
+f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f
+1e fa b8 b0 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d bd 9e
+0e 00 f7 d8 64 89 01 48
+Dec  3 11:09:45 localhost kernel: RSP: 002b:00007ffda08a7e88 EFLAGS:
+00000206 ORIG_RAX: 00000000000000b0
+Dec  3 11:09:45 localhost kernel: RAX: ffffffffffffffda RBX:
+00005644bab1cd90 RCX: 00007f5bc090ef2b
+Dec  3 11:09:45 localhost kernel: RDX: 0000000000000000 RSI:
+0000000000000800 RDI: 00005644bab1cdf8
+Dec  3 11:09:45 localhost kernel: RBP: 00005644bab1cd90 R08:
+0000000000000000 R09: 0000000000000000
+Dec  3 11:09:45 localhost kernel: R10: 00007f5bc099eac0 R11:
+0000000000000206 R12: 00005644bab1cdf8
+Dec  3 11:09:45 localhost kernel: R13: 0000000000000000 R14:
+00005644bab1cdf8 R15: 00007ffda08aa1b8
+Dec  3 11:09:45 localhost kernel: </TASK>
+Dec  3 11:09:45 localhost kernel: ---[ end trace 0000000000000000 ]---
 
