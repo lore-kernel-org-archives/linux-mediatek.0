@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3446E6C617
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 08:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D540CE6C61F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DCNH1RGsoC1GQ3g+KrrwC75tgSy6QuRSOXD8Hk9P+jc=; b=YEJ0XvztrDqsfBdCaIHUHk+IM3
-	ip0teSv9+ZPrT8P4pivdFcR/3u5CTO5DPjw6gGEe8PrgCOyIQfh9X1BnjRgDJ1qywdOHx9O6r07FO
-	NEhJw42MGFNOoo1fio2gtHCaaPH/bNuD6+dKZTzXhjn5jpTBoehI2P4nGBX3uxnIW2FPqMoNNSA72
-	HQ/rU7J4Qg+Dae808JWViXNTM6DMb4/JmCIaHf+MvE8TUF73g/uXHKKQe8Itq+/SmTw4ahtzDWgVl
-	FoGdieTttWhxkhmZ5nflRKZoN/UNe6XEsv36EXLC+x/lb9Eqf/I7IVYKJO34zlCggm2rPi6n1N2JY
-	5LKFSFbA==;
+	bh=e7GWdamB5WdCrjq/M+x+zZXGyV6W1qS73t1sR0Cp6y4=; b=HrTWxmc/z2TMgLF8NN4Ab8WV5x
+	Yu7QHLe19njbF0bWov7xxHfScM+OC91Ll+zn6P48DaplyvZ+ax++8ZsldpVarqPy+Tp0VJmAAhsWV
+	/0KcpF16QpyCb9VZpRHR7cCWFvxod76Dvt9kTnNaBXUWZ459FLBmw+87IYi0v0cXpc3vuVxDPdzlt
+	4uxGJF5vJmQEVknwbbGFYCMVNKAJnSVk6QwR7aYiIgQqbuI+OsVPjD5/dx9pUvNdzsOLK+/10ZOFp
+	5esIrmLRPHGodYl4DZYwXpxoIRJp7AF5LmKuLrkkK/tlL+vujCtXDLvvKeJ5fQA4LoqbSrp5UA/nt
+	ebaBbKYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIOKd-00000008hrA-0P95;
-	Tue, 03 Dec 2024 08:32:31 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tIOwX-00000008p2C-08MP;
+	Tue, 03 Dec 2024 09:11:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIOJc-00000008hjz-2Fk2;
-	Tue, 03 Dec 2024 08:31:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 718ABA40DA1;
-	Tue,  3 Dec 2024 08:29:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D21C4CECF;
-	Tue,  3 Dec 2024 08:31:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733214687;
-	bh=x3znFn98rErh2FCBpaz9WvVdlFADMKizJofigQdXDp4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=t42RLmlHAIcnhWWs3lUH+Bz88axkSdXYA8oFKDhpTWmLJHGdOlM3M1LManNS0sdvT
-	 YyxMTDDBXmLm3kC1Yw5PE7dyA6cSk5+RZIQxCcK4nWi0SbYwcTeZyzfi1GRftNKStm
-	 HcI8vkNtiQ8vl60KrSkfL5kKNxd7VGn93wDeV5NnnmFqXPBBLN7lmBfTRJzkQlJCvV
-	 jCxUI33Qq3dZ/VJqyzHbe0sbLXuZyuimDzJ3kzaPYEBZfv9XwwfRg/hs0gNjqfCFGV
-	 n2opd19xlVIJFgdwMd7/IXO1V80184HNi1YJSli5Yk7HGx59K4q8kagHj+mWlZjxvP
-	 KCjGBGozwZpKw==
-Date: Tue, 3 Dec 2024 09:31:20 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Nathan Chancellor
- <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, Bill
- Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, Hans de
- Goede <hdegoede@redhat.com>, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Andy Shevchenko <andy@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong
- <yunfei.dong@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/3] media: cx231xx: Convert enum into a define
-Message-ID: <20241203093114.0ca49c01@foz.lan>
-In-Reply-To: <20241202-fix-llvm9-v1-1-2a50f5acfd0b@chromium.org>
-References: <20241202-fix-llvm9-v1-0-2a50f5acfd0b@chromium.org>
-	<20241202-fix-llvm9-v1-1-2a50f5acfd0b@chromium.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1tIOuO-00000008oVY-0fMJ;
+	Tue, 03 Dec 2024 09:09:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733216966;
+	bh=UtWpH2fdy+acOk5t/z7lYvrwvuCHIyhnPop+Man7z7o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Aok64XPcQJtNbWjX+v7/EafRr5VCbWe6grhQT33Y98fB5AKXaRJCZciDDfSnLxZN8
+	 A2fh80J3qCzmKT+6XK2bCHiqOwAljCjBBdAz9pvj7NdzAqB3dpIhjb7ddnydpVUTc7
+	 FqgQ3KmlSic4PPcGoNtk4lqnCV002zNaogJ0sKRVwZs6CX5egEgFangI5aCON8/0d1
+	 alYPvI7tVc5tW7MilRoH1xd/xKHzIY3CviXE3Ts/2XGvvOH+9KncLmxk8N74Cob5Fz
+	 +sVGGLXkVmDDM3NUtPQpaUL8dyKh3xkBx8ydxTTM3FsbvILfcgnFWUGoFTXg9ngKmn
+	 MgX9jnmyO/RVQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B666B17E14EA;
+	Tue,  3 Dec 2024 10:09:25 +0100 (CET)
+Message-ID: <d640a13e-fa08-408f-82ac-fc169e2eb283@collabora.com>
+Date: Tue, 3 Dec 2024 10:09:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/4] arm64: dts: mediatek: Modify audio codec name for
+ pmic
+To: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, wenst@chromium.org, hsinyi@chromium.org,
+ sean.wang@mediatek.com, dianders@google.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241202032035.29045-1-xiazhengqiao@huaqin.corp-partner.google.com>
+ <20241202032035.29045-5-xiazhengqiao@huaqin.corp-partner.google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241202032035.29045-5-xiazhengqiao@huaqin.corp-partner.google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_003128_702489_B28633CE 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20241203_010928_350476_50610594 
+X-CRM114-Status: UNSURE (   5.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,80 +80,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Em Mon, 02 Dec 2024 15:47:15 +0000
-Ricardo Ribalda <ribalda@chromium.org> escreveu:
-
-> The code is running arithmentics with the enum, which when not done with
-> care makes the compiler a bit nervous.
+Il 02/12/24 04:20, Zhengqiao Xia ha scritto:
+> change `codec` in pmic (in mt8186-corsola.dtsi) to `audio-codec`
 > 
-> Because those enums are only used as defines (no argument or variable
-> from that enumeration type), convert it into a define and move on.
-> 
-> It is required to build with llvm 9 without these warnings:
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:673:17: warning: bitwise operation between different enumeration types ('enum TS_PORT' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:680:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:687:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:702:17: warning: bitwise operation between different enumeration types ('enum TS_PORT' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:709:21: warning: bitwise operation between different enumeration types ('enum TS_PORT' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:718:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum POWE_TYPE') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:727:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum TS_PORT') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:737:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum TS_PORT') [-Wenum-enum-conversion]
-> drivers/media/usb/cx231xx/cx231xx-pcb-cfg.c:749:21: warning: bitwise operation between different enumeration types ('enum AVDEC_STATUS' and 'enum TS_PORT') [-Wenum-enum-conversion]
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/usb/cx231xx/cx231xx-pcb-cfg.h | 18 +++++++-----------
->  1 file changed, 7 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/media/usb/cx231xx/cx231xx-pcb-cfg.h b/drivers/media/usb/cx231xx/cx231xx-pcb-cfg.h
-> index 5bc44f194d0a..62ffa16bb82c 100644
-> --- a/drivers/media/usb/cx231xx/cx231xx-pcb-cfg.h
-> +++ b/drivers/media/usb/cx231xx/cx231xx-pcb-cfg.h
-> @@ -57,19 +57,17 @@ enum USB_SPEED{
->  };
->  
->  #define TS_MASK         0x6
-> -enum TS_PORT{
-> -	NO_TS_PORT = 0x0,	/* 2'b00: Neither port used. PCB not a Hybrid,
-> +#define NO_TS_PORT	0x0	/* 2'b00: Neither port used. PCB not a Hybrid,
->  				   only offers Analog TV or Video */
-> -	TS1_PORT = 0x4,		/* 2'b10: TS1 Input (Hybrid mode :
-> +#define TS1_PORT	0x4	/* 2'b10: TS1 Input (Hybrid mode :
->  				Digital or External Analog/Compressed source) */
-> -	TS1_TS2_PORT = 0x6,	/* 2'b11: TS1 & TS2 Inputs
-> +#define TS1_TS2_PORT	0x6	/* 2'b11: TS1 & TS2 Inputs
->  				(Dual inputs from Digital and/or
->  				External Analog/Compressed sources) */
-> -	TS1_EXT_CLOCK = 0x6,	/* 2'b11: TS1 & TS2 as selector
-> +#define TS1_EXT_CLOCK	0x6	/* 2'b11: TS1 & TS2 as selector
->  						to external clock */
-> -	TS1VIP_TS2_PORT = 0x2	/* 2'b01: TS1 used as 656/VIP Output,
-> +#define TS1VIP_TS2_PORT 0x2	/* 2'b01: TS1 used as 656/VIP Output,
->  				   TS2 Input (from Compressor) */
-> -};
->  
->  #define EAVP_MASK       0x8
->  enum EAV_PRESENT{
-> @@ -89,10 +87,8 @@ enum AT_MODE{
->  };
->  
->  #define PWR_SEL_MASK    0x40
-> -enum POWE_TYPE{
-> -	SELF_POWER = 0x0,	/* 0: self power */
-> -	BUS_POWER = 0x40	/* 1: bus power */
-> -};
-> +#define SELF_POWER	0x0	/* 0: self power */
-> +#define BUS_POWER	0x40	/* 1: bus power */
->  
->  enum USB_POWE_TYPE{
->  	USB_SELF_POWER = 0,
-> 
-
-IMO keeping them into enums are a lot better than defines.
-
-Perhaps the right thing would be to join both enums here.
+> Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
 
 
-Thanks,
-Mauro
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
