@@ -4,94 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2AC4E64A83
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 12:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F60E64A87
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 12:27:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YoJHJdbK4VXqi9irwg1AbkKvEZoz6ZhqBg+FJQtt8cE=; b=PqYil3U2l6cA0g/HKpAwfKgl4G
-	ijzrDZrwsbBYVrPbBTRdct3wTwJ7S3QgzNQ9ijVAyF09VX3fR2qOZy5LInCFieIQcilTTbTuXOVal
-	6qWEMmbHm/xUVzcEaqQhHSxt62R4G5WZciqhMgme12l3SADFrhp0Z3jzFTv1A/rSoW6u7ghN7wcgY
-	1nYSHOC5/Kpe57baIMVMBk8VWarQaUFAkbBY/BnrGs7l3e55UGMviwn7+2UiDbqcwPFDhofrsEE3z
-	HSauEXnVnYZ3KWcEL6q+U94W8wKEha9Y0iDw3YJMPI9DvEGoXBw+ALTLbsu9wYqgyhRL8FQwxwWSs
-	cZlCeSLQ==;
+	bh=5n+OPgKd4OeVfRcOdyszAmWQAYwYUA33KJvbyrKBpj8=; b=r68+SQ66OttQHjUW/VHWLqs5rz
+	2vSOns3sQXvP3RZIFSwwtJ6sTlY2hytNZJ4sZH5s91ygiFJ0NPeiynByFkR8CNhGs4VGsXDBW/pNT
+	xZKBSQlTDLtudDMa9S9hCBdLYXiOI15IMrcB8s1MP1yVBX4YQ7ELHqjqdbVulilGKypvWFXFzHz/h
+	Njl8G+qON9mM3EZ5vNBSVNKOh61+Fpz41ZbWZ5QO7Uuy8YoLyfVAPxJd9zzAN07I641VFiPzM0cDZ
+	i1xZLyqdoKZuxcLXa1Tkf4AgIEae/8FUFvXkfGebx5Yej7GIVK73jdO/sVTTbnaD3ha+WSfDJQEou
+	jycXFuLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRaU-00000009MGC-01F2;
-	Tue, 03 Dec 2024 12:01:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tIRzZ-00000009QSm-3nYV;
+	Tue, 03 Dec 2024 12:27:01 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRaR-00000009MEb-0sPu;
-	Tue, 03 Dec 2024 12:01:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C52165C6C7C;
-	Tue,  3 Dec 2024 12:00:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBAF4C4CECF;
-	Tue,  3 Dec 2024 12:01:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733227261;
-	bh=rlz53vWDp5E/pYVOEj1URbYGt1AREB4Xo9ogjRjCu50=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fdDeCtLVqECfRfNoqbCzzD0S2R+ze8fu4xgXlPdQFJQ+STayO+czgml6vxR6gAr9u
-	 SfvYrgXRdRmOjMEDiUcIg8Ywi35riI0nUxeZrJIGAla7/uurms7YmN220IRsCbVxR6
-	 0RLGXO472a27O/MHnrmTkWCsCE1MnHGszPPpy+ATOMh/r4ZUNj1XVz+G2aEnELC83Q
-	 5zXc30+JHwj5J8xXpxDpdRcwIa3kank2REKqd9CMrbu3SZA6RQSEQqgx6shuUaL3BU
-	 er9sxGEV01E1uZex0+a/6+JDYf3SqBVZ3ELFg7wS+IFimmHwT30DsHPjPlqmlPz8Tg
-	 GqLyWYoqGameA==
-Date: Tue, 3 Dec 2024 13:00:58 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Zijun Hu <zijun_hu@icloud.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jean Delvare <jdelvare@suse.com>, 
-	Guenter Roeck <linux@roeck-us.net>, Martin Tuma <martin.tuma@digiteqautomotive.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Andreas Noever <andreas.noever@gmail.com>, 
-	Michael Jamet <michael.jamet@intel.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, 
-	Yehezkel Bernat <YehezkelShB@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>, 
-	Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
-	Dan Williams <dan.j.williams@intel.com>, Vishal Verma <vishal.l.verma@intel.com>, 
-	Dave Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>, 
-	Takashi Sakamoto <o-takashi@sakamocchi.jp>, Jiri Slaby <jirislaby@kernel.org>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
-	Lee Duncan <lduncan@suse.com>, Chris Leech <cleech@redhat.com>, 
-	Mike Christie <michael.christie@oracle.com>, "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Nilesh Javali <njavali@marvell.com>, 
-	Manish Rangankar <mrangankar@marvell.com>, GR-QLogic-Storage-Upstream@marvell.com, 
-	Davidlohr Bueso <dave@stgolabs.net>, Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	Alison Schofield <alison.schofield@intel.com>, Andreas Larsson <andreas@gaisler.com>, 
-	Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor <laurentiu.tudor@nxp.com>, 
-	Jens Axboe <axboe@kernel.dk>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Cristian Marussi <cristian.marussi@arm.com>, Ard Biesheuvel <ardb@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, linux-usb@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, netdev@vger.kernel.org, linux-pwm@vger.kernel.org, 
-	nvdimm@lists.linux.dev, linux1394-devel@lists.sourceforge.net, 
-	linux-serial@vger.kernel.org, linux-sound@vger.kernel.org, open-iscsi@googlegroups.com, 
-	linux-scsi@vger.kernel.org, linux-cxl@vger.kernel.org, sparclinux@vger.kernel.org, 
-	linux-block@vger.kernel.org, arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
-	linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-Message-ID: <g32cigmktmj4egkq2tof27el2yss4liccfxgebkgqvkil32mlb@e3ta4ezv7y4m>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
+	id 1tIRsZ-00000009P5T-08wf
+	for linux-mediatek@lists.infradead.org;
+	Tue, 03 Dec 2024 12:19:49 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-53de035ea13so5660682e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Dec 2024 04:19:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733228384; x=1733833184; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5n+OPgKd4OeVfRcOdyszAmWQAYwYUA33KJvbyrKBpj8=;
+        b=EXLx2AXi3whwggmUakHP46miquVqVCqW3l0P7hVRrtwhRofytu1DqtNRncZdTye72X
+         ry5UdoKH6fDC1WH5dT7pm/eyckBYS76tVWD6pT2QCuizLjqQLPRKWC2Lxn8VSgpBHOGb
+         WOhmGynXhiQg+WP/NSx+3QEoCFb3Y8GmabCxjhdnw1x5Rg42LGRKOT+6a8X13YjD18uC
+         wJTiEfhAgz56ckpZKd7YS+lamdugOLr01yNBuO5QZ6aAh1f9BcoRUO9daycwkR4tcEe4
+         A0lkQXZM5YsYYNjDa/2HFu+bM02ec4ZjYaQBVkUS4GVdp2iyYbA6kDMH61mW8X/zii7d
+         6MfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733228384; x=1733833184;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5n+OPgKd4OeVfRcOdyszAmWQAYwYUA33KJvbyrKBpj8=;
+        b=KZ4ZSOI0Jmd9qOT/aqb17D7cMD04CHUGiUT6niOsjI51wVolsD3MxUcM6rzCj+FbrJ
+         SLaUsWbaTBe26jQYm67wzpNTqrprk5fIC77uLODDITl+4pf6dTzPiavZJwRsSDVGnV4V
+         r57KRIxQG/OwZmCtRkGV2nqGon2BxNfaXGHLOT4dDbC3FeF62pgqYiOVYFAwS/jExDvM
+         yARtCY+E+xRlDEOx/XM+qzO/k0W19g3xC3wOAgrX8a9+RzYHx4gdixvLmxBM0rkgjD0T
+         TjjufFI3lZy/z3S/Ette+04+nUC61jkpIStNfx82g3AmYN2haLjG5Uz7EZ2lkWof5/jj
+         XW3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWVAO50lPqwgF27YB6CfBKNxfOlSt8sAoEHD5OXdAwYXKgHKTxKHLXn+6EyVXMC5x4Y4HEwy7i2jBT2fEfPzQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YykQ/JmvJ/9y5ia5OPtAMbjoDbTNML5KrNj4MOAUqcGJayJnPGN
+	mwV5FO4vDB9LxBnFfrECfZeYWiGSE8b3851sfboxE9YLtz0Hiay4JLvtaB4ph2o=
+X-Gm-Gg: ASbGnctpN7Vudxt56QaKa2efRDaIySClkRwLyMGlbCkIz+Ev4ltfrvX8DaI0PIskUmB
+	/Y0UY69PMLo52W527HOUagftWPmOdkasflfSwgzW5Bnttl15WT4X+gR0rsm/nC3Jl3Dzl1flnuD
+	suR6OvcDHaA4hBHgyy4g8EwrDCc789b2mCZoty4poLkktYYEz5PEawOMftuMHs4Es1f/UTaMhU7
+	gGOdmQKoG31z32GNT4v4r5HDoP/e9GBkuWAzBuBI6jS73Jhxstp9UBoj8E4tXHcMQkl64qu3nzl
+	gqfFOFBxOZMSj4J1xsSPtPh7y7uPNA==
+X-Google-Smtp-Source: AGHT+IGqrNK3/JV3p7HUHgNYWUEc9ZkYpw0A4baw1aq7D6bW6M82dv1dR6gPJHjyZhTW0XLXbh3VUg==
+X-Received: by 2002:a05:6512:32c9:b0:53d:e43c:9c5d with SMTP id 2adb3069b0e04-53e12a06a29mr1124957e87.27.1733228384467;
+        Tue, 03 Dec 2024 04:19:44 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df643149asm1854312e87.37.2024.12.03.04.19.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 04:19:43 -0800 (PST)
+Date: Tue, 3 Dec 2024 14:19:41 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 8/9] drm/vc4: hdmi: switch to using generic HDMI Codec
+ infrastructure
+Message-ID: <e7jngrc4nljdsksekinbkir2h76ztsth2xj4yqcyapfv43uryh@356yrxv3j4x6>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-8-b5316e82f61a@linaro.org>
+ <20241202-industrious-unnatural-beagle-7da5d4@houat>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="35h4iyqfzzpzpkno"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
+In-Reply-To: <20241202-industrious-unnatural-beagle-7da5d4@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_040103_340358_57D3ED3B 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20241203_041947_076053_676E550A 
+X-CRM114-Status: GOOD (  27.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,88 +117,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Dec 02, 2024 at 02:20:04PM +0100, Maxime Ripard wrote:
+> Hi,
+> 
+> Sorry, I've been drowning under work and couldn't review that series before.
 
---35h4iyqfzzpzpkno
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-MIME-Version: 1.0
+No worries, at this point I'm more concerned about my IGT series rather
+than this one.
 
-Hello,
+> 
+> I'll review the driver API for now, and we can focus on the exact
+> implementation later on.
+> 
+> On Sun, Dec 01, 2024 at 02:44:12AM +0200, Dmitry Baryshkov wrote:
+> > Drop driver-specific implementation and use the generic HDMI Codec
+> > framework in order to implement the HDMI audio support.
+> > 
+> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > ---
+> >  drivers/gpu/drm/vc4/vc4_hdmi.c | 68 ++++++++++--------------------------------
+> >  drivers/gpu/drm/vc4/vc4_hdmi.h |  2 --
+> >  2 files changed, 15 insertions(+), 55 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > index 7295834e75fb1ab0cd241ed274e675567e66870b..d0a9aff7ad43016647493263c00d593296a1e3ad 100644
+> > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > @@ -595,6 +595,9 @@ static int vc4_hdmi_connector_init(struct drm_device *dev,
+> >  	if (vc4_hdmi->variant->supports_hdr)
+> >  		max_bpc = 12;
+> >  
+> > +	connector->hdmi_codec.max_i2s_channels = 8;
+> > +	connector->hdmi_codec.i2s = 1;
+> > +
+> 
+> I guess it's a similar discussion than we had with HDMI2.0+ earlier
+> today, but I don't really like initializing by structs. Struct fields
+> are easy to miss, and can be easily uninitialized by mistake.
+> 
+> I think I'd prefer to have them as argument to the init function. And if
+> they are optional, we can explicitly mark them as unused.
 
-On Tue, Dec 03, 2024 at 08:33:22AM +0800, Zijun Hu wrote:
-> This patch series is to constify the following API:
-> struct device *device_find_child(struct device *dev, void *data,
-> 		int (*match)(struct device *dev, void *data));
-> To :
-> struct device *device_find_child(struct device *dev, const void *data,
-> 				 device_match_t match);
-> typedef int (*device_match_t)(struct device *dev, const void *data);
+Do you mean drm_connector_hdmi_init()? I think it's overloaded already,
+but I defintely can think about:
 
-This series isn't bisectible. With only the first two patches applied I
-hit:
+drmm_connector_hdmi_init(..., max_bpc, HDMI_CODEC_I2S_PLAYBACK(8) |
+HDMI_CODEC_NO_CAPTURE | HDMI_CODEC_DAI_ID(4));
 
-  CC      drivers/pwm/core.o
-drivers/pwm/core.c: In function =E2=80=98pwm_unexport_child=E2=80=99:
-drivers/pwm/core.c:1292:55: error: passing argument 3 of =E2=80=98device_fi=
-nd_child=E2=80=99 from incompatible pointer type [-Wincompatible-pointer-ty=
-pes]
- 1292 |         pwm_dev =3D device_find_child(pwmchip_dev, pwm, pwm_unexpor=
-t_match);
-      |                                                       ^~~~~~~~~~~~~=
-~~~~~
-      |                                                       |
-      |                                                       int (*)(struc=
-t device *, void *)
-In file included from include/linux/acpi.h:14,
-                 from drivers/pwm/core.c:11:
-include/linux/device.h:1085:49: note: expected =E2=80=98device_match_t=E2=
-=80=99 {aka =E2=80=98int (*)(struct device *, const void *)=E2=80=99} but a=
-rgument is of type =E2=80=98int (*)(struct device *, void *)=E2=80=99
- 1085 |                                  device_match_t match);
-      |                                  ~~~~~~~~~~~~~~~^~~~~
-drivers/pwm/core.c: In function =E2=80=98pwm_class_get_state=E2=80=99:
-drivers/pwm/core.c:1386:55: error: passing argument 3 of =E2=80=98device_fi=
-nd_child=E2=80=99 from incompatible pointer type [-Wincompatible-pointer-ty=
-pes]
- 1386 |         pwm_dev =3D device_find_child(pwmchip_dev, pwm, pwm_unexpor=
-t_match);
-      |                                                       ^~~~~~~~~~~~~=
-~~~~~
-      |                                                       |
-      |                                                       int (*)(struc=
-t device *, void *)
-include/linux/device.h:1085:49: note: expected =E2=80=98device_match_t=E2=
-=80=99 {aka =E2=80=98int (*)(struct device *, const void *)=E2=80=99} but a=
-rgument is of type =E2=80=98int (*)(struct device *, void *)=E2=80=99
- 1085 |                                  device_match_t match);
-      |                                  ~~~~~~~~~~~~~~~^~~~~
-make[5]: *** [scripts/Makefile.build:194: drivers/pwm/core.o] Error 1
-make[4]: *** [scripts/Makefile.build:440: drivers/pwm] Error 2
-make[3]: *** [scripts/Makefile.build:440: drivers] Error 2
-make[2]: *** [Makefile:1989: .] Error 2
-make[1]: *** [Makefile:372: __build_one_by_one] Error 2
-make: *** [Makefile:251: __sub-make] Error 2
+or
 
-Best regards
-Uwe
+... | HDMI_CODEC_NO_DAI_ID)
 
---35h4iyqfzzpzpkno
-Content-Type: application/pgp-signature; name="signature.asc"
+The default (0) being equivalent to:
 
------BEGIN PGP SIGNATURE-----
+HDMI_CODEC_NO_I2S | HDMI_CODEC_NO_SPDIF | HDMI_CODEC_NO_CAPTURE | HDMI_CODEC_NO_DAI_ID
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmdO8vgACgkQj4D7WH0S
-/k5hrwgAmMfv4tgQM/zHhRunXZer+6rbqIrp5LbiXSYngMgHSWkkF/Aqcp/Uejmb
-FQwdlGB47gyVlHT5SP4HCDeST+PhX0lg3vHxP2lg0HaHp7/vgJRZAI65iOfy7DY7
-xqXQ+U2+YvtY+lwSneGFeXo9VZZtuu/YfpP8Qg6jH8dGaIojaU57rB+uJCpdvZmt
-VJhc51IAA6eHPcPMGf5mvS8/A7M8uPDwyEgWBDP/MRE0z6oKEjVLPWYFzXjUaVnZ
-MMOmGyzIfvhHTMxlkisgCC+PwmjrO2lZFsM1jD6SVNzMp6XeT2jiGa7lbfXaK9Rk
-7TvM1d7dwtqa42JTuIjTWWBR7AfmBA==
-=Sef0
------END PGP SIGNATURE-----
+WDYT?
 
---35h4iyqfzzpzpkno--
+> 
+> Like, it looks like the get_dai_id implementation relies on it being set
+> to < 0 for it to be ignored, but it's not here, so I'd assume it's used
+> with an ID of 0, even though the driver didn't support get_dai_id so
+> far?
+
+
+-- 
+With best wishes
+Dmitry
 
