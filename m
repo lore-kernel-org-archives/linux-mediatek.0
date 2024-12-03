@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D5C6E6C5E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:36:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE739E6C5E4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:36:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8oKTqrAKebW9WBOlzoM4TxO8uixngvvulXc2gSncQpE=; b=a4bizT51CiCD2V8n05AX9iHb9E
-	ip46yqUm6aj1oQa540DSFOk1abxxJTSll/1wf+2oZwmh+2tbifq7q7Xjtd6bZT5LplOcB3g+nyofI
-	jXqJ35FEkanY3ynq4g8/DxVULnG97eFVbmWJ/jy/GMsQtEY19crjTFr49JgRCo3JWCX2+aQ+/7lF4
-	8Xq3wgi6d+RUHP9/6owlYpY3SPcFuaPzi9MSckjyZxE2I99NrEkJzimNnBAHSiU6NY2JO79KDAaRS
-	fck3KHQ/HcsX3Ube7n2Is6RVNrniK5wWyUEIMPyS1rhDlK6gYSsWtcpL1fHMXGptN3BGvNU3a4JYx
-	Ivk3F3lQ==;
+	bh=IiwvAxmsMkXtcn4MTTv7QwRfPfONTV00nftEb1rZOV4=; b=ZfTekyeX3xdF8Me3oKdWoNQOJu
+	mlhEFDcSa8t+zSrhXzv4XBA3fL+anqdYWNchCNVdaD2/OlGfYHjXwTAs4fMYr9ByrOcPYeQlzyMJj
+	LwUTHsHxbG7U4f6Y3VQE4mF1EXF1T6pStSP9W+aUSQSH41/QSCCxSVDNJjj1U4NjFIQwsUY5npy8y
+	Z+7pcth2od3U1jbEBDmfZrVh4OEPxWhv0EMjOkqCFMVQWD6goq/ZeKu7gT18gvPyYFJwH/weUp/sv
+	Z7y4W6m/g9VEjvjHlNxoZuh6312zEYGCdCuFtsi3vfEOlBFTYwHDbSbQtJI5oJzkkQ5B5pp8FwvH4
+	W4pWuNUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGtZ-00000007q4K-1FHf;
-	Tue, 03 Dec 2024 00:36:05 +0000
+	id 1tIGtu-00000007qCV-3pC0;
+	Tue, 03 Dec 2024 00:36:26 +0000
 Received: from pv50p00im-zteg10011501.me.com ([17.58.6.42])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGtX-00000007q3R-1eFy
+	id 1tIGts-00000007qB9-2pz5
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 00:36:04 +0000
+	Tue, 03 Dec 2024 00:36:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733186163;
-	bh=8oKTqrAKebW9WBOlzoM4TxO8uixngvvulXc2gSncQpE=;
+	s=1a1hai; t=1733186184;
+	bh=IiwvAxmsMkXtcn4MTTv7QwRfPfONTV00nftEb1rZOV4=;
 	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:
 	 x-icloud-hme;
-	b=u1JlnJt5TlikeEAdxSGIdqpUn09/s5OJrSutqhAw4UQ3FUbpKVcLtcZq/tzWPFj0S
-	 2ni5MzccVAEzqLTN3RdwfISAmiwWmeIiS4kSTHOG7pnkJUCl8Ltzmb/r1WRNlRyWES
-	 dJj8uC3cfQmdAXSNDNa70S8/SnZ7MQcJak+7F6NmyWOEQQ+bYmPIrK8kX0p2eVESkt
-	 AkPLvyfKoS2LrvGv7rsGHXP9JWwaZgSAoMdL0mowmC4mEYB9IccdyQ+PpzYKumyllk
-	 Fg85uB1PM/2C0OiZlaQbjsQDPuOSbwcJcTTfWk5rY7BzUQgWUVmZGlBxXUOvbDvYVj
-	 zcNQ3TmSKjQJA==
+	b=D949jriRjnEuZv55IaXlTezpTBP0oTLN0tjcD66KylzVfRFBw5FJVnVNc4HzKEued
+	 BSRukh6XUyf33FKsfmGlDk8dN+oY2dNTKTa6nMS2l44qgvuRByVm2v6+qhEIWFg4fK
+	 lIlc8VhpxiiBHYqk5vUmEm3zlGDQJy5/RN4T55qbH6oM5KZBaViTjQ3nU2jXukxAeG
+	 YYgoVOhnfwedNrVGZHSiDwSDPpc6wWi7XfhckaneCDIJ7mJ3fhmvdw/XrDSqTeCH4i
+	 Z2tEHG5XQQnYmrEbxupyotVkgN3Wqn+jO1CSnQVck6og9N1GeAyOAmWta96i0owje9
+	 5szmAPOowFNYQ==
 Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id 26EF74A0457;
-	Tue,  3 Dec 2024 00:35:41 +0000 (UTC)
+	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id 804FE4A00B8;
+	Tue,  3 Dec 2024 00:36:03 +0000 (UTC)
 From: Zijun Hu <zijun_hu@icloud.com>
-Date: Tue, 03 Dec 2024 08:33:25 +0800
-Subject: [PATCH v2 03/32] drm/mediatek: Adapt for constified
- device_find_child()
+Date: Tue, 03 Dec 2024 08:33:26 +0800
+Subject: [PATCH v2 04/32] hwmon: Adapt for constified device_find_child()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241203-const_dfc_done-v2-3-7436a98c497f@quicinc.com>
+Message-Id: <20241203-const_dfc_done-v2-4-7436a98c497f@quicinc.com>
 References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -105,8 +104,8 @@ Cc: Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org,
  arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
  linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
 X-Mailer: b4 0.14.2
-X-Proofpoint-GUID: r2PHi7bIcwf9ElW8aqnD_T2_M0lSLrFl
-X-Proofpoint-ORIG-GUID: r2PHi7bIcwf9ElW8aqnD_T2_M0lSLrFl
+X-Proofpoint-GUID: hnVgDw1K1lIcz6xDWLO_ZLGwCsDdmTOX
+X-Proofpoint-ORIG-GUID: hnVgDw1K1lIcz6xDWLO_ZLGwCsDdmTOX
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
  definitions=2024-12-02_14,2024-12-02_01,2024-11-22_01
@@ -116,8 +115,8 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulk
  engine=8.19.0-2308100000 definitions=main-2412030002
 X-Apple-Remote-Links: v=1;h=KCk=;charset=UTF-8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_163603_798044_0328968C 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20241202_163624_721236_24227164 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,26 +136,26 @@ From: Zijun Hu <quic_zijuhu@quicinc.com>
 device_find_child() has been constified to take new match function type:
 typedef int (*device_match_t)(struct device *dev, const void *data);
 
-Make mtk_drm_match() take a const pointer to adapt for the new type.
+Make hwmon_match_device() take a const pointer to adapt for the new type.
 
 Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
+ drivers/hwmon/hwmon.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 9a8ef8558da921c75c1ab1986795bbc0a394899d..7a276c3965cd0e9147dffb28693fd9d1a1053fc7 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -359,7 +359,7 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+diff --git a/drivers/hwmon/hwmon.c b/drivers/hwmon/hwmon.c
+index 49b366254529fe6c03e8af6870ebd269cdcfd70c..9325bec83ae52d6519bcbd72b2e6213cfaee0b6d 100644
+--- a/drivers/hwmon/hwmon.c
++++ b/drivers/hwmon/hwmon.c
+@@ -341,7 +341,7 @@ static int hwmon_attr_base(enum hwmon_sensor_types type)
  
--static int mtk_drm_match(struct device *dev, void *data)
-+static int mtk_drm_match(struct device *dev, const void *data)
+ static DEFINE_MUTEX(hwmon_pec_mutex);
+ 
+-static int hwmon_match_device(struct device *dev, void *data)
++static int hwmon_match_device(struct device *dev, const void *data)
  {
- 	if (!strncmp(dev_name(dev), "mediatek-drm", sizeof("mediatek-drm") - 1))
- 		return true;
+ 	return dev->class == &hwmon_class;
+ }
 
 -- 
 2.34.1
