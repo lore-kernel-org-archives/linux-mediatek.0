@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA43D7833F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A16AD7833F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1/GCw4mYPX6ZSQ3WJjriMfbOVdU3huxj8N9hKBLGFoo=; b=2zkDCRAUgnQfoj
-	Ahu8Qe73rWb7HmieR3ise6DmGNRrj8NTrIDu03fHbyvRbNLZizfWp9m9CM7RMVBUDTBmJII1/9Oe+
-	pqI2FkhwszIywjihZI7mzpTang4NuYBRBxWpzIyR2k+t+GFVvbwJ6Wi/VNYq8bKc3gDjAXmCAZHMA
-	aVjO8gCw++KLBERBfE1zAfVQOl5ZOXXkwtcM751tLLc97NZim6tAHTG226NhQDfYQn0j05hPkybCZ
-	CbPrI2sWj/I8G8McuiWd7MMf+08CGSt5l2Af7BHxjZ3TPPzRjQTy5u62BEx6bTLuy1Kdy8m6IVUf6
-	/RN9MtR2zD++1Lgb3dyA==;
+	List-Owner; bh=2mCf9wjgBsBu0qFgVacALYgb1LInVYDGOxSA0g2Mioc=; b=gKRTcqsNT7XsWJ
+	PKPtLYsYHgaHzCR9LZDHa0rz4J1orTtrWGUYPhAAbMSSoaQoDqIbUyZixijXvlWdbc5GO/4vOHg1V
+	0/P1H556gdvLgamXQz19hSlAtZeXBGmwnEzaRLM7gKNtbzQMVBMHYxu9IVakO7G6N4axj3uINBPde
+	kPHGLKxp+rQMb4/ednIa79AZSFuP12aaGLO0GCRO7Ap6mGkYNGxtWoq0ixMzM5hXH0wbxZz/CNnCt
+	Cq7ozsQqHfRZ1rtG1bpbtKQWvaCnQkyc5XO6S09JuSfASQxADO5IcevpCXp3H3BwtyM9AMXddfzyH
+	olQkJ/6LSxr97lH83kzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPUM-00000008xS2-3IoU;
-	Tue, 03 Dec 2024 09:46:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tIPVK-00000008xff-2uh2;
+	Tue, 03 Dec 2024 09:47:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPOZ-00000008vx6-3kKN;
-	Tue, 03 Dec 2024 09:40:41 +0000
+	id 1tIPOb-00000008vxb-1WG5;
+	Tue, 03 Dec 2024 09:40:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733218838;
-	bh=4U78tOYVlkvReGUrkFFLBc03ZsaBKxkITzu5sB+X0/E=;
+	s=mail; t=1733218840;
+	bh=D0B58GzI5QB13wGSjR1c1mA64LQkYZUYsyzm+is20bU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GBbKJqd75SXOHbhBIXgpv7G/ordaTaQWCayZr0n/29MzJ/jBFsC170PBOehPX15E1
-	 k5cCRQHcpuuGmxR+Qm0VwJ/St4ewkjHa/lcZ15jd5nR8K12IN0zyqyzyZM+plfVPYp
-	 5FNS+ynuZ75bOlVLh2w/eqd4/xcGXLhol0Vt9UxUQXR1ETLFNU4zDfIshmjEtOBHul
-	 cunmGXBta/nM0KF6B8QAf2EDGk1acy85lVwMw00+/tH7hbmbrk5YPB/a9S6C7yWOx8
-	 5xydQiyj7ik1siDUFrTXdL/UQPPCM5h51H/0kgYdZ9EGkbxqYox8rV7f3DEoPk6e03
-	 JosJMhHcxSU6w==
+	b=gvQfEjCUIjD4obQXutdbugoSXBHO0hMk0J1IGshlcbGz1nwg1vNRQwJqpVzYiuk48
+	 K6OxQ5OqoLPJcIkmAI1D99cchvCkgAJ69IKGgkNDbt4uc9QFgN2tHwhVlOZ0Lj3VPP
+	 PjPnU/l1HJF2MdCqMQfmVtBNN6RjkH7ZoFNx2nBz9Cw1CHMh2rkBTYmoFJHTWs+qU2
+	 Aoc4Vgvqn8V/8lVtTFpbTeapbWE/UWTcne5gH5ohFkQMUPwj4yy97Bv979twiG+WvB
+	 pqE5GOGIdKTO2FNRAfwX86JNR0S32OlQKpSPaJy1Fb+AH6+nXD9wdcvOCkMi0UqN++
+	 9IW5uWjIMru7Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 22E5117E35EF;
-	Tue,  3 Dec 2024 10:40:38 +0100 (CET)
-Message-ID: <1ad355df-3f2a-4257-9374-1d125e138791@collabora.com>
-Date: Tue, 3 Dec 2024 10:40:38 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A3EEE17E35F0;
+	Tue,  3 Dec 2024 10:40:39 +0100 (CET)
+Message-ID: <d4ccb1fd-29a8-474d-9fb8-1cdc327b83c2@collabora.com>
+Date: Tue, 3 Dec 2024 10:40:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 13/18] arm64: dts: mediatek: mt7988: add i2c to bpi-r4
- board
+Subject: Re: [PATCH v2 11/18] arm64: dts: mediatek: mt7988: add chosen node on
+ bpi-r4
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-14-linux@fw-web.de>
+ <20241202122602.30734-12-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241202122602.30734-14-linux@fw-web.de>
+In-Reply-To: <20241202122602.30734-12-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_014040_077047_DCC172A9 
-X-CRM114-Status: UNSURE (   6.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241203_014041_544077_8B4BFB47 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +80,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 02/12/24 13:25, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add basic i2c nodes to bananapi R4 board.
+
+arm64: dts: mediatek: mt7988a-bpi-r4: Add default bootargs and UART stdout
+
+> Add chosen node on Bananapi R4 board with stdout and default bootargs.
+
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-arm64: dts: mediatek: mt7988a-bpi-r4: Enable I2C controllers
-
-Enable the I2C0, I2C2 controllers found on the BananaPi R4 board; these
-controllers are accessible at ... I don't know, a header on the board?
-
-After which,
-
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> index 9037f35857a9..1c2a806f6f6c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> @@ -9,6 +9,11 @@ / {
+>   	model = "Banana Pi BPI-R4";
+>   	chassis-type = "embedded";
+>   
+> +	chosen {
+> +		stdout-path = &serial0;
+> +		bootargs = "console=ttyS0,115200n1";
+> +	};
+> +
+>   	reg_1p8v: regulator-1p8v {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "fixed-1.8V";
 
 
 
