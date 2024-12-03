@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F82E6C5E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE1CE6C5E4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mRQc1IggNJY/rPZE8m/3aGBJNmzc9wdQYiWlpcKiZr0=; b=bYcbWm88EAf1IuPw1Y+3tNbIpM
-	TIu61XQx0OXeG6axCBwjib9QBy8mwFw5hIEFIEO8mKbbiGpIVsSMNuW7aOM6C3mFGuueoYFMMfVaM
-	wXP9MiU1KQ8OF/zx3Gw7fPHurVv/YJO+6IsAfZvkcp98js3TkC0X3us1/ffMJ6lAiaIpDwcA8TRxL
-	mycSaCCOJh+ElLJlBPrzjFXqUqRGkQyz6OuOSwbV40Y6kCzRt2EVCjqEYe3cAkZ31D+QY0vukn4cc
-	PGXREhkTiSHdmVcLZOtQOdiCGh+WL/opfJ59zSbzgTpvkZbhl2a76WGZJ0hMYwnxHI01H2Ha025h6
-	xyhqvw6w==;
+	bh=96ZNc//RiTah98EplseyqK3Ez4GUZqYaNN6bjHBrHJg=; b=DnEg+gXmmfA0C0NlyItxDQgUen
+	7u5CgY7v4RAVwEscq29ekYharKdU3QTP4t7jg80NSJI24GCI+a5s8IkCmRThw7H3e/J6ykkEgsR38
+	y2yWaMiQNJGzZGJ80qjCInr+n2wpPVS+JtrDfr6hhQ25sgPHiq6H3QPoobp2JPYG8pPEVeaH7Ggq0
+	ygaLU/VMuGzKlsXDyQ9rCjmkXoR/yWxrLzSCzYslInbofaEp/68Lg6ExkG3aI9LKfVFF3QXu22dPe
+	prTsnJGaXTEtie+BhT1pcaSazfyBw/uL7dc71vxtkQSNYm+irQqoFZKeeVo2WeEUjP+9pVbq+vPWS
+	v569uxKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGvJ-00000007qoV-0Mau;
-	Tue, 03 Dec 2024 00:37:53 +0000
+	id 1tIGve-00000007qxz-1u58;
+	Tue, 03 Dec 2024 00:38:14 +0000
 Received: from pv50p00im-zteg10011501.me.com ([17.58.6.42])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGvG-00000007qnL-3O5K
+	id 1tIGvc-00000007qwp-2TKc
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 00:37:51 +0000
+	Tue, 03 Dec 2024 00:38:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733186270;
-	bh=mRQc1IggNJY/rPZE8m/3aGBJNmzc9wdQYiWlpcKiZr0=;
+	s=1a1hai; t=1733186292;
+	bh=96ZNc//RiTah98EplseyqK3Ez4GUZqYaNN6bjHBrHJg=;
 	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:
 	 x-icloud-hme;
-	b=UKcm2SW/8CW5YwMeuN/yD7BQrEXZzpJgSSS9mmQzXaH+Qu4DFGq4nqCyJG9+0qi6U
-	 tid6yGvERRe7ouGsnCfG3pXlqy3bOvoQuiKIupkt31WIkBKOX3soG4OaJgPaiCswOI
-	 erb9JgGraykTBhigXqRiQP1MXjW7/fiV1eKvLPofDVGmeDdZ8vDL1zow1dztgh5qks
-	 +vtJIwSRU+kkgAP1AuQ2LME/Ij65aZr8i7iq7wDARDnqqNuoLfqKGPROi40qf8OID2
-	 USTBgnpgBbWj4Jy0f2mEBXbyMiMkZ/32oz1tjZ0gTycfe0ns3parnBLpjZvaCo0AXS
-	 0RPo92J3cMwVQ==
+	b=e0HvpemQeMJmmLJn6qYgvJPHj6ENfq5O176JB3a/fUzv129yHzdfJNRUUa1uEdjzS
+	 gM0RLE/UbtnocHaL9qoTxbXwHq8x1Mrp+Vk8SP//kjMGwykiF5MztyXQwGtFEr6rp/
+	 /r9jTmEMbg7L0JyyA3i93EY9QzuTQX3TJZkDtDHRhvGPJhxeBfovyDXIsQ0ijM0McA
+	 DhChMrIwOYjMCX1PMhXA9XbEbWQihITH4yagkI//khuLBv5Rb7p060NjyYMR5ndq4M
+	 g+yizy1g0JGZZsHkUcZ2A6+tGEvmB6iLHzdEHyvvJ90SOVxXunmxdBaOtxUpaDfg+0
+	 QwXXi3zvbH+Qg==
 Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id D007D4A062B;
-	Tue,  3 Dec 2024 00:37:29 +0000 (UTC)
+	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id 11EB94A0349;
+	Tue,  3 Dec 2024 00:37:50 +0000 (UTC)
 From: Zijun Hu <zijun_hu@icloud.com>
-Date: Tue, 03 Dec 2024 08:33:30 +0800
-Subject: [PATCH v2 08/32] net: dsa: Adapt for constified
- device_find_child()
+Date: Tue, 03 Dec 2024 08:33:31 +0800
+Subject: [PATCH v2 09/32] pwm: Adapt for constified device_find_child()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241203-const_dfc_done-v2-8-7436a98c497f@quicinc.com>
+Message-Id: <20241203-const_dfc_done-v2-9-7436a98c497f@quicinc.com>
 References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -105,8 +104,8 @@ Cc: Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org,
  arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
  linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
 X-Mailer: b4 0.14.2
-X-Proofpoint-GUID: 5T08U2fdwosbWa0fjnlCkTPfz9LFd33w
-X-Proofpoint-ORIG-GUID: 5T08U2fdwosbWa0fjnlCkTPfz9LFd33w
+X-Proofpoint-GUID: 8jpa5at4bS7zJPC9fx3XsXXE7tIvY-4A
+X-Proofpoint-ORIG-GUID: 8jpa5at4bS7zJPC9fx3XsXXE7tIvY-4A
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
  definitions=2024-12-02_14,2024-12-02_01,2024-11-22_01
@@ -116,8 +115,8 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulk
  engine=8.19.0-2308100000 definitions=main-2412030002
 X-Apple-Remote-Links: v=1;h=KCk=;charset=UTF-8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_163750_877464_55CC88B4 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20241202_163812_651468_9069542B 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,26 +136,26 @@ From: Zijun Hu <quic_zijuhu@quicinc.com>
 device_find_child() has been constified to take new match function type:
 typedef int (*device_match_t)(struct device *dev, const void *data);
 
-Make dev_is_class() take a const pointer to adapt for the new type.
+Make pwm_unexport_match() take a const pointer to adapt for the new type.
 
 Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
 ---
- net/dsa/dsa.c | 2 +-
+ drivers/pwm/core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
-index 5a7c0e565a894545ee14f0e0186ed3c46b809b16..e827775baf2ee1d0e1c0ce5807c2cca5c372fc75 100644
---- a/net/dsa/dsa.c
-+++ b/net/dsa/dsa.c
-@@ -1367,7 +1367,7 @@ static int dsa_switch_parse_of(struct dsa_switch *ds, struct device_node *dn)
- 	return dsa_switch_parse_ports_of(ds, dn);
+diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
+index 9c733877e98e47ac6548932cb040e91dd1008f81..6edceb89de30af0bde94de59b1c714971dbf9664 100644
+--- a/drivers/pwm/core.c
++++ b/drivers/pwm/core.c
+@@ -1276,7 +1276,7 @@ static int pwm_export_child(struct device *pwmchip_dev, struct pwm_device *pwm)
+ 	return 0;
  }
  
--static int dev_is_class(struct device *dev, void *class)
-+static int dev_is_class(struct device *dev, const void *class)
+-static int pwm_unexport_match(struct device *pwm_dev, void *data)
++static int pwm_unexport_match(struct device *pwm_dev, const void *data)
  {
- 	if (dev->class != NULL && !strcmp(dev->class->name, class))
- 		return 1;
+ 	return pwm_from_dev(pwm_dev) == data;
+ }
 
 -- 
 2.34.1
