@@ -4,64 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829C4D4979A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553AEE69EA6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 11:07:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TCunVkGnSTI31S803My8tvIxEPhX4zlUciElROu8M7g=; b=3SnGhJ/DH5+gQI
-	kMYXrv7cksLX5IpWwYoJ9f8TmeKMKOfpk7YMyP7GFwU7Y+0xAOyA9mR2T7wOovZb7686CSfMGiecA
-	vdkU36cVSrPVezoP5tgvID1oBh4Adb60APAACP8yt6eiMeU6kyJqmo/nuo2fk0G1a/z6eaTvZQbSf
-	dyPOYWag2kEMwbUO2x5qCBUxwlX3NnFTACBKj9fcYWQsTihAuLszt7lrIhwZScK4Dw5ZHx26D3Wfs
-	k/wyZcdbw93mSl2TI2mk9i77pfGgMMGrb4BueblnZLeyLGJezhJaTGMjUlG2Nv7oSYr2RHetPPG3b
-	qSAg86OBg2glFBIIlB0g==;
+	List-Owner; bh=ViWFhif/deFZuZbnJbaYJlieWHE9b1wDUanLpmlN4gs=; b=eGb97DAFbhFQf3
+	pnKgSsVq4lsubvpOEePqouPCr1wOtDQ1nIzrn+FniT9ej2L9Rh0IxceMDFtStK+OmN/kfFpGWhPaU
+	Q+1exBAd3Vn2oHyQUT0sgyR+I+Cd87AUHZqC4p3xW9mKtkgF6mXEaoyAqXGwWPU0Px+tLAcQNFthe
+	sS2n1K/TWkF0gqqQWzMVq5iXMsU3S/AjPX6yy0niZpT/qOeQHMrsrNZHdvrRRo587YzcGHw6ubnia
+	lmKMWFBzkhZEqXYoOW59OE0lTLeRPDXP3RBUnlWjs5u7tbfo4mKmNyIUe0Lov4J2fFkAZzwgCNxJw
+	qAQgDk08ao6Fh6OPfcyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPh5-000000090AJ-2vrR;
-	Tue, 03 Dec 2024 09:59:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tIQl1-00000009Cer-1yun;
+	Tue, 03 Dec 2024 11:07:55 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPOq-00000008w4i-29Rr;
-	Tue, 03 Dec 2024 09:40:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733218855;
-	bh=5ZyzNz0Sm72FrIcgVg1yVZzQ3dql7Zb+xQ3cpLxHlmw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KdaG89f/LuAnqDL4HVE+B6vJoIfLwKvzcCgitdsS3+WHMcm2brwUit+Zffjesr+5y
-	 OjpU0Sv4rChCUA8mWUFwy+fAC1Px9wQLXki3hkKo/ZczvorUu87L6NPkGwhbCYzoxk
-	 SIjfrxQX/ZLKd8VZLSCgYO5/vtnjl96la66EF0BEx87yLXzyXaUkC7Ww9A9nFlTd9n
-	 VqO8Aj6FZ/JL/1y63TJO5M9ZKAvULWpu2Y1z1a9pbXE640o5lp2Pok469RpOLvfhND
-	 3almUWDDxSb8mtnv6QPqcot1WMH9mRQ61lRO496fceZHh7IfC8QxAwMIFlbs/OTax9
-	 XiPI7CaSxIJvQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF94E17E35E0;
-	Tue,  3 Dec 2024 10:40:54 +0100 (CET)
-Message-ID: <016b77dc-2d33-4639-b241-2574ad877971@collabora.com>
-Date: Tue, 3 Dec 2024 10:40:54 +0100
+	id 1tIQbd-00000009AIt-1Yne;
+	Tue, 03 Dec 2024 10:58:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1733223487; x=1733828287; i=frank-w@public-files.de;
+	bh=ViWFhif/deFZuZbnJbaYJlieWHE9b1wDUanLpmlN4gs=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=catE6Oo8vo76H6xateUNLsfwp9A1mxYE8wru5d7gmBXwD/wQoM3xHUHsO9Kjx4bu
+	 c+G2p0YieMUzdvcxXcMRBIiO7d4AW+fICVP4HlVthGFWGf82FMxQxJ7ekE6YhrWwC
+	 jf6f4E2dbhppLK3SkWXDrASN5IymeN8UqqUt2bqsjMydYiHZ12twnarjX+MVwx0e5
+	 x/eHrhzhaTX6qZUa5PoZlqvxFheXi5p//DfaPfFggA5bLBolJHDqfLCHVUCXvAfPF
+	 v7PhObqnw1WyC7gPtqyfxoDTl6QgPAsRdInPuZEwmcshYx69y8JLVJ5PotjAFVU3B
+	 o5EOoWM1LChNVHI+4w==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([157.180.225.184]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1Mn2aN-1tysUC0VwV-00bTSm; Tue, 03
+ Dec 2024 11:58:07 +0100
+Date: Tue, 03 Dec 2024 11:58:07 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_13/18=5D_arm64=3A_dts=3A_medi?=
+ =?US-ASCII?Q?atek=3A_mt7988=3A_add_i2c_to_bpi-r4_board?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <1ad355df-3f2a-4257-9374-1d125e138791@collabora.com>
+References: <20241202122602.30734-1-linux@fw-web.de> <20241202122602.30734-14-linux@fw-web.de> <1ad355df-3f2a-4257-9374-1d125e138791@collabora.com>
+Message-ID: <CA7E06EB-D26A-45D0-BF13-9C6B640F27A0@public-files.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/18] arm64: dts: mediatek: mt7988: add fixed
- regulators for 1v8 and 3v3
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-4-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241202122602.30734-4-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:wVh/VT4zyLEOOLYLOzpPuxIpal1zwRBxEtQNrRChYqjhtpSmpbf
+ 2U6qcQfUeOBex46poaqbKi3AsAoyE3PrgU+6UobajJqfs5EeA/g67gxFWAo5Uf01+zSU8Eb
+ gtypw3djq16hUoUtPI8Pvyil2HlMh1Hwc4TWp+7Ysoz/2Ijadww/0BK5wP3O6niNzJsiNpT
+ 5Gf7Xw8LjOXzGBhgWXZoQ==
+UI-OutboundReport: notjunk:1;M01:P0:LV1CDWyYqq8=;r6TAGlS+V55H76U9GsrrMswN3d+
+ 8Xwv/2BFoCClTb58octvBihMkB4cdzns2fsZkwNByO4DV4jAUOfSzwVaLD6PSZv6oe46A9Bix
+ REDnk+Y2hQHGcFYN/vYDRNlejxHv8A+8CUvTc6RGvWS608xkCCK1hYh+aUM8K+DEp442Q8orf
+ VUoK2q4Wstzc8UpVPIt1epv5HYUl2sdD8w7kXQ0qbu2/z+5W1kbP6FT4Gg5D0GkLpren9Mtai
+ ap7c7ZnVy3qjuPwimzre6n1sbyR75c57Ramv/ngkrjanx9kIwqzr+LnEo64+jivcBsY5iQea+
+ NM/ZNRNIH3GrEG7sP/3HQHOuElw9Q99iMfyiXH75Om9OW+Xnpl9WOi8G/Rz7clUv9lcIhkiX5
+ 8+cUJ5kXgEmK23ufk76pZQt5qkPrGgABSzepJIYD9QgOO3qo295de3d5kOg4j+m3le66pcbzv
+ M8WIeVeXb6r1kH3GyApzXTIGUb8mqI9qVDsvS2tx9vdMdFNd9biAdkAElvdRY9JDNxZikdZt6
+ TykXsiCNLW92XNvYL4v7oKW43Hffndcjo8mtYCSe8tT5PxOS2AFGLhenT5FXPKQ0luRYguP6L
+ dE+52dgmcLU7Qc00tHZASvL4FaYLYktWmizpZEIe/KvUP4r+DcBKuce+CT5EUXx+YHOZ8StDN
+ CyXr7PMGhbqp6DJFOpsTr8aSKoP8I9EjcUAjRL0wIqoPNz1a7U0JfwomHcvy1WI7MpVkODoHi
+ uYLiVrFXvWxjn7j7pq9lRJ95bGYNXG3VXVmup5gYSm0sB8pIgB2jbmBTr6rX0CfhcS7eRKhgi
+ WGUTQz14iCtCZgqaWlTZcGHPQOQf6mC5beFxFHO3Hc+7CImx1aO1EDuLe0g49T6Ij/h1xGhhF
+ vlfAp43zPPkngtG7wy+4XpH2jBH0vQ5fv+3dNgSgsJUXnwnkIIKDyUXFntRA5dJKD9ZDNZj1M
+ 2e1EFE/1PPCapEkI+za5CCiu8NAezMdonRvcX+YCKSb9fOvLljqI7Mn5Wb6d616RwiY4NHk/q
+ 7lihezwS9v4Tt2yYSExI494kmDgWTgXGs4JaWDtL6R6QiaSlfwNU3yz6Gat103/J6bFfKZO7G
+ nIByL/MNjYpizZammHW2BNDUf57wuQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_014056_701723_1FAB7C69 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20241203_025813_704306_AED55813 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,69 +98,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/12/24 13:25, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add regulator nodes used for mmc to Bananapi R4 board.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Am 3=2E Dezember 2024 10:40:38 MEZ schrieb AngeloGioacchino Del Regno <ange=
+logioacchino=2Edelregno@collabora=2Ecom>:
+>Il 02/12/24 13:25, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add basic i2c nodes to bananapi R4 board=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>
+>arm64: dts: mediatek: mt7988a-bpi-r4: Enable I2C controllers
+>
+>Enable the I2C0, I2C2 controllers found on the BananaPi R4 board; these
+>controllers are accessible at =2E=2E=2E I don't know, a header on the boa=
+rd?
 
-If you're adding the eMMC regulators, I assume that there's an eMMC, or that even
-if there's no device in some version of the board, these two regulators are always
-assigned to the eMMC device - right?
+These 2 i2c have directly connected spare devices (pmic on i2c0 and i2c-mu=
+x on i2c2 added in later commits to have it a bit cleaner)=2E I2c1 is on gp=
+io header which i have not added to let user choose if he wants i2c option =
+or gpio=2E I can also add i2c1 to r4 board with the right pinctrl but imho =
+it should be disabled to have gpio function default=2E
 
-You should, at this point, do exactly that: you can leave the mmc0 disabled and
-only enable it in a DTBO.
-
-&mmc0 {
-	/* eMMC gets enabled by DTBO if present */
-	vmmc-supply = <&reg_3p3v>;
-	vqmmc-supply = <&reg_1p8v>;
-};
-
-Cheers,
-Angelo
-
-> ---
-> v2:
-> - move mmc regulators to board dts of bpi-r4
-> ---
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts   | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> index d914eae2b524..df53512c6890 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> @@ -8,6 +8,24 @@ / {
->   	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
->   	model = "Banana Pi BPI-R4";
->   	chassis-type = "embedded";
-> +
-> +	reg_1p8v: regulator-1p8v {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "fixed-1.8V";
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		regulator-boot-on;
-> +		regulator-always-on;
-> +	};
-> +
-> +	reg_3p3v: regulator-3p3v {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "fixed-3.3V";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		regulator-boot-on;
-> +		regulator-always-on;
-> +	};
->   };
->   
->   &pio {
+>After which,
+>
+>Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino=2Edelregno@coll=
+abora=2Ecom>
+>
+>
 
 
+regards Frank
 
