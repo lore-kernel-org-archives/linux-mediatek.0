@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF42FE74ACA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 19:22:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF49E74AD1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 20:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wdn9WBlyNdiY0kjsvpz6XjzAktzFSzWhI4fjS6MrMsM=; b=NZIiYc6x9PgOirMCI0NB2rPYwM
-	0jSaj7LNgym+xu9LiOwgAX22T4215Jn4QsLKqHML4BEO2NprMvfmidhRf6Y2UEZWcc/naqnJAhgh0
-	4g8rtOH3xK8+E/h6Otp9xInhlH9DbysxOk7Tj9yuGhAl3etWPoCM2DYHEBjkDlrow3M01RmQqA9gH
-	yizQA5xN32YkWJtNaix7Gkh+dtqK+uzveoWkMO/Ha/AiPaBgjA0VuS36Y9qPZa61g916KFAABFlZc
-	0eWhfb0FpAhuQfSiKlnr4NvxY+qXT8tmx1em54oVUgLGKWeqbkZS9/+QSl+VxtJAh4k+1tG3Z9L6b
-	qXD16VOw==;
+	bh=YuGAnd8sW4F+V+CEmJaUv5di3BtGFuYG5RsoEXvfXOc=; b=CR0qxW75FrfSTV8QIUyY0C5ZG7
+	MCzAHkrCIwjqht9XN4Cp2iIxh6nFs2YdAW/B0g8YsAZVGBsPucxCSwO9iF2lqJB6ljmvcP8tjNYie
+	nLoXiroDprnp7xSkBjPYJMa2/wr0nImQs8cneNMmOdamj23gb/5OBbT6nelNN0gojYyR4rbb4yrbD
+	ngDG/XF2jGsRTghPbh5bezSf2hoY6uO1H3mrNkaC/l20Mv5YoKjxCVvx8E6UmLZHAOLtUA/ALGMgi
+	wPvwjL/YVeAyV4Ie+3n3TZLUr4NqS4k4jN0WVt4vKUs2oLfJ464IMgROjcladcOsNiZ/VR9cmhWXr
+	ryiMzX+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIYTL-0000000AT2d-2gT5;
-	Tue, 03 Dec 2024 19:22:11 +0000
+	id 1tIZD5-0000000Aarf-08fy;
+	Tue, 03 Dec 2024 20:09:27 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIYSK-0000000ASuv-1kUa;
-	Tue, 03 Dec 2024 19:21:10 +0000
+	id 1tIZC4-0000000Aahp-1OCM;
+	Tue, 03 Dec 2024 20:08:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733253665;
-	bh=me674ysn4T+xkyXkjVxxdq0efYr8UjvgzBFk7LZAd70=;
+	s=mail; t=1733256500;
+	bh=nMuqNASdDvXJ7RQQnLGP4ZYna4CqD0GHPdKOd8h24RU=;
 	h=From:Date:Subject:To:Cc:From;
-	b=T+cfWrQHcK7y+GOW+utyX+YR65qTl5gxPICvVGkewfy97+N38ZlGuIA4ujurN7R71
-	 vQNewctBhMLcDCSitu9XlfMOWf+qP1lPnWN3N43bBdR9JN9kIRsM6h2sCJWucMstJ3
-	 kgg4HNgVn6xVIOGnxsfu1pU8MpIkY6gYEpsgf6wn1SX319Gh5rU3k+0M3ligHz61Z2
-	 ikr28pZMIlHc6V5ZmvzrrrkBwXLUmVUcuBfNPRghHORCiH/oZrmyZqNDyyEANJ8+p6
-	 fVVAB9jGZlr2ZmdS0dVRp+ecmlUiZ/m6yPpKAw+uvO70ya74rcawN1VzqWRYLRhvc2
-	 nO9AwAN/JcSaQ==
+	b=ZbYSgf4Zo1i9VrUp7UXd5QcS7atcnIODtz9GHmtYQ09YmVXT6of71Rh8K3g79PXbG
+	 kziOpE5jN2nm/wQR6O1UleZj0LuJEPug4/j42PIsdusXRR0twS5TfMDz75gDkEKv4r
+	 gZgRgPe0gpjj/JIqWPk1hUnUZu2voIUsnGXgCFBeCEL4LXhXeaZ4p9NXsqP4t14XjP
+	 jgh1xMEZ/OTNd3LwF3AZKzvpCt+Nz60xnhNF9/KHdin0mLbsewVq3+Z+uYi7TII/li
+	 2HJJlF0kFNbJXfCq7nd+uJRRDRGfzXU6jOULFq2Owgy4xLz+dPGGwa387JTyLxl4os
+	 Krk0yLG0S81dQ==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1005])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A715017E1036;
-	Tue,  3 Dec 2024 20:21:02 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 42EA617E1091;
+	Tue,  3 Dec 2024 21:08:18 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 03 Dec 2024 16:20:58 -0300
-Subject: [PATCH] ASoC: mediatek: mt8188-mt6359: Remove hardcoded dmic codec
+Date: Tue, 03 Dec 2024 17:07:54 -0300
+Subject: [PATCH] ASoC: mediatek: mt8188: Enable apll1 clock during reg rw
+ to prevent hang
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241203-mt8188-6359-unhardcode-dmic-v1-1-346e3e5cbe6d@collabora.com>
-X-B4-Tracking: v=1; b=H4sIABlaT2cC/x3MSw5AMBAA0KvIrE2irU+5ilhUO5iFkhaRiLtrL
- N/mPRApMEXosgcCXRx58wkiz8Auxs+E7JJBFrIUslC4HlpojbWqWjz9YoKzmyN0K1scTVOX7aR
- NI0dIwx5o4vvf++F9P0HiRgRtAAAA
-X-Change-ID: 20241203-mt8188-6359-unhardcode-dmic-ba7649f8a72b
+Message-Id: <20241203-mt8188-afe-fix-hang-disabled-apll1-clk-v1-1-07cdd7760834@collabora.com>
+X-B4-Tracking: v=1; b=H4sIABplT2cC/x2NwQrCMBAFf6Xs2QfdVDD4K+Jhk2x0MdaSFBFK/
+ 93ocWCY2ahpNW10Hjaq+rZmr7kDHwaKd5lvCkudyY3uyG6c8Fw9ew/Jimwf/BwkaxKKJshSCiO
+ WB8IUmU/exSCZemyp2vX/6HLd9y+aqKzAeAAAAA==
+X-Change-ID: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-b3c11782cbaf
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Trevor Wu <trevor.wu@mediatek.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_112108_640179_187843A9 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20241203_120824_526866_E863237E 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,40 +81,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove hardcoded dmic codec from the UL_SRC dai link to avoid requiring
-a dmic codec to be present for the driver to probe, as not every
-MT8188-based platform might need a dmic codec. The codec can be assigned
-to the dai link through the dai-link property in Devicetree on the
-platforms where it is needed.
+Currently, booting the Genio 700 EVK board with the MT8188 sound
+platform driver configured as a module (CONFIG_SND_SOC_MT8188=m) results
+in a system hang right when the HW registers for the audio controller
+are read:
 
-No Devicetree currently relies on it so it is safe to remove without
-worrying about backward compatibility.
+  mt8188-audio 10b10000.audio-controller: No cache defaults, reading back from HW
 
-Fixes: 9f08dcbddeb3 ("ASoC: mediatek: mt8188-mt6359: support new board with nau88255")
+The hang doesn't occur with the driver configured as builtin as then the
+unused clocks are still enabled.
+
+Enable the apll1 clock during register read/write to prevent the hang.
+
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index 08ae962afeb92965109b303439419bc6e7c2a896..1550e56ab57d54b179ebe5cbd60db1660bb0bd2c 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -188,9 +188,7 @@ SND_SOC_DAILINK_DEFS(pcm1,
- SND_SOC_DAILINK_DEFS(ul_src,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("UL_SRC")),
- 		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
--						   "mt6359-snd-codec-aif1"),
--					COMP_CODEC("dmic-codec",
--						   "dmic-hifi")),
-+						   "mt6359-snd-codec-aif1")),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+index e69c1bb2cb239596dee50b166c20192d5408be10..fb8cf286df3f02ac076528b898fd0d7a708ec1ea 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+@@ -587,6 +587,8 @@ int mt8188_afe_enable_reg_rw_clk(struct mtk_base_afe *afe)
+ 	mt8188_afe_enable_clk(afe, afe_priv->clk[MT8188_CLK_AUD_A1SYS_HP]);
+ 	mt8188_afe_enable_clk(afe, afe_priv->clk[MT8188_CLK_AUD_A1SYS]);
  
- SND_SOC_DAILINK_DEFS(AFE_SOF_DL2,
++	mt8188_afe_enable_clk(afe, afe_priv->clk[MT8188_CLK_APMIXED_APLL1]);
++
+ 	return 0;
+ }
+ 
+@@ -594,6 +596,8 @@ int mt8188_afe_disable_reg_rw_clk(struct mtk_base_afe *afe)
+ {
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+ 
++	mt8188_afe_disable_clk(afe, afe_priv->clk[MT8188_CLK_APMIXED_APLL1]);
++
+ 	mt8188_afe_disable_clk(afe, afe_priv->clk[MT8188_CLK_AUD_A1SYS]);
+ 	mt8188_afe_disable_clk(afe, afe_priv->clk[MT8188_CLK_AUD_A1SYS_HP]);
+ 	mt8188_afe_disable_clk(afe, afe_priv->clk[MT8188_CLK_AUD_AFE]);
 
 ---
 base-commit: b852e1e7a0389ed6168ef1d38eb0bad71a6b11e8
-change-id: 20241203-mt8188-6359-unhardcode-dmic-ba7649f8a72b
+change-id: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-b3c11782cbaf
 
 Best regards,
 -- 
