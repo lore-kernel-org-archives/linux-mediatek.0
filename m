@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D2F4D4979A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F39CE6C61A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:17:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l1fZsgNlkr4reN03cYniZ34NrL8EnpcDS1NBWycfI0c=; b=PtGm/sRT5Kcbi/5AGUluMgrzls
-	tGqs20vB9yqbqofh1HXO3Zfd0jC3Ta/sQXCQPSS1Gq2stPDwifNoVgLkYxZ1rIccMBnPHC2xuw0US
-	+jONU6h6BoNnY013aYJnXH4B03nh1HCUk+kYWlHFHyYr5h8r5cpxK0sVQHpaEhaNryVAtwv1l1Jm0
-	cNNM/50vEwc4RWXsdO+EkbhaN64JQ/11GL194SEOYghz9PiXtfI/p4ROFSCjn+95fhtlI0lUTTzLA
-	ITegq1TGz7MDBpvHSWqvtCwNzVyglzMSZ/PhUuZXQyjGjRGmBTtmh9JqE70wOGFhFRW3oHeiEp7m0
-	yFcvh6OA==;
+	bh=tKpX/3oOMoY2CpjSV1lkQJtqW/CgZx6kTl37vj9RWvQ=; b=BLzAfEY6GBGxnR5MsYT9cOtqq4
+	Q9v+PP0/IVCc3DmpdmUh6qx86E7uyXTVCm2bi2r+UqDrS7nrqYQ6510BUTcILz0Hl98ZulOgZFLMh
+	qjvCXk1EU38TJX6XCtHIsGY5AhjZH1s/pteRePnwXx3x3VQYmMIVqB7uVL50v1JUMH9Pq2am4yFT0
+	GiAXeZhkgShRp+sHqIRZow3zVbB+6tciF8h9/17mxHtgQDioX5m3UqG1xTVDIDulp/YYWYX2oDISU
+	1cBZddWEciae0R5ucopmQcfVcXzC69+jKSWJy4zrdCCYEc6+cODtm50lhyO4lsa6zSgQPTf1JYoOO
+	XHcvZqVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIOzS-00000008pi4-1C49;
-	Tue, 03 Dec 2024 09:14:42 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tIP1r-00000008qFs-1MGS;
+	Tue, 03 Dec 2024 09:17:11 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIOwI-00000008oyJ-2cWc
+	id 1tIP0q-00000008q4A-1T6w
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 09:11:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733217085;
-	bh=dpObWXpZ7p2t1DkUkX1XSldL6Hubf+emdmqzZJsu1lg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mGEs87q1wVNvZKeqVer2Da0vnX/ygXCpdkPWthXdXpyjpfytoXtbESuhX+pUtH8T6
-	 lAatLMX5wmHyTSIi76i3WIBKZqPd9X56yf8shM3wqEuw+pt02BSmzeWzwgjaSh0LLy
-	 qstAg8enqn58xXhKyu11gvB/GJzAcMEbFysg+anU9gdFMSyqw3XYQ5PB4kmDm+k0s8
-	 6KnYPsMz29u5kqSJf1O54ebzGZQ+/vc8HQFhtG6S3WRmTHwiOUDn49nnp6wDBBLrh2
-	 4ASRv8LHLkzhQ94bjthjR7EBWCl7J9fhvuxpaqutN661sRHqZ+RWSd+w+PwnYE6R9i
-	 1J4UCQlxCEQRQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C343517E35CB;
-	Tue,  3 Dec 2024 10:11:24 +0100 (CET)
-Message-ID: <b1f2944d-5c11-4842-a2b0-02044ebece98@collabora.com>
-Date: Tue, 3 Dec 2024 10:11:24 +0100
+	Tue, 03 Dec 2024 09:16:10 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-53dd9e853ccso5529856e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Dec 2024 01:16:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1733217366; x=1733822166; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tKpX/3oOMoY2CpjSV1lkQJtqW/CgZx6kTl37vj9RWvQ=;
+        b=gCOWPjaT+NikgrzIQBXbDZZa3nzyOncM0YBf3yUGherF6LU3aKUmbxERppzpG/UvBP
+         NNN3YkiXPazihaeR7UzKSGBCNdQrm2sKW8gWSPwUQSpChgsbY6MkRCVLuwpF2tnuAWYS
+         VPa2GYkarr734vl8O4RGUrPDOvsbo7UZJz4dU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733217366; x=1733822166;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tKpX/3oOMoY2CpjSV1lkQJtqW/CgZx6kTl37vj9RWvQ=;
+        b=bEH/7ZbOk40bmc0chOO6WnDUESDjxjXet/YF18p5Lka3TeGWXoYwk/BQTmtkJD2HUH
+         1YEFOIrcFqStBJV3J80x9kJmSXDH8wnJrmTC5t9eqSzN8DAU0IIz+0ighHLRu+Yn6eld
+         NsDTcsHwxJ8c1BjfQWd1dDrg2Zb5AzYIVrKAGyqg0DdKug2cNZjpXJPMX05+6LyQehNI
+         jDlDXponllD0Y43vY7IAPXX8AWvyMCBAaUERzPLH1FYgKcREW4X5d/qROlQTwCfMC42M
+         7Wss+y97Ff3/S9oxEfSkS4zMsYfwJktWnaFvgBZ+jC/AxagO0t3B5t+wcI3AYtMakqpd
+         H+cA==
+X-Forwarded-Encrypted: i=1; AJvYcCU5mlhry1sVN+p8MZHoxdRtKZ5WuKw173Gn8x/NX3Z65wNzd41nvivmvTaKljuTSVfKo0VOxPnwn0mwSdetgA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKBrHR1OPI2BDLawMPc+H5HRwhf0d4swkCcIVnn+iHXcgYMWWZ
+	nOEIbuJyHXKkxWrdh1KOH2mQfJMrGbclf2I07/3l1cel0190Jib9gfh9yA9zHm+E2Ri9KH+/yHM
+	vjs+nESWQ1VRWOw9BZyM+fwU15rrWQXsN60Ca
+X-Gm-Gg: ASbGncuimQP9YG2EDAx1n3OTAJOGzoRVFPPyGx7wOfgHT8kxGbSLO6Lh2lqdKltq/bI
+	N/tPORykQaAPJkqioL8tIhGXIS1XylD2x/b/3zfzX9YbkBdZre4h7r5PvmcU=
+X-Google-Smtp-Source: AGHT+IHblgyX3h9C40czpfBFU4FlCVyQGCJtmnMsdRZhtqjaXaMQ/snRbicpRd77CCHWP8KcHzPutSl+2EBTyk0stG8=
+X-Received: by 2002:a05:6512:474:b0:53e:166d:bdf with SMTP id
+ 2adb3069b0e04-53e166d0c7fmr436640e87.14.1733217366415; Tue, 03 Dec 2024
+ 01:16:06 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6.6 1/2] Revert "arm64: dts: mediatek: mt8195-cherry: Mark
- USB 3.0 on xhci1 as disabled"
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sasha Levin <sashal@kernel.org>
-Cc: stable@vger.kernel.org, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Koichiro Den <koichiro.den@canonical.com>
-References: <20241202081552.156183-1-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241202081552.156183-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20241202032035.29045-1-xiazhengqiao@huaqin.corp-partner.google.com>
+ <20241202032035.29045-4-xiazhengqiao@huaqin.corp-partner.google.com>
+In-Reply-To: <20241202032035.29045-4-xiazhengqiao@huaqin.corp-partner.google.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 3 Dec 2024 17:15:55 +0800
+Message-ID: <CAGXv+5HsOgRCpGOFxEJorVD+=-6GbW_=K3AChkBSxTs27fNJ3w@mail.gmail.com>
+Subject: Re: [PATCH v4 3/4] arm64: dts: mediatek: Add exton node for DP bridge
+To: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	hsinyi@chromium.org, sean.wang@mediatek.com, dianders@google.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_011126_806917_4E22CAB4 
-X-CRM114-Status: UNSURE (   7.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241203_011608_407364_9053CEF7 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,20 +93,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/12/24 09:15, Chen-Yu Tsai ha scritto:
-> This reverts commit 090386dbedbc2f099c44a0136eb8eb8713930072.
-> 
-> The hunk was applied to the wrong device node when the commit was
-> backported to the 6.6 stable branch.
-> 
-> Revert it to re-do the backport correctly.
-> 
-> Reported-by: Koichiro Den <koichiro.den@canonical.com>
-> Closes: https://lore.kernel.org/stable/6itvivhxbjlpky5hn6x2hmc3kzz4regcvmsk226t6ippjad7yk@26xug5lrdqdw/
-> Fixes: 090386dbedbc ("arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+On Mon, Dec 2, 2024 at 11:21=E2=80=AFAM Zhengqiao Xia
+<xiazhengqiao@huaqin.corp-partner.google.com> wrote:
+>
+> Add exton node for DP bridge to make the display work properly.
+      ^ extcon.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Same for the subject.
 
-
+> Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com=
+>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm6=
+4/boot/dts/mediatek/mt8186-corsola.dtsi
+> index cfcc7909dfe6..e324e3fd347e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+> @@ -424,6 +424,7 @@
+>                 ovdd-supply =3D <&mt6366_vsim2_reg>;
+>                 pwr18-supply =3D <&pp1800_dpbrdg_dx>;
+>                 reset-gpios =3D <&pio 177 GPIO_ACTIVE_LOW>;
+> +               extcon =3D <&usbc_extcon>;
+>
+>                 ports {
+>                         #address-cells =3D <1>;
+> @@ -1656,6 +1657,11 @@
+>                                 try-power-role =3D "source";
+>                         };
+>                 };
+> +
+> +               usbc_extcon: extcon0 {
+> +                       compatible =3D "google,extcon-usbc-cros-ec";
+> +                       google,usb-port-id =3D <0>;
+> +               };
+>         };
+>  };
+>
+> --
+> 2.17.1
+>
 
