@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0849DE6C5E4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F82E6C5E3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 00:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+s67f8n4U38kNtBzbNjBtNPtsaYtVPWfyTOydyoL87U=; b=dtcChZSlpTkSY9WWAH2YeKnT33
-	/y7QE1lswKUZySfIXPtDTM9giYdVQE8ZF2Lgey5XPFlp0Kuz8sUGhTxZxd1cITObCmrd68XeMTwtc
-	m7UIltHu0VRTlFbejUbJMkNafwjcge8qSpvNFynYqkGKh3hdKJtUq5p3U6Qp+QOFw/Df71EdgQXag
-	rpAKFzo2s0bM4M0QfOMZD5l8ro9+iFdH6ugQkLInIKTkqGANjYiZ/oeRQ8HyX3ux6SI22tCR4QPmU
-	gcNHAxoQSc7R0ZVS7sWO63JT2JpzymHVUf6fZh8MvZivHda3Td31ixhC02VeHBuKZQAreB+pxpQVE
-	bLvF97WA==;
+	bh=mRQc1IggNJY/rPZE8m/3aGBJNmzc9wdQYiWlpcKiZr0=; b=bYcbWm88EAf1IuPw1Y+3tNbIpM
+	TIu61XQx0OXeG6axCBwjib9QBy8mwFw5hIEFIEO8mKbbiGpIVsSMNuW7aOM6C3mFGuueoYFMMfVaM
+	wXP9MiU1KQ8OF/zx3Gw7fPHurVv/YJO+6IsAfZvkcp98js3TkC0X3us1/ffMJ6lAiaIpDwcA8TRxL
+	mycSaCCOJh+ElLJlBPrzjFXqUqRGkQyz6OuOSwbV40Y6kCzRt2EVCjqEYe3cAkZ31D+QY0vukn4cc
+	PGXREhkTiSHdmVcLZOtQOdiCGh+WL/opfJ59zSbzgTpvkZbhl2a76WGZJ0hMYwnxHI01H2Ha025h6
+	xyhqvw6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGuz-00000007qgP-0LTl;
-	Tue, 03 Dec 2024 00:37:33 +0000
+	id 1tIGvJ-00000007qoV-0Mau;
+	Tue, 03 Dec 2024 00:37:53 +0000
 Received: from pv50p00im-zteg10011501.me.com ([17.58.6.42])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIGuv-00000007qeI-2zBi
+	id 1tIGvG-00000007qnL-3O5K
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 00:37:31 +0000
+	Tue, 03 Dec 2024 00:37:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733186249;
-	bh=+s67f8n4U38kNtBzbNjBtNPtsaYtVPWfyTOydyoL87U=;
+	s=1a1hai; t=1733186270;
+	bh=mRQc1IggNJY/rPZE8m/3aGBJNmzc9wdQYiWlpcKiZr0=;
 	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:
 	 x-icloud-hme;
-	b=RdJmst+OGS1bX18zihPRnq3E4k8Mn0X9gd0De5cMNzdIENXb3O8qhxJoISLLIHPnX
-	 SmVWOv6lgiW8uxFqHQVn6CIL8UWhU+SQ5/c/GaDeD/ZBOanvXDqxIB47dCFo4/Mg9S
-	 Y7nXCVjY03OUPd8tAeu/s13OFpuatFHhJ9ranKymnlfaFEXP5HHYhXF0dGVFb7uXqO
-	 U1Tfsb6uMZjwNnqQJ47gVvxhIu5AP5uoR1PmpdGvjUdq7Oan2xvuwvvrb3ROxUCIGX
-	 4JXq2krogrKZuYlhTFe06UWFxW1I8oIFHJR9yuwEC6FRuV/L//g7Y+QppMj7DwPT6C
-	 BvaISGX1MT84g==
+	b=UKcm2SW/8CW5YwMeuN/yD7BQrEXZzpJgSSS9mmQzXaH+Qu4DFGq4nqCyJG9+0qi6U
+	 tid6yGvERRe7ouGsnCfG3pXlqy3bOvoQuiKIupkt31WIkBKOX3soG4OaJgPaiCswOI
+	 erb9JgGraykTBhigXqRiQP1MXjW7/fiV1eKvLPofDVGmeDdZ8vDL1zow1dztgh5qks
+	 +vtJIwSRU+kkgAP1AuQ2LME/Ij65aZr8i7iq7wDARDnqqNuoLfqKGPROi40qf8OID2
+	 USTBgnpgBbWj4Jy0f2mEBXbyMiMkZ/32oz1tjZ0gTycfe0ns3parnBLpjZvaCo0AXS
+	 0RPo92J3cMwVQ==
 Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id 626224A0614;
-	Tue,  3 Dec 2024 00:37:08 +0000 (UTC)
+	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id D007D4A062B;
+	Tue,  3 Dec 2024 00:37:29 +0000 (UTC)
 From: Zijun Hu <zijun_hu@icloud.com>
-Date: Tue, 03 Dec 2024 08:33:29 +0800
-Subject: [PATCH v2 07/32] gpio: sim: Remove gpio_sim_dev_match_fwnode()
+Date: Tue, 03 Dec 2024 08:33:30 +0800
+Subject: [PATCH v2 08/32] net: dsa: Adapt for constified
+ device_find_child()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241203-const_dfc_done-v2-7-7436a98c497f@quicinc.com>
+Message-Id: <20241203-const_dfc_done-v2-8-7436a98c497f@quicinc.com>
 References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 In-Reply-To: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -104,8 +105,8 @@ Cc: Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org,
  arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
  linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
 X-Mailer: b4 0.14.2
-X-Proofpoint-GUID: LUw6jrNTlWvafXG6SgNBaGnBoiXYHqLl
-X-Proofpoint-ORIG-GUID: LUw6jrNTlWvafXG6SgNBaGnBoiXYHqLl
+X-Proofpoint-GUID: 5T08U2fdwosbWa0fjnlCkTPfz9LFd33w
+X-Proofpoint-ORIG-GUID: 5T08U2fdwosbWa0fjnlCkTPfz9LFd33w
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
  definitions=2024-12-02_14,2024-12-02_01,2024-11-22_01
@@ -115,8 +116,8 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulk
  engine=8.19.0-2308100000 definitions=main-2412030002
 X-Apple-Remote-Links: v=1;h=KCk=;charset=UTF-8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_163729_774434_5DF4BF3D 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20241202_163750_877464_55CC88B4 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,39 +137,26 @@ From: Zijun Hu <quic_zijuhu@quicinc.com>
 device_find_child() has been constified to take new match function type:
 typedef int (*device_match_t)(struct device *dev, const void *data);
 
-So device_match_fwnode() is applicable for the new type directly, and
-remove its unnecessary wrapper gpio_sim_dev_match_fwnode().
+Make dev_is_class() take a const pointer to adapt for the new type.
 
 Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
 ---
- drivers/gpio/gpio-sim.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ net/dsa/dsa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpio/gpio-sim.c b/drivers/gpio/gpio-sim.c
-index f387dad81f2960b5ec3c1b5fd04081ee501cc75b..b1f33cbaaaa78aca324f99c45a868e7e79a9d672 100644
---- a/drivers/gpio/gpio-sim.c
-+++ b/drivers/gpio/gpio-sim.c
-@@ -413,11 +413,6 @@ static int gpio_sim_setup_sysfs(struct gpio_sim_chip *chip)
- 	return devm_add_action_or_reset(dev, gpio_sim_sysfs_remove, chip);
+diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
+index 5a7c0e565a894545ee14f0e0186ed3c46b809b16..e827775baf2ee1d0e1c0ce5807c2cca5c372fc75 100644
+--- a/net/dsa/dsa.c
++++ b/net/dsa/dsa.c
+@@ -1367,7 +1367,7 @@ static int dsa_switch_parse_of(struct dsa_switch *ds, struct device_node *dn)
+ 	return dsa_switch_parse_ports_of(ds, dn);
  }
  
--static int gpio_sim_dev_match_fwnode(struct device *dev, void *data)
--{
--	return device_match_fwnode(dev, data);
--}
--
- static int gpio_sim_add_bank(struct fwnode_handle *swnode, struct device *dev)
+-static int dev_is_class(struct device *dev, void *class)
++static int dev_is_class(struct device *dev, const void *class)
  {
- 	struct gpio_sim_chip *chip;
-@@ -503,7 +498,7 @@ static int gpio_sim_add_bank(struct fwnode_handle *swnode, struct device *dev)
- 	if (ret)
- 		return ret;
- 
--	chip->dev = device_find_child(dev, swnode, gpio_sim_dev_match_fwnode);
-+	chip->dev = device_find_child(dev, swnode, device_match_fwnode);
- 	if (!chip->dev)
- 		return -ENODEV;
- 
+ 	if (dev->class != NULL && !strcmp(dev->class->name, class))
+ 		return 1;
 
 -- 
 2.34.1
