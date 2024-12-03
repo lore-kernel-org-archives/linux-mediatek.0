@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FF7D4979A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:54:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EE3EE6689A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 09:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=91aNnSA4qFdNlN8Qa4xmgUqhmWxQrPHvZvS4bLkNbsc=; b=YIqEI56cScWYfv
-	Wl3emZYTP9+2BUEqZzwDYaUWreqpSArgZv9PWHGXFRiQjtLfQgL52WzlMDkB6THwgzAc5pyK5nZba
-	+MytGOxjE8EaDp86FSweaKHiWAUg0kQa1BfumhS7SkN0kcF8s4kkeg2FrrzVMHdRKo4M4Fn978Vno
-	VNdhwk7Mi79FJq+bYfXSaw7SJiGH+oJCYq+PkwrCumc75i2XPqcy1XmT2IpJ5dvxa5OH7AYNNynIn
-	6TPjH8UCnkUbenscMfI1ccs/R7ZCFjGZdYA9i4nd1vkrPqX4ewl5mVhGKONw7jHheNAVn9gbXWFhj
-	FwiPA+WwLkTSKKsrYqyw==;
+	List-Owner; bh=S0AP+khcoeDefKKwtcqHTDk7Bgcmhhjp0D+hE70AZmA=; b=BPbk9KRqxyNQBP
+	U7sfFQjNwJw/CfI9EHYdNToTFm0+gA3Z7Dha+dn/nfLYLPB3sQDKVpyc8wJOUC70EHmDHleOgLfVm
+	X8RTYrHl8ss+CWDPP0obKZdKPnOYVLFV68C4j4IDJ8qD9rYJft4XAIhuhC+LwLRfAcctMwOttm0Zu
+	IBM24rgFKLmKOZfIKxVmh9PSmGf8oWALBxpCmlqy3kxCIJ7/q5ji/2V1Hupa1f3eP5tbjeys9BCI2
+	nJ9YVQUt147ZRmxUlzBUpuVJOSy4HqUsMh13wirtpgUC2bGkQcpP4TSXLmaDtkTDs7JRaxsAuscS1
+	oUGmUPyf+sBY3T9ZyNVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPc7-00000008zAk-2P6N;
-	Tue, 03 Dec 2024 09:54:39 +0000
+	id 1tIPdD-00000008zP2-2IPS;
+	Tue, 03 Dec 2024 09:55:47 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIPOj-00000008w0p-2GYL;
-	Tue, 03 Dec 2024 09:40:50 +0000
+	id 1tIPOk-00000008w1A-1qwI;
+	Tue, 03 Dec 2024 09:40:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733218848;
-	bh=m+v2wzlj8p9whw1bgEUHxO6xtm0DYanxCgtzMnVEIqI=;
+	s=mail; t=1733218849;
+	bh=9j29nIP5bBYYpfp20Whc9MrJ5ZV5di69JLNeENIyw/g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=a/ZVNgm3NYnLzgjiP99LRYtHRBeDBRvYOgaJcYdTn/xxXeokNQZ8CzdJmYk3mhwdu
-	 PkGXQ1QYL64Ep7NAZ/qvNWVJtuGX+47OLXzGSB5tr1iz01Ug8gHTz1I2OU+/rDCBpL
-	 6D7RSoFZlXz+sfZYG8jmlGrQAWUFXBUbjmGWY+xSpnCPHRMZc75TnHxA+H1iIRgHJ4
-	 5hrOrVow0yFUyoSKUDNZe1TmDV/nLMOSDxWxzln/W2qxawKNnWRKzrH6KjM9ctfk+n
-	 0db/fJsWTise/ouiG7cjdtbSyAMaPgTvzNim2sbdCvGwaMuNwvfZS+YjWLj2JBawQc
-	 nLbK8OWV+9dyw==
+	b=ZThBMsGsz3yuY5RwxxgrNaL0wlbtT0fAz1Mqfv24h1iwGPtwVKqRZsqVibhMVdeVc
+	 sCeepv5W816bbp6LHM8eXnCYWwI+GLltnwYmkJ+ImSmdiT2WY7l3FotCS/62DroDmn
+	 SNL6oKW7/FQXIGv0YokgrrUafaISmw+NKmmJz0PD1C/yE4wJS9lUjG1JLLmW0yPdAZ
+	 sN6h3W9jJ3V7hQa+z8dM/6FDmBDInN1W/XwZE8ngGMXh1FrpkLRFd0WMtWlbvsb7bA
+	 AzYuugpebUV/+l9IP6+stI4OFAZpfFXfz0x9dqc67HqaBq9rt/oD3m4WxmJKnUl4GA
+	 pCJLAUmF1dMKg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9F1A917E35E9;
-	Tue,  3 Dec 2024 10:40:47 +0100 (CET)
-Message-ID: <d9ca723c-300b-4f38-9a1c-125df2fb982b@collabora.com>
-Date: Tue, 3 Dec 2024 10:40:47 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A386D17E35D8;
+	Tue,  3 Dec 2024 10:40:48 +0100 (CET)
+Message-ID: <4ad16e9a-15ae-4b2f-964e-ea6d7981f49d@collabora.com>
+Date: Tue, 3 Dec 2024 10:40:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/18] arm64: dts: mediatek: mt7988: add thermal-zone
+Subject: Re: [PATCH v2 08/18] arm64: dts: mediatek: mt7988: add mcu-sys node
+ for cpu
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-6-linux@fw-web.de>
+ <20241202122602.30734-9-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241202122602.30734-6-linux@fw-web.de>
+In-Reply-To: <20241202122602.30734-9-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_014049_763546_94EA3168 
-X-CRM114-Status: UNSURE (   5.40  )
+X-CRM114-CacheID: sfid-20241203_014050_625142_F5AC8DC7 
+X-CRM114-Status: UNSURE (   7.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,10 +81,15 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 02/12/24 13:25, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add basic thermal-zone node.
+> Add mcu-sys node which is used later as clock-controller for cpus.
+
+In preparation for adding support for CPU DVFS and clock tables for it,
+add the MCUSYS clock controller node.
+
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
