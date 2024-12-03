@@ -4,121 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC33DE64A8A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 13:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06E87E64A8C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 13:17:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QEJ75x+TqYUJVxmVF6uQZZWFOEl0WJRfUhXN2h5KpKM=; b=rStZb/7xMPn/0kV0CHYd0qLiwS
-	rHvFEGuWf4SvFpjeKnXvdR5vBKemi6m9XSFIMokWSbEXoGeMwMX0TgIN1POu0z4HC01yVht4mWuzo
-	uwPP1x0HlNSe4MypjByIqtDxuKQQrjmi2GSVevsHq/1Dvcu5jWodu3x0QDbvQmrt836+iKNwOPwJZ
-	WLuo92Mj/cQfugOKUgKuU9JnKeOOqu2fLL9ohP7BRsSKLwIaojctGzGs9u9gQAHwAm2Hv6o3EMSbo
-	lBSFWSN/Pj8hWHIA8l1Mo1c5bxOvax6Aw6q2Wupwc8eQKWQRQnvC1SE3EZ26qD8O1/3+0Mj3vl8SH
-	P8ooLAvw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:Date:Subject:To:Message-ID:From:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5vcp0J7zk08bcGnG6ixoY9FJh5UMVRDDbvoFP3uqAdc=; b=gZD7xNDT/8i1lEj8+RW6u+zZbU
+	+9ZbbkFKpEPEK2nI+yhs6JMKzuzfcH1lAapJlFEZxdUoHBAi03TvcPa4IZmSKi4RQA08+1u0uUL7Q
+	9CR02a7ZY4nMwFCcH+e5wBEmyjNhAEQ8Ie7NeMZm5vQh8jz0jl8b/15GCQL2ZjrW5gINl194P3Cx1
+	6eCVrF+CKO8DJWv0cZxoCMX0ZHlWM3HK6AaDOWqLBm6s+XBMXCDYFY/MuZWMdZUTttIiqpv+IqG8M
+	EW+GSFYfS+8GFPXrK1PcwJlBwIsrebMxGGBGIEDYl4SeZI+NXTev7fWf3nQ+l0pMQ3AsJOTdot70l
+	nsYLx1wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tISku-00000009Zm9-3MJG;
-	Tue, 03 Dec 2024 13:15:56 +0000
-Received: from mr85p00im-ztdg06021801.me.com ([17.58.23.195])
+	id 1tISm3-00000009a4K-0bHj;
+	Tue, 03 Dec 2024 13:17:07 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tISZD-00000009XOY-0j4J
+	id 1tISch-00000009Y5o-1E5s
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 13:03:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733231020;
-	bh=QEJ75x+TqYUJVxmVF6uQZZWFOEl0WJRfUhXN2h5KpKM=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
-	 x-icloud-hme;
-	b=Kc4yhuXugc/D/qtZZ41v8wAnuwEzwggEWUway63IXkClqixwU1cfn/v3YVm8Qsiaw
-	 28NLlORRwJjFZX7JY4DZlIgrQ1s8zKvPJAQ+RXHBAEkcNRuUPk0OyxBiAs9kB0GBL/
-	 4jgwTolEa8TiqyUyeuv6tr/7DG898UMLRPOw8P2qzUVkHb/i6BK0gmuVjOCVuRaOL4
-	 yVOUtS8ijY+iNGs/3oFthLPmtWg3RPz3zQCNIexvybyNTkT8kJ+0hPmRIWLu7xxlpo
-	 9HqUza+TM66+s3TNEHqlu5QAj7PkxbSr1VPZfaRzmcsea2BKweNx4LzKqRftuLVcUB
-	 Ma8BwRHqOq26Q==
-Received: from [192.168.1.26] (mr38p00im-dlb-asmtp-mailmevip.me.com [17.57.152.18])
-	by mr85p00im-ztdg06021801.me.com (Postfix) with ESMTPSA id 67D49442839;
-	Tue,  3 Dec 2024 13:03:18 +0000 (UTC)
-Message-ID: <b9885785-d4d4-4c72-b425-3dc552651d7e@icloud.com>
-Date: Tue, 3 Dec 2024 21:02:59 +0800
+	Tue, 03 Dec 2024 13:07:28 +0000
+Received: by mail-pg1-x542.google.com with SMTP id 41be03b00d2f7-7ee11ff7210so3779854a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Dec 2024 05:07:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733231245; x=1733836045; darn=lists.infradead.org;
+        h=mime-version:date:subject:to:reply-to:message-id:from:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5vcp0J7zk08bcGnG6ixoY9FJh5UMVRDDbvoFP3uqAdc=;
+        b=YFLfORXgVXlIOt80+yQffQfUWDgunsnQGAdenHQGwGp+8cTLg8dJXPXL4dUrIoKTl0
+         GtcUjI6V41beb/qC8k02edyTTp4mRxxB5NGFKAnmqyM19Rg3NN5aJCwaMEdLnBbbPthZ
+         4layMADX15gnw1q6Ni+9Nt+P354aMgqixnFNstJLkws3c8FXPUvUPrzvApyntIxJ6e5Z
+         1ETd1lWrXeQGzZlu8rDqyYU15wkxm3/5uyZmRQ0s4lD9Bjz//HZk6bqH/DB4zDEVThhk
+         fU6driRjzOQfuikVXCsbW8fQCrhA0rc9DH2/0I3v6EIiVv9dw8Lsm+es0Z2eJ5fi3fKb
+         0Syg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733231245; x=1733836045;
+        h=mime-version:date:subject:to:reply-to:message-id:from
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5vcp0J7zk08bcGnG6ixoY9FJh5UMVRDDbvoFP3uqAdc=;
+        b=RsOkmzvoz3h0DCFI+XdYgTGp66aEa0NVoaAOmV52PAag1fdbuzRDpVqX4A6TyyL3mo
+         9NH8SdHnACffR6I4vxddKDUXK3wn2PYG1q1yKQZc5V+UtOLY+SkQbh+8fSTLGzd5kAk6
+         pl5ECfDbZYPvnDfFq/3FVV+3ZWmfzxzDn6si7TneS8kZ2CufGEtcStw3fe/SntIAYbiH
+         rwFtoYFvnydXrBChCOTfGBwLTyG4JQyHxzjpLRrSxngEqOShgYkAD50wcb+u9pJFQ38K
+         wTPYbHRbjET1tvO9a64fQuKAv+qsDtlk64eV1yma78Bmp4+mr7PrbTW5red7KvFaoA5J
+         sbWw==
+X-Gm-Message-State: AOJu0YyJiOVTr4OrVkyKsp+yiSyhwdHdqF1LviEzuXNmGhaTg3tL4w/I
+	T34SrSEiSydul6EgVZQYzhtUhGvr9GD5Aqz3v1gVaTV8/yvaB4cjNNUO+0bj
+X-Gm-Gg: ASbGncsfj1v0aQJypI3PFhAKMuLZ8VqEjV7zKXbJXQRhR4zL0g8MZE1zL5LXb0wy5dk
+	qAfBJnkrx9cz9ls8C1MVe7gV/SOiTWOoldDCJq11S604EjkvE+PYdEIunm3npa5F8HAuUbVs3af
+	XRzVrMbBENwRnMi8f0SzdAixgwqcFTpS2Ra6jVMwti6SPcKth/6AVM7/n99ehlNlc32pRAntOcO
+	BMO/r8n25huKtBF0R/nLX8t8hdQo5XLwR4qcVmu1QG6Q2qu/J4N8ubax758f/vcXw==
+X-Google-Smtp-Source: AGHT+IF47ICZvG4AHFQydn3HGK4RAzRSioj6bD5unxTcdluSqteSsWS8JWFm4lSoo7hoUk+zTRl3Cw==
+X-Received: by 2002:a05:6a21:3a96:b0:1e0:c8d9:3382 with SMTP id adf61e73a8af0-1e16542c06amr2519809637.45.1733231245227;
+        Tue, 03 Dec 2024 05:07:25 -0800 (PST)
+Received: from [103.237.87.171] ([103.237.87.171])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7fc9c2e2babsm9539407a12.22.2024.12.03.05.07.24
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Dec 2024 05:07:24 -0800 (PST)
+From: Teri Olson <rtcusvsjmwsbgu@gmail.com>
+X-Google-Original-From: Teri Olson <terrolson@hotmail.com>
+Message-ID: <7e4eaf3732fa92e9b536ee110f22aab818ee2f251157758cd1e5b2aa667378b0@mx.google.com>
+To: linux-mediatek@lists.infradead.org
+Subject: ` Piano `
+Date: Tue, 03 Dec 2024 20:07:24 +0700
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
- Martin Tuma <martin.tuma@digiteqautomotive.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Andreas Noever <andreas.noever@gmail.com>,
- Michael Jamet <michael.jamet@intel.com>,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- Yehezkel Bernat <YehezkelShB@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
- <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- Vishal Verma <vishal.l.verma@intel.com>, Dave Jiang <dave.jiang@intel.com>,
- Ira Weiny <ira.weiny@intel.com>, Takashi Sakamoto <o-takashi@sakamocchi.jp>,
- Jiri Slaby <jirislaby@kernel.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Lee Duncan <lduncan@suse.com>, Chris Leech <cleech@redhat.com>,
- Mike Christie <michael.christie@oracle.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Nilesh Javali <njavali@marvell.com>,
- Manish Rangankar <mrangankar@marvell.com>,
- GR-QLogic-Storage-Upstream@marvell.com, Davidlohr Bueso <dave@stgolabs.net>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Alison Schofield <alison.schofield@intel.com>,
- Andreas Larsson <andreas@gaisler.com>, Stuart Yoder <stuyoder@gmail.com>,
- Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jens Axboe <axboe@kernel.dk>,
- Sudeep Holla <sudeep.holla@arm.com>,
- Cristian Marussi <cristian.marussi@arm.com>, Ard Biesheuvel
- <ardb@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- linux-media@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-gpio@vger.kernel.org, netdev@vger.kernel.org,
- linux-pwm@vger.kernel.org, nvdimm@lists.linux.dev,
- linux1394-devel@lists.sourceforge.net, linux-serial@vger.kernel.org,
- linux-sound@vger.kernel.org, open-iscsi@googlegroups.com,
- linux-scsi@vger.kernel.org, linux-cxl@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-block@vger.kernel.org,
- arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
- <g32cigmktmj4egkq2tof27el2yss4liccfxgebkgqvkil32mlb@e3ta4ezv7y4m>
- <9d34bd6f-b120-428a-837b-5a5813e14618@icloud.com>
- <2024120320-manual-jockey-dfd1@gregkh>
-Content-Language: en-US
-From: Zijun Hu <zijun_hu@icloud.com>
-In-Reply-To: <2024120320-manual-jockey-dfd1@gregkh>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: CNFmwAOF9NCRr2KajfMjTjtFd_qlM54K
-X-Proofpoint-GUID: CNFmwAOF9NCRr2KajfMjTjtFd_qlM54K
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-03_02,2024-12-03_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 spamscore=0
- clxscore=1015 malwarescore=0 adultscore=0 phishscore=0 mlxscore=0
- suspectscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2412030113
+Content-Type: text/plain; charset=us-ascii
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_050351_210233_21E46805 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20241203_050727_321263_EBAC129F 
+X-CRM114-Status: UNSURE (   2.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,48 +88,14 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: terrolson22@outlook.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/12/3 20:41, Greg Kroah-Hartman wrote:
-> On Tue, Dec 03, 2024 at 08:23:45PM +0800, Zijun Hu wrote:
->> On 2024/12/3 20:00, Uwe Kleine-König wrote:
->>> Hello,
->>>
->>> On Tue, Dec 03, 2024 at 08:33:22AM +0800, Zijun Hu wrote:
->>>> This patch series is to constify the following API:
->>>> struct device *device_find_child(struct device *dev, void *data,
->>>> 		int (*match)(struct device *dev, void *data));
->>>> To :
->>>> struct device *device_find_child(struct device *dev, const void *data,
->>>> 				 device_match_t match);
->>>> typedef int (*device_match_t)(struct device *dev, const void *data);
->>>
->>> This series isn't bisectible. With only the first two patches applied I
->>> hit:
->>
->> yes. such patch series needs to be merge as atomic way.
->>
->> Hi Greg,
->>
->> is it possible to ONLY merge such patch series by atomic way into your
->> driver-core tree?
-> 
-> Nope!
-> 
->> or squash such patch series into a single patch ?
->>
->> various subsystem maintainers may not like squashing way.
-> 
-> Agreed, so look into either doing it in a bisectable way if at all
-> possible.  As I don't see a full series here, I can't suggest how it
-> needs to happen :(
-> 
+Hello,
 
-let me send you a full series later and discuss how to solve this issue.
+I'm giving out my late husband's Yamaha Baby Grand Piano for free to any passionate instrument lover. kindly let me know if you want it or have someone else who wants it.
 
-> thanks,
-> 
-> greg k-h
-
+Thanks,
+Teri
 
