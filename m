@@ -4,69 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE917E64AB1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 14:24:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D75DE64AB4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 14:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M8uyWrRzzEAVXoENQCiyJ4GB9jG0a0mzNVvUDFjMzUk=; b=z35NBzruQ8T+BtVXrbZnY8BPBp
-	nVvd3Cvyij8Q5R4JfPxl938rdfG/6wi05XRl3yUzRMsHRoABeef8jv3X3hBvYsu9mILcoi7v9HjiO
-	QJIpHZDTGOyyrTs7AkUJ7X3lQ+E5fDM0bkYBmlIGSylWvliBlX51KpxGIb3WuKIp+4M3ZG8zVHE3N
-	HNRYEPhkV+qU2M3pcoDmPCDrCARC7t5MgI+IlotX8Dl2Gh3u6Ul9nOd2VCANiIiC07TWwo8nVTaI2
-	YPAp/lH170XA7TFNSRPweDJHw2oGy2kAYF26AcjLzrOl/f7bltAv//eibE23tNq1aCoSd6CvavD2+
-	Cr9DvO6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Of1Ik4MvXXRmJiFvl6IgwhIZ3e6rTbtLF+pxPp+sWI8=; b=oUdGs9XI60kybUIIKmbpvXWsay
+	wkLq4VwG5wS0bwldELddVcHxHbFo1bZe97N/4M5xWE2o+vTzzv8DpsTBN19pvycIYsQjuw+G6fvOV
+	sxLE5phTh2ijUHhHzq9BO/hBcJ8ce8vTUDRdAtLzZOK2K+yeel7UxiXORxO1tq35AbSYermPMi8NV
+	UJte6ISH0regkgy0M/2/p84BMt6brIkHq6YDE1m16EQr0MfC4WY16wxAh825K+w17lCfMOW9Hu6BN
+	R6WOUGfRyMVfFI7jh3gFrSvRypo/ArIZs/sEH3wSeeoPjRFbWztqDp0Fl/buDgUDGzFj8yqSdhWIQ
+	STKW1mlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tITpc-00000009lTC-2eZk;
-	Tue, 03 Dec 2024 14:24:52 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tITyk-00000009n9G-1AVs;
+	Tue, 03 Dec 2024 14:34:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIToa-00000009lEm-3ogd;
-	Tue, 03 Dec 2024 14:23:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733235826;
-	bh=iUYCthuBSmOjrDmuj+W4FEtenoQajCGj/nGcHrCp+Y4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HDHGIQr4ZOP+6nOkv9NiLDKRLFN6dAlvE+LiEiArCuc2pwc4PJxfifRwd/H0l+aOp
-	 xl3UdXx7s/BRwqRPH+fZUkxHhYyBqHjVgvVAzjKJXfdsnb/8z+FMvCbT7BvLsOsCiN
-	 fnScm7AdEeAZN1lRaZN/YdWTd/ozIK2qmRU8wsHvQyevysrNgS1UftlaLrJc8WxO0D
-	 5JfSWj27FNx88mUwpo2OdvlQZo4rwBxtU0jdhkqJuFDsmRF7ojCgkp6sGUyT6Gezk1
-	 uiXAf8CEm/u7wKYtiGtYlPlU13NFbP8WMGNsCCciKdZj4xQH3inLfGbNIjlIjh258Q
-	 1hKZ/TuOSSCKg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2536517E0E37;
-	Tue,  3 Dec 2024 15:23:46 +0100 (CET)
-Message-ID: <fea3783a-0ca2-4a46-8b82-ef1156dc8f3c@collabora.com>
-Date: Tue, 3 Dec 2024 15:23:44 +0100
+	id 1tITyC-00000009n4T-3Bkh;
+	Tue, 03 Dec 2024 14:33:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Of1Ik4MvXXRmJiFvl6IgwhIZ3e6rTbtLF+pxPp+sWI8=; b=ZWN+XFdbOCZpPR6C8vli2AuztS
+	lYPexP08MMXo2kw9KkIXVOnxnPuOwzXc56CyRwuHDNRShyuJerkvQ+iJ+v+BjV+8M7R3c1DOftM6e
+	vhmekYQDPpb2/IfTbM3wFWAF7kIxOd+mZwArKFemUqU2PIko3cjAUnQOh9JbIJhxzeywUWSXRz3Af
+	/KZFQv9F4/VHI6Cmuik7eyLbco909JU+UlZc8zGhn+dcLYrrqVcDsxe0qGESVdLRJvYzqk9aKbOj/
+	v0rSFqeK+YDxwc6fhsmefR5pvbhuxRSyceDZlW37zfx+GlhzD9FgTj/s8zji/1qy0Ewq6wPBb7qBm
+	8AFmkYfA==;
+Received: from mgamail.intel.com ([198.175.65.19])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tITy8-00000002Oka-2Kui;
+	Tue, 03 Dec 2024 14:33:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1733236420; x=1764772420;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=t+NELF6Cs3AMXyjLkXGAGVtag15igAgDFRlk6+wOWag=;
+  b=D2nSTb+qAQLlv/X6ydahb9KPTDyjbzzyTOk7LYEoYVsnugDiK/quXAqb
+   VLdT3Gj/r2eX6be174jeHi9lCXbXrPoLz9tkXAXnfqgc5yAv78XqAHXLD
+   C6ejUtV2+qj9uvbqTl+Of0duUkQorVayp4YPZQNMyw//udrMpl8DP21+e
+   XzDJC3MFeQdn7XKQftm4WuIetIbq7r1uXwQcxPtTUeAZYR02jLTY4x87+
+   nC96vmlDU58K6MoZkFzaHM0e8Kb0iv/Hp4DwAKuWnzHVcR8imdoBDCDk/
+   7PkHYgIfqOQnlmVUKxyZEIw4LWu/K5rydpv1P3YaYp2KZqQJbcmvm++SU
+   g==;
+X-CSE-ConnectionGUID: 9Afd1mzSQoWr4p3K0Cyo6w==
+X-CSE-MsgGUID: 4XHdnxznToSFISqxotEzdQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11275"; a="33331023"
+X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; 
+   d="scan'208";a="33331023"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 06:33:37 -0800
+X-CSE-ConnectionGUID: qFwNGDLVTlKCszQVkKdgBQ==
+X-CSE-MsgGUID: YuyBpSYvSa20R8vswupuDA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; 
+   d="scan'208";a="98223136"
+Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.246.135])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 06:32:49 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Maxime Ripard
+ <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
+ Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+ <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+ <broonie@kernel.org>, Phong LE <ple@baylibre.com>, Inki Dae
+ <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin
+ Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King
+ <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?=
+ <heiko@sntech.de>, Andy
+ Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson
+ <dave.stevenson@raspberrypi.com>, =?utf-8?Q?Ma=C3=ADra?= Canal
+ <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 9/9] drm/vc4: hdmi: use
+ drm_atomic_helper_connector_hdmi_update_edid()
+In-Reply-To: <ae24x2bo736jpzi77l34hybejawwe4rp47v2idedga344ye6zr@bxsxz34dwrd2>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-9-b5316e82f61a@linaro.org>
+ <20241202-married-bald-raven-7acd83@houat>
+ <ae24x2bo736jpzi77l34hybejawwe4rp47v2idedga344ye6zr@bxsxz34dwrd2>
+Date: Tue, 03 Dec 2024 16:32:44 +0200
+Message-ID: <877c8g4z1v.fsf@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/18] arm64: dts: mediatek: mt7988: enable serial0 on
- bpi-r4
-To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241202122602.30734-1-linux@fw-web.de>
- <20241202122602.30734-11-linux@fw-web.de>
- <32ef5ab8-a163-4fdc-8603-f5a6f0e8526b@collabora.com>
- <6964E096-7C19-450C-8434-6A4456AFDD55@public-files.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <6964E096-7C19-450C-8434-6A4456AFDD55@public-files.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_062349_092702_06E88625 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241203_143340_972589_4347769E 
+X-CRM114-Status: GOOD (  33.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +125,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/12/24 12:27, Frank Wunderlich ha scritto:
-> Am 3. Dezember 2024 10:40:45 MEZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
->> Il 02/12/24 13:25, Frank Wunderlich ha scritto:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>
->> arm64: dts: mediatek: mt7988a-bpi-r4: Enable serial0 debug uart
-> 
-> You want new prefix here? That will change all r4 commits,right?
-> 
+On Tue, 03 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> On Mon, Dec 02, 2024 at 02:27:49PM +0100, Maxime Ripard wrote:
+>> Hi,
+>> 
+>> On Sun, Dec 01, 2024 at 02:44:13AM +0200, Dmitry Baryshkov wrote:
+>> > Use the helper function to update the connector's information. This
+>> > makes sure that HDMI-related events are handled in a generic way.
+>> > Currently it is limited to the HDMI state reporting to the sound system.
+>> > 
+>> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+>> > ---
+>> >  drivers/gpu/drm/vc4/vc4_hdmi.c | 9 +++++++--
+>> >  1 file changed, 7 insertions(+), 2 deletions(-)
+>> > 
+>> > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+>> > index d0a9aff7ad43016647493263c00d593296a1e3ad..d83f587ab69f4b8f7d5c37a00777f11da8301bc1 100644
+>> > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+>> > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+>> > @@ -401,13 +401,16 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
+>> >  	 */
+>> >  
+>> >  	if (status == connector_status_disconnected) {
+>> > +		drm_atomic_helper_connector_hdmi_update_edid(connector, NULL);
+>> >  		cec_phys_addr_invalidate(vc4_hdmi->cec_adap);
+>> >  		return;
+>> >  	}
+>> >  
+>> >  	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
+>> >  
+>> > -	drm_edid_connector_update(connector, drm_edid);
+>> > +	// TODO: use drm_atomic_helper_connector_hdmi_update() once it gains
+>> > +	// CEC support
+>> > +	drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
+>> 
+>> So, it's not just about EDID, and I think we shouldn't really focus on
+>> that either.
+>> 
+>> As that patch points out, even if we only consider EDID's, we have
+>> different path depending on the connector status. It shouldn't be up to
+>> the drivers to get this right.
+>> 
+>> What I had in mind was something like a
+>> drm_atomic_helper_connector_hdmi_hotplug function that would obviously
+>> deal with EDID only here, but would expand to CEC, scrambling, etc.
+>> later on.
+>
+> I thought about it, after our discussion, but in the end I had to
+> implement the EDID-specific function, using edid == NULL as
+> "disconnected" event. The issue is pretty simple: there is no standard
+> way to get EDID from the connector. The devices can call
+> drm_edid_read(), drm_edid_read_ddc(connector->ddc) or (especially
+> embedded bridges) use drm_edid_read_custom().
 
-Yeah - that prefix should be shortening the commit titles but mainly will
-make it more straightforward when reading the commit history with --oneline.
+Lack of EDID may be a good approximation of disconnected for displays
+that should have one, but just a reminder that having an EDID should not
+be the only approximation for connected.
 
-Thanks,
-Angelo
+This is relevant for the debugfs/firmware EDID case. You'll want to be
+able to have that, without it implying connected.
 
->>> Enable the debug uart on Bananapi R4 board.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
-> 
-> 
-> regards Frank
+BR,
+Jani.
 
 
+>
+> Of course we can go with the functional way and add the
+> .read_edid(drm_connector) callback to the HDMI funcs. Then the
+> drm_atomic_helper_connector_hdmi_hotplug() function can read EDID on its
+> own.
+>
+> Also the function that you proposed perfectly fits the HPD notification
+> callbacks, but which function should be called from the .get_modes()?
+> The _hdmi_hotplug() doesn't fit there. Do we still end up with both
+> drm_atomic_helper_connector_hdmi_hotplug() and
+> drm_atomic_helper_connector_hdmi_update_edid()?
+>
+>> 
+>> And would cover both the connected/disconnected cases.
+>> 
+>> Maxime
 
+-- 
+Jani Nikula, Intel
 
