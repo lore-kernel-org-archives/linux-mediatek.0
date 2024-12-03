@@ -4,110 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3C2E69EA6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 15:28:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE68E69EAF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 15:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fXsGM16t+k9xHW0mYA2cadaYwtcg7Q66kddImdrdG4Y=; b=QsUl+NYwre+LC1eM/VV4qi0sbJ
-	AkQyydOB1vViRdyp3NgtydFEbX3ahh3gpwLwPZvaJ3YHIwtkKpfT1Bfxc1ini+FFkz9/6Qpb41kuS
-	D8ux8FyToFiUe0bWYNe1K4KO57GKZjG26vGXdqz7VoBaR5hN1lg4r9/kFiQiXY3LWW1KwD+ku+Yg9
-	w1lJwgWI4TygzmsSIOo1HhMVa+orJqDGRIo3zg3oB5czHLO6X3X8omOc2nXvxC9DY1+e4FiI/mGdr
-	jzS548ipQ5IM8v8JO8I7kas9UJMU6iFb/+0Ll6deQuOjCLWPe/NYAHOgabiKvG7slhgsN5wJJoYxm
-	qO04hDWg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
+	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BXfavICdX0pf2jCBeS7KQ/6j01OzZdPaFIC1TGwGLIQ=; b=dDsLwSfRJij3m0
+	v1Ui4ExSnAHHXx/zrM6rrWHNheKofQNe5ME1VOcNP8PJFZrjjA8hBCzVmPwVg5Rb+RmuYahWqoaid
+	do7FfUbGmo78VheGoWm5w0tgDGGTyr0nBo5Wq4ZgxQUd7u/R41GxNegiaOkJ3GhJdoq5nm33Z64pj
+	5CI9xMDn9a7aYS2KIP04TYHLjNiGVjLFqx6N+HGhODFKL+cdGKQnimVNDicjzR4tEAdCGdMs78PaI
+	1BEPtoRFzxQGtSqxeuOypbVmxctlceJojJlXkKpkhTlewX+RrC1ZoYo38CpUf4KL7j5eGINql8Jiy
+	mUAWEIflPToZvOVbATBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIUpb-00000009vV2-1Igt;
-	Tue, 03 Dec 2024 15:28:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tIUqB-00000009vhI-1Hdh;
+	Tue, 03 Dec 2024 15:29:31 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tITr4-00000009m0V-3LyT;
-	Tue, 03 Dec 2024 14:26:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=fXsGM16t+k9xHW0mYA2cadaYwtcg7Q66kddImdrdG4Y=; b=VxvWkLupN9KqUznKUvJPPfjTy5
-	B22xNRrEpUj6+koulvaOPacOP1Imo4LFB+eO+b4qrhqvidVHWtVTQH/gnh/16yLc5SoBrHJV0Z85T
-	ReYeYfDLA2XEz09kipsvPiGjSSZ//FaLeJhT5H424FYBy4Ke5hiPufezOdvlNzwzTQupqFUo+rzyq
-	JO63FSxqrvwuogkB//7kFGBTEqoXN/q0n9zoqXElEcIQZZOJaBD3361ofigxCn/kZZZuzzF6p3qVt
-	5Wz9lNd37n9veVcFdeZN2sI3ZbWXMgaUxCJUGa0bziPKsnUyJYTCoLcPgHukn6ucHI3FPtLbnpt99
-	wEhO6FrQ==;
-Received: from mgamail.intel.com ([198.175.65.13])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tITr1-00000002OQ2-2jV9;
-	Tue, 03 Dec 2024 14:26:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733235980; x=1764771980;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=uMWXhqZwProDmwOA4vHMhW1QbQjGRI1y8AQlSmfmBzk=;
-  b=RBPaYjLqOfDbzXxbFWMXmAWS5m2kYCbYsYPWdIIc2jiWx9JuUKwMLr4J
-   pi+0fS1oOh5jcvi83wu1CkmcBPkNxqq2/Uws9bYmgOej/gNQN3TOv7SOf
-   qoJb5PV0FU3PEcl9IYZ5Wy52+n5SYf8UdjSfRJJf6Qff/ddQb4FAOqFj0
-   900FI9kpblzxL83lIhvGKTebE79LzNpogvS7eepjfNghYZ/Z3170maCbn
-   bUn+esnIG9a3QMrModV8cwpNkvgFQbh7j7oFMxGcA33yqmj/cXYQDCl7g
-   LKCu7q/aYy6B6JTCcglAx12TSy3eaUcr6PheT25w5lVF+P+s1FvO0cWLF
-   Q==;
-X-CSE-ConnectionGUID: 1EKRtRypQMmHCxzx4QWl2A==
-X-CSE-MsgGUID: H6dJZf67R167RhHTXoSgMw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11275"; a="44480683"
-X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; 
-   d="scan'208";a="44480683"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 06:26:13 -0800
-X-CSE-ConnectionGUID: aDPdg6NdRb+ONzW7kLZxAQ==
-X-CSE-MsgGUID: Tuwzy8/pRA2RVBUpHZa5NQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; 
-   d="scan'208";a="93328558"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.246.135])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 06:26:01 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi
- Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, Phong LE <ple@baylibre.com>, Inki Dae
- <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin
- Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Russell King
- <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
- Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?=
- <heiko@sntech.de>, Andy
- Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>, =?utf-8?Q?Ma=C3=ADra?= Canal
- <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 7/9] drm/bridge_connector: hook
- drm_atomic_helper_connector_hdmi_update_edid()
-In-Reply-To: <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
- <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
-Date: Tue, 03 Dec 2024 16:25:58 +0200
-Message-ID: <87a5dc4zd5.fsf@intel.com>
+	id 1tIUp9-00000009vRM-3zKx;
+	Tue, 03 Dec 2024 15:28:29 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout4.routing.net (Postfix) with ESMTP id 2E8A4100686;
+	Tue,  3 Dec 2024 15:28:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1733239706;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BXfavICdX0pf2jCBeS7KQ/6j01OzZdPaFIC1TGwGLIQ=;
+	b=Py3QnBBBNisP8uGRDmzVosE2MOwtzfELAF4PyXfLM9+Ou6W57lxU3hdwiVxZRwCQ3mWx3U
+	bv2DHT7/FLF9xty9APbNlVl8/l8vGEHqHNVxu0zAq8AUZydK6HKcMANhuLa5dbDfLR2/QR
+	HsRfNEAp6cx/wbmeETgNfjLpSpCz0wA=
+Received: from webmail.hosting.de (unknown [134.0.26.148])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 8A20E1005E7;
+	Tue,  3 Dec 2024 15:28:25 +0000 (UTC)
 MIME-Version: 1.0
-Content-Type: text/plain
+Date: Tue, 03 Dec 2024 16:28:25 +0100
+From: "Frank Wunderlich (linux)" <linux@fw-web.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 13/18] arm64: dts: mediatek: mt7988: add i2c to bpi-r4
+ board
+In-Reply-To: <f47f08c0-0fb4-4826-9b25-1277cabe4bb6@collabora.com>
+References: <20241202122602.30734-1-linux@fw-web.de>
+ <20241202122602.30734-14-linux@fw-web.de>
+ <1ad355df-3f2a-4257-9374-1d125e138791@collabora.com>
+ <CA7E06EB-D26A-45D0-BF13-9C6B640F27A0@public-files.de>
+ <f47f08c0-0fb4-4826-9b25-1277cabe4bb6@collabora.com>
+Message-ID: <b12e215af5aa5b6bb2fadbeda1117c94@fw-web.de>
+X-Sender: linux@fw-web.de
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mail-ID: 811d2679-12ba-4194-b5ef-2c8c75dd7bf2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_142620_069963_2A2B1E86 
-X-CRM114-Status: GOOD (  25.20  )
+X-CRM114-CacheID: sfid-20241203_072828_131656_61133DED 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,148 +74,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 01 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
-> Extend drm_bridge_connector code to read the EDID and use it to update
-> connector status if the bridge chain implements HDMI bridge. Performing
-> it from the generic location minimizes individual bridge's code and
-> enforces standard behaviour from all corresponding drivers.
->
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> ---
->  drivers/gpu/drm/display/drm_bridge_connector.c | 67 ++++++++++++++++++++------
->  1 file changed, 53 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-> index 12ab9f14cc8a8672478ae2804c9a68d766d88ea5..71ae3b2c9049016d1cc0d39a787f6461633efd53 100644
-> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
-> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-> @@ -17,6 +17,7 @@
->  #include <drm/drm_edid.h>
->  #include <drm/drm_managed.h>
->  #include <drm/drm_modeset_helper_vtables.h>
-> +#include <drm/drm_print.h>
->  #include <drm/drm_probe_helper.h>
->  #include <drm/display/drm_hdmi_state_helper.h>
->  
-> @@ -175,17 +176,55 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
->   * Bridge Connector Functions
->   */
->  
-> +static const struct drm_edid *
-> +drm_bridge_connector_read_edid(struct drm_connector *connector,
-> +			       enum drm_connector_status status)
-> +{
-> +	struct drm_bridge_connector *bridge_connector =
-> +		to_drm_bridge_connector(connector);
-> +	const struct drm_edid *drm_edid;
-> +	struct drm_bridge *bridge;
-> +
-> +	bridge = bridge_connector->bridge_edid;
-> +	if (!bridge)
-> +		return NULL;
-> +
-> +	if (status != connector_status_connected)
-> +		return NULL;
-> +
-> +	drm_edid = drm_bridge_edid_read(bridge, connector);
-> +	if (!drm_edid_valid(drm_edid)) {
+Am 2024-12-03 15:22, schrieb AngeloGioacchino Del Regno:
+> Il 03/12/24 11:58, Frank Wunderlich ha scritto:
+>> Am 3. Dezember 2024 10:40:38 MEZ schrieb AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com>:
+>>> Il 02/12/24 13:25, Frank Wunderlich ha scritto:
+>>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>> 
+>>>> Add basic i2c nodes to bananapi R4 board.
+>>>> 
+>>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> 
+>>> arm64: dts: mediatek: mt7988a-bpi-r4: Enable I2C controllers
+>>> 
+>>> Enable the I2C0, I2C2 controllers found on the BananaPi R4 board; 
+>>> these
+>>> controllers are accessible at ... I don't know, a header on the 
+>>> board?
+>> 
+>> These 2 i2c have directly connected spare devices (pmic on i2c0 and 
+>> i2c-mux on i2c2 added in later commits to have it a bit cleaner). I2c1 
+>> is on gpio header which i have not added to let user choose if he 
+>> wants i2c option or gpio. I can also add i2c1 to r4 board with the 
+>> right pinctrl but imho it should be disabled to have gpio function 
+>> default.
+> 
+> And again, you should really add all that information to the commit 
+> description,
+> as that not only helps me to review your submission, but also helps 
+> other people
+> checking the commit history....!
 
-What's the case this check is for?
+this ine i would rephrase like this
 
-My preference would be that bridge->funcs->edid_read() uses
-drm_edid_read*() family of functions that do the checks and return the
-EDID.
+     arm64: dts: mediatek: mt7988a-bpi-r4: Enable I2C controllers
 
-There are some cases that just allocate a blob and return it. Would be
-nice if they could be converted, but in the mean time could use
-drm_edid_valid() right there. Additional validity checks are redundant.
-
-BR,
-Jani.
+     Enable the I2C0, I2C2 controllers found on the BananaPi R4 board.
+     Both controllers are not accessible from user and having fixed spare
+     devices. I2C0 have a pmic connected, I2C2 is used with 
+I2C-multiplexer
+     for e.g. SFP cages.
+     The missing I2C1 is connected to GPIO header which can have either 
+GPIO
+     mode or I2C mode.
 
 
-> +		drm_edid_free(drm_edid);
-> +		return NULL;
-> +	}
-> +
-> +	return drm_edid;
-> +}
-> +
->  static enum drm_connector_status
->  drm_bridge_connector_detect(struct drm_connector *connector, bool force)
->  {
->  	struct drm_bridge_connector *bridge_connector =
->  		to_drm_bridge_connector(connector);
->  	struct drm_bridge *detect = bridge_connector->bridge_detect;
-> +	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
->  	enum drm_connector_status status;
->  
->  	if (detect) {
->  		status = detect->funcs->detect(detect);
->  
-> +		if (hdmi) {
-> +			const struct drm_edid *drm_edid;
-> +			int ret;
-> +
-> +			drm_edid = drm_bridge_connector_read_edid(connector, status);
-> +			ret = drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
-> +			if (ret)
-> +				drm_warn(connector->dev, "updating EDID failed with %d\n", ret);
-> +
-> +			drm_edid_free(drm_edid);
-> +		}
-> +
->  		drm_bridge_connector_hpd_notify(connector, status);
->  	} else {
->  		switch (connector->connector_type) {
-> @@ -246,29 +285,29 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
->  static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
->  					       struct drm_bridge *bridge)
->  {
-> +	struct drm_bridge_connector *bridge_connector =
-> +		to_drm_bridge_connector(connector);
-> +	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
->  	enum drm_connector_status status;
->  	const struct drm_edid *drm_edid;
-> -	int n;
->  
->  	status = drm_bridge_connector_detect(connector, false);
->  	if (status != connector_status_connected)
-> -		goto no_edid;
-> +		return 0;
->  
-> -	drm_edid = drm_bridge_edid_read(bridge, connector);
-> -	if (!drm_edid_valid(drm_edid)) {
-> +	/* In HDMI setup the EDID has been read and handled as a part of .detect() */
-> +	if (!hdmi) {
-> +		drm_edid = drm_bridge_connector_read_edid(connector, status);
-> +		if (!drm_edid) {
-> +			drm_edid_connector_update(connector, NULL);
-> +			return 0;
-> +		}
-> +
-> +		drm_edid_connector_update(connector, drm_edid);
->  		drm_edid_free(drm_edid);
-> -		goto no_edid;
->  	}
->  
-> -	drm_edid_connector_update(connector, drm_edid);
-> -	n = drm_edid_connector_add_modes(connector);
-> -
-> -	drm_edid_free(drm_edid);
-> -	return n;
-> -
-> -no_edid:
-> -	drm_edid_connector_update(connector, NULL);
-> -	return 0;
-> +	return drm_edid_connector_add_modes(connector);
->  }
->  
->  static int drm_bridge_connector_get_modes(struct drm_connector *connector)
-
--- 
-Jani Nikula, Intel
+> Cheers
+> 
+>> 
+>>> After which,
+>>> 
+>>> Reviewed-by: AngeloGioacchino Del Regno 
+>>> <angelogioacchino.delregno@collabora.com>
+>>> 
+>>> 
+>> 
+>> 
+>> regards Frank
 
