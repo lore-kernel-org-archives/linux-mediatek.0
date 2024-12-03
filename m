@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62CDE64AAD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 14:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C374E64AB1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 14:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vipYl8OMCsQxnZufHGtofiUF4Z2+hpq2hYwJztq2ER8=; b=IGMtQYmKMVU2gW
-	Y1+InoTBbv2mSu8gXoKT+QFtLRxk2dgfuFCWQi0EI+TSLF4HN8dKrSLnsUADClw74g0lYiOXc9d8c
-	635MCmkaFCAmJiLtUHH2joPJ+oKxurVoDJZK+DyRntUk6qhgfiA//8fuPgmKUDtwwwNbE9nCz7jjZ
-	TE1ji5DyYW99IYw+Qk2e6hkhoY6//vmrzwjMjedTHcBeeEIz7pgXr4Et2MlqZcZ71qQaOeNlWBulz
-	jY/3hl79gC0pOK1/BhycD8dx/SHbEoOlAqosHZp2cUYmQc1Klu67zJW/yuTS2NqkB3j/342runtUT
-	vBu7UjGRK5dgw6EyPikw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+0AitMraiyeH1+8g40VF3ZR7FWvldbabHAQToxozxXw=; b=4ml7eBvmBAagH9FVuSQx/lQqne
+	6GQwBOQeaKdo4cdOXzwDtw3zvtH4O94Kak5ZMcJt8qk41D1tyZ3iMAZVwiRnnPdyzmOJM30XGO9Fe
+	DR9E6tqGHA0lVlQEH5+jc2v0IQs5DnvXzaBYyh16XFoxkWFGpo+HNNBpB2kRqZ+RGdbIhK/tBMmhv
+	8fUx5Djw4F2Rcv7qDlH//nMDSuGcEqIC+dbYiTz4zDz/rLFnTssQIBTWyDGKix5hQM4aGPKywAjQv
+	MqRt5EAugcTF3Ufl1XYVhvLWNAHdgbY51+t6kYLHUxpaFFl3ulRdt50s9CXMxbI0hFXXBV5PTaNSY
+	LtWNfEpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tITWe-00000009iwr-3ygm;
-	Tue, 03 Dec 2024 14:05:16 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1tITmG-00000009ktI-0xG5;
+	Tue, 03 Dec 2024 14:21:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tITVd-00000009iog-2fHC;
-	Tue, 03 Dec 2024 14:04:14 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout4.routing.net (Postfix) with ESMTP id 070F01014AA;
-	Tue,  3 Dec 2024 14:04:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1733234647;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vipYl8OMCsQxnZufHGtofiUF4Z2+hpq2hYwJztq2ER8=;
-	b=f/f9I4fq5LUsvvQpJUc3j1tOct81A9BEm3uROVGNsp3TLmmXbO9sFsRSKeUvdcL8UaGN+O
-	taLldzn55kEQ8I6u5N1hdFcMb7sX+tlqFTFHXU5trIAUErQc/M2tu5IgbOBvMsHkACZu7i
-	PbzSPZJLA3nEMAOAFuDHJgiDa7Y5ZME=
-Received: from [127.0.0.1] (fttx-pool-157.180.225.184.bambit.de [157.180.225.184])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 4E8E0360048;
-	Tue,  3 Dec 2024 14:04:06 +0000 (UTC)
-Date: Tue, 03 Dec 2024 15:04:07 +0100
-From: Frank Wunderlich <linux@fw-web.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 14/18] arm64: dts: mediatek: mt7988: add pmic on bpi-r4
-User-Agent: K-9 Mail for Android
-In-Reply-To: <a0137698-43d7-4cb6-a69c-98a5e90b13f8@collabora.com>
-References: <20241202122602.30734-1-linux@fw-web.de> <20241202122602.30734-15-linux@fw-web.de> <a0137698-43d7-4cb6-a69c-98a5e90b13f8@collabora.com>
-Message-ID: <9CCD2C57-7632-482F-80A1-8786403243B7@fw-web.de>
+	id 1tITlF-00000009kkH-3q0z;
+	Tue, 03 Dec 2024 14:20:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733235617;
+	bh=pWkF2Bb5Gq9pQgLzlneBZEmWId9TYqkXXlfj6J23HWo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CxSOzUHleEfy78K+Esg2j1PTKTlTEWEB4mU0JQmVw33Axdb+Xgdvi6V/bIvqIvrqh
+	 /pPuET51Lm3hokG4sqBmFkhDz4rwXMvrpOrOda+UR/1JPlU0K5ObahFjYu+pQwt17q
+	 hTAzkrbIIU346k5IVGXQnTn+bAOeN68AWEkAdeLV3qhDQ4tvn5vLNgyJtDyQDwRvg4
+	 pfun9CO0xFCe6OL28XNLVWeZ3TFR+Y8c9DrmpyGIup7/QTgAJi3y4TIN4Ulz3YkUBi
+	 iKbETl2bfBCYWn6eqwWqd8qXreVMcn1pn0Gd6A7SQhlwHIwDjYVfVkESz8mrWyNH2T
+	 SIL4W7WVSYlEg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3CD3217E0DE6;
+	Tue,  3 Dec 2024 15:20:16 +0100 (CET)
+Message-ID: <4da0ab36-34c2-413a-90b3-bcdbdd4a6ac0@collabora.com>
+Date: Tue, 3 Dec 2024 15:20:15 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: cfe3b074-989a-4be9-864f-32e0d9121ec1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 03/18] arm64: dts: mediatek: mt7988: add fixed
+ regulators for 1v8 and 3v3
+To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241202122602.30734-1-linux@fw-web.de>
+ <20241202122602.30734-4-linux@fw-web.de>
+ <016b77dc-2d33-4639-b241-2574ad877971@collabora.com>
+ <371B3F0C-D468-45C8-B1F6-F4619B7C72DD@public-files.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <371B3F0C-D468-45C8-B1F6-F4619B7C72DD@public-files.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_060413_832510_8696CE7E 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20241203_062022_114047_5DB355C3 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,79 +77,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 3=2E Dezember 2024 10:40:35 MEZ schrieb AngeloGioacchino Del Regno <ange=
-logioacchino=2Edelregno@collabora=2Ecom>:
->Il 02/12/24 13:25, Frank Wunderlich ha scritto:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->
->arm64: dts: mediatek: mt7988a-bpi-r4: Add MediaTek MT6682A/RT5190A PMIC
->
->The BananaPi R4 board has a MediaTek MT8862A PMIC, a rebrand of the
->Richtek RT5190A chip, connected to the I2C0 bus=2E
->
->Add the relevant node and, while at it, also configure the regulators
->from this PMIC that are used on this board=2E
->
->> Bananapi R4 Board contains a MT6682A pmic which is compatible to rt5190=
-a=2E
->> Add its node to the i2 controller=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>   =2E=2E=2E/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts  | 51 ++++++++++=
-+++++++++
->>   1 file changed, 51 insertions(+)
->>=20
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts=
- b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
->> index 13ca016d6a67=2E=2Ebc1ec73b8ddd 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
->> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4=2Edts
->> @@ -2,6 +2,8 @@
->>     /dts-v1/;
->>   +#include <dt-bindings/regulator/richtek,rt5190a-regulator=2Eh>
->> +
->>   #include "mt7988a=2Edtsi"
->>     / {
->> @@ -65,6 +67,55 @@ &i2c0 {
->>   	pinctrl-names =3D "default";
->>   	pinctrl-0 =3D <&i2c0_pins>;
->>   	status =3D "okay";
->> +
->> +	rt5190a_64: rt5190a@64 {
->> +		compatible =3D "richtek,rt5190a";
->> +		reg =3D <0x64>;
->> +		vin2-supply =3D <&rt5190_buck1>;
->> +		vin3-supply =3D <&rt5190_buck1>;
->> +		vin4-supply =3D <&rt5190_buck1>;
->> +
->> +		regulators {
->> +			rt5190_buck1: buck1 {
->> +				regulator-name =3D "rt5190a-buck1";
->> +				regulator-min-microvolt =3D <5090000>;
->> +				regulator-max-microvolt =3D <5090000>;
->> +				regulator-allowed-modes =3D
->> +				<RT5190A_OPMODE_AUTO RT5190A_OPMODE_FPWM>;
->
->Does it work like that?
->
->regulator-allowed-modes =3D <RT5190A_OPMODE_AUTO>,
->			  <RT5190A_OPMODE_FPWM>;
+Il 03/12/24 11:51, Frank Wunderlich ha scritto:
+> Am 3. Dezember 2024 10:40:54 MEZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>> Il 02/12/24 13:25, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Add regulator nodes used for mmc to Bananapi R4 board.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>
+>> If you're adding the eMMC regulators, I assume that there's an eMMC, or that even
+>> if there's no device in some version of the board, these two regulators are always
+>> assigned to the eMMC device - right?
+> 
+> Like BPi-R3 there is one mmc controller mapped to either sd or emmc. I can move the regulators to the dtbo,but then they are defined twice (at least 3v3).
+> 
+>> You should, at this point, do exactly that: you can leave the mmc0 disabled and
+>> only enable it in a DTBO.
+> 
+> I enable it only in dtbo...
+> 
+>> &mmc0 {
+>> 	/* eMMC gets enabled by DTBO if present */
+>> 	vmmc-supply = <&reg_3p3v>;
+>> 	vqmmc-supply = <&reg_1p8v>;
+>> };
+> 
+> Problem is here that sdcard uses only the 3v3 twice
+> 
+> https://github.com/frank-w/BPI-Router-Linux/blob/6.12-main/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-sd.dtso
+> 
+> And emmc needs both
+> 
+> https://github.com/frank-w/BPI-Router-Linux/blob/6.12-main/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-emmc.dtso
+> 
+> Only defining the vmmc-supply in dts and set only the other in dtso is possible but but imho not nice.
+> 
 
-It seems working, dtbs_check accepts it and i can boot up with this change=
- and see no errors caused by it=2E
+If you added that in the commit description in the first place, I wouldn't
+have sent you that suggestion ;-)
 
->If yes, please write it like that - if not, I'm sad - but regardless
->
->Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino=2Edelregno@coll=
-abora=2Ecom>
->
+So, please add the reason that you just explained to me in the description
+of this commit and just leave the code as-is.
+
+Cheers!
+
+>> Cheers,
+>> Angelo
+>>
+>>> ---
+>>> v2:
+>>> - move mmc regulators to board dts of bpi-r4
+>>> ---
+>>>    .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts   | 18 ++++++++++++++++++
+>>>    1 file changed, 18 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> index d914eae2b524..df53512c6890 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>>> @@ -8,6 +8,24 @@ / {
+>>>    	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+>>>    	model = "Banana Pi BPI-R4";
+>>>    	chassis-type = "embedded";
+>>> +
+>>> +	reg_1p8v: regulator-1p8v {
+>>> +		compatible = "regulator-fixed";
+>>> +		regulator-name = "fixed-1.8V";
+>>> +		regulator-min-microvolt = <1800000>;
+>>> +		regulator-max-microvolt = <1800000>;
+>>> +		regulator-boot-on;
+>>> +		regulator-always-on;
+>>> +	};
+>>> +
+>>> +	reg_3p3v: regulator-3p3v {
+>>> +		compatible = "regulator-fixed";
+>>> +		regulator-name = "fixed-3.3V";
+>>> +		regulator-min-microvolt = <3300000>;
+>>> +		regulator-max-microvolt = <3300000>;
+>>> +		regulator-boot-on;
+>>> +		regulator-always-on;
+>>> +	};
+>>>    };
+>>>      &pio {
+>>
+>>
+> 
+> 
+> regards Frank
 
 
-regards Frank
 
