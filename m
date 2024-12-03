@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C653E74AC9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 17:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF42FE74ACA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 19:22:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VweZ8YjWZ78Zyn1hhkEyQiyT2MqJ5xoTwegnXNsv6lw=; b=uOkP1mUmXj14XKO7XTmSi2hT5W
-	HtPXqZhWk8tCjJxbwfeiKVYDWF2oMdRmTTupJfdp7HW6cPrieXQbZkIm0AEfaukbWj0dPxNINLhoV
-	kS38BG7o+P21M6QDvttQYVtQQgMUL/0ApVliV3dvTs42kZSynE/a7AypCoI2z5K7sTnCZj6c5BP88
-	dqZEUcHjW6uqbRcPq5KB13AyAoY3DKjOfQTIJLbcX2qMpMHeW5+CATzmNHQ1zSV91dmxRUrMcrp9E
-	pb2xUxcm5lgMsdvDNbRXsYn9GKtfXWALOG/khu29f/k6PhjOTf9j+QNE5Cb0aZ+lxVm2irXeSBOkO
-	1BXZ2mJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wdn9WBlyNdiY0kjsvpz6XjzAktzFSzWhI4fjS6MrMsM=; b=NZIiYc6x9PgOirMCI0NB2rPYwM
+	0jSaj7LNgym+xu9LiOwgAX22T4215Jn4QsLKqHML4BEO2NprMvfmidhRf6Y2UEZWcc/naqnJAhgh0
+	4g8rtOH3xK8+E/h6Otp9xInhlH9DbysxOk7Tj9yuGhAl3etWPoCM2DYHEBjkDlrow3M01RmQqA9gH
+	yizQA5xN32YkWJtNaix7Gkh+dtqK+uzveoWkMO/Ha/AiPaBgjA0VuS36Y9qPZa61g916KFAABFlZc
+	0eWhfb0FpAhuQfSiKlnr4NvxY+qXT8tmx1em54oVUgLGKWeqbkZS9/+QSl+VxtJAh4k+1tG3Z9L6b
+	qXD16VOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIXAk-0000000AJyu-3v2M;
-	Tue, 03 Dec 2024 17:58:54 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tIYTL-0000000AT2d-2gT5;
+	Tue, 03 Dec 2024 19:22:11 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIW6F-0000000A9e1-01q2;
-	Tue, 03 Dec 2024 16:50:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id EE490A417D6;
-	Tue,  3 Dec 2024 16:48:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE083C4CECF;
-	Tue,  3 Dec 2024 16:50:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733244609;
-	bh=hl4qjq6wBEq5/6rBW02XlLyDQNXhu4x9H//HnoHXZC0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kyW7aAvfsRsd+goXqPtxbrF2GZ9SUIgO8a/u1AJ8BIEnmbS5M3rvY8PwauYRqY69E
-	 wMH5EFRYngFm5G+VV1tipxqdIFc41sJlBO0qh3qPCzE4sbfpkOA5o2Vyiy1qWqgIFB
-	 tDM8h/jaa0EONYCKZBgvbq7BzhmLostW8/EjWPzgZMtsAzVQxFUDMqN0NCdgm9ZDLg
-	 4fb6XRDcTbDHRJQdleIIvXoILAqO8mFQ9vF1/QKq2tdmUJNpeYz4vXfsC5H4pgkF5H
-	 yXF+ZFN/xAJAxY7eBbV6DIDQiMKdXO9IDBGv7yUgvqUy0TKwnw3Vi60mUCL2qMjhMk
-	 nZROfofiKrMYw==
-Date: Tue, 3 Dec 2024 10:50:07 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org,
-	airlied@gmail.com, mripard@kernel.org, devicetree@vger.kernel.org,
-	ck.hu@mediatek.com, linux-kernel@vger.kernel.org,
-	maarten.lankhorst@linux.intel.com, simona@ffwll.ch,
-	dri-devel@lists.freedesktop.org, kernel@collabora.com,
-	tzimmermann@suse.de, krzk+dt@kernel.org
-Subject: Re: [PATCH v1 1/7] dt-bindings: display: mediatek: Add binding for
- HDMIv2 DDC
-Message-ID: <173324460711.1946104.15731375026648249870.robh@kernel.org>
-References: <20241120124512.134278-1-angelogioacchino.delregno@collabora.com>
- <20241120124512.134278-2-angelogioacchino.delregno@collabora.com>
+	id 1tIYSK-0000000ASuv-1kUa;
+	Tue, 03 Dec 2024 19:21:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733253665;
+	bh=me674ysn4T+xkyXkjVxxdq0efYr8UjvgzBFk7LZAd70=;
+	h=From:Date:Subject:To:Cc:From;
+	b=T+cfWrQHcK7y+GOW+utyX+YR65qTl5gxPICvVGkewfy97+N38ZlGuIA4ujurN7R71
+	 vQNewctBhMLcDCSitu9XlfMOWf+qP1lPnWN3N43bBdR9JN9kIRsM6h2sCJWucMstJ3
+	 kgg4HNgVn6xVIOGnxsfu1pU8MpIkY6gYEpsgf6wn1SX319Gh5rU3k+0M3ligHz61Z2
+	 ikr28pZMIlHc6V5ZmvzrrrkBwXLUmVUcuBfNPRghHORCiH/oZrmyZqNDyyEANJ8+p6
+	 fVVAB9jGZlr2ZmdS0dVRp+ecmlUiZ/m6yPpKAw+uvO70ya74rcawN1VzqWRYLRhvc2
+	 nO9AwAN/JcSaQ==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1005])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A715017E1036;
+	Tue,  3 Dec 2024 20:21:02 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Tue, 03 Dec 2024 16:20:58 -0300
+Subject: [PATCH] ASoC: mediatek: mt8188-mt6359: Remove hardcoded dmic codec
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241120124512.134278-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20241203-mt8188-6359-unhardcode-dmic-v1-1-346e3e5cbe6d@collabora.com>
+X-B4-Tracking: v=1; b=H4sIABlaT2cC/x3MSw5AMBAA0KvIrE2irU+5ilhUO5iFkhaRiLtrL
+ N/mPRApMEXosgcCXRx58wkiz8Auxs+E7JJBFrIUslC4HlpojbWqWjz9YoKzmyN0K1scTVOX7aR
+ NI0dIwx5o4vvf++F9P0HiRgRtAAAA
+X-Change-ID: 20241203-mt8188-6359-unhardcode-dmic-ba7649f8a72b
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_085011_103625_5A61C0D9 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241203_112108_640179_187843A9 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Remove hardcoded dmic codec from the UL_SRC dai link to avoid requiring
+a dmic codec to be present for the driver to probe, as not every
+MT8188-based platform might need a dmic codec. The codec can be assigned
+to the dai link through the dai-link property in Devicetree on the
+platforms where it is needed.
 
-On Wed, 20 Nov 2024 13:45:06 +0100, AngeloGioacchino Del Regno wrote:
-> Add a binding for the Display Data Channel (DDC) IP in MediaTek
-> SoCs with version 2 HDMI TX IP.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../mediatek/mediatek,mt8195-hdmi-ddc.yaml    | 41 +++++++++++++++++++
->  1 file changed, 41 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
-> 
+No Devicetree currently relies on it so it is safe to remove without
+worrying about backward compatibility.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Fixes: 9f08dcbddeb3 ("ASoC: mediatek: mt8188-mt6359: support new board with nau88255")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index 08ae962afeb92965109b303439419bc6e7c2a896..1550e56ab57d54b179ebe5cbd60db1660bb0bd2c 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -188,9 +188,7 @@ SND_SOC_DAILINK_DEFS(pcm1,
+ SND_SOC_DAILINK_DEFS(ul_src,
+ 		     DAILINK_COMP_ARRAY(COMP_CPU("UL_SRC")),
+ 		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
+-						   "mt6359-snd-codec-aif1"),
+-					COMP_CODEC("dmic-codec",
+-						   "dmic-hifi")),
++						   "mt6359-snd-codec-aif1")),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+ 
+ SND_SOC_DAILINK_DEFS(AFE_SOF_DL2,
+
+---
+base-commit: b852e1e7a0389ed6168ef1d38eb0bad71a6b11e8
+change-id: 20241203-mt8188-6359-unhardcode-dmic-ba7649f8a72b
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
