@@ -4,120 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A44C4E64A85
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 12:27:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1514FE64A85
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2024 12:28:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CgCScBX/+fgZ0roCuYsgonJhaxWB8rsl1yCC6V0WM+E=; b=MWc6eWqUF67WirjOSPABr7VwI6
-	E7qOQt6y8oBarO3hL4q+EXQAqjOKrJb4XMxQ1z3EYju1M1I7Vv2TYfqiDiGzTN6SkV0CTxWV2xmle
-	VFzu6f5+QtMCv9v9en2Slydgs0l8oUAcF0TWKJEyo8RClwjNpfRQ9ObQDsYsLLne+DDRRsYA6SwTG
-	44I2At/1RRlDVsg55eJpPv5Q4E0SY8amFveZN3qBeQrBrpzyltAXB6rYpg/6tDqKR7Y+kzQZc3q/5
-	K6cqW9LJGFC+xPNaL5XynTZNi2jW+KhfBLurHxE36Kfh2+Jf050lRkEu10ERo4zXz7pE0EUEmEKgt
-	1UsJqaPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4tMW5BgK0yNLwCH6utYoQVhW0P2uh6V2gFL0Ya9nckg=; b=0dsNXqNMUR7odfWQJHjJMPZjWx
+	pervKIA/IvdDPh3ko2EHJTQ/TrJJ1wlpnz+iW6Gqjeat/gHiVg4g9eKWMkQ+wOW+n6OPU1HyU+6ZC
+	uJYveNq/dow5DtcBPO6EH1Ycef5wtHPmQkMIKs3tLWdjLZw13pp0HX76bPLk78tg0qsWnDFuaev0f
+	7HlkuklUduEs8Lha9QCrSnu8v2keJfsQEPZaVfjHmY88NmvP2En1kmNZQgm1rfiAFEPEHu5j5I6ah
+	tGKsz8Nxt3/HsKtiqObJt+LBHmfApFjvGG335W7LFuhKxHNpCuBllUTE80ATcz815nGZoqIfDDKY2
+	auTJa5Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRza-00000009QTZ-3NcT;
-	Tue, 03 Dec 2024 12:27:02 +0000
-Received: from pv50p00im-hyfv10011601.me.com ([17.58.6.43])
+	id 1tIS1M-00000009QrB-12fa;
+	Tue, 03 Dec 2024 12:28:52 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRwu-00000009Pzp-1lNk
+	id 1tIS0L-00000009QiM-3c3V
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Dec 2024 12:24:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733228654;
-	bh=CgCScBX/+fgZ0roCuYsgonJhaxWB8rsl1yCC6V0WM+E=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
-	 x-icloud-hme;
-	b=PgY5nn9UjaNQNnW4ZpJ9WuRQx6im5psJe58NOrhuMYaP81TCjCoqg7OOKUTCf/GiQ
-	 U5NzWhh2P25K5ajpXMvRXYX0Q0QlkR8pgL3oTItbqVZutGKevLmlI66ZBGBcrDMdzZ
-	 tMmlV2WZ2o8x16WpoGlJ/JnV1zI3oqt06fGl4I8/qI7wYj0KQ1QQr5n3xLSgizk9fw
-	 TQ9xaKi2nZyOPqodk3YoZL2QcRqFeCLp3CsTqDDtllnMk1q4GHXKVq7SsECnBkg8jm
-	 H9mCDktUr1zn+c+7ek7cGPeMoLhQxufGfyCDPYAJQXskQd4pXIE2C7c2QiBSj9B4RB
-	 vRrMl0+rr+jVw==
-Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-hyfv10011601.me.com (Postfix) with ESMTPSA id 675CEC8010E;
-	Tue,  3 Dec 2024 12:23:51 +0000 (UTC)
-Message-ID: <9d34bd6f-b120-428a-837b-5a5813e14618@icloud.com>
-Date: Tue, 3 Dec 2024 20:23:45 +0800
+	Tue, 03 Dec 2024 12:27:51 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-53dd8b7796dso5812821e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Dec 2024 04:27:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733228868; x=1733833668; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4tMW5BgK0yNLwCH6utYoQVhW0P2uh6V2gFL0Ya9nckg=;
+        b=xHkCwlQhUHR+gPnO3b8lihZNt0d1EsyjUMuqQvdKlSIQep4UOXZOGWLmQ+TJ/tBI6Z
+         xE4a15GfW43FMo/dS+/npojEu3R2z1c7L2lbmpDUDeAlRW16gFiohp0ayARodC8RXdou
+         eTrFPJT228aBZpxt+cjLjDMIpxmcideLrWXTpjAOZxeTomuzFYNXOy9K1dLDSdlu8EFS
+         cZmWXSELzFQQFIWBqs89pUqgmU2c85NnBpjG+UXr0BS+las3uSjmla62E9XajC0irmy5
+         9zZ2ElS6NsxEyWSSBspxuxlA0flJ1n8Zv4buq+w/MaZK+0UlHVdBFHHELPmmSygnBiz6
+         cv4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733228868; x=1733833668;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4tMW5BgK0yNLwCH6utYoQVhW0P2uh6V2gFL0Ya9nckg=;
+        b=EHCHj07d9n8lrgVIqgb8SdyScly9JptMyuEWxB5ptSPI5OpTWKbNGX28P5ZXmnyT3d
+         64LpRlEcI9vt9fNgwJs7oScVvlvZnMw3gVoxzaFH3sHEdFweeUoTGQrr53raLnLwmnTX
+         GNrm9oXdBD8Jw+2JnDPyTqikWWgiYCvt1hmMcFv4cQYjdG2MqemjPhzMUBFJdZcV0prs
+         0ndtXkZ7T7JvptDcd6/vl96RWJbD3JbtLQYso8VPTYRyTKh3T+pOcDga0FbOI9Q9VLic
+         a4i8J8x/GRqdCnyjweeSit2m7LYgseNz/FF/ndg6i5QykQBpvOxQV8DiQqvt3eJ+T+bj
+         M7kw==
+X-Forwarded-Encrypted: i=1; AJvYcCXmPZ0KWUO6d+NzsDjQm0GoIIrNyqOK+fo00jC82NVQGF/tu5OCwIHK7EPaa0VLoQh/GihzLi35v/ZyI7rw8g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwOeTRDHemLCXvnpkm71nNmxbyZavW+htE4oVfpBCpaErQBoQCx
+	8DJkoQpGO8KLiFzrE2FAcn0ErM6+ZFPcVz+Fr4ac4JztX6i0wcCZn46I7Ti0jpQ=
+X-Gm-Gg: ASbGncvk2HpK34qos4VaD0mwYhRbnMMO83xB0RjcgNHxDXWpwiQm4YidQh1BkuXBNot
+	gf90j+vOuu6fLrC2LO9yniZtgBLXPnRKAJOcik5o0MyhKTpQiINEq+ObRK3xa3BO2oD6zr9j/hz
+	luB7OagbzdJK90OXDxYR9Sak8V2+e8c29q8gky6mkNd06zBOosnnYKh3BO6lRhJq30F3ZhRCm+k
+	DzcIgMqWFnyC58O125F1zEwBgid5YgL4imLvTkD5wpNnK89E+WP+0xEv4AS/E3ovi+/naWCj531
+	VV8Dqbc7U5hKseduvR4Bx/EBlC9dMw==
+X-Google-Smtp-Source: AGHT+IG0HmZ8YSlH3L/g4YitdlPm2st4Okvau8mZpJCNyynGj3Z9KtsKcqo/MMABonQgOnqb21PQhQ==
+X-Received: by 2002:a05:6512:1089:b0:53d:d3ff:7309 with SMTP id 2adb3069b0e04-53e12a01ee6mr1387104e87.32.1733228867624;
+        Tue, 03 Dec 2024 04:27:47 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df649f6f2sm1810134e87.246.2024.12.03.04.27.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 04:27:46 -0800 (PST)
+Date: Tue, 3 Dec 2024 14:27:44 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 9/9] drm/vc4: hdmi: use
+ drm_atomic_helper_connector_hdmi_update_edid()
+Message-ID: <ae24x2bo736jpzi77l34hybejawwe4rp47v2idedga344ye6zr@bxsxz34dwrd2>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-9-b5316e82f61a@linaro.org>
+ <20241202-married-bald-raven-7acd83@houat>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
- Martin Tuma <martin.tuma@digiteqautomotive.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Andreas Noever <andreas.noever@gmail.com>,
- Michael Jamet <michael.jamet@intel.com>,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- Yehezkel Bernat <YehezkelShB@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
- <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- Vishal Verma <vishal.l.verma@intel.com>, Dave Jiang <dave.jiang@intel.com>,
- Ira Weiny <ira.weiny@intel.com>, Takashi Sakamoto <o-takashi@sakamocchi.jp>,
- Jiri Slaby <jirislaby@kernel.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Lee Duncan <lduncan@suse.com>, Chris Leech <cleech@redhat.com>,
- Mike Christie <michael.christie@oracle.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Nilesh Javali <njavali@marvell.com>,
- Manish Rangankar <mrangankar@marvell.com>,
- GR-QLogic-Storage-Upstream@marvell.com, Davidlohr Bueso <dave@stgolabs.net>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Alison Schofield <alison.schofield@intel.com>,
- Andreas Larsson <andreas@gaisler.com>, Stuart Yoder <stuyoder@gmail.com>,
- Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jens Axboe <axboe@kernel.dk>,
- Sudeep Holla <sudeep.holla@arm.com>,
- Cristian Marussi <cristian.marussi@arm.com>, Ard Biesheuvel
- <ardb@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- linux-media@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-gpio@vger.kernel.org, netdev@vger.kernel.org,
- linux-pwm@vger.kernel.org, nvdimm@lists.linux.dev,
- linux1394-devel@lists.sourceforge.net, linux-serial@vger.kernel.org,
- linux-sound@vger.kernel.org, open-iscsi@googlegroups.com,
- linux-scsi@vger.kernel.org, linux-cxl@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-block@vger.kernel.org,
- arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
- <g32cigmktmj4egkq2tof27el2yss4liccfxgebkgqvkil32mlb@e3ta4ezv7y4m>
-Content-Language: en-US
-From: Zijun Hu <zijun_hu@icloud.com>
-In-Reply-To: <g32cigmktmj4egkq2tof27el2yss4liccfxgebkgqvkil32mlb@e3ta4ezv7y4m>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: HfN3ugOwn0RD4lT0NgRrMbrQZDyUcr0J
-X-Proofpoint-ORIG-GUID: HfN3ugOwn0RD4lT0NgRrMbrQZDyUcr0J
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-03_01,2024-12-03_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 phishscore=0 suspectscore=0
- clxscore=1015 adultscore=0 malwarescore=0 mlxlogscore=903 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2412030107
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241202-married-bald-raven-7acd83@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_042416_480137_58B347B4 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20241203_042749_894160_EB8A9463 
+X-CRM114-Status: GOOD (  33.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,62 +117,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/12/3 20:00, Uwe Kleine-König wrote:
-> Hello,
+On Mon, Dec 02, 2024 at 02:27:49PM +0100, Maxime Ripard wrote:
+> Hi,
 > 
-> On Tue, Dec 03, 2024 at 08:33:22AM +0800, Zijun Hu wrote:
->> This patch series is to constify the following API:
->> struct device *device_find_child(struct device *dev, void *data,
->> 		int (*match)(struct device *dev, void *data));
->> To :
->> struct device *device_find_child(struct device *dev, const void *data,
->> 				 device_match_t match);
->> typedef int (*device_match_t)(struct device *dev, const void *data);
+> On Sun, Dec 01, 2024 at 02:44:13AM +0200, Dmitry Baryshkov wrote:
+> > Use the helper function to update the connector's information. This
+> > makes sure that HDMI-related events are handled in a generic way.
+> > Currently it is limited to the HDMI state reporting to the sound system.
+> > 
+> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > ---
+> >  drivers/gpu/drm/vc4/vc4_hdmi.c | 9 +++++++--
+> >  1 file changed, 7 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > index d0a9aff7ad43016647493263c00d593296a1e3ad..d83f587ab69f4b8f7d5c37a00777f11da8301bc1 100644
+> > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > @@ -401,13 +401,16 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
+> >  	 */
+> >  
+> >  	if (status == connector_status_disconnected) {
+> > +		drm_atomic_helper_connector_hdmi_update_edid(connector, NULL);
+> >  		cec_phys_addr_invalidate(vc4_hdmi->cec_adap);
+> >  		return;
+> >  	}
+> >  
+> >  	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
+> >  
+> > -	drm_edid_connector_update(connector, drm_edid);
+> > +	// TODO: use drm_atomic_helper_connector_hdmi_update() once it gains
+> > +	// CEC support
+> > +	drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
 > 
-> This series isn't bisectible. With only the first two patches applied I
-> hit:
+> So, it's not just about EDID, and I think we shouldn't really focus on
+> that either.
+> 
+> As that patch points out, even if we only consider EDID's, we have
+> different path depending on the connector status. It shouldn't be up to
+> the drivers to get this right.
+> 
+> What I had in mind was something like a
+> drm_atomic_helper_connector_hdmi_hotplug function that would obviously
+> deal with EDID only here, but would expand to CEC, scrambling, etc.
+> later on.
 
-yes. such patch series needs to be merge as atomic way.
+I thought about it, after our discussion, but in the end I had to
+implement the EDID-specific function, using edid == NULL as
+"disconnected" event. The issue is pretty simple: there is no standard
+way to get EDID from the connector. The devices can call
+drm_edid_read(), drm_edid_read_ddc(connector->ddc) or (especially
+embedded bridges) use drm_edid_read_custom().
 
-Hi Greg,
+Of course we can go with the functional way and add the
+.read_edid(drm_connector) callback to the HDMI funcs. Then the
+drm_atomic_helper_connector_hdmi_hotplug() function can read EDID on its
+own.
 
-is it possible to ONLY merge such patch series by atomic way into your
-driver-core tree?
-
-or squash such patch series into a single patch ?
-
-various subsystem maintainers may not like squashing way.
+Also the function that you proposed perfectly fits the HPD notification
+callbacks, but which function should be called from the .get_modes()?
+The _hdmi_hotplug() doesn't fit there. Do we still end up with both
+drm_atomic_helper_connector_hdmi_hotplug() and
+drm_atomic_helper_connector_hdmi_update_edid()?
 
 > 
->   CC      drivers/pwm/core.o
-> drivers/pwm/core.c: In function ‘pwm_unexport_child’:
-> drivers/pwm/core.c:1292:55: error: passing argument 3 of ‘device_find_child’ from incompatible pointer type [-Wincompatible-pointer-types]
->  1292 |         pwm_dev = device_find_child(pwmchip_dev, pwm, pwm_unexport_match);
->       |                                                       ^~~~~~~~~~~~~~~~~~
->       |                                                       |
->       |                                                       int (*)(struct device *, void *)
-> In file included from include/linux/acpi.h:14,
->                  from drivers/pwm/core.c:11:
-> include/linux/device.h:1085:49: note: expected ‘device_match_t’ {aka ‘int (*)(struct device *, const void *)’} but argument is of type ‘int (*)(struct device *, void *)’
->  1085 |                                  device_match_t match);
->       |                                  ~~~~~~~~~~~~~~~^~~~~
-> drivers/pwm/core.c: In function ‘pwm_class_get_state’:
-> drivers/pwm/core.c:1386:55: error: passing argument 3 of ‘device_find_child’ from incompatible pointer type [-Wincompatible-pointer-types]
->  1386 |         pwm_dev = device_find_child(pwmchip_dev, pwm, pwm_unexport_match);
->       |                                                       ^~~~~~~~~~~~~~~~~~
->       |                                                       |
->       |                                                       int (*)(struct device *, void *)
-> include/linux/device.h:1085:49: note: expected ‘device_match_t’ {aka ‘int (*)(struct device *, const void *)’} but argument is of type ‘int (*)(struct device *, void *)’
->  1085 |                                  device_match_t match);
->       |                                  ~~~~~~~~~~~~~~~^~~~~
-> make[5]: *** [scripts/Makefile.build:194: drivers/pwm/core.o] Error 1
-> make[4]: *** [scripts/Makefile.build:440: drivers/pwm] Error 2
-> make[3]: *** [scripts/Makefile.build:440: drivers] Error 2
-> make[2]: *** [Makefile:1989: .] Error 2
-> make[1]: *** [Makefile:372: __build_one_by_one] Error 2
-> make: *** [Makefile:251: __sub-make] Error 2
+> And would cover both the connected/disconnected cases.
 > 
-> Best regards
-> Uwe
+> Maxime
 
+
+
+-- 
+With best wishes
+Dmitry
 
