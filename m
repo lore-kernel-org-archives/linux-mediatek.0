@@ -4,122 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4044BE77170
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 16:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74AF4E77170
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 16:59:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+N30QcLm5000kN2TjeLv2fVORC4NYLWEtjbh9ZTVErE=; b=nhjqq/8mvclZ+wSsj4CpUg/N0K
-	Kdy2Y0FlxWpZaIApKRjv+08WpLgafh6TDM6/J9KaTcdlkKAQJsgnKW4KIFQ4JoSvYsEZ5Rnjf99va
-	k9+Q23fRrXcSti13BtTKuAj+6wTe0svrLNqD54kEK38Z0F6q77o4MsMQRwdIgvP1hxK4n/1/bBFbU
-	fpPTbX6Bnow+tz0zOPoSS3hxba56i52GkS02yRsCLhyVkfxAnEfVekqUzM/cf1yazYjDw+z1DfLYq
-	YOptKzwGS51RjcjtKg9kMvMZTeZjaIO8hyrcFAJUIifh82E5hu2by0lanTSdI0CLI2R2mZgWL/lcL
-	liKN27kw==;
+	bh=j9vzcgj/8DJpYe/of06vlGGkWJVfGT5YKimbCWDgFCA=; b=Xv8MTkVbhX/jGbUYpZRET3Sprn
+	tfrKSZmlbs7IbwwfBzSeGpjs+2eMHNoZJRVxSi5BFr0lzrQRKRUIu4lWO7YrZlTnzj1kh8pTrJOYA
+	37OHIDRQvJ7546GvRFHDSl7r0pSpCqJqPlIp1jVNIeL+1PO8tp5RGC/G1bUYv4t9+aBG9UHM6VTwh
+	hqWT17rb+wqT/0YQ6oAUZE7zosMC+Gmx0MuTrZhFn/6CJfye1YatiILLIuAe6knngffZPVrDXHcOQ
+	LO0cDkXyE5xYnKCX79uNU7R8oKU/X+jqrk6QZ9yjdGkB3cwPj/0K87cukv/6g5kl20Jb56Uq2fYg3
+	rcIoILrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsSe-0000000DDyI-1G25;
-	Wed, 04 Dec 2024 16:42:48 +0000
-Received: from bedivere.hansenpartnership.com ([96.44.175.130])
+	id 1tIsil-0000000DGNO-0n2o;
+	Wed, 04 Dec 2024 16:59:27 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsSc-0000000DDxJ-0DFs;
-	Wed, 04 Dec 2024 16:42:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=hansenpartnership.com; s=20151216; t=1733330561;
-	bh=/tV2/rqC9g/RzItU4xjpFfq9TJiKncFzSdSN5cVSPCI=;
-	h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
-	b=jwLrm3XJJg0bE+y+jmRYNMFwEElygfQC2HGQiHPd5Xz/u0WtyW7YWY3rX060euBo7
-	 f9S1jUzBwKhA2RFoWPD/ZkuHcVNkBdGsPnMe1XGCn2DaqvTsyQjVXKsqZzFLZSZ0Tt
-	 bvl4/NIRU0Ww5p2EbpvPP+Glg6xJuhny+E4/K7oQ=
-Received: from localhost (localhost [127.0.0.1])
-	by bedivere.hansenpartnership.com (Postfix) with ESMTP id DBE1112816C9;
-	Wed, 04 Dec 2024 11:42:41 -0500 (EST)
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavis, port 10024)
- with ESMTP id H1OGkhq900B6; Wed,  4 Dec 2024 11:42:41 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=hansenpartnership.com; s=20151216; t=1733330561;
-	bh=/tV2/rqC9g/RzItU4xjpFfq9TJiKncFzSdSN5cVSPCI=;
-	h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
-	b=jwLrm3XJJg0bE+y+jmRYNMFwEElygfQC2HGQiHPd5Xz/u0WtyW7YWY3rX060euBo7
-	 f9S1jUzBwKhA2RFoWPD/ZkuHcVNkBdGsPnMe1XGCn2DaqvTsyQjVXKsqZzFLZSZ0Tt
-	 bvl4/NIRU0Ww5p2EbpvPP+Glg6xJuhny+E4/K7oQ=
-Received: from lingrow.int.hansenpartnership.com (unknown [IPv6:2601:5c4:4302:c21::a774])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 13309128116A;
-	Wed, 04 Dec 2024 11:42:36 -0500 (EST)
-Message-ID: <5c905df49a332b1136787a524955b46b6153c012.camel@HansenPartnership.com>
-Subject: Re: [PATCH v2 00/32] driver core: Constify API device_find_child()
- and adapt for various existing usages
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Zijun Hu <zijun_hu@icloud.com>, Thomas =?ISO-8859-1?Q?Wei=DFschuh?=
-	 <thomas@t-8ch.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Uwe
- =?ISO-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jean
- Delvare <jdelvare@suse.com>,  Guenter Roeck <linux@roeck-us.net>, Martin
- Tuma <martin.tuma@digiteqautomotive.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Andreas Noever <andreas.noever@gmail.com>, Michael
- Jamet <michael.jamet@intel.com>, Mika Westerberg
- <mika.westerberg@linux.intel.com>,  Yehezkel Bernat
- <YehezkelShB@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Bartosz
- Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean
- <olteanv@gmail.com>,  "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Dan Williams
- <dan.j.williams@intel.com>, Vishal Verma <vishal.l.verma@intel.com>, Dave
- Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>, Takashi
- Sakamoto <o-takashi@sakamocchi.jp>, Jiri Slaby <jirislaby@kernel.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, Srinivas Kandagatla
- <srinivas.kandagatla@linaro.org>, Lee Duncan <lduncan@suse.com>, Chris
- Leech <cleech@redhat.com>, Mike Christie <michael.christie@oracle.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>, Nilesh Javali
- <njavali@marvell.com>, Manish Rangankar <mrangankar@marvell.com>,
- GR-QLogic-Storage-Upstream@marvell.com, Davidlohr Bueso
- <dave@stgolabs.net>, Jonathan Cameron <jonathan.cameron@huawei.com>, Alison
- Schofield <alison.schofield@intel.com>, Andreas Larsson
- <andreas@gaisler.com>, Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor
- <laurentiu.tudor@nxp.com>, Jens Axboe <axboe@kernel.dk>, Sudeep Holla
- <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, Ard
- Biesheuvel <ardb@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, 
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-gpio@vger.kernel.org,
- netdev@vger.kernel.org,  linux-pwm@vger.kernel.org, nvdimm@lists.linux.dev,
-  linux1394-devel@lists.sourceforge.net, linux-serial@vger.kernel.org, 
- linux-sound@vger.kernel.org, open-iscsi@googlegroups.com, 
- linux-scsi@vger.kernel.org, linux-cxl@vger.kernel.org, 
- sparclinux@vger.kernel.org, linux-block@vger.kernel.org, 
- arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
- linux-remoteproc@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-Date: Wed, 04 Dec 2024 11:42:34 -0500
-In-Reply-To: <235ce0a9-1db1-4558-817b-6f92f22be5ab@icloud.com>
-References: <20241203-const_dfc_done-v2-0-7436a98c497f@quicinc.com>
-	 <g32cigmktmj4egkq2tof27el2yss4liccfxgebkgqvkil32mlb@e3ta4ezv7y4m>
-	 <9d34bd6f-b120-428a-837b-5a5813e14618@icloud.com>
-	 <2024120320-manual-jockey-dfd1@gregkh>
-	 <b9885785-d4d4-4c72-b425-3dc552651d7e@icloud.com>
-	 <8eb7c0c54b280b8eb72f82032ede802c001ab087.camel@HansenPartnership.com>
-	 <8fb887a0-3634-4e07-9f0d-d8d7c72ca802@t-8ch.de>
-	 <f5ea7e17-5550-4658-8f4c-1c51827c7627@icloud.com>
-	 <108c63c753f2f637a72c2e105ac138f80d4b0859.camel@HansenPartnership.com>
-	 <235ce0a9-1db1-4558-817b-6f92f22be5ab@icloud.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 
+	id 1tIshj-0000000DGCj-0NHC;
+	Wed, 04 Dec 2024 16:58:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 35B15A41AAB;
+	Wed,  4 Dec 2024 16:56:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD580C4CECD;
+	Wed,  4 Dec 2024 16:58:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733331502;
+	bh=rj/vtyBLlm1VVH5rilqfdOdaVTaN+8/ElgCqvqGAZK4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=kGKDgDdkIfhdRD6kUbVshqP7byRdBI1SUDbohM4JRbL1EeVsd1B60QjfyWhrBsXbI
+	 7A46wYSnAMb21y9UHimOYb/d81lQTbbR3e7YytWoDYPzlpU3rl+PxOqFU6rOR8sGxA
+	 lzUO3L1RTv7dnzv5EQYVYu/20TaRPJ2CfNXMefBSeATgE/kaQ+ME+NlYwT84YmDKLb
+	 GmDGXCk27t3tshzULpbpD8rlXDjN59nm42+24oWnqFApD1p3yQdbodoCPMFEdztwMR
+	 v9L0nm69kjGpkYCEmtPCZO6NUIY2aHRSURtm4vov6ObB3hKWyRr+Ij30jIYkIQ1Cd3
+	 53WxAX86jIMQQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Bart Van Assche <bvanassche@acm.org>,
+	Avri Altman <Avri.Altman@wdc.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Sasha Levin <sashal@kernel.org>,
+	James.Bottomley@HansenPartnership.com,
+	yoshihiro.shimoda.uh@renesas.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	avri.altman@wdc.com,
+	manivannan.sadhasivam@linaro.org,
+	ahalaney@redhat.com,
+	beanhuo@micron.com,
+	quic_mnaresh@quicinc.com,
+	ebiggers@google.com,
+	minwoo.im@samsung.com,
+	linux-scsi@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.12 13/36] scsi: ufs: core: Make DMA mask configuration more flexible
+Date: Wed,  4 Dec 2024 10:45:29 -0500
+Message-ID: <20241204154626.2211476-13-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241204154626.2211476-1-sashal@kernel.org>
+References: <20241204154626.2211476-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.12.1
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_084246_100085_4560923A 
-X-CRM114-Status: GOOD (  30.11  )
+X-CRM114-CacheID: sfid-20241204_085823_264779_DC234835 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,61 +92,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2024-12-04 at 20:26 +0800, Zijun Hu wrote:
-> On 2024/12/3 23:34, James Bottomley wrote:
-> > > > This also enables an incremental migration.
-> > > change the API prototype from:
-> > > device_find_child(..., void *data_0, int (*match)(struct device
-> > > *dev, void *data));
-> > > 
-> > > to:
-> > > device_find_child(..., const void *data_0, int (*match)(struct
-> > > device *dev, const void *data));
-> > > 
-> > > For @data_0,  void * -> const void * is okay.
-> > > but for @match, the problem is function pointer type
-> > > incompatibility.
-> > > 
-> > > there are two solutions base on discussions.
-> > > 
-> > > 1) squashing likewise Greg mentioned.
-> > >    Do all of the "prep work" first, and then
-> > >    do the const change at the very end, all at once.
-> > > 
-> > > 2)  as changing platform_driver's remove() prototype.
-> > > Commit: e70140ba0d2b ("Get rid of 'remove_new' relic from
-> > > platform driver struct")
-> > > 
-> > >  introduce extra device_find_child_new() which is constified  ->
-> > > use *_new() replace ALL device_find_child() instances one by one
-> > > -> remove device_find_child() -> rename *_new() to
-> > > device_find_child() once.
-> > Why bother with the last step, which churns the entire code base
-> > again?
-> 
-> keep the good API name device_find_child().
+From: Bart Van Assche <bvanassche@acm.org>
 
-Well, I think it's a good opportunity to rename the API better, but if
-that's the goal, you can still do it with _Generic() without churning
-the code base a second time.  The example is in
-slab.h:kmem_cache_create
+[ Upstream commit 78bc671bd1501e2f6c571e063301a4fdc5db53b2 ]
 
-> > Why not call the new function device_find_child_const() and simply
-> > keep it (it's descriptive of its function).  That way you can have
-> > a patch series without merging and at the end simply remove the old
-> > function.
-> 
-> device_find_child is a good name for the API, 'find' already means
-> const.
+Replace UFSHCD_QUIRK_BROKEN_64BIT_ADDRESS with
+ufs_hba_variant_ops::set_dma_mask.  Update the Renesas driver
+accordingly.  This patch enables supporting other configurations than
+32-bit or 64-bit DMA addresses, e.g. 36-bit DMA addresses.
 
-Not to me it doesn't, but that's actually not what I think is wrong
-with the API name: it actually only returns the first match, so I'd
-marginally prefer it to be called device_find_first_child() ... not
-enough to churn the code to change it, but since you're doing that
-anyway it might make sense as an update.
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+Link: https://lore.kernel.org/r/20241018194753.775074-1-bvanassche@acm.org
+Reviewed-by: Avri Altman <Avri.Altman@wdc.com>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/ufs/core/ufshcd.c      | 4 ++--
+ drivers/ufs/host/ufs-renesas.c | 9 ++++++++-
+ include/ufs/ufshcd.h           | 9 +++------
+ 3 files changed, 13 insertions(+), 9 deletions(-)
 
-Regards,
-
-James
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index abbe7135a9778..2b445a8699dbc 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -2411,8 +2411,6 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
+ 	int err;
+ 
+ 	hba->capabilities = ufshcd_readl(hba, REG_CONTROLLER_CAPABILITIES);
+-	if (hba->quirks & UFSHCD_QUIRK_BROKEN_64BIT_ADDRESS)
+-		hba->capabilities &= ~MASK_64_ADDRESSING_SUPPORT;
+ 
+ 	/* nutrs and nutmrs are 0 based values */
+ 	hba->nutrs = (hba->capabilities & MASK_TRANSFER_REQUESTS_SLOTS_SDB) + 1;
+@@ -10309,6 +10307,8 @@ EXPORT_SYMBOL_GPL(ufshcd_dealloc_host);
+  */
+ static int ufshcd_set_dma_mask(struct ufs_hba *hba)
+ {
++	if (hba->vops && hba->vops->set_dma_mask)
++		return hba->vops->set_dma_mask(hba);
+ 	if (hba->capabilities & MASK_64_ADDRESSING_SUPPORT) {
+ 		if (!dma_set_mask_and_coherent(hba->dev, DMA_BIT_MASK(64)))
+ 			return 0;
+diff --git a/drivers/ufs/host/ufs-renesas.c b/drivers/ufs/host/ufs-renesas.c
+index 8711e5cbc9680..3ff97112e1f6d 100644
+--- a/drivers/ufs/host/ufs-renesas.c
++++ b/drivers/ufs/host/ufs-renesas.c
+@@ -7,6 +7,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/dma-mapping.h>
+ #include <linux/err.h>
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+@@ -364,14 +365,20 @@ static int ufs_renesas_init(struct ufs_hba *hba)
+ 		return -ENOMEM;
+ 	ufshcd_set_variant(hba, priv);
+ 
+-	hba->quirks |= UFSHCD_QUIRK_BROKEN_64BIT_ADDRESS | UFSHCD_QUIRK_HIBERN_FASTAUTO;
++	hba->quirks |= UFSHCD_QUIRK_HIBERN_FASTAUTO;
+ 
+ 	return 0;
+ }
+ 
++static int ufs_renesas_set_dma_mask(struct ufs_hba *hba)
++{
++	return dma_set_mask_and_coherent(hba->dev, DMA_BIT_MASK(32));
++}
++
+ static const struct ufs_hba_variant_ops ufs_renesas_vops = {
+ 	.name		= "renesas",
+ 	.init		= ufs_renesas_init,
++	.set_dma_mask	= ufs_renesas_set_dma_mask,
+ 	.setup_clocks	= ufs_renesas_setup_clocks,
+ 	.hce_enable_notify = ufs_renesas_hce_enable_notify,
+ 	.dbg_register_dump = ufs_renesas_dbg_register_dump,
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 3f68ae3e4330d..0b0fba9f1383c 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -299,6 +299,8 @@ struct ufs_pwr_mode_info {
+  * @max_num_rtt: maximum RTT supported by the host
+  * @init: called when the driver is initialized
+  * @exit: called to cleanup everything done in init
++ * @set_dma_mask: For setting another DMA mask than indicated by the 64AS
++ *	capability bit.
+  * @get_ufs_hci_version: called to get UFS HCI version
+  * @clk_scale_notify: notifies that clks are scaled up/down
+  * @setup_clocks: called before touching any of the controller registers
+@@ -341,6 +343,7 @@ struct ufs_hba_variant_ops {
+ 	int	(*init)(struct ufs_hba *);
+ 	void    (*exit)(struct ufs_hba *);
+ 	u32	(*get_ufs_hci_version)(struct ufs_hba *);
++	int	(*set_dma_mask)(struct ufs_hba *);
+ 	int	(*clk_scale_notify)(struct ufs_hba *, bool,
+ 				    enum ufs_notify_change_status);
+ 	int	(*setup_clocks)(struct ufs_hba *, bool,
+@@ -623,12 +626,6 @@ enum ufshcd_quirks {
+ 	 */
+ 	UFSHCD_QUIRK_SKIP_PH_CONFIGURATION		= 1 << 16,
+ 
+-	/*
+-	 * This quirk needs to be enabled if the host controller has
+-	 * 64-bit addressing supported capability but it doesn't work.
+-	 */
+-	UFSHCD_QUIRK_BROKEN_64BIT_ADDRESS		= 1 << 17,
+-
+ 	/*
+ 	 * This quirk needs to be enabled if the host controller has
+ 	 * auto-hibernate capability but it's FASTAUTO only.
+-- 
+2.43.0
 
 
