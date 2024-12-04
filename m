@@ -4,106 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DA1E7716D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 10:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A124DE7716D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 10:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZdzII5ceMbqNid98twXA3JIe19RaQfzWoabBNJlaDw=; b=t7ivfvwzkSdJs53A6dh3t6SWVm
-	bC4JYEq1ol6c87pcY9MQH2i6Y9caDmF3BAcIRJOYQK7nrBHX9XnME7X5o/3hUK/Ee3BQC8F+6tuFV
-	ZC1PJOEhsurEFlpJ4xWtvoqXtzW+BY+4RuJ/rEk82Rdrl6+hua2Of7szRpwGyUhRCQzfEY9y7HlA2
-	HtOp9Cz+Pl04sO4P+CQH1piu7xGN96Qhgx72BDLdDeTxnqYQFj3fP9QvyQlZjGIfpDEHL2Kgifl4F
-	8wMayGfhQO7LbSasKRutpVdPGS/fS/XyUFwdAi0jCy69C9PB4m6CqP0aO0ZT1QZHLpyfColmFSXCC
-	xINDreLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dyk00jx2rD13abnBIF0gny6mCB3L0WTy7Wj+eriGTe4=; b=ZmdvVOc5yQFwzw
+	I/8WBEXIb0USmdXhn7k15bcIaUca7ORG8zz14D1rXz4Mwgf5WmzTaNiwKs1TSwZ4VPM07mMheA0Ap
+	VZQ7YImVkl9PAS10TEjHWDur4FepmAn6md82MR4dOnF3qBEHB4tFQMKpjsf2PEbkBtDpLAN/PjCoI
+	jscdcVSPZLDoDozKaQOvgkVhNWM6agSYUWv0d+ieYtLguNKDmLuT08o8bMNDL7ukNlGqbQ4AfCqYK
+	1andQseDR0wySCYiISQufpmJk74gSAEUaqCt8JVrooyqD5FVc+BNP+fnnil3qplMuIR0EdZziTeOv
+	LmV4JFLmVNCAklRxqlVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tImKJ-0000000CAEZ-2nsp;
-	Wed, 04 Dec 2024 10:09:47 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1tImuA-0000000CGIp-35uz;
+	Wed, 04 Dec 2024 10:46:50 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tImHq-0000000C9rF-2HAT;
-	Wed, 04 Dec 2024 10:07:15 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4349f160d62so54099115e9.2;
-        Wed, 04 Dec 2024 02:07:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733306833; x=1733911633; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=rZdzII5ceMbqNid98twXA3JIe19RaQfzWoabBNJlaDw=;
-        b=cXctohjjRXxIXlsmdmHvv+CEMUKaNJgdK6A4iuJEkjeocUS4AcZtWHkDBPaHc290xB
-         w0DormlNrrfW2/0YuTHAn5wvvwIuxWGfsouDm6GeFrtTQA5dd8SDh6FA5nsKkuJKo+CY
-         tNZwVrtqJj7ktCqItXVlxAAdi7vVBzlQv2Tfrhp6+YHCmo2MPCLfKWtoLOrpGmGj/XaJ
-         pW85E+Own03ilEd7KXl+upxBir7+UxCnxAaiSwlnMs7fGSDu7hzmBfEmK1v2Q7dZpqQr
-         KqDJTsaV3WZdVo51PGERgiPYdWq1FJHWwisHjlory0fDxo5K6rX1rfIsR2psI4VWoaKH
-         6qNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733306833; x=1733911633;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rZdzII5ceMbqNid98twXA3JIe19RaQfzWoabBNJlaDw=;
-        b=iBOtBRgX4yOaZZ5ABGbSAk+1ZeXuZVI4QMo5jh2nEKzbZDjPw1VGCgw5BsTxsOPJ0F
-         KGPYSSA0XAxgra59daHsInHATvMvY8hbu+dCTBmnwRuDY4swvwuQpB7e+Ri/D/9fCnF1
-         eGMJT6ksRhnCgGqPf8fdUxWOREnNJ80D8BvmrCfveWBeDjMrxejdi8jztdFv2AkmRRfy
-         3IDPbjqS5PcOTTMzqi8HIJNGDooPzHahB+1TFf+A67TLpys6p+D+eCp1enYbXNfoxTF6
-         8ne4ElUL1FCnwWggSZ3RVLatzLaDFZI9xZfJXCtHbAqnF9NgRznWtzf9RbfLcjjJVabK
-         mcGw==
-X-Forwarded-Encrypted: i=1; AJvYcCUsd3y+fENurHBM+LhomX2cJG7Im5I7dMndBw4nfyJ0tA0kkHHugdIBRdXHBwtRwwDxsRbz5eM2jF40+h7M+Sw=@lists.infradead.org, AJvYcCXLkEL7JxQA5/WJLkRxveWBkni+cmpYQRDHx5GRsgcgwci4aAHiqc+8CnsntcHOrd+2TRKlXGk5GJthdcbgv6JA@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzw+AZG1VQvt2tVRawQAfB6IBJ4Z60k7z0uMqj9a/X6uJh8zvqn
-	ACwCIClYRGQAnu/WSz5vITSKMHgaugGPD6TdqOenrqFRER1JQ9FtH//ySA==
-X-Gm-Gg: ASbGncvWXmauG/OrKOTgcyskvA5PeldymuJm2KuH8J9QImZyfASrFfG+DC9LfwL7fCF
-	UfNH/2G2lKad0gUSjSnj87iuAjul9+NiU7M6LWMNYp/20EZ9ugEhjOAEj8pqLDBazXaKajdc/P8
-	obtCKdkS4ihcP3aW6yW+QX0aYLrceZQxDeTM6SWbJJfmt8bgxHk0AMJhuWZ3P2LRuWDhV9tAtOZ
-	wrSvNV1EZyVyyD/fjPL3NFntJlDXL/0HLrR98g8JIB4w/pfiD1xfloEGe5Sg9Liqu4qwQEMrFEM
-	LmcmsQ==
-X-Google-Smtp-Source: AGHT+IEmZW0+P/p4vKIwz6T1TOfzZOiXdf7VDC1j/nrxeJE9ePKA3vig1n3t7LFh49rBaBnOmNjmTQ==
-X-Received: by 2002:a05:600c:1c8b:b0:434:a386:6ae with SMTP id 5b1f17b1804b1-434d09b14c7mr47619305e9.7.1733306832419;
-        Wed, 04 Dec 2024 02:07:12 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385e0d4778dsm14329018f8f.45.2024.12.04.02.07.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 02:07:11 -0800 (PST)
-Message-ID: <675029cf.df0a0220.1d1837.a877@mx.google.com>
-X-Google-Original-Message-ID: <Z1ApzDEAyyRrHy4u@Ansuel-XPS.>
-Date: Wed, 4 Dec 2024 11:07:08 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v8 3/4] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-References: <20241204072427.17778-1-ansuelsmth@gmail.com>
- <20241204072427.17778-4-ansuelsmth@gmail.com>
- <20241204100922.0af25d7e@fedora.home>
- <67501d7b.050a0220.3390ac.353c@mx.google.com>
- <Z1Af3YaN3xjq_Gtb@shell.armlinux.org.uk>
- <675021f1.050a0220.34c00a.3a0c@mx.google.com>
- <Z1AoSSDqAbEisuzK@shell.armlinux.org.uk>
+	id 1tImhI-0000000CDTP-2FGq;
+	Wed, 04 Dec 2024 10:33:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1733308401; x=1733913201; i=frank-w@public-files.de;
+	bh=dyk00jx2rD13abnBIF0gny6mCB3L0WTy7Wj+eriGTe4=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=p1NsGWXOBMpk9Xrxst9wZ0QHjMpwO7wZJ8PDKhJSd5bz+aLjtIPUof5t5z92JKzh
+	 WT02h1/9Ek2xR76AismXJy1hwo56p+h5riKtLoF+z+6W0IDaGJzvNBC1p0XHudAL3
+	 jtOOec7pDImiWz7HbelNd3t1Wpmj9F65TG7D/yPkSLXvy/a3dlWQ9MygbJHBa++zz
+	 mXLkVzs0UUVuBkS8la5c1KcoKak8F/2CyDCW9yVL+hQelEYyzrEldwIvbUOE6JEp6
+	 TnRY2WuT6d2WACzdxo5G5WAjudf2k/UcG120YBStBRKx6TEuzHzh046azmBcb2MMU
+	 zD7LgwK4EffKaV9O+Q==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([194.15.87.121]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1N7zBR-1tfnDG2q0p-00rC64; Wed, 04
+ Dec 2024 11:33:21 +0100
+Date: Wed, 04 Dec 2024 11:33:19 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Chen-Yu Tsai <wenst@chromium.org>, Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>
+CC: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Andy-ld Lu <andy-ld.lu@mediatek.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_1/2=5D_dt-bindings=3A_mmc=3A_mtk-sd=3A_Docu?=
+ =?US-ASCII?Q?ment_compatibles_that_need_two_register_ranges?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20241204092855.1365638-2-wenst@chromium.org>
+References: <20241204092855.1365638-1-wenst@chromium.org> <20241204092855.1365638-2-wenst@chromium.org>
+Message-ID: <4762E5F1-59F2-40D1-9D22-724107623AAB@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z1AoSSDqAbEisuzK@shell.armlinux.org.uk>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:db3sHldF0T6VuQva7YZ8BJkBo83cuzvjx9Z9UO2GrwoDa+O4ixH
+ 63rmTFteH+CanEW1qjyJ069egAPYXQngNUs46t0yjSkh3WMF/xZrQP6vY9qrGuV5e7KbCfF
+ g6HTJA6sh62ZCv5Ae+BJ8V7TBxzSZUshJcf9QvB0tKaivwWdNdU+QxtIxPo6scMnpvq6CFR
+ HVb0vJa7N7Bvc35qVqjnA==
+UI-OutboundReport: notjunk:1;M01:P0:cyQuMalTPvY=;G6cIYpP8l4HrqzVPFLzj+VTuA7s
+ 6uJk7KoSZC1ZovJPT25TGM8GJhSI8xoE6q/HVcQqBdR69izgSmBk0HHjKrQFCMhBlGOb/YaE1
+ zFN4MB2ZIc6cuu4mTxyNsNIPoUrAv53QGq/Cxm6L8eJIqc31ePlcmdDlmYdk3wCBa/bADdyjx
+ mCfBONVrdbTanzp6gGEd/sQrLnQJoiw1bf7/dVY3tiTp1f5Kl+pI9Q89yktvTjb8NgoZhitro
+ 6UYJ8EU5i5S0NQPv7nd2p7N2dpscbpotcfPfUFzW1teVXMYS5TfSKS/jLpxWt2HVjsuSJ7DOp
+ VPKbfuj30K1EbEFpDYPqjxTzdwBJEZw85eAqAu+DukkBex6lHtnQb7UZVJ4XDeZvfMXyXtOKB
+ 66ZW1RLWCHvlAA1cBw3uIFJw4Gf65wmMO2UqTc+F4s9bJ5+TyUEkwGdY8oCr9ZBIvO2Bz8tzz
+ GFWCjJ2X9GpvCXVRsHOjuAtzQY+zDeamSdAaSmxCx+SM05MFMUt53JTmBecp8xBA6w/mryszI
+ PU9ndFD1J3U3Pl9sh+3RNNgBwRB9HZF9rWs5Bkbz94U8pIRKCxav7ojdmSx6d6SGOhBmbhOl5
+ p/tPEYB0PXqLCglsVzE+650DxSgPifuJmr+9592Vh6OjY384voQrQFvSe65q+dzoSmoYMYzB4
+ sE8VJwUSkTk1161t1+9qzBU+gVrrGHd/PfJtzGs7Rm0Ou5kYUR4CnjtefZIuJKxlxbbU29WWJ
+ kGiK9aICfxDhWANsyKZ9QwlaWxZ7e+bG+MqcmE/I3DxIs4F3D53d8Vm/1gn7zgrmL1KiyuSZ2
+ 3SacLt7TdVo4kM3MLSt5CdP+AxNBAXcwTE8Cy4mHVoDNOHgztGLGzKVB4UdO29dGXGLmDUHHk
+ Z4wSQbE66gN7+4pDbDUc5U03YTZ3jsvphxj8U6LOv0+dX3NgWE7hkmbxAA6m4lGVbJ4QWFDW8
+ fuA+JppOaV3Fm2tuCQ5lzQTLY6lgpQT96ME/EUYMtYWT+AzHPjIwZoPCwnTt7eRp4F04AXgIF
+ WzqtPeQ0ZQ/r9Pfk27OTM7w1CCceSbdZLtCA06MSWkN89GmH8b/ZDCZqFhlb4yfzNtaNVCg8+
+ yZaXe4JsM0f1iCA05qDKUovnAigL3g
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_020714_577556_5F9A7AED 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20241204_023332_857478_83A5C9DD 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,39 +101,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 04, 2024 at 10:00:41AM +0000, Russell King (Oracle) wrote:
-> On Wed, Dec 04, 2024 at 10:33:33AM +0100, Christian Marangi wrote:
-> > On Wed, Dec 04, 2024 at 09:24:45AM +0000, Russell King (Oracle) wrote:
-> > > > Added 5000 as this is present in documentation bits but CPU can only go
-> > > > up to 2.5. Should I drop it? Idea was to futureproof it since it really
-> > > > seems they added these bits with the intention of having a newer switch
-> > > > with more advanced ports.
-> > > 
-> > > Is there any mention of supporting interfaces faster than 2500BASE-X ?
-> > >
-> > 
-> > In MAC Layer function description, they say:
-> > - Support 10/100/1000/2500/5000 Mbps bit rates
-> > 
-> > So in theory it can support up to that speed.
-> 
-> Maybe the internal IP supports this but the SoC doesn't?
-> 
-> However, I was asking about interfaces rather than speeds - so RGMII,
-> SGMII, 2500BASE-X... is there a mention of anything else?
+Am 4=2E Dezember 2024 10:28:52 MEZ schrieb Chen-Yu Tsai <wenst@chromium=2Eo=
+rg>:
+>Besides the MT8183's MMC controller and all its compatible derivatives,
+>the recently added MT7986 and MT8196 also require two register ranges=2E
+>This is based on the actual device trees=2E
+
+Hi
+
+Mt7988 is similar to mt7986 (only using different clock settings) and usin=
+g 2 reg too=2E
+
+Currently there is no mmc node in mt7988 dts (i currently upstreaming it) =
+so i guess this is why you have not yet noticed it=2E
+
+See this for more:
+
+https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202412021226=
+02=2E30734-3-linux@fw-web=2Ede/
+
+Maybe you can add mt7988 compatible here too in v2=2E
+
+Regards Frank
+
+>Properly enforce this in the binding=2E
 >
+>Fixes: 4a8bd2b07d88 ("dt-bindings: mmc: mtk-sd: Add mt7988 SoC")
+>Fixes: 58927c9dc4ab ("dt-bindings: mmc: mtk-sd: Add support for MT8196")
+>Cc: Frank Wunderlich <frank-w@public-files=2Ede>
+>Cc: Andy-ld Lu <andy-ld=2Elu@mediatek=2Ecom>
+>Signed-off-by: Chen-Yu Tsai <wenst@chromium=2Eorg>
+>---
+> Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml | 9 ++++++++-
+> 1 file changed, 8 insertions(+), 1 deletion(-)
+>
+>diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml b/Docume=
+ntation/devicetree/bindings/mmc/mtk-sd=2Eyaml
+>index f86ebd81f5a5=2E=2E9ea035928563 100644
+>--- a/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
+>+++ b/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
+>@@ -235,11 +235,18 @@ allOf:
+>       properties:
+>         compatible:
+>           contains:
+>-            const: mediatek,mt8183-mmc
+>+            enum:
+>+              - mediatek,mt7986-mmc
+>+              - mediatek,mt8183-mmc
+>+              - mediatek,mt8196-mmc
+>     then:
+>       properties:
+>         reg:
+>           minItems: 2
+>+    else:
+>+      properties:
+>+        reg:
+>+          maxItems: 1
+>=20
+>   - if:
+>       properties:
 
-I can see mention of 5g Base-R so I assume supported but in the sdk
-there isn't any code to configure it/I don't have any hardware.
 
-(and documentation is empty for anything PCS related for register, just
-block diagram)
-
-I can ask it that is expected to work tho.
-
--- 
-	Ansuel
+regards Frank
 
