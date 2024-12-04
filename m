@@ -4,91 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F215E7716B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 14:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CB4E7716B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 14:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=; b=FhU4Z2mFcplmS9
-	nRoKr1da8xA6LnliIbTYaTItRf6ahpfqMfcDL04dNVQc/vBseHh4v80D9c78T6iRYsw/OhTWtlcxp
-	XuPnbotZG3tSMi4UtpFqH+sUzC5lbI0ACNrHnJn6v+jb+GT+v1KuAZrhe5Q01UZTmtsZkWWItz86t
-	pF3e+07j+Qhs14ThCFBCED9o1Q+wC1ddq/vcxSDUvxWkTS6MJAttggws+6ULPKBDsfoD+bLN0+GpK
-	/AbzNGQoO2afRbyqBjSloS8sLCvrlWgH4LAxM4HQYI7v0Xwq2d5R7V91t1/L2fdhqsvZ3fg0bl5/H
-	Ferez9SRRETB9OrC8p0w==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+O1ilv826b1J07bwiFHjvn/g5RNrsUHc1aSulBRGoyg=; b=DotzalcmO7EOYKCJXWvUGgRDV6
+	49N/0NOye/jiBzm3qjtXl2qbWxN7BCkATdqS2CCLw74pwpIRJMu88p/GKb46DjVo15dZjfikuZj1n
+	UO3RjeilnIitUcimbjaw8yfFYhuWgY8wd0CaYweGwlO8or9yK0eR1S+O6wsVDS1WTDyXNSBzVSYhb
+	0C0vbZbFr2SmANc70+u1+0VorctDS+utx6rngjTY9cEVKLm3CvoULpOFjcBznKJjbLItygwqZb+69
+	LSGkgItS5lb49sZVjScwyiy3UOyCDyT9yiA/EHWYgPVBASD4yVoYGTtC78clM2Gar1RnKuTPZ4OCw
+	8m02lvog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIqM7-0000000CpgC-1R8D;
-	Wed, 04 Dec 2024 14:27:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tIqcS-0000000Cs4C-1DvY;
+	Wed, 04 Dec 2024 14:44:48 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIqLB-0000000CpZs-1Sxq
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 04 Dec 2024 14:26:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=; b=cEtm3Y8z1bvKpVP/I2Uy2U8afZ
-	dLw6pJXoOwGuVFtWaqPaof4i0fNG2lBTl/nrM4zoq7+W3Ea7KSzwVfj6elhT0FRJ9spJx3tKpJghA
-	59IbhO8OZ2QGq0RVEl/+GwrbICKYiqs9d7JwMgymD1G3vKwyh2euVQMKr8TNLMz3X+s2Dm/OtgRDG
-	o0g6pV4u+IqizoeVpW2YfuXYJ/RmIQA6ttKER5HiUcPLnWlYGks3LIRKF9ONvW9DlK6r5aJe4unHn
-	ybaiY9Zab4tzF7yOKxOZa+tAolpGpDQeenHqmZIjIHyd10F3OGISvAH73KIg4Bd62z8zg63xyjyoZ
-	Y6UPfdUw==;
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIqL8-00000002dRs-0x9F
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Dec 2024 14:26:56 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-7ea9739647bso4921057a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Dec 2024 06:26:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733322411; x=1733927211; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=;
-        b=W0cTJmlVmCoSujb1yhp3DF4pBweAx4xupoz8jsAL9A5Zl2z7anOmPyA6j6kc9+pCja
-         21fgSX1a7FOy/nrMdV/U9RduW10yaQ2stNvIv1dWQmb6V7DFrbeFO/BtEFluNx94YQ3E
-         2A4aGO49OSwK3z1HBYabeWMfw1aTmtFUotbsQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733322411; x=1733927211;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=;
-        b=r1sMDv4tIoJP8Fv6DO9AqLJWxh8DLhdtQzJuhacz5mrcHWMWejydoGrvl+vpg6w60v
-         pNiLopCgCeaJn6QET6FYa04Vs3E3sO3KYJ2Lo3xeU17JCxnSNb/pFrty0cR/rPUfN1Qg
-         iHo0aSHDRDkh/LpVncL/b2bNUxglca7/JGZtpQLV1GWoGEu3PwZBKGxm7RA2ebGBul1L
-         IvRIk6zs2b4HLjtk1BtMjBXB6U+fps4aEbIbX+RbFCqnTQoj6nH3cq9zU1k9x8GYfP9p
-         a3Cw4Wsa+R37nV4iWr7k0urR/iix3LpKhkHR/mJl6HTHSUybDlb1w/T+oMnUcI48aqzN
-         8bCg==
-X-Forwarded-Encrypted: i=1; AJvYcCWhNyEAWtoWmQQLVr8/HT7x64hGbXnBJ/5jOaxhOePmWCx8ActOEfUzD18fnCWFlTNBOHM3dMOj1AsRqVZtsQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyiL21vwi4zWKlL80nMkQUhUGgHuGEIH7WEq3iA9jsyue1ESqeY
-	E8SFwaphPRar7Yjq7npgI/VGbopKr3+Wi0Cb58y8KlR8XDG8UJp87OJSaP7GKA==
-X-Gm-Gg: ASbGncs25dUYTMkscFTrOznJHki+ZnBiPqYVXLMyIrwmklgxa/xVgBJS6Cfc7KsIhS6
-	moLiwgyE1lpE1e9fHeI1W9OZueKsQ+Tm4Nmys/uhQ4wLIp4X4iir/XPE0+IwbxjoUxHVwyvk40b
-	1yFyyoyDwlOFI6VQVH6TjMFAAZ1fHNLonrg8p+iqIcIWk4J0RI9N5QOsreq++YgRO1r7FyhzZP0
-	UUENmQsNEf+tiJPKv/TXaztoAtPpbHzzd/g/Rnf9NeFfK7Mv1Zub2bcEW+2Xsq4FsQ=
-X-Google-Smtp-Source: AGHT+IF0dNNNk83kN4LRrd8AEGyz62WUomCygJPIZPBTF7uW7lrdAcSow02U1nyM8E/b/c2B1GaPog==
-X-Received: by 2002:a05:6a20:cfa6:b0:1dc:bdbd:9017 with SMTP id adf61e73a8af0-1e165412f33mr9668165637.40.1733322410642;
-        Wed, 04 Dec 2024 06:26:50 -0800 (PST)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:b764:8a78:a02:6e0])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7fc9c3a2a5asm11416510a12.80.2024.12.04.06.26.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 06:26:50 -0800 (PST)
-From: Fei Shao <fshao@chromium.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v2] drm/mediatek: dp: Support flexible length of DP calibration data
-Date: Wed,  4 Dec 2024 22:25:38 +0800
-Message-ID: <20241204142626.158395-1-fshao@chromium.org>
-X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
+	id 1tIqbQ-0000000Crt6-3sJO;
+	Wed, 04 Dec 2024 14:43:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 743EEA40F97;
+	Wed,  4 Dec 2024 14:41:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1679BC4CECD;
+	Wed,  4 Dec 2024 14:43:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733323423;
+	bh=undE9DTFHVhAQNgkdMypYeAhhRQBawi8NRp2IEnHt4I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rNSr/yv3mj0EZ/m19i9RxOi7Nnlo/ogkCfR8bstdKVHxnpVm1srNVqcNNAT0btNi3
+	 C+lK1KSh5Yg33D4Hc4e2P0mVokgOosFLtXz1Ed1AupAgTtTo9/Ru1n7qcopV/vATBM
+	 qgnQokM6eCoLHQtjNutQsARREPrgLTcHrCCyBq8a0dXgEKstk5h8402MOavxy56C/S
+	 UegD73F9aJ3EvvkF8FUFFemQcoFlp8ARql4eo/g469HN2u4NsVywqK4FP8qkMrh94K
+	 6dHnlAeKVE7hHw9hOH+rjiXDz2gJ2wgJ54uEp7UC/ZOEfLlN3hJVUzDx+XVxtQxvj1
+	 LxpalJjq4+huA==
+Date: Wed, 4 Dec 2024 08:43:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v5 3/5] dt-bindings: pinctrl: add binding for MT7988 SoC
+Message-ID: <20241204144341.GA191772-robh@kernel.org>
+References: <20241202110045.22084-1-linux@fw-web.de>
+ <20241202110045.22084-4-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241202110045.22084-4-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_142654_569890_283F76B1 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20241204_064345_100034_F6FAD97F 
+X-CRM114-Status: GOOD (  24.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,69 +66,378 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DP calibration data is stored in nvmem cells, and the data layout is
-described in the `mtk_dp_efuse_fmt` arrays for each platform.
+On Mon, Dec 02, 2024 at 12:00:37PM +0100, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> This adds bindings for MT7988 pinctrl driver.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> changes in v5 (so not adding RB from Rob given in v4):
+> - do not use MTK_DRIVE_8mA in example
+> - add _0 functions for pwm
 
-There is no guarantee that the data is always a 4-length u32 cell array.
-For example, MT8188 has a data length of 3, preventing it from passing
-the preliminary check and undergoing calibration.
+Minor enough to keep my R-by, but if I review it again I can always find 
+more. :)
 
-Update the logic to support flexible data lengths. Specifically, we
-validate the length returned from `nvmem_cell_read()` against the
-platform-specific efuse format. If out-of-bound access is detected, fall
-back to the default calibration values. This likely indicates an error
-in either the efuse data length described in DT or the efuse format
-within the driver.
+> 
+> changes in v4:
+> - dt-binding: pinctrl: fix dt_binding_check fixed-string error
+> 
+> '^mux$' should not be valid under {'pattern': '^\\^[a-zA-Z0-9,\\-._#@]+\\$$'}
+> 	hint: Fixed strings belong in 'properties', not 'patternProperties'
+> 
+> changes in v3:
+> - limit conf subnode name with optional suffix like mmc on mt7986
+> - match mux subnode without wildcards
+> 
+> changes in v2:
+> - drop gpio-cells description
+> - move ref in mux subnode up
+> - order uart-functions alphanumeric and fix typo
+> ---
+>  .../pinctrl/mediatek,mt7988-pinctrl.yaml      | 578 ++++++++++++++++++
+>  1 file changed, 578 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
+> new file mode 100644
+> index 000000000000..dd5584557135
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
+> @@ -0,0 +1,578 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7988-pinctrl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT7988 Pin Controller
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@kernel.org>
+> +
+> +description:
+> +  The MediaTek's MT7988 Pin controller is used to control SoC pins.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt7988-pinctrl
+> +
+> +  reg:
+> +    minItems: 7
+> +    maxItems: 7
+> +
+> +  reg-names:
+> +    items:
+> +      - const: gpio
+> +      - const: iocfg_tr
+> +      - const: iocfg_br
+> +      - const: iocfg_rb
+> +      - const: iocfg_lb
+> +      - const: iocfg_tl
+> +      - const: eint
+> +
+> +  gpio-controller: true
+> +
+> +  "#gpio-cells":
+> +    const: 2
+> +
+> +  gpio-ranges:
+> +    minItems: 1
+> +    maxItems: 5
+> +    description:
+> +      GPIO valid number range.
+> +
+> +  interrupt-controller: true
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  "#interrupt-cells":
+> +    const: 2
+> +
+> +allOf:
+> +  - $ref: pinctrl.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - gpio-controller
+> +  - "#gpio-cells"
+> +
+> +patternProperties:
+> +  '-pins$':
+> +    type: object
+> +    additionalProperties: false
+> +
+> +    properties:
+> +      'mux':
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+Drop quotes.
 
-Changes in v2:
-- use %zu identifier for size_t in dev_warn()
 
- drivers/gpu/drm/mediatek/mtk_dp.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+> +        type: object
+> +        additionalProperties: false
+> +        $ref: /schemas/pinctrl/pinmux-node.yaml
+> +        description: |
+> +          pinmux configuration nodes.
+> +
+> +          The following table shows the effective values of "group", "function"
+> +          properties and chip pinout pins
+> +
+> +          groups               function           pins (in pin#)
+> +          ---------------------------------------------------------------------
+> +          "tops_jtag0_0"       "jtag"             0, 1, 2, 3, 4
+> +          "wo0_jtag"           "jtag"             50, 51, 52, 53, 54
+> +          "wo1_jtag"           "jtag"             50, 51, 52, 53, 54
+> +          "wo2_jtag"           "jtag"             50, 51, 52, 53, 54
+> +          "jtag"               "jtag"             58, 59, 60, 61, 62
+> +          "tops_jtag0_1"       "jtag"             58, 59, 60, 61, 62
+> +          "int_usxgmii"        "int_usxgmii"      2, 3
+> +          "pwm0"               "pwm"              57
+> +          "pwm1"               "pwm"              21
+> +          "pwm2"               "pwm"              80
+> +          "pwm2_0"             "pwm"              58
+> +          "pwm3"               "pwm"              81
+> +          "pwm3_0"             "pwm"              59
+> +          "pwm4"               "pwm"              82
+> +          "pwm4_0"             "pwm"              60
+> +          "pwm5"               "pwm"              83
+> +          "pwm5_0"             "pwm"              61
+> +          "pwm6"               "pwm"              69
+> +          "pwm6_0"             "pwm"              62
+> +          "pwm7"               "pwm"              70
+> +          "pwm7_0"             "pwm"              4
+> +          "dfd"                "dfd"              0, 1, 2, 3, 4
+> +          "xfi_phy0_i2c0"      "i2c"              0, 1
+> +          "xfi_phy1_i2c0"      "i2c"              0, 1
+> +          "xfi_phy_pll_i2c0"   "i2c"              3, 4
+> +          "xfi_phy_pll_i2c1"   "i2c"              3, 4
+> +          "i2c0_0"             "i2c"              5, 6
+> +          "i2c1_sfp"           "i2c"              5, 6
+> +          "xfi_pextp_phy0_i2c" "i2c"              5, 6
+> +          "xfi_pextp_phy1_i2c" "i2c"              5, 6
+> +          "i2c0_1"             "i2c"              15, 16
+> +          "u30_phy_i2c0"       "i2c"              15, 16
+> +          "u32_phy_i2c0"       "i2c"              15, 16
+> +          "xfi_phy0_i2c1"      "i2c"              15, 16
+> +          "xfi_phy1_i2c1"      "i2c"              15, 16
+> +          "xfi_phy_pll_i2c2"   "i2c"              15, 16
+> +          "i2c1_0"             "i2c"              17, 18
+> +          "u30_phy_i2c1"       "i2c"              17, 18
+> +          "u32_phy_i2c1"       "i2c"              17, 18
+> +          "xfi_phy_pll_i2c3"   "i2c"              17, 18
+> +          "sgmii0_i2c"         "i2c"              17, 18
+> +          "sgmii1_i2c"         "i2c"              17, 18
+> +          "i2c1_2"             "i2c"              69, 70
+> +          "i2c2_0"             "i2c"              69, 70
+> +          "i2c2_1"             "i2c"              71, 72
+> +          "mdc_mdio0"          "eth"              5, 6
+> +          "2p5g_ext_mdio"      "eth"              28, 29
+> +          "gbe_ext_mdio"       "eth"              30, 31
+> +          "mdc_mdio1"          "eth"              69, 70
+> +          "pcie_wake_n0_0"     "pcie"             7
+> +          "pcie_clk_req_n0_0"  "pcie"             8
+> +          "pcie_wake_n3_0"     "pcie"             9
+> +          "pcie_clk_req_n3"    "pcie"             10
+> +          "pcie_clk_req_n0_1"  "pcie"             10
+> +          "pcie_p0_phy_i2c"    "pcie"             7, 8
+> +          "pcie_p1_phy_i2c"    "pcie"             7, 8
+> +          "pcie_p3_phy_i2c"    "pcie"             9, 10
+> +          "pcie_p2_phy_i2c"    "pcie"             7, 8
+> +          "ckm_phy_i2c"        "pcie"             9, 10
+> +          "pcie_wake_n0_1"     "pcie"             13
+> +          "pcie_wake_n3_1"     "pcie"             14
+> +          "pcie_2l_0_pereset"  "pcie"             19
+> +          "pcie_1l_1_pereset"  "pcie"             20
+> +          "pcie_clk_req_n2_1"  "pcie"             63
+> +          "pcie_2l_1_pereset"  "pcie"             73
+> +          "pcie_1l_0_pereset"  "pcie"             74
+> +          "pcie_wake_n1_0"     "pcie"             75
+> +          "pcie_clk_req_n1"    "pcie"             76
+> +          "pcie_wake_n2_0"     "pcie"             77
+> +          "pcie_clk_req_n2_0"  "pcie"             78
+> +          "pcie_wake_n2_1"     "pcie"             79
+> +          "pmic"               "pmic"             11
+> +          "watchdog"           "watchdog"         12
+> +          "spi0_wp_hold"       "spi"              22, 23
+> +          "spi0"               "spi"              24, 25, 26, 27
+> +          "spi1"               "spi"              28, 29, 30, 31
+> +          "spi2"               "spi"              32, 33, 34, 35
+> +          "spi2_wp_hold"       "spi"              36, 37
+> +          "snfi"               "flash"            22, 23, 24, 25, 26, 27
+> +          "emmc_45"            "flash"            21, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
+> +          "sdcard"             "flash"            32, 33, 34, 35, 36, 37
+> +          "emmc_51"            "flash"            38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+> +          "uart2"              "uart"             0, 1, 2, 3
+> +          "tops_uart0_0"       "uart"             22, 23
+> +          "uart2_0"            "uart"             28, 29, 30, 31
+> +          "uart1_0"            "uart"             32, 33, 34, 35
+> +          "uart2_1"            "uart"             32, 33, 34, 35
+> +          "net_wo0_uart_txd_0" "uart"             28
+> +          "net_wo1_uart_txd_0" "uart"             29
+> +          "net_wo2_uart_txd_0" "uart"             30
+> +          "tops_uart1_0"       "uart"             28, 29
+> +          "tops_uart0_1"       "uart"             30, 31
+> +          "tops_uart1_1"       "uart"             36, 37
+> +          "uart0"              "uart"             55, 56
+> +          "tops_uart0_2"       "uart"             55, 56
+> +          "uart2_2"            "uart"             50, 51, 52, 53
+> +          "uart1_1"            "uart"             58, 59, 60, 61
+> +          "uart2_3"            "uart"             58, 59, 60, 61
+> +          "uart1_2"            "uart"             80, 81, 82, 83
+> +          "uart1_2_lite"       "uart"             80, 81
+> +          "tops_uart1_2"       "uart"             80, 81
+> +          "net_wo0_uart_txd_1" "uart"             80
+> +          "net_wo1_uart_txd_1" "uart"             81
+> +          "net_wo2_uart_txd_1" "uart"             82
+> +          "udi"                "udi"              32, 33, 34, 35, 36
+> +          "i2s"                "audio"            50, 51, 52, 53, 54
+> +          "pcm"                "audio"            50, 51, 52, 53
+> +          "gbe0_led1"          "led"              58
+> +          "gbe1_led1"          "led"              59
+> +          "gbe2_led1"          "led"              60
+> +          "gbe3_led1"          "led"              61
+> +          "2p5gbe_led1"        "led"              62
+> +          "gbe0_led0"          "led"              64
+> +          "gbe1_led0"          "led"              65
+> +          "gbe2_led0"          "led"              66
+> +          "gbe3_led0"          "led"              67
+> +          "2p5gbe_led0"        "led"              68
+> +          "drv_vbus_p1"        "usb"              63
+> +          "drv_vbus"           "usb"              79
+> +
+> +        properties:
+> +          function:
+> +            description:
+> +              A string containing the name of the function to mux to the group.
+> +            enum: [audio, dfd, eth, flash, i2c, int_usxgmii, jtag, led, pcie, pmic, pwm, spi,
+> +                   uart, udi, usb, watchdog]
+> +          groups:
+> +            description:
+> +              An array of strings. Each string contains the name of a group.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 36713c176cfc..55671701459a 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1165,17 +1165,25 @@ static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
- 	buf = (u32 *)nvmem_cell_read(cell, &len);
- 	nvmem_cell_put(cell);
- 
--	if (IS_ERR(buf) || ((len / sizeof(u32)) != 4)) {
-+	if (IS_ERR(buf)) {
- 		dev_warn(dev, "Failed to read nvmem_cell_read\n");
--
--		if (!IS_ERR(buf))
--			kfree(buf);
--
- 		goto use_default_val;
- 	}
- 
-+	/* The cell length is in bytes. Convert it to be compatible with u32 buffer. */
-+	len /= sizeof(u32);
-+
- 	for (i = 0; i < MTK_DP_CAL_MAX; i++) {
- 		fmt = &mtk_dp->data->efuse_fmt[i];
-+
-+		if (fmt->idx >= len) {
-+			dev_warn(mtk_dp->dev,
-+				 "Out-of-bound efuse data access, fmt idx = %d, buf len = %zu\n",
-+				 fmt->idx, len);
-+			kfree(buf);
-+			goto use_default_val;
-+		}
-+
- 		cal_data[i] = (buf[fmt->idx] >> fmt->shift) & fmt->mask;
- 
- 		if (cal_data[i] < fmt->min_val || cal_data[i] > fmt->max_val) {
--- 
-2.47.0.338.g60cca15819-goog
+blank line
 
+> +        required:
+> +          - function
+> +          - groups
+> +
+> +        allOf:
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: audio
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2s, pcm]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [jtag, tops_jtag0_0, tops_jtag0_1, wo0_jtag, wo1_jtag, wo2_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: int_usxgmii
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [int_usxgmii]
+
+Use const if only 1. Elsewhere too.
+
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: dfd
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [dfd]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: flash
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [emmc_45, emmc_51, sdcard, snfi]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: eth
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [2p5g_ext_mdio, gbe_ext_mdio, mdc_mdio0, mdc_mdio1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [xfi_phy0_i2c0, xfi_phy1_i2c0, xfi_phy_pll_i2c0,
+> +                         xfi_phy_pll_i2c1, i2c0_0, i2c1_sfp, xfi_pextp_phy0_i2c,
+> +                         xfi_pextp_phy1_i2c, i2c0_1, u30_phy_i2c0, u32_phy_i2c0,
+> +                         xfi_phy0_i2c1, xfi_phy1_i2c1, xfi_phy_pll_i2c2, i2c1_0,
+> +                         u30_phy_i2c1, u32_phy_i2c1, xfi_phy_pll_i2c3, sgmii0_i2c,
+> +                         sgmii1_i2c, i2c1_2, i2c2_0, i2c2_1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: led
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [2p5gbe_led0, 2p5gbe_led1, gbe0_led0, gbe0_led1, gbe1_led0, gbe1_led1,
+> +                         gbe2_led0, gbe2_led1, gbe3_led0, gbe3_led1, wf5g_led0, wf5g_led1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcie
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pcie_wake_n0_0, pcie_clk_req_n0_0, pcie_wake_n3_0,
+> +                           pcie_clk_req_n3, pcie_p0_phy_i2c, pcie_p1_phy_i2c,
+> +                           pcie_p3_phy_i2c, pcie_p2_phy_i2c, ckm_phy_i2c,
+> +                           pcie_wake_n0_1, pcie_wake_n3_1, pcie_2l_0_pereset,
+> +                           pcie_1l_1_pereset, pcie_clk_req_n2_1, pcie_2l_1_pereset,
+> +                           pcie_1l_0_pereset, pcie_wake_n1_0, pcie_clk_req_n1,
+> +                           pcie_wake_n2_0, pcie_clk_req_n2_0, pcie_wake_n2_1,
+> +                           pcie_clk_req_n0_1]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pmic
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pmic]
+> +                  maxItems: 1
+
+This can be just:
+
+groups:
+  const: pmic
+
+A few other places too.
+
+Rob
 
