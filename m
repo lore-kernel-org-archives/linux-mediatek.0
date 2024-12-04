@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3007E7716D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 19:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 200BAE7716D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 19:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7syezLnHgQEmyiZ2xWt2zSNSPIsQXatABp2R5u/j1U4=; b=bjmU3aO5Vj099k9YS3Y1jz0RW3
-	jcMDcGI2pM7GOsOsqKHkGPfE+TJF4yathb2nNmHrJSgaBFx8bIbD/FPoeQyN4WhCROevzVp1PDjR5
-	2//MsuZnQ/AgV7bXCMYt/Zd6+mVdBNNL5PEqYpzHn8++k/319AapJDxIE1zTWUtSI6g4o0RGqIOtA
-	g7a0RWEB8vlCsn58D99WWI9mVvTiWWZn9hjQbJAlKUlmhRW14abnNj0LiEZSzFMBxjGX0CX2gpSjw
-	YKU4J1dbBUp221j+MJ0NydzvQIdap3Q2JVNj8tpgRys2/lLgVFCSA7WxbZCFhbqdNNGhE+x/8PQkx
-	vl/ZBB2g==;
+	bh=2jDd4bBMDalT9ZxoYHLpyRHVnoZ11E0Z+zGVQfgaKds=; b=oD8HKiblvllAG5uVF8seJ6CHna
+	JSLX2bMrux+jhccGi4lmXYCrD1l3vvT6kOefuOdJHgziopNoWjxSGA2TP1moTlR5Lgj4Jv+0dKlii
+	SVYj/omkjCuC55d3TpmGJ8IY+fibwM5qHFEmWPv0DylJqLh1gtS1Hs8ZaUCh3hZnoGjLuYPIO4pDt
+	dhz++ftqjdgoqT81Uj4EeGwsBRSOwuUPDBKiZMC5QmPrJUX2heiDWDVoZeK2D3ReADT1TgJgPYAYF
+	EYGMezvSNiw93ryf9s2V3ksVeEedHluX0xEdcOMs8pyqh5F8hkBrHnH46ptJ64BnwG7KGW65QN0vE
+	MLBf+L2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIulO-0000000DcwO-2s1j;
-	Wed, 04 Dec 2024 19:10:18 +0000
-Received: from out-189.mta1.migadu.com ([2001:41d0:203:375::bd])
+	id 1tIunM-0000000DdHv-1HMK;
+	Wed, 04 Dec 2024 19:12:20 +0000
+Received: from out-176.mta1.migadu.com ([95.215.58.176])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIuiX-0000000DcIN-418K
+	id 1tIuif-0000000DcLK-1NUf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Dec 2024 19:07:23 +0000
+	Wed, 04 Dec 2024 19:07:31 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1733339239;
+	s=key1; t=1733339247;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7syezLnHgQEmyiZ2xWt2zSNSPIsQXatABp2R5u/j1U4=;
-	b=e/E8DLzAm7Qnw12OKCU2NFzO2uIgrx4gRTmW6/I/sD470FV3ntt/MLIa9gerxUH6OAGwCY
-	nCuvFVaekBD/0g6GKEm8SP6fT+x2rCESeKm+tpnwUcgEbv2ZG4r2fj52Q2K/C04tJgiLFk
-	IDW0I6H8dXE1OdJ0iC2+Y6TRLgNvF+6V4oPkHa5mGfPu/VfmGugJP5nuOzLVGcc2VLxlP3
-	XwoO8KA4cXH3slLhoJAvlQkgyojn9aeHsIWnNhxKxj4OdtgQFlDBwN+XDra9YtwCZ6ItgG
-	lKauIIg7RWwARbgZFDdvilu+hADxPJGpSQRh3NaWHxg9t6cYLem19+OmMYcTtA==
+	bh=2jDd4bBMDalT9ZxoYHLpyRHVnoZ11E0Z+zGVQfgaKds=;
+	b=d+3YpRfV8bJMMNZ+zJ7Aciv82CZF5FknOjrbzQJEiv0QIw5G23aQHgIgEA8hM+bIACt5WJ
+	ZqJUwW1T2jj9qqhl4F9djUU+lRrdQmJiXLEb7d6gUKxHe0QinqK54vOq2IW36p5XEyzPEl
+	9QM7BPMlDWoVkesz0/ZjkDcw2txR10fETinlnQsXTV+IcoLc9puBfR9xJISNVzjy+msJuH
+	bo8P3XQbyUR7+g3D6y6KwJGoLYcYywX+IRgFcyDEVIh6p6k97g9yo7uKd5C92lhAush/BV
+	a3mV0jtdZPKZAChNlx00/sm8MWdeVuKLAEsUB5mvOdSL+biEZTWARGFhuxPVYQ==
 From: Val Packett <val@packett.cool>
 To: 
 Cc: Val Packett <val@packett.cool>,
@@ -53,18 +53,17 @@ Cc: Val Packett <val@packett.cool>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/5] arm64: dts: mediatek: mt8516: add i2c clock-div property
-Date: Wed,  4 Dec 2024 16:05:06 -0300
-Message-ID: <20241204190524.21862-4-val@packett.cool>
+Subject: [PATCH 4/5] arm64: dts: mediatek: mt8516: reserve 192 KiB for TF-A
+Date: Wed,  4 Dec 2024 16:05:07 -0300
+Message-ID: <20241204190524.21862-5-val@packett.cool>
 In-Reply-To: <20241204190524.21862-1-val@packett.cool>
 References: <20241204190524.21862-1-val@packett.cool>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_110722_144083_720103BD 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241204_110729_501664_EDED0259 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +78,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the clock-div property from the pumpkin board dtsi to the SoC's
-since it belongs to the SoC itself and is required on other devices.
+The Android DTB for the related MT8167 reserves 0x30000. This is likely
+correct for MT8516 Android devices as well, and there's never any harm
+in reserving 64KiB more.
 
 Fixes: 5236347bde42 ("arm64: dts: mediatek: add dtsi for MT8516")
 Signed-off-by: Val Packett <val@packett.cool>
 ---
- arch/arm64/boot/dts/mediatek/mt8516.dtsi         | 3 +++
- arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 2 --
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index 098c32ebf678..dd17d8a88c19 100644
+index dd17d8a88c19..e30623ebac0e 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -344,6 +344,7 @@ i2c0: i2c@11009000 {
- 			reg = <0 0x11009000 0 0x90>,
- 			      <0 0x11000180 0 0x80>;
- 			interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <2>;
- 			clocks = <&topckgen CLK_TOP_I2C0>,
- 				 <&topckgen CLK_TOP_APDMA>;
- 			clock-names = "main", "dma";
-@@ -358,6 +359,7 @@ i2c1: i2c@1100a000 {
- 			reg = <0 0x1100a000 0 0x90>,
- 			      <0 0x11000200 0 0x80>;
- 			interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <2>;
- 			clocks = <&topckgen CLK_TOP_I2C1>,
- 				 <&topckgen CLK_TOP_APDMA>;
- 			clock-names = "main", "dma";
-@@ -372,6 +374,7 @@ i2c2: i2c@1100b000 {
- 			reg = <0 0x1100b000 0 0x90>,
- 			      <0 0x11000280 0 0x80>;
- 			interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <2>;
- 			clocks = <&topckgen CLK_TOP_I2C2>,
- 				 <&topckgen CLK_TOP_APDMA>;
- 			clock-names = "main", "dma";
-diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index ec8dfb3d1c6d..a356db5fcc5f 100644
---- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -47,7 +47,6 @@ key-volume-down {
- };
+@@ -144,10 +144,10 @@ reserved-memory {
+ 		#size-cells = <2>;
+ 		ranges;
  
- &i2c0 {
--	clock-div = <2>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins_a>;
- 	status = "okay";
-@@ -156,7 +155,6 @@ cam-pwdn-hog {
- };
+-		/* 128 KiB reserved for ARM Trusted Firmware (BL31) */
++		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
+ 		bl31_secmon_reserved: secmon@43000000 {
+ 			no-map;
+-			reg = <0 0x43000000 0 0x20000>;
++			reg = <0 0x43000000 0 0x30000>;
+ 		};
+ 	};
  
- &i2c2 {
--	clock-div = <2>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2_pins_a>;
- 	status = "okay";
 -- 
 2.47.1
 
