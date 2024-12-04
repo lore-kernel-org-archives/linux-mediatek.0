@@ -4,101 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F16BE7716D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 18:03:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F4BE77170
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 19:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PeBuKTAzT5t/xg0HOfB6aMdefP/YbNUMgGL/5kx9O2s=; b=HTgmOc9PCAQTP4Jwol9kMiuM8i
-	WKNQEt9ADvPWdGSODezfjrX8DtdWKNAqN/SsifpaGGBqXt1l5SudVFDTSqfM2SpG0mvITy5ilrppK
-	7M3kWWv9OO44ltfE0lzM6EK0mxGhwXaHujlmvYWb54wZkpj3xOnmC6LsXuiNvuS/GonHKBfkLqRQg
-	Hcx21ctpF4JU/ErNk/Zs6lJkYJqjb4NRh9VBNu47RMhaO6AGFvMjB0yc40TScxv6N2d3yF395S1l6
-	kpyRey7elYzqQwhsOWC0Jxt6USq/HayUSCEFwP0jk7aaaa1JFbszcZH3N57hrx1uoWIANzg4on8om
-	jWiRbD5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mcTkKmanEr2PwIBSDfsP1SV1PVVrlfYHu7XxJmfmhzM=; b=CVhI5Yf1LOBL+7Ullr4ed4KuOz
+	F014CRIc0zC5wll3o2MN54GJmhrUNx5S3y0Y+emWGdZk1SHda/HuXjHv9CvDn+cQYs095ia9mH0YT
+	gJSWp+0hZOOWIA2GMns853yFZuP0/M3ClA/44W01pIrDZc0n3eksZjnkj6twVVAPaceHGbX3/dp4S
+	xWGwLouTZsgsLf89z5CrkEOvrPkSkebqnZf8YT6pUrzXRplJO6RcO5vPXPEpKlnoArqVqlTSfad/z
+	6zqaf2i5v1ZKO8JR1y/Xhk18yYcyNemsEEhnWq06DnkdJLegsakckFxYK/dp9QjJBp18TAtWepiYW
+	bHS1oXTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tItj1-0000000DToS-1aS3;
-	Wed, 04 Dec 2024 18:03:47 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1tIuiQ-0000000DcFJ-3ain;
+	Wed, 04 Dec 2024 19:07:14 +0000
+Received: from out-177.mta1.migadu.com ([95.215.58.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIti0-0000000DTa6-12MV
+	id 1tIui6-0000000Dc9L-3FAf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Dec 2024 18:02:45 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-725958d5ee0so96187b3a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Dec 2024 10:02:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733335362; x=1733940162; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=PeBuKTAzT5t/xg0HOfB6aMdefP/YbNUMgGL/5kx9O2s=;
-        b=yfDUG7en9yhdgmuGiayQkruUJxgX77V9PI9ZLx+kr4Y8+/o0szDtxjxKS++pIcBIdX
-         l3kVpof4Lf5ugfUCQ9tTgu9/HNV94xSBtb2PiPfLQSjruwlOBgQAiRjQfLQeesMO7ZCk
-         bG9DiK/sCZ9RCYtVDlYkKlJjzaAlCQArdp+l3TPnG2u38yOo4JfIw2XKH+gcov2P5cDq
-         Bb7tIwSRSTs3Ii068LQX17HH4LQfC3sjBifZfa1Sspp6xFz9ZSBrZVjzNtk+dtzPhRwf
-         77f22raRN7/NjXqHwIrtaN/O4c0XIvtjW2FjVntCzk6lTv8FRAh9UWpJsljk2PVLnsFA
-         Wgfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733335362; x=1733940162;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PeBuKTAzT5t/xg0HOfB6aMdefP/YbNUMgGL/5kx9O2s=;
-        b=LnYvKMvxwD6qEbXX5QvU91yItjENuvZXo3r54y72ADORTPcmHEB0OrOGHLJ/aZdvhb
-         K9fNjykaS/+Ll6TWyk8yuCCAXj1DTbXUj16EbcCtmiDwDVak2oFvSGrjnX0rKjCMAdgJ
-         2bufP71C440rrwCLTBrkasmJlwymrJ824hM1Oqxj8uGK3e3uJ/uDoo2252xrFRFi5ovU
-         a/aOpJaKLuh5p0Ea1IzAHgRkpLGCtYVptgpPRSNYDg0lYu3RCboKRY8tXUkMmiss+rE5
-         51Raz01inGhMZFobnGpEQABlsELh2wqHP19y33NghukmO3WE9iWGINp94pfoZd/84OUN
-         o4Bg==
-X-Forwarded-Encrypted: i=1; AJvYcCUuFEFo5pSsi6WpOnhlE1rpwJ6XJ/lNn/i9+uxCjnDyedFg/h+xr6st1bJn9EbUyB8xkLVmVx9+3gD5nz6lHA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGZAwt7q7odjJ29RV1nbTXn9UFV366MdPMUmWE7pl7Gcr+CxBW
-	SJPhLyv1ONM4fMu+L/T0I9xFOqoK1c1TZUx7J9SMqyouJLVzfAlsQF42BaArw+g=
-X-Gm-Gg: ASbGnctQaoFtgsmAzeLnDabpQ7AeSVsNfXKlkk88BGDyA+KMBhomRJC8yCJYqMf3R4b
-	E0ksnPP4AWlWykCTJ0hd95vaj01oE+SGuCrizkNiAxeP9xDizqPCJf6YqHWWO7UQt6jIK68oqn2
-	R7GKkb2OO56radsnkthzeSvN4mjzMJxxxxRt4AODKj4yhWSqlTrOc5mGUkBJkLu8VSK/RoRjEI9
-	dYT+5uah7Q4F9nBourQJZWyM5Pr5TD9q2tq1386U/z2NJNAkKwdfA==
-X-Google-Smtp-Source: AGHT+IGz/ZtmC4PnERHkalD6CvmzPb7Tp2woBDFzd1PcOy0yfXwbSkND0GchAL+Kghl7UNvinfrk8Q==
-X-Received: by 2002:a05:6a00:180a:b0:725:1d37:ebff with SMTP id d2e1a72fcca58-7257fcd968dmr10230325b3a.22.1733335361978;
-        Wed, 04 Dec 2024 10:02:41 -0800 (PST)
-Received: from p14s ([2604:3d09:148c:c800:cb58:bf7f:6102:4f57])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7259470e2c9sm1282202b3a.190.2024.12.04.10.02.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 10:02:41 -0800 (PST)
-Date: Wed, 4 Dec 2024 11:02:38 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-Cc: Bjorn Andersson <andersson@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Wed, 04 Dec 2024 19:06:56 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
+	s=key1; t=1733339209;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=mcTkKmanEr2PwIBSDfsP1SV1PVVrlfYHu7XxJmfmhzM=;
+	b=cg5XFyfW8RsFUMmzJaSf3HHB/rVwd2UQLS2TVrGKys43akX+iFMEvIT32KNHIEU2QXtI3t
+	8Zqmlyn8LehNz5qEwULhK2wAzaCnUCTskV+Cm5/+VpVs7uKbn4VXyGJV1TzxmUiBhnMew1
+	Wbm9SHKk6CnfkRNSnkr9CEDHfBCQPR0NMknfEXi5BEgUpEcbelwcVaX0+xSgspFjvaFtT/
+	y6MlJKRJe/rZO4z/gvY727A029id+Cy0mpmTi6PNXryvkyK8lzG7IGAOoOc/1xPKd7GpQS
+	kQQKXPZ6wH1pp4Q5otv/O4x6w58mkWZVz8n43NGknj5ccJ5Omte4XdnHrqjPVA==
+From: Val Packett <val@packett.cool>
+To: 
+Cc: Val Packett <val@packett.cool>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	kernel test robot <lkp@intel.com>, linux-remoteproc@vger.kernel.org,
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v15 4/8] remoteproc: Rename load() operation to
- load_segments() in rproc_ops struct
-Message-ID: <Z1CZPhu1T2opd906@p14s>
-References: <20241128084219.2159197-1-arnaud.pouliquen@foss.st.com>
- <20241128084219.2159197-5-arnaud.pouliquen@foss.st.com>
+	Fabien Parent <fparent@baylibre.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/5] MT8516/MT8167 dtsi fixes
+Date: Wed,  4 Dec 2024 16:05:03 -0300
+Message-ID: <20241204190524.21862-1-val@packett.cool>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241128084219.2159197-5-arnaud.pouliquen@foss.st.com>
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_100244_284953_7E464B30 
-X-CRM114-Status: GOOD (  23.48  )
+X-CRM114-CacheID: sfid-20241204_110655_104064_F9DBD4BF 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,322 +75,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 28, 2024 at 09:42:11AM +0100, Arnaud Pouliquen wrote:
-> With the introduction of the load_fw() operation in the rproc_ops
-> structure, we need to clarify the difference in the use of the load()
-> and load_fw() ops.
-> 
-> The legacy load() is dedicated to loading the ELF segments into memory.
-> Rename this to a more explicit name: load_segments().
+Hi everyone,
 
-This is introducing more code churn than is worth it.  Please enhance the usage
-comment for ->load() as part of the previous patch and drop this one.
+I've been working on mainline bringup on an MT8167 tablet I found at a
+junkyard sale (lenovo,tb7304f) for postmarketOS :3
 
-I am done reviewing this set.
+This first series consists of basic device tree fixes for the MT8516
+dtsi that the MT8167 one inherits from.
 
-Thanks,
-Mathieu
+The changes that follow add support for the MT6392 PMIC, and that's
+mostly been implemented by Fabien Parent back in 2020 and not merged:
 
-> 
-> Suggested-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> Signed-off-by: Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>
-> ---
-> Update vs version V14:
-> Fix: Rename missing load() to load_segments() in drivers/remoteproc/pru_rproc.c.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202411281332.Ra70nJAW-lkp@intel.com/
-> 
-> ---
->  drivers/remoteproc/imx_dsp_rproc.c       | 2 +-
->  drivers/remoteproc/imx_rproc.c           | 2 +-
->  drivers/remoteproc/meson_mx_ao_arc.c     | 2 +-
->  drivers/remoteproc/mtk_scp.c             | 2 +-
->  drivers/remoteproc/pru_rproc.c           | 2 +-
->  drivers/remoteproc/qcom_q6v5_adsp.c      | 2 +-
->  drivers/remoteproc/qcom_q6v5_mss.c       | 2 +-
->  drivers/remoteproc/qcom_q6v5_pas.c       | 4 ++--
->  drivers/remoteproc/qcom_q6v5_wcss.c      | 4 ++--
->  drivers/remoteproc/qcom_wcnss.c          | 2 +-
->  drivers/remoteproc/rcar_rproc.c          | 2 +-
->  drivers/remoteproc/remoteproc_core.c     | 4 ++--
->  drivers/remoteproc/remoteproc_internal.h | 4 ++--
->  drivers/remoteproc/st_remoteproc.c       | 2 +-
->  drivers/remoteproc/st_slim_rproc.c       | 2 +-
->  drivers/remoteproc/stm32_rproc.c         | 2 +-
->  drivers/remoteproc/xlnx_r5_remoteproc.c  | 2 +-
->  include/linux/remoteproc.h               | 4 ++--
->  18 files changed, 23 insertions(+), 23 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/imx_dsp_rproc.c b/drivers/remoteproc/imx_dsp_rproc.c
-> index 376187ad5754..a4a85fbce907 100644
-> --- a/drivers/remoteproc/imx_dsp_rproc.c
-> +++ b/drivers/remoteproc/imx_dsp_rproc.c
-> @@ -934,7 +934,7 @@ static const struct rproc_ops imx_dsp_rproc_ops = {
->  	.start		= imx_dsp_rproc_start,
->  	.stop		= imx_dsp_rproc_stop,
->  	.kick		= imx_dsp_rproc_kick,
-> -	.load		= imx_dsp_rproc_elf_load_segments,
-> +	.load_segments	= imx_dsp_rproc_elf_load_segments,
->  	.parse_fw	= imx_dsp_rproc_parse_fw,
->  	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
->  	.sanity_check	= rproc_elf_sanity_check,
-> diff --git a/drivers/remoteproc/imx_rproc.c b/drivers/remoteproc/imx_rproc.c
-> index 800015ff7ff9..f45b3207f7e9 100644
-> --- a/drivers/remoteproc/imx_rproc.c
-> +++ b/drivers/remoteproc/imx_rproc.c
-> @@ -681,7 +681,7 @@ static const struct rproc_ops imx_rproc_ops = {
->  	.stop		= imx_rproc_stop,
->  	.kick		= imx_rproc_kick,
->  	.da_to_va       = imx_rproc_da_to_va,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.parse_fw	= imx_rproc_parse_fw,
->  	.find_loaded_rsc_table = imx_rproc_elf_find_loaded_rsc_table,
->  	.get_loaded_rsc_table = imx_rproc_get_loaded_rsc_table,
-> diff --git a/drivers/remoteproc/meson_mx_ao_arc.c b/drivers/remoteproc/meson_mx_ao_arc.c
-> index f6744b538323..a1c8c0929ce3 100644
-> --- a/drivers/remoteproc/meson_mx_ao_arc.c
-> +++ b/drivers/remoteproc/meson_mx_ao_arc.c
-> @@ -137,7 +137,7 @@ static struct rproc_ops meson_mx_ao_arc_rproc_ops = {
->  	.stop		= meson_mx_ao_arc_rproc_stop,
->  	.da_to_va	= meson_mx_ao_arc_rproc_da_to_va,
->  	.get_boot_addr	= rproc_elf_get_boot_addr,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.sanity_check	= rproc_elf_sanity_check,
->  };
->  
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index e744c07507ee..4e9a8bf3bc6e 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -924,7 +924,7 @@ static int scp_stop(struct rproc *rproc)
->  static const struct rproc_ops scp_ops = {
->  	.start		= scp_start,
->  	.stop		= scp_stop,
-> -	.load		= scp_load,
-> +	.load_segments	= scp_load,
->  	.da_to_va	= scp_da_to_va,
->  	.parse_fw	= scp_parse_fw,
->  	.sanity_check	= rproc_elf_sanity_check,
-> diff --git a/drivers/remoteproc/pru_rproc.c b/drivers/remoteproc/pru_rproc.c
-> index 327f0c7ee3d6..0b2bf2574f74 100644
-> --- a/drivers/remoteproc/pru_rproc.c
-> +++ b/drivers/remoteproc/pru_rproc.c
-> @@ -1015,7 +1015,7 @@ static int pru_rproc_probe(struct platform_device *pdev)
->  		return -ENOMEM;
->  	}
->  	/* use a custom load function to deal with PRU-specific quirks */
-> -	rproc->ops->load = pru_rproc_load_elf_segments;
-> +	rproc->ops->load_segments = pru_rproc_load_elf_segments;
->  
->  	/* use a custom parse function to deal with PRU-specific resources */
->  	rproc->ops->parse_fw = pru_rproc_parse_fw;
-> diff --git a/drivers/remoteproc/qcom_q6v5_adsp.c b/drivers/remoteproc/qcom_q6v5_adsp.c
-> index 572dcb0f055b..aa9896930bcf 100644
-> --- a/drivers/remoteproc/qcom_q6v5_adsp.c
-> +++ b/drivers/remoteproc/qcom_q6v5_adsp.c
-> @@ -527,7 +527,7 @@ static const struct rproc_ops adsp_ops = {
->  	.stop = adsp_stop,
->  	.da_to_va = adsp_da_to_va,
->  	.parse_fw = adsp_parse_firmware,
-> -	.load = adsp_load,
-> +	.load_segments = adsp_load,
->  	.panic = adsp_panic,
->  };
->  
-> diff --git a/drivers/remoteproc/qcom_q6v5_mss.c b/drivers/remoteproc/qcom_q6v5_mss.c
-> index 2a42215ce8e0..a8beac1deabe 100644
-> --- a/drivers/remoteproc/qcom_q6v5_mss.c
-> +++ b/drivers/remoteproc/qcom_q6v5_mss.c
-> @@ -1687,7 +1687,7 @@ static const struct rproc_ops q6v5_ops = {
->  	.start = q6v5_start,
->  	.stop = q6v5_stop,
->  	.parse_fw = qcom_q6v5_register_dump_segments,
-> -	.load = q6v5_load,
-> +	.load_segments = q6v5_load,
->  	.panic = q6v5_panic,
->  };
->  
-> diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
-> index ef82835e98a4..9b269ce390c1 100644
-> --- a/drivers/remoteproc/qcom_q6v5_pas.c
-> +++ b/drivers/remoteproc/qcom_q6v5_pas.c
-> @@ -436,7 +436,7 @@ static const struct rproc_ops adsp_ops = {
->  	.stop = adsp_stop,
->  	.da_to_va = adsp_da_to_va,
->  	.parse_fw = qcom_register_dump_segments,
-> -	.load = adsp_load,
-> +	.load_segments = adsp_load,
->  	.panic = adsp_panic,
->  };
->  
-> @@ -446,7 +446,7 @@ static const struct rproc_ops adsp_minidump_ops = {
->  	.stop = adsp_stop,
->  	.da_to_va = adsp_da_to_va,
->  	.parse_fw = qcom_register_dump_segments,
-> -	.load = adsp_load,
-> +	.load_segments = adsp_load,
->  	.panic = adsp_panic,
->  	.coredump = adsp_minidump,
->  };
-> diff --git a/drivers/remoteproc/qcom_q6v5_wcss.c b/drivers/remoteproc/qcom_q6v5_wcss.c
-> index e913dabae992..44b5736dc8b9 100644
-> --- a/drivers/remoteproc/qcom_q6v5_wcss.c
-> +++ b/drivers/remoteproc/qcom_q6v5_wcss.c
-> @@ -771,7 +771,7 @@ static const struct rproc_ops q6v5_wcss_ipq8074_ops = {
->  	.start = q6v5_wcss_start,
->  	.stop = q6v5_wcss_stop,
->  	.da_to_va = q6v5_wcss_da_to_va,
-> -	.load = q6v5_wcss_load,
-> +	.load_segments = q6v5_wcss_load,
->  	.get_boot_addr = rproc_elf_get_boot_addr,
->  };
->  
-> @@ -779,7 +779,7 @@ static const struct rproc_ops q6v5_wcss_qcs404_ops = {
->  	.start = q6v5_qcs404_wcss_start,
->  	.stop = q6v5_wcss_stop,
->  	.da_to_va = q6v5_wcss_da_to_va,
-> -	.load = q6v5_wcss_load,
-> +	.load_segments = q6v5_wcss_load,
->  	.get_boot_addr = rproc_elf_get_boot_addr,
->  	.parse_fw = qcom_register_dump_segments,
->  };
-> diff --git a/drivers/remoteproc/qcom_wcnss.c b/drivers/remoteproc/qcom_wcnss.c
-> index a7bb9da27029..42102bc4c458 100644
-> --- a/drivers/remoteproc/qcom_wcnss.c
-> +++ b/drivers/remoteproc/qcom_wcnss.c
-> @@ -335,7 +335,7 @@ static const struct rproc_ops wcnss_ops = {
->  	.stop = wcnss_stop,
->  	.da_to_va = wcnss_da_to_va,
->  	.parse_fw = qcom_register_dump_segments,
-> -	.load = wcnss_load,
-> +	.load_segments = wcnss_load,
->  };
->  
->  static irqreturn_t wcnss_wdog_interrupt(int irq, void *dev)
-> diff --git a/drivers/remoteproc/rcar_rproc.c b/drivers/remoteproc/rcar_rproc.c
-> index cc17e8421f65..e36778fec072 100644
-> --- a/drivers/remoteproc/rcar_rproc.c
-> +++ b/drivers/remoteproc/rcar_rproc.c
-> @@ -142,7 +142,7 @@ static struct rproc_ops rcar_rproc_ops = {
->  	.prepare	= rcar_rproc_prepare,
->  	.start		= rcar_rproc_start,
->  	.stop		= rcar_rproc_stop,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.parse_fw	= rcar_rproc_parse_fw,
->  	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
->  	.sanity_check	= rproc_elf_sanity_check,
-> diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
-> index 8df4b2c59bb6..e4ad024efcda 100644
-> --- a/drivers/remoteproc/remoteproc_core.c
-> +++ b/drivers/remoteproc/remoteproc_core.c
-> @@ -2485,11 +2485,11 @@ static int rproc_alloc_ops(struct rproc *rproc, const struct rproc_ops *ops)
->  	if (!rproc->ops->coredump)
->  		rproc->ops->coredump = rproc_coredump;
->  
-> -	if (rproc->ops->load || rproc->ops->load_fw)
-> +	if (rproc->ops->load_segments || rproc->ops->load_fw)
->  		return 0;
->  
->  	/* Default to ELF loader if no load function is specified */
-> -	rproc->ops->load = rproc_elf_load_segments;
-> +	rproc->ops->load_segments = rproc_elf_load_segments;
->  	rproc->ops->parse_fw = rproc_elf_load_rsc_table;
->  	rproc->ops->find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table;
->  	rproc->ops->sanity_check = rproc_elf_sanity_check;
-> diff --git a/drivers/remoteproc/remoteproc_internal.h b/drivers/remoteproc/remoteproc_internal.h
-> index 2104ca449178..b898494600cf 100644
-> --- a/drivers/remoteproc/remoteproc_internal.h
-> +++ b/drivers/remoteproc/remoteproc_internal.h
-> @@ -167,8 +167,8 @@ u64 rproc_get_boot_addr(struct rproc *rproc, const struct firmware *fw)
->  static inline
->  int rproc_load_segments(struct rproc *rproc, const struct firmware *fw)
->  {
-> -	if (rproc->ops->load)
-> -		return rproc->ops->load(rproc, fw);
-> +	if (rproc->ops->load_segments)
-> +		return rproc->ops->load_segments(rproc, fw);
->  
->  	return -EINVAL;
->  }
-> diff --git a/drivers/remoteproc/st_remoteproc.c b/drivers/remoteproc/st_remoteproc.c
-> index 1340be9d0110..8d6b75e91531 100644
-> --- a/drivers/remoteproc/st_remoteproc.c
-> +++ b/drivers/remoteproc/st_remoteproc.c
-> @@ -233,7 +233,7 @@ static const struct rproc_ops st_rproc_ops = {
->  	.start			= st_rproc_start,
->  	.stop			= st_rproc_stop,
->  	.parse_fw		= st_rproc_parse_fw,
-> -	.load			= rproc_elf_load_segments,
-> +	.load_segments		= rproc_elf_load_segments,
->  	.find_loaded_rsc_table	= rproc_elf_find_loaded_rsc_table,
->  	.sanity_check		= rproc_elf_sanity_check,
->  	.get_boot_addr		= rproc_elf_get_boot_addr,
-> diff --git a/drivers/remoteproc/st_slim_rproc.c b/drivers/remoteproc/st_slim_rproc.c
-> index 5412beb0a692..0f91d8f1e7c7 100644
-> --- a/drivers/remoteproc/st_slim_rproc.c
-> +++ b/drivers/remoteproc/st_slim_rproc.c
-> @@ -201,7 +201,7 @@ static const struct rproc_ops slim_rproc_ops = {
->  	.stop		= slim_rproc_stop,
->  	.da_to_va       = slim_rproc_da_to_va,
->  	.get_boot_addr	= rproc_elf_get_boot_addr,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.sanity_check	= rproc_elf_sanity_check,
->  };
->  
-> diff --git a/drivers/remoteproc/stm32_rproc.c b/drivers/remoteproc/stm32_rproc.c
-> index 8c7f7950b80e..7e8ffd9fcc57 100644
-> --- a/drivers/remoteproc/stm32_rproc.c
-> +++ b/drivers/remoteproc/stm32_rproc.c
-> @@ -667,7 +667,7 @@ static const struct rproc_ops st_rproc_ops = {
->  	.attach		= stm32_rproc_attach,
->  	.detach		= stm32_rproc_detach,
->  	.kick		= stm32_rproc_kick,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.parse_fw	= stm32_rproc_parse_fw,
->  	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
->  	.get_loaded_rsc_table = stm32_rproc_get_loaded_rsc_table,
-> diff --git a/drivers/remoteproc/xlnx_r5_remoteproc.c b/drivers/remoteproc/xlnx_r5_remoteproc.c
-> index 5aeedeaf3c41..59cfba0a02e7 100644
-> --- a/drivers/remoteproc/xlnx_r5_remoteproc.c
-> +++ b/drivers/remoteproc/xlnx_r5_remoteproc.c
-> @@ -864,7 +864,7 @@ static const struct rproc_ops zynqmp_r5_rproc_ops = {
->  	.unprepare	= zynqmp_r5_rproc_unprepare,
->  	.start		= zynqmp_r5_rproc_start,
->  	.stop		= zynqmp_r5_rproc_stop,
-> -	.load		= rproc_elf_load_segments,
-> +	.load_segments	= rproc_elf_load_segments,
->  	.parse_fw	= zynqmp_r5_parse_fw,
->  	.find_loaded_rsc_table = rproc_elf_find_loaded_rsc_table,
->  	.sanity_check	= rproc_elf_sanity_check,
-> diff --git a/include/linux/remoteproc.h b/include/linux/remoteproc.h
-> index ba6fd560f7ba..55c20424a99f 100644
-> --- a/include/linux/remoteproc.h
-> +++ b/include/linux/remoteproc.h
-> @@ -374,7 +374,7 @@ enum rsc_handling_status {
->   * @find_loaded_rsc_table: find the loaded resource table from firmware image
->   * @get_loaded_rsc_table: get resource table installed in memory
->   *			  by external entity
-> - * @load:		load firmware to memory, where the remote processor
-> + * @load_segments:	load firmware ELF segment to memory, where the remote processor
->   *			expects to find it
->   * @sanity_check:	sanity check the fw image
->   * @get_boot_addr:	get boot address to entry point specified in firmware
-> @@ -402,7 +402,7 @@ struct rproc_ops {
->  				struct rproc *rproc, const struct firmware *fw);
->  	struct resource_table *(*get_loaded_rsc_table)(
->  				struct rproc *rproc, size_t *size);
-> -	int (*load)(struct rproc *rproc, const struct firmware *fw);
-> +	int (*load_segments)(struct rproc *rproc, const struct firmware *fw);
->  	int (*sanity_check)(struct rproc *rproc, const struct firmware *fw);
->  	u64 (*get_boot_addr)(struct rproc *rproc, const struct firmware *fw);
->  	unsigned long (*panic)(struct rproc *rproc);
-> -- 
-> 2.25.1
-> 
+<https://patchwork.kernel.org/project/linux-arm-kernel/patch/20201027181157.862927-3-fparent@baylibre.com/>
+<https://patchwork.kernel.org/project/linux-arm-kernel/patch/20201024200304.1427864-2-fparent@baylibre.com/>
+
+but I have a couple changes on top of those patches (like adding the
+missing mt6392_set_buck_vosel_reg). I'm wondering what the best way to
+get this in would be, should I squash my changes and submit the "final"
+patches with a Co-developed-by tag?
+
+(Similar situation with DRM nodes, not merged due to "concerns about
+the driver architecture" in 2021, now missing GCE/CMDQ mailbox props:
+<https://lore.kernel.org/df4c57f9-115b-c4da-e656-e4bdec62c2d7@gmail.com/>)
+
+By the way, is anyone familiar with PSCI cpuidle/hot-unplug issues on
+Mediatek Android devices from around this time? Specifically on this
+tablet, I can't make the cores come back from suspend. I have
+investigated local-timer-stop and arm,no-tick-in-suspend, Fabien pointed
+me to the mediatek timer and its required clocks, but nothing helped.
+Trying the psci_checker, I realized that it's not just suspend: they
+do not come back from hot-unplug either. Initial CPU_ON on boot is fine,
+but then after a CPU_OFF they do not actually come back when CPU_ON
+supposedly turns them on. Now I can't help but notice that the only DTS
+in mainline for a device that came with Android, mt6795-sony-xperia-m5,
+does not have any cpuidle nodes in its SoC's dtsi either..
+
+Val Packett (5):
+  arm64: dts: mediatek: mt8516: fix GICv2 range
+  arm64: dts: mediatek: mt8516: fix wdt irq type
+  arm64: dts: mediatek: mt8516: add i2c clock-div property
+  arm64: dts: mediatek: mt8516: reserve 192 KiB for TF-A
+  arm64: dts: mediatek: mt8516: add keypad node
+
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi      | 21 +++++++++++++++----
+ .../boot/dts/mediatek/pumpkin-common.dtsi     |  2 --
+ 2 files changed, 17 insertions(+), 6 deletions(-)
+
+-- 
+2.47.1
+
 
