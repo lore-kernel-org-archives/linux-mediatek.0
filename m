@@ -4,90 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B446E7716E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 14:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F215E7716B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 14:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mrFMLc/jdh5p8JybRnIahA1b8Q2rxGK6wJh2KFAKrwU=; b=unAj/xAB8NyzQUFdY4nQu0NAjM
-	ucv7Rk6zyBnD2uNS/MxTXzeEro3ZOmkf4jnB0N1/oq8elk+/SWdQ45EMofzdpDKqT+Iz7lD0amDjX
-	UHuw79jDMo6WjAIJsHu9wSteKjoJlESJ3d22goYXJy3PDPKy0fRg3rXTuFJsZXoTSyAv2NcPcPq0Q
-	cy5sj2Hgbjmvpxr5diYIKpXn2PjdTP4JP273cig0R5FHUIVP8tgFbTiFQMjdki4HkPKi4zCIrApzH
-	wvxpgwHRsPio8fqz3Tju4iNg3+9ua5CbnVDmVvT6qScVRmSDQtiQBOzFmmApWouEabvoq26lOXa9W
-	9VOmrmTw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=; b=FhU4Z2mFcplmS9
+	nRoKr1da8xA6LnliIbTYaTItRf6ahpfqMfcDL04dNVQc/vBseHh4v80D9c78T6iRYsw/OhTWtlcxp
+	XuPnbotZG3tSMi4UtpFqH+sUzC5lbI0ACNrHnJn6v+jb+GT+v1KuAZrhe5Q01UZTmtsZkWWItz86t
+	pF3e+07j+Qhs14ThCFBCED9o1Q+wC1ddq/vcxSDUvxWkTS6MJAttggws+6ULPKBDsfoD+bLN0+GpK
+	/AbzNGQoO2afRbyqBjSloS8sLCvrlWgH4LAxM4HQYI7v0Xwq2d5R7V91t1/L2fdhqsvZ3fg0bl5/H
+	Ferez9SRRETB9OrC8p0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIq5w-0000000CmdP-0HQV;
-	Wed, 04 Dec 2024 14:11:12 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1tIqM7-0000000CpgC-1R8D;
+	Wed, 04 Dec 2024 14:27:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIq4t-0000000CmM5-0BHO;
-	Wed, 04 Dec 2024 14:10:08 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-385deda28b3so3443244f8f.0;
-        Wed, 04 Dec 2024 06:10:06 -0800 (PST)
+	id 1tIqLB-0000000CpZs-1Sxq
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 04 Dec 2024 14:26:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=; b=cEtm3Y8z1bvKpVP/I2Uy2U8afZ
+	dLw6pJXoOwGuVFtWaqPaof4i0fNG2lBTl/nrM4zoq7+W3Ea7KSzwVfj6elhT0FRJ9spJx3tKpJghA
+	59IbhO8OZ2QGq0RVEl/+GwrbICKYiqs9d7JwMgymD1G3vKwyh2euVQMKr8TNLMz3X+s2Dm/OtgRDG
+	o0g6pV4u+IqizoeVpW2YfuXYJ/RmIQA6ttKER5HiUcPLnWlYGks3LIRKF9ONvW9DlK6r5aJe4unHn
+	ybaiY9Zab4tzF7yOKxOZa+tAolpGpDQeenHqmZIjIHyd10F3OGISvAH73KIg4Bd62z8zg63xyjyoZ
+	Y6UPfdUw==;
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tIqL8-00000002dRs-0x9F
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Dec 2024 14:26:56 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-7ea9739647bso4921057a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Dec 2024 06:26:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733321405; x=1733926205; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=mrFMLc/jdh5p8JybRnIahA1b8Q2rxGK6wJh2KFAKrwU=;
-        b=WnoybWOB7fGKkuzXM4XNEh+/W1qfUz3WGi2xowrYSqQqyj1dsU5nqSxcmjoJMYFaRe
-         WQx92RMuUI8+Porglu1M4rcc6/iRzOic1NQZPfoS/KPBT9/LOCCdRXjKt4vgmf0edLpt
-         6TIwrtwBOtu6rw8vaecTt18f/v6he37jSaFgnvWszHvOjDBNVolOFfJnqVqX6wm9YXGN
-         GFBBCzuwlPcoZ1rteNZln8uLkLdCBQQ9wW0XJ5SLu6o10oUWMfVLDXfOh28XkbqSl5ew
-         ZLWdpvHULiV23Vo87jGUfckJinAoZmmbuMCkDPAU5J9rykB0Ux3D6gPSh9Qm00ob5ho5
-         Ox4g==
+        d=chromium.org; s=google; t=1733322411; x=1733927211; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=;
+        b=W0cTJmlVmCoSujb1yhp3DF4pBweAx4xupoz8jsAL9A5Zl2z7anOmPyA6j6kc9+pCja
+         21fgSX1a7FOy/nrMdV/U9RduW10yaQ2stNvIv1dWQmb6V7DFrbeFO/BtEFluNx94YQ3E
+         2A4aGO49OSwK3z1HBYabeWMfw1aTmtFUotbsQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733321405; x=1733926205;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mrFMLc/jdh5p8JybRnIahA1b8Q2rxGK6wJh2KFAKrwU=;
-        b=PXuwelwUyeMNgdOVXYQgRwC8w8Rntoa1x/Zor811kd76YHrze9rYHivvzO04Q0epRp
-         Wg6HTrRymBR7TKSGiCDkaHIWcOMzERD2ORpNyPAELk2FVP6XjdODJ/UJ2l+EPFmyASFQ
-         wOKKbimLjl5w/ogZvCOVJHC0MR9PblfWCHM8PIHlnTvzWuRkuWBW7eDrYTN6DIbR9vBg
-         95LwFzNpNcxoVGKIyGQypKjL4/BU8Jui1Ok9d4hnkzgputXpBDbgHZ4c28g9ijL/SckX
-         741oYUh9uszS825bbcnWeTItaXXRVV2RnbC8riqPFKU25OhuHPS9kBwaJVftHHQFbDhK
-         ZovQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUJ5kJ7DF/9O66lX82L2uSL8bT98/AQVgRct2rw/PAtUgXC5YLSmB88y98Sw1XvwraTMeBNIf8sENorvFGUDy+v@lists.infradead.org, AJvYcCXJTVenr4msr3OI/pd1qn1ko8qB/pBY3SPxaTqeSXpRDnFm/Lma1yXky+MUK24Bcn7GXxgMtF6vq3vqKTfc8aA=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5b0DwojzTBZQSJdxAdIyEpvL90ct/2j2OeUdfWcPSbfI2NKqQ
-	3pZngS3Ey/gVSnTJ5aCIeDmSvI4e7GvI3v9NtYa1reUnZGWnX4AE
-X-Gm-Gg: ASbGncvY0bnjBCXWYlZy4iBbX19DE0qsHlDzPnAbIWfx8a1ge9mS6HrvUJsXPLekiQG
-	+O/IrUUG5TrKupmLdn068OEHPO+0kCZA2narRcsY6rM7fGdf1WTj2sd8e/QCV/v2cu3kQCE5vkl
-	rhZHEaMJ0nqIpyCtHaDCdbNIrk0xfTsD8gtlnDy2lY92Tk3DLM8d1E3adGee75GQtzmtLs5iIPd
-	41XPimZ9K0PfcRaLsKbTIo/XfWZIKJBIPqR1hbERa1eA+VYUh2zrbHFXZGyl0driku/vlfSuDFR
-	QIvgu4xThxpCOmtZOmHQRurnLyzrgMnjfmHr
-X-Google-Smtp-Source: AGHT+IG17qKjHP7hajsb1NqDKGf26pPgtY+u2y2Irx0Mpfq+Bk5d1g+9CG/Zi2mBLwUCzK6vQKtkSA==
-X-Received: by 2002:a5d:598c:0:b0:385:ea2b:12cc with SMTP id ffacd0b85a97d-385fd3e779bmr6188036f8f.13.1733321404995;
-        Wed, 04 Dec 2024 06:10:04 -0800 (PST)
-Received: from orome (p200300e41f281900f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f28:1900:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d527257dsm26885385e9.1.2024.12.04.06.10.03
+        d=1e100.net; s=20230601; t=1733322411; x=1733927211;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Y6Zm/pDEZ2wWuq6CLhWp8fdFsf6yo2FBchkfiY2ICjk=;
+        b=r1sMDv4tIoJP8Fv6DO9AqLJWxh8DLhdtQzJuhacz5mrcHWMWejydoGrvl+vpg6w60v
+         pNiLopCgCeaJn6QET6FYa04Vs3E3sO3KYJ2Lo3xeU17JCxnSNb/pFrty0cR/rPUfN1Qg
+         iHo0aSHDRDkh/LpVncL/b2bNUxglca7/JGZtpQLV1GWoGEu3PwZBKGxm7RA2ebGBul1L
+         IvRIk6zs2b4HLjtk1BtMjBXB6U+fps4aEbIbX+RbFCqnTQoj6nH3cq9zU1k9x8GYfP9p
+         a3Cw4Wsa+R37nV4iWr7k0urR/iix3LpKhkHR/mJl6HTHSUybDlb1w/T+oMnUcI48aqzN
+         8bCg==
+X-Forwarded-Encrypted: i=1; AJvYcCWhNyEAWtoWmQQLVr8/HT7x64hGbXnBJ/5jOaxhOePmWCx8ActOEfUzD18fnCWFlTNBOHM3dMOj1AsRqVZtsQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyiL21vwi4zWKlL80nMkQUhUGgHuGEIH7WEq3iA9jsyue1ESqeY
+	E8SFwaphPRar7Yjq7npgI/VGbopKr3+Wi0Cb58y8KlR8XDG8UJp87OJSaP7GKA==
+X-Gm-Gg: ASbGncs25dUYTMkscFTrOznJHki+ZnBiPqYVXLMyIrwmklgxa/xVgBJS6Cfc7KsIhS6
+	moLiwgyE1lpE1e9fHeI1W9OZueKsQ+Tm4Nmys/uhQ4wLIp4X4iir/XPE0+IwbxjoUxHVwyvk40b
+	1yFyyoyDwlOFI6VQVH6TjMFAAZ1fHNLonrg8p+iqIcIWk4J0RI9N5QOsreq++YgRO1r7FyhzZP0
+	UUENmQsNEf+tiJPKv/TXaztoAtPpbHzzd/g/Rnf9NeFfK7Mv1Zub2bcEW+2Xsq4FsQ=
+X-Google-Smtp-Source: AGHT+IF0dNNNk83kN4LRrd8AEGyz62WUomCygJPIZPBTF7uW7lrdAcSow02U1nyM8E/b/c2B1GaPog==
+X-Received: by 2002:a05:6a20:cfa6:b0:1dc:bdbd:9017 with SMTP id adf61e73a8af0-1e165412f33mr9668165637.40.1733322410642;
+        Wed, 04 Dec 2024 06:26:50 -0800 (PST)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:b764:8a78:a02:6e0])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7fc9c3a2a5asm11416510a12.80.2024.12.04.06.26.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 06:10:04 -0800 (PST)
-Date: Wed, 4 Dec 2024 15:10:02 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Gax-c <zichenxie0106@gmail.com>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, mperttunen@nvidia.com, 
-	jonathanh@nvidia.com, kraxel@redhat.com, gurchetansingh@chromium.org, 
-	olvaffe@gmail.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	mst@redhat.com, airlied@redhat.com, dri-devel@lists.freedesktop.org, 
-	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH] drm: cast calculation to __u64 to fix potential integer
- overflow
-Message-ID: <xlmfl2rhjgczu6oycgogchqi2gc65w7s3qy33yxzsrf6mbri3q@7onulkroaa7z>
-References: <20241203160159.8129-1-zichenxie0106@gmail.com>
+        Wed, 04 Dec 2024 06:26:50 -0800 (PST)
+From: Fei Shao <fshao@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH v2] drm/mediatek: dp: Support flexible length of DP calibration data
+Date: Wed,  4 Dec 2024 22:25:38 +0800
+Message-ID: <20241204142626.158395-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="magv3qwbnz55o6h7"
-Content-Disposition: inline
-In-Reply-To: <20241203160159.8129-1-zichenxie0106@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_061007_083734_3314DFDA 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20241204_142654_569890_283F76B1 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,62 +100,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The DP calibration data is stored in nvmem cells, and the data layout is
+described in the `mtk_dp_efuse_fmt` arrays for each platform.
 
---magv3qwbnz55o6h7
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] drm: cast calculation to __u64 to fix potential integer
- overflow
-MIME-Version: 1.0
+There is no guarantee that the data is always a 4-length u32 cell array.
+For example, MT8188 has a data length of 3, preventing it from passing
+the preliminary check and undergoing calibration.
 
-On Tue, Dec 03, 2024 at 10:02:00AM -0600, Gax-c wrote:
-> From: Zichen Xie <zichenxie0106@gmail.com>
->=20
-> Like commit b0b0d811eac6 ("drm/mediatek: Fix coverity issue with
-> unintentional integer overflow"), directly multiply pitch and
-> height may lead to integer overflow. Add a cast to avoid it.
->=20
-> Fixes: 6d1782919dc9 ("drm/cma: Introduce drm_gem_cma_dumb_create_internal=
-()")
-> Fixes: dc5698e80cf7 ("Add virtio gpu driver.")
-> Fixes: dc6057ecb39e ("drm/tegra: gem: dumb: pitch and size are outputs")
-> Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
-> Cc: stable@vger.kernel.org
-> ---
->  drivers/gpu/drm/drm_gem_dma_helper.c | 6 +++---
->  drivers/gpu/drm/tegra/gem.c          | 2 +-
->  drivers/gpu/drm/virtio/virtgpu_gem.c | 2 +-
->  3 files changed, 5 insertions(+), 5 deletions(-)
+Update the logic to support flexible data lengths. Specifically, we
+validate the length returned from `nvmem_cell_read()` against the
+platform-specific efuse format. If out-of-bound access is detected, fall
+back to the default calibration values. This likely indicates an error
+in either the efuse data length described in DT or the efuse format
+within the driver.
 
-I don't think this can ever happen. All of these functions should only
-ever be called via drm_mode_create_dumb(), which already ensures that
-these won't overflow.
+Signed-off-by: Fei Shao <fshao@chromium.org>
+---
 
-Thierry
+Changes in v2:
+- use %zu identifier for size_t in dev_warn()
 
---magv3qwbnz55o6h7
-Content-Type: application/pgp-signature; name="signature.asc"
+ drivers/gpu/drm/mediatek/mtk_dp.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 36713c176cfc..55671701459a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1165,17 +1165,25 @@ static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
+ 	buf = (u32 *)nvmem_cell_read(cell, &len);
+ 	nvmem_cell_put(cell);
+ 
+-	if (IS_ERR(buf) || ((len / sizeof(u32)) != 4)) {
++	if (IS_ERR(buf)) {
+ 		dev_warn(dev, "Failed to read nvmem_cell_read\n");
+-
+-		if (!IS_ERR(buf))
+-			kfree(buf);
+-
+ 		goto use_default_val;
+ 	}
+ 
++	/* The cell length is in bytes. Convert it to be compatible with u32 buffer. */
++	len /= sizeof(u32);
++
+ 	for (i = 0; i < MTK_DP_CAL_MAX; i++) {
+ 		fmt = &mtk_dp->data->efuse_fmt[i];
++
++		if (fmt->idx >= len) {
++			dev_warn(mtk_dp->dev,
++				 "Out-of-bound efuse data access, fmt idx = %d, buf len = %zu\n",
++				 fmt->idx, len);
++			kfree(buf);
++			goto use_default_val;
++		}
++
+ 		cal_data[i] = (buf[fmt->idx] >> fmt->shift) & fmt->mask;
+ 
+ 		if (cal_data[i] < fmt->min_val || cal_data[i] > fmt->max_val) {
+-- 
+2.47.0.338.g60cca15819-goog
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmdQYrcACgkQ3SOs138+
-s6HXsxAAtQJlAEOMdgNNQBcnlKziuLGEV6eDn2I2ZMbyfdflAwfxU1IZem8HHolu
-Uf8rl4/XAETFBzeMup8SZ+DvspOCUSQY6kf8Dh+25/5NDTEf50vjBA/TXcws/ced
-6pRImbXzulFvz7kEm/fOaTXdk9w7mKnNDpFj86FUBcuz5kIQm1Qo4uhEYZRR9BSs
-C5c6m77m/4N3Iw7mkJoKW1U0jDJpfgw/iCdUpZrNh2buoKaRhe3WasizYdpXcbIn
-ImHPVPKV7MUgLrlYjdqOlxninIKhRMB9n5hcbvHD2YQcv9Y3pj1XA9YzXu3+4pir
-Sq6HLJFoHy+vmeLdTJZsMEljM25tBtkXkIUVEiWUb4BTbjJHLikCT4IYvfm9wByx
-OKCLKtdAiKyC1mh3aswnmeHb9tHBTt2Zj++nl2u/oUJyUncmBeboX7Wh+C9aCWF3
-cjT8OzvzTFX0bTLWyO9n0hwM9n84di0kuVmN8Bm7erXZcFAQyJfQpVB8lqiXokYA
-iw+IZX7DQQ8oKnxYpXy+V+gxSD19e4fed6jzgGpn7s+JYRuH1SiBSA4iaIQ8OCze
-7FPuGM5WT1d92OgNUU+jC3gjM58QHwLiEFhJgV2Oj6/sOi5fs1JY9uGKlMbxynlF
-PQm2NJU7k9lZXI2hxYRY6AmtikgF4NSYiz5zgglZvHpLoeLItpo=
-=dkp1
------END PGP SIGNATURE-----
-
---magv3qwbnz55o6h7--
 
