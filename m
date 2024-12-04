@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CF2E77170
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 17:02:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E20E7716D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2024 17:04:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tXMgRCrOWr2wmiMy8VSPvEY0tHJ0Qi0ruQHELlZ3nrQ=; b=Z8P5frLumfIN8patozs1K/XI0m
-	EwYw9cCeb16WQmr6l8iqW0NPn6FIFZKH98OMMPskcTgOHCIz6Xyc9EegrseaYcVnKg8Q1mgwr/fRL
-	RxN1yTjXq8Wv0KIaeMcUNd5fQ3KiWmqKCq3cDXJHoVzyTI5+VeV/kU8S0BLunvwFBJ6N1rJQBhu72
-	X66mq3EI8pBOuo5n6Dz69iSR+b7vSYAog70IOhw1c9dncwrVgA+ataIV+AyhLemZo4MaNokPxiZh+
-	nv/61fMZtHpH+TL4koew3j6D1xDQOv+Vjg0GFx4df0VaCpUrQDL8S3JugWDVdr2eGIrF92S+Aj6Or
-	Bzyz2T3Q==;
+	bh=7zlQ4zYe4YTIzHC/xwMvNF8POGVeCR2OoQYcmd4TzqY=; b=bCmXBJcOTeQacCV7P0StwB+P6g
+	Aohd5Jk9neNPV9zYovICUrwwEUNZBo4f/0hmPWfDyCKzwWAUcb29Cc0Ypmhm/kogzzHBQUHM7Pdre
+	SOVoT89aZnFRui2wr22RPElfIoGfhJa761o67DUSO9MEm44byB+L45nYV8hmiBFyM9sxGsEEIAdO7
+	yfHYWq6Cny/SdjgO3y1ZXVLFioFM7OnfdrasatMI3REZqBCs0Pfb52sNilpnJOGM0pBymdjP21N1J
+	IMFYDZxPdZNFUiBi8MRkvlZ/Oo/ePi12JyIyo2WT+gYNGoQRKWVsiXWK7lp6+tA1CCUE3lyPGg8AG
+	x8kDAAXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsm5-0000000DHDc-2vqT;
-	Wed, 04 Dec 2024 17:02:53 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tIso4-0000000DHh2-1Q8H;
+	Wed, 04 Dec 2024 17:04:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsl3-0000000DGxT-2MOs;
-	Wed, 04 Dec 2024 17:01:50 +0000
+	id 1tIslv-0000000DHAl-0Rjp;
+	Wed, 04 Dec 2024 17:02:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7373BA41B53;
-	Wed,  4 Dec 2024 16:59:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F03B7C4CED6;
-	Wed,  4 Dec 2024 17:01:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8A4715C6F90;
+	Wed,  4 Dec 2024 17:01:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD214C4CECD;
+	Wed,  4 Dec 2024 17:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733331708;
-	bh=3krexAfqy0Ht6N8hAX+Gid/7tdaS40E+IMw95VFDePo=;
+	s=k20201202; t=1733331762;
+	bh=7u2DoriNT4352wrIk1exknMyKRlYYDQiy9mn/liPiNA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G2E1FYFNjinVy3ukXsE9T0/7Ikv81KFrJmvFzcs/QomVS5CMCMfyv6Um9PsgglWSI
-	 SZTCkzwMTrgLIc7+8lbHEZr3S4BOasWlhW2vT+CIphkkGkedNNf92xKR4c+U3u3qJM
-	 /97Cm89A4BrNqGrt6mn+LkeltccmLL7YDQvA+mZR93osCAOKu1miHWOlpmxmGBk8bl
-	 FLIF4Mx22a9W5A0kzyY850yaciBz16e6kNgf7B0YSfayXBUNvfkJZFizkXMIGLyOjR
-	 ruLULkLWKuJqncpuToMiPlsK6232u2n8aWLmHCIGNel57t8aF25H8wsTtswc5jYY/d
-	 XTD4dUNopZ1ig==
+	b=QAboMdsVN9OVTuY9mdZTyEBEBqUbNN98zMNsbKZvwIxxVwlTbm9VLqYHZhQq1x8Ho
+	 EwAku4XWmrqhw5+PPQYza05JjlBaalJSnFJ/laF7CC04b2l5bUrOk2uQFuqVuI+iGw
+	 sNfuGXjNKgT5ihLO5VW790BoaOthV/wamQhuAJSLD44eecoox762J+1kikBtkoFpxm
+	 fa1sJiJPvUGGePTsnH1jqdqIe2egMrfs7nSHwtiWjeodYF9oa9XOYfPYoADYfW3G9G
+	 3HbbCWlfjOYEX970z485nH3F4DAg3es5NJOOSEz17pU++tYf97gqJEf04A4Kdg3xb+
+	 6/eYAqN+U0MTg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -64,20 +64,20 @@ Cc: Bart Van Assche <bvanassche@acm.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 09/24] scsi: ufs: core: Make DMA mask configuration more flexible
-Date: Wed,  4 Dec 2024 10:49:29 -0500
-Message-ID: <20241204155003.2213733-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 06/15] scsi: ufs: core: Make DMA mask configuration more flexible
+Date: Wed,  4 Dec 2024 10:50:45 -0500
+Message-ID: <20241204155105.2214350-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241204155003.2213733-1-sashal@kernel.org>
-References: <20241204155003.2213733-1-sashal@kernel.org>
+In-Reply-To: <20241204155105.2214350-1-sashal@kernel.org>
+References: <20241204155105.2214350-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.63
+X-stable-base: Linux 6.1.119
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_090149_724947_99B4AF14 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20241204_090243_232028_8B3CB7BC 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,10 +114,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  3 files changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index db4044358e22d..62fbbd56a86e8 100644
+index a1809aa9a8892..df94c563b808a 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -2265,8 +2265,6 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
+@@ -2230,8 +2230,6 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
  	int err;
  
  	hba->capabilities = ufshcd_readl(hba, REG_CONTROLLER_CAPABILITIES);
@@ -126,7 +126,7 @@ index db4044358e22d..62fbbd56a86e8 100644
  
  	/* nutrs and nutmrs are 0 based values */
  	hba->nutrs = (hba->capabilities & MASK_TRANSFER_REQUESTS_SLOTS) + 1;
-@@ -10206,6 +10204,8 @@ EXPORT_SYMBOL_GPL(ufshcd_dealloc_host);
+@@ -9648,6 +9646,8 @@ EXPORT_SYMBOL_GPL(ufshcd_dealloc_host);
   */
  static int ufshcd_set_dma_mask(struct ufs_hba *hba)
  {
@@ -136,7 +136,7 @@ index db4044358e22d..62fbbd56a86e8 100644
  		if (!dma_set_mask_and_coherent(hba->dev, DMA_BIT_MASK(64)))
  			return 0;
 diff --git a/drivers/ufs/host/ufs-renesas.c b/drivers/ufs/host/ufs-renesas.c
-index cc94970b86c93..ea3da773b1c14 100644
+index ab0652d8705ac..481ad0a3a6c7c 100644
 --- a/drivers/ufs/host/ufs-renesas.c
 +++ b/drivers/ufs/host/ufs-renesas.c
 @@ -7,6 +7,7 @@
@@ -170,10 +170,10 @@ index cc94970b86c93..ea3da773b1c14 100644
  	.hce_enable_notify = ufs_renesas_hce_enable_notify,
  	.dbg_register_dump = ufs_renesas_dbg_register_dump,
 diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 2a7d6f269d9e3..8b66228645d76 100644
+index b54f22840dabf..c4b1e6dca2397 100644
 --- a/include/ufs/ufshcd.h
 +++ b/include/ufs/ufshcd.h
-@@ -295,6 +295,8 @@ struct ufs_pwr_mode_info {
+@@ -272,6 +272,8 @@ struct ufs_pwr_mode_info {
   * @name: variant name
   * @init: called when the driver is initialized
   * @exit: called to cleanup everything done in init
@@ -182,7 +182,7 @@ index 2a7d6f269d9e3..8b66228645d76 100644
   * @get_ufs_hci_version: called to get UFS HCI version
   * @clk_scale_notify: notifies that clks are scaled up/down
   * @setup_clocks: called before touching any of the controller registers
-@@ -332,6 +334,7 @@ struct ufs_hba_variant_ops {
+@@ -303,6 +305,7 @@ struct ufs_hba_variant_ops {
  	int	(*init)(struct ufs_hba *);
  	void    (*exit)(struct ufs_hba *);
  	u32	(*get_ufs_hci_version)(struct ufs_hba *);
@@ -190,7 +190,7 @@ index 2a7d6f269d9e3..8b66228645d76 100644
  	int	(*clk_scale_notify)(struct ufs_hba *, bool,
  				    enum ufs_notify_change_status);
  	int	(*setup_clocks)(struct ufs_hba *, bool,
-@@ -613,12 +616,6 @@ enum ufshcd_quirks {
+@@ -582,12 +585,6 @@ enum ufshcd_quirks {
  	 */
  	UFSHCD_QUIRK_SKIP_PH_CONFIGURATION		= 1 << 16,
  
