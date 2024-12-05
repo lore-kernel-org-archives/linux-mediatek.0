@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E09E7716C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 09:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F71E7716C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 09:45:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Hj51tQUYsAKS9xS0L2qk/b2rKWVlQnqo5rEveZPtVGw=; b=nTcEiN3gIbC22R+S8qDZAgZD3i
-	ibihanniSyXzqJOslo8ULXEr6kISUkAh0jHRTbyTgZx6jfdIopasfOWrnDZgY6kLtWGFLO9y3WuTE
-	5Qc0xSwzHvRDLqOX5C18bb4CR1uXgBIEns1aZbfBrNl+B/NypJo/HJ281ftoI7eNWMve9uOWVe+rc
-	tPLP3zIpzSzzJA1T6SbLhIs50ZHJWQ4G7OqU8kNPJkAV8ittYF1ScryFVuqbruLiAoyPrPjxCweRN
-	T/XDuULI65i208LzJm38xaX7acLp9j5+YK19Mx1/TNE27vWerbfuk0/CciuENn0Nwoo67u29ZN0xe
-	o+xqfzdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
+	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7vuVuSz1ikyfCg09UlbCqoDgZ9MeD4Xre3c4jOWt9Zo=; b=bIX6hiOqoxc/UHCKBpWG7lV4zN
+	x6Ie4gr70M2o2+l28/diNsVplCzPnDkX1IH3BCMNOpQYfFXlGQ8jTeNZAWQnnyqWprZOSc7pGFz7F
+	Z4hPAN/hQePUXORZMbgSCnVEfW7jgsfux+uoZXPqYnep7+ktwJiY4ZgDmGK8FKCuAueunU1aVcmRP
+	v+ur0z8OnklQ7mKtOUHrD8xXW6S+j0HhJkri7qCJvHZw1B2PP8T6R8RdzAsWD9EaG7mk43AbkUkVH
+	H5sTUvqHgj2hCM5gPMpcfYu9XFhSNcxHC3985RVKm6Qbnc7SxBqrvBFlP+xDnemCIJFL8WuSPQd4u
+	ykLlBMeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ8OX-0000000FP1H-0Eq1;
-	Thu, 05 Dec 2024 09:43:37 +0000
+	id 1tJ8Qc-0000000FPJt-0PAt;
+	Thu, 05 Dec 2024 09:45:46 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ8NU-0000000FOqY-1bff;
-	Thu, 05 Dec 2024 09:42:33 +0000
+	id 1tJ8Pa-0000000FOs5-0tO8;
+	Thu, 05 Dec 2024 09:44:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Hj51tQUYsAKS9xS0L2qk/b2rKWVlQnqo5rEveZPtVGw=; b=mZDHzZpZ7UAggidQeG3syJ3de0
-	dsAHDnsnRDbcJRJfQRz3Vos1oBdsSeVnILL9sZCTmVDFrqYSDoAKPqD6i5tJ3piMAFWr9aKo7lBCE
-	14R2DIjdE2Ux6zUbl2FXl5okEUQZR+MMbU4kB/AgPbDfsdu/15cikvSQbCJ5H8nqsKS+30skHEgSm
-	Pny8lL+4M4jr9GA+HwfQc7ulTogImxOAPs31fG6ibqbgOU0F/ZOKQNZu/yd5doZyUoLjtm21aQlxh
-	LetfzV46pagrWINlev6EZ4CvprBNV0vA1Mn0GuaHvES/NTbTVoERHBEBI7Wi5Oc6DAtZrydZOkhLS
-	VbHwLHZA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56980)
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=7vuVuSz1ikyfCg09UlbCqoDgZ9MeD4Xre3c4jOWt9Zo=; b=HEcRky85EwU1g0js4DcqNJdJeF
+	Pful7qFqOyJByMWBEF8hwNdiMb8KgxMeQROWtoxp75zIDjuZfB/4jG7or1yJEBofi6vtvs6sMwjuB
+	q4lprrbPOIXwj2tdIk0UBXKLAUq1fiMk1hRFg9hBVcaUPSlTWyi6tKC1g2hHAG9mGnxaKm+nkd37d
+	QbJSm+xe2DPMb7mwg/pmbSDAKU1OAGWEet079h7Ti9SDqYbCp/mka/bjk57RCkJcotiU25zgskTew
+	eOhQAxNCeceJC6SGFMSgy/54gV9k4u8pJY7QfW0gflEOQHQAM4qTToVUcD4MwbVDN6B0B0v3okBZu
+	ygRujPkg==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59736 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tJ8NA-0004Ta-2c;
-	Thu, 05 Dec 2024 09:42:13 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tJ8N5-0006RK-0l;
-	Thu, 05 Dec 2024 09:42:07 +0000
-Date: Thu, 5 Dec 2024 09:42:07 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1tJ8NS-0004U2-2B;
+	Thu, 05 Dec 2024 09:42:31 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1tJ8NR-006L5P-E3; Thu, 05 Dec 2024 09:42:29 +0000
+In-Reply-To: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
+References: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexander Couzens <lynxis@fe80.eu>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Daniel Golle <daniel@makrotopia.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 0/3] net: net: add negotiation of in-band
- capabilities (remainder)
-Message-ID: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 2/3] net: pcs: pcs-mtk-lynxi: implement
+ pcs_inband_caps() method
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk>
+Date: Thu, 05 Dec 2024 09:42:29 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_014232_420633_0CDB4CA9 
-X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-CacheID: sfid-20241205_014442_246942_F5D3FB6D 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,18 +89,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Report the PCS in-band capabilities to phylink for the LynxI PCS.
 
-Here are the last three patches which were not included in the non-RFC
-posting, but were in the RFC posting. These add the .pcs_inband()
-method to the Lynx, MTK Lynx and XPCS drivers.
-
- drivers/net/pcs/pcs-lynx.c      | 22 ++++++++++++++++++++++
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
  drivers/net/pcs/pcs-mtk-lynxi.c | 16 ++++++++++++++++
- drivers/net/pcs/pcs-xpcs.c      | 28 ++++++++++++++++++++++++++++
- 3 files changed, 66 insertions(+)
+ 1 file changed, 16 insertions(+)
 
+diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+index 4f63abe638c4..7de804535229 100644
+--- a/drivers/net/pcs/pcs-mtk-lynxi.c
++++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+@@ -88,6 +88,21 @@ static struct mtk_pcs_lynxi *pcs_to_mtk_pcs_lynxi(struct phylink_pcs *pcs)
+ 	return container_of(pcs, struct mtk_pcs_lynxi, pcs);
+ }
+ 
++static unsigned int mtk_pcs_lynxi_inband_caps(struct phylink_pcs *pcs,
++					      phy_interface_t interface)
++{
++	switch (interface) {
++	case PHY_INTERFACE_MODE_1000BASEX:
++	case PHY_INTERFACE_MODE_2500BASEX:
++	case PHY_INTERFACE_MODE_SGMII:
++	case PHY_INTERFACE_MODE_QSGMII:
++		return LINK_INBAND_DISABLE | LINK_INBAND_ENABLE;
++
++	default:
++		return 0;
++	}
++}
++
+ static void mtk_pcs_lynxi_get_state(struct phylink_pcs *pcs,
+ 				    struct phylink_link_state *state)
+ {
+@@ -241,6 +256,7 @@ static void mtk_pcs_lynxi_disable(struct phylink_pcs *pcs)
+ }
+ 
+ static const struct phylink_pcs_ops mtk_pcs_lynxi_ops = {
++	.pcs_inband_caps = mtk_pcs_lynxi_inband_caps,
+ 	.pcs_get_state = mtk_pcs_lynxi_get_state,
+ 	.pcs_config = mtk_pcs_lynxi_config,
+ 	.pcs_an_restart = mtk_pcs_lynxi_restart_an,
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.30.2
+
 
