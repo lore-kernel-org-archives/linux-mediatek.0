@@ -4,97 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45169E7716C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 16:29:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2BE2E77170
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 16:41:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=; b=Cabn+9R3GmiXiH7+Fp5qqQUnwR
-	aqkTtIwJoDdjbMMidceDN9IKM6gEYfApnCaJPQfOCXB1ET1QW8LhjZde8Yiqkx3KIGBDBPHS+F+2V
-	9Qu/WxfLnN/y5scZqdUwG5h4aFLwDW+9e2gsyeYMHHCnygdSwo1mp2dCeROyjN/XVt8EWtoSUt3ZV
-	X/hRZKkNrwf1Siu9FNq+Pxo91mdGf5IeD98BrH0K6IzTqer1YluokiPsAq6bK4tw/GnyQ5//bMMcL
-	DXLkVWCs1BmNR5TzstXveQx6yrSZjD1igR0U4sbJPdVrGXUQMsouzut/rPqFuAiTzbWyIyhwt/kNq
-	bGdn2ejw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ncfm0Ew70GznYLi9T8bLVToud6oZGWFWMd1HWmPX364=; b=t3qLhtk3q512Lbv3/9MFkYDJbx
+	9IkFcwllnN/7QuyBew0trZ+eFHQhuO/MGg4G4/Q4Xhn1T492NWz+G48XQymEFbAHLrmjzoRGRXd3A
+	hdFXzhpSvtkf2w/zQ0tMYcUZiLGSgKzRuNVnVV4vuXztiTNfAlDsgKrwWUyRCZ6DONTl8AMNZy6lB
+	cCyi2EKTkh6N/95XqCvRTOQfwa1EKu0n5MAZrpi6YeYwK3AbltNCLuIkSmgFDCSLfwfGluJGJD89N
+	fCIrnQIZ9dpwSKNJP03BKccDpOGA6nKdnebYunLJXETiW7lFoCblCUbChOveUFteRzUsqawnEcfyo
+	kQf/RiLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJEiz-0000000Gkfg-1jZV;
-	Thu, 05 Dec 2024 16:29:09 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1tJEum-0000000Gmes-0ASo;
+	Thu, 05 Dec 2024 16:41:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJEhx-0000000GkVc-023P;
-	Thu, 05 Dec 2024 16:28:06 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-aa62fc2675cso8107666b.1;
-        Thu, 05 Dec 2024 08:28:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733416083; x=1734020883; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=;
-        b=MPc5LiTyenZ1azZRy9BH8K/kCb+nFb08oO9rEAforrRxvDMY9Bh4MhVwcvXKis+ciS
-         3zslKp3e9c2QuIHUiz7gHWRGNx51ag4DJPt+6Q8VHMc8WRwysLKpyiRtWR37Dvr/EvNa
-         bXOwU8hoV7Y7q4GvZR0GM4B67EwG1VBSCzTpWkZ/gYHOP9qdH1K3bymNSzNm840iN3uV
-         XKfIhUqI6j3NyFrJshFdbULTdZJrDf2EbiiMRPHGGeox6BtWZ8rK+j/gFSldCDuty+9m
-         5yagwn76iAbyy93rQNDTdAiBAaQ0quW1wzYExviv0kVfZJ1mCbsycUWA7MwlDMjI+91a
-         INdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733416083; x=1734020883;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=;
-        b=xHf+C1/T5yInyO6YELlHBsKN4jB3oB+kobPT+6C7YQdV2W7zXcC9OYb0BfCOx0aIpA
-         abldkJeu3UzxTYTt6ih1i5LQyw/gmanHyiGCcV3lmX3An2LTTVUg2FwIiSRCyhRULeeC
-         tJ/oYtSbMWu3Yc3cRTT4sZkLrLmDi7SRmoPuWX0SpI8n/uwciHIG1h2Bf4Rpb3XbSzyd
-         mBSv+mvDh/Ubit1gnc49hq3ZHwmhDjZpI3E99Zu/8RjNbVW4wTZTuEt24piV2dZIG7b3
-         AhxQt3OLmszy3nziz0r+nGxrJ0ruKAK/NL8Z9xm4TtIMF6fIslc/InjnTi1veL+8O/wK
-         ND5A==
-X-Forwarded-Encrypted: i=1; AJvYcCXcGb8WAkR8IjaHFznWbmA0YZ7Yw3tsDTdHbAl9Pak94ki9uvN8Vq1Zql8SkNILHuSyeoN7F492rewJYWqdyeZh@lists.infradead.org, AJvYcCXfcjq6lj4eRivG+eiyuo1ub0eAU49tKzoPeyYHMqdz71zxpqVxmBwRNdtxagckZPd/jOlt2ZK50Hd9gepGSXU=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5OxkmEY/3aV1eqL5b29taCrtFBukF80oWHu4Ptyy5L/wV+FVg
-	WAaBle67cw0Wy1OG7YS1aiSHBFg/hMfpnp+EN9f+7duWwfGUdO2A
-X-Gm-Gg: ASbGncs1LNz23LSfljQjN4XmRDXgEqGkj+jUnUt9rq80bFgrKnKTQ5ILxnLp0XLjh7d
-	Kgz3/nh94ADXrYPNkPwUyo1mmNXYfVT/YCGtFbBvsQREqiSFvkRoi1lC5bB2tlPwjHCHu6tb6r+
-	1BZFSc72VVjzBpcHlmsDnMcg7+IK3NhCt1K+2/cxC1mW5dcl4Js/yBi+Sof5FLTew88oAaay0uS
-	Wu7gXrnxBZpkVH4UsjKCc4Qvov3F/X4R82ym+0=
-X-Google-Smtp-Source: AGHT+IFXo8dPa3kP8TWBFDql5AxNgfAf43Sw1KmsQzDEJFJ2Gu14qwW18WvRihEawx3T8P1t1NEPUw==
-X-Received: by 2002:a17:907:7b85:b0:a99:f230:8d6e with SMTP id a640c23a62f3a-aa5f7d9a1c9mr486801166b.7.1733416082676;
-        Thu, 05 Dec 2024 08:28:02 -0800 (PST)
-Received: from skbuf ([188.25.135.117])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa62601b5ddsm111902466b.118.2024.12.05.08.28.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 08:28:02 -0800 (PST)
-Date: Thu, 5 Dec 2024 18:27:59 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v9 3/4] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <20241205162759.pm3iz42bhdsvukfm@skbuf>
-References: <20241205145142.29278-1-ansuelsmth@gmail.com>
- <20241205145142.29278-4-ansuelsmth@gmail.com>
+	id 1tJEqT-0000000Glzl-2LAM;
+	Thu, 05 Dec 2024 16:36:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 73ACCA411BF;
+	Thu,  5 Dec 2024 16:35:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7724C4CED1;
+	Thu,  5 Dec 2024 16:36:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733416612;
+	bh=EUDRNIf91DhCpv7VcoEeYf3W/mYyiI1JzzqOUbN9pO8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=h6dqKZikrt4op81i1+61l9XQXVpzuJPRawHLRrzCWkJ7gFEVCYEshUV0L/Y9SdcAW
+	 R9b1aavozOx57jBDQ95JUFMd9Q399Rfz/nktY2ihiuJu5L859KoVVJLLcf9HcCM1ma
+	 xsfbm4rbK9E4plkWE74RXYs8zzIdSOuVbC1BgTP+k5fxHKpE6U5OTOj8S3AKSNhqUy
+	 NbzMHrBdIGy4OXhbhAh/ieGXetRmr3iIY4J72m0H9fMeXC+sa8qleevKAWHx42gbEu
+	 HJwcNk0XGtYpnTMpv8FLS/p8MmFUINiZFs9xl5gZiGEAVzQgQ/ziLR6cmk5A5BCNHe
+	 t4tAYe1QrSi2g==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20241203-mt8188-6359-unhardcode-dmic-v1-1-346e3e5cbe6d@collabora.com>
+References: <20241203-mt8188-6359-unhardcode-dmic-v1-1-346e3e5cbe6d@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: Remove hardcoded dmic
+ codec
+Message-Id: <173341660960.157362.16366009839095486342.b4-ty@kernel.org>
+Date: Thu, 05 Dec 2024 16:36:49 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241205145142.29278-4-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_082805_043945_DFFB46FB 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20241205_083653_664637_10C870A9 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,52 +77,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 03:51:33PM +0100, Christian Marangi wrote:
-> +static int an8855_efuse_read(void *context, unsigned int offset,
-> +			     void *val, size_t bytes)
-> +{
-> +	struct an8855_priv *priv = context;
-> +
-> +	return regmap_bulk_read(priv->regmap, AN8855_EFUSE_DATA0 + offset,
-> +				val, bytes / sizeof(u32));
-> +}
-> +
-> +static struct nvmem_config an8855_nvmem_config = {
-> +	.name = "an8855-efuse",
-> +	.size = AN8855_EFUSE_CELL * sizeof(u32),
-> +	.stride = sizeof(u32),
-> +	.word_size = sizeof(u32),
-> +	.reg_read = an8855_efuse_read,
-> +};
-> +
-> +static int an8855_sw_register_nvmem(struct an8855_priv *priv)
-> +{
-> +	struct nvmem_device *nvmem;
-> +
-> +	an8855_nvmem_config.priv = priv;
-> +	an8855_nvmem_config.dev = priv->dev;
-> +	nvmem = devm_nvmem_register(priv->dev, &an8855_nvmem_config);
-> +	if (IS_ERR(nvmem))
-> +		return PTR_ERR(nvmem);
-> +
-> +	return 0;
-> +}
+On Tue, 03 Dec 2024 16:20:58 -0300, Nícolas F. R. A. Prado wrote:
+> Remove hardcoded dmic codec from the UL_SRC dai link to avoid requiring
+> a dmic codec to be present for the driver to probe, as not every
+> MT8188-based platform might need a dmic codec. The codec can be assigned
+> to the dai link through the dai-link property in Devicetree on the
+> platforms where it is needed.
+> 
+> No Devicetree currently relies on it so it is safe to remove without
+> worrying about backward compatibility.
+> 
+> [...]
 
-At some point we should enforce the rule that new drivers for switch
-SoCs with complex peripherals should use MFD and move all non-networking
-peripherals to drivers handled by their respective subsystems.
+Applied to
 
-I don't have the expertise to review a nvmem driver, and the majority of
-them are in drivers/nvmem, with a dedicated subsystem and maintainer.
-In general I want to make sure it is clear that I don't encourage the
-model where DSA owns the entire mdio_device.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-What other peripherals are there on this SoC other than an MDIO bus and
-an EFUSE? IRQCHIP, GPIOs, LED controller, sensors?
+Thanks!
 
-You can take a look at drivers/mfd/ocelot* and
-Documentation/devicetree/bindings/mfd/mscc,ocelot.yaml for an example on
-how to use mfd for the top-level MDIO device, and DSA as just the driver
-for the Ethernet switch component (which will be represented as a
-platform_device).
+[1/1] ASoC: mediatek: mt8188-mt6359: Remove hardcoded dmic codec
+      commit: ec16a3cdf37e507013062f9c4a2067eacdd12b62
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
