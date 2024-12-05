@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 098D3E77170
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 17:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 281BDE77170
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 17:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SN1IUjCKosvwoMP78JjC9pNaPeczyqUZO6x+klQrhM8=; b=3qzw+WWdQr+KXCzN13B8vp2Pu9
-	3hsNBXt78ut8S10r47KJWDyogMAHyMpbSPtvYE1qfcPy99M5huuZydK5b/0ZDIEuRM2plDJW7mMKI
-	jb7ruOrmWaqLwCWfZ+v6cRmHG5XB17dy+/3P0pWq3jCcIt6Zttv9+D2Irtuc4+6PgzkrIOSictdbl
-	5GZ1P0mjn54SQ3saRCrBCB3zJgz23XHk6olENR3rDJ3xhmC/+Li74gsbPLpdNKvRF8gx80cR953gm
-	0p80yXfLqHzx8cWE5KBPPdMkDfjp8FUqbycyskbFsTIPm9UDOhjtDtXxCF82qdt9qC7lGNwp8xkVJ
-	hopQZrZw==;
+	bh=O5mhDTiQCniX4dOvULwv2bY5E40qxNFbSX0TtTudBO0=; b=i2kwktvLXZDCwP6T16U5PN94Be
+	LPaTph7Cs42voX3BIZ99JShHEKAHiKYw6P1q6jnfKn4mFB+BHDL9l+Q+Wwfi44sF3Uy4Ms602XlUO
+	7MQrj2m8eutT4ey1sIIh09kiGZGGUoOU8ER5CL/UPZ86qj6NMvPqyWc1YJFecqHwAb7I3PXZ/CY1u
+	+F7Fy+iQA0kQJUmNx4yqghV+gdHmP8PraKeB8EaHF/TwRSdsvVXIj39RmQPhZ5xRdy5pKjeTq8e1h
+	tWAIt39qf/q0EQmJhGnPCZMKa1L/t7gK3OgyoEgvx4crnP6qp3cmqwTc1ffYxFc4QK5Q3buE3EjZn
+	Kf3SRUQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJFd6-0000000GwlJ-0Rkd;
-	Thu, 05 Dec 2024 17:27:08 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1tJFh5-0000000GxZj-0GPX;
+	Thu, 05 Dec 2024 17:31:15 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJFTi-0000000GuaY-0KRL;
-	Thu, 05 Dec 2024 17:17:27 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-385de9f789cso856674f8f.2;
-        Thu, 05 Dec 2024 09:17:25 -0800 (PST)
+	id 1tJFc8-0000000GwWO-3ks9;
+	Thu, 05 Dec 2024 17:26:10 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-434a8b94fb5so7781145e9.0;
+        Thu, 05 Dec 2024 09:26:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733419044; x=1734023844; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1733419567; x=1734024367; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=SN1IUjCKosvwoMP78JjC9pNaPeczyqUZO6x+klQrhM8=;
-        b=f2e0E5qhcAVluynV5KCGu4ruiBu7d7i8Nd6Wj79vYefgFECxF9pFSlluzit1j4d64y
-         fgy/pl7uXrI6xpOh0DOkbbQRLKgH1c+DAGI6QKofuuiZdXRlxQDu1D7E/m8hOE20BDzz
-         CZFtkc0noVRlw4gBh7UtDiKYQkJrGnZ7AW7vSZajTCsb/epBGNlPXfR0rsG84I3lzkSj
-         txQILEwjhGTICiBrgOz4+q5te/WNJkULMKjdQuyqRXA1Adm6+vx/nVDWM4oP9c7uzNdP
-         Wbd2ZJ4HCAqVy4dqL73SnH/sv+TqiJ0qjce/IxNEkA1apkT1qNLQcao7PpqVmc7EMzKU
-         C6HQ==
+        bh=O5mhDTiQCniX4dOvULwv2bY5E40qxNFbSX0TtTudBO0=;
+        b=ixmEheYyZ7IlAuHQ+H41w9DbVSrG/RGzk1YOrsjitAPv75xgoJJ6so1KcbyqsMBqCf
+         OIXKYa7VxBE+Fo6ARKC2eNEfClh50jN1iguDN2wsXNrAT3E1U37l1gksZeUs2FSRYs37
+         EhTOnG799tWQ+19VLR7g8wbpPOgLYB23t2IjqZqrHaEKg05mf4HIMQfqRPWpHMRovWeO
+         F+V0XzwB+MASCfXpaR5V9H4oSn+oN9BnBG6Gmf1wElz62u7+kxV1egc7LriBKSGlqhWT
+         Kx5W6tWay6l5tyzEK4lPB56tbTBMwS44TWOrWu0ur64uluq1t+kuNONPaxJNxVPphwD6
+         je5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733419044; x=1734023844;
+        d=1e100.net; s=20230601; t=1733419567; x=1734024367;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SN1IUjCKosvwoMP78JjC9pNaPeczyqUZO6x+klQrhM8=;
-        b=upw9E/dBXIzq/jU87L7R/qszLWGOfkBcdO1LJ1rM9/eOI6tTG4VY/dpd2onsdd27Fo
-         T3FHQfrCI4LqzC3ztFmD5pgB8szE7nBiTmAwAQeYlvupOwXCUDt8w9a8g96MTXj7xPwL
-         REma2oyJUoacIh8bH8JCxZvNxIQhzf044dJKVcu36ugQBz2FImwk/ValVUcJ90qi+DxG
-         pczC/mYUNnpXmULrySRXGcUbWyAbptImyzWazpQIhPTsaAy6rzrnv8BbSLBDe7qJpUxj
-         9JGTDNh8PpdR2Zwp0I9d80NwGHkpcguNpsIwcpi6FP3RyrKNEhmaVCPbsBpEAugx9wRm
-         vNsg==
-X-Forwarded-Encrypted: i=1; AJvYcCVZJBhjoBrdPg7QzEpeitL1Y1yL9xkaIiGazYyPWuHFkPGcm8NhS63Nbb+pZGzTAqsX0RcWCPLoI2HVx7nzzw22@lists.infradead.org, AJvYcCWuVQmZ0rey2T8k/JwDWMKfE+RcdJ9dujWYQvteA90voy/kopIYcNPHj66FdhF8YEuTg1anZUTTSIRXMxf18IM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwoUluE9xEQk9tvHHttbFRffmG4yg3E0altMY6iTEgprHvce/Ud
-	/Hd61Wv5Yo+KZfC0Mjtg1ILCaWLJwSzStFveZZQqezjyve+tmbHiribvEA==
-X-Gm-Gg: ASbGncuzhYKYvqp8rvJyLMEYLEuxKwKbm4d7EqedaF1qRwHmRs95lQd8lkGECG2OjM7
-	/I42lijmBlm6owke1pOmiC6J7AR89NRfgFyXIU4mnILBXl7BcO2FFtBwmiwMCXRH8bnlJFWd7GV
-	eucGmkgPmEIIkbaG4/MkVaxNN3H9OqMklKZOkGyQsT0TqbjN9aKZwZ67YdczQQQgUAWgUNC/jTe
-	rgxzgJtIeqDMth3/GOKVBFKT+11nKjrGOMT/gz+BoD5bnizcDne9NGNJv8bEFzRmygZIPwWpbgB
-	96bGKw==
-X-Google-Smtp-Source: AGHT+IFGLdccQZZT6SK2+da//mSq/Cl9jdeyY32lqwWVf3M+gX0V6WTHyQEf5kO3jT5sbZpH2fuN1A==
-X-Received: by 2002:a05:6000:1faa:b0:385:f7d9:99f5 with SMTP id ffacd0b85a97d-385fd433612mr9315287f8f.51.1733419043842;
-        Thu, 05 Dec 2024 09:17:23 -0800 (PST)
+        bh=O5mhDTiQCniX4dOvULwv2bY5E40qxNFbSX0TtTudBO0=;
+        b=ks1UZMAPOuEhRZYgHGqW9SUb1FIq9Hu3jIf3x5W6/RC/lIk6qaJqHVUsWx4kZwViLP
+         6drGe2XBJT0LMMlN9xRpHG/dB8N3W5OV9z92AYcsrZhHVhz2tCa/S3zUBwqfvHCGrYe3
+         Xdcjsrcz29eaZ6oYhEBhAHRl5J6DltKqPAVBjKp9oJCaifg3Az6yZVmBZfvPimOgIsfA
+         RFOZU3Xassris30llP4bcOJlp2WxFSWxq2DjO/XjGKbCHA9yGOJ0qdzIpEEOB6XYzCZY
+         zI+ZhqmTofvGokB1SQQAy3qC/36ok5aR4qs4hTb41dFgeNLy7dzfsJM6/xGEbY1BErVK
+         RBnA==
+X-Forwarded-Encrypted: i=1; AJvYcCWmUCMuM7tfBZFizgKh00JNPEhtgqjQSY5HgKFZUJfV6wgJM736LBEiGVtLHsBhP39DEKdEz23puzVQ+Woz5Y+J@lists.infradead.org, AJvYcCXTufCIITehTlpnhzIR1zF1d4iRPMzg5lDy5MrOUSbTJbNwNbbGycD4ad2YukE5wChMnd/P+JT58owbWC5doB0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzmIAh3QDBYvdZN9/lKnWLjnYxsPdLS+W7knlK9gzVq0wwkXXV8
+	/NrT3CpRnicxf4q/IVQp6mJpUe7FpCXFJH2WWm05m82MitnXelHH
+X-Gm-Gg: ASbGncugTHX61/pjReazwcRdGBjhrs1G/eqjvFjOjUPuC4u7wguzKni9UIQ1hBuhEu/
+	Bkv0aYknAohdAim5X+hEB8hn/3KPtcHq9ulafOx0yPJWMnhJztLJpbA/DfhpRVUJlj0ctdCk/w3
+	q6N61X2rwmAd05ngCNJHQoBHIH3U3qgflZlB7WkfywsoUvbs1nES9UFdDr9ycwfYFOStMaP0n9n
+	AmHynchpktpgiorEr9Stg+HJ7rxv1ImRYJcY0EF93cdeCI+6JLFBLJaNlZJ8ffxtWMzaPvPfc39
+	0Z51XQ==
+X-Google-Smtp-Source: AGHT+IGWBr7m/eK/LTokHoFmkVp6cSV6bU7ybbZzYTsPTC5V+3f3UIT5XgVkJ22lghZ4+yW3kvJwBg==
+X-Received: by 2002:a05:600c:1906:b0:431:7ccd:ff8a with SMTP id 5b1f17b1804b1-434ddee0503mr1062795e9.14.1733419566414;
+        Thu, 05 Dec 2024 09:26:06 -0800 (PST)
 Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3861f4a8591sm2443049f8f.36.2024.12.05.09.17.22
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d526b577sm68800725e9.3.2024.12.05.09.26.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 09:17:23 -0800 (PST)
-Message-ID: <6751e023.5d0a0220.394b90.7bc9@mx.google.com>
-X-Google-Original-Message-ID: <Z1HgHu93YLoS_D4P@Ansuel-XPS.>
-Date: Thu, 5 Dec 2024 18:17:18 +0100
+        Thu, 05 Dec 2024 09:26:05 -0800 (PST)
+Message-ID: <6751e22d.050a0220.3435c6.57de@mx.google.com>
+X-Google-Original-Message-ID: <Z1HiKXfpdluKA0_w@Ansuel-XPS.>
+Date: Thu, 5 Dec 2024 18:26:01 +0100
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Vladimir Oltean <olteanv@gmail.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
@@ -90,14 +90,14 @@ Subject: Re: [net-next PATCH v9 3/4] net: dsa: Add Airoha AN8855 5-Port
  Gigabit DSA Switch driver
 References: <20241205145142.29278-1-ansuelsmth@gmail.com>
  <20241205145142.29278-4-ansuelsmth@gmail.com>
- <20241205162759.pm3iz42bhdsvukfm@skbuf>
+ <20241205170629.ww7qcvgbqdf5ipcj@skbuf>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241205162759.pm3iz42bhdsvukfm@skbuf>
+In-Reply-To: <20241205170629.ww7qcvgbqdf5ipcj@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_091726_117893_55C4E804 
-X-CRM114-Status: GOOD (  26.76  )
+X-CRM114-CacheID: sfid-20241205_092608_952265_16DB1320 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,76 +112,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 06:27:59PM +0200, Vladimir Oltean wrote:
+On Thu, Dec 05, 2024 at 07:06:29PM +0200, Vladimir Oltean wrote:
 > On Thu, Dec 05, 2024 at 03:51:33PM +0100, Christian Marangi wrote:
-> > +static int an8855_efuse_read(void *context, unsigned int offset,
-> > +			     void *val, size_t bytes)
-> > +{
-> > +	struct an8855_priv *priv = context;
-> > +
-> > +	return regmap_bulk_read(priv->regmap, AN8855_EFUSE_DATA0 + offset,
-> > +				val, bytes / sizeof(u32));
-> > +}
-> > +
-> > +static struct nvmem_config an8855_nvmem_config = {
-> > +	.name = "an8855-efuse",
-> > +	.size = AN8855_EFUSE_CELL * sizeof(u32),
-> > +	.stride = sizeof(u32),
-> > +	.word_size = sizeof(u32),
-> > +	.reg_read = an8855_efuse_read,
-> > +};
-> > +
-> > +static int an8855_sw_register_nvmem(struct an8855_priv *priv)
-> > +{
-> > +	struct nvmem_device *nvmem;
-> > +
-> > +	an8855_nvmem_config.priv = priv;
-> > +	an8855_nvmem_config.dev = priv->dev;
-> > +	nvmem = devm_nvmem_register(priv->dev, &an8855_nvmem_config);
-> > +	if (IS_ERR(nvmem))
-> > +		return PTR_ERR(nvmem);
-> > +
-> > +	return 0;
-> > +}
+> > +	.port_fdb_add = an8855_port_fdb_add,
+> > +	.port_fdb_del = an8855_port_fdb_del,
+> > +	.port_fdb_dump = an8855_port_fdb_dump,
+> > +	.port_mdb_add = an8855_port_mdb_add,
+> > +	.port_mdb_del = an8855_port_mdb_del,
 > 
-> At some point we should enforce the rule that new drivers for switch
-> SoCs with complex peripherals should use MFD and move all non-networking
-> peripherals to drivers handled by their respective subsystems.
-> 
-> I don't have the expertise to review a nvmem driver, and the majority of
-> them are in drivers/nvmem, with a dedicated subsystem and maintainer.
-> In general I want to make sure it is clear that I don't encourage the
-> model where DSA owns the entire mdio_device.
-> 
-> What other peripherals are there on this SoC other than an MDIO bus and
-> an EFUSE? IRQCHIP, GPIOs, LED controller, sensors?
-> 
-> You can take a look at drivers/mfd/ocelot* and
-> Documentation/devicetree/bindings/mfd/mscc,ocelot.yaml for an example on
-> how to use mfd for the top-level MDIO device, and DSA as just the driver
-> for the Ethernet switch component (which will be represented as a
-> platform_device).
+> Please handle the "struct dsa_db" argument of these functions, so that
+> you can turn on ds->fdb_isolation. It is likely that instead of a single
+> AN8855_FID_BRIDGED, there needs to be a unique FID allocated for each
+> VLAN-unaware bridge in order for their FDBs to be isolated from each
+> other, and so that the same MAC address could live under both bridges.
 
-Hi Vladimir,
+Mh ok, I hoped we could first have the base DSA driver merged before
+starting to applying these kind of feature.
 
-I checked the examples and one problems that comes to me is how to model
-this if only MDIO is used as a comunication method. Ocelot have PCIE or
-SPI but this switch only comunicate with MDIO on his address. So where
-should I place the SoC or MFD node? In the switch root node?
+Concept looks handy, ideally I can just assign one ID for each port
+like:
+port 1 -> FIB 1
+port 2 -> FIB 1
+port 3 -> FIB 2
 
-Also the big problem is how to model accessing the register with MDIO
-with an MFD implementation.
+Question:
+Ports of the same bridge should have the same FIB?
 
-Anyway just to make sure the Switch SoC doesn't expose an actualy MDIO
-bus, that is just to solve the problem with the Switch Address shared
-with one of the port. (Switch Address can be accessed by every switch
-port with a specific page set)
+What I need to check is how the switch handle this for learning. Does
+the switch correctly create FDB entry with the right FIB? If that's not
+the case then I think assisted_learning is needed and HW Learn can't be
+used?
 
-But yes the problem is there... Function is not implemented but the
-switch have i2c interface, minimal CPU, GPIO and Timer in it.
+(I still need to check if I can assign a default FIB for a port...
+Currently the STP register are 2 bit for each FIB id, so 16 different
+FIB are possible)
 
-Happy to make the required changes, just very confused on how the final
-DT node structure.
+Also do we have a script for selft tests? I remember there was one back
+in the days for fdb isolation?
 
 -- 
 	Ansuel
