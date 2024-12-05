@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB9EE7716D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 13:00:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B6CE7716D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 13:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s2Jxa49+lF4JxHiGnW6UzqLVnsE/QayBWcQoJh8S91E=; b=xoCcUQHC2Y0AIMblaqeO7csIKO
-	KY+fvgQDRxYX16+zCdfvel6gOhqcXbqv72R9AoibRymjA4/U4lJdHVTlvPs0aOCdzww2GZm/yAJF/
-	dmq0RRCnNUWRNBMGx9ymCnbmLwuOAUwBZM/tkdunFcl6/IwNoK9iXZ26brEZt5wW5CGPMbbowZEvP
-	O/ZidcMNBlwfmlwbyYatb92aX+vpsjIO0A1dGys8+9hgXMAbABWJUPcpRSNS0UqU1MEopHnisLyIl
-	iiSNbgOvg1QHmSPqTj3MsZ5wpaGLLiWZ+Gskl6jnpct8msCR6raTUrJ6MXpNrjH1NOrtP/D2kxSFY
-	+N5GpjGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gj8VFVjPSZEkv+oUvBeuosT9Pxl2p7BzaNCPNYLTVfQ=; b=1R1tZMk/9cWZlyTtDHBGMD6Qk8
+	V4EIkyyMMBUj4uk2ESqTMe4p8GSD9fE9gjNWQog/7mIUBRBgKR1i17/CM98+2MEIJRGYmuQhufz5y
+	FvdX8FnC286/UaM3IDhWrDCm3KOHAFIR97AHYBq2a89Csh3KnvMUivOeXYH2CqI1p4ejnM3R8wpdY
+	ciS+/wyfcMVZ/FCeFi79Hq+Pm9/pK5g11Qr0qnq/Z8K1UfEGHAbsAHjM4byLi4PtlGTDrZNqelNkN
+	OUnhbTbOAgAYePNHCxt7TGtOLn+xp7i+JfcOD5HhMcv5iZoCoif36xZDFJPsVnLHCMFq3RCW8Aak/
+	pe465KbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJBSj-0000000G3C3-2jI2;
-	Thu, 05 Dec 2024 13:00:09 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1tJBTi-0000000G3Tm-3GDc;
+	Thu, 05 Dec 2024 13:01:10 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJBPh-0000000G2Gc-1Vnc
+	id 1tJBSY-0000000G38l-3SOz
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Dec 2024 12:57:02 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-53df1d1b726so897139e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 04:57:00 -0800 (PST)
+	Thu, 05 Dec 2024 12:59:59 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5d0d71d7f00so1316902a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 04:59:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733403419; x=1734008219; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=s2Jxa49+lF4JxHiGnW6UzqLVnsE/QayBWcQoJh8S91E=;
-        b=ChHuTmXGO/o9993It/OthHgisER7xILvuN70nSnD+wEAYX467lBXt++yraBeTYsA6s
-         y4eS0BTpeaKaoYkSkE5GYbjcpzS6vPkhSf4NarZzwISlRQqn2JTY65eFj/P01lu9yjU3
-         N/IexDYmryUnCfQsMVjgCO1fEFLRH/shaSXgfAtmQfFAPfkb5K3FleJ0HV/396wNPd79
-         WpNIXpZrVG0m4GmRV9pR9K3ycv/ybViR14SsHZ85HQ6IZCpMCYmbkdGw66IncQlPLNi7
-         NbML23SSElyoPovVWaN36BsJoZFa/YZ7LBZQJORGipuloKEzhdzpHNuSilXnPspDq4dI
-         xPKg==
+        d=gmail.com; s=20230601; t=1733403597; x=1734008397; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=gj8VFVjPSZEkv+oUvBeuosT9Pxl2p7BzaNCPNYLTVfQ=;
+        b=hw/Bc/yKyjHKgeF/TsAtRWueN9ysg62AeKLvz8sUzykSc3VarCyLucpXoeGiTL1rLW
+         gHdr4jtBiV+8/XYnKzHuoIWBYPIAWrkSqfMT4biaPpErn6G6XzpUTtguBrX6V58JE/jb
+         dJDfiIq9vI1p7GNQwZL/Viajhd2quJYkHHvQbX6NOI3x8id2fdV/yf0i3kcLzYLinK3B
+         jjNPOJHLhW+VY3HlmbN4sghTF59F46nO6X4/mPedvRc38k7utiBLrkW75xmBWAmADVeb
+         qahbxmUsri7DGUwWS8iKeYL3q3VKRJZLMgwJd11OLrEcua4zaeRuJdTXt49Z4V4XU4kj
+         r2Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733403419; x=1734008219;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=s2Jxa49+lF4JxHiGnW6UzqLVnsE/QayBWcQoJh8S91E=;
-        b=aCGroMK2WGTubnyDBEipq6svnTHvMIxhRLMfQzsQAmLF5ysoW8XYdTPRR5/tNxJhnk
-         b4fYZJ07v+Abt3gJ22fbJdcbQQKSp3s2J6hMPJLsL/QpRr1ik7GUSbPIRG0oyjlx4DOq
-         w6G7Qm4w0sRDKGJVR38fzFU6S7v0LkYKCr4zgGvWE7U7TzLqvMq48OpaPbSirSQO9c5Y
-         Pri1u5Gt/BSw8Xz5MPjsxBCLM4ExFhWQu+0sQ8JGiEHDLeacsaGPPFPsZT9oDdc32e27
-         WyCDPIi9q3SabEUZA7qrSm99EbwTSJXB82SP1tPjRAldIFkGK5Iu2fhu3NzHHHnr80n5
-         4q7w==
-X-Forwarded-Encrypted: i=1; AJvYcCXOzN4qOqte6N3fn8A+PnrlJw5N38gpWBJyCxdFMVf7XviOTblF138Egz9IyMu3kihg8GEsFNU2iuD1Hr6SPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTET74YS/CztiUv+XWwLBb3vOaWXblwcdT78fuVLx3SI12dWj1
-	Bny3oyoB0fiWZJZ2BZFatQ4spdpBLvqp8khyAp0LoDAVbkjd4N8ql9UYw2g/mYk=
-X-Gm-Gg: ASbGncsaqVhB6zcjzpPagS0zEiqxqFrDxgcd+ybkLAtOrFjx8WXCR8MLGfQIcKIMh6i
-	5/AGUnPg7tO5ZNyoXDkyHmNCJi0Vt96tqf/m+3NEqVrGHDdMXLT7SQpyN6BbhWXYpBHYl0uhdME
-	e2D5dTnFTRREnBBJKIQMoPMXVFde318AeC54FkDTr9uPsvaSkEc1XQ+20H0ExPEU3P4Lm6YBLUH
-	YM6Ht1teNI8LtJYBns1DZn8EQ82Mb9UTYnand4yQVL7fH/sJPjcWz8OUSWibAkz1Km9SbrVNuLG
-	vDO1IwZQvU8rIy+2EM8eXywpIlf9jA==
-X-Google-Smtp-Source: AGHT+IFxozV5yADLSZdT2aZmMAmC3YLc8oyR/mmxvGNOEAUjKfoe1x86CuOyh23J/0TyZbHiXn/ilw==
-X-Received: by 2002:ac2:51d3:0:b0:53e:1c3d:d0c5 with SMTP id 2adb3069b0e04-53e1c3dd10cmr3218316e87.28.1733403419364;
-        Thu, 05 Dec 2024 04:56:59 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53e229751fcsm237413e87.87.2024.12.05.04.56.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 04:56:58 -0800 (PST)
-Date: Thu, 5 Dec 2024 14:56:57 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com, jie.qiu@mediatek.com, 
-	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 12/15] drm/mediatek: mtk_hdmi: Split driver and add
- common probe function
-Message-ID: <uhcl2ypz3xmari73xl3l4klu2ucfkfkuj7bt3dz35hfmuzvvkj@5odvmmhivl54>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-13-angelogioacchino.delregno@collabora.com>
- <olxtqto5mbgofxg4iqjvsmpxxzz6zoj7pbwmoeklhfjiavqfvv@dyveek7hgtki>
- <f2862790-f613-4583-bec5-302e06c77d8d@collabora.com>
+        d=1e100.net; s=20230601; t=1733403597; x=1734008397;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gj8VFVjPSZEkv+oUvBeuosT9Pxl2p7BzaNCPNYLTVfQ=;
+        b=l3HZtjpjVil5Ghzcik5KgOCO21QjknnqpTB6smQ43jS0H0qvQAEmad5eX2Q86diKOC
+         SGJ7x8EqtinbUzo3nZUaxe6+3BRSocGZalkpeyZxP25KvtKpRMPrZqd0DJL6IALML4F7
+         ZX4Bz2wOI7YtNj9bgzbMO+nvXJsM/g4IRqbbuDznBSfcWxiX3oZDF96LcMr5xbgFSPyQ
+         vU6ddmApakl03lJ8Lf2koLfStxq9cQY4KiFeQ+A6XrkfRSKiHAJcL2hMwIQXCgCuZABj
+         veBRZPhkT+KV/ypcvv63J0vCk2qqRvevSTaORc1pYtk7Thd+eUpQDhjApNGWXwWLAAuU
+         FmRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVW57CZGgheUKhp4ZGKD2U3FxocH/BAR6C3cUUSxR1GKmmZY9ioGR7M7fhwqCKyw4URRQKJc/2ZzB+MvDBRjA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw9Bku9awpTWlDh6Yd8cK2BoiAfCmwTZQGd2zLG0VPe/gQ/PepO
+	ZPifyBx++0RbjaGquPDs3rS1hE/EvsIyWbEJe67O9YztGLtHUE+f
+X-Gm-Gg: ASbGncs0jQR8oUnJ7vn6TFzc6sCytTtlDThUX3LiurCranzgbD6nsHZBTWxDWKnYxVZ
+	zI98uTcV1vsF6YgAXo+3IztF8yr7bZz4RGk/pSrkgysjn5Fh5iBZW/syrWpSAdkPaJOsu4m0oik
+	LvNGH9s4Lhh6ivhYzlLW63/0ac/FS+NLiXe+sNhoIVADj+6A7Y3FGdKNbxnZ6rIbX2k4ynfOMbT
+	ntV6GWXhSJ6J/kZu86SIao5bgG5jP3VagI1WjRKQk3di9yJByhiqhF5uc6OXXMXIjWIp4dHWWJY
+	piy3fb5Ds/kJfn62YY8Mz3utFhGZAhy/lw==
+X-Google-Smtp-Source: AGHT+IEF+6FFvVmIuxk1MISOcv5BF4xk0eVILKN9vM5sXj6JFuPJooKQkMvDCoXx5Oq1Cpz44ra8Kw==
+X-Received: by 2002:a17:906:9a95:b0:aa6:c55:739a with SMTP id a640c23a62f3a-aa60c5574a7mr571964266b.50.1733403596420;
+        Thu, 05 Dec 2024 04:59:56 -0800 (PST)
+Received: from [155.185.125.95] (wifi-125-dhcprange-125-95.wifi.unimo.it. [155.185.125.95])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa625e4dc95sm88774466b.38.2024.12.05.04.59.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 05 Dec 2024 04:59:56 -0800 (PST)
+Message-ID: <ad78ad62-ebd2-40d7-8a6d-623ae947584c@gmail.com>
+Date: Thu, 5 Dec 2024 13:59:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f2862790-f613-4583-bec5-302e06c77d8d@collabora.com>
+User-Agent: Mozilla Thunderbird
+From: Sergio Callegari <sergio.callegari@gmail.com>
+Subject: Re: [REGRESSION] bluetooth: mt7921: Crash on Resume From Suspend And
+ Hibernate
+To: jglotzer@gmail.com
+Cc: Aaron.Hou@mediatek.com, Chris.Lu@mediatek.com, Deren.Wu@mediatek.com,
+ Hao.Qin@mediatek.com, Sean.Wang@mediatek.com, johan.hedberg@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, luiz.dentz@gmail.com,
+ marc.payne@mdpsys.co.uk, marcel@holtmann.org, regressions@leemhuis.info,
+ regressions@lists.linux.dev, steve.lee@mediatek.com, tiwai@suse.de
+References: <20241127231432.8112-1-jglotzer@gmail.com>
+Content-Language: it, en-US-large
+In-Reply-To: <20241127231432.8112-1-jglotzer@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_045701_391090_9F348EE0 
-X-CRM114-Status: GOOD (  30.71  )
+X-CRM114-CacheID: sfid-20241205_045958_864052_9652804B 
+X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,86 +105,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 01:36:18PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 05/12/24 13:29, Dmitry Baryshkov ha scritto:
-> > On Thu, Dec 05, 2024 at 12:45:14PM +0100, AngeloGioacchino Del Regno wrote:
-> > > In preparation for adding a new driver for the HDMI TX v2 IP,
-> > > split out the functions that will be common between the already
-> > > present mtk_hdmi (v1) driver and the new one.
-> > > 
-> > > Since the probe flow for both drivers is 90% similar, add a common
-> > > probe function that will be called from each driver's .probe()
-> > > callback, avoiding lots of code duplication.
-> > > 
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   drivers/gpu/drm/mediatek/Kconfig           |  11 +-
-> > >   drivers/gpu/drm/mediatek/Makefile          |   1 +
-> > >   drivers/gpu/drm/mediatek/mtk_hdmi.c        | 724 +++------------------
-> > >   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 425 ++++++++++++
-> > >   drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 203 ++++++
-> > >   5 files changed, 729 insertions(+), 635 deletions(-)
-> > >   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-> > >   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-> > > 
-> > > @@ -1026,19 +812,12 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
-> > >   	return 0;
-> > >   }
-> > > -static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
-> > > +static void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi, u8 *buffer_spd, size_t bufsz_spd,
-> > > +				    u8 *buffer_avi, size_t bufsz_avi,
-> > > +				    struct drm_display_mode *mode)
-> > >   {
-> > > -	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
-> > > -
-> > > -	hdmi->csp = HDMI_COLORSPACE_RGB;
-> > > -	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
-> > > -	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-> > > -	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
-> > > -	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
-> > > -	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
-> > > -	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
-> > > -
-> > > -	return 0;
-> > > +	mtk_hdmi_setup_avi_infoframe(hdmi, buffer_avi, bufsz_avi, mode);
-> > > +	mtk_hdmi_setup_spd_infoframe(hdmi, buffer_spd, bufsz_spd, "mediatek", "On-chip HDMI");
-> > 
-> > Please use the HDMI Connector framework instead of handling everything
-> > on your own.
-> > 
-> 
-> Dmitry, my plan is to get the MediaTek HDMIv2 driver upstreamed *with* using
-> the HDMI helpers - this commit is only splitting the old HDMI v1 driver in
-> common parts and v1 handling.
-> 
-> This "handling everything on my own" is something that was already present
-> into the old v1 driver, I am *not adding* this code, but *moving it around*.
-> 
-> I cannot migrate the v1 driver to the HDMI helpers right now because in this
-> moment I have no way to test that and I don't want to break any functionality.
-> 
-> If you check patch 15, you'll see that I am indeed using all of the helper
-> goodies - but for now only on the new driver, and not on the old one.
-> 
-> I do plan to migrate the v1 driver to the new helpers as well, but I would
-> (please) really prefer to do that only after the v2 driver is upstreamed.
-> 
-> Is that okay for you?
+John Glotzer <jglotzer@gmail.com> wrote
 
-Yes, I've sent this comment before seeing the last patches.
+> In following the related email threads it seems that this particular email thread has
+> not had any activity since 10/21/2024. Now the focus seems to be on firmware download which
+> in my admittedly non-expert opinion seems to be not clearly related.
 
-> 
-> Cheers,
-> Angelo
-> 
-> > >   }
-> > >   static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
-> > 
-> 
-> 
-> 
+Since then, it has become apparent that
 
--- 
-With best wishes
-Dmitry
+- The issue affects many laptops that fail to resume from hibernation 
+with recent kernels. It is not just about wifi/bt mt7922 combos attached 
+via USB, but also and most important those attached via PCIe, e.g.
+
+MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter
+
+- The new firmware (241106...) does not seem to solve the issue on all 
+the affected systems.
+
+- it is relatively easy to script actions to kill BT before 
+sleep/hibernation and unkill it after resume, but they are suboptimal. 
+Users will typically set them up after multiple failures to resume, 
+which often means after data loss.
+
+Would it be possible to (at least temporarily) revert the changes 
+occurred from 6.10 to 6.11 that triggered this problem?
+
+Sergio
+
 
