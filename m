@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 110F3E7716C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 13:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22A0CE77172
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 14:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yL+tleFt2L+1SozlABSJgb4PFD+G/C/vaJcHDx0ytEs=; b=3rEHBPvvG2cBWnxojxXiVQqLVZ
-	oZoPCwW8+NV0p3e3PuLFezNvsgfJmWcuGCCJ/yGrNfE4pbAaqXRzu97tNj4JH76BndcaGoS6Aj6Ub
-	taVszWztjMCH1TOxDFFl0xTW+cNrHst3yFFtEHz1rkWHNKw6qxzBv7Zpa1Za/wISoJdJ6fZRPmV0C
-	2hc1x8sO8fHNjKFtoifblxzd/kN4KnkZe5wnUjUU5TeqRcUasCiA7Qut3WdbHEjXrabkoSDB5J+A1
-	MMrXI5cGG4XZ+jYIVlncB0tAQCT6SdVdkz2+3niEH2YGg/CBQVQzLPEi7O6YtnYuaFPQ8VWbaDUA4
-	ha6w1fTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DeIIq7By5hb3j6D6u79xafAimRNm6W+G83In10fjfT4=; b=qHao+Hfke81l06aOJy6OBRlLwv
+	kyw1h0JkfpZo2Fem+UcLwD8FtbNTlO4K0kvUBLwBq1VMqsYL9uA2b4A6fUf3YezR/c+IaKWFSP+xz
+	q9LIp5S66aYL/rmPHIjZB4CbrpYKQ2adcQb93YRYCvaxST1/Oqv3PVOlQ/eFn61ITScQKMaTks7Gy
+	KkiBLVvwdidKq3Wpns/se3WQHMN6pUs9dbD6sXCnpLI0sHC+/wV1TVpQyQI0XvVGSw2v8oIlVfOY1
+	+KYZkBM+DSI8/3xTCacN1bUAcM7klCTMJ/C4IeRj+vQu6OdQE4eODUU82tYGkXhrvqoySR1HrH3+O
+	H41j0Svg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJC0S-0000000GBIJ-0SI9;
-	Thu, 05 Dec 2024 13:35:00 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tJCqw-0000000GKXY-2Ytd;
+	Thu, 05 Dec 2024 14:29:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJBzP-0000000GB34-41uf;
-	Thu, 05 Dec 2024 13:33:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 27307A4383F;
-	Thu,  5 Dec 2024 13:32:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0318C4CEE0;
-	Thu,  5 Dec 2024 13:33:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733405634;
-	bh=HY9tTGeW5NW/9Fp7iwxPs9KMW7cXmJeJAVDmaY4R1VE=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=UsrwpU1jhn2CrdcLXusDmzHQxeTYjTOseV6uFBr3sr6C/rFvFwziJqAOQpqxzQuGL
-	 RzdajG9/dhis/gxXfRCPrPRImkDFnnxHPZzBxFsPEQ1SmERTmmQtC5TjwhfWWAZJnT
-	 Sg6G/Gt8DDY5LH7aJclBgfC3kJBiM5LnL5zJpU6h/EupV2fUtc5gyTAJvnsiGx4UQI
-	 xZjeedfI1zEC71nDNpXzq2bhhmthTMIW3SrRsLT7GeW3V148yRO3Rvgh1p13OHdTzb
-	 4ssr0tkkLvPN/Zt4AEnXfqt8J18drl7cmPwUbQXf06AC13luQhAH/jkTVAXDwco17y
-	 sgipnyP69ENTQ==
-Date: Thu, 05 Dec 2024 07:33:52 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tJBlW-0000000G67V-3I3e
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 05 Dec 2024 13:19:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=DeIIq7By5hb3j6D6u79xafAimRNm6W+G83In10fjfT4=; b=mnlF7cl0BSKUYoQvp3XhBw2D/o
+	wXjhZxqhwyd8U5hYra82r8i/DD5YDyQf2W7+OOoq3dckcZnyKvYNi63hvpq7hUq2CMXO1Ct5ocO0V
+	GcJttslhgiAnvLukyE6qwHGUGGPZ57IpGxfpPQPr3ExC3A8DzKQRgzSxDfbKjXHQUu4Fnur7kU8Rj
+	uzGk3zM8TkDRhYKsFL47q9L533TIdTBQxxK/QkAB6Dc3W+TZD+Fixjxnc0vaNwecICDfaXcihCYvi
+	V2OLH/7k5YhV/cKsj11OB5JY3o0KyJAbnTDcifO1eLX+9W1UAOsk4JIlsSNoYGbQBDwpXrQOen1GN
+	xu8w7WWw==;
+Received: from pv50p00im-tydg10021701.me.com ([17.58.6.54])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tJBlT-00000002tp5-1pEH
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Dec 2024 13:19:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+	s=1a1hai; t=1733404763;
+	bh=DeIIq7By5hb3j6D6u79xafAimRNm6W+G83In10fjfT4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
+	 x-icloud-hme;
+	b=IN6sqLn/x5OCaqJO4vF5gn/fcjmZc3fZlyeytDMJnKp7XQ3de7PoFnmqSe0zeC9a5
+	 vUwI0Tptt7E+4Q3DWUqdgUpD0xOI9lBpQ4RQvwZlnJGvBh2ctgzycf7q159ExifH7K
+	 a8AIRvkTNSgebMbC7lLYAk5B4kjmGYrIRQclMfECHJrJ1+KGG+jAbVUk+xSHPoDbnh
+	 1e9j8QEBXLJX5ZxwWzRD/5Q41qX+s8eZZmLJoAKcnBcHGPNxbbfWDhHq6Q/v1949Vm
+	 rVciEGx0K4GT+eFIHW+pi7hnAXPVyGUzlxkEJ6XEG1lJhoSlPxkPp1AOo8we43GZSE
+	 xVpU9Q2Rr6i5g==
+Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
+	by pv50p00im-tydg10021701.me.com (Postfix) with ESMTPSA id C58AC3A1052;
+	Thu,  5 Dec 2024 13:19:06 +0000 (UTC)
+Message-ID: <f150fd45-7f84-4036-aa0e-32bd04fbeb67@icloud.com>
+Date: Thu, 5 Dec 2024 21:19:02 +0800
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: simona@ffwll.ch, devicetree@vger.kernel.org, p.zabel@pengutronix.de, 
- junzhi.zhao@mediatek.com, mripard@kernel.org, matthias.bgg@gmail.com, 
- linux-kernel@vger.kernel.org, tzimmermann@suse.de, krzk+dt@kernel.org, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- airlied@gmail.com, chunkuang.hu@kernel.org, conor+dt@kernel.org, 
- kernel@collabora.com, jitao.shi@mediatek.com, 
- maarten.lankhorst@linux.intel.com, ck.hu@mediatek.com, 
- linux-mediatek@lists.infradead.org, jie.qiu@mediatek.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20241205114518.53527-8-angelogioacchino.delregno@collabora.com>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-8-angelogioacchino.delregno@collabora.com>
-Message-Id: <173340563286.3304541.16351309995499835638.robh@kernel.org>
-Subject: Re: [PATCH v2 07/15] dt-bindings: display: mediatek: Add binding
- for MT8195 HDMI-TX v2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ quic_zijuhu <quic_zijuhu@quicinc.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>,
+ linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
+ linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
+ linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-serial@vger.kernel.org, netdev@vger.kernel.org
+References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com>
+ <20241205-const_dfc_done-v3-8-1611f1486b5a@quicinc.com>
+ <7ugfaj2h3sy77jpaadco5xtjalnten3gmvozowcle3g7zcdqs4@sqf5l47onbsi>
+ <ac42e652-4128-44ea-976e-5234360d8183@quicinc.com>
+ <eyu7nm5hvwfqxgysnrzsvianzf7abvlovpxfo7snsxowmuuhpj@tah3gkqm5ldj>
+Content-Language: en-US
+From: Zijun Hu <zijun_hu@icloud.com>
+In-Reply-To: <eyu7nm5hvwfqxgysnrzsvianzf7abvlovpxfo7snsxowmuuhpj@tah3gkqm5ldj>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: 2qHgOEYCHFJo6csSrQf0NeEl1TvG8_uZ
+X-Proofpoint-ORIG-GUID: 2qHgOEYCHFJo6csSrQf0NeEl1TvG8_uZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2024-12-05_11,2024-12-05_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=736 spamscore=0
+ phishscore=0 clxscore=1011 suspectscore=0 mlxscore=0 malwarescore=0
+ bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2412050096
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_053356_122559_BB8E0BF3 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20241205_131932_176483_F0EA6C11 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +112,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 05 Dec 2024 12:45:09 +0100, AngeloGioacchino Del Regno wrote:
-> Add a binding for the HDMI TX v2 Encoder found in MediaTek MT8195
-> and MT8188 SoCs.
+On 2024/12/5 18:37, Uwe Kleine-König wrote:
+> On Thu, Dec 05, 2024 at 04:37:08PM +0800, quic_zijuhu wrote:
+>> On 12/5/2024 4:10 PM, Uwe Kleine-König wrote:
+>>> On Thu, Dec 05, 2024 at 08:10:17AM +0800, Zijun Hu wrote:
+>>>> From: Zijun Hu <quic_zijuhu@quicinc.com>
+>>>>
+>>>> gpio_sim_dev_match_fwnode() is a simple wrapper of device_match_fwnode()
+>>>> Remvoe the unnecessary wrapper.
 > 
-> This fully supports the HDMI Specification 2.0b, hence it provides
-> support for 3D-HDMI, Polarity inversion, up to 16 bits Deep Color,
-> color spaces including RGB444, YCBCR420/422/444 (ITU601/ITU709) and
-> xvYCC, with output resolutions up to 3840x2160p@60Hz.
-> 
-> Moreover, it also supports HDCP 1.4 and 2.3, Variable Refresh Rate
-> (VRR) and Consumer Electronics Control (CEC).
-> 
-> This IP also includes support for HDMI Audio, including IEC60958
-> and IEC61937 SPDIF, 8-channel PCM, DSD, and other lossless audio
-> according to HDMI 2.0.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../mediatek/mediatek,mt8195-hdmi.yaml        | 154 ++++++++++++++++++
->  1 file changed, 154 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+> Just spotted: s/Remvoe/Remove/
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+this typo error is my mistake, will correct it.
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml:
-Error in referenced schema matching $id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.example.dtb: hdmi-tx@1c300000: i2c: False schema does not allow {'compatible': ['mediatek,mt8195-hdmi-ddc'], 'clocks': [[4294967295]]}
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.example.dtb: hdmi-tx@1c300000: i2c: Unevaluated properties are not allowed ('clocks', 'compatible' were unexpected)
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi.yaml#
-Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.example.dtb: /example-0/soc/hdmi-tx@1c300000/i2c: failed to match any schema with compatible: ['mediatek,mt8195-hdmi-ddc']
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241205114518.53527-8-angelogioacchino.delregno@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+>>>> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
+>>>> ---
+>>>>  drivers/gpio/gpio-sim.c | 7 +------
+>>>
+>>> I think if you move this patch before patch #4 in your series, you only
+>>> have to touch this file once.
+>>
+>> the precondition of this change is patch #4, it will have building error
+>> if moving it before #4.
+>>
+>> actually, we can only do simplifications with benefits brought by #4.
+> 
+> Ah I see. I thought that device_match_fwnode only got the const for the
+> 2nd parameter in patch #4.
+> 
+> Best regards
+> Uwe
 
 
