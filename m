@@ -4,92 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD651E7716C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 16:25:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45169E7716C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 16:29:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ItHEVA7I8S1EP8oyTKl1F93KEEHRVDFUauUtw/1Acb0=; b=BNxa0A0sME5+9ZvfFVCMjzjpxl
-	zO9urAwCkMwX0rk15F4cKUNyCmQLuNQfCIQB7+dfo9+xqJbt+Q9JTZuLoh9hGNsyuolsazbrZDYlr
-	giSU/AsdYg1EGNp4k8rd97I1X7sXxxoEc+EDYu47YaDlctIgBW5n9A0y9ra1VqGSQPbncq3aga3sl
-	VHZxOUibgEt6wAbDt2+bw9gO3WKqoVjrQTkpNiImVdXOjxCJJcNcLUph6Cjzrdk25fixOtmB9c2A/
-	yKpCSuHApYwwogDC/XacDw59wiEam0Bj4FkJb4P+3U9u0rupPGnXf9/e6WaSsnj6lfAtJXiIvFwZ2
-	PangOZpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=; b=Cabn+9R3GmiXiH7+Fp5qqQUnwR
+	aqkTtIwJoDdjbMMidceDN9IKM6gEYfApnCaJPQfOCXB1ET1QW8LhjZde8Yiqkx3KIGBDBPHS+F+2V
+	9Qu/WxfLnN/y5scZqdUwG5h4aFLwDW+9e2gsyeYMHHCnygdSwo1mp2dCeROyjN/XVt8EWtoSUt3ZV
+	X/hRZKkNrwf1Siu9FNq+Pxo91mdGf5IeD98BrH0K6IzTqer1YluokiPsAq6bK4tw/GnyQ5//bMMcL
+	DXLkVWCs1BmNR5TzstXveQx6yrSZjD1igR0U4sbJPdVrGXUQMsouzut/rPqFuAiTzbWyIyhwt/kNq
+	bGdn2ejw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJEfd-0000000GjvU-3EaO;
-	Thu, 05 Dec 2024 16:25:41 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1tJEiz-0000000Gkfg-1jZV;
+	Thu, 05 Dec 2024 16:29:09 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJEey-0000000GjmC-0odw
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Dec 2024 16:25:01 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-53e203d77a9so1020581e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 08:24:58 -0800 (PST)
+	id 1tJEhx-0000000GkVc-023P;
+	Thu, 05 Dec 2024 16:28:06 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-aa62fc2675cso8107666b.1;
+        Thu, 05 Dec 2024 08:28:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1733415897; x=1734020697; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ItHEVA7I8S1EP8oyTKl1F93KEEHRVDFUauUtw/1Acb0=;
-        b=GEnvpTdOBgmA5jjsyIajRe8V0rOoZPBaerMbSxGiRnJyu2Uqr6/I9MKu1I+x8ThHLd
-         OKEQq23VpTofmH/M6ih/6ZlXUfxUc8WHa7OsIWr1RW9K0CNr/QKM5MqFDu65PQRuPe2C
-         Gg3l3/ElTvROD+/3ich9WPCArznJdT7w6kc9oHUZEl0dTG/lVWSMPrTQ+7L5Iyh0foAH
-         S2iGLpmksNags014hD0uzHWRkZBt8p34mVP0bzsKKODnGn2yMhu3WEMK798JjtZQgdE6
-         XLyR9kKbLJCcTIPO9KvgG5UzIVE1i38ZuWWsioklAe+diJE8B6jy5NETD71VLIE1QSsR
-         ScIw==
+        d=gmail.com; s=20230601; t=1733416083; x=1734020883; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=;
+        b=MPc5LiTyenZ1azZRy9BH8K/kCb+nFb08oO9rEAforrRxvDMY9Bh4MhVwcvXKis+ciS
+         3zslKp3e9c2QuIHUiz7gHWRGNx51ag4DJPt+6Q8VHMc8WRwysLKpyiRtWR37Dvr/EvNa
+         bXOwU8hoV7Y7q4GvZR0GM4B67EwG1VBSCzTpWkZ/gYHOP9qdH1K3bymNSzNm840iN3uV
+         XKfIhUqI6j3NyFrJshFdbULTdZJrDf2EbiiMRPHGGeox6BtWZ8rK+j/gFSldCDuty+9m
+         5yagwn76iAbyy93rQNDTdAiBAaQ0quW1wzYExviv0kVfZJ1mCbsycUWA7MwlDMjI+91a
+         INdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733415897; x=1734020697;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ItHEVA7I8S1EP8oyTKl1F93KEEHRVDFUauUtw/1Acb0=;
-        b=FmSbr+i0Bku6P4Ezl7r2OLi0cEMWNUm8oR6XDhuNuMnWjtlmGbhLDQq72PiviN5ilC
-         luoSqqCSq98CYTEUMKB19512wfHuyXqlOKWpxle1WRXIKuM0ES5MfsNJC8J1SubHs4gT
-         KSxEXDvJaiAG1n84NfulfcJBvhNWWTUAZW7HFYPOu7u99cRRhY38kmJ9sYSfAWiNhsRw
-         LnLQmQd3/+LPOHcMwzvoCMFWP6sj911FBph1Ey0OLtrOV2Q7aVYg49tEP2pK+dmpeZpk
-         tPSnIJZYLRS6ZOvATM6eO+lrhT3cOctzhY8L4PU4XrECRXY6k0AbuvPLaVMTzBO8CWv2
-         9lQg==
-X-Forwarded-Encrypted: i=1; AJvYcCUpv7Hna6dtouW9rh5acxJuK/bL5cUeqIFBZuLQoqQmhBiN2eYC0ij4DsGH6oIHx8Bk8wzN3VRLVXBhwGVEYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8u6RDC6gHTi8Jfvjgxh+4ZhzNfswEadDcxPt1j/xu9j5oPgHD
-	IJ2CruKILnm/PgUQhJr5+j0r4TzZv2HNFxo857Cj+UDtgJ3h4ykSJE1n4mZLk6I+A0SZwEIZIl8
-	x71byrTiDTTd1TLo0oUbHgZNE5tMU6EZ00PNf9A==
-X-Gm-Gg: ASbGncsF1/oLozc71/7sgjl1k4nMFU4hs6CwrseTV7LdF10PLzagURldv4jw0hc5fPV
-	NUKkMCUiQKZL3O0kwbXETHbPg0kO19qv+rWyws8cfdHyKp0GA3hKLaSPSZCUApA==
-X-Google-Smtp-Source: AGHT+IErYJU9bnmgh/S4XgU0jcrMWfkUEiJSX94XfyJ1xliCjLlWQwaDM6P30GxT6teJ6fjjXCYzQKweIZQ1ynm3Yi8=
-X-Received: by 2002:a05:6512:4006:b0:53d:f6bc:23ec with SMTP id
- 2adb3069b0e04-53e216f74ecmr1077273e87.5.1733415897149; Thu, 05 Dec 2024
- 08:24:57 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733416083; x=1734020883;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xPXoJcPeSQwufs65dme8yzbSHiM4hQw48CgHRQis7MU=;
+        b=xHf+C1/T5yInyO6YELlHBsKN4jB3oB+kobPT+6C7YQdV2W7zXcC9OYb0BfCOx0aIpA
+         abldkJeu3UzxTYTt6ih1i5LQyw/gmanHyiGCcV3lmX3An2LTTVUg2FwIiSRCyhRULeeC
+         tJ/oYtSbMWu3Yc3cRTT4sZkLrLmDi7SRmoPuWX0SpI8n/uwciHIG1h2Bf4Rpb3XbSzyd
+         mBSv+mvDh/Ubit1gnc49hq3ZHwmhDjZpI3E99Zu/8RjNbVW4wTZTuEt24piV2dZIG7b3
+         AhxQt3OLmszy3nziz0r+nGxrJ0ruKAK/NL8Z9xm4TtIMF6fIslc/InjnTi1veL+8O/wK
+         ND5A==
+X-Forwarded-Encrypted: i=1; AJvYcCXcGb8WAkR8IjaHFznWbmA0YZ7Yw3tsDTdHbAl9Pak94ki9uvN8Vq1Zql8SkNILHuSyeoN7F492rewJYWqdyeZh@lists.infradead.org, AJvYcCXfcjq6lj4eRivG+eiyuo1ub0eAU49tKzoPeyYHMqdz71zxpqVxmBwRNdtxagckZPd/jOlt2ZK50Hd9gepGSXU=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5OxkmEY/3aV1eqL5b29taCrtFBukF80oWHu4Ptyy5L/wV+FVg
+	WAaBle67cw0Wy1OG7YS1aiSHBFg/hMfpnp+EN9f+7duWwfGUdO2A
+X-Gm-Gg: ASbGncs1LNz23LSfljQjN4XmRDXgEqGkj+jUnUt9rq80bFgrKnKTQ5ILxnLp0XLjh7d
+	Kgz3/nh94ADXrYPNkPwUyo1mmNXYfVT/YCGtFbBvsQREqiSFvkRoi1lC5bB2tlPwjHCHu6tb6r+
+	1BZFSc72VVjzBpcHlmsDnMcg7+IK3NhCt1K+2/cxC1mW5dcl4Js/yBi+Sof5FLTew88oAaay0uS
+	Wu7gXrnxBZpkVH4UsjKCc4Qvov3F/X4R82ym+0=
+X-Google-Smtp-Source: AGHT+IFXo8dPa3kP8TWBFDql5AxNgfAf43Sw1KmsQzDEJFJ2Gu14qwW18WvRihEawx3T8P1t1NEPUw==
+X-Received: by 2002:a17:907:7b85:b0:a99:f230:8d6e with SMTP id a640c23a62f3a-aa5f7d9a1c9mr486801166b.7.1733416082676;
+        Thu, 05 Dec 2024 08:28:02 -0800 (PST)
+Received: from skbuf ([188.25.135.117])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa62601b5ddsm111902466b.118.2024.12.05.08.28.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Dec 2024 08:28:02 -0800 (PST)
+Date: Thu, 5 Dec 2024 18:27:59 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v9 3/4] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <20241205162759.pm3iz42bhdsvukfm@skbuf>
+References: <20241205145142.29278-1-ansuelsmth@gmail.com>
+ <20241205145142.29278-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com> <20241205-const_dfc_done-v3-8-1611f1486b5a@quicinc.com>
-In-Reply-To: <20241205-const_dfc_done-v3-8-1611f1486b5a@quicinc.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 5 Dec 2024 17:24:46 +0100
-Message-ID: <CAMRc=Mf--vRm15N2au-zvP89obcxRuk+3OOLqFtrjgg61_LotA@mail.gmail.com>
-Subject: Re: [PATCH v3 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
-To: Zijun Hu <zijun_hu@icloud.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	James Bottomley <James.Bottomley@hansenpartnership.com>, 
-	=?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>, 
-	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev, 
-	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org, 
-	linux-block@vger.kernel.org, linux-cxl@vger.kernel.org, 
-	linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org, 
-	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
-	linux-scsi@vger.kernel.org, open-iscsi@googlegroups.com, 
-	linux-usb@vger.kernel.org, linux-serial@vger.kernel.org, 
-	netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241205145142.29278-4-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_082500_505662_613E3971 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20241205_082805_043945_DFFB46FB 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,59 +109,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 5, 2024 at 1:15=E2=80=AFAM Zijun Hu <zijun_hu@icloud.com> wrote=
-:
->
-> From: Zijun Hu <quic_zijuhu@quicinc.com>
->
-> gpio_sim_dev_match_fwnode() is a simple wrapper of device_match_fwnode()
-> Remvoe the unnecessary wrapper.
->
-> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> ---
->  drivers/gpio/gpio-sim.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
->
-> diff --git a/drivers/gpio/gpio-sim.c b/drivers/gpio/gpio-sim.c
-> index 370b71513bdb529112e157fa22a5451e02502a17..b1f33cbaaaa78aca324f99c45=
-a868e7e79a9d672 100644
-> --- a/drivers/gpio/gpio-sim.c
-> +++ b/drivers/gpio/gpio-sim.c
-> @@ -413,11 +413,6 @@ static int gpio_sim_setup_sysfs(struct gpio_sim_chip=
- *chip)
->         return devm_add_action_or_reset(dev, gpio_sim_sysfs_remove, chip)=
-;
->  }
->
-> -static int gpio_sim_dev_match_fwnode(struct device *dev, const void *dat=
-a)
-> -{
-> -       return device_match_fwnode(dev, data);
-> -}
-> -
->  static int gpio_sim_add_bank(struct fwnode_handle *swnode, struct device=
- *dev)
->  {
->         struct gpio_sim_chip *chip;
-> @@ -503,7 +498,7 @@ static int gpio_sim_add_bank(struct fwnode_handle *sw=
-node, struct device *dev)
->         if (ret)
->                 return ret;
->
-> -       chip->dev =3D device_find_child(dev, swnode, gpio_sim_dev_match_f=
-wnode);
-> +       chip->dev =3D device_find_child(dev, swnode, device_match_fwnode)=
-;
->         if (!chip->dev)
->                 return -ENODEV;
->
->
-> --
-> 2.34.1
->
->
+On Thu, Dec 05, 2024 at 03:51:33PM +0100, Christian Marangi wrote:
+> +static int an8855_efuse_read(void *context, unsigned int offset,
+> +			     void *val, size_t bytes)
+> +{
+> +	struct an8855_priv *priv = context;
+> +
+> +	return regmap_bulk_read(priv->regmap, AN8855_EFUSE_DATA0 + offset,
+> +				val, bytes / sizeof(u32));
+> +}
+> +
+> +static struct nvmem_config an8855_nvmem_config = {
+> +	.name = "an8855-efuse",
+> +	.size = AN8855_EFUSE_CELL * sizeof(u32),
+> +	.stride = sizeof(u32),
+> +	.word_size = sizeof(u32),
+> +	.reg_read = an8855_efuse_read,
+> +};
+> +
+> +static int an8855_sw_register_nvmem(struct an8855_priv *priv)
+> +{
+> +	struct nvmem_device *nvmem;
+> +
+> +	an8855_nvmem_config.priv = priv;
+> +	an8855_nvmem_config.dev = priv->dev;
+> +	nvmem = devm_nvmem_register(priv->dev, &an8855_nvmem_config);
+> +	if (IS_ERR(nvmem))
+> +		return PTR_ERR(nvmem);
+> +
+> +	return 0;
+> +}
 
-Please use get_maintainers.pl to get the complete list of addresses to Cc.
+At some point we should enforce the rule that new drivers for switch
+SoCs with complex peripherals should use MFD and move all non-networking
+peripherals to drivers handled by their respective subsystems.
 
-Bartosz
+I don't have the expertise to review a nvmem driver, and the majority of
+them are in drivers/nvmem, with a dedicated subsystem and maintainer.
+In general I want to make sure it is clear that I don't encourage the
+model where DSA owns the entire mdio_device.
+
+What other peripherals are there on this SoC other than an MDIO bus and
+an EFUSE? IRQCHIP, GPIOs, LED controller, sensors?
+
+You can take a look at drivers/mfd/ocelot* and
+Documentation/devicetree/bindings/mfd/mscc,ocelot.yaml for an example on
+how to use mfd for the top-level MDIO device, and DSA as just the driver
+for the Ethernet switch component (which will be represented as a
+platform_device).
 
