@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 182B0E7716D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 12:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCA8E7716C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 12:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4SkiNCYBsX3SSVIhNupJCz1vRRfZR3b/YxZ/4X0YZf4=; b=1XIVN5inKVb7fBayXTMJQHX1/W
-	4EBxPrKGm/LRfn2Wu9MUE/Ivf7weQvEzJGDZj3sLx1evGGslkmbggjDmRtGuB8aQKY4qVvzTy4b2O
-	PSTn+/tCJxQQgc7sPKGETznYs3acqaEUseRMrk7x/lVXZdKrtLB10BQcbllS3Ro9gpTGki1OQmRZg
-	rODfVV5pHaXBp0UNdYCoNigFhQMPz9g6B7cKQ5Nhk7kK9y+bn7VAC0638E4OV/N1gEmz51Scn6fWN
-	D38ZqVvEAiO4G84829FJ5R3hZRxA1t2hiY5UWgy0QMc0uv72T+Vd3gSIyOXCY974BXFfkCPafAMos
-	5+84GXkA==;
+	bh=5P5bHrn5RCr3wOftUT/8wSxwU34ri/P1sgBLapJARpM=; b=4t+vTMLgza0WpD0t92J0tDkOqN
+	JuJ9Jg/W+1h1zXT2CwzfMfAIcYxFNSb1MdXRntlROH77V1rzFa2YnC0opYUdLPsHYm/MOoqBQqWzW
+	1NcDDE/fR1zxx9U2f7h6Ed2eaqejM5Kc/f/gDCFrdqJx0U+bWzeLHrQWVa5hN1D2EqQDxMxTL9tSb
+	ojy4WfI1CpVOFuFzGlo3YNnjDHaRph0FMn+wXm8+2sy0xK8H8mOiIOfBII6qBKrCBfaly3DZXTaoE
+	hs+MGLKntXgTJPl6Ti3dMknT5zCjQrYmAsK7NBjkCcO4XL3TqrtcIRJppzhgxoj0Onzd3t3XPoBXv
+	hIM4MoRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJArG-0000000FvUb-0llV;
-	Thu, 05 Dec 2024 12:21:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tJAyC-0000000Fx1F-1kGD;
+	Thu, 05 Dec 2024 12:28:36 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJAlU-0000000FuLV-3ELp;
-	Thu, 05 Dec 2024 12:15:30 +0000
+	id 1tJAwK-0000000FwLV-4AAY;
+	Thu, 05 Dec 2024 12:26:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733400927;
-	bh=KyZ5CACimQSWxoWyn7gctVe0I3LE7LBdjabpyJ3Zld0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RIR38fvdP35N8NMfgWv85t7hMpo0egF0D84RDrw3gkyHSjpxkOLPR15B/z3TixfXV
-	 Ezn7ZGlcHR773nq9JVyBZVFS66WTOQy71yg/tq4FHFegCAFWyHH6ydndKdNpzQn7ro
-	 t70vmLOu7109IQECu2TSqAWMIDIx0vlGVFLHHuhPWEsqLZml3DxLPT8GoQ0ZuWIY6e
-	 fsvWSlGNYmqEY8gztsy7xGb3dnSK+CxNwzV4IIBtjCoq49eyf9FlsixDFizkrum2MR
-	 kN8YIQYd/+N2Fw5RcbZa4VGC+n29REGZM5Hij152p8RqRdLmEmH+ec/U+x1gEtyOlx
-	 vUew3GSNnNwVQ==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1000])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1733401599;
+	bh=9c8Iav8aUNsHauiM1yyCeZeaUEqfzZZUSJNr9VK+H8Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CG/svNwH8wKMZSECj0iDL44zQ9ywjg3SwpciUSnm3FrLTCK2Dg2azBak8u47LGZqa
+	 wY3wGDg6vH1dyYLkdJCH+dRUJmZmIFgubfgGoWsypJb1NsR0eCM1WIFb6Vf6+LZFpU
+	 3iadb1F9akZu2fI2PMhe50qwOCrgErodAJ4JWeVRaU3nEgNWKznNAhAtFWq7FQqffl
+	 U0lEGhW9kQpSGgmcln1dZ3kNDhNv2iBjXvHdDiA0dA+dMZFcTma4xB9w2pEQyviOXU
+	 gR+r5b6Z0K/GYbz4myLvTOv6fZZj8WtH6qanJtCk02vJ87tdlQeHIKo3OSAxIG51w2
+	 AOI0W0cRXWuvg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7ECF217E3661;
-	Thu,  5 Dec 2024 13:15:23 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Thu, 05 Dec 2024 09:13:58 -0300
-Subject: [PATCH 5/5] arm64: dts: mediatek: mt8390-genio-700-evk: Add sound
- output support
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1521417E35D8;
+	Thu,  5 Dec 2024 13:26:39 +0100 (CET)
+Message-ID: <6792791b-035c-4b50-809a-c561bfe21c1d@collabora.com>
+Date: Thu, 5 Dec 2024 13:26:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20241205-genio700-audio-output-v1-5-0e955c78c29e@collabora.com>
-References: <20241205-genio700-audio-output-v1-0-0e955c78c29e@collabora.com>
-In-Reply-To: <20241205-genio700-audio-output-v1-0-0e955c78c29e@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Aary Patil <aary.patil@mediatek.com>, 
- Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>, 
- parkeryang <Parker.Yang@mediatek.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/5] arm64: dts: mediatek: mt8516: add keypad node
+To: Val Packett <val@packett.cool>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241204190524.21862-1-val@packett.cool>
+ <20241204190524.21862-6-val@packett.cool>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241204190524.21862-6-val@packett.cool>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_041528_972719_E409CA12 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241205_042641_195069_3022B42F 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,98 +78,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Describe all the components to get sound output working on the two audio
-jacks, Earphone and Speaker, present on the Genio 700 EVK board with the
-audio DSP enabled.
+Il 04/12/24 20:05, Val Packett ha scritto:
+> Add a keypad matrix node for the MT8516/MT8167 SoC.
+> 
+> Signed-off-by: Val Packett <val@packett.cool>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8516.dtsi | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> index e30623ebac0e..3beb9f74ec79 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> @@ -220,6 +220,16 @@ timer: timer@10008000 {
+>   			clock-names = "clk13m", "bus";
+>   		};
+>   
+> +		keypad: keypad@10002000 {
+> +			compatible = "mediatek,mt6779-keypad";
 
-Co-developed-by: Aary Patil <aary.patil@mediatek.com>
-Signed-off-by: Aary Patil <aary.patil@mediatek.com>
-Co-developed-by: Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>
-Signed-off-by: Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>
-Co-developed-by: parkeryang <Parker.Yang@mediatek.com>
-Signed-off-by: parkeryang <Parker.Yang@mediatek.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 50 ++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
+Noupe, you have to add your SoC to the compatible list... both here and in the
+binding for mediatek.mt6779-keypad.yaml
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index bb68665f0b2da80397b833db0241a06648a322a0..2fded39078773e81d8e0313d6b118b3064be308d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -92,6 +92,24 @@ vpu_mem: memory@57000000 {
- 			compatible = "shared-dma-pool";
- 			reg = <0 0x57000000 0 0x1400000>; /* 20 MB */
- 		};
-+
-+		adsp_mem: memory@60000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60000000 0 0xf00000>;
-+			no-map;
-+		};
-+
-+		afe_dma_mem: memory@60f00000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60f00000 0 0x100000>;
-+			no-map;
-+		};
-+
-+		adsp_dma_mem: memory@61000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x61000000 0 0x100000>;
-+			no-map;
-+		};
- 	};
- 
- 	common_fixed_5v: regulator-0 {
-@@ -209,6 +227,16 @@ usb_p2_vbus: regulator-9 {
- 	};
- };
- 
-+&adsp {
-+	memory-region = <&adsp_dma_mem>, <&adsp_mem>;
-+	status = "okay";
-+};
-+
-+&afe {
-+	memory-region = <&afe_dma_mem>;
-+	status = "okay";
-+};
-+
- &gpu {
- 	mali-supply = <&mt6359_vproc2_buck_reg>;
- 	status = "okay";
-@@ -912,6 +940,28 @@ &scp {
- 	status = "okay";
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8390-mt6359-evk", "mediatek,mt8188-mt6359-evb";
-+	model = "mt8390-evk";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&audio_default_pins>;
-+	audio-routing =
-+		"Headphone", "Headphone L",
-+		"Headphone", "Headphone R";
-+	mediatek,adsp = <&adsp>;
-+	mediatek,dai-link = "DL_SRC_BE", "UL_SRC_BE", "AFE_SOF_DL2",
-+		"AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
-+	status = "okay";
-+
-+	dai-link-0 {
-+		link-name = "DL_SRC_BE";
-+
-+		codec {
-+			sound-dai = <&pmic 0>;
-+		};
-+	};
-+};
-+
- &spi2 {
- 	pinctrl-0 = <&spi2_pins>;
- 	pinctrl-names = "default";
+compatible = "mediatek,mt8516-keypad", "mediatek,mt6779-keypad"
 
--- 
-2.47.0
+for the binding, it's just a simple addition to an enum, nothing else.
+
+Cheers,
+Angelo
+
+> +			reg = <0 0x10002000 0 0x1000>;
+> +			wakeup-source;
+> +			interrupts = <GIC_SPI 149 IRQ_TYPE_EDGE_FALLING>;
+> +			clocks = <&clk26m>;
+> +			clock-names = "kpd";
+> +			status = "disabled";
+> +		};
+> +
+>   		syscfg_pctl: syscfg-pctl@10005000 {
+>   			compatible = "syscon";
+>   			reg = <0 0x10005000 0 0x1000>;
+
+
 
 
