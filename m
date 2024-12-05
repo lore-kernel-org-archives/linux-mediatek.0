@@ -4,91 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F144DE7716C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 12:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE95E7716D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 12:36:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DzZzeW6LtUsNwMv+kA0kTMV9+3xVaKazBCL45YLJgXw=; b=RnlhUujY7UDTKLpLErmvyorm0f
-	+jFt5sBFaDhD4BNbDZLEWBjJOvKlmBv9TuPyMVpmvA253AjkSVlUsFTTrRHdLO75nXXSNXBfo4yZi
-	hKfeJB+OTZFluHFJ8jL9hyIHzxKWVXlrHSktEjkZRU4aT8s7MfeSPxR4t///thVosNgY3Sk1hZXg8
-	RdyxoOGWv4zA84eg3lInhPKKDPAS8x5isz4fZ5XXytRvYPlZNFPNFu5SbWFciKLpoaSjlb5d714gU
-	sMQhaDgIicu2yQgSKg7zMjV4uvNRoT6FH3+9QrDgx3rUjg7s70Mn4YWsYCid1yr3CFZ/YmRjjBQKt
-	nWzJVfcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yq8GWva/j0oQQ6wM2GBV0ohAe1Be6wj+bUvYwAlOHy4=; b=OcKhXpfvxc7BxlODf0JwaMY6c8
+	qqAhD7zWD0kUEQiPkAF5ClFEzALBfHQ9Wn+uQHF8GwQJW0UQt3+4iETmIa+vWuQkKH6COhRkOzfIj
+	LwKALdzBKs+dxZqofuw+pkzIL3aPRKRJkJ6yPLbDy/P9N2s9YF1aAZp4QO7gsBQjyRUOPXXRk1FBe
+	rT6F8pP/1l7l4NRJaA1/g/wkNjLrC6ejbkNxNi4EinyjtkhKPFQitwzOrqVc9+ZG8XiIaIppm5rqj
+	LX8emFiVIgkbb+1uDFCfitN1jH5NVC9Xc5A5w1Sn17FQmcgHbWIMuxnr83PAmjrV245mwG4s2OT+n
+	JkC6v8kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJB48-0000000FyNx-0h7g;
-	Thu, 05 Dec 2024 12:34:44 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1tJB5v-0000000Fyoz-1UP6;
+	Thu, 05 Dec 2024 12:36:35 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJAyj-0000000FxCf-1QQr
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Dec 2024 12:29:11 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-53dde4f0f23so791983e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 04:29:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733401747; x=1734006547; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DzZzeW6LtUsNwMv+kA0kTMV9+3xVaKazBCL45YLJgXw=;
-        b=fOXG1ThTgx/K7CbWjzoE0AkL84ippEO8UNZM0vTpOICQe1KsWhfrp9R1HIKuy2UlpR
-         UBgvdcinEPD3VXssKRg8xk0w3yQ+9U4Bd4ZR7hHYuTi6tLRsky1XCQX/7lMqPdXZSqxV
-         la62651vZ0wfYAjUEM98ye09pEmcU1qMLF8OaQRDUkMYb7X3okJYViLa9yIO4zR+C0IW
-         FvE7adH38k6R5EnT/0OkUm8O/6i+k61gsE4YhYCjO1UqYtLK1SMP3Xth75ITIDaul/9N
-         HckOODUWAc894wD+DDZ1jvizw17k7pokJDWy9gKCNfJUUGAauGyk9yqQdjfFcoNsMZZ9
-         9sBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733401747; x=1734006547;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DzZzeW6LtUsNwMv+kA0kTMV9+3xVaKazBCL45YLJgXw=;
-        b=vkKA+QtvrkeKfnfeYAyvN1Ne90DDCskfcfMXI1p4aiDafY6nnurpQ88QLfkSMqsu8V
-         tJUBB0CtiO0TSoR2JmePMnNRuM+KNcM/kcwNiWbs1zBKSO/AFw4wpU5YO0Es7OtQ/4oq
-         M4jCljuSyzlzqluZA0is5PaCRjSRfUuE4tbp9gSxz4uB92dUlVJBHnR5hjZO73G2+QEU
-         eiImbdXUpNYonWv4k0zx64ABEtLqXelqxD6DN+WxsSHQ3g2WYfhf93WaI0XKPCKAKJE1
-         s6WNTo7I8B/7lbFL0aXa64RHGdf47YDPw9sSBsGT0hudQzsEb2i4SnHF6JhiXa//TfA8
-         8Hnw==
-X-Forwarded-Encrypted: i=1; AJvYcCX30JkLrBuLH1hhctfslIPoOPpd83wW02/UeElepbAhs5uXOxgShNGEG8wRG4lfg01FSLNrh2fVLO1FMdqzdA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxuxkFVwDyMdQzK2pLnRGtC9325KQFVPlLkTn3yGwy5jIUVLcjE
-	3z35ImADMwgaQGn/nSXMKTUgd+s49sLGwWYepXQG4xY4EU/zF5LyKaYYcjb3o+s=
-X-Gm-Gg: ASbGncs1+1SW40JaNMmdUAqATGUVkU1MaJ0g5ExFBpFl7z3sqvq5/iS5NtJm6RWWvbm
-	Z+SjP7LFfp8vicvwKrgXOMKmf4VnFC1sVwvKwfITWHi4HatwVzTOkpJW9J7CRcEXZv5ksUW+Ypw
-	y8VVYiwTwxhz9A2YS3GSaZtKE8nd0/F9jfFZde56696bN8XkE7+WQ1+ZDBSTfHrqX1j5e0CaVXc
-	phRTU/ruI2qQ9uUTFMiH28AstDgXZgbljPycUYrQLZhVnP+J9M6t61Sifk38mCPH5FHR+FJey0Q
-	d5/F0paMKNilTi+13F/5DnNpRAMROQ==
-X-Google-Smtp-Source: AGHT+IGWyrIJVNkXZfMk2D77Z12NxWguDqxu6KGooscExaYt6vk4bYi8IUDxyjnT5IkrNFyNFyZrTg==
-X-Received: by 2002:a05:6512:3f1f:b0:53d:eefc:2b48 with SMTP id 2adb3069b0e04-53e12a01888mr5509943e87.33.1733401747192;
-        Thu, 05 Dec 2024 04:29:07 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53e229c1d6dsm233341e87.183.2024.12.05.04.29.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 04:29:05 -0800 (PST)
-Date: Thu, 5 Dec 2024 14:29:03 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com, jie.qiu@mediatek.com, 
-	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+	id 1tJB5h-0000000Fyka-3Aqm;
+	Thu, 05 Dec 2024 12:36:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733402179;
+	bh=te7Fq4Bo3HG2cZ3InWv7OJj4fVdLIRE8o0P8loWm+X0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oBL2+fFJd7Uue7s+sKucSheC+bCKoHl/qx4RzhjKclRVRd1npg9MpzC3TgYxh69r0
+	 Q3X8VV2vqYcOUMh/KwpnLaCNWRvVmTNlUqIgAbHM0GAtHuazRSnVNDnKYR1xsrSZQR
+	 tCf+CpVzMffcpmhxGRcAekrGP6xc1MbNEukU3SoDjLJ2wsosEbLW2x04VlUFWlyqua
+	 pmyHaGZGV2UyROHl4NfynSLi4R+o4N2TwDQjusAFI3sIp1v2zZBBALrxsD2xgwQg09
+	 8u9QqC6fr9CKERkKZPDZTjAZdMTt07MZYRjrGR5p4lW5UvkHrYPIRz/06bn7qONJRP
+	 mDOc4ZokWgniQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 054A617E366D;
+	Thu,  5 Dec 2024 13:36:18 +0100 (CET)
+Message-ID: <f2862790-f613-4583-bec5-302e06c77d8d@collabora.com>
+Date: Thu, 5 Dec 2024 13:36:18 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 12/15] drm/mediatek: mtk_hdmi: Split driver and add
  common probe function
-Message-ID: <olxtqto5mbgofxg4iqjvsmpxxzz6zoj7pbwmoeklhfjiavqfvv@dyveek7hgtki>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+ simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, ck.hu@mediatek.com,
+ jitao.shi@mediatek.com, jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
  <20241205114518.53527-13-angelogioacchino.delregno@collabora.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241205114518.53527-13-angelogioacchino.delregno@collabora.com>
+ <olxtqto5mbgofxg4iqjvsmpxxzz6zoj7pbwmoeklhfjiavqfvv@dyveek7hgtki>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <olxtqto5mbgofxg4iqjvsmpxxzz6zoj7pbwmoeklhfjiavqfvv@dyveek7hgtki>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_042909_369483_1B841C0F 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20241205_043621_965079_4000401E 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,57 +83,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 12:45:14PM +0100, AngeloGioacchino Del Regno wrote:
-> In preparation for adding a new driver for the HDMI TX v2 IP,
-> split out the functions that will be common between the already
-> present mtk_hdmi (v1) driver and the new one.
+Il 05/12/24 13:29, Dmitry Baryshkov ha scritto:
+> On Thu, Dec 05, 2024 at 12:45:14PM +0100, AngeloGioacchino Del Regno wrote:
+>> In preparation for adding a new driver for the HDMI TX v2 IP,
+>> split out the functions that will be common between the already
+>> present mtk_hdmi (v1) driver and the new one.
+>>
+>> Since the probe flow for both drivers is 90% similar, add a common
+>> probe function that will be called from each driver's .probe()
+>> callback, avoiding lots of code duplication.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/Kconfig           |  11 +-
+>>   drivers/gpu/drm/mediatek/Makefile          |   1 +
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c        | 724 +++------------------
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 425 ++++++++++++
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 203 ++++++
+>>   5 files changed, 729 insertions(+), 635 deletions(-)
+>>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+>>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+>>
+>> @@ -1026,19 +812,12 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
+>>   	return 0;
+>>   }
+>>   
+>> -static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
+>> +static void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi, u8 *buffer_spd, size_t bufsz_spd,
+>> +				    u8 *buffer_avi, size_t bufsz_avi,
+>> +				    struct drm_display_mode *mode)
+>>   {
+>> -	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
+>> -
+>> -	hdmi->csp = HDMI_COLORSPACE_RGB;
+>> -	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> -	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> -	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
+>> -	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> -	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
+>> -	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> -
+>> -	return 0;
+>> +	mtk_hdmi_setup_avi_infoframe(hdmi, buffer_avi, bufsz_avi, mode);
+>> +	mtk_hdmi_setup_spd_infoframe(hdmi, buffer_spd, bufsz_spd, "mediatek", "On-chip HDMI");
 > 
-> Since the probe flow for both drivers is 90% similar, add a common
-> probe function that will be called from each driver's .probe()
-> callback, avoiding lots of code duplication.
+> Please use the HDMI Connector framework instead of handling everything
+> on your own.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/Kconfig           |  11 +-
->  drivers/gpu/drm/mediatek/Makefile          |   1 +
->  drivers/gpu/drm/mediatek/mtk_hdmi.c        | 724 +++------------------
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 425 ++++++++++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 203 ++++++
->  5 files changed, 729 insertions(+), 635 deletions(-)
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+
+Dmitry, my plan is to get the MediaTek HDMIv2 driver upstreamed *with* using
+the HDMI helpers - this commit is only splitting the old HDMI v1 driver in
+common parts and v1 handling.
+
+This "handling everything on my own" is something that was already present
+into the old v1 driver, I am *not adding* this code, but *moving it around*.
+
+I cannot migrate the v1 driver to the HDMI helpers right now because in this
+moment I have no way to test that and I don't want to break any functionality.
+
+If you check patch 15, you'll see that I am indeed using all of the helper
+goodies - but for now only on the new driver, and not on the old one.
+
+I do plan to migrate the v1 driver to the new helpers as well, but I would
+(please) really prefer to do that only after the v2 driver is upstreamed.
+
+Is that okay for you?
+
+Cheers,
+Angelo
+
+>>   }
+>>   
+>>   static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
 > 
-> @@ -1026,19 +812,12 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
->  	return 0;
->  }
->  
-> -static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
-> +static void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi, u8 *buffer_spd, size_t bufsz_spd,
-> +				    u8 *buffer_avi, size_t bufsz_avi,
-> +				    struct drm_display_mode *mode)
->  {
-> -	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
-> -
-> -	hdmi->csp = HDMI_COLORSPACE_RGB;
-> -	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
-> -	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-> -	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
-> -	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
-> -	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
-> -	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
-> -
-> -	return 0;
-> +	mtk_hdmi_setup_avi_infoframe(hdmi, buffer_avi, bufsz_avi, mode);
-> +	mtk_hdmi_setup_spd_infoframe(hdmi, buffer_spd, bufsz_spd, "mediatek", "On-chip HDMI");
 
-Please use the HDMI Connector framework instead of handling everything
-on your own.
 
->  }
->  
->  static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
 
--- 
-With best wishes
-Dmitry
 
