@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A2EE77170
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 10:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6261DE77170
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2024 11:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fnxIRHjBzV7cfi7wa0rZSc0YDWuw3Jw9pFmJaW4m+Lw=; b=Ok7CBo733ICD7sW5wTTxQ3CAft
-	uhfn3J+2OmdYCbHODjbDfswCJtLRD/oUqaNQwyHiE1brSw5B+G7tPD1oWxNygIWga0NlvwGJBX9pt
-	+nJMz5477ULKssQ5GM9zo99eyKBAGfFPmOaApLW/NTMV+r10c1ZhfV675oEFmyib1D5tSqGul9e++
-	rxm665up7YEvwywhkQgQOm0fH8Syz0lkfksUfGqMAAu3aOHBXJrAGKHYmYESY9EtaXH4nPodUzLec
-	U7PmbtuIpl2TOv+FxFfSzBoYHd3Mm/ZGNbbHG1yhiA5GWFHSQJpxE+qPgVMw4m9yYaxtzuMY0lW8K
-	/+z5CgNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5R2Bkax3zDDSW09Sp3prJTy5msqh1d57Uzez46CFSSU=; b=kliAtxXXyPyeEOhWcoVvDIr41p
+	Y8HQ7szLl2d3H2IDgSx/mw+Bmnx9HMgZ2bPhBEA4IL2c0tpnWnD9Bf5bMhwDJqdxRoWMBjG6YGqxX
+	YKSdHuP56o7QmdecPCBySY8PgLhm5N+cCtEU1HqZpls6yAwbEQj51DrgtOy2dLlUaCHq/GwFEKTZ2
+	qQZXvfze0hg2oznYEquCFKcVv1ZUIxva9SXJOvb+D1vWm6xsavouiEVdyuJIPIxJYS8Z05cBd2FGq
+	QH9Fl4vUY3wyQxvoJzOrP7m1FBWhejKTeQMyuFucpMirHlakzALnGHYC61RTpj3I1rxVd8i4uWLQv
+	M8KjrtGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ9Lk-0000000FaLm-3qAl;
-	Thu, 05 Dec 2024 10:44:48 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tJAMJ-0000000FnNq-3zeV;
+	Thu, 05 Dec 2024 11:49:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ9Ei-0000000FXry-3jdI
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Dec 2024 10:37:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8731B5C706A;
-	Thu,  5 Dec 2024 10:36:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 853FDC4CED1;
-	Thu,  5 Dec 2024 10:37:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733395052;
-	bh=k0Ri1gJvfMPkkmwOG5H5IkESAn8lv1SqrkOcLFEGEog=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=guWl3kaOoGEK+6hAPbImxmyWGcZsuvgDfS+SvtpN9yapsfB7pqHGGfp5hVdYv+Q5w
-	 vuRJCFOEzZPcd6Zebd/3fx8AKcwYYRIt2OSrHd1J3yxUb8h1Rom0Xy/H5DqebnGf5X
-	 2dcCaDOq9qqgy/7JnLhrUhhwK5k8bnLOoFX2Tzhd9Y9CvAuLbKVQ0fdaEysiLRWUwk
-	 SYb80dJWMM3YYx1tkOF51oLUhxScy1I23lx2EE8ZPxRTsY8jpWX6xygI0m+rKvAwdl
-	 2OBp+y6LpIANTG9T4G1GK6HuX4jdFpJVpP8FmAHs6E8qRz13DpF2xkEdujO4j3Rh0T
-	 szxkvQEuQm43Q==
-Date: Thu, 5 Dec 2024 11:37:29 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: quic_zijuhu <quic_zijuhu@quicinc.com>
-Cc: Zijun Hu <zijun_hu@icloud.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, James Bottomley <James.Bottomley@hansenpartnership.com>, 
-	Thomas =?utf-8?Q?Wei=C3=9Fschuh?= <thomas@t-8ch.de>, linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev, 
-	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org, linux-block@vger.kernel.org, 
-	linux-cxl@vger.kernel.org, linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org, 
-	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, linux-scsi@vger.kernel.org, 
-	open-iscsi@googlegroups.com, linux-usb@vger.kernel.org, linux-serial@vger.kernel.org, 
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v3 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
-Message-ID: <eyu7nm5hvwfqxgysnrzsvianzf7abvlovpxfo7snsxowmuuhpj@tah3gkqm5ldj>
-References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com>
- <20241205-const_dfc_done-v3-8-1611f1486b5a@quicinc.com>
- <7ugfaj2h3sy77jpaadco5xtjalnten3gmvozowcle3g7zcdqs4@sqf5l47onbsi>
- <ac42e652-4128-44ea-976e-5234360d8183@quicinc.com>
+	id 1tJAIc-0000000Flxd-3Wwc;
+	Thu, 05 Dec 2024 11:45:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733399136;
+	bh=cgkf1cp1dpYvnbVn9ujd9W1mVPbjreYJZQFTVn9Q5MU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BhaR43+3aGBEJKMdqTzBPpeOvjuxQlBISd5a+1mkqDu409qkb9XL1I47f9HVCythX
+	 R4BALPsKX+AMMlbHIhmuLgxgjUaD1piileaBb60Hfu17Hx8661K752LvDGwIL1GkTQ
+	 xJDNAin/3KZLhwmdL3GcaEtCcJTDRG7TpdakvC9ZGXyU8BsMeTpQmBW9ovSBAz3dXw
+	 4klk5OyMSEUhGF6Jn2l82SM77KtaCPcvB+3rPGa4MLWywtYA2ivMTCRSa0o915wH5s
+	 snceX1IeDxv/qzEXLuXWPw8rpkNtKhfCOMeCupex/nJ9KIIjYuu5G0G7XCAgm63g4c
+	 VWtz3xGPx8ubw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1932C17E3633;
+	Thu,  5 Dec 2024 12:45:35 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ck.hu@mediatek.com,
+	jitao.shi@mediatek.com,
+	jie.qiu@mediatek.com,
+	junzhi.zhao@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v2 00/15] Add support for MT8195/88 DPI, HDMIv2 and DDCv2
+Date: Thu,  5 Dec 2024 12:45:02 +0100
+Message-ID: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ak6zeaiacfbfwyki"
-Content-Disposition: inline
-In-Reply-To: <ac42e652-4128-44ea-976e-5234360d8183@quicinc.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_023733_014365_B66FAA04 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20241205_034539_039862_49473F4C 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +89,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes in v2:
+ - Merged series "Add support for MT8195/8188 and Pattern Generator"
+   and "drm/mediatek: Add support for HDMIv2 and DDCv2 IPs" in one
+   as they are directly related, as requested by CK Hu
+ - More commonization: moved some audio functions to mtk_hdmi_common
+ - Fixed a bug in DDCv2 driver to allow sending a message with len=1
+ - Renamed some functions in HDMIv2 to consistently use the prefix
+   mtk_hdmi_v2_ across the driver
+ - Added .mode_valid() callback to HDMIv2
+ - Added .atomic_check() callback to HDMIv2
+ - Reordered drm_bridge_funcs in HDMIv2 driver
+ - Rewritten .edid_read() callback in HDMIv2 to move checking audio
+   availability to bridge_pre_enable() stage, and to stop using the
+   drm_edid_read_ddc() in favor of drm_edid_read()
+ - Added support for API provided HDMI Helpers
+ - Added .tmds_char_rate_valid() callback to HDMIv2 for HDMI helpers
+ - Added .hdmi_{read,write}_infoframe() callback to HDMIv2 for helpers
+ - Added support for Vendor infoframes in HDMIv2
+ - Added missing audio-dai-cells to HDMIv2 binding to fix check error
+ - Added more information to the HDMIv2 binding for clocks and PHY
+ - Added some comments to the HDMIv2 code to clarify why the controller
+   is preconfigured in bridge_pre_enable() instead of bridge_enable()
+ - Added a mention of the differences in HPD between v1 and v2 to the
+   commit introducing the v2 driver (v2 is not using CEC for HPD)
+ - ...and tested again on HW! :-)
 
---ak6zeaiacfbfwyki
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
-MIME-Version: 1.0
 
-On Thu, Dec 05, 2024 at 04:37:08PM +0800, quic_zijuhu wrote:
-> On 12/5/2024 4:10 PM, Uwe Kleine-K=F6nig wrote:
-> > On Thu, Dec 05, 2024 at 08:10:17AM +0800, Zijun Hu wrote:
-> >> From: Zijun Hu <quic_zijuhu@quicinc.com>
-> >>
-> >> gpio_sim_dev_match_fwnode() is a simple wrapper of device_match_fwnode=
-()
-> >> Remvoe the unnecessary wrapper.
+This series adds support for the HDMI-TX v2 Encoder and DDCv2, and for
+the direct connection DPI as found in MT8195, MT8188 and their variants.
 
-Just spotted: s/Remvoe/Remove/
+Tested on Genio 700 EVK:
+ - ABIST ON: ok, pattern generated internally from HDMI is shown on
+   HDMI screen at the correct resolution;
+ - ABIST OFF + DPI Pattern Generator ON: ok, pattern coming from DPI is
+   shown on HDMI screen at the correct resolution;
+ - Can negotiate up to 4k60
 
-> >> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> >> ---
-> >>  drivers/gpio/gpio-sim.c | 7 +------
-> >=20
-> > I think if you move this patch before patch #4 in your series, you only
-> > have to touch this file once.
->=20
-> the precondition of this change is patch #4, it will have building error
-> if moving it before #4.
->=20
-> actually, we can only do simplifications with benefits brought by #4.
+and on MT8395 Radxa NIO 12L:
+ - ABIST ON: ok, pattern generated internally from HDMI is shown on
+   HDMI screen at the correct resolution;
+ - ABIST OFF + DPI Pattern Generator ON: ok, pattern coming from DPI is
+   shown on HDMI screen at the correct resolution;
+ - Dual screen usecase validated (DSI + HDMI 3840x2160p 60Hz)
+ - Can negotiate up to 4k60
 
-Ah I see. I thought that device_match_fwnode only got the const for the
-2nd parameter in patch #4.
+Please note that this submission does *not* include support for HDCP
+nor for CECv2, as I want this to be upstream before implementing
+additional features which are not strictly required for simple
+HDMI output.
 
-Best regards
-Uwe
+Bonus in this series is the addition of support for the Pattern Generator
+found in the DPI HW: since I needed this for debugging during development,
+I had to code in the actual support bits and it looked like a waste of
+time to just remove it.
+I instead decided to clean it up and upstream it, as this will anyway come
+handy for multiple things, of which the most important (imo) are:
+ - Adding support for new SoCs in the future will be less time consuming
+   as this driver already has the pattern generator in;
+ - CI Testing might be able to make use of this to validate that the
+   data that comes out is not garbled (so, to help testing display
+   support in an automated manner).
 
---ak6zeaiacfbfwyki
-Content-Type: application/pgp-signature; name="signature.asc"
+AngeloGioacchino Del Regno (14):
+  dt-bindings: display: mediatek: dpi: Add MT8195 and MT8188 compat
+  drm/mediatek: mtk_dpi: Add support for Pattern Generator in debugfs
+  drm/mediatek: mtk_dpi: Use an array for pixclk factor calculation
+  drm/mediatek: mtk_dpi: Move pixel clock setting flow to function
+  drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
+  drm/mediatek: Add support for MT8195 Digital Parallel Interface
+  dt-bindings: display: mediatek: Add binding for MT8195 HDMI-TX v2
+  drm/mediatek: mtk_cec: Switch to register as module_platform_driver
+  drm/mediatek: mtk_hdmi_ddc: Switch to register as
+    module_platform_driver
+  drm/mediatek: mtk_hdmi: Fix typo for aud_sampe_size member
+  drm/mediatek: mtk_hdmi: Split driver and add common probe function
+  drm/mediatek: mtk_hdmi_common: Assign DDC adapter pointer to bridge
+  drm/mediatek: mtk_hdmi_common: Add OP_HDMI, vendor and product strings
+  drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188
 
------BEGIN PGP SIGNATURE-----
+Guillaume Ranquet (1):
+  drm/mediatek: hdmi: Use regmap instead of iomem for main registers
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmdRgmcACgkQj4D7WH0S
-/k6zeggAlBhwMJaGpQIgAi04teyouKX4a/XAJG3tLwpz4YweEcrMm/fv0N42hp/d
-7zUKHjQRRcVM6+TSObZ6uKEFMpac+G1YG1Fze2rNPdlf5IUOCrpKqKUaziMyvEc+
-hhaccpLCXjp9gi7H7tEBDfmrR6/S3i1nnYOeDn6tYmhKVx14uA57l4Isj2h+CIax
-P5d+Gq9NQl5IXDnqiEez80oo8LFhLQQIjIeO1YQM7GrbXaqoD+CfZTGXe4/woRc5
-JjzksiJqSccUbPlwM+90bh5Oj0H2VARUaJTRcHTRANM4ZFTSfWCep0Wkg8DSw343
-fYW4rY4vIXpWKVG9LM4j7NAoluIWvQ==
-=myq/
------END PGP SIGNATURE-----
+ .../display/mediatek/mediatek,dpi.yaml        |    5 +
+ .../mediatek/mediatek,mt8195-hdmi.yaml        |  154 ++
+ drivers/gpu/drm/mediatek/Kconfig              |   19 +-
+ drivers/gpu/drm/mediatek/Makefile             |    5 +
+ drivers/gpu/drm/mediatek/mtk_cec.c            |    5 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  311 +++-
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |   10 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |    2 +
+ drivers/gpu/drm/mediatek/mtk_hdmi.c           |  896 ++--------
+ drivers/gpu/drm/mediatek/mtk_hdmi.h           |   14 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c    |  438 +++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h    |  204 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c       |    4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c    |  403 +++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h   |  263 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c        | 1488 +++++++++++++++++
+ 16 files changed, 3384 insertions(+), 837 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
 
---ak6zeaiacfbfwyki--
+-- 
+2.47.0
+
 
