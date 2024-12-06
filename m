@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCCDE7716E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 00:10:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B95E77170
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 00:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AyWqX2zoZLFRt3ry2g2R9lR3izotXfaeTSy8KYkYq3A=; b=CBrPTyCiS/PwZUwIGhMPYrdci1
-	C7jJNpHNGcjUaqoelSohg6N1SjWRmq5pRb4icqx3srunuIgjrHA4OL42dzMYVhAVu3VwzNXdAW144
-	MsT2b7uKDrW7ZwH7BlEOfZ2LYvTsiBWyQSZNFtu8Op3ML58tT+YlLjBl9gfcRo9bbYXJsp6v+DXft
-	MoZnZK9p9F0CH4xGMlfSG9B6MSbz0Q292ptW5Tfxoj1IscIoVoN48mwk0vFMQiXMmAYvTJS/W3zSy
-	8fk5fDhH2XRwtNXBSNb2GH6f4YS+NfCiGNsizhi5NmrKol1nulBBgtaV8yRmSg6D7qFJ8rUEhBwcC
-	9RUfxajw==;
+	bh=gD/eV8FniOqkvsbchGLbTggCmSZ3+Zy4ZNoHJzav1qY=; b=WJC1ghIdO2AxkKC0q/4/5ehPEy
+	aLzr0JUmBnuZJYWfXeZxKsWoC1SaFLOhndZL449NQoHSKWCJoqv/mRDTcpNXXwrAwNVEjCRiapX75
+	qruJvPB+XrN6cDi+oDQn0R6z05fDdVCPmUz2a7/+gRIRJsqy/QUMrLW2THX54e0Lrcl/1pPO/BV30
+	ukYyQs9/dL41GJORQ/+ctjoYpvT6Gd1Tq4eWWtE00unCjkqN5GMD3yjgtnMLhgdKGKJ/WCkVgRPIm
+	HvVY8NLmdUSR/oetncQ/4jlY7+JovV83UwEBAMqnIx7l9r2E5kQFNC6eGcnHaNMizpi93cqBBrq3z
+	PoyrtCtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJLvk-0000000030m-1ONR;
-	Fri, 06 Dec 2024 00:10:48 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1tJMeG-000000008gO-4Aw8;
+	Fri, 06 Dec 2024 00:56:49 +0000
+Received: from pv50p00im-zteg10021301.me.com ([17.58.6.46])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJLtP-000000002Fa-3dJ0
+	id 1tJMeE-000000008e8-3yMt
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Dec 2024 00:08:25 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-53e29c00ff2so540978e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 16:08:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1733443702; x=1734048502; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AyWqX2zoZLFRt3ry2g2R9lR3izotXfaeTSy8KYkYq3A=;
-        b=FFpzJXl5asmgRaVBG4wX80toWslt4PNX0R1fWOjYqmA+XO7s54cAO8TmAPs/gJG2M0
-         p+uX8sElfj/kZJw0d7Uh6RDmYMtHM0wkcLchDvZWYxyyEFd5MHqxCMzKQq66wVtg6nD/
-         LDWCk1elzHHOiRyPtJDUz6z5SWQvJQAwhlulTW0EOpOHckdNIWvqhPI+TCuY3N4+FQ5O
-         Cf1ICm/Zf893vCLNiAJEUZwHYf/QHJKbvfi+wIFotWCYemH24SXXg4het8hx0x3QY43A
-         GDyQGKsEynkR1xiyNb513/CAf3RivzfZBRzGEFhd3Lxkcw80gf5G8Z+bN1RRfj37dkqC
-         9uMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733443702; x=1734048502;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=AyWqX2zoZLFRt3ry2g2R9lR3izotXfaeTSy8KYkYq3A=;
-        b=C87supiZ+72D72Ul++gKZ+kXtk7BpmYOBIK340wxF0hYZuYOcn/ylJ0oBgFzDifW3p
-         QhwDi2bQucRwvQKt+qLeLaVbW3iLobQxfoxLFOnpjdhRVQQ7TczePF/oJFvT0D3u3nHL
-         hilnAygZHuEcRFK0YtVw/rdco5qK+uWmufMb2T5cFU5/uGOPsuZhJieeayTKqBVpiXOB
-         vj5m3yjzeR0kOpaUpPRIB7oPHvAd/2vJZCjwMp6xzxiLStFrkwkNg2l3zh7yZXe4YiWe
-         DvKAHcgGJ+Eh4nk0wATeHZXO6uyNRtA1sm7rfqvSVVQmh+kXGA2fMtB/995z0Fe7qboF
-         R58A==
-X-Forwarded-Encrypted: i=1; AJvYcCWvEHz+74DP0vyDpov1XnyaVGnjtC4pgDQFWNC3BB+rcv5d3UjEVApGVluJSUD267Co1CKI/41sTPFtaZIofA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2yg0OhVmcwe/d2TyboSZ/vWOyoAzqv2xxBYVd3z/arVodeiVY
-	i6zZRn40xm/3HkkpTQvouSisNUaqYl/5rdZihhBoc95mGLCzq6VoQ1rWuFn9juCNMd0ACZ6oSLo
-	0XfDGNrsbSF6NsvMK0m3GURFr5zZXwNq2JOK0
-X-Gm-Gg: ASbGncsO7NOqBSO4e/Axki6JAICLTogr/K+I/eG59zTj6U5AwlHcPl0fYDvNg7f954O
-	CQewuCkULFtQ/kd5v9ariu86WMA/ywA==
-X-Google-Smtp-Source: AGHT+IEl7P8g4C6biT8pMmR7TEmB0gJQnY7JWx1axpsFaCZBcd/5qdwTwlQeic62GJWu2sWz95sDRQrA+1CjugfgIXQ=
-X-Received: by 2002:a05:6512:3993:b0:53d:ed68:3cfa with SMTP id
- 2adb3069b0e04-53e2c504c30mr241237e87.55.1733443701768; Thu, 05 Dec 2024
- 16:08:21 -0800 (PST)
+	Fri, 06 Dec 2024 00:56:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+	s=1a1hai; t=1733446598;
+	bh=gD/eV8FniOqkvsbchGLbTggCmSZ3+Zy4ZNoHJzav1qY=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
+	 x-icloud-hme;
+	b=kb+PAfJgaCYIQRvFMLki16gYica5tRz/08+GznpmNX7VeO+OH27EOPjbOCq88Bq5G
+	 C85X8m08IvDSJIBUkQpWDkm/U+UPvjMndrTjwaHPdxebzthJxcCvzNq1UluTMsOJE0
+	 f/0ApVaydU3tkF/jonXQ6he1D/A1oPkgLYw3/ROwGhr2XOvjy8TJ9vq91JoxTwmWUc
+	 ba2JcPh21U8etDOzQaiUpPg1qZtmIP7MChQkfEtsT7WmDEkJB7EJJI67OyQh+q5UI+
+	 YN2aWgZIZGmaIvEcoooWNySYWbIvD/XfFw0E7Ta1fRv2r40AtsA3NMQGWCkVFfGaKX
+	 jqpQZGpB+nUgg==
+Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
+	by pv50p00im-zteg10021301.me.com (Postfix) with ESMTPSA id 86E9E5001C0;
+	Fri,  6 Dec 2024 00:56:29 +0000 (UTC)
+Message-ID: <288fe563-bd3b-4075-bcf6-5fc4782a6cb9@icloud.com>
+Date: Fri, 6 Dec 2024 08:56:26 +0800
 MIME-Version: 1.0
-References: <20241204221726.2247988-1-sashal@kernel.org> <20241204221726.2247988-8-sashal@kernel.org>
- <CAGETcx8bhzGZKge4qfpNR8FaTWqbo0-5J9c7whc3pn-RECJs3Q@mail.gmail.com>
-In-Reply-To: <CAGETcx8bhzGZKge4qfpNR8FaTWqbo0-5J9c7whc3pn-RECJs3Q@mail.gmail.com>
-From: Saravana Kannan <saravanak@google.com>
-Date: Thu, 5 Dec 2024 16:07:45 -0800
-Message-ID: <CAGETcx-6yHV5xr1j7krY8LShCF5JATX0NSwjeRUL9+3TLCMq9w@mail.gmail.com>
-Subject: Re: [PATCH AUTOSEL 6.11 08/15] drm: display: Set fwnode for aux bus devices
-To: Sasha Levin <sashal@kernel.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Thierry Reding <treding@nvidia.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	matthias.bgg@gmail.com, elder@kernel.org, ricardo@marliere.net, 
-	sumit.garg@linaro.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/11] libnvdimm: Simplify nd_namespace_store()
+ implementation
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>,
+ linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
+ linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
+ linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-scsi@vger.kernel.org, open-iscsi@googlegroups.com,
+ linux-usb@vger.kernel.org, linux-serial@vger.kernel.org,
+ netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
+References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com>
+ <20241205-const_dfc_done-v3-1-1611f1486b5a@quicinc.com>
+ <Z1I3lSpcnIIbc7S1@aschofie-mobl2.lan>
+Content-Language: en-US
+From: Zijun Hu <zijun_hu@icloud.com>
+In-Reply-To: <Z1I3lSpcnIIbc7S1@aschofie-mobl2.lan>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-ORIG-GUID: m6MvnGCh7TgcaO5x_qBwHR0pa2QT6zvQ
+X-Proofpoint-GUID: m6MvnGCh7TgcaO5x_qBwHR0pa2QT6zvQ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2024-12-05_16,2024-12-05_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 suspectscore=0
+ clxscore=1015 phishscore=0 bulkscore=0 malwarescore=0 adultscore=0
+ mlxlogscore=999 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2412060007
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_160823_915610_D1F0234B 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20241205_165646_991928_FFB94DAB 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,77 +97,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 5, 2024 at 4:06=E2=80=AFPM Saravana Kannan <saravanak@google.co=
-m> wrote:
->
-> On Wed, Dec 4, 2024 at 3:29=E2=80=AFPM Sasha Levin <sashal@kernel.org> wr=
-ote:
-> >
-> > From: Saravana Kannan <saravanak@google.com>
-> >
-> > [ Upstream commit fe2e59aa5d7077c5c564d55b7e2997e83710c314 ]
-> >
-> > fwnode needs to be set for a device for fw_devlink to be able to
-> > track/enforce its dependencies correctly. Without this, you'll see erro=
-r
-> > messages like this when the supplier has probed and tries to make sure
-> > all its fwnode consumers are linked to it using device links:
-> >
-> > mediatek-drm-dp 1c500000.edp-tx: Failed to create device link (0x180) w=
-ith backlight-lcd0
-> >
-> > Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> > Closes: https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca459=
-8@notapiano/
-> > Tested-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> > Signed-off-by: Saravana Kannan <saravanak@google.com>
-> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > Reviewed-by: Thierry Reding <treding@nvidia.com>
-> > Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> > Link: https://lore.kernel.org/r/20241024061347.1771063-2-saravanak@goog=
-le.com
-> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Signed-off-by: Sasha Levin <sashal@kernel.org>
->
-> As mentioned in the original cover letter:
->
-> PSA: Do not pull any of these patches into stable kernels. fw_devlink
-> had a lot of changes that landed in the last year. It's hard to ensure
-> cherry-picks have picked up all the dependencies correctly. If any of
-> these really need to get cherry-picked into stable kernels, cc me and
-> wait for my explicit Ack.
->
-> Is there a pressing need for this in 4.19?
+On 2024/12/6 07:30, Alison Schofield wrote:
+> On Thu, Dec 05, 2024 at 08:10:10AM +0800, Zijun Hu wrote:
+>> From: Zijun Hu <quic_zijuhu@quicinc.com>
+> 
+> Hi Zihun,
+> 
+> Similar to my comment on Patch 10/11, this commit msg can be
+> explicit:
+> 
+> libnvdimm: Replace namespace_match() w device_find_child_by_name()
+> 
+>>
+>> Simplify nd_namespace_store() implementation by  device_find_child_by_name()
+>                                                   ^using 
+> 
 
-I copy pasted this into several replies. In all those cases I meant
-the kernel version mentioned in the subject.
+thank you Alison for code review.
 
--Saravana
+will send v4 with your suggestions.
+(^^)
 
->
-> -Saravana
->
-> > ---
-> >  drivers/gpu/drm/display/drm_dp_aux_bus.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/display/drm_dp_aux_bus.c b/drivers/gpu/drm=
-/display/drm_dp_aux_bus.c
-> > index d810529ebfb6e..ec7eac6b595f7 100644
-> > --- a/drivers/gpu/drm/display/drm_dp_aux_bus.c
-> > +++ b/drivers/gpu/drm/display/drm_dp_aux_bus.c
-> > @@ -292,7 +292,7 @@ int of_dp_aux_populate_bus(struct drm_dp_aux *aux,
-> >         aux_ep->dev.parent =3D aux->dev;
-> >         aux_ep->dev.bus =3D &dp_aux_bus_type;
-> >         aux_ep->dev.type =3D &dp_aux_device_type_type;
-> > -       aux_ep->dev.of_node =3D of_node_get(np);
-> > +       device_set_node(&aux_ep->dev, of_fwnode_handle(of_node_get(np))=
-);
-> >         dev_set_name(&aux_ep->dev, "aux-%s", dev_name(aux->dev));
-> >
-> >         ret =3D device_register(&aux_ep->dev);
-> > --
-> > 2.43.0
-> >
+> Otherwise you can add:
+> Reviewed-by: Alison Schofield <alison.schofield@intel.com>
+> 
+>>
+>> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
+>> ---
+>>  drivers/nvdimm/claim.c | 9 +--------
+>>  1 file changed, 1 insertion(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/nvdimm/claim.c b/drivers/nvdimm/claim.c
+>> index 030dbde6b0882050c90fb8db106ec15b1baef7ca..9e84ab411564f9d5e7ceb687c6491562564552e3 100644
+>> --- a/drivers/nvdimm/claim.c
+>> +++ b/drivers/nvdimm/claim.c
+>> @@ -67,13 +67,6 @@ bool nd_attach_ndns(struct device *dev, struct nd_namespace_common *attach,
+>>  	return claimed;
+>>  }
+>>  
+>> -static int namespace_match(struct device *dev, void *data)
+>> -{
+>> -	char *name = data;
+>> -
+>> -	return strcmp(name, dev_name(dev)) == 0;
+>> -}
+>> -
+>>  static bool is_idle(struct device *dev, struct nd_namespace_common *ndns)
+>>  {
+>>  	struct nd_region *nd_region = to_nd_region(dev->parent);
+>> @@ -168,7 +161,7 @@ ssize_t nd_namespace_store(struct device *dev,
+>>  		goto out;
+>>  	}
+>>  
+>> -	found = device_find_child(dev->parent, name, namespace_match);
+>> +	found = device_find_child_by_name(dev->parent, name);
+>>  	if (!found) {
+>>  		dev_dbg(dev, "'%s' not found under %s\n", name,
+>>  				dev_name(dev->parent));
+>>
+>> -- 
+>> 2.34.1
+>>
+>>
+
 
