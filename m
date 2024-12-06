@@ -4,133 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 141BEE7717F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 13:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 571B8E77173
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 13:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F/P5NvV/oPgyLOVDdO9jbE313zKQetWBog6B0EvuLEA=; b=jp97BWYLb9isjJj5TOytNjd+aJ
-	b6zOw7POuc3x1KpLsT7JaQuQq3u36LZ06i+8sI6K/IiVZskYFQy8Dpnz2G6QZMWyNTIBvo5sFKFzd
-	QtcnM6ee+IrhCFIRyv8fR7JaB4cUphARchQt/P5kSbATaydVRGSikdYTkeTHu5L3SAGS2bCZHBj6L
-	nLX1siXE451CAmsncX7ncCkj8lTeJsgXAsDmpD7DAfgRhGQTAWXgEqt8lgaJDiWVBBS2Wk1s3jvYT
-	zl6LJJPFU0Eo/SIk2wnMz8vHnkuIDvCEkiHfGBpu2iwMz/oBasOlAuEiphS/ywFnrezpTsITSRXpL
-	FQwzibmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U9hkTuJbGE7hIFsagAaGCZFpFPxgQR0ImXZs7Gg/g5k=; b=D3278tO4+dpPfvSX/gZBPFHl2f
+	CqMRdh2wWQ5/6YuwjbYHPQ6wbU4C8GXqBxMZApwVgmMc31+DQLYQ4G9PiYbI/G/HnailHqeRTcs2F
+	ucVeyJ+auxYsIsiDbwL3MCuCiNwoLxwoLDxJFl3p6ciUbEVBgz+FWmi659NoBplBHSg7obCKgOawK
+	1djRW67Wcsve5d74F6UOck1edYGv9jsH90S9nZfzXNBCpIMGHjZjHjLtGRDy9hn6602Cl40A+oxoF
+	WUTYLAUAovC6imv2IPCWdv94lJShsO/EvPIdXJF8BBLYhd7CZM7DxL7pE1v860b140YeetLIjyyM5
+	c/GuL31w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJYkx-00000001m04-0BGB;
-	Fri, 06 Dec 2024 13:52:31 +0000
-Received: from flow-b5-smtp.messagingengine.com ([202.12.124.140])
+	id 1tJYot-00000001nIs-1ErB;
+	Fri, 06 Dec 2024 13:56:35 +0000
+Received: from smtp-relay-canonical-1.canonical.com ([185.125.188.121])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJYkq-00000001lsH-06Hi
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Dec 2024 13:52:25 +0000
-Received: from phl-compute-07.internal (phl-compute-07.phl.internal [10.202.2.47])
-	by mailflow.stl.internal (Postfix) with ESMTP id 158141D40557;
-	Fri,  6 Dec 2024 08:52:19 -0500 (EST)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
-  by phl-compute-07.internal (MEProxy); Fri, 06 Dec 2024 08:52:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
-	 h=cc:cc:content-type:content-type:date:date:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1733493138; x=
-	1733500338; bh=F/P5NvV/oPgyLOVDdO9jbE313zKQetWBog6B0EvuLEA=; b=M
-	Sj7guEpfYyfJVeSxZkmsMh0zyS2W2XOGFWxV1S085lP0oWUiSQf+HQv4B/im8Smb
-	A/50JTK4DLLh18J9Sjqs2aNhk6S2yarJ+EHcouloSh/oqCB7hArt2q3ZuIFbkj/I
-	fFgU9Qg9R5ZGGvT47CzpDp1KUbo7nK9HO2ae1NPXsXP/wl5BchFWD0yg/JCYjsr9
-	fXIJRALKFsKvFqe71MneVTz8jaGQLkP6wUACGnoi/5zIDs6FZV9i4SCRlzylZIdL
-	JEk2HHQSDWp63JDjM2qb1hil4JrLTf5nQRDL1cyESz6dFceNZAlsmT22L0W8F1gH
-	86D9/srMF3PNNTLIIkUqQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
-	1733493138; x=1733500338; bh=F/P5NvV/oPgyLOVDdO9jbE313zKQetWBog6
-	B0EvuLEA=; b=xDNgtnHy1tK7puhnLX5+esK/IgziPC4HzD0yPzyaPgVs8BauerX
-	5Gh9QHIIwI9c+CUD9aR7FksVyc+wiv9c8kDcmUBxhh3LvOEfxlVik7VuxrqmuwTf
-	XafAHjl0THPYXeq+RMCHSq+xyRbTf81BcpKLtm5vGNbxwyK3XhqSKKD0/eNEBIEs
-	ifGsiqyf80HwoUEiHyMx99sbVBdhIbumQXWTwZBPE4uZQkwcPkqT1sz1khwQ5fKP
-	5LvTH20FG+Z0W6OgHmIRX0xxkcJ4AsJgifC3XCJZIrNaVdO1xmRRG8EZSEdZAiGB
-	55jZB+7jQTMglESe+lwBG7aRRXR4qQbb60A==
-X-ME-Sender: <xms:kgFTZ9eRxZgsQ_HyW0NQeyBhAa8qrP-js82jZsEnrc73rIKbqI5cQg>
-    <xme:kgFTZ7NeULk2V4bgBoKUbD2I9wnDfcKDJoG1qVHeHqzZoP8DCptzP2hkGxpDbhB_u
-    HTxZFgGNz0vK71z6CA>
-X-ME-Received: <xmr:kgFTZ2h8sZq6o250A96V6I672leVJ0PaesW6z8yf8EHC8ehGiJXlNNIQaY-eGODpBFung7qO_vhuMVEX_XB2I8ZKk7sWPvGZxo8>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefuddrieelgdehiecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdpuffr
-    tefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnth
-    hsucdlqddutddtmdenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecu
-    hfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrg
-    hkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgfekvdeiueff
-    veevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghrufhiiigvpe
-    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgt
-    tghhihdrjhhppdhnsggprhgtphhtthhopedvjedpmhhouggvpehsmhhtphhouhhtpdhrtg
-    hpthhtohepiihijhhunhgphhhusehitghlohhuugdrtghomhdprhgtphhtthhopehgrhgv
-    ghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrghdprhgtphhtthhopehukhhlvg
-    hinhgvkheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhgrmhgvshdrsghothhtohhm
-    lhgvhieshhgrnhhsvghnphgrrhhtnhgvrhhshhhiphdrtghomhdprhgtphhtthhopehthh
-    homhgrshesthdqkegthhdruggvpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehv
-    ghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepnhhvughimhhmsehlihhsthhsrd
-    hlihhnuhigrdguvghvpdhrtghpthhtoheplhhinhhugidqshhouhhnugesvhhgvghrrdhk
-    vghrnhgvlhdrohhrghdprhgtphhtthhopehsphgrrhgtlhhinhhugiesvhhgvghrrdhkvg
-    hrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:kgFTZ2_UGngVtygK4_p0LKXvJr2g0v9oePYeEVcrzT0gkzTro-YK0g>
-    <xmx:kgFTZ5vx35KJMQHqHYcHa0QjhtFrNmuU_ZD5-UGD0krqFfoJC4mPyQ>
-    <xmx:kgFTZ1G9NWKiaU4m6BL1Na5OaZRNRdHCaRGEc0E-ttIN_XuEHc32wg>
-    <xmx:kgFTZwPzQVAELvWI33zBnvWj1s6ncPtql6n1UYpP22HdnXi_-3k-FA>
-    <xmx:kgFTZ4-yVlVkD3Q8ajGh0oXdOkDvMdTtHW1-CAta77ld53oKIK-nLbK0>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 6 Dec 2024 08:52:12 -0500 (EST)
-Date: Fri, 6 Dec 2024 22:52:09 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Zijun Hu <zijun_hu@icloud.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	James Bottomley <James.Bottomley@hansenpartnership.com>,
-	Thomas =?iso-8859-1?Q?Wei=DFschuh?= <thomas@t-8ch.de>,
-	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
-	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
-	linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
-	linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
-	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
-	linux-scsi@vger.kernel.org, open-iscsi@googlegroups.com,
-	linux-usb@vger.kernel.org, linux-serial@vger.kernel.org,
-	netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-Subject: Re: [PATCH v3 04/11] driver core: Constify API device_find_child()
- then adapt for various usages
-Message-ID: <20241206135209.GA133715@workstation.local>
-Mail-Followup-To: Zijun Hu <zijun_hu@icloud.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	James Bottomley <James.Bottomley@hansenpartnership.com>,
-	Thomas =?iso-8859-1?Q?Wei=DFschuh?= <thomas@t-8ch.de>,
-	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
-	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
-	linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
-	linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
-	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
-	linux-scsi@vger.kernel.org, open-iscsi@googlegroups.com,
-	linux-usb@vger.kernel.org, linux-serial@vger.kernel.org,
-	netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com>
- <20241205-const_dfc_done-v3-4-1611f1486b5a@quicinc.com>
+	id 1tJYnq-00000001nAt-1chE;
+	Fri, 06 Dec 2024 13:55:32 +0000
+Received: from laptop.lan (unknown [125.33.216.38])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 1BE0B3F1E9;
+	Fri,  6 Dec 2024 13:55:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1733493327;
+	bh=U9hkTuJbGE7hIFsagAaGCZFpFPxgQR0ImXZs7Gg/g5k=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+	b=WVIAZthcfmCCLxSuH7nxMAudN22sCfS3vkoJoldTEDHsu8jcPeLTQoZKugl21Q6vh
+	 nhwcg6Xhw2uqVZGQSBaftdF9fO/BAu4vr8uKuFtsnQ/lE9XXfPaaacAdoa/+AxhyWW
+	 5bMTtGVUJRb2msm+g4zT4PH4HiQ1V6vr5ZKv1t4cJj2MLdb0X9NzWJc6bJUZVmUcYJ
+	 wTdzabpdX5Sj2Yv1N3DaYdaQkxznNYGGml+v3mdu6rUNDy0jbv9F3FPlKjJCAp71n9
+	 Kpol4pQqmybBuVHq2eRLTFX119Y0/Kd6A4xaVK1QsUUUSJkX9zBqQTj6g+VuF6df/2
+	 qdKoXm878a4Sw==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] drm/mediatek: Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err 
+Date: Fri,  6 Dec 2024 21:55:07 +0800
+Message-Id: <20241206135507.1274357-1-guoqing.jiang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241205-const_dfc_done-v3-4-1611f1486b5a@quicinc.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_055224_760741_97DE4A35 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20241206_055530_744471_4EE6E49C 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,70 +75,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The pointer need to be set to NULL, otherwise KASAN complains about
+use-after-free. Because in mtk_drm_bind, all private's drm are set
+as follows.
 
-On Thu, Dec 05, 2024 at 08:10:13AM +0800, Zijun Hu wrote:
-> From: Zijun Hu <quic_zijuhu@quicinc.com>
-> 
-> Constify the following API:
-> struct device *device_find_child(struct device *dev, void *data,
-> 		int (*match)(struct device *dev, void *data));
-> To :
-> struct device *device_find_child(struct device *dev, const void *data,
->                                  device_match_t match);
-> typedef int (*device_match_t)(struct device *dev, const void *data);
-> with the following reasons:
-> 
-> - Protect caller's match data @*data which is for comparison and lookup
->   and the API does not actually need to modify @*data.
-> 
-> - Make the API's parameters (@match)() and @data have the same type as
->   all of other device finding APIs (bus|class|driver)_find_device().
-> 
-> - All kinds of existing device match functions can be directly taken
->   as the API's argument, they were exported by driver core.
-> 
-> Constify the API and adapt for various existing usages by simply making
-> various match functions take 'const void *' as type of match data @data.
-> 
-> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> ---
->  arch/sparc/kernel/vio.c                |  6 +++---
->  drivers/base/core.c                    |  6 +++---
->  drivers/block/sunvdc.c                 |  6 +++---
->  drivers/bus/fsl-mc/dprc-driver.c       |  4 ++--
->  drivers/cxl/core/pci.c                 |  4 ++--
->  drivers/cxl/core/pmem.c                |  2 +-
->  drivers/cxl/core/region.c              | 21 ++++++++++++---------
->  drivers/firewire/core-device.c         |  4 ++--
->  drivers/firmware/arm_scmi/bus.c        |  4 ++--
->  drivers/firmware/efi/dev-path-parser.c |  4 ++--
->  drivers/gpio/gpio-sim.c                |  2 +-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 +-
->  drivers/hwmon/hwmon.c                  |  2 +-
->  drivers/media/pci/mgb4/mgb4_core.c     |  4 ++--
->  drivers/nvdimm/bus.c                   |  2 +-
->  drivers/pwm/core.c                     |  2 +-
->  drivers/rpmsg/rpmsg_core.c             |  4 ++--
->  drivers/scsi/qla4xxx/ql4_os.c          |  3 ++-
->  drivers/scsi/scsi_transport_iscsi.c    | 10 +++++-----
->  drivers/slimbus/core.c                 |  8 ++++----
->  drivers/thunderbolt/retimer.c          |  2 +-
->  drivers/thunderbolt/xdomain.c          |  2 +-
->  drivers/tty/serial/serial_core.c       |  4 ++--
->  drivers/usb/typec/class.c              |  8 ++++----
->  include/linux/device.h                 |  4 ++--
->  include/scsi/scsi_transport_iscsi.h    |  4 ++--
->  net/dsa/dsa.c                          |  2 +-
->  tools/testing/cxl/test/cxl.c           |  2 +-
->  28 files changed, 66 insertions(+), 62 deletions(-)
+private->all_drm_private[i]->drm = drm;
 
-For the changes in FireWire subsystem:
+And drm will be released by drm_dev_put in case mtk_drm_kms_init returns
+failure. However, the shutdown path still accesses the previous allocated
+memory in drm_atomic_helper_shutdown.
 
-Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+[   84.874820] watchdog: watchdog0: watchdog did not stop!
+[   86.512054] ==================================================================
+[   86.513162] BUG: KASAN: use-after-free in drm_atomic_helper_shutdown+0x33c/0x378
+[   86.514258] Read of size 8 at addr ffff0000d46fc068 by task shutdown/1
+[   86.515213]
+[   86.515455] CPU: 1 UID: 0 PID: 1 Comm: shutdown Not tainted 6.13.0-rc1-mtk+gfa1a78e5d24b-dirty #55
+[   86.516752] Hardware name: Unknown Unknown Product/Unknown Product, BIOS 2022.10 10/01/2022
+[   86.517960] Call trace:
+[   86.518333]  show_stack+0x20/0x38 (C)
+[   86.518891]  dump_stack_lvl+0x90/0xd0
+[   86.519443]  print_report+0xf8/0x5b0
+[   86.519985]  kasan_report+0xb4/0x100
+[   86.520526]  __asan_report_load8_noabort+0x20/0x30
+[   86.521240]  drm_atomic_helper_shutdown+0x33c/0x378
+[   86.521966]  mtk_drm_shutdown+0x54/0x80
+[   86.522546]  platform_shutdown+0x64/0x90
+[   86.523137]  device_shutdown+0x260/0x5b8
+[   86.523728]  kernel_restart+0x78/0xf0
+[   86.524282]  __do_sys_reboot+0x258/0x2f0
+[   86.524871]  __arm64_sys_reboot+0x90/0xd8
+[   86.525473]  invoke_syscall+0x74/0x268
+[   86.526041]  el0_svc_common.constprop.0+0xb0/0x240
+[   86.526751]  do_el0_svc+0x4c/0x70
+[   86.527251]  el0_svc+0x4c/0xc0
+[   86.527719]  el0t_64_sync_handler+0x144/0x168
+[   86.528367]  el0t_64_sync+0x198/0x1a0
+[   86.528920]
+[   86.529157] The buggy address belongs to the physical page:
+[   86.529972] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff0000d46fd4d0 pfn:0x1146fc
+[   86.531319] flags: 0xbfffc0000000000(node=0|zone=2|lastcpupid=0xffff)
+[   86.532267] raw: 0bfffc0000000000 0000000000000000 dead000000000122 0000000000000000
+[   86.533390] raw: ffff0000d46fd4d0 0000000000000000 00000000ffffffff 0000000000000000
+[   86.534511] page dumped because: kasan: bad access detected
+[   86.535323]
+[   86.535559] Memory state around the buggy address:
+[   86.536265]  ffff0000d46fbf00: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.537314]  ffff0000d46fbf80: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.538363] >ffff0000d46fc000: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.544733]                                                           ^
+[   86.551057]  ffff0000d46fc080: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.557510]  ffff0000d46fc100: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.563928] ==================================================================
+[   86.571093] Disabling lock debugging due to kernel taint
+[   86.577642] Unable to handle kernel paging request at virtual address e0e9c0920000000b
+[   86.581834] KASAN: maybe wild-memory-access in range [0x0752049000000058-0x075204900000005f]
+...
 
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 9a8ef8558da9..0062374f75d5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -673,6 +673,8 @@ static int mtk_drm_bind(struct device *dev)
+ err_free:
+ 	private->drm = NULL;
+ 	drm_dev_put(drm);
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		private->all_drm_private[i]->drm = NULL;
+ 	return ret;
+ }
+ 
+-- 
+2.35.3
 
-Takashi Sakamoto
 
