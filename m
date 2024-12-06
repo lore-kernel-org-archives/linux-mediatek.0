@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BDE2E77171
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 00:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58218E77170
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 00:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GqZWstnvS5M7KlsauJVlhYbS8zK4ZfCAjPX+o2siRvQ=; b=0x1c/Abz4D3OfoIJ+a4xzuqAN5
-	5LC1Tewvdl7QJGNN3C0PHiF9ED+4A/Hl1+bNw/Y/5JGc5hDEPv0q9rD3nrVHLUyghdmnPDa/qnQs4
-	Asut1cMaePt9s8SbTd5Ui5Er/kQKyiBPSa8rasXiJ3jnXJBoRlk+ggUpjPHasWA7ONFf4FCq152sr
-	wwyQLfstVhXZInp3t007ivhOvUzaa07/n+6J5vP07xV7RnijpvO9aTD4OH68PizgoXrwVVjOkihHC
-	5ufx0ZuvBb3cA67f4EJqYz8Xg7vJw1KgBeoqCBQR+EGxqWgfV9hfMf5pywAXf8nyLwsAXZPjnHkwO
-	B7LCMEMw==;
+	bh=blIrJbErtJBhmg6i7GQdINtKp/1t5xm0HORWyHzR8zA=; b=R0KrmpNDoOSXda/ase81JySXYp
+	pa/KFlZZyOK3g57tToP8Nxm8LbK5ZGtg/U7qLtlPrK+eIqP92Sn+94dUNluqsiWH6v05+lM2kmCh/
+	rtniVxNpwzOKCxWM9xNNO7eWRkvrS1OsGZEHu2Swm9moxOFLRJASL6nJ2/XZCH6rCRYJqJvD3Tjjx
+	LfMNcDFOsKiGp7DxKeVhn6+FPxTBEAI0AjyoqRxtr3O1mML9CSIM853OybjGT/WGEeuZICOAT8sMI
+	qsV3RWFWyuF+dcBbw5W9hETnGZg2iLpaUhuWgltBKH3gxxUv90SNF9lMXClCSKoE+l4+AKazL78Mr
+	cf4qWXNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJLtk-000000002Kd-2spb;
-	Fri, 06 Dec 2024 00:08:44 +0000
+	id 1tJLtl-000000002LJ-1A2g;
+	Fri, 06 Dec 2024 00:08:45 +0000
 Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJLrl-000000001r3-1pJu
+	id 1tJLse-0000000025D-1Kh4
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Dec 2024 00:06:42 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-53df1d1b6e8so1456435e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 16:06:41 -0800 (PST)
+	Fri, 06 Dec 2024 00:07:37 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-53de8ecb39bso2073087e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Dec 2024 16:07:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1733443600; x=1734048400; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1733443655; x=1734048455; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GqZWstnvS5M7KlsauJVlhYbS8zK4ZfCAjPX+o2siRvQ=;
-        b=hJoCitNUs86HeJTfOkeU7slctauFzPmfx/Pd5JBeg8DvmqV4zYj6HFvIEdlvB9mWsK
-         d3nvRsPCg+639+zj4518DrUX6SbzfnouWbDYtiTLrcRCWZDMm0qRnrHxhmDHGSWQzhny
-         fmUuYHHTy6oBEAVGrwyWpreqYmVyixTmgh+GifggK6ZLczRoFvFLXLLOWCmTBPXy7eyV
-         mf8qfCeCG5f4LjBopx3n07gbo+olkgXLZkbZWzZRKPAbCE3jZBXsFHxTmKDk0+3w1CuU
-         NL9jQh0sV+5y/7HBoFdJsP+pTnXOLqhpqQnuaH74u7rEUVVx2owNUSWvQFGymvie6Ik4
-         9j2Q==
+        bh=blIrJbErtJBhmg6i7GQdINtKp/1t5xm0HORWyHzR8zA=;
+        b=CR/Vkdoj2AXy5M1xnfspZk/Y1HCPmCASJcLvp39oMNQrcK9TeUL4PpvFHR0EXC/pLq
+         50Z1P3brcaxQQ9HrRKS2QjB6QEdRbeuExdyUqedxtpQE8bxnvIb6+Eg6eEF4QWt1knY+
+         Ab7Wf7wb8y/jwhFHw8B4PMqJMZXV/klwngJjey8eimJiSkv0h4xICDcyW2gY9xjmePz/
+         a6JzBq0qLV7gaRGeoPUp1U1hiSegJcPb0xncS1uh/nykg9m25IAQ2g/SBkrb+Qdk8ULQ
+         UalYOpP05v0ogp2XaURoWCX6S5CxkOGcnX0hqLXOr0fuzsQirG+y1tTSdZKi34nax4xA
+         kc4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733443600; x=1734048400;
+        d=1e100.net; s=20230601; t=1733443655; x=1734048455;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GqZWstnvS5M7KlsauJVlhYbS8zK4ZfCAjPX+o2siRvQ=;
-        b=PGf7ZldvadYh8v6btRtiRT6lWg6qnHeBag3WPEMjNWcYji6G460pYnsMrMTnenslps
-         0hNpG30bNwbl09hrpjLV2yisS+jsLkOvKZ+9WUEiD4f2pK5OVDCI8YR12WHFcmPj2LFK
-         BeFp+YAOvZi7BZdlSU47WbKSBqsxlT4zv6lVoStljur1zUd9aXNc69icNOt487mSAVih
-         V2omItwMBSG/vgQuexRYZTd1/xYRWGCVRHhkgeCvKuRPs6Sr2pvgBsDE2AcwegJ34Xk/
-         Y/CVu+W76JLLHuh8wRDFDZduizAm8Bqrh9QH8DmpXddg6ujQpqPnG8EH+meWmKmtBGkU
-         IFRQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX2fxP/Q5GKUbxgJ9oM6w0FpB8z595uYoVr07Gf//1x8SlCAGufp+CcdJxEqjbRAt+qSJfEgLBl8df2vv0LlA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzkWJnNwI51ugYbcTzdknj9MC9/jZbtsZpJOTqMjW26IN/Bk7L6
-	PuuWSLSHU1QqlEznIMAmH9zEx2SKoLEILAybV/Ux/U4z3Ct+IyJvc0eTdbCk5DdYStPfjKc1+JZ
-	eq6GrMGl7OHY34RoBdK/KR4lNjswwRbmjFM8E
-X-Gm-Gg: ASbGncsZQaDp3Smbo/3XIUMAWaOdGPAPju8Dc9HNiEsBDMBgQprS/cimq2/UuUJOUcm
-	pjVDxml9BRE3YYkiJEi5XIki8Y6HTUg==
-X-Google-Smtp-Source: AGHT+IFMKCgNjf7EuTIfzy1U+mxlTHH4A6RijBLU54vNTWXHVXJQWJqIB/kHPOOCzpMc5RVjG0prBUt0JknyJqn08+E=
-X-Received: by 2002:a05:6512:4024:b0:52f:ca2b:1d33 with SMTP id
- 2adb3069b0e04-53e2c2b8f76mr213110e87.20.1733443599437; Thu, 05 Dec 2024
- 16:06:39 -0800 (PST)
+        bh=blIrJbErtJBhmg6i7GQdINtKp/1t5xm0HORWyHzR8zA=;
+        b=d3xAb8A3nhFF4S72OItU+OTuY1xQXzQQR4jbbCzbvBYiwyCvxQ6jWrE1gWfU7CK7rE
+         3JBTRB2ioHOdnjXZcrrQFLURcocZdYnlszAwe3UdlQoNo9W3rs4Fw+Be6FHU05lxHejo
+         ZI6xeKi6+EYG3Ulsa6O7CO6YgoTRgHXMzfKSkncA5ACxc/nYgdVEWRNy+d2Z7crZFrGQ
+         fVcUrlgK7tVqlkLQ9vf93qgV8WKhYy9EwnNlqq3JlGljZDQJDBCSIvi65h4y/O7REsy0
+         Ga6HAqw3SPtaIax8MFrRXrEiwkTwveo9emyFnltrJu06T17hka+jvpg76GaBWniqZbNz
+         bKag==
+X-Forwarded-Encrypted: i=1; AJvYcCVDfyL60U8beGCeh12JcDvTYLeNxk+9IafxK/nFgQOoxkApzx+V/snEXGD3NEgaNbK4tfEVZOazZOnZyySeuQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwBLDkOw6dPJddjP/f2Pmq48odn93uLbXBmFGFgIX2AKeviLjFP
+	kLweVJ3GqErwI49hEU/C4AXTGBRzCPvFH7DcP23Vdhn4R2ZJdRPqAtm7qJnEUudEpgWLwY12YxU
+	nEoccWRqxPh6ENwAN6JmQgP2g+yADUZzRfwKL
+X-Gm-Gg: ASbGnct7qI5ydjoPFYL1Gu1utYRH9GdG14AtwWE22aSGwDeJKp7RM++nbwCPBqOejUC
+	sROS8Qxg/tmG8RLE9WlqhaH1zK6CyuQ==
+X-Google-Smtp-Source: AGHT+IGwkB+5shyB5Uw7Uf9fUCWUSk4ghNB6iVijhuSWeVK3ZvAmFf8V/NY25l5TehZEnnHMKB1Y4S3fEVzEwkI2dcY=
+X-Received: by 2002:a05:6512:220c:b0:539:e65a:8a71 with SMTP id
+ 2adb3069b0e04-53e2c2c1873mr420862e87.34.1733443654651; Thu, 05 Dec 2024
+ 16:07:34 -0800 (PST)
 MIME-Version: 1.0
-References: <20241204221726.2247988-1-sashal@kernel.org> <20241204221726.2247988-8-sashal@kernel.org>
-In-Reply-To: <20241204221726.2247988-8-sashal@kernel.org>
+References: <20241204221627.2247598-1-sashal@kernel.org> <20241204221627.2247598-8-sashal@kernel.org>
+In-Reply-To: <20241204221627.2247598-8-sashal@kernel.org>
 From: Saravana Kannan <saravanak@google.com>
-Date: Thu, 5 Dec 2024 16:06:02 -0800
-Message-ID: <CAGETcx8bhzGZKge4qfpNR8FaTWqbo0-5J9c7whc3pn-RECJs3Q@mail.gmail.com>
-Subject: Re: [PATCH AUTOSEL 6.11 08/15] drm: display: Set fwnode for aux bus devices
+Date: Thu, 5 Dec 2024 16:06:58 -0800
+Message-ID: <CAGETcx-8nwfbCHN7zG7XuOM+CRevEU6M8fqaw1H4h+yz-H2BoQ@mail.gmail.com>
+Subject: Re: [PATCH AUTOSEL 6.12 08/15] drm: display: Set fwnode for aux bus devices
 To: Sasha Levin <sashal@kernel.org>
 Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
 	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
@@ -77,14 +77,14 @@ Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, maarten.lankhorst@linux.intel.com, 
 	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	matthias.bgg@gmail.com, elder@kernel.org, ricardo@marliere.net, 
-	sumit.garg@linaro.org, dri-devel@lists.freedesktop.org, 
+	matthias.bgg@gmail.com, elder@kernel.org, sumit.garg@linaro.org, 
+	ricardo@marliere.net, dri-devel@lists.freedesktop.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_160641_469180_4BBF5F92 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20241205_160736_365708_CBA478DB 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,7 +99,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 4, 2024 at 3:29=E2=80=AFPM Sasha Levin <sashal@kernel.org> wrot=
+On Wed, Dec 4, 2024 at 3:28=E2=80=AFPM Sasha Levin <sashal@kernel.org> wrot=
 e:
 >
 > From: Saravana Kannan <saravanak@google.com>
@@ -128,15 +128,7 @@ a.com>
 > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 > Signed-off-by: Sasha Levin <sashal@kernel.org>
 
-As mentioned in the original cover letter:
-
-PSA: Do not pull any of these patches into stable kernels. fw_devlink
-had a lot of changes that landed in the last year. It's hard to ensure
-cherry-picks have picked up all the dependencies correctly. If any of
-these really need to get cherry-picked into stable kernels, cc me and
-wait for my explicit Ack.
-
-Is there a pressing need for this in 4.19?
+I'm okay pulling this into 6.12 as it's recent enough.
 
 -Saravana
 
