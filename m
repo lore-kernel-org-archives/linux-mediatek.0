@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D75FE77173
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2024 16:07:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC51CE7716E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2024 03:13:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IR3CBYmVz3WChMKC+3bqNlNVKDz36LomTpsP6RbwpBI=; b=pzGMylDR1GmJAgdWlMtFckdETm
-	zK6OFrd7F2mWtzBWFVf0q5rVWzcXcFrZBR+tRYucRG2Xj66GXSZx7nh8VlhoL5kbXeqgvZf5CHkzY
-	+DedpTsJR3BOmoQmy1f1m1SVozU4K5xOmYkL5XBoAVxsh+m8A1+bG8rVhfnyOwjbxjEISdlfnXOAE
-	IfmMDajQuRbgLZ6e3xMElnDk5mOxeM2u5bqfBc5zdWQZmAoh2Z2Nj4A424rDWPGnf2c8ghdr+P1Ai
-	y6KzCZLKRdnLGYRk+Xcw8g5ClDMvJNWP3twGUHU31Qp9AZRHZrnZ2LmofZZITGbBGqa5dndf2SY1k
-	shasSRiw==;
+	bh=CJ53yZUv5qWn3FKAR6sSyKcUASeqiB2DCBVhCzW2Yw4=; b=pKvfEMMpyEXmu7PxkxsJ3iLcQ8
+	lyllFaMWe/L4oLT6Mq+2KBKHXakwEV5BdpFA0H9TFbLRya757shpZfpjNYw3Rhz143HfwW7iUU1Mq
+	pX4eNSdGNLC4rbO8ifvlzHXb2hK4rnbIGZY2RRlAFmuPKBsEmhvsU9PuqQifH3cMOgBKTnKa3bKBJ
+	FpiKCL0fOidCLmkeLYIDRWkHdgUfhx6G7dw6D2BeRgQjafX/rli3ZoAu3vsF5e5J9kQF9ZAvbwfAZ
+	RL4ZpsLyTA2K8thH7c6T+3iLVRbPE5MbSsniUo3ghBPlpZ0iNrkF3HpeMd6xBnFzMbTFn2jokjvAC
+	051TRPQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJas1-000000025jB-1Mcn;
-	Fri, 06 Dec 2024 16:07:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tJlG4-00000003FWl-0suh;
+	Sat, 07 Dec 2024 03:13:28 +0000
+Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJaqz-000000025ch-1tOt;
-	Fri, 06 Dec 2024 16:06:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 056675C6946;
-	Fri,  6 Dec 2024 16:06:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 403D8C4CED1;
-	Fri,  6 Dec 2024 16:06:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733501211;
-	bh=gToIYM+37jkKtK/Sbu0IwPGwvwqDSaBXiHsgZA/gUAk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rUZhriGHwCOGUtnZPn6FC7saJhs6BKSmHqVG5AS+E0JB1T7WxDfeMpEbolQahWmV4
-	 +/IvsXta9NDAgw02+PN2UCwNsn9gZ7EcEzwPrENYs2Vv191ztYUHRjTXw+lBe+c9Ic
-	 odbaoVofPbb+z6qo3uRJPlLjvHkpPXpFKIIvFaH5hbkzMAoRG89g854UUjG8fG127a
-	 4I04DzE5/U6OQjK/qkdEVVwAPxTAKAB2LS0I9ttpCOLbB7M9AkUDMA1KcR+1H7deLu
-	 TFv1mG8eIAAlXUdkyPJgcjkxdssShLZNDvFIYmCLWfTfQ3uccoPRQtkhT+hkSm5eNH
-	 lTXQ1kBPWpADw==
-Date: Fri, 6 Dec 2024 16:06:45 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu =?utf-8?B?KOS/nuWutumRqyk=?= <Jiaxin.Yu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"ajye_huang@compal.corp-partner.google.com" <ajye_huang@compal.corp-partner.google.com>,
-	Chunxu Li =?utf-8?B?KOadjuaYpeaXrSk=?= <Chunxu.Li@mediatek.com>,
-	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsik=?= <Allen-KH.Cheng@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>,
-	"andrzej.hajda@intel.com" <andrzej.hajda@intel.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"robert.foss@linaro.org" <robert.foss@linaro.org>,
-	"Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>,
-	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Prado <nfraprado@collabora.com>,
-	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
-Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Message-ID: <6456e0b7-08ae-4515-a7c9-734f50c9130a@sirena.org.uk>
-References: <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
- <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
- <Y4jHAJgmz/P58Q/C@sirena.org.uk>
- <7023a2c7b471d6888d9079563a6c01f22599201f.camel@mediatek.com>
- <Y43e+EsNCrCpZSIH@sirena.org.uk>
- <dc50d0b21795acbcc44c77e5fd81e7cb92c65c67.camel@mediatek.com>
- <Y5ipwqzHKTK8UdlC@sirena.org.uk>
- <a699178dcef540fff5caae6291983a444886bff6.camel@mediatek.com>
- <00d5c728-3eb9-427a-bc60-5828c20fec09@sirena.org.uk>
- <b44319c9fabbea2e8c333191a0005ef5c4ec6b2c.camel@mediatek.com>
+	id 1tJlF5-00000003FQj-16yU
+	for linux-mediatek@lists.infradead.org;
+	Sat, 07 Dec 2024 03:12:28 +0000
+Date: Sat, 07 Dec 2024 00:11:55 -0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
+	s=key1; t=1733541138;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CJ53yZUv5qWn3FKAR6sSyKcUASeqiB2DCBVhCzW2Yw4=;
+	b=VEtfrcrmScEb9ksaohHhM8XVmH+Le2ZPpCe9L7OD7V3L3oy/wrpOxfUAKBhKBGGyykeR+G
+	+aJh+kLm0NAc2sj7XMwYqEm+wfUhLGJf+tzJrWRLwwqfsB8pvPUaWBB18X6rdugCAtz/io
+	6Yflt6LSmSoTiarAs2tdOxbq7UQCx89nBCAZlLsMBdTl92T95hd967srl5XJfruyCDVRK2
+	vlaEurX+6t/qIjO6lAVl2Ypzv9/lbai4c+2ILF+YtQuieYMrgRpAX3HR/SGkzLq4z9f+dV
+	OURLJ4EuNZt8GJSOwK23HUdWI8X5Do3Ck8OJmx+QXOoyT+iovZ9L4555WStvgg==
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Val Packett <val@packett.cool>
+Subject: Re: [PATCH 0/5] MT8516/MT8167 dtsi fixes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-Id: <VVS3OS.MZCWW6ICFFUB3@packett.cool>
+In-Reply-To: <7bf536a5-30c1-43d8-9ea3-3aaea65c6b0a@collabora.com>
+References: <20241204190524.21862-1-val@packett.cool>
+	<7bf536a5-30c1-43d8-9ea3-3aaea65c6b0a@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0Q96+HlCP5jtbeOt"
-Content-Disposition: inline
-In-Reply-To: <b44319c9fabbea2e8c333191a0005ef5c4ec6b2c.camel@mediatek.com>
-X-Cookie: Sales tax applies.
+Content-Type: text/plain; charset=us-ascii; format=flowed
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_080653_573815_9B514DA3 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20241206_191227_434266_25A2A16F 
+X-CRM114-Status: GOOD (  22.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,50 +73,78 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---0Q96+HlCP5jtbeOt
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, Dec 5 2024 at 01:27:01 PM +01:00:00, AngeloGioacchino Del Regno 
+<angelogioacchino.delregno@collabora.com> wrote:
+>> I strongly suggest you to also send one that achieves basic boot 
+>> with UART console
+> as a first step for upstreaming your board, and then go for 
+> incremental changes
+> everytime you get a new feature working.
 
-On Fri, Dec 06, 2024 at 03:39:15PM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=E9=
-=91=AB) wrote:
-> On Mon, 2024-12-02 at 13:16 +0000, Mark Brown wrote:
-> > On Sun, Dec 01, 2024 at 05:15:45PM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=
-=E9=91=AB) wrote:
+Wanted to get the PMIC in first but sure, could try splitting out the 
+initial version without the PMIC.
 
-> > > So I want to ask if I can do it by just adding
-> > > SOC_DAPM_PIN_SWITCH("Speakers") and SOC_DAPM_PIN_SWITCH("HDMI")?
-> > > Correspondingly, dapm widget and route path need to be added. That
-> > > is
-> > > "SND_SOC_DAPM_SPK("Speakers", NULL)/ SND_SOC_DAPM_LINE("HDMI1",
-> > > NULL)"
-> > > and "{"Speakers", NULL, "Speaker"}/ {"HDMI1", NULL, "TX"}".
+Oh! One dts/dtsi question: pretty much all MTK devices so far have all 
+pinctrl configurations defined per-device. But on this SoC, pin 
+assignments have their "canonical" function in the pin name e.g.: 
+MT8167_PIN_58_SDA0__FUNC_SDA0_0 and on this device they are used as-is. 
+Would it be fine to place these default pinctrl configs for SD/MMC, I2C 
+etc. in the SoC dtsi?
 
-> > Yes, that's what I'd expect to see.
+>> Generally, if the patches are only simple additions, you could send 
+>> the original
+> patches without any author variation (and fixing that 
+> MT6392_IRQ_numbers enum
+> in the original ones because lower case please!) and then your 
+> patches on top
+> with your additions.
 
-> So if I open the "HDMI Switch" amixer control, it will call
-> 'hdmi_codec_startup', which in turn calls "audio_startup()"  in
-> 'hdmi_codec_ops'. Conversely, if I close it, it will call
-> 'hdmi_codec_shutdown', which in turn calls 'audio_shutdown' in
-> 'hdmi_codec_ops'. Is this understanding correct?
+Right, I was mostly unsure if the email workflow supported just sending 
+someone else's patches, but I guess that was silly - of course 
+git-send-email should do the right thing!
 
-The audio stream will still run, the DAPM path attached to it will get
-shut down.
+> The upstream driver just gained support for configuring the display 
+> paths
+> entirely in the devicetree as those are obviously device specific.
+> 
+> You can make use of that for upstreaming your tablet after adding the 
+> display
+> nodes (and bindings, if required) as if you go for the default 
+> configuration
+> that's probably not going to work because it's for the pumpkin boards 
+> which
+> will most probably have a different display pipeline compared to your 
+> board.
 
---0Q96+HlCP5jtbeOt
-Content-Type: application/pgp-signature; name="signature.asc"
+The pipeline seems to be the same.. The pumpkin board was brought up 
+with DSI as well, the main pipeline I can find in the Android source is 
+the same (+ PWM).
 
------BEGIN PGP SIGNATURE-----
+I am still struggling to get it to work though: DSI command mode 
+configuration gets acknowledged fine, but in burst mode, the vblank 
+never arrives. Tried fiddling with various things (CMDQ or not, mutex 
+as vblank source since there was an Android commit doing that, etc.), 
+nothing helped.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmdTIRQACgkQJNaLcl1U
-h9AR8gf9Hfqv5O8hW1VoO/+oNPx5CkfRkyZFsfXQTS4FYXeTZ9zcxTzV8bdgREIe
-WVUSi00ehS2CCupQkffrSFfZHqk88wxKrrMFNQYcoDrekq/kUtbseBayFJgB6mQY
-4NUYT/0mnejbXDk+qeiHI1f0UzygswelfRVu+TZ7exCG2UI7GJO2RYdL6fpItNpQ
-F7ISvK9ldljmyAmqAbZ8Ol6tg2eNfbhESwdEGsGrx58UpFAWH/0Qb6G+T4tzPxQ+
-3rMJvvwahR0VMHmVglGFRUneunLknVaycWRVne7jYBilbaRlWMGQQ4FVs8XLY45q
-OE7ZqGZc2+b4p2bOuAcnSLIiQPRSsg==
-=/TNF
------END PGP SIGNATURE-----
+>> By the way, is anyone familiar with PSCI cpuidle/hot-unplug issues on
+>> Mediatek Android devices from around this time? [..]
+> 
+> I did have some issues with an older bootloader on the Xperia M5 
+> smartphone
+> and would even lock up at boot, because on the old firmwares the power
+> domains for the CPUs are not managed automatically by FW.
 
---0Q96+HlCP5jtbeOt--
+Interesting, thanks for the pointer!
+
+In the Android kernel sources I could find though, there are no CPU 
+domains in the mtk-scpsys-mt8167 driver, and the only references I 
+could even find to the related register bits are from code that *reads* 
+the status of the CPU power domains to make decisions about sleep 
+states (only_one_cpu_online in mtk_idle). Trying to add those to the 
+driver anyway, did not succeed so far.
+
+~val
+
+
+
 
