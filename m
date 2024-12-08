@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73585E77173
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Dec 2024 16:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D59E8E77173
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Dec 2024 17:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VZ8VRmiKJwkt/GYZB70TA69WOCgOy6/6A6FCtWbmeu4=; b=rKqKHMGK/cWj6mjD2eBgS+IKox
-	hyWLA/sSqKeBr7DZDAR+Ju1eBDYIDuba7X11e2jc3hRxyZNraDCzLGdXodV9+4Wo3BjNOmGlQGK66
-	VUL0j94kA9hBNBEa5KED+XN0G1/YGk+qIAnvvldDXNxhcfGoJn9mKF1JzdLcpRbfOKuvwkUAfxaTF
-	maeLvg0tK4PdsaGmGfouQNDeFRDOsNuOxFgK4wf38xcid2eQuFFRo2PyP4xjEa2SB1NYLyO7KmpYE
-	wI8J1z5VU0R20W+oNYCxt5vhueo7AiO5XjjTznEew1BeyZkxU1z3JL9NDHoLQsWAi3Fcz9Y6k9Blu
-	qt4LkhGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wz5yJfBOub6mKDAHiObO6GWLXiVt4vnVJ+2XqCt6OdY=; b=SwXiEjLj0s4fkKgZ8IORGCHO1l
+	tYde/SjZImoNF4e8iGgPEfYYHHBcBFyI782vJtxOcOJJCRocfe3HFxBj3V8dSUx+UXTtzHV12KvHB
+	NF7WUgWri3ScBeY8Kz/eYjQvieoX9jm4k4dmF+C+5tOsktLESNNzip6jlHWsghiqNZrxDY18DgXEK
+	oxkglZ1ICFC1FS2k4B+2Qy+wwTswxgKvcspK0cSb6D+l3j+/HptGECslLBASvXW1SOloKWgis1oe1
+	ulzRwu2birxcNr1jSot9HIFGbCmLsyOP90BTIGTZQkGAp8lY0w7eteSb5dFYoD+tBveMQhupcYEsO
+	wMHrPqgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKJlT-00000005WSv-2GN3;
-	Sun, 08 Dec 2024 16:04:11 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tKKjC-00000005cVD-2O2b;
+	Sun, 08 Dec 2024 17:05:54 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKJkR-00000005WLp-0WVs;
-	Sun, 08 Dec 2024 16:03:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=VZ8VRmiKJwkt/GYZB70TA69WOCgOy6/6A6FCtWbmeu4=; b=btlmEvN7EvWs2yI3x1wGfGlvQk
-	qNjp3GT9mYlIiZxcbrRufWO4s0XRmZRSM2zw+V+/0NGcA4ZJYh0ppcKvrXpEaXQ1Xl2Z/XX/2wocq
-	OOQJU9f56/RQCF3DfYx8ckJIZ7qOEJpn/GTtd3ImEInmC0s2HwuNLkqf64T/pcbXR+hI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tKJk8-00FZvL-Nc; Sun, 08 Dec 2024 17:02:48 +0100
-Date: Sun, 8 Dec 2024 17:02:48 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v10 2/9] dt-bindings: net: Document support for
- Airoha AN8855 Switch Virtual MDIO
-Message-ID: <656c4f9d-ff6b-4c98-84f4-d20b6e562c13@lunn.ch>
-References: <20241208002105.18074-1-ansuelsmth@gmail.com>
- <20241208002105.18074-3-ansuelsmth@gmail.com>
+	id 1tKKgX-00000005bqD-0nco;
+	Sun, 08 Dec 2024 17:03:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1618A5C4A82;
+	Sun,  8 Dec 2024 17:02:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF368C4CEDD;
+	Sun,  8 Dec 2024 17:03:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733677388;
+	bh=ynzwxb8ZUrtmhHbZfYc5diIMVTylkfhhZS14e6rb1u8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=IwqYhAkaiqnfYZVPgJDNxmkxEZkOlvr3cFsFILRAv2kHs9jBbth0d2Vc1PKGuFq1L
+	 Q2l/Q345kz/dmuKx972RzB6eyJIZNsSKLAvnhEkbL/YbI4y6HLosWB8wl89KVsbPKP
+	 s4xITn9ejX4vmfkI44okF8EhfJXNd4BWLd1jSDdCfCmUtwOM6wzCFu8cuFyvybHYVF
+	 tcOXwRgZBrEzuxblvxpDUrWjgkoWsN2TvvKsW7flY5JFTQzAvLhOi84MDk4z+fyCBl
+	 QF3OH1F+IicuN0/apsqSxirH/W65Qe28by2Ki9ZGK62jwStlBa4zRFfOo1pFW4fCpK
+	 L+XEkxg+bt/yg==
+From: Vinod Koul <vkoul@kernel.org>
+To: chunkuang.hu@kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, kishon@kernel.org, 
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com
+In-Reply-To: <20241120124143.132637-1-angelogioacchino.delregno@collabora.com>
+References: <20241120124143.132637-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] phy: mediatek: phy-mtk-hdmi: Register PHY provided
+ regulator
+Message-Id: <173367738439.1042266.5465775023620885336.b4-ty@kernel.org>
+Date: Sun, 08 Dec 2024 22:33:04 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241208002105.18074-3-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_080307_161303_FBC2CE11 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20241208_090309_276750_CB3504C4 
+X-CRM114-Status: UNSURE (   5.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +77,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 08, 2024 at 01:20:37AM +0100, Christian Marangi wrote:
-> Document support for Airoha AN8855 Virtual MDIO Passtrough. This is needed
-> as AN8855 require special handling as the same address on the MDIO bus is
-> shared for both Switch and PHY and special handling for the page
-> configuration is needed to switch accessing to Switch address space
-> or PHY.
+
+On Wed, 20 Nov 2024 13:41:43 +0100, AngeloGioacchino Del Regno wrote:
+> At least version 2 of the HDMI PHY, found in MediaTek MT8195 and
+> MT8188 SoCs, does provide hardware support to switch on/off the
+> HDMI 5V pins (which are also used for DDC), and this translates
+> to this being a fixed regulator.
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/net/airoha,an8855-mdio.yaml      | 86 +++++++++++++++++++
->  MAINTAINERS                                   |  1 +
->  2 files changed, 87 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+> Register this PHY-provided regulator so that it can be fed to the
+> hdmi-connector driver to manage the HDMI +5V PWR rail.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
-> new file mode 100644
-> index 000000000000..2211df3cc3b7
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
-> @@ -0,0 +1,86 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 MDIO Passtrough
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description:
-> +  Airoha AN8855 Virtual MDIO Passtrough. This is needed as AN8855
-> +  require special handling as the same address on the MDIO bus is
-> +  shared for both Switch and PHY and special handling for the page
-> +  configuration is needed to switch accessing to Switch address space
-> +  or PHY.
-> +
-> +$ref: /schemas/net/mdio.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    const: airoha,an8855-mdio
-> +
-> +required:
-> +  - compatible
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    mdio {
-> +        compatible = "airoha,an8855-mdio";
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        internal_phy1: phy@1 {
-> +            reg = <1>;
-> +
-> +            nvmem-cells = <&shift_sel_port0_tx_a>,
-> +                <&shift_sel_port0_tx_b>,
-> +                <&shift_sel_port0_tx_c>,
-> +                <&shift_sel_port0_tx_d>;
-> +            nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> [...]
+
+Applied, thanks!
+
+[1/1] phy: mediatek: phy-mtk-hdmi: Register PHY provided regulator
+      commit: 49393b2da1cd5b0a6859693369b4fb27df59d3e2
+
+Best regards,
+-- 
+~Vinod
 
 
-For this example nvmem is not relevant. Those are PHY properties, not
-MDIO properties. So you could simplify this.
-
-	Andrew
 
