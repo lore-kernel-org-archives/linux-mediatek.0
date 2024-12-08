@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51446E77173
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Dec 2024 13:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D0A7E77173
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Dec 2024 15:12:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B9Z7dZW7Hi3Js1z/RCEjU+3M/IjEGHpjDFHWBOHmqc4=; b=CbpY8usK+HCV90fB145M8GNtkB
-	/WQLL2fYcvtQEaG1Wzvup2wlyC8gEy9hsgncZGANMRd4q6/fEmNQCSSydJGI/0d5Wqo0nnZeCPdvo
-	uRBLMs2Qk3Kf94nyAEx2hqE80YOkVkLwPQ2ONHoj73KabyIzVfxVzB0ELFeoTlLYifLxp49pkv+jU
-	tlQszsYEnjxSKYceLJ4DtuGboldqHn/RM7S9zcXBFelW+1ADKCAfbg63h1DLJsm3+zTlM4NRNUKm+
-	M6ZF86aixZygTm1bm+DO1ksbfAB6dMcU0cTkbaG7PrS6NPWEmLdqFUQVMTPL/vbRMQaVR2cUtd2KV
-	JqGdU1kQ==;
+	Content-Type:In-Reply-To:Cc:To:From:References:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pDg9j4Kgs8Eh6X0ImJM0JCCi0wdfL5kuTF+nMwtl4+A=; b=LncWJ+3Lwypr5MUVyNlotaT6kv
+	IGexPNt6mr8iLtPCpGx2wex2t6N7/XHFFiVNQuM8FC2q0976uDovaEm40ua/j3j1i8KCZbMYJjjCf
+	rM05qqwAwr4KSEOm2D7CgseWq7U+rk502dyK2IuulQeNzzKt6Dtd2b7YwhCh+7en0uFYqUHMZiQVK
+	NpP+zFO51fRBZxfqrvuqvyl69KgX2sxOQ4yaSmKq+VKfcPeEiI28RoIJ8kWWRpj/6D9CSvELsdnac
+	//xZOf8dD4o4840YqJY4AAUT1AGO8hx/grvUhEg+LQ2fXEdEvTBSs46ruuoGK266NtE+etxopcd+q
+	gtoPJ6CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKHBx-00000005JYU-3CuA;
-	Sun, 08 Dec 2024 13:19:21 +0000
-Received: from pv50p00im-zteg10021301.me.com ([17.58.6.46])
+	id 1tKIxd-00000005REl-2Fx4;
+	Sun, 08 Dec 2024 15:12:41 +0000
+Received: from smtp-25.smtpout.orange.fr ([80.12.242.25] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKHBv-00000005JXe-3oBx
-	for linux-mediatek@lists.infradead.org;
-	Sun, 08 Dec 2024 13:19:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733663951;
-	bh=B9Z7dZW7Hi3Js1z/RCEjU+3M/IjEGHpjDFHWBOHmqc4=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
-	 x-icloud-hme;
-	b=nsAlKyTzBjgFKiKK875IKrpeQ6Hv0IpX0ZWERQ6ck5xVT3yTVHF/ma0+sMayke7RA
-	 Mgepn7kdGl4f4KMgfy/ymh+QBWxBeS7/1xqjrAX4SI9iGKKSkpp5xcz5oH/1zd68so
-	 q8B21ej8wfHvQSmqknU2Qp3DQusSq/gzOdhHF5FFhfSN5Qste9Sq1vNahO5iwGakAp
-	 tKQIdEZWB3krUn4WgU7lFUNJY/OoKRT0xs0HLsHhvA1M3HxUyLGgZ/BUmsWP7OKH1i
-	 bCryHNz+PA1BYV/NsVSs5yT/qG6oSWCs9oJcX6JOBLUE0hNVJ8Fz0YBe04unhhDqh2
-	 KUvRd6BwJWVxw==
-Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10021301.me.com (Postfix) with ESMTPSA id B0625500490;
-	Sun,  8 Dec 2024 13:18:59 +0000 (UTC)
-Message-ID: <7780942a-93cd-4508-be97-fc5e5267c389@icloud.com>
-Date: Sun, 8 Dec 2024 21:18:54 +0800
+	id 1tKIud-00000005QWp-30f0;
+	Sun, 08 Dec 2024 15:09:39 +0000
+Received: from [192.168.1.37] ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id KIuTt5Z1GhfQMKIuTtU2lx; Sun, 08 Dec 2024 16:09:30 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1733670570;
+	bh=pDg9j4Kgs8Eh6X0ImJM0JCCi0wdfL5kuTF+nMwtl4+A=;
+	h=Message-ID:Date:MIME-Version:Subject:From:To;
+	b=Eg5KF7hbCX3H60W9Wj+/lz92hplkkTFtPhU035C3ifPmyjDdYtby33boSWgK2ehmU
+	 i1TKka2qzTofga1fFeG2f7m3UrrRnk/rFrx7YMbmguPtUklUy7DxF0L6NAloyfVmEr
+	 8DaiqPQkc8mDxtUAmz2BvboAoN056pWuQdxHWvfTkDNEg6ER/XO8ggKSpSjiiaVbk2
+	 HOB2EPXTlnXQL3dfxkVXu9uLiGXlDUokjR3pkeTQ/vsV900einRnEknbJsIa6w5E3y
+	 G2bEtB9S9WlYrwTCx+TZSuQpvtl654wHk2lqWtXGleHxEAjF8fxO8/kasnYWuF0DBy
+	 oqlqHjA5P8+qw==
+X-ME-Helo: [192.168.1.37]
+X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
+X-ME-Date: Sun, 08 Dec 2024 16:09:30 +0100
+X-ME-IP: 90.11.132.44
+Message-ID: <8e9cf879-b188-4bfe-8200-f6a6ae285cb5@wanadoo.fr>
+Date: Sun, 8 Dec 2024 16:09:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/11] driver core: Constify API device_find_child()
- then adapt for various usages
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>,
- linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
- linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
- linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
- linux-scsi@vger.kernel.org, open-iscsi@googlegroups.com,
- linux-usb@vger.kernel.org, linux-serial@vger.kernel.org,
- netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-References: <20241205-const_dfc_done-v3-0-1611f1486b5a@quicinc.com>
- <20241205-const_dfc_done-v3-4-1611f1486b5a@quicinc.com>
- <20241206135209.GA133715@workstation.local>
-Content-Language: en-US
-From: Zijun Hu <zijun_hu@icloud.com>
-In-Reply-To: <20241206135209.GA133715@workstation.local>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: zq6ALpvY8lzOJgSSQvNtYt-PHDnk_XXq
-X-Proofpoint-GUID: zq6ALpvY8lzOJgSSQvNtYt-PHDnk_XXq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-08_04,2024-12-06_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 bulkscore=0 mlxscore=0
- clxscore=1011 adultscore=0 phishscore=0 malwarescore=0 spamscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2412080111
+Subject: Re: [net-next PATCH v10 5/9] mfd: an8855: Add support for Airoha
+ AN8855 Switch MFD
+References: <20241208002105.18074-1-ansuelsmth@gmail.com>
+ <20241208002105.18074-6-ansuelsmth@gmail.com>
+Content-Language: en-US, fr-FR
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno," <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, upstream@airoha.com
+In-Reply-To: <20241208002105.18074-6-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_051919_974598_AC1FDCF2 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20241208_070937_110108_BC53BBAA 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,76 +87,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/12/6 21:52, Takashi Sakamoto wrote:
-> Hi,
+Le 08/12/2024 à 01:20, Christian Marangi a écrit :
+> Add support for Airoha AN8855 Switch MFD that provide support for a DSA
+> switch and a NVMEM provider. Also provide support for a virtual MDIO
+> passthrough as the PHYs address for the switch are shared with the switch
+> address
 > 
-> On Thu, Dec 05, 2024 at 08:10:13AM +0800, Zijun Hu wrote:
->> From: Zijun Hu <quic_zijuhu@quicinc.com>
->>
->> Constify the following API:
->> struct device *device_find_child(struct device *dev, void *data,
->> 		int (*match)(struct device *dev, void *data));
->> To :
->> struct device *device_find_child(struct device *dev, const void *data,
->>                                  device_match_t match);
->> typedef int (*device_match_t)(struct device *dev, const void *data);
->> with the following reasons:
->>
->> - Protect caller's match data @*data which is for comparison and lookup
->>   and the API does not actually need to modify @*data.
->>
->> - Make the API's parameters (@match)() and @data have the same type as
->>   all of other device finding APIs (bus|class|driver)_find_device().
->>
->> - All kinds of existing device match functions can be directly taken
->>   as the API's argument, they were exported by driver core.
->>
->> Constify the API and adapt for various existing usages by simply making
->> various match functions take 'const void *' as type of match data @data.
->>
->> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
->> ---
->>  arch/sparc/kernel/vio.c                |  6 +++---
->>  drivers/base/core.c                    |  6 +++---
->>  drivers/block/sunvdc.c                 |  6 +++---
->>  drivers/bus/fsl-mc/dprc-driver.c       |  4 ++--
->>  drivers/cxl/core/pci.c                 |  4 ++--
->>  drivers/cxl/core/pmem.c                |  2 +-
->>  drivers/cxl/core/region.c              | 21 ++++++++++++---------
->>  drivers/firewire/core-device.c         |  4 ++--
->>  drivers/firmware/arm_scmi/bus.c        |  4 ++--
->>  drivers/firmware/efi/dev-path-parser.c |  4 ++--
->>  drivers/gpio/gpio-sim.c                |  2 +-
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 +-
->>  drivers/hwmon/hwmon.c                  |  2 +-
->>  drivers/media/pci/mgb4/mgb4_core.c     |  4 ++--
->>  drivers/nvdimm/bus.c                   |  2 +-
->>  drivers/pwm/core.c                     |  2 +-
->>  drivers/rpmsg/rpmsg_core.c             |  4 ++--
->>  drivers/scsi/qla4xxx/ql4_os.c          |  3 ++-
->>  drivers/scsi/scsi_transport_iscsi.c    | 10 +++++-----
->>  drivers/slimbus/core.c                 |  8 ++++----
->>  drivers/thunderbolt/retimer.c          |  2 +-
->>  drivers/thunderbolt/xdomain.c          |  2 +-
->>  drivers/tty/serial/serial_core.c       |  4 ++--
->>  drivers/usb/typec/class.c              |  8 ++++----
->>  include/linux/device.h                 |  4 ++--
->>  include/scsi/scsi_transport_iscsi.h    |  4 ++--
->>  net/dsa/dsa.c                          |  2 +-
->>  tools/testing/cxl/test/cxl.c           |  2 +-
->>  28 files changed, 66 insertions(+), 62 deletions(-)
+> Signed-off-by: Christian Marangi <ansuelsmth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>   MAINTAINERS                           |   1 +
+>   drivers/mfd/Kconfig                   |   9 +
+>   drivers/mfd/Makefile                  |   1 +
+>   drivers/mfd/airoha-an8855.c           | 279 ++++++++++++++++++++++++++
+>   include/linux/mfd/airoha-an8855-mfd.h |  41 ++++
+>   5 files changed, 331 insertions(+)
+>   create mode 100644 drivers/mfd/airoha-an8855.c
+>   create mode 100644 include/linux/mfd/airoha-an8855-mfd.h
 > 
-> For the changes in FireWire subsystem:
-> 
-> Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index f3e3f6938824..7f4d7c48b6e1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -721,6 +721,7 @@ F:	Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
+>   F:	Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+>   F:	Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+>   F:	Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+> +F:	drivers/mfd/airoha-an8855.c
+>   
+>   AIROHA ETHERNET DRIVER
+>   M:	Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+> index ae23b317a64e..a83db24336d9 100644
+> --- a/drivers/mfd/Kconfig
+> +++ b/drivers/mfd/Kconfig
+> @@ -53,6 +53,15 @@ config MFD_ALTERA_SYSMGR
+>   	  using regmap_mmio accesses for ARM32 parts and SMC calls to
+>   	  EL3 for ARM64 parts.
+>   
+> +config MFD_AIROHA_AN8855
+> +	bool "Airoha AN8855 Switch MFD"
+> +	depends on MDIO && OF
+> +	select MFD_CORE
+> +	help
+> +	  Support for the Airoha AN8855 Switch MFD. This is a SoC Switch
+> +	  that provide various peripherals. Currently it provides a
 
-thank you for code review and previous cooperation to achieve
-this goal (^^).
+provides?
 
-> 
-> Thanks
-> 
-> Takashi Sakamoto
+> +	  DSA switch and a NVMEM provider.
+> +
+>   config MFD_ACT8945A
+>   	tristate "Active-semi ACT8945A"
+>   	select MFD_CORE
 
+...
+
+> +static int an8855_mfd_probe(struct mdio_device *mdiodev)
+> +{
+> +	struct an8855_mfd_priv *priv;
+> +	struct regmap *regmap;
+> +
+> +	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	priv->bus = mdiodev->bus;
+> +	priv->dev = &mdiodev->dev;
+> +	priv->switch_addr = mdiodev->addr;
+> +	/* no DMA for mdiobus, mute warning for DMA mask not set */
+> +	priv->dev->dma_mask = &priv->dev->coherent_dma_mask;
+> +
+> +	regmap = devm_regmap_init(priv->dev, NULL, priv,
+> +				  &an8855_regmap_config);
+> +	if (IS_ERR(regmap)) {
+> +		dev_err(priv->dev, "regmap initialization failed");
+
+Nitpick: Missing ending \n.
+Also, return dev_err_probe() could be used.
+
+> +		return PTR_ERR(priv->dev);
+> +	}
+> +
+> +	dev_set_drvdata(&mdiodev->dev, priv);
+
+Is it needed?
+There is no dev_get_drvdata() in this patch
+
+> +
+> +	return devm_mfd_add_devices(priv->dev, PLATFORM_DEVID_AUTO, an8855_mfd_devs,
+> +				    ARRAY_SIZE(an8855_mfd_devs), NULL, 0,
+> +				    NULL);
+> +}
+
+...
+
+CJ
 
