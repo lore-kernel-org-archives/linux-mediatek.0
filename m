@@ -4,103 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E214DE7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:56:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 414F3E7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 17:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0RQwZ2Rx5T9jyCOWKfOL3l539Mk8OkDnC/4KFbJ9300=; b=cWB9864ti8rjMcx59FiF2wWL2S
-	yEv9rBKoOQRnNx1HwPQc1YxFAWD0eULZfXIrGdG6GBw5yBlZtpdDHjRwleKMSjoH6zhb4xKfFJDcd
-	JDSM1jad2cbyDLHHdw/lS0X9h0r1RTXMFtQEKzvrsbB1VrippLL/XgY15koaShDGj56LktL2NZeE4
-	mJLtpeqo8rUuDm/d810gAI1TroEprHi0p3z/IXXr4d0ycKzmDMoZtCKSGPaqmq71lNIYjcUiqM/1l
-	BYkX4k+T3r7aTnmaaKk7UQhKPvQ5KL5xoNKPDE0sSsVBYzNelet4QVWqIBU26vmSiq+mwWvecheJG
-	pOuKuh0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YUMYQOIXLWXZ0xu21z8a2F/DBC+sSJEk31/h6id2njo=; b=A7JQCqtUOwvwaf
+	dxHl3ovWXVLnHqYTmEHT6uTCb2GDJW0GcZMm8C5Dbm0QvjTYjmarS09cj15cMLGHoyui0FslCjeUu
+	bikbgM9GWrDrDKgBJzb5raHw5AzKdUDfDF58iLNUNr8zHSVQAZVHr+T0zosGOATm1QiDv3yX5fr7e
+	7ATUp8LAfGvaF9WkogM2RIfhE6daooAZgu7Tz8fx0FfQ/ds4wPQ7n5A2pCBO2vEzLnu+gvPLZ8tgZ
+	UznD9dQpiv55qTN99cmX9U2KN58jwXJLxdVIEZRX33q/bJF12W/aglMKrOhqz3qtWLardOXAPLqpp
+	51IBSYXl8+z8U+UYs/MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKeFC-000000086Zm-48Pt;
-	Mon, 09 Dec 2024 13:56:14 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1tKh8Y-00000008e4W-0mHU;
+	Mon, 09 Dec 2024 17:01:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKe5D-000000083bd-1ObW;
-	Mon, 09 Dec 2024 13:45:56 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3862a4b8ec2so1623808f8f.1;
-        Mon, 09 Dec 2024 05:45:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733751953; x=1734356753; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0RQwZ2Rx5T9jyCOWKfOL3l539Mk8OkDnC/4KFbJ9300=;
-        b=Wo/0ieLFjQ+chIxNbvP3RLDpdYqyHr+OjlLUqqczI1Fr6N3TkZfSqDnaehf0xzL2Ko
-         GUbi65aP4wklzHE3N3YPVZsHligBQfH+540EtgdnYnrI6GIzUNq2K9NYv5gqgdqaWSdn
-         j4uArM5SCfi1+EXBVraqFz2mwVCavS6fR9JmMpwaa/hNMYHc7JWhmgMf4/ckOku3knz7
-         I9EBzeOVoPkOcKyxQcQBbtCqfC+lfsIqv9EUOVayPiWLwAhNY1mR9AJGd58tRzJSRqJP
-         ppFuSKeaedrNRhqLhzo5pZPyrwro9eieq/3TFvA1yojtScv6LvOpwdl0w89Sd5XKYKUw
-         SkSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733751953; x=1734356753;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0RQwZ2Rx5T9jyCOWKfOL3l539Mk8OkDnC/4KFbJ9300=;
-        b=uuxcUJ34R6Exlre7k8OaGRgQSuRK9o7aYPMI9Aas2G2CPUdow67KU+Ib16UOE2cr5i
-         aBBY0oR37mr+jLU9F8kjUYCP4etq8CGM8LI5sPNx6TuJYmlkMLyKV5fGGXAg8GV3Zdhy
-         3THhKV4mWT6QAY+siqfugTZBz38yzXmcDEVDO4ehIohTSkO9gFDEWxwd6MODlW/l1yWj
-         HmPj2bn+uMb619ga5uI3OwMwKbvMJt+0ksGHqwInxEtkp/RrtWR3ag2TZ0DN89UNJufQ
-         eqbdWLGeB/tiVP7HLrPyO+HuiSHaiIKzr+ja9U1WNgiNAFt+RlBtEgg/w+z0GrXsw/Gz
-         GB/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUzFViocRcxvU2NntOVtM+fv3YAgRiGvdyE9pdNQU4+b7VH96xOek5uTlfxJvEiFURxuuWT339Y7E/x0L/1+1ce@lists.infradead.org, AJvYcCXAl1KmxERKGjzGX290BeasPrmwsxe0bATGKavxacLFF66r/HntwSilYsBpmZychTCw/FINlbAzy78GlsUNUKQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzAcnEwTUm0X4tZXKZqIF0UJQN+vTI49IUeZi7tN/ex5kcrODNW
-	OtWzYczDGAoOYZnic5CRIBK3Xa4NoIZIlObkbfW0mIrTtOP1hbHF
-X-Gm-Gg: ASbGnctNdkCmsHq6CEay1z+UVrsEHUq2p4WiqNI5KChQULuynh/t8f8o+KV9DQPyTUX
-	2tyhuC2HZ7Bxxj2+fnd8TcCBs1JzxQa90a6iBhw7g913GuVpFNBxt7+7gfJI8ejnaU9qiI+2lRC
-	27ifwoLV8NoERkwlP77FaXT7QyBd4ckUvyxPkVdjTx6Nx/Miyl5nqrg6WDHqH+R67IqtEfsVsLg
-	hR3F3shiPogyNqaRVEcM5jaIjSv+RZcWnDtDR8fS2UpMOy776Sn/a8XR2NzWIaqvvGHwNi0VE+S
-	SWMNJ919f2WB4gVO+hI=
-X-Google-Smtp-Source: AGHT+IG+GiAtBGPpTQE85f77tOXGENuVzYIt60U4IGJKHUrD+jI9FtGvemriH/ywSCgC33RA64WzQQ==
-X-Received: by 2002:a5d:584b:0:b0:382:4b52:ffcc with SMTP id ffacd0b85a97d-38645370be9mr432402f8f.0.1733751953093;
-        Mon, 09 Dec 2024 05:45:53 -0800 (PST)
-Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-434f30bceadsm62705135e9.41.2024.12.09.05.45.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 05:45:52 -0800 (PST)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>,
-	Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: [net-next PATCH v11 9/9] net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
-Date: Mon,  9 Dec 2024 14:44:26 +0100
-Message-ID: <20241209134459.27110-10-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241209134459.27110-1-ansuelsmth@gmail.com>
-References: <20241209134459.27110-1-ansuelsmth@gmail.com>
+	id 1tKh7S-00000008dZL-2xYD;
+	Mon, 09 Dec 2024 17:00:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733763623;
+	bh=ysn17uQxkXzPtLZxnOMKYQsJkVa5vH4rdmQv56kQ19U=;
+	h=From:Subject:Date:To:Cc:From;
+	b=bHOtKjS1103e+9ea300h6Mz17GGWJIWxh41GOfvGOiUUrJ6ghWqieWRAU/xZXPP74
+	 DQ/V9z5EC2TUMDPKe9qLaCKTj04sK4F8gGEPgAAEigp0+aMtMGaQpEUPYW1NRhSpTl
+	 VtfLSj/k/tZqkldi+PH3AUbGwaTEiXxhpPoV8FvuFPTvps/q5MI5J97Ndjiqyx5yUM
+	 r01L6rhobmsLN9olbYcG92sMeXkb+szabyxGDekAkmeBfGrRI5PfifXXfXZXwos3Lo
+	 5e6mJlOk3FW/eAoygr9t/+jlEK0v7EYci1d8dsAKr2BgWK56GwzTJsipO2XQe3vZo3
+	 failmmYZYK5+A==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A62317E37BF;
+	Mon,  9 Dec 2024 18:00:19 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2 0/5] thermal/drivers/mediatek/lvts: Fixes for suspend
+ and IRQ storm, and cleanups
+Date: Mon, 09 Dec 2024 14:00:01 -0300
+Message-Id: <20241209-mt8192-lvts-filtered-suspend-fix-v2-0-5b046a99baa9@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIABEiV2cC/4WNQQ6CMBAAv0J6dk27gEFP/sNwKMsqTQolbW00p
+ H+3knj2OHOY2URgbziIS7UJz8kE45YCeKgETXp5MJixsECJjVKoYI6dOiPYFAPcjY3seYTwDCs
+ vYxEv0K2skXTHxIMomdVz0fvi1heeTIjOv/djUl/7i7f/40mBhAa5JtliRye6krNWD87rI7lZ9
+ DnnD8dyvrHUAAAA
+X-Change-ID: 20241121-mt8192-lvts-filtered-suspend-fix-a5032ca8eceb
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Balsam CHIHI <bchihi@baylibre.com>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>, 
+ Chen-Yu Tsai <wenst@chromium.org>, 
+ =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_054555_371185_512EE964 
-X-CRM114-Status: GOOD (  24.16  )
+X-CRM114-CacheID: sfid-20241209_090026_894560_4C5A9FF2 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,334 +89,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for Airoha AN8855 Internal Switch Gigabit PHY.
+Patches 1 and 2 of this series fix the issue reported by Hsin-Te Yuan
+[1] where MT8192-based Chromebooks are not able to suspend/resume 10
+times in a row. Either one of those patches on its own is enough to fix
+the issue, but I believe both are desirable, so I've included them both
+here.
 
-This is a simple PHY driver to configure and calibrate the PHY for the
-AN8855 Switch with the use of NVMEM cells.
+Patches 3-5 fix unrelated issues that I've noticed while debugging.
+Patch 3 fixes IRQ storms when the temperature sensors drop to 20
+Celsius. Patches 4 and 5 are cleanups to prevent future issues.
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+To test this series, I've run 'rtcwake -m mem -d 60' 10 times in a row
+on a MT8192-Asurada-Spherion-rev3 Chromebook and checked that the wakeup
+happened 60 seconds later (+-5 seconds). I've repeated that test on 10
+separate runs. Not once did the chromebook wake up early with the series
+applied.
+
+I've also checked that during those runs, the LVTS interrupt didn't
+trigger even once, while before the series it would trigger a few times
+per run, generally during boot or resume.
+
+Finally, as a sanity check I've verified that the interrupts still work
+by lowering the thermal trip point to 45 Celsius and running 'stress -c
+8'. Indeed they still do, and the temperature showed by the
+thermal_temperature ftrace event matched the expected value.
+
+[1] https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- MAINTAINERS                  |   1 +
- drivers/net/phy/Kconfig      |   5 +
- drivers/net/phy/Makefile     |   1 +
- drivers/net/phy/air_an8855.c | 267 +++++++++++++++++++++++++++++++++++
- 4 files changed, 274 insertions(+)
- create mode 100644 drivers/net/phy/air_an8855.c
+Changes in v2:
+- Renamed bitmasks for interrupt enable (added "INTEN" to the name)
+- Made read-only arrays static const
+- Changed sensor_filt_bitmap array from u32 to u8 to save memory
+- Rebased on next-20241209
+- Link to v1: https://lore.kernel.org/r/20241125-mt8192-lvts-filtered-suspend-fix-v1-0-42e3c0528c6c@collabora.com
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c42431a09b84..25490fcab5a2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -725,6 +725,7 @@ F:	drivers/mfd/airoha-an8855.c
- F:	drivers/net/dsa/an8855.c
- F:	drivers/net/dsa/an8855.h
- F:	drivers/net/mdio/mdio-an8855.c
-+F:	drivers/net/phy/air_an8855.c
- F:	drivers/nvmem/an8855-efuse.c
- 
- AIROHA ETHERNET DRIVER
-diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
-index 15828f4710a9..9b4a7c12b138 100644
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
-@@ -79,6 +79,11 @@ config SFP
- 
- comment "MII PHY device drivers"
- 
-+config AIR_AN8855_PHY
-+	tristate "Airoha AN8855 Internal Gigabit PHY"
-+	help
-+	  Currently supports the internal Airoha AN8855 Switch PHY.
-+
- config AIR_EN8811H_PHY
- 	tristate "Airoha EN8811H 2.5 Gigabit PHY"
- 	help
-diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
-index e6145153e837..38ca7432780e 100644
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
-@@ -35,6 +35,7 @@ obj-y				+= $(sfp-obj-y) $(sfp-obj-m)
- 
- obj-$(CONFIG_ADIN_PHY)		+= adin.o
- obj-$(CONFIG_ADIN1100_PHY)	+= adin1100.o
-+obj-$(CONFIG_AIR_AN8855_PHY)   += air_an8855.o
- obj-$(CONFIG_AIR_EN8811H_PHY)   += air_en8811h.o
- obj-$(CONFIG_AMD_PHY)		+= amd.o
- obj-$(CONFIG_AMCC_QT2025_PHY)	+= qt2025.o
-diff --git a/drivers/net/phy/air_an8855.c b/drivers/net/phy/air_an8855.c
-new file mode 100644
-index 000000000000..7fab0854ef78
---- /dev/null
-+++ b/drivers/net/phy/air_an8855.c
-@@ -0,0 +1,267 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2024 Christian Marangi <ansuelsmth@gmail.com>
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
-+#include <linux/phy.h>
-+
-+#define AN8855_PHY_SELECT_PAGE			0x1f
-+#define   AN8855_PHY_PAGE			GENMASK(2, 0)
-+#define   AN8855_PHY_PAGE_STANDARD		FIELD_PREP_CONST(AN8855_PHY_PAGE, 0x0)
-+#define   AN8855_PHY_PAGE_EXTENDED_1		FIELD_PREP_CONST(AN8855_PHY_PAGE, 0x1)
-+
-+/* MII Registers Page 1 */
-+#define AN8855_PHY_EXT_REG_14			0x14
-+#define   AN8855_PHY_EN_DOWN_SHIFT		BIT(4)
-+
-+/* R50 Calibration regs in MDIO_MMD_VEND1 */
-+#define AN8855_PHY_R500HM_RSEL_TX_AB		0x174
-+#define AN8855_PHY_R50OHM_RSEL_TX_A_EN		BIT(15)
-+#define AN8855_PHY_R50OHM_RSEL_TX_A		GENMASK(14, 8)
-+#define AN8855_PHY_R50OHM_RSEL_TX_B_EN		BIT(7)
-+#define AN8855_PHY_R50OHM_RSEL_TX_B		GENMASK(6, 0)
-+#define AN8855_PHY_R500HM_RSEL_TX_CD		0x175
-+#define AN8855_PHY_R50OHM_RSEL_TX_C_EN		BIT(15)
-+#define AN8855_PHY_R50OHM_RSEL_TX_C		GENMASK(14, 8)
-+#define AN8855_PHY_R50OHM_RSEL_TX_D_EN		BIT(7)
-+#define AN8855_PHY_R50OHM_RSEL_TX_D		GENMASK(6, 0)
-+
-+#define AN8855_SWITCH_EFUSE_R50O		GENMASK(30, 24)
-+
-+/* PHY TX PAIR DELAY SELECT Register */
-+#define AN8855_PHY_TX_PAIR_DLY_SEL_GBE		0x013
-+#define   AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_A_GBE GENMASK(14, 12)
-+#define   AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_B_GBE GENMASK(10, 8)
-+#define   AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_C_GBE GENMASK(6, 4)
-+#define   AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_D_GBE GENMASK(2, 0)
-+/* PHY ADC Register */
-+#define AN8855_PHY_RXADC_CTRL			0x0d8
-+#define   AN8855_PHY_RG_AD_SAMNPLE_PHSEL_A	BIT(12)
-+#define   AN8855_PHY_RG_AD_SAMNPLE_PHSEL_B	BIT(8)
-+#define   AN8855_PHY_RG_AD_SAMNPLE_PHSEL_C	BIT(4)
-+#define   AN8855_PHY_RG_AD_SAMNPLE_PHSEL_D	BIT(0)
-+#define AN8855_PHY_RXADC_REV_0			0x0d9
-+#define   AN8855_PHY_RG_AD_RESERVE0_A		GENMASK(15, 8)
-+#define   AN8855_PHY_RG_AD_RESERVE0_B		GENMASK(7, 0)
-+#define AN8855_PHY_RXADC_REV_1			0x0da
-+#define   AN8855_PHY_RG_AD_RESERVE0_C		GENMASK(15, 8)
-+#define   AN8855_PHY_RG_AD_RESERVE0_D		GENMASK(7, 0)
-+
-+#define AN8855_PHY_ID				0xc0ff0410
-+
-+#define AN8855_PHY_FLAGS_EN_CALIBRATION		BIT(0)
-+
-+struct air_an8855_priv {
-+	u8 calibration_data[4];
-+};
-+
-+static const u8 dsa_r50ohm_table[] = {
-+	127, 127, 127, 127, 127, 127, 127, 127, 127, 127,
-+	127, 127, 127, 127, 127, 127, 127, 126, 122, 117,
-+	112, 109, 104, 101,  97,  94,  90,  88,  84,  80,
-+	78,  74,  72,  68,  66,  64,  61,  58,  56,  53,
-+	51,  48,  47,  44,  42,  40,  38,  36,  34,  32,
-+	31,  28,  27,  24,  24,  22,  20,  18,  16,  16,
-+	14,  12,  11,   9
-+};
-+
-+static int en8855_get_r50ohm_val(struct device *dev, const char *calib_name,
-+				 u8 *dest)
-+{
-+	u32 shift_sel, val;
-+	int ret;
-+	int i;
-+
-+	ret = nvmem_cell_read_u32(dev, calib_name, &val);
-+	if (ret)
-+		return ret;
-+
-+	shift_sel = FIELD_GET(AN8855_SWITCH_EFUSE_R50O, val);
-+	for (i = 0; i < ARRAY_SIZE(dsa_r50ohm_table); i++)
-+		if (dsa_r50ohm_table[i] == shift_sel)
-+			break;
-+
-+	if (i < 8 || i >= ARRAY_SIZE(dsa_r50ohm_table))
-+		*dest = dsa_r50ohm_table[25];
-+	else
-+		*dest = dsa_r50ohm_table[i - 8];
-+
-+	return 0;
-+}
-+
-+static int an8855_probe(struct phy_device *phydev)
-+{
-+	struct device *dev = &phydev->mdio.dev;
-+	struct device_node *node = dev->of_node;
-+	struct air_an8855_priv *priv;
-+
-+	/* If we don't have a node, skip calib */
-+	if (!node)
-+		return 0;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	phydev->priv = priv;
-+
-+	return 0;
-+}
-+
-+static int an8855_get_downshift(struct phy_device *phydev, u8 *data)
-+{
-+	int val;
-+
-+	val = phy_read_paged(phydev, AN8855_PHY_PAGE_EXTENDED_1, AN8855_PHY_EXT_REG_14);
-+	if (val < 0)
-+		return val;
-+
-+	*data = val & AN8855_PHY_EN_DOWN_SHIFT ? DOWNSHIFT_DEV_DEFAULT_COUNT :
-+						 DOWNSHIFT_DEV_DISABLE;
-+
-+	return 0;
-+}
-+
-+static int an8855_set_downshift(struct phy_device *phydev, u8 cnt)
-+{
-+	u16 ds = cnt != DOWNSHIFT_DEV_DISABLE ? AN8855_PHY_EN_DOWN_SHIFT : 0;
-+
-+	return phy_modify_paged(phydev, AN8855_PHY_PAGE_EXTENDED_1,
-+				AN8855_PHY_EXT_REG_14, AN8855_PHY_EN_DOWN_SHIFT,
-+				ds);
-+}
-+
-+static int an8855_config_init(struct phy_device *phydev)
-+{
-+	struct air_an8855_priv *priv = phydev->priv;
-+	struct device *dev = &phydev->mdio.dev;
-+	int ret;
-+
-+	/* Enable HW auto downshift */
-+	ret = an8855_set_downshift(phydev, DOWNSHIFT_DEV_DEFAULT_COUNT);
-+	if (ret)
-+		return ret;
-+
-+	/* Apply calibration values, if needed.
-+	 * AN8855_PHY_FLAGS_EN_CALIBRATION signal this.
-+	 */
-+	if (priv && phydev->dev_flags & AN8855_PHY_FLAGS_EN_CALIBRATION) {
-+		u8 *calibration_data = priv->calibration_data;
-+
-+		ret = en8855_get_r50ohm_val(dev, "tx_a", &calibration_data[0]);
-+		if (ret)
-+			return ret;
-+
-+		ret = en8855_get_r50ohm_val(dev, "tx_b", &calibration_data[1]);
-+		if (ret)
-+			return ret;
-+
-+		ret = en8855_get_r50ohm_val(dev, "tx_c", &calibration_data[2]);
-+		if (ret)
-+			return ret;
-+
-+		ret = en8855_get_r50ohm_val(dev, "tx_d", &calibration_data[3]);
-+		if (ret)
-+			return ret;
-+
-+		ret = phy_modify_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_R500HM_RSEL_TX_AB,
-+				     AN8855_PHY_R50OHM_RSEL_TX_A | AN8855_PHY_R50OHM_RSEL_TX_B,
-+				     FIELD_PREP(AN8855_PHY_R50OHM_RSEL_TX_A, calibration_data[0]) |
-+				     FIELD_PREP(AN8855_PHY_R50OHM_RSEL_TX_B, calibration_data[1]));
-+		if (ret)
-+			return ret;
-+		ret = phy_modify_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_R500HM_RSEL_TX_CD,
-+				     AN8855_PHY_R50OHM_RSEL_TX_C | AN8855_PHY_R50OHM_RSEL_TX_D,
-+				     FIELD_PREP(AN8855_PHY_R50OHM_RSEL_TX_C, calibration_data[2]) |
-+				     FIELD_PREP(AN8855_PHY_R50OHM_RSEL_TX_D, calibration_data[3]));
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/* Apply values to reduce signal noise */
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_TX_PAIR_DLY_SEL_GBE,
-+			    FIELD_PREP(AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_A_GBE, 0x4) |
-+			    FIELD_PREP(AN8855_PHY_CR_DA_TX_PAIR_DELKAY_SEL_C_GBE, 0x4));
-+	if (ret)
-+		return ret;
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_RXADC_CTRL,
-+			    AN8855_PHY_RG_AD_SAMNPLE_PHSEL_A |
-+			    AN8855_PHY_RG_AD_SAMNPLE_PHSEL_C);
-+	if (ret)
-+		return ret;
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_RXADC_REV_0,
-+			    FIELD_PREP(AN8855_PHY_RG_AD_RESERVE0_A, 0x1));
-+	if (ret)
-+		return ret;
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, AN8855_PHY_RXADC_REV_1,
-+			    FIELD_PREP(AN8855_PHY_RG_AD_RESERVE0_C, 0x1));
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int an8855_get_tunable(struct phy_device *phydev,
-+			      struct ethtool_tunable *tuna, void *data)
-+{
-+	switch (tuna->id) {
-+	case ETHTOOL_PHY_DOWNSHIFT:
-+		return an8855_get_downshift(phydev, data);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+static int an8855_set_tunable(struct phy_device *phydev,
-+			      struct ethtool_tunable *tuna, const void *data)
-+{
-+	switch (tuna->id) {
-+	case ETHTOOL_PHY_DOWNSHIFT:
-+		return an8855_set_downshift(phydev, *(const u8 *)data);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+static int an8855_read_page(struct phy_device *phydev)
-+{
-+	return __phy_read(phydev, AN8855_PHY_SELECT_PAGE);
-+}
-+
-+static int an8855_write_page(struct phy_device *phydev, int page)
-+{
-+	return __phy_write(phydev, AN8855_PHY_SELECT_PAGE, page);
-+}
-+
-+static struct phy_driver an8855_driver[] = {
-+{
-+	PHY_ID_MATCH_EXACT(AN8855_PHY_ID),
-+	.name			= "Airoha AN8855 internal PHY",
-+	/* PHY_GBIT_FEATURES */
-+	.flags			= PHY_IS_INTERNAL,
-+	.probe			= an8855_probe,
-+	.config_init		= an8855_config_init,
-+	.soft_reset		= genphy_soft_reset,
-+	.get_tunable		= an8855_get_tunable,
-+	.set_tunable		= an8855_set_tunable,
-+	.suspend		= genphy_suspend,
-+	.resume			= genphy_resume,
-+	.read_page		= an8855_read_page,
-+	.write_page		= an8855_write_page,
-+}, };
-+
-+module_phy_driver(an8855_driver);
-+
-+static struct mdio_device_id __maybe_unused an8855_tbl[] = {
-+	{ PHY_ID_MATCH_EXACT(AN8855_PHY_ID) },
-+	{ }
-+};
-+
-+MODULE_DEVICE_TABLE(mdio, an8855_tbl);
-+
-+MODULE_DESCRIPTION("Airoha AN8855 PHY driver");
-+MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
-+MODULE_LICENSE("GPL");
+---
+Nícolas F. R. A. Prado (5):
+      thermal/drivers/mediatek/lvts: Disable monitor mode during suspend
+      thermal/drivers/mediatek/lvts: Disable Stage 3 thermal threshold
+      thermal/drivers/mediatek/lvts: Disable low offset IRQ for minimum threshold
+      thermal/drivers/mediatek/lvts: Start sensor interrupts disabled
+      thermal/drivers/mediatek/lvts: Only update IRQ enable for valid sensors
+
+ drivers/thermal/mediatek/lvts_thermal.c | 103 ++++++++++++++++++++++----------
+ 1 file changed, 72 insertions(+), 31 deletions(-)
+---
+base-commit: d1486dca38afd08ca279ae94eb3a397f10737824
+change-id: 20241121-mt8192-lvts-filtered-suspend-fix-a5032ca8eceb
+
+Best regards,
 -- 
-2.45.2
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
