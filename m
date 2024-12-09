@@ -4,73 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EAAE7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 17:06:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2208DE7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 18:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EDkiCgWoLJt/6Jq0UlyjloWQpFVWbD954PXf8Lx4jZc=; b=U0hpyHIPSMcyEuhh1F3PJjzuzv
-	X54Lyf4HLpn95IKqiBbg/2ca0u+dcSA9R4akaBclFqL1rlg4L3GuaJgJxVtIl4XJhyUNxAMxIk2jc
-	VDHvYfwDm0pz6TmepGE3lOPFuGrqAdlk1D6A2K40Zp02Z9fWz+p6OCBySJnlG2BGZO6v+wtnmPz/6
-	uEkJFJPhEwZzLq4xU1DDijRnLAptG4wP8ekwmttmANWY7XtJHhuTar0eYRRLamBP06Dgxaowt2Tk8
-	qlrZAyzgbBwvWSNynqZlway0Q/2WClB0xEsi4CupN4E2Ne6cH490jC6q5ogPf/cAaqbkODEg4lAHx
-	mmlVqRnw==;
+	bh=vnce7T7XEQrPlvinYVL/n1yhtcPoTTfoFaF2vz6MOmA=; b=IIdyIGq+XnydaR3lGuqBRWeiyn
+	coB1f76FWTQIcgqOODld8ATXroiRQYwfkQikI0yBD4q3JrC9+1RF/hW3/gMyaIcuc7Xz4LAsSERQ9
+	sLUnPX/b9HI2ZYMU8zexVkOig23A/zHsaB8ZEV1kRxSJabvLIWaOnsgLMYQlM0X57K2jVUSW+nDGA
+	U89rkVl0za1CTCJnyHp+FlB5l/Y78CpfKDt2HbKumM+VJmMjNbv+iqTSaQuRb7zNxPEnEr9NfRbK3
+	5NcrHV1ahwJlHkPbWaxnnsA6ErGi64AaDoJeWO0AI+OBjdq7Ob0IzRur1BW6AzqItnmsS4J+40bSN
+	u9K3EYZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKhDd-00000008fQL-0VaF;
-	Mon, 09 Dec 2024 17:06:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tKiKN-00000008rQC-0rR5;
+	Mon, 09 Dec 2024 18:17:51 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKh7p-00000008dnY-08FB;
-	Mon, 09 Dec 2024 17:00:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733763647;
-	bh=aiDivIqNPWrEAznb447RKc5XOvk3UR3b13+v8yLgwj4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OzJBv+B3JvRHA6tIebLfaKSSfSWFPJ7NCrG2pDgjkcaGBUtZvAg01CC6Km4ZsNAqJ
-	 pYe9sEl5n5Njz/65mWU+o9pZjfpUHvmv0/sdVSPDFNJ1kSLNJMPXoBjOta9DQ739m2
-	 8qBn5ItjUBNNYd1k9DUVwi6y4K6ps36Obu1OocGqu3zkud+7e9eQPpaIURwUjrWREa
-	 Y3EmbdUpohdfabZVZ8W4PWwhTMGFzfnyNMjQX+Ja0rT1X2f3JNsxqy6WO7jew1BiIh
-	 ndTwmByfpM8p3hTol2FiHxHA1olXDPWEzM6OujSV8QiAtli1tkhf0YLQFRAGQe/P8a
-	 xKHRLY3/wViZA==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DDCE317E37C6;
-	Mon,  9 Dec 2024 18:00:42 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 09 Dec 2024 14:00:06 -0300
-Subject: [PATCH v2 5/5] thermal/drivers/mediatek/lvts: Only update IRQ
- enable for valid sensors
+	id 1tKiJK-00000008rJc-1YnB;
+	Mon, 09 Dec 2024 18:16:47 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9ATf0g028879;
+	Mon, 9 Dec 2024 18:16:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	vnce7T7XEQrPlvinYVL/n1yhtcPoTTfoFaF2vz6MOmA=; b=W8l6J/lnj/iOlWol
+	s07T1SVbHXGzyHmG64Zd4inrJURiK72U72gYXc9e8fpEyVzeEhP4iplkYQOXL3sg
+	8349nMkhNTii7K4sgQOcBAyR5707y91w3cYHgQgwDBtroCs+Z8wF5hcx9i/PPojn
+	wyjuDDjlvD9L1pJhonMoiPXOXgTTJaACfkbOx7MPNSN8ugyZGkdWq0QcXy5VcJcc
+	Utjss5AjiQ5Ke2LUxkwlT52AasRu4i4/uDnoK2b4Td9GgQl2U658wS6UDOgZu+HS
+	6cal1upeuSIBekl9ZRczcJ7IQ64ZsWUwbx1mHfspTUM3R+vkpi6XZVxgE+k4nHIT
+	t+2jbw==
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43cfhkdmt6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 09 Dec 2024 18:16:40 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA05.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4B9IGeCZ022605
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 9 Dec 2024 18:16:40 GMT
+Received: from [10.50.34.16] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 9 Dec 2024
+ 10:16:35 -0800
+Message-ID: <54ac6a4f-5ae0-409f-8401-d6e1326d4358@quicinc.com>
+Date: Mon, 9 Dec 2024 23:46:31 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20241209-mt8192-lvts-filtered-suspend-fix-v2-5-5b046a99baa9@collabora.com>
-References: <20241209-mt8192-lvts-filtered-suspend-fix-v2-0-5b046a99baa9@collabora.com>
-In-Reply-To: <20241209-mt8192-lvts-filtered-suspend-fix-v2-0-5b046a99baa9@collabora.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] i3c: master: Improve initialization of numbered I2C
+ adapters
+To: Defa Li <defa.li@mediatek.com>,
+        Alexandre Belloni
+	<alexandre.belloni@bootlin.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-i3c@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+        <mingchang.jia@mediatek.com>, <yuhan.wei@mediatek.com>,
+        <hao.lin@mediatek.com>
+References: <20241205132934.12110-1-defa.li@mediatek.com>
+Content-Language: en-US
+From: Mukesh Kumar Savaliya <quic_msavaliy@quicinc.com>
+In-Reply-To: <20241205132934.12110-1-defa.li@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: OSoeq6sK0chCG1sPbMn_4yX6vW5ijtBe
+X-Proofpoint-GUID: OSoeq6sK0chCG1sPbMn_4yX6vW5ijtBe
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ impostorscore=0 mlxlogscore=999 mlxscore=0 adultscore=0 lowpriorityscore=0
+ phishscore=0 clxscore=1011 priorityscore=1501 spamscore=0 bulkscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2411120000 definitions=main-2412090142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_090049_214871_2EDCEA5D 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20241209_101646_426959_1BF9F017 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,39 +105,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only sensors that are valid need to have their interrupts enable status
-updated based on their thresholds. Use the lvts_for_each_valid_sensor()
-helper in lvts_update_irq_mask() to ignore invalid sensors.
 
-Currently, since the invalid sensors will always contain zeroed out
-thresholds (from kzalloc), they will always get their interrupts
-disabled on this loop. So this commit doesn't change the resulting
-interrupts configuration, but it slightly optimizes the loop by skipping
-the invalid sensors, avoids potential future surprises if at some point
-memory is no longer allocated for invalid sensors, as well as makes the
-code more obvious.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 38668b5b34c7375d3a3b0dcf8dcc965a254776cc..088481d91e6e294a31fac7ceed7f3ff62ee3a98d 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -346,7 +346,7 @@ static void lvts_update_irq_mask(struct lvts_ctrl *lvts_ctrl)
- 
- 	value = readl(LVTS_MONINT(lvts_ctrl->base));
- 
--	for (i = 0; i < ARRAY_SIZE(masks); i++) {
-+	lvts_for_each_valid_sensor(i, lvts_ctrl) {
- 		if (lvts_ctrl->sensors[i].high_thresh == lvts_ctrl->high_thresh
- 		    && lvts_ctrl->sensors[i].low_thresh == lvts_ctrl->low_thresh) {
- 			/*
-
--- 
-2.47.0
+On 12/5/2024 6:59 PM, Defa Li wrote:
+> Add logic to initialize I2C adapters with a specific ID if available,
+> improving device identification and configuration.
+> 
+Could you also provide how exactly to define this into DT to have 
+numbering while registering the adapter ? Kind of sample to which can be 
+defined in DTSI.
+> Signed-off-by: Defa Li <defa.li@mediatek.com>
+> ---
+>   drivers/i3c/master.c | 11 +++++++++--
+>   1 file changed, 9 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
+> index 42310c9a00c2..a838cdbb897b 100644
+> --- a/drivers/i3c/master.c
+> +++ b/drivers/i3c/master.c
+> @@ -2486,7 +2486,7 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
+>   	struct i2c_adapter *adap = i3c_master_to_i2c_adapter(master);
+>   	struct i2c_dev_desc *i2cdev;
+>   	struct i2c_dev_boardinfo *i2cboardinfo;
+> -	int ret;
+> +	int ret, id = -ENODEV;
+>   
+>   	adap->dev.parent = master->dev.parent;
+>   	adap->owner = master->dev.parent->driver->owner;
+> @@ -2497,7 +2497,14 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
+>   	adap->timeout = 1000;
+>   	adap->retries = 3;
+>   
+> -	ret = i2c_add_adapter(adap);
+> +	if (master->dev.of_node)
+> +		id = of_alias_get_id(master->dev.of_node, "i2c");
+> +
+> +	if (id >= 0) {
+> +		adap->nr = id;
+> +		ret = i2c_add_numbered_adapter(adap);
+> +	} else
+> +		ret = i2c_add_adapter(adap);
+Please provide braces for else too.
+>   	if (ret)
+>   		return ret;
+>   
 
 
