@@ -4,84 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78270E77173
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 10:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89CFE77173
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 10:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CvGrIzK31GTBFjNGvfPnzGTHYWWNCo7wk0oYnACbL3c=; b=5CHXMPO5uOJsERgPgpVqY/UDzk
-	oh4NXMoUXYqHE+SiksB4XJjfi87Cj8mtHb4U7zOJrNdFm1rLB9FU37vOI+zTIp/kpcQFKrQlb+EKC
-	U7nzpBSTAoQL36t2lrwh1zXUQVKOxIiscfh9ubCbJmVyWHPPkMBuL1TH5SVdzL5DubKaTHzhBYSwH
-	ZYkHNMyGNDA1mTsppZjl4oABU5QZ9UZ8ge8UwGpFyGJXN9LhSVMp8voI9zlEnL9+Nb879lCzUtEdi
-	YcpzAyYlf7ONG2qvLFh/t3c6wXGS+RulHGb4lXDhmZ0OtsoQzH9iP+EWQnbeYk/rophfTFv3I2GPl
-	76AJYX7g==;
+	bh=u10Z7RsJ3SrsFacDql6F0JSeqSx6z9qL6lroTSMFehA=; b=OltdAu7mHXe0xnaLcWSAWndEgZ
+	ys/KdAIF3mZ/CiIPv6Lii+bDYUkHFaFlQuVaPl1DCwZhA7qYwsC59/EhiG/ceP2gGwhHHludWfj3f
+	xcFOtx+WyorthPoZOGjpZ8R0nviWxGHBlpt4y203TTwRjBzfbHUBWZrTD6BX6a7InibD0MnTeHwCR
+	8sdDpTlbqqyfAt4e4rTRpaH/jk6sismYb/gPOI+ZfUJjF3pWiq+LeZlJowAsDqNGUNMObGvpe/ArM
+	ttAUhi7DvabJPZI1Kr+0HNr7WwhOjOzRKE6I/QMc/BsWY5ThWFYq27Tac0FZgWDUWJZB4kj+DSCN+
+	4l2kqT5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKatr-00000007Ga5-29Ay;
-	Mon, 09 Dec 2024 10:21:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tKavC-00000007Gtu-3UiS;
+	Mon, 09 Dec 2024 10:23:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKaV3-00000007BK9-2cpI;
-	Mon, 09 Dec 2024 09:56:22 +0000
+	id 1tKabv-00000007Ca1-1Yrq;
+	Mon, 09 Dec 2024 10:03:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733738179;
-	bh=nplaTSeRl93wINz5j7eOZBcNUOXjUDq4lRiwbGpfj40=;
+	s=mail; t=1733738604;
+	bh=uxDhJyLY3sygy6QpU5RBbCWc5T7HouoogqahrUoEgVQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kncwX2M3cPzLj6tuhX7ozxLhSdFfurogINElznEJ+g7f7tM+P/eAKGHnGdO2vorCe
-	 kxwU0+7WBu5ArBUSqC1m2Dw3O4Sso6GqPmeEIpalobzZylB+DhBy21U/t08dNFp3Sr
-	 /4Wq/zD66z4WoCiWWsukZ0kzobBxXBa01prLQckoMIW42CkAqpLlrBNs76s6oU7km2
-	 4/MHePcpGQHbePjsuT6w20n/C75bZwq1KTCamUDBDZMwBSiWpPeCRNzVsxqjXXduC7
-	 s6yJULljut9HnPmo0aL3ALBzSm3uVlAh52VJ94o2UBwtGWqvtnODK9DxUFdphpoWRq
-	 aItkqqgKTO5yA==
+	b=qIiERnIv919/ESyVCG3CtCp2T2qIXTi3k40L/ZXlh5p7nfHQZ7Yk+8lR6/xjB6wVE
+	 3AkTXm61EaKoSdY9cBflFmGUoz/kE1gc0EP45KxaSUT+b/lND0VeAnOUwjnuGAa6OT
+	 LyN2sB3DdfIzAlWtQqHzzqnN1Wwg0lrGiW2hHKA0a0sNcuzVp3IdA/9vL/KOZH5dbR
+	 3o60pvkY6uXerlXMK0djbTSxzTSQarvHIyZ7FCt01xA7ka7HJ+4q2iI4sMfY8CN+tz
+	 uijQPuSyo9iuEeuzA3R3fc8X2pJhm/vMP6Lm/Wj0SPwjUtMq+1+GJGQArr4oNnl+YO
+	 9FVZFihrAB3cA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8140817E3624;
-	Mon,  9 Dec 2024 10:56:18 +0100 (CET)
-Message-ID: <7a4f8b11-e840-4e33-a6e7-4f58601ed31c@collabora.com>
-Date: Mon, 9 Dec 2024 10:56:18 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2474717E3625;
+	Mon,  9 Dec 2024 11:03:24 +0100 (CET)
+Message-ID: <c7407eef-d5dd-4380-ba5e-1defa37ee742@collabora.com>
+Date: Mon, 9 Dec 2024 11:03:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 14/15] drm/mediatek: mtk_hdmi_common: Add OP_HDMI,
- vendor and product strings
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-15-angelogioacchino.delregno@collabora.com>
- <6697eef88677950d36fbfbd6676f82f291621159.camel@mediatek.com>
+Subject: Re: [PATCH 0/5] MT8516/MT8167 dtsi fixes
+To: Val Packett <val@packett.cool>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241204190524.21862-1-val@packett.cool>
+ <7bf536a5-30c1-43d8-9ea3-3aaea65c6b0a@collabora.com>
+ <VVS3OS.MZCWW6ICFFUB3@packett.cool>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <6697eef88677950d36fbfbd6676f82f291621159.camel@mediatek.com>
+In-Reply-To: <VVS3OS.MZCWW6ICFFUB3@packett.cool>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_015621_822965_A4244D68 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20241209_020327_578028_A2BBED61 
+X-CRM114-Status: GOOD (  31.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,79 +79,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/12/24 10:09, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
+Il 07/12/24 04:11, Val Packett ha scritto:
 > 
-> On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> In preparation for adding the HDMI TX v2 driver, and to allow
->> a future modernization of the HDMI v1 one, perform changes
->> that enable the usage of the HDMI Helpers provided by DRM.
->>
->> Check if the HDMI driver provides the function pointers to
->> hdmi_{clear,write}_infoframe used by the HDMI Helper API and,
->> if present, add DRM_BRIDGE_OP_HDMI to the drm_bridge ops,
->> enabling the drm API to register the bridge as HDMI and to use
->> the HDMI Helper functions.
->>
->> Moreover, as part of data exclusively used (in the context of
->> HDMI bridges) by the helpers, assign the vendor "MediaTek" and
->> product "On-Chip HDMI" strings to the drm_bridge struct.
->>
->> If the hdmi_{write,clear}_infoframe pointers are not assigned,
->> vendor and product strings and HDMI helpers will not be used,
->> hence this commit brings no functional changes to drivers that
->> have not been refactored to use the new helpers.
->>
->> This also means that, in the current state, there is effectively
->> no functional change to mtk_hdmi and its other components.
+> On Thu, Dec 5 2024 at 01:27:01 PM +01:00:00, AngeloGioacchino Del Regno 
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>> I strongly suggest you to also send one that achieves basic boot with UART console
+>> as a first step for upstreaming your board, and then go for incremental changes
+>> everytime you get a new feature working.
 > 
-> OP_HDMI is for v2.
-> vendor and product strings is for both v1 and v2.
-> So separate this patch to two patches.
+> Wanted to get the PMIC in first but sure, could try splitting out the initial 
+> version without the PMIC.
 > 
 
-They're both for v2, because only v2 uses the HDMI helpers, while v1 does not.
+We all want to get XYZ in first, but then, you'll see that sometimes having at
+least something will help you justify other changes....
+
+If there's nothing upstream, understanding your changes becomes increasingly
+difficult (depending on the nature of those changes, of course) - so... just
+take the advice: sending the initial DT will help you later in the process ;-)
+
+> Oh! One dts/dtsi question: pretty much all MTK devices so far have all pinctrl 
+> configurations defined per-device. But on this SoC, pin assignments have their 
+> "canonical" function in the pin name e.g.: MT8167_PIN_58_SDA0__FUNC_SDA0_0 and on 
+> this device they are used as-is. Would it be fine to place these default pinctrl 
+> configs for SD/MMC, I2C etc. in the SoC dtsi?
+> 
+
+No, because even though this is the default on many boards, it's still something
+board specific, as other boards may define different functions.
+
+Please define that in your board DT.
+
+>>> Generally, if the patches are only simple additions, you could send the original
+>> patches without any author variation (and fixing that MT6392_IRQ_numbers enum
+>> in the original ones because lower case please!) and then your patches on top
+>> with your additions.
+> 
+> Right, I was mostly unsure if the email workflow supported just sending someone 
+> else's patches, but I guess that was silly - of course git-send-email should do the 
+> right thing!
+> 
+>> The upstream driver just gained support for configuring the display paths
+>> entirely in the devicetree as those are obviously device specific.
+>>
+>> You can make use of that for upstreaming your tablet after adding the display
+>> nodes (and bindings, if required) as if you go for the default configuration
+>> that's probably not going to work because it's for the pumpkin boards which
+>> will most probably have a different display pipeline compared to your board.
+> 
+> The pipeline seems to be the same.. The pumpkin board was brought up with DSI as 
+> well, the main pipeline I can find in the Android source is the same (+ PWM).
+> 
+> I am still struggling to get it to work though: DSI command mode configuration gets 
+> acknowledged fine, but in burst mode, the vblank never arrives. Tried fiddling with 
+> various things (CMDQ or not, mutex as vblank source since there was an Android 
+> commit doing that, etc.), nothing helped.
+> 
+
+DSI command mode is not supported upstream - only video mode... and that's why you
+can't get your display to work. There's no WDMA driver...
+
+Convert it to video mode and it's gonna work just perfect :-)
+
+P.S.: Also check if your mmsys+mutex configuration is correct!
+
+>>> By the way, is anyone familiar with PSCI cpuidle/hot-unplug issues on
+>>> Mediatek Android devices from around this time? [..]
+>>
+>> I did have some issues with an older bootloader on the Xperia M5 smartphone
+>> and would even lock up at boot, because on the old firmwares the power
+>> domains for the CPUs are not managed automatically by FW.
+> 
+> Interesting, thanks for the pointer!
+> 
+> In the Android kernel sources I could find though, there are no CPU domains in the 
+> mtk-scpsys-mt8167 driver, and the only references I could even find to the related 
+> register bits are from code that *reads* the status of the CPU power domains to 
+> make decisions about sleep states (only_one_cpu_online in mtk_idle). Trying to add 
+> those to the driver anyway, did not succeed so far.
+> 
+
+Downstream, you will find references to "mtcmos" (or anyway cpu mtcmos) - that's
+how power domains are called there (I think. At least, in older downstream kernels
+that's how they're called - and that's the "real" hw name btw).
 
 Cheers,
 Angelo
 
-> Regards,
-> CK
+> ~val
 > 
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 7 +++++++
->>   1 file changed, 7 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> index 4f708b04f5e8..0f60842462b0 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> @@ -408,9 +408,16 @@ struct mtk_hdmi *mtk_hdmi_common_probe(struct platform_device *pdev)
->>
->>          hdmi->bridge.funcs = ver_conf->bridge_funcs;
->>          hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
->> +
->> +       if (ver_conf->bridge_funcs->hdmi_write_infoframe &&
->> +           ver_conf->bridge_funcs->hdmi_clear_infoframe)
->> +               hdmi->bridge.ops |= DRM_BRIDGE_OP_HDMI;
->> +
->>          hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
->>          hdmi->bridge.of_node = pdev->dev.of_node;
->>          hdmi->bridge.ddc = hdmi->ddc_adpt;
->> +       hdmi->bridge.vendor = "MediaTek";
->> +       hdmi->bridge.product = "On-Chip HDMI";
->>
->>          ret = devm_drm_bridge_add(dev, &hdmi->bridge);
->>          if (ret)
->> --
->> 2.47.0
->>
 > 
-
+> 
 
 
