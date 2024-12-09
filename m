@@ -4,101 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E950BE7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 23:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CF9E7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 23:41:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4za+GSZXfXk9ejvCCCE1cqr2r2pNcy2eq/BH59GGowU=; b=0PQC3VZXbVbeasyaWBifhGmVxo
-	DxG3+3pKF3nfFwjlv5xve7rhW7t0ppzz4HAoERtPLcY6y7ZsnQOQCE3mO4tgQwak9Dp7iuTm+5PoV
-	omQgXhCFfFoQZD3JWdUu8ETQJwMSzQfvZwpdg4i1vLLwRuXeJV2UdjBZcEU1xtxxUNEy6Obo6rDos
-	YTXtiUexo1v/5ViiznHEeEtwfs15IG3o8qgAzZaTBGvITKZJxRUTGMWeI1IyqG0H+ztz802+/dbIq
-	ak3wqQUD1GRPMCmoeHRgwmVBehm7YwDW//YDss62AxXUAx/gkZo8UbQ5PJS38TLDIo/4bGuk0e5GR
-	GHHtb8Og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uI7KRrsJCwKAEhUPghYG3oAvPQyCprZOP0dck1wkdRE=; b=mFtdPczWWJsEWJt0Fk0Zya3YaU
+	WvOL1SBvlaL5op7lLTDgcU+/qr3jeD8dqSZWpCGiU23Dmq3jjjMcwj6t/GdfkIK4GzVtp0pKEGX8s
+	kkHFxbiNpNBqymk4of6FtCDwkGTwlPBRynsdbnxlFGkvbUalIljtDiC2i9ErUgXmxd5IJ3bgt2mz6
+	tJ6Sz7YcCHbTho9PpOCpnIAv4SRPQdQba3byhRRxI1cr50ywh1+1WBbcAQs0cyPKk/8uFpkBX5lgj
+	9qWlDKK6TKL03vNDsx0WqH/0mnY/cz5p/XwqXMPSxIsunJJ7phlRxuy9016WdwhG0jq30BkbsgxSh
+	ujZpXpaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKn6z-00000009Yrl-0IMa;
-	Mon, 09 Dec 2024 23:24:21 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1tKnNi-00000009bMQ-1CWI;
+	Mon, 09 Dec 2024 23:41:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKn5m-00000009YYK-3SPm;
-	Mon, 09 Dec 2024 23:23:07 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3862b364538so2029233f8f.1;
-        Mon, 09 Dec 2024 15:23:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733786585; x=1734391385; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=4za+GSZXfXk9ejvCCCE1cqr2r2pNcy2eq/BH59GGowU=;
-        b=TD/vMBpCLI8Q/Zsct+YNB0xb4zh4PmX6UvUYwC92T4WTM2ZPwl5+H56OF9edqKjTEe
-         A0kmwsGahytEXLL4Zho77cBtI1YLeBj5NkkoJ9XEkUe4MtpoTASn0tg7FF8z1C/0EL4w
-         1DY0gkTJ6FW/0ESN5/lQ3QQOIeYoiYNDOS32txTdVbvb+FDVMVs4FHGpSyUh+Ox7yWu+
-         +KI55tgQFDPUTgFOwwTMaHpxtOx4R17/COzw8vKmMl4mH5mH7Fc0mbqGtqB2YmfP0F4B
-         bVR8L6lgIIP7CtiLh8yFR0DNjeEpbtrfiRcRnkt/bhnfp5GClUFWjJGQMYf/Uby8a5dj
-         nXGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733786585; x=1734391385;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4za+GSZXfXk9ejvCCCE1cqr2r2pNcy2eq/BH59GGowU=;
-        b=iiIAWoDSgMpBadwwaFpUSBnylweC0NvNUsj456Rh6AntjNjTuW4+i4DUFfBfo8Q1Zn
-         yzEQDp+H4MRT3Oehj2rwGacY9M/R1e6KXA8EWcTpOhfMkTYXC798/aIluot00yHTwyTb
-         5BiOuD88I+sjs6aciUjQiCmTUJtX+rr+iEMqwKWvEEwm5n6eLHFIFSctQNRnQoWJVSbI
-         Z0iv7f9gS9rg7Cm8ImOP/ntMtOxUepFHxhhLjJeAldYP74vtYtX24/sLkJCwogIwkgxk
-         X+pVeY2C+FFf4u339B498mynxM+DZDoRVunw0c8TEI42+ehtNaop3wC569xS+r3tpECK
-         cztg==
-X-Forwarded-Encrypted: i=1; AJvYcCWZQFReC5NGpEw86mZN3f8aikjKnGOaLoi0+V9BLTftL7qC00M9IAiLnPs75WlzM2ruTo+ZKDplrWRnlP+WR+Y=@lists.infradead.org, AJvYcCXqnql9EO29Nr0h33X9uzFcHWnYXMqIYhmt9W1Zn+ZenvFnQrfmkEtGFo9Fo4cu3cB+ScXfmb/fX5UsnxWPWTiE@lists.infradead.org
-X-Gm-Message-State: AOJu0YzisDKVP5T3amTHthJ6ARrsZ5sWPG0l+zfujHX2nQnryhubXrIA
-	RTfaoTqSca0wF8u3D7vnOTIRgv020K8x9ehHh+FsISbk8PttGVkj
-X-Gm-Gg: ASbGnctYkrmWY157KIds2gZdlc1nynbjbfPt7wqdwuylXCv5gKzi6kmUF+wN0ceSch1
-	NsuHXMSXz1/ZVx9Sp5oMkv7KbGvA8thxBmSPtG+GDSfXp3ZvajTo2heh8wDU9l+FmrNB06KVrgJ
-	frJ/gcRCYWK2KdHbz0ajb+Rcopz/i4CJPctOc7Ca86xhjsUIgRW+Xyf22kZkMa5hFQUhd+sOHbH
-	RUchE73RDAOyi515/Vs278wo6ZcntUUtChMQ6334vqvaLZqDHTKcHSNwxn+HG1ti4bBaAWKIpjj
-	nNHMaLafQg==
-X-Google-Smtp-Source: AGHT+IGcwzFHa6tjiFPLaKsV++wYg1Uf2gT5gfK3g5nqMFs22rDgHy9nqza1HTLsDkylobsAiFk1iw==
-X-Received: by 2002:a5d:5846:0:b0:386:37f8:451c with SMTP id ffacd0b85a97d-3864699e721mr903990f8f.1.1733786584777;
-        Mon, 09 Dec 2024 15:23:04 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434f55733d2sm65178135e9.40.2024.12.09.15.23.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 15:23:03 -0800 (PST)
-Message-ID: <67577bd7.7b0a0220.1ce6b5.fe93@mx.google.com>
-X-Google-Original-Message-ID: <Z1d70wi6VzvCTIBj@Ansuel-XPS.>
-Date: Tue, 10 Dec 2024 00:22:59 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
+	id 1tKnMe-00000009bFB-3o8r;
+	Mon, 09 Dec 2024 23:40:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C7E9D5C5DEA;
+	Mon,  9 Dec 2024 23:39:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37CABC4CED1;
+	Mon,  9 Dec 2024 23:40:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733787632;
+	bh=BA3duGjUYPvGt2f4+K5L5RH1loqbyxLxJMRIpyaILmo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Kztj4lA8lDAmSnUT5tJAv2cjEFrlBhTk0sI+1anlxEucU7S3ppmCiiWp5j4UokfY5
+	 m2BSlb5gR8sB7vJTcTjbsusvlp3qeZySOwq+xumA8ySDM1kPDzfUE3UC28tuXfdOyu
+	 h9nNK1YCihA7AkI/xYMpeyyJxxf7458SLNL4wVNwRdACYpZ7SqOup4EI6ovshHP8ue
+	 bUE/M59+4CE35vCbPFYegUUYE71neBMWZK/ac0t4DUOfz6rZf1CEdOYHKAGhr1VfCj
+	 6CxapaXrpuDI4Lupv+e3t3V242MpkykZGjpXu5omW31b4jYWhtn/ZVMAlPgZ+UFFBx
+	 bp7H1SQcIDumw==
+Date: Mon, 9 Dec 2024 15:40:30 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
+ Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Vladimir
+ Oltean <olteanv@gmail.com>, Srinivas Kandagatla
+ <srinivas.kandagatla@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, upstream@airoha.com
 Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
  AN8855 Switch MFD
+Message-ID: <20241209154030.0f34d5dd@kernel.org>
+In-Reply-To: <67577bd7.7b0a0220.1ce6b5.fe93@mx.google.com>
 References: <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241209151813.106eda03@kernel.org>
+	<20241209134459.27110-6-ansuelsmth@gmail.com>
+	<20241209151813.106eda03@kernel.org>
+	<67577bd7.7b0a0220.1ce6b5.fe93@mx.google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241209151813.106eda03@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_152306_859475_2DF2E926 
-X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-CacheID: sfid-20241209_154032_990424_07EBE390 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,22 +85,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2024 at 03:18:13PM -0800, Jakub Kicinski wrote:
-> On Mon,  9 Dec 2024 14:44:22 +0100 Christian Marangi wrote:
-> > +	regmap = devm_regmap_init(priv->dev, NULL, priv,
-> > +				  &an8855_regmap_config);
-> > +	if (IS_ERR(regmap))
->             ^^^^^^^^^^^^^^
-> > +		dev_err_probe(priv->dev, PTR_ERR(priv->dev),
->                                          ^^^^^^^^^^^^^^^^^^
-> > +			      "regmap initialization failed\n");
-> 
-> wrong ptr?
+On Tue, 10 Dec 2024 00:22:59 +0100 Christian Marangi wrote:
+> Also hope we won't have to request multiple stable tag for this multi
+> subsystem patch. Any hint on that?
 
-yes wth... I'm sorry for all these stupid mistake for this series...
-Also hope we won't have to request multiple stable tag for this multi
-subsystem patch. Any hint on that?
-
--- 
-	Ansuel
+Sorry I haven't payed much attention to earlier discussions.
+Why multiple stable tags? AFAICT all trees will need patches 
+4 and 5, so we can put that on a stable tag / branch, the rest 
+can go directly into respective trees (assuming the table tag
+has been merged in). No?
 
