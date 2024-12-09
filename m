@@ -4,93 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2208DE7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 18:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C061EE77181
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 20:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vnce7T7XEQrPlvinYVL/n1yhtcPoTTfoFaF2vz6MOmA=; b=IIdyIGq+XnydaR3lGuqBRWeiyn
-	coB1f76FWTQIcgqOODld8ATXroiRQYwfkQikI0yBD4q3JrC9+1RF/hW3/gMyaIcuc7Xz4LAsSERQ9
-	sLUnPX/b9HI2ZYMU8zexVkOig23A/zHsaB8ZEV1kRxSJabvLIWaOnsgLMYQlM0X57K2jVUSW+nDGA
-	U89rkVl0za1CTCJnyHp+FlB5l/Y78CpfKDt2HbKumM+VJmMjNbv+iqTSaQuRb7zNxPEnEr9NfRbK3
-	5NcrHV1ahwJlHkPbWaxnnsA6ErGi64AaDoJeWO0AI+OBjdq7Ob0IzRur1BW6AzqItnmsS4J+40bSN
-	u9K3EYZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=haXy6Pn/YyEod3vhtpY5A5WC+w3IxFAK0ooQa7nKgHo=; b=deu/F8zRgP0EarEITrqT85qOvF
+	Y3ZjXzFnurkMACw7MG+VMo9oyFfS0u/aRf0Xq2tv7T0bm6ebmp8mRhwDUIcww17+MAayZIKvASx9X
+	N9kBdRoFU+fqrUauyaLegRQOv7u22OBXHuXogHVaUSHPS0MEUoWRQX3aNt0z1zL3IPpNnzmj51TZ7
+	BgsxwDCJY72by83UVtAIJKSL2nrmXbJ1+Kl0Xi3qtXGTt8WB95+X9oBw/JSF7L0qMfdcSNRQIAEcK
+	f1UdqXhZmc7UD5yH5ibC+89pbF3DyqC874P7yME1gkDcOGMiBEugjETI4rpKJuKabWboMtAmIUda2
+	PquejQCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKiKN-00000008rQC-0rR5;
-	Mon, 09 Dec 2024 18:17:51 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tKk3R-000000098oq-1Mzk;
+	Mon, 09 Dec 2024 20:08:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKiJK-00000008rJc-1YnB;
-	Mon, 09 Dec 2024 18:16:47 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9ATf0g028879;
-	Mon, 9 Dec 2024 18:16:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	vnce7T7XEQrPlvinYVL/n1yhtcPoTTfoFaF2vz6MOmA=; b=W8l6J/lnj/iOlWol
-	s07T1SVbHXGzyHmG64Zd4inrJURiK72U72gYXc9e8fpEyVzeEhP4iplkYQOXL3sg
-	8349nMkhNTii7K4sgQOcBAyR5707y91w3cYHgQgwDBtroCs+Z8wF5hcx9i/PPojn
-	wyjuDDjlvD9L1pJhonMoiPXOXgTTJaACfkbOx7MPNSN8ugyZGkdWq0QcXy5VcJcc
-	Utjss5AjiQ5Ke2LUxkwlT52AasRu4i4/uDnoK2b4Td9GgQl2U658wS6UDOgZu+HS
-	6cal1upeuSIBekl9ZRczcJ7IQ64ZsWUwbx1mHfspTUM3R+vkpi6XZVxgE+k4nHIT
-	t+2jbw==
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43cfhkdmt6-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Dec 2024 18:16:40 +0000 (GMT)
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA05.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4B9IGeCZ022605
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 9 Dec 2024 18:16:40 GMT
-Received: from [10.50.34.16] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 9 Dec 2024
- 10:16:35 -0800
-Message-ID: <54ac6a4f-5ae0-409f-8401-d6e1326d4358@quicinc.com>
-Date: Mon, 9 Dec 2024 23:46:31 +0530
+	id 1tKk2E-000000098bc-3qpW;
+	Mon, 09 Dec 2024 20:07:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733774832;
+	bh=XHeeybhj5u2b8BHEtLKC3hKJSOqzRrrU3o97MCDUjaY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nyw7V+wJ6jSPe9lIbRvVSihwC0AUWedhKPy2iBGsL6d971k2Cv/6CqVfA/rn9pXks
+	 GBLlqwLP+A+/gTn2Jlcep+CcN23rMmWU59KIeTpaDotz36jkfIzLUCetGU3u8pbAkH
+	 qEbiY/V9XJzWNyRKgF7flBQzbgxX0IVSycXr8NuBSqy5s4Nu+Ckud/8es/Fo2XZXrj
+	 FdHnxO72b+zm+J0v+pY7g8efUsCJqg2IIL+B56F5EvmlqmviWYfnvXIk+M9ZdJ+sMx
+	 JohnjPIyfrrjjCdyMglpioyR3Cjm4axQZ0pNNoXvTV/A7WkaW7ua0Uo20pFpZfkUDx
+	 XIBVs/9OzxmpQ==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1002])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0F5A17E3780;
+	Mon,  9 Dec 2024 21:07:09 +0100 (CET)
+Date: Mon, 9 Dec 2024 17:07:07 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
+Cc: "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"broonie@kernel.org" <broonie@kernel.org>,
+	"tiwai@suse.com" <tiwai@suse.com>,
+	"perex@perex.cz" <perex@perex.cz>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"kernel@collabora.com" <kernel@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188: Enable apll1 clock during reg rw
+ to prevent hang
+Message-ID: <108d4187-26af-43f6-8b1e-0e48516524a4@notapiano>
+References: <20241203-mt8188-afe-fix-hang-disabled-apll1-clk-v1-1-07cdd7760834@collabora.com>
+ <a10dbdf265194e77a69b6e40afa3df9636b3ab14.camel@mediatek.com>
+ <a70a0521-985d-43a4-a1fa-36eb733d5ca9@collabora.com>
+ <1d2ee55dde84bcab6f777525042c6789b9f2c1fc.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] i3c: master: Improve initialization of numbered I2C
- adapters
-To: Defa Li <defa.li@mediatek.com>,
-        Alexandre Belloni
-	<alexandre.belloni@bootlin.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-i3c@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-        <mingchang.jia@mediatek.com>, <yuhan.wei@mediatek.com>,
-        <hao.lin@mediatek.com>
-References: <20241205132934.12110-1-defa.li@mediatek.com>
-Content-Language: en-US
-From: Mukesh Kumar Savaliya <quic_msavaliy@quicinc.com>
-In-Reply-To: <20241205132934.12110-1-defa.li@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: OSoeq6sK0chCG1sPbMn_4yX6vW5ijtBe
-X-Proofpoint-GUID: OSoeq6sK0chCG1sPbMn_4yX6vW5ijtBe
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
- impostorscore=0 mlxlogscore=999 mlxscore=0 adultscore=0 lowpriorityscore=0
- phishscore=0 clxscore=1011 priorityscore=1501 spamscore=0 bulkscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412090142
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1d2ee55dde84bcab6f777525042c6789b9f2c1fc.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_101646_426959_1BF9F017 
-X-CRM114-Status: GOOD (  17.95  )
+X-CRM114-CacheID: sfid-20241209_120715_112477_BD020C66 
+X-CRM114-Status: GOOD (  48.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,49 +86,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 12/5/2024 6:59 PM, Defa Li wrote:
-> Add logic to initialize I2C adapters with a specific ID if available,
-> improving device identification and configuration.
+On Fri, Dec 06, 2024 at 06:57:00AM +0000, Trevor Wu (吳文良) wrote:
+> On Thu, 2024-12-05 at 13:51 +0100, AngeloGioacchino Del Regno wrote:
+> > 
+> > 
+> > Il 04/12/24 13:17, Trevor Wu (吳文良) ha scritto:
+> > > On Tue, 2024-12-03 at 17:07 -0300, Nícolas F. R. A. Prado wrote:
+> > > 
+> > > > 
+> > > > Currently, booting the Genio 700 EVK board with the MT8188 sound
+> > > > platform driver configured as a module (CONFIG_SND_SOC_MT8188=m)
+> > > > results
+> > > > in a system hang right when the HW registers for the audio
+> > > > controller
+> > > > are read:
+> > > > 
+> > > >    mt8188-audio 10b10000.audio-controller: No cache defaults,
+> > > > reading
+> > > > back from HW
+> > > > 
+> > > > The hang doesn't occur with the driver configured as builtin as
+> > > > then
+> > > > the
+> > > > unused clocks are still enabled.
+> > > > 
+> > > > Enable the apll1 clock during register read/write to prevent the
+> > > > hang.
+> > > > 
+> > > > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > > > ---
+> > > >   sound/soc/mediatek/mt8188/mt8188-afe-clk.c | 4 ++++
+> > > >   1 file changed, 4 insertions(+)
+> > > > 
+> > > > diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+> > > > b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+> > > > index
+> > > > e69c1bb2cb239596dee50b166c20192d5408be10..fb8cf286df3f02ac076528b
+> > > > 898f
+> > > > d0d7a708ec1ea 100644
+> > > > --- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+> > > > +++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+> > > > @@ -587,6 +587,8 @@ int mt8188_afe_enable_reg_rw_clk(struct
+> > > > mtk_base_afe *afe)
+> > > >          mt8188_afe_enable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_AUD_A1SYS_HP]);
+> > > > 
+> > > >          mt8188_afe_enable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_AUD_A1SYS]);
+> > > > 
+> > > > +       mt8188_afe_enable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_APMIXED_APLL1]);
+> > > > 
+> > > > +
+> > > >          return 0;
+> > > >   }
+> > > 
+> > > Hi Nicolas,
+> > > 
+> > > If I understand correctly, APLL1 should be the parent clock of
+> > > AUD_A1SYS_HP and AUD_A1SYS, so it should be enabled automatically
+> > > by
+> > > CCF.
+> > > 
+> > > I'm not sure why you resolved the hang issue after enabling APLL1.
+> > > Could you share more details about the solution?
+> > > 
+> > 
+> > Hmm. Now I see what's happening here...
+> > 
+> > Nicolas, Trevor,
+> > 
+> > Possible parents for top_a1sys_hp are:
+> >   - clk26m
+> >   - apll1_d4
+> > 
+> > ...what's happening here most probably is that after the clock gets
+> > disabled as
+> > unused, it gets parented to clk26m by default as that is parent index
+> > 0... and
+> > something else in AFE needs APLL1 to feed a clock to .. something ..
+> > to allow
+> > register access.
+> > 
+> > Trevor, do you know why is this IP unaccessible when A1SYS is
+> > parented to clk26m?
 > 
-Could you also provide how exactly to define this into DT to have 
-numbering while registering the adapter ? Kind of sample to which can be 
-defined in DTSI.
-> Signed-off-by: Defa Li <defa.li@mediatek.com>
-> ---
->   drivers/i3c/master.c | 11 +++++++++--
->   1 file changed, 9 insertions(+), 2 deletions(-)
+> Hi Angelo,
 > 
-> diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
-> index 42310c9a00c2..a838cdbb897b 100644
-> --- a/drivers/i3c/master.c
-> +++ b/drivers/i3c/master.c
-> @@ -2486,7 +2486,7 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
->   	struct i2c_adapter *adap = i3c_master_to_i2c_adapter(master);
->   	struct i2c_dev_desc *i2cdev;
->   	struct i2c_dev_boardinfo *i2cboardinfo;
-> -	int ret;
-> +	int ret, id = -ENODEV;
->   
->   	adap->dev.parent = master->dev.parent;
->   	adap->owner = master->dev.parent->driver->owner;
-> @@ -2497,7 +2497,14 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
->   	adap->timeout = 1000;
->   	adap->retries = 3;
->   
-> -	ret = i2c_add_adapter(adap);
-> +	if (master->dev.of_node)
-> +		id = of_alias_get_id(master->dev.of_node, "i2c");
-> +
-> +	if (id >= 0) {
-> +		adap->nr = id;
-> +		ret = i2c_add_numbered_adapter(adap);
-> +	} else
-> +		ret = i2c_add_adapter(adap);
-Please provide braces for else too.
->   	if (ret)
->   		return ret;
->   
+> As far as I know, it should work even though the clock is parented to
+> clk26m.
+> 
+> Unfortunately, I have no idea about why APLL1 enabling can resolve the
+> hang issue. I'm also curious about how Nicolas found the solution to
+> resolve the problem.
+> 
+> From the description, it seems that the problem is related to register
+> r/w hang. If I remembered correctly, when the mtcmos of ADSP_INFRA is
+> ON, register r/w won't cause the cpu to hang. However, ADSP_INFRA has
+> been configured as ALWAYS_ON in the driver. I'm not sure if it doesn't
+> work correctly when the driver is configured as a module. Maybe Nicolas
+> can also check this.
 
+Indeed, as suggested by Angelo, adding 
+
+  assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
+  assigned-clock-parents = <&topckgen CLK_TOP_APLL1_D4>;
+
+to the afe node also fixes this issue. 
+
+In mt8188.dtsi, we currently have
+
+  afe: audio-controller@10b10000 {
+  	...
+  	assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
+  	assigned-clock-parents =  <&clk26m>;
+
+So the question is, do other MT8188 platforms need clk26m to be the parent of
+a1sys_hp? Depending on that I can either update the parent on the common
+mt8188.dtsi or on the genio700-evk.dts, which is where I observed the issue. I
+don't have access to other mt8188 platforms. Trevor, do you know?
+
+As for how I identified this issue, I noticed that when booting with the
+platform driver as a module the system would hang, and that passing
+clk_ignore_unused avoided the issue. Then I selectively ignored some unused
+clocks until I narrowed down to ignoring unused only the apll1 clock, meaning
+the apll1 clock needed to be left on during the platform driver probe for the
+system to not hang.
+
+Thanks,
+Nícolas
+
+> 
+> Thanks,
+> Trevor
+> 
+> > 
+> > That might give Nicolas a definitive hint about how to resolve this
+> > issue.
+> > 
+> > Cheers,
+> > Angelo
+> > 
+> > > Thanks,
+> > > Trevor
+> > > 
+> > > > 
+> > > > @@ -594,6 +596,8 @@ int mt8188_afe_disable_reg_rw_clk(struct
+> > > > mtk_base_afe *afe)
+> > > >   {
+> > > >          struct mt8188_afe_private *afe_priv = afe-
+> > > > >platform_priv;
+> > > > 
+> > > > +       mt8188_afe_disable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_APMIXED_APLL1]);
+> > > > 
+> > > > +
+> > > >          mt8188_afe_disable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_AUD_A1SYS]);
+> > > > 
+> > > >          mt8188_afe_disable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_AUD_A1SYS_HP]);
+> > > > 
+> > > >          mt8188_afe_disable_clk(afe, afe_priv-
+> > > > > clk[MT8188_CLK_AUD_AFE]);
+> > > > 
+> > > > ---
+> > > > base-commit: b852e1e7a0389ed6168ef1d38eb0bad71a6b11e8
+> > > > change-id: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-
+> > > > b3c11782cbaf
+> > > > 
+> > > > Best regards,
+> > > > --
+> > > > Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > > > 
+> > > > 
+> > 
+> > 
 
