@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83231E7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 12:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E2CE7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2fNQK0VC5hmdkf5xB9w2EQXUei7uJNRsiN8mjKgCeDE=; b=toR7BgxWw/JkTy
-	GdQqNF7AEdq3TJzggLnIfO8j3aLg/h8tsWE/7xNlH1PqGMKh3Ma/I6iN2eq9EmOTGG+V9JH6BNsNj
-	FK87S6C+YCwkKnUYFPQ7BtckF/5X0c2D/6FYmjB1GEICyzvd+k53Iu7Meh42b6w6534yzRqOzuBx5
-	vofP3GNLB/AmpLFUZGOBImQdyab1fzzr0/Yc7b/LkcD/MydTaAerBAOydRVFTaUB/CYJPE9ec3AV/
-	Wke0n+V/V0nb5YeprlZwe616UI1IBWtm7gLOlRO+K0jftQpLbktuJSX2toEeY7CFZuGNerfdFzyds
-	7hQExMScoRvXr8iLZsNw==;
+	List-Owner; bh=Rkq8zF6A3kRJ4sJSqjBDGe4RzLUupi6rrrEohNdz9xI=; b=etYOX0OYCGx7up
+	ajgs4tD0hfcduvxD5y/qLG+O98nASuim4UINFvcMMQZsZP63KZZLXjc7Fz41QS2oEAFLTwP3Ynw8a
+	RtUTQpScscSPa2fOqt7Yen9MbastAfmB1gbllGvoXuuuLJMajBJWvhgdBrp9PV4Yp7RnljWhthsD7
+	nbhGX47uf/cbYIUs8r14uQ4KxWGpmKq6HoUTFl5QQNWBVypk2QtY/yA/xIXgNCwlojPUCutlhd/XO
+	kUWONb2fQCnHHpmRTTx7zurxk0vvqWhuvRQlSKSiVYATKN47l92pRXx0541C8wgxmqoIrAyLDc3wc
+	H0gK3kkGRLnsqynR73lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKd8u-00000007lwj-2xN2;
-	Mon, 09 Dec 2024 12:45:40 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1tKdSF-00000007rdT-2ZCf;
+	Mon, 09 Dec 2024 13:05:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKcwE-00000007hRy-36PS;
-	Mon, 09 Dec 2024 12:32:36 +0000
-Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout3.routing.net (Postfix) with ESMTP id 82C55605F0;
-	Mon,  9 Dec 2024 12:32:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1733747548;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2fNQK0VC5hmdkf5xB9w2EQXUei7uJNRsiN8mjKgCeDE=;
-	b=HmsVggyOYb4b6hCgAOoZTRkTYjnu9X2Mj1mGgv+WcHtMf7EKAtJCqImI3UsGf6tXhGFg+t
-	yPWIWYJFPaDQFS3dBLz0v0ImNUHd9OA/hadfZ4wSk8zROQZA1WP3y0nrw8YRG4uUlSTcXy
-	NiatFxMY57d2z2gD1NYj0tuRadkkGwo=
-Received: from webmail.hosting.de (unknown [134.0.26.148])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id D6DEF4003A;
-	Mon,  9 Dec 2024 12:32:27 +0000 (UTC)
+	id 1tKd7z-00000007lhJ-0x1v;
+	Mon, 09 Dec 2024 12:44:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733748281;
+	bh=aRM4AjETfxblgVQs2jCylFYpTFhBx0s71WVjQD11xxo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Bl3gop7Wy7pK0sFk0FHAjU48eqP/0utLBOC+nkcjHPhp/6Afq/lA2E7r0CMZ6MAvw
+	 kHdABAIbwOZ1FULOPWc8s68WIhxcO1Ui54KcduCBWNCiRun9u2y8ZWCRweC+UdlWAr
+	 nZzvNA6tBbubuSauaI0Ar6KNqIV4VG9torEgsN18lZERZw7MudJXQxuPg5n5kn/Rml
+	 b+VaP/IfHdFDXeI2BMTv4FSpo0KPUR8KKTuF/MRZa5tKGxecaHcXscJE3GoPnF6LV/
+	 QEZw1ULFSVlS33iex53SVVYFn3NbLYhlOrqzr6MIDc9EgClANQ2KvN1gDhZMU2IfCU
+	 p8SeUt/kLXuYA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B6B4E17E3750;
+	Mon,  9 Dec 2024 13:44:40 +0100 (CET)
+Message-ID: <d6be8228-3448-49a5-81a7-98acbdd19fbe@collabora.com>
+Date: Mon, 9 Dec 2024 13:44:40 +0100
 MIME-Version: 1.0
-Date: Mon, 09 Dec 2024 13:32:27 +0100
-From: "Frank Wunderlich (linux)" <linux@fw-web.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v5 5/5] arm64: dts: mediatek: mt7988: add pinctrl subnodes
- for bpi-r4
-In-Reply-To: <9b1a385e-da1c-429b-91b9-d5b5d6d5abb7@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/5] pinctrl: mediatek: add MT7988 pinctrl driver
+To: Frank Wunderlich <linux@fw-web.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>
 References: <20241202110045.22084-1-linux@fw-web.de>
- <20241202110045.22084-6-linux@fw-web.de>
- <9b1a385e-da1c-429b-91b9-d5b5d6d5abb7@collabora.com>
-Message-ID: <4e0ace7c5a0766395f8801bdd2fcdbf9@fw-web.de>
-X-Sender: linux@fw-web.de
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mail-ID: b6b2de20-0394-48f5-9719-e7ee90c90504
+ <20241202110045.22084-3-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241202110045.22084-3-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_043234_954613_F0300CCA 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20241209_044443_417977_26ED0118 
+X-CRM114-Status: UNSURE (   7.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,35 +75,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2024-12-09 12:52, schrieb AngeloGioacchino Del Regno:
-> Il 02/12/24 12:00, Frank Wunderlich ha scritto:
->> From: Frank Wunderlich <frank-w@public-files.de>
->> 
->> Add board specidic pinctrl configurations on Bananapi R4.
->> 
->> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Il 02/12/24 12:00, Frank Wunderlich ha scritto:
+> From: Daniel Golle <daniel@makrotopia.org>
 > 
-> Can you change the title as suggested in the review for the other 
-> series?
-> So that we stay consistent.
-
-already done in my tree (and fixed typo in commit message) ;)
-
-8e566779ee82 arm64: dts: mediatek: mt7988a-bpi-r4: Add pinctrl subnodes 
-for bpi-r4
-
-> After which,
+> Add pinctrl driver for the MediaTek MT7988 SoC.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> [correctly initialise for the function_desc structure]
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> 
 
-thx
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-are parts 1+2 now ok?
 
-regards Frank
 
