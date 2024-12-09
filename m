@@ -4,95 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A32E7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161FEE7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U4qeseCOkcGmb1Q7UjHhhCciiQ+PXwqE/BempN3gXFk=; b=AIrl4ENuTNnE6K8mFHt6AvvFbW
-	sUv+kIk+MKHzQ2Wc3xVl6eZL0EjN5IJLviOUatsD+x3F6u7wuH/okSi/r8NI9L1DZSezLw5C29qg+
-	T/gGHnNxXFD7dzzImcnJAogR/NlsS6PcLc2Vt4TukwMn8ARonItMYQ9fEVcbExyeq3uCtQbEsCwHQ
-	Cqm50QTWk5zjl3ijsvS2oxLaqhpHPtn9nqND+jFt4Od6mvKgFgcggNzxrdAD/0ibvZk174RWaK6UU
-	RSubjZxm1Te12hO1m37eKEvfd4ICAbJlfeVz5aj0LdOR6UJQpnWfmL3vafSlW/cc6J1y/pWyLuJBZ
-	jR0+zkGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3CCZU7ENicgu34MA/g4zY6ZxU8yzmdvxXC+8cIzH1yg=; b=lsPIMqdIUdSKimaBJFb3pwnxZQ
+	FsTppm9cQSBWyH6Nkit5/1IPJ8aMtFz8bf7ijyvalTpzIRxOZs5+pwWbOdtL/6lz6NvEL8JHfYDjy
+	fG1lmvo3yYUzHbkyTgsXtVSxrwrK7vuHzKzVM3XjqycOw7G+UUm/SZcAvsflRxy2B5lLToTGKSbhT
+	00bXwF2CgWeB8gmIneN04aMq0YJApWejWpCP4tB6FCmSEdisHmZXn9+mbMGABuUJenYqlXoDsqkwF
+	gLLaU5uDXWk5g8DDP1a8KB/jAH6yw/sinX/26WIOahXxzbceaRs1xgDtFOdbvLdLnYlt5R+ZydmJR
+	rb/fMH4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdkc-00000007xyS-3SgH;
-	Mon, 09 Dec 2024 13:24:38 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1tKe64-000000083qY-0WrU;
+	Mon, 09 Dec 2024 13:46:48 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdVU-00000007smC-2bIc
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Dec 2024 13:09:02 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53df19bf6a9so5146588e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Dec 2024 05:08:59 -0800 (PST)
+	id 1tKe50-000000083Wb-08su;
+	Mon, 09 Dec 2024 13:45:43 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-434e406a547so14524915e9.3;
+        Mon, 09 Dec 2024 05:45:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733749738; x=1734354538; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=U4qeseCOkcGmb1Q7UjHhhCciiQ+PXwqE/BempN3gXFk=;
-        b=vDGIDs1irtDI6k+uUGgu1jDAmGhnI6cNNpzAIxWfqIxNsc/87vcTnpJxaRDQI+eaZy
-         +GdrruCFXJtMSKygQKdzTs0tv+Zt9LwukwP5zlXUGX960D3+diJYrY1ea8IrEklI7kTa
-         D2mx01eSQ0ewHWBRgkloP2KbAP396v8yE9QlzaAlh34B6YMFDL+ntJmv/e8hYNier4Gi
-         eGl8DCI9LHo4N1sDdgrhYMj1sL1t79N35s+LiD4/uxoTRIsk0UkIpwJe40tbNOW9VIg/
-         nHKFeAFINkCeg3ITe9Jq7R5DXIMyAgSbtg2s2bh34dIfDb6KqssV89LhJV3IVOhen1Hy
-         b7pg==
+        d=gmail.com; s=20230601; t=1733751940; x=1734356740; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3CCZU7ENicgu34MA/g4zY6ZxU8yzmdvxXC+8cIzH1yg=;
+        b=hCOyKHcn0c5srClOYsAlP8MqSTzgZ1lKoOGpW0Aem/Xug6GatBrO+T0uYhEw6hGfMv
+         mv7r4Q8Pv4beUot14d8J4yPb9PqI37V/bhB1r9iUbndbnSB4oZYgTtyTsc5D0keznpCY
+         bHgGLmJNaKOnLgmXV73tWqgk9FP5b8bdYvGgV6KHiWcPljDzn6aNSZc20xmQ1ZzgW3jo
+         PBqPJpWnEHaqj0xKJRYgzh2WIb+Bk5n2euKuYpit4ESFc5tonDcQOqgapyeJwrSz/zhK
+         ZI51AN508GQdLb8qIEu6PZhYEQyFpDzJrynmtCg3oL1pE3QO7mZvN3jkLSpcZM2WXZh7
+         0svg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733749738; x=1734354538;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=U4qeseCOkcGmb1Q7UjHhhCciiQ+PXwqE/BempN3gXFk=;
-        b=W4RW/jIUdfbpSLTUg8MeHg7RYeX6XUT9keaKpURp/40kcb2LRWSl8bF4GDK3d2m7Y5
-         mwH2PkepVuctLGuhtuQheAOCO2LWxc6kfkDYEr0L0pmvnRsjuZFpDibhU8Jtup7jkj27
-         KHNIBOr++bXOTdv729Tgt/FxRP4cqyxj5d+sr0PK423Kf26+A7PRihgcKlfxlqh8T6SQ
-         ZmPLxRiLVuzJ4W8U0dFdn8fT2nc6AmP+U+A/R3ya2lvuz0GSwUVCUK46DYX6Ls5P3Eaa
-         O39sUqqYo5XVfk56x2V78jPVgbbP4bExBqG3JgQ6KQCrD1wwPAK1bE/Yy2DL32K56Ax9
-         b1IQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWPIOmjyDGbirLEI2NWKbnjfYbvorS2QzoZcjCipJ45I2H36ckVrcwwPd1RyUuM41CwO40zpgLbN6cqaanJqQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy/Kjpa5hrU0FwCmJaOiBnIcapEFPWCMQLE4izWns8M9EEcnCCs
-	oE3cxFFMUc39JEsC0LbAIDDc2hjMS1yinMfq37hLFfBSAorE7Bl4E+TnP9VZW9g=
-X-Gm-Gg: ASbGncuqEDEFEunhGAHN7hJHbA/+Ssa2cgg8Y9cl2RJc1BHFDTNGxzm9j72iQ7bQ2Zx
-	YVpTAsGmyWY7fFcf5Ok9TD4Sek3JLZdSO6n/kDEv5Ys+AJtSgals0Bb/E4NAns9sDtpqbKa8ps5
-	z2L78DvnOFNKDvG5XvweqdKB7DwA09+pqgRPf4ZCosOL08gqWG/lI8qz94zcuR/vQfNYJS4B6bk
-	fLXqpWJDNWsypVGUb31U6aL+nqK8EUjJRJTD0w9DnZ/vNEwG9HhYVIssRWq9zt3jdoP+tPjNSMK
-	eHy3HCD6m0uyri98Mx0HeGobug5pvQ==
-X-Google-Smtp-Source: AGHT+IGUdBc+9+wumOFZ48LXdGWXapC7mqs9vLjJQuLCvEM7WD0Vfz6HT+z+kwWVA55at0RwHrVYOw==
-X-Received: by 2002:a05:6512:3b29:b0:540:2339:3761 with SMTP id 2adb3069b0e04-5402339387fmr634821e87.31.1733749737946;
-        Mon, 09 Dec 2024 05:08:57 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5401a26babesm604500e87.11.2024.12.09.05.08.56
+        d=1e100.net; s=20230601; t=1733751940; x=1734356740;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3CCZU7ENicgu34MA/g4zY6ZxU8yzmdvxXC+8cIzH1yg=;
+        b=JlwzqyOyqZQbqWXmJA8IW3mGwZCtDeNZB8ypNuVgWK+Wt5w/FtOYq37A39TUP3iOk2
+         qvcyVM1iQBPx0lRCS0l0zn2fbEL4L5Qk094CsjshbVXm2Edh9aLNeYW9YGr5hPA6lCqF
+         +/CWTWOGXAjZpm/Pl2XsGlANWRdoaz8vntFZ8rXDgCU1Hdn6yI0Q3OfOGnu+50eEUzc/
+         3mWMyio/vc0PvDrgF8lgGOqZpb1gdsFXOOqkCTCJah6B9AV9pEnwW8U320/Oc7q4jTCL
+         7OIslBFGBrstheBLdbgC34NQZBORq1j7tzQ31ItYa1UH+/U34TmuSIgbsWu40a+91Abq
+         t11Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVyg5kAqxumeSx8ooL1LV3BK4BGWK2Gs8c33B68Bw9pSL4EOykVlOSUZzP8CT4ehjCag82OqxtUlUqJUP1bz6zo@lists.infradead.org, AJvYcCVzVP2vC/3c35gBYmqDmYkv348jBmUJgAiVowJTNI3mf+BPD2euRCO62ropqDqZ/n2BmPdzMddC1A46JPnFeaM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHclR49jMlvuvxEuQDi9f8PLliN5kRlWTyO41XdO2IoDgBUnFB
+	1W7L7h8Up6dGv7n5zOq5wcsADTOEMkN1xh/8LzHtaA9n7BnlU85b
+X-Gm-Gg: ASbGncvP+WaLAWVDAdEbxQ+ab7ubLC5GfZ06ultS3WVTvB5J/7APBRAJaYl3rlA7fcx
+	IuR028scTpuozSiBwOJ15GY9AeMtonM5lBlLK9iSYoEhQRwA3UVbJa9pHhLcD1m+Xmv+EH7Crz0
+	WHAclNI4fq7oXdVHfRTGPr6Hr+kGFLM+ZU2nBteCV4Q/l3CXDLR9KHyyqwAdM3rSXONS1tYtN79
+	bvdiwTn95EHuRImoWf+DnWdIxt57uWnfdJnWDjqCy7oLsx2tOuGcKpa2dPdK5S5r5DVt3cQaVon
+	tmljIgbYW6UCTbFJ68I=
+X-Google-Smtp-Source: AGHT+IFk95UETcn66UjgCu8jJgNbA54TVXKtC2Dzef9aZupiSoxKaMi7bWHjdB6hZp5z6jfcRPFaSQ==
+X-Received: by 2002:a05:600c:5101:b0:434:e2ea:fc94 with SMTP id 5b1f17b1804b1-434fff42653mr4558095e9.11.1733751939474;
+        Mon, 09 Dec 2024 05:45:39 -0800 (PST)
+Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-434f30bceadsm62705135e9.41.2024.12.09.05.45.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 05:08:57 -0800 (PST)
-Date: Mon, 9 Dec 2024 15:08:55 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com, jie.qiu@mediatek.com, 
-	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-Message-ID: <6snszi7h7444jzrr3r3icbwjmsoxthv4mp73d4crlv4mvhldl7@7dqfq3wuhinh>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
- <4lvsvo6vsc7bipcgftsq3mzunwxoka3wjqad42ptr37oz77zub@5uarhvjmcxnc>
- <a4a74f96-29cc-4007-9b03-f634b84d9cc2@collabora.com>
- <m7u6xzm2o4dmcjot4xfk6do4slikpsp6gi3uyiuw4d35kunbc5@jyzgkrp4xjwc>
- <3a0512de-bcc0-4253-a8c1-f2e43b5cbfba@collabora.com>
+        Mon, 09 Dec 2024 05:45:38 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: [net-next PATCH v11 0/9] net: dsa: Add Airoha AN8855 support
+Date: Mon,  9 Dec 2024 14:44:17 +0100
+Message-ID: <20241209134459.27110-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3a0512de-bcc0-4253-a8c1-f2e43b5cbfba@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_050900_694585_B2DF02FF 
-X-CRM114-Status: GOOD (  77.71  )
+X-CRM114-CacheID: sfid-20241209_054542_070447_CB97EA09 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,477 +112,367 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2024 at 12:33:57PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 05/12/24 20:35, Dmitry Baryshkov ha scritto:
-> > On Thu, Dec 05, 2024 at 02:30:51PM +0100, AngeloGioacchino Del Regno wrote:
-> > > Il 05/12/24 13:56, Dmitry Baryshkov ha scritto:
-> > > > On Thu, Dec 05, 2024 at 12:45:17PM +0100, AngeloGioacchino Del Regno wrote:
-> > > > > Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
-> > > > > found in MediaTek's MT8195, MT8188 SoC and their variants, and
-> > > > > including support for display modes up to 4k60 and for HDMI
-> > > > > Audio, as per the HDMI 2.0 spec.
-> > > > > 
-> > > > > HDCP and CEC functionalities are also supported by this hardware,
-> > > > > but are not included in this commit and that also poses a slight
-> > > > > difference between the V2 and V1 controllers in how they handle
-> > > > > Hotplug Detection (HPD).
-> > > > > 
-> > > > > While the v1 controller was using the CEC controller to check
-> > > > > HDMI cable connection and disconnection, in this driver the v2
-> > > > > one does not.
-> > > > > 
-> > > > > This is due to the fact that on parts with v2 designs, like the
-> > > > > MT8195 SoC, there is one CEC controller shared between the HDMI
-> > > > > Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
-> > > > > adding support to use the CEC HW to wake up the HDMI controllers
-> > > > > it is necessary to have support for one TX, one RX *and* for both
-> > > > > at the same time.
-> > > > > 
-> > > > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > > > ---
-> > > > >    drivers/gpu/drm/mediatek/Kconfig            |    8 +
-> > > > >    drivers/gpu/drm/mediatek/Makefile           |    4 +
-> > > > >    drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |    5 +
-> > > > >    drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |    1 +
-> > > > >    drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  403 +++++
-> > > > >    drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 ++++
-> > > > >    drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1488 +++++++++++++++++++
-> > > > >    7 files changed, 2172 insertions(+)
-> > > > >    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
-> > > > >    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
-> > > > >    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-> > > > > 
-> > > 
-> > > ..snip..
-> > > 
-> > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-> > > > > new file mode 100644
-> > > > > index 000000000000..05cbfc45be54
-> > > > > --- /dev/null
-> > > > > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-> > > > > @@ -0,0 +1,1488 @@
-> > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > > +/*
-> > > 
-> > > ..snip..
-> > > 
-> > > > > +static int mtk_hdmi_v2_setup_audio_infoframe(struct mtk_hdmi *hdmi)
-> > > > > +{
-> > > > > +	struct hdmi_codec_params *params = &hdmi->aud_param.codec_params;
-> > > > > +	struct hdmi_audio_infoframe frame;
-> > > > > +	u8 buffer[14];
-> > > > > +	ssize_t ret;
-> > > > > +
-> > > > > +	memcpy(&frame, &params->cea, sizeof(frame));
-> > > > > +
-> > > > > +	ret = hdmi_audio_infoframe_pack(&frame, buffer, sizeof(buffer));
-> > > > > +	if (ret < 0)
-> > > > > +		return ret;
-> > > > > +
-> > > > > +	mtk_hdmi_v2_hw_write_audio_infoframe(hdmi, buffer);
-> > > > 
-> > > > This should be handled via HDMI Connector framework too. There is
-> > > > already an interface to set / clear audio infoframes.
-> > > > als I have been working on an interface to make HDMI codec
-> > > > implementation more generic, see [1]. Your comments are appreciated.
-> > > > 
-> > > > [1] https://patchwork.freedesktop.org/series/134927/
-> > > > 
-> > > 
-> > > I didn't go for that because I was afraid that your series wouldn't actually
-> > > land in the same window as this driver.
-> > 
-> > There were two points in my comment (sorry for being not explicit
-> > enough). One is to point to the HDMI codec infra (and you are right,
-> > it's not yet in the mergeable state). Second one is to use
-> > drm_atomic_helper_connector_hdmi_update_audio_infoframe() and
-> > drm_atomic_helper_connector_hdmi_clear_audio_infoframe() if possible (it
-> > might be hard to do it - in fact it being hard kind of forced me to
-> > work on the HDMI codec infra).
-> > 
-> 
-> That *is* indeed hard and adding almost unnecessary complications to my submission.
-> 
-> > > I am at this point puzzled to whether I should add a commit on top of this
-> > > submission that switches this driver to using the generic HDMI Codec infra
-> > > (which could also be helpful as guidance to others trying to do the same on
-> > > other drivers, I guess), or if I should just rebase on top of that.
-> > 
-> > I'd say, a completely separate patch might be even better, I can then
-> > integrate it into the HDMI codec patchset, adding a soft dependency on
-> > your series. If for some reason the codec lands earlier than your
-> > patchset, the patch can be dropped and reintegrated into your series. Or
-> > just committed separately.
-> 
-> I'd rather get the audio part merged as-is with the old handling at this point...
-> 
-> As you can see, once your HDMI Codec infra gets in a mergeable state the cleanup
-> (or conversion, however you prefer to call it) in this driver will be mostly
-> trivial.
-> 
-> This means that whenever your series is ready to merge, I'll be able to send a
-> (single, most probably) commit updating this driver to use the new helpers in a
-> jiffy (or two).
+This small series add the initial support for the Airoha AN8855 Switch.
 
-SGTM
+It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
 
-> 
-> > 
-> > > I'd rather add a commit on top to mainly avoid risking to delay this driver,
-> > > but if you're absolutely certain that you can get your series merged in the
-> > > same window as this driver I have *zero* problems in just rebasing on top.
-> > > 
-> > > Besides...
-> > > 
-> > > I'll find the time to review your series - I'm sad it didn't land earlier as
-> > > I would've written a bit less code otherwise :-)
-> > > 
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +
-> > > 
-> > > ..snip..
-> > > 
-> > > > > +
-> > > > > +	/* Enable the controller at attach time for HPD/Pord feedback */
-> > > > > +	ret = mtk_hdmi_v2_enable(hdmi);
-> > > > > +	if (ret)
-> > > > > +		return ret;
-> > > > 
-> > > > This looks like a hack. Please use .hpd_enable() / .hpd_disable()
-> > > > callbacks.
-> > > > 
-> > > 
-> > > ...but there's no way to power on only the HPD - you can either power on
-> > > the entire controller, or nothing.
-> > > 
-> > > I can't call mtk_hdmi_v2_enable/disable() from the HPD callbacks.
-> > 
-> > Why? Add a powerup refcount if necessary.
-> > 
-> 
-> ...but this means that I still have to keep the mtk_hdmi_v2_enable() call
-> here, but I didn't understand the point of this until you made me think
-> about...
-> 
-> > > 
-> > > Perhaps the comment should have been
-> > > 
-> > > "Enable the controller attach time also allows HPD/Pord feedback"?
-> > 
-> > I think it should still be explicit call from those callbacks. Consider
-> > a platform using external GPIO to implement HPD. Then the HDMI
-> > controller can stay disabled if it is not necessary.
-> 
-> ...this case.
-> 
-> I'm still not sure whether I can actually do what you propose because this
-> IP needs another IP (mtk_dpi) to be in a configured state before this one
-> gets enabled, or you get a freeze.
+This is starting to get in the wild and there are already some router
+having this switch chip.
 
-This sounds like PM runtime and PM devlink from HDMI to DPI, bringing
-DPI up when HDMI is PM-runtime-resumed.
+It's conceptually similar to mediatek switch but register and bits
+are different. And there is that massive Hell that is the PCS
+configuration.
+Saddly for that part we have absolutely NO documentation currently.
 
-> 
-> I'll check - if that's feasible, I'll add the refcounting and will go for
-> the hpd_{en,dis}able callbacks.
-> 
-> > 
-> > > 
-> > > > > +
-> > > > > +	/* Enable Hotplug and Pord pins internal debouncing */
-> > > > > +	regmap_set_bits(hdmi->regs, HPD_DDC_CTRL,
-> > > > > +			HPD_DDC_HPD_DBNC_EN | HPD_DDC_PORD_DBNC_EN);
-> > > > > +
-> > > > > +	irq_clear_status_flags(hdmi->irq, IRQ_NOAUTOEN);
-> > > > > +	enable_irq(hdmi->irq);
-> > > > > +
-> > > > > +	/*
-> > > > > +	 * Check if any HDMI monitor was connected before probing this driver
-> > > > > +	 * and/or attaching the bridge, without debouncing: if so, we want to
-> > > > > +	 * notify the DRM so that we start outputting an image ASAP.
-> > > > > +	 * Note that calling the ISR thread function will also perform a HW
-> > > > > +	 * registers write that enables both the HPD and Pord interrupts.
-> > > > > +	 */
-> > > > > +	__mtk_hdmi_v2_isr_thread(hdmi);
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +
-> > > 
-> > > ..snip..
-> > > 
-> > > > > +static void mtk_hdmi_v2_bridge_pre_enable(struct drm_bridge *bridge,
-> > > > > +					  struct drm_bridge_state *old_state)
-> > > > > +{
-> > > > > +	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-> > > > > +	struct drm_atomic_state *state = old_state->base.state;
-> > > > > +	struct drm_connector_state *conn_state;
-> > > > > +	union phy_configure_opts opts = {
-> > > > > +		.dp = { .link_rate = hdmi->mode.clock * KILO }
-> > > > > +	};
-> > > > > +
-> > > > > +	/* Retrieve the connector through the atomic state */
-> > > > > +	hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
-> > > > > +
-> > > > > +	conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
-> > > > > +	if (WARN_ON(!conn_state))
-> > > > > +		return;
-> > > > > +
-> > > > > +	/*
-> > > > > +	 * Preconfigure the HDMI controller and the HDMI PHY at pre_enable
-> > > > > +	 * stage to make sure that this IP is ready and clocked before the
-> > > > > +	 * mtk_dpi gets powered on and before it enables the output.
-> > > > > +	 */
-> > > > > +	hdmi->dvi_mode = !hdmi->curr_conn->display_info.is_hdmi;
-> > > > 
-> > > > Can you access display_info directly instead?
-> > > > 
-> > > 
-> > > Nice catch. Yeah, I should've done that from the beginning. Fixed for v3.
-> > > 
-> > > > > +	mtk_hdmi_v2_output_set_display_mode(hdmi, &hdmi->mode);
-> > > > > +
-> > > > > +	/* Reconfigure phy clock link with appropriate rate */
-> > > > > +	phy_configure(hdmi->phy, &opts);
-> > > > > +
-> > > > > +	/* Power on the PHY here to make sure that DPI_HDMI is clocked */
-> > > > > +	phy_power_on(hdmi->phy);
-> > > > > +
-> > > > > +	hdmi->powered = true;
-> > > > > +}
-> > > > > +
-> > > > > +static void mtk_hdmi_v2_bridge_enable(struct drm_bridge *bridge,
-> > > > > +				      struct drm_bridge_state *old_state)
-> > > > > +{
-> > > > > +	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-> > > > > +	struct drm_atomic_state *state = old_state->base.state;
-> > > > > +	int ret;
-> > > > > +
-> > > > > +	ret = drm_atomic_helper_connector_hdmi_update_infoframes(hdmi->curr_conn, state);
-> > > > > +	if (ret)
-> > > > > +		dev_err(hdmi->dev, "Could not update infoframes: %d\n", ret);
-> > > > > +
-> > > > > +	mtk_hdmi_v2_hw_vid_mute(hdmi, false);
-> > > > > +	mtk_hdmi_v2_hw_aud_mute(hdmi, false);
-> > > > > +
-> > > > > +	/* signal the connect event to audio codec */
-> > > > > +	mtk_hdmi_v2_handle_plugged_change(hdmi, true);
-> > > > 
-> > > > I think it was agreed that this should be called from the hotplug path,
-> > > > see the (linked) HDMI codec infrastructure patchset and dicussions for
-> > > > the previous revisions.
-> > > > 
-> > > 
-> > > Okay, I'll check that out.
-> > > 
-> > > > > +
-> > > > > +	hdmi->enabled = true;
-> > > > > +}
-> > > > > +
-> > > 
-> > > ..snip..
-> > > 
-> > > > > +
-> > > > > +static int mtk_hdmi_v2_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
-> > > > > +						 const struct drm_display_mode *mode,
-> > > > > +						 unsigned long long tmds_rate)
-> > > > > +{
-> > > > > +	if (mode->clock < MTK_HDMI_V2_CLOCK_MIN)
-> > > > > +		return MODE_CLOCK_LOW;
-> > > > > +	else if (mode->clock > MTK_HDMI_V2_CLOCK_MAX)
-> > > > > +		return MODE_CLOCK_HIGH;
-> > > > > +	else
-> > > > > +		return MODE_OK;
-> > > > > +}
-> > > > > +
-> > > > > +static enum drm_mode_status
-> > > > > +mtk_hdmi_v2_bridge_mode_valid(struct drm_bridge *bridge,
-> > > > > +			      const struct drm_display_info *info,
-> > > > > +			      const struct drm_display_mode *mode)
-> > > > > +{
-> > > > > +	unsigned long long rate;
-> > > > > +
-> > > > > +	rate = drm_hdmi_compute_mode_clock(mode, 8, HDMI_COLORSPACE_RGB);
-> > > > > +	return mtk_hdmi_v2_hdmi_tmds_char_rate_valid(bridge, mode, rate);
-> > > > > +}
-> > > > 
-> > > > Please rebase on top of https://patchwork.freedesktop.org/series/140193/
-> > > > There should be no need to do this manually.
-> > > > 
-> > > 
-> > > Oh finally there's a helper for this. Cool, will rebase! Thanks!
-> > 
-> > And it doesn't even add an extra dependency for you.
-> > 
-> 
-> ... Which is even cool-er, yes :-)
-> 
-> > > 
-> > > > > +
-> > > > > +static int mtk_hdmi_v2_hdmi_clear_infoframe(struct drm_bridge *bridge,
-> > > > > +					    enum hdmi_infoframe_type type)
-> > > > > +{
-> > > > > +	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-> > > > > +	u32 reg_start, reg_end;
-> > > > > +
-> > > > > +	switch (type) {
-> > > > > +	case HDMI_INFOFRAME_TYPE_AUDIO:
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_EN, AUD_EN | AUD_EN_WR);
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_RPT, AUD_RPT_EN);
-> > > > > +		reg_start = TOP_AIF_HEADER;
-> > > > > +		reg_end = TOP_AIF_PKT03;
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_AVI:
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_EN, AVI_EN_WR | AVI_EN);
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_RPT, AVI_RPT_EN);
-> > > > > +		reg_start = TOP_AVI_HEADER;
-> > > > > +		reg_end = TOP_AVI_PKT05;
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_SPD:
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_EN, SPD_EN_WR | SPD_EN);
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_RPT, SPD_RPT_EN);
-> > > > > +		reg_start = TOP_SPDIF_HEADER;
-> > > > > +		reg_end = TOP_SPDIF_PKT07;
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_VENDOR:
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_EN, VSIF_EN_WR | VSIF_EN);
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_INFO_RPT, VSIF_RPT_EN);
-> > > > > +		reg_start = TOP_VSIF_HEADER;
-> > > > > +		reg_end = TOP_VSIF_PKT07;
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_DRM:
-> > > > > +	default:
-> > > > > +		return 0;
-> > > > > +	};
-> > > > > +
-> > > > > +	for (; reg_start <= reg_end; reg_start += 4)
-> > > > > +		regmap_write(hdmi->regs, reg_start, 0);
-> > > > 
-> > > > Interesting. Usually sending of the infoframe is controlled by a
-> > > > register of a kind.
-> > > > 
-> > > 
-> > > "This callback clears the infoframes in the hardware during commit"
-> > > 
-> > > ...and that's exactly what this function does: clears the infoframes
-> > > in the HW and stops the RPT, making the HW ready for the "next round".
-> > > 
-> > > Did I get the documentation wrong?
-> > > Should this function *send* an all-zero infoframe to the external display?
-> > 
-> > No, it should stop sending the callback. My point was that usually there
-> > is a separate register which controls the infoframes. You code just
-> > clears the header (which probably is handled as disabling in the IP
-> > core).
-> > 
-> 
-> No, my code is clearing everything, not just the header.
-> 
-> The registers in this IP are sequential, I'm setting the code to start writing
-> at HEADER, and stop writing at PKTxx, where PKTxx registers contain the infoframe.
-> 
-> In any case, disabling in the IP core is managed by clearing the _EN and _EN_WR
-> (where WR means "Write", and RPT_EN is "repeat write") bits in the xxx_INFO_EN
-> register(s), and that's what I'm doing at the beginning, before actually cleaning
-> the infoframe registers.
-> 
-> Actually, I could've just cleared the EN bits and that would've been enough, but
-> I wanted to leave the IP in a clean+known state and decided to zero out the entire
-> infoframe header/data register set.
-> 
-> ....but anyway, what you just said before me explaining how this IP works means
-> that I got it right, and that this function does exactly what it is supposed to do.
+There is this special thing where PHY needs to be calibrated with values
+from the switch efuse. (the thing have a whole cpu timer and MCU)
 
-I'd say, clearing just the EN/EN_WR/RPT_EN is enough - this is what
-other drivers do.
+From v8 Driver is now evaluated with Kernel selftest scripts for DSA:
 
-> 
-> 
-> Cheers!
-> Angelo
-> 
-> > > 
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +
-> > > > > +static int mtk_hdmi_v2_hdmi_write_infoframe(struct drm_bridge *bridge,
-> > > > > +					    enum hdmi_infoframe_type type,
-> > > > > +					    const u8 *buffer, size_t len)
-> > > > > +{
-> > > > > +	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-> > > > > +
-> > > > > +	switch (type) {
-> > > > > +	case HDMI_INFOFRAME_TYPE_AUDIO:
-> > > > > +		mtk_hdmi_v2_hw_write_audio_infoframe(hdmi, buffer);
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_AVI:
-> > > > > +		mtk_hdmi_v2_hw_write_avi_infoframe(hdmi, buffer);
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_SPD:
-> > > > > +		mtk_hdmi_v2_hw_write_spd_infoframe(hdmi, buffer);
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_VENDOR:
-> > > > > +		mtk_hdmi_v2_hw_write_vendor_infoframe(hdmi, buffer);
-> > > > > +		break;
-> > > > > +	case HDMI_INFOFRAME_TYPE_DRM:
-> > > > > +	default:
-> > > > > +		dev_err(hdmi->dev, "Unsupported HDMI infoframe type %u\n", type);
-> > > > > +		break;
-> > > > > +	};
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +
-> > > > > +static int mtk_hdmi_v2_bridge_atomic_check(struct drm_bridge *bridge,
-> > > > > +					   struct drm_bridge_state *bridge_state,
-> > > > > +					   struct drm_crtc_state *crtc_state,
-> > > > > +					   struct drm_connector_state *conn_state)
-> > > > > +{
-> > > > > +	return drm_atomic_helper_connector_hdmi_check(conn_state->connector,
-> > > > > +						      conn_state->state);
-> > > > > +}
-> > > > 
-> > > > Note to myself, probably we can move this to drm_bridge_connector too.
-> > > > 
-> > > > > +
-> > > > > +static int mtk_hdmi_v2_set_abist(struct mtk_hdmi *hdmi, bool enable)
-> > > > > +{
-> > > > > +	struct drm_display_mode *mode = &hdmi->mode;
-> > > > > +	int abist_format = -EINVAL;
-> > > > > +	bool interlaced;
-> > > > > +
-> > > > > +	if (!enable) {
-> > > > > +		regmap_clear_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_ENABLE);
-> > > > > +		return 0;
-> > > > > +	}
-> > > > > +
-> > > > > +	if (!mode->hdisplay || !mode->vdisplay)
-> > > > > +		return -EINVAL;
-> > > > > +
-> > > > > +	interlaced = mode->flags & DRM_MODE_FLAG_INTERLACE;
-> > > > 
-> > > > The interlaced modes should be filtered, unless you also set
-> > > > bridge->interlace_allowed to true.
-> > > > 
-> > > 
-> > > Noted. Many Thanks for the review!
-> > > 
-> > > I'll wait until next week for more feedback before sending a v3.
-> > 
-> 
-> 
-> -- 
-> AngeloGioacchino Del Regno
-> Senior Software Engineer
-> 
-> Collabora Ltd.
-> Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-> Registered in England & Wales, no. 5513718
+Output local_termination.sh
+TEST: lan2: Unicast IPv4 to primary MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to macvlan MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address, promisc            [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address, allmulti           [ OK ]
+TEST: lan2: Multicast IPv4 to joined group                          [ OK ]
+TEST: lan2: Multicast IPv4 to unknown group                         [XFAIL]
+        reception succeeded, but should have failed
+TEST: lan2: Multicast IPv4 to unknown group, promisc                [ OK ]
+TEST: lan2: Multicast IPv4 to unknown group, allmulti               [ OK ]
+TEST: lan2: Multicast IPv6 to joined group                          [ OK ]
+TEST: lan2: Multicast IPv6 to unknown group                         [XFAIL]
+        reception succeeded, but should have failed
+TEST: lan2: Multicast IPv6 to unknown group, promisc                [ OK ]
+TEST: lan2: Multicast IPv6 to unknown group, allmulti               [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Sync                          [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Follow-Up                     [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Peer Delay Request            [ OK ]
+TEST: lan2: 1588v2 over IPv4, Sync                                  [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv4, Follow-Up                             [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv4, Peer Delay Request                    [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Sync                                  [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Follow-Up                             [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Peer Delay Request                    [FAIL]
+        reception failed
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to joined group       [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to joined group       [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to joined group       [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to joined group       [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN upper: Unicast IPv4 to primary MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to macvlan MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address, promisc      [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address, allmulti     [ OK ]
+TEST: VLAN upper: Multicast IPv4 to joined group                    [ OK ]
+TEST: VLAN upper: Multicast IPv4 to unknown group                   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN upper: Multicast IPv4 to unknown group, promisc          [ OK ]
+TEST: VLAN upper: Multicast IPv4 to unknown group, allmulti         [ OK ]
+TEST: VLAN upper: Multicast IPv6 to joined group                    [ OK ]
+TEST: VLAN upper: Multicast IPv6 to unknown group                   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN upper: Multicast IPv6 to unknown group, promisc          [ OK ]
+TEST: VLAN upper: Multicast IPv6 to unknown group, allmulti         [ OK ]
+TEST: VLAN upper: 1588v2 over L2 transport, Sync                    [ OK ]
+TEST: VLAN upper: 1588v2 over L2 transport, Follow-Up               [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over L2 transport, Peer Delay Request      [ OK ]
+TEST: VLAN upper: 1588v2 over IPv4, Sync                            [FAIL]
+        reception failed
+;TEST: VLAN upper: 1588v2 over IPv4, Follow-Up                       [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv4, Peer Delay Request              [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Sync                            [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Follow-Up                       [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Peer Delay Request              [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Sync   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Follow-Up   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Peer Delay Request   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address   [FAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address, allmulti   [FAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Sync   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Follow-Up   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Peer Delay Request   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+
+Output bridge_vlan_unaware.sh
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: FDB learning                                                  [ OK ]
+TEST: Unknown unicast flood                                         [ OK ]
+TEST: Unregistered multicast flood                                  [ OK ]
+
+Output bridge_vlan_aware.sh
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: FDB learning                                                  [ OK ]
+TEST: Unknown unicast flood                                         [ OK ]
+TEST: Unregistered multicast flood                                  [ OK ]
+INFO: Add and delete a VLAN on bridge port lan2
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: Externally learned FDB entry - ageing & roaming               [ OK ]
+TEST: FDB entry in PVID for VLAN-tagged with other TPID             [FAIL]
+        FDB entry was not learned when it should
+TEST: Reception of VLAN with other TPID as untagged                 [FAIL]
+        Packet was not forwarded when it should
+TEST: Reception of VLAN with other TPID as untagged (no PVID)       [FAIL]
+        Packet was forwarded when should not
+
+[ For Vladimir, I still have to implement fdb_isolation but posting to
+start the ball rolling for the multiple subsystem this patch affect
+and for the dubious DT schema ]
+
+Changes v11:
+- Address reviews from Christophe (spell mistake + dev_err_probe)
+- Fix kconfig dependency for MFD driver (depends on MDIO_DEVICE instead of MDIO)
+  (indirectly fix link error for mdio APIs)
+- Fix copy-paste error for MFD driver of_table
+- Fix compilation error for PHY (move NVMEM to .config)
+- Drop unneeded NVMEM node from MDIO example schema (from Andrew)
+- Adapt MFD example schema to MDIO reg property restrictions
+Changes v10:
+- Entire rework to MFD + split to MDIO, EFUSE, SWITCH separate drivers
+- Drop EEE OPs (while Russell finish RFC for EEE changes)
+- Use new pcs_inpand OPs
+- Drop AN restart function and move to pcs_config
+- Enable assisted_learning and disable CPU learn (preparation for fdb_isolation)
+- Move EFUSE read in Internal PHY driver to .config to handle EPROBE_DEFER
+  (needed now that NVMEM driver is register externally instead of internally to switch
+   node)
+Changes v9:
+- Error out on using 5G speed as currently not supported
+- Add missing MAC_2500FD in phylink mac_capabilities
+- Add comment and improve if condition for an8855_phylink_mac_config
+Changes v8:
+- Add port Fast Age support
+- Add support for Port Isolation
+- Use correct register for Learning Disable
+- Add support for Ageing Time OP
+- Set default PVID to 0 by default
+- Add mdb OPs
+- Add port change MTU
+- Fix support for Upper VLAN
+Changes v7:
+- Fix devm_dsa_register_switch wrong export symbol
+Changes v6:
+- Drop standard MIB and handle with ethtool OPs (as requested by Jakub)
+- Cosmetic: use bool instead of 0 or 1
+Changes v5:
+- Add devm_dsa_register_switch() patch
+- Add Reviewed-by tag for DT patch
+Changes v4:
+- Set regmap readable_table static (mute compilation warning)
+- Add support for port_bridge flags (LEARNING, FLOOD)
+- Reset fdb struct in fdb_dump
+- Drop support_asym_pause in port_enable
+- Add define for get_phy_flags
+- Fix bug for port not inititially part of a bridge
+  (in an8855_setup the port matrix was always cleared but
+   the CPU port was never initially added)
+- Disable learning and flood for user port by default
+- Set CPU port to flood and learning by default
+- Correctly AND force duplex and flow control in an8855_phylink_mac_link_up
+- Drop RGMII from pcs_config
+- Check ret in "Disable AN if not in autoneg"
+- Use devm_mutex_init
+- Fix typo for AN8855_PORT_CHECK_MODE
+- Better define AN8855_STP_LISTENING = AN8855_STP_BLOCKING
+- Fix typo in AN8855_PHY_EN_DOWN_SHIFT
+- Use paged helper for PHY
+- Skip calibration in config_init if priv not defined
+Changes v3:
+- Out of RFC
+- Switch PHY code to select_page API
+- Better describe masks and bits in PHY driver for ADC register
+- Drop raw values and use define for mii read/write
+- Switch to absolute PHY address
+- Replace raw values with mask and bits for pcs_config
+- Fix typo for ext-surge property name
+- Drop support for relocating Switch base PHY address on the bus
+Changes v2:
+- Drop mutex guard patch
+- Drop guard usage in DSA driver
+- Use __mdiobus_write/read
+- Check return condition and return errors for mii read/write
+- Fix wrong logic for EEE
+- Fix link_down (don't force link down with autoneg)
+- Fix forcing speed on sgmii autoneg
+- Better document link speed for sgmii reg
+- Use standard define for sgmii reg
+- Imlement nvmem support to expose switch EFUSE
+- Rework PHY calibration with the use of NVMEM producer/consumer
+- Update DT with new NVMEM property
+- Move aneg validation for 2500-basex in pcs_config
+- Move r50Ohm table and function to PHY driver
+
+Christian Marangi (9):
+  dt-bindings: nvmem: Document support for Airoha AN8855 Switch EFUSE
+  dt-bindings: net: Document support for Airoha AN8855 Switch Virtual
+    MDIO
+  dt-bindings: net: dsa: Document support for Airoha AN8855 DSA Switch
+  dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
+  mfd: an8855: Add support for Airoha AN8855 Switch MFD
+  net: mdio: Add Airoha AN8855 Switch MDIO Passtrough
+  nvmem: an8855: Add support for Airoha AN8855 Switch EFUSE
+  net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
+  net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
+
+ .../bindings/mfd/airoha,an8855-mfd.yaml       |  178 ++
+ .../bindings/net/airoha,an8855-mdio.yaml      |   56 +
+ .../net/dsa/airoha,an8855-switch.yaml         |  105 +
+ .../bindings/nvmem/airoha,an8855-efuse.yaml   |  123 +
+ MAINTAINERS                                   |   17 +
+ drivers/mfd/Kconfig                           |   10 +
+ drivers/mfd/Makefile                          |    1 +
+ drivers/mfd/airoha-an8855.c                   |  278 ++
+ drivers/net/dsa/Kconfig                       |    9 +
+ drivers/net/dsa/Makefile                      |    1 +
+ drivers/net/dsa/an8855.c                      | 2310 +++++++++++++++++
+ drivers/net/dsa/an8855.h                      |  783 ++++++
+ drivers/net/mdio/Kconfig                      |    9 +
+ drivers/net/mdio/Makefile                     |    1 +
+ drivers/net/mdio/mdio-an8855.c                |  113 +
+ drivers/net/phy/Kconfig                       |    5 +
+ drivers/net/phy/Makefile                      |    1 +
+ drivers/net/phy/air_an8855.c                  |  267 ++
+ drivers/nvmem/Kconfig                         |   11 +
+ drivers/nvmem/Makefile                        |    2 +
+ drivers/nvmem/an8855-efuse.c                  |   63 +
+ include/linux/mfd/airoha-an8855-mfd.h         |   41 +
+ 22 files changed, 4384 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+ create mode 100644 Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+ create mode 100644 drivers/mfd/airoha-an8855.c
+ create mode 100644 drivers/net/dsa/an8855.c
+ create mode 100644 drivers/net/dsa/an8855.h
+ create mode 100644 drivers/net/mdio/mdio-an8855.c
+ create mode 100644 drivers/net/phy/air_an8855.c
+ create mode 100644 drivers/nvmem/an8855-efuse.c
+ create mode 100644 include/linux/mfd/airoha-an8855-mfd.h
 
 -- 
-With best wishes
-Dmitry
+2.45.2
+
 
