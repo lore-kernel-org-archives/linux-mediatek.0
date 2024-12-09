@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB390E7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 11:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83231E7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 12:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
+	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9dUYxdLQqAJA7lxU1CnCFYE7S/UjE8BswNDmSN90O4=; b=NT/cyREklVemLd
-	yH9JnShHfsK05o//cCepfjoW249cQQy8iTpnASrBy6qnA59Q3czV8uK5BBcNRnW5ukKmq/euEkNAH
-	lFMJYPNPjTEBGQttfwMZmPrV+gk4zijFPgYyBmSKO/KQOfGP5u0vKRX+3kP4zWQjn0i8EjamxW1bR
-	bMSqT5SNyQ9H6J5NaJBylVl7GyVCBM9OBUNZNj+Vsu/erIL9gV9xSD1+6IBWBB66QjOGWOIzNUq4L
-	O35xWxs3VlyG9J77fe6Sqq1mc+XjPPfRskVL3DO1ImsYjC0s4PWCpoIhd4dj848i4u6Koe7PudW0/
-	fGEs8isg4WRpDUczj9IQ==;
+	List-Owner; bh=2fNQK0VC5hmdkf5xB9w2EQXUei7uJNRsiN8mjKgCeDE=; b=toR7BgxWw/JkTy
+	GdQqNF7AEdq3TJzggLnIfO8j3aLg/h8tsWE/7xNlH1PqGMKh3Ma/I6iN2eq9EmOTGG+V9JH6BNsNj
+	FK87S6C+YCwkKnUYFPQ7BtckF/5X0c2D/6FYmjB1GEICyzvd+k53Iu7Meh42b6w6534yzRqOzuBx5
+	vofP3GNLB/AmpLFUZGOBImQdyab1fzzr0/Yc7b/LkcD/MydTaAerBAOydRVFTaUB/CYJPE9ec3AV/
+	Wke0n+V/V0nb5YeprlZwe616UI1IBWtm7gLOlRO+K0jftQpLbktuJSX2toEeY7CFZuGNerfdFzyds
+	7hQExMScoRvXr8iLZsNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKcLA-00000007Zkv-3EPh;
-	Mon, 09 Dec 2024 11:54:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tKd8u-00000007lwj-2xN2;
+	Mon, 09 Dec 2024 12:45:40 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKcJI-00000007Z7V-1jp9;
-	Mon, 09 Dec 2024 11:52:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733745139;
-	bh=ia2lJ8ngWHko8cdWKYZn7u0ZWT2fK6djjWGkMsKBvFs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SeoqxUCyZKwT2ZlSe0EV7MkOJLTvYSFPsaGQ3o/Dy29gI5A67jbt6HnSsdf3pTnsu
-	 uPMScXXMd1UzSvmXEvazXIEh3HLciN4sTXaBg9cuI8+U6ygSOpPhmGTlIcaxEbTMLV
-	 zhZW8GARDec23DEmDUphOFtfax2oxJg5FqX50qM0VibPgOQGp9fqpBYjhqPshYdQsx
-	 mUQbsWSlo9dRa/IRoAsgNrZT+ggjNcuHAjZodRYkO+vNpoS6OBfqQ5l3EwjcC7lx+5
-	 A9bdlYibFF9TS5ErV8Gjbq8BfNlnbEialpbmlW2VerRanYDMRPyOVrj9q7NCXjncxb
-	 sKCWKUmwsDRUQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5298317E36AF;
-	Mon,  9 Dec 2024 12:52:18 +0100 (CET)
-Message-ID: <dc445076-269e-4600-98f3-52158f73baac@collabora.com>
-Date: Mon, 9 Dec 2024 12:52:17 +0100
+	id 1tKcwE-00000007hRy-36PS;
+	Mon, 09 Dec 2024 12:32:36 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout3.routing.net (Postfix) with ESMTP id 82C55605F0;
+	Mon,  9 Dec 2024 12:32:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1733747548;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2fNQK0VC5hmdkf5xB9w2EQXUei7uJNRsiN8mjKgCeDE=;
+	b=HmsVggyOYb4b6hCgAOoZTRkTYjnu9X2Mj1mGgv+WcHtMf7EKAtJCqImI3UsGf6tXhGFg+t
+	yPWIWYJFPaDQFS3dBLz0v0ImNUHd9OA/hadfZ4wSk8zROQZA1WP3y0nrw8YRG4uUlSTcXy
+	NiatFxMY57d2z2gD1NYj0tuRadkkGwo=
+Received: from webmail.hosting.de (unknown [134.0.26.148])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id D6DEF4003A;
+	Mon,  9 Dec 2024 12:32:27 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 4/5] arm64: dts: mediatek: mt7988: add pinctrl support
-To: Frank Wunderlich <linux@fw-web.de>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
+Date: Mon, 09 Dec 2024 13:32:27 +0100
+From: "Frank Wunderlich (linux)" <linux@fw-web.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v5 5/5] arm64: dts: mediatek: mt7988: add pinctrl subnodes
+ for bpi-r4
+In-Reply-To: <9b1a385e-da1c-429b-91b9-d5b5d6d5abb7@collabora.com>
 References: <20241202110045.22084-1-linux@fw-web.de>
- <20241202110045.22084-5-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241202110045.22084-5-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20241202110045.22084-6-linux@fw-web.de>
+ <9b1a385e-da1c-429b-91b9-d5b5d6d5abb7@collabora.com>
+Message-ID: <4e0ace7c5a0766395f8801bdd2fcdbf9@fw-web.de>
+X-Sender: linux@fw-web.de
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
+X-Mail-ID: b6b2de20-0394-48f5-9719-e7ee90c90504
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_035220_597377_822DBE3D 
-X-CRM114-Status: UNSURE (   5.56  )
+X-CRM114-CacheID: sfid-20241209_043234_954613_F0300CCA 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,18 +73,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/12/24 12:00, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Am 2024-12-09 12:52, schrieb AngeloGioacchino Del Regno:
+> Il 02/12/24 12:00, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files.de>
+>> 
+>> Add board specidic pinctrl configurations on Bananapi R4.
+>> 
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add mt7988a pinctrl node.
+> Can you change the title as suggested in the review for the other 
+> series?
+> So that we stay consistent.
+
+already done in my tree (and fixed typo in commit message) ;)
+
+8e566779ee82 arm64: dts: mediatek: mt7988a-bpi-r4: Add pinctrl subnodes 
+for bpi-r4
+
+> After which,
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Reviewed-by: AngeloGioacchino Del Regno 
+> <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+thx
 
+are parts 1+2 now ok?
 
+regards Frank
 
