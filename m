@@ -4,67 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADDAE77173
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 10:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B358E7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 11:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L9+1LhTAWb8cV05KrIKNRhHsHoFVyDPrIowJH5JolHM=; b=qZQslJEUbmCTXP
-	jUwPo/AsrBkezN6qDICnhnK92NcCX0EE8lWdrfFB+i9+JSrkZKrFpvpebSD8JlMNBPlJ8Z6X4eD3O
-	+gmkBz8kSu+qN5UixURKupCi3vHNoeXefG7rOt5zgsQwQyp/fe6ttei5NlIMYIfbprBa3C1lsjjxe
-	ZgGgfTh9ysYK3XT4E8jyCwghCrKtKKeXEdDLMj8L4EhFGOSIg3dPDXFUa6zxbBsMZlSgqLkHTz1B1
-	0If22IL+sUrgY22LDElh2G4awAmglTSgC9B5QnkmfPlASK4dRt4YgvUMBL2pYKMSMLo4GejkLMJBX
-	aOOAIZJdaPj1/fBQUqQw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZaKRkQ++zE9MSO9ISV6gYj3UsACoYvIwFoqWZLd5Wt8=; b=Hn/XgSif3O5uNep2qkHtetwVxl
+	8KXVjSeKdcpUxssf50OILHJdjF6Xmz5yIQqrIS1TEfkS1sX5Tgfw6oBHy4tLKuYO5jbbFDRr5fYZ0
+	nsXOHBMow4O0Njqtpmu1qPYtIkqMVJnVAlnclMAy3SVsLBHMouMQe1471jBnv4GtmAff3fENdqw+T
+	5cq1sdXutNGGyWZXcjtw+DyLGuAoPw8FFUHqUBxgNNM/SJwokRFDtUi033P1B09Dq3LwTGvhRAVhG
+	EEsaMuc/3bHpBfMd6/Gk59jpIlKWkQoREqAY/xtVifpykBeGai3INHkfbpFTbilrA1xp9kWJ2mUvc
+	69md2sFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKb2V-00000007IDY-0UpO;
-	Mon, 09 Dec 2024 10:30:55 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tKbyD-00000007VDh-2Whx;
+	Mon, 09 Dec 2024 11:30:33 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKamf-00000007ErJ-0mT7;
-	Mon, 09 Dec 2024 10:14:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733739271;
-	bh=lQ9MP8Ja4PDcI0wl7iEL9FX90jRS27gE6Ne9YOuV3g0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T1r0sUkGZRd2lc5Mlyy2DRwXNuymY//gcxk3AXulq7z7CT9PVrp/LlzrrULZFfM4E
-	 WibXSGX1ZnC+ELHuvSTPcTg4isnO9x9WLFxf3tN3rH0h9y1SpJ0vwdAOL1AzBiByRR
-	 XGzh/BUCMWZ43v4+v5ehr/r/Azhfkns/848Sp9//WjwwVTOkeVYnUU2TBLxEk4Rcmv
-	 Z7GTJDHLDY2nlR03xMyY2gef613SNP5KZmRq1Bj8eltN9e9IXPneEBPgJr9SM+pGsx
-	 NWt5LGGZYTwk1/Q0Y5lLKFal0v6fsP8IT/WubJvs8IjhqyvylMD+T7pRL7uT4ab8N/
-	 VcblphnyzIe+A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 73F1717E1522;
-	Mon,  9 Dec 2024 11:14:30 +0100 (CET)
-Message-ID: <6b4f98ab-5bfe-406d-a0d4-46d36ed10df7@collabora.com>
-Date: Mon, 9 Dec 2024 11:14:29 +0100
+	id 1tKbx8-00000007Usx-1LOs
+	for linux-mediatek@lists.infradead.org;
+	Mon, 09 Dec 2024 11:29:28 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5d3c0bd1cc4so240611a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Dec 2024 03:29:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733743764; x=1734348564; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZaKRkQ++zE9MSO9ISV6gYj3UsACoYvIwFoqWZLd5Wt8=;
+        b=sTe214HUcbLUGIenYT04uGTBnfN+yUoQBOimh7XRFTxdqSAffEQFJSeBfZjkY4qMgq
+         NlqBNM0t5rRZRrKfbA4BQIqD1uOHfvQIxnbqzVh99iPu5SPXFFSaEHOUggWKD4gt5KWo
+         T1phjAQ5fiWdPX1y+QTpWZotFLuqoz+crx+We0CtiZnASgGk9CtXhxxlB+sZXvPeeVZj
+         4tz645qarz4aLe16GVyQg2BKj22bcZ51s2TK3j89bsOywnOt+RO1AGZjECoiq7+lrv13
+         Jj+0/ukR6vizDelbFgM3kw8PgwmPXUyLTnCgX9mA+1w+ceaDankYGXk1ww2HY9Wz7K9o
+         uEfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733743764; x=1734348564;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZaKRkQ++zE9MSO9ISV6gYj3UsACoYvIwFoqWZLd5Wt8=;
+        b=PMVN6d8S7th3Q55YPA6K6mhs8vQgTv6JhxKjPWrHAYXx8ESIcWTI7mkkCpqVmoR60v
+         v8RZN36oB9tElvZZYr4kODFaaykjQBv4008dvH/Wg8t2aewqnowf/mIoDR2wlXCqO3+T
+         yuFUhk+6WoAQ2W35RvAU1/QCXm1BgfF3qS8PVC5SQEB/zbXU3t+fff7msCzRsv7lNKN9
+         0Wwt6601I5+oZfE8cSjdIWHWbSBPXuKu6KC3HqWzJWefw7lvK2PFc+nJlmLC03WCS66K
+         YQN5+BOdBoYVfWZtVQtBcKrG5qaIBpdaCY20kRDzOMcAb6fnxm7U0lSG7KMjcI2YHK8P
+         rxLw==
+X-Forwarded-Encrypted: i=1; AJvYcCXeE0wTCL96p5nwI07rPlMtBBJQUZb6nSaRyXIB7BjvQqBOTWVAnrszoDWJBW6HlGgCV8iXNZexcJj44GCsOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyfnEJan/yAhdAoFUOjFEHzUxdx3OhG4YWuYiNY7+4s4i8hVjE7
+	S9WNq3CkpVYRiW2n7j8WbD7nJjcNZX8g7w2BXjR1NJ8aw8Z7k7rqnV7LZgf3K9CTjtT1h8vgF9+
+	y
+X-Gm-Gg: ASbGncucvRdAs34G9yGJIMAUx5B0A2uQsEmm9SioANDYenNLCtO5QBsMEJ9bYMAv1rv
+	JC+nHg2AGha+qLPdnhoKCG0bz7MvvdkuP+PFapmfgRXP1AtyNKaCNBMkzu7y2zgnrFwLP6SvkbY
+	ndX8WAD78AhIo8mYDTla/NKWY7LwOGKfOmghM4vRH3Z09fsJnpTYB0WkW3BedPjx0YxdJpNqBwY
+	1cEDyjZJD91ZxPwqIK887FqiD3W8dE11tgeILD0JfOiVTqi5SyXqPgtUpHc0VOpmBsc
+X-Google-Smtp-Source: AGHT+IEnfZKzpVPLUq5YoVunalUaONsSympM3QhF2go/NVblXkK0DCFFX68Kg5WtSW1gpOjQLKqhQA==
+X-Received: by 2002:a05:6402:43cc:b0:5d3:efcf:f163 with SMTP id 4fb4d7f45d1cf-5d3efcff680mr1894926a12.11.1733743764583;
+        Mon, 09 Dec 2024 03:29:24 -0800 (PST)
+Received: from krzk-bin.. ([178.197.223.165])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d14c7aaa09sm5976741a12.80.2024.12.09.03.29.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Dec 2024 03:29:23 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: [RESEND PATCH] arm64: dts: mediatek: mt8183-kukui: align thermal node names with bindings
+Date: Mon,  9 Dec 2024 12:29:20 +0100
+Message-ID: <20241209112920.70060-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] mmc: mtk-sd: Limit getting top_base to SoCs that
- require it
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>
-References: <20241204092855.1365638-1-wenst@chromium.org>
- <20241204092855.1365638-3-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241204092855.1365638-3-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_021433_397495_91211B7D 
-X-CRM114-Status: GOOD (  24.47  )
+X-CRM114-CacheID: sfid-20241209_032926_396239_0CA78572 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,101 +99,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Andy-ld Lu <andy-ld.lu@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/12/24 10:28, Chen-Yu Tsai ha scritto:
-> Currently the mtk-sd driver tries to get and map the second register
-> base, named top_base in the code, regardless of whether the SoC model
-> actually has it or not. This produces confusing big error messages on
-> the platforms that don't need it:
-> 
->      mtk-msdc 11260000.mmc: error -EINVAL: invalid resource (null)
-> 
-> Limit it to the platforms that actually require it, based on their
-> device tree entries, and properly fail if it is missing. There is
-> no MMC node in the MT6779 dts, so it's currently unknown if that
-> platform needs it or not.
-> 
+Bindings expect thermal zones node name to follow certain pattern.
+This fixes dtbs_check warning:
 
-No, it doesn't require it. The controller is (very) similar to the one
-found on MT6795 :-)
+  mt8183-kukui-jacuzzi-burnet.dtb: thermal-zones: 'tboard1', 'tboard2'
+    do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\\-]{1,10}-thermal$', 'pinctrl-[0-9]+'
 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Can you please remove that "I don't know about mt6779" mention, now that
-you do know?
+---
 
-Btw,
+Sent in July, then Chen-Yu pinged in October. Can you apply it?
+https://lore.kernel.org/all/CAGXv+5HSZfr14K1sGky4g9Sik987DAisH7KTZn9v_svOwF+y6A@mail.gmail.com/
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   drivers/mmc/host/mtk-sd.c | 15 +++++++++++----
->   1 file changed, 11 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index e2c385853eef..1bb7044f4ca1 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -414,6 +414,7 @@ struct mtk_mmc_compatible {
->   	u8 clk_div_bits;
->   	bool recheck_sdio_irq;
->   	bool hs400_tune; /* only used for MT8173 */
-> +	bool needs_top_base;
->   	u32 pad_tune_reg;
->   	bool async_fifo;
->   	bool data_tune;
-> @@ -587,6 +588,7 @@ static const struct mtk_mmc_compatible mt7986_compat = {
->   	.clk_div_bits = 12,
->   	.recheck_sdio_irq = true,
->   	.hs400_tune = false,
-> +	.needs_top_base = true,
->   	.pad_tune_reg = MSDC_PAD_TUNE0,
->   	.async_fifo = true,
->   	.data_tune = true,
-> @@ -627,6 +629,7 @@ static const struct mtk_mmc_compatible mt8183_compat = {
->   	.clk_div_bits = 12,
->   	.recheck_sdio_irq = false,
->   	.hs400_tune = false,
-> +	.needs_top_base = true,
->   	.pad_tune_reg = MSDC_PAD_TUNE0,
->   	.async_fifo = true,
->   	.data_tune = true,
-> @@ -653,6 +656,7 @@ static const struct mtk_mmc_compatible mt8196_compat = {
->   	.clk_div_bits = 12,
->   	.recheck_sdio_irq = false,
->   	.hs400_tune = false,
-> +	.needs_top_base = true,
->   	.pad_tune_reg = MSDC_PAD_TUNE0,
->   	.async_fifo = true,
->   	.data_tune = true,
-> @@ -2887,9 +2891,13 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   	if (IS_ERR(host->base))
->   		return PTR_ERR(host->base);
->   
-> -	host->top_base = devm_platform_ioremap_resource(pdev, 1);
-> -	if (IS_ERR(host->top_base))
-> -		host->top_base = NULL;
-> +	host->dev_comp = of_device_get_match_data(&pdev->dev);
-> +
-> +	if (host->dev_comp->needs_top_base) {
-> +		host->top_base = devm_platform_ioremap_resource(pdev, 1);
-> +		if (IS_ERR(host->top_base))
-> +			return PTR_ERR(host->top_base);
-> +	}
->   
->   	ret = mmc_regulator_get_supply(mmc);
->   	if (ret)
-> @@ -2951,7 +2959,6 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   	msdc_of_property_parse(pdev, host);
->   
->   	host->dev = &pdev->dev;
-> -	host->dev_comp = of_device_get_match_data(&pdev->dev);
->   	host->src_clk_freq = clk_get_rate(host->src_clk);
->   	/* Set host parameters to mmc */
->   	mmc->ops = &mt_msdc_ops;
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 4b974bb781b1..2828f34949ae 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -944,13 +944,13 @@ &ssusb {
+ };
+ 
+ &thermal_zones {
+-	tboard1 {
++	tboard1-thermal {
+ 		polling-delay = <1000>; /* milliseconds */
+ 		polling-delay-passive = <0>; /* milliseconds */
+ 		thermal-sensors = <&tboard_thermistor1>;
+ 	};
+ 
+-	tboard2 {
++	tboard2-thermal {
+ 		polling-delay = <1000>; /* milliseconds */
+ 		polling-delay-passive = <0>; /* milliseconds */
+ 		thermal-sensors = <&tboard_thermistor2>;
+-- 
+2.43.0
 
 
