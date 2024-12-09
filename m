@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89CFE77173
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 10:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18692E77173
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 10:29:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u10Z7RsJ3SrsFacDql6F0JSeqSx6z9qL6lroTSMFehA=; b=OltdAu7mHXe0xnaLcWSAWndEgZ
-	ys/KdAIF3mZ/CiIPv6Lii+bDYUkHFaFlQuVaPl1DCwZhA7qYwsC59/EhiG/ceP2gGwhHHludWfj3f
-	xcFOtx+WyorthPoZOGjpZ8R0nviWxGHBlpt4y203TTwRjBzfbHUBWZrTD6BX6a7InibD0MnTeHwCR
-	8sdDpTlbqqyfAt4e4rTRpaH/jk6sismYb/gPOI+ZfUJjF3pWiq+LeZlJowAsDqNGUNMObGvpe/ArM
-	ttAUhi7DvabJPZI1Kr+0HNr7WwhOjOzRKE6I/QMc/BsWY5ThWFYq27Tac0FZgWDUWJZB4kj+DSCN+
-	4l2kqT5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3rnvBkPskOINXU9KlTbLS24kcvLtQyf3D1Yj87u7gfw=; b=09Ki8ps3suOUPx
+	2IVlyptE3fRY4QWfl8L8Bq4QHOt0m2El5o1ZNRgQ5ddZetH259z2eTBFF2xJfx7a3qa++TOHBcS5e
+	yV1ZvpKg1RoVnDu9t1S9ZA3gRLrznm295IUQn6A7NOJxub7Mh7LZSPHoaFEvUOtn8oZ+dDoW1a8WT
+	aDesD9l4cDCU+dn8+0u8ioeNPWH4FmxfX9EySYmjrovxvDOBS/hCFfrAtSDMSHduSqJ/2+zYl7UK8
+	PwaM3ofJN7FWeSe9abW00JIXSpfR/TtZHX8bdOXezigN8YJeXfUcFoulFKCAx0Mtv8mli3Rrg4FMU
+	zXEAH7YzyZFGLw4hiHNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKavC-00000007Gtu-3UiS;
-	Mon, 09 Dec 2024 10:23:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tKb1U-00000007Hz4-0qwK;
+	Mon, 09 Dec 2024 10:29:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKabv-00000007Ca1-1Yrq;
-	Mon, 09 Dec 2024 10:03:28 +0000
+	id 1tKamd-00000007Er0-3Tro;
+	Mon, 09 Dec 2024 10:14:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733738604;
-	bh=uxDhJyLY3sygy6QpU5RBbCWc5T7HouoogqahrUoEgVQ=;
+	s=mail; t=1733739270;
+	bh=w80pNd53yPsn010J40RXAr/XNrgFhv+WCFz/O/1B7ZE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qIiERnIv919/ESyVCG3CtCp2T2qIXTi3k40L/ZXlh5p7nfHQZ7Yk+8lR6/xjB6wVE
-	 3AkTXm61EaKoSdY9cBflFmGUoz/kE1gc0EP45KxaSUT+b/lND0VeAnOUwjnuGAa6OT
-	 LyN2sB3DdfIzAlWtQqHzzqnN1Wwg0lrGiW2hHKA0a0sNcuzVp3IdA/9vL/KOZH5dbR
-	 3o60pvkY6uXerlXMK0djbTSxzTSQarvHIyZ7FCt01xA7ka7HJ+4q2iI4sMfY8CN+tz
-	 uijQPuSyo9iuEeuzA3R3fc8X2pJhm/vMP6Lm/Wj0SPwjUtMq+1+GJGQArr4oNnl+YO
-	 9FVZFihrAB3cA==
+	b=SbUTaKLPqjKvX6zH5JWq+odhN0SexrqORW4cc5MIs0amwO7eZWvRZ1U4xsqCi7GKc
+	 93OMB5oQrQ/CSQI06eqpcA2lu6aVmk8Z9as77CAbNN/vdRn7vP/+47eVDVajPAV/94
+	 lksISSV8yvK5Qbd1soNLRmfsxXHc46OB2mhvBY/oM/N6TrpW+WngR/u5GgSRDvOcVQ
+	 A87neH6WDVNlQ0hX4NIwtiTelub5jDgJinQIVi3oONsn8Vf7dDkzsnTB66/rBNlAfG
+	 OMpwRsqN7uemXixwkdtu6GKUJxXu6hpPn9X8MhqV9KnzDva79nXZfWjMTi64W9T9af
+	 xKcMsayQNYfWQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2474717E3625;
-	Mon,  9 Dec 2024 11:03:24 +0100 (CET)
-Message-ID: <c7407eef-d5dd-4380-ba5e-1defa37ee742@collabora.com>
-Date: Mon, 9 Dec 2024 11:03:23 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7AC2D17E14D5;
+	Mon,  9 Dec 2024 11:14:29 +0100 (CET)
+Message-ID: <456b8050-7a7c-4f5e-8ace-5e88e02e86ba@collabora.com>
+Date: Mon, 9 Dec 2024 11:14:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] MT8516/MT8167 dtsi fixes
-To: Val Packett <val@packett.cool>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241204190524.21862-1-val@packett.cool>
- <7bf536a5-30c1-43d8-9ea3-3aaea65c6b0a@collabora.com>
- <VVS3OS.MZCWW6ICFFUB3@packett.cool>
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: Document compatibles that
+ need two register ranges
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>
+References: <20241204092855.1365638-1-wenst@chromium.org>
+ <20241204092855.1365638-2-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <VVS3OS.MZCWW6ICFFUB3@packett.cool>
+In-Reply-To: <20241204092855.1365638-2-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_020327_578028_A2BBED61 
-X-CRM114-Status: GOOD (  31.66  )
+X-CRM114-CacheID: sfid-20241209_021432_036714_A438EC06 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,99 +77,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Andy-ld Lu <andy-ld.lu@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/12/24 04:11, Val Packett ha scritto:
+Il 04/12/24 10:28, Chen-Yu Tsai ha scritto:
+> Besides the MT8183's MMC controller and all its compatible derivatives,
+> the recently added MT7986 and MT8196 also require two register ranges.
+> This is based on the actual device trees.
 > 
-> On Thu, Dec 5 2024 at 01:27:01 PM +01:00:00, AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com> wrote:
->>> I strongly suggest you to also send one that achieves basic boot with UART console
->> as a first step for upstreaming your board, and then go for incremental changes
->> everytime you get a new feature working.
+> Properly enforce this in the binding.
 > 
-> Wanted to get the PMIC in first but sure, could try splitting out the initial 
-> version without the PMIC.
-> 
+> Fixes: 4a8bd2b07d88 ("dt-bindings: mmc: mtk-sd: Add mt7988 SoC")
+> Fixes: 58927c9dc4ab ("dt-bindings: mmc: mtk-sd: Add support for MT8196")
+> Cc: Frank Wunderlich <frank-w@public-files.de>
+> Cc: Andy-ld Lu <andy-ld.lu@mediatek.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-We all want to get XYZ in first, but then, you'll see that sometimes having at
-least something will help you justify other changes....
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-If there's nothing upstream, understanding your changes becomes increasingly
-difficult (depending on the nature of those changes, of course) - so... just
-take the advice: sending the initial DT will help you later in the process ;-)
-
-> Oh! One dts/dtsi question: pretty much all MTK devices so far have all pinctrl 
-> configurations defined per-device. But on this SoC, pin assignments have their 
-> "canonical" function in the pin name e.g.: MT8167_PIN_58_SDA0__FUNC_SDA0_0 and on 
-> this device they are used as-is. Would it be fine to place these default pinctrl 
-> configs for SD/MMC, I2C etc. in the SoC dtsi?
-> 
-
-No, because even though this is the default on many boards, it's still something
-board specific, as other boards may define different functions.
-
-Please define that in your board DT.
-
->>> Generally, if the patches are only simple additions, you could send the original
->> patches without any author variation (and fixing that MT6392_IRQ_numbers enum
->> in the original ones because lower case please!) and then your patches on top
->> with your additions.
-> 
-> Right, I was mostly unsure if the email workflow supported just sending someone 
-> else's patches, but I guess that was silly - of course git-send-email should do the 
-> right thing!
-> 
->> The upstream driver just gained support for configuring the display paths
->> entirely in the devicetree as those are obviously device specific.
->>
->> You can make use of that for upstreaming your tablet after adding the display
->> nodes (and bindings, if required) as if you go for the default configuration
->> that's probably not going to work because it's for the pumpkin boards which
->> will most probably have a different display pipeline compared to your board.
-> 
-> The pipeline seems to be the same.. The pumpkin board was brought up with DSI as 
-> well, the main pipeline I can find in the Android source is the same (+ PWM).
-> 
-> I am still struggling to get it to work though: DSI command mode configuration gets 
-> acknowledged fine, but in burst mode, the vblank never arrives. Tried fiddling with 
-> various things (CMDQ or not, mutex as vblank source since there was an Android 
-> commit doing that, etc.), nothing helped.
-> 
-
-DSI command mode is not supported upstream - only video mode... and that's why you
-can't get your display to work. There's no WDMA driver...
-
-Convert it to video mode and it's gonna work just perfect :-)
-
-P.S.: Also check if your mmsys+mutex configuration is correct!
-
->>> By the way, is anyone familiar with PSCI cpuidle/hot-unplug issues on
->>> Mediatek Android devices from around this time? [..]
->>
->> I did have some issues with an older bootloader on the Xperia M5 smartphone
->> and would even lock up at boot, because on the old firmwares the power
->> domains for the CPUs are not managed automatically by FW.
-> 
-> Interesting, thanks for the pointer!
-> 
-> In the Android kernel sources I could find though, there are no CPU domains in the 
-> mtk-scpsys-mt8167 driver, and the only references I could even find to the related 
-> register bits are from code that *reads* the status of the CPU power domains to 
-> make decisions about sleep states (only_one_cpu_online in mtk_idle). Trying to add 
-> those to the driver anyway, did not succeed so far.
-> 
-
-Downstream, you will find references to "mtcmos" (or anyway cpu mtcmos) - that's
-how power domains are called there (I think. At least, in older downstream kernels
-that's how they're called - and that's the "real" hw name btw).
-
-Cheers,
-Angelo
-
-> ~val
-> 
-> 
-> 
 
 
