@@ -4,90 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ACB5E77173
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 04:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48779E77173
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 05:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F/7YTBWWchufCln6WcdXo3s/jp9GBOGUEywKWM8gCII=; b=3ARcc1JS2gPoXIaMP6DbjZji2R
-	fvDueglnYmwYK2PUXvPRdoZA7aiISrZO1v+RbxJhIroKjDmvE4SVQj4g8sslEHOyaSE8nWIAFoSRy
-	68bJG9pa08orc1CAOnNpHJr53pAy97lHH6RoXIeXoNpvYiiU6zMUR5+Os23I95iWurN1BQ4sgnJ1U
-	h/NWfeCMfI9Ipb9k6OUo26wOmxYLheWKRgoRKgk5UzATI5MrZc4jgiVsOOfCHg8BcsG6zOILuiVHr
-	cjwF8sBhoD8HAtmTbOcguUVAklXoUrFNKXFZz+A0alufalN5HfRP5g+M2q6b5VyLGWs4muwvtA6+v
-	G03VDYnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TZDjBSvri7hlIwt37/7aH7ujoVVboPYulSTSWuswtqY=; b=i3qOqJPCm95krbuC2m9awjNeR6
+	6GtalQ4VU/rZjPfmaOrsyte0JMA+KuPu8P/RohZEEFZ0gsIFxoJU77NmoHUOjrpksDbAVymv4QQMv
+	UTzdelhlqi71K+QhS4zGOwC/fmAcjssR+Xx6NutzlvEZhBdwvsMmr/z92VsNSaNdu+M7IK8ASW4hs
+	moj2XMvlj3s07gwc1rzqWnf8PDz2hFDl99cqLmek0NFl63mvgKTllK+SQZ9nluPTUNq0wKTyu4Gkd
+	Jvc90Jp9EZKURe59QX3m/xJsIliHrrFyel531B1PdEtuagpT79yXxXh/WntMV8SVSHBkXuhxAFGwo
+	QwqNpooA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKVdY-00000006RQb-17oE;
-	Mon, 09 Dec 2024 04:44:48 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1tKWl0-00000006Xd5-0nzI;
+	Mon, 09 Dec 2024 05:56:34 +0000
+Received: from mx0b-0064b401.pphosted.com ([205.220.178.238])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKVcV-00000006RF5-0ZJM;
-	Mon, 09 Dec 2024 04:43:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733719423; x=1765255423;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=CnZh5PzuBjSJ5i81gB2eROtQAtISkclOyWpu/tX4BSo=;
-  b=N8zixdPSgzhXlBjoJWfsFKWyaeBfdnLr1RGY1GBrOaMpyH6izAZTDDf6
-   yh0sYCUHmViRR/lnG6R7/CxiiqnpuqptbYXE5w9LLHRLPprINUgdO8n/c
-   7xJpayptcTlM1L3FVksU0AINFewlAigSY1Ujr0OVocAwNYBGza6Ny9Xax
-   sfQBOYM8DXkueKOXsm1vP+obUMri1saWghRKwuuv6uYXUt/Q/nx67J9lW
-   DYgjeVhsEyPYf4nWy+xA9IiFAOVURBjldaDYD6hFtFFVopfyh+TxLBgNi
-   fbENRmzC+nxP5heX+qGfswzIkdztIF3DpHNcglK3g+37fm4+9YVfcwh/W
-   w==;
-X-CSE-ConnectionGUID: XhtbLf2cTViVt1M3WZeY/g==
-X-CSE-MsgGUID: As80V2tnSmerPyTwb3f90A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11280"; a="33348889"
-X-IronPort-AV: E=Sophos;i="6.12,218,1728975600"; 
-   d="scan'208";a="33348889"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2024 20:43:39 -0800
-X-CSE-ConnectionGUID: Flp2HtyeTY66gH19/gozDg==
-X-CSE-MsgGUID: brSxjW+KShqcUGtJAxw2Pw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="99995074"
-Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
-  by orviesa003.jf.intel.com with ESMTP; 08 Dec 2024 20:43:34 -0800
-Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tKVcJ-0003u3-18;
-	Mon, 09 Dec 2024 04:43:31 +0000
-Date: Mon, 9 Dec 2024 12:42:57 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, upstream@airoha.com
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [net-next PATCH v10 8/9] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <202412081353.I0203taL-lkp@intel.com>
-References: <20241208002105.18074-9-ansuelsmth@gmail.com>
+	id 1tKWkx-00000006XcI-1FWs;
+	Mon, 09 Dec 2024 05:56:32 +0000
+Received: from pps.filterd (m0250811.ppops.net [127.0.0.1])
+	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B95pamN011765;
+	Mon, 9 Dec 2024 05:56:25 GMT
+Received: from ala-exchng02.corp.ad.wrs.com (ala-exchng02.wrs.com [147.11.82.254])
+	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 43cx4x90tf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+	Mon, 09 Dec 2024 05:56:24 +0000 (GMT)
+Received: from ala-exchng01.corp.ad.wrs.com (147.11.82.252) by
+ ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.43; Sun, 8 Dec 2024 21:56:23 -0800
+Received: from pek-lpg-core1.wrs.com (147.11.136.210) by
+ ala-exchng01.corp.ad.wrs.com (147.11.82.252) with Microsoft SMTP Server id
+ 15.1.2507.43 via Frontend Transport; Sun, 8 Dec 2024 21:56:20 -0800
+From: <jianqi.ren.cn@windriver.com>
+To: <fullwaywang@outlook.com>, <gregkh@linuxfoundation.org>
+CC: <stable@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <tiffany.lin@mediatek.com>, <andrew-ct.chen@mediatek.com>,
+        <yunfei.dong@mediatek.com>, <mchehab@kernel.org>,
+        <matthias.bgg@gmail.com>, <linux-media@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 6.1.y] media: mtk-vcodec: potential null pointer deference in SCP
+Date: Mon, 9 Dec 2024 14:54:13 +0800
+Message-ID: <20241209065413.3427435-1-jianqi.ren.cn@windriver.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241208002105.18074-9-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Proofpoint-GUID: S3ZoAS84DtwxGV_JxU010U8Iu170Gkmg
+X-Proofpoint-ORIG-GUID: S3ZoAS84DtwxGV_JxU010U8Iu170Gkmg
+X-Authority-Analysis: v=2.4 cv=Y/UCsgeN c=1 sm=1 tr=0 ts=67568688 cx=c_pps a=K4BcnWQioVPsTJd46EJO2w==:117 a=K4BcnWQioVPsTJd46EJO2w==:17 a=RZcAm9yDv7YA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2024-12-09_02,2024-12-09_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ bulkscore=0 mlxscore=0 clxscore=1011 malwarescore=0 priorityscore=1501
+ phishscore=0 suspectscore=0 adultscore=0 mlxlogscore=999 spamscore=0
+ impostorscore=0 classifier=spam authscore=0 adjust=0 reason=mlx
+ scancount=1 engine=8.21.0-2411120000 definitions=main-2412090047
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_204343_189232_7D556EA8 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20241208_215631_488273_3FC7336C 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,92 +84,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+From: Fullway Wang <fullwaywang@outlook.com>
 
-kernel test robot noticed the following build warnings:
+[ Upstream commit 53dbe08504442dc7ba4865c09b3bbf5fe849681b ]
 
-[auto build test WARNING on net-next/main]
+The return value of devm_kzalloc() needs to be checked to avoid
+NULL pointer deference. This is similar to CVE-2022-3113.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/dt-bindings-nvmem-Document-support-for-Airoha-AN8855-Switch-EFUSE/20241208-082533
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20241208002105.18074-9-ansuelsmth%40gmail.com
-patch subject: [net-next PATCH v10 8/9] net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
-config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20241208/202412081353.I0203taL-lkp@intel.com/config)
-compiler: arceb-elf-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241208/202412081353.I0203taL-lkp@intel.com/reproduce)
+Link: https://lore.kernel.org/linux-media/PH7PR20MB5925094DAE3FD750C7E39E01BF712@PH7PR20MB5925.namprd20.prod.outlook.com
+Signed-off-by: Fullway Wang <fullwaywang@outlook.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Jianqi Ren <jianqi.ren.cn@windriver.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202412081353.I0203taL-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/dsa/an8855.c: In function 'an8855_switch_probe':
-   drivers/net/dsa/an8855.c:2227:34: error: invalid use of undefined type 'struct platform_device'
-    2227 |         priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-         |                                  ^~
-   drivers/net/dsa/an8855.c:2231:26: error: invalid use of undefined type 'struct platform_device'
-    2231 |         priv->dev = &pdev->dev;
-         |                          ^~
-   drivers/net/dsa/an8855.c: In function 'an8855_switch_remove':
-   drivers/net/dsa/an8855.c:2282:57: error: invalid use of undefined type 'struct platform_device'
-    2282 |         struct an8855_priv *priv = dev_get_drvdata(&pdev->dev);
-         |                                                         ^~
-   drivers/net/dsa/an8855.c: At top level:
-   drivers/net/dsa/an8855.c:2295:15: error: variable 'an8855_switch_driver' has initializer but incomplete type
-    2295 | static struct platform_driver an8855_switch_driver = {
-         |               ^~~~~~~~~~~~~~~
-   drivers/net/dsa/an8855.c:2296:10: error: 'struct platform_driver' has no member named 'probe'
-    2296 |         .probe = an8855_switch_probe,
-         |          ^~~~~
-   drivers/net/dsa/an8855.c:2296:18: warning: excess elements in struct initializer
-    2296 |         .probe = an8855_switch_probe,
-         |                  ^~~~~~~~~~~~~~~~~~~
-   drivers/net/dsa/an8855.c:2296:18: note: (near initialization for 'an8855_switch_driver')
-   drivers/net/dsa/an8855.c:2297:10: error: 'struct platform_driver' has no member named 'remove'
-    2297 |         .remove = an8855_switch_remove,
-         |          ^~~~~~
-   drivers/net/dsa/an8855.c:2297:19: warning: excess elements in struct initializer
-    2297 |         .remove = an8855_switch_remove,
-         |                   ^~~~~~~~~~~~~~~~~~~~
-   drivers/net/dsa/an8855.c:2297:19: note: (near initialization for 'an8855_switch_driver')
-   drivers/net/dsa/an8855.c:2298:10: error: 'struct platform_driver' has no member named 'driver'
-    2298 |         .driver = {
-         |          ^~~~~~
-   drivers/net/dsa/an8855.c:2298:19: error: extra brace group at end of initializer
-    2298 |         .driver = {
-         |                   ^
-   drivers/net/dsa/an8855.c:2298:19: note: (near initialization for 'an8855_switch_driver')
-   drivers/net/dsa/an8855.c:2298:19: warning: excess elements in struct initializer
-   drivers/net/dsa/an8855.c:2298:19: note: (near initialization for 'an8855_switch_driver')
-   drivers/net/dsa/an8855.c:2303:1: warning: data definition has no type or storage class
-    2303 | module_platform_driver(an8855_switch_driver);
-         | ^~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/dsa/an8855.c:2303:1: error: type defaults to 'int' in declaration of 'module_platform_driver' [-Werror=implicit-int]
->> drivers/net/dsa/an8855.c:2303:1: warning: parameter names (without types) in function declaration
-   drivers/net/dsa/an8855.c:2295:31: error: storage size of 'an8855_switch_driver' isn't known
-    2295 | static struct platform_driver an8855_switch_driver = {
-         |                               ^~~~~~~~~~~~~~~~~~~~
-   drivers/net/dsa/an8855.c:2295:31: warning: 'an8855_switch_driver' defined but not used [-Wunused-variable]
-   cc1: some warnings being treated as errors
-
-
-vim +2303 drivers/net/dsa/an8855.c
-
-  2294	
-  2295	static struct platform_driver an8855_switch_driver = {
-  2296		.probe = an8855_switch_probe,
-  2297		.remove = an8855_switch_remove,
-  2298		.driver = {
-  2299			.name = "an8855-switch",
-  2300			.of_match_table = an8855_switch_of_match,
-  2301		},
-  2302	};
-> 2303	module_platform_driver(an8855_switch_driver);
-  2304	
-
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+index d8e66b645bd8..27f08b1d34d1 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+@@ -65,6 +65,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
+ 	}
+ 
+ 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	if (!fw)
++		return ERR_PTR(-ENOMEM);
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.25.1
+
 
