@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EDE5E7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 17:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C64BE7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 17:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oo6qi32xliB1emk1pVOMd7Vf50zlJGgzdLuk8tsoDoU=; b=hG8q1feEG4j8ByNAsYnhTSm6h5
-	YQmNJ0DsbKt8n9Cum11dIh1MfU+1rDVxipnRgldXPPbbexP5Z81AV24UaV366oJEngC1U4NYJ+gKI
-	gVguJDwc4jUdhO9kYHuLiX4vKwz8sGF0yvuMlLXdTdx99jk+2WIqEofVq8zgifmUjbEGuMITR7rM5
-	zqdgnyK2Swy6bpw1wQ48HqP5N3QtDJ7IIRBBa3ntbU1BEx2gBuUE81KI4r6ltmIXNeQYVd9ZFg3R4
-	nGQHD34zvulCbLTSfsAMThsd3l0Oq3Xvnux9IH2cl3f8OCdA37WOjbvjqvMpkXglteKmYJ4poypbJ
-	1JNkG1iA==;
+	bh=/eNBtHB6kkOmYXQFsllHca9ynAId1rCAPXvReJ3swmI=; b=f7KYDSJOa1R73qcSwgUbO1hpgj
+	8UexqXcbYTNcjhKVNTYM0pAXFIQQv7LEmy03RzVocPahTA6uuZklXcImDG1fiUumKQoKT0rYxuBll
+	N4M7FU8ue97HI4geq9L1+gFl6YRHGBMJgpoEU11r6gmGCxcA5zxXC5DO8FMj5DNAz0V13B5fFh8j8
+	k6TCCE+rRPZ+lE8KFW6ZYgbEgrIauRxz4EwKcvsMWkxeyH8M0xtVu+5bVlRHo5n0Be7fleshc4ipw
+	Jf8WkC2qNj0XxaKJKg3d/kZQmbmJqSdPHQswqDLo2Aa8G5BHR96V4Eo1+q/7hnIbBafuEDzipMcAV
+	L348QSgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKh9Z-00000008eIT-0WnD;
-	Mon, 09 Dec 2024 17:02:37 +0000
+	id 1tKhAa-00000008ea1-1Rbr;
+	Mon, 09 Dec 2024 17:03:40 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKh7W-00000008dba-29Bz;
-	Mon, 09 Dec 2024 17:00:31 +0000
+	id 1tKh7a-00000008df6-3HPh;
+	Mon, 09 Dec 2024 17:00:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733763628;
-	bh=mgTvb+hAc3cxs6nEMw1GnF2VZ+CANYXvQu+M3IdY9/g=;
+	s=mail; t=1733763633;
+	bh=ngbKgp+VugAMnTJfakPKgA9/ZcuGqv29bbcGUazCC9Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=LQQYN8soH/OC5ac9XKiI5FPJcjJxyYSnhmS0Rr8YfYhDkUaiGe3nYsof84vf0TINp
-	 gnaFc128Abf3bFPphaGf8+JYhqREzl+UguyJcPH+iHP+dK8X6pwoB6cr3YAzabvIBg
-	 xV+ZCpCzwhScCmvkMCntlNFSzug59VbGkcDMkHB5pqapt181SymqXdl/E57CPQ7Edv
-	 GHtm6tg/8x+fH5OScMko2txVzObzENN98RZMaxo1n+hMLnkjeJ7kHif7OY7SLmI2Mk
-	 WlUagobyYEMWc2UsSlTT/XwGZmM9Nq04q89ZtPhyYE0JVBx8hl6akkTnayYWkurQPj
-	 TTzXQRXnFL29Q==
+	b=qU/Zps7SNpOtgGeGpoNAgZKXrr2A1vsySgTauEmXfAO/oNrtJHcj616NESzgcRoJa
+	 2tIoLKxA1fH3IrVYjavkmGyycJm60n9J2K3Tg7hv24TmJAGdMFQQz6rGljv9wy2hBO
+	 UHwn2PqrFtewqO617PEBbaUcO6GXhMWjsIn9hbf7KKK7GSXdI+qPMzmWLf4Q8Ki7vX
+	 M/qFvqa8Z+/wTlh+o4tx43UKz8p08RovKh6K63lpYsIrX9U7++gjVoBRNzDsAgjK5T
+	 JQKJ/NAChkfZ7P+yeyiet4HncgSSyVcr8vXSeHKiMbHBSJp7d2vZAMFZDuZh5uvH8n
+	 uR1J/rvnL6ctw==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2916617E37C3;
-	Mon,  9 Dec 2024 18:00:23 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B053417E37C6;
+	Mon,  9 Dec 2024 18:00:28 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 09 Dec 2024 14:00:02 -0300
-Subject: [PATCH v2 1/5] thermal/drivers/mediatek/lvts: Disable monitor mode
- during suspend
+Date: Mon, 09 Dec 2024 14:00:03 -0300
+Subject: [PATCH v2 2/5] thermal/drivers/mediatek/lvts: Disable Stage 3
+ thermal threshold
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241209-mt8192-lvts-filtered-suspend-fix-v2-1-5b046a99baa9@collabora.com>
+Message-Id: <20241209-mt8192-lvts-filtered-suspend-fix-v2-2-5b046a99baa9@collabora.com>
 References: <20241209-mt8192-lvts-filtered-suspend-fix-v2-0-5b046a99baa9@collabora.com>
 In-Reply-To: <20241209-mt8192-lvts-filtered-suspend-fix-v2-0-5b046a99baa9@collabora.com>
 To: "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -70,8 +70,8 @@ Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
  stable@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_090030_700964_27492AB2 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20241209_090034_966336_3DE1D283 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,92 +86,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When configured in filtered mode, the LVTS thermal controller will
-monitor the temperature from the sensors and trigger an interrupt once a
-thermal threshold is crossed.
+The Stage 3 thermal threshold is currently configured during
+the controller initialization to 105 Celsius. From the kernel
+perspective, this configuration is harmful because:
+* The stage 3 interrupt that gets triggered when the threshold is
+  crossed is not handled in any way by the IRQ handler, it just gets
+  cleared. Besides, the temperature used for stage 3 comes from the
+  sensors, and the critical thermal trip points described in the
+  Devicetree will already cause a shutdown when crossed (at a lower
+  temperature, of 100 Celsius, for all SoCs currently using this
+  driver).
+* The only effect of crossing the stage 3 threshold that has been
+  observed is that it causes the machine to no longer be able to enter
+  suspend. Even if that was a result of a momentary glitch in the
+  temperature reading of a sensor (as has been observed on the
+  MT8192-based Chromebooks).
 
-Currently this is true even during suspend and resume. The problem with
-that is that when enabling the internal clock of the LVTS controller in
-lvts_ctrl_set_enable() during resume, the temperature reading can glitch
-and appear much higher than the real one, resulting in a spurious
-interrupt getting generated.
-
-Disable the temperature monitoring and give some time for the signals to
-stabilize during suspend in order to prevent such spurious interrupts.
+For those reasons, disable the Stage 3 thermal threshold configuration.
 
 Cc: stable@vger.kernel.org
 Reported-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 Closes: https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
-Fixes: 8137bb90600d ("thermal/drivers/mediatek/lvts_thermal: Add suspend and resume")
+Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 36 +++++++++++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 07f7f3b7a2fb569cfc300dc2126ea426e161adff..a1a438ebad33c1fff8ca9781e12ef9e278eef785 100644
+index a1a438ebad33c1fff8ca9781e12ef9e278eef785..0aaa44b734ca43e6abfd97b2ca4ce34dc6f15826 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -860,6 +860,32 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 	return 0;
- }
+@@ -65,7 +65,7 @@
+ #define LVTS_HW_FILTER				0x0
+ #define LVTS_TSSEL_CONF				0x13121110
+ #define LVTS_CALSCALE_CONF			0x300
+-#define LVTS_MONINT_CONF			0x8300318C
++#define LVTS_MONINT_CONF			0x0300318C
  
-+static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl, bool enable)
-+{
-+	/*
-+	 * Bitmaps to enable each sensor on filtered mode in the MONCTL0
-+	 * register.
-+	 */
-+	static const u8 sensor_filt_bitmap[] = { BIT(0), BIT(1), BIT(2), BIT(3) };
-+	u32 sensor_map = 0;
-+	int i;
-+
-+	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
-+		return;
-+
-+	if (enable) {
-+		lvts_for_each_valid_sensor(i, lvts_ctrl)
-+			sensor_map |= sensor_filt_bitmap[i];
-+	}
-+
-+	/*
-+	 * Bits:
-+	 *      9: Single point access flow
-+	 *    0-3: Enable sensing point 0-3
-+	 */
-+	writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-+}
-+
- /*
-  * At this point the configuration register is the only place in the
-  * driver where we write multiple values. Per hardware constraint,
-@@ -1381,8 +1407,11 @@ static int lvts_suspend(struct device *dev)
+ #define LVTS_MONINT_OFFSET_SENSOR0		0xC
+ #define LVTS_MONINT_OFFSET_SENSOR1		0x180
+@@ -91,8 +91,6 @@
+ #define LVTS_MSR_READ_TIMEOUT_US	400
+ #define LVTS_MSR_READ_WAIT_US		(LVTS_MSR_READ_TIMEOUT_US / 2)
  
- 	lvts_td = dev_get_drvdata(dev);
+-#define LVTS_HW_TSHUT_TEMP		105000
+-
+ #define LVTS_MINIMUM_THRESHOLD		20000
  
--	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
-+		lvts_ctrl_monitor_enable(dev, &lvts_td->lvts_ctrl[i], false);
-+		usleep_range(100, 200);
- 		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
-+	}
+ static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
+@@ -145,7 +143,6 @@ struct lvts_ctrl {
+ 	struct lvts_sensor sensors[LVTS_SENSOR_MAX];
+ 	const struct lvts_data *lvts_data;
+ 	u32 calibration[LVTS_SENSOR_MAX];
+-	u32 hw_tshut_raw_temp;
+ 	u8 valid_sensor_mask;
+ 	int mode;
+ 	void __iomem *base;
+@@ -837,14 +834,6 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+ 		 */
+ 		lvts_ctrl[i].mode = lvts_data->lvts_ctrl[i].mode;
  
- 	clk_disable_unprepare(lvts_td->clk);
+-		/*
+-		 * The temperature to raw temperature must be done
+-		 * after initializing the calibration.
+-		 */
+-		lvts_ctrl[i].hw_tshut_raw_temp =
+-			lvts_temp_to_raw(LVTS_HW_TSHUT_TEMP,
+-					 lvts_data->temp_factor);
+-
+ 		lvts_ctrl[i].low_thresh = INT_MIN;
+ 		lvts_ctrl[i].high_thresh = INT_MIN;
+ 	}
+@@ -919,7 +908,6 @@ static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
+ 	 *         10 : Selected sensor with bits 19-18
+ 	 *         11 : Reserved
+ 	 */
+-	writel(BIT(16), LVTS_PROTCTL(lvts_ctrl->base));
  
-@@ -1400,8 +1429,11 @@ static int lvts_resume(struct device *dev)
- 	if (ret)
- 		return ret;
+ 	/*
+ 	 * LVTS_PROTTA : Stage 1 temperature threshold
+@@ -932,8 +920,8 @@ static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
+ 	 *
+ 	 * writel(0x0, LVTS_PROTTA(lvts_ctrl->base));
+ 	 * writel(0x0, LVTS_PROTTB(lvts_ctrl->base));
++	 * writel(0x0, LVTS_PROTTC(lvts_ctrl->base));
+ 	 */
+-	writel(lvts_ctrl->hw_tshut_raw_temp, LVTS_PROTTC(lvts_ctrl->base));
  
--	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
- 		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], true);
-+		usleep_range(100, 200);
-+		lvts_ctrl_monitor_enable(dev, &lvts_td->lvts_ctrl[i], true);
-+	}
- 
- 	return 0;
- }
+ 	/*
+ 	 * LVTS_MONINT : Interrupt configuration register
 
 -- 
 2.47.0
