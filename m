@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7472CE7717D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B20DE7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 13:14:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YALQ/5d5xwJu+LceFpjWJMU1LIe6WE2pCNsHkacRTcI=; b=KNQ7vK9vktRX6OyYWyX+2/mFIo
-	BAuFLsMEUkmP0KiaAZyFJfMa5ixKUgXe9ds7sPt6H7tNxVqi4PyYsQPoIbxyo26HpoOLUtdhAYcPg
-	4Szt02aVx92/4AKPHAYhceOAprwz9zxvleviGWJq6rVPxJOi2NhYPVO7xQzS0O+BkFqkBT0VcOO/S
-	iqBausPetxIOWgLEgVlh51wwBzLQMvXQpJJWDM2IJDoeJIjSCAodsWsELAYkyUeY75RaAVNqAh3Eh
-	9p5/KBeCn6vxJBtVEpnS9Q28pDtstcVcrVY3YFMSxVgJ0nmG1m7NFCuIzUKpg0WTzvXHp24J9ysxg
-	U8/thjWw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QbvJAK8CeaB2O9XIazN63jkXHsl6QMzYRIOD/43bDtM=; b=PwOKPulEVDYfuL
+	C5f9LVdkypSMIyrGR1Q1+yvZNrGiRemybPfbjqFfzcQNa9vNHzVgZQbo8+L7QN44MvfNHVpFJEazs
+	zmv+fdyT3mjevDzRqS5z3NvnMJWcb41gqTZ7gdqmSM+iVo3xK0wQkZ3mPDqFXVTbzBbQq26qwTlUg
+	QTKADiAt7xgBOdIqw2dfAWX51qk911S44dQoOm0OEa6h1SWYsx3TSH7GWtxBr+11OdaW7lJwIUCJR
+	KILMMMA5hTFILVr+T9wNcAclEiwa8+MmPeRM4hmGu6j/pIXYAnX1AvPjGewJDaQcS8jAjqcJz6o/p
+	IBd6iUwP//brCLA41F4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdVK-00000007sfw-2K0J;
-	Mon, 09 Dec 2024 13:08:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tKdaR-00000007upm-3JRC;
+	Mon, 09 Dec 2024 13:14:07 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdBf-00000007mdK-2V6d;
-	Mon, 09 Dec 2024 12:48:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YALQ/5d5xwJu+LceFpjWJMU1LIe6WE2pCNsHkacRTcI=; b=B2ScI27/o23d0xltBjPie1Ue+t
-	5XtAHemGGtwCU4r6Kw0aUPIQD/3gXCT7f1etTJxip3qhzWcqwfw4JXmXyLata74X+iJwHGqLwKa35
-	Nsd1CRZa4iw5OSl1D/JJ2ykK/4Lhc6MWwuc3LANeJWXxROWIri8EAGM0W5W6wQBQ3EvnsHzYSD1mt
-	0joyVgYhvrm/vdVBRbOVXBRMMOhfFEqjbGpFySbSEGgtfYppDM1xZwd4TSHOu8y61wQNkR15i7U5m
-	H7+bIm3oEyj2kB3K5ikDYec5gCiDvo1hNBIHz4HbHxHJ2D2OX0emZVllTYnSxCB05IAnB9+Rf6M4W
-	k43Bx9+g==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tKdBK-00088z-7p; Mon, 09 Dec 2024 13:48:10 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Robert Foss <rfoss@kernel.org>,
- Todor Tomov <todor.too@gmail.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Shijie Qin <shijie.qin@nxp.com>, Michael Tretter <m.tretter@pengutronix.de>,
- Emil Velikov <emil.velikov@collabora.com>,
- Del Regno <angelogioacchino.delregno@somainline.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [RESEND PATCH] media: dt-bindings: trivial white-space and example
- cleanup
-Date: Mon, 09 Dec 2024 13:48:08 +0100
-Message-ID: <9635159.2WqB4rESCP@diego>
-In-Reply-To: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
-References: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
+	id 1tKdKn-00000007pLL-2MRQ;
+	Mon, 09 Dec 2024 12:57:58 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+	by mxout2.routing.net (Postfix) with ESMTP id 9AE375FC3D;
+	Mon,  9 Dec 2024 12:57:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1733749075;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QbvJAK8CeaB2O9XIazN63jkXHsl6QMzYRIOD/43bDtM=;
+	b=bQRrTd6mxV7EwfWBJIgGWFVMpkZQMZRxqYEtSQyW0yFy9QLWY0RDnM1Qyx1gvVDdlOg6uB
+	8+4j/vP7QThfGRND9MwAIDKjtb1pRCQ7N5Uy/9kbfWFOwnfR2l8SfdixiglOnS+gsHc4xT
+	Q6ezJm0M6ZJGDG746kkKEiDQm/GKgxE=
+Received: from frank-u24.. (fttx-pool-80.245.75.28.bambit.de [80.245.75.28])
+	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id AD48D80483;
+	Mon,  9 Dec 2024 12:57:54 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@kernel.org>
+Subject: [PATCH v6 0/5] Add pinctrl support for mt7988
+Date: Mon,  9 Dec 2024 13:57:34 +0100
+Message-ID: <20241209125742.9307-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: a2e1c607-20e8-4b0b-9aec-6da01a38e817
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_044831_629050_B99F3536 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20241209_045757_741789_FD6D7308 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,21 +71,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 9. Dezember 2024, 12:34:05 CET schrieb Krzysztof Kozlowski:
-> Minor cleanups without funcitonal impact:
->  - There should not be an empty blank line after SPDX tag,
->  - Convention is to indent DTS examples in coding style with 2- or
->    4-space indentation (4 is preferred),
->  - Drop unused labels in DTS examples.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+This series adds pinctrl driver, dt-bindings and dts node for pinctrl
+on mediatek mt7988 SoC.
 
-(even looked at the whole patch and not only the Rockchip parts :-) )
+changes in v6:
+- some fixes to binding
+- changed title and fixed typo in bpi-r4 patch
+- added RB's
 
+changes in v5:
+- rebased to 6.13-rc1
+- moved dt nodes with mutliple options to BPI-R4 board
+- changes suggested by angelo in v4
+- changed example in binding and dt node to not using const MTK_DRIVE_8mA
+
+changes in v4:
+- fixed fixed string binding error
+
+changes in v3:
+- rebase on rafals dts patches
+- update binding to have mux subnode as fixed string and conf with optional suffix
+
+changes in v2:
+  binding:
+  - drop gpio-cells description
+  - move ref in mux subnode up
+  - order uart-functions alphanumeric and fix typo
+  dts:
+  - fix indentation of reg-values
+
+
+Daniel Golle (2):
+  pinctrl: mediatek: add support for MTK_PULL_PD_TYPE
+  pinctrl: mediatek: add MT7988 pinctrl driver
+
+Frank Wunderlich (3):
+  dt-bindings: pinctrl: add binding for MT7988 SoC
+  arm64: dts: mediatek: mt7988: Add pinctrl support
+  arm64: dts: mediatek: mt7988a-bpi-r4: Add pinctrl subnodes for bpi-r4
+
+ .../pinctrl/mediatek,mt7988-pinctrl.yaml      |  575 ++++++
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  189 ++
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi     |   54 +
+ drivers/pinctrl/mediatek/Kconfig              |    7 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt7988.c     | 1556 +++++++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |   73 +-
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |    1 +
+ 8 files changed, 2445 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7988.c
+
+-- 
+2.43.0
 
 
