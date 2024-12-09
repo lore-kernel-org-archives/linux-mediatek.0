@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E5BE77173
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 04:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58255E7717D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2024 04:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TvxmD0iXaSPWys01ocb7BVRzhhB/Vj0kuCf5DD39k4k=; b=GQ3nCmjk8inP3m4IaR+0t6rDlb
-	WvQKIcsNmSAXidG7gG/Ygf5autm9W0xwPH+BTpyNiHEkj3gBBbFnZ5PaI6sDixa1eS/VPK2OY+O9w
-	67PBLMgfsi6sZMDDpvYp2G6Pm7wsUkCM0+y3S+kApbdtFFu2Ssee1wbzYugRTKw2xvi9AWOHYpYl0
-	k97YYi7qWtDQmza0PILeTliD37sbqJN02TpAeF1O/43kPyFlvvj8nLu1aLK5DFzNAxCCqtFVIKyPG
-	ratrOIxXKJaViUEg+Oo0SWXd4p/37GECr/5OUFTyL9AhFkDk+r8Wl6QjkHVfg3Z7k9btj0j5e7aTP
-	VP2AFcyQ==;
+	bh=jGglwFIv01b8wGrl0iBK6pvsY5fvPF3nf4uI4mkWKWE=; b=PZCWCxUIBJL//sxfa/OZ43pCmv
+	LmbhB5nwDwSLz7BO7w948VFboH4z8TOmVQb4bJj1HTgv97hlsV6nJmp+iLwFwqloWH9xOf36A3dLY
+	dCuO8Q8NoMO7DDKpW3NhBbv7aUEBUHpUUQnQL0MVcf7nCjZsSaZVGxDHTORoPVI1JQaFLEz/1igje
+	G0RofOzKjQV3ih0lasoOTk20L8RJJ0kUtjmBFMgpMK3ajY1Ep7euah0LiRAGfG/5o2IhYfK79myhI
+	VZE20nrO4F83hj9EUrc4OkX7DH6FFe0Dhxt81nQLRtQ2AA7XasR1xO3EbflOdbDZu2zYb79uu908I
+	OtcSO7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKV76-00000006Nnz-2NdA;
-	Mon, 09 Dec 2024 04:11:16 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1tKVZT-00000006QtX-16oe;
+	Mon, 09 Dec 2024 04:40:35 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKV73-00000006NnR-0wDU
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Dec 2024 04:11:15 +0000
+	id 1tKVYP-00000006Qj3-2qKh;
+	Mon, 09 Dec 2024 04:39:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733717473; x=1765253473;
+  t=1733719169; x=1765255169;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=3q6mGylu6FW+f0kFijxV5nWrm1Nnck+Lvc/vZ5ppUT4=;
-  b=eMdiyGnKOC5ANtK/BD0SJZvevhVA2yOrpklrI7EPRt0YJiYs8ZJ+btDN
-   sBa5KYQrL4w4noEud9XqDRwfv2XrGYKJGEDSfUoWzx0rrDrD2r4IPZRTg
-   JS0SqGepoEjNXonqbS+cID2kecUm3Jc6PbnNrv6NyKVrawtuqyQm7g/kU
-   pwzuiIhxaPxrZlHMoneyZthC6pje48JGkin18PW6bEl4TsiaBzyXSjhOf
-   +8e5O3o9+3oXQTOfbnm1nanlpIobdAuNVrcftIHnok3wiFnqrMaqyNMNs
-   9YrkG4y7RqHaZrbEKe0vPpuXcTzJckyCeZpnS/qo67knVMjEVOgBuxZpL
-   g==;
-X-CSE-ConnectionGUID: FopGKNzVS3uVZDqWjNZm2w==
-X-CSE-MsgGUID: gWewzluzSbKEMAWsI9WwNg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11280"; a="33330657"
+  bh=WxSdxf8pLdMWv4fY9QRvr5Gkcta72PxtTHjRQUY08Xo=;
+  b=W/PXr8M2yNW+LVxMDNLe//0FjvTQdsZi0/O+kJRk74qNLYcxiwbHrVS9
+   u83W+qt3yqq+eaJH2tBfTTwIMEmUdFj3WFR9Gxu19Bp3RazTls1I39/SZ
+   C4kvW5+RTo9ffh4n3a7HwDE1EqFdmyHmyKby/1P3SjTrB9PSd3uj/EE4i
+   m6xu8EWdeanqMKh2BVqV308bZz/O7tkt9PggyQwxTjTxMitLuPjU5ldOV
+   9ns+wsLCpSPttXcrwNUus+asc+yr6z/kc4qWWJ+mLjFEAdLtezPD5aa3X
+   4ivIISbn+b84H+RcYfdMYxeL37qPhYzk/VIYUiDY57W0+Ug3Ies223rZK
+   Q==;
+X-CSE-ConnectionGUID: g2+KFTQ2QOK+SryBlFslAg==
+X-CSE-MsgGUID: 2d4rEO1dRgGTzR9iaXOeDw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11280"; a="37931437"
 X-IronPort-AV: E=Sophos;i="6.12,218,1728975600"; 
-   d="scan'208";a="33330657"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2024 20:11:12 -0800
-X-CSE-ConnectionGUID: 7067EjQeRFSAwrOZR6V2Kg==
-X-CSE-MsgGUID: K7jptP4CRROTw0m+f7TTiQ==
+   d="scan'208";a="37931437"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2024 20:39:29 -0800
+X-CSE-ConnectionGUID: eBVdfRJ/Qwq0407wVB29Vg==
+X-CSE-MsgGUID: wjhdMOM7T+Ctp8wtjgcWgA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.12,218,1728975600"; 
-   d="scan'208";a="100003655"
+   d="scan'208";a="95751895"
 Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 08 Dec 2024 20:11:08 -0800
+  by orviesa008.jf.intel.com with ESMTP; 08 Dec 2024 20:39:24 -0800
 Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1tKV6v-0003nl-0f;
-	Mon, 09 Dec 2024 04:11:05 +0000
-Date: Mon, 9 Dec 2024 12:10:17 +0800
+	id 1tKVYH-0003tF-0M;
+	Mon, 09 Dec 2024 04:39:21 +0000
+Date: Mon, 9 Dec 2024 12:38:51 +0800
 From: kernel test robot <lkp@intel.com>
-To: Allan Wang <allan.wang@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com, Sean.Wang@mediatek.com,
-	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
-	Michael.Lo@mediatek.com, Eric-SY.Chang@mediatek.com,
-	km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
-	posh.sun@mediatek.com, Quan.Zhou@mediatek.com,
-	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Allan Wang <allan.wang@mediatek.com>
-Subject: Re: [PATCH] wifi: mt76: mt7921: add rfkill_poll for hardware rfkill
-Message-ID: <202412071431.tF1EfPaT-lkp@intel.com>
-References: <20241206014355.32426-1-allan.wang@mediatek.com>
+To: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, upstream@airoha.com
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
+Subject: Re: [net-next PATCH v10 8/9] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <202412081038.lJvmpuB2-lkp@intel.com>
+References: <20241208002105.18074-9-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241206014355.32426-1-allan.wang@mediatek.com>
+In-Reply-To: <20241208002105.18074-9-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_201113_427433_7CFAB7D9 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241208_203929_740862_4E3AC68D 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,95 +102,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Allan,
+Hi Christian,
 
-kernel test robot noticed the following build warnings:
+kernel test robot noticed the following build errors:
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.13-rc1 next-20241206]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+[auto build test ERROR on net-next/main]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Allan-Wang/wifi-mt76-mt7921-add-rfkill_poll-for-hardware-rfkill/20241206-094523
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20241206014355.32426-1-allan.wang%40mediatek.com
-patch subject: [PATCH] wifi: mt76: mt7921: add rfkill_poll for hardware rfkill
-config: powerpc-randconfig-r113-20241207 (https://download.01.org/0day-ci/archive/20241207/202412071431.tF1EfPaT-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 592c0fe55f6d9a811028b5f3507be91458ab2713)
-reproduce: (https://download.01.org/0day-ci/archive/20241207/202412071431.tF1EfPaT-lkp@intel.com/reproduce)
+url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/dt-bindings-nvmem-Document-support-for-Airoha-AN8855-Switch-EFUSE/20241208-082533
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20241208002105.18074-9-ansuelsmth%40gmail.com
+patch subject: [net-next PATCH v10 8/9] net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20241208/202412081038.lJvmpuB2-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241208/202412081038.lJvmpuB2-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202412071431.tF1EfPaT-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202412081038.lJvmpuB2-lkp@intel.com/
 
-sparse warnings: (new ones prefixed by >>)
->> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:69:28: sparse: sparse: cast to restricted __le32
+All error/warnings (new ones prefixed by >>):
 
-vim +69 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+   drivers/net/dsa/an8855.c: In function 'an8855_switch_probe':
+>> drivers/net/dsa/an8855.c:2227:34: error: invalid use of undefined type 'struct platform_device'
+    2227 |         priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+         |                                  ^~
+   drivers/net/dsa/an8855.c:2231:26: error: invalid use of undefined type 'struct platform_device'
+    2231 |         priv->dev = &pdev->dev;
+         |                          ^~
+   drivers/net/dsa/an8855.c: In function 'an8855_switch_remove':
+   drivers/net/dsa/an8855.c:2282:57: error: invalid use of undefined type 'struct platform_device'
+    2282 |         struct an8855_priv *priv = dev_get_drvdata(&pdev->dev);
+         |                                                         ^~
+   drivers/net/dsa/an8855.c: At top level:
+>> drivers/net/dsa/an8855.c:2295:15: error: variable 'an8855_switch_driver' has initializer but incomplete type
+    2295 | static struct platform_driver an8855_switch_driver = {
+         |               ^~~~~~~~~~~~~~~
+>> drivers/net/dsa/an8855.c:2296:10: error: 'struct platform_driver' has no member named 'probe'
+    2296 |         .probe = an8855_switch_probe,
+         |          ^~~~~
+>> drivers/net/dsa/an8855.c:2296:18: warning: excess elements in struct initializer
+    2296 |         .probe = an8855_switch_probe,
+         |                  ^~~~~~~~~~~~~~~~~~~
+   drivers/net/dsa/an8855.c:2296:18: note: (near initialization for 'an8855_switch_driver')
+>> drivers/net/dsa/an8855.c:2297:10: error: 'struct platform_driver' has no member named 'remove'
+    2297 |         .remove = an8855_switch_remove,
+         |          ^~~~~~
+   drivers/net/dsa/an8855.c:2297:19: warning: excess elements in struct initializer
+    2297 |         .remove = an8855_switch_remove,
+         |                   ^~~~~~~~~~~~~~~~~~~~
+   drivers/net/dsa/an8855.c:2297:19: note: (near initialization for 'an8855_switch_driver')
+>> drivers/net/dsa/an8855.c:2298:10: error: 'struct platform_driver' has no member named 'driver'
+    2298 |         .driver = {
+         |          ^~~~~~
+>> drivers/net/dsa/an8855.c:2298:19: error: extra brace group at end of initializer
+    2298 |         .driver = {
+         |                   ^
+   drivers/net/dsa/an8855.c:2298:19: note: (near initialization for 'an8855_switch_driver')
+   drivers/net/dsa/an8855.c:2298:19: warning: excess elements in struct initializer
+   drivers/net/dsa/an8855.c:2298:19: note: (near initialization for 'an8855_switch_driver')
+>> drivers/net/dsa/an8855.c:2303:1: warning: data definition has no type or storage class
+    2303 | module_platform_driver(an8855_switch_driver);
+         | ^~~~~~~~~~~~~~~~~~~~~~
+>> drivers/net/dsa/an8855.c:2303:1: error: type defaults to 'int' in declaration of 'module_platform_driver' [-Wimplicit-int]
+>> drivers/net/dsa/an8855.c:2303:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+>> drivers/net/dsa/an8855.c:2295:31: error: storage size of 'an8855_switch_driver' isn't known
+    2295 | static struct platform_driver an8855_switch_driver = {
+         |                               ^~~~~~~~~~~~~~~~~~~~
+>> drivers/net/dsa/an8855.c:2295:31: warning: 'an8855_switch_driver' defined but not used [-Wunused-variable]
 
-    17	
-    18	int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
-    19				      struct sk_buff *skb, int seq)
-    20	{
-    21		int mcu_cmd = FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
-    22		struct mt76_connac2_mcu_rxd *rxd;
-    23		int ret = 0;
-    24	
-    25		if (!skb) {
-    26			dev_err(mdev->dev, "Message %08x (seq %d) timeout\n",
-    27				cmd, seq);
-    28			mt792x_reset(mdev);
-    29	
-    30			return -ETIMEDOUT;
-    31		}
-    32	
-    33		rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
-    34		if (seq != rxd->seq)
-    35			return -EAGAIN;
-    36	
-    37		if (cmd == MCU_CMD(PATCH_SEM_CONTROL) ||
-    38		    cmd == MCU_CMD(PATCH_FINISH_REQ)) {
-    39			skb_pull(skb, sizeof(*rxd) - 4);
-    40			ret = *skb->data;
-    41		} else if (cmd == MCU_EXT_CMD(THERMAL_CTRL)) {
-    42			skb_pull(skb, sizeof(*rxd) + 4);
-    43			ret = le32_to_cpu(*(__le32 *)skb->data);
-    44		} else if (cmd == MCU_UNI_CMD(DEV_INFO_UPDATE) ||
-    45			   cmd == MCU_UNI_CMD(BSS_INFO_UPDATE) ||
-    46			   cmd == MCU_UNI_CMD(STA_REC_UPDATE) ||
-    47			   cmd == MCU_UNI_CMD(HIF_CTRL) ||
-    48			   cmd == MCU_UNI_CMD(OFFLOAD) ||
-    49			   cmd == MCU_UNI_CMD(SUSPEND)) {
-    50			struct mt76_connac_mcu_uni_event *event;
-    51	
-    52			skb_pull(skb, sizeof(*rxd));
-    53			event = (struct mt76_connac_mcu_uni_event *)skb->data;
-    54			ret = le32_to_cpu(event->status);
-    55			/* skip invalid event */
-    56			if (mcu_cmd != event->cid)
-    57				ret = -EAGAIN;
-    58		} else if (cmd == MCU_CE_QUERY(REG_READ)) {
-    59			struct mt76_connac_mcu_reg_event *event;
-    60	
-    61			skb_pull(skb, sizeof(*rxd));
-    62			event = (struct mt76_connac_mcu_reg_event *)skb->data;
-    63			ret = (int)le32_to_cpu(event->val);
-    64		} else if (cmd == MCU_EXT_CMD(WF_RF_PIN_CTRL)) {
-    65			struct mt7921_wf_rf_pin_ctrl_event *event;
-    66	
-    67			skb_pull(skb, sizeof(*rxd));
-    68			event = (struct mt7921_wf_rf_pin_ctrl_event *)skb->data;
-  > 69			ret = (int)le32_to_cpu(event->result);
-    70		} else {
-    71			skb_pull(skb, sizeof(struct mt76_connac2_mcu_rxd));
-    72		}
-    73	
-    74		return ret;
-    75	}
-    76	EXPORT_SYMBOL_GPL(mt7921_mcu_parse_response);
-    77	
+
+vim +2227 drivers/net/dsa/an8855.c
+
+  2220	
+  2221	static int an8855_switch_probe(struct platform_device *pdev)
+  2222	{
+  2223		struct an8855_priv *priv;
+  2224		u32 val;
+  2225		int ret;
+  2226	
+> 2227		priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+  2228		if (!priv)
+  2229			return -ENOMEM;
+  2230	
+> 2231		priv->dev = &pdev->dev;
+  2232		priv->phy_require_calib = of_property_read_bool(priv->dev->of_node,
+  2233								"airoha,ext-surge");
+  2234	
+  2235		priv->reset_gpio = devm_gpiod_get_optional(priv->dev, "reset",
+  2236							   GPIOD_OUT_LOW);
+  2237		if (IS_ERR(priv->reset_gpio))
+  2238			return PTR_ERR(priv->reset_gpio);
+  2239	
+  2240		/* Get regmap from MFD */
+  2241		priv->regmap = dev_get_regmap(priv->dev->parent, NULL);
+  2242	
+  2243		if (priv->reset_gpio) {
+  2244			usleep_range(100000, 150000);
+  2245			gpiod_set_value_cansleep(priv->reset_gpio, 0);
+  2246			usleep_range(100000, 150000);
+  2247			gpiod_set_value_cansleep(priv->reset_gpio, 1);
+  2248	
+  2249			/* Poll HWTRAP reg to wait for Switch to fully Init */
+  2250			ret = regmap_read_poll_timeout(priv->regmap, AN8855_HWTRAP, val,
+  2251						       val, 20, 200000);
+  2252			if (ret)
+  2253				return ret;
+  2254		}
+  2255	
+  2256		ret = an8855_read_switch_id(priv);
+  2257		if (ret)
+  2258			return ret;
+  2259	
+  2260		priv->ds = devm_kzalloc(priv->dev, sizeof(*priv->ds), GFP_KERNEL);
+  2261		if (!priv->ds)
+  2262			return -ENOMEM;
+  2263	
+  2264		priv->ds->dev = priv->dev;
+  2265		priv->ds->num_ports = AN8855_NUM_PORTS;
+  2266		priv->ds->priv = priv;
+  2267		priv->ds->ops = &an8855_switch_ops;
+  2268		devm_mutex_init(priv->dev, &priv->reg_mutex);
+  2269		priv->ds->phylink_mac_ops = &an8855_phylink_mac_ops;
+  2270	
+  2271		priv->pcs.ops = &an8855_pcs_ops;
+  2272		priv->pcs.neg_mode = true;
+  2273		priv->pcs.poll = true;
+  2274	
+  2275		dev_set_drvdata(priv->dev, priv);
+  2276	
+  2277		return dsa_register_switch(priv->ds);
+  2278	}
+  2279	
+  2280	static void an8855_switch_remove(struct platform_device *pdev)
+  2281	{
+> 2282		struct an8855_priv *priv = dev_get_drvdata(&pdev->dev);
+  2283	
+  2284		if (!priv)
+  2285			return;
+  2286	
+  2287		dsa_unregister_switch(priv->ds);
+  2288	}
+  2289	
+  2290	static const struct of_device_id an8855_switch_of_match[] = {
+  2291		{ .compatible = "airoha,an8855-switch" },
+  2292		{ /* sentinel */ }
+  2293	};
+  2294	
+> 2295	static struct platform_driver an8855_switch_driver = {
+> 2296		.probe = an8855_switch_probe,
+> 2297		.remove = an8855_switch_remove,
+> 2298		.driver = {
+  2299			.name = "an8855-switch",
+  2300			.of_match_table = an8855_switch_of_match,
+  2301		},
+  2302	};
+> 2303	module_platform_driver(an8855_switch_driver);
+  2304	
 
 -- 
 0-DAY CI Kernel Test Service
