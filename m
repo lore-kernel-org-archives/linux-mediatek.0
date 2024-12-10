@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B825BE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 12:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E96DE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 12:11:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=46aYL8Qujac4/4V9g8K6BMoI6Lwj7kmEE7LxrwnxQWE=; b=X75bYkdi95z5dWWz8+I+DuDVfb
-	njZ1I1G8fJ/vEAt1yj/ICV3jQgaSbK+evdqOKUv7HcyKEHt0bd7S5Tuve6wbu+FzYleN/g6QKFiQH
-	AcLmwy0KoxH8pTjy0LMr3MHWnRWYe3LEznVrOERMw94VW4pT2in/amcQTkcNdgYsxFZBDLneIsmvb
-	pDoWKkjlX+FOIZ+1XSu5aoQVmu8dICsFvEXv0nLycK2bHjP7Tkh61Bi/m7XGEyVPEPq2/4uMZCJr7
-	dxEkbzCCeniNM252hcu4t8X+NVgH48O6FwMcLo6KN8cMdNqggP5hQTzYMIASpfDrvwqUWe9sJwqyM
-	FrMnvLWw==;
+	bh=f/tm/wcnr6fTaffyLAXSgHwJaQbGmdxPhc9rTLVd32w=; b=oyQysBekJceQQXzRJ1X1Xrn/oL
+	SyI3TfGUNTOcqOhASanuXCVaT1qi63qHprEbOyec07uSPRWR4Zy5hdEsSnGiLxaFAGVknzWvZNU3f
+	zOuzOA/KiR80ONuOOcweqThksyJp7ez+Jwchbkds3v9sElK6PcGAhtiu6r3cLkh/XWsCguC2F6gwJ
+	0e5DzL/I2rmYjd3ULe+qEdmXymiMG5zA/HzopUnB2LqqHFI2ad1buXvWINS+DD6WRn/1iFV0ARS7m
+	Hyg6wIVgDfFPgcI1xwkXuxWgtoQ0/r9hxygAG/elrEJg127yRRaHcYO+B+Mi7lBcu95/tULoz50e9
+	B869xO4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKz2D-0000000BO9r-06D8;
-	Tue, 10 Dec 2024 12:08:13 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1tKz5p-0000000BOeG-2uIA;
+	Tue, 10 Dec 2024 12:11:57 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKz0f-0000000BNrF-1KSU;
-	Tue, 10 Dec 2024 12:06:38 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-434f74e59c7so23979405e9.3;
-        Tue, 10 Dec 2024 04:06:36 -0800 (PST)
+	id 1tKz4m-0000000BOSI-2jOf;
+	Tue, 10 Dec 2024 12:10:53 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-434a1fe2b43so55801205e9.2;
+        Tue, 10 Dec 2024 04:10:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733832395; x=1734437195; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1733832651; x=1734437451; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=46aYL8Qujac4/4V9g8K6BMoI6Lwj7kmEE7LxrwnxQWE=;
-        b=C+S2AlyDohevSrmSV8BeUdF74fiHG+dzHysMU/VJqmGBPVOd9ITL835qyglRETaVhq
-         5iboPKev0kQYX5DptQrUHSDphj/THJzLlWc7VRoFMQIv9a0LBZZwOELAAmDjBvBasuLl
-         qsWP62fx0p7rcKgWoC7AYrUfwNG74xHbsxccco+Z667hITcDcMyMftOv1nt+pSy3QxNB
-         cN4FuqouXjo2s98MFONlKtJbjl2DkhMoka/H4n9Pnb0ucD5evEZyJppbAM6cT2FRzU4A
-         YVPKM/OSHBwM6A7LAz0PEjhkE/W/x5jUKDLy5U8LEOtl8VnIPDrB3zrGWGgg5Xi2fk4A
-         KVdg==
+        bh=f/tm/wcnr6fTaffyLAXSgHwJaQbGmdxPhc9rTLVd32w=;
+        b=lwoLWZCVTw6enASNYrZ+KDKJELy+SUBodggvzJmvTOf+7Cy3u/j0RQ+xJ2cefjn9Qf
+         8M7kYUEtxuDTyn5dkLjkjUKpq9pPLOSXr3q02+g4V3b4WCqkYvtv+RGaEmypuEzNcKSA
+         p4tnWqBSXEx/dGA1c6RZ4YdAIL4wtJkv7Bf/rhxiXDjpxgSNd82xx3dyrWPlwGrDesCx
+         DRECJsLP0XF3xKHexpwviGeBKXxLxyMVGdXWvenm0HLrTOYYGTzMXMkTv29yMT252BIj
+         fdOLJT54iLKvbYeIp6+uYOk5o0VYv8O6UTLjSqRspZoxTYlMaChvhq4ETyughhfurQzs
+         t9jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733832395; x=1734437195;
+        d=1e100.net; s=20230601; t=1733832651; x=1734437451;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=46aYL8Qujac4/4V9g8K6BMoI6Lwj7kmEE7LxrwnxQWE=;
-        b=ll4Hgjc9IJJCMlwxHRpSbvyIJBlgvIsmI+Nt6mX6BYMYPNUSzpqIfTrrwQDsDJna7b
-         uorWRK0JWE66/lbii9vNqch6PNodrhT4SsUlHTljMta/6jbi57zdEAneRprd86mJor6m
-         4NaEc1N7apkqbowN+MHEWPwUaM89IQcAsBQcOLqk9+dXv7ytCzqpvk90ZrTrFJlLLBJM
-         iE/63kAbsRkydsKNQ29hwr1OTYaKYEcVnnIjCe9+fypi1vN18BwowjN9rL3RaZ+un3yc
-         PTfwvMu7X2p6Np5W3SnqfLZF8+ryIxdwJlSI5+CSR3btZQ1GfRhv40X1hE17UJZJDE3H
-         rnAw==
-X-Forwarded-Encrypted: i=1; AJvYcCW9Uio/4QiOLFSxlxYEqFskT7D3msd+Ufv35/5XsjJQXduoEAPcg8OvDq72t9eAF4Orru/piKDHeVHk5HctHrgg@lists.infradead.org, AJvYcCXN7pjdWc5o08RCdeVmXZeVDBknlaLv7cqR9DEpTRtAXwQAq24yIl5IBVAn+EJsoZ/F5AweFvT3G1D//UEwguI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPSAdhgdhuy5rnODBIsWrRnx335/8yM0ddbaw0R5OQrM0L6WwP
-	kgJtCGI77nShoKKFEz/w84tfnRVfrdchEeqHryK/LlrwVDeqykXT
-X-Gm-Gg: ASbGncvQ9blaDvQ+2K7EpWyyVJGMz2Jb3PfGN+IBxpnawYVTTN+LX/nC+GonKsIRkPf
-	Ag01ubsSbwJEtHBQnuk0OWK0IzkTh077f9RMI6vzDVlne6luOfjQ9mtO6mnEZRJqa0sJ7ak99vm
-	QZvywz9TcsAoVoaXqF2ln41HId6uvEfk4lYw2MO0f5d20XX/YcQr64TK6FjfS0cQ4abktJU8HCp
-	gC53uU3Wkgf6Wl3E/hKrg94k8IftQWkgPkHAoFad69/nT4GY2Es8IE29JA2hjEIUMQ0j49lBFpK
-	VSiJEc8ing==
-X-Google-Smtp-Source: AGHT+IGpcC8Z7oXmbBOkKTQCK7YHx0j6xObP8W63hf6oMmuAzbltOfilbIotkhxBgXfUoy6iy3NP7Q==
-X-Received: by 2002:a05:600c:3b04:b0:434:a706:c0fb with SMTP id 5b1f17b1804b1-434fff3dcfbmr51803755e9.10.1733832395127;
-        Tue, 10 Dec 2024 04:06:35 -0800 (PST)
+        bh=f/tm/wcnr6fTaffyLAXSgHwJaQbGmdxPhc9rTLVd32w=;
+        b=CXee+VuZAkW7V9Ns3hqQwyFnhfUqtnlFXEAtTFS3GMqZhm62G6HOH1SB0EgHIh6h8j
+         IqUKYzGUUnvWJ9hJUbvMtCj6GRgC3XqzsXna0LfvbIiPo228h6wcsMyJtUNb7RAjUZue
+         ikAyua/4OEXm3in+88npJj/jmHMrCUrHg/WMtk55Zi8tPN/rHsCanwc4MTBhkA4X2TyP
+         ImV8gcDA5uPHARz6bgOGx4yzmxM4Ag0qxz7/1G31c7Oip+j+zIr+lUoBertNXPLSEpMs
+         OyIVokoZiin3xblKaAQQ2xfQuff2BqJZgGtFxjobbemlgN3dRMBrfxe3ouXUMCX+xGF0
+         vZIg==
+X-Forwarded-Encrypted: i=1; AJvYcCVa94yHEd/m1JNfw+wRPvU45WUMyE5SEkImYZ01SWPEfbwdF9erUsVSyU7C/3J6/6aeRuhSnm1rwwdNvGb6DGA=@lists.infradead.org, AJvYcCWOK8J3YRq8hcuP66muuLWcIIMcJOQyP3fU6eh+8ER6JIsI96W4SefOOfl9IhE8UY+g1cwvhCYnm9BZmipu9v+x@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywha4kG1uEKEigYJlTwIgwkvXwBOFmf2OBEb5mCWC0zugxMOcN2
+	iPJFRrMFYyKKjs4s6IUBHm33EmFxK+wyjoOpaCLyaAZVAI4y8rEq
+X-Gm-Gg: ASbGnctg6uAZtxhTmm3/yPbqgO1XW8x9lMB9TNpEvJomYy1+Usb1MmQ13hDi0dXA7Nl
+	kwrMtltuX6RqA9pUOh/q0f6QefrLDc4ZbZ5/Q2BeZEOr1uHO9ha6dF8llYr24W384lE7y13AEi6
+	2qNMErqNPHB1QanUZKckmdBxRFyKcFF+aP8gkPvC2aRVd9eu/HkVXuM9ldRK1UAM0wtC9izTYUJ
+	llcYOdwCVfFk0aypC+/ZwVPu80lG/ZGhPPJOA4EBZPZVBVtXyk3ZsOnj+nDqu7xPKTmB8YgTvcs
+	nj3EaKtZTQ==
+X-Google-Smtp-Source: AGHT+IELqnqj7Lv40ZEePpA0AiZtjlj0HSeZm+v8CN5Y+7SYlmGGorQ4+fRTjI1MBtElPDrqJtCp+A==
+X-Received: by 2002:a05:600c:3b03:b0:435:14d:f61a with SMTP id 5b1f17b1804b1-435014dfa8emr28638915e9.25.1733832650610;
+        Tue, 10 Dec 2024 04:10:50 -0800 (PST)
 Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-386394dd379sm8026747f8f.24.2024.12.10.04.06.33
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434f1125e69sm107925285e9.32.2024.12.10.04.10.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 04:06:34 -0800 (PST)
-Message-ID: <67582eca.050a0220.3b9b85.2de4@mx.google.com>
-X-Google-Original-Message-ID: <Z1guxUhVSGLHUVUh@Ansuel-XPS.>
-Date: Tue, 10 Dec 2024 13:06:29 +0100
+        Tue, 10 Dec 2024 04:10:50 -0800 (PST)
+Message-ID: <67582fca.050a0220.2d187a.9e01@mx.google.com>
+X-Google-Original-Message-ID: <Z1gvxWn-xvCByaUb@Ansuel-XPS.>
+Date: Tue, 10 Dec 2024 13:10:45 +0100
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -88,18 +88,18 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [net-next PATCH v11 6/9] net: mdio: Add Airoha AN8855 Switch
- MDIO Passtrough
+Subject: Re: [net-next PATCH v11 9/9] net: phy: Add Airoha AN8855 Internal
+ Switch Gigabit PHY
 References: <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-7-ansuelsmth@gmail.com>
- <5aec4a94-3cea-41a4-8500-71472fae51d4@lunn.ch>
+ <20241209134459.27110-10-ansuelsmth@gmail.com>
+ <b3b79c80-ac7c-456b-a3b5-eee61f671694@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5aec4a94-3cea-41a4-8500-71472fae51d4@lunn.ch>
+In-Reply-To: <b3b79c80-ac7c-456b-a3b5-eee61f671694@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_040637_354506_B988F94D 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20241210_041052_685768_41DE898A 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,59 +114,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 10, 2024 at 02:53:34AM +0100, Andrew Lunn wrote:
-> > +static int an855_phy_restore_page(struct an8855_mfd_priv *priv,
-> > +				  int phy) __must_hold(&priv->bus->mdio_lock)
-> > +{
-> > +	/* Check PHY page only for addr shared with switch */
-> > +	if (phy != priv->switch_addr)
-> > +		return 0;
+On Tue, Dec 10, 2024 at 02:36:29AM +0100, Andrew Lunn wrote:
+> > +config AIR_AN8855_PHY
+> > +	tristate "Airoha AN8855 Internal Gigabit PHY"
+> > +	help
+> > +	  Currently supports the internal Airoha AN8855 Switch PHY.
 > > +
-> > +	/* Don't restore page if it's not set to switch page */
-> > +	if (priv->current_page != FIELD_GET(AN8855_PHY_PAGE,
-> > +					    AN8855_PHY_PAGE_EXTENDED_4))
-> > +		return 0;
-> > +
-> > +	/* Restore page to 0, PHY might change page right after but that
-> > +	 * will be ignored as it won't be a switch page.
-> > +	 */
-> > +	return an8855_mii_set_page(priv, phy, AN8855_PHY_PAGE_STANDARD);
-> > +}
+> >  config AIR_EN8811H_PHY
+> >  	tristate "Airoha EN8811H 2.5 Gigabit PHY"
+> >  	help
 > 
-> I don't really understand what is going on here. Maybe the commit
-> message needs expanding, or the function names changing.
-> 
-> Generally, i would expect a save/restore action. Save the current
-> page, swap to the PHY page, do the PHY access, and then restore to the
-> saved page.
+> Do you have any idea why the new one is AN, and previous one is EN?  I
+> just like consistent naming, or an explanation why it is not
+> consistent.
 >
 
-Idea is to save on extra read/write on subsequent write on the same
-page.
+EN EcoNet that was then absorbed by Airoha (AN). Hence it's the same
+thing. Airoha is suggesting to use AN for new submission. So it's just
+about timing.
 
-Idea here is that PHY will receive most of the read (for status
-poll) hence in 90% of the time page will be 0.
+> > +#define AN8855_PHY_ID				0xc0ff0410
+> > +static struct phy_driver an8855_driver[] = {
+> > +{
+> > +	PHY_ID_MATCH_EXACT(AN8855_PHY_ID),
+> 
+> Is there any documentation about the ID, and the lower nibble. Given
+> it is 0, i'm wondering if PHY_ID_MATCH_EXACT() is correct.
+>
 
-And switch will receive read/write only on setup or fdb/vlan access on
-configuration so it will receive subsequent write on the same page.
-(page 4)
-
-PHY might also need to write on page 1 on setup but never on page 4 as
-that is reserved for switch.
-
-Making the read/swap/write/restore adds 2 additional operation that can
-really be skipped 90% of the time.
-
-Also curret_page cache is indirectly protected by the mdio lock.
-
-So in short this function makes sure PHY for port 0 is configured on the
-right page based on the prev page set.
-
-An alternative way might be assume PHY is always on page 0 and any
-switch operation save and restore the page.
-
-Hope it's clear now why this is needed. Is this ok or you prefer the
-alternative way? 
+I will check this but I doubt there is any explaination. These are internal
+to the switch so my theory is that no exact logic was applied.
 
 -- 
 	Ansuel
