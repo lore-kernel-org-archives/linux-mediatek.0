@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2083E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDBEBE77182
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=; b=0J8iAbLv/nEHrSdRWOhfAFI75a
-	rsM4mvBJPoVDzbhIsTI1j/SMuWjOuV/PYBClQhXOM4ENL5e1eYCwGxPz0lfMpvVsBbUgoMk8eL5LK
-	CXThqv9FlGuh5TkPnM0h+oShMHjI28ecBM7bOo3N1EtS4WP8HVZaMynEoCxf0hg49q07crrq9VksS
-	VZ/9rsZ5BktpZlsKndyZ0vF91vusm/dRdiv7X9MsOYfswoGAlcjUSucr90IU0mY6sfdS0TKVz9ugE
-	YLYeBtA/JpY///dP4wtQ2oSkzcxrja1gBSGwLymp8MRvSn/swtk44LV2lnQq2q1To51hTM1JvGwJV
-	cLfXXPiA==;
+	bh=EGPzafJOEdoHb7yCUcUHHdTxZLNCJp4WwMrLYstSYKE=; b=2wZG3yHHrLQbk9Zg8bcgiOqExn
+	ooMugKeVjAEt27sE4omX0IrzU/eqT8FFPtChbOnxFB9+0DYMPXcwFZ6oMae33RIoj6WeVE1dREpeq
+	bDY5rnbV/slhq5UuWIFjm2PAtTwq1ZtB2/fhmBsGoFt0vhOb3vYXa1zizxw9nX24Audx+hK8CWPj4
+	6GBnYsGjkkatgby0z00yEOlRptQsrZidQlBlmYvXLt2CxIypxzLDZkn/PeSvea3QxQO4feN6PM6Ya
+	AmgGTFW7lrDFkn55hKSkAyy7c0AhLmt2FLWC9pepG+5v0AqHPRhCHwB/FdoQIZP2var52GxO9ITz6
+	TR1tKD/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvr6-0000000Akmk-3Zi1;
-	Tue, 10 Dec 2024 08:44:32 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1tKvtF-0000000AlXc-0cHe;
+	Tue, 10 Dec 2024 08:46:45 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvr3-0000000Akm1-23Pd
+	id 1tKvrg-0000000Aktp-2S9s
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Dec 2024 08:44:31 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-434f1e5e77dso2014855e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 00:44:29 -0800 (PST)
+	Tue, 10 Dec 2024 08:45:10 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-434faac720bso1799605e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 00:45:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733820267; x=1734425067; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1733820307; x=1734425107; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
+         :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=;
-        b=BIWzpYU6IE1B43BCredqTul0Mf511vuaXCladaO62d5n/QibhYg/UsMaUk5xIk+p2y
-         NHObtyEfNJCrqKcXRU7vacL7W1HK+fiHc6TlRmUEZ1+f0ByqNiPZ+DbhHat1IZsAuglb
-         QRGpAq3YLUe+fEHoYlhOggG/ZkmIoWXGQKWgsvPkzlQYsYhTTpEO+OIbJ+c9TuRK0VCH
-         FqE1Mw+vdgxcVWgXZysSBrfgTEezzP7uE03vbl3elYfJm9y1owBAtpKPbZm6FVvSp1Cz
-         lD9HwvRjexqBRAe+pp1/TacGvj1+PzaAMOrnOusnwWRS1QFOgn0L7nFM8Z4dp0abRotC
-         HfLA==
+        bh=EGPzafJOEdoHb7yCUcUHHdTxZLNCJp4WwMrLYstSYKE=;
+        b=KShlYSlLq3We+Pot5uS+Ho4d3UYx62/iTU2WapkmPDrcrToo2ZyzkyJJjOvayYPLB7
+         zswE2803QzDEu77hJQg/wz6IHOebsiOlFricHuXx3KMNMt1a5NP8a5u8PJNwJAzxqwYm
+         7uyQiVx8wXLs7932FvSbOZlwr3dTMrSc8SZBHHse1KX2j54cOvxG0EfQMBAvzFt7Q5kl
+         aJ+Vn3mXjJ3nPP6ScKL3nt5a6rxRl6Nanx1Qd/eqSmmjFwXERmGDF+0LMOJWl+RvURCK
+         LyP3bbOh01SrqCzZJ9BmFbLGjiApdaMVkHH+Jc2sjsmzpj8xWa+kPEv4Qxi4FTXa4w9J
+         JTkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733820267; x=1734425067;
+        d=1e100.net; s=20230601; t=1733820307; x=1734425107;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
+         :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=;
-        b=AZqxHfV6Pjn24qtcByQU90gIVRTwY30kdxaIam3WMFgTOTR2IWpOgnQYfuKTbPowBf
-         9ldXFqTqZ1enxUS5D3gYGQEp//81fUoigsO5JkcJ7u1X28f17ZA0C/P+Z9WQMIloDOgj
-         LnFnMgE874/GHa5sFX4lX7wvmQhHxQOOrsHU0p4Ed9DDpG7FCQ7HBDeMyW2VqDXez7mP
-         cxdgpnEipOCOQd45CwxQ+XtGD75ZE26+UL8SYrMKfmNmmNZwZY/ih1ptGjlTfO1JT1Ml
-         vTTg9h0jRqs0IZBtk80HnKbKeTdS8sNhxkYuSeamSa9vB4DamPK9qB0pmZBHx5v+JY0r
-         6zfg==
-X-Forwarded-Encrypted: i=1; AJvYcCUPbx/F1rjc24AurI7eiXlxOPV/xNgVOmyzc/dcT7yCDU63LJT3lOCbYwF7qExEMicjxcS48G4f2qHddqELfA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyvkOZCIIJiSvTZ29dqWkq3itfLIvbpWGmI/KKaYy4qJv7YeTpG
-	RNy5RC7Q8Gj6XzXFGOpLhDW3nLUpw2SOw6pWso3xUCntUONYN5MYwxND1j+fYV4=
-X-Gm-Gg: ASbGncvut33KWTlumMa1HhjIZKQlgkbqnFNU+B0prAJsMkKq4gvEqjUl87Fgy2yy9fv
-	eOn0c/r9m7NrT3aSlB3r2DJZPYbTkGwT4385KAEPMamdnrb5Sei3MTeKyu828RWLhJbs+ljZ3gj
-	lENRb8VQ4DLYhzudUQ/WVUEV5VnXkf8lEfZPyZrBYjOdwzeMyeLXs+u+U6UWTBXg0kXavaU1Oj1
-	Nm1VLY7LK2svmHdBJJa0mAA3THYkSuffc5Ni42oCoCHjNcPu1TP45PQietoM8FioxsQCefjZg==
-X-Google-Smtp-Source: AGHT+IGPo+343UL/XQMovJpUM2fs2wVtTJ2f6VeXfpBxnUXzR6Wmli37wiQCf2jAuAJMbmj0bMBcWA==
-X-Received: by 2002:a05:600c:1c28:b0:434:a0fd:95d0 with SMTP id 5b1f17b1804b1-435019a81abmr8538055e9.4.1733820266783;
-        Tue, 10 Dec 2024 00:44:26 -0800 (PST)
+        bh=EGPzafJOEdoHb7yCUcUHHdTxZLNCJp4WwMrLYstSYKE=;
+        b=To5N8kIsdvM9GXwGTsHDT1JtwnzZHxLb/OkYNYjKyYqDWKtSNGQqS/6am3bRFzc2EY
+         9r+X2lmJX2jFcBsjuCYsS07w9wPF4bildbxopEnVd+qZja0blZiGM5/Gg+FhQcmhti8K
+         paFWb4IUsl6FdcXeoMfgUqqRprQ0VG+0vAjtmlJZfxXbkzanmKfOw8NssnPPvDCPs1HY
+         iE8jSOih9c3z3wknnB+QapOOMH0VAIZ8ZR4ZcBm+M9D76hXIDSX3xuimOxJcdL11hsX/
+         zd81ZXVGXuC1ae71twK5qXwylG+nTzFDXinWnAOIFfN4+lrJvcisFmKhv6l2jpNvuPVu
+         5iTg==
+X-Forwarded-Encrypted: i=1; AJvYcCULzeNRq2sNvGJe9V2aoDtjXZeMj8NXKM3CbXchFqlYicgsg79/Xp6+Ko1SrXfYEx424KkprLhfxWA+9U7Rdg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7Fhj3czz9f6OpnTCDv+PbAYjfAloW/hRCN5m8NMPgv7uGyHFZ
+	1zcdjLYnJoqmnpRS/RDKUhbAirF1TLY/jJmL6IUSEthbnyjQ76jhQNX3Yk4YVtk=
+X-Gm-Gg: ASbGnctY1XlaoHOoxgJYIwBQ9xWdvHFG41LqLjCbHOWz+Ouvk8zY2KoSCXoVCDRb78P
+	OI4W2E3XySSFW1Ceqp/bzgyV9N+xsbXkmngeQA16/j7DL0057lcya4T4pbJNS77WsI0XCCkXCsi
+	M3jaJJkVPFi0mLtgD9JmVXG26E4zG5GwTdkxKII+vJXAz5B9xa7b4fMx/yEmaXPmFOy3gL/IM2q
+	GU+rB45NOnGJi2ytKac/egRQv84y4qMMZPAH2fj/e2dF1vCxU1jYdEzBGrhWUGc8bG6GW8AfA==
+X-Google-Smtp-Source: AGHT+IGIbVpoRmpF/fMTJFNEwzOHMG59iwFgI6N67U5I2zZMBPgokITH6VMHyBfnG2hgq55rbdMOGg==
+X-Received: by 2002:a05:600c:1c28:b0:434:a0fd:95d0 with SMTP id 5b1f17b1804b1-435019a81abmr8545715e9.4.1733820306820;
+        Tue, 10 Dec 2024 00:45:06 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43502fef1f9sm17875605e9.1.2024.12.10.00.44.24
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434da0d26b0sm188531705e9.9.2024.12.10.00.45.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Dec 2024 00:44:26 -0800 (PST)
-Message-ID: <0d23ccf9-3420-45bf-aac7-5c1a075e031f@linaro.org>
-Date: Tue, 10 Dec 2024 09:44:23 +0100
+        Tue, 10 Dec 2024 00:45:06 -0800 (PST)
+Message-ID: <b8c1c4d9-3234-4184-b57c-8cd5cb18f815@linaro.org>
+Date: Tue, 10 Dec 2024 09:45:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: =?UTF-8?B?S2FybCBMaSAo5p2O5pm65ZiJKQ==?= <Karl.Li@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: =?UTF-8?B?Q2h1bmd5aW5nIEx1ICjlkYLlv6DnqY4p?= <Chungying.Lu@mediatek.com>,
@@ -99,7 +100,7 @@ References: <20241024092608.431581-1-karl.li@mediatek.com>
  <a3c3280478bf86eb97a422782ce60ec4eaa35224.camel@mediatek.com>
  <0f98405c40530d81c342af06dea593e7babedeac.camel@mediatek.com>
  <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <0d23ccf9-3420-45bf-aac7-5c1a075e031f@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -145,13 +146,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
+In-Reply-To: <0d23ccf9-3420-45bf-aac7-5c1a075e031f@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_004430_344862_0703A417 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241210_004508_628324_F9C6C4A8 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,23 +166,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/12/2024 08:32, Karl Li (李智嘉) wrote:
-> On Thu, 2024-12-05 at 07:05 +0000, Karl Li (李智嘉) wrote:
->> Dead maintainers,
-> "Dear" maintainers. Really sorry for the typo...
->>
->> I hope you're doing well. Just a warm reminder that we're following
->> up
->> on these patch and really appreciate any feedback you might have.
->>
+On 10/12/2024 09:44, Krzysztof Kozlowski wrote:
+> On 05/12/2024 08:32, Karl Li (李智嘉) wrote:
+>> On Thu, 2024-12-05 at 07:05 +0000, Karl Li (李智嘉) wrote:
+>>> Dead maintainers,
+>> "Dear" maintainers. Really sorry for the typo...
+>>>
+>>> I hope you're doing well. Just a warm reminder that we're following
+>>> up
+>>> on these patch and really appreciate any feedback you might have.
+>>>
+> 
+> You received like 6 or 7 reviews/replies for your patchset. What are you
+> implying here if feedback was not enough?
+> 
+> Respond and implement the feedback instead ignoring it.
+> 
 
-You received like 6 or 7 reviews/replies for your patchset. What are you
-implying here if feedback was not enough?
+Ah - and obvious static check warnings as well!
 
-Respond and implement the feedback instead ignoring it.
-
-NAK
+Please run standard kernel tools for static analysis, like coccinelle,
+smatch and sparse, and fix reported warnings. Also please check for
+warnings when building with W=1. Most of these commands (checks or W=1
+build) can build specific targets, like some directory, to narrow the
+scope to only your code. The code here looks like it needs a fix. Feel
+free to get in touch if the warning is not clear.
 
 Best regards,
 Krzysztof
+
 
