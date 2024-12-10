@@ -4,66 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1082DE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 19:36:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E241E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 20:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=2uz5aXtGfG1B0VtJbxm1Nmhune6FGr6+yfn9GwRV5KU=; b=n57KdNAG9lYag+
-	Zui4E+vD6Ed9O1w9cqpPl5nNWo802EIDlPm4qzzwDiAWP+02xATMV4l6/xw14Skzc/TcuABx7TJcm
-	UeMKZoaBhnCRsRtbmZZQfeu4eSqVUqLRTqBHATW8lswikKXwD0bhH90zj85N1DkE8/eYYSTScTASi
-	smOw3Ej7F2R1znAycRKM84eG5707JLOItTnXuAdYESiq5rXT1Oc+ryy8xtYM5n3LZ0YCTJPTx6ysS
-	z2mr7Mr6faGU1tS/LkbEkem8RqRkv8jomPsrWT4RRY0XZ7IstsuPbVo0Q6l51YQzlH0axZcUvPVh4
-	dzM6UuoAZ1L4qLke9sDA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WudyUJe63c8JFxkj8fmVFDLqePx04Jr1Dyl2u8hD8a0=; b=vgrfGLKjeT56KV4ZsKZwPcKEIB
+	yG3djMl0CVsRUsdrqJS1LQ5XurORp62ju1ePPJpryblT42yMOqzpNwTagCgmqvmqui3TseIKL1MEx
+	4d5XDAxh+UeLu3hoHHuuvbQmSvo1YgInICXzjOJnCw9jEIcbfNyJYQgc5qfac/fKE8LoGQe+8V576
+	ei4GJaOQcwgsGlUym2ugG9+SF6vamXYha8dT2a7rJfprApH9hRs4FN/u7cOuEfGSA9hw42wxOy+VI
+	6w3g4GLDsBdZvUCN8Pd2v5u6+KSwcITrYByIvzkhqO5Re4h7yKdarVsekv8lYH3dqOAy00s9bUArk
+	ioUPXe+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL62G-0000000CXOG-1Aec;
-	Tue, 10 Dec 2024 19:36:44 +0000
-Received: from fanzine.igalia.com ([178.60.130.6] helo=fanzine2.igalia.com)
+	id 1tL6kI-0000000CfBx-22gi;
+	Tue, 10 Dec 2024 20:22:14 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL62D-0000000CXN1-3SIh
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Dec 2024 19:36:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
-	s=20170329; h=Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:
-	From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=2uz5aXtGfG1B0VtJbxm1Nmhune6FGr6+yfn9GwRV5KU=; b=J/rkOfhEbIRX35i22/iayPnvJI
-	NSZpXKJE6yowQ3DBTX3lPrKMM9TzqUuywYAXOs5wUPEs7pYz/dJ5EwS1DDSxSd43yhFEw30syW73w
-	cjXh7M+8lrYJaqtWMfEyuW6u9ATMbzl/EUMAH6P9CBQqga2vmQy2CuFWtZdplVSPWCTh1S2PX9ExY
-	uoe79UNN3RPbjXH3EZtq67LUwTMS5Qlvo3GeBeLv/+xwRGhgvkaD6bsmknb5OAydWsXa8Cvj4zQeI
-	OcpvM/JBtrcVhg5Dn2CG8lTiNm4NJkmdBBIeRrpLn1y9wengD92Q2oxGK3fwkoYSzwNyXVq62DjQq
-	Sep++5mw==;
-Received: from 179-125-79-244-dinamico.pombonet.net.br ([179.125.79.244] helo=quatroqueijos.cascardo.eti.br)
-	by fanzine2.igalia.com with esmtpsa 
-	(Cipher TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256) (Exim)
-	id 1tL61o-001bpV-RK; Tue, 10 Dec 2024 20:36:17 +0100
-Date: Tue, 10 Dec 2024 16:36:10 -0300
-From: Thadeu Lima de Souza Cascardo <cascardo@igalia.com>
-To: linux-bluetooth@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	id 1tL6j9-0000000CewF-2tLa;
+	Tue, 10 Dec 2024 20:21:08 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-aa67bc91f88so57703866b.0;
+        Tue, 10 Dec 2024 12:21:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733862061; x=1734466861; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WudyUJe63c8JFxkj8fmVFDLqePx04Jr1Dyl2u8hD8a0=;
+        b=XQQWYQYuDnamXkyrkRY+zm7krWWrA1S2Vq0OPZHrZ2dnXihKx3SIvQ/sx7IEt3ogtS
+         3PjxBeNH/Rg9q/lTk8n7Mkf27IGGuvjISbVgPNWJw2jn2OTDOFxUeo3msshSg9DwNuNj
+         0wWvkg9HfLvSLHmtUrWrL9NG6VqZW6QBLWaScvmZMqn9Fr/wR3s1nzjTkDNK5cweBKnQ
+         +Qulq0xfUzquU62EARfUmgNhmWgmNz0Z3uGBqjyPiUzg0dHoCx9vJE1564bEqvOe7gdH
+         5lMwGxARYQc8x57PezXgU8/oFa+PRAajPbnW5B2ZRZhf1pKs4sgKieegis80OsiOaYC6
+         c8AQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733862061; x=1734466861;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WudyUJe63c8JFxkj8fmVFDLqePx04Jr1Dyl2u8hD8a0=;
+        b=xRcAE/fFJaQk1OLZ1Y06zS3Gdjff0DQekGKmLmmbG13lklcNc4OBHP1Y6XkENtl4Y8
+         o4fOD95n0XatQ9nhQKNiVltTLJ3xVKqiPETAENKc0Ba4nAZrrRWfCki7zpykUks1uesj
+         /TNyKpesnX3tsI8AA5riuTjudwVxifVOHL2OIYNyauHloeggmAfzDNbLmM0hfTjHch9v
+         CfiVx5TA4eGaBz4x+uLN3b8LbA47V3Ve6Cn+Wze7gitvcrmomo2rFd1Gn/U35LUSznR9
+         nd5Ml0m9iA8eEnP9Bs8Um2LPrauU68ZCbjtvu8RdF0t7UDB+7PAxrcb7iKMQw04lWFlL
+         afzg==
+X-Forwarded-Encrypted: i=1; AJvYcCWEuL4oj+achiblznEyI8J7OHneENY1mAPFhD4DU5vtw+fZzB4Av/6H+a89d5zXvmVi0DYQFcsD90F8KyV9ZFi5@lists.infradead.org, AJvYcCWISLtzhmjrojd4dkvTw8t3c1VwD0Boz4cbe2Q4g0F7R1voYJBvBlPWE3qqUhhuZomxvK0UwBR/RUOU9pXx/iA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxiCrj8wKggsk7wCrbgkhwT8MCFsmDwhFdZqZIev6rEosiJmehb
+	SVN2nIO4TMHNH4D+V+m/G3mIJvp5P0JC2NnT50BEa/EXhi1Rzhrs
+X-Gm-Gg: ASbGncvko5kHuWhiaCiNFZjeLWVW4ciXWzzcw8T8nDQPn42VcbFDCQK5dFBH08z43Qb
+	t1oNmMS3vEI5cDD06SBh1rUVDh8u3PD6VVcIUlmRwzjUTTQG0Cee00WpdL2FaX4j/IwfZ/5pP8U
+	tPjByN8hlXfS+ruI3/72mEJksmN6Lp1bYPzRASCTIa7xT+D7vgPCHjrsbd2opeBfEWeP1iLc2yA
+	TIgI/5WLcz7RghDWfVe20dw51EwL/GSjZ1XIMDkyw==
+X-Google-Smtp-Source: AGHT+IGjcxHC/a2dd358/yErtbhd4ej5DXUjk12poPR/JpWsRTPDUnrfaJH4uV6DTzTNXMcURT/RxA==
+X-Received: by 2002:a17:907:1ca7:b0:aa6:9407:34d3 with SMTP id a640c23a62f3a-aa6b133c966mr3485266b.9.1733862061023;
+        Tue, 10 Dec 2024 12:21:01 -0800 (PST)
+Received: from skbuf ([86.127.124.81])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa6696acc74sm540561666b.134.2024.12.10.12.20.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Dec 2024 12:21:00 -0800 (PST)
+Date: Tue, 10 Dec 2024 22:20:57 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jing Cai <jing.cai@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, kernel-dev@igalia.com,
-	Thadeu Lima de Souza Cascardo <cascardo@igalia.com>
-Subject: [PATCH Resend] Bluetooth: btmtk: avoid UAF in btmtk_process_coredump
-Message-ID: <Z1iYKvmenw81i1UG@quatroqueijos.cascardo.eti.br>
-References: <20240731190330.1619718-1-cascardo@igalia.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v11 0/9] net: dsa: Add Airoha AN8855 support
+Message-ID: <20241210202057.x2tds77popzdcak6@skbuf>
+References: <20241209134459.27110-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241209134459.27110-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_113642_190515_3B24F384 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20241210_122103_728136_F854F8CF 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,147 +108,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-hci_devcd_append may lead to the release of the skb, so it cannot be
-accessed once it is called.
+On Mon, Dec 09, 2024 at 02:44:17PM +0100, Christian Marangi wrote:
+> TEST: lan2: 1588v2 over IPv4, Sync                                  [FAIL]
+>         reception failed
+> TEST: lan2: 1588v2 over IPv4, Follow-Up                             [FAIL]
+>         reception failed
+> TEST: lan2: 1588v2 over IPv4, Peer Delay Request                    [FAIL]
+>         reception failed
+> TEST: lan2: 1588v2 over IPv6, Sync                                  [FAIL]
+>         reception failed
+> TEST: lan2: 1588v2 over IPv6, Follow-Up                             [FAIL]
+>         reception failed
+> TEST: lan2: 1588v2 over IPv6, Peer Delay Request                    [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over L2 transport, Follow-Up               [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over IPv4, Sync                            [FAIL]
+>         reception failed
+> ;TEST: VLAN upper: 1588v2 over IPv4, Follow-Up                       [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over IPv4, Peer Delay Request              [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over IPv6, Sync                            [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over IPv6, Follow-Up                       [FAIL]
+>         reception failed
+> TEST: VLAN upper: 1588v2 over IPv6, Peer Delay Request              [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+>         reception failed
+> TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+>         reception failed
 
-==================================================================
-BUG: KASAN: slab-use-after-free in btmtk_process_coredump+0x2a7/0x2d0 [btmtk]
-Read of size 4 at addr ffff888033cfabb0 by task kworker/0:3/82
+Why do these fail? They are dropped on transmit? Could you see with
+ethtool -S where they are dropped? (DSA conduit, CPU port or user port)
 
-CPU: 0 PID: 82 Comm: kworker/0:3 Tainted: G     U             6.6.40-lockdep-03464-g1d8b4eb3060e #1 b0b3c1cc0c842735643fb411799d97921d1f688c
-Hardware name: Google Yaviks_Ufs/Yaviks_Ufs, BIOS Google_Yaviks_Ufs.15217.552.0 05/07/2024
-Workqueue: events btusb_rx_work [btusb]
-Call Trace:
- <TASK>
- dump_stack_lvl+0xfd/0x150
- print_report+0x131/0x780
- kasan_report+0x177/0x1c0
- btmtk_process_coredump+0x2a7/0x2d0 [btmtk 03edd567dd71a65958807c95a65db31d433e1d01]
- btusb_recv_acl_mtk+0x11c/0x1a0 [btusb 675430d1e87c4f24d0c1f80efe600757a0f32bec]
- btusb_rx_work+0x9e/0xe0 [btusb 675430d1e87c4f24d0c1f80efe600757a0f32bec]
- worker_thread+0xe44/0x2cc0
- kthread+0x2ff/0x3a0
- ret_from_fork+0x51/0x80
- ret_from_fork_asm+0x1b/0x30
- </TASK>
+> TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address   [FAIL]
+>         reception succeeded, but should have failed
+> TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address, allmulti   [FAIL]
+>         reception succeeded, but should have failed
 
-Allocated by task 82:
- stack_trace_save+0xdc/0x190
- kasan_set_track+0x4e/0x80
- __kasan_slab_alloc+0x4e/0x60
- kmem_cache_alloc+0x19f/0x360
- skb_clone+0x132/0xf70
- btusb_recv_acl_mtk+0x104/0x1a0 [btusb]
- btusb_rx_work+0x9e/0xe0 [btusb]
- worker_thread+0xe44/0x2cc0
- kthread+0x2ff/0x3a0
- ret_from_fork+0x51/0x80
- ret_from_fork_asm+0x1b/0x30
+It is unexpected that these fail. The vlan_over_bridged_port() selftest
+sets has_unicast_flt to true or false, depending on whether the driver
+declares IFF_UNICAST_FLT, and depending on that, sets the expectation on
+whether unknown packets should be received.
 
-Freed by task 1733:
- stack_trace_save+0xdc/0x190
- kasan_set_track+0x4e/0x80
- kasan_save_free_info+0x28/0xb0
- ____kasan_slab_free+0xfd/0x170
- kmem_cache_free+0x183/0x3f0
- hci_devcd_rx+0x91a/0x2060 [bluetooth]
- worker_thread+0xe44/0x2cc0
- kthread+0x2ff/0x3a0
- ret_from_fork+0x51/0x80
- ret_from_fork_asm+0x1b/0x30
+There may be a bug in the selftest, but I doubt it.
 
-The buggy address belongs to the object at ffff888033cfab40
- which belongs to the cache skbuff_head_cache of size 232
-The buggy address is located 112 bytes inside of
- freed 232-byte region [ffff888033cfab40, ffff888033cfac28)
+I haven't looked at the patches yet, but from this behavior, it looks
+like you mechanically satisfied the requirements of dsa_switch_supports_uc_filtering()
+such that DSA will set IFF_UNICAST_FLT, but host addresses aren't
+actually correctly handled, or CPU flooding isn't turned off when it
+should (ds->ops->port_set_host_flood?).
 
-The buggy address belongs to the physical page:
-page:00000000a174ba93 refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x33cfa
-head:00000000a174ba93 order:1 entire_mapcount:0 nr_pages_mapped:0 pincount:0
-anon flags: 0x4000000000000840(slab|head|zone=1)
-page_type: 0xffffffff()
-raw: 4000000000000840 ffff888100848a00 0000000000000000 0000000000000001
-raw: 0000000000000000 0000000080190019 00000001ffffffff 0000000000000000
-page dumped because: kasan: bad access detected
+> TEST: FDB entry in PVID for VLAN-tagged with other TPID             [FAIL]
+>         FDB entry was not learned when it should
+> TEST: Reception of VLAN with other TPID as untagged                 [FAIL]
+>         Packet was not forwarded when it should
+> TEST: Reception of VLAN with other TPID as untagged (no PVID)       [FAIL]
+>         Packet was forwarded when should not
 
-Memory state around the buggy address:
- ffff888033cfaa80: fb fb fb fb fb fb fb fb fb fb fb fb fb fc fc fc
- ffff888033cfab00: fc fc fc fc fc fc fc fc fa fb fb fb fb fb fb fb
->ffff888033cfab80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-                                     ^
- ffff888033cfac00: fb fb fb fb fb fc fc fc fc fc fc fc fc fc fc fc
- ffff888033cfac80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-==================================================================
-
-Check if we need to call hci_devcd_complete before calling
-hci_devcd_append. That requires that we check data->cd_info.cnt >=
-MTK_COREDUMP_NUM instead of data->cd_info.cnt > MTK_COREDUMP_NUM, as we
-increment data->cd_info.cnt only once the call to hci_devcd_append
-succeeds.
-
-Fixes: 0b7015132878 ("Bluetooth: btusb: mediatek: add MediaTek devcoredump support")
-Signed-off-by: Thadeu Lima de Souza Cascardo <cascardo@igalia.com>
----
-
-Resending as this has not been applied yet.
-
-This has been tested by Chris Lu.
-
-Also, the tests GitLint and CheckPatch are complaining about long lines,
-but those are from dmesg logs, so they are kept as is with no added
-wrapping.
-
-Thanks.
-Cascardo.
-
----
- drivers/bluetooth/btmtk.c | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index b7c348687a77..46f605249df7 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -395,6 +395,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btmtk_data *data = hci_get_priv(hdev);
- 	int err;
-+	bool complete = false;
- 
- 	if (!IS_ENABLED(CONFIG_DEV_COREDUMP)) {
- 		kfree_skb(skb);
-@@ -416,19 +417,22 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- 		fallthrough;
- 	case HCI_DEVCOREDUMP_ACTIVE:
- 	default:
-+		/* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
-+		if (data->cd_info.cnt >= MTK_COREDUMP_NUM &&
-+		    skb->len > MTK_COREDUMP_END_LEN)
-+			if (!memcmp((char *)&skb->data[skb->len - MTK_COREDUMP_END_LEN],
-+				    MTK_COREDUMP_END, MTK_COREDUMP_END_LEN - 1))
-+				complete = true;
-+
- 		err = hci_devcd_append(hdev, skb);
- 		if (err < 0)
- 			break;
- 		data->cd_info.cnt++;
- 
--		/* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
--		if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
--		    skb->len > MTK_COREDUMP_END_LEN)
--			if (!memcmp((char *)&skb->data[skb->len - MTK_COREDUMP_END_LEN],
--				    MTK_COREDUMP_END, MTK_COREDUMP_END_LEN - 1)) {
--				bt_dev_info(hdev, "Mediatek coredump end");
--				hci_devcd_complete(hdev);
--			}
-+		if (complete) {
-+			bt_dev_info(hdev, "Mediatek coredump end");
-+			hci_devcd_complete(hdev);
-+		}
- 
- 		break;
- 	}
--- 
-2.34.1
-
+We discussed off-list about this, a special configuration needs to exist
+to consider as VLAN-tagged only those packets with TPID == bridge vlan_protocol
+(i.e. 802.1Q).
 
