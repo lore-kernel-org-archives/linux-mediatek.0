@@ -4,111 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4F76E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 10:01:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39041E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 10:03:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kjMfgZPTOt1wzklPxYQo1KoCry3saUouaCrKRGjXlrM=; b=41VdVGTwayHcXsyx29uPwkmCH6
-	36UA9vtlmy/+6LoB5epqowh4Zj0UlEgeWYRVHeybjlQn9eCqWo4kIKM1CIMTonSlzAPn9YzNhR3yO
-	A4WdlVTuYxdbcHvV6awOZqQ+Ppmob+P6hX8l2xVz3VyFcaavPG4DbPgXumMaYimi3yWVj98ay+EQX
-	SJFRPvEZ8SkxObEUKLuPXWJy5RpDs8FVAByHqFnfZJ+aldaPKATE/JpmfWZoUwK+RpYh/QPatHgrQ
-	7C7uMP/z/+OttBZO6lyOAc7rDgWAipqz+if0YVVzfXmzQPTK9L+LN2gagb6+ZVzqyK3MC6qUQFgI8
-	DzKj1TCw==;
+	bh=YX02cU310eK6UTMw9sAob3UP3z+RmmuYzAOsviURsyA=; b=AyYa8E0L/n8MB4awzo1kXLCEkU
+	F7Tpxq/DMp7+p+6TikZlf2+0svBnBpTuolS2czDBBp6n9OOz028zjqv652sPNT2oisckq81/w0q7B
+	oeuxBMKNWL1PiPEiRZy70YLMLMx1Ky5AGW9b2bp2jbrVr80TP4seLbT6A4j5jhAPG4KWvhwsuBrJa
+	B4izExNzQfQe+Ux4ipnMK4YVFgTidkO+mcJKs6ZKr6HmQc/TvKjB9qF0KkaAaTtBZe0tpi4EhOEd6
+	6HtHe68lLmODp8YEZfzws/vfhtaPVjOwjwKWGJVsPhAVm+4BaBrGoUcvG+H4snIsb8Lkfge0bPRhB
+	ciXri+gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKx3H-0000000B3Qg-3a9W;
-	Tue, 10 Dec 2024 10:01:11 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1tKx5M-0000000B3vG-11sW;
+	Tue, 10 Dec 2024 10:03:20 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKwpA-0000000AzKz-38B6;
-	Tue, 10 Dec 2024 09:46:37 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-5d3ecae02beso3176553a12.0;
-        Tue, 10 Dec 2024 01:46:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733823995; x=1734428795; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kjMfgZPTOt1wzklPxYQo1KoCry3saUouaCrKRGjXlrM=;
-        b=FsFrrBEvgvXH90PQGRZSE5mpQ88fA/snPd7n9LlmBM04bKoO2lLUDJwuVCOl+R7RWd
-         F9f/QhLMQKwFqQgFR8bG6koMI0Vc/mrUPh7jeqSlpNhjkDCS1k/7M8ZDTgy4p5iFc+ud
-         XU/a1hcM8h+VjmKpj8sK55uB05JfMEEYihbp8D5JRrNx+blMsBga1wXyrw/M1muiSRqI
-         YwQsxqPf7wEpiiIKdrgtjEuNhoN9uJ7F1w9trd3zq36+BiApcn7AW0lu8XDQ7AKnUzuX
-         MGc61u5xbx26Q53p82gaA3tzZjlIk1LmESNjSDinuEKqklZb2iiXEVLzyicYUBkP+XTM
-         AY9Q==
+	id 1tKwsL-0000000B0GZ-2jfx
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Dec 2024 09:49:55 +0000
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com [209.85.210.197])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 4280940DA3
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 09:49:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1733824189;
+	bh=YX02cU310eK6UTMw9sAob3UP3z+RmmuYzAOsviURsyA=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type;
+	b=j88XDFSHuesi8NqNMsGDIKoRN6RpFAb4BQtscwTDJ0EgSAhtvuNEZ0Ug+UicYr95I
+	 FD61ilPLezWj4v8BvMNX0HGlblw8TmQ5XE/nSQ6QyxGJOk8RUruDhNgMtDbv9t6Fj5
+	 16NDv1q0x292uE1ytrxqgxN5ulP8mp91gubtBfuoZwzeIikejn0GBrpT7GkJ9CWql7
+	 vxLAperyxRpuDtGUL0iaUAvJCA9p8BPvo933/y+zrcBDwpQ23ckodt15pAbNwd6fSP
+	 ZtiCu1VN5B1Lhy3lbarYiFIuK3MKF0UNW5iTMW58AFRN4NozIN3CUJB9dc3TTYBlVu
+	 SNBn+C3pOHKig==
+Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-724fc3f60c1so7794298b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 01:49:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733823995; x=1734428795;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kjMfgZPTOt1wzklPxYQo1KoCry3saUouaCrKRGjXlrM=;
-        b=GmalsHvP7ZTB7oqmwet78XI5L032xDIFc7nAfRwdOkz6Fy1xz3koCVyO/F03K2vEh/
-         xaqEvUKU+O9A3mAZef4gyWhx7KoXkm2CVPYQJEcvJK5FbOxeCdz0yaUbH3G98TRr/RKR
-         YQa74B69LR5tvmhs38qXpvwE940v1KBkMxWHQi36e5pJSjVlUFXmRfeQq85QIjbxt6W9
-         UuUsHxDxDvt7r+T11Nif/ryOR6dMvsNdGP7NfFosxpHykzQ5hlhU304OcYL/dhui5eS/
-         L4vLal1dlj997xuZ6zhIVP+fbi/tt2m5Lzy4xKHXlTVL0Rm4T8la5x1FNSlwyvoF0/An
-         GdlA==
-X-Forwarded-Encrypted: i=1; AJvYcCVjPbX8ypFhkHYyH9KI/fJFmKhYQLRcQBr++jKMyxUeKRlY+RSNVIyUpEjrjALO4t4fw2bha9yAcv82P7VXzZui@lists.infradead.org, AJvYcCXjuPxVvxiC7op5ZE5JmB4lf5eInJAWGXKbVOOx/NuY0MrlnWASAesDzOdMVuSfe9TY8VovSv8I/1kgVpGsW6M=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzV1zBqdWzSfRhTr0tJ8Kn6AdYYkmx7mZpZz1zvp57s18CJpD0K
-	0y/7dlDdl+zijKpM1CemNlidPmC8NWy6ewjtIC++YjyejsFudX45
-X-Gm-Gg: ASbGnctiq5hwe8/C9an/eMxxEJCyEJ9YDN5iV1n2XQWQgh+7P7Bya606TU7ezFcItcD
-	0VcNwrXf9xgz0JQXtu1ViFstB0FJOGis8ljNRMMIqZX3Be9zPFlJkZKgzRGpfe/R0ZKUkmUuasq
-	FcXOy8lgnkNPE5X00g3c+HNz5l+xIlTUoDed6VQXKAVCi5eHDiTTYUQSuHqfC/FaCVTReZHAbTk
-	enYcHbKzYoTLiNQolKmlEd2Znr4R+mepfUZTBz9pKFQ+IvXQUSf5z93mpMVuC/DlDCSm5JfviUj
-	1Y7yRdKLkxvmzPd1n/dPeIuUw5dxevOmxFhJ1Jt0eINo8ca2M3SltSolYNIJZJn6S9yJOic=
-X-Google-Smtp-Source: AGHT+IFAu59kegmItDpMGH7TM0Tzld+Gwydm4Aw22u8I6s2WTgEkJzLS/k6ir2kKhoX3eegXigdJOA==
-X-Received: by 2002:a05:6402:51cb:b0:5d2:7346:3ecb with SMTP id 4fb4d7f45d1cf-5d3be69d3admr15117186a12.12.1733823994692;
-        Tue, 10 Dec 2024 01:46:34 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d14b609e56sm7313936a12.40.2024.12.10.01.46.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 01:46:33 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Ahern <dsahern@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Joe Damato <jdamato@fastly.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH RFC v3 net-next 13/13] netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
-Date: Tue, 10 Dec 2024 10:45:01 +0100
-Message-ID: <20241210094501.3069-14-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20241210094501.3069-1-ericwouds@gmail.com>
-References: <20241210094501.3069-1-ericwouds@gmail.com>
+        d=1e100.net; s=20230601; t=1733824187; x=1734428987;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YX02cU310eK6UTMw9sAob3UP3z+RmmuYzAOsviURsyA=;
+        b=U6mLLx//bytoDDkG6U8U2gjTmubN6Mc3OexEBKDCg+bUpriJerBZsfuhzJ4z8/4m5L
+         8AVB/U8miaaB9pKr2lMcholba+DFkZFHXET5fmA9EykYhuv8m0JjAj/DetfMDJoA/V8i
+         J3WXf9AYTjh79G+kZwOksXchGZVchJeXgmEV1O3NvuvddSZohbIgrb1SyDEKt+byGH7u
+         o2ndfI+zv5twV7kacNJk9LevkOkLpfwoEd3lcQwNUQGZS79xWK0M4FQ8AJVJ8rZyIpTK
+         pA1tzvUJp5whtTAEZGiLDyzwN5iFMPX8dHIy6UG4fFt6vZRKKYe87/mOEOG7w2f25869
+         qHDw==
+X-Forwarded-Encrypted: i=1; AJvYcCXChP4WGDXXi7u25TZU/DxbZfaxTgORMSJAseFLB+vCcYnd+msPJzB9PVfQ9dUubS9FLzimC0YZYg8GRtP9kA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9oXRbtyrtR6/MdJiAw4vBqN1XP3n14taJe9+Fd0a7KBQwYdps
+	1EXZwr3viW/LR+C9sQ40XqCSEEfyohhV6FytpamjKTI0UzFueJqSLGISQ5ExsF1eXx9TRvbjcM8
+	XNwjuyMhHveTFYee8a9h7w8ffkwgctMTZrzGwv7nSfoandd+tZHg4ZWkctyGaCr95CqWQy0IDAR
+	0jT7jWOe6voLNcDIaECeiuY6UEk37D
+X-Gm-Gg: ASbGncthCUCoo0mQAGZ20IpBxpEnshHcTQxM2nCMaWnJIL98EKDZr8ElbjUL0tceKeP
+	u2JxJ+4GiCFfqgcLKnmz6jrK7HUJT/Bs/yXfOfSA2+8HKkvseaAPUnfiKr0zkUAL7fTJ7+Wi3I5
+	6XFOO/s5aY5rs7cTMutU+CPXf4mUjlCPhbvpv/QzNk4wiPvJlZdqTXhanz//g1fCHXTO+3+c+ua
+	s4G+xp2UKeGN546wImCCvTnXdvg29Zw7EMIjtAR9ufVFwyhOm4rKzxk9PE5Vu2VRA==
+X-Received: by 2002:a05:6a21:8982:b0:1e1:b8fc:9a75 with SMTP id adf61e73a8af0-1e1b8fc9c79mr2086378637.10.1733824187588;
+        Tue, 10 Dec 2024 01:49:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFc2cxGl/CeLTHQqqooNvASMJ46pWoz0s7wY8js+sAtKaeywezSqmHODgvcb53WNeXpF+Xdow==
+X-Received: by 2002:a05:6a21:8982:b0:1e1:b8fc:9a75 with SMTP id adf61e73a8af0-1e1b8fc9c79mr2086358637.10.1733824187279;
+        Tue, 10 Dec 2024 01:49:47 -0800 (PST)
+Received: from [127.0.0.1] ([103.172.41.202])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725de3cb93dsm4740565b3a.169.2024.12.10.01.49.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Dec 2024 01:49:46 -0800 (PST)
+Message-ID: <0ba499c2-5f59-4a27-98ae-aa118b7f130c@canonical.com>
+Date: Tue, 10 Dec 2024 17:49:41 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: Set private->all_drm_private[i]->drm to
+ NULL if mtk_drm_bind returns err
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "simona@ffwll.ch" <simona@ffwll.ch>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20241206135507.1274357-1-guoqing.jiang@canonical.com>
+ <3670b4af699a1c12000f09d671e93e3ae7359724.camel@mediatek.com>
+Content-Language: en-US
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+In-Reply-To: <3670b4af699a1c12000f09d671e93e3ae7359724.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_014636_785155_BFB6B7B2 
-X-CRM114-Status: GOOD (  19.03  )
+X-CRM114-CacheID: sfid-20241210_014953_945643_92D2DEC7 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,199 +116,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Edit nft_flow_offload_eval() to make it possible to handle a flowtable of
-the nft bridge family.
+Hi,
 
-Use nft_flow_offload_bridge_init() to fill the flow tuples. It uses
-nft_dev_fill_bridge_path() in each direction.
+On 12/10/24 17:16, CK Hu (胡俊光) wrote:
+> Hi, Guoqing:
+>
+> On Fri, 2024-12-06 at 21:55 +0800, Guoqing Jiang wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> The pointer need to be set to NULL, otherwise KASAN complains about
+>> use-after-free. Because in mtk_drm_bind, all private's drm are set
+>> as follows.
+>>
+>> private->all_drm_private[i]->drm = drm;
+>>
+>> And drm will be released by drm_dev_put in case mtk_drm_kms_init returns
+>> failure. However, the shutdown path still accesses the previous allocated
+>> memory in drm_atomic_helper_shutdown.
+>>
+>> [   84.874820] watchdog: watchdog0: watchdog did not stop!
+>> [   86.512054] ==================================================================
+>> [   86.513162] BUG: KASAN: use-after-free in drm_atomic_helper_shutdown+0x33c/0x378
+>> [   86.514258] Read of size 8 at addr ffff0000d46fc068 by task shutdown/1
+>> [   86.515213]
+>> [   86.515455] CPU: 1 UID: 0 PID: 1 Comm: shutdown Not tainted 6.13.0-rc1-mtk+gfa1a78e5d24b-dirty #55
+>> [   86.516752] Hardware name: Unknown Unknown Product/Unknown Product, BIOS 2022.10 10/01/2022
+>> [   86.517960] Call trace:
+>> [   86.518333]  show_stack+0x20/0x38 (C)
+>> [   86.518891]  dump_stack_lvl+0x90/0xd0
+>> [   86.519443]  print_report+0xf8/0x5b0
+>> [   86.519985]  kasan_report+0xb4/0x100
+>> [   86.520526]  __asan_report_load8_noabort+0x20/0x30
+>> [   86.521240]  drm_atomic_helper_shutdown+0x33c/0x378
+>> [   86.521966]  mtk_drm_shutdown+0x54/0x80
+>> [   86.522546]  platform_shutdown+0x64/0x90
+>> [   86.523137]  device_shutdown+0x260/0x5b8
+>> [   86.523728]  kernel_restart+0x78/0xf0
+>> [   86.524282]  __do_sys_reboot+0x258/0x2f0
+>> [   86.524871]  __arm64_sys_reboot+0x90/0xd8
+>> [   86.525473]  invoke_syscall+0x74/0x268
+>> [   86.526041]  el0_svc_common.constprop.0+0xb0/0x240
+>> [   86.526751]  do_el0_svc+0x4c/0x70
+>> [   86.527251]  el0_svc+0x4c/0xc0
+>> [   86.527719]  el0t_64_sync_handler+0x144/0x168
+>> [   86.528367]  el0t_64_sync+0x198/0x1a0
+>> [   86.528920]
+>> [   86.529157] The buggy address belongs to the physical page:
+>> [   86.529972] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff0000d46fd4d0 pfn:0x1146fc
+>> [   86.531319] flags: 0xbfffc0000000000(node=0|zone=2|lastcpupid=0xffff)
+>> [   86.532267] raw: 0bfffc0000000000 0000000000000000 dead000000000122 0000000000000000
+>> [   86.533390] raw: ffff0000d46fd4d0 0000000000000000 00000000ffffffff 0000000000000000
+>> [   86.534511] page dumped because: kasan: bad access detected
+>> [   86.535323]
+>> [   86.535559] Memory state around the buggy address:
+>> [   86.536265]  ffff0000d46fbf00: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+>> [   86.537314]  ffff0000d46fbf80: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+>> [   86.538363] >ffff0000d46fc000: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+>> [   86.544733]                                                           ^
+>> [   86.551057]  ffff0000d46fc080: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+>> [   86.557510]  ffff0000d46fc100: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+>> [   86.563928] ==================================================================
+>> [   86.571093] Disabling lock debugging due to kernel taint
+>> [   86.577642] Unable to handle kernel paging request at virtual address e0e9c0920000000b
+>> [   86.581834] KASAN: maybe wild-memory-access in range [0x0752049000000058-0x075204900000005f]
+>> ...
+> Refer to [1] to add Fixes tag.
+>
+> [1] https://www.kernel.org/doc/html/v6.12/process/submitting-patches.html
 
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- net/netfilter/nft_flow_offload.c | 144 +++++++++++++++++++++++++++++--
- 1 file changed, 139 insertions(+), 5 deletions(-)
+Thanks for reminder! I think the problem is caused by commit 
+1ef7ed48356c, so
 
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index ed0e9b499971..b17a3ef79852 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -196,6 +196,131 @@ static bool nft_flowtable_find_dev(const struct net_device *dev,
- 	return found;
- }
- 
-+static int nft_dev_fill_bridge_path(struct flow_offload *flow,
-+				    struct nft_flowtable *ft,
-+				    const struct nft_pktinfo *pkt,
-+				    enum ip_conntrack_dir dir,
-+				    const struct net_device *src_dev,
-+				    const struct net_device *dst_dev,
-+				    unsigned char *src_ha,
-+				    unsigned char *dst_ha)
-+{
-+	struct flow_offload_tuple_rhash *th = flow->tuplehash;
-+	struct net_device_path_stack stack;
-+	struct net_device_path_ctx ctx = {};
-+	struct nft_forward_info info = {};
-+	int i, j = 0;
-+
-+	for (i = th[dir].tuple.encap_num - 1; i >= 0 ; i--) {
-+		if (info.num_encaps >= NF_FLOW_TABLE_ENCAP_MAX)
-+			return -1;
-+
-+		if (th[dir].tuple.in_vlan_ingress & BIT(i))
-+			continue;
-+
-+		info.encap[info.num_encaps].id = th[dir].tuple.encap[i].id;
-+		info.encap[info.num_encaps].proto = th[dir].tuple.encap[i].proto;
-+		info.num_encaps++;
-+
-+		if (th[dir].tuple.encap[i].proto == htons(ETH_P_PPP_SES))
-+			continue;
-+
-+		if (ctx.num_vlans >= NET_DEVICE_PATH_VLAN_MAX)
-+			return -1;
-+		ctx.vlan[ctx.num_vlans].id = th[dir].tuple.encap[i].id;
-+		ctx.vlan[ctx.num_vlans].proto = th[dir].tuple.encap[i].proto;
-+		ctx.num_vlans++;
-+	}
-+	ctx.dev = src_dev;
-+	ether_addr_copy(ctx.daddr, dst_ha);
-+
-+	if (dev_fill_bridge_path(&ctx, &stack) < 0)
-+		return -1;
-+
-+	nft_dev_path_info(&stack, &info, dst_ha, &ft->data);
-+
-+	if (!info.indev || info.indev != dst_dev)
-+		return -1;
-+
-+	th[!dir].tuple.iifidx = info.indev->ifindex;
-+	for (i = info.num_encaps - 1; i >= 0; i--) {
-+		th[!dir].tuple.encap[j].id = info.encap[i].id;
-+		th[!dir].tuple.encap[j].proto = info.encap[i].proto;
-+		if (info.ingress_vlans & BIT(i))
-+			th[!dir].tuple.in_vlan_ingress |= BIT(j);
-+		j++;
-+	}
-+	th[!dir].tuple.encap_num = info.num_encaps;
-+
-+	th[dir].tuple.mtu = dst_dev->mtu;
-+	ether_addr_copy(th[dir].tuple.out.h_source, src_ha);
-+	ether_addr_copy(th[dir].tuple.out.h_dest, dst_ha);
-+	th[dir].tuple.out.ifidx = info.outdev->ifindex;
-+	th[dir].tuple.out.hw_ifidx = info.hw_outdev->ifindex;
-+	th[dir].tuple.xmit_type = FLOW_OFFLOAD_XMIT_DIRECT;
-+
-+	return 0;
-+}
-+
-+static int nft_flow_offload_bridge_init(struct flow_offload *flow,
-+					const struct nft_pktinfo *pkt,
-+					enum ip_conntrack_dir dir,
-+					struct nft_flowtable *ft)
-+{
-+	struct ethhdr *eth = eth_hdr(pkt->skb);
-+	struct flow_offload_tuple *tuple;
-+	const struct net_device *out_dev;
-+	const struct net_device *in_dev;
-+	struct pppoe_hdr *phdr;
-+	struct vlan_hdr *vhdr;
-+	int err, i = 0;
-+
-+	in_dev = nft_in(pkt);
-+	if (!in_dev || !nft_flowtable_find_dev(in_dev, ft))
-+		return -1;
-+
-+	out_dev = nft_out(pkt);
-+	if (!out_dev || !nft_flowtable_find_dev(out_dev, ft))
-+		return -1;
-+
-+	tuple =  &flow->tuplehash[!dir].tuple;
-+
-+	if (skb_vlan_tag_present(pkt->skb)) {
-+		tuple->encap[i].id = skb_vlan_tag_get(pkt->skb);
-+		tuple->encap[i].proto = pkt->skb->vlan_proto;
-+		i++;
-+	}
-+	switch (pkt->skb->protocol) {
-+	case htons(ETH_P_8021Q):
-+		vhdr = (struct vlan_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(vhdr->h_vlan_TCI);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	case htons(ETH_P_PPP_SES):
-+		phdr = (struct pppoe_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(phdr->sid);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	}
-+	tuple->encap_num = i;
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, pkt, !dir, out_dev, in_dev,
-+				       eth->h_dest, eth->h_source);
-+	if (err < 0)
-+		return err;
-+
-+	memset(tuple->encap, 0, sizeof(tuple->encap));
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, pkt, dir, in_dev, out_dev,
-+				       eth->h_source, eth->h_dest);
-+	if (err < 0)
-+		return err;
-+
-+	return 0;
-+}
-+
- static void nft_dev_forward_path(struct nf_flow_route *route,
- 				 const struct nf_conn *ct,
- 				 enum ip_conntrack_dir dir,
-@@ -306,6 +431,7 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- {
- 	struct nft_flow_offload *priv = nft_expr_priv(expr);
- 	struct nf_flowtable *flowtable = &priv->flowtable->data;
-+	bool routing = (flowtable->type->family != NFPROTO_BRIDGE);
- 	struct tcphdr _tcph, *tcph = NULL;
- 	struct nf_flow_route route = {};
- 	enum ip_conntrack_info ctinfo;
-@@ -359,14 +485,20 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 		goto out;
- 
- 	dir = CTINFO2DIR(ctinfo);
--	if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
--		goto err_flow_route;
-+	if (routing) {
-+		if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
-+	}
- 
- 	flow = flow_offload_alloc(ct);
- 	if (!flow)
- 		goto err_flow_alloc;
- 
--	flow_offload_route_init(flow, &route);
-+	if (routing)
-+		flow_offload_route_init(flow, &route);
-+	else
-+		if (nft_flow_offload_bridge_init(flow, pkt, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
- 
- 	if (tcph) {
- 		ct->proto.tcp.seen[0].flags |= IP_CT_TCP_FLAG_BE_LIBERAL;
-@@ -419,8 +551,10 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- err_flow_add:
- 	flow_offload_free(flow);
- err_flow_alloc:
--	dst_release(route.tuple[dir].dst);
--	dst_release(route.tuple[!dir].dst);
-+	if (routing) {
-+		dst_release(route.tuple[dir].dst);
-+		dst_release(route.tuple[!dir].dst);
-+	}
- err_flow_route:
- 	clear_bit(IPS_OFFLOAD_BIT, &ct->status);
- out:
--- 
-2.47.1
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi 
+mmsys support")
 
+And before send a new version with the tag, I will wait a few days for 
+other comments.
+
+Thanks,
+Guoqing
 
