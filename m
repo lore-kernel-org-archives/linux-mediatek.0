@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5FBBE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 09:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05743E77181
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 09:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kGRD0hSRVjDln2H041utB2MSY4gQ8R47O9Y5WYRUCMw=; b=Esm4Lj/6Zln+tnvaFmDbzcAXY2
-	sm46PgPK2QqDte7Kdd2zqds7n1mHRhRVTOlFUNa4T4dJnMMRD07h/I6ftYIUe5+RjyQCjAK1yPodZ
-	yLNzwpyiEkIwE3i5g3OquEzB62ttVOENgSlESRDqdNgcXQgaGJCec74evwoCzyUm2NmhjSJ/LqpJL
-	Gr5afwH0J6+QVl1i6lQqMjqaIRNpdN+Pl0NAvEsyomKnss9ai4SNcx5CS9YWmDObCK055DkGnUzM8
-	TDQSjgxsNJIX+swmLfLeLlbPEwQO+kKoLmP5LBmv0I0ldKe4ihtD8A3AbsB1MHD8DFyVFQsDddhLD
-	ah1t57YA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V7i5zNgyQQlrRDWh+0G6ogAAGEAyg0BmLGcSQLKBgfs=; b=lQdCS/80vUIFDGVhquxGgVSAet
+	0YMsgN5YfbPwLSAgO0gFWRdeI+O/PY6MPpgyW+RMjFRczvEYQBoH0lH5fkFwvT1XNL2X+LBuWwXx7
+	SNgQhoeeFr1NeiYjbwEkoSRjcLaToMqqoW3/zTvK6dekGeMxhv9YhMYv6ccvkMLEvXWR+lRGCN8fB
+	JiwKX26zdnn4ezIyt3wj73UFKo5Kt98XmMn1/PHCU/8f7NUQ0r/RLtMpVx7E/BYM3B555hfVJ9kjb
+	ZKI7WQJ1kkqFNVrddpuxoDDV+5BSXINjHOcLMCdcJL2ZdWiFU1BWjqRoA2MPgeDkksIw8s2Gnu4QW
+	4F4pj04A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKwWc-0000000As3F-3opx;
-	Tue, 10 Dec 2024 09:27:26 +0000
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	id 1tKwWd-0000000As3S-0sYS;
+	Tue, 10 Dec 2024 09:27:27 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKwVY-0000000Arq3-2rm6
+	id 1tKwVa-0000000Arqj-0Lzy
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Dec 2024 09:26:22 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-7fbbe0fb0b8so3752038a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 01:26:20 -0800 (PST)
+	Tue, 10 Dec 2024 09:26:23 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-21670dce0a7so7483935ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 01:26:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733822779; x=1734427579; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kGRD0hSRVjDln2H041utB2MSY4gQ8R47O9Y5WYRUCMw=;
-        b=Obt0EcBIlWBpdYQhKMF3eUBiDSYF+8bcBqZf3/ZEgE6xOgwhjBej5HG9GCiUxMtYTm
-         +3ADUMUNetzlxL/tquAK7slG7YYrm8+dy9Xl0iXlMEkaCFaiYuaM3AWfWwe3V83c1JVh
-         j1FdBM29UM9uQyiJZ3GRvWjguiur8MmkpNhOs=
+        d=chromium.org; s=google; t=1733822781; x=1734427581; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V7i5zNgyQQlrRDWh+0G6ogAAGEAyg0BmLGcSQLKBgfs=;
+        b=dMLz1F5/buJ2exkRbtj3CAjfK4kdH5qLuk3g4ZZ6EMzyqBPpic59OA3Oyno2LXx4LS
+         5NKSDYFdkk2szjugQKBvhBqHzMtDNKxvgPD1TkTvow66I7Thd7TSnK3yABewYaXA3vye
+         ga3QOxsYzNmdKBPD33rMUumxP6oiJPUiBmsCE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733822779; x=1734427579;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kGRD0hSRVjDln2H041utB2MSY4gQ8R47O9Y5WYRUCMw=;
-        b=h1ctmIb0Bhj4TIdnrr7hRYPREBovDZa1B7guP9uOHOMlwYKJxZ59ztprv7+2wfRtAH
-         V6ocVUN1hNuLYONJS4dHbZxlGVkrERNM9pWrbrjnwKGf4Fdk8M+/vnU7vvv5YkD43oJw
-         DHbKgIvul73s9m5bllZUcVnEIRBBc1sKwJjNWchqrzC+IyQnaJO4qVQjl1meqr2eg0dD
-         jrZgjnUAuIv60rGHcyayV5Ex8iYxA6Lbh24DpkOame0ZTPiAzdyEbqxSNFpqkJbUTiaF
-         pwnZCSwLQOhEvsjrRaeVYzbqPjf1SN1ktOAXNkAmHn1MmPcHVrB4ZxrGV0hTB0tG0Vc2
-         qM1A==
-X-Forwarded-Encrypted: i=1; AJvYcCX55rlLl0GI8Pb62SRURHlEHBnzqAw9ZHgJGvvQUj4v5FAcnILEdvb006ipDpBDY8EU3H9LudGYXCyszr2PeA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxLQuv9YBFyagvq9NsVW274pgrOUodjKQWJa6NdqxX7y+aMbO3l
-	+EyhWHS6US7U1AGadJEz+GqEwTRTJUrKkC87iVHiVBz5qnMcJHv4uBa6LME3Xg==
-X-Gm-Gg: ASbGncvMGcIGTK/EC16ub2vtd3tt7PVeh7X3V5hRuET2zru79y5cawX5r6tTaBsNcnD
-	y+JojrpprXqoRR8iFnYnYxNjHzAqL/bN6MAWpIyK9gJ/d1FVb9ZRaWnrR9mYrBJxmvesba2r86u
-	yNoSgtv0G49JLS/0Ki1TWZvYQRDL4FTQaaafA07cy9tdCzV+Ie/3qf56x2uGSHp68FCCAIW6oGc
-	/5+K3XgaHWR50qVWmzgF/lRHJiGltMT61/+UP6RhD35/0q5ZGB3dJWhF5sDhpA8/ENp9VHp
-X-Google-Smtp-Source: AGHT+IFppVkXUZtU5Ti/lKVHNrZcFZH/mEntPtAhtpRBAEfq5xqQx4M1XdryOoDpDNSLeE8I2hMSbw==
-X-Received: by 2002:a17:902:ce88:b0:215:a97a:c6bb with SMTP id d9443c01a7336-21669fca850mr59408385ad.12.1733822779591;
-        Tue, 10 Dec 2024 01:26:19 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733822781; x=1734427581;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V7i5zNgyQQlrRDWh+0G6ogAAGEAyg0BmLGcSQLKBgfs=;
+        b=odNpQODA5IfkDJ+zIlCOR7ZLDG5hdwxHZzXzfTUncLvya0DBsyirzLK8NAUo6QoPXh
+         hXgziV7v4fdvWbTKyYXgdW4MBtbXjHgp1uRyj1NlDmwPrKjw7xj6NJb5yBqJtMG4hdIa
+         V4NyyxaBeRWMCZAYWcukLu919URI7nOPo5jbMHfttK4KZfqsxXR+VLB6Xd3uTyKIJ+VG
+         dxvoKNFD0nATqXEu8srFrxzBGbwRvnXEmISI199hdzbSk47aAl9lylBTqBVUavWriwO+
+         HoAQWTadnu+drPyMASSvtv7ZPibLTtSCwVG1DH/IKQbJXQukLV/TVEnXGPT0eFoaJgzo
+         3/PA==
+X-Forwarded-Encrypted: i=1; AJvYcCXT2bZQDiuVAu/hvv/LalBa8aPwOU7dOXQVgKWKgtLt3040M76seLp+OygsnOMS1GLcWTsbGTo4KhbsTZAYOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx3Gtj4cVAQwglKjMbyXVhSNUOSWAh0nXWlEGT8MBHR6H1Jf1XF
+	unl56NkGDFJzaF7/iznuEFj9D09OaU3qOEhsNuWJ4HvuwoBG3tlu21POo41iag==
+X-Gm-Gg: ASbGncuHPkNxDJ+hy2AMXPbJ/GUGALQiv5iIobm8jquKhaFfiNPUDQAM8j422kQaDzu
+	nZT1hgDKUULwekNaVJkRE1am4ye8eGBD8sHGl7abMEpYHPjJhu/mTqh5VpshuzgesTRPa+4BsyG
+	MtExQ4jHjHsTXBLh9gRyGA6vNphBmUSfx84xOEQ7PXaZ53BGWXInC52SWqI2xvfPN+qZJtPUBk+
+	rLAEUr23yRy6BkXOWVZ82x5BuEFx8JEaAu3HXJhMid6Pft1VAfgPJ4F2txTnKs4EY5S2dkU
+X-Google-Smtp-Source: AGHT+IEbVN3vePe7Dj1LS50n6Z7qkx2DIp+ZHcNP48MQNc9h/O+CQoe/H6Q2j2soGp26ZPZFTYHuQg==
+X-Received: by 2002:a17:902:ec92:b0:215:773a:c168 with SMTP id d9443c01a7336-21669fc68camr66076865ad.1.1733822781417;
+        Tue, 10 Dec 2024 01:26:21 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:89ce:2db9:f7d5:156d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21632c4fc62sm49006905ad.194.2024.12.10.01.26.17
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21632c4fc62sm49006905ad.194.2024.12.10.01.26.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 01:26:19 -0800 (PST)
+        Tue, 10 Dec 2024 01:26:21 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -71,15 +72,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] arm64: dts: mediatek: mt8173-elm: Fix MT6397 PMIC sub-node names
-Date: Tue, 10 Dec 2024 17:26:12 +0800
-Message-ID: <20241210092614.3951748-1-wenst@chromium.org>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8173-evb: Fix MT6397 PMIC sub-node names
+Date: Tue, 10 Dec 2024 17:26:13 +0800
+Message-ID: <20241210092614.3951748-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
+In-Reply-To: <20241210092614.3951748-1-wenst@chromium.org>
+References: <20241210092614.3951748-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_012620_738711_7445263F 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20241210_012622_120109_A57EE0E9 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,43 +103,25 @@ names used in the current dts don't match, causing a validation error.
 Fix up the names. Also drop the label for the regulators node, since
 any reference should be against the individual regulator sub-nodes.
 
-Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
+Fixes: 16ea61fc5614 ("arm64: dts: mt8173-evb: Add PMIC support")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index b91072f4723f..b5d4b5baf478 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -931,7 +931,7 @@ pmic: pmic {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+index 511c16cb1d59..9fffed0ef4bf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+@@ -307,7 +307,7 @@ pmic: pmic {
  		interrupt-controller;
  		#interrupt-cells = <2>;
  
--		clock: mt6397clock {
-+		clock: clocks {
- 			compatible = "mediatek,mt6397-clk";
- 			#clock-cells = <1>;
- 		};
-@@ -942,7 +942,7 @@ pio6397: pinctrl {
- 			#gpio-cells = <2>;
- 		};
- 
--		regulator: mt6397regulator {
+-		mt6397regulator: mt6397regulator {
 +		regulators {
  			compatible = "mediatek,mt6397-regulator";
  
  			mt6397_vpca15_reg: buck_vpca15 {
-@@ -1108,7 +1108,7 @@ mt6397_vibr_reg: ldo_vibr {
- 			};
- 		};
- 
--		rtc: mt6397rtc {
-+		rtc: rtc {
- 			compatible = "mediatek,mt6397-rtc";
- 		};
- 	};
 -- 
 2.47.0.338.g60cca15819-goog
 
