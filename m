@@ -4,82 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4321AE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:42:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2083E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=; b=rYB6CiJQvEe595Nmnh4n6OA2u0
-	1KHP7l6nXtSOIDtL7KFIKxg/n2z9UxOWpH0K/7HH3HU/4C4nFbxW+T+dRg1WrLGd/3jV3g7wblF1k
-	aqp1e/QvzaB28eRO9r3Eogwxbkz65Vnb+5XD/U2ND0C+uWm7V6f23Sq/OR8qS9OJyghhui80rb/1i
-	tuNFdFBPtfqMYEbVBUlTnpOnAalzfG2/AjYbm0Lul0CyGiTtNXPjR527VdFIRNA7tWRf671yuvQrz
-	0NTgjJZk7MMiG8OtwlKLTzTKP7GRtYgp1h+Ad/T1qUPrLJsbBex+21IqFmpzLkDNEXfJ1wtBLH9n6
-	KW0kk+BA==;
+	bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=; b=0J8iAbLv/nEHrSdRWOhfAFI75a
+	rsM4mvBJPoVDzbhIsTI1j/SMuWjOuV/PYBClQhXOM4ENL5e1eYCwGxPz0lfMpvVsBbUgoMk8eL5LK
+	CXThqv9FlGuh5TkPnM0h+oShMHjI28ecBM7bOo3N1EtS4WP8HVZaMynEoCxf0hg49q07crrq9VksS
+	VZ/9rsZ5BktpZlsKndyZ0vF91vusm/dRdiv7X9MsOYfswoGAlcjUSucr90IU0mY6sfdS0TKVz9ugE
+	YLYeBtA/JpY///dP4wtQ2oSkzcxrja1gBSGwLymp8MRvSn/swtk44LV2lnQq2q1To51hTM1JvGwJV
+	cLfXXPiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvos-0000000AkQa-1VRw;
-	Tue, 10 Dec 2024 08:42:14 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1tKvr6-0000000Akmk-3Zi1;
+	Tue, 10 Dec 2024 08:44:32 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvn3-0000000AkBb-0ws6
+	id 1tKvr3-0000000Akm1-23Pd
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Dec 2024 08:40:23 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-53df80eeeedso5140810e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 00:40:20 -0800 (PST)
+	Tue, 10 Dec 2024 08:44:31 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-434f1e5e77dso2014855e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 00:44:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733820019; x=1734424819; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=;
-        b=nx2IJVe9I3KZmb5rQG2skS07fmdSzVHbUq7jTlArC2byk6baQBkaWKTAS2CwdI2G4J
-         Vz3ql1+fcskdfpQxmKsM2DZlsTnJeo581GtvMH/V20XIxCquiil6dQxdavzgbaP4vJCX
-         6dZjcwfYuuAp/GRPpNjWxHBHxbtIhT6LmjkVI=
+        d=linaro.org; s=google; t=1733820267; x=1734425067; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=;
+        b=BIWzpYU6IE1B43BCredqTul0Mf511vuaXCladaO62d5n/QibhYg/UsMaUk5xIk+p2y
+         NHObtyEfNJCrqKcXRU7vacL7W1HK+fiHc6TlRmUEZ1+f0ByqNiPZ+DbhHat1IZsAuglb
+         QRGpAq3YLUe+fEHoYlhOggG/ZkmIoWXGQKWgsvPkzlQYsYhTTpEO+OIbJ+c9TuRK0VCH
+         FqE1Mw+vdgxcVWgXZysSBrfgTEezzP7uE03vbl3elYfJm9y1owBAtpKPbZm6FVvSp1Cz
+         lD9HwvRjexqBRAe+pp1/TacGvj1+PzaAMOrnOusnwWRS1QFOgn0L7nFM8Z4dp0abRotC
+         HfLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733820019; x=1734424819;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=;
-        b=ifHoePZgsR3pK0wGfCh2Aymz5NnwHR/NBh6+bKPVhfqbJgIfvOubGpbzCLAJduoEtx
-         aZiKPSZDcAGVTAazOe+wNTwt8cXNp95WqRJJmneWjDHrp+3hYsRQR7DlJOfLj9/mhH+Z
-         H+bl8YI/xCsT4aHS2F/KfwIt8j55g7X9W/OW9AwLTqvwYoijUcrI21mfrYlzWpCntpJU
-         E6mm8q4qe39wwIe4fhL2Dy0bw72mxT+NRq2uD0A/lyyB80NBc7CeQvB5RxJWVqyBKTcJ
-         P7sW5i1GkRvf4xgRq+7M2bPsin0a1ogS1wtR3uMCuzrLEiaXId4Ep3E6HmLpQ74K+EgA
-         eoJA==
-X-Forwarded-Encrypted: i=1; AJvYcCXuhIkt05uxkjYJ3gRjdByx2UykZNWFb6XzzRnoNNp+YQpZVfbVQCdN0assi4EQJQKpbaZZYtO8dse+BZAJ6A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzT/9y16RRkMnCgsosYi/wDJlHQSyTvgBfC+B+wM4JhHHi8UBSg
-	UD/QboDmDJ1X6PDEgYlFHimTCrCPEJ0zd8E01yaTFPBEnRWWnywCX2E3Etq/LCRTEwzXd9UC3ME
-	8nNJvCCqkS6wUrcLxfrIoJOigMqWG8ZTGKSVG
-X-Gm-Gg: ASbGnctNTrKb6EOO2PFpifzWOs53y07fV342sNbWnVtpJWIzptkd8O19/LlT+zwGkVY
-	vEBRXhh4YRqXM+x9xcGxoVQRDMuAhR5DjMtxFz8qvGHibKSBidqjvKzkOxwVlhxc=
-X-Google-Smtp-Source: AGHT+IEcKKrV7NtntOv/HjB/G1zq4DlNB44Pf3+LGaARGt/ovezLGp7A3gf192BysZYg6DvlHdDVPiDTJwrr5ZbymyQ=
-X-Received: by 2002:ac2:4f10:0:b0:53e:3a01:cf4f with SMTP id
- 2adb3069b0e04-540240c0f8amr1339484e87.14.1733820019366; Tue, 10 Dec 2024
- 00:40:19 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733820267; x=1734425067;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gtkbOnbOImJWM921EqNDpx2/bp81PNUuwOmgAcMVe0c=;
+        b=AZqxHfV6Pjn24qtcByQU90gIVRTwY30kdxaIam3WMFgTOTR2IWpOgnQYfuKTbPowBf
+         9ldXFqTqZ1enxUS5D3gYGQEp//81fUoigsO5JkcJ7u1X28f17ZA0C/P+Z9WQMIloDOgj
+         LnFnMgE874/GHa5sFX4lX7wvmQhHxQOOrsHU0p4Ed9DDpG7FCQ7HBDeMyW2VqDXez7mP
+         cxdgpnEipOCOQd45CwxQ+XtGD75ZE26+UL8SYrMKfmNmmNZwZY/ih1ptGjlTfO1JT1Ml
+         vTTg9h0jRqs0IZBtk80HnKbKeTdS8sNhxkYuSeamSa9vB4DamPK9qB0pmZBHx5v+JY0r
+         6zfg==
+X-Forwarded-Encrypted: i=1; AJvYcCUPbx/F1rjc24AurI7eiXlxOPV/xNgVOmyzc/dcT7yCDU63LJT3lOCbYwF7qExEMicjxcS48G4f2qHddqELfA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvkOZCIIJiSvTZ29dqWkq3itfLIvbpWGmI/KKaYy4qJv7YeTpG
+	RNy5RC7Q8Gj6XzXFGOpLhDW3nLUpw2SOw6pWso3xUCntUONYN5MYwxND1j+fYV4=
+X-Gm-Gg: ASbGncvut33KWTlumMa1HhjIZKQlgkbqnFNU+B0prAJsMkKq4gvEqjUl87Fgy2yy9fv
+	eOn0c/r9m7NrT3aSlB3r2DJZPYbTkGwT4385KAEPMamdnrb5Sei3MTeKyu828RWLhJbs+ljZ3gj
+	lENRb8VQ4DLYhzudUQ/WVUEV5VnXkf8lEfZPyZrBYjOdwzeMyeLXs+u+U6UWTBXg0kXavaU1Oj1
+	Nm1VLY7LK2svmHdBJJa0mAA3THYkSuffc5Ni42oCoCHjNcPu1TP45PQietoM8FioxsQCefjZg==
+X-Google-Smtp-Source: AGHT+IGPo+343UL/XQMovJpUM2fs2wVtTJ2f6VeXfpBxnUXzR6Wmli37wiQCf2jAuAJMbmj0bMBcWA==
+X-Received: by 2002:a05:600c:1c28:b0:434:a0fd:95d0 with SMTP id 5b1f17b1804b1-435019a81abmr8538055e9.4.1733820266783;
+        Tue, 10 Dec 2024 00:44:26 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.223.165])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43502fef1f9sm17875605e9.1.2024.12.10.00.44.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Dec 2024 00:44:26 -0800 (PST)
+Message-ID: <0d23ccf9-3420-45bf-aac7-5c1a075e031f@linaro.org>
+Date: Tue, 10 Dec 2024 09:44:23 +0100
 MIME-Version: 1.0
-References: <20241030070224.1006331-1-wenst@chromium.org> <20241030070224.1006331-2-wenst@chromium.org>
- <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
- <bbaa0c8f-9702-4252-a674-e46fb51f0a2a@collabora.com> <CAGXv+5GHP1M1rKwR8j+bN8GmpxWtpkfLTnvBdkg5wOvWanc-kw@mail.gmail.com>
- <35392d9d-56a3-4db8-b500-6272d0bd275c@collabora.com>
-In-Reply-To: <35392d9d-56a3-4db8-b500-6272d0bd275c@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 10 Dec 2024 16:40:08 +0800
-Message-ID: <CAGXv+5H_=He4+vBcaoVbtO05c6hPWV46OTRfR+S8XVuvk_EaYg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183-kukui-jacuzzi: Drop
- pp3300_panel voltage settings
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
+To: =?UTF-8?B?S2FybCBMaSAo5p2O5pm65ZiJKQ==?= <Karl.Li@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?UTF-8?B?Q2h1bmd5aW5nIEx1ICjlkYLlv6DnqY4p?= <Chungying.Lu@mediatek.com>,
+ =?UTF-8?B?QW5keSBUZW5nICjphKflpoLlro8p?= <Andy.Teng@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?Q2hpZW4tQ2hpaCBUc2VuZyAo5pu+5bu65pm6KQ==?=
+ <Chien-Chih.Tseng@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>
+References: <20241024092608.431581-1-karl.li@mediatek.com>
+ <20241024092608.431581-4-karl.li@mediatek.com>
+ <083c8f7b-0969-4ca3-8a91-35f5767c5f32@collabora.com>
+ <CAGXv+5Fw+qZhTTgJq0QdiQHgiQP2ByR1tgae2+k4erx+0fp61g@mail.gmail.com>
+ <a3c3280478bf86eb97a422782ce60ec4eaa35224.camel@mediatek.com>
+ <0f98405c40530d81c342af06dea593e7babedeac.camel@mediatek.com>
+ <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_004021_292279_9F50FA97 
-X-CRM114-Status: GOOD (  33.32  )
+X-CRM114-CacheID: sfid-20241210_004430_344862_0703A417 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,133 +166,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 10, 2024 at 4:27=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 04/11/24 14:47, Chen-Yu Tsai ha scritto:
-> > On Mon, Nov 4, 2024 at 9:19=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 04/11/24 14:00, Chen-Yu Tsai ha scritto:
-> >>> On Wed, Oct 30, 2024 at 3:02=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.=
-org> wrote:
-> >>>>
-> >>>> The pp3300_panel fixed regulator is just a load switch. It does not =
-have
-> >>>> any regulating capabilities. Thus having voltage constraints on it i=
-s
-> >>>> wrong.
-> >>>>
-> >>>> Remove the voltage constraints.
-> >>>>
-> >>>> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu boa=
-rd")
-> >>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >>>
-> >>> I see that the other three patches were merged and included in the pu=
-ll
-> >>> request, but not this one. Were there any concerns?
-> >>>
-> >>
-> >> Sorry I forgot to actually provide an explanation for that - yes, I do=
- have some
-> >> comment about this one.
-> >>
-> >> Despite this being a load switch, it's still switching power from regu=
-lator A to
-> >> target device X, so this is technically still providing 3.3V to device=
- X.
-> >>
-> >> Think about how a "regular" full-fledged regulator works: you can (som=
-etimes) set
-> >> a voltage, and then you can ENABLE the VOUT for said regulator (/rail)=
-: this kind
-> >> of "load switch" does exactly the same as the ENABLE switch for a full=
--fledged
-> >> regulator.
-> >
-> > But it does not provide regulation. One cannot "set" the voltage on a l=
-oad
-> > switch; one can only set it on its upstream supply, if that supply prov=
-ides
-> > regulation.
-> >
-> > IIRC Mark said some years ago that if a regulator doesn't regulate the
-> > voltage, then the voltage constraints should not be given. The constrai=
-nts
-> > are then derived from its upstream supply.
-> >
-> > That's the guideline I've followed for all the regulator related change=
-s
-> > I've done over the years. Does that work for you?
-> >
->
-> Ok, let's go with that then.
->
-> There's only one problem - patches 2 to 4 don't apply for whatever reason=
-, is there
-> any dependency?
+On 05/12/2024 08:32, Karl Li (李智嘉) wrote:
+> On Thu, 2024-12-05 at 07:05 +0000, Karl Li (李智嘉) wrote:
+>> Dead maintainers,
+> "Dear" maintainers. Really sorry for the typo...
+>>
+>> I hope you're doing well. Just a warm reminder that we're following
+>> up
+>> on these patch and really appreciate any feedback you might have.
+>>
 
-I believe they were already applied in the previous cycle? At least
-they were dropped from my branch automatically after a recent rebase.
+You received like 6 or 7 reviews/replies for your patchset. What are you
+implying here if feedback was not enough?
 
-ChenYu
+Respond and implement the feedback instead ignoring it.
 
-> Cheers,
-> Angelo
->
-> >> So, this is switching on and off a power rail that is derived from a s=
-ource rail,
-> >> practically creating... well, a "new" rail, with...
-> >>
-> >>    VIN=3Dsomewhere-3.3v,
-> >>    VOUT=3Dsomewhere-still-3.3v
-> >>
-> >> Any objections/doubts/etc? :-)
-> >
-> > I agree with most of it, except the part that I laid out above about th=
-e
-> > load switch not providing regulation.
-> >
-> >> P.S.: I'm writing fast, sorry if anything appears unclear, feel free t=
-o shoot more
-> >>         questions in case :-)
-> >
-> > No, it's pretty clear, and I believe one of the common interpretations
-> > I see. Thank you for the quick response.
-> >
-> >
-> > Thanks
-> > ChenYu
-> >
-> >> Cheers,
-> >> Angelo
-> >>
-> >>>
-> >>> ChenYu
-> >>>
-> >>>> ---
-> >>>>    arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
-> >>>>    1 file changed, 2 deletions(-)
-> >>>>
-> >>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi =
-b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> >>>> index 783c333107bc..7bbafe926558 100644
-> >>>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> >>>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> >>>> @@ -35,8 +35,6 @@ pp1800_mipibrdg: pp1800-mipibrdg {
-> >>>>           pp3300_panel: pp3300-panel {
-> >>>>                   compatible =3D "regulator-fixed";
-> >>>>                   regulator-name =3D "pp3300_panel";
-> >>>> -               regulator-min-microvolt =3D <3300000>;
-> >>>> -               regulator-max-microvolt =3D <3300000>;
-> >>>>                   pinctrl-names =3D "default";
-> >>>>                   pinctrl-0 =3D <&pp3300_panel_pins>;
-> >>>>
-> >>>> --
-> >>>> 2.47.0.163.g1226f6d8fa-goog
-> >>>>
-> >>
->
->
+NAK
+
+Best regards,
+Krzysztof
 
