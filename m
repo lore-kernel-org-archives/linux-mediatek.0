@@ -4,220 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7198E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 09:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5939BE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 09:47:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qakUK6ZodVcgxY0lvaeLqZdeFdmiFmbWbeEoDSUksUc=; b=4ODcwvJbyImS02HsHfxdl+71xd
-	fZCN60NxhGhew8D4sHPrTFJzalZ/Wso0Mq+P9Vj/KHrYGtuKgY91wfGko4MkCyD3DCDCuhI0w/aQL
-	Gxrn+Y9IquzhYJyHAMdQXKm1DnpXuJZZCxJpjZ3/isjtyXpZNkTIsONOEQncZuXnI3bcycC/UNMqD
-	25PRLoEloAc4Dl3YiwBaTDvF1M1eR8ydcF6ytwrfPc+HOEV+8bgbsvXvCtyxgv5bN49c4X72e/h5Q
-	c16sAEFH6t16815KH5bdOUC//LlDAMzM3mH067ZnOkELmksZ+BMI8b5KJhbb7/RvsBFd6G7g1H98w
-	gs/mVReQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UocVRl+s36yfKdOwyD9w/O24SaGw6oRqRxZTrP2zIsQ=; b=27aERGO4qJNtq/3tnSWx1tv9ze
+	Vj9pPswcfQYsAkoobIZuArLhQAtTbnIVsaYme8YpOCp3MYnXuhKFSjkbqQl4ILaTctNkfNbYfxyCi
+	ZjWdyX5vHZmNgK4NkDn9pJsklCAs4YUufpf2Iaq6s1ea5JoQ91Ip78fFvZQ4S/8VzABaMqe77pHft
+	EYPEddEpYOsRP6OEWhZLHvpxzclhlCwM5DJYhPFxm1Ownuxcv10vDehcA04gto/7DCbmvcwnKO66H
+	u0G8NQDFbsMtTW7XvAorx49IzRgvrLOJm+uG0AEkdcGIg/fCZcc6j4UqqteXpUC4kHD/fqO0lAL77
+	s5awj+zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKwca-0000000Au3t-35zW;
-	Tue, 10 Dec 2024 09:33:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tKwpt-0000000AzVQ-1h6c;
+	Tue, 10 Dec 2024 09:47:21 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKwbW-0000000Atq3-1FM8;
-	Tue, 10 Dec 2024 09:32:31 +0000
-X-UUID: ab5279e8b6d911ef9048ed6ed365623b-20241210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=qakUK6ZodVcgxY0lvaeLqZdeFdmiFmbWbeEoDSUksUc=;
-	b=PKof4878EgFm1/d8yNAhLGDpXeHXnImr60VJCnDr0nyWMN0AHAsOJYmX634511e9zrCkc5q/EZM7XUVad0McI3qOPHApfi9hZig/gwvrwMuxcFatbrsKv9JqgizHf0pJOsW/yvRzyBzPnMzadufxz3L2/JmBSmpAosmPlnr9ZgA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:3457691e-c4fb-48eb-9a95-1a6ff63d06ee,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:ad697e04-b3ca-4202-ba41-09fe265db19f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0,EDM
-	:-3,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: ab5279e8b6d911ef9048ed6ed365623b-20241210
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1154173800; Tue, 10 Dec 2024 02:32:27 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 10 Dec 2024 17:32:20 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 10 Dec 2024 17:32:20 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tkk/P8SghYavoPZSGrd8dLkseUVNtMlYbswgmhSdsUwunC0BXxpFCLVqr1/rFqJZ4K2ZgzRbkRUgZQMQWRLUmrTnMtAfb9549mwSu3NKMJaw9oUKWyzRV27X0NApjCP9ZdjHvFEeL1x+8QmOtC61DUG0q1oPy8bmJ2KNlHhq5ZeCNUtn2oxd2iHyM1WqPXa/5IURcwswrYleIivl3+rHYSMy7i1N6H+U7c2hGfr8jRq7u6uGQRYIdDBXPM5x3zU1/sOfkv2YnKDRtT68y98K+3Wd1OSLSI+QEw2KDJpI1mGMpPeVxpGfn8fR1+5CdRSo+tPDcHjGtAJb1Up7+eeX3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qakUK6ZodVcgxY0lvaeLqZdeFdmiFmbWbeEoDSUksUc=;
- b=CMWkOG7+M6zf7wgw6Xwv+76160fSyR9OT/W8FvuCm7zaHpBosprfKyA9w8GcEJxG3LoOIo44SwJSpgEoKxLcBnsPzTLTYyf79WjoXB1WejyHuKz1dXtwUT9SS9T8fQdkLOwOIU6dmVq48QAh10JFjSotYyFKtgYQobvwJjk0mlJ9NZ0Ezv0HWEVevgcHxymmjCqtgPaVW3GkFVcj8TZbLB1Hgw92NdDKzwianw425bJ4kS8Xz/1ynZosVYXbe3FdfpH+5S7NvkMlhAdapun2YHjFpn8sUp8H/vs+70R89sCBp8BBKnCFOw3k9I2Jkd0fAifJpAs6O6FH63v6bQX5iQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1tKwoo-0000000AzCd-0itj;
+	Tue, 10 Dec 2024 09:46:15 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5d414b8af7bso2160515a12.0;
+        Tue, 10 Dec 2024 01:46:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qakUK6ZodVcgxY0lvaeLqZdeFdmiFmbWbeEoDSUksUc=;
- b=LJIYWnlEtIJyvgIhdbqYcmDXEGkJUOBeLY52hBTQLzRNP75WnOCsmdLBfFOa0GQ6xs1cbZBZZEJ+HSs9N6PuTp8dWNRjyLPlwXiwVygYZ2otkPbyNvXla+EezqAiwk7pw9mMPP+WIkAiM2Wyal9R07cKdg1aK7xnF6wIpUMdOHA=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SI6PR03MB8654.apcprd03.prod.outlook.com (2603:1096:4:24c::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8230.18; Tue, 10 Dec
- 2024 09:32:15 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%3]) with mapi id 15.20.8207.014; Tue, 10 Dec 2024
- 09:32:15 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: =?utf-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "simona@ffwll.ch"
-	<simona@ffwll.ch>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "airlied@gmail.com"
-	<airlied@gmail.com>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, =?utf-8?B?UGVuZyBMaXUgKOWImOm5jyk=?=
-	<Peng.Liu@mediatek.com>, =?utf-8?B?TElBTktVTiBZQU5HICjmnajov57lnaQp?=
-	<Liankun.Yang@mediatek.com>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v4 1/1] drm/mediatek: dp: Add sdp path reset
-Thread-Topic: [PATCH v4 1/1] drm/mediatek: dp: Add sdp path reset
-Thread-Index: AQHbQT63ctnMYf89hEizMPzpk8QZurLfSk0A
-Date: Tue, 10 Dec 2024 09:32:15 +0000
-Message-ID: <9663eb0cc9a4105774547108c30675dc4a8fbb91.camel@mediatek.com>
-References: <20241128023733.16294-1-liankun.yang@mediatek.com>
-In-Reply-To: <20241128023733.16294-1-liankun.yang@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.52.3-0ubuntu1 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SI6PR03MB8654:EE_
-x-ms-office365-filtering-correlation-id: 13537f2e-2cff-41a7-c121-08dd18fd8891
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|38070700018|921020;
-x-microsoft-antispam-message-info: =?utf-8?B?WUN2RnJLZ2w1cWxsd1pZR3hVY1RTTW9FeHJ5My8rNkl4bVBoWlVlRnBjZ1NJ?=
- =?utf-8?B?cjhxMTA0WUZtVlBmTGtLOVFzNjhqYW5ENERMUWtlRlpBU2gxOGVYMURwRVRP?=
- =?utf-8?B?Q3dxelVFZmVtZUlwVmk3R1grRU85UEE2SnVzSU9RZTJEWXR1UjNxOHhxZjZr?=
- =?utf-8?B?MzVGSjFZVDltSFhEMEQrOTYrV25WeWVJRG5jTWV2ZjNqYURCQzlqK1Z3Zkov?=
- =?utf-8?B?RGdUREdlb1E3eWpYejRnRVhzdm1vWXhRcXNlaW5NMmNoL2M2am5tWkY3Wlp0?=
- =?utf-8?B?d1UvbTJMTmM2d2tkRnBtNmx5QjRIMk10NEdPVktFWEYzWXZIemhSUlRjd3No?=
- =?utf-8?B?RmRubUpVemgrZG1qbFVIdm5NYUlkMGswR1A1UStIRXZ6S2o2TFo4QkJ5SExN?=
- =?utf-8?B?bWZ0V05TaHNUWE9LUzJpYUhzdWZFVGN5Y1p1UEFRQjRDZ2hIcVVIUjdMRytW?=
- =?utf-8?B?TEdYQ20zT1lUWHB4TzVXcnFmMlJEWDM5YnU5YlFHRlFGUDF0SE10WVdHTDVX?=
- =?utf-8?B?dGYwWDdwTzRhdTI0MlNKRnFaYUVhQWZ2TWU4UzhZNk1FanBCTGhvTzZ4aEJP?=
- =?utf-8?B?a1EybzN1VUdIRXZnNEpwTUNNdlpDOG1CR0pIa2kzQkpxY25rU2V2S0R5N3o5?=
- =?utf-8?B?RDljZzg2YWlqQkIxSndEazhNWHdsdElLUHhZamJRNzJOTzZtRGVzNkJXVEg1?=
- =?utf-8?B?cVhtWUVCWWltc29kdGdYSDJiNGRlaGlmTmR5UEV0a045QVlDRGVYSE5SOWRq?=
- =?utf-8?B?Q1VPTTA1TENFR1JMMWdkWGNITVM4WXlCeWJoQTFGakR3d0h6eXNTdU12UWhO?=
- =?utf-8?B?dWRuMDluZG05QTlleGNVTWRIUm1vSDNWYWpMVzhab3M2d3R2MmZaZVVXckxo?=
- =?utf-8?B?VWdBUXpKVGZOQU1HcjY5VzRYMDNnTVVTZFluMmd2WG9KS0x6MTZvSjZWM0FJ?=
- =?utf-8?B?TVgxYSttVDlZcHBUTHpHZzB5Q3Q0T3RrQW1vQlAvZnJqNEdKbHZHNklobk5F?=
- =?utf-8?B?TnA3blNnZlpSWEtMZFIxK3lLRnZibEgyTjcrVFFXQ1Z5ZkVnOWR3ck03eEth?=
- =?utf-8?B?VGxWNHJsUHNxTTBQYm9heXc2R25DdUJONWplMTVVMEVzMWE4NExxRUpKWkVO?=
- =?utf-8?B?STZ5QldmaElHN2s2ZitxVUhRdjlpeE9lRkxKeHJFcHFlL0JyMkRQeDFQOVAr?=
- =?utf-8?B?L1BkSGg2a3laQTV6QjdzMDNZTS9oMHhCTjNXMytiL1R6V3NvRG81WS9abm84?=
- =?utf-8?B?K0ltS2pQdnJDTVRqcUMzcE8xcHdPL2hXZU5XK1dWeTc2TTJvTkFQcFJIZUdn?=
- =?utf-8?B?Q2MzY2Fjb3hOTEh4UFpMSkcyR2liVTVwMG9HemI4K1lNaGZtVU9oUERQYmhu?=
- =?utf-8?B?eTdHYmh1S1RTN2tnTGFLaG5KNFlvdXF3NkdGMzV4eWVudG92cGM2dC9QeWZa?=
- =?utf-8?B?eFdpSlcweWUzUHlOWEd1OVpheGtiUW40ci8xZU5QL0tuSW43NWFXRlUwTnlD?=
- =?utf-8?B?S21Db04ydHhzeWw5Wm9WYU42QlhjcWJ1Um5EQVFmV2lNelk4S2ozdlFYbW82?=
- =?utf-8?B?TzFhcjRHTFFWazJGMmxTaU1KbHQ5Z3Z0OGxyMkNlYjlMcjFvREZ1UWd4RFFs?=
- =?utf-8?B?dWhwdklYT2tYMDluekhUY0J1dmVlTE5ZZUFBSDByZUQva29iM3BtOFZ0ZU5O?=
- =?utf-8?B?U3JBVURybHp4TkZkbCt6dkRleHA5eDBvN3NkRUJoaVJ1b2hhbk1KL0JJbXBo?=
- =?utf-8?B?eVdtYmpOcEdMUjFsaGp4dXlIdlVzYXNFY05PclFUdDQwVVVOallpN0JYUkFv?=
- =?utf-8?B?R3dZeko2TVdnWUtZMGVIY2xSNVJPV0VYOHloeEh0UjZma29BWUpBcEJJSFdu?=
- =?utf-8?B?WWYrSjNMMTEvTGxSdnZyYzlrclFoOE1heUFzTzRTNVk3dWdlY1JaNzh1aTFZ?=
- =?utf-8?Q?r7bkVxZaEMx7sV6xpY1e3QtzKtKs1CTH?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700018)(921020);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dzlySGwvZUdLN2JXOElMMWlEWlhEcXFkQ2Z1aTlrOUY0MFhVYTRiUjdFUkwr?=
- =?utf-8?B?cStuT04rZ1p3cnV5dkk4eDRsOEFrWFRja0ZTRFNKb2UyY0x2SzFVMzZtdjM0?=
- =?utf-8?B?QXEybXZCL3grT0tDNk5rNGJlNDl1REQxejlUckpnWXc3aEtDV1dWOUNYNnBm?=
- =?utf-8?B?cDRwRzFvSDBiMEFaVWMraDU3VW1VdkRwY2JCNEdpNU9vdmw4dU5PYkZEa0xL?=
- =?utf-8?B?Z2JsMlYyRU1GNGdFWjEyUWNCMUt2MnRObWhVbCthWloyUlFvZDlyVC9rTnp5?=
- =?utf-8?B?YmgyamgydjU2Y29maHF3NzU5S0VxUGxmY0VmOWJSSkxBMCt2bGVuS3prU29u?=
- =?utf-8?B?RDVPTTY3cDQ1YisyTUFseE5xRXhVdHRWbHlmV1VtdnozUUt3NDFIbUwrVmYw?=
- =?utf-8?B?MjlZWnE2N1JweWVoSmw3UTdudlJ4WmVWT1FkanlyUDNoNEJhbld1WnJNQURO?=
- =?utf-8?B?RkFkVThMSkRQbC9tbDNwRloyQWlRMHFZbmlrSnpwdm00Rzd5MmpQQVFFdVR0?=
- =?utf-8?B?dWFmV3FoZFREQlN6dDBEUmVlaGpLRTJPLzRLeUh6TlhvR2pWWFgrNXN2dTdH?=
- =?utf-8?B?ZkU3d2hEYjN1RmtZM0ZlWTRnMXd1c2hXaG1mTlY0UkJJTlhRQzVMeDdlT2tj?=
- =?utf-8?B?amtHVURKbnhqbVJMSXVnY1RoRUxoZnV6TnBSdWEyMS9lZmdicVM3cUhBWW1M?=
- =?utf-8?B?bE9BSHJ2NnNtM2JjQUVFaDlpeTY5d3RueFlJTElWSUVPUHpacmJvR2ZiY3F1?=
- =?utf-8?B?VFN3RG85MFVXWnloQWFWNW9JaWxNNEN2TUdoOVI4Vzc1UkdBbDZyc0tFYW5D?=
- =?utf-8?B?OHdKQmc2b1ZpK0NodzhkUlhoZ1kydk9PUjlsVVhjT1JLSGNTUVhxNEtqaU1v?=
- =?utf-8?B?eEFNa3B0NmtPQW5pbXJKRlFIaFo0UnFETGFHQ3ZXV01CV2laSUh5RE5QdDRj?=
- =?utf-8?B?RGwwSVFXdWt0V2orNW13OHowQ0srKzJnclZlc3VBOWYwMTUzTzhCVCtxTmRw?=
- =?utf-8?B?UjRneDNLRTBvaHpxaW1TNU1waHp6RkxieXFaWHV4NFNsdGx5NVBCN1dlNmZQ?=
- =?utf-8?B?MWg5dFcvNHZFdmNqU2xEcUs3c01mTW56VEQyMnIrMnRUWWNweDIrV3RDUTBh?=
- =?utf-8?B?d0VjZWdPSUFXeVJISVdOUXE3cEpRSHFXYTZncng3N1dOY2ozL0FJejdIcEtx?=
- =?utf-8?B?RS9wR2VOTEZTbGR1TnBvajN1U3graVBrOHJrVlh3ODMwUC9xT0ZaZlhtei9E?=
- =?utf-8?B?MG1tWmVLaWszTmdiZjBBMFNzYTFPVFlaYWErZVdqcVM2cHY4Um9hd3JEVC9y?=
- =?utf-8?B?b29mVnN5UnV5aDJkS2d0SkZwWGtndWFWUlJ0blA4ZDdPS2hlR3NxTWEyTjlW?=
- =?utf-8?B?Wk44S3FZTG53WUFoUFhnNDV6YWd5K0Q2NVk1THB3Ykp5SklTTnRXbk9MWHJK?=
- =?utf-8?B?Ymk5UGttOEpDZE9mbVZyM0ptUldZeFQzMHc2YWN0ejVCOWNmMVFzOC94cGNJ?=
- =?utf-8?B?T2RIZVozYkUxdldMdDhLdTlUS2dWUUZzdy91WEtiT09JUzBJOGhCeHU1ckpN?=
- =?utf-8?B?UjRvSzlka3hQa2FDdVhUQ1VVVUNoMEd5ZFpzOWY3cEc5d3ZTMmo2SlBNeGpE?=
- =?utf-8?B?SEpKc0JNZ09CbHY5NmFNdW44QTJVZHlGQVFkRlNBOFJKUmtOWU5KTitvUnFF?=
- =?utf-8?B?QUVpZFpsS2hJTzlsb0xkUExWQlNNcDgrUGcwRzBoTjhObXdCMEs3QTlhTUYz?=
- =?utf-8?B?UlhTaWtqMGxUV3F2VUlUODNPck5nbHgvT1VtWWRKTmxjR0lKT2hENUZZYmhi?=
- =?utf-8?B?QSt1bktLdnpIekZ0REExM2VlOW9VenJlYmZBQU1xYTZLOGx0SC9ZbHJQOU0r?=
- =?utf-8?B?Nyt6NE1LMnk2ODgwbzg2UzBOWEhuSy9IUFprTVBobkpXV1lJRDJMc0tJY01t?=
- =?utf-8?B?UkVsZnJIcEdDSnFTNGhJc244VDdPNGZ6NTlNNHgzQmN6TmVlNGh1Mmk3cG4y?=
- =?utf-8?B?WTFUK0x1K29xdHJubTQwV2ZPSFJrS2EySHBQYVd6SXNsckx1LzJ6Wk9aYjM5?=
- =?utf-8?B?STg3NTRZSTJsRExwNUdOY0JEaG5lcEhoQzJndjhZWjMxQWZpZGh2dU96MHhR?=
- =?utf-8?B?dHBFdVhMZGpQVUJ0ZEFkbmhmM3FqeWR3cVQ5VkFXWnJaT1R5ZTBjdy95ejB1?=
- =?utf-8?B?TGc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <A222D22DE0D751489525D55DCAA58025@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20230601; t=1733823972; x=1734428772; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UocVRl+s36yfKdOwyD9w/O24SaGw6oRqRxZTrP2zIsQ=;
+        b=LL/x3YO5AbAXJzfMbTtaFfRQjOy8tkGPTG6M9zSXbDIgbVlSJ9rAr37mxvbXGP4cUK
+         9W8zgi2aly0MNeNp/9Ix/NHbBZrFQZzD++tTRh2UJvNL/x+SSW6aRCsWw63bS2W6vxq8
+         ivqFo/e65JOrFON1+4mnF+vlQfsGDnBiVPwigj2Z0W4INuih2x7WQfzpJ1NiRRdC/4a1
+         7MEFKj2HnewwKT8fk8wYyimJO3fBx/jgLzpxC/LG8J93t2PmldTLuKME2XPkqyInGxxF
+         M259wj7c3IEO3fPlR3/mmlNc7rgpt/BsJ+86QTE8LKAjWL6eM5DjZnpxJp4IFplGgFlB
+         mT1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733823972; x=1734428772;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UocVRl+s36yfKdOwyD9w/O24SaGw6oRqRxZTrP2zIsQ=;
+        b=Tms/gqA4dJGCLQhMi/BwMfkS+QnfNvVQmZUvo8uIITe3EivCYIvSLvGWMEG9ZvYwnY
+         qyC1lDNBJxuPkAIFCltddZxzL9VZNpo1llR3Cxnxl7iLQzl8pd+mBULB6sSkKvdfBB6N
+         LNKnxmTJPOgn2z0oQXy71TEk2paNqwrE+uumnb142V2SEDJasTqlLSZORLq6Rg3Ova1o
+         X8/cGU8lmQv0r2ZaB1IEGhDsYi+kbgwbhoj4J2TlHnfrTsF4H+ShZ9JCoSe6ZL+zapRa
+         q5luUGkFX3cVtHY+TneTH16Y/QQgJwvlpndLHEAlsoTR1HANyrKaC6d/hq1Yem3p6QP/
+         hD4g==
+X-Forwarded-Encrypted: i=1; AJvYcCU+33UkUeFPzR9pWvGOakkhA3m5jXm+rD5WPeFLnyNRWNip2Ndb7S7RE7SYS6kR7DpVi81qzU//wQf0f2ydKSs=@lists.infradead.org, AJvYcCW0YdDxa7Y/RdpOMA9UaIu/jroQMqTuND6msXqEIZIK8QuXYP363QvnKbhvzN0RZyrw4qn6dWsCmDME6LO0yRwH@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw2ycmJ0lx5EHKru6G1LS+D8WcPSODBrf9TNVs2Figdf4CwyrdK
+	y9H8WjVqdvPFC/8KqMwDsIvnSJwiqTxPIn6zqOsyMtqGYc7aEZDD
+X-Gm-Gg: ASbGncsE2TOxh4bzAx+UHGXi7i1Yh+9SUlYJrV3y/N1qn6oYynes7FV1mXPrAaYmck9
+	pNFPoaoc+VLhlvCtTNEXhx6gI2DqChXXLP9W2r7U3a6a/YrdAp+uZJtCib+p9t6izuTbKoRwsKO
+	tPuBkCbhiPGgLT0XcWnJ7j+O74mX0VAkVKJvoDaGL+cuQZC5dbXBOQwWmCade9mT9a3322XmM/E
+	A2AtdKqqGxRNBi1NCnyMGlHgl9e8e8gHrX88NLi0IykDih/NWhySxEHVcz3BRl7gl6GCG+G1IWm
+	R45lsy3AWtTgbl82NsOxr7256m7oftAq1Wjzponp+cMRYMzwm9rpnCHLqUdCjB+S5VmkYHU=
+X-Google-Smtp-Source: AGHT+IFCrrW6RNVZquoW/mErh5cCOuR46lfhdmTnJoE8ueHEeCps74gS5DZ/AuLUpkGnYzNZigdJOQ==
+X-Received: by 2002:a05:6402:320d:b0:5d0:d91d:c195 with SMTP id 4fb4d7f45d1cf-5d3be73fd12mr15089760a12.32.1733823971640;
+        Tue, 10 Dec 2024 01:46:11 -0800 (PST)
+Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d14b609e56sm7313936a12.40.2024.12.10.01.46.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Dec 2024 01:46:11 -0800 (PST)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@netfilter.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Ahern <dsahern@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Joe Damato <jdamato@fastly.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Frank Wunderlich" <frank-w@public-files.de>,
+	Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Eric Woudstra <ericwouds@gmail.com>
+Subject: [PATCH RFC v3 net-next 00/13] bridge-fastpath and related improvements
+Date: Tue, 10 Dec 2024 10:44:48 +0100
+Message-ID: <20241210094501.3069-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13537f2e-2cff-41a7-c121-08dd18fd8891
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Dec 2024 09:32:15.3148
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hvOEJKOIhAMO8Nhz/au5VwnWV+JnD/wwIfr631Rl2Uzi5gSDQPk//zZHCyuuJcM9m79p2fhdvx4oaR4sEIXveA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI6PR03MB8654
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.480100-8.000000
-X-TMASE-MatchedRID: oTBA/+sdKaYOwH4pD14DsPHkpkyUphL9Kx5ICGp/WtFaW2Ktn+I8/kfp
-	kQx2u0KsUpV4lN5/xfUZnYoQZ1kM12FqPXSLpNdAGVyS87Wb4lzSv+oK79xjnUYvSDWdWaRh9FS
-	7YzrQKsUZB0R4cFpbTeKOmN63egZIkKjL2IOi2LCj3Qz+FyEjBmjdirk8LAsCnQqircTOm4eiFC
-	KhA8vX7obJ0ODQ9lXH8NsyesFB+nz/o+5l9ZSgvp4CIKY/Hg3AwWulRtvvYxTUHQeTVDUrItRnE
-	QCUU+jzjoczmuoPCq0U4JX6dIlGttcxFGhp0ectcChsHfqTkrdLQiIU1MUN5HvwgW5BleVQQi3L
-	MjvjfT/GseOgJQ6+gZd6Zp1U8A+Vd9zSg5Z1CJcs3MhikIxzdb/PX2mZSJRXIXsk4PrfzdlT8tj
-	ofouZbqnipDO6T4Le
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.480100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 26D142F626D9897987CC8916B102FC5ACFD55A0A199569AC39E45910A087B7632000:8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_013230_342852_C51F35C6 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20241210_014614_212110_8E70C5EA 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -232,68 +120,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIExpYW5rdW46DQoNCk9uIFRodSwgMjAyNC0xMS0yOCBhdCAxMDozNyArMDgwMCwgTGlhbmt1
-biBZYW5nIHdyb3RlOg0KPiBXaGVuIHVzaW5nIHR5cGUtYyB0byB0eXBlLWMgdG8gY29ubmVjdCB0
-byB0aGUgbW9uaXRvciwNCj4gdGhlIHNvdW5kIHBsYXlzIG5vcm1hbGx5LiBJZiB5b3UgdW5wbHVn
-IHRoZSB0eXBlLWMgYW5kDQo+IGNvbm5lY3QgdGhlIHR5cGUtYyB0byBoZG1pIGRvbmdsZSB0byB0
-aGUgbW9uaXRvciwgdGhlcmUgd2lsbCBiZSBub2lzZS4NCj4gDQo+IEJ5IGNhcHR1cmluZyB0aGUg
-YXVkaW8gZGF0YSwgaXQgaXMgZm91bmQgdGhhdA0KPiB0aGUgZGF0YSBwb3NpdGlvbiBpcyBtZXNz
-eSwgYW5kIHRoZXJlIGlzIG5vIGVycm9yIGluIHRoZSBkYXRhLg0KPiANCj4gVGhyb3VnaCBleHBl
-cmltZW50cywgaXQgY2FuIGJlIHJlc3RvcmVkIGJ5IHJlc2V0dGluZyB0aGUgU0RQIHBhdGgNCj4g
-d2hlbiB1bnBsdWdnaW5nIGl0Lg0KDQpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVr
-LmNvbT4NCg0KPiANCj4gU2lnbmVkLW9mZi1ieTogTGlhbmt1biBZYW5nIDxsaWFua3VuLnlhbmdA
-bWVkaWF0ZWsuY29tPg0KPiBSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8g
-PGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCj4gLS0tDQo+IENoYW5n
-ZXMgaW4gVjQ6DQo+IC0gRml4IGFsaWduIHRvIHRoZSByaWdodCBvZiAnKCcuDQo+IFBlciBzdWdn
-ZXN0aW9uIGZyb20gdGhlIHByZXZpb3VzIHRocmVhZDoNCj4gaHR0cHM6Ly91cmxkZWZlbnNlLmNv
-bS92My9fX2h0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1tZWRpYXRl
-ay9wYXRjaC8yMDI0MDkyNTA2NDg1NC4yMzA2NS0xLWxpYW5rdW4ueWFuZ0BtZWRpYXRlay5jb20v
-X187ISFDVFJOS0E5d01nMEFSYnchbW9CSWJvWlUxYTRVbENKMFBOZGxzLVd5Zzh6Q2J4XzYwVlVG
-ZFNrQ25rNUlYeldzaUFuRjFEcE9fNHFGejB4dkRvVHNBS2tEVmQzOFB2SXUyRUZudHY0JCANCj4g
-DQo+IENoYW5nZXMgaW4gVjM6DQo+IC0gTm8gY2hhbmdlLg0KPiBQZXIgc3VnZ2VzdGlvbiBmcm9t
-IHRoZSBwcmV2aW91cyB0aHJlYWQ6DQo+IGh0dHBzOi8vdXJsZGVmZW5zZS5jb20vdjMvX19odHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvcGF0Y2gvMjAy
-NDA5MjMxMzI1MjEuMjI3ODUtMS1saWFua3VuLnlhbmdAbWVkaWF0ZWsuY29tL19fOyEhQ1RSTktB
-OXdNZzBBUmJ3IW1vQklib1pVMWE0VWxDSjBQTmRscy1XeWc4ekNieF82MFZVRmRTa0NuazVJWHpX
-c2lBbkYxRHBPXzRxRnoweHZEb1RzQUtrRFZkMzhQdkl1c2JVR2NrayQgDQo+IA0KPiBDaGFuZ2Vz
-IGluIFYyOg0KPiAtIEZpeCBidWlsZCBlcnJvci4NCj4gUGVyIHN1Z2dlc3Rpb24gZnJvbSB0aGUg
-cHJldmlvdXMgdGhyZWFkOg0KPiBodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9w
-YXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL3BhdGNoLzIwMjQwOTIz
-MTMzNjEwLjIzNzI4LTEtbGlhbmt1bi55YW5nQG1lZGlhdGVrLmNvbS9fXzshIUNUUk5LQTl3TWcw
-QVJidyFtb0JJYm9aVTFhNFVsQ0owUE5kbHMtV3lnOHpDYnhfNjBWVUZkU2tDbms1SVh6V3NpQW5G
-MURwT180cUZ6MHh2RG9Uc0FLa0RWZDM4UHZJdXROSjQ2V0kkIA0KPiAtLS0NCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHAuYyAgICAgfCAxNSArKysrKysrKysrKysrKysNCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBfcmVnLmggfCAgMSArDQo+ICAyIGZpbGVzIGNo
-YW5nZWQsIDE2IGluc2VydGlvbnMoKykNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwLmMN
-Cj4gaW5kZXggMWNjOTE2YjE2NDcxLi40ZjQyMzNiZDgzZjcgMTAwNjQ0DQo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHAuYw0KPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RwLmMNCj4gQEAgLTExMzUsNiArMTEzNSwxOCBAQCBzdGF0aWMgdm9pZCBtdGtf
-ZHBfZGlnaXRhbF9zd19yZXNldChzdHJ1Y3QgbXRrX2RwICptdGtfZHApDQo+ICAJCQkgICAwLCBE
-UF9UWF9UUkFOU01JVFRFUl80UF9SRVNFVF9TV19EUF9UUkFOU19QMCk7DQo+ICB9DQo+ICANCj4g
-K3N0YXRpYyB2b2lkIG10a19kcF9zZHBfcGF0aF9yZXNldChzdHJ1Y3QgbXRrX2RwICptdGtfZHAp
-DQo+ICt7DQo+ICsJbXRrX2RwX3VwZGF0ZV9iaXRzKG10a19kcCwgTVRLX0RQX0VOQzBfUDBfMzAw
-NCwNCj4gKwkJCSAgIFNEUF9SRVNFVF9TV19EUF9FTkMwX1AwLA0KPiArCQkJICAgU0RQX1JFU0VU
-X1NXX0RQX0VOQzBfUDApOw0KPiArDQo+ICsJLyogV2FpdCBmb3Igc2RwIHBhdGggcmVzZXQgdG8g
-Y29tcGxldGUgKi8NCj4gKwl1c2xlZXBfcmFuZ2UoMTAwMCwgNTAwMCk7DQo+ICsJbXRrX2RwX3Vw
-ZGF0ZV9iaXRzKG10a19kcCwgTVRLX0RQX0VOQzBfUDBfMzAwNCwNCj4gKwkJCSAgIDAsIFNEUF9S
-RVNFVF9TV19EUF9FTkMwX1AwKTsNCj4gK30NCj4gKw0KPiAgc3RhdGljIHZvaWQgbXRrX2RwX3Nl
-dF9sYW5lcyhzdHJ1Y3QgbXRrX2RwICptdGtfZHAsIGludCBsYW5lcykNCj4gIHsNCj4gIAltdGtf
-ZHBfdXBkYXRlX2JpdHMobXRrX2RwLCBNVEtfRFBfVFJBTlNfUDBfMzVGMCwNCj4gQEAgLTIzOTcs
-NiArMjQwOSw5IEBAIHN0YXRpYyB2b2lkIG10a19kcF9icmlkZ2VfYXRvbWljX2Rpc2FibGUoc3Ry
-dWN0IGRybV9icmlkZ2UgKmJyaWRnZSwNCj4gIAkJCSAgIERQX1BXUl9TVEFURV9CQU5ER0FQX1RQ
-TEwsDQo+ICAJCQkgICBEUF9QV1JfU1RBVEVfTUFTSyk7DQo+ICANCj4gKwkvKiBTRFAgcGF0aCBy
-ZXNldCBzdyovDQo+ICsJbXRrX2RwX3NkcF9wYXRoX3Jlc2V0KG10a19kcCk7DQo+ICsNCj4gIAkv
-KiBFbnN1cmUgdGhlIHNpbmsgaXMgbXV0ZWQgKi8NCj4gIAltc2xlZXAoMjApOw0KPiAgfQ0KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcF9yZWcuaCBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBfcmVnLmgNCj4gaW5kZXggNzA5Yjc5NDgwNjkzLi44
-YWQ3YTljYzI1OWUgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHBfcmVnLmgNCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcF9yZWcuaA0K
-PiBAQCAtODYsNiArODYsNyBAQA0KPiAgI2RlZmluZSBNVEtfRFBfRU5DMF9QMF8zMDA0CQkJMHgz
-MDA0DQo+ICAjZGVmaW5lIFZJREVPX01fQ09ERV9TRUxfRFBfRU5DMF9QMF9NQVNLCQlCSVQoOCkN
-Cj4gICNkZWZpbmUgRFBfVFhfRU5DT0RFUl80UF9SRVNFVF9TV19EUF9FTkMwX1AwCQlCSVQoOSkN
-Cj4gKyNkZWZpbmUgU0RQX1JFU0VUX1NXX0RQX0VOQzBfUDAJCQkJQklUKDEzKQ0KPiAgI2RlZmlu
-ZSBNVEtfRFBfRU5DMF9QMF8zMDEwCQkJMHgzMDEwDQo+ICAjZGVmaW5lIEhUT1RBTF9TV19EUF9F
-TkMwX1AwX01BU0sJCQlHRU5NQVNLKDE1LCAwKQ0KPiAgI2RlZmluZSBNVEtfRFBfRU5DMF9QMF8z
-MDE0CQkJMHgzMDE0DQoNCg==
+This patchset makes it possible to set up a software fastpath between
+bridged interfaces. This also creates the possibility to have a hardware
+offloaded fastpath between bridged interfaces.
+
+To set up the fastpath with offloading, add this extra flowtable:
+
+table bridge filter {
+        flowtable fb {
+                hook ingress priority filter
+                devices = { lan0, lan1, lan2, lan3, lan4, wlan0, wlan1 }
+                flags offload
+        }
+        chain forward {
+                type filter hook forward priority filter; policy accept;
+		ct state established flow add @fb
+        }
+}
+
+Creating a separate fastpath for bridges.
+
+         forward fastpath bypass
+ .----------------------------------------.
+/                                          \
+|                        IP - forwarding    |
+|                       /                \  v
+|                      /                  wan ...
+|                     /
+|                     |
+|                     |
+|                   brlan.1
+|                     |
+|    +-------------------------------+
+|    |           vlan 1              |
+|    |                               |
+|    |     brlan (vlan-filtering)    |
+|    +---------------+               |
+|    |  DSA-SWITCH   |               |
+|    |               |    vlan 1     |
+|    |               |      to       |
+|    |   vlan 1      |   untagged    |
+|    +---------------+---------------+
+.         /                   \
+ ------>lan0                 wlan1
+        .  ^                 ^
+        .  |                 |
+        .  \_________________/
+        .  bridge fastpath bypass
+        .
+        ^
+     vlan 1 tagged packets
+
+While testing direct transmit in the software forward-fastpath, it is
+useful to enslave the wan interface to another bridge, brwan. This will
+make sure both directions of the software forward-fastpath use direct
+transmit.
+
+To have the ability to handle xmit direct with outgoing encaps in the
+bridge fastpass bypass, we need to be able to handle them without going
+through vlan/pppoe devices. So I've applied, amended and squashed wenxu's
+patchset. This patch also makes it possible to egress from vlan-filtering
+brlan to lan0 with vlan tagged packets, if the bridge master port is doing
+the vlan tagging, instead of the vlan-device. Without this patch, this is
+not possible in the bridge-fastpath and also not in the forward-fastpath,
+as seen in the figure above.
+
+There are also some more fixes for filling in the forward path. These
+fixes also apply to for the forward-fastpath. They include handling
+DEV_PATH_MTK_WDMA in nft_dev_path_info(). There are now 2 patches for
+avoiding ingress_vlans bit set for bridged dsa user ports and foreign
+(dsa) ports.
+
+Another patch introduces DEV_PATH_BR_VLAN_KEEP_HW, needed for the
+bridge-fastpath only.
+
+Conntrack bridge only tracks untagged and 802.1q. To make the bridge
+fastpath experience more similar to the forward fastpath experience,
+I've added double vlan, pppoe and pppoe-in-q tagged packets to bridge
+conntrack and to bridge filter chain.
+
+Note: While testing direct transmit in the software forward-fastpath,
+without the capability of setting the offload flag, it is sometimes useful
+to enslave the wan interface to another bridge, brwan. This will make
+sure both directions of the software forward-fastpath use direct transmit,
+which also happens when the offload flag is set.
+
+I have send RFC v2 as I previously only owned a dsa device. I now have
+obtained a switchdev supporting SWITCHDEV_OBJ_ID_PORT_VLAN, and found
+there was more to do to handle the ingress_vlans bit and corresponding
+vlan encap.
+
+I am now sending RFC v3 as the previous RFC did not get any comment.
+
+Changes in v3:
+- Squashed the two 'port to port' patches to avoid build errors when only
+   one of the two commits is applied.
+
+Changes in v2:
+- Introduce DEV_PATH_BR_VLAN_KEEP_HW for use in the bridge-fastpath only.
+   It is needed for switchdevs supporting SWITCHDEV_OBJ_ID_PORT_VLAN.
+- Different approach for handling BR_VLFLAG_ADDED_BY_SWITCHDEV in
+   br_vlan_fill_forward_path_mode() for foreign devices. Introduce
+   SWITCHDEV_F_NO_FOREIGN, BR_VLFLAG_TAGGING_BY_SWITCHDEV and
+   br_switchdev_port_vlan_no_foreign_add(). The latter function can be
+   used to make sure the vlan was added to a switchdev native device.
+   When that fails, adding the vlan with br_switchdev_port_vlan_add()
+   means it was added to a switchdev foreign device.
+- Clear ingress_vlans bit and corresponding encap for dsa user ports.
+- Add check for ingress_vlans bit to nft_dev_fill_bridge_path().
+- Adapted cover letter description to make clear the patches apply
+   to software fastpath, making hardware-offloaded fastpath possible.
+- Fixed clang error for vlan_hdr * and struct ppp_hdr * by adding block.
+- Updated !CONFIG_BRIDGE_VLAN_FILTERING version of
+   br_vlan_fill_forward_path_pvid().
+- Removed erroneous check netif_is_bridge_master(ctx->dev) from
+   dev_fill_bridge_path().
+- Cosmetic changes.
+
+Eric Woudstra (13):
+  netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit
+    direct
+  netfilter: bridge: Add conntrack double vlan and pppoe
+  netfilter: nft_chain_filter: Add bridge double vlan and pppoe
+  bridge: Add filling forward path from port to port
+  net: core: dev: Add dev_fill_bridge_path()
+  netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
+  netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
+  netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
+  netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to
+    nft_dev_path_info()
+  netfilter: nft_flow_offload: No ingress_vlan forward info for dsa user
+    port
+  bridge: No DEV_PATH_BR_VLAN_UNTAG_HW for dsa foreign
+  bridge: Introduce DEV_PATH_BR_VLAN_KEEP_HW for bridge-fastpath
+  netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
+
+ include/linux/netdevice.h                  |   3 +
+ include/net/netfilter/nf_flow_table.h      |   3 +
+ include/net/switchdev.h                    |   1 +
+ net/bridge/br_device.c                     |  23 ++-
+ net/bridge/br_private.h                    |   5 +
+ net/bridge/br_switchdev.c                  |  15 ++
+ net/bridge/br_vlan.c                       |  29 +++-
+ net/bridge/netfilter/nf_conntrack_bridge.c |  88 +++++++++--
+ net/core/dev.c                             |  66 ++++++--
+ net/netfilter/nf_flow_table_inet.c         |  13 ++
+ net/netfilter/nf_flow_table_ip.c           |  96 +++++++++++-
+ net/netfilter/nf_flow_table_offload.c      |  13 ++
+ net/netfilter/nft_chain_filter.c           |  20 ++-
+ net/netfilter/nft_flow_offload.c           | 166 +++++++++++++++++++--
+ net/switchdev/switchdev.c                  |   2 +-
+ 15 files changed, 490 insertions(+), 53 deletions(-)
+
+-- 
+2.47.1
+
 
