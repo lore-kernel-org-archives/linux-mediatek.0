@@ -4,98 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B60A1E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 20:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D0FDE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 20:56:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cNaXJ8JhPRuTmwTT3LTe+sP5Z8UoA760Vogy1s7z9Rk=; b=ZNgHBn9udd/UvQf9A6jNErybUm
-	8FQ4u5c1Z+TWNqJSItqzSKKvbQQfk4Ju77HLYwUracuuc/Ma+kxZF+YKoDl7FNznlI36zyfL9h/Bx
-	fq0n+dcLt6dRdttOrU+Pw6KFtWNOF5bQoAZGle57AkU/J0knmIQW2l5tpatuGCg5jdgvzb+fAHpLZ
-	4JnV23/iP5jlkXx7XoJzZYDZTzhTlC/2dbJ6rSKIzUdpQMoLhvthXSWPr+mUcpDzIdteBtMoVbJba
-	xcPLKzr7Efxwnq3/LynfU4+Fa+OdYtg09sKAOG27WqegnavmOmo63MpkvoJMhXWf+06LgWOhfe+M0
-	T6IYf16g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vtsiNmh3x5mGNvD72bEl7vI7T1Sm04ahct4zug06QCc=; b=mLT7hEK77u6LDu
+	f9mWo3RejKtehF+04ljb9T274yTX3BVjTZfwKCkReZhQEHwZdwI8Rb9TlgCOGymCB3dmXBb8rbdCS
+	isRYxKKjdBohZkpmXfgae5vQVTdwpaBE5+247TffknDK7Kp5aO1XvxmOdxHWF6eGYLviI/EoteaqX
+	6Cj6zJcWRNed/8tlSR+douXb2xi8Goo8E6I0RRAJBlAePrfqHs6QchmPGdjP6iQfteaWMIZvp87X9
+	gS8+UNlIV+LyEnqASaPWr3sPWYbXknK1HlPLDHPKeL/xsqAeD1Rz4N7O2uHefG3ZQyYa9vXlt5e0N
+	E9Q/QCAneJ41jmCcB5wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7BI-0000000CiBt-2g3g;
-	Tue, 10 Dec 2024 20:50:08 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1tL7Hj-0000000CjNc-27DP;
+	Tue, 10 Dec 2024 20:56:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7AD-0000000ChtJ-2TzO;
-	Tue, 10 Dec 2024 20:49:02 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5d3cfa1da14so473480a12.1;
-        Tue, 10 Dec 2024 12:49:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733863739; x=1734468539; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cNaXJ8JhPRuTmwTT3LTe+sP5Z8UoA760Vogy1s7z9Rk=;
-        b=GV3vo9evHn0UdCPBPWkznHL1y1DuJuR7phqxRB2XZi+lXZZcmfjPckJ8oKvp/Ujz31
-         e1US35u3H4Htl5ZzHPtnb4w3MOnG+Bs3ziVrBEKrSRv8Wxw27NO57DnCWiEgg5BGM6MH
-         haVEF6oAtg7hTERJTSyy4lXMbxL9iuvncQgtRiw8tSbJabPqtd68rhoyjWEzjIE2Ys85
-         nZQGSYyQBkn3OO2RkElWT/s/8/zddQGsIwV5RanKV3N/4vSooHezG9N+LDzFY2M3Ng0A
-         ltd9DXT3qVHShuQ/y47UTeGhSeNwQo62rkCXc91zWiAZNtZ5FF0ua7GVjtkcdco+P/T+
-         V6+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733863739; x=1734468539;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cNaXJ8JhPRuTmwTT3LTe+sP5Z8UoA760Vogy1s7z9Rk=;
-        b=bVNb+lZg6QbMYN1flBRo3BTHB+fJxmdQY93yCTp4ROvkQaBB4eUhm4+QDak2gQHpBx
-         ncLwrpPE5xxfoO9cftkQlNNbwbpDpIloast2Rj1oh+c7iqLNrpl6+HKrPnRLghwvZ+Jj
-         XfeFCIwds9IjR/ULAD4i+Oj/N5XhFNFarcO+J4sHc54Ume/ErSv1g6bvx0ghHVQbyoTb
-         klThV06tgQgbbSu3m4Sg1Baxb7qPjWxND4qFRjfZV8pOyEg0rOJ/KDD1/+gKiTlR4j+6
-         JqH0m2SBXMnOgFI69rJA0tr297UkaFGfg3q58x/Iv2+kWpmf7C/Fj0Sy4EVZtPXxsH7W
-         tSAg==
-X-Forwarded-Encrypted: i=1; AJvYcCUcmmqxyeB4q4j67cWPHcBjQXT5FmZk0V2+70vkBe6ZniugvNdzKJyouvigwGlM3aDXPnhM6e10NE7g0PMoPyrn@lists.infradead.org, AJvYcCV60Y8sNPIXSjLG3IE/B4Lty98FYhCWxkji76R3AtP8j2+Xm/vIDqjYulLhO2RasANY2zSZgYdCBlsHMkOHXH4=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5MMDZP2k5hXYy6xTRaUrMscEwlo/1R2HeeMVwxj3XXN5jL8Zt
-	/M8qN//4t7HBuryVEcQuAbKZVjM1/gKUrNkXSHoQLXXUAElqipjd
-X-Gm-Gg: ASbGnctEwzEr4BnoljtAjk4w3FVoOQj2ad/c91Ik+GbBdFat4F24kdv8fVW+DO4umtg
-	+N/uhTxXOIzZdYeX3vEotea1U2CYp0T0SaaEeBmcQwNKg5wzSI6y9wq5VMGXN/bznHTcQFCzWbN
-	1zFGvp+1Cswj0iGQ30SdHqmIDgmlrfmHQbD2U1QcD/677h/C34QA3AS1r+7UwSbkKkwre62DbD9
-	w5eoDrxUPmiAxrBxiKabYcB7cvpaZyN2RDpthTbqg==
-X-Google-Smtp-Source: AGHT+IGLMYMcvq7FgOuv7NZ8he4Vn2DR++ElkPFM38fkihjTAen52Se+4+I+zeFNB7FVdS9rJ+bpJw==
-X-Received: by 2002:a05:6402:40cd:b0:5d3:d4cf:feba with SMTP id 4fb4d7f45d1cf-5d43314d465mr45987a12.7.1733863739337;
-        Tue, 10 Dec 2024 12:48:59 -0800 (PST)
-Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d14c74c3d5sm8097292a12.52.2024.12.10.12.48.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 12:48:58 -0800 (PST)
-Date: Tue, 10 Dec 2024 22:48:55 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v11 3/9] dt-bindings: net: dsa: Document support
- for Airoha AN8855 DSA Switch
-Message-ID: <20241210204855.7pgvh74irualyxbn@skbuf>
-References: <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-4-ansuelsmth@gmail.com>
+	id 1tL7Fo-0000000Ciul-3eoR;
+	Tue, 10 Dec 2024 20:54:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1733864087;
+	bh=NDN0SnBLoWNiGYnla0Xah/O39AF4IpvBlJqD83Budgg=;
+	h=From:Subject:Date:To:Cc:From;
+	b=X55KkPeFFbbC1PUtd8IqdC6yhu9RZlxMgJdIe5Gnb0ee9wLreXlu1HVHk6JqNxsAX
+	 OoFPQF7vhBVfG1TNLa15E3Z4YOaSdikSybexOAogUTaIpPphzgaLB0mrE0SbygcssL
+	 ZM++8Z9PXzFY7jf3qhS9Kc+hBrKRWlSOkMGIAw7AEQ8EA2U0AKdVJ7kp8BwzPwJ1lf
+	 PzeVxxTaRo2J5NZMJKQfaetDeHKPvJvEHI1sjD9jVh9pLMcHdrH7RewJYIwZLN3bfA
+	 Eq6bMJ/nRTzK2isBk+hUdaq1/VvCYmbK693akW0fngbtBUPQfUEUc/fPuqE9rbTRRl
+	 aFtXlQ/d9HIdw==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1976417E3802;
+	Tue, 10 Dec 2024 21:54:42 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2 0/2] Enable audio output for Genio 700 EVK board
+Date: Tue, 10 Dec 2024 17:54:27 -0300
+Message-Id: <20241210-genio700-audio-output-v2-0-c50886ae0be2@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241209134459.27110-4-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAIOqWGcC/3WNQQqDMBBFryKz7pQkKGpXvUdxEeOoA9aRJEqLe
+ PemQpddvgf//R0CeaYAt2wHTxsHljmBuWTgRjsPhNwlBqNMro3KcaCZpVQK7dqxoKxxWSP2ra1
+ 6Q63ttIK0XTz1/Dq7jybxyCGKf583m/7aX7H4U9w0KlRUF4UrK2dqujuZJtuKt1cnT2iO4/gAM
+ dKh6L4AAAA=
+X-Change-ID: 20241204-genio700-audio-output-fba8f2ebad10
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Trevor Wu <trevor.wu@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Aary Patil <aary.patil@mediatek.com>, 
+ Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>, 
+ parkeryang <Parker.Yang@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_124901_630921_7789F4F1 
-X-CRM114-Status: GOOD (  21.33  )
+X-CRM114-CacheID: sfid-20241210_125449_081479_D366BEFF 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,77 +87,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2024 at 02:44:20PM +0100, Christian Marangi wrote:
-> Document support for Airoha AN8855 5-port Gigabit Switch.
-> 
-> It does expose the 5 Internal PHYs on the MDIO bus and each port
-> can access the Switch register space by configurting the PHY page.
+This series enables audio output support for the Genio 700 EVK board.
+Patch 1 adds the missing #sound-dai-cells property in the MT6359 node as
+a prerequisite, and patch 2 describes the audio DT nodes to get audio
+output working on the two audio jacks, Earphone and Speaker, present on
+the board.
 
-typo: configuring
-Also below.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v2:
+- Dropped merged/unnecessary patches (2, 3, 4)
+- Removed unnecessary mediatek,dai-link property
+- Link to v1: https://lore.kernel.org/r/20241205-genio700-audio-output-v1-0-0e955c78c29e@collabora.com
 
-> 
-> Each internal PHY might require calibration with the fused EFUSE on
-> the switch exposed by the Airoha AN8855 SoC NVMEM.
+---
+Nícolas F. R. A. Prado (2):
+      arm64: dts: mt6359: Add #sound-dai-cells property
+      arm64: dts: mediatek: mt8390-genio-700-evk: Add sound output support
 
-This paragraph should be irrelevant to the switch binding.
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi           |  1 +
+ .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 48 ++++++++++++++++++++++
+ 2 files changed, 49 insertions(+)
+---
+base-commit: d1486dca38afd08ca279ae94eb3a397f10737824
+change-id: 20241204-genio700-audio-output-fba8f2ebad10
 
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../net/dsa/airoha,an8855-switch.yaml         | 105 ++++++++++++++++++
->  MAINTAINERS                                   |   1 +
->  2 files changed, 106 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> new file mode 100644
-> index 000000000000..63bcbebd6a29
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> @@ -0,0 +1,105 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/dsa/airoha,an8855-switch.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 Gigabit Switch
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description: >
-> +  Airoha AN8855 is a 5-port Gigabit Switch.
-> +
-> +  It does expose the 5 Internal PHYs on the MDIO bus and each port
-> +  can access the Switch register space by configurting the PHY page.
-> +
-> +  Each internal PHY might require calibration with the fused EFUSE on
-> +  the switch exposed by the Airoha AN8855 SoC NVMEM.
-> +
-> +$ref: dsa.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    const: airoha,an8855-switch
-> +
-> +  reset-gpios:
-> +    description:
-> +      GPIO to be used to reset the whole device
-> +    maxItems: 1
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Since this affects the whole device, the SoC node (handled by the
-MFD driver) should handle it. Otherwise you expose the code to weird
-race conditions where one child MFD device resets the whole chip after
-the other MFD children have probed, and this undoes their settings.
-
-> +
-> +  airoha,ext-surge:
-> +    $ref: /schemas/types.yaml#/definitions/flag
-> +    description:
-> +      Calibrate the internal PHY with the calibration values stored in EFUSE
-> +      for the r50Ohm values.
-
-Doesn't seem that this pertains to the switch.
 
