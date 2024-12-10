@@ -4,83 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F40C2E77182
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 14:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD1BE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 16:16:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KlYmLFN/8CAJKF2m4Ukp5uw+PCBqObvzNJY6qsnkWK8=; b=xEuzlvWATZNTE+pgoXhqV7tBsA
-	jhR4mp+Y6P0jdh2uATPBZuLSiop6rqL63Cz7X+TTul/xXvK2xlALIUttH8zPlqmLIM8UPCP7G8VQJ
-	S+Gcjh7ULmKuQ6pt7iAe2vk7osl/Q4aLrnxsUwrJ+/Obw9y1xwl8ZjfRvfz9qpDgJxKQ/7dc/FJt7
-	dJD1A4di+e2CgI3PIqXxqr+d4Og3JKlvCLqhoGUO0idGbkebx0yw1lUAmQEifoAYacGUB0NKiSrfB
-	eHoWfNYSvyvx+s5ppgtMvZPl255+HCy3QfcMVXjDl2Xy/pQ01WKnTJIYRrZ2Kp3VeCUInruFglgKy
-	u7KojHJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f0PnjnuFmwfGJ4/f1r00zdPmTrvRH6FRCjme7Zhxk+8=; b=aUmBDAv78ILWojIut6PrcSYPHr
+	qTza5qzZk1fEHoPs2qXVg0HwSnXPFVSw1Bq/9t1zzIMGkX61FmLbxH3zTISMqVzRwYfxhrHPNkK1o
+	TRVDmZXB6os1pjseNgm4Z+89NKzwADyRcw6fHjhYPVnE8hzavexV+/rwb0bz74CzXh/vZg6ifzwQR
+	rv+UiGT9ASwvHGEA+iOB6ZOJIyBdRLH4qqxYRkMV4w6ib2OC75qA3bm+EDWd9rivP7NQamOoBvhp9
+	MOKNMv25IkCS5OAWrMRH11z/Yar7E4iQ4ZqBcRqC7yiAVoWrtyXtFlBwdse2mm7bf2tBlPwu4P4SY
+	uPhZhSPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL1Pz-0000000BoBC-0Jdy;
-	Tue, 10 Dec 2024 14:40:55 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tL2uV-0000000C3f2-2m0p;
+	Tue, 10 Dec 2024 16:16:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL14q-0000000Biyh-03Ot;
-	Tue, 10 Dec 2024 14:19:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=KlYmLFN/8CAJKF2m4Ukp5uw+PCBqObvzNJY6qsnkWK8=; b=F+Pf5dI51Ctrw55VBld9EEk+dn
-	uYLqPJohRuJUK+ymYvnxdIf80s9g9Bj08uB7WAH2hHXUhXZHQdyqRTTbllxx5MN4EZmn49rhRsLq8
-	38IwM72V3I8y538wVPhUSy9kpvdbVl55DgKCThdHO+woh5oZg+eoQugjppoTuxYgg5ESYhR7WJcF0
-	xA4aqQF2KcRGIjOkxjx36pssFxR+sTckaCSstoGRiju79IoafOrwQyRvQFc9IAu67qsFfQW4UTRuv
-	SbsK7pUpMmRQjc3DXtGbp1LnKQU9NRrrX+luZanJ3jMFU+CxEMNUqs2HWwdcwt+7GQUoeemjFjnYb
-	3SgGTBAA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:34148 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tL14g-0002VH-2a;
-	Tue, 10 Dec 2024 14:18:55 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tL14e-006cZy-AT; Tue, 10 Dec 2024 14:18:52 +0000
-In-Reply-To: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
-References: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Ar__n__ __NAL" <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jakub Kicinski <kuba@kernel.org>,
+	id 1tL2qf-0000000C2xL-3xGx;
+	Tue, 10 Dec 2024 16:12:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4C1825C5486;
+	Tue, 10 Dec 2024 16:11:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38D41C4CED6;
+	Tue, 10 Dec 2024 16:12:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733847152;
+	bh=aeFcHfhyyi6Hrc1ORc56BM7zT3V7KDTDRrWatg2IVuM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tNyKLcLf9TBPZY/+magH1b8HAo631nln+OPc5sR6f4ayS8hvBfvwQPECC9oIm9ag5
+	 LCeTAGJ8duFEitSd1+oL2LJp9rHp5BH4DocBeF2Bv8BdcJtdCaHyWooP0i2kXRRUvq
+	 ZcLqGR+StgEpRHOLLCIw3mPcZElRJNRJuN6fbGm39WIn5xZ55aptvWyx9tlGVKz24c
+	 KMF8WTpz3g1u0nx65+IjO2ma/Pj0w759l4H3HgL3Uh0tj4dNNLLMonbl4+8bAZYCu6
+	 FTJJv/kq4mgaYBi6sPjghLxgc3fEXCou7AiLit1XNSNqte8p5C7RIE05x9BJ4RVNgS
+	 xlERbS1/Oj/2g==
+Date: Tue, 10 Dec 2024 11:12:30 -0500
+From: Sasha Levin <sashal@kernel.org>
+To: Saravana Kannan <saravanak@google.com>
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Thierry Reding <treding@nvidia.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+	matthias.bgg@gmail.com, elder@kernel.org, ricardo@marliere.net,
+	sumit.garg@linaro.org, dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Simon Horman <horms@kernel.org>,
-	UNGLinuxDriver@microchip.com,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH net-next 9/9] net: dsa: require .support_eee() method to be
- implemented
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH AUTOSEL 6.11 08/15] drm: display: Set fwnode for aux bus
+ devices
+Message-ID: <Z1hobuvz2S03L9TF@sashalap>
+References: <20241204221726.2247988-1-sashal@kernel.org>
+ <20241204221726.2247988-8-sashal@kernel.org>
+ <CAGETcx8bhzGZKge4qfpNR8FaTWqbo0-5J9c7whc3pn-RECJs3Q@mail.gmail.com>
+ <CAGETcx-6yHV5xr1j7krY8LShCF5JATX0NSwjeRUL9+3TLCMq9w@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tL14e-006cZy-AT@rmk-PC.armlinux.org.uk>
-Date: Tue, 10 Dec 2024 14:18:52 +0000
+In-Reply-To: <CAGETcx-6yHV5xr1j7krY8LShCF5JATX0NSwjeRUL9+3TLCMq9w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_061904_055984_EFB92310 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20241210_081234_066473_B0862B5D 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,38 +85,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that we have updated all drivers, switch DSA to require an
-implementation of the .support_eee() method for EEE to be usable,
-rather than defaulting to being permissive when not implemented.
+On Thu, Dec 05, 2024 at 04:07:45PM -0800, Saravana Kannan wrote:
+>On Thu, Dec 5, 2024 at 4:06 PM Saravana Kannan <saravanak@google.com> wrote:
+>>
+>> On Wed, Dec 4, 2024 at 3:29 PM Sasha Levin <sashal@kernel.org> wrote:
+>> >
+>> > From: Saravana Kannan <saravanak@google.com>
+>> >
+>> > [ Upstream commit fe2e59aa5d7077c5c564d55b7e2997e83710c314 ]
+>> >
+>> > fwnode needs to be set for a device for fw_devlink to be able to
+>> > track/enforce its dependencies correctly. Without this, you'll see error
+>> > messages like this when the supplier has probed and tries to make sure
+>> > all its fwnode consumers are linked to it using device links:
+>> >
+>> > mediatek-drm-dp 1c500000.edp-tx: Failed to create device link (0x180) with backlight-lcd0
+>> >
+>> > Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> > Closes: https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca4598@notapiano/
+>> > Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> > Signed-off-by: Saravana Kannan <saravanak@google.com>
+>> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+>> > Reviewed-by: Thierry Reding <treding@nvidia.com>
+>> > Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> > Link: https://lore.kernel.org/r/20241024061347.1771063-2-saravanak@google.com
+>> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>> > Signed-off-by: Sasha Levin <sashal@kernel.org>
+>>
+>> As mentioned in the original cover letter:
+>>
+>> PSA: Do not pull any of these patches into stable kernels. fw_devlink
+>> had a lot of changes that landed in the last year. It's hard to ensure
+>> cherry-picks have picked up all the dependencies correctly. If any of
+>> these really need to get cherry-picked into stable kernels, cc me and
+>> wait for my explicit Ack.
+>>
+>> Is there a pressing need for this in 4.19?
+>
+>I copy pasted this into several replies. In all those cases I meant
+>the kernel version mentioned in the subject.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- net/dsa/user.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I'll drop this and the other patch you've pointed out, thanks!
 
-diff --git a/net/dsa/user.c b/net/dsa/user.c
-index b54f61605a57..4239083c18bf 100644
---- a/net/dsa/user.c
-+++ b/net/dsa/user.c
-@@ -1229,7 +1229,7 @@ static int dsa_user_set_eee(struct net_device *dev, struct ethtool_keee *e)
- 	int ret;
- 
- 	/* Check whether the switch supports EEE */
--	if (ds->ops->support_eee && !ds->ops->support_eee(ds, dp->index))
-+	if (!ds->ops->support_eee || !ds->ops->support_eee(ds, dp->index))
- 		return -EOPNOTSUPP;
- 
- 	/* Port's PHY and MAC both need to be EEE capable */
-@@ -1253,7 +1253,7 @@ static int dsa_user_get_eee(struct net_device *dev, struct ethtool_keee *e)
- 	int ret;
- 
- 	/* Check whether the switch supports EEE */
--	if (ds->ops->support_eee && !ds->ops->support_eee(ds, dp->index))
-+	if (!ds->ops->support_eee || !ds->ops->support_eee(ds, dp->index))
- 		return -EOPNOTSUPP;
- 
- 	/* Port's PHY and MAC both need to be EEE capable */
 -- 
-2.30.2
-
+Thanks,
+Sasha
 
