@@ -4,73 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD1BE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 16:16:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC4BE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 17:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f0PnjnuFmwfGJ4/f1r00zdPmTrvRH6FRCjme7Zhxk+8=; b=aUmBDAv78ILWojIut6PrcSYPHr
-	qTza5qzZk1fEHoPs2qXVg0HwSnXPFVSw1Bq/9t1zzIMGkX61FmLbxH3zTISMqVzRwYfxhrHPNkK1o
-	TRVDmZXB6os1pjseNgm4Z+89NKzwADyRcw6fHjhYPVnE8hzavexV+/rwb0bz74CzXh/vZg6ifzwQR
-	rv+UiGT9ASwvHGEA+iOB6ZOJIyBdRLH4qqxYRkMV4w6ib2OC75qA3bm+EDWd9rivP7NQamOoBvhp9
-	MOKNMv25IkCS5OAWrMRH11z/Yar7E4iQ4ZqBcRqC7yiAVoWrtyXtFlBwdse2mm7bf2tBlPwu4P4SY
-	uPhZhSPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=thZ6HBScxy6hjzTPhBEM1jXA6AkJmhpnW61fmrZJx8k=; b=nuJbwYSVNM2NRn6JFYrjfMBNoH
+	mzAw7+se2Usr1UdID/AbC7FQ0qPftAY+QAZcFJxjF+2VUUqAx1AetEyqmRMmmXiRZ5qDTBY/4+Y5C
+	A2q/J8bOYjRAUcyyws5iOGaf73ppqEv5aO2LbOQ/Nk8OYyrA/sKQ8KA90xNZTfq4YJO6U3umUckmh
+	ovI1bci3/Mde5XMsGBbUspJZ8C/Tr9gYideUdIHmuux36E7plGlfKM+BXhgPkjuPELuNi4A6xWLCw
+	iJgmkY9EcldVwO+/Pi2P8ICEyx1q52G5GBss58FPP+IJ0ImHWkbMzr83oJo2OlMnIIGB2ss/VWfQp
+	HWQkgi+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL2uV-0000000C3f2-2m0p;
-	Tue, 10 Dec 2024 16:16:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tL42y-0000000CH01-0zja;
+	Tue, 10 Dec 2024 17:29:20 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL2qf-0000000C2xL-3xGx;
-	Tue, 10 Dec 2024 16:12:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4C1825C5486;
-	Tue, 10 Dec 2024 16:11:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38D41C4CED6;
-	Tue, 10 Dec 2024 16:12:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733847152;
-	bh=aeFcHfhyyi6Hrc1ORc56BM7zT3V7KDTDRrWatg2IVuM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tNyKLcLf9TBPZY/+magH1b8HAo631nln+OPc5sR6f4ayS8hvBfvwQPECC9oIm9ag5
-	 LCeTAGJ8duFEitSd1+oL2LJp9rHp5BH4DocBeF2Bv8BdcJtdCaHyWooP0i2kXRRUvq
-	 ZcLqGR+StgEpRHOLLCIw3mPcZElRJNRJuN6fbGm39WIn5xZ55aptvWyx9tlGVKz24c
-	 KMF8WTpz3g1u0nx65+IjO2ma/Pj0w759l4H3HgL3Uh0tj4dNNLLMonbl4+8bAZYCu6
-	 FTJJv/kq4mgaYBi6sPjghLxgc3fEXCou7AiLit1XNSNqte8p5C7RIE05x9BJ4RVNgS
-	 xlERbS1/Oj/2g==
-Date: Tue, 10 Dec 2024 11:12:30 -0500
-From: Sasha Levin <sashal@kernel.org>
-To: Saravana Kannan <saravanak@google.com>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
-	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Thierry Reding <treding@nvidia.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
-	matthias.bgg@gmail.com, elder@kernel.org, ricardo@marliere.net,
-	sumit.garg@linaro.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH AUTOSEL 6.11 08/15] drm: display: Set fwnode for aux bus
- devices
-Message-ID: <Z1hobuvz2S03L9TF@sashalap>
-References: <20241204221726.2247988-1-sashal@kernel.org>
- <20241204221726.2247988-8-sashal@kernel.org>
- <CAGETcx8bhzGZKge4qfpNR8FaTWqbo0-5J9c7whc3pn-RECJs3Q@mail.gmail.com>
- <CAGETcx-6yHV5xr1j7krY8LShCF5JATX0NSwjeRUL9+3TLCMq9w@mail.gmail.com>
+	id 1tL42v-0000000CGyz-1XUS
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Dec 2024 17:29:19 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-725f4623df7so2171287b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 09:29:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=broadcom.com; s=google; t=1733851754; x=1734456554; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=thZ6HBScxy6hjzTPhBEM1jXA6AkJmhpnW61fmrZJx8k=;
+        b=Pcl3F6Nm7nuHoFZMkB00XvRJmvcsj/ssr5FmT3QT+238Tnle+PMFyJCwdWZ1cbWl3V
+         AHu8EzENTTvB458jpBqT9216Y4QZCOyjJRjPrftmOsNOeb90TVnM9Wjj1HZPTPQZQkzq
+         fuMjTnQ/sw6HnfzMo/rrVGZVJCH6Gv5Dmv4qU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733851754; x=1734456554;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=thZ6HBScxy6hjzTPhBEM1jXA6AkJmhpnW61fmrZJx8k=;
+        b=gyvDpW00pGaJYHzhDtr4augA8Wg7jihG9DOL+x7sHUul/BpFHyB05wPd7IffZq0wWJ
+         hVgPp3MKhJpYu2aV0Aza36vE3+ns7dulhkL+vT+Jat5+sOXjPCshGn+8EyaYB6jRePzU
+         uYZuL7CbusV/j33yVFlzFoW6sEkYc/8BK6mpOcIWk1NvmzPxoEoQbhYFEl8yKvmnKl+Z
+         wSr8ksMjSzQbk6RTAL7yHYiNTOa/AT6BW+THSQXnSsKkPkNWIrI8IcnO46EXOR1j7VJf
+         axVnUG2CnB8aophGp94wfPZC52sJdAy4FWX+z5T+aLQDPjBquSIr9+Y+gAK5g5RtToFo
+         D6Bw==
+X-Forwarded-Encrypted: i=1; AJvYcCXSyPOcpRycBU4LffmGuGCZUZK/FMgwEd1GTSOpcY7oWxH/t9m+Bgo6hvmeoqBHvu6rHA2WzlYEjmZRMio18A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwOq2cttO3RnjkVqfCb3vN2LHORkCizCCCVR/RsywnEKoOUwZXT
+	BvIqK/KQbt7SmQ6+J4AqVZ7gopC3ZFBLrLvENWEhxFJquO6HTOrjeEb7dnW+kw==
+X-Gm-Gg: ASbGncv1qTJ8fAjH+U3lO3byhYRJmA7EF3awFygdsly7H1TlgVGn+O0v1tHEgfd+SGu
+	ecmGJtXdU1PWWiE6ujB6a9yyM2ZzU5MHCkTVBwyTnW+CzTMEWyjzS8Kmiph4xhxqtqE7+xbpHgs
+	edb+ib9Yap85w/AZIbbe55SACQermcWpmXk8AGTKoJgJShZEeH4mjdbQLZED8ozyZOS4QHTzOwM
+	1Ipq/aIV51LxQc57XFOVe2er/g+nFukSaSAjwFwEtMdGwcYzLKJxV3QlVr7nAbGOPJwyZV29YRX
+	dDqFCm1h3IDNwXRePQ==
+X-Google-Smtp-Source: AGHT+IGswyqLLELjtBCArvNLOpVscRIPHwqHRgt711FovFWA1BmClq8upJlUYZEQIZa8zi/YjLEFzg==
+X-Received: by 2002:a05:6a00:1acc:b0:725:ae5f:7f06 with SMTP id d2e1a72fcca58-7273cb9e915mr9683950b3a.23.1733851754514;
+        Tue, 10 Dec 2024 09:29:14 -0800 (PST)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725dc0b3ed5sm5585584b3a.87.2024.12.10.09.29.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Dec 2024 09:29:13 -0800 (PST)
+Message-ID: <26fb01e6-a735-4bdc-a074-5dd141d9db48@broadcom.com>
+Date: Tue, 10 Dec 2024 09:29:05 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGETcx-6yHV5xr1j7krY8LShCF5JATX0NSwjeRUL9+3TLCMq9w@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 1/9] net: dsa: remove check for dp->pl in EEE
+ methods
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ar__n__ __NAL <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>,
+ "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+ Simon Horman <horms@kernel.org>, UNGLinuxDriver@microchip.com,
+ Vladimir Oltean <olteanv@gmail.com>, Woojung Huh <woojung.huh@microchip.com>
+References: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
+ <E1tL13z-006cZ7-BZ@rmk-PC.armlinux.org.uk>
+Content-Language: en-US
+From: Florian Fainelli <florian.fainelli@broadcom.com>
+Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
+ xsBNBFPAG8ABCAC3EO02urEwipgbUNJ1r6oI2Vr/+uE389lSEShN2PmL3MVnzhViSAtrYxeT
+ M0Txqn1tOWoIc4QUl6Ggqf5KP6FoRkCrgMMTnUAINsINYXK+3OLe7HjP10h2jDRX4Ajs4Ghs
+ JrZOBru6rH0YrgAhr6O5gG7NE1jhly+EsOa2MpwOiXO4DE/YKZGuVe6Bh87WqmILs9KvnNrQ
+ PcycQnYKTVpqE95d4M824M5cuRB6D1GrYovCsjA9uxo22kPdOoQRAu5gBBn3AdtALFyQj9DQ
+ KQuc39/i/Kt6XLZ/RsBc6qLs+p+JnEuPJngTSfWvzGjpx0nkwCMi4yBb+xk7Hki4kEslABEB
+ AAHNMEZsb3JpYW4gRmFpbmVsbGkgPGZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tPsLB
+ IQQQAQgAywUCZWl41AUJI+Jo+hcKAAG/SMv+fS3xUQWa0NryPuoRGjsA3SAUAAAAAAAWAAFr
+ ZXktdXNhZ2UtbWFza0BwZ3AuY29tjDAUgAAAAAAgAAdwcmVmZXJyZWQtZW1haWwtZW5jb2Rp
+ bmdAcGdwLmNvbXBncG1pbWUICwkIBwMCAQoFF4AAAAAZGGxkYXA6Ly9rZXlzLmJyb2FkY29t
+ Lm5ldAUbAwAAAAMWAgEFHgEAAAAEFQgJChYhBNXZKpfnkVze1+R8aIExtcQpvGagAAoJEIEx
+ tcQpvGagWPEH/2l0DNr9QkTwJUxOoP9wgHfmVhqc0ZlDsBFv91I3BbhGKI5UATbipKNqG13Z
+ TsBrJHcrnCqnTRS+8n9/myOF0ng2A4YT0EJnayzHugXm+hrkO5O9UEPJ8a+0553VqyoFhHqA
+ zjxj8fUu1px5cbb4R9G4UAySqyeLLeqnYLCKb4+GklGSBGsLMYvLmIDNYlkhMdnnzsSUAS61
+ WJYW6jjnzMwuKJ0ZHv7xZvSHyhIsFRiYiEs44kiYjbUUMcXor/uLEuTIazGrE3MahuGdjpT2
+ IOjoMiTsbMc0yfhHp6G/2E769oDXMVxCCbMVpA+LUtVIQEA+8Zr6mX0Yk4nDS7OiBlvOwE0E
+ U8AbwQEIAKxr71oqe+0+MYCc7WafWEcpQHFUwvYLcdBoOnmJPxDwDRpvU5LhqSPvk/yJdh9k
+ 4xUDQu3rm1qIW2I9Puk5n/Jz/lZsqGw8T13DKyu8eMcvaA/irm9lX9El27DPHy/0qsxmxVmU
+ pu9y9S+BmaMb2CM9IuyxMWEl9ruWFS2jAWh/R8CrdnL6+zLk60R7XGzmSJqF09vYNlJ6Bdbs
+ MWDXkYWWP5Ub1ZJGNJQ4qT7g8IN0qXxzLQsmz6tbgLMEHYBGx80bBF8AkdThd6SLhreCN7Uh
+ IR/5NXGqotAZao2xlDpJLuOMQtoH9WVNuuxQQZHVd8if+yp6yRJ5DAmIUt5CCPcAEQEAAcLB
+ gQQYAQIBKwUCU8AbwgUbDAAAAMBdIAQZAQgABgUCU8AbwQAKCRCTYAaomC8PVQ0VCACWk3n+
+ obFABEp5Rg6Qvspi9kWXcwCcfZV41OIYWhXMoc57ssjCand5noZi8bKg0bxw4qsg+9cNgZ3P
+ N/DFWcNKcAT3Z2/4fTnJqdJS//YcEhlr8uGs+ZWFcqAPbteFCM4dGDRruo69IrHfyyQGx16s
+ CcFlrN8vD066RKevFepb/ml7eYEdN5SRALyEdQMKeCSf3mectdoECEqdF/MWpfWIYQ1hEfdm
+ C2Kztm+h3Nkt9ZQLqc3wsPJZmbD9T0c9Rphfypgw/SfTf2/CHoYVkKqwUIzI59itl5Lze+R5
+ wDByhWHx2Ud2R7SudmT9XK1e0x7W7a5z11Q6vrzuED5nQvkhAAoJEIExtcQpvGagugcIAJd5
+ EYe6KM6Y6RvI6TvHp+QgbU5dxvjqSiSvam0Ms3QrLidCtantcGT2Wz/2PlbZqkoJxMQc40rb
+ fXa4xQSvJYj0GWpadrDJUvUu3LEsunDCxdWrmbmwGRKqZraV2oG7YEddmDqOe0Xm/NxeSobc
+ MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
+ 7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
+ 95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
+In-Reply-To: <E1tL13z-006cZ7-BZ@rmk-PC.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_081234_066473_B0862B5D 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20241210_092917_676648_31AFDFC3 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +140,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 04:07:45PM -0800, Saravana Kannan wrote:
->On Thu, Dec 5, 2024 at 4:06 PM Saravana Kannan <saravanak@google.com> wrote:
->>
->> On Wed, Dec 4, 2024 at 3:29 PM Sasha Levin <sashal@kernel.org> wrote:
->> >
->> > From: Saravana Kannan <saravanak@google.com>
->> >
->> > [ Upstream commit fe2e59aa5d7077c5c564d55b7e2997e83710c314 ]
->> >
->> > fwnode needs to be set for a device for fw_devlink to be able to
->> > track/enforce its dependencies correctly. Without this, you'll see error
->> > messages like this when the supplier has probed and tries to make sure
->> > all its fwnode consumers are linked to it using device links:
->> >
->> > mediatek-drm-dp 1c500000.edp-tx: Failed to create device link (0x180) with backlight-lcd0
->> >
->> > Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> > Closes: https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca4598@notapiano/
->> > Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> > Signed-off-by: Saravana Kannan <saravanak@google.com>
->> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
->> > Reviewed-by: Thierry Reding <treding@nvidia.com>
->> > Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> > Link: https://lore.kernel.org/r/20241024061347.1771063-2-saravanak@google.com
->> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
->> > Signed-off-by: Sasha Levin <sashal@kernel.org>
->>
->> As mentioned in the original cover letter:
->>
->> PSA: Do not pull any of these patches into stable kernels. fw_devlink
->> had a lot of changes that landed in the last year. It's hard to ensure
->> cherry-picks have picked up all the dependencies correctly. If any of
->> these really need to get cherry-picked into stable kernels, cc me and
->> wait for my explicit Ack.
->>
->> Is there a pressing need for this in 4.19?
->
->I copy pasted this into several replies. In all those cases I meant
->the kernel version mentioned in the subject.
+On 12/10/24 06:18, Russell King (Oracle) wrote:
+> When user ports are initialised, a phylink instance is always created,
+> and so dp->pl will always be non-NULL. The EEE methods are only used
+> for user ports, so checking for dp->pl to be NULL makes no sense. No
+> other phylink-calling method implements similar checks in DSA. Remove
+> this unnecessary check.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-I'll drop this and the other patch you've pointed out, thanks!
-
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
-Thanks,
-Sasha
+Florian
 
