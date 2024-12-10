@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58D04E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6457DE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:38:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8wn0GSYmONmbslt7dO8ydqzTbIRd55hIrQYVYc6W7YU=; b=rNW21GzDbcC0KFNWm9Wgx8bMFz
-	nQtOkbpCx1AkCQ2LAJz+XQZhjNMql9vp6pn9ZupfmyewLDE4OxnbG8oJd2zMRy3v/ZV44VSucwMVD
-	3E51mdSgylMXd0658kcu+vFdKTqh01FZ2WTbxozDUjgzHkBwdz1yT+MwSZxsuIWbe8J1ReAlBPSjA
-	BNNvSPXfEz7wDIxUB3ZuAj5WCJoWWM2i6/Nx5W41ljzkTkmdez1cO/GveaYD3929Z1Sajkiiy0k52
-	VpSgMqmL638+0PCk/wYuWI2VQ6hCdLCHalxnE7jQW2F0PIMckgu/HJEzlMMPX2dNbaIpVh/0TH2Tm
-	creRyHmw==;
+	bh=n8e/j3rajoB9/ZiaEY3WAVPbJONb+u5IOygQbHZsF7w=; b=Z9XkuKEm2AFFZOd+Nx7wt34l94
+	5CxbLLTsLWje0d/4DWpm5F0xzPDVSmAg9YHv4adIJdaojefGGhkI31NYU/JS+x+QDq/bps0/OTKls
+	S9v3V3fkOnMnsvWnOvmm9C0sdUCB/PyhzHsdb0Y6HH7vy+qeBmnQ7aS6Hk+Hm8X0uftjE5s3/kvT6
+	ELDW9OuZUJsGkjqFeN4zfpukU+rGvaWofEiuRzL8/OGXf+HxtEMAMi/XZDCiIl27vaMFMSiaGtkzQ
+	uJxg0mWZYUnRwU6k22m+XFRbapsu+D9Q0W4h0o7y7tP6Ai5wSrWlB6WfOu71iZtR+2BHnXeyGS8ds
+	/gdRi7yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvij-0000000AjKu-1sq6;
-	Tue, 10 Dec 2024 08:35:53 +0000
+	id 1tKvkm-0000000AjkR-2dSt;
+	Tue, 10 Dec 2024 08:38:00 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvdR-0000000AiII-0P47;
-	Tue, 10 Dec 2024 08:30:26 +0000
+	id 1tKvfA-0000000AifY-2f6t;
+	Tue, 10 Dec 2024 08:32:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733819422;
-	bh=D/akYzP1UwzneFmaGWcaSpwJggtt+UsOpmWeS6mis/c=;
+	s=mail; t=1733819531;
+	bh=n8e/j3rajoB9/ZiaEY3WAVPbJONb+u5IOygQbHZsF7w=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OtaEKcFobIeglbDwbkmFobtAfnmBovLhDxJUjjWL/t6PVvSZuaXLtSI52sIOfl4cC
-	 UtbFmBpoY+yxn4c8d1awEsyTc9Kdcth6HFh0F1y/u4R8CaksvsMz4RvNHL2RrHhX57
-	 R1yxriioWrVYsJPnfSOV4DKmdVltVeho0r3k3M8FsMNW03tJlKqku+I7YB1FGxVm8F
-	 1SClMyOrznX+s7HdGlCiHVPv7vOiRtSAlsixBXyO+i+yxTHf5IlPyetUcBArbByBgp
-	 Hb8dlc39gcCQllZNMZ/XLD8FqbJQx4zan8YaIzkhqbPdSBV7dXoVCDltf7oKH+/hGv
-	 wjV2Oa0q/wdog==
+	b=ovDlKYiXXO3tJGCZbcwjFkT7+kuztqhqvUzkNwz4//El+zn0w8vaFlLH31ubbHBfq
+	 59v2QCYKJ/4wPkLeJkMwEN8Gps5YykbQTjEzQHXBmh+1f82AWjCtXjFp4PCHboYqTD
+	 l/8+2dJ1N4a2HCR8yfGEwxNp14LFIY5IIJzRPRlYeEQ7tQ95odIBbh//PCIlBJTHeF
+	 d/vVrKE7ylie7Ja1PEwgrZBweFwdlkdMivwLclU3t0cEpCRWSOhFdWKK86cje1vOne
+	 qs9nBnfObv18qodQCJ9m9y75TgrfUmp7HEhD8QpNNT133B+va9Pz9D2Lwq2G3fb6jZ
+	 NorrQGudizMFQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE24217E14EA;
-	Tue, 10 Dec 2024 09:30:21 +0100 (CET)
-Message-ID: <ad1ac38c-6a04-4f84-a8fc-998d97c542e5@collabora.com>
-Date: Tue, 10 Dec 2024 09:30:21 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5808817E14EA;
+	Tue, 10 Dec 2024 09:32:10 +0100 (CET)
+Message-ID: <d65fc527-5919-4454-865c-4731944e48a7@collabora.com>
+Date: Tue, 10 Dec 2024 09:32:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] soc: mediatek: Add command for APU SMC call
-To: "Karl.Li" <karl.li@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Chungying Lu
- <chungying.lu@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- chien-chih.tseng@mediatek.com, andy.teng@mediatek.com
-References: <20241030013533.855696-1-karl.li@mediatek.com>
- <20241030013533.855696-2-karl.li@mediatek.com>
+Subject: Re: [PATCH 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
+To: =?UTF-8?B?S2FybCBMaSAo5p2O5pm65ZiJKQ==?= <Karl.Li@mediatek.com>
+Cc: =?UTF-8?B?Q2h1bmd5aW5nIEx1ICjlkYLlv6DnqY4p?= <Chungying.Lu@mediatek.com>,
+ =?UTF-8?B?QW5keSBUZW5nICjphKflpoLlro8p?= <Andy.Teng@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?Q2hpZW4tQ2hpaCBUc2VuZyAo5pu+5bu65pm6KQ==?=
+ <Chien-Chih.Tseng@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>
+References: <20241024092608.431581-1-karl.li@mediatek.com>
+ <20241024092608.431581-4-karl.li@mediatek.com>
+ <083c8f7b-0969-4ca3-8a91-35f5767c5f32@collabora.com>
+ <CAGXv+5Fw+qZhTTgJq0QdiQHgiQP2ByR1tgae2+k4erx+0fp61g@mail.gmail.com>
+ <a3c3280478bf86eb97a422782ce60ec4eaa35224.camel@mediatek.com>
+ <0f98405c40530d81c342af06dea593e7babedeac.camel@mediatek.com>
+ <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241030013533.855696-2-karl.li@mediatek.com>
+In-Reply-To: <cf75f3c3932ddc50f5697bc4f394bd77fc16cd39.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_003025_305776_4AE37CE6 
-X-CRM114-Status: UNSURE (   5.83  )
+X-CRM114-CacheID: sfid-20241210_003212_825235_23500B9C 
+X-CRM114-Status: UNSURE (   9.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,14 +96,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/10/24 02:35, Karl.Li ha scritto:
-> From: Karl Li <karl.li@mediatek.com>
-> 
-> Add command for APU SMC call.
-> The APU microprocess's start and stop sequence will process in ATF.
-> 
-> Signed-off-by: Karl Li <karl.li@mediatek.com>
+Il 05/12/24 08:32, Karl Li (李智嘉) ha scritto:
+> On Thu, 2024-12-05 at 07:05 +0000, Karl Li (李智嘉) wrote:
+>> Dead maintainers,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+LOL :-D
 
+> "Dear" maintainers. Really sorry for the typo...
+>>
+>> I hope you're doing well. Just a warm reminder that we're following
+>> up
+>> on these patch and really appreciate any feedback you might have.
+
+I already gave you feedback on this patch.
+
+Cheers,
+Angelo
+
+>>
+>> Thanks you in advance for your review.
+>>
+>> Regards,
+>> Karl
+>>
 
