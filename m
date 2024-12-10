@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EECEDE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 21:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 083D2E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 21:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lCSUmM6tJtHk1cryES3nVKP4N3a8/9+7aIRBtf/l8Mg=; b=gQ7hPHYdPPD0bqraq5MukYc/V+
-	TW/7Mav42UaUaVYep8YKgnLULogRXU+BSJTyLxcjDsmBV2ohTMCPHgQIlzsVOFTtMBcnh/q17IVlN
-	Iy57VvHHZLtjNNmexl++TAeyIKu7Mwi9OSgB4Ejjn/d35f5Rs3CAGMdKZvi16zi/0NkAs/NUy0UOS
-	3AIWrGmnr7KEEX/maCE9xR2cPyLJ2KMWWNm4ozgMFDyTR4Z9xd5Xlt+9tFzqgrjsZZ+Hj9N4kuGdh
-	t4NG9POyn8TpEmClS50hDo67wyxRF6hMr/nMx8svS99JugtcNcLUziCzE7Ifc04U+wrhct74eDGbb
-	dyNp6B+g==;
+	bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=; b=xJ5jR3s4cRvLuPpDg8aZ3HWdl/
+	e5ZgUqEwmlCJcubmGyo363+cMJAXb1B9IeCaatKRnApSnQnCmnP1T3aZKyx/OyENGwV9alYW9Xdz0
+	jY2uYpOmLhACFL9rxp1BDG4gOS3pXbRHm4OOgOAq5qXuKaw1sSS82sgVEoPyKoF4YFTuXoAmeHcKF
+	exauBroaamicmx1caJYF5qaWQvoE5T5l8a/izaLli8P3oH+iRxUyfnwq1uiNUhfsUgzusKFV0Tamc
+	91UHXE3UpLFkkDVXDKsEEBzzT3VCinOxIbxhs5BsEbT/RUCarpKdAQ7h4hp9wav9E64NZ1ALGR3LF
+	l9byqKvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7Rz-0000000Clgt-0XUb;
-	Tue, 10 Dec 2024 21:07:23 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1tL7az-0000000CmtI-0S8d;
+	Tue, 10 Dec 2024 21:16:41 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7QQ-0000000ClNU-33XI;
-	Tue, 10 Dec 2024 21:05:47 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-aa676e4f36cso41603666b.2;
-        Tue, 10 Dec 2024 13:05:46 -0800 (PST)
+	id 1tL7Zw-0000000Cmjz-0HnR;
+	Tue, 10 Dec 2024 21:15:37 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-aa67bc91f87so47760266b.1;
+        Tue, 10 Dec 2024 13:15:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733864745; x=1734469545; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1733865334; x=1734470134; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=lCSUmM6tJtHk1cryES3nVKP4N3a8/9+7aIRBtf/l8Mg=;
-        b=nXictbvstimug/X0/RkJ51DxClwSer51EAFjs4TB4P73Jx5Kk7LPXRVZcJI7B7uS/L
-         KFtdXAkAefLQl+lCiNcMI7d1PztWRf9npqdPJ7qtsw+OBy3yV7yf73V1+as06xtkndhB
-         9YLH1Mm13WQkfi0vcOY06rZ0qi8k3xzWpAxo51NFvwEoypufzfu1tQjB1T9pwp4ljJw4
-         rZ1srkzJXgYUZCXvekk8wQoWbWp9xpB3IPrxskDdJAviTiiLya2avuBYqEbUPA8AlPB7
-         8Sul7CMCzc/KDK1gO5r/N/rsShXGl1Va7CX1fXNYYS0uHhc0Qsk5Jd7GvV4uzuhK1JhV
-         q4kQ==
+        bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=;
+        b=GPQeFjA9qRRPs0fMbLEGml4wwCrtNrKG6b4EJxcj7ybqDz5MrD6U20cV8SFdun0sR0
+         mImjFAnU2+EjMUa0UOycmuoQqpZ6FLc1r8X7FeACJIaEI97hSCO+P0N7rQyS7O4M0Lfx
+         vf4XlXqwcf6Lg2P88iNNf7+PSoatI2x6YKCF4s6oqsuByfc7lTjiIALBoWVfhbt+Cdqw
+         cP6S1HKsVmFoTAMfrRz9JQVA5DtlgEbZMPDi7YWViHW1wvr6PmPEeY/VAyA7xVWSdvWr
+         gytLGVNVoTBD/yZdoJb+4PX6D6f/hvcf4HOLdnN/2QT85W7hkFy0NbuixeXX4OeFI6H+
+         WG2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733864745; x=1734469545;
+        d=1e100.net; s=20230601; t=1733865334; x=1734470134;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lCSUmM6tJtHk1cryES3nVKP4N3a8/9+7aIRBtf/l8Mg=;
-        b=BOGeYDd3rKiXWdw3pMQNWJjgU1LSPJiNGSfeWBf22JGGWRlw61BAuoYOcRVJHQHmYO
-         0eGDKwfzl+d/nnmx/3jxKysWN4GM9bkGsPR7g0263qWvWQU/uxsE0IdrsYcur9yEp7W5
-         arf08gW6rAFhTjWVhihUN9Lm8XFcUlYoK4IsUgR55sw9UOCqO9GblLrvJLqP+VU27UNI
-         QyxEQ1lkJ4T+WI8FLMRI1V2W2IQl5EfRHx4/81QSpBcsIjiMwEXzvZA0q4rYtYtRGBog
-         To/Tmxdbybiqjx6+b31PO37XAYfKyTC1E6ESsMbJKHd2sSmSWWNDfDUy/oztK6sZDN1l
-         LMug==
-X-Forwarded-Encrypted: i=1; AJvYcCWUhgLYZGSEaG6SbWwvkEScLIDYUzShwm5NwGzhqMq8Q80YrzQFW9vLSH1bxVw3aephluTNnWWbBlNbwFJXgTAH@lists.infradead.org, AJvYcCWfByLiTpQvU6PRw3B9n3gs1cCt5cSi25OmyQETcYdLOq2/ZFwK/Ns8Yif7F16YsIdJZaGUsPY2bE9TWGVWVIQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywltj0r4BrdnGF3wdgzCZ191fHnfRC8xjyF+DnJ56ZFJvgFgGsY
-	KGyH/UgyJo96H00N9VOBo14QLjIh9zApQKYOPmdB4ouVOBY2MNZY
-X-Gm-Gg: ASbGncvNePiDsvTkm2BetJmSFQVl9K/yxMiYMyEjOhDPy0IcGm8hoZ+G5PpudIciwxL
-	uXsJsf2XKc+dRaKwt2DN4hE3gIiX3ewPNJBX/9d+DqsznTOSZcYSc232GDAu+k8UzpjRpFRlY20
-	cudYzN2yWRqcnXleIBpI6ujKqgr4tG+DTOmqLshG/m56BlPafUfBc1xv2um42aIuEc6tP6NUi/y
-	EpPpy+IWpv9EgBGdss+o4Qgw+CtdcQINzM8oj0/9g==
-X-Google-Smtp-Source: AGHT+IH6uzJqyl9gC3tF9Zg5rL20SJAzl4Fe1it808wM2vN5YRgy4x6E1uwD9tzrmWPmIFxFqiytkQ==
-X-Received: by 2002:a17:907:868a:b0:aa5:163c:69cb with SMTP id a640c23a62f3a-aa6b13ad3abmr7899166b.12.1733864744607;
-        Tue, 10 Dec 2024 13:05:44 -0800 (PST)
+        bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=;
+        b=LwFw+GVo4SbI7s9rAAly/w/RyVV+MUIda/85yqZEfP2aTradiSk19mnz+kcGiwtVfU
+         hv06PnZiRlcAjPcsS3OeB0tkITHGywVY+s0IjvUQdgY10uSkcCM+wkbXefapCXV4SXnq
+         vLXMgHDpHq0UGWL5Gjy5aXKPIYlFkN1UX/f2PGy670448TgWNSJr8rMYux8mih0cOZYU
+         jVEIqEHCEvrVHkSKlVzKAhOdVw8E0XpGzyPqVsmMvnEz2wAc0fxXLFyjCtkdpKqzMe4F
+         e/iipS0drOzREvL7Oek4hlm9aHCKQJWmMw9rz/jxjI7Tss2wsBClju96vN7AkdsaqgCB
+         kqtQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVbfCrhRGQ4jc6Zp4f/i3qOK5c90Su4Jt/8QU1mgGVBb5O+wajbRcE7Y74sYIW5GKbk/ZDoz0pBHIX0Chs9r/Va@lists.infradead.org, AJvYcCWu1asHuuhnpVGXy9GqWI7Ob9UB8DQL6WBglaavefwUCjz0M5brkmFYi7rMgD7hury7o+crAX/c+3uiBVOvwT0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFefBevSqKbhIp07STS063Ec+qWoBygeZhkd5sWSzI1kjsW3Mx
+	5iyguBEj32by2QiaakHc1H8VUWrY/S6C0gpGlBvKb303X77qJIXN
+X-Gm-Gg: ASbGncvRptMT7FQ/qzyHFgvmPF8gVx5+EplFE3GyAtVaQi8OBFcIpbf8ZCJYfUvAlGU
+	EHLL0SQCqIrdkeDavsh8fmFFPRtnJXhlCItPjkmxILP+2KgPhpcGHpSkuxzZR4tr+hvgwgtRvwx
+	ZIIApJLOX5Q9uWDDa1+Ul+0pTlL2iDwCL0W2QOLxBTqB6TmQSw5Rp4H5c3xmOzwtnQBTvJL6zzz
+	/szmzg9Wrw8vZ5ujERkY11kYJgQDyEb4RoZnHevSw==
+X-Google-Smtp-Source: AGHT+IGxAjFXMAf+F8mEXMc+auUHpdwpbNPCA+k5jUjJE3/MSupwfdCkIxkoOyQU//98Mv9Et2opNA==
+X-Received: by 2002:a17:907:2cc6:b0:a9a:b50:1c4f with SMTP id a640c23a62f3a-aa6b13c92a2mr5523866b.13.1733865333794;
+        Tue, 10 Dec 2024 13:15:33 -0800 (PST)
 Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa6a263efc1sm168094066b.68.2024.12.10.13.05.42
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa650ea7369sm596924566b.74.2024.12.10.13.15.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 13:05:44 -0800 (PST)
-Date: Tue, 10 Dec 2024 23:05:40 +0200
+        Tue, 10 Dec 2024 13:15:32 -0800 (PST)
+Date: Tue, 10 Dec 2024 23:15:29 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>,
-	Jakub Kicinski <kuba@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
 	Russell King <linux@armlinux.org.uk>,
@@ -86,18 +86,19 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	upstream@airoha.com
 Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
  AN8855 Switch MFD
-Message-ID: <20241210210540.jxhni4p2lrvdwoop@skbuf>
+Message-ID: <20241210211529.osgzd54flq646bcr@skbuf>
 References: <20241209134459.27110-1-ansuelsmth@gmail.com>
+ <20241209134459.27110-1-ansuelsmth@gmail.com>
  <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241209151813.106eda03@kernel.org>
+ <20241209134459.27110-6-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241209151813.106eda03@kernel.org>
+In-Reply-To: <20241209134459.27110-6-ansuelsmth@gmail.com>
+ <20241209134459.27110-6-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_130546_799158_247349FD 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241210_131536_110031_3A4354A7 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,19 +113,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2024 at 03:18:13PM -0800, Jakub Kicinski wrote:
-> On Mon,  9 Dec 2024 14:44:22 +0100 Christian Marangi wrote:
-> > +	regmap = devm_regmap_init(priv->dev, NULL, priv,
-> > +				  &an8855_regmap_config);
-> > +	if (IS_ERR(regmap))
->             ^^^^^^^^^^^^^^
-> > +		dev_err_probe(priv->dev, PTR_ERR(priv->dev),
->                                          ^^^^^^^^^^^^^^^^^^
-> > +			      "regmap initialization failed\n");
-> 
-> wrong ptr?
-> -- 
-> pw-bot: cr
+On Mon, Dec 09, 2024 at 02:44:22PM +0100, Christian Marangi wrote:
+> +int an8855_mii_set_page(struct an8855_mfd_priv *priv, u8 phy_id,
+> +			u8 page) __must_hold(&priv->bus->mdio_lock)
+> +{
+> +	struct mii_bus *bus = priv->bus;
+> +	int ret;
+> +
+> +	ret = __mdiobus_write(bus, phy_id, AN8855_PHY_SELECT_PAGE, page);
+> +	if (ret < 0)
+> +		dev_err_ratelimited(&bus->dev,
+> +				    "failed to set an8855 mii page\n");
+> +
+> +	/* Cache current page if next mii read/write is for switch */
+> +	priv->current_page = page;
+> +	return ret < 0 ? ret : 0;
+> +}
+> +EXPORT_SYMBOL_GPL(an8855_mii_set_page);
 
-Also, why continue execution if devm_regmap_init() failed?
+You could keep the implementation more contained, and you could avoid
+exporting an8855_mii_set_page() and an8855_mfd_priv to the MDIO
+passthrough driver, if you implement a virtual regmap and give it to the
+MDIO passthrough child MFD device.
+
+If this bus supports only clause 22 accesses (and it looks like it does),
+you could expose a 16-bit regmap with a linear address space of 32 MDIO
+addresses x 65536 registers. The bus->read() of the MDIO bus passthrough
+just performs regmap_read(), and bus->write() just performs regmap_write().
+The MFD driver decodes the regmap address into a PHY address and a regnum,
+and performs the page switching locally, if needed.
 
