@@ -4,101 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 083D2E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 21:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41473E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 21:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=; b=xJ5jR3s4cRvLuPpDg8aZ3HWdl/
-	e5ZgUqEwmlCJcubmGyo363+cMJAXb1B9IeCaatKRnApSnQnCmnP1T3aZKyx/OyENGwV9alYW9Xdz0
-	jY2uYpOmLhACFL9rxp1BDG4gOS3pXbRHm4OOgOAq5qXuKaw1sSS82sgVEoPyKoF4YFTuXoAmeHcKF
-	exauBroaamicmx1caJYF5qaWQvoE5T5l8a/izaLli8P3oH+iRxUyfnwq1uiNUhfsUgzusKFV0Tamc
-	91UHXE3UpLFkkDVXDKsEEBzzT3VCinOxIbxhs5BsEbT/RUCarpKdAQ7h4hp9wav9E64NZ1ALGR3LF
-	l9byqKvQ==;
+	bh=qZzh9mBdmhE5Urajqv/ZTfilNnvYOwgh+F/3unwIIPs=; b=OoEtiyx61jfEM1KtNkpf4uzeaA
+	dQmYmeBlBmOae7FQgo6/5MfLhaGl5rplqsB3RYVvnrHzep+u3+79qseM3PFp0SA9npzxTpMsdRSQO
+	k2oUe/8r02s/3IMPpWCopAp8hIWp8v0+GorQ4h/gALED3wMeuXshF2g3w4Ya7KOWZ5dfPqUFE7x6o
+	XNKm/vLCuQInZjGX2W24GEtok3GGub50OXbtF00G7m4541AREJrjDjWKyvZZoXsv8R96bSivV5MCD
+	m6F9IQTQLTetBKMSy83xuSHGeNrbq47HvujfCU4WqRMeDN9LSHaGlobRDLu4WjZJ2gXLLO9QD/Hbk
+	8IkFmrBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7az-0000000CmtI-0S8d;
-	Tue, 10 Dec 2024 21:16:41 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1tL80g-0000000CqdX-1Vfd;
+	Tue, 10 Dec 2024 21:43:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL7Zw-0000000Cmjz-0HnR;
-	Tue, 10 Dec 2024 21:15:37 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-aa67bc91f87so47760266b.1;
-        Tue, 10 Dec 2024 13:15:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733865334; x=1734470134; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=;
-        b=GPQeFjA9qRRPs0fMbLEGml4wwCrtNrKG6b4EJxcj7ybqDz5MrD6U20cV8SFdun0sR0
-         mImjFAnU2+EjMUa0UOycmuoQqpZ6FLc1r8X7FeACJIaEI97hSCO+P0N7rQyS7O4M0Lfx
-         vf4XlXqwcf6Lg2P88iNNf7+PSoatI2x6YKCF4s6oqsuByfc7lTjiIALBoWVfhbt+Cdqw
-         cP6S1HKsVmFoTAMfrRz9JQVA5DtlgEbZMPDi7YWViHW1wvr6PmPEeY/VAyA7xVWSdvWr
-         gytLGVNVoTBD/yZdoJb+4PX6D6f/hvcf4HOLdnN/2QT85W7hkFy0NbuixeXX4OeFI6H+
-         WG2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733865334; x=1734470134;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=H7QDnRhBemOiZezpHGKSoMKm4TcZsXptVa4lYZVMKw4=;
-        b=LwFw+GVo4SbI7s9rAAly/w/RyVV+MUIda/85yqZEfP2aTradiSk19mnz+kcGiwtVfU
-         hv06PnZiRlcAjPcsS3OeB0tkITHGywVY+s0IjvUQdgY10uSkcCM+wkbXefapCXV4SXnq
-         vLXMgHDpHq0UGWL5Gjy5aXKPIYlFkN1UX/f2PGy670448TgWNSJr8rMYux8mih0cOZYU
-         jVEIqEHCEvrVHkSKlVzKAhOdVw8E0XpGzyPqVsmMvnEz2wAc0fxXLFyjCtkdpKqzMe4F
-         e/iipS0drOzREvL7Oek4hlm9aHCKQJWmMw9rz/jxjI7Tss2wsBClju96vN7AkdsaqgCB
-         kqtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVbfCrhRGQ4jc6Zp4f/i3qOK5c90Su4Jt/8QU1mgGVBb5O+wajbRcE7Y74sYIW5GKbk/ZDoz0pBHIX0Chs9r/Va@lists.infradead.org, AJvYcCWu1asHuuhnpVGXy9GqWI7Ob9UB8DQL6WBglaavefwUCjz0M5brkmFYi7rMgD7hury7o+crAX/c+3uiBVOvwT0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFefBevSqKbhIp07STS063Ec+qWoBygeZhkd5sWSzI1kjsW3Mx
-	5iyguBEj32by2QiaakHc1H8VUWrY/S6C0gpGlBvKb303X77qJIXN
-X-Gm-Gg: ASbGncvRptMT7FQ/qzyHFgvmPF8gVx5+EplFE3GyAtVaQi8OBFcIpbf8ZCJYfUvAlGU
-	EHLL0SQCqIrdkeDavsh8fmFFPRtnJXhlCItPjkmxILP+2KgPhpcGHpSkuxzZR4tr+hvgwgtRvwx
-	ZIIApJLOX5Q9uWDDa1+Ul+0pTlL2iDwCL0W2QOLxBTqB6TmQSw5Rp4H5c3xmOzwtnQBTvJL6zzz
-	/szmzg9Wrw8vZ5ujERkY11kYJgQDyEb4RoZnHevSw==
-X-Google-Smtp-Source: AGHT+IGxAjFXMAf+F8mEXMc+auUHpdwpbNPCA+k5jUjJE3/MSupwfdCkIxkoOyQU//98Mv9Et2opNA==
-X-Received: by 2002:a17:907:2cc6:b0:a9a:b50:1c4f with SMTP id a640c23a62f3a-aa6b13c92a2mr5523866b.13.1733865333794;
-        Tue, 10 Dec 2024 13:15:33 -0800 (PST)
-Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa650ea7369sm596924566b.74.2024.12.10.13.15.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 13:15:32 -0800 (PST)
-Date: Tue, 10 Dec 2024 23:15:29 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
- AN8855 Switch MFD
-Message-ID: <20241210211529.osgzd54flq646bcr@skbuf>
-References: <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
+	id 1tL7zb-0000000CqNZ-3i77;
+	Tue, 10 Dec 2024 21:42:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8838C5C631F;
+	Tue, 10 Dec 2024 21:41:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88FD7C4CED6;
+	Tue, 10 Dec 2024 21:42:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733866926;
+	bh=9qlaJJU5gDo5bAuPmvTR0FrAbcj50IZPIDpRze7PsRE=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=lwdYw6fX/UzDINS0WzcSNG4qwR4KxS518tnfSxkdS1wiU3HK2aTgUTVCIcxYckUwx
+	 Nv+raN3nsb9s6DTvDNLhYni5Rmbn+lDrDQI+wwMux3kWkuS7cIyrbAjrHX9b/XAXFs
+	 QLJWXCMGjpcJwuEaRKAo8fjwynI9JvtV6XIOS0sFR8/LJyDGCZAL0qVHBu9r0mE0/P
+	 WyHB9D7luL16PhXsOVRuO9dFLAYT6LbyNFgyU7FIRScaDdhlzXF6ZjXaUa2rMTd/+O
+	 8FmlimtO5sKqhDKgOLfbiyUbYJv4230M8+8cgvcg/aiNQ6QRtRzHJBk9nc4PF8zMdJ
+	 1p6lND57gIEAQ==
+Date: Tue, 10 Dec 2024 15:42:05 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-kernel@vger.kernel.org
+To: Chen-Yu Tsai <wenst@chromium.org>
+In-Reply-To: <20241210092614.3951748-1-wenst@chromium.org>
+References: <20241210092614.3951748-1-wenst@chromium.org>
+Message-Id: <173386568696.497617.3727087837255802552.robh@kernel.org>
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt8173-elm: Fix MT6397 PMIC
+ sub-node names
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_131536_110031_3A4354A7 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20241210_134208_011245_C0E26300 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,33 +74,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2024 at 02:44:22PM +0100, Christian Marangi wrote:
-> +int an8855_mii_set_page(struct an8855_mfd_priv *priv, u8 phy_id,
-> +			u8 page) __must_hold(&priv->bus->mdio_lock)
-> +{
-> +	struct mii_bus *bus = priv->bus;
-> +	int ret;
-> +
-> +	ret = __mdiobus_write(bus, phy_id, AN8855_PHY_SELECT_PAGE, page);
-> +	if (ret < 0)
-> +		dev_err_ratelimited(&bus->dev,
-> +				    "failed to set an8855 mii page\n");
-> +
-> +	/* Cache current page if next mii read/write is for switch */
-> +	priv->current_page = page;
-> +	return ret < 0 ? ret : 0;
-> +}
-> +EXPORT_SYMBOL_GPL(an8855_mii_set_page);
 
-You could keep the implementation more contained, and you could avoid
-exporting an8855_mii_set_page() and an8855_mfd_priv to the MDIO
-passthrough driver, if you implement a virtual regmap and give it to the
-MDIO passthrough child MFD device.
+On Tue, 10 Dec 2024 17:26:12 +0800, Chen-Yu Tsai wrote:
+> The MT6397 PMIC bindings specify exact names for its sub-nodes. The
+> names used in the current dts don't match, causing a validation error.
+> 
+> Fix up the names. Also drop the label for the regulators node, since
+> any reference should be against the individual regulator sub-nodes.
+> 
+> Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
 
-If this bus supports only clause 22 accesses (and it looks like it does),
-you could expose a 16-bit regmap with a linear address space of 32 MDIO
-addresses x 65536 registers. The bus->read() of the MDIO bus passthrough
-just performs regmap_read(), and bus->write() just performs regmap_write().
-The MFD driver decodes the regmap address into a PHY address and a regnum,
-and performs the page switching locally, if needed.
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y mediatek/mt8173-evb.dtb' for 20241210092614.3951748-1-wenst@chromium.org:
+
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vpca15: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vpca7: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vsramca15: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vsramca7: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vcore: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vgpu: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vdrm: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: buck_vio18: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vtcxo: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_va28: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vio28: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vusb: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vcama: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vmc: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vmch: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vemc3v3: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp1: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp2: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp3: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp4: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp5: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vgp6: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: regulators: ldo_vibr: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
+
+
+
+
+
 
