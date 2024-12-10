@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 041BFE77181
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4321AE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 08:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P3aM/2VGqiQvGYIHVm4rKRsnjQU7G5cTRzOIRtvsnJk=; b=0bPPAkPXlFrgqSb4kFaHGczvKj
-	8CYoOzIg/C/eHp/bDIAVUncq175NMPjjYdq+wQpjmAN5HBcUpHlAbCEttGI+JzVwB+h1+34qeVsfR
-	6N9QFbLGL1RK/hW3AMpXyHZtmrH982AUq5Lh2xfRpk/+JKqA+ZYwKfPLmupEHVOULdpEUPmJDZqu7
-	7Ug4xGYrkwemgO62l2RGgeGrUSdQFPVIv0z0PsmdpZuE8wXKeMkSLupGp4lc6R7J/Xpq8No+9Rrev
-	eT7hwUagkoMPSFxgkE8/HAFIPd2ZFtDr1m0agoLZJIBaySzvyvrYhsZQ7KqYCHFXZpYvYnqViYouZ
-	pb90W5hw==;
+	bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=; b=rYB6CiJQvEe595Nmnh4n6OA2u0
+	1KHP7l6nXtSOIDtL7KFIKxg/n2z9UxOWpH0K/7HH3HU/4C4nFbxW+T+dRg1WrLGd/3jV3g7wblF1k
+	aqp1e/QvzaB28eRO9r3Eogwxbkz65Vnb+5XD/U2ND0C+uWm7V6f23Sq/OR8qS9OJyghhui80rb/1i
+	tuNFdFBPtfqMYEbVBUlTnpOnAalzfG2/AjYbm0Lul0CyGiTtNXPjR527VdFIRNA7tWRf671yuvQrz
+	0NTgjJZk7MMiG8OtwlKLTzTKP7GRtYgp1h+Ad/T1qUPrLJsbBex+21IqFmpzLkDNEXfJ1wtBLH9n6
+	KW0kk+BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvmq-0000000Ak66-0aX2;
-	Tue, 10 Dec 2024 08:40:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tKvos-0000000AkQa-1VRw;
+	Tue, 10 Dec 2024 08:42:14 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvgL-0000000AiwU-2C2V;
-	Tue, 10 Dec 2024 08:33:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733819603;
-	bh=X+tjjsPeLh8i0QPWhtWxfKi4DcKHgKLE/YTGz/q1zQs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZjWTYFMCoXfrQyc3DurtEHV5N+EJaJmZTDdkMUzgAq4y1tvzfERQm5BnIgsoPNmGq
-	 H9e952yr6xN+Zy9soveXM1Zt1n0td6BWZmEbFRTUvIlS9M8B36AQEpGaCOD8tNUqdS
-	 AsLqs05j7z8OrHuXy9njoTMzYGUXCUNScoc/o0ffiHkUvcvnsjqnWk16n9l6qmE5Tf
-	 3R9zDYq7VNIPqj7bnG3AtyjdJgktDfg6UhkR8T4drqg8sXXuafEupGI5JqTVHIksKD
-	 OzOQK1lE4ms8rI541oJtzb9pBAHvUqfrdbPOXwJKEnqeiHieUZYLM30V3DLt9fzN2b
-	 GZd1u5Ff3hZUQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E967017E14EA;
-	Tue, 10 Dec 2024 09:33:22 +0100 (CET)
-Message-ID: <50757699-aca2-423a-b463-5a4d74d63447@collabora.com>
-Date: Tue, 10 Dec 2024 09:33:22 +0100
+	id 1tKvn3-0000000AkBb-0ws6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Dec 2024 08:40:23 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-53df80eeeedso5140810e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 00:40:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1733820019; x=1734424819; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=;
+        b=nx2IJVe9I3KZmb5rQG2skS07fmdSzVHbUq7jTlArC2byk6baQBkaWKTAS2CwdI2G4J
+         Vz3ql1+fcskdfpQxmKsM2DZlsTnJeo581GtvMH/V20XIxCquiil6dQxdavzgbaP4vJCX
+         6dZjcwfYuuAp/GRPpNjWxHBHxbtIhT6LmjkVI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733820019; x=1734424819;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sOUvJSCroFD0KCytXgmkZjSfl4sfftW4avujGnTnXVw=;
+        b=ifHoePZgsR3pK0wGfCh2Aymz5NnwHR/NBh6+bKPVhfqbJgIfvOubGpbzCLAJduoEtx
+         aZiKPSZDcAGVTAazOe+wNTwt8cXNp95WqRJJmneWjDHrp+3hYsRQR7DlJOfLj9/mhH+Z
+         H+bl8YI/xCsT4aHS2F/KfwIt8j55g7X9W/OW9AwLTqvwYoijUcrI21mfrYlzWpCntpJU
+         E6mm8q4qe39wwIe4fhL2Dy0bw72mxT+NRq2uD0A/lyyB80NBc7CeQvB5RxJWVqyBKTcJ
+         P7sW5i1GkRvf4xgRq+7M2bPsin0a1ogS1wtR3uMCuzrLEiaXId4Ep3E6HmLpQ74K+EgA
+         eoJA==
+X-Forwarded-Encrypted: i=1; AJvYcCXuhIkt05uxkjYJ3gRjdByx2UykZNWFb6XzzRnoNNp+YQpZVfbVQCdN0assi4EQJQKpbaZZYtO8dse+BZAJ6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzT/9y16RRkMnCgsosYi/wDJlHQSyTvgBfC+B+wM4JhHHi8UBSg
+	UD/QboDmDJ1X6PDEgYlFHimTCrCPEJ0zd8E01yaTFPBEnRWWnywCX2E3Etq/LCRTEwzXd9UC3ME
+	8nNJvCCqkS6wUrcLxfrIoJOigMqWG8ZTGKSVG
+X-Gm-Gg: ASbGnctNTrKb6EOO2PFpifzWOs53y07fV342sNbWnVtpJWIzptkd8O19/LlT+zwGkVY
+	vEBRXhh4YRqXM+x9xcGxoVQRDMuAhR5DjMtxFz8qvGHibKSBidqjvKzkOxwVlhxc=
+X-Google-Smtp-Source: AGHT+IEcKKrV7NtntOv/HjB/G1zq4DlNB44Pf3+LGaARGt/ovezLGp7A3gf192BysZYg6DvlHdDVPiDTJwrr5ZbymyQ=
+X-Received: by 2002:ac2:4f10:0:b0:53e:3a01:cf4f with SMTP id
+ 2adb3069b0e04-540240c0f8amr1339484e87.14.1733820019366; Tue, 10 Dec 2024
+ 00:40:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
- <631fdcdfd44e0d401e62df67acc206b0762248c7.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <631fdcdfd44e0d401e62df67acc206b0762248c7.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20241030070224.1006331-1-wenst@chromium.org> <20241030070224.1006331-2-wenst@chromium.org>
+ <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
+ <bbaa0c8f-9702-4252-a674-e46fb51f0a2a@collabora.com> <CAGXv+5GHP1M1rKwR8j+bN8GmpxWtpkfLTnvBdkg5wOvWanc-kw@mail.gmail.com>
+ <35392d9d-56a3-4db8-b500-6272d0bd275c@collabora.com>
+In-Reply-To: <35392d9d-56a3-4db8-b500-6272d0bd275c@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 10 Dec 2024 16:40:08 +0800
+Message-ID: <CAGXv+5H_=He4+vBcaoVbtO05c6hPWV46OTRfR+S8XVuvk_EaYg@mail.gmail.com>
+Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183-kukui-jacuzzi: Drop
+ pp3300_panel voltage settings
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_003325_706994_E9A66B85 
-X-CRM114-Status: GOOD (  20.33  )
+X-CRM114-CacheID: sfid-20241210_004021_292279_9F50FA97 
+X-CRM114-Status: GOOD (  33.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,80 +94,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/12/24 04:28, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
-> 
-> On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
->> found in MediaTek's MT8195, MT8188 SoC and their variants, and
->> including support for display modes up to 4k60 and for HDMI
->> Audio, as per the HDMI 2.0 spec.
->>
->> HDCP and CEC functionalities are also supported by this hardware,
->> but are not included in this commit and that also poses a slight
->> difference between the V2 and V1 controllers in how they handle
->> Hotplug Detection (HPD).
->>
->> While the v1 controller was using the CEC controller to check
->> HDMI cable connection and disconnection, in this driver the v2
->> one does not.
->>
->> This is due to the fact that on parts with v2 designs, like the
->> MT8195 SoC, there is one CEC controller shared between the HDMI
->> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
->> adding support to use the CEC HW to wake up the HDMI controllers
->> it is necessary to have support for one TX, one RX *and* for both
->> at the same time.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
-> 
-> [snip]
-> 
->> +static void mtk_hdmi_v2_bridge_enable(struct drm_bridge *bridge,
->> +                                     struct drm_bridge_state *old_state)
->> +{
->> +       struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
->> +       struct drm_atomic_state *state = old_state->base.state;
->> +       int ret;
->> +
->> +       ret = drm_atomic_helper_connector_hdmi_update_infoframes(hdmi->curr_conn, state);
->> +       if (ret)
->> +               dev_err(hdmi->dev, "Could not update infoframes: %d\n", ret);
->> +
->> +       mtk_hdmi_v2_hw_vid_mute(hdmi, false);
->> +       mtk_hdmi_v2_hw_aud_mute(hdmi, false);
-> 
-> In v1, it does not unmute when bridge enable.
-> I would like v1 and v2 has the same behavior.
-> If possible, remove these code.
-> If remove thee code would result in some problem,
-> add comment to describe why need these code.
-> 
+On Tue, Dec 10, 2024 at 4:27=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 04/11/24 14:47, Chen-Yu Tsai ha scritto:
+> > On Mon, Nov 4, 2024 at 9:19=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 04/11/24 14:00, Chen-Yu Tsai ha scritto:
+> >>> On Wed, Oct 30, 2024 at 3:02=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.=
+org> wrote:
+> >>>>
+> >>>> The pp3300_panel fixed regulator is just a load switch. It does not =
+have
+> >>>> any regulating capabilities. Thus having voltage constraints on it i=
+s
+> >>>> wrong.
+> >>>>
+> >>>> Remove the voltage constraints.
+> >>>>
+> >>>> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu boa=
+rd")
+> >>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> >>>
+> >>> I see that the other three patches were merged and included in the pu=
+ll
+> >>> request, but not this one. Were there any concerns?
+> >>>
+> >>
+> >> Sorry I forgot to actually provide an explanation for that - yes, I do=
+ have some
+> >> comment about this one.
+> >>
+> >> Despite this being a load switch, it's still switching power from regu=
+lator A to
+> >> target device X, so this is technically still providing 3.3V to device=
+ X.
+> >>
+> >> Think about how a "regular" full-fledged regulator works: you can (som=
+etimes) set
+> >> a voltage, and then you can ENABLE the VOUT for said regulator (/rail)=
+: this kind
+> >> of "load switch" does exactly the same as the ENABLE switch for a full=
+-fledged
+> >> regulator.
+> >
+> > But it does not provide regulation. One cannot "set" the voltage on a l=
+oad
+> > switch; one can only set it on its upstream supply, if that supply prov=
+ides
+> > regulation.
+> >
+> > IIRC Mark said some years ago that if a regulator doesn't regulate the
+> > voltage, then the voltage constraints should not be given. The constrai=
+nts
+> > are then derived from its upstream supply.
+> >
+> > That's the guideline I've followed for all the regulator related change=
+s
+> > I've done over the years. Does that work for you?
+> >
+>
+> Ok, let's go with that then.
+>
+> There's only one problem - patches 2 to 4 don't apply for whatever reason=
+, is there
+> any dependency?
 
-I think you even said that in the first review...
+I believe they were already applied in the previous cycle? At least
+they were dropped from my branch automatically after a recent rebase.
 
-Thanks for repeating, and sorry for missing that in v2, will be done
-for v3
+ChenYu
 
-Cheers,
-Angelo
-
-> Regards,
-> CK
-> 
->> +
->> +       /* signal the connect event to audio codec */
->> +       mtk_hdmi_v2_handle_plugged_change(hdmi, true);
->> +
->> +       hdmi->enabled = true;
->> +}
->> +
-> 
-
-
-
+> Cheers,
+> Angelo
+>
+> >> So, this is switching on and off a power rail that is derived from a s=
+ource rail,
+> >> practically creating... well, a "new" rail, with...
+> >>
+> >>    VIN=3Dsomewhere-3.3v,
+> >>    VOUT=3Dsomewhere-still-3.3v
+> >>
+> >> Any objections/doubts/etc? :-)
+> >
+> > I agree with most of it, except the part that I laid out above about th=
+e
+> > load switch not providing regulation.
+> >
+> >> P.S.: I'm writing fast, sorry if anything appears unclear, feel free t=
+o shoot more
+> >>         questions in case :-)
+> >
+> > No, it's pretty clear, and I believe one of the common interpretations
+> > I see. Thank you for the quick response.
+> >
+> >
+> > Thanks
+> > ChenYu
+> >
+> >> Cheers,
+> >> Angelo
+> >>
+> >>>
+> >>> ChenYu
+> >>>
+> >>>> ---
+> >>>>    arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
+> >>>>    1 file changed, 2 deletions(-)
+> >>>>
+> >>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi =
+b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> >>>> index 783c333107bc..7bbafe926558 100644
+> >>>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> >>>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> >>>> @@ -35,8 +35,6 @@ pp1800_mipibrdg: pp1800-mipibrdg {
+> >>>>           pp3300_panel: pp3300-panel {
+> >>>>                   compatible =3D "regulator-fixed";
+> >>>>                   regulator-name =3D "pp3300_panel";
+> >>>> -               regulator-min-microvolt =3D <3300000>;
+> >>>> -               regulator-max-microvolt =3D <3300000>;
+> >>>>                   pinctrl-names =3D "default";
+> >>>>                   pinctrl-0 =3D <&pp3300_panel_pins>;
+> >>>>
+> >>>> --
+> >>>> 2.47.0.163.g1226f6d8fa-goog
+> >>>>
+> >>
+>
+>
 
