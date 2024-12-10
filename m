@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3EE2E77180
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 17:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E41E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2024 17:31:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pO+MGwpeAVge5dgHTV4frWGf+UqwapLJVzEqTcAPuqs=; b=rlX1k1zQaVidcPtDB+/TUAe+xK
-	4c8OBzamNMQGHVHb49egAJR8p9Dugi9GbwKu48+2M6dzKxXwwzaImkeDNSFuhzAHYhJJ7f021lJyU
-	3/ODYOKCqsH+miVJEzArn+Qxdliot3iGYmdBJazEZMbJYcB2yPXAaHcJDuFgg/1DrRAg+RcyEv3dl
-	2Vb+XQbVlXG4pEJ6GndPfOakQWwxPvOWbHd1j4UGh9fi1WFuw6M6rnzmH5z4dhfBGTdF7wChfBXyT
-	NFOS12pE4oAIFtrq5dcVun9EomRX25TftYr1Afo67qhG7iOtwG7nK1Rni/BtKCAtqwVDICnXFxAng
-	OoPavVnw==;
+	bh=RlM0jpfN/0EIPKkVdkd7aPBaB5Buy5JIg07+r6DSxgQ=; b=P4RUXkTDlvmWyD7Ruwlmm3tuR4
+	PqCAOZxix2aBAatpcfASUebW4UCquOOLi7RsKg0KnrcPWpdd+IKmU55RrSZaPvjk0r2JFrJseZ+DY
+	Fk2Rw8qge1GYab5KNwfoCfYZAe7pO0AjRpiJ4xCO3QGcv+//R3YRS3TvPj39tMsQnjhnzvkLl7CvW
+	bsjXWL0K7jZKMsb8qMekO+0Fz6pHcC8ekWaeMqqXoEXTkk7fixWcLgHFJ1WuwxAUeYg+IsUuV9x2a
+	yjcgIwbC/HGRCUtNnSjp9RcnilHliOnJvTChWHRKkyjv3rzGIll6UfpIF8OsNU1VsQ0F6+IOTrLEa
+	ga8sPLOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL452-0000000CHNo-01Jq;
+	id 1tL452-0000000CHO0-1Pq6;
 	Tue, 10 Dec 2024 17:31:28 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL43S-0000000CH3y-0uMM
+	id 1tL43q-0000000CH6d-3mQK
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Dec 2024 17:29:51 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6d8e773ad77so32435226d6.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 09:29:49 -0800 (PST)
+	Tue, 10 Dec 2024 17:30:15 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-7b6e8814842so50005085a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 09:30:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1733851788; x=1734456588; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1733851813; x=1734456613; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=pO+MGwpeAVge5dgHTV4frWGf+UqwapLJVzEqTcAPuqs=;
-        b=dJ33pP+OJH2ZrUj+cUKJaigS+MPoj2uXvvZzVyBAGJLNuwP32DOkK3KPDN9B8mG8Zu
-         lxfwe66H1GcEDaILm1wOKJELBDJ3RBdc7eZ2/84gGuXISQc6kQi7f89LFFhOgY8uuPb/
-         /v5JomW8glsEj8j7Ikr+QSyoWHU2I1lkfJNNw=
+        bh=RlM0jpfN/0EIPKkVdkd7aPBaB5Buy5JIg07+r6DSxgQ=;
+        b=hi8nxKnf2B3zYy3ZRSv5Ea+r0gXNPMDa2AQU1LmVncSRmJ1PdvSppriuJY/FVvThpo
+         itnGekwPWyQXS3VHUmMZEGWJjRXYMx1MQaNJOocWL5mQPdZFpTYoGu7l1pXJUgRjU7QU
+         HR5IDdBe/n4SbeO7Kq1k7qff5oJl/BQcKlpGI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733851788; x=1734456588;
+        d=1e100.net; s=20230601; t=1733851813; x=1734456613;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pO+MGwpeAVge5dgHTV4frWGf+UqwapLJVzEqTcAPuqs=;
-        b=KJc0oN70ZBPA9uqey3bG9MYuusFVVLrygGN4p5hFQ9LbMK/MdJhiElmFC5kqGlZWlg
-         Et6F8GkBZOE0SLjs1IRceBr4F4O9HMlBtdj+17rXBeG/cCMQTD6w0c6u3QwiKx6F9FDy
-         ytqb7vfdsg9fah9RJXY2SO2ilnvbn2NjaOAbiC7bECaZtSK/4naOSpGDqx/odUOWfa6L
-         mKixwiyWC3+cMUVUK2GtFwv1uy+DmQh++dHuC4KsSecAcxXC64vPLNQcDrH47o1Idw/g
-         m4aW4GNtiBNLkD8CM8I6M1YpDmrJkOMbCZVWYxfcBvmnQ+fLoSxufPk8EY7/aNECgp4W
-         V5pA==
-X-Forwarded-Encrypted: i=1; AJvYcCWWcsdsQzF+Hfnbxqk6jY96QeAYQSvGUbxxwz9S/inveMrMHKJbl0Ul1HjwfRBSX0CWKJLxoHnOpB+++qEr/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxXXY4FT3rNNRwe7mf5sooUKt2V2U0kl0DB54J9ZJ7H3aZ0V5BR
-	2X4YS45FjOZMCbqqkdKzXPDvFuCuipZPmNjYmUc5rspX5HzCeWko3txcyezRpg==
-X-Gm-Gg: ASbGnctZw7WmjceEXXoxfPWOXbfw0kQGqZscUItS6M/G6R8caXgzSr/Secgx6co+5FI
-	VV/mZaBI2U0PDecnZHSusfZH8ejbyeRMIDOYL1w76fiYyYlqBVP2wVNPzb6ONdQchv30PIK8uAh
-	HSP6KYjDdbaXD4VEP1WOiIvWTMihmwajppsSX6XwlQH7wjvQlhgqAh64DTuJ/vanXz8pmzJfh04
-	nsgZrcSNwFeVGrEoy3Cxj0wVPzSQdQZi4/RoTrJK+FqdIz94BXRtqdAjFp9jnXN/ZSBXmq27NpW
-	+viCzAUXhZQ9oZ5u7w==
-X-Google-Smtp-Source: AGHT+IHYW16q6sKxZxQ2s76au6BvsH9mlgt3o6j1zViiWttw+FsxPXhlL5JgqnbkA5PMSrtUja4vnA==
-X-Received: by 2002:a05:6214:194a:b0:6d8:8667:c6ca with SMTP id 6a1803df08f44-6d91e415bc6mr71627646d6.32.1733851788248;
-        Tue, 10 Dec 2024 09:29:48 -0800 (PST)
+        bh=RlM0jpfN/0EIPKkVdkd7aPBaB5Buy5JIg07+r6DSxgQ=;
+        b=Y6AXsE9bsmtsBCC0Bkg+6qcnoM8pyGs92nmmftJx8Ubxv6djcz8oFpvI0wgpUYTJy6
+         lDIcoJLWVHV3qqe90if8v98W1BC9fpuO/BJTXlRoj+5ILfKA84z3hwmHdedyADkTg/zK
+         Y52/paoI0dK6Zy23r0In8Ug9t2pGUbU9zXd5GSQqDowtLUHCuqegD4tb4C59gvajDrfP
+         OdY8Cb05eChQPfhQ/tq/+UU5oOIXDAyh+s3DGvI1cie3cW2rVeYGeE3thvUJGmfEHNYD
+         VfRGAEu65CRgwypWCTns6KBji3PZbqAbm3hCnQzEA7PWLI6uQ6sG10kGpdBxNfGOh+VE
+         8vxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVd1c82bjJHjn7JX8YKBX+fRYwbvpZmi/x7sNPcwTC8NyX67IQGx3+R0x0BlgIIqeTS1jDvxscnQHmj4vkH1g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDAnv3d7zfZbHrBtxJWAfq+OU0aSzNn3JwgEcoXWvTjJZnk+34
+	XHyGKp8b0XdtZfD5h8OuxkCJ2VBR6TSPx1WzqPzkN1coYyjoULVdomCtKb+dbw==
+X-Gm-Gg: ASbGncv/Djo10D4Q2RReiX5aD3rR6ZHbQMb7J4YgeIKQd9jBUPdWhM7YqE6pqym2Qel
+	z6GfVGLtshxdwuGisiij1HCKaCCheEWr54a1XbfEIXFOP4Blr180oeWz8Ax1yvuQ5nkN3qcwOmt
+	SOgQvkDI9jI0Wc5PuvAAhHL1mnqF4KBaN+XmCN15c+XCED4o/OLApAWNlIPcx6J9IDeF/FyX5dB
+	IROo6GqdT41eM99IS5nF60gQ+tRtwkRz/Kxfa89H3oUwq48SHUZnj7UmykFiKTCtxjoLyrai83E
+	kS06E1yVKq0NHk+Ndw==
+X-Google-Smtp-Source: AGHT+IG1rCPaESNmGeL/pCfwE2PjnYtyp8mw3vbAdlrC5Z0UBjbzp0yHi4eT1rDWVtRv0ChBsv/7Ag==
+X-Received: by 2002:ad4:5ced:0:b0:6d8:d79c:1cb2 with SMTP id 6a1803df08f44-6d8e712254amr258600446d6.21.1733851813313;
+        Tue, 10 Dec 2024 09:30:13 -0800 (PST)
 Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d8dabfec80sm61624956d6.98.2024.12.10.09.29.41
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d90299bccesm33827546d6.60.2024.12.10.09.30.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Dec 2024 09:29:47 -0800 (PST)
-Message-ID: <fafda63f-687a-4a3e-99f9-2a6abfbb5d59@broadcom.com>
-Date: Tue, 10 Dec 2024 09:29:39 -0800
+        Tue, 10 Dec 2024 09:30:10 -0800 (PST)
+Message-ID: <bc03a1e5-b67c-42da-9856-7c77d6858138@broadcom.com>
+Date: Tue, 10 Dec 2024 09:30:00 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 3/9] net: dsa: provide implementation of
- .support_eee()
+Subject: Re: [PATCH net-next 4/9] net: dsa: b53/bcm_sf2: implement
+ .support_eee() method
 To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
  Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -84,7 +84,7 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Simon Horman <horms@kernel.org>, UNGLinuxDriver@microchip.com,
  Vladimir Oltean <olteanv@gmail.com>, Woojung Huh <woojung.huh@microchip.com>
 References: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
- <E1tL149-006cZJ-JJ@rmk-PC.armlinux.org.uk>
+ <E1tL14E-006cZU-Nc@rmk-PC.armlinux.org.uk>
 Content-Language: en-US
 From: Florian Fainelli <florian.fainelli@broadcom.com>
 Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
@@ -119,12 +119,12 @@ Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
  MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
  7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
  95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
-In-Reply-To: <E1tL149-006cZJ-JJ@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1tL14E-006cZU-Nc@rmk-PC.armlinux.org.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_092950_262937_46112C0E 
-X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-CacheID: sfid-20241210_093014_933767_2786C97F 
+X-CRM114-Status: UNSURE (   6.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -141,9 +141,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/10/24 06:18, Russell King (Oracle) wrote:
-> Provide a trivial implementation for the .support_eee() method which
-> switch drivers can use to simply indicate that they support EEE on
-> all their user ports.
+> Implement the .support_eee() method to indicate that EEE is not
+> supported by two switch variants, rather than making these checks in
+> the .set_mac_eee() and .get_mac_eee() methods.
 > 
 > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
