@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51615E77180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 00:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA03E7717F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 01:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+P6kTmCwDbC0RwMmjYjZfzPZ5o9SCTkxH8bGJ/DVcdQ=; b=p+S6V414S71exoQzzeaesHbWe8
-	iFRkC8gLesZK0KuP+JnVy0fZ9lAvtNrVPINtMb86Jzb2i5u7fRjen4ZOJbBERDKNLso9vrLxblY7J
-	77U6oWPvwYO9C2juI3IKH5OO8K7o7zfDSgY1D9QxNejHsxPF5TzRHHtZmcIRvRZIF+L319Kjy+eVz
-	LD9OcuBGR4ttVNeY33vZmVs4WwHeoQu9KV1Xxy0cB6doQF+l0DG5kbuGFj6P8fWJLiq1AGp0PESGS
-	Bn0lnxB33nRmMEYWWJgpIwFRFvNBj0YVh/UbCkyE5WDp0BwSW/4LmjFv1w2y6RhGIpgThsHAQeoAe
-	kiDXT+pA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7R2p//Pqh9wUP2QmrJjZ02D5zzYfEnah5rmAeHm8NgI=; b=gSUkB5q13V6OXLinVnfpdH9+8c
+	D0DVEIoR7F7SLoHHiGF5R3CQXR0HUprwP1ZMZKJODu6v8qdVbCPOGMa0ivzaxAf1sDOMalHEOXu85
+	fa98Ns5kJAEZV61GVGIjWGreYjrSoI8/kpqKPMDn4rk714OWJ58CK7V0p6P9KkWLOv1TmqD5lgEoR
+	3oUjrsy5rIEcZbpc5dXuUEKicMCOsXpxsKKlw4IcLnDKwY5k4lqXAPAOLnSkSis0Gpzx2UqVefpRG
+	k+kpWL1JCrVrx0guR4752OzCDUgITE+OaPKhdWaoKX/106P0MilhLVYPViDDhHOPNa9M3HGcQjUc/
+	nhWl9sIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLAJx-0000000DFiv-1smy;
-	Wed, 11 Dec 2024 00:11:17 +0000
-Received: from pv50p00im-ztdg10011901.me.com ([17.58.6.50])
+	id 1tLBOA-0000000DObo-0m3w;
+	Wed, 11 Dec 2024 01:19:42 +0000
+Received: from mail-oa1-f43.google.com ([209.85.160.43])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLAJu-0000000DFhI-2Deo
+	id 1tLBO7-0000000DObC-1gcZ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Dec 2024 00:11:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1733875874;
-	bh=+P6kTmCwDbC0RwMmjYjZfzPZ5o9SCTkxH8bGJ/DVcdQ=;
-	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:
-	 x-icloud-hme;
-	b=A2G4Fr6Ga6cVgux12r3mj2O9uL5jIcyFXHdjjqLRUtrEdEAwO7iZHiUi5FF6UPVWo
-	 hkulrf+wv/Im1f51OENPnQuBkzjqse1+qZAWDlM/Ma/ogIYBbBc5z987he4q/Jfl/j
-	 jqoFvMwL1Dxn9aXwXtEZHj1xbx0kYWW9yoj14b+sc93PJCVGG73JrsnCffz2e+UQam
-	 moqZ3JxqtqDb6QrUFF3T4ZHUf07FMnmWcCqxambSLziZyyUYRBLY1FDHbpm8nZRlL4
-	 b1ndYET1hWQUqdrGPGb1qMfeSNR//QUsLeZ1GaVoFEHlo6HuTD5NfJJdJ3tCpxtcTt
-	 akO3dQKO/do/A==
-Received: from [192.168.1.26] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-ztdg10011901.me.com (Postfix) with ESMTPSA id E9BCD3A0349;
-	Wed, 11 Dec 2024 00:11:03 +0000 (UTC)
-From: Zijun Hu <zijun_hu@icloud.com>
-Date: Wed, 11 Dec 2024 08:08:13 +0800
-Subject: [PATCH v4 11/11] usb: typec: class: Remove both cable_match() and
- partner_match()
+	Wed, 11 Dec 2024 01:19:40 +0000
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-2689e7a941fso1952748fac.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 17:19:38 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733879977; x=1734484777;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7R2p//Pqh9wUP2QmrJjZ02D5zzYfEnah5rmAeHm8NgI=;
+        b=pbtnJobjq/IcLO98ckqUgxNL5W2s26iPEcwgLwhKbzz3IC0nqmHcugLAGZHgCcCgqV
+         ODVLrzJElSawQLsxDT2AK3JzrS6p81HthEUzTT8eShkmwQcQKiwfih/Yv2LzS2f2O/ol
+         f8mYSCmtENfc6oJnTRTpYABiegAXENoQUN1P7Hb3RpjhrlqmWAI65pW58359m4Y5FMBN
+         dOvfeGS+bzPFHjM4C2RBBNB7+8KfeAjUg1sB/HD2VezsE3muat6NCfSNZsPtH1Jj8cgf
+         H0g/D/WrZVMaQbwxDFA2GaW+d22A2YisO6jEHwFmVfdntf/F6f0kmGCF4EwuHuGPbEc1
+         ThFA==
+X-Forwarded-Encrypted: i=1; AJvYcCVaMuNg3H2C+iNxDaplYgiBuxR0ElVS38dKZt2UynA4qS6tx8j2K+Xv+b153xTD/zh+hvhI8y5GXzi7BOYJEA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxv2/S2UW+AKtNBOQJMU1StZD6mcoW51SBBlrxvw1ITWV98s8l0
+	5upEPylEpU+AZWqhfYg+dQWnYSJdeb5MLXWNxMXTfOq6c4KvgKX2
+X-Gm-Gg: ASbGncujrdEfXP+KNwtX3xu97TDmp6FVGyDs6qBoxUF81bqmeWi0un+jWWq+JiVnVrw
+	B8TpvkQ6cSQhX6hZP3wzQXm+uO5Yvnd6IKy6RQZ/IEgvA4YazmuFd4n31LNqNapF53tnNQ+zLnp
+	W+yUCoGLBbvLwbJp9RlKjTR27N6yIRUAcw4x1ODftlTtUnhaJbgoj3sZkURAs6lz99/s1+TRNkS
+	YSNVU54zAncoiE4jeTV5iwCNpICKyOVVLbdIC9gedF37YBad6M7kU5B18czcTZieIUfj30=
+X-Google-Smtp-Source: AGHT+IGNuoBK7+mQMrPDJXe8k8x4BCL83y7Gl405d/qpVq9bNdqtQY2pnCr2AcEElpzXFVMS43aLUg==
+X-Received: by 2002:a05:6871:6c0f:b0:29d:c5e8:e424 with SMTP id 586e51a60fabf-2a012b4f09cmr706059fac.9.1733879977589;
+        Tue, 10 Dec 2024 17:19:37 -0800 (PST)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-29f93552d34sm2705701fac.24.2024.12.10.17.19.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Dec 2024 17:19:36 -0800 (PST)
+From: sean.wang@kernel.org
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com,
+	deren.wu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 01/17] wifi: mt76: connac: Extend mt76_connac_mcu_uni_add_dev for MLO
+Date: Tue, 10 Dec 2024 17:19:10 -0800
+Message-Id: <20241211011926.5002-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241211-const_dfc_done-v4-11-583cc60329df@quicinc.com>
-References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
-In-Reply-To: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
- Bartosz Golaszewski <brgl@bgdev.pl>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
- James Bottomley <James.Bottomley@HansenPartnership.com>, 
- =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>, 
- Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org, 
- nvdimm@lists.linux.dev, linux-sound@vger.kernel.org, 
- sparclinux@vger.kernel.org, linux-block@vger.kernel.org, 
- linux-cxl@vger.kernel.org, linux1394-devel@lists.sourceforge.net, 
- arm-scmi@vger.kernel.org, linux-efi@vger.kernel.org, 
- linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-hwmon@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-pwm@vger.kernel.org, 
- linux-remoteproc@vger.kernel.org, linux-scsi@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-serial@vger.kernel.org, 
- netdev@vger.kernel.org, Zijun Hu <quic_zijuhu@quicinc.com>
-X-Mailer: b4 0.14.2
-X-Proofpoint-ORIG-GUID: qwQLilRFtH8fzUdgAlR9P2gaSWkwiO3A
-X-Proofpoint-GUID: qwQLilRFtH8fzUdgAlR9P2gaSWkwiO3A
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-10_13,2024-12-10_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0 bulkscore=0 phishscore=0
- suspectscore=0 mlxscore=0 spamscore=0 mlxlogscore=950 clxscore=1015
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2412100174
-X-Apple-Remote-Links: v=1;h=KCk=;charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_161114_599683_A04E6132 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20241210_171939_444712_2BC8EDC8 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,101 +86,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zijun Hu <quic_zijuhu@quicinc.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-cable_match(), as matching function of device_find_child(), matches
-a device with device type @typec_cable_dev_type, and its task can be
-simplified by the recently introduced API device_match_type().
+This commit extends the `mt76_connac_mcu_uni_add_dev` function to include
+support for Multi-Link Operation (MLO). Additionally, backward
+compatibility for MT7921 is preserved, enabling seamless integration with
+existing setups.
 
-partner_match() is similar with cable_match() but with a different
-device type @typec_partner_dev_type.
-
-Remove both functions and use the API plus respective device type instead.
-
-Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
+Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabling MLO when the firmware supports it")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/usb/typec/class.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c      | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c      | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c      | 4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c     | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c     | 3 ++-
+ 8 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
-index 601a81aa1e1024265f2359393dee531a7779c6ea..3a4e0bd0131774afd0d746d2f0a306190219feec 100644
---- a/drivers/usb/typec/class.c
-+++ b/drivers/usb/typec/class.c
-@@ -1282,11 +1282,6 @@ const struct device_type typec_cable_dev_type = {
- 	.release = typec_cable_release,
- };
- 
--static int cable_match(struct device *dev, const void *data)
--{
--	return is_typec_cable(dev);
--}
--
- /**
-  * typec_cable_get - Get a reference to the USB Type-C cable
-  * @port: The USB Type-C Port the cable is connected to
-@@ -1298,7 +1293,8 @@ struct typec_cable *typec_cable_get(struct typec_port *port)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index 804d3f5a5244..5373937b0e04 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -1113,7 +1113,7 @@ mt7615_mcu_uni_add_dev(struct mt7615_phy *phy, struct ieee80211_vif *vif,
  {
- 	struct device *dev;
+ 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
  
--	dev = device_find_child(&port->dev, NULL, cable_match);
-+	dev = device_find_child(&port->dev, &typec_cable_dev_type,
-+				device_match_type);
- 	if (!dev)
- 		return NULL;
+-	return mt76_connac_mcu_uni_add_dev(phy->mt76, &vif->bss_conf,
++	return mt76_connac_mcu_uni_add_dev(phy->mt76, &vif->bss_conf, &mvif->mt76,
+ 					   &mvif->sta.wcid, enable);
+ }
  
-@@ -2028,16 +2024,12 @@ const struct device_type typec_port_dev_type = {
- /* --------------------------------------- */
- /* Driver callbacks to report role updates */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 77f3e92d581a..4171710d645c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1137,10 +1137,10 @@ EXPORT_SYMBOL_GPL(mt76_connac_mcu_wtbl_ba_tlv);
  
--static int partner_match(struct device *dev, const void *data)
--{
--	return is_typec_partner(dev);
--}
--
- static struct typec_partner *typec_get_partner(struct typec_port *port)
+ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 				struct ieee80211_bss_conf *bss_conf,
++				struct mt76_vif *mvif,
+ 				struct mt76_wcid *wcid,
+ 				bool enable)
  {
- 	struct device *dev;
+-	struct mt76_vif *mvif = (struct mt76_vif *)bss_conf->vif->drv_priv;
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct {
+ 		struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 1b0e80dfc346..57a8340fa700 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1938,6 +1938,7 @@ void mt76_connac_mcu_sta_ba_tlv(struct sk_buff *skb,
+ 				bool enable, bool tx);
+ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 				struct ieee80211_bss_conf *bss_conf,
++				struct mt76_vif *mvif,
+ 				struct mt76_wcid *wcid,
+ 				bool enable);
+ int mt76_connac_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif *mvif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 047106b65d2b..bd1455698ebe 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -647,6 +647,7 @@ mt7921_vif_connect_iter(void *priv, u8 *mac,
+ 		ieee80211_disconnect(vif, true);
  
--	dev = device_find_child(&port->dev, NULL, partner_match);
-+	dev = device_find_child(&port->dev, &typec_partner_dev_type,
-+				device_match_type);
- 	if (!dev)
- 		return NULL;
+ 	mt76_connac_mcu_uni_add_dev(&dev->mphy, &vif->bss_conf,
++				    &mvif->bss_conf.mt76,
+ 				    &mvif->sta.deflink.wcid, true);
+ 	mt7921_mcu_set_tx(dev, vif);
  
-@@ -2170,7 +2162,9 @@ void typec_set_pwr_opmode(struct typec_port *port,
- 	sysfs_notify(&port->dev.kobj, NULL, "power_operation_mode");
- 	kobject_uevent(&port->dev.kobj, KOBJ_CHANGE);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 573a2cd7fe45..1542c762e2a6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -308,6 +308,7 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 	mvif->bss_conf.mt76.wmm_idx = mvif->bss_conf.mt76.idx % MT76_CONNAC_MAX_WMM_SETS;
  
--	partner_dev = device_find_child(&port->dev, NULL, partner_match);
-+	partner_dev = device_find_child(&port->dev,
-+					&typec_partner_dev_type,
-+					device_match_type);
- 	if (partner_dev) {
- 		struct typec_partner *partner = to_typec_partner(partner_dev);
+ 	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, &vif->bss_conf,
++					  &mvif->bss_conf.mt76,
+ 					  &mvif->sta.deflink.wcid, true);
+ 	if (ret)
+ 		goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 634c42bbf23f..ddd406969061 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -1271,6 +1271,7 @@ mt7925_vif_connect_iter(void *priv, u8 *mac,
+ 	struct mt792x_dev *dev = mvif->phy->dev;
+ 	struct ieee80211_hw *hw = mt76_hw(dev);
+ 	struct ieee80211_bss_conf *bss_conf;
++	struct mt792x_bss_conf *mconf;
+ 	int i;
  
-@@ -2334,7 +2328,9 @@ int typec_get_negotiated_svdm_version(struct typec_port *port)
- 	enum usb_pd_svdm_ver svdm_version;
- 	struct device *partner_dev;
+ 	if (vif->type == NL80211_IFTYPE_STATION)
+@@ -1278,8 +1279,9 @@ mt7925_vif_connect_iter(void *priv, u8 *mac,
  
--	partner_dev = device_find_child(&port->dev, NULL, partner_match);
-+	partner_dev = device_find_child(&port->dev,
-+					&typec_partner_dev_type,
-+					device_match_type);
- 	if (!partner_dev)
- 		return -ENODEV;
+ 	for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
+ 		bss_conf = mt792x_vif_to_bss_conf(vif, i);
++		mconf = mt792x_vif_to_link(mvif, i);
  
-@@ -2361,7 +2357,8 @@ int typec_get_cable_svdm_version(struct typec_port *port)
- 	enum usb_pd_svdm_ver svdm_version;
- 	struct device *cable_dev;
+-		mt76_connac_mcu_uni_add_dev(&dev->mphy, bss_conf,
++		mt76_connac_mcu_uni_add_dev(&dev->mphy, bss_conf, &mconf->mt76,
+ 					    &mvif->sta.deflink.wcid, true);
+ 		mt7925_mcu_set_tx(dev, bss_conf);
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 791c8b00e112..22a9437236c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -372,7 +372,7 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+ 	else
+ 		mconf->mt76.basic_rates_idx = MT792x_BASIC_RATES_TBL;
  
--	cable_dev = device_find_child(&port->dev, NULL, cable_match);
-+	cable_dev = device_find_child(&port->dev, &typec_cable_dev_type,
-+				      device_match_type);
- 	if (!cable_dev)
- 		return -ENODEV;
+-	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf,
++	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mconf->mt76,
+ 					  &mlink->wcid, true);
+ 	if (ret)
+ 		goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 042aa8d1b6e7..e6046bfbefe3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -151,7 +151,8 @@ void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
+ 	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
  
-
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, &mlink->wcid);
+-	mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mlink->wcid, false);
++	mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mconf->mt76,
++				    &mlink->wcid, false);
+ 
+ 	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 
 -- 
-2.34.1
+2.25.1
 
 
