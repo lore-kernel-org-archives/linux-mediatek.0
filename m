@@ -4,94 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60717E7717D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 08:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 422ABE77180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 08:40:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=; b=qLWZtLGl2X+u0v8X9tfLldmJty
-	SIHCGBjflFZzKmZqYhbq80Zp55W5Vq4fC18gRq3U5BY+hdwfSUMm32HQ/GpFH6F/gkNc+if42va1u
-	pueLqHszhfxhtJ9HWMIHW/YXuCVGgYYHY+aFfzGCadrtqM+ghkGpWxgGN/7TmmxcreeK2WHSHkUHG
-	CXQDzdrxQRDvitkuzlANwCHdM+lfhn/35RhZU4V1IQdx2AVoFKcSy421nu3UkEaXwleeh+GjCi2SO
-	yYyGss+k5bJiwNzn5DMsLRXprOVIuPJ7b0FoguYigZZtAtvqt+P+k9KJyeJQ1m6PfW4QUtiGxHRbg
-	h96h0z+A==;
+	bh=8+fpkRaQVyHbqugIuv7vxVkZxwMTP4jO2R5eJD4/g7E=; b=a0nyy4PqpSOBWzWmAPWpP//jpj
+	6bWYZ0DQsZRQ+a4Q4qDTAqY4XpXsEy+Tq7C4/yLVswsud4K2vewU+6pQD1P6NRHNePYbdhQSCKy98
+	9lx32K0lVdBehyEo0h7rHSHyXGi8kTzOeo+SIVtMFHUB9XMARIflUkk7FFOl6S86HzvBqlLZbS0vI
+	fIm8wQEmr4EDpg06fcpWfdmqzKeRQ0ug2mXZOjM7ge6yaOWKKjvroI0KiLLAqDiibGRFkfd9nQrDd
+	IfVoZXoiIWOe+RwolxhU5QYAyzyH8Fkiw9bbjhf/zr6roaMm30jtD0NmLjWxK/G7rHlXIs4t3Tss4
+	mGa6h3LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHvW-0000000ECIB-1ylI;
-	Wed, 11 Dec 2024 08:18:34 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1tLIGQ-0000000EFZx-3ZGm;
+	Wed, 11 Dec 2024 08:40:10 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHvT-0000000ECHN-0VjS
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Dec 2024 08:18:32 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-30227c56b11so25514851fa.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2024 00:18:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1733905108; x=1734509908; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=;
-        b=GRz7gHA1pQvDu0Vacbcq9hQ+AWYpUYKp+9bGQMQrsrjcsiXNkSCwyB/E0cDTn6G91/
-         W5EbKFvLfMVjr/2XEMSWyZXPupKuG57G0e0wtZ7GmZMs4aPy+ccS6+LIuPlwP3sa/oHA
-         MGLlnNkWxnA/M3Oeyu+WeiPZ4nXoP1bddXoOdhmMOftv/kKY1+ZV5Q947IUHwpmbbXRk
-         D2aKeNOf/LyAbeMwnuHZwPcscdiMDLsm7ha6u26eqkKEJiHMDfq+4GmKYojU0JYipeYf
-         ZJDJWVMdEvLSchjHcXqr0rcSFgPKd9aQzThOOlsbUJbXwHeQ0ALVO3NKtIBaDVInBJUB
-         c43g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733905108; x=1734509908;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=;
-        b=QzJgQZVh8LxIb3fcUQW7FNzfYH560Fnawt50iXV8GSgMAN5DHeigvs3OP+a2Bjc8wO
-         j3bjwxr7cibloJNn/sBJ/yxL3VsrkwLei4xuZIDSIbnyZdNt3kkgYUiAbiglcoKgTfhO
-         aEORTBvM29pi4OAlqFcCHLMTsskijCL1lIIzFr+KLGmXRs6ecPULDC9sZnOGOkhDqzi4
-         V7MI9pdSTIGdfkwLYWyigyl4DHVq50kxPpMEUgn5bVJmioRnyVe9w4VdZO0cACdSQfTA
-         Df940H7T86mpjZiQ65GscaSRXdso+dgrG2IMmxvdpaA0y0S5w+yH1RMd0bI1A86L/RI4
-         HtSw==
-X-Forwarded-Encrypted: i=1; AJvYcCWM2HIjFhtQEHWzb0PK1hq8xTIa7nSXXwEgj8Qx/QUsWs9DjAT5/+u9+JYbKl6sTqUn6c9LYLiabj6nIdd0CA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4AGlshAhHb7Iwy1hBSh6v9kykhgkM9oFrrGJqfJJijDD+7j/V
-	D4p9I2xGOU7drgOKGbQgpmm+Wum5Ghmc3l61GUWGODJ8NOaM2OvqXGWM9JP0PnxHdjuK7ElfFey
-	3fmeKoIDIu9Fjepc4CvpxmAnnJLPeN4+y/nC/kg==
-X-Gm-Gg: ASbGncvz6a4wz4tC8E7BgitFH2A0VBZwLmEVMReVVBJuohuamfSqdbx1OgvSj8ZIDsT
-	z731HpaxINeRTCjeDyb1+2xlAmUPRJfXhAHxWJHF5xXv8ftFMdMcpSqUzSBROGiELX+0=
-X-Google-Smtp-Source: AGHT+IEyqSnEBMMtZyEj5jF6bo6/CxMQUAS8l/Vem+Q0Tg0zwJltPimb/BXxYNi4dNa8OIsM4j3xdj7bHzlce3zdJRY=
-X-Received: by 2002:a2e:bcc6:0:b0:2ff:c95a:a067 with SMTP id
- 38308e7fff4ca-30240d08829mr5734311fa.13.1733905108362; Wed, 11 Dec 2024
- 00:18:28 -0800 (PST)
+	id 1tLIFN-0000000EFLa-0C0v;
+	Wed, 11 Dec 2024 08:39:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C1064A41FCF;
+	Wed, 11 Dec 2024 08:37:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37644C4CEE0;
+	Wed, 11 Dec 2024 08:38:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733906343;
+	bh=9/wdAYu8m8NQcYmRnB+o16mQ4ZhC8zf6dEc+9ZBWrqo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DNfr05fuEpdiArm2BBifYadSg+UE4XuMp/Cu1CqQkBlUvamsLO4r4R8ZIDZW4kYSe
+	 wnDB922Ix1weO1kbQH4DaLcbfNVQrv3cdfzV7L9+lCJ/YhMx5/ncVhNJnwQiKSyzss
+	 qdvp3clzcW1a4ElQ/qPdD66E2b83h5I7Tg/5xud/NUNpJDSah2wCxcMMwriDRvXedX
+	 ix4GMszTPpU4XDsA0VRaJVSMfAFDAvvHgze56efgJkuV0Ryt3eXcVTvhD2EKLPKTMj
+	 f4selDix7kT+twnDGl3qOt5RXH5qUbh/PNZZVODSo3ZBzRsW1qeiq/NTso6V3II4Hn
+	 8pKXEk2gPloHQ==
+Message-ID: <1ecf2e8c-86cd-4ba2-832b-014a05a80d26@kernel.org>
+Date: Wed, 11 Dec 2024 09:38:54 +0100
 MIME-Version: 1.0
-References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com> <20241211-const_dfc_done-v4-8-583cc60329df@quicinc.com>
-In-Reply-To: <20241211-const_dfc_done-v4-8-583cc60329df@quicinc.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 11 Dec 2024 09:18:17 +0100
-Message-ID: <CAMRc=MdJuy9ghgLHxbygdHME2EkttZ7zBMJzCis=t94EUMbGiQ@mail.gmail.com>
-Subject: Re: [PATCH v4 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
-To: Zijun Hu <zijun_hu@icloud.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	James Bottomley <James.Bottomley@hansenpartnership.com>, 
-	=?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>, 
-	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev, 
-	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org, 
-	linux-block@vger.kernel.org, linux-cxl@vger.kernel.org, 
-	linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org, 
-	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
-	linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org, 
-	linux-serial@vger.kernel.org, netdev@vger.kernel.org, 
-	Zijun Hu <quic_zijuhu@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v13 01/25] virt: geniezone: enable gzvm-ko in defconfig
+To: Liju-clr Chen <liju-clr.chen@mediatek.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu
+ <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
+ Ze-yu Wang <Ze-yu.Wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Shawn Hsiao <shawn.hsiao@mediatek.com>,
+ PeiLun Suei <PeiLun.Suei@mediatek.com>,
+ Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>,
+ Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
+References: <20241114100802.4116-1-liju-clr.chen@mediatek.com>
+ <20241114100802.4116-2-liju-clr.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241114100802.4116-2-liju-clr.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_001831_425820_4D321790 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241211_003905_217046_5BB070B7 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,18 +131,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 11, 2024 at 1:10=E2=80=AFAM Zijun Hu <zijun_hu@icloud.com> wrot=
-e:
->
-> From: Zijun Hu <quic_zijuhu@quicinc.com>
->
-> gpio_sim_dev_match_fwnode() is a simple wrapper of API
-> device_match_fwnode().
->
-> Remove the needless wrapper and use the API instead.
->
-> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> ---
+On 14/11/2024 11:07, Liju-clr Chen wrote:
+> From: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> 
 
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Please use subject prefixes matching the subsystem. You can get them for
+example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+your patch is touching.
+
+
+> Add config in defconfig to enable gzvm driver by default
+
+This we see from the diff. You must explain why we want it.
+
+> 
+> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+> ---
+>  arch/arm64/configs/defconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index d13218d0c30f..0f63d4837b61 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -1733,3 +1733,5 @@ CONFIG_CORESIGHT_STM=m
+>  CONFIG_CORESIGHT_CPU_DEBUG=m
+>  CONFIG_CORESIGHT_CTI=m
+>  CONFIG_MEMTEST=y
+> +CONFIG_VIRT_DRIVERS=y
+> +CONFIG_MTK_GZVM=m
+
+Does not look like placed correctly, according to savedefconfig.
+
+I still do not see any reason to have it enabled.
+
+Your patches have weird order or this is just wrong. There is no such
+thing as "MTK_GZVM". Use git grep, if you do not believe me.
+
+
+Best regards,
+Krzysztof
 
