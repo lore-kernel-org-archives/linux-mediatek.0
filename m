@@ -4,78 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C723AE7717D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 17:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98ED2E7717D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 18:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o6mgR9JSMbzuDpvHOfYMWLmhuCb2AgVcK+vn11JpoMQ=; b=adU7TME2XZYdDGLnCZM7uiro4b
-	3GSRt6yITF1Xt4w9bTKWZDOXSq2iivm6COzd4zFFiGVSUwyMctw/ok2dUwacc+VpD2CLz4t8zslC+
-	eNeZoD2fHmqf8K10IMdu/VIuWJdaonEzMYaMfVd1Gc8DqDS4VFnaUf5DMahSoj1SQrw7UjWnuBGZc
-	qB7JRRWRyYG7c9Ew+cjvV66ID7QvHler4woATg9/PI6QL51BiTrB+4SqVEjGfQKna3Nh/BxQEWr3h
-	8XezKBhVu6Tj28iBCUoO7SUaY6remttDpGJI7zqrAj7v3+5NLlL5c6TqjFdeGbkpZxQggULs0QBkr
-	okYzE3lQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CcophrXStUW6PPY5OQ6Q6xN6zKlVgz8mY+TBrO2yC8c=; b=FHm30E8vRk9dXv4N6NkLrVMErv
+	9wXf7XGPa5rjcytv7hvcVdiSbaNW3wy6MbwzztRdnFuTwZjmPEBt9lVkcOxV9vvDMAXwM9A4svDj8
+	lrjdwpTScSiKmT34Apy1oNCNF6CGEu82rpUKSVQojqxAN17NpCfJPDc42qJff3weILWptu34KEFM+
+	SE0vt6DDsTSaJ6MA6J2AKqqktZaPDQ8k6ch9xr/X2E3LysqG0UECsidCaaZEP56u9GWPgySFJmYJz
+	j/mBupDqRrMHiw+2ktRWdjQy/pHtmy5/jI74PpBOlf5K2w906XwKBB/g/X7ey94GQC8fXLnzVJU02
+	61Z+kOsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLQFx-0000000FZ3S-48gV;
-	Wed, 11 Dec 2024 17:12:13 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tLRpG-0000000FmEU-3Kgs;
+	Wed, 11 Dec 2024 18:52:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLQEt-0000000FYvp-2cbP;
-	Wed, 11 Dec 2024 17:11:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1733937061; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MqDxC5RCWqj6frARveTY+iBLr/DNp2amjN9WKm9gl1GerCyqulp+ounDB/0XEDlcIEfGyZU3VJ38VzK8JIvfbXW9FVAqoWaUFULxbsmsiTa2aEGHoWnKXo9DFn7g3/XGpp8pa2XwrFz9OTs40mluKyN2j+F+GbzUn+VRDaQNNH0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1733937061; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=o6mgR9JSMbzuDpvHOfYMWLmhuCb2AgVcK+vn11JpoMQ=; 
-	b=MXJme1FJztZTmm3P1gKLG7Nu5KV+p40obUz5OdwQdPKtWdDUiRoM6i+Ye4NLVHWGO8AGcXm4vLr7BA4xXHI+VnI4hpCJFbMgsKCduKgjvJ5xjwWe1bk2XTJD+FYIIYKGNkVVV4Qnnxelmy5KvQb/CPY+uqjPi6U85hMgPwTJJMI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733937061;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=o6mgR9JSMbzuDpvHOfYMWLmhuCb2AgVcK+vn11JpoMQ=;
-	b=fzK6gjUjXS3j31LavblxZCCPDzUAOWyEA8fJnHdsskJL+zIaeEX31O6u2GL5K7t6
-	8l0WPBUG7YhDqqt6M1UZiPeFWzbFnQWbqgaSGPzzs4UwacadgN5ff7xHrDLmXZ3nFrx
-	nYTMC8ZZgWRsMpNoiQNkcZ6MlJ6J9lE5POxTSLVI=
-Received: by mx.zohomail.com with SMTPS id 1733937059334981.4575681462861;
-	Wed, 11 Dec 2024 09:10:59 -0800 (PST)
-Date: Wed, 11 Dec 2024 18:10:52 +0100
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	id 1tLRnB-0000000Flco-0PWh;
+	Wed, 11 Dec 2024 18:50:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 145DAA41867;
+	Wed, 11 Dec 2024 18:48:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3268C4CED2;
+	Wed, 11 Dec 2024 18:50:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733943036;
+	bh=4EXLjDTriVc1je8/0CUblwdhPgHCunMQ0LA3jn8a5AM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=VzKETxIBY6M2tTVxSyMrWX6sLyCO5YEDgPgTt2jzA2mWktvZwGArEL+1qG4zR3QpB
+	 y6JcL57z4B9XCXrF/s/vHvlDbIC1TNp1rFDhAUKeAWfNYNHgHTsz+DaUEawoLGgkMB
+	 NpfnpneoI1z15JJnZwTqV5sgz7UPbejILsa9SqeUxg0y36P81Ba+fL28+6ATB46i1f
+	 FpMipNMxYqt3dAuN5yxjIGNt+TbqntgYcZlEbOUdAh9zQK+7EH+ScyXkFmIR06MfNw
+	 ee8a6sotdovGzsiW28kO1aqMfV67217pGw0c8f3mhjvnzGbV+oZEt/HFnJZ+1yp2AL
+	 RNiW3clH0oipg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 3/3] media: mediatek: vcodec: add description for vsi
- struct
-Message-ID: <20241211171052.wl4wqoka7yyeso2l@basti-XPS-13-9310>
-References: <20241116031616.15656-1-yunfei.dong@mediatek.com>
- <20241116031616.15656-4-yunfei.dong@mediatek.com>
+	Guenter Roeck <linux@roeck-us.net>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Sasha Levin <sashal@kernel.org>,
+	matthias.bgg@gmail.com,
+	linux-watchdog@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.12 04/36] watchdog: mediatek: Add support for MT6735 TOPRGU/WDT
+Date: Wed, 11 Dec 2024 13:49:20 -0500
+Message-ID: <20241211185028.3841047-4-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241211185028.3841047-1-sashal@kernel.org>
+References: <20241211185028.3841047-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-In-Reply-To: <20241116031616.15656-4-yunfei.dong@mediatek.com>
-X-ZohoMailClient: External
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.12.4
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_091107_718562_9EC2AB08 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20241211_105037_206384_4E00E7D6 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,84 +81,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Yunfei,
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-On 16.11.2024 11:16, Yunfei Dong wrote:
->If the video shared information (vsi) is changed accidentally,
+[ Upstream commit 15ddf704f56f8c95ff74dfd1157ed8646b322fa1 ]
 
-How can that struct be changed accidentally?
+Add support for the Top Reset Generation Unit/Watchdog Timer found on
+MT6735.
 
->will leading to play h264 bitstream fail if the firmware won't
->be changed at the same time.
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Link: https://lore.kernel.org/r/20241106104738.195968-3-y.oudjana@protonmail.com
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Signed-off-by: Wim Van Sebroeck <wim@linux-watchdog.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/watchdog/mtk_wdt.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Okay I guess you mean that the struct has to be memcpy'd to the firmware
-to synchronize it right?
-Also is this really just a H264 thing? I would imagine that incorrect
-data in the firmware will cause issues no matter which codec.
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index c35f85ce8d69c..91a11715f6de5 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -10,6 +10,7 @@
+  */
+ 
+ #include <dt-bindings/reset/mt2712-resets.h>
++#include <dt-bindings/reset/mediatek,mt6735-wdt.h>
+ #include <dt-bindings/reset/mediatek,mt6795-resets.h>
+ #include <dt-bindings/reset/mt7986-resets.h>
+ #include <dt-bindings/reset/mt8183-resets.h>
+@@ -87,6 +88,10 @@ static const struct mtk_wdt_data mt2712_data = {
+ 	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+ };
+ 
++static const struct mtk_wdt_data mt6735_data = {
++	.toprgu_sw_rst_num = MT6735_TOPRGU_RST_NUM,
++};
++
+ static const struct mtk_wdt_data mt6795_data = {
+ 	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
+ };
+@@ -483,6 +488,7 @@ static int mtk_wdt_resume(struct device *dev)
+ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+ 	{ .compatible = "mediatek,mt6589-wdt" },
++	{ .compatible = "mediatek,mt6735-wdt", .data = &mt6735_data },
+ 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
+ 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+ 	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
+-- 
+2.43.0
 
->Marking the shared struct with "shared interface with firmware".
-
-Can we do anything more to ensure that the firmware doesn't fall out of
-sync besides adding a comment to the description?
-
-To fix grammatical issues the description above should be changed to:
-
-The vsi (video shared information) struct needs to be synchronized
-between the firmware and the host, as a change that is only done in the
-host version of the struct but isn't synchronized to the firmware can
-lead to decoding issues with H264 bitstreams. Highlight this requirement
-within the struct descriptions.
-
-But as highlighted above it is not clear to me whether the content of
-this message is right yet.
-
->
->Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
->Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->---
-> .../mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c    | 5 +++--
-> 1 file changed, 3 insertions(+), 2 deletions(-)
->
->diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
->index a7de95b9a7c0..5a202691e209 100644
->--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
->+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
->@@ -30,6 +30,7 @@ enum vdec_h264_core_dec_err_type {
->
-> /**
->  * struct vdec_h264_slice_lat_dec_param  - parameters for decode current frame
->+ *        (shared interface with firmware)
->  *
->  * @sps:		h264 sps syntax parameters
->  * @pps:		h264 pps syntax parameters
->@@ -48,7 +49,7 @@ struct vdec_h264_slice_lat_dec_param {
-> };
->
-> /**
->- * struct vdec_h264_slice_info - decode information
->+ * struct vdec_h264_slice_info - decode information (shared interface with firmware)
->  *
->  * @nal_info:		nal info of current picture
->  * @timeout:		Decode timeout: 1 timeout, 0 no timeout
->@@ -72,7 +73,7 @@ struct vdec_h264_slice_info {
->
-> /**
->  * struct vdec_h264_slice_vsi - shared memory for decode information exchange
->- *        between SCP and Host.
->+ *        between SCP and Host (shared interface with firmware).
-
-In this case, I feel like the previous description made the fact, that
-this is shared data between the host and the firmware, rather clear
-already.
-
->  *
->  * @wdma_err_addr:		wdma error dma address
->  * @wdma_start_addr:		wdma start dma address
->-- 
->2.46.0
->
->
-Regards,
-Sebastian Fricke
 
