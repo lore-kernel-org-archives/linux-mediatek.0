@@ -4,86 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E26CE7717D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 07:20:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15BC1E77180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 07:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/cb20aQBdVO9cyiblKIOeV0cEljjD8IS2jrvpmrNd1k=; b=PMFSk8+YhuYWIp/fP7U4FTEZIE
-	DOhiK+TR7WKc069D80Imn+QhajUTaDTLI2xxyFUOpNaWu+zighoZUDr210UGmnDsFdUbJqmeqGRU+
-	LNFCR7mmotDI8Brt8Ld9WjF+nIewg/h9gCXQSh3/WFFZsSk+GZurRZPJ2NAbrEnYlBEqSpzdjMmst
-	iErXZEFz2ol/bqNWBdDShT9GzJYYUcgwINkwLB15U6ogMkz8uALm6BZIgZjbJuOZyKMors0ZdywDO
-	bl0W4tm2YULepvWS6Xge1+HKuJ4VCizIFcWbMbmHj3COTU0OzJzQQ2oTy/kTpj54sxv6vgwO1TsUw
-	4YXA2ZOQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=91tSj/3okSiHcSM2laKUyzJ823bUsY2ekNnBETs7EdU=; b=xgpkJzFe3hcrXQH1dGcOHBoBe0
+	VX5NoF5Ht+AT5apwovtLGsMwf8vfitbNWer6YcaPdsHRh6dsFvhWOMzaaoX2lCssQzjlJDXYPhIqk
+	ejHbxDr1THwqOCmMRZBf6ibxPybK46oAbPMUPrLahqjHB3XQn+FgzV8yZv2O5QBUkO0faA7ct+jb0
+	tKtpc3hj97pw3LkE0G04nKfYxUMCnYujHTEbzPUnaHI8N9efRGYAJzJzVi+hMmZ8cq2muTXEk97yd
+	bqH6/B+286uvhBqVOI39hmNQtZv9sBWtShj/EwF1oQV3vUOOAgKbnspvp5nmd4KP+tMGBz28bqkG3
+	qR7A8L5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLH16-0000000E2E4-2Ks1;
-	Wed, 11 Dec 2024 07:20:16 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1tLHcq-0000000E8I2-0HU4;
+	Wed, 11 Dec 2024 07:59:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLH14-0000000E2DE-2uvP
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Dec 2024 07:20:15 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-216395e151bso2624945ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 23:20:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733901613; x=1734506413; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=/cb20aQBdVO9cyiblKIOeV0cEljjD8IS2jrvpmrNd1k=;
-        b=KCQ/KyMEKQbqQ442Y7Q+CdEjixXbcXgqBzRNiFp89aNVPC6iFBsxtQ+uKjmGLY5+oN
-         d0JsyiUkJW2r+sc/Lh16ItcHvnNDiKR01uQG/01JumxX3aQv9y9OyXR0O5VzP4s6pOVd
-         FSrm1yzwvW8YA8zBBnAeZ2CkHIt5js/83Lh78=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733901613; x=1734506413;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/cb20aQBdVO9cyiblKIOeV0cEljjD8IS2jrvpmrNd1k=;
-        b=TrTp4Dkhtjk9AvDwDZ8sBr5VIutrr5s0nYXLCiFRD74GdW9rTGzgLO8yEpEotR80nc
-         bTSdQyqTALCYi28EF5j4CM7oqTLWEb05amAHJCsjbeqcVtop25JWVSCAYKQ0Bzn0MEz6
-         QXz79H4IwRyaQ/B5krQCIEyOPH/PxUhqmAa6n1og0CAb0rtCsyet5n3sy2g0/WinoMMB
-         QUQgUr4G1whIFdaAzoj06RbwSmtpGhG1HG82K5DMW0s5/aWor5vFPOvAHXLGUiRZp2BL
-         cAvhEc5g5LkQZ6T0xUlQ2jguOdPMAeN041Yq2JqDGpJb4kzBcSypaiv1zy/odrDGRGPM
-         4oIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUx+9CE8yoosq5olLgXHmKK0Ai4QsE2NasYj5rrQnHPj7SYcvF2km/MnT4lmkFqjoXDD2Nwat0cFqANMfhq3w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzcgMH1zBOFPclkGbRLqBom+In7izqHMfdOZWCnNks+KMdmYvTJ
-	3J39xVhs35EwV8KAxulnld9tyIxIDjAoh1MysdjdH3GBHgWGc8FkONpCBMrdi19jdzulET6kQ/A
-	=
-X-Gm-Gg: ASbGncviPEkU4mK/eZZdOCnwdooymKdk9VKQYk00lZt5HmcnGYR9H+1Gf2jbvKGVe1v
-	LLMc9ZqA08iCfw84SoOQxzUCJ6E/ElNjeHOzQBWk1AePptDyymSm0YThJVRHZJGL1oyE82JUFLJ
-	KS6tnGEQmm3iAkMeBcNUnX4z4PgQYtRlD3LaprCkkKF9ExvuSAWTneHbbAeHml9eszprryrfO9A
-	mOpErtrCwwZGKUlMCPNUKPG0zZl7uMGagRL5Ei7XOycIMbiNKduwh3az9SaxmDCPowpp/TK
-X-Google-Smtp-Source: AGHT+IFb/j40l8RyXKKBP91IUhP6PaUxTTbrpQWP3pPlzKpxqE854bcUMGQOoZq9SqoelV4WQPakhQ==
-X-Received: by 2002:a17:903:230f:b0:215:b1e3:c051 with SMTP id d9443c01a7336-21779e450e3mr25924325ad.11.1733901613656;
-        Tue, 10 Dec 2024 23:20:13 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:4dfb:c0ae:6c93:d01e])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-215f8e41e52sm100214925ad.3.2024.12.10.23.20.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 23:20:13 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-remoteproc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Tinghan Shen <tinghan.shen@mediatek.com>
-Subject: [PATCH v2] remoteproc: mtk_scp: Only populate devices for SCP cores
-Date: Wed, 11 Dec 2024 15:20:07 +0800
-Message-ID: <20241211072009.120511-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
+	id 1tLHaL-0000000E7ic-3ilX;
+	Wed, 11 Dec 2024 07:56:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id DCB705C5B83;
+	Wed, 11 Dec 2024 07:55:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AAC2C4CED2;
+	Wed, 11 Dec 2024 07:56:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733903801;
+	bh=J60Zu7bSnYFHO396Do1QTQrSrzlbTFrIHnigijT//ME=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WCegzRnHTjGCRzENBnoUrTn1D3xtBB8zWbAOFj8xU0K5aplTLIf+vYK6n6DE3Uhxh
+	 1+YVIn5B6FuHj8NKHXB5EK3IHMawOqf/WNo3rC+fhLWiUlWOYYykfy4QxXCIokbDoy
+	 77UchrBvT6xF5b67Is1eLu0KnuuMXQESCEUbX2dcuWhfYEPLCoVEkjVDVl4PjJLuK4
+	 YUqNxUuG+uT0PA2c51j0SN5YEWJtnCfa+DqEHxC2l+0IL3g8JF7kOlqiVyrw2KrT/V
+	 JNo0Fxu50xApzam6rORxDSTXlz97J0f2Ckz79wtEBcjHkdKDrak846Gq7xTkGW7pfn
+	 eQRckg4w+wIQA==
+Message-ID: <2a773ddb-2836-40cf-a08b-ac47430aeb78@kernel.org>
+Date: Wed, 11 Dec 2024 08:56:34 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pinctrl: mediatek: Add support for MT8196
+To: ot907280 <ot_cathy.xu@mediatek.com>, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
+ linus.walleij@linaro.org
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>,
+ Guodong Liu <guodong.liu@mediatek.com>
+References: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_232014_761113_42D3D5FF 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20241210_235642_021688_3FB02284 
+X-CRM114-Status: GOOD (  23.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,67 +119,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When multi-core SCP support was added, the driver was made to populate
-platform devices for all the sub-nodes. This ended up adding platform
-devices for the rpmsg sub-nodes as well, which never actually get used,
-since rpmsg devices are registered through the rpmsg interface.
+On 11/12/2024 06:54, ot907280 wrote:
+> From: Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>
+> 
+> Add pinctrl driver for mt8196
+> 
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> Signed-off-by: ot907280 <ot_cathy.xu@mediatek.com>
 
-Limit of_platform_populate() to just populating the SCP cores with a
-compatible string match list.
 
-Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
-Cc: Tinghan Shen <tinghan.shen@mediatek.com>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v1:
-- Fix commit subject: populate devices *for* SCP cores
----
- drivers/remoteproc/mtk_scp.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+Please use real names, not logins.
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 0f4a7065d0bd..8206a1766481 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1326,6 +1326,11 @@ static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_clus
- 	return ret;
- }
- 
-+static const struct of_device_id scp_core_match[] = {
-+	{ .compatible = "mediatek,scp-core" },
-+	{}
-+};
-+
- static int scp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -1357,13 +1362,15 @@ static int scp_probe(struct platform_device *pdev)
- 	INIT_LIST_HEAD(&scp_cluster->mtk_scp_list);
- 	mutex_init(&scp_cluster->cluster_lock);
- 
--	ret = devm_of_platform_populate(dev);
-+	ret = of_platform_populate(dev_of_node(dev), scp_core_match, NULL, dev);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
- 
- 	ret = scp_cluster_init(pdev, scp_cluster);
--	if (ret)
-+	if (ret) {
-+		of_platform_depopulate(dev);
- 		return ret;
-+	}
- 
- 	return 0;
- }
-@@ -1379,6 +1386,7 @@ static void scp_remove(struct platform_device *pdev)
- 		rproc_del(scp->rproc);
- 		scp_free(scp);
- 	}
-+	of_platform_depopulate(&pdev->dev);
- 	mutex_destroy(&scp_cluster->cluster_lock);
- }
- 
--- 
-2.47.0.338.g60cca15819-goog
+<form letter>
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
 
+Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, instead use mainline) or work on fork of kernel
+(don't, instead use mainline). Just use b4 and everything should be
+fine, although remember about `b4 prep --auto-to-cc` if you added new
+patches to the patchset.
+
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling. Performing review on untested code might be
+a waste of time.
+
+Please kindly resend and include all necessary To/Cc entries.
+</form letter>
+
+
+> ---
+>  drivers/pinctrl/mediatek/Kconfig              |   12 +
+>  drivers/pinctrl/mediatek/Makefile             |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-mt8196.c     | 1757 +++++++++++
+>  drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h | 2791 +++++++++++++++++
+>  include/dt-bindings/pinctrl/mt8196-pinfunc.h  | 1572 ++++++++++
+>  5 files changed, 6133 insertions(+)
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8196.c
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h
+>  create mode 100644 include/dt-bindings/pinctrl/mt8196-pinfunc.h
+
+Please run scripts/checkpatch.pl and fix reported warnings. Then please
+run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
+Some warnings can be ignored, especially from --strict run, but the code
+here looks like it needs a fix. Feel free to get in touch if the warning
+is not clear.
+
+
+
+> +static const char * const mt8196_pinctrl_register_base_names[] = {
+> +	"iocfg0", "iocfg_rt", "iocfg_rm1", "iocfg_rm2",
+> +	"iocfg_rb", "iocfg_bm1", "iocfg_bm2", "iocfg_bm3",
+> +	"iocfg_lt", "iocfg_lm1", "iocfg_lm2", "iocfg_lb1",
+> +	"iocfg_lb2", "iocfg_tm1", "iocfg_tm2", "iocfg_tm3",
+> +};
+> +
+> +static const struct mtk_pin_soc mt8196_data = {
+> +	.reg_cal	= mt8196_reg_cals,
+> +	.pins	= mtk_pins_mt8196,
+> +	.npins	= ARRAY_SIZE(mtk_pins_mt8196),
+> +	.ngrps	= ARRAY_SIZE(mtk_pins_mt8196),
+> +	.nfuncs	= 8,
+> +	.gpio_m	= 0,
+> +	.base_names	= mt8196_pinctrl_register_base_names,
+> +	.nbase_names	= ARRAY_SIZE(mt8196_pinctrl_register_base_names),
+> +	.pull_type = mt8196_pull_type,
+> +	.bias_set_combo	= mtk_pinconf_bias_set_combo,
+> +	.bias_get_combo	= mtk_pinconf_bias_get_combo,
+> +	.drive_set	= mtk_pinconf_drive_set_rev1,
+> +	.drive_get	= mtk_pinconf_drive_get_rev1,
+> +	.adv_drive_get	= mtk_pinconf_adv_drive_get_raw,
+> +	.adv_drive_set	= mtk_pinconf_adv_drive_set_raw,
+> +};
+> +
+> +static const struct of_device_id mt8196_pinctrl_of_match[] = {
+> +	{ .compatible = "mediatek,mt8196-pinctrl", .data = &mt8196_data },
+
+
+Please run scripts/checkpatch.pl and fix reported warnings. Then please
+run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
+Some warnings can be ignored, especially from --strict run, but the code
+here looks like it needs a fix. Feel free to get in touch if the warning
+is not clear.
+
+> +	{ }
+> +};
+> +
+> +static struct platform_driver mt8196_pinctrl_driver = {
+> +	.driver = {
+> +		.name = "mt8196-pinctrl",
+> +		.of_match_table = mt8196_pinctrl_of_match,
+> +		.pm = &mtk_paris_pinctrl_pm_ops,
+> +	},
+> +	.probe = mtk_paris_pinctrl_probe,
+> +};
+> +
+> +static int __init mt8196_pinctrl_init(void)
+> +{
+> +	return platform_driver_register(&mt8196_pinctrl_driver);
+> +}
+> +arch_initcall(mt8196_pinctrl_init);
+> +
+> +MODULE_LICENSE("GPL");
+
+
+...
+
+> +#endif /* __PINCTRL_MTK_MT8196_H */
+> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+> new file mode 100644
+> index 000000000000..717351b12255
+> --- /dev/null
+> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+> @@ -0,0 +1,1572 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
+> +/*
+> + * Copyright (C) 2024 Mediatek Inc.
+> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
+> + */
+> +
+> +#ifndef __MT8196_PINFUNC_H
+> +#define __MT8196_PINFUNC_H
+> +
+> +#include <dt-bindings/pinctrl/mt65xx.h>
+> +
+> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
+> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
+> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
+> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
+> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
+
+
+These aren't really bindings. If you disagree, point me to the usage in
+the driver.
+
+
+
+Best regards,
+Krzysztof
 
