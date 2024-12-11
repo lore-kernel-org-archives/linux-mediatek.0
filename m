@@ -4,107 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15BC1E77180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 07:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60717E7717D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 08:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=91tSj/3okSiHcSM2laKUyzJ823bUsY2ekNnBETs7EdU=; b=xgpkJzFe3hcrXQH1dGcOHBoBe0
-	VX5NoF5Ht+AT5apwovtLGsMwf8vfitbNWer6YcaPdsHRh6dsFvhWOMzaaoX2lCssQzjlJDXYPhIqk
-	ejHbxDr1THwqOCmMRZBf6ibxPybK46oAbPMUPrLahqjHB3XQn+FgzV8yZv2O5QBUkO0faA7ct+jb0
-	tKtpc3hj97pw3LkE0G04nKfYxUMCnYujHTEbzPUnaHI8N9efRGYAJzJzVi+hMmZ8cq2muTXEk97yd
-	bqH6/B+286uvhBqVOI39hmNQtZv9sBWtShj/EwF1oQV3vUOOAgKbnspvp5nmd4KP+tMGBz28bqkG3
-	qR7A8L5w==;
+	bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=; b=qLWZtLGl2X+u0v8X9tfLldmJty
+	SIHCGBjflFZzKmZqYhbq80Zp55W5Vq4fC18gRq3U5BY+hdwfSUMm32HQ/GpFH6F/gkNc+if42va1u
+	pueLqHszhfxhtJ9HWMIHW/YXuCVGgYYHY+aFfzGCadrtqM+ghkGpWxgGN/7TmmxcreeK2WHSHkUHG
+	CXQDzdrxQRDvitkuzlANwCHdM+lfhn/35RhZU4V1IQdx2AVoFKcSy421nu3UkEaXwleeh+GjCi2SO
+	yYyGss+k5bJiwNzn5DMsLRXprOVIuPJ7b0FoguYigZZtAtvqt+P+k9KJyeJQ1m6PfW4QUtiGxHRbg
+	h96h0z+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHcq-0000000E8I2-0HU4;
-	Wed, 11 Dec 2024 07:59:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tLHvW-0000000ECIB-1ylI;
+	Wed, 11 Dec 2024 08:18:34 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHaL-0000000E7ic-3ilX;
-	Wed, 11 Dec 2024 07:56:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DCB705C5B83;
-	Wed, 11 Dec 2024 07:55:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AAC2C4CED2;
-	Wed, 11 Dec 2024 07:56:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733903801;
-	bh=J60Zu7bSnYFHO396Do1QTQrSrzlbTFrIHnigijT//ME=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WCegzRnHTjGCRzENBnoUrTn1D3xtBB8zWbAOFj8xU0K5aplTLIf+vYK6n6DE3Uhxh
-	 1+YVIn5B6FuHj8NKHXB5EK3IHMawOqf/WNo3rC+fhLWiUlWOYYykfy4QxXCIokbDoy
-	 77UchrBvT6xF5b67Is1eLu0KnuuMXQESCEUbX2dcuWhfYEPLCoVEkjVDVl4PjJLuK4
-	 YUqNxUuG+uT0PA2c51j0SN5YEWJtnCfa+DqEHxC2l+0IL3g8JF7kOlqiVyrw2KrT/V
-	 JNo0Fxu50xApzam6rORxDSTXlz97J0f2Ckz79wtEBcjHkdKDrak846Gq7xTkGW7pfn
-	 eQRckg4w+wIQA==
-Message-ID: <2a773ddb-2836-40cf-a08b-ac47430aeb78@kernel.org>
-Date: Wed, 11 Dec 2024 08:56:34 +0100
+	id 1tLHvT-0000000ECHN-0VjS
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Dec 2024 08:18:32 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-30227c56b11so25514851fa.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2024 00:18:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1733905108; x=1734509908; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=;
+        b=GRz7gHA1pQvDu0Vacbcq9hQ+AWYpUYKp+9bGQMQrsrjcsiXNkSCwyB/E0cDTn6G91/
+         W5EbKFvLfMVjr/2XEMSWyZXPupKuG57G0e0wtZ7GmZMs4aPy+ccS6+LIuPlwP3sa/oHA
+         MGLlnNkWxnA/M3Oeyu+WeiPZ4nXoP1bddXoOdhmMOftv/kKY1+ZV5Q947IUHwpmbbXRk
+         D2aKeNOf/LyAbeMwnuHZwPcscdiMDLsm7ha6u26eqkKEJiHMDfq+4GmKYojU0JYipeYf
+         ZJDJWVMdEvLSchjHcXqr0rcSFgPKd9aQzThOOlsbUJbXwHeQ0ALVO3NKtIBaDVInBJUB
+         c43g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733905108; x=1734509908;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XskHzUQ0wP3xisQAsDVTIVaMiwmap3TuSXWv2UwOOoE=;
+        b=QzJgQZVh8LxIb3fcUQW7FNzfYH560Fnawt50iXV8GSgMAN5DHeigvs3OP+a2Bjc8wO
+         j3bjwxr7cibloJNn/sBJ/yxL3VsrkwLei4xuZIDSIbnyZdNt3kkgYUiAbiglcoKgTfhO
+         aEORTBvM29pi4OAlqFcCHLMTsskijCL1lIIzFr+KLGmXRs6ecPULDC9sZnOGOkhDqzi4
+         V7MI9pdSTIGdfkwLYWyigyl4DHVq50kxPpMEUgn5bVJmioRnyVe9w4VdZO0cACdSQfTA
+         Df940H7T86mpjZiQ65GscaSRXdso+dgrG2IMmxvdpaA0y0S5w+yH1RMd0bI1A86L/RI4
+         HtSw==
+X-Forwarded-Encrypted: i=1; AJvYcCWM2HIjFhtQEHWzb0PK1hq8xTIa7nSXXwEgj8Qx/QUsWs9DjAT5/+u9+JYbKl6sTqUn6c9LYLiabj6nIdd0CA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4AGlshAhHb7Iwy1hBSh6v9kykhgkM9oFrrGJqfJJijDD+7j/V
+	D4p9I2xGOU7drgOKGbQgpmm+Wum5Ghmc3l61GUWGODJ8NOaM2OvqXGWM9JP0PnxHdjuK7ElfFey
+	3fmeKoIDIu9Fjepc4CvpxmAnnJLPeN4+y/nC/kg==
+X-Gm-Gg: ASbGncvz6a4wz4tC8E7BgitFH2A0VBZwLmEVMReVVBJuohuamfSqdbx1OgvSj8ZIDsT
+	z731HpaxINeRTCjeDyb1+2xlAmUPRJfXhAHxWJHF5xXv8ftFMdMcpSqUzSBROGiELX+0=
+X-Google-Smtp-Source: AGHT+IEyqSnEBMMtZyEj5jF6bo6/CxMQUAS8l/Vem+Q0Tg0zwJltPimb/BXxYNi4dNa8OIsM4j3xdj7bHzlce3zdJRY=
+X-Received: by 2002:a2e:bcc6:0:b0:2ff:c95a:a067 with SMTP id
+ 38308e7fff4ca-30240d08829mr5734311fa.13.1733905108362; Wed, 11 Dec 2024
+ 00:18:28 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pinctrl: mediatek: Add support for MT8196
-To: ot907280 <ot_cathy.xu@mediatek.com>, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
- linus.walleij@linaro.org
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>,
- Guodong Liu <guodong.liu@mediatek.com>
-References: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com> <20241211-const_dfc_done-v4-8-583cc60329df@quicinc.com>
+In-Reply-To: <20241211-const_dfc_done-v4-8-583cc60329df@quicinc.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 11 Dec 2024 09:18:17 +0100
+Message-ID: <CAMRc=MdJuy9ghgLHxbygdHME2EkttZ7zBMJzCis=t94EUMbGiQ@mail.gmail.com>
+Subject: Re: [PATCH v4 08/11] gpio: sim: Remove gpio_sim_dev_match_fwnode()
+To: Zijun Hu <zijun_hu@icloud.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
+	James Bottomley <James.Bottomley@hansenpartnership.com>, 
+	=?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>, 
+	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev, 
+	linux-sound@vger.kernel.org, sparclinux@vger.kernel.org, 
+	linux-block@vger.kernel.org, linux-cxl@vger.kernel.org, 
+	linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org, 
+	linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org, 
+	linux-serial@vger.kernel.org, netdev@vger.kernel.org, 
+	Zijun Hu <quic_zijuhu@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_235642_021688_3FB02284 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20241211_001831_425820_4D321790 
+X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,146 +106,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/12/2024 06:54, ot907280 wrote:
-> From: Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>
-> 
-> Add pinctrl driver for mt8196
-> 
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> Signed-off-by: ot907280 <ot_cathy.xu@mediatek.com>
-
-
-Please use real names, not logins.
-
-<form letter>
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC. It might happen, that command when run on an older
-kernel, gives you outdated entries. Therefore please be sure you base
-your patches on recent Linux kernel.
-
-Tools like b4 or scripts/get_maintainer.pl provide you proper list of
-people, so fix your workflow. Tools might also fail if you work on some
-ancient tree (don't, instead use mainline) or work on fork of kernel
-(don't, instead use mainline). Just use b4 and everything should be
-fine, although remember about `b4 prep --auto-to-cc` if you added new
-patches to the patchset.
-
-You missed at least devicetree list (maybe more), so this won't be
-tested by automated tooling. Performing review on untested code might be
-a waste of time.
-
-Please kindly resend and include all necessary To/Cc entries.
-</form letter>
-
-
+On Wed, Dec 11, 2024 at 1:10=E2=80=AFAM Zijun Hu <zijun_hu@icloud.com> wrot=
+e:
+>
+> From: Zijun Hu <quic_zijuhu@quicinc.com>
+>
+> gpio_sim_dev_match_fwnode() is a simple wrapper of API
+> device_match_fwnode().
+>
+> Remove the needless wrapper and use the API instead.
+>
+> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
 > ---
->  drivers/pinctrl/mediatek/Kconfig              |   12 +
->  drivers/pinctrl/mediatek/Makefile             |    1 +
->  drivers/pinctrl/mediatek/pinctrl-mt8196.c     | 1757 +++++++++++
->  drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h | 2791 +++++++++++++++++
->  include/dt-bindings/pinctrl/mt8196-pinfunc.h  | 1572 ++++++++++
->  5 files changed, 6133 insertions(+)
->  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8196.c
->  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h
->  create mode 100644 include/dt-bindings/pinctrl/mt8196-pinfunc.h
 
-Please run scripts/checkpatch.pl and fix reported warnings. Then please
-run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
-Some warnings can be ignored, especially from --strict run, but the code
-here looks like it needs a fix. Feel free to get in touch if the warning
-is not clear.
-
-
-
-> +static const char * const mt8196_pinctrl_register_base_names[] = {
-> +	"iocfg0", "iocfg_rt", "iocfg_rm1", "iocfg_rm2",
-> +	"iocfg_rb", "iocfg_bm1", "iocfg_bm2", "iocfg_bm3",
-> +	"iocfg_lt", "iocfg_lm1", "iocfg_lm2", "iocfg_lb1",
-> +	"iocfg_lb2", "iocfg_tm1", "iocfg_tm2", "iocfg_tm3",
-> +};
-> +
-> +static const struct mtk_pin_soc mt8196_data = {
-> +	.reg_cal	= mt8196_reg_cals,
-> +	.pins	= mtk_pins_mt8196,
-> +	.npins	= ARRAY_SIZE(mtk_pins_mt8196),
-> +	.ngrps	= ARRAY_SIZE(mtk_pins_mt8196),
-> +	.nfuncs	= 8,
-> +	.gpio_m	= 0,
-> +	.base_names	= mt8196_pinctrl_register_base_names,
-> +	.nbase_names	= ARRAY_SIZE(mt8196_pinctrl_register_base_names),
-> +	.pull_type = mt8196_pull_type,
-> +	.bias_set_combo	= mtk_pinconf_bias_set_combo,
-> +	.bias_get_combo	= mtk_pinconf_bias_get_combo,
-> +	.drive_set	= mtk_pinconf_drive_set_rev1,
-> +	.drive_get	= mtk_pinconf_drive_get_rev1,
-> +	.adv_drive_get	= mtk_pinconf_adv_drive_get_raw,
-> +	.adv_drive_set	= mtk_pinconf_adv_drive_set_raw,
-> +};
-> +
-> +static const struct of_device_id mt8196_pinctrl_of_match[] = {
-> +	{ .compatible = "mediatek,mt8196-pinctrl", .data = &mt8196_data },
-
-
-Please run scripts/checkpatch.pl and fix reported warnings. Then please
-run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
-Some warnings can be ignored, especially from --strict run, but the code
-here looks like it needs a fix. Feel free to get in touch if the warning
-is not clear.
-
-> +	{ }
-> +};
-> +
-> +static struct platform_driver mt8196_pinctrl_driver = {
-> +	.driver = {
-> +		.name = "mt8196-pinctrl",
-> +		.of_match_table = mt8196_pinctrl_of_match,
-> +		.pm = &mtk_paris_pinctrl_pm_ops,
-> +	},
-> +	.probe = mtk_paris_pinctrl_probe,
-> +};
-> +
-> +static int __init mt8196_pinctrl_init(void)
-> +{
-> +	return platform_driver_register(&mt8196_pinctrl_driver);
-> +}
-> +arch_initcall(mt8196_pinctrl_init);
-> +
-> +MODULE_LICENSE("GPL");
-
-
-...
-
-> +#endif /* __PINCTRL_MTK_MT8196_H */
-> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
-> new file mode 100644
-> index 000000000000..717351b12255
-> --- /dev/null
-> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
-> @@ -0,0 +1,1572 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-> +/*
-> + * Copyright (C) 2024 Mediatek Inc.
-> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
-> + */
-> +
-> +#ifndef __MT8196_PINFUNC_H
-> +#define __MT8196_PINFUNC_H
-> +
-> +#include <dt-bindings/pinctrl/mt65xx.h>
-> +
-> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
-> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
-> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
-> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
-> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
-> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
-
-
-These aren't really bindings. If you disagree, point me to the usage in
-the driver.
-
-
-
-Best regards,
-Krzysztof
+Acked-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
