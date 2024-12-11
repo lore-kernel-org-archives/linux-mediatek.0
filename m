@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A6CDE7717D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 05:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6652E7717D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 05:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VajpwNXgLRwnVxUzuVzg5zr/x+BvIvcxvW3/imNa1GE=; b=bcvk9SM1yxjelmceWRsx9YsJqX
-	kTmTf2x8AXT2NxN/hnILmvYvY5eQ0czqDIfia64wsuyIds3y7t23TDPcD5CjQVFTk8md0luUR5pYq
-	kWo2vhVqew2i+B11WpDrrthHsoEPBvnZ0xto80+iObcj0zcTJtbe1q8K6EqiIU5QaEX20kreFd8ru
-	E2seMp/EeHlkJzptsV7YudXRoUinz8x79iVYu9rv13Zar3TwTGXE4U/uV6qlf8N6J4uJCKrEO8zkQ
-	wjIsF4QvmzhJwO73laDhTSTGuhWyUHxBpjWUMYib9GTGE25sd9JiRO43oonf8aGMxv0pgZwbBVPTk
-	kukeltRA==;
+	bh=tY7r3wEjIkXTlIAMLJz+ui9MVhaOPU6f72Mx3sHGkok=; b=1MGL7VkDxFppoaYT7Mz2V0SsSJ
+	0kAj5FWDcLqdmzqPy255k69Te1LZewkMybZ2BBQpGvrmZzkN1B3TTAaeH2y84zY+PxyTvp3Rg1vau
+	c3OXNefh2NuTyq1VS74Zlvb86ejcwDlzv+F/65ObHWS0m7pYszN4yC2XrOmwl/HMdrraUPnxiBdou
+	Hu0GKLNiNyyOgjmbOLlC/hhmGx2DB7kqINeZavIGlvw7w6seNjbZt2VJdd3JwdcogHSvDgsQH10HT
+	bSDE3W9GdGsglU1NkODRXABWBO+Y/UjHu/xOhfNP4KvOFOEmNXaHq3TflGCh1j5geQg2dBycLhwgh
+	OtjdNILw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLFFF-0000000DpcH-2yWZ;
-	Wed, 11 Dec 2024 05:26:45 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1tLFGH-0000000Dpkl-3lZW;
+	Wed, 11 Dec 2024 05:27:49 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLFDE-0000000Dp3f-2di5
+	id 1tLFDH-0000000Dp4U-19MX
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Dec 2024 05:24:41 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-7ea8de14848so4022818a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 21:24:40 -0800 (PST)
+	Wed, 11 Dec 2024 05:24:44 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-725e71a11f7so245468b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2024 21:24:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1733894680; x=1734499480; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1733894682; x=1734499482; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VajpwNXgLRwnVxUzuVzg5zr/x+BvIvcxvW3/imNa1GE=;
-        b=In0X1xABBOderg0uL/2502ZP05e5MLrXidvixJsam3qUjt8xZcwiGohzbThAkWr5XH
-         nYmvzR5nhmoFgXpq0epSGMqcPPTu06788sD5sSwuus3kRoLe75B/LILHDp9sHOiTEkRq
-         5sDVWZcXo3Xncca9AQUXr26qlcGnjPSVfDwQY=
+        bh=tY7r3wEjIkXTlIAMLJz+ui9MVhaOPU6f72Mx3sHGkok=;
+        b=NbY/eJKOGPo3xdBz+8EBHpXdtiOlrR1/Jp1fRWfpapy5aV+Ox6OUj3ZdUJMhPErrNS
+         qsomXVf4dQfhJHxa4BplOjT/yAlj/4nYVfbsqefU1zc6j97vdlW6C6yTtTczOXM8duPs
+         xC51J3GU6tJBGkyumj0KTDQ6LPnAXWTCcl6SY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733894680; x=1734499480;
+        d=1e100.net; s=20230601; t=1733894682; x=1734499482;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=VajpwNXgLRwnVxUzuVzg5zr/x+BvIvcxvW3/imNa1GE=;
-        b=VQCUTQDK1r0pB/GP8rQ/c+82GagovkF95hZ5la87XIjLtAH2x4PnRc2Mp9BuLhzTHw
-         B5CcBb/A82v7O+hb+ZeJZRU1CvVTGIgqAvvuH2KhSG1mX1DUP36L15ftLGdaNgCG7XJp
-         IEyV2IKu6LZxZK38PkUt5P3AmlaTU5jeav9OlWjM8fdi04D4jpvoEAwznXWghataaiiw
-         TnBjQhc2qwe45Bh6i7M3thRAEDA3ykBosZQNijbHxcva9qbJqEL64eBoWEoIBXEpjRLa
-         AqB/toLxJYmCEGK6Z0UVEHzL5Eda51C3fGWdTcj1PY1FV1V9zVTTRd1DJrB733UvKnMD
-         gd3w==
-X-Forwarded-Encrypted: i=1; AJvYcCXZzVybqELJp9dvzAxYiqUqSGpxl1K7PEuT7zo6HmWBpIaX9sxuvc13SovVFn//sC/VijIaFtaGoYGYVR63TA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzu2+0nu3MzIpwBQAkgS+1b+s91F8NQkjbultLFLM+JiUgJPl8c
-	s8tI46j7q+/Nt3GkhdjsgPO5mq5Na1aPnmEuuPk9sfnA4FsyboiTMhp2XRxZmg==
-X-Gm-Gg: ASbGnctWb4YR1ILiFGYgQftqWBCHiu/FWkHCD9TQ/8C7m9U6LHAuTcGxwgpWAnOMyCR
-	/+cx3toWDKy/tctPUiUjtCI/I8OkslubVol1RcdKhiGyv4RR2qHXLwRFIi9nA694W+ICEaAJ+mz
-	Ak4EVcKUxxarNGWnJCsTCobVrlbD/122KCLnJUq/Ir2lxWtUVTSw9nprvF+5m+YVf2YWD9sggFH
-	F//Sd1K52lDbm7DS5YJYpT7szanHekk4VHNYrq/lkYEE4njcrBScRBNwkSohEAHdZEifSPH
-X-Google-Smtp-Source: AGHT+IGHa9pLW8AmgWmPpkt2d3AMc62yA8lmyj5k97y8xXtFztxBU4CrT22oxWpzrhhtYTUKJaIAkg==
-X-Received: by 2002:a05:6a20:d50c:b0:1e0:d7ec:5aae with SMTP id adf61e73a8af0-1e1c126ef4dmr3311686637.4.1733894679722;
-        Tue, 10 Dec 2024 21:24:39 -0800 (PST)
+        bh=tY7r3wEjIkXTlIAMLJz+ui9MVhaOPU6f72Mx3sHGkok=;
+        b=kVnXzUsViN/LFUGClKpsMfECdolGLGxZCiBVPtPV337zND2RR2LP1MATCR1gKg0CfZ
+         CHhrYVieidwajMJ4eWVp7TnRlvLexPBVCcbOO6GpyvCG5k76HSTtxTzc9SFKVK7YnRy3
+         CCe3xqyiT6+vcU/pD1ZBnr2k+xZRJiowN1d1X2gD7LqwE1tN7hIy8yeXA7GoM0KSQMxk
+         al3AU5cF2YAQW+4GLANn5lSMLLDafgZalw2mpET0Yy91Ksh9oxtNNOP4vt+NFDWnq8XN
+         iXGO5BryehCOuUa98KDYBcCkXVvrt1+9vPYN72ytRUhR2qatcCAMYCHRUgU2IO+4+Q1Z
+         OYBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWygpnhXLJRqMGmebRRsSZ5q5c49GZbOCwXXW8gajs61HA1Sw7xscA3swnUNMwt00WOClYUsinznIFrw6bDTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3eQIZP/DlJVXFmaa5WWKbsn24Mhqp4YaIznDEbnMakbJ4xNIK
+	hiR7cVuh60kkdvlPhtyqE/NVYVKLiWaBCiAL1WNC2ypAzLM59HbYGLUJqZ6JFQ==
+X-Gm-Gg: ASbGncsuGvwNse+mlonztxPg7ZIE8sGFZeo7KN5Dbcy+NORx3W0xGL6JWpCnMDBZN9t
+	iQK/nPe2CB0ZYTaQ5esvzacY0tOSGkBocgQmXl6eas8ROsmTpf6Jp0+acLhLq+JPjtXPR65diuy
+	j/OncS7+4jW4xal+CZht8utkqN/Imce846jLHIjdtbdy+jFN6ghFxDmSxJ2vkDO2v93jX/tErcO
+	cVefSQDOiY60E81455iudnL/iJF8PT4K19ih8h8GAK6DxHEaW1kELIuM3W93D1DKwQ+r+BD
+X-Google-Smtp-Source: AGHT+IHPBmMY46nd40L9l8B7rqf5OCepHo36t8dy/i4aNYeTnSBw7vMG0JUR5wQ8qEOw6/U4VQW7Bg==
+X-Received: by 2002:a05:6a20:d8b:b0:1e1:a48f:1212 with SMTP id adf61e73a8af0-1e1c26a8ecbmr2331768637.4.1733894682401;
+        Tue, 10 Dec 2024 21:24:42 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:4dfb:c0ae:6c93:d01e])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e66801e2sm5397702b3a.160.2024.12.10.21.24.37
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e66801e2sm5397702b3a.160.2024.12.10.21.24.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 21:24:39 -0800 (PST)
+        Tue, 10 Dec 2024 21:24:42 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -77,17 +77,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/8] arm64: dts: mediatek: mt8173-evb: Drop regulator-compatible property
-Date: Wed, 11 Dec 2024 13:24:20 +0800
-Message-ID: <20241211052427.4178367-3-wenst@chromium.org>
+Subject: [PATCH 3/8] arm64: dts: mediatek: mt8173-elm: Drop regulator-compatible property
+Date: Wed, 11 Dec 2024 13:24:21 +0800
+Message-ID: <20241211052427.4178367-4-wenst@chromium.org>
 X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
 In-Reply-To: <20241211052427.4178367-1-wenst@chromium.org>
 References: <20241211052427.4178367-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_212440_668544_20EF8A35 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20241210_212443_311545_AF213E0D 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,17 +115,17 @@ Drop the "regulator-compatible" property from the board dts. The
 property values are the same as the node name, so everything should
 continue to work.
 
-Fixes: 16ea61fc5614 ("arm64: dts: mt8173-evb: Add PMIC support")
+Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 23 ---------------------
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 23 --------------------
  1 file changed, 23 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index bb4671c18e3b..511c16cb1d59 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -311,7 +311,6 @@ mt6397regulator: mt6397regulator {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index eee64461421f..b91072f4723f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -946,7 +946,6 @@ regulator: mt6397regulator {
  			compatible = "mediatek,mt6397-regulator";
  
  			mt6397_vpca15_reg: buck_vpca15 {
@@ -133,7 +133,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vpca15";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -320,7 +319,6 @@ mt6397_vpca15_reg: buck_vpca15 {
+@@ -956,7 +955,6 @@ mt6397_vpca15_reg: buck_vpca15 {
  			};
  
  			mt6397_vpca7_reg: buck_vpca7 {
@@ -141,7 +141,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vpca7";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -329,7 +327,6 @@ mt6397_vpca7_reg: buck_vpca7 {
+@@ -966,7 +964,6 @@ mt6397_vpca7_reg: buck_vpca7 {
  			};
  
  			mt6397_vsramca15_reg: buck_vsramca15 {
@@ -149,7 +149,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vsramca15";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -338,7 +335,6 @@ mt6397_vsramca15_reg: buck_vsramca15 {
+@@ -975,7 +972,6 @@ mt6397_vsramca15_reg: buck_vsramca15 {
  			};
  
  			mt6397_vsramca7_reg: buck_vsramca7 {
@@ -157,7 +157,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vsramca7";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -347,7 +343,6 @@ mt6397_vsramca7_reg: buck_vsramca7 {
+@@ -984,7 +980,6 @@ mt6397_vsramca7_reg: buck_vsramca7 {
  			};
  
  			mt6397_vcore_reg: buck_vcore {
@@ -165,7 +165,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vcore";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -356,7 +351,6 @@ mt6397_vcore_reg: buck_vcore {
+@@ -993,7 +988,6 @@ mt6397_vcore_reg: buck_vcore {
  			};
  
  			mt6397_vgpu_reg: buck_vgpu {
@@ -173,7 +173,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vgpu";
  				regulator-min-microvolt = < 700000>;
  				regulator-max-microvolt = <1350000>;
-@@ -365,7 +359,6 @@ mt6397_vgpu_reg: buck_vgpu {
+@@ -1002,7 +996,6 @@ mt6397_vgpu_reg: buck_vgpu {
  			};
  
  			mt6397_vdrm_reg: buck_vdrm {
@@ -181,7 +181,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vdrm";
  				regulator-min-microvolt = <1200000>;
  				regulator-max-microvolt = <1400000>;
-@@ -374,7 +367,6 @@ mt6397_vdrm_reg: buck_vdrm {
+@@ -1011,7 +1004,6 @@ mt6397_vdrm_reg: buck_vdrm {
  			};
  
  			mt6397_vio18_reg: buck_vio18 {
@@ -189,7 +189,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vio18";
  				regulator-min-microvolt = <1620000>;
  				regulator-max-microvolt = <1980000>;
-@@ -383,19 +375,16 @@ mt6397_vio18_reg: buck_vio18 {
+@@ -1020,18 +1012,15 @@ mt6397_vio18_reg: buck_vio18 {
  			};
  
  			mt6397_vtcxo_reg: ldo_vtcxo {
@@ -201,15 +201,14 @@ index bb4671c18e3b..511c16cb1d59 100644
  			mt6397_va28_reg: ldo_va28 {
 -				regulator-compatible = "ldo_va28";
  				regulator-name = "va28";
- 				regulator-always-on;
  			};
  
  			mt6397_vcama_reg: ldo_vcama {
 -				regulator-compatible = "ldo_vcama";
  				regulator-name = "vcama";
- 				regulator-min-microvolt = <1500000>;
- 				regulator-max-microvolt = <2800000>;
-@@ -403,18 +392,15 @@ mt6397_vcama_reg: ldo_vcama {
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -1039,18 +1028,15 @@ mt6397_vcama_reg: ldo_vcama {
  			};
  
  			mt6397_vio28_reg: ldo_vio28 {
@@ -228,7 +227,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vmc";
  				regulator-min-microvolt = <1800000>;
  				regulator-max-microvolt = <3300000>;
-@@ -422,7 +408,6 @@ mt6397_vmc_reg: ldo_vmc {
+@@ -1058,7 +1044,6 @@ mt6397_vmc_reg: ldo_vmc {
  			};
  
  			mt6397_vmch_reg: ldo_vmch {
@@ -236,7 +235,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vmch";
  				regulator-min-microvolt = <3000000>;
  				regulator-max-microvolt = <3300000>;
-@@ -430,7 +415,6 @@ mt6397_vmch_reg: ldo_vmch {
+@@ -1066,7 +1051,6 @@ mt6397_vmch_reg: ldo_vmch {
  			};
  
  			mt6397_vemc_3v3_reg: ldo_vemc3v3 {
@@ -244,31 +243,31 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vemc_3v3";
  				regulator-min-microvolt = <3000000>;
  				regulator-max-microvolt = <3300000>;
-@@ -438,7 +422,6 @@ mt6397_vemc_3v3_reg: ldo_vemc3v3 {
+@@ -1074,7 +1058,6 @@ mt6397_vemc_3v3_reg: ldo_vemc3v3 {
  			};
  
  			mt6397_vgp1_reg: ldo_vgp1 {
 -				regulator-compatible = "ldo_vgp1";
  				regulator-name = "vcamd";
- 				regulator-min-microvolt = <1220000>;
- 				regulator-max-microvolt = <3300000>;
-@@ -446,7 +429,6 @@ mt6397_vgp1_reg: ldo_vgp1 {
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -1082,7 +1065,6 @@ mt6397_vgp1_reg: ldo_vgp1 {
  			};
  
  			mt6397_vgp2_reg: ldo_vgp2 {
 -				regulator-compatible = "ldo_vgp2";
  				regulator-name = "vcamio";
- 				regulator-min-microvolt = <1000000>;
+ 				regulator-min-microvolt = <3300000>;
  				regulator-max-microvolt = <3300000>;
-@@ -454,7 +436,6 @@ mt6397_vgp2_reg: ldo_vgp2 {
+@@ -1090,7 +1072,6 @@ mt6397_vgp2_reg: ldo_vgp2 {
  			};
  
  			mt6397_vgp3_reg: ldo_vgp3 {
 -				regulator-compatible = "ldo_vgp3";
  				regulator-name = "vcamaf";
- 				regulator-min-microvolt = <1200000>;
- 				regulator-max-microvolt = <3300000>;
-@@ -462,7 +443,6 @@ mt6397_vgp3_reg: ldo_vgp3 {
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -1098,7 +1079,6 @@ mt6397_vgp3_reg: ldo_vgp3 {
  			};
  
  			mt6397_vgp4_reg: ldo_vgp4 {
@@ -276,7 +275,7 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vgp4";
  				regulator-min-microvolt = <1200000>;
  				regulator-max-microvolt = <3300000>;
-@@ -470,7 +450,6 @@ mt6397_vgp4_reg: ldo_vgp4 {
+@@ -1106,7 +1086,6 @@ mt6397_vgp4_reg: ldo_vgp4 {
  			};
  
  			mt6397_vgp5_reg: ldo_vgp5 {
@@ -284,15 +283,15 @@ index bb4671c18e3b..511c16cb1d59 100644
  				regulator-name = "vgp5";
  				regulator-min-microvolt = <1200000>;
  				regulator-max-microvolt = <3000000>;
-@@ -478,7 +457,6 @@ mt6397_vgp5_reg: ldo_vgp5 {
+@@ -1114,7 +1093,6 @@ mt6397_vgp5_reg: ldo_vgp5 {
  			};
  
  			mt6397_vgp6_reg: ldo_vgp6 {
 -				regulator-compatible = "ldo_vgp6";
  				regulator-name = "vgp6";
- 				regulator-min-microvolt = <1200000>;
+ 				regulator-min-microvolt = <3300000>;
  				regulator-max-microvolt = <3300000>;
-@@ -486,7 +464,6 @@ mt6397_vgp6_reg: ldo_vgp6 {
+@@ -1123,7 +1101,6 @@ mt6397_vgp6_reg: ldo_vgp6 {
  			};
  
  			mt6397_vibr_reg: ldo_vibr {
