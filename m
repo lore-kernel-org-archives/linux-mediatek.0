@@ -4,62 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C09E7717D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 08:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B177E77180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2024 08:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WUoipqwINErtScImQT/pK8ikFLW9WxsFyv2aWgrTKQU=; b=zOe4XVAgQTXDrm
-	BKXm36O3OiW8sPxxl+LhYZws2HNxr/YlQo6hU2e3hpWkvHIVAgqJQcljAKxNP89efd+MHrAoAZDvs
-	1HIo9uG7nEvcBA5EqjSceaKqigXgQL77pCgMbbostBklosFpLhRfCKMycX5lDx2fviVED3LPGQiPR
-	UxTyRRFh64t52ecn774V5ak21h7V6250PkeD2TMQQC4ROndeFfG2VFyid0b9vGJgs3SfqSrw/evN2
-	3TrpC8C+255V94W3Gdic9x9EAJGE4EIxCLv6qaiqU6lyM6DhKAZ+RKRKHMPrb+wUwjY28Q1ceoTF1
-	CLbEBaOjQyvgnm/e+Bew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jaCUqwH4fAaTwmg1MIBn0GvMF/tWRg5PsAqu+nqAElk=; b=c2lVEU0HLfs1qucUWQwhHvEz/y
+	A5N+MXdyR+vfraTt7TCBHI3z4nDrMlZHefNJ7AnZadt0G28E3yZyXd6pXw8m0Q2GDiqYAe8s/6myf
+	D5Z4+nAWsxbgXF17u5pGD2TMkVezRHxyBq1jTUuW9qiukcu0BeNkp5KmnRPrvFB0hP82BEb1iWukE
+	d9hUXjUuoymrHB7i/LBXj812UI3nsyXUNleag0IruhOhFnafp4vGeV7p8BBjCfAjNJLcJywZU5CzJ
+	tqHr8Ot5cqTw7xCWH/jPWIOTIJ/ZR4rssC2fG6V3E0mVE5610ZFA45OV5L1DE7AABV7Vq6NA7E3UV
+	VXxPurxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLILG-0000000EGTc-29RE;
-	Wed, 11 Dec 2024 08:45:10 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1tLIMI-0000000EGbi-1pFi;
+	Wed, 11 Dec 2024 08:46:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLIKB-0000000EGBX-1Qp3;
-	Wed, 11 Dec 2024 08:44:04 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 13DE340349;
-	Wed, 11 Dec 2024 08:43:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1733906639;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WUoipqwINErtScImQT/pK8ikFLW9WxsFyv2aWgrTKQU=;
-	b=fET0avlRfjFvv6n1c4Q7Byb5prAb2b6BY2o49YLKT3+i/tNGTqN5LxuMYxmsigTLJ5WuZf
-	TduRVyFFyJpATin75Ah4YgvM0WSqzgGn1JPEQJEAfgVGQdO/sSNxB9HZ4U1CYfVH+ihB2k
-	LOvt0BkmZZ0UPpSCW1ka4m2JJZ+PhY8=
-Received: from webmail.hosting.de (unknown [134.0.26.148])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 46180360076;
-	Wed, 11 Dec 2024 08:43:58 +0000 (UTC)
+	id 1tLIKW-0000000EGK9-1QNp;
+	Wed, 11 Dec 2024 08:44:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3AF6A5C4924;
+	Wed, 11 Dec 2024 08:43:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0F15C4CEE0;
+	Wed, 11 Dec 2024 08:44:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733906663;
+	bh=GLkOt75fCIRCWsQeYD1HBKrYQgxn/OmeXMZSEtLUtNg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EX7ODOA6EHdMYUAO3zSqgP2+U0X6TOA1o++8ZjZZ+wA0YKm5Nd5gOazjmkxIHt/YH
+	 0mkDb5Zy6zwhW3FOaarjyPqlHYtMw9BTCHzIt7S/r8BznKpFObzvLuX8WdpVk6rulm
+	 ZBZP9KRNPkrG6CeJ4dG6DNr7KKZtli1VXkx1+2Czy5LL1DfrGrEgZYs+7brCwfItky
+	 QVpkJKStgHZ7rCCkeV1CrI2OHWIBVLSxXSFUEMWeyt92UneJAWY+UMsJsWGUnKz1i1
+	 8FuuU8C8+yb5he1IUY+CfwkCjlgEWNAA4SqQQPxE8RlgkrZcdcYY+S7JtdS8Eix59U
+	 3ONoJAGGJHUfg==
+Message-ID: <7b79d4b5-ba91-41a0-90d1-c64bcab53cec@kernel.org>
+Date: Wed, 11 Dec 2024 09:44:13 +0100
 MIME-Version: 1.0
-Date: Wed, 11 Dec 2024 09:43:58 +0100
-From: "Frank Wunderlich (linux)" <linux@fw-web.de>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH v5 2/5] pinctrl: mediatek: add MT7988 pinctrl driver
-In-Reply-To: <32201aec-f3d2-49a7-b0ca-2ede10fec103@wanadoo.fr>
-References: <20241202110045.22084-1-linux@fw-web.de>
- <20241202110045.22084-3-linux@fw-web.de>
- <32201aec-f3d2-49a7-b0ca-2ede10fec103@wanadoo.fr>
-Message-ID: <598f595589d061bf314d942095cd5dc6@fw-web.de>
-X-Sender: linux@fw-web.de
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: f7caaa60-9ba2-4071-927a-9434349a1399
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v13 04/25] virt: geniezone: Add GenieZone hypervisor
+ driver
+To: Liju-clr Chen <liju-clr.chen@mediatek.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu
+ <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
+ Ze-yu Wang <Ze-yu.Wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Shawn Hsiao <shawn.hsiao@mediatek.com>,
+ PeiLun Suei <PeiLun.Suei@mediatek.com>,
+ Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>,
+ Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
+References: <20241114100802.4116-1-liju-clr.chen@mediatek.com>
+ <20241114100802.4116-5-liju-clr.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241114100802.4116-5-liju-clr.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_004403_550972_20D1F40E 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20241211_004424_469969_FB20FB14 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,84 +129,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2024-12-10 19:45, schrieb Christophe JAILLET:
-> Le 02/12/2024 à 12:00, Frank Wunderlich a écrit :
->> From: Daniel Golle <daniel@makrotopia.org>
->> 
->> Add pinctrl driver for the MediaTek MT7988 SoC.
->> 
->> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
->> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->> [correctly initialise for the function_desc structure]
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->> 
->> ---
-> 
-> ...
-> 
->> +/* flash */
->> +static int mt7988_snfi_pins[] = { 22, 23, 24, 25, 26, 27 };
->> +static int mt7988_snfi_funcs[] = { 2, 2, 2, 2, 2, 2 };
->> +
->> +static int mt7988_emmc_45_pins[] = {
->> +	21, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
->> +};
->> +static int mt7988_emmc_45_funcs[] = { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 
->> };
->> +
->> +static int mt7988_sdcard_pins[] = { 32, 33, 34, 35, 36, 37 };
->> +static int mt7988_sdcard_funcs[] = { 5, 5, 5, 5, 5, 5 };
->> +
->> +static int mt7988_emmc_51_pins[] = { 38, 39, 40, 41, 42, 43,
->> +				     44, 45, 46, 47, 48, 49 };
->> +static int mt7988_emmc_51_funcs[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
->> 1, 1 };
-> 
-> At least all the _pins arrays could be const.
-> Maybe we could also make it possible to have _funcs const as well.
-> 
-> ...
-> 
->> +static struct mtk_pin_soc mt7988_data = {
-> 
-> const?
+On 14/11/2024 11:07, Liju-clr Chen wrote:
+> +
+> +static int gzvm_dev_open(struct inode *inode, struct file *file)
+> +{
+> +	/*
+> +	 * Reference count to prevent this module is unload without destroying
+> +	 * VM
 
-can do, but for funcs i see no clear way
+So you re-implemented suppress-bind attrs... no, drop.
 
-angelo, can i keep the RB, when changing pins/mtk_pin_soc to const 
-(without changing macro in drivers/pinctrl/mediatek/pinctrl-moore.h)?
+> +	 */
+> +	try_module_get(THIS_MODULE);
+> +	return 0;
+> +}
+> +
+> +static int gzvm_dev_release(struct inode *inode, struct file *file)
+> +{
+> +	module_put(THIS_MODULE);
+> +	return 0;
+> +}
+> +
+> +static const struct file_operations gzvm_chardev_ops = {
+> +	.llseek		= noop_llseek,
+> +	.open		= gzvm_dev_open,
+> +	.release	= gzvm_dev_release,
+> +};
+> +
+> +static struct miscdevice gzvm_dev = {
+> +	.minor = MISC_DYNAMIC_MINOR,
+> +	.name = KBUILD_MODNAME,
+> +	.fops = &gzvm_chardev_ops,
+> +};
+> +
+> +static int gzvm_drv_probe(struct platform_device *pdev)
+> +{
+> +	if (gzvm_arch_probe(gzvm_drv.drv_version, &gzvm_drv.hyp_version) != 0) {
+> +		dev_err(&pdev->dev, "Not found available conduit\n");
 
->> +	.reg_cal = mt7988_reg_cals,
->> +	.pins = mt7988_pins,
->> +	.npins = ARRAY_SIZE(mt7988_pins),
->> +	.grps = mt7988_groups,
->> +	.ngrps = ARRAY_SIZE(mt7988_groups),
->> +	.funcs = mt7988_functions,
->> +	.nfuncs = ARRAY_SIZE(mt7988_functions),
->> +	.eint_hw = &mt7988_eint_hw,
->> +	.gpio_m = 0,
->> +	.ies_present = false,
->> +	.base_names = mt7988_pinctrl_register_base_names,
->> +	.nbase_names = ARRAY_SIZE(mt7988_pinctrl_register_base_names),
->> +	.bias_disable_set = mtk_pinconf_bias_disable_set,
->> +	.bias_disable_get = mtk_pinconf_bias_disable_get,
->> +	.bias_set = mtk_pinconf_bias_set,
->> +	.bias_get = mtk_pinconf_bias_get,
->> +	.pull_type = mt7988_pull_type,
->> +	.bias_set_combo = mtk_pinconf_bias_set_combo,
->> +	.bias_get_combo = mtk_pinconf_bias_get_combo,
->> +	.drive_set = mtk_pinconf_drive_set_rev1,
->> +	.drive_get = mtk_pinconf_drive_get_rev1,
->> +	.adv_pull_get = mtk_pinconf_adv_pull_get,
->> +	.adv_pull_set = mtk_pinconf_adv_pull_set,
->> +};
-> 
-> ...
-> 
-> CJ
+So you can autodetect your hypervisor? Why your soc info drivers cannot
+instantiate this device thus removing any need for fake DT node (fake
+because no resources and used only to satisfy Linux driver instantiation)?
+
+
+> +		return -ENODEV;
+> +	}
+> +
+> +	pr_debug("Found GenieZone hypervisor version %u.%u.%llu\n",
+> +		 gzvm_drv.hyp_version.major, gzvm_drv.hyp_version.minor,
+> +		 gzvm_drv.hyp_version.sub);
+> +
+> +	return misc_register(&gzvm_dev);
+> +}
+> +
+> +static void gzvm_drv_remove(struct platform_device *pdev)
+> +{
+> +	misc_deregister(&gzvm_dev);
+> +}
+> +
+> +static const struct of_device_id gzvm_of_match[] = {
+> +	{ .compatible = "mediatek,geniezone" },
+> +	{/* sentinel */},
+> +};
+> +
+> +static struct platform_driver gzvm_driver = {
+> +	.probe = gzvm_drv_probe,
+> +	.remove = gzvm_drv_remove,
+> +	.driver = {
+> +		.name = KBUILD_MODNAME,
+> +		.of_match_table = gzvm_of_match,
+> +	},
+> +};
+> +
+> +module_platform_driver(gzvm_driver);
+> +
+> +MODULE_DEVICE_TABLE(of, gzvm_of_match);
+
+This is immediately after next to ID table. Never in different place, so
+I wonder from which obscure code did you copy it and what other issues
+like that we can find...
+
+> +MODULE_AUTHOR("MediaTek");
+> +MODULE_DESCRIPTION("GenieZone interface for VMM");
+> +MODULE_LICENSE("GPL");
+Best regards,
+Krzysztof
 
