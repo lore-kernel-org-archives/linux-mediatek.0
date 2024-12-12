@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 571CEE7717F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 06:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3A7E77180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 06:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OyTPmfk5nlWT6oblaTqVg0NzyCQ779C0HWVuTXhDcag=; b=YWVd2tatxWypcjUkYHsOtyLIib
-	0Ej4OQ0+PVSS4hM+PHBD/wLiai83c6/+pZjz2jh9WDTgobRnDJCDqIJcJHdmvdRSN7FH6YFV2zRq0
-	0v30+2iFQ5CkVYefMwNJv84SBQGe9NtO+Avtr2c2H2/c1dCLXtT9oonKPFOanWVHd+FUyjeageuna
-	WajcAesP7ayUArJZ8yd9avADgKBKZmttYc7uShE7WqlXyBbK3Posk1fYcMFpOZ/MuJAdK9uKE18u7
-	2i34WWVTOnKsOFWFYZbxpQYE6pefKb+8YOO0SWUcD3ZTa68zlSn6uiLD8PhjbU7ZRmtxqJE8tdgC4
-	/GQ9nmAg==;
+	bh=LfBkU5xN0WacDydGlClNsMc9BslSTszE5PxuLZUJYg8=; b=KD3rxabZGBL7P3aiCYu/OKgwZp
+	UwHrrbN5F2jYVszXrH3NaInwfJhooWWSdQSQc2pWr4q9uOXYSa5X+16Af7fC/OuhilguMLrwZPTpV
+	05tgbXzKRPlvd8t4hdoZsnYh1f2m/YTyG1ht/rbp5skrYqu/Zn3t6AMSojTBSGMTemUd5EFQoiRjH
+	ulYh1VbM060x/l3zD5qEc+sW+swHvaPN405lYU7I9KAlj49VjJhCtMwsYNG3f58iv+rohsayFXsVO
+	W2oHi0e4z8wl0cuBj8Ro/7CJoOpwYNNoHQdhyjPp63pfYpN9AN8r2iE1fg2dk534Wxia1gmDMJCg/
+	jZPqIlfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLcdN-0000000H2N8-2fws;
-	Thu, 12 Dec 2024 06:25:13 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1tLceP-0000000H2XW-2I0f;
+	Thu, 12 Dec 2024 06:26:17 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLcZO-0000000H1Zc-2qf6
+	id 1tLcZR-0000000H1au-2SfA
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Dec 2024 06:21:07 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-215e2f17dfcso471755ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2024 22:21:06 -0800 (PST)
+	Thu, 12 Dec 2024 06:21:11 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2162b5d2e1fso481345ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2024 22:21:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1733984466; x=1734589266; darn=lists.infradead.org;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1733984469; x=1734589269; darn=lists.infradead.org;
         h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=OyTPmfk5nlWT6oblaTqVg0NzyCQ779C0HWVuTXhDcag=;
-        b=idngwNE4zv1SUxeoRnim0HiGE2vsTJtL2AUgm8+/MfxgjYxtqDqgZZvtEjDRSxC+dV
-         2kTBtXBJi1YrwqcWGrD2adLDRo8GW3Qvsp/zsY9jeO5Flhd8eC0jGJLAFp9Wn4jscWFF
-         VrcMhipGh7i1CJcSKTHgNgS7C297TPWd0JAhWIPs/5K+Xutqe1O8HPTXIjWpiUXAL5TK
-         rFp/84qm1mUg1tJUKsQUsTgme7FnquVtk0WEeIbEHR8379DP2CzjQEUo5xBEEEcuoHD9
-         bJwQmTfFHJGk0hUZkIgncgSEIYBz90BhFSFQtVcHQvGImrm3uqNZhMD5qQhvdR1XNuHA
-         q8fw==
+        bh=LfBkU5xN0WacDydGlClNsMc9BslSTszE5PxuLZUJYg8=;
+        b=t4TC5lNV1vCTGDdCjyfSNYgN9ZPu/oNzLm/doI7Dyt/1T/MlGD+TyeVTPKca9prxa+
+         qy0FHK6KRlelCOK8uVbStQgjU95I4s+F0TkPyKwEuPtj5k579RUf9swSwETsXikwArP7
+         IFyEY1xf/RuXXWEZs6nDZ/jr4DVcLexeYBc3n9bIbpLFzzwkF4SNOxQCR8s2sqQtPFJV
+         nJQ7cYjxzNijiVQDsYxtqO85rt4ZzJ2uPRXaUP8ktUy3qH0k5KRI8Z9DZ1UXm0WO1ED7
+         fuNzY7ZYs+aHgW01zb4zPFgSTWGUq+NEfUbkv7eZ4jzijJTn0Mcrexr/ZHAdpyttolii
+         tsgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733984466; x=1734589266;
+        d=1e100.net; s=20230601; t=1733984469; x=1734589269;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OyTPmfk5nlWT6oblaTqVg0NzyCQ779C0HWVuTXhDcag=;
-        b=F0CfCl2Exy9SFV/93AGqUSrB+AhMEFE3t5a/rFB2CkmznGm02xZdXjgwtrKh/roiir
-         h/3UmAt6bHLPtcCsUaV9fiCGKphu7kcYEa6XCJ1tjzwew1NY5dqSVaQJcca1Zr5Aifgp
-         e4itcH0O97swo0jr5o7y/OtOtUwTyr8V797ndT7qALsAafRPj+Hkk0WvJpVGU85yg4oF
-         XCDEzOBgQfOsqBDpyrar3NoIy2UPdAPUJ3P64sVHT6t4MsDtao0apiOBIExTvYL4KyM1
-         csJyZRJuVLWfBfeoJQgu+3XJRTWbcJU8FQByr51Aivn+VHNUT4oErNCFJRVOutccIdJu
-         Me8w==
-X-Forwarded-Encrypted: i=1; AJvYcCV4qwxE7flAtG03P6Ri44ULQhNG11LRjr/18cVuubeyoNGL7x6R2heQiMWD5s5sXDhYXRlzymHmk4TrPnSyGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHpTGqO2WzoanV8uXEZN2i9y4myO/oLiJwR2zMaI5+LZbSXL5E
-	1AH+p9U8naoMDZVuT/pHSxZLFnH7I2NwUcGH2Nsk6F1qwVvCAM9xJ5P7Ppk7Ee4=
-X-Gm-Gg: ASbGncvHaCyEwP9LQQkurONSVffeuAr+OvPlThXHOt6uLH0Esdx2B+JJsM7pLnTW6q1
-	EjsbCJkMMy7panI9UuPpD46nhDbCYEj57x9Hqj0YNnJLzaJM0vcZ0P7XJG8yTFnMaa6pQWwtCoF
-	gDF7mzSSAa2IEudDqY+BHFRNP6RNcVpKePimSReOeDaOzE2Qqb9PlIj2xQQrr8UMRha23yDAbja
-	QgRG3fD6qkc6NN+zZ7v4SuD1vE/SI2q+daJ4v2qCYwUIwF76o4X1nhtaichaXSTwK60OXky6A/C
-	l6T/EuV2xOovpHr2cXtv
-X-Google-Smtp-Source: AGHT+IFTcByLcObOG6og87W+8MmWO127PMV4RjfGUn4gbh7uXS5H+igPgK+lk69avI2I3fCZBkEIxg==
-X-Received: by 2002:a17:903:186:b0:215:2bfb:3cd7 with SMTP id d9443c01a7336-21778592996mr34393885ad.10.1733984465748;
-        Wed, 11 Dec 2024 22:21:05 -0800 (PST)
+        bh=LfBkU5xN0WacDydGlClNsMc9BslSTszE5PxuLZUJYg8=;
+        b=gbBDfyU06zhIlYOvGmwGWhh3be3Af3f+ooYUpkV24d3L4hpI9/WNFdurelXXrb0tp+
+         ibZbL1e0V805ipJd8P7Kxnp2QRlyNBQ6+wRqlIRHHQqFFxI+klHdZdFqMKAntDeuqmQQ
+         KJQvdeNijFb7m5SdljO1FW1v0FOxxWzAVmK/wsn+iMGyQETI7XBa38UzUVwrMgYYllzJ
+         Oo2RH9mj1gFL429088fYeIBQlTWdlmch+Fv2EmazCiJetWGh9SZw9kdzR0ANN9Yhgzwd
+         nb7JSods4rE2pb22JE68h5SAwpEIdD5sJiIoCkePy55eV5GQXijNhJcLxuZFBJax4rC0
+         fuxw==
+X-Forwarded-Encrypted: i=1; AJvYcCUX1BBarGQfSPVYEW2XHhjn352Yu7TnRAdOZvPa9f340mv494vqorrAhB9/GqFlW6RorTE2zJ5PbUDI/Cgq5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzvrTBm7xUXPPuoO4fXRawmLPgxeURLNI8WQJzZGxoJ4FXjhuQ3
+	gIeR3SAWkMqRMQploiCRZ9nrJeXHfJrtjuXN566XKwTJ9ygYc1tRabMoxLV9oY0=
+X-Gm-Gg: ASbGncvkpVkAIk43Zw1YvrOcgYxOkD6HO9yeyPeQCc/liaNsqY7pEvD5QNPHa4bQA3R
+	ITcbx7MLnzoo6knRI0hhNUHl8kDd/bMEvaPESfeDXPyxRqf+a2bv1NjSAyuBZa13HUao2TNBUTp
+	j3QTuWZ8kR5sQ7qR6Dxv/ZKWlGn+2UFP5aLNPVmqYkC1+9B7TVl+d+jbNmj1KVql0mXoNM/8dmQ
+	PdXkWnuq/UhHzPJWlNIzIZhrsXvzg7zqWn5x0m//euCllhTQC+VJAKMuo9Alvx3Q1OFfOud2VCg
+	/DdeX53o5W/0nd1IA+9e
+X-Google-Smtp-Source: AGHT+IG1aykVIJ7KK1nMnneAqk9zPBfBBGEs0+epeO3ZGiz6cJuzU7kmR5k6vnbujqI2WNuSBpIchQ==
+X-Received: by 2002:a17:902:d482:b0:216:42fd:79d8 with SMTP id d9443c01a7336-217785929d6mr36812415ad.12.1733984468684;
+        Wed, 11 Dec 2024 22:21:08 -0800 (PST)
 Received: from ubuntu.huaqin.com ([116.66.212.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2162c278668sm83579165ad.81.2024.12.11.22.21.03
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2162c278668sm83579165ad.81.2024.12.11.22.21.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Dec 2024 22:21:05 -0800 (PST)
+        Wed, 11 Dec 2024 22:21:08 -0800 (PST)
 From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -81,15 +81,15 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [PATCH v5 3/4] arm64: dts: mediatek: Add extcon node for DP bridge
-Date: Thu, 12 Dec 2024 14:20:45 +0800
-Message-Id: <20241212062046.22509-4-xiazhengqiao@huaqin.corp-partner.google.com>
+Subject: [PATCH v5 4/4] arm64: dts: mediatek: Modify audio codec name for pmic
+Date: Thu, 12 Dec 2024 14:20:46 +0800
+Message-Id: <20241212062046.22509-5-xiazhengqiao@huaqin.corp-partner.google.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20241212062046.22509-1-xiazhengqiao@huaqin.corp-partner.google.com>
 References: <20241212062046.22509-1-xiazhengqiao@huaqin.corp-partner.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_222106_710379_0E516698 
-X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-CacheID: sfid-20241211_222109_615565_94F2941E 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,38 +105,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add extcon node for DP bridge to make the display work properly.
+change `codec` in pmic (in mt8186-corsola.dtsi) to `audio-codec`
 
 Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index cfcc7909dfe6..e324e3fd347e 100644
+index e324e3fd347e..cebb134331fb 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -424,6 +424,7 @@
- 		ovdd-supply = <&mt6366_vsim2_reg>;
- 		pwr18-supply = <&pp1800_dpbrdg_dx>;
- 		reset-gpios = <&pio 177 GPIO_ACTIVE_LOW>;
-+		extcon = <&usbc_extcon>;
+@@ -1276,7 +1276,7 @@
+ 		interrupts-extended = <&pio 201 IRQ_TYPE_LEVEL_HIGH>;
+ 		#interrupt-cells = <2>;
  
- 		ports {
- 			#address-cells = <1>;
-@@ -1656,6 +1657,11 @@
- 				try-power-role = "source";
- 			};
- 		};
-+
-+		usbc_extcon: extcon0 {
-+			compatible = "google,extcon-usbc-cros-ec";
-+			google,usb-port-id = <0>;
-+		};
- 	};
- };
- 
+-		mt6366codec: codec {
++		mt6366codec: audio-codec {
+ 			compatible = "mediatek,mt6366-sound", "mediatek,mt6358-sound";
+ 			Avdd-supply = <&mt6366_vaud28_reg>;
+ 			mediatek,dmic-mode = <1>; /* one-wire */
 -- 
 2.17.1
 
