@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33DC5E7717F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07551E77180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nnc+JWb80d/x2lRlX+hUido0JN4Dp3eaXJYJlRswdKc=; b=n0soityjPjg3Qzf6gfVpW6z+oh
-	0GnUT++RdlUZfdhdvx5A0vucXnuOLSPq8Hcq6a6S9bbk2Hx2E24oIu4ueZgVybW9ASKDTk8aRldcK
-	aM1jI1EYZu4lvmpsfomMxniZlNvm6YkA8yximfsS8YYJ+A3suxUk9ibWMx0xFXd+LT8m/2DwDMqW8
-	O9HF8sE+XcSap5UM34WwNqAanhGTHPVAxi4AaD4OHY2stsQGzsJ0/Fyw2TsWk7YBC4ecc8bZxHGUi
-	JEX5A+9GA3Y9BSMmug5Rd6rm04DeD/zKyu1oA0Af8AXZriOYaaVidG6FahghQrHen+alzuNTtfJVb
-	5sjtQdVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8pQiz825MeitFPjuVjV4B0S7asuM77XPpTV8GFPFpHE=; b=UJKJEDMG3z/XhOjjnQviR/f21y
+	41SKisTTaPsJ5HRLHWNW2Tf76BFAAWUi8fHXpwAkY43uiyu9X4xnYvSB9hFx9i7TwkV+ZOhitkr4S
+	AlUN7wgSeef+riblVQoTWeO99jzQd5y0RvkHnEhBaimoW3VxF8koU0MG+7AG7JQAwmlR+A4i3LR0F
+	PxVZ6QpBCYi5dTKOJMVULPZJfWxQcmARSaoUqlXTgPjfLHaCrewIoQBlM8Uv8dhyQ/cuZkIbhrQNi
+	iXQbevXwF9e0qrsfvpccNYeubuQCJkzVKxJtRYaBKde38UFPi+frpnXWzNhkx3LZaqUmCMu8iQdgn
+	/W40drVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLgRg-000000003nL-1Mco;
-	Thu, 12 Dec 2024 10:29:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tLgaf-000000004ye-0IOG;
+	Thu, 12 Dec 2024 10:38:41 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLgQG-000000003ZC-0roK;
-	Thu, 12 Dec 2024 10:27:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733999274;
-	bh=DLrR9DvNEGy896WEuOkI4qVaTUviwn0zBvUtMaDFUeQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RmalG9PHOrb25SCruoUFZylPL/u2f5QgwpAZWBbSEhAXiJgtEiPj1MNi0dWlFKRye
-	 tY2eo0osFH/1HmsClI1TF9ipGymNCLK7D8XXxmbO9ccQZOrgRLyYvwTYxdc9oa/8QQ
-	 epz/pbrbOBhc7AqECMmAzqj4Jhiaf///6SLznrY7gQEEwBSDAWsoQ4fjnkx2WJZ7CR
-	 cl+BPm+AAX5F9vENdXGE4ZuCRs9fOkOC2Iaqf0z8HcMp0GuFsH1Pm/e+0Zthqsb5f7
-	 HVfkv9i7NwX9GPypAbtAsIudbZ8pdrFwGuYk9e3gA6B3drQnEORdjz33DGjSjkWPDE
-	 tszN+/h87ARiw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0D62517E35D8;
-	Thu, 12 Dec 2024 11:27:54 +0100 (CET)
-Message-ID: <5d06211b-5ee2-48dd-9334-7c8bcffb894e@collabora.com>
-Date: Thu, 12 Dec 2024 11:27:53 +0100
+	id 1tLgaT-000000004wL-3uyh
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Dec 2024 10:38:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id D2006A4214E;
+	Thu, 12 Dec 2024 10:36:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F41ACC4CECE;
+	Thu, 12 Dec 2024 10:38:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733999908;
+	bh=YQdkV5DZUnSTyg0vuItxQ0IsIWr/wnH96fWHGfU1Xro=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=VOtY5clYgf3AJKi0hgFxSv01LHVdKWYz6q97dxS3qGQJsJoqcY3BjKu0NPM6UjHBb
+	 qh5ANo1+D5hAqJR+qFb3LHorzkQpTVDPwHN26r7R4pzPwDeDSn7pchBMWrIlrhmHdq
+	 rJQ2lM1wuhYOFztd3mXMLWn9BqHowI8saHQ+Zuh5rypM3TFA+KlE4uGXrPD6Z4Smlq
+	 lwmN9u+iH/KxGBxyg1SUYzeH4DRACBTlQRXlv0IYuxIUQfhH6rrhR5md0DKcAVjjrX
+	 WdG+sRXI0OrZHtEH9g4+Dntjuzlfb/0bBYx1Oab3AMFNWmMULsUfgcxfpmQhEvFtKl
+	 8m9WrgtKNEK9g==
+From: Kalle Valo <kvalo@kernel.org>
+To: sean.wang@kernel.org
+Cc: nbd@nbd.name,  lorenzo.bianconi@redhat.com,  sean.wang@mediatek.com,
+  deren.wu@mediatek.com,  mingyen.hsieh@mediatek.com,
+  linux-wireless@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+  "allan.wang" <allan.wang@mediatek.com>
+Subject: Re: [PATCH 05/17] wifi: mt76: mt7925: Fix incorrect WCID phy_idx
+ assignment
+References: <20241211011926.5002-1-sean.wang@kernel.org>
+	<20241211011926.5002-5-sean.wang@kernel.org>
+Date: Thu, 12 Dec 2024 12:38:24 +0200
+In-Reply-To: <20241211011926.5002-5-sean.wang@kernel.org> (sean wang's message
+	of "Tue, 10 Dec 2024 17:19:14 -0800")
+Message-ID: <874j39tcdb.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: memory-controllers: Add mediatek
- common-dramc dt-bindings
-To: Crystal Guo <crystal.guo@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20241212090029.13692-1-crystal.guo@mediatek.com>
- <20241212090029.13692-3-crystal.guo@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241212090029.13692-3-crystal.guo@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_022757_228942_17E4AA09 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20241212_023830_033667_8C534FD5 
+X-CRM114-Status: UNSURE (   5.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,149 +77,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/12/24 09:59, Crystal Guo ha scritto:
-> Add devicetree binding for mediatek common-dramc driver.
-> 
-> The DRAM controller of MediaTek SoC provides an interface to
-> get the current data rate of DRAM.
-> 
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> ---
->   .../mediatek,common-dramc.yaml                | 129 ++++++++++++++++++
->   1 file changed, 129 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
-> new file mode 100644
-> index 000000000000..c9e608c7f183
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
-> @@ -0,0 +1,129 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +# Copyright (c) 2024 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/memory-controllers/mediatek,common-dramc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Common DRAMC (DRAM Controller)
+sean.wang@kernel.org writes:
 
-MediaTek DRAM Controller (DRAMC)
+> From: "allan.wang" <allan.wang@mediatek.com>
+>
+> Fix incorrect WCID phy_idx assignment.
+>
+> Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabling MLO when the firmware supports it")
+> Signed-off-by: allan.wang <allan.wang@mediatek.com>
 
-> +
-> +maintainers:
-> +  - Crystal Guo <crystal.guo@mediatek.com>
-> +
-> +description: |
-> +  The DRAM controller of MediaTek SoC provides an interface to
-> +  get the current data rate of DRAM.
+Allan's name seems to be in wrong format both in from and s-o-b. This is
+the preferred format:
 
-No, the DRAM Controller does much more than just that.
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,common-dramc
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-Absolutely no! Compatibles are per-soc.
-
-mediatek,mt8186-dramc
-mediatek,mt8188-dramc
-mediatek,mt8195-dramc
-
-etc
-
-> +
-> +  reg:
-> +    minItems: 9
-> +    items:
-> +      - description: DRAMC_AO_CHA_BASE
-> +      - description: DRAMC_AO_CHB_BASE
-> +      - description: DRAMC_AO_CHC_BASE
-> +      - description: DRAMC_AO_CHD_BASE
-
-All those channels are sequential in AO->NAO, in the sense that
-every channel is:
-
-CH0     AO: 0x10230000   len: 0x4000
-CH0    NAO: 0x10234000   len: 0x2000
-CH0 PHY_AO: 0x10236000   len: 0x2000
-CH0 PHY_AO: 0x10238000   len: 0x2000
-
-So the reg can be simplified as
-
-minItems: 4
-items:
-   - description: DRAM Controller Channel 0
-   - description: DRAM Controller Channel 1
-   - description: DRAM Controller Channel 2
-   - description: DRAM Controller Channel 3
-
-
-> +      - description: DRAMC_NAO_CHA_BASE
-> +      - description: DRAMC_NAO_CHB_BASE
-> +      - description: DRAMC_NAO_CHC_BASE
-> +      - description: DRAMC_NAO_CHD_BASE
-> +      - description: DDRPHY_AO_CHA_BASE
-> +      - description: DDRPHY_AO_CHB_BASE
-> +      - description: DDRPHY_AO_CHC_BASE
-> +      - description: DDRPHY_AO_CHD_BASE
-> +      - description: DDRPHY_NAO_CHA_BASE
-> +      - description: DDRPHY_NAO_CHB_BASE
-> +      - description: DDRPHY_NAO_CHC_BASE
-> +      - description: DDRPHY_NAO_CHD_BASE
-> +      - description: SLEEP_BASE
-
-You're not using the SLEEP_BASE iospace, and that's not even really specific
-to the DRAM Controller. Drop it.
-
-> +
-> +  support-ch-cnt:
-> +    maxItems: 1
-
-Don't tell me that the DRAM Controller in MediaTek SoCs cannot see how many
-channels are actually occupied by a DRAM bank, because I will be really skeptical.
-
-You can autodetect that in the driver, you don't need a DT property for that.
-
-> +
-> +  fmeter-version:
-> +    maxItems: 1
-> +    description:
-> +      Fmeter version for calculating dram data rate
-
-The Fmeter version is SoC-specific, you need platform data, not DT property.
-
-> +
-> +  crystal-freq:
-> +    maxItems: 1
-> +    description:
-> +      Reference clock rate in MHz
-
-Is this crystal an external component, or is it integrated into the SoC?
-
-> +
-> +  shu-of:
-> +    maxItems: 1
-
-There's no description, what is shu-of?
-
-> +
-> +  pll-id: true
-> +  shu-lv: true
-> +  sdmpcw: true
-> +  posdiv: true
-> +  fbksel: true
-> +  dqsopen: true
-> +  async-ca: true
-> +  dq-ser-mode: true
-
-Same for these ones, please describe them - but then remember: if those parameters
-are board-specific, they can stay here, otherwise those go in platform data.
-
-Besides, I doubt that those are board specific.
-
-Regards,
-Angelo
-
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
