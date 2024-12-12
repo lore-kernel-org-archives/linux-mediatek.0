@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A39E77183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 09:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5DF6E7717F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 09:16:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V9TiYS4KmaBT6zbP9iM8l86SrBTAKM/ReGWqOBeJ8zc=; b=Sv9L2Ovip2Cax0rpcNQyND9vRE
-	9pzlhsmgjrvE9b2NLb8RJYboT24lJvBV0xyrCJoeR/mD04fsKqlIihpVawNfxIQapvcMI2b/bAdb7
-	XLDk4HSnT5sfUtUxXHzEGu65GPKWXR88N3C+tz7OeHScvoHnSt4N/s3DUrMhp2AWkTmEuM3+ukBPk
-	X3QzNckG3DhOHoXZTJnmeV9NQnfMrftsH8ekDTVy2iL6fosQqzCES3G8fEu8xlUgbtxtnHxMBNPoJ
-	H3gbwT/9qdStmkzkMsjfOLy0zPgNn41iFH3PhfIVet8hE0U5lBlX/wRXgp8QECbMLe3X5eO8+p5Ff
-	flk20pOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=axvJlHiBR2zkbU+O3koSZ3ET0NsXqwruLo6eqUrj9fI=; b=oMtb7MVSQk4QQAgVlXx6FlF1EH
+	IhhMfMT26lYbtBccAwqXdhUzpqXc6i+ACQq/U1O+yYQZv7aJZtoH01wpLfv7IfVQCdjEe1mP4OFBK
+	R6d2isv1jbzrECvVl6ai3pPwI8ww/XpJr1Exuc4mTL2xmE73SsEYYgUFyfSPORhQpxpcWlQXMKw1H
+	s3SB3vP5Cja5ChP5tiWNAj38K2GAcfRf6neT40zl9LB2o75a+qWNilGu468LbIMkeWr9x7GgM/iCC
+	ispN3hrq8pNIJtaciEtaPX5jjo203AS3KbDdIsGMrZp057Qmh+faapTSjq15CGO3lCrsjnmonU1Sz
+	T2CwY5yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLf4X-0000000HPJS-3GX2;
-	Thu, 12 Dec 2024 09:01:25 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1tLfIv-0000000HRp5-3xwH;
+	Thu, 12 Dec 2024 09:16:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLf4U-0000000HPHn-3QoF
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Dec 2024 09:01:24 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-53e3a5fa6aaso1579336e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Dec 2024 01:01:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733994081; x=1734598881; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=V9TiYS4KmaBT6zbP9iM8l86SrBTAKM/ReGWqOBeJ8zc=;
-        b=ItNe/MjPIUdTyRQWKVSIhmeyIk3ge5loUvsr6abQhc1mR62R4NuvExiT4Ps3iKOrQq
-         CQHW92gF1Ho9ATDkFD2CSREFahUqDFdVOtRD7WNlj6d4jS7R2hh8d1ppt3A0kRH4p0MM
-         ZcvQz40Z4SBxeeDa8W4QRHcJoaVnHZprg08ESSUnbe/6I5LavgJ1tQpbU0vYXLN3jQyg
-         z9vnHz22RGCPAHLVbBw4drIMgfEiaEPdAVSz9xBB8JLhfF6Xk64IhVrNLmBEzRdl2yF1
-         s/Qu0+/1qq3OiLp0MsbzMnuZSdH7Z4joS7DjDLefNojH+U1w0ap1C6s4tbxlfHlTlRQT
-         crHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733994081; x=1734598881;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=V9TiYS4KmaBT6zbP9iM8l86SrBTAKM/ReGWqOBeJ8zc=;
-        b=XaNrvw6TG807/adul5vCb0hIPM9yZsAVGruR0HRfF9UR4ws3Ckmqg2kahVzhPU8H1F
-         IOlugDOnC5c+ejwMfNj0EWT3yhcmNVZF8EE/uMowBZSmuPwPS/paGArioyMzOq1cZjE9
-         Bsyj5a/84wNXiVS05kodY63RvD8uST9E1nYMyX8TOYPxUDZC+jiFINXxoLlQKZU6hw9v
-         lxvaTtXNlxqSct1vnGCmyLxG4yogbxKvENFUPrW/W/S90PatWcM40YqpMu1XTNqzu733
-         h2ham/+RL7q9jrKBFVSpDhFZ4N+PsOJXCmnKgECZpTvAvgVarTAJY+vG5mULZLXAckBU
-         tAtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXeJwqiGZP8P5DxtoyKXnfdmUFk75JuHftSwZWS63YhqGe2JDs2kP4s0ac3so9pS6MyHilO9Ll2OX8X9YaiqA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyTmXYqq0RZST3e9tevm2RxAHZKhAYA6vqu5x+3p+v08YNOIy2d
-	QFtfoY2mu/hr6K/YCIIOg0hBYU2fVSBylS9eLNAa+gdi55+g2tDBZ5YZZip6jNk=
-X-Gm-Gg: ASbGncsclK4m2Rp+WunV7DguPGAZazLXeh/u27/GoRrvZlrcV6UPUHHagUnzUISb3Pk
-	UY3Pc4PRM6bVXvPadpQGEzJWdhr6gapaCvsCyFtTgZ/wo3qQyhfLCITJOraSx07OdKf1eZW1QuT
-	cdSJZnGchtraYgEtReAYGhA+w2uTIVIQzcdg8sLO731F0PjCrDBzYzpnj/fzEgxDRCxm0pkU0J1
-	UTQpNb5q3Jio6dARCHHMs9GdvnQZV1jcSNCAzKF+uYCkXzX82RtED/bTS7dYSKW3Mpa4kSjnIN/
-	yTCgfQJH+bSpNNDtPchuEy0phf59K+B/Az13
-X-Google-Smtp-Source: AGHT+IHhrzxQingAH1/ImMh2/INtXiKEWN+68GziFuYfWDP98tpJWX78ikqP9dctbaH1rrrlMK66Bg==
-X-Received: by 2002:a05:6512:3056:b0:540:20c5:f847 with SMTP id 2adb3069b0e04-54032dd7f6fmr166941e87.22.1733994079461;
-        Thu, 12 Dec 2024 01:01:19 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53f39c826a2sm1608722e87.214.2024.12.12.01.01.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Dec 2024 01:01:18 -0800 (PST)
-Date: Thu, 12 Dec 2024 11:01:16 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] drm/ci: uprev IGT
-Message-ID: <auyavxigqqk3eq3ke775pv5cf4pwu3mdxmr5bfx2dybjnszseg@5rla5d7icwxk>
-References: <20241211142806.1824961-1-vignesh.raman@collabora.com>
- <f2dac4eatkajw633ksnnb3nfq7zop2l4ux2euj6jqg4hg3soqt@sv7p2r6xk7fz>
- <3e719a95-5b84-4530-9afe-c742e5c6eff7@collabora.com>
+	id 1tLfIt-0000000HRmr-0C5Z;
+	Thu, 12 Dec 2024 09:16:16 +0000
+X-UUID: b941dadab86911ef82ff63e91e7eb18c-20241212
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=axvJlHiBR2zkbU+O3koSZ3ET0NsXqwruLo6eqUrj9fI=;
+	b=ZJKwGNvkU/GyPkSeEtYc0qHr7kwaT/OBq/q9QXlJo31dpS1mvRaCNjQK291oPqXtUgKNrvwagzggRdIhPA15TIdQWcb/Lfb7R3IlZ+xPdzygh9D654zjbPZ4rDnkfL+lH8EqEErRQtv+UB0KHOSDppxZFmRs3zjUGopnm5UH/Pg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.45,REQID:14056c1b-b5fa-40f4-b406-9b7167ae2524,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6493067,CLOUDID:75616828-d2eb-4de2-b5c9-495d1bc17256,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b941dadab86911ef82ff63e91e7eb18c-20241212
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <defa.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1197075212; Thu, 12 Dec 2024 02:16:09 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 12 Dec 2024 17:16:06 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 12 Dec 2024 17:16:05 +0800
+From: Defa Li <defa.li@mediatek.com>
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-i3c@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<wsd_upstream@mediatek.com>, <mingchang.jia@mediatek.com>,
+	<yuhan.wei@mediatek.com>, <hao.lin@mediatek.com>, Defa Li
+	<defa.li@mediatek.com>
+Subject: [PATCH v2] i3c: master: Improve initialization of numbered I2C adapters
+Date: Thu, 12 Dec 2024 17:17:53 +0800
+Message-ID: <20241212091818.8591-1-defa.li@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3e719a95-5b84-4530-9afe-c742e5c6eff7@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_010122_868746_32B6E20F 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20241212_011615_089771_5F6D8BD5 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,172 +86,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 12, 2024 at 11:36:29AM +0530, Vignesh Raman wrote:
-> Hi Dmitry,
-> 
-> On 12/12/24 03:09, Dmitry Baryshkov wrote:
-> > On Wed, Dec 11, 2024 at 07:58:05PM +0530, Vignesh Raman wrote:
-> > > Uprev IGT to the latest version and update expectation files.
-> > > 
-> > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > > ---
-> > > 
-> > > v1:
-> > >    - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1327810
-> > >      Will update the flake bug report link after v1 is reviewed.
-> > > 
-> > > ---
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> > > index 066d24ee3e08..7752adff05c1 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> > > @@ -1,4 +1,7 @@
-> > >   kms_3d,Fail
-> > > +kms_cursor_legacy@forked-bo,Fail
-> > > +kms_cursor_legacy@forked-move,Fail
-> > > +kms_cursor_legacy@single-bo,Fail
-> > >   kms_cursor_legacy@torture-bo,Fail
-> > 
-> > Interesting, DRM_MODE_CURSOR_BO tests fail
-> > 
-> > >   kms_force_connector_basic@force-edid,Fail
-> > >   kms_hdmi_inject@inject-4k,Fail
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
-> > > index 6dbc2080347d..581d0aa33b4f 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
-> > > @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
-> > >   kms_color@ctm-signed,Fail
-> > >   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-> > >   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
-> > > +kms_display_modes@extended-mode-basic,Fail
-> > > +kms_display_modes@mst-extended-mode-negative,Fail
-> > 
-> > This is a bug in 5f7cde6a9878 ("tests/kms_display_modes: Skip test if
-> > joiner display is connected"), the driver unconditionally calls
-> > is_joiner_mode(), or in 88abc2d2c646 ("lib/igt_kms: Add is_joiner_mode
-> > function"), the is_joiner_mode() should return false for non-Intel
-> > hardware. Please fix it in the IGT instead.
-> 
-> Can we add this in skips mentioning the IGT gitab issue link?
+Add logic to initialize I2C adapters with a specific ID if available,
+improving device identification and configuration.
 
-It's fine with me.
+For mixed buses, in addition to the i3c alias, an i2c alias can be added to
+assign a fixed bus number to the i2c adapter.
 
-> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
-> > >   kms_flip@flip-vs-panning-vs-hang,Fail
-> > >   kms_lease@lease-uevent,Fail
-> > > @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-> > >   kms_plane_alpha_blend@alpha-7efc,Fail
-> > >   kms_plane_alpha_blend@coverage-7efc,Fail
-> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
-> > > -kms_rmfb@close-fd,Fail
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
-> > > index d74e04405e65..5122233b9941 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
-> > > @@ -18,3 +18,10 @@ msm/msm_shrink@copy-gpu-oom-32
-> > >   # IGT Version: 1.28-g0df7b9b97
-> > >   # Linux Version: 6.9.0-rc7
-> > >   msm/msm_shrink@copy-gpu-oom-8
-> > > +
-> > > +# Board Name: sc7180-trogdor-kingoftown
-> > > +# Bug Report:
-> > > +# Failure Rate: 50
-> > > +# IGT Version: 1.29-g33adea9eb
-> > > +# Linux Version: 6.13.0-rc2
-> > > +kms_lease@page-flip-implicit-plane
-> > 
-> > Do you have a failure log?
-> 
-> 
-> https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68026461#L3262
-> 
-> Let me know if I can create a gitlab issue for this.
+This allows an alias node such as:
+    aliases {
+        i2c2 = &mixed_bus_a,
+        i3c2 = &mixed_bus_a,
+        i3c4 = &mixed_bus_b,
+    };
 
-Somebody will have to look for more details, this one isn't that
-obvious.
+    /* assigned "i3c-2" and "i2c-2" */
+    mixed_bus_a: i3c-master {
+    };
 
-> 
-> Regards,
-> Vginesh
-> 
-> > 
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
-> > > index 6dbc2080347d..581d0aa33b4f 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
-> > > @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
-> > >   kms_color@ctm-signed,Fail
-> > >   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-> > >   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
-> > > +kms_display_modes@extended-mode-basic,Fail
-> > > +kms_display_modes@mst-extended-mode-negative,Fail
-> > 
-> > Again, the same IGT issue.
-> > 
-> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
-> > >   kms_flip@flip-vs-panning-vs-hang,Fail
-> > >   kms_lease@lease-uevent,Fail
-> > > @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-> > >   kms_plane_alpha_blend@alpha-7efc,Fail
-> > >   kms_plane_alpha_blend@coverage-7efc,Fail
-> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
-> > > -kms_rmfb@close-fd,Fail
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
-> > > index fa8c7e663858..69076751af24 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
-> > > @@ -1,4 +1,3 @@
-> > > -drm_read@invalid-buffer,Fail
-> > >   kms_color@ctm-0-25,Fail
-> > >   kms_color@ctm-0-50,Fail
-> > >   kms_color@ctm-0-75,Fail
-> > > @@ -19,6 +18,8 @@ kms_cursor_legacy@flip-vs-cursor-atomic,Fail
-> > >   kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
-> > >   kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
-> > >   kms_cursor_legacy@flip-vs-cursor-legacy,Fail
-> > > +kms_display_modes@extended-mode-basic,Fail
-> > > +kms_display_modes@mst-extended-mode-negative,Fail
-> > 
-> > The same IGT error
-> > 
-> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
-> > >   kms_flip@flip-vs-panning-vs-hang,Fail
-> > >   kms_lease@lease-uevent,Fail
-> > > @@ -28,4 +29,3 @@ kms_plane_alpha_blend@coverage-7efc,Fail
-> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
-> > >   kms_plane_cursor@overlay,Fail
-> > >   kms_plane_cursor@viewport,Fail
-> > > -kms_rmfb@close-fd,Fail
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
-> > > index 4892c0c70a6d..8d26b23133aa 100644
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
-> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
-> > > @@ -7,9 +7,4 @@ kms_cursor_legacy@torture-bo,Fail
-> > >   kms_cursor_legacy@torture-move,Fail
-> > >   kms_hdmi_inject@inject-4k,Fail
-> > >   kms_lease@lease-uevent,Fail
-> > > -kms_plane_alpha_blend@alpha-7efc,Fail
-> > > -kms_plane_alpha_blend@alpha-basic,Fail
-> > > -kms_plane_alpha_blend@alpha-opaque-fb,Fail
-> > > -kms_plane_alpha_blend@alpha-transparent-fb,Fail
-> > > -kms_plane_alpha_blend@constant-alpha-max,Fail
-> > >   msm/msm_recovery@gpu-fault-parallel,Fail
-> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
-> > > deleted file mode 100644
-> > > index c1859d9b165f..000000000000
-> > > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
-> > > +++ /dev/null
-> > > @@ -1,6 +0,0 @@
-> > > -# Board Name: sm8350-hdk
-> > > -# Bug Report: https://gitlab.freedesktop.org/drm/msm/-/issues/65
-> > > -# Failure Rate: 100
-> > > -# IGT Version: 1.28-ga73311079
-> > > -# Linux Version: 6.12.0-rc1
-> > > -msm/msm_recovery@gpu-fault
-> > 
+If there is no i2c alias for a mixed bus, the i2c adapter numbers will
+remain as is and will be assigned starting after the highest fixed bus
+number.
 
+    /* assigned "i3c-4" and likely assigned "i2c-3" */
+    mixed_bus_b: i3c-master {
+    };
+
+v2:
+  - Modify commit message and code format issues
+
+Signed-off-by: Defa Li <defa.li@mediatek.com>
+---
+ drivers/i3c/master.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
+index 42310c9a00c2..92223e0b6e59 100644
+--- a/drivers/i3c/master.c
++++ b/drivers/i3c/master.c
+@@ -2486,7 +2486,7 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
+ 	struct i2c_adapter *adap = i3c_master_to_i2c_adapter(master);
+ 	struct i2c_dev_desc *i2cdev;
+ 	struct i2c_dev_boardinfo *i2cboardinfo;
+-	int ret;
++	int ret, id = -ENODEV;
+ 
+ 	adap->dev.parent = master->dev.parent;
+ 	adap->owner = master->dev.parent->driver->owner;
+@@ -2497,7 +2497,15 @@ static int i3c_master_i2c_adapter_init(struct i3c_master_controller *master)
+ 	adap->timeout = 1000;
+ 	adap->retries = 3;
+ 
+-	ret = i2c_add_adapter(adap);
++	if (master->dev.of_node)
++		id = of_alias_get_id(master->dev.of_node, "i2c");
++
++	if (id >= 0) {
++		adap->nr = id;
++		ret = i2c_add_numbered_adapter(adap);
++	} else {
++		ret = i2c_add_adapter(adap);
++	}
+ 	if (ret)
+ 		return ret;
+ 
 -- 
-With best wishes
-Dmitry
+2.46.0
+
 
