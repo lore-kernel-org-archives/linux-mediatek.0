@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82263E77185
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 04:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B86FEE7717F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 04:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EbLDbnMkAFtIPquyuOpep8ktm6JngaE4JHx2gE4OS/g=; b=I2JTspohA9/O6iTrHZfSXizT8g
-	i/sziahIxjIT+1oq3uWK022DaM9BGCLNuqH4AJKcYlDgM6hb00XTFXyNjCoTy6XuPq9COdfXAlDGO
-	EDG46HkF44ZiJBh1fMSj3ydCAiVGbspdbHmn7fDNL+UO/DkPqzKeVwKYf+szLcwnvEsoHcUy9Bcjb
-	OCW4P4Bj/KAYFkHAJ8Mc3/lufUwpmq7rAJ4P7fz3BPuPmDmIpo4prfY6bg3NZE9WNMR/qVtTgSzLA
-	PCTJDHv0BFDjTwyCklqqFwA0ut7MHWZ5gwpEFbf+Rrox0seeOLe9bpnDjVvW2uQh7tSRZiFWpiMYV
-	HGDVLxqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ykm1AV9CFCLtQVPdB4FhSc1hFDczJwA9ddmam2r+bYM=; b=c8LJF68bwNmmybez9C5XUtmlyF
+	jhxezLfhdNMtpw5UWszYFRG3kzDG5SYGEEGvmWI1TSwdk3PulDsiMLOcz/XH+weV3Ts6KmcU8cWv2
+	RvUbTNZVfGkw/Id1T4BOzBKTpQbpifWzjxYsyCQiL6yHfRsA7I7WUpAvk0jmrFBYNaUUZ8sovkxvc
+	atUAlAAU79V5z7mkkbaM1xBi20Ji4EaNY2TUmD8PXKld9inL2RHkel/Ma9HKHzCCc++9s5S5QL84m
+	vDtXssdBumyH5RjT7yBCnhsvtieJJWbQ0IqRz7LTFA6tEkRvz4TshihLVFt90x1R94R7P7vr8JPLD
+	Dy+bKGCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLarW-0000000Gtpd-28FZ;
-	Thu, 12 Dec 2024 04:31:42 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1tLb11-0000000GuZl-485Z;
+	Thu, 12 Dec 2024 04:41:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLarT-0000000GtoT-0IjT
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Dec 2024 04:31:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733977899; x=1765513899;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5YZA2j3sUfOMpP0SPfYfSizTKfq/iiwV6Ec1/cBNMr4=;
-  b=bETHJ5eakPBDECGWcam3PkyQy2LPLPZr8ZqQFQgr4uh9IN7/Ssv6nuZN
-   0lWybgwFXHoaROt34M88Cavds50vZ/kXmnquvSwQqiVldWgGAA7Tr0EwB
-   JPaUCXiefvGAlMcUQ1KpSylazA69aeQd3pwCECveRJk5G8L3AYwle2qdu
-   OkJIFaSnyhDxe/9VeK5gfKSvdFnxk6lMWAAyuChf1ITHNAJ4NNr2hXoPI
-   uO48XFDrc+VfYJ705uhWVQOghNUL/FA4NW8W72JnxSqq9NMILoi6a+vFF
-   n0u9/pa/lKs2OuXpr6JXAbg7iBiCaPk9lJ8K9Ant01jIiGnec+QOpm4w3
-   Q==;
-X-CSE-ConnectionGUID: sTkSNrIrQaWAguXeTb0Jvw==
-X-CSE-MsgGUID: KNzVXgNFSMCIUz4v54T34g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11283"; a="34253918"
-X-IronPort-AV: E=Sophos;i="6.12,227,1728975600"; 
-   d="scan'208";a="34253918"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2024 20:31:37 -0800
-X-CSE-ConnectionGUID: y7HqZ6/nRhmgxnByBUnGiw==
-X-CSE-MsgGUID: iZW5l9gJRBqFExCC25+png==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,227,1728975600"; 
-   d="scan'208";a="101114606"
-Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 11 Dec 2024 20:31:35 -0800
-Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tLarN-0007Qr-0n;
-	Thu, 12 Dec 2024 04:31:33 +0000
-Date: Thu, 12 Dec 2024 12:30:40 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: oe-kbuild-all@lists.linux.dev, sean.wang@mediatek.com,
-	deren.wu@mediatek.com, mingyen.hsieh@mediatek.com,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 12/17] wifi: mt76: mt7925: Update
- mt7925_unassign_vif_chanctx for per-link BSS
-Message-ID: <202412121200.voBerw6W-lkp@intel.com>
-References: <20241211011926.5002-12-sean.wang@kernel.org>
+	id 1tLazx-0000000GuOS-1ibO;
+	Thu, 12 Dec 2024 04:40:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BB3315C68E4;
+	Thu, 12 Dec 2024 04:39:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D95C6C4CECE;
+	Thu, 12 Dec 2024 04:40:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733978423;
+	bh=OhmCN48ULBLuuzKg8+AywTK0ty+kB4kqBPF6I6N80sw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=t0OPpF6JmKJTeR7LpTw9iqmJ5glyjRuw0YZU0YldMfSEThlO3/UkcRrruST+7qg1O
+	 WGPzuRdpQ1Vlh77YfA0yFWXXq5Db40WVngtSY4mlYtu7Mj5AD3mw/tAm/HOATG2ovG
+	 9kz21Sr2ZMiD1HRBdlDJ5rEUq4s8tGVo1QZZXvrZhMAnfQvyqdA0oAiBTrj4cAGDzZ
+	 eCsD1IAn72uCIn9fyz4I+aHPQRBNYt5K0YyXYoY4V9bf14f//8i10pIkq/ZDcSIZvI
+	 QEnvyENMu35C8Y4+tBgzS9VvB5ECKqy8eRx4qhykI5IBOOaUdmxXk8D/l7Uu7J8XDS
+	 lf3Qotb0CxEKg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 342A6380A959;
+	Thu, 12 Dec 2024 04:40:41 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241211011926.5002-12-sean.wang@kernel.org>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next 0/9] net: dsa: cleanup EEE (part 1)
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173397843974.1849456.11438174584563074655.git-patchwork-notify@kernel.org>
+Date: Thu, 12 Dec 2024 04:40:39 +0000
+References: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
+In-Reply-To: <Z1hNkEb13FMuDQiY@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com,
+ angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
+ daniel@makrotopia.org, davem@davemloft.net, dqfext@gmail.com,
+ edumazet@google.com, florian.fainelli@broadcom.com, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ sean.wang@mediatek.com, horms@kernel.org, UNGLinuxDriver@microchip.com,
+ olteanv@gmail.com, woojung.huh@microchip.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_203139_157307_A74BD519 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20241211_204025_491872_439CDF86 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +80,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-kernel test robot noticed the following build warnings:
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.13-rc2 next-20241211]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Tue, 10 Dec 2024 14:17:52 +0000 you wrote:
+> Hi,
+> 
+> First part of DSA EEE cleanups.
+> 
+> Patch 1 removes a useless test that is always false. dp->pl will always
+> be set for user ports, so !dp->pl in the EEE methods will always be
+> false.
+> 
+> [...]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-kernel-org/wifi-mt76-mt7925-Fix-incorrect-MLD-address-in-bss_mld_tlv-for-MLO-support/20241211-092359
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20241211011926.5002-12-sean.wang%40kernel.org
-patch subject: [PATCH 12/17] wifi: mt76: mt7925: Update mt7925_unassign_vif_chanctx for per-link BSS
-config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20241212/202412121200.voBerw6W-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241212/202412121200.voBerw6W-lkp@intel.com/reproduce)
+Here is the summary with links:
+  - [net-next,1/9] net: dsa: remove check for dp->pl in EEE methods
+    https://git.kernel.org/netdev/net-next/c/66c366392e55
+  - [net-next,2/9] net: dsa: add hook to determine whether EEE is supported
+    https://git.kernel.org/netdev/net-next/c/9723a77318b7
+  - [net-next,3/9] net: dsa: provide implementation of .support_eee()
+    https://git.kernel.org/netdev/net-next/c/99379f587278
+  - [net-next,4/9] net: dsa: b53/bcm_sf2: implement .support_eee() method
+    https://git.kernel.org/netdev/net-next/c/c86692fc2cb7
+  - [net-next,5/9] net: dsa: mt753x: implement .support_eee() method
+    https://git.kernel.org/netdev/net-next/c/7eb4f3d9fe17
+  - [net-next,6/9] net: dsa: qca8k: implement .support_eee() method
+    https://git.kernel.org/netdev/net-next/c/fe3ef44385b2
+  - [net-next,7/9] net: dsa: mv88e6xxx: implement .support_eee() method
+    https://git.kernel.org/netdev/net-next/c/eb3126e720e7
+  - [net-next,8/9] net: dsa: ksz: implement .support_eee() method
+    https://git.kernel.org/netdev/net-next/c/801fd546c1ca
+  - [net-next,9/9] net: dsa: require .support_eee() method to be implemented
+    https://git.kernel.org/netdev/net-next/c/88325a291a0c
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202412121200.voBerw6W-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_unassign_vif_chanctx':
->> drivers/net/wireless/mediatek/mt76/mt7925/main.c:2082:36: warning: variable 'pri_link_conf' set but not used [-Wunused-but-set-variable]
-    2082 |         struct ieee80211_bss_conf *pri_link_conf;
-         |                                    ^~~~~~~~~~~~~
-
-
-vim +/pri_link_conf +2082 drivers/net/wireless/mediatek/mt76/mt7925/main.c
-
-621e9e22b8d031 Sean Wang      2024-07-06  2073  
-621e9e22b8d031 Sean Wang      2024-07-06  2074  static void mt7925_unassign_vif_chanctx(struct ieee80211_hw *hw,
-621e9e22b8d031 Sean Wang      2024-07-06  2075  					struct ieee80211_vif *vif,
-621e9e22b8d031 Sean Wang      2024-07-06  2076  					struct ieee80211_bss_conf *link_conf,
-621e9e22b8d031 Sean Wang      2024-07-06  2077  					struct ieee80211_chanctx_conf *ctx)
-621e9e22b8d031 Sean Wang      2024-07-06  2078  {
-621e9e22b8d031 Sean Wang      2024-07-06  2079  	struct mt792x_chanctx *mctx = (struct mt792x_chanctx *)ctx->drv_priv;
-621e9e22b8d031 Sean Wang      2024-07-06  2080  	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-621e9e22b8d031 Sean Wang      2024-07-06  2081  	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-621e9e22b8d031 Sean Wang      2024-07-06 @2082  	struct ieee80211_bss_conf *pri_link_conf;
-621e9e22b8d031 Sean Wang      2024-07-06  2083  	struct mt792x_bss_conf *mconf;
-621e9e22b8d031 Sean Wang      2024-07-06  2084  
-621e9e22b8d031 Sean Wang      2024-07-06  2085  	mutex_lock(&dev->mt76.mutex);
-621e9e22b8d031 Sean Wang      2024-07-06  2086  
-621e9e22b8d031 Sean Wang      2024-07-06  2087  	if (ieee80211_vif_is_mld(vif)) {
-621e9e22b8d031 Sean Wang      2024-07-06  2088  		mconf = mt792x_vif_to_link(mvif, link_conf->link_id);
-621e9e22b8d031 Sean Wang      2024-07-06  2089  		pri_link_conf = mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
-621e9e22b8d031 Sean Wang      2024-07-06  2090  
-621e9e22b8d031 Sean Wang      2024-07-06  2091  		if (vif->type == NL80211_IFTYPE_STATION &&
-621e9e22b8d031 Sean Wang      2024-07-06  2092  		    mconf == &mvif->bss_conf)
-ef9f0dc93583f5 Ming Yen Hsieh 2024-12-10  2093  			mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf,
-621e9e22b8d031 Sean Wang      2024-07-06  2094  						NULL, false);
-621e9e22b8d031 Sean Wang      2024-07-06  2095  	} else {
-621e9e22b8d031 Sean Wang      2024-07-06  2096  		mconf = &mvif->bss_conf;
-621e9e22b8d031 Sean Wang      2024-07-06  2097  	}
-621e9e22b8d031 Sean Wang      2024-07-06  2098  
-621e9e22b8d031 Sean Wang      2024-07-06  2099  	mctx->bss_conf = NULL;
-621e9e22b8d031 Sean Wang      2024-07-06  2100  	mconf->mt76.ctx = NULL;
-621e9e22b8d031 Sean Wang      2024-07-06  2101  	mutex_unlock(&dev->mt76.mutex);
-621e9e22b8d031 Sean Wang      2024-07-06  2102  }
-621e9e22b8d031 Sean Wang      2024-07-06  2103  
-
+You are awesome, thank you!
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
