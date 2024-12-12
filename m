@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91249E7717F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A4AE7717F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j/wEyKLCT0HaMsJ+hxZM/LeEs+/IglHvFCLylHtyUyo=; b=vWsymBEwQgvctTUFFW+4A0CBla
-	rUIzTWGJxxP8HXSztzJKB2+wSzfq3PEiOWmc9GL0PB0Lr3WVLdRucPw0F8DEfrS8MtYiIYqy//YuR
-	Vu7Zv85SEIwmcjojF7quDVUuKXGSGAaeKQZ+fbEb53KgjNhDQytnEiQoynzMhgbpZeFRPHcvOTE4q
-	XZ+i69yZhCWaBrIBrvPBC7nTXjnmGjmTeDZgGRXxsVFSPH8EbjjAlMuIDQWsUEsJAWd6fg5lvrcg+
-	AyGAdGEAGaQqlbyvnViU6pTnl4d/Yd1bbo5YT+dzCERvIsd5C+2+l59qRRMddbeSBsAtyXHdC7BpA
-	8HLpT6aQ==;
+	bh=uRJUF7mofvchnjcKOdLStL+3WXxzRtiugAo8D2e5y70=; b=frPWKrd0ck9d1QYyUhITsr6xvF
+	9gTzQk0kmjg9s/m2wuJtZwNWO9DYmJZfsOG41orssegk0NwJJpIrI7MulR5f7m4bRHLEtFNvzd5c2
+	hIW3QXKv6lPhmY8XgR/5kGRIWgPIs7CMmC/ajxtpGsQ8PeU6JlX6OT5g51kuqUl5cXH1uVabMGYO5
+	MPoiP/fiDLPRQN89kZHVLAMPwoyu4dp4Km5yj9ftWdMc+A5zGbmXyujFWdYsLzrPTi4CfhqxX2zjx
+	TIU5PQxe8T7LxYInnU/lm81T5uTD8uBcXpCUlSS/Tf2mCSTfnhiSK04NoCCjVJKRE/8HI5iWf74vH
+	hU6+tVHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLfzc-0000000HZy7-2bdu;
-	Thu, 12 Dec 2024 10:00:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tLg1i-0000000HaKS-1yds;
+	Thu, 12 Dec 2024 10:02:34 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLfwy-0000000HZYP-3n6B;
-	Thu, 12 Dec 2024 09:57:42 +0000
+	id 1tLg0S-0000000Ha7m-32cl;
+	Thu, 12 Dec 2024 10:01:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733997459;
-	bh=EIy2s9I6WHzZK3FvcYCQrjFobBckSkgRpj7z3oxitPY=;
+	s=mail; t=1733997674;
+	bh=OWSgiEhJaL+pZfcPCTTqqXIPHvYHJbsF2A/UC232kCM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SPWr87xSoeMQkThh2m5MniNqFXTztuhtlzryUoPsCt5oYe33inIHYRG07sjoizb1q
-	 ThsfiXhfZpF6ceHzcGos3xSdn+Yj7eT3RsRTZUHWN5cMBSKrzhjLIBfIvTYuWEpXOD
-	 v44/+QOKyDUHtqgjKbz4RMzQZos97hbwE2jiwDPxefyECJhsiB8ZoXd8HQjj2IDl51
-	 xXem6k62rPiL501890eYyzVVDK1B2lWYmTPpnbx9NBm3cvON4MCKeBC2YLIt9vLzpK
-	 Dad5zOzAnV9HTQaH0TCUcluRKO+9ENDVpDFTcSIBiXsGDAg2VvLfDA280/C+nSLKi1
-	 Vd0/H5vq5t4NQ==
+	b=KR1COHTirNAVAEP+sJvz3kUWoahJNZ4x8TIuQ2oIXEMRbWzRnJNlJIo2zX87IAd9D
+	 O29iQLQIX2Any5WF2Q5PCcuwMiN1AocR4UBHcBT3rzzTKx3bRNvi/F/7KdK/5N6Wib
+	 cpmcZGhrSh8L+O2HrkFRTYRT292NGyU/35+4O7sH2Gf5wMdx6VDiAdchYYQllFH1iO
+	 WLO9cLT/pfazH1jGiMaMV3asT8tUQIDhRDi83RXHXIj1+KDx47GoRZACtVC7nC8YwS
+	 0MWT4kiK7yx2Lk5CAKWLP2C75v0KVutoddBiXq41FXevGYqs2mL6J9rlqJRLldEDrg
+	 koBG75WZ821/A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7F6C917E35F0;
-	Thu, 12 Dec 2024 10:57:38 +0100 (CET)
-Message-ID: <1b75d7ee-38d7-47fc-b7df-c46793a85036@collabora.com>
-Date: Thu, 12 Dec 2024 10:57:37 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DCE7617E35F2;
+	Thu, 12 Dec 2024 11:01:13 +0100 (CET)
+Message-ID: <ba964eb1-324f-40f2-a5e3-7acd441cd218@collabora.com>
+Date: Thu, 12 Dec 2024 11:01:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/8] arm64: dts: mediatek: Drop regulator-compatible
- property
-To: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt8390-genio-700-evk: Add
+ sound output support
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20241211052427.4178367-1-wenst@chromium.org>
+ <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
+ Aary Patil <aary.patil@mediatek.com>,
+ Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
+ parkeryang <Parker.Yang@mediatek.com>
+References: <20241210-genio700-audio-output-v2-0-c50886ae0be2@collabora.com>
+ <20241210-genio700-audio-output-v2-2-c50886ae0be2@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241211052427.4178367-1-wenst@chromium.org>
+In-Reply-To: <20241210-genio700-audio-output-v2-2-c50886ae0be2@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_015741_093651_C3D6E41C 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20241212_020116_927692_2459804A 
+X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,55 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/12/24 06:24, Chen-Yu Tsai ha scritto:
-> Hi folks,
+Il 10/12/24 21:54, Nícolas F. R. A. Prado ha scritto:
+> Describe all the components to get sound output working on the two audio
+> jacks, Earphone and Speaker, present on the Genio 700 EVK board with the
+> audio DSP enabled.
 > 
-> This series drops usage of the long deprecated "regulator-compatible"
-> property from MediaTek device tree files. The property was introduced
-> in 2012, and then subsequently deprecated after two months. It was
-> never carried over during the binding YAML conversion.
-> 
-> Drop the property from the MT6315 regulator binding, and all MediaTek
-> device tree files. IMO it should never have been used to begin with.
-> This also gets rid of any validation errors [1] related to them.
-> 
-> Please have a look.
-> 
-
-Whole series is
+> Co-developed-by: Aary Patil <aary.patil@mediatek.com>
+> Signed-off-by: Aary Patil <aary.patil@mediatek.com>
+> Co-developed-by: Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>
+> Signed-off-by: Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>
+> Co-developed-by: parkeryang <Parker.Yang@mediatek.com>
+> Signed-off-by: parkeryang <Parker.Yang@mediatek.com>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> 
-> Thanks
-> ChenYu
-> 
-> [1] https://lore.kernel.org/all/173386568696.497617.3727087837255802552.robh@kernel.org/
-> 
-> Chen-Yu Tsai (8):
->    regulator: dt-bindings: mt6315: Drop regulator-compatible property
->    arm64: dts: mediatek: mt8173-evb: Drop regulator-compatible property
->    arm64: dts: mediatek: mt8173-elm: Drop regulator-compatible property
->    arm64: dts: mediatek: mt8192-asurada: Drop regulator-compatible
->      property
->    arm64: dts: mediatek: mt8195-cherry: Drop regulator-compatible
->      property
->    arm64: dts: mediatek: mt8195-demo: Drop regulator-compatible property
->    arm64: dts: medaitek: mt8395-nio-12l: Drop regulator-compatible
->      property
->    arm64: dts: mediatek: mt8395-genio-1200-evk: Drop regulator-compatible
->      property
-> 
->   .../bindings/regulator/mt6315-regulator.yaml  |  6 -----
->   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  | 23 -------------------
->   arch/arm64/boot/dts/mediatek/mt8173-evb.dts   | 23 -------------------
->   .../boot/dts/mediatek/mt8192-asurada.dtsi     |  3 ---
->   .../boot/dts/mediatek/mt8195-cherry.dtsi      |  2 --
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts  |  9 --------
->   .../dts/mediatek/mt8395-genio-1200-evk.dts    |  2 --
->   .../dts/mediatek/mt8395-radxa-nio-12l.dts     |  2 --
->   8 files changed, 70 deletions(-)
-> 
 
 
 
