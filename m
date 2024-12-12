@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E625E7717F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 09:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8949BE77180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 09:38:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dqppRzeqdb6ThffmNF8i7KeoIR9iuy9PBiocW458+tc=; b=IUxKOCSy31h1b7XZKa8uY18Y0v
-	nCitgtIDTgg7zEgplLHEll7QmgXA0sWjo2UEQsTJ3fYyJKyzjRD7GyE5RS8+E5GiIF+KBDXY1hwzR
-	iBcduLM4bc+sUM1tftj6kFHtY9YOKsOiV6kbrPCad4SnQZtpOR+9vvCMMMgQY3Pl3RStTtjbxe1cf
-	j0x7Rvff6OojvReBjS/Sf0TJODyG1tMPp21C4k4I5wJN8gWTxTwLV/SCYCXKaNRRNgm9RhZqrkAP1
-	8R51nbIB+7UaQqm0QLivxH7krzV/ZKZTgeik0Rwvr/zYKOov5T+lnlofQDu0dwaqmOmtChJGXPGy5
-	cOS/ZFBQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tGykcbTcw3d7ewUJ0l3TKsRLZtS5QyewppIPS1U+Om8=; b=WbRi1FBdtRo2DIodZEWjk+CwCo
+	INSR4WMPL9BGBDx6djQk7o/gDUqJEk9uOLE5gDY1BpyDM6/v9T5tERpewzqd/5WpKBGXUrCzbnhA8
+	ECAsVnhtzmgwG3AulGbOyUBPzrmPpYUNQTHutr4y+CVFgELxwacApFdX1A9/sN3cNSX/3AE1jPOm+
+	OI3wbU2TC4ZJeJp400oGvNw5LrREDDI4PFnpryhqX0ruUn38y58Db6cKGEQEtqXZnm+iJrn6P4M9F
+	t1T/LnUGr8WZgOlqu0cIUUlI73m3I58CORWCIF5IoJ/dqM7Q0gE3G9tiPG0IC8uB9pwYkvgGC2fWH
+	9P69sppg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLfM3-0000000HSQ5-2LUf;
-	Thu, 12 Dec 2024 09:19:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tLfeq-0000000HWhj-1Jc5;
+	Thu, 12 Dec 2024 09:38:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLfJA-0000000HRuI-2alK;
-	Thu, 12 Dec 2024 09:16:34 +0000
-X-UUID: 9bdcaed6b86711ef9048ed6ed365623b-20241212
+	id 1tLfOm-0000000HTKI-0QDa;
+	Thu, 12 Dec 2024 09:22:21 +0000
+X-UUID: 92f0d7f4b86a11ef82ff63e91e7eb18c-20241212
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dqppRzeqdb6ThffmNF8i7KeoIR9iuy9PBiocW458+tc=;
-	b=l6NKFIZvoZOnYozb8s51ZzPbrjtkXzg3TdWmUHAJv/UXmlKPBC16hy0YO8O+6q4I3zbvEEh+hUhADlUqrwKj1OgU2dgBOd5wxxj5GOshzXitSV59aa272O6lYA+rSFHThMcPjRIufAdRDDEykV6m0QLZy0MblAwSeSVYl/p6e+k=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tGykcbTcw3d7ewUJ0l3TKsRLZtS5QyewppIPS1U+Om8=;
+	b=WS62WFVrp77EVvB9ufbchuuPGjh9c0yK9g/gdlkj4Gw0C+fQGU3j/tyc1naF8M1ttcZXqcrJHaN9b4vs4PaMOaVvHK+pEiTdqj6cm6hxYGnnBwyy9u9Z5SkdnUUN9j6DakGJCrSY0qSLx83OtALvAErWaXY+BNGYEr6CFOp6W6w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:a4214469-3508-46bf-b4e5-d0f213014995,IP:0,U
-	RL:25,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:fafc0413-8f5d-4ac6-9276-7b9691c7b8d6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0,EDM:1|19,
-	IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.45,REQID:abb94b52-a4f3-463a-8283-f4f4c82b11e6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6493067,CLOUDID:23590513-8f5d-4ac6-9276-7b9691c7b8d6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9bdcaed6b86711ef9048ed6ed365623b-20241212
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <crystal.guo@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 92f0d7f4b86a11ef82ff63e91e7eb18c-20241212
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <cloud.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1030628017; Thu, 12 Dec 2024 02:01:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+	with ESMTP id 990448300; Thu, 12 Dec 2024 02:22:14 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 12 Dec 2024 17:00:58 +0800
+ 15.2.1118.26; Thu, 12 Dec 2024 17:22:09 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 12 Dec 2024 17:00:58 +0800
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 12 Dec 2024 17:22:08 +0800
+From: mtk22730 <Cloud.Zhang@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Crystal Guo
-	<crystal.guo@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-spi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 2/2] dt-bindings: memory-controllers: Add mediatek common-dramc dt-bindings
-Date: Thu, 12 Dec 2024 16:59:48 +0800
-Message-ID: <20241212090029.13692-3-crystal.guo@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Cloud Zhang
+	<cloud.zhang@mediatek.com>
+Subject: [PATCH] [v1] spi: spi-mtk-nor: Modify the clock architecture of nor controller
+Date: Thu, 12 Dec 2024 17:20:12 +0800
+Message-ID: <20241212092206.14071-1-Cloud.Zhang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20241212090029.13692-1-crystal.guo@mediatek.com>
-References: <20241212090029.13692-1-crystal.guo@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10-2.015300-8.000000
+X-TMASE-MatchedRID: PZMqI2AhqDQdWKRD1iYss+EbUg4xvs+wCt59Uh3p/NUKogmGusPLb8UR
+	fpp2J0YycRMU/6zQP6hcWPWm98SUsWdvGUEuKvScnIGynr5ObIaKbuU19+RNrmq//5Ao1w8uVon
+	uiLTPfifG3TRnfVX2PIAy6p60ZV62SwOSQ/fMiOrdB/CxWTRRu4PtEWvP7F7FglK3TQvBrzHUdN
+	vHZnc+lOkykW6dVMoLp7xo3bUdR0zawYtKJNIJl4y1Ms3iZ9oVEBHFAzc5ZQlDW0Cl2o4sC7Y3k
+	0MIk05nhJVRlkc0uv5GBXoeyrLHXVBo425nomviD2TeXwRpghw5Asr9kfiuVp6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10-2.015300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9A918C98F4CB6051F0074717FB9392B18B5A07F715E3C802758DA1FA72F647DF2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_011632_651795_736CB596 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20241212_012220_153066_C38F3412 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,153 +97,210 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding for mediatek common-dramc driver.
+From: Cloud Zhang <cloud.zhang@mediatek.com>
 
-The DRAM controller of MediaTek SoC provides an interface to
-get the current data rate of DRAM.
+The clock used by different platforms is not same. So it is
+necessary to modify the clock architecture to be adaptable to more
+platforms.
 
-Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+Signed-off-by: Cloud Zhang <cloud.zhang@mediatek.com>
 ---
- .../mediatek,common-dramc.yaml                | 129 ++++++++++++++++++
- 1 file changed, 129 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
+ drivers/spi/spi-mtk-nor.c | 118 ++++++++++++++++++++++----------------
+ 1 file changed, 68 insertions(+), 50 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
-new file mode 100644
-index 000000000000..c9e608c7f183
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
-@@ -0,0 +1,129 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+# Copyright (c) 2024 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/memory-controllers/mediatek,common-dramc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+index 85ab5ce96c4d..d466a8d3f062 100644
+--- a/drivers/spi/spi-mtk-nor.c
++++ b/drivers/spi/spi-mtk-nor.c
+@@ -99,6 +99,8 @@
+ 
+ #define CLK_TO_US(sp, clkcnt)		DIV_ROUND_UP(clkcnt, sp->spi_freq / 1000000)
+ 
++#define MAX_CLOCK_CNT		6
 +
-+title: MediaTek Common DRAMC (DRAM Controller)
+ struct mtk_nor_caps {
+ 	u8 dma_bits;
+ 
+@@ -110,16 +112,19 @@ struct mtk_nor_caps {
+ 	u8 extra_dummy_bit;
+ };
+ 
++struct clk_info {
++	struct clk *clki;
++	const char *name;
++};
 +
-+maintainers:
-+  - Crystal Guo <crystal.guo@mediatek.com>
+ struct mtk_nor {
+ 	struct spi_controller *ctlr;
+ 	struct device *dev;
+ 	void __iomem *base;
+ 	u8 *buffer;
+ 	dma_addr_t buffer_dma;
+-	struct clk *spi_clk;
+-	struct clk *ctlr_clk;
+-	struct clk *axi_clk;
+-	struct clk *axi_s_clk;
++	struct clk_info clocks[MAX_CLOCK_CNT];
++	u8 clock_cnt;
+ 	unsigned int spi_freq;
+ 	bool wbuf_en;
+ 	bool has_irq;
+@@ -703,42 +708,74 @@ static int mtk_nor_transfer_one_message(struct spi_controller *host,
+ 
+ static void mtk_nor_disable_clk(struct mtk_nor *sp)
+ {
+-	clk_disable_unprepare(sp->spi_clk);
+-	clk_disable_unprepare(sp->ctlr_clk);
+-	clk_disable_unprepare(sp->axi_clk);
+-	clk_disable_unprepare(sp->axi_s_clk);
++	u8 i;
 +
-+description: |
-+  The DRAM controller of MediaTek SoC provides an interface to
-+  get the current data rate of DRAM.
++	for (i = 0; i < sp->clock_cnt; i++)
++		clk_disable_unprepare(sp->clocks[i].clki);
+ }
+ 
+ static int mtk_nor_enable_clk(struct mtk_nor *sp)
+ {
+ 	int ret;
++	u8 i, j;
+ 
+-	ret = clk_prepare_enable(sp->spi_clk);
+-	if (ret)
+-		return ret;
++	for (i = 0; i < sp->clock_cnt; i++) {
++		ret = clk_prepare_enable(sp->clocks[i].clki);
++		if (ret) {
++			for (j = 0; j < i; j++)
++				clk_disable_unprepare(sp->clocks[j].clki);
+ 
+-	ret = clk_prepare_enable(sp->ctlr_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		return ret;
++			return ret;
++		}
 +
-+properties:
-+  compatible:
-+    const: mediatek,common-dramc
++		if (strcmp(sp->clocks[i].name, "spi"))
++			sp->spi_freq = clk_get_rate(sp->clocks[i].clki);
+ 	}
+ 
+-	ret = clk_prepare_enable(sp->axi_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		clk_disable_unprepare(sp->ctlr_clk);
+-		return ret;
++	return 0;
++}
 +
-+  reg:
-+    minItems: 9
-+    items:
-+      - description: DRAMC_AO_CHA_BASE
-+      - description: DRAMC_AO_CHB_BASE
-+      - description: DRAMC_AO_CHC_BASE
-+      - description: DRAMC_AO_CHD_BASE
-+      - description: DRAMC_NAO_CHA_BASE
-+      - description: DRAMC_NAO_CHB_BASE
-+      - description: DRAMC_NAO_CHC_BASE
-+      - description: DRAMC_NAO_CHD_BASE
-+      - description: DDRPHY_AO_CHA_BASE
-+      - description: DDRPHY_AO_CHB_BASE
-+      - description: DDRPHY_AO_CHC_BASE
-+      - description: DDRPHY_AO_CHD_BASE
-+      - description: DDRPHY_NAO_CHA_BASE
-+      - description: DDRPHY_NAO_CHB_BASE
-+      - description: DDRPHY_NAO_CHC_BASE
-+      - description: DDRPHY_NAO_CHD_BASE
-+      - description: SLEEP_BASE
++static int mtk_nor_parse_clk(struct device *dev, struct mtk_nor *sp)
++{
++	struct device_node *np = dev->of_node;
++	int ret;
++	const char *name;
++	u8 cnt, i;
 +
-+  support-ch-cnt:
-+    maxItems: 1
++	cnt = of_property_count_strings(np, "clock-names");
++	if (!cnt || (cnt == -EINVAL)) {
++		dev_err(dev, "Unable to find clocks\n");
++		ret = -EINVAL;
++		goto out;
++	} else if (cnt < 0) {
++		dev_err(dev, "Count clock strings failed, err %d\n", cnt);
++		ret = cnt;
++		goto out;
++	} else if (cnt > MAX_CLOCK_CNT) {
++		ret = -EINVAL;
++		goto out;
+ 	}
+ 
+-	ret = clk_prepare_enable(sp->axi_s_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		clk_disable_unprepare(sp->ctlr_clk);
+-		clk_disable_unprepare(sp->axi_clk);
+-		return ret;
++	sp->clock_cnt = cnt;
 +
-+  fmeter-version:
-+    maxItems: 1
-+    description:
-+      Fmeter version for calculating dram data rate
++	for (i = 0; i < cnt; i++) {
++		ret = of_property_read_string_index(np, "clock-names", i,
++				       &name);
++		if (ret) {
++			dev_err(dev, "failed to get clock string\n");
++			return ret;
++		}
 +
-+  crystal-freq:
-+    maxItems: 1
-+    description:
-+      Reference clock rate in MHz
-+
-+  shu-of:
-+    maxItems: 1
-+
-+  pll-id: true
-+  shu-lv: true
-+  sdmpcw: true
-+  posdiv: true
-+  fbksel: true
-+  dqsopen: true
-+  async-ca: true
-+  dq-ser-mode: true
-+
-+required:
-+  - compatible
-+  - reg
-+  - support-ch-cnt
-+  - fmeter-version
-+  - crystal-freq
-+  - pll-id
-+  - shu-lv
-+  - shu-of
-+  - sdmpcw
-+  - posdiv
-+  - fbksel
-+  - dqsopen
-+  - async-ca
-+  - dq-ser-mode
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        dramc: dramc@10230000 {
-+            compatible = "mediatek,common-dramc";
-+            reg = <0 0x10230000 0 0x2000>, /* DRAMC_AO_CHA_BASE */
-+                <0 0x10240000 0 0x2000>, /* DRAMC_AO_CHB_BASE */
-+                <0 0x10250000 0 0x2000>, /* DRAMC_AO_CHC_BASE */
-+                <0 0x10260000 0 0x2000>, /* DRAMC_AO_CHD_BASE */
-+                <0 0x10234000 0 0x1000>, /* DRAMC_NAO_CHA_BASE */
-+                <0 0x10244000 0 0x1000>, /* DRAMC_NAO_CHB_BASE */
-+                <0 0x10254000 0 0x1000>, /* DRAMC_NAO_CHC_BASE */
-+                <0 0x10264000 0 0x1000>, /* DRAMC_NAO_CHD_BASE */
-+                <0 0x10238000 0 0x2000>, /* DDRPHY_AO_CHA_BASE */
-+                <0 0x10248000 0 0x2000>, /* DDRPHY_AO_CHB_BASE */
-+                <0 0x10258000 0 0x2000>, /* DDRPHY_AO_CHC_BASE */
-+                <0 0x10268000 0 0x2000>, /* DDRPHY_AO_CHD_BASE */
-+                <0 0x10236000 0 0x2000>, /* DDRPHY_NAO_CHA_BASE */
-+                <0 0x10246000 0 0x2000>, /* DDRPHY_NAO_CHB_BASE */
-+                <0 0x10256000 0 0x2000>, /* DDRPHY_NAO_CHC_BASE */
-+                <0 0x10266000 0 0x2000>, /* DDRPHY_NAO_CHD_BASE */
-+                <0 0x10006000 0 0x1000>; /* SLEEP_BASE */
-+            support-ch-cnt = <4>;
-+            fmeter-version = <1>;
-+            crystal-freq = <26>;
-+            pll-id = <0x0e98 0x02000000 25>;
-+            shu-lv = <0x0e98 0x0000c000 14>;
-+            shu-of = <0x700>;
-+            sdmpcw = <0x0908 0x0007fff8 3>,
-+                <0x0928 0x0007fff8 3>;
-+            posdiv = <0x090c 0x00003800 11>,
-+                <0x092c 0x00003800 11>;
-+            fbksel = <0x0910 0x00000040 6>,
-+                <0x0910 0x00000040 6>;
-+            dqsopen = <0x0d94 0x04000000 26>,
-+                <0x0d94 0x04000000 26>;
-+            async-ca = <0x0d08 0x00000001 0>,
-+                <0x0d08 0x00000001 0>;
-+            dq-ser-mode = <0x0dc4 0x00000018 3>,
-+                <0x0dc4 0x00000018 3>;
-+        };
-+    };
++		sp->clocks[i].name = name;
++		sp->clocks[i].clki = devm_clk_get(dev, sp->clocks[i].name);
++		if (IS_ERR(sp->clocks[i].clki)) {
++			dev_err(dev, "get clock %s fail\n", sp->clocks[i].name);
++			return PTR_ERR(sp->clocks[i].clki);
++		}
+ 	}
+ 
+-	return 0;
++out:
++	return ret;
+ }
+ 
+ static void mtk_nor_init(struct mtk_nor *sp)
+@@ -813,29 +850,12 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	struct mtk_nor *sp;
+ 	struct mtk_nor_caps *caps;
+ 	void __iomem *base;
+-	struct clk *spi_clk, *ctlr_clk, *axi_clk, *axi_s_clk;
+ 	int ret, irq;
+ 
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	spi_clk = devm_clk_get(&pdev->dev, "spi");
+-	if (IS_ERR(spi_clk))
+-		return PTR_ERR(spi_clk);
+-
+-	ctlr_clk = devm_clk_get(&pdev->dev, "sf");
+-	if (IS_ERR(ctlr_clk))
+-		return PTR_ERR(ctlr_clk);
+-
+-	axi_clk = devm_clk_get_optional(&pdev->dev, "axi");
+-	if (IS_ERR(axi_clk))
+-		return PTR_ERR(axi_clk);
+-
+-	axi_s_clk = devm_clk_get_optional(&pdev->dev, "axi_s");
+-	if (IS_ERR(axi_s_clk))
+-		return PTR_ERR(axi_s_clk);
+-
+ 	caps = (struct mtk_nor_caps *)of_device_get_match_data(&pdev->dev);
+ 
+ 	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(caps->dma_bits));
+@@ -868,10 +888,6 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	sp->wbuf_en = false;
+ 	sp->ctlr = ctlr;
+ 	sp->dev = &pdev->dev;
+-	sp->spi_clk = spi_clk;
+-	sp->ctlr_clk = ctlr_clk;
+-	sp->axi_clk = axi_clk;
+-	sp->axi_s_clk = axi_s_clk;
+ 	sp->caps = caps;
+ 	sp->high_dma = caps->dma_bits > 32;
+ 	sp->buffer = dmam_alloc_coherent(&pdev->dev,
+@@ -885,11 +901,13 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
+-	ret = mtk_nor_enable_clk(sp);
++	ret = mtk_nor_parse_clk(sp->dev, sp);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	sp->spi_freq = clk_get_rate(sp->spi_clk);
++	ret = mtk_nor_enable_clk(sp);
++	if (ret < 0)
++		return ret;
+ 
+ 	mtk_nor_init(sp);
+ 
 -- 
-2.18.0
+2.46.0
 
 
