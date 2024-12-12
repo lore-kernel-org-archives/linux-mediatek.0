@@ -4,67 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2E55E77180
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 183B0E7717F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mLzOz8HzBuN7tsuBOcszBBlRFk289/YE01A6fFpjYto=; b=0L2gLBoqkDaVZrMWHe0Pc67K5L
-	55cT/lkhMtjEIcPIrqewSJm8AyLP15KmvIJ3MQ/5O8gcIvLLa53+h73dhd4x048Ip/cwxNusPkemR
-	EOqyaYM6sOqf5S7Pc9gdVvoTGFKagdayGL95crpFF5htmWru/G236x+7HPdEnPn+Ht8AMv/7HrsvA
-	e4fPlIiqS/KCNYh2+J1hmnLS9x//nD2VKkjdu4ZQZFRfc95UmOC10rZZ1I9TBtlYAywIA7eWB/UjI
-	9597IFyt1DAwciaZAccEPBOigCMI98KIO/zlPSPcgZK643Lgi5gabvVtOpnJ5A1PpwUotXUDsNBTJ
-	cLk8IkJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HIeV01Z2KJOaxxslmz6iXipE9ilqHcHhEDar7RRhGbg=; b=gFosSlagLcdb0IdX6VNlmfTea1
+	v8IDG+DKT1Vv9SlrEJ0cQBVCCZ4WINypPDcaQPmpFpqNNeBcxEG/DpSP8Q2xmAM09UQR9irfqkDJW
+	vUCS2Dg6fgj6WfKYgt4OXEAaudnNJbBM+YzO7I9EsT5rXHljbVBRpo13TY5AJjUY0Qguua7tX4FhW
+	ZM1nYadQqrp0IxoVUY2FiJtAx4DIm68XJ7pKgHhBm5a5j4Pj+a4WouSCDioQADPI+K8MYr8K103mp
+	AAlwV8d8FAZ/Xjqdqh3s0+U0qST67iPQUvVaazX/QGiNzc6AhNbmYKbyBimJzJ89kkaMWiS0Z+/tW
+	QxV+xttA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLgjE-000000006Ez-3nsi;
-	Thu, 12 Dec 2024 10:47:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tLgsM-000000007Bn-09kD;
+	Thu, 12 Dec 2024 10:56:58 +0000
+Received: from mail-eastasiaazlp170100000.outbound.protection.outlook.com ([2a01:111:f403:c400::] helo=HK2PR02CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLgi9-0000000066p-0jLK;
-	Thu, 12 Dec 2024 10:46:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734000382;
-	bh=EeTQ0XJQcKIXk/QpK2b+bNdt51NhWlYIcFlc3AheHmE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IC5T7/rAATOOMzQR8aRMTnJRxqSPfjBE7EmOAMxbdDOozaGmOCLqfDLIwG+ldJB0d
-	 KFJMABHndpM3m6syy2UbmAiLs6ugv/VYlYpvXNfLswf5250J4fhBLc0uyon/7dUtNo
-	 V+BL1NviHpgx8yLFbu/Yec0LQ6jXepNG3w7/J/hnxMww+qlVEswOwcL/j+1wuvFTMQ
-	 04GeRDOpw/c0uynpNZ38nd//IOi7ZZmuT/ZoBQC+gtikmUcP7rT98VgADJoqGpHCX/
-	 1K2cXWwMmnHGLGJ3em+VmnkrMOjkaeqv18X50F8s4nNrEXhSk1zeSLk6rJAItFn12U
-	 Dwvc5f8tSeHFA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3084C17E360E;
-	Thu, 12 Dec 2024 11:46:22 +0100 (CET)
-Message-ID: <f1515081-14f3-4cde-9c9a-16390b8d3891@collabora.com>
-Date: Thu, 12 Dec 2024 11:46:21 +0100
+	id 1tLgs4-0000000076c-31mi;
+	Thu, 12 Dec 2024 10:56:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gTaARfZHrTZ5WDwvSx7DLPzKuZ+MP5XABWsBfv2VNo/FL5HYbgJpxDOZIu3ED/s+W1M6pxQdmLTDyEqh7mv5WeJw4Zvj6VAeCh6ZzvPmHUFrY14jK79B/U9P4wIOJEnb0r6tfOlFyA9QdCi8EThQUBf2vgugkO3+IKlx2pO4ByNnL/MBntfZzZXQuk2BjorUPlwSR/yz06EnGUD4nRSoZEYBQUSsLIzbeIXZXU8CS3U1zE/hD4+oIipQ9ElURCa2jcKVNcGdAAFK2trQMWqTo4SQuctQ3SAuk+yXI21bkUxPAt8quXkI/sy24ABuoMawaNrmKap9C2Egp/TMeNOOBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HIeV01Z2KJOaxxslmz6iXipE9ilqHcHhEDar7RRhGbg=;
+ b=LVZV0zg/VoPkerMGSERZm6L4xDio6duhHISMMbzil63W9UWQcH6/ahdvheAi57qG4ieNxO7v7JOmr+O53mJth1Yte7++k5lEHyTslKymt8Sqish+p5fdHV6y75kuMI1EcI81LAaYFSwpFmoMrGbIGO3WZqKUM5CGEamuYizI/q8byvmkUFgvar0opskhGF4pg9b5WpF0nTLJmdDAgAPF1rjQqtu9GvZ6CZb5DINX4FM2ZVhy+pf58MirH8FEXE4rtB2bIk3GpZ996lGMZ7BkQgv429SvbBPutmZfbFpoKB2MNZ2RneEgJ+Hy9kn63nDaDlRwH+xNupzGmdjI8xgpAA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HIeV01Z2KJOaxxslmz6iXipE9ilqHcHhEDar7RRhGbg=;
+ b=XzK1BXowc7daFhdvW+qMY7qtzEWYPP1csx/DKvLb77Zr//yHDVt09GypDIEta55LwMOySB2OzvqeUlbHe2n9ZvzT11XiN1TKIDSWDuxTiQee/WYB8PO93yVa6EwyQIYq3H/7nNRvitKnwBzvNOp2c1idhvsPsiLSbjfwkSU80bY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+ by TY0PR02MB7014.apcprd02.prod.outlook.com (2603:1096:405:a::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.15; Thu, 12 Dec
+ 2024 10:56:31 +0000
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b%5]) with mapi id 15.20.8230.016; Thu, 12 Dec 2024
+ 10:56:31 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	corbet@lwn.net,
+	linux-mediatek@lists.infradead.org,
+	helgaas@kernel.org,
+	danielwinkler@google.com,
+	korneld@google.com,
+	andrew+netdev@lunn.ch,
+	horms@kernel.org,
+	Jinjian Song <jinjian.song@fibocom.com>
+Subject: [net-next v1] net: wwan: t7xx: Fix FSM command timeout issue
+Date: Thu, 12 Dec 2024 18:55:55 +0800
+Message-Id: <20241212105555.10364-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: FR3P281CA0051.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:4a::9) To TY0PR02MB5766.apcprd02.prod.outlook.com
+ (2603:1096:400:1b5::6)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] memory/mediatek: Add an interface to get current DDR
- data rate
-To: Crystal Guo <crystal.guo@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20241212090029.13692-1-crystal.guo@mediatek.com>
- <20241212090029.13692-2-crystal.guo@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241212090029.13692-2-crystal.guo@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|TY0PR02MB7014:EE_
+X-MS-Office365-Filtering-Correlation-Id: f97ab6c3-b27a-4914-0b54-08dd1a9ba2fb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|1800799024|366016|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?2fNgnICCRJXULUt6ujbPRUZk9fszwjPnRgGxDKV0AnMDD9t1IhC4rTcIxs4G?=
+ =?us-ascii?Q?iGrgE/s823Clp51kI4o7W7Xbzy5rpJJemhLuyx+RjECyLJ4yJSQsG6VJGhq3?=
+ =?us-ascii?Q?3yU1gOE/WDfo4Av3jcOZcIF+8HdQfCaDcZYo0fkiC/0AP2Y/OMH4/MojyIZI?=
+ =?us-ascii?Q?r86RQ1PX6srXukBTuF7u/9zOnfi74EQZHpVrpTwqpLCcigwPsihZhQQk+xoe?=
+ =?us-ascii?Q?OL8NhxwhjHdLA9EkF0eGr+P2P/JAlB/yJvnqrHbLlVxLFZC16WSJIYmI7tOM?=
+ =?us-ascii?Q?NMVHOOXWMvAiRAFCaFgqtNHXeEtPlsOBxYzls/95+ThOQX+sHz2emZILTBLj?=
+ =?us-ascii?Q?RI2WVR82PG3cI5ZvJ9prXZvIG8X5U3s/OY1bIWI/W3nkGG3FmOxSaVDwz9OT?=
+ =?us-ascii?Q?CT4Vvtq98pdCsijNV1tjR1XTBWtFZAe7sc88ZmnnTDKf0sjrEjlI4sfdja3R?=
+ =?us-ascii?Q?cbtoYnBCW7I4ILeBmySo8kfPQhjIPktTMw9Lm6yCVSPombNe1JvvnYRW1dLs?=
+ =?us-ascii?Q?oYABZGx+022TSsYbWiPL4lLb6rZ/g4W3vAFKkA5Z5O3003FuVE8Jc1gVm0Lx?=
+ =?us-ascii?Q?uWh5FX9FdQbjpJTRcDHkv8VuIEMJ0xyuHeMsQA5ZbocWEeD/WbZOpu5ZH8P3?=
+ =?us-ascii?Q?LNP5G1cvzzVr0Cn3MhdeYPkXiXiyTLLK2B8SBjrZSnbyTqzH/SE0cJOGNZpt?=
+ =?us-ascii?Q?l7UhHg43Xa3wWlEZvSgRNAts1srREQWC+VrQfhEe3zfQaEOgpAk9GRgc/4Hr?=
+ =?us-ascii?Q?Ajb0MIcBI1jh8Y3nMpUcyL2t+oHFVSDS9gRGxEpji2MJLBNM1mBqDC/YKQsa?=
+ =?us-ascii?Q?EknRuIjcr6K4QXh+xa+W5GrIY93phg+eSs5+boe6arcBSYiDtIWDqy/5toE9?=
+ =?us-ascii?Q?xQqN3C50l3yW004DxHmyqrhFs/8TR+FVoQGL6tl/fUBL4I1QmZm/7hQnSOd7?=
+ =?us-ascii?Q?Wd0wEVKWIFQYwgWBuMwF/rN0rRQmyvWGNhAQwHCQ7H8LCTlKRjB9Htu9Dhut?=
+ =?us-ascii?Q?R2qlkVmtIxmOH4F58KBbz2Vmtdt5B65D7G5i5GcncZUlqKqYeSi6Sj2p63oM?=
+ =?us-ascii?Q?6f43RwFv7+xyozb0XCixAH6pFcrr/PvMYQnlB0eDFWCl7wQpFCUgQk4FAQU0?=
+ =?us-ascii?Q?g8uLUzIGETsvFC/a8ymIvC9xUzv6FsossOsfC5xBmhLhoSeeM5BDPMAdpzDl?=
+ =?us-ascii?Q?e/Nthfhm/uoyXxsA7lPf2eh5FGktyo9BI+Jy2hLFb/LP08EcxK+eMGRmY/bG?=
+ =?us-ascii?Q?GALvjsp3SVcH1mnjbZ2G1XWAHBwKpjyOFfwVuapTsqMIZPA6DPE3xSkMfNpo?=
+ =?us-ascii?Q?aIHIVIWj2mFD58wNKOUfJ6bfE6l3x5Zg9TkWlCpQdZ5dQdqmtEG7kturWZy4?=
+ =?us-ascii?Q?3m/dODMnGouUzIxk2rHaSB6b0tDdHRlW+CtCEn26hAvfYq2bQJLyKtAb+GWa?=
+ =?us-ascii?Q?24G6+VXINfI=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(1800799024)(366016)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?uSZEw7rMO2wNgMj8k45yJJFfTM94OBeXxllLN2IIB6YB2k4yzdNYRFxXQKYW?=
+ =?us-ascii?Q?ekEewhqHD5+pOO0qRCEyUDWN0/vn7zMfrqG9IHpD1U8OImJEi9cDCT2o/m+4?=
+ =?us-ascii?Q?CUFOXFnzJL3myda0AM0QBtg4sCaQeJBFq+oI/TJw/NAP+I/RPa5PlcuN2TNz?=
+ =?us-ascii?Q?Jg0S8xOzkn5QRFCcyqQ6EGDpr05CxLI+FLXC3m3tBYi2GtCgXJR2wpYNrXaC?=
+ =?us-ascii?Q?pagi2uVZbM1qcZA7+scPdx4hRzYh8D4lZknC856jKlKSg5+Ftr4nLvuu0QoM?=
+ =?us-ascii?Q?huk0QH09SWGAGUFiwie8JPiwKZDAxtc8TQaDBMYyP+uid9WRMBHKDM0w6GUg?=
+ =?us-ascii?Q?5DaChTstcaKWb1uqIyH8h5QDDuQxVs76bEkrP7JjLmNJEeyen4z1p3ve3pFV?=
+ =?us-ascii?Q?XieV3jKcSsvU9Q29OK0stncRBe/2+SsHN2NFg2TH/6g4zw0wrn4ZcMlkiVBS?=
+ =?us-ascii?Q?jTWWx4PiHk0wCDpuGpMZAAER6pB6t3jaeRyqzgOK4IMjpAb4p0h0LEYVKZR1?=
+ =?us-ascii?Q?b/sgexudel8RN8qrHVaocRhRkbwD11Vo8qNFhcbBX5DB/a2uts9tfv7qp3Ll?=
+ =?us-ascii?Q?bhIG6YGBJsVe9vuEMxK1d6aS2x0Ew2wbQ1XYPXQrsu6Zm957LUaVimLrgM+t?=
+ =?us-ascii?Q?2gbIbB/f8AgurklkYNdHT160wzj5jHKlQZC18Z8nQBVFf1ZTZJGoVpB3kPXY?=
+ =?us-ascii?Q?5pEbzkGJU2twouivAnJHpHoqgbZcYvvknGMSIPw7vuKaWN3Vbxp+wcJRVDGm?=
+ =?us-ascii?Q?4vL+36ilZwodNTKdqyOPqWabbPxW7fh8CZlWX8yrhx3omDdi2cGmxcfvHxCZ?=
+ =?us-ascii?Q?TRuExy7G8WjVdGvjaEJvmN7wsqtxRtOlRrGhmi8+jJtIZlBUb7U32tNoYIIO?=
+ =?us-ascii?Q?hJlhdXFcKnZrWP60N3QIbmNe2x1yRjeACPw+cEWiFbmBvGVJpH7vZyfS/Rq8?=
+ =?us-ascii?Q?JVWx3m2r5cjc8VsZFUx0oQyWijyN7EgdP51vHpDK/YfhUYpL0CvZv/PTo5h7?=
+ =?us-ascii?Q?MtG8kHlcjhlVeEw49zwkRxlqA3IDbMM7hbkAvden8xpzakDl4Cq38f1XLL6X?=
+ =?us-ascii?Q?v0vCvre9YkVEmpMbwb0aMVf41PDvnygidGJWxaJlscAB3sK+QyrRUtjRr4jh?=
+ =?us-ascii?Q?9XJ/+npHZnA+Tadm/mv2OTTZMw3HOZ12PuXj/6guTjgFOaamuQzTlkn79MJu?=
+ =?us-ascii?Q?HzHGC4nmYMOqlJhsS6AsMPgBVhGBkWbNPx0dBi+4Sr0dUoADn+A9RzRXanfF?=
+ =?us-ascii?Q?dEzgf3npjRT7za2AgzhkyCpihtTlAUCrsyWQ2XdKH5oB8jf6HUJgMN9c8NlM?=
+ =?us-ascii?Q?ZVNy0jAP599epfvbKMIbvqGae8Z8Wyikxpt1q8edoWUZ5Om3lxfZK+e7C15H?=
+ =?us-ascii?Q?TLuGwTKu1s1kZvXXSPu1fnnJvFYaPEx7526s6FKNCDpkHdV0oxN/0Nct7hh+?=
+ =?us-ascii?Q?mhevrM3M3WBi1J8rVcHVCTtjcA7kFI78vTPwghFSZRuhe2BOo4qQO7z2ZMxW?=
+ =?us-ascii?Q?2axRubpxEzkBUsH62khj0TjdDR1h1/5QyGnqn//mgfVU4o09Knsa+Z3DQBoX?=
+ =?us-ascii?Q?FLmJZcd1jt4+cXMDXqa/7eGjEcbkvige3uV0eYuM4EdB9z51xG3OCKIBrYhV?=
+ =?us-ascii?Q?uQ=3D=3D?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f97ab6c3-b27a-4914-0b54-08dd1a9ba2fb
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Dec 2024 10:56:31.7634
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 028xaaS3rr3xMmDqBqTmTlJzLrB9ahpJODo5QA4MSKoJofhvhK7V2+i6OD+BNEBP17cFOn85SrnzGxv9ZZgqUvuU5caL1ALkbRer7xHFb3k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR02MB7014
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_024625_534430_1532C547 
-X-CRM114-Status: GOOD (  31.83  )
+X-CRM114-CacheID: sfid-20241212_025640_766401_83ED2D69 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,465 +178,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/12/24 09:59, Crystal Guo ha scritto:
-> Add MediaTek DRAMC driver to provide an interface that can
-> obtain current DDR data rate.
-> 
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> ---
->   drivers/memory/Kconfig                 |   1 +
->   drivers/memory/Makefile                |   1 +
->   drivers/memory/mediatek/Kconfig        |  21 ++
->   drivers/memory/mediatek/Makefile       |   2 +
->   drivers/memory/mediatek/mtk-dramc.c    | 325 +++++++++++++++++++++++++
->   include/linux/soc/mediatek/mtk-dramc.h |  41 ++++
->   6 files changed, 391 insertions(+)
->   create mode 100644 drivers/memory/mediatek/Kconfig
->   create mode 100644 drivers/memory/mediatek/Makefile
->   create mode 100644 drivers/memory/mediatek/mtk-dramc.c
->   create mode 100644 include/linux/soc/mediatek/mtk-dramc.h
-> 
-> diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
-> index c82d8d8a16ea..b1698549ff81 100644
-> --- a/drivers/memory/Kconfig
-> +++ b/drivers/memory/Kconfig
-> @@ -227,5 +227,6 @@ config STM32_FMC2_EBI
->   
->   source "drivers/memory/samsung/Kconfig"
->   source "drivers/memory/tegra/Kconfig"
-> +source "drivers/memory/mediatek/Kconfig"
->   
->   endif
-> diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
-> index d2e6ca9abbe0..cf1091449d2e 100644
-> --- a/drivers/memory/Makefile
-> +++ b/drivers/memory/Makefile
-> @@ -27,6 +27,7 @@ obj-$(CONFIG_STM32_FMC2_EBI)	+= stm32-fmc2-ebi.o
->   
->   obj-$(CONFIG_SAMSUNG_MC)	+= samsung/
->   obj-$(CONFIG_TEGRA_MC)		+= tegra/
-> +obj-$(CONFIG_HAVE_MTK_MC)	+= mediatek/
->   obj-$(CONFIG_TI_EMIF_SRAM)	+= ti-emif-sram.o
->   obj-$(CONFIG_FPGA_DFL_EMIF)	+= dfl-emif.o
->   
-> diff --git a/drivers/memory/mediatek/Kconfig b/drivers/memory/mediatek/Kconfig
-> new file mode 100644
-> index 000000000000..00764cdb157e
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/Kconfig
-> @@ -0,0 +1,21 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config HAVE_MTK_MC
-> +	bool "MediaTek Memory Controller support"
-> +	help
-> +	  This option allows to enable MediaTek memory controller drivers,
-> +	  which may include controllers for DRAM or others.
-> +	  Select Y here if you need support for MediaTek memory controller.
-> +	  If you don't need, select N.
-> +
-> +if HAVE_MTK_MC
-> +
-> +config MTK_DRAMC
-> +	tristate "MediaTek DRAMC driver"
-> +	depends on HAVE_MTK_MC
-> +	help
-> +	  This option selects the MediaTek DRAMC driver, which provides
-> +	  an interface for reporting the current data rate of DRAM.
-> +	  Select Y here if you need support for the MediaTek DRAMC driver.
-> +	  If you don't need, select N.
-> +
-> +endif
-> diff --git a/drivers/memory/mediatek/Makefile b/drivers/memory/mediatek/Makefile
-> new file mode 100644
-> index 000000000000..a1395fc55b41
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/Makefile
-> @@ -0,0 +1,2 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +obj-$(CONFIG_MTK_DRAMC)		+= mtk-dramc.o
-> diff --git a/drivers/memory/mediatek/mtk-dramc.c b/drivers/memory/mediatek/mtk-dramc.c
-> new file mode 100644
-> index 000000000000..9c2c8e187a4a
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/mtk-dramc.c
-> @@ -0,0 +1,325 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2024 MediaTek Inc.
-> + */
-> +
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/printk.h>
-> +#include <linux/io.h>
-> +#include <linux/soc/mediatek/mtk-dramc.h>
-> +
-> +static struct platform_device *dramc_pdev;
-> +static struct platform_driver dramc_drv;
+When driver processes the internal state change command, it use
+asynchronous thread to process the command operation. If the main
+thread detects that the task has timed out, the asynchronous thread
+will panic when executing te completion notification because the
+main thread completion object is released.
 
-You don't need these globals.
+BUG: unable to handle page fault for address: fffffffffffffff8
+PGD 1f283a067 P4D 1f283a067 PUD 1f283c067 PMD 0
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+RIP: 0010:complete_all+0x3e/0xa0
+[...]
+Call Trace:
+ <TASK>
+ ? __die_body+0x68/0xb0
+ ? page_fault_oops+0x379/0x3e0
+ ? exc_page_fault+0x69/0xa0
+ ? asm_exc_page_fault+0x22/0x30
+ ? complete_all+0x3e/0xa0
+ fsm_main_thread+0xa3/0x9c0 [mtk_t7xx (HASH:1400 5)]
+ ? __pfx_autoremove_wake_function+0x10/0x10
+ kthread+0xd8/0x110
+ ? __pfx_fsm_main_thread+0x10/0x10 [mtk_t7xx (HASH:1400 5)]
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork+0x38/0x50
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork_asm+0x1b/0x30
+ </TASK>
+[...]
+CR2: fffffffffffffff8
+---[ end trace 0000000000000000 ]---
 
-> +
-> +static int fmeter_init(struct platform_device *pdev,
-> +		       struct fmeter_dev_t *fmeter_dev_ptr, unsigned int fmeter_version)
-> +{
-> +	struct device_node *dramc_node = pdev->dev.of_node;
-> +	int ret;
-> +
-> +	ret = of_property_read_u32(dramc_node,
-> +				   "crystal-freq", &(fmeter_dev_ptr->crystal_freq));
-> +	ret |= of_property_read_u32(dramc_node,
-> +				    "shu-of", &(fmeter_dev_ptr->shu_of));
+After the main thread determines that the task has timed out, mark
+the completion invalid, and add judgment in the asynchronous task.
 
-ret |= x doesn't make sense.
+Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+---
+ drivers/net/wwan/t7xx/t7xx_state_monitor.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-ret = ...
-if (ret)
-	return ret;
+diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.c b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+index 3931c7a13f5a..57f1a7730fff 100644
+--- a/drivers/net/wwan/t7xx/t7xx_state_monitor.c
++++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+@@ -108,7 +108,8 @@ static void fsm_finish_command(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_command
+ {
+ 	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
+ 		*cmd->ret = result;
+-		complete_all(cmd->done);
++		if (cmd->done)
++			complete_all(cmd->done);
+ 	}
+ 
+ 	kfree(cmd);
+@@ -503,8 +504,10 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum t7xx_fsm_cmd_state cmd_id
+ 
+ 		wait_ret = wait_for_completion_timeout(&done,
+ 						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
+-		if (!wait_ret)
++		if (!wait_ret) {
++			cmd->done = NULL;
+ 			return -ETIMEDOUT;
++		}
+ 
+ 		return ret;
+ 	}
+-- 
+2.34.1
 
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "shu-lv", (unsigned int *)&(fmeter_dev_ptr->shu_lv), 3);
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "pll-id", (unsigned int *)&(fmeter_dev_ptr->pll_id), 3);
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "sdmpcw", (unsigned int *)(fmeter_dev_ptr->sdmpcw), 6);
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "posdiv", (unsigned int *)(fmeter_dev_ptr->posdiv), 6);
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "fbksel", (unsigned int *)(fmeter_dev_ptr->fbksel), 6);
-> +	ret |= of_property_read_u32_array(dramc_node,
-> +					  "dqsopen", (unsigned int *)(fmeter_dev_ptr->dqsopen), 6);
-> +	if (fmeter_version == 1) {
-> +		fmeter_dev_ptr->version = 1;
-> +		ret |= of_property_read_u32_array(dramc_node,
-> +			"async-ca", (unsigned int *)(fmeter_dev_ptr->async_ca), 6);
-> +		ret |= of_property_read_u32_array(dramc_node,
-> +			"dq-ser-mode", (unsigned int *)(fmeter_dev_ptr->dq_ser_mode), 6);
-> +	}
-> +	return ret;
-> +}
-> +
-> +static ssize_t dram_data_rate_show(struct device_driver *driver, char *buf)
-> +{
-> +	return snprintf(buf, PAGE_SIZE, "DRAM data rate = %d\n",
-> +		mtk_dramc_get_data_rate());
-> +}
-> +
-> +static DRIVER_ATTR_RO(dram_data_rate);> +
-> +static int dramc_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *dramc_node = pdev->dev.of_node;
-> +	struct dramc_dev_t *dramc_dev_ptr;
-> +	unsigned int fmeter_version;
-> +	struct resource *res;
-> +	unsigned int i, size;
-> +	int ret;
-> +
-> +	pr_info("%s: module probe.\n", __func__);
-
-This pr_info makes no sense. Please remove.
-
-> +	dramc_pdev = pdev;
-> +	dramc_dev_ptr = devm_kmalloc(&pdev->dev,
-> +				     sizeof(struct dramc_dev_t), GFP_KERNEL);
-> +
-> +	if (!dramc_dev_ptr)
-> +		return -ENOMEM;
-> +
-> +	ret = of_property_read_u32(dramc_node,
-> +				   "support-ch-cnt", &dramc_dev_ptr->support_ch_cnt);
-> +	if (ret) {
-> +		pr_info("%s: get support_ch_cnt fail\n", __func__);
-
-that's an error, and you want dev_err_probe().
-
-> +		return -EINVAL;
-> +	}
-> +
-> +	dramc_dev_ptr->sleep_base = of_iomap(dramc_node,
-> +					     dramc_dev_ptr->support_ch_cnt * 4);
-> +	if (IS_ERR(dramc_dev_ptr->sleep_base)) {
-> +		pr_info("%s: unable to map sleep base\n", __func__);
-
-same, here and everywhere else
-
-> +		return -EINVAL;
-> +	}
-> +
-> +	size = sizeof(phys_addr_t) * dramc_dev_ptr->support_ch_cnt;
-> +	dramc_dev_ptr->dramc_chn_base_ao = devm_kmalloc(&pdev->dev,
-> +							size, GFP_KERNEL);
-> +	if (!(dramc_dev_ptr->dramc_chn_base_ao))
-> +		return -ENOMEM;
-> +	dramc_dev_ptr->dramc_chn_base_nao = devm_kmalloc(&pdev->dev,
-> +							 size, GFP_KERNEL);
-> +	if (!(dramc_dev_ptr->dramc_chn_base_nao))
-> +		return -ENOMEM;
-> +	dramc_dev_ptr->ddrphy_chn_base_ao = devm_kmalloc(&pdev->dev,
-> +							 size, GFP_KERNEL);
-> +	if (!(dramc_dev_ptr->ddrphy_chn_base_ao))
-> +		return -ENOMEM;
-> +	dramc_dev_ptr->ddrphy_chn_base_nao = devm_kmalloc(&pdev->dev,
-> +							  size, GFP_KERNEL);
-> +	if (!(dramc_dev_ptr->ddrphy_chn_base_nao))
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < dramc_dev_ptr->support_ch_cnt; i++) {
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
-> +		dramc_dev_ptr->dramc_chn_base_ao[i] =
-> +			devm_ioremap_resource(&pdev->dev, res);
-> +		if (IS_ERR(dramc_dev_ptr->dramc_chn_base_ao[i])) {
-> +			pr_info("%s: unable to map ch%d DRAMC AO base\n",
-> +				__func__, i);
-> +			return -EINVAL;
-> +		}
-> +
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM,
-> +					    i + dramc_dev_ptr->support_ch_cnt);
-> +		dramc_dev_ptr->dramc_chn_base_nao[i] =
-> +			devm_ioremap_resource(&pdev->dev, res);
-> +		if (IS_ERR(dramc_dev_ptr->dramc_chn_base_nao[i])) {
-> +			pr_info("%s: unable to map ch%d DRAMC NAO base\n",
-> +				__func__, i);
-> +			return -EINVAL;
-> +		}
-> +
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM,
-> +					    i + dramc_dev_ptr->support_ch_cnt * 2);
-> +		dramc_dev_ptr->ddrphy_chn_base_ao[i] =
-> +			devm_ioremap_resource(&pdev->dev, res);
-> +		if (IS_ERR(dramc_dev_ptr->ddrphy_chn_base_ao[i])) {
-> +			pr_info("%s: unable to map ch%d DDRPHY AO base\n",
-> +				__func__, i);
-> +			return -EINVAL;
-> +		}
-> +
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM,
-> +					    i + dramc_dev_ptr->support_ch_cnt * 3);
-> +		dramc_dev_ptr->ddrphy_chn_base_nao[i] =
-> +			devm_ioremap_resource(&pdev->dev, res);
-> +		if (IS_ERR(dramc_dev_ptr->ddrphy_chn_base_nao[i])) {
-> +			pr_info("%s: unable to map ch%d DDRPHY NAO base\n",
-> +				__func__, i);
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
-> +	ret = of_property_read_u32(dramc_node, "fmeter-version", &fmeter_version);
-
-This is something for platform data, not devicetree.
-
-> +	if (ret) {
-> +		pr_info("%s: get fmeter_version fail\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +	pr_info("%s: fmeter_version(%d)\n", __func__, fmeter_version);
-> +
-> +	if (fmeter_version == 1) {
-> +		dramc_dev_ptr->fmeter_dev_ptr = devm_kmalloc(&pdev->dev,
-> +							     sizeof(struct fmeter_dev_t),
-> +							     GFP_KERNEL);
-> +		if (!(dramc_dev_ptr->fmeter_dev_ptr)) {
-> +			pr_info("%s: memory  alloc fail\n", __func__);
-> +			return -ENOMEM;
-> +		}
-> +		ret = fmeter_init(pdev, dramc_dev_ptr->fmeter_dev_ptr, fmeter_version);
-> +		if (ret) {
-> +			pr_info("%s: fmeter_init fail\n", __func__);
-> +			return -EINVAL;
-> +		}
-> +	} else {
-> +		dramc_dev_ptr->fmeter_dev_ptr = NULL;
-> +	}
-> +	ret = driver_create_file(pdev->dev.driver, &driver_attr_dram_data_rate);
-> +	if (ret) {
-> +		pr_info("%s: fail to create dram_data_rate sysfs\n", __func__);
-> +		return ret;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, dramc_dev_ptr);
-> +	pr_info("%s: DRAM data rate = %d\n", __func__,
-> +		mtk_dramc_get_data_rate());
-> +
-> +	return ret;
-> +}
-> +
-> +static unsigned int fmeter_v1(struct dramc_dev_t *dramc_dev_ptr)
-> +{
-> +	struct fmeter_dev_t *fmeter_dev_ptr =
-> +		(struct fmeter_dev_t *)dramc_dev_ptr->fmeter_dev_ptr;
-> +	unsigned int shu_lv_val;
-> +	unsigned int pll_id_val;
-> +	unsigned int sdmpcw_val;
-> +	unsigned int posdiv_val;
-> +	unsigned int ckdiv4_val;
-> +	unsigned int offset;
-> +	unsigned int vco_freq;
-> +	unsigned int fbksel;
-> +	unsigned int dqsopen;
-> +	unsigned int async_ca;
-> +	unsigned int dq_ser_mode;
-> +
-> +	shu_lv_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] +
-> +		fmeter_dev_ptr->shu_lv.offset) &
-> +		fmeter_dev_ptr->shu_lv.mask) >>
-> +		fmeter_dev_ptr->shu_lv.shift;
-> +
-> +	pll_id_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] +
-> +		fmeter_dev_ptr->pll_id.offset) &
-> +		fmeter_dev_ptr->pll_id.mask) >>
-> +		fmeter_dev_ptr->pll_id.shift;
-> +
-> +	offset = fmeter_dev_ptr->sdmpcw[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	sdmpcw_val = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->sdmpcw[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->sdmpcw[pll_id_val].shift;
-> +
-> +	offset = fmeter_dev_ptr->posdiv[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	posdiv_val = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->posdiv[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->posdiv[pll_id_val].shift;
-> +
-> +	offset = fmeter_dev_ptr->fbksel[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	fbksel = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->fbksel[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->fbksel[pll_id_val].shift;
-> +
-> +	offset = fmeter_dev_ptr->dqsopen[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	dqsopen = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->dqsopen[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->dqsopen[pll_id_val].shift;
-> +
-> +	offset = fmeter_dev_ptr->async_ca[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	async_ca = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->async_ca[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->async_ca[pll_id_val].shift;
-> +
-> +	offset = fmeter_dev_ptr->dq_ser_mode[pll_id_val].offset +
-> +		fmeter_dev_ptr->shu_of * shu_lv_val;
-> +	dq_ser_mode = (readl(dramc_dev_ptr->ddrphy_chn_base_nao[0] + offset) &
-> +		fmeter_dev_ptr->dq_ser_mode[pll_id_val].mask) >>
-> +		fmeter_dev_ptr->dq_ser_mode[pll_id_val].shift;
-> +	ckdiv4_val = (dq_ser_mode == 1); // 1: DIV4, 2: DIV8, 3: DIV16
-> +
-> +	posdiv_val &= ~(0x4);
-> +
-> +	vco_freq = ((fmeter_dev_ptr->crystal_freq) *
-> +		(sdmpcw_val >> 7)) >> posdiv_val >> 1 >> ckdiv4_val
-> +		<< fbksel;
-
-That vco_freq calculation is seriously unreadable :\
-
-> +
-> +	if ((dqsopen == 1) && (async_ca == 1))
-> +		vco_freq >>= 1;
-> +
-> +	return vco_freq;
-> +}
-> +
-> +/*
-> + * mtk_dramc_get_data_rate - calculate DRAM data rate
-> + *
-> + * Returns DRAM data rate (MB/s)
-> + */
-> +unsigned int mtk_dramc_get_data_rate(void)
-> +{
-> +	struct dramc_dev_t *dramc_dev_ptr;
-> +	struct fmeter_dev_t *fmeter_dev_ptr;
-> +
-> +	if (!dramc_pdev)
-> +		return 0;
-> +
-> +	dramc_dev_ptr =
-> +		(struct dramc_dev_t *)platform_get_drvdata(dramc_pdev);
-> +
-> +	fmeter_dev_ptr = (struct fmeter_dev_t *)dramc_dev_ptr->fmeter_dev_ptr;
-> +	if (!fmeter_dev_ptr)
-> +		return 0;
-> +
-> +	if (fmeter_dev_ptr->version == 1)
-> +		return fmeter_v1(dramc_dev_ptr);
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(mtk_dramc_get_data_rate);
-
-Not sure about mtk_dramc_get_data_rate().
-
-Please show an example of how you're actually using it in the external driver,
-as there are many ways to expose this value.
-
-> +
-> +static int dramc_remove(struct platform_device *pdev)
-> +{
-> +	dramc_pdev = NULL;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id dramc_of_ids[] = {
-> +	{.compatible = "mediatek,common-dramc",},
-
-{ .compatible = "mediatek,something" },
-{ /* sentinel */ }
-
-> +	{}
-> +};
-> +
-> +static struct platform_driver dramc_drv = {
-> +	.probe = dramc_probe,
-> +	.remove = dramc_remove,
-> +	.driver = {
-> +		.name = "dramc_drv",
-> +		.owner = THIS_MODULE,
-> +		.of_match_table = dramc_of_ids,
-> +	},
-> +};
-
-module_platform_driver(...)
-
-> +
-> +static int __init dramc_drv_init(void)
-
-...so that function is not needed.
-
-> +{
-> +	int ret;
-> +
-> +	ret = platform_driver_register(&dramc_drv);
-> +	if (ret) {
-> +		pr_info("%s: init fail, ret 0x%x\n", __func__, ret);
-> +		return ret;
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +module_init(dramc_drv_init);
-> +
-> +MODULE_AUTHOR("Mediatek Corporation");
-
-MODULE_AUTHOR("Author Name <your.email@mediatek.com>");
-
-> +MODULE_DESCRIPTION("MediaTek DRAMC Driver");
-
-MODULE_DESCRIPTION("MediaTek DRAM Controller driver");
-
-
-
-...and I have a hunch that this series will need many versions before the code
-quality bar reaches a nice level...
-
-Cheers,
-Angelo
-
-> +MODULE_LICENSE("GPL");
 
