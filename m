@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29426E7717F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648FAE7717F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2024 10:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n+UJA2UV6hes6EiSzniGHAOlzpx0LS1dL1tGp/JbEU4=; b=JS9AUCRVF6qwuff86Rb2DX4GGt
-	Dl0UmsoFkZxkoppEjtRq5Opmc3jn649iUsKoOwAJsvMyvl9pvh3AxVdmTyBu+ca/cwRywLJ8DsHp5
-	o+jVEck8RLeFirWpmyIhZhR31MrGYUxFiud/OAiQxAwLUPMYyzVR3LoqFy05pbOpsVEZ1tPmmxTab
-	hHjAh+3Dkzy2+KFYuDl0fSjW4mqOyt82Be5cTot0ZRAi73S3h3VMrUkn75FQiMz+lQBio4wWg60YH
-	UZRAAA6+Hh8GdYWtbFyDL+DgF8KCniGljytfGcQOHkNZijp9iSY7PhaqoTYrl8VYa89Kbv7+d8ua8
-	9QY9cHgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HFeAaK4TtrAQlQM8SW6hjFz2nZTiRUd0Zp19yyom9Cs=; b=X7J1CO1YaGCjH0mCx1U4C8L2hj
+	sLg0fWvusvON/C67K3tl2AYE9C2WArGuRbZDiqR1ofGnRKKWqeMCTMOlTYRN29dWSSD/Cv499MNrX
+	tC8+5WkLeiGwphbbffYOUK2uQWEUhM6C0H2R6j11rynVC7XW8wXLZM7ObT5sk8rl3XCSfw0TVcEz1
+	XOS205nDIcOWgfrJOtdXGYG9AYq7moJvB7mM4qwJT5r3hGRD8ww3mF4we7b05XtslAJ5+csLgAAZj
+	cWo0uRRK0HZ4G1uLjJuFQFr7MbSWh6TMdFHJMt9Y2k5BWHO7MBA1jnCzgdwVS+oiSCuqoObtmq4Si
+	PTHtM7MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLg89-000000000Ot-1TWe;
-	Thu, 12 Dec 2024 10:09:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tLgQe-000000003fH-1mgl;
+	Thu, 12 Dec 2024 10:28:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLg40-0000000HabW-0Ahi;
-	Thu, 12 Dec 2024 10:04:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733997894;
-	bh=BJAKUmR3xWQ9qzG9ppN4jAGJ2iMpKpc+JdEgddk4Bxc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=CMNjt9KrL72tAJutKI5akwTGiPtV6M1Dw//IwYzpHNQ+Bpu+qBxRkFNBlhPrveAYa
-	 rBReguwRxy/uMP6x3OxHNW1bh5QK1Yyv9GTx/OlqSaFcw36N/sYEJPFJFSuWbVqwWQ
-	 m5J0utModagdtptTLzcd4OUwddtYjuqJWpOjE22FND305Zgabj/g/Dt7w+E2Oft6bX
-	 wGSn5T78mWTQCPop8xryfvmYMOR02cAMaID28/TxBw8HypbfxZVuSqiStMFHdILvm4
-	 dYCoo/EmQdb4uO41W6Zn+SV+9lnvEijtKbQN6uzirXuEVILHCNhU3++Em5kbNNzGCe
-	 ypTIMmExhTaOA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BDEF517E35FA;
-	Thu, 12 Dec 2024 11:04:53 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Trevor Wu <trevor.wu@mediatek.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
- Aary Patil <aary.patil@mediatek.com>, 
- Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>, 
- parkeryang <Parker.Yang@mediatek.com>
-In-Reply-To: <20241210-genio700-audio-output-v2-0-c50886ae0be2@collabora.com>
-References: <20241210-genio700-audio-output-v2-0-c50886ae0be2@collabora.com>
-Subject: Re: [PATCH v2 0/2] Enable audio output for Genio 700 EVK board
-Message-Id: <173399789370.41280.16875335834079584278.b4-ty@collabora.com>
-Date: Thu, 12 Dec 2024 11:04:53 +0100
-MIME-Version: 1.0
+	id 1tLgPZ-000000003TP-0Zij;
+	Thu, 12 Dec 2024 10:27:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0C669A40837;
+	Thu, 12 Dec 2024 10:25:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB7E9C4CECE;
+	Thu, 12 Dec 2024 10:27:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733999232;
+	bh=O5MNq+swzioBvBLOZxeS4g6SPUmFvnMVaaoek3tzGZA=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=sJdAXnxCRWeXQcDr3Zb1CweOsPMgxjN6XylfVWbNkLOXd3rs8aYq3oktQz9PYcn4w
+	 xLUQ9NG8J8+q0vKm+vNJEr77bVkfPvQqs3+jw1wkYwKxYjHmg52ZnO0KiiCCP4P92Z
+	 DBSF0tN60yIijGV3U+wyn8+Uqb1ZHBCXj+hrw1GVsG9QFf5r9Em1Q0pmnaYncNajtx
+	 qAXtCYrIeJnNsXs4shvH8ghpr1PRqHqZz6ZjJOafLpEmyNe2XFWQ67ktPRFQ90qcAe
+	 dWFyR+pbtQ69F0QpelojBgT+KEHChz3njH4ZJw/MRX7eTX2zPCGi1ypatbJGmDeqq2
+	 rND1ONGwe2ZvQ==
+Date: Thu, 12 Dec 2024 04:27:10 -0600
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.2
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
+To: Crystal Guo <crystal.guo@mediatek.com>
+In-Reply-To: <20241212090029.13692-3-crystal.guo@mediatek.com>
+References: <20241212090029.13692-1-crystal.guo@mediatek.com>
+ <20241212090029.13692-3-crystal.guo@mediatek.com>
+Message-Id: <173399922996.1678560.9494303027075425033.robh@kernel.org>
+Subject: Re: [PATCH 2/2] dt-bindings: memory-controllers: Add mediatek
+ common-dramc dt-bindings
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_020456_245729_5B55A74B 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241212_022713_313458_1D0A47B5 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,25 +76,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Dec 2024 17:54:27 -0300, Nícolas F. R. A. Prado wrote:
-> This series enables audio output support for the Genio 700 EVK board.
-> Patch 1 adds the missing #sound-dai-cells property in the MT6359 node as
-> a prerequisite, and patch 2 describes the audio DT nodes to get audio
-> output working on the two audio jacks, Earphone and Speaker, present on
-> the board.
+
+On Thu, 12 Dec 2024 16:59:48 +0800, Crystal Guo wrote:
+> Add devicetree binding for mediatek common-dramc driver.
 > 
+> The DRAM controller of MediaTek SoC provides an interface to
+> get the current data rate of DRAM.
 > 
-> [...]
+> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> ---
+>  .../mediatek,common-dramc.yaml                | 129 ++++++++++++++++++
+>  1 file changed, 129 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
+> 
 
-Applied to v6.13-next/dts64, thanks!
+My bot found errors running 'make dt_binding_check' on your patch:
 
-[1/2] arm64: dts: mt6359: Add #sound-dai-cells property
-      commit: 9bc8353be720ca1f9cb6e03825929bc172e1157d
-[2/2] arm64: dts: mediatek: mt8390-genio-700-evk: Add sound output support
-      commit: b8457716eeee45ed5cb6b8fdc5a5b459f7ebe819
+yamllint warnings/errors:
 
-Cheers,
-Angelo
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: support-ch-cnt: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: fmeter-version: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: crystal-freq: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: shu-of: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: pll-id: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: shu-lv: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: sdmpcw: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: posdiv: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: fbksel: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: dqsopen: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: async-ca: missing type definition
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml: dq-ser-mode: missing type definition
 
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241212090029.13692-3-crystal.guo@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
