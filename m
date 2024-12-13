@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5674AE7717D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2024 09:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDEAE77180
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2024 09:41:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6t03VSo/NkHlsh+FX0CoPxMU4wWbqRd5I1nezIlvOp4=; b=xqKdVpyV/J1OQVyDirRoANvX7+
-	WA9BXsylyYSmf/4+2cWQO2DmiegFQOwO1X43eAZ+iJig5fzCylCnr1Wt2b6ZGA2D61uDqEcagW0Qg
-	v5gps2Embv9hriva21plvv6tclzA4CjuaQ1pJb3Mbf2wGFDzAt5CDA800LLcXTKqmxozCS1DeW3Xe
-	BOuX/Oz4LcGja6v2VehWGS8qmmz7GdXPqOBPpz5LPitJ/thzgtB5/auctWs1V7/le81ZEbv/8QkTb
-	zE8nMjhF7ETfzu+WL+d9w3Wt+UqKaWxyouQTr9EQjOOM0vJfglUCYiVfHrp4rac4C4o5/rNRHBLnZ
-	liH+cl9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LrfMJ3h3u1jnLMa7N2XZu8l1yWiNNUJSdAbw5NA1lr0=; b=31y4f53JV6m9Q0Ww9vYm8U2UOJ
+	w8y0NkK4GkudemZqT/SrLK/+ZwVwe9HozUPc1+bCygX/ObLurzDW9DAxnwZ5qU4q4lGOYgYDYCe0i
+	rm3PxWqOeuXSNO9AFKhhctfqLj9dmakBRTV6IQzTOD9iRrhZLPEOfkLA15Gl1U0DSMjnHXcArgafZ
+	wtMp2ZDMV2zBOJWWi5fTlwsoegely7M98arq4ptDpX8nU/yVY8umcbgSmAmnfqqR2XlfglQOWkEp9
+	xgPwDm3y4i2/nX9FfEpmB9naoSTZajDWlXT/GXWoF3PJYhNQPlKkw7YZ5QoIAJV/ydUJWdc/7VwnZ
+	BeonOT0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM1zF-00000003GIB-1hwr;
-	Fri, 13 Dec 2024 09:29:29 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1tM2Ay-00000003IHW-3l4x;
+	Fri, 13 Dec 2024 09:41:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM1zD-00000003GHQ-19vs
+	id 1tM2Aw-00000003IGd-3CHr
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Dec 2024 09:29:28 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2efded08c79so1100536a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Dec 2024 01:29:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1734082166; x=1734686966; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6t03VSo/NkHlsh+FX0CoPxMU4wWbqRd5I1nezIlvOp4=;
-        b=RyO1qThkOyBnRtyQsZE5QvKU+qQIbMsZ+zunuGC/VhV02yrbdwjxgjH0HD2JSfinCc
-         dRbECbC380eZXmCfn5v56Km7JkHppGvlxPxXX9ozT/sHXPvHnwIUxctnhauLSEIkLwtT
-         0sUo9w0fwBWunHpRXBl+KV6XbR21q6TsaWTs8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734082166; x=1734686966;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6t03VSo/NkHlsh+FX0CoPxMU4wWbqRd5I1nezIlvOp4=;
-        b=RNlfj1KEih5M5KbT6nC/Te+YVEnYr1aRnh6mAAvet72gD6xnz8Ohw1YRln5iB72V4T
-         lFmkaW1Fz+PcJx4+q2ZQ7JK5ZYz+Eo9ighPCqlgMbumnvBtjLdlJKEJYb+XrPnnkIyGZ
-         D/iKYf3XFjNGzJ0JdvlWZ8eiB8EWQyOQlS5JONDmPbLKeytn+ktTyjiVP59MwtaBOhT2
-         dUV3VttyHcE9L8KshsWxQX1Fbfz5yYsnM2ltBLYenIvs3dBJTk+2SZhVmxGPutAkviPd
-         dDSlXmJs7IpkZ13kpawpqCG3ArXukAqs4Kn9kfgahZ7Ygd2jLWej6aVXH1MoGk/PtS8B
-         lsYw==
-X-Forwarded-Encrypted: i=1; AJvYcCV1ftbmMVii/Dpin8g30I05sy1qq2o+2JcaEJmrfexF/uAsOxuQVeINLGDpplr5rKMl3f89Nvh6gfKpBHcAKg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxWVPq2swIhFYJzIju5W1wyn68r9EKcfTy/3jIUz/2j/W5Ukx4K
-	16PPnUQbfMfl0ZMr8bBtUDx3cyUQnzBoI1xCxX1RHxOMjKc1hQVs5Ixg0TaDfQ==
-X-Gm-Gg: ASbGnctgzZ8YDcS/9nOLSOgeIs5cjdbaA7P/bu6RinsNLkn9bpLVocS1BUjQ8U8HzzG
-	1rNHk2TYAgdldIZ0M/emV0nL8C2ysshVoUC4tkOk3RDjjtx9M6zTZeHBp4lXRMAQKqP5kxCnZUf
-	VWkBXZ2rjrlbjdTcCv0yb2BgsiIu1mdZ9CeS+GvGMse7VyZrXg1hDYoFgzfFjVJ5/VUnIfV6QPX
-	xTbH2sQmq3G8ei/Kq8eteN6G2Brf/H8rptmjHWGETTzKrOAmoRYB/dtowe0umPy1OzakGvqw5Ic
-	pgkME5wNYKlukm9Tni84hYi/r2i2VqIEzIXCqj2uHvmg5bs=
-X-Google-Smtp-Source: AGHT+IFVvckKPZkGAO6T5Pb8DWTggJU8BHRz85vU+mCYNsL0QexjIl0XaTItdT0xzRVlKw/f7tvSpw==
-X-Received: by 2002:a17:90b:3b52:b0:2ee:9cd2:a589 with SMTP id 98e67ed59e1d1-2f28fd6b4b1mr3333710a91.20.1734082166620;
-        Fri, 13 Dec 2024 01:29:26 -0800 (PST)
-Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f142e0ac42sm2733070a91.36.2024.12.13.01.29.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Dec 2024 01:29:26 -0800 (PST)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Fri, 13 Dec 2024 09:29:22 +0000
-Subject: [PATCH] arm64: dts: mediatek: mt8188: Add GPU speed bin NVMEM
- cells
+	Fri, 13 Dec 2024 09:41:35 +0000
+X-UUID: 6d3a366eb93611ef9048ed6ed365623b-20241213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LrfMJ3h3u1jnLMa7N2XZu8l1yWiNNUJSdAbw5NA1lr0=;
+	b=ProEbuOsj8K154YQtZb9p2clWWXNhER+iRpQX4XuPB8Ak8X+Ec7lJ/dkhcLt5D/slJ7O1H+UP1hEfxV0uvGWaQFrFS2VD6lzknVWlM9vuWPMSi7gkQKPvJZ0BFxj3UEKXgz07KLSi1/D7vJu3n2al+7IANptlUDHWBwt+HmKDs4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.45,REQID:408d109b-9516-4423-b92b-24dcaa0f7afe,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6493067,CLOUDID:b773eb3b-e809-4df3-83cd-88f012b9e9ba,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
+	L:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
+	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 6d3a366eb93611ef9048ed6ed365623b-20241213
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 355151387; Fri, 13 Dec 2024 02:41:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 13 Dec 2024 17:41:22 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 13 Dec 2024 17:41:22 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Hao Qin <hao.qin@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, "Steve
+ Lee" <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btmtk: add quirk to support HCI_QUIRK_SIMULTANEOUS_DISCOVERY
+Date: Fri, 13 Dec 2024 17:41:18 +0800
+Message-ID: <20241213094118.23647-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241213-speedbin-v1-1-a0053ead9477@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAHH+W2cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxNDI0Nj3eKC1NSUpMw83TRjY8tkIzMTi7Q0AyWg8oKi1LTMCrBR0bG1tQD
- 317s+WgAAAA==
-X-Change-ID: 20241213-speedbin-f339c2648ff0
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.642100-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+tocr5vRHCIaibMb0f5D0uqTJDl9FKHbrmtwWMX5hmdv6PF
+	jJEFr+olKE0Je8DR/D4NXwNUB3oA790H8LFZNFG7MGpgBNI6BaPvMA9WW7X2a/mHADpWjR4Nxll
+	YNXARfpWxz8p0BoLSI+B+R4NVzQv5shljvamtnvY1mT6tqJoFqKL8uYddyDmU+IfoVuvrGMeAhO
+	caQrQ0U1GyRcoeF18qmKP0zzpTAeGwod8xOMKmvMCBO+zxAW5pftwZ3X11IV0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.642100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: CEC39923689531D895F816C4BA509C57F9BD1D15EBDF4B59EB11286153AEA5682000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241213_012927_346197_32278BAC 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20241213_014134_802874_E44EB805 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,48 +97,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On the MT8188, the chip is binned for different GPU voltages at the
-highest OPPs. The binning value is stored in the efuse.
+Add quirk to support HCI_QUIRK_SIMULTANEOUS_DISCOVERY feature for MT79xx
+series chipset.
 
-Add the NVMEM cell, and tie it to the GPU.
-
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/bluetooth/btmtk.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index cd27966d2e3c05833f11294cfa8f6a984d4e0dbc..0e865f5083b475c6e33cf6a0ce51d2b615af7850 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1752,6 +1752,11 @@ efuse: efuse@11f20000 {
- 			lvts_efuse_data1: lvts1-calib@1ac {
- 				reg = <0x1ac 0x40>;
- 			};
-+
-+			gpu_speedbin: gpu-speedbin@581 {
-+				reg = <0x581 0x1>;
-+				bits = <0 3>;
-+			};
- 		};
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 8a3f7c3fcfec..562d6ecf0b71 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1367,6 +1367,9 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 			return err;
+ 		}
  
- 		gpu: gpu@13000000 {
-@@ -1763,6 +1768,8 @@ gpu: gpu@13000000 {
- 				     <GIC_SPI 382 IRQ_TYPE_LEVEL_HIGH 0>,
- 				     <GIC_SPI 381 IRQ_TYPE_LEVEL_HIGH 0>;
- 			interrupt-names = "job", "mmu", "gpu";
-+			nvmem-cells = <&gpu_speedbin>;
-+			nvmem-cell-names = "speed-bin";
- 			operating-points-v2 = <&gpu_opp_table>;
- 			power-domains = <&spm MT8188_POWER_DOMAIN_MFG2>,
- 					<&spm MT8188_POWER_DOMAIN_MFG3>,
-
----
-base-commit: 1488143f901e04e132722cb093613e8d019a4ec6
-change-id: 20241213-speedbin-f339c2648ff0
-
-Best regards,
++		/* Apply common HCI quirks for MediaTek chipset */
++		set_bit(HCI_QUIRK_SIMULTANEOUS_DISCOVERY, &hdev->quirks);
++
+ 		hci_set_msft_opcode(hdev, 0xFD30);
+ 		hci_set_aosp_capable(hdev);
+ 
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.18.0
 
 
