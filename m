@@ -4,93 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AF26E7716A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2024 02:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18F8E7716A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2024 17:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6knxOhrq01m9fcLE+SYB9TQecvDtnka5bQk5EmhLzdU=; b=jF3GrwPmrRYcDBrthN2toh0+SU
-	/04Dc4/WjHRdGvmwLgrfcHnm7qRuH8AscIBE4EnnX2EmSSeEhCagthimlrQFN236FSBJWQHydDvSR
-	dNINcdlaBCfFO03l/oCQT6vo8FrzGUoK53TNl8zZl6IpC9YZl4HshJy9OuVM62Hmi2vwf8Pa9iCZ7
-	ywAfU/QfhN/jL5cRYEOqKRNLUSB0MnU9NnHEmGIzeJ8uc8zL8HRgnNJ7JvW1Ytino8mC3vAZXKINe
-	t3fvvpKpJpyaaMbcsTYiFDHvNpicymcqvxiFRZL+tuox6cSCi9wxrh5wYIyIK4dUn65t8WmJp6I7X
-	iRi9qO0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EN7iH2JrYoJnf4PuvXI5sJj1HDLFLJVThzYpRRnaNnU=; b=fevjXVQnyiyMAq4JNGP/hWMcWS
+	R20AmoEiTE37Nhmmf67mbdp6MdczztGYTiorHxF7ke4fhfGfxygtaq229gheBatzz5c5gq/PD3D5e
+	YpnGoBlnkXpAbZJ6+UTaipVesXvjU0n9roKsONH1GlQ80CQ2qmi2uX8S9tK+AYDqdwIv2O8T24ITz
+	QsVIlRboQisFFQ3r4zv4iieThkMg6zS2E+Rbyzi5+MihmPodkifeolUNSDJ/pUykj0uXpB+kDyM7Z
+	Gv2uwi2RW2PM8QFDsKtalBPcboNEfvUvx8bO+Vh6mOHtGf91fWCt8qBr/wbneeKp71qUipoDHW/nt
+	fbt2cHaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMeDe-00000007FWw-2jV5;
-	Sun, 15 Dec 2024 02:18:54 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1tMsZX-00000008ES2-1UAW;
+	Sun, 15 Dec 2024 17:38:27 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMeCY-00000007FPu-0ZVP;
-	Sun, 15 Dec 2024 02:17:47 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-388cae9eb9fso426942f8f.3;
-        Sat, 14 Dec 2024 18:17:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734229064; x=1734833864; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6knxOhrq01m9fcLE+SYB9TQecvDtnka5bQk5EmhLzdU=;
-        b=dxxgo/QYyvxjyIpDgSJWR4n7Dfp8MFN2e6sBn6xd6D9JJrxiWqfv2KW6mTiy6nKguH
-         nlVJap1kErl3m3UxJJiw5zP+pxbELByztTL9Rn6PCrs8X9J5Jk/KuZA54p5I3PiP70Rd
-         O8t/jLwzGvnT+xSRJ1e9DHYTaDOtU2WM1zhqk13p3xRhvYYhAk5czKuQE8oP4C+7UahH
-         aa/qn1KatProt20Vvs5EkSqD1GHWm5RweHUwjQbITDlPVzE0GtZUeKGFRxOsCAA+1E06
-         yC2XK8YPgmxuWKCHQoxNbZaXsel+zY4ncmR+21sfPKHhyw23vioW2254fjomQkj7lTck
-         ufbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734229064; x=1734833864;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6knxOhrq01m9fcLE+SYB9TQecvDtnka5bQk5EmhLzdU=;
-        b=ooAYVPGmOfQnpNBW3S2TwRpRNLWc5TkQOARcxs0nSiobuHzJd4ivHZKP/u8hYmiHVo
-         N/uf2c+42+BKg8YGNi/QVRENSUIbssXNehesgEn84KEquiCb0IdM37bcWJNVwWnTowDj
-         oZhg41/AbGP5b7a2ciyVsPpClTJmDTKoVF2lmVXf3FW9mIK2HNSIsqMbcxrY8ZNYC2ZB
-         CTSbJ5axQSxELvQZkZXtzkJJJ21srKo1AZ7MwFuMxdCdmuorgoHpPlAxY5Wwb94gEG4P
-         27M7tBqaQOsHdfy0PaKPdy2uw4OkpY9xTFeZhsbZf9fiC5Se4Xu6/a8BopkXSupDXEMd
-         Y/Bw==
-X-Forwarded-Encrypted: i=1; AJvYcCWhpL52M2blBMc9OLAexO8uKX7+8e38E2U8WliAwp8aK0cIq+3umguPlvyq7rvZjrYAmMEotY/rcPsq+FCYmt8=@lists.infradead.org, AJvYcCXE/GV/EiN5TTvhV83K2fAOs+G9NMSqeswqoKLjj7p3OWPyLsfVmslYuDoGC66kMkYh1/Es3fVQEANCRmp0sBVc@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFXqeomorKUO74/OoDFwk6dPMb4kUebVV8cn0bRE9as9+STaxR
-	EY7/NZTGSW09z4YHGMdEGEdwtaF+zR5eVPx8ywhFgZE4sZZmuRyX
-X-Gm-Gg: ASbGncvZ6T5K2lWtqPx751c/VQ5WeJKrOHhEqk8H/0BpZZ/s0CkXxLYAbuqLWdBq/fC
-	G59wicqOPyLDBFrkeMVh7KxtmoFuzCv4NpdK7gsuVqq23ZtnLfeof31Klk8RoxqaSlt1GiFlD9K
-	de4tWs43Asc7FxP2CNJywEzNT9KPl3tPPLfTZGBR6fnAnR2or8N59qUk0Eh3AYTRDbyusz3sd1n
-	r2xW/DqaRYpewt7P0zRO9ZsQOAjUcrVL5FsQApE74U7/Yg5gm2GnNZ7xw==
-X-Google-Smtp-Source: AGHT+IGLJ1W2T/hdbQdiCIBZkecDQtKrwoetGyA3/aLLuNgM4a1Dyf+OebwoRNCRaca4jYV/KL/34w==
-X-Received: by 2002:a5d:6c68:0:b0:385:df84:8496 with SMTP id ffacd0b85a97d-38880ac60d1mr5709653f8f.3.1734229063677;
-        Sat, 14 Dec 2024 18:17:43 -0800 (PST)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-388c8046dabsm4111731f8f.81.2024.12.14.18.17.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Dec 2024 18:17:42 -0800 (PST)
-Message-ID: <da90f64c-260a-4329-87bf-1f9ff20a5951@gmail.com>
-Date: Sun, 15 Dec 2024 04:17:39 +0200
+	id 1tMsYQ-00000008EKt-2Rlo;
+	Sun, 15 Dec 2024 17:37:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id ABD94A40AAA;
+	Sun, 15 Dec 2024 17:35:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD81CC4CECE;
+	Sun, 15 Dec 2024 17:37:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734284235;
+	bh=TBeamio0Yi88VQx9QAOzcjx9B0WIvU23/rv2y0lsgUU=;
+	h=From:Date:Subject:To:Cc:From;
+	b=IxGWBJNFTkuIx7OEwmQzxbwphC6qjzLuGzX7i5KWbEWX3qrsqGXGOIZIKdh1th6t8
+	 Pfvmz4Ygr+iiLmUtVFRfKBYF7H52v9fQWWMHDVarTEvkCuF7Xet52BGHDPijiOrMcm
+	 US19X+/9iwgFoVeByCHAlN8853g+Dq1lrRpl3WJS2rQhIaEx2HonHwXH6WsZfY2Z8d
+	 L+I1+jbeFoZUNgXRxu7qSH1zyAGkx2hcN+ofCwyRmuX8Xs9J8QlteaJwdXs3isF7/i
+	 JUpxkZjBs9KUB0QcykWxycPMC5ouj5Ey5VnfQptOPl/zim7N23U6C1/vEHMkWundPK
+	 174ETO4j8EOdg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 15 Dec 2024 18:36:35 +0100
+Subject: [PATCH net-next] net: airoha: Fix error patch in airoha_probe()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net v2] net: wwan: t7xx: Fix FSM command timeout issue
-To: Jinjian Song <jinjian.song@fibocom.com>,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, ricardo.martinez@linux.intel.com,
- loic.poulain@linaro.org, johannes@sipsolutions.net, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- corbet@lwn.net, linux-mediatek@lists.infradead.org, helgaas@kernel.org,
- danielwinkler@google.com, korneld@google.com, andrew+netdev@lunn.ch,
- horms@kernel.org
-References: <20241213064720.122615-1-jinjian.song@fibocom.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20241213064720.122615-1-jinjian.song@fibocom.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20241215-airoha_probe-error-path-fix-v1-1-dd299122d343@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAKITX2cC/x3MMQqEMBBG4avI1A4kQbfwKiKS6L+baUyYiAiSu
+ xu2/F7xHipQQaGpe0hxSZF0NNi+oy364weWvZmccYN1dmQvmqJfs6YAhmpSzv6M/JWbx7B9AnY
+ DZ0DtkBUt/+/zUusLT50CkW0AAAA=
+X-Change-ID: 20241215-airoha_probe-error-path-fix-5bc6bed0e20e
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241214_181746_225445_997D2576 
-X-CRM114-Status: GOOD (  25.53  )
+X-CRM114-CacheID: sfid-20241215_093718_763897_044AA03E 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,192 +79,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jinjian,
+Do not run napi_disable if airoha_hw_init() fails since Tx/Rx napi
+has not been started yet. In order to fix the issue, introduce
+airoha_qdma_disable_napi routine and remove napi_disable in
+airoha_hw_cleanup().
 
-Nice catch! Suddenly, the proposed fix is not complete, we still have 
-issues with memory use after free. Please find details below.
+Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/mediatek/airoha_eth.c | 33 ++++++++++++++++++++++--------
+ 1 file changed, 25 insertions(+), 8 deletions(-)
 
-On 13.12.2024 08:47, Jinjian Song wrote:
-> When driver processes the internal state change command, it use an
-> asynchronous thread to process the command operation. If the main
-> thread detects that the task has timed out, the asynchronous thread
-> will panic when executing the completion notification because the
-> main thread completion object has been released.
-> 
-> BUG: unable to handle page fault for address: fffffffffffffff8
-> PGD 1f283a067 P4D 1f283a067 PUD 1f283c067 PMD 0
-> Oops: 0000 [#1] PREEMPT SMP NOPTI
-> RIP: 0010:complete_all+0x3e/0xa0
-> [...]
-> Call Trace:
->   <TASK>
->   ? __die_body+0x68/0xb0
->   ? page_fault_oops+0x379/0x3e0
->   ? exc_page_fault+0x69/0xa0
->   ? asm_exc_page_fault+0x22/0x30
->   ? complete_all+0x3e/0xa0
->   fsm_main_thread+0xa3/0x9c0 [mtk_t7xx (HASH:1400 5)]
->   ? __pfx_autoremove_wake_function+0x10/0x10
->   kthread+0xd8/0x110
->   ? __pfx_fsm_main_thread+0x10/0x10 [mtk_t7xx (HASH:1400 5)]
->   ? __pfx_kthread+0x10/0x10
->   ret_from_fork+0x38/0x50
->   ? __pfx_kthread+0x10/0x10
->   ret_from_fork_asm+0x1b/0x30
->   </TASK>
-> [...]
-> CR2: fffffffffffffff8
-> ---[ end trace 0000000000000000 ]---
-> 
-> After the main thread determines that the task has timed out, mark
-> the completion invalid, and add judgment in the asynchronous task.
-> 
-> Fixes: d785ed945de6 ("net: wwan: t7xx: PCIe reset rescan")
-
-The completion waiting was introduced in a different commit. I believe, 
-the fix tag should be 13e920d93e37 ("net: wwan: t7xx: Add core components")
-
-> Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
-> ---
->   drivers/net/wwan/t7xx/t7xx_state_monitor.c | 7 +++++--
->   1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.c b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
-> index 3931c7a13f5a..57f1a7730fff 100644
-> --- a/drivers/net/wwan/t7xx/t7xx_state_monitor.c
-> +++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
-> @@ -108,7 +108,8 @@ static void fsm_finish_command(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_command
->   {
->   	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
->   		*cmd->ret = result;
-
-The memory for the result storage is allocated on the stack as well. And 
-writing it unconditionally can cause unexpected consequences.
-
-> -		complete_all(cmd->done);
-> +		if (cmd->done)
-> +			complete_all(cmd->done);
->   	}
->   
->   	kfree(cmd);
-> @@ -503,8 +504,10 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum t7xx_fsm_cmd_state cmd_id
->   
->   		wait_ret = wait_for_completion_timeout(&done,
->   						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
-> -		if (!wait_ret)
-> +		if (!wait_ret) {
-> +			cmd->done = NULL;
-
-We cannot access the command memory here, since fsm_finish_command() 
-could release it already.
-
->   			return -ETIMEDOUT;
-> +		}
->   
->   		return ret;
->   	}
-
-Here we have an ownership transfer problem and a driver author has tried 
-to solve it, but as noticed, we are still experiencing issues in case of 
-timeout.
-
-The command completion routine should not release the command memory 
-unconditionally. Looks like the references counting approach should help 
-us here. E.g.
-1. grab a reference before we put a command into the queue
-1.1. grab an extra reference if we are going to wait the completion
-2. release the reference as soon as we are done with the command execution
-3. in case of completion waiting release the reference as soon as we are 
-done with waiting due to completion or timeout
-
-Could you try the following patch? Please note, besides the reference 
-counter introduction it also moves completion and result storage inside 
-the command structure as advised by the completion documentation.
-
-
---- a/drivers/net/wwan/t7xx/t7xx_state_monitor.h
-+++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.h
-@@ -109,8 +109,9 @@ struct t7xx_fsm_command {
-  	struct list_head	entry;
-  	enum t7xx_fsm_cmd_state	cmd_id;
-  	unsigned int		flag;
--	struct completion	*done;
--	int			*ret;
-+	struct completion	done;
-+	int			result;
-+	struct struct kref	refcnt;
-  };
-
-  struct t7xx_fsm_notifier {
---- a/drivers/net/wwan/t7xx/t7xx_state_monitor.c
-+++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
-@@ -97,14 +97,20 @@ void t7xx_fsm_broadcast_state(struct t7xx_fsm_ctl 
-*ctl, enum md_state state)
-  	fsm_state_notify(ctl->md, state);
-  }
-
-+static void fsm_release_command(struct kref *ref)
+diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
+index 6c683a12d5aa52dd9d966df123509075a989c0b3..5bbf5fee2802135ff6083233d0bda78f2ba5606a 100644
+--- a/drivers/net/ethernet/mediatek/airoha_eth.c
++++ b/drivers/net/ethernet/mediatek/airoha_eth.c
+@@ -2138,17 +2138,14 @@ static void airoha_hw_cleanup(struct airoha_qdma *qdma)
+ 		if (!qdma->q_rx[i].ndesc)
+ 			continue;
+ 
+-		napi_disable(&qdma->q_rx[i].napi);
+ 		netif_napi_del(&qdma->q_rx[i].napi);
+ 		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
+ 		if (qdma->q_rx[i].page_pool)
+ 			page_pool_destroy(qdma->q_rx[i].page_pool);
+ 	}
+ 
+-	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++) {
+-		napi_disable(&qdma->q_tx_irq[i].napi);
++	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
+ 		netif_napi_del(&qdma->q_tx_irq[i].napi);
+-	}
+ 
+ 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
+ 		if (!qdma->q_tx[i].ndesc)
+@@ -2173,6 +2170,21 @@ static void airoha_qdma_start_napi(struct airoha_qdma *qdma)
+ 	}
+ }
+ 
++static void airoha_qdma_disable_napi(struct airoha_qdma *qdma)
 +{
-+	struct t7xx_fsm_command *cmd = container_of(ref, typeof(*cmd), refcnt);
-+	kfree(cmd);
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
++		napi_disable(&qdma->q_tx_irq[i].napi);
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
++		if (!qdma->q_rx[i].ndesc)
++			continue;
++
++		napi_disable(&qdma->q_rx[i].napi);
++	}
 +}
 +
-  static void fsm_finish_command(struct t7xx_fsm_ctl *ctl, struct 
-t7xx_fsm_command *cmd, int result)
-  {
-  	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
--		*cmd->ret = result;
-+		cmd->result = result;
-  		complete_all(cmd->done);
-  	}
+ static void airoha_update_hw_stats(struct airoha_gdm_port *port)
+ {
+ 	struct airoha_eth *eth = port->qdma->eth;
+@@ -2738,7 +2750,7 @@ static int airoha_probe(struct platform_device *pdev)
+ 
+ 	err = airoha_hw_init(pdev, eth);
+ 	if (err)
+-		goto error;
++		goto error_hw_cleanup;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_start_napi(&eth->qdma[i]);
+@@ -2753,13 +2765,16 @@ static int airoha_probe(struct platform_device *pdev)
+ 		err = airoha_alloc_gdm_port(eth, np);
+ 		if (err) {
+ 			of_node_put(np);
+-			goto error;
++			goto error_napi_disable;
+ 		}
+ 	}
+ 
+ 	return 0;
+ 
+-error:
++error_napi_disable:
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++		airoha_qdma_disable_napi(&eth->qdma[i]);
++error_hw_cleanup:
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_hw_cleanup(&eth->qdma[i]);
+ 
+@@ -2780,8 +2795,10 @@ static void airoha_remove(struct platform_device *pdev)
+ 	struct airoha_eth *eth = platform_get_drvdata(pdev);
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
++		airoha_qdma_disable_napi(&eth->qdma[i]);
+ 		airoha_hw_cleanup(&eth->qdma[i]);
++	}
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
 
--	kfree(cmd);
-+	kref_put(&cmd->refcnt, fsm_release_command);
-  }
+---
+base-commit: 2c2b61d2138f472e50b5531ec0cb4a1485837e21
+change-id: 20241215-airoha_probe-error-path-fix-5bc6bed0e20e
 
-  static void fsm_del_kf_event(struct t7xx_fsm_event *event)
-@@ -396,7 +402,6 @@ static int fsm_main_thread(void *data)
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-  int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum 
-t7xx_fsm_cmd_state cmd_id, unsigned int flag)
-  {
--	DECLARE_COMPLETION_ONSTACK(done);
-  	struct t7xx_fsm_command *cmd;
-  	unsigned long flags;
-  	int ret;
-@@ -408,11 +413,13 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, 
-enum t7xx_fsm_cmd_state cmd_id
-  	INIT_LIST_HEAD(&cmd->entry);
-  	cmd->cmd_id = cmd_id;
-  	cmd->flag = flag;
-+	kref_init(&cmd->refcnt);
-  	if (flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
--		cmd->done = &done;
--		cmd->ret = &ret;
-+		init_completion(&cmd->done);
-+		kref_get(&cmd->refcnt);
-  	}
-
-+	kref_get(&cmd->refcnt);
-  	spin_lock_irqsave(&ctl->command_lock, flags);
-  	list_add_tail(&cmd->entry, &ctl->command_queue);
-  	spin_unlock_irqrestore(&ctl->command_lock, flags);
-@@ -422,10 +429,10 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, 
-enum t7xx_fsm_cmd_state cmd_id
-  	if (flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
-  		unsigned long wait_ret;
-
--		wait_ret = wait_for_completion_timeout(&done,
-+		wait_ret = wait_for_completion_timeout(&cmd->done,
-  						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
--		if (!wait_ret)
--			return -ETIMEDOUT;
-+		ret = wait_ret ? cmd->result : -ETIMEDOUT;
-+		kref_put(&cmd->refcnt, fsm_release_command);
-
-  		return ret;
-  	}
-
---
-Sergey
 
