@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18F8E7716A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2024 17:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52BD8E7716A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2024 22:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EN7iH2JrYoJnf4PuvXI5sJj1HDLFLJVThzYpRRnaNnU=; b=fevjXVQnyiyMAq4JNGP/hWMcWS
-	R20AmoEiTE37Nhmmf67mbdp6MdczztGYTiorHxF7ke4fhfGfxygtaq229gheBatzz5c5gq/PD3D5e
-	YpnGoBlnkXpAbZJ6+UTaipVesXvjU0n9roKsONH1GlQ80CQ2qmi2uX8S9tK+AYDqdwIv2O8T24ITz
-	QsVIlRboQisFFQ3r4zv4iieThkMg6zS2E+Rbyzi5+MihmPodkifeolUNSDJ/pUykj0uXpB+kDyM7Z
-	Gv2uwi2RW2PM8QFDsKtalBPcboNEfvUvx8bO+Vh6mOHtGf91fWCt8qBr/wbneeKp71qUipoDHW/nt
-	fbt2cHaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MOhvOTxWYkowP0Jp5tBDXJe0V2hjwUr+6bB4pKN1B+k=; b=If5fUzGZtQ0P1IihFFlLkhO81b
+	Mt9mZXAoqwSBmPT+wY6eIpainiqmElrvguPP5bw1Ck+ULP6vi0zUzB4aTEolglJZB8HfLFkXmggfZ
+	jPVcNCTZLVOmjdKokAkypHGmGTqX2q5WPT0nJnD4Zzm7BpEkM0urH+GniGDtBX2PcXhWDsQ+s4TWz
+	lAlrUJ7X88n2AzuH7MLw040o3hLblmdgTzjhSNq4sa3svN7W8je89pXpu7ApJKVe5waPdp68y/uQn
+	Zhw/35PbbDi95/RLkeYT2gdPc7BXDqkR9jQPpMz16s5OtNZfcCX5g3ITsoxWDLCYOGZQXtsyIEvO2
+	hHfmnLoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMsZX-00000008ES2-1UAW;
-	Sun, 15 Dec 2024 17:38:27 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tMwpE-00000008XeJ-0SI1;
+	Sun, 15 Dec 2024 22:10:56 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMsYQ-00000008EKt-2Rlo;
-	Sun, 15 Dec 2024 17:37:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ABD94A40AAA;
-	Sun, 15 Dec 2024 17:35:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD81CC4CECE;
-	Sun, 15 Dec 2024 17:37:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734284235;
-	bh=TBeamio0Yi88VQx9QAOzcjx9B0WIvU23/rv2y0lsgUU=;
-	h=From:Date:Subject:To:Cc:From;
-	b=IxGWBJNFTkuIx7OEwmQzxbwphC6qjzLuGzX7i5KWbEWX3qrsqGXGOIZIKdh1th6t8
-	 Pfvmz4Ygr+iiLmUtVFRfKBYF7H52v9fQWWMHDVarTEvkCuF7Xet52BGHDPijiOrMcm
-	 US19X+/9iwgFoVeByCHAlN8853g+Dq1lrRpl3WJS2rQhIaEx2HonHwXH6WsZfY2Z8d
-	 L+I1+jbeFoZUNgXRxu7qSH1zyAGkx2hcN+ofCwyRmuX8Xs9J8QlteaJwdXs3isF7/i
-	 JUpxkZjBs9KUB0QcykWxycPMC5ouj5Ey5VnfQptOPl/zim7N23U6C1/vEHMkWundPK
-	 174ETO4j8EOdg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 15 Dec 2024 18:36:35 +0100
-Subject: [PATCH net-next] net: airoha: Fix error patch in airoha_probe()
+	id 1tMwoJ-00000008XYt-3eSA;
+	Sun, 15 Dec 2024 22:10:01 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1tMwo8-000000002oV-1Trq;
+	Sun, 15 Dec 2024 22:09:48 +0000
+Date: Sun, 15 Dec 2024 22:09:41 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Justin Green <greenjustin@chromium.org>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	John Crispin <john@phrozen.org>, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
+Subject: [PATCH] drm/mediatek: only touch DISP_REG_OVL_PITCH_MSB if AFBC is
+ supported
+Message-ID: <8c001c8e70d93d64d3ee6bf7dc5078d2783d4e32.1734300345.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241215-airoha_probe-error-path-fix-v1-1-dd299122d343@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAKITX2cC/x3MMQqEMBBG4avI1A4kQbfwKiKS6L+baUyYiAiSu
- xu2/F7xHipQQaGpe0hxSZF0NNi+oy364weWvZmccYN1dmQvmqJfs6YAhmpSzv6M/JWbx7B9AnY
- DZ0DtkBUt/+/zUusLT50CkW0AAAA=
-X-Change-ID: 20241215-airoha_probe-error-path-fix-5bc6bed0e20e
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241215_093718_763897_044AA03E 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20241215_140959_910539_20C140B3 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,109 +68,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not run napi_disable if airoha_hw_init() fails since Tx/Rx napi
-has not been started yet. In order to fix the issue, introduce
-airoha_qdma_disable_napi routine and remove napi_disable in
-airoha_hw_cleanup().
+Touching DISP_REG_OVL_PITCH_MSB leads to video overlay on MT2701, MT7623N
+and probably other older SoCs being broken.
 
-Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Only touching it on hardware which actually supports AFBC like it was
+before commit c410fa9b07c3 ("drm/mediatek: Add AFBC support to Mediatek
+DRM driver") fixes it.
+
+Fixes: c410fa9b07c3 ("drm/mediatek: Add AFBC support to Mediatek DRM driver")
+Cc: stable@vger.kernel.org
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/airoha_eth.c | 33 ++++++++++++++++++++++--------
- 1 file changed, 25 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 6c683a12d5aa52dd9d966df123509075a989c0b3..5bbf5fee2802135ff6083233d0bda78f2ba5606a 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -2138,17 +2138,14 @@ static void airoha_hw_cleanup(struct airoha_qdma *qdma)
- 		if (!qdma->q_rx[i].ndesc)
- 			continue;
- 
--		napi_disable(&qdma->q_rx[i].napi);
- 		netif_napi_del(&qdma->q_rx[i].napi);
- 		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
- 		if (qdma->q_rx[i].page_pool)
- 			page_pool_destroy(qdma->q_rx[i].page_pool);
- 	}
- 
--	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++) {
--		napi_disable(&qdma->q_tx_irq[i].napi);
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
- 		netif_napi_del(&qdma->q_tx_irq[i].napi);
--	}
- 
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
- 		if (!qdma->q_tx[i].ndesc)
-@@ -2173,6 +2170,21 @@ static void airoha_qdma_start_napi(struct airoha_qdma *qdma)
- 	}
- }
- 
-+static void airoha_qdma_disable_napi(struct airoha_qdma *qdma)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
-+		napi_disable(&qdma->q_tx_irq[i].napi);
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+		if (!qdma->q_rx[i].ndesc)
-+			continue;
-+
-+		napi_disable(&qdma->q_rx[i].napi);
-+	}
-+}
-+
- static void airoha_update_hw_stats(struct airoha_gdm_port *port)
- {
- 	struct airoha_eth *eth = port->qdma->eth;
-@@ -2738,7 +2750,7 @@ static int airoha_probe(struct platform_device *pdev)
- 
- 	err = airoha_hw_init(pdev, eth);
- 	if (err)
--		goto error;
-+		goto error_hw_cleanup;
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_start_napi(&eth->qdma[i]);
-@@ -2753,13 +2765,16 @@ static int airoha_probe(struct platform_device *pdev)
- 		err = airoha_alloc_gdm_port(eth, np);
- 		if (err) {
- 			of_node_put(np);
--			goto error;
-+			goto error_napi_disable;
- 		}
- 	}
- 
- 	return 0;
- 
--error:
-+error_napi_disable:
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+		airoha_qdma_disable_napi(&eth->qdma[i]);
-+error_hw_cleanup:
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_hw_cleanup(&eth->qdma[i]);
- 
-@@ -2780,8 +2795,10 @@ static void airoha_remove(struct platform_device *pdev)
- 	struct airoha_eth *eth = platform_get_drvdata(pdev);
- 	int i;
- 
--	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
-+		airoha_qdma_disable_napi(&eth->qdma[i]);
- 		airoha_hw_cleanup(&eth->qdma[i]);
-+	}
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-
----
-base-commit: 2c2b61d2138f472e50b5531ec0cb4a1485837e21
-change-id: 20241215-airoha_probe-error-path-fix-5bc6bed0e20e
-
-Best regards,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index f731d4fbe8b6..321b40a387cd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -545,7 +545,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
+ 		mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
+ 				      DISP_REG_OVL_HDR_PITCH(ovl, idx));
+-	} else {
++	} else if (ovl->data->supports_afbc) {
+ 		mtk_ddp_write_relaxed(cmdq_pkt,
+ 				      overlay_pitch.split_pitch.msb,
+ 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.47.1
 
 
