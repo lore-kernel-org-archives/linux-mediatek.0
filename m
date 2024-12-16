@@ -4,106 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA89E7717F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 11:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530C9E7717F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 13:54:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YThwe23mDMw58S0YzeDlQzDzb/FEzhlX3ugmbXf8RUY=; b=qPiwg1+6/LvDk375DjouZjC5R9
-	zQCLLmaKSfK/aWU+0G3PB3VdVGU7X2EG0lMZjSxelG9NBQ+EvjVCAcSidc9i69EuZG4BfcIzheXIM
-	Vmp7fxOwJGgiFaNiqxl5Do7tkDwd7YimU5U1JM1RXDs7uAKYcO1GBUxdZhEZm+PshMHnRZTK+Adet
-	7yWOYOtiVYnfHlvpbvdOgXs1nZ7Y2TdDlDplXoU8/ZzetjT1e17SsUKGKmYEKp8zI/Xy7PDfk9Zhh
-	7VuhfuS/7jzRu+jrFHqtiKfzgTlD5QMAlvMN2NXbbZdeBLUnWmI6p3c4Txdz1OxbU3a2MwrKd8JAN
-	9nRSygpg==;
+	bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=; b=MWnzquVtqMLq2j2tvxlLLJOm7u
+	ij5hgqJw602bWxUkRCV3MHlGPKGvOV309hps9aWVesl8qHhyU8whsq9XnwvH4d6iAENCB2noGP3hY
+	4/4+tonB3qQJzjZYzEZi1myOvEciyN/MPA2PX42qyyGbj41/4yLr/e80BJIvm0EBNQeSgp6PwMX3s
+	0a/Bz3J2HBNN1sp+YM2NGeoID/SzOsmxVuWXx0hBffhQMxAFJbGHtuQq8MuBNgyeakb1baugy/Ne6
+	y46p1/pNOQQ1vpUNiEFL3XPwqXVnZ+2qv81+qhsF5FkuMRM+gcXMb+4mrJBCw3SoXH6n7mF0q6Sx9
+	1xuXU7+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9FF-00000009om4-2ugl;
-	Mon, 16 Dec 2024 11:26:37 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1tNBYC-0000000A9Tx-0lgV;
+	Mon, 16 Dec 2024 13:54:20 +0000
+Received: from mail-sg2apc01on20705.outbound.protection.outlook.com ([2a01:111:f403:200f::705] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9FC-00000009okX-1qlA
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Dec 2024 11:26:35 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5401d3ea5a1so4465607e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Dec 2024 03:26:34 -0800 (PST)
+	id 1tNBY9-0000000A9SJ-2R3K;
+	Mon, 16 Dec 2024 13:54:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ID8kDKdd4xIqqFubQeYG4c8NnLZ/1P6R8Y7QHCsqzCY3wqnPFmLBx70rCCJSo/w4cVQsA7e1rg3gm6qwQA7q3gnTQ7Ne4g0tbdt4xGBBXY6N1pkq8h0SZzNUdDa2ew41gjaw2/Wkv2cm6h9Q/shANo1v6WE2A10jCYvg51sCBm/J1nZ4hPN+tZ8pMOlgsvdvMJmdeMEUEXvNOpnqR1y56fxkluRctu2eGX8tHoEVNpZsPpN+scPeEVGW4B/bLKbnLBhtACkwcT1qzDo9pGgaO1DqjIKYnmBtuP6c3RhB13BHt4kmvCX3i1OF2+1LsOi3P8gakJoPKzgFYNnnG8p+0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=;
+ b=gXaPJxlw5eezMKSLFbH1dxNTo0bfwZgrrMycE9Uzfj5SgvcP+MJR2PKr8GlPC0/bYx4aI0ISy1nArxgQlZGu+5Z6Mzbnyn32ygQgd36uB22NJP+uAHqzWYeUf1t401lq6UwNqU7xQALBYvsK07+0p0pa/ALa8nqlXd8NmZgMjdkKnLuQWJ2MPIuQjvTscccxYuUL7ldV+ZbgrBU6GbEQVXY18q8fJhCCwibwlcEfw+p7W3ynRpNfRaVwc3CXLjcFqv+s6ol7sWuCBmrjvrRgwqnCqCHUVYgNjL7W9C+iyr/NA1whbxsmQjBBtwQpTt1UdpfxzFcZIm44qvAoW/q+EA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734348393; x=1734953193; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YThwe23mDMw58S0YzeDlQzDzb/FEzhlX3ugmbXf8RUY=;
-        b=fZo4SQOwo0xWJhD7JssscCw5uiAjfsNRwZHTJF9Jc7QQNHkcSmYZSR0BxDD3u8FvWq
-         HxZwq+QSStwsQS35T3bXbJUClyuR8ae9RSCQQAQiGDDzSP3TEPpZJp40VmwmKcHdS02c
-         O6LPSnvRew1Uuf/wDa4vZcIwvSN5FhB9wzdPpcpPg9C5Fqkz+chgLSJCPB7rdyf6VUui
-         9XcmUe7R/CDOqBIhY5d9simCjNU5TrvzOb5gXmFCr55mv0DiLZYJ858ND+QkEJhnXD6A
-         sHFuyfxavXDAxWN2tWzJ0h9b/pNimmyqfd4D6J/n57+Qcsv2Wgw5J/usCGRpBJjjUvOy
-         90nA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734348393; x=1734953193;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YThwe23mDMw58S0YzeDlQzDzb/FEzhlX3ugmbXf8RUY=;
-        b=r4VylHTwqX+mc8qRvrlCPBcEgfR779l7zwqT45cZ0R0dRbcfKOC1NbzW6/Xc7v3Mp2
-         Kz2OHhL7FL8crBi5ZF6Wq5WFM1lqsobkJhi0s7UVGx3bezFxd7IzkujctvjImeIDTpSK
-         0MLckp5UZ6KQ+RQ63SL39shwxO1UWSbs9r7aHo9AtVsP6kkBH1xtU1Qkfo1iFZ29JM8P
-         0PNGG2J+ZT+alElUpixW/FSiC06YMT36VNzxE7yeP86yC1fTlfhHGo/u2io6fh1OGxcQ
-         SGgzegGnZsBgkJe9uOTQfQlvbaYnQw4lr7/4V6SFjqQzIn9QX6JLnLtX6sATXVBMCMWN
-         hZeA==
-X-Forwarded-Encrypted: i=1; AJvYcCXbfAKU0r/w1kZUclBFOa1NyCsnRLcDTh1ocD1MA59/VZqea9WrQxZCVsnUs6SkjDdkVFeno6EiqMBPZNNDKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyB8uwkexJy5kGDPOoMk8bplcD5xN+SrdvKNQudQgOa1GobWQJ4
-	0Lu9PeqPxUHUONkbt5Hhdoou7RKSX+eSZR7Yw5jlW7UXXJarsliRoxXDhJ/mTTQ=
-X-Gm-Gg: ASbGncuJp5Zlhgu8OHXPe2KF3ZM4Pb/Is4efR0sTnVEt+/aWyz4+7YU07IcMe4gQBE0
-	8QiKeZHd2shK7OuCHDDnadXoFhK3hXiNvADRRUnqrk1FnuwqT3CJzwZzzyVHR+txv+h10600Eow
-	+rqcZEePUo3qc3Z/buBCpecGM39F3VKPWLTC+6lEqYL9AYNGOMANIAPlM43wfGqB87hHQ88zNIG
-	LKrrF7bptf+nqeU8Q0x2MuFYxOZnxK3+0Yvk6kz+0boeFqS8K5JnZP3FqwbhWvTmqx2u2BChR4g
-	w5YSBtAu9+lR3vH5exzv7/TfQxJcvq2/JfOF
-X-Google-Smtp-Source: AGHT+IEC5KXhrrXGsT1eFAB/sps15bbUKYwoGeuTdcyybvAtpoczQRZn+Xw2w8c/HQ9Uc8g8NeiFrQ==
-X-Received: by 2002:a05:6512:318b:b0:540:2a6e:3731 with SMTP id 2adb3069b0e04-5408b8f4a05mr4156948e87.5.1734348392766;
-        Mon, 16 Dec 2024 03:26:32 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120ba9e02sm811914e87.100.2024.12.16.03.26.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Dec 2024 03:26:32 -0800 (PST)
-Date: Mon, 16 Dec 2024 13:26:29 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 09/10] drm/vc4: hdmi: stop rereading EDID in
- get_modes()
-Message-ID: <smaa7geowgyuvqvn6sph63ls5ublpt46zqdvt4yvqcg64scz3q@te52ty7x2soz>
-References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
- <20241206-drm-bridge-hdmi-connector-v6-9-50dc145a9c06@linaro.org>
- <20241206-caped-proficient-rattlesnake-c882f3@houat>
- <73xdxb575n4ncmadffkwqzczoewbadq3forpvqt4vp7zfln2nq@o2wmbbbepwgg>
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=;
+ b=ccgmECO7xs1O9+0k97QiT8HMR/ulOP+jIISK515aR7y1sPIgo3VEs7dpQjD+4zLKyUEamTuSUVq4CfQ3uj+Ov6JaVB/3zRtZv3aDqUpS9DKMI8IHGc9/c2i+AUY47mcqF9CxgXhK4Dvicuc2af291LuvasnJdJYqeTgC/44QTVg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+ by SI2PR02MB5955.apcprd02.prod.outlook.com (2603:1096:4:1e6::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.20; Mon, 16 Dec
+ 2024 13:53:56 +0000
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b%5]) with mapi id 15.20.8251.015; Mon, 16 Dec 2024
+ 13:53:55 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: ryazanov.s.a@gmail.com,
+	Jinjian Song <jinjian.song@fibocom.com>,
+	chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: andrew+netdev@lunn.ch,
+	angelogioacchino.delregno@collabora.com,
+	corbet@lwn.net,
+	danielwinkler@google.com,
+	helgaas@kernel.org,
+	horms@kernel.org,
+	korneld@google.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	netdev@vger.kernel.org
+Subject: Re: [net v2] net: wwan: t7xx: Fix FSM command timeout issue
+Date: Mon, 16 Dec 2024 21:53:22 +0800
+Message-Id: <20241216135322.4533-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <da90f64c-260a-4329-87bf-1f9ff20a5951@gmail.com>
+References: <20241213064720.122615-1-jinjian.song@fibocom.com>
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: FR4P281CA0342.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ea::20) To TY0PR02MB5766.apcprd02.prod.outlook.com
+ (2603:1096:400:1b5::6)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <73xdxb575n4ncmadffkwqzczoewbadq3forpvqt4vp7zfln2nq@o2wmbbbepwgg>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SI2PR02MB5955:EE_
+X-MS-Office365-Filtering-Correlation-Id: f357eb12-30bc-4eb6-fbd6-08dd1dd91442
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|52116014|376014|366016|38350700014|7053199007|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZkhoZDlHVE93d0hGV25SY0NFSUlFL0JnUS91TWJZenkrbkxCaTR0bUZROTN3?=
+ =?utf-8?B?SE9XOGZtQ09RNmtOYXRCS0ZTQWRrREQ5UjBCQ1drV0pPZzl3NHl6MWVNakZJ?=
+ =?utf-8?B?Z29NY3BDZ3ZDaGpSV25sN1VhWXRRVEV2RkFSbFMzaHdXVzA1T3NDbnpkQXlD?=
+ =?utf-8?B?RkVtN3RjbWtqSzIwbk15emJuZzAzdVVtd2daU1N2aDg1QW1NZlF2K1JISnNC?=
+ =?utf-8?B?akJnK203VWxKWm10azhwdkh5dGx5T0gycVJHdlpKTGdhYi9QTVE2OS9OM09r?=
+ =?utf-8?B?VXdYcFJ3YjIzbVB2N1A0M29XQWNXZ2RwN2FGams3OEN4bkJseW54N0FqcTlq?=
+ =?utf-8?B?MjcyRzd1WWNKTllNZ3NQVjZxUTRRb2VRSEtUZEJVd1oxWUhmQ0Jnb2Z2ODdX?=
+ =?utf-8?B?NTB5RDNsTFVlWVMzaFQ1N3JTOEUzNDRMVzdUeC8wYUM1ZytYaUFwME9zWkRP?=
+ =?utf-8?B?d3l1VGZ4dUVMS1loZ1kyeklVWWhCRG1ycEcwNFZxOXYwc0NON3BSZ2YxNTJs?=
+ =?utf-8?B?R2hsVEdJcVpuUW9NYVlMbHZ0ZXJCQVdjb2VTRzFBL0cyZWVUd2d0Q1ZHSEJQ?=
+ =?utf-8?B?ZXpLeGFyTCtDMmlZNFdxSDdyZzJZTDl5TWhlUlRSVDJzYmJXeXRiWlprNjly?=
+ =?utf-8?B?TS8wbi91WWJzVGdEem1rdEIrYisya2F5eTk3Zi9TMWZVOW0rNTY4Q2d0K3Zm?=
+ =?utf-8?B?alhxb0VSQUVtdEhJR21adjFxWGhVa3FYOUFmcFlkSWpXOE9DVW9DK3ZWUU00?=
+ =?utf-8?B?RndyN2h1UERlWGdNeGdxbm0rVitXdGhrYkE4azRselpOeGlNYzduSmtldjNQ?=
+ =?utf-8?B?MW1HNnhYNTdScytKbGVMb1BUSjZIU0tScklIVUQyTVd1Uk93cm9Fcnk4U1dS?=
+ =?utf-8?B?VnMzM0pGV2tHRWQwY2ZiSVEwZzRhQXpPaEZiNG5meHNtcEhVS28wZVVNc1do?=
+ =?utf-8?B?c1pjd0lCRFhheG1ENmxRTHdGTGFJNkpGS254VGdJNFdVckxhWGtEb3p3Q1lh?=
+ =?utf-8?B?NXVoTTVUNzBERDdpaGJWMENycWZQbUsxelFiTnUvcEhlWkRtRllyZHI4R1Ez?=
+ =?utf-8?B?R2tWemUvYmxDV1RGc2VvSlJWSlZMeWZUYmdPQlE2UU5qWFNRbFl3c0NrcXM1?=
+ =?utf-8?B?NG01YTVJMXBDM0JLK0NCR2dxaDNJelVwY2hHTXlwd2xHL2ZINm51cTBkVVZx?=
+ =?utf-8?B?Z0NMWGVMenRPSHg2TUs5UDBpcGtPbGRVVHdaWndacFlOaFp2RU44RkRNUzFN?=
+ =?utf-8?B?cHJSMWJkRVg5MmcyYy96bnlZWlBhbHYzQXNVaW9zc2NGbWl4OG5lNFNpUU9V?=
+ =?utf-8?B?MnUwRE5ScGgzMkpHRmp0d29LV2prV25GYURPN3AxamJFMU1TMjZRQUkvbmVi?=
+ =?utf-8?B?MXUzaGRDNFNCQ2NBOTE4MzNubTdrYU94K0VUbjd4N3hkUmprM3JUSDBNSk9R?=
+ =?utf-8?B?OHo0bmV6aHl5QnJrbjZSZms4OUQ3bHFUajEwdVhxMFA5dTRFS29iMGNVSURZ?=
+ =?utf-8?B?bi83cjJGRk5nUHJHOVdVMkpqVHU3Rmo0Mkt0YVo3Vzc0VHh6akczRUgzT0lk?=
+ =?utf-8?B?ZVE0Tmc5VW5vYmdHOTh5QU12bEhvWmp0S2QzWkxBWHovZWF6R25oRWNrR2hR?=
+ =?utf-8?B?U1ZVeVJpT2d2ZTY2VUJWTVZUNzhZL0FkKzk4Qnh6ME9DaW94MU5CSFdPNzhM?=
+ =?utf-8?B?bW8raUc3N25WOGM3emJERm1ESFU4S3pxeGFMV0NiT3ZnTFVwWkNTcVRlcHli?=
+ =?utf-8?B?TnJGYU1hZmNHemdNdnJyc1F4Tks1eU9QV0VsTUxaWUVmVTltSDlnbkI0RmdB?=
+ =?utf-8?B?MW51NXF3aVhQclRMWllXMlJucWJPTjdIMlREWE4wckoxVHdiRk1nb0o3RFpZ?=
+ =?utf-8?B?aEl3MHlvVXFNVmt1ckk1cStEQnlrR2tZUktKRmo2bG53RlR2S2Y1UGVXUDh6?=
+ =?utf-8?B?ZVFOSzVadkVBWEJpajcvcDNtdVM2ejc5N2dMd2JwL1p2SFJha3pTZHR3T21R?=
+ =?utf-8?B?dnBjYmxYbFJRPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(52116014)(376014)(366016)(38350700014)(7053199007)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?M0o3M2tBTi9LcTl2TmM0ZkMzRlhEOFYrZno5WDU0VjJvY2x6TmNEanF2QnNq?=
+ =?utf-8?B?MjNvaTBsS1BvU21SUHgrZHB0Q1V5QWhlakFZWE9zWmRrNTdvb3J5elRQVXdB?=
+ =?utf-8?B?Zmdoekd6UllHMGQyUHpzc2lYSFBlTUNPOEQyNGFMTE55QmQrNG9xMFlrUktj?=
+ =?utf-8?B?cVV4dmZOVzJmWWdJK0QyTGZlVjQ1UWRUK29VMldYbDlWK3pOOXltSlVsYnNo?=
+ =?utf-8?B?VWw1dUdUNTY3VlRncGxJZmg3b1VEcWtSYS9lUnBmR0lpRXRmWVdkaXc4bzdS?=
+ =?utf-8?B?TFR0UDdCaG9kZVlITnFPOEVHc256SFFaVWpOdG8vcGRnK2tEOGYzd3JqSGFZ?=
+ =?utf-8?B?R2FxdEtqU3QwS0FFMnFNdHk4V2JVYXgweG1LMkZGYnZjMlUxUmtEUHNScGU5?=
+ =?utf-8?B?akdCaEdKYW1ablc5RmIxZS94bTIzaW95SnJ3NitqY2tJb2lrMjVId2E2eWhT?=
+ =?utf-8?B?cW9mQXNqZnM5U0dCMllRRlZnQ0RwVW1JZkNSS1ZIcnZNTW8yWVR2dWxNVVBp?=
+ =?utf-8?B?SmkyRDhUTWlQMVlsbzVEUFZEdTl6Tll5ZzNmZTFKSFpoc21NSE9aWGd1WVJD?=
+ =?utf-8?B?YlNCc1NtSlNNL1FMTmNUVkZKTXpoa29zWi9NcTVrWkxhMHdNVDc3QmpWNUs4?=
+ =?utf-8?B?bTJzREFCNk5FaG9zbERacFJqK01FRitwK0xTVTVkV0V1cmlrNzBTZGFROUxY?=
+ =?utf-8?B?VlYxZWdMeE01WW9mUmJrRUZ6azlERDdKR1hIVVM2N3NDcW5jWVhSQ2RyWEpN?=
+ =?utf-8?B?SDZ2eUJOWTBXZmVGMzFyeTkyT2NOcEUrUFhDZTZMNWR4OHgyZWp1Qy9vdEgw?=
+ =?utf-8?B?UllSU0xkUU1PU2xNR3VTZ1hNeEVOa1VuOUZQVVpIdVdnRGQyY0VoTEQ2c3J2?=
+ =?utf-8?B?S1JvR2NFUThWenBxMEdhUG9vbUx5UGJVYlJBRnh5RUNVS0R3OFFHNm8xdExC?=
+ =?utf-8?B?c2FlUEw5YXMyUjVTVkorcEVzcmNOZnBUNVR5dHdZc243VVJPTkVCYlk4azRT?=
+ =?utf-8?B?U2tTYWVkYXlaa1dkU0tkUHJTNm4zLytVZkMrNmVEM281aWZ5T2NVV0FvWFhQ?=
+ =?utf-8?B?MitKQndVWWdEQVIvUXQ5VXJSeDdzOVBQYjFsTHNRUFM0M216YjV0Z3FBOC9X?=
+ =?utf-8?B?cXpaSEFrcmFLQUFrL1V0THFhZVNmdm1PYm1YVTRUYUlrRXRvYkUwcVRUTFVF?=
+ =?utf-8?B?Y2tvRXk5S3NXeXJwTHI0UXltNTZBODZNUnBiWFV1ZXE5dWJUajVkdSttL0pE?=
+ =?utf-8?B?Y1NLdUd6a2IxN0tzSVFrU3llazFQWDVSSmxoRzVWTXU2aHVJNTVJSkpGVnBh?=
+ =?utf-8?B?RFpuOCs1U1BYUnVVd3JNU2dQUFpqdUJVU1ZLSkhzc2ZtY20yd29WQlF1RDhh?=
+ =?utf-8?B?UUQ3Ym5LZmxpZERCa3ZYMURYSEZoTk9aSXIxaEJOcU1CRDVIOWo5MU16VFA3?=
+ =?utf-8?B?Vm16RHZIYVJyRFVrMUNibjJvbGZ2enloRkRxZUxFalN0emF5ZVF0ZE9zUlVh?=
+ =?utf-8?B?OTF3VDh4YXVsWGhza1AvdENkamRHa0U1K2ZkUVRKWkhoWHpka29sbHd5bkl5?=
+ =?utf-8?B?dmZtQUVnNXdESWNsT1M4Z2wrcFRQbk5Wd3RYTFFaR1lvRnBrM1hqZlV3R3Fx?=
+ =?utf-8?B?eDQ5T3BVa3BGaGV4d25KSFY0YlRFTHpMZ3Y0OUpEUFJtK0NJT2twcVJOakRP?=
+ =?utf-8?B?NXU0T0tPcW9VYmllb1NibU5rM0t6R0tXL2cwQi9aUnpjbXdvR2g1T2d4U09X?=
+ =?utf-8?B?alRuekY2TUZ2dkRPQThsTnBqdVBnc3FUUGRjVzc0TXBoUGk3by9ia0M0ZHBV?=
+ =?utf-8?B?MGg2ZGhKbU5vVzVsWFhKc3Y0d0JXOWdaQU0rSXR6N0VtV3g0KzYzRjlydXVj?=
+ =?utf-8?B?WTN4QzVJU0hnQ0YzVUE0NVZLZ09pZTNQUS9ZQ0RTMnM4bnI2bHVGSzFFVXhz?=
+ =?utf-8?B?NjRVVktkMUhYREhnU0szeHpNVkNobVVmR24yUHp4dU52Qm1zcDFsNkdaUmZv?=
+ =?utf-8?B?S1lqaDdXRlRMUzF4N3UvTURGSmhMY0p6QWVHVlk3TGl6S25wSWlKOHdMVzg3?=
+ =?utf-8?B?NkdOTU4rSnVFMGZpMEliTmV2N1phRWcvcnRSR2h0eThZNE0wMy85V0NwOFla?=
+ =?utf-8?B?WFpOQ201ek0zNldnQStxaFNSTGh2UVVuYWpwL3dhc1pNaVo5cGRKWFlaakJF?=
+ =?utf-8?B?R3c9PQ==?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f357eb12-30bc-4eb6-fbd6-08dd1dd91442
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2024 13:53:55.2114
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ucPCDipT7hbLqytMwwQWN5QGSxvmyLCLChFxVWKHh/sOwQrR7NBThyfgROWyHE803VsYrZw9Che26vxb6AVBMLPhBf/rKztjzy8oiElJUi0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR02MB5955
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_032634_483477_25A81034 
-X-CRM114-Status: GOOD (  36.07  )
+X-CRM114-CacheID: sfid-20241216_055417_626197_8E6923F3 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,76 +199,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 08, 2024 at 01:06:46PM +0200, Dmitry Baryshkov wrote:
-> On Fri, Dec 06, 2024 at 03:34:52PM +0100, Maxime Ripard wrote:
-> > Hi,
-> > 
-> > On Fri, Dec 06, 2024 at 12:16:03PM +0200, Dmitry Baryshkov wrote:
-> > > The vc4_hdmi_connector_detect_ctx() via vc4_hdmi_handle_hotplug()
-> > > already reads EDID and propagates it to the drm_connector. Stop
-> > > rereading EDID as a part of the .get_modes() callback and just update
-> > > the list of modes. This matches the behaviour of the i915 driver.
-> > > 
-> > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > > ---
-> > >  drivers/gpu/drm/vc4/vc4_hdmi.c | 21 ---------------------
-> > >  1 file changed, 21 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> > > index e5ab42f72f618b90f956482db6c9c8074c1e3bf1..3364ef90968dad3074800f02926300ffceb75c69 100644
-> > > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> > > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> > > @@ -470,31 +470,10 @@ static int vc4_hdmi_connector_detect_ctx(struct drm_connector *connector,
-> > >  
-> > >  static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
-> > >  {
-> > > -	struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
-> > >  	struct vc4_dev *vc4 = to_vc4_dev(connector->dev);
-> > > -	const struct drm_edid *drm_edid;
-> > >  	int ret = 0;
-> > >  
-> > > -	/*
-> > > -	 * NOTE: This function should really take vc4_hdmi->mutex, but doing so
-> > > -	 * results in reentrancy issues since cec_s_phys_addr() might call
-> > > -	 * .adap_enable, which leads to that funtion being called with our mutex
-> > > -	 * held.
-> > > -	 *
-> > > -	 * Concurrency isn't an issue at the moment since we don't share
-> > > -	 * any state with any of the other frameworks so we can ignore
-> > > -	 * the lock for now.
-> > > -	 */
-> > > -
-> > > -	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
-> > > -	drm_edid_connector_update(connector, drm_edid);
-> > > -	cec_s_phys_addr(vc4_hdmi->cec_adap,
-> > > -			connector->display_info.source_physical_address, false);
-> > > -	if (!drm_edid)
-> > > -		return 0;
-> > > -
-> > >  	ret = drm_edid_connector_add_modes(connector);
-> > > -	drm_edid_free(drm_edid);
-> > 
-> > I don't think that works though, for mostly two reasons:
-> > 
-> >  1) We're not sure we'll even have an hotplug interrupt if the system
-> >     boots with the connector plugged in for example.
-> > 
-> >  2) afaik, the get_modes ioctl directly calls get_modes too.
-> 
-> I think both paths use .fill_modes, not get_modes. And fill_modes
-> explicitly calls .detect / .detect_ctx. It would be nice if somebody can
-> verify the change on the acual hw. But as I wrote, i915 driver does
-> exactly the same: the EDID is read / updated in .detect_ctx(), while
-> .get_modes() only performs drm_edid_connector_add_modes().
-> Okay, there is one significant difference which we should probably patch
-> out: the .force() is also implemented to update EDID in the forced case.
-> I should probably do the same for the drivers being handled in this
-> patchset.
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
 
-Maxime, will .force() cover your concerns? I probably fail to see a path
-when .get_mode() is called without calling .detect() / .force() first.
+>> Fixes: d785ed945de6 ("net: wwan: t7xx: PCIe reset rescan")
+>
+>The completion waiting was introduced in a different commit. I believe, 
+>the fix tag should be 13e920d93e37 ("net: wwan: t7xx: Add core components")
+>
 
--- 
-With best wishes
-Dmitry
+Got it.
+
+[...]
+>>   	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
+>>   		*cmd->ret = result;
+>
+>The memory for the result storage is allocated on the stack as well. And 
+>writing it unconditionally can cause unexpected consequences.
+>
+
+Got it.
+
+[...]
+>>   		wait_ret = wait_for_completion_timeout(&done,
+>>   						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
+>> -		if (!wait_ret)
+>> +		if (!wait_ret) {
+>> +			cmd->done = NULL;
+>
+>We cannot access the command memory here, since fsm_finish_command() 
+>could release it already.
+>
+
+Got it.
+
+[...]
+>Here we have an ownership transfer problem and a driver author has tried 
+>to solve it, but as noticed, we are still experiencing issues in case of 
+>timeout.
+>
+>The command completion routine should not release the command memory 
+>unconditionally. Looks like the references counting approach should help 
+>us here. E.g.
+>1. grab a reference before we put a command into the queue
+>1.1. grab an extra reference if we are going to wait the completion
+>2. release the reference as soon as we are done with the command execution
+>3. in case of completion waiting release the reference as soon as we are 
+>done with waiting due to completion or timeout
+>
+>Could you try the following patch? Please note, besides the reference 
+>counter introduction it also moves completion and result storage inside 
+>the command structure as advised by the completion documentation.
+>
+
+Yes, please let me try the following patch.
+[...]
+
+Thanks.
+
+Jinjian,
+Best Regards.
 
