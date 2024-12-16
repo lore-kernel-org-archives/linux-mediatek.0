@@ -4,55 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA495E77180
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 09:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2466E7717F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 11:12:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+oYP7ZwnEeonL1pLtE73TJ85xaesKIG0Ys99vCW5hiU=; b=WVp3FGyXKJ81nx9dlmMmCDtxhy
-	mg1Pni3By09PbwhMjVqAxj+7s4Mfyq82OMafYwzuCesVxmQT6w7/RpheiI5AL+j0QT2SQ2XoXdIKr
-	ag6bryrzcEr3LutUa0VmiDKFFWjTtFQnXYagjubYVOkDoBELMmlYV+CJXDDZIK2eMTF5ftExr1Qtm
-	xN61O9MwUzZlxOxCeOBniFqDbcEwNPAk4D+7f7RqNGkwvFYFyjiNsmpwxkLGRbAUu7k3tqfGpvV1j
-	YBBasoNUmBH/QP0bKnEa0O9Rmg7sQZuLeMogG6Z8k38fGrCp8nL/XWejMoXdqwCEhm4q1YG0fyqnV
-	n6cPg8rg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=srCVYqgOSp6kv0pOxxC4sBz8zDZFRNfUCCYb3aqr2eg=; b=17kgym5cF6J6Jo/2AdoSF3pTiJ
+	acR0f98nO3P4YApCYgDxLvATwdI7nQ8dUa7KCLUpTwzVqaEOwNwKyCPaiik/O8T5HM+9MPOg19cMk
+	OLmfK4sz4tYc3WCYbLlKVj0mCJFfpwiAGrWxNrtzru9rKi+LWfreVD/1Qnzparkb3aqtsGmCQT9s/
+	I5D0d7yxFMuHuhXLjB4zQVHBP7SR+22osffqf9Mebuo7Hs042rH4Mp6B5oFX/yyXgPg8bTy9n15iX
+	m5mymWBWPC6DbwZzdiVZV3hP5h5ddzM++ko7TJL02nN8GKv27Uut134HXSyW1hNJNNBjhwryGugy3
+	9jnGa05A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN70D-00000009U4v-3d3a;
-	Mon, 16 Dec 2024 09:02:57 +0000
-Received: from mail.analyticsservices.pl ([217.61.0.186])
+	id 1tN91x-00000009nH5-0UiB;
+	Mon, 16 Dec 2024 11:12:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN6xk-00000009TgX-3daH
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Dec 2024 09:00:26 +0000
-Received: by mail.analyticsservices.pl (Postfix, from userid 1002)
-	id F264B83A54; Mon, 16 Dec 2024 09:56:54 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=analyticsservices.pl;
-	s=mail; t=1734339436;
-	bh=+oYP7ZwnEeonL1pLtE73TJ85xaesKIG0Ys99vCW5hiU=;
-	h=Date:From:To:Subject:From;
-	b=MOYr4p3ZNXe7rIidpyOxInLxYAPPB3uYCAeOHPMzIRBfjt7s2YLRLAx8AD3vVW0ZL
-	 V9yR/nUuhxyI8q2C7IKR4VrVAWGmt45nazVyXYb6bDpji1a3ijd9GOhCuKZIEEqpmh
-	 VDtXgBn0tuudFUnGccVdKfQeEXJdcPw+WnwOJeWVFr1Vr4q4C8XjELUlv+aQAR9RwM
-	 ciP2CL7E2BDuPsKrgOWtwZW8rqmeUm2Rm1h/6y7aoOdL06dSUZ7OSP0EkVTtxB79Zs
-	 amCjcFXwYkkWN7osqlqf8XnbnXRYYttQQf3livjUccWFZj2HWbPdiXYfXd/MJwQFD/
-	 HY/Tbn7q1Hf8w==
-Received: by mail.analyticsservices.pl for <linux-mediatek@lists.infradead.org>; Mon, 16 Dec 2024 08:56:01 GMT
-Message-ID: <20241216084501-0.1.i.3mm7.0.z6wj3bqcog@analyticsservices.pl>
-Date: Mon, 16 Dec 2024 08:56:01 GMT
-From: "Patryk Wysocki" <patryk.wysocki@analyticsservices.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.analyticsservices.pl
+	id 1tN8tX-00000009ly1-1GcF;
+	Mon, 16 Dec 2024 11:04:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734347048;
+	bh=2PAzW0CAvTGnmsRLsCQwS8t9Oqwmzf5n50qbI8kumJg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nADYOdP4y0TDITg8zV4mKADEnSxzC9xYVmJiW7FNJTMLuq6sz68ov/3wyCzIqV/Sh
+	 Q8tLkvhMMCaI4MgamBdtPgzfm75P0/QybahNCZDVLMemTaDmzDw54Uxk3q4H0RpltW
+	 jTvDRZRwwrUpht1VpJ08iV60s7p2oebBQQ3Sj0SSr3oQ3mXW4DsobChiWQMtF+rrP2
+	 aAZggNcTdQxh1RhGwZUC6Tb3OC0ondVKMnJBwy2lZsk+pNB9ZF+zzo095oGQqCx7Dj
+	 tmV7TxX9pIXJglAS+Rf+Zg3ASByMsiKqXmKCqqrgIHORiuH134+l5Y2U4mZjb/iuvu
+	 fOIMFis+EQwFg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3E31117E3632;
+	Mon, 16 Dec 2024 12:04:07 +0100 (CET)
+Message-ID: <e5788187-e894-4aab-a41e-a3d7a64762c6@collabora.com>
+Date: Mon, 16 Dec 2024 12:04:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
+ <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
+ <803bc2bd802506635dfa9ea9b26a6ca40a7f4912.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <803bc2bd802506635dfa9ea9b26a6ca40a7f4912.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_010025_648694_ED0D6B5D 
-X-CRM114-Status: UNSURE (   1.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241216_030411_487857_A4ADC4DB 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,17 +96,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 16/12/24 09:57, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+>> found in MediaTek's MT8195, MT8188 SoC and their variants, and
+>> including support for display modes up to 4k60 and for HDMI
+>> Audio, as per the HDMI 2.0 spec.
+>>
+>> HDCP and CEC functionalities are also supported by this hardware,
+>> but are not included in this commit and that also poses a slight
+>> difference between the V2 and V1 controllers in how they handle
+>> Hotplug Detection (HPD).
+>>
+>> While the v1 controller was using the CEC controller to check
+>> HDMI cable connection and disconnection, in this driver the v2
+>> one does not.
+>>
+>> This is due to the fact that on parts with v2 designs, like the
+>> MT8195 SoC, there is one CEC controller shared between the HDMI
+>> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
+>> adding support to use the CEC HW to wake up the HDMI controllers
+>> it is necessary to have support for one TX, one RX *and* for both
+>> at the same time.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+> 
+> [snip]
+> 
+>> +static int mtk_hdmi_v2_bridge_atomic_check(struct drm_bridge *bridge,
+>> +                                          struct drm_bridge_state *bridge_state,
+>> +                                          struct drm_crtc_state *crtc_state,
+>> +                                          struct drm_connector_state *conn_state)
+>> +{
+> 
+> I would like v1 and v2 has the same behavior.
+> Why v2 has atomic check but v1 has no?
+> If this is better to have, add atomic check to v1, and this function would be common function.
+> 
 
-Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
-yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
+That's because v2 uses the new helpers, while v1 does not.
+The v1 must be converted to the new helpers in order to use atomic_check() like v2.
 
-Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
+Cheers,
+Angelo
 
-Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
-owych informacji?=20
+> Regards,
+> CK
+> 
+>> +       return drm_atomic_helper_connector_hdmi_check(conn_state->connector,
+>> +                                                     conn_state->state);
+>> +}
+>> +
+> 
+> 
 
 
-Pozdrawiam
-Patryk Wysocki
+
 
