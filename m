@@ -4,72 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B48E7717F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 17:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F01BE7717F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 18:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qwf0Q6wp6H/pRC8arADlqkyBJYwrH22sNYfvDfmEvNU=; b=y526Z3YH9qe2mXzOuQpnN/NM/y
-	/v/ikas5bovSXms1pWAuXMM9V7wsWCsV4yB9vBUVyWtg6ElV6zGdeHW9spQzXgyuK3uolFpAE0rOP
-	KxMiuPmSyffRwQWRLGrdtI0vNs08yQ+eoU88ktevWUChHEZ4dFWG2SFBRa4+4S6dNCltgNxTCxK9F
-	9yjfxrEkg5G6+DnCfJVfjTBbLL6ciJ4QCYXKcZg9Q84ItWJfjdj3dxGOLZxHx9Lf291vVi10U2lGU
-	xHylvuVg/3QapjVHKslmM+qY/TgnfHHWDvEppoDeDvZ7Y7UEJ3xN3DkYn0QoANNArtv8j69WFCSM8
-	PaaDuODg==;
+	bh=tjo6g0AkvNUOlyYjXBaQDqnzWjCUgSNKMxLQ025JeNc=; b=yLSO4fIXdLwNNGqC7X528fxQbI
+	ps1Nwl4lbDhR4eNbe5GLdJ3B8gHyfQZ6ZquFrr6N1TMgWCYDbGNTz23J01N+h6azrAPQXCib6vHr8
+	om98KUNH1ZqrrsPJaJuI7gWQqthXtMNFE69IkrQkUAPrHj0NAX20987VWMWjgeVihiUm+N8Lf967I
+	MVhsFX6twriSUdyrvlQO6MflAwzKbcQxJoRpHMJvgFcVpPf/uBD209CVWdHZXE+bqPK+bgGKM9vtj
+	SBlWaV5zf2b+ANoVUHo7FNdt6p7s6v7ZtQ7lhp7qLblCmtu69clcLV7PhfvT3Qi5D9ckmx8IlMLZd
+	kh1FQAMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNFN0-0000000ArDa-2u7g;
-	Mon, 16 Dec 2024 17:59:02 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1tNFlz-0000000AxXx-3uOA;
+	Mon, 16 Dec 2024 18:24:51 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNFK8-0000000AqNR-0FuN
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Dec 2024 17:56:06 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-3022598e213so43009981fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Dec 2024 09:56:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734371762; x=1734976562; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=qwf0Q6wp6H/pRC8arADlqkyBJYwrH22sNYfvDfmEvNU=;
-        b=eaVg9askj+JYmXl1qmUwieQSA9DFOyBDBZjHT/qLQEO1c+d9vSpGZgxhuBDiRDmKmB
-         4SOj9e2r8ooytJc2LVOL9EJCJUYs+QFdKlmwN1ldTg9TT8Afmiw/iTN2NI8PaenIVhEs
-         gPuwB5c/e2zN5D9GJ7gco6AcFCGDZESN4LiE9lmRJ402uJUm8KTaRbcY73B1UXb5P42Z
-         4ceiGsYi4fDNqZb8UgxkMJ44YMvC8KyLey5sEruxnGmDnwkFFMLjK6PG5WU4eXvFGhiN
-         gLirsfUdnpV3mjabUNxXH97MPKX9RUJCXQEtbKR3SFCGiHZUxtXiTX14hO7eGRFrvhJB
-         +PEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734371762; x=1734976562;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qwf0Q6wp6H/pRC8arADlqkyBJYwrH22sNYfvDfmEvNU=;
-        b=l6bc2T0lTrlQR26112LViT+JcRRLl0Pw+s/n5BJ8SPN1rxNkG5yFPX2s9PnH+gK2Jg
-         8cvRqOdCk4sU2zFQL2yfJqRftChIZwkhPCvvX9S+Z3YwEJLhH6AfyMT56Ix9+2DTc6bi
-         jghz5aT7rOZZgdG7CI9Q3mU5XbWCK9mhE3WH6PYdgd5LYIVqgcDPcr3EynsUqOgvlnnB
-         6BLWZDsQffK0QGULdTtEIkRtAX0tN1efBDrkeBDorBwjt+OTWvodynua0I5X9ViVa1A+
-         8RbMdSDZqufccko5Ax6H0RHjX7FOGy6MGxHH7ZWfXgKn3DymQFUsr7dyTxVkuM6oxfuT
-         PC/A==
-X-Forwarded-Encrypted: i=1; AJvYcCWiZCdC5QAaY5u0vn9zDg0G/h9gF4NBmsfqzOiau0mW6RHmP/tfbTcYa4XKf4ldHLYdRg6O+gdo/+Zw3r+Nxw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzJhf6MmJCz1EvGJuJPvOAqxt1vtasrRk9o6DhehiujDDP0Koa2
-	W1C9h02+v8sE/MUrNisEVqajJS5a+HabLDtRab5Yxgs7s0g+vEyqHG3h2uZOPWM=
-X-Gm-Gg: ASbGncsd0l0nXd+lSBogyqsX3mWBFDj62CopntIlcWaHet1nR069DyzWI0ukFVJsj3q
-	bDvj/lKydt7+JjW4RXCKXVsqWsaiaiGJ4mRjrLKYWman4Njrn1v6eEozVbRQmD1K0WxlQ3VV93L
-	Rjil9g/Wtts9RC0nBxFEGf4sJ3WQr1Mz2+3QdBiMnJ50MxO1KD4RSPQEg97OfMamIqvNvFVqY+j
-	OhVWXYcShWalux7B5I8IUigIbKdGL7qqDLuYfcEQ/0Oektu28DmQgVe1Anixrszt7JY/sDqlb1J
-	J60Y18/79keGpskw5gl/9u2nTvJ4N58CoXek
-X-Google-Smtp-Source: AGHT+IG29n5FlljcG2G5r78Pj66GgzI4srZEZjCTKnfT1NsJdZGIbQtNCeGwmhS44dO/GlUjtQdAug==
-X-Received: by 2002:a05:6512:280a:b0:540:5b5c:c181 with SMTP id 2adb3069b0e04-5408b800764mr4435678e87.6.1734371761893;
-        Mon, 16 Dec 2024 09:56:01 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120b9f4b8sm949454e87.13.2024.12.16.09.55.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Dec 2024 09:56:00 -0800 (PST)
-Date: Mon, 16 Dec 2024 19:55:57 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Maxime Ripard <mripard@kernel.org>
+	id 1tNEgA-0000000Ajh9-3CLm;
+	Mon, 16 Dec 2024 17:14:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 06AFEA418F4;
+	Mon, 16 Dec 2024 17:12:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04C81C4CED0;
+	Mon, 16 Dec 2024 17:14:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734369285;
+	bh=gSmxdiZIDJu8BiwcPOPmdFwY35K+Q89CNQo+hWjcaBI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hQHCHQzd7ZPIab39Ofnd+yXIC4ls5Sg800JevG7+xsIAlI5/TSS8iZD8gBLSm+9C2
+	 JYycOcmN5xNLB6YWaiULVIf49/1INTM9Yy3QYPrJ0f2XaiRWXOJtBeHR96T7ar1k9m
+	 MQTAKU0UkGhpNiwmODYRvxOxjF0c7YdtvUSpMtswW0Ap4N3E0Gb02OS0ftC986pvEM
+	 gT6r2hlcQQWyNBsLSkCXJMIsUlm7UEoD2d+l8a8zVS2NlhjBa0Tr087/RROUBQRtp6
+	 j8cO5tnt5lwpEAfKOGfC2QNiqlfdta5JMk/eS/+3crxOYye9wiuiNZ5M896vJYb1+M
+	 qumZBJPpZFwmA==
+Date: Mon, 16 Dec 2024 18:14:43 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
 	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
 	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
@@ -90,18 +64,19 @@ Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 06/10] drm/display/hdmi: implement hotplug functions
-Message-ID: <bapkgt2e33bhdmun4efcuaedshyyv7qvjgugu5y53ordw3gigl@n7zbfoga7qo7>
+Subject: Re: [PATCH v6 04/10] drm/bridge: connector: add support for HDMI
+ codec framework
+Message-ID: <20241216-benign-amiable-grebe-e0b3e1@houat>
 References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
- <20241206-drm-bridge-hdmi-connector-v6-6-50dc145a9c06@linaro.org>
- <20241216-courageous-mysterious-pelican-5a8d2e@houat>
+ <20241206-drm-bridge-hdmi-connector-v6-4-50dc145a9c06@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="h3bq7alicyplnrqd"
 Content-Disposition: inline
-In-Reply-To: <20241216-courageous-mysterious-pelican-5a8d2e@houat>
+In-Reply-To: <20241206-drm-bridge-hdmi-connector-v6-4-50dc145a9c06@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_095604_117591_D7EA24F0 
-X-CRM114-Status: GOOD (  31.75  )
+X-CRM114-CacheID: sfid-20241216_091446_945709_3B5C3A02 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,110 +91,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 16, 2024 at 06:20:04PM +0100, Maxime Ripard wrote:
-> On Fri, Dec 06, 2024 at 12:16:00PM +0200, Dmitry Baryshkov wrote:
-> > The HDMI Connectors need to perform a variety of tasks when the HDMI
-> > connector state changes. Such tasks include setting or invalidating CEC
-> > address, notifying HDMI codec driver, updating scrambler data, etc.
-> > 
-> > Implementing such tasks in a driver-specific callbacks is error prone.
-> > Start implementing the generic helper function (currently handling only
-> > the HDMI Codec framework) to be used by drivers utilizing HDMI Connector
-> > framework.
-> > 
-> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > ---
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 61 +++++++++++++++++++++++++
-> >  include/drm/display/drm_hdmi_state_helper.h     |  8 ++++
-> >  2 files changed, 69 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > index 80bf2829ba89b5f84fed4fa9eb1d6302e10a4f9e..4cdeb63688b9e48acd8e8ae87a45b6253f7dd12b 100644
-> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > @@ -769,3 +769,64 @@ drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector *con
-> >  	return ret;
-> >  }
-> >  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
-> > +
-> > +/**
-> > + * drm_atomic_helper_connector_hdmi_hotplug_edid - Handle the hotplug event for the HDMI connector passing custom EDID
-> > + * @connector: A pointer to the HDMI connector
-> > + * @status: Connection status
-> > + * @drm_edid: EDID to process
-> > + *
-> > + * This function should be called as a part of the .detect() / .detect_ctx()
-> > + * and .force() callbacks, updating the HDMI-specific connector's data. Most
-> > + * drivers should be able to use @drm_atomic_helper_connector_hdmi_hotplug()
-> > + * instead.
-> > + *
-> > + * Returns:
-> > + * Zero on success, error code on failure.
-> > + */
-> > +int
-> > +drm_atomic_helper_connector_hdmi_hotplug_edid(struct drm_connector *connector,
-> > +					      enum drm_connector_status status,
-> > +					      const struct drm_edid *drm_edid)
-> > +{
-> > +	if (status == connector_status_disconnected) {
-> > +		// TODO: also handle CEC and scramber, HDMI sink disconnected.
-> > +		drm_connector_hdmi_codec_plugged_notify(connector, false);
-> > +	}
-> > +
-> > +	drm_edid_connector_update(connector, drm_edid);
-> > +
-> > +	if (status == connector_status_connected) {
-> > +		// TODO: also handle CEC and scramber, HDMI sink is now connected.
-> > +		drm_connector_hdmi_codec_plugged_notify(connector, true);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug_edid);
-> 
-> I think we discussed it in a previous version's thread after you sent
-> that one, but I'd rather have that helper call an edid retrieval
-> function than passing it edids.
 
-Ack, I forgot to add the hook. I'll do that for the next version. I'll
-add the .read_edid callback to the HDMI functions.
+--h3bq7alicyplnrqd
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 04/10] drm/bridge: connector: add support for HDMI
+ codec framework
+MIME-Version: 1.0
 
-> 
-> Also, EDIDs are mandatory for HDMI, so I'd call the function
-> drm_atomic_helper_connector_hdmi_hotplug.
+On Fri, Dec 06, 2024 at 12:15:58PM +0200, Dmitry Baryshkov wrote:
+> Add necessary glue code to be able to use new HDMI codec framework from
+> the DRM bridge drivers. The drm_bridge implements a limited set of the
+> hdmi_codec_ops interface, with the functions accepting both
+> drm_connector and drm_bridge instead of just a generic void pointer.
+>=20
+> This framework is integrated with the DRM HDMI Connector framework, but
+> can also be used for DisplayPort connectors.
+>=20
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> ---
+>  drivers/gpu/drm/display/drm_bridge_connector.c | 100 +++++++++++++++++++=
++++++-
+>  include/drm/drm_bridge.h                       |  38 ++++++++++
+>  2 files changed, 134 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu=
+/drm/display/drm_bridge_connector.c
+> index 512ced87ea18c74e182a558a686ddd83de891814..4fa1bb73d430d02d5b79a1a18=
+4c203ec9e9c66e7 100644
+> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+> @@ -21,6 +21,8 @@
+>  #include <drm/display/drm_hdmi_helper.h>
+>  #include <drm/display/drm_hdmi_state_helper.h>
+> =20
+> +#include <sound/hdmi-codec.h>
+> +
+>  /**
+>   * DOC: overview
+>   *
+> @@ -368,10 +370,80 @@ static int drm_bridge_connector_write_infoframe(str=
+uct drm_connector *connector,
+>  	return bridge->funcs->hdmi_write_infoframe(bridge, type, buffer, len);
+>  }
+> =20
+> +static int drm_bridge_connector_audio_startup(struct drm_connector *conn=
+ector)
+> +{
+> +	struct drm_bridge_connector *bridge_connector =3D
+> +		to_drm_bridge_connector(connector);
+> +	struct drm_bridge *bridge;
+> +
+> +	bridge =3D bridge_connector->bridge_hdmi;
+> +	if (!bridge)
+> +		return -EINVAL;
+> +
+> +	if (bridge->funcs->hdmi_codec_audio_startup)
+> +		return bridge->funcs->hdmi_codec_audio_startup(connector, bridge);
+> +	else
+> +		return 0;
+> +}
 
-See below.
+Nit: it looks like you return in other cases, and there's no need for
+that else.
 
-> 
-> > +/**
-> > + * drm_atomic_helper_connector_hdmi_hotplug - Handle the hotplug event for the HDMI connector
-> > + * @connector: A pointer to the HDMI connector
-> > + * @status: Connection status
-> > + *
-> > + * This function should be called as a part of the .detect() / .detect_ctx()
-> > + * and .force() callbacks, updating the HDMI-specific connector's data.
-> > + *
-> > + * Returns:
-> > + * Zero on success, error code on failure.
-> > + */
-> > +int
-> > +drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
-> > +					 enum drm_connector_status status)
-> > +{
-> > +	const struct drm_edid *drm_edid;
-> > +	int ret;
-> > +
-> > +	drm_edid = drm_edid_read(connector);
-> > +	ret = drm_atomic_helper_connector_hdmi_hotplug_edid(connector, status, drm_edid);
-> > +	drm_edid_free(drm_edid);
-> 
-> Oh. Why do we need the two variants? Or is it to deal with drivers that
-> don't set connector->ddc?
+I'd remove the else.
 
-Yes. There are enough HDMI bridge drivers that would provide the
-callback instead of the DDC bus. Adding callback should solve that.
+Looks good otherwise, once fixed
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 
--- 
-With best wishes
-Dmitry
+Maxime
+
+--h3bq7alicyplnrqd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2BgAgAKCRAnX84Zoj2+
+diFoAYCKbrWMG5n+5jqP+LBnOpHQztpGr0fb/9SiSABc8x5qqhuNZ2mnrkin14cR
+DBnqLSoBgLO7VEPgbZZDR4NjbELbuh+1PGlUqiaaajox0mSG5OXJFXoEo+liaS9G
+zmiTmODHlw==
+=LiWN
+-----END PGP SIGNATURE-----
+
+--h3bq7alicyplnrqd--
 
