@@ -4,186 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530C9E7717F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 13:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA3FCE7717F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 14:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=; b=MWnzquVtqMLq2j2tvxlLLJOm7u
-	ij5hgqJw602bWxUkRCV3MHlGPKGvOV309hps9aWVesl8qHhyU8whsq9XnwvH4d6iAENCB2noGP3hY
-	4/4+tonB3qQJzjZYzEZi1myOvEciyN/MPA2PX42qyyGbj41/4yLr/e80BJIvm0EBNQeSgp6PwMX3s
-	0a/Bz3J2HBNN1sp+YM2NGeoID/SzOsmxVuWXx0hBffhQMxAFJbGHtuQq8MuBNgyeakb1baugy/Ne6
-	y46p1/pNOQQ1vpUNiEFL3XPwqXVnZ+2qv81+qhsF5FkuMRM+gcXMb+4mrJBCw3SoXH6n7mF0q6Sx9
-	1xuXU7+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p4HEJRNkJsMuZWEEvbh3kE/ls8GrPrXfh0AAgq+OuT4=; b=VEhrjg38dxi9O1MkXzllAkL6wb
+	S9SmHUi93RMb35UVyNfXJxwSuZGt1wB3n9b18+Z9Aya3lUvRTFvAMDU12hYv29RIVmXvtxjlG74I/
+	38BhidneQQwFVZz6MKSzjVyg/RklA4uhuoansCD+TwX3oOTOpxTal+rS36rBhxvB33rav0UjI5uZ6
+	1ZtcxfDlKV+Hnc8Zd47jBe5Tw1GMqV366CAu0Cy2GeWobJSslGyUWR3FaDzrhYL2Gu7SIqgEv2Azr
+	KiESdt+imSyig8aeLqfnIoHU/aadIUdRtWSRnM7RG8PBdg9g9dpcS5Yg5GRGM42niAMWFB7laSs/u
+	Hc6R5rRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBYC-0000000A9Tx-0lgV;
-	Mon, 16 Dec 2024 13:54:20 +0000
-Received: from mail-sg2apc01on20705.outbound.protection.outlook.com ([2a01:111:f403:200f::705] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1tNBox-0000000ABlG-078Z;
+	Mon, 16 Dec 2024 14:11:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBY9-0000000A9SJ-2R3K;
-	Mon, 16 Dec 2024 13:54:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ID8kDKdd4xIqqFubQeYG4c8NnLZ/1P6R8Y7QHCsqzCY3wqnPFmLBx70rCCJSo/w4cVQsA7e1rg3gm6qwQA7q3gnTQ7Ne4g0tbdt4xGBBXY6N1pkq8h0SZzNUdDa2ew41gjaw2/Wkv2cm6h9Q/shANo1v6WE2A10jCYvg51sCBm/J1nZ4hPN+tZ8pMOlgsvdvMJmdeMEUEXvNOpnqR1y56fxkluRctu2eGX8tHoEVNpZsPpN+scPeEVGW4B/bLKbnLBhtACkwcT1qzDo9pGgaO1DqjIKYnmBtuP6c3RhB13BHt4kmvCX3i1OF2+1LsOi3P8gakJoPKzgFYNnnG8p+0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=;
- b=gXaPJxlw5eezMKSLFbH1dxNTo0bfwZgrrMycE9Uzfj5SgvcP+MJR2PKr8GlPC0/bYx4aI0ISy1nArxgQlZGu+5Z6Mzbnyn32ygQgd36uB22NJP+uAHqzWYeUf1t401lq6UwNqU7xQALBYvsK07+0p0pa/ALa8nqlXd8NmZgMjdkKnLuQWJ2MPIuQjvTscccxYuUL7ldV+ZbgrBU6GbEQVXY18q8fJhCCwibwlcEfw+p7W3ynRpNfRaVwc3CXLjcFqv+s6ol7sWuCBmrjvrRgwqnCqCHUVYgNjL7W9C+iyr/NA1whbxsmQjBBtwQpTt1UdpfxzFcZIm44qvAoW/q+EA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8pW5F+E8e/NerHuPwJBcvwKUQKMqRgo8cOAW8Vok9X0=;
- b=ccgmECO7xs1O9+0k97QiT8HMR/ulOP+jIISK515aR7y1sPIgo3VEs7dpQjD+4zLKyUEamTuSUVq4CfQ3uj+Ov6JaVB/3zRtZv3aDqUpS9DKMI8IHGc9/c2i+AUY47mcqF9CxgXhK4Dvicuc2af291LuvasnJdJYqeTgC/44QTVg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by SI2PR02MB5955.apcprd02.prod.outlook.com (2603:1096:4:1e6::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.20; Mon, 16 Dec
- 2024 13:53:56 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%5]) with mapi id 15.20.8251.015; Mon, 16 Dec 2024
- 13:53:55 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: ryazanov.s.a@gmail.com,
-	Jinjian Song <jinjian.song@fibocom.com>,
-	chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com,
-	corbet@lwn.net,
-	danielwinkler@google.com,
-	helgaas@kernel.org,
-	horms@kernel.org,
-	korneld@google.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	netdev@vger.kernel.org
-Subject: Re: [net v2] net: wwan: t7xx: Fix FSM command timeout issue
-Date: Mon, 16 Dec 2024 21:53:22 +0800
-Message-Id: <20241216135322.4533-1-jinjian.song@fibocom.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <da90f64c-260a-4329-87bf-1f9ff20a5951@gmail.com>
-References: <20241213064720.122615-1-jinjian.song@fibocom.com>
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: FR4P281CA0342.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:ea::20) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
+	id 1tNBnn-0000000ABId-3Oms;
+	Mon, 16 Dec 2024 14:10:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734358225;
+	bh=9BMq611RSXimAJ+Nd4yXmLpN4KwHNrEW5UBvFhxngaA=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=glWcTs8SLz86Y9sW9NLV7fe4D7IiBZoL2azvS+FTKDl0SO1vgDkOEoODHM/+65/xW
+	 6JzAxgEy20rAmA4CCmxCHGbMB+uOH4aRgLjqpVXBnIZRs1ZKd5Ud0nwlrFm04i9Nqi
+	 50YtPCScf7X9y6DtbarvMVN+8mPLJE5A1+4KUIT4U0O2WRarHF021l/Hq+WOjEbE+d
+	 U3aacBdYv1mEOClv0hJBnWk4VJ9ZNbmXWS5ipj1U1O7XRtcazHWomPYf0ac1TIuVq2
+	 b1bFPofH8FGNIYYPYaWLIl4iEbabKoDO50deZ3N9vhjHx7mSY3Q+vZ4P4AkZU7UWR5
+	 PRN1RSx3v3Srw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7DBC617E377C;
+	Mon, 16 Dec 2024 15:10:24 +0100 (CET)
+Message-ID: <016f8f1a-e408-43d7-9a76-1a025ba159e8@collabora.com>
+Date: Mon, 16 Dec 2024 15:10:23 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SI2PR02MB5955:EE_
-X-MS-Office365-Filtering-Correlation-Id: f357eb12-30bc-4eb6-fbd6-08dd1dd91442
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|52116014|376014|366016|38350700014|7053199007|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZkhoZDlHVE93d0hGV25SY0NFSUlFL0JnUS91TWJZenkrbkxCaTR0bUZROTN3?=
- =?utf-8?B?SE9XOGZtQ09RNmtOYXRCS0ZTQWRrREQ5UjBCQ1drV0pPZzl3NHl6MWVNakZJ?=
- =?utf-8?B?Z29NY3BDZ3ZDaGpSV25sN1VhWXRRVEV2RkFSbFMzaHdXVzA1T3NDbnpkQXlD?=
- =?utf-8?B?RkVtN3RjbWtqSzIwbk15emJuZzAzdVVtd2daU1N2aDg1QW1NZlF2K1JISnNC?=
- =?utf-8?B?akJnK203VWxKWm10azhwdkh5dGx5T0gycVJHdlpKTGdhYi9QTVE2OS9OM09r?=
- =?utf-8?B?VXdYcFJ3YjIzbVB2N1A0M29XQWNXZ2RwN2FGams3OEN4bkJseW54N0FqcTlq?=
- =?utf-8?B?MjcyRzd1WWNKTllNZ3NQVjZxUTRRb2VRSEtUZEJVd1oxWUhmQ0Jnb2Z2ODdX?=
- =?utf-8?B?NTB5RDNsTFVlWVMzaFQ1N3JTOEUzNDRMVzdUeC8wYUM1ZytYaUFwME9zWkRP?=
- =?utf-8?B?d3l1VGZ4dUVMS1loZ1kyeklVWWhCRG1ycEcwNFZxOXYwc0NON3BSZ2YxNTJs?=
- =?utf-8?B?R2hsVEdJcVpuUW9NYVlMbHZ0ZXJCQVdjb2VTRzFBL0cyZWVUd2d0Q1ZHSEJQ?=
- =?utf-8?B?ZXpLeGFyTCtDMmlZNFdxSDdyZzJZTDl5TWhlUlRSVDJzYmJXeXRiWlprNjly?=
- =?utf-8?B?TS8wbi91WWJzVGdEem1rdEIrYisya2F5eTk3Zi9TMWZVOW0rNTY4Q2d0K3Zm?=
- =?utf-8?B?alhxb0VSQUVtdEhJR21adjFxWGhVa3FYOUFmcFlkSWpXOE9DVW9DK3ZWUU00?=
- =?utf-8?B?RndyN2h1UERlWGdNeGdxbm0rVitXdGhrYkE4azRselpOeGlNYzduSmtldjNQ?=
- =?utf-8?B?MW1HNnhYNTdScytKbGVMb1BUSjZIU0tScklIVUQyTVd1Uk93cm9Fcnk4U1dS?=
- =?utf-8?B?VnMzM0pGV2tHRWQwY2ZiSVEwZzRhQXpPaEZiNG5meHNtcEhVS28wZVVNc1do?=
- =?utf-8?B?c1pjd0lCRFhheG1ENmxRTHdGTGFJNkpGS254VGdJNFdVckxhWGtEb3p3Q1lh?=
- =?utf-8?B?NXVoTTVUNzBERDdpaGJWMENycWZQbUsxelFiTnUvcEhlWkRtRllyZHI4R1Ez?=
- =?utf-8?B?R2tWemUvYmxDV1RGc2VvSlJWSlZMeWZUYmdPQlE2UU5qWFNRbFl3c0NrcXM1?=
- =?utf-8?B?NG01YTVJMXBDM0JLK0NCR2dxaDNJelVwY2hHTXlwd2xHL2ZINm51cTBkVVZx?=
- =?utf-8?B?Z0NMWGVMenRPSHg2TUs5UDBpcGtPbGRVVHdaWndacFlOaFp2RU44RkRNUzFN?=
- =?utf-8?B?cHJSMWJkRVg5MmcyYy96bnlZWlBhbHYzQXNVaW9zc2NGbWl4OG5lNFNpUU9V?=
- =?utf-8?B?MnUwRE5ScGgzMkpHRmp0d29LV2prV25GYURPN3AxamJFMU1TMjZRQUkvbmVi?=
- =?utf-8?B?MXUzaGRDNFNCQ2NBOTE4MzNubTdrYU94K0VUbjd4N3hkUmprM3JUSDBNSk9R?=
- =?utf-8?B?OHo0bmV6aHl5QnJrbjZSZms4OUQ3bHFUajEwdVhxMFA5dTRFS29iMGNVSURZ?=
- =?utf-8?B?bi83cjJGRk5nUHJHOVdVMkpqVHU3Rmo0Mkt0YVo3Vzc0VHh6akczRUgzT0lk?=
- =?utf-8?B?ZVE0Tmc5VW5vYmdHOTh5QU12bEhvWmp0S2QzWkxBWHovZWF6R25oRWNrR2hR?=
- =?utf-8?B?U1ZVeVJpT2d2ZTY2VUJWTVZUNzhZL0FkKzk4Qnh6ME9DaW94MU5CSFdPNzhM?=
- =?utf-8?B?bW8raUc3N25WOGM3emJERm1ESFU4S3pxeGFMV0NiT3ZnTFVwWkNTcVRlcHli?=
- =?utf-8?B?TnJGYU1hZmNHemdNdnJyc1F4Tks1eU9QV0VsTUxaWUVmVTltSDlnbkI0RmdB?=
- =?utf-8?B?MW51NXF3aVhQclRMWllXMlJucWJPTjdIMlREWE4wckoxVHdiRk1nb0o3RFpZ?=
- =?utf-8?B?aEl3MHlvVXFNVmt1ckk1cStEQnlrR2tZUktKRmo2bG53RlR2S2Y1UGVXUDh6?=
- =?utf-8?B?ZVFOSzVadkVBWEJpajcvcDNtdVM2ejc5N2dMd2JwL1p2SFJha3pTZHR3T21R?=
- =?utf-8?B?dnBjYmxYbFJRPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(52116014)(376014)(366016)(38350700014)(7053199007)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?M0o3M2tBTi9LcTl2TmM0ZkMzRlhEOFYrZno5WDU0VjJvY2x6TmNEanF2QnNq?=
- =?utf-8?B?MjNvaTBsS1BvU21SUHgrZHB0Q1V5QWhlakFZWE9zWmRrNTdvb3J5elRQVXdB?=
- =?utf-8?B?Zmdoekd6UllHMGQyUHpzc2lYSFBlTUNPOEQyNGFMTE55QmQrNG9xMFlrUktj?=
- =?utf-8?B?cVV4dmZOVzJmWWdJK0QyTGZlVjQ1UWRUK29VMldYbDlWK3pOOXltSlVsYnNo?=
- =?utf-8?B?VWw1dUdUNTY3VlRncGxJZmg3b1VEcWtSYS9lUnBmR0lpRXRmWVdkaXc4bzdS?=
- =?utf-8?B?TFR0UDdCaG9kZVlITnFPOEVHc256SFFaVWpOdG8vcGRnK2tEOGYzd3JqSGFZ?=
- =?utf-8?B?R2FxdEtqU3QwS0FFMnFNdHk4V2JVYXgweG1LMkZGYnZjMlUxUmtEUHNScGU5?=
- =?utf-8?B?akdCaEdKYW1ablc5RmIxZS94bTIzaW95SnJ3NitqY2tJb2lrMjVId2E2eWhT?=
- =?utf-8?B?cW9mQXNqZnM5U0dCMllRRlZnQ0RwVW1JZkNSS1ZIcnZNTW8yWVR2dWxNVVBp?=
- =?utf-8?B?SmkyRDhUTWlQMVlsbzVEUFZEdTl6Tll5ZzNmZTFKSFpoc21NSE9aWGd1WVJD?=
- =?utf-8?B?YlNCc1NtSlNNL1FMTmNUVkZKTXpoa29zWi9NcTVrWkxhMHdNVDc3QmpWNUs4?=
- =?utf-8?B?bTJzREFCNk5FaG9zbERacFJqK01FRitwK0xTVTVkV0V1cmlrNzBTZGFROUxY?=
- =?utf-8?B?VlYxZWdMeE01WW9mUmJrRUZ6azlERDdKR1hIVVM2N3NDcW5jWVhSQ2RyWEpN?=
- =?utf-8?B?SDZ2eUJOWTBXZmVGMzFyeTkyT2NOcEUrUFhDZTZMNWR4OHgyZWp1Qy9vdEgw?=
- =?utf-8?B?UllSU0xkUU1PU2xNR3VTZ1hNeEVOa1VuOUZQVVpIdVdnRGQyY0VoTEQ2c3J2?=
- =?utf-8?B?S1JvR2NFUThWenBxMEdhUG9vbUx5UGJVYlJBRnh5RUNVS0R3OFFHNm8xdExC?=
- =?utf-8?B?c2FlUEw5YXMyUjVTVkorcEVzcmNOZnBUNVR5dHdZc243VVJPTkVCYlk4azRT?=
- =?utf-8?B?U2tTYWVkYXlaa1dkU0tkUHJTNm4zLytVZkMrNmVEM281aWZ5T2NVV0FvWFhQ?=
- =?utf-8?B?MitKQndVWWdEQVIvUXQ5VXJSeDdzOVBQYjFsTHNRUFM0M216YjV0Z3FBOC9X?=
- =?utf-8?B?cXpaSEFrcmFLQUFrL1V0THFhZVNmdm1PYm1YVTRUYUlrRXRvYkUwcVRUTFVF?=
- =?utf-8?B?Y2tvRXk5S3NXeXJwTHI0UXltNTZBODZNUnBiWFV1ZXE5dWJUajVkdSttL0pE?=
- =?utf-8?B?Y1NLdUd6a2IxN0tzSVFrU3llazFQWDVSSmxoRzVWTXU2aHVJNTVJSkpGVnBh?=
- =?utf-8?B?RFpuOCs1U1BYUnVVd3JNU2dQUFpqdUJVU1ZLSkhzc2ZtY20yd29WQlF1RDhh?=
- =?utf-8?B?UUQ3Ym5LZmxpZERCa3ZYMURYSEZoTk9aSXIxaEJOcU1CRDVIOWo5MU16VFA3?=
- =?utf-8?B?Vm16RHZIYVJyRFVrMUNibjJvbGZ2enloRkRxZUxFalN0emF5ZVF0ZE9zUlVh?=
- =?utf-8?B?OTF3VDh4YXVsWGhza1AvdENkamRHa0U1K2ZkUVRKWkhoWHpka29sbHd5bkl5?=
- =?utf-8?B?dmZtQUVnNXdESWNsT1M4Z2wrcFRQbk5Wd3RYTFFaR1lvRnBrM1hqZlV3R3Fx?=
- =?utf-8?B?eDQ5T3BVa3BGaGV4d25KSFY0YlRFTHpMZ3Y0OUpEUFJtK0NJT2twcVJOakRP?=
- =?utf-8?B?NXU0T0tPcW9VYmllb1NibU5rM0t6R0tXL2cwQi9aUnpjbXdvR2g1T2d4U09X?=
- =?utf-8?B?alRuekY2TUZ2dkRPQThsTnBqdVBnc3FUUGRjVzc0TXBoUGk3by9ia0M0ZHBV?=
- =?utf-8?B?MGg2ZGhKbU5vVzVsWFhKc3Y0d0JXOWdaQU0rSXR6N0VtV3g0KzYzRjlydXVj?=
- =?utf-8?B?WTN4QzVJU0hnQ0YzVUE0NVZLZ09pZTNQUS9ZQ0RTMnM4bnI2bHVGSzFFVXhz?=
- =?utf-8?B?NjRVVktkMUhYREhnU0szeHpNVkNobVVmR24yUHp4dU52Qm1zcDFsNkdaUmZv?=
- =?utf-8?B?S1lqaDdXRlRMUzF4N3UvTURGSmhMY0p6QWVHVlk3TGl6S25wSWlKOHdMVzg3?=
- =?utf-8?B?NkdOTU4rSnVFMGZpMEliTmV2N1phRWcvcnRSR2h0eThZNE0wMy85V0NwOFla?=
- =?utf-8?B?WFpOQ201ek0zNldnQStxaFNSTGh2UVVuYWpwL3dhc1pNaVo5cGRKWFlaakJF?=
- =?utf-8?B?R3c9PQ==?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f357eb12-30bc-4eb6-fbd6-08dd1dd91442
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2024 13:53:55.2114
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ucPCDipT7hbLqytMwwQWN5QGSxvmyLCLChFxVWKHh/sOwQrR7NBThyfgROWyHE803VsYrZw9Che26vxb6AVBMLPhBf/rKztjzy8oiElJUi0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR02MB5955
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/5] clk: mediatek: mt2701-img: add missing dummy clk
+To: Daniel Golle <daniel@makrotopia.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Miles Chen <miles.chen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Frank Wunderlich <frank-w@public-files.de>, John Crispin <john@phrozen.org>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org
+References: <b126a5577f3667ef19b1b5feea5e70174084fb03.1734300668.git.daniel@makrotopia.org>
+ <d677486a5c563fe5c47aa995841adc2aaa183b8a.1734300668.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <d677486a5c563fe5c47aa995841adc2aaa183b8a.1734300668.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_055417_626197_8E6923F3 
-X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-CacheID: sfid-20241216_061028_038260_05F3DB5D 
+X-CRM114-Status: UNSURE (   6.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -199,63 +84,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+Il 15/12/24 23:14, Daniel Golle ha scritto:
+> Add dummy clk for index 0 which was missed during the conversion to
+> mtk_clk_simple_probe().
+> 
+> Fixes: 973d1607d936 ("clk: mediatek: mt2701: use mtk_clk_simple_probe to simplify driver")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
->> Fixes: d785ed945de6 ("net: wwan: t7xx: PCIe reset rescan")
->
->The completion waiting was introduced in a different commit. I believe, 
->the fix tag should be 13e920d93e37 ("net: wwan: t7xx: Add core components")
->
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Got it.
-
-[...]
->>   	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
->>   		*cmd->ret = result;
->
->The memory for the result storage is allocated on the stack as well. And 
->writing it unconditionally can cause unexpected consequences.
->
-
-Got it.
-
-[...]
->>   		wait_ret = wait_for_completion_timeout(&done,
->>   						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
->> -		if (!wait_ret)
->> +		if (!wait_ret) {
->> +			cmd->done = NULL;
->
->We cannot access the command memory here, since fsm_finish_command() 
->could release it already.
->
-
-Got it.
-
-[...]
->Here we have an ownership transfer problem and a driver author has tried 
->to solve it, but as noticed, we are still experiencing issues in case of 
->timeout.
->
->The command completion routine should not release the command memory 
->unconditionally. Looks like the references counting approach should help 
->us here. E.g.
->1. grab a reference before we put a command into the queue
->1.1. grab an extra reference if we are going to wait the completion
->2. release the reference as soon as we are done with the command execution
->3. in case of completion waiting release the reference as soon as we are 
->done with waiting due to completion or timeout
->
->Could you try the following patch? Please note, besides the reference 
->counter introduction it also moves completion and result storage inside 
->the command structure as advised by the completion documentation.
->
-
-Yes, please let me try the following patch.
-[...]
-
-Thanks.
-
-Jinjian,
-Best Regards.
 
