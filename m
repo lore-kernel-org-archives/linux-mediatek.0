@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D297AE7717F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 17:17:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F9C3E7717F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2024 17:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
-	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
-	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gNU+E/bNUeoRD0tPsyKikGu5k6XwnbaOdrZkNOIjIhs=; b=e0LMIKiDY4qJjDLzZPMcNILQN5
-	2tvK1yDT/ETjQuT94QwtHD5X0iGj5z4MZaYOkr63Mfka85w355CLdPtk8pBDlNn0Kf4Lde5xqLc3V
-	ooueI6Fr3Ew9E2BtMSEfFZKy02dppJrLyElFcDZGKAdjEW0UGcVA4KQP4dgWly13kXZUyVvbswIvy
-	SLL/ST4WMSHIfi3NMEnRQLiH9Kl9W69lR9RAQeXYVM6lTwOUpyUjG0QT1VBzAuQOOUAhTNL6nTNl8
-	0iEhiKFMQ+I/hqpq3GZ86dVFDkt47IvuWCv27CR6LyhcqCwwhtYa7eJTPuaGJ2Q/f86shdAc4embl
-	KznChR5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EoB1GbKivXuBsxxps3C04czV7lAogjlaWsBJsIxZ3zo=; b=MWoiI0JYmjSD8kto3uuy+znQ7u
+	rSX91s1pXn6OhNzo/gD4EKKANlSzQ/VSIpvKzjmkmw9MFz09YNQX7el5W4y7Ux0n9xQtqHHsn2aNC
+	su+7KHL02L+247V0ieQ0vyruV3frxboAmgkxy+0sMufEYvjrM6SeuJoHSwxaDkUiJ/p46/PdT6VIe
+	eWKibCaYSmA5+18OMqDPRUw01ZF1rUYTSv+cA1R3VoUy2SVr/upq4phN+SVpxY3UcxIkGwHLKDafT
+	RcPWIwT73/wo16gWHaHiMAAI80SDTEuJs7HTCZE447BoVQm1voJMv0VFuJ6GU2GahAOjlLH/vQ/9r
+	YjqS2J9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNEiN-0000000Ak8W-3WEB;
-	Mon, 16 Dec 2024 17:17:03 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tNEmV-0000000Al0X-0A88;
+	Mon, 16 Dec 2024 17:21:19 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNEgs-0000000Ajq2-3Gym;
-	Mon, 16 Dec 2024 17:15:31 +0000
+	id 1tNElN-0000000AkoC-0DrP;
+	Mon, 16 Dec 2024 17:20:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1263FA4127F;
-	Mon, 16 Dec 2024 17:13:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09C27C4CED0;
-	Mon, 16 Dec 2024 17:15:29 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C40A0A418A0;
+	Mon, 16 Dec 2024 17:18:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C29F4C4CED0;
+	Mon, 16 Dec 2024 17:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734369329;
-	bh=BYWVPSTco7NxgCFt7PuAti5s7WPTbsps5ogniby27jM=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=nd1NNY4qp5FoANXFQI8jCl/U7QtYaUohcli8BfdPGQhJzh01UHC+HcmogZYSsT7QU
-	 69UXwbb6NkJd1NWQtrLCrkFZtUbg6KMHus5WC2vPghoUvpDKvhxFQcKMAIXVXtqBcJ
-	 Urpm771eXTc0JS24NfDfDeNj3MWe90SEwqu9O+UnJbkbisJ88uWI7r7NYpIQHidcsS
-	 iyv9asoeEcQ1G09ZVL9ay2P6aLFDDMdml9MVivVG608IoNQ7ugTD7Rrrhom82fog+m
-	 uh1/lMkXyD4yD8Vvn8i3oalWIAS4ne4pmLKmdcxMTavYzcn3KZDXYXhrOMhrS6Gdhh
-	 ZvBbn8M1/VcHg==
-Message-ID: <05419690edbfe859f02d8675c57d3f8f@kernel.org>
-Date: Mon, 16 Dec 2024 17:15:26 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>
-Subject: Re: [PATCH v6 05/10] drm/bridge: lt9611: switch to using the DRM
- HDMI codec framework
-In-Reply-To: <20241206-drm-bridge-hdmi-connector-v6-5-50dc145a9c06@linaro.org>
-References: <20241206-drm-bridge-hdmi-connector-v6-5-50dc145a9c06@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, "Alain
- Volmat" <alain.volmat@foss.st.com>, "Alim Akhtar" <alim.akhtar@samsung.com>, "Andrzej
- Hajda" <andrzej.hajda@intel.com>, "Andy Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Dave
- Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>,
- =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Inki Dae" <inki.dae@samsung.com>, "Jani
- Nikula" <jani.nikula@linux.intel.com>, "Jaroslav Kysela" <perex@perex.cz>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jonas Karlman" <jonas@kwiboo.se>, "Krzysztof
- Kozlowski" <krzk@kernel.org>, "Kyungmin Park" <kyungmin.park@samsung.com>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liam Girdwood" <lgirdwood@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Mark Brown" <broonie@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, "Maxime Ripard" <mripard@kernel.org>,
- =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, "Phong LE" <ple@baylibre.com>, "Raphael
- Gallais-Pou" <rgallaispou@gmail.com>, "Raspberry Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Robert
- Foss" <rfoss@kernel.org>, "Russell King" <linux@armlinux.org.uk>, "Sandy
- Huang" <hjc@rock-chips.com>, "Seung-Woo Kim" <sw0312.kim@samsung.com>, "Simona
- Vetter" <simona@ffwll.ch>, "Takashi Iwai" <tiwai@suse.com>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
-Content-Transfer-Encoding: 7bit
+	s=k20201202; t=1734369607;
+	bh=lsZu4CW9iz0IkO0ux+aw5Ej8/2IsGxdLj0arY9En0D0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YBaGcecKJuSIX6KQhirAa1qTy7d84RJx1mtuyV3FWFyFtShxsSx6ncZ2o+pLNkYbd
+	 1LbAMTvJ3sHvy+/+nd9xPMX+gWvGfHzc5fb+jUNeCi/es8c6cGxlvhDz+BwkPCRtL1
+	 FkjvbaBKWFXSNMZEXy85Lh8kQyuhu3Meb7GopQEEpT/JFAo/R90CQ8FonvliIuXpps
+	 JPc24HcLyqUOT4LztFZufzutbjjeOGBE8GJVg25Lu2rOrLijZN2UjNpHUaSciQYsOf
+	 DqEVe1T4PIX0x4vxk/JFWnIraTws+pa3/QcNk1wHgUysyA0GCxkYxdN0jxTvRkcU7U
+	 uGXHMk9e3hSng==
+Date: Mon, 16 Dec 2024 18:20:04 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 06/10] drm/display/hdmi: implement hotplug functions
+Message-ID: <20241216-courageous-mysterious-pelican-5a8d2e@houat>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+ <20241206-drm-bridge-hdmi-connector-v6-6-50dc145a9c06@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="b5r2eocu5g4kytpy"
+Content-Disposition: inline
+In-Reply-To: <20241206-drm-bridge-hdmi-connector-v6-6-50dc145a9c06@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_091530_885562_0672DCD4 
-X-CRM114-Status: UNSURE (   6.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241216_092009_233211_DDB9C3FA 
+X-CRM114-Status: GOOD (  25.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,17 +90,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 6 Dec 2024 12:15:59 +0200, Dmitry Baryshkov wrote:
-> Make the Lontium LT9611 DSI-to-HDMI bridge driver use the DRM HDMI Codec
-> framework. This enables programming of Audio InfoFrames using the HDMI
-> Connector interface and also enables support for the missing features,
-> including the ELD retrieval and better hotplug support.
-> 
-> 
-> [ ... ]
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+--b5r2eocu5g4kytpy
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 06/10] drm/display/hdmi: implement hotplug functions
+MIME-Version: 1.0
 
-Thanks!
+On Fri, Dec 06, 2024 at 12:16:00PM +0200, Dmitry Baryshkov wrote:
+> The HDMI Connectors need to perform a variety of tasks when the HDMI
+> connector state changes. Such tasks include setting or invalidating CEC
+> address, notifying HDMI codec driver, updating scrambler data, etc.
+>=20
+> Implementing such tasks in a driver-specific callbacks is error prone.
+> Start implementing the generic helper function (currently handling only
+> the HDMI Codec framework) to be used by drivers utilizing HDMI Connector
+> framework.
+>=20
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> ---
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 61 +++++++++++++++++++=
+++++++
+>  include/drm/display/drm_hdmi_state_helper.h     |  8 ++++
+>  2 files changed, 69 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
+u/drm/display/drm_hdmi_state_helper.c
+> index 80bf2829ba89b5f84fed4fa9eb1d6302e10a4f9e..4cdeb63688b9e48acd8e8ae87=
+a45b6253f7dd12b 100644
+> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> @@ -769,3 +769,64 @@ drm_atomic_helper_connector_hdmi_clear_audio_infofra=
+me(struct drm_connector *con
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
+> +
+> +/**
+> + * drm_atomic_helper_connector_hdmi_hotplug_edid - Handle the hotplug ev=
+ent for the HDMI connector passing custom EDID
+> + * @connector: A pointer to the HDMI connector
+> + * @status: Connection status
+> + * @drm_edid: EDID to process
+> + *
+> + * This function should be called as a part of the .detect() / .detect_c=
+tx()
+> + * and .force() callbacks, updating the HDMI-specific connector's data. =
+Most
+> + * drivers should be able to use @drm_atomic_helper_connector_hdmi_hotpl=
+ug()
+> + * instead.
+> + *
+> + * Returns:
+> + * Zero on success, error code on failure.
+> + */
+> +int
+> +drm_atomic_helper_connector_hdmi_hotplug_edid(struct drm_connector *conn=
+ector,
+> +					      enum drm_connector_status status,
+> +					      const struct drm_edid *drm_edid)
+> +{
+> +	if (status =3D=3D connector_status_disconnected) {
+> +		// TODO: also handle CEC and scramber, HDMI sink disconnected.
+> +		drm_connector_hdmi_codec_plugged_notify(connector, false);
+> +	}
+> +
+> +	drm_edid_connector_update(connector, drm_edid);
+> +
+> +	if (status =3D=3D connector_status_connected) {
+> +		// TODO: also handle CEC and scramber, HDMI sink is now connected.
+> +		drm_connector_hdmi_codec_plugged_notify(connector, true);
+> +	}
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug_edid);
+
+I think we discussed it in a previous version's thread after you sent
+that one, but I'd rather have that helper call an edid retrieval
+function than passing it edids.
+
+Also, EDIDs are mandatory for HDMI, so I'd call the function
+drm_atomic_helper_connector_hdmi_hotplug.
+
+> +/**
+> + * drm_atomic_helper_connector_hdmi_hotplug - Handle the hotplug event f=
+or the HDMI connector
+> + * @connector: A pointer to the HDMI connector
+> + * @status: Connection status
+> + *
+> + * This function should be called as a part of the .detect() / .detect_c=
+tx()
+> + * and .force() callbacks, updating the HDMI-specific connector's data.
+> + *
+> + * Returns:
+> + * Zero on success, error code on failure.
+> + */
+> +int
+> +drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
+> +					 enum drm_connector_status status)
+> +{
+> +	const struct drm_edid *drm_edid;
+> +	int ret;
+> +
+> +	drm_edid =3D drm_edid_read(connector);
+> +	ret =3D drm_atomic_helper_connector_hdmi_hotplug_edid(connector, status=
+, drm_edid);
+> +	drm_edid_free(drm_edid);
+
+Oh. Why do we need the two variants? Or is it to deal with drivers that
+don't set connector->ddc?
+
 Maxime
+
+--b5r2eocu5g4kytpy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2BhRAAKCRAnX84Zoj2+
+duMGAYDwCfVmRQt5W/JuFEAWhXLZLjo4CeJIKFXnit8/2S+ODRFntJMw/cPpQN7U
+HE28DAcBfAyu8qSgYzb4NIvRrHkIsi2wL3YWiVUclrh01Haso0u/clDsW8282oLw
+FBFc2NqiHA==
+=shxs
+-----END PGP SIGNATURE-----
+
+--b5r2eocu5g4kytpy--
 
