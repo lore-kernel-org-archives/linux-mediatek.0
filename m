@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96BAE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 15:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A65E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 15:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=; b=v8Ez7Iwj3EfSPCZX4Otey0juSY
-	rznq6qZAJ+Wr3X4WZ9wvvb8IpoHoFt7liq6e96Hoqvqb8vzGz4Zlg7Pw8lwTUfZL9jqWoNpRP3wZp
-	AQhwl9Pb/dIrXhTuYM/MIYF0OAKYgWa/XVEOiIb3CNfr5LunWOi6p0wGyR4ydD2eg9Uih1pWAQGXy
-	k2VS5ZnxkS/eWy8B0GvOY4QqW80z9A/jbpuIRqAYO9OewLLc73TlPGjTwQlKb2cv3ofzJGLX8xklU
-	I96L6M0Muw2ustwQk+JhdRTv6nQ/bYD0Mj4bExtgUkWhkwPBkf2ZY6ef9usMvlq3Nfdc2vs1XEWp9
-	Pc70N9kQ==;
+	bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=; b=LNMbIKr1z3i5lgV0DUcC/AUto2
+	v0SUBz7prYdD1JPJyh+vDZup66FHkPB3kw3aGXbq2wXj1kgqm33ia1qz51XMYUrTwCNqvuITOt8ee
+	s7fbqbFxJme1W0hD0W1+pSX6VDctCyYQqogTEs2xWNajWzzAiQ+hsFW5vbyK47OAHRAyVYEnTL+26
+	FXDhbkHmsnyWZrzVYbPVYa4mOc4E7nXoDr0zrowJS5tmoRZsGDfYNk/zqTH0GrRMU71ELL7B7Cr6I
+	95iFM/9x4KYTzBASDkodx4q2q7LBLFoKzsULpiHpKJttLYliQL/xSlrj5x8ob0iKa5CJQyaMCTkGo
+	/+Eyzd2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNZHk-0000000Duga-3CF0;
-	Tue, 17 Dec 2024 15:14:56 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1tNZcA-0000000DykT-0ics;
+	Tue, 17 Dec 2024 15:36:02 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNZGc-0000000DuOn-0IcM;
-	Tue, 17 Dec 2024 15:13:47 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-436284cdbe0so6712965e9.3;
-        Tue, 17 Dec 2024 07:13:44 -0800 (PST)
+	id 1tNZLe-0000000DvXx-0c7t;
+	Tue, 17 Dec 2024 15:18:59 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-43616bf3358so6223695e9.3;
+        Tue, 17 Dec 2024 07:18:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734448423; x=1735053223; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1734448736; x=1735053536; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=;
-        b=Y2mtv7zrc93i1V6KKU9KtsCB6mGUJQyz2TZKlW3G+RL0TLTn9jgRGZoRMQ5fm3FN5M
-         k48qofHeFLW+eznLj4roOROmRWq7x2ooIQeDHWDK2olxU+93ygBxS/85LFuRaAzfvaDx
-         gIXKu9TdczU6bhEU8HTJQjn0KQTewNi/TFrs6V1OPFMc8XeaLNm+OtojZLCtJIRftrA/
-         Cc5VGaRgHbuePpfR9GTiC55qYXlEoLP8dc7u6MWeURe/c3K/3qBjTpz2ty4Cbj45NcST
-         xh1HO3Op5WDpwe+vC2UEgE6LkfpuhoOFKlALJyxb8XQm5QJBrt7QdYx9oS/kFfBay5hl
-         FxQg==
+        bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=;
+        b=C8bD6L6Z9EF2SwDe6UwmnUVPM13rRabo6BhrHvHmwCFASBC66Uz26VxuJpn1deumRO
+         SOhEJ91sgKbz4GlneiXnHqutHsxAJZPZgnW0tq4Ojqv9zxzSgg99+Kg+Uz91PJpScOsp
+         A6AGx2q9LammBvp6Ou6T/dI0wo7y9uQERj81sWyVlRKMjFXuM4ONw2dldii5gNy05Y9T
+         9z3caFSnzaZFed7GwkaCM6PAS0SaCR4H1kEYQYaz+GJrDd5+TUFxJX38t5NOw9ByCM88
+         XBxHug1oTu19npV6vswEhU+n+wf/Kuh9TYBGYjg3SG5bohXDFGvuKquDIW/v/7sHFKUD
+         HeAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734448423; x=1735053223;
+        d=1e100.net; s=20230601; t=1734448736; x=1735053536;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=;
-        b=gwGfyaSbladrA2hYgQpD82UHRYbkXOlDxee9+Y532fDKQjO9Zwy4pJR8BpJTz/y3um
-         mzvsun5X1RL9Jd68ohvqglCHUVj2FvTEEcA8xHv5s594x5YBxnYW0URmqeeV9fm9KxRi
-         yrlk+HALh3N5szAZ//pAjJt+onyxzKo47uFXI9JoA9G1uJK9MXfSGZj3grHJxITf6Qy/
-         5vpczDMyZTKcCU+7QPa7dH7FqIm1uW/Zj11zNbrvp2p1rA34cuHF8k2tfs2JuWO9JoDw
-         keF5zB5BZ8FrFqTja7TqCsjRj2lrV/8cFAuCsvwsodl1N7ywTGCCpEJf+VZqKqiXNrvl
-         5fYw==
-X-Forwarded-Encrypted: i=1; AJvYcCXOhDS9Xa31BTRix7t5UDRR+3QMS81uuCPlJl+IKofT8ZFCbxrXnDyFlw2izuDzklDs5EXO1n19/aQJ3Nyx4xZl@lists.infradead.org, AJvYcCXn5rjPpe23J7bDMKjLi7Irfw76A5+dkVqULeeEJqHAgtOiDdykjR9bbKygC/rd5GaGA3t+MM800qvSj0uecFg=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzJAZjdxoRTBA0m/CSIj2z7CCn+Lzco2tNWQM0oJ9ZPV6fJZ5y0
-	p5wtspxVFiHzUVMoD187iD7LTnaiNbmxFHiGmF1dfYhC7w0Mll8jLR1fWnFK
-X-Gm-Gg: ASbGncsLvFSOu7A0SSLmhqS0nGtA12gr7SPv4WQ0YPIOL2zmAnLTELkNfSnTLcYVYPD
-	u9Cq837zCRrQUV7jOIInuz/aWkIX/yBA5hTmRvYDyQ+kLOuKyJv3+y7N0Ru6FdZ9V3TzFbhmbNq
-	QDKEDMx+kObgkgGLxQ9PotT6VaC5WGi+oIN1iRHVm61zBRb375Fpf9/NQLNAHI+8Jmd9oqTjU0/
-	2J82DVZge+K34OzmY/Wa12AKF0pfwdF9N5m2/mnwa59
-X-Google-Smtp-Source: AGHT+IHLcu6qj3H5z8Rh0t1dPSXaYp5zGOT8WvycKhg3dUOqzNjj52VHTli51/q2/uIIlYifEe4k4Q==
-X-Received: by 2002:a05:600c:4fc5:b0:434:ff85:dd77 with SMTP id 5b1f17b1804b1-4362aa3a62dmr56863795e9.3.1734448423285;
-        Tue, 17 Dec 2024 07:13:43 -0800 (PST)
+        bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=;
+        b=R4F1Yo76yWhMSzeQjgMHdQktPKiMksXsWxp/1Xp2iArXlzDJWn1ANT4U4M+dRKF5kz
+         I7jKdOTPAvc6uaL/WUR4T0gpsNfNHSojyFuDmIFKourw3z68z7A7rN1YBpFk65zNpD/e
+         U7Q1PlaXSlP7ehaj7SS2FWnJQ8Wr0tuZ9JFs8gCGxoOcgZOxw4aNux7QulOFDqaLJvit
+         kFB2RnkS4zSGriVHXlfF63RSTBtDCwf1d4itJxGhwdHGIWsao8GaBXc7IvTpUdgE0PfD
+         AgLVDm0VYLhM36To1UYjQfSN49jsNZoTB049kSAcMUqtX4ohqEGPRAyX5bxU5j0lA5sS
+         bMzA==
+X-Forwarded-Encrypted: i=1; AJvYcCVXCseOaymBcFJWV5/Vy8zxOoKbsJKfRKU+FiwuQp/SGXDjPJlLdxTKSBioPJWldPGhxEjFfrlE5LTEc8kxYao=@lists.infradead.org, AJvYcCWmw28mAwu0pe7azhzSOkDGOrN1eKN561opI0kUTaZeHKO0U9Js57WgxGbaF/F6l4vPweQO6bnNDiPE5Jd2xLU3@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+LGKh+/UHrGDxN3g1e3eu/J81JrB7Ca6gaKl68AoY6MDLhZgk
+	Hpz0aXatGXDwC4m8IsEoxHG45i5khJoucaAErhpTOLqPJlT2lxzI
+X-Gm-Gg: ASbGnctYHnIdaxemk68Ukw1vwNACcQKROU17pZ6Odd3oG4hqUNf3NliuU4ZNUyAfepi
+	SwTg+099riDKTHKS31/VZcSpYKW0LaDHHGrANcEruxrvYkXqoaQWds8fgwOtLFKBKkswSrRrUJ6
+	ch4u8Gopr9KpIskW3SHXLmb1Xd/xAiIveF2k/ciRvgXstc4NWOekMREDZfvOBFFNgfLVWNOm0oG
+	PXeLwDgU2EFM/cVBy6rV9gEk1Zkn+EqpIzpCGNeW5Ih
+X-Google-Smtp-Source: AGHT+IFXeyI9vAcAH6rAgJBjbYUandXoU43FysAiQnCTh92fN6p46Oyvs6lJ8SZSBx0Mc3K8abX/NQ==
+X-Received: by 2002:a05:600c:1c82:b0:434:f537:f9c1 with SMTP id 5b1f17b1804b1-4362aab668emr57089055e9.9.1734448735652;
+        Tue, 17 Dec 2024 07:18:55 -0800 (PST)
 Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436362c7d59sm119484895e9.43.2024.12.17.07.13.41
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4363601569csm120060805e9.4.2024.12.17.07.18.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Dec 2024 07:13:42 -0800 (PST)
-Date: Tue, 17 Dec 2024 17:13:39 +0200
+        Tue, 17 Dec 2024 07:18:55 -0800 (PST)
+Date: Tue, 17 Dec 2024 17:18:52 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -86,7 +86,7 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	upstream@airoha.com
 Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
  AN8855 Switch MFD
-Message-ID: <20241217151339.gjpdkfbechdjohza@skbuf>
+Message-ID: <20241217151852.wj2cbrisv6v4sdl6@skbuf>
 References: <20241209134459.27110-1-ansuelsmth@gmail.com>
  <20241209134459.27110-1-ansuelsmth@gmail.com>
  <20241209134459.27110-6-ansuelsmth@gmail.com>
@@ -95,13 +95,14 @@ References: <20241209134459.27110-1-ansuelsmth@gmail.com>
  <6758c174.050a0220.52a35.06bc@mx.google.com>
  <20241210234803.pzm7fxrve4dastth@skbuf>
  <675da041.050a0220.a8e65.af0e@mx.google.com>
+ <20241217151339.gjpdkfbechdjohza@skbuf>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <675da041.050a0220.a8e65.af0e@mx.google.com>
+In-Reply-To: <20241217151339.gjpdkfbechdjohza@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_071346_110350_44DAEE42 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20241217_071858_181929_2CF4DBC5 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,18 +117,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 14, 2024 at 04:11:54PM +0100, Christian Marangi wrote:
-> We can see that:
-> - as suggested regmap doesn't cause any performance penality. It does
->   even produce better result.
-> - the read/set/restore implementation gives worse performance.
+On Tue, Dec 17, 2024 at 05:13:39PM +0200, Vladimir Oltean wrote:
+> On Sat, Dec 14, 2024 at 04:11:54PM +0100, Christian Marangi wrote:
+> > We can see that:
+> > - as suggested regmap doesn't cause any performance penality. It does
+> >   even produce better result.
+> > - the read/set/restore implementation gives worse performance.
+> > 
+> > So I guess I will follow the path of regmap + cache page. What do you
+> > think?
 > 
-> So I guess I will follow the path of regmap + cache page. What do you
-> think?
+> I'm not seeing results with the "times" variable changed, but in
+> general, I guess the "switch regmap + page" and "switch regmap + phy
+> regmap" will remain neck and neck in terms of performance, surpassing
+> the "switch regmap restore" techniques more and more as "times"
+> increases. So going with a PHY regmap probably sounds good.
 
-I'm not seeing results with the "times" variable changed, but in
-general, I guess the "switch regmap + page" and "switch regmap + phy
-regmap" will remain neck and neck in terms of performance, surpassing
-the "switch regmap restore" techniques more and more as "times"
-increases. So going with a PHY regmap probably sounds good.
+Could you find a way to reuse Maxime's mdio-regmap.c driver? Either
+create separate regmaps for each PHY address, or make that driver
+accept a configuration which isn't limited to a single ctx->valid_addr?
 
