@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576F9E7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 20:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D42D5E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 20:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yixcSNWS2aBo36Xmnl/o1huimUZFWZVKA3OcNsvF0Cs=; b=gtirfiIRgTD15vtJ4B2XoHI44/
-	jCXg/rXLlMJzh2wUwkp1SdvIsz85U/9wD4CI1LKxddHi70lnuAxMLm3SaET3qYyuKotk5ROtXLbux
-	zKSWm2zZI6RnB55aYNeYAiMn9iGd+7827HQAJ/62b2d2+YVs5ywQTj3TQnvEFk9ZmwIqHuYZvE+CY
-	XKbyKTtbKEe48LvJK8PGGhWym1o5m5kNPla/+4S2gBtfq/tVuf5LeVSD67p41XRM2r+uYcNnjsC1n
-	uA11fMrvXW3ivMbLst6qsdMe5/Myp7pgnrMtS0nStxys+xI53qqdF60pH09M6omFXPYLb1XPUuAph
-	Xe2xd8gg==;
+	bh=nfCqAdaT7JKP/gVcpsVgJ6pvah+60OP5bkL61BKY/qY=; b=K0Tj7ua0m9v0zd7h1ndHUmIzCx
+	iJ0xTjMJBa882mUDu5T/SngcMcYsM6E3GynxO7hMQpxQm+GBRWP7c5BDO8g5u5UcCGF6HGM7nbQxm
+	eiYWEkghP+a4uL0z1MI/UZIvdBcW6xkmip5FUrYqLObxtfb/bd4T0VdKWC3+6xcXzxbpG97IUmHWX
+	gpjIIZ6D12pGvEZJI4QvuslnlAnu0Q5YMkCSZR/1Olq/JjkUivMP6DFHnVwRcuRZCuUJgoMo9dOIt
+	dsERRQyY9ezbxsHlVMjGQ263wmOLeJ4/dTvdGYuF8HITYieMj24//5d7XpsUaWfBS26/CZFsN8+rb
+	7NlHZgMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNe3U-0000000EjJC-2EZU;
-	Tue, 17 Dec 2024 20:20:32 +0000
+	id 1tNe5d-0000000EjcT-02vn;
+	Tue, 17 Dec 2024 20:22:45 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNdzt-0000000Eids-3NlI;
-	Tue, 17 Dec 2024 20:16:50 +0000
+	id 1tNe07-0000000EigD-37jd;
+	Tue, 17 Dec 2024 20:17:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 303A95C2312;
-	Tue, 17 Dec 2024 20:16:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7E1FC4CED3;
-	Tue, 17 Dec 2024 20:16:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 15DCC5C4ACD;
+	Tue, 17 Dec 2024 20:16:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8C07C4CED7;
+	Tue, 17 Dec 2024 20:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734466609;
-	bh=yixcSNWS2aBo36Xmnl/o1huimUZFWZVKA3OcNsvF0Cs=;
+	s=k20201202; t=1734466622;
+	bh=nfCqAdaT7JKP/gVcpsVgJ6pvah+60OP5bkL61BKY/qY=;
 	h=In-Reply-To:References:Subject:From:To:Date:From;
-	b=WAMdd9LQsfnz9/vyEja4yJloAFGc52bQ/F69m1gk1MPhD//5uhhNSCb7guTyBLKBx
-	 jn5bF9ciDbf6XDNwAskJmAPDrt/WqRELGrv8hj9RLmE3pM1mY1OdDWxq8DmUSfEhup
-	 IPsb1ha8YP6IR97oL6/xSNlb84OvXaJoClafsO+6IMOHQabhsFS49jZCL6GGbw7HQA
-	 Jx8ebFfgvVynhOMFym/IM64Vs/Ir/53xme43Gex/Ils144NKo25pg5HkVBGn3oxejA
-	 0TJoK9FbDmD8mcohw+NLno0BwFCu0TFtqj9uvxojFSpfPBDOSe3SK2Urxa9IWHCHhB
-	 82b6ivbv1rsnA==
-Message-ID: <0c57146b35f7f15510220ca25ebf565c.sboyd@kernel.org>
+	b=gW1KnDvvapk26xhTxQAuYjC/xy4yiGrkWF1PAkO0p1jyn5yYMvoPNrJCAv5MUWHzf
+	 M3SXODkntTvxJD3QAnSWtFlmnL+gOcpS4lY1MnDrJjBxKCBQMxSC0LZRy/6AlAUatp
+	 rS8AV+wmp89LyUDwTPmkYNy2DxbD+fwtKeurLXJ6kVOARoDBVN8+lGCUZUiM3ODOeR
+	 lb/wIC1J+KOyo51oJUWCFdZ0GxbpeoycE4298PFOV7ao/jIVQQyZ7jz92QNSupPTIf
+	 Lfcx5kia4cLewCCKSp5BDKwruvDCfYoBcSmpDLyIWwkFBw6Jw0YoRV+RF7oL8AMzKr
+	 VdkbJGj3LQQTg==
+Message-ID: <2c3885eb1bbaca8a939b9233fb593ace.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <9de23440fcba1ffef9e77d58c9f505105e57a250.1734300668.git.daniel@makrotopia.org>
-References: <b126a5577f3667ef19b1b5feea5e70174084fb03.1734300668.git.daniel@makrotopia.org> <9de23440fcba1ffef9e77d58c9f505105e57a250.1734300668.git.daniel@makrotopia.org>
-Subject: Re: [PATCH 4/5] clk: mediatek: mt2701-mm: add missing dummy clk
+In-Reply-To: <d677486a5c563fe5c47aa995841adc2aaa183b8a.1734300668.git.daniel@makrotopia.org>
+References: <b126a5577f3667ef19b1b5feea5e70174084fb03.1734300668.git.daniel@makrotopia.org> <d677486a5c563fe5c47aa995841adc2aaa183b8a.1734300668.git.daniel@makrotopia.org>
+Subject: Re: [PATCH 5/5] clk: mediatek: mt2701-img: add missing dummy clk
 From: Stephen Boyd <sboyd@kernel.org>
 To: Alexandre Mergnat <amergnat@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich <frank-w@public-files.de>, Geert Uytterhoeven <geert+renesas@glider.be>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Miles Chen <miles.chen@mediatek.com>, Uwe =?utf-8?q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Date: Tue, 17 Dec 2024 12:16:46 -0800
+Date: Tue, 17 Dec 2024 12:16:59 -0800
 User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_121649_883688_D6FEC107 
-X-CRM114-Status: UNSURE (   6.99  )
+X-CRM114-CacheID: sfid-20241217_121703_819794_B580531D 
+X-CRM114-Status: UNSURE (   6.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,13 +70,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Daniel Golle (2024-12-15 14:14:34)
-> Add dummy clk which was missed during the conversion to
-> mtk_clk_pdev_probe() and is required for the existing DT bindings to
-> keep working.
+Quoting Daniel Golle (2024-12-15 14:14:48)
+> Add dummy clk for index 0 which was missed during the conversion to
+> mtk_clk_simple_probe().
 >=20
-> Fixes: 65c10c50c9c7 ("clk: mediatek: Migrate to mtk_clk_pdev_probe() for =
-multimedia clocks")
+> Fixes: 973d1607d936 ("clk: mediatek: mt2701: use mtk_clk_simple_probe to =
+simplify driver")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
