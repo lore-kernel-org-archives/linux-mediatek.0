@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C86DE7716A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 07:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C761AE7716A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 07:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EvXkqZOEZnsx6UnUcZ93CchMAEzS5KMaOLVtQ7V/f1Q=; b=xZeGSrRmYDBUOlnpiwJ7EWkTzb
-	fljhT7MWURrE/M3T4oCEbimlE0SYmc/cECmaQSaMS5GqJw7XX5zAoaekSzrmBdbJrTYsnWc/ybhXy
-	btPNALcp2qZ4NdVcBJh7ufQ/XGbULT7LtTDWXmT46ZnO0YyBgJWdHPjF6ZqSsuyQzhKFDfLqaYpSX
-	xr0pIdW27+niSqwOVsYUaSn0hvaDwvYJgNiEorI5cN/K+MByMt5tUTbcVJWnsGxW8z0yLrhzLgXpQ
-	O/6vHo/+BuevKghRd+sHnqXhyU63RFkPtML9iHH19hQ8922IDYs38vm2dSM4+NE5C7pKAY+pDGCkH
-	2iXKA3jA==;
+	bh=qEQGDUcHqaQl3+MAk9zJRdPKW7FjBUTxyuaYs25BI8s=; b=b5vbAqvfOLdQxxmniH+m6y/5+U
+	VVJCjZPPs8al+XdJzRf5dXNujX3E3lECsf9ETwaU6dc89pryt6Zn3Jg4Qr8/TA3IJE+p1/8cK9GSy
+	qlRDubFWrKwbrhE4i096hgDo0y3iK8rmf5FNPvRUoIToRyb4a3Pxj626aScLjfT/3tfkyzsyuCv6Q
+	xaBv0li9TSkqxKczMDZZlUTt1yPGzIA1jWxMggyT40+gVIC//aQ0lRyS5eudAtpr+hKqCEhIjE+wD
+	UIQWKZthbtMoUCvQ+83lPSFrEksD1dNtICcdK8zbjyEZk3mY/F3ymybfebrPHOPMhpjPq705XRire
+	HBItnnfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNS9I-0000000CayI-1NGh;
-	Tue, 17 Dec 2024 07:37:44 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tNSFj-0000000Cc5k-3SHA;
+	Tue, 17 Dec 2024 07:44:23 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNS8C-0000000CarA-3Q4j;
-	Tue, 17 Dec 2024 07:36:38 +0000
+	id 1tNSEd-0000000Cbti-0SOV;
+	Tue, 17 Dec 2024 07:43:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2B4105C5F0A;
-	Tue, 17 Dec 2024 07:35:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF32AC4CED3;
-	Tue, 17 Dec 2024 07:36:34 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 22183A41E15;
+	Tue, 17 Dec 2024 07:41:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A648EC4CED3;
+	Tue, 17 Dec 2024 07:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734420996;
-	bh=Ga6YyJPT2SabgQ++x1dTYapjnEIbe0j6plAt5ho+zUs=;
+	s=k20201202; t=1734421393;
+	bh=SFEB+1CioxLc5lMZKoURIeOpaioyZPe04X8yK/3CHYY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O0yMoUH7VxU5A7BAPTHnI6tj0MtYase+3tUSJHORqleTKtpxoe71YZ2FUsP5HEdvC
-	 tT4hy56ugAvovNiVf4w9X+yiTwio+szXiPYWCMEe8qI5ruWnd94hwJi/d7rlCjED6V
-	 CDra3myb5Wy+CNGTHSrnlcvkIUYDvGl+8pfse1AmFXQdE6w8OpdsXjlbaFGvatOWu0
-	 hu/6aAPRE4xchr3mj7zoKuz/lujikip1FX0cJ/tVvTkiKLIaP9b6sPDCdj/gy6saDe
-	 A007O1Z2e3Mt0sEP8lHNjJr5e27E5oKYYpBR2lPc/fxAWvL2zDhe8ryTMFg8hpVRkB
-	 oi34W6og3gx/w==
-Date: Tue, 17 Dec 2024 08:36:32 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	b=qgygh1jBZx5lw8SjMJZ9Rn89E9kJt7oapQfMySMCzPSBHCgBuwR0KzOWAzB51uN3c
+	 DFJJcdWpUijv2S9WKbhoJTLFMnw/TcqLsu5f+u/7yuUVgx8eq6k1P3RVktd6ksDe9r
+	 3KznClF/Fti3bWkP8h+V0dhDiQ7Kmfn+uvsey1jDZE5nv2DuAeGCNztZP5D18mHk93
+	 EE6lfm4G8EkU3pUWUW93gmUoHmLrgxokZ7oLJWxRvx1PCwHnSvvTJa1WsGv2sBnKJ3
+	 Di+eL1PIokZY3FnyLKS0DJF1ewNV7svRLMJRIZn0urB0dqfOOOgE7vxYn2sCjTERi+
+	 5SngBCjqBp21A==
+Date: Tue, 17 Dec 2024 08:43:10 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, herbert1_wu@pegatron.corp-partner.google.com, 
-	Thomas_Hsieh@pegatron.corp-partner.google.com
-Subject: Re: [PATCH] arm64: dts: mt8186: Add mt8186-skitty
-Message-ID: <um3ivvtmyk3jjvwpkzg5hg5dd5s2zjs4jzfl3xbg6cdil7mtvq@42wqiqmyuiv2>
-References: <20241216-skitty_kernel-v1-1-bc75dcdfeb57@pegatron.corp-partner.google.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
+ helpers
+Message-ID: <20241217-heretic-hopeful-jaguar-aeabec@houat>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+ <20241206-drm-bridge-hdmi-connector-v6-3-50dc145a9c06@linaro.org>
+ <20241216-heretic-mackerel-of-wholeness-fcfed7@houat>
+ <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="c4s3lijvuloytprp"
 Content-Disposition: inline
-In-Reply-To: <20241216-skitty_kernel-v1-1-bc75dcdfeb57@pegatron.corp-partner.google.com>
+In-Reply-To: <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_233636_944624_B54BF8AD 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20241216_234315_276823_CCE191D3 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,99 +93,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 16, 2024 at 03:35:12PM +0800, Geoffrey Chien wrote:
-> Add Skitty initial device tree.
-> Support second source Synaptics trackpad
-> Support US2 keyboard.
-> Enhance touch screen timing for ELAN
-> Based on experiment, set drive-strength to 6mA (default = 8mA)
-> Modify sbs battery reg to 0x0f
-> 
-> Signed-off-by: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
-> ---
->  .../devicetree/bindings/arm/mediatek.yaml          |  8 +++
->  arch/arm64/boot/dts/mediatek/Makefile              |  4 ++
->  .../dts/mediatek/mt8186-corsola-skitty-sku1.dts    | 23 +++++++
->  .../dts/mediatek/mt8186-corsola-skitty-sku2.dts    | 13 ++++
->  .../dts/mediatek/mt8186-corsola-skitty-sku3.dts    | 40 ++++++++++++
->  .../dts/mediatek/mt8186-corsola-skitty-sku4.dts    | 30 +++++++++
->  .../boot/dts/mediatek/mt8186-corsola-skitty.dtsi   | 76 ++++++++++++++++++++++
 
-This wasn't ever tested (as robots point out), but also:
+--c4s3lijvuloytprp
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
+ helpers
+MIME-Version: 1.0
 
-It does not look like you tested the DTS against bindings. Please run
-'make dtbs_check W=1' (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
-Maybe you need to update your dtschema and yamllint. Don't rely on
-distro packages for dtschema and be sure you are using the latest
-released dtschema.
+Hi,
 
-Please run scripts/checkpatch.pl and fix reported warnings. Then please
-run 'scripts/checkpatch.pl --strict' and (probably) fix more warnings.
-Some warnings can be ignored, especially from --strict run, but the code
-here looks like it needs a fix. Feel free to get in touch if the warning
-is not clear.
+On Mon, Dec 16, 2024 at 07:47:32PM +0200, Dmitry Baryshkov wrote:
+> On Mon, Dec 16, 2024 at 06:04:41PM +0100, Maxime Ripard wrote:
+> > > +struct drm_connector_hdmi_codec_funcs {
+> > > +	/**
+> > > +	 * @audio_startup:
+> > > +	 *
+> > > +	 * Called when ASoC starts an audio stream setup. The
+> > > +	 * @hdmi_audio_startup is optional.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	int (*audio_startup)(struct drm_connector *connector);
+> > > +
+> > > +	/**
+> > > +	 * @prepare:
+> > > +	 * Configures HDMI-encoder for audio stream. Can be called
+> > > +	 * multiple times for each setup. Mandatory.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	int (*prepare)(struct drm_connector *connector,
+> > > +		       struct hdmi_codec_daifmt *fmt,
+> > > +		       struct hdmi_codec_params *hparms);
+> >=20
+> > Missing newline
+> >=20
+> > > +	/**
+> > > +	 * @audio_shutdown:
+> > > +	 *
+> > > +	 * Shut down the audio stream. Mandatory.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	void (*audio_shutdown)(struct drm_connector *connector);
+> >=20
+> > And thus we can probably just call that one shutdown?
+>=20
+> It should be called automatically by the sound system. I'd rather not
+> call items directly that we are not supposed to call.
 
->  7 files changed, 194 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d9aadb7b77e144a474b79da005056..29e7555569a772ba042e29af01ea98fdd3be1525 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -224,6 +224,14 @@ properties:
->                - google,pico-sku2
->            - const: google,pico
->            - const: mediatek,mt8183
-> +      - description: Google Skitty (HP Chromebook G1m 11 inch)
-> +        items:
-> +          - const: google,skitty-sku1
-> +          - const: google,skitty-sku2
-> +          - const: google,skitty-sku3
-> +          - const: google,skitty-sku4
-> +          - const: google,skitty
-> +          - const: mediatek,mt8186
->        - description: Google Willow (Acer Chromebook 311 C722/C722T)
->          items:
->            - enum:
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 8fd7b2bb7a1590341e7bb4ea1ecf039ae3e8eb0d..328e1ee444bd81b5a2aa3d21acb7a5c5a3318a87 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -59,6 +59,10 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-rusty-sku196608.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku1.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku2.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku3.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku4.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131073.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327681.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..a0e7b10445333d6f83fc4c461ce8f8d75ffaa697
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts
-> @@ -0,0 +1,23 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2024 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8186-corsola-skitty.dtsi"
-> +
-> +/ {
-> +	model = "Google Skitty sku1 board";
-> +	compatible = "google,skitty-sku1",
-> +		"google,skitty", "google,corsola", "mediatek,mt8186";
+I meant that with my suggestion to call the function
+drm_connector_hdmi_audio_init, that structure would be called
+drm_connector_hdmi_audio_funcs, and thus the audio prefix in
+audio_shutdown is redundant.
 
-Fix alignment.
+Maxime
 
-Best regards,
-Krzysztof
+--c4s3lijvuloytprp
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2EriQAKCRAnX84Zoj2+
+dn+KAXsHF1Me3a69DjYay1zSH0/PHfBLCaIV8MGlbctx2pAUq5SnrvsJZ2avXBJl
+7I+LlxABewcJcOkSen/hN0RxUNmpQaMQSHXReIonARDyzvaXra1BL1nAga4/ubzn
+jeARugW3sQ==
+=pdll
+-----END PGP SIGNATURE-----
+
+--c4s3lijvuloytprp--
 
