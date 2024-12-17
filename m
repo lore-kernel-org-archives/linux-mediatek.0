@@ -4,107 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEB5E77187
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 12:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52E3DE77184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 12:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OD2airYmXEIM5XCQfXb6/TEVO/ZX203WR6AY+SunHbs=; b=LxpHihqFDZuThZ+LiHpTZ4/6Mw
-	+WdFBsF0b53pBD2TFJO3kEl6IKnXZp23GXMN0XZ4n1N/z/N0YQBI6eLLhPKUoqg1L3quslJYmCxzX
-	GTFQm8Jn4RmeWTn0KEiWEruh+7iqoEbPvtWA1KBEEF/h5F6TnLfh8h6D/9pGphhmIfAY8rpFkbZf0
-	pv++i9/Q1VBO6Sdrdn2R6gAmW+XOjc5Y6TZuJhpiO8kPYXB9KruiLEHOciEPUs5HJMAOP0QvoBIAu
-	SSQN/L3EVLHWxmak8KPr9LOnSH+M7meJjBcDq1YVk5JvQI+8XSUoQPT5pKqkqDfVnIvpHKkX/qaSD
-	Etp5OfwQ==;
+	bh=mN6TqIzQhCMb/TWw6EiGfX8Yr9HpJyuJZ+GjX/D3t3Q=; b=AEtBKYhJhBipuSkX40qGenj7b3
+	M9QdRZAiWjgbRP8YJYjpq3G3MIWwqBfnKJQ7HmUChrNQK7IP+Yt40ridInfDQw1xPrj+miBm7sIXX
+	xIk9VvlLoMOnQLpwOdCNjZcDa4WjFF/VDagUFb7ulxtqyqhE1W7Ju07rfppSiMNVFZ1MDbhUdCI16
+	ClyHRus0wkH3tr1DoRqbNLyce27lE1LgKn1EzeyXxaj+LwasGJMu/+gvpc9c357W++wvxMtw0WUPv
+	4anaR1xeb109x0AcAdKGBefIqfTpv0t9xx0LO1u5UVDE4yekGzIy4mxKqM67yCNpxSEZ0Bq9hq4oz
+	CKHNEGMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWjz-0000000DOJw-0F6W;
-	Tue, 17 Dec 2024 12:31:55 +0000
+	id 1tNWmJ-0000000DOeK-1oLU;
+	Tue, 17 Dec 2024 12:34:19 +0000
 Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWjw-0000000DOIz-3xM0
+	id 1tNWmH-0000000DOdL-0vu0
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Dec 2024 12:31:54 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5401c68b89eso5687690e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 04:31:52 -0800 (PST)
+	Tue, 17 Dec 2024 12:34:18 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5401bd6ccadso5378972e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 04:34:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734438711; x=1735043511; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OD2airYmXEIM5XCQfXb6/TEVO/ZX203WR6AY+SunHbs=;
-        b=RLhYu8eGTanNKcdJjLnUxEclnmebsRsfTlxBCAb47ONvHpCAEt/I+hBnGnCfVYoxvG
-         BA/q+BXPj8ZNYvRfiS1rAW45m8rz7OW/cIonhZPuZVF50I58B0JoiKcjh8XFMTGkRcRu
-         L0VkaD8mggFDhaTzkYa84TImf3HIyoAd5LjUVptyfH4GaCD++zaqKnN1Ui50sJjcdq5o
-         9hUbJ5IItaRd/iDczgrSdv0GJtl1bJ1/Gg2sR53hLDiftU3eFEbOGi1nkFzINlLKpYo0
-         u1cIv5kHfyutaZO/+uoal/sFYlD3iuiYzx1pRIdHcQz6TxqCao1lBqsiDJy3afS+aXdn
-         jDmQ==
+        d=linaro.org; s=google; t=1734438856; x=1735043656; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=mN6TqIzQhCMb/TWw6EiGfX8Yr9HpJyuJZ+GjX/D3t3Q=;
+        b=juG3lPvI/cnDXvNFWSh4N18M7Ons/zX2cufj8yShD4FfPwMRVTNsJVPzY8qovB5IS7
+         zmdWXaglhcW6M5/kodD5uQdlszP61fTfcvwgpG9RzvT5yQusbIHwjlOksX9gw7Qp/7q9
+         DfbJdlwk2RQd5PF579tKwDAlWtPq82bqjcsGYvbS/ci+MLu7Dd4FPC1JH6QK/FCHk0e4
+         RxYqr7Wm11oBlu7+s7bu/z6NhhH31qLihxTXK/xXtBF3FIUTyx3bAvIjVPyhsgcRFe/V
+         haPwp5s9SnNfgkwD/q+XG1lj+GTW1KJCjAMSmhASilMz9cXV1OL+ng5zyRXRdnb1Kfq4
+         Tklg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734438711; x=1735043511;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OD2airYmXEIM5XCQfXb6/TEVO/ZX203WR6AY+SunHbs=;
-        b=IudBqk2parllmpUiCeRyH0mp0kx8XfLogr7UcjY6j3B/YnfGFVEcocHGrKlw+VSp59
-         aM7DtZ1Pf9LW++j7SJ5z4i46EJs75Knjf0f0xdQBIE/j0tpJOKOWPisEOjJwYCDFfKj6
-         rIkLdHQJNwuQuoSt5I+ShY35Yz9ucu9PlIb2O2DmucRz0RUnCo2ptczu6ua90lfDFQHZ
-         pbmr/KIeU+E6EQsrxfNG0FXD7LIGCucX43oQ86k6qm6mDUSAOgB6LKfiwGRfEmEjiB5U
-         nONBwcYYqvr+ii72S07tNYkINuSlWdUMUj3ReIcXz14zyB+6nneQCPoqOeFQ6gnozkiA
-         xcOg==
-X-Forwarded-Encrypted: i=1; AJvYcCWxDh6VrrHVLtCYbvP3y5T+29hB0OQl6iZhf4hR279xflLKBQa1lHV0MVXkFGOTuLU0jN6KHyBoSRwpO+jRXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzmfd4G7hUJicluFS+1jFlIv7zpE+49NJc3t/SEFNZFl5uqS32k
-	Sj5XahyJXKLpYuoe91i7JoZ4nxFbFRt74ELIR77/QO05mobQMD8/SrKTMGXpWlQ=
-X-Gm-Gg: ASbGncs1matZu4K3GWaxKv/+dqTxHQvgg9V8ta0j2uINCBIVllRcqzQg186Z+kthYsa
-	aX6KmyH4B8pZtV23s+F0Ok+FwbklH0adCdSwoNDwDyo7oimaAojzoKQ90K7koxn5y4pJV6VN4RK
-	E0839bVFpnpQ0wg+zzeK3S2ztW8K8PK0glkeFOHlugYmEtvq6tv1CX7pnxwso4Au4YIhAKvqYh4
-	xzU9fxqRFUF8PRVl1Za4hlR4oRNqUnDxVMuIDhi8gMZCaAlsm0PyEiDk7ENtoaHwNnq/13jR67/
-	JTHuvfAs2jaIt0vpvF4fZ00/c5KAm+q1mQ3K
-X-Google-Smtp-Source: AGHT+IGLqNfuo6dVnZwB0IG9CYkUL75QpM9W/HERVzyQaVYoG4TeHcNOZSSbW2843k7yE5uyrSEtJA==
-X-Received: by 2002:a05:6512:3e0c:b0:540:1fec:f331 with SMTP id 2adb3069b0e04-541315ac7a5mr947299e87.27.1734438711130;
-        Tue, 17 Dec 2024 04:31:51 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734438856; x=1735043656;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mN6TqIzQhCMb/TWw6EiGfX8Yr9HpJyuJZ+GjX/D3t3Q=;
+        b=gRzO3s5ZIe8F2zI6Y4Xae9wisPH0ObMqlurKPMd85vYmU9Le4ZdcoyIBfTz1dBhWLT
+         9sHoW9btzgJjJTLvoHp2W8koqSKEwP552qH6FZAtVoyMloYd07Fy+nHlyotzu8EeVp+v
+         6sKqPLU4J2vAhoPnre7Mvs2I0FuQ049jgcH66t5JQTtMIcl6+NyY3LYuyxyN5lVDDMlL
+         4j2FR0iXY0qie0WXkZBsUkD5jN8CKIsNOMcj9Gxg9WSW3DTI5Ic87UvzJa+E1pgqOZbq
+         4kyQN8649LiiJ/nMVJNU4xKBOl8unqX//7AVNeFbqCnXRuoQu9KboyVJLQfz5uhWVr0A
+         wVPA==
+X-Forwarded-Encrypted: i=1; AJvYcCVfQ4boSzV0kXsyin12eYM+IA0tgFFHxmnaZ5ll02G2BIDZLsvO6BHWQ3mbAzV0DTU/BXFhmoP7g9cSPcBA0Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzdhiEPvkmwjPF3BODgqsk0aqjk9pQFwuaIan1CZbn0ypSYlsfz
+	h1+rVwvS6vFIdPFFSNM33JETOCYTMnh8EBtxR/6gkH2woFES7Vo1PN7BF/3JZb8=
+X-Gm-Gg: ASbGncsZnRVk1J8zvfbvtL7Uf1X4qhIW4NJsVRWHlA+Cu6zRDLqR3CNJCUKn10yT0Hw
+	6MJ+KK7S98wgUiIWMo8KQH1g7s9qCCXnirv3CY0KwCP6uPcDQh6IHsI0MXxfea0DyetOFYclXLO
+	QGC5Eo6dfzZUgtCXEel6I4Wpq3ABU740+g/pA3hRr/E9tnQCOWe8WCsPAHkV8DvO0k+fupTZLbW
+	gvg6MllI5Ge3szWeHDEJEaC31z+3tyIMI0F6e3IYhrN1PHYc30qR4E/9cYPKggeNJjffO+zvd4+
+	2o2m6lhdHz8fBh/SnCEKR+L6gvc/sqZbwi8h
+X-Google-Smtp-Source: AGHT+IG64fF0VZRsJVb2QKgF7su3lKSHe/E+XJ0mDICTjJVwLxaJk7I7Yc82GJIWZQCARYb0bWVA7w==
+X-Received: by 2002:a05:6512:3c8f:b0:540:1a33:ded8 with SMTP id 2adb3069b0e04-54090555550mr4911457e87.17.1734438855594;
+        Tue, 17 Dec 2024 04:34:15 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120b9f3d0sm1145293e87.30.2024.12.17.04.31.48
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120c20e64sm1119838e87.277.2024.12.17.04.34.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Dec 2024 04:31:49 -0800 (PST)
-Date: Tue, 17 Dec 2024 14:31:47 +0200
+        Tue, 17 Dec 2024 04:34:14 -0800 (PST)
+Date: Tue, 17 Dec 2024 14:34:11 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
- helpers
-Message-ID: <buem3nnscnyh7latovvnsbhp2ci6pbjpckfmrft2267afzwdwq@2roahluiow7t>
-References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
- <20241206-drm-bridge-hdmi-connector-v6-3-50dc145a9c06@linaro.org>
- <20241216-heretic-mackerel-of-wholeness-fcfed7@houat>
- <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
- <20241217-heretic-hopeful-jaguar-aeabec@houat>
+To: CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "robh@kernel.org" <robh@kernel.org>, 
+	"jie.qiu@mediatek.com" <jie.qiu@mediatek.com>, "kernel@collabora.com" <kernel@collabora.com>, 
+	"simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org" <mripard@kernel.org>, 
+	"tzimmermann@suse.de" <tzimmermann@suse.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
+	Jitao Shi =?utf-8?B?KOefs+iusOa2myk=?= <jitao.shi@mediatek.com>, "airlied@gmail.com" <airlied@gmail.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+Message-ID: <fm5rbujzu5og25x3nnxnhabrf4mppyy4nakxrskqtug774llnm@j47ce2zz6xsx>
+References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
+ <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
+ <803bc2bd802506635dfa9ea9b26a6ca40a7f4912.camel@mediatek.com>
+ <e5788187-e894-4aab-a41e-a3d7a64762c6@collabora.com>
+ <d64ff9f1525fe3563502e470b2a31303de08a7c6.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241217-heretic-hopeful-jaguar-aeabec@houat>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <d64ff9f1525fe3563502e470b2a31303de08a7c6.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_043152_999414_C16814C1 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20241217_043417_268608_B2200319 
+X-CRM114-Status: GOOD (  32.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,59 +114,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 08:43:10AM +0100, Maxime Ripard wrote:
-> Hi,
-> 
-> On Mon, Dec 16, 2024 at 07:47:32PM +0200, Dmitry Baryshkov wrote:
-> > On Mon, Dec 16, 2024 at 06:04:41PM +0100, Maxime Ripard wrote:
-> > > > +struct drm_connector_hdmi_codec_funcs {
-> > > > +	/**
-> > > > +	 * @audio_startup:
-> > > > +	 *
-> > > > +	 * Called when ASoC starts an audio stream setup. The
-> > > > +	 * @hdmi_audio_startup is optional.
-> > > > +	 *
-> > > > +	 * Returns:
-> > > > +	 * 0 on success, a negative error code otherwise
-> > > > +	 */
-> > > > +	int (*audio_startup)(struct drm_connector *connector);
-> > > > +
-> > > > +	/**
-> > > > +	 * @prepare:
-> > > > +	 * Configures HDMI-encoder for audio stream. Can be called
-> > > > +	 * multiple times for each setup. Mandatory.
-> > > > +	 *
-> > > > +	 * Returns:
-> > > > +	 * 0 on success, a negative error code otherwise
-> > > > +	 */
-> > > > +	int (*prepare)(struct drm_connector *connector,
-> > > > +		       struct hdmi_codec_daifmt *fmt,
-> > > > +		       struct hdmi_codec_params *hparms);
-> > > 
-> > > Missing newline
-> > > 
-> > > > +	/**
-> > > > +	 * @audio_shutdown:
-> > > > +	 *
-> > > > +	 * Shut down the audio stream. Mandatory.
-> > > > +	 *
-> > > > +	 * Returns:
-> > > > +	 * 0 on success, a negative error code otherwise
-> > > > +	 */
-> > > > +	void (*audio_shutdown)(struct drm_connector *connector);
-> > > 
-> > > And thus we can probably just call that one shutdown?
+On Tue, Dec 17, 2024 at 06:40:11AM +0000, CK Hu (胡俊光) wrote:
+> On Mon, 2024-12-16 at 12:04 +0100, AngeloGioacchino Del Regno wrote:
+> > External email : Please do not click links or open attachments until you have verified the sender or the content.
 > > 
-> > It should be called automatically by the sound system. I'd rather not
-> > call items directly that we are not supposed to call.
+> > 
+> > Il 16/12/24 09:57, CK Hu (胡俊光) ha scritto:
+> > > Hi, Angelo:
+> > > 
+> > > On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
+> > > > External email : Please do not click links or open attachments until you have verified the sender or the content.
+> > > > 
+> > > > 
+> > > > Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+> > > > found in MediaTek's MT8195, MT8188 SoC and their variants, and
+> > > > including support for display modes up to 4k60 and for HDMI
+> > > > Audio, as per the HDMI 2.0 spec.
+> > > > 
+> > > > HDCP and CEC functionalities are also supported by this hardware,
+> > > > but are not included in this commit and that also poses a slight
+> > > > difference between the V2 and V1 controllers in how they handle
+> > > > Hotplug Detection (HPD).
+> > > > 
+> > > > While the v1 controller was using the CEC controller to check
+> > > > HDMI cable connection and disconnection, in this driver the v2
+> > > > one does not.
+> > > > 
+> > > > This is due to the fact that on parts with v2 designs, like the
+> > > > MT8195 SoC, there is one CEC controller shared between the HDMI
+> > > > Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
+> > > > adding support to use the CEC HW to wake up the HDMI controllers
+> > > > it is necessary to have support for one TX, one RX *and* for both
+> > > > at the same time.
+> > > > 
+> > > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > > ---
+> > > 
+> > > [snip]
+> > > 
+> > > > +static int mtk_hdmi_v2_bridge_atomic_check(struct drm_bridge *bridge,
+> > > > +                                          struct drm_bridge_state *bridge_state,
+> > > > +                                          struct drm_crtc_state *crtc_state,
+> > > > +                                          struct drm_connector_state *conn_state)
+> > > > +{
+> > > 
+> > > I would like v1 and v2 has the same behavior.
+> > > Why v2 has atomic check but v1 has no?
+> > > If this is better to have, add atomic check to v1, and this function would be common function.
+> > > 
+> > 
+> > That's because v2 uses the new helpers, while v1 does not.
+> > The v1 must be converted to the new helpers in order to use atomic_check() like v2.
 > 
-> I meant that with my suggestion to call the function
-> drm_connector_hdmi_audio_init, that structure would be called
-> drm_connector_hdmi_audio_funcs, and thus the audio prefix in
-> audio_shutdown is redundant.
+> I just find the description here, and I don't know why new helper need atomic_check().
+> Would you provide more information how new helper need atomic_check()?
 
-I see. I posted the next iteration already, but I'll try to remember
-this change for the next iteration.
+The HDMI helpers requires the driver to use
+drm_atomic_helper_connector_hdmi_check() in order to maintain
+HDMI-specific connector and CRTC state. Thus drivers using HDMI
+Connector framework have to provide .atomic_check() callback which calls
+the mentioned function.
+
+> For example, the call stack to atomic_check(). (You could use dump_stack() to show it)
 
 -- 
 With best wishes
