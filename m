@@ -4,104 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC53E77184
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 14:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B9FAE77187
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 14:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=; b=sy4BSWbX61XB32MhxKhiLLFf75
-	4U16RDVmfPmkc6It0p2kH/EwAJAY8pdReqISVrL7wHZi4lbpeP+5nVqn+7dn+Kl9dWNQKGdZ1ZVeW
-	ll5wZBMj2C3CWjdYEaD4byqO4uwkaAYURDfLZMY9iE4oO52pxXppLUfmQm/NxS1sq3Wu5RBkaeljn
-	rwRfZ3Loao1hTM52qfp83cOwEGbtnfTtQw/KUSSPtmIJsb+jkq5Y3+g8M++/ZcsTVhJfqPKS3PgYh
-	dk6yyeVsXFxEKwpUUYj8Sd8rsYh+xMJrFTMGjTUArptPqmIFFfHgfIL42L2/EmbjDHIWuCxPzlRkS
-	SSjs/krA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qTiyx4rfntofc0k6gFLJAY5Sif0ANTcSMp5CKClJKaU=; b=DXbQlYYJndnpaLvbGS+6nH/xRg
+	H1uiI7c+ROmbkfcnVGx5aA9edsANN7yiLt36Yj2PCJ6o6T5FKSGXXPS/vcic8No3R4yYW7M83i+2L
+	nC6uC4modxkJrXENfYqoC37BP5iEgsZTUbPVOSd/n5LpwmXsbefYzRpUYT69bLBH2uEjmkVzEBKzM
+	PYMU07sTCFdlJm8azq6MyeMLK1KYGn8+QjAhkhkV8yvz9JTYm5rnOp5yYY4tjl2edalX1hKyrVcne
+	gi40Df8wEcfTBuFpuscKCTxw5d7wRgoJiG3fzwWLcNzGCwRsEt4iI8yfbVySlgkSobWcqOp3bFaVu
+	WQbahqIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNYM9-0000000Di2u-2EEB;
-	Tue, 17 Dec 2024 14:15:25 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1tNYw5-0000000Dpp2-2B4M;
+	Tue, 17 Dec 2024 14:52:33 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNYGq-0000000Dgok-2Oah
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Dec 2024 14:09:58 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5401e6efffcso6133722e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 06:09:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734444595; x=1735049395; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=;
-        b=K8FRIGUlVuI5oGEKneNn17Tj+SFu5JvVzDCU0UsVpP6v02UoORBct7VqGJhwbjHqCy
-         aN0BO1vcriOZrN76YuyrjCOrZiEQwpV1sLwCJ+ycP2vbzF8EviEIqH06te+nf2trqH+n
-         FoOCq2g2DtrLRUXzQt6EN3k7oQG/lcYvl9iCWgrPKbxtmW25Z0OM8M2lptjTlCbjGJ9B
-         3qwffDPuQetmLSvRhP38DD3/yb0tGkvPzOVpsl1jpDOwI70S5xSBDwgrcT0DisSDLJp5
-         x0HI4VY7ByZJOHZEIW6+miGMNbEMI5l/rkrUIfOD0MTibogZOk81MWAsGTOrzA9LFqX9
-         y/yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734444595; x=1735049395;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=;
-        b=qxKu/PFn31aywvJ7LraUhwspDiCtc6KJDUm2iDrgRxr71vJI5bbNYt0gw5riZZFnB9
-         0gB9eiAKiS172ptMKeridsl5CDNYYHIHcqvSBdD+olR6YhZp/NHCBjA3cTHx8RTGzRoJ
-         +2ocnPjD2l7bzOB+3FKlbq5Rn/ZqjilrA42PmKkbFmUgdiYHivsVTBBJk2TPX/iOSTj9
-         lF+8lHJvhsVjmM7r9GtYQD1wknPJhVnQ9S5E4T2m0CmzrmSfgy6240ChMW6mEU2/jaOz
-         eRZ0d+IcBYjMV1mqj+Z0QSh9Hwh3MP21Jc81Zs+mrKB8CK9QyKokYZ0kw0XREAecBZeE
-         qO2A==
-X-Forwarded-Encrypted: i=1; AJvYcCU5PJ/ra4C/6W6dR9jClh7Qxly+zppgHQXMUpqCx1aSqYtpeavelJQL7XoCTxehLfhbUX+GFqNcXtYfyzhwxA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpxNheuY1WqL/FpvMonkf2Aj+hqm8NUaTVvs4sQMmGOJdP+CvC
-	6tjaxM4NrGLhM26DvECwxmIKRgRdKk/13ST+KkL/YrxklAdPPUNLEtmxJRmMxRk=
-X-Gm-Gg: ASbGnctZooCJYctNyyjRJkgBGTjNK5Bu7J5WxBNGADpTI1w9QKkRHKhCa8JUSQoLXVt
-	aMnT5KSKAlQtkYCKkbPjjXrlhKmtmn6t5nzWeS0cOaIFkfYXwOHtykBPl3sOYukSsznHvjBK6nW
-	/XzIZAavteF4bOfRka1tZVknMJV8V6pUNtVEKaMjO009CuIw9O/KwZXBQvvWlfx7UH2Y4IwXhAF
-	SgbdBgcLpvrEWiLhJEzXwRo9aPRCVRqKDAkZ3hKNlMAwm5IBdPworNdaE8M2fsWJxvKNzPczPjH
-	33fZVkpEEOpVWyTgB+R2/6ZaOtfTznTgHduV
-X-Google-Smtp-Source: AGHT+IHTf5dvyD0mHW1jS/2vTroVhCSJd6opzQzzWVJuSVJWGrT5Dsv7wwpXGqTnNzyEJctFejbUSg==
-X-Received: by 2002:a05:6512:3189:b0:53e:3a01:cf4d with SMTP id 2adb3069b0e04-5409055dff5mr6856692e87.31.1734444594653;
-        Tue, 17 Dec 2024 06:09:54 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120ba9dcbsm1166017e87.73.2024.12.17.06.09.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Dec 2024 06:09:53 -0800 (PST)
-Date: Tue, 17 Dec 2024 16:09:50 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-Message-ID: <kyytu3nofrjkajwatmxdyav7oekkeigrhx5amddgjtlpsdl2m5@3moqad3gfds5>
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <D6DZB443IQ7A.3P1135M6DMF2S@cknow.org>
+	id 1tNYt2-0000000Dp6j-0Pa7;
+	Tue, 17 Dec 2024 14:49:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734446960;
+	bh=bxleyRE+0QNYUPGWu6GOO9WL8zmi27WPpMdWVX7EXaQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SHgrecisvyvFNYJkC0sG9pe+ZHI+SU1wgFAN6QytjqZ1lScWAnvGDWOB6jwwTeoOY
+	 b1mEXOq6aztZ09ZzcxhUuG3Wwzv/0G21T4aw3PxuaYchovpxJD6WhQKz/vKInV7TXt
+	 2F9t8c0lhA09WzpPWuQtgwPdwGaOyAgN1L+AguXnrTjPEhlioHJ8U/T1N/js0b6v4H
+	 iDUEuJIUtXJSf4+YCLmLEF1SWO717Weax/RRKuIQ26fs0CRlo+rHTHWpp8mCDUe4+/
+	 lCHiJr2SCxpRf/Qa93uK7R/Fmww2DmFRMHozhV7TJgvX2j2PGmH9IORwl3A1OUh22+
+	 AOVOghZSTbzQA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9389517E377A;
+	Tue, 17 Dec 2024 15:49:19 +0100 (CET)
+Message-ID: <482ccf9c-fad5-470c-964f-a2c422f79555@collabora.com>
+Date: Tue, 17 Dec 2024 15:49:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <D6DZB443IQ7A.3P1135M6DMF2S@cknow.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
+ <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
+ <6ed3b9ee742dcf814f35e15d88db538480ba2d48.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <6ed3b9ee742dcf814f35e15d88db538480ba2d48.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_060956_627502_2AE9FF2F 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20241217_064924_324417_F16F7FC6 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,19 +96,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 01:36:29PM +0100, Diederik de Haas wrote:
-> On Tue Dec 17, 2024 at 1:40 AM CET, Dmitry Baryshkov wrote:
-> > This series depends on the ELD mutex series [1]
-> >
-> > [1] https://lore.kernel.org/r/20241201-drm-connector-eld-mutex-v1-0-ba56a6545c03@linaro.org
+Il 17/12/24 10:21, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
 > 
-> There's a v2 of that patch series here:
-> https://lore.kernel.org/all/20241206-drm-connector-eld-mutex-v2-0-c9bce1ee8bea@linaro.org/
+> On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+>> found in MediaTek's MT8195, MT8188 SoC and their variants, and
+>> including support for display modes up to 4k60 and for HDMI
+>> Audio, as per the HDMI 2.0 spec.
+>>
+>> HDCP and CEC functionalities are also supported by this hardware,
+>> but are not included in this commit and that also poses a slight
+>> difference between the V2 and V1 controllers in how they handle
+>> Hotplug Detection (HPD).
+>>
+>> While the v1 controller was using the CEC controller to check
+>> HDMI cable connection and disconnection, in this driver the v2
+>> one does not.
+>>
+>> This is due to the fact that on parts with v2 designs, like the
+>> MT8195 SoC, there is one CEC controller shared between the HDMI
+>> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
+>> adding support to use the CEC HW to wake up the HDMI controllers
+>> it is necessary to have support for one TX, one RX *and* for both
+>> at the same time.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+> 
+> [snip]
+> 
+>> +static void mtk_hdmi_v2_bridge_pre_enable(struct drm_bridge *bridge,
+>> +                                         struct drm_bridge_state *old_state)
+>> +{
+>> +       struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+>> +       struct drm_atomic_state *state = old_state->base.state;
+>> +       struct drm_connector_state *conn_state;
+>> +       union phy_configure_opts opts = {
+>> +               .dp = { .link_rate = hdmi->mode.clock * KILO }
+>> +       };
+>> +
+>> +       /* Retrieve the connector through the atomic state */
+>> +       hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
+>> +
+>> +       conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
+>> +       if (WARN_ON(!conn_state))
+>> +               return;
+>> +
+>> +       /*
+>> +        * Preconfigure the HDMI controller and the HDMI PHY at pre_enable
+>> +        * stage to make sure that this IP is ready and clocked before the
+>> +        * mtk_dpi gets powered on and before it enables the output.
+> 
+> In patch [6/15], you does not power on DPI power in DPI driver.
+> Could you point out the code about 'mtk_dpi gets powered on'?
+> 
 
-... and it's even merged to drm-misc-next. I dropped it from b4 deps,
-but I forgot to update the cover letter.
+DPI gets powered on in mtk_dpi_bridge_enable() -> mtk_dpi_power_on(dpi)
 
--- 
-With best wishes
-Dmitry
+Cheers,
+Angelo
+
+> Regards,
+> CK
+> 
+>> +        */
+>> +       hdmi->dvi_mode = !hdmi->curr_conn->display_info.is_hdmi;
+>> +       mtk_hdmi_v2_output_set_display_mode(hdmi, &hdmi->mode);
+>> +
+>> +       /* Reconfigure phy clock link with appropriate rate */
+>> +       phy_configure(hdmi->phy, &opts);
+>> +
+>> +       /* Power on the PHY here to make sure that DPI_HDMI is clocked */
+>> +       phy_power_on(hdmi->phy);
+>> +
+>> +       hdmi->powered = true;
+>> +}
+>> +
+> 
+> 
+
+
 
