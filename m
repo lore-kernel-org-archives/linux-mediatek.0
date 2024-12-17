@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE0ADE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 12:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E06D0E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 13:20:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
-	Subject:Cc:To:Message-Id:Date:Content-Type:Mime-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RolKsme1G9Rjox6sw68grNTuofAMfeweMCbeaFaOjdE=; b=KL2RIfInBDaZrIQgtKV5RUBdQb
-	ZQuyx3pX1bvASG+uUrEKCQIOrYVdu5EJ02Mzu7LicNDzDiIK8I/jeaUdRgP+d0Z7YGPuP2sZMQFt/
-	HQuKv2gr55E2HEaLmeRp9+41pT1u+S8epBckCm9RtnNXfB32oVe2RVMk22LHah7ZcnSga6KJomy7h
-	53s5/3o6VE+HrywNUZi7icFS9lTKP9eY0i37W4XeD55U+ooSMT8ePEqcEArH+WIsSZRCp+a+4jEsi
-	DnWV8B+tda5pJDLPGJSJUeyMOi9bzenkWnvzXHVm8G1EpDjwdPowPRSwIxnHIDdd0Cly6f79TIdc5
-	yicnfoBg==;
+	bh=/tgWhNeBnE7Hge8p7qGU1SXvXbDK+DqHb8egE1HrRnE=; b=C7Pu33L7od5kxxCk9UZpwHBgBF
+	+fd6oG48tHYfZ6c+geQirc1fhiNcfFNzucHCNyW5KPMG437uJWdmyEQi2Ddy0cQWUy2oeGeiDmxeZ
+	S39n5HNPLwIpXkzw3uXymBMKxHcVzRgaOedjiVS2Fb9j1zPDcHJnKXcvKg6Z5jSD6upOvTCWOaOCR
+	hHHXuclkc6xkGL8UIC8Mjdhm0WaHGPpMlI3YKd6oLL1Q/xIFgh/isT/xBAb4Jb1NNcEqk0Ki6xZR/
+	LSlCbY59FVHjqta8DjXqw6JYs9urMi7l4hUdud1LfMppWdL/lAi8GRwrfJhxnRRUNm9gegow3BH4P
+	JNitZHcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWpm-0000000DP7U-3Lfy;
-	Tue, 17 Dec 2024 12:37:54 +0000
-Received: from out-182.mta1.migadu.com ([95.215.58.182])
+	id 1tNXUs-0000000DY1w-4BWm;
+	Tue, 17 Dec 2024 13:20:23 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWop-0000000DP29-3Alf
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Dec 2024 12:36:57 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1734439003;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RolKsme1G9Rjox6sw68grNTuofAMfeweMCbeaFaOjdE=;
-	b=WrnXm66oWyjzl5/KX5EDjjmy8k7gwxzTP0hDuvZDpj1vGd/1V7BBy61LdZaM5wSNYAjoXj
-	FnPekO+HSxOYXxOIIoW+7HgnRyQlCdmWs3uMcVxDzMYbEns3wmGenx0D2dzkfH6HdiiTxV
-	QtU7idQ6FjTQmrXHPWjFWO9yfp7MCANXq3Svn8ytWYeGIeiCMf3GYKb+i+J6nOqVHRgP/+
-	XIa2cUnJ8EppY4xpTSJQTwcrVpDLqGmSQHRChEs0mQvjWib/fprlCbFw7GlXcE1cLBKvId
-	84zo5MHicnENQIC+c1VQLKfyj2A0lXBQXWzen4IfKjBWGQMtbqrepa8h8eDALg==
-Content-Type: multipart/signed;
- boundary=213d8d12555ec1eb5ee8f786b8c3bbdacf37d77fd939badb04e2ddb33646;
- micalg=pgp-sha256; protocol="application/pgp-signature"
-Date: Tue, 17 Dec 2024 13:36:29 +0100
-Message-Id: <D6DZB443IQ7A.3P1135M6DMF2S@cknow.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Jaroslav Kysela"
- <perex@perex.cz>, "Takashi Iwai" <tiwai@suse.com>, "Liam Girdwood"
- <lgirdwood@gmail.com>, "Mark Brown" <broonie@kernel.org>, "Phong LE"
- <ple@baylibre.com>, "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo Kim"
- <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
- <alim.akhtar@samsung.com>, "Russell King" <linux@armlinux.org.uk>,
- "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Sandy Huang" <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, "Andy Yan" <andy.yan@rock-chips.com>, "Alain Volmat"
- <alain.volmat@foss.st.com>, "Raphael Gallais-Pou" <rgallaispou@gmail.com>,
- "Dave Stevenson" <dave.stevenson@raspberrypi.com>,
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, "Raspberry Pi Kernel
- Maintenance" <kernel-list@raspberrypi.com>
-Cc: "Jani Nikula" <jani.nikula@linux.intel.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-sound@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
-In-Reply-To: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1tNXSq-0000000DXaN-3TKM;
+	Tue, 17 Dec 2024 13:18:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5FD05A4101C;
+	Tue, 17 Dec 2024 13:16:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C2C0C4CED4;
+	Tue, 17 Dec 2024 13:18:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734441495;
+	bh=LgYSlCVhxva3zcs7YV247UvMnT+OkZcHDucG48hT898=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IWEmcPewXktwLgiuhox8ozlQsK/lIgxiVOtV807N931COsH5Lq9S3PcN28jLvTtVW
+	 RCNJfFqw+IiDt7NFzOM1ewhDwAwi+S6rD8g2mz1xw58FG4h/FCic+TSvlaZrxqZly6
+	 f1OniB/T5YSWbnaaJGaTNhV2TJArmrqN2pYE4mj+M5UPo20Ce45LH+s7KHoj68msog
+	 ZSK2g/ic+yoKlkMA6kQxPvtCuq/SLG8B4MT/KS0919fVbGx2W9hVHa4enD8dCeZtWn
+	 nK5G+EkJkQj3SgxKmvTmIMtzDyB2DNMIQ1n2iIOXOMdgA+AqRsADm9SjJw0Q3nrp/q
+	 L1pBQa4IlX7ng==
+Date: Tue, 17 Dec 2024 07:18:13 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, Lee Jones <lee@kernel.org>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	linux-mediatek@lists.infradead.org,
+	Eric Dumazet <edumazet@google.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [net-next PATCH v11 1/9] dt-bindings: nvmem: Document support
+ for Airoha AN8855 Switch EFUSE
+Message-ID: <173444149293.1330948.15339441958855664724.robh@kernel.org>
+References: <20241209134459.27110-1-ansuelsmth@gmail.com>
+ <20241209134459.27110-2-ansuelsmth@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241209134459.27110-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_043655_930210_6E08550C 
-X-CRM114-Status: UNSURE (   5.34  )
+X-CRM114-CacheID: sfid-20241217_051816_927250_ACFE15EC 
+X-CRM114-Status: UNSURE (   8.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,33 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---213d8d12555ec1eb5ee8f786b8c3bbdacf37d77fd939badb04e2ddb33646
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
 
-On Tue Dec 17, 2024 at 1:40 AM CET, Dmitry Baryshkov wrote:
-> This series depends on the ELD mutex series [1]
->
-> [1] https://lore.kernel.org/r/20241201-drm-connector-eld-mutex-v1-0-ba56a=
-6545c03@linaro.org
+On Mon, 09 Dec 2024 14:44:18 +0100, Christian Marangi wrote:
+> Document support for Airoha AN8855 Switch EFUSE used to calibrate
+> internal PHYs and store additional configuration info.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/nvmem/airoha,an8855-efuse.yaml   | 123 ++++++++++++++++++
+>  MAINTAINERS                                   |   8 ++
+>  2 files changed, 131 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+> 
 
-There's a v2 of that patch series here:
-https://lore.kernel.org/all/20241206-drm-connector-eld-mutex-v2-0-c9bce1ee8=
-bea@linaro.org/
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-HTH,
-  Diederik
-
---213d8d12555ec1eb5ee8f786b8c3bbdacf37d77fd939badb04e2ddb33646
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ2FwVAAKCRDXblvOeH7b
-btcgAQCrCEekrUY/E2pSYqYaHT6HKwkoEGuruBblZdydAr68eAEAsy2oRKKCWk/8
-hitjosySt34ZoKPme2E/QoeOAZUr1gA=
-=oJtw
------END PGP SIGNATURE-----
-
---213d8d12555ec1eb5ee8f786b8c3bbdacf37d77fd939badb04e2ddb33646--
 
