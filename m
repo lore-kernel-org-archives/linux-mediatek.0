@@ -4,105 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A65E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 15:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA88E7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 15:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=; b=LNMbIKr1z3i5lgV0DUcC/AUto2
-	v0SUBz7prYdD1JPJyh+vDZup66FHkPB3kw3aGXbq2wXj1kgqm33ia1qz51XMYUrTwCNqvuITOt8ee
-	s7fbqbFxJme1W0hD0W1+pSX6VDctCyYQqogTEs2xWNajWzzAiQ+hsFW5vbyK47OAHRAyVYEnTL+26
-	FXDhbkHmsnyWZrzVYbPVYa4mOc4E7nXoDr0zrowJS5tmoRZsGDfYNk/zqTH0GrRMU71ELL7B7Cr6I
-	95iFM/9x4KYTzBASDkodx4q2q7LBLFoKzsULpiHpKJttLYliQL/xSlrj5x8ob0iKa5CJQyaMCTkGo
-	/+Eyzd2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=msvJJ4wRx8H5IeuqyEGZkDnbdyoTil943JpxDyL/uzw=; b=HV0pvUnZLkKWmYJ67duG/jekOE
+	b5GHGoXjHjPTLqZw8aGFbr6kzctPT3LQ0Jt0P7GBjCFw7jxFfIarMYWS80C8/+sWEJU5kpyIR53Bw
+	dwktwYhpfLD4vtrtukW8IoZUGxAzvP9AKJJuA54hjGgw2lKamMeDbvm1vhBZNa9SwEtHbMG5f5Af8
+	VxUffiY32l7iHIVuvDdmI7H6/ifbdv9WwwY/suTibo5bhoUHc7L+rc/2xmdgSe57YWYIuZf5A1gxQ
+	UEbhos4HKdCkyq2EC6ri661OD59jwLNH/qmHtjGLVcmAPWC2UWPTun0I7uyHJxidTuQNTV306MwUJ
+	PnYaqjAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNZcA-0000000DykT-0ics;
-	Tue, 17 Dec 2024 15:36:02 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1tNZkv-0000000E0VK-01GJ;
+	Tue, 17 Dec 2024 15:45:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNZLe-0000000DvXx-0c7t;
-	Tue, 17 Dec 2024 15:18:59 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-43616bf3358so6223695e9.3;
-        Tue, 17 Dec 2024 07:18:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734448736; x=1735053536; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=;
-        b=C8bD6L6Z9EF2SwDe6UwmnUVPM13rRabo6BhrHvHmwCFASBC66Uz26VxuJpn1deumRO
-         SOhEJ91sgKbz4GlneiXnHqutHsxAJZPZgnW0tq4Ojqv9zxzSgg99+Kg+Uz91PJpScOsp
-         A6AGx2q9LammBvp6Ou6T/dI0wo7y9uQERj81sWyVlRKMjFXuM4ONw2dldii5gNy05Y9T
-         9z3caFSnzaZFed7GwkaCM6PAS0SaCR4H1kEYQYaz+GJrDd5+TUFxJX38t5NOw9ByCM88
-         XBxHug1oTu19npV6vswEhU+n+wf/Kuh9TYBGYjg3SG5bohXDFGvuKquDIW/v/7sHFKUD
-         HeAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734448736; x=1735053536;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RPR0mR7aHib3t7qCGRZcUALodb3tIV3uQt3h3CFnSp8=;
-        b=R4F1Yo76yWhMSzeQjgMHdQktPKiMksXsWxp/1Xp2iArXlzDJWn1ANT4U4M+dRKF5kz
-         I7jKdOTPAvc6uaL/WUR4T0gpsNfNHSojyFuDmIFKourw3z68z7A7rN1YBpFk65zNpD/e
-         U7Q1PlaXSlP7ehaj7SS2FWnJQ8Wr0tuZ9JFs8gCGxoOcgZOxw4aNux7QulOFDqaLJvit
-         kFB2RnkS4zSGriVHXlfF63RSTBtDCwf1d4itJxGhwdHGIWsao8GaBXc7IvTpUdgE0PfD
-         AgLVDm0VYLhM36To1UYjQfSN49jsNZoTB049kSAcMUqtX4ohqEGPRAyX5bxU5j0lA5sS
-         bMzA==
-X-Forwarded-Encrypted: i=1; AJvYcCVXCseOaymBcFJWV5/Vy8zxOoKbsJKfRKU+FiwuQp/SGXDjPJlLdxTKSBioPJWldPGhxEjFfrlE5LTEc8kxYao=@lists.infradead.org, AJvYcCWmw28mAwu0pe7azhzSOkDGOrN1eKN561opI0kUTaZeHKO0U9Js57WgxGbaF/F6l4vPweQO6bnNDiPE5Jd2xLU3@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+LGKh+/UHrGDxN3g1e3eu/J81JrB7Ca6gaKl68AoY6MDLhZgk
-	Hpz0aXatGXDwC4m8IsEoxHG45i5khJoucaAErhpTOLqPJlT2lxzI
-X-Gm-Gg: ASbGnctYHnIdaxemk68Ukw1vwNACcQKROU17pZ6Odd3oG4hqUNf3NliuU4ZNUyAfepi
-	SwTg+099riDKTHKS31/VZcSpYKW0LaDHHGrANcEruxrvYkXqoaQWds8fgwOtLFKBKkswSrRrUJ6
-	ch4u8Gopr9KpIskW3SHXLmb1Xd/xAiIveF2k/ciRvgXstc4NWOekMREDZfvOBFFNgfLVWNOm0oG
-	PXeLwDgU2EFM/cVBy6rV9gEk1Zkn+EqpIzpCGNeW5Ih
-X-Google-Smtp-Source: AGHT+IFXeyI9vAcAH6rAgJBjbYUandXoU43FysAiQnCTh92fN6p46Oyvs6lJ8SZSBx0Mc3K8abX/NQ==
-X-Received: by 2002:a05:600c:1c82:b0:434:f537:f9c1 with SMTP id 5b1f17b1804b1-4362aab668emr57089055e9.9.1734448735652;
-        Tue, 17 Dec 2024 07:18:55 -0800 (PST)
-Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4363601569csm120060805e9.4.2024.12.17.07.18.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Dec 2024 07:18:55 -0800 (PST)
-Date: Tue, 17 Dec 2024 17:18:52 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1tNZjm-0000000DzmN-1Cw2;
+	Tue, 17 Dec 2024 15:43:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734450232;
+	bh=nqNrX/533sU5V6zHe8xW3RLPoA1ipAtEcOiVjJO1rGY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WVVx5gTgUIpE/fWwd3x13UKsvPPwUW/u3awgNHQUe8UcLnHbfxchipSA2TFt49vtG
+	 HbB8Lqii85yJ+uTKOxxH0z2Tto4aAeuT1i3cs7yur238z+vavt4T6ro6+zvezvJLXV
+	 jczdEG/Z2ln7IIpo4E7hot0GXRMKQuicldDb6zmQVF8AijsY5smlf/8pyuVBMOgWI5
+	 OyKrFYDQaxewjhrBHssCGnxXcs7GMRdNavZ6abkEB5tJh4Bo1crfkjve+dA4AAYN7b
+	 RSpxL18mf9TjyLNYsgS5CJ5AOZ/GExGlQRoE+LgSaQx62yNFjg5H4Ygh5i2WtCljOC
+	 S4rOMjUQXq/uw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D74C417E3788;
+	Tue, 17 Dec 2024 16:43:50 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ck.hu@mediatek.com,
+	jitao.shi@mediatek.com,
+	jie.qiu@mediatek.com,
+	junzhi.zhao@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
- AN8855 Switch MFD
-Message-ID: <20241217151852.wj2cbrisv6v4sdl6@skbuf>
-References: <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-1-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241209134459.27110-6-ansuelsmth@gmail.com>
- <20241210211529.osgzd54flq646bcr@skbuf>
- <6758c174.050a0220.52a35.06bc@mx.google.com>
- <20241210234803.pzm7fxrve4dastth@skbuf>
- <675da041.050a0220.a8e65.af0e@mx.google.com>
- <20241217151339.gjpdkfbechdjohza@skbuf>
+	kernel@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 01/33] dt-bindings: display: mediatek: dpi: Add MT8195 and MT8188 compat
+Date: Tue, 17 Dec 2024 16:43:13 +0100
+Message-ID: <20241217154345.276919-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20241217154345.276919-1-angelogioacchino.delregno@collabora.com>
+References: <20241217154345.276919-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241217151339.gjpdkfbechdjohza@skbuf>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_071858_181929_2CF4DBC5 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20241217_074355_291486_3BD2F130 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,23 +94,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 05:13:39PM +0200, Vladimir Oltean wrote:
-> On Sat, Dec 14, 2024 at 04:11:54PM +0100, Christian Marangi wrote:
-> > We can see that:
-> > - as suggested regmap doesn't cause any performance penality. It does
-> >   even produce better result.
-> > - the read/set/restore implementation gives worse performance.
-> > 
-> > So I guess I will follow the path of regmap + cache page. What do you
-> > think?
-> 
-> I'm not seeing results with the "times" variable changed, but in
-> general, I guess the "switch regmap + page" and "switch regmap + phy
-> regmap" will remain neck and neck in terms of performance, surpassing
-> the "switch regmap restore" techniques more and more as "times"
-> increases. So going with a PHY regmap probably sounds good.
+Add compatibles for the Digital Parallel Interface (DPI) block
+found in the MT8195 and MT8188 SoCs: inside of the chip, this one
+is directly connected to the HDMI block.
 
-Could you find a way to reuse Maxime's mdio-regmap.c driver? Either
-create separate regmaps for each PHY address, or make that driver
-accept a configuration which isn't limited to a single ctx->valid_addr?
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml   | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+index 0f1e556dc8ef..5670715efa5c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+@@ -27,6 +27,7 @@ properties:
+           - mediatek,mt8188-dp-intf
+           - mediatek,mt8192-dpi
+           - mediatek,mt8195-dp-intf
++          - mediatek,mt8195-dpi
+       - items:
+           - enum:
+               - mediatek,mt6795-dpi
+@@ -35,6 +36,10 @@ properties:
+           - enum:
+               - mediatek,mt8365-dpi
+           - const: mediatek,mt8192-dpi
++      - items:
++          - enum:
++              - mediatek,mt8188-dpi
++          - const: mediatek,mt8195-dpi
+ 
+   reg:
+     maxItems: 1
+-- 
+2.47.0
+
 
