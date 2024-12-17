@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FCCE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 17:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF916E77187
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 18:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P/KXH1pSlSgGIDmW0SOLRT8l0k0mjwSPqWkZeKUOdFI=; b=eeW5clYwG2OKb+dh/oZ4naUpgh
-	AbMQUbpzwnqkBXhbcLA1khi8e7yKZaq618+znsshZkQQzZewgepAh9vXb2/25Azk8tdA+Zt/tbGY2
-	jMsa7A5N2Xeusl1jYAppM8aDEXESenTYfDzCfk/06N8NXoQSZh5K8pC5tmXt3mEfpFKfqnR6Je75s
-	ibis70Z2wd+87TayAt90BccZB7ribnC84MkuZ8tJ9689LjrVC8JjFxb3YcHf9ZW9zrJvKVQU6lyD2
-	ZKO2rS5JHDw0aijxJzWaoho9exAfyEqw4ssQqYPgHYxhWcM7aW9vTnBatxojAxAM6Vbcb9kJsNHp/
-	yMlLB7pQ==;
+	bh=xGYFYpP+YrrqGo5Ub6STulzSBuLANjfod4QFaQBkOPY=; b=A9XwgLnvuqatzBIZ+ALuQAGaY/
+	BJxSDgmgC7qLOVTwJypVgucrqHznI5ZLCgbC6lfGGNB8sOcjkch14bgqn/YHuIPDcuUiiA3EKVAd+
+	bQYx93Iyb+P56s5omkoOlQYuYAZMmgM3u3b+9HOcMYRQnbnEnqEvD30NZmZtKu+AxcsInYmDaZrRX
+	+aoNyhEYa5WUWHyHeGWrWXVkrtCJLZVAI6KhxNDS6vF/BKlVR7xRIYsQL9j2z+G3n+v37gEjX3iHS
+	C4OCy800a1is3S8UOL8K7CIFUQYm/mhtP7fYwVaWwXLzjcwluBgICY5muEwnQCKYAfqTBWl93e1M+
+	BTOOIPbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNbQ3-0000000ELbg-20RI;
-	Tue, 17 Dec 2024 17:31:39 +0000
+	id 1tNbzX-0000000ESwr-2OYO;
+	Tue, 17 Dec 2024 18:08:19 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNbMq-0000000EKtM-29rY;
-	Tue, 17 Dec 2024 17:28:21 +0000
+	id 1tNbeW-0000000EP1H-14OY;
+	Tue, 17 Dec 2024 17:46:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C4523A41C23;
-	Tue, 17 Dec 2024 17:26:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA22DC4CED7;
-	Tue, 17 Dec 2024 17:28:18 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 650A5A41F25;
+	Tue, 17 Dec 2024 17:44:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D93A0C4CED3;
+	Tue, 17 Dec 2024 17:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734456499;
-	bh=P/KXH1pSlSgGIDmW0SOLRT8l0k0mjwSPqWkZeKUOdFI=;
+	s=k20201202; t=1734457594;
+	bh=OwGheDgt29vkvS8t2F2IuM3VUVlBDeT9j61i23O0ZJI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lqmpa3fENx0zrOO023bHko0eiu2JdCGJVjMp+cDsf95+sUdBq873OISdo3k5u0+zJ
-	 SDzXXS1qpc64h4NVMQbsmADKdtQq3SqiOURq10XbW9zep/n/VRNblYp39EXYzbQBt7
-	 ajdUu3epTOHdLTZo7BeQDAXxxCXPjS5kB9cwXcT17Bju8DgdMeu0aQUowzBXyHTBxE
-	 usP3qx1BZy5rwZLo+fIo2hy85kWuTM7NDs0I6N8LsYRGZ2c2qng/3ujgZ96q5FNHAB
-	 E2mf51SdCyXZsmZ8r2lVuaZhtYaYRlGwn+0IZCMgQHZ9ekBX41FrCVG0/ESumtr9t9
-	 LEjJYNSX2u+pw==
-Date: Tue, 17 Dec 2024 18:28:16 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 10/10] drm/vc4: hdmi: use
- drm_atomic_helper_connector_hdmi_hotplug_edid()
-Message-ID: <20241217-orthodox-jellyfish-from-ganymede-a1d136@houat>
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <20241217-drm-bridge-hdmi-connector-v7-10-cb9df2b6a515@linaro.org>
+	b=T3ePxkuPfo70D9lFnDwMhsaSYEGVGBUJICi+5sqC0oLHaXUqtOBToQbKP6tosj15V
+	 +zzrBj9vWgDNqRIbrA5YW5va/cKmoxDs2olkmaBnQ6gNIHfja8tvtIAHePhUWK2nF6
+	 xWLWSQgE7i3ktUlqFZH5yJ5HITbjgtP2dSfQNQpcY/c7QfSRMvD/fnurDON5vNIv+t
+	 UvO1A3uFDeEXqeBO2oWb5n7ICD/DBbcUvnvt00AK0ekDKkB+YKtr1kcbxm8eztoFql
+	 l+8Z/i0hIOzCN8hNio7y4wzf8+j+L/sEBlQigX2X3mT28CvykL+XpOztCb/VaowHi6
+	 HZ8DJAocaVrbw==
+Date: Tue, 17 Dec 2024 10:46:28 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Arnd Bergmann <arnd@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] media: mediatek: vcodec: mark
+ vdec_vp9_slice_map_counts_eob_coef noinline
+Message-ID: <20241217174628.GA2654633@ax162>
+References: <20241018151448.3694052-1-arnd@kernel.org>
+ <20241118200641.GA768549@thelio-3990X>
+ <20241119110226.dbd54clp46klvjl5@basti-XPS-13-9310>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="4poat5rh7ip5k2pz"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241217-drm-bridge-hdmi-connector-v7-10-cb9df2b6a515@linaro.org>
+In-Reply-To: <20241119110226.dbd54clp46klvjl5@basti-XPS-13-9310>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_092820_693514_1DC1FB28 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20241217_094636_433674_04BEFDE6 
+X-CRM114-Status: GOOD (  30.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +86,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Sebastian,
 
---4poat5rh7ip5k2pz
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 10/10] drm/vc4: hdmi: use
- drm_atomic_helper_connector_hdmi_hotplug_edid()
-MIME-Version: 1.0
+On Tue, Nov 19, 2024 at 12:02:26PM +0100, Sebastian Fricke wrote:
+> Hey Nathan,
+> 
+> On 18.11.2024 13:06, Nathan Chancellor wrote:
+> > On Fri, Oct 18, 2024 at 03:14:42PM +0000, Arnd Bergmann wrote:
+> > > From: Arnd Bergmann <arnd@arndb.de>
+> > > 
+> > > With KASAN enabled, clang fails to optimize the inline version of
+> > > vdec_vp9_slice_map_counts_eob_coef() properly, leading to kilobytes
+> > > of temporary values spilled to the stack:
+> > > 
+> > > drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:1526:12: error: stack frame size (2160) exceeds limit (2048) in 'vdec_vp9_slice_update_prob' [-Werror,-Wframe-larger-than]
+> > > 
+> > > This seems to affect all versions of clang including the latest (clang-20),
+> > > but the degree of stack overhead is different per release.
+> > > 
+> > > Marking the function as noinline_for_stack is harmless here and avoids
+> > > the problem completely.
+> > > 
+> > > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> > 
+> > Unfortunately, I have seen no moment on my upstream report and this
+> > warning is breaking allmodconfig builds because of -Werror. Can this be
+> > applied as a workaround for now (preferrably with a Cc: stable on it)?
+> > 
+> > Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+> 
+> I'll handle it asap, it will be part of 6.13
 
-On Tue, Dec 17, 2024 at 02:40:32AM +0200, Dmitry Baryshkov wrote:
-> Use the helper function to update the connector's information. This
-> makes sure that HDMI-related events are handled in a generic way.
-> Currently it is limited to the HDMI state reporting to the sound system.
->=20
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Is there any update here? I don't see this patch applied in -next.
 
-drm_atomic_helper_connector_hdmi_hotplug_edid in the commit title doesn't e=
-xist anymore :)
+Cheers,
+Nathan
 
-With that fixed, and assuming it's been tested
-Acked-by: Maxime Ripard <mripard@kernel.org>
-
-Maxime
-
---4poat5rh7ip5k2pz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2G0sAAKCRAnX84Zoj2+
-dvgTAYDXWRRNriha0ReNmEhaMolS8cMgKCv2UWzwTM8m3zgibCHDKFgri0Pqm9Wj
-kq7o4DoBgOuYsZCZJQ6vnGSi6pHkFZxYFNADG4GFFiA2JE2JPWZ+/G3BQX8XkCyN
-VYp4weCILg==
-=kZ/S
------END PGP SIGNATURE-----
-
---4poat5rh7ip5k2pz--
+> > > ---
+> > > I have not come to a conclusion on how exactly clang fails to do this
+> > > right, but can provide the .config and/or preprocessed source files
+> > > and command line if we think this should be fixed in clang.
+> > > ---
+> > >  .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c         | 3 ++-
+> > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > > 
+> > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> > > index eea709d93820..47c302745c1d 100644
+> > > --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> > > @@ -1188,7 +1188,8 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
+> > >  	return ret;
+> > >  }
+> > > 
+> > > -static
+> > > +/* clang stack usage explodes if this is inlined */
+> > > +static noinline_for_stack
+> > >  void vdec_vp9_slice_map_counts_eob_coef(unsigned int i, unsigned int j, unsigned int k,
+> > >  					struct vdec_vp9_slice_frame_counts *counts,
+> > >  					struct v4l2_vp9_frame_symbol_counts *counts_helper)
+> > > --
+> > > 2.39.5
+> > > 
+> > 
 
