@@ -4,84 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B9FAE77187
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 14:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96BAE7717F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 15:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qTiyx4rfntofc0k6gFLJAY5Sif0ANTcSMp5CKClJKaU=; b=DXbQlYYJndnpaLvbGS+6nH/xRg
-	H1uiI7c+ROmbkfcnVGx5aA9edsANN7yiLt36Yj2PCJ6o6T5FKSGXXPS/vcic8No3R4yYW7M83i+2L
-	nC6uC4modxkJrXENfYqoC37BP5iEgsZTUbPVOSd/n5LpwmXsbefYzRpUYT69bLBH2uEjmkVzEBKzM
-	PYMU07sTCFdlJm8azq6MyeMLK1KYGn8+QjAhkhkV8yvz9JTYm5rnOp5yYY4tjl2edalX1hKyrVcne
-	gi40Df8wEcfTBuFpuscKCTxw5d7wRgoJiG3fzwWLcNzGCwRsEt4iI8yfbVySlgkSobWcqOp3bFaVu
-	WQbahqIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=; b=v8Ez7Iwj3EfSPCZX4Otey0juSY
+	rznq6qZAJ+Wr3X4WZ9wvvb8IpoHoFt7liq6e96Hoqvqb8vzGz4Zlg7Pw8lwTUfZL9jqWoNpRP3wZp
+	AQhwl9Pb/dIrXhTuYM/MIYF0OAKYgWa/XVEOiIb3CNfr5LunWOi6p0wGyR4ydD2eg9Uih1pWAQGXy
+	k2VS5ZnxkS/eWy8B0GvOY4QqW80z9A/jbpuIRqAYO9OewLLc73TlPGjTwQlKb2cv3ofzJGLX8xklU
+	I96L6M0Muw2ustwQk+JhdRTv6nQ/bYD0Mj4bExtgUkWhkwPBkf2ZY6ef9usMvlq3Nfdc2vs1XEWp9
+	Pc70N9kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNYw5-0000000Dpp2-2B4M;
-	Tue, 17 Dec 2024 14:52:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tNZHk-0000000Duga-3CF0;
+	Tue, 17 Dec 2024 15:14:56 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNYt2-0000000Dp6j-0Pa7;
-	Tue, 17 Dec 2024 14:49:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734446960;
-	bh=bxleyRE+0QNYUPGWu6GOO9WL8zmi27WPpMdWVX7EXaQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SHgrecisvyvFNYJkC0sG9pe+ZHI+SU1wgFAN6QytjqZ1lScWAnvGDWOB6jwwTeoOY
-	 b1mEXOq6aztZ09ZzcxhUuG3Wwzv/0G21T4aw3PxuaYchovpxJD6WhQKz/vKInV7TXt
-	 2F9t8c0lhA09WzpPWuQtgwPdwGaOyAgN1L+AguXnrTjPEhlioHJ8U/T1N/js0b6v4H
-	 iDUEuJIUtXJSf4+YCLmLEF1SWO717Weax/RRKuIQ26fs0CRlo+rHTHWpp8mCDUe4+/
-	 lCHiJr2SCxpRf/Qa93uK7R/Fmww2DmFRMHozhV7TJgvX2j2PGmH9IORwl3A1OUh22+
-	 AOVOghZSTbzQA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9389517E377A;
-	Tue, 17 Dec 2024 15:49:19 +0100 (CET)
-Message-ID: <482ccf9c-fad5-470c-964f-a2c422f79555@collabora.com>
-Date: Tue, 17 Dec 2024 15:49:18 +0100
+	id 1tNZGc-0000000DuOn-0IcM;
+	Tue, 17 Dec 2024 15:13:47 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-436284cdbe0so6712965e9.3;
+        Tue, 17 Dec 2024 07:13:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1734448423; x=1735053223; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=;
+        b=Y2mtv7zrc93i1V6KKU9KtsCB6mGUJQyz2TZKlW3G+RL0TLTn9jgRGZoRMQ5fm3FN5M
+         k48qofHeFLW+eznLj4roOROmRWq7x2ooIQeDHWDK2olxU+93ygBxS/85LFuRaAzfvaDx
+         gIXKu9TdczU6bhEU8HTJQjn0KQTewNi/TFrs6V1OPFMc8XeaLNm+OtojZLCtJIRftrA/
+         Cc5VGaRgHbuePpfR9GTiC55qYXlEoLP8dc7u6MWeURe/c3K/3qBjTpz2ty4Cbj45NcST
+         xh1HO3Op5WDpwe+vC2UEgE6LkfpuhoOFKlALJyxb8XQm5QJBrt7QdYx9oS/kFfBay5hl
+         FxQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734448423; x=1735053223;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mIbodpRWxqrrqRRUsCSmxdoYxLL2MHEZUJwlmjhZJMc=;
+        b=gwGfyaSbladrA2hYgQpD82UHRYbkXOlDxee9+Y532fDKQjO9Zwy4pJR8BpJTz/y3um
+         mzvsun5X1RL9Jd68ohvqglCHUVj2FvTEEcA8xHv5s594x5YBxnYW0URmqeeV9fm9KxRi
+         yrlk+HALh3N5szAZ//pAjJt+onyxzKo47uFXI9JoA9G1uJK9MXfSGZj3grHJxITf6Qy/
+         5vpczDMyZTKcCU+7QPa7dH7FqIm1uW/Zj11zNbrvp2p1rA34cuHF8k2tfs2JuWO9JoDw
+         keF5zB5BZ8FrFqTja7TqCsjRj2lrV/8cFAuCsvwsodl1N7ywTGCCpEJf+VZqKqiXNrvl
+         5fYw==
+X-Forwarded-Encrypted: i=1; AJvYcCXOhDS9Xa31BTRix7t5UDRR+3QMS81uuCPlJl+IKofT8ZFCbxrXnDyFlw2izuDzklDs5EXO1n19/aQJ3Nyx4xZl@lists.infradead.org, AJvYcCXn5rjPpe23J7bDMKjLi7Irfw76A5+dkVqULeeEJqHAgtOiDdykjR9bbKygC/rd5GaGA3t+MM800qvSj0uecFg=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzJAZjdxoRTBA0m/CSIj2z7CCn+Lzco2tNWQM0oJ9ZPV6fJZ5y0
+	p5wtspxVFiHzUVMoD187iD7LTnaiNbmxFHiGmF1dfYhC7w0Mll8jLR1fWnFK
+X-Gm-Gg: ASbGncsLvFSOu7A0SSLmhqS0nGtA12gr7SPv4WQ0YPIOL2zmAnLTELkNfSnTLcYVYPD
+	u9Cq837zCRrQUV7jOIInuz/aWkIX/yBA5hTmRvYDyQ+kLOuKyJv3+y7N0Ru6FdZ9V3TzFbhmbNq
+	QDKEDMx+kObgkgGLxQ9PotT6VaC5WGi+oIN1iRHVm61zBRb375Fpf9/NQLNAHI+8Jmd9oqTjU0/
+	2J82DVZge+K34OzmY/Wa12AKF0pfwdF9N5m2/mnwa59
+X-Google-Smtp-Source: AGHT+IHLcu6qj3H5z8Rh0t1dPSXaYp5zGOT8WvycKhg3dUOqzNjj52VHTli51/q2/uIIlYifEe4k4Q==
+X-Received: by 2002:a05:600c:4fc5:b0:434:ff85:dd77 with SMTP id 5b1f17b1804b1-4362aa3a62dmr56863795e9.3.1734448423285;
+        Tue, 17 Dec 2024 07:13:43 -0800 (PST)
+Received: from skbuf ([86.127.124.81])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436362c7d59sm119484895e9.43.2024.12.17.07.13.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Dec 2024 07:13:42 -0800 (PST)
+Date: Tue, 17 Dec 2024 17:13:39 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v11 5/9] mfd: an8855: Add support for Airoha
+ AN8855 Switch MFD
+Message-ID: <20241217151339.gjpdkfbechdjohza@skbuf>
+References: <20241209134459.27110-1-ansuelsmth@gmail.com>
+ <20241209134459.27110-1-ansuelsmth@gmail.com>
+ <20241209134459.27110-6-ansuelsmth@gmail.com>
+ <20241209134459.27110-6-ansuelsmth@gmail.com>
+ <20241210211529.osgzd54flq646bcr@skbuf>
+ <6758c174.050a0220.52a35.06bc@mx.google.com>
+ <20241210234803.pzm7fxrve4dastth@skbuf>
+ <675da041.050a0220.a8e65.af0e@mx.google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/15] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20241205114518.53527-1-angelogioacchino.delregno@collabora.com>
- <20241205114518.53527-16-angelogioacchino.delregno@collabora.com>
- <6ed3b9ee742dcf814f35e15d88db538480ba2d48.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <6ed3b9ee742dcf814f35e15d88db538480ba2d48.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <675da041.050a0220.a8e65.af0e@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_064924_324417_F16F7FC6 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20241217_071346_110350_44DAEE42 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,88 +116,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/12/24 10:21, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
+On Sat, Dec 14, 2024 at 04:11:54PM +0100, Christian Marangi wrote:
+> We can see that:
+> - as suggested regmap doesn't cause any performance penality. It does
+>   even produce better result.
+> - the read/set/restore implementation gives worse performance.
 > 
-> On Thu, 2024-12-05 at 12:45 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
->> found in MediaTek's MT8195, MT8188 SoC and their variants, and
->> including support for display modes up to 4k60 and for HDMI
->> Audio, as per the HDMI 2.0 spec.
->>
->> HDCP and CEC functionalities are also supported by this hardware,
->> but are not included in this commit and that also poses a slight
->> difference between the V2 and V1 controllers in how they handle
->> Hotplug Detection (HPD).
->>
->> While the v1 controller was using the CEC controller to check
->> HDMI cable connection and disconnection, in this driver the v2
->> one does not.
->>
->> This is due to the fact that on parts with v2 designs, like the
->> MT8195 SoC, there is one CEC controller shared between the HDMI
->> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
->> adding support to use the CEC HW to wake up the HDMI controllers
->> it is necessary to have support for one TX, one RX *and* for both
->> at the same time.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
-> 
-> [snip]
-> 
->> +static void mtk_hdmi_v2_bridge_pre_enable(struct drm_bridge *bridge,
->> +                                         struct drm_bridge_state *old_state)
->> +{
->> +       struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
->> +       struct drm_atomic_state *state = old_state->base.state;
->> +       struct drm_connector_state *conn_state;
->> +       union phy_configure_opts opts = {
->> +               .dp = { .link_rate = hdmi->mode.clock * KILO }
->> +       };
->> +
->> +       /* Retrieve the connector through the atomic state */
->> +       hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
->> +
->> +       conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
->> +       if (WARN_ON(!conn_state))
->> +               return;
->> +
->> +       /*
->> +        * Preconfigure the HDMI controller and the HDMI PHY at pre_enable
->> +        * stage to make sure that this IP is ready and clocked before the
->> +        * mtk_dpi gets powered on and before it enables the output.
-> 
-> In patch [6/15], you does not power on DPI power in DPI driver.
-> Could you point out the code about 'mtk_dpi gets powered on'?
-> 
+> So I guess I will follow the path of regmap + cache page. What do you
+> think?
 
-DPI gets powered on in mtk_dpi_bridge_enable() -> mtk_dpi_power_on(dpi)
-
-Cheers,
-Angelo
-
-> Regards,
-> CK
-> 
->> +        */
->> +       hdmi->dvi_mode = !hdmi->curr_conn->display_info.is_hdmi;
->> +       mtk_hdmi_v2_output_set_display_mode(hdmi, &hdmi->mode);
->> +
->> +       /* Reconfigure phy clock link with appropriate rate */
->> +       phy_configure(hdmi->phy, &opts);
->> +
->> +       /* Power on the PHY here to make sure that DPI_HDMI is clocked */
->> +       phy_power_on(hdmi->phy);
->> +
->> +       hdmi->powered = true;
->> +}
->> +
-> 
-> 
-
-
+I'm not seeing results with the "times" variable changed, but in
+general, I guess the "switch regmap + page" and "switch regmap + phy
+regmap" will remain neck and neck in terms of performance, surpassing
+the "switch regmap restore" techniques more and more as "times"
+increases. So going with a PHY regmap probably sounds good.
 
