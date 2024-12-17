@@ -4,83 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1605DE7717F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 13:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC53E77184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 14:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=juPJKcDTKas6DmHfE2eez3lteaa9FffyFh6KyQJpAPM=; b=yIrxsHWozGNvK57bAAScDoYkce
-	ZURtb6qEVLB65RdR44LI4RXRZnHaD6bpgrp3g0JswrTusfSWL2C9vMDZIlDHgVAs/sAXKqY3aeEY+
-	K79fRMQIrrQWyxIn3ZU5+PyrwW65gguDRCvPUBTQkjLv657zXIp2cvZ1w8Qu36X6aQEhx7lbF62iu
-	wuoD7WOP6EHICcBTe3F5su88vdop08BkMmQDuez7KYq9vv4S4gy9UmqGHss282A4FLKvB7UQ1f/3x
-	LrX9YXILpXFJbo/eVDKkgLwam32kdyFkQEUI/WvfX09M1fTwQMqxa5kTT9R/HC0XCxqg0CGJczh5q
-	VA0/NwVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=; b=sy4BSWbX61XB32MhxKhiLLFf75
+	4U16RDVmfPmkc6It0p2kH/EwAJAY8pdReqISVrL7wHZi4lbpeP+5nVqn+7dn+Kl9dWNQKGdZ1ZVeW
+	ll5wZBMj2C3CWjdYEaD4byqO4uwkaAYURDfLZMY9iE4oO52pxXppLUfmQm/NxS1sq3Wu5RBkaeljn
+	rwRfZ3Loao1hTM52qfp83cOwEGbtnfTtQw/KUSSPtmIJsb+jkq5Y3+g8M++/ZcsTVhJfqPKS3PgYh
+	dk6yyeVsXFxEKwpUUYj8Sd8rsYh+xMJrFTMGjTUArptPqmIFFfHgfIL42L2/EmbjDHIWuCxPzlRkS
+	SSjs/krA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNXvo-0000000DdWo-0yn7;
-	Tue, 17 Dec 2024 13:48:12 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1tNYM9-0000000Di2u-2EEB;
+	Tue, 17 Dec 2024 14:15:25 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNXtF-0000000Dd7L-0DXJ
+	id 1tNYGq-0000000Dgok-2Oah
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Dec 2024 13:45:35 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-540201cfedbso5364768e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 05:45:32 -0800 (PST)
+	Tue, 17 Dec 2024 14:09:58 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5401e6efffcso6133722e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 06:09:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734443131; x=1735047931; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=juPJKcDTKas6DmHfE2eez3lteaa9FffyFh6KyQJpAPM=;
-        b=upvJOyLG2hLmQ4EVUjbr6NwDcCZ6LV6xCcrjOYNACcXSHF8Lbdk4QLq7n0i5qMXePI
-         PY7KH8y1e4ChB/s/dfqYt/muUQKP4IRkkVZ4tgJ7jPny4OjXKo7TWGaiHEMrruDtkTkc
-         18OYZi714xpM+s7XavpANf3Vqf1/E8fJWUWGSseSezPhSBXb2TOdAVtPjdvcHP/k9APY
-         nW+NQRnRQD14aIg6m3b79/45SamMQezNwioAnt0+WJuAo7Rxx01/8x9EmPgGP4WCauWC
-         om40pkWh578knXdulEiV1F8aVz0BfOwGDJybDWTpIG5Iugf9RvKg+21CRr65I06x13J+
-         KmKg==
+        d=linaro.org; s=google; t=1734444595; x=1735049395; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=;
+        b=K8FRIGUlVuI5oGEKneNn17Tj+SFu5JvVzDCU0UsVpP6v02UoORBct7VqGJhwbjHqCy
+         aN0BO1vcriOZrN76YuyrjCOrZiEQwpV1sLwCJ+ycP2vbzF8EviEIqH06te+nf2trqH+n
+         FoOCq2g2DtrLRUXzQt6EN3k7oQG/lcYvl9iCWgrPKbxtmW25Z0OM8M2lptjTlCbjGJ9B
+         3qwffDPuQetmLSvRhP38DD3/yb0tGkvPzOVpsl1jpDOwI70S5xSBDwgrcT0DisSDLJp5
+         x0HI4VY7ByZJOHZEIW6+miGMNbEMI5l/rkrUIfOD0MTibogZOk81MWAsGTOrzA9LFqX9
+         y/yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734443131; x=1735047931;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=juPJKcDTKas6DmHfE2eez3lteaa9FffyFh6KyQJpAPM=;
-        b=jHrW/8nC6iKvB6UgqoN76sNcTGw1bpFTmepQJFTEAx2cHSDtLQK0XjlTSe5Ve73wtg
-         8qlN2dw/yifQqccvBSOFBLhSm0v88JPBRZjIHygE/kcg8/fk9/UA3V485zsCS2aucaXt
-         iUsUEbEex+vjHMstc1jY+qLbF2jksaOH0eBPtMM8dttPjG4nen9CNlI301+qT0GnMiIu
-         r3mTjyznAgMEZ4gyXdNoOfGmUX+GO/+OpOclnYApeK7BAum4Qu2ECDT3pbbxQwHPibqs
-         AOL17FaAhlyYblB+j385yZTbvh/e8aP1SHQpMGzWm6lK/QgIWPH9ie9gwVeq1NNHSJva
-         w4vw==
-X-Forwarded-Encrypted: i=1; AJvYcCXlwCI+buP+C0+jrdfAtKCdk6X34eLYVP6q1VPeBV9imZen1qqxX0GCMy+PRPIvEdXXG2SIDkysnODoAbneBQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzAe1y9kHucfC6OYMZ598NjWu7GTg215Hx7Ib++Lm3hcZNPzujN
-	yOfHiQBzFQMSBU8FtfLZFoDDX8IDpjLb8tLvzLXArjqAkxx66qnhtne/u6OnfG2q2lBQ0z0jh98
-	7LxZn50dNkI2X+ITJsdm2oWF7p2zm4WnIylinbg==
-X-Gm-Gg: ASbGncu/FPGsOjlg4nQ733jklTljanncehqvlY4dpeNEhQ3iUlJrkCZ0Te9tRkVwLvp
-	cBQsIVDubaECMf8m/rwUA5xP58IH9hj1EhhYlmA==
-X-Google-Smtp-Source: AGHT+IFR6FlyV7xGudG0pVgEPvwRzGY//Q2aR/ufrejSiOLM3v/BAnZMkPxq7smAseJgipFLo05KDrbMR1c3Zo+kE9k=
-X-Received: by 2002:a05:6512:1383:b0:53e:239b:6097 with SMTP id
- 2adb3069b0e04-54099b729dcmr5985204e87.50.1734443131096; Tue, 17 Dec 2024
- 05:45:31 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734444595; x=1735049395;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mV9n8rD9lCXVFxHRKSb6HxnIcMmuUp+M9EhLoSWf19Q=;
+        b=qxKu/PFn31aywvJ7LraUhwspDiCtc6KJDUm2iDrgRxr71vJI5bbNYt0gw5riZZFnB9
+         0gB9eiAKiS172ptMKeridsl5CDNYYHIHcqvSBdD+olR6YhZp/NHCBjA3cTHx8RTGzRoJ
+         +2ocnPjD2l7bzOB+3FKlbq5Rn/ZqjilrA42PmKkbFmUgdiYHivsVTBBJk2TPX/iOSTj9
+         lF+8lHJvhsVjmM7r9GtYQD1wknPJhVnQ9S5E4T2m0CmzrmSfgy6240ChMW6mEU2/jaOz
+         eRZ0d+IcBYjMV1mqj+Z0QSh9Hwh3MP21Jc81Zs+mrKB8CK9QyKokYZ0kw0XREAecBZeE
+         qO2A==
+X-Forwarded-Encrypted: i=1; AJvYcCU5PJ/ra4C/6W6dR9jClh7Qxly+zppgHQXMUpqCx1aSqYtpeavelJQL7XoCTxehLfhbUX+GFqNcXtYfyzhwxA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxpxNheuY1WqL/FpvMonkf2Aj+hqm8NUaTVvs4sQMmGOJdP+CvC
+	6tjaxM4NrGLhM26DvECwxmIKRgRdKk/13ST+KkL/YrxklAdPPUNLEtmxJRmMxRk=
+X-Gm-Gg: ASbGnctZooCJYctNyyjRJkgBGTjNK5Bu7J5WxBNGADpTI1w9QKkRHKhCa8JUSQoLXVt
+	aMnT5KSKAlQtkYCKkbPjjXrlhKmtmn6t5nzWeS0cOaIFkfYXwOHtykBPl3sOYukSsznHvjBK6nW
+	/XzIZAavteF4bOfRka1tZVknMJV8V6pUNtVEKaMjO009CuIw9O/KwZXBQvvWlfx7UH2Y4IwXhAF
+	SgbdBgcLpvrEWiLhJEzXwRo9aPRCVRqKDAkZ3hKNlMAwm5IBdPworNdaE8M2fsWJxvKNzPczPjH
+	33fZVkpEEOpVWyTgB+R2/6ZaOtfTznTgHduV
+X-Google-Smtp-Source: AGHT+IHTf5dvyD0mHW1jS/2vTroVhCSJd6opzQzzWVJuSVJWGrT5Dsv7wwpXGqTnNzyEJctFejbUSg==
+X-Received: by 2002:a05:6512:3189:b0:53e:3a01:cf4d with SMTP id 2adb3069b0e04-5409055dff5mr6856692e87.31.1734444594653;
+        Tue, 17 Dec 2024 06:09:54 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120ba9dcbsm1166017e87.73.2024.12.17.06.09.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Dec 2024 06:09:53 -0800 (PST)
+Date: Tue, 17 Dec 2024 16:09:50 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
+Message-ID: <kyytu3nofrjkajwatmxdyav7oekkeigrhx5amddgjtlpsdl2m5@3moqad3gfds5>
+References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
+ <D6DZB443IQ7A.3P1135M6DMF2S@cknow.org>
 MIME-Version: 1.0
-References: <20241203131302.16022-1-ot_chhao.chang@mediatek.com>
-In-Reply-To: <20241203131302.16022-1-ot_chhao.chang@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 17 Dec 2024 14:45:19 +0100
-Message-ID: <CACRpkdZy7HgkT-FFJh=ubXhdcBRa-vbaNmHC32E3djZdHnwdYg@mail.gmail.com>
-Subject: Re: [PATCH] v1 pinctrl: mtk-eint: add eint new design for mt8196
-To: chang hao <ot_chhao.chang@mediatek.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	sean.wang@kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <D6DZB443IQ7A.3P1135M6DMF2S@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_054533_082955_E6D5EC0B 
-X-CRM114-Status: UNSURE (   6.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241217_060956_627502_2AE9FF2F 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,25 +116,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chang,
+On Tue, Dec 17, 2024 at 01:36:29PM +0100, Diederik de Haas wrote:
+> On Tue Dec 17, 2024 at 1:40 AM CET, Dmitry Baryshkov wrote:
+> > This series depends on the ELD mutex series [1]
+> >
+> > [1] https://lore.kernel.org/r/20241201-drm-connector-eld-mutex-v1-0-ba56a6545c03@linaro.org
+> 
+> There's a v2 of that patch series here:
+> https://lore.kernel.org/all/20241206-drm-connector-eld-mutex-v2-0-c9bce1ee8bea@linaro.org/
 
-thanks for your patch!
+... and it's even merged to drm-misc-next. I dropped it from b4 deps,
+but I forgot to update the cover letter.
 
-On Tue, Dec 3, 2024 at 2:13=E2=80=AFPM chang hao <ot_chhao.chang@mediatek.c=
-om> wrote:
-
-> From: Chhao Chang <ot_chhao.chang@mediatek.com>
->
-> Change 1: change EINT from 1 address to 5 addresses,
-> Eint number is stored on each base.
-> Change 2: Compatible with 1 address design
->
-> Signed-off-by: Chhao Chang <ot_chhao.chang@mediatek.com>
-
-This patch looks good to me, as preparation for mt8196,
-but can one of the Mediatek experts please
-review it? If nothing happens I will just apply it I guess...
-
-Yours,
-Linus Walleij
+-- 
+With best wishes
+Dmitry
 
