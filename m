@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C69E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 11:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91544E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 11:36:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n7As/4lbcOR5wNUHmg3kLd+28u+n3jN+0C0aXurlFDw=; b=yizcKd8NynmX1bHwAM9FDE1cdD
-	d4t+2Xkq43PuCFQwZmix13+IzAiNGWgu+xJIsmtW8BwfO9KdtlpAmV/MBoL07rlqSdwZErkPkSX0p
-	drhOF3BvGFB2+lI9WPxgZjxH4LIS96s52IdckIG+dgwoWRRv35jpNl2FnWscF+DtWb4LlBJOuuzW5
-	H5NgDk5PnqGepK3LUKJhuAvG9wP4exAQQd8vyBqYQbztDqGZE3NEZOnq9XbBoFauwaWGVwq60XYAa
-	7i8VXhARToqhmufoqe2O8dzmhHICwN1PK0Jcj/9/mX9P9WUSRoc46WqRy5k0iWfOnytGE2eUnsSx1
-	Ojl/8UVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RWw0YjfIq3RA4Wmm35YTKkdNVZn5xNSpCYbBF0u+pzc=; b=KRo5V6E5Elc4FKyNiSdfhqQ3m1
+	YMQaQhfmUQtVI8JZYnLRmG6NXgu/Sb2NPnmVS3JKwdL4jxCgM8XRJWNWjkK41B+IVKNrazx7vNlZW
+	iRhne7vKBdAltL432/lXiyDkLxc86J0rWaxkITxLR8OkdVhMik4FtUoA+H4Dktv42LaPT2LpSQ0KY
+	H6EzyUPq9jRPAiD1htDjXZXzFDo+lxNP5kQNFT0AF1NGZg8xP7Msn0Owhioiq3lfubvs5wExwRkoK
+	ezEvx26NfAN/cnu8XQ4dWZKm4iPnumi+3NWHSTwCdIl3/Gj0b15woQEDOUWyXnKVEXoGH51vgW8az
+	KZnvdRKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNrr6-0000000GNzM-35QY;
-	Wed, 18 Dec 2024 11:04:40 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tNsLb-0000000GT5F-2hIX;
+	Wed, 18 Dec 2024 11:36:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNrh9-0000000GLH2-3VvF;
-	Wed, 18 Dec 2024 10:54:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734519262;
-	bh=yk77vsE3x+ErK6MEuD/5lMiwXMA2ViIKn58pIYLQzzc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nA/PFay/e+qHE2doEAtO/o++UwgxL6X6OAkHLQENJKWgwwfG0PuhXK3M9lQq0Flb3
-	 ORjEnDWksk0BWoSXFEoyN7e0YkoP09NK6Q9kmsinYKccRL5lImCc86dNRdPR3+yapk
-	 TJQdRWZjEtyOEPr84Smav6f+dKEBF2KU0Li0Wxyglv+hbAQ8BmDKO4GwN16IpK4W7a
-	 HN8zngZuEMiIPtfc/ECnNtSna9AivqYQaD2ZULOpFWCFqhUF5wyrCx9uAipA377CwL
-	 TL7wcp9VoG+3s+j3T1biZlPjaSeqHOD9Hw3k5AAp/i625cqLEBVdQRfCRqpUUANdGy
-	 PbV5QnO4jflHA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A19D817E361E;
-	Wed, 18 Dec 2024 11:54:21 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sboyd@kernel.org
-Cc: mturquette@baylibre.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	geert+renesas@glider.be,
-	u.kleine-koenig@baylibre.com,
-	amergnat@baylibre.com,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	kernel@collabora.com,
-	macpaul.lin@mediatek.com
-Subject: [PATCH v1 2/2] clk: mediatek: mt8188-vdo1: Add VDO1_DPI1_HDMI clock for hdmitx
-Date: Wed, 18 Dec 2024 11:54:15 +0100
-Message-ID: <20241218105415.39206-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241218105415.39206-1-angelogioacchino.delregno@collabora.com>
-References: <20241218105415.39206-1-angelogioacchino.delregno@collabora.com>
+	id 1tNsKU-0000000GSqI-3kaH;
+	Wed, 18 Dec 2024 11:35:04 +0000
+X-UUID: 1a265c44bd3411ef82ff63e91e7eb18c-20241218
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=RWw0YjfIq3RA4Wmm35YTKkdNVZn5xNSpCYbBF0u+pzc=;
+	b=ZaO1ix1zrIuHHCVWE1+zLy7E70trKYEUiug88KBu+2g6z7ke4LQMXkcvCdwDZORPrFtaguROzugt6zWHISLhhRpd0AFAXbhUwNui2DAf4lwZ0IpYQS+CWaKGD3PEd/D7ofOb8iR2IyhyKClZ6QhLPXs5cZ8acV1nD48S5NJRecw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.45,REQID:922ec55e-32bd-4ecb-9f86-e5124138de9d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6493067,CLOUDID:448e5513-8f5d-4ac6-9276-7b9691c7b8d6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 1a265c44bd3411ef82ff63e91e7eb18c-20241218
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1980500206; Wed, 18 Dec 2024 04:34:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 18 Dec 2024 19:34:51 +0800
+Received: from mszsdclx1211.gcn.mediatek.inc (10.16.7.31) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 18 Dec 2024 19:34:51 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
+	<granquet@baylibre.com>, <dmitry.osipenko@collabora.com>,
+	<rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>,
+	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>,
+	<liankun.yang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v3 1/1] drm/mediatek: Add return value check when reading DPCD
+Date: Wed, 18 Dec 2024 19:34:07 +0800
+Message-ID: <20241218113448.2992-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_025424_015454_D1D23DAD 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241218_033502_930744_C4AB6E6D 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,51 +89,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a missing clock found in the VDO1 controller for the HDMI TX
-controller over DPI1.
+Returns the number of bytes transferred (1) on success.
+Check the return value to confirm that AUX communication is successful.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+
+Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8188-vdo1.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Changes in V3:
+- Using drm_dp_read_sink_count() to improve patch.
+Per suggestion from the previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20241128030940.25657-1-liankun.yang@mediatek.com/
 
-diff --git a/drivers/clk/mediatek/clk-mt8188-vdo1.c b/drivers/clk/mediatek/clk-mt8188-vdo1.c
-index 4fa355f8f0c2..f715d45e545e 100644
---- a/drivers/clk/mediatek/clk-mt8188-vdo1.c
-+++ b/drivers/clk/mediatek/clk-mt8188-vdo1.c
-@@ -43,6 +43,12 @@ static const struct mtk_gate_regs vdo1_4_cg_regs = {
- 	.sta_ofs = 0x140,
- };
+Changes in V2:
+- Modify Fixes in Commit Message.
+Per suggestion from the previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.5385-1-liankun.yang@mediatek.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 36713c176cfc..b26dad8783be 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -2100,7 +2100,6 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+ 	enum drm_connector_status ret = connector_status_disconnected;
+ 	bool enabled = mtk_dp->enabled;
+-	u8 sink_count = 0;
  
-+static const struct mtk_gate_regs vdo1_5_cg_regs = {
-+	.set_ofs = 0x400,
-+	.clr_ofs = 0x400,
-+	.sta_ofs = 0x400,
-+};
+ 	if (!mtk_dp->train_info.cable_plugged_in)
+ 		return ret;
+@@ -2115,8 +2114,8 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	 * function, we just need to check the HPD connection to check
+ 	 * whether we connect to a sink device.
+ 	 */
+-	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
+-	if (DP_GET_SINK_COUNT(sink_count))
 +
- #define GATE_VDO1_0(_id, _name, _parent, _shift)			\
- 	GATE_MTK(_id, _name, _parent, &vdo1_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++	if (drm_dp_read_sink_count(&mtk_dp->aux))
+ 		ret = connector_status_connected;
  
-@@ -62,6 +68,9 @@ static const struct mtk_gate_regs vdo1_4_cg_regs = {
- #define GATE_VDO1_4(_id, _name, _parent, _shift)			\
- 	GATE_MTK(_id, _name, _parent, &vdo1_4_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
-+#define GATE_VDO1_5(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_5_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
- static const struct mtk_gate vdo1_clks[] = {
- 	/* VDO1_0 */
- 	GATE_VDO1_0(CLK_VDO1_SMI_LARB2, "vdo1_smi_larb2", "top_vpp", 0),
-@@ -129,6 +138,8 @@ static const struct mtk_gate vdo1_clks[] = {
- 	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPINTF, "vdo1_disp_monitor_dpintf_ck", "top_vpp", 17),
- 	/* VDO1_4 */
- 	GATE_VDO1_4(CLK_VDO1_26M_SLOW, "vdo1_26m_slow_ck", "clk26m", 8),
-+	/* VDO1_5 */
-+	GATE_VDO1_5(CLK_VDO1_DPI1_HDMI, "vdo1_dpi1_hdmi", "hdmi_txpll", 0),
- };
- 
- static const struct mtk_clk_desc vdo1_desc = {
+ 	if (!enabled)
 -- 
-2.46.1
+2.45.2
 
 
