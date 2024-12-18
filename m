@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7040E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 16:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3463E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 16:56:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hg8LybB2x5AFlcqXyxqGpp+etZfs9oO9/+n55oB9cPU=; b=UsRWtnaSTTYfv/kte6htsQ+sFp
-	wyhBHba5sh7UZ3MCfWqPYwtn8Dlb8ypS2iTuAHNJXK1tClke6xETe9m5AdjtUTYENH4bJOuPehOyR
-	Ew6lD8mLZzNV8k3DJ3lb2NMKcxQsqvUD8XcvjdHvp8AEDTCa0elwZ4O/mP4cHsOHWUito7nqkV7+E
-	3ioYMxbbUJt5t7mQoYduxWfIAbbex/Xp4v73CCq9WUpZnxVdOd5xBsZn2oVAFukHOoL9N5Sb1ItnJ
-	dpmMVfoOUHnL4cBRGrdHEXktNFbyz8UtRsXr8yaHVDr4Bm2He5wYMyfx8u82oluPmdk1FEPk9Qa74
-	xJM8wkSg==;
+	bh=s2SBxETvm52Px3OUzaEAAKhG+ijEolqfdP64sqQHZgM=; b=ROmAHbrjGIn6W1lKl704AYlQGv
+	PL4LHXCAGJ1DSvxu/aC4H4tN+KWcER8XLhNUdPQ51BQlVQLSQtRLce9hep0cjYK5Qx9SVIEXtoEjB
+	JLXirYg0Hvma3u3HpLAkWupMJIeIpYKfVytd6noeqZPmaaG45qpdfRFfslp8nupmHXGwJXcJILeqK
+	NTsWZEEeCZORRXNsZhgf0Gp+PUhlBmdIlrCCXmpP+/28h3pBrZkRktKdDIJC85ste+NUiJ3nAG9pZ
+	gsL5e2rqOEoxQUU8bPmfwYx/eLNiqY8aNHeZimMTMM9CGV76tpGr+wlr3qQZ00qo4wZILxKYhGyaj
+	Ig7wjKeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNxFf-0000000HECB-2bdZ;
-	Wed, 18 Dec 2024 16:50:23 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tNxLB-0000000HExh-3XkP;
+	Wed, 18 Dec 2024 16:56:05 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNxFd-0000000HEBp-0LEH;
-	Wed, 18 Dec 2024 16:50:22 +0000
+	id 1tNxJz-0000000HEhN-2Vxj;
+	Wed, 18 Dec 2024 16:54:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E63C2A426B5;
-	Wed, 18 Dec 2024 16:48:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD982C4CECD;
-	Wed, 18 Dec 2024 16:50:07 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3C013A40B3B;
+	Wed, 18 Dec 2024 16:53:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A029C4CECD;
+	Wed, 18 Dec 2024 16:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734540619;
-	bh=7+necGPxSGo7sMtURcZ9mr0EJGBKL6/Ke2PfFK9/UYo=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=bOdJ7aSIvMGvhWqdSvt9YcvP/9FVRUvb/N5+4/0bk6m3uUebuHuu1eAP1VehihuiW
-	 nBoGMeZZaTorFNXpS3qRHEVsUQ2DMCRLAZzbjy/KgJrtWURMSX7+GGn5JsyiZo0CCF
-	 HYqF7pIKWvI0qy//RNV7foJP5E8hdgcHsb+z4/x1ErnDHHtcCYK5Mk3zKbh0P/TzH/
-	 z35oD28CrpW3EZGZtexUev4/VeXcu61OsJrZOQ8iGNrDUXVdEnAWuKUlYpGz65HEv3
-	 DFzdhM+QC1pGw9AdbM9ngR5FXM/Mzuow6kuJK6gesSqEa861dgjMXwnydNKZaI6Ctt
-	 P52X7QKOZsYRw==
-From: Kalle Valo <kvalo@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Cc: WangYuli <wangyuli@uniontech.com>,  <nbd@nbd.name>,
-  <lorenzo@kernel.org>,  <ryder.lee@mediatek.com>,
-  <shayne.chen@mediatek.com>,  <sean.wang@mediatek.com>,
-  <matthias.bgg@gmail.com>,  <angelogioacchino.delregno@collabora.com>,
-  <davem@davemloft.net>,  <andrew+netdev@lunn.ch>,  <edumazet@google.com>,
-  <kuba@kernel.org>,  <pabeni@redhat.com>,  <alexander.deucher@amd.com>,
-  <gregkh@linuxfoundation.org>,  <rodrigo.vivi@intel.com>,
-  <linux-wireless@vger.kernel.org>,  <linux-kernel@vger.kernel.org>,
-  <linux-arm-kernel@lists.infradead.org>,
-  <linux-mediatek@lists.infradead.org>,  <raoxu@uniontech.com>,
-  <guanwentao@uniontech.com>,  <zhanjun@uniontech.com>,
-  <cug_yangyuancong@hotmail.com>,  <lorenzo.bianconi@redhat.com>,
-  <kvalo@codeaurora.org>,  <sidhayn@gmail.com>,
-  <lorenzo.bianconi83@gmail.com>,  <sgruszka@redhat.com>,
-  <keescook@chromium.org>,  <markus.theil@tu-ilmenau.de>,
-  <gustavoars@kernel.org>,  <stf_xl@wp.pl>,  <romain.perier@gmail.com>,
-  <apais@linux.microsoft.com>,  <mrkiko.rs@gmail.com>,
-  <oliver@neukum.org>,  <woojung.huh@microchip.com>,
-  <helmut.schaa@googlemail.com>,  <mailhol.vincent@wanadoo.fr>,
-  <dokyungs@yonsei.ac.kr>,  <deren.wu@mediatek.com>,
-  <daniel@makrotopia.org>,  <sujuan.chen@mediatek.com>,
-  <mikhail.v.gavrilov@gmail.com>,  <stern@rowland.harvard.edu>,
-  <linux-usb@vger.kernel.org>,  <leitao@debian.org>,  <dsahern@kernel.org>,
-  <weiwan@google.com>,  <netdev@vger.kernel.org>,  <horms@kernel.org>,
-  <andrew@lunn.ch>,  <leit@fb.com>,  <wang.zhao@mediatek.com>,
-  <chui-hao.chiu@mediatek.com>,  <lynxis@fe80.eu>,
-  <mingyen.hsieh@mediatek.com>,  <yn.chen@mediatek.com>,
-  <quan.zhou@mediatek.com>,  <dzm91@hust.edu.cn>,  <gch981213@gmail.com>,
-  <git@qrsnap.io>,  <jiefeng_li@hust.edu.cn>,  <nelson.yu@mediatek.com>,
-  <rong.yan@mediatek.com>,  <Bo.Jiao@mediatek.com>,
-  <StanleyYP.Wang@mediatek.com>
-Subject: Re: [RESEND. PATCH] mt76: mt76u_vendor_request: Do not print error
- messages when -EPROTO
-References: <1E6ABDEA91ADAB1A+20241218090833.140045-1-wangyuli@uniontech.com>
-	<a2bbdfb4-19ed-461e-a14b-e91a5636cc77@intel.com>
-Date: Wed, 18 Dec 2024 18:50:05 +0200
-In-Reply-To: <a2bbdfb4-19ed-461e-a14b-e91a5636cc77@intel.com> (Alexander
-	Lobakin's message of "Wed, 18 Dec 2024 17:10:53 +0100")
-Message-ID: <875xnhrl4y.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1734540890;
+	bh=s2SBxETvm52Px3OUzaEAAKhG+ijEolqfdP64sqQHZgM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Pv18xzywipaGaOM6nq9UTilWK5sjSM1kEbxjo6Xpw6inXfOKAzFSfOIvKrq2aYGxv
+	 ZudnAiQMcr8FqgqxMKyW7V1YQcbrFARCSOslU8PYjNq6hrBis9sZMjbFCnDRcoaRx1
+	 smsgh2c6ieXd4V1gGP9WJv3t1s0/R8+O6yQSTzaXgB/5vxxLWFoiV9kwdfD6boPhbj
+	 7X9RosnFG5JafHWbSsywmbT0Rz+dY95UHjJNZ6E9cd79dDsX7G28l0xqujYahkGC9v
+	 XZpd71NE2vlVhstAi0ztSHn0qSQJdv21w1cIHaI7Emdk/4YEtF490hDc2GBl5hncXA
+	 9jhnLbyHwXwrg==
+Date: Wed, 18 Dec 2024 16:54:44 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	simona@ffwll.ch, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, mchehab@kernel.org,
+	matthias.bgg@gmail.com, moudy.ho@mediatek.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, sebastian.fricke@collabora.com,
+	macpaul.lin@mediatek.com
+Subject: Re: [PATCH v1 1/3] dt-bindings: display: mediatek: Add compatibles
+ for MT8188 MDP3
+Message-ID: <20241218-skeleton-rockband-e25b7d60e7f3@spud>
+References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
+ <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="HAI+tP8+x8Vxvsmq"
+Content-Disposition: inline
+In-Reply-To: <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_085021_243092_D90FD567 
-X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-CacheID: sfid-20241218_085451_701387_F77FB486 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,22 +82,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Alexander Lobakin <aleksander.lobakin@intel.com> writes:
 
-> From: Wangyuli <wangyuli@uniontech.com>
-> Date: Wed, 18 Dec 2024 17:08:33 +0800
->
->> [RESEND. PATCH] mt76: mt76u_vendor_request: Do not print error messages when -EPROTO
->
-> Is it a fix or an improvement?
-> You need to specify the target tree, either 'PATCH net' (fixes) or
-> 'PATCH net-next' (improvements).
+--HAI+tP8+x8Vxvsmq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Actually this is a wireless driver so the options are either wireless
-tree or Felix' tree (for -next). And please add 'wifi:' to subject.
+On Wed, Dec 18, 2024 at 11:53:18AM +0100, AngeloGioacchino Del Regno wrote:
+> Add compatible strings for the AAL, COLOR, MERGE and PADDING
+> hardware components found in MediaTek's MT8188 SoC.
+>=20
+> This hardware is compatible with MT8195.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+--HAI+tP8+x8Vxvsmq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ2L+VAAKCRB4tDGHoIJi
+0u5SAP438pw1N/Szkws84SNvpbsLnX57vLfWAKvOv2y+wBPsVQEAwtZ4NMQzmlEn
+7IK6CjupfLWoWguKpgjnYhFNDzV9MAQ=
+=YaS1
+-----END PGP SIGNATURE-----
+
+--HAI+tP8+x8Vxvsmq--
 
