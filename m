@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDEBFE77183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 08:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AC4E77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 08:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IRKIzfyLdcWYYPGBDhzJkGr9kJMNnMGRRB5s2TQkHwY=; b=MjE8966HSTh9hprNhdD9m3cUX7
-	qhp2Z8ES5UeibpkDBDkMOa5xB1r2dyjgCZ3P90uGRDbfx1EIdRAiFmxHH88LcpGEnagwgGKMR7VnL
-	ekVqAB8J6pspaA24mf+sVQXW60vE/7nL3fxB3QbXEU74dBCF9TAmNqKt2aaBn5BP1W298C4lEB/tY
-	O3UxE9lVPCJjEK6V3DNJ7Likg5PxgVUrg/zEuT4sHQnh0d/jm1Bqc9zuJtg8X944/9+3mztY16whH
-	ZYLF/pOZQn1wOiooObGIKV1BhPSnHKiOM6sC82UNg49LHM7Xb1rp6/CnaIwalHi/5Jg4oIgjmw7/t
-	OrR0uu1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/haLBxEkL3w5x8REE76F6woRrHaJ+tBFsJGgFIA/Elk=; b=F5YVfosy4UQKkwFqkkfSJbttlT
+	cbQiBGwe2yD9ImzemLm/4zvZQqKaMtD9M/fEi7t4WIF8jr3S8Q3YXKrQtaCd2PHtdL3mCz02NgI6H
+	DlsF7VPNbFTF4NNkqk51q05F/THNDZuYLfq/vqY8DYP2mNEEqv7jrkfLR67LzPUnVNhBuVL+827Qp
+	deSE9WwhgUC1lUAIn/jXSYTcm2xl/NfX0A6wBXTwS3ju6jEfkblmI/HpRWZFEZS+gZDlUhLP8HPsQ
+	O2bupLuduiHc6+5v90fUy3S9l0fdMi1u29srktSUmQYH/FkPbRKV9B2RNy3Io10gea9ElpANuCjtP
+	rLUOVxIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNpJs-0000000Fv2K-3r5w;
-	Wed, 18 Dec 2024 08:22:12 +0000
+	id 1tNpuL-0000000FziS-2cYs;
+	Wed, 18 Dec 2024 08:59:53 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNpIl-0000000FuwT-326k;
-	Wed, 18 Dec 2024 08:21:04 +0000
+	id 1tNptF-0000000FzXJ-0uhj;
+	Wed, 18 Dec 2024 08:58:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4CA0EA41D90;
-	Wed, 18 Dec 2024 08:19:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1FCC4CECE;
-	Wed, 18 Dec 2024 08:21:01 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 92CA4A41F29;
+	Wed, 18 Dec 2024 08:56:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ACC1C4CECE;
+	Wed, 18 Dec 2024 08:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734510062;
-	bh=Y67UFTQrPnNpxipawqZdos+lVbeXi0ujBQ7g+3GP5+w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d9aoecZIumn9o1pSSiNDiYbyXoPMwNUMrowK3ZPZwuTmSP5r8unM9mhwrVE0poApQ
-	 5nRGqL7llNZonY24T5gPAdaEcxR2QiFBC+CeMCJZyp/9iKYWoMV5xTcWfxS+2ZyLOu
-	 /HQQLb3bQvEHbFFSmHQ5+Wo4j3V5v2xbAbs2E9LKSfRiwH2wzaC3IXRIGgyEe0m2YP
-	 2bee3/rkc+swKUahErNARRTJUnLDs5XlfOBd/9TEa1CJEVYnKQtAXMRz0Fw3gRoCr5
-	 ygs8lQAqIbCHARcAI1hFmYLyOUCNIHYbdWmzP0kxdnFVdujiYwCYteWU2ZgWDEGIg1
-	 JCI1nYMNr5nhQ==
-Date: Wed, 18 Dec 2024 09:20:59 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com, jie.qiu@mediatek.com, 
-	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, dmitry.baryshkov@linaro.org
-Subject: Re: [PATCH v3 07/33] dt-bindings: display: mediatek: Add binding for
- MT8195 HDMI-TX v2
-Message-ID: <rsnyljmkdf7i74bkrlf5nesp2sa3n6xcnzsqao4znmczjpfyq2@dsakz56s4ypt>
-References: <20241217154345.276919-1-angelogioacchino.delregno@collabora.com>
- <20241217154345.276919-8-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1734512323;
+	bh=M2Wyl4Lv1wHFs941v1P1F99J3xEnjWFBD0Qgq765OIM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=S+krT84wnor5H/vWle8Z95MXfl65nY3TVBPY607j/TfWotnt7RRwKTyIjeLsKLPmK
+	 UW83mVu5r9tmTbrjy+7aWbqqdbQY1sg8OOzzUqwH0ZhRjRyGde5v1CNCVRp4rlLzbe
+	 1/X/SlXMvaJ71lttwKL0YlXC4H9wIEr+imrKm+xD1Rvy7bJKyAGcvMP0vO/HdqRaU9
+	 aF0VM/weLRcvsakdPPLJ7t7bsx3pC0uk5oRyilWnqMfOHwStnkRFjZhB4t7iZcxgdP
+	 ysxxbfYpGGPDy9wwBvkE9S/tUnVW5Uqvf0K7jh1ucVASrQCxY+WqyDV9tInYWdg1oW
+	 /EYuh7zsQNLMw==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Maxime Ripard <mripard@kernel.org>,
+	Jani Nikula <jani.nikula@intel.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	=?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] drm/mediatek: stop selecting foreign drivers
+Date: Wed, 18 Dec 2024 09:58:31 +0100
+Message-Id: <20241218085837.2670434-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241217154345.276919-8-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_002103_892842_F3354EE2 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20241218_005845_321275_EA069713 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,91 +84,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 04:43:19PM +0100, AngeloGioacchino Del Regno wrote:
-> +  i2c:
-> +    type: object
-> +    $ref: /schemas/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
-> +    unevaluatedProperties: false
-> +    description: HDMI DDC I2C controller
-> +
-> +  phys:
-> +    maxItems: 1
-> +    description: PHY providing clocking TMDS and pixel to controller
-> +
-> +  phy-names:
-> +    items:
-> +      - const: hdmi
-> +
-> +  pinctrl-0: true
-> +
-> +  pinctrl-names:
-> +    items:
-> +      - const: default
+From: Arnd Bergmann <arnd@arndb.de>
 
-Drop both pinctrl entries.
+The PHY portion of the mediatek hdmi driver was originally part of
+the driver it self and later split out into drivers/phy, which a
+'select' to keep the prior behavior.
 
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  '#sound-dai-cells':
-> +    const: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description:
-> +          Input port, usually connected to the output port of a DPI
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description:
-> +          Output port that must be connected either to the input port of
-> +          a HDMI connector node containing a ddc-i2c-bus, or to the input
-> +          port of an attached bridge chip, such as a SlimPort transmitter.
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
+However, this leads to build failures when the PHY driver cannot
+be built:
 
-Please keep the same order of things here and in main properties
-section.
+WARNING: unmet direct dependencies detected for PHY_MTK_HDMI
+  Depends on [n]: (ARCH_MEDIATEK || COMPILE_TEST [=y]) && COMMON_CLK [=y] && OF [=y] && REGULATOR [=n]
+  Selected by [m]:
+  - DRM_MEDIATEK_HDMI [=m] && HAS_IOMEM [=y] && DRM [=m] && DRM_MEDIATEK [=m]
+ERROR: modpost: "devm_regulator_register" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
+ERROR: modpost: "rdev_get_drvdata" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
 
-> +  - interrupts
-> +  - power-domains
-> +  - phys
-> +  - phy-names
-> +  - ports
-> +
+The best option here is to just not select the phy driver and leave that
+up to the defconfig. Do the same for the other PHY and memory drivers
+selected here as well for consistency.
 
-You need allOf: with ref to dai-common.yaml.
+Fixes: a481bf2f0ca4 ("drm/mediatek: Separate mtk_hdmi_phy to an independent module")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/gpu/drm/mediatek/Kconfig | 5 -----
+ 1 file changed, 5 deletions(-)
 
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        hdmi-tx@1c300000 {
-
-hdmi@
-
-Best regards,
-Krzysztof
+diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+index 1c2f56b75716..1d4f20a4f265 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -15,9 +15,6 @@ config DRM_MEDIATEK
+ 	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_MIPI_DSI
+ 	select DRM_PANEL
+-	select MEMORY
+-	select MTK_SMI
+-	select PHY_MTK_MIPI_DSI
+ 	select VIDEOMODE_HELPERS
+ 	help
+ 	  Choose this option if you have a Mediatek SoCs.
+@@ -28,7 +25,6 @@ config DRM_MEDIATEK
+ config DRM_MEDIATEK_DP
+ 	tristate "DRM DPTX Support for MediaTek SoCs"
+ 	depends on DRM_MEDIATEK
+-	select PHY_MTK_DP
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_DP_AUX_BUS
+@@ -39,6 +35,5 @@ config DRM_MEDIATEK_HDMI
+ 	tristate "DRM HDMI Support for Mediatek SoCs"
+ 	depends on DRM_MEDIATEK
+ 	select SND_SOC_HDMI_CODEC if SND_SOC
+-	select PHY_MTK_HDMI
+ 	help
+ 	  DRM/KMS HDMI driver for Mediatek SoCs
+-- 
+2.39.5
 
 
