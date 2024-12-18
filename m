@@ -4,72 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7297E77184
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2024 21:49:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C2FE77183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 05:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nxoUsZGHcpmKWLj+fokxr1yAa0cTzHmO/DM2CxwXJvo=; b=lksvoMVI+cTjCYvcIgsWA0NIdd
-	obfZuXVpXZ4buycprJndALQTFn8s0gB3aevcjaNwCct5Ay1ZVWw7i757kWfZfWITYrYqkm0nMCcYq
-	ufUBtdgSv/b2QKHIajxaak2sFWNL+xQ1zmbN6aOGZM5WWWzEgeuWcoAl3lY1/7k7OPpnlZkpY1SB3
-	wJjqUylDtZqrrQy/h510q9t/wGp5GCmJl1I+aJWycqGOVffixfFDM3xrw7IEiXIG6GjSbl+oKHFYE
-	RZLS4WNK5ktUlBFqU7vhUK9Alq0Wt54Abp39UheJahU9cAF4OYTHHbpk+90Aqf7o9Igf0ui4hgzwV
-	yT3YZ3WQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=; b=b+jrmq7ARZLEGxUJokRwmwxDOs
+	Q8fdJ7t4+PqbMsaNYcwWCIcSREwZKutURDPCmbmSOLO7yuzKliPUVhq69DWbmpKTw8kkPvPgSu+l6
+	uQmQZHSz7LbBd1nPV578BrjbR4qSzck2oY82wF/VUL/HUdYuGfv1FvZAbXGwFTa/C4Ev4hN7nddq9
+	pdRIt+mHYLTH88QshW5MGlRDDNstQRHtl/VXnTD+11GDumLf40JZkfCwuvUFOJq5kztw6GuFaaosf
+	RgjvMruCwzW3sffn1uPWsvLzt5/dN5dSXij3bipZo984KUUrfVvRkL2F1RSYbRFFqLErFaW/N5m8v
+	+GCJwG/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNfR6-0000000Ev0H-06kS;
-	Tue, 17 Dec 2024 21:49:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tNmZ2-0000000Fdj1-3Txz;
+	Wed, 18 Dec 2024 05:25:40 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNfOZ-0000000Euas-2HtO;
-	Tue, 17 Dec 2024 21:46:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734471982;
-	bh=9/SlMqJheV6UBlMdYFEbz4fj4zpzDrak/dbk5Hz2i7E=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=A9VWstEzPcXQiWHL0C4j6BVCWeKwPoOtm1T/XMCWve83tkNjkNOyZlAWQSNPm1P30
-	 MfQuPMdoNnBDLUZr5DKsIsUnxhmN0UAA89kTnyOB3QCLd7iJ6KVD3AC95iuab7Yn7G
-	 Eifiv1gvsW7mBze0HKR+KCIrEnrEfyDHifr+veNHpJrdqbEHf6lz0O6amCY69buCtu
-	 Hf7J7YXPCb0WKByKoe9Co8sseE6kTC/wBJjYuZNXfeOuJm9YyYCrvyJEQ8lS2Mr7be
-	 b1Mip2WCQ63TvMiqtG1SbGeHOtP3Y7alg3oxNuebUvDeJXuhEbiYCHoZWf+P3Ovq+4
-	 ZUPbX6RdIoBWA==
-Received: from [192.168.1.90] (unknown [84.232.140.38])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 223D817E381B;
-	Tue, 17 Dec 2024 22:46:21 +0100 (CET)
-Message-ID: <b13cbeda-79b6-4700-a2e7-083a50541c80@collabora.com>
-Date: Tue, 17 Dec 2024 23:46:19 +0200
+	id 1tNmXv-0000000FdZZ-3Y2w
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Dec 2024 05:24:34 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e3990bbe22cso4456469276.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 21:24:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734499470; x=1735104270; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=;
+        b=jK37vC/dY/dsBNP7Vdj+EZuZeq6YH6CZ8OQRPgyl3DaiwAp4UMwd8bJW9EvpxADCY4
+         OdLKHHYpzePFpyM8X8+P1nXqUubqGjKWPsFMh/Logo4GzW6MIsrsjgJXZ/XEmQDJnWMy
+         RorpOPfvcLFD7PKQVUBiaOuNIbZIyaIdHsH734WrFPuQ/6V9DiI3/l5MGeYfYcfbV37I
+         TZuw3aO3xTakFZQbDGDr+SXuwg+MR/w1JZdUbuWblx8ek/Q8FUfMOqA3HZNiNFIJ7zoz
+         ftpXO392oxg+6a8Djb7vOvOAXpLg+4whJj3N3fZP8TX7W1Pl4U4UCrq5/7mid3x3eAye
+         /TTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734499470; x=1735104270;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=;
+        b=N652HIi1tyChfk6xlKkxRVOGbV9p9QA59U3EiWIlQ8z9AMFqf36FldL3M2qhdRPeaT
+         JLY/P2yZTVT2pt1VGCsiPxAvVbhMHo6uk/J9DWnLMQQfCKR7Klpk4RDJG+yFsy8Yo2pA
+         Kp5Sgk0Qevl+CX/7oh0cIjO6fgrNdLqqeB3XreqVXCNm/FeQCN5vu3+eSykn5zs2S5r4
+         X76mQqpNgdO0s+3hl77zZoMEOVlrj7aQ6S+7PRcIxNtuwnDthGp40rW4Hq/itkFbADLO
+         jVRWYRZpuN5qAWVyRCNGoncm8V5PJ1aGslQpcWof9A9ecBQvqTNyJU3i7weWxbYEPbwG
+         cHVw==
+X-Forwarded-Encrypted: i=1; AJvYcCVCMFX2AOH4icRWmTgTv8xd7KuPKTUK0azPs7jnvWkgiSqyrFs7x5J4vhQlWSHLGMeWZ0Uc99TkyKTrf1eo1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRDaeolkD+IsGxJvogCJnYwPp72ddFMMZiaKGIQf73zcYeow7l
+	/xRSjWc08ErE9pFEYhSrLGMxZVwUPbGKl6/VViIPFO+Rwt1mX6FWy3uq9cixw/MwJJQvYnXmSi5
+	6Su3R4oWa3rOAVS8MvyTl4GliN5qo7jGhnD1f3g==
+X-Gm-Gg: ASbGncsqNdSF9yyynXKjyuy3thN5L6evkiteJZUNZ4WSrlIsblPd7Wu1Tp2AOLGj7M+
+	1r97HQQ9Q6WrgXBxKrj0D2wI2d6PDTUBXrVzfiIwBRw2wa9sA41S0XvOPcvZnJ/POgS/JEw==
+X-Google-Smtp-Source: AGHT+IE3kqRdPneJyqqtRpFDLs6soyy+Bdc+Cywd1EGV0t4/4nnntxQS7NjaTVS7xOtVNpAQwVKUJPYkOMozlg43ysk=
+X-Received: by 2002:a05:6902:70f:b0:e49:5f2d:e729 with SMTP id
+ 3f1490d57ef6-e53620cdcf8mr1205674276.4.1734499470459; Tue, 17 Dec 2024
+ 21:24:30 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/3] Provide devm_clk_bulk_get_all_enabled() helper
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org
-References: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org> <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
+In-Reply-To: <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Wed, 18 Dec 2024 07:24:23 +0200
+Message-ID: <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
+Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, 
+	Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+	Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_134623_730373_91F6232B 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20241217_212431_943425_5A2F5D51 
+X-CRM114-Status: GOOD (  28.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,47 +109,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/17/24 11:41 PM, Cristian Ciocaltea wrote:
-> Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
-> clocks") added devm_clk_bulk_get_all_enable() function, but missed to
-> return the number of clocks stored in the clk_bulk_data table referenced
-> by the clks argument.
-> 
-> That is required in case there is a need to iterate these clocks later,
-> therefore I couldn't see any use case of this parameter and should have
-> been simply removed from the function declaration.
-> 
-> The first patch in the series provides devm_clk_bulk_get_all_enabled()
-> variant, which is consistent with devm_clk_bulk_get_all() in terms of
-> the returned value:
-> 
->  > 0 if one or more clocks have been stored
->  = 0 if there are no clocks
->  < 0 if an error occurred
-> 
-> Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
-> the past form of 'enable'.
-> 
-> The next two patches switch existing users of devm_clk_get_enable() to
-> the new helper - there were only two, as of next-20240913.
-> 
-> The last patch drops the now obsolete devm_clk_bulk_get_all_enable()
-> helper.
-> 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Changes in v5:
-> - Rebased series onto next-20241217
-> - Removed the patch introducing the new helper - merged in v6.13-rc1
-> - Updated last patch to fix a rebase conflict
-> - Link to v4: https://lore.kernel.org/r/20241019-clk_bulk_ena_fix-v4-0-57f108f64e70@collabora.com
+On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
+>
+> Hi,
+>
+> On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
+> > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+> > framework, I stumbled upon an issue while handling the Audio InfoFrames.
+> > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+> > there was no simple way to get the drm_connector that stayed at the end
+> > of the bridge chain. At the same point the drm_hdmi_connector functions
+> > expected to get drm_connector instance.
+> >
+> > While looking for a way to solve the issue, I stumbled upon several
+> > deficiencies in existing hdmi_codec_ops implementations. Only few of the
+> > implementations were able to handle codec's 'plugged' callback. One
+> > third of the drivers didn't implement the get_eld() callback.
+> >
+> > Most of the issues can be solved if drm_connector handles
+> > hdmi-audio-codec on its own, delegating functionality to the actual
+> > implementation, be it a driver that implements drm_connector or
+> > drm_bridge.
+> >
+> > Implement such high-level framework, adding proper support for Audio
+> > InfoFrame generation to the LT9611 driver.
+> >
+> > Several design decisions to be kept in mind:
+> >
+> > - drm_connector_hdmi_codec is kept as simple as possible. It implements
+> >   generic functionality (ELD, hotplug, registration).
+> >
+> > - drm_hdmi_connector sets up HDMI codec device if the connector
+> >   is setup correspondingly (either I2S or S/PDIF is marked as
+> >   supported).
+> >
+> > - drm_bridge_connector provides a way to link HDMI audio codec
+> >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
+> >   framework.
+> >
+> > - It might be worth reverting the no_i2s_capture / no_spdif_capture
+> >   bits. Only TDA889x driver sets them, while it's safe to assume that
+> >   most of HDMI / DP devices do not support ARC / capture. I think the
+> >   drivers should opt-in capture support rather than having to opt-out of
+> >   it.
+>
+> Sorry if this isn't clear to me and I'm quite late to the party, but did
+> you test this on vc4 with both a pi3 and pi4, or was it just compile
+> tested?
 
-@Angelo, Matthias, Bjorn:
+LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
 
-Could you please provide an ack for the first two patches so that
-Stephen can apply them to the clk tree along with the last one removing
-the obsolete helper - there are no other users of it as of next-20241217.
 
-Thanks,
-Cristian
+-- 
+With best wishes
+Dmitry
 
