@@ -4,64 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD194E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 14:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED0BBE77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 14:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ysVTqtWCT9AzDtvYmXzNif8x2LyA7Yjg6q5OgTQ+FDE=; b=g+QuYagKz/Fboy
-	LbObhmmWdEwlNHZz5DbHbWA9rSz6vQRy4BNjDD5URXWOmxmkOshhlqZWrWGCY8o678joIhGhDW2t1
-	yZCw/qDhWgF2bNlUo6nRnaulcnsxijeN3haQKhz3NlGIC79J6HguDHFuv/VgYzbpSN0bk9UvFtk5Q
-	Hu2HkeI0VJEGfhtPWwA3vFoOtx1b5Sd9A5G84KLGNWe2LcLnWoPD9ocQhIUM/FbT9O5QNx+xAz0po
-	O8sxXMUUrRiIZK/pU1Dn5egIEztmSXm/YyL+lkfBsW8X8uqcDoF+UfUMu0E3VJCFxp8ie4ecKUrW6
-	6ySVA9bkcLB21P7p2XAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jikMDVImI7Pf9+NM113vi4yTRoWYSpkiHuuI1ghgiGU=; b=Zhyntr9541itlbgZ2m73hA2MU+
+	l7EzbFKo28bX+Yd0TBgv5noqVhEVHdVO9HYB570aVMxTri0p/QIm9Mmg1E0Ctvav1Qa4pCS82iUls
+	1zUqdxJ28S8oQp/TeYFuL9M8GQmRb5xQcQBymGvYDNnJLnMxYhzr9n1NuBJG3X4ugH0XNtJxiQ8al
+	8Ph2mCsCDbVpR8XbLkTNEGcZeyRxClX9jp5Nqcq31fWGkxE0YRtFgXhrCWiiY9KiajePbKRrrvAU7
+	jXLOhatQ1mV5kTmrLiHsc3268PmjAdbocEhFGNtsIlBWUL/si1SUT62ZH5h/lfo4BWp8NJ6vdHpGe
+	dqX62tlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNuo4-0000000GoI2-3WrR;
-	Wed, 18 Dec 2024 14:13:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tNvQP-0000000GvIh-46wm;
+	Wed, 18 Dec 2024 14:53:21 +0000
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNumx-0000000Go9d-3HpT;
-	Wed, 18 Dec 2024 14:12:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734531153;
-	bh=2pMdp5vfl6grQPYfJtfZtmDs7fBVN1MuzePWFk8sH2Y=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Lc4RB1dNylhjmtAckKIHPhIklnjaJ27hejlFd4sF0YodB3ZtDuQFKrM4QwgGg8PQs
-	 ZC/1kvCr0Lj3dvWROhrqsJUMcnpTbWi3wwuDlU+rmALa4P1P1QXkiM5WFfbowoJ4XM
-	 VYrMMEb9d1Wqra6pRneAaZObwa72hmlwpfANA33eUcy15Buh3Et1EkTNlzDrp4lMNS
-	 3qLrOelKpsf8CMl1fmV8IxHBPRkBAbyzZUjFUzOHJtOy0RHK35ToLDRRuwwINy3qvt
-	 7f/sGbTuMtw7NKaf9QRP5EDplFs+XOBNSYkoiKm2qF+68s4ad9qD2DMzN/nTrvsXuk
-	 jWFQlUIrvJb5g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC1FB17E3770;
-	Wed, 18 Dec 2024 15:12:32 +0100 (CET)
-Message-ID: <e1b8084d-cfc2-4541-8264-91be777a8783@collabora.com>
-Date: Wed, 18 Dec 2024 15:12:32 +0100
+	id 1tNvPT-0000000Gv3k-1Moi
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Dec 2024 14:52:24 +0000
+Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-6f150ddc86dso53249657b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Dec 2024 06:52:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=raspberrypi.com; s=google; t=1734533542; x=1735138342; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=jikMDVImI7Pf9+NM113vi4yTRoWYSpkiHuuI1ghgiGU=;
+        b=BjlqoEv8zQx5DyJbbBvNAWaWkbTPUWcvp2LEaB5WjR8YmxZwqsPwtwzEUE2QZESSwM
+         czRS8oPn6UbZ35yFdJdJUYxFLRtpJGFDDwR6/Ed95CQFfpJiRWjZxwPCU/HWAtRwKZJF
+         bqrdX0D4us40oSlNPOb+6hp2L5Z6KYvjYicl7lQT0MwXG3Y2XLujiSWNYr1GmMxgqRWf
+         4GsBYK1H2cUAmTfqTlLe2xLucMfmcd7o1idcfxC2OVmU8QjJYf7el23jtC/DzTpjcvH7
+         fb/C/pWyyuBh7bZ/3zjBGxMOmmjuE0g0T8c4Wam8t7M03+QE3ETke4vBIqz+3QJ9Duz+
+         FF5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734533542; x=1735138342;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jikMDVImI7Pf9+NM113vi4yTRoWYSpkiHuuI1ghgiGU=;
+        b=KbtGp0XLc2/9NO3ikoS+7OnbXQ7BsrJ+TnmBRDpul/WtoaJy3LY1mzQr+k1Wd0ipT4
+         ruTQIeiwgPl+V6JxZwdOtOQb6/P6MnwgSj+Ltq6s+aerYUOD1o04gQNyiJBqxa0habfM
+         OYnJLuCMf87KqvMYgM7H26VsnWhXuQKghAPDekjQioYr8k4iUfe2vttad9p+oHap5shD
+         c0xhYyvlzz9yA7nP9WkFJcAXxUUTSmeIs3uk1skqTend+quDLMCMKh0dU+FqQ5dUnUr6
+         Mcuv6++ThyrFCqfFk3dnBOAFfvq1rDs8A57xs5kiZc+f1QdKcCiiorNI/c5ZAeOl6VTe
+         bAqw==
+X-Forwarded-Encrypted: i=1; AJvYcCWSFAzuFHqNihj9JeZe4iNAh0Rw0op0YRFjad8LGVtP7FF4t3SJN+qHIjr706W679HPN8tkN2PFo4lkrad/EA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywe/ajZUgaq+PLAhysdL2Y6Fbs0VVsWZ0QRIiYkhWd7qxIsGBXP
+	9NuiPDHh07gsiB2qLYbATIoSjPc2yCxxirYszvlUwcH0Ex0veJ6gxUSGR1+yO6dEfW2kkN/e3hS
+	U/S1PXdaRqyH6thqgxuiQNrg7Ff6EHVMQBB2MSg==
+X-Gm-Gg: ASbGncvV98UWUjsAptbOAETiAa+dFlV66LgG4nVl6QepkqhHqqWtgcyG/SXlhMetPxS
+	/lMuOsZyhdZwEDUQ+EKYLAGHK0uCZ2Gi6jrXS8Q==
+X-Google-Smtp-Source: AGHT+IFROOIaavezTSB4qbIDqYTANawNmOriE8EjpWA/iXMqK2VjNXjnSwbVB0kRn8qDDZTN6lGUdQkOSisxyeutzXQ=
+X-Received: by 2002:a05:690c:6c91:b0:6ef:a4bc:8bc9 with SMTP id
+ 00721157ae682-6f3d22573a0mr22613297b3.21.1734533540880; Wed, 18 Dec 2024
+ 06:52:20 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/5] Add pinctrl support for mt7988
-To: Frank Wunderlich <linux@fw-web.de>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
-References: <20241217085435.9586-1-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241217085435.9586-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
+ <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat> <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
+ <20241218-wild-red-manatee-bb2a34@houat>
+In-Reply-To: <20241218-wild-red-manatee-bb2a34@houat>
+From: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Date: Wed, 18 Dec 2024 14:52:04 +0000
+Message-ID: <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
+Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, 
+	Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+	Raphael Gallais-Pou <rgallaispou@gmail.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_061235_972300_3A3D5C72 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20241218_065223_370410_C24D0DD3 
+X-CRM114-Status: GOOD (  32.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,73 +108,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/12/24 09:54, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> This series adds pinctrl driver, dt-bindings and dts node for pinctrl
-> on mediatek mt7988 SoC.
-> 
-> changes in v7:
-> - add const for pins and mtk_pin_soc as suggested by Christophe JAILLET in v5
-> - left angelos RB because of minor change (hope this is right)
+Hi Maxime & Dmitry
 
-It's fine, I re-reviewed it and it's good (actually, better!) :-)
+On Wed, 18 Dec 2024 at 07:59, Maxime Ripard <mripard@kernel.org> wrote:
+>
+> On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
+> > On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
+> > > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
+> > > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+> > > > framework, I stumbled upon an issue while handling the Audio InfoFrames.
+> > > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+> > > > there was no simple way to get the drm_connector that stayed at the end
+> > > > of the bridge chain. At the same point the drm_hdmi_connector functions
+> > > > expected to get drm_connector instance.
+> > > >
+> > > > While looking for a way to solve the issue, I stumbled upon several
+> > > > deficiencies in existing hdmi_codec_ops implementations. Only few of the
+> > > > implementations were able to handle codec's 'plugged' callback. One
+> > > > third of the drivers didn't implement the get_eld() callback.
+> > > >
+> > > > Most of the issues can be solved if drm_connector handles
+> > > > hdmi-audio-codec on its own, delegating functionality to the actual
+> > > > implementation, be it a driver that implements drm_connector or
+> > > > drm_bridge.
+> > > >
+> > > > Implement such high-level framework, adding proper support for Audio
+> > > > InfoFrame generation to the LT9611 driver.
+> > > >
+> > > > Several design decisions to be kept in mind:
+> > > >
+> > > > - drm_connector_hdmi_codec is kept as simple as possible. It implements
+> > > >   generic functionality (ELD, hotplug, registration).
+> > > >
+> > > > - drm_hdmi_connector sets up HDMI codec device if the connector
+> > > >   is setup correspondingly (either I2S or S/PDIF is marked as
+> > > >   supported).
+> > > >
+> > > > - drm_bridge_connector provides a way to link HDMI audio codec
+> > > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
+> > > >   framework.
+> > > >
+> > > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
+> > > >   bits. Only TDA889x driver sets them, while it's safe to assume that
+> > > >   most of HDMI / DP devices do not support ARC / capture. I think the
+> > > >   drivers should opt-in capture support rather than having to opt-out of
+> > > >   it.
+> > >
+> > > Sorry if this isn't clear to me and I'm quite late to the party, but did
+> > > you test this on vc4 with both a pi3 and pi4, or was it just compile
+> > > tested?
+> >
+> > LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
+>
+> Yeah, we definitely need to test it on the pi3 (polling-based) and the
+> pi4 (irq-based) at least.
+>
+> Dave, Maira, could you give it a try?
 
-Cheers,
-Angelo
+I'm on it.
 
-> 
-> changes in v6:
-> - some fixes to binding
-> - changed title and fixed typo in bpi-r4 patch
-> - added RB's
-> 
-> changes in v5:
-> - rebased to 6.13-rc1
-> - moved dt nodes with mutliple options to BPI-R4 board
-> - changes suggested by angelo in v4
-> - changed example in binding and dt node to not using const MTK_DRIVE_8mA
-> 
-> changes in v4:
-> - fixed fixed string binding error
-> 
-> changes in v3:
-> - rebase on rafals dts patches
-> - update binding to have mux subnode as fixed string and conf with optional suffix
-> 
-> changes in v2:
->    binding:
->    - drop gpio-cells description
->    - move ref in mux subnode up
->    - order uart-functions alphanumeric and fix typo
->    dts:
->    - fix indentation of reg-values
-> 
-> Daniel Golle (2):
->    pinctrl: mediatek: add support for MTK_PULL_PD_TYPE
->    pinctrl: mediatek: add MT7988 pinctrl driver
-> 
-> Frank Wunderlich (3):
->    dt-bindings: pinctrl: add binding for MT7988 SoC
->    arm64: dts: mediatek: mt7988: Add pinctrl support
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add pinctrl subnodes for bpi-r4
-> 
->   .../pinctrl/mediatek,mt7988-pinctrl.yaml      |  575 ++++++
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  189 ++
->   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     |   54 +
->   drivers/pinctrl/mediatek/Kconfig              |    7 +
->   drivers/pinctrl/mediatek/Makefile             |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt7988.c     | 1556 +++++++++++++++++
->   .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |   73 +-
->   .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |    1 +
->   8 files changed, 2445 insertions(+), 11 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7988.c
-> 
+  Dave
 
-
+> Maxime
 
