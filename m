@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2523DE77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 12:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D6EE77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 12:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8RZv5OeXRENVX3UzOWhQ4paK8gFX9BFqRtwkFFfiNDE=; b=WUD4y2S1K68vZrOTobu6XaAzTX
-	KP6tcznT7SMkZdT0fc6AqoZ18S1kgv3F/tb+MdB3TKTxFHywD6u/6mtr8ShiC9RTEXFBJcWhYSZxJ
-	GBskpMpSYDujLxiHOZJwxugx9FOFl3v8mM+WIOnse6ALvafISiWdQDLiOw0LbWSiX3XmYqdn7OaPQ
-	AQ+DSFpOeFPWXy91XBwuZkzYtl+jiRvFq9/PRzPZaRsTFrmnoJwdFGdSVZBcaQHk0aPlYwsCWJxmF
-	G2z6RVOiQC60MiMQ1Y26iMi57oQL1YXJoC10rKAc7KuFWczoZUsoy27pK3RUNq7wmFNlRDbNVcxj1
-	+q8dH4gA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=THeGjzIRoDHBNZCDp/7M2lIPDvqr7tz6+xf8HWPd0n4=; b=gHxxBskJzoBgFO0qFBb1FOdRS4
+	+e0oyG2ShfKvCjdhv7PzAa96MgyOnPtyfWAcWVxX2wo/sDsIQYnsn82NXPD3NS/pv4EfQE3qa+a1w
+	N6Tcpabn6rA7+maWyIGeXi/dYeNOj9urUNVHSfProZdfkCAiK1NKUTkogFr7yVnM0lmiAapm+uGVw
+	zl8UF89jOVH3iVPNWRA4c2RWgr2ZnWiH//zY4xEvvI5pMyPb8RMYCr58RVCxlXgxLMLC1s4Izet0Y
+	ur4cDXFjaIBpLI24+pMbYx+Wy2FLGZc3/s/+SNCbomyWzCHoc+TKpH9u58zGuVsFHK5zqlX0ESHTp
+	uf07iu5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNssT-0000000GYJ0-0dAu;
-	Wed, 18 Dec 2024 12:10:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tNtRc-0000000GdIX-46G4;
+	Wed, 18 Dec 2024 12:46:28 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNrgL-0000000GL4i-3mDJ;
-	Wed, 18 Dec 2024 10:53:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734519212;
-	bh=N3yE4+/zUzwrZLGitsLbjb1957m/tWo8jToq6NvN4nw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dsqlH2sqPyC5sMeSdb2HtWuMk8PfpABN0cFtmBSr5jxlJkyu+KbdCvyuLt30cUfBD
-	 cDpqob/Bq7y000yGqhTzmF1j6B10Wgwo/tZbMt4nVlgeCDGXmVta9t5JqqHlZeKsu6
-	 9luviBTwwQKo5ArPLUgv/o0KEB8tDavGN4u7jtnwgOhN3Fq6lBn8mjQN6RTUmQ4SEV
-	 vXH7RyBRYUhIGsKs1yNiMO6ENfEdG06yM2DqVQMOAMZhT3jDZm0BxXSRcGIvYa1oUM
-	 eEfWQbdECOxhs5JPUB7qvAr6NQjLAOIoCuYBo/GYqtMjpMaSq/E4BltP05fVFCvk5c
-	 1rRA1If0ACoPA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3752617E3613;
-	Wed, 18 Dec 2024 11:53:31 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	moudy.ho@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
+	id 1tNtQV-0000000Gd7j-41jn;
+	Wed, 18 Dec 2024 12:45:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1734525915; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=NWD2o+9Y7XDPF4C1vAR+dBWAxe1uQAAPjQDmSYMjZuU8EC2LfBfIprNY0WKeuCB8oA/8x0xhgzgQiZEF1EywjlzbOX6tsjwfwFpmZWfZwJcetsf+Axi4ygNhAKNdZKZxjM8KpC682HvGTmM/z3uwUBSpk+Tshfbc/lYeeTCoKlM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1734525915; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=THeGjzIRoDHBNZCDp/7M2lIPDvqr7tz6+xf8HWPd0n4=; 
+	b=NMIyfkCxiWBXCHQIoNTdHM9WwqNkLCtOUBMRM1Z957KqI2yrQKZUsTiOIIHKZn4rH/EolgipegR+Qp7kjxbLVxUG0hkbA8ta8t9ZjLCEedUvmK5Lj89kvV5WyCs/bcG/Da+YdNtgPPniWqukKW4zXx9O8Tomp5R+4/82jwhvPyI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
+	dmarc=pass header.from=<sebastian.fricke@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1734525915;
+	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=THeGjzIRoDHBNZCDp/7M2lIPDvqr7tz6+xf8HWPd0n4=;
+	b=Sz5HZNMGiW2T5vhTYWChnAEcC6+/LOv/e1prcDMIgl61a6yGkAMQD8CpbnsNVXDr
+	U5gfTpTrGTC4uK5kaACDmtbe6qgRYTS1ZaksAj9Wj/Dlp0Fh6LithWY39WtMMIvRSTx
+	MaTa023XAbsU56IL1zEx7Na8YO/vwsVOLRQcLKAM=
+Received: by mx.zohomail.com with SMTPS id 1734525913022316.05488947907077;
+	Wed, 18 Dec 2024 04:45:13 -0800 (PST)
+Date: Wed, 18 Dec 2024 13:45:05 +0100
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: Arnd Bergmann <arnd@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	sebastian.fricke@collabora.com,
-	macpaul.lin@mediatek.com
-Subject: [PATCH v1 1/3] dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
-Date: Wed, 18 Dec 2024 11:53:18 +0100
-Message-ID: <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
-References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] media: mediatek: vcodec: mark
+ vdec_vp9_slice_map_counts_eob_coef noinline
+Message-ID: <20241218124505.xwgsnpi2rvbngqvs@basti-XPS-13-9310>
+References: <20241018151448.3694052-1-arnd@kernel.org>
+ <20241118200641.GA768549@thelio-3990X>
+ <20241119110226.dbd54clp46klvjl5@basti-XPS-13-9310>
+ <20241217174628.GA2654633@ax162>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20241217174628.GA2654633@ax162>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_025334_079141_E46BE43E 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241218_044520_058450_09A68524 
+X-CRM114-Status: GOOD (  32.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,86 +93,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible strings for the AAL, COLOR, MERGE and PADDING
-hardware components found in MediaTek's MT8188 SoC.
+Hey Nathan,
 
-This hardware is compatible with MT8195.
+On 17.12.2024 10:46, Nathan Chancellor wrote:
+>Hi Sebastian,
+>
+>On Tue, Nov 19, 2024 at 12:02:26PM +0100, Sebastian Fricke wrote:
+>> Hey Nathan,
+>>
+>> On 18.11.2024 13:06, Nathan Chancellor wrote:
+>> > On Fri, Oct 18, 2024 at 03:14:42PM +0000, Arnd Bergmann wrote:
+>> > > From: Arnd Bergmann <arnd@arndb.de>
+>> > >
+>> > > With KASAN enabled, clang fails to optimize the inline version of
+>> > > vdec_vp9_slice_map_counts_eob_coef() properly, leading to kilobytes
+>> > > of temporary values spilled to the stack:
+>> > >
+>> > > drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:1526:12: error: stack frame size (2160) exceeds limit (2048) in 'vdec_vp9_slice_update_prob' [-Werror,-Wframe-larger-than]
+>> > >
+>> > > This seems to affect all versions of clang including the latest (clang-20),
+>> > > but the degree of stack overhead is different per release.
+>> > >
+>> > > Marking the function as noinline_for_stack is harmless here and avoids
+>> > > the problem completely.
+>> > >
+>> > > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>> >
+>> > Unfortunately, I have seen no moment on my upstream report and this
+>> > warning is breaking allmodconfig builds because of -Werror. Can this be
+>> > applied as a workaround for now (preferrably with a Cc: stable on it)?
+>> >
+>> > Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+>>
+>> I'll handle it asap, it will be part of 6.13
+>
+>Is there any update here? I don't see this patch applied in -next.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/display/mediatek/mediatek,aal.yaml        |  4 ++++
- .../bindings/display/mediatek/mediatek,color.yaml      |  4 ++++
- .../bindings/display/mediatek/mediatek,merge.yaml      |  4 ++++
- .../bindings/display/mediatek/mediatek,padding.yaml    | 10 +++++++---
- 4 files changed, 19 insertions(+), 3 deletions(-)
+I have sent out the PR and it has been applied to the -fixes branch in
+the media tree, due to the holiday period there might be some delays but
+I expect the change to soon land in Linux-next.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index cf24434854ff..1479035da409 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -25,6 +25,10 @@ properties:
-           - mediatek,mt8173-disp-aal
-           - mediatek,mt8183-disp-aal
-           - mediatek,mt8195-mdp3-aal
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-aal
-+          - const: mediatek,mt8195-mdp3-aal
-       - items:
-           - enum:
-               - mediatek,mt2712-disp-aal
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-index 7df786bbad20..799c0b8fc1f9 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-@@ -27,6 +27,10 @@ properties:
-           - mediatek,mt8167-disp-color
-           - mediatek,mt8173-disp-color
-           - mediatek,mt8195-mdp3-color
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-color
-+          - const: mediatek,mt8195-mdp3-color
-       - items:
-           - enum:
-               - mediatek,mt7623-disp-color
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index dae839279950..415a25bc18fa 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -25,6 +25,10 @@ properties:
-           - mediatek,mt8173-disp-merge
-           - mediatek,mt8195-disp-merge
-           - mediatek,mt8195-mdp3-merge
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-merge
-+          - const: mediatek,mt8195-mdp3-merge
-       - items:
-           - const: mediatek,mt6795-disp-merge
-           - const: mediatek,mt8173-disp-merge
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-index be07bbdc54e3..86787866ced0 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-@@ -20,9 +20,13 @@ description:
- 
- properties:
-   compatible:
--    enum:
--      - mediatek,mt8188-disp-padding
--      - mediatek,mt8195-mdp3-padding
-+    oneOf:
-+      - enum:
-+          - mediatek,mt8188-disp-padding
-+          - mediatek,mt8195-mdp3-padding
-+      - items:
-+          - const: mediatek,mt8188-mdp3-padding
-+          - const: mediatek,mt8195-mdp3-padding
- 
-   reg:
-     maxItems: 1
--- 
-2.46.1
+>
+>Cheers,
+>Nathan
 
+Regards,
+Sebastian
+
+>
+>> > > ---
+>> > > I have not come to a conclusion on how exactly clang fails to do this
+>> > > right, but can provide the .config and/or preprocessed source files
+>> > > and command line if we think this should be fixed in clang.
+>> > > ---
+>> > >  .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c         | 3 ++-
+>> > >  1 file changed, 2 insertions(+), 1 deletion(-)
+>> > >
+>> > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> > > index eea709d93820..47c302745c1d 100644
+>> > > --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> > > @@ -1188,7 +1188,8 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
+>> > >  	return ret;
+>> > >  }
+>> > >
+>> > > -static
+>> > > +/* clang stack usage explodes if this is inlined */
+>> > > +static noinline_for_stack
+>> > >  void vdec_vp9_slice_map_counts_eob_coef(unsigned int i, unsigned int j, unsigned int k,
+>> > >  					struct vdec_vp9_slice_frame_counts *counts,
+>> > >  					struct v4l2_vp9_frame_symbol_counts *counts_helper)
+>> > > --
+>> > > 2.39.5
+>> > >
+>> >
+Sebastian Fricke
+Consultant Software Engineer
+
+Collabora Ltd
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales no 5513718.
 
