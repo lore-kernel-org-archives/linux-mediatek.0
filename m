@@ -4,97 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C2FE77183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 05:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F092E77183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 07:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=; b=b+jrmq7ARZLEGxUJokRwmwxDOs
-	Q8fdJ7t4+PqbMsaNYcwWCIcSREwZKutURDPCmbmSOLO7yuzKliPUVhq69DWbmpKTw8kkPvPgSu+l6
-	uQmQZHSz7LbBd1nPV578BrjbR4qSzck2oY82wF/VUL/HUdYuGfv1FvZAbXGwFTa/C4Ev4hN7nddq9
-	pdRIt+mHYLTH88QshW5MGlRDDNstQRHtl/VXnTD+11GDumLf40JZkfCwuvUFOJq5kztw6GuFaaosf
-	RgjvMruCwzW3sffn1uPWsvLzt5/dN5dSXij3bipZo984KUUrfVvRkL2F1RSYbRFFqLErFaW/N5m8v
-	+GCJwG/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=45CEy2rxbrDuRh41EJF1xrkt88csRRe/R31pGN8EAhE=; b=rJrx/IXrJZbKI2PH0uQmqYVv4l
+	JggAazlZddFlRjWQ5JAfLzbbwr5DKW2NvpKBGlHVbae9Ox2dx31XTGM8EEnIjt2ziPNsEwmQTZB6Q
+	SqzGYKK/NQ18yG71S5Nx9q1kMfmhsMjwhBN/puiGK9CD9pDu2OyHBE70+VEPDhJry5btw3+wDKHXS
+	LbSLI6Z3SmM2pz2kgma1kUBZkhISpSkzcynt4jUieotr3EE4gl8R0aX1QEuyZRtQXKgmhf3s94joI
+	VBC7fEUHaACmICjSvh/VfJ3SAiZrz4x8FGTp1VYBpqS1am/DrJrqVzSzmR/NvvshqZWNn9oeMdXHx
+	5HBsCf/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNmZ2-0000000Fdj1-3Txz;
-	Wed, 18 Dec 2024 05:25:40 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1tNouC-0000000Frj7-2Cd5;
+	Wed, 18 Dec 2024 07:55:40 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNmXv-0000000FdZZ-3Y2w
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Dec 2024 05:24:34 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e3990bbe22cso4456469276.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2024 21:24:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734499470; x=1735104270; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=;
-        b=jK37vC/dY/dsBNP7Vdj+EZuZeq6YH6CZ8OQRPgyl3DaiwAp4UMwd8bJW9EvpxADCY4
-         OdLKHHYpzePFpyM8X8+P1nXqUubqGjKWPsFMh/Logo4GzW6MIsrsjgJXZ/XEmQDJnWMy
-         RorpOPfvcLFD7PKQVUBiaOuNIbZIyaIdHsH734WrFPuQ/6V9DiI3/l5MGeYfYcfbV37I
-         TZuw3aO3xTakFZQbDGDr+SXuwg+MR/w1JZdUbuWblx8ek/Q8FUfMOqA3HZNiNFIJ7zoz
-         ftpXO392oxg+6a8Djb7vOvOAXpLg+4whJj3N3fZP8TX7W1Pl4U4UCrq5/7mid3x3eAye
-         /TTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734499470; x=1735104270;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cXb0T9nLgGFZosqj/ZFHPS5FS6w/en1hvTkOmnMKx9o=;
-        b=N652HIi1tyChfk6xlKkxRVOGbV9p9QA59U3EiWIlQ8z9AMFqf36FldL3M2qhdRPeaT
-         JLY/P2yZTVT2pt1VGCsiPxAvVbhMHo6uk/J9DWnLMQQfCKR7Klpk4RDJG+yFsy8Yo2pA
-         Kp5Sgk0Qevl+CX/7oh0cIjO6fgrNdLqqeB3XreqVXCNm/FeQCN5vu3+eSykn5zs2S5r4
-         X76mQqpNgdO0s+3hl77zZoMEOVlrj7aQ6S+7PRcIxNtuwnDthGp40rW4Hq/itkFbADLO
-         jVRWYRZpuN5qAWVyRCNGoncm8V5PJ1aGslQpcWof9A9ecBQvqTNyJU3i7weWxbYEPbwG
-         cHVw==
-X-Forwarded-Encrypted: i=1; AJvYcCVCMFX2AOH4icRWmTgTv8xd7KuPKTUK0azPs7jnvWkgiSqyrFs7x5J4vhQlWSHLGMeWZ0Uc99TkyKTrf1eo1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyRDaeolkD+IsGxJvogCJnYwPp72ddFMMZiaKGIQf73zcYeow7l
-	/xRSjWc08ErE9pFEYhSrLGMxZVwUPbGKl6/VViIPFO+Rwt1mX6FWy3uq9cixw/MwJJQvYnXmSi5
-	6Su3R4oWa3rOAVS8MvyTl4GliN5qo7jGhnD1f3g==
-X-Gm-Gg: ASbGncsqNdSF9yyynXKjyuy3thN5L6evkiteJZUNZ4WSrlIsblPd7Wu1Tp2AOLGj7M+
-	1r97HQQ9Q6WrgXBxKrj0D2wI2d6PDTUBXrVzfiIwBRw2wa9sA41S0XvOPcvZnJ/POgS/JEw==
-X-Google-Smtp-Source: AGHT+IE3kqRdPneJyqqtRpFDLs6soyy+Bdc+Cywd1EGV0t4/4nnntxQS7NjaTVS7xOtVNpAQwVKUJPYkOMozlg43ysk=
-X-Received: by 2002:a05:6902:70f:b0:e49:5f2d:e729 with SMTP id
- 3f1490d57ef6-e53620cdcf8mr1205674276.4.1734499470459; Tue, 17 Dec 2024
- 21:24:30 -0800 (PST)
+	id 1tNot4-0000000FrYx-0pA9;
+	Wed, 18 Dec 2024 07:54:32 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4YCmB02cwVzqVFH;
+	Wed, 18 Dec 2024 15:52:40 +0800 (CST)
+Received: from kwepemh100007.china.huawei.com (unknown [7.202.181.92])
+	by mail.maildlp.com (Postfix) with ESMTPS id 37C10140416;
+	Wed, 18 Dec 2024 15:54:26 +0800 (CST)
+Received: from huawei.com (10.67.175.69) by kwepemh100007.china.huawei.com
+ (7.202.181.92) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 18 Dec
+ 2024 15:54:25 +0800
+From: Zhang Kunbo <zhangkunbo@huawei.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>, <ryder.lee@mediatek.com>,
+	<shayne.chen@mediatek.com>, <sean.wang@mediatek.com>, <kvalo@kernel.org>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<deren.wu@mediatek.com>, <mingyen.hsieh@mediatek.com>
+CC: <linux-wireless@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<chris.zjh@huawei.com>, <liaochang1@huawei.com>
+Subject: [PATCH -next] wifi: mt76: mt7925:: replace zero-length array with flexible-array member
+Date: Wed, 18 Dec 2024 07:45:52 +0000
+Message-ID: <20241218074552.3271542-1-zhangkunbo@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org> <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
-In-Reply-To: <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Wed, 18 Dec 2024 07:24:23 +0200
-Message-ID: <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.175.69]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ kwepemh100007.china.huawei.com (7.202.181.92)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_212431_943425_5A2F5D51 
-X-CRM114-Status: GOOD (  28.20  )
+X-CRM114-CacheID: sfid-20241217_235430_379648_7CF00499 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,58 +72,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
->
-> Hi,
->
-> On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
-> > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > there was no simple way to get the drm_connector that stayed at the end
-> > of the bridge chain. At the same point the drm_hdmi_connector functions
-> > expected to get drm_connector instance.
-> >
-> > While looking for a way to solve the issue, I stumbled upon several
-> > deficiencies in existing hdmi_codec_ops implementations. Only few of the
-> > implementations were able to handle codec's 'plugged' callback. One
-> > third of the drivers didn't implement the get_eld() callback.
-> >
-> > Most of the issues can be solved if drm_connector handles
-> > hdmi-audio-codec on its own, delegating functionality to the actual
-> > implementation, be it a driver that implements drm_connector or
-> > drm_bridge.
-> >
-> > Implement such high-level framework, adding proper support for Audio
-> > InfoFrame generation to the LT9611 driver.
-> >
-> > Several design decisions to be kept in mind:
-> >
-> > - drm_connector_hdmi_codec is kept as simple as possible. It implements
-> >   generic functionality (ELD, hotplug, registration).
-> >
-> > - drm_hdmi_connector sets up HDMI codec device if the connector
-> >   is setup correspondingly (either I2S or S/PDIF is marked as
-> >   supported).
-> >
-> > - drm_bridge_connector provides a way to link HDMI audio codec
-> >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
-> >   framework.
-> >
-> > - It might be worth reverting the no_i2s_capture / no_spdif_capture
-> >   bits. Only TDA889x driver sets them, while it's safe to assume that
-> >   most of HDMI / DP devices do not support ARC / capture. I think the
-> >   drivers should opt-in capture support rather than having to opt-out of
-> >   it.
->
-> Sorry if this isn't clear to me and I'm quite late to the party, but did
-> you test this on vc4 with both a pi3 and pi4, or was it just compile
-> tested?
+The current codebase makes use of the zero-length array language
+extension to the C90 standard, but the preferred mechanism to declare
+variable-length types such as these ones is a flexible array member[1],
+introduced in C99:
 
-LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
+struct foo {
+	int stuff;
+	struct boo array[];
+};
 
+By making use of the mechanism above, we will get a compiler warning
+in case the flexible array does not occur last, which is beneficial
+to cultivate a high-quality code.[2]
 
+This issue was found with the help of Coccinelle.
+
+[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
+[2] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
+
+Signed-off-by: Zhang Kunbo <zhangkunbo@huawei.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 748ea6adbc6b..956d62062730 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -388,7 +388,7 @@ mt7925_mcu_tx_done_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 	struct mt7925_mcu_txs_event {
+ 		u8 ver;
+ 		u8 rsv[3];
+-		u8 data[0];
++		u8 data[];
+ 	} __packed * txs;
+ 	struct tlv *tlv;
+ 	u32 tlv_len;
 -- 
-With best wishes
-Dmitry
+2.34.1
+
 
