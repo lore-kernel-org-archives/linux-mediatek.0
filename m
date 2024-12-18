@@ -4,77 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91544E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 11:36:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D54E77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 11:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RWw0YjfIq3RA4Wmm35YTKkdNVZn5xNSpCYbBF0u+pzc=; b=KRo5V6E5Elc4FKyNiSdfhqQ3m1
-	YMQaQhfmUQtVI8JZYnLRmG6NXgu/Sb2NPnmVS3JKwdL4jxCgM8XRJWNWjkK41B+IVKNrazx7vNlZW
-	iRhne7vKBdAltL432/lXiyDkLxc86J0rWaxkITxLR8OkdVhMik4FtUoA+H4Dktv42LaPT2LpSQ0KY
-	H6EzyUPq9jRPAiD1htDjXZXzFDo+lxNP5kQNFT0AF1NGZg8xP7Msn0Owhioiq3lfubvs5wExwRkoK
-	ezEvx26NfAN/cnu8XQ4dWZKm4iPnumi+3NWHSTwCdIl3/Gj0b15woQEDOUWyXnKVEXoGH51vgW8az
-	KZnvdRKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=JAARIiWySYJHZqIooM2UFhXOt0
+	XdDmxB+spOXUaq83AWGbyynnytfnh5f+hem3CT57RQr/ITf3PLDe1fXsRKVP9cnyfi8jx7HbXRK+b
+	P7iDiHqYh0LGNPUtel4VYO/dQ6m/isLZzkL+ln0LuyIA9U9CG14ul8rW+C27swdpZtulBranLDxQJ
+	Mi2OzeXF/oeymjTbV9EOZSre2wCXo6CXl+1QnCZebf8RAzsud3C521TXR8sBO7fJY33LwemtzLWOO
+	A/sSHoOkI2Ym4RmY23IajhtUGsuIdZarfpdTeZJHgho3Cf8tuyWfAVh/2zx0D9GHLAfJLBpoy0N5S
+	4dqGI1EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNsLb-0000000GT5F-2hIX;
-	Wed, 18 Dec 2024 11:36:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tNsXH-0000000GVDM-19Mk;
+	Wed, 18 Dec 2024 11:48:15 +0000
+Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNsKU-0000000GSqI-3kaH;
-	Wed, 18 Dec 2024 11:35:04 +0000
-X-UUID: 1a265c44bd3411ef82ff63e91e7eb18c-20241218
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=RWw0YjfIq3RA4Wmm35YTKkdNVZn5xNSpCYbBF0u+pzc=;
-	b=ZaO1ix1zrIuHHCVWE1+zLy7E70trKYEUiug88KBu+2g6z7ke4LQMXkcvCdwDZORPrFtaguROzugt6zWHISLhhRpd0AFAXbhUwNui2DAf4lwZ0IpYQS+CWaKGD3PEd/D7ofOb8iR2IyhyKClZ6QhLPXs5cZ8acV1nD48S5NJRecw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:922ec55e-32bd-4ecb-9f86-e5124138de9d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:448e5513-8f5d-4ac6-9276-7b9691c7b8d6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 1a265c44bd3411ef82ff63e91e7eb18c-20241218
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1980500206; Wed, 18 Dec 2024 04:34:54 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 18 Dec 2024 19:34:51 +0800
-Received: from mszsdclx1211.gcn.mediatek.inc (10.16.7.31) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 18 Dec 2024 19:34:51 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
-	<granquet@baylibre.com>, <dmitry.osipenko@collabora.com>,
-	<rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>,
-	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>,
-	<liankun.yang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 1/1] drm/mediatek: Add return value check when reading DPCD
-Date: Wed, 18 Dec 2024 19:34:07 +0800
-Message-ID: <20241218113448.2992-1-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tNsU3-0000000GUV4-3Srk;
+	Wed, 18 Dec 2024 11:44:57 +0000
+Received: from phl-compute-10.internal (phl-compute-10.phl.internal [10.202.2.50])
+	by mailfhigh.stl.internal (Postfix) with ESMTP id E1B8525401B9;
+	Wed, 18 Dec 2024 06:44:53 -0500 (EST)
+Received: from phl-imap-11 ([10.202.2.101])
+  by phl-compute-10.internal (MEProxy); Wed, 18 Dec 2024 06:44:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1734522293;
+	 x=1734608693; bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=
+	Gtt4oKTCAz7iXjLBdaJ4fk339JtG6NYSxELsvVQO3k5YvfRM4056SFYMV132AXo+
+	gJ9VPV81TwbOU/2+2QIs0CS0impr1wL1ej5OycK14fVy2c8VlKB2xegX/EAlF2QD
+	a+3o7S+WGrOvk1ndnDBX2ogjOZuSpGJ3MIIoEdFAfUQ4xcAzl2O5Oqm2M2AbBZYy
+	0ePFobymW08vdnAxkJjbVOkaSM1berjAU5/EpWz0NU19fDU113dgHF3FHAxhbw1t
+	pZMJFJma0l2lroPBTrg1/GssZ3QYPjch1JZKOWP9DjKWKeMYTCFp2XVaxCNSjw4I
+	ftgmhuxxDdB+nLQKgOKYHQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1734522293; x=
+	1734608693; bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=v
+	RJXlDfeQ8IUknWvagwmoM7Y222DsLiSmJY9Tc88UfLEtRpc1Oiw4fziWVWc7mtRP
+	d1TGaeCLMp5KlgDe0Ibu5AkDstLXdEm56HtjUfFuDKeu6JASW0Wo0lDXnOjLTVCE
+	XdlAZ1FKoPGrNETptTsqUXCp/3N5cA3DY9CF8On75Z0AiTgkfjDQ4xmEQ664cLc4
+	vDXI6uK6jfElAYfT79gh1WXFRyPhuT4jwWDnGvHlaqqXGD9n+MXATgNWBlkQ8Gnt
+	Zc0BCpP60DejNWN0GvPXOXsMfkOl6sjwqEVKZ8he/6kfsyk4ripFUcIPNoJrlIxI
+	fS74XsYUgkWfxAsOy2a+g==
+X-ME-Sender: <xms:s7ViZw_WczuLTGcK5AsmEHe_qCWtQrv9QNJXd1djQ9v_soZwcPGt_Q>
+    <xme:s7ViZ4u6bQKtQd9pjfrw1s2oOLJKMXhQmZWPgcKd86-v90xvakU-7EoKLWfO4GEuJ
+    2mMujT7WmevCchQFHU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefuddrleekgdeftdcutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdpuffr
+    tefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnth
+    hsucdlqddutddtmdenucfjughrpefoggffhffvvefkjghfufgtgfesthejredtredttden
+    ucfhrhhomhepfdetrhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdrug
+    gvqeenucggtffrrghtthgvrhhnpefhtdfhvddtfeehudekteeggffghfejgeegteefgffg
+    vedugeduveelvdekhfdvieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
+    grihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgtphhtthhopeduledp
+    mhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepfigvnhhsthestghhrhhomhhiuhhmrd
+    horhhgpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhn
+    ohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllh
+    drtghhpdhrtghpthhtohepghgvvghrthdorhgvnhgvshgrshesghhlihguvghrrdgsvgdp
+    rhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrth
+    hthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtohepjhgrnhhirdhnihhk
+    uhhlrgesihhnthgvlhdrtghomhdprhgtphhtthhopegrrhhnugeskhgvrhhnvghlrdhorh
+    hgpdhrtghpthhtoheptghhuhhnkhhurghnghdrhhhusehkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:s7ViZ2Cn1RcrBCDROIhRmqeOw2PRvn1kDatQL5l6jneBYFz6OVLnvw>
+    <xmx:s7ViZwfwu-sth1xTDkADc8f6UwbsV4pG8Y2C6bAv8U8EzDSQ5o3l9g>
+    <xmx:s7ViZ1NBY82dAMyphK71CoxVaOJyTnYiVqFUP-I9NPemy_OCXZDgog>
+    <xmx:s7ViZ6n-XVPhlRtDT4PWaOECGCYBRAzgoK0rNqshK3gCOIssX7jvSg>
+    <xmx:tbViZwHLykl3Y92jepGrVWSYFaN8pXEfza8ZswrzRsdrTl9L52Dn2M7Z>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id A6BB02220072; Wed, 18 Dec 2024 06:44:51 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Wed, 18 Dec 2024 12:44:30 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Arnd Bergmann" <arnd@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>, "Dave Airlie" <airlied@gmail.com>,
+ "Simona Vetter" <simona@ffwll.ch>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "CK Hu" <ck.hu@mediatek.com>
+Cc: "Maxime Ripard" <mripard@kernel.org>,
+ "Jani Nikula" <jani.nikula@intel.com>,
+ "Geert Uytterhoeven" <geert+renesas@glider.be>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>,
+ "Chen-Yu Tsai" <wenst@chromium.org>,
+ "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>,
+ =?UTF-8?Q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Message-Id: <1d8c6f65-5baa-459e-ba34-4e45ca20baf6@app.fastmail.com>
+In-Reply-To: <46f871e3-bb1e-4bee-95f3-2121c6a6eef7@collabora.com>
+References: <20241218085837.2670434-1-arnd@kernel.org>
+ <46f871e3-bb1e-4bee-95f3-2121c6a6eef7@collabora.com>
+Subject: Re: [PATCH] drm/mediatek: stop selecting foreign drivers
 Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_033502_930744_C4AB6E6D 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20241218_034456_502390_2BC03ADF 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +124,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Returns the number of bytes transferred (1) on success.
-Check the return value to confirm that AUX communication is successful.
+On Wed, Dec 18, 2024, at 11:50, AngeloGioacchino Del Regno wrote:
+> Il 18/12/24 09:58, Arnd Bergmann ha scritto:
+>> From: Arnd Bergmann <arnd@arndb.de>
+>
+> The problem is - no PHY no party, it's not going to work without... but 
+> I get the
+> reasons behind this change.
+>
+> Are we sure that we can't just add a `depends on PHY_MTK_xxxx` (or extend
+> depends on DRM_MEDIATEK && PHY_MTK_xxx)?
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+Doing this wouldn't cause any problems, but it also doesn't
+really help much, you just have to know which devices are
+present and enable all their drivers anyway.
 
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
----
-Changes in V3:
-- Using drm_dp_read_sink_count() to improve patch.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20241128030940.25657-1-liankun.yang@mediatek.com/
+We used to just select all drivers from arch/arm/mach-*/Kconfig
+on some older platforms, but this was too much of a hassle.
 
-Changes in V2:
-- Modify Fixes in Commit Message.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.5385-1-liankun.yang@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 36713c176cfc..b26dad8783be 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2100,7 +2100,6 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 	enum drm_connector_status ret = connector_status_disconnected;
- 	bool enabled = mtk_dp->enabled;
--	u8 sink_count = 0;
- 
- 	if (!mtk_dp->train_info.cable_plugged_in)
- 		return ret;
-@@ -2115,8 +2114,8 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	 * function, we just need to check the HPD connection to check
- 	 * whether we connect to a sink device.
- 	 */
--	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
--	if (DP_GET_SINK_COUNT(sink_count))
-+
-+	if (drm_dp_read_sink_count(&mtk_dp->aux))
- 		ret = connector_status_connected;
- 
- 	if (!enabled)
--- 
-2.45.2
-
+      Arnd
 
