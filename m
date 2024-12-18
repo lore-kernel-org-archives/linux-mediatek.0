@@ -4,72 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AC4E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 08:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C3EFE77188
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 10:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/haLBxEkL3w5x8REE76F6woRrHaJ+tBFsJGgFIA/Elk=; b=F5YVfosy4UQKkwFqkkfSJbttlT
-	cbQiBGwe2yD9ImzemLm/4zvZQqKaMtD9M/fEi7t4WIF8jr3S8Q3YXKrQtaCd2PHtdL3mCz02NgI6H
-	DlsF7VPNbFTF4NNkqk51q05F/THNDZuYLfq/vqY8DYP2mNEEqv7jrkfLR67LzPUnVNhBuVL+827Qp
-	deSE9WwhgUC1lUAIn/jXSYTcm2xl/NfX0A6wBXTwS3ju6jEfkblmI/HpRWZFEZS+gZDlUhLP8HPsQ
-	O2bupLuduiHc6+5v90fUy3S9l0fdMi1u29srktSUmQYH/FkPbRKV9B2RNy3Io10gea9ElpANuCjtP
-	rLUOVxIw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SvpieJCHhkISUTUlgye5lssHWrIBSVqqrABKwtDyEdQ=; b=mixJ9OK5ZmNtu4IctYPKeuWHHw
+	ygqobDN/HUwzYOocZHN3ZRZqNZgAPhQgE5Rw/ecvYdhU9RJK18qPtRnY/CiKQlk+/YZ27ScaPUZTv
+	jBjclgkMr2LQuFKL9oFmplhzK3PF83EYNwkgMZDBc2LqRMRFoPiP5yYEwTaskRp5//EEUq03sTNXI
+	s+8IOfYzHn5MFpJJiZDPSborLVLflefXLb5o8Xvx+lfdQrDrBqybqwsJzs+tuPhNbhuWKmp95Wasq
+	DwQUgjjp+I23iAnXAKb398ygUb/Jc7t80GURJE6vyxu2Fws54EB+N+WvrkKW0DpqJnwWgV5XMXQbT
+	I2s9um8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNpuL-0000000FziS-2cYs;
-	Wed, 18 Dec 2024 08:59:53 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tNqsD-0000000GC0F-3HSp;
+	Wed, 18 Dec 2024 10:01:45 +0000
+Received: from mail-ua1-f46.google.com ([209.85.222.46])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNptF-0000000FzXJ-0uhj;
-	Wed, 18 Dec 2024 08:58:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 92CA4A41F29;
-	Wed, 18 Dec 2024 08:56:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ACC1C4CECE;
-	Wed, 18 Dec 2024 08:58:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734512323;
-	bh=M2Wyl4Lv1wHFs941v1P1F99J3xEnjWFBD0Qgq765OIM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=S+krT84wnor5H/vWle8Z95MXfl65nY3TVBPY607j/TfWotnt7RRwKTyIjeLsKLPmK
-	 UW83mVu5r9tmTbrjy+7aWbqqdbQY1sg8OOzzUqwH0ZhRjRyGde5v1CNCVRp4rlLzbe
-	 1/X/SlXMvaJ71lttwKL0YlXC4H9wIEr+imrKm+xD1Rvy7bJKyAGcvMP0vO/HdqRaU9
-	 aF0VM/weLRcvsakdPPLJ7t7bsx3pC0uk5oRyilWnqMfOHwStnkRFjZhB4t7iZcxgdP
-	 ysxxbfYpGGPDy9wwBvkE9S/tUnVW5Uqvf0K7jh1ucVASrQCxY+WqyDV9tInYWdg1oW
-	 /EYuh7zsQNLMw==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Maxime Ripard <mripard@kernel.org>,
-	Jani Nikula <jani.nikula@intel.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	=?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] drm/mediatek: stop selecting foreign drivers
-Date: Wed, 18 Dec 2024 09:58:31 +0100
-Message-Id: <20241218085837.2670434-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	id 1tNqs5-0000000GBxB-05wh;
+	Wed, 18 Dec 2024 10:01:38 +0000
+Received: by mail-ua1-f46.google.com with SMTP id a1e0cc1a2514c-85c48f5e2c1so1172250241.3;
+        Wed, 18 Dec 2024 02:01:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734516093; x=1735120893;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SvpieJCHhkISUTUlgye5lssHWrIBSVqqrABKwtDyEdQ=;
+        b=PB2nycAHCQkIbX4LiI/FLu+s0/yqUB3sdGZZptmvlILOI3w7gXSxtoIAE5LdnUbGwu
+         u1oX1swB0LxE4tDEGzkMQMYiOEsYgh/PKTCvJBP1Tb+vvE+wrom7LouwQtr3xhbXDZtE
+         GtC+6P7JiDTFPLa5YqJ//yeR6itqNyEikOuHpTNvUv5TpoDuTB56tgQpUI4FuUvctqyU
+         pj6bSlgS80iajMCy5jkUGAxZv0MV57RqujC1IEV0QOce8GgiRrsKY/oknaDe8qL/0mpL
+         jKc7YFEgP36PZj/V10zYHBsA5NfDLfQJwAU8Vhhx6309lU2cov4ZQc1avFjEXPP3UV/U
+         Mvvw==
+X-Forwarded-Encrypted: i=1; AJvYcCW7iDc3UgbvZ9QF0/ezyDnAMDCj4FogxQZ+z6OEa2jeFdpgD4pYSe5Az0jJtNjSX0w0aeXsZdtLy/39Ugqp1czS@lists.infradead.org, AJvYcCXjOzB0AAbXGoLkNP9kVvHe4DzT6fiy1xPzA6QIKW5YneJBCoqgeL/MkKyYwrgVZCN7+yunFn9wlm35ZZddno0=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yya5t+3VtD3ewEnxsAm8Znw/5b0EHvvFmX2dcMQGfcWei7BzJLg
+	UqdGLpeV3jivLvsLpMlUuG5OPZhXGoeBf9b8Mn7x3EhvNVKxCQtnAUa21D6U
+X-Gm-Gg: ASbGncsq4rnkJJtd2tW6g5PDraN4hwLdVhKCIKzz5Nq5qRLcmo/5Vf7XojtVJDaW0l0
+	xZmCyeMWoRowZ5Vt+31SP9QW+Q7wal60CenB/be8gHEgchl9q27XIwTkeRu2O7b2bYCa2j19NTK
+	HsjhrUWsKcMbklMq15z5z40duX4XW+lJg8SmbM8Yth3Ni0lKe05KpVUHhWODwqMRsbuSIzV11T1
+	SIrNiPD94f2jOIuottteskQH14v2Svg0VWDXOcxilX4rh3iVYsWeuiNc/qtDLuGmHpqiCBIlrhh
+	O9BQ88G+YG5H5cNrAKt2E9Q=
+X-Google-Smtp-Source: AGHT+IHxRHOJb/pwn78LXaOPaZjvF8ZHirMxgXpzrCp62Pc9oDp9Pu6rSk/CQuGN8l17MFUyanPF0Q==
+X-Received: by 2002:a05:6102:3e25:b0:4af:e4fb:2f0b with SMTP id ada2fe7eead31-4b2ae83e7e3mr1632659137.22.1734516093580;
+        Wed, 18 Dec 2024 02:01:33 -0800 (PST)
+Received: from mail-vk1-f180.google.com (mail-vk1-f180.google.com. [209.85.221.180])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-860ab587ee0sm1606685241.9.2024.12.18.02.01.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Dec 2024 02:01:32 -0800 (PST)
+Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-5174f9c0e63so1690144e0c.1;
+        Wed, 18 Dec 2024 02:01:32 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV164v5ovci9+Z03/t2lZ/gcGpfQw2LnHGtWTU4JYFR+4oaacEinL2VlGN1G/77IiLsanYqFovomkUGTbcTE4yk@lists.infradead.org, AJvYcCWLnlsCE5ex4gJ9pU4dfxo7qOzexMjgjAxYSILirDvMHAL9L1IPPUQBzaiPqFVhORVY1kCa8ubPVjJx9LKTzfo=@lists.infradead.org
+X-Received: by 2002:a05:6102:38c7:b0:4b1:2010:5cd7 with SMTP id
+ ada2fe7eead31-4b2ae735822mr1363766137.8.1734516092461; Wed, 18 Dec 2024
+ 02:01:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20241218085837.2670434-1-arnd@kernel.org>
+In-Reply-To: <20241218085837.2670434-1-arnd@kernel.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 18 Dec 2024 11:01:20 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdW-PEnkRugFVw2=0Xozw6TQaAJN_FzNucPMTZazZ3--hw@mail.gmail.com>
+Message-ID: <CAMuHMdW-PEnkRugFVw2=0Xozw6TQaAJN_FzNucPMTZazZ3--hw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: stop selecting foreign drivers
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	Arnd Bergmann <arnd@arndb.de>, Maxime Ripard <mripard@kernel.org>, Jani Nikula <jani.nikula@intel.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	=?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_005845_321275_EA069713 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20241218_020137_057543_38CC98B8 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,62 +99,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+Hi Arnd,
 
-The PHY portion of the mediatek hdmi driver was originally part of
-the driver it self and later split out into drivers/phy, which a
-'select' to keep the prior behavior.
+On Wed, Dec 18, 2024 at 9:58=E2=80=AFAM Arnd Bergmann <arnd@kernel.org> wro=
+te:
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> The PHY portion of the mediatek hdmi driver was originally part of
+> the driver it self and later split out into drivers/phy, which a
+> 'select' to keep the prior behavior.
+>
+> However, this leads to build failures when the PHY driver cannot
+> be built:
+>
+> WARNING: unmet direct dependencies detected for PHY_MTK_HDMI
+>   Depends on [n]: (ARCH_MEDIATEK || COMPILE_TEST [=3Dy]) && COMMON_CLK [=
+=3Dy] && OF [=3Dy] && REGULATOR [=3Dn]
+>   Selected by [m]:
+>   - DRM_MEDIATEK_HDMI [=3Dm] && HAS_IOMEM [=3Dy] && DRM [=3Dm] && DRM_MED=
+IATEK [=3Dm]
+> ERROR: modpost: "devm_regulator_register" [drivers/phy/mediatek/phy-mtk-h=
+dmi-drv.ko] undefined!
+> ERROR: modpost: "rdev_get_drvdata" [drivers/phy/mediatek/phy-mtk-hdmi-drv=
+.ko] undefined!
+>
+> The best option here is to just not select the phy driver and leave that
+> up to the defconfig. Do the same for the other PHY and memory drivers
+> selected here as well for consistency.
+>
+> Fixes: a481bf2f0ca4 ("drm/mediatek: Separate mtk_hdmi_phy to an independe=
+nt module")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-However, this leads to build failures when the PHY driver cannot
-be built:
+Thanks for your patch!
 
-WARNING: unmet direct dependencies detected for PHY_MTK_HDMI
-  Depends on [n]: (ARCH_MEDIATEK || COMPILE_TEST [=y]) && COMMON_CLK [=y] && OF [=y] && REGULATOR [=n]
-  Selected by [m]:
-  - DRM_MEDIATEK_HDMI [=m] && HAS_IOMEM [=y] && DRM [=m] && DRM_MEDIATEK [=m]
-ERROR: modpost: "devm_regulator_register" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
-ERROR: modpost: "rdev_get_drvdata" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
+> --- a/drivers/gpu/drm/mediatek/Kconfig
+> +++ b/drivers/gpu/drm/mediatek/Kconfig
+> @@ -15,9 +15,6 @@ config DRM_MEDIATEK
+>         select DRM_BRIDGE_CONNECTOR
+>         select DRM_MIPI_DSI
+>         select DRM_PANEL
+> -       select MEMORY
+> -       select MTK_SMI
+> -       select PHY_MTK_MIPI_DSI
+>         select VIDEOMODE_HELPERS
+>         help
+>           Choose this option if you have a Mediatek SoCs.
+> @@ -28,7 +25,6 @@ config DRM_MEDIATEK
+>  config DRM_MEDIATEK_DP
+>         tristate "DRM DPTX Support for MediaTek SoCs"
+>         depends on DRM_MEDIATEK
+> -       select PHY_MTK_DP
+>         select DRM_DISPLAY_HELPER
+>         select DRM_DISPLAY_DP_HELPER
+>         select DRM_DISPLAY_DP_AUX_BUS
+> @@ -39,6 +35,5 @@ config DRM_MEDIATEK_HDMI
+>         tristate "DRM HDMI Support for Mediatek SoCs"
+>         depends on DRM_MEDIATEK
+>         select SND_SOC_HDMI_CODEC if SND_SOC
+> -       select PHY_MTK_HDMI
+>         help
+>           DRM/KMS HDMI driver for Mediatek SoCs
 
-The best option here is to just not select the phy driver and leave that
-up to the defconfig. Do the same for the other PHY and memory drivers
-selected here as well for consistency.
+What about replacing select by imply?
 
-Fixes: a481bf2f0ca4 ("drm/mediatek: Separate mtk_hdmi_phy to an independent module")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/gpu/drm/mediatek/Kconfig | 5 -----
- 1 file changed, 5 deletions(-)
+Alternatively, PHY_MTK_HDMI could default to DRM_MEDIATEK ||
+DRM_MEDIATEK_DP || DRM_MEDIATEK_HDMI.
 
-diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-index 1c2f56b75716..1d4f20a4f265 100644
---- a/drivers/gpu/drm/mediatek/Kconfig
-+++ b/drivers/gpu/drm/mediatek/Kconfig
-@@ -15,9 +15,6 @@ config DRM_MEDIATEK
- 	select DRM_BRIDGE_CONNECTOR
- 	select DRM_MIPI_DSI
- 	select DRM_PANEL
--	select MEMORY
--	select MTK_SMI
--	select PHY_MTK_MIPI_DSI
- 	select VIDEOMODE_HELPERS
- 	help
- 	  Choose this option if you have a Mediatek SoCs.
-@@ -28,7 +25,6 @@ config DRM_MEDIATEK
- config DRM_MEDIATEK_DP
- 	tristate "DRM DPTX Support for MediaTek SoCs"
- 	depends on DRM_MEDIATEK
--	select PHY_MTK_DP
- 	select DRM_DISPLAY_HELPER
- 	select DRM_DISPLAY_DP_HELPER
- 	select DRM_DISPLAY_DP_AUX_BUS
-@@ -39,6 +35,5 @@ config DRM_MEDIATEK_HDMI
- 	tristate "DRM HDMI Support for Mediatek SoCs"
- 	depends on DRM_MEDIATEK
- 	select SND_SOC_HDMI_CODEC if SND_SOC
--	select PHY_MTK_HDMI
- 	help
- 	  DRM/KMS HDMI driver for Mediatek SoCs
--- 
-2.39.5
+Gr{oetje,eeting}s,
 
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
