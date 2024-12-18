@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA5EE77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 15:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7D4E77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 15:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/VMyo+ORsonfVivw22etmfojzVrOLox5oxIUwq+Fnbk=; b=X5O9k0SQ77Zgeg7M86f6RBYe25
-	Om5CeSeEywCVvAKbv9VCiyE1usrNbNDCG+vjOczbrMZWnEydf08UoFgK3ix0tWGD0j7q+IsO4LjuK
-	/UOBc8YZ7U1T06kjD9Obftq4y2UGj7aUJRXBWoJUVBFwyTg5ajNnzqKrueFsxG87f+kqVGWpoiCFn
-	k7kx3i27UUdLDfyEczQAuUpMP82twNOD3E+lRXpgdNtENsa0pEbs6HL+QDvKQMf8gqpJ42xwu+9zO
-	qbFsnlKF5TmwnxTyRlRboyleKAdTuVyzIWJn+4e1Zblrs4/DY08rL6dgft1XOpETTF4NIXTo+izum
-	Gc3+qx/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kP77otwR85pohU1u8v+U6/CSHDJCnIQRrPv+NibxSx0=; b=zLEZZFz34GNr+UZkW5O/nWLf7z
+	roMYgUI9tnnlZNuUewqgoe9opqw19j4PzG1Ynuq9Xkt9O59sC2nDkmxyzfLek71oprucf8zb13mFK
+	2OOQojAKWm2wePfDop7xh+rnt9/zmQO5PWbUcDdGZMT1uVS0ATWkhhE+Sz4tWe1un8ueFrMVDzLBk
+	QXa16teCv6Ej9smpqsmh3j/TfOklC79GB/qnuZ35YvGnsa1U3lLBf8qjUbrcydWnQFFwoT4GKDdZk
+	X4VLImSSRxQvzvgYgOEsRBXXJ7Kw3TuznYrLsUudm5qsNtbBOxKqo7UnCCoBwdQaciPFPiOHCaBQ1
+	w/3OA7uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNwDi-0000000H45A-3KOc;
-	Wed, 18 Dec 2024 15:44:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tNwQ2-0000000H6v6-06p0;
+	Wed, 18 Dec 2024 15:57:02 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNw4n-0000000H2K6-2de6;
-	Wed, 18 Dec 2024 15:35:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734536103;
-	bh=DG5Uydk1Hvw8FVpZxUIigNGD17tSbGmGCQHmGMHwuqQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=k6XM9zP/gM9gkkcCyB8vtKl1bj9B4jIrcwvsd3dYbF2nvbO4pbGcEnHC8H8P3OL6b
-	 jn2kxmChKvWi7HYpjviQbH5mI9nK6e+7ruMMAwe4PQvFmAazo95WpqDBquFKKnihXA
-	 JxOPh0CNTyc9BLNdrY9PkycApngwiUd5Rg+vXiM6fGW4aYHkw3WMYUeCTsJ+bnlbKY
-	 HIZJTCYMq02O44AcL31+TY570HZsPK08P6eDtuEVzEKhpnxXwTfr8tV/W3lrx4NHv0
-	 6UASO5v/CodOvaFYljIT59x9FlFhYC/USq0GSCLPG8O7kto0ucfLHw8OPsqZSpCxsR
-	 Pd5Rg8+lnWK5w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0E4D17E3784;
-	Wed, 18 Dec 2024 16:35:02 +0100 (CET)
-Message-ID: <54598909-979a-40b6-aa68-78ad87105088@collabora.com>
-Date: Wed, 18 Dec 2024 16:35:02 +0100
+	id 1tNwOw-0000000H6jm-0jB2
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Dec 2024 15:55:55 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-6ef81222be7so63374247b3.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Dec 2024 07:55:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734537352; x=1735142152; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=kP77otwR85pohU1u8v+U6/CSHDJCnIQRrPv+NibxSx0=;
+        b=qjolgfQYhBZavTvrVdFLNMiJLial72x2r3C/SPE7twsnzXp6SaZpuY2gouSOjTUOf2
+         48aCy1ovcUW24JAtkWMEuPteM6prWVjHwWJYn+ZIv/idy7sTzJNZps2QmIiDYWJOnz1j
+         wvQLRWd5l4x3JoUsDthmwkThfdwJC8mImkHbgXv44Wg1FvTvVKIb1cBgegMiGfbbY+91
+         lAvq7znVJi+pkfuerjaQ9Sqe5bBd/GLfvJfsbt6buz3DhDvr5zxh5vGh114BR+RMUePn
+         F85btDYXDyOJqGM1C8ZEYd4lIyCqx8rfPXVs0KxxHnVgimMbK2YLUQFHl3i1t200cZeZ
+         mSTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734537352; x=1735142152;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kP77otwR85pohU1u8v+U6/CSHDJCnIQRrPv+NibxSx0=;
+        b=kaPhEly7XPUqWUTDp5QfdZJaqWXw08T4XcphIB8t3sC5tX2pYaTsNwlR9HerRk+eIT
+         hMAY5kzqYLx+dflUj7DyEbDJylrh6JiU5UKlfkF5rHssfrM4Ay1YcDC40NGhAia6ojOZ
+         Ul8hY60GQx/HhowWx2RBirSZzodDIQOk/tlAZKNVZKFwBzDvpWhS4vIC3DxVQW81itC5
+         eoaFP8EtSBPBGPyEW/damyDHIRgCZ40cLYkdDgYR6I+ifs8qWLRwlzD++wbhKE3zCdfm
+         TrwUwyY4IXnlQy4Qv2+cTH8jM8LCsELvC6PJn1482u+1H+O8yhKBNSbvY6zghN7P0RxO
+         5QWw==
+X-Forwarded-Encrypted: i=1; AJvYcCXqXbTGKACkKTmKHYyHAf7a5/laZza/ScDbefDs69YjvKbmI66Ar+gkBY/KhCWkGN9j4PoZ4o+vF2EdhPpFKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwFJOMcVWc3ACNwDzlzwFS7lPD8EhhsLevgNc6w/7memGF/ERgD
+	tLun0t/vUTqw/sRewK+7+O1RbTGO68uU555iM7HrmNHac258NDe1XcQI9zd0b/EGrykkZTmjNYq
+	Vu7mgtBSTsHIz9bnHpPjAIjh6sJIPVMHk/tloRQ==
+X-Gm-Gg: ASbGncuxYP161vOhsvKQnLkGSDI/AqkLXScIhPUwvPlEB2zHeVuGGuXgDo92Gy3jBBa
+	V7zxik/4GqvHK70WE2dEaYUJhIKWOq/Wo3vJSbHI=
+X-Google-Smtp-Source: AGHT+IFcDjIyutnN38PrfueeZkhwflHd2lPy0n6+1NpWzd1eHmYno36KM7bQpYPz6FkOWtp55zLwUusqOGk7tdB2RlI=
+X-Received: by 2002:a05:690c:9a8c:b0:6e9:e097:7191 with SMTP id
+ 00721157ae682-6f3e1b30fe0mr1408447b3.9.1734537352351; Wed, 18 Dec 2024
+ 07:55:52 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/3] soc: mediatek: pwrap: Switch to
- devm_clk_bulk_get_all_enabled()
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jingoo Han
- <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org
-References: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com>
- <20241217-clk_bulk_ena_fix-v5-1-aafbbb245155@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241217-clk_bulk_ena_fix-v5-1-aafbbb245155@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20241210073212.3917912-1-wenst@chromium.org>
+In-Reply-To: <20241210073212.3917912-1-wenst@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 18 Dec 2024 16:55:16 +0100
+Message-ID: <CAPDyKFrJYvMvBby5mhOAsyp2_Dx+KuOEnGaELMydKBHFcyO_VA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] mmc: mtk-sd: Limit second register range to SoCs
+ requiring it
+To: Chen-Yu Tsai <wenst@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_073505_833092_A1F6050C 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20241218_075554_209018_D3CC0AE8 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +86,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Andy-ld Lu <andy-ld.lu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/12/24 22:41, Cristian Ciocaltea ha scritto:
-> The helper devm_clk_bulk_get_all_enable() missed to return the number of
-> clocks stored in the clk_bulk_data table referenced by the clks
-> argument and, therefore, will be dropped.
-> 
-> Use the newly introduced devm_clk_bulk_get_all_enabled() variant
-> instead, which is consistent with devm_clk_bulk_get_all() in terms of
-> the returned value:
-> 
->   > 0 if one or more clocks have been stored
->   = 0 if there are no clocks
->   < 0 if an error occurred
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+On Tue, 10 Dec 2024 at 08:32, Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> Changes since v1:
+> - Added MT7988 compatible string to list that needs second register
+>   range
+> - Dropped comment about uncertainty of MT6779 from commit message
+> - Picked up Angelo's Reviewed-by
+>
+> Currently the usage of a second register range for MediaTek's MMC
+> controller is seen only on a few platforms. However the driver tries
+> to grab the register base regardless, and then ignores any errors.
+> This makes all the other platforms that don't need it produce confusing
+> error messages.
+>
+> Instead, make the driver only grab the register range for platforms that
+> actually require it, and correctly handle the error. Also fix up the
+> binding so that validation of the "reg" property is as strict as
+> possible.
+>
+> Please take a look.
+>
+>
+> Thanks
+> ChenYu
+>
+> Chen-Yu Tsai (2):
+>   dt-bindings: mmc: mtk-sd: Document compatibles that need two register
+>     ranges
+>   mmc: mtk-sd: Limit getting top_base to SoCs that require it
+>
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 10 +++++++++-
+>  drivers/mmc/host/mtk-sd.c                         | 15 +++++++++++----
+>  2 files changed, 20 insertions(+), 5 deletions(-)
+>
 
+Both patches applied for next, thanks!
 
-Stephen, sorry for missing the discussion about needing an ack on older versions -
-Cristian just pointed that out to me.
-
-Anyway, if you want to take this one with patch [3/3] I'm fine with that, so
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
-Cheers!
+Kind regards
+Uffe
 
