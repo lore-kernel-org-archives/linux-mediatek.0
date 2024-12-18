@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1742E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 14:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD194E77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 14:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i+xSJtYDe1/DKQpLbvu9d31e1vj5VjbDKxZfYNH54pI=; b=zu9z2nueLIXyaE
-	9l0xFGKPM+/zxYb3XYKOk6vKEk/+UKJguTZ+M5xCY9Fbwge3UtEY2fN+V5Mbj75sk8p7j4O3ErUBQ
-	MYLGxyJqxqiFUvqsqfj5wUo7y3effNaRGyLjVZOYZ35LMynqmmb9oRZh8CPT1ws7eWyDp+gpp5YBc
-	nFUCnntSWU/QSzSRfCDaEcLsnXR9UzWcOSMV9KPP9EXXEVMYvTdIUPunwzzczewKvc/o3ovx1FKa8
-	opOuzcLxoI3K1xSYQcGYNmCagW9jwPAP+1xriaq97NI9v24Y8hMJA+exUCP0PHMlyKICuC/ctXF9k
-	q/2FPUZchx9Z7EK1n97w==;
+	List-Owner; bh=ysVTqtWCT9AzDtvYmXzNif8x2LyA7Yjg6q5OgTQ+FDE=; b=g+QuYagKz/Fboy
+	LbObhmmWdEwlNHZz5DbHbWA9rSz6vQRy4BNjDD5URXWOmxmkOshhlqZWrWGCY8o678joIhGhDW2t1
+	yZCw/qDhWgF2bNlUo6nRnaulcnsxijeN3haQKhz3NlGIC79J6HguDHFuv/VgYzbpSN0bk9UvFtk5Q
+	Hu2HkeI0VJEGfhtPWwA3vFoOtx1b5Sd9A5G84KLGNWe2LcLnWoPD9ocQhIUM/FbT9O5QNx+xAz0po
+	O8sxXMUUrRiIZK/pU1Dn5egIEztmSXm/YyL+lkfBsW8X8uqcDoF+UfUMu0E3VJCFxp8ie4ecKUrW6
+	6ySVA9bkcLB21P7p2XAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNulj-0000000Gnwm-2P6q;
-	Wed, 18 Dec 2024 14:11:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tNuo4-0000000GoI2-3WrR;
+	Wed, 18 Dec 2024 14:13:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNukc-0000000Gnmb-10xw;
-	Wed, 18 Dec 2024 14:10:12 +0000
+	id 1tNumx-0000000Go9d-3HpT;
+	Wed, 18 Dec 2024 14:12:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734531006;
-	bh=Hq8XhkGLRdrugfZkK+fMbG5+AQ2uVsKhamccg/HdDPw=;
+	s=mail; t=1734531153;
+	bh=2pMdp5vfl6grQPYfJtfZtmDs7fBVN1MuzePWFk8sH2Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qLhSZOgv1NUWmpOq5jY9QS05o6TRhLsp0k5bG98DdwLqHjgGQmztQvvuirQ9NAeie
-	 lGImKftK04TlWgWpiqtn8pSce/yTul/hoIMOP9BG2cKP1byuX9XeVh9rxaGT4jMWYF
-	 0CEWBBTWDuOVUSNcJvkhWm6icsgvVZ5j0LiNgyDotmGKahfhrEgOqohGB6XUVE0zCO
-	 cshu8H56QHLuw0KkDIXnXphI0HyjggHPf0YsVNJ6HC1AFvg9aJNEmtgY9WnCN+bcuM
-	 ZGz50r9ugnfVIURZkkSZYt8migf4df3tHfmBMgZOZvHNoYvGFe+RYMQGfTUQezGHKJ
-	 /8vv+tgzkcD1Q==
+	b=Lc4RB1dNylhjmtAckKIHPhIklnjaJ27hejlFd4sF0YodB3ZtDuQFKrM4QwgGg8PQs
+	 ZC/1kvCr0Lj3dvWROhrqsJUMcnpTbWi3wwuDlU+rmALa4P1P1QXkiM5WFfbowoJ4XM
+	 VYrMMEb9d1Wqra6pRneAaZObwa72hmlwpfANA33eUcy15Buh3Et1EkTNlzDrp4lMNS
+	 3qLrOelKpsf8CMl1fmV8IxHBPRkBAbyzZUjFUzOHJtOy0RHK35ToLDRRuwwINy3qvt
+	 7f/sGbTuMtw7NKaf9QRP5EDplFs+XOBNSYkoiKm2qF+68s4ad9qD2DMzN/nTrvsXuk
+	 jWFQlUIrvJb5g==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 43B4517E3770;
-	Wed, 18 Dec 2024 15:10:06 +0100 (CET)
-Message-ID: <1b10a0ef-b6fa-4758-b3fc-0a44d840bce9@collabora.com>
-Date: Wed, 18 Dec 2024 15:10:05 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DC1FB17E3770;
+	Wed, 18 Dec 2024 15:12:32 +0100 (CET)
+Message-ID: <e1b8084d-cfc2-4541-8264-91be777a8783@collabora.com>
+Date: Wed, 18 Dec 2024 15:12:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/22] continue mt7988 devicetree work
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v7 0/5] Add pinctrl support for mt7988
+To: Frank Wunderlich <linux@fw-web.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <20241217091238.16032-1-linux@fw-web.de>
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>
+References: <20241217085435.9586-1-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241217091238.16032-1-linux@fw-web.de>
+In-Reply-To: <20241217085435.9586-1-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_061010_436640_A4B6A25F 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20241218_061235_972300_3A3D5C72 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,74 +73,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/12/24 10:12, Frank Wunderlich ha scritto:
+Il 17/12/24 09:54, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> This series adds some missing labels and new nodes to mt7988 DTS.
+> This series adds pinctrl driver, dt-bindings and dts node for pinctrl
+> on mediatek mt7988 SoC.
 > 
-> based on pinctrl-series
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=918572
-> 
+> changes in v7:
+> - add const for pins and mtk_pin_soc as suggested by Christophe JAILLET in v5
+> - left angelos RB because of minor change (hope this is right)
 
-The whole series is
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Good job!
+It's fine, I re-reviewed it and it's good (actually, better!) :-)
 
 Cheers,
 Angelo
 
-> changes:
-> v3:
-> - reorder
-> - small fixes
-> - add some new patches (t-phy, pcie, mmc overlays)
-> - dropped pmic and proc-supply for now because we found a mismatch compared with schematic
 > 
-> v2:
-> - reorder and squash label-commits to where they are used
-> - add some more nodes
-> - add changes to bananapi-r4 board
-> - moving some nodes from SoC dtsi to board dts
+> changes in v6:
+> - some fixes to binding
+> - changed title and fixed typo in bpi-r4 patch
+> - added RB's
 > 
-> Frank Wunderlich (22):
->    arm64: dts: mediatek: mt7988: Add reserved memory
->    arm64: dts: mediatek: mt7988: Add mmc support
->    arm64: dts: mediatek: mt7988: Add lvts node
->    arm64: dts: mediatek: mt7988: Add thermal-zone
->    arm64: dts: mediatek: mt7988: Add missing clock-div property for i2c
->    arm64: dts: mediatek: mt7988: Add mcu-sys node for cpu
->    arm64: dts: mediatek: mt7988: Add CPU OPP table for clock scaling
->    arm64: dts: mediatek: mt7988: Disable usb controllers by default
->    arm64: dts: mediatek: mt7988: Add t-phy for ssusb1
->    arm64: dts: mediatek: mt7988: Add pcie nodes
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable watchdog
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add fixed regulators for 1v8 and
->      3v3
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add dt overlays for sd + emmc
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add thermal configuration
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable serial0 debug uart
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add default UART stdout
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable I2C controllers
->    arm64: dts: mediatek: mt7988a-bpi-r4: Add PCA9545 I2C Mux
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable t-phy for ssusb1
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable ssusb1 on bpi-r4
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable pwm
->    arm64: dts: mediatek: mt7988a-bpi-r4: Enable pcie
+> changes in v5:
+> - rebased to 6.13-rc1
+> - moved dt nodes with mutliple options to BPI-R4 board
+> - changes suggested by angelo in v4
+> - changed example in binding and dt node to not using const MTK_DRIVE_8mA
 > 
->   arch/arm64/boot/dts/mediatek/Makefile         |   3 +
->   .../mt7988a-bananapi-bpi-r4-emmc.dtso         |  33 ++
->   .../mediatek/mt7988a-bananapi-bpi-r4-sd.dtso  |  31 ++
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 143 +++++++++
->   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 303 +++++++++++++++++-
->   5 files changed, 506 insertions(+), 7 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-emmc.dtso
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-sd.dtso
+> changes in v4:
+> - fixed fixed string binding error
 > 
+> changes in v3:
+> - rebase on rafals dts patches
+> - update binding to have mux subnode as fixed string and conf with optional suffix
+> 
+> changes in v2:
+>    binding:
+>    - drop gpio-cells description
+>    - move ref in mux subnode up
+>    - order uart-functions alphanumeric and fix typo
+>    dts:
+>    - fix indentation of reg-values
+> 
+> Daniel Golle (2):
+>    pinctrl: mediatek: add support for MTK_PULL_PD_TYPE
+>    pinctrl: mediatek: add MT7988 pinctrl driver
+> 
+> Frank Wunderlich (3):
+>    dt-bindings: pinctrl: add binding for MT7988 SoC
+>    arm64: dts: mediatek: mt7988: Add pinctrl support
+>    arm64: dts: mediatek: mt7988a-bpi-r4: Add pinctrl subnodes for bpi-r4
+> 
+>   .../pinctrl/mediatek,mt7988-pinctrl.yaml      |  575 ++++++
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  189 ++
+>   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     |   54 +
+>   drivers/pinctrl/mediatek/Kconfig              |    7 +
+>   drivers/pinctrl/mediatek/Makefile             |    1 +
+>   drivers/pinctrl/mediatek/pinctrl-mt7988.c     | 1556 +++++++++++++++++
+>   .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |   73 +-
+>   .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |    1 +
+>   8 files changed, 2445 insertions(+), 11 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7988.c
+> 
+
 
 
