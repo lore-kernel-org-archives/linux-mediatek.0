@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A12FE77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 16:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7040E77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 16:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lpz1RC0YdApEL81pmlFNSLtKgYNlIwFcU0QwO8gvT/s=; b=GRUkL0GetcWL93zpGSc/WmnzaZ
-	Me+/+ah4yxMDFQxnYH8N3PzVASvFobM/LekY5+kyuzQE8pWBN0hLGwS9+CvRR1HGm6er3c5t8E57e
-	hWdCtKGWC/0HKbUZB2ZcUu11hcc9YvIRakHlrZFRzQm5Pq6yGPwz6WwylImlt4ig3H+HlQIXmg3GF
-	bH83iEKLY0uDawsBrx9kqQV7mweJaaUWdIarc19YQdh8RnmnrM4Mq0U6/lQLpTCt9qsZlQPuW4i/5
-	j1Nnk5MNnaRXbBYyczllc0T7rkYBZvm0YMqsM2omtEqSSwLsOgtKKlwFD+NUeCki+jIvX7/99lOGl
-	Uh7TabQg==;
+	bh=hg8LybB2x5AFlcqXyxqGpp+etZfs9oO9/+n55oB9cPU=; b=UsRWtnaSTTYfv/kte6htsQ+sFp
+	wyhBHba5sh7UZ3MCfWqPYwtn8Dlb8ypS2iTuAHNJXK1tClke6xETe9m5AdjtUTYENH4bJOuPehOyR
+	Ew6lD8mLZzNV8k3DJ3lb2NMKcxQsqvUD8XcvjdHvp8AEDTCa0elwZ4O/mP4cHsOHWUito7nqkV7+E
+	3ioYMxbbUJt5t7mQoYduxWfIAbbex/Xp4v73CCq9WUpZnxVdOd5xBsZn2oVAFukHOoL9N5Sb1ItnJ
+	dpmMVfoOUHnL4cBRGrdHEXktNFbyz8UtRsXr8yaHVDr4Bm2He5wYMyfx8u82oluPmdk1FEPk9Qa74
+	xJM8wkSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNxAv-0000000HDpT-3X21;
-	Wed, 18 Dec 2024 16:45:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tNxFf-0000000HECB-2bdZ;
+	Wed, 18 Dec 2024 16:50:23 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNx9g-0000000HDc9-2M29;
-	Wed, 18 Dec 2024 16:44:13 +0000
+	id 1tNxFd-0000000HEBp-0LEH;
+	Wed, 18 Dec 2024 16:50:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C095D5C63A7;
-	Wed, 18 Dec 2024 16:43:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8813EC4CECD;
-	Wed, 18 Dec 2024 16:44:08 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E63C2A426B5;
+	Wed, 18 Dec 2024 16:48:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD982C4CECD;
+	Wed, 18 Dec 2024 16:50:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734540251;
-	bh=pB0kgdn2bOfLkrxZ9uo+wGEPrm/eb16hrnNYiA6bbiY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QRQ1EkPT3omHuxktYvRSWPyTjMxF1HLVF0DMDwMO4sfWc25d1v0amUkufVVNME9rp
-	 ohWR6o97Bsye7LrwHlAHbiLbvlXrmeWX8fHvgX91MpyD3BI2OgeEJc8bPAHWaOUgXG
-	 m9W4yeW6Nm89519yX8Q16C6V5T3LxRe6WNyzbX7gqHt3ldY5II4z25bf2YO07dhL8a
-	 J/2OHP1B/eWUnzN7xfrQ2VeyC129sKxSoPUll6CAYOtC+U6jbx3CG3ZZjlJe21AWR5
-	 2v7kI/E0I8O2Kjd6feIWaHomxKZUEY6BjARFV5lbUQdSC8sIC2u5LGCHA0ylZyWcCO
-	 uW37sCv9s5pmA==
-Date: Wed, 18 Dec 2024 16:44:06 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	geert+renesas@glider.be, u.kleine-koenig@baylibre.com,
-	amergnat@baylibre.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	kernel@collabora.com, macpaul.lin@mediatek.com
-Subject: Re: [PATCH v1 1/2] dt-bindings: clock: mediatek,mt8188: Add
- VDO1_DPI1_HDMI clock
-Message-ID: <20241218-twelve-requisite-c63827edfbad@spud>
-References: <20241218105415.39206-1-angelogioacchino.delregno@collabora.com>
- <20241218105415.39206-2-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1734540619;
+	bh=7+necGPxSGo7sMtURcZ9mr0EJGBKL6/Ke2PfFK9/UYo=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=bOdJ7aSIvMGvhWqdSvt9YcvP/9FVRUvb/N5+4/0bk6m3uUebuHuu1eAP1VehihuiW
+	 nBoGMeZZaTorFNXpS3qRHEVsUQ2DMCRLAZzbjy/KgJrtWURMSX7+GGn5JsyiZo0CCF
+	 HYqF7pIKWvI0qy//RNV7foJP5E8hdgcHsb+z4/x1ErnDHHtcCYK5Mk3zKbh0P/TzH/
+	 z35oD28CrpW3EZGZtexUev4/VeXcu61OsJrZOQ8iGNrDUXVdEnAWuKUlYpGz65HEv3
+	 DFzdhM+QC1pGw9AdbM9ngR5FXM/Mzuow6kuJK6gesSqEa861dgjMXwnydNKZaI6Ctt
+	 P52X7QKOZsYRw==
+From: Kalle Valo <kvalo@kernel.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: WangYuli <wangyuli@uniontech.com>,  <nbd@nbd.name>,
+  <lorenzo@kernel.org>,  <ryder.lee@mediatek.com>,
+  <shayne.chen@mediatek.com>,  <sean.wang@mediatek.com>,
+  <matthias.bgg@gmail.com>,  <angelogioacchino.delregno@collabora.com>,
+  <davem@davemloft.net>,  <andrew+netdev@lunn.ch>,  <edumazet@google.com>,
+  <kuba@kernel.org>,  <pabeni@redhat.com>,  <alexander.deucher@amd.com>,
+  <gregkh@linuxfoundation.org>,  <rodrigo.vivi@intel.com>,
+  <linux-wireless@vger.kernel.org>,  <linux-kernel@vger.kernel.org>,
+  <linux-arm-kernel@lists.infradead.org>,
+  <linux-mediatek@lists.infradead.org>,  <raoxu@uniontech.com>,
+  <guanwentao@uniontech.com>,  <zhanjun@uniontech.com>,
+  <cug_yangyuancong@hotmail.com>,  <lorenzo.bianconi@redhat.com>,
+  <kvalo@codeaurora.org>,  <sidhayn@gmail.com>,
+  <lorenzo.bianconi83@gmail.com>,  <sgruszka@redhat.com>,
+  <keescook@chromium.org>,  <markus.theil@tu-ilmenau.de>,
+  <gustavoars@kernel.org>,  <stf_xl@wp.pl>,  <romain.perier@gmail.com>,
+  <apais@linux.microsoft.com>,  <mrkiko.rs@gmail.com>,
+  <oliver@neukum.org>,  <woojung.huh@microchip.com>,
+  <helmut.schaa@googlemail.com>,  <mailhol.vincent@wanadoo.fr>,
+  <dokyungs@yonsei.ac.kr>,  <deren.wu@mediatek.com>,
+  <daniel@makrotopia.org>,  <sujuan.chen@mediatek.com>,
+  <mikhail.v.gavrilov@gmail.com>,  <stern@rowland.harvard.edu>,
+  <linux-usb@vger.kernel.org>,  <leitao@debian.org>,  <dsahern@kernel.org>,
+  <weiwan@google.com>,  <netdev@vger.kernel.org>,  <horms@kernel.org>,
+  <andrew@lunn.ch>,  <leit@fb.com>,  <wang.zhao@mediatek.com>,
+  <chui-hao.chiu@mediatek.com>,  <lynxis@fe80.eu>,
+  <mingyen.hsieh@mediatek.com>,  <yn.chen@mediatek.com>,
+  <quan.zhou@mediatek.com>,  <dzm91@hust.edu.cn>,  <gch981213@gmail.com>,
+  <git@qrsnap.io>,  <jiefeng_li@hust.edu.cn>,  <nelson.yu@mediatek.com>,
+  <rong.yan@mediatek.com>,  <Bo.Jiao@mediatek.com>,
+  <StanleyYP.Wang@mediatek.com>
+Subject: Re: [RESEND. PATCH] mt76: mt76u_vendor_request: Do not print error
+ messages when -EPROTO
+References: <1E6ABDEA91ADAB1A+20241218090833.140045-1-wangyuli@uniontech.com>
+	<a2bbdfb4-19ed-461e-a14b-e91a5636cc77@intel.com>
+Date: Wed, 18 Dec 2024 18:50:05 +0200
+In-Reply-To: <a2bbdfb4-19ed-461e-a14b-e91a5636cc77@intel.com> (Alexander
+	Lobakin's message of "Wed, 18 Dec 2024 17:10:53 +0100")
+Message-ID: <875xnhrl4y.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Qo/gdjEA9Ojw6e4h"
-Content-Disposition: inline
-In-Reply-To: <20241218105415.39206-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_084412_639885_F1D1E7B1 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20241218_085021_243092_D90FD567 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +103,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Alexander Lobakin <aleksander.lobakin@intel.com> writes:
 
---Qo/gdjEA9Ojw6e4h
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> From: Wangyuli <wangyuli@uniontech.com>
+> Date: Wed, 18 Dec 2024 17:08:33 +0800
+>
+>> [RESEND. PATCH] mt76: mt76u_vendor_request: Do not print error messages when -EPROTO
+>
+> Is it a fix or an improvement?
+> You need to specify the target tree, either 'PATCH net' (fixes) or
+> 'PATCH net-next' (improvements).
 
-On Wed, Dec 18, 2024 at 11:54:14AM +0100, AngeloGioacchino Del Regno wrote:
-> Add binding for the HDMI TX clock found in the VDO1 controller
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  include/dt-bindings/clock/mediatek,mt8188-clk.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/include/dt-bindings/clock/mediatek,mt8188-clk.h b/include/dt=
--bindings/clock/mediatek,mt8188-clk.h
-> index bd5cd100b796..8af44560a74c 100644
-> --- a/include/dt-bindings/clock/mediatek,mt8188-clk.h
-> +++ b/include/dt-bindings/clock/mediatek,mt8188-clk.h
-> @@ -721,6 +721,7 @@
->  #define CLK_VDO1_DPINTF				58
->  #define CLK_VDO1_DISP_MONITOR_DPINTF		59
->  #define CLK_VDO1_26M_SLOW			60
-> +#define CLK_VDO1_DPI1_HDMI			61
+Actually this is a wireless driver so the options are either wireless
+tree or Felix' tree (for -next). And please add 'wifi:' to subject.
 
-> -#define CLK_VDO1_NR_CLK				61
-> +#define CLK_VDO1_NR_CLK				62
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-If you can change this, you can delete it ;)
-Please do.
-
---Qo/gdjEA9Ojw6e4h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ2L71gAKCRB4tDGHoIJi
-0j/KAQDmCSeccCtIXH3YnVuThBDWjOequnU2D37KNlgCO7NVwAEA+NUFAAulVwrn
-akvszzqa/q8wOU9JjKM7NDq0fHbFhAY=
-=5V+2
------END PGP SIGNATURE-----
-
---Qo/gdjEA9Ojw6e4h--
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
