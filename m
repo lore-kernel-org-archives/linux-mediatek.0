@@ -4,112 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D54E77187
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 11:48:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2523DE77187
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2024 12:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=JAARIiWySYJHZqIooM2UFhXOt0
-	XdDmxB+spOXUaq83AWGbyynnytfnh5f+hem3CT57RQr/ITf3PLDe1fXsRKVP9cnyfi8jx7HbXRK+b
-	P7iDiHqYh0LGNPUtel4VYO/dQ6m/isLZzkL+ln0LuyIA9U9CG14ul8rW+C27swdpZtulBranLDxQJ
-	Mi2OzeXF/oeymjTbV9EOZSre2wCXo6CXl+1QnCZebf8RAzsud3C521TXR8sBO7fJY33LwemtzLWOO
-	A/sSHoOkI2Ym4RmY23IajhtUGsuIdZarfpdTeZJHgho3Cf8tuyWfAVh/2zx0D9GHLAfJLBpoy0N5S
-	4dqGI1EA==;
+	bh=8RZv5OeXRENVX3UzOWhQ4paK8gFX9BFqRtwkFFfiNDE=; b=WUD4y2S1K68vZrOTobu6XaAzTX
+	KP6tcznT7SMkZdT0fc6AqoZ18S1kgv3F/tb+MdB3TKTxFHywD6u/6mtr8ShiC9RTEXFBJcWhYSZxJ
+	GBskpMpSYDujLxiHOZJwxugx9FOFl3v8mM+WIOnse6ALvafISiWdQDLiOw0LbWSiX3XmYqdn7OaPQ
+	AQ+DSFpOeFPWXy91XBwuZkzYtl+jiRvFq9/PRzPZaRsTFrmnoJwdFGdSVZBcaQHk0aPlYwsCWJxmF
+	G2z6RVOiQC60MiMQ1Y26iMi57oQL1YXJoC10rKAc7KuFWczoZUsoy27pK3RUNq7wmFNlRDbNVcxj1
+	+q8dH4gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNsXH-0000000GVDM-19Mk;
-	Wed, 18 Dec 2024 11:48:15 +0000
-Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
+	id 1tNssT-0000000GYJ0-0dAu;
+	Wed, 18 Dec 2024 12:10:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNsU3-0000000GUV4-3Srk;
-	Wed, 18 Dec 2024 11:44:57 +0000
-Received: from phl-compute-10.internal (phl-compute-10.phl.internal [10.202.2.50])
-	by mailfhigh.stl.internal (Postfix) with ESMTP id E1B8525401B9;
-	Wed, 18 Dec 2024 06:44:53 -0500 (EST)
-Received: from phl-imap-11 ([10.202.2.101])
-  by phl-compute-10.internal (MEProxy); Wed, 18 Dec 2024 06:44:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1734522293;
-	 x=1734608693; bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=
-	Gtt4oKTCAz7iXjLBdaJ4fk339JtG6NYSxELsvVQO3k5YvfRM4056SFYMV132AXo+
-	gJ9VPV81TwbOU/2+2QIs0CS0impr1wL1ej5OycK14fVy2c8VlKB2xegX/EAlF2QD
-	a+3o7S+WGrOvk1ndnDBX2ogjOZuSpGJ3MIIoEdFAfUQ4xcAzl2O5Oqm2M2AbBZYy
-	0ePFobymW08vdnAxkJjbVOkaSM1berjAU5/EpWz0NU19fDU113dgHF3FHAxhbw1t
-	pZMJFJma0l2lroPBTrg1/GssZ3QYPjch1JZKOWP9DjKWKeMYTCFp2XVaxCNSjw4I
-	ftgmhuxxDdB+nLQKgOKYHQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1734522293; x=
-	1734608693; bh=ci7wnLIzNqmNz75nivDXvWBXrlhn2mUTEZWoKXtryRc=; b=v
-	RJXlDfeQ8IUknWvagwmoM7Y222DsLiSmJY9Tc88UfLEtRpc1Oiw4fziWVWc7mtRP
-	d1TGaeCLMp5KlgDe0Ibu5AkDstLXdEm56HtjUfFuDKeu6JASW0Wo0lDXnOjLTVCE
-	XdlAZ1FKoPGrNETptTsqUXCp/3N5cA3DY9CF8On75Z0AiTgkfjDQ4xmEQ664cLc4
-	vDXI6uK6jfElAYfT79gh1WXFRyPhuT4jwWDnGvHlaqqXGD9n+MXATgNWBlkQ8Gnt
-	Zc0BCpP60DejNWN0GvPXOXsMfkOl6sjwqEVKZ8he/6kfsyk4ripFUcIPNoJrlIxI
-	fS74XsYUgkWfxAsOy2a+g==
-X-ME-Sender: <xms:s7ViZw_WczuLTGcK5AsmEHe_qCWtQrv9QNJXd1djQ9v_soZwcPGt_Q>
-    <xme:s7ViZ4u6bQKtQd9pjfrw1s2oOLJKMXhQmZWPgcKd86-v90xvakU-7EoKLWfO4GEuJ
-    2mMujT7WmevCchQFHU>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefuddrleekgdeftdcutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdpuffr
-    tefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnth
-    hsucdlqddutddtmdenucfjughrpefoggffhffvvefkjghfufgtgfesthejredtredttden
-    ucfhrhhomhepfdetrhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdrug
-    gvqeenucggtffrrghtthgvrhhnpefhtdfhvddtfeehudekteeggffghfejgeegteefgffg
-    vedugeduveelvdekhfdvieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
-    grihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgtphhtthhopeduledp
-    mhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepfigvnhhsthestghhrhhomhhiuhhmrd
-    horhhgpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhn
-    ohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllh
-    drtghhpdhrtghpthhtohepghgvvghrthdorhgvnhgvshgrshesghhlihguvghrrdgsvgdp
-    rhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrth
-    hthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtohepjhgrnhhirdhnihhk
-    uhhlrgesihhnthgvlhdrtghomhdprhgtphhtthhopegrrhhnugeskhgvrhhnvghlrdhorh
-    hgpdhrtghpthhtoheptghhuhhnkhhurghnghdrhhhusehkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:s7ViZ2Cn1RcrBCDROIhRmqeOw2PRvn1kDatQL5l6jneBYFz6OVLnvw>
-    <xmx:s7ViZwfwu-sth1xTDkADc8f6UwbsV4pG8Y2C6bAv8U8EzDSQ5o3l9g>
-    <xmx:s7ViZ1NBY82dAMyphK71CoxVaOJyTnYiVqFUP-I9NPemy_OCXZDgog>
-    <xmx:s7ViZ6n-XVPhlRtDT4PWaOECGCYBRAzgoK0rNqshK3gCOIssX7jvSg>
-    <xmx:tbViZwHLykl3Y92jepGrVWSYFaN8pXEfza8ZswrzRsdrTl9L52Dn2M7Z>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id A6BB02220072; Wed, 18 Dec 2024 06:44:51 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1tNrgL-0000000GL4i-3mDJ;
+	Wed, 18 Dec 2024 10:53:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734519212;
+	bh=N3yE4+/zUzwrZLGitsLbjb1957m/tWo8jToq6NvN4nw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dsqlH2sqPyC5sMeSdb2HtWuMk8PfpABN0cFtmBSr5jxlJkyu+KbdCvyuLt30cUfBD
+	 cDpqob/Bq7y000yGqhTzmF1j6B10Wgwo/tZbMt4nVlgeCDGXmVta9t5JqqHlZeKsu6
+	 9luviBTwwQKo5ArPLUgv/o0KEB8tDavGN4u7jtnwgOhN3Fq6lBn8mjQN6RTUmQ4SEV
+	 vXH7RyBRYUhIGsKs1yNiMO6ENfEdG06yM2DqVQMOAMZhT3jDZm0BxXSRcGIvYa1oUM
+	 eEfWQbdECOxhs5JPUB7qvAr6NQjLAOIoCuYBo/GYqtMjpMaSq/E4BltP05fVFCvk5c
+	 1rRA1If0ACoPA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3752617E3613;
+	Wed, 18 Dec 2024 11:53:31 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	moudy.ho@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	sebastian.fricke@collabora.com,
+	macpaul.lin@mediatek.com
+Subject: [PATCH v1 1/3] dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
+Date: Wed, 18 Dec 2024 11:53:18 +0100
+Message-ID: <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
+References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Date: Wed, 18 Dec 2024 12:44:30 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Arnd Bergmann" <arnd@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>,
- "Philipp Zabel" <p.zabel@pengutronix.de>, "Dave Airlie" <airlied@gmail.com>,
- "Simona Vetter" <simona@ffwll.ch>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, "CK Hu" <ck.hu@mediatek.com>
-Cc: "Maxime Ripard" <mripard@kernel.org>,
- "Jani Nikula" <jani.nikula@intel.com>,
- "Geert Uytterhoeven" <geert+renesas@glider.be>,
- "Thomas Zimmermann" <tzimmermann@suse.de>,
- "Chen-Yu Tsai" <wenst@chromium.org>,
- "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>,
- =?UTF-8?Q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Message-Id: <1d8c6f65-5baa-459e-ba34-4e45ca20baf6@app.fastmail.com>
-In-Reply-To: <46f871e3-bb1e-4bee-95f3-2121c6a6eef7@collabora.com>
-References: <20241218085837.2670434-1-arnd@kernel.org>
- <46f871e3-bb1e-4bee-95f3-2121c6a6eef7@collabora.com>
-Subject: Re: [PATCH] drm/mediatek: stop selecting foreign drivers
-Content-Type: text/plain
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_034456_502390_2BC03ADF 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20241218_025334_079141_E46BE43E 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,23 +93,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 18, 2024, at 11:50, AngeloGioacchino Del Regno wrote:
-> Il 18/12/24 09:58, Arnd Bergmann ha scritto:
->> From: Arnd Bergmann <arnd@arndb.de>
->
-> The problem is - no PHY no party, it's not going to work without... but 
-> I get the
-> reasons behind this change.
->
-> Are we sure that we can't just add a `depends on PHY_MTK_xxxx` (or extend
-> depends on DRM_MEDIATEK && PHY_MTK_xxx)?
+Add compatible strings for the AAL, COLOR, MERGE and PADDING
+hardware components found in MediaTek's MT8188 SoC.
 
-Doing this wouldn't cause any problems, but it also doesn't
-really help much, you just have to know which devices are
-present and enable all their drivers anyway.
+This hardware is compatible with MT8195.
 
-We used to just select all drivers from arch/arm/mach-*/Kconfig
-on some older platforms, but this was too much of a hassle.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/display/mediatek/mediatek,aal.yaml        |  4 ++++
+ .../bindings/display/mediatek/mediatek,color.yaml      |  4 ++++
+ .../bindings/display/mediatek/mediatek,merge.yaml      |  4 ++++
+ .../bindings/display/mediatek/mediatek,padding.yaml    | 10 +++++++---
+ 4 files changed, 19 insertions(+), 3 deletions(-)
 
-      Arnd
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index cf24434854ff..1479035da409 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -25,6 +25,10 @@ properties:
+           - mediatek,mt8173-disp-aal
+           - mediatek,mt8183-disp-aal
+           - mediatek,mt8195-mdp3-aal
++      - items:
++          - enum:
++              - mediatek,mt8188-mdp3-aal
++          - const: mediatek,mt8195-mdp3-aal
+       - items:
+           - enum:
+               - mediatek,mt2712-disp-aal
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+index 7df786bbad20..799c0b8fc1f9 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+@@ -27,6 +27,10 @@ properties:
+           - mediatek,mt8167-disp-color
+           - mediatek,mt8173-disp-color
+           - mediatek,mt8195-mdp3-color
++      - items:
++          - enum:
++              - mediatek,mt8188-mdp3-color
++          - const: mediatek,mt8195-mdp3-color
+       - items:
+           - enum:
+               - mediatek,mt7623-disp-color
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+index dae839279950..415a25bc18fa 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+@@ -25,6 +25,10 @@ properties:
+           - mediatek,mt8173-disp-merge
+           - mediatek,mt8195-disp-merge
+           - mediatek,mt8195-mdp3-merge
++      - items:
++          - enum:
++              - mediatek,mt8188-mdp3-merge
++          - const: mediatek,mt8195-mdp3-merge
+       - items:
+           - const: mediatek,mt6795-disp-merge
+           - const: mediatek,mt8173-disp-merge
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+index be07bbdc54e3..86787866ced0 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+@@ -20,9 +20,13 @@ description:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8188-disp-padding
+-      - mediatek,mt8195-mdp3-padding
++    oneOf:
++      - enum:
++          - mediatek,mt8188-disp-padding
++          - mediatek,mt8195-mdp3-padding
++      - items:
++          - const: mediatek,mt8188-mdp3-padding
++          - const: mediatek,mt8195-mdp3-padding
+ 
+   reg:
+     maxItems: 1
+-- 
+2.46.1
+
 
