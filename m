@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9E6E77184
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 11:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15CC1E77184
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 11:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Zw2d1P4RwoK4b8sGzJTYrAeKHEdi4dA0KvE5MWzkqE=; b=yDdkR+WtOMvpZzy470OCbIU5o+
-	/jTcbzao4HWPx55Qnr02PLaS2gLC8OCGxNcg5+PaVvP8bmc93X78SsOSkUfrAyPNiwgr1Twf/fdQX
-	eWpRIiIhTWdKhUIQbQ0h+8nKnmYpNpRdNngkA6zcL3F8RykpIgOuQoCpxKKzeFAIYN0FvRZ2R0v8O
-	RbfMUcYzkJOUbdfX2nulPlGqA7eq7xu6EKQNL36NdkDkJXQv7sxkm8dt+RIqcobv6nGWfi3NOjeDd
-	vt3zi7MVsKAZRargHpH8TF3bixEhsT+jMuZutw/A+MxcsUliu9mZNlJGrT7533D5y7rjKzzE0xXg0
-	UJX95gLg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0C6bL57adFb/Njn4uHuzELUQOZ/2wxPeBeKrPq7LNcE=; b=1SqhJovBHt8qwC
+	zx3iklc4AzoszCapxKVxKPVEwbmUjG4UPlev9A81ojOasBp1nvRckqHcvp/HkRHtrjGF5BBjq8lSk
+	huJLJ2+wQw+T61zdq+OnF9fO40HWXBK9o/rcWQeHnsHy4fxf092iPGlfkSJgCg4H7yTQ1WHB95XEF
+	7UkSmpCqa7wY/mjOlahLL5UFRBKo64rAkb5JUEToHlPULYv9z6k0JdWTNk7DtHP2Aiw7v0SLCV5nl
+	ftlMoMyDCUIQISLvGVVKFBm15nNgrBQtrW6ECm5b7jc4MlpiR4ad30cuEdn4pwJqEHHRPvhptjtug
+	5LT6dfk77ouHwjPPxxAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOF33-00000001i2n-1WNH;
-	Thu, 19 Dec 2024 11:50:33 +0000
+	id 1tOF4y-00000001iNB-0uwW;
+	Thu, 19 Dec 2024 11:52:32 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOF1x-00000001hxI-07Kt;
-	Thu, 19 Dec 2024 11:49:26 +0000
+	id 1tOF3q-00000001iCE-26Tq;
+	Thu, 19 Dec 2024 11:51:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734608963;
-	bh=zrTiXUwCLjiTAbMoDeiCmLIyME5GPRSo8NxwUPaBOLU=;
+	s=mail; t=1734609081;
+	bh=alevm6nONFx1W8mEJCqPhCyvf7gfMJozxAUbfdxdfbU=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=bA1sxbFDC4cWYvcp6F27Qs6Zgx6bxSsQbnLpUKw8apPWElBlgO6BEAPXaz3oQB67E
-	 +qEIEN47j+kFhGmOe4TYf9bc7PN5Lbn7R1EVQHn+aIIJtSoxFjooPomspoPKwD7PX1
-	 pcQyvGgxDxhN1DmXm4aiwmyLRh6j+uJjxv8ZQuGRjl+PbhjEM1e+4wowPJDlEONQCj
-	 UpkuavukSqE9ehzQRNLfaggBy3FNjOC6rj2RfmpYF343n2GFj3H8wXjnC/48daugYH
-	 o0jmYySwlXekNvLRS5ODwsS919HeXiKLgbnst+xHTpeM80MuJaslMAFsglV+WYzWP2
-	 M9u321Dnju7Lg==
+	b=eT0koG4GHdQpnxWTe47StLj47weqr9q2EubmqLp9hGXopQ3Zfm9Dhqq2rDyIVO/7H
+	 HG0vDb0vhJWpkE7OQqjzFVN3WY2zj7QDbJ7fG4xEIneuRjCPAqe2XnkYvs2ZGOz8JA
+	 6wrd/0Mx57BenQXsV8yXMIBB4nS9nXMrl40GxBQCFMU0kPiYPyVtKPAR4dPLsyKM+J
+	 5bKo4OwcuVcyVRNxJ17PpUpj5fj6DP0hZeE71+wxAbo8ed6qRM+Iwuqizs52RqU+U9
+	 CmNZ0mJephvlhNYJjxacn18GZ8MFvCAxopyy4YZQFbXTh5fg/7umbvgQnFaAMkSzyL
+	 IFa2aGO2u7OlA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D7CDC17E3630;
-	Thu, 19 Dec 2024 12:49:22 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 977D817E1524;
+	Thu, 19 Dec 2024 12:51:20 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20241213-touchscreen-v3-0-7c1f670913f9@chromium.org>
-References: <20241213-touchscreen-v3-0-7c1f670913f9@chromium.org>
-Subject: Re: [PATCH v3 0/2] Adding second source touchscreen used by some
- mt8183 devices
-Message-Id: <173460896280.52937.15376299467879995072.b4-ty@collabora.com>
-Date: Thu, 19 Dec 2024 12:49:22 +0100
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>
+In-Reply-To: <20241206132401.70259-1-linux@fw-web.de>
+References: <20241206132401.70259-1-linux@fw-web.de>
+Subject: Re: [PATCH v4] arm64: dts: mt7986: add overlay for SATA power
+ socket on BPI-R3
+Message-Id: <173460908054.53645.11475281075607913939.b4-ty@collabora.com>
+Date: Thu, 19 Dec 2024 12:51:20 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_034925_213237_CE55EBEB 
-X-CRM114-Status: UNSURE (   5.70  )
+X-CRM114-CacheID: sfid-20241219_035122_689065_443807B5 
+X-CRM114-Status: UNSURE (   7.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,19 +72,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Dec 2024 05:27:46 +0000, Hsin-Te Yuan wrote:
+On Fri, 06 Dec 2024 14:23:59 +0100, Frank Wunderlich wrote:
+> Bananapi R3 has a Power socket entended for using external SATA drives.
+> This Socket is off by default but can be switched with gpio 8.
+> 
+> Add an overlay to activate it.
 > 
 > 
 
 Applied to v6.13-next/dts64, thanks!
 
-[1/2] arm64: dts: mediatek: mt8183: kenzo: Support second source touchscreen
-      commit: 5ec5dc73c5ac0c6e06803dc3b5aea4493e856568
-[2/2] arm64: dts: mediatek: mt8183: willow: Support second source touchscreen
-      commit: 9594935260d76bffe200bea6cfab6ba0752e70d9
+[1/1] arm64: dts: mt7986: add overlay for SATA power socket on BPI-R3
+      commit: 312189ebb802a0242639a9c628cfdc6e532d8e11
 
 Cheers,
 Angelo
