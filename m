@@ -4,69 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4DB2E77184
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 12:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 038B0E77184
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 12:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OFifa8ccl5RjkZmJV5Bnljn6AmhjaZzsqoQL6C+WMaI=; b=jPlH6nIV8NuBPjJidrZuGNdJTW
-	xEeEFZ+/wwVZ86im8xaxAmB5e7naITv/x1ZKFb1ca7REG6CTeliUKD2i+o7qi34TV4Pd2la8NH7qm
-	wcggOoSa0diLd7vigpValolNHfDssNOwoSr2+JP2+AgdTegeIguSvMlM5igbBZU4Hi9vAd/dcqIpP
-	81HfCrd+2n83SDeKhCuq/sf+Za6W5ZwxpaYibJwpiH8dxF9EJhjzjxeBflGUr/iRrnAo9KzCvNrI4
-	7jnV+shhJmq48QpLlPXoE+Bnc8r+60xpbfCKy5+2WfU20mkCa6g1V6YGHT1E7u9R/3ZSoRVRPmNsO
-	0l3xW3NA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eqL6Sh83tyK8i9TfdyCWzUDsDZTkWTzarFVvPQU+Jr4=; b=Ocjnu/LQkCY1aJ9jgucCGVEuld
+	ruRYf4wlFAKhcZtsovIEYdcf7s1Nn5NeGXUTQfpQJDlkRV7s4E9YaRkw5po+HR/GS5pI6LpI4AGTN
+	R5fBBSZPXHesFB6qEq8exhKzlhWWWUKJcu4zBjD8JXLhLcqMgdveTquP7zkTFiC8NRG0qFlIgvpIY
+	4QXj7LBlVpNLCkTe993XUB6f3oWdARCTe17Ph2vBz559BHdoIYShB5SDxNPk6DYogFiwpySCozt1i
+	HUopl7sLBdVH94OE3I/23HbCdhGeIvvWjhYhdfFvjy9xlc1d9eaklZtqdyqgUOam+IeH27rClDxlD
+	ndSIr6gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOFXG-00000001lli-3pvY;
-	Thu, 19 Dec 2024 12:21:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tOFnq-00000001paC-0JjS;
+	Thu, 19 Dec 2024 12:38:54 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOFW9-00000001lVb-0f2f;
-	Thu, 19 Dec 2024 12:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734610835;
-	bh=6I5nC4pkzPQPTM76bNW5JcA9mDmtxzl0/S6e8Z9l9so=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=exPgg5mqxnXefGuruwVmotBP2Pc1lYfflmOuK/oIfx+S2I6YDC9ACfpzXDit5wV7h
-	 TLpWmq+IgbM9d8+BeygQL6eSnol/qiAHFB7VoeuDvQIlpwHwkWn6Z0RALfP7IwYLxV
-	 9KZk1bAdq9Z7X2uQjKhrv7+gNpEw9a61x9KfGuH6jw6GCxUzClcke/5SJI8vUd3hsw
-	 nAo2lH/V10k9wSf3aembiTCOdBcp4Vo4Ov1fhZ9G+sXJM89XtanujtiNfJj3A6Z9yV
-	 aDdVvRcWq+W5bo3+pXDflvFmrS698L+kJNsABF2mx97tvi1rtC2LQqK58U4pgQ/5Pp
-	 8simtcZrDKBsQ==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7FA3317E3684;
-	Thu, 19 Dec 2024 13:20:34 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20241218-mt8195-pcie1-reset-suspend-fix-v1-1-1c021dda42a6@collabora.com>
-References: <20241218-mt8195-pcie1-reset-suspend-fix-v1-1-1c021dda42a6@collabora.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Remove suspend-breaking
- reset from pcie1
-Message-Id: <173461083442.58336.13259484924514720817.b4-ty@collabora.com>
-Date: Thu, 19 Dec 2024 13:20:34 +0100
+	id 1tOFjo-00000001oZC-3xFo;
+	Thu, 19 Dec 2024 12:34:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 612855C6049;
+	Thu, 19 Dec 2024 12:34:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A354C4CECE;
+	Thu, 19 Dec 2024 12:34:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734611684;
+	bh=oET6+uDNf4kR68e3trU5FsFxrPSJ+p2mnS3KEULc9H0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GhGC2Q8ai0xJrb+hFv2iCyRXSfZiv9Hg1j4U0NtOx1LGDEjq3ORtPVJbxzb7ZdT6C
+	 neg4j+GLc0PptW5dpz00W5dD8/I8EKcow7VbTgdR56wKUr+oyISPe+XkndEWGY4b7e
+	 cSPguYKONb8DwdrQMDwFPCdlCC3+mKOklN1t5G0sHVKW7PmyL8f92hKcUF9pBsWzkc
+	 +hA9SFbHTm2wLu9Rnm9CIFjRlePwI1JES8x3P1uwPuxCqzQCuF0rebV7olhOV3XpAe
+	 JcAB4jazwfD+Xja9vvgD/Asy91jqjjQcRa/c9RMYWFO59LsikGVP4teJgpAzBaaAiP
+	 +tifFGVzF23Zg==
+Date: Thu, 19 Dec 2024 06:34:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v7 3/5] dt-bindings: pinctrl: add binding for MT7988 SoC
+Message-ID: <20241219123441.GA4016373-robh@kernel.org>
+References: <20241217085435.9586-1-linux@fw-web.de>
+ <20241217085435.9586-4-linux@fw-web.de>
+ <4ecfcdd3-3c81-4625-90cd-1d45f6d71a2f@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4ecfcdd3-3c81-4625-90cd-1d45f6d71a2f@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_042037_355764_7FEBA6E8 
-X-CRM114-Status: UNSURE (   6.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241219_043445_019420_512DCF54 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,27 +67,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Dec 2024 19:01:08 -0300, Nícolas F. R. A. Prado wrote:
-> The MAC reset for PCIe port 1 on MT8195 when asserted during suspend
-> causes the system to hang during resume with the following error (with
-> no_console_suspend enabled):
+On Thu, Dec 19, 2024 at 12:56:23PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 17/12/24 09:54, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> > 
+> > This adds bindings for MT7988 pinctrl driver.
+> > 
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > 
->   mtk-pcie-gen3 112f8000.pcie: PCIe link down, current LTSSM state: detect.quiet (0x0)
->   mtk-pcie-gen3 112f8000.pcie: PM: dpm_run_callback(): genpd_resume_noirq+0x0/0x24 returns -110
->   mtk-pcie-gen3 112f8000.pcie: PM: failed to resume noirq: error -110
-> 
-> [...]
+> DT binding maintainers, can you please review this patch and eventually release
+> an Ack so that I can take it through the MediaTek tree along with the devicetree
+> changes?
 
-Applied to v6.13-next/dts64, thanks!
+It's been 2 days... If you want to know the status and where you are in 
+the queue, you can check patchwork[1]. But guess what, you're #1.
 
-[1/1] arm64: dts: mediatek: mt8195: Remove suspend-breaking reset from pcie1
-      commit: 3d7fdd8e38aafd4858935df2392762c1ab8fb40f
+Rob
 
-Cheers,
-Angelo
-
-
+[1] https://patchwork.ozlabs.org/project/devicetree-bindings/list/
 
