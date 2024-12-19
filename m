@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 584EAE7718A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B93E77184
 	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 18:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D6l2tIy9AreNG9UEVSlyrqm8QJaBLoxbrNWgh+rkDbg=; b=S2UHESOrnH49ED3bKtZHDhmWVg
-	IV+9Fo4DAStyVkymCV/7xNefvKQ7o1FAKleXkHVC192vskxUaBYi+fLFdudxis9fKBlF6j5IbpEAC
-	JDsxkfLHjdU1LZ5mv9CnpH3O62RpJkyB1HMle/XqyW+qMgpAsEvr+u/9xvyewIevJ0+VTjyj3BBJ+
-	WsHDxix6BFj7yFRyfj2clVkrG3hjUP10DJaysrwcTn5v/4w4/iSkSB99MMetHkr6gNOQLWIM3o3kB
-	PZTTYIgCj15f52/dIfBElsg7q+9qZR4dHQLSS1m+B8f22xqhrlIlaH9Z8cGQ5rBrtJx0/1/+F7gsj
-	b+Z5p6fw==;
+	bh=LVD3uPrXBomPcJNoWgqLzEvvfwpoHMKo1ChEC4VeiqI=; b=y9I34I2P+EFoVZBRPSZtY8TAlu
+	6Y4qfXPjitTAkn77JHULpfXeXNRVS588ia9cDo+TrOi77HsPcSrYfAi7//6x7bBlV3/EL7IOcn1H4
+	LJggDRwljsFDeHofUmjMqpxPWJOmY+Vm4yM/5aCgWpkd0abXMyw498WeXr7as9SxRKSgyiqWy4YD5
+	inR7XIzLqYn1x51jIOEfbHGpCTS6YGB99abE6RR4laaVtDBq/4oVHZIHFT7TRQ0wCR28zPz/UtF1G
+	qSyj2+fuOnylfqsvRGgHfukR0z5LGLvwgleWkjccAcrae6CMtzrFrnOK8Ymna/B5FgbN0BEHVbogp
+	3WX02Asw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOL71-00000002irq-0591;
+	id 1tOL71-00000002is2-1Jos;
 	Thu, 19 Dec 2024 18:19:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOL3k-00000002iHF-3rI6;
+	id 1tOL3l-00000002iHd-2IbC;
 	Thu, 19 Dec 2024 18:15:42 +0000
-X-UUID: 3efc3bfebe3511ef9048ed6ed365623b-20241219
+X-UUID: 3f375748be3511ef82ff63e91e7eb18c-20241219
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=D6l2tIy9AreNG9UEVSlyrqm8QJaBLoxbrNWgh+rkDbg=;
-	b=iAVtvC+SlqLHCdQTvvE3ARX1VzKH4njUH7tkGTTrgrMVz3/NHN07lU5m0f9cjaLOiI9nqoPfE4y7xoLtsRfb5wzclt9uLZD2Jn2E75zxUsx6Yma9dqCfAkWKKTL8BuUaBL9Ya0bOc/sIaex9iiaPX+qGF0N7WKbErMD5mBiiVNE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LVD3uPrXBomPcJNoWgqLzEvvfwpoHMKo1ChEC4VeiqI=;
+	b=Bhze7dntqtJTdpepK+mgkCDFW9c24F107xFVfOXoRlTeg8HoWN//kMWfFAb8B3bidqaIs5AMyFSVOllDVDUs3UIXNmW1Lz0uhQuCUygkixnfKlK7RGX17hcS1IFt+vMTfsK6m+W9KeQhP/0B6KCsUJFSuwaUBKgJ0EzwX9/YZIY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:8be5d797-2684-4579-af4c-f17c34233ddb,IP:0,U
+X-CID-O-INFO: VERSION:1.1.45,REQID:53de63bc-cb8c-4014-8107-8c17be71bc7c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6493067,CLOUDID:67143f3c-e809-4df3-83cd-88f012b9e9ba,B
+X-CID-META: VersionHash:6493067,CLOUDID:76143f3c-e809-4df3-83cd-88f012b9e9ba,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0,EDM:-3,IP
 	:nil,URL:0,File:nil,RT:100,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
 	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3efc3bfebe3511ef9048ed6ed365623b-20241219
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 3f375748be3511ef82ff63e91e7eb18c-20241219
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1748155773; Thu, 19 Dec 2024 11:15:37 -0700
+	with ESMTP id 1298184928; Thu, 19 Dec 2024 11:15:37 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 20 Dec 2024 02:15:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -56,9 +56,9 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
 From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH v3 1/4] dt-bindings: display: mediatek: ovl: Add compatible strings for MT8188 MDP3
-Date: Fri, 20 Dec 2024 02:15:28 +0800
-Message-ID: <20241219181531.4282-2-jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 3/4] dts: arm64: mediatek: mt8188: Update OVL compatible from MT8183 to MT8195
+Date: Fri, 20 Dec 2024 02:15:30 +0800
+Message-ID: <20241219181531.4282-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20241219181531.4282-1-jason-jh.lin@mediatek.com>
 References: <20241219181531.4282-1-jason-jh.lin@mediatek.com>
@@ -66,9 +66,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_101540_960484_FFDCB693 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241219_101541_587660_7995544F 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +79,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy
- Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible strings for the MDP3 OVL hardware components in
-MediaTek's MT8188 SoC and it is compatible with the existing
-MT8195 MDP OVL components.
+The OVL hardware capabilities have changed starting from MT8195,
+making the MT8183 compatible no longer applicable.
+Therefore, it is necessary to update the OVL compatible from MT8183 to
+MT8195.
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml     | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-index 9ea796a033b2..33542211507f 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-@@ -46,6 +46,9 @@ properties:
-               - mediatek,mt8186-disp-ovl
-               - mediatek,mt8365-disp-ovl
-           - const: mediatek,mt8192-disp-ovl
-+      - items:
-+          - const: mediatek,mt8188-mdp3-ovl
-+          - const: mediatek,mt8195-mdp3-ovl
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index faccc7f16259..23ec3ff6cad9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -2488,7 +2488,7 @@ jpeg_decoder: jpeg-decoder@1a040000 {
+ 		};
  
-   reg:
-     maxItems: 1
+ 		ovl0: ovl@1c000000 {
+-			compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8183-disp-ovl";
++			compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl";
+ 			reg = <0 0x1c000000 0 0x1000>;
+ 			clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
+ 			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
 -- 
 2.43.0
 
