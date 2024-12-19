@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9922EE77184
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 11:11:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1FBE7718B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 11:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h0OVdlNEOZtn82PTSzwnBPOB1tH/BvlkhcAFa74Apks=; b=SojhzDNZHfpNIy
-	sozx76hxM4eko7wP+OVszcfxrxDf7r5VEesijcIsM6ajV0ozVFdK/6uFLPR0YH0Lb00natv7Iquqo
-	wxwcgs8M/4vFRNQJB3mq3Tl1JqxsnduR/RG4gxcirm2s2NlSi8sQ822Qj8f6G6OWjbVQA9YYBkuYc
-	gY/Fmj6xZK5F/kgTvdGVGNegWdknzftOGiO1VlbJnC4ul0uIHeftJcmEXP6GS7qltlNMvlLITNDn6
-	5Fgmtl3KaaoHnmhDKW6v8gVypWArDW8pYi0imTy5cPFyxyL11n/PrYC2dZGda4uVBZndGBmgmTyBO
-	xMrl7juiirLKfa2k2cPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cWQvY1dmKWTj9h0fpLQrdBY556hc2VzVio+GQthHH34=; b=cwV6xWmDk/QvYNP6xIoFQSQCeB
+	2Od/vz5i3zzrQ6/tGA6WEoo3RLiGEwSmgED4XZjweddl7KPbFt6DsXgpgkK6xzGNNqytLNqkGRTcw
+	I513Y6wr7p+vYv0+RXNCYqRdVkB2v30NIX3HZaOE2kY9p0zfMJWBfIu1O4VBDFWwTy0M7mJn7C5UF
+	1fimk0lH0tHgc3iYgfwJZemAYOZ4NnUB648y+QsVakT4wsiZH4Tafl9U31ZeBr9UgwLaoYUP3v9Rc
+	dfj8Q3iEm3p+eHlTi0uY6H5bvS15e5NmZVJO80vknGQYa17jgVqPuaAmucgUL82NWzx7cMjs8Gn60
+	p2QxXuWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOEQq-00000001cq3-1aAO;
-	Thu, 19 Dec 2024 11:11:04 +0000
+	id 1tOEi6-00000001fPg-3Yja;
+	Thu, 19 Dec 2024 11:28:54 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOEPj-00000001ch6-3S4v;
-	Thu, 19 Dec 2024 11:09:57 +0000
+	id 1tOEh0-00000001fC3-0cY3;
+	Thu, 19 Dec 2024 11:27:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734606593;
-	bh=0arSN+ejbNxnapjrbQiLEUStjChiAuTl6JrFXXXpcUU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=buLi9nq+OCoBZJowmY4W6AkR4JdD7GxHQq9GckVJ1VY7AI8sqCxrep0EAQVb5Z8+v
-	 Qjm9TTQ9SKdSa+U+9sa0xGE2i6CZoUpmekIPB6enfigGV8lWInx4lGOFZOfpQ6nwLf
-	 lL+QPqXW9aEI4gFDcrBoSd4BPxMJVi9PGzp8ma3lA7ZKpMIvVwSVGCdPoHnkF2RSVV
-	 FuSEj0nYHniVGvJRmWcn0Zsu/zy86tlTbiRV+OS0kQwd0S+S5wjTkelv28O4U/MKoU
-	 gH6Wj3DjLwNhzjlI3PiNXXcfV4eN1qLcW4YXze3bWRcCEkK/5g2dY4/B0PTQeC6pBB
-	 TMZEB6aUzpH9g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1734607664;
+	bh=jGr7l1XjdNoaC0hYd6vP62G59dS8Dz8DoHtLTvY76g0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=e5+nyAyamOIu7fWUIPaXaf/Vs/tR7aquS0QbTD8itJHfrii2AAZ/gAutWBabmxe9N
+	 MTfRPQ1sYyFdImTI92AE7rdtnpw5jfoRf+ogq3YRUnAIIj7v18Y4eCsZkoH+WfAJP7
+	 aGUvEC8ygCDMu4T8BOnjtoQL5lQa5WgMfzJrBaCND0JvEIVCbQx9UghBDuCHHaekn1
+	 6Z+G7sx5KY8hUIkurpFtTcTsk8mOaEv14YklKJtkBg+JIVfFHYsv6OOwMV8Ash0kao
+	 3/Q/hkhtJP50sm6kQF2H9+mjBbxW8XNlbdUtwUXLDFMTWRE4vBNBKlkIfeRrwGcaH1
+	 uSu7h6R9BGOcA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CED7717E3615;
-	Thu, 19 Dec 2024 12:09:52 +0100 (CET)
-Message-ID: <6f92c81f-84d0-4306-96d2-1cfc2ddb72e0@collabora.com>
-Date: Thu, 19 Dec 2024 12:09:52 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: mediatek: ovl: Modify rules
- for MT8195/MT8188
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-References: <20241213095044.23757-1-jason-jh.lin@mediatek.com>
- <20241213095044.23757-2-jason-jh.lin@mediatek.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 92A8217E35FC;
+	Thu, 19 Dec 2024 12:27:43 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241213095044.23757-2-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	rex-bc.chen@mediatek.com,
+	xinlei.lee@mediatek.com,
+	shuijing.li@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] drm/mediatek: mtk_dsi: Add registers to pdata to fix MT8186/MT8188
+Date: Thu, 19 Dec 2024 12:27:33 +0100
+Message-ID: <20241219112733.47907-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.47.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_030956_038834_BE4E2F53 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20241219_032746_380148_EA0CA0FC 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,73 +78,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/12/24 10:50, Jason-JH.Lin ha scritto:
-> From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> 
-> Modify rules for both MT8195 and MT8188.
-> Hardware capabilities include color formats and AFBC are
-> changed since MT8195, stop using the settings of MT8183.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   .../bindings/display/mediatek/mediatek,ovl.yaml          | 9 ++++-----
->   1 file changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> index 9ea796a033b2..8ca8e5966b9a 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-> @@ -26,6 +26,7 @@ properties:
->             - mediatek,mt8173-disp-ovl
->             - mediatek,mt8183-disp-ovl
->             - mediatek,mt8192-disp-ovl
-> +          - mediatek,mt8195-disp-ovl
->             - mediatek,mt8195-mdp3-ovl
->         - items:
->             - enum:
-> @@ -36,16 +37,14 @@ properties:
->             - enum:
->                 - mediatek,mt6795-disp-ovl
->             - const: mediatek,mt8173-disp-ovl
-> -      - items:
-> -          - enum:
-> -              - mediatek,mt8188-disp-ovl
-> -              - mediatek,mt8195-disp-ovl
-> -          - const: mediatek,mt8183-disp-ovl
->         - items:
->             - enum:
->                 - mediatek,mt8186-disp-ovl
->                 - mediatek,mt8365-disp-ovl
->             - const: mediatek,mt8192-disp-ovl
-> +      - items:
-> +          - const: mediatek,mt8188-disp-ovl
-> +          - const: mediatek,mt8195-disp-ovl
->   
->     reg:
->       maxItems: 1
+Registers DSI_VM_CMD and DSI_SHADOW_DEBUG start at different
+addresses in both MT8186 and MT8188 compared to the older IPs.
 
+Add two members in struct mtk_dsi_driver_data to specify the
+offsets for these two registers on a per-SoC basis, then do
+specify those in all of the currently present SoC driver data.
 
-Jason, while doing MDP3 bindings for MT8188, I noticed that the binding for OVL is
-missing; can you please add a commit on top of this series adding the following
-snippet?
+This fixes writes to the Video Mode Command Packet Control
+register, fixing enablement of command packet transmission
+(VM_CMD_EN) and allowance of this transmission during the
+VFP period (TS_VFP_EN) on both MT8186 and MT8188.
 
-       - items:
-           - const: mediatek,mt8188-mdp3-ovl
-           - const: mediatek,mt8195-mdp3-ovl
+Fixes: 03d7adc41027 ("drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c")
+Fixes: 814d5341f314 ("drm/mediatek: Add mt8188 dsi compatible to mtk_dsi.c")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
 
-...with a suggested-by tag it's going to be fine :-)
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index e61b9bc68e9a..978332cd52f5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -139,11 +139,11 @@
+ #define CLK_HS_POST			GENMASK(15, 8)
+ #define CLK_HS_EXIT			GENMASK(23, 16)
+ 
+-#define DSI_VM_CMD_CON		0x130
++/* DSI_VM_CMD_CON */
+ #define VM_CMD_EN			BIT(0)
+ #define TS_VFP_EN			BIT(5)
+ 
+-#define DSI_SHADOW_DEBUG	0x190U
++/* DSI_SHADOW_DEBUG */
+ #define FORCE_COMMIT			BIT(0)
+ #define BYPASS_SHADOW			BIT(1)
+ 
+@@ -187,6 +187,8 @@ struct phy;
+ 
+ struct mtk_dsi_driver_data {
+ 	const u32 reg_cmdq_off;
++	const u32 reg_vm_cmd_off;
++	const u32 reg_shadow_dbg_off;
+ 	bool has_shadow_ctl;
+ 	bool has_size_ctl;
+ 	bool cmdq_long_packet_ctl;
+@@ -367,8 +369,8 @@ static void mtk_dsi_set_mode(struct mtk_dsi *dsi)
+ 
+ static void mtk_dsi_set_vm_cmd(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, VM_CMD_EN, VM_CMD_EN);
+-	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, TS_VFP_EN, TS_VFP_EN);
++	mtk_dsi_mask(dsi, dsi->driver_data->reg_vm_cmd_off, VM_CMD_EN, VM_CMD_EN);
++	mtk_dsi_mask(dsi, dsi->driver_data->reg_vm_cmd_off, TS_VFP_EN, TS_VFP_EN);
+ }
+ 
+ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+@@ -714,7 +716,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 
+ 	if (dsi->driver_data->has_shadow_ctl)
+ 		writel(FORCE_COMMIT | BYPASS_SHADOW,
+-		       dsi->regs + DSI_SHADOW_DEBUG);
++		       dsi->regs + dsi->driver_data->reg_shadow_dbg_off);
+ 
+ 	mtk_dsi_reset_engine(dsi);
+ 	mtk_dsi_phy_timconfig(dsi);
+@@ -1263,26 +1265,36 @@ static void mtk_dsi_remove(struct platform_device *pdev)
+ 
+ static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
+ 	.reg_cmdq_off = 0x200,
++	.reg_vm_cmd_off = 0x130,
++	.reg_shadow_dbg_off = 0x190
+ };
+ 
+ static const struct mtk_dsi_driver_data mt2701_dsi_driver_data = {
+ 	.reg_cmdq_off = 0x180,
++	.reg_vm_cmd_off = 0x130,
++	.reg_shadow_dbg_off = 0x190
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
+ 	.reg_cmdq_off = 0x200,
++	.reg_vm_cmd_off = 0x130,
++	.reg_shadow_dbg_off = 0x190,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
+ 	.reg_cmdq_off = 0xd00,
++	.reg_vm_cmd_off = 0x200,
++	.reg_shadow_dbg_off = 0xc00,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+ 	.reg_cmdq_off = 0xd00,
++	.reg_vm_cmd_off = 0x200,
++	.reg_shadow_dbg_off = 0xc00,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
+ 	.cmdq_long_packet_ctl = true,
+-- 
+2.47.0
 
-P.S.: Please refer to 
-https://lore.kernel.org/r/20241218105320.38980-1-angelogioacchino.delregno@collabora.com
-
-Thanks,
-Angelo
 
