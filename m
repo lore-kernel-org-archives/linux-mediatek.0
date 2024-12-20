@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D39E7718B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2024 16:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16FC1E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2024 16:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/qGoQgnbOdoVq1YFMZKGg7BQZK4lBkHYejyCWzH067s=; b=a8wb1OQpp0ZrPml8zy2XgUc4I1
-	Ov0EobcywaZuoqN39YOSxkBExubAgpbq5i8TDBZFLgQ/ykjFJ/+hLHcfB/UCp0Ex+FXlcuSVAHE+b
-	TDNs7M8/z0H5Q11XUkaUHGzWPlkJCyo8KMXOQ1GQb9L9fiyQ+omOr8j8o1yLfmGsFZSc4pFVMtoJ7
-	zAzoqd2QDHspZiOI+29QMZCW4TC2JHGEpTR7txJZoMs8c52H1ia+ESV+657spEtkVEkEnXRAVQWKr
-	GwrXreAWqmY4Xep9Wo1FWLp+lu6TwKmOiyntnu6p2dYcIjvK9a1yiDVyftvU/SGB0LX1KwxivCJHB
-	I28ffhQA==;
+	bh=K+P12V1I0r+W5/jHz9FSS7SLl9bMfyv4tnYB+wEwLII=; b=JynuvnmBq49JVU0Rx6H+LD1DIv
+	E4wZ5UpVLSIrvcqBTF0gMv+2CUrcCKp3lK04VGleAXIyNAbtkR2I6lScSFirmpS0XFGBdPthk8dLC
+	Ix2Xl7h4kI2DUQL6B7Qk3QEfkw+Rm3IqbXqQmTKH9zy8LYCVZXr3J0L+a6aRv0IjFHxYmqgQoKSNd
+	AIvrc62N9bjegmle8X0huS5NOMzYaJbP3cvWpkyvkgD9pLJOX4Oaui2PLhC9fkoENgLBOD1jb3KWO
+	FzozrdIYdzx3p588NwKHTCVtx/pVZOvupN5BWKgsI6IjObCtl0kTs0Vw3lp+D/076095bljcPlSWv
+	tLq3k9Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfat-00000005Qds-2Xod;
-	Fri, 20 Dec 2024 16:11:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tOft8-00000005TFk-02h5;
+	Fri, 20 Dec 2024 16:30:06 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfZj-00000005QSM-2xIv;
-	Fri, 20 Dec 2024 16:10:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=/qGoQgnbOdoVq1YFMZKGg7BQZK4lBkHYejyCWzH067s=; b=cGKjcrMOqo6ztoYyMvkDjbH97u
-	6byJM5JQvl+U9yQQ0tYg08jqNu3yVXSB0Nzl4YA6+TphmGXisaBRCpaix7jizmCwjmMOcQ/rWoiO3
-	jfN7/MWIryY+m6/IqVgbg24JvVsH4YGXsMm2chfvM+QFqoXh/C5NSQtnt4XYIPoYkbh+Jm4OME67m
-	EQv+owwCjMZqp63Rws1l9TCntnaDne7d3VTWE8W5VFcktPlwkUj9Iofb2JGwQ3b9xYcijjy5EhAbe
-	4uT/c4BelSfYM0gKIQYIHc87wWHz4xy8/2oKYCcKdz4SxNLlsdbBvbvdM2AH6fThA2ESeVzqcmx1i
-	zl/YoMjQ==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfZg-00000005hrF-1KuH;
-	Fri, 20 Dec 2024 16:10:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734710994;
-	bh=fSXg3M/0mE8dVreQMS+uKgIjGxP4AW3NuyFyKIkJBq8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Dqgar4bGC/BLTv2QAKUIkd2BygKD5e+I0N6V1xCCiHT4NcuJf81I2UBZKgl/I2g0I
-	 xe9LrGIyhi7C1/heLBUBDO9Skf77DK2pj7i7SxlKOg/5f9AzGqx52JiQelpf/+sZZ0
-	 u+Ty20bmSfwigAHVjK7LVjv7NACp3IIM0822nozSR64AdZiFSUZm1aDySRvxihfbnZ
-	 5HvHwXOW8O7OYTTygAdQi5vEaXe6sZwaQKCGAkgRPGo8DxDVWt+YsSiZRyabLxHEml
-	 5CCY8Q9OkSZe6yVrutIwuFPJwcNeQez0WcFSAZePgyev6fQJttjdxW1p/RjjvfFnW/
-	 C85XNIPcbjE1g==
-Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1000])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE71617E37AB;
-	Fri, 20 Dec 2024 17:09:48 +0100 (CET)
-Date: Fri, 20 Dec 2024 13:09:45 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: patchwork-bot+netdevbpf@kernel.org, Jakub Kicinski <kuba@kernel.org>
-Cc: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado_=3Cnfraprado=40collabora=2Ecom?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org,
-	=?utf-8?q?=3E?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org,
-	andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
-	pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
-	alexandre.torgue@foss.st.com, joabreu@synopsys.com,
-	mcoquelin.stm32@gmail.com, bartosz.golaszewski@linaro.org,
-	ahalaney@redhat.com, horms@kernel.org, kernel@collabora.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 0/2] net: stmmac: dwmac-mediatek: Fix inverted logic
- for mediatek,mac-wol
-Message-ID: <876cf020-e2ba-46a7-b9b2-82dcd47f7a04@notapiano>
-References: <20241109-mediatek-mac-wol-noninverted-v2-0-0e264e213878@collabora.com>
- <173155682775.1476954.16636894744432122406.git-patchwork-notify@kernel.org>
+	id 1tOfqv-00000005SxN-2XtI;
+	Fri, 20 Dec 2024 16:27:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1734712069; x=1766248069;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=jxHFAYBCnlTrcSh9H+awIzGplyXuNovtWtAuZm7pl1I=;
+  b=L23BlazE1g3T5AUTNwCKdDFxMyMvwrvBKPTAK3dmj1zBVQd23+Kz6eGF
+   0brDJf5sJDoAqCrPDoQ2aR/n2cX9euuCr4k9dyM4Scv/SU09cx8A07R/2
+   B2Si5cbF0Cs+UOWsjfGqptA30ePkX1w7ogiVxdrXY/G9Xus7Jsa65lsgM
+   yrrtuLBel0krBGkea2RV1n30tH5D7xaVf0oR8qU/O6HoOFFq24zzlDB9A
+   jvJRqn8xKgBVOtcmAW5fNlr3/u7gog+DMvUltFv+LJSThpqTHnw607bQp
+   3SdJbgon/mrfzlc/zDB1JIgCxaXPd9wNNSiSjvWKkNVBKAd6TADbHbm8r
+   w==;
+X-CSE-ConnectionGUID: sp7nEyfuRdm3Ug6AdL+XDw==
+X-CSE-MsgGUID: Jsc266jZS++5/qKXODKW0g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11292"; a="35386487"
+X-IronPort-AV: E=Sophos;i="6.12,251,1728975600"; 
+   d="scan'208";a="35386487"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Dec 2024 08:27:49 -0800
+X-CSE-ConnectionGUID: uhwcfmA7QfC75GZdThI05w==
+X-CSE-MsgGUID: 7mYO4CX0STi+NZeBJWqDng==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,251,1728975600"; 
+   d="scan'208";a="98328861"
+Received: from lkp-server01.sh.intel.com (HELO a46f226878e0) ([10.239.97.150])
+  by fmviesa006.fm.intel.com with ESMTP; 20 Dec 2024 08:27:46 -0800
+Received: from kbuild by a46f226878e0 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tOfqp-0001P1-28;
+	Fri, 20 Dec 2024 16:27:43 +0000
+Date: Sat, 21 Dec 2024 00:26:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: ot907280 <ot_cathy.xu@mediatek.com>, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
+	linus.walleij@linaro.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>,
+	ot907280 <ot_cathy.xu@mediatek.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Add support for MT8196
+Message-ID: <202412210007.sMeJEMYf-lkp@intel.com>
+References: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <173155682775.1476954.16636894744432122406.git-patchwork-notify@kernel.org>
+In-Reply-To: <20241211055454.17120-3-ot_cathy.xu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_161000_548634_36EA86F4 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20241220_082749_687550_6790F481 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,40 +91,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 14, 2024 at 04:00:27AM +0000, patchwork-bot+netdevbpf@kernel.org wrote:
-> Hello:
-> 
-> This series was applied to netdev/net.git (main)
-> by Jakub Kicinski <kuba@kernel.org>:
-> 
-> On Sat, 09 Nov 2024 10:16:31 -0500 you wrote:
-> > This series fixes the inverted handling of the mediatek,mac-wol DT
-> > property. This was done with backwards compatibility in v1, but based on
-> > the feedback received, all boards should be using MAC WOL, so many of
-> > them were incorrectly described and didn't have working WOL tested
-> > anyway. So for v2, the approach is simpler: just fix the driver handling
-> > and update the DTs to enable MAC WOL everywhere.
-> > 
-> > [...]
-> 
-> Here is the summary with links:
->   - [v2,1/2] net: stmmac: dwmac-mediatek: Fix inverted handling of mediatek,mac-wol
->     https://git.kernel.org/netdev/net/c/a03b18a71c12
->   - [v2,2/2] arm64: dts: mediatek: Set mediatek,mac-wol on DWMAC node for all boards
->     (no matching commit)
+Hi ot907280,
 
-Hi Jakub,
+kernel test robot noticed the following build errors:
 
-This message implies patch 2 was also applied, but I only see patch 1, not patch
-2 there:
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/log/?qt=grep&q=mac-wol
+[auto build test ERROR on linusw-pinctrl/devel]
+[also build test ERROR on linusw-pinctrl/for-next linus/master v6.13-rc3 next-20241220]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-So I just wanted to confirm whether it was applied or not. It would be fine for
-patch 2 to be merged through the mediatek tree as is usual if you haven't
-already taken it.
+url:    https://github.com/intel-lab-lkp/linux/commits/ot907280/pinctrl-mediatek-Add-support-for-MT8196/20241211-140107
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
+patch link:    https://lore.kernel.org/r/20241211055454.17120-3-ot_cathy.xu%40mediatek.com
+patch subject: [PATCH] pinctrl: mediatek: Add support for MT8196
+config: sparc64-randconfig-r071-20241219 (https://download.01.org/0day-ci/archive/20241221/202412210007.sMeJEMYf-lkp@intel.com/config)
+compiler: sparc64-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241221/202412210007.sMeJEMYf-lkp@intel.com/reproduce)
 
-(Also, FYI, I was not CC'ed in this message from the patchwork bot)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202412210007.sMeJEMYf-lkp@intel.com/
 
-Thanks,
-Nícolas
+All errors (new ones prefixed by >>):
+
+>> sparc64-linux-ld: drivers/pinctrl/mediatek/pinctrl-mt8196.o:(.data+0xa0): undefined reference to `mtk_paris_pinctrl_pm_ops'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
