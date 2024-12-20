@@ -4,105 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4676E77184
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2024 23:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37E5BE7718A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2024 00:45:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=2l2kaTxVgDXZ+WZ5RNly03lP6LWl5fzxLs2ibw+q2ng=; b=JN/A/BvdK9rAiBx9RaK6Dg0VTR
-	Q/JH0xheUXotiLfapq2pAn4exIfO3mtaLvoMMXiGmwTG4IYfreTXSc47ssbbex1ZGkL/xoWIwwocC
-	2DWmsMUqIT0ZsG/M8P41X+DyL4buBzOjB70i1UoGdk1yAhOCZqB1JmRoWlD3Pz71m/4MPpi6mcm20
-	uB+SZi443YFE7uQWGsQd4GBthmhUs3W3b4HT6eO1B6fNjOHUrYS6qGQYT3BehHcLsf1dSh2EDCfh7
-	ONtQvctD9cKvVGkzRIF46LZpXhFGO4vm4I8OONfgBXMOw1EU1odRepxqjpd0d70bvcFqsjCQYC/Nv
-	94aZm2Ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GtphmJJvd2huuYFzKRkVf45xsccE6Ms1jkEdDHx6d2E=; b=vM2jFc7RZkv1RBMMJoLRQfV3AC
+	Nok/oXyjpI/VPIsmfKPCTGibvFWYre2YlKu/t6sDmLAGttU9p5L8SLWmUoBCS3y/hMGgB1ef1bEZt
+	eTosSD3gtCavV5T74iBLsPh+EKpRiM5tPUZjCsb312EFbQt48Bd0dxvZNU2rVEhfKXtDxvkkqYhwk
+	fbV6db56l1/IiiC/iw7rxwhcE9GN+D3jAbSfhsmMqIxtNm401c+dhkX0oDZzf+pWoHsYvQJBA+e2F
+	el41kl8uUhIThkvwLacMF7y15Q0NJ5YfnSA47kN0gme1vkJOXODL+AuDEiOxDqt6wIF4xbmcmA92s
+	QBWvvdYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOPwF-00000003M9C-2CnX;
-	Thu, 19 Dec 2024 23:28:15 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1tOR8o-00000003VU0-0lFH;
+	Fri, 20 Dec 2024 00:45:18 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOPwC-00000003M8Y-4070;
-	Thu, 19 Dec 2024 23:28:14 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5401c68b89eso1487242e87.0;
-        Thu, 19 Dec 2024 15:28:12 -0800 (PST)
+	id 1tOR8k-00000003VSC-1PY2
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Dec 2024 00:45:16 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5401c52000dso1397982e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Dec 2024 16:45:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734650891; x=1735255691; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:in-reply-to:message-id
+        d=linaro.org; s=google; t=1734655513; x=1735260313; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2l2kaTxVgDXZ+WZ5RNly03lP6LWl5fzxLs2ibw+q2ng=;
-        b=jU98NZ7I353jH2aSX32cIbnmlkNi/hD7mBdQqN+QQ7jrQjH1AyyBUjT2PQtahmVxJH
-         di2v0ZvewXYZmCYl3v5zIkKqILHl+7wg/EHPzg75Ym2W6L1f3oUa5mPkzme6UgOGbGai
-         1e67y5vbkoe5AZBGT+uemHVOocvB+1psEVWgi5Dsbuo6hm7RXws+pvJgY+PBr4E+cJ0N
-         1tXn20wvfFaLtrESncE1GjFj0ve39LKAU8WLTPduEFF7LHXdsyNGUQb0jMjTYc5xXGiP
-         5RJP7dJcOizdenmKDem/lbt7xg49ZxrrvvuQlibP1oqJvi3J/81oM2SJ4yOY8QM734I7
-         oQRQ==
+        bh=GtphmJJvd2huuYFzKRkVf45xsccE6Ms1jkEdDHx6d2E=;
+        b=RCieHnyuDf1pSqt4/RJIC2/kk5hT965/tLbrYr/DJhdoh5P85H1Iz1Oy6nvc9Zir6g
+         3kcV7UHtKuGhAUczcBAieewEb1RVxTvmpRUf2+VDnPyg2yltnlsAI5YaY4WNG3dxqObz
+         YQG/Mng+oifGbzrTmoKhwG5ysywjU6MwmwN9NtCBjcl9SDAJ58OcH0aKbr80MVjiMSh8
+         JrRFzfne4X5yVblv5T+P8yYbCNCiSkVsLE7TOnC73JdNOvVqnYO0zfSPfCGpdMQeiDL0
+         lBv7PxZoQGTeRhTTSfgV+DQEMOVu2Ml4K9q6zAu5dtUnw7bv+OTK45PdRadGZfWJoBcM
+         TjLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734650891; x=1735255691;
-        h=content-transfer-encoding:mime-version:in-reply-to:message-id
+        d=1e100.net; s=20230601; t=1734655513; x=1735260313;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2l2kaTxVgDXZ+WZ5RNly03lP6LWl5fzxLs2ibw+q2ng=;
-        b=lOZryBA/xLJRk+gSmsibPaD4taG/lWXfvnhaMTZ1fZoT3NKn4z4Jc9BPPX+NaL2IoC
-         1mXK4D+ua+7OzS48Ss8QimUEQcM5jEQGV++3+QC7jtDmMPHEmTSleN5rHbU6R0KC8S02
-         xZgXpPDZ8hh5/3OuGqA29HpnSAub02IDv+BR6XiZrUfCGHMDq9kgm9JQMsaPXxywxIxW
-         ClZo98q2Y4YzY6lIF18qCOBU2pKShxbmA/wJy3N1wal8LKJp4hBJ8G2ABBPcuejPfOgS
-         Ts6YsDPqeqz41l3QVb/PDFTvDct+V0OMCIz6wEwZcN8PriCgBGdEDm88y/Xw2Mm94ATc
-         orGw==
-X-Forwarded-Encrypted: i=1; AJvYcCUmaEW7we3J5La1UlwyXM+z2qAC1GVBI+ip96Lfkd1OBtSqvnkM4v88M11FNFX6+IdiO4lkCBa0lzO8sRuswH0=@lists.infradead.org, AJvYcCW/r40A3TvXkoDbFZlvy17xFFmdczeTwmFexxu1+6XH1gr8PAONzaNU6rXmSqqggERlqJRaKwzpuCDWOT4V3teX@lists.infradead.org
-X-Gm-Message-State: AOJu0YxDwXsxPFIhiIbhnEKYRBD9gHoJ4R2/XhhhPD0iUm3u0P7No01o
-	FtDQZIqHT7VyIy+2X8SULkSTGx/lNKk7D3K9FWaBv+tWYdYkO76V
-X-Gm-Gg: ASbGncvBTb9ioTgX0qSZZJ1aONBePXdEyH5vEyTjp9o2EHO9bNFHQ3aHrQffa7f8DGN
-	5H2pKJctgxRg1X5yk/MZkDmHqBeRP7Bvb0M7hqTWkDcexVIXe3wWk8K0C/EMcCGEijgi426D407
-	TS7nQH73qJtWUFyp7q0wONLWv3ojY1KMy3aXbm4g4QFElm9hs04AkAX24t/y7/5tvuoZ1+YkV8X
-	7d4QMoBUFu6yUOD2g0b4LXv9Rkq2rkVS8/tFHUj8gPCHM5hEB+g2w5OVwRbJtjneghZM5dUSg==
-X-Google-Smtp-Source: AGHT+IHwtq2DRxGiJpJfSQ3Ioq7kVn6TqoQxNI6STyt5mABoqAAJc/qvM+8M8/76Be/3GE/r3d1tWQ==
-X-Received: by 2002:a05:6512:a93:b0:542:215f:e615 with SMTP id 2adb3069b0e04-54229450a3bmr193154e87.16.1734650890368;
-        Thu, 19 Dec 2024 15:28:10 -0800 (PST)
-Received: from foxbook (adtk139.neoplus.adsl.tpnet.pl. [79.185.222.139])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5422360075dsm310172e87.104.2024.12.19.15.28.03
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Dec 2024 15:28:08 -0800 (PST)
-Date: Fri, 20 Dec 2024 00:27:59 +0100
-From: =?UTF-8?B?TWljaGHFgg==?= Pecio <michal.pecio@gmail.com>
-To: aleksander.lobakin@intel.com
-Cc: Bo.Jiao@mediatek.com, StanleyYP.Wang@mediatek.com,
- alexander.deucher@amd.com, andrew+netdev@lunn.ch, andrew@lunn.ch,
- angelogioacchino.delregno@collabora.com, apais@linux.microsoft.com,
- chui-hao.chiu@mediatek.com, cug_yangyuancong@hotmail.com,
- daniel@makrotopia.org, davem@davemloft.net, deren.wu@mediatek.com,
- dokyungs@yonsei.ac.kr, dsahern@kernel.org, dzm91@hust.edu.cn,
- edumazet@google.com, gch981213@gmail.com, git@qrsnap.io,
- gregkh@linuxfoundation.org, guanwentao@uniontech.com,
- gustavoars@kernel.org, helmut.schaa@googlemail.com, horms@kernel.org,
- jiefeng_li@hust.edu.cn, keescook@chromium.org, kuba@kernel.org,
- kvalo@codeaurora.org, kvalo@kernel.org, leit@fb.com, leitao@debian.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, lorenzo.bianconi83@gmail.com,
- lorenzo.bianconi@redhat.com, lorenzo@kernel.org, lynxis@fe80.eu,
- mailhol.vincent@wanadoo.fr, markus.theil@tu-ilmenau.de,
- matthias.bgg@gmail.com, mikhail.v.gavrilov@gmail.com,
- mingyen.hsieh@mediatek.com, mrkiko.rs@gmail.com, nbd@nbd.name,
- nelson.yu@mediatek.com, netdev@vger.kernel.org, oliver@neukum.org,
- pabeni@redhat.com, quan.zhou@mediatek.com, raoxu@uniontech.com,
- rodrigo.vivi@intel.com, romain.perier@gmail.com, rong.yan@mediatek.com,
- ryder.lee@mediatek.com, sean.wang@mediatek.com, sgruszka@redhat.com,
- shayne.chen@mediatek.com, sidhayn@gmail.com, stern@rowland.harvard.edu,
- stf_xl@wp.pl, sujuan.chen@mediatek.com, wang.zhao@mediatek.com,
- wangyuli@uniontech.com, weiwan@google.com, woojung.huh@microchip.com,
- yn.chen@mediatek.com, zhanjun@uniontech.com
-Subject: Re: mt76: dealing with disconnections, -ENODEV and -EPROTO
-Message-ID: <20241220002759.34dcfe11@foxbook>
-In-Reply-To: <a2bbdfb4-19ed-461e-a14b-e91a5636cc77@intel.com>
+        bh=GtphmJJvd2huuYFzKRkVf45xsccE6Ms1jkEdDHx6d2E=;
+        b=hmdv/yQfBkI+ggem15B6qr3jyZILmgBUopF9i6EJDJ60mu4xmLZDHXjRj4JN/scQhA
+         2vo7Fwxuw+O8iO6rVrlW8fFqIv4Yhi2j/X4fqdQZWswlP9HSzWQihf2U+C6U/sHMqC24
+         wZXxFsxIa8gmCuSsFpRrc+RLtXMJV3Q+u04Duyw3g38tzVWr+qNF7tyQ7R2wZ5c8PLZv
+         WhBSh+QXCjQct3sX4wSU+5Pt36uFNhxV/bXMDrDiYKOv98tlJMwEksk2PIhQ8r6cHQ46
+         WvS2GkULsbz5EhZKxgcXWs4joBm3z5k3pY8ku9bS7QmTIPE3qjIDJCOQxANqmJNMBT1s
+         xFcQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVafk2yRGcUv/Yog/JhSj/LTZF22QHaP7gOsjOUkFhZoOWoT0+PMUcn7jHxBv52dj9ono6xm+rCTIY/bpBT2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLlfTZdkjM9me8XjQQgWW3XISMsBX21eNZ/N7VoZ4F0c7mCvDU
+	IeXSR5UQo5Sv8G7HsfVIItzM9VSY8QEhjF10eOKlWBiwUm3oMbKl9vuhqcOK9Kk=
+X-Gm-Gg: ASbGncs5ib6zB4kEcJfE0XIv+NIq4eODbds1hTttkWYv57b0bR59915cwVA4APV8VJY
+	YHRGIbgVRI7Eg+Pm5xwQNsVpXwIR0oONOE1kDUGBarzwnahg07ZtsVAivsrKBwF+eZpyvRGGYSJ
+	WkmZrquWJ97zpErYivTiYxgWaBi3F24/8jiWz3S2j+Z1t7gQ3GMDja5jvGcX4PypILmaP+n1XFJ
+	Wi86NPHReKhChuklRPNVBumJyBGmRsHTAtUCom42buwAyhY0/9+luJxUssTsZO0NWeXWpSzKrC2
+	P6s3gmt4hWDMRC1DhzU6/jK29KLXuXAWpouu
+X-Google-Smtp-Source: AGHT+IH6uB6hHFdhZ8g1M8LwKBeApp5BdicV5eI/Ca91+dWC9LroL7URt+wK91yNOSkMF1+1W94jDw==
+X-Received: by 2002:a05:6512:1329:b0:540:1dca:52bb with SMTP id 2adb3069b0e04-5422953c126mr191526e87.28.1734655512484;
+        Thu, 19 Dec 2024 16:45:12 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5422382156dsm315960e87.186.2024.12.19.16.45.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Dec 2024 16:45:11 -0800 (PST)
+Date: Fri, 20 Dec 2024 02:45:09 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Cc: Maxime Ripard <mripard@kernel.org>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
+Message-ID: <c7qyka3hsrggqevdwdlfcanzps3z63s4joryskijlbuztacmly@tadqjm2vkj24>
+References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
+ <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
+ <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
+ <20241218-wild-red-manatee-bb2a34@houat>
+ <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
+ <CAPY8ntAnJ1YDQee=pFSDY3+EXHj4_RZ-M1NMp2C3ZDdD5DsCKA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAPY8ntAnJ1YDQee=pFSDY3+EXHj4_RZ-M1NMp2C3ZDdD5DsCKA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_152812_996011_7AFDC55D 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20241219_164514_429780_2C042CA1 
+X-CRM114-Status: GOOD (  45.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,45 +120,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> >  		ret = usb_control_msg(udev, pipe, req, req_type, val,
-> >  				      offset, buf, len, MT_VEND_REQ_TOUT_MS);
-> > -		if (ret == -ENODEV)
-> > +		if (ret == -ENODEV || ret == -EPROTO)
-> >  			set_bit(MT76_REMOVED, &dev->phy.state);
-> > -		if (ret >= 0 || ret == -ENODEV)
-> > +		if (ret >= 0 || ret == -ENODEV || ret == -EPROTO)
-> >  			return ret;
-> >  		usleep_range(5000, 10000);
+On Thu, Dec 19, 2024 at 04:16:37PM +0000, Dave Stevenson wrote:
+> On Wed, 18 Dec 2024 at 14:52, Dave Stevenson
+> <dave.stevenson@raspberrypi.com> wrote:
+> >
+> > Hi Maxime & Dmitry
+> >
+> > On Wed, 18 Dec 2024 at 07:59, Maxime Ripard <mripard@kernel.org> wrote:
+> > >
+> > > On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
+> > > > On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
+> > > > > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
+> > > > > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+> > > > > > framework, I stumbled upon an issue while handling the Audio InfoFrames.
+> > > > > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+> > > > > > there was no simple way to get the drm_connector that stayed at the end
+> > > > > > of the bridge chain. At the same point the drm_hdmi_connector functions
+> > > > > > expected to get drm_connector instance.
+> > > > > >
+> > > > > > While looking for a way to solve the issue, I stumbled upon several
+> > > > > > deficiencies in existing hdmi_codec_ops implementations. Only few of the
+> > > > > > implementations were able to handle codec's 'plugged' callback. One
+> > > > > > third of the drivers didn't implement the get_eld() callback.
+> > > > > >
+> > > > > > Most of the issues can be solved if drm_connector handles
+> > > > > > hdmi-audio-codec on its own, delegating functionality to the actual
+> > > > > > implementation, be it a driver that implements drm_connector or
+> > > > > > drm_bridge.
+> > > > > >
+> > > > > > Implement such high-level framework, adding proper support for Audio
+> > > > > > InfoFrame generation to the LT9611 driver.
+> > > > > >
+> > > > > > Several design decisions to be kept in mind:
+> > > > > >
+> > > > > > - drm_connector_hdmi_codec is kept as simple as possible. It implements
+> > > > > >   generic functionality (ELD, hotplug, registration).
+> > > > > >
+> > > > > > - drm_hdmi_connector sets up HDMI codec device if the connector
+> > > > > >   is setup correspondingly (either I2S or S/PDIF is marked as
+> > > > > >   supported).
+> > > > > >
+> > > > > > - drm_bridge_connector provides a way to link HDMI audio codec
+> > > > > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
+> > > > > >   framework.
+> > > > > >
+> > > > > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
+> > > > > >   bits. Only TDA889x driver sets them, while it's safe to assume that
+> > > > > >   most of HDMI / DP devices do not support ARC / capture. I think the
+> > > > > >   drivers should opt-in capture support rather than having to opt-out of
+> > > > > >   it.
+> > > > >
+> > > > > Sorry if this isn't clear to me and I'm quite late to the party, but did
+> > > > > you test this on vc4 with both a pi3 and pi4, or was it just compile
+> > > > > tested?
+> > > >
+> > > > LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
+> > >
+> > > Yeah, we definitely need to test it on the pi3 (polling-based) and the
+> > > pi4 (irq-based) at least.
+> > >
+> > > Dave, Maira, could you give it a try?
+> >
+> > I'm on it.
 > 
-> How do other drivers handle this?
-> Can -EPROTO happen in other cases, not only unplugging, which this
-> patch would break?
+> Basic checks look OK.
+> Pi3 and Pi4 tested, including 4k60 on Pi4 (enables scrambling). Audio
+> works, and all the EDID parsing seems to be correct.
+> 
+> Ideally I would like to do a couple more tests though as I had a
+> couple of spontaneous reboots on Pi4 whilst hotplugging.
+> Most likely it was just grounding issues, as I can't think of an
+> obvious way for the kernel to be triggering an automatic reboot. They
+> seemed to go away when I had enabled drm.debug=0x14, but more likely
+> I'd connected the serial port and therefore provided another ground.
+> Please don't hold the patches waiting on me though - I don't know when
+> I'll have time to do them.
 
-Yes, -EPROTO may be a transient error, although they are relatively
-rare as some retries are done before the URB fails. This patch will
-only break things if things work in the first place, i.e. the driver
-has sensible retry policies, the hardware doesn't get confused, etc.
+Tested-by?
 
-Note that -EPROTO is not guaranteed in this case, see
-Documentation/driver-api/usb/error-codes.rst
+> 
+> 
+> Also unrelated to this patch set, I have noted I'm getting
+> [   60.780897] WARNING: CPU: 3 PID: 501 at
+> drivers/gpu/drm/vc4/vc4_hvs.c:743 __vc4_hvs_stop_channel+0x148/0x164
+> [vc4]
+> ...
+> [   60.781192]  __vc4_hvs_stop_channel+0x148/0x164 [vc4] (P)
+> [   60.781212]  __vc4_hvs_stop_channel+0x40/0x164 [vc4] (L)
+> [   60.781230]  vc4_hvs_stop_channel+0x30/0x3c [vc4]
+> [   60.781248]  vc4_crtc_disable+0x140/0x1e8 [vc4]
+> [   60.781266]  vc4_crtc_atomic_disable+0x98/0xb8 [vc4]
+> [   60.781284]  disable_outputs+0x22c/0x33c [drm_kms_helper]
+> [   60.781326]  drm_atomic_helper_commit_modeset_disables+0x1c/0x4c
+> [drm_kms_helper]
+> [   60.781347]  vc4_atomic_commit_tail+0x10c/0x8e4 [vc4]
+> [   60.781364]  commit_tail+0xa0/0x188 [drm_kms_helper]
+> [   60.781385]  drm_atomic_helper_commit+0x16c/0x180 [drm_kms_helper]
+> [   60.781406]  drm_atomic_commit+0x88/0xc4 [drm]
+> [   60.781500]  drm_client_modeset_commit_atomic+0x204/0x264 [drm]
+> [   60.781553]  drm_client_modeset_commit_locked+0x5c/0x198 [drm]
+> [   60.781603]  drm_client_modeset_commit+0x30/0x58 [drm]
+> [   60.781652]  __drm_fb_helper_restore_fbdev_mode_unlocked+0xb4/0xe8
+> [drm_kms_helper]
+> [   60.781674]  drm_fb_helper_hotplug_event+0x108/0x12c [drm_kms_helper]
+> [   60.781695]  drm_fbdev_client_hotplug+0x28/0xd4 [drm_client_lib]
+> [   60.781700]  drm_client_dev_hotplug+0xc8/0x12c [drm]
+> [   60.781750]  drm_connector_helper_hpd_irq_event+0x70/0xb0 [drm_kms_helper]
+> [   60.781771]  vc4_hdmi_hpd_irq_thread+0x2c/0x3c [vc4]
+> [   60.781790]  irq_thread_fn+0x2c/0xa8
+> [   60.781799]  irq_thread+0x16c/0x2f4
+> [   60.781805]  kthread+0x118/0x11c
+> [   60.781813]  ret_from_fork+0x10/0x20
+> On first plugging or unplugging a second monitor. I suspect that is
+> spurious though and I'll look into it, but probably not this side of
+> the Christmas break.
+> 
+>   Dave
 
-I know that xHCI gives -EPROTO and it looks like EHCI does too (IDK
-if this is reliable), but I just checked that OHCI gives -ETIME.
-
-
-I don't have this hardware, but I played with some other wired/WiFi
-dongles and observed similar problems of varying severity.
-
-It looks to me like USB core doesn't actually return -ENODEV on
-disconnected devices, or at least doesn't react to disconnection
-until .probe() returns, I am not yet sure which of those.
-
-And drivers don't seem to expect -EPROTO or -ETIME to be fatal.
-
-And maybe they should, if they wouldn't be able to recover from it
-anyway, and I know that there are drivers which can't. But I think
-this USB subsystem behavior is suboptimal too.
-
-Regards,
-Michal
+-- 
+With best wishes
+Dmitry
 
