@@ -4,110 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFFD3E7718B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9EB4E77188
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2024 19:17:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LVhGdRV7+tmpOWeS9zvGkR7uXA0VR0Po2tyiFNSf/dY=; b=eOdx6fnD2vx7KGtxCeFMUDkN54
-	lzakvt9Wt6boNv560zj3ic9KilXJl6GHDpgAOkJLdHuOFnl2JC0UT4M14erkcKOFbGlCzwptdcv8c
-	FwcsWlAoHv4LhXp+MT4l6mTOEIm9/ohiueUP/yQNnKqQSd+BVQ2c7xg/0URnEdaO1cS/luj4Gk1vN
-	O1wmlfO0j9UwNqgd85+I8CMlgoPW7qvlHMSKh+lU/oBCsLYGW+n9y8GFM9MTEZHuwa/CtvmAEF/4x
-	Nal5bMHVBG8odaZ//jn2YeFK8NMn6xs6P28cWmVpdAvcF0txiYYJ7T4Nu3mnmoaUFRIkaEyuM+z0m
-	O3jvcUbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3NH9o3sRUQc2TBuzCNn4xd0xwtaijH4zEiuuPAl8O+Y=; b=PLgYolQVQWURmt
+	9uEMxPkOHVLe7P4cgwtfaQMuwiXHiXF+qVWukJqo9zzAzTH0CnU25ALkV0696CK8oxwz0QB7NC+/Z
+	8vi6A82CjS1EFdKSa0iAHWJMnFrq1Ff9XskUBV0MUnTTvn9Ylt8eBNoRvkZd8FO54lZUjZpMMeQWF
+	Szwp/7ttLxBEf2FbQxjE179tt5FUWLryLh3ykOj62oFroDuGAkplieosgHmwIGw1fQZnwmOy7568K
+	GlfrQDXHJ5P8IzWMZ3Wbh6iajHBaHcbYR0r3ZtVNU1pKV6lAHqIssPOF/5QPjXomUFxqEJ+BP7hzk
+	MBZ+UlYnvYgZbSeaovhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOiUs-00000005tQh-2IA4;
-	Fri, 20 Dec 2024 19:17:14 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1tOiUt-00000005tRf-1S8J;
+	Fri, 20 Dec 2024 19:17:15 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOiTh-00000005tB8-3iUe
+	id 1tOiUm-00000005tL5-0Jqj
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Dec 2024 19:16:04 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5401c68b89eso2537949e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Dec 2024 11:16:01 -0800 (PST)
+	Fri, 20 Dec 2024 19:17:10 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-303548a9361so19563791fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Dec 2024 11:17:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734722160; x=1735326960; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=LVhGdRV7+tmpOWeS9zvGkR7uXA0VR0Po2tyiFNSf/dY=;
-        b=seDlzxte2SmeOen7jOJLlnZCcGcg3P2SI70rlQUsAaWIrmzBVpd56TX36VSXxNgnpH
-         TZOFnIib2fVI8geLjS76wDsxBo8xoCtYAmhH1McO68P3tPDkmWwIxIsY/lN2kvqJuP5b
-         X5hRue75eakXSH4Udvg/Ru79NNyVog1epjZPsdacxh5sIENUey36PoEgA9D3nmYjedR+
-         cO/pKg19nC/dtooPOe6VvbF5sVCfBHKU6Iy7wgelcd44TF/C0Y1tWcv+uELKleaI1AUI
-         0FH/yNdxrVr+WF9f8PK46NVX9A5teSQYxiDDDwhwzqIKebLDWp9d8AXRGjb672c1P4XB
-         P80g==
+        d=linaro.org; s=google; t=1734722226; x=1735327026; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3NH9o3sRUQc2TBuzCNn4xd0xwtaijH4zEiuuPAl8O+Y=;
+        b=ITGvl4kQxcZ1KzbYYXCcucAuBIStKDk89/3cFfVujhTA1Rh7qv4C2De3MUBPstESo8
+         UXj8HzqVLQeX5YNksXpZ5nvkOsIKqdtRFKCtedNUuZn0it267lTlL4C1FNb26hNxQPR0
+         BgQuS86ShubIvWeexeYVIVJp8SU6mce28uMLsoZ3RF9TkGRAduPnfSKPw6W2/pZ2py03
+         MRryyzBZgzcD9gJt2Iu/9NeWCM+n+h0U8TxuXUxuZXymVmeNhMpVGLGOVYyWbZo+M/KP
+         yfHvl0OJleWSGuo21rIjT8mnA4XeKr0oksKvmnDxz/aGKROq3BbGPI0aRndewaj85zwT
+         7XFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734722160; x=1735326960;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LVhGdRV7+tmpOWeS9zvGkR7uXA0VR0Po2tyiFNSf/dY=;
-        b=wcOR1RlxiyKnnbYhAnS4I+BCs+UIvO4yvuBuL3nT2e6OLJqYZXCmi3gFR3+ojH4vnU
-         ltIU/IXYw1uytac6TYkUwFPGa99HRBfz0Bk3hacoh33xmPRCC4rGtK5ihGCbQcSbWm2m
-         C3t0yYnygXzXCnZRYHwN97aU/MX/zE7slxXUMFFxiCMkgwhZf6vK4cTn3gPqXNTONHzG
-         AUTm3JVRJIDOeufSPpcmZ1hfT6v1WA3qugX1XYsygfSjrpMDcEJp952WjOI/drx0pXx7
-         ilExfI5R/fvIZrrhuD01Tlf47C9Dm6mHr90tX3V6xY2SHrDHwLyo8VXKOVPBqwTTvzs3
-         hq5A==
-X-Forwarded-Encrypted: i=1; AJvYcCXxMPYBd0yvdLaDcTL1SG3iAvzfmRW07P2Pq7zHpA39LoRqvAw8OV2T2CYt0NVLJwpa61q939FNrsJZNEIqlg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwBHhH6N/Z0R2fPOHG2Wq79/Zy4YyvX40Vw6os1wKvMCgiP5OsS
-	MwNL90XGTsR7hHAb3091lGQ+n8QomlMq1h33XxxVw2Ov8RERbbFm5cfV06d3iME=
-X-Gm-Gg: ASbGncuXA0/y08KGh25xd5Ghuaca7ZBAw3VtYvu4mtmw6fUpCuCMUHYGTTu640OXRJ7
-	/pwdMuLHCarVhCxeAtXsFKeLGCdxfgrDymuxlyIZrNNQg3b1CF/jEE55/HD4QZT3c7YDKK1lIp2
-	ouCHa/pWALLJRpRD4jfGkBJg9nBAjHDa0OXIvIw43KlD6Qoyku4ts5DGp+GaI+DUBnAbcf93sVu
-	6d7eTKp29lPlgSGYPtvDGf+4J7J5jHED4Q6Jll9OHY5XdvuDunfEggghn6TfQOMK8aAyD94v5AI
-	iYDHVtlDcysDyGkfTpoWmKJs6B66D/0ikdTL
-X-Google-Smtp-Source: AGHT+IEURyWKTn2FJTwcAgejvV5qcX/pZ5aDO4aMQy2EhYkLh3O2M6VjdFgjz7JOFFtdAxgONBeT/Q==
-X-Received: by 2002:a05:6512:1242:b0:540:2122:faea with SMTP id 2adb3069b0e04-542212ef59emr2889028e87.14.1734722159575;
-        Fri, 20 Dec 2024 11:15:59 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5422382fb31sm544143e87.235.2024.12.20.11.15.56
+        d=1e100.net; s=20230601; t=1734722226; x=1735327026;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3NH9o3sRUQc2TBuzCNn4xd0xwtaijH4zEiuuPAl8O+Y=;
+        b=n54TbtLsTxG8okhYGngkWgUFLbVuW50DirVDftoVHMNj8lfFZE3FVD/t8aL6PezgRL
+         cWjwWeY2reZ3zgj2q6GL3NerdoHohkPVSBdvTI5HnFEluYJ2vtxDRnRqLTrSjFc4SefO
+         igcrXvCXTL+mdYLV3d6+MOkg7eBGU4j6VV7LFt031hsSdyEbcceR3mXBsjr4sumBKrir
+         P/c3O1V70QRt7sIftjfSTZoe3/KUTXDertLJU712qtEbqZXuN1qn79u1XjG0Q3waPWLD
+         GmIVS+geBITxqsW5Cf5QAtPTvlj/H70NEJoF2G347dFsOEyp2wwAxqQPLTSEVlLN+Mpe
+         U1uQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV6UKrdRRDe77xCYTu4msBRWXciROdbuLFeVE7Sl0H9R+wTy0ugsDg+KgkNjmjf8qH5y8D2YAMb7MHTH7qWtQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMgEHMieh+uVVSZVG6mcRTcEdE3Xouv2O/QHTbfQyHfIshMUKT
+	gvzNQVV6TGH947XPC3b0gmUtF5tKq3v7EXkfT2epsudg5jfFCRQFQ9ajeAXoZ+g=
+X-Gm-Gg: ASbGncvNYbjRm3Dv8V8npfeVPRBlcYnQ2zcAfDL40UHF3FSRUFORCiwuxfYKBOiVV7Y
+	Gwg8/kcg8S2u1YoPDkd+r5/ro5snSOwJ7zYcqJW9tDzQZNTVx0IDOwxpdMY5Zn9ORHi0gCqCPkQ
+	rdaMuhAJZWs9+revDKx9O/DtSbcll7gyO4zWfQ7nxREbEKXeOylLfOC4jn1dAPlPb8E1jv+/21x
+	eTAHCHtsoDJvgs++d9GER+kJ/nO8Zbg9RMYMfXqnXipH2Iemkuu6hkR7kNJ4EN0
+X-Google-Smtp-Source: AGHT+IEwbdV0vqS0CbZsf9gavU/S6dsgiTym1Hj3ImdXSFJiHjGHsRoZIPzHljOSqCM570WwNxfbig==
+X-Received: by 2002:a05:6512:1055:b0:53e:39e6:a1c1 with SMTP id 2adb3069b0e04-54229560360mr1595277e87.43.1734722225396;
+        Fri, 20 Dec 2024 11:17:05 -0800 (PST)
+Received: from umbar.lan ([192.130.178.90])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54223813877sm545141e87.149.2024.12.20.11.17.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2024 11:15:58 -0800 (PST)
-Date: Fri, 20 Dec 2024 21:15:55 +0200
+        Fri, 20 Dec 2024 11:17:04 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Cc: Maxime Ripard <mripard@kernel.org>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-Message-ID: <2ut2qwy2geh7f2f75wq2ttlh4xbniwow24rtnzaikit7sd5smt@nrm5wiigrrha>
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
- <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
- <20241218-wild-red-manatee-bb2a34@houat>
- <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
- <CAPY8ntAnJ1YDQee=pFSDY3+EXHj4_RZ-M1NMp2C3ZDdD5DsCKA@mail.gmail.com>
- <c7qyka3hsrggqevdwdlfcanzps3z63s4joryskijlbuztacmly@tadqjm2vkj24>
- <CAPY8ntDUaFnvkjkqES4AkrzZ2z659h3w5MFSd8vW04Eh-iJ1FA@mail.gmail.com>
+Subject: [PATCH v8 00/10] drm: add DRM HDMI Codec framework
+Date: Fri, 20 Dec 2024 21:16:57 +0200
+Message-Id: <20241220-drm-bridge-hdmi-connector-v8-0-2399dbae2990@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAPY8ntDUaFnvkjkqES4AkrzZ2z659h3w5MFSd8vW04Eh-iJ1FA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKnCZWcC/33S207EIBAG4FfZcC3KoUDZK9/DeMFh2CWxrdLar
+ NnsuzvdRq1pwh0/MN8EMlcyQskwkuPhSgrMecxDj6F9OJBwdv0JaI6YiWCiYUoyGktHfckRT86
+ xyzQMfQ9hGgq1niVthLJGAsH69wIpX+72yyvmcx7x2te91cyX3VXVXFXUmVNsqmwKptXKefH8l
+ ntXhsehnMjCzuKX4pzxGiWQMtJCsi7GZGFHyS1la5REKnDlUgxOtW2zo5oNJUSNapDyTdQ2apA
+ +2h2l/ihRf6BaKCW5hlYkzd2O0ltK1yiNlGIx8EY5G5jeUWZDcVOjzPJX3sYkvHaKq3/UbZ2UA
+ h+fOHzTOi7EuxGQ6Lo8HQ8L3eUxPP0saA+XCUtv35WVZBK/AgAA
+X-Change-ID: 20240530-drm-bridge-hdmi-connector-9b0f6725973e
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7525;
+ i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
+ bh=giLohpM0BRvWhMYAR/wf1lzclRNU18yQ7AASBU7KAiw=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnZcKtk+PPS9ufezpvTTjC4kTqVhFjjhD5e9vOj
+ 0BznWorBwiJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ2XCrQAKCRCLPIo+Aiko
+ 1TAiB/9wLaUi6L1U0wm9kaQGolW2F/JocJmm7XmS2xhVk+EutMK+TI68eC0FFtEFQOTPNa0grFr
+ BU27z3zSFRsJO9H3uAi5rvJE+A3WirWbzGhomKwyls/EHSjQ6zzrz4m38LdZXI37jKQ4oCQJkz1
+ mMfIxU5NvmIQfPyTifwZ3NuZwsQeo4CxNguZ+EbSZCCXW0uVivlx/W9y0wX3wexEF+LlOdMtuw9
+ 2rA1nGLaBjhsAxlc1YDMzCs2vElD7xprsAwL621D8TE5r92DUlBbgzdZrwX2mHf+VVRsj0ktHkn
+ gxmNAiIe70Fgr8rhAbp/jFHW/SGfLzvFuwyzbwkG0wvSWyzz
+X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
+ fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_111601_949073_7F0989A7 
-X-CRM114-Status: GOOD (  50.34  )
+X-CRM114-CacheID: sfid-20241220_111708_163196_919D2731 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,141 +140,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 20, 2024 at 03:00:47PM +0000, Dave Stevenson wrote:
-> On Fri, 20 Dec 2024 at 00:45, Dmitry Baryshkov
-> <dmitry.baryshkov@linaro.org> wrote:
-> >
-> > On Thu, Dec 19, 2024 at 04:16:37PM +0000, Dave Stevenson wrote:
-> > > On Wed, 18 Dec 2024 at 14:52, Dave Stevenson
-> > > <dave.stevenson@raspberrypi.com> wrote:
-> > > >
-> > > > Hi Maxime & Dmitry
-> > > >
-> > > > On Wed, 18 Dec 2024 at 07:59, Maxime Ripard <mripard@kernel.org> wrote:
-> > > > >
-> > > > > On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
-> > > > > > On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
-> > > > > > > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
-> > > > > > > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > > > > > > > framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> > > > > > > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > > > > > > > there was no simple way to get the drm_connector that stayed at the end
-> > > > > > > > of the bridge chain. At the same point the drm_hdmi_connector functions
-> > > > > > > > expected to get drm_connector instance.
-> > > > > > > >
-> > > > > > > > While looking for a way to solve the issue, I stumbled upon several
-> > > > > > > > deficiencies in existing hdmi_codec_ops implementations. Only few of the
-> > > > > > > > implementations were able to handle codec's 'plugged' callback. One
-> > > > > > > > third of the drivers didn't implement the get_eld() callback.
-> > > > > > > >
-> > > > > > > > Most of the issues can be solved if drm_connector handles
-> > > > > > > > hdmi-audio-codec on its own, delegating functionality to the actual
-> > > > > > > > implementation, be it a driver that implements drm_connector or
-> > > > > > > > drm_bridge.
-> > > > > > > >
-> > > > > > > > Implement such high-level framework, adding proper support for Audio
-> > > > > > > > InfoFrame generation to the LT9611 driver.
-> > > > > > > >
-> > > > > > > > Several design decisions to be kept in mind:
-> > > > > > > >
-> > > > > > > > - drm_connector_hdmi_codec is kept as simple as possible. It implements
-> > > > > > > >   generic functionality (ELD, hotplug, registration).
-> > > > > > > >
-> > > > > > > > - drm_hdmi_connector sets up HDMI codec device if the connector
-> > > > > > > >   is setup correspondingly (either I2S or S/PDIF is marked as
-> > > > > > > >   supported).
-> > > > > > > >
-> > > > > > > > - drm_bridge_connector provides a way to link HDMI audio codec
-> > > > > > > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
-> > > > > > > >   framework.
-> > > > > > > >
-> > > > > > > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
-> > > > > > > >   bits. Only TDA889x driver sets them, while it's safe to assume that
-> > > > > > > >   most of HDMI / DP devices do not support ARC / capture. I think the
-> > > > > > > >   drivers should opt-in capture support rather than having to opt-out of
-> > > > > > > >   it.
-> > > > > > >
-> > > > > > > Sorry if this isn't clear to me and I'm quite late to the party, but did
-> > > > > > > you test this on vc4 with both a pi3 and pi4, or was it just compile
-> > > > > > > tested?
-> > > > > >
-> > > > > > LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
-> > > > >
-> > > > > Yeah, we definitely need to test it on the pi3 (polling-based) and the
-> > > > > pi4 (irq-based) at least.
-> > > > >
-> > > > > Dave, Maira, could you give it a try?
-> > > >
-> > > > I'm on it.
-> > >
-> > > Basic checks look OK.
-> > > Pi3 and Pi4 tested, including 4k60 on Pi4 (enables scrambling). Audio
-> > > works, and all the EDID parsing seems to be correct.
-> > >
-> > > Ideally I would like to do a couple more tests though as I had a
-> > > couple of spontaneous reboots on Pi4 whilst hotplugging.
-> > > Most likely it was just grounding issues, as I can't think of an
-> > > obvious way for the kernel to be triggering an automatic reboot. They
-> > > seemed to go away when I had enabled drm.debug=0x14, but more likely
-> > > I'd connected the serial port and therefore provided another ground.
-> > > Please don't hold the patches waiting on me though - I don't know when
-> > > I'll have time to do them.
-> >
-> > Tested-by?
-> 
-> I'd held off hoping to get the extra testing done today, but that
-> hasn't happened, and today is my last day before the Christmas break.
-> So based on what I've done so far:
-> 
-> Tested-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+framework, I stumbled upon an issue while handling the Audio InfoFrames.
+The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+there was no simple way to get the drm_connector that stayed at the end
+of the bridge chain. At the same point the drm_hdmi_connector functions
+expected to get drm_connector instance.
 
-Thank you!
+While looking for a way to solve the issue, I stumbled upon several
+deficiencies in existing hdmi_codec_ops implementations. Only few of the
+implementations were able to handle codec's 'plugged' callback. One
+third of the drivers didn't implement the get_eld() callback.
 
-> 
-> > >
-> > >
-> > > Also unrelated to this patch set, I have noted I'm getting
-> > > [   60.780897] WARNING: CPU: 3 PID: 501 at
-> > > drivers/gpu/drm/vc4/vc4_hvs.c:743 __vc4_hvs_stop_channel+0x148/0x164
-> > > [vc4]
-> > > ...
-> > > [   60.781192]  __vc4_hvs_stop_channel+0x148/0x164 [vc4] (P)
-> > > [   60.781212]  __vc4_hvs_stop_channel+0x40/0x164 [vc4] (L)
-> > > [   60.781230]  vc4_hvs_stop_channel+0x30/0x3c [vc4]
-> > > [   60.781248]  vc4_crtc_disable+0x140/0x1e8 [vc4]
-> > > [   60.781266]  vc4_crtc_atomic_disable+0x98/0xb8 [vc4]
-> > > [   60.781284]  disable_outputs+0x22c/0x33c [drm_kms_helper]
-> > > [   60.781326]  drm_atomic_helper_commit_modeset_disables+0x1c/0x4c
-> > > [drm_kms_helper]
-> > > [   60.781347]  vc4_atomic_commit_tail+0x10c/0x8e4 [vc4]
-> > > [   60.781364]  commit_tail+0xa0/0x188 [drm_kms_helper]
-> > > [   60.781385]  drm_atomic_helper_commit+0x16c/0x180 [drm_kms_helper]
-> > > [   60.781406]  drm_atomic_commit+0x88/0xc4 [drm]
-> > > [   60.781500]  drm_client_modeset_commit_atomic+0x204/0x264 [drm]
-> > > [   60.781553]  drm_client_modeset_commit_locked+0x5c/0x198 [drm]
-> > > [   60.781603]  drm_client_modeset_commit+0x30/0x58 [drm]
-> > > [   60.781652]  __drm_fb_helper_restore_fbdev_mode_unlocked+0xb4/0xe8
-> > > [drm_kms_helper]
-> > > [   60.781674]  drm_fb_helper_hotplug_event+0x108/0x12c [drm_kms_helper]
-> > > [   60.781695]  drm_fbdev_client_hotplug+0x28/0xd4 [drm_client_lib]
-> > > [   60.781700]  drm_client_dev_hotplug+0xc8/0x12c [drm]
-> > > [   60.781750]  drm_connector_helper_hpd_irq_event+0x70/0xb0 [drm_kms_helper]
-> > > [   60.781771]  vc4_hdmi_hpd_irq_thread+0x2c/0x3c [vc4]
-> > > [   60.781790]  irq_thread_fn+0x2c/0xa8
-> > > [   60.781799]  irq_thread+0x16c/0x2f4
-> > > [   60.781805]  kthread+0x118/0x11c
-> > > [   60.781813]  ret_from_fork+0x10/0x20
-> > > On first plugging or unplugging a second monitor. I suspect that is
-> > > spurious though and I'll look into it, but probably not this side of
-> > > the Christmas break.
-> > >
-> > >   Dave
-> >
-> > --
-> > With best wishes
-> > Dmitry
+Most of the issues can be solved if drm_connector handles
+hdmi-audio-codec on its own, delegating functionality to the actual
+implementation, be it a driver that implements drm_connector or
+drm_bridge.
 
+Implement such high-level framework, adding proper support for Audio
+InfoFrame generation to the LT9611 driver.
+
+Several design decisions to be kept in mind:
+
+- drm_connector_hdmi_codec is kept as simple as possible. It implements
+  generic functionality (ELD, hotplug, registration).
+
+- drm_hdmi_connector sets up HDMI codec device if the connector
+  is setup correspondingly (either I2S or S/PDIF is marked as
+  supported).
+
+- drm_bridge_connector provides a way to link HDMI audio codec
+  funcionality in the drm_bridge with the drm_connector_hdmi_codec
+  framework.
+
+- It might be worth reverting the no_i2s_capture / no_spdif_capture
+  bits. Only TDA889x driver sets them, while it's safe to assume that
+  most of HDMI / DP devices do not support ARC / capture. I think the
+  drivers should opt-in capture support rather than having to opt-out of
+  it.
+
+Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+---
+Changes in v8:
+- Mass rename hdmi_codec -> hdmi_audio, drop redundant audio_ prefixes
+  from several callbacks (Maxime)
+- Fix the commit message to stop mentioning
+  drm_atomic_helper_connector_hdmi_update_edid() (Maxime)
+- Link to v7: https://lore.kernel.org/r/20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org
+
+Changes in v7:
+- Renamed drm_connector_hdmi_codec_init() to
+  drm_connector_hdmi_audio_init() (Maxime)
+- Added extra empty line in struct drm_connector_hdmi_codec_funcs
+  (Maxime)
+- Dropped if/else from drm_bridge_connector_audio_startup() (Maxime)
+- Added optional .read_edid() callback and reworked
+  drm_atomic_helper_connector_hdmi_hotplug() to use that callback
+  instead of having an internal function which accepts EDID (Maxime)
+- Made VC4 and drm_bridge_connector use .force() in addition to
+  .detect() and .detect_ctx().
+- Moved HDMI codec functions out of struct drm_connector_hdmi_funcs.
+  Assign them from drm_connector_hdmi_audio_init().
+- Documented struct drm_connector_hdmi_codec and its fields.
+- Link to v6: https://lore.kernel.org/r/20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org
+
+Changes in v6:
+- Dropped extra checks on the EDID (Jani)
+- Reworked drmm_connector_hdmi_init(), splitting the codec init to a
+  separate optional function rather than passing arguments through
+  drm_connector (Maxime)
+- Reworked EDID update functions (Maxime, Jani)
+- No longer refresh the EDID in vc4_hdmi_connector_get_modes(), it is
+  redundant as vc4_hdmi_connector_detect_cxtx() already does that.
+- Link to v5: https://lore.kernel.org/r/20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org
+
+Changes in v5:
+- Moved prototypes from drm_internal.h to
+  drm_connector_hdmi_codec_internal.h (Jani)
+- Rebased on top of ELD mutex series, resolving the long-standing FIXME
+- Converted the VC4 driver (compile-tested only)
+- Link to v4: https://lore.kernel.org/r/20241122-drm-bridge-hdmi-connector-v4-0-b4d69d6e3bd9@linaro.org
+
+Changes in v4:
+- Added forward declaration of struct drm_edid (LKP)
+- Fixed kerneldoc for drm_atomic_helper_connector_hdmi_update_edid().
+- Link to v3: https://lore.kernel.org/r/20241109-drm-bridge-hdmi-connector-v3-0-c15afdca5884@linaro.org
+
+Changes in v3:
+- Dropped RFC status
+- Fixed drm_connector_hdmi_codec_init() kerneldoc (LKP)
+- Dropped double underscore prefix from
+  __drm_atomic_helper_connector_hdmi_update_edid() (Jani)
+- Moved drm_edid_free() from
+  drm_atomic_helper_connector_hdmi_update_edid() to the caller's side
+  (Jani)
+- Link to v2: https://lore.kernel.org/r/20241101-drm-bridge-hdmi-connector-v2-0-739ef9addf9e@linaro.org
+
+Changes in v2:
+- Use drm_atomic_get_old_connector_for_encoder in atomic_disable() to
+  prevent it from crashing
+- Reworked HDMI codec init/exit, removing drmm_ calls (Maxime)
+- Drafted the helper to be called from .detect_ctx() that performs HDMI
+  Connector maintenance duties (Maxime)
+- Moved no_capture_mute to struct hdmi_codec_pdata
+- Link to v1: https://lore.kernel.org/r/20240615-drm-bridge-hdmi-connector-v1-0-d59fc7865ab2@linaro.org
+
+---
+Dmitry Baryshkov (10):
+      ASoC: hdmi-codec: pass data to get_dai_id too
+      ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
+      drm/connector: implement generic HDMI audio helpers
+      drm/bridge: connector: add support for HDMI codec framework
+      drm/bridge: lt9611: switch to using the DRM HDMI codec framework
+      drm/display/hdmi: implement hotplug functions
+      drm/bridge_connector: hook drm_atomic_helper_connector_hdmi_hotplug()
+      drm/vc4: hdmi: switch to using generic HDMI Codec infrastructure
+      drm/vc4: hdmi: stop rereading EDID in get_modes()
+      drm/vc4: hdmi: use drm_atomic_helper_connector_hdmi_hotplug()
+
+ drivers/gpu/drm/Makefile                           |   1 +
+ drivers/gpu/drm/bridge/adv7511/adv7511_audio.c     |   3 +-
+ drivers/gpu/drm/bridge/analogix/anx7625.c          |   3 +-
+ drivers/gpu/drm/bridge/ite-it66121.c               |   2 +-
+ drivers/gpu/drm/bridge/lontium-lt9611.c            | 169 ++++++++----------
+ drivers/gpu/drm/bridge/lontium-lt9611uxc.c         |   3 +-
+ drivers/gpu/drm/bridge/sii902x.c                   |   5 +-
+ .../gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c    |   3 +-
+ drivers/gpu/drm/display/drm_bridge_connector.c     | 137 ++++++++++++++-
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  56 ++++++
+ drivers/gpu/drm/drm_connector.c                    |   5 +
+ drivers/gpu/drm/drm_connector_hdmi_audio.c         | 189 +++++++++++++++++++++
+ drivers/gpu/drm/exynos/exynos_hdmi.c               |   2 +-
+ drivers/gpu/drm/i2c/tda998x_drv.c                  |   2 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |   2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |   2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             |   2 +-
+ drivers/gpu/drm/sti/sti_hdmi.c                     |   2 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.c                     | 103 +++--------
+ drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 -
+ include/drm/display/drm_hdmi_state_helper.h        |   5 +
+ include/drm/drm_bridge.h                           |  74 ++++++++
+ include/drm/drm_connector.h                        | 141 +++++++++++++++
+ include/sound/hdmi-codec.h                         |   7 +-
+ sound/soc/codecs/hdmi-codec.c                      |   4 +-
+ 25 files changed, 716 insertions(+), 208 deletions(-)
+---
+base-commit: 74ef9527bd87ead62deabe749a6d867af748d448
+change-id: 20240530-drm-bridge-hdmi-connector-9b0f6725973e
+
+Best regards,
 -- 
-With best wishes
-Dmitry
+Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+
 
