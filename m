@@ -4,81 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABCEE77188
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2024 01:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E21E77184
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2024 09:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ETFCUGnQxU1mgmCV42X8/dVRp8fN/6xEKktgq3C8xNw=; b=tOln/uks8nooo6yCBP0L11l2o9
-	6/MHSbC/0OUOoTJ5mIWA+ULIqtbjCcONTgViKHVWccxHJDdnonqDmMS/b7XScLaTeXMKDodIkiVvQ
-	7+QP4G+twG5fVngeqapiFwrAvzHExCFi6Xs7Zr2ObeqN+Ac7vADrl9nHUyc+XihE0dTpVNN4+6/PW
-	Bycv1H1lTb5p8aOHQ+hK0UaNHMNDFmSOlgDxc6bjcPG3WwSaJAnygEdow1GhTTw1Gs7cVT2g2z0bc
-	9I/i4r3xD2/JKNwLws4k9dkxnK9SoImLgplo8OGYTNmV9AnTU6BRA5d+Bp4HT3JzxqmMgXBtbeEvi
-	gfJEabTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F7wU5N3Rc+yxdkSrB3ZsiwvxSqXteUyf9TiI9dS8GWc=; b=0IVf+xIl1Ld7riwn0x7piT84cN
+	SQKNmQcoyTaBSDyUapd8mHWrDf95T+J97z4Hy0Eh4tB/3pabIWcoOvUZCyEPyFyF97ZKLHDrDiM/D
+	PkBJ96pY93m6ANCXx9J7x8jTtJ8GLna7Dq0knpm+mCRXQdwzdDWP9I7rt0JadbZJ/2t3uxamd/vKy
+	22kseRfJlqUXFerpxCYZaFbClfJ8u9yzB5JPcMV+WntMJlPF04hUDGYolws/Ay5Zgy6GTdD5UWo3X
+	kb+4fdDNS9n7d9gZ5xvdWH2CreJNeRN3DfisgTusBKNXgELaE5ppXlHyV6OtXnQFlllKwHIu3hUCh
+	rR1fpcmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOoY5-00000006PWk-3tlj;
-	Sat, 21 Dec 2024 01:44:57 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1tOwAP-00000006oue-3Tvo;
+	Sat, 21 Dec 2024 09:53:01 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOoWt-00000006POd-1S0H;
-	Sat, 21 Dec 2024 01:43:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1734745424; x=1766281424;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=l9OB3WeZBCa7EjzzMv8qGnQJVG59xF8v5bFcZYOKStU=;
-  b=kGiXr4vKUcMr7rVzuSBNA9tZcXWlA+UeMD4xpmflspWSWVw912oPTW4T
-   WZduGckF+GsKzNLKLkqZ/u7uZresCJ/UPV3OiMKGJX+DcMBymqWdRb0wW
-   noj6y7Y94oZGIEcgnSY1CDmZOKWJhFR1luJSZawefZE09BfeJiW/q8EQW
-   n5FRUCsGlidfw2/CzfSnl1ROywxyLFqEovWGKNmISWl6UF41tYJrAGW0u
-   TJYSOuexzJ8ZuUXDW12UO+0nhrcGmdOBi1f8OUgk9aWhX2FO4+M0m15qv
-   dfeaD+3updCMzxHlQz0KvPlk9VrX+sM033o1ax5oXuFeB3n64fYXzJIBW
-   A==;
-X-CSE-ConnectionGUID: Kq9yYEBVRS+LOn4gIvN94w==
-X-CSE-MsgGUID: jLdtaHZnRwKerb1wCHeI3Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11292"; a="38984752"
-X-IronPort-AV: E=Sophos;i="6.12,252,1728975600"; 
-   d="scan'208";a="38984752"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Dec 2024 17:43:42 -0800
-X-CSE-ConnectionGUID: j88nWNy4ReCZE3bOsc1sBA==
-X-CSE-MsgGUID: K+zc8JYvTzyh+eKzHL8GIw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,252,1728975600"; 
-   d="scan'208";a="103524778"
-Received: from lkp-server01.sh.intel.com (HELO a46f226878e0) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 20 Dec 2024 17:43:39 -0800
-Received: from kbuild by a46f226878e0 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tOoWn-0001qd-0D;
-	Sat, 21 Dec 2024 01:43:37 +0000
-Date: Sat, 21 Dec 2024 09:42:42 +0800
-From: kernel test robot <lkp@intel.com>
-To: Crystal Guo <crystal.guo@mediatek.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 1/2] memory/mediatek: Add an interface to get current DDR
- data rate
-Message-ID: <202412210955.FvO0Pee3-lkp@intel.com>
-References: <20241212090029.13692-2-crystal.guo@mediatek.com>
+	id 1tOwAN-00000006ort-0svv
+	for linux-mediatek@lists.infradead.org;
+	Sat, 21 Dec 2024 09:53:00 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4363dc916ceso23461845e9.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 21 Dec 2024 01:52:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1734774777; x=1735379577; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=F7wU5N3Rc+yxdkSrB3ZsiwvxSqXteUyf9TiI9dS8GWc=;
+        b=ALczjC8i76jdDT7NOMVQ5lJdewHK7H8KsLRDC02Dc49T8SLKU5dFrXmwaZ1r0tt725
+         h1COt4VePE+STrPo5dHAsrStCVH2GpTMQ5Jfhz7SqMU/mqSulsXCqxmfzU9ZXc7RX5DP
+         FptbEy75tT9plSHALNDLEGqQNfOmQaX7oBpSvIZRLdayLDOydHECEfqHIKNATspG+1SZ
+         t1moKgX0cibPxU8SYlEawuU2P1M9g/2bpKcQpDn+04qv3YVoVS11LRUTHXo9dyRFJ1Y8
+         nXV6onlibtOwjx+PNcybWkDSX0zPBRh3kygXosCdmYW/Qbk0o6+1rCBkvyiwBvMB3tf0
+         InNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734774777; x=1735379577;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=F7wU5N3Rc+yxdkSrB3ZsiwvxSqXteUyf9TiI9dS8GWc=;
+        b=CrHB4FO4Wft7cRrmiKn2SrY1LbZCfjcFvVz6fE399XWvXweq02wS0hhqwGce7B+Qsr
+         Cjl46CvQNsKKfFb4ppQxx3zeqJ7jRrCy6mPMPoxgghItu92FoNaUwjg+NapYCvVdTAUP
+         umozcRqOVQUFj1gpLt3hS+h/wQLneCI56337WS+62t3pnJvI10QkQ6UbxIPGkEggwNhc
+         KXohK6uBdfWkvW2iIHNbb++l5fdVZv965iD0ZX+QhaM4W8MCBJb7ukRmvqO4hIWwj3nG
+         pFqmaJafsOvYDRnLPpVWHPeaKrROfKWQ2uGjMO2wfeqQbtqw0Ov6XM4iUwG0/3ce7bhs
+         mLaA==
+X-Forwarded-Encrypted: i=1; AJvYcCWpmcZGU6TdajXRaxa24RrVAHph7/oAwXnoeQpprjUNQzoxAquhRx1u9nJE+UbEBE7vRSTVCsOlOs72KccJcw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy9mxmFBRpo8wbefIS/HLiR8eH/fGteWPazHuCO5XXQGgzyyId/
+	ytXQJKBQ0Tc/DAUVEs62SY/Q10JHP7RJcIo/xVHDpjonUewjo3Ug
+X-Gm-Gg: ASbGncuCh/YGeQ/Gj7H6/QeGHRPhhOQBSWY70uPoAFIx9Ux4OePMhn8hNmv22ySVUur
+	40CfPioPzrSLHWF/o87MI9StbpRR+k2ewj9abcrNsbSfKLsZNsgn6kttAULqNpeDF29r25uskoa
+	gErqzXLFPRTwbAeDKEWOO6RFL4GCy7/0T3WYEjzkQbbh8P6SgCfhzZw6VOJSMyb/We0Qv4f5ZyL
+	5wJtFLhyHpVvZeW7UE5YxQPh2sPxcE6DN2IHMtY0rkzpZjUMWSvvQApynT8ndtwHnSGXyaNNlvk
+	tmLR19pk+8OdxpUZ4FSxkyDlNbidPt97LfqdnK4=
+X-Google-Smtp-Source: AGHT+IHjxLdXW8mbGjkft5APD+lMWkYg/9/MWVjfMYYRs7EuMja17eWwm0wb+Q5Gfbj7nNRta4GP2Q==
+X-Received: by 2002:a05:600c:4f89:b0:431:15f1:421d with SMTP id 5b1f17b1804b1-4365fc09731mr81614135e9.16.1734774776704;
+        Sat, 21 Dec 2024 01:52:56 -0800 (PST)
+Received: from [192.168.10.194] (net-188-216-175-96.cust.vodafonedsl.it. [188.216.175.96])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436612899f0sm70967715e9.38.2024.12.21.01.52.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 21 Dec 2024 01:52:56 -0800 (PST)
+Message-ID: <1eeecc68-be5f-46e6-aed6-594c4b32df21@gmail.com>
+Date: Sat, 21 Dec 2024 10:52:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241212090029.13692-2-crystal.guo@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] bluetooth: mt7921: Crash on Resume From Suspend And
+ Hibernate
+From: Sergio Callegari <sergio.callegari@gmail.com>
+To: jglotzer@gmail.com
+Cc: Aaron.Hou@mediatek.com, Chris.Lu@mediatek.com, Deren.Wu@mediatek.com,
+ Hao.Qin@mediatek.com, Sean.Wang@mediatek.com, johan.hedberg@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, luiz.dentz@gmail.com,
+ marc.payne@mdpsys.co.uk, marcel@holtmann.org, regressions@leemhuis.info,
+ regressions@lists.linux.dev, steve.lee@mediatek.com, tiwai@suse.de
+References: <20241127231432.8112-1-jglotzer@gmail.com>
+ <ad78ad62-ebd2-40d7-8a6d-623ae947584c@gmail.com>
+Content-Language: en-US, it-IT
+In-Reply-To: <ad78ad62-ebd2-40d7-8a6d-623ae947584c@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_174343_434585_685F9BE0 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20241221_015259_274939_76A5533D 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,52 +105,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Crystal,
 
-kernel test robot noticed the following build errors:
+On 06/12/2024 03:29, John Glotzer wrote:
+ > Sergio,
+ >
+ > My apologies, I neglected to mention that my setup is PCI, and not USB.
+ >
+Thanks for confirming, good to see that the issue can be reliably 
+reproduced with a setup similar to mine!
 
-[auto build test ERROR on krzk-mem-ctrl/for-next]
-[also build test ERROR on robh/for-next krzk-dt/for-next linus/master v6.13-rc3 next-20241220]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+ >
+ > What I am struggling to understand is given how easy this issue is to 
+reproduce -  an AMD CPU, Mediatek MT7922 wifi/bluetooth chip,
+ > and a 6.11 kernel, you suspend, and then wake up, kernel panics -  I 
+would have thought that the interested parties would
+ > make this a priority.
+ >
+I wonder it it might be possible to revert back to the code in kernel 
+6.10 (that worked fine), until the current issue can be triaged and fixed.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Crystal-Guo/memory-mediatek-Add-an-interface-to-get-current-DDR-data-rate/20241212-170306
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/krzk/linux-mem-ctrl.git for-next
-patch link:    https://lore.kernel.org/r/20241212090029.13692-2-crystal.guo%40mediatek.com
-patch subject: [PATCH 1/2] memory/mediatek: Add an interface to get current DDR data rate
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20241221/202412210955.FvO0Pee3-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241221/202412210955.FvO0Pee3-lkp@intel.com/reproduce)
+The other way round, I am getting the impression that other changes are 
+getting stacked on top of the faulty ones, further complicating the picture.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202412210955.FvO0Pee3-lkp@intel.com/
+As of today, with kernel 6.11.11, the issue has /worsened/ for me. On 
+6.11.4 I could hibernate/resume by kfkilling bluetooth only, which was 
+not so bad, since I only use bluetooth rarely. With 6.11.11 I need to 
+rfkill the wlan too.
 
-All errors (new ones prefixed by >>):
+Can this be confirmed too?
 
->> drivers/memory/mediatek/mtk-dramc.c:300:19: error: initialization of 'void (*)(struct platform_device *)' from incompatible pointer type 'int (*)(struct platform_device *)' [-Wincompatible-pointer-types]
-     300 |         .remove = dramc_remove,
-         |                   ^~~~~~~~~~~~
-   drivers/memory/mediatek/mtk-dramc.c:300:19: note: (near initialization for 'dramc_drv.<anonymous>.remove')
+Sergio
 
-
-vim +300 drivers/memory/mediatek/mtk-dramc.c
-
-   297	
-   298	static struct platform_driver dramc_drv = {
-   299		.probe = dramc_probe,
- > 300		.remove = dramc_remove,
-   301		.driver = {
-   302			.name = "dramc_drv",
-   303			.owner = THIS_MODULE,
-   304			.of_match_table = dramc_of_ids,
-   305		},
-   306	};
-   307	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
