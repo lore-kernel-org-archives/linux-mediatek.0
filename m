@@ -4,91 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C621CE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2024 22:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABCEE77188
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2024 01:44:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PPBNquw9bDve05ZXRyZElIGNn95SHQ0uPV8Ww/9iWX8=; b=XfyLEIkNtXIEhA1FoB8PscIsmK
-	if/CUQCphcLSqUFVFkak+RpPThzKMV2iSXIB43ghz6GjosNlI5SgTYNWUdWqLAh2i4pvRyn5cC5AH
-	3T2r0urmPfWF+oTSEQiE/QHq8GlcjhCsE+avVgy48yfo/O9X80Ofw6jmx33stWi1xJajFWrTgxZbi
-	FUlYmM4yfZ+DduIlNeVbtAmDnJC32ER2qSa/usmOjHQi9U7DJOSAuTrVOw+GyEtxEGgLkRDezyFpS
-	7NeVx+T8kRTANp/fuZKc7JDgE+GBfCL/bEg4RXUujxbEhJjNF2nzcETj38z5e9uhTvv0IKs6CgdEB
-	et7lX+tQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ETFCUGnQxU1mgmCV42X8/dVRp8fN/6xEKktgq3C8xNw=; b=tOln/uks8nooo6yCBP0L11l2o9
+	6/MHSbC/0OUOoTJ5mIWA+ULIqtbjCcONTgViKHVWccxHJDdnonqDmMS/b7XScLaTeXMKDodIkiVvQ
+	7+QP4G+twG5fVngeqapiFwrAvzHExCFi6Xs7Zr2ObeqN+Ac7vADrl9nHUyc+XihE0dTpVNN4+6/PW
+	Bycv1H1lTb5p8aOHQ+hK0UaNHMNDFmSOlgDxc6bjcPG3WwSaJAnygEdow1GhTTw1Gs7cVT2g2z0bc
+	9I/i4r3xD2/JKNwLws4k9dkxnK9SoImLgplo8OGYTNmV9AnTU6BRA5d+Bp4HT3JzxqmMgXBtbeEvi
+	gfJEabTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOlrK-00000006DyA-43al;
-	Fri, 20 Dec 2024 22:52:38 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1tOoY5-00000006PWk-3tlj;
+	Sat, 21 Dec 2024 01:44:57 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOlrH-00000006DxH-1k9l
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Dec 2024 22:52:36 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-216426b0865so23133085ad.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Dec 2024 14:52:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1734735154; x=1735339954; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=PPBNquw9bDve05ZXRyZElIGNn95SHQ0uPV8Ww/9iWX8=;
-        b=jEqbnhm9RgiPpdKEODAhWlvOmnK18AWek0AKiUBqUbVSDxRbsy6lE9VKJy8jZ8E6R2
-         CMM2Rrqu6U6XLx4IB05tplVOeBp9a4tGoLqOl356YWC1MjS3mc29ITbN87fSvXgWUt7U
-         vqPDky4pg35kC5OWd+8ziOyC21mklsqmMTTSU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734735154; x=1735339954;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=PPBNquw9bDve05ZXRyZElIGNn95SHQ0uPV8Ww/9iWX8=;
-        b=XBlQ1AiLVMdO3Dpibd79pnyWI61W/+tWyvMlhljnlDkiSseDn9y1EBwmtVgN1eqLJY
-         xgZ+hKE+63EUmRwy55aq1XhhGw2tF1SpsbGqpCiPhSBfqEz/7upifdD+d5Pm1Ty+8tC9
-         Z8e3YCqUOJj5H2ayuFUmHhpjRzu11r1Mpk8CAqXdvWG7NTbO/caEUsKE7D98JcMiKrVM
-         YiDhPkAwygFO1AC9C6fsV4wCx4rc0mLTsiXuo8gEphgh1lK8YQUFN4ORtRfwu66h7kng
-         iT8Wg3ZHf5w2jxfvWmAEs26f5jzEUjhjzmtgtaAE/9SlPzjTVYj9ziZsyezM90RQvbGr
-         8ghg==
-X-Forwarded-Encrypted: i=1; AJvYcCXTGpawxQLHYvOPXh9BvHf7ie7Ngy6p5OAeQBdx4eF1LNBsCn1Ncoix+ntSOd4UH62M5fmvKiEJQ2SxqK1LSA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxd2MVfoN8s1lCQXNNMxtO9nGVFJQldhrnUDR7+cUZBYiKwEiOm
-	PWsuFBhH6NhMmJHsCpQyYNiU+XisALSDt1J9/OqIxbkOq0klK0fXBXjmVFK/PA==
-X-Gm-Gg: ASbGncsEQd0NsYtF710tLnvPyThyVCmTeslYJ3ktHPCRM8dzbds1/OnbllQyDOxBuKw
-	TqvvSKYKw5yh+NIg1Z+WrW4lAJXEnsdkMoR6y0D0QJJD2Kc6kBCTufixFDJ5g8K/KHay6gB3IhO
-	oVdPlmoWZt2GE7rS1l5Ga9VHns29mtG+4cec/ubF/iOaCFoUhB05SRHXB9b9OI+EaHjdM/eNUYI
-	xwY5JHIomCyb7mxaX5kYZZmSGKYPdmby2EEm2DortYoc0R6CIsZ/pYjbyo9Zo/qXuTnCgvlH7pZ
-X-Google-Smtp-Source: AGHT+IGAQkf1R3nFR0oaCc4mviuMrzg5Lh74UTX9WYEEnS7yyvUzZLFXHXFR6wAwBwTUIv3/nUaYnA==
-X-Received: by 2002:a17:903:22c5:b0:215:7faa:ece2 with SMTP id d9443c01a7336-219e6f145a8mr61141965ad.35.1734735154069;
-        Fri, 20 Dec 2024 14:52:34 -0800 (PST)
-Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:ac44:423a:e4fb:5757])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-219dc964b54sm34177065ad.1.2024.12.20.14.52.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2024 14:52:33 -0800 (PST)
-From: Douglas Anderson <dianders@chromium.org>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	id 1tOoWt-00000006POd-1S0H;
+	Sat, 21 Dec 2024 01:43:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1734745424; x=1766281424;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=l9OB3WeZBCa7EjzzMv8qGnQJVG59xF8v5bFcZYOKStU=;
+  b=kGiXr4vKUcMr7rVzuSBNA9tZcXWlA+UeMD4xpmflspWSWVw912oPTW4T
+   WZduGckF+GsKzNLKLkqZ/u7uZresCJ/UPV3OiMKGJX+DcMBymqWdRb0wW
+   noj6y7Y94oZGIEcgnSY1CDmZOKWJhFR1luJSZawefZE09BfeJiW/q8EQW
+   n5FRUCsGlidfw2/CzfSnl1ROywxyLFqEovWGKNmISWl6UF41tYJrAGW0u
+   TJYSOuexzJ8ZuUXDW12UO+0nhrcGmdOBi1f8OUgk9aWhX2FO4+M0m15qv
+   dfeaD+3updCMzxHlQz0KvPlk9VrX+sM033o1ax5oXuFeB3n64fYXzJIBW
+   A==;
+X-CSE-ConnectionGUID: Kq9yYEBVRS+LOn4gIvN94w==
+X-CSE-MsgGUID: jLdtaHZnRwKerb1wCHeI3Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11292"; a="38984752"
+X-IronPort-AV: E=Sophos;i="6.12,252,1728975600"; 
+   d="scan'208";a="38984752"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Dec 2024 17:43:42 -0800
+X-CSE-ConnectionGUID: j88nWNy4ReCZE3bOsc1sBA==
+X-CSE-MsgGUID: K+zc8JYvTzyh+eKzHL8GIw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,252,1728975600"; 
+   d="scan'208";a="103524778"
+Received: from lkp-server01.sh.intel.com (HELO a46f226878e0) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 20 Dec 2024 17:43:39 -0800
+Received: from kbuild by a46f226878e0 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tOoWn-0001qd-0D;
+	Sat, 21 Dec 2024 01:43:37 +0000
+Date: Sat, 21 Dec 2024 09:42:42 +0800
+From: kernel test robot <lkp@intel.com>
+To: Crystal Guo <crystal.guo@mediatek.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-pci@vger.kernel.org
-Subject: [PATCH] PCI: mediatek-gen3: Enable async probe by default
-Date: Fri, 20 Dec 2024 14:52:05 -0800
-Message-ID: <20241220145205.1.Ibf2563896c3b1fc133bb46d3fc96ad0041763922@changeid>
-X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 1/2] memory/mediatek: Add an interface to get current DDR
+ data rate
+Message-ID: <202412210955.FvO0Pee3-lkp@intel.com>
+References: <20241212090029.13692-2-crystal.guo@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241212090029.13692-2-crystal.guo@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_145235_485777_DC7F280D 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241220_174343_434585_685F9BE0 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,29 +93,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Like other PCIe drivers, the mediatek-gen3 driver has a fairly slow
-probe. Turn on async probe since there's no reason to block the rest
-of the system.
+Hi Crystal,
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+kernel test robot noticed the following build errors:
 
- drivers/pci/controller/pcie-mediatek-gen3.c | 1 +
- 1 file changed, 1 insertion(+)
+[auto build test ERROR on krzk-mem-ctrl/for-next]
+[also build test ERROR on robh/for-next krzk-dt/for-next linus/master v6.13-rc3 next-20241220]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index be52e3a123ab..49512786d5e4 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -1301,6 +1301,7 @@ static struct platform_driver mtk_pcie_driver = {
- 		.name = "mtk-pcie-gen3",
- 		.of_match_table = mtk_pcie_of_match,
- 		.pm = &mtk_pcie_pm_ops,
-+		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
- 	},
- };
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/Crystal-Guo/memory-mediatek-Add-an-interface-to-get-current-DDR-data-rate/20241212-170306
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/krzk/linux-mem-ctrl.git for-next
+patch link:    https://lore.kernel.org/r/20241212090029.13692-2-crystal.guo%40mediatek.com
+patch subject: [PATCH 1/2] memory/mediatek: Add an interface to get current DDR data rate
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20241221/202412210955.FvO0Pee3-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241221/202412210955.FvO0Pee3-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202412210955.FvO0Pee3-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/memory/mediatek/mtk-dramc.c:300:19: error: initialization of 'void (*)(struct platform_device *)' from incompatible pointer type 'int (*)(struct platform_device *)' [-Wincompatible-pointer-types]
+     300 |         .remove = dramc_remove,
+         |                   ^~~~~~~~~~~~
+   drivers/memory/mediatek/mtk-dramc.c:300:19: note: (near initialization for 'dramc_drv.<anonymous>.remove')
+
+
+vim +300 drivers/memory/mediatek/mtk-dramc.c
+
+   297	
+   298	static struct platform_driver dramc_drv = {
+   299		.probe = dramc_probe,
+ > 300		.remove = dramc_remove,
+   301		.driver = {
+   302			.name = "dramc_drv",
+   303			.owner = THIS_MODULE,
+   304			.of_match_table = dramc_of_ids,
+   305		},
+   306	};
+   307	
+
 -- 
-2.47.1.613.gc27f4b7a9f-goog
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
