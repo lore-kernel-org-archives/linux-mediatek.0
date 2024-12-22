@@ -4,87 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B002E7718B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2024 21:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD41AE77188
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Dec 2024 21:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C8roFy6r1iFnafqqOQEAKfDjOsYW4pss6G10wN0TzYo=; b=VyBpfHLID12Mgh79Yxljc8XNzi
-	Wn7SfARyh0r8S8Enk/mluKGu0AY28INR62kJURnGbzS9RHVyLc6Byr+bgu4Q+RVWffLfqVMQOt2gE
-	mBm2oUFFVslYJqJkLzdForSrdBRyLijVYiFZzc20pEs3oXM8/Yu0emepEkCORnL9s8KCMU7DlI4Mc
-	Tve0ThqiPn6PLxUAnhePjPT+H9OR+h0EdA0mpJxRG5d9GM75nfvFfuJ/A3ycyI2/UufNijksMeodb
-	f1zKs56004JVL+flT5VQOLKEwS/pXVQZyaxF2aajYgbU59bQmb7RvVxD2tW7qOvqsKu7IED7J7KLs
-	daoJdWYw==;
+	bh=w1oye4z15+lr2o1w+EQ1x0Cmk8LMpN4hRUXuCC9sKgc=; b=L9pPKKnKmHA5ffWc5CTd9Wy85P
+	drzoCww7JX3/ig/W0InuE4c3kDQyGeQBFye3HU/xMqbL06xOK1O+mREsbOsQwc9M31SMuPOyHEKlc
+	v1KIOZH/HN6Q1B0ioDhBF2grsDe4sli0NvgXvpKtDSt8mnTbORHg3rl+pMFNZeDJU1EkOedgzuACX
+	lggaIcofO14or9XKaLos7bloDgnej9yqwqI8qKA6Q284WnIzYjEitf69cSLBWDmYy011fxqSQqnnT
+	CURf5MaE325mtagXUiPIoYyv62WKQfX+Uy+8wsdIKT0QBezPJ6dfG/KguLdBF92hJyJaWWCoSW0W+
+	f9r9/lDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP75B-00000007RaU-2UYA;
-	Sat, 21 Dec 2024 21:32:21 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1tPT9T-00000008pv2-2Ix1;
+	Sun, 22 Dec 2024 21:06:15 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP73u-00000007RUj-2WjQ;
-	Sat, 21 Dec 2024 21:31:06 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43634b570c1so22069575e9.0;
-        Sat, 21 Dec 2024 13:31:01 -0800 (PST)
+	id 1tPT8F-00000008pnk-0SZR;
+	Sun, 22 Dec 2024 21:05:00 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-43675b1155bso13209945e9.2;
+        Sun, 22 Dec 2024 13:04:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734816661; x=1735421461; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=C8roFy6r1iFnafqqOQEAKfDjOsYW4pss6G10wN0TzYo=;
-        b=h8LHgjc18e2GhU1SFeggtA3UjE+hX5kIZOe6iJPFi2Q1NQjyKZBzTCTntFdALGG+Hn
-         /bHi++mKDf1v/V1FyH+gx2dYp6dAaDfnfrpF/6FWvAavjeFkEVoGK5sW6QCWDRYo9YxC
-         enssBophnveZ+EdoHjqarx5ckKK/LR15fQ+DC3JEYODKdV4wiOtoaqq55ASwLsX1hz+0
-         7rdhAa+PCnLNjhLiLaxQx1aoFGVCH24UzoxG+dITtNWP1KdzzXos4SYYqM6yozc8JBAw
-         QuCrBlsfJDBcR7XUVRmm/j/+iRergQFzQO+CbFW/59Wrh2EbNFk+IMlFHL+Z6cWjRwf3
-         DO7Q==
+        d=gmail.com; s=20230601; t=1734901497; x=1735506297; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=w1oye4z15+lr2o1w+EQ1x0Cmk8LMpN4hRUXuCC9sKgc=;
+        b=c863JUd4HC18ygJXKerZdYioLzNr7Pa/hLa0WgCtrvHGAn0zHlFlANcbK9kpl+pFya
+         +bIHjAuwhvvCReqWpCeFCaSO1T1vKv3MNYsNwjVR08PCTNcA1GNdrg7P72h+f26ehRFz
+         +PzP8o71FpKGDNlF66mA5/jetFceLjPx/q8YjCqNI8OMlZ9idnMOd04DKrO5nKWP7GO3
+         /0XrLcKv9BFBsK6Vpg2IFs4I72gNw6MKbC+pO4j+DomL9Or34Q5vlyDUhIJOyfkfelni
+         9m2m/vGGb9oiH/HmjeMmVZYsOYlUDU/BWP9aY8tH0mS34pYw3CMMU7MVuGFMP3DACh0U
+         3h6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734816661; x=1735421461;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1734901497; x=1735506297;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=C8roFy6r1iFnafqqOQEAKfDjOsYW4pss6G10wN0TzYo=;
-        b=OtOxbhrKeFiXASreM4aqOtumgSmXWn8gFuvPOaMcZhr5+CDpr0i/qI28bGU/Y7M/tL
-         Gvefvev2wbjeh5mLSZCWhnQSD28OSit6wPhnbuM28DtisoUSth9WvB0ME7eQ6Uhuewau
-         0IOQqTzC6ZSfQTd8w5qSVH8pZUSX1OH3aSaDz21ZMJc/OL7N2uEIf2jeBXtEDMuec62U
-         aaCqtjFvGwqw9nlnq4Q0TYMljZpxpglnSJYlNr2Ij+JH2YgYMhZfpJAJEE5T22gC4dcv
-         63KLdOQLPeyIvBLn25ism00t3cNwmu37RfB0a81GPkha9MZzRTcexWnTINgCUDeXl8oA
-         fKSw==
-X-Forwarded-Encrypted: i=1; AJvYcCVoTWm1D0mxXOYqjA3j8S4ppVvK/AzyKS7GeKbodJorhohXWg2ip7YkBa28Ge/GOWWhl3Asgfoh46xQG6Ve+EVs@lists.infradead.org, AJvYcCWZRZPViS/mC4eUAOXeLSORQrE1C2I/Y7UPuDB1o1Zbd1guBkX1itoN+XSnK7Lqun/WTX1g3tIJ2BMGcaaeYR0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YztBYWU8uL7ixuH0VXFqYRI0IjdS11db6XfveNO3jnsryxkrqWX
-	RUudYZVAM6QBKxKXPup9+FRFyimY3bjacNsRmbx9syvK0SdCYfLa
-X-Gm-Gg: ASbGncuRvL0l9/cFUamlkqxEwdgobT8TTAreIwxOqUVTCC/MU/DLxfbiQrs+JZB0tFa
-	bSC9eDGlxxGOVYawjQeoqMelfoHuG60dlOkfHkMLRPpRQSgp7WhotWlK926d+8I/0Jqz/4zapbp
-	DzYvG0vxn37LcF0+6MKepE81dEA3KvLEtjS6fNVZS7+N5Naz+aXiLtLyQwTackxxYR0vCiaV46W
-	43qTeG7EZNzi0ojVvArePRouaHpCYfbY+TgjsSf014YbjMkw6NHR4ixswQF5QEvOw==
-X-Google-Smtp-Source: AGHT+IE2+evG7rKLvD6sugHVYsVIYoW849P1BMGBl6mETESdfIg8QPq7IydEtgZ9SQJacuklKW2p3A==
-X-Received: by 2002:a5d:5e09:0:b0:385:e328:890a with SMTP id ffacd0b85a97d-38a223fd7e1mr6598729f8f.49.1734816660498;
-        Sat, 21 Dec 2024 13:31:00 -0800 (PST)
-Received: from [192.168.0.10] ([178.233.24.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c828cc8sm7362826f8f.17.2024.12.21.13.30.58
+        bh=w1oye4z15+lr2o1w+EQ1x0Cmk8LMpN4hRUXuCC9sKgc=;
+        b=ggua+An1NyoEXOXDuHLCmHfWD2ao8qSDz+J3Iib5fw7MyPC8DyunV5L5/D+J7yhOCj
+         2QvdCkLVebLuwktiLTLtHrl/RYchRR7FSeYKh5PfUQ7sS5nrms/vSLuZHUYtOV2mjKBV
+         Ru7hHXBGiwuvWRQMnP7boy8NMZc94h8jhQZohdyhGK9ZVVwwidrlm0vFWRetNfvi60gO
+         19t4AVzSn5YK7qnzkBt/fgaVpGrB7vLITcgr+ZQsCngCU+eq1yggaTdHlg3Y+Q7io/cI
+         670XBbu8WyOq0kZkXgVPXkVtBVLM9xYxnP7eK5T6/FxAmstIxTPzLzffg1bg5xL9VqkJ
+         NSjw==
+X-Forwarded-Encrypted: i=1; AJvYcCUEVIPZVlxtGmWxA49oj09ml7C7mkpT4wo1Bn0GJ16kGwp1aZboOiUS8rRf3FBtptZk0unR+dYXkMcMCfCWuTVy@lists.infradead.org, AJvYcCXx4ukhdbOKjumL5NMmSBh+Ej6NUjdpxuSfALUfxkhZhBgdEiFW43bIds4rQNNyZgNO9j7vMVPb+JxZrDZL8Ro=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMRXw7Vlq6alxlOYA2uZmv5PCiLqPy1JXyotskmsg60rRJm9wj
+	gRJhJvP158907j+YiKFe47VbPhTVJcO/KYMXLAU5JzZi8pRfFWyk
+X-Gm-Gg: ASbGncuR45qsA4Gr9ueAUsgCKPRj+efN3nAON36MGI4nG/c9fhQCifiuESdrdi72J2B
+	R1yTmoWVOpjzdaP4FLguonGAUd9RZvv+a681ABaiBcbSDV5/oo/lykbfEmgH9Ii4Ks52hte3rO5
+	pKAKwyW/NrK5MgHSPGUSt0sQsIPZ7X2RUwEHPXaqfKOkNwBTAE5p9psOtnUcccgyQ//32C+JmhI
+	zg3hfpI2j/1c02PuEG7+5425eZETjRslbcg4rxkQ/9Jq6MeSrkDem6LAg==
+X-Google-Smtp-Source: AGHT+IHrVNOxvatH0wJahcvx8K9R6UCZia3C2mnXBs1VmInWx4bVumdXRL/+jSSx4T8TnEac1wlEhg==
+X-Received: by 2002:a05:600c:1c12:b0:434:f9e1:5cf8 with SMTP id 5b1f17b1804b1-4366aabbed2mr92183945e9.31.1734901496299;
+        Sun, 22 Dec 2024 13:04:56 -0800 (PST)
+Received: from [192.168.0.2] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c508sm114539775e9.33.2024.12.22.13.04.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Dec 2024 13:30:59 -0800 (PST)
-Message-ID: <44580fb7-a0ab-41c9-a4e7-fe053742883a@gmail.com>
-Date: Sun, 22 Dec 2024 00:30:57 +0300
+        Sun, 22 Dec 2024 13:04:55 -0800 (PST)
+Message-ID: <6d839f1a-9c38-46a9-aa3b-62afbd75cea7@gmail.com>
+Date: Sun, 22 Dec 2024 23:04:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: mt6358-regulator does not probe automatically on MT8183 and
- MT8186 Chromebooks
-From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <f3c6ea1d-da0f-40cc-ba70-7cabb5c3189f@gmail.com>
-Content-Language: en-US, tr, en-GB
-In-Reply-To: <f3c6ea1d-da0f-40cc-ba70-7cabb5c3189f@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [net v2] net: wwan: t7xx: Fix FSM command timeout issue
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ haijun.liu@mediatek.com, ricardo.martinez@linux.intel.com,
+ loic.poulain@linaro.org, andrew+netdev@lunn.ch,
+ angelogioacchino.delregno@collabora.com, corbet@lwn.net,
+ danielwinkler@google.com, helgaas@kernel.org, horms@kernel.org,
+ korneld@google.com, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ netdev@vger.kernel.org, johannes@sipsolutions.net, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com
+References: <20241213064720.122615-1-jinjian.song@fibocom.com>
+ <20241220085027.7692-1-jinjian.song@fibocom.com>
+Content-Language: en-US
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <20241220085027.7692-1-jinjian.song@fibocom.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241221_133102_923668_CB1C0547 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20241222_130459_180272_D03A3034 
+X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,41 +107,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Jinjian,
 
-On 2024-12-21 18:38 +03:00, Alper Nebi Yasak wrote:
-> Hello,
+On 20.12.2024 10:50, Jinjian Song wrote:
+> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
 > 
-> I'm left with one small problem trying to boot Debian on MT8183 and 
-> MT8186 Chromebooks (Cozmo and Magneton respectively). I see a lot of 
-> probe deferrals and get dropped into an initramfs shell. All of them 
-> get resolved if I run `modprobe mt6358-regulator`, after which I can 
-> exit the initramfs shell to continue booting.
+>>> Fixes: d785ed945de6 ("net: wwan: t7xx: PCIe reset rescan")
+>>
+>> The completion waiting was introduced in a different commit. I 
+>> believe, the fix tag should be 13e920d93e37 ("net: wwan: t7xx: Add 
+>> core components")
+>>
 > 
-> It has been happening for a long time, still unsolved as of v6.12 and 
-> next-20241220. I am using `softdep mediatek-drm pre: mt6358-regulator`
-> and so on in /etc/modprobe.d/ to trigger it to probe, as a workaround. 
-> 
-> But I would like if it was solved upstream so distro kernels can work 
-> "out of the box". Any ideas why isn't it probing automatically, and how
-> to make it so it works?
-> 
-> More info from a serial connection below (on mt8183-kukui-jacuzzi-cozmo):
-> 
-> [...]
+> Got it.
 
-I found this patch [1] from Matthias, sent around 2021 about adding an
-OF match table to the driver, which fixes this problem for my boards.
+[...]
 
-[1]
-https://lore.kernel.org/linux-mediatek/20210112100659.19350-1-matthias.bgg@kernel.org/T/#u
+> Yes, the patch works fine, needs some minor modifications, could we 
+> feedback to the driver author to merge these changes.
 
+Looks like the drivers authors haven't enough time to maintain it. You 
+are the most active developer at the moment. Could formally resend the 
+updated patch with refcounter as V3? And, I believe, we can apply it.
 
-There on 2021-01-12 13:52, Mark Brown wrote:
-> As previously discussed it'd be better to fix the binding document to
-> deprecate the requirement for the compatible and remove the usage from
-> the MFD.
-
-This doesn't seem to have happened in the last almost-four years, so
-please reconsider resending/applying the patch.
+--
+Sergey
 
