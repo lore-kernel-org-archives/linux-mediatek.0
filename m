@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB24DE7718D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 16:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 660FDE7718D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 16:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nBpJAK8X7ZLY8oUi1fJARaxUhH3m7eXAgWuPY2BqeaQ=; b=KWNFGm+Sv7Q253X/KqWvsA3kGj
-	CR0ilRwZ7I4mSrFtLrCfwVGXIu/575UEHI/gnSxljI3V01tbFAGhThDyCffn6EaLi9oXW3eMVaEiq
-	s1hcOraVkSlh8hrmDFmsOS7PlXGrrHzySJRxqwepl5Lbv5KzNDiyW6yvIJkiR251iNL51dosRTmsP
-	6cfn0i1PYQ8njR2Zkqa4CEbdXU1KfF66hycsrAG4yZv0b4lozFlqHgZvdCbs5l73ZQp/GEH5vPidk
-	bsqrn8nxxJL+fhWIgpfmdK/Y4e84G47um1jBtv7OOaJ1NE+EszK/BwICxX3dpu5ek7eFHRlleTJQI
-	OnE8/rfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hwKnZCiFRPdJBTOf30IzsJ1ou6i/Am376EmQyJTjQkk=; b=Ymz5FtoOsmWcET9CgRUA4Ue2L8
+	EOm/5lXM67sU8+DlQBXJWekos79G9z9c+mBqq5pTX6PvPkFRGCwmr3CAOGgf1w4EFKHlfVTUNYboN
+	UHdZiTqxwxxMo+sOZ2d2aIeZt5TgvQxg1mXJXeUJ9p4JZhrAEMh58SuWWtJ5ZKykT3kSxlHSkzEnp
+	f6oN9HB0qnuVBSPP0tgrRPwP/H1gAz8dtq2yufYSHkMNL3p2KuyyNzzTtBU3Eojx4QrDTrx1nnPJ5
+	BTVNaYxF5/fO8bTIf3loTCLKvZZp9mQajJsdrAKE+EGgEhTcR1PiWfdYMJsKDH07aTnFTL0cM20cP
+	inZJFkfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPktS-0000000AKqN-2ayc;
-	Mon, 23 Dec 2024 16:02:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tPl0U-0000000AM4O-1Agt;
+	Mon, 23 Dec 2024 16:10:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPksG-0000000AKlF-00LZ;
-	Mon, 23 Dec 2024 16:01:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 38BC55C5984;
-	Mon, 23 Dec 2024 16:00:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE811C4CED3;
-	Mon, 23 Dec 2024 16:00:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734969698;
-	bh=nBpJAK8X7ZLY8oUi1fJARaxUhH3m7eXAgWuPY2BqeaQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i7l+MfsS0jPk+6wParP2F3ri0mUbVXSeFfEp0yEJ8V9fWKERn91NvXMzBuJ+dPHyV
-	 6IiZPNGFztxj7vPx1Y2emlT0ONbBUWomiEMBuc+qwOVqBnruyEVRK54nFfOCTS+THW
-	 YdEU8zmwMjdadR+reTonDdW6hJ6AG9SsWSRlXlV2s5sF3i6rLgs1RkTXKebaN1RUeB
-	 lfZB1hbLvNHX9kuO39PpopUiwN3g7eg/h2TXYq5qo0e1S2Ac+PXTscfP3h+foNT5kl
-	 MVLD/hPr5u17TZh+u5z4TsDycwQ5y1H+6V4aQQfP1CMBSv75yu7JQeIQcsg/Bw4J0G
-	 QrUBQIl7iMomQ==
-Date: Mon, 23 Dec 2024 16:00:05 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: mt6358-regulator does not probe automatically on MT8183 and
- MT8186 Chromebooks
-Message-ID: <Z2mJBX4RqSiICchK@finisterre.sirena.org.uk>
-References: <f3c6ea1d-da0f-40cc-ba70-7cabb5c3189f@gmail.com>
- <44580fb7-a0ab-41c9-a4e7-fe053742883a@gmail.com>
+	id 1tPkzG-0000000ALqI-1qkZ;
+	Mon, 23 Dec 2024 16:08:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734970132;
+	bh=FlS1NQ3sR/hUwwr2iqlUaS8K3ilVnp4Z1h3bBLmwQek=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=c3J5VlAA34O63VZuBbBo13CnOwUyE04M0s8HxRcHmSaZwaGUDOLRZKW5CBVLMH9w2
+	 ir1s9dYWUjRdHlNAsygmWviPcJU+QcTal8rIRwK3ziR/uFhsE3zdRnwpGvYbC7JeaU
+	 6ViRSXM3DatP1nqJc8fWVq3j21ikCWLE29M/LLHi7K5J5QRvhaw/5FD6bi6DAwEMK6
+	 98F8YHK49yXUhSuvfWyQn8wIYiY7A6fWidU6kTEBe/IjtzFYsAIdqpIDlqSVnYPV4B
+	 foB8opbkSFzEYpKjawx8RviWs6xA+klp/djtjdD9hc64O5VHzYLGjSM1w5XOVHIIxo
+	 v5XsUdRhevx6A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D4C7717E0E95;
+	Mon, 23 Dec 2024 17:08:51 +0100 (CET)
+Message-ID: <efb88dd0-3b66-49fe-b279-e66c4574cf9d@collabora.com>
+Date: Mon, 23 Dec 2024 17:08:51 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="XwzJtfa9mNhTRuA1"
-Content-Disposition: inline
-In-Reply-To: <44580fb7-a0ab-41c9-a4e7-fe053742883a@gmail.com>
-X-Cookie: Editing is a rewording activity.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] nvmem: mtk-efuse: Enable GPU speed bin post-processing
+ for MT8188
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org
+References: <20241223100648.2166754-1-wenst@chromium.org>
+ <481a6eec-c428-45cd-98a6-5a91f3ceb187@collabora.com>
+ <CAGXv+5Fj5s9FUyaxmEkGimxjEcS6OEfm4_5Zso+YocSi+Vt4pg@mail.gmail.com>
+ <bbc6aa2a-fe48-4e06-b070-fd66dbd00e15@collabora.com>
+ <CAGXv+5FoOM=ZUCWigdCaPbc4FCBtLVX2xnUJnVnVsBH=7yoZ=Q@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5FoOM=ZUCWigdCaPbc4FCBtLVX2xnUJnVnVsBH=7yoZ=Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_080140_087769_D7B1A993 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20241223_080854_645521_D2BC39B3 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +81,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 23/12/24 16:57, Chen-Yu Tsai ha scritto:
+> On Mon, Dec 23, 2024 at 7:43 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 23/12/24 12:24, Chen-Yu Tsai ha scritto:
+>>> On Mon, Dec 23, 2024 at 7:11 PM AngeloGioacchino Del Regno
+>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>
+>>>> Il 23/12/24 11:06, Chen-Yu Tsai ha scritto:
+>>>>> Like the MT8186, the MT8188 stores GPU speed binning data in its efuse.
+>>>>> The data needs post-processing into a format that the OPP framework can
+>>>>> use.
+>>>>>
+>>>>> Add a compatible match for MT8188 efuse with post-processing enabled.
+>>>>>
+>>>>
+>>>> Let's just change the MT8188 compatible list to
+>>>>
+>>>> compatible = "mediatek,mt8188-efuse", "mediatek,mt8186-efuse";
+>>>
+>>> That would be "mediatek,mt8188-efuse", "mediatek,mt8186-efuse", "mediatek,efuse"
+>>> then?
+>>>
+>>
+>> No, we're dropping the generic "mediatek,efuse".
+> 
+> That means we also drop it for MT8186?
+> 
+> Thinking about it more, I think it's stretching things a bit. The hardware
+> is clearly backwards compatible, or we wouldn't even be reading values
+> out correctly. The only difference now with MT8186 and MT8188 is that
+> they have a speed-bin field with a value that we want passed to the OPP
+> framework, and the interpretation of that value is not really part of
+> the efuse's hardware. We chose to do the conversion in the efuse driver,
+> but we could also have done it in the GPU driver.
+> 
+> What I'm saying is that we should not need to change the compatible strings
+> to make this work.
+> 
 
---XwzJtfa9mNhTRuA1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+No we don't forcefully have to drop it from MT8186, and doing so would be kind
+of hard and actually producing unnecessary breakages with (very) old kernels.
 
-On Sun, Dec 22, 2024 at 12:30:57AM +0300, Alper Nebi Yasak wrote:
+Just add a `deprecated: true` to the binding that wants `mediatek,efuse` and
+start with MT8188, where 8188 is in enum and 8186 is const.
 
-> I found this patch [1] from Matthias, sent around 2021 about adding an
-> OF match table to the driver, which fixes this problem for my boards.
+We can do MT8188 because that'll still work even with old kernels (since MT8186
+is there since before MT8188 was introduced), and it's something to enable a new
+feature.
+This means that there's not going to be any breakage with new DT and old kernel.
 
-> [1]
-> https://lore.kernel.org/linux-mediatek/20210112100659.19350-1-matthias.bgg@kernel.org/T/#u
+I want the mediatek,efuse binding to be like the majority of the others across
+the kernel, so, no generic compatible.
 
-As indicated in that thread the MFD should register the regulator
-function driver with the name "mt6358-regulator" used by the driver,
-then the existing MODULE_DEVICE_TABLE() will DTRT.
+Cheers,
+Angelo
 
---XwzJtfa9mNhTRuA1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmdpiQEACgkQJNaLcl1U
-h9BFagf/QOk/RG1j6WRQC1zd9h30PX/Xb7KH55NYe07bktOujvVBXGJj9TLVJyNZ
-T7x7ldjTeqhwTTt7CaabxZXpTXFE1wGcf0szXgnOS1ao/Cvy0kpBSUOvADyfxz6w
-a+rOPKNHW5G9EHlM2qidshD2OYzechI48ChJA3mLSh91noDU/KKyiV2LMabS4Bin
-tRE+w3OMyhI9e5fQoAMLleTtgzv3M20TvOo+iMJwg0+/j99PSG54aev/KSf5Vj+3
-tDKM0KvtjslI2JyBx7idWSlWN5WV9Kuf29Zcqdk4P5U5impq1HTgY9m7HGo99rrk
-WwG65D96Vi/wzc6YCUakss6i1UXY5g==
-=H6Ep
------END PGP SIGNATURE-----
-
---XwzJtfa9mNhTRuA1--
+> 
+> ChenYu
+> 
+>> Cheers!
+>>
+>>> Fine by me. :D
+>>>
+>>> ChenYu
+>>>
+>>>> instead :-)
+>>>>
+>>>> Cheers,
+>>>> Angelo
+>>>>
+>>>>> Cc: <stable@vger.kernel.org>
+>>>>> Fixes: ff1df1886f43 ("dt-bindings: nvmem: mediatek: efuse: Add support for MT8188")
+>>>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>>>>> ---
+>>>>>
+>>>>> I'm not exactly sure about pointing to the dt bindings commit for the
+>>>>> fixes tag.
+>>>>> ---
+>>>>>     drivers/nvmem/mtk-efuse.c | 1 +
+>>>>>     1 file changed, 1 insertion(+)
+>>>>>
+>>>>> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+>>>>> index af953e1d9230..e8409e1e7fac 100644
+>>>>> --- a/drivers/nvmem/mtk-efuse.c
+>>>>> +++ b/drivers/nvmem/mtk-efuse.c
+>>>>> @@ -112,6 +112,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pdata = {
+>>>>>     static const struct of_device_id mtk_efuse_of_match[] = {
+>>>>>         { .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
+>>>>>         { .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
+>>>>> +     { .compatible = "mediatek,mt8188-efuse", .data = &mtk_mt8186_efuse_pdata },
+>>>>>         { .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
+>>>>>         {/* sentinel */},
+>>>>>     };
+>>>>
+>>
 
