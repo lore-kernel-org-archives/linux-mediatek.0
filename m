@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175F1E7718B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3661E7718B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:25:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=joTQVhw7DCCRp8EpMFoM40xxXcRkgfGLbmT/Iwf5V5Y=; b=Kn1u/hrwxs5gxCPAaUrh7kL7YS
-	cWZFXhUDooQG0Rrd9BRRVR+d28X8V8eJpj5Gl1z3VVj3JWwOrK75za64XroGBjGXvC1r4Y5mK4WBT
-	MVfDyMFJu0ZAyLtLJ+Ibbnv+92dwDdQvE5Zhd17kEPESh9kwFf2+SMSYstBftY7zZWLinqaMHtx6t
-	Lh6uBKE2Pgflhjk4HBcWP81dge+dW71bvI0wzfu4kWFbuF8/SyhdtwHsQBBhDVYV4NiMnaF2LsVbe
-	fokqJIR938m9uiL5PiEg+c/fIH9nLFEjmsBKaRAcOyMWlSF6xos0oigF8WeAJq7gXV6qM1a921u03
-	bsZUP/cg==;
+	bh=j4BCWDsfm6tYu7egx7EoaSTq4fONlGso1rcbH9Q54AU=; b=sNSomxA/Nnv7AUByqHv7+6IILQ
+	1rFQzoPAuFQW51/OQtLLADfQe6RoSAKkC5x4+FvMt0iwQp85+2/2PyGOvpAtaQN8rP91LKj8LRJdS
+	tLEJknc3a9F2FVgSgdG+9NDLoXMQy+kPudSjYSFtdAlrsPFiefdD+igBFHG3XXvhh9MvkdGqQoeKb
+	PYPfKakAE6+uG4owPf2lkGt9eaVQn1D6nP15Arr/sx3W/TKXcSRT+OPiyS5HjFQdilNvE66QA8d4G
+	L8dyLQuYKDGjSY2zQp0uxnLp1DQOFMOAQJeDh27xBnRf3v1aamuDkFisJx058ePSPC97BuPLweAS5
+	Wh8is2dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPoy3-0000000AgfQ-2ubu;
-	Mon, 23 Dec 2024 20:23:55 +0000
+	id 1tPozj-0000000Agsc-0VH1;
+	Mon, 23 Dec 2024 20:25:39 +0000
 Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPoy0-0000000Agel-10wt
+	id 1tPozh-0000000AgsC-03en
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Dec 2024 20:23:53 +0000
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YH8Wr3bFBz6K5cM;
-	Tue, 24 Dec 2024 04:19:52 +0800 (CST)
+	Mon, 23 Dec 2024 20:25:38 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YH8d16bSPz6LDSB;
+	Tue, 24 Dec 2024 04:24:21 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 6DB69140B3C;
-	Tue, 24 Dec 2024 04:23:43 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 2A53F140A70;
+	Tue, 24 Dec 2024 04:25:34 +0800 (CST)
 Received: from localhost (10.47.75.118) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 23 Dec
- 2024 21:23:41 +0100
-Date: Mon, 23 Dec 2024 20:23:39 +0000
+ 2024 21:25:32 +0100
+Date: Mon, 23 Dec 2024 20:25:30 +0000
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Zijun Hu <zijun_hu@icloud.com>
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij
@@ -54,14 +54,12 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij
 	<linux-media@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
 	<linux-remoteproc@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
 	<linux-usb@vger.kernel.org>, <linux-serial@vger.kernel.org>,
-	<netdev@vger.kernel.org>, Zijun Hu <quic_zijuhu@quicinc.com>, "Alison
- Schofield" <alison.schofield@intel.com>
-Subject: Re: [PATCH v4 01/11] libnvdimm: Replace namespace_match() with
- device_find_child_by_name()
-Message-ID: <20241223202339.00004dc1@huawei.com>
-In-Reply-To: <20241211-const_dfc_done-v4-1-583cc60329df@quicinc.com>
+	<netdev@vger.kernel.org>, Zijun Hu <quic_zijuhu@quicinc.com>
+Subject: Re: [PATCH v4 02/11] slimbus: core: Constify slim_eaddr_equal()
+Message-ID: <20241223202530.00002d37@huawei.com>
+In-Reply-To: <20241211-const_dfc_done-v4-2-583cc60329df@quicinc.com>
 References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
-	<20241211-const_dfc_done-v4-1-583cc60329df@quicinc.com>
+	<20241211-const_dfc_done-v4-2-583cc60329df@quicinc.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -70,8 +68,8 @@ X-Originating-IP: [10.47.75.118]
 X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
  frapeml500008.china.huawei.com (7.182.85.71)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_122352_439290_00AEEA5B 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20241223_122537_208538_C0A86A13 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,50 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 11 Dec 2024 08:08:03 +0800
+On Wed, 11 Dec 2024 08:08:04 +0800
 Zijun Hu <zijun_hu@icloud.com> wrote:
 
 > From: Zijun Hu <quic_zijuhu@quicinc.com>
 > 
-> Simplify nd_namespace_store() implementation by
-> using device_find_child_by_name().
+> bool slim_eaddr_equal(struct slim_eaddr *a, struct slim_eaddr *b)
+> does not modify @*a or @*b.
 > 
-> Reviewed-by: Alison Schofield <alison.schofield@intel.com>
+> Constify it by simply changing its parameter type to
+> 'const struct slim_eaddr *'.
+> 
 > Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-LGTM
+
+Absolutely makes sense given later patches mean one of the inputs
+is of type constant pointer, but maybe worth calling that out as
+the reason for the change here.
+
+Other than that looks good.
+
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
 > ---
->  drivers/nvdimm/claim.c | 9 +--------
->  1 file changed, 1 insertion(+), 8 deletions(-)
+>  drivers/slimbus/core.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/nvdimm/claim.c b/drivers/nvdimm/claim.c
-> index 030dbde6b0882050c90fb8db106ec15b1baef7ca..9e84ab411564f9d5e7ceb687c6491562564552e3 100644
-> --- a/drivers/nvdimm/claim.c
-> +++ b/drivers/nvdimm/claim.c
-> @@ -67,13 +67,6 @@ bool nd_attach_ndns(struct device *dev, struct nd_namespace_common *attach,
->  	return claimed;
+> diff --git a/drivers/slimbus/core.c b/drivers/slimbus/core.c
+> index 65e5515f7555e2eb840fedaf2dc4cc5d76dbc089..b5d5bbb9fdb6614ffd578f5754226b50e394f0df 100644
+> --- a/drivers/slimbus/core.c
+> +++ b/drivers/slimbus/core.c
+> @@ -328,7 +328,8 @@ void slim_report_absent(struct slim_device *sbdev)
 >  }
+>  EXPORT_SYMBOL_GPL(slim_report_absent);
 >  
-> -static int namespace_match(struct device *dev, void *data)
-> -{
-> -	char *name = data;
-> -
-> -	return strcmp(name, dev_name(dev)) == 0;
-> -}
-> -
->  static bool is_idle(struct device *dev, struct nd_namespace_common *ndns)
+> -static bool slim_eaddr_equal(struct slim_eaddr *a, struct slim_eaddr *b)
+> +static bool slim_eaddr_equal(const struct slim_eaddr *a,
+> +			     const struct slim_eaddr *b)
 >  {
->  	struct nd_region *nd_region = to_nd_region(dev->parent);
-> @@ -168,7 +161,7 @@ ssize_t nd_namespace_store(struct device *dev,
->  		goto out;
->  	}
->  
-> -	found = device_find_child(dev->parent, name, namespace_match);
-> +	found = device_find_child_by_name(dev->parent, name);
->  	if (!found) {
->  		dev_dbg(dev, "'%s' not found under %s\n", name,
->  				dev_name(dev->parent));
+>  	return (a->manf_id == b->manf_id &&
+>  		a->prod_code == b->prod_code &&
 > 
 
 
