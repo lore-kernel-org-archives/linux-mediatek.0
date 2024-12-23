@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65037E7718B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 12:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EE4BE7718D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 14:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nmVR49NVWZNNcnpKmMK7nd8rZLFsyx86YVVV+Sj9C1w=; b=3O6vWizAZCMaC6kFY62rIMhU8W
-	UAqZpCj6jcSejPxFX0asGC6A1QY+HHRli7QlCgidi+Va/P/+4Art8IHwcddtJHq2H5hDuYOs6F6Cg
-	kcpvKzVf1Q9VdsVs9wFhpQRCmNCsv+rkh9LzAO5HpJGK5w2UDcP5ASZnYNs7ilFkV5g/o7fUbhjbj
-	OeNoL8ypSmUBtv6vOdBzr2f0D16mhXCkUEnRahlzuTEn/F9XD96bU3/L6Y+aqcGZx17tMT8ANvLG9
-	/pclcSldr/3Y8MBqHDCvbMHUVvxL6gxkXEjm7XIuZGlHp3wG7ZLgZ3wYEJgWx/ZwrrD9m4pf5zrff
-	3ECF9EMg==;
+	bh=dmnDLoXCH6tCNgBRWw/i4up/cV3Jfbf1V+vLuWVLS0o=; b=cO85907SQpFHuoAYO/KfJd+0Tp
+	B3kIs645CkZG7kgpMQU0ntK0Sp7XfMN36rIgq/AvCIdPJuQ4yiNTdHUPhPy6dSR21aG6dc9hjZrl9
+	iK+qeQOJkkkdQvccbb50gDN48seLfqKgBmNuJ1JidMBFH4iBHUBcc2nOyE3d04PGAATVkhYAbrf0P
+	DPUMxCI8On83PcPyeGZre1dD7SEBF8il3f0kPqrLT70mMfcvl1LMaSMyGVOcL11h3Ry+4B6t5QlXX
+	dS3+VYQnTvqkP9+rmgLWA0syYfRibH8bgMJREcR88211veIJNjyKtSST8A6/2GrKZHUvRabxAfN4Y
+	ZanD1SHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPhQs-00000009yzM-0Ts5;
-	Mon, 23 Dec 2024 12:21:10 +0000
+	id 1tPj4T-0000000A7F1-3K9Z;
+	Mon, 23 Dec 2024 14:06:09 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPgJW-00000009rD2-3CfX;
-	Mon, 23 Dec 2024 11:09:32 +0000
+	id 1tPhyp-0000000A1KN-1xjW;
+	Mon, 23 Dec 2024 12:56:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734952168;
-	bh=RQaR6wMhKGiIO6pzQn1JHnhIbVM6q3lMhZkslpK+X+8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=VIdiF7746zCuwnGAF6HeCi8wqd5H+GYN5bEHUXKnoUfvMQ4toop2wbEPMkXvXEcQE
-	 qKva7uYI+jFmd+TfuXKe4VelZAUDAPxrY9Ulzl2hITIc7zSw5ooAW9Zf7MQHN9WwdX
-	 CCjhZIl6Sa2JgLFNbk1rfJJBj0PcAvNO6fmXETX5hi1lqbWUm4cw3/4041p98MILoh
-	 pY8ICRQt7ZZ3dwjzplqxweOozpYrUWcIda8pvAxN2LqhuaiLytzYbQ1M+zF8Hc2PTn
-	 A//y+pdRP5JQwwS0UwR0URpQplmbUCclW+mOAa6G7jdfKAw6uItZ1Efi/Byj1Kxq99
-	 SeMHhFv2sboQw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1734958573;
+	bh=IM1Q6HaiaXg6oZNGDXEIctOQsVVBIkBbPK450fxHLa4=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=PnZjejzaQNnQKGcHj69QdnLjjYL1KWDohfW64b6PdhFvI8Jef1P+1jMFXi6aoy87O
+	 QZN2t/CpxI7TrlVDF0XKymLi2VwstnAqSiG+c6utZIjP0w42MQDuiqyGQ405qxBs2c
+	 AP+yTne24M6ncM6uTwMMDti0Eo7auSn5RbsqTpyt8VV3YNNHDKDOH3fYkSBqLBEO6I
+	 TgndOBH1RP7S/jlh5bgr0yUgnR7cYS4ckWtIO0QRBlswHEHutgzzpO25flxd2Zco7P
+	 yhvSI41OQxRDXL9qZr19qTkV9cOqS1/gZclAOKMk0nE56ep3fqyamFo1Q9K/rNAbf4
+	 nm/jcVdC/o+mg==
+Received: from [192.168.1.90] (unknown [84.232.140.38])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2641517E3632;
-	Mon, 23 Dec 2024 12:09:28 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20241216-genio700-configs-eth-sound-v1-0-04a719035d6e@collabora.com>
-References: <20241216-genio700-configs-eth-sound-v1-0-04a719035d6e@collabora.com>
-Subject: Re: [PATCH 0/2] arm64: defconfig: Configs for MT8188
-Message-Id: <173495216807.35164.5807973661855244389.b4-ty@collabora.com>
-Date: Mon, 23 Dec 2024 12:09:28 +0100
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8869D17E3750;
+	Mon, 23 Dec 2024 13:56:12 +0100 (CET)
+Message-ID: <19eca5c3-cedb-4c5f-9b70-9c25c8387414@collabora.com>
+Date: Mon, 23 Dec 2024 14:56:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/3] PCI: exynos: Switch to
+ devm_clk_bulk_get_all_enabled()
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org
+References: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com>
+ <20241217-clk_bulk_ena_fix-v5-2-aafbbb245155@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241217-clk_bulk_ena_fix-v5-2-aafbbb245155@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_030930_996465_1363D89F 
-X-CRM114-Status: UNSURE (   6.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241223_045615_719105_E0692327 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Dec 2024 16:51:24 -0300, Nícolas F. R. A. Prado wrote:
-> This series contains a couple configs needed for MT8188 platforms to get
-> working ethernet and sound.
+Hi Bjorn,
+
+On 12/17/24 11:41 PM, Cristian Ciocaltea wrote:
+> The helper devm_clk_bulk_get_all_enable() missed to return the number of
+> clocks stored in the clk_bulk_data table referenced by the clks
+> argument and, therefore, will be dropped.
 > 
-> Tested on the Genio 700 EVK.
+> Use the newly introduced devm_clk_bulk_get_all_enabled() variant
+> instead, which is consistent with devm_clk_bulk_get_all() in terms of
+> the returned value:
 > 
+>  > 0 if one or more clocks have been stored
+>  = 0 if there are no clocks
+>  < 0 if an error occurred
 > 
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
-Applied to v6.13-next/defconfig, thanks!
+In case you missed the previous requests, we need your ack on this patch
+so that Stephen can apply the entire series to the clk tree and drop the
+obsolete helper.
 
-[1/2] arm64: defconfig: Enable sound for MT8188
-      commit: bf6c63f066b68eacdd43d4f360ac8dcc5110e04e
-[2/2] arm64: defconfig: Enable MediaTek DWMAC
-      commit: cab316255951188fb2847af04f2123c1ab85dadf
-
-Cheers,
-Angelo
-
-
+Thanks,
+Cristian
 
