@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C913BE7718E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184EDE7718B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/CqXGSMvIKDBhr8CZLeVtg0JqgAcyBVaX1PMtALLT/0=; b=b9S+L+WZUKC2WjnA8v1vae2+1C
-	ocGRNPefY3cQ1921vwLQmpgT011pEqWvLchkxnITh14LkHoqvbxBuhu4JpH/F467J8NR3QfG+TRts
-	yojca5E8H53LuRs16KG2FB68B9GGDYeqjesOXMmA3zu6G4vJET+CfkiOyMhM2Es7aJbplshzeLtsd
-	5QXxs4lF6nLovPFcGaQBc8M3U+hFeAdWQsA+BYgjMWdbFi5eYp7yoNc7mpfY1V5u8AO1l3DmoIRbO
-	rEvKXMKudQnovzU+gL+fhvcZR6rWVLM6tgr/PKlka/yi3mP/cWIB9QTawc7YbHq3WWMy12TCChAAv
-	igmgdzbw==;
+	bh=iUNcXLPhK/w6B5304cj+dVNq9NUesoDzgU1FKTFVm3M=; b=x/xSpjHcH6si+A9z7TD/ibu5C5
+	ZCcY1fXnRHBNvaRwsuPDRzyIyFAyskg4b9g3JDwbCW+IuMUbTGWncBzeNg1YxmPBCvzuSHcftuejL
+	qq6veIu3z6vwG9EtAvwCFmL7ZTsMwsMMC4WWSj3AUBpgvgeyX1G74Ql6KgeuyoVaPwFONRZD4omQY
+	p/O4lBhTAcyN7kbSIyeC1GS3BbJToQDR9RqkM6nyVsIVFOCoc2c7IxF3g0Klr8wUjtu1izzBqV6Ik
+	DjWrc6B1gGVeDYzdS0RiGL5A4M+4nasulK9tqEhBjW/jwgo8FH0wSLdUvYO7Xujon5p6cO0bpghqG
+	G5UYNNmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPpMI-0000000Aj5P-3UHf;
-	Mon, 23 Dec 2024 20:48:58 +0000
+	id 1tPpQG-0000000AjWw-0mHy;
+	Mon, 23 Dec 2024 20:53:04 +0000
 Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPpMH-0000000Aj4y-01MO
+	id 1tPpQE-0000000AjW0-0ttn
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Dec 2024 20:48:58 +0000
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YH94w3CSYz6K5lq;
-	Tue, 24 Dec 2024 04:45:04 +0800 (CST)
+	Mon, 23 Dec 2024 20:53:03 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YH99X3N2zz6K5Zf;
+	Tue, 24 Dec 2024 04:49:04 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 6C27E140517;
-	Tue, 24 Dec 2024 04:48:55 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 78F9C14039E;
+	Tue, 24 Dec 2024 04:52:55 +0800 (CST)
 Received: from localhost (10.47.75.118) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 23 Dec
- 2024 21:48:53 +0100
-Date: Mon, 23 Dec 2024 20:48:52 +0000
+ 2024 21:52:54 +0100
+Date: Mon, 23 Dec 2024 20:52:52 +0000
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Zijun Hu <zijun_hu@icloud.com>
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij
@@ -54,24 +54,23 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij
 	<linux-media@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
 	<linux-remoteproc@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
 	<linux-usb@vger.kernel.org>, <linux-serial@vger.kernel.org>,
-	<netdev@vger.kernel.org>, Zijun Hu <quic_zijuhu@quicinc.com>, "Alison
- Schofield" <alison.schofield@intel.com>
-Subject: Re: [PATCH v4 10/11] cxl/pmem: Replace match_nvdimm_bridge() with
- API device_match_type()
-Message-ID: <20241223204852.000021d5@huawei.com>
-In-Reply-To: <20241211-const_dfc_done-v4-10-583cc60329df@quicinc.com>
+	<netdev@vger.kernel.org>, Zijun Hu <quic_zijuhu@quicinc.com>
+Subject: Re: [PATCH v4 11/11] usb: typec: class: Remove both cable_match()
+ and partner_match()
+Message-ID: <20241223205252.00003d6b@huawei.com>
+In-Reply-To: <20241211-const_dfc_done-v4-11-583cc60329df@quicinc.com>
 References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
-	<20241211-const_dfc_done-v4-10-583cc60329df@quicinc.com>
+	<20241211-const_dfc_done-v4-11-583cc60329df@quicinc.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.47.75.118]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
  frapeml500008.china.huawei.com (7.182.85.71)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_124857_350450_7EE35F12 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20241223_125302_542294_69E281FF 
+X-CRM114-Status: GOOD (  19.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,61 +85,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 11 Dec 2024 08:08:12 +0800
+On Wed, 11 Dec 2024 08:08:13 +0800
 Zijun Hu <zijun_hu@icloud.com> wrote:
 
 > From: Zijun Hu <quic_zijuhu@quicinc.com>
 > 
-> Static match_nvdimm_bridge(), as matching function of device_find_child()
-> matches a device with device type @cxl_nvdimm_bridge_type, and its task
-> can be simplified by the recently introduced API device_match_type().
+> cable_match(), as matching function of device_find_child(), matches
+> a device with device type @typec_cable_dev_type, and its task can be
+> simplified by the recently introduced API device_match_type().
 > 
-> Replace match_nvdimm_bridge() usage with device_match_type().
+> partner_match() is similar with cable_match() but with a different
+> device type @typec_partner_dev_type.
 > 
-> Reviewed-by: Alison Schofield <alison.schofield@intel.com>
+> Remove both functions and use the API plus respective device type instead.
+> 
 > Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
+Looks good, but there is the same trade off here between internal
+detail of type identification and reducing the use of helpers
+where the generic ones are fine.  Here is less obvious even than
+the CXL one as the helper macros do have other uses in these
+files.
 
-I don't see any uses of is_cxl_nvdimm_bridge() other than this one
-Drop that as well?
-
-This one is a bit of a trade off because the way is_cxl_nvdimm_bridge()
-is identified is kind of an internal detail, but it's been true for a long
-time so I'm fine with this change.
+So, it's on for USB folk to decide on and I won't be giving a tag
+as a result.
 
 Jonathan
 
-
 > ---
->  drivers/cxl/core/pmem.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
+>  drivers/usb/typec/class.c | 27 ++++++++++++---------------
+>  1 file changed, 12 insertions(+), 15 deletions(-)
 > 
-> diff --git a/drivers/cxl/core/pmem.c b/drivers/cxl/core/pmem.c
-> index a8473de24ebfd92f12f47e0556e28b81a29cff7c..0f8166e793e14fc0b1c04ffda79e756a743d9e6b 100644
-> --- a/drivers/cxl/core/pmem.c
-> +++ b/drivers/cxl/core/pmem.c
-> @@ -57,11 +57,6 @@ bool is_cxl_nvdimm_bridge(struct device *dev)
->  }
->  EXPORT_SYMBOL_NS_GPL(is_cxl_nvdimm_bridge, "CXL");
+> diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
+> index 601a81aa1e1024265f2359393dee531a7779c6ea..3a4e0bd0131774afd0d746d2f0a306190219feec 100644
+> --- a/drivers/usb/typec/class.c
+> +++ b/drivers/usb/typec/class.c
+> @@ -1282,11 +1282,6 @@ const struct device_type typec_cable_dev_type = {
+>  	.release = typec_cable_release,
+>  };
 >  
-> -static int match_nvdimm_bridge(struct device *dev, const void *data)
+> -static int cable_match(struct device *dev, const void *data)
 > -{
-> -	return is_cxl_nvdimm_bridge(dev);
+> -	return is_typec_cable(dev);
 > -}
 > -
 >  /**
->   * cxl_find_nvdimm_bridge() - find a bridge device relative to a port
->   * @port: any descendant port of an nvdimm-bridge associated
-> @@ -75,7 +70,9 @@ struct cxl_nvdimm_bridge *cxl_find_nvdimm_bridge(struct cxl_port *port)
->  	if (!cxl_root)
->  		return NULL;
+>   * typec_cable_get - Get a reference to the USB Type-C cable
+>   * @port: The USB Type-C Port the cable is connected to
+> @@ -1298,7 +1293,8 @@ struct typec_cable *typec_cable_get(struct typec_port *port)
+>  {
+>  	struct device *dev;
 >  
-> -	dev = device_find_child(&cxl_root->port.dev, NULL, match_nvdimm_bridge);
-> +	dev = device_find_child(&cxl_root->port.dev,
-> +				&cxl_nvdimm_bridge_type,
+> -	dev = device_find_child(&port->dev, NULL, cable_match);
+> +	dev = device_find_child(&port->dev, &typec_cable_dev_type,
 > +				device_match_type);
->  
 >  	if (!dev)
 >  		return NULL;
+>  
+> @@ -2028,16 +2024,12 @@ const struct device_type typec_port_dev_type = {
+>  /* --------------------------------------- */
+>  /* Driver callbacks to report role updates */
+>  
+> -static int partner_match(struct device *dev, const void *data)
+> -{
+> -	return is_typec_partner(dev);
+> -}
+> -
+>  static struct typec_partner *typec_get_partner(struct typec_port *port)
+>  {
+>  	struct device *dev;
+>  
+> -	dev = device_find_child(&port->dev, NULL, partner_match);
+> +	dev = device_find_child(&port->dev, &typec_partner_dev_type,
+> +				device_match_type);
+>  	if (!dev)
+>  		return NULL;
+>  
+> @@ -2170,7 +2162,9 @@ void typec_set_pwr_opmode(struct typec_port *port,
+>  	sysfs_notify(&port->dev.kobj, NULL, "power_operation_mode");
+>  	kobject_uevent(&port->dev.kobj, KOBJ_CHANGE);
+>  
+> -	partner_dev = device_find_child(&port->dev, NULL, partner_match);
+> +	partner_dev = device_find_child(&port->dev,
+> +					&typec_partner_dev_type,
+> +					device_match_type);
+>  	if (partner_dev) {
+>  		struct typec_partner *partner = to_typec_partner(partner_dev);
+>  
+> @@ -2334,7 +2328,9 @@ int typec_get_negotiated_svdm_version(struct typec_port *port)
+>  	enum usb_pd_svdm_ver svdm_version;
+>  	struct device *partner_dev;
+>  
+> -	partner_dev = device_find_child(&port->dev, NULL, partner_match);
+> +	partner_dev = device_find_child(&port->dev,
+> +					&typec_partner_dev_type,
+> +					device_match_type);
+>  	if (!partner_dev)
+>  		return -ENODEV;
+>  
+> @@ -2361,7 +2357,8 @@ int typec_get_cable_svdm_version(struct typec_port *port)
+>  	enum usb_pd_svdm_ver svdm_version;
+>  	struct device *cable_dev;
+>  
+> -	cable_dev = device_find_child(&port->dev, NULL, cable_match);
+> +	cable_dev = device_find_child(&port->dev, &typec_cable_dev_type,
+> +				      device_match_type);
+>  	if (!cable_dev)
+>  		return -ENODEV;
+>  
 > 
 
 
