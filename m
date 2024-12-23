@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AB98E7718E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 15:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A24E7718E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 15:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sGQaRxtrs7YGw4rLqhJaxNnTZPfb8EYya/bqjGyzfxo=; b=kfLGikQa2IPRM27BXXjsta1HhX
-	xkhx1VEPD3rqgOufPY4rGxaoKDELhD9wXgLye+a1f73CtVTbiU/CWk/IxAIuF0IK5iPRU7cyPCx0W
-	3jNhwIe5CpScWjZCvE5xxaABZIfIfb+p/pBijLhsZBrfP4Aik62qfku5pcoqXGylYXnT/CcOoXKOx
-	vwB34zC54VuDQbgQfnwfg5tOmhxrsS6bTgLaOSKNlKXbTzSqlUVy2YPYnzeWsMk4/gmcZ5lJAwHbu
-	/QlHSKb7/i3uRTbrvr9QifJ6R3d9uOdFqAniNFcS49WtlvuUDmVJxKiDBQtggrqUj18tdpgS6AGOA
-	1Rji+Qsw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kHNh6xaotAcDhMoavkjLsKkfYgn6RRMW6uLTCVB7138=; b=GHEXSZ6envoogOav8ItgEmHWIZ
+	n2tztKjccI99MSxBGhSsY+S5d4tTd+9z31sM40SYIFGg/TdcuJp4EsovsKNSapNRNJXJKPHEEg8zU
+	9A+cUYaESh1qaitIT0NS0P3X81QipXj7jwtvtStKRSbUXESNCwFrVsPeDy3ePLaD3TYC91a5ZFeEe
+	EvIV/9tto80PF7CQ+6bd9OPv98xbgArtEtO/tV0dpE2RWXnFTXWp+bCKjGIir438pOWB3UjfaoyIH
+	w4nBPm2E01YeuybbHAmlB0JRzidSADAyluJlxQrf1Em+Bkj+Vl+hR7kPQhgSXeN/+mprrkj76aoHZ
+	hm9KlMVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPk6g-0000000AGSH-0qu0;
-	Mon, 23 Dec 2024 15:12:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tPkoA-0000000AK6Q-2Fw8;
+	Mon, 23 Dec 2024 15:57:26 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPk6d-0000000AGRR-2jb8
+	id 1tPko8-0000000AK5C-03bB
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Dec 2024 15:12:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4B953A40E26;
-	Mon, 23 Dec 2024 15:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EF71C4CED3;
-	Mon, 23 Dec 2024 15:12:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734966746;
-	bh=5OvMBBAIn4z1pixhSW0NLURXy5BwPla2ZRZbgZ60/vA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=q0bgQchq498YOtgImj6YMYMsDbtULOACVP/m84PwGUFRLfHgYW3ONnAw6G6J6qI6d
-	 WLIAGc30pEUYHLuiZWCUofkNqjDw2Fn9swPu5Ef85C+vn0AFZ93B4EfZU0zsclx+Vq
-	 9KO1wZAEN4SGpK8vWjFUpikhddqPr+9oNKHJdw6MNOEwdoveiNzNGLIou3ZNdNA0TO
-	 Rw2evrtayhi3QemyuiEccAIKTSFLutER0ylumDw/9LC++eeRJIGyTbe9loc6ixrV2l
-	 8iGU2Zqz8F3KRNzrr1vLl+I2wGOmwyfI1L7NGRDqq1YgOUUx7lPNH7L5DGy1+6pUs6
-	 34taeCl7qC5mg==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Sasha Levin <sashal@kernel.org>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	stable@vger.kernel.org
-Subject: [PATCH] Revert "drm/mediatek: Switch to for_each_child_of_node_scoped()"
-Date: Mon, 23 Dec 2024 15:12:18 +0000
-Message-Id: <20241223151218.7958-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	Mon, 23 Dec 2024 15:57:25 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-53f757134cdso4789983e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Dec 2024 07:57:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1734969442; x=1735574242; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kHNh6xaotAcDhMoavkjLsKkfYgn6RRMW6uLTCVB7138=;
+        b=mVtMx8v2bemdLFYtsEvWWkm2ieBnAy7Tqp+qDdxMIASOsvQ7XSU5BXgVRzfIDD/h/y
+         Iwn+OOTno+GTgb1zJ45UgUfWmJ6V0PBtB4qy3W84pGC24fCgxis8Q2x0hWXyz4nhk/5M
+         y8/gUxjoR7u15kTnhBvOzkHatiToigRC/FuGo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734969442; x=1735574242;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kHNh6xaotAcDhMoavkjLsKkfYgn6RRMW6uLTCVB7138=;
+        b=wXnmccGBOImqZudhlQl4JHbbMd/IOKpIXwz1Uyka6lDET/t2A/9XMGBU2rToPFwlPa
+         9XRJjqTrFHMTKR1neEqc4MP9O4vSlE6iDlGOGgpBwPQbnq/s3eqVoozK+hw5DQY9ghBU
+         ljV3o/l/BXQS1lujMygRgI5/CDZVMwBBeZ41CTHZx8KtguIXJGagb7+0GTn+Ozlw6Tfa
+         1cOZu0F18Sk16F3KlbP1vz3VGgk0UgJ1al/0488a1kU3yQkfbt+VvudK4B9+M1YqVcwN
+         r8BD43ytoYT85GyQKqwAL+xTmFh4nPVfGnKKCfj2APAWgNzYQSM0RYhn9V7s6r5BL7X3
+         +v9A==
+X-Forwarded-Encrypted: i=1; AJvYcCWDbbbCaidFCgnbk7nQ9so5vOq1S4fV6keNRHhc0aSzgO6tqjlVwpjWfDeph6arWHO19jBXcE0q1K72fS3xqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzun9DqERAndS7jgHEcNl8ExDHgWDsIUkF1pFFdMB56SWo9jgGU
+	J757f6YbKKaDUqZc7vrbXJTAIK+X64qiMOSWvzh8wFz3qao9rJ5UUNCXnPx/7JswMX1Kll2/xTf
+	BGbcEM/gYluyvg9LkZO+FV3UEK0pKImXAe2gU
+X-Gm-Gg: ASbGnctmlzvSkB5DHCftJDJFaCGLBWeiJTX4GgL1X2K9jApGuEW6OFsVryFBA9P9Pd6
+	1eP8C6cKfYB1jHhxBmKfKH4RlLQUL4Yh5MzV9GVkI5AJCWnysqYeGgIaz2g+UEdl4TBjy
+X-Google-Smtp-Source: AGHT+IHTk73CF3J9qpxOzp/CqtNyBOpJFRPOv7NC03ghiS4H+MWUanEiEeuA9ExDqorhspKiS3iAgAIzB0xD0pfy6TY=
+X-Received: by 2002:a05:6512:33cd:b0:540:358d:d9b7 with SMTP id
+ 2adb3069b0e04-5422957ac6cmr4243801e87.52.1734969442045; Mon, 23 Dec 2024
+ 07:57:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20241223100648.2166754-1-wenst@chromium.org> <481a6eec-c428-45cd-98a6-5a91f3ceb187@collabora.com>
+ <CAGXv+5Fj5s9FUyaxmEkGimxjEcS6OEfm4_5Zso+YocSi+Vt4pg@mail.gmail.com> <bbc6aa2a-fe48-4e06-b070-fd66dbd00e15@collabora.com>
+In-Reply-To: <bbc6aa2a-fe48-4e06-b070-fd66dbd00e15@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 23 Dec 2024 23:57:10 +0800
+Message-ID: <CAGXv+5FoOM=ZUCWigdCaPbc4FCBtLVX2xnUJnVnVsBH=7yoZ=Q@mail.gmail.com>
+Subject: Re: [PATCH] nvmem: mtk-efuse: Enable GPU speed bin post-processing
+ for MT8188
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_071227_820180_042B21C6 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241223_075724_083862_6044F0A1 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,107 +93,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit fd620fc25d88a1e490eaa9f72bc31962be1b4741.
+On Mon, Dec 23, 2024 at 7:43=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 23/12/24 12:24, Chen-Yu Tsai ha scritto:
+> > On Mon, Dec 23, 2024 at 7:11=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 23/12/24 11:06, Chen-Yu Tsai ha scritto:
+> >>> Like the MT8186, the MT8188 stores GPU speed binning data in its efus=
+e.
+> >>> The data needs post-processing into a format that the OPP framework c=
+an
+> >>> use.
+> >>>
+> >>> Add a compatible match for MT8188 efuse with post-processing enabled.
+> >>>
+> >>
+> >> Let's just change the MT8188 compatible list to
+> >>
+> >> compatible =3D "mediatek,mt8188-efuse", "mediatek,mt8186-efuse";
+> >
+> > That would be "mediatek,mt8188-efuse", "mediatek,mt8186-efuse", "mediat=
+ek,efuse"
+> > then?
+> >
+>
+> No, we're dropping the generic "mediatek,efuse".
 
-Boot failures reported by
-KernelCI:
+That means we also drop it for MT8186?
 
-[    4.395400] mediatek-drm mediatek-drm.5.auto: bound 1c014000.merge (ops 0xffffd35fd12975f8)
-[    4.396155] mediatek-drm mediatek-drm.5.auto: bound 1c000000.ovl (ops 0xffffd35fd12977b8)
-[    4.411951] mediatek-drm mediatek-drm.5.auto: bound 1c002000.rdma (ops 0xffffd35fd12989c0)
-[    4.536837] mediatek-drm mediatek-drm.5.auto: bound 1c004000.ccorr (ops 0xffffd35fd1296cf0)
-[    4.545181] mediatek-drm mediatek-drm.5.auto: bound 1c005000.aal (ops 0xffffd35fd1296a80)
-[    4.553344] mediatek-drm mediatek-drm.5.auto: bound 1c006000.gamma (ops 0xffffd35fd12972b0)
-[    4.561680] mediatek-drm mediatek-drm.5.auto: bound 1c014000.merge (ops 0xffffd35fd12975f8)
-[    4.570025] ------------[ cut here ]------------
-[    4.574630] refcount_t: underflow; use-after-free.
-[    4.579416] WARNING: CPU: 6 PID: 81 at lib/refcount.c:28 refcount_warn_saturate+0xf4/0x148
-[    4.587670] Modules linked in:
-[    4.590714] CPU: 6 UID: 0 PID: 81 Comm: kworker/u32:3 Tainted: G        W          6.12.0 #1 cab58e2e59020ebd4be8ada89a65f465a316c742
-[    4.602695] Tainted: [W]=WARN
-[    4.605649] Hardware name: Acer Tomato (rev2) board (DT)
-[    4.610947] Workqueue: events_unbound deferred_probe_work_func
-[    4.616768] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[    4.623715] pc : refcount_warn_saturate+0xf4/0x148
-[    4.628493] lr : refcount_warn_saturate+0xf4/0x148
-[    4.633270] sp : ffff8000807639c0
-[    4.636571] x29: ffff8000807639c0 x28: ffff34ff4116c640 x27: ffff34ff4368e080
-[    4.643693] x26: ffffd35fd1299ac8 x25: ffff34ff46c8c410 x24: 0000000000000000
-[    4.650814] x23: ffff34ff4368e080 x22: 00000000fffffdfb x21: 0000000000000002
-[    4.657934] x20: ffff34ff470c6000 x19: ffff34ff410c7c10 x18: 0000000000000006
-[    4.665055] x17: 666678302073706f x16: 2820656772656d2e x15: ffff800080763440
-[    4.672176] x14: 0000000000000000 x13: 2e656572662d7265 x12: ffffd35fd2ed14f0
-[    4.679297] x11: 0000000000000001 x10: 0000000000000001 x9 : ffffd35fd0342150
-[    4.686418] x8 : c0000000ffffdfff x7 : ffffd35fd2e21450 x6 : 00000000000affa8
-[    4.693539] x5 : ffffd35fd2ed1498 x4 : 0000000000000000 x3 : 0000000000000000
-[    4.700660] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff34ff40932580
-[    4.707781] Call trace:
-[    4.710216]  refcount_warn_saturate+0xf4/0x148 (P)
-[    4.714993]  refcount_warn_saturate+0xf4/0x148 (L)
-[    4.719772]  kobject_put+0x110/0x118
-[    4.723335]  put_device+0x1c/0x38
-[    4.726638]  mtk_drm_bind+0x294/0x5c0
-[    4.730289]  try_to_bring_up_aggregate_device+0x16c/0x1e0
-[    4.735673]  __component_add+0xbc/0x1c0
-[    4.739495]  component_add+0x1c/0x30
-[    4.743058]  mtk_disp_rdma_probe+0x140/0x210
-[    4.747314]  platform_probe+0x70/0xd0
-[    4.750964]  really_probe+0xc4/0x2a8
-[    4.754527]  __driver_probe_device+0x80/0x140
-[    4.758870]  driver_probe_device+0x44/0x120
-[    4.763040]  __device_attach_driver+0xc0/0x108
-[    4.767470]  bus_for_each_drv+0x8c/0xf0
-[    4.771294]  __device_attach+0xa4/0x198
-[    4.775117]  device_initial_probe+0x1c/0x30
-[    4.779286]  bus_probe_device+0xb4/0xc0
-[    4.783109]  deferred_probe_work_func+0xb0/0x100
-[    4.787714]  process_one_work+0x18c/0x420
-[    4.791712]  worker_thread+0x30c/0x418
-[    4.795449]  kthread+0x128/0x138
-[    4.798665]  ret_from_fork+0x10/0x20
-[    4.802229] ---[ end trace 0000000000000000 ]---
+Thinking about it more, I think it's stretching things a bit. The hardware
+is clearly backwards compatible, or we wouldn't even be reading values
+out correctly. The only difference now with MT8186 and MT8188 is that
+they have a speed-bin field with a value that we want passed to the OPP
+framework, and the interpretation of that value is not really part of
+the efuse's hardware. We chose to do the conversion in the efuse driver,
+but we could also have done it in the GPU driver.
 
-Fixes: fd620fc25d88 ("drm/mediatek: Switch to for_each_child_of_node_scoped()")
-Cc: stable@vger.kernel.org
-Cc: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Reported-by: Sasha Levin <sashal@kernel.org>
-Closes: https://lore.kernel.org/lkml/Z0lNHdwQ3rODHQ2c@sashalap/T/#mfaa6343cfd4d59aae5912b095c0693c0553e746c
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+What I'm saying is that we should not need to change the compatible strings
+to make this work.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 9a8ef8558da9..12cf3d9872ea 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -373,11 +373,12 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- 	struct mtk_drm_private *temp_drm_priv;
- 	struct device_node *phandle = dev->parent->of_node;
- 	const struct of_device_id *of_id;
-+	struct device_node *node;
- 	struct device *drm_dev;
- 	unsigned int cnt = 0;
- 	int i, j;
- 
--	for_each_child_of_node_scoped(phandle->parent, node) {
-+	for_each_child_of_node(phandle->parent, node) {
- 		struct platform_device *pdev;
- 
- 		of_id = of_match_node(mtk_drm_of_ids, node);
-@@ -406,8 +407,10 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- 		if (temp_drm_priv->mtk_drm_bound)
- 			cnt++;
- 
--		if (cnt == MAX_CRTC)
-+		if (cnt == MAX_CRTC) {
-+			of_node_put(node);
- 			break;
-+		}
- 	}
- 
- 	if (drm_priv->data->mmsys_dev_num == cnt) {
--- 
-2.34.1
 
+ChenYu
+
+> Cheers!
+>
+> > Fine by me. :D
+> >
+> > ChenYu
+> >
+> >> instead :-)
+> >>
+> >> Cheers,
+> >> Angelo
+> >>
+> >>> Cc: <stable@vger.kernel.org>
+> >>> Fixes: ff1df1886f43 ("dt-bindings: nvmem: mediatek: efuse: Add suppor=
+t for MT8188")
+> >>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> >>> ---
+> >>>
+> >>> I'm not exactly sure about pointing to the dt bindings commit for the
+> >>> fixes tag.
+> >>> ---
+> >>>    drivers/nvmem/mtk-efuse.c | 1 +
+> >>>    1 file changed, 1 insertion(+)
+> >>>
+> >>> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> >>> index af953e1d9230..e8409e1e7fac 100644
+> >>> --- a/drivers/nvmem/mtk-efuse.c
+> >>> +++ b/drivers/nvmem/mtk-efuse.c
+> >>> @@ -112,6 +112,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pda=
+ta =3D {
+> >>>    static const struct of_device_id mtk_efuse_of_match[] =3D {
+> >>>        { .compatible =3D "mediatek,mt8173-efuse", .data =3D &mtk_efus=
+e_pdata },
+> >>>        { .compatible =3D "mediatek,mt8186-efuse", .data =3D &mtk_mt81=
+86_efuse_pdata },
+> >>> +     { .compatible =3D "mediatek,mt8188-efuse", .data =3D &mtk_mt818=
+6_efuse_pdata },
+> >>>        { .compatible =3D "mediatek,efuse", .data =3D &mtk_efuse_pdata=
+ },
+> >>>        {/* sentinel */},
+> >>>    };
+> >>
+>
+>
 
