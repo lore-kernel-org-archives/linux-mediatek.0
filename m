@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB816E7718B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1727EE7718B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 20:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcyyU+gwx+/hVJClIB5L3k+I+5jTEMi2zqT1DW4yDiw=; b=j/SUxLNKQV9tMBSVkC0eUBaMet
-	2MZZ6Ys1Glhe6zAqq97Y2O2DtJAHn0V1n2Zrvif7MGRA26afI/GUCm3pSgZ1faoS2QX345QpjjH5b
-	0myD3lCuYoE/qVzwbsQBth+14vAlyUEWjlZJh9B+ADRoXWh22S7yvQCrUgPt+fmtbEAgi1Mm74aUT
-	mY3tJKAUI4CPxGzsLANf6dz5QZeGHCDV/uMwfqhVFHMysDHOFqztNJhZHGIVMVJA1QBNmmGb72+nc
-	VkNLlJe+fNBRqVqYWMlVM3lmm/Qkly5NQTocIjTnQaigUH5vAOfix4ZRLMmxSEwaxDIY1FV8bBXdj
-	Pv07w/Xg==;
+	bh=y7511N2OAxNJkgb42XSVIgACVMtbge2/q9/DMKR7CSs=; b=h8AGcOvWKuTFo8aPdXoaOZYsly
+	+xKFNvwkLo2freGqyLM37FoZn4a7R15gSflhRcxNhowRIH0MxPz8/G4KX5YY0KYyG9dItOuJ+T8Aj
+	Nm9T8YopP4vDEKXh8l0Kls54uToiNS2wmQCCOxPB0mHhQ1yGff5QIH1zGR1u1BpchBgQL5Cb0IweL
+	aFZZiFJ4XP/dpitj9e+QbhdLHpEsbXxqH2aBi09qsyBbVuzrjVg4IjwFuxzSBK4VMJ22CfMV7wDl5
+	hYbdKcOQYfwkiWbOIsm4swPJtPLz5TB46chem5COUHGpISM+NKjGbfYbBhie1RkP/yqMf7pyHOTry
+	LvMJXbZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPpSn-0000000Ak0B-089E;
-	Mon, 23 Dec 2024 20:55:41 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tPpTw-0000000Ak8E-0YGV;
+	Mon, 23 Dec 2024 20:56:52 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPpRZ-0000000AjnC-0qfe;
-	Mon, 23 Dec 2024 20:54:26 +0000
+	id 1tPpRi-0000000Ajo8-0wSg;
+	Mon, 23 Dec 2024 20:54:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BE0295C53C8;
-	Mon, 23 Dec 2024 20:53:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28CC6C4CED3;
-	Mon, 23 Dec 2024 20:54:24 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 43E0EA41246;
+	Mon, 23 Dec 2024 20:52:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0033DC4CED3;
+	Mon, 23 Dec 2024 20:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734987264;
-	bh=NMMtTTxdzJLwiKMxV+CYvOfL5ZFO48bV3CdhVJI34gE=;
+	s=k20201202; t=1734987273;
+	bh=kbXC3RlLQvMbB0Kr3AmNpOGH3nzjNPCGMhfshggZNlA=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=aUB5a1yXiMwZPIGTyk+izkH/ShpjHcOdrTKB4oIAbQd1FntAk76oJfDOXe4dp0WT2
-	 4wL40jcrxAGXkVwac6Acd2fffMI5wrdoJKaWnLve3jk+MF2OAHXtv22nqelpggGwPT
-	 ZwO3TkWjCf4ZrupDLAmFmRGxbID1M5tx24EBvMWmQDMM5V3Wfz4/zNe8i+nvTZCyju
-	 RM5FnAmGSEBis0mVHp68SxXtzw9lTvkKB69zuoPTYnGm0j5UuQJ/Vyn8ubi21wBEH/
-	 Sa/MvoGBlBW0mPBBmdNRYL3xUZjbzp6Jzplf3B5Gvuiw6pYGkfsfP0PiQlrv0BlZYR
-	 PEN6Jh84UGZIQ==
-Message-ID: <94021cd67e259722e10ac7db2c987b6c.sboyd@kernel.org>
+	b=NizACS31YVDw4z71EsAy7Qx2p3j7UDgUZareoT0accQ9ootNCVf66zIWg6xmTqdcn
+	 HVQT1rMSyeds1vXm++1I86ABfO6lNxM89jmblxXrQK2fg2YNMQun2Vv61hya3fxM1r
+	 dYB/jgByHUj9yqHvQqFBvdtSdGklZVFByJngsjCpbR3h49bYmbJCdJzNBvyAt1lbMv
+	 owe+Nxkv7p6OOnk/7BvgPreFTktqshMFuFRbK3QutBxqyVl9s8fQ2CvL9PX8ahJpvs
+	 aStLZKWHeVMT3GnHQMqiiZpo9uVgcn5XZTK13euMvaU4q08t1EvpIZmLTej3loyHKo
+	 BxY73q6M3yp4Q==
+Message-ID: <e16974439c048232c366503d73c2c799.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20241217-clk_bulk_ena_fix-v5-1-aafbbb245155@collabora.com>
-References: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com> <20241217-clk_bulk_ena_fix-v5-1-aafbbb245155@collabora.com>
-Subject: Re: [PATCH v5 1/3] soc: mediatek: pwrap: Switch to devm_clk_bulk_get_all_enabled()
+In-Reply-To: <20241217-clk_bulk_ena_fix-v5-2-aafbbb245155@collabora.com>
+References: <20241217-clk_bulk_ena_fix-v5-0-aafbbb245155@collabora.com> <20241217-clk_bulk_ena_fix-v5-2-aafbbb245155@collabora.com>
+Subject: Re: [PATCH v5 2/3] PCI: exynos: Switch to devm_clk_bulk_get_all_enabled()
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: kernel@collabora.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-samsung-soc@vger.kernel.org
 To: Alim Akhtar <alim.akhtar@samsung.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bjorn Helgaas <bhelgaas@google.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof =?utf-8?q?Wilczy=C5=84ski?= <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Russell King <linux@armlinux.org.uk>
-Date: Mon, 23 Dec 2024 12:54:21 -0800
+Date: Mon, 23 Dec 2024 12:54:30 -0800
 User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_125425_286267_FAFC90F9 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20241223_125434_328509_9D83B0E9 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,7 +71,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Cristian Ciocaltea (2024-12-17 13:41:51)
+Quoting Cristian Ciocaltea (2024-12-17 13:41:52)
 > The helper devm_clk_bulk_get_all_enable() missed to return the number of
 > clocks stored in the clk_bulk_data table referenced by the clks
 > argument and, therefore, will be dropped.
@@ -84,8 +84,6 @@ Quoting Cristian Ciocaltea (2024-12-17 13:41:51)
 >  =3D 0 if there are no clocks
 >  < 0 if an error occurred
 >=20
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
 > Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
