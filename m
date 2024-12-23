@@ -4,186 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3C49E77188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 02:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF8AE77188
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2024 02:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vPIuqAkEIhIc7SIxhIKtNTejNsj54ROHnT0uFQASbuc=; b=vPAqDbqOOxODJlb3euFutIGPSc
-	BXvfR0cfgAI7iUNvI/6s1GQ8wiUkJ7LXQ1ObaMTsKWJX03coLbqzJ1Z25cpvALUMGAbRjbO+7ofns
-	tt4nGlz8CgEs+SnJXqY6fk+A+znCSDHD3CyXImpPVYbwMV7RIEKyvXGdhHAXbhjixzuSwyPYdRHq9
-	rH6pPZdkVQNos/SyOdFTdxsMztzhPwm4TeeVqhZIO38nKCZGFai4q8aBt47qLVIggzWJkCYJ0teur
-	KSyGbzcZAUrEclD8wvfI4G8FgMm0HOQwVG7kJjCW4YaomsNKhCc5UnATjrFIFTLSieIDoQEnZwJYn
-	0DKF15jg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5qnEfk34JXjmwcW6H1RfNrw1EbvlMd5bPIiUMHsYMUQ=; b=YrAImM16yymDcZY4sdD18yM/Lq
+	chRSrDPrx7CLeg0PXVgjVQjALOJC2A9JeMriQ6kQyVWDMZH60+xoFGi0jB9GhJVKJFq7Mk52Lzs+w
+	KpbV8783qExkcK8ugvYA1X3IN53qyfHKGj+DKPUABwWgFECcS8DYS0xRyUXx9XJzsQKYMuI2vP7ot
+	4q3vcoeTZIRjbcG5fVFLlnxq5Nqh3jEKJf9xlv8uAFns8CVNtEfcqNxPEBohFgFs+JtwdNHp6m+Au
+	Rtjhl7W7ifyzW4z+jDmz+Nl07L20TWbjwCQZdG986PIbEvIrbUj0kC44RVm/ztzgOIT14w/mBqygb
+	b667z+fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPY87-000000099f0-2YZb;
-	Mon, 23 Dec 2024 02:25:11 +0000
-Received: from mail-eastasiaazlp170100000.outbound.protection.outlook.com ([2a01:111:f403:c400::] helo=HK2PR02CU002.outbound.protection.outlook.com)
+	id 1tPYGZ-00000009AGY-3TPF;
+	Mon, 23 Dec 2024 02:33:55 +0000
+Received: from smtp-relay-canonical-1.canonical.com ([185.125.188.121])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPY81-000000099dO-1T5H;
-	Mon, 23 Dec 2024 02:25:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jImH/B9o/kEjFnAycJjzRjGdmk6m+04lnqF8jgceOFMB7Ww63h691sWyxAlO2Ch7YzhBVu22X77kM2V9EbfX6fL1q0Z7wuVe1JFY/YQUG6i+M1yi5GE/9zJVwUnwpfsbOVwrjf0INWQxDsxgdUIxCrekPw2+Tlde979rH5KVF9Gl5V2/J7R2T/byrTJFoKT7JsQ3K+B90jcdl8WH1KMsEsUOHweGmB3n597npV1i9BOsu0QWn7qOynb1BEeHQMOXFeO8cphmuU2XNdGd2ld8OPvwPqDKglGYz3WJQGS5bPdA/oME50Fob19n1V58uBuGv7RjXo4PC8tlxGna6NKRgA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vPIuqAkEIhIc7SIxhIKtNTejNsj54ROHnT0uFQASbuc=;
- b=UAb0AihRGt3afKUqS0UTbtaJbdAwdsWGIEADfPwGbM1bvpz8bpAw21AqrBc0zt98Vp4qNO0bke3yKbD5iUzHsCMm+Ve/iuPXCGyJlqGdDiwW0omP7ads0UFusYr/9m44oiE8cNM0Hv7fr8WJn1r/48dftnw98dg7B/Zrs6Sr5IA4mbDzwCZE2Laiv/NN/BuHPdFfWdNLLiU1DIc3KfSSPWFRr+WFV97Zk+cDbLMMJQvQuVhd4eRv//DCYPVEoFO4ERTvM7wJSIP/oSw5dGQKiZl1ltWyXEB/SP4tewrwF9znEiAfu9uQdttBK4VfnOXMugzNtNhbgrdMpw0maWFbDw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vPIuqAkEIhIc7SIxhIKtNTejNsj54ROHnT0uFQASbuc=;
- b=IsI5tjdB7KY2PGeuenKCPRfGxuLtzG+CBPzPvYMDh0HCulO/5uYq0HzhypbtfPgMohLZlPY+CSnqMyV/1BxqOQWO1AD62LG73ljGIaQfSdkwn0AyZa73BN+EhymCbhW4EXq4qaGcGebGav2UPMN3Oq3bkoDLNwCzfpTY0Rl6wgo=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by JH0PR02MB6849.apcprd02.prod.outlook.com (2603:1096:990:42::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8272.17; Mon, 23 Dec
- 2024 02:24:52 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%5]) with mapi id 15.20.8272.013; Mon, 23 Dec 2024
- 02:24:51 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: ryazanov.s.a@gmail.com,
-	Jinjian Song <jinjian.song@fibocom.com>
-Cc: andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com,
-	chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	corbet@lwn.net,
-	danielwinkler@google.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	haijun.liu@mediatek.com,
-	helgaas@kernel.org,
-	horms@kernel.org,
-	johannes@sipsolutions.net,
-	korneld@google.com,
-	kuba@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	loic.poulain@linaro.org,
+	id 1tPYFO-00000009AD1-1IPz;
+	Mon, 23 Dec 2024 02:32:43 +0000
+Received: from laptop.lan (unknown [123.123.43.248])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 500BD4093D;
+	Mon, 23 Dec 2024 02:32:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1734921158;
+	bh=5qnEfk34JXjmwcW6H1RfNrw1EbvlMd5bPIiUMHsYMUQ=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+	b=VjFpcNmbP2cIiN2fMpSY7tpsMOnVXphLMOJjElWhkr4B+yUP1I8/mGqO8oTegomr9
+	 OHwPVlWItAbBKYvuyGRt7xebumRpGxvt8TtjP0TZ3cXFw8K9S807u810DC6IiRKYfE
+	 xnRImfEGjJiDSq2smJG2owcldvQklL+x6qgQ9TDUTsiE9YGZE2TVtJZox3cgtgkhgD
+	 qoUekAoe1weTgjp0uBaBiJnYR1mTtN92PB3kGI46eFogjRjZCums6wgItNJnujj/zi
+	 3Wrtvy9P4gqw1CDRaPcTun5pLJQl9hPzzeLWfDjJODEi1qZeQAd8E8cUK3PWyb8YiU
+	 G5m8Dy8MTo2/Q==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
 	matthias.bgg@gmail.com,
-	netdev@vger.kernel.org,
-	pabeni@redhat.com,
-	ricardo.martinez@linux.intel.com
-Subject: Re: [net v2] net: wwan: t7xx: Fix FSM command timeout issue
-Date: Mon, 23 Dec 2024 10:24:18 +0800
-Message-Id: <20241223022418.5795-1-jinjian.song@fibocom.com>
+	angelogioacchino.delregno@collabora.com,
+	nancy.lin@mediatek.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH V2] drm/mediatek: Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err 
+Date: Mon, 23 Dec 2024 10:32:27 +0800
+Message-Id: <20241223023227.1258112-1-guoqing.jiang@canonical.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241220085027.7692-1-jinjian.song@fibocom.com>
-References: <20241213064720.122615-1-jinjian.song@fibocom.com> <20241220085027.7692-1-jinjian.song@fibocom.com>
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: FR4P281CA0042.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:c7::12) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|JH0PR02MB6849:EE_
-X-MS-Office365-Filtering-Correlation-Id: f3c6d310-9e18-4d27-906c-08dd22f8faea
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|52116014|376014|366016|1800799024|7053199007|38350700014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?M3RycGpZME04YWJnMGJkSXZrTUo0L01SUU9nNjlHS05OeGpTaVFHbjQ3YzNV?=
- =?utf-8?B?RTQvWHYvNnRkZU5USmZRaTYxSDVUa1ZTNXBUOHh3MW9tSWJEVHg2eUdIMm8x?=
- =?utf-8?B?MnNGSDNmS0JVQ29GR29JNm9tb1VoSTdVRkhMd25NOWhtMkhnY2JPclB6ZXJ5?=
- =?utf-8?B?c0I5TkxUMTZValBaeE1nZTFlMzdwN3pVSVhPbWJmOVFMbGdpZ2xqZ1lhbEdy?=
- =?utf-8?B?MGtDSHRwcTNndmduNjlnWjdqbDJUYWZUMk9STUtjUTV3Y3Q4QS9IVCtzODA1?=
- =?utf-8?B?cXhBZ3JwYTBreXpxeUJkSndkdHVBWGIyck5oRGdDejkyaHdHRlpFY1JIMGhj?=
- =?utf-8?B?WlNmUDRCWWRCTk5oaGNZSjFFcm1GWG5KU1kyMkJhRjJZV2lYNjZYQnBxblJr?=
- =?utf-8?B?MFJJaktQMmJ3K2RaNUZQbFFwQTFuTEJ1NXB5QUd6R2NQQ0NIeDFoOGhlMW5S?=
- =?utf-8?B?cnIrUWlrWHBkbzczRmROclM5ZWk0VmJSejFOcDRTY3oybEFYTTBUZVVBMXBL?=
- =?utf-8?B?Sk5PZkRlMDBrcFNHaXo5Z2JhOEIvaHVnUkE5VmRXMnBadFR5WjhZaWloUVVy?=
- =?utf-8?B?VExsREhlaHpBZDZwNVRSQjRxZDlYMWtaeHh5bTdReWxqWG9VV05kdXdkQ1lF?=
- =?utf-8?B?d2pxSzZvR3ozZk9jMUh5UVlwM21WM2crZ3FQbFM5WXV4bTg3a1FnOTRtYnQ3?=
- =?utf-8?B?YWF5Y0FkY3JSYUdVMUNOcEVtMm9vYUo3aU5CTEFkMEFuQVpRN0dYRnBnT2tR?=
- =?utf-8?B?MlE5RVVpNEFlNUFCS2Q0UXhzUjVJY1crZWE1T0x1MG8vVk9Oams4TGxMWVZN?=
- =?utf-8?B?bGluNUYrN25WOEZER0dmVkJEYmFpNUNzMHduTmxrcDBSY0lLOGR1SlBPMTY2?=
- =?utf-8?B?dVRiOGcrMjZ5a254a1FPNnRVOGYzbXRPaFdlQ292SEhyN0Z2b29NS0Y3MkhD?=
- =?utf-8?B?V3N5UWl3cG03U3FPWGIrOU9RckRLVjV3ckg1ZlAvOGdzYmExS0wyQUJOalZ1?=
- =?utf-8?B?ZGxpcUpNbTlaNXRvU21oSHZLZU1XdzBKbmZnMk5MNDZnR2MvbmJ6aEF5YzBL?=
- =?utf-8?B?QUxYeStBejFzZi9zTGxVeTZaZnJ0ZStrTFhWcnNKR3BwU1IzUWxQRWkzbExZ?=
- =?utf-8?B?Q3g2eWpyejg1eUsvdkoxeXA1VUR2N0d0L2lCMXpOcUZjZy9DVGY0MmFDTjBq?=
- =?utf-8?B?MC9yVERucy9uOGNVV211NktEcFQvWjZrTU43eGEzY1lmUUZrdzRadDFQVDJs?=
- =?utf-8?B?ejFWSU14V2pXcFFFZzAzUUhZMkVFRytXZ2RaYTVpS3FzajdKRGFiMVp5OWlI?=
- =?utf-8?B?NVJBc3NIa1NvUXc4Vk9xK01NQ2ZmK0pVUS95TDFzNlM5R0pDL1prU0VDTjlt?=
- =?utf-8?B?S081KzBuMVBHNGY3d1NOWFpUNGJuNVNIcldsMEFXOFkwR3lPZzVHbjRVaVh2?=
- =?utf-8?B?bWxkVS9UZFgrZ2MyVWdUdWRUNDlDaGxmbXpLZzI1V041V211L3NwanMyMVhu?=
- =?utf-8?B?cFdCTDZwOVdiRThBV0NtbXNYeGE4YlFsZXlpbUVJN0I1eVNaVytkczY0YytH?=
- =?utf-8?B?NW1YdUZtQ3J1MXhrM29ZdFhlOGgwYmxpcFVuaXExZU1FQmlaOWFVdzV1ZTcy?=
- =?utf-8?B?NXNwQ1NabXlnVnR4dzJSQmFDNmt4eXcwK3YyNDVhdlIrZ0x0ZENoeDFIL2Fn?=
- =?utf-8?B?N2JMVlV4bThFQ0E4T0NuOHpuWFlEQzlCQko5WXJvY1o5NmxPL2FUSStuU09H?=
- =?utf-8?B?a2lISkN3YlVUanBQWFFWOEEvcnhPL1FOczZ4K0h6cU92M3oyYW1NTGIraEZ6?=
- =?utf-8?B?cVJ3K20zOVVUdzl5NlNDWmJQaTZzS2VwdHdvaFJNWVA0RzVKaE5QZjQ0Vi9S?=
- =?utf-8?B?cklZVEVzczhzZ3A0RENlckVZZzhzcFBPNTRnSW1zTzQ1RnRxMlBGL2dUNk80?=
- =?utf-8?Q?PI/5AqSvIuAR6IwG7kyBboLg3ypTnaGx?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(52116014)(376014)(366016)(1800799024)(7053199007)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MG96bFN5UEJ5aVBET0dtR0FzcXRiL2xpR0VIMUpPWnp5MzB5bUdLcU5CejlH?=
- =?utf-8?B?S1Mvell3NXFJS1QrK1JSREJlZGdNZXllWFYvUHhhUDBJcTN3TG1SM3Exenlh?=
- =?utf-8?B?RTZ1Q0gxSXJJbWJCcXRLZjFBelZUeUNSelJUbEFKMlRyNy9rcUFPTzU1c213?=
- =?utf-8?B?UU1leElsbmYzWkhEVHNoYjhGNFFMcU1NTXMzeFlkNThxVWVDT0pSUDZVYmZF?=
- =?utf-8?B?L0ttVFNLWG9NOHBpdlZzQmZWdk9ZS1FRcXZwa1hlM0pvKzNCNURMdzh3QjIr?=
- =?utf-8?B?d3dmSGMxRCtrVVBxeW41blRnTHVubEZGVjJoZ0dtOGpFaXhUK0Z2WmpqMk9z?=
- =?utf-8?B?NWFGN0RXU0s2eDgzTHRDT1lidnQ2cCs1QXVpd2ttZk56QlpOZlI2U3lZUmdx?=
- =?utf-8?B?ckZ0U1JOMmtvUmUyOHJUckxydmhEQytwNkc0anB0cnNteXdkeEpXd1A5aGV2?=
- =?utf-8?B?cGdjNGl2bWpId0UxNEJWamVKNzc0dWN3SDB2MkhYRnZCTkZteHk2UWc1bm9I?=
- =?utf-8?B?QlpEYlJpcm0xT09kUDBHTnJUTm5KSGZQaGZBT0U4cHBSRzFoOUp6YUVaaVlG?=
- =?utf-8?B?dGxzaURUc2lDQ3Rid3BsanJnbm8vcS9hdzZLNzkrYTR1QWIyVHdFZkQ3czUy?=
- =?utf-8?B?R05iRHFhWTBiTjlLZXdkQW4rcG9GTmc5TDl0SHJGdXpCTm40UWZwRC90aitV?=
- =?utf-8?B?cHphYWFUMXRFd3ZoWElBUU5RaVh3QjY3ZEFkUE53REV5QkVFQlgwYmdTckhw?=
- =?utf-8?B?Zi9iWldpei85MUFDRHIyQjRnUWw2NFVqT0xRMit0NTFTcjBBV1lVTmMvQm9T?=
- =?utf-8?B?Umh1dy85U2FTQ2VsSkFtRS9FZ3hLVlc4Q3FnUWtkeWV6dCtCUEgrMHNNcDhB?=
- =?utf-8?B?ZC9aSlRzZ05US0tSUGZZd1N1MTJpSUpwS09PSWNaODBJTllRTVlkUWVwSStM?=
- =?utf-8?B?ZGoxb29jVUx0RDhubHdsNm9qdjB3cVN2ZmJKbHRrRU9waG9lTW9WNzRnZW1Q?=
- =?utf-8?B?Q0dJSjl6aGRGL0l2bzV2cUlaczhIcHorM3RrQkNmTWR5RmUwUWxMeVZiWmJa?=
- =?utf-8?B?K1lxaTVxeHp0eXA4RVp5M0FKbE12VEF3NytXODNXSWt2L05GOW1xQmtWMVor?=
- =?utf-8?B?bkxjYjdTaExtYlg2QUZ6ZkNwajdrUUw2Sm5RN3FKYmJZUHp4WjhKcG82R3Qy?=
- =?utf-8?B?TE14L0Y3cVZ0RmV3bDhBSnlpaytHQWJjb21GV2podHNyd2ZkQ0VHbnlPb3RR?=
- =?utf-8?B?WUJiZzZlc0MwWFhWam5jWWczSmVqdWtHakxvWC9MQXNVa0haNGcwdkRtK2t2?=
- =?utf-8?B?ZG9IS1o2Q0IvS0R0dXVtUmMxUExXKzBqUk9PaHFTVjBwT0dqalJHSXArNjNh?=
- =?utf-8?B?VkxQbFRmamZYTkRsZjRsM0dhVm9qQU9rV1hmbEJicXhjeDBhRG15L0RBY1h2?=
- =?utf-8?B?V0Q5Q0tJSFkvMVBhNmRPVytROTJQQkRkV0craVRnM2dNekpYRUxBNmlQQ0V1?=
- =?utf-8?B?NHJ2UVA2Z2tUSHZoNFkrNUlqZ09UYXVNSktZSXB2YUMyOVZVeUZ4NllPbEY0?=
- =?utf-8?B?bHRhYmkyd2tkLzUvRmpaVCtGMG9GWEs0MzJIcThxcmE4NUNEbGw2Z3ZsRlc1?=
- =?utf-8?B?Zk05Y3BnejdMZTBZeERjNjUzYlcxUTF0bGNud0JGbURoblQrclREZGtUdGhn?=
- =?utf-8?B?NE5zNURWbHpNeGNySUJ2bHdFYjNLcHRwcHFsWVhROFRIckZYa1ljWThSa3dY?=
- =?utf-8?B?WG9tZy9lN0hqUWdBV2Z0d1RkR2JFRmY1RTYrS2FpOVhxdFl3WE5RVVA3VWZJ?=
- =?utf-8?B?dWxWeGxiZnBVSlhJTGU2Zmp6V3FYOHB4RU5NUTVId2FCUUs2ZmJRSmxzK3lm?=
- =?utf-8?B?TVd6c1BIOW1oZzB4MWhCYmNBelJhOStCUVlSQnllVjliaXBmT01kZjVxek55?=
- =?utf-8?B?TlZVQzN4UnBPTHpPeCs4dm8zdEh1ZUgwU29uNHVXUEczT1dGUzBJMVBmTmZ0?=
- =?utf-8?B?ODcyZFVsekJkclg2aFFsVnliQlhWdzJTN21CSmNJMml1djJDOGZnUmVkK2J4?=
- =?utf-8?B?NjZwT0xFQ2o2VjY3RXA2bGNTb0xVKzVzQWxsOEVWa25OT25mUkZxRCtqR2d1?=
- =?utf-8?B?dkw3cUFyVlpSNm5PbEhjNTJSVVM5WFZNM0JCQ3hpcVd2UTNicnZyWm40YXFi?=
- =?utf-8?B?TlE9PQ==?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3c6d310-9e18-4d27-906c-08dd22f8faea
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Dec 2024 02:24:51.8217
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ju/9YQ/aiECav1EkToWKgNL5t8ATYu1ZWuDtWv8NSbgdFz/g1D5/4Obhl79B/rANaZ9ffTl0AfDjVDOA/XR5iB6bVrX2siZ13JPacgiyb+U=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR02MB6849
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241222_182505_494519_01F40E92 
-X-CRM114-Status: UNSURE (   7.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241222_183242_667884_6638ACF7 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -198,37 +76,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+The pointer need to be set to NULL, otherwise KASAN complains about
+use-after-free. Because in mtk_drm_bind, all private's drm are set
+as follows.
 
->Hi Jinjian,
->
->On 20.12.2024 10:50, Jinjian Song wrote:
->> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
->> 
->>>> Fixes: d785ed945de6 ("net: wwan: t7xx: PCIe reset rescan")
->>>
->>> The completion waiting was introduced in a different commit. I 
->>> believe, the fix tag should be 13e920d93e37 ("net: wwan: t7xx: Add 
->>> core components")
->>>
->> 
->> Got it.
->
->[...]
->
->> Yes, the patch works fine, needs some minor modifications, could we 
->> feedback to the driver author to merge these changes.
->
->Looks like the drivers authors haven't enough time to maintain it. You 
->are the most active developer at the moment. Could formally resend the 
->updated patch with refcounter as V3? And, I believe, we can apply it.
+private->all_drm_private[i]->drm = drm;
 
-Hi Sergey,
+And drm will be released by drm_dev_put in case mtk_drm_kms_init returns
+failure. However, the shutdown path still accesses the previous allocated
+memory in drm_atomic_helper_shutdown.
 
-Yes, please let me resend the updated patch as suggested.
+[   84.874820] watchdog: watchdog0: watchdog did not stop!
+[   86.512054] ==================================================================
+[   86.513162] BUG: KASAN: use-after-free in drm_atomic_helper_shutdown+0x33c/0x378
+[   86.514258] Read of size 8 at addr ffff0000d46fc068 by task shutdown/1
+[   86.515213]
+[   86.515455] CPU: 1 UID: 0 PID: 1 Comm: shutdown Not tainted 6.13.0-rc1-mtk+gfa1a78e5d24b-dirty #55
+[   86.516752] Hardware name: Unknown Unknown Product/Unknown Product, BIOS 2022.10 10/01/2022
+[   86.517960] Call trace:
+[   86.518333]  show_stack+0x20/0x38 (C)
+[   86.518891]  dump_stack_lvl+0x90/0xd0
+[   86.519443]  print_report+0xf8/0x5b0
+[   86.519985]  kasan_report+0xb4/0x100
+[   86.520526]  __asan_report_load8_noabort+0x20/0x30
+[   86.521240]  drm_atomic_helper_shutdown+0x33c/0x378
+[   86.521966]  mtk_drm_shutdown+0x54/0x80
+[   86.522546]  platform_shutdown+0x64/0x90
+[   86.523137]  device_shutdown+0x260/0x5b8
+[   86.523728]  kernel_restart+0x78/0xf0
+[   86.524282]  __do_sys_reboot+0x258/0x2f0
+[   86.524871]  __arm64_sys_reboot+0x90/0xd8
+[   86.525473]  invoke_syscall+0x74/0x268
+[   86.526041]  el0_svc_common.constprop.0+0xb0/0x240
+[   86.526751]  do_el0_svc+0x4c/0x70
+[   86.527251]  el0_svc+0x4c/0xc0
+[   86.527719]  el0t_64_sync_handler+0x144/0x168
+[   86.528367]  el0t_64_sync+0x198/0x1a0
+[   86.528920]
+[   86.529157] The buggy address belongs to the physical page:
+[   86.529972] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff0000d46fd4d0 pfn:0x1146fc
+[   86.531319] flags: 0xbfffc0000000000(node=0|zone=2|lastcpupid=0xffff)
+[   86.532267] raw: 0bfffc0000000000 0000000000000000 dead000000000122 0000000000000000
+[   86.533390] raw: ffff0000d46fd4d0 0000000000000000 00000000ffffffff 0000000000000000
+[   86.534511] page dumped because: kasan: bad access detected
+[   86.535323]
+[   86.535559] Memory state around the buggy address:
+[   86.536265]  ffff0000d46fbf00: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.537314]  ffff0000d46fbf80: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.538363] >ffff0000d46fc000: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.544733]                                                           ^
+[   86.551057]  ffff0000d46fc080: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.557510]  ffff0000d46fc100: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+[   86.563928] ==================================================================
+[   86.571093] Disabling lock debugging due to kernel taint
+[   86.577642] Unable to handle kernel paging request at virtual address e0e9c0920000000b
+[   86.581834] KASAN: maybe wild-memory-access in range [0x0752049000000058-0x075204900000005f]
+...
 
-Thanks.
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+V2 changes:
+1. add Fixes tag per CK's comment
 
-Jinjian,
-Best Regards.
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 9a8ef8558da9..0062374f75d5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -673,6 +673,8 @@ static int mtk_drm_bind(struct device *dev)
+ err_free:
+ 	private->drm = NULL;
+ 	drm_dev_put(drm);
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		private->all_drm_private[i]->drm = NULL;
+ 	return ret;
+ }
+ 
+-- 
+2.35.3
+
 
