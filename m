@@ -4,125 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C1EE7718E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 02:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FA1E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 04:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x27qjhhHmmSFc4Yew7R/X79LJ3J4qUtREtZZ6cr9W9o=; b=dWfhND1YAhYZLKHF2QCD+CIn5t
-	VEEZhxzbpFyncC3esdxW04WLN1b4g+3BWoTrAG85yJWrTXruHzdPqpnBunagQrZuX3P4j8J+YETsY
-	qcpXtFdaVvfp6n4Lzco/spRpegqvjdGoyihcPSKsxJ3GsyXCqsxuCwrhfR7HPRclhBBQ3kMAVomVj
-	cP1vDlyMvb1AyCjO7snFFxr47Yk0F3xwZHzhgYQ+J1HmzoWRLyJEEvpG5GFmhEZhfEVz/PUcgs1HN
-	zkWAqDlKvOCtr83PEV6kKkbRBJGr4mvUkMGiWP/FIphAHiMmPfOMmm41vK0vCrZjhqEj8ueRwBlg5
-	rgVCKAUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=46tUy/xxrsCz72grSsadUJH8lNfyCU9mpqso/FD9Efs=; b=TR36W8kgThD1NHX+hCSxeqd2pB
+	BOo+lwOanD5jBcxWYaYBONwLaufHHnWyNoSV3VFXzsoPO/VYl7zfRkluhc5EfQAP9bvKtPC6L6mDU
+	RVZwzMvaalZckP3JjZbjto+a+gtN9xGejpnsKtR5OEnPxNe1sDVJajd0uGp/EBDyIwGzfOw7n5MLD
+	4cD782M6JikgNHCW1HXyyfIVQi2JItdpTj99ObBUl0G19brybmvqLQYjFEmjCZ/M7NEP+7oFdse6r
+	yPWjH23K/yu5pTma0ADp3elNqgqu5OJAPgpHMEKbKZTUVvZJjDBTmKSe43kHxI7+H7RfRoUPCaq/S
+	0DwjiinA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPuGJ-0000000B3to-29XU;
-	Tue, 24 Dec 2024 02:03:07 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1tPwLn-0000000BEBo-0MhO;
+	Tue, 24 Dec 2024 04:16:55 +0000
+Received: from mail-eastasiaazlp170110002.outbound.protection.outlook.com ([2a01:111:f403:c400::2] helo=HK3PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPu26-0000000B1e3-3qOK
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Dec 2024 01:48:28 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5401d3ea5a1so4907829e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Dec 2024 17:48:26 -0800 (PST)
+	id 1tPwLk-0000000BEAe-2unB;
+	Tue, 24 Dec 2024 04:16:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Qr/fW27COIcvY+0Tjz6zLVjP/d4mXwULKENFyrH/nX1TqPptL7BfWkdkVkEBuRvxOnyzXADpGH6M2BCSuXPGNsyErdEEirjxgEFqv4WRQfCczF1oqWHQwXhdWuN6WkIi5j7GTinkK2TpLBmi9TOe89AhlOlMBU3ybO9yr+QXZo8HurG9iWVlA5ChqAcnOlo273EnejZXgzwMdwCBUPOizMRQfPVR2qS7mfupm6swRW3z3RPFR7C4XtrcOE0DanNHAAnPFqcwnirxQBLbDzWM7LYqnShjPzCJSVUf5fG+HIyxarkXJXS5vR2XIzT/FwBnBGKzTRX+XtTvnQ/XPsR4yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=46tUy/xxrsCz72grSsadUJH8lNfyCU9mpqso/FD9Efs=;
+ b=OeTzTUFmmk+BgtoP3HAeuJfRT9F/tB58xRHDwrqsrpsmXLCMri5xr8jk+kbXxArkawtmwA+YfBoQHJit5mjsH+AXMt0WqR9gFCQEsnvjvXZwQfDbOcr37eqfVOCrkLFI+vDZTnfTM28thVMbPJZ3bjZ4xM87BVwt8GcX/VwofXJxOkILzj8CL4sspkXMG5s2+Lczn7oD0/a8alLcSKQamgmV/+M00QC2V1OHhBScnQxZoiL4J95UtDlvCte7dW5u5oNUwdL0/P/X169F5WYQ6WfmpkA3IRNopunSQ0KaFw4+8+wzYXh7aTaCF971RavqU8j1cMYp5+jPkyHYD4yBig==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735004905; x=1735609705; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=x27qjhhHmmSFc4Yew7R/X79LJ3J4qUtREtZZ6cr9W9o=;
-        b=XOoJdrJ8KfEIHeLeH2JWUrhfQHRuul2+yDE+4yOhZoRCll6BKFI0k7W+6TQ/Dj9LBH
-         fbwsCxm8yeu8v+e5I8cp3R2Qg9/iFRIoIakjGLSBcm/Xn1pZkT6YovHOFGJEl0mYP7kD
-         lMDTvXVDpMg6QNPyAoCmeBn60YF4Rqupg65mDslNLBYowAIHpq+NRm7WnIDUm1nYoazD
-         C6peyV/mWj9CA1XvdkcLdBn5qmvtwm40K0xjJyE7h2mhbnm3s4QsDqve/n6iK6NI8OxL
-         bn/9aiJbJe9juTMmDj55ol3Hw3LZh/AwyErwDtmVRgAMELqi3efdwAM1odxWjoMEOs8e
-         h8mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735004905; x=1735609705;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x27qjhhHmmSFc4Yew7R/X79LJ3J4qUtREtZZ6cr9W9o=;
-        b=kd1E3ncgAODwq/1yxqjjq75lnXAvqJE+1QOJhdnQDATAOg/UGjMEp3+fonc8ojLFna
-         Cr/44aboLuf252TRzdWaDRDqWz/hzrWd/DYoPfqF2gLJ1kq0rTzwcgR7uMVjZS4OTpiW
-         El90/ypUl+1tF7mI83Yj+3a4D+/Js3kBtJPmSLyld0zj755Bu0ntsHVfG33cI0vzWDsZ
-         3xEPozJXrfRrBJxYzxtoUTJ25qaDc/H7vWZ7iZaUe3sSQC0a0IeUJt92I7xx4TyxyQiG
-         QdhaCfdf9gwUIoaiyMOsbS/rXZyXj70RlhZaKeip9eqCoxBbbuJ0P9cDCkRJW69JomBh
-         AkuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWuQX0QJHPYUYWVV8ydrOJsfLwoK2LBJVpgLRI8SnycUFa7CJELoo+qx0vCyDn5uDmwJ/ttNdVerFSYh0hLpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyeGF3sZipiz1d1X6JsUIJBd84Ukk7KlQkMJE8ngfrD2eVWD6YJ
-	4R4Ro6E0FKmWZBBA6sfA0uYW5V1fcogdo9Aslyo/2Zs+GRVO9RkFiqzdHxtewRY=
-X-Gm-Gg: ASbGncsbDAgvkwI9OIzYCCxfj4gIxi8Q65RyYynD8/IhPY6Ybu0Lbp+OSQ/xSHeUVXz
-	6r4z/6qjPX/0KaErob4PeX72FyVSG6Pe/6OQ/mXMQdXWg1qY40YvgwWY6KrBH+0qLmT+LVJcWP4
-	nklpXCLjqx+Kl3mwCv7Q+ko/AhS/kue8YrISaq2Q0wH5ARKX3yfbYFtiqHNqhbihi6jGW5d2v3V
-	bL/hQXFoareL2ngaFd8P9RbrIlWWBxCleAP+wihTSD0HPi6vuQglUf0Cn9QQYzN
-X-Google-Smtp-Source: AGHT+IGxywAHlZ5biHokHnOEm3MPf0yFL5QnCm6g8X8iUKGFmxEoXLpi8MebkWFCTzgOs9+bQfvDzA==
-X-Received: by 2002:a05:6512:1245:b0:53e:395c:688b with SMTP id 2adb3069b0e04-5422956b5b1mr5020537e87.47.1735004905376;
-        Mon, 23 Dec 2024 17:48:25 -0800 (PST)
-Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-542235f6509sm1425988e87.25.2024.12.23.17.48.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Dec 2024 17:48:24 -0800 (PST)
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Tue, 24 Dec 2024 03:48:02 +0200
-Subject: [PATCH v10 10/10] drm/vc4: hdmi: use
- drm_atomic_helper_connector_hdmi_hotplug()
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=46tUy/xxrsCz72grSsadUJH8lNfyCU9mpqso/FD9Efs=;
+ b=cW8eqikxMWYV5FlpKUEnKGX6bWnrJl6f/ZK4Fp0VQQbWwpnR8F38wR8LqJ81z1MlW/TQhXU1CvAzR+5VWA2q7fQLckHnMyUsV80w9xEkg6rlC1Ksrt8IrDtG2qBThvYKeqAkniToJ5JDGlhLkekvMAZbpetved1gVatbpqA7NsY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+ by KL1PR02MB7473.apcprd02.prod.outlook.com (2603:1096:820:123::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8272.21; Tue, 24 Dec
+ 2024 04:16:28 +0000
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b%5]) with mapi id 15.20.8272.013; Tue, 24 Dec 2024
+ 04:16:27 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	corbet@lwn.net,
+	linux-mediatek@lists.infradead.org,
+	helgaas@kernel.org,
+	danielwinkler@google.com,
+	korneld@google.com,
+	andrew+netdev@lunn.ch,
+	horms@kernel.org,
+	Jinjian Song <jinjian.song@fibocom.com>
+Subject: [net v3] net: wwan: t7xx: Fix FSM command timeout issue
+Date: Tue, 24 Dec 2024 12:15:52 +0800
+Message-Id: <20241224041552.8711-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: FR0P281CA0188.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ab::9) To TY0PR02MB5766.apcprd02.prod.outlook.com
+ (2603:1096:400:1b5::6)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241224-drm-bridge-hdmi-connector-v10-10-dc89577cd438@linaro.org>
-References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
-In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1974;
- i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=B+VyVi47xGS5Rgo1fXAf2iMXQyx6B0hUm57mitVwu5U=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnahLO/eNo/39x/HJrv+HFXwG6d8BCBlotDoJCU
- qqGZkD6mo+JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ2oSzgAKCRCLPIo+Aiko
- 1TWHCACeIhaoB+aD1Id5dsTO6uA+nC/AVkJRJD/7UYmW8Ex7Zn2qDhEmWtBdITotMWW3ByYkUvj
- uWd356HEakck9NA8ieyZDfqWEWxIYpA8KfFQcvIFiYtmcFLi8kJSZDn50oFIpYvQaj2/gM0dAUN
- p8u9lmdLuAdFhoJjHaZawfbQ74cmm6k0F0FhKKbhW+u/RzdcsQu+fDZ+GzwQfElhQt5Cabh9VTD
- 9m+cMW8Yv8g3rD7N8BgPs/xSnrX5W/1NqXWaD3O5GzP50Iks3oWr3bfaQmjdOpjCu4PWuKpHVmB
- 5WNoz9+G5V+lgNo6KogfIsR04KOp+MyB/Lr4QH+DuZNDR5I1
-X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
- fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|KL1PR02MB7473:EE_
+X-MS-Office365-Filtering-Correlation-Id: dd4861fd-f05e-4a06-72d0-08dd23d1bc32
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|1800799024|366016|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?KVNk5XMuyvLOGWYcpoUTLM7SMJ6ehRfMRPnytQ/TvDpXYLw7H/fMJHLH3ITs?=
+ =?us-ascii?Q?DSkKvWUkWX6wVd3JpcSNx6P1/BjdT/iYxs7jyhGNqJqQal9qzhuEuDk0L2N1?=
+ =?us-ascii?Q?TIlUmkpUMQN33w7u6OZNnA4rxzO6Bn+2ZqIRw+5XJfbXrM3HTzayJu4QQ5xQ?=
+ =?us-ascii?Q?T6q0B+EGpUkLL6lIQ3HlhuUi9EtiQpYFzEO3zKzvs0B2/WrH0qe5oOA9bJPV?=
+ =?us-ascii?Q?kvqS18y78Ramm2OYBZEvIp9lFrRywq55LI7pv2zrPfq0RJz1wrQxqOPfEKlD?=
+ =?us-ascii?Q?v0ThFuc8wG+6jXhz+F8HH5vVTndTVa0mAA4GMIXNckxyXyFz7iyWAdJMNaPc?=
+ =?us-ascii?Q?/LY/W2xR8IdD4wKgMobpXa9QdXyY9UaNHYmBLUWcIDw5tqXl9iSCR8satm4M?=
+ =?us-ascii?Q?x+erF4aoYbDmNAQoeoFTHkGEEgY5XXabYOmooYdAxGfrRlIl0WAnX+mtc16P?=
+ =?us-ascii?Q?vcaH8wqSTdPTIgECkSfbkVKBy7ncfgDlB9I+g74G2cMf977ApXDA00UclKxa?=
+ =?us-ascii?Q?d84S7JCWog6W2Wvf+Yiym7pyLt2ZDudoxdvd5lJwUWCiqrCbHGbzXO9gYFIT?=
+ =?us-ascii?Q?4mj7I7OM0ag2rpf5z7uKx52rWR+zIJntnc5u1CxyEVbJfdDvRuJpxFLNGWjD?=
+ =?us-ascii?Q?5xaAv1eAbPRAj1vPmPh8RBANIrYKYhQPwy/03AAQsTMxACvjPlWUMM6aECIQ?=
+ =?us-ascii?Q?CTUrxvM58IOs7bp8N1GHpTBvlw7pX5GMfl7UZD6NpPza39L8Wns6jruMYbZ7?=
+ =?us-ascii?Q?hijO6EMmOoJaXrtjCXRuZ9PhR1lJcNl9O66t2bxIxB5ibiDuuIKpjVcrDm6x?=
+ =?us-ascii?Q?vOnK3xVHgb3B8qauTQQVurg/Z081a8FvXRR/398B78lnbQ/R0LtNxbt79Bpt?=
+ =?us-ascii?Q?4x26FxixivK3FVTI6VzPpLFES8Wqhapwa+7J2vqoWXcXAIkbaHE0/i7z/H2I?=
+ =?us-ascii?Q?z70o0lmgIr8excWJs+bpD9iWUkcBnrNdcJQYjh76U6k08wIvEx0Hs8nup1uG?=
+ =?us-ascii?Q?JTziSSpgPuYWdUiH2h8b0G0V4TVlaiaUBonHvv3j0H1EeFtuoIVMKpyXLtZE?=
+ =?us-ascii?Q?5RZGVFH4PDbM0p1OH1DnvLE7DKxXDpmWLQlMulsYQu6Nz+ZzL+YlPmxeOdyG?=
+ =?us-ascii?Q?ZTj16jatBhR3Y91Lt9AkLPkHFf17OD8kJIfNR47Neq0+1XcjHYq0UdDZvzoy?=
+ =?us-ascii?Q?tv4slXwI7iakhtm/rEZINTcKdZ9g13gCCGocW2asvMOkZ5liDoukb/hopUVX?=
+ =?us-ascii?Q?JjXLFBBuzdZZOTVW9FDJCKgiYeGDjylrFKxrdytm/0DxtyD+TcIxQKat9VZn?=
+ =?us-ascii?Q?Rx95zb+UgjDBh3o6n2lzkh5ofJ9XBmeEMiAVqJGMg5sfVIp/OH9ZLn8Nc7Hy?=
+ =?us-ascii?Q?5+W7UM0mchixCIHcXtHvLY8jatqfXYzQL4L7ZMdC2zfW070A8hPy0LA4gJNg?=
+ =?us-ascii?Q?39Rm6nc80GN0tCl1QVMNZYetsR7aljGuEikfmjQH+4sMG6Ud/KK7Ng=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(1800799024)(366016)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?jdo047TO1xFAPMhkgd8GF+gEz48wmcd3eaclKqc4LAZSwia1hhv1hPOLjUV5?=
+ =?us-ascii?Q?eYtum01zOLL7XTQZvNf00GCA5QfdBjdn4S4FC/RWJsEWNpVxm0BvsUv1aAaZ?=
+ =?us-ascii?Q?4xfmnQUMn7Hx8Kv0ssu+DCzFGPK0Fg4InAOMAto3qzc8w+/eVU6OqdH6Hu/k?=
+ =?us-ascii?Q?S6/KON5gj6avWjD7Hkg0Dix9YXLfbWbf37VawJijR8wfUhOmQlVP9BjPnTj0?=
+ =?us-ascii?Q?+fL6GBBWiBa4dZfGE0t6euxM1G68uk3ceOgLKvZWdEpFi8sfIQHhf0nEiC/k?=
+ =?us-ascii?Q?SoAUF8jupdujJqNrxJ0bD7rNsYj+MovMHo5oqeecjNtD9wevyEC1vPgjPF0B?=
+ =?us-ascii?Q?KDL6TEml19Yt+GnrBuvD+VCtI8ePjuflQfZwEPuD//XM+AMNGg6Yjp/HhsJa?=
+ =?us-ascii?Q?6ofCJqBuIH1YbzQ7QlfF03pIKVdzuMzySrGRMPmnsohs0WH04aXHChaapBKK?=
+ =?us-ascii?Q?hLTQ5gb/ZRBHSAh33DwDn0OM9qQq1Fzh+YjSBpz1O3cGSCOQA3CMJlEx1Np7?=
+ =?us-ascii?Q?OgRx1jAsm92qFeb2LvXwfBKjl4yZSNUpbDn52dtQmRlgN0mGJE+wIAxov4ov?=
+ =?us-ascii?Q?/FUS+X54mbcuRYYPXIDAgpQ1k9NN79SktPzPsZQ9utVqbFNszjWivCyOqLqW?=
+ =?us-ascii?Q?gus5v6l1Idg1XqYRS+XrXVlJzKpfD+I2ng+MYvZNdCq9bM5As+qvFNVJT0/U?=
+ =?us-ascii?Q?uKuQSX0N/cT+v1VwjUvUZR99/5d1PGiLW+Adj1QP9Uv8R6IBlaPs1DIz1wSI?=
+ =?us-ascii?Q?grhz6LPVFG53iOFJJ2DJrIjKmD92eKD4QLFEQcJCjWuQ+6JuVUC3Dv5SwvO0?=
+ =?us-ascii?Q?VNYYcLTkVJ7OoXvssZbVBeEuVDOflxd/NF1et1st0vzjnZQlGhrwsAYJ5Im9?=
+ =?us-ascii?Q?Si43m43Hx4z8Qlxmjna5Q6CkHL6Ha0K2Rs6WIFCalCCrB/YOdXvhSQbIN7+6?=
+ =?us-ascii?Q?EdsKuOM/nl49TR370p7gMTugzQyMvtWr+ZMCaCATi6PVU9xiiyEVQN3R/VMq?=
+ =?us-ascii?Q?8wRjHzQ+kq2kH3fh+J3XL046QlXUbLnZBoiv1q3AHE8lngRJ1/uCH1KCWhuT?=
+ =?us-ascii?Q?10mbZBd5AG2YTiiIdp8hjtMT+1vbL/aDzEusKMU2lciti9MnkXug3t/qfuNS?=
+ =?us-ascii?Q?YS+TZm98UlKSMSZ/o/dF7uW4A2MNzU4xMjJXKeV7hLtxrF6kpgmgY209EU0h?=
+ =?us-ascii?Q?obx1TK9QChKUpoQmYgEyzDa+iPE+Xn78D67g0Btl7B2fGBUfbRt3eNntpUt5?=
+ =?us-ascii?Q?uD252f1MvTOy6u4cl2CT3KmZTaQpyWRVT7VV1QHMP8d5azGTRRA79UqiPpeN?=
+ =?us-ascii?Q?rRLXOCM2PQT6mvniScAd9qEYMP9MMduZcJj0BD/zp9ixIHg1FMrgt753OAdN?=
+ =?us-ascii?Q?YpRbQFJMUOY7mG+rm1EWbj7NW+GeYsR2xTBsyIlH8udJxBDkYy93FOK0M2JV?=
+ =?us-ascii?Q?IFdnTRsGLVMRgk7ak/ezuraRo7eYG+6aNLfDVo6JOuUzJHVNDMSj6a10rcVX?=
+ =?us-ascii?Q?/wYNyo5RWeT7HYsBFJSQcr5p1bH2QFEkFz1gulECnFZeRcRlb1D4xqSlPZk1?=
+ =?us-ascii?Q?N+wHZelbsy9QMBB9mWcSRCdddPpLg09wosceCAjsof7N//fxJVLPy+3kbYGd?=
+ =?us-ascii?Q?cA=3D=3D?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: dd4861fd-f05e-4a06-72d0-08dd23d1bc32
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2024 04:16:27.4310
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NodBQZBX41TBwz/gtvH+e9dZQR6cUuSgcp8KT+kGN5fJW6FUym+7C9WdJnz9m8KcLF4ixLngm2MHQEVLsMKW2ql7FbO0++xT3Kt+JD1vDAk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR02MB7473
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_174826_971567_0F0279D9 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20241223_201652_735397_1482147F 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,59 +178,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the helper function to update the connector's information. This
-makes sure that HDMI-related events are handled in a generic way.
-Currently it is limited to the HDMI state reporting to the sound system.
+When driver processes the internal state change command, it use an
+asynchronous thread to process the command operation. If the main
+thread detects that the task has timed out, the asynchronous thread
+will panic when executing the completion notification because the
+main thread completion object has been released.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
-Tested-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+BUG: unable to handle page fault for address: fffffffffffffff8
+PGD 1f283a067 P4D 1f283a067 PUD 1f283c067 PMD 0
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+RIP: 0010:complete_all+0x3e/0xa0
+[...]
+Call Trace:
+ <TASK>
+ ? __die_body+0x68/0xb0
+ ? page_fault_oops+0x379/0x3e0
+ ? exc_page_fault+0x69/0xa0
+ ? asm_exc_page_fault+0x22/0x30
+ ? complete_all+0x3e/0xa0
+ fsm_main_thread+0xa3/0x9c0 [mtk_t7xx (HASH:1400 5)]
+ ? __pfx_autoremove_wake_function+0x10/0x10
+ kthread+0xd8/0x110
+ ? __pfx_fsm_main_thread+0x10/0x10 [mtk_t7xx (HASH:1400 5)]
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork+0x38/0x50
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork_asm+0x1b/0x30
+ </TASK>
+[...]
+CR2: fffffffffffffff8
+---[ end trace 0000000000000000 ]---
+
+Use the reference counter to ensure safe release as Sergey suggests:
+https://lore.kernel.org/all/da90f64c-260a-4329-87bf-1f9ff20a5951@gmail.com/
+
+Fixes: 13e920d93e37 ("net: wwan: t7xx: Add core components")
+Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
 ---
- drivers/gpu/drm/vc4/vc4_hdmi.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ drivers/net/wwan/t7xx/t7xx_state_monitor.c | 26 ++++++++++++++--------
+ drivers/net/wwan/t7xx/t7xx_state_monitor.h |  5 +++--
+ 2 files changed, 20 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-index 4949171c28876a9145ddf03e99c00feff4df255a..47d9ada98430634cfd8c1e21c2a4d00d501bab7e 100644
---- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-+++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-@@ -384,7 +384,6 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
- 				    enum drm_connector_status status)
- {
- 	struct drm_connector *connector = &vc4_hdmi->connector;
--	const struct drm_edid *drm_edid;
- 	int ret;
- 
- 	/*
-@@ -406,17 +405,14 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
- 		return;
- 	}
- 
--	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
-+	drm_atomic_helper_connector_hdmi_hotplug(connector, status);
- 
--	drm_edid_connector_update(connector, drm_edid);
- 	cec_s_phys_addr(vc4_hdmi->cec_adap,
- 			connector->display_info.source_physical_address, false);
- 
--	if (!drm_edid)
-+	if (status != connector_status_connected)
- 		return;
- 
--	drm_edid_free(drm_edid);
--
- 	for (;;) {
- 		ret = vc4_hdmi_reset_link(connector, ctx);
- 		if (ret == -EDEADLK) {
-@@ -550,6 +546,7 @@ static void vc4_hdmi_connector_reset(struct drm_connector *connector)
+diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.c b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+index 3931c7a13f5a..cbdbb91e8381 100644
+--- a/drivers/net/wwan/t7xx/t7xx_state_monitor.c
++++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+@@ -104,14 +104,21 @@ void t7xx_fsm_broadcast_state(struct t7xx_fsm_ctl *ctl, enum md_state state)
+ 	fsm_state_notify(ctl->md, state);
  }
  
- static const struct drm_connector_funcs vc4_hdmi_connector_funcs = {
-+	.force = drm_atomic_helper_connector_hdmi_force,
- 	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.reset = vc4_hdmi_connector_reset,
- 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-
++static void fsm_release_command(struct kref *ref)
++{
++	struct t7xx_fsm_command *cmd = container_of(ref, typeof(*cmd), refcnt);
++
++	kfree(cmd);
++}
++
+ static void fsm_finish_command(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_command *cmd, int result)
+ {
+ 	if (cmd->flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
+-		*cmd->ret = result;
+-		complete_all(cmd->done);
++		cmd->result = result;
++		complete_all(&cmd->done);
+ 	}
+ 
+-	kfree(cmd);
++	kref_put(&cmd->refcnt, fsm_release_command);
+ }
+ 
+ static void fsm_del_kf_event(struct t7xx_fsm_event *event)
+@@ -475,7 +482,6 @@ static int fsm_main_thread(void *data)
+ 
+ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum t7xx_fsm_cmd_state cmd_id, unsigned int flag)
+ {
+-	DECLARE_COMPLETION_ONSTACK(done);
+ 	struct t7xx_fsm_command *cmd;
+ 	unsigned long flags;
+ 	int ret;
+@@ -487,11 +493,13 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum t7xx_fsm_cmd_state cmd_id
+ 	INIT_LIST_HEAD(&cmd->entry);
+ 	cmd->cmd_id = cmd_id;
+ 	cmd->flag = flag;
++	kref_init(&cmd->refcnt);
+ 	if (flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
+-		cmd->done = &done;
+-		cmd->ret = &ret;
++		init_completion(&cmd->done);
++		kref_get(&cmd->refcnt);
+ 	}
+ 
++	kref_get(&cmd->refcnt);
+ 	spin_lock_irqsave(&ctl->command_lock, flags);
+ 	list_add_tail(&cmd->entry, &ctl->command_queue);
+ 	spin_unlock_irqrestore(&ctl->command_lock, flags);
+@@ -501,11 +509,11 @@ int t7xx_fsm_append_cmd(struct t7xx_fsm_ctl *ctl, enum t7xx_fsm_cmd_state cmd_id
+ 	if (flag & FSM_CMD_FLAG_WAIT_FOR_COMPLETION) {
+ 		unsigned long wait_ret;
+ 
+-		wait_ret = wait_for_completion_timeout(&done,
++		wait_ret = wait_for_completion_timeout(&cmd->done,
+ 						       msecs_to_jiffies(FSM_CMD_TIMEOUT_MS));
+-		if (!wait_ret)
+-			return -ETIMEDOUT;
+ 
++		ret = wait_ret ? cmd->result : -ETIMEDOUT;
++		kref_put(&cmd->refcnt, fsm_release_command);
+ 		return ret;
+ 	}
+ 
+diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.h b/drivers/net/wwan/t7xx/t7xx_state_monitor.h
+index 7b0a9baf488c..6e0601bb752e 100644
+--- a/drivers/net/wwan/t7xx/t7xx_state_monitor.h
++++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.h
+@@ -110,8 +110,9 @@ struct t7xx_fsm_command {
+ 	struct list_head	entry;
+ 	enum t7xx_fsm_cmd_state	cmd_id;
+ 	unsigned int		flag;
+-	struct completion	*done;
+-	int			*ret;
++	struct completion	done;
++	int			result;
++	struct kref		refcnt;
+ };
+ 
+ struct t7xx_fsm_notifier {
 -- 
-2.39.5
+2.34.1
 
 
