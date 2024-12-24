@@ -4,88 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D770DE77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 08:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D80FE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 08:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PPDkySt8SMBgbwI9GqZ74rsS7zUg5mbUT5R3oUQV3Ts=; b=htLrkluNbphlkC+rTCUUOqkxMW
-	mWpaxV8nkwhD6WpechpyDy0q14se7t8iWyTyKfjEcvN1hngcSK7vUUAzKtf5hZOmG0wvjhiRSJwlp
-	oDjhVhVoylnZMWm81du30L9yEW0Q2T9VFtHt1syFvizzpHZM/qM2UCy5ut0lrKj3tWV8CAifSl6Qf
-	sF164KU2yIP7DoqydKp40GH0lIngzF0lfv086Ijz4dZZS3h59TnYIQrTB+FC1keE1y1JaRe4D7Ei6
-	N2z7TTCr0uAHPwFpIS4ThjaolLV/S112uFUIz5W5SVZtRIswja5YWb8QkWdtDU0/F5RoNALsmHSvK
-	qMuKCBUA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hlFS13odVb55GccO5hmoQYgmewqIs0Q10x0eG5VUCq8=; b=h9liCHQncwnFFuWI2iso+gapDz
+	0T5d09CG5CNwY+Uo8nfyZOoJO61sRrgAVY1CQ0XJd23l5DGDbHJ5NaIgy/ivJFIHIEDaQb2yCvSjW
+	6LvOOTkWM9XSpweRLGXzJiE1ai0X6eojqBu8OmbOVogfgZrs0Yf/2iaoQOHceIDFZe9ljSot4fjHa
+	dZxx6Ne3FCz6fuKkcVi8xTjEHjZrNisqOYujW+cefQzBZe9kwZGMyJubaS9FM5iE+APZXUnm65+5N
+	RHQPWJdL2CTTNqkedxxqVJC9m3YXTFWx6lFL0XyOhTmx7eXw74tPsMi84kspNkEYSFh1dkavT0A6U
+	w2MSXSlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ0c4-0000000BX1A-3q6M;
-	Tue, 24 Dec 2024 08:50:00 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1tQ0g1-0000000BXWe-2EyX;
+	Tue, 24 Dec 2024 08:54:05 +0000
+Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ0au-0000000BWq9-1uwI
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Dec 2024 08:48:49 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-219f8263ae0so18023335ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Dec 2024 00:48:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1735030128; x=1735634928; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PPDkySt8SMBgbwI9GqZ74rsS7zUg5mbUT5R3oUQV3Ts=;
-        b=kLQ4oxjNTsUjyR3BXlcHzTR6DXLg7lO4VrpnwhPwbibh/43EZ2+e2C/vvWCqQJMzhF
-         Lvl+yJJFQnTzquLi/fP++XUMq8Jgo52qacHUB7GUeUt32MxTVucrJZYPgo5MJE/NodMJ
-         uVpq0prqImuqOTV6o9AuVA/NwvZwSdcegEgmw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735030128; x=1735634928;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PPDkySt8SMBgbwI9GqZ74rsS7zUg5mbUT5R3oUQV3Ts=;
-        b=Z1Y+ocmwK10X9MrrL3yFs3T0u43oyElpZehC1yeqFZ2y0D4YKfvdbdDzmmBN6hthDn
-         SnRFpRh3P+6cKNzeFc7nYoZ4Lk9cxBB0BzaIjN2rNab0nUG//yKAFuKBxdFhlpmAJnGu
-         F/bA9SM0110lLgV+pI6rHtNJQgJh0PFlYSPOKAo1VZSNaY1nvF8DuGDMyHv+fEhAsaui
-         zSd+7MPVkrWad0Oo8SGcaDIwzKwiVayWQ1DjL8neE/iVaEY8R5rCujMa1A5YjXnzNxcq
-         Cnne39MyS4A2liVBbDdcsauDHSTtstJlVvymcYQhaTchedbVb1holS9yVbT2heQq+Qk3
-         ApDw==
-X-Forwarded-Encrypted: i=1; AJvYcCUDWMZg68fbTm7ri0sxmWPWkD/z9cRTYSLet1gma7AQf37JYGydaDOPAX817T9wXc0kXat8YE8ZYtHd8Uq49A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyn1h477m+WDiBK5MaVsu7CFrhyF/y7ANIVTUyH7BH06SsESljV
-	Ny/wWJgLAKc20u8TzDSnHAo96/NfWid1GbU/mxyB822wY02AFMVi9+Ayo3OU7g==
-X-Gm-Gg: ASbGncsERJC0Y0A6yABzZmMM43oD1Q08vp3ACtQBg9tkXekGIGC6FnMvNkX0BN3Zjoi
-	9RzEeNP91ZTQ/MYOAGOB2s1Wk3b81d/ZDjDys9CNSXE03ZxzBYL/+mEDkF2meMue41B6sxU6GMY
-	XH9S0SeNu9kxIk9hxi+Q08N7xdJ6U3RrZuj59b/SmMma5vyj6V4yaUONYX7K6JUY3jW+BdifVBv
-	3VIsjOBnvK2CpgBqEgpLnIHbdwcuj/pWGMM7m/4Xv8lwB6HG58lGyKmW5iFqPwrshfTg22gUTs=
-X-Google-Smtp-Source: AGHT+IFAk6Uxvk5ehKLFgDIpV9hJBhJETnQ7nKluyJfT+5cxYx74NrTmY8yPYKw+PXWYOutAzJ3Z4Q==
-X-Received: by 2002:a05:6a21:3987:b0:1e1:ccfb:240 with SMTP id adf61e73a8af0-1e5e081d78cmr26108020637.41.1735030127983;
-        Tue, 24 Dec 2024 00:48:47 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:a4dc:753e:e6ca:9a68])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad8dbaa6sm9203156b3a.91.2024.12.24.00.48.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Dec 2024 00:48:47 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
+	id 1tQ0fu-0000000BXRf-2iNM;
+	Tue, 24 Dec 2024 08:54:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
+	s=onoh2408; t=1735030423;
+	bh=hlFS13odVb55GccO5hmoQYgmewqIs0Q10x0eG5VUCq8=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=k6d2X/hdTdTocZzau6nD9TI9fF6cO9btESnKDPkbjtaJ4jRMem/N3f+BlJDzs9bFS
+	 bBsxHwBacxjFUOKlYxK3A8heBpy4wf1dXEQC3Oe/8CrNassAHPaYGZWcS1FQUTs7v0
+	 4UpUy+jStKsUNhEKj5I36SvHZUsouEI4zOj4p674=
+X-QQ-mid: bizesmtpip3t1735030374tjbdwos
+X-QQ-Originating-IP: +Rx9ITqM/H7d062Vb3FxXVe37HRvYxsU2EFSjD4Gbak=
+Received: from localhost.localdomain ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 24 Dec 2024 16:52:48 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 1
+X-BIZMAIL-ID: 11559618080003878219
+From: WangYuli <wangyuli@uniontech.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	davem@davemloft.net,
+	andrew+netdev@lunn.ch,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	alexander.deucher@amd.com,
+	gregkh@linuxfoundation.org,
+	rodrigo.vivi@intel.com
+Cc: linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8192: Drop Chromebook variants that never shipped
-Date: Tue, 24 Dec 2024 16:48:38 +0800
-Message-ID: <20241224084839.2904335-2-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
-In-Reply-To: <20241224084839.2904335-1-wenst@chromium.org>
-References: <20241224084839.2904335-1-wenst@chromium.org>
+	linux-mediatek@lists.infradead.org,
+	raoxu@uniontech.com,
+	guanwentao@uniontech.com,
+	zhanjun@uniontech.com,
+	cug_yangyuancong@hotmail.com,
+	lorenzo.bianconi@redhat.com,
+	kvalo@codeaurora.org,
+	sidhayn@gmail.com,
+	lorenzo.bianconi83@gmail.com,
+	sgruszka@redhat.com,
+	keescook@chromium.org,
+	markus.theil@tu-ilmenau.de,
+	gustavoars@kernel.org,
+	stf_xl@wp.pl,
+	romain.perier@gmail.com,
+	apais@linux.microsoft.com,
+	mrkiko.rs@gmail.com,
+	oliver@neukum.org,
+	woojung.huh@microchip.com,
+	helmut.schaa@googlemail.com,
+	mailhol.vincent@wanadoo.fr,
+	dokyungs@yonsei.ac.kr,
+	deren.wu@mediatek.com,
+	daniel@makrotopia.org,
+	sujuan.chen@mediatek.com,
+	mikhail.v.gavrilov@gmail.com,
+	stern@rowland.harvard.edu,
+	linux-usb@vger.kernel.org,
+	leitao@debian.org,
+	dsahern@kernel.org,
+	weiwan@google.com,
+	netdev@vger.kernel.org,
+	horms@kernel.org,
+	andrew@lunn.ch,
+	leit@fb.com,
+	wang.zhao@mediatek.com,
+	chui-hao.chiu@mediatek.com,
+	lynxis@fe80.eu,
+	mingyen.hsieh@mediatek.com,
+	yn.chen@mediatek.com,
+	quan.zhou@mediatek.com,
+	dzm91@hust.edu.cn,
+	gch981213@gmail.com,
+	git@qrsnap.io,
+	jiefeng_li@hust.edu.cn,
+	nelson.yu@mediatek.com,
+	rong.yan@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	WangYuli <wangyuli@uniontech.com>
+Subject: [PATCH] wifi: mt76: mt76u_vendor_request: Do not print error messages when -EPROTO
+Date: Tue, 24 Dec 2024 16:52:44 +0800
+Message-ID: <BA065B146422EE5B+20241224085244.629015-1-wangyuli@uniontech.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: NMguc1TmhkUh3PCes9G2PpJteC6Exx2Q3HrNXr06xUmGb+BXnEf2VlaE
+	Dnpt2EgtfoGzzCfS/PoX1a8i+cqKnNvLc9vi1boa9QS1032/w9MRt1w5L/z+EjqwiOC5TBw
+	ohL8PhMyLXP6oqYUvc6n9mFDg5MNO2vSjsCrxLW48WiIKBSmeq+WUI1/qFDrGCkWWNrRu+W
+	pIVIQOEjXLrEiPN1zORGyxRiWCfykwYmFc38bfipTfDnFM/GbYBbrLSpRApRfSm9KbZsQJL
+	xqGpE5QEhU/9DLByUahXbEIbRhGHZbfwwfN8oduAPdcYwD630CAiqMDCRnnpLPCDaPgG5ud
+	kRoqgpYuzSQXkJkBlYGGfRTqr7htb30UErbrmBmFY85DdTHzR/HY+O428AemeuBWtF7SNtc
+	ZIDk2FYUH9W+z+ehircpSyrCAvpkWwqptWFCTbEd9UHwGohpnuB3h9TPvaXhiku/5MFAXge
+	3hDERKTVda96tCT+G3aaJM74geCFEabyyLmWh+irECpFKEqJTNZ5htBL51AlI+k0zm/caLG
+	CJ/nqcpoKz7T8CmTWN/w3ZXZxu9DcZfK+FA+3juNptxfUf+OhDXLxwDNeFvzFPq8u06Be1O
+	mE+fXRC3O8//I8aMNZrKUbPwo/1Q2X1Ei32R7Oq+qmLlwX9ngV5ORw8oEiVxjxX6huHBcyH
+	kCB3vWdVEyhlEDdI+pD6C0XxjBm2zJQ1jCh8K3SZ5KitKJt5KVmO4ctTtY6w7dAJT231mA9
+	Rk+/x5wcMVOzpWzOSrrISgE9Ui00F1LDMEP37CC66KhFgo+iAVqe6hmzMickMBPZ32eEdoO
+	GQXgtUl0fm5bbBmC0ddIDgmXlzDVaNyu30Kej9RfEQXP7BfmCsPGQCrT7FGx2KgQ07F1EFe
+	s6fEma0+4PgxX/i/EcheWacroOObJ5aoPhcX49GBgD8LvV/IP8TVrrM6qpdFuGmPID4OL5m
+	XpZ35BKKzJGMQkHZtTRmzmhK9XX6LfkFrR3ry2dR7DfFR8JNeCv9CFBbxKRiKK8EmTck=
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_004848_501583_21082E55 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20241224_005359_556072_1B01F9AE 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,196 +154,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Hayato rev5 sku2 and Spherion rev4 variants were designed in
-anticipation of shortages of the headphone codec. This never happened.
-As far as our records show: the variants were never produced or
-shipped, and no such devices were deployed to any lab.
+When initializing the network card, unplugging the device will
+trigger an -EPROTO error, resulting in a flood of error messages
+being printed frantically.
 
-Drop them.
+The exception is printed as follows：
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+         mt76x2u 2-2.4:1.0: vendor request req:47 off:9018 failed:-71
+         mt76x2u 2-2.4:1.0: vendor request req:47 off:9018 failed:-71
+         ...
 
+It will continue to print more than 2000 times for about 5 minutes,
+causing the usb device to be unable to be disconnected. During this
+period, the usb port cannot recognize the new device because the old
+device has not disconnected.
+
+There may be other operating methods that cause -EPROTO, but -EPROTO is
+a low-level hardware error. It is unwise to repeat vendor requests
+expecting to read correct data. It is a better choice to treat -EPROTO
+and -ENODEV the same way。
+
+Similar to commit 9b0f100c1970 ("mt76: usb: process URBs with status
+EPROTO properly") do no schedule rx_worker for urb marked with status
+set  -EPROTO. I also reproduced this situation when plugging and
+unplugging the device, and this patch is effective.
+
+Just do not vendor request again for urb marked with status set -EPROTO.
+
+Link: https://lore.kernel.org/all/531681bd-30f5-4a70-a156-bf8754b8e072@intel.com/
+Fixes: b40b15e1521f ("mt76: add usb support to mt76 layer")
+Co-developed-by: Xu Rao <raoxu@uniontech.com>
+Signed-off-by: Xu Rao <raoxu@uniontech.com>
+Signed-off-by: WangYuli <wangyuli@uniontech.com>
 ---
-Changes since v1:
-- Also drop their entries from the Makefile
----
- arch/arm64/boot/dts/mediatek/Makefile         |  2 -
- .../mt8192-asurada-hayato-r5-sku2.dts         | 65 ----------------
- .../mediatek/mt8192-asurada-spherion-r4.dts   | 78 -------------------
- 3 files changed, 145 deletions(-)
- delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
- delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
+ drivers/net/wireless/mediatek/mt76/usb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 8d638976a2af..7b1fc9839935 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -84,9 +84,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku5.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku6.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku7.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
--dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r5-sku2.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
--dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-dojo-r1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r1.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-deleted file mode 100644
-index cd86ad9ba28a..000000000000
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-+++ /dev/null
-@@ -1,65 +0,0 @@
--// SPDX-License-Identifier: (GPL-2.0 OR MIT)
--/*
-- * Copyright 2022 Google LLC
-- */
--/dts-v1/;
--#include "mt8192-asurada.dtsi"
--
--/ {
--	model = "Google Hayato rev5";
--	chassis-type = "convertible";
--	compatible = "google,hayato-rev5-sku2", "google,hayato-sku2",
--		     "google,hayato", "mediatek,mt8192";
--};
--
--&keyboard_controller {
--	function-row-physmap = <
--		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
--		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
--		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
--		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
--		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
--		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
--		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
--		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
--		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
--		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
--	>;
--	linux,keymap = <
--		MATRIX_KEY(0x00, 0x02, KEY_BACK)
--		MATRIX_KEY(0x03, 0x02, KEY_FORWARD)
--		MATRIX_KEY(0x02, 0x02, KEY_REFRESH)
--		MATRIX_KEY(0x01, 0x02, KEY_FULL_SCREEN)
--		MATRIX_KEY(0x03, 0x04, KEY_SCALE)
--		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
--		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
--		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
--		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
--		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
--
--		CROS_STD_MAIN_KEYMAP
--	>;
--};
--
--&rt5682 {
--	compatible = "realtek,rt5682s";
--};
--
--&sound {
--	compatible = "mediatek,mt8192_mt6359_rt1015p_rt5682s";
--
--	speaker-codecs {
--		sound-dai = <&rt1015p>;
--	};
--
--	headset-codec {
--		sound-dai = <&rt5682 0>;
--	};
--};
--
--&touchscreen {
--	compatible = "hid-over-i2c";
--	post-power-on-delay-ms = <10>;
--	hid-descr-addr = <0x0001>;
--	vdd-supply = <&pp3300_u>;
--};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-deleted file mode 100644
-index 5e9e598bab90..000000000000
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-+++ /dev/null
-@@ -1,78 +0,0 @@
--// SPDX-License-Identifier: (GPL-2.0 OR MIT)
--/*
-- * Copyright 2022 Google LLC
-- */
--/dts-v1/;
--#include "mt8192-asurada.dtsi"
--#include <dt-bindings/leds/common.h>
--
--/ {
--	model = "Google Spherion (rev4)";
--	chassis-type = "laptop";
--	compatible = "google,spherion-rev4", "google,spherion",
--		     "mediatek,mt8192";
--
--	pwmleds {
--		compatible = "pwm-leds";
--
--		led {
--			function = LED_FUNCTION_KBD_BACKLIGHT;
--			color = <LED_COLOR_ID_WHITE>;
--			pwms = <&cros_ec_pwm 0>;
--			max-brightness = <1023>;
--		};
--	};
--};
--
--&cros_ec_pwm {
--	status = "okay";
--};
--
--&keyboard_controller {
--	function-row-physmap = <
--		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
--		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
--		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
--		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
--		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
--		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
--		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
--		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
--		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
--		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
--	>;
--	linux,keymap = <
--		MATRIX_KEY(0x00, 0x02, KEY_BACK)
--		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
--		MATRIX_KEY(0x02, 0x02, KEY_FULL_SCREEN)
--		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
--		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
--		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
--		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
--		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
--		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
--		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
--
--		CROS_STD_MAIN_KEYMAP
--	>;
--};
--
--&rt5682 {
--	compatible = "realtek,rt5682s";
--};
--
--&sound {
--	compatible = "mediatek,mt8192_mt6359_rt1015p_rt5682s";
--
--	speaker-codecs {
--		sound-dai = <&rt1015p>;
--	};
--
--	headset-codec {
--		sound-dai = <&rt5682 0>;
--	};
--};
--
--&touchscreen {
--	compatible = "elan,ekth3500";
--};
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 58ff06823389..f9e67b8c3b3c 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -33,9 +33,9 @@ int __mt76u_vendor_request(struct mt76_dev *dev, u8 req, u8 req_type,
+ 
+ 		ret = usb_control_msg(udev, pipe, req, req_type, val,
+ 				      offset, buf, len, MT_VEND_REQ_TOUT_MS);
+-		if (ret == -ENODEV)
++		if (ret == -ENODEV || ret == -EPROTO)
+ 			set_bit(MT76_REMOVED, &dev->phy.state);
+-		if (ret >= 0 || ret == -ENODEV)
++		if (ret >= 0 || ret == -ENODEV || ret == -EPROTO)
+ 			return ret;
+ 		usleep_range(5000, 10000);
+ 	}
 -- 
-2.47.1.613.gc27f4b7a9f-goog
+2.45.2
 
 
