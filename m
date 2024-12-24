@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E867E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 11:34:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2D9E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 12:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t4dlcaH2CKa+SEeb9mNt7wLgohLESub7EKOQ+sS7kcQ=; b=z2Sd4UeFJCNaRL
-	AVDdoWZox9z4o5b32M2ikaqNJZbnobQcrjpnkLHPJJaixvdNLT9v7/gZgbU1w3si1zXh6Pg2y4C8g
-	I/KkYNxjBIw50/iaRiJJ9MdD8szYKkwgQor72W8Vy9SYFL6gSagOP5nir2bxPt/etpSb6nRD1Ums3
-	JRg9kl0f1+957iOYwQkiag4jTm3vEqS9o0+WNi++82OmHK4AvntSr0tyRCadT8VIThTqC6i0ehrGI
-	pmNxnoLbKUM1+lSHG17/ijynNUrdBuMdl1AX7ukpCKRHtoSptkjYgeZfYpOptdtUeFRHYycHHu2YO
-	/bOPau39NxdPM7JVdqIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gc2WCxVDa+xL90LnfPEoTmxwnPsFBGQJFu6/HAU7lKY=; b=2LD/7S04eIhZbfpVSJG1siv9E+
+	mFTMTgYAG/j+Ame5Iswe7z85oEHWAW9cbavb6zyTQTlSChQ0bBGk9pcVLMTF3zw1Q4JWSo79Qflrk
+	w3fg7UatrFqvv0P5CGpVTwvKQr6N8bxgIm1L03kh0PTmNZQbMyXjobgJd+xBd9j90idQpz8BXA/C2
+	S+sjWQjK8tNeU5YIKrg1tPKOKfotMTezd3/7dA0sP323ki43zMiRviYVbAT1tITMLkbzwuXm6XztL
+	ZtzE9WLAjer1IY2/gH3ytdLvCe6cS5kK0e9ymC1EHVtj1WlnFSRp0fdk9nxzTgsNLX0TijXOmupcS
+	T9QD4SHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ3B5-0000000BsFD-139y;
-	Tue, 24 Dec 2024 11:34:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tQ4CI-0000000ByN8-02ww;
+	Tue, 24 Dec 2024 12:39:38 +0000
+Received: from pv50p00im-ztdg10021201.me.com ([17.58.6.45])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ39s-0000000Bs2J-2NNe;
-	Tue, 24 Dec 2024 11:33:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 471D15C5EB8;
-	Tue, 24 Dec 2024 11:32:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0D94C4CEDE;
-	Tue, 24 Dec 2024 11:33:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735039983;
-	bh=RDQAjNOAdC8KLqZh7kvEfTA7Zk449zVSYCNgtWtHXMk=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OiLxFpAiR56DYABPtJKsbmozRm+7qCsdT+CsY94qwJ/LPZoK7rAcobBkuwSUPyENn
-	 eWPaliTjS9rjywxLZR/Ksss7Jb7IRyk9SmdRirifHnI5O72xs/OVJhaZWsCMEsYSdP
-	 5m3gcB3iFkLHR7v9yUxwArzoiYSUhIaDCjXlS9fTPPpIY3oFY3uJo9LgWbI/E00Vo3
-	 rBLKoXmVo92L5C0eyJUL2WF6Vmsx4eoS9cjY9ktCdXSVvWXPiewtCca60GT1Bnr7Y0
-	 k0CRRbLive4FS26PtlGoODE8I+FsHwrlAaXekMSlFTTZHpwHZ90vVBw+XXYwcdYu5m
-	 sf9St7Bk1ZXVw==
-Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-2f43da61ba9so4443110a91.2;
-        Tue, 24 Dec 2024 03:33:03 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVUvGMDM7K4iselEaFHWNuuMxwMrz8aQHnAT/OntwEoUFIGvqm1zDqVaGL4Lk2q87OyweACjllUPo0KH96iki8=@lists.infradead.org, AJvYcCXn4XZd0hgmtWXegR3oaZKRlbr9y9pYurqqu8rvXlaam3E1LR/5hVThFfxtDybZXk6VEVdNm1fDkT0EXJZqV3aG@lists.infradead.org
-X-Gm-Message-State: AOJu0YyrAvSFxino4tZckudpoj8cu9IRt/gip2lrhK1L/uZfI4A9VqRS
-	+ZViss4t45GlEXXeTnaWr6Lcz72xETYAP1elEU+a3C/7SJROVj1FVUbnWa97NnjppOqWCIVzxiv
-	y20whxx2QSJsjjwUYEjevgLwWWg==
-X-Google-Smtp-Source: AGHT+IGjk5EjNkRdP4/egK3HpkP0kg9EvE0XRDFf66/0s82KLvsrvKxQ79Fnquu0pdesdRpeuQ8UYTFz1+bWSm5jFBI=
-X-Received: by 2002:a17:90a:d64e:b0:2ee:a4f2:b311 with SMTP id
- 98e67ed59e1d1-2f452dfae72mr26965676a91.8.1735039983380; Tue, 24 Dec 2024
- 03:33:03 -0800 (PST)
+	id 1tQ49y-0000000By22-00mS
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Dec 2024 12:37:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+	s=1a1hai; t=1735043825;
+	bh=Gc2WCxVDa+xL90LnfPEoTmxwnPsFBGQJFu6/HAU7lKY=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
+	 x-icloud-hme;
+	b=NFw8nGV4mMSulnri61yzK+qJGcy9/Ch+dsuJHrKfVwVsiimtCnAG3h8rFHRxp+Uyz
+	 upQRA6wkcAq6UoCdHY35JVRQ8fAMwi0fFRWx45ifLIDKIpYYNfnCXbGxhfEOaQYXsR
+	 1vp17v6CL5aedV5Ya9jk+HyrT7k0UWB64khbCMphdv/pxVqrNG01HpV70G71hkXLci
+	 t2DsBn5eAui7bmqHM/lylU/XqVzY8Fkjio57aPrnWpZ6YDIPQmlxL9eysloKkBj+Wn
+	 CHNdKt4EUe+nfzoaAy+0w9w20JbbblWFRe+AQzyMxBHNEYMWVIIso0RplKSOHi0f8w
+	 fzQi63k6MyURg==
+Received: from [192.168.1.25] (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
+	by pv50p00im-ztdg10021201.me.com (Postfix) with ESMTPSA id 14C393118B4A;
+	Tue, 24 Dec 2024 12:36:26 +0000 (UTC)
+Message-ID: <b69310bb-0e95-4706-a43d-569e4a1b104e@icloud.com>
+Date: Tue, 24 Dec 2024 20:36:04 +0800
 MIME-Version: 1.0
-References: <20241219181531.4282-1-jason-jh.lin@mediatek.com> <20241219181531.4282-3-jason-jh.lin@mediatek.com>
-In-Reply-To: <20241219181531.4282-3-jason-jh.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 24 Dec 2024 19:33:35 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9dApKQ2C_rYBQ8eH7b17dmZntvAND+BYfgkRms1gEbmw@mail.gmail.com>
-Message-ID: <CAAOTY_9dApKQ2C_rYBQ8eH7b17dmZntvAND+BYfgkRms1gEbmw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/4] dt-bindings: display: mediatek: ovl: Modify rules
- for MT8195/MT8188
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/11] bus: fsl-mc: Constify fsl_mc_device_match()
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
+ <brgl@bgdev.pl>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>,
+ linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
+ linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
+ linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-serial@vger.kernel.org, netdev@vger.kernel.org,
+ Zijun Hu <quic_zijuhu@quicinc.com>
+References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
+ <20241211-const_dfc_done-v4-3-583cc60329df@quicinc.com>
+ <20241223202635.00005a0a@huawei.com>
+Content-Language: en-US
+From: Zijun Hu <zijun_hu@icloud.com>
+In-Reply-To: <20241223202635.00005a0a@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_033304_695369_FE25A7B6 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20241224_043714_057301_367D0AEF 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,70 +86,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, devicetree@vger.kernel.org, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jason-JH.Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2024=E5=B9=B412=E6=9C=88=
-20=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=882:15=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> From: Hsiao Chien Sung <shawn.sung@mediatek.com>
->
-> Modify rules for both MT8195 and MT8188.
-> Hardware capabilities include color formats and AFBC are
-> changed since MT8195, stop using the settings of MT8183.
+On 2024/12/24 04:26, Jonathan Cameron wrote:
+> On Wed, 11 Dec 2024 08:08:05 +0800
+> Zijun Hu <zijun_hu@icloud.com> wrote:
+> 
+>> From: Zijun Hu <quic_zijuhu@quicinc.com>
+>>
+>> fsl_mc_device_match() does not modify caller's inputs.
+>>
+>> Constify it by simply changing its parameter types to const pointer.
+>>
+>> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
+> Similar to previous patch, I'd say why you are making this change.
+> There are may places in the kernel where pointers are constant but
+> not marked so. Why does this one matter?  
+> 
 
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+thank you for code review.
+make sense.
+will correct comment message for this and previous patch in v5.
 
->
-> Acked-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/display/mediatek/mediatek,ovl.yaml          | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.=
-yaml
-> index 33542211507f..4f110635afb6 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yam=
-l
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yam=
-l
-> @@ -26,6 +26,7 @@ properties:
->            - mediatek,mt8173-disp-ovl
->            - mediatek,mt8183-disp-ovl
->            - mediatek,mt8192-disp-ovl
-> +          - mediatek,mt8195-disp-ovl
->            - mediatek,mt8195-mdp3-ovl
->        - items:
->            - enum:
-> @@ -36,16 +37,14 @@ properties:
->            - enum:
->                - mediatek,mt6795-disp-ovl
->            - const: mediatek,mt8173-disp-ovl
-> -      - items:
-> -          - enum:
-> -              - mediatek,mt8188-disp-ovl
-> -              - mediatek,mt8195-disp-ovl
-> -          - const: mediatek,mt8183-disp-ovl
->        - items:
->            - enum:
->                - mediatek,mt8186-disp-ovl
->                - mediatek,mt8365-disp-ovl
->            - const: mediatek,mt8192-disp-ovl
-> +      - items:
-> +          - const: mediatek,mt8188-disp-ovl
-> +          - const: mediatek,mt8195-disp-ovl
->        - items:
->            - const: mediatek,mt8188-mdp3-ovl
->            - const: mediatek,mt8195-mdp3-ovl
-> --
-> 2.43.0
->
+> With that info added
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
 
