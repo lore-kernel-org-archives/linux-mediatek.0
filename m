@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0EBE77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 17:29:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85AE3E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2024 17:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kbQep8baX7V18i3WQzlRcus+JcLBQAZAEQ0EVnsTNJ0=; b=yaAY9bZVmZkEeOlko7VdV5S6XV
-	YNig+kDFLRxaw2pTDsYPEApGEZUdsfApCusRjCpkd4WzBZgsvevP66L3MWkmtQplKZcinlCMH97PK
-	wEaP7NFR6TluFOgUXAe0Zk2dFT7Td6XqJDzhP0U09MF6D3wt2vVRtxCJXfFczlvVLRx4twgLzXzLg
-	/s5MW4w8CeCsNYc8852w3OHvWsLLGnt27R0Qo76UQXPzJd/cH6PmEQLPOHhxGvyqrkRT6DrWTF78T
-	kjFfC0MWScfQCcbLrxN4FjartRlj4PNKeCKQSi5eSVml0aqF+/4fEEbJ3bJl7OLP5NZI1Tu9/WZg0
-	6ZqsYyxw==;
+	bh=VzPEJXwTtX4trhn4jiSXKCMpEB5Y/gw2NHlQipYlhDw=; b=Lbmvh+ZDPnn/E0NeMKJJ42PjN/
+	DyoEjlr1RSa11MkuqLBEebCEWV4MhQ681ixzqAct2M+tyZQ5qPXCe/5NDjMAtc/u3ad2gUJnlqwZg
+	Q2TrKJCkPz6UPOWT0gi35+XnHaKiph6DRrTQa8VxGVarasmwlmkTSdjnXYxVJl9P7WDcxnuO8fo/Y
+	SQj+5fUp3oV+bqAnObODxuXWJayXWKADu2CRye2ke+11fk1Q2sNr2B341fXIQZvfHwWA5msG4IaKZ
+	HW9QfYAdWpO9Pe5DFDI1KcIdnzXKjVIrHLp2Dri0+VzDUCWUONWTAmOxolmQCB9Ic2+z3SZ3HjLz8
+	9DfIQvtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8iR-0000000CULJ-3jda;
-	Tue, 24 Dec 2024 17:29:07 +0000
+	id 1tQ8jc-0000000CUnY-2ivF;
+	Tue, 24 Dec 2024 17:30:20 +0000
 Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8Nt-0000000CMvW-43cG;
-	Tue, 24 Dec 2024 17:07:55 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 6473340002;
-	Tue, 24 Dec 2024 17:07:47 +0000 (UTC)
+	id 1tQ8Ny-0000000CMwt-28AX;
+	Tue, 24 Dec 2024 17:07:59 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 09DF040006;
+	Tue, 24 Dec 2024 17:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1735060071;
+	t=1735060076;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=kbQep8baX7V18i3WQzlRcus+JcLBQAZAEQ0EVnsTNJ0=;
-	b=QLRtoFxKhPx0761tFyItDBBDh2ZlFhF74KE6N+ECmWyJZguR1WQ5Ubts5K4LFjzLqsiF8f
-	znkeDr/77Gx65+E0itx1DTZB5nG6gmx+RZ5PoaZ348+69I1KFnN8av9noGAGWqGVqa8VJH
-	/47qulqvgam/S4uoVPc9phHZzhGwvSiZDuuFV3dpfkin0H8Khid96WKjSwJDVCdkUlpw1z
-	T+5MCcHJ5EE35MNfDSFbQQD3KEUm93JXLCEUgKCidBEmGQk7JER2pakRH+bareC++ojpDF
-	xBHAi4D1P//sZEySLVewnaP8Lt0ihrF6PYH2v7ExzKqcTZ6RPIzkkSanj9zaGg==
+	bh=VzPEJXwTtX4trhn4jiSXKCMpEB5Y/gw2NHlQipYlhDw=;
+	b=EzF2TBztddoKYRFhcVtq8rq/rg+jTFBz9rODvimhcXvHvXfu+GHbgH0M07v8SJOsvYkb5/
+	azHgKUXYrRaGpvifsZI/6x52aHsGWwNyT3bBorvLjJrSGX+Dsg//+fzBoMtIoWdRgUDA2t
+	niAwU/bCugZRReTXZ19Wuhe61iFT3y0yiAFN/WcAGNDBCFaO2/2Pk+darLR5Z64w/KmNVx
+	e1TGhyebkHmosHM9EPv+G9yigrrNL0KS+gw4Pt/gmCZffAOn1Hdv1qzSi5IwDL2Kznh4wS
+	Bii8S97vU8+7vHFR4RxslHDM/VaNj4Nf2jWo9AnN/auRec87X1NVVjynykdIpA==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Tue, 24 Dec 2024 18:06:04 +0100
-Subject: [PATCH v2 19/27] spi: spi-mem: Create macros for DTR operation
+Date: Tue, 24 Dec 2024 18:06:05 +0100
+Subject: [PATCH v2 20/27] spi: spi-mem: Estimate the time taken by
+ operations
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-19-ad218dbc406f@bootlin.com>
+Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
 References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
 In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
 To: Mark Brown <broonie@kernel.org>, Sanjay R Mehta <sanju.mehta@amd.com>, 
@@ -79,9 +80,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.15-dev
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_090754_326121_2CAD2079 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241224_090758_855504_971DACE5 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,101 +96,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We do have macros for defining command, address, dummy and data
-cycles. We also have a .dtr flag that implies sampling the bus on both
-edges, but there are currently no macros enabling it. We might make use
-of such macros, so let's create:
-- SPI_MEM_DTR_OP_CMD
-- SPI_MEM_DTR_OP_ADDR
-- SPI_MEM_DTR_OP_DUMMY
-- SPI_MEM_DTR_OP_DATA_OUT
-- SPI_MEM_DTR_OP_DATA_OUT
+In the SPI-NAND layer, we currently make list of operation variants from
+the fastest one to the slowest and there is a bit of logic in the core
+to go over them and pick the first one that is supported by the
+controller, ie. the fastest one among the supported ops.
+
+This kind of logic only works if all operations run at the same
+frequency, but as soon as we introduce per operation max frequencies it
+is not longer as obvious which operation will be faster, especially
+since it also depends on the PCB/controller frequency limitation.
+
+One way to make this choice more clever is to go over all the
+variants and for each of them derive an indicator which will help derive
+the theoretical best. In this case, we derive a theoretical duration for
+the entire operation and we take the smallest one.
+
+Add a helper that parses the spi-mem operation and returns this value.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- include/linux/spi/spi-mem.h | 41 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ drivers/spi/spi-mem.c       | 30 ++++++++++++++++++++++++++++++
+ include/linux/spi/spi-mem.h |  1 +
+ 2 files changed, 31 insertions(+)
 
+diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
+index 96374afd0193ca2cf4f50004f66c36dce32894e8..a9f0f47f4759b0e1ce22348e713a3b42cfb8ea9c 100644
+--- a/drivers/spi/spi-mem.c
++++ b/drivers/spi/spi-mem.c
+@@ -562,6 +562,36 @@ void spi_mem_adjust_op_freq(struct spi_mem *mem, struct spi_mem_op *op)
+ }
+ EXPORT_SYMBOL_GPL(spi_mem_adjust_op_freq);
+ 
++/**
++ * spi_mem_calc_op_duration() - Derives the theoretical length (in ns) of an
++ *			        operation. This helps finding the best variant
++ *			        among a list of possible choices.
++ * @op: the operation to benchmark
++ *
++ * Some chips have per-op frequency limitations, PCBs usually have their own
++ * limitations as well, and controllers can support dual, quad or even octal
++ * modes, sometimes in DTR. All these combinations make it impossible to
++ * statically list the best combination for all situations. If we want something
++ * accurate, all these combinations should be rated (eg. with a time estimate)
++ * and the best pick should be taken based on these calculations.
++ *
++ * Returns a ns estimate for the time this op would take.
++ */
++u64 spi_mem_calc_op_duration(struct spi_mem_op *op)
++{
++	u64 ncycles = 0;
++	u32 ns_per_cycles;
++
++	ns_per_cycles = 1000000000 / op->max_freq;
++	ncycles += ((op->cmd.nbytes * 8) / op->cmd.buswidth) / (op->cmd.dtr ? 2 : 1);
++	ncycles += ((op->addr.nbytes * 8) / op->addr.buswidth) / (op->addr.dtr ? 2 : 1);
++	ncycles += ((op->dummy.nbytes * 8) / op->dummy.buswidth) / (op->dummy.dtr ? 2 : 1);
++	ncycles += ((op->data.nbytes * 8) / op->data.buswidth) / (op->data.dtr ? 2 : 1);
++
++	return ncycles * ns_per_cycles;
++}
++EXPORT_SYMBOL_GPL(spi_mem_calc_op_duration);
++
+ static ssize_t spi_mem_no_dirmap_read(struct spi_mem_dirmap_desc *desc,
+ 				      u64 offs, size_t len, void *buf)
+ {
 diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
-index ca6ea01c40f85095ac2730cb424cfb21d7daa700..306c05dd13789017da2c5339cddc031f03302bb9 100644
+index 306c05dd13789017da2c5339cddc031f03302bb9..82390712794c5a4dcef1319c19d74b77b6e1e724 100644
 --- a/include/linux/spi/spi-mem.h
 +++ b/include/linux/spi/spi-mem.h
-@@ -20,6 +20,14 @@
- 		.opcode = __opcode,				\
- 	}
+@@ -424,6 +424,7 @@ bool spi_mem_default_supports_op(struct spi_mem *mem,
  
-+#define SPI_MEM_DTR_OP_CMD(__opcode, __buswidth)		\
-+	{							\
-+		.nbytes = 1,					\
-+		.opcode = __opcode,				\
-+		.buswidth = __buswidth,				\
-+		.dtr = true,					\
-+	}
-+
- #define SPI_MEM_OP_ADDR(__nbytes, __val, __buswidth)		\
- 	{							\
- 		.nbytes = __nbytes,				\
-@@ -27,6 +35,14 @@
- 		.val = __val,					\
- 	}
+ int spi_mem_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op);
+ void spi_mem_adjust_op_freq(struct spi_mem *mem, struct spi_mem_op *op);
++u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op *op);
  
-+#define SPI_MEM_DTR_OP_ADDR(__nbytes, __val, __buswidth)	\
-+	{							\
-+		.nbytes = __nbytes,				\
-+		.val = __val,					\
-+		.buswidth = __buswidth,				\
-+		.dtr = true,					\
-+	}
-+
- #define SPI_MEM_OP_NO_ADDR	{ }
- 
- #define SPI_MEM_OP_DUMMY(__nbytes, __buswidth)			\
-@@ -35,6 +51,13 @@
- 		.buswidth = __buswidth,				\
- 	}
- 
-+#define SPI_MEM_DTR_OP_DUMMY(__nbytes, __buswidth)		\
-+	{							\
-+		.nbytes = __nbytes,				\
-+		.buswidth = __buswidth,				\
-+		.dtr = true,					\
-+	}
-+
- #define SPI_MEM_OP_NO_DUMMY	{ }
- 
- #define SPI_MEM_OP_DATA_IN(__nbytes, __buf, __buswidth)		\
-@@ -45,6 +68,15 @@
- 		.buf.in = __buf,				\
- 	}
- 
-+#define SPI_MEM_DTR_OP_DATA_IN(__nbytes, __buf, __buswidth)	\
-+	{							\
-+		.dir = SPI_MEM_DATA_IN,				\
-+		.nbytes = __nbytes,				\
-+		.buf.in = __buf,				\
-+		.buswidth = __buswidth,				\
-+		.dtr = true,					\
-+	}
-+
- #define SPI_MEM_OP_DATA_OUT(__nbytes, __buf, __buswidth)	\
- 	{							\
- 		.buswidth = __buswidth,				\
-@@ -53,6 +85,15 @@
- 		.buf.out = __buf,				\
- 	}
- 
-+#define SPI_MEM_DTR_OP_DATA_OUT(__nbytes, __buf, __buswidth)	\
-+	{							\
-+		.dir = SPI_MEM_DATA_OUT,			\
-+		.nbytes = __nbytes,				\
-+		.buf.out = __buf,				\
-+		.buswidth = __buswidth,				\
-+		.dtr = true,					\
-+	}
-+
- #define SPI_MEM_OP_NO_DATA	{ }
- 
- /**
+ bool spi_mem_supports_op(struct spi_mem *mem,
+ 			 const struct spi_mem_op *op);
 
 -- 
 2.47.0
