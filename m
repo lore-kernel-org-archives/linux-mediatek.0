@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C05E7718B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93C3E7718E
 	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 19:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u5TwIvC+pogcjmLFzMEJfSARog3Ov5O6G7UbbZ1ELaQ=; b=UEpKZfj4TziJ5WZEj7F5zjZ5c8
-	jfo1x0y6BThKNQ6pPv7cE95tiWSepvHIydI/s6rGH0z+9cZfpMVYuwKPNlDmIphoGIB+OVYtf7z4+
-	KkE5L+eVuXszHXVh53mNbFv6elAlEv1NyBCVU6K0DJSLJmz+H0L/X9+nLbU0cCiCYxUYfUwNKua3i
-	b2Ty22OdzVcFBmEuZ7kphMGDTWirO5oCBGm/kf/VxbSS3TpOyE5N/7smbZJOy7MJutdX/ystcVNCd
-	jL3InPuAErc49fxvgfbZ2EpoDls4NVNYgbyOpB4LisNARXC5nhAstBTUvyP/Y7tsu+hT6+vK5Rrfg
-	F10qMySA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KOnKLDsqb4xiEOhltwQDh4HgtA1cKvX5nht3wAdDSxY=; b=uo6s0k8d5GJUhyb8ImKsGYPEpT
+	FJdEOMflxQxZB7JeK1wNfi679pXJ5/H7HVRWbUXCz1yYOhq6rZjdMqNLXoLCSTcn8dnnvWNzAAOqk
+	kgHznNPs/6hNy9OAoZmUuBNmNKVMk3Ysq3parLUCY3DGOf58Qgo9MjZFy/BOv/7o6PrUBOCmvWbbU
+	F6vmHMynsw/xkX5T4xIbS+dvdVT+vRwO/EoFfDsNTmE0ju14bUniGqHJEgLBeaXyNXhv+ib6GMFHr
+	oD8s5BDnTfhYjPLLbd8nebRxpxSEFv7hb+kRBK7nB0RKOpYMI8x873mwJHd3MvbzgbvtEJ2A9sVFK
+	bom9G/ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQX68-0000000EExG-33Jz;
-	Wed, 25 Dec 2024 19:31:12 +0000
-Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
+	id 1tQX69-0000000EExW-0ChU;
+	Wed, 25 Dec 2024 19:31:13 +0000
+Received: from out-187.mta0.migadu.com ([2001:41d0:1004:224b::bb])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQX2g-0000000EEUr-0Csv
+	id 1tQX2i-0000000EETM-1uIL
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Dec 2024 19:27:40 +0000
+	Wed, 25 Dec 2024 19:27:41 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1735154855;
+	s=key1; t=1735154842;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u5TwIvC+pogcjmLFzMEJfSARog3Ov5O6G7UbbZ1ELaQ=;
-	b=OjTI0p64NaP3/yljJiC8m3FwQD4cgw7sRgLh0H0uWN779kN5uHlp5hm9Q5UqG+/bJBDQZD
-	YF4vFvJIDJXjzjS2lEGSlWhJkqvumSw5JEh9qlM+5oGhmCMbbCqbEzVfxCIQidejrQ8M5p
-	ni1PXGewnW9oj1VLvniL4d7syoPQ9Xh5niLifoAeKXJ03zZTY9uEObDKcQ1m7d1Z33F/PS
-	Vn6s3YcVddzZds4cw3aEFSorCxie6TAKsbwYb9kdwhRTds9Arfs8e9D4bDb6Hin6XmPRBQ
-	62aF+8mMbtLBZAvIHbd0LTlgrEaMnG4PYxhIexHaKr50e+SvweJ0U0d/iWE5EQ==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=KOnKLDsqb4xiEOhltwQDh4HgtA1cKvX5nht3wAdDSxY=;
+	b=AR95h++w7RE76dw9MHkXuquH0j3GJ05notgIN80CpNosyE+oNzkdRcQXGgjz2tg9gzr09x
+	Nc3dZdr21batB9XBUJyRXolEpJCpNu5396rdiy9ZITHe5GAWlAmjV582r4kJlix0EVJsYR
+	lBAAn7btvwu10n9+jW71Hq/WxOl7eL9+JpLtXQ3FaCkx3aEIo7viF4vOS0B2Byy53Mg4oT
+	XCWTE1pnHAvMwQ6tnbnR+b2IQbhWhcTRR4dvQVeuvVr/6h1PKR0VlP4qqGkyJRp00lYjKR
+	sPcgoKuQRYlSBMCpYXJ2Hue/aXd8EUGNNhtUGQeSYcM2D2VI58n9R6Ti6t2W2g==
 From: Val Packett <val@packett.cool>
 To: 
 Cc: Val Packett <val@packett.cool>,
@@ -51,24 +50,22 @@ Cc: Val Packett <val@packett.cool>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Fabien Parent <fparent@baylibre.com>,
-	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
 	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amjad Ouled-Ameur <aouledameur@baylibre.com>,
 	linux-input@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/3] arm64: dts: mediatek: add per-SoC compatibles for keypad nodes
-Date: Wed, 25 Dec 2024 16:26:20 -0300
-Message-ID: <20241225192631.25017-3-val@packett.cool>
-In-Reply-To: <20241225192631.25017-1-val@packett.cool>
-References: <20241225192631.25017-1-val@packett.cool>
+Subject: [PATCH 0/3] mt6779-keypad: fix compatibles and add to mt8516
+Date: Wed, 25 Dec 2024 16:26:18 -0300
+Message-ID: <20241225192631.25017-1-val@packett.cool>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_112738_247905_10663EC1 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20241225_112740_627941_F0C865AA 
+X-CRM114-Status: UNSURE (   8.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,45 +81,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt6779-keypad binding specifies using a compatible for the
-actual SoC before the generic MT6779 one.
+The mt8516 patch was previously sent in another series but rejected due
+to not using an mt8516 specific compatible - which the other usages
+of this driver (mt8183 and mt8365) weren't doing either.
 
-Fixes: a8013418d35c ("arm64: dts: mediatek: mt8183: add keyboard node")
-Fixes: 6ff945376556 ("arm64: dts: mediatek: Initial mt8365-evk support")
-Signed-off-by: Val Packett <val@packett.cool>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 ++-
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+It's only fair to add the SoC-specific compatibles to all of them then :)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c7008bb8a81da..0aa34e5bbaaa8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1024,7 +1024,8 @@ pwrap: pwrap@1000d000 {
- 		};
- 
- 		keyboard: keyboard@10010000 {
--			compatible = "mediatek,mt6779-keypad";
-+			compatible = "mediatek,mt8183-keypad",
-+				     "mediatek,mt6779-keypad";
- 			reg = <0 0x10010000 0 0x1000>;
- 			interrupts = <GIC_SPI 186 IRQ_TYPE_EDGE_FALLING>;
- 			clocks = <&clk26m>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 9c91fe8ea0f96..2bf8c9d02b6ee 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -449,7 +449,8 @@ pwrap: pwrap@1000d000 {
- 		};
- 
- 		keypad: keypad@10010000 {
--			compatible = "mediatek,mt6779-keypad";
-+			compatible = "mediatek,mt8365-keypad",
-+				     "mediatek,mt6779-keypad";
- 			reg = <0 0x10010000 0 0x1000>;
- 			wakeup-source;
- 			interrupts = <GIC_SPI 124 IRQ_TYPE_EDGE_FALLING>;
+Val Packett (3):
+  dt-bindings: mediatek,mt6779-keypad: add more compatibles
+  arm64: dts: mediatek: add per-SoC compatibles for keypad nodes
+  arm64: dts: mediatek: mt8516: add keypad node
+
+ .../bindings/input/mediatek,mt6779-keypad.yaml        |  3 +++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi              |  3 ++-
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi              |  3 ++-
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi              | 11 +++++++++++
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+
 -- 
 2.47.1
 
