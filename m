@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D661E7718B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 09:05:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A304DE7718B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 10:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aBWKK6ZjzSvH7LyonCX8Syja9oBgc2RQ52O9697Qzlc=; b=GdjGIW8F6S0HAWwpyp+PeB588l
-	gKkM3TnKrRjOIP6D3W91u0WncXHtBkuDedTwIqFYGfnJzf6Kg7mSmgvbPWliWT1xrxptfqGmv3BQj
-	YhY3LIYB2zZmIns7b0+NDphJ1+MNLQQvomY53hq/famUspEjuN3V9qub0Z8L6BZZTD+yBie72hHvb
-	FGSTaZlgu7jscMMKJ4XGxylHU0zPIvuGdUcTQjenklTF8sb8v70XdGw/DuZxYXwOexeHv/32vwdR1
-	CQQPzbyCdYieicxyEvRI7y849owVhv6ItBkFHaZOSslX9SL7HdvQ3yMqTUhlB4LtO/QFJLoHmIQyR
-	45az8ntw==;
+	bh=d4vV6k2yMin3zxgst3cgpCfnKTd2xrj4cgMcOxVOF2U=; b=cj/TYde+ay+7pterBwCZhitV0n
+	p27ORW/miXniBZpnd57yDXk8Iv8TmDem1e+8VBMZKJ0pKTrEjbWihQjmf49/na/i1b54n9Lcd1dPl
+	nco2Z2y7EIOT/A+5RtaGaKmZH3xDYQZ06Z3dLymzxBhjsU33oN49rIVl9jL67+jicEN4Tglx6blkp
+	mdlhiTl4wW1OBJP1gfN59nD3vgsT6EEKHoJyaiZq++6HUJDrezi68pWW+XIQPUIgD5/jz2T2ragnX
+	sokwryGteIlOJhLhXna+TN+V1KFAzL/z79buTk3uS8BV/i6G/s+QOdpwRUuVtNQO0Lu93pjrnyrGt
+	YMMoOT/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQNKD-0000000DX4N-0wGC;
-	Wed, 25 Dec 2024 09:05:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tQOf6-0000000DdfF-27fw;
+	Wed, 25 Dec 2024 10:30:44 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQNGg-0000000DWRx-0KHQ;
-	Wed, 25 Dec 2024 09:01:27 +0000
-X-UUID: cdecb646c29e11ef82ff63e91e7eb18c-20241225
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=aBWKK6ZjzSvH7LyonCX8Syja9oBgc2RQ52O9697Qzlc=;
-	b=lnFm3U4Knm5GkDtDR518EbfYQaXPlQH3vlzN4C2tKT5akWihbs2DonyX6E2W4HJD0o7KdnNhjxaYK14t0JVSLQAdRezn0U5G/k3RBFFhqoUoJvOsoZQ/SPWP8pmsSsYuIV3Ehcqa6my9C/OjvZRW0+jzFmzelwItMeo6y5jp87w=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:ea13fdb8-dcc9-4f30-b08a-4699e98dfe4e,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:f20ed818-ec44-4348-86ee-ebcff634972b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: cdecb646c29e11ef82ff63e91e7eb18c-20241225
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <bo.kong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 806101611; Wed, 25 Dec 2024 02:01:18 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 25 Dec 2024 17:01:15 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 25 Dec 2024 17:01:15 +0800
-From: bo.kong <bo.kong@mediatek.com>
-To: <mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>
-CC: <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <Bo.Kong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 2/4] media: dt-bindings: add MT8188 AIE
-Date: Wed, 25 Dec 2024 17:00:21 +0800
-Message-ID: <20241225090113.17027-3-bo.kong@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241225090113.17027-1-bo.kong@mediatek.com>
-References: <20241225090113.17027-1-bo.kong@mediatek.com>
-MIME-Version: 1.0
+	id 1tQOdt-0000000DdXP-2sf0;
+	Wed, 25 Dec 2024 10:29:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8E95EA4030A;
+	Wed, 25 Dec 2024 10:27:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4582C4CED6;
+	Wed, 25 Dec 2024 10:29:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735122568;
+	bh=BlZHZylE3rkpvbrheLcHA/p7NRcnz2PMtoKAQwhJgy8=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=Wm1+iNeMLPeEftMNySyryeQTAFkv13G5yNV7DFPagTpHSS0s15hTeIOQUpcWYvRd8
+	 XVgtT5RIagUjDlU//D3gj0LGvKKkCi/bU5b68/X9zn+Xd1bA17CLL+PVca7BG+CxyG
+	 uNFEo0zZjNwwzp1o9qKpuNgRZxr6mtt5fwStRulynhHeWYMRgORzbR0cCwtSzrxn2N
+	 9zgp8AxQKXkX7CJoiF1ljyB762/Zg4u/usZU8+vy/CI/+rR+kqIVAtJeFyzLZWFcKq
+	 v6S/CSSbkxzeLKnVzkVZag+Czd/L6Yve8gTtuO+YKFCX4/lFQmXge8qcuPl1yR8yiZ
+	 yMJfdiUdS1p4w==
+Date: Wed, 25 Dec 2024 04:29:26 -0600
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ Bo.Kong@mediatek.com, linux-media@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, mchehab@kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, matthias.bgg@gmail.com, 
+ linux-arm-kernel@lists.infradead.org
+To: "bo.kong" <bo.kong@mediatek.com>
+In-Reply-To: <20241225090113.17027-3-bo.kong@mediatek.com>
+References: <20241225090113.17027-1-bo.kong@mediatek.com>
+ <20241225090113.17027-3-bo.kong@mediatek.com>
+Message-Id: <173512256651.1988706.15570394656231888489.robh@kernel.org>
+Subject: Re: [PATCH v3 2/4] media: dt-bindings: add MT8188 AIE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_010126_183479_7DC3125D 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20241225_022929_803366_DC49124B 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,127 +75,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Kong <Bo.Kong@mediatek.com>
 
-Add YAML device tree bindings for MT8188 AIE.
+On Wed, 25 Dec 2024 17:00:21 +0800, bo.kong wrote:
+> From: Bo Kong <Bo.Kong@mediatek.com>
+> 
+> Add YAML device tree bindings for MT8188 AIE.
+> 
+> Signed-off-by: Bo Kong <Bo.Kong@mediatek.com>
+> ---
+> 
+> Changes in v3:
+> none
+> 
+> Changes in v2:
+> 1. Fix coding style
+> ---
+>  .../bindings/media/mediatek,mt8188-aie.yaml   | 97 +++++++++++++++++++
+>  1 file changed, 97 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
+> 
 
-Signed-off-by: Bo Kong <Bo.Kong@mediatek.com>
----
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Changes in v3:
-none
+yamllint warnings/errors:
 
-Changes in v2:
-1. Fix coding style
----
- .../bindings/media/mediatek,mt8188-aie.yaml   | 97 +++++++++++++++++++
- 1 file changed, 97 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
+ 	 $id: http://devicetree.org/schemas/media/mediatek-aie.yaml
+ 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.example.dtb: aie@15310000: reg: [[0, 355532800], [0, 4096]] is too long
+	from schema $id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.example.dtb: aie@15310000: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
-new file mode 100644
-index 000000000000..63dd720ef6ec
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
-@@ -0,0 +1,97 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: The AI Engine Unit of MediaTek Camera System
-+
-+maintainers:
-+  - Bo Kong <bo.kong@mediatek.com>
-+
-+description:
-+  AIE(AI Engine) is one of the units in mt8188 ISP which
-+  provides hardware accelerated face detection function,
-+  it can detect different sizes of faces in a raw image.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8188-aie
-+
-+  reg:
-+    maxItems: 1
-+    description: Physical base address and length of the register space.
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  mediatek,larb:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Must contain the local arbiters in the current SoCs, see
-+      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+      for details.
-+
-+  iommus:
-+    maxItems: 4
-+    description:
-+      Points to the respective IOMMU block with master port as argument, see
-+      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-+      Ports are according to the HW.
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: clock for imgsys main ipe
-+      - description: clock for ipe fdvt
-+      - description: clock for ipe smi larb12
-+      - description: clock for ipe top
-+
-+  clock-names:
-+    items:
-+      - const: img_ipe
-+      - const: ipe_fdvt
-+      - const: ipe_smi_larb12
-+      - const: ipe_top
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - iommus
-+  - power-domains
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/memory/mediatek,mt8188-memory-port.h>
-+    #include <dt-bindings/power/mediatek,mt8188-power.h>
-+    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+    aie@15310000 {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+      compatible = "mediatek,mt8188-aie";
-+      reg = <0 0x15310000 0 0x1000>;
-+      interrupts = <GIC_SPI 787 IRQ_TYPE_LEVEL_HIGH 0>;
-+      mediatek,larb = <&larb12>;
-+      iommus = <&vpp_iommu M4U_PORT_L12_FDVT_RDA_0>,
-+               <&vpp_iommu M4U_PORT_L12_FDVT_RDB_0>,
-+               <&vpp_iommu M4U_PORT_L12_FDVT_WRA_0>,
-+               <&vpp_iommu M4U_PORT_L12_FDVT_WRB_0>;
-+      power-domains = <&spm MT8188_POWER_DOMAIN_IPE>;
-+      clocks = <&imgsys CLK_IMGSYS_MAIN_IPE>,
-+               <&ipesys CLK_IPE_FDVT>,
-+               <&ipesys CLK_IPE_SMI_LARB12>,
-+               <&ipesys CLK_IPESYS_TOP>;
-+      clock-names = "img_ipe",
-+                    "ipe_fdvt",
-+                    "ipe_smi_larb12",
-+                    "ipe_top";
-+    };
--- 
-2.45.2
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241225090113.17027-3-bo.kong@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
