@@ -4,63 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A304DE7718B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 10:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7764DE7718B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 11:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d4vV6k2yMin3zxgst3cgpCfnKTd2xrj4cgMcOxVOF2U=; b=cj/TYde+ay+7pterBwCZhitV0n
-	p27ORW/miXniBZpnd57yDXk8Iv8TmDem1e+8VBMZKJ0pKTrEjbWihQjmf49/na/i1b54n9Lcd1dPl
-	nco2Z2y7EIOT/A+5RtaGaKmZH3xDYQZ06Z3dLymzxBhjsU33oN49rIVl9jL67+jicEN4Tglx6blkp
-	mdlhiTl4wW1OBJP1gfN59nD3vgsT6EEKHoJyaiZq++6HUJDrezi68pWW+XIQPUIgD5/jz2T2ragnX
-	sokwryGteIlOJhLhXna+TN+V1KFAzL/z79buTk3uS8BV/i6G/s+QOdpwRUuVtNQO0Lu93pjrnyrGt
-	YMMoOT/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zqer6Ku4JTCmBnTU1aWiql4BUWaf9ozr/2uN0GvPZS0=; b=P3xwFFhmRqivRxwQC99Y196F5T
+	G12W8m9L9s8Li0iOLdgQZRL9pJzMnNMPgAnCy2flbgJ4nqw2JuwnIII9OXwp+12RoFUi4Q/dTCHD0
+	HevJ9RysEKhaYbIib66kVakWg65ksz6NmX7OhxiFlUX0PBocbyVTSJrlh4wEbWhljJfxkjdRp+7tp
+	DCexBWlxuWO5WvIfLzhbIvgn/rS6caodOofiRI/yJ3Wxl+1tYQsyIcgb39Q5E30s7PI68yDFwq8UB
+	V/gyGv8MJzda1OkNqIYryZf8RrXY2Dd+YoDhlIMUdlOo/ZUyhuIt8LYT8iXGz20tEPBUtFBBzjCTs
+	1oHB+HSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQOf6-0000000DdfF-27fw;
-	Wed, 25 Dec 2024 10:30:44 +0000
+	id 1tQPZt-0000000DjJ6-28oQ;
+	Wed, 25 Dec 2024 11:29:25 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQOdt-0000000DdXP-2sf0;
-	Wed, 25 Dec 2024 10:29:31 +0000
+	id 1tQPYg-0000000DjC7-3Ftz;
+	Wed, 25 Dec 2024 11:28:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8E95EA4030A;
-	Wed, 25 Dec 2024 10:27:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4582C4CED6;
-	Wed, 25 Dec 2024 10:29:27 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D5CE1A40321;
+	Wed, 25 Dec 2024 11:26:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C33BC4CECD;
+	Wed, 25 Dec 2024 11:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735122568;
-	bh=BlZHZylE3rkpvbrheLcHA/p7NRcnz2PMtoKAQwhJgy8=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Wm1+iNeMLPeEftMNySyryeQTAFkv13G5yNV7DFPagTpHSS0s15hTeIOQUpcWYvRd8
-	 XVgtT5RIagUjDlU//D3gj0LGvKKkCi/bU5b68/X9zn+Xd1bA17CLL+PVca7BG+CxyG
-	 uNFEo0zZjNwwzp1o9qKpuNgRZxr6mtt5fwStRulynhHeWYMRgORzbR0cCwtSzrxn2N
-	 9zgp8AxQKXkX7CJoiF1ljyB762/Zg4u/usZU8+vy/CI/+rR+kqIVAtJeFyzLZWFcKq
-	 v6S/CSSbkxzeLKnVzkVZag+Czd/L6Yve8gTtuO+YKFCX4/lFQmXge8qcuPl1yR8yiZ
-	 yMJfdiUdS1p4w==
-Date: Wed, 25 Dec 2024 04:29:26 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1735126089;
+	bh=Q62zRfD0sLiKfZ4Jr4dFPX1tGNoHoZ6JpQKQvkbHKIs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=X5MWFsDL7rTMJxVNtIrlLie7h94DIYLbrRGSIcLZARRNWBBKPKx/MH7dao4QuNLWA
+	 FIAna9Nu6z5HeRaRqRINZ/EPk1cMnwojg6oejldaFsGqpinM8+5mkrpk3Sp6oNJhSt
+	 9tT+Ugt9+A3Xw/6j4LkcaU02PcLV+t1wR4R6Mvc9FcyV8pZ2Q2uUmF1uXWB8D6j7WD
+	 rDPtz3TAKMrqE0YT11nu9vtqzhW23ppbK4oaaMN5wbWtadSOl8W3gLNArUwph8YtNd
+	 SoztPHtUsLKIyGiygtNF82SwVseDjzkHp/BRRif1eW2m8d40/D3/6b6o1DNW95J8hU
+	 BfI3i1kGmALYA==
+Message-ID: <940b6518-dfe5-43f2-9295-1706e3f7b02d@kernel.org>
+Date: Wed, 25 Dec 2024 12:28:03 +0100
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Bo.Kong@mediatek.com, linux-media@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, mchehab@kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, matthias.bgg@gmail.com, 
- linux-arm-kernel@lists.infradead.org
-To: "bo.kong" <bo.kong@mediatek.com>
-In-Reply-To: <20241225090113.17027-3-bo.kong@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/4] media: dt-bindings: add MT8188 AIE
+To: "bo.kong" <bo.kong@mediatek.com>, mchehab@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org
+Cc: conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20241225090113.17027-1-bo.kong@mediatek.com>
  <20241225090113.17027-3-bo.kong@mediatek.com>
-Message-Id: <173512256651.1988706.15570394656231888489.robh@kernel.org>
-Subject: Re: [PATCH v3 2/4] media: dt-bindings: add MT8188 AIE
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241225090113.17027-3-bo.kong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_022929_803366_DC49124B 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20241225_032810_952573_F266BD62 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,8 +121,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 25 Dec 2024 17:00:21 +0800, bo.kong wrote:
+On 25/12/2024 10:00, bo.kong wrote:
 > From: Bo Kong <Bo.Kong@mediatek.com>
 > 
 > Add YAML device tree bindings for MT8188 AIE.
@@ -89,40 +134,15 @@ On Wed, 25 Dec 2024 17:00:21 +0800, bo.kong wrote:
 > 
 > Changes in v2:
 > 1. Fix coding style
-> ---
->  .../bindings/media/mediatek,mt8188-aie.yaml   | 97 +++++++++++++++++++
->  1 file changed, 97 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
-> 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Coding style? So none of my specific comments were implemented? No
+improvements in compatibles, properties, all these things I pointed out?
 
-yamllint warnings/errors:
+Please be more specific or just go back to previous email and implement
+all the comments.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
- 	 $id: http://devicetree.org/schemas/media/mediatek-aie.yaml
- 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.example.dtb: aie@15310000: reg: [[0, 355532800], [0, 4096]] is too long
-	from schema $id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek,mt8188-aie.example.dtb: aie@15310000: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
 
-doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241225090113.17027-3-bo.kong@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Best regards,
+Krzysztof
 
