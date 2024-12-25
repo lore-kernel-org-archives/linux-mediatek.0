@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 849FEE7718B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 13:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A88E4E7718B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2024 15:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OjNu/dO08RmQiP600SqvVFmOniITWS6O4VWIh3tf+Sg=; b=Bo5tg+Zp0XBMXHQZdDSdk6EtOD
-	KXriEuc/LZnxeYnO70HvgOhD9aYeoAF+1ZaU9oKanfOz1cQzKaEl2aQ6DBlZa6tPXzG6uMhOT+qsA
-	Sat5EdxRKwQ26ryzQVvaKUS1apbBjx/0jHK771A22s0qn4Jhrf47Z1+b93dSIG5wABFzuqgJ8GV89
-	U5lXV4Dx6+64f2h3oji3HoEWPGaWKrSYPiYmisg3vty6oj6GgjXqnFdUwJ35L6isLpaQ/6+SMftJi
-	u2DJzSTl89qdgFEN9Yp2lHvCLjekoyIMpiujkSXzYLf2QM0psmyvrWaGSEjWVm1PU+WAJsYWT6kze
-	Sm91FnzA==;
+	bh=pk4s0qCyjEO8XOZ4Bt2JdqZhzAMwJb6j/s2chqx6dRU=; b=CEBkUvdhkAET4q6m3hFBIMDaRx
+	Cey7zn6ngwq5SRPyNMp0qdR2JZNDOPtfCXedPZBYFGsxUaqwSlTD4WZAMcf8ApF4UqJpXen0977o3
+	vdIPswgxvw1k7owYYwGeczSyvHICw2y4KoeWpBPB4AsOmfWKKGPfmH89U3VJSxnmumXEwoUcJ98Q6
+	NCC7EJtdQ7FRQJJPKsbGwUBeafgYu7+6NiSSDVI54A9hlpJhw02ik/lK4qtrVl6kQfC562WBT0573
+	8+JaZsJjzXVlJFFNGruDszdJ2+ekaBXaV9NQ0nsb+h99geZzL8J947t28VieCj0kx17UpFRnEbYbw
+	SmZCl6eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQRba-0000000DsFF-2XdD;
-	Wed, 25 Dec 2024 13:39:18 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tQSuL-0000000DyDs-2W6s;
+	Wed, 25 Dec 2024 15:02:45 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQRaM-0000000Ds22-39y7;
-	Wed, 25 Dec 2024 13:38:04 +0000
+	id 1tQSt9-0000000Dy9M-0qed;
+	Wed, 25 Dec 2024 15:01:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0018CA40449;
-	Wed, 25 Dec 2024 13:36:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A974C4CECD;
-	Wed, 25 Dec 2024 13:38:01 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8638FA40444;
+	Wed, 25 Dec 2024 14:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B0C5C4CEDC;
+	Wed, 25 Dec 2024 15:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735133881;
-	bh=3vp4CKpd8ESTDsu6bu1UxWJdXeo8s2CdWgw9zFnQGyk=;
+	s=k20201202; t=1735138889;
+	bh=4bBE8LbFUYcZ10/kvs+K0KUMEg1oift8keSWrmc1IWM=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=rXWfY6Ph5u9D6yUzFeU1G7WfxI5ZgDNOXUI1gEun9GVsBSpOIlLEbXgTWWpTEK+Ua
-	 1Y5HgQClzhapskwF9tP2ytrHrrpIL+D4sSRKP/oKFZ2l/FTdFdiZcJ92hoiHlLqv+B
-	 N+QI2+l46xGzTQxy7HIzz2kdBAQsaZYMc6lfA76hfFrT+peWdoJJkGgnOkhVShoX8V
-	 +yT7sjumnB+Prl5eDAG71AcJKdM51gJaKD6bJv1byazGg7FQN4whRjZTVWIscmWZNv
-	 WHfqUep5haiNm7XxAy9wbqKqR2hzrjC2gLnWuJtxIxOjLjPupOa2gZnBSr6E5eGMxs
-	 twMobvsVMBE2w==
-Received: by mail-pj1-f50.google.com with SMTP id 98e67ed59e1d1-2ee8aa26415so6329554a91.1;
-        Wed, 25 Dec 2024 05:38:01 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCU9Xuy0kgUH8Q+Wyf0AOkNK1opvEPzfqWuzdKIdbJSh9R3lG/OOwfp0GSGPhKllLF2KRyYdhAZf9i4XpghhHxXv@lists.infradead.org, AJvYcCWrU5oQe+o9S3+Z7th/OFOZAZC4pdBp+RqVNPLGbFjuEr1vcDzgDX29bfXUAZJELV/fULB5FBtz83kmBcpldgc=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxh5IPLoBOUJXPErU5fYFYB54CbkuzcdRtmvNsjvF2gas1Ce0RB
-	ipm+hY/WX451Pp1KSCbDCCci8YI9lzg2PdyWdWXhjr+PRIUpzrxjgPDtuNQDA54PbWahkF1rvfW
-	+5HtnuVvGR+/NWrdFl3uyaDmtEQ==
-X-Google-Smtp-Source: AGHT+IFnZi1NtQQv9dj8a3jgcoYTjJpfp/YWEkT5/4IPrfik/YKvJdKHM45+WkcKaOEyw9dWlTYx69mcNgYit5wx2V0=
-X-Received: by 2002:a17:90b:2cc7:b0:2ee:53b3:3f1c with SMTP id
- 98e67ed59e1d1-2f452debcdamr32176458a91.5.1735133881217; Wed, 25 Dec 2024
- 05:38:01 -0800 (PST)
+	b=Qwf4uo7v3vQwlFcBS5TpFevok2CrBVmP/NGdwq+P5lGGhBtQRz7RnpPF3PN+VBqwz
+	 X8qFMfqPUeaespfHTxJiwTiHxaxKe/j4soflcxZtUCXmEGz4bJpAu2uy4SrDZhLhyS
+	 u+72EBBqmmSejAKXs5F8G5CEJWqoWx50Wb2o5CJmge53rRfw2tuoBZdCnp81wAQ4mm
+	 NRtwJomQq9yA4jTkhBhoEO4v3iQYFb6LICeFbvv8nnhAB3sFAemAYTKdTbXlhWYUDr
+	 uEaRW87x5nSLad/xVB5NSq+GscuUEuJ44KJPT7VN8v5wgulge3TNsCGXSYqY/xvWAC
+	 7LRMBNhNdiVLA==
+Received: by mail-pj1-f43.google.com with SMTP id 98e67ed59e1d1-2ee989553c1so6270363a91.3;
+        Wed, 25 Dec 2024 07:01:29 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUH08pLOoDDMDmtOvJnMV2NuUqukeY844tny2EpeqL6H9E7Owm1O1yn029drdMi5HO7dmVZomgrMiOUzvytVzU=@lists.infradead.org, AJvYcCX+WVZuqBXamPSaxyfGRYv3RNs/AiciM/JougE8i8ywP9++tefdSHH0e+B/cw/QhaUqQ6lwf3Esvw65pggCVvoY@lists.infradead.org
+X-Gm-Message-State: AOJu0YysyWAXSke+D/7xs+chKCDpJBhXOu6v++Er9j4llYzBF05Mhus+
+	ctvwOGLA/MPXAdhc2B1VcWWDmyAUYLihJPO6QvOmJ3rJil2yMzuT4tE57GH7ehgJB+at1GBJKTe
+	ZGE6gv8vhVo1k4XWduOb8nXVivw==
+X-Google-Smtp-Source: AGHT+IF9xqr0MB+CeYvcLBK3vTLIYnlZnLybva/SWf50PuDmdoY6PLKbqt076UUPF0Wsld6o+8QicufgIRbtnqCK+ak=
+X-Received: by 2002:a17:90a:e187:b0:2ee:8430:b847 with SMTP id
+ 98e67ed59e1d1-2f452dfcd26mr28539700a91.6.1735138889113; Wed, 25 Dec 2024
+ 07:01:29 -0800 (PST)
 MIME-Version: 1.0
-References: <20241128023733.16294-1-liankun.yang@mediatek.com>
-In-Reply-To: <20241128023733.16294-1-liankun.yang@mediatek.com>
+References: <20241223023227.1258112-1-guoqing.jiang@canonical.com>
+In-Reply-To: <20241223023227.1258112-1-guoqing.jiang@canonical.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 25 Dec 2024 21:38:33 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-0cw+OEi7bq4QLdRE1JuLVRevgH6Rj7stT1H=RpD9dKQ@mail.gmail.com>
-Message-ID: <CAAOTY_-0cw+OEi7bq4QLdRE1JuLVRevgH6Rj7stT1H=RpD9dKQ@mail.gmail.com>
-Subject: Re: [PATCH v4 1/1] drm/mediatek: dp: Add sdp path reset
-To: Liankun Yang <liankun.yang@mediatek.com>
+Date: Wed, 25 Dec 2024 23:02:01 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__No2VrkivsH3=6jvPGkPTXZ22vbGGKAcB3MMcA-+QeEw@mail.gmail.com>
+Message-ID: <CAAOTY__No2VrkivsH3=6jvPGkPTXZ22vbGGKAcB3MMcA-+QeEw@mail.gmail.com>
+Subject: Re: [PATCH V2] drm/mediatek: Set private->all_drm_private[i]->drm to
+ NULL if mtk_drm_bind returns err
+To: Guoqing Jiang <guoqing.jiang@canonical.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com, 
-	mac.shen@mediatek.com, peng.liu@mediatek.com, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	angelogioacchino.delregno@collabora.com, nancy.lin@mediatek.com, 
 	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+	linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_053802_929167_1CC5BB35 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20241225_070131_377169_A2A8CEA0 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,107 +85,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Liankun:
+Hi, Guoqing:
 
-Liankun Yang <liankun.yang@mediatek.com> =E6=96=BC 2024=E5=B9=B411=E6=9C=88=
-28=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8810:37=E5=AF=AB=E9=81=93=EF=
-=BC=9A
+Guoqing Jiang <guoqing.jiang@canonical.com> =E6=96=BC 2024=E5=B9=B412=E6=9C=
+=8823=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8810:32=E5=AF=AB=E9=81=93=
+=EF=BC=9A
 >
-> When using type-c to type-c to connect to the monitor,
-> the sound plays normally. If you unplug the type-c and
-> connect the type-c to hdmi dongle to the monitor, there will be noise.
+> The pointer need to be set to NULL, otherwise KASAN complains about
+> use-after-free. Because in mtk_drm_bind, all private's drm are set
+> as follows.
 >
-> By capturing the audio data, it is found that
-> the data position is messy, and there is no error in the data.
+> private->all_drm_private[i]->drm =3D drm;
 >
-> Through experiments, it can be restored by resetting the SDP path
-> when unplugging it.
+> And drm will be released by drm_dev_put in case mtk_drm_kms_init returns
+> failure. However, the shutdown path still accesses the previous allocated
+> memory in drm_atomic_helper_shutdown.
+>
+> [   84.874820] watchdog: watchdog0: watchdog did not stop!
+> [   86.512054] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> [   86.513162] BUG: KASAN: use-after-free in drm_atomic_helper_shutdown+0=
+x33c/0x378
+> [   86.514258] Read of size 8 at addr ffff0000d46fc068 by task shutdown/1
+> [   86.515213]
+> [   86.515455] CPU: 1 UID: 0 PID: 1 Comm: shutdown Not tainted 6.13.0-rc1=
+-mtk+gfa1a78e5d24b-dirty #55
+> [   86.516752] Hardware name: Unknown Unknown Product/Unknown Product, BI=
+OS 2022.10 10/01/2022
+> [   86.517960] Call trace:
+> [   86.518333]  show_stack+0x20/0x38 (C)
+> [   86.518891]  dump_stack_lvl+0x90/0xd0
+> [   86.519443]  print_report+0xf8/0x5b0
+> [   86.519985]  kasan_report+0xb4/0x100
+> [   86.520526]  __asan_report_load8_noabort+0x20/0x30
+> [   86.521240]  drm_atomic_helper_shutdown+0x33c/0x378
+> [   86.521966]  mtk_drm_shutdown+0x54/0x80
+> [   86.522546]  platform_shutdown+0x64/0x90
+> [   86.523137]  device_shutdown+0x260/0x5b8
+> [   86.523728]  kernel_restart+0x78/0xf0
+> [   86.524282]  __do_sys_reboot+0x258/0x2f0
+> [   86.524871]  __arm64_sys_reboot+0x90/0xd8
+> [   86.525473]  invoke_syscall+0x74/0x268
+> [   86.526041]  el0_svc_common.constprop.0+0xb0/0x240
+> [   86.526751]  do_el0_svc+0x4c/0x70
+> [   86.527251]  el0_svc+0x4c/0xc0
+> [   86.527719]  el0t_64_sync_handler+0x144/0x168
+> [   86.528367]  el0t_64_sync+0x198/0x1a0
+> [   86.528920]
+> [   86.529157] The buggy address belongs to the physical page:
+> [   86.529972] page: refcount:0 mapcount:0 mapping:0000000000000000 index=
+:0xffff0000d46fd4d0 pfn:0x1146fc
+> [   86.531319] flags: 0xbfffc0000000000(node=3D0|zone=3D2|lastcpupid=3D0x=
+ffff)
+> [   86.532267] raw: 0bfffc0000000000 0000000000000000 dead000000000122 00=
+00000000000000
+> [   86.533390] raw: ffff0000d46fd4d0 0000000000000000 00000000ffffffff 00=
+00000000000000
+> [   86.534511] page dumped because: kasan: bad access detected
+> [   86.535323]
+> [   86.535559] Memory state around the buggy address:
+> [   86.536265]  ffff0000d46fbf00: ff ff ff ff ff ff ff ff ff ff ff ff ff =
+ff ff ff
+> [   86.537314]  ffff0000d46fbf80: ff ff ff ff ff ff ff ff ff ff ff ff ff =
+ff ff ff
+> [   86.538363] >ffff0000d46fc000: ff ff ff ff ff ff ff ff ff ff ff ff ff =
+ff ff ff
+> [   86.544733]                                                           =
+^
+> [   86.551057]  ffff0000d46fc080: ff ff ff ff ff ff ff ff ff ff ff ff ff =
+ff ff ff
+> [   86.557510]  ffff0000d46fc100: ff ff ff ff ff ff ff ff ff ff ff ff ff =
+ff ff ff
+> [   86.563928] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> [   86.571093] Disabling lock debugging due to kernel taint
+> [   86.577642] Unable to handle kernel paging request at virtual address =
+e0e9c0920000000b
+> [   86.581834] KASAN: maybe wild-memory-access in range [0x07520490000000=
+58-0x075204900000005f]
+> ...
+>
 
-Applied to mediatek-drm-next [1], thanks.
+Applied to mediatek-drm-fixes [1], thanks.
 
 [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
+log/?h=3Dmediatek-drm-fixes
 
 Regards,
 Chun-Kuang.
 
->
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+> Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi =
+mmsys support")
+> Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
 > ---
-> Changes in V4:
-> - Fix align to the right of '('.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240925064854.=
-23065-1-liankun.yang@mediatek.com/
+> V2 changes:
+> 1. add Fixes tag per CK's comment
 >
-> Changes in V3:
-> - No change.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240923132521.=
-22785-1-liankun.yang@mediatek.com/
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+>  1 file changed, 2 insertions(+)
 >
-> Changes in V2:
-> - Fix build error.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240923133610.=
-23728-1-liankun.yang@mediatek.com/
-> ---
->  drivers/gpu/drm/mediatek/mtk_dp.c     | 15 +++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_dp_reg.h |  1 +
->  2 files changed, 16 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
-/mtk_dp.c
-> index 1cc916b16471..4f4233bd83f7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -1135,6 +1135,18 @@ static void mtk_dp_digital_sw_reset(struct mtk_dp =
-*mtk_dp)
->                            0, DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index 9a8ef8558da9..0062374f75d5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -673,6 +673,8 @@ static int mtk_drm_bind(struct device *dev)
+>  err_free:
+>         private->drm =3D NULL;
+>         drm_dev_put(drm);
+> +       for (i =3D 0; i < private->data->mmsys_dev_num; i++)
+> +               private->all_drm_private[i]->drm =3D NULL;
+>         return ret;
 >  }
 >
-> +static void mtk_dp_sdp_path_reset(struct mtk_dp *mtk_dp)
-> +{
-> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-> +                          SDP_RESET_SW_DP_ENC0_P0,
-> +                          SDP_RESET_SW_DP_ENC0_P0);
-> +
-> +       /* Wait for sdp path reset to complete */
-> +       usleep_range(1000, 5000);
-> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-> +                          0, SDP_RESET_SW_DP_ENC0_P0);
-> +}
-> +
->  static void mtk_dp_set_lanes(struct mtk_dp *mtk_dp, int lanes)
->  {
->         mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35F0,
-> @@ -2397,6 +2409,9 @@ static void mtk_dp_bridge_atomic_disable(struct drm=
-_bridge *bridge,
->                            DP_PWR_STATE_BANDGAP_TPLL,
->                            DP_PWR_STATE_MASK);
->
-> +       /* SDP path reset sw*/
-> +       mtk_dp_sdp_path_reset(mtk_dp);
-> +
->         /* Ensure the sink is muted */
->         msleep(20);
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/medi=
-atek/mtk_dp_reg.h
-> index 709b79480693..8ad7a9cc259e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> @@ -86,6 +86,7 @@
->  #define MTK_DP_ENC0_P0_3004                    0x3004
->  #define VIDEO_M_CODE_SEL_DP_ENC0_P0_MASK               BIT(8)
->  #define DP_TX_ENCODER_4P_RESET_SW_DP_ENC0_P0           BIT(9)
-> +#define SDP_RESET_SW_DP_ENC0_P0                                BIT(13)
->  #define MTK_DP_ENC0_P0_3010                    0x3010
->  #define HTOTAL_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
->  #define MTK_DP_ENC0_P0_3014                    0x3014
 > --
-> 2.45.2
+> 2.35.3
 >
 
