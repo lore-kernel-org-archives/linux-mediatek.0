@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0EA7E77188
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2024 05:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE24E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2024 05:18:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vwQ4N1e+TBjnM5P/3WcPIc4WkvpX1QuMyXV+3IuUEkA=; b=HF/UMzc/6a3/fg1lesfmcdgGnQ
-	WiPv6QJAT52OFMGEspsIdnnxF10rMX/fW+fZW363Tt5ihqZ1tmjiH9gZeC5RN+ugLUI4053iWk3mm
-	PuYEFUoaPdj+9ksnYIiMkTs9LzjledKnRsBFdzasGdnU9Qu9TUBdS8W6BIPbMvYinr0Nn2q0AhHj8
-	XoMgVYqUR6hlyc4wOSEY7/hBdqOv6rF7tt6cuphqE+uVl/LPBXvthWWtVgzJSjxfClZmQnGHAWnqL
-	hcOfhelUgCD+I8v/i29DNBTpGZWE4+1XJE5BkxnzqNw6Brr3R3GJI9kPrdoJHS78GG47aCNhYvcsw
-	bCPWfJ/A==;
+	bh=V6NLCR17ypGViL9bUhW6xSOEVx68tYcdJbQF8eDMwQY=; b=SK6F36qvELQ3isfkmv3kNT7zXw
+	TmQVed8OabCu8yVU0y3GWXIuRnbnnVJjlXs9oDeKpDGjAvC1xfkv6tytQX24/+LGINVy7Isy4RTO/
+	ZWJjWjaMtaQa3+JVHFxamyl8zZseCECOpTy33EbMUAEkAYt3tOjIC0VmUSQTsAVLBAuZLVzvV2P1O
+	8PS+7e9G28Wsqumrhqq7P9E6rXoJEK9rZ/Tv1YVxuh1mxgAErWGarE5vuB4Ij6MD0AmCwpRX6RqU6
+	2SR7bBCZv6E2zC49hkg3kvxIzz+t6DWsIg6hey2HBwCjf5NJCFoosRKtgZV/RyPU/5DEPnFilRzdW
+	1MPmfOeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQgFT-0000000FAO4-3gDB;
-	Thu, 26 Dec 2024 05:17:27 +0000
-Received: from out-183.mta0.migadu.com ([91.218.175.183])
+	id 1tQgGf-0000000FAro-1ydc;
+	Thu, 26 Dec 2024 05:18:41 +0000
+Received: from out-171.mta0.migadu.com ([2001:41d0:1004:224b::ab])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQgA1-0000000F8bl-0njM
+	id 1tQgAT-0000000F8if-2BTy
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Dec 2024 05:11:50 +0000
+	Thu, 26 Dec 2024 05:12:23 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1735189907;
+	s=key1; t=1735189934;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=vwQ4N1e+TBjnM5P/3WcPIc4WkvpX1QuMyXV+3IuUEkA=;
-	b=fPkCdAQ/vP86/E35KgJIAWs1gu/guAcpRuxfTWJn5tNwJ7CCcAUJ0Cbts08Bk0vsfgLbR3
-	z9WhpBpo2Wp2QWQP6ixhx2U4DyA2xsePwxYpVvEeS5IhOIXS6vGq0v3yTSQ96U+0NGRLKt
-	L+TmhvpPqKoZNOa6/tr4N7PwJs8Kdi1ODdp13rZYYSMGxg8j0SYRgslr7KyeVCFEfY/dP+
-	028JqnX46gNCjCjVwLn0VAoXXKVnZO2UwfEEy4DOLQbLLmZYDy7F1LDdp6AHHj/MeQfEa6
-	f9shY0qwbm5G0TAlQyAwU6G7+bUIdoXSZw5l4bE1azmhL4wFRyHCFpzGoD276Q==
+	bh=V6NLCR17ypGViL9bUhW6xSOEVx68tYcdJbQF8eDMwQY=;
+	b=OT78zrncr4RxpM6kx5sjFnU7Q45/uRXsN8Nk0KSi0HzOuZNcEnHOzsiZumi4FPEJB4DSVv
+	C5A6Mq30CtDBpauWXhVabQWbEK0XxqPGO2F2aCUvyy/b09mxgErtd1lPGZT4pLly3Qlseb
+	a2mQHuB85khQBOlwyAW1H8xjo312/uPi00zMbTu2zXc4szznBZ/d3YFeXv5bwMfgd0jnxk
+	NNzflsT8sAhofPI8H4mpmfv8TZlmwuz3QWjVZtGedKO+aqW5bljn+qYVprC5xa5j4iTBzF
+	GSKJrYaZ0/3XNgbvdH7Sfrv1y+on2pMDVHAaBpvtlF6liRGkK7/9dDDi3fv8MQ==
 From: Val Packett <val@packett.cool>
 To: 
 Cc: Val Packett <val@packett.cool>,
@@ -68,17 +68,17 @@ Cc: Val Packett <val@packett.cool>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-rtc@vger.kernel.org
-Subject: [PATCH 7/9] input: keyboard: mtk-pmic-keys: add MT6392 support
-Date: Thu, 26 Dec 2024 01:58:07 -0300
-Message-ID: <20241226050205.30241-8-val@packett.cool>
+Subject: [PATCH 8/9] rtc: mt6397: add compatible for MT6392 PMIC
+Date: Thu, 26 Dec 2024 01:58:08 -0300
+Message-ID: <20241226050205.30241-9-val@packett.cool>
 In-Reply-To: <20241226050205.30241-1-val@packett.cool>
 References: <20241226050205.30241-1-val@packett.cool>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_211149_376995_A5DCD962 
-X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-CacheID: sfid-20241225_211217_708363_628190AF 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,53 +94,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT6392 PMIC to the keys driver.
+Add a compatible, using the same data as the MT6397.
 
 Signed-off-by: Val Packett <val@packett.cool>
 ---
- drivers/input/keyboard/mtk-pmic-keys.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ drivers/rtc/rtc-mt6397.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index 5ad6be9141603..94fa0f316edc6 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -12,6 +12,7 @@
- #include <linux/mfd/mt6331/registers.h>
- #include <linux/mfd/mt6357/registers.h>
- #include <linux/mfd/mt6358/registers.h>
-+#include <linux/mfd/mt6392/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
-@@ -67,6 +68,17 @@ static const struct mtk_pmic_regs mt6397_regs = {
- 	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 152699219a2b9..6fe5bff6cf442 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -333,6 +333,7 @@ static const struct mtk_rtc_data mt6397_rtc_data = {
+ static const struct of_device_id mt6397_rtc_of_match[] = {
+ 	{ .compatible = "mediatek,mt6323-rtc", .data = &mt6397_rtc_data },
+ 	{ .compatible = "mediatek,mt6358-rtc", .data = &mt6358_rtc_data },
++	{ .compatible = "mediatek,mt6392-rtc", .data = &mt6397_rtc_data },
+ 	{ .compatible = "mediatek,mt6397-rtc", .data = &mt6397_rtc_data },
+ 	{ }
  };
- 
-+static const struct mtk_pmic_regs mt6392_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
-+		0x2, MT6392_INT_MISC_CON, 0x10, MTK_PMIC_PWRKEY_RST),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
-+		0x4, MT6392_INT_MISC_CON, 0x8, MTK_PMIC_HOMEKEY_RST),
-+	.pmic_rst_reg = MT6392_TOP_RST_MISC,
-+	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
-+};
-+
- static const struct mtk_pmic_regs mt6323_regs = {
- 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
- 		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-@@ -284,6 +296,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	{
- 		.compatible = "mediatek,mt6397-keys",
- 		.data = &mt6397_regs,
-+	}, {
-+		.compatible = "mediatek,mt6392-keys",
-+		.data = &mt6392_regs,
- 	}, {
- 		.compatible = "mediatek,mt6323-keys",
- 		.data = &mt6323_regs,
 -- 
 2.47.1
 
