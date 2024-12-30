@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473D7E77188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 16:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75504E77188
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 17:59:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=q0cBgN0DXc0e/15sj0e0kTs7/C+rgSCSYUT4C/Y1b9U=; b=TvAJZxyQm01bGwITYZowHMSvs9
-	rcI+2Dj10sx+PbrJtnem3N0ZSfVThvStVhwut9tqYSIckQsO/iyiUDHtgK9wlDxYc9J3jHT5lAYka
-	4NArJ7zwT/xY4h4B7y0lj4oQgpLHF1zQEbvxKta1YKAe7+I0Q4sRyWkROtj80AQLtDBCEsB24I7Ac
-	R11++UnYO93WGc+4sHx4F+Dl4L/MSsJpgvfpuUMpNbuUJsttzS5jFE8Y2ZL7Rjv2tNFz185h45E86
-	aCoF1TA1hZvRaRjQcRL/vkk0pYEfW1GifR15Pe9HhfjjB1SloYs5TTnwZhKw0ljFgrz5aD7tFdAnZ
-	XGVhA6uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=tE8iOdd95Sazd2novSpiYMQ29R7opUXWyCVznoM6dA0=; b=amn7PAG1yotOr+
+	i5NFtjxduTVAjHK6fYEy05W95OHpR9HxrKGgORCjlu1HD7JI5ygjEEQYoeiJLfz6KcVES7tLkddS1
+	zjacZuAyYOJU6hRLsF/tAdSgqtvuh9Q1GD7rQCe6MMCua2baOltq9v/NrT8rKUsixL+ui3URXPBSi
+	evhsAcWyuwNjxi7lM7X0u4/BI8W8S6nlamMc6mP0ft6d5ydAz380PGppLsNTbiS55iL2y6YGYHig5
+	pWcDJCbciAGfVrlP3pSnxKks8Bzk4wh/cTn7Gh08daRN0wIOCEfS76GS/NAFWAW+250ctHSyz3mwy
+	WAvBFsGnVhdDaAdDA3nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSIdx-00000005VXY-0qWV;
-	Mon, 30 Dec 2024 16:29:25 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1tSK2p-00000005bgt-1gFR;
+	Mon, 30 Dec 2024 17:59:11 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHpOv-00000004FU1-3a7O
-	for linux-mediatek@lists.infradead.org;
-	Sun, 01 Dec 2024 19:14:39 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-aa539d2b4b2so633647866b.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Dec 2024 11:14:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733080476; x=1733685276; darn=lists.infradead.org;
-        h=content-transfer-encoding:subject:content-language:cc:to:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q0cBgN0DXc0e/15sj0e0kTs7/C+rgSCSYUT4C/Y1b9U=;
-        b=URPmTe/M9lLC0eUrL25ZyjGaSskihSL+Lti0Xmmbnx/xIl9tWBMhk3bLTj35/iSVPU
-         SsMQdc4csfeztf+TrUcTjAOQtNGYRCoq9YGx4brvn0rJ93CJt3fdGB6gm6X19P+7xaPS
-         TBFvC8osCGnvobFBsZVx9xl64/ONvZX/pvK2x7FrNIWXbElJVKQqf2IXlLQQO+FHVCmA
-         GkTBttT+75apk4GRJeklG0SKv/cydLS7sKmxfXh5UxhcFANYmpYf9F2yebWkbqWnznFD
-         DNlEcOO+OdBwiHYlII0Y13IooFiCqUNJs7oYq6D0zPTURKXjxikJA75NkxCbSMaKjsl5
-         +vDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733080476; x=1733685276;
-        h=content-transfer-encoding:subject:content-language:cc:to:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=q0cBgN0DXc0e/15sj0e0kTs7/C+rgSCSYUT4C/Y1b9U=;
-        b=lXTVXRcDOFypPWqpR2GbiPYTbyiywe8BsFsvNhdKlF8Rdis6ObJlign0MwVVDpq+cf
-         05ThGtlu79TnKHYdd9quE1HQ8UDRq6JbTVxwQoHbK02ox+i4TGZdrRYSafnkpCO7/D5R
-         KIDQXr16cNY9jKpDNN3KdJtTEL6oBQlcVbCu7+XgKVnpxokteCt+Guz6UKX2sBVm6KMk
-         13lnk2RV03HSERO8GsZUSnKz02hA6nMCy6lW+7pAN0GY0tziTcH47N6FE9UudwAnVk/X
-         fT6z4vYajr8bNWRiSl5KCq6ZtQxUsfWqkIuAGmlYWUWJdXtvDy1De9+9fqKja0QNjyCn
-         4Yew==
-X-Forwarded-Encrypted: i=1; AJvYcCUw9NSYYGTvOVV0UYgdJsdubo/F82dgn7waHKfdGXkGXy76G1ODcm51ZWu2Q5UxS1CthF7ZbUXqapE5E9Esew==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVliUht12Vs+c82RpDoaf8reOOiw49UoRyxbes4ankrg2PJjet
-	zCe/AJ6pxoN4FKrtyGBPro3hiqoI0GJzW7fzc3ZjfotVec8EVCiX
-X-Gm-Gg: ASbGncs5XjDVEiFT/rymmMNc3o7Ep7DjqqkwGn42VnBf/B4kGKd6f1Xcfuf8gLFbIYB
-	RhlL+icZiU+8h5wzh8aupTUfA9wyAF3mYTX8TPL09qC6YdPtuadET7ksedoCQNma3BCrzzhdTfI
-	H5f8D0TvtJL0gZmJxIMz5RDxYvslvp4DeLPYUvpTaRpgZ5wSiLI7rO2XM7TE5KS1fdrM/n6YAex
-	yH/jKz/zoiwdyZiU5Bg5B+laDjChRSw3azsMsal6YQXjTVCv5BHN/+7fYPxl0YS01JXGUQl4xqe
-	eJI9/tYr8HVOc1/hizuvfuqRyp2aQzic
-X-Google-Smtp-Source: AGHT+IEbMH6bMLy/g7Dm2xw13TYYMh/jY8UDMMiPwK5FFCOEneUVCpf0MzU+CyGIYBN52X5AJpQ3pA==
-X-Received: by 2002:a17:906:23e1:b0:a9e:b5d0:4714 with SMTP id a640c23a62f3a-aa5945fb940mr1627560466b.21.1733080475702;
-        Sun, 01 Dec 2024 11:14:35 -0800 (PST)
-Received: from [192.168.10.116] (net-188-216-175-96.cust.vodafonedsl.it. [188.216.175.96])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa59990a8f0sm423109066b.160.2024.12.01.11.14.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 01 Dec 2024 11:14:34 -0800 (PST)
-Message-ID: <d64d354a-4787-4836-a45a-0e7f5b3e6c64@gmail.com>
-Date: Sun, 1 Dec 2024 20:14:32 +0100
+	id 1tSK1d-00000005bYr-2aPg;
+	Mon, 30 Dec 2024 17:57:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E2FB8A40DDA;
+	Mon, 30 Dec 2024 17:56:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2D7EC4CED2;
+	Mon, 30 Dec 2024 17:57:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735581476;
+	bh=dzPrHdZM0//31eEZr1bEj6ShwlM5NON8mv2BEY16joc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=ABrWQIbXDRX/AAW+l2q3veDwIBQYYxj92TiTOPKiZoIzsYEhg0YUfXEjzs3/PLv9i
+	 ipVPop8B7ACEYwqM1eGKMMMC8tK5vzS78vuuwS1To5vBvb6rqE307YtsW889IjSJPN
+	 4EYuMfL+Um7ZTS2LyB96X9yocftLVufxNCVbEG1zrJNxETd8YbRRC8vCqRjUkAi3IV
+	 XbtUwh0dMMQPvcN3rbaNu1prZSyr4BcANtlShv4j85nYPP/NbDen3w7a4O8AWj2yCI
+	 LIbSYdCe+8hhMWkVwexRW+6w9qzlPDmbwd9CfRUdjl8pwFpWgTY0jC3Kt+OxVK8GPw
+	 1TDPp/ofG+KXA==
+Date: Mon, 30 Dec 2024 11:57:54 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v5 1/6] PCI: mediatek-gen3: Add missing
+ reset_control_deassert() for mac_rst in mtk_pcie_en7581_power_up()
+Message-ID: <20241230175754.GA3958277@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Sergio Callegari <sergio.callegari@gmail.com>
-To: nicholas@rothemail.net
-Cc: hao.qin@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, marc.payne@mdpsys.co.uk,
- Linux Regressions <regressions@lists.linux.dev>, sean.wang@mediatek.com
-Content-Language: it
-Subject: Re: [REGRESSION] bluetooth: mt7921: Crash on Resume From Suspend And
- Hibernate
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241130-pcie-en7581-fixes-v5-1-dbffe41566b3@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241201_111437_898545_21FCADBB 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
-X-Mailman-Approved-At: Mon, 30 Dec 2024 08:29:24 -0800
+X-CRM114-CacheID: sfid-20241230_095757_718413_3DE87230 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,31 +81,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> On 20.10.24 20:04, Nicholas Roth wrote:
->> > #regzbot introduced: v6.10..v6.11
->> >
->> > My Framework 16 laptop (Ryzen™ 7 7840HS + AMD Radeon™ RX 7700S)
->> > recently started hanging when I open the lid after resuming from
->> > hibernation on the very-lightly-patched 6.11.4 kernel that Arch ships
->> > as `linux`.
+On Sat, Nov 30, 2024 at 12:20:10AM +0100, Lorenzo Bianconi wrote:
+> Even if this is not a real issue since Airoha EN7581 SoC does not require
+> the mac reset line, add missing reset_control_deassert() for mac reset
+> line in mtk_pcie_en7581_power_up() callback.
 
-I am seeing a similar problem with a Zephyrus ROG G14 (2022) that has a 
-not quite unsimilar hardware to the Framework 16 laptop from the 
-original reporter (AMD graphics - internal and dGPU, MT7921 wireless).
+s/mac/MAC/ in English text since "mac" is an acronym, not a real word
 
-I am observing the issue with the Manjaro kernel that is also quite 
-similar to the arch one from the reporter.
+This doesn't really say why we need this patch.
 
-The last kernel that is fine is 6.10.x (tested with 6.10.13). Both 6.11 
-and 6.12 hang on resuming from hibernation (tested lightly patched 
-6.11.10 and 6.12.1)
+This adds both assert and deassert, so it doesn't really look like
+adding a *missing* deassert.
 
-Blocking bluetooth (rfkill block bluetooth) before hibernation seems to 
-work around the issue.
+On EN7581, is mac_reset optional or always absent?
 
-Interestingly, in my case the updated mediatek firmware (241106...) does 
-not appear to be enough to solve the issue on kernels 6.11 and 6.12.
+If mac_reset is always absent for EN7581, why add this patch at all?
+If it's optional, say so.
 
-Sergio
-
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 64ef8ff71b0357b9bf9ad8484095b7aa60c22271..4d1c797a32c236faf79428eb8a83708e9c4f21d8 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -942,6 +942,9 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	 */
+>  	mdelay(PCIE_EN7581_RESET_TIME_MS);
+>  
+> +	/* MAC power on and enable transaction layer clocks */
+> +	reset_control_deassert(pcie->mac_reset);
+> +
+>  	pm_runtime_enable(dev);
+>  	pm_runtime_get_sync(dev);
+>  
+> @@ -976,6 +979,7 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  err_clk_prepare:
+>  	pm_runtime_put_sync(dev);
+>  	pm_runtime_disable(dev);
+> +	reset_control_assert(pcie->mac_reset);
+>  	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
+>  err_phy_deassert:
+>  	phy_power_off(pcie->phy);
+> 
+> -- 
+> 2.47.0
+> 
 
