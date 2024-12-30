@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF4F3E77188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 18:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC461E77188
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 19:05:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=pOt+UTXWwxGiSNOqqT9wffhOkGx+wLdbrrFvgipa4fU=; b=lJagCoccxrnOoI
-	Py8DqLYnYT7Hlox7natkwH3pWLSSOmEyi1jSesVPu34oEXDNNBbSpM5eU69/MAr1RNsqE15LUCl3F
-	YJ4RVBWTWAGLt3LpnovbZis+lOKmlnohPeXbqEDV7Yb2gZs0+yC3T3kULT4QbYQUU8scRIWO79M+h
-	cpsJhuz/kakI7yNxRXKAA2f8rcUmcQXVoSSwoF+RYQnx16iX4D+qcdpGIbxK6J9s+TxTaev9ILsDI
-	sJHrrE0PU1yHOgIHPy2GqZrrFYluM7oWmHWaLoGyy/LYhJPVAoxBMZRauky01DSEXVNqjBuULnIxn
-	eJLUWQg4KtB9pYbp8JKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uvDeDR9Oa70KelI0kN2Nd7YiH226dpawgt4F8xNVEXc=; b=BLTmyZfWvmFZlVsA9kzmUHQUR5
+	e/zOq9tdwkeeoMK7sBQzctZZ4ZhxQiW9TG2ViPoVVz7fb5Lmfm5FqKvLdI5Donf9d1xYZSFhIZY6v
+	YMT1MFzw7fxo4+uYXkTRxkblhhThsi1pYPK5wj96xj+gy0T9D7kq7WIevlkeIbev1B0t3VaFP/3kI
+	FhZVUpyL+JgOl000d+fJUq3MXN0S4dPKM02uoo+xsBao3/OieFm76mCa0ABNzf3EHnkTuH2yJZLr6
+	N5ZyqchArXTtYPMdHg1vdcBUgzgpCseamuQdcD37xE9M4GZPL5yqccFkPLsi4Iv0YimIE1g4DO0cb
+	avBXQvQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSKzA-00000005i0T-2XMt;
-	Mon, 30 Dec 2024 18:59:28 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tSL5E-00000005iOq-1iM7;
+	Mon, 30 Dec 2024 19:05:44 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSKxy-00000005ht5-3TeP;
-	Mon, 30 Dec 2024 18:58:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B4670A40EFA;
-	Mon, 30 Dec 2024 18:56:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78861C4CED6;
-	Mon, 30 Dec 2024 18:58:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735585092;
-	bh=5uJDofZpvCqnnLFKVG9fLBXtJZ9JVAM1/i1g3IxVYBY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=CcHNFzok4wBF7ZAIuRJ4rtncahnrAj0X7tKxOTHTUWmzWNlz/VH74UcIKmsrs6G5b
-	 uRHRsotS3MZSwOads6EHV+i+kerw8WD96/jXYGrXJmwL7sXfCq+iRG7LM6We2Tj/jw
-	 58vmhCLB+LYYBj9glbQm+H56gALVlX15bC/KNnCQgc99UmRgNucWHxadvCq6P8dIsA
-	 lIaUpFQJ2OFJ1tG7rLK2D3JkSKFoH4JDDn5uwJdcfdR0WV4uUcuAuMU0K4SdMTZDJ+
-	 riWfo5PvihH28QfJM18jGVPvDBYPL7mnFSgTHuOp/NyGeh5+/owf0ak2afGswwJSQu
-	 I4wOwqtZRn24g==
-Date: Mon, 30 Dec 2024 12:58:10 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH v3] PCI: mediatek-gen3: Avoid PCIe resetting via
- PCIE_RSTB for Airoha EN7581 SoC
-Message-ID: <20241230185810.GA3960934@bhelgaas>
+	id 1tSL5B-00000005iOV-2A7T
+	for linux-mediatek@lists.infradead.org;
+	Mon, 30 Dec 2024 19:05:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=uvDeDR9Oa70KelI0kN2Nd7YiH226dpawgt4F8xNVEXc=; b=bgUDk4okfWHD2WCrHdBvM6GV0b
+	WbuZ7TyM6QWA8yPr7UO8sUOBOdogfTF2mA/G3A6+byxX8W1KN+jHsi3N6EVoFrlR0JNFt/b9E9+w7
+	KgIC7R6Qim+i4zkXzSykmkB0rf0IyrTtr17ZGb3cBhhn32UB19EGPUvZhCLn1pq5WSRk=;
+Received: from p4ff13c5f.dip0.t-ipconnect.de ([79.241.60.95] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1tSL4s-00GKGy-24;
+	Mon, 30 Dec 2024 20:05:22 +0100
+Message-ID: <0ec8b1bd-6bd8-49e9-86c1-33ba36709331@nbd.name>
+Date: Mon, 30 Dec 2024 20:05:20 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241113-pcie-en7581-rst-fix-v3-1-23c5082335f7@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: mt7921: avoid undesired changes of the preset
+ regulatory domain
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Soul.Huang@mediatek.com,
+ Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
+ robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
+Content-Language: en-US
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_105815_012342_20D2B100 
-X-CRM114-Status: GOOD (  32.04  )
+X-CRM114-CacheID: sfid-20241230_110541_638887_0C66674B 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,177 +100,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 13, 2024 at 02:58:08PM +0100, Lorenzo Bianconi wrote:
-> Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> causing occasional PCIe link down issues. In order to overcome the
-> problem, PCIE_RSTB signals are not asserted/released during device probe or
-> suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
-> (0x88) and REG_RESET_CONTROL (0x834) registers available in the clock
-> module running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+On 12.04.24 10:53, Mingyen Hsieh wrote:
+> From: Leon Yen <leon.yen@mediatek.com>
 > 
-> Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-> specify per-SoC capabilities.
-
-Is there a URL or some other way to cite erratum documentation for
-this?
-
-> Tested-by: Hui Ma <hui.ma@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Some countries have strict RF restrictions where changing the regulatory
+> domain dynamically based on the connected AP is not acceptable.
+> This patch disables Beacon country IE hinting when a valid country code
+> is set from usersland (e.g., by system using iw or CRDA).
+> 
+> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 > ---
-> Changes in v3:
-> - cosmetics
-> - Link to v2: https://lore.kernel.org/r/20241104-pcie-en7581-rst-fix-v2-1-ffe5839c76d8@kernel.org
+>   drivers/net/wireless/mediatek/mt76/mt7921/init.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
 > 
-> Changes in v2:
-> - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
->   reset callback
-> - fix the leftover case in mtk_pcie_suspend_noirq routine
-> - add more comments
-> - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 60 ++++++++++++++++++++---------
->  1 file changed, 42 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 16a55711a7f3bdc8d6620029e3d2cfdd40b537b7..443072adb9b52a6934a5d1e38eb6fca5f86a1e13 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -128,10 +128,18 @@
->  
->  struct mtk_gen3_pcie;
->  
-> +enum mtk_gen3_pcie_flags {
-> +	SKIP_PCIE_RSTB	= BIT(0), /* skip PCIE_RSTB signals configuration
-> +				   * during device probing or suspend/resume
-> +				   * phase in order to avoid hw bugs/issues.
-
-Maybe "Skip PERST# assertion"?
-
-s/in order to/to/
-
-> +				   */
-> +};
-> +
->  /**
->   * struct mtk_gen3_pcie_pdata - differentiate between host generations
->   * @power_up: pcie power_up callback
->   * @phy_resets: phy reset lines SoC data.
-> + * @flags: pcie device flags.
->   */
->  struct mtk_gen3_pcie_pdata {
->  	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> @@ -139,6 +147,7 @@ struct mtk_gen3_pcie_pdata {
->  		const char *id[MAX_NUM_PHY_RESETS];
->  		int num_resets;
->  	} phy_resets;
-> +	u32 flags;
->  };
->  
->  /**
-> @@ -405,22 +414,34 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->  	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
->  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
->  
-> -	/* Assert all reset signals */
-> -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> -	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> -
->  	/*
-> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> -	 * for the power and clock to become stable.
-> +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> +	 * causing occasional PCIe link down. In order to overcome the issue,
-> +	 * PCIE_RSTB signals are not asserted/released at this stage and the
-> +	 * PCIe block is reset configuting REG_PCI_CONTROL (0x88) and
-
-s/configuting/configuring/
-
-"... is reset configuring ..." doesn't read smoothly.  Maybe "reset
-*using*" or similar?  (I guess "reset using" is what you wrote in the
-commit log.)
-
-I think if you mention the name of the en7581 clk function, that would
-be enough, and we wouldn't need the register names, offsets, and
-"available in the clock module".
-
-> +	 * REG_RESET_CONTROL (0x834) registers available in the clock module
-> +	 * running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
-
-Mention the en7581 clk function, not the generic
-clk_bulk_prepare_enable().  It's hard to get from generic to specific.
-
-> -	msleep(100);
-> -
-> -	/* De-assert reset signals */
-> -	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
-> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> +		/* Assert all reset signals */
-> +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> +		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> +		       PCIE_PE_RSTB;
-> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +
-> +		/*
-> +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> +		 * for the power and clock to become stable.
-
-Add PCIe CEM spec revision, since section numbers may change between
-revisions.  I know you're just moving it, but this is a good chance to
-fix this.
-
-Add blank lines between paragraphs.
-
-> +		msleep(PCIE_T_PVPERL_MS);
-> +
-> +		/* De-assert reset signals */
-> +		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> +			 PCIE_PE_RSTB);
-> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> index ef0c721d26e3..3c9a5fcd6924 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> @@ -135,6 +135,13 @@ mt7921_regd_notifier(struct wiphy *wiphy,
+>   	dev->mt76.region = request->dfs_region;
+>   	dev->country_ie_env = request->country_ie_env;
+>   
+> +	if (request->initiator == NL80211_REGDOM_SET_BY_USER) {
+> +		if (dev->mt76.alpha2[0] == '0' && dev->mt76.alpha2[1] == '0')
+> +			wiphy->regulatory_flags &= ~REGULATORY_COUNTRY_IE_IGNORE;
+> +		else
+> +			wiphy->regulatory_flags |= REGULATORY_COUNTRY_IE_IGNORE;
 > +	}
->  
->  	/* Check if the link is up or not */
->  	err = readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-> @@ -1179,10 +1200,12 @@ static int mtk_pcie_suspend_noirq(struct device *dev)
->  		return err;
->  	}
->  
-> -	/* Pull down the PERST# pin */
-> -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> -	val |= PCIE_PE_RSTB;
-> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> +		/* Pull down the PERST# pin */
+> +
 
-s/Pull down .../Assert PERST#/ to match other comments above
+Sorry for the late response, I just noticed that I completely forgot to 
+review this one.
 
-> +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> +		val |= PCIE_PE_RSTB;
-> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +	}
->  
->  	dev_dbg(pcie->dev, "entered L2 states successfully");
->  
-> @@ -1233,6 +1256,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_en7581 = {
->  		.id[2] = "phy-lane2",
->  		.num_resets = 3,
->  	},
-> +	.flags = SKIP_PCIE_RSTB,
->  };
->  
->  static const struct of_device_id mtk_pcie_of_match[] = {
-> 
-> ---
-> base-commit: ff80d707f3cb5e8d9ec0739e0e5ed42dea179125
-> change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
-> 
-> Best regards,
-> -- 
-> Lorenzo Bianconi <lorenzo@kernel.org>
-> 
+In principle, it makes sense to me to ignore the country IE in this 
+case, however I don't understand why the change is done in the mt7921 
+driver. Isn't this a generic issue that should be consistent across 
+drivers and thus better handled in mac80211?
+
+Thanks,
+
+- Felix
 
