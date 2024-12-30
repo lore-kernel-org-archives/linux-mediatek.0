@@ -4,88 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC461E77188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 19:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E21E7718F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 20:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uvDeDR9Oa70KelI0kN2Nd7YiH226dpawgt4F8xNVEXc=; b=BLTmyZfWvmFZlVsA9kzmUHQUR5
-	e/zOq9tdwkeeoMK7sBQzctZZ4ZhxQiW9TG2ViPoVVz7fb5Lmfm5FqKvLdI5Donf9d1xYZSFhIZY6v
-	YMT1MFzw7fxo4+uYXkTRxkblhhThsi1pYPK5wj96xj+gy0T9D7kq7WIevlkeIbev1B0t3VaFP/3kI
-	FhZVUpyL+JgOl000d+fJUq3MXN0S4dPKM02uoo+xsBao3/OieFm76mCa0ABNzf3EHnkTuH2yJZLr6
-	N5ZyqchArXTtYPMdHg1vdcBUgzgpCseamuQdcD37xE9M4GZPL5yqccFkPLsi4Iv0YimIE1g4DO0cb
-	avBXQvQw==;
+	bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=; b=zgP7b7QC1nsMDRDd7bkuboOXO3
+	bygXqPzYT+u58nrfdrySR7HBYKwoJm5uvNCagkKSQa3S/XDzR6YuTADB9l8sSm5L7NrpF0aLVbukT
+	yKL5bzex5A+8DUgA/ja3Ip8sH7KHUdxWNIM7j6tF3q2anJgQBWx71/ktRvI/rzUqQLfNo6zube/wa
+	rQSLCiR6Jpgo9bjr6FGMqJ5Q/nEVjj2efC7M4FbPG23LPaHDw60+AEO9WaZdJu+zQPOhO3I99yYGl
+	AAZ9IC82VIvzKZm8KMwrBb8wJtREnFY92ZDkQm+UvOEfCwtMi3ZRSFgy8n6nq1tYtHWNYMVnydsLp
+	7d8pPgEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSL5E-00000005iOq-1iM7;
-	Mon, 30 Dec 2024 19:05:44 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1tSMUk-00000005oHn-0Maq;
+	Mon, 30 Dec 2024 20:36:10 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSL5B-00000005iOV-2A7T
+	id 1tSMUg-00000005oHQ-4A5n
 	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Dec 2024 19:05:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=uvDeDR9Oa70KelI0kN2Nd7YiH226dpawgt4F8xNVEXc=; b=bgUDk4okfWHD2WCrHdBvM6GV0b
-	WbuZ7TyM6QWA8yPr7UO8sUOBOdogfTF2mA/G3A6+byxX8W1KN+jHsi3N6EVoFrlR0JNFt/b9E9+w7
-	KgIC7R6Qim+i4zkXzSykmkB0rf0IyrTtr17ZGb3cBhhn32UB19EGPUvZhCLn1pq5WSRk=;
-Received: from p4ff13c5f.dip0.t-ipconnect.de ([79.241.60.95] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1tSL4s-00GKGy-24;
-	Mon, 30 Dec 2024 20:05:22 +0100
-Message-ID: <0ec8b1bd-6bd8-49e9-86c1-33ba36709331@nbd.name>
-Date: Mon, 30 Dec 2024 20:05:20 +0100
+	Mon, 30 Dec 2024 20:36:08 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2167141dfa1so121696055ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 Dec 2024 12:36:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20230601; t=1735590965; x=1736195765; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=;
+        b=F1R6tMNGrwMGjuK42A2nt6qUeBoQKD0V0FOYBMfVPag8Ep+QX8hV7bs0XHsOA7ADsO
+         pMjtKZtLkwZSSL6p+XGE+9CCMPwO6UYAZWy59QeTLfOPKBv8lj9ZJcv4VZ24VQsAEpKv
+         VugeErHg01r7Rb8rYiqTf1+FoSeZZW4qNvxO/TW807ox1sF1TgTUMsALthf8vnSvdJh5
+         CICISalbia2aBWTnTKkodAe9D8dzHqg6F12dCBKjc7Jaj3n6SX3fUwHv9BqP0ZNypmqy
+         lCS7GMJQCALBOJRstnvy3qNTceIrsn5AQ1Uk2ly0CrR++WDZ2xbdHgXmYK4JRKSWcEe+
+         hXqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735590965; x=1736195765;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=;
+        b=NQbxrVUsbsOZKtUr20SD3m9/5hTG6kisHSemfDRnIDcFCvRb43cM+/Sxmu7xcU2tii
+         spW0QBFTQ5nrVWfZNwLQJ7JGnM4YMvu7rFkjCtHCNPsMwpCYN2eWZ6fq1UCbX0qSLEVo
+         67CAU7ZALsstyQ5h6fZDB5rSqMe4MjG6E01FL/xPMRrAzbb5lxQEf5j9j3uA6atTQ4gl
+         nnPm6XugXNywAT4T4lGIUUpHjZwDijy98Kqm0wctEcpsRr0UDiCpefOp6cieu1bMhEoW
+         AxeOxljreLrbndLzRa7YQhylpHFzGsDQMzAuVXx1ubxoPMvWpAhwh88HYJQfOZKUEqjr
+         0Cog==
+X-Forwarded-Encrypted: i=1; AJvYcCWOzNm1lGiUmKi4SwbKFHImUOtu3pgQlMSY72Nj8fiR7ld0DTAu1hUR8NdScww6T63ZoGW4+L/L8yYfNvu+2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxrvW7tZiSmn9G7SPCiWB/tTg0V4b9qMzlAqZbQwFOFex9W6wMn
+	kLqwWgvRc6juFvU12Z+Da1mwudNiblXQv6xJxFABnAkkPrCYUkhmL4jQhcvPmY22hVYXYVIxJC0
+	//8+XiTjposED0CGHQt7hTmJOxw8=
+X-Gm-Gg: ASbGncsm/RE4TEuVs2pGhZeB7zw1uXAz0tWa2ASv1GqeYeDXqYtx17jSt9eO/4GMM/k
+	GBHVy9j8NYyhACKM9YRV8jF3e+H6L2yccBouCXzTXaamfXa4kbP9hrpr5vfPS4xvjFFUZ0eg=
+X-Google-Smtp-Source: AGHT+IHdzTHppoiX/E0G0stg064WvodVEKEVfkFdQifJmYk87zDsR5nGzmBTi5aLnOfnP8Og00X4YesmXuJRbPLi4Rw=
+X-Received: by 2002:a17:902:f54e:b0:215:a808:61cf with SMTP id
+ d9443c01a7336-219e6d6ac7fmr469366685ad.25.1735590965055; Mon, 30 Dec 2024
+ 12:36:05 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: mt7921: avoid undesired changes of the preset
- regulatory domain
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, lorenzo@kernel.org
-Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Soul.Huang@mediatek.com,
- Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
- Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
-Content-Language: en-US
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20241013111920.679188-1-martin.blumenstingl@googlemail.com>
+In-Reply-To: <20241013111920.679188-1-martin.blumenstingl@googlemail.com>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Mon, 30 Dec 2024 21:35:54 +0100
+Message-ID: <CAFBinCCgiJAimacWtTS-5JRMKbpKg8XN0Si3tvBjT+tJmCg0xA@mail.gmail.com>
+Subject: Re: wifi: mt76: mt7921 Survey is missing noise floor
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_110541_638887_0C66674B 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20241230_123607_038254_CF0C3E09 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,45 +93,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.04.24 10:53, Mingyen Hsieh wrote:
-> From: Leon Yen <leon.yen@mediatek.com>
-> 
-> Some countries have strict RF restrictions where changing the regulatory
-> domain dynamically based on the connected AP is not acceptable.
-> This patch disables Beacon country IE hinting when a valid country code
-> is set from usersland (e.g., by system using iw or CRDA).
-> 
-> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> ---
->   drivers/net/wireless/mediatek/mt76/mt7921/init.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> index ef0c721d26e3..3c9a5fcd6924 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> @@ -135,6 +135,13 @@ mt7921_regd_notifier(struct wiphy *wiphy,
->   	dev->mt76.region = request->dfs_region;
->   	dev->country_ie_env = request->country_ie_env;
->   
-> +	if (request->initiator == NL80211_REGDOM_SET_BY_USER) {
-> +		if (dev->mt76.alpha2[0] == '0' && dev->mt76.alpha2[1] == '0')
-> +			wiphy->regulatory_flags &= ~REGULATORY_COUNTRY_IE_IGNORE;
-> +		else
-> +			wiphy->regulatory_flags |= REGULATORY_COUNTRY_IE_IGNORE;
-> +	}
-> +
+Hello,
 
-Sorry for the late response, I just noticed that I completely forgot to 
-review this one.
+On Sun, Oct 13, 2024 at 1:19=E2=80=AFPM Martin Blumenstingl
+<martin.blumenstingl@googlemail.com> wrote:
+>
+> Hello,
+>
+> I'm using an MT7921 PCIe card in AP mode on the 5GHz band.
+> It works well when I manually set a channel in hostapd.conf.
+>
+> Setting channel=3D0 or channel=3Dacs_survey (both have the same meaning)
+> should make hostapd check for a suitable channel and pick that
+> automatically.
+> Unfortunately this does not work as hostapd reports the following (for
+> all frequencies/channels):
+>     ACS: Survey for freq 5180 is missing noise floor
+>     ACS: Survey for freq 5180 is missing noise floor
+>     ACS: Survey for freq 5180 is missing noise floor
+>     ACS: Survey for freq 5180 is missing noise floor
+>     ACS: Survey for freq 5180 is missing noise floor
+>     ACS: Channel 36 has insufficient survey data
+>
+> I suspect that this is due to mt792x_phy_update_channel() (from
+> drivers/net/wireless/mediatek/mt76/mt792x_mac.c) which calls
+> mt792x_phy_get_nf(). The latter just returns zero - so it seems
+> reading the noise floor from the hardware/firmware is not
+> supported yet.
+>
+> What is needed to implement this? I can test patches or - if
+> someone describes which registers to program - I can also write
+> a patch and submit it upstream.
+It's been a while so I'd like to ping the mt76 maintainers.
 
-In principle, it makes sense to me to ignore the country IE in this 
-case, however I don't understand why the change is done in the mt7921 
-driver. Isn't this a generic issue that should be consistent across 
-drivers and thus better handled in mac80211?
+Also I want to point out again that I can submit a patch if someone
+can provide me with the info on how to get the noise floor from the
+hardware/firmware.
 
-Thanks,
 
-- Felix
+Best regards,
+Martin
 
