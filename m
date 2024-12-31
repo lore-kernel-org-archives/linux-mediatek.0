@@ -4,81 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E21E7718F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2024 20:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A5AE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2024 00:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=; b=zgP7b7QC1nsMDRDd7bkuboOXO3
-	bygXqPzYT+u58nrfdrySR7HBYKwoJm5uvNCagkKSQa3S/XDzR6YuTADB9l8sSm5L7NrpF0aLVbukT
-	yKL5bzex5A+8DUgA/ja3Ip8sH7KHUdxWNIM7j6tF3q2anJgQBWx71/ktRvI/rzUqQLfNo6zube/wa
-	rQSLCiR6Jpgo9bjr6FGMqJ5Q/nEVjj2efC7M4FbPG23LPaHDw60+AEO9WaZdJu+zQPOhO3I99yYGl
-	AAZ9IC82VIvzKZm8KMwrBb8wJtREnFY92ZDkQm+UvOEfCwtMi3ZRSFgy8n6nq1tYtHWNYMVnydsLp
-	7d8pPgEQ==;
+	bh=IMEB8NCZ8QveU/RhcsTwV/DZjVBc049BfdXpRNTavFw=; b=t9pvhUBLrGf7ccL9lnH1Wy3N60
+	dGN6SHno7jOpg1wYh3xeKBVbA2JDxay8s1ZsQebokCXVnWnlH0CdLMlSbP+wRzc1fAnfBAZ68s344
+	PlzbKouuvQZJpgcsaqGE9hSybQ1JMRM8Gl4uZRF4BPFWsCmTZnLRr99u+pt2/a+SWxMSsPyjsI3hV
+	26cn+B9OD26+vBbp/W/SVqKc1tgE+MirG4xgBtVOc7HhqeKxY6RUK+REmg/3TH05ImwPHQ+gNFirr
+	dFBy7B3CDZdHH4JNekAxcCDBrJXAxVz7A6ke/vwQ92yj4CEidEDG35ai2gnhQM7mSyheoNdh38Ltf
+	5CVgwsFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSMUk-00000005oHn-0Maq;
-	Mon, 30 Dec 2024 20:36:10 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1tSQNO-00000006E2G-2KJm;
+	Tue, 31 Dec 2024 00:44:50 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSMUg-00000005oHQ-4A5n
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Dec 2024 20:36:08 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2167141dfa1so121696055ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Dec 2024 12:36:06 -0800 (PST)
+	id 1tSQME-00000006DvZ-0i5A;
+	Tue, 31 Dec 2024 00:43:39 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-aa69107179cso1586459366b.0;
+        Mon, 30 Dec 2024 16:43:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1735590965; x=1736195765; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=googlemail.com; s=20230601; t=1735605816; x=1736210616; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=;
-        b=F1R6tMNGrwMGjuK42A2nt6qUeBoQKD0V0FOYBMfVPag8Ep+QX8hV7bs0XHsOA7ADsO
-         pMjtKZtLkwZSSL6p+XGE+9CCMPwO6UYAZWy59QeTLfOPKBv8lj9ZJcv4VZ24VQsAEpKv
-         VugeErHg01r7Rb8rYiqTf1+FoSeZZW4qNvxO/TW807ox1sF1TgTUMsALthf8vnSvdJh5
-         CICISalbia2aBWTnTKkodAe9D8dzHqg6F12dCBKjc7Jaj3n6SX3fUwHv9BqP0ZNypmqy
-         lCS7GMJQCALBOJRstnvy3qNTceIrsn5AQ1Uk2ly0CrR++WDZ2xbdHgXmYK4JRKSWcEe+
-         hXqg==
+        bh=IMEB8NCZ8QveU/RhcsTwV/DZjVBc049BfdXpRNTavFw=;
+        b=LlemakNdrIdzbU2fLxjmpooWZF8IoJ79sNs+nSjJNV10BTiLRH8pyy0RwKiF1D5oM7
+         JpZOcWUCNlz4FJSErMC1S9vgVftlhjPTdgaQPSJKUkinfK9PhWc52s6X5+nYwFQGLM74
+         2iQ8T1wVkIZ6D4A89RlBlSgL2FCezvUYJDMIkkHDHj3nn1E01c2Tzap1D1iJnapiz+6U
+         F0u8EdZCFGcTzZR4HaWkmZBhr+JA8s3920kiD4RZwZXfMH4/ziZ93FNAGCZ5cU1JDCzZ
+         ugdxNh3dM1L4TnJCQkyWQBUYIgBuEU5B6yGlWMh35j3PQNK08NhtthK0fw11pE5r5xVe
+         NB+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735590965; x=1736195765;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1735605816; x=1736210616;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zbDtPVzPX6eiKblHAjusJQ2bBQDBb/Khlrlq648Wi1Y=;
-        b=NQbxrVUsbsOZKtUr20SD3m9/5hTG6kisHSemfDRnIDcFCvRb43cM+/Sxmu7xcU2tii
-         spW0QBFTQ5nrVWfZNwLQJ7JGnM4YMvu7rFkjCtHCNPsMwpCYN2eWZ6fq1UCbX0qSLEVo
-         67CAU7ZALsstyQ5h6fZDB5rSqMe4MjG6E01FL/xPMRrAzbb5lxQEf5j9j3uA6atTQ4gl
-         nnPm6XugXNywAT4T4lGIUUpHjZwDijy98Kqm0wctEcpsRr0UDiCpefOp6cieu1bMhEoW
-         AxeOxljreLrbndLzRa7YQhylpHFzGsDQMzAuVXx1ubxoPMvWpAhwh88HYJQfOZKUEqjr
-         0Cog==
-X-Forwarded-Encrypted: i=1; AJvYcCWOzNm1lGiUmKi4SwbKFHImUOtu3pgQlMSY72Nj8fiR7ld0DTAu1hUR8NdScww6T63ZoGW4+L/L8yYfNvu+2g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxrvW7tZiSmn9G7SPCiWB/tTg0V4b9qMzlAqZbQwFOFex9W6wMn
-	kLqwWgvRc6juFvU12Z+Da1mwudNiblXQv6xJxFABnAkkPrCYUkhmL4jQhcvPmY22hVYXYVIxJC0
-	//8+XiTjposED0CGHQt7hTmJOxw8=
-X-Gm-Gg: ASbGncsm/RE4TEuVs2pGhZeB7zw1uXAz0tWa2ASv1GqeYeDXqYtx17jSt9eO/4GMM/k
-	GBHVy9j8NYyhACKM9YRV8jF3e+H6L2yccBouCXzTXaamfXa4kbP9hrpr5vfPS4xvjFFUZ0eg=
-X-Google-Smtp-Source: AGHT+IHdzTHppoiX/E0G0stg064WvodVEKEVfkFdQifJmYk87zDsR5nGzmBTi5aLnOfnP8Og00X4YesmXuJRbPLi4Rw=
-X-Received: by 2002:a17:902:f54e:b0:215:a808:61cf with SMTP id
- d9443c01a7336-219e6d6ac7fmr469366685ad.25.1735590965055; Mon, 30 Dec 2024
- 12:36:05 -0800 (PST)
-MIME-Version: 1.0
-References: <20241013111920.679188-1-martin.blumenstingl@googlemail.com>
-In-Reply-To: <20241013111920.679188-1-martin.blumenstingl@googlemail.com>
+        bh=IMEB8NCZ8QveU/RhcsTwV/DZjVBc049BfdXpRNTavFw=;
+        b=faof8Pg8ZMHRrX/Rja+TXtHfzS93N8M7lMDSOwcRWnzNLYStL1JBN80M6FFAG3R2lN
+         CrIlsKUsXEH0KE+cYGuKxfXMwZaEsrIvFUw4QZgwt8lcvKPVddybUfjSouS8SPjdRaYz
+         gsWUuykdM3z8xbup4plqqBlZjckoe7bs/7RWKv4LA5KNq6z75Tc2Zu8qWAlH3Yvt8OaS
+         tY/A0PRAZv3O/BkeHvN4fAmDK9ntqDqmvREYXQ82HKUItv4aj687PafI5WXlV9/d0R4E
+         arVjBkgWNtRUMOdiGsYjfZ/W7gwsHkvWOhbsMFMt2cmEVb+ABNbyw7jubBwW5vf1aKKK
+         zV9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUJSuuHZQQaty8n7iwKTG9fSZZYMK5xVGggZan2tpPyIWLq2bxH6L4lejkMB+Vm8RKrAPpVahjurAX91ukz5hRF@lists.infradead.org, AJvYcCUtAjj3owCJbsHpuWaP3Aefj5wJHt3X4isJgmey4jr0hAJw/eagK1PQQqWAVM2q6no0P+y9jEZmzhWcdRJvS9I=@lists.infradead.org, AJvYcCWgxGWeCR7f60crf1e0donQLcR3b+cpK8k9lf/OUYRgcj5+/YZOD9lm68T8qI7i9z4rBPjPusmb2rg9xq1k4DU=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRqNCn7ezwphzUtjrhOIxrOya14VjeXfdKmxyPqD1pZcJLeeHB
+	esFOeQPoAhFpt0UUSv1K6s57nWYdetbWbraFrivvJfNJ/jxlHqpq
+X-Gm-Gg: ASbGncsPVix0OWTDzQ9rlrMHrW3++3PIaXTtEigIObSR0tZRgID4iM4BBActuNbh/0H
+	/9k1pZwchqTh2ndjXmfDdNPGtveJNzh262FeG6PTUuffY9ox2pH3i/aYBLiBJYcGF6+5y+E+kGN
+	0S4GF9jQCREk1htUU/APdQX1hZguLHZ0QfVQZfly5ATBzE4OdlyDuC/Acsi6dFayaJIWKqX8x1q
+	sKzMo1kThtqCjIFY+b3zagFlufPI9KzS/NISKpI0tjR7gnPNuS/jSOvwn0cfmhNrb/q61gS8F1Y
+	kLd/i+RwqWFDtSK3ygc5QDrPa2MPJ7Z1EKL0JLGQDT4D1y+DR3FgHbuzVPt8FxqZWd5lgX21WN7
+	2SSfogIvQz/KWuf/nPQM/BcBRHA==
+X-Google-Smtp-Source: AGHT+IHEGIcJK+SSB1VqPTnorkRP+VtiC6uvv9JG0CKDkLO9JdbaG0jU5yoLZ0jcvFezMTEsCCv8Bg==
+X-Received: by 2002:a17:906:99cc:b0:aae:85a9:5b66 with SMTP id a640c23a62f3a-aae85a95d37mr2281685866b.60.1735605815987;
+        Mon, 30 Dec 2024 16:43:35 -0800 (PST)
+Received: from localhost.localdomain (dynamic-2a02-3100-a465-b000-1e86-0bff-fe2f-57b7.310.pool.telefonica.de. [2a02:3100:a465:b000:1e86:bff:fe2f:57b7])
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-aac0f06dc7esm1523425066b.193.2024.12.30.16.43.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Dec 2024 16:43:33 -0800 (PST)
 From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Mon, 30 Dec 2024 21:35:54 +0100
-Message-ID: <CAFBinCCgiJAimacWtTS-5JRMKbpKg8XN0Si3tvBjT+tJmCg0xA@mail.gmail.com>
-Subject: Re: wifi: mt76: mt7921 Survey is missing noise floor
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: dmitry.baryshkov@linaro.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	airlied@gmail.com,
+	alain.volmat@foss.st.com,
+	alim.akhtar@samsung.com,
+	andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com,
+	angelogioacchino.delregno@collabora.com,
+	broonie@kernel.org,
+	chunkuang.hu@kernel.org,
+	dave.stevenson@raspberrypi.com,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	inki.dae@samsung.com,
+	jani.nikula@linux.intel.com,
+	jernej.skrabec@gmail.com,
+	jonas@kwiboo.se,
+	kernel-list@raspberrypi.com,
+	krzk@kernel.org,
+	kyungmin.park@samsung.com,
+	lgirdwood@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	linux@armlinux.org.uk,
+	maarten.lankhorst@linux.intel.com,
+	matthias.bgg@gmail.com,
+	mcanal@igalia.com,
+	mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	p.zabel@pengutronix.de,
+	perex@perex.cz,
+	ple@baylibre.com,
+	rfoss@kernel.org,
+	rgallaispou@gmail.com,
+	simona@ffwll.ch,
+	sw0312.kim@samsung.com,
+	tiwai@suse.com,
+	tzimmermann@suse.de
+Subject: RE: [PATCH v10 03/10] drm/connector: implement generic HDMI audio helpers
+Date: Tue, 31 Dec 2024 01:43:11 +0100
+Message-ID: <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
+References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_123607_038254_CF0C3E09 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20241230_164338_207095_A8EECEE4 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,44 +137,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hello Dmitry,
 
-On Sun, Oct 13, 2024 at 1:19=E2=80=AFPM Martin Blumenstingl
-<martin.blumenstingl@googlemail.com> wrote:
->
-> Hello,
->
-> I'm using an MT7921 PCIe card in AP mode on the 5GHz band.
-> It works well when I manually set a channel in hostapd.conf.
->
-> Setting channel=3D0 or channel=3Dacs_survey (both have the same meaning)
-> should make hostapd check for a suitable channel and pick that
-> automatically.
-> Unfortunately this does not work as hostapd reports the following (for
-> all frequencies/channels):
->     ACS: Survey for freq 5180 is missing noise floor
->     ACS: Survey for freq 5180 is missing noise floor
->     ACS: Survey for freq 5180 is missing noise floor
->     ACS: Survey for freq 5180 is missing noise floor
->     ACS: Survey for freq 5180 is missing noise floor
->     ACS: Channel 36 has insufficient survey data
->
-> I suspect that this is due to mt792x_phy_update_channel() (from
-> drivers/net/wireless/mediatek/mt76/mt792x_mac.c) which calls
-> mt792x_phy_get_nf(). The latter just returns zero - so it seems
-> reading the noise floor from the hardware/firmware is not
-> supported yet.
->
-> What is needed to implement this? I can test patches or - if
-> someone describes which registers to program - I can also write
-> a patch and submit it upstream.
-It's been a while so I'd like to ping the mt76 maintainers.
+this is great work - thanks for your efforts!
 
-Also I want to point out again that I can submit a patch if someone
-can provide me with the info on how to get the noise floor from the
-hardware/firmware.
+To give some context:
+I am working on a HDMI controller driver for the Amlogic Meson8/8b/8m2
+SoCs. Unfortunately the driver is not mature enough for upstream
+submission (all I have is the vendor driver which serves as reference).
+That said, my goal is to upstream the driver at some point. I have
+already switched my driver to use hdmi_{clear,write}_infoframe. Now
+I'm trying this series to simplify my code even further - by using
+your audio helper work!
+
+> --- /dev/null
+> +++ b/drivers/gpu/drm/display/drm_hdmi_audio_helper.c
+> @@ -0,0 +1,190 @@
+> [...]
+> +static const struct hdmi_codec_ops drm_connector_hdmi_audio_ops = {
+> +	.audio_startup = drm_connector_hdmi_audio_startup,
+> +	.prepare = drm_connector_hdmi_audio_prepare,
+> +	.audio_shutdown = drm_connector_hdmi_audio_shutdown,
+> +	.mute_stream = drm_connector_hdmi_audio_mute_stream,
+> +	.get_eld = drm_connector_hdmi_audio_get_eld,
+> +	.get_dai_id = drm_connector_hdmi_audio_get_dai_id,
+> +	.hook_plugged_cb = drm_connector_hdmi_audio_hook_plugged_cb,
+> +};
+On my platform drm_connector_hdmi_audio_prepare() is never called. As
+a result of that the audio infoframe is never written to my HDMI
+controller hardware (hdmi_write_infoframe() is never called with type
+HDMI_INFOFRAME_TYPE_AUDIO). My hack to make it work is to add the
+following line to drm_connector_hdmi_audio_ops:
+  .hw_params = drm_connector_hdmi_audio_prepare,
+
+I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
+seems that there is only a single driver which uses the .prepare
+callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
+implement .hw_params instead.
+
+The audio controller code for my platform is already upstream:
+- sound/soc/meson/aiu-codec-ctrl.c
+- sound/soc/meson/aiu-encoder-i2s.c
+- sound/soc/meson/aiu-fifo-i2s.c
+
+My understanding is that you have a platform with a lontium-lt9611
+HDMI controller available for testing. Can you please help me
+investigate and find out which piece of code is calling
+hdmi_codec_prepare() and therefore lt9611_hdmi_audio_prepare() on
+your board?
 
 
-Best regards,
+Thank you and best regards,
 Martin
 
