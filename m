@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40004E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2024 08:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 122E3E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2024 16:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S86szIjCK98MypQVuJQnerUhRjNImMv7jU4YUxdD98g=; b=T1r81UYsIHKKp7KYvzq0oj+ykA
-	W7LMKZjZ9rX4R+R6tExFRZpETIzEI3aP78BcwDzhEOW1HYWhMwuzwFdflqaGtjDsq85KsyRsQdhfX
-	ToXuv/jrEx5MxKuBTsvvemwNrikYgKmIqTqsf/7JUSdnAETfaXdSFokZLVb3lV5wB0Wcngkdvj6Rl
-	yMf8dL9VHDjO6Vk9RDc55Lo3KfxBT/HZztQK6Vj/0ZetsScZTmVUlsBfd231R1qR05B/Fvu4e2aqr
-	CRka4UrOWbOnbSw+6QaWKQ90eoFt2iq+T265I55vpOzwY9tdZjfG9byf42/KmjacljftgsFE1fveF
-	LwbYfWAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=naNnh988TWrcGX1uN/TQIgbtiiszj8Z/oKn/tkyG3dI=; b=5B0EEbHd8LI46nxVJ9ARwSwbXC
+	KXF8gP38juwIn9YTZXWU7nOaiVIbR/bBd7WNQxRNEZM4RtfX+SS5iqznawODqHmnN6hF347zU5EoA
+	EnUfEmPVMyBP1Ij5iCVXLAcgQLB6OFfIxhEmvu8GZdNrOMMHIAe1dCB9uK3NuZIS+tCOw/MTmA2yd
+	3axgFbdpONTtsk9fylCUSqYncD4Lti/kUYFYaD/lrPOzWxoJ35ietYo88BD0cpEv7EVt61Z+lnKZ5
+	ZwZrcp45wTKF6TPKPzo819ckx7CK5QmdHOjAw7FNQPVWe0FBMxCO4pHnyMoa6W9AyDEFaj8lzDc6Y
+	xVnGOOlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSXcf-00000006pLZ-1Z25;
-	Tue, 31 Dec 2024 08:29:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tSfBt-00000007Tq1-46G3;
+	Tue, 31 Dec 2024 16:33:57 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSXaz-00000006p3w-1xRo;
-	Tue, 31 Dec 2024 08:27:22 +0000
+	id 1tSfAk-00000007Tgo-3CkQ;
+	Tue, 31 Dec 2024 16:32:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 49A4D5C5A00;
-	Tue, 31 Dec 2024 08:26:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9800AC4CED6;
-	Tue, 31 Dec 2024 08:27:19 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 823A7A40A91;
+	Tue, 31 Dec 2024 16:30:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C16F8C4CED2;
+	Tue, 31 Dec 2024 16:32:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735633640;
-	bh=7dMKvb0VzM45X+Diev04KcZdImkN8+DaAtfIWIBVlfk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Bs7F/8y9eqcrDElleyJUV5huGjXwKC4uv46mKq+8LmkjDFhIwpd6c7voh+t3hao4U
-	 fjvz89apgRyeriA49YajwyP5kgP9bPbXGAb6/8m8KkpZgVed/qO6Sw1kWxiQDQScm9
-	 OXeQs14OTP5wN26C6nF2ju7DLEcZyZM9oLUy8vP85s9LjLnOAzqY/955W4tI7hk2Wq
-	 8TvEIyskjPp0qzrqjAvLN2df0ZasJNK6Y4kgrMvfwHc4LkmuzC08H7Mx+t9IrWurMh
-	 AchYD2Q/xvEYQT0Osi3/8uJyoJfeCqndxRTawKgMUwCU2kKVueFaWwbF/VUHhKr4C2
-	 C3OT348bBwu7g==
-Date: Tue, 31 Dec 2024 09:27:16 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: "Karl.Li" <karl.li@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Chungying Lu <chungying.lu@mediatek.com>, Chien-Chih Tseng <Chien-Chih.Tseng@mediatek.com>, 
-	Andy Teng <Andy.Teng@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/3] dt-bindings: mailbox: mediatek: Add apu-mailbox
- dt-bindings
-Message-ID: <vsdkjbedy5zm6iz6jtjgoynove2u6tgd4al3b6v5xzvrr3twm6@cmy6poq3le53>
-References: <20241230034446.1195728-1-karl.li@mediatek.com>
- <20241230034446.1195728-2-karl.li@mediatek.com>
+	s=k20201202; t=1735662765;
+	bh=OjfLAGmHkWtgKweoyUxQQFG2s2A/m0vcSE7kkcaRedo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FAoc79KjudMbrLRJmA/ELEDNWqQoOumJ90lc00KwGoOhj0tV4HX+5saWXCoOLjiBf
+	 ROapW+3/q1Rbj59ZbcWDx4IO1Sjg+YVcFHcOuA/t06lMnMYndlDRnuxl0LPWN74x2p
+	 wRKxQ/0dEJHXu0IFYR4JeSHHBf9WMsEjM6691PMpDPKD99LCDU35Ob1QWOWpqyVlsj
+	 TZ1ZNDkfMJvC3KERmj7bmY27zeNcfiwsvK852febDqH45D3DbYuk5IUQ7gXzRSxhvN
+	 fU99cMGEGGFSIt1IJ/FXQpjFe6q7HD1FMCxG8s2SCk7nQSZrDpG+MJOjz/JoRoZmDE
+	 Aq7OCwYUPFV+Q==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] phy: Use (of|device)_property_present() for non-boolean properties
+Date: Tue, 31 Dec 2024 10:31:20 -0600
+Message-ID: <20241231163121.241543-1-robh@kernel.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241230034446.1195728-2-karl.li@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241231_002721_547631_FD8A06D7 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20241231_083246_926920_C3793F02 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +76,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 30, 2024 at 11:43:35AM +0800, Karl.Li wrote:
-> From: Karl Li <karl.li@mediatek.com>
-> 
-> Add devicetree binding for apu-mailbox.
+The use of (of|device)_property_read_bool() for non-boolean properties
+is deprecated in favor of (of|device)_property_present() when testing
+for property presence.
 
-A nit, subject: drop second/last, redundant "dt-bindings". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c           | 4 ++--
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-I already asked for this.
-
-> 
-> MediaTek APU (AI Processing Unit) is a microcontroller unit
-> designed for AI acceleration tasks. The MediaTek APU-Mailbox
-> facilitates communication with the APU microcontroller.
-
-Please wrap commit message according to Linux coding style / submission
-process (neither too early nor over the limit):
-https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
-
-
-
-
-> 
-> Signed-off-by: Karl Li <karl.li@mediatek.com>
-> ---
->  .../mailbox/mediatek,apu-mailbox.yaml         | 60 +++++++++++++++++++
->  1 file changed, 60 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,apu-mailbox.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,apu-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,apu-mailbox.yaml
-> new file mode 100644
-> index 000000000000..fdb0dec5fb78
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,apu-mailbox.yaml
-
-
-Use compatible as filename.
-
-
-Best regards,
-Krzysztof
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 3f7095ec5978..d36f68dd622e 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -1215,7 +1215,7 @@ static int phy_type_syscon_get(struct mtk_phy_instance *instance,
+ 	int ret;
+ 
+ 	/* type switch function is optional */
+-	if (!of_property_read_bool(dn, "mediatek,syscon-type"))
++	if (!of_property_present(dn, "mediatek,syscon-type"))
+ 		return 0;
+ 
+ 	ret = of_parse_phandle_with_fixed_args(dn, "mediatek,syscon-type",
+@@ -1278,7 +1278,7 @@ static int phy_efuse_get(struct mtk_tphy *tphy, struct mtk_phy_instance *instanc
+ 	}
+ 
+ 	/* software efuse is optional */
+-	instance->efuse_sw_en = device_property_read_bool(dev, "nvmem-cells");
++	instance->efuse_sw_en = device_property_present(dev, "nvmem-cells");
+ 	if (!instance->efuse_sw_en)
+ 		return 0;
+ 
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 96f3d868a526..b5e6a864deeb 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -440,7 +440,7 @@ static int rockchip_usb2phy_extcon_register(struct rockchip_usb2phy *rphy)
+ 	struct extcon_dev *edev;
+ 	int ret;
+ 
+-	if (of_property_read_bool(node, "extcon")) {
++	if (of_property_present(node, "extcon")) {
+ 		edev = extcon_get_edev_by_phandle(rphy->dev, 0);
+ 		if (IS_ERR(edev))
+ 			return dev_err_probe(rphy->dev, PTR_ERR(edev),
+@@ -1323,7 +1323,7 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 			goto out;
+ 		}
+ 
+-		if (!of_property_read_bool(rphy->dev->of_node, "extcon")) {
++		if (!of_property_present(rphy->dev->of_node, "extcon")) {
+ 			/* do initial sync of usb state */
+ 			id = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
+ 			extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !id);
+-- 
+2.45.2
 
 
