@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 336D9E77188
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 12:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CF21E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 12:55:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6hEI7kx07brNGco3zUyQa7aElptoApNRUtcNC4rTTU=; b=Gbk7f3uuGCaOx9
-	f7nfbmJ8KA2obMDI4Ij50G/HTFGHv+YHbV+F6vQbYsT61l6KKdzF+D3RWmnKZzbZKmahXfmmby+XC
-	Dhag3/mGdNYWjDwhrKJNbsowvJ9lbUoBuszJ2Jt7NlnDpiYrtuHw9M73VOcitkSudCBIEepQW1d3X
-	2//KLQrN9BzfbtBywQ/u2K/Ly4Q3r0Rs/XcD+VBOkH/mpgcgvdxnykOYmF+/h8cZ59wI4frzLrWMq
-	xFGvLlAoFiVUb71/UW9rPDTqwA1Ohs6Clie2SzrCA0TDzGt6ld3sgxWRUVWis7vblb72VUEhb/Q+w
-	/p8ypdOYC+q2d0AGyoog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NyLY+1vYq4chYZ6omlqn3g8Tr/hTtwD82rDA0WfE7B4=; b=wpnfmLyi0Shm2KPsW/zKQcHCrR
+	Pz4HnB7cCqCeNGcUK9D8p+IxHw1/yZ14rtysRLvBHelT44WbrUNLrJbGJbEFr2RBIsCFTfDrLsPPP
+	mMS/7L58V2K9Uyelr6d/893RyAXGjk7W3LSFHvItCjTlXCYXOkEvdW1E6lS7alfUnIjpxTWFO/BgC
+	pEJsZ0DJONTkxt2GKIb23e5vvsf15tkisubjxYNewjVYqgTZHYEXG41OPzY3Jxga9AkZ0KQtQpeM/
+	HUjAf+qhWL75bVkNz1NGbfU6bOHCOOSYPNipZ5OzxgZd1Xj5GxL2nzXdbZ7404ldX54cl2jcdTU9A
+	k/AY46Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKeo-0000000AOeR-1nVe;
-	Thu, 02 Jan 2025 12:50:34 +0000
+	id 1tTKjS-0000000APn3-2LMu;
+	Thu, 02 Jan 2025 12:55:22 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKas-0000000ANcr-20AZ;
-	Thu, 02 Jan 2025 12:46:31 +0000
+	id 1tTKhA-0000000APDt-1akF;
+	Thu, 02 Jan 2025 12:53:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1735821988;
-	bh=sNS3yO4duFHIJRGQLLIdmw3fGnjbVp3Puh6hUmcVeLk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Pomt4eUa/WHnuD2B2I+BFseG7nzSeZyxrXCk+zoGdYWDHFfQ22aCQCJj5O0MDuXvF
-	 f3cWCSkIGrZ6Zrw9/6EoQFA8Oab/gKk+z3aqX4T30VeVRnpORu0l+b2kwHlQQVRH8E
-	 jtN+RfccmX7et3iRNxM4a5SFYbrD/D7lt2RjypmK/OBSMUTF77aUOrck/om3Yl+Gjc
-	 zWvTcCgvnbMP3TyMfKOE50OTBcswYSTsKoPHBE6AO5UKdWMY8M1mgZqTrwlMxAG2vx
-	 TWDsjbauB9RgHos/O4DQZOSeeBwtTSQdOwttQT9gaco8qk2RrorYRRaZfZhDMI1193
-	 AyW4/SSusDiew==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1735822378;
+	bh=zm43TYi4z+GwQwZRB2Q+5ZdBGmn9Rmo1nucOK3h8gdE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DABCNyMQZZNP5B5uxElY723LcC3CFpvBGbIFj3H/uzuKCKeMGL2ckKeDsks6NAKxK
+	 p4T0C5m89z9fhqOJGKp9qq0z/B1nfhSRAg4ghdjfjgHaJe8BaQeBi+aRKzgmJYMZ2m
+	 b1YB325qi2g430c4W5nycd+v47IEcVbeJyd1Iv8YNzkZKbMztDuKd9+OK+KZAbDf5Q
+	 voWTWoLaBRRCvh9DkGs8G2hLQZDKHqlrcNn51at5hAl079LZ3pTLiAnh+hCKVD+cVL
+	 a122Xf0hzI2okwxTVloWfV3lWMrUCYez+CnK451e+mtcOVLxBtVMm4K4RLPxcbZn2w
+	 HahNEz0kbb91A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5F47317E1570;
-	Thu,  2 Jan 2025 13:46:28 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20241220163838.114786-1-linux@fw-web.de>
-References: <20241220163838.114786-1-linux@fw-web.de>
-Subject: Re: [PATCH v8 0/2] Add Pmic to Bpi-R4
-Message-Id: <173582198832.163596.11661703686589074708.b4-ty@collabora.com>
-Date: Thu, 02 Jan 2025 13:46:28 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C3E3A17E156E;
+	Thu,  2 Jan 2025 13:52:57 +0100 (CET)
+Message-ID: <fa2033e4-0cb5-47cb-bbe7-cbcdb9318c54@collabora.com>
+Date: Thu, 2 Jan 2025 13:52:57 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek,mt6779-keypad: add more
+ compatibles
+To: Krzysztof Kozlowski <krzk@kernel.org>, Val Packett <val@packett.cool>
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241225192631.25017-1-val@packett.cool>
+ <20241225192631.25017-2-val@packett.cool>
+ <2cikysv5mwmc4utckjg7iaqx66ncwu3nsxd4kqipj3gw4mymbf@3gipwanf44ji>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <2cikysv5mwmc4utckjg7iaqx66ncwu3nsxd4kqipj3gw4mymbf@3gipwanf44ji>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_044630_703226_58270F4C 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250102_045300_618009_862DBF38 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,30 +82,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 20 Dec 2024 17:38:34 +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Il 27/12/24 10:12, Krzysztof Kozlowski ha scritto:
+> On Wed, Dec 25, 2024 at 04:26:19PM -0300, Val Packett wrote:
+>> Add compatibles for SoCs using this device (mt8183, mt8365, mt8516).
 > 
-> After these 2 Patches are dropped from my dts-series [1] i verified these
-> with mtk and changed based on this.
+> This we see from the diff. Say what is less visible, e.g. are they fully
+> compatible with other variants? Partially?
 > 
-> The problem was that voltages from BUCK4 and LDO were not matching the
-> voltages from schematic.
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
-> [...]
 
-Applied to v6.13-next/dts64, thanks!
+Yeah saying that they are fully compatible would be good here, but anyway
+the change is self-explanatory (just IMO - but I know MTK SoCs so stuff appears
+obvious to me from time to time, and might not be obvious for others).
 
-[1/2] arm64: dts: mediatek: mt7988a-bpi-r4: Add MediaTek MT6682A/RT5190A PMIC
-      commit: 32dfd25b2f7b8073d016aea12e9c1b7612aa3daa
-[2/2] arm64: dts: mediatek: mt7988a-bpi-r4: Add proc-supply for cpus
-      commit: 2798f51df86eefd8584557c9b9ee10f92c674849
+Anyway, input maintainers, please let me know if you want to take this (or the
+next version) through the input tree or if I should take it in the MediaTek tree
+along with the devicetree changes.
 
 Cheers,
 Angelo
 
+> ---
+> 
+> <form letter>
+> This is an automated instruction, just in case, because many review tags
+> are being ignored. If you know the process, you can skip it (please do
+> not feel offended by me posting it here - no bad intentions intended).
+> If you do not know the process, here is a short explanation:
+> 
+> Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+> versions of patchset, under or above your Signed-off-by tag, unless
+> patch changed significantly (e.g. new properties added to the DT
+> bindings). Tag is "received", when provided in a message replied to you
+> on the mailing list. Tools like b4 can help here. However, there's no
+> need to repost patches *only* to add the tags. The upstream maintainer
+> will do that for tags received on the version they apply.
+> 
+> https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+> </form letter>
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
