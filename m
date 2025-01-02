@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02598E7718B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 13:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E96CE7718B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 13:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=daEGGOGvnX/ycQ/j/brvURaB8scAuSEWMXRIiOnHgnA=; b=M4lkxs9JbaATHQaIgukB5hddID
-	pBTIwzQGGjl4nOdcBpnznyuNGY3MzRGNJzhn1u7P1is3LQpmE/j5qmucTiAQVbshL8wXM0qmCP+7s
-	S6pBIopkT1qB7J16gXcnxg/nwEtXKX2s1jNBuuMPmxOL/Y5bMyoWm/FL6Ru1JjbVsNwSlMi72T2II
-	4ZBs3yQYpTrErikNdv7n18bIBqttxM2IeiEpBiiRTNX7BLemirzWHgFa8VLioU2B5DaspThj0YLKx
-	BmqybWGgGGtX0LvSMLGEhF1GCG8M+zE+k9Agck7Txtlwb5usGdUp3Tn4N6ACH5opL4PxhJiQRktkT
-	sXfVHPug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=77oRktQDXcPSa7iNhydGjuL43chSPN49aqtkglietE8=; b=l89PMnxkNfy6kaIV/pNA4h9z3m
+	8RBEwMzy1Uu/nijUnASlUuc9d8rc3OseHyVd9QrHX9m+fStEcEvCQ02UJHwpawlJUUzBYaIyC4jsd
+	CazWnvAAKJGyUjFE+4m2+g/vl22HfBaSUrq077sVWn0mYnX9xIdUJWK9fkoMlogwKvQBfg9OopThG
+	pCg7pjlYSBNiJH7SQUBHfwV9GMaGKx1k8q0joIEHkmMpiKTBVmPbWE3Q7Xj35uh1rNJc+RntQl27J
+	ejoa78N+KUmXxIt/TenrCfBNuObOM8BAok4lpbszK2qesY7tMP/FfoVdIoVbPWOpJO87Tdr2T0jjF
+	HOcp7vQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKtu-0000000AQkS-3x2t;
-	Thu, 02 Jan 2025 13:06:10 +0000
-Received: from [192.198.163.19] (helo=mgamail.intel.com)
+	id 1tTLV8-0000000AW1c-1e7v;
+	Thu, 02 Jan 2025 13:44:38 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKsk-0000000AQYA-0rqw;
-	Thu, 02 Jan 2025 13:04:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1735823098; x=1767359098;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=MyiQ5rs7irBI2s5zak+5MNpRwo9hfZpRiM0mF8/K27c=;
-  b=Id283T79DJYXrBvUWFheuqqjhKbS8D07YDBXgH6uTAFBhZzvi3IzCTOG
-   jAT0KJpw5F/2T/K00ynuiEnV3VChbyz5IbJdFVPNwo5YWZ41VgdCvx6Hj
-   dGz4utMn8jQpZnR6fAGlq4gPmPhxKKk3NHHwCHDcvY7Jdx50v7oM+HW6V
-   CB3oWsA2Xfi3ajj5YXIRbFc/9rPaiphNVocX4ev4HMoD/unvOf2ZOJeUF
-   9aJEgh8bduj++/7p7NNHcGQVAPeQVLUwn60XjyMVmY7hThZjHnk42mAWv
-   j8l3zgERXhr2kZYJ72y8w/D9YUsHvKlGcmbKJ6OBK4OP8DuwinnU8lN1R
-   Q==;
-X-CSE-ConnectionGUID: ktjG9gvfRb206ubqbX9iPA==
-X-CSE-MsgGUID: ZoHkx7eEQMaiYFcD+EJBgw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11302"; a="35301554"
-X-IronPort-AV: E=Sophos;i="6.12,285,1728975600"; 
-   d="scan'208";a="35301554"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jan 2025 05:04:39 -0800
-X-CSE-ConnectionGUID: suJd/1WaRES5LC6uzuojLA==
-X-CSE-MsgGUID: VgInYyNqSV6V66l5vbyMRg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="124775510"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by fmviesa002.fm.intel.com with ESMTP; 02 Jan 2025 05:04:33 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tTKsJ-0008Vj-1k;
-	Thu, 02 Jan 2025 13:04:31 +0000
-Date: Thu, 2 Jan 2025 21:03:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: shiming cheng <shiming.cheng@mediatek.com>,
-	willemdebruijn.kernel@gmail.com, davem@davemloft.net,
-	dsahern@kernel.org, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, horms@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	netdev@vger.kernel.org, lena.wang@mediatek.com,
-	shiming cheng <shiming.cheng@mediatek.com>
-Subject: Re: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail
- without IPv6 rule.
-Message-ID: <202501022057.YOhf05jy-lkp@intel.com>
-References: <20250102095114.25860-1-shiming.cheng@mediatek.com>
+	id 1tTLTt-0000000AVrh-25Qn;
+	Thu, 02 Jan 2025 13:43:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E21DBA41096;
+	Thu,  2 Jan 2025 13:41:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79B05C4CEDF;
+	Thu,  2 Jan 2025 13:43:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735825399;
+	bh=Lf0HL/WDMxh9e4xI2VHJmK8Uk1/y9zM9fP+Yqjx5kXw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=kPmq1f3vTzrv81fg7oblXEuyFGi12fV6K/sxZW/qxfXSUiRj2/Ngv3xGqQmFtb9EB
+	 0ORTrqSHMm0AjPwpVpqxb3CRwqUeVCWiAQ4TMAK+J8IeaMzWJTUsj1E/dCs2PT/gRD
+	 5uo1bACyeVioXSvSCRuM6S40Hz1qK6cfJIziO5MSe4MoLVXfpsgK1bEi2QKqRIGRUZ
+	 +CZki6/tTUs/9ZE8zWx5v+0a3HhvAPwA/g86zqfapPb3YojmPYGfzK2xMTlQZ/YM+j
+	 JHVxPUSadwS2LJpYAPYd0aJGneo/cBwyZsFIX4WYf9MuVRdc9jq90Ydon0dw7Jcg/k
+	 3lK5sLTAkX6Zw==
+Received: by mail-pj1-f43.google.com with SMTP id 98e67ed59e1d1-2ee50ffcf14so14036287a91.0;
+        Thu, 02 Jan 2025 05:43:19 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVrGQXzjd5ixQ2SPLBGY3kEnaWdQtv9moGTPidfJQVgZPARdvUui9m609KCjJ16QIlIFZWMPcIUFAz9S1AV5Cs=@lists.infradead.org, AJvYcCWHiUkUPLCN98wSXYTFJVysHE/WJd4KOzQzrc80bxKuHb+vLfPPu3q6fz51V7/4KXeTTuGqxEWOWDXExen4zKw+@lists.infradead.org
+X-Gm-Message-State: AOJu0YzfkUKSWNrJ0I/lf6smOCY20qtkqwkRVdVkpIJpDpq2iH8IEP+n
+	ZF/4ixQeE2szMJi1fUBOh/KIWAab/Wth1w67XNrZrVPly13fJ5Ee53I/g90R9vC9AOnrZNDsog/
+	clnk/HQNne+JJN9nPPZYPRkuk/Q==
+X-Google-Smtp-Source: AGHT+IHCxTQkblgIukaSC0qoCzRgvJzZht4dI4RJs3qplCpdoTIBV1OD+tbt8prOFp1oNASqkY/F9sDtdJoiqhDkTzo=
+X-Received: by 2002:a17:90b:54c4:b0:2ee:e2f6:8abc with SMTP id
+ 98e67ed59e1d1-2f44360816cmr69363501a91.10.1735825398962; Thu, 02 Jan 2025
+ 05:43:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250102095114.25860-1-shiming.cheng@mediatek.com>
+References: <20241204142626.158395-1-fshao@chromium.org>
+In-Reply-To: <20241204142626.158395-1-fshao@chromium.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 2 Jan 2025 21:43:53 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__Wiva0V52ZTY7-vdrNKWeCGWb5KTBp+CHWoNxHxi0Kyw@mail.gmail.com>
+Message-ID: <CAAOTY__Wiva0V52ZTY7-vdrNKWeCGWb5KTBp+CHWoNxHxi0Kyw@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: dp: Support flexible length of DP
+ calibration data
+To: Fei Shao <fshao@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_050458_293880_D14ED045 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20250102_054321_671306_49E9F71B 
+X-CRM114-Status: GOOD (  25.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,115 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi shiming,
+Hi, Fei:
 
-kernel test robot noticed the following build errors:
+Fei Shao <fshao@chromium.org> =E6=96=BC 2024=E5=B9=B412=E6=9C=884=E6=97=A5 =
+=E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=8810:26=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> The DP calibration data is stored in nvmem cells, and the data layout is
+> described in the `mtk_dp_efuse_fmt` arrays for each platform.
+>
+> There is no guarantee that the data is always a 4-length u32 cell array.
+> For example, MT8188 has a data length of 3, preventing it from passing
+> the preliminary check and undergoing calibration.
+>
+> Update the logic to support flexible data lengths. Specifically, we
+> validate the length returned from `nvmem_cell_read()` against the
+> platform-specific efuse format. If out-of-bound access is detected, fall
+> back to the default calibration values. This likely indicates an error
+> in either the efuse data length described in DT or the efuse format
+> within the driver.
 
-[auto build test ERROR on net-next/main]
-[also build test ERROR on net/main soc/for-next linus/master v6.13-rc5 next-20241220]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Applied to mediatek-drm-next [1], thanks.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/shiming-cheng/ipv6-socket-SO_BINDTODEVICE-lookup-routing-fail-without-IPv6-rule/20250102-174939
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20250102095114.25860-1-shiming.cheng%40mediatek.com
-patch subject: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail without IPv6 rule.
-config: riscv-randconfig-001-20250102 (https://download.01.org/0day-ci/archive/20250102/202501022057.YOhf05jy-lkp@intel.com/config)
-compiler: clang version 16.0.6 (https://github.com/llvm/llvm-project 7cbf1a2591520c2491aa35339f227775f4d3adf6)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250102/202501022057.YOhf05jy-lkp@intel.com/reproduce)
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202501022057.YOhf05jy-lkp@intel.com/
+Regards,
+Chun-Kuang.
 
-All errors (new ones prefixed by >>):
-
->> net/ipv6/ip6_output.c:1239:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1259:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1294:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1311:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1317:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1327:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1348:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1429:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1834:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1867:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1876:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1898:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1978:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:1998:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:2013:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:2027:1: error: function definition is not allowed here
-   {
-   ^
-   net/ipv6/ip6_output.c:2039:1: error: function definition is not allowed here
-   {
-   ^
->> net/ipv6/ip6_output.c:2074:2: error: expected '}'
-   }
-    ^
-   net/ipv6/ip6_output.c:1107:1: note: to match this '{'
-   {
-   ^
-   18 errors generated.
-
-
-vim +1239 net/ipv6/ip6_output.c
-
-34a0b3cdc07874 Adrian Bunk              2005-11-29  1225  
-497c615abad7ee Herbert Xu               2006-07-30  1226  /**
-497c615abad7ee Herbert Xu               2006-07-30  1227   *	ip6_dst_lookup - perform route lookup on flow
-b51cd7c834dba0 Andrew Lunn              2020-07-13  1228   *	@net: Network namespace to perform lookup in
-497c615abad7ee Herbert Xu               2006-07-30  1229   *	@sk: socket which provides route info
-497c615abad7ee Herbert Xu               2006-07-30  1230   *	@dst: pointer to dst_entry * for result
-4c9483b2fb5d25 David S. Miller          2011-03-12  1231   *	@fl6: flow to lookup
-497c615abad7ee Herbert Xu               2006-07-30  1232   *
-497c615abad7ee Herbert Xu               2006-07-30  1233   *	This function performs a route lookup on the given flow.
-497c615abad7ee Herbert Xu               2006-07-30  1234   *
-497c615abad7ee Herbert Xu               2006-07-30  1235   *	It returns zero on success, or a standard errno code on error.
-497c615abad7ee Herbert Xu               2006-07-30  1236   */
-343d60aada5a35 Roopa Prabhu             2015-07-30  1237  int ip6_dst_lookup(struct net *net, struct sock *sk, struct dst_entry **dst,
-343d60aada5a35 Roopa Prabhu             2015-07-30  1238  		   struct flowi6 *fl6)
-497c615abad7ee Herbert Xu               2006-07-30 @1239  {
-497c615abad7ee Herbert Xu               2006-07-30  1240  	*dst = NULL;
-343d60aada5a35 Roopa Prabhu             2015-07-30  1241  	return ip6_dst_lookup_tail(net, sk, dst, fl6);
-497c615abad7ee Herbert Xu               2006-07-30  1242  }
-3cf3dc6c2e05e6 Arnaldo Carvalho de Melo 2005-12-13  1243  EXPORT_SYMBOL_GPL(ip6_dst_lookup);
-3cf3dc6c2e05e6 Arnaldo Carvalho de Melo 2005-12-13  1244  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+>
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+>
+> Changes in v2:
+> - use %zu identifier for size_t in dev_warn()
+>
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 18 +++++++++++++-----
+>  1 file changed, 13 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index 36713c176cfc..55671701459a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -1165,17 +1165,25 @@ static void mtk_dp_get_calibration_data(struct mt=
+k_dp *mtk_dp)
+>         buf =3D (u32 *)nvmem_cell_read(cell, &len);
+>         nvmem_cell_put(cell);
+>
+> -       if (IS_ERR(buf) || ((len / sizeof(u32)) !=3D 4)) {
+> +       if (IS_ERR(buf)) {
+>                 dev_warn(dev, "Failed to read nvmem_cell_read\n");
+> -
+> -               if (!IS_ERR(buf))
+> -                       kfree(buf);
+> -
+>                 goto use_default_val;
+>         }
+>
+> +       /* The cell length is in bytes. Convert it to be compatible with =
+u32 buffer. */
+> +       len /=3D sizeof(u32);
+> +
+>         for (i =3D 0; i < MTK_DP_CAL_MAX; i++) {
+>                 fmt =3D &mtk_dp->data->efuse_fmt[i];
+> +
+> +               if (fmt->idx >=3D len) {
+> +                       dev_warn(mtk_dp->dev,
+> +                                "Out-of-bound efuse data access, fmt idx=
+ =3D %d, buf len =3D %zu\n",
+> +                                fmt->idx, len);
+> +                       kfree(buf);
+> +                       goto use_default_val;
+> +               }
+> +
+>                 cal_data[i] =3D (buf[fmt->idx] >> fmt->shift) & fmt->mask=
+;
+>
+>                 if (cal_data[i] < fmt->min_val || cal_data[i] > fmt->max_=
+val) {
+> --
+> 2.47.0.338.g60cca15819-goog
+>
 
