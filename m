@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB541E7718B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 10:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AD1EE77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 11:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ExvOa/A06b3pj7qPi57FwVToE4MwmM1rQecSaAO2J5M=; b=Lxtr20j6+vVmK246dr7HIKXu8K
-	CCgqKaJvbaTCoQaZ7vJhD2HKJQYxGp7SyvQ6kAQq0Wb86UXlzQovT0jlW36XRx7TbU8g2Lma2XT9X
-	m0bVitdCwFOtW8kQYrTEtJ9q4hPyEUJNkYcDkmKhf9gzMWgJ23R9VMhXbzwWhKSjY+UsDUhcGNEXk
-	3JVb8XMLX2oTbbezvVS+G7L+t3SQk8Ngf7WTk9m3lIRSnW0ppqW6pbIq2403cYz0Eo8m4HFoRtzp8
-	xGSI81aG+A9j25dCx3yrOTq4STM5kSxkzlOBVcNCfpoRpgkHKLx6bnuRV9aN0OUGMVEjx5PL1cldp
-	SlQrG4Xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FHJmAXoM/mw0zc7WUW0C0TOM9FpAO9F2F11lm4GuV6w=; b=OZbiQjiqI6ZEdwmTygNu+zumyD
+	3me1aY/nohwz70zQtlw/FiNBj44vdcrb25TkFhz7I8sxMmINrPuuVbni/GXmZfxud1RMfZgGTZBnD
+	Z4EW7k/pRrWDzz68bRGQYfCjlljnazNIz3/JHZ/fqwp0r4Tzy1WDqkWJwkhzdIxkITRZMFdOs/yFt
+	BRxqATXqnRVCl/GIdkzVyLMXjvELiUVwMykIo5Js7B5jAgb0VEmRGRwRZRSoRHd0S1N0B5ngWjK5+
+	QltqpvpQjVdosgGb944TUS6WXhl8UngFQV8iKyVNn7nT78rChNzyGb31grMjDD9/2kvGtecmGzeT9
+	V0gFgCmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTIac-0000000AAfd-3DPa;
-	Thu, 02 Jan 2025 10:38:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tTJJO-0000000AFKi-1qe3;
+	Thu, 02 Jan 2025 11:24:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTISB-0000000A95H-3xJn;
-	Thu, 02 Jan 2025 10:29:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1735813762;
-	bh=Ui5Ax6l8RhcBEr+KDx7Y4gphne3ZIzmcVAcKme4QbaQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lnDjH4e49m8sL1pxJma4tV+WV36PeaCESERSgKFzZ3vdQMEN9zzML5rdbDRyg/eST
-	 9ct3oa0EUyVQDfdp/Q1IG7Q+gngQiatZsaNQAsMuFgoRUwXZzpmvVjEC6g4h0UJ7Mx
-	 hNlu7cbv9eNvpih8yHi1beLLwFKTpLdCcTx4sJ3j8zrqS0qnKvQxkk/B4CfGFf3dEA
-	 mft19HRNPjMgfjG/bx8NYctNzd9hv5poQEcZ10r1Hu3xBYcy9TaWhrDCwcBWzo1Jfr
-	 fIaiQqKA5HJn5O+FNi9pivNFs75XYXnB6kQBwAwhffXZvNNIjWcKioR0uMAtpdmLXS
-	 y+mBUYcmX+j5Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4B8317E1554;
-	Thu,  2 Jan 2025 11:29:21 +0100 (CET)
-Message-ID: <5a4db8a5-82fa-4feb-bc2e-c78d9e1c88e2@collabora.com>
-Date: Thu, 2 Jan 2025 11:29:21 +0100
+	id 1tTJGf-0000000AEnc-00x7;
+	Thu, 02 Jan 2025 11:21:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8748C5C5B8B;
+	Thu,  2 Jan 2025 11:20:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D572C4CEDC;
+	Thu,  2 Jan 2025 11:21:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735816891;
+	bh=W65URpuT66zpoom/bKkmJ99ASzFyUtgK5KkXVL/Tpws=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lyF0xLqAH9UBeqQHJKzMr9dUKJT9Yy+Rfxt9CgZ/VrhfDqUXJuM7O0Eegw6kJi2dQ
+	 132j5jGXlln0l+MZMGwwJh6OR1Z462jmAeXhCE3t2VQTJi0ug5ae3fgJ7zgnfx8qem
+	 tsQbMnEC+ZaJGbYm8LZcC/pg2Ab7+sWtt9p3XR8D9ZTySwXgPZHdJaivFpFiY9Rdp7
+	 pTP8fA8FqBQtbCs7NKlmV/6ZHIZuhXc9HtpoO18bZbPhXKfGySl5OnQaIsz7HOEyUQ
+	 WeXwdo0Sg5FV5pp7JOn67Vr5Sh/DpAhNw+pdJsfUz8ZQsCYfrbg6t0b1Af6pMlZ7mb
+	 2qIXSImj7uGxA==
+Date: Thu, 2 Jan 2025 12:21:28 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v5 1/6] PCI: mediatek-gen3: Add missing
+ reset_control_deassert() for mac_rst in mtk_pcie_en7581_power_up()
+Message-ID: <Z3Z2uOCUGX7uAaae@lore-desk>
+References: <20241130-pcie-en7581-fixes-v5-1-dbffe41566b3@kernel.org>
+ <20241230175754.GA3958277@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] mt6779-keypad: fix compatibles and add to mt8516
-To: Val Packett <val@packett.cool>
-Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Fabien Parent <fparent@baylibre.com>,
- Alexandre Mergnat <amergnat@baylibre.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241225192631.25017-1-val@packett.cool>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241225192631.25017-1-val@packett.cool>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KseZ4mXYs1K8AxEo"
+Content-Disposition: inline
+In-Reply-To: <20241230175754.GA3958277@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_022924_138842_FFDA64C6 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20250102_032133_129325_7596A132 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,30 +84,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/12/24 20:26, Val Packett ha scritto:
-> The mt8516 patch was previously sent in another series but rejected due
-> to not using an mt8516 specific compatible - which the other usages
-> of this driver (mt8183 and mt8365) weren't doing either.
-> 
-> It's only fair to add the SoC-specific compatibles to all of them then :)
-> 
 
-Nice!!
+--KseZ4mXYs1K8AxEo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Whole series is
+> On Sat, Nov 30, 2024 at 12:20:10AM +0100, Lorenzo Bianconi wrote:
+> > Even if this is not a real issue since Airoha EN7581 SoC does not requi=
+re
+> > the mac reset line, add missing reset_control_deassert() for mac reset
+> > line in mtk_pcie_en7581_power_up() callback.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Bjorn,
 
-> Val Packett (3):
->    dt-bindings: mediatek,mt6779-keypad: add more compatibles
->    arm64: dts: mediatek: add per-SoC compatibles for keypad nodes
->    arm64: dts: mediatek: mt8516: add keypad node
-> 
->   .../bindings/input/mediatek,mt6779-keypad.yaml        |  3 +++
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi              |  3 ++-
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi              |  3 ++-
->   arch/arm64/boot/dts/mediatek/mt8516.dtsi              | 11 +++++++++++
->   4 files changed, 18 insertions(+), 2 deletions(-)
-> 
+since this patch is already in Krzysztof's controller/mediatek branch, do y=
+ou
+want to repost the full series or just incremental changes?
 
+>=20
+> s/mac/MAC/ in English text since "mac" is an acronym, not a real word
+
+ack, I will fix it.
+
+>=20
+> This doesn't really say why we need this patch.
+>=20
+> This adds both assert and deassert, so it doesn't really look like
+> adding a *missing* deassert.
+>=20
+> On EN7581, is mac_reset optional or always absent?
+
+AFAIK mac_reset is never used on EN7581. We added it since we were discussi=
+ng in
+[0] to move the reset asssert/deassert callbacks in the same routine (in the
+original codeabse we have reset_control_assert(pcie->mac_reset) in mtk_pcie=
+_setup()
+and reset_control_deassert(pcie->mac_reset) in mtk_pcie_power_up()).
+I think we can remove mac_reset support at all for EN7581.  What do you pre=
+fer?
+
+Regards,
+Lorenzo
+
+[0] https://lore.kernel.org/linux-pci/20241106233123.GA1580663@bhelgaas/
+
+>=20
+> If mac_reset is always absent for EN7581, why add this patch at all?
+> If it's optional, say so.
+>=20
+> > Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek-gen3.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >=20
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
+controller/pcie-mediatek-gen3.c
+> > index 64ef8ff71b0357b9bf9ad8484095b7aa60c22271..4d1c797a32c236faf79428e=
+b8a83708e9c4f21d8 100644
+> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -942,6 +942,9 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3=
+_pcie *pcie)
+> >  	 */
+> >  	mdelay(PCIE_EN7581_RESET_TIME_MS);
+> > =20
+> > +	/* MAC power on and enable transaction layer clocks */
+> > +	reset_control_deassert(pcie->mac_reset);
+> > +
+> >  	pm_runtime_enable(dev);
+> >  	pm_runtime_get_sync(dev);
+> > =20
+> > @@ -976,6 +979,7 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3=
+_pcie *pcie)
+> >  err_clk_prepare:
+> >  	pm_runtime_put_sync(dev);
+> >  	pm_runtime_disable(dev);
+> > +	reset_control_assert(pcie->mac_reset);
+> >  	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy=
+_resets);
+> >  err_phy_deassert:
+> >  	phy_power_off(pcie->phy);
+> >=20
+> > --=20
+> > 2.47.0
+> >=20
+
+--KseZ4mXYs1K8AxEo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ3Z2uAAKCRA6cBh0uS2t
+rNLuAP9aIvgBoSTUsdbM74sz/9xj2EI/jesibuEXgdwRznaErwD+OH6Lbxg9oaqN
+0C1Pv2EwtriUpAMpokB0n1IJ9tcZhQw=
+=9erM
+-----END PGP SIGNATURE-----
+
+--KseZ4mXYs1K8AxEo--
 
