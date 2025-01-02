@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19B25E77188
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 09:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851ACE77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 10:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kaRy8hvQiwVBlFWG9ZlYPjmGDHZFPf/6Z415OdGfZlw=; b=a48yqZy9UwSAPhJNE0ZK3UDGkb
-	qV4g0oUlhrD/8L+N9ggKI556EWoVRXcH0vQOu5xXfJ4PV/YdShYQ6sRoEDbVUMaIki+igvqUsYoL1
-	bvECtgcJkb/g95DVibPD+/dEqXm+mDn+pvdiTLlWaDXmbUqB84LIzin2vWiFmEH5Hj0VVOtntO/RH
-	lsIKej9IId46rz/ukDOMUUfh+E2bX+GfK9PFho0mrK2KlmfjdES0prMVo1rRj6z0aOWCK0LxRF8w2
-	P6DkpU77MY4ljKh48CP3/IauKK6TOsdzIOksgWR8ZUnnYBhLnYbF2pf842QefOySXBF3MNwZOsxTw
-	IEaP6/OA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BIW2XRKLV2QWavQlL34+6v+DQJvyueU3NSYNE4nV8Zw=; b=Hl6aKAhycyH0A/4YnEaD4llBiw
+	oq5rztcNuDXWwAEnv07tMyoL4uK6TnRkH0GSv/oPA+SLMAxKFQOOypx6sfwd6RT3OXhXJs8R8D1Ok
+	pkWIT13EY5r8xqiB5PaoXlP010klPgVNW8O8pBKP8DWa+Amcoa+RX/VocbOgGbRQiPsRfMOFZ9lnh
+	A4zY5FkYNL/C1syQPx9Tq22m/EnDAV7Ws3dBP83YJZeIhQDR0aeOhKAXM2TQmuQIUvIVx90Mk68vX
+	aUx2QjHMUS2xPLbs0vWgd7axZosYSJxgQ73+owNv93oPwMRe3TCA9bt7nvB0ETkkp8kcdq7WDJ73S
+	YoVbuhtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTHoW-0000000A5Wm-0TZS;
-	Thu, 02 Jan 2025 09:48:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tTIQ4-0000000A8og-3plo;
+	Thu, 02 Jan 2025 10:27:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTHoT-0000000A5WC-1xSJ;
-	Thu, 02 Jan 2025 09:48:22 +0000
-X-UUID: b16878f6c8ee11ef82ff63e91e7eb18c-20250102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=kaRy8hvQiwVBlFWG9ZlYPjmGDHZFPf/6Z415OdGfZlw=;
-	b=SZM9ivaZiBX/M0nU1SfdVHj3aa6vbnBi/J4KeQFuRqGhNNIOKT/PrWnvI3falGC9LYO9GdccshDO8xfIpJfYf9eeFC5rY5E/K8yOeERjEKY1ASQJiVJbgy60G41jbeB6kOLS/uXnU+nXPk2hgmqQ6qRSh+3Xg+SO7PQwu1iNjO4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:bb62d745-b04d-4180-88b6-f05399ea0295,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:60aa074,CLOUDID:a7908c25-8650-4337-bf57-045b64170f0c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b16878f6c8ee11ef82ff63e91e7eb18c-20250102
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <shiming.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 877320844; Thu, 02 Jan 2025 02:48:17 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 Jan 2025 17:48:14 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 Jan 2025 17:48:13 +0800
-From: shiming cheng <shiming.cheng@mediatek.com>
-To: <willemdebruijn.kernel@gmail.com>, <davem@davemloft.net>,
-	<dsahern@kernel.org>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <horms@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <netdev@vger.kernel.org>, <lena.wang@mediatek.com>, shiming cheng
-	<shiming.cheng@mediatek.com>
-Subject: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail without IPv6 rule.
-Date: Thu, 2 Jan 2025 17:51:11 +0800
-Message-ID: <20250102095114.25860-1-shiming.cheng@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tTIOt-0000000A8Z0-0wz4;
+	Thu, 02 Jan 2025 10:26:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1735813554;
+	bh=K1pfxYqXOc52PRosS2j0BYuB9mHwfBtw9u9O1FNSkPk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qffiWESEleKjF2uZCQdtKxqC+Uy8yySJ0NZISO4YqBRdcdETzJTZxdYkVLhvFHrv0
+	 UVBu4bUYRyKXIbQHVK4lxrILiikEgDZGT9Nud2AK9TO6KmRGnUuCSwA9ucMEXaw0kn
+	 1pQy9IhUSLzARpCIWI+rptSXUFGEtwUG6YP62cCsuJYfJhiE6OQ3TchWChDJ1hVnvs
+	 eyp5mC/mcdcW6bBT8Ez8rnEoGlCTwftfEDFWc1w0u2tvRSwbNaDn8KmbjjLESg+fJX
+	 F+4lv8SJNkiJfov6SY1ZHiBRVbEvsHrihMJB2oETHrgaLk0DNjdDhT8h1LX1xwMSkw
+	 FG3/w1sB9S1rA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 64B8917E153D;
+	Thu,  2 Jan 2025 11:25:53 +0100 (CET)
+Message-ID: <599e27fd-e3fe-4d36-84b9-5742995cad69@collabora.com>
+Date: Thu, 2 Jan 2025 11:25:52 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 9/9] arm64: dts: mt6392: add mt6392 PMIC dtsi
+To: Val Packett <val@packett.cool>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+ Fabien Parent <parent.f@gmail.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+References: <20241226050205.30241-1-val@packett.cool>
+ <20241226050205.30241-10-val@packett.cool>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241226050205.30241-10-val@packett.cool>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_014821_513502_5F13A4BA 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20250102_022559_441068_E3636DD5 
+X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,97 +89,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-     When using socket IPv6 with SO_BINDTODEVICE, if IPv6 rule is not
-        matched, it will return ENETUNREACH. In fact, IPv4 does not behave
-        this way. IPv4 prioritizes looking up IP rules for routing and
-        forwarding, if not matched it will use socket-bound out interface
-        to send packets. The modification here is to make IPv6 behave the
-        same as IPv4. If IP rule is not found, it will also use
-        socket-bound out interface to send packts.
+Il 26/12/24 05:58, Val Packett ha scritto:
+> Add the dts to be included by all boards using the MT6392 PMIC.
+> 
+> Signed-off-by: Val Packett <val@packett.cool>
 
-Signed-off-by: shiming cheng <shiming.cheng@mediatek.com>
----
- include/net/ip6_route.h |  2 ++
- net/ipv6/ip6_output.c   |  6 +++++-
- net/ipv6/route.c        | 34 ++++++++++++++++++++++++++++++++++
- 3 files changed, 41 insertions(+), 1 deletion(-)
-
-diff --git a/include/net/ip6_route.h b/include/net/ip6_route.h
-index 6dbdf60b342f..0625597def6f 100644
---- a/include/net/ip6_route.h
-+++ b/include/net/ip6_route.h
-@@ -214,6 +214,8 @@ void rt6_multipath_rebalance(struct fib6_info *f6i);
- 
- void rt6_uncached_list_add(struct rt6_info *rt);
- void rt6_uncached_list_del(struct rt6_info *rt);
-+struct rt6_info *ip6_create_rt_oif_rcu(struct net *net, const struct sock *sk,
-+		struct flowi6 *fl6, int flags);
- 
- static inline const struct rt6_info *skb_rt6_info(const struct sk_buff *skb)
- {
-diff --git a/net/ipv6/ip6_output.c b/net/ipv6/ip6_output.c
-index f7b4608bb316..ed162ac3cb31 100644
---- a/net/ipv6/ip6_output.c
-+++ b/net/ipv6/ip6_output.c
-@@ -1156,7 +1156,11 @@ static int ip6_dst_lookup_tail(struct net *net, const struct sock *sk,
- 		*dst = ip6_route_output_flags(net, sk, fl6, flags);
- 
- 	err = (*dst)->error;
--	if (err)
-+	if (err && (flags & RT6_LOOKUP_F_IFACE)) {
-+		*dst = (struct dst_entry *)ip6_create_rt_oif_rcu(net, sk, fl6, flags);
-+		if (!*dst)
-+			goto out_err_release;
-+	} else if (err) {
- 		goto out_err_release;
- 
- #ifdef CONFIG_IPV6_OPTIMISTIC_DAD
-diff --git a/net/ipv6/route.c b/net/ipv6/route.c
-index 67ff16c04718..7d7450fab44f 100644
---- a/net/ipv6/route.c
-+++ b/net/ipv6/route.c
-@@ -1214,6 +1214,40 @@ static struct rt6_info *ip6_create_rt_rcu(const struct fib6_result *res)
- 	return nrt;
- }
- 
-+struct rt6_info *ip6_create_rt_oif_rcu(struct net *net, const struct sock *sk,
-+				       struct flowi6 *fl6, int flags)
-+{
-+	struct rt6_info *rt;
-+	unsigned int prefs;
-+	int err;
-+	struct net_device *dev = dev_get_by_index_rcu(net, fl6->flowi6_oif);
-+
-+	if (!dev)
-+		return NULL;
-+	rt = ip6_dst_alloc(dev_net(dev), dev, flags);
-+
-+	if (!rt)
-+		return NULL;
-+	rt->dst.error = 0;
-+	rt->dst.output = ip6_output;
-+	rt->dst.lastuse = jiffies;
-+	prefs = sk ? inet6_sk(sk)->srcprefs : 0;
-+	err = ipv6_dev_get_saddr(net, dev, &fl6->daddr, prefs, &fl6->saddr);
-+
-+	if (err) {
-+		dst_release(&rt->dst);
-+		return NULL;
-+	}
-+	rt->rt6i_dst.addr = fl6->daddr;
-+	rt->rt6i_dst.plen = 128;
-+	rt->rt6i_src.addr = fl6->saddr;
-+	rt->rt6i_dst.plen = 128;
-+	rt->rt6i_idev = in6_dev_get(dev);
-+	rt->rt6i_flags = flags;
-+	return rt;
-+}
-+EXPORT_SYMBOL_GPL(ip6_create_rt_oif_rcu);
-+
- INDIRECT_CALLABLE_SCOPE struct rt6_info *ip6_pol_route_lookup(struct net *net,
- 					     struct fib6_table *table,
- 					     struct flowi6 *fl6,
--- 
-2.45.2
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
