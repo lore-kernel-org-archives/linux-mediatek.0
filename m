@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26AFEE77194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 12:35:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA91DE77194
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 12:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RO3yprsV3+0rva9WfrzgUuIDkiLifhyWmcOAA8iKNSE=; b=L+27gLi+NjK6Q56H38FNm5z8HK
-	P528z3ASecxlh5u/8iEyjNlZy15t5HNiuCVbgen0HiunmxRS1hNhBAuUB47ThNT6WFHrVZo2mFBHp
-	GQv00cgfeUiGfTivWIPwl+NS5DpFHfDzId1NA4O/S51rOsSSgTxGH7VRrwvozF2ThCNj9f+LEv0Gp
-	zsWtrNpqclxrWQ3e7rBrvDNY7OGMy0X7LPLARIV0Dt1fnYDqTYECM76AKJN1lPGI4mx73nTopusJs
-	rwI6x6rMID30SD9Fxf8zwmrdAkF11In/ir1R60JtFWh9GwEabsi4d5DhdvnkuhQexvidb6aqsdEcp
-	amAv7HCg==;
+	bh=duaHqo4rcr5/cdSqxA2bYcLqZbw37z1X4yp1VCW0WC0=; b=NqWE6C+um/igs23m9gjstBnUtB
+	T0vCTkCqCaA4gRT7lQxU2uNDsYKBzpDin1e3ovrIf2tZv9/LuUYgCu6/uxu7ORhrcy+V1caRp9FuD
+	BWNSnHXdrGl7ygspCY5QpeVrOvPSb9iOMJxCowIEBWCUPaY8CVDhhnsnjUNgpVWAEnnpNIRTBTDS7
+	sSbch7lMyeF/5h9w9Sjs0i/czePDX/bMLuPzCaWvlIDXKBTh2CUw2RjpeL1VU33B0X/0B+4WebKgk
+	u4APXGFy3EO2lPL11wHOWgRcv7u79BZdl7IvtVPnIil2yeEeyNXSISBJ110ZJf4apR5n0TMZ8U0BF
+	Kecx/dlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKPw-0000000AMN8-1Xud;
-	Thu, 02 Jan 2025 12:35:12 +0000
+	id 1tTKUM-0000000AMiI-3jCS;
+	Thu, 02 Jan 2025 12:39:46 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTKPt-0000000AMMU-28hu
-	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Jan 2025 12:35:11 +0000
+	id 1tTKTC-0000000AMdC-3qMl;
+	Thu, 02 Jan 2025 12:38:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1735821307;
-	bh=os0Cxr0lwd8+rwXJ9k4K8vMInJAZ02qWvwYce/ccerU=;
+	s=mail; t=1735821513;
+	bh=qN3wx4iRobhYPryY9mzAir8xmXEV8TBbYXBnM1/XkGw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xb1eGjPYY0Q1gMpcj0EOzFqsSBuNzqEDicEnSklEr8GmRSC4wqCzzibGI2VHzets2
-	 +mHqlmeaWDmGDG2EWT2k0N3SLtJs0VU0aJ+0BBj9LQ6JAP0GH/nQb+ugzGJCG7lp6y
-	 Rouod0S888w4oOTBkrxRtYhFPM/L82x8FUuOOGRCHP8uTLBuysKqM4naUXbrM1H1kE
-	 5i9MIf8lEzwS1318CQEkO0CSjd85ASUbHiN2h8HTiZOhFkHuU/xpS5Dv2UADRjuVEb
-	 cSSnVkg2A0rnx/XI6KZIe/tiUzV8OgtlQR7PX1WtbyZ4Kjlm2vKytGoMutXEUUmj1H
-	 jowAXaCngckCQ==
+	b=p7f5xAhdjEvLiZhepWhLcOjuM8QEZRArtvMO74WLJ0Tf7hxtTQIvB9poHaCNhhXT2
+	 DlHsJrxsqcQtkFKI/lxVONFCBG8Quho/3BqIALE+Ab7De3AFnt/PvON5cFxmIBgD1E
+	 5TigcKZ60oCP4eoRboN0o81dfjXWVePU+rCgb2CjEkjwcfEttehP65U55ecRQxqDBI
+	 rRLHt4Ks/KJ3WDy+DBI98yUl92IEmnlufag2dyZeVYyvug95kk8O/gOfxCTRBLCw0r
+	 k/VADRUJUFUkoIZfdrSYSRyUduaQOCgQ0VAz02DiFQF5zhh0onF6Ui66CMINjs4a6h
+	 2GpHZUehZF1hQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 903C217E156C;
-	Thu,  2 Jan 2025 13:35:07 +0100 (CET)
-Message-ID: <033b6577-61da-47bb-8e22-3c84d89220e0@collabora.com>
-Date: Thu, 2 Jan 2025 13:35:06 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 93B9917E156C;
+	Thu,  2 Jan 2025 13:38:32 +0100 (CET)
+Message-ID: <3d6cf760-28df-42b6-8500-bda6597cfb2e@collabora.com>
+Date: Thu, 2 Jan 2025 13:38:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: Remove unneeded semicolon
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Cc: kernel test robot <lkp@intel.com>
-References: <20241230135314.5419-1-chunkuang.hu@kernel.org>
+Subject: Re: [PATCH] phy: Use (of|device)_property_present() for non-boolean
+ properties
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20241231163121.241543-1-robh@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241230135314.5419-1-chunkuang.hu@kernel.org>
+In-Reply-To: <20241231163121.241543-1-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_043509_728107_35B4A61D 
-X-CRM114-Status: UNSURE (   5.13  )
+X-CRM114-CacheID: sfid-20250102_043835_187061_8C0FA8FA 
+X-CRM114-Status: UNSURE (   6.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,16 +80,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/12/24 14:53, Chun-Kuang Hu ha scritto:
-> cocci warnings: (new ones prefixed by >>)
->>> drivers/gpu/drm/mediatek/mtk_drm_drv.c:1092:2-3: Unneeded semicolon
+Il 31/12/24 17:31, Rob Herring (Arm) ha scritto:
+> The use of (of|device)_property_read_bool() for non-boolean properties
+> is deprecated in favor of (of|device)_property_present() when testing
+> for property presence.
 > 
-> Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for display paths")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202412022048.kY2ZhxZ4-lkp@intel.com/
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+
+For MediaTek:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
