@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD4EE7718B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 09:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19B25E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 09:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GuzBbqkS/z0WnT3EUTrIONeKqkaT9Dd7A20R0CmxM10=; b=SVEn6FfkhbY0Gb5gBnXVK0X4S6
-	RGs9Q9WfGUJzc92KB4iBljtRiLsetXMwVol4u3rWlXWnlmek+NzxkMmjUiBH5gQh03SoG6yp/U5Eh
-	y/oObQA7P+WTOQjTL9PtpULPlMvm+fNseuybjq2YpmgiDFX6kUAcQhaEHfa5KGU9N5WTLQtSQrCHU
-	+1pYGQ8dxKjNA4x0OevhGBKayJfJ6Wa65HlcpJgaoxAE5Lyjdw3c0Eccy/lIVEEy3rC3pjW+yZc33
-	uRDHiMMUCDGt81kkPGvATg8JF6kMeTUARolELvNRLxka6+63ddASSGKOoMdTjs2VFZLkjSrmW38q6
-	/OGbj3cg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kaRy8hvQiwVBlFWG9ZlYPjmGDHZFPf/6Z415OdGfZlw=; b=a48yqZy9UwSAPhJNE0ZK3UDGkb
+	qV4g0oUlhrD/8L+N9ggKI556EWoVRXcH0vQOu5xXfJ4PV/YdShYQ6sRoEDbVUMaIki+igvqUsYoL1
+	bvECtgcJkb/g95DVibPD+/dEqXm+mDn+pvdiTLlWaDXmbUqB84LIzin2vWiFmEH5Hj0VVOtntO/RH
+	lsIKej9IId46rz/ukDOMUUfh+E2bX+GfK9PFho0mrK2KlmfjdES0prMVo1rRj6z0aOWCK0LxRF8w2
+	P6DkpU77MY4ljKh48CP3/IauKK6TOsdzIOksgWR8ZUnnYBhLnYbF2pf842QefOySXBF3MNwZOsxTw
+	IEaP6/OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTH6d-00000009zsW-0vr8;
-	Thu, 02 Jan 2025 09:03:03 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tTHoW-0000000A5Wm-0TZS;
+	Thu, 02 Jan 2025 09:48:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTH5N-00000009zNN-1Hs9;
-	Thu, 02 Jan 2025 09:01:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GuzBbqkS/z0WnT3EUTrIONeKqkaT9Dd7A20R0CmxM10=; b=P0nQ7ipfrJ/GVTcuxDFmXS9x4S
-	NBziIaeO76goIc6IjWfvMTA5jwbO59Xi916Wrp5EbRpRsILdkQuZzaEvtPsfDYAHt+Qx4q5dqhAyw
-	YWhytYMHO7hFzmrw2wn+U4dF9HTI3JZ6HKMUyvmQ30iLEyRLXfBJgfBOQHHQMwTso6s4XTMMbpioR
-	etfcpbA3ZEBEcSWxVgmh10/7ctaAGTg9QTJtmFikElQ4WoloRsZ8vhQZp+iY7OvNQCU+rcct2KWSp
-	uj39x8c0rGcw3MDvaNOLgOMNfL4S5k5wRIia7forqgx9wRSDNk4KI95dIV8jaiyR+PdPVkzaknN7x
-	Uzod0GLQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40590)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tTH30-0001mb-24;
-	Thu, 02 Jan 2025 08:59:18 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tTH2v-00008E-0w;
-	Thu, 02 Jan 2025 08:59:13 +0000
-Date: Thu, 2 Jan 2025 08:59:13 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Eric Woudstra <ericwouds@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/3] net: pcs: pcs-mtk-lynxi: implement
- pcs_inband_caps() method
-Message-ID: <Z3ZVYeT0vD85Srsd@shell.armlinux.org.uk>
-References: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
- <E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk>
- <e1e271e3-b684-46d2-879d-e3481d25a712@gmail.com>
+	id 1tTHoT-0000000A5WC-1xSJ;
+	Thu, 02 Jan 2025 09:48:22 +0000
+X-UUID: b16878f6c8ee11ef82ff63e91e7eb18c-20250102
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=kaRy8hvQiwVBlFWG9ZlYPjmGDHZFPf/6Z415OdGfZlw=;
+	b=SZM9ivaZiBX/M0nU1SfdVHj3aa6vbnBi/J4KeQFuRqGhNNIOKT/PrWnvI3falGC9LYO9GdccshDO8xfIpJfYf9eeFC5rY5E/K8yOeERjEKY1ASQJiVJbgy60G41jbeB6kOLS/uXnU+nXPk2hgmqQ6qRSh+3Xg+SO7PQwu1iNjO4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:bb62d745-b04d-4180-88b6-f05399ea0295,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:a7908c25-8650-4337-bf57-045b64170f0c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b16878f6c8ee11ef82ff63e91e7eb18c-20250102
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <shiming.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 877320844; Thu, 02 Jan 2025 02:48:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 2 Jan 2025 17:48:14 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 2 Jan 2025 17:48:13 +0800
+From: shiming cheng <shiming.cheng@mediatek.com>
+To: <willemdebruijn.kernel@gmail.com>, <davem@davemloft.net>,
+	<dsahern@kernel.org>, <edumazet@google.com>, <kuba@kernel.org>,
+	<pabeni@redhat.com>, <horms@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <netdev@vger.kernel.org>, <lena.wang@mediatek.com>, shiming cheng
+	<shiming.cheng@mediatek.com>
+Subject: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail without IPv6 rule.
+Date: Thu, 2 Jan 2025 17:51:11 +0800
+Message-ID: <20250102095114.25860-1-shiming.cheng@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e1e271e3-b684-46d2-879d-e3481d25a712@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_010145_375926_DD1F409F 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20250102_014821_513502_5F13A4BA 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,46 +86,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 08:49:58AM +0100, Eric Woudstra wrote:
-> On 12/5/24 10:42 AM, Russell King (Oracle) wrote:
-> > Report the PCS in-band capabilities to phylink for the LynxI PCS.
-> > 
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> >  drivers/net/pcs/pcs-mtk-lynxi.c | 16 ++++++++++++++++
-> >  1 file changed, 16 insertions(+)
-> > 
-> > diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-> > index 4f63abe638c4..7de804535229 100644
-> > --- a/drivers/net/pcs/pcs-mtk-lynxi.c
-> > +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-> > @@ -88,6 +88,21 @@ static struct mtk_pcs_lynxi *pcs_to_mtk_pcs_lynxi(struct phylink_pcs *pcs)
-> >  	return container_of(pcs, struct mtk_pcs_lynxi, pcs);
-> >  }
-> >  
-> > +static unsigned int mtk_pcs_lynxi_inband_caps(struct phylink_pcs *pcs,
-> > +					      phy_interface_t interface)
-> > +{
-> > +	switch (interface) {
-> > +	case PHY_INTERFACE_MODE_1000BASEX:
-> > +	case PHY_INTERFACE_MODE_2500BASEX:
-> 
-> Isn't this the place now where to report to phylink, that this PCS does
-> not support in-band at 2500base-x?
+     When using socket IPv6 with SO_BINDTODEVICE, if IPv6 rule is not
+        matched, it will return ENETUNREACH. In fact, IPv4 does not behave
+        this way. IPv4 prioritizes looking up IP rules for routing and
+        forwarding, if not matched it will use socket-bound out interface
+        to send packets. The modification here is to make IPv6 behave the
+        same as IPv4. If IP rule is not found, it will also use
+        socket-bound out interface to send packts.
 
-No - look at the arguments to this function. What arguments would this
-function make a decision whether in-band is supported in any interface
-mode?
+Signed-off-by: shiming cheng <shiming.cheng@mediatek.com>
+---
+ include/net/ip6_route.h |  2 ++
+ net/ipv6/ip6_output.c   |  6 +++++-
+ net/ipv6/route.c        | 34 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 41 insertions(+), 1 deletion(-)
 
-The correct place is the .pcs_inband_caps(), which from reading the
-code, I understood that in-band can be used at 2500base-X with this
-PCS. See
-https://patch.msgid.link/E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk
-which was merged at the beginning of December, and if you are correct,
-the patch was wrong.
-
+diff --git a/include/net/ip6_route.h b/include/net/ip6_route.h
+index 6dbdf60b342f..0625597def6f 100644
+--- a/include/net/ip6_route.h
++++ b/include/net/ip6_route.h
+@@ -214,6 +214,8 @@ void rt6_multipath_rebalance(struct fib6_info *f6i);
+ 
+ void rt6_uncached_list_add(struct rt6_info *rt);
+ void rt6_uncached_list_del(struct rt6_info *rt);
++struct rt6_info *ip6_create_rt_oif_rcu(struct net *net, const struct sock *sk,
++		struct flowi6 *fl6, int flags);
+ 
+ static inline const struct rt6_info *skb_rt6_info(const struct sk_buff *skb)
+ {
+diff --git a/net/ipv6/ip6_output.c b/net/ipv6/ip6_output.c
+index f7b4608bb316..ed162ac3cb31 100644
+--- a/net/ipv6/ip6_output.c
++++ b/net/ipv6/ip6_output.c
+@@ -1156,7 +1156,11 @@ static int ip6_dst_lookup_tail(struct net *net, const struct sock *sk,
+ 		*dst = ip6_route_output_flags(net, sk, fl6, flags);
+ 
+ 	err = (*dst)->error;
+-	if (err)
++	if (err && (flags & RT6_LOOKUP_F_IFACE)) {
++		*dst = (struct dst_entry *)ip6_create_rt_oif_rcu(net, sk, fl6, flags);
++		if (!*dst)
++			goto out_err_release;
++	} else if (err) {
+ 		goto out_err_release;
+ 
+ #ifdef CONFIG_IPV6_OPTIMISTIC_DAD
+diff --git a/net/ipv6/route.c b/net/ipv6/route.c
+index 67ff16c04718..7d7450fab44f 100644
+--- a/net/ipv6/route.c
++++ b/net/ipv6/route.c
+@@ -1214,6 +1214,40 @@ static struct rt6_info *ip6_create_rt_rcu(const struct fib6_result *res)
+ 	return nrt;
+ }
+ 
++struct rt6_info *ip6_create_rt_oif_rcu(struct net *net, const struct sock *sk,
++				       struct flowi6 *fl6, int flags)
++{
++	struct rt6_info *rt;
++	unsigned int prefs;
++	int err;
++	struct net_device *dev = dev_get_by_index_rcu(net, fl6->flowi6_oif);
++
++	if (!dev)
++		return NULL;
++	rt = ip6_dst_alloc(dev_net(dev), dev, flags);
++
++	if (!rt)
++		return NULL;
++	rt->dst.error = 0;
++	rt->dst.output = ip6_output;
++	rt->dst.lastuse = jiffies;
++	prefs = sk ? inet6_sk(sk)->srcprefs : 0;
++	err = ipv6_dev_get_saddr(net, dev, &fl6->daddr, prefs, &fl6->saddr);
++
++	if (err) {
++		dst_release(&rt->dst);
++		return NULL;
++	}
++	rt->rt6i_dst.addr = fl6->daddr;
++	rt->rt6i_dst.plen = 128;
++	rt->rt6i_src.addr = fl6->saddr;
++	rt->rt6i_dst.plen = 128;
++	rt->rt6i_idev = in6_dev_get(dev);
++	rt->rt6i_flags = flags;
++	return rt;
++}
++EXPORT_SYMBOL_GPL(ip6_create_rt_oif_rcu);
++
+ INDIRECT_CALLABLE_SCOPE struct rt6_info *ip6_pol_route_lookup(struct net *net,
+ 					     struct fib6_table *table,
+ 					     struct flowi6 *fl6,
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.45.2
+
 
