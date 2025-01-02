@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8C8DE77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2024 18:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD4EE7718B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 09:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kltap3Pv1hlN9UPAmHZET72hjTYvMQFRlhAGev33Mns=; b=xwS/1hZxR0I7z0hBUpeyqSsbz3
-	jYV0GyOFblcT6U1O9WVtHQWtTch/+5LvRwinqQi048+iYLguwEt8L91zqjYek0abZowlXSBbGvp+V
-	yd1L6nfBmOQ643b+bvyfj5fmsmz4RbvL3BH8WnXhg6HqMvcqg7UxR9s3Yc91HKOcK3tRQ+A2R+sv3
-	OvJ8ZCZZFh/nemE98VLWrMvHeR/LKv22kSky2ngfl+1axBBTD/pnaYC1JGudFAo7p4hQBio/LRZFF
-	fYartXHRpPwXF8W2+aH7rTjQ9Sv4E+GTRbXrXCQ5fAPkHD44EC2jUcNRFAKguHHrC82mA/kMBX0Yh
-	BdSmu1lw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GuzBbqkS/z0WnT3EUTrIONeKqkaT9Dd7A20R0CmxM10=; b=SVEn6FfkhbY0Gb5gBnXVK0X4S6
+	RGs9Q9WfGUJzc92KB4iBljtRiLsetXMwVol4u3rWlXWnlmek+NzxkMmjUiBH5gQh03SoG6yp/U5Eh
+	y/oObQA7P+WTOQjTL9PtpULPlMvm+fNseuybjq2YpmgiDFX6kUAcQhaEHfa5KGU9N5WTLQtSQrCHU
+	+1pYGQ8dxKjNA4x0OevhGBKayJfJ6Wa65HlcpJgaoxAE5Lyjdw3c0Eccy/lIVEEy3rC3pjW+yZc33
+	uRDHiMMUCDGt81kkPGvATg8JF6kMeTUARolELvNRLxka6+63ddASSGKOoMdTjs2VFZLkjSrmW38q6
+	/OGbj3cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tShKb-00000007cLv-2rgf;
-	Tue, 31 Dec 2024 18:51:05 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1tTH6d-00000009zsW-0vr8;
+	Thu, 02 Jan 2025 09:03:03 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tShJQ-00000007cFc-2wei;
-	Tue, 31 Dec 2024 18:49:54 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2ee709715d9so10995946a91.3;
-        Tue, 31 Dec 2024 10:49:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1735670992; x=1736275792; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kltap3Pv1hlN9UPAmHZET72hjTYvMQFRlhAGev33Mns=;
-        b=VE9PT2h2eN9iy1SRjCA7ZnYMQs3Tfp30yOKD95uG8aGYPwA9lX2FeFRJdwHkSUgz4D
-         2tHG9iE54yNNn90KE9u6veDIy3DBdkCOk4Jz+xgoJzsh8FTNna563t7vbddTWNfyt4sY
-         +5s9mPU9dV3ZzqYrf96ct2NDpEM3StQy+3w0vt5nQJxNkF8JDuiCgbHjHuVlP9ACl0lW
-         DK2203gW7NHQX5ed0aAw2SRl4hIjvwEmddaE315LdvHN8qMohjPsE7supu4Sa8mPi3Zk
-         nETAxXJVWcqMo1qrJjfyKczyiuqLy2uL6CDKr9e5qpS/t0tzcoMZGqTod88+6AamKJ8Y
-         dbPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735670992; x=1736275792;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kltap3Pv1hlN9UPAmHZET72hjTYvMQFRlhAGev33Mns=;
-        b=IKjfqOLYNW+paO1W4/AT8c/4kiiz9lvsQcf+ZuEj08X/ZQ0eN5mW8MbQU28b1Z3pKo
-         Z8znkCCssecXdZM5u1l90nTlMpxcdk6hqJfQv3LIpeKbvTpOI1ek7CdtdG3X7z74Zfge
-         sHjEmYWk4Wdoxz7yslTJeUkmG6+pQIuIQx0T/RK2gc008D4oKrEYxU5F2qnJjagZm3Mh
-         L6I3UKSTX5oJ0MawT920eEZR89/zEkHGjipTMbKLwIOkR8YpscPHTMa/DoULBRl+ItPG
-         f5nn1sbS7VMcsr8Nx0yVPxHmMERBTZMVEjqk8p2Tute8uXk6+OQyxFWKpzmeGYmVswJY
-         zoaQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVwZqHWp2y1uvo85RkRlv5fN3zz12RT0VCUJDEW36Qhrr+R+bOwylYb3dS6i3IFrbztghyvGGA18ZIAcl/Eg+g=@lists.infradead.org, AJvYcCWgFY73xoUx+SO0S9TXoFA2Xc1ovRpXWoAvpMiKMNUaHDoi6j5XYPIs2KVS3W2poSm/SYT++EfGSn1LP8/ZPiho@lists.infradead.org, AJvYcCWpQgnQapiopXhKiPq+m1e66z4ZStga+5MG+4DIkZuUiAC8qMhNav0W3tkMh6ENOTmoh3tF4/hChEmFVmcRtQ8=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywvo/q6+F7GYLm7XcZgjzi0Cv7cqSs7tjF8vUJ+oKgxQoUJKyvu
-	CKTu83zmr/loAoJlg8XqxYT1369Mv2N6IZgKLGD0AiNu78zAsZiMLKHV1YIpiKvAeK0TLAD0K9r
-	xyennLr9k2O3lhqGpvWXsRcwuApY=
-X-Gm-Gg: ASbGncv9EQhKFIwaNp/ao02RypOBDpc3oHZ+MgROjmqBMavEP2HpYNfBocgoyWIDWi0
-	fgowR5UMEWA7pmiL56IfFOvNDF2FzJNWssXvNKt8sUQgYfiyu1HzvcZvHDfLk1KVYWvq7vK0=
-X-Google-Smtp-Source: AGHT+IG5FmkROQoSQHWr4cIegxX2It9OOsT8OUh7KWPdH7VQgx2qIDviezjcsQv6GTMSR51Q0h0ZJEqmX+Qz4Kpzuw4=
-X-Received: by 2002:a17:90a:d645:b0:2ef:30ec:14c9 with SMTP id
- 98e67ed59e1d1-2f452e4ad37mr57281196a91.18.1735670991720; Tue, 31 Dec 2024
- 10:49:51 -0800 (PST)
+	id 1tTH5N-00000009zNN-1Hs9;
+	Thu, 02 Jan 2025 09:01:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=GuzBbqkS/z0WnT3EUTrIONeKqkaT9Dd7A20R0CmxM10=; b=P0nQ7ipfrJ/GVTcuxDFmXS9x4S
+	NBziIaeO76goIc6IjWfvMTA5jwbO59Xi916Wrp5EbRpRsILdkQuZzaEvtPsfDYAHt+Qx4q5dqhAyw
+	YWhytYMHO7hFzmrw2wn+U4dF9HTI3JZ6HKMUyvmQ30iLEyRLXfBJgfBOQHHQMwTso6s4XTMMbpioR
+	etfcpbA3ZEBEcSWxVgmh10/7ctaAGTg9QTJtmFikElQ4WoloRsZ8vhQZp+iY7OvNQCU+rcct2KWSp
+	uj39x8c0rGcw3MDvaNOLgOMNfL4S5k5wRIia7forqgx9wRSDNk4KI95dIV8jaiyR+PdPVkzaknN7x
+	Uzod0GLQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40590)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tTH30-0001mb-24;
+	Thu, 02 Jan 2025 08:59:18 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tTH2v-00008E-0w;
+	Thu, 02 Jan 2025 08:59:13 +0000
+Date: Thu, 2 Jan 2025 08:59:13 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Eric Woudstra <ericwouds@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 2/3] net: pcs: pcs-mtk-lynxi: implement
+ pcs_inband_caps() method
+Message-ID: <Z3ZVYeT0vD85Srsd@shell.armlinux.org.uk>
+References: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
+ <E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk>
+ <e1e271e3-b684-46d2-879d-e3481d25a712@gmail.com>
 MIME-Version: 1.0
-References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
- <20241231004311.2574720-1-martin.blumenstingl@googlemail.com> <l3u3wtnxyhrwjynevkwfjwarisc4yt4xy2rbzf5kb7k5l5dw3n@lxqtimymyjg6>
-In-Reply-To: <l3u3wtnxyhrwjynevkwfjwarisc4yt4xy2rbzf5kb7k5l5dw3n@lxqtimymyjg6>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Tue, 31 Dec 2024 19:49:40 +0100
-Message-ID: <CAFBinCAh8iazDNx6GtOOJyXh_V-NfUs6Uf=ywN9kvQGPEmjrKQ@mail.gmail.com>
-Subject: Re: [PATCH v10 03/10] drm/connector: implement generic HDMI audio helpers
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com, 
-	alain.volmat@foss.st.com, alim.akhtar@samsung.com, andrzej.hajda@intel.com, 
-	andy.yan@rock-chips.com, angelogioacchino.delregno@collabora.com, 
-	broonie@kernel.org, chunkuang.hu@kernel.org, dave.stevenson@raspberrypi.com, 
-	dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com, 
-	inki.dae@samsung.com, jani.nikula@linux.intel.com, jernej.skrabec@gmail.com, 
-	jonas@kwiboo.se, kernel-list@raspberrypi.com, krzk@kernel.org, 
-	kyungmin.park@samsung.com, lgirdwood@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com, 
-	matthias.bgg@gmail.com, mcanal@igalia.com, mripard@kernel.org, 
-	neil.armstrong@linaro.org, p.zabel@pengutronix.de, perex@perex.cz, 
-	ple@baylibre.com, rfoss@kernel.org, rgallaispou@gmail.com, simona@ffwll.ch, 
-	sw0312.kim@samsung.com, tiwai@suse.com, tzimmermann@suse.de
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e1e271e3-b684-46d2-879d-e3481d25a712@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241231_104952_745680_5D774895 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20250102_010145_375926_DD1F409F 
+X-CRM114-Status: GOOD (  20.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,52 +88,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 31, 2024 at 3:34=E2=80=AFAM Dmitry Baryshkov
-<dmitry.baryshkov@linaro.org> wrote:
-[...]
-> > I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
-> > seems that there is only a single driver which uses the .prepare
-> > callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
-> > implement .hw_params instead.
->
-> Yes. However .hw_params don't have access to the infoframe contents, so
-> I had to settle on implementing .prepare.
-While debugging I noticed something unrelated to my problem:
-hdmi_codec_spdif_dai_ops does not implement .prepare().
-FYI just in case someone wants to use your patches and feed the
-hdmi-codec with SPDIF instead of I2S.
+On Tue, Dec 17, 2024 at 08:49:58AM +0100, Eric Woudstra wrote:
+> On 12/5/24 10:42 AM, Russell King (Oracle) wrote:
+> > Report the PCS in-band capabilities to phylink for the LynxI PCS.
+> > 
+> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> > Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  drivers/net/pcs/pcs-mtk-lynxi.c | 16 ++++++++++++++++
+> >  1 file changed, 16 insertions(+)
+> > 
+> > diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+> > index 4f63abe638c4..7de804535229 100644
+> > --- a/drivers/net/pcs/pcs-mtk-lynxi.c
+> > +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+> > @@ -88,6 +88,21 @@ static struct mtk_pcs_lynxi *pcs_to_mtk_pcs_lynxi(struct phylink_pcs *pcs)
+> >  	return container_of(pcs, struct mtk_pcs_lynxi, pcs);
+> >  }
+> >  
+> > +static unsigned int mtk_pcs_lynxi_inband_caps(struct phylink_pcs *pcs,
+> > +					      phy_interface_t interface)
+> > +{
+> > +	switch (interface) {
+> > +	case PHY_INTERFACE_MODE_1000BASEX:
+> > +	case PHY_INTERFACE_MODE_2500BASEX:
+> 
+> Isn't this the place now where to report to phylink, that this PCS does
+> not support in-band at 2500base-x?
 
-> >
-> > The audio controller code for my platform is already upstream:
-> > - sound/soc/meson/aiu-codec-ctrl.c
-> > - sound/soc/meson/aiu-encoder-i2s.c
-> > - sound/soc/meson/aiu-fifo-i2s.c
-> >
-> > My understanding is that you have a platform with a lontium-lt9611
-> > HDMI controller available for testing. Can you please help me
-> > investigate and find out which piece of code is calling
-> > hdmi_codec_prepare() and therefore lt9611_hdmi_audio_prepare() on
-> > your board?
->
-> Sure, this is the call trace on my platform (Qualcomm SDM845,
-> sdm845-db845c.dts):
->
-> lt9611_hdmi_audio_prepare+0x1c/0xc0 (P)
-> drm_bridge_connector_audio_prepare+0x2c/0x40 (L)
-> drm_bridge_connector_audio_prepare+0x2c/0x40
-> drm_connector_hdmi_audio_prepare+0x24/0x30
-> hdmi_codec_prepare+0xec/0x144
-> snd_soc_pcm_dai_prepare+0x78/0x10c
-Thank you, this helps! snd_soc_pcm_dai_prepare() is where it breaks for me.
-I suspect that it's an sound card issue on our platform, so I'm hoping
-that Jerome (author of the Amlogic ASoC drivers) will help me debug
-it: [0]
+No - look at the arguments to this function. What arguments would this
+function make a decision whether in-band is supported in any interface
+mode?
 
+The correct place is the .pcs_inband_caps(), which from reading the
+code, I understood that in-band can be used at 2500base-X with this
+PCS. See
+https://patch.msgid.link/E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk
+which was merged at the beginning of December, and if you are correct,
+the patch was wrong.
 
-Best regards,
-Martin
-
-
-[0] https://lore.kernel.org/linux-amlogic/CAFBinCDdiJ3UNVUcShjq=3D7U2=3DoUw=
-T3ciYdKSuZ5TdcrikxFBpg@mail.gmail.com/
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
