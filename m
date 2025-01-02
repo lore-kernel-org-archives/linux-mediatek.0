@@ -4,71 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4837CE77188
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 11:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C54EE77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 12:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KJABaTnDleYX/TgtIWX2SB42SRqJm2UoZZwqxNnCbz0=; b=DPQBBH7fVWBaXcgPYXlrJv7w73
-	iouVpD7VcRlAlte0h5d2fXUG8NTqNlX5NDXVfc3MBtPO2alfwi98+qLxx7+s9iH6+iKLBWmSoF3or
-	147NgSABgIfslqgV9v09vJwdY+w/t4ZBHegyKR+y5YRFHJAhRJsDBkHZTxBDamLf+DCgvNr4QAW2y
-	XYe5Yeoi32kF9iP6+iItlpcw2X97MIhS0Zk0ALqnW3buCbywUHdYB+1oj/wCpEzmtq6nRyLXgYa8T
-	I3EAO/oJdgx/ceaLKaD/EKDAeAYpFxVpG6/YOMg1M1GYCZ7JedKaKPLIT18G0VXbtzKOXG3FFrL4q
-	VpezGEnw==;
+	bh=Y4swbWpcLbK+AHGIVD/5KqvL65+6xD6kgXdMDQfd5tM=; b=ckT+WlUIoWJqriDtpTRSK/IyqN
+	hzUO4QXyyHanth8/75c7S0ttP9RLDtZiOIRPZoPxCBeu++dxoXBbKNJsizux+MxW3yyK9RnsMSiNi
+	0rloQ+iJM4FAc45e3XfO29y/J1jyA2uPgGYJ6OtD2bzo2JE2NNQA+vjzntgFSTFvWZban3hkik7Lr
+	J7n16MG6989LZ+Jxng5l/0xZwHToUSvDGftIo4iHsc4Yme2Kqw8kIBvq9c8Y/GAUfMLN3oic5uh8f
+	k2RzHGj+Kmq26agolbsGnBBM4udFJ8WB6Uv0fGXerCy5WGHd/gFnizkoBkw/8uuMVDA+NXVUUTuyz
+	a54DKU1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTJPP-0000000AFy3-2Nrt;
-	Thu, 02 Jan 2025 11:30:35 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tTK5E-0000000AKaj-2VXx;
+	Thu, 02 Jan 2025 12:13:48 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTJOD-0000000AFri-291N;
-	Thu, 02 Jan 2025 11:29:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 17417A4104C;
-	Thu,  2 Jan 2025 11:27:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B557C4CED0;
-	Thu,  2 Jan 2025 11:29:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735817360;
-	bh=BsVLFIudwmLHKq9cvrX81yCcvG7hbmBcBnWpo5dVIeg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Y2ePCEQBPzD3S5N1O65KL4gEe1CJVZTgG1HFFy0f0TO44O+gA5C6BkhshJdnfcCeZ
-	 gzwTM0K/PmRf3Y4WxcbR0ynXEZImUqn49SZGGuDA9vYGP6jcfQqXaRaJOaM3hKjmuX
-	 5Ah+//iGBjGv2QaN3dHdj/QUpB9Yide4n3tD+WLWl2sN04bo0cOwUSPFo4Xf8ry7gO
-	 ukg3fcFozaBglJN7x9o0SsQuC2+ZLv0oJZz4qayha+n3ZkG1aup7R/+x+wUaDIqse7
-	 PyoPeSBXr/FieykEYc+jJUQL8dDQlQ/3RXtiiCu8XdfY8Kl6Z6Hp8idWEwm/R2SE2s
-	 lzIV5iYOzjxAw==
-Date: Thu, 2 Jan 2025 12:29:17 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH v3] PCI: mediatek-gen3: Avoid PCIe resetting via
- PCIE_RSTB for Airoha EN7581 SoC
-Message-ID: <Z3Z4jcwtgcXk9Zo6@lore-desk>
-References: <20241113-pcie-en7581-rst-fix-v3-1-23c5082335f7@kernel.org>
- <20241230185810.GA3960934@bhelgaas>
+	id 1tTK44-0000000AKPR-1I9f;
+	Thu, 02 Jan 2025 12:12:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1735819956; x=1767355956;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=XM7fKrVvkO92waHy3V3qQx/hqHJdwWyUKnuOdjW9YTA=;
+  b=NZUe/GDWQkUVTsY0OaQeqKqhxmDTB76CcVFf+E2Qtn8RukzcDhRme/K+
+   IVpl7L2bUS+pLENl7tElSkNvMkxkMKAJxClnZtZe4rvB3xEoQ4uTezDVq
+   tKS2Zaf1i2VuVgzkKsrLAr71k49NNGoUpb65dzxj5ZMAnj3BtBmafIO/v
+   hGJIennOR3fuY/u8MC8DgQS4zGKbSE8JWNMIqHQFZ/MJk4/eNNiTHRjWt
+   LyVHdBFiqO0wRrui+t9ARkU6wz1Uwd/qUqeB+jGQ7OZJwQTg1dcfLjRCG
+   EwPI1eTvZQXyME/i8mDDTEOyE3ebg2IdDNA5FoRe9PsDdwdiXywcmF+Zu
+   w==;
+X-CSE-ConnectionGUID: 4NW6LpHTQbSdU/y+DviQOQ==
+X-CSE-MsgGUID: 9kgYLhwCSaaln39ZnFdn8g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11302"; a="47467311"
+X-IronPort-AV: E=Sophos;i="6.12,285,1728975600"; 
+   d="scan'208";a="47467311"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jan 2025 04:12:33 -0800
+X-CSE-ConnectionGUID: gdqhT1dXSfGBOKsyCDUT7Q==
+X-CSE-MsgGUID: jVY8ZuGMS4mbgz5T/QdHag==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,285,1728975600"; 
+   d="scan'208";a="101328025"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 02 Jan 2025 04:12:30 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tTK3v-0008UF-13;
+	Thu, 02 Jan 2025 12:12:27 +0000
+Date: Thu, 2 Jan 2025 20:12:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: shiming cheng <shiming.cheng@mediatek.com>,
+	willemdebruijn.kernel@gmail.com, davem@davemloft.net,
+	dsahern@kernel.org, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, horms@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	lena.wang@mediatek.com, shiming cheng <shiming.cheng@mediatek.com>
+Subject: Re: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail
+ without IPv6 rule.
+Message-ID: <202501021940.ecvmrJJb-lkp@intel.com>
+References: <20250102095114.25860-1-shiming.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="PirDLZErFthZy50t"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241230185810.GA3960934@bhelgaas>
+In-Reply-To: <20250102095114.25860-1-shiming.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_032921_714172_24DB12BF 
-X-CRM114-Status: GOOD (  39.48  )
+X-CRM114-CacheID: sfid-20250102_041236_357071_88276860 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,231 +93,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi shiming,
 
---PirDLZErFthZy50t
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+kernel test robot noticed the following build warnings:
 
-> On Wed, Nov 13, 2024 at 02:58:08PM +0100, Lorenzo Bianconi wrote:
-> > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > causing occasional PCIe link down issues. In order to overcome the
-> > problem, PCIE_RSTB signals are not asserted/released during device prob=
-e or
-> > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
-> > (0x88) and REG_RESET_CONTROL (0x834) registers available in the clock
-> > module running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
-> >=20
-> > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-> > specify per-SoC capabilities.
+[auto build test WARNING on net-next/main]
+[also build test WARNING on net/main linus/master v6.13-rc5 next-20241220]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Hi Bjorn,
+url:    https://github.com/intel-lab-lkp/linux/commits/shiming-cheng/ipv6-socket-SO_BINDTODEVICE-lookup-routing-fail-without-IPv6-rule/20250102-174939
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20250102095114.25860-1-shiming.cheng%40mediatek.com
+patch subject: [PATCH]  ipv6: socket SO_BINDTODEVICE lookup routing fail without IPv6 rule.
+config: x86_64-defconfig (https://download.01.org/0day-ci/archive/20250102/202501021940.ecvmrJJb-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250102/202501021940.ecvmrJJb-lkp@intel.com/reproduce)
 
-similar to the other series, this patch is already in Krzysztof's branch.
-Do you prefer to resend it or just incremental changes?
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501021940.ecvmrJJb-lkp@intel.com/
 
->=20
-> Is there a URL or some other way to cite erratum documentation for
-> this?
->=20
-> > Tested-by: Hui Ma <hui.ma@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> > Changes in v3:
-> > - cosmetics
-> > - Link to v2: https://lore.kernel.org/r/20241104-pcie-en7581-rst-fix-v2=
--1-ffe5839c76d8@kernel.org
-> >=20
-> > Changes in v2:
-> > - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
-> >   reset callback
-> > - fix the leftover case in mtk_pcie_suspend_noirq routine
-> > - add more comments
-> > - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1=
--1-1043fb63ffc9@kernel.org
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 60 ++++++++++++++++++++-=
---------
-> >  1 file changed, 42 insertions(+), 18 deletions(-)
-> >=20
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
-controller/pcie-mediatek-gen3.c
-> > index 16a55711a7f3bdc8d6620029e3d2cfdd40b537b7..443072adb9b52a6934a5d1e=
-38eb6fca5f86a1e13 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -128,10 +128,18 @@
-> > =20
-> >  struct mtk_gen3_pcie;
-> > =20
-> > +enum mtk_gen3_pcie_flags {
-> > +	SKIP_PCIE_RSTB	=3D BIT(0), /* skip PCIE_RSTB signals configuration
-> > +				   * during device probing or suspend/resume
-> > +				   * phase in order to avoid hw bugs/issues.
->=20
-> Maybe "Skip PERST# assertion"?
->=20
-> s/in order to/to/
+All warnings (new ones prefixed by >>):
 
-ack, I will fix it.
+   In file included from include/linux/linkage.h:7,
+                    from include/linux/kernel.h:18,
+                    from net/ipv6/ip6_output.c:26:
+   net/ipv6/ip6_output.c:1307:19: error: non-static declaration of 'ip6_sk_dst_lookup_flow' follows static declaration
+    1307 | EXPORT_SYMBOL_GPL(ip6_sk_dst_lookup_flow);
+         |                   ^~~~~~~~~~~~~~~~~~~~~~
+   include/linux/export.h:56:28: note: in definition of macro '__EXPORT_SYMBOL'
+      56 |         extern typeof(sym) sym;                                 \
+         |                            ^~~
+   include/linux/export.h:69:41: note: in expansion of macro '_EXPORT_SYMBOL'
+      69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
+         |                                         ^~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1307:1: note: in expansion of macro 'EXPORT_SYMBOL_GPL'
+    1307 | EXPORT_SYMBOL_GPL(ip6_sk_dst_lookup_flow);
+         | ^~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1291:19: note: previous definition of 'ip6_sk_dst_lookup_flow' with type 'struct dst_entry *(struct sock *, struct flowi6 *, const struct in6_addr *, bool)' {aka 'struct dst_entry *(struct sock *, struct flowi6 *, const struct in6_addr *, _Bool)'}
+    1291 | struct dst_entry *ip6_sk_dst_lookup_flow(struct sock *sk, struct flowi6 *fl6,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1309:36: error: invalid storage class for function 'ip6_opt_dup'
+    1309 | static inline struct ipv6_opt_hdr *ip6_opt_dup(struct ipv6_opt_hdr *src,
+         |                                    ^~~~~~~~~~~
+   net/ipv6/ip6_output.c:1315:35: error: invalid storage class for function 'ip6_rthdr_dup'
+    1315 | static inline struct ipv6_rt_hdr *ip6_rthdr_dup(struct ipv6_rt_hdr *src,
+         |                                   ^~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1321:13: error: invalid storage class for function 'ip6_append_data_mtu'
+    1321 | static void ip6_append_data_mtu(unsigned int *mtu,
+         |             ^~~~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1345:12: error: invalid storage class for function 'ip6_setup_cork'
+    1345 | static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
+         |            ^~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1420:12: error: invalid storage class for function '__ip6_append_data'
+    1420 | static int __ip6_append_data(struct sock *sk,
+         |            ^~~~~~~~~~~~~~~~~
+   In file included from include/linux/linkage.h:7,
+                    from include/linux/kernel.h:18,
+                    from net/ipv6/ip6_output.c:26:
+   net/ipv6/ip6_output.c:1864:19: error: non-static declaration of 'ip6_append_data' follows static declaration
+    1864 | EXPORT_SYMBOL_GPL(ip6_append_data);
+         |                   ^~~~~~~~~~~~~~~
+   include/linux/export.h:56:28: note: in definition of macro '__EXPORT_SYMBOL'
+      56 |         extern typeof(sym) sym;                                 \
+         |                            ^~~
+   include/linux/export.h:69:41: note: in expansion of macro '_EXPORT_SYMBOL'
+      69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
+         |                                         ^~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1864:1: note: in expansion of macro 'EXPORT_SYMBOL_GPL'
+    1864 | EXPORT_SYMBOL_GPL(ip6_append_data);
+         | ^~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1828:5: note: previous definition of 'ip6_append_data' with type 'int(struct sock *, int (*)(void *, char *, int,  int,  int,  struct sk_buff *), void *, size_t,  int,  struct ipcm6_cookie *, struct flowi6 *, struct rt6_info *, unsigned int)' {aka 'int(struct sock *, int (*)(void *, char *, int,  int,  int,  struct sk_buff *), void *, long unsigned int,  int,  struct ipcm6_cookie *, struct flowi6 *, struct rt6_info *, unsigned int)'}
+    1828 | int ip6_append_data(struct sock *sk,
+         |     ^~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1866:13: error: invalid storage class for function 'ip6_cork_steal_dst'
+    1866 | static void ip6_cork_steal_dst(struct sk_buff *skb, struct inet_cork_full *cork)
+         |             ^~~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1874:13: error: invalid storage class for function 'ip6_cork_release'
+    1874 | static void ip6_cork_release(struct inet_cork_full *cork,
+         |             ^~~~~~~~~~~~~~~~
+   In file included from include/linux/linkage.h:7,
+                    from include/linux/kernel.h:18,
+                    from net/ipv6/ip6_output.c:26:
+   net/ipv6/ip6_output.c:2007:19: error: non-static declaration of 'ip6_push_pending_frames' follows static declaration
+    2007 | EXPORT_SYMBOL_GPL(ip6_push_pending_frames);
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/export.h:56:28: note: in definition of macro '__EXPORT_SYMBOL'
+      56 |         extern typeof(sym) sym;                                 \
+         |                            ^~~
+   include/linux/export.h:69:41: note: in expansion of macro '_EXPORT_SYMBOL'
+      69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
+         |                                         ^~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:2007:1: note: in expansion of macro 'EXPORT_SYMBOL_GPL'
+    2007 | EXPORT_SYMBOL_GPL(ip6_push_pending_frames);
+         | ^~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:1997:5: note: previous definition of 'ip6_push_pending_frames' with type 'int(struct sock *)'
+    1997 | int ip6_push_pending_frames(struct sock *sk)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:2009:13: error: invalid storage class for function '__ip6_flush_pending_frames'
+    2009 | static void __ip6_flush_pending_frames(struct sock *sk,
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from include/linux/linkage.h:7,
+                    from include/linux/kernel.h:18,
+                    from net/ipv6/ip6_output.c:26:
+   net/ipv6/ip6_output.c:2031:19: error: non-static declaration of 'ip6_flush_pending_frames' follows static declaration
+    2031 | EXPORT_SYMBOL_GPL(ip6_flush_pending_frames);
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/export.h:56:28: note: in definition of macro '__EXPORT_SYMBOL'
+      56 |         extern typeof(sym) sym;                                 \
+         |                            ^~~
+   include/linux/export.h:69:41: note: in expansion of macro '_EXPORT_SYMBOL'
+      69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
+         |                                         ^~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:2031:1: note: in expansion of macro 'EXPORT_SYMBOL_GPL'
+    2031 | EXPORT_SYMBOL_GPL(ip6_flush_pending_frames);
+         | ^~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:2026:6: note: previous definition of 'ip6_flush_pending_frames' with type 'void(struct sock *)'
+    2026 | void ip6_flush_pending_frames(struct sock *sk)
+         |      ^~~~~~~~~~~~~~~~~~~~~~~~
+   net/ipv6/ip6_output.c:2074:1: error: expected declaration or statement at end of input
+    2074 | }
+         | ^
+   At top level:
+>> net/ipv6/ip6_output.c:2033:17: warning: 'ip6_make_skb' defined but not used [-Wunused-function]
+    2033 | struct sk_buff *ip6_make_skb(struct sock *sk,
+         |                 ^~~~~~~~~~~~
 
->=20
-> > +				   */
-> > +};
-> > +
-> >  /**
-> >   * struct mtk_gen3_pcie_pdata - differentiate between host generations
-> >   * @power_up: pcie power_up callback
-> >   * @phy_resets: phy reset lines SoC data.
-> > + * @flags: pcie device flags.
-> >   */
-> >  struct mtk_gen3_pcie_pdata {
-> >  	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> > @@ -139,6 +147,7 @@ struct mtk_gen3_pcie_pdata {
-> >  		const char *id[MAX_NUM_PHY_RESETS];
-> >  		int num_resets;
-> >  	} phy_resets;
-> > +	u32 flags;
-> >  };
-> > =20
-> >  /**
-> > @@ -405,22 +414,34 @@ static int mtk_pcie_startup_port(struct mtk_gen3_=
-pcie *pcie)
-> >  	val |=3D PCIE_DISABLE_DVFSRC_VLT_REQ;
-> >  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
-> > =20
-> > -	/* Assert all reset signals */
-> > -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > -	val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > -
-> >  	/*
-> > -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > -	 * for the power and clock to become stable.
-> > +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > +	 * causing occasional PCIe link down. In order to overcome the issue,
-> > +	 * PCIE_RSTB signals are not asserted/released at this stage and the
-> > +	 * PCIe block is reset configuting REG_PCI_CONTROL (0x88) and
->=20
-> s/configuting/configuring/
->=20
-> "... is reset configuring ..." doesn't read smoothly.  Maybe "reset
-> *using*" or similar?  (I guess "reset using" is what you wrote in the
-> commit log.)
->=20
-> I think if you mention the name of the en7581 clk function, that would
-> be enough, and we wouldn't need the register names, offsets, and
-> "available in the clock module".
 
-ack, I will fix it.
+vim +/ip6_make_skb +2033 net/ipv6/ip6_output.c
 
->=20
-> > +	 * REG_RESET_CONTROL (0x834) registers available in the clock module
-> > +	 * running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
->=20
-> Mention the en7581 clk function, not the generic
-> clk_bulk_prepare_enable().  It's hard to get from generic to specific.
+0bbe84a67b0b54 Vlad Yasevich 2015-01-31  2025  
+0bbe84a67b0b54 Vlad Yasevich 2015-01-31 @2026  void ip6_flush_pending_frames(struct sock *sk)
+0bbe84a67b0b54 Vlad Yasevich 2015-01-31  2027  {
+6422398c2ab092 Vlad Yasevich 2015-01-31  2028  	__ip6_flush_pending_frames(sk, &sk->sk_write_queue,
+6422398c2ab092 Vlad Yasevich 2015-01-31  2029  				   &inet_sk(sk)->cork, &inet6_sk(sk)->cork);
+0bbe84a67b0b54 Vlad Yasevich 2015-01-31  2030  }
+a495f8364efe11 Chris Elston  2012-04-29  2031  EXPORT_SYMBOL_GPL(ip6_flush_pending_frames);
+6422398c2ab092 Vlad Yasevich 2015-01-31  2032  
+6422398c2ab092 Vlad Yasevich 2015-01-31 @2033  struct sk_buff *ip6_make_skb(struct sock *sk,
 
-ack, I will fix it.
-
->=20
-> > -	msleep(100);
-> > -
-> > -	/* De-assert reset signals */
-> > -	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RS=
-TB);
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> > +		/* Assert all reset signals */
-> > +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > +		val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> > +		       PCIE_PE_RSTB;
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +
-> > +		/*
-> > +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > +		 * for the power and clock to become stable.
->=20
-> Add PCIe CEM spec revision, since section numbers may change between
-> revisions.  I know you're just moving it, but this is a good chance to
-> fix this.
-
-ack, I will fix it.
->=20
-> Add blank lines between paragraphs.
-
-ack, I will fix it.
->=20
-> > +		msleep(PCIE_T_PVPERL_MS);
-> > +
-> > +		/* De-assert reset signals */
-> > +		val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> > +			 PCIE_PE_RSTB);
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	}
-> > =20
-> >  	/* Check if the link is up or not */
-> >  	err =3D readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-> > @@ -1179,10 +1200,12 @@ static int mtk_pcie_suspend_noirq(struct device=
- *dev)
-> >  		return err;
-> >  	}
-> > =20
-> > -	/* Pull down the PERST# pin */
-> > -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > -	val |=3D PCIE_PE_RSTB;
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> > +		/* Pull down the PERST# pin */
->=20
-> s/Pull down .../Assert PERST#/ to match other comments above
-
-ack, I will fix it.
-
-Regards,
-Lorenzo
-
->=20
-> > +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > +		val |=3D PCIE_PE_RSTB;
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	}
-> > =20
-> >  	dev_dbg(pcie->dev, "entered L2 states successfully");
-> > =20
-> > @@ -1233,6 +1256,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_=
-soc_en7581 =3D {
-> >  		.id[2] =3D "phy-lane2",
-> >  		.num_resets =3D 3,
-> >  	},
-> > +	.flags =3D SKIP_PCIE_RSTB,
-> >  };
-> > =20
-> >  static const struct of_device_id mtk_pcie_of_match[] =3D {
-> >=20
-> > ---
-> > base-commit: ff80d707f3cb5e8d9ec0739e0e5ed42dea179125
-> > change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
-> >=20
-> > Best regards,
-> > --=20
-> > Lorenzo Bianconi <lorenzo@kernel.org>
-> >=20
-
---PirDLZErFthZy50t
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ3Z4jQAKCRA6cBh0uS2t
-rCBXAQD3SD0oUw2ZZBP3AmWa2bTIzKpw1gIB/7KUaZnNoTJLhQEAmhqyCsWcYPH+
-Nwes+DolAqE6JtE58jfEYgzTTYMM7ww=
-=qzLh
------END PGP SIGNATURE-----
-
---PirDLZErFthZy50t--
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
