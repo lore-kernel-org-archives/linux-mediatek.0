@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 991E3E7718B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 14:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 899A5E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 16:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mBLtMIWCzGEXzdx5eI9g0TlrkqOFWxRBYuShffyy1lg=; b=1bAgjsRnqSH+nQzp3aM+cQ5cFM
-	oB/s4m2Wu6N1zyZtpcjREs7BA5R/YVvfHUBUZjUuRNeuLyNENwCp3tXuitDY/3OUAWnHPw8TVn61E
-	5mGfGkes35k+oLLCuKwd9P/BLm6gT+Otjo5DXijmm3nvv6PQ4ovUiNWCklx43Ya05E5Asem6gT7Fb
-	68zUons7j85bWsKJY0w+euVP4sKDMG4ezRoCp1FF4Ka7OfX+QbmRS15OUujVqfLGsdfr/auc4ZP5s
-	Bi/SfLgf6IRVcpVnXorfpNwOJjFYfbNcpsGEu9n89/hEiAqWgS4sisldu2UCb4af7v7B0Ew2hzbjb
-	/XAyWKLw==;
+	bh=YEX07eVl8poJMk/2HTnl4uVgkRJpOJDNGu4gkKdNDK8=; b=YLgC2vuCNw9q7mAycWKQf4Ifc6
+	k4W5pnh8VWF2n0ggkA7yi0YurJFWHfwe/69oieXNEx4OrxFk44/Erd9fqzfX+Auclz/m8X8w3Dq2a
+	ZFYnJcy4FwPXqT40F9npQk6PvMhf1wi9/VBOaSb3hmR1XUTPBMbSfF8++W3mBafGOEVpMSlIR+PEO
+	DOnUvTA8VBUWOI4JraP8Jrk2qWL3k5jKn+VcEw+PnrOOq3JtFvKpnO3RRSCOmoIlvuDQzrxFxyG5e
+	Zunx8YNGTBkMds5mtdJ2lqxB6cz9/52kIEq9QogtihfadyxiT164QpB30VqmK4xHk3JEv6SQvXu/s
+	WKDZ/ewQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTLuV-0000000AZMy-2j6u;
-	Thu, 02 Jan 2025 14:10:51 +0000
+	id 1tTNeZ-0000000Am81-2agA;
+	Thu, 02 Jan 2025 16:02:31 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTLtJ-0000000AZAl-1uoh;
-	Thu, 02 Jan 2025 14:09:38 +0000
+	id 1tTNZZ-0000000AlL2-0C1F;
+	Thu, 02 Jan 2025 15:57:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9ED035C5F52;
-	Thu,  2 Jan 2025 14:08:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABE10C4CED0;
-	Thu,  2 Jan 2025 14:09:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 87CEE5C6113;
+	Thu,  2 Jan 2025 15:56:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9958C4CED0;
+	Thu,  2 Jan 2025 15:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735826976;
-	bh=PnfUdqriKM0fSfAEgGEyzxBSHRDzsPuhyp22VEzJ+zE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=tTFk1NXgn9EDZKfXF5BDaSQc8HhbOAu8ZruvzIuIuCUlR4fUnlVw5TR2WE9iW5aV7
-	 Zd/xOpRCFJ3ZYigX3p30GKw61oNjrZQv6UzaaL9IFcnrlkkJ7TRdAPgHZjg/QAPkwG
-	 rItz6XSzx4gdkC33RxMcKTIw1BZv2XAIbhBvFUtrSuOgaaCS0MTAgnCqMkmMCahNkM
-	 3AyBSv5vyQgaKPXC0m9PyY6asR1UGyDEin8bK4sKtkOXfKg/1cW36oBa2rIP9z9lCH
-	 E9EdOU9hDUB1jePNSnQNDN6AdmFHXp3iuT/2mdzmVCwGxCw1xAIc5XrV1ry6txbcFp
-	 fUa8UukIdbmsw==
-Received: by mail-pj1-f54.google.com with SMTP id 98e67ed59e1d1-2ef748105deso12081096a91.1;
-        Thu, 02 Jan 2025 06:09:36 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXOhzNIPihrlSAwBt5Hu2PIj/yHavbUDZzDS9SUJP/EQ2q34W/zalBlYT34jGwumGXdMcdu9GnQzi3Sefwz8Jpp@lists.infradead.org, AJvYcCXy2cjmBIW7ZO64XUeJY6VS+vWT/h1XowrDoQRVFrF9bZbpZ4Et9DoduG0Yp3agnrZcxxqY2ISXCvKzvH6+DNU=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCDyLTeKg2Mzp9+s4L0r/S7ek778E36GSKgHYs/uCKontWytJA
-	8giicQuMCMfxozMXjIN86C6qWHY+VhuWbjhVymuNe3hd753zuddkf1IBEaKRDOLAmBYA9bHLmiy
-	fnRuDkDJx4eUEL86P4roSB7JrIQ==
-X-Google-Smtp-Source: AGHT+IEzcCxeAv7vqklDx1+zkkQeCdgFDrbxA+g+5yLSP75q6XuPDjVTFmZURNL7tgRYY48Ut4xg8mgh0ofdN4VVFek=
-X-Received: by 2002:a17:90a:d448:b0:2f4:43ce:dcea with SMTP id
- 98e67ed59e1d1-2f452ee5e95mr61497972a91.25.1735826976248; Thu, 02 Jan 2025
- 06:09:36 -0800 (PST)
+	s=k20201202; t=1735833439;
+	bh=l9krntIFJFgGFkmtKhs3ubXfoLYdo1dGd3fujb63qS0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GWQA/5ifHfAmW52ebrzWPjPHWHUb8Loa0cT4PsfsmvUVhRjgfv/ZpWcPVVV44iIHC
+	 bKsRoUCZPiDbMC83ImLbuFqmKm6mstitNOepgNr5aA+HsdQQ5C/tA6NY4h6OXMmJ+q
+	 6IBkszDnPvup/cfBcTL0bFgCGnvypTjtSYHpBaz56PotKjtai449QiPJG7IsNBAzQA
+	 20e2CC1lJfbpujiBtIWZ89nDEcmL5mhMym77NPlIVjh1KL9i/L1jZH2JVeIw2IVZrS
+	 BUwMKBBJaezhcfg3jXKBCIaQleuhDPZmtL04RUNxi9PR43T3d18hHd98xRuG9UMC8O
+	 wiAdixR9p92dQ==
+Message-ID: <dfd37ca0-14c6-4cc1-8fae-f1aa2d23e148@kernel.org>
+Date: Thu, 2 Jan 2025 08:57:17 -0700
 MIME-Version: 1.0
-References: <20241218113448.2992-1-liankun.yang@mediatek.com>
-In-Reply-To: <20241218113448.2992-1-liankun.yang@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 2 Jan 2025 22:10:10 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__JXYfCRTBh_TYWCNy1d0hcNXOzeR8Czk=KiauEs6xcXQ@mail.gmail.com>
-Message-ID: <CAAOTY__JXYfCRTBh_TYWCNy1d0hcNXOzeR8Czk=KiauEs6xcXQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/1] drm/mediatek: Add return value check when reading DPCD
-To: Liankun Yang <liankun.yang@mediatek.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com, 
-	granquet@baylibre.com, dmitry.osipenko@collabora.com, 
-	rex-bc.chen@mediatek.com, jitao.shi@mediatek.com, mac.shen@mediatek.com, 
-	peng.liu@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ipv6: socket SO_BINDTODEVICE lookup routing fail without
+ IPv6 rule.
+Content-Language: en-US
+To: shiming cheng <shiming.cheng@mediatek.com>,
+ willemdebruijn.kernel@gmail.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: netdev@vger.kernel.org, lena.wang@mediatek.com
+References: <20250102095114.25860-1-shiming.cheng@mediatek.com>
+From: David Ahern <dsahern@kernel.org>
+In-Reply-To: <20250102095114.25860-1-shiming.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_060937_582746_09CEF429 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20250102_075721_198734_B0F0A380 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,73 +78,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Liankun:
+On 1/2/25 2:51 AM, shiming cheng wrote:
+>      When using socket IPv6 with SO_BINDTODEVICE, if IPv6 rule is not
+>         matched, it will return ENETUNREACH. In fact, IPv4 does not behave
+>         this way. IPv4 prioritizes looking up IP rules for routing and
+>         forwarding, if not matched it will use socket-bound out interface
+>         to send packets. The modification here is to make IPv6 behave the
+>         same as IPv4. If IP rule is not found, it will also use
+>         socket-bound out interface to send packts.
+> 
 
-Liankun Yang <liankun.yang@mediatek.com> =E6=96=BC 2024=E5=B9=B412=E6=9C=88=
-18=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=887:35=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> Returns the number of bytes transferred (1) on success.
-> Check the return value to confirm that AUX communication is successful.
->
-> Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort drive=
-r")
->
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
-> ---
-> Changes in V3:
-> - Using drm_dp_read_sink_count() to improve patch.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20241128030940.=
-25657-1-liankun.yang@mediatek.com/
->
-> Changes in V2:
-> - Modify Fixes in Commit Message.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.=
-5385-1-liankun.yang@mediatek.com/
-> ---
->  drivers/gpu/drm/mediatek/mtk_dp.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
-/mtk_dp.c
-> index 36713c176cfc..b26dad8783be 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -2100,7 +2100,6 @@ static enum drm_connector_status mtk_dp_bdg_detect(=
-struct drm_bridge *bridge)
->         struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
->         enum drm_connector_status ret =3D connector_status_disconnected;
->         bool enabled =3D mtk_dp->enabled;
-> -       u8 sink_count =3D 0;
->
->         if (!mtk_dp->train_info.cable_plugged_in)
->                 return ret;
-> @@ -2115,8 +2114,8 @@ static enum drm_connector_status mtk_dp_bdg_detect(=
-struct drm_bridge *bridge)
->          * function, we just need to check the HPD connection to check
->          * whether we connect to a sink device.
->          */
-> -       drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
-> -       if (DP_GET_SINK_COUNT(sink_count))
-> +
-> +       if (drm_dp_read_sink_count(&mtk_dp->aux))
+Please create test cases for IPv4 and IPv6 showing the problem - what
+you are configuring and the expected result.
 
-if (drm_dp_read_sink_count(&mtk_dp->aux) > 0)
+Also, commit messages should align with first column unless there is a
+reason for an indentation.
 
-With this fix-up, applied to mediatek-drm-fixes [1], thanks.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
-
-Regards,
-Chun-Kuang.
-
->                 ret =3D connector_status_connected;
->
->         if (!enabled)
-> --
-> 2.45.2
->
 
