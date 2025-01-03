@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 521DEE7718F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 09:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF9BE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 09:31:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=blpJvCE+64DASk+ANElQCfdBW1sWdd6hVDmFs46bAhY=; b=4jmzZMigbWRb/96PERJTMUs02w
-	jnWFUnxtdBpaA0N4KLVkfWCx0I8rErJIQ747HVhmO6sAl8ZIjPombeQ7LdRdM5IrIKsE+4+SCGi8e
-	I0yNhXaGpBwXYxCNwkjA3/NgtqApgw7FCiqIRugIQoP5eAkydaL3t03WRFd/NOwL+ccTQ+Xt5iOFV
-	NoaxvUUzS3kua+rtxyjwVKfX5mFCnrl1K4mwiLdGc4ur6mJLGOnHZAj3uQqAH2E96KP63YVX+wRWb
-	xdL4ztCgeWDu5md7ot08zgcxkng5t9P+FQ9WLYPIUWaZON5jvdf34UiBXHqaZtv3rCoJKRxpztyYw
-	/VAdm6bA==;
+	bh=eZBnUmnMMAMfNBHLGsg9fMapjUleNoQ++cZwxgWCfWQ=; b=Xk7nL+tVtz3bUK9hUYYqoGhDuk
+	ETTByzSNiDh4qD0JD3beN6ZacvVn2auI0dOfKXb9VhGAEd6QS11siI32icmpNSqPvYh1sxIZ13ZYz
+	g+cMayKeVy/B+aBrqlAQD9aArYDUY/QU5QKSRdtDrPU7dqtVziP0VCAfhhmDVI55fWthQPbHS2kSn
+	35m0b1+IVSVr7qHl+emqiZcUY0snssugWyv8zvcvhR0g0uXRBP3kv2pH331/vLJc8hIPBJpzV/QHJ
+	vi0TnpXYKsk+iuk7v1JC5wavxlZqJ37eazIpB4PWd43aspAVxXqnFFfaR+3MzXUxukBL9zdGG55Pz
+	Xsi+o03Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTdyS-0000000Cbt7-190l;
-	Fri, 03 Jan 2025 09:28:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tTe1v-0000000CcWE-3Rz2;
+	Fri, 03 Jan 2025 09:31:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTdwo-0000000CbTv-0dU2;
-	Fri, 03 Jan 2025 09:26:27 +0000
+	id 1tTdzV-0000000Cc5N-2A7x;
+	Fri, 03 Jan 2025 09:29:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1735896383;
-	bh=tq0BNbwUpTeePu6kJCwpL8zpGNCOv2kH1BZGfG9AtRs=;
+	s=mail; t=1735896551;
+	bh=1EkZCsAiRqfDtZ/Tc5fh3hJ4LLDdivzPZL9UBgudwok=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SD7VUe/BqaCP7/jdawDnHvwK3xeH5gwaU4kXML+3nwWJ6Sh6EdlCUO9t0j+L/o2pv
-	 tsuknYq5B//KtfX/b4fhaqb9D+LG4sN+UO6ObpmjR+A6dpmdJuYsG45115A4DPg2pQ
-	 4BchYpp8X4yZSuCgbeOALEqm4PbcuzONJgezhMKMaWCDYVHrQK8VG+iPPPNeMGV1BZ
-	 mOqysn57+PQvlgt6+UA4nt8e/ZM4r2t45CaYzxmjby1v4uUe3DGZxeD9FMQNX8nudq
-	 M5S3hp9cYWiW9syrQ5/4A7yqZpvv19ktrSvnXiUn7bMTHlIB0DJ3qn+Vtc1rQtYq+e
-	 5U5ciLldwJyyA==
+	b=E+7p/7rMe4PAa4LM0kSw8xzFdN+zGRyjxWOn0lMCpc6E2VjQmqMlsSsOc7ZPoq9p7
+	 QUcSdel8jDfuhfVtd44c9joi+Wq+hISPPU9BC3DaukPhTW74UzwDaLgfAUfBhgxkfn
+	 Vv+Vi3todqQ+24cPdz8kCtZyMH5zJHqkxycW3vD/lTRzAV+QL398IA3lGEUW/ABchI
+	 XWuakUiYXp8JUy58jU2HjH+gCDtRrTlfGAtdL7o88vJ0ed86/sbpeLsuNsbY4mguOr
+	 XbsLLfU04ChKG2u56OUE7A09nqHbPuqhs0zn0dZeM0xinU1kdbiamAT7d6HY9qcnQq
+	 FDX9X3i/53UEg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 75DC317E153E;
-	Fri,  3 Jan 2025 10:26:22 +0100 (CET)
-Message-ID: <0555fb64-312d-4490-9b03-89fca580c602@collabora.com>
-Date: Fri, 3 Jan 2025 10:26:21 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A6ED217E153E;
+	Fri,  3 Jan 2025 10:29:10 +0100 (CET)
+Message-ID: <9a874a5b-c698-4185-bb7f-f17245381af1@collabora.com>
+Date: Fri, 3 Jan 2025 10:29:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: PCI: mediatek-gen3: Add MT8196 support
+Subject: Re: [PATCH 4/5] PCI: mediatek-gen3: Don't reply AXI slave error
 To: Jianjun Wang <jianjun.wang@mediatek.com>,
  Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -60,15 +60,15 @@ Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Xavier Chang <Xavier.Chang@mediatek.com>
 References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
- <20250103060035.30688-2-jianjun.wang@mediatek.com>
+ <20250103060035.30688-5-jianjun.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250103060035.30688-2-jianjun.wang@mediatek.com>
+In-Reply-To: <20250103060035.30688-5-jianjun.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_012626_346514_739CE240 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20250103_012913_729770_3D288935 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +84,62 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 03/01/25 07:00, Jianjun Wang ha scritto:
-> Add compatible string and clock definition for MT8196. It has 6 clocks like
-> the MT8195, but 2 of them are different.
+> There are some circumstances where the EP device will not respond to
+> non-posted access from the root port (e.g., MMIO read). In such cases,
+> the root port will reply with an AXI slave error, which will be treated
+> as a System Error (SError), causing a kernel panic and preventing us
+> from obtaining any useful information for further debugging.
+> 
+> We have added a new bit in the PCIE_AXI_IF_CTRL_REG register to prevent
+> PCIe AXI0 from replying with a slave error. Setting this bit on an older
+> platform that does not support this feature will have no effect.
+> 
+> By preventing AXI0 from replying with a slave error, we can keep the
+> kernel alive and debug using the information from AER.
 > 
 > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 > ---
->   .../bindings/pci/mediatek-pcie-gen3.yaml      | 29 +++++++++++++++++++
->   1 file changed, 29 insertions(+)
+>   drivers/pci/controller/pcie-mediatek-gen3.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> index f05aab2b1add..b4158a666fb6 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -51,6 +51,7 @@ properties:
->                 - mediatek,mt7986-pcie
->                 - mediatek,mt8188-pcie
->                 - mediatek,mt8195-pcie
-> +              - mediatek,mt8196-pcie
->             - const: mediatek,mt8192-pcie
->         - const: mediatek,mt8192-pcie
->         - const: airoha,en7581-pcie
-> @@ -197,6 +198,34 @@ allOf:
->             minItems: 1
->             maxItems: 2
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 4bd3b39eebe2..48f83c2d91f7 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -87,6 +87,9 @@
+>   #define PCIE_LOW_POWER_CTRL_REG		0x194
+>   #define PCIE_FORCE_DIS_L0S		BIT(8)
 >   
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8196-pcie
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 6
+> +#define PCIE_AXI_IF_CTRL_REG		0x1a8
+> +#define PCIE_AXI0_SLV_RESP_MASK		BIT(12)
 > +
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: peri_26m
-> +            - const: peri_mem
-> +            - const: ahb_apb
+>   #define PCIE_PIPE4_PIE8_REG		0x338
+>   #define PCIE_K_FINETUNE_MAX		GENMASK(5, 0)
+>   #define PCIE_K_FINETUNE_ERR		GENMASK(7, 6)
+> @@ -469,6 +472,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+>   	val |= PCIE_FORCE_DIS_L0S;
+>   	writel_relaxed(val, pcie->base + PCIE_LOW_POWER_CTRL_REG);
+>   
+> +	/*
+> +	 * Prevent PCIe AXI0 from replying a slave error, as it will cause kernel panic
+> +	 * and prevent us from getting useful information.
+> +	 * Keep the kernel alive and debug using the information from AER.
+> +	 */
 
-ahb_apb is a bus clock, so you can set it as
+Isn't it safer if we set this bit at the beginning of mtk_pcie_startup_port()
+instead?
 
-- const: bus
-
-
-> +            - const: low_power
-
-Can you please clarify what the LP clock is for?
-
-Thanks,
+Cheers,
 Angelo
 
+> +	val = readl_relaxed(pcie->base + PCIE_AXI_IF_CTRL_REG);
+> +	val |= PCIE_AXI0_SLV_RESP_MASK;
+> +	writel_relaxed(val, pcie->base + PCIE_AXI_IF_CTRL_REG);
 > +
-> +        resets:
-> +          minItems: 1
-> +          maxItems: 2
-> +
-> +        reset-names:
-> +          minItems: 1
-> +          maxItems: 2
-> +
->     - if:
->         properties:
->           compatible:
+>   	/* Disable DVFSRC voltage request */
+>   	val = readl_relaxed(pcie->base + PCIE_MISC_CTRL_REG);
+>   	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+
 
 
 
