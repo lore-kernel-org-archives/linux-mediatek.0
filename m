@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27B53E77198
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 11:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB70E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 11:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/MH/1XbuHmmzMIpU0/jitxqDYSfeHmJOlhMeOQiQWSQ=; b=Xyzw6puxJZfXJJ2Vneyni6yl8V
-	6wFKiBeVpz9YTeRD0pDqav5o3GoD8jq9fsPGedYkzBJnZS7J57XP9cMXKvpeeBe9oi5avoz1zJdX2
-	eAkcIPUFK5KdjDBFOLa3b+DIo6gdRMyhKmFLYVcxlORplUwruSD7+3jR3+tJqSyiNB7kae83rU3X0
-	rIfKIZGEJlDQ+H/CFZbKDT+NBE+h1rdbGyQYuaqTo9rA+YrlcrLLJSQKOgygn1IDoYuam6+2a7RAb
-	apwcf4yxWslgAWP512gW+cWvUD18ThZDpZjjkeGjM9HKGW3/LHsgPRZkL5G/bnSq3P4S4xj5+7Ik5
-	ULc1tJxQ==;
+	bh=Y9iUvmwvW4biQrNT/OHy2aFphCCMWpxI2DGmSrhMXP8=; b=42W7wJPs/OaJ+KOjxsMYnPJJkB
+	JU5ZgalLOOvKAJPUJMqVTxxtPbksDVHVq2Yi3xaN/Db5aAmeYbtLgxEbPWdbzK10bTWAXQ9h8fFIW
+	UrMye8yToKu9o1UKKDVpWuZq1Ev07mP0xZ82DQBPoLwFkbX6+9lMmpkMAITPo8G3DTlTNYHqpywDf
+	vUyEXgQieqSNwFJtnQBXZfL/0oOJfRuJlrorORBPcdZpSg0FWl0ds8wLk3cHsioPVsuXKpgXaMyXa
+	Ylqhyzw9ZFGBteWrQTki3HOA9t19fGgrHzEgZ5uFTJb2RlmImgfTpZCs+0WkVLopAHf/ulqsDWGYP
+	yoXAZE9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfnc-0000000CpQp-13Zc;
-	Fri, 03 Jan 2025 11:25:04 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tTfpy-0000000CpfV-1zoK;
+	Fri, 03 Jan 2025 11:27:30 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfg0-0000000CoCR-0IBf;
-	Fri, 03 Jan 2025 11:17:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=/MH/1XbuHmmzMIpU0/jitxqDYSfeHmJOlhMeOQiQWSQ=; b=kyq2ffionUdzxezwxw1n7SSUNJ
-	QOwJve95yZcDFYj/8AbI4Cd7R27VoBHYCihpPknn1P/j1BxO3KEhCfgxJqhvq0TnDSeEOzj3Ps0uh
-	zHmXaY0gXRIM9i/eJtzcnExq8UkRkzCESa+xUsBtpWvg7x7gJALYXj1t8eHTgWxUdlMPzinWZeX7G
-	cJARELl9wB4lXw1v7OAaH+hyFepu73JhFPIMuxmjWQ39FAw/ZJHwPRBEuZHOvrPH9XijDcPAm+QBz
-	sr8R3d8+C0vbT6YLCbMOodxu7X5mr9qbkCvtWOcMjJ4r8iBbqV0myf5LRi4BWRNrGhHc466Pv5EPn
-	IAOHlwDA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:39002 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tTffn-00031h-2c;
-	Fri, 03 Jan 2025 11:16:59 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tTffk-007Roi-JM; Fri, 03 Jan 2025 11:16:56 +0000
-In-Reply-To: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk>
-References: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexander Couzens <lynxis@fe80.eu>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 6/6] net: pcs: xpcs: make xpcs_get_interfaces()
- static
+	id 1tTfkh-0000000Cp3n-0D6S;
+	Fri, 03 Jan 2025 11:22:04 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_128_GCM_SHA256:128)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1tTfkQ-000000005Zl-06kY;
+	Fri, 03 Jan 2025 11:21:46 +0000
+Date: Fri, 03 Jan 2025 11:21:41 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+CC: Alexander Couzens <lynxis@fe80.eu>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jose Abreu <joabreu@synopsys.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net-next_3/6=5D_net=3A_pcs=3A_mtk-?=
+ =?US-ASCII?Q?lynxi=3A_fill_in_PCS_supported=5Finterfaces?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
+References: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk> <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
+Message-ID: <0FB3C53E-2F15-4ACB-9567-C0400762C4C0@makrotopia.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tTffk-007Roi-JM@rmk-PC.armlinux.org.uk>
-Date: Fri, 03 Jan 2025 11:16:56 +0000
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_031712_110254_6AAB3ED0 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20250103_032203_096720_73EE4576 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,48 +77,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-xpcs_get_interfaces() should no longer be used outside of the XPCS
-code, so make it static.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/pcs/pcs-xpcs.c   | 3 +--
- include/linux/pcs/pcs-xpcs.h | 1 -
- 2 files changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-index cf41dc5e74e8..c06b66f40022 100644
---- a/drivers/net/pcs/pcs-xpcs.c
-+++ b/drivers/net/pcs/pcs-xpcs.c
-@@ -594,14 +594,13 @@ static unsigned int xpcs_inband_caps(struct phylink_pcs *pcs,
- 	}
- }
- 
--void xpcs_get_interfaces(struct dw_xpcs *xpcs, unsigned long *interfaces)
-+static void xpcs_get_interfaces(struct dw_xpcs *xpcs, unsigned long *interfaces)
- {
- 	const struct dw_xpcs_compat *compat;
- 
- 	for (compat = xpcs->desc->compat; compat->supported; compat++)
- 		__set_bit(compat->interface, interfaces);
- }
--EXPORT_SYMBOL_GPL(xpcs_get_interfaces);
- 
- int xpcs_config_eee(struct dw_xpcs *xpcs, int mult_fact_100ns, int enable)
- {
-diff --git a/include/linux/pcs/pcs-xpcs.h b/include/linux/pcs/pcs-xpcs.h
-index b5b5d17998b8..733f4ddd2ef1 100644
---- a/include/linux/pcs/pcs-xpcs.h
-+++ b/include/linux/pcs/pcs-xpcs.h
-@@ -50,7 +50,6 @@ struct dw_xpcs;
- 
- struct phylink_pcs *xpcs_to_phylink_pcs(struct dw_xpcs *xpcs);
- int xpcs_get_an_mode(struct dw_xpcs *xpcs, phy_interface_t interface);
--void xpcs_get_interfaces(struct dw_xpcs *xpcs, unsigned long *interfaces);
- int xpcs_config_eee(struct dw_xpcs *xpcs, int mult_fact_100ns,
- 		    int enable);
- struct dw_xpcs *xpcs_create_mdiodev(struct mii_bus *bus, int addr);
--- 
-2.30.2
+On 3 January 2025 11:16:41 UTC, "Russell King (Oracle)" <rmk+kernel@armlin=
+ux=2Eorg=2Euk> wrote:
+>Fill in the new PCS supported_interfaces member with the interfaces
+>that the Mediatek LynxI supports=2E
+>
+>Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux=2Eorg=2Euk>
 
+Acked-by: Daniel Golle <daniel@makrotopia=2Eorg>
+
+>---
+> drivers/net/pcs/pcs-mtk-lynxi=2Ec | 4 ++++
+> 1 file changed, 4 insertions(+)
+>
+>diff --git a/drivers/net/pcs/pcs-mtk-lynxi=2Ec b/drivers/net/pcs/pcs-mtk-=
+lynxi=2Ec
+>index 7de804535229=2E=2Ea6153e9999a7 100644
+>--- a/drivers/net/pcs/pcs-mtk-lynxi=2Ec
+>+++ b/drivers/net/pcs/pcs-mtk-lynxi=2Ec
+>@@ -306,6 +306,10 @@ struct phylink_pcs *mtk_pcs_lynxi_create(struct devi=
+ce *dev,
+> 	mpcs->pcs=2Epoll =3D true;
+> 	mpcs->interface =3D PHY_INTERFACE_MODE_NA;
+>=20
+>+	__set_bit(PHY_INTERFACE_MODE_SGMII, mpcs->pcs=2Esupported_interfaces);
+>+	__set_bit(PHY_INTERFACE_MODE_1000BASEX, mpcs->pcs=2Esupported_interface=
+s);
+>+	__set_bit(PHY_INTERFACE_MODE_2500BASEX, mpcs->pcs=2Esupported_interface=
+s);
+>+
+> 	return &mpcs->pcs;
+> }
+> EXPORT_SYMBOL(mtk_pcs_lynxi_create);
 
