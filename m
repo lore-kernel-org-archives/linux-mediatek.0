@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A817E7718F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 09:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90074E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 09:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W64i6igLfoaFxQRUhRh4ObIpEa3nRUvfzWFcnEx8u9o=; b=uj4myNzSelEG8eo1ErLm+4pNJC
-	ovpPgiAQhoVMSHyJXwUn6qp0Byjq0g7cDpQis9yF11kNydmwl2dryTLNo54eA3fIAOdpqX3tOG4q8
-	7W3+67iMzIJve3mBOuhMT5ivsxDyjj7upHFZlTbH9T36COPdcYg81Jy/KtxE1G8zeOsmri2DrKbEy
-	dlHzlUCX8x4Wi/feghVvkkHnXg11B78kaNNrhy6A3oe+k1ZBuIhKhMc7dEwLNjKKpho5EdD+lzSe2
-	R4eEkLoDO+vqW9au5UiwjLKtYln5F2fJqSNjC+HbhMZ6OHUNroH2Lhv+PFSmNE5pYDCxtOJ7ivRkJ
-	R9ljz25A==;
+	bh=Msw7aJ/ypE7ud/0M7CvDLxfFb+vZkMxn1YjWyDvem5Q=; b=nVAHSKIVmyE5ssvjKElo3sUSLZ
+	WmZ/z+A9cWr2QUfBPloRhXYtcswT7rkQQdbM89DIu6d1nmVH0IG98Vb2aDAeu2bTGftpeRaWZr+2H
+	iapMa2OzIa85ihhMb6qO5jWNTJMiaVyG8f/hFmvi23sLZAkiYH1XQIOCPdRWCzyNWiiEwQXYT460y
+	YtjWzyLJtBAtdZ3PSme6zlvSG3yckTG6J+YEk/9JOa2UFD256orZr3ma7TigTaLXAA9ER55skmIk9
+	bgoBvKd7l1adUPdq05TRblb/froeMymp5+5phhCALzCM3Narcx1DCYp5d0qsjQCL2KEw8gKY2QXhL
+	Txr9vwEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTe4I-0000000CdCH-2UrV;
-	Fri, 03 Jan 2025 09:34:10 +0000
+	id 1tTeAQ-0000000CeUk-34IL;
+	Fri, 03 Jan 2025 09:40:30 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTe35-0000000Ccrx-1vQi;
-	Fri, 03 Jan 2025 09:32:56 +0000
+	id 1tTe9D-0000000CeJF-3VIf;
+	Fri, 03 Jan 2025 09:39:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1735896774;
-	bh=FY5E9cL/SAYzqzsgtK3mk9C8t7xTelHCQ0xwdrVefoM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FF6W3Kpd/m+c0lo7fg1PtLKOmpuzIDHPDkecVV3ai2ae1w8RwKwKWmKqIIPYlcQcu
-	 hrcb+R/1JfdOeU3/G42lI86QdDjJG3mIY2VMEftHoDAoD3fh76W13H4p+1KMmJm1mU
-	 8LeyzhYNy/rdLgCsvUfd9QSzpYfZuGrAuNBM9QUrJ7YtTJmKGJXO5XbwBTotVQB/8o
-	 oWlyHTrDdnClumMr7LuWaAWMo+aFsuUq5uxVMHeWgj+z8tbTZDLaghGrf7NUqbDASs
-	 CWDFWIxXZZYKmZcPZnabLBx7qEAe0vjbtEIdRZzbK22A3aQPveJlgBfTS/YA8Cy2h/
-	 /BNr+9WCLgKng==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1735897154;
+	bh=9Msm7urfWmNv8ZxyLygweTvb0f3GK8S+lwILMU1gONo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Vd/fojMUkqc3pci9V0p9a4e5ZypBAIKFt21Hi47vWe9WwmW8DE8NBjngcvRJ2Pq2B
+	 0lZNOWQayr3GNIo2vOkLMOhM3iIZalo++KKetQXTqIX1Md2gZd77vitCLq0pzNiAAg
+	 iJDf7yp2DRFDlLFDZo4lDxvvMlCdulEWdf/sorYH1mH0gCNfbvamzpAeOqg9w9wdW2
+	 Rx0Ysx/PNvy45qw7j3FHkOrvlCRkLBv6Kf2jJK3lHvv9vvPQ1fD10HTcIYUFZ04Frf
+	 EFQXrFJhxX+M9IZksTC3fr3yxRNSp7Ehj734v4InxiZs9UcEsA2rDrycu1HX3/iIzq
+	 10ko8r2dcm5HQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5953F17E153F;
-	Fri,  3 Jan 2025 10:32:53 +0100 (CET)
-Message-ID: <e7d162b8-23c4-4a75-9675-9ba82564a4ff@collabora.com>
-Date: Fri, 3 Jan 2025 10:32:52 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: arm: mediatek: Add MT8186 Skitty Chromebooks
-To: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- herbert1_wu@pegatron.corp-partner.google.com
-References: <20250103-b4-add_mt8186_skitty-v1-1-96ac770842d8@pegatron.corp-partner.google.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8B71117E1543;
+	Fri,  3 Jan 2025 10:39:13 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250103-b4-add_mt8186_skitty-v1-1-96ac770842d8@pegatron.corp-partner.google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20241224084839.2904335-1-wenst@chromium.org>
+References: <20241224084839.2904335-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v2 1/2] dt-bindings: arm: mediatek: Drop
+ MT8192 Chromebook variants that never shipped
+Message-Id: <173589715347.61173.1219826071003156854.b4-ty@collabora.com>
+Date: Fri, 03 Jan 2025 10:39:13 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_013255_644013_E7110FD0 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20250103_013916_067369_CE38CF7D 
+X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,49 +78,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/01/25 10:23, Geoffrey Chien ha scritto:
-> Add an entry for the MT8186 based Skitty Chromebooks, also known as the
-> HP Chromebook G1m 11 inch. The device is a clamshell laptop with an
-> optional touchscreen or keyboard.
+On Tue, 24 Dec 2024 16:48:37 +0800, Chen-Yu Tsai wrote:
+> The Hayato rev5 sku2 and Spherion rev4 variants were designed in
+> anticipation of shortages of the headphone codec. This never happened.
+> As far as our records show: the variants were never produced or
+> shipped, and no such devices were deployed to any lab.
 > 
+> Drop them.
+> 
+> [...]
 
-Since it makes no sense to have this device in the binding without actual
-devicetrees, please send this one as the first patch in a series where you
-introduce those devices.
+Applied to v6.13-next/dts64, thanks!
+
+[1/2] dt-bindings: arm: mediatek: Drop MT8192 Chromebook variants that never shipped
+      commit: e43525fc7eb90eb8e12acb2e82729827023f77d5
+[2/2] arm64: dts: mediatek: mt8192: Drop Chromebook variants that never shipped
+      commit: cb6450fe891c892253f9b835b378f53d0a39fc7d
 
 Cheers,
 Angelo
-
-> Signed-off-by: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
->   1 file changed, 8 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d9aadb7b77e144a474b79da005056..b57e86946d7565720fdee31b2bbef288b0508769 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -263,6 +263,14 @@ properties:
->             - const: google,steelix-sku196608
->             - const: google,steelix
->             - const: mediatek,mt8186
-> +      - description: Google Skitty (HP Chromebook G1m 11 inch)
-> +        items:
-> +          - const: google,skitty-sku1
-> +          - const: google,skitty-sku2
-> +          - const: google,skitty-sku3
-> +          - const: google,skitty-sku4
-> +          - const: google,skitty
-> +          - const: mediatek,mt8186
->         - description: Google Steelix (Lenovo 300e Yoga Chromebook Gen 4)
->           items:
->             - enum:
-> 
-> ---
-> base-commit: 0bc21e701a6ffacfdde7f04f87d664d82e8a13bf
-> change-id: 20250103-b4-add_mt8186_skitty-fe04d863592f
-> 
-> Best regards,
 
 
 
