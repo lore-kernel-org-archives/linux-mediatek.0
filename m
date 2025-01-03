@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D13FE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 19:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD1DE7718F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 21:16:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=NxSS3UCgqNEjxbkRhl2Uo3hryunKuA7CrS8ppApH70U=; b=tQGfMM2LUASMLj
-	YxfeZ7eMFya1kb/dcwAycazeMKldYTRUJkT8nMPbugRxphuD23qQG/aEdLkJ7N3kcYWF/T1bcmvzd
-	c2Weg3tiPWE0k/CixJhSGi9b+Jj+jkGYCsdqVjgTerxEH/NpyAACLbFQtt7tfP4NpWqoCJ+swXPFD
-	txTRQkbo0SUj/Ea0CQ/tGEwdHg0TqJrl6c0EtnUoo45fOp7k3mqJ/upgOyUpUq/TO6x7suVMsUPqw
-	0fq597GmRzs2SaqQUyEtvQWgzGeJHog5Ivi+HrKuIZpFgeWsqBiOj32kgxirw9pT0qHKLTK2A+YEk
-	btPincR6IuovM0raIjyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=V+sHQ7mY3MwIf/VsiMl4gaK88d9UqEmLFOQfH59gXv8=; b=hDAQ9NhkVlBTEmx4aQ32pmFA2i
+	S1vJKlGv8awt+GB4XB3mmXU4DSgiQiMM3F9Fc1ah8IRpIqfS3YztFVpX5SXZ8S7nT5wbb8K6WhQOB
+	htQAs7bzLoyWEI+dbPkcwWxJlsRH20jmHztEN2VatRL8UtNjUfM3s+Ens+6GVdnT8jqCWvoKjdbTM
+	txoZVMbU84V1nogrRenUdWQabQiDhyn5EBv4PxCNQYvaYm8+maFj7yG0k+iTlI6wi1zZ+OYMx/giY
+	KLZE56QB3zRziEUbVIAHVLB5v5Kc0RKiYbkj5rGYBxICB4SxCQPE3DEbq+vkTiD8TY2lD3aJ7rMhw
+	EbRXSvow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTnEJ-0000000Dp8b-2srw;
-	Fri, 03 Jan 2025 19:21:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tTp1d-0000000E0Dj-3tPE;
+	Fri, 03 Jan 2025 21:16:09 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTnD7-0000000Doxm-0CAZ;
-	Fri, 03 Jan 2025 19:19:54 +0000
+	id 1tTp0L-0000000Dzro-3NkL;
+	Fri, 03 Jan 2025 21:14:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B5C5E5C647A;
-	Fri,  3 Jan 2025 19:19:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8723DC4CECE;
-	Fri,  3 Jan 2025 19:19:50 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id B6BE0A4107C;
+	Fri,  3 Jan 2025 21:12:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61E1CC4CED2;
+	Fri,  3 Jan 2025 21:14:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735931990;
-	bh=UXGyxRlGmAmUaGZwDyufZzkZnBt8bnaVeYMR/tdNg+Q=;
+	s=k20201202; t=1735938888;
+	bh=sFO4OH9CVkKVkoP3ZaKlYjcbwVR1mQy5pmUDUDk+dxk=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=c+Deeg9V8VcFyWomkmsle9ozLucizmwJO5Gutz9vBqoQwXoCxuL8loK/x7obZvHEk
-	 uHTo34zns+QN8AkiNsG7P+CS+Mvegxcq45X3iIPUO01K38zjW06iDv7iWC0lEdOOJs
-	 LMGswkom9/wF+1cjL0RVIGvrV7OsvC8V6MgTeoNEHdIXdCVLGr/kacYmm2m9hLNbjg
-	 YVw8AE6wINCaMy5MgoHSrDv8zWlck9GfZclIMh6cTY/N4OE+44l2RTDit1BiYL2Y9l
-	 3MXb7vQx+pyFTev750QKolFs5hoi5ClshqRaToxvYoMrCg/MaHFu4WNzJCQsII+h1g
-	 TuuddzAxEwQjA==
-Date: Fri, 3 Jan 2025 13:19:48 -0600
+	b=BsB7G6j3mXf7S+4Or7YmadtifMWp4gWAqz/jVXG3Cba2mG0jI9jSDe2FVrTapZ+ZL
+	 7WBNfkKJW6CkYWMvqMefbyAPXboKV/QNqHRge9ZkE6b2M1UcLO73RCTsx3EIQzxpLN
+	 VOn45m+Hr2nJJo0EbSd3pEQxf6PRNbUKfC3nWj+LpJ6mqYAe0JoClW1aw/nwpoUA2q
+	 yD4VoTB8tMqr/Kt9ClyJafBkXP5hxWyd0B2cgbnDUkTnOtog4ieGFHcgxaPCwYb34F
+	 h3QGz49mTd7DsgSNy2G0swP6tQwc3d/kT/MrGFj0PUBbVKzMN9pYXWVhAvB0wOW9Kf
+	 GoxTAYk9K9YUQ==
+Date: Fri, 3 Jan 2025 15:14:46 -0600
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Xavier Chang <Xavier.Chang@mediatek.com>
-Subject: Re: [PATCH 4/5] PCI: mediatek-gen3: Don't reply AXI slave error
-Message-ID: <20250103191948.GA4190995@bhelgaas>
+	kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 14/19] arm64: dts: mediatek: asurada: Enable PCIe and
+ add WiFi
+Message-ID: <20250103211446.GA4063@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250103060035.30688-5-jianjun.wang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220629155956.1138955-15-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_111953_172779_D8935502 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20250103_131449_910551_089F1031 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,69 +76,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 03, 2025 at 02:00:14PM +0800, Jianjun Wang wrote:
-> There are some circumstances where the EP device will not respond to
-> non-posted access from the root port (e.g., MMIO read). In such cases,
-> the root port will reply with an AXI slave error, which will be treated
-> as a System Error (SError), causing a kernel panic and preventing us
-> from obtaining any useful information for further debugging.
-> 
-> We have added a new bit in the PCIE_AXI_IF_CTRL_REG register to prevent
-> PCIe AXI0 from replying with a slave error. Setting this bit on an older
-> platform that does not support this feature will have no effect.
-> 
-> By preventing AXI0 from replying with a slave error, we can keep the
-> kernel alive and debug using the information from AER.
-> 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 4bd3b39eebe2..48f83c2d91f7 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -87,6 +87,9 @@
->  #define PCIE_LOW_POWER_CTRL_REG		0x194
->  #define PCIE_FORCE_DIS_L0S		BIT(8)
->  
-> +#define PCIE_AXI_IF_CTRL_REG		0x1a8
-> +#define PCIE_AXI0_SLV_RESP_MASK		BIT(12)
+On Wed, Jun 29, 2022 at 11:59:51AM -0400, Nícolas F. R. A. Prado wrote:
+> Enable MT8192's PCIe controller and add support for the MT7921e WiFi
+> card that is present on that bus for the Asurada platform.
+
+> +&pcie {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_pins>;
 > +
->  #define PCIE_PIPE4_PIE8_REG		0x338
->  #define PCIE_K_FINETUNE_MAX		GENMASK(5, 0)
->  #define PCIE_K_FINETUNE_ERR		GENMASK(7, 6)
-> @@ -469,6 +472,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->  	val |= PCIE_FORCE_DIS_L0S;
->  	writel_relaxed(val, pcie->base + PCIE_LOW_POWER_CTRL_REG);
->  
-> +	/*
-> +	 * Prevent PCIe AXI0 from replying a slave error, as it will cause kernel panic
-> +	 * and prevent us from getting useful information.
-> +	 * Keep the kernel alive and debug using the information from AER.
+> +	pcie0: pcie@0,0 {
+> +		device_type = "pci";
+> +		reg = <0x0000 0 0 0 0>;
+> +		num-lanes = <1>;
+> +		bus-range = <0x1 0x1>;
 
-Wrap to fit in 80 columns like the rest of the file
+Hi Nícolas, what's the purpose of this bus-range?  IIUC this describes
+a Root Port, where we can read and configure the secondary/subordinate
+bus numbers from the RP config space, so it seems like we don't need
+to describe them here.
 
-Add blank lines between paragraphs.
-
-AER is an asynchronous mechanism, so if you disable the SError,
-whoever issued the MMIO read to the PCIe device will receive some kind
-of data.
-
-I hope/assume that data is ~0 as on other platforms?  If so, please
-confirm this in the comment and commit log.  Otherwise, the caller
-will received corrupted data with no way to know that it's corrupted.
-
-> +	 */
-> +	val = readl_relaxed(pcie->base + PCIE_AXI_IF_CTRL_REG);
-> +	val |= PCIE_AXI0_SLV_RESP_MASK;
-> +	writel_relaxed(val, pcie->base + PCIE_AXI_IF_CTRL_REG);
 > +
->  	/* Disable DVFSRC voltage request */
->  	val = readl_relaxed(pcie->base + PCIE_MISC_CTRL_REG);
->  	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
-> -- 
-> 2.46.0
-> 
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		wifi: wifi@0,0 {
+> +			reg = <0x10000 0 0 0 0x100000>,
+> +			      <0x10000 0 0x100000 0 0x100000>;
+> +			memory-region = <&wifi_restricted_dma_region>;
+> +		};
+> +	};
+> +};
 
