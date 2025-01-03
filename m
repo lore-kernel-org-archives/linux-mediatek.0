@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD1DE7718F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 21:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DAA0E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 22:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=V+sHQ7mY3MwIf/VsiMl4gaK88d9UqEmLFOQfH59gXv8=; b=hDAQ9NhkVlBTEmx4aQ32pmFA2i
-	S1vJKlGv8awt+GB4XB3mmXU4DSgiQiMM3F9Fc1ah8IRpIqfS3YztFVpX5SXZ8S7nT5wbb8K6WhQOB
-	htQAs7bzLoyWEI+dbPkcwWxJlsRH20jmHztEN2VatRL8UtNjUfM3s+Ens+6GVdnT8jqCWvoKjdbTM
-	txoZVMbU84V1nogrRenUdWQabQiDhyn5EBv4PxCNQYvaYm8+maFj7yG0k+iTlI6wi1zZ+OYMx/giY
-	KLZE56QB3zRziEUbVIAHVLB5v5Kc0RKiYbkj5rGYBxICB4SxCQPE3DEbq+vkTiD8TY2lD3aJ7rMhw
-	EbRXSvow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TYb4EVw66eFgqXF6Tn680xcobIKnl8hXMw/P0sf476w=; b=tQKhmft5Ma9mQ+zadRbhLJLnkL
+	OGnuAg4eo6nX4BmW8XHj31N9AFIPR2k2BNBqPe/yudjreK0gEq3Ad13lz2AIFIYiOzjz4uxuqAaY+
+	7p3lyzPBUocsGjuUgtF4nQLkNKhpmi6t7c3jarojXkU2quOnOBhiz7To2zvIG5BuaxhDaDouFoAeH
+	19hrb3ixWVku2sde2LyyKPkJ1umTz4I5ppAXpQZoXbDREOUW/q0/ofyGETl6wQhl26Gf1uEN8OHIf
+	rPEfqhAZQWBt7dP9dKxO2gbqNgz+fqIuISV+CknLsLSOCba72WE17GwdIRnR29d4W+kCtMLIB7XT7
+	0Z4QuEGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTp1d-0000000E0Dj-3tPE;
-	Fri, 03 Jan 2025 21:16:09 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tTqQS-0000000E8kf-40k9;
+	Fri, 03 Jan 2025 22:45:52 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTp0L-0000000Dzro-3NkL;
-	Fri, 03 Jan 2025 21:14:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B6BE0A4107C;
-	Fri,  3 Jan 2025 21:12:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61E1CC4CED2;
-	Fri,  3 Jan 2025 21:14:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735938888;
-	bh=sFO4OH9CVkKVkoP3ZaKlYjcbwVR1mQy5pmUDUDk+dxk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=BsB7G6j3mXf7S+4Or7YmadtifMWp4gWAqz/jVXG3Cba2mG0jI9jSDe2FVrTapZ+ZL
-	 7WBNfkKJW6CkYWMvqMefbyAPXboKV/QNqHRge9ZkE6b2M1UcLO73RCTsx3EIQzxpLN
-	 VOn45m+Hr2nJJo0EbSd3pEQxf6PRNbUKfC3nWj+LpJ6mqYAe0JoClW1aw/nwpoUA2q
-	 yD4VoTB8tMqr/Kt9ClyJafBkXP5hxWyd0B2cgbnDUkTnOtog4ieGFHcgxaPCwYb34F
-	 h3QGz49mTd7DsgSNy2G0swP6tQwc3d/kT/MrGFj0PUBbVKzMN9pYXWVhAvB0wOW9Kf
-	 GoxTAYk9K9YUQ==
-Date: Fri, 3 Jan 2025 15:14:46 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1tTqPD-0000000E8dV-3uGp;
+	Fri, 03 Jan 2025 22:44:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=TYb4EVw66eFgqXF6Tn680xcobIKnl8hXMw/P0sf476w=; b=HgTT/mlkcWu/bQBF4yf7rsUfoK
+	IX+2MRAxuIKjglLa4YemYOixyNP0wDA+AuG5/tM1LkOOWNFJYB4AZYWDcG45px3K2SQe/8Ozo1/I7
+	CXw1JXfrK/sbJZxVjXRYAmaGia4iuUXKzqWy2IhOsqEaLUIC2E50Q6q4aQAUMnQ8r/2o=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tTqOn-001AB3-BZ; Fri, 03 Jan 2025 23:44:09 +0100
+Date: Fri, 3 Jan 2025 23:44:09 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 14/19] arm64: dts: mediatek: asurada: Enable PCIe and
- add WiFi
-Message-ID: <20250103211446.GA4063@bhelgaas>
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, Jose Abreu <joabreu@synopsys.com>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net-next 3/6] net: pcs: mtk-lynxi: fill in PCS
+ supported_interfaces
+Message-ID: <86d264c5-73fb-45ee-ad11-4a2517a12cfa@lunn.ch>
+References: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk>
+ <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220629155956.1138955-15-nfraprado@collabora.com>
+In-Reply-To: <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_131449_910551_089F1031 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20250103_144435_974093_01899AF6 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +85,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 29, 2022 at 11:59:51AM -0400, Nícolas F. R. A. Prado wrote:
-> Enable MT8192's PCIe controller and add support for the MT7921e WiFi
-> card that is present on that bus for the Asurada platform.
+On Fri, Jan 03, 2025 at 11:16:41AM +0000, Russell King (Oracle) wrote:
+> Fill in the new PCS supported_interfaces member with the interfaces
+> that the Mediatek LynxI supports.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-> +&pcie {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_pins>;
-> +
-> +	pcie0: pcie@0,0 {
-> +		device_type = "pci";
-> +		reg = <0x0000 0 0 0 0>;
-> +		num-lanes = <1>;
-> +		bus-range = <0x1 0x1>;
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Hi Nícolas, what's the purpose of this bus-range?  IIUC this describes
-a Root Port, where we can read and configure the secondary/subordinate
-bus numbers from the RP config space, so it seems like we don't need
-to describe them here.
-
-> +
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +
-> +		wifi: wifi@0,0 {
-> +			reg = <0x10000 0 0 0 0x100000>,
-> +			      <0x10000 0 0x100000 0 0x100000>;
-> +			memory-region = <&wifi_restricted_dma_region>;
-> +		};
-> +	};
-> +};
+    Andrew
 
