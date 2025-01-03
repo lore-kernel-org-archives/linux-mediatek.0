@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB70E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 11:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 067D1E7718F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 12:18:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y9iUvmwvW4biQrNT/OHy2aFphCCMWpxI2DGmSrhMXP8=; b=42W7wJPs/OaJ+KOjxsMYnPJJkB
-	JU5ZgalLOOvKAJPUJMqVTxxtPbksDVHVq2Yi3xaN/Db5aAmeYbtLgxEbPWdbzK10bTWAXQ9h8fFIW
-	UrMye8yToKu9o1UKKDVpWuZq1Ev07mP0xZ82DQBPoLwFkbX6+9lMmpkMAITPo8G3DTlTNYHqpywDf
-	vUyEXgQieqSNwFJtnQBXZfL/0oOJfRuJlrorORBPcdZpSg0FWl0ds8wLk3cHsioPVsuXKpgXaMyXa
-	Ylqhyzw9ZFGBteWrQTki3HOA9t19fGgrHzEgZ5uFTJb2RlmImgfTpZCs+0WkVLopAHf/ulqsDWGYP
-	yoXAZE9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vT+OupkulylohGKGcu+TFCx6Ke3he1sK6LQcIKhLYq0=; b=OXAfv+bAbGsoi/
+	4zBCwl3J72VECTXJys4oTC9+LPBJnH6JpczEWL4ftDzmVL5fDQhX46HmcVSI1+gj1Pok3CuhvTJWQ
+	jnmUHBnDKuerxA9G4sFumS+T7VAu8FVnNhzhcnHVtitTl5R26X5wlW0JlJV2t4+0tPxfvE8E/Doxt
+	0ax7nGMQBc+6hmFdB1cMv5DQdImCpbCCxGu1ICmjIDD5puZ8g0qkfLZ1drHLUUUXPXc9QFIbNgCC7
+	krj+PZLJT1AQyJH47RyuNQVfHydRXlXVgsj7rPlWD19xEZU+WI4jJ797OUfflfu0jOpX/N8T3tGgo
+	LmkqTz1d+oyp0bk5Yr5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfpy-0000000CpfV-1zoK;
-	Fri, 03 Jan 2025 11:27:30 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1tTgda-0000000Ctis-25G6;
+	Fri, 03 Jan 2025 12:18:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfkh-0000000Cp3n-0D6S;
-	Fri, 03 Jan 2025 11:22:04 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_128_GCM_SHA256:128)
-	 (Exim 4.98)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1tTfkQ-000000005Zl-06kY;
-	Fri, 03 Jan 2025 11:21:46 +0000
-Date: Fri, 03 Jan 2025 11:21:41 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-CC: Alexander Couzens <lynxis@fe80.eu>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, Jakub Kicinski <kuba@kernel.org>,
- Jose Abreu <joabreu@synopsys.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net-next_3/6=5D_net=3A_pcs=3A_mtk-?=
- =?US-ASCII?Q?lynxi=3A_fill_in_PCS_supported=5Finterfaces?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
-References: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk> <E1tTffV-007RoP-8D@rmk-PC.armlinux.org.uk>
-Message-ID: <0FB3C53E-2F15-4ACB-9567-C0400762C4C0@makrotopia.org>
+	id 1tTgcN-0000000CtZm-1rNE;
+	Fri, 03 Jan 2025 12:17:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 10AE8A40AD1;
+	Fri,  3 Jan 2025 12:15:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89B1CC4CECE;
+	Fri,  3 Jan 2025 12:17:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735906649;
+	bh=iZkpeTvEGSmMhcQEIgKm/62l1SkHAgQRaRN1z8ZY27s=;
+	h=From:Subject:Date:To:Cc:From;
+	b=SvXfBf7hGV7fp4gh4aPsKb1uAnkbBn6qxysrM307b0QVf2iOgO1gy1hMuzKQY8QCw
+	 1ytwDqZOzrkK2W0cokJE2DuJjpm9CcMop5ezeQjmvjPZVcuPDD1WD1aKB3KmZBWJjV
+	 T1wZqwi2qxhCjZ9MnklGzTdZGT4S6wTi2GwTQOWmwmBmxwMtg2cXgj/X5AQbCsLRlD
+	 iF+OCzLuVISLpBSfEFcwmo5A7fXbAH/hN5dvonR5ilDTm2QmyPdfXJ/C8Yixy4NNdj
+	 ny5iRmXuyk8d8tRqYCYwm8DYvVhDU3yF8p0MYdB+GXNSR+EYBDdsKcoR1wz0UySPEC
+	 I/XWbjkKcpN1Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next 0/4] net: airoha: Add Qdisc offload support
+Date: Fri, 03 Jan 2025 13:17:01 +0100
+Message-Id: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAD7Vd2cC/x3MwQrDIAwA0F8pOTegtl3LfqXsEDSpgaGdwhhI/
+ 33S47u8BpWLcoXn0KDwV6vm1GHHAXykdDBq6AZn3GzdZJC05EjIaV02i5+g1WMWeWcKuE7OG6G
+ wPGaBPpyFRX/3vr+u6w/f4YR4bQAAAA==
+X-Change-ID: 20241230-airoha-en7581-qdisc-offload-732c0fad564f
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ upstream@airoha.com, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_032203_096720_73EE4576 
-X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-CacheID: sfid-20250103_041731_550216_F99720A9 
+X-CRM114-Status: UNSURE (   5.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,38 +80,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce support for ETS and HTB Qdisc offload available on the Airoha
+EN7581 ethernet controller.
 
+---
+Lorenzo Bianconi (4):
+      net: airoha: Enable Tx drop capability for each Tx DMA ring
+      net: airoha: Introduce ndo_select_queue callback
+      net: airoha: Add sched ETS offload support
+      net: airoha: Add sched HTB offload support
 
-On 3 January 2025 11:16:41 UTC, "Russell King (Oracle)" <rmk+kernel@armlin=
-ux=2Eorg=2Euk> wrote:
->Fill in the new PCS supported_interfaces member with the interfaces
->that the Mediatek LynxI supports=2E
->
->Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux=2Eorg=2Euk>
+ drivers/net/ethernet/mediatek/airoha_eth.c | 518 ++++++++++++++++++++++++++++-
+ 1 file changed, 514 insertions(+), 4 deletions(-)
+---
+base-commit: 3fff5da4ca2164bb4d0f1e6cd33f6eb8a0e73e50
+change-id: 20241230-airoha-en7581-qdisc-offload-732c0fad564f
 
-Acked-by: Daniel Golle <daniel@makrotopia=2Eorg>
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
->---
-> drivers/net/pcs/pcs-mtk-lynxi=2Ec | 4 ++++
-> 1 file changed, 4 insertions(+)
->
->diff --git a/drivers/net/pcs/pcs-mtk-lynxi=2Ec b/drivers/net/pcs/pcs-mtk-=
-lynxi=2Ec
->index 7de804535229=2E=2Ea6153e9999a7 100644
->--- a/drivers/net/pcs/pcs-mtk-lynxi=2Ec
->+++ b/drivers/net/pcs/pcs-mtk-lynxi=2Ec
->@@ -306,6 +306,10 @@ struct phylink_pcs *mtk_pcs_lynxi_create(struct devi=
-ce *dev,
-> 	mpcs->pcs=2Epoll =3D true;
-> 	mpcs->interface =3D PHY_INTERFACE_MODE_NA;
->=20
->+	__set_bit(PHY_INTERFACE_MODE_SGMII, mpcs->pcs=2Esupported_interfaces);
->+	__set_bit(PHY_INTERFACE_MODE_1000BASEX, mpcs->pcs=2Esupported_interface=
-s);
->+	__set_bit(PHY_INTERFACE_MODE_2500BASEX, mpcs->pcs=2Esupported_interface=
-s);
->+
-> 	return &mpcs->pcs;
-> }
-> EXPORT_SYMBOL(mtk_pcs_lynxi_create);
 
