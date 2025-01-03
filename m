@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4CB5E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 10:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5CAE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 10:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YZan5g6f2SEgDlQXO6n1vhyWtzmWRowd6YIvg4wtslk=; b=TerM26+hp1luxh0QB0xD9EgGCL
-	3cFpjvjbGb+/cgmYSvPGv1d6c0sJ0rt/PoLk0YLAklZ63X5BK6/GFHYzpTN0RrEyWviezPzBl5+bE
-	DXrDci/OL172AdqEBxWCVpN5juKukRkkm4YbIVmudSEu/lk6Go2PcFPSuKqoRLGQBjfGBxRqgJsHe
-	5p0frXngNp2KzgxTM7LdiFLMwYVteJwXU0m8jyVSt/3Y7pt/li0IrxLeXI3qGvk2QVAU7MoY7AHc+
-	xAe+a8prtpSvnWFxqHIPcouz92AOYTPXk9AgD5AayiiaLLE+TS5BFG6o+g7MXDWtlQQlA/RBn2fI8
-	fNAa4rNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h3u4oGWBQKjEPREELrdTT/cBTk6tLIvMbyFiElHLVLk=; b=MjozdS8jlmLVKHVdXvm3rcFnfI
+	U83quWgc2Dsh34d8hsLR4I4Dab2ko2VtCNDx4dEFSiUwsgREsa23jrErxF4rbQwxprsAgy0aQAmje
+	/2ECazQq0LsSBW1w3noqw+tnpQQ9Nmk/CkRQaBTJzvvSTwVeXdgWhvZ+U4zk7yILTlayYDIdMN8em
+	1MQYTdLLHtG7oyzwda8Cu/sAEWU2+FIqtV1u5ZF2XSeqmvYp1f7NT2ZxyKWBpPXZbrz6eY+nTeOBt
+	GVxBf8TKzh0cbmvFZbmRp7ATTAde3APQeIofB1bilWRhfBQ6q54JpUAUuEUMPdRrcz5X6pq7XMT35
+	gnIlbgCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfMN-0000000Cm2f-2dPh;
-	Fri, 03 Jan 2025 10:56:55 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tTfOB-0000000CmUz-1O2y;
+	Fri, 03 Jan 2025 10:58:47 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTfL9-0000000Clhs-2gDE;
-	Fri, 03 Jan 2025 10:55:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YZan5g6f2SEgDlQXO6n1vhyWtzmWRowd6YIvg4wtslk=; b=uHOfGNRRPNpgL63qIKRxTA+fJg
-	K71jZSfgd1QBebFOFk2VCg/KgVbzEXJgB3NHC1iWi0Y6kGZckE+SvokfgS4yIB5q3GLLmemlQWJNZ
-	1MvHN+aUPxcf1WtRtPjjT5jwtuMF3NwPpBRuvrKnmJVRJ4jbYMNYm3+beTMOlD8TsKvdiUpUahayT
-	Nmatxz5UBnSEB8DVA+ne4CD3tzYrM4ZW/QcypKI4bVqPTm3ih2j38CETGDcbLZZp5H0rXCFh94qyO
-	oUlD3Asp17eTwL9dyQmVIchVw0idDFi+bM1CAgmgnRG0KzHcjgJMq0/yMMqzjZXx3xUJRor5GofNP
-	iamZ1aHQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:44782)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tTfKp-0002yX-1M;
-	Fri, 03 Jan 2025 10:55:19 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tTfKl-0001Ft-0Q;
-	Fri, 03 Jan 2025 10:55:15 +0000
-Date: Fri, 3 Jan 2025 10:55:14 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/3] net: pcs: pcs-mtk-lynxi: implement
- pcs_inband_caps() method
-Message-ID: <Z3fCEnQvmgXaOGB7@shell.armlinux.org.uk>
-References: <Z1F1b8eh8s8T627j@shell.armlinux.org.uk>
- <E1tJ8NR-006L5P-E3@rmk-PC.armlinux.org.uk>
- <Z1UMEnlZ_ivTsru5@pidgin.makrotopia.org>
- <Z1VjJ8ago-HetCxi@shell.armlinux.org.uk>
- <Z3aGDHU2TLV_YtZW@pidgin.makrotopia.org>
+	id 1tTfO8-0000000CmTY-1Kp9
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jan 2025 10:58:46 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-436202dd730so87005655e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jan 2025 02:58:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1735901922; x=1736506722; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=h3u4oGWBQKjEPREELrdTT/cBTk6tLIvMbyFiElHLVLk=;
+        b=yvv+Yvo7/O98vcGgDyN9gaRrFYfwdUsB7eJhF09Xvr8mKcNTlh3IJvofv7eqdRfQfF
+         kLgzvpGn9iDeJPPIOEkOyAPj6HtVN6R/eW06DTcPdaVl9TTkzF34gZpzIorhc3txxLd5
+         kHNaWoLrQYhv8ThwlcM+zs9csV+DJvdja/TujzVN1ejrdUCqo4CkQK38TvSi5t/EIzHX
+         Uf2F/vPRiLIl48CedImnOT444VH+KomvRXMZzNC1si4SFbZnjCGKZ2FmgPAfDb1KM4Ko
+         +KoD6ckkzLZVt3bI0hsujaX3E/pvStfzDIJTFDoxykIZH0EHM3AZ2snbuz8hV3vWy8Wt
+         Pkdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735901922; x=1736506722;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=h3u4oGWBQKjEPREELrdTT/cBTk6tLIvMbyFiElHLVLk=;
+        b=rIyuWh44Nsd46snWZZTiXah9CMu4Wi48eTAW9u7SyEVRYjZLgM1EB4gfwtBdiiOdTb
+         FxSheFyg4qmkVK7ESXXDrwc2w5TiOiCsQTgaXeDImMkZGW0njW1EL5i4EyqQfcrzlp4G
+         n2X0RtEtrFWyTAyua9PbadhCZDhzw0zhLEle5qY7OhW/DHz9KdI+iznnSrA4/FYC03jo
+         scW61WdlqtfCvrgnsZZHPm1pZ1lY+86hZF2Jun/JwaLblKtudaQjOqorQ3T+i1nJsgh2
+         gOyKFr8M+PwVjjnGy7cfvZ7Nii7sQ4geOARaLWMIO3TlN664c0+Hw0mOYLo+hmBLA8s7
+         a/Dg==
+X-Forwarded-Encrypted: i=1; AJvYcCUG8dKvHVwr87tx5P6zbd7r/9biCC1NU/0m1viZzICrBSq09f/al2FovGbUwmFvW0VUJENtUr5bKm9yuqPWRA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzYitu0bAhde1zCFSNUd0kscbaH2hiJuyUXy6f8dLda4qBPW1bW
+	XOPBWUjJBcOWZDcsMZeEG8AQeY0Nf2UOYSTyCPxA/d74mANKnclkTCBe1efYrNQ=
+X-Gm-Gg: ASbGnctV+DD5xQG6N43ohpnAgFkJgtI1k38GP4UNyIViN4FyVM/AKqvkr+bu8E0Whhx
+	ce5GUuxF0wNxImWmg0i1+6RnNdVGNWkxy57VIN9cDXCw13LQRXcvQXGKLJ4vqYssoc3MXfZQAcE
+	S5NL1DASYU9dyPCFslEVbFI+vMx0pE6LgZMh4B4MxJ5mDpXZHpTRuQn3Q2wDIXBArDEUoAu+W6Q
+	1OIV342SdS/5m8s2kXU4/kSiion2huavgXup0TRJ7fhpnrD3PQ5jkd/6ng5T3w1qA==
+X-Google-Smtp-Source: AGHT+IFjtv32f9kYfRVKeyGYT0IEP5Qw+m/gGOhzKk2Cr8BmmZ9Jl41YENFOU1sjQfF0nAEj/HJdsw==
+X-Received: by 2002:a05:6000:4703:b0:38a:69a9:af91 with SMTP id ffacd0b85a97d-38a69a9b0a9mr1730131f8f.13.1735901920712;
+        Fri, 03 Jan 2025 02:58:40 -0800 (PST)
+Received: from localhost ([2a01:cb19:95ba:5000:d6dd:417f:52ac:335b])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a28f17315sm35078406f8f.108.2025.01.03.02.58.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jan 2025 02:58:40 -0800 (PST)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Val Packett <val@packett.cool>
+Cc: Val Packett <val@packett.cool>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Fabien Parent
+ <fparent@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>, Amjad
+ Ouled-Ameur <aouledameur@baylibre.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/3] mt6779-keypad: fix compatibles and add to mt8516
+In-Reply-To: <20241225192631.25017-1-val@packett.cool>
+References: <20241225192631.25017-1-val@packett.cool>
+Date: Fri, 03 Jan 2025 11:58:39 +0100
+Message-ID: <87jzbcnoyo.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z3aGDHU2TLV_YtZW@pidgin.makrotopia.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_025539_678772_C4F122D1 
-X-CRM114-Status: GOOD (  32.48  )
+X-CRM114-CacheID: sfid-20250103_025844_357225_A7A4BDAD 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,70 +103,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 02, 2025 at 12:26:52PM +0000, Daniel Golle wrote:
-> On Sun, Dec 08, 2024 at 09:13:11AM +0000, Russell King (Oracle) wrote:
-> > On Sun, Dec 08, 2024 at 03:01:38AM +0000, Daniel Golle wrote:
-> > > On Thu, Dec 05, 2024 at 09:42:29AM +0000, Russell King (Oracle) wrote:
-> > > > Report the PCS in-band capabilities to phylink for the LynxI PCS.
-> > > > 
-> > > > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > > > ---
-> > > >  drivers/net/pcs/pcs-mtk-lynxi.c | 16 ++++++++++++++++
-> > > >  1 file changed, 16 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-> > > > index 4f63abe638c4..7de804535229 100644
-> > > > --- a/drivers/net/pcs/pcs-mtk-lynxi.c
-> > > > +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-> > > > @@ -88,6 +88,21 @@ static struct mtk_pcs_lynxi *pcs_to_mtk_pcs_lynxi(struct phylink_pcs *pcs)
-> > > >  	return container_of(pcs, struct mtk_pcs_lynxi, pcs);
-> > > >  }
-> > > >  
-> > > > +static unsigned int mtk_pcs_lynxi_inband_caps(struct phylink_pcs *pcs,
-> > > > +					      phy_interface_t interface)
-> > > > +{
-> > > > +	switch (interface) {
-> > > > +	case PHY_INTERFACE_MODE_1000BASEX:
-> > > > +	case PHY_INTERFACE_MODE_2500BASEX:
-> > > > +	case PHY_INTERFACE_MODE_SGMII:
-> > > > +	case PHY_INTERFACE_MODE_QSGMII:
-> > > 
-> > > QSGMII is not supported by this PCS.
-> > 
-> > Well...
-> > - lynx_pcs_get_state(), lynx_pcs_config(), and lynx_pcs_link_up()
-> >   include QSGMII in their case statements.
-> > - lynx_pcs_config_giga() refers to QSGMII in a comment, grouping it
-> >   with SGMII configuration.
-> 
-> These functions are in pcs-lynx.c and not in pcs-mtk-lynxi.c.
-> There is no reference to QSGMII anywhere in pcs-mtk-lynxi.c, what made
-> you assume it would be supported?
-> 
-> > 
-> > I think if the hardware doesn't support QSGMII, these references to it
-> > should be removed?
-> > 
-> > I also think that adding a .pcs_validate() method would be a good idea
-> > to reject interface modes that the PCS does not support.
-> 
-> I can add the pcs_validate function and send the patch doing that to be
-> included in net-next.
+Hi Val,
 
-With the addition of the supported_interfaces bitmap, there's no point
-if all the validation function is doing is checking the interfaces.
+Thank you for the patches.
 
-The supported_interfaces bitmap takes over that in core phylink code
-(and if a MAC supplies a PCS for an interface that is in the MAC's
-supported_interfaces bitmap but does not have the interface bit set in
-the PCS's supported_interfaces, phylink will produce a kernel message
-at error severity before .pcs_validate is called.
+On mer., d=C3=A9c. 25, 2024 at 16:26, Val Packett <val@packett.cool> wrote:
 
-At a point in the near future, I will be making the PCS
-supported_interfaces mandatory - but in the mean time this patch set
-makes it optional.
+> The mt8516 patch was previously sent in another series but rejected due
+> to not using an mt8516 specific compatible - which the other usages
+> of this driver (mt8183 and mt8365) weren't doing either.
+>
+> It's only fair to add the SoC-specific compatibles to all of them then :)
+>
+> Val Packett (3):
+>   dt-bindings: mediatek,mt6779-keypad: add more compatibles
+>   arm64: dts: mediatek: add per-SoC compatibles for keypad nodes
+>   arm64: dts: mediatek: mt8516: add keypad node
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+For the series,
+
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+
+>
+>  .../bindings/input/mediatek,mt6779-keypad.yaml        |  3 +++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi              |  3 ++-
+>  arch/arm64/boot/dts/mediatek/mt8365.dtsi              |  3 ++-
+>  arch/arm64/boot/dts/mediatek/mt8516.dtsi              | 11 +++++++++++
+>  4 files changed, 18 insertions(+), 2 deletions(-)
+>
+> --=20
+> 2.47.1
 
