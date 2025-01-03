@@ -4,103 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33936E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 12:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E892EE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 13:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=; b=hbQAJM/zEOhnEkaFyEzTVq5mHZ
-	qwKwlKQAtodx2aM8Q1dK320+4odvBV1hquxztckXxQxPRKc+xiXyswd416HYHkct6Sk6UUbGQlbq3
-	E/9d3EqFzvWdh46+SXocJmdRZdRCroJuM+dZSEUxHoCK02IlHadpb3vGLCG7grYKN09X41jr1sevM
-	WDKboIQtDvGdb8ghaV67xus7zlgvZJAcEjbObAHHHIANUPMBCWa1y4dYX/zeKYoE5Q2zu3QzcezqO
-	pwwTSf3Olj0LLxTL8J576zyefNeXBkggr8f8A7RK4b68at8yUOklclvN3DrgP+yqSMl2ETtBuY9rg
-	xFzQ5mBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AGPGvDHbpAwdRmyIJMz22n/2IZGZe9b81RunQ2EKrU8=; b=zfssmbWo+DNMgF0owSwvd9IzxQ
+	iu4KNcJNnrWeOzvwfk8/1idwvGr1+M63ns2Ua+GDwt9ckpzzdzOviqJyVXS0gCU5/IENHbi+xHcLw
+	D3ZiFYvCjgqZjaXh5UkuwTSFAMbLcVGISvAgUkwUbKxK5TpNGzdD8PSAZ6PXR16abY2fB/GgBidkg
+	Tno89sFCUbRuDe3nTVS4CpFnTcBQsFSWHG4bCScoa++18TuoTuQ8yHZFm3NvljTgbuPk0svOiPyGa
+	77oV0VWtyN7XAxdh9E/xZmqkPmi7KPgwLzobf7cskOxrh082E1K0GaMLipfHtafx3J9EYPRLmhzjg
+	6aHr0vOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTgvQ-0000000CvGP-0dSk;
-	Fri, 03 Jan 2025 12:37:12 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1tThqQ-0000000D1GW-46yl;
+	Fri, 03 Jan 2025 13:36:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTgvN-0000000CvFL-2Rxz
+	id 1tThqO-0000000D1Fl-1MBv
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jan 2025 12:37:10 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-303548a9361so115915481fa.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jan 2025 04:37:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735907827; x=1736512627; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=;
-        b=fdjFU3TfAwawLXxFYYzXOkIJ4FwOpnd1cm/kpcaljU7vYNh7M/o2bol3uRfh0MLiWq
-         khSGDt/f0KwV3o8qA1OFjF83H17KIL/dHhf/bde067I6hYrvsC6oF7k/LSm/2IRgz5oz
-         9HW+awCI7ac441J7C6rkTJFN0yatcBrpzV52Va5hICYGZYiLG/4aBR1G4NopmIXNhElk
-         5RB5dqy18939bNJiYQk7dC6+G+bY2ORdU5euJsaoDZv+8ciB7ALa3rmXtioAeEnvSNws
-         2r40zk+YTip0UktMo3Uu98ekdsaZb5ZWbC1YHFChOdUU948dRCfbjgcElvs5BSxvo+NR
-         Kijg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735907827; x=1736512627;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=;
-        b=FXara4XfEpD4CQdPsvU0i3Ffv02DlcyJMYCJJgW5w7FsG0YTSABOalcsFIP/p2UWiP
-         UiAd70K5e12hY0S2s3UNHJ2m3ppy8x+LlJenmNENDIPAFLYKi/w0azoBVgokh6n9FQRj
-         x6CF0yzFCfV0APigzxrBIJdMpL9K8WSFKWSmane711K3LSTiHkcCs/kQMnTDq34TjkWU
-         jpDtYhfiV74EE031T0ReUS7ocOKr+hq6Q0TPJ1YP1DKGAY3pRrdsVVmsA+tIv9T8n25R
-         iwqmbbs26ZofgBL9KfVFl1IeqBrJeON5k54G3CPUIHGTqNHAQi+CBsUIcC+C0+VJsQem
-         3+NA==
-X-Forwarded-Encrypted: i=1; AJvYcCU6DtRPZIanKeYvlPj1p8g0JbmetdERT1roadY9l2XplAqZs1TrTkL3V6+wepAcywuZM/gghXQurck4MywS3g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwqpnzYRSKODrewhj7LgmugKZQURaezF/ZCEANgAYcPA6/ziKO5
-	UNr1VEm89QJDYDL0AjHm0LXHq0U4/DWdxR0EI/sjxTjgz+Pkc8Wc0Z84GOQ94PCYrqD8TlDHYS4
-	k
-X-Gm-Gg: ASbGncuc2GIloR0DxfX5MJ8QZm8dx5TM2WIH4r8zYdjIJjzk5Fuj66jF7ofa9boji2M
-	8Itp+RyVcjJvRhYvg6Ka6DERD4T0KkrV63Mqr8n148BKioFyv7nd52ERZLqCCDZcIPad7afQQmJ
-	VinDZZXhqoeJSUIIsDDRg79d+5JztHTb1eBuG2XlxejBjanrTJ+Wd6Ks6sfOGVgOFEVpFQyiFi3
-	qMhuZFJCUWyHAfrqItMOIPX93jYs4Ik0dWr/5rP0jU0zjFoKLygZK/AcvwJrMPaNPhsZaK/JF5f
-	XlwpzfNyQD6ieYwOIA2Nx3rw8lk0JSfpzE9E
-X-Google-Smtp-Source: AGHT+IHkmAApyLZ21XYWu+WDHiH0q3Z12bKU9S9jrrq+R629xN6ISaSia7sHBryhTxvay+8ug/2ilQ==
-X-Received: by 2002:a2e:743:0:b0:300:4107:6294 with SMTP id 38308e7fff4ca-30468627b2fmr117244791fa.35.1735907827089;
-        Fri, 03 Jan 2025 04:37:07 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045b082e47sm45659141fa.111.2025.01.03.04.37.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jan 2025 04:37:05 -0800 (PST)
-Date: Fri, 3 Jan 2025 14:37:03 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com, 
-	alain.volmat@foss.st.com, alim.akhtar@samsung.com, andrzej.hajda@intel.com, 
-	andy.yan@rock-chips.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
-	chunkuang.hu@kernel.org, dave.stevenson@raspberrypi.com, dri-devel@lists.freedesktop.org, 
-	heiko@sntech.de, hjc@rock-chips.com, inki.dae@samsung.com, 
-	jani.nikula@linux.intel.com, jernej.skrabec@gmail.com, jonas@kwiboo.se, 
-	kernel-list@raspberrypi.com, krzk@kernel.org, kyungmin.park@samsung.com, lgirdwood@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, 
-	mcanal@igalia.com, mripard@kernel.org, neil.armstrong@linaro.org, 
-	p.zabel@pengutronix.de, perex@perex.cz, ple@baylibre.com, rfoss@kernel.org, 
-	rgallaispou@gmail.com, simona@ffwll.ch, sw0312.kim@samsung.com, tiwai@suse.com, 
-	tzimmermann@suse.de
-Subject: Re: [PATCH v10 03/10] drm/connector: implement generic HDMI audio
- helpers
-Message-ID: <x73a2utr5sp4iffk5626zqfth4ayu3x4jkxd7xwjti7ehrgnzi@ploxx4i5db5h>
-References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
- <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
- <l3u3wtnxyhrwjynevkwfjwarisc4yt4xy2rbzf5kb7k5l5dw3n@lxqtimymyjg6>
- <CAFBinCAh8iazDNx6GtOOJyXh_V-NfUs6Uf=ywN9kvQGPEmjrKQ@mail.gmail.com>
+	Fri, 03 Jan 2025 13:36:05 +0000
+X-UUID: aa27c2ecc9d711ef9048ed6ed365623b-20250103
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AGPGvDHbpAwdRmyIJMz22n/2IZGZe9b81RunQ2EKrU8=;
+	b=j+64qWbKob8uE4uA7S9ua+yqkY/afnHFMnrYHp+03+lyl22zmTj/HH0IfnLRzFZJBTIBaJ7l7Gctr9TNsSnSNk+sWjNxxbOszyT5JsStZo2TFffAi1XQSKiLAvx6Ha95CsDvoKBtOaJbV2N2MG3a3yrCk7Ap92iiniaeyrFJEy0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:5311b046-7d33-4157-91ef-4e80f08db8f3,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:95fe9d25-8650-4337-bf57-045b64170f0c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: aa27c2ecc9d711ef9048ed6ed365623b-20250103
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1079828333; Fri, 03 Jan 2025 06:35:58 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 3 Jan 2025 21:35:55 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 3 Jan 2025 21:35:54 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
+	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>
+Subject: [patch] wifi: mt76: mt7925: fix the unfinished command of regd_notifier before suspend
+Date: Fri, 3 Jan 2025 21:35:59 +0800
+Message-ID: <3af7b4e5bf7437832b016e32743657d1d55b1f9d.1735910288.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFBinCAh8iazDNx6GtOOJyXh_V-NfUs6Uf=ywN9kvQGPEmjrKQ@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_043709_647836_FDE777D0 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20250103_053604_370451_90AED000 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,25 +90,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 31, 2024 at 07:49:40PM +0100, Martin Blumenstingl wrote:
-> On Tue, Dec 31, 2024 at 3:34 AM Dmitry Baryshkov
-> <dmitry.baryshkov@linaro.org> wrote:
-> [...]
-> > > I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
-> > > seems that there is only a single driver which uses the .prepare
-> > > callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
-> > > implement .hw_params instead.
-> >
-> > Yes. However .hw_params don't have access to the infoframe contents, so
-> > I had to settle on implementing .prepare.
-> While debugging I noticed something unrelated to my problem:
-> hdmi_codec_spdif_dai_ops does not implement .prepare().
-> FYI just in case someone wants to use your patches and feed the
-> hdmi-codec with SPDIF instead of I2S.
+Before entering suspend, we need to ensure that all MCU command are
+completed. In some cases, such as with regd_notifier, there is a
+chance that CLC commands, will be executed before suspend.
 
-Could you please send submit a patch to the hdmi-codec driver?
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/init.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 3 +++
+ 2 files changed, 7 insertions(+)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index ddc654b9ea5e..34b6adc5ea0e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -79,11 +79,14 @@ mt7925_regd_notifier(struct wiphy *wiphy,
+ 	mdev->region = req->dfs_region;
+ 	dev->country_ie_env = req->country_ie_env;
+ 
++	dev->regd_in_progress = true;
+ 	mt792x_mutex_acquire(dev);
+ 	mt7925_mcu_set_clc(dev, req->alpha2, req->country_ie_env);
+ 	mt7925_mcu_set_channel_domain(hw->priv);
+ 	mt7925_set_tx_sar_pwr(hw, NULL);
+ 	mt792x_mutex_release(dev);
++	dev->regd_in_progress = false;
++	wake_up(&dev->wait);
+ }
+ 
+ static void mt7925_mac_init_basic_rates(struct mt792x_dev *dev)
+@@ -226,6 +229,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
+ 	spin_lock_init(&dev->pm.wake.lock);
+ 	mutex_init(&dev->pm.mutex);
+ 	init_waitqueue_head(&dev->pm.wait);
++	init_waitqueue_head(&dev->wait);
+ 	spin_lock_init(&dev->pm.txq_lock);
+ 	INIT_DELAYED_WORK(&dev->mphy.mac_work, mt792x_mac_work);
+ 	INIT_DELAYED_WORK(&dev->phy.scan_work, mt7925_scan_work);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 9aec675450f2..4986aaccc753 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -455,6 +455,9 @@ static int mt7925_pci_suspend(struct device *device)
+ 	if (err < 0)
+ 		goto restore_suspend;
+ 
++	wait_event_timeout(dev->wait,
++			   !dev->regd_in_progress, 5 * HZ);
++
+ 	/* always enable deep sleep during suspend to reduce
+ 	 * power consumption
+ 	 */
 -- 
-With best wishes
-Dmitry
+2.46.0
+
 
