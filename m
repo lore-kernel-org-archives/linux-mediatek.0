@@ -4,65 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5DFE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 12:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33936E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 12:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f5jxg2X/4iUX/WNAUOlVmQRPj6VrAzsh1nv/UtpZsig=; b=MQLtbytqIJgJSGE54FXx10uaSs
-	3DmgAyrU6bG4vypo4nhpkJcGlwQFD5EWT0GXmHlM9v/sn6VSR+Ki7tP1n/ns+9bTJIMery7tO11rY
-	jcQ9hp0NmQEMpt7uej43cMO1eBMqMk9mC1zkTt6BUw8zcr76EENDV23jC6dIVH3niTdf3/OAcMLKf
-	XXEIZLuEQbPBSX9wIlBwDYl80rjuQhTyhRbqj3KwzQUxbRCN0bFKVU7R2AIhUmEwS29vUXQNgB6n3
-	6RQ+GE8+4bDA+B4i5Gmg0lK/iJucT5K0TnXkfnW46lA0lmJ/Ctn9rWMc6s5SIQLievF+1p8kkEr+w
-	ghkm1ACw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=; b=hbQAJM/zEOhnEkaFyEzTVq5mHZ
+	qwKwlKQAtodx2aM8Q1dK320+4odvBV1hquxztckXxQxPRKc+xiXyswd416HYHkct6Sk6UUbGQlbq3
+	E/9d3EqFzvWdh46+SXocJmdRZdRCroJuM+dZSEUxHoCK02IlHadpb3vGLCG7grYKN09X41jr1sevM
+	WDKboIQtDvGdb8ghaV67xus7zlgvZJAcEjbObAHHHIANUPMBCWa1y4dYX/zeKYoE5Q2zu3QzcezqO
+	pwwTSf3Olj0LLxTL8J576zyefNeXBkggr8f8A7RK4b68at8yUOklclvN3DrgP+yqSMl2ETtBuY9rg
+	xFzQ5mBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTgiK-0000000CuIN-1aqL;
-	Fri, 03 Jan 2025 12:23:40 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tTgvQ-0000000CvGP-0dSk;
+	Fri, 03 Jan 2025 12:37:12 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTgcY-0000000CtdC-3FqI;
-	Fri, 03 Jan 2025 12:17:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BC273A40B04;
-	Fri,  3 Jan 2025 12:15:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1898AC4CECE;
-	Fri,  3 Jan 2025 12:17:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735906661;
-	bh=BREf+AuvwXGyuxndCIojls+R4cWTgkuRgtwXcPueSEU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=q6iUBxA5cIYqe3mgi/2ApaTu3I7higBtyYSHVQJghe1M3OswcYaezdXGcpW3a4sy1
-	 +JxYTJSrPVAT9j0nWIRgdtB3sr+jLVsVabkEo4Fxs006kNbH/ro5tX/nHI4s83/PLz
-	 YS0YZXEThjIGO83mOMWiKOnv8RyE6ejj8h5od5yLdzFR8xOusyY/6CFXimIEyZVx32
-	 dVVTu0jJ04/CaR/V58z2HSAVydvgtfM5xQvdbeZode0peLS4ZtbNvJT9sqgbHtFmsk
-	 ZTmCSZmXfODFv3ip5T8sC8YtsyOQ0Nw0UKBozoQj+ESewuNduswZ+kO6EckbAC7WZH
-	 DWTwbsgKLyORw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 03 Jan 2025 13:17:05 +0100
-Subject: [PATCH net-next 4/4] net: airoha: Add sched HTB offload support
+	id 1tTgvN-0000000CvFL-2Rxz
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jan 2025 12:37:10 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-303548a9361so115915481fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jan 2025 04:37:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1735907827; x=1736512627; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=;
+        b=fdjFU3TfAwawLXxFYYzXOkIJ4FwOpnd1cm/kpcaljU7vYNh7M/o2bol3uRfh0MLiWq
+         khSGDt/f0KwV3o8qA1OFjF83H17KIL/dHhf/bde067I6hYrvsC6oF7k/LSm/2IRgz5oz
+         9HW+awCI7ac441J7C6rkTJFN0yatcBrpzV52Va5hICYGZYiLG/4aBR1G4NopmIXNhElk
+         5RB5dqy18939bNJiYQk7dC6+G+bY2ORdU5euJsaoDZv+8ciB7ALa3rmXtioAeEnvSNws
+         2r40zk+YTip0UktMo3Uu98ekdsaZb5ZWbC1YHFChOdUU948dRCfbjgcElvs5BSxvo+NR
+         Kijg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735907827; x=1736512627;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lAuQK+/F0O4L5JCDNjDjHjZFUYnk5eRkhwBS+4Hmv8o=;
+        b=FXara4XfEpD4CQdPsvU0i3Ffv02DlcyJMYCJJgW5w7FsG0YTSABOalcsFIP/p2UWiP
+         UiAd70K5e12hY0S2s3UNHJ2m3ppy8x+LlJenmNENDIPAFLYKi/w0azoBVgokh6n9FQRj
+         x6CF0yzFCfV0APigzxrBIJdMpL9K8WSFKWSmane711K3LSTiHkcCs/kQMnTDq34TjkWU
+         jpDtYhfiV74EE031T0ReUS7ocOKr+hq6Q0TPJ1YP1DKGAY3pRrdsVVmsA+tIv9T8n25R
+         iwqmbbs26ZofgBL9KfVFl1IeqBrJeON5k54G3CPUIHGTqNHAQi+CBsUIcC+C0+VJsQem
+         3+NA==
+X-Forwarded-Encrypted: i=1; AJvYcCU6DtRPZIanKeYvlPj1p8g0JbmetdERT1roadY9l2XplAqZs1TrTkL3V6+wepAcywuZM/gghXQurck4MywS3g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwqpnzYRSKODrewhj7LgmugKZQURaezF/ZCEANgAYcPA6/ziKO5
+	UNr1VEm89QJDYDL0AjHm0LXHq0U4/DWdxR0EI/sjxTjgz+Pkc8Wc0Z84GOQ94PCYrqD8TlDHYS4
+	k
+X-Gm-Gg: ASbGncuc2GIloR0DxfX5MJ8QZm8dx5TM2WIH4r8zYdjIJjzk5Fuj66jF7ofa9boji2M
+	8Itp+RyVcjJvRhYvg6Ka6DERD4T0KkrV63Mqr8n148BKioFyv7nd52ERZLqCCDZcIPad7afQQmJ
+	VinDZZXhqoeJSUIIsDDRg79d+5JztHTb1eBuG2XlxejBjanrTJ+Wd6Ks6sfOGVgOFEVpFQyiFi3
+	qMhuZFJCUWyHAfrqItMOIPX93jYs4Ik0dWr/5rP0jU0zjFoKLygZK/AcvwJrMPaNPhsZaK/JF5f
+	XlwpzfNyQD6ieYwOIA2Nx3rw8lk0JSfpzE9E
+X-Google-Smtp-Source: AGHT+IHkmAApyLZ21XYWu+WDHiH0q3Z12bKU9S9jrrq+R629xN6ISaSia7sHBryhTxvay+8ug/2ilQ==
+X-Received: by 2002:a2e:743:0:b0:300:4107:6294 with SMTP id 38308e7fff4ca-30468627b2fmr117244791fa.35.1735907827089;
+        Fri, 03 Jan 2025 04:37:07 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045b082e47sm45659141fa.111.2025.01.03.04.37.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jan 2025 04:37:05 -0800 (PST)
+Date: Fri, 3 Jan 2025 14:37:03 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com, 
+	alain.volmat@foss.st.com, alim.akhtar@samsung.com, andrzej.hajda@intel.com, 
+	andy.yan@rock-chips.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
+	chunkuang.hu@kernel.org, dave.stevenson@raspberrypi.com, dri-devel@lists.freedesktop.org, 
+	heiko@sntech.de, hjc@rock-chips.com, inki.dae@samsung.com, 
+	jani.nikula@linux.intel.com, jernej.skrabec@gmail.com, jonas@kwiboo.se, 
+	kernel-list@raspberrypi.com, krzk@kernel.org, kyungmin.park@samsung.com, lgirdwood@gmail.com, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, 
+	mcanal@igalia.com, mripard@kernel.org, neil.armstrong@linaro.org, 
+	p.zabel@pengutronix.de, perex@perex.cz, ple@baylibre.com, rfoss@kernel.org, 
+	rgallaispou@gmail.com, simona@ffwll.ch, sw0312.kim@samsung.com, tiwai@suse.com, 
+	tzimmermann@suse.de
+Subject: Re: [PATCH v10 03/10] drm/connector: implement generic HDMI audio
+ helpers
+Message-ID: <x73a2utr5sp4iffk5626zqfth4ayu3x4jkxd7xwjti7ehrgnzi@ploxx4i5db5h>
+References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
+ <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
+ <l3u3wtnxyhrwjynevkwfjwarisc4yt4xy2rbzf5kb7k5l5dw3n@lxqtimymyjg6>
+ <CAFBinCAh8iazDNx6GtOOJyXh_V-NfUs6Uf=ywN9kvQGPEmjrKQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250103-airoha-en7581-qdisc-offload-v1-4-608a23fa65d5@kernel.org>
-References: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
-In-Reply-To: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- upstream@airoha.com, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFBinCAh8iazDNx6GtOOJyXh_V-NfUs6Uf=ywN9kvQGPEmjrKQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_041742_951913_FD1C1B09 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20250103_043709_647836_FDE777D0 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,375 +115,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for HTB Qdisc offload available in the Airoha EN7581
-ethernet controller. EN7581 can offload only one level of HTB leafs.
-Each HTB leaf represents a QoS channel supported by EN7581 SoC.
-The typical use-case is creating a HTB leaf for QoS channel to rate
-limit the egress traffic and attach an ETS Qdisc to each HTB leaf in
-order to enforce traffic prioritization.
+On Tue, Dec 31, 2024 at 07:49:40PM +0100, Martin Blumenstingl wrote:
+> On Tue, Dec 31, 2024 at 3:34 AM Dmitry Baryshkov
+> <dmitry.baryshkov@linaro.org> wrote:
+> [...]
+> > > I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
+> > > seems that there is only a single driver which uses the .prepare
+> > > callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
+> > > implement .hw_params instead.
+> >
+> > Yes. However .hw_params don't have access to the infoframe contents, so
+> > I had to settle on implementing .prepare.
+> While debugging I noticed something unrelated to my problem:
+> hdmi_codec_spdif_dai_ops does not implement .prepare().
+> FYI just in case someone wants to use your patches and feed the
+> hdmi-codec with SPDIF instead of I2S.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/airoha_eth.c | 288 ++++++++++++++++++++++++++++-
- 1 file changed, 287 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 76cdab2499043adc96e058f8f562676455b6d36d..b9f1c42f0a40ca268506b4595dfa1902a15be26c 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -28,6 +28,8 @@
- #define AIROHA_NUM_QOS_QUEUES		8
- #define AIROHA_NUM_TX_RING		32
- #define AIROHA_NUM_RX_RING		32
-+#define AIROHA_NUM_NETDEV_TX_RINGS	(AIROHA_NUM_TX_RING + \
-+					 AIROHA_NUM_QOS_CHANNELS)
- #define AIROHA_FE_MC_MAX_VLAN_TABLE	64
- #define AIROHA_FE_MC_MAX_VLAN_PORT	16
- #define AIROHA_NUM_TX_IRQ		2
-@@ -43,6 +45,9 @@
- #define PSE_RSV_PAGES			128
- #define PSE_QUEUE_RSV_PAGES		64
- 
-+#define QDMA_METER_IDX(_n)		((_n) & 0xff)
-+#define QDMA_METER_GROUP(_n)		(((_n) >> 8) & 0x3)
-+
- /* FE */
- #define PSE_BASE			0x0100
- #define CSR_IFC_BASE			0x0200
-@@ -583,6 +588,17 @@
- #define EGRESS_SLOW_TICK_RATIO_MASK	GENMASK(29, 16)
- #define EGRESS_FAST_TICK_MASK		GENMASK(15, 0)
- 
-+#define TRTCM_PARAM_RW_MASK		BIT(31)
-+#define TRTCM_PARAM_RW_DONE_MASK	BIT(30)
-+#define TRTCM_PARAM_TYPE_MASK		GENMASK(29, 28)
-+#define TRTCM_METER_GROUP_MASK		GENMASK(27, 26)
-+#define TRTCM_PARAM_INDEX_MASK		GENMASK(23, 17)
-+#define TRTCM_PARAM_RATE_TYPE_MASK	BIT(16)
-+
-+#define REG_TRTCM_CFG_PARAM(_n)		((_n) + 0x4)
-+#define REG_TRTCM_DATA_LOW(_n)		((_n) + 0x8)
-+#define REG_TRTCM_DATA_HIGH(_n)		((_n) + 0xc)
-+
- #define REG_TXWRR_MODE_CFG		0x1020
- #define TWRR_WEIGHT_SCALE_MASK		BIT(31)
- #define TWRR_WEIGHT_BASE_MASK		BIT(3)
-@@ -759,6 +775,29 @@ enum tx_sched_mode {
- 	TC_SCH_WRR2,
- };
- 
-+enum trtcm_param_type {
-+	TRTCM_MISC_MODE, /* meter_en, pps_mode, tick_sel */
-+	TRTCM_TOKEN_RATE_MODE,
-+	TRTCM_BUCKETSIZE_SHIFT_MODE,
-+	TRTCM_BUCKET_COUNTER_MODE,
-+};
-+
-+enum trtcm_mode_type {
-+	TRTCM_COMMIT_MODE,
-+	TRTCM_PEAK_MODE,
-+};
-+
-+enum trtcm_param {
-+	TRTCM_TICK_SEL = BIT(0),
-+	TRTCM_PKT_MODE = BIT(1),
-+	TRTCM_METER_MODE = BIT(2),
-+};
-+
-+#define MIN_TOKEN_SIZE				4096
-+#define MAX_TOKEN_SIZE_OFFSET			17
-+#define TRTCM_TOKEN_RATE_MASK			GENMASK(23, 6)
-+#define TRTCM_TOKEN_RATE_FRACTION_MASK		GENMASK(5, 0)
-+
- struct airoha_queue_entry {
- 	union {
- 		void *buf;
-@@ -850,6 +889,8 @@ struct airoha_gdm_port {
- 
- 	struct airoha_hw_stats stats;
- 
-+	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-+
- 	/* qos stats counters */
- 	u64 cpu_tx_packets;
- 	u64 fwd_tx_packets;
-@@ -2817,6 +2858,243 @@ static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
- 	}
- }
- 
-+static int airoha_qdma_get_trtcm_param(struct airoha_qdma *qdma, int channel,
-+				       u32 addr, enum trtcm_param_type param,
-+				       enum trtcm_mode_type mode,
-+				       u32 *val_low, u32 *val_high)
-+{
-+	u32 idx = QDMA_METER_IDX(channel), group = QDMA_METER_GROUP(channel);
-+	u32 val, config = FIELD_PREP(TRTCM_PARAM_TYPE_MASK, param) |
-+			  FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
-+			  FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
-+			  FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
-+
-+	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-+	if (read_poll_timeout(airoha_qdma_rr, val,
-+			      val & TRTCM_PARAM_RW_DONE_MASK,
-+			      USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
-+			      qdma, REG_TRTCM_CFG_PARAM(addr)))
-+		return -ETIMEDOUT;
-+
-+	*val_low = airoha_qdma_rr(qdma, REG_TRTCM_DATA_LOW(addr));
-+	if (val_high)
-+		*val_high = airoha_qdma_rr(qdma, REG_TRTCM_DATA_HIGH(addr));
-+
-+	return 0;
-+}
-+
-+static int airoha_qdma_set_trtcm_param(struct airoha_qdma *qdma, int channel,
-+				       u32 addr, enum trtcm_param_type param,
-+				       enum trtcm_mode_type mode, u32 val)
-+{
-+	u32 idx = QDMA_METER_IDX(channel), group = QDMA_METER_GROUP(channel);
-+	u32 config = TRTCM_PARAM_RW_MASK |
-+		     FIELD_PREP(TRTCM_PARAM_TYPE_MASK, param) |
-+		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
-+		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
-+		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
-+
-+	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
-+	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-+
-+	return read_poll_timeout(airoha_qdma_rr, val,
-+				 val & TRTCM_PARAM_RW_DONE_MASK,
-+				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
-+				 qdma, REG_TRTCM_CFG_PARAM(addr));
-+}
-+
-+static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int channel,
-+					u32 addr, enum trtcm_mode_type mode,
-+					bool enable, u32 enable_mask)
-+{
-+	u32 val;
-+
-+	if (airoha_qdma_get_trtcm_param(qdma, channel, addr, TRTCM_MISC_MODE,
-+					mode, &val, NULL))
-+		return -EINVAL;
-+
-+	val = enable ? val | enable_mask : val & ~enable_mask;
-+
-+	return airoha_qdma_set_trtcm_param(qdma, channel, addr, TRTCM_MISC_MODE,
-+					   mode, val);
-+}
-+
-+static int airoha_qdma_set_trtcm_token_bucket(struct airoha_qdma *qdma,
-+					      int channel, u32 addr,
-+					      enum trtcm_mode_type mode,
-+					      u32 rate_val, u32 bucket_size)
-+{
-+	u32 val, config, tick, unit, rate, rate_frac;
-+	int err;
-+
-+	if (airoha_qdma_get_trtcm_param(qdma, channel, addr, TRTCM_MISC_MODE,
-+					mode, &config, NULL))
-+		return -EINVAL;
-+
-+	val = airoha_qdma_rr(qdma, addr);
-+	tick = FIELD_GET(INGRESS_FAST_TICK_MASK, val);
-+	if (config & TRTCM_TICK_SEL)
-+		tick *= FIELD_GET(INGRESS_SLOW_TICK_RATIO_MASK, val);
-+	if (!tick)
-+		return -EINVAL;
-+
-+	unit = (config & TRTCM_PKT_MODE) ? 1000000 / tick : 8000 / tick;
-+	if (!unit)
-+		return -EINVAL;
-+
-+	rate = rate_val / unit;
-+	rate_frac = rate_val % unit;
-+	rate_frac = FIELD_PREP(TRTCM_TOKEN_RATE_MASK, rate_frac) / unit;
-+	rate = FIELD_PREP(TRTCM_TOKEN_RATE_MASK, rate) |
-+	       FIELD_PREP(TRTCM_TOKEN_RATE_FRACTION_MASK, rate_frac);
-+
-+	err = airoha_qdma_set_trtcm_param(qdma, channel, addr,
-+					  TRTCM_TOKEN_RATE_MODE, mode, rate);
-+	if (err)
-+		return err;
-+
-+	val = max_t(u32, bucket_size, MIN_TOKEN_SIZE);
-+	val = min_t(u32, __fls(val), MAX_TOKEN_SIZE_OFFSET);
-+
-+	return airoha_qdma_set_trtcm_param(qdma, channel, addr,
-+					   TRTCM_BUCKETSIZE_SHIFT_MODE,
-+					   mode, val);
-+}
-+
-+static int airoha_qdma_set_tx_rate_limit(struct airoha_gdm_port *port,
-+					 int channel, u32 rate,
-+					 u32 bucket_size)
-+{
-+	int i, err;
-+
-+	for (i = 0; i <= TRTCM_PEAK_MODE; i++) {
-+		err = airoha_qdma_set_trtcm_config(port->qdma, channel,
-+						   REG_EGRESS_TRTCM_CFG, i,
-+						   !!rate, TRTCM_METER_MODE);
-+		if (err)
-+			return err;
-+
-+		err = airoha_qdma_set_trtcm_token_bucket(port->qdma, channel,
-+							 REG_EGRESS_TRTCM_CFG,
-+							 i, rate, bucket_size);
-+		if (err)
-+			return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int airoha_tc_htb_alloc_leaf_queue(struct airoha_gdm_port *port,
-+					  struct tc_htb_qopt_offload *opt)
-+{
-+	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
-+	u32 rate = div_u64(opt->rate, 1000) << 3; /* kbps */
-+	struct net_device *dev = port->dev;
-+	int num_tx_queues = dev->real_num_tx_queues;
-+	int err;
-+
-+	if (opt->parent_classid != TC_HTB_CLASSID_ROOT) {
-+		NL_SET_ERR_MSG_MOD(opt->extack, "invalid parent classid");
-+		return -EINVAL;
-+	}
-+
-+	err = airoha_qdma_set_tx_rate_limit(port, channel, rate, opt->quantum);
-+	if (err) {
-+		NL_SET_ERR_MSG_MOD(opt->extack,
-+				   "failed configuring htb offload");
-+		return err;
-+	}
-+
-+	if (opt->command == TC_HTB_NODE_MODIFY)
-+		return 0;
-+
-+	err = netif_set_real_num_tx_queues(dev, num_tx_queues + 1);
-+	if (err) {
-+		airoha_qdma_set_tx_rate_limit(port, channel, 0, opt->quantum);
-+		NL_SET_ERR_MSG_MOD(opt->extack,
-+				   "failed setting real_num_tx_queues");
-+		return err;
-+	}
-+
-+	set_bit(channel, port->qos_sq_bmap);
-+	opt->qid = AIROHA_NUM_TX_RING + channel;
-+
-+	return 0;
-+}
-+
-+static void airoha_tc_remove_htb_queue(struct airoha_gdm_port *port, int queue)
-+{
-+	struct net_device *dev = port->dev;
-+
-+	netif_set_real_num_tx_queues(dev, dev->real_num_tx_queues - 1);
-+	airoha_qdma_set_tx_rate_limit(port, queue + 1, 0, 0);
-+	clear_bit(queue, port->qos_sq_bmap);
-+}
-+
-+static int airoha_tc_htb_delete_leaf_queue(struct airoha_gdm_port *port,
-+					   struct tc_htb_qopt_offload *opt)
-+{
-+	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
-+
-+	if (!test_bit(channel, port->qos_sq_bmap)) {
-+		NL_SET_ERR_MSG_MOD(opt->extack, "invalid queue id");
-+		return -EINVAL;
-+	}
-+
-+	airoha_tc_remove_htb_queue(port, channel);
-+
-+	return 0;
-+}
-+
-+static int airoha_tc_htb_destroy(struct airoha_gdm_port *port)
-+{
-+	int q;
-+
-+	for_each_set_bit(q, port->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
-+		airoha_tc_remove_htb_queue(port, q);
-+
-+	return 0;
-+}
-+
-+static int airoha_tc_get_htb_get_leaf_queue(struct airoha_gdm_port *port,
-+					    struct tc_htb_qopt_offload *opt)
-+{
-+	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
-+
-+	if (!test_bit(channel, port->qos_sq_bmap)) {
-+		NL_SET_ERR_MSG_MOD(opt->extack, "invalid queue id");
-+		return -EINVAL;
-+	}
-+
-+	opt->qid = channel;
-+
-+	return 0;
-+}
-+
-+static int airoha_tc_setup_qdisc_htb(struct airoha_gdm_port *port,
-+				     struct tc_htb_qopt_offload *opt)
-+{
-+	switch (opt->command) {
-+	case TC_HTB_CREATE:
-+		break;
-+	case TC_HTB_DESTROY:
-+		return airoha_tc_htb_destroy(port);
-+	case TC_HTB_NODE_MODIFY:
-+	case TC_HTB_LEAF_ALLOC_QUEUE:
-+		return airoha_tc_htb_alloc_leaf_queue(port, opt);
-+	case TC_HTB_LEAF_DEL:
-+	case TC_HTB_LEAF_DEL_LAST:
-+	case TC_HTB_LEAF_DEL_LAST_FORCE:
-+		return airoha_tc_htb_delete_leaf_queue(port, opt);
-+	case TC_HTB_LEAF_QUERY_QUEUE:
-+		return airoha_tc_get_htb_get_leaf_queue(port, opt);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
- static int airoha_dev_tc_setup(struct net_device *dev, enum tc_setup_type type,
- 			       void *type_data)
- {
-@@ -2825,6 +3103,8 @@ static int airoha_dev_tc_setup(struct net_device *dev, enum tc_setup_type type,
- 	switch (type) {
- 	case TC_SETUP_QDISC_ETS:
- 		return airoha_tc_setup_qdisc_ets(port, type_data);
-+	case TC_SETUP_QDISC_HTB:
-+		return airoha_tc_setup_qdisc_htb(port, type_data);
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-@@ -2875,7 +3155,8 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth, struct device_node *np)
- 	}
- 
- 	dev = devm_alloc_etherdev_mqs(eth->dev, sizeof(*port),
--				      AIROHA_NUM_TX_RING, AIROHA_NUM_RX_RING);
-+				      AIROHA_NUM_NETDEV_TX_RINGS,
-+				      AIROHA_NUM_RX_RING);
- 	if (!dev) {
- 		dev_err(eth->dev, "alloc_etherdev failed\n");
- 		return -ENOMEM;
-@@ -2895,6 +3176,11 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth, struct device_node *np)
- 	dev->irq = qdma->irq;
- 	SET_NETDEV_DEV(dev, eth->dev);
- 
-+	/* reserve hw queues for HTB offloading */
-+	err = netif_set_real_num_tx_queues(dev, AIROHA_NUM_TX_RING);
-+	if (err)
-+		return err;
-+
- 	err = of_get_ethdev_address(np, dev);
- 	if (err) {
- 		if (err == -EPROBE_DEFER)
+Could you please send submit a patch to the hdmi-codec driver?
 
 -- 
-2.47.1
-
+With best wishes
+Dmitry
 
