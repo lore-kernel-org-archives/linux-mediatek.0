@@ -4,88 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B16FE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 05:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B49BE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 06:02:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sFlWSYAVuSson+OhthOc5MObp0JO2PaKlR/7cwxtKLk=; b=LqCQqoOapeu+mvV5k7c9tST2YC
-	HcXnwcgPtqm67xe3X4Zw1w85gTRw6XyTHDknJR6B/WKs5A70/q0uLwClgDEMzJfcy9KPnYtIetfMA
-	ulTKgjPofho3qM6JsXz6Dhr9s57biRq4C09s+xNBmItx27YTRWW3+FWeEap2AuGBYO4gvQo39f+Tk
-	cTEmN7aIMr60sPOQ8JFB3+usOUcC08l/5ajFZ/URTHvks7BkCZjneUqYYD07lhOAWXnPyUb45WqKf
-	Fw4Xs5m5th3XI/Tkhp83B4DdpBoEnloNUVsrCbGZNM8XYDI/FqQhnMRQlY9d2qYTrw8OyTobrpmaI
-	jwZY9H9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IRJmo01lCGWBN4vk/8ge3MPSFtd3Uvt3DpqX+KRB26Q=; b=PgX3qC+r5OjMznl2Hm187k/U66
+	nDORtAED8PK67cT9Qpol938Hj6EExzfMtrhMGqQZQJl1zysYdbUWGMyHJcnJLJ/5330DYaCkhOSLm
+	eS4fLQ4u2iAg8dDTLVLFs6qAl3R9OVeJMq6gQD/D8SbZN2rwj0O1Iw9HzjALi7rPvwAFE0oV1T0tH
+	fEHuo6n22ZrEpQNJ7iRucgmHCPecXGOWXAKzP2BZC2YOD6gNQiIrRxl01lC1ds55N8jbQFP2ebRpT
+	iTGMCnbzCOcsUoEKx8O8SIdk9xjmaZwF7aOrSq7arjF5vu6lXaZXPd+00ljP8LUlAZA9GkZHd6Teh
+	E4OMZmRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTai7-0000000C9nY-2WfC;
-	Fri, 03 Jan 2025 05:59:03 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1tTal8-0000000CAH6-2ivQ;
+	Fri, 03 Jan 2025 06:02:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTai4-0000000C9mN-2mBn
-	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jan 2025 05:59:02 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-3022484d4e4so149001441fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jan 2025 21:58:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735883938; x=1736488738; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=sFlWSYAVuSson+OhthOc5MObp0JO2PaKlR/7cwxtKLk=;
-        b=lJOCF4getyLfCTeb7T9gis1JfTlyqANzE85LuaJJDjqnhHKEfFUXaBl1pOx5+IbRaJ
-         WSqfIche3gDO6hCmbpiqvFnUlNhDfvd0kGOThC5LwT6ny2gKBtAhE61MO+wF1+rtiUYI
-         901Ozh5JDaLzwB8MmM0CsIOxsK+DOa+2qod6BTSBAORj0cuJuKMWQLuSQXe2wpeQB3Yg
-         1o+hmCEU//PxONurY6juhbXJjqrZhCGKL5IJ55Pxz5mN+b3noKKCoqEZblL535LRj0LU
-         Yn+9JuQsnp6K6WjQui2ZsyDshsjlwKKioUs1/xn0i9EdK/PMIEWWcniY8Rq8kcb5X2V1
-         m88g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735883938; x=1736488738;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sFlWSYAVuSson+OhthOc5MObp0JO2PaKlR/7cwxtKLk=;
-        b=OWchaspyLTvsCHbyuQLmik2oYdnn7HavzE2n0T1j+ItvJLXpNjNQJwz0ZHAP90ByxZ
-         o/ngw7cSCbPOW6iO/B3VzkDQstF7VO8KisxjrYP67M2O99An41imb3boLdKUi60UtVUR
-         O2v7wINxuiGFNEWSby3CXSgn4pudzfQ+SjV08h8D9dUa7bc0xkUmUkeE+lhJJSkGtmfj
-         wW3NiciKinRKJjl6hekpbg/IMLQs7RiD6+W3DaaRUD+vg3RA2QRI4wJMd8ITdf646FCO
-         tyb1vuy9lAPqonH2RDbyd1AA1dLkKLAtDYkSnTgezVefuP74kEiLFx9NqJyRCIIUQyNn
-         Cfmg==
-X-Forwarded-Encrypted: i=1; AJvYcCWGpiKcyoMwGD9fTpuR01fqMkRt+FonoalmyB7zd8MYpm3M1bDnPZvTS+2CJXEGHeAx72hUNsBSJXajdyfzjA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwKuDd5pZw4NprrfHof9xgCbmwaGI9x9SKvKed4dukzKYcn7XhB
-	WeuCsOprX2GA+iYSXMxHSKvjVinPJ3XP+NfVxpNbN3JCSOq42YpVMsIFZiLinEA=
-X-Gm-Gg: ASbGncsjfcCX42tuqEoccxIGR1O0NeNWRpIyM6Uv6BMmFWVgq6AXTNz/b6tYVk2MVyW
-	L3KSQk8If49OIigIXte633XfIzMlTdXnBAdRcnZmZUSA3ZTo4cNCGNFT8Lj22EA8xJI6GX06oz6
-	T430aItb24tkXlev9khmc/yqlszOa0Lys+CHFOIpN5DEejKhBmL5sARbrg+PY78AtBUc7FTDjjP
-	CUSopETcH1UJ+eUGmqKERJfdLPBPe0V1byoLn7dl+B2ogwtqh9IyZcEqDP0nbssRIt9aWwndGrK
-	JkWxYzxCWjgPxuHW2jd0nCfueKY1AZZ3qEqb
-X-Google-Smtp-Source: AGHT+IE6y4JdTtlzcbrnGGg7v7FjSgwU7e/vWxQ7TgNE5uhhWt7BpBzFop0XHrbVtbgwiv0CXbLJOQ==
-X-Received: by 2002:a2e:bc1a:0:b0:302:3a46:10a7 with SMTP id 38308e7fff4ca-3046851f9cemr129431821fa.5.1735883938405;
-        Thu, 02 Jan 2025 21:58:58 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3049ec4ca6bsm26165151fa.56.2025.01.02.21.58.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Jan 2025 21:58:57 -0800 (PST)
-Date: Fri, 3 Jan 2025 07:58:54 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] drm/ci: uprev IGT
-Message-ID: <dj2r22upxnj2aicjnsvoqnhd4n73tyfgm36jtvixxp4vphocev@gggcjakm3xge>
-References: <20241217160655.2371138-1-vignesh.raman@collabora.com>
+	id 1tTaju-0000000CA0b-3jGU;
+	Fri, 03 Jan 2025 06:00:56 +0000
+X-UUID: 13821642c99811ef82ff63e91e7eb18c-20250102
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IRJmo01lCGWBN4vk/8ge3MPSFtd3Uvt3DpqX+KRB26Q=;
+	b=D15wWqdAml3+TjDJ4wGFKQqnOnV2dii5mL321+wo5nZn+WRbmkeAo9bWWfe3xtNwpD892NQp/blcXmdPEUSSbQLAQjpPIDyhHOVEfiZ5rcOloEuNOqdf7hpWrpSIBADjNjHcAJni0jzop57PBCHJK1du6sCgOHujJh20PpBlwrs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:2bbdd2ef-3307-4b8b-a541-20b6bdb899b6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:683a9825-8650-4337-bf57-045b64170f0c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 13821642c99811ef82ff63e91e7eb18c-20250102
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <jianjun.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1540545072; Thu, 02 Jan 2025 23:00:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 3 Jan 2025 14:00:44 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 3 Jan 2025 14:00:43 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi
+	<lpieralisi@kernel.org>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?=
+	<kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	"Rob Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	"Conor Dooley" <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+	<jianjun.wang@mediatek.com>, <linux-pci@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	Xavier Chang <Xavier.Chang@mediatek.com>
+Subject: [PATCH 0/5] PCI: mediatek-gen3: Add MT8196 support
+Date: Fri, 3 Jan 2025 14:00:10 +0800
+Message-ID: <20250103060035.30688-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241217160655.2371138-1-vignesh.raman@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_215900_709303_A5428BED 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20250102_220054_937216_9AACFDDD 
+X-CRM114-Status: UNSURE (   7.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,25 +92,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 09:36:52PM +0530, Vignesh Raman wrote:
-> Uprev IGT to the latest version and update expectation files.
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v1:
->   - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1327810
->     Will update the flake bug report link after v1 is reviewed.
-> 
-> v2:
->   - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1331363
->     Updated flake test bug report links.
-> 
+The MT8196 is an ARM platform SoC that has the same PCIe IP as the MT8195.
+It has 6 clocks like MT8195, but 2 of them are different, also it requires
+additional settings in the pextpcfg registers, hence that introduce
+pextpcfg in PCIe driver for these settings.
 
-What is the current state of this patch? It would have been really nice
-to get it in, we have patches depending on updated IGT.
+Jianjun Wang (5):
+  dt-bindings: PCI: mediatek-gen3: Add MT8196 support
+  PCI: mediatek-gen3: Add MT8196 support
+  PCI: mediatek-gen3: Disable ASPM L0s
+  PCI: mediatek-gen3: Don't reply AXI slave error
+  PCI: mediatek-gen3: Keep PCIe power and clocks if suspend-to-idle
+
+ .../bindings/pci/mediatek-pcie-gen3.yaml      |  29 ++++
+ drivers/pci/controller/pcie-mediatek-gen3.c   | 129 ++++++++++++++++++
+ 2 files changed, 158 insertions(+)
 
 -- 
-With best wishes
-Dmitry
+2.46.0
+
 
