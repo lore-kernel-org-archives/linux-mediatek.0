@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB0AE77198
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 07:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3680DE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 09:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cMDSCtGjZWJsWp0VLSuytv75YuoxhvMH+zr0NBthYg4=; b=l2OHsG3JYO00tr8cQr5/LZKISQ
-	9ytt7+AONoMZkyhIG+jIIp7427ddU8gfw3OErnyI0vzrN8oUv5fW8SxYCrveFba4y14Q5pfIOOiDO
-	veLqFUKNgNopF0qE/lvcxzBmYxk97AsuWNYLA1xXnJtFReD0nSAUfYYHMsRvqzUCW7bsi6KJ1tN5A
-	S8aPh7Rux3uEnYHDGl744iZO4QIXocjQVmJ8LL/5QYb1NZ5R4Rtj9Fq5hTYcZXlRhq6roYjSgP5vY
-	GBitsZvlT4gBqU7sVGH+bs/8RsAfQIxSIl9y8OJvLe8u12R4783BFJjoh7TuvfeyM4ednXjI6I6M7
-	b2+yDJhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r04OZrJXp6kd1rDCdCss3q2JDo1ncyfjGQuxvP7B3Wg=; b=QOwKMGtyiao542rwZdWIqF4Lx+
+	vDTb22JiEDh8MDyq/6arjVnnl0HzM4VchlQUfjNTNZ7qaw4LSvS7xhwUBYNsBdZtnzixEUYFIQPdX
+	f5mGOGS4GbYLfk4IPYcDdBSCP3VF0s+iSskuEqDjleKUVIOl8N+TXhVLo/JJtxWx7JLxEH4jsqTwm
+	/n825DamtLfYzIV5h6vj2Pcs9+WhTBlgoP1y8R1V/cQMNGhTcimfSUADjZ4/Gk4Y52blJFv27RUWz
+	xlt72PHhbcnLuw7M6IXqm7yqr3Uki8Z3Xb+2f6IiJVX0evplLBVBLAA0K/FfYK7B0SAmj5xpuIlHA
+	BuTcAxQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTcIC-0000000CNHl-0qef;
-	Fri, 03 Jan 2025 07:40:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tTdj4-0000000CYkB-2KHS;
+	Fri, 03 Jan 2025 09:12:15 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTcCa-0000000CMAQ-2dNI;
-	Fri, 03 Jan 2025 07:34:37 +0000
-X-UUID: 2bac252ac9a511ef82ff63e91e7eb18c-20250103
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cMDSCtGjZWJsWp0VLSuytv75YuoxhvMH+zr0NBthYg4=;
-	b=KP1iPlWqnO5mgSAAyfLGAG8Xi3QjSIpMirvZuj4k4POPhoy3gstCpR/oYVeHq7XXKgDUEo2pSeHmRCuDRz6m4q2xE14dw/DIomQUPJOt0Puq/SQdhw2NcgnfmZRppQLvp8lpsi0zLBJtrwu0qo2VDUuXIvUAH+D/hlL4ZUPz1+E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:71045bdc-2f01-460a-8946-408503db37c8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:dccc9925-8650-4337-bf57-045b64170f0c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 2bac252ac9a511ef82ff63e91e7eb18c-20250103
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1796259730; Fri, 03 Jan 2025 00:34:31 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 3 Jan 2025 15:34:28 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 3 Jan 2025 15:34:27 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
-	<msp@baylibre.com>, <granquet@baylibre.com>, <dmitry.osipenko@collabora.com>,
-	<rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>,
-	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>,
-	<liankun.yang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v4 1/1] drm/mediatek: Add return value check when reading DPCD
-Date: Fri, 3 Jan 2025 15:33:22 +0800
-Message-ID: <20250103073425.28615-1-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tTdhq-0000000CYa6-2T5r;
+	Fri, 03 Jan 2025 09:11:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5A44BA404B1;
+	Fri,  3 Jan 2025 09:09:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 733F8C4CECE;
+	Fri,  3 Jan 2025 09:10:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735895457;
+	bh=g4yapdXI+l0EgvPcvBnHQ+oGbw0TIJA2mVOnFMmAxL0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=POvx8f3xZItDhKn/eWkorSk5VxsPGdhFkStm07SKBO1ZFtBowKehMtVeUbpr96zhl
+	 Wn7M8ABJeIYND0JJ7+acCuiqplpILMU9rLSMuaa2JXCt4z32u3EBEb0JQUax8f6e44
+	 MSDRxSBegPG0V2D1M8AHBay+N9a/kaXw8uSi5znNLI1pbobpLVCe5UKRtp3I9mIG6s
+	 eniJtKy26EetRbVpnto75BWoKs0x3X+zR2HhoWvqr3z2QFgGw2RbHuqqJWGNPtGdTj
+	 A0fqozMcFDOjkkbLJfgRpH34ATxvAFpvPJVbnLKKikPfn5vubgqQAhFZ0Py8hHpcpU
+	 u7r1XX4KBAM+w==
+Date: Fri, 3 Jan 2025 10:10:53 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, Xavier Chang <Xavier.Chang@mediatek.com>
+Subject: Re: [PATCH 1/5] dt-bindings: PCI: mediatek-gen3: Add MT8196 support
+Message-ID: <ndj6j2mmylipr7mxg42f3lcwgx55cvcjnuuofmlk6n6t5uz5pr@bxugolyfublc>
+References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
+ <20250103060035.30688-2-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250103060035.30688-2-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_233436_672056_31E625E7 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20250103_011058_691532_75B81F75 
+X-CRM114-Status: UNSURE (   7.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,55 +78,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Returns the number of bytes transferred (1) on success.
-Check the return value to confirm that AUX communication is successful.
+On Fri, Jan 03, 2025 at 02:00:11PM +0800, Jianjun Wang wrote:
+> +        clock-names:
+> +          items:
+> +            - const: pl_250m
+> +            - const: tl_26m
+> +            - const: peri_26m
+> +            - const: peri_mem
+> +            - const: ahb_apb
+> +            - const: low_power
+> +
+> +        resets:
+> +          minItems: 1
+> +          maxItems: 2
+> +
+> +        reset-names:
+> +          minItems: 1
+> +          maxItems: 2
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+Why resets are flexible?
 
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
----
-Changes in V4:
-- Fix IF judgement condition.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20241218113448.2992-1-liankun.yang@mediatek.com/
-
-Changes in V3:
-- Using drm_dp_read_sink_count() to improve patch.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20241128030940.25657-1-liankun.yang@mediatek.com/
-
-Changes in V2:
-- Modify Fixes in Commit Message.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240930092000.5385-1-liankun.yang@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 36713c176cfc..b8e4e9a6eb78 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2100,7 +2100,6 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 	enum drm_connector_status ret = connector_status_disconnected;
- 	bool enabled = mtk_dp->enabled;
--	u8 sink_count = 0;
- 
- 	if (!mtk_dp->train_info.cable_plugged_in)
- 		return ret;
-@@ -2115,8 +2114,8 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	 * function, we just need to check the HPD connection to check
- 	 * whether we connect to a sink device.
- 	 */
--	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
--	if (DP_GET_SINK_COUNT(sink_count))
-+
-+	if (drm_dp_read_sink_count(&mtk_dp->aux) > 0)
- 		ret = connector_status_connected;
- 
- 	if (!enabled)
--- 
-2.45.2
+Best regards,
+Krzysztof
 
 
