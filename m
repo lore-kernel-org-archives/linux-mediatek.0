@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B36A4E77188
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2025 23:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A0EE77197
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 00:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=NO3iKQzFyP5XYivKNlt2p7JsAu2xVzI2cDrFzD/Dd2o=; b=vonSukdT5DbFil
-	r/F3+OvZbOZDLuMNtRsu6mq0FgIXln3zOaJZK4CaPl6kIznZ2Xj8eUCdhfwVFVNu4GXSk4DE1l+R/
-	pdx1D98scXCoSb7H+nws/vYf+vo5unkFXlLQAc2VC/uBaPbRTr6zz3Tq9jCYPpb/MmaIJWlt2Arha
-	o/VjL4NN2TvybEiJj47UKfVhwn+g2+vdAdyaFYFVK9vRX7HTC8lbGa7qyaPd+t+UC2XJap6+Cl5J+
-	vAGrldRGnhm538ZuJHS9L0PNay7FdFUhiEpl865VcgzvtM4OdZTqp2TDh7ynJidgaIWsUqRJEFJTQ
-	OsAmtzQ7y0KJm4zEcTaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sX00kjdMMkpbEo7t/2MEjZFR57bisypxfIJ+Q9mKzxY=; b=ae6RWXrRHeQ3NCfXqjDK8t9lrK
+	ZrLQeepSxX9pFd1tMwRB9SKjG0+IaABrJPfhn97xRXjjZvdX5pk9s9PoMXI51CAg7rF7o1Tx8PF97
+	bnknDnjLEUt6V6V4JKz8G+icjbdzC4AfuBDTwDHvujUM9qGjNYXv3hfot7hy1+XOn0PmccpngOa0/
+	WqwZYTZEalyratgVJ7pT5r51rmtWFtAPGnvawjjHGXxSI9iOMCuZIL2NaDDmTgpTHRop8syx4WiZ6
+	qaa78Lxf8q2cZzFlAeapRLWKLelEAzfKQTgYHac/QQtt8YL6Vrr3IgMoyH06YWQC7MIDm7b2o2UUl
+	9WFTfE8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTUdD-0000000Bh2n-2hql;
-	Thu, 02 Jan 2025 23:29:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tTVZu-0000000Bl87-2AmT;
+	Fri, 03 Jan 2025 00:30:14 +0000
+Received: from mr85p00im-ztdg06011101.me.com ([17.58.23.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTUc2-0000000Bgmf-0CQH;
-	Thu, 02 Jan 2025 23:28:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AEE055C32B5;
-	Thu,  2 Jan 2025 23:27:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8304DC4CED7;
-	Thu,  2 Jan 2025 23:28:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735860500;
-	bh=o8Evq/Jq7VTHs84rjitCUFOTChZzkwzLSgAyMnDD4CA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Zh5XVJyAyIKPbBdYNw8zG8iHqib2Doua4b1soxpN4u91DBRCvDqe0t+ef1BcRPmoa
-	 y6EXojfQCmXuS6sJ0Jp4/SWvy/+nnpNDQTxc9GoSMW30T9rqTu5/MKdHVnKOH7sXPY
-	 6yCXakKSOntzIKxnFtwGhH4raj67Ond3HtwPRpbeJsY3C4WoyRzLLbbi+TlaEGgkEL
-	 Q4WvYR//5ibRXe07gWFZ5y6kX53IGw0t9sx9NybbjYZFQhZ7zHMCHSpCNKX5nMIrpX
-	 2IBg+mCPOecgO1WYHOB+0VIJhn5HVgBdSjcKUXa2Nf1C+hXlS+xdMI2f+tC3XbogwU
-	 DAZ208w3zAc0g==
-Date: Thu, 2 Jan 2025 17:28:17 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH v3] PCI: mediatek-gen3: Avoid PCIe resetting via
- PCIE_RSTB for Airoha EN7581 SoC
-Message-ID: <20250102232817.GA4147111@bhelgaas>
+	id 1tTVZr-0000000Bl6N-1Uum
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jan 2025 00:30:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+	s=1a1hai; t=1735864198;
+	bh=sX00kjdMMkpbEo7t/2MEjZFR57bisypxfIJ+Q9mKzxY=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:
+	 x-icloud-hme;
+	b=mOkTDaQ/GuVii6DBvUjnFzJIAdLAeaaL2tmFlRCZ4P+A6TYAVQrRWp9Er4PXba69V
+	 7uSsUCLtOa63r9/3gMumkZmwFIEJtfG9H7DrHOBn8VlVz1XIhdLGUpypXWFkWu6bB8
+	 12Lwz3XHfyn//c8VkfZ/5/nckvSnkCoTO1R/fPwDGARAEbrdQkb/xTRlQjO1qZxC/z
+	 RJBK/KTEi6Bfsh1R4xlfoaQqy05mCIS0oWki+dsxYfz4DoTRws4M1be+zF4Ihp8ZaV
+	 YgKVNniBsmJEp1/jlXOCVacxKat31ZnCxX15TS4W0gpYAvwSUtQIuTLSHGpxBZ/hrZ
+	 LrwcTpexf4FRQ==
+Received: from [192.168.1.25] (mr38p00im-dlb-asmtp-mailmevip.me.com [17.57.152.18])
+	by mr85p00im-ztdg06011101.me.com (Postfix) with ESMTPSA id 0B02FDA0388;
+	Fri,  3 Jan 2025 00:29:47 +0000 (UTC)
+Message-ID: <2f8abbad-a70c-4ff0-94c7-8a8a37ad0845@icloud.com>
+Date: Fri, 3 Jan 2025 08:29:43 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z3Z4jcwtgcXk9Zo6@lore-desk>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/11] libnvdimm: Replace namespace_match() with
+ device_find_child_by_name()
+To: Fan Ni <nifan.cxl@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
+ <brgl@bgdev.pl>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas@t-8ch.de>,
+ linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
+ linux-sound@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-cxl@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, arm-scmi@vger.kernel.org,
+ linux-efi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-serial@vger.kernel.org, netdev@vger.kernel.org,
+ Zijun Hu <quic_zijuhu@quicinc.com>,
+ Alison Schofield <alison.schofield@intel.com>
+References: <20241211-const_dfc_done-v4-0-583cc60329df@quicinc.com>
+ <20241211-const_dfc_done-v4-1-583cc60329df@quicinc.com>
+ <Z3bYMiOG0u3Jtv3h@smc-140338-bm01>
+Content-Language: en-US
+From: Zijun Hu <zijun_hu@icloud.com>
+In-Reply-To: <Z3bYMiOG0u3Jtv3h@smc-140338-bm01>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: ybkBbilc0XTCT_YEDgTjyLJ9DRFrwcwH
+X-Proofpoint-ORIG-GUID: ybkBbilc0XTCT_YEDgTjyLJ9DRFrwcwH
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-01-02_03,2025-01-02_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 malwarescore=0 bulkscore=0
+ mlxlogscore=738 mlxscore=0 suspectscore=0 adultscore=0 phishscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2501030002
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_152822_134540_51ACB4F4 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20250102_163011_405615_110DAB75 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,23 +100,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 02, 2025 at 12:29:17PM +0100, Lorenzo Bianconi wrote:
-> > On Wed, Nov 13, 2024 at 02:58:08PM +0100, Lorenzo Bianconi wrote:
-> > > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > > causing occasional PCIe link down issues. In order to overcome the
-> > > problem, PCIE_RSTB signals are not asserted/released during device probe or
-> > > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
-> > > (0x88) and REG_RESET_CONTROL (0x834) registers available in the clock
-> > > module running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
-> > > 
-> > > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-> > > specify per-SoC capabilities.
+On 2025/1/3 02:17, Fan Ni wrote:
+>> -
+>>  static bool is_idle(struct device *dev, struct nd_namespace_common *ndns)
+>>  {
+>>  	struct nd_region *nd_region = to_nd_region(dev->parent);
+>> @@ -168,7 +161,7 @@ ssize_t nd_namespace_store(struct device *dev,
+>>  		goto out;
+>>  	}
+>>  
+>> -	found = device_find_child(dev->parent, name, namespace_match);
+>> +	found = device_find_child_by_name(dev->parent, name);
+> Looks good to me.
+> Just one general question.
+> The function device_find_child checks parent and parent->p, but
+> device_find_child_by_name only checks parent although they share the
+> code except the match function. Why that?
 > 
-> Hi Bjorn,
-> 
-> similar to the other series, this patch is already in Krzysztof's branch.
-> Do you prefer to resend it or just incremental changes?
 
-If it's not too much trouble, I think a new v4 would be simplest so
-the Link: in the lore archives is more correct.
+Thank you Fan for code review.
+
+I did not touch device_find_child_by_name() parameter checking at
+that time.
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=903c44939abc02e2f3d6f2ad65fa090f7e5df5b6
+
+since
+[PATCH v5 05/12] will come finally.
+https://lore.kernel.org/all/20241224-const_dfc_done-v5-5-6623037414d4@quicinc.com/
+
+
+> Fan
+
 
