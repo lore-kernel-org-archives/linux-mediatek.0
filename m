@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F84E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 17:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 504A6E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 17:20:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F8z1hIrfql/MeJ75sBUdJrOBe8QhHBYpolO3BjFm3nc=; b=Y7Kmkcpn/SR40SHSktkzzj6mGy
-	Hm5no/qsyYOuW4YeMdx3bXY0vhO/VIGa/ndsFyk2+WdaEsDlNXcNrKCy53TbsgYVec0ndhG0GvqoX
-	9Jd0Qed7S7fYYzl9Wc+1tSoJ4TD6uzlhhTRONbuoytx8qlniDg90y5DhYFp/GwYSsewcGheHNMnHV
-	xHUEY5Xj4GkmEPD3ubk0RA8bY8NE01+df3sQCSK9L7ykYfPMAGdd8CrSDozSQVfkQMi9tNFBKr0ih
-	+rRlRbNhLuCaz/rkPUCr+27k4+MCt0cXb0kGWIR/Pr7G+sqLF/gbEgBredsgOUhnaMOL9MroCr5eC
-	HI633kJw==;
+	bh=2HkPHEaYDxxWN9cDMPjqP7amTe8qkvQdYBq1KfQGxjY=; b=jFG7EMznKKCJpmvI7WO2j90A9W
+	fDUHat2rn/MuM5HBg3SXdAmMKtadCbiKI+EOWbRFob3sXxxcuGLcW0wR43PzGwYiJjwjqSKUhj+nc
+	yNHJPG3MfmEQoP/MCCagU6PUZXMuWMBzY6tHNFE1OnH0p+mLA6nbjDSUaDJMBkf/CZDjY2RzTw/UM
+	DVlUA8WJoAOvt6XuGsNvSfU+bCfyKgSHaKKzpGtMOuWHbZlM11iZg+AmARE7A/TX0OVrS5WGNoCYu
+	QrIKWf51WuEPxT+JU+tGXLdJ/iG6B5OLy8shlZappnQsR3dq9PmAd45rShKGmZvRrtw6PC1ZU7+v7
+	Uoa0CXEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTlKJ-0000000DXhd-1lWc;
-	Fri, 03 Jan 2025 17:19:11 +0000
+	id 1tTlLW-0000000DXyo-1YEB;
+	Fri, 03 Jan 2025 17:20:26 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTlJ5-0000000DXOs-1G4U;
-	Fri, 03 Jan 2025 17:17:56 +0000
+	id 1tTlJD-0000000DXQg-44gt;
+	Fri, 03 Jan 2025 17:18:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8A09D5C64D9;
-	Fri,  3 Jan 2025 17:17:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0ECFDC4CEDC;
-	Fri,  3 Jan 2025 17:17:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2FA165C64DA;
+	Fri,  3 Jan 2025 17:17:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FCD4C4CED6;
+	Fri,  3 Jan 2025 17:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735924674;
-	bh=VDDipCe1eU5YrCpfBLKv8jlO5RpjTReS3SYLZ3rektE=;
+	s=k20201202; t=1735924683;
+	bh=mw44W+PYGrqjZ0HN6yoFwgQwsPYabuNnIEX0ZTqK9F8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=g2HJx3/olg9t6ycM+t38B1NWJxec72QunBPP4DHy97JjSHMU+jFViOHvaKAIHi+xQ
-	 xkEAy5zTN8fR8+6y2tllm8gcP7tnpquveP0j9Yj68KamX22uAu+tNMx/BMB9IzfX51
-	 lvVLfkm4vx/KoZC0q3hoSPP5taJpKg5B1DFTdBvs1Xuxring1aa2/FTH7Barv/qgDB
-	 b/sf531J6T2gjIbIauOdRnU7z9OwtSf0/bGoFbD8/RPEkE0Cwp1iv9pwcYuE+Salbm
-	 Ks5I/yxVDTxodNj7OCp2tfCTUBrkkBLg3J7mkzVXv1v+53iAtA8YQy8MiPFji0JS7p
-	 MAfujuRGSjfkw==
+	b=hVSI5vurQ648H1o2ZtKkJrwIneOk/FsyE4x6w2v4/6GFSeBKQn4T2iwSKMirX3Z3r
+	 ZWpHKAeXS7Gans0YvL+8jWqF5h8qUSt2uyBeYs34b0NjcHxO8e26vu4R6X6wv2BlSJ
+	 ukaMg21guI6GxH+JbT38m86WKmoL7FXsDbgViH8IxLNHwywU4Ev7AtNndiOl57M910
+	 brkzZ1aQRa9uxqJvwfd1wdL4O5pPbOyQQttEHnEfG+5a0MgHud8gGrlUV70oIE2iXe
+	 o+2PJPmd9Q8RhC8zU02CfYmmjyPQFyuEPeOGDcP8f4swmAASk0IJctg8/G6tEiHh0v
+	 TIOrDIG4pMtPw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -56,19 +56,19 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.12 3/4] ASoC: mediatek: disable buffer pre-allocation
-Date: Fri,  3 Jan 2025 12:17:44 -0500
-Message-Id: <20250103171746.492127-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 2/3] ASoC: mediatek: disable buffer pre-allocation
+Date: Fri,  3 Jan 2025 12:17:55 -0500
+Message-Id: <20250103171756.492191-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250103171746.492127-1-sashal@kernel.org>
-References: <20250103171746.492127-1-sashal@kernel.org>
+In-Reply-To: <20250103171756.492191-1-sashal@kernel.org>
+References: <20250103171756.492191-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.12.8
+X-stable-base: Linux 6.6.69
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_091755_420569_97D1D25C 
+X-CRM114-CacheID: sfid-20250103_091804_094129_AC9A369F 
 X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,7 +119,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-index 9b72b2a7ae91..6b6330583941 100644
+index 01501d5747a7..52495c930ca3 100644
 --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
 +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
 @@ -120,8 +120,8 @@ int mtk_afe_pcm_new(struct snd_soc_component *component,
