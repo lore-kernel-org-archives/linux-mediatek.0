@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A67E77188
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2025 14:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A15E77188
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2025 16:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qNm4lO8LttsScN/mHpd035i5M1a7i15vRYx1Fsr1FUU=; b=MBv4ahl2QxGTILBK93a6JQxFZ1
-	Y2PaBtjrTh7aOTVTYZlBMMB7I1lVKzqB4kyfMV1EWm0v2s5LoVEMAP8p52oo5oUfiyeCRKl7xY0IZ
-	/HTRwD6GdAoD3uO3CJe/RzXIZ+RMDwZguWC5RtR2Lc5xwQmAphRpfAlONUFCfsZfvArA1adufyeTk
-	5e2pol/m2/ODc7978Kcr68xTbJJJaIeMm9hxuJYIk51Zot0FHzccpjs/Q2Z1jxnMEZgrPP3EU3QKh
-	dhYD45D3qvwtTeVuEpHQMe2bq7sPJh6dxOkj5q+zL1xS7mUauTicfzwTxJ9GZq7H8uZi2hSd3/ePh
-	z2z/7ZLQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zFlIya5QEtcnCxxQFNC9LPxsZJLacyOY9qZH4dweysk=; b=KoxIpj/TFZwPdDBge9urYIMzLk
+	Sx0Ij1jC9kpvtTl4jgvBIjb35cCIGxzqNkOQJIKwcdtwh6zHVHCwtv/dbAtk8aJCq6ft390zEryso
+	Oo8c+0Xb94gF6Ca5AjFE8o/6+AStMx9bUl2fTMNvKcyExp2goTFqSFE9H6+NvgHyNF2tS2qp2QrdB
+	4JtPzQD6Uc5D6uR5ExKfqRn6vY0sXQKJcWMnKvRzKMO8giEadWs+7GZTlY8gEd7ZoQd/bQCzVpcnk
+	zjcN3AflPuFuvK7y9QUadWEzppdOfvWG1XXuTI9zCEQlyz6lf4sfMOzZUAoNG2DCNZFbsf0L5QkLL
+	aLFb5fJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tU51w-0000000F6BT-3tRp;
-	Sat, 04 Jan 2025 14:21:32 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1tU7ET-0000000FHp8-1BFC;
+	Sat, 04 Jan 2025 16:42:37 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tU50n-0000000F5t3-2fYm
-	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Jan 2025 14:20:22 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5d0d6087ca3so2717214a12.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jan 2025 06:20:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736000420; x=1736605220; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qNm4lO8LttsScN/mHpd035i5M1a7i15vRYx1Fsr1FUU=;
-        b=aVDsmO3g3BHuWiDZF11Z52UKs/vT3i0YLqkiuNmnF+9/gjvke0f08AR4WLFqkGo2Fu
-         /5XVt7ZLQ6Zalfnri41d8q+oY3v4WHzDFA/1nsyCAr1nL4cfsKv4+dIJ7FNy0GU/1Pbf
-         uHpQIc8vS+2E6rip0MzvgufSnxKNiA0TeT8VJgOQfI32TIJ9NTJR0BoKb2Jrboab6qfI
-         PnDTD9e+O4Uj7pZ5UdtN9N9vssqxasglwkqPynGqhC4K+THJCBMhMikIOINSpcbLZlUQ
-         6lpyYkTndXW/WeGpf2Z+yuFqpcHKKaUobHQg6x3njznMbuArU3OGeyyykYAqkU/iqrbU
-         b6yQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736000420; x=1736605220;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qNm4lO8LttsScN/mHpd035i5M1a7i15vRYx1Fsr1FUU=;
-        b=saxTCKh+A/YYzG5+2TCQs8rGPB9f7015yfq40YVYMs0T7I5XeaypMRzNbyYAhRk3hx
-         EPfSCQHFvf03GxYy+IA6EoHqA53b3XL0mGfPviOVzl6nf8GxxqRr3ATLslLSEvxhGIy2
-         RpFlmGaxNDV/KZ76GDTel1OFylTM/Yq4Iu9+/GpbvFdt/N7Lpb+ztmAB9WlKeL6NIjo1
-         Sp4NHlkLKLumA+S3yWLc/KO8B+inB3fy9OgN/cRZU7s2cJnYBibuDMWOtz0yKfHZcS8P
-         SikDpq2ZuIO2ojEer7hM77Z8Hn9xn+nZN9CVUhkQbYl3KxXMovGzyPzoxH2fAXFJNdlC
-         t+OQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXajw27WfaSNe7Cwq6IxP+ipPEptzzxYlIccM5Gzxg+6yxuSdc7SMj9TKUSWorSsjw9xUdeK0/FwCDmEVT6bA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUN6qNd+5NYUeqgQEuLPab16bfNpmMBmGiUvcOeOsPIDSagajn
-	hIbxkN33TcdoMzbNd6QvjBCEXoHG9baqMh1KUW9ya9MLqHHYuJTIpzHAU+CUJw0=
-X-Gm-Gg: ASbGnctBCXOyMYWWeNBXO66fSnM3KlWwvZd59xzQeA++g376Gwe5E4yX5wGNCf/Fy1W
-	zmEwTqQ6uHIxUJg3kGySqva3nUcmVXZJ0OsM+i/6P20usAeU2Q8hTsYykBIxHrf8AZbq+TBRula
-	54/Pu5lqcoVN4+EM2mcSnD38XicBMyn6WLzLO7qKsaUdnMi/tvAqJAvAsWWa89zlPJF16pP+8Dk
-	jodZ+jWm+IKEW3MBRyB4pzDdSAy/KUc3DM/COtiESTm8Zl31YYSOrsnqKJE1WTryiLHY0g=
-X-Google-Smtp-Source: AGHT+IGPmJFIHjn+qicLAczIza9y3UfewpY8vqEm6a6NDH7ku9/Oq/dk8QplINPtjBf7vNpk6BgDGg==
-X-Received: by 2002:a05:6402:3221:b0:5ce:f524:c15d with SMTP id 4fb4d7f45d1cf-5d81de33f7fmr16791923a12.11.1736000419643;
-        Sat, 04 Jan 2025 06:20:19 -0800 (PST)
-Received: from krzk-bin.. ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d806fed4e1sm21376270a12.70.2025.01.04.06.20.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jan 2025 06:20:19 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Neal Liu <neal.liu@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	stable@vger.kernel.org
-Subject: [PATCH 2/2] soc: mediatek: mtk-devapc: Fix leaking IO map on driver remove
-Date: Sat,  4 Jan 2025 15:20:12 +0100
-Message-ID: <20250104142012.115974-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
-References: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
+	id 1tU7CB-0000000FHXK-0ES1;
+	Sat, 04 Jan 2025 16:40:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 443B55C575C;
+	Sat,  4 Jan 2025 16:39:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 417D4C4AF0B;
+	Sat,  4 Jan 2025 16:40:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736008814;
+	bh=9aLkpmmVf7SzNW23WKff/899vc2RZPaEX/C1AwTTjhc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=B/BZJomLq8T6g/kbiUaMhUidDDsPvvrqay/EX9uUHoV7pUIJz/zzmF1A1twcdLlPZ
+	 DFtjNK0sS/+uY9JnG3jBfdFxJj9jkMsPoaYPagEg2znZ0g5WSs6z0vdMo2cqXzScBi
+	 zoajya8k0vGCMMb1SsB3MDZkxzBxXy0sOPgfs/MuyQ50ivPD+cpSyWFpC3rLiq2UK+
+	 vdnHkBd2g5fRe0adRRFwhJJjzqxxmVlFFZxqp70Uy930y99rG9epMvqLqSmbxffz5e
+	 IWr6Txc5+zqBMxXI4cAQuBRijO2K+vUZ++TY4pE3RdqPaxLUvRc43HS9MFvDzSh5R9
+	 vs4wH7Ar2EV6A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 34D37380A96F;
+	Sat,  4 Jan 2025 16:40:36 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: pcs: pcs-mtk-lynxi: correctly report in-band
+ status capabilities
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173600883476.2467289.906250535981566950.git-patchwork-notify@kernel.org>
+Date: Sat, 04 Jan 2025 16:40:34 +0000
+References: <Z3aJccb1vW14aukg@pidgin.makrotopia.org>
+In-Reply-To: <Z3aJccb1vW14aukg@pidgin.makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250104_062021_674929_EA538A70 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20250104_084015_134110_2B68585D 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,31 +69,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew@lunn.ch, netdev@vger.kernel.org, john@phrozen.org, linux-kernel@vger.kernel.org, hkallweit1@gmail.com, linux@armlinux.org.uk, lynxis@fe80.eu, edumazet@google.com, linux-mediatek@lists.infradead.org, ericwouds@gmail.com, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, rmk+kernel@armlinux.org.uk, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Driver removal should fully clean up - unmap the memory.
+Hello:
 
-Fixes: 0890beb22618 ("soc: mediatek: add mt6779 devapc driver")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/soc/mediatek/mtk-devapc.c | 1 +
- 1 file changed, 1 insertion(+)
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index 500847b41b16..f54c966138b5 100644
---- a/drivers/soc/mediatek/mtk-devapc.c
-+++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -305,6 +305,7 @@ static void mtk_devapc_remove(struct platform_device *pdev)
- 	struct mtk_devapc_context *ctx = platform_get_drvdata(pdev);
- 
- 	stop_devapc(ctx);
-+	iounmap(ctx->infra_base);
- }
- 
- static struct platform_driver mtk_devapc_driver = {
+On Thu, 2 Jan 2025 12:41:21 +0000 you wrote:
+> Neither does the LynxI PCS support QSGMII, nor is in-band-status supported
+> in 2500Base-X mode. Fix the pcs_inband_caps() method accordingly.
+> 
+> Fixes: 520d29bdda86 ("net: pcs: pcs-mtk-lynxi: implement pcs_inband_caps() method")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> drivers/net/pcs/pcs-mtk-lynxi.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+
+Here is the summary with links:
+  - [net-next] net: pcs: pcs-mtk-lynxi: correctly report in-band status capabilities
+    https://git.kernel.org/netdev/net-next/c/a003c38d9bbb
+
+You are awesome, thank you!
 -- 
-2.43.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
