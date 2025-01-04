@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD03DE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2025 22:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C52E77198
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2025 02:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nC4xRGziK9g9aVt6fSkQ1/i2c6tieWGRAMPkl5BbmQQ=; b=EfI0y39MbkRIBr1DZM48yCL3qP
-	k8elnJ77SUBQLOUDBQTeQLYbo25OCV1cXGmcaX4RWVyZyZ1k5FrzmHxhvemi55MXo1fUqAMeTgtEz
-	IHNSLU+h86hyRDzAWTk3UfWt6cDOwok8pKjs6ryS1sHzpU6cxknoqkuWxrgav99Js3qMDMgJRvW5o
-	IuBr2Y4c5Zw5CIviVDautdcys4mByKBkhUyh4OF/JxS+JFxpCn2lo0egEzYMHshoWIijaUuGlNRDJ
-	EO+eco//GnX5wL2Vm1kz3Y+0SlKPD/2ca0haUBh4mVWH00NRxvjeyxrBeNm4P8IQMg4iOt8jH46X+
-	E7Y7+nuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0kD/Qav3CMKX3PRVMdqzDy2KLijr2u/AwaZGORrDsUc=; b=hHIpo5OrrOsERKEwTN2TnwIofm
+	qmrF20lMVvgAlvIwVF6gVw2GPSDUmupSHdd+k7nJxWtQlUNQRQsEMEgfFM21xaHnLWf7f3l8EJFdq
+	QtRPcoqjI6260v5pvTve8R3OunGV8unM9NtYN+3te9780WE/hKgUhhw1QlNrG1BTcAJ0oCiJkvvno
+	FByDhizolf5w0TUa9CC5U92GqhctDTXQhCo6LuwdQNpqeps5Wely9TGvLddS2nJ4eWLg72IBxJ0rj
+	XQcWNS1IlHhearqvV3pV1SWSE5sijh7OtrXYF8XjlawNL5nHNE7QkiUSsWvV8NbQUHUYgEY63eTlw
+	6X3IXxRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTqRh-0000000E8sE-4B7j;
-	Fri, 03 Jan 2025 22:47:10 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tTthr-0000000EMBS-0nfZ;
+	Sat, 04 Jan 2025 02:16:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTqQ0-0000000E8hj-2bFc;
-	Fri, 03 Jan 2025 22:45:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=nC4xRGziK9g9aVt6fSkQ1/i2c6tieWGRAMPkl5BbmQQ=; b=0iXk5yj/N9X5BChmvUoExXBHij
-	7nlr0oqp4aoFuCc+m92c6aDBPqBR+DgPwhvjnQ1puqPVQEKkXm4wSVtk1dCvzFbqzruEPpdAq8KWS
-	+qjTPN9RIeiX8PG/phNYYSfA2HV+zWM5PiBQR5Z56DNS63bGI5dxUTERm9+Bj48OW+MQ=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tTqPn-001ACo-P8; Fri, 03 Jan 2025 23:45:11 +0100
-Date: Fri, 3 Jan 2025 23:45:11 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Jakub Kicinski <kuba@kernel.org>, Jose Abreu <joabreu@synopsys.com>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 6/6] net: pcs: xpcs: make xpcs_get_interfaces()
- static
-Message-ID: <7da95b85-f16e-4082-ae6b-12da27875750@lunn.ch>
-References: <Z3fG9oTY9F9fCYHv@shell.armlinux.org.uk>
- <E1tTffk-007Roi-JM@rmk-PC.armlinux.org.uk>
+	id 1tTtgS-0000000EM54-0Jad;
+	Sat, 04 Jan 2025 02:14:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 322B25C479D;
+	Sat,  4 Jan 2025 02:13:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 963EBC4CED6;
+	Sat,  4 Jan 2025 02:14:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735956873;
+	bh=0kD/Qav3CMKX3PRVMdqzDy2KLijr2u/AwaZGORrDsUc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=r5PP1d60bJO/ZUAmRTfHxP69gUefDKNGx8NTaHR2DeZ0hFRQ9QqFGB0VdUBU20DLG
+	 uTT+S8vMxeWTdYWgDvN4Kc5cT25HRXgU9X0Wh6Mya2zVBu6UybjIqnp2HS29eeLmmT
+	 lz0fRWXNt2t9kAon2idgnqNntJUpMrnrw/tEePKbK8wxahkKpsSaTW/XKzUs6D9qwr
+	 LUaQcjFLWKMBOHaiRkN4TWoONqbd8BsJgrebtN4OA7WmCHETt54x0vzNPGn1At6Hho
+	 pn3NY167XjiK19hiATM0dUedOS37mzScDblBtezreYHa3dPodzzF7XDu1v1GNRv80W
+	 pM9qfqgIHKR7w==
+Date: Fri, 3 Jan 2025 18:14:31 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Shiming Cheng <shiming.cheng@mediatek.com>
+Cc: <willemdebruijn.kernel@gmail.com>, <davem@davemloft.net>,
+ <dsahern@kernel.org>, <edumazet@google.com>, <pabeni@redhat.com>,
+ <horms@kernel.org>, <matthias.bgg@gmail.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>,
+ <lena.wang@mediatek.com>
+Subject: Re: [PATCH net v2] ipv6: socket SO_BINDTODEVICE lookup routing fail
+ without IPv6 rule.
+Message-ID: <20250103181431.536909ad@kernel.org>
+In-Reply-To: <20250103054413.31581-1-shiming.cheng@mediatek.com>
+References: <20250103054413.31581-1-shiming.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <E1tTffk-007Roi-JM@rmk-PC.armlinux.org.uk>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_144524_659525_8A9AF897 
-X-CRM114-Status: UNSURE (   7.14  )
+X-CRM114-CacheID: sfid-20250103_181436_173765_1955C61A 
+X-CRM114-Status: UNSURE (   8.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,13 +77,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 03, 2025 at 11:16:56AM +0000, Russell King (Oracle) wrote:
-> xpcs_get_interfaces() should no longer be used outside of the XPCS
-> code, so make it static.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+On Fri, 3 Jan 2025 13:43:49 +0800 Shiming Cheng wrote:
+> When using socket IPv6 with SO_BINDTODEVICE, if IPv6 rule is not
+> matched, it will return ENETUNREACH. In fact, IPv4 does not behave
+> this way. IPv4 prioritizes looking up IP rules for routing and
+> forwarding, if not matched it will use socket-bound out interface
+> to send packets. The modification here is to make IPv6 behave the
+> same as IPv4. If IP rule is not found, it will also use socket-bound
+> out interface to send packts.
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-
-    Andrew
+CI shows failures in tools/testing/selftests/net/fcnal-test.sh
+and tools/testing/selftests/net/fib_nexthops.sh with this patch
+applied. Could be a flake but please double check before sending v3
 
