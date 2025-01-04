@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F44FE77188
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2025 11:40:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84B5E77188
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2025 12:42:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=icByOsF7hNZZ337PJRmMU4jt4Kwhpb3YWVmnD8BK//Q=; b=0aBNsM4h3GE2txkE8m36C04vZN
-	PgQq5+7UyD8OS67+MBLPvKDFz1W9bUQqHA9MfjRHWsXsXL0CmXlptu5iLFyqvfmItTnS0uLlK7caO
-	yqZKyC+YyU4zikZNNIRievM96HpYvE7brt4rxbSq3Mkgm3iveQEDYO96aKnTOgY3mUA1cYy7MuBaM
-	9e9OWaAo5WZ6maWxe6t467Wh18O3AZoAiSZfJH93aWc2NHZBG/AcBTw4u+RaKj0nsBA5bZfSJaOFd
-	2D/fncx7uhiFSV3kABnCv7ceNfYJbPZqtaKBr62fRrbVfbTTVcw9LSJuW3MSX7N1bVFnUkLSYLHmy
-	8eYhJe5g==;
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kqbUvv0CXt9RdulI9bIVcE+IxBG7OHOyo3iuG7TnbYo=; b=mvOX24YyMKruB055LyNDV8IrmS
+	irqshR984pV1fYkQxL0RfO+xdGVDmAnhQE5upHaKAfuPqMquBO2ZFN6E5MV8dFnzVRd/DKnW6vvka
+	Plpl/vREjA6ACWU7hum1Th81YqOHOaJRDuhTu6U9rGYkp1r6PCINAR7c6lsxhEa80ZQUx9Y7kg305
+	TvE9z6WromG5f3M6GeTVYfy4wmR/5kivdYc0lehudyBa2R9bSBYQjTMQYIYbd49pDQLf+FUxeGh8U
+	3Kl3/eCKn4uQRfxO2KyR/8sLqsvC/a+LR+DD96EAuaiiEeiYgNSANdYy2JOT0LpsrKPoOFNJAbSzf
+	9pWmo4uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tU2Vp-0000000EvpY-1GqO;
-	Sat, 04 Jan 2025 11:40:13 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1tU3UG-0000000EzKv-3pXu;
+	Sat, 04 Jan 2025 12:42:40 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tU2Vm-0000000Evox-3Y0k
+	id 1tU3UA-0000000EzK9-2JaO
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Jan 2025 11:40:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1735990797; x=1736595597; i=frank-w@public-files.de;
-	bh=icByOsF7hNZZ337PJRmMU4jt4Kwhpb3YWVmnD8BK//Q=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:In-Reply-To:References:Date:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=oci9orCsBP997NsO6Webcy/QtxqLtCu3n+Ffp6T6UlCi73AGINFMwr662IQDRHoC
-	 KLIdlbs59GgfiWBYJ8/N6+6gW7NF1Wx2sABrWNaPllIOaRWpwv/syMc2j28DhohG2
-	 NPzxNjFna/sujqgZ3VBX1y4mn7jZaibSH45BACuuJRDI9YqO2HdFg8zOwhj4sUjia
-	 to5058xv3GAveKMh+pjFQ8huMzsimYGuZ3GXnuFzZAIJqVrGf+cp7c26NfjgFRrzk
-	 M2GBeSuGdPV0GUT3Sr81Vu7cMeE8iG7zV08AhgwLoHNyZ210KgyfWvJ6/EJZDiK3U
-	 o1JG8ZtGnb1NCLLKkw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [194.15.87.187] ([194.15.87.187]) by
- trinity-msg-rest-gmx-gmx-live-bbc95d94c-9m2wx (via HTTP); Sat, 4 Jan 2025
- 11:39:57 +0000
+	Sat, 04 Jan 2025 12:42:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id DF1DFA4032F;
+	Sat,  4 Jan 2025 12:40:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09B0FC4CED1;
+	Sat,  4 Jan 2025 12:42:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735994552;
+	bh=i3MCDANbM1srZh8kgYeU036iM9ApZitZLDa4c9jlvhI=;
+	h=From:To:Subject:Date:From;
+	b=dAwITT5jmQfKT+RNq/xcYyBsrL2wFV6NRm8WWvNl16/oLZgf5At/OaJP/0OwuW54/
+	 FT3lTKPwdhXAvux7jpe7TtD2P5zX6zjpx24CDkA6mI/x3vE9jFFLkQlKyf3ELfz5XZ
+	 1wDF4x/R9siHR2lvCGL1oG3cM/aNfuoNqApNsa/S42GEZeCw+rbXbymeYJuTXBUyl8
+	 5UmyxwHOYjN4ytdq+XIzHzPcAYDiJl58YLNSxOXqQaw7gfjQEXp+iimAwn7DMGBcX6
+	 9kZJ8y+N/SmDZ9oQ35Scafgcpc7vDV/85qpvsXQGu0Ikn23psSR8wc0+U3zKcRxtSz
+	 6vMjAWs2Whlzg==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	Guoqing Jiang <guoqing.jiang@canonical.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Liankun Yang <liankun.yang@mediatek.com>,
+	Fei Shao <fshao@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [GIT PULL] mediatek drm fixes 20250104
+Date: Sat,  4 Jan 2025 12:42:27 +0000
+Message-Id: <20250104124227.45505-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Message-ID: <trinity-0eec3a68-fc9a-4ec6-8c95-1cd58f3bcff8-1735990797237@trinity-msg-rest-gmx-gmx-live-bbc95d94c-9m2wx>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: frank-w@public-files.de, shayne.chen@mediatek.com
-Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org,
- ryder.lee@mediatek.com, evelyn.tsai@mediatek.com,
- linux-mediatek@lists.infradead.org, shayne.chen@mediatek.com
-Subject: Aw: Aw: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface
- combinations
-Content-Type: text/plain; charset=UTF-8
-In-Reply-To: <trinity-67c63297-52b5-4d2c-bcdd-1e86936c4b26-1728494589152@3c-app-gmx-bap26>
-Importance: normal
-References: <20241007135133.5336-1-shayne.chen@mediatek.com>
- <trinity-67c63297-52b5-4d2c-bcdd-1e86936c4b26-1728494589152@3c-app-gmx-bap26>
-Date: Sat, 4 Jan 2025 11:39:57 +0000
-Sensitivity: Normal
-X-Priority: 3
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:6g1zFbGGvW8NaDhbU4zUxc/9aXAyRBjiFU7KoxiifwqVPEXDsU65UuwpojdCJmmV7pPY9
- c/Y2OzgRPCXRjNLJTq8adLOY4ZyBi9rwZ7n5n4kHIpaP507jrKCmfRMHxeCRyASoGZmf1Yog7oj8
- fVu44HpeJq4gIaTTUwbIxqzlNJTumwJT5Bxu09kSKmhLC8k2Gj9f3gQ+YaF+9C2QnGn/Xk1YC8F2
- JAg7W5dJ6Mpbmg4vOfgv6kiakbvWV9UX7gjltnJAx8IOaPkdY6BGhsaZqUtxMdJ72oQRElOd6pz/
- EbJpVQyfGeuNX10Vj5JQXomdsFQBFvZNUKDVJJRvg6gXIv+c5KLOuGmLP8T/XRml2E=
-UI-OutboundReport: notjunk:1;M01:P0:HM0e+AwcpAo=;V2FPj4vVb906xKpudUMHhsDAmxg
- XKUMfqwDKM37XSgIo0lC+zES26AGSiY6Hd5YJo8m68Cl133F2Vk8IK3MKO5U0mHHsXY++zHl8
- fgy0cG7oBXFp/dxx9N0ZNj1QDenCWaZzmRUMJJP82a2i/0FbXTltXik2LMZmswReH88Sep+/Q
- 4WhC0QC7tL0SpP0YfXNmL0gLU0WGIm10/zpiZVPopbaCA9dqqDogahLl25++fOctX2PxqT/ik
- IGrax0NdXXebnllfBs/QVKhGr1xlgmkHLMrIWtfvjrjhv1hE9RKeOPOemHk26J331iNXaxT6m
- bM3sypsS+SxX+KpflA2qQRfsGG+y9Yb7El+iW9tRxysUJgvt7brn5ySG7oUsz76Zjm5quLLPI
- /6YlU1OGtfC4++vOqeC29iK/2euV0q/Wm89LQBCD0ZBnpeZJNsj364zenmM4VmjNLSK4xvuQY
- x1O36I4lCnaCsF1//1O8FG9nhrfh82030+MrA7L/KrI8k+XwiYM4L9TmtJLeRkRT2COhJowUs
- T98uUnihYioM2gviOsU4kZcthzfbozdpxBYYdt/6BWxKsg1FGt7pRTbOIyM/5wOMmXTaj8vKj
- BNVrPwStWoTmsGB1YojyAr7T6n2kZFb3dlYPCKgOZwRXZt38rK0b2DnAB/UJxsvBwnGkyjQdM
- FX8zXuoHlNbhhnBfk3iDuwiT5doP+l+cI5SrNFNpvgTQE0Cc1f5vOHm7+3oQZrvdJnfLy03Gb
- XODB6soyBkWvJjLB7wRnM2GRd1LjrjCQXJTz9xnbKVh+TiGgIaUfDzPoXZFEEFCowXO0Xr7a6
- vh+Gj5UL1XQH9dKwIx0IjUdkOO9dOPVBif8M+7iRBjqFvcXemdYEZNzlrt5Fa8/8tGeC5UYSb
- ye29bWJmUbo0JtMWVmmsueIG9ZpitzW5g0wc=
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250104_034011_250534_7BDBF346 
-X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-CacheID: sfid-20250104_044234_739930_E08D5D59 
+X-CRM114-Status: UNSURE (   7.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,46 +78,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi, Dave & Daniel:
 
-this seems still not merged to next.
+This includes:
 
-can wireless/mtk Maintainer please pick this up?
+1. Revert "drm/mediatek: dsi: Correct calculation formula of PHY Timing"
+2. Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err
+3. Move mtk_crtc_finish_page_flip() to ddp_cmdq_cb()
+4. Only touch DISP_REG_OVL_PITCH_MSB if AFBC is supported
+5. Add support for 180-degree rotation in the display driver
+6. Stop selecting foreign drivers
+7. Revert "drm/mediatek: Switch to for_each_child_of_node_scoped()"
+8. Fix YCbCr422 color format issue for DP
+9. Fix mode valid issue for dp
+10. dp: Reference common DAI properties
+11. dsi: Add registers to pdata to fix MT8186/MT8188
+12. Remove unneeded semicolon
+13. Add return value check when reading DPCD
+14. Initialize pointer in mtk_drm_of_ddp_path_build_one()
 
-> Gesendet: Mittwoch, 9. Oktober 2024 um 19:23
-> Betreff: Aw: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface =
-combinations
->
-> Hi Shayne
->
-> > Gesendet: Montag, 07. Oktober 2024 um 15:51 Uhr
-> > Von: "Shayne Chen" <shayne.chen@mediatek.com>
-> > Betreff: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface co=
-mbinations
-> >
-> > Setting beacon_int_min_gcd and NL80211_IFTYPE_ADHOC in the same interf=
-ace
-> > combination is invalid, which will trigger the following warning trace
-> > and get error returned from wiphy_register().
-> >
-> > [   10.080325] Call trace:
-> > [   10.082761]  wiphy_register+0xc4/0x76c [cfg80211]
-> > [   10.087465]  ieee80211_register_hw+0x800/0xac4 [mac80211]
-> > [   10.092868]  mt76_register_device+0x16c/0x2c0 [mt76]
-> > [   10.097829]  mt7996_register_device+0x740/0x844 [mt7996e]
-> >
-> > Fix this by removing unused adhoc iftype.
-> >
-> > Fixes: 948f65249868 ("wifi: mt76: mt7996: advertize beacon_int_min_gcd=
-")
-> > Reported-by: Frank Wunderlich <frank-w@public-files.de>
-> > Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
->
-> thx for the patch. I can confirm it fixes the issue/trace.
+Regards,
+Chun-Kuang.
 
-if tested-by is necessary:
+The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
 
-Tested-By: Frank Wunderlich <frank-w@public-files.de>
+  Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
 
-> regards
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20250104
+
+for you to fetch changes up to f563dd9ca6cb6ed52c5fb6e4285d1ef26cfa7e8a:
+
+  drm/mediatek: Initialize pointer in mtk_drm_of_ddp_path_build_one() (2025-01-04 12:15:19 +0000)
+
+----------------------------------------------------------------
+Mediatek DRM Fixes - 20250104
+
+1. Revert "drm/mediatek: dsi: Correct calculation formula of PHY Timing"
+2. Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err
+3. Move mtk_crtc_finish_page_flip() to ddp_cmdq_cb()
+4. Only touch DISP_REG_OVL_PITCH_MSB if AFBC is supported
+5. Add support for 180-degree rotation in the display driver
+6. Stop selecting foreign drivers
+7. Revert "drm/mediatek: Switch to for_each_child_of_node_scoped()"
+8. Fix YCbCr422 color format issue for DP
+9. Fix mode valid issue for dp
+10. dp: Reference common DAI properties
+11. dsi: Add registers to pdata to fix MT8186/MT8188
+12. Remove unneeded semicolon
+13. Add return value check when reading DPCD
+14. Initialize pointer in mtk_drm_of_ddp_path_build_one()
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (2):
+      drm/mediatek: mtk_dsi: Add registers to pdata to fix MT8186/MT8188
+      drm/mediatek: Initialize pointer in mtk_drm_of_ddp_path_build_one()
+
+Arnd Bergmann (1):
+      drm/mediatek: stop selecting foreign drivers
+
+Chun-Kuang Hu (3):
+      Revert "drm/mediatek: dsi: Correct calculation formula of PHY Timing"
+      Revert "drm/mediatek: Switch to for_each_child_of_node_scoped()"
+      drm/mediatek: Remove unneeded semicolon
+
+Daniel Golle (1):
+      drm/mediatek: Only touch DISP_REG_OVL_PITCH_MSB if AFBC is supported
+
+Fei Shao (1):
+      dt-bindings: display: mediatek: dp: Reference common DAI properties
+
+Guoqing Jiang (1):
+      drm/mediatek: Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err
+
+Jason-JH.Lin (2):
+      drm/mediatek: Move mtk_crtc_finish_page_flip() to ddp_cmdq_cb()
+      drm/mediatek: Add support for 180-degree rotation in the display driver
+
+Liankun Yang (3):
+      drm/mediatek: Fix YCbCr422 color format issue for DP
+      drm/mediatek: Fix mode valid issue for dp
+      drm/mediatek: Add return value check when reading DPCD
+
+ .../bindings/display/mediatek/mediatek,dp.yaml     | 19 +++++-
+ drivers/gpu/drm/mediatek/Kconfig                   |  5 --
+ drivers/gpu/drm/mediatek/mtk_crtc.c                | 25 ++++++--
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 69 ++++++++++++----------
+ drivers/gpu/drm/mediatek/mtk_dp.c                  | 46 +++++++++------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 13 ++--
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 | 49 +++++++++------
+ 7 files changed, 142 insertions(+), 84 deletions(-)
 
