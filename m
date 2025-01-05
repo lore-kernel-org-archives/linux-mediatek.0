@@ -4,106 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4386E77197
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jan 2025 04:09:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10268E77198
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jan 2025 11:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hlFS13odVb55GccO5hmoQYgmewqIs0Q10x0eG5VUCq8=; b=R7N9FngClr01tMnv0H0+iTTY9W
-	Fz7hf1lniLdEBWdT/U9a71An4VMkXny3+iTDdFpXoDQMuAAuqe4mHbn3KDnJfi/4Ncg6Zjodv0aAA
-	zt5YcNU/UfbPpGYQeYGJKr1Sl8WXio6aYQ8ur1p+4SpDchVY3bhUDEx1eKopAF///i5WsJ49dn3/E
-	Z+0KfiS5BlivQ0ZMfQIN9P6cUHibK0MUmu7wJRx/Nzh+H0dt1BawJBDrQNq0O8HHlW0vMm75Cqbh4
-	RRj1YIGsAIqRRWQWwTqj7NBbvTp+CpjPp53D1ZdDRPbhD+OWLdUbhXrdJ7ZuPg3heRh/ZgjkCiuql
-	x+WjofHg==;
+	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yLbbSxJ8rOCZV34Ppdmdr/BcVBls3TYQ0BnZjPUlHaQ=; b=TTwa/vBgadwK8hIKFF84+WSgoK
+	gQ3tDxoZT+IPq9sriQYa4icxtAUVo6fUslAeMhxfxAdl6cl+r2iDjmI9QLkdOYRjxQy1latC8Itaj
+	AMVtMZM7K3D9jl4IblfFblTm4dhHl2U3PwvaLBBqL0w+ePwBwTR+3JiPB5JcbaA1Hd3TQDd35c2g4
+	vNXn1SmNfdW5Dory1KguKwB2BIhSDwT33W7jU1JQCK6SV1JpP7hrr6FznlK5BRmiKnnRK73peaDj9
+	wUMw0lLtoHdydI5wuXsLjV38+vYJwAWMlPDdOL/RncCYDwIQ7a3IVAZyTv2Vkdb7H7W7jGGoUooLR
+	QoFqLZGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUHxJ-0000000GEif-2XdF;
-	Sun, 05 Jan 2025 04:09:37 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+	id 1tUOpe-0000000GkVv-3XIF;
+	Sun, 05 Jan 2025 11:30:10 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUHvN-0000000GEOR-1Arl;
-	Sun, 05 Jan 2025 04:07:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1736050018;
-	bh=hlFS13odVb55GccO5hmoQYgmewqIs0Q10x0eG5VUCq8=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=AQ8ANtKEqa3pbiT8fHaQRTZZU5VBKrfid3etjdIAGBGcdHjoe1btsG9EFYknncKkn
-	 Y4LqfeyRgVjO9RMrqKV2TeEzrq8UDp8Wc5f60ljZrspCpbZ45jynOJprofbUk0rTt6
-	 1hKKbrVSxAL/Ty3zywqQp3KcsaSwtDB33TVHfI/4=
-X-QQ-mid: bizesmtpip3t1736049974t9n3jgf
-X-QQ-Originating-IP: r3BhvYPkQ0Z7fN4+I8N2dlayxH2rSIzco4OOtcliAm8=
-Received: from avenger-OMEN-by-HP-Gaming-Lapto ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Sun, 05 Jan 2025 12:06:10 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 12459793524915979078
-From: WangYuli <wangyuli@uniontech.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	raoxu@uniontech.com,
-	guanwentao@uniontech.com,
-	zhanjun@uniontech.com,
-	cug_yangyuancong@hotmail.com,
-	lorenzo.bianconi@redhat.com,
-	kvalo@codeaurora.org,
-	aleksander.lobakin@intel.com,
-	michal.pecio@gmail.com,
-	dzm91@hust.edu.cn,
-	jiefeng_li@hust.edu.cn,
-	WangYuli <wangyuli@uniontech.com>
-Subject: [RESEND PATCH] wifi: mt76: mt76u_vendor_request: Do not print error messages when -EPROTO
-Date: Sun,  5 Jan 2025 12:06:07 +0800
-Message-ID: <D4B9CC1FFC0CBAC3+20250105040607.154706-1-wangyuli@uniontech.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tUOpY-0000000GkTT-3fBy;
+	Sun, 05 Jan 2025 11:30:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1736076580; x=1736681380; i=frank-w@public-files.de;
+	bh=yLbbSxJ8rOCZV34Ppdmdr/BcVBls3TYQ0BnZjPUlHaQ=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:In-Reply-To:References:Date:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=giHzQki8mwpHL1X1Upv9XAD2p7y7qccymTqilRNIKRYCF2r7HH/RgxDfKQH0GtvP
+	 Z5Cl1CIPWQoRf5+ahJGDl+GgsBg4BlcTQvnaeiQPkbnF10CTF5clv13vCJpsW46WF
+	 +gRxRKAn+eNRuJTDt6R7axU1NQVqBXJL8j3J6ql7BcBDJJ96cAALj4RCoef2HdCGj
+	 BwL3kcwfhItF2Fa8y5NU8bdI6NDLH+guPDGuqvomGCC0s1CjKamtWQY7KhYKbVgNr
+	 IRWwtzhHKUEHTk80WLjsMCpOJw7wZEjeuLib9zOqQZi5/cOG1C9Cvt776I4r0+Ke/
+	 mrE1r81U/K9b+GJKNg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.79.38] ([80.245.79.38]) by
+ trinity-msg-rest-gmx-gmx-live-548599f845-nqxpf (via HTTP); Sun, 5 Jan 2025
+ 11:29:40 +0000
 MIME-Version: 1.0
+Message-ID: <trinity-80459cab-e571-4699-b3f0-d73a00fe0858-1736076576826@trinity-msg-rest-gmx-gmx-live-548599f845-nqxpf>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux@armlinux.org.uk
+Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, chunfeng.yun@mediatek.com, vkoul@kernel.org,
+ kishon@kernel.org, nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, andrew@lunn.ch,
+ hkallweit1@gmail.com, lynxis@fe80.eu, dqfext@gmail.com,
+ SkyLake.Huang@mediatek.com, p.zabel@pengutronix.de, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, daniel@makrotopia.org
+Subject: Aw: Re: Aw: Re: [RFC PATCH net-next v3 3/8] net: pcs:
+ pcs-mtk-lynxi: add platform driver for MT7988
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: OYpbVsTx4C813yBXpUNDiFeg0S8h8eLemVtdvmfcNDEtHvwmggmUz5su
-	idbETQjVCbj4Vvm5wNINsFSP8xKcA1noW01TSjswM0EyhcniVvyY0yFqZ2IVxk54NgWaq6P
-	9+EElzJheS+8SwHMwgH/9FFcBzxrbmNcZ6O1zgC5dEGnCm2bHtshhhAdVVzxKEg3o76wNz9
-	uqNjyiVOWgCotJ/NJpwcaQe3FOeKNIUMBdwCNQpDenYtbHoGa6r1vWZNy944Kk10jVSGKKW
-	6YT/5OflyHjER1eiHERJukWJwNWZ0zeak0/3in6lg9+7OCz58nPINFP7KeYApPNLBIzBHof
-	JcYdWNfFijOI3nt0WFB4t00W9vMJq6jjSCwpy6MjzxegMUpHT79c5nlOv3QKts3JXOHJr0h
-	dfoawRxOyWd5mreUsb/DPAehyM4L1Sdx1134M40M0BXJmsgisyLlVh74gC8F2JXLjnyyJTr
-	wczE0DtLSlpVtfMJ4+c4tz/JWdvJ27/494+sp9kSsWFRjxGk/gPQzVInv1j3X/8xxMdmFSQ
-	rFsXOLBvo6fqEujmg2LlvbXyoXtvkKL/m+zrlFQlczgWud9HXR5aaRUGHfMYVjzNM/wXIQ+
-	C699PqFIFMZ8oFsPSuNTdtKPTpT+0or9A/9xPs9VHg3O9rEVTe0OC0qXzxNtRbVmcPQqdny
-	fF3WQivFLNIhVPstk3TJOH1A212OHR/UkSKvClRoJD5i/jN3wB92+s+/p+iOoYoRixyfLYl
-	XDVZtlJQ8SL9gt+UKQEy9HBCGb9V/w4KcJtzoAj9+nRciNjR4+PpuW3eVKQrg0AGW9/VV0z
-	epJpzldwvvQ6hS28zxQ0r0MEch1uC8AX96iYmz4hcwqTo+yFNjnDt9Ilr+DbKYmR1zDfS4a
-	Crd2qwMSbnWTCde7fO2OidmVGZZ7traar9qRmpVmLlaUj9CIsmyhrtfK8R2/bAamg1BSEnh
-	ESVf/0XQUdfdWJv5qL/HOFCmbUqGaCiAlK5Pk3leHKFCukDYwFvqs3KcuHPsS73N3+pO3W/
-	R9lFnKzh10fSdeSO5DPYQrMRAaOZs=
-X-QQ-XMRINFO: OWPUhxQsoeAVDbp3OJHYyFg=
-X-QQ-RECHKSPAM: 0
+In-Reply-To: <Zv_9HuaHqtgIA4Et@shell.armlinux.org.uk>
+Importance: normal
+References: <cover.1702352117.git.daniel@makrotopia.org>
+ <8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org>
+ <ZXnV/Pk1PYxAm/jS@shell.armlinux.org.uk> <ZcLc7vJ4fPmRyuxn@makrotopia.org>
+ <ZiaPHWXU-82QMrMt@makrotopia.org>
+ <89bd21ac-78f3-4ee4-9899-83f03169e647@public-files.de>
+ <trinity-af6fdd0b-b72c-42a9-bbae-af45c02f539f-1728051457848@3c-app-gmx-bs32>
+ <Zv_9HuaHqtgIA4Et@shell.armlinux.org.uk>
+Date: Sun, 5 Jan 2025 11:29:40 +0000
+Sensitivity: Normal
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:cPQBleyjsF3yVX6DIROFzgJoSZ9+njddCvA1Zg7Q0R7NQ3dqksbmDt8KviNuosx6RZ3R7
+ ZmKOd3Nxj7ouB2aML4I7GDumerwX9UpoEH2jmlzOqRGe6hH7yHOlD6OHk8Q/+wvf7PqpwaBjkm0/
+ OTvI4KebYTP3IfIxkFVmiFzwAJ724X8J5wmwp7wVttDfaSCIw+Vuhe0R2CxsJQlmmBI+LfzU4VUF
+ GTp2GZLQnn3BRGh+pJbUurUUP92izBY7teDFQ5DvC/Ux8hYb2dqx18+y2FAhkWy90nIJb/pjRfgN
+ ntMvlyZUag83U3fB2L+QStyIoMPNMzrNgKN3Kd3FB4zuHwHAx2gBK1Zn0WwVtXb7mE=
+UI-OutboundReport: notjunk:1;M01:P0:i8+cRb5wjRU=;tWzo9G7VqNUGJNBYvFdykWxunF4
+ qcUYRTAgNtkuNzjEZbxWZYdTk2FXK+/bm8WeM+rQ4PvNgb2xROin0VDwLRqA3IcdsdQ6WHqk5
+ quD0Bzg1/xxsmCzgQ4V5usPTXEudYQhbZbjofMbHikFi2u5Dn2eunjeeP7OPGX5drWKFHRhQ/
+ V0I5egqb/CFj1a3N2iPBcycKJ2S2y8+CRY32m+IAQODjhyJAaEO8eu+3OWoXBllehnQUmYN2A
+ WBb+LHQ4OJrAwOxbbXvBy1o8KKo1V9auiPHii+38kOQnZRaNIdOoVaG9ts3aZmR9CRhVQ2FTr
+ sHCGuXBtlgter6DQIMYC3mJTCSGuYQQLbbwaobvivJPnV6bk27Sxm7Kwt1IwJjIFIxXTI/CkI
+ Z1SGjkIzfN3uYXT9mOgyw6sqJZCECObxtBmnYSxzw6eCqqildFPm0i/PVVjRZQH6nw/ckKBOr
+ 7w/f4GujwrLbAmLmTP8TFjk+bjLbeH1bCeIdqfwxDfRLsiZBQsyqeC/NlqtdEa7RqRhYBqU9y
+ DwEPyFI0y62+Ljqc1nJJtgG8sjBGbKWaRRmu9Gfku0ZRKKGFGbb9SDbM6SqqbvGjjsrbI6xaD
+ DoJePLR5fiLfEvncocIrtEnCqi2U08eikELOBwpAbHrtRn+mmPlL5vK9e63hhX/TVhfjU/kXa
+ ZgQrAQta2XzbdY62Uj5EowS8zRVwTLnj2cetG5VbHrCjfhSC8J5Jj1Slq/BFqa/vhjPhhgpZP
+ ll/EPQm6/XNinwPcLaer24ocz5rC/A8X82hQGmqniM0q63BF0+m2Thws2vLOIb8SvR3R2ID3K
+ RMUQevL0/fJOjuKBno0bmq8d4vqygfL7EzRErAZZDI3dDLydUO5ihSX0urwfxH3zYQcrsybTG
+ AJheBTIfNPDoMCBhPkB+GWMa4/G05mQgCws8=
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250104_200737_964992_8DD876C8 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20250105_033005_234672_6B393160 
+X-CRM114-Status: GOOD (  24.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,59 +112,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When initializing the network card, unplugging the device will
-trigger an -EPROTO error, resulting in a flood of error messages
-being printed frantically.
+Hi Russel,
 
-The exception is printed as follows：
+> Gesendet: Freitag, 4. Oktober 2024 um 16:35
+> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> Betreff: Re: Aw: Re: [RFC PATCH net-next v3 3/8] net: pcs: pcs-mtk-lynxi=
+: add platform driver for MT7988
+>
+> Hi Frank,
+>
+> Sorry, but I've not been able to look at this, and I've completely lost
+> all context now. I was diverted onto a high priority work issue for a
+> while (was it from April to end of June) so didn't have much time
+> available for mainline work. I then had a much needed holiday (three
+> weeks) in July. I then had a clear week where I did look at mainline.
+> Since then, I've had two cataract operations that have made being on the
+> computer somewhat difficult, and it is only recently that I'm
+> effectively "back" after what is approximately six months of not having
+> a lot of bandwidth. I've seen the cataract consultant this morning, and
+> just found out that my optometrist appointment for Tuesday is too soon
+> after the cataract operation, and needs to be moved two weeks. The
+> optometrist doesn't have availability then, so it's going to be another
+> four weeks. FFS... I wish I'd known, then I could've made an
+> arrangement with the optometrist months ago for the correct date.
 
-         mt76x2u 2-2.4:1.0: vendor request req:47 off:9018 failed:-71
-         mt76x2u 2-2.4:1.0: vendor request req:47 off:9018 failed:-71
-         ...
+How are you? I hope you're feeling better now....
+I see you were more active on the Mailinglist in last time :)
 
-It will continue to print more than 2000 times for about 5 minutes,
-causing the usb device to be unable to be disconnected. During this
-period, the usb port cannot recognize the new device because the old
-device has not disconnected.
+> Now, XPCS has introduced a hack in a similar way to what you're trying
+> to do, but I wasn't able to review it, so it went in. We're heading
+> towards the situation where every PCS driver is going to have its own
+> way to look up a PCS registered as a device. This is not going to scale.
+>
+> We need something better than this - and at the moment that's all I can
+> say because I haven't given it any more thought beyond that so far.
 
-There may be other operating methods that cause -EPROTO, but -EPROTO is
-a low-level hardware error. It is unwise to repeat vendor requests
-expecting to read correct data. It is a better choice to treat -EPROTO
-and -ENODEV the same way。
+Have you found some time (and were you able) to look a bit into this ([1])=
+?
 
-Similar to commit 9b0f100c1970 ("mt76: usb: process URBs with status
-EPROTO properly") do no schedule rx_worker for urb marked with status
-set  -EPROTO. I also reproduced this situation when plugging and
-unplugging the device, and this patch is effective.
+How would be the right way here? Daniel posted generic infrastructure for =
+standalone
+pcs drivers [2] similar to phy to have a generic base which all drivers ca=
+n use and
+which can be extended if needed.
 
-Just do not vendor request again for urb marked with status set -EPROTO.
+There was some discussion about how pcs should handle if the underlaying d=
+evice is removed...
+unlikely on SoC, but possible on external bus devices like mdio or pcie. I=
+mho this could be
+a callback in common code handled by vendor driver (query information from=
+ mac driver or for
+SoC simply return fixed value).
 
-Link: https://lore.kernel.org/all/531681bd-30f5-4a70-a156-bf8754b8e072@intel.com/
-Fixes: b40b15e1521f ("mt76: add usb support to mt76 layer")
-Co-developed-by: Xu Rao <raoxu@uniontech.com>
-Signed-off-by: Xu Rao <raoxu@uniontech.com>
-Signed-off-by: WangYuli <wangyuli@uniontech.com>
----
- drivers/net/wireless/mediatek/mt76/usb.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+How should the subsystems talk with each other (callbacks, shared memory, =
+...)?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 58ff06823389..f9e67b8c3b3c 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -33,9 +33,9 @@ int __mt76u_vendor_request(struct mt76_dev *dev, u8 req, u8 req_type,
- 
- 		ret = usb_control_msg(udev, pipe, req, req_type, val,
- 				      offset, buf, len, MT_VEND_REQ_TOUT_MS);
--		if (ret == -ENODEV)
-+		if (ret == -ENODEV || ret == -EPROTO)
- 			set_bit(MT76_REMOVED, &dev->phy.state);
--		if (ret >= 0 || ret == -ENODEV)
-+		if (ret >= 0 || ret == -ENODEV || ret == -EPROTO)
- 			return ret;
- 		usleep_range(5000, 10000);
- 	}
--- 
-2.45.2
+DT maintainers want to avoid syscon compatibles which are widely used for =
+nodes representing only
+a register range that is used from different subsystems. As we are current=
+ly upstreaming mt7988
+(e.g. ethernet), there are some of these "devices" which currently have no=
+ own driver and only
+handled by syscon driver to get the regmap. Should we really write differe=
+nt drivers with additional
+compatibles (duplicate code!) only to handle exchange of the regmap betwee=
+n subsystems? For mt7988
+which can have up to 7 syscon devices it is maybe better to have substruct=
+ures like phy, pcs and so on
+packed into an own driver to have a better overview in devicetree. But for=
+ some functional blocks
+imho it makes not much sense (when really only a regmap has to be exchange=
+d between different devices).
 
+Daniel needs an answer to his questions in [1] (and [2]) on how to proceed=
+. So please help to get the
+pcs-part into the right shape.
+
+regards Frank
+
+[1] https://patchwork.kernel.org/project/netdevbpf/patch/8aa905080bdb67608=
+75d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org/
+[2] https://patchwork.kernel.org/project/netdevbpf/patch/ba4e359584a6b3bc4=
+b3470822c42186d5b0856f9.1721910728.git.daniel@makrotopia.org/
 
