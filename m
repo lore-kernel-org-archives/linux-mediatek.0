@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18611E77188
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jan 2025 02:03:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CD5E77198
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jan 2025 04:08:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NRt+96Gegx7rRnN2Q/gp2rlKwaEMn38Kcq3DDDffPQM=; b=1FFrZDs+0NXlaTVKM5mL2nDlce
-	D4UcYanPKadafgSz3eAAN/MUeIZsGZspMmGdxNI9bLRuQRgJ7zJneD1yhmJkTHyL/KrdgKzz3JPAa
-	HaFNV5zdPfjePe3zThGRjKoQsIDgxclknyjcf38qxFdn2PZVOiShLTuNTV5Xo1zX1VImXLvaSEV+/
-	lCUfU8o4uXZsv0bf/7AYX6PLmkDBMG94FCe16Cvod1ZUeDvrkTePNqr67xp7K/JLj8SeJInBFvPJJ
-	oUWjaRp3858n/OW+NoDK50FifjJc5BEaum1/w1V/qZ9t5zg61PoBbj+ka4VfbEwGUtP8fYRoq8yEJ
-	LkTqHqpg==;
+	bh=AXLeifa0QlviQa7WPZjm73giBl6R07z/zq5dHzAUXig=; b=xdCeRFDt6aQer8s1LAwKHYHUv4
+	wUMj497TP1iBJAYoHMlYgxeBT2rZ+hj9rYMPlWT9t387KimAw5uSEvk+j2Ruyh9RVS0eYWcvBCvTG
+	hMBqa8Kp3alMRp9D//UYPiAJySa2v3VoSb+fCe6dVu0OcZ4SS9r9DHvU4ikXwweGvlY129CgP4BRh
+	csHGyKAZXEdXV7C9JdvtKvl17KcqT4Wc/M1Ch7AyJbD6MZJvdDdl90O/dqtgL11VGbXZAQvGDN1eP
+	96PHvbK8GEJDwyxg2V0qq4nHTJUObmmH710ckHc+HHy7NNnO+ZM8vhAGnHYOLnyqCoznDN9m9yvH/
+	kTgJfPtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUFyx-0000000G16F-3Tk7;
-	Sun, 05 Jan 2025 02:03:11 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1tUHw5-0000000GEWW-1XXM;
+	Sun, 05 Jan 2025 04:08:21 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUFxl-0000000G0zs-2YgH;
-	Sun, 05 Jan 2025 02:01:59 +0000
+	id 1tUHus-0000000GEL7-0CPh;
+	Sun, 05 Jan 2025 04:07:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736042517; x=1767578517;
+  t=1736050026; x=1767586026;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=LXcv4FdNNG3Tf6TIBN0iAcj8De3t94GyOe4c1VqhcLM=;
-  b=jLIbLRjvkZlpe0e5OaAbHAZLJbgzk3lQFPeAtk4SAyp7f5y7HlEXuqvW
-   JIneX3LEJPog8HkleICQ6jrvBcKM4v8FwjNfYCgRt7NajpCqGgcFWfK/i
-   /hxngz9/95FGJ1sQEuXMgBx7jqwzKU8FlVN2YmGQEQ3I9Y+x5Vh0+54ho
-   7CKoWqcRI/VltiWhb1//4LtgcOvvSpXiRxmqxq8vbpwIc5SwnXZHohIbF
-   8tr9aNcej/fRXhi63v4e68Hc/QTGHQOs6e70BLbtoBlboUknpSuV2zoTN
-   H6mfRs/AOUUJZKxaDCTNOAINfL/8Xqcm9u+Laq9aNsuyt1dQ/kn8WVpDD
-   Q==;
-X-CSE-ConnectionGUID: XPkq2i4eSEiFtgsqDNAxkA==
-X-CSE-MsgGUID: taP4p6kxRLytXOID5UJAvw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11305"; a="61605949"
+  bh=uTTXcYE2JlL0MwZNF4xf3gPhakQayiJl1mKH6vTKQMI=;
+  b=Tn4QDaSghvXb0b81M+RoSz2ulK0IZafWLvNgopnbS2QriAxO6HJF67Za
+   W80MXLofTHSazSS8w/UcB8QLNa+IO44zlndzyeRlS0sj4wosNth23paJy
+   MWbpop8cPFiNIIcXJNr8W6TBIwhYcdFgCs0wNuYgPKED83gh/GQB9q27H
+   UJoKctOvk9RcN23lFExv1MzPdSlB5AX4qj5C3i8Jlu39CTGhGuwkW4KZV
+   yB0nqPS48d5vVEwhWcwaP1Rs/euKzbsWVO1OEcJe3wgczk3gRDmlb7GxY
+   fLsKwRmTESao7rO3gns2sSZpICqGjqTlTPNOJF3ikEBM0AMKxSEEfzXv4
+   w==;
+X-CSE-ConnectionGUID: aFZNV1MrSiGv4sIpVKbJPw==
+X-CSE-MsgGUID: tXP5Qd5ETRCphXlvO9g6RQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11305"; a="46906610"
 X-IronPort-AV: E=Sophos;i="6.12,289,1728975600"; 
-   d="scan'208";a="61605949"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jan 2025 18:01:51 -0800
-X-CSE-ConnectionGUID: qLFuF0vNQA2LiuIb2jLmTA==
-X-CSE-MsgGUID: RPZ5+PsPT0yYnydOcdVMkA==
+   d="scan'208";a="46906610"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jan 2025 20:07:01 -0800
+X-CSE-ConnectionGUID: s5QBkrq/RlC6x0S1Bzo8Zg==
+X-CSE-MsgGUID: T/KGlmm5Qo60f34HgbLZqg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.12,289,1728975600"; 
-   d="scan'208";a="102627239"
+   d="scan'208";a="106980210"
 Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 04 Jan 2025 18:01:49 -0800
+  by fmviesa004.fm.intel.com with ESMTP; 04 Jan 2025 20:06:58 -0800
 Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1tUFxa-000BO3-1e;
-	Sun, 05 Jan 2025 02:01:46 +0000
-Date: Sun, 5 Jan 2025 10:01:40 +0800
+	id 1tUHui-000BRL-14;
+	Sun, 05 Jan 2025 04:06:56 +0000
+Date: Sun, 5 Jan 2025 12:06:24 +0800
 From: kernel test robot <lkp@intel.com>
 To: Christian Marangi <ansuelsmth@gmail.com>,
 	"Rafael J. Wysocki" <rafael@kernel.org>,
@@ -68,17 +68,17 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
 	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, upstream@airoha.com
-Cc: oe-kbuild-all@lists.linux.dev
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
 Subject: Re: [PATCH v8 1/2] pmdomain: airoha: Add Airoha CPU PM Domain support
-Message-ID: <202501050957.aylo1fso-lkp@intel.com>
+Message-ID: <202501051127.3AKt5ZE9-lkp@intel.com>
 References: <20250104181305.28185-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20250104181305.28185-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250104_180157_692894_CB0D498D 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20250104_200706_143903_060D3EFA 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,21 +107,21 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/cpufreq
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git linux-next
 patch link:    https://lore.kernel.org/r/20250104181305.28185-1-ansuelsmth%40gmail.com
 patch subject: [PATCH v8 1/2] pmdomain: airoha: Add Airoha CPU PM Domain support
-config: arm-randconfig-004-20250105 (https://download.01.org/0day-ci/archive/20250105/202501050957.aylo1fso-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250105/202501050957.aylo1fso-lkp@intel.com/reproduce)
+config: arm64-randconfig-001-20250105 (https://download.01.org/0day-ci/archive/20250105/202501051127.3AKt5ZE9-lkp@intel.com/config)
+compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 096551537b2a747a3387726ca618ceeb3950e9bc)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250105/202501051127.3AKt5ZE9-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202501050957.aylo1fso-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501051127.3AKt5ZE9-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
->> drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c:135:10: error: 'struct platform_driver' has no member named 'remove_new'; did you mean 'remove'?
+>> drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c:135:3: error: field designator 'remove_new' does not refer to any field in type 'struct platform_driver'
      135 |         .remove_new = airoha_cpu_pmdomain_remove,
-         |          ^~~~~~~~~~
-         |          remove
+         |         ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
 
 
 vim +135 drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
