@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E0EE77198
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 16:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D245E77188
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 16:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ioU53vgoNQ0AoVqbDSui1lqyY/iBOmMjiyD6RqrD6B4=; b=k5fgKzlawglPXzEdmzAEICBmEh
-	UCGlcytIKSN75vQ7J2GVZjU4kQN1l/E4g0g7EwDor8PaJz1dr2YNDzQEufTI5uoWpZCjxrruLSbPe
-	c3DbUTjug+KqUtV9hssV81+odkaCKZTch04HjQM13m5jzc0GyK0nN2KMbHUZXn8n0e1H9CLqCsKhQ
-	RZZ+eyMRJCDjZpkkGrFt+PMuC0DDl6ruNm+uwOSNaKq6WWXkIVZPJOz4toEDJCi061r6OKjzPLT09
-	W5Bzs7GA7X8tPRUQJP10GGLBvCx5Odjx+7ho2+7m/U+w0balDXh+YZQ8bNn5xUZXUG44k4o9cnpLq
-	fxI4EX7w==;
+	bh=1kJILhgpSDQv2eNsTh8ePWX95k+BIGrrFxfbsyCNVHQ=; b=vy4HmYkpTm++crrY1bdRhqG11l
+	Y5fFNKtmmjtquPSDKCflIVOvAVGB3vJIM6uTBU/0KtMxLvrnNdtjjKTvF9BtDgM+NQVOn95s6dFuL
+	YZ4MGWTx4wvLwdQMh8+UcLe1X8jTzFFDP6kqbo329M4lc1KEd9uBszjeJK5F2zcsM5gutEWTpGZvK
+	IixstTsRHXhp+zfZ4vJgNEwHm7+0/lJutNv/rEWWBjQjwB/FEHwLhd1GHK9dAUlqKYD/xEkTX6Ehr
+	+rmgXFt3aIijJ5j5sIm4w3NBhN1Vz0duZEZf0rSQZNX1vB+6NqxlqMiY77myuoofAAwpBNTHwAlvE
+	oaxpXybg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUps4-00000001wAv-3cOw;
-	Mon, 06 Jan 2025 16:22:28 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1tUpur-00000001x9P-1X0Y;
+	Mon, 06 Jan 2025 16:25:21 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUpmj-00000001uql-04Ay
+	id 1tUptk-00000001wsg-3vcB
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 06 Jan 2025 16:24:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=1kJILhgpSDQv2eNsTh8ePWX95k+BIGrrFxfbsyCNVHQ=; b=VkVPSPtClmuuJPwSROlr6RygUr
+	VUslFYYR6NnQ8WP13NIuX9pZB2tU9biksUmMDproAt2HlJk/fPu1RRTtX3zxMww2VVgpB4N/VtcTQ
+	WSAEV1eWNDBnaxkn4wPW9fCQYdKHhnyWzhomH9hiRE1aPjvFYsRk7hrNhEQOcLOAimk2VRTLxEGpA
+	HUb2V43mqZptZPYdQZBP5hgjZWJLSKst2sDs/JyZo6Jc8/H5FE5V6uEnLfR8F30gDPtmNWx2xrIM9
+	zbhB1cMaMznRljT4SSVgCwjKgTNiiz4SJeJu2hSxpDmDenYofuwH1qhiEwbZ2oBTU4j5tfCNGoQhd
+	SF8VV2bg==;
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tUpth-00000008yJc-2WHh
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jan 2025 16:16:59 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-21669fd5c7cso213405975ad.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jan 2025 08:16:56 -0800 (PST)
+	Mon, 06 Jan 2025 16:24:11 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-21a1e6fd923so11417295ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jan 2025 08:24:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736180216; x=1736785016; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1736180645; x=1736785445; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=ioU53vgoNQ0AoVqbDSui1lqyY/iBOmMjiyD6RqrD6B4=;
-        b=rkukeI/sPyiHA16VbibyaUQDqdHnZjK9oE+G7P71bnrTx9Fxd0ZdAx44E4YDzYpVoT
-         Zw+koD0Ig4Fjq0KU5YLxdCc0DEkiHlHKZfBWsemVspVZA/Er8sz/A9xw0HrZVBa/J75r
-         lQUat6H1q93i6dwbkOi779LeA4WsGpBedpyKDzMMEJab5Yo3EN4defQU/2/UiNzMzWu2
-         5tF6FTqSqEhjGMuZu0Yt0Lk12MIboEb38Bt9Q2lWWh3HyEkti2Pvu2uMBbJsgdRbsqVs
-         nWIzbQpWJAJQ+SytQ/8DoKoNsl8ghQT8XNJzvL70dz9jOApMRHjD6VYNHgjDhS+GKTUt
-         1U+g==
+        bh=1kJILhgpSDQv2eNsTh8ePWX95k+BIGrrFxfbsyCNVHQ=;
+        b=a8YqZcEBrSR5DNAWXAOaDNYxazV4j7vZYZSzwBaviqqkIwTtgx4nwwSqQTZfZ5vhPG
+         n8Y0hqAkdRP3NCO85LG+tp4tSITwomPR5yrjEcbiTchQoWqsdKbPZ3vJ8heXEfvNyMbv
+         DjTnQF7kWVNZG//3n2KVUe5lRlaifYoUhmda2agY1TrVhBalmVPKzqLsuOLKwHWkFHxy
+         uGW8VqTIWQgQuy9/4xmS2db5DZI5+sFtrhJZwBtXIRui62H6094eqx2cSDKmJiE+rzTl
+         6GPzeE/tZV9a6t4EFJTTTd9Wf0n9pDwNS8sxFXsLaOoUjpi4g/la3BJtJBtfdI5k+sYT
+         cSmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736180216; x=1736785016;
+        d=1e100.net; s=20230601; t=1736180645; x=1736785445;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ioU53vgoNQ0AoVqbDSui1lqyY/iBOmMjiyD6RqrD6B4=;
-        b=XwRWx3jkokfbotROJlm2NP/BDzPaKYx1ziFnH02k//PRAJ9pvZcKLY7VW/TuHGQP4E
-         oyuPrFK/61CdvJtFIxjK4s3Fb4N1Qqt+9eZe6esNFwjuj/rvX9wRmZPVDIu5h+tTjBJJ
-         kGInYo5Vak6tq/LnPMFG2ggRVlKRf2BGoqsbIo1s9cSCQWZ9/3tg18SlAZi50GFBEhWV
-         1+WHxkDc+17zIQ55VGkCRk1I2gUk6DFRaOr/UqsM2CYEjNOlPpOZg+KvwNrizd2GP1Sl
-         TjDoAMuxgW5sk1QKtR4F18iWIb4uB8OQorN0796rVv2/O5RzZSPizTVUdUNQQW7vaAZe
-         K+xA==
-X-Forwarded-Encrypted: i=1; AJvYcCWS9lZLu0EccCj7hXVjc7Mff1+B+85fCHwLkmsvmqz+KNBS/caqoQWSdJZe0m0W+kdTSBoL6hOvUZJzMKPKwQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2DkxSUBQhG5bhmV24E2XNEDtucUhiaXyOp9dFSPGGbcYyNSs1
-	XuB0otjcTzbu48kPvwtOLaiMpLghX9+eqycSEW+byQvCAXEICpk2cX1VqtY61Q==
-X-Gm-Gg: ASbGncv3UQ1XqYphh8uD1wbZlRcHJgqdypwDz/hNoz87c+2IVg0roA+42vNa8UUV0Fm
-	nS4dY7OOwX6IzdANsaKw3d6sFWkn1PFEClRFvWy7LfkGGkOqVeN6epfx3ny/eZEkgh6FJscAJ7k
-	T0wB98uSqVU0SGQus/CkUpP06vHSkP2cZRa663CWZMxs7BP4eOHQMIo5+B9q98oGuUNkWBAZeTh
-	xAeYNnXxFVmSFxCZs0JkEaVa4VYOJkzui+P3pS8b7UwVmJPGi50djaEDffE0etvpLk=
-X-Google-Smtp-Source: AGHT+IE0TclArATGV1Fu9QzdsMBgtnLWVMtYLElP8xxrkxbbzfBsYBkj0d5S+FS+C4fjsFRPAz2wxQ==
-X-Received: by 2002:a17:903:1209:b0:216:36ff:ba33 with SMTP id d9443c01a7336-219e6ebcfc7mr772797425ad.26.1736180216074;
-        Mon, 06 Jan 2025 08:16:56 -0800 (PST)
+        bh=1kJILhgpSDQv2eNsTh8ePWX95k+BIGrrFxfbsyCNVHQ=;
+        b=lVmB4AS2HwzjEd5C31o9znj1Oq5J13tKVakqpH06hh2lK/D+qIg+znCxkN+jaT1hGe
+         N7DjsDK0vCLieuPVGmjyejlr5P8gL0K/ogfDBD5s5wbA+IiwYsRQcxNijJqz7s1xbpvz
+         luehEYTY3G9xVDcdSuqoWubowHxdVokbze51LPu3sYDqMI/LgtS34+iLlXOetfUSCNKZ
+         jdOVENb8K6Q3qfJd55FvvWwIl3tjj5rrUEqHGqoTpEg5/XA7XjfhUZlftNZ/RwrDOQPk
+         4e+96cFF5SqMDB3fxPqZN8zyGUMjloJaoIF4wHwwx48dqBQHJSrRZYYIYkR7q74rn+Rt
+         zAgA==
+X-Forwarded-Encrypted: i=1; AJvYcCXLWQnUudHwivampEsikGYbaDq1sScHbSdLN1dF1aBvWH66UEyZgHkYCpe1yvuPctWHtcmlao0q/S5RBzVQHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxdqKBdEg2XLKeZr4rPMVrzT6fq8i50R/YQPq4mHE4TzA3eb8Jg
+	JsAUOL9iXGmz98qCi1DVB8OmzTM67a+dNDX1rTe9ByB+qPPiWA/n73G1l19SNg==
+X-Gm-Gg: ASbGncutsqeo70NH2+TYiyoDxD+Qd3RzWbs8k8RVnzQ/n3K0XI2XrwWvrreH+fMGShb
+	s3dIcfbniI5ODazyfYPHy7BM7+E1H5jhi/3jRztGOCLNIPKb6fMkbU3tkpohOz71CquDrsyPlfp
+	WBNL+dUDjdTsIkS6DAkG60Q+VaqakVsfmzbzdUj3G5bYtrK05e/Cwr4NRA3591O9z7XL0/xeIhc
+	p+LX7FR2COwP6wUm6NOFGb4YUMpY/6prsLWN/T3rB5FFfEED5W8HAJpXUVjpv12nYQ=
+X-Google-Smtp-Source: AGHT+IFdRHlYP1im5zetO+/SjNKJaY5KNYN5HfbqNmxIWZ26dMrClumWmmikkawZQrxTttP5oKteOA==
+X-Received: by 2002:a05:6a00:1706:b0:726:f7c9:7b36 with SMTP id d2e1a72fcca58-72abdd7bacdmr98645349b3a.8.1736180645400;
+        Mon, 06 Jan 2025 08:24:05 -0800 (PST)
 Received: from thinkpad ([120.60.61.126])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-219dc9f4fbcsm294633875ad.174.2025.01.06.08.16.50
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad8dba83sm31660071b3a.116.2025.01.06.08.24.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jan 2025 08:16:55 -0800 (PST)
-Date: Mon, 6 Jan 2025 21:46:39 +0530
+        Mon, 06 Jan 2025 08:24:04 -0800 (PST)
+Date: Mon, 6 Jan 2025 21:53:52 +0530
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 To: Jianjun Wang <jianjun.wang@mediatek.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>,
@@ -82,18 +97,19 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	Xavier Chang <Xavier.Chang@mediatek.com>
-Subject: Re: [PATCH 4/5] PCI: mediatek-gen3: Don't reply AXI slave error
-Message-ID: <20250106161639.4bgb7rhokoe22xpp@thinkpad>
+Subject: Re: [PATCH 5/5] PCI: mediatek-gen3: Keep PCIe power and clocks if
+ suspend-to-idle
+Message-ID: <20250106162352.neo5pkunbdakizar@thinkpad>
 References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
- <20250103060035.30688-5-jianjun.wang@mediatek.com>
+ <20250103060035.30688-6-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250103060035.30688-5-jianjun.wang@mediatek.com>
+In-Reply-To: <20250103060035.30688-6-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_081657_046403_9BFD2DB6 
-X-CRM114-Status: GOOD (  23.81  )
+X-CRM114-CacheID: sfid-20250106_162409_820091_F9484BC3 
+X-CRM114-Status: GOOD (  21.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,66 +124,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 03, 2025 at 02:00:14PM +0800, Jianjun Wang wrote:
-> There are some circumstances where the EP device will not respond to
-> non-posted access from the root port (e.g., MMIO read). In such cases,
-> the root port will reply with an AXI slave error, which will be treated
-
-By 'reply with an AXI slave error', you meant that the root port responds to the
-MMIO read by the CPU with AXI slave error? If so, please reword it as such to
-avoid confusion.
-
-> as a System Error (SError), causing a kernel panic and preventing us
-> from obtaining any useful information for further debugging.
+On Fri, Jan 03, 2025 at 02:00:15PM +0800, Jianjun Wang wrote:
+> If the target system sleep state is suspend-to-idle, the bridge is
+> supposed to stay in D0, and the framework will not help to restore its
+> configuration space, so keep its power and clocks during suspend.
 > 
-> We have added a new bit in the PCIE_AXI_IF_CTRL_REG register to prevent
-> PCIe AXI0 from replying with a slave error. Setting this bit on an older
-> platform that does not support this feature will have no effect.
-> 
-
-But the issue is still present on the older SoCs, isn't it? If so, please add
-this info to the comments below.
-
-- Mani
-
-> By preventing AXI0 from replying with a slave error, we can keep the
-> kernel alive and debug using the information from AER.
+> It's recommended to enable L1ss support, so the link can be changed to
+> L1.2 state during suspend.
 > 
 > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 > ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
 > 
 > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 4bd3b39eebe2..48f83c2d91f7 100644
+> index 48f83c2d91f7..11da68910502 100644
 > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -87,6 +87,9 @@
->  #define PCIE_LOW_POWER_CTRL_REG		0x194
->  #define PCIE_FORCE_DIS_L0S		BIT(8)
->  
-> +#define PCIE_AXI_IF_CTRL_REG		0x1a8
-> +#define PCIE_AXI0_SLV_RESP_MASK		BIT(12)
-> +
->  #define PCIE_PIPE4_PIE8_REG		0x338
->  #define PCIE_K_FINETUNE_MAX		GENMASK(5, 0)
->  #define PCIE_K_FINETUNE_ERR		GENMASK(7, 6)
-> @@ -469,6 +472,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->  	val |= PCIE_FORCE_DIS_L0S;
->  	writel_relaxed(val, pcie->base + PCIE_LOW_POWER_CTRL_REG);
+> @@ -1291,6 +1291,19 @@ static int mtk_pcie_suspend_noirq(struct device *dev)
+>  	int err;
+>  	u32 val;
 >  
 > +	/*
-> +	 * Prevent PCIe AXI0 from replying a slave error, as it will cause kernel panic
-> +	 * and prevent us from getting useful information.
-> +	 * Keep the kernel alive and debug using the information from AER.
+> +	 * If the target system sleep state is suspend-to-idle, the bridge is supposed to stay in
+> +	 * D0, and the framework will not help to restore its configuration space, so keep it's
+> +	 * power and clocks during suspend.
+> +	 *
+> +	 * It's recommended to enable L1ss support, so the link can be changed to L1.2 state during
+> +	 * suspend.
 > +	 */
-> +	val = readl_relaxed(pcie->base + PCIE_AXI_IF_CTRL_REG);
-> +	val |= PCIE_AXI0_SLV_RESP_MASK;
-> +	writel_relaxed(val, pcie->base + PCIE_AXI_IF_CTRL_REG);
+> +	if (pm_suspend_default_s2idle()) {
+
+I think you need:
+
+	if (pm_suspend_target_state == PM_SUSPEND_TO_IDLE) 
+
+here and below.
+
+> +		dev_info(dev, "System enter s2idle state, keep PCIe power and clocks\n");
+
+There is absolutely no reason to print this message every time system suspend
+happens. Even dev_dbg() seems unnecessary to me.
+
+- Mani
+
+> +		return 0;
+> +	}
 > +
->  	/* Disable DVFSRC voltage request */
->  	val = readl_relaxed(pcie->base + PCIE_MISC_CTRL_REG);
->  	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+>  	/* Trigger link to L2 state */
+>  	err = mtk_pcie_turn_off_link(pcie);
+>  	if (err) {
+> @@ -1316,6 +1329,11 @@ static int mtk_pcie_resume_noirq(struct device *dev)
+>  	struct mtk_gen3_pcie *pcie = dev_get_drvdata(dev);
+>  	int err;
+>  
+> +	if (pm_suspend_default_s2idle()) {
+> +		dev_info(dev, "System enter s2idle state, no need to reinitialization\n");
+> +		return 0;
+> +	}
+> +
+>  	err = pcie->soc->power_up(pcie);
+>  	if (err)
+>  		return err;
 > -- 
 > 2.46.0
 > 
