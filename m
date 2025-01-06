@@ -4,77 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0668AE77188
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 888A3E77188
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:26:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oGYg4VihaN9XekRqQm/v8gi29KzPEeuneKq4SGL6rdA=; b=WvXhmGNN1jl5wzHzfOr2mijX0d
-	BL6ZOX7z+1B65shzTX+2AA1O7dWobOgYiLOX7F7vsxeSbW1zfw3FddR62sIpybyKaRBgAcxhRpCR2
-	qnzqKE/g5FXQda3iqDwtvCxyGS7Qr0Nw1xy4JnX+KdtVWvDUNrshhdbRfDCpatcG8wsMLqv/1lumT
-	h8B8w7Ks1D40f36K0+omiQWrLXZpOj5A1D9eagFvSGCCckOy5L0+ES/YfJb7G+kxu1XRALFspntCZ
-	FhgOqDYB+RLrf5pZ5rvI3UyC//M9UMUo5UW1YO7HpRWBhA7sVLeNMi1yGOXI265OvuK53af772IBp
-	29l7M8Ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9ZkbA3rdGGVHjgwBwQVESQMuY5GXO9RpF7YQe8x6vvc=; b=QhnFMYYbioe54OZHBAaEa+5HPN
+	oQlfElLT1eaPQ1c4xRUe539NhEBSYFom/OaZ3HI0nRffhJv2JWOCWxhrSSj0ujP9Ds995T0+pC78t
+	+CkEqHxxD20AhNlQ/BMpGKhLhYBuSvsIYy3axSHbFlm26Szzq3gTy+1tvduUn2KuiFuxVDHdtIbX5
+	Rx+7xWblFr/Dm+qb01ZCt7Erfv3rAI22jzVbGwOaH6CuXpysWpdZMv3qk8xsGcbPLWkUkcHt/45z/
+	AD5uvYw4ulGWKIyuepKKUDS0OE9JPjxJTBx34cCtU/OtwrOuh3bK3XBCM4nXyO7LDg77/9/zGUW7y
+	abo4Y+ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUm9k-00000001CvP-0eF4;
-	Mon, 06 Jan 2025 12:24:28 +0000
+	id 1tUmC3-00000001DXx-2one;
+	Mon, 06 Jan 2025 12:26:51 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlyZ-00000001A8L-0nwu;
-	Mon, 06 Jan 2025 12:12:56 +0000
+	id 1tUm6u-00000001CC0-17YC;
+	Mon, 06 Jan 2025 12:21:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3CE765C060D;
-	Mon,  6 Jan 2025 12:12:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E73A5C4CED2;
-	Mon,  6 Jan 2025 12:12:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 411095C5539;
+	Mon,  6 Jan 2025 12:20:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D7EDC4CED2;
+	Mon,  6 Jan 2025 12:21:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736165574;
-	bh=oGYg4VihaN9XekRqQm/v8gi29KzPEeuneKq4SGL6rdA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=guOseR4UG0uXGKRR23FZgdM6BoLTyaxbU1wGbXA/2JTs6envVsy11jvxhXZE/xRhm
-	 q+RTP46onPVsM5lZHKRVE5j9SNAT2b7QgxZIhJMIYOMzx2Lp8cFrgXw3GZiZW+hghR
-	 ZWdSuZWF8GSQ7t4uIdMptKgtOCbUWggS0kUhON1qsnOVA9cMX0+m30ZbcFDU6BtFOJ
-	 3A2KWtJiK+LnUcETVr7ZfeoKTob9ZCbHnm0Rjcj9j4GJlmTv0UZtrYQjdbe9qLBKwn
-	 anGb12ucv9UmTbo3XAaCH5daqLX8F3a3IpzWguOba9vNJEuO4r+t6xyZWZ7UqWtxiw
-	 FzCxZ8Ue+9P7w==
-Date: Mon, 6 Jan 2025 12:12:45 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Val Packett <val@packett.cool>
-Cc: Fabien Parent <parent.f@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
-Subject: Re: [PATCH 6/9] regulator: mt6392: Add support for MT6392 regulator
-Message-ID: <70a3dc99-4e2e-44f0-ab9d-7770d2df94c0@sirena.org.uk>
-References: <20241226050205.30241-1-val@packett.cool>
- <20241226050205.30241-7-val@packett.cool>
+	s=k20201202; t=1736166091;
+	bh=4E7mcN3x1OnhH9luhDmZGNISKS/71TLxvluP4MAlcQ0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZwMNEPa0WxzIpMUyRCA1Nx0TRbiI3JlRuNAge/vnFqf50YQK0C5DHPNz1kh1iDdhb
+	 PI6Ku0gYKOXOhrPn23eBYBLPWYIrat+3TJCLyiRNX0cbnRal/lyQYDJAdmjtbhH0Id
+	 sVw7DXUrfwtxnwxJQ5B8K+JAh2NyImEll6f+I3SPgHQefNo1xQdwD9LxijcjrTNLIu
+	 Mz8eUvF2JRRJcBu4EDf6umEspeuwvMMmWwtQ88R7RuF9kPwZYh6y0m0rYuQKQSZ4u7
+	 qRrIJom16M4NRM+TQIJOLaP2v5ExrUDjeYK5kw9JD5OwxX0u+liVh+YMhPxJJw4K1F
+	 m9d5xZj3NewwA==
+Message-ID: <4e5bcdfa-069c-460d-8e43-8661883f5065@kernel.org>
+Date: Mon, 6 Jan 2025 13:21:19 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/vYbwmcb+QbC4fzk"
-Content-Disposition: inline
-In-Reply-To: <20241226050205.30241-7-val@packett.cool>
-X-Cookie: Do not pick the flowers.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/9] dt-bindings: input: mtk-pmic-keys: add MT6392 binding
+ definition
+To: Val Packett <val@packett.cool>
+Cc: Fabien Parent <parent.f@gmail.com>, Rob Herring <robh@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+References: <20241226050205.30241-1-val@packett.cool>
+ <20241226050205.30241-4-val@packett.cool>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241226050205.30241-4-val@packett.cool>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_041255_290764_E23FE8C0 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20250106_042132_397319_B70DBFC9 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +132,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---/vYbwmcb+QbC4fzk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Dec 26, 2024 at 01:58:06AM -0300, Val Packett wrote:
+On 26/12/2024 05:58, Val Packett wrote:
 > From: Fabien Parent <parent.f@gmail.com>
->=20
-> The MT6392 is a regulator found on boards based on the MediaTek
-> MT8167, MT8516, and probably other SoCs. It is a so called PMIC and
-> connects as a slave to a SoC using SPI, wrapped inside PWRAP.
+> 
+> Add the binding documentation of the mtk-pmic-keys for the MT6392 PMICs.
+> 
+> Signed-off-by: Fabien Parent <parent.f@gmail.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+I don't think this happened. The tag added here at v6 was never received.
 
-Acked-by: Mark Brown <broonie@kernel.org>
+What's more, that's v6 or v7 or vN, so keep proper versioning and
+changelog, including lore links to the old patchset.
 
---/vYbwmcb+QbC4fzk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmd7yL0ACgkQJNaLcl1U
-h9AoUgf9E5E6xhnmqTj1rf9LLDmAhOGp/lZ9yE5VY7gE1bCykncwvblk6l9QuC9X
-fPYWdX6juy9GMMTcMVRyPojqI87AQ0/8/wNo4gPirl/B5Dd9Co7iExwWDmOLxPw5
-a7ddRO2vZtowXdwfnKa3kMl/BY/GVSl1BveULOCiqQphB19siW68OROHgPQyDVEn
-K1NowlyYiJkKqievI1RDhyHiOqwrniY+QIjDS2Umoka/PW+/dykRF2mvrGbkST1E
-tDs2HQKZUwjffJxMKPKbyP37yM1v8XgmSTq8dy8WU3BQub+eGQS/SO+jINwv2kKx
-v7DXLjDwH51s1Oxx01Rc14JvWpTRYQ==
-=HUz0
------END PGP SIGNATURE-----
-
---/vYbwmcb+QbC4fzk--
+Best regards,
+Krzysztof
 
