@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F041BE77188
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0668AE77188
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8eCDYc5wLE97wROsRuo0M5NubJXjSHY7FvadaMmC9eA=; b=wy6hpF3FWPQTTsL+8Jcg1UGqWU
-	wu8kRpQkmHL/XkI2pR7zSkIF6DyyXxyx0HwYf69lr9lMhlq8JA8821MChDxMHZc4f+WAg4snKm9JU
-	hAavLrKPPujE3pLvInAm1Ofvvhp1Shk3yHgJ7tWAw2cnuGT+QCZB171e5n4eLufBfAe+4sgYHQQeh
-	4z/Ok1RopBwBnZlFQnsLQEFUXMDCzMVO/EtsfWU69ZHAikpHtIOyV84jBxA+wK7YAIOyeO2EfdtUu
-	G50KW7FiuyJVRWRzQaMBX/Ns8kK6wGM8YFZdekiqEgIR5VonEc7vfJMeBYIBz9t2eAUC57HBQG8rL
-	Mix+nJIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oGYg4VihaN9XekRqQm/v8gi29KzPEeuneKq4SGL6rdA=; b=WvXhmGNN1jl5wzHzfOr2mijX0d
+	BL6ZOX7z+1B65shzTX+2AA1O7dWobOgYiLOX7F7vsxeSbW1zfw3FddR62sIpybyKaRBgAcxhRpCR2
+	qnzqKE/g5FXQda3iqDwtvCxyGS7Qr0Nw1xy4JnX+KdtVWvDUNrshhdbRfDCpatcG8wsMLqv/1lumT
+	h8B8w7Ks1D40f36K0+omiQWrLXZpOj5A1D9eagFvSGCCckOy5L0+ES/YfJb7G+kxu1XRALFspntCZ
+	FhgOqDYB+RLrf5pZ5rvI3UyC//M9UMUo5UW1YO7HpRWBhA7sVLeNMi1yGOXI265OvuK53af772IBp
+	29l7M8Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlvs-000000019QV-0ETS;
-	Mon, 06 Jan 2025 12:10:08 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tUm9k-00000001CvP-0eF4;
+	Mon, 06 Jan 2025 12:24:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlnF-00000001783-49xJ;
-	Mon, 06 Jan 2025 12:01:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=8eCDYc5wLE97wROsRuo0M5NubJXjSHY7FvadaMmC9eA=; b=JWGcNoY4fDWyLnooJvDiplGy5k
-	zNiG4p4HfBj50tEsfjU3gnj2wcTh1MMJpW7bsZV/OyUQTnN1XA375du/feTF52tp+0s0Z/Qff1f+d
-	tBYnYCR242Rqeo9rnKm934VHPxeQxh16wJZ/fike3zncPwoxTCPKnCe9GSzM3YZ6DGxIojWgja3FX
-	QIkNmdgghEngTZvqIISJgc4QyMw5AXp/6+OjhaHqyk4ocxbxwyaEjAsiozUluY+BGGyCRGM6VEQ3n
-	tVvjzFiefUpi3btZlaSFUROnxmWoRBQ+HWs+GbhU/kEqoEj+N1o/2FY7d0ODSXwOeHgtBUsyMB5aj
-	xBiTLDaA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:53176 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tUll8-0005km-1R;
-	Mon, 06 Jan 2025 11:59:02 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tUll5-007Uyr-1U; Mon, 06 Jan 2025 11:58:59 +0000
-In-Reply-To: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
-References: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Ar__n__ __NAL" <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1tUlyZ-00000001A8L-0nwu;
+	Mon, 06 Jan 2025 12:12:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3CE765C060D;
+	Mon,  6 Jan 2025 12:12:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E73A5C4CED2;
+	Mon,  6 Jan 2025 12:12:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736165574;
+	bh=oGYg4VihaN9XekRqQm/v8gi29KzPEeuneKq4SGL6rdA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=guOseR4UG0uXGKRR23FZgdM6BoLTyaxbU1wGbXA/2JTs6envVsy11jvxhXZE/xRhm
+	 q+RTP46onPVsM5lZHKRVE5j9SNAT2b7QgxZIhJMIYOMzx2Lp8cFrgXw3GZiZW+hghR
+	 ZWdSuZWF8GSQ7t4uIdMptKgtOCbUWggS0kUhON1qsnOVA9cMX0+m30ZbcFDU6BtFOJ
+	 3A2KWtJiK+LnUcETVr7ZfeoKTob9ZCbHnm0Rjcj9j4GJlmTv0UZtrYQjdbe9qLBKwn
+	 anGb12ucv9UmTbo3XAaCH5daqLX8F3a3IpzWguOba9vNJEuO4r+t6xyZWZ7UqWtxiw
+	 FzCxZ8Ue+9P7w==
+Date: Mon, 6 Jan 2025 12:12:45 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Val Packett <val@packett.cool>
+Cc: Fabien Parent <parent.f@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>,
-	Simon Horman <horms@kernel.org>,
-	UNGLinuxDriver@microchip.com,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH net-next 4/9] net: dsa: b53/bcm_sf2: remove b53_get_mac_eee()
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+Subject: Re: [PATCH 6/9] regulator: mt6392: Add support for MT6392 regulator
+Message-ID: <70a3dc99-4e2e-44f0-ab9d-7770d2df94c0@sirena.org.uk>
+References: <20241226050205.30241-1-val@packett.cool>
+ <20241226050205.30241-7-val@packett.cool>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/vYbwmcb+QbC4fzk"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tUll5-007Uyr-1U@rmk-PC.armlinux.org.uk>
-Date: Mon, 06 Jan 2025 11:58:59 +0000
+In-Reply-To: <20241226050205.30241-7-val@packett.cool>
+X-Cookie: Do not pick the flowers.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_040114_022409_80AE2D7E 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250106_041255_290764_E23FE8C0 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,65 +89,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-b53_get_mac_eee() is no longer called by the core DSA code. Remove it.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/b53/b53_common.c | 7 -------
- drivers/net/dsa/b53/b53_priv.h   | 1 -
- drivers/net/dsa/bcm_sf2.c        | 1 -
- 3 files changed, 9 deletions(-)
+--/vYbwmcb+QbC4fzk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/dsa/b53/b53_common.c b/drivers/net/dsa/b53/b53_common.c
-index 0561b60f668f..79dc77835681 100644
---- a/drivers/net/dsa/b53/b53_common.c
-+++ b/drivers/net/dsa/b53/b53_common.c
-@@ -2232,12 +2232,6 @@ bool b53_support_eee(struct dsa_switch *ds, int port)
- }
- EXPORT_SYMBOL(b53_support_eee);
- 
--int b53_get_mac_eee(struct dsa_switch *ds, int port, struct ethtool_keee *e)
--{
--	return 0;
--}
--EXPORT_SYMBOL(b53_get_mac_eee);
--
- int b53_set_mac_eee(struct dsa_switch *ds, int port, struct ethtool_keee *e)
- {
- 	struct b53_device *dev = ds->priv;
-@@ -2299,7 +2293,6 @@ static const struct dsa_switch_ops b53_switch_ops = {
- 	.port_enable		= b53_enable_port,
- 	.port_disable		= b53_disable_port,
- 	.support_eee		= b53_support_eee,
--	.get_mac_eee		= b53_get_mac_eee,
- 	.set_mac_eee		= b53_set_mac_eee,
- 	.port_bridge_join	= b53_br_join,
- 	.port_bridge_leave	= b53_br_leave,
-diff --git a/drivers/net/dsa/b53/b53_priv.h b/drivers/net/dsa/b53/b53_priv.h
-index 99e5cfc98ae8..9e9b5bc0c5d6 100644
---- a/drivers/net/dsa/b53/b53_priv.h
-+++ b/drivers/net/dsa/b53/b53_priv.h
-@@ -385,7 +385,6 @@ void b53_disable_port(struct dsa_switch *ds, int port);
- void b53_brcm_hdr_setup(struct dsa_switch *ds, int port);
- int b53_eee_init(struct dsa_switch *ds, int port, struct phy_device *phy);
- bool b53_support_eee(struct dsa_switch *ds, int port);
--int b53_get_mac_eee(struct dsa_switch *ds, int port, struct ethtool_keee *e);
- int b53_set_mac_eee(struct dsa_switch *ds, int port, struct ethtool_keee *e);
- 
- #endif
-diff --git a/drivers/net/dsa/bcm_sf2.c b/drivers/net/dsa/bcm_sf2.c
-index a53fb6191e6b..fa2bf3fa9019 100644
---- a/drivers/net/dsa/bcm_sf2.c
-+++ b/drivers/net/dsa/bcm_sf2.c
-@@ -1233,7 +1233,6 @@ static const struct dsa_switch_ops bcm_sf2_ops = {
- 	.port_enable		= bcm_sf2_port_setup,
- 	.port_disable		= bcm_sf2_port_disable,
- 	.support_eee		= b53_support_eee,
--	.get_mac_eee		= b53_get_mac_eee,
- 	.set_mac_eee		= b53_set_mac_eee,
- 	.port_bridge_join	= b53_br_join,
- 	.port_bridge_leave	= b53_br_leave,
--- 
-2.30.2
+On Thu, Dec 26, 2024 at 01:58:06AM -0300, Val Packett wrote:
+> From: Fabien Parent <parent.f@gmail.com>
+>=20
+> The MT6392 is a regulator found on boards based on the MediaTek
+> MT8167, MT8516, and probably other SoCs. It is a so called PMIC and
+> connects as a slave to a SoC using SPI, wrapped inside PWRAP.
 
+Acked-by: Mark Brown <broonie@kernel.org>
+
+--/vYbwmcb+QbC4fzk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmd7yL0ACgkQJNaLcl1U
+h9AoUgf9E5E6xhnmqTj1rf9LLDmAhOGp/lZ9yE5VY7gE1bCykncwvblk6l9QuC9X
+fPYWdX6juy9GMMTcMVRyPojqI87AQ0/8/wNo4gPirl/B5Dd9Co7iExwWDmOLxPw5
+a7ddRO2vZtowXdwfnKa3kMl/BY/GVSl1BveULOCiqQphB19siW68OROHgPQyDVEn
+K1NowlyYiJkKqievI1RDhyHiOqwrniY+QIjDS2Umoka/PW+/dykRF2mvrGbkST1E
+tDs2HQKZUwjffJxMKPKbyP37yM1v8XgmSTq8dy8WU3BQub+eGQS/SO+jINwv2kKx
+v7DXLjDwH51s1Oxx01Rc14JvWpTRYQ==
+=HUz0
+-----END PGP SIGNATURE-----
+
+--/vYbwmcb+QbC4fzk--
 
