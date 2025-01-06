@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303DEE77188
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B995E77198
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2025 12:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G8t1xaI1/GugJIK8OBprVbaU/A8jM/gJsPmAeiSAzxc=; b=h/PF3mnqA1aUbxvbpTihFy9IDG
-	ge/oxG8fv6ooIC+1iEUGaVi9ST+Q3TODFn+2fDNEDCmrdTg+DyLfB4N+3kRfAl71GYAdwCAtbKRpC
-	TxuUn9kNU5OgGSjEqR4RtYesyZrHkPIIKZS2wCztwuXI1V/3oCQowgqeOPbpCDLdhPDv3st169yUN
-	lkdmKHBofezbFCVGMH4Hn1Qn0jdKcvKwhnnY5YgW+t91GBsCM2CuXUa4/glbcp3VnbMmOZhaxW6eD
-	x/IPp1sCCFIziBbNGs4QKOgHghqRjNHcmurdMorFGlnnOz+mUXFEZvXzmewhfZQwV+ckGcuEYwlg5
-	gJtDTfpg==;
+	bh=YaIwfo3a3xNY9w0lpoJEGzMt05JFAo3+kHqFGw6dWEM=; b=TPKAU/T7685gTRj2YRM1C7rNgv
+	TdTvJ9/lylxUyrc4+e1xHb2vDskwwc4sOZXJdFEHVEfbqI0sPGwXwTz7pirVJ7oC99lad3rlCABjz
+	FhcqDOxYp3vE2tVRgHUP7OssbMiruuWx8droYtJGAtfsrkHnu8TZTLcIJapQ8yKr/9cJ77Ptbzmms
+	6WQnRzoYcUvzgomh+mjEhmY80HiX7nIG24T2Wnq0wb2BuLG3u+KSkIw6PmwwZAktzWGh2A9HNE113
+	tm49EyvXgRaZ5JPANByNLln0RiMbo42UjnXgHRD87JnR5uv7i/C4iRmj5lTUvOds0QRr5di52Jnlt
+	HaVn5PTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlrF-000000018Vr-1IDi;
-	Mon, 06 Jan 2025 12:05:21 +0000
+	id 1tUlsP-000000018g9-2ICB;
+	Mon, 06 Jan 2025 12:06:33 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUllf-000000017ER-0LN3;
-	Mon, 06 Jan 2025 11:59:36 +0000
+	id 1tUln0-0000000176x-2916;
+	Mon, 06 Jan 2025 12:00:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=G8t1xaI1/GugJIK8OBprVbaU/A8jM/gJsPmAeiSAzxc=; b=zYOeLJlrCypxVI0s25kv4zllPI
-	UeEo/xeRtIxj1me7kVajNX1CHd4wqQYhNS41F/ykYLWSyxQp9ltLhspZJ/GZxV1XM6Wd2IhA5JTaX
-	RzmGRJ48OxrNDT8lSSoYkEfY7tMxyR9QUoSopjmhfOkYRhr4XkYeGaZl1IxDCmkvDCyQVy1RIOP7g
-	w5nitlnwt6OGOhMRsxPgS4++bSCCh5k5AvPFMLWm23FYwt8jsfwMU4WqImyqL9aUxSkP8Aa/ILocH
-	l7uOqAUNbXECAI0KVrj3ESjS2tc/TZjV0NaaH4v28bWPVTFuTw5CAcNlavOYIECus25A4ovrJHQZI
-	bZ9U7Ysg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:38348 helo=rmk-PC.armlinux.org.uk)
+	bh=YaIwfo3a3xNY9w0lpoJEGzMt05JFAo3+kHqFGw6dWEM=; b=0CUjRiDBpeqq/aRdQ3h3jjBwGv
+	JPXREV5M/ICLFd9KhbVLmn5pAp4jSjJ3V/z/0tZDrrFYtnY/NpCAj1jGhlCu9qL4V7mw911t1sVzW
+	le+sTBmQde2oGEB7/ZamT03HtypDCt56x3hFkItNsE+9nr8pUtyPSnFO4iBovXXPuKHuHqRrp3bpV
+	j5JalkxjZLFJEwJfPxrYkvtKvW0FusHtbtbdD5F36dw8BYacB8G6Khi7Iy8au11ByWSuDZsf1VBev
+	f0hNr73BdPO1EB+3MtEBvw04WB8UHJlMYzhiPuenxUMUFixZKt5HX2+uCORaX4d4N2I/P3yiNKE2r
+	Tg8NV7tw==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:35618 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tUllY-0005mS-0L;
-	Mon, 06 Jan 2025 11:59:28 +0000
+	id 1tUlks-0005k3-2E;
+	Mon, 06 Jan 2025 11:58:46 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tUllU-007UzL-KV; Mon, 06 Jan 2025 11:59:24 +0000
+	id 1tUlkp-007UyW-OR; Mon, 06 Jan 2025 11:58:43 +0000
 In-Reply-To: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
 References: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -70,17 +70,17 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	UNGLinuxDriver@microchip.com,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH net-next 9/9] net: dsa: remove get_mac_eee() method
+Subject: [PATCH net-next 1/9] net: dsa: ksz: remove setting of tx_lpi
+ parameters
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tUllU-007UzL-KV@rmk-PC.armlinux.org.uk>
-Date: Mon, 06 Jan 2025 11:59:24 +0000
+Message-Id: <E1tUlkp-007UyW-OR@rmk-PC.armlinux.org.uk>
+Date: Mon, 06 Jan 2025 11:58:43 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_035935_119307_4C87AFD5 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250106_040058_552835_28C8CCD2 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +95,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The get_mac_eee() is no longer called by the core DSA code, nor are
-there any implementations of this method. Remove it.
+dsa_user_get_eee() calls the DSA switch get_mac_eee() method followed
+by phylink_ethtool_get_eee(), which goes on to call
+phy_ethtool_get_eee(). This overwrites all members of the passed
+ethtool_keee, which means anything written by the DSA switch
+get_mac_eee() method will be discarded.
+
+Remove setting any members in ksz_get_mac_eee().
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- include/net/dsa.h | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/net/dsa/microchip/ksz_common.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index 4aeedb296d67..9640d5c67f56 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -991,8 +991,6 @@ struct dsa_switch_ops {
- 	bool	(*support_eee)(struct dsa_switch *ds, int port);
- 	int	(*set_mac_eee)(struct dsa_switch *ds, int port,
- 			       struct ethtool_keee *e);
--	int	(*get_mac_eee)(struct dsa_switch *ds, int port,
--			       struct ethtool_keee *e);
+diff --git a/drivers/net/dsa/microchip/ksz_common.c b/drivers/net/dsa/microchip/ksz_common.c
+index e3512e324572..60a4630dd7ba 100644
+--- a/drivers/net/dsa/microchip/ksz_common.c
++++ b/drivers/net/dsa/microchip/ksz_common.c
+@@ -3492,14 +3492,6 @@ static bool ksz_support_eee(struct dsa_switch *ds, int port)
+ static int ksz_get_mac_eee(struct dsa_switch *ds, int port,
+ 			   struct ethtool_keee *e)
+ {
+-	/* There is no documented control of Tx LPI configuration. */
+-	e->tx_lpi_enabled = true;
+-
+-	/* There is no documented control of Tx LPI timer. According to tests
+-	 * Tx LPI timer seems to be set by default to minimal value.
+-	 */
+-	e->tx_lpi_timer = 0;
+-
+ 	return 0;
+ }
  
- 	/* EEPROM access */
- 	int	(*get_eeprom_len)(struct dsa_switch *ds);
 -- 
 2.30.2
 
