@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B178E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 12:20:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 377F4E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 12:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QmQSvjOmUl987InGVnLl1IejaQslFDgwlSMpRjCimuw=; b=e8Qgzgvpa242nZwEvHVe5Z3hxe
-	RlE1ip1IGjGt5HH8k07nJ524UWn5oZgTlQcv4sedAIoIxtE46LEyReei3XUOTFqh0TdpEZcxpCmHu
-	jt8HOuvi/yL0ildNUIebe2bO+2A05hX+QiL8tEBv2gYKhDRpqqgyEyJH0/5CAWosdR46jLKcpZBFs
-	ZgcHTe30QIPVdZCmIaPULC9dBZafk4AhYng/QIxkoFZ6HVw+mFrIO2rCmI8bml3ocLgJPZvhozOdL
-	sH5cha2SGq6R6Isbv+KDCbFo9SRm3z1CIUbWGV8r04ceZX0DYqCp72hRJdiBrJG2RQ0zXbB6lYcEj
-	7CqGwP4Q==;
+	bh=qX9b2uVSsrSRFgal+JULFhtiy26+JWv0aAV8SKRUC80=; b=WbwwvjHmQgCaTMK8vI6iXFd20c
+	8/SOdnkklEScXJf3S/6f1RIkNle8V706pf8P2difYbohKx3rzcpRlj4fB7UbaUETalry4nFynWQdS
+	iXUGpwITXKWFcB+6E1rENY4z0QW3gs1r2gF7iKSicUmLKeC6BuBT9rOjM5C0j+d/k+kuPnn8zj2ZF
+	JC9wV170axGe7xUw5rEX0xIh4LFt0pUuqxLYedeKW9qxhxgpj5g2Chd4S67r+ypDhI6S9sFynyJbd
+	sU5Kxgsft5k4vWB7tfPXKPlrYI3blTsgrgOL/ROs4VHYWAbr+amBmAqhpzYvK/WZqVSREdQY04d1Q
+	rq74t8Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8Yy-00000004kDF-3Opr;
-	Tue, 07 Jan 2025 12:20:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tV8bM-00000004khF-1Uft;
+	Tue, 07 Jan 2025 12:22:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8SC-00000004iwl-3hBr;
-	Tue, 07 Jan 2025 12:13:04 +0000
+	id 1tV8U2-00000004jKt-0Gjn;
+	Tue, 07 Jan 2025 12:14:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736251979;
-	bh=LT27heAOjDF/SMRtDIkYdufE0ltxFQe7yGYcUmlMEEs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=OS+x5My5y8Zv5tCI8vuqHayvFk8ihZvw1yn7i52y3H4RHZ1VeHrcwhAWnuytJpsA2
-	 e3l/d8L9C8vSFT/bZKg2Tz0HCswnAIk0C9tGg3QLEFaKaIRnea9c6S3Gs7V6DvbC/H
-	 CW+tVCSqaGor1XEy26aE2la2ORQGxdjbI4sw9nXyvWl7CYKwCvZZQb1QfMK96MxmP9
-	 YxQyey4LoqBx59UCjRKgQ646EqCkVXci9JQo6MmjL3vb65SMFETKDoz79DNyTLzsS3
-	 xSW92+7rbFxS9GMTWz1zGkq3Lg6iOBGc+gbX22UpFMXKx5SiudnOjMYOIirpmTK2Lc
-	 8ltX5BzqPgw+g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1736252092;
+	bh=rhdZ7OGyC7Ood7ZMdwK/jY/Cve9yhiV6qZLyfcQwRhE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Dlr7bC68M19b4kKjKNgfKoIm81gHCu5tM61jLwSddjDBUw1qUMNzSegR3dIqimwOk
+	 iWYii9OBuNqm5Ku7ptwWDY81jjoVj63I+7YA/UIQbtTPFNtyhDcMR06cBMe2G8R3qS
+	 UBpQ+u7ueR7OSzJzozljlLHbkqi4r8zRwanHVMkaWogKCT65Uy8qrUKn+BisIA2alk
+	 oVGNPWY2NYe89bdZhkXOIpPSDVYHsZ3s+NI1U/BqylxWaip0U2QEB5ihEo896XQJm5
+	 XiBs+VVhNI+ETFKx20eTS2vvxE3t6MsbOV0BAtk9XkhkNuIrpbdGBHaLZgtKFoA0P7
+	 fCfdTqOKaR9WQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D3B5817E152A;
-	Tue,  7 Jan 2025 13:12:58 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Neal Liu <neal.liu@mediatek.com>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: stable@vger.kernel.org
-In-Reply-To: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
-References: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 40EEA17E156C;
+	Tue,  7 Jan 2025 13:14:52 +0100 (CET)
+Message-ID: <675ce53f-14fd-4a6b-9480-9d936faf3f53@collabora.com>
+Date: Tue, 7 Jan 2025 13:14:51 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/2] soc: mediatek: mtk-devapc: Fix leaking IO map on
  error paths
-Message-Id: <173625197880.58535.7586799150314757117.b4-ty@collabora.com>
-Date: Tue, 07 Jan 2025 13:12:58 +0100
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Neal Liu <neal.liu@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: stable@vger.kernel.org
+References: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250104142012.115974-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_041301_096634_D25CDA42 
-X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-CacheID: sfid-20250107_041454_265894_6FF7FE43 
+X-CRM114-Status: UNSURE (   6.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,23 +78,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 04 Jan 2025 15:20:11 +0100, Krzysztof Kozlowski wrote:
+Il 04/01/25 15:20, Krzysztof Kozlowski ha scritto:
 > Error paths of mtk_devapc_probe() should unmap the memory.  Reported by
 > Smatch:
 > 
->   drivers/soc/mediatek/mtk-devapc.c:292 mtk_devapc_probe() warn: 'ctx->infra_base' from of_iomap() not released on lines: 277,281,286.
+>    drivers/soc/mediatek/mtk-devapc.c:292 mtk_devapc_probe() warn: 'ctx->infra_base' from of_iomap() not released on lines: 277,281,286.
 > 
-> 
+> Fixes: 0890beb22618 ("soc: mediatek: add mt6779 devapc driver")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Please disregard the previous email;
 
-Applied to v6.13-next/dts64, thanks!
-
-[1/2] soc: mediatek: mtk-devapc: Fix leaking IO map on error paths
-      commit: a985d806d231ab40992f59a8bf96acf1b7a94762
-[2/2] soc: mediatek: mtk-devapc: Fix leaking IO map on driver remove
-      commit: c2bcebc6fbf74a5aa5b127349d5cd15577d78cd6
+This series was applied to branch v6.13-next/soc instead.
 
 Cheers,
 Angelo
-
-
 
