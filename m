@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C71EBE77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 21:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1586CE77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 21:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6bJq6GF/I2Dbpv0jRWv1zyBcOeLPNKknFS+NKHb75no=; b=JJ8OEJ7kht1wOpymhTgdLEl6kr
-	Zhy9zXHyp+G4FCcwmfdWppwmUzOy1m3usaqJ1cJYg8M2kpptTlFz3z6dMM8wBmlgIEZgPbY+6p66s
-	AfzpT8ZqsBgYupYwhSmmwJvJzSalBXndM1Run67ksk7OWIDNDM0CW3N+7/cRfITHVo7wR7hWsgNbd
-	NwPr4DReat0mD9gkffAfgLGSFxE9LLdEt08q7mgIdYnX6odcuCsa0L/UajRD8YAUuPj7IQRc23EYu
-	1sDIDnDEHMntax388zXuExAuPBYNKYKCAPqKfHuSQPK/B+U9dRtYKYmMYB+pQpTqO9iI83eYSPxRt
-	PdHG1xlA==;
+	bh=ecMY+qe6V2ZZwm4eOG11+5a28KrQW4B2FtTiZbt4gz8=; b=USStMNmuBH61dEyrBE4LnkSBj6
+	NDFsVM22Rz8PR9XUvWMHjdfWyTM2v3QgGQ3roweyYt0TL64UiAb2eGfiboohIvFrkDo4Y5NUG7weQ
+	aOVw0x58Q3EifKiVCo4JUBmSifbdcNm2dxZ23BR+0ZR0U+5AOCJZo5uhGfGc41ujxDpzzZ/0vJ9dJ
+	SOenUcQxb9UKa3hxSKpVitOj8b3v8M+IzWdZixVsEpYdvIx2vSxMa31dd8FfHXySJhNaZo4uumXWY
+	1M5f3BphVDyQpTT7jHsZv34Sg7qTQIHHT5HZGOMbZTU6Gy/GsVPSJZek6Z9yMajMVtbHkkmmW0oRL
+	Nrvp2rRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVHA7-00000006Ktv-3hGr;
-	Tue, 07 Jan 2025 21:30:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tVHUg-00000006Mpy-3X6r;
+	Tue, 07 Jan 2025 21:52:10 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVH81-00000006KTU-0DlS;
-	Tue, 07 Jan 2025 21:28:46 +0000
+	id 1tVHTU-00000006Mjl-1ISw;
+	Tue, 07 Jan 2025 21:50:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B5A4E5C5EE1;
-	Tue,  7 Jan 2025 21:27:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2355BC4CED6;
-	Tue,  7 Jan 2025 21:28:39 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id BAE5AA41496;
+	Tue,  7 Jan 2025 21:49:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7B86C4CED6;
+	Tue,  7 Jan 2025 21:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736285320;
-	bh=8HGJB7yYUS9sd3pQ4xcMEyxzGUMIAgxhbWWr/J0ibG0=;
+	s=k20201202; t=1736286655;
+	bh=TsCpx7aKGUcwB6mW8YLBLjC9e8pZ6xstkV3qO1nZsG0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZnOzXt4akD8+Qx6GknIXndlGTmvDx84LSwI5tWYy44wWBuhxUPaZbRoVxLX5RI5S/
-	 1mKxL8mn40YInLs2uSPjbx3Jx/dMkoskjJ7eyrUSZ55yGXAfdAGtguqb6CxlOi76sH
-	 S31COq3X6QpdUsuiOswRrY42iT7ZWbrSu6amPZMwYeA37PCFXvv1ay19UouLQ0AjcY
-	 rT+9nUBahSZeWdfY7DbH1dsCGSGemhuKYslZxXUd/lksbyPAnAay7BQ6revFPIrXbv
-	 Lm8R7CL0SyH2CdHcaVmxPcMi+/TqJyd/O6AyZlnrOvDf/aQQRa6X/TFHAqwkNIaGVt
-	 pS8321p1o25fA==
-Date: Tue, 7 Jan 2025 22:28:37 +0100
+	b=lvYfmm0kNt473KUEQpk9r7jj5m1XOUbMX1J0ej8kCZO/3PcWsvZbvaBKbYYwy3FB7
+	 H4W2BvEjbEpsgcGB03DkO1p5RqcM1SutTFfAGnrkDN22CO5WFonk0HceIg+UH4nXW+
+	 Bb/VuXarWE2h5W7ky21Twnc5c8dsfIdPN1NR9IexGhcUyq1lrPOXzCuC1LHtdmsGe1
+	 3gMSvnZxAnQIciXUTlNm303nBwm9Jw4OWHAiwd8gQkCLTz0bhWYC/DAb/lsfWgw5hu
+	 JRM99JVcAkpreyL8gcN8DqSzievz5Kl/i1A6BQy2JAY7M4GdXMQ4ZDIXJxTSzBUtcb
+	 LEE0RN3JTCK1g==
+Date: Tue, 7 Jan 2025 22:50:51 +0100
 From: Andi Shyti <andi.shyti@kernel.org>
 To: Zoie Lin <zoie.lin@mediatek.com>
 Cc: Qii Wang <qii.wang@mediatek.com>, 
@@ -49,17 +49,18 @@ Cc: Qii Wang <qii.wang@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
 	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, teddy.chen@mediatek.com
-Subject: Re: [v3,0/1] i2c: mediatek: add runtime PM operations and bus
+Subject: Re: [PATCH v3 1/1] i2c: mediatek: add runtime PM operations and bus
  regulator control
-Message-ID: <q3wod6cg5p26dedukvzns6m3npqt6q3crcr7c6rf7o6r6csosd@a4uo32azmfxx>
+Message-ID: <puotk7kms35fh3mgmsg24uxwadmcqjfr5iuijr2zknezcg7dtg@zlbrphpd6jn5>
 References: <20250103143250.1521287-1-zoie.lin@mediatek.com>
+ <20250103143250.1521287-2-zoie.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250103143250.1521287-1-zoie.lin@mediatek.com>
+In-Reply-To: <20250103143250.1521287-2-zoie.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_132845_152881_909C9C6F 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20250107_135056_417261_47019AB0 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +77,61 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Zoie,
 
-On Fri, Jan 03, 2025 at 10:32:33PM +0800, Zoie Lin wrote:
-> This series is based on linux-next, tag: next-20241220
-> 
-> Changes in v3:
-> 
-> This patch removes the autosuspend functionality from the runtime 
-> PM operations in the I2C driver. These changes have been tested on 
-> the target platform and confirmed to work correctly without the 
-> autosuspend functionality.
+On Fri, Jan 03, 2025 at 10:32:34PM +0800, Zoie Lin wrote:
+> This commit introduces support for runtime PM operations in
+> the I2C driver, enabling runtime suspend and resume functionality.
 
-Was the autosuspend delay not necessary, then?
-Is there a specific reason you included it in the first place?
+Please, don't start the commit log with "This patch...", please
+use the informative form.
 
-BTW, next time, please use the format [PATCH v3 0/1] for patches.
-Also, for just one patch, a cover letter isn't really necessary.
-You can include the changelog after the '---' section of the patch.
-was, then, the autosuspend delay not necessary?
+> Although in the most platforms, the bus power of i2c are always
+
+/the//
+/are/is/
+
+> on, some platforms disable the i2c bus power in order to meet
+> low power request.
+> 
+> This implementation includes bus regulator control to facilitate
+> proper handling of the bus power based on platform requirements.
+> 
+> Signed-off-by: Zoie Lin <zoie.lin@mediatek.com>
+
+...
+
+> +static int mtk_i2c_runtime_resume(struct device *dev)
+> +{
+> +	int ret = 0;
+
+initialization is not needed.
+
+> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+> +
+> +	if (i2c->adap.bus_regulator) {
+> +		ret = regulator_enable(i2c->adap.bus_regulator);
+> +		if (ret) {
+> +			dev_err(dev, "enable regulator failed!\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (ret) {
+> +		if (i2c->adap.bus_regulator)
+> +			regulator_disable(i2c->adap.bus_regulator);
+> +		return ret;
+
+no need to return here...
+
+> +	}
+
+... you can remove the brackets...
+
+> +	return 0;
+
+... return ret;
 
 Andi
 
-> Additionally, the patch resumes the I2C bus in mtk_i2c_resume_noirq() 
-> to fix the unbalanced disable issue.
-> 
-> 
-> Zoie Lin (1):
->   i2c: mediatek: add runtime PM operations and bus regulator control
-> 
->  drivers/i2c/busses/i2c-mt65xx.c | 75 +++++++++++++++++++++++++++------
->  1 file changed, 63 insertions(+), 12 deletions(-)
-> 
-> -- 
-> 2.45.2
-> 
+> +}
 
