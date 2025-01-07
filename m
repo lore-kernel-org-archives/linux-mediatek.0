@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54978E77199
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 11:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABBCE77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 12:00:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QLtTms1oagCCMUbZu1+NlcnSpCszvP6VSl8saVCxzMk=; b=2ZKYxDY4qFCIl6AlIklMfyWvPR
-	A2s5TajaYEqoaX5W/23vbY+ikq/SwCBV846gILfkCxSn0xnhPQCspSE5GhJKBgjBWqG6ERG8AJ3jg
-	CUxw4/LCafiWrfEMiBl2tLVNUz1k0FV4BngPbOVSxX9OZx6Ra4UpIYaUbBGHmBFD+gnj/SFEd9CVq
-	78GHkT2VYGE5PBXwGvesp0PYSvzEvdEwTrul6nN9MFapi2D9f8AHVe2fW734t7oeFOzuFcEOaR81u
-	OZXlfpe+TJJ54plRlYeJVvX/ZdJ/bRNYuPDYVQsCFrnQloOJf+LBFf4yd9b7gqhKkl3IyMZfxnZ6T
-	IjyKcoIQ==;
+	bh=S8GOOkYsjMZ3l9Rj+qZs5MJuk6fGvY0FCo+nX6TUF/4=; b=vlUFXEPddwv9hHIhNKs+isb6IU
+	mR5CtTsS8DYgY/ZZyhYe+5NKZY63afH4AwlcuyAZc1gwPRThD2wvUahQyxBdUI8/UKFZLEMGcE7oz
+	4ZpA9y0y91LIfd+C3Vnq6o+b4M8EFjJNd1eRxJ31HRYQxdJMtAh06j/wWDkkeU059LkXFbDpg0BjZ
+	9ZSdtAFZyZmL/oNFwtXtE2Es/HV7LZtROL6GxskboqRi8kmm/bg8/HJuB/s3UIdSTNibDiK6PRY4G
+	XOxt52Lo2VchvigohuQIb7uWTxH9nULk1tJWoEb2YtCm+WEEk5PN7cicem2fyJ3yq1+NCIORT1zQ9
+	CddQzsPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8Ef-00000004fHI-1sip;
-	Tue, 07 Jan 2025 11:59:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tV8Fy-00000004fe5-21Tg;
+	Tue, 07 Jan 2025 12:00:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV80s-00000004c9N-2lWc;
-	Tue, 07 Jan 2025 11:44:50 +0000
+	id 1tV82Q-00000004cbP-1U1c;
+	Tue, 07 Jan 2025 11:46:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736250285;
-	bh=nvqMeuDTfZgH1m0kgkeC9rUI30xVUZ5If34vfsgD108=;
+	s=mail; t=1736250380;
+	bh=df0LOEnngCjfFj2PvwptpBWdY3nEK+O/wLcKL6OCdMQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EFuOI6mN+NcYESN+8h5Lm8qNaeVahsukk+9CT10YTgVzCyd+4f7/sDH9+bQujFO/b
-	 fs5W4sudz5V5xsdbHVZB2aXZfYakIjViPDwXxQDntq+r3SMr5lgCMJY3aAG68Onkng
-	 hR4jp9m3rHf5NVDvwwimGRzZIIKpUr47Omh+E4zKnB8RWmuWsqYeLW0bEX+YKVdieU
-	 t1sz2Xm7HY06OUFJycn91NMyXWp9HThlOqBEbE1XPE0mW1ZIUvwdE5udJp1kqV6HOT
-	 wWbEhOBSpLmIVG2HT7DP+qG6PHBHqxO5x2B3AtugpRBdIjba78ySFEieWEj7N/Gdh1
-	 EBUiqSVn9+Gag==
+	b=HtgkNi01/LC2j6dqsG6SUSw9HHQbXsj7H/SdfXh0AocYFpR8qrA/CxTlluiY9Kec0
+	 zEgIPvTMfcZOdAWf9o2x1VYypg/Dx9sUDiifzz524qqVYzsgHW2GMuJ3wCHwksN2zo
+	 QBn6/BM/TKk2f7PRM8r3E8UkHtt1zkLajqNOiZrYHnFRcaSgIzObHNlBloafdeROly
+	 SwwrqtW5nIVH2zyZJMhDMhO5xViOJhqGfkMHj5/bkSwCCM2huPfst5n+EIUbxWmugs
+	 mk46A4oVQaQwJHVN/KKBmJmHqbIa6LCFY6I8DD+C2dpT92bwLgka5Cz9xHjAnSsmiW
+	 k1Fa6eCcSp9IA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3965017E1562;
-	Tue,  7 Jan 2025 12:44:44 +0100 (CET)
-Message-ID: <1a48feae-f55f-4df8-b165-84c1cb2f6658@collabora.com>
-Date: Tue, 7 Jan 2025 12:44:43 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BDB2A17E1562;
+	Tue,  7 Jan 2025 12:46:19 +0100 (CET)
+Message-ID: <b23d4240-f520-4840-844f-adf712ca2aff@collabora.com>
+Date: Tue, 7 Jan 2025 12:46:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] PCI: mediatek-gen3: Disable ASPM L0s
-To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+Subject: Re: [PATCH 2/2] usb: mtk-xhci: add support remote wakeup of mt8196
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>
-References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
- <20250103060035.30688-4-jianjun.wang@mediatek.com>
- <b5ef9501-e07d-4150-9518-dd982518919e@collabora.com>
- <cecd7ebf0ccac9638b8e93b28fcf4df5bb81a794.camel@mediatek.com>
+ "mathias.nyman@intel.com" <mathias.nyman@intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+References: <20241126025507.29605-1-chunfeng.yun@mediatek.com>
+ <20241126025507.29605-2-chunfeng.yun@mediatek.com>
+ <207f9e96-3165-440d-8576-545bf2bc9dee@collabora.com>
+ <0820cf224ae9022fc34fb31d97d4c6f8f6e2eec1.camel@mediatek.com>
+ <CAGXv+5FUuqDbVRQdkkdM9SRV6N3H8Gx_rMpx6rw-hNu45SKVNA@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <cecd7ebf0ccac9638b8e93b28fcf4df5bb81a794.camel@mediatek.com>
+In-Reply-To: <CAGXv+5FUuqDbVRQdkkdM9SRV6N3H8Gx_rMpx6rw-hNu45SKVNA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_034446_853781_9CCB48A7 
-X-CRM114-Status: GOOD (  21.31  )
+X-CRM114-CacheID: sfid-20250107_034622_535835_855BE7B4 
+X-CRM114-Status: GOOD (  18.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,97 +89,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/01/25 03:18, Jianjun Wang (王建军) ha scritto:
-> On Fri, 2025-01-03 at 10:16 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+Il 07/01/25 06:07, Chen-Yu Tsai ha scritto:
+> On Mon, Jan 6, 2025 at 10:58 PM Chunfeng Yun (云春峰)
+> <Chunfeng.Yun@mediatek.com> wrote:
 >>
->>
->> Il 03/01/25 07:00, Jianjun Wang ha scritto:
->>> Disable ASPM L0s support because it does not significantly save
->>> power
->>> but impacts performance.
+>> On Tue, 2024-11-26 at 09:50 +0100, AngeloGioacchino Del Regno wrote:
+>>> External email : Please do not click links or open attachments until
+>>> you have verified the sender or the content.
 >>>
->>
->> That may be a good idea but, without numbers to support your
->> statement, it's a bit
->> difficult to say.
->>
->> How much power does ASPM L0s save on MediaTek SoCs, in microwatts?
->> How is the performance impacted, and on which specific device(s) on
->> the PCIe bus?
-> 
-> It's hard to tell the exact number because it is difficult to measure,
-> and the number of entries into the L0s state may vary even in the same
-> test scenario.
-> 
-> However, we have encountered some compatibility issues when connected
-> with some PCIe EPs, and disabling the L0s can fix it. I think disabling
-> L0s might be the better way, since we usually use L1ss for power-saving
-> when the link is idle.
-> 
-
-To actually decide, we should know what's actually broken, then.
-
-Is the MediaTek controller broken, or is the device broken?
-So, is it a MTK quirk, or a device quirk?
-
-If the problem is actually device-related, then this should be handled as
-a device-specific quirk, as not just MediaTek platforms would be affected
-by compatibility issues.
-
-If the MediaTek PCIe controller is at fault, instead, I agree about just
-disabling L0s at the controller level - but then this shall be mentioned
-in the commit message, and should have a Fixes tag as well.
-
-Cheers,
-Angelo
-
-> Thanks.
-> 
->>
->> Cheers,
->> Angelo
->>
->>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
->>> ---
->>>    drivers/pci/controller/pcie-mediatek-gen3.c | 11 +++++++++++
->>>    1 file changed, 11 insertions(+)
 >>>
->>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
->>> b/drivers/pci/controller/pcie-mediatek-gen3.c
->>> index ed3c0614486c..4bd3b39eebe2 100644
->>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
->>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
->>> @@ -84,6 +84,9 @@
->>>    #define PCIE_MSI_SET_ENABLE_REG             0x190
->>>    #define PCIE_MSI_SET_ENABLE         GENMASK(PCIE_MSI_SET_NUM - 1,
->>> 0)
+>>> Il 26/11/24 03:55, Chunfeng Yun ha scritto:
+>>>> There are 2 USB controllers on mt8196, each controller's wakeup
+>>>> control is
+>>>> different, add some specific versions for them.
+>>>>
 >>>
->>> +#define PCIE_LOW_POWER_CTRL_REG              0x194
->>> +#define PCIE_FORCE_DIS_L0S           BIT(8)
->>> +
->>>    #define PCIE_PIPE4_PIE8_REG         0x338
->>>    #define PCIE_K_FINETUNE_MAX         GENMASK(5, 0)
->>>    #define PCIE_K_FINETUNE_ERR         GENMASK(7, 6)
->>> @@ -458,6 +461,14 @@ static int mtk_pcie_startup_port(struct
->>> mtk_gen3_pcie *pcie)
->>>        val &= ~PCIE_INTX_ENABLE;
->>>        writel_relaxed(val, pcie->base + PCIE_INT_ENABLE_REG);
+>>> Is there any MTU3 controller in MT8196, like all other MediaTek SoCs?
+>> Yes.
 >>>
->>> +     /*
->>> +      * Disable L0s support because it does not significantly save
->>> power
->>> +      * but impacts performance.
->>> +      */
->>> +     val = readl_relaxed(pcie->base + PCIE_LOW_POWER_CTRL_REG);
->>> +     val |= PCIE_FORCE_DIS_L0S;
->>> +     writel_relaxed(val, pcie->base + PCIE_LOW_POWER_CTRL_REG);
->>> +
->>>        /* Disable DVFSRC voltage request */
->>>        val = readl_relaxed(pcie->base + PCIE_MISC_CTRL_REG);
->>>        val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+>>> If so, then please just add the wakeup control to the MTU3 driver,
+>>> otherwise
+>>> we are going to duplicate this for yet another SoC, like we've done
+>>> for MT8192,
+>>> MT8195, MT8188 and MT8186 already...
+>> Even I add it in MTU3 driver, I still need add it in xhci-mtk driver,
+>> some projects only use host mode;
 >>
+>> I can also add it in MTU3 driver and send out new patches.
 >>
+>> But it's not a good idea to duplicate it into MTU3 driver directly for
+>> some SoC which has limitation on dual-role switch when using upstream
+>> driver.
+> 
+> I think the idea behind Angelo's point is that MTU3 should be used for
+> all projects, regardless whether they are host mode only or not.
+> The hardware is there. Don't hide it.
+> 
+
+Yes, I confirm that's exactly my point.
+
+Thanks for clarifying, Chen-Yu.
+
+Cheers!
+
+> ChenYu
+> 
+>> Thanks
+>>
+>>>
+>>> Cheers,
+>>> Angelo
+>>>
+>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>>> ---
+>>>>    drivers/usb/host/xhci-mtk.c | 18 ++++++++++++++++++
+>>>>    1 file changed, 18 insertions(+)
+>>>>
+>>>> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
+>>>> mtk.c
+>>>> index 3252e3d2d79c..31223912b0b4 100644
+>>>> --- a/drivers/usb/host/xhci-mtk.c
+>>>> +++ b/drivers/usb/host/xhci-mtk.c
+>>>> @@ -113,6 +113,12 @@
+>>>>    #define WC1_IS_P_95         BIT(12)
+>>>>    #define WC1_IS_EN_P0_95             BIT(6)
+>>>>
+>>>> +/* mt8196 */
+>>>> +#define PERI_WK_CTRL0_8196   0x08
+>>>> +#define UWK_V1_7_CTRL2_MASK  0x5
+>>>> +
+>>>> +#define WCP1_IS_EN           BIT(7) /* port1 en bit */
+>>>> +
+>>>>    /* mt2712 etc */
+>>>>    #define PERI_SSUSB_SPM_CTRL 0x0
+>>>>    #define SSC_IP_SLEEP_EN     BIT(4)
+>>>> @@ -129,6 +135,8 @@ enum ssusb_uwk_vers {
+>>>>        SSUSB_UWK_V1_4,         /* mt8195 IP1 */
+>>>>        SSUSB_UWK_V1_5,         /* mt8195 IP2 */
+>>>>        SSUSB_UWK_V1_6,         /* mt8195 IP3 */
+>>>> +     SSUSB_UWK_V1_7,         /* mt8196 IP0 */
+>>>> +     SSUSB_UWK_V1_8,         /* mt8196 IP1 */
+>>>>    };
+>>>>
+>>>>    /*
+>>>> @@ -381,6 +389,16 @@ static void usb_wakeup_ip_sleep_set(struct
+>>>> xhci_hcd_mtk *mtk, bool enable)
+>>>>                msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) |
+>>>> WC0_IS_P_95;
+>>>>                val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) :
+>>>> 0;
+>>>>                break;
+>>>> +     case SSUSB_UWK_V1_7:
+>>>> +             reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
+>>>> +             msk = UWK_V1_7_CTRL2_MASK;
+>>>> +             val = enable ? msk : 0;
+>>>> +             break;
+>>>> +     case SSUSB_UWK_V1_8:
+>>>> +             reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
+>>>> +             msk = WCP1_IS_EN;
+>>>> +             val = enable ? msk : 0;
+>>>> +             break;
+>>>>        case SSUSB_UWK_V2:
+>>>>                reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
+>>>>                msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
+>>>
+>>>
+>>>
+
 
 
