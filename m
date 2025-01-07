@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 171B5E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 05:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2686E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 05:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7wg678tNAXdRZkkapitg96TNog1Ghit92yl5gbeQUJs=; b=VP0w+uzHwYNyy9+sJsJnETIsmB
-	ufrK1LHig7gG64zOEqKPr3KF3shxxZXnJ/iVIsXYN1KQcmlyj9sYW/FmdNIqEkPOx76AD1uDMhEUc
-	G/IFWk7QcRuyyORMBee+4szKWbUJ/uKafyML7m68YeJnJ1iT4298uJbyOcgVDj8PVbN+aVC6c1mBw
-	s8PRbP8pfyoDvWmtQyZadod/ZPlnnPpJrmC7rtMJ823/O1IxFLuMs5onqJkIXt9uhuHuQlaVuRkXh
-	DLssJILdgNvVdGCTTq5onA9ecudh4LBq69aNRmAHtgdmzVCz7bnz6w03t59XTZykM0jBbXw0D1Fqe
-	b/NrOcfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KZz8IJT3Behlj/SYm2zXDzCba/a/DTK3QmgKi1MNypk=; b=pf5LfHMn/eIORoIFQcUi/yKYZN
+	KS7Td6Sv8pu6/X/ZtSA/MGud9cuJCbSxXblcUShi9USB3lIkoqS9/ts0BObswfYnBhY65l/aotXCt
+	oIPG+1h0GIilR6kwILhxS6BejtJOoLD0MLD69j8aBgbO5mQr4PjtE0AFg5qnTyyZW3lsWjZQDDL8G
+	cJ+ov0Tu+F62mJvbAqzvZ+3PtA9E5KHEkzWcGfemCmh/oTrYibOZlu4BVhKMeNY2WpKp9xH1/5YZh
+	DfMSbzaMd1IHuzC6rECnrq2FoOGgTHMiSNG/9OvNm3151II6UEDJNPWu2qYCFhrEF/HpeDQCr71mn
+	cTJVStXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV1pc-00000003WH9-0ps8;
-	Tue, 07 Jan 2025 05:08:44 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1tV23z-00000003Xki-3ngA;
+	Tue, 07 Jan 2025 05:23:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV1oM-00000003W9v-2NVS
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jan 2025 05:07:31 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-305d840926fso17227361fa.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jan 2025 21:07:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1736226444; x=1736831244; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7wg678tNAXdRZkkapitg96TNog1Ghit92yl5gbeQUJs=;
-        b=QJUqm8j26U46bXgB9bzy8DIEd/JkYrXVzf81tF+vLazaFsR1Vg9J8KYJmqVnRuljWZ
-         TTwOBIr82Kh1lkWy+btNIg6dF/N5TWafT8+sbJUl1XiZLWcnaKJjffHepNTcE8W5jAEu
-         l5/D6jK1k8hlksf2mxRjFtwDF41i79g3bxTkM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736226444; x=1736831244;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7wg678tNAXdRZkkapitg96TNog1Ghit92yl5gbeQUJs=;
-        b=PQ/KgpsjJPAFPHxsSa1Uc/9Rgq1YVdCzjyz8KmWaKZEUaqKYhwCgbX9Efq/7NGP65t
-         kY5+5AcZWeAxpHEqXMbwkJ00h1tt8LrHckPQo7pl+w0l2U94B0QLsdLGM7UVk3vkFJhM
-         Hcdngpx442/gsD5v/0Tcbk1zqQZrL2h1QKK48x3ctqXbyCUbMUZb+nZynDnacv5tfWSf
-         NnJLqAubyScepglJT1KLiNQ7cAiim7etvCnRxetjK2EE8vNkDWi3nGAI2v2wVYDHCroU
-         cfNKKjpG/q8grpc87V0MZnkZ81imv37wz2q52hAfh3gEQfqqhKTs18vfpsIgERIiMVRY
-         T5wA==
-X-Forwarded-Encrypted: i=1; AJvYcCVIJE4yhvR+YWQHeR0+pAvjGwnPlpP3hEZB6aNx+0YdLob1DNiziWyPpDvXvWY05gePSrDyHK2MaHxnPDs/WQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxc8S1/mv2sVsc09bvZzc24ZEVIKSu7lLTf0rmJo9H+Vk4eoZRz
-	rvQRMHG6JK/HBPaQ4iAytm3hLo5oUaI49i4lsXwwZx+bIwPc8O9uUWXqcJluokharZgH8FONkni
-	hwp5lJFP3Rn9x4zCDVYyiqmlR/cLBVM7uCwiQaA41y6/2Vas=
-X-Gm-Gg: ASbGncsL8Sd82blXzZqm8DmdIwsX3qFhizslgJ7Q2mQ1uwNHrH26Z9XhkgAA20AlkAv
-	N+VFRSbE16ECgK11okN63qQJtSkOdnzje5YFQkMGybyvfE/4gcSAjhdF/k/SKJge+
-X-Google-Smtp-Source: AGHT+IFLiMjxu40TM+UVieh0Bd7i1lzubM2AaOkks8cek/BeR7xzlhz5A3bDMGs9Q7HwEqfELllu4ST8mmu2IBdFiYQ=
-X-Received: by 2002:a05:6512:b0f:b0:540:17ac:b379 with SMTP id
- 2adb3069b0e04-5422953c451mr13347762e87.25.1736226444371; Mon, 06 Jan 2025
- 21:07:24 -0800 (PST)
+	id 1tV21n-00000003XMs-0KH6;
+	Tue, 07 Jan 2025 05:21:22 +0000
+X-UUID: 369460c8ccb711ef9048ed6ed365623b-20250106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KZz8IJT3Behlj/SYm2zXDzCba/a/DTK3QmgKi1MNypk=;
+	b=HSIbbIbLCKTZHvv2kVivfN9fGbBoJhNl3DtTJ6uuU6Ui+HX2PtMfrfOMHFYjos51HdF59R3h02h/qHJmb5MfZ81dmeGdsjR9ZhXmUTV/934v7+mE4ccLQzPEfKDrFiKnz8CDDngYlMrnW8N/GxpOVnO7uwiQfYJ1EnGFzGwFjn4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:2c340a18-34dc-4849-8232-9e0ae8098e17,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-50
+X-CID-META: VersionHash:60aa074,CLOUDID:9aa87a37-e11c-4c1a-89f7-e7a032832c40,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1,IP:nil
+	,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 369460c8ccb711ef9048ed6ed365623b-20250106
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jianjun.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 826735803; Mon, 06 Jan 2025 22:21:13 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 7 Jan 2025 13:21:11 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 7 Jan 2025 13:21:10 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam
+	<manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn
+ Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+	<jianjun.wang@mediatek.com>, <linux-pci@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
+Date: Tue, 7 Jan 2025 13:20:58 +0800
+Message-ID: <20250107052108.8643-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20241126025507.29605-1-chunfeng.yun@mediatek.com>
- <20241126025507.29605-2-chunfeng.yun@mediatek.com> <207f9e96-3165-440d-8576-545bf2bc9dee@collabora.com>
- <0820cf224ae9022fc34fb31d97d4c6f8f6e2eec1.camel@mediatek.com>
-In-Reply-To: <0820cf224ae9022fc34fb31d97d4c6f8f6e2eec1.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Jan 2025 13:07:13 +0800
-X-Gm-Features: AbW1kvYyYtMKXXkgB8owp0uoo9z3s18dWodz3XR3LaPnMpcD1THVU7CSsiHgTFU
-Message-ID: <CAGXv+5FUuqDbVRQdkkdM9SRV6N3H8Gx_rMpx6rw-hNu45SKVNA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] usb: mtk-xhci: add support remote wakeup of mt8196
-To: =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
-Cc: "robh@kernel.org" <robh@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"mathias.nyman@intel.com" <mathias.nyman@intel.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_210726_609548_EF48223A 
-X-CRM114-Status: GOOD (  29.89  )
+X-CRM114-CacheID: sfid-20250106_212119_123482_BF68CB23 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,103 +88,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 6, 2025 at 10:58=E2=80=AFPM Chunfeng Yun (=E4=BA=91=E6=98=A5=E5=
-=B3=B0)
-<Chunfeng.Yun@mediatek.com> wrote:
->
-> On Tue, 2024-11-26 at 09:50 +0100, AngeloGioacchino Del Regno wrote:
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >
-> >
-> > Il 26/11/24 03:55, Chunfeng Yun ha scritto:
-> > > There are 2 USB controllers on mt8196, each controller's wakeup
-> > > control is
-> > > different, add some specific versions for them.
-> > >
-> >
-> > Is there any MTU3 controller in MT8196, like all other MediaTek SoCs?
-> Yes.
-> >
-> > If so, then please just add the wakeup control to the MTU3 driver,
-> > otherwise
-> > we are going to duplicate this for yet another SoC, like we've done
-> > for MT8192,
-> > MT8195, MT8188 and MT8186 already...
-> Even I add it in MTU3 driver, I still need add it in xhci-mtk driver,
-> some projects only use host mode;
->
-> I can also add it in MTU3 driver and send out new patches.
->
-> But it's not a good idea to duplicate it into MTU3 driver directly for
-> some SoC which has limitation on dual-role switch when using upstream
-> driver.
+Remove the usage of virt_to_phys, as it will cause sparse warnings when
+building on some platforms.
 
-I think the idea behind Angelo's point is that MTU3 should be used for
-all projects, regardless whether they are host mode only or not.
-The hardware is there. Don't hide it.
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-ChenYu
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 3bcfc4e58ba2..dc1e5fd6c7aa 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -178,6 +178,7 @@ struct mtk_pcie_soc {
+  * @phy: pointer to PHY control block
+  * @slot: port slot
+  * @irq: GIC irq
++ * @msg_addr: MSI message address
+  * @irq_domain: legacy INTx IRQ domain
+  * @inner_domain: inner IRQ domain
+  * @msi_domain: MSI IRQ domain
+@@ -198,6 +199,7 @@ struct mtk_pcie_port {
+ 	struct phy *phy;
+ 	u32 slot;
+ 	int irq;
++	phys_addr_t msg_addr;
+ 	struct irq_domain *irq_domain;
+ 	struct irq_domain *inner_domain;
+ 	struct irq_domain *msi_domain;
+@@ -393,12 +395,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
+ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ {
+ 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+-	phys_addr_t addr;
+ 
+ 	/* MT2712/MT7622 only support 32-bit MSI addresses */
+-	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+ 	msg->address_hi = 0;
+-	msg->address_lo = lower_32_bits(addr);
++	msg->address_lo = lower_32_bits(port->msg_addr);
+ 
+ 	msg->data = data->hwirq;
+ 
+@@ -510,10 +510,8 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+ {
+ 	u32 val;
+-	phys_addr_t msg_addr;
+ 
+-	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+-	val = lower_32_bits(msg_addr);
++	val = lower_32_bits(port->msg_addr);
+ 	writel(val, port->base + PCIE_IMSI_ADDR);
+ 
+ 	val = readl(port->base + PCIE_INT_MASK);
+@@ -913,6 +911,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
+ 	struct mtk_pcie_port *port;
+ 	struct device *dev = pcie->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
++	struct resource *regs;
+ 	char name[10];
+ 	int err;
+ 
+@@ -921,12 +920,18 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
+ 		return -ENOMEM;
+ 
+ 	snprintf(name, sizeof(name), "port%d", slot);
+-	port->base = devm_platform_ioremap_resource_byname(pdev, name);
++	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
++	if (!regs)
++		return -EINVAL;
++
++	port->base = devm_ioremap_resource(dev, regs);
+ 	if (IS_ERR(port->base)) {
+ 		dev_err(dev, "failed to map port%d base\n", slot);
+ 		return PTR_ERR(port->base);
+ 	}
+ 
++	port->msg_addr = regs->start + PCIE_MSI_VECTOR;
++
+ 	snprintf(name, sizeof(name), "sys_ck%d", slot);
+ 	port->sys_ck = devm_clk_get(dev, name);
+ 	if (IS_ERR(port->sys_ck)) {
+-- 
+2.46.0
 
-> Thanks
->
-> >
-> > Cheers,
-> > Angelo
-> >
-> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > > ---
-> > >   drivers/usb/host/xhci-mtk.c | 18 ++++++++++++++++++
-> > >   1 file changed, 18 insertions(+)
-> > >
-> > > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
-> > > mtk.c
-> > > index 3252e3d2d79c..31223912b0b4 100644
-> > > --- a/drivers/usb/host/xhci-mtk.c
-> > > +++ b/drivers/usb/host/xhci-mtk.c
-> > > @@ -113,6 +113,12 @@
-> > >   #define WC1_IS_P_95         BIT(12)
-> > >   #define WC1_IS_EN_P0_95             BIT(6)
-> > >
-> > > +/* mt8196 */
-> > > +#define PERI_WK_CTRL0_8196   0x08
-> > > +#define UWK_V1_7_CTRL2_MASK  0x5
-> > > +
-> > > +#define WCP1_IS_EN           BIT(7) /* port1 en bit */
-> > > +
-> > >   /* mt2712 etc */
-> > >   #define PERI_SSUSB_SPM_CTRL 0x0
-> > >   #define SSC_IP_SLEEP_EN     BIT(4)
-> > > @@ -129,6 +135,8 @@ enum ssusb_uwk_vers {
-> > >       SSUSB_UWK_V1_4,         /* mt8195 IP1 */
-> > >       SSUSB_UWK_V1_5,         /* mt8195 IP2 */
-> > >       SSUSB_UWK_V1_6,         /* mt8195 IP3 */
-> > > +     SSUSB_UWK_V1_7,         /* mt8196 IP0 */
-> > > +     SSUSB_UWK_V1_8,         /* mt8196 IP1 */
-> > >   };
-> > >
-> > >   /*
-> > > @@ -381,6 +389,16 @@ static void usb_wakeup_ip_sleep_set(struct
-> > > xhci_hcd_mtk *mtk, bool enable)
-> > >               msk =3D WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) |
-> > > WC0_IS_P_95;
-> > >               val =3D enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) :
-> > > 0;
-> > >               break;
-> > > +     case SSUSB_UWK_V1_7:
-> > > +             reg =3D mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
-> > > +             msk =3D UWK_V1_7_CTRL2_MASK;
-> > > +             val =3D enable ? msk : 0;
-> > > +             break;
-> > > +     case SSUSB_UWK_V1_8:
-> > > +             reg =3D mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
-> > > +             msk =3D WCP1_IS_EN;
-> > > +             val =3D enable ? msk : 0;
-> > > +             break;
-> > >       case SSUSB_UWK_V2:
-> > >               reg =3D mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
-> > >               msk =3D SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
-> >
-> >
-> >
 
