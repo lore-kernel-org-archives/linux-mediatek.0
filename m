@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 230DAE77198
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 12:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3382E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 12:37:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FA34be2teYEYsr2t/72VryT2qJhAIzW5Ui7xESwTB6o=; b=cA+m5OZVr5bzS6abpPbrMrWzHs
-	uo+cJl0GwUm7V8CN+HdVz6tzO8Bk0DjhxEldlKNRcau8d08xaGnAw1DTfABW1tnSFu2xXGaGrO93K
-	dZKXjxLtI0glKUkaflwE8XQNxIOXUuLrCACJ1LHl3rdxhb7aRR2Q8Qp2keKTFCFz3SNPWZJ2dBw+z
-	xXCMZz9Y9A7BgLGcj02XLAhz/qRiSVICFk244onzUZIFv3n2r+hz4/ultlJMi315ehl5W4YRSfnjF
-	slhf+s0kTfFyPkQ+p3JZNLHYsEUnPF8jEYmwWeIx/fQT6zYUEWImwgyEXYPlwOI25PJxhN7VBFnV6
-	P62r9SqQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1iRQLDB7T+T6mcX0QSHuvP8QOBEcY1WYeSSWjcXJNfA=; b=eWhXa6LWIYqvA2p+Vk0fPDbAxY
+	5JPe3uZcotkDPkLhRWodjNjYtRAImB8b54KVWe5T6GFlSY0U0e1LYtG85kAwfTLeHu/2qiyBpfQLk
+	clm5RiYsg5ndydAwrSxkBY4yOqJnxnRKSbto3/ugs9E6bIjTEL5FthHfAy5bQmDutc1d4wURwo9Lc
+	yrrjkOUHlek09x9GFRu2y2HajQHHaCz1N7FnQPkCw7DZlmsGwENefznds6hYpS5k3BzP07DO+ySU1
+	38V+I3b38UU/tKZ1++r5Z08fa1EGOKIiA7EGM4mCay+oqYAzFH1slnW7+3xMIxwQM6yDUyCxEM9pS
+	/HnkNWPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8md-00000004mkR-0ULx;
-	Tue, 07 Jan 2025 12:34:07 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1tV8qC-00000004npl-3av6;
+	Tue, 07 Jan 2025 12:37:48 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8mY-00000004miR-2bHI
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jan 2025 12:34:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736253240;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FA34be2teYEYsr2t/72VryT2qJhAIzW5Ui7xESwTB6o=;
-	b=dLi2D0+/5pz9F0ZhYEyjhCXAMaISbnkUdIwbxOHa339T8WNIEw7aSMuQh4ciPtcQCRx3gg
-	51JDsrhMGymdwngUWzcUQ146MsNJlh1qH4HXisQKSIvZX/crmB6yBmzKCgLOYeU5SijNJh
-	dwA7vHCzC4A9RTFn98hZ0ggEIJdQu4I=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-492-Ym1YjD90NlS5gzvvsGgHxg-1; Tue, 07 Jan 2025 07:32:24 -0500
-X-MC-Unique: Ym1YjD90NlS5gzvvsGgHxg-1
-X-Mimecast-MFC-AGG-ID: Ym1YjD90NlS5gzvvsGgHxg
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-2ef6ef86607so21536103a91.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jan 2025 04:32:24 -0800 (PST)
+	id 1tV8oq-00000004nPp-2RK7;
+	Tue, 07 Jan 2025 12:36:25 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5d3bbb0f09dso27125179a12.2;
+        Tue, 07 Jan 2025 04:36:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736253383; x=1736858183; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1iRQLDB7T+T6mcX0QSHuvP8QOBEcY1WYeSSWjcXJNfA=;
+        b=jiQkjSbIK90mw7fP2bHTWODv+T4xnQOV1FBl9of8hr4S9/5bU1oEO7KN6cecccgMZ6
+         sZ+AOwMpu73SqgevJUUyd6XTwyjJe41cS2xAGYEr8ZhQ0PZWcMQ/nyxSCgonUrjO+5d+
+         rn+feph9St+TLTl6IOOqucOQONBsfetQHH+yoeq+OfiUZMIVdPZXKZeEjeC9ceqRYoYC
+         TssfFbJGDKZ5/e9eFOqgFmSexfI5nKaC3y4Yjyk6B8bcrhHMItOcP+dOvP7B5aeO3nM/
+         RL3Cmsa4kQeGruZyRe7XsptfUJ/khnWFQdxgNGMSNhOBqeCay6skcalDmFk4Oty1TL6I
+         qcKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736253143; x=1736857943;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FA34be2teYEYsr2t/72VryT2qJhAIzW5Ui7xESwTB6o=;
-        b=P56c988FBkqJcZK/9xeZhM+yYK4q2QyxrjyVQmZEAQ3pSMSyJ6uazLXw1kA2aeyFCW
-         5CroQwtfJKUzMaKMXLWEViYWc+Y2nKssDY25tEWdf2YWn9pFdIsVeoQILjOBK945P1YE
-         Bw4tk48HBOVQrPkmlU40oiHHc3DjyIdOB5HqyTc+ncnwpXiA4Nl39V9q6IhFHxFE/+KE
-         bnCB9yZFpdpBfXsw2kbbz1l5ZNG10lY+f3/IiXWtXh+88lt0/ioQWPpINKmOoNw2U9kh
-         JSdxb3N0gwOGox5WMQHMcEwl0YwpVokJqF1mUdXmy1tiMTD0Q730fTOgM1x+vUIuDrDO
-         P2OA==
-X-Forwarded-Encrypted: i=1; AJvYcCVyQUriEs47Nhmka2I8P7aen0VKbp9WlC5alN8bufpIlXRO+qQKgmFXcdLv+5kQT6d69U3RiI1DP9zDHFRZig==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDYkB79rhT9WzN9R61t3He6be1IYld+csaqjS8SQ1ajL0KPpZG
-	wQaPkj3gVfzbvHh5kXNP9s6ahlcJIxOIimh3uy+LMFoI4M6UoUaW16GQj9aDaunmiNeqv3uN7YF
-	ixjf3vRuU75FBvqS2igMfQE6/C4UvtjnFek3vC2IQPe3e12yOdtFxJKYYtrWV+rOuYcJ6doMYWW
-	Hv739QMcJrKJgVDXzrjzj0DkXSVjIkaTUpfoQmMmnIjigu
-X-Gm-Gg: ASbGncu1fpNGHG7OaPj2lixEDFUvx1mpLdDkZJ8s+CC6Emx28RYnfcLSYNqGULm0g3+
-	aVJm+rdKppY2ZloVKY/EHpWyEIDViQ7B5LPn/E6+yrjPoIIPtocye88s4zn6PK/WRlL2hJw==
-X-Received: by 2002:a17:90b:2f08:b0:2ee:5c9b:35c0 with SMTP id 98e67ed59e1d1-2f53cc0026amr4449311a91.9.1736253143211;
-        Tue, 07 Jan 2025 04:32:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHXEm8Tpwx9R6D9Gw9QHyKE+GR3tsYiiCv4Ym0+gd1Cz9oD6CrSF51bAc0DLA4TAYCA4UkwcBAPiOxCypE3SI8=
-X-Received: by 2002:a17:90b:2f08:b0:2ee:5c9b:35c0 with SMTP id
- 98e67ed59e1d1-2f53cc0026amr4449278a91.9.1736253142921; Tue, 07 Jan 2025
- 04:32:22 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736253383; x=1736858183;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1iRQLDB7T+T6mcX0QSHuvP8QOBEcY1WYeSSWjcXJNfA=;
+        b=moD2HvgwCd/QJcQdqOPGcHdRHPIidky+AAe+0wlSCBOjNOJxq5qlKwPYFgVpXAf7HD
+         MuNYL1+/cAJuK0bhenBLga/6ZsVIPndSbbfGQ4OX4WCSftctxlAqx0pyrEZv1DxOTNI6
+         yCfB28njpvWbI+DsSGfiYkvK7+D2y9LPyeKgSVbA0YwQmKkqKZrQqiW8nzyXazqvj+lD
+         6MJToJZQ5egL/PrpE2HSNweb6jW9b+us5Cm64mOPH4N2YJlm4XEdSM+MF0NOrxtzIjMl
+         sS9zuuZr3wG4OxO3MiHrX4PbIjsKF6wCSH6lWt+X6kc72tDeffsd7j9znR8HO3OMVbUZ
+         Rbaw==
+X-Forwarded-Encrypted: i=1; AJvYcCWtHRwcIeBQSA4RQXUUOx9oQEtRw35WOQ3ZuQ/evYqMCtOePCBP3T6oqSa+JQi45edSCLdhrGKU5BdMb4WhaDKA@lists.infradead.org, AJvYcCWyeCtKCGRz3f+pjKUtvWHz87dRXRz3JHmlz+NArbdfK0bGVSrORUZmE5RYMrn0iytTRAJUvUU/hEnX27Fc1hw=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWtD3scVHemYdU7rj+lZr+v4K6p6xzb5iGnNmHY6Q3cd92YcNH
+	QfdUq/5Ux0Ky1EJ9rt+JVuf1FBussd35thGHuN2g+Ml/x2aG/kbs
+X-Gm-Gg: ASbGncvHZ/VujMVprBljvjeaDVUZshZgeSIM52/CtffG6O0GVvNybfpgF5lVN6xdCsV
+	hqGl+VPBZ9XCm0Y7t7peq4DFwMesu85frfUIODVY16JAW6KgQKbWEBam1RwfnRviregw9v0SyEY
+	PQJnhD6Etg3pqYjV1X5AHC9BhIPwlda9zfI0ZxUZZUnWEPjIDN7uDN3GRmv8FFeQz8K6IuHhMUS
+	jhDJ1bwAmZgDvrZeoHaIFVHl2j5NyflCOPyHdd9OFEHEoR5p3BIf3DtxCN526XXGqRLGX3jNITm
+	AJYQpYWp3Yr3KXuYAnjvNT94wt/h5xS+Po2Yn0a66O7QoD46+yvyoqLHbxicTErX2rgAxOlCVQ=
+	=
+X-Google-Smtp-Source: AGHT+IGW23CFpUMXDq22TqAb+Ssg5WtHBDf4GPbKhJxZxOpLIHvlqjNy2qcYwN7W5pI330PsYIomtw==
+X-Received: by 2002:a05:6402:2802:b0:5d2:723c:a568 with SMTP id 4fb4d7f45d1cf-5d81ddf3ba0mr62395981a12.10.1736253382371;
+        Tue, 07 Jan 2025 04:36:22 -0800 (PST)
+Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80678c8dbsm24148450a12.40.2025.01.07.04.36.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Jan 2025 04:36:22 -0800 (PST)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: Russell King <linux@armlinux.org.uk>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Frank Wunderlich" <frank-w@public-files.de>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Eric Woudstra <ericwouds@gmail.com>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH RFC net-next] net: phylink: always config mac for (delayed) phy
+Date: Tue,  7 Jan 2025 13:36:15 +0100
+Message-ID: <20250107123615.161095-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-References: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
- <173625003251.4120801.586359106755098449.git-patchwork-notify@kernel.org>
-In-Reply-To: <173625003251.4120801.586359106755098449.git-patchwork-notify@kernel.org>
-From: Davide Caratti <dcaratti@redhat.com>
-Date: Tue, 7 Jan 2025 13:32:10 +0100
-X-Gm-Features: AbW1kvZ_ZjT4b_8fuDBZTcCBlMZd_2JVzhsmZ6fS1Bss4oQKv0WT0sawYektIcY
-Message-ID: <CAKa-r6v0bEjQfbSG75E9kV1Qki-5eAbrqiy2maB2iG2O4Wf5Xw@mail.gmail.com>
-Subject: Re: [PATCH net-next 0/4] net: airoha: Add Qdisc offload support
-To: patchwork-bot+netdevbpf@kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, nbd@nbd.name, sean.wang@mediatek.com, 
-	Mark-MC.Lee@mediatek.com, andrew+netdev@lunn.ch, davem@davemloft.net, 
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	netdev@vger.kernel.org, upstream@airoha.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nSAmaaub0pPmIDqiknGY37yPZQcnbQyz0QLryhwkaQw_1736253143
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_043402_730610_2431B88D 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250107_043624_619044_D1370CC4 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +110,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-hi,
+The situation: mtk lynxi pcs (eth1 on BananaPi R3) with a rollball
+rtl8221b sfp.
 
-On Tue, Jan 7, 2025 at 12:40=E2=80=AFPM <patchwork-bot+netdevbpf@kernel.org=
-> wrote:
->
-> Hello:
->
-> This series was applied to netdev/net-next.git (main)
-> by Paolo Abeni <pabeni@redhat.com>:
->
-> On Fri, 03 Jan 2025 13:17:01 +0100 you wrote:
-> > Introduce support for ETS and HTB Qdisc offload available on the Airoha
-> > EN7581 ethernet controller.
-> >
-> > ---
-> > Lorenzo Bianconi (4):
-> >       net: airoha: Enable Tx drop capability for each Tx DMA ring
-> >       net: airoha: Introduce ndo_select_queue callback
-> >       net: airoha: Add sched ETS offload support
+When setting eth1 link up, the phy is not immediately attached. It takes
+a few seconds, pl->phydev is not set yet.
 
-I was about to comment that ETS offload code probably still lacks
-validation of priomap [1]. Otherwise every ETS priomap will behave
-like the one that's implemented in hardware. It can be addressed in a
-follow-up commit, probably.
+So when setting link eth1 up:
 
-thanks,
---
-davide
+phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,
+0000e240 pause=04
 
-[1] https://lore.kernel.org/netdev/CAKa-r6shd3+2zgeEzVVJR7fKWdpjKv1YJxS3z+y=
-7QWqDf8zDZQ@mail.gmail.com/
+When the phy is attached the link an mode does not change and
+phylink_mac_initial_config() is not called. No message 'Link is Up' found
+in the kernel log.
+
+We need:
+
+phylink_mac_config: mode=phy/2500base-x/none adv=00,00000000,00008000,
+000060ef pause=04
+
+Perhaps forcing phylink_mac_initial_config() always for a phy is not the
+desired approach, so I send this patch as RFC to see which approach
+will be most suitable.
+
+Log before this patch is applied:
+[root@bpir3 ~]# dmesg | grep eth1
+[    2.515179] mtk_soc_eth 15100000.ethernet eth1: mediatek frame engine at 0xffff800082380000, irq 123
+[   38.271431] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/2500base-x link mode
+[   38.279828] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
+[   38.288009] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
+[   38.296800] mtk_soc_eth 15100000.ethernet eth1: major config, active inband/inband,an-disabled/2500base-x
+[   38.306362] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,0000e240 pause=04
+[   39.220149] mtk_soc_eth 15100000.ethernet eth1:  interface 2 (mii) rate match none supports 0-3,6-7,13-14
+[   39.229758] mtk_soc_eth 15100000.ethernet eth1:  interface 3 (gmii) rate match none supports 0-3,5-7,13-14
+[   39.239420] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+[   39.249173] mtk_soc_eth 15100000.ethernet eth1:  interface 22 (1000base-x) rate match none supports 5-7,13-14
+[   39.259080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+[   39.594676] mtk_soc_eth 15100000.ethernet eth1: PHY i2c:sfp-1:11 uses interfaces 4,23, validating 4,23
+[   39.603992] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+[   39.650080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+[   39.660266] mtk_soc_eth 15100000.ethernet eth1: PHY [i2c:sfp-1:11] driver [RTL8221B-VB-CG 2.5Gbps PHY (C45)] (irq=POLL)
+[   39.671037] mtk_soc_eth 15100000.ethernet eth1: phy: 2500base-x setting supported 00,00000000,00008000,000060ef advertising 00,00000000,00008000,000060ef
+[   39.684761] mtk_soc_eth 15100000.ethernet eth1: requesting link mode inband/2500base-x with support 00,00000000,00008000,000060ef
+[   40.380076] mtk_soc_eth 15100000.ethernet eth1: phy link down 2500base-x/Unknown/Unknown/none/off
+[   40.397090] brlan: port 5(eth1) entered blocking state
+[   40.402223] brlan: port 5(eth1) entered disabled state
+[   40.407437] mtk_soc_eth 15100000.ethernet eth1: entered allmulticast mode
+[   40.414400] mtk_soc_eth 15100000.ethernet eth1: entered promiscuous mode
+[   44.500077] mtk_soc_eth 15100000.ethernet eth1: phy link up 2500base-x/2.5Gbps/Full/none/off
+[   44.508528] mtk_soc_eth 15100000.ethernet eth1: No phy led trigger registered for speed(2500)
+
+Log after this patch is applied:
+[root@bpir3 ~]# dmesg | grep eth1
+[    2.515149] mtk_soc_eth 15100000.ethernet eth1: mediatek frame engine at 0xffff800082400000, irq 123
+[   38.989414] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/2500base-x link mode
+[   38.997838] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
+[   39.006029] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
+[   39.014818] mtk_soc_eth 15100000.ethernet eth1: major config, active inband/inband,an-disabled/2500base-x
+[   39.024368] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,0000e240 pause=04
+[   39.960119] mtk_soc_eth 15100000.ethernet eth1:  interface 2 (mii) rate match none supports 0-3,6-7,13-14
+[   39.969738] mtk_soc_eth 15100000.ethernet eth1:  interface 3 (gmii) rate match none supports 0-3,5-7,13-14
+[   39.979409] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+[   39.989153] mtk_soc_eth 15100000.ethernet eth1:  interface 22 (1000base-x) rate match none supports 5-7,13-14
+[   39.999063] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+[   40.334663] mtk_soc_eth 15100000.ethernet eth1: PHY i2c:sfp-1:11 uses interfaces 4,23, validating 4,23
+[   40.343980] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+[   40.390049] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+[   40.400234] mtk_soc_eth 15100000.ethernet eth1: PHY [i2c:sfp-1:11] driver [RTL8221B-VB-CG 2.5Gbps PHY (C45)] (irq=POLL)
+[   40.411005] mtk_soc_eth 15100000.ethernet eth1: phy: 2500base-x setting supported 00,00000000,00008000,000060ef advertising 00,00000000,00008000,000060ef
+[   40.424730] mtk_soc_eth 15100000.ethernet eth1: requesting link mode inband/2500base-x with support 00,00000000,00008000,000060ef
+[   40.436368] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
+[   40.444539] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
+[   40.453307] mtk_soc_eth 15100000.ethernet eth1: major config, active phy/outband/2500base-x
+[   40.461653] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=phy/2500base-x/none adv=00,00000000,00008000,000060ef pause=04
+[   41.170029] mtk_soc_eth 15100000.ethernet eth1: phy link down 2500base-x/Unknown/Unknown/none/off
+[   41.187047] brlan: port 5(eth1) entered blocking state
+[   41.192213] brlan: port 5(eth1) entered disabled state
+[   41.197404] mtk_soc_eth 15100000.ethernet eth1: entered allmulticast mode
+[   41.204358] mtk_soc_eth 15100000.ethernet eth1: entered promiscuous mode
+[   46.600038] mtk_soc_eth 15100000.ethernet eth1: phy link up 2500base-x/2.5Gbps/Full/none/off
+[   46.600057] mtk_soc_eth 15100000.ethernet eth1: Link is Up - 2.5Gbps/Full - flow control off
+[   46.616926] mtk_soc_eth 15100000.ethernet eth1: No phy led trigger registered for speed(2500)
+[   46.634003] brlan: port 5(eth1) entered blocking state
+[   46.639155] brlan: port 5(eth1) entered forwarding state
+
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+---
+ drivers/net/phy/phylink.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 6d50c2fdb190..6fd66ba9002a 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -3424,6 +3424,9 @@ static void phylink_sfp_set_config(struct phylink *pl,
+ 			     phy_modes(state->interface));
+ 	}
+ 
++	if (pl->phydev)
++		changed = true;
++
+ 	if (changed && !test_bit(PHYLINK_DISABLE_STOPPED,
+ 				 &pl->phylink_disable_state))
+ 		phylink_mac_initial_config(pl, false);
+-- 
+2.47.1
 
 
