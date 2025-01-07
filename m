@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED876E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 13:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D72AE77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 13:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GElU6cjJhq95GdewWgaZ+SpQ3fWSL5+ChShOnRqXHIM=; b=mqc2slOPMd9LMfnRIuI+5cebKr
-	/GI08E4HJDxo7h4KUkivJj4utZnk+WjPd51U6geWBPcG4CtCm20P80T7RmABOI7gufV8VTpfnyUic
-	He2rzA5G+STqZVUQxFDdIe7z22kr7n1JrrRPGhNOcBO7XFv/UhdRSsVxa5YPQ3JiqlA8cJYiUVcX7
-	u43ThLXrHQh8Wu/mL96lzN2HHa8l7ILYfEkQVCaCKV95NPTslpoNhUnBz5hlzR/gyaTgn2/UKoRtA
-	6s5zUq19wJqR3WiBneb6Y+rS2hZ1/GYhD1g8Pf7SuSBFpanJOZt4qLJFiQ5cklf5WJYEsWCCClkko
-	ejstCZMA==;
+	bh=OzbkvkrBP9cwmFXRob+AcrT2UZB7yjxkVCUuh7fKz7U=; b=lx+6VChcBJPPcZzrKPp+6KdsEz
+	IBsDn0ir96Rc+noyN1xx2CL6q7KlaJlXqmgq/r2+sdz2YNKz15GAG1LAswMTUPBmyrdQoVuiIY0hF
+	H6fvnP68f9GpVY4kWsCOJk5U3dzhVcJ5XDAEwxT7X1vmFw4Dooxx++xxe0MdUHnk+afzkSN412SlN
+	Qmt2yQvPpssLULZTx+dAjSIv0pDpdlvhPeRuLK9ZVwCTCA9mcUqRUEMBsW27NomnlQ5Aq3R8FwihM
+	fDxxrfArP96mCGghrzK6wk7bZjc2cgMU895XP+d9AyehrgSz0u7i7Dd18tIyQKTvQ6CG8n86IoQ/f
+	HukNL5tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9KA-00000004w5W-0DzG;
-	Tue, 07 Jan 2025 13:08:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tV9U8-00000004yba-2LPi;
+	Tue, 07 Jan 2025 13:19:04 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9G5-00000004ttN-3ebt;
-	Tue, 07 Jan 2025 13:04:37 +0000
+	id 1tV9Nb-00000004x2S-0VBS;
+	Tue, 07 Jan 2025 13:12:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736255072;
-	bh=hrjBwILl03AMkuILxv5+UdH95HodZymkjLogKmN18wU=;
+	s=mail; t=1736255537;
+	bh=/yaQvBxN92WBph6vXqky+w7V6dYWSvkNwdgX/ZOAW9M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EBq9vu3U2s/KXM8+fmdhQS19ZZHkZCHSg9o8Y0Vn+zh4LodJlHCBBH18k28zi+oxO
-	 v8+xrNdrb+I8J/XG6IUxDDU7hBE6HKuGwUzHEjeATlcIwa+ijCgqZtiHZ9j82P2lv9
-	 ecioGCWeNvi5BdjaXIP2nyS/GBMa5tD4BE2kYuV5bOYlAoHgiS+j4LFEBJBT1Q9dCr
-	 S5U0qu+H7k3j/9l6jjC4a48LbfoNS2oXTUNUZE06JDAvPJ6JMpyzEZtAprFN6oD47X
-	 KU1oh/XbQU1CcjSPfcihPTJagNa4D9jk+rIzJATH0N9JVtmzgg7674/8kK7LYnuhx7
-	 QH3Epgb8e39gg==
+	b=Hq/irzVoEOQUNndEXpvhYpZJZ+dRSDryELIilqoMSAyskCJ+Z+RZvXikChS/Wc5t1
+	 te++ypatMZc9BExcx6+IIb6w7ZYmhBUfhJal+FI0eBi3asIj4yYi1C/MeGQBWtRUh8
+	 lgERLUBkqex86n/ywFni0doKfpGvGjXKy0BbxNglOU+XCuvu5+oREGMsKoSs8X+Hbt
+	 ZQ0fFTRLKofTI67/KUTiSXw1RpI1egfMqLm9emXD1qn/hJqi0xuvilCLW3PPzUx0l1
+	 /FWNBzkWxYQ8DBA2CCxPeNDSNglC7kigB9zrMQ9Bpl/hCI8ickvr1vcPyzwmpzTX/L
+	 A5K2uNGV74vwA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5F26B17E154C;
-	Tue,  7 Jan 2025 14:04:31 +0100 (CET)
-Message-ID: <660e3bbb-4b16-49ad-82d1-a2c3e3ef76bb@collabora.com>
-Date: Tue, 7 Jan 2025 14:04:30 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28EA517E1574;
+	Tue,  7 Jan 2025 14:12:17 +0100 (CET)
+Message-ID: <eda10efe-a301-45d3-9bf6-088275db7af5@collabora.com>
+Date: Tue, 7 Jan 2025 14:12:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: PCI: mediatek-gen3: Add MT8196 support
-To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>
-References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
- <20250103060035.30688-2-jianjun.wang@mediatek.com>
- <0555fb64-312d-4490-9b03-89fca580c602@collabora.com>
- <8269f5fb280d0847ceba288a83a64c99bbf92cb7.camel@mediatek.com>
+Subject: Re: [PATCH] nvmem: mtk-efuse: Enable GPU speed bin post-processing
+ for MT8188
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org
+References: <20241223100648.2166754-1-wenst@chromium.org>
+ <481a6eec-c428-45cd-98a6-5a91f3ceb187@collabora.com>
+ <CAGXv+5Fj5s9FUyaxmEkGimxjEcS6OEfm4_5Zso+YocSi+Vt4pg@mail.gmail.com>
+ <bbc6aa2a-fe48-4e06-b070-fd66dbd00e15@collabora.com>
+ <CAGXv+5FoOM=ZUCWigdCaPbc4FCBtLVX2xnUJnVnVsBH=7yoZ=Q@mail.gmail.com>
+ <efb88dd0-3b66-49fe-b279-e66c4574cf9d@collabora.com>
+ <CAGXv+5HWcYrCzWJD4e=WP1WVNfqG5Y2_z+_oetWZq2ZKjXP75g@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <8269f5fb280d0847ceba288a83a64c99bbf92cb7.camel@mediatek.com>
+In-Reply-To: <CAGXv+5HWcYrCzWJD4e=WP1WVNfqG5Y2_z+_oetWZq2ZKjXP75g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_050434_055872_A1C3ED2E 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20250107_051219_298942_F00DC8F7 
+X-CRM114-Status: GOOD (  24.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,108 +83,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/01/25 10:19, Jianjun Wang (王建军) ha scritto:
-> On Fri, 2025-01-03 at 10:26 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+Il 23/12/24 17:15, Chen-Yu Tsai ha scritto:
+> On Tue, Dec 24, 2024 at 12:08 AM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
 >>
->>
->> Il 03/01/25 07:00, Jianjun Wang ha scritto:
->>> Add compatible string and clock definition for MT8196. It has 6
->>> clocks like
->>> the MT8195, but 2 of them are different.
+>> Il 23/12/24 16:57, Chen-Yu Tsai ha scritto:
+>>> On Mon, Dec 23, 2024 at 7:43 PM AngeloGioacchino Del Regno
+>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>
+>>>> Il 23/12/24 12:24, Chen-Yu Tsai ha scritto:
+>>>>> On Mon, Dec 23, 2024 at 7:11 PM AngeloGioacchino Del Regno
+>>>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>>>
+>>>>>> Il 23/12/24 11:06, Chen-Yu Tsai ha scritto:
+>>>>>>> Like the MT8186, the MT8188 stores GPU speed binning data in its efuse.
+>>>>>>> The data needs post-processing into a format that the OPP framework can
+>>>>>>> use.
+>>>>>>>
+>>>>>>> Add a compatible match for MT8188 efuse with post-processing enabled.
+>>>>>>>
+>>>>>>
+>>>>>> Let's just change the MT8188 compatible list to
+>>>>>>
+>>>>>> compatible = "mediatek,mt8188-efuse", "mediatek,mt8186-efuse";
+>>>>>
+>>>>> That would be "mediatek,mt8188-efuse", "mediatek,mt8186-efuse", "mediatek,efuse"
+>>>>> then?
+>>>>>
+>>>>
+>>>> No, we're dropping the generic "mediatek,efuse".
 >>>
->>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
->>> ---
->>>    .../bindings/pci/mediatek-pcie-gen3.yaml      | 29
->>> +++++++++++++++++++
->>>    1 file changed, 29 insertions(+)
+>>> That means we also drop it for MT8186?
 >>>
->>> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-
->>> gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-
->>> gen3.yaml
->>> index f05aab2b1add..b4158a666fb6 100644
->>> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
->>> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
->>> @@ -51,6 +51,7 @@ properties:
->>>                  - mediatek,mt7986-pcie
->>>                  - mediatek,mt8188-pcie
->>>                  - mediatek,mt8195-pcie
->>> +              - mediatek,mt8196-pcie
->>>              - const: mediatek,mt8192-pcie
->>>          - const: mediatek,mt8192-pcie
->>>          - const: airoha,en7581-pcie
->>> @@ -197,6 +198,34 @@ allOf:
->>>              minItems: 1
->>>              maxItems: 2
+>>> Thinking about it more, I think it's stretching things a bit. The hardware
+>>> is clearly backwards compatible, or we wouldn't even be reading values
+>>> out correctly. The only difference now with MT8186 and MT8188 is that
+>>> they have a speed-bin field with a value that we want passed to the OPP
+>>> framework, and the interpretation of that value is not really part of
+>>> the efuse's hardware. We chose to do the conversion in the efuse driver,
+>>> but we could also have done it in the GPU driver.
 >>>
->>> +  - if:
->>> +      properties:
->>> +        compatible:
->>> +          contains:
->>> +            enum:
->>> +              - mediatek,mt8196-pcie
->>> +    then:
->>> +      properties:
->>> +        clocks:
->>> +          minItems: 6
->>> +
->>> +        clock-names:
->>> +          items:
->>> +            - const: pl_250m
->>> +            - const: tl_26m
->>> +            - const: peri_26m
->>> +            - const: peri_mem
->>> +            - const: ahb_apb
+>>> What I'm saying is that we should not need to change the compatible strings
+>>> to make this work.
+>>>
 >>
->> ahb_apb is a bus clock, so you can set it as
+>> No we don't forcefully have to drop it from MT8186, and doing so would be kind
+>> of hard and actually producing unnecessary breakages with (very) old kernels.
 >>
->> - const: bus
+>> Just add a `deprecated: true` to the binding that wants `mediatek,efuse` and
+>> start with MT8188, where 8188 is in enum and 8186 is const.
+>>
+>> We can do MT8188 because that'll still work even with old kernels (since MT8186
+>> is there since before MT8188 was introduced), and it's something to enable a new
+>> feature.
+>> This means that there's not going to be any breakage with new DT and old kernel.
+>>
+>> I want the mediatek,efuse binding to be like the majority of the others across
+>> the kernel, so, no generic compatible.
 > 
-> Agree, I'll change it to "bus" in the next version, thanks.
+> In that case shouldn't the fallback be the oldest SoC in the list?
+> Maybe MT8173, which is currently marked as deprecated, so we undeprecate it?
 > 
->>
->>
->>> +            - const: low_power
->>
->> Can you please clarify what the LP clock is for?
-> 
-> This is a power-saving clock. Its clock source consumes less power than
-> a regular clock, we need to keep this clock on if when entering L1.2
-> during suspend.
+> Certainly not the MT8186.
 > 
 
-In the driver, you are keeping all clocks ON instead.
+MT8173 doesn't have the post processing enabled.... if you can test that the code
+actually works for MT8173 as well, giving meaningful results, then we can just use
+the MT8173 compatible :-)
 
-Is this clock required to be ON when the full power ones are enabled and
-the SoC is not in suspend state?
 
-Can you please add handling for this "special" clock so that we can save power
-during suspend?
-
-Cheers,
-Angelo
-
-> Thanks.
-> 
->>
->> Thanks,
+>> Cheers,
 >> Angelo
 >>
->>> +
->>> +        resets:
->>> +          minItems: 1
->>> +          maxItems: 2
->>> +
->>> +        reset-names:
->>> +          minItems: 1
->>> +          maxItems: 2
->>> +
->>>      - if:
->>>          properties:
->>>            compatible:
->>
->>
+>>>
+>>> ChenYu
+>>>
+>>>> Cheers!
+>>>>
+>>>>> Fine by me. :D
+>>>>>
+>>>>> ChenYu
+>>>>>
+>>>>>> instead :-)
+>>>>>>
+>>>>>> Cheers,
+>>>>>> Angelo
+>>>>>>
+>>>>>>> Cc: <stable@vger.kernel.org>
+>>>>>>> Fixes: ff1df1886f43 ("dt-bindings: nvmem: mediatek: efuse: Add support for MT8188")
+>>>>>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>>>>>>> ---
+>>>>>>>
+>>>>>>> I'm not exactly sure about pointing to the dt bindings commit for the
+>>>>>>> fixes tag.
+>>>>>>> ---
+>>>>>>>      drivers/nvmem/mtk-efuse.c | 1 +
+>>>>>>>      1 file changed, 1 insertion(+)
+>>>>>>>
+>>>>>>> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+>>>>>>> index af953e1d9230..e8409e1e7fac 100644
+>>>>>>> --- a/drivers/nvmem/mtk-efuse.c
+>>>>>>> +++ b/drivers/nvmem/mtk-efuse.c
+>>>>>>> @@ -112,6 +112,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pdata = {
+>>>>>>>      static const struct of_device_id mtk_efuse_of_match[] = {
+>>>>>>>          { .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
+>>>>>>>          { .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
+>>>>>>> +     { .compatible = "mediatek,mt8188-efuse", .data = &mtk_mt8186_efuse_pdata },
+>>>>>>>          { .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
+>>>>>>>          {/* sentinel */},
+>>>>>>>      };
+>>>>>>
+>>>>
 
 
 
