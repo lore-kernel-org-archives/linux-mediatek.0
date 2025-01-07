@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD690E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 11:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54978E77199
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 11:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1HL3/42R2ctg9ARJpBqESpV9lntyAez78x+zirIUE44=; b=hFTxmj2+8QEagvdmpHHC9Lup07
-	FY3UV/xN8p76t3GO0tT/2S3/6CqOaiZUUrs18dzk0GCndubwFpJcvLsrYwMsPOFfNxgQjKJ3KXsw1
-	CFQ8PMlpuB9uzWbEEPRU/JBg9MN7jsnysCTlzak+PzaH4GyS78Dp3x2OkBOkQ6UgUbc6QZv0Gvwel
-	9ttm6M+KjZ73SMeJ6ptlNF8HOTiWkye0nZZ3XgFS8UylA1A0noXuHhwQxri+E/Y2W7ajzxlG7Hjx1
-	rvEIhRCSicydSkC3rjN7CcNZR1AUCs4u3gOFSCJGYg4AFrtf999bmRTNpYXM553hFIcRxvvm6TUDI
-	OK+CUdEw==;
+	bh=QLtTms1oagCCMUbZu1+NlcnSpCszvP6VSl8saVCxzMk=; b=2ZKYxDY4qFCIl6AlIklMfyWvPR
+	A2s5TajaYEqoaX5W/23vbY+ikq/SwCBV846gILfkCxSn0xnhPQCspSE5GhJKBgjBWqG6ERG8AJ3jg
+	CUxw4/LCafiWrfEMiBl2tLVNUz1k0FV4BngPbOVSxX9OZx6Ra4UpIYaUbBGHmBFD+gnj/SFEd9CVq
+	78GHkT2VYGE5PBXwGvesp0PYSvzEvdEwTrul6nN9MFapi2D9f8AHVe2fW734t7oeFOzuFcEOaR81u
+	OZXlfpe+TJJ54plRlYeJVvX/ZdJ/bRNYuPDYVQsCFrnQloOJf+LBFf4yd9b7gqhKkl3IyMZfxnZ6T
+	IjyKcoIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8EU-00000004fAZ-3Cvw;
-	Tue, 07 Jan 2025 11:58:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tV8Ef-00000004fHI-1sip;
+	Tue, 07 Jan 2025 11:59:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV7wS-00000004bQu-0SDx;
-	Tue, 07 Jan 2025 11:40:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 66A725C60AC;
-	Tue,  7 Jan 2025 11:39:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36963C4CED6;
-	Tue,  7 Jan 2025 11:40:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736250011;
-	bh=VZsqylYrFcdy7rVu50r2zA8B698Fb8nwUwjNptFXD4c=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=r540sbn0QfP0pxOq6ybHGoGDckuiCe/53bQM4ECL3et2rQ8iCtkrwK9vrsqA2blfJ
-	 5bG0euoOLVi7KZ4JKvtiGEwGHCnM5fjXWA+Ke1I2J1mCIsYX+6g4YPb4tf6OAS89y7
-	 tLwB8r2RY1RbUVG4K57YQwWEA8zbIMHhCn2dTUYt6Jb+3HYk24Qgb3JKmJEDMLJbDG
-	 NlQXqMlLnHpaswjhl1kJ0cIiiXvdWM8DGf6zElne3sGGxcvmmatBNDk6iE4/cIBTtm
-	 Ceq//Cwk1mKA0F5dyPS8gwZEcPQUUJLsCxgEM6kLsoILehI41faURyLIbKNI36U4Jr
-	 hKgYyo9tXwQBw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADFDD380A97E;
-	Tue,  7 Jan 2025 11:40:33 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tV80s-00000004c9N-2lWc;
+	Tue, 07 Jan 2025 11:44:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1736250285;
+	bh=nvqMeuDTfZgH1m0kgkeC9rUI30xVUZ5If34vfsgD108=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EFuOI6mN+NcYESN+8h5Lm8qNaeVahsukk+9CT10YTgVzCyd+4f7/sDH9+bQujFO/b
+	 fs5W4sudz5V5xsdbHVZB2aXZfYakIjViPDwXxQDntq+r3SMr5lgCMJY3aAG68Onkng
+	 hR4jp9m3rHf5NVDvwwimGRzZIIKpUr47Omh+E4zKnB8RWmuWsqYeLW0bEX+YKVdieU
+	 t1sz2Xm7HY06OUFJycn91NMyXWp9HThlOqBEbE1XPE0mW1ZIUvwdE5udJp1kqV6HOT
+	 wWbEhOBSpLmIVG2HT7DP+qG6PHBHqxO5x2B3AtugpRBdIjba78ySFEieWEj7N/Gdh1
+	 EBUiqSVn9+Gag==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3965017E1562;
+	Tue,  7 Jan 2025 12:44:44 +0100 (CET)
+Message-ID: <1a48feae-f55f-4df8-b165-84c1cb2f6658@collabora.com>
+Date: Tue, 7 Jan 2025 12:44:43 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/5] PCI: mediatek-gen3: Disable ASPM L0s
+To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
+ "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>
+References: <20250103060035.30688-1-jianjun.wang@mediatek.com>
+ <20250103060035.30688-4-jianjun.wang@mediatek.com>
+ <b5ef9501-e07d-4150-9518-dd982518919e@collabora.com>
+ <cecd7ebf0ccac9638b8e93b28fcf4df5bb81a794.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <cecd7ebf0ccac9638b8e93b28fcf4df5bb81a794.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/4] net: airoha: Add Qdisc offload support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173625003251.4120801.586359106755098449.git-patchwork-notify@kernel.org>
-Date: Tue, 07 Jan 2025 11:40:32 +0000
-References: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
-In-Reply-To: <20250103-airoha-en7581-qdisc-offload-v1-0-608a23fa65d5@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, upstream@airoha.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_034012_188644_28B9E66E 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250107_034446_853781_9CCB48A7 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +90,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Fri, 03 Jan 2025 13:17:01 +0100 you wrote:
-> Introduce support for ETS and HTB Qdisc offload available on the Airoha
-> EN7581 ethernet controller.
+Il 07/01/25 03:18, Jianjun Wang (王建军) ha scritto:
+> On Fri, 2025-01-03 at 10:16 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 03/01/25 07:00, Jianjun Wang ha scritto:
+>>> Disable ASPM L0s support because it does not significantly save
+>>> power
+>>> but impacts performance.
+>>>
+>>
+>> That may be a good idea but, without numbers to support your
+>> statement, it's a bit
+>> difficult to say.
+>>
+>> How much power does ASPM L0s save on MediaTek SoCs, in microwatts?
+>> How is the performance impacted, and on which specific device(s) on
+>> the PCIe bus?
 > 
-> ---
-> Lorenzo Bianconi (4):
->       net: airoha: Enable Tx drop capability for each Tx DMA ring
->       net: airoha: Introduce ndo_select_queue callback
->       net: airoha: Add sched ETS offload support
->       net: airoha: Add sched HTB offload support
+> It's hard to tell the exact number because it is difficult to measure,
+> and the number of entries into the L0s state may vary even in the same
+> test scenario.
 > 
-> [...]
+> However, we have encountered some compatibility issues when connected
+> with some PCIe EPs, and disabling the L0s can fix it. I think disabling
+> L0s might be the better way, since we usually use L1ss for power-saving
+> when the link is idle.
+> 
 
-Here is the summary with links:
-  - [net-next,1/4] net: airoha: Enable Tx drop capability for each Tx DMA ring
-    https://git.kernel.org/netdev/net-next/c/5f7955903804
-  - [net-next,2/4] net: airoha: Introduce ndo_select_queue callback
-    https://git.kernel.org/netdev/net-next/c/2b288b81560b
-  - [net-next,3/4] net: airoha: Add sched ETS offload support
-    https://git.kernel.org/netdev/net-next/c/20bf7d07c956
-  - [net-next,4/4] net: airoha: Add sched HTB offload support
-    https://git.kernel.org/netdev/net-next/c/ef1ca9271313
+To actually decide, we should know what's actually broken, then.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Is the MediaTek controller broken, or is the device broken?
+So, is it a MTK quirk, or a device quirk?
 
+If the problem is actually device-related, then this should be handled as
+a device-specific quirk, as not just MediaTek platforms would be affected
+by compatibility issues.
+
+If the MediaTek PCIe controller is at fault, instead, I agree about just
+disabling L0s at the controller level - but then this shall be mentioned
+in the commit message, and should have a Fixes tag as well.
+
+Cheers,
+Angelo
+
+> Thanks.
+> 
+>>
+>> Cheers,
+>> Angelo
+>>
+>>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+>>> ---
+>>>    drivers/pci/controller/pcie-mediatek-gen3.c | 11 +++++++++++
+>>>    1 file changed, 11 insertions(+)
+>>>
+>>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> b/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> index ed3c0614486c..4bd3b39eebe2 100644
+>>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> @@ -84,6 +84,9 @@
+>>>    #define PCIE_MSI_SET_ENABLE_REG             0x190
+>>>    #define PCIE_MSI_SET_ENABLE         GENMASK(PCIE_MSI_SET_NUM - 1,
+>>> 0)
+>>>
+>>> +#define PCIE_LOW_POWER_CTRL_REG              0x194
+>>> +#define PCIE_FORCE_DIS_L0S           BIT(8)
+>>> +
+>>>    #define PCIE_PIPE4_PIE8_REG         0x338
+>>>    #define PCIE_K_FINETUNE_MAX         GENMASK(5, 0)
+>>>    #define PCIE_K_FINETUNE_ERR         GENMASK(7, 6)
+>>> @@ -458,6 +461,14 @@ static int mtk_pcie_startup_port(struct
+>>> mtk_gen3_pcie *pcie)
+>>>        val &= ~PCIE_INTX_ENABLE;
+>>>        writel_relaxed(val, pcie->base + PCIE_INT_ENABLE_REG);
+>>>
+>>> +     /*
+>>> +      * Disable L0s support because it does not significantly save
+>>> power
+>>> +      * but impacts performance.
+>>> +      */
+>>> +     val = readl_relaxed(pcie->base + PCIE_LOW_POWER_CTRL_REG);
+>>> +     val |= PCIE_FORCE_DIS_L0S;
+>>> +     writel_relaxed(val, pcie->base + PCIE_LOW_POWER_CTRL_REG);
+>>> +
+>>>        /* Disable DVFSRC voltage request */
+>>>        val = readl_relaxed(pcie->base + PCIE_MISC_CTRL_REG);
+>>>        val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+>>
+>>
 
 
