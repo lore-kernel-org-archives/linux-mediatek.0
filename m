@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26590E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 15:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DB4E77198
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 15:12:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QQNGyoGTk3gphP9Ejtpl8Wnab+mwXMUr4VlhvKse5UU=; b=gD7CSp9S4MoyeqB8RHfzaytNHP
-	b5bYyPpZZ9wTNixPmZk1Pe2DGPSZmb6c7MTLdpDFtw1pYervx7FBK/pNcizs6XJA+YEPEiEmpBYHe
-	bXbINrW1Asf3re0PIcgALFprIbNbN30+FMqM6yf5TOv+UzldzkdcIBnL7iexD4rPke4+lFqfbhCjX
-	9oojaQ7itnIyzPqyJZfyccgXtYHvifN5iFM39Pr8038xQ2PaQWTZ6MLMsfFJ8rLksv7och0hOA3zJ
-	SNYa8/2A/AXBWCm6Fpn7rt5CXyu3uQ5FlSdkAPqSEtYGxpFYoflEobmPFQ7g3uFg60hSo3lRptQK0
-	ZpC6FX1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QZm9XMFo/ciEBfGF3Y+lnkNF8U3UY3ReBsxl649KajQ=; b=2/SATgbt0JJZjzvCol0RKBB28w
+	hUl5Vx0KALWPQwPoeupvLBSz49QMOlYPRUqQoknNf2hAyI2at5Aei+FWqwWsQGJWmbY98FKA/BEG8
+	tKSHrCFLOHZ9V6Zbiur875lMw+p8kJQF2qefSlxEZT2GFjK3ENx00qk4mmuWch7BV+679oQuoCMn8
+	6RQWsupum4xwrl3ZJzyXOGEGXMzs4PQbrJDj7XeTeJAplLTBE5GQgXxHx0UMybWEoVGEGedYK+Jve
+	a5iMjPazUwIJDtdbv6PKHsVCJUeEB0ig6H4oAuFtlVSx++RBON5babla0u4iulSKz6O9a+DIi96WV
+	zRvVCrYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVB8V-00000005MAf-0qN0;
-	Tue, 07 Jan 2025 15:04:51 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tVBFQ-00000005NKT-1oBg;
+	Tue, 07 Jan 2025 15:12:00 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVB6y-00000005LcS-3tWr;
-	Tue, 07 Jan 2025 15:03:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QQNGyoGTk3gphP9Ejtpl8Wnab+mwXMUr4VlhvKse5UU=; b=NXyUhvLHFpRiKWcor7q8IVmcol
-	2sVdmZ6mbRrpJZJnwzs7s+9cdGot9ImqJUvY101g0DFw8pwlW7NuzKGf6nAA6R25qrbV/4jpi1Fqa
-	0LPALkcvERzOrcTWj0BKGTfNgk1o9kNEG/ckwDKFv51/ZqkvbkTdSUMZZWd9zh255i2pIxBHV6Pfp
-	IC7HB9gHrsYAwvlG7SHYOQozRDK2Kb6wPK1+IGa9mrHBIOWGw0HHCQaGjhJO6Oh3ukbCAZUGEktKI
-	hdtl05BmaN9SU2vMJFj7eTo5yMtrh4s/dj+vGigUlyY32Ge8bEwF7lAdBLcHbAdWmYfutsDDyekNU
-	OBbOWK3w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58372)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tVB6l-0007db-1R;
-	Tue, 07 Jan 2025 15:03:03 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tVB6k-0005N7-0P;
-	Tue, 07 Jan 2025 15:03:02 +0000
-Date: Tue, 7 Jan 2025 15:03:01 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
- (delayed) phy
-Message-ID: <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
-References: <20250107123615.161095-1-ericwouds@gmail.com>
- <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
- <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
+	id 1tVBFL-00000005NJT-0ChX
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Jan 2025 15:11:58 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-540201cfedbso1446831e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jan 2025 07:11:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736262713; x=1736867513; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QZm9XMFo/ciEBfGF3Y+lnkNF8U3UY3ReBsxl649KajQ=;
+        b=YMvoMJd/aEfbTw7iWP9p7E+qMmBc0beUc7trBtPZngVUJgN2ulQ+Wa3xi7+I3XLrsY
+         TjWqRWJnB3NaAK/0nYm081v+/bn+1InJ6bPxUeJ7L7qkAMBqJR+WHkO+bPtv/i/IoVQB
+         ZdM2Dv6GlX71iBjiP867Wdid3M3wmg79cQsM3cy8eaZ9UyVDjLBPsbjBDi9VwQPTSc6D
+         X09M44xC+bTMO9/egNOEi1EWk2tWUteQvrmZdU9cWVB8XroHtXPVI4Ne1isecdcCrTMm
+         ZWvr7Sa6BCvsR/L9gycwrL/eqBGzOCpokdTYSLFBtb6+CuzwOhiylAKhBAK1fhS2MfIg
+         VvZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736262713; x=1736867513;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=QZm9XMFo/ciEBfGF3Y+lnkNF8U3UY3ReBsxl649KajQ=;
+        b=Jxg1qDiikCLactnEtzBSoycTxfjb9OWueDdU+R9BjZYsxlhwvZaYPQ/hkfI4bmod66
+         1GQXQKvLWDhPUp6CNmyYmplm1XUCpmo13rPldAiPEarP+T9NL8i1sP32ckLWIZ+8OJ+F
+         eHM1lB86E3bUjX3O3sgr41CU/doD2NdJpMILjXctIxEbNYuSKHObBpkWNcesrDHT6lYP
+         v6UukE5BRATteRAZLoCtuAgT5ZvR3Ye6BarHE2AH6VaPHRngabKIWBwwpbK4+xLX+Xy/
+         mWTSDN94QLA+/ZkpJoRLwdxBE3uzzNSLNRl79f9UMv+mQzUZQuss9jz8OORuM0o+C2Yj
+         j+Dg==
+X-Forwarded-Encrypted: i=1; AJvYcCUvjI0HbRS1vg0Fo3T+gegEDpJay6qrfaWrFyh/baGLLRLHBmlBvky9oQctRvW4vl3L/qt8qffnh094/2ZzmQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXzp4+qD7zj5XoJpCBWJ1dvNB7pC/XbFbjgWDR/DTkRwTLEM2V
+	1dk85QcmAxkJ04xSuIc47WY1Kc5pKiDho88D9uMhpqSnYVp+zHjFwScZgfZERHnVYXywxSS5Gek
+	9e3DPTDlutWOl4RCnDfWRi7zsVTAYE5vSVAmI8w==
+X-Gm-Gg: ASbGncsC7QP2x/NNkWX8bdHP/NtXtCrbxYiQqkMroHaqjAzb/OHt4G+uMokTr+uD7G8
+	DC23G4VrYTpLxa+TfdVl17SRslFecrRjtJ4Th
+X-Google-Smtp-Source: AGHT+IFehNeFi1I1U8aRoGxDWj9mUKo0jrkw2SzoaqZnp8E335DNw61G6ky+He7/h1LD9gQ8ZxOLYHtYW+T3a9Y3M0g=
+X-Received: by 2002:a05:6512:33d1:b0:540:17ac:b374 with SMTP id
+ 2adb3069b0e04-54229540453mr15473106e87.25.1736262712723; Tue, 07 Jan 2025
+ 07:11:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
+References: <20241203131302.16022-1-ot_chhao.chang@mediatek.com>
+ <CACRpkdZy7HgkT-FFJh=ubXhdcBRa-vbaNmHC32E3djZdHnwdYg@mail.gmail.com> <47ca3129-245f-481f-9ca1-ed9d8db6e990@collabora.com>
+In-Reply-To: <47ca3129-245f-481f-9ca1-ed9d8db6e990@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 7 Jan 2025 16:11:41 +0100
+Message-ID: <CACRpkdarstoQW+ZBi+MWxEff_=h8bPo9+fwy=LW2uhWRuQ6YSQ@mail.gmail.com>
+Subject: Re: [PATCH] v1 pinctrl: mtk-eint: add eint new design for mt8196
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chang hao <ot_chhao.chang@mediatek.com>, matthias.bgg@gmail.com, 
+	sean.wang@kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_070316_966237_69311560 
-X-CRM114-Status: GOOD (  24.45  )
+X-CRM114-CacheID: sfid-20250107_071155_096644_87E4D0BF 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,85 +92,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, bridge@lists.linux.dev, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 07, 2025 at 02:14:03PM +0100, Eric Woudstra wrote:
-> 
-> 
-> On 1/7/25 1:47 PM, Russell King (Oracle) wrote:
-> > Going through the log...
-> > 
-> > On Tue, Jan 07, 2025 at 01:36:15PM +0100, Eric Woudstra wrote:
-> >> Log before this patch is applied:
-> >> [root@bpir3 ~]# dmesg | grep eth1
-> >> [    2.515179] mtk_soc_eth 15100000.ethernet eth1: mediatek frame engine at 0xffff800082380000, irq 123
-> >> [   38.271431] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/2500base-x link mode
-> >> [   38.279828] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
-> >> [   38.288009] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
-> >> [   38.296800] mtk_soc_eth 15100000.ethernet eth1: major config, active inband/inband,an-disabled/2500base-x
-> > 
-> > This is indeed without the PHY. We're using inband, although the PCS
-> > mode is PHYLINK_PCS_NEG_INBAND_DISABLED, meaning inband won't be
-> > used. As there is no PHY, we can't switch to MLO_AN_PHY.
-> > 
-> >> [   38.306362] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,0000e240 pause=04
-> >> [   39.220149] mtk_soc_eth 15100000.ethernet eth1:  interface 2 (mii) rate match none supports 0-3,6-7,13-14
-> >> [   39.229758] mtk_soc_eth 15100000.ethernet eth1:  interface 3 (gmii) rate match none supports 0-3,5-7,13-14
-> >> [   39.239420] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
-> >> [   39.249173] mtk_soc_eth 15100000.ethernet eth1:  interface 22 (1000base-x) rate match none supports 5-7,13-14
-> >> [   39.259080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
-> >> [   39.594676] mtk_soc_eth 15100000.ethernet eth1: PHY i2c:sfp-1:11 uses interfaces 4,23, validating 4,23
-> > 
-> > The PHY comes along...
-> > 
-> >> [   39.603992] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
-> >> [   39.650080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
-> >> [   39.660266] mtk_soc_eth 15100000.ethernet eth1: PHY [i2c:sfp-1:11] driver [RTL8221B-VB-CG 2.5Gbps PHY (C45)] (irq=POLL)
-> >> [   39.671037] mtk_soc_eth 15100000.ethernet eth1: phy: 2500base-x setting supported 00,00000000,00008000,000060ef advertising 00,00000000,00008000,000060ef
-> >> [   39.684761] mtk_soc_eth 15100000.ethernet eth1: requesting link mode inband/2500base-x with support 00,00000000,00008000,000060ef
-> > 
-> > We decide to use MLO_AN_INBAND and 2500base-X, which we're already using.
-> > 
-> >> [   40.380076] mtk_soc_eth 15100000.ethernet eth1: phy link down 2500base-x/Unknown/Unknown/none/off
-> >> [   40.397090] brlan: port 5(eth1) entered blocking state
-> >> [   40.402223] brlan: port 5(eth1) entered disabled state
-> >> [   40.407437] mtk_soc_eth 15100000.ethernet eth1: entered allmulticast mode
-> >> [   40.414400] mtk_soc_eth 15100000.ethernet eth1: entered promiscuous mode
-> >> [   44.500077] mtk_soc_eth 15100000.ethernet eth1: phy link up 2500base-x/2.5Gbps/Full/none/off
-> >> [   44.508528] mtk_soc_eth 15100000.ethernet eth1: No phy led trigger registered for speed(2500)
-> > 
-> > ... but we don't see link-up reported by the PCS after the PHY comes
-> > up. Why is that - I think that needs investigation before we proceed
-> > to patch the issue, because that suggests the PCS isn't seeing
-> > valid 2500base-X from the PHY.
-> > 
-> 
-> I think it is because pl->act_link_an_mode stays at MLO_AN_INBAND, but
-> it needs to be set to MLO_AN_PHY, so that only the phy determines the
-> link state:
-> 
-> phylink_resolve() {
->     ...
-> 	} else if (pl->act_link_an_mode == MLO_AN_PHY) {
-> 		link_state = pl->phy_state;
->     ...
-> }
+On Thu, Dec 19, 2024 at 1:39=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 
-Please see my reply to Daniel. The PCS should still be capable of
-reporting whether its link is up or down irrespective of whether
-in-band status is being used or not.
+> Il 17/12/24 14:45, Linus Walleij ha scritto:
+> > Hi Chang,
+> >
+> > thanks for your patch!
+> >
+> > On Tue, Dec 3, 2024 at 2:13=E2=80=AFPM chang hao <ot_chhao.chang@mediat=
+ek.com> wrote:
+> >
+> >> From: Chhao Chang <ot_chhao.chang@mediatek.com>
+> >>
+> >> Change 1: change EINT from 1 address to 5 addresses,
+> >> Eint number is stored on each base.
+> >> Change 2: Compatible with 1 address design
+> >>
+> >> Signed-off-by: Chhao Chang <ot_chhao.chang@mediatek.com>
+> >
+> > This patch looks good to me, as preparation for mt8196,
+> > but can one of the Mediatek experts please
+> > review it? If nothing happens I will just apply it I guess...
+> >
+>
+> Linus, that's something like the fourth time that he pushes variations of=
+ this
+> patch which do break all MediaTek SoCs in a way or another, leaving only =
+MT8196
+> hopefully-functional.
 
-While it is correct that PHY mode needs to be used here, your report
-has pointed out that the driver is not reporting the PCS link state
-correctly when in-band is disabled.
+That's unfortunate, and I see there is some annoyance building
+up.
 
-Given that the current state of affairs has revealed this other bug,
-I would like that addressed first while there is a trivial test case
-here.
+The maintainers are here to protect the code and the change
+would have anyway just been reverted soon if it breaks stuff.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+How can we get this contribution on a better path?
+
+Chhao: maybe you can split your idea into smaller changes
+that can be reviewed and tested one by one?
+
+Yours,
+Linus Walleij
 
