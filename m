@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32527E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 14:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93006E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 15:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZtY/dTGdpigf++m9/HYVL1sEfcqNn5ZD1yZ5BGh2v6I=; b=KSduE5sN7Hl+fiBMxjeCUc3U+J
-	tPHS/Z5Y8ri/QPWpoGpUQMrzSS81H5p/14/hx8UMuf0BDIHXIarKyVpIB0pwXdakxt/8Pn7xTPBAW
-	EZ5S+r+yiihzIiiMBAwVao3t6uRkJYm/S8fuKphQ6tAbqWHJLTmm039JHQ92iNt5fU146Szj/B2Jk
-	4knb4OlmZX24K4RxqiujqcuoSQMDkvrZghq/Dw4HR5NeAOLIDQv82oKx+S9PyZkQbuHTqaL1Bw1pQ
-	FkW3IriBjaZarDFpdX7CSRhmooaK+hzcIK1k+Yx9fpZoXlYZ9Zj9b2kTAU8QGgfnEsZtju4NWQtlh
-	0xn5DzBg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ZoD+gvKfB/ed9HjsLTaCjOZ9SwK5xZrjHcan7418rw=; b=CAer3qF7o8cZ6Qi6oQa7SR2Riq
+	2SZU2Mt5k+CuzteTX6k58px4UkJ9VJL01bt4lBrQJyEB+sb55XyTr4F6lFILRfIpt4bP6JorGMtSQ
+	w1c+5jrFaLUj3AW994//gPhtNGK7y3rgynH1omnR+jGRbAqBKFj6xL3PLzYZ35NKbLHN1yxMlgHn7
+	djfNIjJ+Z2Z4rc8SNE9VIgFgDQNhoxKkFz0XPj9IuBXCLnAoVHNf6aevZDeE7/1GbowFElX9WOLAH
+	HXMZiadJTIFbqw59vDliMj2HYQN7fHeN6SQ4s8GJ/d6qUiHWC5OZJ6/lBCutCUr3p/FXTHuV3TzjA
+	4y5TKh8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVB1U-00000005KWm-1EGe;
-	Tue, 07 Jan 2025 14:57:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tVB7K-00000005Lk3-30CO;
+	Tue, 07 Jan 2025 15:03:38 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVAwZ-00000005JGN-1LB7;
-	Tue, 07 Jan 2025 14:52:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9C2E35C6331;
-	Tue,  7 Jan 2025 14:51:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFB03C4CED6;
-	Tue,  7 Jan 2025 14:52:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736261550;
-	bh=WxQAHvKNDf1t1y8WP8kQLuS53Cn56vM/HgaXsAHmZu0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DJ5a28p5C1p3qCfa8LQJ394zZ/jabUsHQ9XSSnPY6jxqQjGkXKBNrLbl5sPl1Pitn
-	 f20Uxn92kTDumq0VBTngaUAIK0G17qi1lCrL+ztyW/bV13vHfbuVOwxBxhMhZ8a6lw
-	 ugnObBQzN6unU3idmrKZnnXPImvquLAWlG4c5DZW1cEJuTrlvbLnlKwar+lal66IAM
-	 WvPCehI17rTQ+M5FsSmolNp0pm/VkSzcgGU47LQqUaJQn01r4Q/VSN5CwmSxCZBWil
-	 tsNTk4s8VZuG9K8PIlIA4vOrDon6IFavxkSzotHbTbkj6gVLk5FIKt7ihCdc8+eNSD
-	 4P7F8SrHOZjVw==
-Message-ID: <02896f96-57dd-47d5-8fa0-8a8aed30fa9a@kernel.org>
-Date: Tue, 7 Jan 2025 15:52:20 +0100
+	id 1tVB3S-00000005KuL-2jUw;
+	Tue, 07 Jan 2025 14:59:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=4ZoD+gvKfB/ed9HjsLTaCjOZ9SwK5xZrjHcan7418rw=; b=kALKCcA3IFaOOLmMdjti7LK+bD
+	RcS7EGoLurmty1XbnbAoumDhcat2e6Xkd5KfAYFAnroHw/sNowJQJKckvkepCZqMCwBtWDyNyNQ+2
+	DOAfVtc1YqsdZq3jHxs/3e4lXv3UpHFsTzgSTQmyd1EFuAf1+D0+MYI0gkKWOSWEdoPUTdJs+qzlk
+	jqC82QEDE6jYDOSQR0AspwlRUwRAbU9GBlynBp9V+CL7/6U+2sRXRk1SfyUlKfalpHN82Udk4FisO
+	ZNxX2Ak6PrBeh7xEXQUfbTYTm3mA7d4Hm5aBUfhxzfqEU3Bld+KRinkR7pYoBO8Pud7AV6v7YQzlJ
+	lwznVA3Q==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58096)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tVB3B-0007ct-0c;
+	Tue, 07 Jan 2025 14:59:21 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tVB36-0005Mv-25;
+	Tue, 07 Jan 2025 14:59:16 +0000
+Date: Tue, 7 Jan 2025 14:59:16 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
+ (delayed) phy
+Message-ID: <Z31BRMay2QgcjX2R@shell.armlinux.org.uk>
+References: <20250107123615.161095-1-ericwouds@gmail.com>
+ <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
+ <Z30pMSxDn-R3Cy5S@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v6 1/8] page_pool: introduce page_pool_get_pp()
- API
-To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com
-Cc: liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
- Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Eric Dumazet <edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>,
- Praveen Kaligineedi <pkaligineedi@google.com>,
- Shailend Chand <shailend@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
- <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Simon Horman <horms@kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, imx@lists.linux.dev,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250106130116.457938-1-linyunsheng@huawei.com>
- <20250106130116.457938-2-linyunsheng@huawei.com>
-Content-Language: en-US
-From: Jesper Dangaard Brouer <hawk@kernel.org>
-In-Reply-To: <20250106130116.457938-2-linyunsheng@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z30pMSxDn-R3Cy5S@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_065231_401708_827D8A20 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20250107_065938_689520_322AE285 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +75,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, bridge@lists.linux.dev, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 07, 2025 at 01:16:33PM +0000, Daniel Golle wrote:
+> On Tue, Jan 07, 2025 at 12:47:14PM +0000, Russell King (Oracle) wrote:
+> > ... but we don't see link-up reported by the PCS after the PHY comes
+> > up. Why is that - I think that needs investigation before we proceed
+> > to patch the issue, because that suggests the PCS isn't seeing
+> > valid 2500base-X from the PHY.
+> 
+> The PCS doesn't support in-band status in 2500Base-X mode, or at least
+> the implementation isn't compatible with those RealTek PHYs.
 
-On 06/01/2025 14.01, Yunsheng Lin wrote:
- > introduce page_pool_get_pp() API to avoid caller accessing
- > page->pp directly.
- >
-[...]
+There is in-band for base-X, which involves 16-bit control words to
+report the capabilities of either end (basically half/full duplex,
+pause modes). Unlike SGMII, it doesn't contain any status bits for
+link up, because that is irrelevant.
 
-> diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-> index 543f54fa3020..9c4dbd2289b1 100644
-> --- a/include/net/page_pool/helpers.h
-> +++ b/include/net/page_pool/helpers.h
-> @@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
->   }
->   #endif
->   
-> +static inline struct page_pool *page_pool_get_pp(struct page *page)
-> +{
-> +	return page->pp;
-> +}
+Link-up state in base-X modes comes from the PCS itself, whether the
+PCS is in sync with the media, and whether it has valid format. This
+has *nothing* to do with in-band.
 
-IMHO the function name "page_pool_get_pp" is problematic. As calling it 
-"get" indicate to me that we are taking some reference on the pp object. 
-Is this you plan in later patches?
-
-If it is simply a dereference of page->pp ... then we could call it 
-page2pp ?
-... but I'm uncertain why we need this change.
-
---Jesper
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
