@@ -4,76 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2686E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 05:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A5AE77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 06:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KZz8IJT3Behlj/SYm2zXDzCba/a/DTK3QmgKi1MNypk=; b=pf5LfHMn/eIORoIFQcUi/yKYZN
-	KS7Td6Sv8pu6/X/ZtSA/MGud9cuJCbSxXblcUShi9USB3lIkoqS9/ts0BObswfYnBhY65l/aotXCt
-	oIPG+1h0GIilR6kwILhxS6BejtJOoLD0MLD69j8aBgbO5mQr4PjtE0AFg5qnTyyZW3lsWjZQDDL8G
-	cJ+ov0Tu+F62mJvbAqzvZ+3PtA9E5KHEkzWcGfemCmh/oTrYibOZlu4BVhKMeNY2WpKp9xH1/5YZh
-	DfMSbzaMd1IHuzC6rECnrq2FoOGgTHMiSNG/9OvNm3151II6UEDJNPWu2qYCFhrEF/HpeDQCr71mn
-	cTJVStXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=opSX/QDIs55Wh83Tuv336j0AISiX882YeT5bW8m7/9o=; b=T1Ud9odOCYiI844LbFqFml5Plc
+	HYHD4GkeBX2A2kWkxxl9ajRa2W/cZqt+rYl1cKf4u+wcWJnkCRMYHUqFl1I7TNExS7bLMt+ELnlqm
+	YNMzXD0zoBt25Um8tPl9fyIIVcZHv0Vdw7u2Ny2rJPSLO+Fl5r2eH9z5KFUkvNCTvYSqIlnpSCQt9
+	hPe1XUklTchD3Se83SZ5eTa7NwtMZfsU+bOnR+P8euvQ/XZpr8+h/OYfacYEGYWDBe3/1Ea2qVmLa
+	iBTTzLzP4Cl4hZx9oqwd+nfh8YFhrIgRhqBdr3Imw9IZSLTqEsU+eK8+Ym2MQ6Dx4DeTc4uggNGhI
+	PzL6xdSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV23z-00000003Xki-3ngA;
-	Tue, 07 Jan 2025 05:23:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tV2uQ-00000003cYG-1OAa;
+	Tue, 07 Jan 2025 06:17:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV21n-00000003XMs-0KH6;
-	Tue, 07 Jan 2025 05:21:22 +0000
-X-UUID: 369460c8ccb711ef9048ed6ed365623b-20250106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KZz8IJT3Behlj/SYm2zXDzCba/a/DTK3QmgKi1MNypk=;
-	b=HSIbbIbLCKTZHvv2kVivfN9fGbBoJhNl3DtTJ6uuU6Ui+HX2PtMfrfOMHFYjos51HdF59R3h02h/qHJmb5MfZ81dmeGdsjR9ZhXmUTV/934v7+mE4ccLQzPEfKDrFiKnz8CDDngYlMrnW8N/GxpOVnO7uwiQfYJ1EnGFzGwFjn4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:2c340a18-34dc-4849-8232-9e0ae8098e17,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-50
-X-CID-META: VersionHash:60aa074,CLOUDID:9aa87a37-e11c-4c1a-89f7-e7a032832c40,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1,IP:nil
-	,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 369460c8ccb711ef9048ed6ed365623b-20250106
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 826735803; Mon, 06 Jan 2025 22:21:13 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 7 Jan 2025 13:21:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 7 Jan 2025 13:21:10 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam
-	<manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn
- Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
-	<jianjun.wang@mediatek.com>, <linux-pci@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
-Date: Tue, 7 Jan 2025 13:20:58 +0800
-Message-ID: <20250107052108.8643-1-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1tV2tD-00000003cRS-29Hv;
+	Tue, 07 Jan 2025 06:16:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AB16F5C5ACD;
+	Tue,  7 Jan 2025 06:15:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90655C4CED6;
+	Tue,  7 Jan 2025 06:16:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736230590;
+	bh=rbm/HyJrgcyIONekUU1B/CycR6GsFRPZQR8HjkeAhyo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cU3zZcUhaekedmnJfQhGRR7XHeFxhCygwoAFGK1RANe0SFcW5VJlkPe1HwF53dxee
+	 v7S64dt76QJatjl2EM647ASIBOBagJDXrmBzTLvkEDDa7s3PpmH/hiNpAr3QfyjrjN
+	 cTwBQP9lFi/edM/DgfW4rbFiO36Gs2EWnDacPiDlv3oNjv2BjB57qRk+LVKuuoDsV8
+	 lljnskCPl3XOtnQ37uvoolSkguAd+swO/SpEbbGiMr707cmiwKxUmcHL7/c/pU/8tj
+	 lxn6E6o84By92RSiElKr/+iRqT8mq3vglvP6/jl+0ewBjZon03iyI8ULbpcOERkviT
+	 nh0RGr2mWB+bA==
+Message-ID: <420caebd-136f-4015-96cd-5f37b9c3f49b@kernel.org>
+Date: Tue, 7 Jan 2025 07:16:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/7] dt-bindings: mailbox: mediatek: Add MT8196 support
+ for gce-mailbox
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+ <Nancy.Lin@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "airlied@gmail.com"
+ <airlied@gmail.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+ =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>
+References: <20241219170800.2957-1-jason-jh.lin@mediatek.com>
+ <20241219170800.2957-2-jason-jh.lin@mediatek.com>
+ <yg7b2iaz53avd7gpvuewhi6b3myh6owls3dt2hzpqc26lnykjf@tpu2vxqqkipe>
+ <11f168c11b4cea48cf51406c0afaf8f1f53ad90f.camel@mediatek.com>
+ <6adfa5fe-7b68-4f8e-919d-7b7607fe617c@kernel.org>
+ <90b38dd6e093c89a7383814db786321cbd4533f6.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <90b38dd6e093c89a7383814db786321cbd4533f6.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_212119_123482_BF68CB23 
-X-CRM114-Status: GOOD (  14.33  )
+X-CRM114-CacheID: sfid-20250106_221631_641675_7CEE3F9C 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,89 +142,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the usage of virt_to_phys, as it will cause sparse warnings when
-building on some platforms.
+On 07/01/2025 03:42, Jason-JH Lin (林睿祥) wrote:
+>>
+>> Before proceeding with this header further, please answer to above -
+>> why
+>> interrupt numbers, MMIO addresses and some other values appearing in
+>> DTS
+>> are not used like "binding headers".
+> 
+> Because interrupt numbers and MMIO addresses are the real numbers of
+> hardware settings. Their driver can get them directly from their device
+> node in DTS. They are actual number to be set into their hardware, so
+> they don't need to be translated in their platform drivers.
+> 
+> So I think all the definitions in the `mediatek,mt8196-gce.h` are the
+> same case. They are actual hardware numbers for GCE hardware to use.
+> It should be drop from the include/dt-bindings/*.
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+I did not inspect all of the defines you have there. Maybe some are used
+by driver, so I did not provide you definitive answer on entire header.
+The comment was addressing one specific group of defines which were not
+used as a binding.
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 3bcfc4e58ba2..dc1e5fd6c7aa 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -178,6 +178,7 @@ struct mtk_pcie_soc {
-  * @phy: pointer to PHY control block
-  * @slot: port slot
-  * @irq: GIC irq
-+ * @msg_addr: MSI message address
-  * @irq_domain: legacy INTx IRQ domain
-  * @inner_domain: inner IRQ domain
-  * @msi_domain: MSI IRQ domain
-@@ -198,6 +199,7 @@ struct mtk_pcie_port {
- 	struct phy *phy;
- 	u32 slot;
- 	int irq;
-+	phys_addr_t msg_addr;
- 	struct irq_domain *irq_domain;
- 	struct irq_domain *inner_domain;
- 	struct irq_domain *msi_domain;
-@@ -393,12 +395,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
- static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- {
- 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
--	phys_addr_t addr;
- 
- 	/* MT2712/MT7622 only support 32-bit MSI addresses */
--	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
- 	msg->address_hi = 0;
--	msg->address_lo = lower_32_bits(addr);
-+	msg->address_lo = lower_32_bits(port->msg_addr);
- 
- 	msg->data = data->hwirq;
- 
-@@ -510,10 +510,8 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
- {
- 	u32 val;
--	phys_addr_t msg_addr;
- 
--	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
--	val = lower_32_bits(msg_addr);
-+	val = lower_32_bits(port->msg_addr);
- 	writel(val, port->base + PCIE_IMSI_ADDR);
- 
- 	val = readl(port->base + PCIE_INT_MASK);
-@@ -913,6 +911,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
- 	struct mtk_pcie_port *port;
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
-+	struct resource *regs;
- 	char name[10];
- 	int err;
- 
-@@ -921,12 +920,18 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
- 		return -ENOMEM;
- 
- 	snprintf(name, sizeof(name), "port%d", slot);
--	port->base = devm_platform_ioremap_resource_byname(pdev, name);
-+	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
-+	if (!regs)
-+		return -EINVAL;
-+
-+	port->base = devm_ioremap_resource(dev, regs);
- 	if (IS_ERR(port->base)) {
- 		dev_err(dev, "failed to map port%d base\n", slot);
- 		return PTR_ERR(port->base);
- 	}
- 
-+	port->msg_addr = regs->start + PCIE_MSI_VECTOR;
-+
- 	snprintf(name, sizeof(name), "sys_ck%d", slot);
- 	port->sys_ck = devm_clk_get(dev, name);
- 	if (IS_ERR(port->sys_ck)) {
--- 
-2.46.0
+> 
+> 
+> BTW, to make these numbers more readable in DTS, can I move
+> `include/dt-bindings/mailbox/mediatek,mt8196-gce.h` into
+> `arch/arm64/boot/dts/mediatek/mt8196-gce.h`?
 
+Yes, sure.
+
+> 
+> Just like the `arch/arm64/boot/dts/mediatek/mt8167-pinfunc.h`.
+
+Best regards,
+Krzysztof
 
