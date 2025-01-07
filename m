@@ -4,55 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBBFE77199
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 13:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CED3E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 13:30:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nkTBPMcZKmbWcBpdJkI4VttrnEz5cM46TWHXsBHT878=; b=eYPHCurmr6KOmkGbsGdoerwzqD
-	WFuigjIs/Ssr5QhjhHm/rknXFBllwQldf2POXIAJ2iqpWW+T9ilZnckoYO/XldauF+AAXv5cIp5fE
-	vBfcdwW4lGyje1gm/BSngDgv+xmsCpiA3sgdvUIKMmmS4lVAHFoKVT7uZ+u1ZsDccjs9ss+NanMOy
-	Wbd16izTDSrCcibuEYcVFrNY3zyHBAm3rJyZHLKdZF85QezS8lFdxQ7z2hn54olvX2x1RhdWr6W89
-	gnSBp2eRjXulMb3jQsO20exUyEyIe4eUiiOE/aKCkfSV4EaAEDwVpbgKI5ommqBc2eo7Afx7Qaquz
-	6LmotqQw==;
+	bh=Nirix+6QA8gbIhhX9Sk6j1JM9hBzmzq6gPfEUeL0Ris=; b=Ehyda3cyx0G16LsoSfZaF+PgVl
+	qc6G0xqQAGFolwn4MRJ2oJ7fM1hqwx35MmLwNgQrRIwSitEe6qs9ay8/Jb9Mq+LYCTcMPU/Z4WDkx
+	HDa64ZYZd2IzIoM5JSkxoRQ2fmtW0es95HbCW8qPcmsfYMWVW0gq3rfJzUhWC7lLFqkXlQDFlu1R2
+	dUSrMA52XaPwPZ7WOLjhsO2noGnke+wBUSMvVrarRbo6sn3Ul6ARmr3ESrPnJB+XzIRdaDuB1/NBf
+	/qPDuyr1vfnetmvVhjmlFZF02hDvIVSL8MxsrFDqu9iqUOh8gDLt4bPnqsUHjkMEpNUQWW5mId15t
+	ZZzadvkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9eo-000000050PU-12bP;
-	Tue, 07 Jan 2025 13:30:06 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tV9en-000000050PB-1CXb;
+	Tue, 07 Jan 2025 13:30:05 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9Vm-00000004z3N-1XcB;
-	Tue, 07 Jan 2025 13:20:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=nkTBPMcZKmbWcBpdJkI4VttrnEz5cM46TWHXsBHT878=; b=pz4PE7Ki70rYKiXGmBZZ4+NDWP
-	/Sw6LCV5/TgZpJgqhxM6DEoYZwwM1KWDP0MNGITFsM0jmpjK770DuMOWuI1BDxdoUmmGkJVbEWbij
-	DxvVGh7ATOPSCbLex2I7X5gzKt8ezmZzLE3WvXX7y/kmLjL5DRSDGiY75k5FO2sT5rXI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tV9VX-002Eki-8i; Tue, 07 Jan 2025 14:20:31 +0100
-Date: Tue, 7 Jan 2025 14:20:31 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Eric Woudstra <ericwouds@gmail.com>
+	id 1tV9SN-00000004yHP-2Fjt;
+	Tue, 07 Jan 2025 13:17:19 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1tV9Rt-000000007Yg-0b83;
+	Tue, 07 Jan 2025 13:16:45 +0000
+Date: Tue, 7 Jan 2025 13:16:33 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
  (delayed) phy
-Message-ID: <ed29e632-332b-4af1-bf7f-97498297e731@lunn.ch>
+Message-ID: <Z30pMSxDn-R3Cy5S@makrotopia.org>
 References: <20250107123615.161095-1-ericwouds@gmail.com>
  <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
- <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
+In-Reply-To: <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_052046_404278_C52141C5 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20250107_051715_577829_38FCE869 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,28 +58,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, bridge@lists.linux.dev, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, bridge@lists.linux.dev, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> I think it is because pl->act_link_an_mode stays at MLO_AN_INBAND, but
-> it needs to be set to MLO_AN_PHY, so that only the phy determines the
-> link state:
+On Tue, Jan 07, 2025 at 12:47:14PM +0000, Russell King (Oracle) wrote:
+> Going through the log...
 > 
-> phylink_resolve() {
->     ...
-> 	} else if (pl->act_link_an_mode == MLO_AN_PHY) {
-> 		link_state = pl->phy_state;
->     ...
-> }
+> On Tue, Jan 07, 2025 at 01:36:15PM +0100, Eric Woudstra wrote:
+> > Log before this patch is applied:
+> > [root@bpir3 ~]# dmesg | grep eth1
+> > [    2.515179] mtk_soc_eth 15100000.ethernet eth1: mediatek frame engine at 0xffff800082380000, irq 123
+> > [   38.271431] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/2500base-x link mode
+> > [   38.279828] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
+> > [   38.288009] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
+> > [   38.296800] mtk_soc_eth 15100000.ethernet eth1: major config, active inband/inband,an-disabled/2500base-x
+> 
+> This is indeed without the PHY. We're using inband, although the PCS
+> mode is PHYLINK_PCS_NEG_INBAND_DISABLED, meaning inband won't be
+> used. As there is no PHY, we can't switch to MLO_AN_PHY.
+> 
+> > [   38.306362] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,0000e240 pause=04
+> > [   39.220149] mtk_soc_eth 15100000.ethernet eth1:  interface 2 (mii) rate match none supports 0-3,6-7,13-14
+> > [   39.229758] mtk_soc_eth 15100000.ethernet eth1:  interface 3 (gmii) rate match none supports 0-3,5-7,13-14
+> > [   39.239420] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+> > [   39.249173] mtk_soc_eth 15100000.ethernet eth1:  interface 22 (1000base-x) rate match none supports 5-7,13-14
+> > [   39.259080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+> > [   39.594676] mtk_soc_eth 15100000.ethernet eth1: PHY i2c:sfp-1:11 uses interfaces 4,23, validating 4,23
+> 
+> The PHY comes along...
+> 
+> > [   39.603992] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+> > [   39.650080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+> > [   39.660266] mtk_soc_eth 15100000.ethernet eth1: PHY [i2c:sfp-1:11] driver [RTL8221B-VB-CG 2.5Gbps PHY (C45)] (irq=POLL)
+> > [   39.671037] mtk_soc_eth 15100000.ethernet eth1: phy: 2500base-x setting supported 00,00000000,00008000,000060ef advertising 00,00000000,00008000,000060ef
+> > [   39.684761] mtk_soc_eth 15100000.ethernet eth1: requesting link mode inband/2500base-x with support 00,00000000,00008000,000060ef
+> 
+> We decide to use MLO_AN_INBAND and 2500base-X, which we're already using.
+> 
+> > [   40.380076] mtk_soc_eth 15100000.ethernet eth1: phy link down 2500base-x/Unknown/Unknown/none/off
+> > [   40.397090] brlan: port 5(eth1) entered blocking state
+> > [   40.402223] brlan: port 5(eth1) entered disabled state
+> > [   40.407437] mtk_soc_eth 15100000.ethernet eth1: entered allmulticast mode
+> > [   40.414400] mtk_soc_eth 15100000.ethernet eth1: entered promiscuous mode
+> > [   44.500077] mtk_soc_eth 15100000.ethernet eth1: phy link up 2500base-x/2.5Gbps/Full/none/off
+> > [   44.508528] mtk_soc_eth 15100000.ethernet eth1: No phy led trigger registered for speed(2500)
+> 
+> ... but we don't see link-up reported by the PCS after the PHY comes
+> up. Why is that - I think that needs investigation before we proceed
+> to patch the issue, because that suggests the PCS isn't seeing
+> valid 2500base-X from the PHY.
 
-phylink tries to determine the whole chain is up. As Russell says, it
-could be the PCS has not got sync with the PHY for some reason. So
-even if you ignore the PCS state, it might not work. This is actually
-a useful pieces of information. Does the link actually work end to end
-if you only look at the media state? If it does, that would indicate
-the PCS is maybe missing an interrupt, or needs polling for change in
-state.
+The PCS doesn't support in-band status in 2500Base-X mode, or at least
+the implementation isn't compatible with those RealTek PHYs.
 
-	Andrew
+In OpenWrt we carry a downstream patch to disable in-band status on the
+side of the PHY which fixes the issue:
+
+https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/generic/pending-6.6/720-02-net-phy-realtek-disable-SGMII-in-band-AN-for-2-5G-PHYs.patch;h=7e48c16515db8e401495dc1c505319424773ee11;hb=HEAD
 
