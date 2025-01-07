@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E31E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 22:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63519E77197
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 23:11:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jo7KO2QKu2qPetK4xY2xNxgeD8/GXpG5tgHg1wqEWWI=; b=k0JrJpCjN4zOd7HKQZzJ6GYaLI
-	0zTCOKEIJUP8NSpWyff46BuhOLF3Ymz3ZVeNQAwZTxWudbDDv5De4Ea2DLbm0xEJz2iVG1C44+NbE
-	mnAhjS31kbw/2vDbmdH9de4DNWj4/dQjeZpxPU5nnq6aOqEISBV/Hwokgr+giCAKXPsQSw3Q6t52q
-	8It3uJTcqehqpc4DAQyVHQ/pe57gSTK2l2uFPkbD5BSo3sDLZUvOI43sGu3UFV1xWXlPIE8QLcPFl
-	B5KxQk3TSmV8jiQAxnOIOPwXKqqb2IO66e87ESwG1hLqcl1JS2/SuyWhG7BbSA+T/9lq9vWhrW1cw
-	laaGChSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=PCrEa2eqiGdRhCaAuf73LiJEX1P4cmcw8rxMXvN3h20=; b=WdWYLe7l65mD25dNFTwBRs9WTx
+	pal3wpzDcegqP3ZOgNjA2Ypqde+UVpW+30e/LTO7vsWvt7riOCvFfnrXyOHjSDBJnVRBnsrcMFwyS
+	iywzjfxGhJR6SEnKL/KoFqEFxmddOrKyUhLB/jY01E3bIMMEiwl65nryecXJMsBDorg61xcW5MVXk
+	ojDO6OX8KEZIQKmFwtZjLj0X4/Usbzk1eEv7KEaLOLsJMH3O53i8k5POi92b3WvmuPGgowXHMgkhs
+	CVRSsn+DGj/ZwB8vrAuKoTnlV3YF5+lcaoSL3OLftUJSzJkPzcxCiJpTPM9j+8W1Sf1FwIgsAwfs/
+	Jr2AUPYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVI3d-00000006Puc-01N0;
-	Tue, 07 Jan 2025 22:28:17 +0000
+	id 1tVIjF-00000006VHS-2asF;
+	Tue, 07 Jan 2025 23:11:17 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVI2R-00000006PqM-1Au9;
-	Tue, 07 Jan 2025 22:27:04 +0000
+	id 1tVIea-00000006UND-35r8;
+	Tue, 07 Jan 2025 23:06:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 72FE95C24DA;
-	Tue,  7 Jan 2025 22:26:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1A57C4CED6;
-	Tue,  7 Jan 2025 22:27:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F31F5C060E;
+	Tue,  7 Jan 2025 23:05:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46902C4CEDF;
+	Tue,  7 Jan 2025 23:06:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736288822;
-	bh=/BuvRwLGk+7by7QeOu7n+QgJ5Sk03TO9WCsGbgTs3sE=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Gx3FMrdJH+xaen2jSRnu523A40ZOBBFaj896IwBv1PeosUm+eiUCx+K3Qz9CAisX0
-	 Bj4ohheTiHZDQHZelhKF3ZFTfVQUyYiLiard4x5QdylW2YZA0cpwJe64TMf7CsHbrT
-	 NHCF7nrJPJUwOhDoS/YVdeTw/bb9DlM95aKGSfyH0cy7Kdmjz55No3Im9bCSKcgyaX
-	 Y/lcRZglFjbLyiC3LS06AtM0KOyhUxQKrH+ZWpx5E/sdOEj3SRTJ/I+K8o3m75Kzsn
-	 wKRft5pBwfhGEIrJXrFR4f73QwnxJ6eSUrfjYV8k4mFQpH3nB0hKLi2DpvYPim5dj/
-	 ADsdcP6QPwokg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 07 Jan 2025 23:26:28 +0100
-Subject: [PATCH net-next] net: airoha: Fix channel configuration for ETS
- Qdisc
+	s=k20201202; t=1736291185;
+	bh=VfAnBfuX08F+R34YGFjPDdCZbCRXPGtckNSQu09Cp8k=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=cOXT9/e9xxyBFaU6ZRyl43N5yOhkdSW3pm+L4KFDvPaD4x4bhaPDx6vsx/+XK15JB
+	 ufQhgPuoW8HeB5VsOY57a1OQnNFYyGITDl/MGXWbZcc8V+rKTVX7tK4/fNWSL5cRJT
+	 YtgV0laPpn4XfecnAbcURnxone1ng/4plt6Eiae1K14ASLBiDClGM0r/kZMxZNAJx8
+	 B8rJG874PHgtYWGEiEBgv8D2hwmFL2CI3yGqY+uirRMi1sBDWdPxXwGN9CofAI4udG
+	 MkB8aA5vkzdhC9sPCpCx7WjD3gUDWyW00nopCYQjAS9Xqe7QR07g3Aplq0O/3ma3Yw
+	 VlpA8jCaUFgFQ==
+Date: Tue, 7 Jan 2025 17:06:23 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Xavier Chang =?utf-8?B?KOW8teeNu+aWhyk=?= <Xavier.Chang@mediatek.com>,
+	"manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"bhelgaas@google.com" <bhelgaas@google.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <Ryder.Lee@mediatek.com>
+Subject: Re: [PATCH 3/5] PCI: mediatek-gen3: Disable ASPM L0s
+Message-ID: <20250107230623.GA189234@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
-X-B4-Tracking: v=1; b=H4sIABOqfWcC/x2MSwqAMAwFryJZG6ifVvAq4qLUaLNRaUSE0rsbX
- Q5v3mQQSkwCY5Uh0c3Cx67Q1BWE6PeNkBdlaE1rTWMG9JyO6JEuwZUf/CSkzobgw+AW14M+z0S
- 6/dVpLuUFNrlCSGUAAAA=
-X-Change-ID: 20250107-airoha-ets-fix-chan-e35ccac76d64
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8b7b0d1bca5088bda46a651481b9a42f3be1a75d.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_142703_368004_683C17BD 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20250107_150628_823028_9DBAF112 
+X-CRM114-Status: GOOD (  19.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,43 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Limit ETS QoS channel to AIROHA_NUM_QOS_CHANNELS in
-airoha_tc_setup_qdisc_ets() in order to align the configured channel to
-the value set in airoha_dev_select_queue().
+On Tue, Jan 07, 2025 at 02:44:37AM +0000, Jianjun Wang (王建军) wrote:
+> On Fri, 2025-01-03 at 13:15 -0600, Bjorn Helgaas wrote:
+> > On Fri, Jan 03, 2025 at 02:00:13PM +0800, Jianjun Wang wrote:
+> > > Disable ASPM L0s support because it does not significantly save
+> > > power but impacts performance.
+> > 
+> > This seems like a user/administrator decision, not a driver
+> > decision.
+> > 
+> > L0s reduces power at the cost of performance for *all* PCIe
+> > devices, although the actual numbers may vary.
+> 
+> We have encountered some compatibility issues when connected with
+> some PCIe EPs, these issues are probabilistic and disabling the L0s
+> can fix them.
 
-Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/airoha_eth.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+This sounds like either a software problem in ASPM or a hardware
+problem in one of the devices.  If it's a Linux ASPM issue, obviously
+we should find and fix that.  If it's an endpoint hardware issue, we
+should fix the driver or quirk it to avoid L0s on all platforms, not
+just this one.
 
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index b9f1c42f0a40ca268506b4595dfa1902a15be26c..a30c417d66f2f9b0958fe1dd3829fb9ac530a34c 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -2840,11 +2840,14 @@ static int airoha_qdma_get_tx_ets_stats(struct airoha_gdm_port *port,
- static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
- 				     struct tc_ets_qopt_offload *opt)
- {
--	int channel = TC_H_MAJ(opt->handle) >> 16;
-+	int channel;
- 
- 	if (opt->parent == TC_H_ROOT)
- 		return -EINVAL;
- 
-+	channel = TC_H_MAJ(opt->handle) >> 16;
-+	channel = channel % AIROHA_NUM_QOS_CHANNELS;
-+
- 	switch (opt->command) {
- 	case TC_ETS_REPLACE:
- 		return airoha_qdma_set_tx_ets_sched(port, channel, opt);
+If it's a mediatek-gen3 hardware issue, we should disable L0s as you
+do here.  But if the reason is to work around a hardware erratum, we
+should describe it as such.
 
----
-base-commit: a1942da8a38717ddd9b4c132f59e1657c85c1432
-change-id: 20250107-airoha-ets-fix-chan-e35ccac76d64
+Justifying it as "L0s really doesn't save much power, so disable it"
+is an invitation for somebody to come back and ask why L0s doesn't
+work when the lspci output claims it *should* work.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+> Users may not be aware of these issues, so I think disabling L0s
+> through the driver might be the better way, since it does not
+> significantly save power and we usually use L1ss for power-saving
+> when the link is idle.
 
+Users should not need to be aware of probabilistic behavior problems
+related to ASPM.  It's *our* problem to make sure users never see
+issues like that :)
+
+Bjorn
 
