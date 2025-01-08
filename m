@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55BEDE77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 15:00:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D82E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 16:10:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QuYcpwf/FK7fdMDWPBIHW4XC8csYRmvKIIRdooKf82c=; b=Yv5pJDjURFw3Oex1ENuItgpbgR
-	Z2sFXjGGmf085m3zUzNAyTXY8lC2A3BEKgWvphvC/t5VamA20NqP2wXn/f/5+bU4CncnExnQgZGof
-	zMOBLehvQ7zgrivKTaYPSD1492/yTOCOz1f8Br6wB+sLbUMKRdvPyrqzBkzpyIp0Zo5q2bRZMdPyM
-	LkZ1C/VQgfdxaxd4PDjw4RSAqcKRuVeOvGrm0jyczWj6IQ01Gz/fiScfYKcyczmbjL99rrMCy+5wG
-	+WIgIahBrDLMcpm/uLI4Msru+OaPG60hw9e0ZRevTcnnl/TSJuNY5xigWlKbOIS++kyDWOiyTq0i+
-	cJFauoMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Izo9IaxS63oXVftDFjJO/KO57D6Ym3M3lXzymnP7LVw=; b=XzIVp47BuZrwGhKJ1Hniw8Jzl9
+	mCrMdtaSEDaY5L126R0A3WtiPVBXjzW9T6msKZ2s7xF0009Ys1pN0xWS1I/A4yVjnuu16JkMsJzNH
+	MhxaCMGjY0Q0JnFe6Pkh7xwtR18RqGRT7kHeK5lml4wmyn6FRijBqJ9D3POxWEi0jRXeH4RUKBNem
+	pbmUju1FzcAKQMITLzRacr0IKIXdbvJkOyV74XJ2ci3Tva4vxT5HEhu63f7hMSTpWcUgPc7DGz2Gj
+	UfljNG7bG68uwo8NI2VrTnK4u3A7f9lR78cyFRgXMtd1AQN855wnClIrc5IANWkOnFb7uuRuMyV2I
+	pO80DCvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVXXf-00000008t7S-48ZD;
-	Wed, 08 Jan 2025 15:00:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tVYdk-0000000972m-1M2x;
+	Wed, 08 Jan 2025 16:10:40 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVXXd-00000008t77-2hop
+	id 1tVYdL-000000096tz-3gVj
 	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jan 2025 15:00:18 +0000
+	Wed, 08 Jan 2025 16:10:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1AFA15C4D73;
-	Wed,  8 Jan 2025 14:59:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 430ACC4CEDD;
-	Wed,  8 Jan 2025 15:00:15 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E59D0A41986;
+	Wed,  8 Jan 2025 16:08:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A488C4CEDD;
+	Wed,  8 Jan 2025 16:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736348416;
-	bh=vuYT0K69rEkRC3CxiBZ9EB/G1aA4QJsYU0rhO3H3f6g=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=BjK8ubFsl2AIUIwnNps134FfLIpO8rjI81wVwCZWvq8BZ9oJ1n9ni6R9s7YHpGkZa
-	 UzP0KbsHun1nr5dP7/KSTja22dGJhbC0X65FJ1aLgFFZ/sPJtjy6CMSXw62zZPwynK
-	 oFiNES0SdW+BydaLZ9TxJ4xp166fH1w4HI0Yuz0MzIYeMmKp1+tg8lWVKjd5W/g9O5
-	 blruWdfpNq5Oj/zlNZXt9fd8WfBJydzPmOWDN4RCreWfmczq2EDANzfadL9PMQezk+
-	 sDQS6BF4nXca5fMgeL4PAedCxn+JTOGqv6eSdMk7QIq8wg1WztmMDZ34tIWVS4H7QB
-	 Rvirhl5aRcpkw==
-From: Kalle Valo <kvalo@kernel.org>
-To: sean.wang@kernel.org
-Cc: nbd@nbd.name,  lorenzo.bianconi@redhat.com,  sean.wang@mediatek.com,
-  deren.wu@mediatek.com,  mingyen.hsieh@mediatek.com,
-  linux-wireless@vger.kernel.org,  linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/6] Revert "wifi: mt76: mt7925: Update
- mt7925_mcu_uni_[tx,rx]_ba for MLO"
-References: <20250108022509.217803-1-sean.wang@kernel.org>
-Date: Wed, 08 Jan 2025 17:00:13 +0200
-In-Reply-To: <20250108022509.217803-1-sean.wang@kernel.org> (sean wang's
-	message of "Tue, 7 Jan 2025 18:25:04 -0800")
-Message-ID: <87v7uppczm.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1736352614;
+	bh=OrjXXnFq4nOyoITQ6bQZlHljOuIuZnV/qxm0Jq1QCfo=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=TeQNw/Ve/1Gx5AcZlqV25iRx63yy6dsOljR93pULxVn3LS41WpXDez3AKhwpyx8x/
+	 98TU9m3VjpkazFVbeijlooEII/ADjBHnghRoFXzvD7mWFYNPf93rCH5J5zPS2StMLK
+	 0xHvQV882RL2DG0JL5bemyQUyCc8J14ZZPkuIPxwXCqGZwnGX4c/DEG/o6jpEG4psE
+	 cHHsT4XAyVD5okR2zeH9AKMvYeAQ4GIt4SRcZMkb92x+MMolNUTBQf6bSgt1BDgwc2
+	 7HFTpOUiWNjDGcxGIB9u/2e+nqojb2mqSEjAvDc8VSuCYhQjm/OXVRA2a2q/kT9d3u
+	 8+x6DH1BWkMYw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAF6D380A965;
+	Wed,  8 Jan 2025 16:10:36 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btusb: Add new VID/PID 13d3/3610 for MT7922
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <173635263574.697160.13448726939811072198.git-patchwork-notify@kernel.org>
+Date: Wed, 08 Jan 2025 16:10:35 +0000
+References: <20241224-tx55e-bluetooth-v1-1-e83ebc81507a@gmail.com>
+In-Reply-To: <20241224-tx55e-bluetooth-v1-1-e83ebc81507a@gmail.com>
+To: Andrew Halaney <ajhalaney@gmail.com>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_070017_728279_F94B13A8 
-X-CRM114-Status: UNSURE (   5.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250108_081015_986543_2F5E74D2 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,16 +75,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-sean.wang@kernel.org writes:
+Hello:
 
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->
-> This reverts commit 3cc610e9069db69e4a0f6304993f4c98db52c3c7.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Why? The commit message should always answer that.
+On Tue, 24 Dec 2024 14:42:11 -0600 you wrote:
+> A new machine has a Archer AX3000 / TX55e in it,
+> and out the box reported issues resetting hci0. It looks like
+> this is a MT7922 from the lspci output, so treat it as a MediaTek
+> device and use the proper callbacks. With that in place an xbox
+> controller can be used without issue as seen below:
+> 
+>     [    7.047388] Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20241106163512
+>     [    9.583883] Bluetooth: hci0: Device setup in 2582842 usecs
+>     [    9.583895] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+>     [    9.644780] Bluetooth: hci0: AOSP extensions version v1.00
+>     [    9.644784] Bluetooth: hci0: AOSP quality report is supported
+>     [  876.379876] input: Xbox Wireless Controller as /devices/virtual/misc/uhid/0005:045E:0B13.0006/input/input27
+>     [  876.380215] hid-generic 0005:045E:0B13.0006: input,hidraw3: BLUETOOTH HID v5.15 Gamepad [Xbox Wireless Controller] on c0:bf:be:27:de:f7
+>     [  876.429368] input: Xbox Wireless Controller as /devices/virtual/misc/uhid/0005:045E:0B13.0006/input/input28
+>     [  876.429423] microsoft 0005:045E:0B13.0006: input,hidraw3: BLUETOOTH HID v5.15 Gamepad [Xbox Wireless Controller] on c0:bf:be:27:de:f7
+> 
+> [...]
 
+Here is the summary with links:
+  - Bluetooth: btusb: Add new VID/PID 13d3/3610 for MT7922
+    https://git.kernel.org/bluetooth/bluetooth-next/c/0ea7223c40b6
+
+You are awesome, thank you!
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
