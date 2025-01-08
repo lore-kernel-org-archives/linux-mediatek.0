@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98461E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 08:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65451E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 09:24:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6hfaIU/yPmRs9H27LP1GQSu+5nTkg84M2KD+Fv53tNQ=; b=hXjdTfWoJhWNFT9R3HAtNtPbIE
-	GlZoDdQpal6BaVwqxFN8FrWKATM2IQrTMaXjwRL+UefhDPFFDlf9p9XYVEKdyfbN1f+HevvbaC5fL
-	ANiRv3yne6l0C2FykauTRsa9M51A61GIQ0F/h41deUNVBhAJVawvapjVNGMntgh42ZATJB8OzenYM
-	Uwvo649AgnRMGXO/En/jzyCjt4DbwpPfp6V1vQTR3t1ByIA9bRcgeufyZG3RAXxGyKLRzlwnD+UMY
-	Itm6wW6FsAyKOhcVOFONgmzjrNMp/uJO2RS+lwME4BJZpIeKe64hnYLFzf2t3cU3OeOPwP0NsE4Zp
-	hxKKOiGw==;
+	bh=IlfZTFFq5DHtcNI/I26GleNVoiwLL2d4CL3ukTN/LMU=; b=LqiBFe9uRm/x68CEJFgh9SoSOR
+	fjrgkE+py0b6MEaxZzhTT95frSLISNBs80MJT6Hpw6HiU9P7O0nB1rhgsSb4Ka1keFOpXwuiR0Xm+
+	5HF/07mRmzWuIm6LvrMWMiWkxuo/CiNSlOtZeMWeG+yKZzEoUWc6iAZ5G9wdsUmP6DgL5xhQohqHn
+	iXCHr47Ps2hu1kvovYp2khOMs9KEdZrKgfeh5SrMFejYfqe2M7+30YxFWT4CJu8n+a6csPlFke7mG
+	jgEaIKNm0mJNpUIFU3jzOfyMeENZ2Kfblr7NyIiUx5FAQdMikjqvhOqsJqTHOsqDuPyLrw9rAh7XT
+	4U3neHig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVRYh-00000007aYI-32yx;
-	Wed, 08 Jan 2025 08:36:59 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1tVSIc-00000007lHY-2TQi;
+	Wed, 08 Jan 2025 09:24:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVRWK-00000007ZgG-0il4
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jan 2025 08:34:33 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-2ee50ffcf14so939410a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jan 2025 00:34:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1736325271; x=1736930071; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6hfaIU/yPmRs9H27LP1GQSu+5nTkg84M2KD+Fv53tNQ=;
-        b=Muv0luNP15mtRNC83ydUQ5OPxi38FZMzZfLlR4NdA0+Jvgdu+X2PI42aY10odD8Q/A
-         bMv8/lXHboVYo8LaB2sEI7NRV+SrtKqSxD3VQGpVqlIblVlDJFOgrMBQ3MYHIzr3MomJ
-         X7Pqzo04slHPwTdhWfDg/fMUb1+15lhkaVN18=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736325271; x=1736930071;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6hfaIU/yPmRs9H27LP1GQSu+5nTkg84M2KD+Fv53tNQ=;
-        b=o7PKHBN7JPe/Qi+NmeceMaX7Cb1+kDOwmU6No0IPSqUz4JN6XQSSlwgJ2QfbOMH7GM
-         F/sOQ1Saqg9VjgtP3a3lhZVTVx9l7FNe3fhiBTbPf57yLNCtFAf2/aP0QD8CygsfDJ+R
-         y0n6NNOtGV8HGs2rJmOtQSaTpcEzbM9hGswzwcIlh49DDGgDC2zwi/4EcG/rqiOBJcMw
-         EjirtHYigTMTNkosYKTtczvwfqqHlKoFe6KyczqyH0mZlrOb3VGE27iYPa8IDgKR01Sw
-         yl8EQ655HYYb29u0l0ddjbLWq1kYhMHR6WLI0vrvQ/uE/24+bqysWTy2TTvZ9y/0Q1hO
-         LsdA==
-X-Forwarded-Encrypted: i=1; AJvYcCXYkx/PZew4q85hgUbzdUd2COw0tHVeFpbgGtFs57SWZ6A+N0Xu8nQQQUQsujS9tVvqPrEEG5C0FqJjwe0owQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy0kyVVBN2i2Z1H0oxnoElnLWF/8GI45JRr5UckAUBumRr38jHL
-	bNek0TAHaQJ/IQpwAQXQWR6eHlGuPNJNSQdpjOC6VGkmiFv3BzD5gngs7pPvGQ==
-X-Gm-Gg: ASbGnctx9aA3RFD5fdBp4JpTpTw8mE8TCFHKq1Zyh0VSP48RrTW1XKo64FsvGGGISdR
-	eJqlrq+QSFmHZqhfA26qZT5W34vapjhAPd9NWX8P2PoT3xg3v9m5K50SjMHSCzFDcOgxADFvnPp
-	RuawJ7WP1mMWxS85R1MzOFnaE75rbwXC6BFv+Wz38Lf8LfAmzpe3/ljfehT7RoI00Gh93P5d5Sm
-	NaubQ3jSE8yA1bKDTjh4AkYE1b7p/Cx2ThhaZpkp0V296pfl4x7z6YPUUWfdpC1k3jA4DH6T58=
-X-Google-Smtp-Source: AGHT+IHh5Ox0Chj79W0aML3FVEC2y3iYMrkJc9FjsPLlxqd39yrbKX0TlyMbXPcw3G6R3PveYRKL4A==
-X-Received: by 2002:a05:6a00:aa05:b0:724:db17:f975 with SMTP id d2e1a72fcca58-72d2174e8a3mr3807524b3a.12.1736325271398;
-        Wed, 08 Jan 2025 00:34:31 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:511d:2d5f:1021:f78f])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad8361b7sm34602275b3a.74.2025.01.08.00.34.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 00:34:31 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	YH Huang <yh.huang@mediatek.com>,
-	stable@vger.kernel.org
-Subject: [PATCH 2/3] arm64: dts: mediatek: mt8173: Fix disp-pwm compatible string
-Date: Wed,  8 Jan 2025 16:34:22 +0800
-Message-ID: <20250108083424.2732375-2-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
-In-Reply-To: <20250108083424.2732375-1-wenst@chromium.org>
-References: <20250108083424.2732375-1-wenst@chromium.org>
+	id 1tVSHO-00000007l6W-3ReT;
+	Wed, 08 Jan 2025 09:23:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1736328188;
+	bh=qd19nRPwbCvUMi/KiQbuvAWtRBU4wH1adFt9H0ZLYm4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=J/iPZDPdgXw2RBeEUVXQ1CswpShssY0E40y7+6XgOHC5JCgIeWxfXaA9zQRSNXwdk
+	 r8rwtOaovegOo6o1HUJCg/s9ui+ahQx8i81Ilep0lRCVM1YL5Ya7eLM3XPcall2wdr
+	 NEU3r2veQiMqBBTkAKxXV0Z0hGWMrQ49LZ2Oc9EIKIlmd8e/P96we3PJ3k+xm87Iyd
+	 PjqHluCtgI4TdG3aR74Bm4/HowFJphatSUb0uJtGrSjVvBG3tohnSstK/XswWd1Nlh
+	 LEF1e0LOWZZ8wy3N6EZs1+FE1mjDJfDt665eEig6JIIhluVghGUm8HKOL6Nfom89lU
+	 /iohHw7aGBnig==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B20B917E1544;
+	Wed,  8 Jan 2025 10:23:07 +0100 (CET)
+Message-ID: <9f8c2da3-8cce-4fb2-a863-4d79f524f58b@collabora.com>
+Date: Wed, 8 Jan 2025 10:23:06 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 14/33] drm/mediatek: mtk_hdmi: Move audio params
+ selection to new function
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20241217154345.276919-1-angelogioacchino.delregno@collabora.com>
+ <20241217154345.276919-15-angelogioacchino.delregno@collabora.com>
+ <03d20d6d77b54c25b9d7e65899a67359fae6130a.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <03d20d6d77b54c25b9d7e65899a67359fae6130a.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_003432_209923_DEE97140 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20250108_012311_053600_655D0249 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,59 +97,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8173 disp-pwm device should have only one compatible string, based
-on the following DT validation error:
+Il 20/12/24 04:47, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Tue, 2024-12-17 at 16:43 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> In preparation for splitting common bits of this driver, move the
+>> audio params (codec, sample rate/size, input type, i2s format, etc)
+>> selection to a new function called mtk_hdmi_audio_params().
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 46 +++++++++++++++++------------
+>>   1 file changed, 27 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> index d2f1d6286fbc..8f5ab97a0261 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> @@ -1479,12 +1479,11 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+>>    * HDMI audio codec callbacks
+>>    */
+>>
+>> -static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
+>> -                                   struct hdmi_codec_daifmt *daifmt,
+>> -                                   struct hdmi_codec_params *params)
+>> +static int mtk_hdmi_audio_params(struct mtk_hdmi *hdmi,
+>> +                                struct hdmi_codec_daifmt *daifmt,
+>> +                                struct hdmi_codec_params *params)
+>>   {
+>> -       struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> -       struct hdmi_audio_param hdmi_params;
+>> +       struct hdmi_audio_param aud_params = { 0 };
+>>          unsigned int chan = params->cea.channels;
+>>
+>>          dev_dbg(hdmi->dev, "%s: %u Hz, %d bit, %d channels\n", __func__,
+>> @@ -1495,16 +1494,16 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
+>>
+>>          switch (chan) {
+>>          case 2:
+>> -               hdmi_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> +               aud_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>>                  break;
+>>          case 4:
+>> -               hdmi_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_4_0;
+>> +               aud_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_4_0;
+>>                  break;
+>>          case 6:
+>> -               hdmi_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_5_1;
+>> +               aud_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_5_1;
+>>                  break;
+>>          case 8:
+>> -               hdmi_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_7_1;
+>> +               aud_params.aud_input_chan_type = HDMI_AUD_CHAN_TYPE_7_1;
+>>                  break;
+>>          default:
+>>                  dev_err(hdmi->dev, "channel[%d] not supported!\n", chan);
+>> @@ -1528,26 +1527,35 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
+>>
+>>          switch (daifmt->fmt) {
+>>          case HDMI_I2S:
+>> -               hdmi_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> -               hdmi_params.aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> -               hdmi_params.aud_input_type = HDMI_AUD_INPUT_I2S;
+>> -               hdmi_params.aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> -               hdmi_params.aud_mclk = HDMI_AUD_MCLK_128FS;
+>> +               aud_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> +               aud_params.aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> +               aud_params.aud_input_type = HDMI_AUD_INPUT_I2S;
+>> +               aud_params.aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> +               aud_params.aud_mclk = HDMI_AUD_MCLK_128FS;
+>>                  break;
+>>          case HDMI_SPDIF:
+>> -               hdmi_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> -               hdmi_params.aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> -               hdmi_params.aud_input_type = HDMI_AUD_INPUT_SPDIF;
+>> +               aud_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> +               aud_params.aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> +               aud_params.aud_input_type = HDMI_AUD_INPUT_SPDIF;
+>>                  break;
+>>          default:
+>>                  dev_err(hdmi->dev, "%s: Invalid DAI format %d\n", __func__,
+>>                          daifmt->fmt);
+>>                  return -EINVAL;
+>>          }
+>> +       memcpy(&aud_params.codec_params, params, sizeof(aud_params.codec_params));
+> 
+> You copy to local variable, so this function does nothing.
+> 
+>> +
+>> +       return 0;
+>> +}
+>>
+>> -       memcpy(&hdmi_params.codec_params, params,
+>> -              sizeof(hdmi_params.codec_params));
+>> +static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
+>> +                                   struct hdmi_codec_daifmt *daifmt,
+>> +                                   struct hdmi_codec_params *params)
+>> +{
+>> +       struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +       struct hdmi_audio_param hdmi_params;
+>>
+>> +       mtk_hdmi_audio_params(hdmi, daifmt, params);
+>>          mtk_hdmi_audio_set_param(hdmi, &hdmi_params);
+> 
+> hdmi_params has not been initialized.
 
-    arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: pwm@1401e000: compatible: 'oneOf' conditional failed, one must be fixed:
-	    ['mediatek,mt8173-disp-pwm', 'mediatek,mt6595-disp-pwm'] is too long
-	    'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt6795-disp-pwm', 'mediatek,mt8167-disp-pwm']
-	    'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt8186-disp-pwm', 'mediatek,mt8188-disp-pwm', 'mediatek,mt8192-disp-pwm', 'mediatek,mt8195-disp-pwm', 'mediatek,mt8365-disp-pwm']
-	    'mediatek,mt8173-disp-pwm' was expected
-	    'mediatek,mt8183-disp-pwm' was expected
-	    from schema $id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
-    arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: pwm@1401f000: compatible: 'oneOf' conditional failed, one must be fixed:
-	    ['mediatek,mt8173-disp-pwm', 'mediatek,mt6595-disp-pwm'] is too long
-	    'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt6795-disp-pwm', 'mediatek,mt8167-disp-pwm']
-	    'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt8186-disp-pwm', 'mediatek,mt8188-disp-pwm', 'mediatek,mt8192-disp-pwm', 'mediatek,mt8195-disp-pwm', 'mediatek,mt8365-disp-pwm']
-	    'mediatek,mt8173-disp-pwm' was expected
-	    'mediatek,mt8183-disp-pwm' was expected
-	    from schema $id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
+That was done on purpose: we are anyway rewriting all fields of that structure
+with the call to mtk_hdmi_audio_set_param(), so if that was stack-initialized
+to zero, that would be a double initialization.
 
-Drop the extra "mediatek,mt6595-disp-pwm" compatible string.
-
-Fixes: 61aee9342514 ("arm64: dts: mt8173: add MT8173 display PWM driver support node")
-Cc: YH Huang <yh.huang@mediatek.com>
-Cc: <stable@vger.kernel.org> # v4.5+
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 3458be7f7f61..f49ec7495906 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -1255,8 +1255,7 @@ dpi0_out: endpoint {
- 		};
- 
- 		pwm0: pwm@1401e000 {
--			compatible = "mediatek,mt8173-disp-pwm",
--				     "mediatek,mt6595-disp-pwm";
-+			compatible = "mediatek,mt8173-disp-pwm";
- 			reg = <0 0x1401e000 0 0x1000>;
- 			#pwm-cells = <2>;
- 			clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-@@ -1266,8 +1265,7 @@ pwm0: pwm@1401e000 {
- 		};
- 
- 		pwm1: pwm@1401f000 {
--			compatible = "mediatek,mt8173-disp-pwm",
--				     "mediatek,mt6595-disp-pwm";
-+			compatible = "mediatek,mt8173-disp-pwm";
- 			reg = <0 0x1401f000 0 0x1000>;
- 			#pwm-cells = <2>;
- 			clocks = <&mmsys CLK_MM_DISP_PWM126M>,
--- 
-2.47.1.613.gc27f4b7a9f-goog
+Cheers,
+Angelo
 
 
