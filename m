@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED65E77197
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2025 23:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E81E77197
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 02:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=p1Kkoignyrr80sETDjSCu3E4vA6Ej0aacljRgloDpT4=; b=lsMeAKhjhWkaoqhi2vgllIIGDE
-	Gwgf8Aq8ixNzOVZd4p1Y4sk3RU2LCxzMtACFQepH3Egw5Tf4c2dOO1nGCU/3GGQB0xDVKOnPqTtKr
-	b8T8AE3M5mDnVZYrejPn3d5TeLTQC1eitIeUWkjBRy6WnynnDRmrsqCeMLlwREoUtGYEGW0K3Qw8F
-	OLHeKQOpyKU+7J2uuU0k+nlEIU20Tpv0W+HPDVojvXcutEXVJE34PQsilxxHTZ/q04y0YlRG/JW9/
-	kTpVsKwIzvo8SSGYn2eOWpMN0vS7ixdVXdeC1IqrvUY3lmKlRM7lF09XZjD/SZxrQhvaf67cHlzQw
-	zmW3uU8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lwAO7FwjKQWCsRFDEIAEZoW22CnjTZuuecKKIJuyFtE=; b=KzgnnzneccuysgbnAeCJ+yuPzQ
+	n6eSspS0DNppkNnuYSpttSTQgCxIS9g4r3XzXwFtKGnaiO4SA1+jPpdAXSCyOtA3OrhFc8bssksDd
+	GTPR3nwAby2KVYyEMpp2xTyfiC9bQx2Lqo8MI9m+wksSQlcNqwShSUQF7fPpdxIGh1l7/Shp0c3HI
+	SvfGitFjWFLm+w06dhW/CjcLIarISseqAYG8P8iRzhWZOBDul8ysEoRyatoE05TbAFDL6UWqkjnfS
+	l7e/ePxmSWBI8DH6M0QiTE3OIXoiqdGU3qmE9bMJyXqL5v4mAc7fLH0vD/oSEXbmOVgL89CQmHqQV
+	FQaHInKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVIkQ-00000006VTo-2OuN;
-	Tue, 07 Jan 2025 23:12:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tVLpa-00000006uPQ-3PCI;
+	Wed, 08 Jan 2025 02:30:02 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVIfo-00000006UXy-2K1d;
-	Tue, 07 Jan 2025 23:07:45 +0000
+	id 1tVLgA-00000006sT3-04pv;
+	Wed, 08 Jan 2025 02:20:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F08B95C0FD3;
-	Tue,  7 Jan 2025 23:07:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99020C4CEDF;
-	Tue,  7 Jan 2025 23:07:43 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 034B4A42097;
+	Wed,  8 Jan 2025 02:18:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51431C4CED6;
+	Wed,  8 Jan 2025 02:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736291263;
-	bh=qCOsJ/wKHOi3SAkDBRYfIUDYbFC/ozgvyeH4knr/FXA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Lbv4lvYyU3hdnUYszWRuxX22YRUZGI6KXGwtAZ0QayGT7PHOTKKa0IPoqG2EmSchl
-	 3Pk0IAVh3ynu5a8qsvbVQP++4PaPE443CgJi9TVTTWGQzlKlrGgvo4osLY/vyk+2Ae
-	 s5krWEJBDP+TCUCS1YTlph1APAIQQ61PXi4BCdyPtzWJzAvC2Uta6zK6MzxXxwCr6C
-	 EAPGePwBBXgrMCetp9aLHjjMHQgqLXnt1AGjcrr9nInknI5OvElB86o160HIRO2cA/
-	 Tngd46xXYTVXCCH2EcaYrvWGXqVztxxk+xxl5jSodUU/D0RvS8VeWoGF49vYkMeQVg
-	 1mvrlRa1FVllA==
-Date: Tue, 7 Jan 2025 17:07:42 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
-	"manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Xavier Chang =?utf-8?B?KOW8teeNu+aWhyk=?= <Xavier.Chang@mediatek.com>
-Subject: Re: [PATCH 3/5] PCI: mediatek-gen3: Disable ASPM L0s
-Message-ID: <20250107230742.GA189563@bhelgaas>
+	s=k20201202; t=1736302816;
+	bh=0VJ0VlDz5rspAVWwLkjGAzUZE+UkfAyNmv+7kf4MH+k=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=fy8rG13JaDo9O8wxpSpf55sdRUibKpahbJy65TFwz9NGrJCIJEofGD0msoymIQsty
+	 dLtgm6vKbtZ9bdv9mLabILuGCi9qx15m8gkhSwPBlleJFz+AyR3mv43yX7Hvk07cQB
+	 IdUbw4DeUDmsdHHZlpXnOHII7bZdO6LAyOf6jhBo7OZzoFsjpohQmlQLnRq0oh5dNb
+	 1B9vgxDGcgJDHdG+RYE407KZo0c5dBJqMPRWFxM/QpcjKNsjLs7zoBtcaH1h9PhFSf
+	 dlXfoQV5TSrIL13qb6nwW+mNydev+k/VigZnpEMOqTjFdCDy1AsKBHo6B7MI6o1kNw
+	 N5Ry83WakCVug==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAFFA380A97E;
+	Wed,  8 Jan 2025 02:20:38 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1a48feae-f55f-4df8-b165-84c1cb2f6658@collabora.com>
+Subject: Re: [PATCH net-next 0/9] net: dsa: cleanup EEE (part 2)
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173630283748.168808.8376692486322535765.git-patchwork-notify@kernel.org>
+Date: Wed, 08 Jan 2025 02:20:37 +0000
+References: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
+In-Reply-To: <Z3vDwwsHSxH5D6Pm@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com,
+ angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
+ daniel@makrotopia.org, davem@davemloft.net, dqfext@gmail.com,
+ edumazet@google.com, florian.fainelli@broadcom.com, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ sean.wang@mediatek.com, horms@kernel.org, UNGLinuxDriver@microchip.com,
+ olteanv@gmail.com, woojung.huh@microchip.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_150744_640329_D65073BA 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20250107_182018_124180_4F8ECD2E 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,46 +80,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 07, 2025 at 12:44:43PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 07/01/25 03:18, Jianjun Wang (王建军) ha scritto:
-> > On Fri, 2025-01-03 at 10:16 +0100, AngeloGioacchino Del Regno wrote:
-> > > Il 03/01/25 07:00, Jianjun Wang ha scritto:
-> > > > Disable ASPM L0s support because it does not significantly save
-> > > > power
-> > > > but impacts performance.
-> > > 
-> > > That may be a good idea but, without numbers to support your
-> > > statement, it's a bit
-> > > difficult to say.
-> > > 
-> > > How much power does ASPM L0s save on MediaTek SoCs, in microwatts?
-> > > How is the performance impacted, and on which specific device(s) on
-> > > the PCIe bus?
-> > 
-> > It's hard to tell the exact number because it is difficult to measure,
-> > and the number of entries into the L0s state may vary even in the same
-> > test scenario.
-> > 
-> > However, we have encountered some compatibility issues when connected
-> > with some PCIe EPs, and disabling the L0s can fix it. I think disabling
-> > L0s might be the better way, since we usually use L1ss for power-saving
-> > when the link is idle.
-> 
-> To actually decide, we should know what's actually broken, then.
-> 
-> Is the MediaTek controller broken, or is the device broken?
-> So, is it a MTK quirk, or a device quirk?
-> 
-> If the problem is actually device-related, then this should be handled as
-> a device-specific quirk, as not just MediaTek platforms would be affected
-> by compatibility issues.
-> 
-> If the MediaTek PCIe controller is at fault, instead, I agree about just
-> disabling L0s at the controller level - but then this shall be mentioned
-> in the commit message, and should have a Fixes tag as well.
+Hello:
 
-100% agreed, sorry for repeating what you just said before I finished
-reading the thread!
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Bjorn
+On Mon, 6 Jan 2025 11:51:31 +0000 you wrote:
+> This is part 2 of the DSA EEE cleanups, removing what has become dead
+> code as a result of the EEE management phylib now does.
+> 
+> Patch 1 removes the useless setting of tx_lpi parameters in the
+> ksz driver.
+> 
+> Patch 2 does the same for mt753x.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,1/9] net: dsa: ksz: remove setting of tx_lpi parameters
+    https://git.kernel.org/netdev/net-next/c/0945a7b44220
+  - [net-next,2/9] net: dsa: mt753x: remove setting of tx_lpi parameters
+    https://git.kernel.org/netdev/net-next/c/22cedc609759
+  - [net-next,3/9] net: dsa: no longer call ds->ops->get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/60c6e3a59299
+  - [net-next,4/9] net: dsa: b53/bcm_sf2: remove b53_get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/08cef9e1b083
+  - [net-next,5/9] net: dsa: ksz: remove ksz_get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/e2d1b8090b69
+  - [net-next,6/9] net: dsa: mt753x: remove ksz_get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/9e66e8ebe7a9
+  - [net-next,7/9] net: dsa: mv88e6xxx: remove mv88e6xxx_get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/d3889a3d1351
+  - [net-next,8/9] net: dsa: qca: remove qca8k_get_mac_eee()
+    https://git.kernel.org/netdev/net-next/c/d19be79a67b3
+  - [net-next,9/9] net: dsa: remove get_mac_eee() method
+    https://git.kernel.org/netdev/net-next/c/2fa8b4383d24
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
