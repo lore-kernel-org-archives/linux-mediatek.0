@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01399E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 13:02:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F87E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 13:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SknKNH/6YOQB/03edqm/b/mfOkuf62u/tkHcpJXwSIQ=; b=3eFPAxr7/yLA3nYpdc31akUty4
-	fJyCa9Zdx6Jjlz15ZuelHgkFvkJh2LtxmfXihgBs1UhelG9cYz8pRx0TxthQ8DqiXKxF0leSf3WCh
-	ARXM/1SF3jkLD/qS0xmLTgObnzEI+RFY3ehO4a3b5PabOTEdcRRungrRIGc/PCRLfXl0El/4r2P5X
-	KHmjx2zDqILDX9w3ikbgBMcEvjEYJbfdY5CrcKu1ao4CBLPtm41vUgR5UEzIgKb9QxRzxR08VBQCi
-	UobV9iCirBlJ0iFBxkTn6jkk1vcYl23k5KmGd8YIYSctr67AoJoz4PKmO5NDa2JIMgco+tY8WupWx
-	WDGwlGrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pbsIPENaTak5ngKp77odq0MaZnsc1/fTORrBGc6hWGk=; b=dup3cUlLZTwTxct8i2Tv7hcnkz
+	GM++QIjfCppGEEgGduikbbZ7ZPrCN6Aq4MX60yGlsjs/a34EzIKH0c64pUos8JPbinruQk8obTLlG
+	ceznCzQa6WaLJTK62i8Xu8tV/eTvdBxQifgxgUmInZckvszxhncxLW662ARmxuJOfH/g+/Ar/BXgI
+	ktLHE7kGryxfKygfmU4rIy6fhOkmgs+om7BtUHQw90BIpZwaC7b8PA6fAs0UJ8nGdZv1p4Lj3ouOx
+	EZIDpREZQbfm3+869WUO9jfz186f4zlLHgq7HgnDwNT3sQcIowhi9SSooi3OFZx23R5YB0K7129Sn
+	wpM4NTEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVVhP-00000008X41-3Zuu;
-	Wed, 08 Jan 2025 13:02:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tVVib-00000008XGs-02Gp;
+	Wed, 08 Jan 2025 13:03:29 +0000
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVV0G-00000008OPd-2YF6;
-	Wed, 08 Jan 2025 12:17:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736338657;
-	bh=Vnh+oOkgXUlVPFAt0gfMUQi6C8dArvTIpOxd/A+3DEQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dU295dGE/eDJDpTTubs/64hFUh5X8C63pJE+mfMiXgFSPA/yv+w2lDzzTP9SRAtyu
-	 AodPP0J2Bf0us0a5ys06bQw7+WTiviRm7d0bldGKEeNvis77LzZ/njhX1HvPKxsOrx
-	 JKV/ScD3hAUI+BeKv4+s5RbZ/a8MRhUHiKk+RJMlpSYNpWJtw3QocIEuPvN/rfioKG
-	 VWpITUd+sQYsrYwVOVkgbcQhO3Vx2q5Ggob7s4LPTQHk+YdaodE3J8B0thHs6EufvI
-	 B8U96UtQ0SDEhAoV5CQROyLMvcO5mAs4x+RdCvaFL4FOzH30hAJITyKI8z0M5RyGSk
-	 oI3gMxuyWwC1Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F3FA017E152E;
-	Wed,  8 Jan 2025 13:17:36 +0100 (CET)
-Message-ID: <f79db33f-ecab-48e6-a2f2-47228183a273@collabora.com>
-Date: Wed, 8 Jan 2025 13:17:36 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [GIT PULL] MediaTek ARM32 DTS updates for v6.14
-To: Matthias Brugger <matthias.bgg@gmail.com>, arm-soc <arm@kernel.org>,
- SoC Team <soc@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <ea93d0ea-a1a0-4d36-8880-4f05c85f0c1b@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <ea93d0ea-a1a0-4d36-8880-4f05c85f0c1b@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+	id 1tVV7j-00000008Pr0-3GWx
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jan 2025 12:25:24 +0000
+Received: by mail-pl1-x649.google.com with SMTP id d9443c01a7336-2163dc0f689so114965965ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jan 2025 04:25:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1736339122; x=1736943922; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=pbsIPENaTak5ngKp77odq0MaZnsc1/fTORrBGc6hWGk=;
+        b=Q7ugDGZd1S4dh0I1nqo5RUF8ATfu0mC/1aNRrC5Xeex7ncIcV7EWBmZr7pQbNs7iVT
+         bG9AH/KsfST2Ndio5fcA/lOYKF1CHKuESSDO0Nao2j8X8OPUPfzqK71mK+kCtReiWMHv
+         AxZFlxYBVxkmzH0/GaATIYUrKTjo7QJzcVOqJ0AZpqRliuP60FGwmf8B79Du2SDSBWNB
+         IyFwc4SnFqB1A4Y86wulG1t41Jmz/nyLfoxz/z0hw10jCGFSWkDMw2+7loVV4Ef0TUE+
+         smyMRqCQPiUk2Y0mPM3tWqQZrsxbzFEyzMuhpE6CP3Zvun8wIHC3J6e0EqtlZ9cKz5ME
+         l3/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736339122; x=1736943922;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pbsIPENaTak5ngKp77odq0MaZnsc1/fTORrBGc6hWGk=;
+        b=R5qoir/Jw8AlqQ+4qXKX63z/7tVyglfnQCkAagOd11el3JBbbhOM4Z0bD8rKN7Iy6/
+         /9MDuNSJ7ZEL+Un0X6bNdoWotAztRCvDy5oNeEFWFIl/F6dJH3KVnABRlWpxHJNxJKAT
+         4PpD47zWMpnbB+gKBQtH928k1PSewy5xkNmtiIh9+4dg/Fpi26hkNa+ZqmZQKGp8ySJA
+         A6QaiJaCsIX97CGXpzCipuRtr89m+Sj7jsxV7Yyk9EC8+0kq1PiLR1WHeYQHmAlh1f28
+         cn/uKu8hbD1kbJnyw4Chz9pRbeHiFvQHLUL+Jl5R9LXifSlEqwdFb/FmonefwIRATFEf
+         ViYA==
+X-Forwarded-Encrypted: i=1; AJvYcCW+p5n9NWB+zmB0JuAz7/AlGQNXCF3L8MvX0TLLHJUaPSrR8LyVHngRiTbCjYzKk/Dy2C8MULA0ij+yeMbvaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+aAhMznsbvQ6hi2uelGdxkMBdzccJW5/Jj10OSn0hx6e+GsW4
+	ubFzCfRZZhUxnTWTUf0BpKKhU0koK/AtrO49nfBdyS56TiJdUpRitbCW3XEv5MCyREDDOsjGLVN
+	W7hoxPw==
+X-Google-Smtp-Source: AGHT+IGjq+hYgA/Nz34xPugyz/a/Dm4vp6VflM9tKHIXxupKqgfhPnTStP9ZzV5y0kH9n9lSI3SqXwa8NYsB
+X-Received: from pfxa4.prod.google.com ([2002:a05:6a00:1d04:b0:728:e245:6e93])
+ (user=chharry job=prod-delivery.src-stubby-dispatcher) by 2002:a05:6a20:9144:b0:1e1:d22d:cf38
+ with SMTP id adf61e73a8af0-1e88cfd2144mr4760292637.21.1736339122405; Wed, 08
+ Jan 2025 04:25:22 -0800 (PST)
+Date: Wed,  8 Jan 2025 20:24:43 +0800
+In-Reply-To: <20250108202442.v3.1.I66a83f84dce50455c9f7cc7b7ba8fc9d1d465db9@changeid>
+Mime-Version: 1.0
+References: <20250108202442.v3.1.I66a83f84dce50455c9f7cc7b7ba8fc9d1d465db9@changeid>
+X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
+Message-ID: <20250108202442.v3.2.Icd16ca64a5d7e212c2801b3b39f65a895fb3e9b4@changeid>
+Subject: [PATCH v3 2/3] Bluetooth: Get rid of cmd_timeout and use the reset callback
+From: Hsin-chen Chuang <chharry@google.com>
+To: linux-bluetooth@vger.kernel.org, luiz.dentz@gmail.com
+Cc: chromeos-bluetooth-upstreaming@chromium.org, 
+	Hsin-chen Chuang <chharry@chromium.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_041740_797544_A204AA63 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20250108_042523_821340_B14B5831 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +96,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/01/25 13:14, Matthias Brugger ha scritto:
-> Hi Arnd,
-> 
-> Would you mind to pull the following patches.
-> 
+From: Hsin-chen Chuang <chharry@chromium.org>
 
-Thanks Matthias, I admit I did actually forget about the dts32 change :-)
+The hdev->reset is never used now and the hdev->cmd_timeout actually
+does reset. This patch changes the call path from
+  hdev->cmd_timeout -> vendor_cmd_timeout -> btusb_reset -> hdev->reset
+, to
+  hdev->reset -> vendor_reset -> btusb_reset
+Which makes it clear when we export the hdev->reset to a wider usage
+e.g. allowing reset from sysfs.
 
-Cheers,
-Angelo
+This patch doesn't introduce any behavior change.
 
-> Regards,
-> Matthias
-> 
-> ---
-> The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
-> 
->    Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
-> 
-> are available in the Git repository at:
-> 
->    https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk- 
-> dts32-for-v6.14
-> 
-> for you to fetch changes up to 90234cf9b37c57201a24b78c217a91a8af774109:
-> 
->    ARM: dts: mediatek: mt7623: fix IR nodename (2025-01-08 13:08:20 +0100)
-> 
-> ----------------------------------------------------------------
-> mt7623: fix validation error of ir-receiver
-> 
-> ----------------------------------------------------------------
-> Rafał Miłecki (1):
->        ARM: dts: mediatek: mt7623: fix IR nodename
-> 
->   arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Signed-off-by: Hsin-chen Chuang <chharry@chromium.org>
+---
 
+Changes in v3:
+- Fixed build failure
 
+ drivers/bluetooth/btmtksdio.c    |  4 ++--
+ drivers/bluetooth/btusb.c        | 18 +++++++++---------
+ drivers/bluetooth/hci_qca.c      |  6 +++---
+ include/net/bluetooth/hci_core.h |  1 -
+ net/bluetooth/hci_core.c         |  4 ++--
+ 5 files changed, 16 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index a1dfcfe43d3a..bd5464bde174 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -1249,7 +1249,7 @@ static int btmtksdio_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
+ 	return 0;
+ }
+ 
+-static void btmtksdio_cmd_timeout(struct hci_dev *hdev)
++static void btmtksdio_reset(struct hci_dev *hdev)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+ 	u32 status;
+@@ -1360,7 +1360,7 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 
+ 	hdev->open     = btmtksdio_open;
+ 	hdev->close    = btmtksdio_close;
+-	hdev->cmd_timeout = btmtksdio_cmd_timeout;
++	hdev->reset    = btmtksdio_reset;
+ 	hdev->flush    = btmtksdio_flush;
+ 	hdev->setup    = btmtksdio_setup;
+ 	hdev->shutdown = btmtksdio_shutdown;
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 916e9ec7bc85..c891da6483a7 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -907,7 +907,7 @@ static void btusb_reset(struct hci_dev *hdev)
+ 	usb_queue_reset_device(data->intf);
+ }
+ 
+-static void btusb_intel_cmd_timeout(struct hci_dev *hdev)
++static void btusb_intel_reset(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	struct gpio_desc *reset_gpio = data->reset_gpio;
+@@ -985,7 +985,7 @@ static inline void btusb_rtl_alloc_devcoredump(struct hci_dev *hdev,
+ 	}
+ }
+ 
+-static void btusb_rtl_cmd_timeout(struct hci_dev *hdev)
++static void btusb_rtl_reset(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	struct gpio_desc *reset_gpio = data->reset_gpio;
+@@ -1029,13 +1029,13 @@ static void btusb_rtl_hw_error(struct hci_dev *hdev, u8 code)
+ 	btusb_rtl_alloc_devcoredump(hdev, &hdr, NULL, 0);
+ }
+ 
+-static void btusb_qca_cmd_timeout(struct hci_dev *hdev)
++static void btusb_qca_reset(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	struct gpio_desc *reset_gpio = data->reset_gpio;
+ 
+ 	if (test_bit(BTUSB_HW_SSR_ACTIVE, &data->flags)) {
+-		bt_dev_info(hdev, "Ramdump in progress, defer cmd_timeout");
++		bt_dev_info(hdev, "Ramdump in progress, defer reset");
+ 		return;
+ 	}
+ 
+@@ -3859,7 +3859,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 
+ 		/* Transport specific configuration */
+ 		hdev->send = btusb_send_frame_intel;
+-		hdev->cmd_timeout = btusb_intel_cmd_timeout;
++		hdev->reset = btusb_intel_reset;
+ 
+ 		if (id->driver_info & BTUSB_INTEL_NO_WBS_SUPPORT)
+ 			btintel_set_flag(hdev, INTEL_ROM_LEGACY_NO_WBS_SUPPORT);
+@@ -3879,7 +3879,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->setup = btusb_mtk_setup;
+ 		hdev->shutdown = btusb_mtk_shutdown;
+ 		hdev->manufacturer = 70;
+-		hdev->cmd_timeout = btmtk_reset_sync;
++		hdev->reset = btmtk_reset_sync;
+ 		hdev->set_bdaddr = btmtk_set_bdaddr;
+ 		hdev->send = btusb_send_frame_mtk;
+ 		set_bit(HCI_QUIRK_BROKEN_ENHANCED_SETUP_SYNC_CONN, &hdev->quirks);
+@@ -3911,7 +3911,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		data->setup_on_usb = btusb_setup_qca;
+ 		hdev->shutdown = btusb_shutdown_qca;
+ 		hdev->set_bdaddr = btusb_set_bdaddr_ath3012;
+-		hdev->cmd_timeout = btusb_qca_cmd_timeout;
++		hdev->reset = btusb_qca_reset;
+ 		set_bit(HCI_QUIRK_SIMULTANEOUS_DISCOVERY, &hdev->quirks);
+ 		btusb_check_needs_reset_resume(intf);
+ 	}
+@@ -3925,7 +3925,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		data->setup_on_usb = btusb_setup_qca;
+ 		hdev->shutdown = btusb_shutdown_qca;
+ 		hdev->set_bdaddr = btusb_set_bdaddr_wcn6855;
+-		hdev->cmd_timeout = btusb_qca_cmd_timeout;
++		hdev->reset = btusb_qca_reset;
+ 		set_bit(HCI_QUIRK_SIMULTANEOUS_DISCOVERY, &hdev->quirks);
+ 		hci_set_msft_opcode(hdev, 0xFD70);
+ 	}
+@@ -3944,7 +3944,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		btrtl_set_driver_name(hdev, btusb_driver.name);
+ 		hdev->setup = btusb_setup_realtek;
+ 		hdev->shutdown = btrtl_shutdown_realtek;
+-		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
++		hdev->reset = btusb_rtl_reset;
+ 		hdev->hw_error = btusb_rtl_hw_error;
+ 
+ 		/* Realtek devices need to set remote wakeup on auto-suspend */
+diff --git a/drivers/bluetooth/hci_qca.c b/drivers/bluetooth/hci_qca.c
+index 37129e6cb0eb..c7ef38fd5e8e 100644
+--- a/drivers/bluetooth/hci_qca.c
++++ b/drivers/bluetooth/hci_qca.c
+@@ -1638,7 +1638,7 @@ static void qca_hw_error(struct hci_dev *hdev, u8 code)
+ 	clear_bit(QCA_HW_ERROR_EVENT, &qca->flags);
+ }
+ 
+-static void qca_cmd_timeout(struct hci_dev *hdev)
++static void qca_reset(struct hci_dev *hdev)
+ {
+ 	struct hci_uart *hu = hci_get_drvdata(hdev);
+ 	struct qca_data *qca = hu->priv;
+@@ -1968,7 +1968,7 @@ static int qca_setup(struct hci_uart *hu)
+ 		clear_bit(QCA_IBS_DISABLED, &qca->flags);
+ 		qca_debugfs_init(hdev);
+ 		hu->hdev->hw_error = qca_hw_error;
+-		hu->hdev->cmd_timeout = qca_cmd_timeout;
++		hu->hdev->reset = qca_reset;
+ 		if (hu->serdev) {
+ 			if (device_can_wakeup(hu->serdev->ctrl->dev.parent))
+ 				hu->hdev->wakeup = qca_wakeup;
+@@ -2202,7 +2202,7 @@ static int qca_power_off(struct hci_dev *hdev)
+ 	enum qca_btsoc_type soc_type = qca_soc_type(hu);
+ 
+ 	hu->hdev->hw_error = NULL;
+-	hu->hdev->cmd_timeout = NULL;
++	hu->hdev->reset = NULL;
+ 
+ 	del_timer_sync(&qca->wake_retrans_timer);
+ 	del_timer_sync(&qca->tx_idle_timer);
+diff --git a/include/net/bluetooth/hci_core.h b/include/net/bluetooth/hci_core.h
+index 84b522a10019..f756fac95488 100644
+--- a/include/net/bluetooth/hci_core.h
++++ b/include/net/bluetooth/hci_core.h
+@@ -633,7 +633,6 @@ struct hci_dev {
+ 	int (*post_init)(struct hci_dev *hdev);
+ 	int (*set_diag)(struct hci_dev *hdev, bool enable);
+ 	int (*set_bdaddr)(struct hci_dev *hdev, const bdaddr_t *bdaddr);
+-	void (*cmd_timeout)(struct hci_dev *hdev);
+ 	void (*reset)(struct hci_dev *hdev);
+ 	bool (*wakeup)(struct hci_dev *hdev);
+ 	int (*set_quality_report)(struct hci_dev *hdev, bool enable);
+diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
+index 899b6f81966a..67032d21540c 100644
+--- a/net/bluetooth/hci_core.c
++++ b/net/bluetooth/hci_core.c
+@@ -1457,8 +1457,8 @@ static void hci_cmd_timeout(struct work_struct *work)
+ 		bt_dev_err(hdev, "command tx timeout");
+ 	}
+ 
+-	if (hdev->cmd_timeout)
+-		hdev->cmd_timeout(hdev);
++	if (hdev->reset)
++		hdev->reset(hdev);
+ 
+ 	atomic_set(&hdev->cmd_cnt, 1);
+ 	queue_work(hdev->workqueue, &hdev->cmd_work);
+-- 
+2.47.1.613.gc27f4b7a9f-goog
 
 
