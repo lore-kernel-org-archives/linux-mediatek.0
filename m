@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E9BE77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 10:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC88BE77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 10:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqfxwa8RmEYagczkDcDe4NEsQsvqLAihivl7XDfWlLc=; b=VYfX5nrVObt3LXiL/QjgFjO0yz
-	f1br+TQEbGKWrUukq6rP6w6sbB2g4OjjDWJ9gqqjpvL2y+rQX7eJLJhswM2kcOW2jeemq+ooSJZX2
-	/1fHaQGlBbwp3kAaRD3yDrsYVrhNYBsMq5bnHSwZqwTAORDZhxVEkygPrqweTP5UqzTiFxzI7ylRj
-	AtyWKB+CC7wPOAi0n0pHzqc9PFOx96BPs11aD7Czo3LIlGHSNOHMCLKGRQUotr5kRT498HrF4RQqh
-	ZJ2G9rIoRtquDxhN5rgN0j7j7eHfYhSXRkISOMKvvrp0/YLJmWQkskSchk1ql905g5ING+JqXiHmv
-	QYVJYzoQ==;
+	bh=KT2tjX9XygehrPkf2HczMv0gnXRcahbcg4wPmSSPfgs=; b=1+8jSaYUn1xzM6Nj91w6/znzWD
+	OTysa3vx9K+DsfrRtLBuZLg8HwWGWZCRHTane3sd5RaM8so6F5GFa4Xuwb6/9+c68RL5ZYe5HEXDJ
+	0o79EzYeAdiDoDIMTjZ/ogQODvMD2oOBJ0ZyiRoMM6rcLVayoFd9+98sHd+bKY5juYnPwKQ0JuUJh
+	+Q3mVBV/xYdPX2FdSHpWa/wYz4XxVQbDqmiP+6Oku4IVuapHWra2hMrjmq6Tqo4F/8Y6HALHifUbB
+	DhOc5quslhDjxjkdqe7zE+3+A+A1RcS+uxhJpS/xIZKVHGSN7wd9RC7UxKv3dfMyMTpAgVhu0oAgh
+	Joljjztw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVSyS-00000007uZB-3SNN;
-	Wed, 08 Jan 2025 10:07:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tVT4j-00000007w9O-0OUt;
+	Wed, 08 Jan 2025 10:14:09 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVSiZ-00000007s3Z-0GxD;
-	Wed, 08 Jan 2025 09:51:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 688215C297A;
-	Wed,  8 Jan 2025 09:50:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1328C4CEE0;
-	Wed,  8 Jan 2025 09:51:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736329874;
-	bh=hPN4D7FTStknqbjGuFANLoFGFT58qAH7862kTNVFYwA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=itGVqydCr2lYckymqpdNsd6/HKnE9ZZQ5cRpX4UWKzJExf7kJ3/FnMZcLeLcg2jtu
-	 j/QDKg8BsRqnEqa/DioRev+WvSQ9CrzButK5VYMEx68n1K2ETitduLva/aFxYHvSvq
-	 Kvdae98yeostOtMyFmIdk2DAUCyRKjEE5yxPNAzcCDeNX4rVuWYuEpQv26Q7yjs5lo
-	 uIPw/f6ZhNFnHmSwB0IEjqto4PVUYFiNtyPjok4Flu/sRsh9c+2pD409pmT6XLqbsW
-	 JqsjYEFgDiQglzmUwUrT6e/uYYWKa79moUak+9pJvKoHuiyr62dORkWBDr9nhPVb0k
-	 IeTBMmBgMgC6A==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 08 Jan 2025 10:50:44 +0100
-Subject: [PATCH v6 5/5] PCI: mediatek-gen3: rely on msleep() in
- mtk_pcie_en7581_power_up()
+	id 1tVSzO-00000007ul5-3PEA;
+	Wed, 08 Jan 2025 10:08:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1736330917;
+	bh=XNjr7+7H8RUJt2sqVP/iNW1KTrzDKKV78lvp4eyy0HU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OVyOKK8mQVXl/TXIcHhNxU7TONEN4o89LU7FehSU8zgoP/LxwpQ6Fquq2y1w27Q+3
+	 yiOV/Yxuf9cLNw35tNhOxyHz7evCfgsd9CocxAXcUVE0+zcEfkswOvCaF/Xcndkqyq
+	 7V68srxUSv6U7ZE866NeAAI0JUcc1HycAkNTlwngq2EIEDCVALd0ldQzHqz2rWy/5P
+	 Bcf4AnpogZmKOhadrmW1Q3qyPJM8Jpn02pcmCBvBL7hlktv9CbUTmAmBwoi63WS5Nz
+	 slffg9qk+9kJffF8ljkGlJPveZrIUBiEa95hbLqxLt+T4j+QC9AmuLNaRwd0SL4erR
+	 HLSXr2v8bmwnw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 12AE117E1555;
+	Wed,  8 Jan 2025 11:08:37 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: matthias.bgg@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [GIT,PULL,3/3] MediaTek ARM64 defconfig updates for v6.14
+Date: Wed,  8 Jan 2025 11:08:24 +0100
+Message-ID: <20250108100826.32458-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20250108100826.32458-1-angelogioacchino.delregno@collabora.com>
+References: <20250108100826.32458-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250108-pcie-en7581-fixes-v6-5-21ac939a3b9b@kernel.org>
-References: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
-In-Reply-To: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_015115_152249_73CB8969 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20250108_020838_991113_47D5CB50 
+X-CRM114-Status: UNSURE (   6.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +76,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since mtk_pcie_en7581_power_up() runs in non-atomic context, rely on
-msleep() routine instead of mdelay().
+The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+  Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 01e0b53cc1f22fc4b9270a2eb6a55e8948ba2f8b..aa511965eb914f7e58e78194491ca7a23790b99d 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -923,7 +923,7 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	reset_control_assert(pcie->mac_reset);
- 
- 	/* Wait for the time needed to complete the reset lines assert. */
--	mdelay(PCIE_EN7581_RESET_TIME_MS);
-+	msleep(PCIE_EN7581_RESET_TIME_MS);
- 
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
-@@ -951,7 +951,7 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	 * Wait for the time needed to complete the bulk de-assert above.
- 	 * This time is specific for EN7581 SoC.
- 	 */
--	mdelay(PCIE_EN7581_RESET_TIME_MS);
-+	msleep(PCIE_EN7581_RESET_TIME_MS);
- 
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
+are available in the Git repository at:
 
--- 
-2.47.1
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-defconfig-for-v6.14
 
+for you to fetch changes up to cab316255951188fb2847af04f2123c1ab85dadf:
+
+  arm64: defconfig: Enable MediaTek DWMAC (2024-12-23 12:08:29 +0100)
+
+----------------------------------------------------------------
+MediaTek soc defcofnig updates for v6.14
+
+This enables building modules for the integrated Ethernet
+controllers (MediaTek STAR and MediaTek DWMAC Glue layer)
+found on various MediaTek SoCs, and building modules for
+enabling the sound card on MT8188 and DSP on MT8186.
+
+----------------------------------------------------------------
+Nícolas F. R. A. Prado (3):
+      arm64: defconfig: Enable MediaTek STAR Ethernet MAC
+      arm64: defconfig: Enable sound for MT8188
+      arm64: defconfig: Enable MediaTek DWMAC
+
+ arch/arm64/configs/defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
