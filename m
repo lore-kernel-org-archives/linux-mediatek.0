@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E260DE77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 07:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDB96E77199
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 08:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s95hxNS6GtC/Rq6I7d0DUMwyF0BG1XDuUN59XWNErcw=; b=ztldKFFdb/3hz7RuAzdztS/Cd8
-	dPtYwzr9YdGVtFeYdz5wLn9VyzNhjIA4WAK0c5vgPw4kPTrfbN4oHgIvBnaRvk18cNk9+nqQOyuN+
-	A240yvNR3lxSQEXTfEWSSrQtMWU++0W+x2AezlYWSWgJgfTZR1ed7HFoo6L41RG9tnV9cWU8yZYSr
-	zNzd0C7CEiAyTlekNd3GyVGbLsCstyCRHtGsXqXBcNAE/J1uN8JtkMy+FNMaiqWdevmIiAfvgsrdy
-	bX/xQcVH/4vAo2g0I9PoSkOYBY9jDAZR5PgAiz5ZG4pY8q+hK9W4X5E1hTOmq3GUtaLU7fkkMAykn
-	YWM6zAog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6yT7PDGcmb4Uh7Y9LbNOdh/0wSRSH7b4rMO8FJwe4BM=; b=BfM1oEGMyBOKgb6kvkmSmCV8IA
+	nRteZplRP6+kw1D6KYpokWwyBEB48dU0Yuj/7nMLR/sWn6Qr+KDCSy9/1avSR3qFLsHk4sRDXjmfS
+	fWEVUBl3rjHjUQREQ0wVFrWwHMVQvEuwLp2e/Thk7IpcHi0ZODW1Li8sRqxwj46MiaPGx2tSYXx4N
+	6kWN1zaLC8NyFVOj2mmXKhZ0x/f9yC4vjWmIRo1zXfQueg5kiO2wmaPTOGyKlvivpARDXPxF/RSyY
+	fMpfwB7Je5kBcl94QGVupGJPX5wDo7El/uKxT0A58jD78MCZAoD1Ds9RxorvN9Kqb86oydHa92Jw2
+	ezQsYGpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVQwR-00000007UR8-2tKr;
-	Wed, 08 Jan 2025 07:57:27 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1tVRWJ-00000007ZgK-408W;
+	Wed, 08 Jan 2025 08:34:31 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVQvE-00000007UHW-0yr6;
-	Wed, 08 Jan 2025 07:56:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736322972; x=1767858972;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/QcfGI/qmLmQrg3iSpWplrD8SEdcAMM2P3QcElzS3Ow=;
-  b=DZ51fpL7VFaz1cqoOnIF1OxepxnhMvLbuZsAegptTrlTT6Sus4ISjRMS
-   MGPBrF+0iTijEPWb4ipsSXw8AHfdNUBr5VlZW21+Oo0RKLGnQpz2dXZZl
-   J67Yxn42dIGdgO1UbwoGZltzHANLEJwP2ijuSI+YC2kP9onU4pOZX/UBt
-   MZ9rsu0GXUojaeVzb3Y1j7XJB4YZUj+jzrmoyhtUKdHMOsb1R93r5zhFv
-   7nmD5J1Ye+FFz7JrdKdyAGzSNR7GX4ntUEZp9Fy4BrViA9+qe3laOTST8
-   1j+S124yJFwKeI+AvywDuJ1sGcRzvzFR+tWRJSiUgaNsquS7tVRUJoVxN
-   w==;
-X-CSE-ConnectionGUID: qKne6AzwSH+wWPVkbh0jNA==
-X-CSE-MsgGUID: C5VyPWG3SDWqyOKGngtfqQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11308"; a="47111396"
-X-IronPort-AV: E=Sophos;i="6.12,297,1728975600"; 
-   d="scan'208";a="47111396"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Jan 2025 23:56:07 -0800
-X-CSE-ConnectionGUID: 8llnFxfZSNiF/vYvIByBGw==
-X-CSE-MsgGUID: MBrq0LQsSbezJ3pnLT967Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="108072980"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Jan 2025 23:56:04 -0800
-Date: Wed, 8 Jan 2025 08:52:46 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1tVRWH-00000007ZfK-36jQ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jan 2025 08:34:31 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2166360285dso247195355ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jan 2025 00:34:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1736325269; x=1736930069; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6yT7PDGcmb4Uh7Y9LbNOdh/0wSRSH7b4rMO8FJwe4BM=;
+        b=himosNZalKb/f2vEOoDHQDe9eNGE8Y0A1fcb7kcdLoIdfue4sZbhAXmksbvKq2PrC+
+         MxVeMOiMx/YW4X6jwuO3vXR/D03dpEERy8IZdqZvolqmqOa/MN0Uvoirt0kQJelxnZS2
+         lGV9ylu3I089kiyJ8HZMO4+smmflkcwC9syNQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736325269; x=1736930069;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6yT7PDGcmb4Uh7Y9LbNOdh/0wSRSH7b4rMO8FJwe4BM=;
+        b=Wt4z4t8HgQKyp4L7NE4H53eDgUrIImKbP/Tp91C5aS0kS/sQP6rTIQmjXLwp65KwXU
+         R17mSj4CH7ogniDshrTChZLPxXpPAXscA5ByVOveixGuaoVohNUZk7+EYlN2Zp3Bne8j
+         wIDW+bjDTxMZhJ6+lLJjgDrKpftHSb/33Poh3wDkvid0eMHVVfkENnNdYihIXGmdLt/o
+         GlBkrp6STpl0tDfnOsqkl6t4CqEq9s0zoMXNKThdI29z1HwqVxL2gem8Qx1m/TzJfvra
+         /+fR5tZgfI8u//LiQgMCzmChB0bbnkB3x7JnUavX2tfRadiccgdulqL7QgX7DLBSBzMh
+         +StA==
+X-Forwarded-Encrypted: i=1; AJvYcCVEVnQSM88WYO/qJVTelDu2iCCcWWoE1mmE/sDaublIiPfn/v61qlxs3dB+f3+rjLZfwng02Bh8hSMY/HOnpg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzD1HtrI02cqvGUsAvRbpMbkOW+YgeKjz7NkvHXegQTpIo8+m9h
+	XWFHn4HNLDyOiPIkrS4wEfiwGv+htsRaUjrl7LQfCM5o2kfS3RNC5UMpGGa7hQ==
+X-Gm-Gg: ASbGncvTrg3Ozy8Rp5+NDqs/vZOlP2YM5T8n1MxmGcAfHSWQZwyov5WADmGpXY11eU4
+	btGxtvWBUGuf9LSNIPzarBydczY8fe2ZqrJjao5En/FOFSmti1cQvA1tHOn+02UyjmOS/iYFdsx
+	cr4m1km08v2nei4pHYg8p3c1e/S6lKfLNGxNNExlA6pQVIXaGQ4fF5RhsMgPiHHt1zJGAFnZEBY
+	AHtngG0r14IlqnGXPCcyNspd/rr8BR+IoA1hZsCxjxlh3rlzKrUyAcV/CZba2YdueDPw8usqIE=
+X-Google-Smtp-Source: AGHT+IEufyJ9Z1gHFaHVltf5vZ4SxHR+JVTg5Ok01+7e6JirHWxkfmRu+e5XrZq2fBo0mVrBTIoNOg==
+X-Received: by 2002:a05:6a20:4394:b0:1e1:b8bf:8e80 with SMTP id adf61e73a8af0-1e88d2fc8c4mr3918189637.41.1736325269073;
+        Wed, 08 Jan 2025 00:34:29 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:511d:2d5f:1021:f78f])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad8361b7sm34602275b3a.74.2025.01.08.00.34.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jan 2025 00:34:28 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Fix channel configuration for ETS
- Qdisc
-Message-ID: <Z34uzoVY0exNKw8c@mev-dev.igk.intel.com>
-References: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH 1/3] arm64: dts: mediatek: mt8173-elm: Drop pmic's #address-cells and #size-cells
+Date: Wed,  8 Jan 2025 16:34:21 +0800
+Message-ID: <20250108083424.2732375-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_235612_290312_55AFB3A2 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20250108_003429_807009_13BB0EF6 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,46 +96,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 07, 2025 at 11:26:28PM +0100, Lorenzo Bianconi wrote:
-> Limit ETS QoS channel to AIROHA_NUM_QOS_CHANNELS in
-> airoha_tc_setup_qdisc_ets() in order to align the configured channel to
-> the value set in airoha_dev_select_queue().
-> 
-> Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/mediatek/airoha_eth.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-> index b9f1c42f0a40ca268506b4595dfa1902a15be26c..a30c417d66f2f9b0958fe1dd3829fb9ac530a34c 100644
-> --- a/drivers/net/ethernet/mediatek/airoha_eth.c
-> +++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-> @@ -2840,11 +2840,14 @@ static int airoha_qdma_get_tx_ets_stats(struct airoha_gdm_port *port,
->  static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
->  				     struct tc_ets_qopt_offload *opt)
->  {
-> -	int channel = TC_H_MAJ(opt->handle) >> 16;
-> +	int channel;
->  
->  	if (opt->parent == TC_H_ROOT)
->  		return -EINVAL;
->  
-> +	channel = TC_H_MAJ(opt->handle) >> 16;
-> +	channel = channel % AIROHA_NUM_QOS_CHANNELS;
-> +
->  	switch (opt->command) {
->  	case TC_ETS_REPLACE:
->  		return airoha_qdma_set_tx_ets_sched(port, channel, opt);
-> 
-> ---
-> base-commit: a1942da8a38717ddd9b4c132f59e1657c85c1432
-> change-id: 20250107-airoha-ets-fix-chan-e35ccac76d64
-> 
-> Best regards,
-> -- 
-> Lorenzo Bianconi <lorenzo@kernel.org>
+The PMIC has child nodes for each of its functions. It is not an actual
+bus and no addressing is involved.
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Dropping the bogus properties fixes a DT validation error:
+
+    arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: pmic: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
+            from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202412212322.JTFpRD7X-lkp@intel.com/
+Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index b5d4b5baf478..0d995b342d46 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -925,8 +925,6 @@ &pwm0 {
+ &pwrap {
+ 	pmic: pmic {
+ 		compatible = "mediatek,mt6397";
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+ 		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-controller;
+ 		#interrupt-cells = <2>;
+-- 
+2.47.1.613.gc27f4b7a9f-goog
 
 
