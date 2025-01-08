@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03DD3E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 11:57:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9327E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 11:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j3vpMWMDtclxsy3d7wS3n+T/g6q+C39m4ug7J5yKrjU=; b=bOIs9PlNaGBs+f82fw5GRbrEv1
-	a8R3gzYOIvaP+0W0XXq+xUk/W9WOjY4nSBTx9DT8IPnXvHjojJ94edRoSV/8lW+re3q40olnK89Ab
-	bjYOyThuf2jDmrhKnDEoFR02hOWw46VmotyHM4pq42XDN47qjExgxvB6doKihy/hOu72wqJkgxTr2
-	Ef7aZBuWKSX4UNo47XJw6PS3akctqQ1Jr6wQzEnopxQAEwBJFS83Z/ZUZTmNck92WCFlobLD+jAV8
-	ok23ADh5n1uNUus8aWIPkWV5ctxSZWZF5tTG3hTNucCVTOXZamcuLXYsr96vhjrujlKMAlHWap2KO
-	pFn5M7jA==;
+	bh=HL2NFy1g4xDvk7OrGmx/BY9HyA139+Ec53zHlLDIGvE=; b=2fTtgISeC6xvg5mT7l+USWTngW
+	Xlg0fCic+K1dJjBeG5oc8HmjjCckJwVIVCdFwYTgifzusrqENHwANrKIHtKu6SY/rhhZiDfsKJdUX
+	Gt0CEtfjy/0vGXQ8zwk7BKOkWA+i/0mC3fbgWMmAPbrQ3CzzQrDfEZ00SBdc4sZBJ+hZRTZ6VYMUr
+	fYVUAYrY6DVQqhXjjp65jeGXelmKNZV6VsYslwxJkh26lShqhc7HNVsr1YN89OTySDAMz5hCKhnwa
+	vO7sz/RKFQ0pIZfefY+3SLE5Uy3j9Qvd0lObv0wx3dXiIlslUDnCOYzmQ5/gZldKpTV52DwsrDFAD
+	5b5cjMMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVUgb-00000008KGn-0LWc;
-	Wed, 08 Jan 2025 11:57:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tVUhm-00000008Kc4-00cb;
+	Wed, 08 Jan 2025 11:58:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVUEk-00000008CWP-38np;
-	Wed, 08 Jan 2025 11:28:35 +0000
+	id 1tVUEm-00000008CXW-1CBr;
+	Wed, 08 Jan 2025 11:28:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736335713;
-	bh=q5GaH7cXP5oXFqTHRfcZX5XakVx1t07qmKY1REFce6k=;
+	s=mail; t=1736335715;
+	bh=WfGh8V4ZTmQDPQ/inKwv9tchKgtASbWDAHeucVmHQNs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C51dj+Vg8k4vK4OgzYW13kgdxlXDw03iLn4bIGHmYlK6frwuerF7Z7f6v3YJU1+gB
-	 j7ipyC0ugQdIF43J+QR+t23NzSGDnRRZDtmcN9fdqt2raa/OB2sji8tWEGZ2R8vceI
-	 PysFrO2Y2wlKi5FkuH0hcSJ8v/J9WfNff3d0GhWbz2nqWFMqf1mvYZuajOF6mgeIfl
-	 PcIm5/lwXLlMAzwzD1qEKEIwxmRcQKCwmscekluaJlgdbOASzmgYv+LmEhAiKFbYeu
-	 unCetogG66DH0EjjE0hHAa46n05siETSlB3VjTQsqJLfHsUW7ibwunsscV07y9QbKf
-	 bkuaMJAJf5LRQ==
+	b=oF18cXjPWjpmiV0rvu1m6Cy5Gh+JOVgYZwn/5kI097BwByrWt6m6GLOqMyW/+8S9/
+	 yI8rDI8Lq9Nt1V6Fx//0RoYssjwZYFB7WasAbXQ93ugHZvIo1/G0tyq238bDzAyhcH
+	 juWALk0nsgcOFxbejxkh5bAujv6ZMeTGv1C4NVwKNhYfoaiEWK+6/aLJUCt9Kpb7zZ
+	 HbKpKxCWo/Qc0q+uABxTX5D1NoZzJLCrL7nEJyH87X3R1lSF3SfQaqQR22NGhMg0TC
+	 RK2igw5+jAQwZH0uFt/Yp6+xOBrX5ceaUxuVjuoYxUFIC+3fvpgZRO4i2QMZpOGKAL
+	 zw+HhPeSPCfUg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2625D17E1555;
-	Wed,  8 Jan 2025 12:28:32 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A6DD117E156C;
+	Wed,  8 Jan 2025 12:28:33 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -71,17 +71,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v4 23/34] drm/mediatek: mtk_hdmi: Move output init to mtk_hdmi_register_audio_driver()
-Date: Wed,  8 Jan 2025 12:27:33 +0100
-Message-ID: <20250108112744.64686-24-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 24/34] drm/mediatek: mtk_hdmi: Use devm managed version of drm_bridge_add
+Date: Wed,  8 Jan 2025 12:27:34 +0100
+Message-ID: <20250108112744.64686-25-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20250108112744.64686-1-angelogioacchino.delregno@collabora.com>
 References: <20250108112744.64686-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_032834_930822_22B846CE 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20250108_032836_472076_3A29DE3B 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,88 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for moving the common bits of this driver, merge the
-contents of mtk_hdmi_output_init in mtk_hdmi_register_audio_driver
-function to aggregate all of the initial audio setup together in
-the same function and to make it clear that all of the setup that
-is performed in mtk_hdmi_output_init is specifically related only
-to audio and not video.
+Simplify the probe/remove functions by using devm_drm_bridge_add()
+as now there is no more need to manually remove the bridge.
 
-While at it, also remove the "%s driver bound to HDMI" debugging
-print disguised as informative.
-
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 28 ++++++++--------------------
- 1 file changed, 8 insertions(+), 20 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 970392a094e0..cc75f9caabc5 100644
+index cc75f9caabc5..772032b59ef0 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1025,20 +1025,6 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
- 	return 0;
- }
- 
--static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
--{
--	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
--
--	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
--	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
--	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
--	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
--	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
--	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
--
--	return 0;
--}
--
- static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
- {
- 	mtk_hdmi_hw_send_aud_packet(hdmi, true);
-@@ -1617,6 +1603,7 @@ static void mtk_hdmi_unregister_audio_driver(void *data)
- static int mtk_hdmi_register_audio_driver(struct device *dev)
- {
- 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-+	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
- 	struct hdmi_codec_pdata codec_data = {
- 		.ops = &mtk_hdmi_audio_codec_ops,
- 		.max_i2s_channels = 2,
-@@ -1625,6 +1612,13 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
- 	};
- 	int ret;
- 
-+	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
-+	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-+	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
-+	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
-+	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
-+	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+@@ -1672,14 +1672,15 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
+ 	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
+ 	hdmi->bridge.vendor = "MediaTek";
+ 	hdmi->bridge.product = "On-Chip HDMI";
+-	drm_bridge_add(&hdmi->bridge);
 +
- 	hdmi->audio_pdev = platform_device_register_data(dev,
- 							 HDMI_CODEC_DRV_NAME,
- 							 PLATFORM_DEVID_AUTO,
-@@ -1638,7 +1632,6 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
- 	if (ret)
- 		return ret;
++	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to add bridge\n");
  
--	DRM_INFO("%s driver bound to HDMI\n", HDMI_CODEC_DRV_NAME);
+ 	ret = mtk_hdmi_clk_enable_audio(hdmi);
+-	if (ret) {
+-		drm_bridge_remove(&hdmi->bridge);
++	if (ret)
+ 		return dev_err_probe(dev, ret,
+ 				     "Failed to enable audio clocks\n");
+-	}
+ 
  	return 0;
  }
+@@ -1688,7 +1689,6 @@ static void mtk_hdmi_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
  
-@@ -1667,11 +1660,6 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
- 	mutex_init(&hdmi->update_plugged_status_lock);
- 	platform_set_drvdata(pdev, hdmi);
+-	drm_bridge_remove(&hdmi->bridge);
+ 	mtk_hdmi_clk_disable_audio(hdmi);
+ }
  
--	ret = mtk_hdmi_output_init(hdmi);
--	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to initialize hdmi output\n");
--
- 	ret = mtk_hdmi_register_audio_driver(dev);
- 	if (ret)
- 		return dev_err_probe(dev, ret,
 -- 
 2.47.0
 
