@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E264E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 11:48:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 574D1E77188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2025 11:50:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3d8zUsfmz0FJPF2wq2d6wyM7oqPQuRdSAn79hoRtmFA=; b=uBdIhooUEArFnSxM4Ti0CDQtTp
-	rAyMnSBblm1jZ2/R3Wro1UMgxHVMBDaIM/1gFYRHktLnupAC8e1Vs0Z+o5JfJvI6hRZAgqtLIOcAK
-	Wl8h1T3byMav3sjFABps56bpvsmyaC0k8Xzb370TsX8ysUJ4IKmyfvbalqX+clXk36KgA92UwFW2q
-	4tXkgldMEbbtpgSyRCEreebrVAYRWqFYvruBlHkmXp6V0YjQE0wHaxbc1VMDeVg2XS6Cx9NdA6Cox
-	yV0Lmh8pcvdYMnnUaqmxmR0o9+zDnFtgBs8JkiKCrU5xEuAMAhCSSY5kPNgD4Btn8clKZ7uFP/lCL
-	+pW9Mzfg==;
+	bh=8C/aljvRX2chdam1QsBXQ9l2MHdSYLSL+YxaH40A3Kw=; b=xg4Nxu0t6taIVm7W/+PONvqybm
+	LNXdzMcZ6bCdXGTeudKpUxuqvyHCJ2mRvDC1vEI5nVmmefcvoXyjGn7q61mbtLz65Bn5XFepMqo1X
+	Q4vvr/2TlPd/6GDfyKeBAeTLoFyo4AfF4B8OrsMY2hGbjI4Ki9l/zh6q+aFyklho08qGDj9GoBTXW
+	MxuWdGRPdtyr98CtMRxtrAcY4bZN+V9vTSJqM6mQBYr8m2OO7nvRT0cCZ9gAEdoy9hTXPyYqrAvpe
+	ZJ2bwLVaIpFnf5MM5RKG0bixWX0JYEN50VgkPyL6yYEH/6N13CWFBIqvhUn/HTph47SROIk+MMhGw
+	rViSNbTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVUYK-00000008Hj7-1wNo;
-	Wed, 08 Jan 2025 11:48:48 +0000
+	id 1tVUZV-00000008I0H-1twn;
+	Wed, 08 Jan 2025 11:50:01 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVUEY-00000008CNh-2Ddp;
-	Wed, 08 Jan 2025 11:28:23 +0000
+	id 1tVUEb-00000008CPx-2ZLF;
+	Wed, 08 Jan 2025 11:28:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736335701;
-	bh=NZSnEUB/SVNMeIJjXONRYDgnR9zytZjKy7YMjtnHCpU=;
+	s=mail; t=1736335704;
+	bh=OTwvnqtlOcVcl9hJuz+F883r8Mc20YLewQJBCFo3fKI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TG5X00h+pLNWEv8UIYcYrDsbEaJaVjzQO1t3iC4ekA8br0UoZWWKpF2dUjuiX7gxv
-	 dx+G0T+EYeFkIFgzi7mRU2dVciQ2wbNtD0gryfh9GfIB/80YkeD7vSK59y7ga9Ob+U
-	 lItqoFNgbpOs/pk0So0B0KsloDwRmUVo0wH8w+ogc1d9x13xFy1MtxVzkIOQy+yAAQ
-	 V55AtrZPV73R61xj2NcApIhRc75SIBNZ7QobqtYl2g+ryQuoY+P0RZWupYG/hORCuU
-	 DW+rhj+leLMgFn75uWqI2zAa2DvdeyfQktnIw/8cAHuRzoUbPA7rmmQmWPOKn7iJtv
-	 FoHy51/2Hue+Q==
+	b=XoO4zcqa3KdxSyu9r3WsVl1u8doPAyHfnfgvUZq3aBgXueZmVAmB33iE1ryy6Xz2u
+	 wNPS72jCugVeEYsrJz3LX8fPUuEo5fCr8WH5gTy551xgTVpbdCPjGObScyTKmd5H5h
+	 RS7FYJuFpw+avPrEqUqY66UNI+wUaQQW2V7hcpiw9FosaZ0rMhxGOklv7zEsgfURGn
+	 Rz25UGiPIQqh/si89amYHmWUupDA4rVwhnkM15ho+DKuO5rlLPfumzilwXDZm9BFlc
+	 rNNqVvJ9f/lEF8g1FEei5oTQLI6G8m/Lcsux/ulgvvDHK8WTpbAY3ElMT3H4PMQaJv
+	 IVeXmMF6gEHUg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E2C7717E156F;
-	Wed,  8 Jan 2025 12:28:19 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EEF9317E157D;
+	Wed,  8 Jan 2025 12:28:22 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -71,17 +71,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v4 15/34] drm/mediatek: mtk_hdmi: Disgregate function mtk_hdmi_audio_set_param()
-Date: Wed,  8 Jan 2025 12:27:25 +0100
-Message-ID: <20250108112744.64686-16-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 17/34] drm/mediatek: mtk_hdmi: Move plugged_cb/codec_dev setting to new function
+Date: Wed,  8 Jan 2025 12:27:27 +0100
+Message-ID: <20250108112744.64686-18-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20250108112744.64686-1-angelogioacchino.delregno@collabora.com>
 References: <20250108112744.64686-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_032822_748290_CAF0DD22 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20250108_032825_814162_94C00D5D 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As a cleanup, and in preparation for splitting common bits of this
-driver, disgregate the code in function mtk_hdmi_audio_set_param()
-to the beginning and end of function mtk_hdmi_audio_hw_params().
+In preparation for splitting common bits of this driver, move the
+mutex-protected cable plugged callback and codec device setting
+to a new function called mtk_hdmi_audio_set_plugged_cb().
 
-In a later commit, the hw_params callback function will also be
-disgregated so that the code will get two functions: one that
-performs the generic hdmi_audio_param copy, and one that performs
-IP specific setup, both of which will be called in the callback,
-allowing all of the non IP version specific code to get moved in
-a common file.
-
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 2bf0aae41ca0..85d8e4b90878 100644
+index 75ca64ff2e58..95e9176d8617 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1054,20 +1054,6 @@ static void mtk_hdmi_audio_disable(struct mtk_hdmi *hdmi)
- 	hdmi->audio_enable = false;
- }
- 
--static int mtk_hdmi_audio_set_param(struct mtk_hdmi *hdmi,
--				    struct hdmi_audio_param *param)
--{
--	if (!hdmi->audio_enable) {
--		dev_err(hdmi->dev, "hdmi audio is in disable state!\n");
--		return -EINVAL;
--	}
--	dev_dbg(hdmi->dev, "codec:%d, input:%d, channel:%d, fs:%d\n",
--		param->aud_codec, param->aud_input_type,
--		param->aud_input_chan_type, param->codec_params.sample_rate);
--	memcpy(&hdmi->aud_param, param, sizeof(*param));
--	return mtk_hdmi_aud_output_config(hdmi, &hdmi->mode);
--}
--
- static int mtk_hdmi_output_set_display_mode(struct mtk_hdmi *hdmi,
- 					    struct drm_display_mode *mode)
- {
-@@ -1487,6 +1473,11 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
- 	struct hdmi_audio_param hdmi_params;
- 	unsigned int chan = params->cea.channels;
- 
-+	if (!hdmi->audio_enable) {
-+		dev_err(hdmi->dev, "hdmi audio is in disable state!\n");
-+		return -EINVAL;
-+	}
-+
- 	dev_dbg(hdmi->dev, "%s: %u Hz, %d bit, %d channels\n", __func__,
- 		params->sample_rate, params->sample_width, chan);
- 
-@@ -1547,8 +1538,13 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
- 
- 	memcpy(&hdmi_params.codec_params, params,
- 	       sizeof(hdmi_params.codec_params));
-+	memcpy(&hdmi->aud_param, &hdmi_params, sizeof(hdmi_params));
-+
-+	dev_dbg(hdmi->dev, "codec:%d, input:%d, channel:%d, fs:%d\n",
-+		hdmi_params.aud_codec, hdmi_params.aud_input_type,
-+		hdmi_params.aud_input_chan_type, hdmi_params.codec_params.sample_rate);
- 
--	mtk_hdmi_audio_set_param(hdmi, &hdmi_params);
-+	mtk_hdmi_aud_output_config(hdmi, &hdmi->mode);
- 
+@@ -1597,17 +1597,22 @@ static int mtk_hdmi_audio_get_eld(struct device *dev, void *data, uint8_t *buf,
  	return 0;
  }
+ 
+-static int mtk_hdmi_audio_hook_plugged_cb(struct device *dev, void *data,
+-					  hdmi_codec_plugged_cb fn,
++static void mtk_hdmi_audio_set_plugged_cb(struct mtk_hdmi *hdmi, hdmi_codec_plugged_cb fn,
+ 					  struct device *codec_dev)
+ {
+-	struct mtk_hdmi *hdmi = data;
+-
+ 	mutex_lock(&hdmi->update_plugged_status_lock);
+ 	hdmi->plugged_cb = fn;
+ 	hdmi->codec_dev = codec_dev;
+ 	mutex_unlock(&hdmi->update_plugged_status_lock);
++}
++
++static int mtk_hdmi_audio_hook_plugged_cb(struct device *dev, void *data,
++					  hdmi_codec_plugged_cb fn,
++					  struct device *codec_dev)
++{
++	struct mtk_hdmi *hdmi = data;
+ 
++	mtk_hdmi_audio_set_plugged_cb(hdmi, fn, codec_dev);
+ 	mtk_hdmi_update_plugged_status(hdmi);
+ 
+ 	return 0;
 -- 
 2.47.0
 
