@@ -4,79 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDFFDE77197
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 13:50:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 273E9E77197
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 13:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6KC/F3d3WtDuGopcXFP3UFFS7ETggJvEvIeWSMApCM8=; b=QZYWuNcEbEM//jDRz5JQd2Qvfm
-	tO83qwGQrd4naqVlHM483Nx0OGiW5pOHKQ0rPvi7c+jtNZtwTDBbIIw2jknfmp7tZjjdbEDciZnOE
-	KPdLSnjDNs6AQmpPg7ol0LHJDtksuGnuaqd+D4n59a4zqtS8gJM/7muwM05k6cmWZFP1JYmQeusxV
-	2vutv/f4VPdrgNnrdOpf+aHWupjvB31FsItt6bzF1kun55WMLtm7xMqlgp0nDfFnT6vNZym27Vsgw
-	oXsYLdOB9Ue8THPHuzP2l/be3ebPHDfeNEyOs5aAyPCg+M4+hWx/0h2YOQUaCuCxUU6igYKV21W+I
-	vzXmoomg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eeaBIaGGapmzwBgVzb4Z7ArP+HM9mhiTOs5CAn+csno=; b=RrNW8lG3POxtOuUar2nbtydux9
+	Slacwq0hojy/MH7N4OLEDgeINTPMmVRNtZLiSO7LZ0j1goyFk0N7mdR9otp6suQanBpR6kNtIS+eq
+	yChVKdJQPBabxDJ1mlxMNbFiYkYCxDlEyT24BpT7U1zQvLnym3Y53ED4FypX4DyYw40eCwgs0asN0
+	KmOF4gnPRDe0veAyOHX2/KSXSjKrG0QF91RIHtAIqO7TYDCODM1DLX0YbqSX7cjYNW/h+lCapDHt+
+	lpWVB0Ymat5T6Lg7HELj4q+jZKyooI/pHJ+n8X7OjLrWsCn7etBybF1c84gRFMNHoD8W7y6cVjObt
+	hznTR9Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVsvU-0000000C7Ei-3wAs;
-	Thu, 09 Jan 2025 13:50:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tVt0o-0000000C8CY-1N5v;
+	Thu, 09 Jan 2025 13:55:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVshJ-0000000C318-1WFV;
-	Thu, 09 Jan 2025 13:35:42 +0000
-X-UUID: 9b7ac0bcce8e11ef9048ed6ed365623b-20250109
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6KC/F3d3WtDuGopcXFP3UFFS7ETggJvEvIeWSMApCM8=;
-	b=H4NHsS7cYmHmjfjJLfLyYCaSDK/ILDUXuJi/x13MSN3+abDMn+ab6rvi0Bt2Ty89RNKKTcGma7B/eeghpU1tnJ4ltzG+tFEiDCQbYkrWMqvU5d/Zg2le3LjKmIFeNQFZInKSdxqDD0GAbtEm8C6/4DOhw19OY2Z6zURjE3nve+k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:25c83c46-5c72-453b-ba3a-0492ac55e2ba,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:9496f5d1-15ca-4d8b-940c-bbea7162947b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9b7ac0bcce8e11ef9048ed6ed365623b-20250109
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1438402154; Thu, 09 Jan 2025 06:35:36 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 9 Jan 2025 21:35:33 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 9 Jan 2025 21:35:32 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
-CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, kyrie.wu <kyrie.wu@mediatek.com>
-Subject: [V1,10/12] media: mediatek: jpeg: fix decoding buffer number setting timing issue
-Date: Thu, 9 Jan 2025 21:35:10 +0800
-Message-ID: <20250109133513.20151-11-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250109133513.20151-1-kyrie.wu@mediatek.com>
-References: <20250109133513.20151-1-kyrie.wu@mediatek.com>
+	id 1tVszZ-0000000C7xv-2gJT;
+	Thu, 09 Jan 2025 13:54:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1830F5C4D43;
+	Thu,  9 Jan 2025 13:53:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 152DAC4CEE1;
+	Thu,  9 Jan 2025 13:54:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736430872;
+	bh=bIdzlrQOAX3U44F79+AqJ7ruftZl57F5R7gP3U2Bxvk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GIujkZaXHxosqsJ8gWatoA/hOWJuIFT7pu6jF9goFNPQ70zSWzMfajWc5X9BZeBkY
+	 SfDizsL2ZTZG8L+pT2B639VrXuKNINrhk9NDFVVjXSc8C729iL1Mmx+b+8uI+ZykKh
+	 W3pY5wz21qd1Xcsm2uYRdDVDrqmSIi5hrFSz9maijl1SKiEF4iLxbdrdnD5PZnG7Uo
+	 +nxDzMAOjkXLvbjEA1U5c2RkuDdgAjCRZgK+4uMcFCIVyTvW3uHVc4mo0IoUlsnBnL
+	 K3Ml5AEK2YxKODI7i3VqLbLUtfAlO/PhWgBqmY0kzF6Zsl90C2TD9ei5CjNZw3JIpQ
+	 MXSJ/tUOX3osQ==
+Message-ID: <63a97fdb-f348-4ed7-9d7f-8e47d51a4390@kernel.org>
+Date: Thu, 9 Jan 2025 14:54:25 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [V1,01/12] dt-bindings: mediatek: Add mediatek, mt8196-jpgdec
+ compatible
+To: "kyrie.wu" <kyrie.wu@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bin Liu <bin.liu@mediatek.com>,
+ kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250109133513.20151-1-kyrie.wu@mediatek.com>
+ <20250109133513.20151-2-kyrie.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250109133513.20151-2-kyrie.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_053541_401442_E87FFA35 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20250109_055433_776451_1318B1C2 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,75 +127,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-move decoding buffer increase code into spinlock
-protecting aera for multi-core
+On 09/01/2025 14:35, kyrie.wu wrote:
+> Add mediatek,mt8196-jpgdec compatible to binding document.
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c   | 9 +++------
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
- 3 files changed, 5 insertions(+), 6 deletions(-)
+Please use standard email subjects, so with the PATCH keyword in the
+title. `git format-patch -vX` helps here to create proper versioned
+patches. Another useful tool is b4. Skipping the PATCH keyword makes
+filtering of emails more difficult thus making the review process less
+convenient.
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 48beb97015bf..791fc064bc0a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1749,7 +1749,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 
- 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
--	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
- 
- 	if (mtk_jpeg_check_resolution_change(ctx,
- 					     &jpeg_src_buf->dec_param)) {
-@@ -1758,11 +1757,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 		goto getbuf_fail;
- 	}
- 
--	jpeg_src_buf->curr_ctx = ctx;
--	jpeg_src_buf->frame_num = ctx->total_frame_num;
--	jpeg_dst_buf->curr_ctx = ctx;
--	jpeg_dst_buf->frame_num = ctx->total_frame_num;
--
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
- 	if (ret < 0) {
-@@ -1787,6 +1781,9 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
- 	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-+	jpeg_dst_buf->curr_ctx = ctx;
-+	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 	ctx->total_frame_num++;
- 	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
- #if IS_ENABLED(CONFIG_ARM_SMMU_V3)
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 2c540d2c9c49..6467b9bec595 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -544,6 +544,7 @@ static void mtk_jpegdec_put_buf(struct mtk_jpegdec_comp_dev *jpeg)
- 				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
- 						  VB2_BUF_STATE_DONE);
- 				ctx->last_done_frame_num++;
-+				break;
- 			}
- 		}
- 	}
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 2fe50e52caeb..ea3c909ab250 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -284,6 +284,7 @@ static void mtk_jpegenc_put_buf(struct mtk_jpegenc_comp_dev *jpeg)
- 				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
- 						  VB2_BUF_STATE_DONE);
- 				ctx->last_done_frame_num++;
-+				break;
- 			}
- 		}
- 	}
--- 
-2.46.0
+> 
+> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
+> ---
+>  ...5-jpegdec.yaml => mediatek,multi-core-jpegdec.yaml} | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
+>  rename Documentation/devicetree/bindings/media/{mediatek,mt8195-jpegdec.yaml => mediatek,multi-core-jpegdec.yaml} (95%)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,multi-core-jpegdec.yaml
+> similarity index 95%
+> rename from Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> rename to Documentation/devicetree/bindings/media/mediatek,multi-core-jpegdec.yaml
 
+
+Don't rename the file.
+
+> index e5448c60e3eb..5ec98ddad506 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,multi-core-jpegdec.yaml
+> @@ -1,7 +1,7 @@
+>  # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>  %YAML 1.2
+>  ---
+> -$id: http://devicetree.org/schemas/media/mediatek,mt8195-jpegdec.yaml#
+> +$id: http://devicetree.org/schemas/media/mediatek,multi-core-jpegdec.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+>  title: MediaTek JPEG Decoder
+> @@ -14,7 +14,9 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    const: mediatek,mt8195-jpgdec
+> +    enum:
+> +      - mediatek,mt8195-jpgdec
+> +      - mediatek,mt8196-jpgdec
+
+Devices look compatible, so express it with fallback.
+
+Best regards,
+Krzysztof
 
