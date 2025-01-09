@@ -4,118 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57682E77197
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 07:57:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57DB7E77197
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 08:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jLbA04AZgYeET5TTC4vMEj1HkZ4Po0QOFlGROWccWuQ=; b=BMdwsjfXKAfUNrH3HlozZ7/x+8
-	7gR1q2sKQZlLw6w6EH146BtYy+gbqOZGkL9Q022voiAJtpJ2XD9EpffUPivJ5nz09Nz5aYOV14aVl
-	soxKOjD07bezCGhArQNfWlvLCrlFWBgU9L0nG48OKFTG1BOWmF8jnYZVPAMCFi6lTSFd09N/s4ZPj
-	WkUwJIlyKwDt/qECmcdPrbSiQugWYTw6FcZstB+lkEXeQoklwnT7JGyKVv9Um/8brdCZHjYNHRMNX
-	u/xTPoWvEYcVH4+QF/OSToytywbJfVaNAGO6EJe4ZQfrintTmzM13xYBmoEcPvqZkZbHw7jBZySzw
-	xor3A/rw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XS6TlRWyTSRfC4D8CM7324D8iXz+6nRl08PCaLYh1SA=; b=sH1UG2Tzr59Xv9
+	IXWWfxufK4CujHJOwTvW9gUAALduN/yZ5B0pm06k9/pR5C+5QH0Sx4zIqreBVttmPIY1NtMRM9RWU
+	MVXi0rikpp18nA5u0YD5wBNR/wSP+pSpxU/voEe2Mg/Hs9rwhv2JB6EzjyxtHZJjJBuSH1Pqyz6Hh
+	xL2nuD5OtkRmQG4oBr3OBBsCf1Rp32kqsENREG03h2K0cWhEETrHqP32MkX2KXwCx2do//m55/vRq
+	oNx7dPluT18FIfdAzliRROqgajI+rqLM3w16xIN9lgr14ANGIJeE11CNIy+ihKxkJg4cvZnuPC5V9
+	4hCmp7QmatgJPrWPh48A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVnQ5-0000000B7BP-1X60;
-	Thu, 09 Jan 2025 07:57:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tVoMI-0000000BEmQ-1jLE;
+	Thu, 09 Jan 2025 08:57:42 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVnOV-0000000B6pT-11Dd;
-	Thu, 09 Jan 2025 07:55:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DCB4CA402F6;
-	Thu,  9 Jan 2025 07:54:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60A02C4CED2;
-	Thu,  9 Jan 2025 07:55:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736409354;
-	bh=wgcey/kQiN800rSSdv2KSbHhuAIs+1NSfhJe54lJy3o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XQzW38XL6YK6Nrzoc7Zi39V5umxnrJN8iJ7yKrkDhddQ0MA9aR9E6l6b3Jc/CKREL
-	 8eNwWkJ0l+0VBlgHBrCt9eYF/4nnZElboJDB76zVodb4TxJkQavtQL4LMmNiSZpksC
-	 BDLd+tPs2NhMy6jZ2Jmv0Xulv+LJIpXuPIBe33k+viBke3DnBJurxe5JXZDU4uWBH8
-	 EHjK14oPxl0rnEuw87Ov4zZyEPvmjNmNIsgnSapdrD9E8NxpTunxZt5Dja0mjsuTSj
-	 rZj2fXCH+uhpdnoawiFmj5xH6uO16YFqBE+L4DB0fGgED2foQrTBwiSVFXP2Sncb/R
-	 jZhmLyVqNROIg==
-Message-ID: <325c495b-8e5a-412f-9974-3ec7ab15b479@kernel.org>
-Date: Thu, 9 Jan 2025 08:55:43 +0100
+	id 1tVoL3-0000000BEYy-0l10;
+	Thu, 09 Jan 2025 08:56:26 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-aaf8f0ea963so141752166b.3;
+        Thu, 09 Jan 2025 00:56:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736412982; x=1737017782; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XS6TlRWyTSRfC4D8CM7324D8iXz+6nRl08PCaLYh1SA=;
+        b=c1JLu7rtbmEGhBEi2dNfjfJiZ4aWvy7mG79mw6oHz3lUfhYlkCflquTQ3AcsapZVbs
+         HcpHq2DDOEw0cU/6OQzagDLmgUeQw/fDNGR3Ts8XTfASiumG8HrLfL3QM5dXiXi8M+mu
+         AyxGF5jISmhE8tZjLgtFCM99kvmzsxl5DhznvH6hoeVd587U2qznJ0BNlJ/mDrJmUe30
+         fGordZJPxKuojST4Vv9Ax7vcQPNZEB9h5mJl3PbNOoLFbqtVhnZ2KPGEPIxSzrLgBdcC
+         P9Wip9HeItGEHC0I11a/1P7J9x5TqbuOQfX9w1yd6d1q6Hz/UYHfZwviYXHaToz2y1E9
+         Zs4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736412982; x=1737017782;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XS6TlRWyTSRfC4D8CM7324D8iXz+6nRl08PCaLYh1SA=;
+        b=wJzKt7/0OXWmq+NZex9hTKyi0zQFwkhg4aB815ZcyLXGoOFTgs1xkZUgkN0r008UvU
+         Y458zWQCbKoo96J4+0agpeNRUzDggTYXPSbmsL7hwZogR8FE62fKCR9An8F1kt4tZcwU
+         pdv6nKiny6KGWsHwt8iWdelIGmJYFe9Qr2GMM6V8pFCRKCjxfNxZbT2ZyYk2eOIbuz6A
+         FvzQqDBbhQBX8ix1KnrFsFZC/ZFbHWsexKqhmOZEy4ZMiE8I/5uBaYChP1bBCIpD644K
+         2lHzgxHRhX0ynctfmU0dMmS1GMISDm+b45it34q8CSrdMuDPj7Xl8NMKT8uGdKR056Hp
+         4fjg==
+X-Forwarded-Encrypted: i=1; AJvYcCU01IJhZyKz0mlaWlB0eYfKrVaMoW4l2OwHXGrExq3LyWSmoivMRB7wJA3um0nT7PQZO/JpQXdmHkVdiwK3hZE=@lists.infradead.org, AJvYcCXmIuwbGZns/uUQb12IUByfB0ZXkvn2snZvJcVy3rVtiHJPpz+8ctGEwf3uaRYavh02dnj4LAHiVKFLh+sV/fM1@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTLQl9+efSDT7d2X0DSurAB8p3vqG74B1Yi4s8okpcwbguTe3s
+	3mJFc1hip40aONx1tfzc5UBFrPPI7XsQ7eGF6W6sTd8CmrC0tDD1
+X-Gm-Gg: ASbGncuv1skb8O7NlLOrD+yHmftTd/2mnUzW0/ga0EtK9lnX4EN+ZtRt9yHXBl+5Szg
+	WtkwdXaGBwEG/72xLJ/KtKWYmUtBCRGcUfD/aZWved02JaCmKVOtsL8nUfla/AcQ0py6uHoUcpe
+	JJ0XDImPhDeoMTndW51EIG08NfG890LWIXUQ2iK25G2LkmcmoMIB2zYfahsxY7ZYjz8yfTsuSCo
+	TSiyR0EXBvzJgXISSXXWfGSS9ozExAhbWyy6nQw+7uTjGY/abI+SktLtBRqVdGPkgisqwoGHwdq
+	o4qaeNMgQcpS1duCW6TANNZIYhn7oYCo5XxYjYuMuVXXgQGrx/Ec9Ar2cYgrpJbYh0H8CWw70my
+	bgVKY6LodlsbthThXmUT3gL4bUBQpsWw=
+X-Google-Smtp-Source: AGHT+IH3My3UUh3xFM8ZgIgF0aWMNmsqTttAtJxwpSIcvfI0XILfisWjLOFCeDXh+SXgbl3J8Hxz3A==
+X-Received: by 2002:a17:907:3e24:b0:aac:2298:8960 with SMTP id a640c23a62f3a-ab2ab6fcf7amr446231766b.35.1736412980929;
+        Thu, 09 Jan 2025 00:56:20 -0800 (PST)
+Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9060a4fsm50179466b.15.2025.01.09.00.56.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Jan 2025 00:56:20 -0800 (PST)
+Message-ID: <98234080-946e-4b36-832f-113b185e7bca@gmail.com>
+Date: Thu, 9 Jan 2025 09:56:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 7/7] arm64: dts: mediatek: add display support for
- mt8365-evk
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20231023-display-support-v5-0-3905f1e4b835@baylibre.com>
- <20231023-display-support-v5-7-3905f1e4b835@baylibre.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
+ (delayed) phy
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+References: <20250107123615.161095-1-ericwouds@gmail.com>
+ <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
+ <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
+ <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
+From: Eric Woudstra <ericwouds@gmail.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20231023-display-support-v5-7-3905f1e4b835@baylibre.com>
+In-Reply-To: <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_235555_455943_1B4354BC 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250109_005625_228002_7F8482A8 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,149 +98,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, bridge@lists.linux.dev, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/01/2025 17:15, Alexandre Mergnat wrote:
->  
-> +&i2c1 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	clock-div = <2>;
-> +	clock-frequency = <100000>;
-> +	pinctrl-0 = <&i2c1_pins>;
-> +	pinctrl-names = "default";
-> +	status = "okay";
-> +
-> +	it66121_hdmi: hdmi@4c {
-> +		#sound-dai-cells = <0>;
-
-compatible is always, ALWAYS first.
-
-> +		compatible = "ite,it66121";
-
-reg follows.
 
 
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <68 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-0 = <&ite_pins>;
-> +		pinctrl-names = "default";
-> +		reg = <0x4c>;
-> +		reset-gpios = <&pio 69 GPIO_ACTIVE_LOW>;
-> +		vcn18-supply = <&mt6357_vsim2_reg>;
-> +		vcn33-supply = <&mt6357_vibr_reg>;
-> +		vrf12-supply = <&mt6357_vrf12_reg>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				reg = <0>;
-> +				it66121_in: endpoint@0 {
-> +					reg = <0>;
-> +					bus-width = <12>;
-> +					remote-endpoint = <&dpi0_out>;
-> +				};
-> +			};
-> +
-> +			port@1 {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				reg = <1>;
-> +				hdmi_connector_out: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&hdmi_connector_in>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
->  &mmc0 {
->  	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
->  	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-> @@ -205,6 +362,11 @@ &mt6357_pmic {
->  	mediatek,micbias1-microvolt = <1700000>;
->  };
->  
-> +&mt6357_vsim1_reg {
-> +	regulator-min-microvolt = <1800000>;
-> +	regulator-max-microvolt = <1800000>;
-> +};
-> +
->  &pio {
->  	aud_default_pins: audiodefault-pins {
->  		clk-dat-pins {
-> @@ -267,6 +429,49 @@ clk-dat-pins {
->  		};
->  	};
->  
-> +	dpi_default_pins: dpi-default-pins {
-> +		pins {
-> +			pinmux = <MT8365_PIN_0_GPIO0__FUNC_DPI_D0>,
-> +				 <MT8365_PIN_1_GPIO1__FUNC_DPI_D1>,
-> +				 <MT8365_PIN_2_GPIO2__FUNC_DPI_D2>,
-> +				 <MT8365_PIN_3_GPIO3__FUNC_DPI_D3>,
-> +				 <MT8365_PIN_4_GPIO4__FUNC_DPI_D4>,
-> +				 <MT8365_PIN_5_GPIO5__FUNC_DPI_D5>,
-> +				 <MT8365_PIN_6_GPIO6__FUNC_DPI_D6>,
-> +				 <MT8365_PIN_7_GPIO7__FUNC_DPI_D7>,
-> +				 <MT8365_PIN_8_GPIO8__FUNC_DPI_D8>,
-> +				 <MT8365_PIN_9_GPIO9__FUNC_DPI_D9>,
-> +				 <MT8365_PIN_10_GPIO10__FUNC_DPI_D10>,
-> +				 <MT8365_PIN_11_GPIO11__FUNC_DPI_D11>,
-> +				 <MT8365_PIN_12_GPIO12__FUNC_DPI_DE>,
-> +				 <MT8365_PIN_13_GPIO13__FUNC_DPI_VSYNC>,
-> +				 <MT8365_PIN_14_GPIO14__FUNC_DPI_CK>,
-> +				 <MT8365_PIN_15_GPIO15__FUNC_DPI_HSYNC>;
-> +			drive-strength = <4>;
-> +		};
-> +	};
-> +
-> +	dpi_idle_pins: dpi-idle-pins {
-> +		pins {
-> +			pinmux = <MT8365_PIN_0_GPIO0__FUNC_GPIO0>,
-> +				 <MT8365_PIN_1_GPIO1__FUNC_GPIO1>,
-> +				 <MT8365_PIN_2_GPIO2__FUNC_GPIO2>,
-> +				 <MT8365_PIN_3_GPIO3__FUNC_GPIO3>,
-> +				 <MT8365_PIN_4_GPIO4__FUNC_GPIO4>,
-> +				 <MT8365_PIN_5_GPIO5__FUNC_GPIO5>,
-> +				 <MT8365_PIN_6_GPIO6__FUNC_GPIO6>,
-> +				 <MT8365_PIN_7_GPIO7__FUNC_GPIO7>,
-> +				 <MT8365_PIN_8_GPIO8__FUNC_GPIO8>,
-> +				 <MT8365_PIN_9_GPIO9__FUNC_GPIO9>,
-> +				 <MT8365_PIN_10_GPIO10__FUNC_GPIO10>,
-> +				 <MT8365_PIN_11_GPIO11__FUNC_GPIO11>,
-> +				 <MT8365_PIN_12_GPIO12__FUNC_GPIO12>,
-> +				 <MT8365_PIN_13_GPIO13__FUNC_GPIO13>,
-> +				 <MT8365_PIN_14_GPIO14__FUNC_GPIO14>,
-> +				 <MT8365_PIN_15_GPIO15__FUNC_GPIO15>;
-> +		};
-> +	};
-> +
->  	ethernet_pins: ethernet-pins {
->  		phy_reset_pins {
->  			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
-> @@ -308,6 +513,33 @@ pins {
->  		};
->  	};
->  
-> +	i2c1_pins: i2c1-pins {
-> +		pins {
-> +			pinmux = <MT8365_PIN_59_SDA1__FUNC_SDA1_0>,
-> +				 <MT8365_PIN_60_SCL1__FUNC_SCL1_0>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	ite_pins: ite-pins {
-> +		irq_ite_pins {
-That's some downstream copy-paste. Align DTS coding style.
+On 1/7/25 4:03 PM, Russell King (Oracle) wrote:
+> On Tue, Jan 07, 2025 at 02:14:03PM +0100, Eric Woudstra wrote:
+>>
+>>
+>> On 1/7/25 1:47 PM, Russell King (Oracle) wrote:
+>>> Going through the log...
+>>>
+>>> On Tue, Jan 07, 2025 at 01:36:15PM +0100, Eric Woudstra wrote:
+>>>> Log before this patch is applied:
+>>>> [root@bpir3 ~]# dmesg | grep eth1
+>>>> [    2.515179] mtk_soc_eth 15100000.ethernet eth1: mediatek frame engine at 0xffff800082380000, irq 123
+>>>> [   38.271431] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/2500base-x link mode
+>>>> [   38.279828] mtk_soc_eth 15100000.ethernet eth1: major config, requested inband/2500base-x
+>>>> [   38.288009] mtk_soc_eth 15100000.ethernet eth1: interface 2500base-x inband modes: pcs=01 phy=00
+>>>> [   38.296800] mtk_soc_eth 15100000.ethernet eth1: major config, active inband/inband,an-disabled/2500base-x
+>>>
+>>> This is indeed without the PHY. We're using inband, although the PCS
+>>> mode is PHYLINK_PCS_NEG_INBAND_DISABLED, meaning inband won't be
+>>> used. As there is no PHY, we can't switch to MLO_AN_PHY.
+>>>
+>>>> [   38.306362] mtk_soc_eth 15100000.ethernet eth1: phylink_mac_config: mode=inband/2500base-x/none adv=00,00000000,00008000,0000e240 pause=04
+>>>> [   39.220149] mtk_soc_eth 15100000.ethernet eth1:  interface 2 (mii) rate match none supports 0-3,6-7,13-14
+>>>> [   39.229758] mtk_soc_eth 15100000.ethernet eth1:  interface 3 (gmii) rate match none supports 0-3,5-7,13-14
+>>>> [   39.239420] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+>>>> [   39.249173] mtk_soc_eth 15100000.ethernet eth1:  interface 22 (1000base-x) rate match none supports 5-7,13-14
+>>>> [   39.259080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+>>>> [   39.594676] mtk_soc_eth 15100000.ethernet eth1: PHY i2c:sfp-1:11 uses interfaces 4,23, validating 4,23
+>>>
+>>> The PHY comes along...
+>>>
+>>>> [   39.603992] mtk_soc_eth 15100000.ethernet eth1:  interface 4 (sgmii) rate match none supports 0-3,5-7,13-14
+>>>> [   39.650080] mtk_soc_eth 15100000.ethernet eth1:  interface 23 (2500base-x) rate match none supports 6-7,13-14,47
+>>>> [   39.660266] mtk_soc_eth 15100000.ethernet eth1: PHY [i2c:sfp-1:11] driver [RTL8221B-VB-CG 2.5Gbps PHY (C45)] (irq=POLL)
+>>>> [   39.671037] mtk_soc_eth 15100000.ethernet eth1: phy: 2500base-x setting supported 00,00000000,00008000,000060ef advertising 00,00000000,00008000,000060ef
+>>>> [   39.684761] mtk_soc_eth 15100000.ethernet eth1: requesting link mode inband/2500base-x with support 00,00000000,00008000,000060ef
+>>>
+>>> We decide to use MLO_AN_INBAND and 2500base-X, which we're already using.
+>>>
+>>>> [   40.380076] mtk_soc_eth 15100000.ethernet eth1: phy link down 2500base-x/Unknown/Unknown/none/off
+>>>> [   40.397090] brlan: port 5(eth1) entered blocking state
+>>>> [   40.402223] brlan: port 5(eth1) entered disabled state
+>>>> [   40.407437] mtk_soc_eth 15100000.ethernet eth1: entered allmulticast mode
+>>>> [   40.414400] mtk_soc_eth 15100000.ethernet eth1: entered promiscuous mode
+>>>> [   44.500077] mtk_soc_eth 15100000.ethernet eth1: phy link up 2500base-x/2.5Gbps/Full/none/off
+>>>> [   44.508528] mtk_soc_eth 15100000.ethernet eth1: No phy led trigger registered for speed(2500)
+>>>
+>>> ... but we don't see link-up reported by the PCS after the PHY comes
+>>> up. Why is that - I think that needs investigation before we proceed
+>>> to patch the issue, because that suggests the PCS isn't seeing
+>>> valid 2500base-X from the PHY.
+>>>
+>>
+>> I think it is because pl->act_link_an_mode stays at MLO_AN_INBAND, but
+>> it needs to be set to MLO_AN_PHY, so that only the phy determines the
+>> link state:
+>>
+>> phylink_resolve() {
+>>     ...
+>> 	} else if (pl->act_link_an_mode == MLO_AN_PHY) {
+>> 		link_state = pl->phy_state;
+>>     ...
+>> }
+> 
+> Please see my reply to Daniel. The PCS should still be capable of
+> reporting whether its link is up or down irrespective of whether
+> in-band status is being used or not.
+> 
+> While it is correct that PHY mode needs to be used here, your report
+> has pointed out that the driver is not reporting the PCS link state
+> correctly when in-band is disabled.
+> 
+> Given that the current state of affairs has revealed this other bug,
+> I would like that addressed first while there is a trivial test case
+> here.
+> 
 
-Best regards,
-Krzysztof
+So I've narrowed down the problem a bit:
+
+At first state->link is set to true, while looking at the bmsr.
+
+But because linkmode_test_bit(fd_bit, state->advertising) and
+linkmode_test_bit(fd_bit, state->lp_advertising) are both false,
+state->link is set to false after looking at the bmsr.
+
+void phylink_mii_c22_pcs_decode_state(struct phylink_link_state *state,
+				      u16 bmsr, u16 lpa)
+{
+	state->link = !!(bmsr & BMSR_LSTATUS);
+	...
+	case PHY_INTERFACE_MODE_2500BASEX:
+		phylink_decode_c37_word(state, lpa, SPEED_2500);
+	...
+}
+
+static void phylink_decode_c37_word(struct phylink_link_state *state,
+				    uint16_t config_reg, int speed)
+{
+	...
+	if (linkmode_test_bit(fd_bit, state->advertising) &&
+	    linkmode_test_bit(fd_bit, state->lp_advertising)) {
+		state->speed = speed;
+		state->duplex = DUPLEX_FULL;
+	} else {
+		/* negotiation failure */
+		state->link = false;
+	}
+	...
+}
+
+And I can confirm, if I change the part above into the part below
+(removing the if statement), the PCS also reports the link is up and the
+connection is functional end-to-end. Not that I'm saying this change is
+the solution, only for narrowing down the problem.
+
+static void phylink_decode_c37_word(struct phylink_link_state *state,
+				    uint16_t config_reg, int speed)
+{
+	...
+	state->speed = speed;
+	state->duplex = DUPLEX_FULL;
+	...
+}
+
+Also worth mentioning, up until v12 of the pcs-mtk-lynxy.c
+mtk_pcs_lynxi_get_state() did not call
+phylink_mii_c22_pcs_decode_state() at all for 2500base-x.
+
 
