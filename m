@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F20F8E77197
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 11:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E19FE77197
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 13:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hUk9psdNv1Vdv+PLx7IlmCie60sY3DUUwqQnKbHBf+0=; b=t0CXQrf5JXkWtz1WkFba9AC0zA
-	gMW7b6GnSQIvcypFjtADuUlEwPTQiUAt1M9KNg7dc25kug8hSeHoJj7zmTZfjYTdY1W0Lywl4NWRJ
-	6mhSXiS+IaAIdeo2MCJURjhUUpOQC2INJZYZf88l7WrIswRGtm0nVpbTam+O0uo3MJS9fZnHmqn1R
-	6ttu3qdYTDEdBlCE8Aaj/1kPcsCk2Ebk12zT2PO+sJLgTk7GALDYkUXgONRw6pI6LGFH99awhpkSS
-	Sc6raTmmG63O5MiaOSrVvhAOP20GTbDA2cHob64MSnr7PbQ1h67lDw/MlSX6zvwBmFOAZbquiAdlX
-	E+U6I94Q==;
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uRM5j6Ot4ZAazzuIZoxOMebBYpgaQOV63uO0HmRhKhU=; b=XMv6bH8MNdNqM/GaEEHbJvTTNR
+	zb8mX9TiSg0KOPbupP87Jch14lgN+wu65VPP7Cw5azoUgpyyWlD0dh/f6Q6KgXiBbYRX3eBa+UmH5
+	S/q8pW7V1zoSGQz51xDvvXEFlZ0EvXRIKkMKUAOT61oBDTzfy+4nOXOPQSQid0mUiPyQqIOcGXUHU
+	wPCRLKZ6iXMBqBc2LfDt07QdoMlMNKeQKIW61mhVjJuO9s2U+RDzhO8ELVJjo8s9t0fu0lKT7iAK6
+	h3F+cyuhqXj40y46BCiAwkdW/i5G7wzjToXq37KQIgB8sU+GUROsLQNT+9rS9ZHhOHppn0aStcgm0
+	hhqn7y0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVr15-0000000BlsT-0oLC;
-	Thu, 09 Jan 2025 11:47:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tVsNF-0000000ByUl-3qC9;
+	Thu, 09 Jan 2025 13:14:57 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVqzp-0000000Blgl-2Zbp;
-	Thu, 09 Jan 2025 11:46:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736423199;
-	bh=UwfSbEV9PVFpGl36dL/HGoNMwjBUSL+w4r1T2gsX2JM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VPcoFz713J3M/Sq//rlGsKAq/1jJNmWCTIzVsN5AI7nQdRzyGvfKLZdZ3pAycp7Mh
-	 1Djq22h4VEPGcaTdHjaVdfBdtb9TaFtlLgUiGd8wWaC+7PLW6sErA7VuvV9vw2n8tf
-	 MY+oGcQLThR+piKlCmBTQEkAke3StLXRb+PUguF8Ph8sk1G1SGEp0fVDW/PoLgDa0w
-	 V/UHkp8FxFDO45ZD6usWadAXOFdlTTLUs+QCRTMObFF9OugbQloCBU1E0SxBSHiDen
-	 N1GGbdBiQFAAA87yqsMyWN/lqTs1aoQhOpFAy0ygnANDijD+7rEtATz/lM5nbBN49W
-	 2RU1pHmDGg3+w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D7DD17E1571;
-	Thu,  9 Jan 2025 12:46:39 +0100 (CET)
-Message-ID: <11028242-afe4-474a-9d76-cd1bd9208987@collabora.com>
-Date: Thu, 9 Jan 2025 12:46:38 +0100
+	id 1tVsM2-0000000ByEl-159s;
+	Thu, 09 Jan 2025 13:13:43 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4361fe642ddso10211475e9.2;
+        Thu, 09 Jan 2025 05:13:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736428420; x=1737033220; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=uRM5j6Ot4ZAazzuIZoxOMebBYpgaQOV63uO0HmRhKhU=;
+        b=NTKjNoSOm3yO0BPgErC67ZUM8Cr//qjlZb5jYJz6LXdgPLpdG2g9cRhYXxBNEHAzV4
+         QEleIx47w4xnVLJKQ6rKcrxllY80RxTnlLyseuqOS1nw3HnzGvElsJXuih+q25RnVdqA
+         JDfQ4MHIsYNhZNoJqC683hhS8ElzmW8o2JCtv9tyq3NkTerC4+PiEoocDNnzlx35rQwf
+         4Hm9ZE9yVJuEpt3+IDQ/AiqI9M+eF35PxEA0maJIfm4Vis5L0h16az0fO4w6Q4V9G9dm
+         Xrvgnk4bkTi8IYSzVvHJE0ThvESl5c61plLpXdO5K2Yg0fi0aEEheVtjcY+AHiIlPXrC
+         brtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736428420; x=1737033220;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uRM5j6Ot4ZAazzuIZoxOMebBYpgaQOV63uO0HmRhKhU=;
+        b=R6wfYMGF4QHaxGK2xUBd06YoARCuoW0eMc5QMtstX5rqz2XeJ9xpjYtF0jmZAfUk6p
+         sfLjVI8rO3vA1gZqc/2d++KnF97shUAhZgUAKrIal0DDg7QhFTdsvfJr283L+1KHm1lF
+         g5IUpCQHMlN49EDQqnk69xN6bCFPZAWGU12xnUQND3ld+44G55SecsI2udW+HVaz/rXg
+         k3nQBWHX6KrEHZtaKEHYCvrRGc2IW4tfz+aMm91GVWgNTHdAKFWepfbFjpmjQWQaE8AK
+         syUxp6K9MM3Zi0y8RAT84jSxn/mTP9o4Tr/IKsvVE52bBRY9DbJI+E+VrQMGrm7Xnu/T
+         BYvA==
+X-Forwarded-Encrypted: i=1; AJvYcCUgd52FO54Oq6k99QiqIB3BulX0VamoMFVcTJHMxECBvtGOYZDIulp2GFDY85QpL3xfsUr5CKPq65IQZKcErS0=@lists.infradead.org, AJvYcCVgGnxJlx0s4UrZv0Si4ATE/pi1Aw9Q0bvcjeiGsTVGshLVy5VkQ7DFXg2oUa4UU26bjmwYofP8o6OHQNOugJW1@lists.infradead.org
+X-Gm-Message-State: AOJu0YyhzkZ8J19N0KbXX5a9MNh47hFU2NBt+opBBZBKgqD3prw+Ct/Q
+	grjMSyR5ListUw+IdHU8v6ci4aJbaUbx7U5QqAQzbBbWX1YA+F/P
+X-Gm-Gg: ASbGnctA/fFeRKw6zRoJx0cGXrjmXs/HhHeI04zVhqTYPbcwCe0KV8S1qgOz64Kz3Dx
+	OPWQWF3bR03oLFMMpW9BWCuIfaSXKX0/5zOLik494RfL9lCd5rLozTgGujBlrrRtwlCr+6mNjQg
+	q5V536MgaLjfD+TEref6UV3clWs6qym8T/eXjPhdPOcXXaKzUcp5p9mAPaqIktZC4dB7bbr9mNn
+	RtVIIBdZDq3Jsu9r3KY2/cBEaD75xvlSVBNnk2c4kyDM1g3F2Ni6oONgJvF/m716cz7ZTjIbe5o
+	u4Q+P+jas9vC1wFuCWttCsqdmq2i/0FUQFkVMdsxRQ==
+X-Google-Smtp-Source: AGHT+IGYsdHXDWGW+Q3wxecp7JvcILTEtygYfayS/lnRgUKCfBKAXrNMj5q72OGDlEgPzx8re1XYdQ==
+X-Received: by 2002:a05:600c:5112:b0:434:a386:6cf with SMTP id 5b1f17b1804b1-436e267f77amr60316635e9.2.1736428419286;
+        Thu, 09 Jan 2025 05:13:39 -0800 (PST)
+Received: from localhost.localdomain (host-95-246-253-26.retail.telecomitalia.it. [95.246.253.26])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a8e385026sm1812286f8f.42.2025.01.09.05.13.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jan 2025 05:13:38 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	upstream@airoha.com
+Subject: [PATCH v10 1/2] pmdomain: airoha: Add Airoha CPU PM Domain support
+Date: Thu,  9 Jan 2025 14:12:57 +0100
+Message-ID: <20250109131313.32317-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] nvmem: mtk-efuse: Enable GPU speed bin post-processing
- for MT8188
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-References: <20241223100648.2166754-1-wenst@chromium.org>
- <481a6eec-c428-45cd-98a6-5a91f3ceb187@collabora.com>
- <CAGXv+5Fj5s9FUyaxmEkGimxjEcS6OEfm4_5Zso+YocSi+Vt4pg@mail.gmail.com>
- <bbc6aa2a-fe48-4e06-b070-fd66dbd00e15@collabora.com>
- <CAGXv+5FoOM=ZUCWigdCaPbc4FCBtLVX2xnUJnVnVsBH=7yoZ=Q@mail.gmail.com>
- <efb88dd0-3b66-49fe-b279-e66c4574cf9d@collabora.com>
- <CAGXv+5HWcYrCzWJD4e=WP1WVNfqG5Y2_z+_oetWZq2ZKjXP75g@mail.gmail.com>
- <eda10efe-a301-45d3-9bf6-088275db7af5@collabora.com>
- <CAGXv+5EdU-8__5uTpcX2JT0Lw=kXraVpnMLjgcJS1jrN_zwAww@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5EdU-8__5uTpcX2JT0Lw=kXraVpnMLjgcJS1jrN_zwAww@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_034641_864134_D7214DB2 
-X-CRM114-Status: GOOD (  46.21  )
+X-CRM114-CacheID: sfid-20250109_051342_296671_4F04C570 
+X-CRM114-Status: GOOD (  23.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,209 +100,210 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/01/25 07:36, Chen-Yu Tsai ha scritto:
-> On Tue, Jan 7, 2025 at 9:12 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 23/12/24 17:15, Chen-Yu Tsai ha scritto:
->>> On Tue, Dec 24, 2024 at 12:08 AM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> Il 23/12/24 16:57, Chen-Yu Tsai ha scritto:
->>>>> On Mon, Dec 23, 2024 at 7:43 PM AngeloGioacchino Del Regno
->>>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>>
->>>>>> Il 23/12/24 12:24, Chen-Yu Tsai ha scritto:
->>>>>>> On Mon, Dec 23, 2024 at 7:11 PM AngeloGioacchino Del Regno
->>>>>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>>>>
->>>>>>>> Il 23/12/24 11:06, Chen-Yu Tsai ha scritto:
->>>>>>>>> Like the MT8186, the MT8188 stores GPU speed binning data in its efuse.
->>>>>>>>> The data needs post-processing into a format that the OPP framework can
->>>>>>>>> use.
->>>>>>>>>
->>>>>>>>> Add a compatible match for MT8188 efuse with post-processing enabled.
->>>>>>>>>
->>>>>>>>
->>>>>>>> Let's just change the MT8188 compatible list to
->>>>>>>>
->>>>>>>> compatible = "mediatek,mt8188-efuse", "mediatek,mt8186-efuse";
->>>>>>>
->>>>>>> That would be "mediatek,mt8188-efuse", "mediatek,mt8186-efuse", "mediatek,efuse"
->>>>>>> then?
->>>>>>>
->>>>>>
->>>>>> No, we're dropping the generic "mediatek,efuse".
->>>>>
->>>>> That means we also drop it for MT8186?
->>>>>
->>>>> Thinking about it more, I think it's stretching things a bit. The hardware
->>>>> is clearly backwards compatible, or we wouldn't even be reading values
->>>>> out correctly. The only difference now with MT8186 and MT8188 is that
->>>>> they have a speed-bin field with a value that we want passed to the OPP
->>>>> framework, and the interpretation of that value is not really part of
->>>>> the efuse's hardware. We chose to do the conversion in the efuse driver,
->>>>> but we could also have done it in the GPU driver.
->>>>>
->>>>> What I'm saying is that we should not need to change the compatible strings
->>>>> to make this work.
->>>>>
->>>>
->>>> No we don't forcefully have to drop it from MT8186, and doing so would be kind
->>>> of hard and actually producing unnecessary breakages with (very) old kernels.
->>>>
->>>> Just add a `deprecated: true` to the binding that wants `mediatek,efuse` and
->>>> start with MT8188, where 8188 is in enum and 8186 is const.
->>>>
->>>> We can do MT8188 because that'll still work even with old kernels (since MT8186
->>>> is there since before MT8188 was introduced), and it's something to enable a new
->>>> feature.
->>>> This means that there's not going to be any breakage with new DT and old kernel.
->>>>
->>>> I want the mediatek,efuse binding to be like the majority of the others across
->>>> the kernel, so, no generic compatible.
->>>
->>> In that case shouldn't the fallback be the oldest SoC in the list?
->>> Maybe MT8173, which is currently marked as deprecated, so we undeprecate it?
->>>
->>> Certainly not the MT8186.
->>>
->>
->> MT8173 doesn't have the post processing enabled.... if you can test that the code
->> actually works for MT8173 as well, giving meaningful results, then we can just use
->> the MT8173 compatible :-)
-> 
-> What I'm saying is (and hopefully I regenerated my thoughts correctly)
-> that if we want to get rid of the generic compatible string, then we
-> need a base fallback string. The MT8173 one would be the one.
+Add Airoha CPU PM Domain support to control frequency and power of CPU
+present on Airoha EN7581 SoC.
 
-I think I had misunderstood your statement... so:
+Frequency and power can be controlled with the use of the SMC command by
+passing the performance state. The driver also expose a read-only clock
+that expose the current CPU frequency with SMC command.
 
-For the previously supported ones (including MT8186), yes, I agree.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+Changes v10:
+- Depends on HAVE_ARM_SMCCC
+Changes v9:
+- Fix compile error targetting wrong branch (remove_new change)
+Changes v8:
+- Add this patch
+- Use SMC invoke instead of 1.2
 
-> 
-> The MT8186 efuse at the hardware level AFAIK is no different to the
-> MT8173 one. They simply store bits. How the bits are allocated is
-> defined by the layout. How the bits are interpreted is also not
-> a property of the hardware.
-> 
+ drivers/pmdomain/mediatek/Kconfig             |  12 ++
+ drivers/pmdomain/mediatek/Makefile            |   1 +
+ .../pmdomain/mediatek/airoha-cpu-pmdomain.c   | 144 ++++++++++++++++++
+ 3 files changed, 157 insertions(+)
+ create mode 100644 drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
 
-I confirm, there's no difference.
+diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
+index 21305c4f17fe..0e34a517ab7d 100644
+--- a/drivers/pmdomain/mediatek/Kconfig
++++ b/drivers/pmdomain/mediatek/Kconfig
+@@ -26,4 +26,16 @@ config MTK_SCPSYS_PM_DOMAINS
+ 	  Control Processor System (SCPSYS) has several power management related
+ 	  tasks in the system.
+ 
++config AIROHA_CPU_PM_DOMAIN
++	tristate "Airoha CPU power domain"
++	default ARCH_AIROHA
++	depends on HAVE_ARM_SMCCC
++	depends on PM
++	select PM_GENERIC_DOMAINS
++	help
++	  Say y here to enable CPU power domain support for Airoha SoC.
++
++	  CPU frequency and power is controlled by ATF with SMC command to
++	  set performance states.
++
+ endmenu
+diff --git a/drivers/pmdomain/mediatek/Makefile b/drivers/pmdomain/mediatek/Makefile
+index 8cde09e654b3..0f6edce9239b 100644
+--- a/drivers/pmdomain/mediatek/Makefile
++++ b/drivers/pmdomain/mediatek/Makefile
+@@ -1,3 +1,4 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ obj-$(CONFIG_MTK_SCPSYS)		+= mtk-scpsys.o
+ obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) 	+= mtk-pm-domains.o
++obj-$(CONFIG_AIROHA_CPU_PM_DOMAIN) 	+= airoha-cpu-pmdomain.o
+diff --git a/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c b/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
+new file mode 100644
+index 000000000000..0fd88d2f9ac2
+--- /dev/null
++++ b/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
+@@ -0,0 +1,144 @@
++// SPDX-License-Identifier: GPL-2.0
++
++#include <linux/arm-smccc.h>
++#include <linux/bitfield.h>
++#include <linux/clk-provider.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/pm_domain.h>
++#include <linux/slab.h>
++
++#define AIROHA_SIP_AVS_HANDLE			0x82000301
++#define AIROHA_AVS_OP_BASE			0xddddddd0
++#define AIROHA_AVS_OP_MASK			GENMASK(1, 0)
++#define AIROHA_AVS_OP_FREQ_DYN_ADJ		(AIROHA_AVS_OP_BASE | \
++						 FIELD_PREP(AIROHA_AVS_OP_MASK, 0x1))
++#define AIROHA_AVS_OP_GET_FREQ			(AIROHA_AVS_OP_BASE | \
++						 FIELD_PREP(AIROHA_AVS_OP_MASK, 0x2))
++
++struct airoha_cpu_pmdomain_priv {
++	struct clk_hw hw;
++	struct generic_pm_domain pd;
++};
++
++static long airoha_cpu_pmdomain_clk_round(struct clk_hw *hw, unsigned long rate,
++					  unsigned long *parent_rate)
++{
++	return rate;
++}
++
++static unsigned long airoha_cpu_pmdomain_clk_get(struct clk_hw *hw,
++						 unsigned long parent_rate)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_1_1_invoke(AIROHA_SIP_AVS_HANDLE, AIROHA_AVS_OP_GET_FREQ,
++			     0, 0, 0, 0, 0, 0, &res);
++
++	/* SMCCC returns freq in MHz */
++	return (int)(res.a0 * 1000 * 1000);
++}
++
++/* Airoha CPU clk SMCC is always enabled */
++static int airoha_cpu_pmdomain_clk_is_enabled(struct clk_hw *hw)
++{
++	return true;
++}
++
++static const struct clk_ops airoha_cpu_pmdomain_clk_ops = {
++	.recalc_rate = airoha_cpu_pmdomain_clk_get,
++	.is_enabled = airoha_cpu_pmdomain_clk_is_enabled,
++	.round_rate = airoha_cpu_pmdomain_clk_round,
++};
++
++static int airoha_cpu_pmdomain_set_performance_state(struct generic_pm_domain *domain,
++						     unsigned int state)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_1_1_invoke(AIROHA_SIP_AVS_HANDLE, AIROHA_AVS_OP_FREQ_DYN_ADJ,
++			     0, state, 0, 0, 0, 0, &res);
++
++	/* SMC signal correct apply by unsetting BIT 0 */
++	return res.a0 & BIT(0) ? -EINVAL : 0;
++}
++
++static int airoha_cpu_pmdomain_probe(struct platform_device *pdev)
++{
++	struct airoha_cpu_pmdomain_priv *priv;
++	struct device *dev = &pdev->dev;
++	const struct clk_init_data init = {
++		.name = "cpu",
++		.ops = &airoha_cpu_pmdomain_clk_ops,
++		/* Clock with no set_rate, can't cache */
++		.flags = CLK_GET_RATE_NOCACHE,
++	};
++	struct generic_pm_domain *pd;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	/* Init and register a get-only clk for Cpufreq */
++	priv->hw.init = &init;
++	ret = devm_clk_hw_register(dev, &priv->hw);
++	if (ret)
++		return ret;
++
++	ret = devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
++					  &priv->hw);
++	if (ret)
++		return ret;
++
++	/* Init and register a PD for CPU */
++	pd = &priv->pd;
++	pd->name = "cpu_pd";
++	pd->flags = GENPD_FLAG_ALWAYS_ON;
++	pd->set_performance_state = airoha_cpu_pmdomain_set_performance_state;
++
++	ret = pm_genpd_init(pd, NULL, false);
++	if (ret)
++		return ret;
++
++	ret = of_genpd_add_provider_simple(dev->of_node, pd);
++	if (ret)
++		goto err_add_provider;
++
++	platform_set_drvdata(pdev, priv);
++
++	return 0;
++
++err_add_provider:
++	pm_genpd_remove(pd);
++
++	return ret;
++}
++
++static void airoha_cpu_pmdomain_remove(struct platform_device *pdev)
++{
++	struct airoha_cpu_pmdomain_priv *priv = platform_get_drvdata(pdev);
++
++	of_genpd_del_provider(pdev->dev.of_node);
++	pm_genpd_remove(&priv->pd);
++}
++
++static const struct of_device_id airoha_cpu_pmdomain_of_match[] = {
++	{ .compatible = "airoha,en7581-cpufreq" },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, airoha_cpu_pmdomain_of_match);
++
++static struct platform_driver airoha_cpu_pmdomain_driver = {
++	.probe = airoha_cpu_pmdomain_probe,
++	.remove = airoha_cpu_pmdomain_remove,
++	.driver = {
++		.name = "airoha-cpu-pmdomain",
++		.of_match_table = airoha_cpu_pmdomain_of_match,
++	},
++};
++module_platform_driver(airoha_cpu_pmdomain_driver);
++
++MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
++MODULE_DESCRIPTION("CPU PM domain driver for Airoha SoCs");
++MODULE_LICENSE("GPL");
+-- 
+2.45.2
 
-> In the current design the need for post-processing does not depend on
-> the SoC itself, but rather the node name being "gpu-speedbin". Even
-> if we turned on post processing for all models, it wouldn't matter
-> for the other SoCs.
-> 
-
-It wouldn't, but in the event that another SoC needs a different algorithm
-for post-processing (hopefully not!!!) I would still like the node name to
-actually be consistent between all of them, even if the algo is different.
-
-The gpu-speedbin efuse would always be gpu-speedbin, regardless of any
-post-processing differences.
-
-> And the reason the conversion is in the nvmem driver (the provider)
-> rather than panfrost (the consumer) has nothing to do with the
-> hardware.
-
-That's correct.
-
-> IIRC you simply wanted to provide a generic implementation.
-
-And yes, that's why the conversion is in the nvmem driver, of course.
-
-> If the conversion were in the GPU driver, we wouldn't special case
-> MT8186 here.
-
-We would special case MediaTek SoCs in the GPU driver instead, but then
-the GPU driver is supposed to deal with GPU stuff, not with SoC-specific
-stuff whenever this is possible - I'm sure you agree with that, anyway.
-
-> If the speedbin value were split into two or more
-> cells, we probably would have stuck the conversion in the GPU
-> driver.
-> 
-
-Not sure about that, I think there's still a way, but it's all hypotetical
-for now, so let's not cross any bridges before coming to them :-)
-
-> So, we could have "mediatek,mt8173-efuse" replace "mediatek,efuse"
-> as the fallback compatible, and turn on post processing for it,
-> and things would be the same as before, and also work for MT8188.
-> How does that sound?
-> 
-
-If MT8173 has (PowerVR!) GPU speedbin efuses, and that requires the same
-post-processing algorithm as MT8186 and the others, I agree with turning
-on the post processing for MT8173 with the same algo as MT8186.
-
-Otherwise, I disagree, as that would effectively add faulty code to MT8173.
-
-> 
-> Interestingly, the new "fixed layout" description actually allows
-> for compatible strings in the NVMEM cells. That would allow matching
-> against a cell's compatible string instead of its name.
-
-If the post-processing stuff ever becomes complicated in the future (in
-the sense that we start getting more and more post-processing and/or
-more and more algo differences between SoCs), that'd probably save us
-some headaches and would most probably be cleaner (at least to the eye)
-than what we're doing right now.
-
-Though, I'm not sure if it'd be a good idea to consider doing this right
-now... or the other way around...
-
-Cheers!
-Angelo
-
-> 
-> 
-> Thanks
-> ChenYu
-> 
->>>> Cheers,
->>>> Angelo
->>>>
->>>>>
->>>>> ChenYu
->>>>>
->>>>>> Cheers!
->>>>>>
->>>>>>> Fine by me. :D
->>>>>>>
->>>>>>> ChenYu
->>>>>>>
->>>>>>>> instead :-)
->>>>>>>>
->>>>>>>> Cheers,
->>>>>>>> Angelo
->>>>>>>>
->>>>>>>>> Cc: <stable@vger.kernel.org>
->>>>>>>>> Fixes: ff1df1886f43 ("dt-bindings: nvmem: mediatek: efuse: Add support for MT8188")
->>>>>>>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>>>>>>>> ---
->>>>>>>>>
->>>>>>>>> I'm not exactly sure about pointing to the dt bindings commit for the
->>>>>>>>> fixes tag.
->>>>>>>>> ---
->>>>>>>>>       drivers/nvmem/mtk-efuse.c | 1 +
->>>>>>>>>       1 file changed, 1 insertion(+)
->>>>>>>>>
->>>>>>>>> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
->>>>>>>>> index af953e1d9230..e8409e1e7fac 100644
->>>>>>>>> --- a/drivers/nvmem/mtk-efuse.c
->>>>>>>>> +++ b/drivers/nvmem/mtk-efuse.c
->>>>>>>>> @@ -112,6 +112,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pdata = {
->>>>>>>>>       static const struct of_device_id mtk_efuse_of_match[] = {
->>>>>>>>>           { .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
->>>>>>>>>           { .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
->>>>>>>>> +     { .compatible = "mediatek,mt8188-efuse", .data = &mtk_mt8186_efuse_pdata },
->>>>>>>>>           { .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
->>>>>>>>>           {/* sentinel */},
->>>>>>>>>       };
->>>>>>>>
->>>>>>
->>
->>
 
