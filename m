@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93995E77199
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 10:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F78E77197
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 10:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K/237DEZbmH5wVGbwoVnyMud2QLf/nwVGF7QU7PyuRI=; b=W2B1E+6MUxmZckXfdF1LcxogkP
-	w4E4mrAaBwKRxT2dPwI682pBZ4nbGq8esU6gg9ExQdUFC+uurNlLZ8eTdKBgDh46VeJPd8VXw7RaB
-	WZWnIGVxSYWrzowgMiOMGn2Z0rkjfVnFHz0OTPwpTYhPI7+a/KOqfeiH8zkyZ46sqaH78eKneF2kN
-	w45T0MwYO6hRsz9GoVTKCUk6F0dA4RaVlI/yaX0hcuTSkS4O6w6YfGQZ6+Bvq6vvyvOChu6TzdteN
-	Qd3jFB4PTQVHnMPd0HWmdWQuH28RpfuYQdqy467FaAixpJJgc7mxiw9XMf6kog5de8tVGsXcsFbk1
-	74Z7ICFw==;
+	bh=i651SpluW1MRI3JjFDP6kaKt8+EEESD/wqEDYw6jbG8=; b=1bAQWXIu4tPD0SyIq5HR6FRZ7Z
+	Qnn9keccEGaxEb7zEaULN2TiD14sbbrxkjmRTpyGO/bti56HvHLsCpX/OYbcE0D9GRbRss3E7EREA
+	3QjTDtk6tv5hGjIdIpahUrDNdMRIfgHkwV9xbJJrPXTdFUJ2iMkPgtEGyY+s0SoIar/1pKEeeHzV3
+	HvNNHfHGquGTpB9bYMRSxBsJ3d23rPncp7Zpvvz1014b0Ib6NWwY52o2ZCk1CZphDess2Nc2eL+pL
+	pqSBCzx7BIdoLwNNaAsBJBxuZpF+b9gRBD1mfC7vD5mJkhJVdbo17rZLcwgmSlAVqhHzVu+6HgUKZ
+	SYUwiZLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVpZl-0000000BTmh-2uet;
-	Thu, 09 Jan 2025 10:15:41 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1tVpax-0000000BU8z-02Ke;
+	Thu, 09 Jan 2025 10:16:55 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVpYW-0000000BTUV-1VaC
+	id 1tVpYq-0000000BTYW-3uyK
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jan 2025 10:14:26 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-385de59c1a0so405998f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jan 2025 02:14:24 -0800 (PST)
+	Thu, 09 Jan 2025 10:14:46 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-385eed29d17so354586f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jan 2025 02:14:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736417663; x=1737022463; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736417683; x=1737022483; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=K/237DEZbmH5wVGbwoVnyMud2QLf/nwVGF7QU7PyuRI=;
-        b=peN14u0tkhj0bwGHlVLsaht4fAKeU3Vm+qkYIlXsQMAqyPF4PoFaIMFAXDpRLbIqUZ
-         sY1V+PSejaZq44XEnOO69wYIU+OrcUXcaAHik2MzDZR2Q3mBpazrz/+3tUETnUJMMYt+
-         PSZFXwfCh14Z9bVbGIb9gxJGviZcPFZggL8X70apAG+rhdA8RopWwF1M4ERfkknVmTmZ
-         35JXzmLxvGwCy86JxV75IPBtvC2YWbf8oKmj6YiC5Rc4A70M/kg55QFua7sKiv5k0bxd
-         aBRgSJxDd7XGZxTC8XH9VF/RA0Gi9721f7IY9U88mVutq2lg0e7FxFdqHwXv/IFs8ebN
-         PVAg==
+        bh=i651SpluW1MRI3JjFDP6kaKt8+EEESD/wqEDYw6jbG8=;
+        b=ZMQE5tnFasP008aFumBKf77Q7UDlSn3oOthPX62R7O/rT4FVc1Rb93u0i/9GJSypuB
+         lMPzLb4ihVttJe3/bbHzIghSQ+x4uXjFqAzrncr4jy6rrk0JZFyJaJ+Ci05KqbzP19kB
+         M7jh0j4PeTxMM0lMb8mKkQmoblRIdDhZulYwws+iRTeeTLuwgxt+xsjl6eFb2ySzwQpw
+         kXY9V6N3gv87je6sUS/xnZ8YLI7sT7rNpXOYGPC8H4USjvJmM4JESyVK8nXyrJidyPVD
+         jM62gNt6pSXgCjoTthmExVGWBlKTpJfs5r/haRpeEvKv5RMKY8kE6jYp0vOKm+hlV/LR
+         jdww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736417663; x=1737022463;
+        d=1e100.net; s=20230601; t=1736417683; x=1737022483;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=K/237DEZbmH5wVGbwoVnyMud2QLf/nwVGF7QU7PyuRI=;
-        b=i+fn/hMgtW87s4MnvFcPxyCHkxYUyskSyyWpLQ5/2O/koeKnK2IDfv8/PMWkHUQ9Ui
-         ZiVcTvECRHTXx6843ny3j+oE7obRI83vXbjtEcFLnWaA8/aXhmcS3/P5pJez1ZlvWcjo
-         7zImUQUkwgRrzE5Lp0EfjH0dKxGJ2Uhwz89AvdBxqqkIL6dCFYoZIznaErlMzpRxT0SO
-         EkrzvWjaHfJrsjhhwgrvcXfT6qi8QPpIdz4kUHhRkSJjsvPU7so7vbN6a2raXtZBYo9q
-         DiT2kSkASIH+w7hAj1oiU/4OfeQyoQTXcD+U829VWvJzH8pudR0fEVemJFxsTeSBzhkX
-         RFtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWD/s32AVLz+V6q6DTwV4RznEkXdU3NAk5xBPRmWRJbGkcusQ8g/u3F/ADvN7kSohMLiwsl5CK63+Qol+jn+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPk/q+bx4j4yVajLQFlkQtdabOgUF9ASGWnCHsz7Gm9s589TYm
-	kho9FKuIW+hAtg30BQlaVFHX3FNHBHkOxy3HKrKM/U8hTMoQaniyGMS4K2jLjD0=
-X-Gm-Gg: ASbGncv3TyjK+fj0Zw2mJK634D2ugfk84ifLsXZ7s0nKhLC/rdojOF6eiq8vuvzbr5f
-	31ljVba31VpX7fU3kdU8aNGuoe6e/bFflWR8D++aQeAYv/uVbNg1/fVJKtX5WUa5efTKezDscYx
-	WwsZ8xh/E2YVQ6bxljGcPde++XZevubeGs+/qgDFm0+b3bDtg5g1oJYS0Zt5H5l5DKqseTgvtpV
-	F2i24gBil5eT7HJXp8RG/4mIgHmZZDpMRSyc+vI+MqDyPAI6k6keTMBJhbEZXNhqtCk3EMWHhNo
-	gJn7OWs57Lr6x4PFsZXOZxTBMg==
-X-Google-Smtp-Source: AGHT+IEa1wvdA0r/Kzit2T66VOFD1pdDd/5gF4arR5cyzXkaJB7nZQwlEb/rszXxagpeRJrAJKWCbw==
-X-Received: by 2002:a5d:5f85:0:b0:386:3213:5b9b with SMTP id ffacd0b85a97d-38a8732c132mr6080751f8f.43.1736417662676;
-        Thu, 09 Jan 2025 02:14:22 -0800 (PST)
+        bh=i651SpluW1MRI3JjFDP6kaKt8+EEESD/wqEDYw6jbG8=;
+        b=Z5eS1smf9/vr2K1QEZmemX0+VEMB5cwFqmaeXCcmR34TMlXQT/cFXR7lEtzhRXy2t7
+         TGfTx4PCg1hWUlFOqoiVHbAUzogKZ6bWbSBVCb2dznYPcBNlv5n1gBEr5UY4fJ2IwBOm
+         x4Dltw4HQlU3sNZh0rVUWHaUB9nAd4NuOcqoAjnra0p3/npEai1aZ+LqlUrx415WXALG
+         Eyl/jV7CGEYKnuAcCBp6UZXUH4LUQb2dg2BfMdZOAEsFe8R70RM8mxGakwlVr1K71G/u
+         VsK7xOMbckoMAdBri8ra1+e8N1/VA2rU24u8NQemZLb2swBsXb5PAiMkKVQihIImxMFW
+         rijw==
+X-Forwarded-Encrypted: i=1; AJvYcCWPU4Gokrq4rk3dAl64+kXw3XKpICZ9RmFEgp3XmhMIQcbTQh7///bghuRnijWuIxcyGtHD6AMttAiwYmfjHQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yylb02RWUU+7qeLQAi70XQn9vR1r7nupdgDWbormeKDCiUFPiR9
+	vLyJlP3cnGcL8dhGyl/nrFocL9NDid7uRzSFknplllv5Sg/wKbUT3Qzu5tn0pUA=
+X-Gm-Gg: ASbGnct51wUNM2o9lt4IECczO4yhFG4Z55JFiAMUqr8O5FD9AtT6PBiS8FXg5j3KrY7
+	yZN3S49Ie6DBzXHlv9OoPY/PDuRVgBlypgEvvjPvHPCTPdLX3W3Lc5wzofDybNOfoq0HzLlV/eW
+	yCy5AhdrqDknrWK0xqIbDD/rJWlXmVOtmrlEsnZ0R56L1pN24rhhHhYXoqH2udWuv5snTaTdHgd
+	pe2pbXbPon7ig5GiIn8A1788pVjcOzq+0sri4Kv+NjkDJSyY6v2wutCf6ESlnhuMt9akjecgoGJ
+	HH0cUV7S9kDO+3Ykk1hOymGBnw==
+X-Google-Smtp-Source: AGHT+IEXsj3cGfTM3WuiOcTVPO3qnoxJJ8qkHw0f0Dnd2kBWv/CZsMscUjyXI2o0KFisYvaJanIsLA==
+X-Received: by 2002:a5d:5f85:0:b0:385:fdc2:1808 with SMTP id ffacd0b85a97d-38a87336ee3mr5496376f8f.40.1736417683201;
+        Thu, 09 Jan 2025 02:14:43 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:5ee:79d0:125:358f:ea05:210e? ([2a01:e0a:5ee:79d0:125:358f:ea05:210e])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e4b8209sm1384847f8f.70.2025.01.09.02.14.21
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e2df3610sm49767285e9.20.2025.01.09.02.14.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Jan 2025 02:14:22 -0800 (PST)
-Message-ID: <5b891e04-be1e-490c-aebc-84c0ce2e3611@baylibre.com>
-Date: Thu, 9 Jan 2025 11:14:20 +0100
+        Thu, 09 Jan 2025 02:14:42 -0800 (PST)
+Message-ID: <35868716-a80a-4cb7-bc59-35ea6263546d@baylibre.com>
+Date: Thu, 9 Jan 2025 11:14:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 5/7] arm64: defconfig: enable STARTEK KD070FHFID015
- panel
+Subject: Re: [PATCH v5 4/7] arm64: defconfig: enable display connector support
 To: Krzysztof Kozlowski <krzk@kernel.org>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
@@ -90,16 +89,16 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 References: <20231023-display-support-v5-0-3905f1e4b835@baylibre.com>
- <20231023-display-support-v5-5-3905f1e4b835@baylibre.com>
- <00af138e-4e00-49e7-945f-9c6e489208b9@kernel.org>
+ <20231023-display-support-v5-4-3905f1e4b835@baylibre.com>
+ <6df0f935-b7d2-4961-a947-47b328a3758f@kernel.org>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <00af138e-4e00-49e7-945f-9c6e489208b9@kernel.org>
+In-Reply-To: <6df0f935-b7d2-4961-a947-47b328a3758f@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_021424_666300_1BE7E54B 
-X-CRM114-Status: UNSURE (   5.41  )
+X-CRM114-CacheID: sfid-20250109_021444_967451_206A6276 
+X-CRM114-Status: UNSURE (   6.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,9 +116,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Thanks, fixed for v6
 
-On 09/01/2025 08:54, Krzysztof Kozlowski wrote:
-> Squash the patches. It's one logical change to bring config optiosn for
-> display on your boards. Not each change per one symbol.
+
+On 09/01/2025 08:53, Krzysztof Kozlowski wrote:
+> git grep -i i350-evk - zero results. Please use some recognizable names.
+> I have no clue where to even look for it - which vendor.
 
 -- 
 Regards,
