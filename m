@@ -4,71 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06188E77199
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 14:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14B5E77197
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 15:03:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z4h2bwbD0J+Nl3hPMCF5cHRI3ufJYd4bqWZPyRUO0Hg=; b=KeZZxHw6Lr+E8D59i//OhfU2Yf
-	PXL6kOofUOgkvNiEvA2O2xQYe3dgGRVJRDyk2o7Fq5BwIU8Zp0w1yCQZXAogT0gNbcQYJGuZFgc5E
-	3P7Sc+ZHa3uaaiO2HztOK5oRn2LH6i9SuTcGgDQ0obJNo7t083LUaLnUqnWo5/NDjgxLstJKd3IU+
-	DJBWoCYY9JeHjWGXiVJU5Ny0SqqLbKt5ntZr17PWD4cNj1N2XYQyvrOUl5+Cf3fO7K0b5DDj+D93z
-	krF1P8oSsrZDkm/s7yw1GjbuVMFUYDiK0w8MrS+3zzNGNzzJFPrhbRNtzXxHQ8QeIpvmL2BX7kcq8
-	LIHfuLQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XMCayXhRlBVa7gMSmx9Hm+JQPMIVdDIzBmzoFhpmu5s=; b=YA1hoY6Y0oEl6HgQlVgZUc9Q/M
+	eQbmWkGVi3KhYhZriKK6VXg6esV9Inw1x66sJplHjqxmOtwuWXMJzZhxFtD6nQEy6zcG5etOg5Nou
+	UM4oxnTZgMJwads7mbGZcXjArBuAbHLErwFLWD0I7typHxPbE1gf/78hd2YUC+Xz2W3+cqjhqREnk
+	/a2nb8XsB6Va+/UkzCcJ2/WMjha7zci33U3R3SJyI3nrYKlx4VEjvRdUOH3YnEKYNptVEthax2NQ4
+	19SV9Aih8WHccsWeA+8qSdRepDQSRi7J2qLyCgyo0nGruE2ayCT5KmKiPZDI/7WptPtA3vwmmu4ku
+	cdyQNVhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVtjK-0000000CHPs-0NP3;
-	Thu, 09 Jan 2025 14:41:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tVu49-0000000CMJG-2dcB;
+	Thu, 09 Jan 2025 15:03:21 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVti6-0000000CGzc-0G3L;
-	Thu, 09 Jan 2025 14:40:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2317E5C5AE8;
-	Thu,  9 Jan 2025 14:39:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6F4CC4CED2;
-	Thu,  9 Jan 2025 14:40:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736433632;
-	bh=FzKpk1Kq8AuWIYuSSIRzcUeb4DT9dYfnfccqrFUAL34=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=tdAa5quYNqCwXnECoYvmsZuPDGKgx6KKp6hbctwCi00dmAUQP16Rk7E3osEbhkvG7
-	 ksaAWFnCDrzIBqj3+kJzUoc+h1M63ac0Q7uzQheE5olAFrKC8+EIKHLlgYYIQ19dCX
-	 7COiZRmSP6HHlIK3gPWJWqV8nVI8dr3NWz6UhNSmHcIgB4fLi1VBcMOlYyBpGeD/Oo
-	 ELYHsHIRTBEv1QJ61nDTTfRpF5g9QmBAI5c2IlLlcb1WW61fx8zv6jhp9iYGRUkGbb
-	 khCFIEpU1fWTv9pu1hBzYzhTzA+6KLc5ieIMat6+j6TjNT53U5OvSX2hCBZyhIa+ft
-	 5gkFXptrYYraQ==
-Date: Thu, 09 Jan 2025 08:40:31 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tVu46-0000000CMEj-1Prf;
+	Thu, 09 Jan 2025 15:03:20 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 92E3D21170;
+	Thu,  9 Jan 2025 15:03:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736434995; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XMCayXhRlBVa7gMSmx9Hm+JQPMIVdDIzBmzoFhpmu5s=;
+	b=Hurt5FPj5gtaGEl7MDFSQr1yjZpTEsC59BHG4sl81e51YGBC1DQIeo8AcObIbwo3t1kyRW
+	BoqzmGAdtH46F1MufUgfFbbg/C7zFLSZhK9CXwNfpYpAx4oe2AgI1X0BqlOkTxLKoGlfvj
+	H4t8+YaDtL6zM63SXCatuXM7OGJUdYA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736434995;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XMCayXhRlBVa7gMSmx9Hm+JQPMIVdDIzBmzoFhpmu5s=;
+	b=P7GWPruItIQO/YAmOqVTUNOjEqq6hDn8OMiNUSeBq67Bbmrby9vvRjHdXPPWPM4dSAmLLz
+	TXrcaqcF+IF2ulCg==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736434995; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XMCayXhRlBVa7gMSmx9Hm+JQPMIVdDIzBmzoFhpmu5s=;
+	b=Hurt5FPj5gtaGEl7MDFSQr1yjZpTEsC59BHG4sl81e51YGBC1DQIeo8AcObIbwo3t1kyRW
+	BoqzmGAdtH46F1MufUgfFbbg/C7zFLSZhK9CXwNfpYpAx4oe2AgI1X0BqlOkTxLKoGlfvj
+	H4t8+YaDtL6zM63SXCatuXM7OGJUdYA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736434995;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XMCayXhRlBVa7gMSmx9Hm+JQPMIVdDIzBmzoFhpmu5s=;
+	b=P7GWPruItIQO/YAmOqVTUNOjEqq6hDn8OMiNUSeBq67Bbmrby9vvRjHdXPPWPM4dSAmLLz
+	TXrcaqcF+IF2ulCg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 10A3313A8B;
+	Thu,  9 Jan 2025 15:03:15 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id EKDFAjPlf2c1awAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Thu, 09 Jan 2025 15:03:15 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	airlied@gmail.com,
+	simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v2 01/25] drm/dumb-buffers: Sanitize output on errors
+Date: Thu,  9 Jan 2025 15:56:55 +0100
+Message-ID: <20250109150310.219442-2-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250109150310.219442-1-tzimmermann@suse.de>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: David Airlie <airlied@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- CK Hu <ck.hu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Fabien Parent <fparent@baylibre.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, Simona Vetter <simona@ffwll.ch>, 
- Conor Dooley <conor+dt@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Simona Vetter <simona.vetter@ffwll.ch>, 
- linux-arm-kernel@lists.infradead.org, Will Deacon <will@kernel.org>, 
- linux-mediatek@lists.infradead.org, Maxime Ripard <mripard@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: amergnat@baylibre.com
-In-Reply-To: <20231023-display-support-v6-0-c6af4f34f4d8@baylibre.com>
-References: <20231023-display-support-v6-0-c6af4f34f4d8@baylibre.com>
-Message-Id: <173643343500.3320207.10375372470982398627.robh@kernel.org>
-Subject: Re: [PATCH v6 0/6] Add display support for the MT8365-EVK board
+Content-Transfer-Encoding: 8bit
+X-Spamd-Result: default: False [-1.30 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_MISSING_CHARSET(0.50)[];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	RCVD_COUNT_TWO(0.00)[2];
+	ARC_NA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[19];
+	MIME_TRACE(0.00)[0:+];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:email,suse.de:mid];
+	TO_DN_SOME(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_064034_212109_F347354F 
-X-CRM114-Status: GOOD (  28.00  )
+X-CRM114-CacheID: sfid-20250109_070318_526455_2337BF9E 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,162 +148,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The ioctls MODE_CREATE_DUMB and MODE_MAP_DUMB return results into a
+memory buffer supplied by user space. On errors, it is possible that
+intermediate values are being returned. The exact semantics depends
+on the DRM driver's implementation of these ioctls. Although this is
+most-likely not a security problem in practice, avoid any uncertainty
+by clearing the memory to 0 on errors.
 
-On Thu, 09 Jan 2025 11:37:53 +0100, amergnat@baylibre.com wrote:
-> The purpose of this series is to add the display support for the mt8365-evk.
-> 
-> This is the list of HWs / IPs support added:
-> - Connectors (HW):
->   - HDMI
->   - MIPI DSI (Mobile Industry Processor Interface Display Serial Interface)
-> - HDMI bridge (it66121)
-> - DSI pannel (startek,kd070fhfid015)
-> - SoC display blocks (IP):
->   - OVL0 (Overlay)
->   - RDMA0 (Data Path Read DMA)
->   - Color0
->   - CCorr0 (Color Correction)
->   - AAL0 (Adaptive Ambient Light)
->   - GAMMA0
->   - Dither0
->   - DSI0 (Display Serial Interface)
->   - RDMA1 (Data Path Read DMA)
->   - DPI0 (Display Parallel Interface)
-> 
-> The Mediatek DSI, DPI and DRM drivers are also improved.
-> 
-> The series is rebased on top of Angelo's series [1] to
-> use the OF graphs support.
-> 
-> Regards,
-> Alex
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
-> Changes in v6:
-> - Fix DPI binding: remove the duplicated property (power-domains).
-> - Squash defconfig commit.
-> - Fix the property order in the DTS.
-> - Link to v5: https://lore.kernel.org/r/20231023-display-support-v5-0-3905f1e4b835@baylibre.com
-> 
-> Changes in v5:
-> - Patch merged, then removed from the series:
->   - dt-bindings: display: mediatek: rdma: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: ovl: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: gamma: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: dpi: add compatible for MT8365
->   - dt-bindings: display: mediatek: dsi: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: dither: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: color: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: ccorr: add compatible for MT8365 SoC
->   - dt-bindings: display: mediatek: aal: add compatible for MT8365 SoC
-> - Enable STARTEK KD070FHFID015 panel in the defconfig.
-> - Rebase on top of 6.13-rc6.
-> - Link to v4: https://lore.kernel.org/all/20231023-display-support-v4-0-ed82eb168fb1@baylibre.com
-> 
-> Changes in v4:
-> - Patch merged, then removed from the series:
->   - dt-bindings: display: mediatek: dpi: add power-domains property
->   - dt-bindings: pwm: mediatek,pwm-disp: add compatible for mt8365 SoC
->   - clk: mediatek: mt8365-mm: fix DPI0 parent
-> - Remove mediatek,mt8365-dpi compatible from mtk_drm_drv.c because it
->   use the mt8192's data. It's a miss.
-> - Add MT8365 OF graphs support, remove the hardcoded display path and
->   rebase on top of Angelo's series [1].
-> - Link to v3: https://lore.kernel.org/r/20231023-display-support-v3-0-53388f3ed34b@baylibre.com
-> 
-> Changes in v3:
-> - Drop "drm/mediatek: add mt8365 dpi support" because it's the same
->   config as mt8192 SoC
-> - Drop "dt-bindings: pwm: mediatek,pwm-disp: add power-domains property"
->   because an equivalent patch has been merge already.
-> - Add DPI clock fix in a separate commit.
-> - Improve DTS(I) readability.
-> - Link to v2: https://lore.kernel.org/r/20231023-display-support-v2-0-33ce8864b227@baylibre.com
-> 
-> Changes in v2:
-> - s/binding/compatible/ in commit messages/titles.
-> - Improve commit messages as Conor suggest.
-> - pwm-disp: Set power domain property for MT8365. This one is optionnal
->   and can be used for other SoC.
-> - Fix mediatek,dsi.yaml issue.
-> - Remove the extra clock in the DPI node/driver and fix the dpi clock
->   parenting to be consistent with the DPI clock assignement.
-> - Link to v1: https://lore.kernel.org/r/20231023-display-support-v1-0-5c860ed5c33b@baylibre.com
-> 
-> [1] https://lore.kernel.org/lkml/20240516081104.83458-1-angelogioacchino.delregno@collabora.com/
-> 
-> ---
-> Alexandre Mergnat (4):
->       drm/mediatek: dsi: Improves the DSI lane setup robustness
->       arm64: defconfig: enable display support for mt8365-evk
->       arm64: dts: mediatek: add display blocks support for the MT8365 SoC
->       arm64: dts: mediatek: add display support for mt8365-evk
-> 
-> Fabien Parent (2):
->       dt-bindings: display: mediatek: dpi: add power-domains example
->       drm/mediatek: add MT8365 SoC support
-> 
->  .../bindings/display/mediatek/mediatek,dpi.yaml    |   2 +
->  arch/arm64/boot/dts/mediatek/mt8365-evk.dts        | 236 +++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 336 +++++++++++++++++++++
->  arch/arm64/configs/defconfig                       |   2 +
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c             |   8 +
->  drivers/gpu/drm/mediatek/mtk_dsi.c                 |   2 +
->  6 files changed, 586 insertions(+)
-> ---
-> base-commit: 9d89551994a430b50c4fffcb1e617a057fa76e20
-> change-id: 20231023-display-support-c6418b30e419
-> 
-> Best regards,
-> --
-> Alexandre Mergnat <amergnat@baylibre.com>
-> 
-> 
-> 
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/drm_dumb_buffers.c | 40 ++++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 11 deletions(-)
 
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20231023-display-support-v6-0-c6af4f34f4d8@baylibre.com:
-
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: switch@31: 'interrupts' is a dependency of 'interrupt-controller'
-	from schema $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb: /soc/audio-controller@11220000/mt8183-afe-pcm: failed to match any schema with compatible: ['mediatek,mt8183-audio']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb: vcodec@17020000: 'assigned-clocks' is a required property
-arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: pinctrl@10211000: reg: [[0, 270602240, 0, 4096], [0, 268455936, 0, 4096]] is too long
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: pwm@1401f000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['mediatek,mt8173-disp-pwm', 'mediatek,mt6595-disp-pwm'] is too long
-	'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt6795-disp-pwm', 'mediatek,mt8167-disp-pwm']
-	'mediatek,mt8173-disp-pwm' is not one of ['mediatek,mt8186-disp-pwm', 'mediatek,mt8188-disp-pwm', 'mediatek,mt8192-disp-pwm', 'mediatek,mt8195-disp-pwm', 'mediatek,mt8365-disp-pwm']
-	'mediatek,mt8173-disp-pwm' was expected
-	'mediatek,mt8183-disp-pwm' was expected
-	from schema $id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb: /soc/audio-controller@11220000/mt8183-afe-pcm: failed to match any schema with compatible: ['mediatek,mt8183-audio']
-arch/arm64/boot/dts/mediatek/mt8195-demo.dtb: charger: usb-otg-vbus-regulator: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/power/supply/mt6360_charger.yaml#
-arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dtb: i2c@1100e000: Unevaluated properties are not allowed ('id' was unexpected)
-	from schema $id: http://devicetree.org/schemas/i2c/i2c-mt65xx.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb: /soc/audio-controller@11220000/mt8183-afe-pcm: failed to match any schema with compatible: ['mediatek,mt8183-audio']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb: /soc/audio-controller@11220000: failed to match any schema with compatible: ['mediatek,mt8183-audiosys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dtb: dp-bridge@5c: 'extcon' is a required property
-	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
-
-
-
-
+diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+index 70032bba1c97..9916aaf5b3f2 100644
+--- a/drivers/gpu/drm/drm_dumb_buffers.c
++++ b/drivers/gpu/drm/drm_dumb_buffers.c
+@@ -99,7 +99,30 @@ int drm_mode_create_dumb(struct drm_device *dev,
+ int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+ 			       void *data, struct drm_file *file_priv)
+ {
+-	return drm_mode_create_dumb(dev, data, file_priv);
++	struct drm_mode_create_dumb *args = data;
++	int err;
++
++	err = drm_mode_create_dumb(dev, args, file_priv);
++	if (err) {
++		args->handle = 0;
++		args->pitch = 0;
++		args->size = 0;
++	}
++	return err;
++}
++
++static int drm_mode_mmap_dumb(struct drm_device *dev, struct drm_mode_map_dumb *args,
++			      struct drm_file *file_priv)
++{
++	if (!dev->driver->dumb_create)
++		return -ENOSYS;
++
++	if (dev->driver->dumb_map_offset)
++		return dev->driver->dumb_map_offset(file_priv, dev, args->handle,
++						    &args->offset);
++	else
++		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
++					       &args->offset);
+ }
+ 
+ /**
+@@ -120,17 +143,12 @@ int drm_mode_mmap_dumb_ioctl(struct drm_device *dev,
+ 			     void *data, struct drm_file *file_priv)
+ {
+ 	struct drm_mode_map_dumb *args = data;
++	int err;
+ 
+-	if (!dev->driver->dumb_create)
+-		return -ENOSYS;
+-
+-	if (dev->driver->dumb_map_offset)
+-		return dev->driver->dumb_map_offset(file_priv, dev,
+-						    args->handle,
+-						    &args->offset);
+-	else
+-		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
+-					       &args->offset);
++	err = drm_mode_mmap_dumb(dev, args, file_priv);
++	if (err)
++		args->offset = 0;
++	return err;
+ }
+ 
+ int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
+-- 
+2.47.1
 
 
