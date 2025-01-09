@@ -4,106 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 832A0E77199
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 15:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D671E7719A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 15:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tva2aDKV+/MDffuSfl+zRdtzIydM4Toy2VF4f9o1/Mk=; b=jYX0eMZf8TodL6B4RMkEGLsui3
-	EbjHajUFhvM80Dnh8Y6XdGdtc1PaPIOoViPxRvD01UhSBwBi1rCSU3Jv1GUE6lPutgJhSxDUX0viM
-	COuRR3C3CojEQI+3+XjUt5mRSO6vdGwvUcLaxsPmRm/LfOTTxEUkditLr2zn9BiqlYgAewPIzpwyr
-	PWEFqLDRLDMvK7W1k1pwogR38jrE4WFs6x2Jz9zaFF8CyhKkqjjjJDiHMNFukExz7/a5aqz9tzkSa
-	UENjWd7p2CARrTI4heZ+rikrajfnKzBLVjSk1YdZPDHMv8DVsUPk0Mt4FROu8CkIJA4O6PXANH5Xg
-	JZhgFx9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/clElWaM3190LNZ3OZWk/BEAVCI/yd2x8vlvG4wodOI=; b=nCDtv7/TxceTPzxaR7urGgdOju
+	IaA2FxWNrgIRt7QynKCVJOGVgJ8WPq+iYsf9gy2PqrEfT+7pLFVBJSG1h/QXAR6qMXsWlsREGIzKi
+	OOx4lwNonjFSvnDIEWmjDEN2bcMoKe07BbAMdg93zN1sLXgfdkqcuOIec7AQm7NlHCX0Ci9Wk2fd6
+	0xBcXrB1lX/y4XpCxw2ikrUrsXQL1t9rD2aA/ZcNZz4mzGLn4qQovIFnQEwZ3clPYWNpxXDzSDRHO
+	RToG7bJ7F1I7/RlzvzK3gcVzbpL/iE+nXYgXE7uobHdWG2koaaczMUCa5E7fOSXcxpJ5FX5rIDoNW
+	5teA2hAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVuX2-0000000CUTS-2ood;
-	Thu, 09 Jan 2025 15:33:12 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1tVuZP-0000000CUtj-0xmK;
+	Thu, 09 Jan 2025 15:35:39 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVuU2-0000000CTnl-3pRO
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jan 2025 15:30:08 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-436345cc17bso8840155e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jan 2025 07:30:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736436605; x=1737041405; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tva2aDKV+/MDffuSfl+zRdtzIydM4Toy2VF4f9o1/Mk=;
-        b=cnfuJnxLsHOCHN1kyBtHsnzruzuV9Q10S/u2Etp85Ahk+GwEPqqDlyGLCC5xt4Fd4v
-         zKG3tyFq7ixHtPjaXEtMZeKk7k74Q7YHujue1nda2aHMo9nfgMTKgRvKu0bQ3c28yAWW
-         vLGQMnH35GZA+KqHGoe3v+aHCFr/XrYPAYyOXkXgOOEW0DQTEZMtV/sY2Iu5g/mBox0X
-         ykE4PANo/h9l4bvarPXi2tW2ruTdnAuVvLjYnpF14F2E+gV+2hn60yS5AJgFCDac/Y35
-         j0MaE9frp3Sdm7cffiOrD7u8iMn2jT2NFy2wdl+jYWx/3s9lkrD2uva9sjjyYZCdTS0o
-         su8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736436605; x=1737041405;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tva2aDKV+/MDffuSfl+zRdtzIydM4Toy2VF4f9o1/Mk=;
-        b=qE8T9jCMB1GQH1DFl6nrApVoQwoB7Q5i7UTSBbxmu912gk66H+PWpW5ysIOQweQJCD
-         56Oh17r32v6ztlDpKSYEb2uzRUo9aK2rKcQQh/HN3WCnV/aB531ZsvjS1wU+9Y8XJPPJ
-         kTbUpeVBdRCWYJi6PGMDI7ru957O8LpE0bTmWqe0iB/oQOmOetJRN4immb3J+rsPqUdw
-         M1d0h9cKuBEVgEG47nXHDlesMPwjf8CmwMESNDhBUkv1iCrBxazizS2aXmBmhuA8JWZh
-         j7KPW8hut73ndRKk0gV9ScoA7JRomrrf6f9qxgVPOAoowPTFL/fieI+4FVgd4bpsR92y
-         n5Mg==
-X-Forwarded-Encrypted: i=1; AJvYcCVYVO9vCkJWzwCKeVZbCZA51osbfy8pUK/Kb9ChYSheghjKiriUlkUx4S+3ZdNUBdCU9uROmcvJNc5hSNuS9A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxdIn6RGMi5P3ZYbsdoWWag/nzHyQ3368g0nkoVGW9UuhfhE9Zi
-	Hme62LE3NwKDP2mB6MavbchnGI4mGTgLf1CZOTIr6tKBqm+R8+RIbw+GAwwSW/A=
-X-Gm-Gg: ASbGncvqaACT7d//9l2TgAk+FREI/l8jRUp9C+9a7HUkqn/nxn6S5OKnS3J/STkW/GO
-	SrRreOLzfxEvXi2FKvts0ALQgrQ7Xg+9OivbBAq9BzvJYitapjSM7Q4ckfWh8nQBGT1IC+MfCOl
-	nJPJfrP+wVe4uO5jMkAKXtAmnS7k1C+HcS9/I3f5oxUKH0hXCIn+m6ac4tSaAOdIR6q5Uz3psld
-	qxK08tO5TyWTd6KTp3TkBrxoyzrW2QxLSYrSxgCD6QjzY0GaTJxmCccz3M=
-X-Google-Smtp-Source: AGHT+IFZu92+O1xFBM1o4OIIzCf4RxwxPT44klM4biAbIGEw2EXkTR7f4KbFlUulK4lpC9hB8MpfFA==
-X-Received: by 2002:a05:600c:3b0c:b0:434:fbda:1f36 with SMTP id 5b1f17b1804b1-436e26e51a0mr65752665e9.20.1736436604907;
-        Thu, 09 Jan 2025 07:30:04 -0800 (PST)
-Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:125:358f:ea05:210e])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-436e2df3610sm58307805e9.20.2025.01.09.07.30.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jan 2025 07:30:04 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 09 Jan 2025 16:29:52 +0100
-Subject: [PATCH 2/2] rtc: mt6359: fix year issue
+	id 1tVuZL-0000000CUsZ-3ZSy;
+	Thu, 09 Jan 2025 15:35:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1736436936; x=1767972936;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=SrcQ/8zYSyEihsRb2ykAIH/ByznPF+YacEjpgON4wFA=;
+  b=VwjIbgmW5FhpBV54O5kXvNjIjcIgl8u0fwvRMfroME+55ULp/gZQMC4d
+   EmEONZXgBY72YfTJgkvtWw9pplmSfTvAyLXdaHCGcgbY4iDHjgT0IsL9G
+   IXVFGFGuJjUR8xY+1tuybe2nTGvoJ8yvM3MqgcLYQHaBqLd35Qw30UCWw
+   gSxuGs1e0Uln88Sutk7kqxm7Fv09L5QW6XnFatmlVtPBbcZS3qvAd9SW/
+   YWeW2Ji23pnjMWW2xWDPkwPLSiZv/TRnI5+us3VISnxi1GHPrTVSK+6WP
+   VF/4Q15EvXE7AECoqh/naHdhuArFcxAFx3tOs1Hyi6tbTO9jVSU9kVYZS
+   g==;
+X-CSE-ConnectionGUID: 1HMftql2Qki65uhicLHggg==
+X-CSE-MsgGUID: Ke+F5Z3ITTm/dvLW08Ajtg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11310"; a="59174619"
+X-IronPort-AV: E=Sophos;i="6.12,301,1728975600"; 
+   d="scan'208";a="59174619"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jan 2025 07:35:21 -0800
+X-CSE-ConnectionGUID: YkkI/L/tSMG7jguLwGnmFQ==
+X-CSE-MsgGUID: MCwCzlA/TBWiqlR55nvWHw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="104308721"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 09 Jan 2025 07:35:15 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tVuYy-000HkJ-0F;
+	Thu, 09 Jan 2025 15:35:12 +0000
+Date: Thu, 9 Jan 2025 23:34:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chunkuang.hu@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
+	jitao.shi@mediatek.com, jie.qiu@mediatek.com,
+	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, dmitry.baryshkov@linaro.org,
+	lewis.liao@mediatek.com, ives.chenjh@mediatek.com,
+	tommyyl.chen@mediatek.com, jason-jh.lin@mediatek.com
+Subject: Re: [PATCH v4 02/34] drm/mediatek: mtk_dpi: Add support for Pattern
+ Generator in debugfs
+Message-ID: <202501092326.5Xw3bp4p-lkp@intel.com>
+References: <20250108112744.64686-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250109-enable-rtc-v1-2-e8223bf55bb8@baylibre.com>
-References: <20250109-enable-rtc-v1-0-e8223bf55bb8@baylibre.com>
-In-Reply-To: <20250109-enable-rtc-v1-0-e8223bf55bb8@baylibre.com>
-To: Eddie Huang <eddie.huang@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2101; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=8DXsWpDVt7tmuo4MQdFq4zvSAYEr9Hi3ET8gNU0ixjk=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBnf+t6dswjfIEHCOw16BhoepRMqsP3UcnAyvPeeJTX
- +3PsW1qJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ3/regAKCRArRkmdfjHURWq5D/
- 4yF/Ns7bGrrNmICUNd3lSvbkchkjrbu8Lq6i1dTdPTLlcSHcgDb3j392v31EGvxWxyiunuUgQXlU+A
- G9jBBc9pdeoKUJo7fOCXYo4cwzmAD5PjxxpFNNVkAS4o6VY2aplaJ0adohCh30xx88Q+B4eBLqI/kh
- FKAKCTzXzK9RrXUg2MHPW70tcfjkJR1CFd5lOqaWfAUjSHWH4BLLd9/LCH9DF3IqLuujJnql/2zZyU
- UgmgJvX3kyRNiZlw8Q8YuqahHJ0oei9M37IcGZPQRwQ3KRo/APehxXJZTzEmGhgwVCikjYKlInBJsV
- ZrX779i4J+SlgOmQeg3ZzbW32/UceHOssj3w2x75lI5oYSvNEwZbvD5XaK7sKsSMSZzap6Oi7wl8ff
- bBiuF0rsBfnptgR4+SfW39cJ4yGyt6hHl5UYu7AvRQp9G1ESykM2aEut/lelQnowEX1qSt9tVD9q7j
- BriB+K4hDUMfG8qc90D7rC2xmBleraXwfk43ef6kAGFbbO2t4V+RgNc9liQqljtOWpSahYmFvXZMaP
- ypWxcobpydIIRi4tgRlllWAA7IC6ddljoKO7g7BADDv9rfhJMLIXkkQVdVFeZnbhIr3JsVMqkOeLEc
- qCPohlusM48uw+H1+KO4XmL5uRVAo28yfO0tPOntC9c6UPUjLzoLhfUH0pKg==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250108112744.64686-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_073006_993180_1EED0C20 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20250109_073536_002799_BF796CBE 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,70 +99,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Removing the RTC_MIN_YEAR_OFFSET addition and subtraction has
-introduced a regression.
+Hi AngeloGioacchino,
 
-~# hwclock -r --verbose
-hwclock from util-linux 2.37.4
-System Time: 1262312013.143552
-Trying to open: /dev/rtc0
-Using the rtc interface to the clock.
-Assuming hardware clock is kept in UTC time.
-Waiting for clock tick...
-hwclock: select() to /dev/rtc0 to wait for clock tick timed out
-...synchronization failed
+kernel test robot noticed the following build errors:
 
-Bring back the RTC_MIN_YEAR_OFFSET to fix the RTC.
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on linus/master v6.13-rc6 next-20250109]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Fixes: 34bbdc12d04e ("rtc: mt6359: Add RTC hardware range and add support for start-year")
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- drivers/rtc/rtc-mt6397.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-display-mediatek-dpi-Add-MT8195-and-MT8188-compat/20250108-193136
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/20250108112744.64686-3-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v4 02/34] drm/mediatek: mtk_dpi: Add support for Pattern Generator in debugfs
+config: i386-buildonly-randconfig-003-20250109 (https://download.01.org/0day-ci/archive/20250109/202501092326.5Xw3bp4p-lkp@intel.com/config)
+compiler: clang version 19.1.3 (https://github.com/llvm/llvm-project ab51eccf88f5321e7c60591c5546b254b6afab99)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250109/202501092326.5Xw3bp4p-lkp@intel.com/reproduce)
 
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index 55e75712edd4..9930b6bdb6ca 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -96,6 +96,12 @@ static int mtk_rtc_read_time(struct device *dev, struct rtc_time *tm)
- 			goto exit;
- 	} while (sec < tm->tm_sec);
- 
-+	/* HW register use 7 bits to store year data, minus
-+	 * RTC_MIN_YEAR_OFFSET before write year data to register, and plus
-+	 * RTC_MIN_YEAR_OFFSET back after read year from register
-+	 */
-+	tm->tm_year += RTC_MIN_YEAR_OFFSET;
-+
- 	/* HW register start mon/wday from one, but tm_mon/tm_wday start from zero. */
- 	tm->tm_mon--;
- 	tm->tm_wday--;
-@@ -110,6 +116,7 @@ static int mtk_rtc_set_time(struct device *dev, struct rtc_time *tm)
- 	int ret;
- 	u16 data[RTC_OFFSET_COUNT];
- 
-+	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
- 	tm->tm_mon++;
- 	tm->tm_wday++;
- 
-@@ -167,6 +174,7 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
- 	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
- 	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
- 
-+	tm->tm_year += RTC_MIN_YEAR_OFFSET;
- 	tm->tm_mon--;
- 
- 	return 0;
-@@ -182,6 +190,7 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
- 	int ret;
- 	u16 data[RTC_OFFSET_COUNT];
- 
-+	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
- 	tm->tm_mon++;
- 
- 	mutex_lock(&rtc->lock);
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501092326.5Xw3bp4p-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/gpu/drm/mediatek/mtk_dpi.c:22:
+   In file included from include/drm/drm_atomic_helper.h:31:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2223:
+   include/linux/vmstat.h:518:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     518 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+>> drivers/gpu/drm/mediatek/mtk_dpi.c:175:9: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     175 |                 val = FIELD_PREP(DPI_PAT_SEL, type) | DPI_PAT_EN;
+         |                       ^
+>> drivers/gpu/drm/mediatek/mtk_dpi.c:794:8: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     794 |         val = FIELD_GET(DPI_PAT_SEL, val);
+         |               ^
+   1 warning and 2 errors generated.
+
+
+vim +/FIELD_PREP +175 drivers/gpu/drm/mediatek/mtk_dpi.c
+
+   169	
+   170	static void mtk_dpi_test_pattern_en(struct mtk_dpi *dpi, u8 type, bool enable)
+   171	{
+   172		u32 val;
+   173	
+   174		if (enable)
+ > 175			val = FIELD_PREP(DPI_PAT_SEL, type) | DPI_PAT_EN;
+   176		else
+   177			val = 0;
+   178	
+   179		mtk_dpi_mask(dpi, DPI_PATTERN0, val, DPI_PAT_SEL | DPI_PAT_EN);
+   180	}
+   181	
 
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
