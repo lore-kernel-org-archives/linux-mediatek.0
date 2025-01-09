@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F66E77197
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 21:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B661E7719D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 22:59:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xKhgvYd/B30XQnOdEhkri59rzk2MdTRvmoML3PKvj0o=; b=2O7qCWmEB3jYq83VqGt96XDNVW
-	wtsyP/ohReYX7iabSNgOL17GicZNBkqu/bLrdkLoozL+RPt0btqRIkMWOUUTb1QMZEqcJv+RqTWFt
-	8cNKkE09TcHB5KDEFPVxRrAUQ/pYTXuOAuOMTSj5tyM4f4zO6Qwnjqm1PYOg2W5LZU8zX3g9vvfW2
-	ZhbMbX3oNxiewxXLwjxl88FHi0GlxWXUVdFR/EvD7rYTGYQgdT5jWEp2O74umS590mdx6iJuXZXFv
-	Nve7K2FnDHQm5pyOCf+0vH4JoSuWKbl4G1IiLYyycjb4PuxQ8Bqn8frSv0J6Ygcg0n+6fsWtD094h
-	WCUaPbFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5X3Tmvihn3grkA7Jge4RjfqiSvPeilgE9yOD+d9FpVI=; b=Al8CUi2aWeA1ujbRNS0W3TfnLE
+	MmyMEgGmPv2vuZAtqj3AnbhBBsn1mFAK7Eb87b4QL4Rabazly11wJ1G4+z7DS+FDdlzARmRT7SGk3
+	AbbIsT73I88+6WbSiexEqR3J9zYZkL7lgIGk2Yci+ly+V9t1EQum99V4lJ2D0NY2OqeYdH3olnVls
+	ZqygBWWvJO9LDhxQmal9ltXF2arTwJtD16/z1pSZ3Y4XbMBs07pFR6jhiwPSTqNMbWnxyBqB263j/
+	JHlXt9es27cVG6WVNoBj67KkvM0a6iMYu2gkRNPIz9pGa79YxR9leDG8+TsM5+hvQrCqGUJZuXSfz
+	/phXIH6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW0DZ-0000000DNRD-0vyM;
-	Thu, 09 Jan 2025 21:37:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tW1V7-0000000DVdW-07MK;
+	Thu, 09 Jan 2025 22:59:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW0CL-0000000DNDo-0fFO;
-	Thu, 09 Jan 2025 21:36:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7C9B65C5C25;
-	Thu,  9 Jan 2025 21:35:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1BE2C4CED2;
-	Thu,  9 Jan 2025 21:36:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736458572;
-	bh=oWeTJvSV3nU7lPJyh9EggaBihBXttmXhilPkA3sJrXc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=oVbQgnr2o9IBzXfuPGiy6YIzq0h+rk9umsnGXfNRsbuH10pOIdeP0lI6GCklflxI3
-	 /ZbXvbCbz201neyTUEVSVQ0jMXTgBMNG/3qF+isFJBhISHbtdanNLA86+vvZY3PLf/
-	 02mS34PvKCf3VL8shO43TxPmfAbn7qL+L9NFHnV6N62/p/BL2CHPHRuiBNxP2ouUTw
-	 +VrJDJYWPkkE9OfQWwqvPT54ONYeV2uhlGiOapND+gZBv2o8Z37lQ/4BXFwP77aYIC
-	 ba76SHPNNvpi5rlKVwsfXpoApETbhi6wPHfimN1q3B7KsQX64Or6l4YBvnm3cLH+0T
-	 72c+zuf/Uu9+w==
-From: Mark Brown <broonie@kernel.org>
-To: Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>, 
- Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- Cezary Rojewski <cezary.rojewski@intel.com>, 
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
- Bard Liao <yung-chuan.liao@linux.intel.com>, 
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
- linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-arm-msm@vger.kernel.org
-In-Reply-To: <20250109182303.3973082-1-robh@kernel.org>
-References: <20250109182303.3973082-1-robh@kernel.org>
-Subject: Re: [PATCH] ASoC: Use of_property_present() for non-boolean
- properties
-Message-Id: <173645856449.810998.11706229796048790590.b4-ty@kernel.org>
-Date: Thu, 09 Jan 2025 21:36:04 +0000
+	id 1tW1V4-0000000DVcv-0O7E;
+	Thu, 09 Jan 2025 22:59:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=5X3Tmvihn3grkA7Jge4RjfqiSvPeilgE9yOD+d9FpVI=; b=s+jwsQH2++ZJTa21jBBjugQMXI
+	4bHOZkHr3BtbA6u/uOhHobPv3MGeFWhNFGUl43iw9TYIyTjmoijwv6stOdPuOX44mYtM+Ex4veIlv
+	GanP8Ltk9SSPFArY9HIjzDL6w9HBmiDH9lkAf/YRbJ76vQtfeMTBh+9CdrFBgxC6jT1PLksF27MCM
+	uT5h6cp1P/vX38GEwJikltALOY4zAv1uVLPRdaX6J8i+zNB6LmK+4A346bu7woaR2Pb1GBGscGht6
+	qpjxlF/C8UEv09LkPOGTvCxTCmWsQsAVjWgo7DBUgDUT6zw9zcZF7Od+phqWlT6xPgO3SWYExc5bS
+	MfLPLsiA==;
+Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tW1Uq-0005mI-C2; Thu, 09 Jan 2025 23:59:24 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch, Thomas Zimmermann <tzimmermann@suse.de>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 19/25] drm/rockchip: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Date: Thu, 09 Jan 2025 23:59:23 +0100
+Message-ID: <3227546.fEcJ0Lxnt5@diego>
+In-Reply-To: <20250109150310.219442-20-tzimmermann@suse.de>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-20-tzimmermann@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_133613_244913_98E7CE3F 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20250109_145938_152774_B6C834CA 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,39 +82,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 09 Jan 2025 12:23:00 -0600, Rob Herring (Arm) wrote:
-> The use of of_property_read_bool() for non-boolean properties is
-> deprecated in favor of of_property_present() when testing for property
-> presence.
-> 
-> 
+Am Donnerstag, 9. Januar 2025, 15:57:13 CET schrieb Thomas Zimmermann:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch to a multiple of 64.
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: "Heiko St=FCbner" <heiko@sntech.de>
+> Cc: Andy Yan <andy.yan@rock-chips.com>
 
-Applied to
+I've looked up the patch implementing the new functionality - patch2 of
+this series [0] and that looks really nice to get proper helpers and not
+having many drivers open-coding the same functionality in different ways.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+So for the Rockchip adaptation:
 
-Thanks!
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-[1/1] ASoC: Use of_property_present() for non-boolean properties
-      commit: 84eac6d478c00f8f9101f91716ea3866d2fc1e54
+and looking forward to this getting merged :-)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Thanks a lot for working on that
+Heiko
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+[0] https://patchwork.kernel.org/project/linux-rockchip/patch/2025010915031=
+0.219442-3-tzimmermann@suse.de/
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/dr=
+m/rockchip/rockchip_drm_gem.c
+> index 6330b883efc3..3bd06202e232 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/vmalloc.h>
+> =20
+>  #include <drm/drm.h>
+> +#include <drm/drm_dumb_buffers.h>
+>  #include <drm/drm_fb_helper.h>
+>  #include <drm/drm_gem.h>
+>  #include <drm/drm_gem_dma_helper.h>
+> @@ -403,13 +404,12 @@ int rockchip_gem_dumb_create(struct drm_file *file_=
+priv,
+>  			     struct drm_mode_create_dumb *args)
+>  {
+>  	struct rockchip_gem_object *rk_obj;
+> -	int min_pitch =3D DIV_ROUND_UP(args->width * args->bpp, 8);
+> +	int ret;
+> =20
+> -	/*
+> -	 * align to 64 bytes since Mali requires it.
+> -	 */
+> -	args->pitch =3D ALIGN(min_pitch, 64);
+> -	args->size =3D args->pitch * args->height;
+> +	/* 64-byte alignment required by Mali */
+> +	ret =3D drm_mode_size_dumb(dev, args, SZ_64, 0);
+> +	if (ret)
+> +		return ret;
+> =20
+>  	rk_obj =3D rockchip_gem_create_with_handle(file_priv, dev, args->size,
+>  						 &args->handle);
+>=20
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
 
-Thanks,
-Mark
+
 
 
