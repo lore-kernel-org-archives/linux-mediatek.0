@@ -4,165 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350D0C02185
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 15:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBEEAE77199
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jan 2025 15:17:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=; b=Mgq7xoJYcqotWZDEnRsSssEs9j
-	WtkV/CQQKhOe6jBhU1Ep6nRNjgMOfSvP0KO3oqkmLhtnp2shQXYkxdOFWIWKKk+ZYkD3u1Bn1iTCY
-	Wq78iR+ShKwuMdHSVBOAzwuVoTbQhgJTv+uDNvmwQ8NfOjzK5sRE3ZbAkFWYyXZ7GUDS26ynK+NpZ
-	37QVZvfa4+7ehw0U0M7hT9Bmcyuo4slMgwxGszj1o5T+ZqQt/Xo4K6epm+jOMLdLugy+jEV1efjmz
-	/rhYUeXFiFeJ4isETtUpcfQonsnVJ6Qx5xbJXTjBDrZkcF8gxUb+0qiY9ZFI6VHPu98X31jmXRe3y
-	GVXo92OA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pu7iKMgFtLxoX0yqIz2R3oUnaHmPu6/03Ud8YYLEne4=; b=AhQl46PGzKtAEDXKOE0oUGhxHP
+	wHq2P43bOD8+L57Ao1aykLttqazGcmpJBoOJ6deVu9IgJnQ6TtVWzN0GJJ8lJq0ONYVFEzljAHR/k
+	9mcaq8X7AMHEpivkVQp6rxFZK8ZFOZFbMuLKFq7es15sfMESWZjltioKt0mzrZ0JIpyL3/Uu7YalM
+	2hXEW9v3Ig8bN1sxh8yRvtWxEuCdVz8qdz0xO4x0WF81udRipOZNTFzPIGb6WbzXnBR/vD03B9yO3
+	AsgzcyvhLb0TsWJ4Qc7p1aeKq7bJjbLO4T5W8tWzXnWEz3pPEKUqp/QrxqNpceBs199GN0C0Yr5V2
+	+IM9aF/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4o-0000000CNTl-46YT;
-	Thu, 09 Jan 2025 15:04:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tVuHb-0000000CQpn-2zgY;
+	Thu, 09 Jan 2025 15:17:15 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4U-0000000CMpJ-1sFP;
-	Thu, 09 Jan 2025 15:03:42 +0000
+	id 1tVuGN-0000000CQWa-14r9;
+	Thu, 09 Jan 2025 15:16:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=; b=dG7pv/bwbVyEftuAKx59R+j8tX
-	YFZadqjikxxwsOFhPR6AsMj01ni2uIF2gbRH4svqLB+iEachPPya6bjOIAsJRcoEZZIqP/ZmkkoqY
-	ibNVRTdarYmdNi/5ey0jG7ikPjkyy0bSiOhRyUcriBhphOmkl+MMDU6URGpvo3TKU/EMTn0hMJ6cF
-	1PYx4sdSMHa/+sPbAHza273zCsHT4M7xWxhvNmJNwlTJ4S0LiQaHhpBLHpk27vd8YvbQoH9v0dDLV
-	I3aAwnwn12omhkRy941Z5YKCFUKzl+Vvww8vg+BP5LixckesEqfcgGoEWHP3rmfLlGViNiuaQwqKc
-	ZvPPeFPA==;
-Received: from smtp-out1.suse.de ([195.135.223.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4A-00000009a6T-0p1i;
-	Thu, 09 Jan 2025 15:03:36 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id E721F21171;
-	Thu,  9 Jan 2025 15:03:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736435000; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=;
-	b=QEdI2JVuAtwjaRpn1a9OFWgjqj3vZJaOLtdoeqSUYNcWQ0K6AyVe+NKAdTRqaF6xN4rwoS
-	S+VajvQzfi8eTK2zzPVPpGspbAVlr8roJzhPrF9leDWOcqqtMReUqvg3WtmTH5NpkluLiB
-	LTNkrCxWe2dNbcRRiiAqUZYOnoZ5SzM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736435000;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=;
-	b=rrsFXEqv5/RIaAjhK/LJO8o69DayAQL2H8fXVM7CAdBqkRlT8d89QpRS0vSV3VCS608hTO
-	/Bzn4WflsHwfjsCQ==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=jZZapTnC;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=lk77pFGn
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736434999; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=;
-	b=jZZapTnCAdx/tMhB9e9FyPhemBcaQ4RAHrohqqdY389CpOLMQTTOCdQX5lB3Imxmwh+NsX
-	PZ/WqOMlY1IeD/th3PyUpFmUOY8iRO4YQ5Zm7ftZPMo2cbIWjI9dCYxVq4aie9WhZXfbDS
-	VWB3SvqFdopGa/7hrVfP33ejnWntyWs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736434999;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NqQRjOkhm9SJSbhxaHLS/kALWSX7OjgIi0zWzKpICPM=;
-	b=lk77pFGnfUgqy1c2btVrQZ4ATtWNUyGXXQlWLRvPjL5pkBLWiohlrYrIJokVOs0r+/es+Y
-	Oxmj8v4C7fw0aWCA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 50C0913A8B;
-	Thu,  9 Jan 2025 15:03:19 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id MFNqEjflf2c1awAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 09 Jan 2025 15:03:19 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	airlied@gmail.com,
-	simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org,
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=pu7iKMgFtLxoX0yqIz2R3oUnaHmPu6/03Ud8YYLEne4=; b=nYLMZl3Kke+BNNOpQ7d/djHSTH
+	Rf+A2ly5KkGFLUD1NF6skHEPqKTBL4KSq0HsjWD8Rr7SDmczQBAlYzA0sfyAQN3kNDqCI0YWOKWyr
+	x1/qi1ScIsz5dlXoJBeAB/ShUhk86wY08BRnx42MVr64sjC1Z2w9gt5REcQhxxOj8zN+biE6VOVMw
+	JBIDzOrgfF8Qq4xIbwOxL1Jo7aVyiCFgviBPJ2cL1CYd7ka6xDagYKd3yQwkkE9x8tFqvhkXpA0gY
+	SYIIQrwiZO1bjzeNB7VJ3xSSy7vsRObANsYPqmIDAIg9XUrj6Gp2VLTpx7OAljHiIo2nCnBywQt7k
+	EhPwMOpQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40130)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tVuFk-0002Cp-0K;
+	Thu, 09 Jan 2025 15:15:20 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tVuFb-0007PQ-1c;
+	Thu, 09 Jan 2025 15:15:11 +0000
+Date: Thu, 9 Jan 2025 15:15:11 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexander Couzens <lynxis@fe80.eu>,
+	Alexander Duyck <alexanderduyck@fb.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>, kernel-team@meta.com,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	xen-devel@lists.xenproject.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Xinliang Liu <xinliang.liu@linaro.org>,
-	Tian Tao <tiantao6@hisilicon.com>,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-Subject: [PATCH v2 09/25] drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Thu,  9 Jan 2025 15:57:03 +0100
-Message-ID: <20250109150310.219442-10-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250109150310.219442-1-tzimmermann@suse.de>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Michal Simek <michal.simek@amd.com>, netdev@vger.kernel.org,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>
+Subject: [PATCH net-next 0/5] net: phylink: fix PCS without autoneg
+Message-ID: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: E721F21171
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-1.51 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_MISSING_CHARSET(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,suse.de:email,linaro.org:email,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	ARC_NA(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
-	RCPT_COUNT_TWELVE(0.00)[25];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	R_RATELIMIT(0.00)[to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_150322_811837_3A064117 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20250109_071559_564073_8CDDE06D 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,167 +105,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch to a multiple of 128.
+Hi,
 
-The hibmc driver's new hibmc_dumb_create() is similar to the one
-in GEM VRAM helpers. The driver was the only caller of
-drm_gem_vram_fill_create_dumb(). Remove the now unused helper.
+Eric Woudstra reported that a PCS attached using 2500base-X does not
+see link when phylink is using in-band mode, but autoneg is disabled,
+despite there being a valid 2500base-X signal being received. We have
+these settings:
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Xinliang Liu <xinliang.liu@linaro.org>
-Cc: Tian Tao <tiantao6@hisilicon.com>
-Cc: Xinwei Kong <kong.kongxinwei@hisilicon.com>
-Cc: Sumit Semwal <sumit.semwal@linaro.org>
-Cc: Yongqin Liu <yongqin.liu@linaro.org>
-Cc: John Stultz <jstultz@google.com>
----
- drivers/gpu/drm/drm_gem_vram_helper.c         | 65 -------------------
- .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   | 25 ++++++-
- include/drm/drm_gem_vram_helper.h             |  6 --
- 3 files changed, 24 insertions(+), 72 deletions(-)
+	act_link_an_mode = MLO_AN_INBAND
+	pcs_neg_mode = PHYLINK_PCS_NEG_INBAND_DISABLED
 
-diff --git a/drivers/gpu/drm/drm_gem_vram_helper.c b/drivers/gpu/drm/drm_gem_vram_helper.c
-index 15cd564cbeac..b4cf8134df6d 100644
---- a/drivers/gpu/drm/drm_gem_vram_helper.c
-+++ b/drivers/gpu/drm/drm_gem_vram_helper.c
-@@ -444,71 +444,6 @@ void drm_gem_vram_vunmap(struct drm_gem_vram_object *gbo,
- }
- EXPORT_SYMBOL(drm_gem_vram_vunmap);
- 
--/**
-- * drm_gem_vram_fill_create_dumb() - Helper for implementing
-- *				     &struct drm_driver.dumb_create
-- *
-- * @file:		the DRM file
-- * @dev:		the DRM device
-- * @pg_align:		the buffer's alignment in multiples of the page size
-- * @pitch_align:	the scanline's alignment in powers of 2
-- * @args:		the arguments as provided to
-- *			&struct drm_driver.dumb_create
-- *
-- * This helper function fills &struct drm_mode_create_dumb, which is used
-- * by &struct drm_driver.dumb_create. Implementations of this interface
-- * should forwards their arguments to this helper, plus the driver-specific
-- * parameters.
-- *
-- * Returns:
-- * 0 on success, or
-- * a negative error code otherwise.
-- */
--int drm_gem_vram_fill_create_dumb(struct drm_file *file,
--				  struct drm_device *dev,
--				  unsigned long pg_align,
--				  unsigned long pitch_align,
--				  struct drm_mode_create_dumb *args)
--{
--	size_t pitch, size;
--	struct drm_gem_vram_object *gbo;
--	int ret;
--	u32 handle;
--
--	pitch = args->width * DIV_ROUND_UP(args->bpp, 8);
--	if (pitch_align) {
--		if (WARN_ON_ONCE(!is_power_of_2(pitch_align)))
--			return -EINVAL;
--		pitch = ALIGN(pitch, pitch_align);
--	}
--	size = pitch * args->height;
--
--	size = roundup(size, PAGE_SIZE);
--	if (!size)
--		return -EINVAL;
--
--	gbo = drm_gem_vram_create(dev, size, pg_align);
--	if (IS_ERR(gbo))
--		return PTR_ERR(gbo);
--
--	ret = drm_gem_handle_create(file, &gbo->bo.base, &handle);
--	if (ret)
--		goto err_drm_gem_object_put;
--
--	drm_gem_object_put(&gbo->bo.base);
--
--	args->pitch = pitch;
--	args->size = size;
--	args->handle = handle;
--
--	return 0;
--
--err_drm_gem_object_put:
--	drm_gem_object_put(&gbo->bo.base);
--	return ret;
--}
--EXPORT_SYMBOL(drm_gem_vram_fill_create_dumb);
--
- /*
-  * Helpers for struct ttm_device_funcs
-  */
-diff --git a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-index e6de6d5edf6b..81768577871f 100644
---- a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-+++ b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-@@ -18,10 +18,12 @@
- #include <drm/clients/drm_client_setup.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_fbdev_ttm.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_gem_vram_helper.h>
- #include <drm/drm_managed.h>
-+#include <drm/drm_mode.h>
- #include <drm/drm_module.h>
- #include <drm/drm_vblank.h>
- 
-@@ -54,7 +56,28 @@ static irqreturn_t hibmc_interrupt(int irq, void *arg)
- static int hibmc_dumb_create(struct drm_file *file, struct drm_device *dev,
- 			     struct drm_mode_create_dumb *args)
- {
--	return drm_gem_vram_fill_create_dumb(file, dev, 0, 128, args);
-+	struct drm_gem_vram_object *gbo;
-+	int ret;
-+
-+	ret = drm_mode_size_dumb(dev, args, SZ_128, 0);
-+	if (ret)
-+		return ret;
-+
-+	gbo = drm_gem_vram_create(dev, args->size, 0);
-+	if (IS_ERR(gbo))
-+		return PTR_ERR(gbo);
-+
-+	ret = drm_gem_handle_create(file, &gbo->bo.base, &args->handle);
-+	if (ret)
-+		goto err_drm_gem_object_put;
-+
-+	drm_gem_object_put(&gbo->bo.base);
-+
-+	return 0;
-+
-+err_drm_gem_object_put:
-+	drm_gem_object_put(&gbo->bo.base);
-+	return ret;
- }
- 
- static const struct drm_driver hibmc_driver = {
-diff --git a/include/drm/drm_gem_vram_helper.h b/include/drm/drm_gem_vram_helper.h
-index 00830b49a3ff..b6e821f5dd03 100644
---- a/include/drm/drm_gem_vram_helper.h
-+++ b/include/drm/drm_gem_vram_helper.h
-@@ -100,12 +100,6 @@ int drm_gem_vram_vmap(struct drm_gem_vram_object *gbo, struct iosys_map *map);
- void drm_gem_vram_vunmap(struct drm_gem_vram_object *gbo,
- 			 struct iosys_map *map);
- 
--int drm_gem_vram_fill_create_dumb(struct drm_file *file,
--				  struct drm_device *dev,
--				  unsigned long pg_align,
--				  unsigned long pitch_align,
--				  struct drm_mode_create_dumb *args);
--
- /*
-  * Helpers for struct drm_driver
-  */
+Eric diagnosed it to phylink_decode_c37_word() setting state->link
+false because the full-duplex bit isn't set in the non-existent link
+partner advertisement word (which doesn't exist because in-band
+autoneg is disabled!)
+
+The test in phylink_mii_c22_pcs_decode_state() is supposed to catch
+this state, but since we converted PCS to use neg_mode, testing the
+Autoneg in the local advertisement is no longer sufficient - we need
+to be looking at the neg_mode, which currently isn't provided.
+
+We need to provide this via the .pcs_get_state() method, and this
+will require modifying all PCS implementations to add the extra
+argument to this method.
+
+Patch 1 uses the PCS neg_mode in phylink_mac_pcs_get_state() to correct
+the now obsolute usage of the Autoneg bit in the advertisement.
+
+Patch 2 passes neg_mode into the .pcs_get_state() method, and updates
+all users.
+
+Patch 3 adds neg_mode as an argument to the various clause 22 state
+decoder functions in phylink, modifying drivers to pass the neg_mode
+through.
+
+Patch 4 makes use of phylink_mii_c22_pcs_decode_state() rather than
+using the Autoneg bit in the advertising field.
+
+Patch 5 may be required for Eric's case - it ensures that we report
+the correct state for interface types that we support only one set
+of modes for when autoneg is disabled.
+
+ drivers/net/dsa/b53/b53_serdes.c                   |  4 +-
+ drivers/net/dsa/mt7530.c                           |  2 +-
+ drivers/net/dsa/mv88e6xxx/pcs-6185.c               |  1 +
+ drivers/net/dsa/mv88e6xxx/pcs-6352.c               |  1 +
+ drivers/net/dsa/mv88e6xxx/pcs-639x.c               |  5 +-
+ drivers/net/dsa/qca/qca8k-8xxx.c                   |  2 +-
+ drivers/net/ethernet/cadence/macb_main.c           |  3 +-
+ drivers/net/ethernet/freescale/fman/fman_dtsec.c   |  4 +-
+ drivers/net/ethernet/marvell/mvneta.c              |  2 +-
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c    |  2 +
+ .../net/ethernet/marvell/prestera/prestera_main.c  |  1 +
+ drivers/net/ethernet/meta/fbnic/fbnic_phylink.c    |  2 +-
+ .../net/ethernet/microchip/lan966x/lan966x_main.h  |  2 +-
+ .../ethernet/microchip/lan966x/lan966x_phylink.c   |  3 +-
+ .../net/ethernet/microchip/lan966x/lan966x_port.c  |  4 +-
+ .../net/ethernet/microchip/sparx5/sparx5_phylink.c |  2 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c  |  3 +-
+ drivers/net/pcs/pcs-lynx.c                         |  4 +-
+ drivers/net/pcs/pcs-mtk-lynxi.c                    |  4 +-
+ drivers/net/pcs/pcs-xpcs.c                         |  7 +--
+ drivers/net/phy/phylink.c                          | 60 ++++++++++++++++------
+ include/linux/phylink.h                            | 11 ++--
+ 22 files changed, 87 insertions(+), 42 deletions(-)
+
 -- 
-2.47.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
