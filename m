@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A602E7719C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79CB9E77188
 	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:36:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,83 +12,84 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z//BQnV3/BLX4Mqa0cv4eDxMczGWbcxFqozmONQlohE=; b=lRaNBNEgJ/YG95XZnaWydlJL0v
-	qfYBgp9g/zEe9Cha64pzmTlUwavq+2G5ihEGk5jos7nU8uXWb/3xsBPS7wC3dwx2+3R9l9jVMJOVi
-	kAdJI5G5HyUX4jMmJCL/BQRbCiqu0gF61iPH6qAp2fDp9YZ6kJ3ma+8N90YCezXIjmBZvqdHtqtiw
-	tf0x0z4x0RdrXD3XyNzsrDbmcL8H7xcukbM2uPyHtym+aAVsw9C6xWkiKneB8levIEuhy8VNsBOgy
-	jbkLBlESho+mkg4k4m4y7TgDuxi5OA10FDn4GwPyQ5pNliaEIEO5LCVJ93QYYKlxkzVG16LWzd9n+
-	5FZ++Vjg==;
+	bh=czQovKHFJiawW3q43/tzxcBianm24ydViBCbQnMA+dM=; b=i3y9aA/D55gqK2IUagTtiTlpcy
+	rYuZL9LGabrfK98cGZknVlP3qRmz9Af99OeGfrT3ywE6nZo0Zd8WM8u78ald5oSEf6H5TU4cwEh0q
+	cNHKLe1Bcdp37t6q74d9nAylZ3R06UJ/lagth7p2fQaLSdxSHO59bgPkBPHONq+d/zlh6gwUSH4Xp
+	b342LXhoU70d+OUzkQFg9CGoDu2h8oFfJbV0cqKh+glM10HDiORxtNq8ZAeGpb7KLD9hgnLVuGvwo
+	vE833zIux0Iq8pP1/raUEFZ1AXLbiN31USAshmZ31Kqr5BqovwvWCmjKqD9xhNr1nnnZamMOJ4Xuy
+	oH4Cql/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWFBh-0000000FV2d-16zW;
+	id 1tWFBh-0000000FV2p-2Tg3;
 	Fri, 10 Jan 2025 13:36:33 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWF6o-0000000FTuh-0pcq
+	id 1tWF6p-0000000FTv7-0nAR
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 10 Jan 2025 13:31:30 +0000
+	Fri, 10 Jan 2025 13:31:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Z//BQnV3/BLX4Mqa0cv4eDxMczGWbcxFqozmONQlohE=; b=k2xBDtPmdjsxypQgDa7LR3mciC
-	CvwD4rqjmCb/lzmrOIyLimEJQrz72taEhS+GRJ935IVqDajEKq6D8k1N6KsF5oicUBUPMv4Zo02Rx
-	p3DstZrfQaVBcYQpu9/FU8NL6+1NzidCfbM3dGuy8KmOvD32WBhKsAc/fOmiiKiSAHh+s8RyjW/BV
-	Dk/Zc7Y97m5HoB95zd2j9/8OqJTDcwgkn9V7+TnZ4I2ec3eQnMpQK7wKt/mvPpbGUCSFkfo2YpiO6
-	IUFuVf0LsfUahAV8dwYYrNpZ/jUCQRh551E9h+MhMdCfTmWJEvSlnL4PycHlm7mSyvRJQjwf1N3zM
-	OYvjnTPQ==;
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	bh=czQovKHFJiawW3q43/tzxcBianm24ydViBCbQnMA+dM=; b=qGtqpihUZpOkhDd27/pxotPvdy
+	IM43hu8UL3/+MkcsLI1hxbqSsVdV3VawMjKDt0saLoRVdr8VBXHlgEzF99URkbPYY4Ys3ZCT/4dOo
+	KnVLPLWVxeP0ycfu9lqz7HI+00G6QMTvQmYSXiStcG8OkaFkBRptfC1lCDb4CBmCnhRtQWWXGnUil
+	98MUxlfRjv0xwwO4NxQu3MOL8vSFHEKQjPYiAubBwREqJZ4sfkeS2puiZdclaSIoxwIa4BDtIL/7I
+	f70qs1hQ9KHLRgBhk6Tvpal4jzQy8z3tCoG2taxspIwS6IKtIdrVPFXFgJifXYeaD1e8a4hnhbnjn
+	RQZeECtg==;
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWF6l-00000009m9I-18fD
+	id 1tWF6m-00000009m9W-1yaS
 	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Jan 2025 13:31:29 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-435f8f29f8aso15529415e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jan 2025 05:31:26 -0800 (PST)
+	Fri, 10 Jan 2025 13:31:30 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-386329da1d9so1111108f8f.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jan 2025 05:31:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736515885; x=1737120685; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736515886; x=1737120686; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Z//BQnV3/BLX4Mqa0cv4eDxMczGWbcxFqozmONQlohE=;
-        b=Cg+uKbd+g/x/44GHCEPS4ToaI1jWhHuRfSdQGUmEkq45iO8eNxfgp//2rx5WxwtuCW
-         /1xFM7d846rUDBH0wB7qCkyraItGc8N72xDm9NTM3IYHLR1xYv4qtyp8MqnjyWsnBIfl
-         +y7pFgLYpEkvMjfkd5sXencknZ+38Zb0GIIfk7GQpgtZqj5sa6XCG5j3i5bXhOqOv2/w
-         iVNP5k1ZjjN4Ru3kNOIapAbybd827xHXgQm6RCmD9M+kx8ZjLkiJdLSmUsEVxrlZC6uo
-         8s8ZyJDowHry6KctoE/AQEO47sXncHcnN0uecRAQh8E2psWQlJC4BnZMv4PliEnYYkT6
-         /GkQ==
+        bh=czQovKHFJiawW3q43/tzxcBianm24ydViBCbQnMA+dM=;
+        b=jeXMzEKAoM3BVFS5eGdmBDfTDkBMykOFZp4TmVaQi/N9WiUnzFYeMNk8MqVPL0H/zz
+         1tlNlyF1vhyT8VAyozlejgNw9532k4ZbG2gzDqTuxBX9seIJfZHOC71BD+Ze8MXu3TYt
+         /0yBkOabszEqP6bxZre2vLWz4sbCSBC3vbjlJoLato20uzICb00QdkfhpJv+hu3CbHJu
+         zCWUJKZjEPdMLmc+R+CkhHDZyuA6sIn/gDYlcVXnL4GNEKgQyjKT5EYJvgtl0XAEHhbe
+         HX8zS3i2pDKYFtYvMMwLY6QsVTJgrvy/+fZUpK2NqVXuBv2N0w6QpbxYV1mQP8hYCEIc
+         WFqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736515885; x=1737120685;
+        d=1e100.net; s=20230601; t=1736515886; x=1737120686;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Z//BQnV3/BLX4Mqa0cv4eDxMczGWbcxFqozmONQlohE=;
-        b=leovjpWY9RTxnqvT8FDq/FpzbnoBVi1mgr/ijBrtLBjyeh4HQkIzKLhEqXtg9epWLj
-         cXsgl3zhX+7VbVHWKN2/NXi/894L1wBVAVOIK9y4QkhHUnTxv2KWAOOAQ2c4IOknxoHY
-         y5HFB3QP+jFbFPcWNtbBA7hndPcRyzbzAj/6zZAGd7j/duC6Z8CzvMfkMHw2wX+s2yNt
-         hOGNTvAUjaCUKE+WaVRnAzenRV5yhUTrGaUP0uqGUko/o4gi+Ks3ohxc1eaGzZe57GH2
-         73YPtN8tmY7gPMgceu/EF7IpwM4tR8broL2PfLS3kanf409vlcgGcvCcvNavwoB83kE5
-         lbYg==
-X-Forwarded-Encrypted: i=1; AJvYcCUb+T4I97AX+oVSqFu7uCm8dSwcglIYB5YQpB8V017l4yGdBlTMbLwYlm0Gjm8GXuZYkpHCrxgtxI4ReBa3gg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFeey66soxRVrRw+g3iSay+AYCdXNrZl6GwTCsl1Q5SziuuuGy
-	FmV1ImW2VgGPZ4mVv5QOyM38K2rzwhr+1SBF7miqMkDMU/fZximL3v0yA3kQsaM=
-X-Gm-Gg: ASbGncvz6CKYh2zjNis703Q2jXAnHCiYJPpuyviLHCC3pc9wX6TXhVA5lSZOEzpoVDQ
-	TWTDgZPSUFgAffbbW/keftuYixwv7mbVlAvVoEZivSkSeU8axlGdadK566hocjaRFimR+yejc2F
-	ivOtjGlj32UNE9+gzT8b9JxKE5WZg/grr/IQ2pcdJLF+TwcvM/Egj8tF4G+vq2q/UnNLaaa6aKv
-	ZapmWRbshZ0zT4DL/cepaptseODecqs+ub4wsa/248LF20BUAEylpxU6jcD
-X-Google-Smtp-Source: AGHT+IFx2GC2yPIa0jo0uLSF3wUAfCDb+jHxkY/Jz5/qgDxr5WT9ZW2q5ZSeDjEs2iELnpyG7PPdYw==
-X-Received: by 2002:a5d:64ad:0:b0:385:e67d:9e0 with SMTP id ffacd0b85a97d-38a8730d521mr9053765f8f.29.1736515885138;
-        Fri, 10 Jan 2025 05:31:25 -0800 (PST)
+        bh=czQovKHFJiawW3q43/tzxcBianm24ydViBCbQnMA+dM=;
+        b=bXEoruDOAEG1ilmPvY/gBUnnsyqotxiXYBsxw4ZyZovkWzwCQFpzgDahqImv/GqYQY
+         NlA1hHExIUpQDOUtZYc9PRtqo8fERuxhvP9gGZ7yCsTrXgaOlsm+1M6BLwU07gZKT11I
+         bPsF89aKZSYu/y+G5x6SY9WEf/+8PsicFzl+SpjknKAETp4UYRz+m5edN9cW5mWsWikY
+         eAiAWCgpeuCeYFx4ouPfcwQ9s8abMEzghSuuDyUgyMf0nNuacO757T9HYi+p9tC2Nf25
+         jj05CgJ7lDHBHPdN1hnhLePkMs57I3f3rEfZitQzIS5iCVenHr5ort6dh+9BTF0C6gno
+         X+kw==
+X-Forwarded-Encrypted: i=1; AJvYcCVU1/GsHSqEUmddS0zW83nILDOBMHbIImmi6h6C16fLRH4g1aXL9drI3AOP+SLcxEg2y5SjIeOPShmh+/XO+g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzdd+WD0enO4HILIYw2RBu8TgSr1qAVR3RVw5ydvSLhvSfK+ygt
+	wQW5yYLigtSjHZxG7rWUpKzEjC3EkZ2zObh1PcdCIw7GJDzLdCP+DS/w+LZ2KEA=
+X-Gm-Gg: ASbGncv/BKymGyg/N0LOTFjiSIdZY7NZlQur+OGxbWBrmfstRUgyZp8waLVWTGKGcs8
+	uSMvTJk9wFuWuZfajlELbZ2W7xmB4hX9NA15H2DqYRiK556NjhirtcN2KI0nd0hGK/A95dhsXiQ
+	nbktwBr9dk9PSqk190sHMdc+7109EpvyESyJMCGKFFqHRGjE9LKXCcpcgk8gcOD6VJjynlRuYrl
+	G1wkRcWK4q0DRa7Lmky4GAQXpD9WyGilnf1CnU5TyLqBfWBV+L6nCp5OThC
+X-Google-Smtp-Source: AGHT+IGPagTUjFwrYYmmjtjuTfXbN2bDVAsHyXfD27cOpCNW2lmXYAioeDkCa1NDyoNEQON0v8I1+w==
+X-Received: by 2002:a05:6000:710:b0:385:f4db:e33b with SMTP id ffacd0b85a97d-38a872db2c7mr10663137f8f.21.1736515886322;
+        Fri, 10 Jan 2025 05:31:26 -0800 (PST)
 Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:2555:edac:4d05:947d])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a8e38c990sm4598193f8f.56.2025.01.10.05.31.23
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a8e38c990sm4598193f8f.56.2025.01.10.05.31.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jan 2025 05:31:24 -0800 (PST)
-From: amergnat@baylibre.com
-Date: Fri, 10 Jan 2025 14:31:13 +0100
-Subject: [PATCH v7 3/6] drm/mediatek: add MT8365 SoC support
+        Fri, 10 Jan 2025 05:31:25 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 10 Jan 2025 14:31:14 +0100
+Subject: [PATCH v7 4/6] arm64: defconfig: enable display support for
+ mt8365-evk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v7-3-6703f3e26831@baylibre.com>
+Message-Id: <20231023-display-support-v7-4-6703f3e26831@baylibre.com>
 References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
 In-Reply-To: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -106,27 +107,27 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Fabien Parent <fparent@baylibre.com>
+ Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1705; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=wfidoNqLEIpqSK6RG2PAlzWtAyJfTIKDPdldVFKf2ag=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBngSEn6dIUV44F8BjerVW+RaDvB4bQEz+FY+SuSLdC
- zThnaqCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ4EhJwAKCRArRkmdfjHURR7ND/
- 9QHUK4fkSZ0JuFIq8kAo9pXcFTRKLN5YRBM6U51ybQaouZrB7uPYUqkPmuHlzNymD7+e1nPAhsjsVA
- fa2fNmQiGduEJhPZZJVQWDOfwizbo7Blgzat5TE946k6xnyscmUl/86A0IcU0T2CaqDN+64RIXbeOh
- tVe4RUUzBFDtrxcOiNUkPTYW6ZeM5t4fyx/Yl+aLItJrrTBsmyne18s3duvddS/5eF/XysLTuDedLN
- JmTG/tFPeUsnaZZkNrkKNvmtvc3bqKKDt+pfcVBsxVlNxcBnw7lSw2L9IHZ1J+So44qRXKJyYitGsP
- epvfvPsHkswsK5VO+hr/K5kHczfxohSGIukWZSJ75GqYqKSM4jDUZWAKo/vQAWfuWG+F206/Jda+wi
- +Gx2TrbfaX2VSSGVtXJc3Va/GDFWFcxA1k3CRdfMklYYmhMLT98eLpSYxY6xT/zXWFHXFSOHtttUkX
- b8vIYKwbVIPi+AO6YUFa5pbFPGeM6z2As/FwyE82JReMRPZpCiVwqro5fZYs8RIZbSYAwZBxMlajcI
- 9oZln4Ep0IanTgFreC5xAChZmTxAT07/WJ+Q589eASkEAsPACxQDYDC2vZkUnsYt9Sd6pROxh9P8xf
- RxXuegHE62J2LoezUNJ+7KLyzCwJ1wKDwgFcfeY6c2pPfREbqG+DhICutwKA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1025; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=/FrM5Q7dkW2P/a4wYWyi5MUyL8Mql8ICFVAZt1ovMlM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBngSEnoSo2eM6ojRqCmld2hpFcaxilavl+I21EUqLr
+ Kup6t+SJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ4EhJwAKCRArRkmdfjHURQB7D/
+ 9A/L91PiiGu2rK2SMP9XGcogr6oaqx6UZaDXrDKetU5D8kgdn7C2qhIjPzekgzy5B8ZbekLxqmm7YW
+ PMw7IdT778IA30r2Dv3xkkjoe0EZZ39x+QTxTLbhd4xFSQLL08xnf2BExPVCJMrVBA0gI0zjNxw0dB
+ UvzNve5p8WDSB3b8EYX7Tcx2r4tnFWRhlv5uaGziE2vIyxMAEVAzO/jwryBD4w9IoU4GIHp2w5rmsd
+ i8l+fwpJp+rvhZUIrm86OU282/J5plCcuCG9NdxJjwAf73Q4m5qAhyz3JQtrFWEsv9/a3FY5FjFgLG
+ Kp/dJXr4rspqMnXVGnIc+9yfRR6JdtGODsq9d80FoqkPQ8HQ+Qz8bbaHAg63EOTIFx4KX2nAdXqQSJ
+ H3POeEMfpRMigfsIDX0mKw3KJzpRVdfwYKk8zOiKvjsIGq+c9HBXz8mQmq92oPyHH17wBN3EFKfTN9
+ Q7x5bPl88hrGjH927T7r6sPCPckmUgZ+oooJjucg3R3CbiEClThzYPsswxpict7DcNfnzz0sXGG6wr
+ wNIw7x1GPN2cVka5ughYRn4aARpjw1XAlAmKyGN2rQK7ToCTkoNYzW2VBzi22tLfe+hyreHgTB+9MS
+ ThR/RoVxRpcIOa3VzZ5G2cb4Fur8bl/CNAQT5uJ0J0LAczK9D9jTqY/jMpjQ==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_133127_533023_21F3AD73 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20250110_133128_715237_B556A6E1 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,50 +142,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Enable the DRM HDMI connector support and the MIPI-DSI display
+Startek KD070FHFID015 panel to have HDMI and DSI display working
+on the mt8365-evk board.
 
-Add DRM support for MT8365 SoC.
-
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 0829ceb9967c..5471ef744cc1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -328,6 +328,10 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
- 	.min_height = 1,
- };
- 
-+static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
-+	.mmsys_dev_num = 1,
-+};
-+
- static const struct of_device_id mtk_drm_of_ids[] = {
- 	{ .compatible = "mediatek,mt2701-mmsys",
- 	  .data = &mt2701_mmsys_driver_data},
-@@ -355,6 +359,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8195_vdosys0_driver_data},
- 	{ .compatible = "mediatek,mt8195-vdosys1",
- 	  .data = &mt8195_vdosys1_driver_data},
-+	{ .compatible = "mediatek,mt8365-mmsys",
-+	  .data = &mt8365_mmsys_driver_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
-@@ -751,6 +757,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8195-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8365-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index c62831e61586..1e2963a13500 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -897,9 +897,11 @@ CONFIG_DRM_PANEL_NOVATEK_NT36672E=m
+ CONFIG_DRM_PANEL_RAYDIUM_RM67191=m
+ CONFIG_DRM_PANEL_SAMSUNG_ATNA33XC20=m
+ CONFIG_DRM_PANEL_SITRONIX_ST7703=m
++CONFIG_DRM_PANEL_STARTEK_KD070FHFID015=m
+ CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA=m
+ CONFIG_DRM_PANEL_VISIONOX_VTDR6130=m
+ CONFIG_DRM_FSL_LDB=m
++CONFIG_DRM_DISPLAY_CONNECTOR=m
+ CONFIG_DRM_LONTIUM_LT8912B=m
+ CONFIG_DRM_LONTIUM_LT9611=m
+ CONFIG_DRM_LONTIUM_LT9611UXC=m
 
 -- 
 2.25.1
