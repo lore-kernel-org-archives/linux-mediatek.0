@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA31E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37002E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AJNHpK0quJ/GfeLqRZq/bWUVLiRagAyT1ROgGXqNauc=; b=1pawPsBcWpmj68+lve/EchfKVK
-	QQH0Jm03tH+IdIBntEXKAMg2oI9MoYvVM8B6VOSIKKC4WUI5FHVrerEVS/KNJq1qck5Y4bBaf6cop
-	lFK98SNKkCSqRieVt4Tv+2LjE6KmKScUiF4VIF468tRV/u5OJ5ydYitX87cSU8YXF/ZqrMldqoSfN
-	KiDfrkmhewUrM5PiCccMlxNiwf6CuxM8L/wyWSNbigViF3ZSRvxOld1XfyRpo+t+rjL0bdm8bjArh
-	aW0Frwx9rjbx79cs1daaAAqbKQEPx3z01FuC+Izrk94QUtWZvThVkxfIu2vhepnXhQ8vHYvni5t/P
-	uBL8pSPw==;
+	bh=tfGlVxdDMEF8ekVP37PfhXIwB0jjQao+AQW5Dp+nK3k=; b=4PBhrlLrCvJX4LhiZUc5zk+cL+
+	RJzobP4eA5GWz+A84OBH/fzHC0ZHMjakzaWiKLCHYdEpjT/DbDpnyhh639ndyYdzDcSahobfwLCzt
+	yyLwHR6UpMADbBE4SRv7xNAMgEGzj3fUEPVsm1wzg7m6X9gnFpRER+U/6igg4OOXimgUswuGlCkPp
+	VKra85O+ZKKTae3aKkaaXQHKEic6M0g/CTltbL5S8I3Ronk1DFf80hneJqxFmb9jQBBzA339jy23j
+	kFwW5IR6AqWgdJu38GJeKEuE0oyX9qCaeXgcEyi/wX+wabHMkw/SymIVqWt8kuze+vdIpAwXguEN/
+	m6Uv73mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWFVp-0000000FYCK-07wN;
-	Fri, 10 Jan 2025 13:57:21 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tWFX0-0000000FYL3-3xT3;
+	Fri, 10 Jan 2025 13:58:34 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWFSt-0000000FXTP-1MZo;
-	Fri, 10 Jan 2025 13:54:20 +0000
+	id 1tWFSu-0000000FXTg-2d0I;
+	Fri, 10 Jan 2025 13:54:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 15E8EA41BA6;
-	Fri, 10 Jan 2025 13:52:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02A59C4CED6;
-	Fri, 10 Jan 2025 13:54:17 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6AB9DA41F1A;
+	Fri, 10 Jan 2025 13:52:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6CE1BC4CEE0;
+	Fri, 10 Jan 2025 13:54:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736517258;
-	bh=LPyn4zGg07EcDbmN8qbWXQu2T7iAh+g4Zanw4aY6Nh8=;
+	s=k20201202; t=1736517259;
+	bh=NBTIZIQ0O8n49LLcohw3ZpYmgZsM/wfukba/u1zNx2g=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=H1i7iDdofr9qkOBohfvLG/GVjtxC9Z00nO04TIA58X6C+keS8dUXICi6bBaeuj2Dt
-	 Pko98ZdIdgOUMCofPtQTgxwmYZ4PP0hvo9WK3mPj0/7ZauGM1Ad5oD0iBtoZWe0IDX
-	 y2L2PvkOLyFXzC2q2C6TaNSeaEzT3XXnmfCGR+3Vy1eiN0UuxU0ftygmGgz699MRId
-	 3jxq4Jpt78UNbLt0mhHc0gPZqS2v6IhEXsEwHweBQ0ZYYdLaZI8jmM0Sjgdy9I1Osr
-	 umyM4/UBnwruuY8eBJ+Hlv2zVHLS9NOGSm35xNbSseytgAIT0635GCHA5xEBPJf60E
-	 CcSS/oesWAREg==
-Date: Fri, 10 Jan 2025 07:54:16 -0600
+	b=jrEHq1aYppMBXRT4k44Tx7XWe+sLU2aKhaiDX/HF1l+MTSrATFzayIePg7vLaDIT3
+	 yW8Uu/cBxhuUynb7dl+6VsE9ZXzQ+6EQaKeuB3Bsn6NeSh3+1xXoOLgw+EBQSTT3N0
+	 vNRQ+xiCX503ypXSFQTOVbtnE9e/9Aw/6vbkCObxtORB5VHXfAa5tAKwuE2ts+x6lI
+	 fsQ3/L+Mj6v9QsRhjNprjqhdwKYe2WidYwaYjvQv/RXmhVEV/3kTdfUn91Anf/JJ7C
+	 +huh9DYFOVdbk7VDJMJbXthDr1RanUSjT9xC4nr1SF97g4f57hDPgU0gKgSkU0AIbc
+	 gmH3/3UDj2W4g==
+Date: Fri, 10 Jan 2025 07:54:18 -0600
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: "paul-pl.chen" <paul-pl.chen@mediatek.com>
-In-Reply-To: <20250110123835.2719824-5-paul-pl.chen@mediatek.com>
+In-Reply-To: <20250110123835.2719824-6-paul-pl.chen@mediatek.com>
 References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
- <20250110123835.2719824-5-paul-pl.chen@mediatek.com>
-Message-Id: <173651725269.2671643.2891127782637834272.robh@kernel.org>
-Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml
+ <20250110123835.2719824-6-paul-pl.chen@mediatek.com>
+Message-Id: <173651725426.2671695.7661340219497308695.robh@kernel.org>
+Subject: Re: [PATCH 04/12] dt-bindings: display: mediatek: add BLENDER yaml
  for MT8196
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_055419_492179_E74A527C 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20250110_055420_730415_AE436864 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,22 +72,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 10 Jan 2025 20:33:59 +0800, paul-pl.chen wrote:
+On Fri, 10 Jan 2025 20:34:00 +0800, paul-pl.chen wrote:
 > From: "Paul-pl.Chen" <paul-pl.chen@mediatek.com>
 > 
-> Add mediatek,exdma.yaml to support EXDMA for MT8196.
+> Add mediatek,blender.yaml to support BLENDER for MT8196.
 > 
 > Signed-off-by: Paul-pl.Chen <paul-pl.chen@mediatek.com>
 > ---
 > The header used in examples:
 > #include <dt-bindings/clock/mt8196-clk.h>
-> #include <dt-bindings/power/mt8196-power.h>
-> are not upstreamed yet.
+> is not upstreamed yet.
 > It will be sent by related owner soon.
 > ---
->  .../display/mediatek/mediatek,exdma.yaml      | 77 +++++++++++++++++++
->  1 file changed, 77 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,exdma.yaml
+>  .../display/mediatek/mediatek,blender.yaml    | 50 +++++++++++++++++++
+>  1 file changed, 50 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
@@ -95,18 +94,11 @@ My bot found errors running 'make dt_binding_check' on your patch:
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/display/mediatek/mediatek,exdma.example.dts:18:18: fatal error: dt-bindings/clock/mt8196-clk.h: No such file or directory
-   18 |         #include <dt-bindings/clock/mt8196-clk.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/display/mediatek/mediatek,exdma.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1506: dt_binding_check] Error 2
-make: *** [Makefile:251: __sub-make] Error 2
+
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250110123835.2719824-5-paul-pl.chen@mediatek.com
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250110123835.2719824-6-paul-pl.chen@mediatek.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
