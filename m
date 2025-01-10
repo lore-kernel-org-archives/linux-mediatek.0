@@ -4,162 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD4A1E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E12E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:
-	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PrilCMX5C09JO84DVBY8YiEapsTpHUYRcsRbRBep3cA=; b=wScCVLc09ehI6ASnc/898B9ykW
-	SOKvxIEM27nlJzeZEj4wPb00obYyzO1LSkcDriHvzjEwlIk30Ug3WVWlHzWLY8SHSOFasBPmOLAke
-	x81NNXYkOevG3TbtulA3+5C/yy6eGiVYpfXAaeEhYtwWP66xEguYRpVWtvahvw3Fja8b6ylq3Sivr
-	Ew67n50WhOzoxuhAA5029Zx2PdxTRzrpT6kRSUBA0MuyW6sJFirXueutNxZN4n61iGszZPPd5Nll2
-	hRwPxSxgx/iJcD5GfiwmMQGIZ+jOmonCUsAS1kUgTjPbGkbd5KAKCouiabrzk0NOhrzfOMJp5t4Jw
-	p4SYuFhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/CRkSXWyXf0xsAqoBIGl0gizy0vMiUiEuhlip5XNNFI=; b=l7fIemhoDO5z05x3zI6IK2IZOF
+	OohC4PukregJlcv44dHOyEO+wANbc/ESMQRWWJscfReHZv5zyozbhJT3ba7dB7totE59lhBZIdrDY
+	/diMZhIvy0cjl8j+mTsErdiHlwaBNCxuYCTS6BWq7JPa/i0V3iHpKel2bNjazS+iTUVa7ayCuiaNF
+	qiNPoXyhddYFCWvdGZnzuyFTKmsPCc6/XU+Mw5bzUopPcgZplFLV8aj/I+ufMT+xuRblmxuC0eqdd
+	YFr321ipa1ZD2yl4MUU2y3lGiygxa8xRqmpsdnjf62GnDpYzSPVLSiHi+rMh/KWjal2DAbkJAe32u
+	QgTUrHbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWF19-0000000FSo1-3e9z;
-	Fri, 10 Jan 2025 13:25:39 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1tWF9C-0000000FUPj-3hTF;
+	Fri, 10 Jan 2025 13:33:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEzP-0000000FSUN-0Wdz;
-	Fri, 10 Jan 2025 13:23:52 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 087B921172;
-	Fri, 10 Jan 2025 13:23:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736515429; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=PrilCMX5C09JO84DVBY8YiEapsTpHUYRcsRbRBep3cA=;
-	b=m+6oSc3XjiJxQ7r2O4TIutB8rfN4Sn51k9uRZDknztaHK9SUvXjiQ6+F5InXDkhWZQjx2e
-	bEKydpyg4D+gW9I2rZHGRVGFVmNINT6YqOEDsK35alPpZC67b21Ag5WeKkLepzWE0+aED1
-	S9lfcFIhJOEC+GNPF38po+TNTa8tJCY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736515429;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=PrilCMX5C09JO84DVBY8YiEapsTpHUYRcsRbRBep3cA=;
-	b=ASsviGnmX5mBcPbnd2R2scx+AS/t4X+QqjIZ1BzhB4fbdnEbKRUxbOVJHsRs2T+pwqFspq
-	Yu0sZOw7CnwQ/GCA==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=m+6oSc3X;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=ASsviGnm
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736515429; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=PrilCMX5C09JO84DVBY8YiEapsTpHUYRcsRbRBep3cA=;
-	b=m+6oSc3XjiJxQ7r2O4TIutB8rfN4Sn51k9uRZDknztaHK9SUvXjiQ6+F5InXDkhWZQjx2e
-	bEKydpyg4D+gW9I2rZHGRVGFVmNINT6YqOEDsK35alPpZC67b21Ag5WeKkLepzWE0+aED1
-	S9lfcFIhJOEC+GNPF38po+TNTa8tJCY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736515429;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=PrilCMX5C09JO84DVBY8YiEapsTpHUYRcsRbRBep3cA=;
-	b=ASsviGnmX5mBcPbnd2R2scx+AS/t4X+QqjIZ1BzhB4fbdnEbKRUxbOVJHsRs2T+pwqFspq
-	Yu0sZOw7CnwQ/GCA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 7CB5D13763;
-	Fri, 10 Jan 2025 13:23:48 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id zEwkHWQfgWcIXgAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Fri, 10 Jan 2025 13:23:48 +0000
-Content-Type: multipart/mixed; boundary="------------Ak8c05R8qA0Bhl3CK6SC6vGZ"
-Message-ID: <e800ebc2-39b5-46d5-89ec-883ed1c7626b@suse.de>
-Date: Fri, 10 Jan 2025 14:23:48 +0100
+	id 1tWF6m-0000000FTuF-3T3y
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 10 Jan 2025 13:31:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=/CRkSXWyXf0xsAqoBIGl0gizy0vMiUiEuhlip5XNNFI=; b=I/4sjvpVPDwyodkb8YSm30XUJP
+	dceRCuF0Tk3Kz/PU+NihSCqOm1djgs5rLk4UMRMkLixUvqX0EKLzP1c9o2rq/g7oBtZ8zc7I/54ue
+	aLEku0E2VxF+HBjMDWXefQU/HnQtTXZW7Z6MOUOMLUbdF6rcF79MTkA/U0U5OeVntfSb+szu8dHNT
+	9l5QuAELgYaaC7RtTXieaGxIEySlVV/ZQkOtBzrXl6bG7y2j8Yu8uW7STpti0pyZ7YIsG84oAb9bE
+	k2zsknRKADAQd4lI7xHA4KNbc4b5x55/+haWfGouOppEYpM7IEkN2QiXpFMNArlf0wp/e17Fw7iHo
+	CAetlmow==;
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tWF6i-00000009m88-2coL
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jan 2025 13:31:27 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3863703258fso2055445f8f.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jan 2025 05:31:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736515882; x=1737120682; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/CRkSXWyXf0xsAqoBIGl0gizy0vMiUiEuhlip5XNNFI=;
+        b=10FWtEs5w0+dbDcPirCOACREdCfUiO9CzMpxWVbx0H8J5yzG5ntxti4KYf7kjF636Z
+         9AsP3ofjj0Yw59pSHxcf6AQe+QRbHsuibSGzAkYr8K2sqXgiCEIqUHn+Sd9VuNCi0CST
+         pWRRexRaK4Jp+0suSmxvvZmORaPRDhXwGekQczHMY8ckhpR35GvfXA197Jgb5Q2XkdlW
+         b+0+f1Js/k9o2uhdHid2pTEJwSta/bp4r3YcgdWP25sPFXBK/qPOB5cXO9IYd0fAq+fz
+         nK2XCCU+aNc0NL+7rkthHA7qZyMg1KJfIpLAgCon5YPMunDqJuFCclYSFxc86mIZqZgB
+         RXrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736515882; x=1737120682;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/CRkSXWyXf0xsAqoBIGl0gizy0vMiUiEuhlip5XNNFI=;
+        b=oq3054FrzK8Xw6C+AFNimPDbaqZPOeUtZ5P8oJQ6BsTj3/9r6CWi1jkgF4dJFd+0YX
+         V56Yj+OQUlO6eGtDkraOFBhFIQhSaD3N/L87831081XUV98gbb/3IF3hwDIMJX5c1Byr
+         oic4S8d/FOL1GTEpSBkefg2OC9sMdETvCfZ9vLdcDdOuuj4Emgv8DFF0jvKMqnzE/sYb
+         22puoXH/MUtgVkak8/bmc3oeFIdX53SSMVHYLK6fe8X35JdDyyHs7qvP4VeA+Db7VfxG
+         gZ9unu7e7Jh9V5bVIJZsVkDTDzKLhd/UiolmJ58DTO3Us0ds/BkApzyJWA4eZ6Qh6df3
+         rrlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW+ChTVALWLINiV5KjTyBkRdESIn4o1t0PDcTjQvgvqga97cJM2CfomK2L1sYRcF0y57+sspY+x4rrz4un9Xw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywi5kK8u1JTZfOyhU4cH7kdmp+Hp4vA6ZORHFwIO4zmhOCUGffq
+	GRDFlYIhgwAa7UBwHOq2/hgoPKUb2+94pFJVruhhPbkTQvLO1LMg8LzPlwAJzQc=
+X-Gm-Gg: ASbGncuOyJs5c7nOISEOv8oIJ0kGqf3nNFjhglm5Wx2WXKR88v0w/P+4RZy8Uxe/gfB
+	IN+0z1OxcQG4UCpoOd7eG/JWxnDjo/g5meQVr0WpJ1hsvxss5Ul7Ns+CirKhcLywm7zBV6IZn4b
+	8TR92ZhWr9UPNj3saRVoq6Y2AbwouxtKnmKhQzM+JxW32+W7G1b/SOg0znbpzvCxIOGSdaC4hX1
+	Yui3+1/hVDMQWpRWndOJfCPgaQW08/y3AOy0LhSRVvrmOfcYUmOgIWxCkWe
+X-Google-Smtp-Source: AGHT+IEeT/k14BcIEcdwF/8jsOntipWrqikOfy+83Y1jOalU/MN+akEWeVXNGmRe7c17qKDi731Pvg==
+X-Received: by 2002:a05:6000:410a:b0:385:e8e7:d09a with SMTP id ffacd0b85a97d-38a8b0c71cbmr6605006f8f.2.1736515882478;
+        Fri, 10 Jan 2025 05:31:22 -0800 (PST)
+Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:2555:edac:4d05:947d])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a8e38c990sm4598193f8f.56.2025.01.10.05.31.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jan 2025 05:31:21 -0800 (PST)
+From: amergnat@baylibre.com
+Date: Fri, 10 Jan 2025 14:31:11 +0100
+Subject: [PATCH v7 1/6] dt-bindings: display: mediatek: dpi: add
+ power-domains example
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/25] drm/dumb-buffers: Provide helper to set pitch
- and size
-To: Andy Yan <andyshrk@163.com>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
- linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org,
- xen-devel@lists.xenproject.org
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-3-tzimmermann@suse.de>
- <94f78e1.19bf.1944de709b0.Coremail.andyshrk@163.com>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <94f78e1.19bf.1944de709b0.Coremail.andyshrk@163.com>
-X-Rspamd-Queue-Id: 087B921172
-X-Spamd-Result: default: False [-1.91 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MIME_BASE64_TEXT_BOGUS(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[multipart/mixed,text/plain,text/x-patch];
-	MIME_BASE64_TEXT(0.10)[];
-	MX_GOOD(-0.01)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:+];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[19];
-	ARC_NA(0.00)[];
-	FREEMAIL_TO(0.00)[163.com];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[163.com,gmail.com];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
-	FREEMAIL_CC(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch,lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org];
-	HAS_ATTACHMENT(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:dkim,suse.de:mid,infradead.org:email,infradead.org:url]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20231023-display-support-v7-1-6703f3e26831@baylibre.com>
+References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+In-Reply-To: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Fabien Parent <fparent@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1612; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=1JKrAs8ef9/G6ny5cfhuHd3DFIbQFHxMMv9wBH5/HqA=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBngSEneE6zOf8vEEwrluvT4BlZNUmmzfnh8+dgMnkc
+ OKzALE+JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ4EhJwAKCRArRkmdfjHURYjpEA
+ DGf6hGHBkuj/S8FHNwSNHu+zjuNgTJivuTPoZm6K2uGhF9lAzwXa43mbbEEJya8ShfFWrU/m3v9KHP
+ 1Dzgk9DJTlOO1lvgkRv+N6DK8ptMx1C6Aef4kKpP6+dBg5x3dP5J4zL//RyEIZODOEq8GpIRXZMHxn
+ HcNdOkYOM65h8eFd/qcfkRbgOH8zSSUUhdoaqPedu3H0TreyDnOD7i8q7k4SIOYYnnXsjxSiPqh3RE
+ FPmcXUYg2ui411JC5xLGwyK/ui6RIx0/KpfKiH/ZJeT1SvepMvt4bme6wiqZDJjLKFYqkH6SRX5QDP
+ FkMuLf2eqqkjko8WqYCdK2peo26/J/hwDlpMuokN9uJbQ3WR2zIxYjHy5xiexOtkqAjtxeXdJLlJUB
+ FAhBmKw6sLzd/9K/D4r1sCSi4FcGfN7VSvIaL51H44UPdMl0etiRaMmMr+8upGdIF/KW1F+d+CAEbi
+ eLKoW0d2PUIV2IeBfqXMEnZA+6J1jLZBLdsNdMvUmSoOhyB7utbOF9r7axjT8szg47IsXC6vB+4n8B
+ md1my3Uh1z/civLxqDjHZblMSbEhyNglYKeXBleWsc2Dxqs2/dMiWkAslxuxoFbOxq3xPY2yICClKB
+ 32h3cbGNzGnVEne9TVLq23Z5N0xPqsYSqBDfnDJv+PV0Ihw8CS0a2PEsuYIg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_052351_490851_1A46962D 
-X-CRM114-Status: GOOD (  34.15  )
+X-CRM114-CacheID: sfid-20250110_133124_789001_74AAAD0D 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,300 +143,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a multi-part message in MIME format.
---------------Ak8c05R8qA0Bhl3CK6SC6vGZ
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Fabien Parent <fparent@baylibre.com>
 
-Hi
+DPI is part of the display / multimedia block in MediaTek SoCs, and
+always have a power-domain (at least in the upstream device-trees).
+Add the power-domains property to the binding example.
 
+Fixes: 9273cf7d3942 ("dt-bindings: display: mediatek: convert the dpi bindings to yaml")
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Am 10.01.25 um 02:49 schrieb Andy Yan:
-> Hi Thomas,
->
-> At 2025-01-09 22:56:56, "Thomas Zimmermann" <tzimmermann@suse.de> wrote:
->> Add drm_modes_size_dumb(), a helper to calculate the dumb-buffer
->> scanline pitch and allocation size. Implementations of struct
->> drm_driver.dumb_create can call the new helper for their size
->> computations. There's currently quite a bit of code duplication
->> among DRM's memory managers. Each calculates scanline pitch and
->> buffer size from the given arguments, but the implementations are
->> inconsistent in how they treat alignment and format support. Later
->> patches will unify this code on top of drm_mode_size_dumb() as
->> much as possible.
->>
->> drm_mode_size_dumb() uses existing 4CC format helpers to interpret the
->> given color mode. This makes the dumb-buffer interface behave similar
->> the kernel's video= parameter. Again, current per-driver implementations
->> likely have subtle differences or bugs in how they support color modes.
->>
->> Future directions: one bug is present in the current input validation
->> in drm_mode_create_dumb(). The dumb-buffer overflow tests round up any
->> given bits-per-pixel value to a multiple of 8. So even one-bit formats,
->> such as DRM_FORMAT_C1, require 8 bits per pixel. While not common,
->> low-end displays use such formats; with a possible overcommitment of
->> memory. At some point, the validation logic in drm_mode_size_dumb() is
->> supposed to replace the erronous code.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->> drivers/gpu/drm/drm_dumb_buffers.c | 93 ++++++++++++++++++++++++++++++
->> include/drm/drm_dumb_buffers.h     | 14 +++++
->> 2 files changed, 107 insertions(+)
->> create mode 100644 include/drm/drm_dumb_buffers.h
->>
->> diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
->> index 9916aaf5b3f2..fd39720bd617 100644
->> --- a/drivers/gpu/drm/drm_dumb_buffers.c
->> +++ b/drivers/gpu/drm/drm_dumb_buffers.c
->> @@ -25,6 +25,8 @@
->>
->> #include <drm/drm_device.h>
->> #include <drm/drm_drv.h>
->> +#include <drm/drm_dumb_buffers.h>
->> +#include <drm/drm_fourcc.h>
->> #include <drm/drm_gem.h>
->> #include <drm/drm_mode.h>
->>
->> @@ -57,6 +59,97 @@
->>   * a hardware-specific ioctl to allocate suitable buffer objects.
->>   */
->>
->> +static int drm_mode_align_dumb(struct drm_mode_create_dumb *args,
->> +			       unsigned long pitch_align,
->> +			       unsigned long size_align)
->> +{
->> +	u32 pitch = args->pitch;
->> +	u32 size;
->> +
->> +	if (!pitch)
->> +		return -EINVAL;
->> +
->> +	if (pitch_align)
->> +		pitch = roundup(pitch, pitch_align);
->> +
->> +	/* overflow checks for 32bit size calculations */
->> +	if (args->height > U32_MAX / pitch)
->> +		return -EINVAL;
->> +
->> +	if (!size_align)
->> +		size_align = PAGE_SIZE;
->> +	else if (!IS_ALIGNED(size_align, PAGE_SIZE))
->> +		return -EINVAL;
->> +
->> +	size = ALIGN(args->height * pitch, size_align);
->> +	if (!size)
->> +		return -EINVAL;
->> +
->> +	args->pitch = pitch;
->> +	args->size = size;
->> +
->> +	return 0;
->> +}
->> +
->> +/**
->> + * drm_mode_size_dumb - Calculates the scanline and buffer sizes for dumb buffers
->> + * @dev: DRM device
->> + * @args: Parameters for the dumb buffer
->> + * @pitch_align: Scanline alignment in bytes
->> + * @size_align: Buffer-size alignment in bytes
->> + *
->> + * The helper drm_mode_size_dumb() calculates the size of the buffer
->> + * allocation and the scanline size for a dumb buffer. Callers have to
->> + * set the buffers width, height and color mode in the argument @arg.
->> + * The helper validates the correctness of the input and tests for
->> + * possible overflows. If successful, it returns the dumb buffer's
->> + * required scanline pitch and size in &args.
->> + *
->> + * The parameter @pitch_align allows the driver to specifies an
->> + * alignment for the scanline pitch, if the hardware requires any. The
->> + * calculated pitch will be a multiple of the alignment. The parameter
->> + * @size_align allows to specify an alignment for buffer sizes. The
->> + * returned size is always a multiple of PAGE_SIZE.
->> + *
->> + * Returns:
->> + * Zero on success, or a negative error code otherwise.
->> + */
->> +int drm_mode_size_dumb(struct drm_device *dev,
->> +		       struct drm_mode_create_dumb *args,
->> +		       unsigned long pitch_align,
->> +		       unsigned long size_align)
->> +{
->> +	u32 fourcc;
->> +	const struct drm_format_info *info;
->> +	u64 pitch;
->> +
->> +	/*
->> +	 * The scanline pitch depends on the buffer width and the color
->> +	 * format. The latter is specified as a color-mode constant for
->> +	 * which we first have to find the corresponding color format.
->> +	 *
->> +	 * Different color formats can have the same color-mode constant.
->> +	 * For example XRGB8888 and BGRX8888 both have a color mode of 32.
->> +	 * It is possible to use different formats for dumb-buffer allocation
->> +	 * and rendering as long as all involved formats share the same
->> +	 * color-mode constant.
->> +	 */
->> +	fourcc = drm_driver_color_mode_format(dev, args->bpp);
-> This will return -EINVAL with bpp drm_mode_legacy_fb_format doesn't support,
-> such as(NV15, NV20, NV30, bpp is 10)[0]
-
-Thanks for taking a look. That NV-related code at [0] is a 'somewhat 
-non-idiomatic use' of the UAPI. The dumb-buffer interface really just 
-supports a single plane. The fix would be a new ioctl that takes a DRM 
-4cc constant and returns a buffer handle/pitch/size for each plane. But 
-that's separate series throughout the various components.
-
-There's also code XRGB16161616F. This is a viable format for the UAPI, 
-but seems not very useful in practice.
-
->
-> And there are also some AFBC based format with bpp can't be handled here, see:
-> static __u32 drm_gem_afbc_get_bpp(struct drm_device *dev,
->                                    const struct drm_mode_fb_cmd2 *mode_cmd)
-> {
->          const struct drm_format_info *info;
->                  
->          info = drm_get_format_info(dev, mode_cmd);
->                  
->          switch (info->format) {
->          case DRM_FORMAT_YUV420_8BIT:
->                  return 12;
->          case DRM_FORMAT_YUV420_10BIT:
->                  return 15;
->          case DRM_FORMAT_VUY101010:
->                  return 30;
->          default:
->                  return drm_format_info_bpp(info, 0);
->          }
-> }
-
-Same problem here. These YUV formats are multi-planar and there should 
-be no dumb buffers for them.
-
-As we still have to support these all use cases, I've modified the new 
-helper to fallback to computing the pitch from the given bpp value. 
-That's what drivers currently do. Could you please apply the attached 
-patch on top of the series and report back the result of the test? You 
-should see a kernel warning about the unknown color mode, but allocation 
-should succeed.
-
-Best regards
-Thomas
-
->
->
-> [0]https://gitlab.freedesktop.org/mesa/drm/-/blob/main/tests/modetest/buffers.c?ref_type=heads#L159
->
-> This introduce a modetest failure on rockchip platform:
-> # modetest -M rockchip -s 70@68:1920x1080 -P 32@68:1920x1080@NV30
-> setting mode 1920x1080-60.00Hz on connectors 70, crtc 68
-> testing 1920x1080@NV30 overlay plane 32
-> failed to create dumb buffer: Invalid argument
->
-> I think other platform with bpp can't handler by  drm_mode_legacy_fb_format will
-> also see this kind of failure:
->
->
->
->> +	if (fourcc == DRM_FORMAT_INVALID)
->> +		return -EINVAL;
->> +	info = drm_format_info(fourcc);
->> +	if (!info)
->> +		return -EINVAL;
->> +	pitch = drm_format_info_min_pitch(info, 0, args->width);
->> +	if (!pitch || pitch > U32_MAX)
->> +		return -EINVAL;
->> +
->> +	args->pitch = pitch;
->> +
->> +	return drm_mode_align_dumb(args, pitch_align, size_align);
->> +}
->> +EXPORT_SYMBOL(drm_mode_size_dumb);
->> +
->> int drm_mode_create_dumb(struct drm_device *dev,
->> 			 struct drm_mode_create_dumb *args,
->> 			 struct drm_file *file_priv)
->> diff --git a/include/drm/drm_dumb_buffers.h b/include/drm/drm_dumb_buffers.h
->> new file mode 100644
->> index 000000000000..6fe36004b19d
->> --- /dev/null
->> +++ b/include/drm/drm_dumb_buffers.h
->> @@ -0,0 +1,14 @@
->> +/* SPDX-License-Identifier: MIT */
->> +
->> +#ifndef __DRM_DUMB_BUFFERS_H__
->> +#define __DRM_DUMB_BUFFERS_H__
->> +
->> +struct drm_device;
->> +struct drm_mode_create_dumb;
->> +
->> +int drm_mode_size_dumb(struct drm_device *dev,
->> +		       struct drm_mode_create_dumb *args,
->> +		       unsigned long pitch_align,
->> +		       unsigned long size_align);
->> +
->> +#endif
->> -- 
->> 2.47.1
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+index 0f1e556dc8ef..d5ee52ea479b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+@@ -116,11 +116,13 @@ examples:
+   - |
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     dpi: dpi@1401d000 {
+         compatible = "mediatek,mt8173-dpi";
+         reg = <0x1401d000 0x1000>;
+         interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+         clocks = <&mmsys CLK_MM_DPI_PIXEL>,
+              <&mmsys CLK_MM_DPI_ENGINE>,
+              <&apmixedsys CLK_APMIXED_TVDPLL>;
 
 -- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+2.25.1
 
---------------Ak8c05R8qA0Bhl3CK6SC6vGZ
-Content-Type: text/x-patch; charset=UTF-8;
- name="0001-add-fallback-for-unknown-bpp.patch"
-Content-Disposition: attachment;
- filename="0001-add-fallback-for-unknown-bpp.patch"
-Content-Transfer-Encoding: base64
-
-RnJvbSAyZTcwMDU2NTRkNzZiNzFmNzhmZTA3ZmNmOThhMzU3MDAyMmY1MDM0IE1vbiBTZXAg
-MTcgMDA6MDA6MDAgMjAwMQpGcm9tOiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5A
-c3VzZS5kZT4KRGF0ZTogRnJpLCAxMCBKYW4gMjAyNSAwOTozNToxMiArMDEwMApTdWJqZWN0
-OiBbUEFUQ0hdIGFkZCBmYWxsYmFjayBmb3IgdW5rbm93biBicHAKCi0tLQogZHJpdmVycy9n
-cHUvZHJtL2RybV9kdW1iX2J1ZmZlcnMuYyB8IDI4ICsrKysrKysrKysrKysrKysrKysrLS0t
-LS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZHVtYl9idWZmZXJzLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vZHJtX2R1bWJfYnVmZmVycy5jCmluZGV4IGZkMzk3MjBiZDYxNy4u
-NWYyZDAyNmM3NjRjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2R1bWJfYnVm
-ZmVycy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fZHVtYl9idWZmZXJzLmMKQEAgLTEx
-OSw5ICsxMTksOCBAQCBpbnQgZHJtX21vZGVfc2l6ZV9kdW1iKHN0cnVjdCBkcm1fZGV2aWNl
-ICpkZXYsCiAJCSAgICAgICB1bnNpZ25lZCBsb25nIHBpdGNoX2FsaWduLAogCQkgICAgICAg
-dW5zaWduZWQgbG9uZyBzaXplX2FsaWduKQogeworCXU2NCBwaXRjaCA9IDA7CiAJdTMyIGZv
-dXJjYzsKLQljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwotCXU2NCBwaXRj
-aDsKIAogCS8qCiAJICogVGhlIHNjYW5saW5lIHBpdGNoIGRlcGVuZHMgb24gdGhlIGJ1ZmZl
-ciB3aWR0aCBhbmQgdGhlIGNvbG9yCkBAIC0xMzUsMTIgKzEzNCwyNSBAQCBpbnQgZHJtX21v
-ZGVfc2l6ZV9kdW1iKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJICogY29sb3ItbW9kZSBj
-b25zdGFudC4KIAkgKi8KIAlmb3VyY2MgPSBkcm1fZHJpdmVyX2NvbG9yX21vZGVfZm9ybWF0
-KGRldiwgYXJncy0+YnBwKTsKLQlpZiAoZm91cmNjID09IERSTV9GT1JNQVRfSU5WQUxJRCkK
-LQkJcmV0dXJuIC1FSU5WQUw7Ci0JaW5mbyA9IGRybV9mb3JtYXRfaW5mbyhmb3VyY2MpOwot
-CWlmICghaW5mbykKLQkJcmV0dXJuIC1FSU5WQUw7Ci0JcGl0Y2ggPSBkcm1fZm9ybWF0X2lu
-Zm9fbWluX3BpdGNoKGluZm8sIDAsIGFyZ3MtPndpZHRoKTsKKwlpZiAoZm91cmNjICE9IERS
-TV9GT1JNQVRfSU5WQUxJRCkgeworCQljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICpp
-bmZvID0gZHJtX2Zvcm1hdF9pbmZvKGZvdXJjYyk7CisKKwkJaWYgKCFpbmZvKQorCQkJcmV0
-dXJuIC1FSU5WQUw7CisJCXBpdGNoID0gZHJtX2Zvcm1hdF9pbmZvX21pbl9waXRjaChpbmZv
-LCAwLCBhcmdzLT53aWR0aCk7CisJfSBlbHNlIGlmIChhcmdzLT5icHApIHsKKwkJLyoKKwkJ
-ICogU29tZSB1c2Vyc3BhY2UgdGhyb3dzIGluIGFyYml0cmFyeSB2YWx1ZXMgZm9yIGJwcCBh
-bmQKKwkJICogcmVsaWVzIG9uIHRoZSBrZXJuZWwgdG8gZmlndXJlIGl0IG91dC4gSW4gdGhp
-cyBjYXNlIHdlCisJCSAqIGZhbGwgYmFjayB0byB0aGUgb2xkIG1ldGhvZCBvZiB1c2luZyBi
-cHAgZGlyZWN0bHkuCisJCSAqLworCQlkcm1fd2FybihkZXYsICJVbmtub3duIGNvbG9yIG1v
-ZGUgJWQ7IGd1ZXNzaW5nIGJ1ZmZlciBzaXplLlxuIiwgYXJncy0+YnBwKTsKKwkJaWYgKGFy
-Z3MtPmJwcCA8IDgpCisJCQlwaXRjaCA9IERJVl9ST1VORF9VUChhcmdzLT53aWR0aCAqIGFy
-Z3MtPmJwcCwgU1pfOCk7CisJCWVsc2UKKwkJCXBpdGNoID0gYXJncy0+d2lkdGggKiBESVZf
-Uk9VTkRfVVAoYXJncy0+YnBwLCBTWl84KTsKKwl9CisKIAlpZiAoIXBpdGNoIHx8IHBpdGNo
-ID4gVTMyX01BWCkKIAkJcmV0dXJuIC1FSU5WQUw7CiAKLS0gCjIuNDcuMQoK
-
---------------Ak8c05R8qA0Bhl3CK6SC6vGZ--
 
