@@ -4,80 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39757E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 14:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4369CE7719D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 14:37:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4I5Yfq9yY/wnrZyGHd+LMVKzseruORJiCs9modwakpA=; b=OpmQPhuZ1aCbiF0qPlSk1X3AXL
-	csvbzlNmGAwU3uh0Vnvr1ezAC8tHidcnCXUEc4JIxCwtSr7lKSsCp5smltipsbOI5ddyL6tQlJBmm
-	yEy98RHnsP62m6tB8/oxs/k9+hHdlriexvCUFNinXVUAm8oXYloMySTEeZyxEkzVPi7VmGg58xVPx
-	MWF7IUTPjRHr6uLL8xkCdLxxnJsc5q2yaGapUrjqZei0WVH+dWpH5fup7nMJ7jTOwuWIIJ/NIMpB2
-	+/x98pyI3QU3QtVdrdDsE9kW0+nVpgQW26rIaYivNjYZpxwZTxgeuLA4ggPqG+M5YSxEr44MzM5XN
-	yR5OzPiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fy/DbTIkkOlFt9RUb5dJSds3N2C+4xTIp3gr3Wl8Gls=; b=O99HzGmEMNzE+Dmcb7i8JMHwa7
+	kkqNETS3kwaBuMuxywpklZ7v0ug8g/TZ72h/zpgVSeRW3tRTdveSL+UP+HFQniyKhl0on/QM9oHH9
+	n8Q22KlgDNTUZ23Ioylk6xdhmiRF38r/JQC9rMzxGRstdQaZaDD4C97MOIiRPb/X16vS2yHPrGd2M
+	byHKlzQzhpZsgkc5YoXtHe1aIGPGKD0hFjqTDsmST4zYRmOAn6OmL5n5rwDrTwsIR0Xw28K3tot+r
+	A0ckhYcEZ1YhQQYDBY+4ZdXertg8DrzkPnBZhpxgwlwCvPe5WxtS3Kgteet7gFw4I0KIatQL9UB5M
+	Zo4e2dUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWG8k-0000000Fejv-3omt;
-	Fri, 10 Jan 2025 14:37:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tWG8l-0000000Fekn-3ECx;
+	Fri, 10 Jan 2025 14:37:36 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEqL-0000000FR0e-485L;
-	Fri, 10 Jan 2025 13:14:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=4I5Yfq9yY/wnrZyGHd+LMVKzseruORJiCs9modwakpA=; b=JWPkjN13BYl2q+RDDCw5Ldw70H
-	FOoKxLAi10kwmKRftmOXmhtfB/892OAMBUkMqbdub2B/Hfbe4Cned07eAda6f/5csS1bFgzfC+tsD
-	OPl5z3dhWoyPCfels/xRdflApW8xw8QhUjNFAQrOgkYhCtlik3/V1BI9CJbm9GQA10vsWMcH1CFBl
-	pny0poslKZCL/g7BNylO6OkniFpIGD4nQtuBS+SWdwbTZYSxcyMTaeNQxsniRgPS660AyXl2xUaEd
-	PpU6bNlyQvP4lvKeEG70C7IY5o8GurWa18GhWpH+3hrfYgJGsQIiti2zAwyMSJSx3qJ4dmqDVnPeT
-	YgFw/5KQ==;
-Received: from szxga04-in.huawei.com ([45.249.212.190])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEqI-00000009lKv-0gIH;
-	Fri, 10 Jan 2025 13:14:28 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.44])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4YV28h5lGjz2DkMS;
-	Fri, 10 Jan 2025 21:11:00 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id DF7EE1402DE;
-	Fri, 10 Jan 2025 21:14:04 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 10 Jan 2025 21:14:04 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
- Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
-	Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
-	<akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>, MM
-	<linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
-	<daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
- Fastabend <john.fastabend@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v7 0/8] fix two bugs related to page_pool
-Date: Fri, 10 Jan 2025 21:06:54 +0800
-Message-ID: <20250110130703.3814407-1-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
+	id 1tWF6j-0000000FTsp-0x2o
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jan 2025 13:31:27 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4364a37a1d7so22130955e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jan 2025 05:31:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1736515884; x=1737120684; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fy/DbTIkkOlFt9RUb5dJSds3N2C+4xTIp3gr3Wl8Gls=;
+        b=gkXy0PIk34QzrU1YSMfY2kzQSe5BOooeeKDyICAL6FNBdPvpsjEx/q7LaJVHOej0l6
+         R4DPbFxe/Xfu3EHdapAA7hZyPrtDbYJM/tipDq3bEDaCuPN7Oab2b6dV5C0FkBrfd5dw
+         My06MCWLUaD78hyzGK5HIUbK62lfJVl7TLdVVFH5m5hf5yKQ6AkCrUVL127P/lyWzA2W
+         PSbLq/HXQ0j7sAvoDsM43R0Pj2SH/mpL3uJznwVa/3w2hvznSvK2rk9vX9tZk9EAQHhx
+         lkw0WeaUJsM8YHg22HHEfHAP5rZFqoVdO0ObpGcN/tZMkMRCYAEHQ6EDUH4+8pqIVDoO
+         +UgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736515884; x=1737120684;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fy/DbTIkkOlFt9RUb5dJSds3N2C+4xTIp3gr3Wl8Gls=;
+        b=DrhQgqr7HxXaTl2Ir3U6d4XKxthHqcpgrpmKD5rWEJH8L3q7n0vfaK3RZTMmQ8cZRe
+         eOxoavKg66L9W8yiMJqTKNUtUBl41I6sRBkEA3QcJsdjudcqKIWVI9Re0BVvG/Jwbrw7
+         98YxoD4DBG/1dBOqauK6t0XoidBE4aYaCwS+aO4vuQiW+6/9uUTDJwIb2CXDrIVIZxjZ
+         92fzNvINO5yRptSFUx9bjbFDr99/A+3pUlclqOgeei0IvBGGnkgc0axk5EGKHXC2M1SK
+         d+Ylliu0To+l6z8szWojX1hL7G9bYMaGSjsZAExBmfKX7mvz8g0rtCtgTNByW3QlF1Zh
+         0mXw==
+X-Forwarded-Encrypted: i=1; AJvYcCXdxyM7Wwm0CDySHqd0tS8otrcFkwGoEA7/BxL2BtFvFpEgHutPjs8drDb12dSD3juDgcO1+dZAyr4C6CypaQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5iobtz2vMpKlBmSe2vD9rN+AZPiOniB9vUIjn97peTYXbK4ZT
+	wycwQIBc051S5Cj+d5WnfLjkjDkRecipjwnHkzKyU1B2AmgsEfTcjST49o9PWus=
+X-Gm-Gg: ASbGncuIjzMPNfWiyDu87BZTRXY2qWLNfPu6vu5ZsbDQiPsDF6ZhGJ+PxfiOsdF7485
+	tKOY0x4zxwjFgCzw/QthqdguwhG1wBtp4O+eWCRphIW59JXDKiang4HMFyXax2SuvK0yB2BIkNs
+	u78kNEthebnkoME0BmRjCqFNvsjQ1ixZW714S7RFYj3EJMJy/aHOqbNxEkx5IG7dB+mR83p5UC7
+	+4fpiyJTBjVHAtbnCfHDppsjCSPXlSabo5otmVKVJwVU7vC5QyRVPVckP6a
+X-Google-Smtp-Source: AGHT+IHKxpgNUmOUdkrc6PQxJw1G0Fu/KYCSSNNFr/GjW9WVuFsnr7/fR3quCBLX5bmiMLZjyBIZ4Q==
+X-Received: by 2002:a5d:6c6e:0:b0:388:c61d:43e0 with SMTP id ffacd0b85a97d-38a8733b9e8mr10763857f8f.48.1736515883672;
+        Fri, 10 Jan 2025 05:31:23 -0800 (PST)
+Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:2555:edac:4d05:947d])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a8e38c990sm4598193f8f.56.2025.01.10.05.31.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jan 2025 05:31:23 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 10 Jan 2025 14:31:12 +0100
+Subject: [PATCH v7 2/6] drm/mediatek: dsi: Improves the DSI lane setup
+ robustness
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20231023-display-support-v7-2-6703f3e26831@baylibre.com>
+References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+In-Reply-To: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1234; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=Yn0yDiaGCUYQbX+kBDNWi7Wqy2+4x3TU5RubErw6Doo=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBngSEn2Qf8+H9Mmsv7OXpjVxiPUD7Yjb1fkvT0Ur9q
+ aV5CbwSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ4EhJwAKCRArRkmdfjHURTGKD/
+ 9Ty+ydloEEvoD/Kmij1B/CcQVBe6jSd5+V7KY6pP8cX3F8EGZ5DuX1JRDTw7n6qr0v8t5hMj3vnD4y
+ 3kcOdro29k0f3zDbIKnPaldi4Xooy7mth7N+AIF1rG5vrhs5ZwSXy274aJnNwjbi7F79VQtY/ED8BK
+ JMCyF9De60OQ05V2aA48pVLy+YKkoTMB1fGsR6iAmSINWJN1X92qBuivVZpp0sWhjFdllJnA8EGdOB
+ zeRPjNyx0Jn5zrNjYnHseUpuZ8JbV9nWc1zccvD4gVGxDasxqANpeJ6v7srfMCEwDX2lMGQNFqD+V0
+ ZVV5PnpcIMWPEmo8Fck7WktUnlvHLppVhOl9ZRJ7J5kRzjvt2n/EvBzUojg2t79aKfTJYm5GDHc9lY
+ dWUW6TSq8QSfjkim0hcDojluxIR6FFUsBBYOzXqvptNZr4r6+P2ebaPBNEZBW3T59Z7+AezTXsmLl2
+ e3HorWswN5WkZpMRCxFb9n2o9eYtwQs5vTRsS/8hVwnwSpM6d19kGVflYfRjoD9dsS3mhncHZzuDXm
+ aSQEe+FxnEU0BZDAdK9ISk1MmLJHWsiJt6V9Ugiv0vEh54yST3DsiO+1pgpS4KQ+yI92tRmf929/4y
+ 8Ylibc+sqUSryOVik5cnV84QM5Y3QZ9+THVZUDG1vFs6e5bdZDV80jGHCO8Q==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_131427_251319_943077E0 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20250110_053125_258646_07FF2923 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,124 +126,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset fix a possible time window problem for page_pool and
-the dma API misuse problem as mentioned in [1], and try to avoid the
-overhead of the fixing using some optimization.
+Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
+before mtk_dsi_poweron. lanes_ready flag toggle to true during
+mtk_dsi_lane_ready function, and the DSI module is set up during
+mtk_dsi_poweron.
 
-From the below performance data, the overhead is not so obvious
-due to performance variations for time_bench_page_pool01_fast_path()
-and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
-for time_bench_page_pool03_slow() for fixing the bug.
+Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
+nothing because lanes are considered ready. Unfortunately, when the panel
+driver try to communicate, the DSI returns a timeout.
 
-Before this patchset:
-root@(none)$ insmod bench_page_pool_simple.ko
-[  323.367627] bench_page_pool_simple: Loaded
-[  323.448747] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076997150 sec time_interval:76997150) - (invoke count:100000000 tsc_interval:7699707)
-[  324.812884] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.468 ns (step:0) - (measurement period time:1.346855130 sec time_interval:1346855130) - (invoke count:100000000 tsc_interval:134685507)
-[  324.980875] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.010 ns (step:0) - (measurement period time:0.150101270 sec time_interval:150101270) - (invoke count:10000000 tsc_interval:15010120)
-[  325.652195] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.542 ns (step:0) - (measurement period time:0.654213000 sec time_interval:654213000) - (invoke count:100000000 tsc_interval:65421294)
-[  325.669215] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
-[  325.974848] time_bench: Type:no-softirq-page_pool01 Per elem: 2 cycles(tsc) 29.633 ns (step:0) - (measurement period time:0.296338200 sec time_interval:296338200) - (invoke count:10000000 tsc_interval:29633814)
-[  325.993517] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
-[  326.576636] time_bench: Type:no-softirq-page_pool02 Per elem: 5 cycles(tsc) 57.391 ns (step:0) - (measurement period time:0.573911820 sec time_interval:573911820) - (invoke count:10000000 tsc_interval:57391174)
-[  326.595307] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
-[  328.422661] time_bench: Type:no-softirq-page_pool03 Per elem: 18 cycles(tsc) 181.849 ns (step:0) - (measurement period time:1.818495880 sec time_interval:1818495880) - (invoke count:10000000 tsc_interval:181849581)
-[  328.441681] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
-[  328.449584] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
-[  328.755031] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 2 cycles(tsc) 29.632 ns (step:0) - (measurement period time:0.296327910 sec time_interval:296327910) - (invoke count:10000000 tsc_interval:29632785)
-[  328.774308] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
-[  329.578579] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 7 cycles(tsc) 79.523 ns (step:0) - (measurement period time:0.795236560 sec time_interval:795236560) - (invoke count:10000000 tsc_interval:79523650)
-[  329.597769] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
-[  331.507501] time_bench: Type:tasklet_page_pool03_slow Per elem: 19 cycles(tsc) 190.104 ns (step:0) - (measurement period time:1.901047510 sec time_interval:1901047510) - (invoke count:10000000 tsc_interval:190104743)
+The solution found here is to put lanes_ready flag to false after the DSI
+module setup into mtk_dsi_poweron to init the DSI lanes after the power /
+setup of the DSI module.
 
-After this patchset:
-root@(none)$ insmod bench_page_pool_simple.ko
-[  138.634758] bench_page_pool_simple: Loaded
-[  138.715879] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076972720 sec time_interval:76972720) - (invoke count:100000000 tsc_interval:7697265)
-[  140.079897] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.467 ns (step:0) - (measurement period time:1.346735370 sec time_interval:1346735370) - (invoke count:100000000 tsc_interval:134673531)
-[  140.247841] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150055080 sec time_interval:150055080) - (invoke count:10000000 tsc_interval:15005497)
-[  140.919072] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.541 ns (step:0) - (measurement period time:0.654125000 sec time_interval:654125000) - (invoke count:100000000 tsc_interval:65412493)
-[  140.936091] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
-[  141.246985] time_bench: Type:no-softirq-page_pool01 Per elem: 3 cycles(tsc) 30.159 ns (step:0) - (measurement period time:0.301598160 sec time_interval:301598160) - (invoke count:10000000 tsc_interval:30159812)
-[  141.265654] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
-[  141.976265] time_bench: Type:no-softirq-page_pool02 Per elem: 7 cycles(tsc) 70.140 ns (step:0) - (measurement period time:0.701405780 sec time_interval:701405780) - (invoke count:10000000 tsc_interval:70140573)
-[  141.994933] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
-[  144.018945] time_bench: Type:no-softirq-page_pool03 Per elem: 20 cycles(tsc) 201.514 ns (step:0) - (measurement period time:2.015141210 sec time_interval:2015141210) - (invoke count:10000000 tsc_interval:201514113)
-[  144.037966] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
-[  144.045870] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
-[  144.205045] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150056510 sec time_interval:150056510) - (invoke count:10000000 tsc_interval:15005645)
-[  144.224320] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
-[  144.916044] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 6 cycles(tsc) 68.269 ns (step:0) - (measurement period time:0.682693070 sec time_interval:682693070) - (invoke count:10000000 tsc_interval:68269300)
-[  144.935234] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
-[  146.997684] time_bench: Type:tasklet_page_pool03_slow Per elem: 20 cycles(tsc) 205.376 ns (step:0) - (measurement period time:2.053766310 sec time_interval:2053766310) - (invoke count:10000000 tsc_interval:205376624)
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
-
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
-CC: Robin Murphy <robin.murphy@arm.com>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Andrew Morton <akpm@linux-foundation.org>
-CC: IOMMU <iommu@lists.linux.dev>
-CC: MM <linux-mm@kvack.org>
-
-Change log:
-V7:
-  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
-  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
-     by Simon.
-
-V6:
-  1. Repost based on latest net-next.
-  2. Rename page_pool_to_pp() to page_pool_get_pp().
-
-V5:
-  1. Support unlimit inflight pages.
-  2. Add some optimization to avoid the overhead of fixing bug.
-
-V4:
-  1. use scanning to do the unmapping
-  2. spilt dma sync skipping into separate patch
-
-V3:
-  1. Target net-next tree instead of net tree.
-  2. Narrow the rcu lock as the discussion in v2.
-  3. Check the ummapping cnt against the inflight cnt.
-
-V2:
-  1. Add a item_full stat.
-  2. Use container_of() for page_pool_to_pp().
-
-Yunsheng Lin (8):
-  page_pool: introduce page_pool_get_pp() API
-  page_pool: fix timing for checking and disabling napi_local
-  page_pool: fix IOMMU crash when driver has already unbound
-  page_pool: support unlimited number of inflight pages
-  page_pool: skip dma sync operation for inflight pages
-  page_pool: use list instead of ptr_ring for ring cache
-  page_pool: batch refilling pages to reduce atomic operation
-  page_pool: use list instead of array for alloc cache
-
- drivers/net/ethernet/freescale/fec_main.c     |   8 +-
- .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
- drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
- drivers/net/netdevsim/netdev.c                |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
- include/linux/mm_types.h                      |   2 +-
- include/linux/skbuff.h                        |   1 +
- include/net/libeth/rx.h                       |   3 +-
- include/net/netmem.h                          |  24 +-
- include/net/page_pool/helpers.h               |  11 +
- include/net/page_pool/types.h                 |  64 +-
- net/core/devmem.c                             |   4 +-
- net/core/netmem_priv.h                        |   5 +-
- net/core/page_pool.c                          | 664 ++++++++++++++----
- net/core/page_pool_priv.h                     |  12 +-
- 18 files changed, 675 insertions(+), 158 deletions(-)
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index e61b9bc68e9a..dcf0d93881b5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -724,6 +724,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
+ 
++	dsi->lanes_ready = false;
++
+ 	return 0;
+ err_disable_engine_clk:
+ 	clk_disable_unprepare(dsi->engine_clk);
 
 -- 
-2.33.0
+2.25.1
 
 
