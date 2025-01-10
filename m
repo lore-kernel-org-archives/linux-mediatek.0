@@ -4,119 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C125AE77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 11:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07082E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 12:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3a5XJk7VqeJUYUZLBQzBznoGSeBkCXTfafwDFN3iEPg=; b=LtOalCOGN22dTMgQkZ6c/19Ps+
-	QsGv7miJAakW1MdAJYYrPtbz8eBVmE7laVMomXBO+LOsiI/KR0wptjQlSQWJf5JUDEfgb2FVZgPFw
-	7Qd387YqE7I2ARXVwPbuPjTrJKnz3wTtsN9D3gOTU+4/XpRg8Nt1nQHxeltMM9GCAQ63gmhOCiMI/
-	X0TfmZ/9f1xek6MHfCH6TqTtowMbUfEU9pIX8mPjOtqVlE+ZesXIgLR+KpjB7ZFdM5xgF7y9Kq8h5
-	pGzkKtVlETtVIqJuJTGlSsoYroqZnL4GTPrYXDy48eddUeJoP/lCi+4j48uqslSUJao+B6MDmC7NM
-	5LIIXp+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GuNnWs7NvVCyXYhfvN4md9ZQKcZAEL1oFKVT7WxKP/c=; b=UwWKiwLlv6BQ9aVSMLnyfdC20V
+	1IbLQsf3cewgG6hAuSlCZ9rfIjyRKKr16xyRDmKeaa0B1c0em5cqtZoLhJPCMP8LATbNjMT/Lnkwx
+	2alFW/jNH2gyBrO0iZdndBml8Q4o8RRrqiXnzASi9O+YH+NR0Ma3JzEOyV9e9xVOH9SC/5OPouUMG
+	tImHjV2nEczuKHkWIe9BhpO04NMx2pQ7kDAAJ230XYuIOh1GoRrhBSVXGzbovZ7mNy7dxnImsIVSY
+	GvlWd6Yd0qNIDZXynnHYRDTbaUJT9pW/shD+d+kw4o3VQUl7Uy9Q2boWPBNSkX6p4MwCaGQJzZDV6
+	DJkyJqVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWDIH-0000000F8pr-3uVi;
-	Fri, 10 Jan 2025 11:35:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tWEKA-0000000FJcs-2f8d;
+	Fri, 10 Jan 2025 12:41:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWDFv-0000000F8PN-3stb;
-	Fri, 10 Jan 2025 11:32:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 35C855C5E6C;
-	Fri, 10 Jan 2025 11:32:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EC5CC4CED6;
-	Fri, 10 Jan 2025 11:32:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736508767;
-	bh=pbfQyTdVHfkalYOo0laE/5YHPgjoOoF06LeCqrRu7X4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BInWnvlJkrGQdkE17OjJFbfmd7VAq/HqdYb00MQXBiFS19zUXzBFZ7J1RdP0eMAIU
-	 ld4qm7/xwlj9B2H/avSO3BUhNPNd75NohIPmE7gqZ+xiCLIGxy+MPtEUFY99mwVDb0
-	 I7qwQR4Dr6tUdMDrPtQKnTbIzcrHSjoNYVI/aOb9PwXE5QxEBQYJ7b7qtHKQhN19ak
-	 Zu+6kDwuW9jqQ262aOpo/rqz8y/AqPpPBRojqReHw+xclR7ry7FPH9IgO7119QD8Hu
-	 2WK3aN+BYvpKaBERR88dgIqi5KTC5fYmeLWkHhi145T0FELUYxL0WR4TyadHlif07W
-	 ubwXMhJz/7JEQ==
-Message-ID: <d1921e53-e366-4036-9030-1d5aadbae13a@kernel.org>
-Date: Fri, 10 Jan 2025 12:32:40 +0100
+	id 1tWEHv-0000000FImI-10Nf;
+	Fri, 10 Jan 2025 12:38:56 +0000
+X-UUID: d6cdeca4cf4f11ef9048ed6ed365623b-20250110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GuNnWs7NvVCyXYhfvN4md9ZQKcZAEL1oFKVT7WxKP/c=;
+	b=XqvKNipAEt/bVsYT5NR99dZrDHTs0Rr5mLX77D1vl1xO6aELiXpKFbJVmMKO2EnBO+15R7TNls57FxeXuqqea/pmpT4r6BuBcnLf97l42Lsrp5obSsscWv1s3QhGA+zYl6CJSGPyTS0k7dHz4g4jpQrCy81jGwMv9a6SPEYXLGg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:ae8a2ede-0434-4b95-93b6-d66ef3526064,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:4633b037-e11c-4c1a-89f7-e7a032832c40,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d6cdeca4cf4f11ef9048ed6ed365623b-20250110
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <paul-pl.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 120874492; Fri, 10 Jan 2025 05:38:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 10 Jan 2025 20:38:45 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 10 Jan 2025 20:38:45 +0800
+From: paul-pl.chen <paul-pl.chen@mediatek.com>
+To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 02/12] dt-bindings: soc: mediatek: add mutex yaml for MT8196
+Date: Fri, 10 Jan 2025 20:33:57 +0800
+Message-ID: <20250110123835.2719824-3-paul-pl.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
+References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/6] arm64: defconfig: enable display support for
- mt8365-evk
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20231023-display-support-v6-0-c6af4f34f4d8@baylibre.com>
- <20231023-display-support-v6-4-c6af4f34f4d8@baylibre.com>
- <f5859a83-975b-46a3-a33d-ab203efd9e21@kernel.org>
- <f2cbaae9-d0b0-48e7-a869-81ca9666fca1@baylibre.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <f2cbaae9-d0b0-48e7-a869-81ca9666fca1@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_033248_047067_9A0F60FA 
-X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-CacheID: sfid-20250110_043855_288785_B06C4AD7 
+X-CRM114-Status: UNSURE (   8.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -129,22 +80,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/01/2025 10:47, Alexandre Mergnat wrote:
-> 
-> 
-> On 10/01/2025 08:38, Krzysztof Kozlowski wrote:
->> On 09/01/2025 11:37, Alexandre Mergnat wrote:
->>> Enable the DRM HDMI connector support.
->>> Enable the MIPI-DSI display Startek KD070FHFID015 panel.
->>
->> Why? It was in previous commit, now its missing.
-> 
-> What is missing ? Don't you asked me to squash the defconfig commit ?
-Missing is the answer to "why". Squashing was half of the comment.
+From: "Paul-pl.Chen" <paul-pl.chen@mediatek.com>
 
-Best regards,
-Krzysztof
+Add compatible string to support mutex for MT8196.
+
+Signed-off-by: Paul-pl.Chen <paul-pl.chen@mediatek.com>
+---
+ .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+index a10326a9683d..1be4e139a8b5 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+@@ -36,6 +36,7 @@ properties:
+       - mediatek,mt8188-vpp-mutex
+       - mediatek,mt8192-disp-mutex
+       - mediatek,mt8195-disp-mutex
++      - mediatek,mt8196-disp-mutex
+       - mediatek,mt8195-vpp-mutex
+       - mediatek,mt8365-disp-mutex
+ 
+@@ -87,6 +88,7 @@ allOf:
+               - mediatek,mt8186-mdp3-mutex
+               - mediatek,mt8192-disp-mutex
+               - mediatek,mt8195-disp-mutex
++              - mediatek,mt8196-disp-mutex
+     then:
+       required:
+         - clocks
+-- 
+2.34.1
+
 
