@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC8AE7719D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C54B7E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wFC57NWqs87HrbGHaJbSRA+SgAQ9dhPfJP+b4s9z5lw=; b=wR+I8E5DoOtUmWXjkh/Qdoi6vE
-	WFUVKXmasWis0R4ntJL75m5Z7JUP0JhxwL+TB8iF88gL2nzVebtmJra5D+jFC1B5sVVBvf8ZfXvji
-	vxjlJty2r3LkGxTIpVV8nSrZ6o3ae8Um1erAs2Shyyfo0BSAPxNrR2HdRJmt9sQEhyxsamYCiBeRb
-	YOIzPH+PBhMk8d/EY8j9V1PGugrryokxEp0dcroQWjmPjIbFv60fvbU4KW6SnMxL/FrW60+zKuJLb
-	Zc8qaQFRZT4P89gS/DWdV8+3j2AI0HB+gePJmIDqjSNOqvKA2n+sCW5aAzRvUpaepujHcbPQrb7zs
-	EhgxOYog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:To:
+	References:In-Reply-To:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0zZbYre4rR6hCAYIs6iYSkj8WKSc3rEwh1hrEnwKeKM=; b=rlmjHphs+UBMpY7cTfSAH7EfgI
+	3uyqb7TRY0/TUmLfXwjJAV/qKSvezt46IriayuGxtnIS5vySm15inlzyW3SugDSqTwgcBwywJNFZX
+	IQta7QAkCU4nQ7VIzQDLjCWdEklw69Ff6TlToRgav62a2Bgas1RQsdzFRnEZP2ZpCeVTLJjUpyU/E
+	VNzgdQp8q9Vv7vML+Q2kG3ODxqPfYyvxlg0pxtAUNY94mOaF48+EADZHHGL8gMWQQocqe665kcUVr
+	fZWW0fjyhKMJDobjR4yZF9t2WEqyGI5hvLR6DMhqG1oXiHjEfu3oJoAomjXXSqxdkjp/8EkyVjvQj
+	M44opxBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEph-0000000FQbV-3ymf;
-	Fri, 10 Jan 2025 13:13:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tWEpl-0000000FQec-3sWm;
+	Fri, 10 Jan 2025 13:13:53 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWELq-0000000FK8V-20wh;
-	Fri, 10 Jan 2025 12:42:59 +0000
+	id 1tWES5-0000000FLhm-1IlV
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jan 2025 12:49:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CCE6B5C10C3;
-	Fri, 10 Jan 2025 12:42:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0816AC4CEDD;
-	Fri, 10 Jan 2025 12:42:49 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 10018A403A5;
+	Fri, 10 Jan 2025 12:47:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 472C8C4CED6;
+	Fri, 10 Jan 2025 12:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736512977;
-	bh=jQisMlTjYfeo02yHCaf8/3pDTMXN8QMfrZ/MAhEXiCE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KpD0sW7UIABuucxd/Qx8pWVveKRBTPjoee4MF0KjKw8i5YDBoDzL5JYvu4BaELO0t
-	 M/U8H/SXs0PIabw+VP/Wmcv2zkse9maGzd/9rSoZgJ6hC/Lu3TEGJ9VrLXjmmeRFg1
-	 vFZp71KV7rVxbfsUrwau0sxqutt53V+fSRgOWgFQTeVLDgWzOazdvg68BZ9FapN4Et
-	 JWbE4PuKzWFwlzYvCA+Uzkc1/eq5V73FfErBUEePlT0QeeVOCwHPXy/saY0DV/C3w1
-	 EubDaTDdWlxizzmd69Sr4YfE+GSogwgowB31K0GFRmk2/goQYinjInn1BjN5IFfOdI
-	 Cy3tqd/O7Qjaw==
-Date: Fri, 10 Jan 2025 12:42:47 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
-	Serge Semin <fancer.lancer@gmail.com>, Han Xu <han.xu@nxp.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Raju Rangoju <Raju.Rangoju@amd.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Steam Lin <stlin2@winbond.com>, linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 20/27] spi: spi-mem: Estimate the time taken by
- operations
-Message-ID: <ca317e2c-cd09-4884-b9eb-9cf23ae88078@sirena.org.uk>
-References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
- <20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
+	s=k20201202; t=1736513364;
+	bh=BjaxqsFW2eQHamCUWl9fBBDyR52alehPuwO+5heraW0=;
+	h=Subject:From:In-Reply-To:References:To:Cc:Date:From;
+	b=vQN0FONrdiMgW+YF1saub6sGHrYO/UQGL/4xo8EJMcFNgfmuW5wT8zyn2djT81LU3
+	 N/XarL24f6PYnY+PYvW/TsyGG/XNZnOmKES9D6smkk+0fGD1vWTT/46W9iC4x1dcKq
+	 lsXAfQalHC+pBwYC8wfp+dEMU8AvqITXXJfrCAdg9FmxKC5DnwDEFntWVQY20wo6qC
+	 x0GcZJDQnTLCQ3te3E/Trbh7UcEQkU2/ZHK5i70r4EQWKRwY7FXme4kMBmPLbu7H9S
+	 v9MIBIRyMauXyd8kdhkV7a/wZQvn7iKRBOePQHk312Kj3xXrYD7rHLJjBpAnlpz/Mb
+	 t8atha4Gx2BYw==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="RVMhmV/ewGAzdaKp"
-Content-Disposition: inline
-In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
-X-Cookie: Many are cold, but few are frozen.
+Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface
+ combinations
+From: Kalle Valo <kvalo@kernel.org>
+In-Reply-To: <20241007135133.5336-1-shayne.chen@mediatek.com>
+References: <20241007135133.5336-1-shayne.chen@mediatek.com>
+To: Shayne Chen <shayne.chen@mediatek.com>
+User-Agent: pwcli/0.1.1-git (https://github.com/kvalo/pwcli/) Python/3.11.2
+Message-ID: <173651336034.72755.11718043686484576915.kvalo@kernel.org>
+Date: Fri, 10 Jan 2025 12:49:22 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_044258_594828_7BB985FD 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20250110_044925_414168_AC8AFEF4 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,87 +69,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Shayne Chen <shayne.chen@mediatek.com> wrote:
 
---RVMhmV/ewGAzdaKp
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Setting beacon_int_min_gcd and NL80211_IFTYPE_ADHOC in the same interface
+> combination is invalid, which will trigger the following warning trace
+> and get error returned from wiphy_register().
+> 
+> [   10.080325] Call trace:
+> [   10.082761]  wiphy_register+0xc4/0x76c [cfg80211]
+> [   10.087465]  ieee80211_register_hw+0x800/0xac4 [mac80211]
+> [   10.092868]  mt76_register_device+0x16c/0x2c0 [mt76]
+> [   10.097829]  mt7996_register_device+0x740/0x844 [mt7996e]
+> 
+> Fix this by removing unused adhoc iftype.
+> 
+> Fixes: 948f65249868 ("wifi: mt76: mt7996: advertize beacon_int_min_gcd")
+> Reported-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> Tested-By: Frank Wunderlich <frank-w@public-files.de>
 
-On Tue, Dec 24, 2024 at 06:06:05PM +0100, Miquel Raynal wrote:
-> In the SPI-NAND layer, we currently make list of operation variants from
-> the fastest one to the slowest and there is a bit of logic in the core
-> to go over them and pick the first one that is supported by the
-> controller, ie. the fastest one among the supported ops.
+Patch applied to wireless-next.git, thanks.
 
-This breaks the build:
+89aca45f2687 wifi: mt76: mt7996: fix invalid interface combinations
 
-/build/stage/linux/drivers/spi/spi-mem.c:580:5: error: conflicting types fo=
-r =E2=80=98spi_mem_calc_op_duration=E2=80=99; have =E2=80=98u64(struct spi_=
-mem_op *)=E2=80=99 {aka =E2=80=98long long unsigned int(struct spi_mem_op *=
-)=E2=80=99}
-  580 | u64 spi_mem_calc_op_duration(struct spi_mem_op *op)
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~
-In file included from /build/stage/linux/drivers/spi/spi-mem.c:12:
-/build/stage/linux/include/linux/spi/spi-mem.h:427:5: note: previous declar=
-ation of =E2=80=98spi_mem_calc_op_duration=E2=80=99 with type =E2=80=98u64(=
-struct spi_mem *, struct spi_mem_op *)=E2=80=99 {aka =E2=80=98long long uns=
-igned int(struct spi_mem *, struct spi_mem_op *)=E2=80=99}
-  427 | u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op=
- *op);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~
-In file included from /build/stage/linux/include/linux/linkage.h:7,
-                 from /build/stage/linux/arch/arm/include/asm/bug.h:5,
-                 from /build/stage/linux/include/linux/bug.h:5,
-                 from /build/stage/linux/include/linux/thread_info.h:13,
-                 from /build/stage/linux/include/linux/sched.h:14,
-                 from /build/stage/linux/include/linux/ratelimit.h:6,
-                 from /build/stage/linux/include/linux/dev_printk.h:16,
-                 from /build/stage/linux/include/linux/device.h:15,
-                 from /build/stage/linux/include/linux/dmaengine.h:8,
-                 from /build/stage/linux/drivers/spi/spi-mem.c:8:
-/build/stage/linux/drivers/spi/spi-mem.c:593:19: error: conflicting types f=
-or =E2=80=98spi_mem_calc_op_duration=E2=80=99; have =E2=80=98u64(struct spi=
-_mem_op *)=E2=80=99 {aka =E2=80=98long long unsigned int(struct spi_mem_op =
-*)=E2=80=99}
-  593 | EXPORT_SYMBOL_GPL(spi_mem_calc_op_duration);
-      |                   ^~~~~~~~~~~~~~~~~~~~~~~~
-/build/stage/linux/include/linux/export.h:56:28: note: in definition of mac=
-ro =E2=80=98__EXPORT_SYMBOL=E2=80=99
-   56 |         extern typeof(sym) sym;                                 \
-      |                            ^~~
-/build/stage/linux/include/linux/export.h:69:41: note: in expansion of macr=
-o =E2=80=98_EXPORT_SYMBOL=E2=80=99
-   69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
-      |                                         ^~~~~~~~~~~~~~
-/build/stage/linux/drivers/spi/spi-mem.c:593:1: note: in expansion of macro=
- =E2=80=98EXPORT_SYMBOL_GPL=E2=80=99
-  593 | EXPORT_SYMBOL_GPL(spi_mem_calc_op_duration);
-      | ^~~~~~~~~~~~~~~~~
-/build/stage/linux/include/linux/spi/spi-mem.h:427:5: note: previous declar=
-ation of =E2=80=98spi_mem_calc_op_duration=E2=80=99 with type =E2=80=98u64(=
-struct spi_mem *, struct spi_mem_op *)=E2=80=99 {aka =E2=80=98long long uns=
-igned int(struct spi_mem *, struct spi_mem_op *)=E2=80=99}
-  427 | u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op=
- *op);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+-- 
+https://patchwork.kernel.org/project/linux-wireless/patch/20241007135133.5336-1-shayne.chen@mediatek.com/
 
---RVMhmV/ewGAzdaKp
-Content-Type: application/pgp-signature; name="signature.asc"
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmeBFcYACgkQJNaLcl1U
-h9BhIgf+KXE1JExJo+WBN7mYcyQ4HitVxI+rVexdbI+QMmjPpB2umRebJU2u0F2O
-zJlk5R6eGXdOn3H83H0CacUm11VVNZmqP1yUSytO4sjiyHdh7Zp70UkidrhA0O9F
-pRM9l9bBbWV3FzLgZCYjZ03y6A+A9CrIsGRVAuX/rAUHENGshIN+Wa1j4ZwRkI+u
-Nid4YWfQkB1UjSFhcx6d9iDq65hTlrHDn5ThFmIDGZCTS8NRcUAevtkdwoU9thC7
-1xTCkJ92ejUGQ3TTzVrlg6qsnSJTAARPhDZ8WasEfN+L/LWyRI181QAMRKG4oOOi
-swVXAClyqCX9avFjDoBP8aArkjRb4A==
-=qXZ3
------END PGP SIGNATURE-----
-
---RVMhmV/ewGAzdaKp--
 
