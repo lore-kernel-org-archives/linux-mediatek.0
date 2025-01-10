@@ -4,58 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23EB9E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 13:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E97BE77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 14:15:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gAwWD/T4MOyZUPt+o+iUAqDeL/G1BwsvQHyDyyfHt7o=; b=44B58pGt7yUt1me90Cnqe/e4hN
-	qpMCErhmpgEN1jAcTQAsEjB3j4HVdLblV4obYldMrEfifFExlP+tOM+OxoJyDnmWkTNkU+Wowk1QV
-	HLgJb0m2SStih9IITQ4ssbSjzX+LCc2lWcvKowds31Pl2zZgnZ9Uf9ZXjQYMdccS1agF7/Yr9YSN+
-	IVqbb9VfWSWHMhOVx8X3sEqTlZDU1dwrQDo90JLyQUoEX9x2punkh0ZavjawRv9hy+SDA221qS5Gg
-	HXa/C/J586bAyqWOiVwPoOzcKJ1gUk8j3MPcReL9/PTVdawqlGF5RHcVEDhoOVGPyKgCjMdVQ7b7z
-	o5E1T9dA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o9Wvh0QOJgFNOaiiYtheeiN8he+HGBiWQJA/rcWBap0=; b=3AFtD176sPH3Wu+09JQ/htrWU+
+	ReVfjiIP8nHuxwBkD5BLuJMt5QmJi3aAiYS4ttpmJthcuwG/4QXF7y5SyxsNYBpy32RlnY1w+qr3U
+	NjuuJgIjA1uYQeGjuChyqyQxocSjKEVFz+TNMT3xu/56/Z8zMreS1AqS8oGl/Klc7IjLc5SB9RKIe
+	gREO+X3Socj1m4sQaXWZodtp1R1EwWFX443/wTNI3kRc0TXV3cPREQqwpzJ5jjzNo3I7k+v1jLQwy
+	ZiwkTc+PKTe8j2rQTB025/bx1/8kfYQkvmF6UembXDxngr1PiuUqR6u5w9TkwZHeUUAc2tq+UKbfC
+	UtI7DPTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWFYC-0000000FYZL-3n2y;
-	Fri, 10 Jan 2025 13:59:48 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tWFnk-0000000Fbux-1KyS;
+	Fri, 10 Jan 2025 14:15:52 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWFSv-0000000FXU8-4B77;
-	Fri, 10 Jan 2025 13:54:23 +0000
+	id 1tWFiQ-0000000Fava-316r;
+	Fri, 10 Jan 2025 14:10:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B8F9AA41FF0;
-	Fri, 10 Jan 2025 13:52:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91C3C4CEE0;
-	Fri, 10 Jan 2025 13:54:20 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7BC75A41FED;
+	Fri, 10 Jan 2025 14:08:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B94DC4CED6;
+	Fri, 10 Jan 2025 14:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736517261;
-	bh=c33XsyMYg3lCZo4jpADv7ET+BOVPEFjhz4yMn/jPl1A=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=KWqV6/vE7KQCJgNFRcquCgrCjHRe/7On429TF1/YwgJ8uyH8LgGnzoxu9h2hPB+np
-	 eV/ArpXirzOXk2MpJjQ5k2WU4XMN2dCN1XuMVoBPAKP83DlDEDkR2NThlO8HSZDfVW
-	 gA5KluAc59Ylpw0SuzcNDGBrYLBFUSQgkS0qaYo1N/3f+8+p2K0uIW4KkrNMi2w/oy
-	 xW2oqZPse7R8vvCQYlX3fQDuPhwc4OH0wc0+4cIe13QQwrz7xXQwh7alaDcRZLcsUR
-	 2eEEyMV/pjQr7ARpnoAagABg7tVVjjDWNP1H9LlIK8PpZRx/wKuoR4S0PLhydXrnA3
-	 DEVsj+JcmLydw==
-Date: Fri, 10 Jan 2025 07:54:19 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1736518221;
+	bh=AU9hR0CcSXn9Z4fcVQkbb4nXaU8sh9WB+5t9rzKXNuE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=P0GPqE6l/aMBVJbGZcrKFV78fPxIf3LsxZpj/BUa9g7SIyZKmBkcJJDq+r8MW1SjH
+	 stom6T5DhGIZbEoY1vQP7JDG+qCzSXjyCe21nFcU19Q72px62/XxrMkwLhnI4YZBDr
+	 HsFxjJABd2ZSHRY0tqb6iDaCyDHTsv0/f/STSHIB5lmvWx37Bb8r6G6thrsu87sDXT
+	 aSNbxvvfI71OvlWCZCrkc+yjZmT0C2aR0U8tSp3RlI8PkyM9a3ZPJEBrh6XWWvV7dx
+	 gSUYkTJBNBWH3NZJDHWr4b0LD2BjdPvO02SEVNOR+NbBPR0ai19G//VESgeWKYZzQe
+	 t9SRGCdaaP5Xw==
+Message-ID: <4377ceaf-dd7a-47ff-89d8-37ffc80e7d18@kernel.org>
+Date: Fri, 10 Jan 2025 15:10:12 +0100
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: "paul-pl.chen" <paul-pl.chen@mediatek.com>
-In-Reply-To: <20250110123835.2719824-7-paul-pl.chen@mediatek.com>
-References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
- <20250110123835.2719824-7-paul-pl.chen@mediatek.com>
-Message-Id: <173651725647.2671771.14303040035335565076.robh@kernel.org>
-Subject: Re: [PATCH 05/12] dt-bindings: display: mediatek: add OUTPROC yaml
- for MT8196
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 4/6] arm64: defconfig: enable display support for
+ mt8365-evk
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+ <20231023-display-support-v7-4-6703f3e26831@baylibre.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20231023-display-support-v7-4-6703f3e26831@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_055422_096087_BB5B37DB 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20250110_061022_887721_AFD7E73A 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,51 +127,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, xiandong.wang@mediatek.com, chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 10 Jan 2025 20:34:01 +0800, paul-pl.chen wrote:
-> From: "Paul-pl.Chen" <paul-pl.chen@mediatek.com>
+On 10/01/2025 14:31, Alexandre Mergnat wrote:
+> Enable the DRM HDMI connector support and the MIPI-DSI display
+> Startek KD070FHFID015 panel to have HDMI and DSI display working
+> on the mt8365-evk board.
 > 
-> Add mediate,outproc.yaml to support OUTPROC for MT8196.
-> 
-> Signed-off-by: Paul-pl.Chen <paul-pl.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
-> The header used in examples:
-> #include <dt-bindings/clock/mt8196-clk.h>
-> is not upstreamed yet.
-> 
-> It will be sent by related owner soon.
-> ---
->  .../display/mediatek/mediatek,outproc.yaml    | 57 +++++++++++++++++++
->  1 file changed, 57 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
-> 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250110123835.2719824-7-paul-pl.chen@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Best regards,
+Krzysztof
 
