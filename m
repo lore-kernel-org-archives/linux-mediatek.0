@@ -4,89 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE42E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 15:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64CA4E7719C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 16:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q8hqtpx7uSmFFCBt4R+XArsWuILvupPoqhgNSuXM+dY=; b=UZjfbpQYGHNNGWnrc0V0Rd9BCP
-	OSnBEF25yoP98kJ+mDoBRZmYYffKlySWT7f9OAT2MyW3gTknf8EsXY1oAQPc4E95fC927aPIP3qoh
-	eYBPeRS3XhbwVefJWf8xu611irf8gbZmPntYddvs/vF4xzuJVyBbYsP5n2tljowORQgxVgkujjhym
-	JOYerLo24q518DEtB7YZrBktMg4FnclnOStVg0pLIW4RrZWd2TfkEMrVwvmGMXUZ8nix3pL6DSiLp
-	kQMcYQCzqM/i0byCcFlKCulkUd8xtaeqwtV4fkz+6f724LkyZbQa8lT4e6UO4I1TfeY4mbQIsn26l
-	FthGOKDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K/XoRhGWdzQJK5f3HloKg8T4VrmHhx9Vve+PrvKJ//4=; b=bo9cuYzg90I6M6U92aUKJvgADM
+	vAH9eOPHFNFxcknTfWaJBTnsi2yTgXF0xKruZMY38i8po1HNn+0ya9trI/EBghrIzVQz9V9KO8jU7
+	QXlWvfJOd6LdBYlxlxrJUJgTzXg95S46xuso3D3mcTMGC0RVPW6WuJ2q0Ou+h/gZauiET8W2/e79a
+	ckkCgF2SV4e8iItDEF081TrAM+1sRMB/SwAKfGXKIjN91ATM56WLRfE3S/6YsQQW+uYPfTWu67c7O
+	K0iaepJdYqijGmOVssOZ3OoxI5OpNpfc9fy2BROuIBB9RLOrFtzCUeVobyS8tATPSpfGCjehCnmHM
+	3LZiDm8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWGvL-0000000FvDL-3QqH;
-	Fri, 10 Jan 2025 15:27:47 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1tWHYu-0000000G9wL-176X;
+	Fri, 10 Jan 2025 16:08:40 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWGb6-0000000Fnn8-1lfU;
-	Fri, 10 Jan 2025 15:06:53 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 4CD1D1BF205;
-	Fri, 10 Jan 2025 15:06:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1736521608;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=q8hqtpx7uSmFFCBt4R+XArsWuILvupPoqhgNSuXM+dY=;
-	b=bM3aHv2eZDPIEogkHXuaz90KY+89c/SS6D88M5Wwse/oE9y22gsGc/f1A8uC8lhyczxePx
-	Rb00zNoRl/Jqt4Rnx2w8AcwTkm4UgnSaR/HS4gHDeSMDpQTBSITwMoxgl5bMwlfDR7/2Ex
-	4678QsL8tSDo270hZROIzDvS4dvPmSaDeww2Q2qXcyFoH/YdmcJiq6OWaXl/7F2wYSL727
-	yhpchOJrpNEM7J52JVcWYn19Jz67QyEwTI9gquIRwE3+7wGP8GWRfXVZ+CnsGH511T/Ug0
-	dK1IpVJOGgF/Nc85wZftpbWnToLYHGKcXdNY97F3DTjah4672ArjZoy9pk9bKQ==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,  Han Xu <han.xu@nxp.com>,  Conor
- Dooley <conor.dooley@microchip.com>,  Daire McNamara
- <daire.mcnamara@microchip.com>,  Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Haibo Chen
- <haibo.chen@nxp.com>,  Yogesh Gaur <yogeshgaur.83@gmail.com>,  Heiko
- Stuebner <heiko@sntech.de>,  Michal Simek <michal.simek@amd.com>,  Richard
- Weinberger <richard@nod.at>,  Vignesh Raghavendra <vigneshr@ti.com>,
-  Jacky Huang <ychuang3@nuvoton.com>,  Shan-Chun Hung <schung@nuvoton.com>,
-  Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,  =?utf-8?Q?C=C3=A9dric?= Le
- Goater
- <clg@kaod.org>,  Joel Stanley <joel@jms.id.au>,  Andrew Jeffery
- <andrew@codeconstruct.com.au>,  Avi Fishman <avifishman70@gmail.com>,
-  Tomer Maimon <tmaimon77@gmail.com>,  Tali Perry <tali.perry1@gmail.com>,
-  Patrick Venture <venture@google.com>,  Nancy Yuen <yuenn@google.com>,
-  Benjamin Fair <benjaminfair@google.com>,  Maxime Coquelin
- <mcoquelin.stm32@gmail.com>,  Alexandre Torgue
- <alexandre.torgue@foss.st.com>,  Raju Rangoju <Raju.Rangoju@amd.com>,
-  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,  Steam Lin
- <stlin2@winbond.com>,  linux-spi@vger.kernel.org,
-  linux-kernel@vger.kernel.org,  imx@lists.linux.dev,
-  linux-riscv@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
-  linux-mediatek@lists.infradead.org,  linux-rockchip@lists.infradead.org,
-  linux-mtd@lists.infradead.org,  linux-aspeed@lists.ozlabs.org,
-  openbmc@lists.ozlabs.org,  linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 20/27] spi: spi-mem: Estimate the time taken by
- operations
-In-Reply-To: <c9043531-c733-4153-a814-79aab387883e@sirena.org.uk> (Mark
-	Brown's message of "Fri, 10 Jan 2025 14:52:29 +0000")
-References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
-	<20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
-	<ca317e2c-cd09-4884-b9eb-9cf23ae88078@sirena.org.uk>
-	<87tta6ag5b.fsf@bootlin.com>
-	<c9043531-c733-4153-a814-79aab387883e@sirena.org.uk>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Fri, 10 Jan 2025 16:06:42 +0100
-Message-ID: <87y0zi908t.fsf@bootlin.com>
+	id 1tWHAo-0000000G38A-43q1;
+	Fri, 10 Jan 2025 15:43:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5D9D7A4256D;
+	Fri, 10 Jan 2025 15:41:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44BC1C4CED6;
+	Fri, 10 Jan 2025 15:43:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736523825;
+	bh=TV8hH/0bAnpkstoi+VL/fkUNsub1wZaqlJIrE9SAU0w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Lic+hpVt20oa1Er3C2FAYUyESVm4xI1R5bOB51Lwq0HcLGCnKiblgXYVwUJx+/x3a
+	 cUE5/C15iWRWcxYhQ7FuprRryHpctO62F6THJqi2kKfvk+Cas5eVF9GJond+7Czs0d
+	 Sq9ly8reE9HqyyBdXXjI0k88f1kqJDIhQFJiodC0JNkBeXYmpGF7K8ilc84gnppjoF
+	 SObGl+J0WXIvuLoL9DwLURXjeeO8Y9vQ6JFj9FQST227QrX0RRiLxlawuiBkm+o9PR
+	 EjrKls13caeEu3LbAmQPkHNAfWXJM9HbtT18cmZWIhTYGjs5UGCWbp1gXqVGH8hy5u
+	 3+HsR8OYmgQAw==
+Date: Fri, 10 Jan 2025 09:43:44 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: devicetree@vger.kernel.org,
+	Krishna Manikandan <quic_mkrishn@quicinc.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Lucas Stach <l.stach@pengutronix.de>, linux-arm-msm@vger.kernel.org,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Maxime Ripard <mripard@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	linux-amlogic@lists.infradead.org,
+	Mahadevan <quic_mahap@quicinc.com>, Rob Clark <robdclark@gmail.com>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Sean Paul <sean@poorly.run>, Simona Vetter <simona@ffwll.ch>,
+	Robert Foss <rfoss@kernel.org>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	linux-renesas-soc@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, imx@lists.linux.dev,
+	freedreno@lists.freedesktop.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Jonathan Marek <jonathan@marek.ca>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	David Airlie <airlied@gmail.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>
+Subject: Re: [PATCH] dt-bindings: display: Correct indentation and style in
+ DTS example
+Message-ID: <173652382248.2923092.2349362703621090098.robh@kernel.org>
+References: <20250107125854.227233-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250107125854.227233-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_070652_721565_303A8CEE 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250110_074347_132604_EC45E440 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,24 +111,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/01/2025 at 14:52:29 GMT, Mark Brown <broonie@kernel.org> wrote:
 
-> On Fri, Jan 10, 2025 at 03:37:52PM +0100, Miquel Raynal wrote:
->> On 10/01/2025 at 12:42:47 GMT, Mark Brown <broonie@kernel.org> wrote:
->
->> > This breaks the build:
->
->> > /build/stage/linux/drivers/spi/spi-mem.c:580:5: error: conflicting typ=
-es for =E2=80=98spi_mem_calc_op_duration=E2=80=99; have =E2=80=98u64(struct=
- spi_mem_op *)=E2=80=99 {aka =E2=80=98long long unsigned int(struct spi_mem=
-_op *)=E2=80=99}
->> >   580 | u64 spi_mem_calc_op_duration(struct spi_mem_op *op)
->
->> Crap, that's a fixup that landed in the wrong commit (mtd: spinand:
->> Enhance the logic when picking a variant). I'll fix it.
->
-> Please only resend that patch - the rest builds and tests fine in my CI,
-> I'm just checking a merge fixup.
+On Tue, 07 Jan 2025 13:58:51 +0100, Krzysztof Kozlowski wrote:
+> DTS example in the bindings should be indented with 2- or 4-spaces and
+> aligned with opening '- |', so correct any differences like 3-spaces or
+> mixtures 2- and 4-spaces in one binding.
+> 
+> No functional changes here, but saves some comments during reviews of
+> new patches built on existing code.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  .../display/amlogic,meson-dw-hdmi.yaml        |  8 +-
+>  .../display/bridge/fsl,imx8mp-hdmi-tx.yaml    | 28 +++---
+>  .../display/bridge/samsung,mipi-dsim.yaml     | 66 ++++++-------
+>  .../display/mediatek/mediatek,aal.yaml        | 46 ++++-----
+>  .../display/msm/dsi-controller-main.yaml      | 98 +++++++++----------
+>  .../bindings/display/msm/dsi-phy-10nm.yaml    | 40 ++++----
+>  .../bindings/display/msm/dsi-phy-14nm.yaml    | 34 +++----
+>  .../bindings/display/msm/dsi-phy-20nm.yaml    | 36 +++----
+>  .../bindings/display/msm/dsi-phy-28nm.yaml    | 34 +++----
+>  .../bindings/display/msm/dsi-phy-7nm.yaml     | 34 +++----
+>  .../display/msm/qcom,sa8775p-mdss.yaml        |  7 +-
+>  .../bindings/display/renesas,cmm.yaml         | 12 +--
+>  12 files changed, 221 insertions(+), 222 deletions(-)
+> 
 
-Ah, oops, didn't see this in time and rushed v3.
+Applied, thanks!
+
 
