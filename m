@@ -4,115 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E144E77188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 07:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48870E77188
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 08:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3685Snm0alYI9oV4XAJV/xiiCYgITvr4vnRsJ354SU8=; b=peq7NAbsw2tmnzp763IVwP6iCe
-	z/IPLXSPCOqEtJAN+wHBMJS1BbdDFAf54Q+VrBjxp/hC5Kro4XgXk/WAFqz/2MokGujb2MgCRVtOx
-	clAkEXKqq+GK3xW3sjwogiGgLF0eQP/HO6nKMAtpmIg/YMWCctpRRA9ZqHL3yUvzYXqD7FY1FsMe5
-	w9dYg6EtB2EpxWGloFegz3MDdfD5IEjflW2u/7TiD2ao6bX2LVlj1vgMu9Ugx+T3t/Tr5oJqT1Qgs
-	mfg4r3yd4FLvJbOKemTrDfpvAteG/a9Zry0aFZer7vxmFZLUdAZXrcIg/fZ3OahPv5MIhrk21aK0D
-	Np+9ncPA==;
+	bh=w33jw1q4Iy6fLg7J+U6vKqGOAfKskZPYBAN9gxyTK/M=; b=KCk74eUcJGX+SCkSO2RQH2oIvc
+	/iFL1+hbH4Ozi7k0vLukC7xhvIAXIXTETlbHbJZKB6nIkRC2h9w31X6oouyyyvKUANdvAgibtFP1Y
+	i96PpfvBfoCQQazA2NW1xvaGuMsBko6fcN35BUtLMz5cGkxnoLNDvF89hiNe/KCsd0QmGyFreRRap
+	8uKlnTeiHrwIkKSl1jB0ZVlPEtnYo5GOiQEZdBdajBdenZ5BGIAtzPQuYi9qk7p1dm1X9i8jkgRQJ
+	DwSa/SYQbc5SW36UZvLjqvRqEhJnAx3vveChZzMymFGHWU/uczXROHnE2CGSgMGVKGi1/fCgxK0Eb
+	R5898ryQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9eq-0000000EPRh-2xA7;
-	Fri, 10 Jan 2025 07:42:16 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tWA25-0000000ESny-1uVx;
+	Fri, 10 Jan 2025 08:06:17 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9db-0000000EPGe-0ugt;
-	Fri, 10 Jan 2025 07:41:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CF512A4181E;
-	Fri, 10 Jan 2025 07:39:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CA03C4CED6;
-	Fri, 10 Jan 2025 07:40:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736494858;
-	bh=GIaLhCWvt+Vh85V9nMvOQFuhW8mxQRShtxXN7QjsIBc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VkoAa/36y1lbhaSFgumFc2uFspLcnN/8mAeiFEf3eMbR5tP6AKWnq7g8N/+jiqBuM
-	 w4WqoQvZ4AVTxPjjyBZEvlbCtParJxI30G/Txw36bBhvP47H00hglz2adAx14Ncnp6
-	 23Qh2FpxklQjXS75fxvYeDNMRtq7fT40kDAuJPX2KQUouU+EiroglQDFx+cbMux7Ck
-	 1wXtDpYTAzpVz1GSRTPBZcBDDC+Xodvog6/19X1DuDjdnzSrf94Mc07QQJCl2ZBu6A
-	 XjTUL3okndmbG5b2zmaK4p61TAXxyQ5QhNgH/m7rPT4fJ2A/zk1dneR5tDoXFN7yNN
-	 VjMtnDHdjtN7g==
-Message-ID: <e6019aea-b097-4a24-afd2-e1d638a5a8a7@kernel.org>
-Date: Fri, 10 Jan 2025 08:40:52 +0100
+	id 1tWA0r-0000000ESip-3vCt;
+	Fri, 10 Jan 2025 08:05:03 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-5d3bdccba49so2761448a12.1;
+        Fri, 10 Jan 2025 00:05:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736496300; x=1737101100; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=w33jw1q4Iy6fLg7J+U6vKqGOAfKskZPYBAN9gxyTK/M=;
+        b=AfZN7k68loKkWEit9pw+2lc/hpUhI3zgKeimvGw/qMGmTXNBI31qh1BtWvaf2faJ2r
+         7Nw3mdCgbA22TsluBz9+zE64B8ZRIMOIvWHICCS7xreUQwaS5Z5IekF5KDrWrRP+0cSE
+         Su/+kqAAVPUCBNufEAmCapLEAFjxDFyNkTF06ng5Vguei5IPzk3pqoZ/kI3bMsuUOCEb
+         5kjACJAyrhMR5gfzB5SOC7DKXQMvvibi9ip12krpe42VOtJJhrtlYl3UYIHCgOgKvH2L
+         0vUYCd2zjOoV1fI8mkuvk+Sg9L6hpX0M6fWeNoyc2mzpkYXR0IPzLRM/WDf+Vq1ztPrO
+         7CLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736496300; x=1737101100;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=w33jw1q4Iy6fLg7J+U6vKqGOAfKskZPYBAN9gxyTK/M=;
+        b=tBj1KGXoMLjSb5WVMrRXfCZ16f9ixwKCKiIQyUcC3fxxzW0GLIDCuymOYcb3s+KtX9
+         WzqZgLdWB6A4dotzvhSf4GuA2IauPxdEsY77yVaiZnzAQq79e894eajWp7kXOOsLqg72
+         MPnqbPaLkgo+xUQ3Rayf2gQ+vpkCmMzdz/GOr0mx4ax1u9n3GI9qKfCdM6/pu1jms1Wo
+         6g1xIc/lp7LTeZSnZ04UPzgcTBg+Z8Mv/NBKTxR82IV7g8kpFFg8eUFztLIuWqr57x8g
+         JKggSDJx3d0/zRNTAxTXM82ltHU91NjehlaouZpBe2zJjFiKm4j/mvFBanBwgSz8jVJ4
+         KJ5A==
+X-Forwarded-Encrypted: i=1; AJvYcCUljkVqAjFHKL5Q9PPFQWDkBvDKR/ijGDM+XyfBrS3tRHcEwZP6Nv7DbJKFfVUK/iWW8dTDNrsn3Q2HWvOWtkk=@lists.infradead.org, AJvYcCX284J+qMIkKpER9CwST9zcgC/vmf2CVhCdFrbVQs52xRXRJgBSI31JhyYUlEUyvGelU2b4lkS8CFGwgFmeNgJl@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5ZurziQi3IMkocjQsggoHaz1Uq2IcHMQ3SKSy6ZuEzoPNe/P2
+	Ldl0ldNQgOKBE3ke+wXc65GCo3VbiRHCpdiOMkaFyB+vcA78SPVW
+X-Gm-Gg: ASbGncud5Y8RzFv9y6m4FJBtWkw+Tu8Qjmgwr6pzunTRB3XLAfD5nRopt8eD5tKLEUN
+	4lR45dEmm14sq1nqDbFAHEzVyysB/snjYoq1sPtkXwWfzbczJGNd+V3rr4nog5FP3ivCisHrzLM
+	xZGo6GYGLuioN+7/YZqbkxt/FABKIBvYNnYii2TsKIrY4qiJ9CWHtx+SZXTcz/f11d6iPwuH4cp
+	gmIJuD8v65D3c5BigEkF3rBgKnOwHd/49N3CqTH0lw5ILg8iahMdVodMcFTPPvICzrkUDcX3F/5
+	Il4OGzKnogXmat5KNbGBLCTwAjIByL9oC+glLvBq/NoLox44QkVvfzeuxmcNe0ssPCiCT2+uzui
+	CZNkAB3uB6swsnsI1bTHLyBz9O+/d2Gg=
+X-Google-Smtp-Source: AGHT+IGbgCuh3qC7xY8GvEiBWaGdc/P4HDKXuM2eWs1hM1/IBlvby9L+VE2CIAbznQNTJB1KVadNgQ==
+X-Received: by 2002:a05:6402:51cf:b0:5d1:22c2:6c56 with SMTP id 4fb4d7f45d1cf-5d972e1be28mr9171656a12.17.1736496299668;
+        Fri, 10 Jan 2025 00:04:59 -0800 (PST)
+Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d99008c523sm1409367a12.8.2025.01.10.00.04.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Jan 2025 00:04:58 -0800 (PST)
+Message-ID: <a54b564b-4f88-4783-9e8a-72289ce11c04@gmail.com>
+Date: Fri, 10 Jan 2025 09:04:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND,V1,01/12] dt-bindings: mediatek: Add mediatek,
- mt8196-jpgdec compatible
-To: "kyrie.wu" <kyrie.wu@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
+Subject: Re: [PATCH net-next 5/5] net: phylink: provide fixed state for
+ 1000base-X and 2500base-X
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexander Couzens <lynxis@fe80.eu>, Alexander Duyck <alexanderduyck@fb.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250110012749.30072-1-kyrie.wu@mediatek.com>
- <20250110012749.30072-2-kyrie.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ Ar__n__ __NAL <arinc.unal@arinc9.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Daniel Golle <daniel@makrotopia.org>,
+ Daniel Machon <daniel.machon@microchip.com>,
+ "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
+ Eric Dumazet <edumazet@google.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jose Abreu <Jose.Abreu@synopsys.com>, kernel-team@meta.com,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Madalin Bucur <madalin.bucur@nxp.com>,
+ Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@amd.com>, netdev@vger.kernel.org,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Paolo Abeni
+ <pabeni@redhat.com>, Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+ Sean Anderson <sean.anderson@seco.com>, Sean Wang <sean.wang@mediatek.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Taras Chornyi <taras.chornyi@plvision.eu>, UNGLinuxDriver@microchip.com,
+ Vladimir Oltean <olteanv@gmail.com>
+References: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
+ <E1tVuG1-000BXo-S7@rmk-PC.armlinux.org.uk>
+From: Eric Woudstra <ericwouds@gmail.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250110012749.30072-2-kyrie.wu@mediatek.com>
+In-Reply-To: <E1tVuG1-000BXo-S7@rmk-PC.armlinux.org.uk>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_234059_386709_7341E660 
-X-CRM114-Status: UNSURE (   7.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250110_000501_980343_9692DD10 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,17 +125,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/01/2025 02:27, kyrie.wu wrote:
-> Add mediatek,mt8196-jpgdec compatible to binding document.
+
+On 1/9/25 4:15 PM, Russell King (Oracle) wrote:
+> When decoding clause 22 state, if in-band is disabled and using either
+> 1000base-X or 2500base-X, rather than reporting link-down, we know the
+> speed, and we only support full duplex. Pause modes taken from XPCS.
 > 
-> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
+> This fixes a problem reported by Eric Woudstra.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 > ---
-No, why are you resending without improving anything here?
+>  drivers/net/phy/phylink.c | 29 +++++++++++++++++++----------
+>  1 file changed, 19 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
 
-You got comments. Respond to them, implement them, not resend same stuff.
+After changing 'if (pcs->neg_mode)' to 'if (pcs && pcs->neg_mode)' in
+patch 1/5, I have tested this patch-set and I get link up.
 
-NAK
+Tested-by: Eric Woudstra <ericwouds@gmail.com>
 
-Best regards,
-Krzysztof
 
