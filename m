@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5889DE7719C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 16:14:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC8BBE7719C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jan 2025 16:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4AeKH+x/3T1B5AOE4quTwxYLKlq0bm4dB05NvJUlAao=; b=CpR5MasJgVgs2WtvHrbogYAlZS
-	jZaOub92D0Un/qA+o2cj6TJUeEwgWDfEagpJBqLrev1C/b/y3ypSFGcILyT/KmZGuGFfJy4f3bUfx
-	3JrNoMS9aZc2JZlPpudn7jcnoOCbGoteECyrFSJUeaXNkJjHrXDVVljj5RUqOVHbHe1K8kzfBPrqV
-	55pPTLxh62s+yAhSz8oFHwpJpOvnuWCdf+lvsAV39pCBruOT2R/9wKkJbbfg6NaTaqRCbiqajjT6j
-	Flu6t3Vxq115ZVFYK0y9HLAdVY7niM/ZNoaKGsYvY6P8Y621iN6n0BNol/dtkBBEbUP0ftisf/+en
-	e5YFeU/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sB1xyBy7knHrLszPHAJ3MESeKHqNxE0grKNVyNhYz7A=; b=kYeLl1et8RsWiU5qBeeUKmn320
+	KeHg7a0lmHgrC+dgwJPLOgUrNlFgijU+fACiik8rIOLviDW1cIrJVYVT3l1c5Zhx+a2X/q1OCefaK
+	IytYs71Kv71+rPSlibS4nodtKOo9aIAqRJvDYQXOuUQQKGDGrRJkFLg9ca526TyDX4x2CcwmaDsGx
+	8y6l+CamB0PRrzCGEzQbWx2Y50l7h9s4ZmA8EPp4cC+/9bg1TSHvTbNQrAJ7LOgoXYng1I4p9cLA2
+	sgHYv3cVecMQIi1Z8lysY6EWZt0YicikHZcnD2/KBk1NPc8xgv5u7vHPkVcaOpfHdqTLiZHvwvSeP
+	XZ8jytcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWHer-0000000GB7o-1vvA;
-	Fri, 10 Jan 2025 16:14:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tWHhG-0000000GBwM-3NhR;
+	Fri, 10 Jan 2025 16:17:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWHEN-0000000G52q-2F0M;
-	Fri, 10 Jan 2025 15:47:28 +0000
+	id 1tWHNm-0000000G7SR-2dbN;
+	Fri, 10 Jan 2025 15:57:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BA8BD5C338E;
-	Fri, 10 Jan 2025 15:46:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FF99C4CEE1;
-	Fri, 10 Jan 2025 15:47:18 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E42B55C0FE0;
+	Fri, 10 Jan 2025 15:56:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6422CC4CED6;
+	Fri, 10 Jan 2025 15:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736524046;
-	bh=v73Vw62MTNkPdqw8cVZvUOLB+25Ygi2g/dhpqPSNGOs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=l/Tqf1J0YeqgmGTlb9OUQ/Wvq+oCw2zgnE8wFFqL59zvdOgp7O+gqxEegYCMlag5B
-	 Q6YYo8nE4BAqap4CwWdBHEB5spPiRJAR3xfPANPsrUl8QBsBJkFuY9/mmloDugDn53
-	 oTrzlRuyCsQh3Pip0J9mKHKMBRqWqQrHqvRlba7lqg2A2mhrzj5cyWW+hzMCeL8RK0
-	 5GclltoKebgtyrLyhSxH8ccfanUNpL8t1yEknIhnlxVvFmJDoCR6QoQO2CNOzLGW18
-	 eGfHAbzkQCEt/QvPwSazROLltVeDVxhce+xTw1U85pnahOGx6/HmZUCI7bRjv8s9WC
-	 Mv9KDA4WfFk4A==
-From: Mark Brown <broonie@kernel.org>
-To: Sanjay R Mehta <sanju.mehta@amd.com>, Han Xu <han.xu@nxp.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Daire McNamara <daire.mcnamara@microchip.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Haibo Chen <haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, 
- Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@amd.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Raju Rangoju <Raju.Rangoju@amd.com>, 
- Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Steam Lin <stlin2@winbond.com>, linux-spi@vger.kernel.org, 
- linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-mtd@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
- openbmc@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com, 
- Pratyush Yadav <pratyush@kernel.org>, 
- Tudor Ambarus <tudor.ambarus@linaro.org>, stable+noautosel@kernel.org
-In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
-References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
-Subject: Re: (subset) [PATCH v2 00/27] spi-nand/spi-mem DTR support
-Message-Id: <173652403824.316821.7989247622292618802.b4-ty@kernel.org>
-Date: Fri, 10 Jan 2025 15:47:18 +0000
+	s=k20201202; t=1736524629;
+	bh=Zepb3Xf1LqvXqepzt+MhmKK6OG5jBl8iAJLNE0dVQPw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NEvyIBtRig1NynjUKr+d72gORi8xggQKkHvmTDwaw+mxp6ygcL0HqICFfzPh84x3Z
+	 LsJY2EfD8qZPaOR8yGe4MxG4lwmy4wziMf4LNwY33JkuVXED7L2c+QHfb9j8A7Wq1J
+	 Tr6CQHqBQxP2XUEimgcLM6KrYb4Q0q/Bndd8xIW1y32DUGOGJwOKAz5EJd+YhfIpIJ
+	 XkrhSUFBUN6AG28zCvbRnoJYIymyJY+Pt1P68yuiveXnp2xvXXDS4jf+JkNG7/4Zxl
+	 du9aEo6KNrAuqISmeSYHyXfkMRZpVCxVR4ntT3PxWZvGRbF/03xLiO3dZVjvHsn+kp
+	 Y5qJP2Z4A3XNg==
+Date: Fri, 10 Jan 2025 09:57:08 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, tzimmermann@suse.de,
+	jitao.shi@mediatek.com, linux-kernel@vger.kernel.org,
+	mripard@kernel.org, ck.hu@mediatek.com, p.zabel@pengutronix.de,
+	jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
+	lewis.liao@mediatek.com, simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com, krzk+dt@kernel.org,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com,
+	linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+	kernel@collabora.com, chunkuang.hu@kernel.org, conor+dt@kernel.org,
+	jason-jh.lin@mediatek.com, dmitry.baryshkov@linaro.org,
+	airlied@gmail.com
+Subject: Re: [PATCH v4 08/34] dt-bindings: display: mediatek: Add binding for
+ MT8195 HDMI-TX v2
+Message-ID: <173652462808.2939128.70242417447514107.robh@kernel.org>
+References: <20250108112744.64686-1-angelogioacchino.delregno@collabora.com>
+ <20250108112744.64686-9-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250108112744.64686-9-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_074727_662851_2701A901 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20250110_075710_705363_C91BA4B5 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,80 +82,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Dec 2024 18:05:45 +0100, Miquel Raynal wrote:
-> Here is a (big) series supposed to bring DTR support in SPI-NAND.
+
+On Wed, 08 Jan 2025 12:27:18 +0100, AngeloGioacchino Del Regno wrote:
+> Add a binding for the HDMI TX v2 Encoder found in MediaTek MT8195
+> and MT8188 SoCs.
 > 
-> I could have split this into two but I eventually preferred showing the
-> big picture. Once v1 will be over, I can make it two. However when we'll
-> discuss merging, we'll have to share an immutable tag among the two
-> subsystems.
+> This fully supports the HDMI Specification 2.0b, hence it provides
+> support for 3D-HDMI, Polarity inversion, up to 16 bits Deep Color,
+> color spaces including RGB444, YCBCR420/422/444 (ITU601/ITU709) and
+> xvYCC, with output resolutions up to 3840x2160p@60Hz.
 > 
-> [...]
+> Moreover, it also supports HDCP 1.4 and 2.3, Variable Refresh Rate
+> (VRR) and Consumer Electronics Control (CEC).
+> 
+> This IP also includes support for HDMI Audio, including IEC60958
+> and IEC61937 SPDIF, 8-channel PCM, DSD, and other lossless audio
+> according to HDMI 2.0.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../mediatek/mediatek,mt8195-hdmi.yaml        | 151 ++++++++++++++++++
+>  1 file changed, 151 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+> 
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-
-Thanks!
-
-[01/27] spi: spi-mem: Extend spi-mem operations with a per-operation maximum frequency
-        commit: 0fefeade90e74bc8f40ab0e460f483565c492e28
-[02/27] spi: spi-mem: Add a new controller capability
-        commit: 1248c9b8d54120950fda10fbeb98fb8932b4d45c
-[03/27] spi: amd: Support per spi-mem operation frequency switches
-        commit: d0e5faccb229b1dacc4c9fa11f6df33bb1fdabd8
-[04/27] spi: amd: Drop redundant check
-        commit: e6204f39fe3a7b4538815a2d778b601bd543649e
-[05/27] spi: amlogic-spifc-a1: Support per spi-mem operation frequency switches
-        commit: 5baa189789e8894c58eacc7803e3c163c1d0fc0a
-[06/27] spi: cadence-qspi: Support per spi-mem operation frequency switches
-        commit: 06e9f5a1f6ba774d8942a168d3ec5ed5a008fbcb
-[07/27] spi: dw: Support per spi-mem operation frequency switches
-        commit: eee7bc9e7ade6f7ac17d9ec02887cd5509ba9427
-[08/27] spi: fsl-qspi: Support per spi-mem operation frequency switches
-        commit: 2438db5253eb17a7c0ccb15aea4252a150dda057
-[09/27] spi: microchip-core-qspi: Support per spi-mem operation frequency switches
-        commit: 13529647743d906ed3cf991f1d77727e7ff1fb6f
-[10/27] spi: mt65xx: Support per spi-mem operation frequency switches
-        commit: 13fd04b53053bbfa741a0f2a781837ab80e485f6
-[11/27] spi: mxic: Support per spi-mem operation frequency switches
-        commit: 67707cb094f134f5b3931eefbedbb9ca7e3209d0
-[12/27] spi: nxp-fspi: Support per spi-mem operation frequency switches
-        commit: 26851cf65ffca2d3a8d529a125e54cf0084d69e7
-[13/27] spi: rockchip-sfc: Support per spi-mem operation frequency switches
-        commit: d3f35dd3ad968256ed1080e3ea2022f947861cff
-[14/27] spi: spi-sn-f-ospi: Support per spi-mem operation frequency switches
-        commit: 1a206344218cc15ad8f321e3abab3f3d36ab639f
-[15/27] spi: spi-ti-qspi: Support per spi-mem operation frequency switches
-        commit: b2fac3192919dd07e7ce30558e34abd7e07dde77
-[16/27] spi: zynq-qspi: Support per spi-mem operation frequency switches
-        commit: 9a68f6c8d6cfddeac7c5874528ed04e50a1cb579
-[17/27] spi: zynqmp-gqspi: Support per spi-mem operation frequency switches
-        commit: 30eb2e6e78225f92f04a2325c6fd77fe8f5b4aab
-[18/27] spi: spi-mem: Reorder spi-mem macro assignments
-        commit: d1f85873d2d62d6980e68d21d3a21f20b0664cc3
-[19/27] spi: spi-mem: Create macros for DTR operation
-        commit: f0006897a96c736623ddeb9b68c3880eb5cdebe7
-[20/27] spi: spi-mem: Estimate the time taken by operations
-        (no commit info)
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
