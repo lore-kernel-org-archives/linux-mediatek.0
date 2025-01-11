@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0945EE7719D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jan 2025 14:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F42DE7719A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jan 2025 21:21:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bBcRZz23qe7sBpVEFNsRfliAszcO1sjImonnNjn1wvI=; b=nZqD5rvnKI/wvrk5Vx4r3ufkP/
-	HZjScPGZ/FrtznJhMv3KyTCRvpiwWBRBWH7w6DIfCJeP6IS/6wX99ZbHeI8c64I7pv4iPPOsMukqA
-	OzyGemDzLUyV++0HIvt51bGm2//ODks2AK61669A+WUMmDsUykirzppATA3AE2hh4TpvTQIzRv6wc
-	kVJ2joX/0UNm+KJ1a7a6y6ETd/r9InCZNnZ2FCsjq8QI9Fh99wKZHW5Kd92kyABffE8y9fPWx3Dks
-	3QuJJnyXSoSJ//mU8yGs4wYFKhMl4dQIQLsqGBTlapHNzaCVF/oe2jtuuzz+8JhIhoE9G2San2boH
-	EorZcVzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q/I8MT+eVEIJlkDqXpv6xPh7XxleYT2QyYUi7oa6+Qg=; b=zGUhdoX7wgnP/OPm0+aoy+2UuB
+	UidOY7lpzhpBoNXX24TaVjvKo9jkubQOiGYIvAmB8JsS+jLQEiBfr0K2ArN14SZEMSYLXkuPUMStR
+	VO5ieFnkVRZTYfEh3c7FN/f+EBTI/4Wl8lyYLqHLsWLVvgEOt657nsW/wpA1dzw6fllwATk6Setbh
+	vG8aM1jBAoolj+gzWDTaKoOjothRuvCOQNiTj/fFGMF/NY9WErtYSIjVycfl5amW4jc83iCzZewGc
+	2bBXRBar5v9T/44AxUPIQUGal3XGTpcqKRYOU67gPJsJDdxF/upkCbf/fI3iK3OMPXRtBN+ABG+8I
+	69BhvMOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWcIo-00000000tzc-0yFm;
-	Sat, 11 Jan 2025 14:17:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tWivA-00000001Tvh-0bN0;
+	Sat, 11 Jan 2025 21:21:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWcHb-00000000tqq-2Gts;
-	Sat, 11 Jan 2025 14:16:12 +0000
-X-UUID: 98389020d02611ef9048ed6ed365623b-20250111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bBcRZz23qe7sBpVEFNsRfliAszcO1sjImonnNjn1wvI=;
-	b=djS9aRd5dBePP/Apjt2iwmB0oRJiaCLMUVPjnVDzY2BRM1AN47ETesIybNCXWzskKGt3BB8uUJUnh10rLEds3Y5O9+hci7r3B331lfWeDNDRcI2+8HYA4Vy5Gfy8ubH38rwC381lgfPk/wf1WTtZhYaCgBaYHb0M2/bprGetwFs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:5dddee26-5541-4fe9-b437-4a83d4bb85e4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:b892bb0e-078a-483b-8929-714244d25c49,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 98389020d02611ef9048ed6ed365623b-20250111
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1673808228; Sat, 11 Jan 2025 07:16:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Sat, 11 Jan 2025 22:16:02 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Sat, 11 Jan 2025 22:16:01 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [RESEND PATCH 2/2] phy: mediatek: xsphy: add support to set disconnect threshold
-Date: Sat, 11 Jan 2025 22:15:42 +0800
-Message-ID: <20250111141542.5007-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
-References: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
+	id 1tWitv-00000001TjH-28cH;
+	Sat, 11 Jan 2025 21:20:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EC3AF5C0685;
+	Sat, 11 Jan 2025 21:19:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AE65C4CED2;
+	Sat, 11 Jan 2025 21:20:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736630409;
+	bh=d+CjSnWYenwUHwQ3HAhXwdYz3H2sh3KOtK+AFQLc9Gs=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=LKuhullKPphx1ny0+ac63nI5jTOPOCf7LO5GCh71ih+T7THXUBcMl1Q48NjtN2D5L
+	 aBGpfuySR3at8Wx0mDQQjfR0wwpwJ0Z04hwGYIg+VE644gHHflwj/Y+Ei/I4/3lGkb
+	 C9CDvR/A91LC3vsbRGtIJ6jcwB6adDuBhmmgLYvXupS38X0T52Ix2rICvTxSMpOLgw
+	 pfW3diLLygbO8LW6Qnj/YfyRyyWnofQvSzvsBbJjVwwhOk6HX7T/z5QUAGS00KkEFd
+	 M4PsUyarW1nh0Ez+p3GPZo4y7WMjVuvpOnY0kGEipulf+SS8A3FGOHGXQbZWBSeZfc
+	 c9RjHZQnAm6eA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB242380AA54;
+	Sat, 11 Jan 2025 21:20:32 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Subject: Re: [PATCH net-next] net: airoha: Fix channel configuration for ETS
+ Qdisc
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173663043176.2451513.12890809036064265655.git-patchwork-notify@kernel.org>
+Date: Sat, 11 Jan 2025 21:20:31 +0000
+References: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
+In-Reply-To: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250111_061611_588816_2E17F1D5 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20250111_132011_585003_D42E3941 
+X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,61 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a property to tune usb2 phy's disconnect threshold.
+Hello:
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-based on kernel 6.13-rc1
----
- drivers/phy/mediatek/phy-mtk-xsphy.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
-index 7c248f5cfca5..718ed8f17c2d 100644
---- a/drivers/phy/mediatek/phy-mtk-xsphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
-@@ -59,6 +59,7 @@
- #define XSP_USBPHYACR6		((SSUSB_SIFSLV_U2PHY_COM) + 0x018)
- #define P2A6_RG_BC11_SW_EN	BIT(23)
- #define P2A6_RG_OTG_VBUSCMP_EN	BIT(20)
-+#define PA6_RG_U2_DISCTH	GENMASK(7, 4)
- 
- #define XSP_U2PHYDTM1		((SSUSB_SIFSLV_U2PHY_COM) + 0x06C)
- #define P2D_FORCE_IDDIG		BIT(9)
-@@ -95,6 +96,7 @@ struct xsphy_instance {
- 	int eye_src;
- 	int eye_vrt;
- 	int eye_term;
-+	int discth;
- };
- 
- struct mtk_xsphy {
-@@ -244,9 +246,12 @@ static void phy_parse_property(struct mtk_xsphy *xsphy,
- 					 &inst->eye_vrt);
- 		device_property_read_u32(dev, "mediatek,eye-term",
- 					 &inst->eye_term);
--		dev_dbg(dev, "intr:%d, src:%d, vrt:%d, term:%d\n",
-+		device_property_read_u32(dev, "mediatek,discth",
-+					 &inst->discth);
-+		dev_dbg(dev, "intr:%d, src:%d, vrt:%d, term:%d, discth:%d\n",
- 			inst->efuse_intr, inst->eye_src,
--			inst->eye_vrt, inst->eye_term);
-+			inst->eye_vrt, inst->eye_term,
-+			inst->discth);
- 		break;
- 	case PHY_TYPE_USB3:
- 		device_property_read_u32(dev, "mediatek,efuse-intr",
-@@ -285,6 +290,9 @@ static void u2_phy_props_set(struct mtk_xsphy *xsphy,
- 	if (inst->eye_term)
- 		mtk_phy_update_field(pbase + XSP_USBPHYACR1, P2A1_RG_TERM_SEL,
- 				     inst->eye_term);
-+	if (inst->discth)
-+		mtk_phy_update_field(pbase + XSP_USBPHYACR6, PA6_RG_U2_DISCTH,
-+				     inst->discth);
- }
- 
- static void u3_phy_props_set(struct mtk_xsphy *xsphy,
+On Tue, 07 Jan 2025 23:26:28 +0100 you wrote:
+> Limit ETS QoS channel to AIROHA_NUM_QOS_CHANNELS in
+> airoha_tc_setup_qdisc_ets() in order to align the configured channel to
+> the value set in airoha_dev_select_queue().
+> 
+> Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: airoha: Fix channel configuration for ETS Qdisc
+    https://git.kernel.org/netdev/net-next/c/7d0da8f86234
+
+You are awesome, thank you!
 -- 
-2.46.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
