@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98E26E7719A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jan 2025 10:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1A40E7719A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jan 2025 13:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=koUzhaC5lP69OII/PnB7KVz2q/f2cPDBtDqBB+DljrI=; b=WanoO3L5Wydb4Et+JRswCGsVcF
-	oWAQ861FqHYvSAGexoQFJFVfLiUgg7tJKQsVkT85Zm1CBIikjSy1TsIn2gj3tckZi5ejXjaJ/e1pi
-	GOHJFnRNzbZDzMJVEyrh9AZFp2A3pk1wTcynKX1fc3+TZTM7QNqC/TnpgVCyGImMo0qG7xSLBZP+8
-	lgK3/OMVlu9wpS0YXVufobYLhjIsWRe7quZTCmnbJ9VHjzhAGIZrrOGrWZ2ln0qpOwRfhME8ASO3l
-	d4QaYo1Fy6ZCFkc1GB8k8ntl4Gqmav4kpUVBEwS7WCuu8aEgORwjG0qOyg+2sR7xtSCkiid9Yr8mw
-	4MFMvkbA==;
+	bh=UYMRaNX3dgJOFv3sQfEKS6IbIY09vbcFg/8voDyEyG0=; b=fQWNtcVgCBQ/ab1qtOiRwd8pvr
+	fNMFPR/DSsySy6MYMVc/5U/b8lEow+RmXdGg0Px11FYKXgsfcPxQG7DMSjjdNBKfj7ytsfLxG9tCb
+	FP12x3RhgdedFN7tUOAzmT91M+OsjKWRyBLG2Pa47U2RsjENfCzPYM40D2mvjl+TSm8V8GQSzvnNX
+	UkRHLZORL2+mTK/Rex4fothNlJwXBc9PTILZZ96ZUK+iFp0m2IWSztYjepzhfCj322Qoz/ckWVQtI
+	CxXP3hY6FOle1Asvi8HKeF1eRuuULRraPtmJ43valH2ULDJP7iaCGZXfhPMM1zb1iYhMJkdDJN6Ge
+	596WyePQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWYrj-00000000cx3-33RH;
-	Sat, 11 Jan 2025 10:37:15 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1tWbG2-00000000p6P-0Qp0;
+	Sat, 11 Jan 2025 13:10:30 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWYpr-00000000ciS-13KY;
-	Sat, 11 Jan 2025 10:35:20 +0000
+	id 1tWbEn-00000000ozj-3ou8;
+	Sat, 11 Jan 2025 13:09:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736591719; x=1768127719;
+  t=1736600954; x=1768136954;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=4BeJTqqm28Qv5oKR0dD1hGxB/DuI9FfILfZRugCKv8I=;
-  b=bOxQ4p9VzT7swh9fidpG/COE72yVeL+MZEetc8zZYngyQPLSRMTsvNws
-   MoFDgDQc1KN3NYIGXK5EppHGJeUe76rzFWNa3w5dsv2gPZYvZ6qdpH7b3
-   gEWORlKJ552yWKY3APYcyhSKS3PVj9EfIkgoPdRj8rdIyr6EiHV54WS5A
-   x6rnaPyCW/hOWWDfBfUKuDCoV1sXAmFW3Aps9s5xjN22vuRREXPUCiRWg
-   otZV3iKFOcJhc7PLjKGw3hQIyLBXsrRRAjCV77DZkdKBFgcxKSRp5ppQv
-   5aqfceIjnVh2YGnL+fV6dyDN1JODT4UBEVlzSyhZm99AEXVT9feCruWw2
+  bh=th1e+p23X+UdstG6BGZ9C9GnjYoYqz3mjlgM+5zrhSs=;
+  b=kr7rSy1qSXoEUQMAVg6757BL7sjcJu7TL4ppghhkERpobhBLBMAB21EU
+   21Llm4WttLlNUM8xrRgaYoe6SueX3r64EWpJttxyAvnLPCg3zmL1TWaAj
+   7radt4iXyU55PbD3Z4j+JCXM+OvY5l/L4p4CS9tk5xIHfAZUO3os5pF/A
+   ylasGhFdQbeJfAfjjUmWAVG8WFnJTRbsPXhyl0JDzroHstBWE0hYZ7JYI
+   RT8rXMiPGrVfM3r9s78Nyk3s/YOn42dY0f2O1m7AH9qIlILOpMxRuWpiY
+   HmTSEqOkKHeqDDCRUymUqRZrsmPF6wP9PgQqHb/LQiUHCfo/traOoZ8iB
    g==;
-X-CSE-ConnectionGUID: y8PXLkS9RV2DCDwvn3Hz3g==
-X-CSE-MsgGUID: h0Uav5AZR3mY5FwNIecl/Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11311"; a="37112091"
-X-IronPort-AV: E=Sophos;i="6.12,306,1728975600"; 
-   d="scan'208";a="37112091"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2025 02:35:13 -0800
-X-CSE-ConnectionGUID: pGD7UTJTQc2Da3Y2xbpPoA==
-X-CSE-MsgGUID: CUAO05POTmibjKRUAVNYcw==
+X-CSE-ConnectionGUID: uWWn93VMQBacfO97LhAAgg==
+X-CSE-MsgGUID: w21eUc0LSBeyyQHWQAlwzg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11312"; a="24492513"
+X-IronPort-AV: E=Sophos;i="6.12,307,1728975600"; 
+   d="scan'208";a="24492513"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2025 05:09:05 -0800
+X-CSE-ConnectionGUID: 1WQ5tDhmQlmBHSfszG4lLw==
+X-CSE-MsgGUID: lwElejONRY+RkC+Q317r1A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,306,1728975600"; 
-   d="scan'208";a="108970921"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="108042240"
 Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 11 Jan 2025 02:32:32 -0800
+  by fmviesa003.fm.intel.com with ESMTP; 11 Jan 2025 05:09:01 -0800
 Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1tWYn7-000KUR-1E;
-	Sat, 11 Jan 2025 10:32:29 +0000
-Date: Sat, 11 Jan 2025 18:31:36 +0800
+	id 1tWbEY-000KfX-2S;
+	Sat, 11 Jan 2025 13:08:58 +0000
+Date: Sat, 11 Jan 2025 21:08:12 +0800
 From: kernel test robot <lkp@intel.com>
 To: Cathy Xu <ot_cathy.xu@mediatek.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -68,22 +68,22 @@ To: Cathy Xu <ot_cathy.xu@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Sean Wang <sean.wang@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
 	wenbin.mei@mediatek.com
-Cc: oe-kbuild-all@lists.linux.dev, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Guodong Liu <guodong.liu@mediatek.com>,
 	Cathy Xu <ot_cathy.xu@mediatek.com>
 Subject: Re: [PATCH v2 2/2] pinctrl: mediatek: add mt8196 driver
-Message-ID: <202501111834.dc1JHSLT-lkp@intel.com>
+Message-ID: <202501112005.DuwEi3Ig-lkp@intel.com>
 References: <20250110104703.13625-3-ot_cathy.xu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20250110104703.13625-3-ot_cathy.xu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250111_023519_332854_9A7F788A 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20250111_050914_051630_C6AA3AB6 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,39 +112,24 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Cathy-Xu/dt-bindings-pinc
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
 patch link:    https://lore.kernel.org/r/20250110104703.13625-3-ot_cathy.xu%40mediatek.com
 patch subject: [PATCH v2 2/2] pinctrl: mediatek: add mt8196 driver
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20250111/202501111834.dc1JHSLT-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250111/202501111834.dc1JHSLT-lkp@intel.com/reproduce)
+config: arm64-randconfig-003-20250111 (https://download.01.org/0day-ci/archive/20250111/202501112005.DuwEi3Ig-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250111/202501112005.DuwEi3Ig-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202501111834.dc1JHSLT-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501112005.DuwEi3Ig-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
-   In file included from include/linux/cpumask.h:11,
-                    from include/linux/smp.h:13,
-                    from include/linux/lockdep.h:14,
-                    from include/linux/spinlock.h:63,
-                    from include/linux/mmzone.h:8,
-                    from include/linux/gfp.h:7,
-                    from include/linux/umh.h:4,
-                    from include/linux/kmod.h:9,
-                    from include/linux/module.h:17,
-                    from drivers/pinctrl/mediatek/pinctrl-mt8196.c:7:
->> drivers/pinctrl/mediatek/pinctrl-mt8196.c:1753:37: error: 'mtk_eint_pm_ops' undeclared here (not in a function); did you mean 'mtk_eint_regs'?
+>> drivers/pinctrl/mediatek/pinctrl-mt8196.c:1753:23: error: use of undeclared identifier 'mtk_eint_pm_ops'
     1753 |                 .pm = pm_sleep_ptr(&mtk_eint_pm_ops),
-         |                                     ^~~~~~~~~~~~~~~
-   include/linux/kernel.h:48:44: note: in definition of macro 'PTR_IF'
-      48 | #define PTR_IF(cond, ptr)       ((cond) ? (ptr) : NULL)
-         |                                            ^~~
-   drivers/pinctrl/mediatek/pinctrl-mt8196.c:1753:23: note: in expansion of macro 'pm_sleep_ptr'
-    1753 |                 .pm = pm_sleep_ptr(&mtk_eint_pm_ops),
-         |                       ^~~~~~~~~~~~
+         |                                     ^
+   1 error generated.
 
 
-vim +1753 drivers/pinctrl/mediatek/pinctrl-mt8196.c
+vim +/mtk_eint_pm_ops +1753 drivers/pinctrl/mediatek/pinctrl-mt8196.c
 
   1748	
   1749	static struct platform_driver mt8196_pinctrl_driver = {
