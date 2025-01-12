@@ -4,67 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F42DE7719A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jan 2025 21:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92E8EE77188
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jan 2025 09:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q/I8MT+eVEIJlkDqXpv6xPh7XxleYT2QyYUi7oa6+Qg=; b=zGUhdoX7wgnP/OPm0+aoy+2UuB
-	UidOY7lpzhpBoNXX24TaVjvKo9jkubQOiGYIvAmB8JsS+jLQEiBfr0K2ArN14SZEMSYLXkuPUMStR
-	VO5ieFnkVRZTYfEh3c7FN/f+EBTI/4Wl8lyYLqHLsWLVvgEOt657nsW/wpA1dzw6fllwATk6Setbh
-	vG8aM1jBAoolj+gzWDTaKoOjothRuvCOQNiTj/fFGMF/NY9WErtYSIjVycfl5amW4jc83iCzZewGc
-	2bBXRBar5v9T/44AxUPIQUGal3XGTpcqKRYOU67gPJsJDdxF/upkCbf/fI3iK3OMPXRtBN+ABG+8I
-	69BhvMOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DeWY5GrZ+oUsk5L6PZfCgkhib35kaMkIvOwfSxSW9Qs=; b=ls+OMoNrhK50iCYLGSwP+WaHXC
+	oOqxThqE7aljFrO3tlaBBh0JYMDR2U/UAeCImfaWw+prqJEbjVazSd5maz1MHz1NsE+qzo+ESkhR4
+	ZpWbXzf+MRT+coa4rQVojg7kRanzgGnOmDCcn9KjFRf4h1ruasKlysYyLoFULMnvazC7pivHN5OAd
+	reCb1r/7LSXAII/LXgJBMKP/PvqZ3YPB7QWYjs/LAE5qPRHV7uEpPLLiTDBgiJbD6fa6VcKj2EFmr
+	Mg0Xuj63Ua07ARGDDvg2iI9L670eD/YaJMzBwP4kdo3O5lcVhgSlI83XdoA0oE7UGkQBbnqeLGVIa
+	fUmHtwxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWivA-00000001Tvh-0bN0;
-	Sat, 11 Jan 2025 21:21:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tWtud-00000002NzR-1b8e;
+	Sun, 12 Jan 2025 09:05:39 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWitv-00000001TjH-28cH;
-	Sat, 11 Jan 2025 21:20:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EC3AF5C0685;
-	Sat, 11 Jan 2025 21:19:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AE65C4CED2;
-	Sat, 11 Jan 2025 21:20:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736630409;
-	bh=d+CjSnWYenwUHwQ3HAhXwdYz3H2sh3KOtK+AFQLc9Gs=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=LKuhullKPphx1ny0+ac63nI5jTOPOCf7LO5GCh71ih+T7THXUBcMl1Q48NjtN2D5L
-	 aBGpfuySR3at8Wx0mDQQjfR0wwpwJ0Z04hwGYIg+VE644gHHflwj/Y+Ei/I4/3lGkb
-	 C9CDvR/A91LC3vsbRGtIJ6jcwB6adDuBhmmgLYvXupS38X0T52Ix2rICvTxSMpOLgw
-	 pfW3diLLygbO8LW6Qnj/YfyRyyWnofQvSzvsBbJjVwwhOk6HX7T/z5QUAGS00KkEFd
-	 M4PsUyarW1nh0Ez+p3GPZo4y7WMjVuvpOnY0kGEipulf+SS8A3FGOHGXQbZWBSeZfc
-	 c9RjHZQnAm6eA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB242380AA54;
-	Sat, 11 Jan 2025 21:20:32 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tWtua-00000002Nyw-1E8x;
+	Sun, 12 Jan 2025 09:05:37 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-21631789fcdso56176765ad.1;
+        Sun, 12 Jan 2025 01:05:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736672735; x=1737277535; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DeWY5GrZ+oUsk5L6PZfCgkhib35kaMkIvOwfSxSW9Qs=;
+        b=kVt/2fFVtTfthLksSXEtvxWYVEF9qLC2uhh7xPSjvpPqws9w0FUH/bCn1NlbI4Qkky
+         qODvwpc7+tYIU9r+BxycHedAC1WBk9jM6uuwPTtC8Pn8mFd4+fBhijw9z6YT2abHIhQ7
+         NuxlVDo75/YjQuiM0U/E7DRltZHML2CpcAJ/bTL/XJtuM3ob/YrUYj0pqLT3bVNEFrZR
+         /0XE8ffw/xfTRLZiwOuXzDjrdpN7IeO71x4j4uy/dsSYTyzAa2KDR+tnwUXK4RswBHy7
+         AnJO4CuNh6x8LO8qSpN9r3XHyR5fsjU70ntWMEsYhSkvyPUdqqMnjSYoju/OaDKYOO5C
+         X+2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736672735; x=1737277535;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DeWY5GrZ+oUsk5L6PZfCgkhib35kaMkIvOwfSxSW9Qs=;
+        b=oKrDqoM0SNFQawRMa6qUTJ2AmR+7xXYuLqVVEESZOzkdC5eDflJywxodvYQcCeQuMC
+         hCELqSUllhUhP+X6rYPhS//ftY+ZNAZxQCVhaezBWwolbtwIbDx0YfDFpa4dvnxV7k6L
+         ZL1/UhZIMORTpav/WwghkvTN3B/HlKrn32NCbsNxCzmOpV7jNI5weU8SMzTDybOMRmPE
+         ehEJXON26kIdHEVdwNKtYuWXuJ+ZKLBiDp5/yL6mdxNngyY2UdvgGknADinFebHacKV9
+         Xjt0J1OTMfCOTT4EgU48TZuWnfN9he1zN2as4GKntuuwt2hRHXTZK4Bxy/fZU1L5osl1
+         7N1Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWyb6atTKqvgtYwQ7dF9vReT9/m2KQ6LlykmCfKkg8oyCGQe683DV9T6F4RQvc7aApa68m74LApBWxkkkfTJbk=@lists.infradead.org, AJvYcCXHRQRK0Gj04xCie7fM2w+/wMcTqQwU3lgRzG2imiC7GIYsQUlhektnU6nVE5lm1MBJHK0EpsHGxrABMOl0wVrJ@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy750xbw8EQICoBeYnNGvDjZyothB6BDrI7uoivRAXoxWpu1eBg
+	BXwJhdCFlxB/rWi71Tyn4GXr7q9f2oWXJPvOXn/2H11gz08LA4Fq
+X-Gm-Gg: ASbGncvUAx/d/Z5GAGyMlMpqi7AZgebYGLxl7A/4k7dqnnlnsqaQYEWhfNPdb8Mse8k
+	NSwMdwlcEvmk/Y38h4Zqd191mVBqNSLRD9T4Z1Frj1FUT1/fXFiZ0Te0BgTNZKIHOLthFDLCDAQ
+	2yKbx5WUjzYHsw/dabGkIzoLGVNZBaeQy8lKDOvqbWNg8ABDcjar434FZq1W6TCE3DVInp4Oqsm
+	p5+6kDN4Tz0M0IaW0yF2AjKceCGNrgv+bJuVmEbSBj8f4M0WOzvmCE=
+X-Google-Smtp-Source: AGHT+IHu/GMQyrHeXHhW2IHCjlqDAL093DtUlydQHsY2SPkxdzqmE4DrqTy4VxiKykzwhI1RLWLgdA==
+X-Received: by 2002:a05:6a00:3910:b0:725:41c4:dbc7 with SMTP id d2e1a72fcca58-72d324bedf7mr19906933b3a.4.1736672734679;
+        Sun, 12 Jan 2025 01:05:34 -0800 (PST)
+Received: from Emma ([2401:4900:1c96:bd6b:5054:ff:fe53:2787])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72d4059485bsm3950996b3a.83.2025.01.12.01.05.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Jan 2025 01:05:34 -0800 (PST)
+From: Karan Sanghavi <karansanghvi98@gmail.com>
+Date: Sun, 12 Jan 2025 09:05:30 +0000
+Subject: [PATCH v2] drm/mediatek: Initialize pointer to avoid undefined
+ behavior
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Fix channel configuration for ETS
- Qdisc
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173663043176.2451513.12890809036064265655.git-patchwork-notify@kernel.org>
-Date: Sat, 11 Jan 2025 21:20:31 +0000
-References: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
-In-Reply-To: <20250107-airoha-ets-fix-chan-v1-1-97f66ed3a068@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250112-uninitializedpointer1601557-v2-1-61ac4c80b76d@gmail.com>
+X-B4-Tracking: v=1; b=H4sIANmFg2cC/42NQQ6CMBBFr0JmbU2nQEFX3sOwADrCJNCSFolKe
+ ncrJ/Dv3l+8t0MgzxTgmu3gaePAziZQpwz6sbUDCTaJQUlVYJp4Wra8cjvxh8zi2K7kUUssy0p
+ capl3lSo73RlIhsXTg1+H/d4kHjmszr+P2Ia/9z/vhgJFZWSudU01Fngb5panc+9maGKMX9SW+
+ yrGAAAA
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>, CK Hu <ck.hu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Shuah Khan <skhan@linuxfoundation.org>, 
+ Karan Sanghavi <karansanghvi98@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1736672731; l=1803;
+ i=karansanghvi98@gmail.com; s=20241017; h=from:subject:message-id;
+ bh=iKs2YT/O6O3hI6dqcd/Y4shirDLatC1bZ5lLLSgXYAk=;
+ b=lVFZMQ2xtvXWpRGLSvR+s3AhcVB23qGM6qUFxsgC7Lmm1L3bGimUR3y+L/VRjXJNE1G5+XN7A
+ bfG6MOMZjtdAmYBZBCgSTZnzk8UpmSGnoyrhrJcnCUjRhYr5KxeLxN1
+X-Developer-Key: i=karansanghvi98@gmail.com; a=ed25519;
+ pk=UAcbefT1C06npNVDJHdgpPqTm4WE9IhaA1fmJb3A37Y=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250111_132011_585003_D42E3941 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250112_010536_357890_C2474DCE 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +112,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Initialize the `next` pointer with NULL as the function
+`mtk_drm_of_get_ddp_ep_cid` might return early without assigning a
+value to `next`.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Dereferencing an uninitialized pointer can lead to undefined behavior,
+as it might point to an invalid memory location.
 
-On Tue, 07 Jan 2025 23:26:28 +0100 you wrote:
-> Limit ETS QoS channel to AIROHA_NUM_QOS_CHANNELS in
-> airoha_tc_setup_qdisc_ets() in order to align the configured channel to
-> the value set in airoha_dev_select_queue().
-> 
-> Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+Coverity CID: 1601557
 
-Here is the summary with links:
-  - [net-next] net: airoha: Fix channel configuration for ETS Qdisc
-    https://git.kernel.org/netdev/net-next/c/7d0da8f86234
+Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for display paths")
+Signed-off-by: Karan Sanghavi <karansanghvi98@gmail.com>
+---
+Coverity Message:
+CID 1601557: (#1 of 1): Uninitialized pointer read (UNINIT)
+3. uninit_use: Using uninitialized value next.
 
-You are awesome, thank you!
+Coverity Link:
+https://scan7.scan.coverity.com/#/project-view/10043/11354?selectedIssue=1601557
+---
+Changes in v2:
+- Updated the patch subject and summary log
+- Link to v1: https://lore.kernel.org/r/20241111-uninitializedpointer1601557-v1-1-7d03668e8141@gmail.com
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 9a8ef8558da9..bc06c664e80f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -900,7 +900,7 @@ static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path
+ 					 const unsigned int **out_path,
+ 					 unsigned int *out_path_len)
+ {
+-	struct device_node *next, *prev, *vdo = dev->parent->of_node;
++	struct device_node *next = NULL, *prev, *vdo = dev->parent->of_node;
+ 	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
+ 	unsigned int *final_ddp_path;
+ 	unsigned short int idx = 0;
+
+---
+base-commit: 6d59cab07b8d74d0f0422b750038123334f6ecc2
+change-id: 20241111-uninitializedpointer1601557-9803b725b6bd
+
+Best regards,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Karan Sanghavi <karansanghvi98@gmail.com>
 
 
