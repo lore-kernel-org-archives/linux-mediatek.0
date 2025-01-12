@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48602E7719C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jan 2025 17:04:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0921E77188
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jan 2025 18:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mLHGH+epv3M5YYT+PPWV3TJBLGXoTr8WFrivrQEhYaU=; b=eaP8J++xNkE7oH+rzhO1xopiMG
-	u675XkgqvT78g8UN8bdoersFszlUBer1VuIoj53YyPhjZN3n6+Bs9elEYZXnNpnfpNZl7RCJcrpu4
-	zM4qsKacwz4btHG1GX0iHR8SRrJ8ovOS/6h3xDIgNq4UfKvDglQcZwm6KFl7Tely4B1eqah+3Su0w
-	XfyColh2ZiAiumK+tHltKwIRhyOMc/w/o9qwJ8Xz0J/jtTJYBnUQuPTgG9lWnyPDyZvMf2JEt0LB0
-	ruggfprMWahwcyFlh/8VAWq/w3p9JL3Hw2WMTm/xkRUEiJGoh4WhWvQQMel9nQ1REzyHn70rXFmxh
-	ojS7Xopw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cNNEQTfDk8Yom1JObfiP3ux4k8qElkfZC1BvWtIlhPM=; b=fi8yCObLLKLPBQ4MUxm0lmablc
+	1303JK2v1hhUZTqAu6raZCzcMO4OU7oJwdEoF+zD5ILa3VG3DCa2mIODc/Jj3QulKPckTlB61xHeb
+	PkrutS10gX95HQ+RnGobPa1zTS3sT7+gEHI4qDdpSVdPtnTu6jnWPMZrCFkWr/FfH4QazLfpmIMeN
+	nQqzFPCaR9jB+AcFyQx+UXIVJCy3+0EaoGVqF9coUUMLZMtLOlYeHjQjipf7JEGAQEmRxQA8tfQmy
+	7snPtwwfmWWa2sBU/2EXvOMWlCh4moD2BTNDDYAp+ymnit7C2mw9pEuAdRM8AK6jl9bsrZeSEk1ka
+	luIXcCkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tX1NY-000000037CM-3HU1;
-	Sun, 12 Jan 2025 17:04:00 +0000
-Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
+	id 1tX2nP-00000003GH6-2RNY;
+	Sun, 12 Jan 2025 18:34:47 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tX1MI-0000000373G-2FJv;
-	Sun, 12 Jan 2025 17:02:43 +0000
-Received: by mail-oo1-xc29.google.com with SMTP id 006d021491bc7-5f2e2608681so1768770eaf.1;
-        Sun, 12 Jan 2025 09:02:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736701361; x=1737306161; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mLHGH+epv3M5YYT+PPWV3TJBLGXoTr8WFrivrQEhYaU=;
-        b=Tta6eMwanuUqRleyRoGCdlpJDRyIWjRpXMa4W/6upWJ3A5uNcHr1AjyBVn+azUL1Nm
-         SNNF4betHMvNUmytnKQ86k8gIbQ68CkP17OpQZHIQFedvgIHBjafZoVV7v/SCwc7C2wp
-         s+hbh86LxTwojSn8dCM90JYnO+OioWdeg+sYPIF+QPziH62d5Zbl8d7kGIegaEbdeuiF
-         W/6G/Euzwhoy/K+OVPlg9Dvv+vtqXCw6wBLnREvosrfVibzXi5X2G63llSw01FZ+juTW
-         VwzvqVrVFEYtmZ1vnaYkHSTzdZ45jiz9PQHX1zA7jCtd7uGBLZeBX1ApxwFNQzEFIqvR
-         rPaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736701361; x=1737306161;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mLHGH+epv3M5YYT+PPWV3TJBLGXoTr8WFrivrQEhYaU=;
-        b=CEhxCwlx+LzzraikK4meAjnSFrvw9YPC26oNdNC7COqPhaN8doRI05jb3G3b0AcqpV
-         0G7Ly5xRxipVd5qa0KdFE8f/Ahwp9MhtVXkf+fvYmnwlOa2XwWlgeCCoM3si82qIqWe6
-         N91oJo96BvUdT4c/7MKEFYdMIN2h6ZuMfIeCZGQn/B6ZBT5vkFsIM++ebousnmMBHUCq
-         Qq8dhtvk/Bq0ZDjxYnMuNvNtRJNAk991JPclcrxhByEWiHH/7yIVyRIQ46/xomFQ/Kws
-         eZc5hkkV6xZSpbwSZz+AAe0gV+4MQy44Y/aEGFmrUmvZ5Sy8JUE14m2EjDwFFnOfSMZv
-         mDiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVVhzY/0H/rHgCP28m7tXhdxzx09EIz5XSKBrQBrB2n7hdID35qMLGmMkIlWcIyIYVuYktxCWsJT76E6XgVPdTF@lists.infradead.org, AJvYcCWzXvVNLdAK9cYemcn8vx/Y9zOktk0+wJAJs0lnig957qtPSnT7+hHKqLI+e6MXxqv7lZTsJz2EP7D1uGzn++Y=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZSGGTBuoUcblae2hWJZntIuY8dlIc+cj1XXYdQmgaMuLmHi59
-	4y1s4O62LkQcHylDWmySUalgPK8YFxCsApCfa+9cGwctga4+DZXriEx+j9cajE4LCJt2l+WLI27
-	M+Cu2iAxM8WYMIF38t+jRbAj4NPZSlS9Kpw0=
-X-Gm-Gg: ASbGncu1wWyMRIcgdiEb8nuHl9l9F2jILNc4H1afc1pzreN/OVFlSxj3z8fTo9uzQcC
-	AufB7ET2i59MFbZq6P8318mEaZy8lgXKGz258/bI=
-X-Google-Smtp-Source: AGHT+IE+nbx6AlzWrejQjGji+VB54fgrOIOIydNSnwo6l8H/PczwvJZYdI9qfx3ZuLqSObfZhkV7LJ2bPXcsbulebYg=
-X-Received: by 2002:a05:6871:a403:b0:29e:6ae2:442 with SMTP id
- 586e51a60fabf-2aa068d6800mr9772628fac.32.1736701361506; Sun, 12 Jan 2025
- 09:02:41 -0800 (PST)
+	id 1tX2m9-00000003GCh-2cCc;
+	Sun, 12 Jan 2025 18:33:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 73EDAA40708;
+	Sun, 12 Jan 2025 18:31:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEA33C4CEDF;
+	Sun, 12 Jan 2025 18:33:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736706807;
+	bh=4WQQaCak4TJuaVWaDAMb3yACSDF7AlTUwq82HMM4tQo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=vDAXRM3US9kpZLqIDfuJztnFopiRf/XL2Z4SjUeicqPbmPgFeZXBiEFWAmR+1dqgz
+	 ol7fQN0lR0fA1RIByTY04bp+PH1doZpW/Sh5xeURJco7kvHWizz7dmdkbDMiKEFcqG
+	 pwuDNoLMFMTbGJDNThywbLMPW3NLy0Fy0emoLF5LQZv5YeiLBejN4YSRuLBxoy0EbN
+	 UeEgJkebg1bWdFTc+pkLhoe489MFibL2m7f3g4g8rfQ0bgcoP92X9C4idZIGI8l0wk
+	 T5PxrL3TGDn8YFwUOjf7vAHro5PaKb/eaN9K4tY+qnHyL8zxfGHg5O4bWQY9FuyB3n
+	 DBCngiY45Iv3A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 12 Jan 2025 19:32:45 +0100
+Subject: [PATCH net-next] net: airoha: Enforce ETS Qdisc priomap
 MIME-Version: 1.0
-References: <20241230034446.1195728-1-karl.li@mediatek.com>
- <20241230034446.1195728-4-karl.li@mediatek.com> <CABb+yY2G1C7rvsha9qm7mRSk1e_xBahshzHCs39=DzTCUGrsuQ@mail.gmail.com>
- <CAGXv+5E98VZnf_PL2kEF=VxytNVyCEV4iY=aEnEoZz0Z7AJiTg@mail.gmail.com>
-In-Reply-To: <CAGXv+5E98VZnf_PL2kEF=VxytNVyCEV4iY=aEnEoZz0Z7AJiTg@mail.gmail.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 12 Jan 2025 11:02:30 -0600
-X-Gm-Features: AbW1kvawhR9q_j_zMWhY9OH_vnifw3V8ugjcAxvz2Ds9ffqbhNNV3c1iJIS2tYA
-Message-ID: <CABb+yY0FHBxvc2Lwg9O1G9O+rxoXk-tS1QFwi63=_zsV0SyYuw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: "Karl.Li" <karl.li@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Chungying Lu <chungying.lu@mediatek.com>, 
-	Chien-Chih Tseng <Chien-Chih.Tseng@mediatek.com>, Andy Teng <Andy.Teng@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250112-airoha_ets_priomap-v1-1-fb616de159ba@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAMwKhGcC/x3MMQqAMAxA0atIZgs2WBGvIiJBU82gLamIULy7x
+ fEN/2dIrMIJhiqD8i1Jwllg6wqWnc6NjazFgA26xlo0JBp2mvlKc1QJB0WDzmHXUtuT91DCqOz
+ l+afj9L4fh7NURWQAAAA=
+X-Change-ID: 20250112-airoha_ets_priomap-255264a48aff
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Davide Caratti <dcaratti@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250112_090242_571254_E7367F95 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20250112_103329_735328_BCF58B2B 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,49 +79,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 2, 2025 at 10:56=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> On Fri, Jan 3, 2025 at 12:30=E2=80=AFPM Jassi Brar <jassisinghbrar@gmail.=
-com> wrote:
-> >
-> > On Sun, Dec 29, 2024 at 9:46=E2=80=AFPM Karl.Li <karl.li@mediatek.com> =
-wrote:
-> > ....
-> > > +
-> > > +static irqreturn_t mtk_apu_mailbox_irq(int irq, void *data)
-> > > +{
-> > > +       struct mbox_chan *chan =3D data;
-> > > +       struct mtk_apu_mailbox *apu_mbox =3D get_mtk_apu_mailbox(chan=
-->mbox);
-> > > +       struct mbox_chan *link =3D &apu_mbox->mbox.chans[0];
-> > > +       u8 data_cnt =3D fls(readl(apu_mbox->regs + MTK_APU_MBOX_OUTBO=
-X_IRQ));
-> > > +
-> > > +       memcpy_fromio(apu_mbox->msgs.data, apu_mbox->regs + MTK_APU_M=
-BOX_OUTBOX,
-> > > +                     sizeof(*apu_mbox->msgs.data) * data_cnt);
-> > > +
-> > > +       mbox_chan_received_data(link, apu_mbox->msgs.data);
-> > > +
-> > > +       return IRQ_WAKE_THREAD;
-> > > +}
-> > > +
-> > You don't seem to do anything that 'ack' the irq line. So if you merge
-> > this into mtk_apu_mailbox_irq_thread() and do
-> >  devm_request_threaded_irq(dev, irq,   NULL,
-> > mtk_apu_mailbox_irq_thread,  IRQF_ONESHOT,  ...);
-> > you can avoid adding a new api and keep your client code simple.
-> > mbox_chan_received_data() is strictly between the client and
-> > controller driver. If it is not called from an atomic context, feel
-> > free to do memcpy() from it.
->
-> That sounds great. Could we perhaps update the API documentation and
-> drop the "atomic" requirement, or update it to something you describe
-> here as "between the client and controller driver".
->
-Not drop, but simply add a line that the client needs to respect the
-context in which the controller does the callback.
+EN7581 SoC supports fixed QoS band priority where WRR queues have lowest
+priorities with respect to SP ones.
+E.g: WRR0, WRR1, .., WRRm, SP0, SP1, .., SPn
 
-thanks
+Enforce ETS Qdisc priomap according to the hw capabilities.
+
+Suggested-by: Davide Caratti <dcaratti@redhat.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/mediatek/airoha_eth.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
+index a30c417d66f2f9b0958fe1dd3829fb9ac530a34c..415d784de741c991fa521243783860dee1ed0bfa 100644
+--- a/drivers/net/ethernet/mediatek/airoha_eth.c
++++ b/drivers/net/ethernet/mediatek/airoha_eth.c
+@@ -2793,7 +2793,7 @@ static int airoha_qdma_set_tx_ets_sched(struct airoha_gdm_port *port,
+ 	struct tc_ets_qopt_offload_replace_params *p = &opt->replace_params;
+ 	enum tx_sched_mode mode = TC_SCH_SP;
+ 	u16 w[AIROHA_NUM_QOS_QUEUES] = {};
+-	int i, nstrict = 0;
++	int i, nstrict = 0, nwrr, qidx;
+ 
+ 	if (p->bands > AIROHA_NUM_QOS_QUEUES)
+ 		return -EINVAL;
+@@ -2807,7 +2807,20 @@ static int airoha_qdma_set_tx_ets_sched(struct airoha_gdm_port *port,
+ 	if (nstrict == AIROHA_NUM_QOS_QUEUES - 1)
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < p->bands - nstrict; i++)
++	/* EN7581 SoC supports fixed QoS band priority where WRR queues have
++	 * lowest priorities with respect to SP ones.
++	 * e.g: WRR0, WRR1, .., WRRm, SP0, SP1, .., SPn
++	 */
++	nwrr = p->bands - nstrict;
++	qidx = nstrict && nwrr ? nstrict : 0;
++	for (i = 1; i <= p->bands; i++) {
++		if (p->priomap[i % AIROHA_NUM_QOS_QUEUES] != qidx)
++			return -EINVAL;
++
++		qidx = i == nwrr ? 0 : qidx + 1;
++	}
++
++	for (i = 0; i < nwrr; i++)
+ 		w[i] = p->weights[nstrict + i];
+ 
+ 	if (!nstrict)
+
+---
+base-commit: 7d0da8f862340c5f42f0062b8560b8d0971a6ac4
+change-id: 20250112-airoha_ets_priomap-255264a48aff
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
