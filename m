@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 962EEE7719C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jan 2025 13:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9405AE77188
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jan 2025 13:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RBnsV3mFkJmXnRbQqOXQC7xiyTGmF2RqY1RW5wKJo0U=; b=ctROWj8XUVlW8tLwZbrLMiugeq
-	U+Cawn6vf2udJGyAyzMGO7/FEBZNLIEAvG8Cvnza7ej4qnUNuaKyuVJu1xvTXCF5ArX0u1Kss+PRx
-	z8AcsLw5yd/ZHfim896dTMMCvojt5mlqvHRFL3mwgOBbmo7ic+fZmLjbJJKT3kXocDQZVezXNj3Wg
-	H3ctr3cpSsx/yJNwX3r76zUKbbm0wVsiKEargLHW9BTlzmmj5bGlVEkVhvVdmUbf5xlLm4bm0+25Q
-	Q0Im74rm8ThAn4RoiXSOltZ3S7H+FcM9/fyJ8Y3h8xNDyBO0F5rolNE3MuXEh13OjIcZZUQyRhLrl
-	6x8TkCBQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0DoP8JyX0Rn+t869X/69C5AdIYY282FJMkh2+vYUqvg=; b=C3EbJ6Rd3BWL0pFB7dU4ULzFN/
+	3KoAPd+f2KksIr5WvkCud1djhitd6dQ3aqAExw1CELqAVnZsqYqJ/QOq78cnZpPBtGoxLJkbmSFcn
+	mONXCCsUXGqU29Yg67KgTVdc00WLjO7jDmcvbAWgnoe7lOSlG2WAymRTDuLsasPFAFSWSkwboOCZY
+	a0mFMTpfN9r4wto63p0IqnXA8t+HXp835C2LDc23l6ec+HfNhxNrORkxzpWxPzqYKjq0zJpTc1ctp
+	kMNayjxTiR2j2jvhMGtaKqOkmENLsUq44a88wX7dhDQjISeQaDAw0Aug3eBZoxCaBTpodPgdn3DxO
+	P737U17w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWyJA-00000002o84-38Se;
-	Sun, 12 Jan 2025 13:47:16 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1tWyKO-00000002oLM-3D5p;
+	Sun, 12 Jan 2025 13:48:32 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWyJ7-00000002o5O-2phY
+	id 1tWyJ8-00000002o5f-3w2i
 	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Jan 2025 13:47:14 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5d0bf4ec53fso633547a12.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Jan 2025 05:47:13 -0800 (PST)
+	Sun, 12 Jan 2025 13:47:16 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-5d8753e9e1fso632797a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Jan 2025 05:47:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736689632; x=1737294432; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=RBnsV3mFkJmXnRbQqOXQC7xiyTGmF2RqY1RW5wKJo0U=;
-        b=qhK0/tIJ8b+zFtWV2hW1C0URglvlLhLH7t5WQ9xJipRqKfg12dF7rO7txvwLAnm3/I
-         AqlVEpySnk1iBGkbMowKYSrPOQAU8yR6iJ9BOrnbyD5TibOEA9KNU4v1YSpVHTllSWoa
-         PttaPuJkREVOH5gW7FHadKmXh25tYmcfaHb5Nd8GxZF6Z7A0/K7LM6G349GUSiVmB8v+
-         pODSUqvqxK4QnBKjyIunHsY8b0pL3y8v5ytojoy21ODiRH2jmNyJnsFRNgZ9y6HJPP0q
-         SRSCiJ6Ix+xeLxoBXd/dZfuxhgC2VAQwxMXRcNWHH6JpClKidcsUqMuLlqsj+j6ALpUZ
-         dS0w==
+        d=linaro.org; s=google; t=1736689633; x=1737294433; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0DoP8JyX0Rn+t869X/69C5AdIYY282FJMkh2+vYUqvg=;
+        b=HDCABn4muM7+ljhDkdj82gjdePV2ZLfxnUoLaBqMRZmMTv9cGY0u/ZScd61qTTgVZ4
+         GSrro7H+l+QKyQrCAhLZAeXrUf2GawUNuGFm7zn5PGoigoxbLzJd/zZ9inwGy2uTmD9e
+         VGWpHm5/GHLFBEHdpGuSlRI0bE73hX2YD6l9SaaUaKYJ901hbEFoDj+OkhmS0m5pctVz
+         Glm2gbpY0qBUZzL7IzC3vqcRKIcYPU7JwlZIFn/vme/wsZsAwTq3IAJOvMLgEP7FMgE4
+         iWpMeLkIGGYHK5jA0G80h8IZvkZtKogUGbs6Ol3PxXRP8sdFl0OoNjShj94cZJJs5o2k
+         jbTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736689632; x=1737294432;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RBnsV3mFkJmXnRbQqOXQC7xiyTGmF2RqY1RW5wKJo0U=;
-        b=eA2dtBsMAAoxGVAVb1RgHzlnosPNGV+fCvWYnpYGyhkjXowSTLl2Hz2HH3DHQBgJmv
-         C7z1JouQYL9/zQ1jtp9ulPUvP4oSl6cGX40YpZS4RlQGfm5aKfqkfGhELY5o/j+2Bw4t
-         eDkVqiTeUAdtV55X0d51mkzXMaw7b8BjFw8WHd/7GJMtmlhDgGUiex5PSisLl3Jq1ynk
-         dKqa6hKHjs1eTMXQ4gFoqmlwSeMJcsK6CSv5/WFU8Bw5nWVyvNY05tCq9yrK4RlFIhzn
-         zWaGku5jjIhSvgSkPjCkMuu1pcxkwQur+VHjZ+E5fOV7fMC+ZjWxDyO+YYshIb+w+WNt
-         KBUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXul/w63qmOIwfSizORZrUSU2zkG+ZMBokYAHEZ0rCdQpDsB8bpxDP++tfB4Tyxug9n8ngrsetS4dik6++rfg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw50y0kDeCyo1GYPu2TWVB9K2MA/qzmjL05zUJ0on8Ize/GxSVi
-	LRcUxtlyiGb0Z9UgKkX4mt6fgRlk+DV4UNRkcGoPlRpUsJtHNH5ShsKikJtvg88=
-X-Gm-Gg: ASbGncul1tG8s1fgBsNlhJQDidDYI1do5Umy60gBOAMe+PBp2kab6d0aJJ20U1viHFX
-	5pNAShseFtrXmaAi5w7gh6NH1GD6DefWK4YYTeU+na2vmNczyR8C6ZTqP+zRt+AV36wlIZfOMdu
-	6FlcCaMiGDA8nVVu0/7O2na2Go85lMW+SgM3YfuiIDom42p1hUmyoHH+q5bQBKJpOsD6igsTQTZ
-	yjGuLxO254XKk4PV8sjAD9DqcfgP9ts1QRNtLgdKXfRWihYzuNS/5bqy7f+XWV+cy3EFbY=
-X-Google-Smtp-Source: AGHT+IE5jjxbpuHLDjgHBaaKsQqbYx5oIutu5BOQFvdU7mITc2KX+nB9WMaHa1nRj5jMwrSpxOe8VQ==
-X-Received: by 2002:a17:906:c10f:b0:aa6:9631:9237 with SMTP id a640c23a62f3a-ab2ab6cd374mr674812366b.10.1736689631988;
-        Sun, 12 Jan 2025 05:47:11 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736689633; x=1737294433;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0DoP8JyX0Rn+t869X/69C5AdIYY282FJMkh2+vYUqvg=;
+        b=ESRqMIwvy2hE/EDk/wvkMzrkIjKjFUfar5W2aY+MneNZQV+Qfs9cQMXT8L49DXXsZX
+         fjPFjastkCenOYUT0XyX98fhZv9bWxn3rDLVTpEcu3BaH3QxQdPS/pdw+NQggoZOhU3j
+         NrERKmR5KhgyTHCivJv4/EZb2YXGQ0BUsWxTgac+ZosD7S/Q/lsZMI32M1RK0/hI3fTd
+         Eo/xhzGzXK/ZrXbXy0YPsxSXByVSUBcQngcxd54luGYV1LK2Ce799XOh1cvz4EOf6wLj
+         DCtBOgla05D6/LoGK25bZHH7vcB4uR7ewJgPOesC7GvOgcM3v5p8WCRKHIXFhnkgCbJj
+         i73g==
+X-Forwarded-Encrypted: i=1; AJvYcCUXeLrgM5PkcRxhcyMEM7UdHeUxIqLRz3EiE72XxUByfNu9kBrazQ3fsMbzf297NUFB0F2mqxw/lpAnZW/61A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9KRYvRa4AGyIBibfd/vMc8aSRzUss52zQoQ92HAW4qNXMnGE2
+	ep/xAHNB3cslKmqcvCNa04nzoxfsSP9uRiVP2kV0sGf8/fRlK3xi8HNHD7uEjAQ=
+X-Gm-Gg: ASbGncv2RCJ6Z5YnHS+xks1UpBy7ZbRa6Ccb/Nn1CwGJRH7WuEH7U51GRAYSDgJECLO
+	GVx8cOcHlqa9BKJrIc4hO2TwHeRgKZYiUcOj9nmPjus9jCn6mMpj490UTHlp2Hu6uRaPG8+NOvS
+	y8JIc4TZqY7wU1RyymJsR4ZH5XFKRDx2QlAtoCR4bjxbPLvU4YGxJQHJLmwdngGRyoGLeuqLFvu
+	tWJ8g+Ddyr4JMXNropB9gPKoRN8Govj7VJYvyi44ojqj+jmdFnXWwaT9ZFbL+SP09zsOO4=
+X-Google-Smtp-Source: AGHT+IEHAXrRzzhrt3gFm4JeAOOOtrjD1qbFZyqfcMZ+AbnWgJcTH3bD4AwNeCzDVpq7CMRHO0fkfA==
+X-Received: by 2002:a17:907:8689:b0:a9a:2afc:e4ef with SMTP id a640c23a62f3a-ab2ab60355cmr584894566b.7.1736689633230;
+        Sun, 12 Jan 2025 05:47:13 -0800 (PST)
 Received: from krzk-bin.. ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9060c00sm374899866b.41.2025.01.12.05.47.10
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9060c00sm374899866b.41.2025.01.12.05.47.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Jan 2025 05:47:11 -0800 (PST)
+        Sun, 12 Jan 2025 05:47:12 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
@@ -78,16 +79,17 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/2] drm/mediatek/hdmi: Use syscon_regmap_lookup_by_phandle_args
-Date: Sun, 12 Jan 2025 14:47:07 +0100
-Message-ID: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 2/2] drm/mediatek/hdmi: Simplify with dev_err_probe
+Date: Sun, 12 Jan 2025 14:47:08 +0100
+Message-ID: <20250112134708.46100-2-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
+References: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250112_054713_728095_9CCDA6AF 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250112_054714_993926_9FEBB1C1 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +104,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
-syscon_regmap_lookup_by_phandle() combined with getting the syscon
-argument.  Except simpler code this annotates within one line that given
-phandle has arguments, so grepping for code would be easier.
-
-There is also no real benefit in printing errors on missing syscon
-argument, because this is done just too late: runtime check on
-static/build-time data.  Dtschema and Devicetree bindings offer the
-static/build-time check for this already.
+Use dev_err_probe() to make error code and deferred probe handling
+simpler.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 22 +++++++---------------
+ 1 file changed, 7 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index ca82bc829cb9..4b0eb7dc25d8 100644
+index 4b0eb7dc25d8..22935fdc5afe 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1458,15 +1458,11 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
- 	 * registers it contains.
- 	 */
--	regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
--	ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1,
--					 &hdmi->sys_offset);
--	if (IS_ERR(regmap))
--		ret = PTR_ERR(regmap);
+@@ -1429,19 +1429,13 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+ 	int ret;
+ 
+ 	ret = mtk_hdmi_get_all_clk(hdmi, np);
 -	if (ret) {
--		dev_err(dev,
--			"Failed to get system configuration registers: %d\n",
--			ret);
-+	regmap = syscon_regmap_lookup_by_phandle_args(np, "mediatek,syscon-hdmi",
-+						      1, &hdmi->sys_offset);
-+	if (IS_ERR(regmap)) {
-+		ret = dev_err_probe(dev, PTR_ERR(regmap),
-+				    "Failed to get system configuration registers\n");
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(dev, "Failed to get clocks: %d\n", ret);
+-
+-		return ret;
+-	}
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to get clocks\n");
+ 
+ 	/* The CEC module handles HDMI hotplug detection */
+ 	cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
+-	if (!cec_np) {
+-		dev_err(dev, "Failed to find CEC node\n");
+-		return -EINVAL;
+-	}
++	if (!cec_np)
++		return dev_err_probe(dev, -EINVAL, "Failed to find CEC node\n");
+ 
+ 	cec_pdev = of_find_device_by_node(cec_np);
+ 	if (!cec_pdev) {
+@@ -1492,10 +1486,9 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+ 
+ 	i2c_np = of_parse_phandle(remote, "ddc-i2c-bus", 0);
+ 	if (!i2c_np) {
+-		dev_err(dev, "Failed to find ddc-i2c-bus node in %pOF\n",
+-			remote);
++		ret = dev_err_probe(dev, -EINVAL, "Failed to find ddc-i2c-bus node in %pOF\n",
++				    remote);
+ 		of_node_put(remote);
+-		ret = -EINVAL;
  		goto put_device;
  	}
- 	hdmi->sys_regmap = regmap;
+ 	of_node_put(remote);
+@@ -1503,8 +1496,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+ 	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
+ 	of_node_put(i2c_np);
+ 	if (!hdmi->ddc_adpt) {
+-		dev_err(dev, "Failed to get ddc i2c adapter by node\n");
+-		ret = -EINVAL;
++		ret = dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
+ 		goto put_device;
+ 	}
+ 
 -- 
 2.43.0
 
