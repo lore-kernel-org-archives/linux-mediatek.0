@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D44C02180
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 16:32:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5444C02180
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 17:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rUDw3kvKolhpUjOdJ7XwzQnmZAdNK5carUKXfz4URKw=; b=X3cySG2s9d3nkqnQtvYIb8O5M5
-	ADSM17569tMAO0nL+GI8dxfkfh0dQCgW+4Jefy2Y2cah1mAk2JQK6ZGClBxfSRHjXYNpBM3fGez2F
-	QhHjFeA0h87mgsjYcej2T98EszJ2nXhysaJnlSbB1q18zjGw9oCxobdRLb+L1sRmpgFiOtbZwMJzj
-	XL22G57+crGFIgbSQ2npLN9TmfaM2hHRztgXu0EvggQuz59pQfTozZQ+16dAti8z4pSF147cAZv48
-	V1UhIK6AopSy/iRsRlTvV+xDRCnhJhxRJFVDlPWOSpGyQmAUR06gtcnMEmfUHseh2L1lndjDcvlCl
-	3/YjgnmQ==;
+	bh=H4muWke9H2WAVf+L762qmgkGuimUiHnSY2t6rCZkL3M=; b=m2jQON6+TWHlplF8FMSrI6QnXP
+	H9Bqt+SkHOt3c+XSql3nErFCI8XIzgrsNExAO5BKwIhx5EuiJbJGcf/siFbv9ALgnTkludz4D7E2k
+	SHE209wMPTNx1fGWVo9/SzHdQvCpNbNN/LHWE3hPWfOVVFQTNdvaKrQSuRdxqxxhciH8KrJU+3onh
+	mBv7VdH/C9+iAf1kJoN0lVbQCcHDd62mPTxzS2NYcRS+pFdBRo+CPdB7YygjMYceYX1gn6xlOCYWj
+	t3EoVoBTaY7exkz4BYsuDDUH2KZeNhPTNexEbZZF99Fwrqm9XVbr9KizjoI0j2Z5eVYGhNp00lppy
+	HB/NEOFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXNMu-00000005sBe-49wf;
-	Mon, 13 Jan 2025 16:32:48 +0000
-Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
+	id 1tXOIU-000000063A8-1cP2;
+	Mon, 13 Jan 2025 17:32:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXNDW-00000005pZt-1wOu;
-	Mon, 13 Jan 2025 16:23:08 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id BEFF41C0008;
-	Mon, 13 Jan 2025 16:22:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1736785382;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rUDw3kvKolhpUjOdJ7XwzQnmZAdNK5carUKXfz4URKw=;
-	b=U6sya9U8Jron8CxjyT1kKNFV7NYolRM3yYla103nP9LRuqaLt/3HGsXiNATsmbsCfw8IAE
-	0qS4C224oZwjsCidXCYCGZ41qIuW6RKg/LopwQuKINAhjes+h6T5l0XgwQmzDGzWiQikDQ
-	nI5u7+E6VinhnKUhj14BSgOp/QS7Sm+4V960HB4VBGL94ASbS6LQuhZJGrlvLrsd8pVr60
-	5iTs5Hfi+88+Z4ARtyMs1mdltQ4YgoKtaYye2xuTjmC8sVqkRqGiKcKRTBLp7dSWp8p4Cj
-	y5CiEwY3gbG81sI8SHyFQ54JTFyGwBoqvvqzZ4hw377JxlGZvcTTaJnShfm99Q==
-Date: Mon, 13 Jan 2025 17:22:55 +0100
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Alexander Couzens <lynxis@fe80.eu>, Alexander Duyck
- <alexanderduyck@fb.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Claudiu Beznea
- <claudiu.beznea@tuxon.dev>, Daniel Golle <daniel@makrotopia.org>, Daniel
- Machon <daniel.machon@microchip.com>, "David S. Miller"
- <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet
- <edumazet@google.com>, Eric Woudstra <ericwouds@gmail.com>, Florian
- Fainelli <florian.fainelli@broadcom.com>, Horatiu Vultur
- <horatiu.vultur@microchip.com>, Ioana Ciornei <ioana.ciornei@nxp.com>,
- Jakub Kicinski <kuba@kernel.org>, Jose Abreu <Jose.Abreu@synopsys.com>,
- kernel-team@meta.com, Lars Povlsen <lars.povlsen@microchip.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Madalin Bucur <madalin.bucur@nxp.com>, Marcin Wojtas
- <marcin.s.wojtas@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michal Simek <michal.simek@amd.com>, netdev@vger.kernel.org, Nicolas Ferre
- <nicolas.ferre@microchip.com>, Paolo Abeni <pabeni@redhat.com>, Radhey
- Shyam Pandey <radhey.shyam.pandey@amd.com>, Sean Anderson
- <sean.anderson@seco.com>, Sean Wang <sean.wang@mediatek.com>, Steen
- Hegelund <Steen.Hegelund@microchip.com>, Taras Chornyi
- <taras.chornyi@plvision.eu>, UNGLinuxDriver@microchip.com, Vladimir Oltean
- <olteanv@gmail.com>
-Subject: Re: [PATCH net-next v2 0/5] net: phylink: fix PCS without autoneg
-Message-ID: <20250113172255.3772dd6a@fedora.home>
-In-Reply-To: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
-References: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1tXN4X-00000005nvX-3KkC;
+	Mon, 13 Jan 2025 16:13:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1736784827;
+	bh=I/Eu5PyVUWwxt7+WHjFCNjClAcEG0i3DEgLcWXIsrzY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=avKf0pAos+HeOh/45PO/SzNWC8xsmwMdxoy8vvEdkWVQlNT2r8QamalkoD8YSESp3
+	 FZKwfgzWNPDwgW6tSAmFhzdL/PQFWbqGiylGpbg5366YDE8+K2wvddMrLm1y25nxYH
+	 NNuBdNZYy/ID9cwMThj/uki3iuFDn5+eMK78MVb4pf8t9tqcbI4K5drLfBlupLKzWQ
+	 qinRTxkQVCDi3kY0T39zwnyCDSvJWXzRs0WPf4FKanCQ/wzqhyvcHUZ+MQcqaRvMao
+	 U/iPkfT52GmvOnktmH5Bmrcg7FscGbe6soM++XoFDWFEgpOKcYi7oj8YMWDxGJnWD3
+	 SGS7tDVbYohDg==
+Received: from device-327.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D560417E0CF4;
+	Mon, 13 Jan 2025 17:13:46 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Mon, 13 Jan 2025 17:13:23 +0100
+Subject: [PATCH 1/2] soc: mediatek: mtk-socinfo: Add entry for MT8370AV/AZA
+ Genio 510
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-GND-Sasl: maxime.chevallier@bootlin.com
+Message-Id: <20250113-mtk-socinfo_genio-510-700-v1-1-cf5112b325b7@collabora.com>
+References: <20250113-mtk-socinfo_genio-510-700-v1-0-cf5112b325b7@collabora.com>
+In-Reply-To: <20250113-mtk-socinfo_genio-510-700-v1-0-cf5112b325b7@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ kernel@collabora.com
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1736784826; l=1033;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=I/Eu5PyVUWwxt7+WHjFCNjClAcEG0i3DEgLcWXIsrzY=;
+ b=UIzQcaZTEG0UuYqyH+rSRkiRKXLspiShzBwjfcnNGeAc7CspG32Gd1lpB+SzT5Z3gKjNrQVDe
+ UEIlDdulnFwCGDGWyrbt+Pqjl4GYSyd+0xWqDaGhP1kVyeDCPd8WiMh
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_082306_938231_55A901F7 
-X-CRM114-Status: GOOD (  24.43  )
+X-CRM114-CacheID: sfid-20250113_081349_998384_328134A1 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,71 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Russell,
+Add an entry for the MT8370 SoC with commercial name Genio 510.
 
-On Mon, 13 Jan 2025 09:22:15 +0000
-"Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ drivers/soc/mediatek/mtk-socinfo.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> Hi,
-> 
-> Eric Woudstra reported that a PCS attached using 2500base-X does not
-> see link when phylink is using in-band mode, but autoneg is disabled,
-> despite there being a valid 2500base-X signal being received. We have
-> these settings:
-> 
-> 	act_link_an_mode = MLO_AN_INBAND
-> 	pcs_neg_mode = PHYLINK_PCS_NEG_INBAND_DISABLED
-> 
-> Eric diagnosed it to phylink_decode_c37_word() setting state->link
-> false because the full-duplex bit isn't set in the non-existent link
-> partner advertisement word (which doesn't exist because in-band
-> autoneg is disabled!)
-> 
-> The test in phylink_mii_c22_pcs_decode_state() is supposed to catch
-> this state, but since we converted PCS to use neg_mode, testing the
-> Autoneg in the local advertisement is no longer sufficient - we need
-> to be looking at the neg_mode, which currently isn't provided.
-> 
-> We need to provide this via the .pcs_get_state() method, and this
-> will require modifying all PCS implementations to add the extra
-> argument to this method.
-> 
-> Patch 1 uses the PCS neg_mode in phylink_mac_pcs_get_state() to correct
-> the now obsolute usage of the Autoneg bit in the advertisement.
-> 
-> Patch 2 passes neg_mode into the .pcs_get_state() method, and updates
-> all users.
-> 
-> Patch 3 adds neg_mode as an argument to the various clause 22 state
-> decoder functions in phylink, modifying drivers to pass the neg_mode
-> through.
-> 
-> Patch 4 makes use of phylink_mii_c22_pcs_decode_state() rather than
-> using the Autoneg bit in the advertising field.
-> 
-> Patch 5 may be required for Eric's case - it ensures that we report
-> the correct state for interface types that we support only one set
-> of modes for when autoneg is disabled.
-> 
-> Changes in v2:
-> - Add test for NULL pcs in patch 1
-> 
-> I haven't added Eric's t-b because I used a different fix in patch 1.
+diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
+index 123b12cd25432b5db3033fddbff1dcd6f57ed8b1..060e39cc8407dc85a8cd2a6020d187acce73106d 100644
+--- a/drivers/soc/mediatek/mtk-socinfo.c
++++ b/drivers/soc/mediatek/mtk-socinfo.c
+@@ -56,6 +56,7 @@ static struct socinfo_data socinfo_data_table[] = {
+ 	MTK_SOCINFO_ENTRY("MT8195", "MT8195GV/EHZA", "Kompanio 1200", 0x81950304, CELL_NOT_USED),
+ 	MTK_SOCINFO_ENTRY("MT8195", "MT8195TV/EZA", "Kompanio 1380", 0x81950400, CELL_NOT_USED),
+ 	MTK_SOCINFO_ENTRY("MT8195", "MT8195TV/EHZA", "Kompanio 1380", 0x81950404, CELL_NOT_USED),
++	MTK_SOCINFO_ENTRY("MT8370", "MT8370AV/AZA", "Genio 510", 0x83700000, 0x00000081),
+ 	MTK_SOCINFO_ENTRY("MT8395", "MT8395AV/ZA", "Genio 1200", 0x83950100, CELL_NOT_USED),
+ };
+ 
 
-I stumbled on that issue last friday as well, with a MCBin and a
-device I'm working on, using 1000BaseX with autoneg disabled. I didn't
-get time to investigate back then, but reading this series it was
-definitely that exact problem I was facing.
+-- 
+2.47.1
 
-I missed your V1 and I just tested that V2, the problem is gone :)
-Thanks !
-
-The code LGTM to the best of my knowledge, so
-
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Tested-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-Thanks,
-
-Maxime
 
