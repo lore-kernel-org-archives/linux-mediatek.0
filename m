@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EA2C02180
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 15:36:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38650C02180
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 15:48:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UyeVVQsOevtzvCm2SPe6ZUp0Ki6PGPlG9vLf8vB39fA=; b=g0sJq/BoR+ZdRwJLsx4iuOe4Sb
-	jrAgaVHIe+pmGVnd0LtCZAnpxLH0qogQLcsrfoaGcLWz2VHuIc8gHxRW0c8w6X4wbXeMMJDxLmHi4
-	9a9O0W1wQodh6egDfyV9JcMw9TZaa4hFErm69MDNZ853Rf0n6oHKcLEDr9S7ydOJnDUTsxNmEVaT0
-	FtCm8RT1ycawCbQkkZO6BR6Ygd1zz6hdDWC6GvNl2t8YZq43cZyro52/oA7IJe9AMqQU/SLXPuZ41
-	4LfaCGT3mbn80ga/m4LKGJI0bJ6CyUSDcJcQG0oM9U0IWI8m93TM272KEzU9geyKMrkFci4RAFbyD
-	yjriiYsg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H/FpeM3ZtxgsbE4T3PAbecTA/op4UYGK9unyFHZ4wTo=; b=I7m8DsjjforzbBM50Q7ON7skpk
+	HCsccBwtIFiG4ETEu2MpKEyLWvHQoBN4AwC/1VjzbUX54x3MVZKw1pEd8alXmNLz5QjzmsIX/U6EC
+	Q2nbvEx5J2VRQurHHkey5Br6kAjyjWjT6UWwbxLbwbVg38np/d4+EPrQI7oFDxKZDMXzhKuvxE/rv
+	X4buWb2aFB1+UjVCrldi5MO+lfsqeE+3tNEXEku5w0FalfXJOv/WBFgZK2sH1LbOWNbL4QR9II8YD
+	bqsUKGeDBXezhC5fqKIf37S/ZyEgjIs5T0HYzxPDWUKdD1YjOLGnMzEOSkWSY7NcQ8ZFwZsIGPBkD
+	uKxvlWZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXMUS-00000005fX3-36cg;
-	Mon, 13 Jan 2025 15:36:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tXMg6-00000005iOX-0wZ2;
+	Mon, 13 Jan 2025 15:48:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXLon-00000005UfF-0QUy;
-	Mon, 13 Jan 2025 14:53:30 +0000
+	id 1tXLxF-00000005XAH-2Vdg;
+	Mon, 13 Jan 2025 15:02:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736780007;
-	bh=47AStvkbj+NCmZLLkXJURGi/6ahp/SyXHJbrlK4nG/0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NMyL1ZQXcausTvnCxXGdKNrSE8r4ftoPsbpOrdbzJaqD475s5YQ2shv2A8vI4lhXQ
-	 tflEo0krzrahtybNUFnmhANynWkWn76Fbkp6raB/PaRIDvRfSTdy2k3QhaeHj71enb
-	 rW9StqoiUC0ZzfZR+hrbG+ogWBPU0FQ/kCt2T47URz/O/mUwnQgCZkD+B8LPPkWV8Y
-	 Lb2g/lo5B4ZPTq0wOcWZ2c7GB+kuXHMPoDrSTWmt+bwtKcvT2xeVqpf7SUUif/gWNt
-	 iX9YeAFLvHKUQG1YfR/UvhjBlFDkmzju56HKa24VskcRc8shF2VQJap1f3PADwCFIM
-	 U42oNL/YnxCzw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1736780532;
+	bh=265nxCvfezAfbeFJCqIxtN+G127kPTOrMaQzfRcCeTw=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=fDDmtoSRqvFFanYJ+9hrkU5K8pqVSZaQY9ILmB2R/vsT7dM5wg62BnS/GX5Kb8Q6M
+	 r5/pdhN3/E9R6cLarWc9UrAnZW1PxpykoFZZXvdFZB0MOo6qEhFf8GHfB1uN8C553T
+	 ACL3doGqdTFwT44EftkKQSgTbjNTPG7Z+EP28A803YgHUSMuMV6lCy8MCq3jNmhnrF
+	 VNCqHxSqSd9qz6NxLEwzI1s1vVkn2ZUZzjLANVJ//BP3hGaDMh/xj+PLz+NEGQXsvE
+	 v1Ekfk/BFHaj+cFOK3MuHo3DXS9OM18L0/LyLKNPHKgdQYO1GTACE/23LY5X4qwuzN
+	 S8QpoJAolaLJw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8030917E0FAA;
-	Mon, 13 Jan 2025 15:53:26 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ck.hu@mediatek.com,
-	jitao.shi@mediatek.com,
-	jie.qiu@mediatek.com,
-	junzhi.zhao@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	dmitry.baryshkov@linaro.org,
-	lewis.liao@mediatek.com,
-	ives.chenjh@mediatek.com,
-	tommyyl.chen@mediatek.com,
-	jason-jh.lin@mediatek.com
-Subject: [PATCH v5 34/34] drm/mediatek: mtk_hdmi_v2: Add debugfs ops and implement ABIST
-Date: Mon, 13 Jan 2025 15:52:32 +0100
-Message-ID: <20250113145232.227674-35-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
-References: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7869917E0E64;
+	Mon, 13 Jan 2025 16:02:11 +0100 (CET)
+Message-ID: <a6d18d83-a485-4e5b-aac4-181550a4cd46@collabora.com>
+Date: Mon, 13 Jan 2025 16:02:10 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] drm/mediatek/hdmi: Use
+ syscon_regmap_lookup_by_phandle_args
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
+ <516d16e3-6fc6-49ba-a0ce-f451b65a6c1a@collabora.com>
+ <fef6b198-d916-4b71-86ed-0cbdd55cb3c4@linaro.org>
+ <fcf8ebde-46c9-406e-b4d9-933623a9786b@collabora.com>
+ <e64ab0c7-25da-449e-abd2-e4c70dee3041@linaro.org>
+ <48e4def6-3d40-4cbe-8008-a299869342b0@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <48e4def6-3d40-4cbe-8008-a299869342b0@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_065329_290529_3333E327 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20250113_070213_793361_FE1A1AC7 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,159 +83,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Implement the Automated Built-In Self-Test ABIST functionality
-provided by the HDMIv2 IP and expose it through the "hdmi_abist"
-debugfs file.
+Il 13/01/25 15:31, Krzysztof Kozlowski ha scritto:
+> On 13/01/2025 15:27, Krzysztof Kozlowski wrote:
+>> On 13/01/2025 14:58, AngeloGioacchino Del Regno wrote:
+>>> Il 13/01/25 14:05, Krzysztof Kozlowski ha scritto:
+>>>> On 13/01/2025 13:41, AngeloGioacchino Del Regno wrote:
+>>>>> Il 12/01/25 14:47, Krzysztof Kozlowski ha scritto:
+>>>>>> Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
+>>>>>> syscon_regmap_lookup_by_phandle() combined with getting the syscon
+>>>>>> argument.  Except simpler code this annotates within one line that given
+>>>>>> phandle has arguments, so grepping for code would be easier.
+>>>>>>
+>>>>>> There is also no real benefit in printing errors on missing syscon
+>>>>>> argument, because this is done just too late: runtime check on
+>>>>>> static/build-time data.  Dtschema and Devicetree bindings offer the
+>>>>>> static/build-time check for this already.
+>>>>>>
+>>>>>
+>>>>> I agree with this change but can you please rebase it over [1]?
+>>>>>
+>>>>> The same code got migrated to mtk_hdmi_common.c instead :-)
+>>>>>
+>>>>> [1]:
+>>>>> https://lore.kernel.org/r/20250108112744.64686-1-angelogioacchino.delregno@collabora.com
+>>>> My is 2-patch cleanup, your is 34 patch rework and new features with
+>>>> existing build reports, so rebase is not reasonable. It would make this
+>>>> 2-patch cleanup wait for many cycles.
+>>>>
+>>> If adding the `#include <linux/bitfield.h>` line to a file would take
+>>> *many cycles*, that'd be a bit weird, wouldn't it? :-)
+>> It's not about include, it is about rebase. If I rebase on 34-patchset,
+>> that's my dependency and this work cannot be merged before yours is.
+>>
+>> And yours already have kbuild reports, so there will be v5, maybe v6 etc.
+> 
+> 
+> Although "NO!!!! No more huge patch bombs to
+> linux-kernel@vger.kernel.org people!" was removed, but its spirit is
+> kind of still valid and requesting to rebase cleanups on top of patch
+> bombs with new features is just not reasonable.
+> 
 
-Write "1" to this file to activate ABIST, or "0" to deactivate.
+I understand Krzysztof, but since my 34-patchset should be ready and I don't
+expect to send any v6 for how it is right now, your patch would make it
+necessary to send yet another patchbomb on my side... we're kind-of in the
+same situation here, and I feel like we're making a big issue out of something
+that should not really be a problem.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 123 +++++++++++++++++++++++++
- 1 file changed, 123 insertions(+)
+I'm sorry about this situation, and I feel like this doesn't really depend
+on me, as much as it doesn't really depend on you... let's just see what CK
+thinks about this, or else, I don't know how to make this easier on all of
+us - me, you and the maintainer.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-index 5145698158f6..91729ec28b17 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-@@ -1170,6 +1170,128 @@ static int mtk_hdmi_v2_hdmi_write_infoframe(struct drm_bridge *bridge,
- 	return 0;
- }
- 
-+static int mtk_hdmi_v2_set_abist(struct mtk_hdmi *hdmi, bool enable)
-+{
-+	struct drm_display_mode *mode = &hdmi->mode;
-+	int abist_format = -EINVAL;
-+	bool interlaced;
-+
-+	if (!enable) {
-+		regmap_clear_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_ENABLE);
-+		return 0;
-+	}
-+
-+	if (!mode->hdisplay || !mode->vdisplay)
-+		return -EINVAL;
-+
-+	interlaced = mode->flags & DRM_MODE_FLAG_INTERLACE;
-+
-+	switch (mode->hdisplay) {
-+	case 720:
-+		if (mode->vdisplay == 480)
-+			abist_format = 2;
-+		else if (mode->vdisplay == 576)
-+			abist_format = 11;
-+		break;
-+	case 1280:
-+		if (mode->vdisplay == 720)
-+			abist_format = 3;
-+		break;
-+	case 1440:
-+		if (mode->vdisplay == 480)
-+			abist_format = interlaced ? 5 : 9;
-+		else if (mode->vdisplay == 576)
-+			abist_format = interlaced ? 14 : 18;
-+		break;
-+	case 1920:
-+		if (mode->vdisplay == 1080)
-+			abist_format = interlaced ? 4 : 10;
-+		break;
-+	case 3840:
-+		if (mode->vdisplay == 2160)
-+			abist_format = 25;
-+		break;
-+	case 4096:
-+		if (mode->vdisplay == 2160)
-+			abist_format = 26;
-+		break;
-+	default:
-+		break;
-+	}
-+	if (!abist_format)
-+		return -EINVAL;
-+
-+	regmap_update_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_VIDEO_FORMAT,
-+			   FIELD_PREP(HDMI_ABIST_VIDEO_FORMAT, abist_format));
-+	regmap_set_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_ENABLE);
-+	return 0;
-+}
-+
-+static int mtk_hdmi_v2_debug_abist_show(struct seq_file *m, void *arg)
-+{
-+	struct mtk_hdmi *hdmi = m->private;
-+	bool en;
-+	u32 val;
-+	int ret;
-+
-+	if (!hdmi)
-+		return -EINVAL;
-+
-+	ret = regmap_read(hdmi->regs, TOP_CFG00, &val);
-+	if (ret)
-+		return ret;
-+
-+	en = FIELD_GET(HDMI_ABIST_ENABLE, val);
-+
-+	seq_printf(m, "HDMI Automated Built-In Self Test: %s\n",
-+		   en ? "Enabled" : "Disabled");
-+
-+	return 0;
-+}
-+
-+static ssize_t mtk_hdmi_v2_debug_abist_write(struct file *file,
-+					     const char __user *ubuf,
-+					     size_t len, loff_t *offp)
-+{
-+	struct seq_file *m = file->private_data;
-+	int ret;
-+	u32 en;
-+
-+	if (!m || !m->private || *offp)
-+		return -EINVAL;
-+
-+	ret = kstrtouint_from_user(ubuf, len, 0, &en);
-+	if (ret)
-+		return ret;
-+
-+	if (en < 0 || en > 1)
-+		return -EINVAL;
-+
-+	mtk_hdmi_v2_set_abist((struct mtk_hdmi *)m->private, en);
-+	return len;
-+}
-+
-+static int mtk_hdmi_v2_debug_abist_open(struct inode *inode, struct file *file)
-+{
-+	return single_open(file, mtk_hdmi_v2_debug_abist_show, inode->i_private);
-+}
-+
-+static const struct file_operations mtk_hdmi_debug_abist_fops = {
-+	.owner = THIS_MODULE,
-+	.open = mtk_hdmi_v2_debug_abist_open,
-+	.read = seq_read,
-+	.write = mtk_hdmi_v2_debug_abist_write,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
-+static void mtk_hdmi_v2_debugfs_init(struct drm_bridge *bridge, struct dentry *root)
-+{
-+	struct mtk_hdmi *dpi = hdmi_ctx_from_bridge(bridge);
-+
-+	debugfs_create_file("hdmi_abist", 0640, root, dpi, &mtk_hdmi_debug_abist_fops);
-+}
-+
- static const struct drm_bridge_funcs mtk_v2_hdmi_bridge_funcs = {
- 	.attach = mtk_hdmi_v2_bridge_attach,
- 	.detach = mtk_hdmi_v2_bridge_detach,
-@@ -1189,6 +1311,7 @@ static const struct drm_bridge_funcs mtk_v2_hdmi_bridge_funcs = {
- 	.hdmi_tmds_char_rate_valid = mtk_hdmi_v2_hdmi_tmds_char_rate_valid,
- 	.hdmi_clear_infoframe = mtk_hdmi_v2_hdmi_clear_infoframe,
- 	.hdmi_write_infoframe = mtk_hdmi_v2_hdmi_write_infoframe,
-+	.debugfs_init = mtk_hdmi_v2_debugfs_init,
- };
- 
- /*
--- 
-2.47.0
+If it felt like me being rude in any way, that wasn't my intention, btw.
 
+I can offer to rebase this patch on my own keeping your authorship, if that
+makes things easier.
+
+Cheers,
+Angelo
 
