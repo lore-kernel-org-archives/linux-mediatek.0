@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC44FC02183
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 12:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAA1E7719F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 12:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rQCKXud3Gt7BN2yCd8mJj0aQTB06a+gtHWhuXIGA1Xw=; b=VgxxvwUo1+M1e5pEr1CTBrEoov
-	dT5+bGTjOodc0xfOITMb2hyneFVHHgMCqeEJbWA13YSLbsJww0/KFOzCgyn66PO9K83ga7AHWskTx
-	LGGAByrK16l0MF21C41T++P5BVBVYqwe2xsMBmCthOb9EBoKuAi21zbQoDK6SxlYqBOGvDmF2nMLE
-	93v9jyB4PKu6PBECne5Tvba3W2yvLBYIp3mATolgtI/iR6UwHi7ObvmHyl12YRTFwA+F2d/j2+3Sb
-	xHVVP8H4WziHjlemHzgDNIWRR85BGVd2vQAvKc5jONicdK1rFV71Nx6cFHXjiJev8qJTkBzTU4Wf/
-	8z/P4a5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oTn+fUrZWPJt3cVJB052txby8zpAUGR3MLFYQ7IK6nI=; b=iRScknH4I6bhYr
+	sem+58IPxKo7faIGuZCj9A92B4BvxqjQfDzScJ9+JYmGieTdmCAH6xVWJayr1y1g0xCdo/iQLi18J
+	E1MW4Bg/yXsL7PQoBY2rN0S7WnhnaRjYnSi9onRYCCXYS4Ud6oHEK5o/RcAajTZLobCp2ENSikxLD
+	OqPjRyNJypHb8YpM6fcJaZ2UJVg9S0uOnsIllE2/ZjeghngKjuvCBJ51521Q5QH9Raie7Fe11GpCV
+	Rml4DIEjT/BnH6dikCUrTsBZ0QxYyNVq2Q2ZE0ASn8bBybBpnj0VF8igPlxpU+qS3s1WJz5zhaj7u
+	uvktJiqiMjog+NOuzFFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXJqG-000000059CX-3QzK;
-	Mon, 13 Jan 2025 12:46:52 +0000
+	id 1tXJva-000000059v4-2Ujs;
+	Mon, 13 Jan 2025 12:52:22 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXJn6-000000058Ss-04Y8;
-	Mon, 13 Jan 2025 12:43:37 +0000
+	id 1tXJuK-000000059j6-2Vde;
+	Mon, 13 Jan 2025 12:51:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736772214;
-	bh=gF0OUfbmCD2nysegX5m1tk0t3k6MTKfXlcfY4zn1JgY=;
+	s=mail; t=1736772661;
+	bh=l5Yi6dDEY/SW8SVIP06gR3s9bTtz+F9A6zrpSwBrNTk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FT+svy572GbPZx7XZ13tDlZOr2mejjSx9PRu1QUAWfS/B4bDk4f7EROG1R0aZrOEp
-	 dFzVbTmin57tuFZbXrgBMR6rTN7kqbABwtd9ItjPoO/pJDxWlSBX0Hdd+VTjT9S/Qr
-	 hEEfsZ+nFH7mjzCSVSDfmVBUV4mw3d+fyzowy6XMGoTY8Ez4XowRU5vYIqq9xvECIE
-	 wp1kUa5Y1BHWOnzK2+ltcMSG0OhxFIzgtlmnOskWKPbSEZT10mX7APwvRosA30/qVj
-	 obro6+abbJUaqXHWLrzGE2prgTxCKIlgL6/wvOoGsJMu0fgJnoI+G/Hq+iF6+sSh0L
-	 ooXF13KyeqQQA==
+	b=Dy0k6PBF18AOmyn3UeO46HEbOcPjhLi4tKlmGaXxz3wjQ1Kn4XX8BWL4mqoAs3fU1
+	 fH6uGhumN1OnXXajFVFjoKWiA6ggJUGAX+F6rjImRWXuvLkWI5Q88E5wu3j4oq+yW5
+	 VianQ4HEe/WRpAWn9KSiLsRg6cCZJHmMHDp2OGBIM2l6F10pT2QRcUaigN4NavkfXZ
+	 5EDp6ICYiNdWnhry0i1uyM06Ls0I1EdoG+Anta98o0vLJbRG2FdKvirUvvyqAGKp36
+	 NlyyIBuc3LgY3tuujNDEp9CQNE+ME46PGQ6lMa8gFHxRa1boAtZOLPyKRZ3wl936ks
+	 aqup0t6zj6n0g==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 101F517E0DD3;
-	Mon, 13 Jan 2025 13:43:34 +0100 (CET)
-Message-ID: <19970db5-47ba-4e13-8f55-e5329775da2f@collabora.com>
-Date: Mon, 13 Jan 2025 13:43:33 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9BF9317E04AC;
+	Mon, 13 Jan 2025 13:51:00 +0100 (CET)
+Message-ID: <09c87f13-477d-4721-b27d-f2f2e48f4f71@collabora.com>
+Date: Mon, 13 Jan 2025 13:50:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH 2/2] phy: mediatek: xsphy: add support to set
- disconnect threshold
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
- <20250111141542.5007-2-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 00/12] Add Mediatek Soc DRM support for mt8196
+To: "paul-pl.chen" <paul-pl.chen@mediatek.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, chunkuang.hu@kernel.org
+References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250111141542.5007-2-chunfeng.yun@mediatek.com>
+In-Reply-To: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_044336_205392_DDCF1539 
-X-CRM114-Status: UNSURE (   4.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250113_045104_786304_6FCF6AF8 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,14 +70,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/01/25 15:15, Chunfeng Yun ha scritto:
-> Add a property to tune usb2 phy's disconnect threshold.
+Il 10/01/25 13:33, paul-pl.chen ha scritto:
+> From: "Paul-pl.Chen" <paul-pl.chen@mediatek.com>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Add support multiple mmsys instances in the one mediatek-drm instance.
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hello Paul,
+
+EXDMA, BLENDER and OUTPROC seem to have many things in common with the current
+mtk_disp_ovl.c driver.
+
+Please commonize code from mtk_disp_ovl to reuse in these three components that
+you're adding, as there is a lot of code duplication.
+
+Thanks,
+Angelo
+
+> Nancy.Lin (7):
+>    soc: mediatek: add mmsys support for MT8196
+>    soc: mediatek: mutex: add mutex support for MT8196
+>    drm/mediatek: add EXDMA support for MT8196
+>    drm/mediatek: add BLENDER support for MT8196
+>    drm/mediatek: add OUTPROC support for MT8196
+>    drm/mediatek: add ovlsys_adaptor support for MT8196
+>    drm/mediatek: Add support for multiple mmsys in the one mediatek-drm
+>      driver
+> 
+> Paul-pl.Chen (5):
+>    dt-bindings: arm: mediatek: mmsys: add compatible for MT8196
+>    dt-bindings: soc: mediatek: add mutex yaml for MT8196
+>    dt-bindings: display: mediatek: add EXDMA yaml for MT8196
+>    dt-bindings: display: mediatek: add BLENDER yaml for MT8196
+>    dt-bindings: display: mediatek: add OUTPROC yaml for MT8196
+> 
+>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |   5 +
+>   .../display/mediatek/mediatek,blender.yaml    |  50 ++
+>   .../display/mediatek/mediatek,exdma.yaml      |  77 ++
+>   .../display/mediatek/mediatek,outproc.yaml    |  57 ++
+>   .../bindings/soc/mediatek/mediatek,mutex.yaml |   2 +
+>   drivers/gpu/drm/mediatek/Makefile             |   4 +
+>   drivers/gpu/drm/mediatek/mtk_crtc.c           | 350 ++++++--
+>   drivers/gpu/drm/mediatek/mtk_crtc.h           |   6 +-
+>   drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 134 +++-
+>   drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   6 +
+>   drivers/gpu/drm/mediatek/mtk_disp_blender.c   | 352 ++++++++
+>   drivers/gpu/drm/mediatek/mtk_disp_blender.h   |  17 +
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  66 +-
+>   drivers/gpu/drm/mediatek/mtk_disp_exdma.c     | 447 +++++++++++
+>   drivers/gpu/drm/mediatek/mtk_disp_outproc.c   | 244 ++++++
+>   drivers/gpu/drm/mediatek/mtk_disp_outproc.h   |  22 +
+>   .../drm/mediatek/mtk_disp_ovlsys_adaptor.c    | 758 ++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 287 ++++++-
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  28 +-
+>   drivers/soc/mediatek/mt8196-mmsys.h           | 447 +++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.c              | 204 ++++-
+>   drivers/soc/mediatek/mtk-mmsys.h              |  18 +
+>   drivers/soc/mediatek/mtk-mutex.c              | 233 +++++-
+>   include/linux/soc/mediatek/mtk-mmsys.h        |  60 ++
+>   include/linux/soc/mediatek/mtk-mutex.h        |   2 +
+>   25 files changed, 3734 insertions(+), 142 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+>   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,exdma.yaml
+>   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_blender.c
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_blender.h
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_exdma.c
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.c
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.h
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovlsys_adaptor.c
+>   create mode 100644 drivers/soc/mediatek/mt8196-mmsys.h
+> 
+
+
 
 
