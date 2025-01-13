@@ -4,132 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3B2AC02184
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 22:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1F1C02183
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 22:17:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9qh/KNveqcXCTBcx72ejlKl8SrMCLTgKOABRLWwoibo=; b=axvV3gWAiHEaIRCV04MBPPKuhK
-	WIxrMROyP3TYkJK9ULVj8olvuUb+Z50CUHWUglG568DXIYYBa++GRq6pbDJIKLPWiVzuKNiRFYNzj
-	xVwB2eK9hNZmozr6iFMNwyFprWrgGWPocfhoI1yi7U3KCCRHsEhg1XwCGjYGy/M0QflMd+B9qivTo
-	FalF7T3OeLFALBXkmI/31dedXe0AZ3FcFnuSM4B6vBgsccYoTJLg3+FruaEncUo0nOp50tWDKXcpM
-	osp/Tk/zIDU8YrQnPm2kc1/BGV+lOkd4Hm6qoM7XYNEbhvpLb0xQVlw12OxhZ6ktBuLWNxiHNTBl1
-	6VzHrcjg==;
+	bh=HVZSC/mmQnABP8F8v2p8MGeexz13Zu5/dqIdMmUMUXQ=; b=2rIJF2UESf//lDsscEZZ2sHgDC
+	+BxHbyVNJ9jnc74HSouoJnxV6Hv1b1cRTLt4m5QDUiV3Iv4NVbvH4Vz1VO4hmzfBKZiNT95h3yJF9
+	UllaYfdbYptr0PX8UZ7BeqOnxeKsZHnUgREtGLokp8FZD+mZxVFuQaluy4y0w+kji4xMJuSEiSHIA
+	EMH/vx9TzCfMTKzun0hNHhrRm/Crv1YX+Y9AUIkA5hHJ/LVL11Jsloa6rl1SsS1FQRAofWQkOo2B3
+	cz93p8otLvIFUaYsm7oRA+IiguM+V4Wz23ifmvuh+4YcJNGfwbagZd71lFW7tzF+UdyrNp6nV49Ax
+	awQ8a34Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXSgx-00000006mbS-3rl2;
-	Mon, 13 Jan 2025 22:13:51 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1tXSkO-00000006n07-2cGy;
+	Mon, 13 Jan 2025 22:17:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXSfi-00000006mRm-1M58;
-	Mon, 13 Jan 2025 22:12:35 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-aa68b513abcso862716366b.0;
-        Mon, 13 Jan 2025 14:12:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736806352; x=1737411152; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=9qh/KNveqcXCTBcx72ejlKl8SrMCLTgKOABRLWwoibo=;
-        b=U0KVY3T0a1m8XB8mBlXvRcgmPF53usdbot3eqI9a9GwmmPycEkbVPOk+57srG721Wf
-         RX2r/PZO40sk/L0Kp4cpGpPvON3UbIO/qVi8LDHvj+HOQoqvg0Fd+gjKsHuWxKz3W2yh
-         SQBei6yLWn20/cRRwjVOZYY/80BZiTf/sF3kLlhnWm3/mpmnGDgWvhcEsfshvUCKhixh
-         LX4CPOS/ZGDsKMU5AO3+WjaF7jAzhKoCShGbuPY5485EOhe5NJdu0SKJuQrZxhZHWMzc
-         obuUfFhNlc/7fXuDWS4z74Yy1rV7WviVtOIzry6Wgiy0BdkTY3SvlsCbAh8NyPGcZdpb
-         ljow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736806352; x=1737411152;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9qh/KNveqcXCTBcx72ejlKl8SrMCLTgKOABRLWwoibo=;
-        b=Q+rVktGEicSyz020ag33ErCS1DlrxGQj/VahiUSQXFcaKEGoT/kHtApwIPcLST6BiC
-         GUKR5kPNb/OOKVES1w79U5JDYBjEm5Q4bPPYARjiaJudXujlfKpjlhIhNfaNFhthvtsM
-         fLqjBi1eSPR9DEHlkv9HgmjQM+cIJrEiFgEL8T6oXLX+TxbAjAXKzw63jRrQcNvLIVNF
-         kjRDRCCIbIS3VWJbjWm7+wUXjcko9ipsjUCqI+xabt56JQaNw3aQa5GSXZRvdVvnnnvh
-         qowfCvTJtn8wPj+BSn+MEWOLntHkZj1+ee4C/T14734NysB0oo6hKEfQ09shTDMSUYs/
-         PeIg==
-X-Forwarded-Encrypted: i=1; AJvYcCVVSHf/dEwcCQ16qEsgXo5LRUrSkuPmyuOkAmX+o4gjbUFSfdjdXnmYExogIXeLDFa2DiT5j6L03KhCTOMpXCM=@lists.infradead.org, AJvYcCWN1ckEcf7bd9O0Pme5eqQrkwGQLizK1qVo8Hw2ebtWCkReBW4yts5pdonsdsdPS0CQHCzqRcjtJJxl09yB7+7p@lists.infradead.org
-X-Gm-Message-State: AOJu0YwXyj68iBGQCyoIJoa54PbNH9FkCxq5dknxVnqDKvjK8PEzqsJH
-	ASpLZ/1kox7KgJ0M7f7218M0NcZj4/48614fHvHPWJI5rMxXIlJP
-X-Gm-Gg: ASbGncs1t2Pcx2Rh3Q8PySf9FbUE1hdV48z4hahsdXeRgATZMqyhVmqwu7Z75s2kIuj
-	Z+BAqIkbrQARrHK39BXYlyKvJciOzER2EflbpXmBYS5QDiInKRr7sg7qAf8QtI+orcXoSupRQwo
-	Kqqz8nzIuRNEtrWyAiJSZwebtjCuhnpsR9OZSEaltqABdn+/qm6Xv8Xzx7qnFZbZebivIQVYPvP
-	K3jGzbZ8JGpj3bJBLM460BQUxD1RvzDhT5iCsTrVvhkwalz6nuXD+5LkD1r1sW99HncB/U4jr+t
-	b+g2qnUx1zD02O//PN+In5N1+w==
-X-Google-Smtp-Source: AGHT+IHraRU0fZq8qzdn794Qp1Qzg4oJLAsv5qU3CaW6U+DO/jzYcbOZOZk0YmFmaDgLKgj2EPIXJw==
-X-Received: by 2002:a17:907:2da6:b0:aac:2297:377d with SMTP id a640c23a62f3a-ab2abdc09eemr2144577466b.52.1736806351505;
-        Mon, 13 Jan 2025 14:12:31 -0800 (PST)
-Received: from ?IPV6:2a00:f41:cfe:29b3:7412:fabe:3e5d:365? ([2a00:f41:cfe:29b3:7412:fabe:3e5d:365])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9649939sm545070066b.182.2025.01.13.14.12.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Jan 2025 14:12:31 -0800 (PST)
-Message-ID: <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
-Date: Mon, 13 Jan 2025 23:12:28 +0100
+	id 1tXSj5-00000006mqW-15iL;
+	Mon, 13 Jan 2025 22:16:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 498525C5754;
+	Mon, 13 Jan 2025 22:15:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25987C4CEDD;
+	Mon, 13 Jan 2025 22:15:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736806561;
+	bh=Y5S6E31vGrZp2WWQp+J7+BjHJQAeXUygSkYTQTvX4XU=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=kE0rJD9sWlhLiE0AKOajjAvKjJxRX3Gsf3vizIKpCPynwBqUdiks0Vk8Ka8rFTODf
+	 piPCBzzT61CxjMeovlpRz7RxSMgCF0Vi9A4MrwJs4Y6JDUdRDBmnCnjBW+YWYkzJGv
+	 bK91aUE0oDE9WO/HUpuN7l7IGMV+C4Cn5PIuQVa/6vfNNyaIC5tEeQ9AL8/i9N1VW2
+	 BQTVM5qT/d+Jz7E0oETwP9wptZgia5mQ9eueT6ae3E+xMm2MzyXyUM2UVcMV7jxzyk
+	 /ZoGu+hS5LuMm+jBkxkvbP0vzPpPw1esO63l5zeJxhJqUSwdASLVpR/zov3QfpQqRq
+	 1GTXWl7lQ74PA==
+From: Mark Brown <broonie@kernel.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Phong LE <ple@baylibre.com>, 
+ Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
+References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
+Subject: Re: (subset) [PATCH v10 00/10] drm: add DRM HDMI Codec framework
+Message-Id: <173680655387.149204.17517246537828613856.b4-ty@kernel.org>
+Date: Mon, 13 Jan 2025 22:15:53 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
-To: Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Marijn Suijten <marijn.suijten@somainline.org>,
- linux-kernel@vger.kernel.org,
- Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>,
- Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com>
- <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org>
-Content-Language: en-US
-From: Konrad Dybcio <konradybcio@gmail.com>
-Autocrypt: addr=konradybcio@gmail.com; keydata=
- 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
- izWDgYvmBE8=
-In-Reply-To: <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_141234_368087_0C8C4DB3 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20250113_141603_394619_7709A043 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,59 +98,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/13/25 22:52, Stephen Boyd wrote:
-> Quoting Konrad Dybcio (2025-01-13 05:02:58)
->> From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
->>
->> On some platforms, like recent Qualcomm SoCs with multi-bus SPMI
->> arbiters, controller->node must be assigned to the individual buses'
->> subnodes, as the slave devices are children of these, like so:
->>
->> arbiter@c400000
->>          spmi@c42d000
->>                  pmic@0
->>
->>          spmi@c432000
->>                  pmic@0
->>
->> The commit referenced in Fixes changed that assignment, such that
->> spmi_controller_alloc() always assumes the PMICs come directly under
->> the arbiter node (which is true when there's only a single bus per
->> controller).
->>
->> Make controller->node specifiable to both benefit from Joe's refcount
->> improvements and un-break the aforementioned platforms.
+On Tue, 24 Dec 2024 03:47:52 +0200, Dmitry Baryshkov wrote:
+> While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+> framework, I stumbled upon an issue while handling the Audio InfoFrames.
+> The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+> there was no simple way to get the drm_connector that stayed at the end
+> of the bridge chain. At the same point the drm_hdmi_connector functions
+> expected to get drm_connector instance.
 > 
-> How is it broken? I see spmi_pmic_arb_bus_init() calls
-> devm_spmi_controller_alloc() which sets the of_node to the parent device
-> and then spmi_pmic_arb_bus_init() overwrites that with
-> 'ctrl->dev.of_node = node' later on in the same function. That will
-> cause one more of_node_put() than is expected. I don't see that removed
-> in this patch though, so the leak is still there?
-> 
->>
->> Fixes: 821b07853e32 ("spmi: hisi-spmi-controller: manage the OF node reference in device initialization and cleanup")
-> 
-> I've dropped this patch from my queue. I don't know if we're really
-> doing anything better by managing the of_node lifetime in that function
-> vs. letting the callers assign the node they want and manage the
-> lifetime themselves. Maybe we don't need to do anything? Presumably the
-> parent device driver will unregister the controller anyway, so the
-> lifetime of the of_node will be ensured regardless. For subnodes like
-> qcom SPMI, the subnodes are child nodes of the parent device so they
-> won't be removed. If they are dynamic nodes, then the caller can manage
-> the lifetime.
+> [...]
 
-Stephen, the wrong node gets assigned in the qcom driver with
-multi-master controllers, resulting in probe failures.
+Applied to
 
-Since the introduction of the commit referenced in fixes,
-of_spmi_register_devices() sees the controller's subnodes
-(which describe each of the two masters) as slave devices
-- meaning no "real" devices ever get to probe
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Konrad
+Thanks!
+
+[01/10] ASoC: hdmi-codec: pass data to get_dai_id too
+        commit: a8e792d3f0bbecb87ab05e9592cadf0b178ab952
+[02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
+        commit: 5b0779ae13de345b405a67c71cbb63705cadb295
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
