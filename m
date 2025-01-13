@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD1EC02180
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 14:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B81C02184
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 14:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2PcFXhTaaFZ66CkGM3Q42t1waBxcXDp7hOTkj1v+y9w=; b=iS124eIsCPqdAAZg93vNKYEniT
-	isx4+24ETyHJFo+IVFTay5zZqjSrEVHK0it28JFrv09Y++OEZ1wUI7eMPHLXIqJIRN4qoNah2AC73
-	+8RSgPX5AJrluYSGWyyOx7CivQPxO65nPQxBdBw17AbtFRKuyFv6XL1vgiWbtMrZeBkToZaHzBDd+
-	TDd7VtJRaXzBcNpyTvH1ejJKJ2dV704O0HXog7CLZYZrmF07leYH56J5oLvJzFqP+IzzaJFK1ZuJX
-	J8CZRajhbn0GFvx/UNhdCmjHFuy/xxBq7rmm8tQDtPtMP15BVlAgoet5YT/WZMTI/qz2LTLmhtMn9
-	qRNQpKDA==;
+	bh=weZd1YPhQuUCvQ4RDNP5bOvLU3u0h0XqN020or2wmR4=; b=bD1ApknvYZzBDz3rNJtekdTCkh
+	KIyaXJJsSbhsX6OO2GDNZwf/XRLTniMd4v1Ad/i8XMCANlN1BBZ/oSOihchyKuXyBwBr6PkOUjfjq
+	XLBYzFc0IMv6Mij7fTdRUyMfaZsNV91I4iADWDwEnZHwVcPbiTNpTruMUjKtmDWL+q2KLEFquvTMI
+	Bk0qGiJYACxO78ykoqhRJ2VXhoVeG7Y9t5RmSzqpWUmFZTL2bL2ePP/9BGQ+6jG+WHeG/U0oTEJjL
+	ecFbFk0JD6qoZKaH2Rm2Uda32n/0WYZU6DGsUPCBr9Mt6t91xyGPKOQtPGohg9/zS5/DTq1LePK12
+	mTY0vn9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXLTb-00000005Prd-075R;
-	Mon, 13 Jan 2025 14:31:35 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1tXLUo-00000005QHp-0i01;
+	Mon, 13 Jan 2025 14:32:50 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXLQA-00000005PA3-1ohU
+	id 1tXLTL-00000005Pnu-394k
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Jan 2025 14:28:03 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-43620a5f81bso4439655e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2025 06:28:02 -0800 (PST)
+	Mon, 13 Jan 2025 14:31:21 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5d3cd8e59fdso687886a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2025 06:31:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736778481; x=1737383281; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1736778678; x=1737383478; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :references:to:from:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2PcFXhTaaFZ66CkGM3Q42t1waBxcXDp7hOTkj1v+y9w=;
-        b=zDXmpnYmwQ8ElEhX5a5sqt5YdA8YYdb8Tz03tb/dIRmfAtSReVllangRI8e0/NTwqi
-         NgwZDYWXFegvS9LFUsv0dmtMNiusVWZgGdGng23qgWw+IZk4LkDK0e0u7LBct9VnwOJA
-         NpIczMV0q5qm+oUQI8yRdKu3W7POP58WCx/4aHbDF79qLMg3yGeApIgslrzIBjEPTJoK
-         HsKjgbARg3r8E53qxhnkCaRP41XAYihmVqu7zOHDzzfS9dqERGSYFb1Rpiox5pnGZQ38
-         UVHEKxzgPB6BV748LyikNJmQx4tv6kNKVz+sIJQlcZ8sLc0wRVVP93t5xbCmx2JJHO/g
-         2LkA==
+        bh=weZd1YPhQuUCvQ4RDNP5bOvLU3u0h0XqN020or2wmR4=;
+        b=WbTa/dtT9AHtxKU1KQwiQGGwaBQTK6GjRCc9Z4JgYAL0SqfNnoEd3ExD4MqUIiTG60
+         YrGGG6pkGl8Xs4o6I2HKlgOCZIE8PM4vQs93KvfKngjkoC+tzFohWmRxXFsOx3IrjdYt
+         il5CkK4gj5F52eh1wzdmd3zI1SRv8mLNr7wQ6eiu8yy3KVWmBP9Q9uCfkUFHm9jUYv/U
+         Xjc4jkybf+6VxqoxN5r4MD7zQc3vqb9X4Q+0wbazFHrmw8ELdCxInXLnI1DKl7Mo8pJ3
+         1xTZcLF+EiSqvKve+JnA/yH7Vzeik8a0kj68jHzJ6KXDHtmzWq1uDF5z8L4eEDchMKua
+         N9ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736778481; x=1737383281;
+        d=1e100.net; s=20230601; t=1736778678; x=1737383478;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :references:to:from:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2PcFXhTaaFZ66CkGM3Q42t1waBxcXDp7hOTkj1v+y9w=;
-        b=FexNi2MllOHYl1+9nahyq18sTb330mpJCBw2m3nOAfNrx3c4Sb5HwQZU0uwgAtI6W2
-         1u0UVKx8gpFKcQWWUhQyvU0Nk02xIuvygioieOt/ZJZM3kj3ZlOQ1AlU8GLzSgJGPB14
-         i7LcBnm4rcbP2lgGU8XGX6PUk9NzBaTacH3rf1DHdK/Ul6xTMFcXP0m/gCyQcSEqZxzO
-         1olb0qDX7QmBWHApLhxZSGp0kTBMpcZdNpsnn+OUCcbFObxb/YQdlfYCXl9TaR/Zamie
-         issShKO1xQbSkhrdkikbUqvzc6x/jXGYgfW/7rWUuKDWUFDndFYYJhfVZlu3tmwB6EJw
-         ej+A==
-X-Forwarded-Encrypted: i=1; AJvYcCU2sGcXWj/9m1mbyPIg4w9Ofzlzi/H59GNuqOBUyYaYbfwhesLr4Vn4vxhbYoePXYFAxNqjHVBy9+ZtRpeEJQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyMP3ouglhR35HRRcDqmi3MntV6W7J4jZl0nDzFi19w+DcL46kY
-	HtLFkkWpqwDjEgbq+bQMpVnMu3dRrMhz3vwGj5MjJHQ2Sc92dChmtw6bMkzWOIo=
-X-Gm-Gg: ASbGnctcEz8ncL+OseZ8AabgLFa2RRWAbwuqN5AcxCCjpMumRIL1d8luZRAlJZRc7sk
-	V8Ci9M+Gj2q3dWErua5kanfsWb3qrkCGJDKAwg+g9JPlzKb/cWY3WT5qc0EK7Jko+TY6eIbEGc7
-	5JQ9LmqeNiOgCu8qUXGpwobS34PXYlsOqjSXV7FcQkPAcTnPNOKMRrHnJe8OVdkvNagjjxbqtTT
-	4uNmfnb9ws11cKHGnqoRFk8H5rlHCF6+FL/IKO++oxkNFgpM3aQzxppR7hvN7hINLBFhBtfwYEB
-X-Google-Smtp-Source: AGHT+IHhfnJLTe6hwtrplnlr6f4IsH8b02vKJyKSAk50FfjRZlPmVUjBMGl8439cG/f0Xixv8Y0/rw==
-X-Received: by 2002:a05:600c:3d06:b0:434:9cb7:7321 with SMTP id 5b1f17b1804b1-436e2691021mr84320245e9.1.1736778480768;
-        Mon, 13 Jan 2025 06:28:00 -0800 (PST)
+        bh=weZd1YPhQuUCvQ4RDNP5bOvLU3u0h0XqN020or2wmR4=;
+        b=hJzJsOVok+X6OOoi2OVNOUdvgqvkdSP9X8XadFgjC2ZeVZSkHzAuWgRb5Hz0TGKeT0
+         fkDpesubhOmrW7tLrIe8ZUnW/f7g0kheOHHNmKWZaCS2+cbaYUeNLvDmPN/FgY0TJLNa
+         ThqwAGaBsE7BKFgyJTbrJokKBmKT/H7aQlz6u/famrS6Mf0S8sYW6rGPsBvd5Kiu/qDk
+         w4fph6nW/XSsV/cbDqpj/QEIn/R2rdb+0iLqzDTWKWNyfNpenBfaN6yAqlzlYcIKD7I4
+         hW7IX+7r8bjoy+EMBHif/65dplF0Gee9NHpOY19PS//nc0ViE2efq2f82vncr5nwgl1S
+         ZsEA==
+X-Forwarded-Encrypted: i=1; AJvYcCXlbjfPdKMomxI0muVyRNL1VYV+MnzX2LGjUdcsTH3pGHpun2vn4jCyL/Zv09Ce+v6RbnMUbNcSeJCe39b2Gw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxrkXtkckRD3sWNF3msn3U6JGbD4zETN+IgppuY8pL0ZmWTC2rr
+	OPSSl1vJG4OZbs4g3coGxcU4jVh67skHeYkng/BDz18ZHPL5XXv25UApVVFREUA=
+X-Gm-Gg: ASbGnctMmwOr+UIQihu2rten+aXiCJWzWaEfup4qwvewQVXcQv6kOPSyLo2YvKZPvsk
+	J1gqNhow1IaGDGuYRr36QAWSSTLlW9wCrpp53476E+ud+M4XtHsbstNPzkCdeIhIs3l87zzI1Rc
+	3VM4CbqZwqXl8fAgYDxvWSCUHkfILH/KN2NoFsN94d/Fh8Qj17e9pB9HSheZVzzgotc7pGQQLnG
+	1o1vcHCzRUT8htlJ1UDSFadzKNoij8Kk2PlDnux9XLrTiM/wBXV1b9PcVbiRuc6RqBTh06smM+g
+X-Google-Smtp-Source: AGHT+IEAnOrirhqKrZI35EhezJop8U5ASFryXKh28Rcj0FE/w9WQIIxkrVg+p1gB3+++8zgOwVFz+A==
+X-Received: by 2002:a17:907:9686:b0:aa6:193c:f391 with SMTP id a640c23a62f3a-ab2ab170994mr728819566b.2.1736778677847;
+        Mon, 13 Jan 2025 06:31:17 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e2e89de4sm177638385e9.34.2025.01.13.06.27.59
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9134403sm516717666b.90.2025.01.13.06.31.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Jan 2025 06:28:00 -0800 (PST)
-Message-ID: <e64ab0c7-25da-449e-abd2-e4c70dee3041@linaro.org>
-Date: Mon, 13 Jan 2025 15:27:58 +0100
+        Mon, 13 Jan 2025 06:31:17 -0800 (PST)
+Message-ID: <48e4def6-3d40-4cbe-8008-a299869342b0@linaro.org>
+Date: Mon, 13 Jan 2025 15:31:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/2] drm/mediatek/hdmi: Use
  syscon_regmap_lookup_by_phandle_args
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
@@ -83,7 +84,7 @@ References: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
  <516d16e3-6fc6-49ba-a0ce-f451b65a6c1a@collabora.com>
  <fef6b198-d916-4b71-86ed-0cbdd55cb3c4@linaro.org>
  <fcf8ebde-46c9-406e-b4d9-933623a9786b@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <e64ab0c7-25da-449e-abd2-e4c70dee3041@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,12 +130,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <fcf8ebde-46c9-406e-b4d9-933623a9786b@collabora.com>
+In-Reply-To: <e64ab0c7-25da-449e-abd2-e4c70dee3041@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_062802_476782_C0AC9704 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20250113_063119_810400_0496DE5E 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,37 +150,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2025 14:58, AngeloGioacchino Del Regno wrote:
-> Il 13/01/25 14:05, Krzysztof Kozlowski ha scritto:
->> On 13/01/2025 13:41, AngeloGioacchino Del Regno wrote:
->>> Il 12/01/25 14:47, Krzysztof Kozlowski ha scritto:
->>>> Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
->>>> syscon_regmap_lookup_by_phandle() combined with getting the syscon
->>>> argument.  Except simpler code this annotates within one line that given
->>>> phandle has arguments, so grepping for code would be easier.
+On 13/01/2025 15:27, Krzysztof Kozlowski wrote:
+> On 13/01/2025 14:58, AngeloGioacchino Del Regno wrote:
+>> Il 13/01/25 14:05, Krzysztof Kozlowski ha scritto:
+>>> On 13/01/2025 13:41, AngeloGioacchino Del Regno wrote:
+>>>> Il 12/01/25 14:47, Krzysztof Kozlowski ha scritto:
+>>>>> Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
+>>>>> syscon_regmap_lookup_by_phandle() combined with getting the syscon
+>>>>> argument.  Except simpler code this annotates within one line that given
+>>>>> phandle has arguments, so grepping for code would be easier.
+>>>>>
+>>>>> There is also no real benefit in printing errors on missing syscon
+>>>>> argument, because this is done just too late: runtime check on
+>>>>> static/build-time data.  Dtschema and Devicetree bindings offer the
+>>>>> static/build-time check for this already.
+>>>>>
 >>>>
->>>> There is also no real benefit in printing errors on missing syscon
->>>> argument, because this is done just too late: runtime check on
->>>> static/build-time data.  Dtschema and Devicetree bindings offer the
->>>> static/build-time check for this already.
+>>>> I agree with this change but can you please rebase it over [1]?
 >>>>
+>>>> The same code got migrated to mtk_hdmi_common.c instead :-)
+>>>>
+>>>> [1]:
+>>>> https://lore.kernel.org/r/20250108112744.64686-1-angelogioacchino.delregno@collabora.com
+>>> My is 2-patch cleanup, your is 34 patch rework and new features with
+>>> existing build reports, so rebase is not reasonable. It would make this
+>>> 2-patch cleanup wait for many cycles.
 >>>
->>> I agree with this change but can you please rebase it over [1]?
->>>
->>> The same code got migrated to mtk_hdmi_common.c instead :-)
->>>
->>> [1]:
->>> https://lore.kernel.org/r/20250108112744.64686-1-angelogioacchino.delregno@collabora.com
->> My is 2-patch cleanup, your is 34 patch rework and new features with
->> existing build reports, so rebase is not reasonable. It would make this
->> 2-patch cleanup wait for many cycles.
->>
-> If adding the `#include <linux/bitfield.h>` line to a file would take
-> *many cycles*, that'd be a bit weird, wouldn't it? :-)
-It's not about include, it is about rebase. If I rebase on 34-patchset,
-that's my dependency and this work cannot be merged before yours is.
+>> If adding the `#include <linux/bitfield.h>` line to a file would take
+>> *many cycles*, that'd be a bit weird, wouldn't it? :-)
+> It's not about include, it is about rebase. If I rebase on 34-patchset,
+> that's my dependency and this work cannot be merged before yours is.
+> 
+> And yours already have kbuild reports, so there will be v5, maybe v6 etc.
 
-And yours already have kbuild reports, so there will be v5, maybe v6 etc.
+
+Although "NO!!!! No more huge patch bombs to
+linux-kernel@vger.kernel.org people!" was removed, but its spirit is
+kind of still valid and requesting to rebase cleanups on top of patch
+bombs with new features is just not reasonable.
 
 Best regards,
 Krzysztof
