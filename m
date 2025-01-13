@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E60DC02180
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 18:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBD6C02180
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 22:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5AjTyjCqCZ60FIygIkCEBpvVGwDak9bedCVsu0RjJTQ=; b=wtG+9/bL02/DMwbY1v2NF9eaLh
-	v2owLlBYuCHs4pTOH1v4u7ektS2KJoPuEa1bGNN59w4VfLWCwxwcN3X21LkJGFGPzp5F0Maj5a5HU
-	rAw4S2FEMlFqchB2OJ41eORZKGqHbnTGvrig2B5HomR3V6IsRZ/iymCa6ZpspFdCyoCL7/dtbsNrC
-	vUVHHQsqsewyBXR4Na3d4F0yzwotHLQ9K32THGaN5DlSsXOfkSj9VDzJkS0LQf2iVBszYvAH0vMpB
-	9jz8jwF5QlX9QhAL+VRFZdg/YWx/mVGfB8hFTzTygx1MWAC2A3F6/JQyzJuqBD6BZfHQMG7uO5/+A
-	tYDUQVbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KH6oO3HRjkRWsXJpPDLo/v6p0AF6PKyuV+iZaYo1IHk=; b=P7OkTkU0Yg/4J9qZTcZZXWsn0B
+	u8v2qr8Xi9qAMReTk6pCltFGgEc1tFXbtdamSDFP5DPJb2wM+KzeTIPAGzfmvO4yHuYj7P+StUJn4
+	3NUof8xA3myveQjERB/mNaS2pQ84584rCmrYYu5VROPt1Lq9mf43O90x38dAdnXE7QPNXepsG759u
+	FNh2gI5VXmykMSnzx0M6uhAIQDZtbUYsEvmFw+1OtkEU24bYm+4pvwSE67+kzpDS6HPy0lY0ITSnV
+	bCVCxf75/wtdKz+wI8OZl24r8LBJeSDBzTF/vOkKW/lxKxenXzjAObdevUqI54pAxjGVz5fFfWbPb
+	kBP4SaGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXPER-00000006DBc-2jM7;
-	Mon, 13 Jan 2025 18:32:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tXSXH-00000006lDi-2mZy;
+	Mon, 13 Jan 2025 22:03:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXPD7-00000006Cv4-3AaR;
-	Mon, 13 Jan 2025 18:30:50 +0000
+	id 1tXSMd-00000006jYh-44by;
+	Mon, 13 Jan 2025 21:52:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C425AA4101D;
-	Mon, 13 Jan 2025 18:29:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AA6EC4CED6;
-	Mon, 13 Jan 2025 18:30:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7F7B65C53B6;
+	Mon, 13 Jan 2025 21:52:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE709C4CED6;
+	Mon, 13 Jan 2025 21:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736793048;
-	bh=P6o9b9OJEbbN6mvPN7cHfla1Cu8ASLwXWJu0Q2N2xEU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rEeA/yUKsAqWherMVsQL3MgtjM9tx+cBFSLOXmyVc9crUJyTMUG9rxP0Vj6vdShWB
-	 moIFFK0hRAKiYEwRBHXj8WLwvYriZtvUG/AL98sZ42u8NGnWbO8lz9nNWZUTyGUm5h
-	 b5ouCotv5ASLnK215CQQrEMGiz+gXx7VymMZNHDcy2YHQZ7NxPEsYkqiGGiXBLLkxm
-	 a+5IOKKyx2Mf5dAGLtT1dX/5jK2AyXTZeiQcuUVk1cPw+TD3IacFa+J0oE2zlHGyWi
-	 2F2Mm2ARw0gVyBDn9w/xftidEroQ8euUzLcyBfWbYtO23e+fxQ9MJkfwQYQd4oKCr6
-	 bUr9vfV75pWhg==
-Date: Mon, 13 Jan 2025 18:30:43 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add
- property to set disconnect threshold
-Message-ID: <20250113-aerobics-tall-e570d8bbcf2c@spud>
-References: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
+	s=k20201202; t=1736805171;
+	bh=lqRXAoXBKW4gFS0Jtek0gypvT9cjk5SylvVOg20JUA4=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=iVCJ5jPoWdQ8U4RVlbfiLnCP+Kmg2OM0YPEifRYUCun7oHE5IpE6zApYDve5HBkYe
+	 CRqAene4BGmE5Mw2wi7fd59nJvan4sQ0NhNbj3+1KLFsaLHkJCsiW2A42r70ES3lNp
+	 ch3x0z7PEwKxCfk4JLY+qBdgxwkSKacBUTFD0VkxPWnADdmKIMxTXeKUTX7HiA7g3G
+	 s9hK/NzNNRYyS4gkKtpveiNl3GVklBxd3IaLN15jP2ZAOfM5CtSK4AwkNNj6XRgAm5
+	 4l66FKAqVaAYmv5ZAvpgySwy5OHXWjELUklX1YogkNhZWRdQC5sSl5gAfzkftF0Ogv
+	 a3kNXM3/OJyvQ==
+Message-ID: <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="RGQVYqBrFU+TitZQ"
-Content-Disposition: inline
-In-Reply-To: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com>
+References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com>
+Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>, linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>, Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>, Konrad Dybcio <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Mon, 13 Jan 2025 13:52:48 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_103049_856192_67552DBE 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20250113_135252_054227_86C98482 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +70,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---RGQVYqBrFU+TitZQ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Jan 11, 2025 at 10:15:41PM +0800, Chunfeng Yun wrote:
-> Add a property to tune usb2 phy's disconnect threshold.
-> And add a compatible for mt8196.
+Quoting Konrad Dybcio (2025-01-13 05:02:58)
+> From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 >=20
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> based on kernel 6.13-rc1
+> On some platforms, like recent Qualcomm SoCs with multi-bus SPMI
+> arbiters, controller->node must be assigned to the individual buses'
+> subnodes, as the slave devices are children of these, like so:
 >=20
-> this property is porting from t-phy driver, due to the u2 phy are similar.
-> ---
->  Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8 ++++++++
->  1 file changed, 8 insertions(+)
+> arbiter@c400000
+>         spmi@c42d000
+>                 pmic@0
 >=20
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/=
-Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> index a9e3139fd421..2e012d5e1da1 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> @@ -49,6 +49,7 @@ properties:
->        - enum:
->            - mediatek,mt3611-xsphy
->            - mediatek,mt3612-xsphy
-> +          - mediatek,mt8196-xsphy
->        - const: mediatek,xsphy
-> =20
->    reg:
-> @@ -129,6 +130,13 @@ patternProperties:
->          minimum: 1
->          maximum: 7
-> =20
-> +      mediatek,discth:
-> +        description:
-> +          The selection of disconnect threshold (U2 phy)
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        minimum: 1
-> +        maximum: 15
-
-What unit is this? Unitless? How are the values determined?
-
-> +
->        mediatek,efuse-intr:
->          description:
->            The selection of Internal Resistor (U2/U3 phy)
-> --=20
-> 2.46.0
+>         spmi@c432000
+>                 pmic@0
 >=20
+> The commit referenced in Fixes changed that assignment, such that
+> spmi_controller_alloc() always assumes the PMICs come directly under
+> the arbiter node (which is true when there's only a single bus per
+> controller).
+>=20
+> Make controller->node specifiable to both benefit from Joe's refcount
+> improvements and un-break the aforementioned platforms.
 
---RGQVYqBrFU+TitZQ
-Content-Type: application/pgp-signature; name="signature.asc"
+How is it broken? I see spmi_pmic_arb_bus_init() calls
+devm_spmi_controller_alloc() which sets the of_node to the parent device
+and then spmi_pmic_arb_bus_init() overwrites that with
+'ctrl->dev.of_node =3D node' later on in the same function. That will
+cause one more of_node_put() than is expected. I don't see that removed
+in this patch though, so the leak is still there?
 
------BEGIN PGP SIGNATURE-----
+>=20
+> Fixes: 821b07853e32 ("spmi: hisi-spmi-controller: manage the OF node refe=
+rence in device initialization and cleanup")
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4Vb0wAKCRB4tDGHoIJi
-0vKoAP4zLF3EUp+hEhLKk1EO3mA43mZ+y4hvXWvOmzulSeWtcAD8DUyZ7/MQOMPF
-usYBcosdsvVr84zavQbRDKFCKsLWQAY=
-=5d+a
------END PGP SIGNATURE-----
-
---RGQVYqBrFU+TitZQ--
+I've dropped this patch from my queue. I don't know if we're really
+doing anything better by managing the of_node lifetime in that function
+vs. letting the callers assign the node they want and manage the
+lifetime themselves. Maybe we don't need to do anything? Presumably the
+parent device driver will unregister the controller anyway, so the
+lifetime of the of_node will be ensured regardless. For subnodes like
+qcom SPMI, the subnodes are child nodes of the parent device so they
+won't be removed. If they are dynamic nodes, then the caller can manage
+the lifetime.
 
