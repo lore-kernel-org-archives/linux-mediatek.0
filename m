@@ -4,45 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC1BE7719E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 09:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B4EC02181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 09:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QueUkPpGIdH4dHXXuyMmUFm7m9Ovl4HSasK15DTt+X0=; b=4eCpX7knMi9jRBeyvQNRrsiYAH
-	6n8wZCDzvrKLOLNyzr5ZVq7u4EM96/bVl7bGyyJOJIpJ+Xz3Z/MjE2fuMdqBpQRy1QGpxY5iVyFju
-	MnW3QCvzTlE576iU25JYlv2pU9RRzoSf0PTdtr/Bw1Smsx5LfM+mJTDwjScJjNsK3ZOkEwFpw03/h
-	zb7RWHGi/1rEQq8hE8eGsESMJUuVrXICq/goLPixGhFM5p2danIyGiSgYdIRqZZSXoGCXQCJFsQWL
-	tRardXcygBZ+9I+9CuKlKWQmiApW+hx0GW29oTZsAFTk6KU1ck7YwW7OtlfA46g4zpW1s58MQj7Yt
-	ZCicHgfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=KEqLmbkfvgSm8K46IJ2qzQgSZZ
+	4yLTZ6QSyYV1E1ObxrStL5rUta42qob2E8p2b++yKPEMLsVbCgIy9hTezjtLPC4xZCaLtm6u9tece
+	To9KYKA4/UI7pPltunWIxoQW62dtZMkCm5wlJ4OMqEnD+2655WrpseGNB1+l6xcSzUBuExaX+4pk6
+	gp89+yQOK4tkA1eQ1zEGarcqGKxeQazTJJ/Uv31wZ3+HcT1lBDVS3N/aaitSGpOqd9MV0WH5uBc9+
+	xsZ0mNW4gGEYTtlurmReW8z8v0Dtv91P/ow5cjTvhitAuSmAkUhTAHXeF4WPhhyTuK1j5RxkXzfbt
+	fu276mbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXGeu-00000004aTx-01ws;
-	Mon, 13 Jan 2025 09:22:56 +0000
-Received: from mail.ventrixio.pl ([5.249.154.219])
+	id 1tXGhJ-00000004ay6-3u9j;
+	Mon, 13 Jan 2025 09:25:25 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXGY6-00000004Z1m-2Lg6
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Jan 2025 09:15:56 +0000
-Received: by mail.ventrixio.pl (Postfix, from userid 1002)
-	id 8F63983C81; Mon, 13 Jan 2025 10:15:49 +0100 (CET)
-Received: by mail.ventrixio.pl for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2025 09:15:20 GMT
-Message-ID: <20250113084501-0.1.53.7ar5.0.165a7fo11e@DevelopSphere.pl>
-Date: Mon, 13 Jan 2025 09:15:20 GMT
-From: "Robert Paczkowski" <robert.paczkowski@ventrixio.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Wsp=C3=B3=C5=82praca?=
-X-Mailer: mail.DevelopSphere.pl
+	id 1tXGdz-00000004aJh-3A7C;
+	Mon, 13 Jan 2025 09:22:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=fYdoFmz7gBQiSp0E0N+IE+M+N0
+	FPcncnIjDuC2EtVNdNKtyxGuoX5fZDq/bAPi7doFZlFyn9BSfhQVBAwgJn/0GfYc6vUqJIYmhZdvc
+	8OwDpi+kSkIcJJ68qnMeO34+RnIUxE3PlIpBo8p+4a1XW5daaIyXjYgBKzDFhuPsbLLAFJYTlBtb+
+	lhphYEILFzAetzKI3H1cxIOXa0Jft4he4cmWgjpaYrFuJABv4aEgmW4qjpO1eJqEI2PPAw7/33Xkf
+	WMPrY+vubq6uZo76PH9DkDYrYu8fbYMgrl+B809jKvAj7Dr3RfKcKA+RO9x7lIZV6zdxlollS4a6s
+	0K7rZRxQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:54286)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tXGdU-0006Fg-0X;
+	Mon, 13 Jan 2025 09:21:28 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tXGdK-0003wv-2z;
+	Mon, 13 Jan 2025 09:21:18 +0000
+Date: Mon, 13 Jan 2025 09:21:18 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexander Couzens <lynxis@fe80.eu>,
+	Alexander Duyck <alexanderduyck@fb.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>, kernel-team@meta.com,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Michal Simek <michal.simek@amd.com>, netdev@vger.kernel.org,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>
+Subject: [PATCH net-next v2 0/5] net: phylink: fix PCS without autoneg
+Message-ID: <Z4TbDnXtG8f3SRmC@shell.armlinux.org.uk>
+References: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_011554_741990_1648CC18 
-X-CRM114-Status: UNSURE (   0.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250113_012200_073698_CCF457FE 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,20 +107,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,=20
+Hi,
 
-Czy interesuje Pa=C5=84stwa pozyskanie nowych klient=C3=B3w?
+Eric Woudstra reported that a PCS attached using 2500base-X does not
+see link when phylink is using in-band mode, but autoneg is disabled,
+despite there being a valid 2500base-X signal being received. We have
+these settings:
 
-Zajmujemy si=C4=99 profesjonalnie wsparciem firm w tym zakresie.=20
+	act_link_an_mode = MLO_AN_INBAND
+	pcs_neg_mode = PHYLINK_PCS_NEG_INBAND_DISABLED
 
-Nasi partnerzy zyskuj=C4=85 sta=C5=82y nap=C5=82yw nowych zlece=C5=84 ora=
-z zam=C3=B3wie=C5=84, a tym samym zwi=C4=99kszaj=C4=85 swoje wyniki sprze=
-da=C5=BCy.
+Eric diagnosed it to phylink_decode_c37_word() setting state->link
+false because the full-duplex bit isn't set in the non-existent link
+partner advertisement word (which doesn't exist because in-band
+autoneg is disabled!)
 
-Czy mo=C5=BCemy przedstawi=C4=87 szczeg=C3=B3=C5=82y dotycz=C4=85ce zasad=
- i mo=C5=BCliwo=C5=9Bci wsp=C3=B3=C5=82pracy?
+The test in phylink_mii_c22_pcs_decode_state() is supposed to catch
+this state, but since we converted PCS to use neg_mode, testing the
+Autoneg in the local advertisement is no longer sufficient - we need
+to be looking at the neg_mode, which currently isn't provided.
 
+We need to provide this via the .pcs_get_state() method, and this
+will require modifying all PCS implementations to add the extra
+argument to this method.
 
-Z powa=C5=BCaniem
-Robert Paczkowski
+Patch 1 uses the PCS neg_mode in phylink_mac_pcs_get_state() to correct
+the now obsolute usage of the Autoneg bit in the advertisement.
+
+Patch 2 passes neg_mode into the .pcs_get_state() method, and updates
+all users.
+
+Patch 3 adds neg_mode as an argument to the various clause 22 state
+decoder functions in phylink, modifying drivers to pass the neg_mode
+through.
+
+Patch 4 makes use of phylink_mii_c22_pcs_decode_state() rather than
+using the Autoneg bit in the advertising field.
+
+Patch 5 may be required for Eric's case - it ensures that we report
+the correct state for interface types that we support only one set
+of modes for when autoneg is disabled.
+
+Changes in v2:
+- Add test for NULL pcs in patch 1
+
+I haven't added Eric's t-b because I used a different fix in patch 1.
+
+ drivers/net/dsa/b53/b53_serdes.c                   |  4 +-
+ drivers/net/dsa/mt7530.c                           |  2 +-
+ drivers/net/dsa/mv88e6xxx/pcs-6185.c               |  1 +
+ drivers/net/dsa/mv88e6xxx/pcs-6352.c               |  1 +
+ drivers/net/dsa/mv88e6xxx/pcs-639x.c               |  5 +-
+ drivers/net/dsa/qca/qca8k-8xxx.c                   |  2 +-
+ drivers/net/ethernet/cadence/macb_main.c           |  3 +-
+ drivers/net/ethernet/freescale/fman/fman_dtsec.c   |  4 +-
+ drivers/net/ethernet/marvell/mvneta.c              |  2 +-
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c    |  2 +
+ .../net/ethernet/marvell/prestera/prestera_main.c  |  1 +
+ drivers/net/ethernet/meta/fbnic/fbnic_phylink.c    |  2 +-
+ .../net/ethernet/microchip/lan966x/lan966x_main.h  |  2 +-
+ .../ethernet/microchip/lan966x/lan966x_phylink.c   |  3 +-
+ .../net/ethernet/microchip/lan966x/lan966x_port.c  |  4 +-
+ .../net/ethernet/microchip/sparx5/sparx5_phylink.c |  2 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c  |  3 +-
+ drivers/net/pcs/pcs-lynx.c                         |  4 +-
+ drivers/net/pcs/pcs-mtk-lynxi.c                    |  4 +-
+ drivers/net/pcs/pcs-xpcs.c                         |  7 +--
+ drivers/net/phy/phylink.c                          | 60 ++++++++++++++++------
+ include/linux/phylink.h                            | 11 ++--
+ 22 files changed, 87 insertions(+), 42 deletions(-)
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
