@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B4EC02181
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 09:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AA88C02181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2025 09:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=KEqLmbkfvgSm8K46IJ2qzQgSZZ
-	4yLTZ6QSyYV1E1ObxrStL5rUta42qob2E8p2b++yKPEMLsVbCgIy9hTezjtLPC4xZCaLtm6u9tece
-	To9KYKA4/UI7pPltunWIxoQW62dtZMkCm5wlJ4OMqEnD+2655WrpseGNB1+l6xcSzUBuExaX+4pk6
-	gp89+yQOK4tkA1eQ1zEGarcqGKxeQazTJJ/Uv31wZ3+HcT1lBDVS3N/aaitSGpOqd9MV0WH5uBc9+
-	xsZ0mNW4gGEYTtlurmReW8z8v0Dtv91P/ow5cjTvhitAuSmAkUhTAHXeF4WPhhyTuK1j5RxkXzfbt
-	fu276mbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=H21L0U6gkQeufrscDIJ005Ijby
+	xG8KZJ5u+EGowsnvB90ktaTuSxHXuGmx540Y4SuwzGbnLNmoOJ8qJxKTESzAXGpXVy75+X367B4di
+	k/I89Di6k82S91XN0byCPdvi7a3dG0dwujdogbM2BZ0HOJffYfyblVtW8duc6O+wuvOyiZE5nIfdn
+	F+VOoTR2duxfEO9dp19ElZfVS5HXRlaPMgsMJJFUku01/z3ovfBkfAoiMTdt9olVhXnkugP40iPpu
+	9mh79lljDhT1ANXT5Rnt5e8QKLVti6CAcNWJpCU0vBwbzceXejiW1DLZWS/zXJTuAnFaKTA+H8Y9x
+	jNvY8Dtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXGhJ-00000004ay6-3u9j;
-	Mon, 13 Jan 2025 09:25:25 +0000
+	id 1tXGji-00000004bRu-0XIu;
+	Mon, 13 Jan 2025 09:27:54 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXGdz-00000004aJh-3A7C;
-	Mon, 13 Jan 2025 09:22:01 +0000
+	id 1tXGeZ-00000004aPi-2Nif;
+	Mon, 13 Jan 2025 09:22:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=fYdoFmz7gBQiSp0E0N+IE+M+N0
-	FPcncnIjDuC2EtVNdNKtyxGuoX5fZDq/bAPi7doFZlFyn9BSfhQVBAwgJn/0GfYc6vUqJIYmhZdvc
-	8OwDpi+kSkIcJJ68qnMeO34+RnIUxE3PlIpBo8p+4a1XW5daaIyXjYgBKzDFhuPsbLLAFJYTlBtb+
-	lhphYEILFzAetzKI3H1cxIOXa0Jft4he4cmWgjpaYrFuJABv4aEgmW4qjpO1eJqEI2PPAw7/33Xkf
-	WMPrY+vubq6uZo76PH9DkDYrYu8fbYMgrl+B809jKvAj7Dr3RfKcKA+RO9x7lIZV6zdxlollS4a6s
-	0K7rZRxQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:54286)
+	bh=1SSTzS99BYsiM+oBx4byfpdIc4HV6ye8QqH1Uy/uwK8=; b=K8tRoCVJfkJt7W2gytM69jIGf/
+	Gz64VZncA/sGPlbhvj1/9oweCp1qnssyN7RjRgH/XPCctSUnnehRbmUPlc8UMMSjKOeHs9CNaVpAH
+	YxEEG1tAd666wMhmENCY+XFQCAiCR0zZG6zNDxWlUdphtmAJ+lEmVVFboqg8PZTZJfgdofnwTl/Pa
+	C4PIaL7HYfOpd/9jJxC7cIR/fTVvVuCG24CntUYuuV+gV5nrTf2fQGHHIyZgC0/l7QGulyQvHiQiN
+	dFSWcTiG5B44xAfXYuCz/X31z9PCbYZ5RY8BRzqn8yhv6eDEKpixnQc5a6syw1i2zjxrhg0Jd8k9M
+	yOEzjByQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:49066)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1tXGdU-0006Fg-0X;
-	Mon, 13 Jan 2025 09:21:28 +0000
+	id 1tXGeJ-0006GN-1P;
+	Mon, 13 Jan 2025 09:22:19 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tXGdK-0003wv-2z;
-	Mon, 13 Jan 2025 09:21:18 +0000
-Date: Mon, 13 Jan 2025 09:21:18 +0000
+	id 1tXGeF-0003x7-2h;
+	Mon, 13 Jan 2025 09:22:16 +0000
+Date: Mon, 13 Jan 2025 09:22:15 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexander Couzens <lynxis@fe80.eu>,
@@ -84,15 +84,13 @@ Cc: Alexander Couzens <lynxis@fe80.eu>,
 	Taras Chornyi <taras.chornyi@plvision.eu>,
 	UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>
 Subject: [PATCH net-next v2 0/5] net: phylink: fix PCS without autoneg
-Message-ID: <Z4TbDnXtG8f3SRmC@shell.armlinux.org.uk>
-References: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
+Message-ID: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z3_n_5BXkxQR4zEG@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_012200_073698_CCF457FE 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20250113_012235_598742_C8C0714B 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
