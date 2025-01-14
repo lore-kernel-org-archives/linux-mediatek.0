@@ -4,91 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA042E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 20:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F96E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 20:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R8zbHHjDHwUKprLOJl/lBp+WlB/iIXKfc0w2QQvt1CM=; b=rap/xjwDNJGZzXqHkUdlUWDHLf
-	vi+k27QMomfKz0EDmBpkdjZuKdMWQnohEKQUcGJlZBcja3J4ws00DMJsIELku9u7JAfVd8UALpDzK
-	MZ3AtLXLGjiwnuUyLuOBT733Vgj6oYmBKE8QbNZO87u1qdHnDZsHj+3PJB8p5TS+kihmx7YLQIo/k
-	yX/zvKUL1Rre1Y04Az+poEq02rByNw+ztS5Cg1Hdk5CryHMwLETcnl1T5+ZsQZaClDRAadUZwqPKf
-	UnlTYrtCyXNpW4v7je+WeY8tWU41aozQ/CuyzGnT7BWz+iGdlFYts9hvmN4BESz6fEh11fBZhP6P8
-	hZDGmArA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TM+Uv2rAwVXzhOGxP6KAZNgm9EHUs0viW3Tg49mr9j0=; b=i7qXK2PVGICKrzwUDS1ni5RrgY
+	21Gk0Y9/iulAYgzR5pjqgl0WBCOou9AaKIXpfMtDmDx6GTTJ+zzUvgOQ34dCnT/cJ2bnXFVGJdTH6
+	1rgIuWprtXHEFX77EYdlnNPs4T5iSLDDhfzAE9rAyZin6pFR+uxKRZaf4zzx4F1ZUdeGKHQqpC63F
+	mDRGbiZzxTae2WW/Jw5OuYcfApFDdf5VcUbQfGiUfOkKLqbauts5Nmp1Mt8krmEYZmEg59YECgLcX
+	uaDBIuB86TocH7I75eSSZMwIUAKjPgs8UYT/GUHd6vt48VCKW9rSKrGt4H95Vx2JuBSl9DKN1EfIN
+	uRFBQvRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXnbG-00000009gRG-2ZlW;
-	Tue, 14 Jan 2025 20:33:23 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1tXnjk-00000009hqv-4BP2;
+	Tue, 14 Jan 2025 20:42:09 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXmYq-00000009XFo-35Vj
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jan 2025 19:26:49 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-43637977fa4so6341495e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2025 11:26:48 -0800 (PST)
+	id 1tXnfB-00000009hLP-39N1;
+	Tue, 14 Jan 2025 20:37:26 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5d9837f201aso331106a12.0;
+        Tue, 14 Jan 2025 12:37:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736882807; x=1737487607; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=R8zbHHjDHwUKprLOJl/lBp+WlB/iIXKfc0w2QQvt1CM=;
-        b=u9dGA1kv4DmULqg4u+GlRcFYSMuse54M/u/92KZfwJty4nMXz266EzMHwjyV83m6Qb
-         khvNvyBOpToINfJW8OWTME8K701wbX/Vk1meUopDKeUuS52qg1n/ScweekFMAaDX6WY2
-         tXQMJv28PbXmwFCW8KpSvTSkeqP8AoICR/8lbj5H6JUk40yPa2kIWImxbWwbW9HolYpl
-         edYuQXwCWG6sgbyyoiBFLUsB1NjJr+wwpg56eynmWaauNb9wfYgbd1L3yCg2cdZDpbnt
-         TjCYId4JU9UKiHZG7hU0iFqjNDqKIJpuoviQaGuqC6LH3V0LOkxNcGjOFuKXtc636VhO
-         hYtQ==
+        d=gmail.com; s=20230601; t=1736887044; x=1737491844; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=TM+Uv2rAwVXzhOGxP6KAZNgm9EHUs0viW3Tg49mr9j0=;
+        b=X4MNvGNGCyJfO7F7X61ZyEzfkoRGWrNcECeLcDQuGLwCdMbjxFOeYbXnnGni11dMaw
+         7AzWjgj07ePbo+45apvIUgoa/D8ZU3wyHj9AvcXzZ3etF4mDPhEES6j/NSdu9zThUEqM
+         8UgDhMYcpfDfEgCbWvg5wQiExEoPBSqCA7fFmsiEBnxS6mRtFcAuoeyCy7RXY0ksX346
+         MTxR52epsmh0ojKeJzyN1Y6AIKHZFssZZiz3L6g9Q44aANELPo2qp6uZNY0DzbNxxobj
+         7ZFIurCQ5Muvyn9op1WbbKCuDaMDxkFDG0N4Ce+A6u9QRnrgr4Ri9P2jouDH42GDbSeJ
+         bycw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736882807; x=1737487607;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=R8zbHHjDHwUKprLOJl/lBp+WlB/iIXKfc0w2QQvt1CM=;
-        b=TkoXSY/2NVR/H0aR7TsiTtxgpzyE2EJ0Regw+97AmRplRvSNiawD1SlImZJujUWTqH
-         Ys0pyuvrfb3zJmVsNw/nIPR3QvEV355vSYRZHKi33ayniijtilodNSjS5cmSchZAssnF
-         mhB1GtUvcpthRkbD4FR3X+v1ogczSjDvEfupI4oQW7oixoLRUUz6bBJc2g9H+Gsqk9ha
-         klYyady81ifdYv72nNAUYNHs9t6xbfR3NtmaA2CchvnSCvv3RM61qKXhZYpX7nLjD301
-         1p0yPULlFTOjhL9LYrLCNYSR6sq5CElp1tK8xcQmBIEfrX+euOg4gW2btf+f0TUpZdxc
-         p7Rw==
-X-Forwarded-Encrypted: i=1; AJvYcCVkCgsnAcOTBncqKAT7USlCnkGA9BjUANiuHmOxNYEkoczMjBy6rz1ED46miqQHSqzD/hNOR/9Z0ccb4lkloQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/HC9oJVY0NatMMngLjUMiLHopHn0kRSWps5zBdZA9JtamPv2D
-	Q/ifjA95xQV6ygi80HFyc+fPOLSqprVN9i3Dy8mZpUcTACELmL2L/Eq8Te5yEYM=
-X-Gm-Gg: ASbGnctuml7RqdmJ3SfBF713peScro6BH1Tn5N1URjzbS9G+JOd9SBhvqyDFwXo0aa1
-	tQMkJ+a6Bclo651En0fcF2qo2PulGxF3HhO8I6mYE8iRhhAxEaGgtM2N1VLkULfq3gt3hNDbUzO
-	EfINu5euB/EMYZRSHVEAhSsQkPDc0hKGjqjoCZtqJMs4Oy3cxgQVXiUjIFduTz1oAVTyLvvNMQC
-	IE5CG0icFvose6/+Rcx+aM0sJDESvXOwSIPDHtnP9ej/VxTo2/3i85w/S9KVWl7EhmBq4U=
-X-Google-Smtp-Source: AGHT+IEnD9Q/PlL16atUZuQr3zo7osv/8GJqa0PNvMI0cYgqaJuTOZ+Meucj00enp/jZftDOrIqvJQ==
-X-Received: by 2002:a05:600c:3c8f:b0:434:f7f0:189c with SMTP id 5b1f17b1804b1-436e27007e9mr105673595e9.7.1736882807013;
-        Tue, 14 Jan 2025 11:26:47 -0800 (PST)
-Received: from krzk-bin.. ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e4b8116sm15552826f8f.79.2025.01.14.11.26.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 11:26:45 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] iommu: Use str_enable_disable-like helpers
-Date: Tue, 14 Jan 2025 20:26:42 +0100
-Message-ID: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.43.0
+        d=1e100.net; s=20230601; t=1736887044; x=1737491844;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TM+Uv2rAwVXzhOGxP6KAZNgm9EHUs0viW3Tg49mr9j0=;
+        b=LvOSSkZagGaUZ12iz77eGN9OOkXQ5zqgVbT2DcWbTnrCmEhDQN4tpNLLB9QrDN5Zgj
+         1eRJd4H4m6LENddgaTPVhSe4dpGm8UZsAZLBAHJPBMXqk+DDW1fZUenHQF6YE6Ecz680
+         DKw5veMWMSk9JWAav90aOerTPg802wy52469KgS3KRq15vyE4m4HXlYhhODex/JXs6Gb
+         tk990auWbKFZQr2L+ZvyvFvHfmBaQfPT0ZCEkDnjOlkYQlBnuM9lHTTexg5+p1VdehGw
+         saANEzm0pJwYH4gyzddWzF0QyD2Wdxki8k9pjp6hZIs1NjNuHD5Dmj0T4YL6/Yfypwcz
+         ePHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU5xtxqDzUGFuuU/dpleoCYBc8WGDyw6DNx8vqeY6hf9f2ShDJTqLjYPAFJnzTer98poNrSEz9ymxP8dzbwVyly@lists.infradead.org, AJvYcCU8NiOumi2tOn78lDIptoOn+l62RPcSdKGbVn/rElqV6AFoo0fNCFHguOwWp3JsCne26oFrBm+D3OeGXoRR6go=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwC0bCIVrNJaEp5/gkWiCMaiTb0vZSBgYAIKL0WQxYriVplzMv4
+	AtVzGgAYvlQgaIGdeJEuM7MZk8oSb5fzZJ9mRLE1GEShKOR95G6cng0WIatR
+X-Gm-Gg: ASbGnctgSNQtzyvMhrBcgpcvck9zkD4KVFMLefL43StR6vhlG4a7rv6V/+ZgY1JQMDZ
+	/robPrFct5O8JBjDmHFm5j6PgUKr6UtVGED7KPYpvyJqb6Zepil3Uvp8Hd5e7mtfWClh61Kn6GK
+	MDfvw4prxzRcB78pRgJQWiRhdNFGLy9TaEYKMFhLh2yh1Zkje15w1i80W3rHlpw5+oNCFUppogg
+	XKmczsq6uUl1B/k+vDGyUnxsDdtMy9Ngs5ODhRsqc3WoBbnaHJWT1AUDZ8ZEUMDtngO8Vm02Ers
+	MpI157Qrl7LobLcxn/+xl8os4E2lU1s=
+X-Google-Smtp-Source: AGHT+IFQEXml/UJ1SmO7RTz8cpqU1evb6c+nigxt0ziAHVC34T7jXKhSq8MBqe+UKpQJZTg3WhWgHA==
+X-Received: by 2002:a17:906:dc92:b0:aa6:7c8e:808c with SMTP id a640c23a62f3a-ab2c3cb6e09mr2218493566b.17.1736887043902;
+        Tue, 14 Jan 2025 12:37:23 -0800 (PST)
+Received: from ?IPV6:2a00:f41:900e:91ba:e7d6:162b:2195:d63b? ([2a00:f41:900e:91ba:e7d6:162b:2195:d63b])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9060bccsm663468466b.22.2025.01.14.12.37.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Jan 2025 12:37:23 -0800 (PST)
+Message-ID: <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
+Date: Tue, 14 Jan 2025 21:37:20 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
+To: Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>,
+ linux-kernel@vger.kernel.org,
+ Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>,
+ Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com>
+ <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org>
+ <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
+ <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org>
+Content-Language: en-US
+From: Konrad Dybcio <konradybcio@gmail.com>
+Autocrypt: addr=konradybcio@gmail.com; keydata=
+ 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
+ izWDgYvmBE8=
+In-Reply-To: <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_112648_776400_49E77F76 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20250114_123725_794635_07FDD35F 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,151 +146,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace ternary (condition ? "enable" : "disable") syntax with helpers
-from string_choices.h because:
-1. Simple function call with one argument is easier to read.  Ternary
-   operator has three arguments and with wrapping might lead to quite
-   long code.
-2. Is slightly shorter thus also easier to read.
-3. It brings uniformity in the text - same string.
-4. Allows deduping by the linker, which results in a smaller binary
-   file.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 3 ++-
- drivers/iommu/arm/arm-smmu/arm-smmu.c       | 3 ++-
- drivers/iommu/mtk_iommu.c                   | 9 +++++----
- drivers/iommu/mtk_iommu_v1.c                | 3 ++-
- drivers/iommu/rockchip-iommu.c              | 3 ++-
- 5 files changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-index 0e4cbb2c64d7..358072b4e293 100644
---- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-+++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-@@ -26,6 +26,7 @@
- #include <linux/pci.h>
- #include <linux/pci-ats.h>
- #include <linux/platform_device.h>
-+#include <linux/string_choices.h>
- #include <kunit/visibility.h>
- #include <uapi/linux/iommufd.h>
- 
-@@ -4321,7 +4322,7 @@ static int arm_smmu_device_hw_probe(struct arm_smmu_device *smmu)
- 	 */
- 	if (!!(reg & IDR0_COHACC) != coherent)
- 		dev_warn(smmu->dev, "IDR0.COHACC overridden by FW configuration (%s)\n",
--			 coherent ? "true" : "false");
-+			 str_true_false(coherent));
- 
- 	switch (FIELD_GET(IDR0_STALL_MODEL, reg)) {
- 	case IDR0_STALL_MODEL_FORCE:
-diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-index 79afc92e1d8b..de205a34ffc6 100644
---- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
-+++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-@@ -34,6 +34,7 @@
- #include <linux/pm_runtime.h>
- #include <linux/ratelimit.h>
- #include <linux/slab.h>
-+#include <linux/string_choices.h>
- 
- #include <linux/fsl/mc.h>
- 
-@@ -2106,7 +2107,7 @@ static void arm_smmu_rmr_install_bypass_smr(struct arm_smmu_device *smmu)
- 	}
- 
- 	dev_notice(smmu->dev, "\tpreserved %d boot mapping%s\n", cnt,
--		   cnt == 1 ? "" : "s");
-+		   str_plural(cnt));
- 	iort_put_rmr_sids(dev_fwnode(smmu->dev), &rmr_list);
- }
- 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index ab60901f8f92..034b0e670384 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -29,6 +29,7 @@
- #include <linux/spinlock.h>
- #include <linux/soc/mediatek/infracfg.h>
- #include <linux/soc/mediatek/mtk_sip_svc.h>
-+#include <linux/string_choices.h>
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
- 
-@@ -510,7 +511,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 			bank->parent_dev,
- 			"fault type=0x%x iova=0x%llx pa=0x%llx master=0x%x(larb=%d port=%d) layer=%d %s\n",
- 			int_state, fault_iova, fault_pa, regval, fault_larb, fault_port,
--			layer, write ? "write" : "read");
-+			layer, str_write_read(write));
- 	}
- 
- 	/* Interrupt clear */
-@@ -602,7 +603,7 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 			larb_mmu->bank[portid] = upper_32_bits(region->iova_base);
- 
- 		dev_dbg(dev, "%s iommu for larb(%s) port 0x%lx region %d rgn-bank %d.\n",
--			enable ? "enable" : "disable", dev_name(larb_mmu->dev),
-+			str_enable_disable(enable), dev_name(larb_mmu->dev),
- 			portid_msk, regionid, upper_32_bits(region->iova_base));
- 
- 		if (enable)
-@@ -630,8 +631,8 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 		}
- 		if (ret)
- 			dev_err(dev, "%s iommu(%s) inframaster 0x%lx fail(%d).\n",
--				enable ? "enable" : "disable",
--				dev_name(data->dev), portid_msk, ret);
-+				str_enable_disable(enable), dev_name(data->dev),
-+				portid_msk, ret);
- 	}
- 	return ret;
- }
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index b6de1ca00cef..a565b9e40f4a 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -25,6 +25,7 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-+#include <linux/string_choices.h>
- #include <asm/barrier.h>
- #include <asm/dma-iommu.h>
- #include <dt-bindings/memory/mtk-memory-port.h>
-@@ -243,7 +244,7 @@ static void mtk_iommu_v1_config(struct mtk_iommu_v1_data *data,
- 		larb_mmu = &data->larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
--			enable ? "enable" : "disable", portid);
-+			str_enable_disable(enable), portid);
- 
- 		if (enable)
- 			larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4b369419b32c..323cc665c357 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -25,6 +25,7 @@
- #include <linux/pm_runtime.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-+#include <linux/string_choices.h>
- 
- #include "iommu-pages.h"
- 
-@@ -611,7 +612,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
- 
- 			dev_err(iommu->dev, "Page fault at %pad of type %s\n",
- 				&iova,
--				(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
-+				str_write_read(flags == IOMMU_FAULT_WRITE));
- 
- 			log_iova(iommu, i, iova);
- 
--- 
-2.43.0
+On 1/14/25 19:30, Stephen Boyd wrote:
+> Quoting Konrad Dybcio (2025-01-13 14:12:28)
+>>
+>> On 1/13/25 22:52, Stephen Boyd wrote:
+>>> Quoting Konrad Dybcio (2025-01-13 05:02:58)
+>>>>
+>>>> Make controller->node specifiable to both benefit from Joe's refcount
+>>>> improvements and un-break the aforementioned platforms.
+>>>
+>>> How is it broken? I see spmi_pmic_arb_bus_init() calls
+>>> devm_spmi_controller_alloc() which sets the of_node to the parent device
+>>> and then spmi_pmic_arb_bus_init() overwrites that with
+>>> 'ctrl->dev.of_node = node' later on in the same function. That will
+>>> cause one more of_node_put() than is expected. I don't see that removed
+>>> in this patch though, so the leak is still there?
+>>>
+>>>>
+>>>> Fixes: 821b07853e32 ("spmi: hisi-spmi-controller: manage the OF node reference in device initialization and cleanup")
+>>>
+>>> I've dropped this patch from my queue. I don't know if we're really
+>>> doing anything better by managing the of_node lifetime in that function
+>>> vs. letting the callers assign the node they want and manage the
+>>> lifetime themselves. Maybe we don't need to do anything? Presumably the
+>>> parent device driver will unregister the controller anyway, so the
+>>> lifetime of the of_node will be ensured regardless. For subnodes like
+>>> qcom SPMI, the subnodes are child nodes of the parent device so they
+>>> won't be removed. If they are dynamic nodes, then the caller can manage
+>>> the lifetime.
+>>
+>> Stephen, the wrong node gets assigned in the qcom driver with
+>> multi-master controllers, resulting in probe failures.
+>>
+>> Since the introduction of the commit referenced in fixes,
+>> of_spmi_register_devices() sees the controller's subnodes
+>> (which describe each of the two masters) as slave devices
+>> - meaning no "real" devices ever get to probe
+>>
+> 
+> Ok, I see that I was reading the already reverted state of the tree
+> where the 'ctrl->dev.of_node = node' assignment came back. So there's
+> nothing to do besides drop the patch in fixes, which I already did. We
+> can then apply this patch to drop the duplicate assignment as a cleanup
+> and to avoid a refcount bump on the of_node that isn't needed.
+> 
+> ----8<---
+> diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-controller.c
+> index 3cafdf22c909..122140b97579 100644
+> --- a/drivers/spmi/hisi-spmi-controller.c
+> +++ b/drivers/spmi/hisi-spmi-controller.c
+> @@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_device *pdev)
+>   
+>   	spin_lock_init(&spmi_controller->lock);
+>   
+> -	ctrl->dev.parent = pdev->dev.parent;
+> -	ctrl->dev.of_node = of_node_get(pdev->dev.of_node);
+> -
+>   	/* Callbacks */
+>   	ctrl->read_cmd = spmi_read_cmd;
+>   	ctrl->write_cmd = spmi_write_cmd;
+
+That works for me, thank you
+
+Konrad
 
 
