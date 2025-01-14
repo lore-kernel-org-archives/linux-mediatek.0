@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07757E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 17:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78994E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 18:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h2KjFxw06B6LF0hjxFSlzMrtvNrwKNPLhQ/ilvcbkX4=; b=X+8PC7XS82lILL2qfNYKfewCy2
-	BJgW5ekk5ArTblhItsaJZL8mHFitPMYmCcIOlA7k6WjENnn06X0fwlptArGd/oNNB6fCWwmpT1hYz
-	Y9s2dsh+RNexVm6qTgYbwVsNPmbtlb5w4LZ0ocBCdShXu1CrIOK8l5zJSYpcgTR4Z3doewHTKh4T5
-	BL4AykRR8xHMsGt8KkIUyoM+lPV9NEHXUiZJ7qbZeLb1bkzgDJ2rYIzM7KGlvoAUFgzmYfAHU2GAw
-	pUVG/vchE7pZ5aCpYHOA+02b0kk/jl1fDX67mmZqwSCzvBYN4/2vtyx4h8Df5QW49MkUtMPOm1u7K
-	8K64+WAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3f1LwfpsuxGFM6Ddbf631zkX1gdyIWY+1JlKXodGmk0=; b=mZSTWzuf0GFdgYF12GO/Lf4zde
+	CLciytSuns/T4mT7gEiXkcCj+1GvffMHsAywPfsl1RwFsz/LyxR/8MjeQRygVBgijhpEzKY/bAoaw
+	HfkZE+rlMGKmwkPL9xbKTFiLi4rmb+fwGmipId4kTUmiTA0VU1v4MUcjsZ/I0jeZcmk/QuyGYuvJh
+	AydmOBoR0cvEFoj6eFsTff6FTWa+53qB0DhQi2wYE5jDqXIxX6tbPnK98yLlggrxuuINm0/K7pQ00
+	QCXfOjdR1vpVOfkCbjJ+3sHwaSYt7EQ1PtaAGsuW0qtKQBdzbmg7QpQyUgIHil8q9JDx2e0Iufx64
+	fEqWpYLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXl9H-00000009HKu-3leZ;
-	Tue, 14 Jan 2025 17:56:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tXlha-00000009Qpb-1RT1;
+	Tue, 14 Jan 2025 18:31:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXl7z-00000009GxV-3Ou7;
-	Tue, 14 Jan 2025 17:55:00 +0000
+	id 1tXlgH-00000009Qgg-2alH;
+	Tue, 14 Jan 2025 18:30:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Date:To:Cc:From:Subject:References:
+	In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=3f1LwfpsuxGFM6Ddbf631zkX1gdyIWY+1JlKXodGmk0=; b=JDDWdfM/1iwnjOrHfU7DCmY6xR
+	0jML6oUo9S02lyrZN47TWA86koklDpQc8MckCKAJWnhc7adFfX6FYafKqActhfgOFXMFWGvfrSQfU
+	21jvqqOSUgM24muuvAuoToyUF30biHGfeq9/xfBOJr98GgIcY/nYelMGLsnikWTB3MSD2Wn8svAVn
+	z010VRplpTWDFK9jd5l06H8dmTTHqTINFR/yOUKUpPUKoF3XRBtor4DPnoEpBXCxY0izGbURE+yOQ
+	w7P9A6Q91+5Qbeds00D8csPq6yJXhnLGnbz8lH6lx2imqCXsAji5CyK9OkmKBHlQBv1CsyR4tXhLW
+	0auUkkiw==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXlgE-0000000AY14-3PHA;
+	Tue, 14 Jan 2025 18:30:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6FFA55C4CCF;
-	Tue, 14 Jan 2025 17:54:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B0F6C4CEE0;
-	Tue, 14 Jan 2025 17:54:56 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4029BA41B50;
+	Tue, 14 Jan 2025 18:28:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED529C4CEDD;
+	Tue, 14 Jan 2025 18:30:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736877298;
-	bh=h2KjFxw06B6LF0hjxFSlzMrtvNrwKNPLhQ/ilvcbkX4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nITs+2XR8wmsdQrQGJWbuKOARecDv2a3AFL/gs+NcQZMLBl3EqGnAeiEgJXU9pqkJ
-	 1dO6vmt9BnP/LxBbBjuHKlHdP7ag8exsuqsZ0Oo6P66DyE8p8f86aRoqoo+gAif500
-	 Yf9VkNkWEhRBJ6HO+sZnBYmD726Ry2jUWPHXKmKI0MBKCxJy/hplIE1Hv7o1v3Ffds
-	 1UGJr6YrdwX/iMhvmrDtNIXpX7Er05V6rBhgyQ3E7CW+J+g2QlxK7+MXqtMqpqsXsP
-	 VWwR1ap9+VpBYslRdKyxxytSfACL7AX6MRVMY88zq5/dt5fsSuNBHN8bLCg8+qKYdD
-	 zX7w00xVaGAow==
-Date: Tue, 14 Jan 2025 17:54:54 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: add mt8370-evk board
-Message-ID: <20250114-lily-defensive-3383449a7945@spud>
-References: <20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com>
- <20250114-dts_mt8370-genio-510-v1-1-8517ee0fdbe8@collabora.com>
- <ef8bbe7a-64fa-4e51-86f3-4f7fc0bb3760@collabora.com>
+	s=k20201202; t=1736879419;
+	bh=Q6ym6NiTLX94Js/7c4QLFam1iJe5mEF/nkdB0iOKssw=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=YN+FKONNKlXuatiYAuftdvXRxbCPQSv4up3Z4rbgCr5xQXIQ5x2T7y6KECjevJsDG
+	 M8Dz9i8yNyMoCU18t9kqDtHSoE6O0oOVwopYMIWkTY9cPmGvYooaG7uMUXG6whA51D
+	 7030/sVD7z7dsL7DzzfePua7d/EKFX/GfZG32wMzZ+UiKIqDOJQjh1HkywCrFyhhCh
+	 C4XvPgW51gSd8x30LWGvoMd+rEW/GJFpfbIHVl7UCiKC5wRu5ecOm7reg2FlQ6gN6C
+	 M5yjc7OxX/4YsghbuW5UpZ44IPY3c6qvBD3pIuBbRqV+ymVUmNd4qH9UH6i4UAik1Z
+	 vz/arfe4cXuNg==
+Message-ID: <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="RPVpWBDX/FhXg1pP"
-Content-Disposition: inline
-In-Reply-To: <ef8bbe7a-64fa-4e51-86f3-4f7fc0bb3760@collabora.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
+References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com> <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org> <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
+Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>, linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>, Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>, Konrad Dybcio <konradybcio@gmail.com>, Konrad Dybcio <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Tue, 14 Jan 2025 10:30:16 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_095459_888491_88C0266F 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20250114_183023_101549_52AAE04F 
+X-CRM114-Status: GOOD (  24.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +84,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---RPVpWBDX/FhXg1pP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Jan 14, 2025 at 11:32:47AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 14/01/25 08:38, Louis-Alexis Eyraud ha scritto:
-> > Add bindings for the MediaTek mt8370-evk board, also known
-> > as the "Genio 510-EVK".
-> >=20
-> > Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Quoting Konrad Dybcio (2025-01-13 14:12:28)
 >=20
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+> On 1/13/25 22:52, Stephen Boyd wrote:
+> > Quoting Konrad Dybcio (2025-01-13 05:02:58)
+> >>
+> >> Make controller->node specifiable to both benefit from Joe's refcount
+> >> improvements and un-break the aforementioned platforms.
+> >=20
+> > How is it broken? I see spmi_pmic_arb_bus_init() calls
+> > devm_spmi_controller_alloc() which sets the of_node to the parent device
+> > and then spmi_pmic_arb_bus_init() overwrites that with
+> > 'ctrl->dev.of_node =3D node' later on in the same function. That will
+> > cause one more of_node_put() than is expected. I don't see that removed
+> > in this patch though, so the leak is still there?
+> >=20
+> >>
+> >> Fixes: 821b07853e32 ("spmi: hisi-spmi-controller: manage the OF node r=
+eference in device initialization and cleanup")
+> >=20
+> > I've dropped this patch from my queue. I don't know if we're really
+> > doing anything better by managing the of_node lifetime in that function
+> > vs. letting the callers assign the node they want and manage the
+> > lifetime themselves. Maybe we don't need to do anything? Presumably the
+> > parent device driver will unregister the controller anyway, so the
+> > lifetime of the of_node will be ensured regardless. For subnodes like
+> > qcom SPMI, the subnodes are child nodes of the parent device so they
+> > won't be removed. If they are dynamic nodes, then the caller can manage
+> > the lifetime.
+>=20
+> Stephen, the wrong node gets assigned in the qcom driver with
+> multi-master controllers, resulting in probe failures.
+>=20
+> Since the introduction of the commit referenced in fixes,
+> of_spmi_register_devices() sees the controller's subnodes
+> (which describe each of the two masters) as slave devices
+> - meaning no "real" devices ever get to probe
+>=20
 
-Can either of you explain why there's a fallback here to the mt8188?
+Ok, I see that I was reading the already reverted state of the tree
+where the 'ctrl->dev.of_node =3D node' assignment came back. So there's
+nothing to do besides drop the patch in fixes, which I already did. We
+can then apply this patch to drop the duplicate assignment as a cleanup
+and to avoid a refcount bump on the of_node that isn't needed.
 
---RPVpWBDX/FhXg1pP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4ak7gAKCRB4tDGHoIJi
-0lBDAP9PkgIDwITUruIjeBxtqMSUuwk4v1X1d2SYS+SiD4O9fQEA6DtkErzD+2iZ
-/x0RtcvkgL8gPS8oyQr68/8LSBuoIQE=
-=5gLi
------END PGP SIGNATURE-----
-
---RPVpWBDX/FhXg1pP--
+----8<---
+diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-c=
+ontroller.c
+index 3cafdf22c909..122140b97579 100644
+--- a/drivers/spmi/hisi-spmi-controller.c
++++ b/drivers/spmi/hisi-spmi-controller.c
+@@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_device=
+ *pdev)
+=20
+ 	spin_lock_init(&spmi_controller->lock);
+=20
+-	ctrl->dev.parent =3D pdev->dev.parent;
+-	ctrl->dev.of_node =3D of_node_get(pdev->dev.of_node);
+-
+ 	/* Callbacks */
+ 	ctrl->read_cmd =3D spmi_read_cmd;
+ 	ctrl->write_cmd =3D spmi_write_cmd;
 
