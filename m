@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8778E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 10:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5327BE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 10:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WwGZbiweMs5EjvNB4ryH1GeG13sCDZR+1XlYad2d8x0=; b=1zHVrJnG9en1D3rDV0Cre90Kvh
-	b/AD+UNpplBfl50vOR8yS8caNiTBYt2agsBZbs2rgcOALLYJiHLHXwzOUXC7/DUFQHwmdi/VIm3B+
-	RTqBsYwQMKsxghd5P8ojno+LvV0ecYviiM29HDOSvN/eHLqoWZKuOlxxVq1jZwVR66iTN6N9sK/CA
-	/FMFWsqeH3RXKrgK5Tv9VlstQ/aJ96zk3HlR+5WJVJp7hAnISZMXUp7oJdM1w41uMRfONV869dOxh
-	1j6Fa7WkZtfw0e/cR8WpEz/a6YmxaraFcvRCwYDl7VLnzKgn6boezpENPVV0f19oPMPDPZ6nRT1NZ
-	5xjMX/VA==;
+	bh=7vrqbAKA+99SMveJ6zmy7oG4QRCNFWkKIMlg/VHpdNI=; b=n3dv24mRCWXtBylWaTwtYWN1C2
+	hict1l4wgEpj8CULliohBzlzPeTnMjFp1Pe71mtunjUSq7UUecCx6hepJkeJOXY44am4fZPTM4Xtv
+	XqQcaKnnj8u41y0KC7Xj1L5xEIWrBAI9SyvYkwETtGmDHw8NHObg97y5HkMvdx1zRwQGfojMBLE1x
+	oUf4BKBLNUGYjLJcGshDlSUCwsN66V0MX+/xrATf7SaDMgaluHrWqVWdBp4St1UcUijfDKJZKV9kA
+	I7anzwoa0ujig1LIUSMe2VLV7AZLDS7pM8qh6qyIOK+CRFSb8jQRGv9Tu9+SkYUwD89VXwNZVSHUb
+	5inRl48w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXe58-0000000855M-3qj9;
-	Tue, 14 Jan 2025 10:23:34 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tXeEx-000000086vJ-1p6h;
+	Tue, 14 Jan 2025 10:33:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXe2g-000000084Sj-36jo;
-	Tue, 14 Jan 2025 10:21:04 +0000
+	id 1tXeDh-000000086kz-2WUC;
+	Tue, 14 Jan 2025 10:32:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736850058;
-	bh=IYlbVe5DU6XQUgd5tARuIdrrDgjuvb0HCtEJqBoglO0=;
+	s=mail; t=1736850744;
+	bh=gTTeMn+E3DCHVqMg0J3tutnrD2qfrPRaA0W7YuCj0IM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M1KJbA90IXJClB1WqW8CYk3B0ZU1vGxNvXqpLbbsxD9fW8K+o7yNtfC/VbjPkGaoA
-	 CyiEESYqixdHhKQEEK7inZM4EpaefCgQINHreQvaG0nX1TGIm+yQN5bYXjMBPa/ND3
-	 siTrIIlM7MNksaekrqN60GkfwDuvRxbrTuMRtoA+pytBNN6wq9TaVAHCUlXDIjttvg
-	 HTvOSvKkURI9TeoC0WIjLJzmmX+REKokjk6DQCfFnszz3qg0rKFuYv3+xiasLrKihw
-	 CjFX5ucDsl+KyuN4PDyPrMMQOgtDPNGrDXEJ2nZIyFgdTgXuMsk3+p4Rmm8pv+Oscp
-	 RpinaVRm7UMRw==
+	b=piQEL5bUhPfSBzn3AY6sjpcce2ovZfwpw6ndr++u6Y7Leip4eFx9fyiOoBPXyCB2L
+	 3w9xXgdsRkpMRzlqpVQA08rQN+kAYlhzW0qbvQqsPg0+ALqWqZs7BsrHP+yHmQRSx7
+	 w0tvzuvyLWFIh/u738JruOHdafsSvUK4400HK6qOSP5xHR4fWqUEv+Fd8ASCciqT93
+	 M3cexzcwr89PrseHWxdXtKnY+MIr4yuJ4BHZBTpJFxmsQDQRUJHqChKqpBM5aA1VW6
+	 4B322pDxCug3415pZyO+BYusNF8RXhEUKKkwEqkhtamW1XA/JzunpnozN3oQGE3kBC
+	 tlrQc17h3HC9Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3B3AA17E0239;
-	Tue, 14 Jan 2025 11:20:58 +0100 (CET)
-Message-ID: <60f4e08d-240e-4a06-b825-fbe04086c43b@collabora.com>
-Date: Tue, 14 Jan 2025 11:20:57 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 67DF717E0DB7;
+	Tue, 14 Jan 2025 11:32:23 +0100 (CET)
+Message-ID: <c041b875-23a6-4e0a-a31a-40bee27b62b5@collabora.com>
+Date: Tue, 14 Jan 2025 11:32:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] soc: mediatek: mtk-socinfo: Add entry for
- MT8390AV/AZA Genio 700
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: add device-tree for Genio 510
+ EVK board
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20250113-mtk-socinfo_genio-510-700-v1-0-cf5112b325b7@collabora.com>
- <20250113-mtk-socinfo_genio-510-700-v1-2-cf5112b325b7@collabora.com>
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com>
+ <20250114-dts_mt8370-genio-510-v1-3-8517ee0fdbe8@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250113-mtk-socinfo_genio-510-700-v1-2-cf5112b325b7@collabora.com>
+In-Reply-To: <20250114-dts_mt8370-genio-510-v1-3-8517ee0fdbe8@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_022102_952097_3A3A3A63 
-X-CRM114-Status: UNSURE (   5.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250114_023225_807722_69DF7477 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,12 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/01/25 17:13, Louis-Alexis Eyraud ha scritto:
-> Add an entry for the MT8390 SoC with commercial name Genio 700.
+Il 14/01/25 08:38, Louis-Alexis Eyraud ha scritto:
+> This commit adds a basic device-tree (mt8370-genio-510-evk.dts) in
+> order to be able to boot the Genio 510 EVK board, based on MediaTek
+> MT8370 SoC and very close to the Genio 700 EVK board. It also
+> splits mt8390-genio-700-evk.dts file in two to create
+> mt8390-genio-common.dtsi include file, containing common definitions
+> for both boards.
+> 
+
+Please split this commit in two parts (and rename the suggested commit
+titles as you wish):
+  1. arm64: dts: mediatek: mt8390-genio-700-evk: Move common parts to dtsi
+     (in preparation for introducing support for genio 510 evk, blahblah)
+  2. arm64: dts: mediatek: Add device-tree for Genio 510 EVK
+
+This makes the patches a bit more readable and, if anything happens, whoever
+looks at the commit history will be able to more immediately understand what's
+actually going on :-)
+
+Cheers,
+Angelo
+
+> The Genio 510 EVK has following features:
+> - MT8370 SoC
+> - MT6365 PMIC
+> - MT6319 Buck IC
+> - 4GB LPDDR4X
+> - 64GB eMMC 5.1
+> - 12V DC Jack
+> - Micro SD card slot
+> - Push Button x 4 (Power, Reset, Download and Home Key)
+> - LED x 4 (Power, Reset, System on and Charging Status)
+> - USB Device Port x 1 (Micro USB Connector)
+> - USB Host Port x 1 (Type-C USB Connector)
+> - 3.5mm Earphone Jack x 1 (with Microphone Input)
+> - 3.5mm Line Out Audio Jack x 1
+> - Analog Microphone x 1
+> - Digital Microphone x 2
+> - Gigabit Ethernet with RJ45 connector
+> - HDMI 2.0 TX port with Type A HDMI connector
+> - eDP port
+> - 3x UART with serial-to-usb converters and micro USB connectors
+> - M.2 Slot x 2
+> - I2C Capacitive Touch Pad
+> - 4-Lane DSI x 2
+> - 4-Data Lane CSI x 2
+> - I2S Pin header
+> - 40-Pin 2.54mm Pin Header x 1
 > 
 > Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+>   .../boot/dts/mediatek/mt8370-genio-510-evk.dts     |   19 +
+>   .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 1033 +------------------
+>   .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 1040 ++++++++++++++++++++
+>   4 files changed, 1061 insertions(+), 1032 deletions(-)
+> 
 
