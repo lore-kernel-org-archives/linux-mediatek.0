@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 561DCE77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 15:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B445FE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 15:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rYThJmbcOREv3PsHgaHEbArEjAKoBFWcy4BkZMOVNJI=; b=zaSEzBTl4BjnOmyPFGS+nd/5FQ
-	zKs4kbUNNpyTJu0pJGRcNn4dBuzDWoabZSs/UtQS3NS17T8WYUDf299Z3V2k/nd5JzB2GpKBakwKW
-	1xNhFjGrI7nNZuxdQzyJaF2wHgFlSFJUy3qBhtOkUJNNX7MYT7K72yxf5LMrneb2dBJLttowBsd/T
-	GcxT1b0Z2TDt1XAZSoERHXS6i6r7GFlEEpWvGwbRUL78gwh2tMYLCmoNf/99bzVTMSfIpoe2wsJxY
-	EIH251XeJ7tmGnrb0wn+9GP2zVr/4bQsHYiiyduu+neKPC/sTbPU4DXZYxD7uGNVQlZ8SWlS44w4/
-	n/RSM9sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZQA9ecdMH25SErsniG43mqcD8jU+sSVQYQQTTt4OqsU=; b=1awWfujcg5r4wmXwMZte6+iAvk
+	VKEy0aQ7ucOT7TdA3uKUyeSsAwXwY0SbdAHMjJJZ/DtgKcz5OD0OH37TXOZVuEpY0TnKVVFGGoPoH
+	bHUmGuPJiu6suBaF5DnQViZVjMtDXpwQ8qmdxZrFUkK87VNGCeYtgKwHPLkaOJ2hZWA55QaNt9CCo
+	UY4zOOb3Ni5hkKM8wOhJ7rAebnqTyjjrKFXmHwdVC7tu9Q0mH5WUUK6noe6jseUdfYFDufmqJgddR
+	dInivFtPrY/EPlpLgTzsGdIZdCImb59xzvRL81PB250QsjNm/T5WBdXwaCRxXu/yOziJCL8NDI4yN
+	PxmnfoyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXiai-00000008oac-1jtT;
-	Tue, 14 Jan 2025 15:12:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tXj6O-00000008uMq-0JSJ;
+	Tue, 14 Jan 2025 15:45:12 +0000
+Received: from exchange.fintech.ru ([195.54.195.159])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXiYJ-00000008oAO-1GB6;
-	Tue, 14 Jan 2025 15:10:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5F2EA5C5717;
-	Tue, 14 Jan 2025 15:09:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC181C4CEDD;
-	Tue, 14 Jan 2025 15:09:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736867397;
-	bh=pF75XEhCKXfa8xLX7BhBkgUQunabFzT49vPHGlCrxp0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Y8BAvFB9wyfMPoiWJw529UvoYSB6t2kMT9i/2h1HSI4JFMtvWoxIsXQ3GcbgJ9oK6
-	 VH0lVO2wZk9/6yQZ5BLvJBD3yi0IhFH84jdw2+29r9kZodDMMx2P/99jEiANO2JKwf
-	 CK6WrnXksNSX1/HcrvXFyZpplL6njbLq/6Uoy9+FHkpk5vrUZesIQg6KgVULRSitMq
-	 ZNw23DEjnUAn33zZvbr/Dg7P3XO1fwJwoqIkeIg7yqnBpnQ5tdDbyqvZiRqZflndLy
-	 5KhYZ0/sbtdcaH6MVKDAph8GpK/xF6W+jlxnbJUmtQis5udz5Q+7tSA6YEtdFYYlsq
-	 8AC0XTwA+RNWQ==
-Received: from johan by xi.lan with local (Exim 4.97.1)
-	(envelope-from <johan@kernel.org>)
-	id 1tXiYK-0000000079j-0bFX;
-	Tue, 14 Jan 2025 16:10:00 +0100
-Date: Tue, 14 Jan 2025 16:10:00 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] gnss: mtk: Simplify return variables in mtk_set_active
- and mtk_set_standby
-Message-ID: <Z4Z-SJZIekQ3SjP4@hovoldconsulting.com>
-References: <20241117052501.1138926-1-iwamatsu@nigauri.org>
+	id 1tXj6K-00000008uIn-22yp;
+	Tue, 14 Jan 2025 15:45:09 +0000
+Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
+ (195.54.195.169) with Microsoft SMTP Server (TLS) id 14.3.498.0; Tue, 14 Jan
+ 2025 18:44:45 +0300
+Received: from localhost (10.0.253.138) by Ex16-01.fintech.ru (10.0.10.18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Tue, 14 Jan
+ 2025 18:44:45 +0300
+From: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	"Ryder Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	"Sean Wang" <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>
+CC: Nikita Zhandarovich <n.zhandarovich@fintech.ru>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-wireless@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <lvc-project@linuxtesting.org>
+Subject: [PATCH] wifi: mt76: mt7915: fix possible integer overflows in mt7915_muru_stats_show()
+Date: Tue, 14 Jan 2025 07:44:41 -0800
+Message-ID: <20250114154441.16920-1-n.zhandarovich@fintech.ru>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241117052501.1138926-1-iwamatsu@nigauri.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.0.253.138]
+X-ClientProxiedBy: Ex16-02.fintech.ru (10.0.10.19) To Ex16-01.fintech.ru
+ (10.0.10.18)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_070959_429114_69B6D965 
-X-CRM114-Status: GOOD (  16.38  )
+X-CRM114-CacheID: sfid-20250114_074508_521786_106B2F7A 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +70,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 17, 2024 at 02:25:01PM +0900, Nobuhiro Iwamatsu wrote:
-> Simply return directly instead of assign the return value.
-> 
-> Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-> ---
->  drivers/gnss/mtk.c | 14 ++------------
->  1 file changed, 2 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/gnss/mtk.c b/drivers/gnss/mtk.c
-> index c62b1211f4fe4e..be20f6d6470736 100644
-> --- a/drivers/gnss/mtk.c
-> +++ b/drivers/gnss/mtk.c
-> @@ -24,25 +24,15 @@ struct mtk_data {
->  static int mtk_set_active(struct gnss_serial *gserial)
->  {
->  	struct mtk_data *data = gnss_serial_get_drvdata(gserial);
-> -	int ret;
->  
-> -	ret = regulator_enable(data->vcc);
-> -	if (ret)
-> -		return ret;
-> -
-> -	return 0;
-> +	return regulator_enable(data->vcc);
+Assuming sums of values stored in variables such as sub_total_cnt
+and total_ppdu_cnt are big enough to warrant their u64 type, it
+makes sense to ensure that their calculation takes into account
+possible integer overflow issues.
 
-The current style with separate success and error paths was used on
-purpose (e.g. to make it obvious from just looking at this function to
-determine what is returned).
+Play it safe and fix the problem by casting right hand expressions
+to u64 as well. Also, slightly adjust tabulation.
 
-Johan
+Found by Linux Verification Center (linuxtesting.org) with static
+analysis tool SVACE.
+
+Fixes: 1966a5078f2d ("mt76: mt7915: add mu-mimo and ofdma debugfs knobs")
+Signed-off-by: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+---
+ .../net/wireless/mediatek/mt76/mt7915/debugfs.c    | 45 +++++++++++-----------
+ 1 file changed, 23 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 578013884e43..4fec7d000a63 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -303,9 +303,9 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
+ 		   phy->mib.dl_vht_3mu_cnt,
+ 		   phy->mib.dl_vht_4mu_cnt);
+ 
+-	sub_total_cnt = phy->mib.dl_vht_2mu_cnt +
+-			phy->mib.dl_vht_3mu_cnt +
+-			phy->mib.dl_vht_4mu_cnt;
++	sub_total_cnt = (u64)phy->mib.dl_vht_2mu_cnt +
++			     phy->mib.dl_vht_3mu_cnt +
++			     phy->mib.dl_vht_4mu_cnt;
+ 
+ 	seq_printf(file, "\nTotal non-HE MU-MIMO DL PPDU count: %lld",
+ 		   sub_total_cnt);
+@@ -353,26 +353,27 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
+ 		   phy->mib.dl_he_9to16ru_cnt,
+ 		   phy->mib.dl_he_gtr16ru_cnt);
+ 
+-	sub_total_cnt = phy->mib.dl_he_2mu_cnt +
+-			phy->mib.dl_he_3mu_cnt +
+-			phy->mib.dl_he_4mu_cnt;
++	sub_total_cnt = (u64)phy->mib.dl_he_2mu_cnt +
++			     phy->mib.dl_he_3mu_cnt +
++			     phy->mib.dl_he_4mu_cnt;
+ 	total_ppdu_cnt = sub_total_cnt;
+ 
+ 	seq_printf(file, "\nTotal HE MU-MIMO DL PPDU count: %lld",
+ 		   sub_total_cnt);
+ 
+-	sub_total_cnt = phy->mib.dl_he_2ru_cnt +
+-			phy->mib.dl_he_3ru_cnt +
+-			phy->mib.dl_he_4ru_cnt +
+-			phy->mib.dl_he_5to8ru_cnt +
+-			phy->mib.dl_he_9to16ru_cnt +
+-			phy->mib.dl_he_gtr16ru_cnt;
++	sub_total_cnt = (u64)phy->mib.dl_he_2ru_cnt +
++			     phy->mib.dl_he_3ru_cnt +
++			     phy->mib.dl_he_4ru_cnt +
++			     phy->mib.dl_he_5to8ru_cnt +
++			     phy->mib.dl_he_9to16ru_cnt +
++			     phy->mib.dl_he_gtr16ru_cnt;
+ 	total_ppdu_cnt += sub_total_cnt;
+ 
+ 	seq_printf(file, "\nTotal HE OFDMA DL PPDU count: %lld",
+ 		   sub_total_cnt);
+ 
+-	total_ppdu_cnt += phy->mib.dl_he_su_cnt + phy->mib.dl_he_ext_su_cnt;
++	total_ppdu_cnt += (u64)phy->mib.dl_he_su_cnt +
++			       phy->mib.dl_he_ext_su_cnt;
+ 
+ 	seq_printf(file, "\nAll HE DL PPDU count: %lld", total_ppdu_cnt);
+ 
+@@ -404,20 +405,20 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
+ 		   phy->mib.ul_hetrig_9to16ru_cnt,
+ 		   phy->mib.ul_hetrig_gtr16ru_cnt);
+ 
+-	sub_total_cnt = phy->mib.ul_hetrig_2mu_cnt +
+-			phy->mib.ul_hetrig_3mu_cnt +
+-			phy->mib.ul_hetrig_4mu_cnt;
++	sub_total_cnt = (u64)phy->mib.ul_hetrig_2mu_cnt +
++			     phy->mib.ul_hetrig_3mu_cnt +
++			     phy->mib.ul_hetrig_4mu_cnt;
+ 	total_ppdu_cnt = sub_total_cnt;
+ 
+ 	seq_printf(file, "\nTotal HE MU-MIMO UL TB PPDU count: %lld",
+ 		   sub_total_cnt);
+ 
+-	sub_total_cnt = phy->mib.ul_hetrig_2ru_cnt +
+-			phy->mib.ul_hetrig_3ru_cnt +
+-			phy->mib.ul_hetrig_4ru_cnt +
+-			phy->mib.ul_hetrig_5to8ru_cnt +
+-			phy->mib.ul_hetrig_9to16ru_cnt +
+-			phy->mib.ul_hetrig_gtr16ru_cnt;
++	sub_total_cnt = (u64)phy->mib.ul_hetrig_2ru_cnt +
++			     phy->mib.ul_hetrig_3ru_cnt +
++			     phy->mib.ul_hetrig_4ru_cnt +
++			     phy->mib.ul_hetrig_5to8ru_cnt +
++			     phy->mib.ul_hetrig_9to16ru_cnt +
++			     phy->mib.ul_hetrig_gtr16ru_cnt;
+ 	total_ppdu_cnt += sub_total_cnt;
+ 
+ 	seq_printf(file, "\nTotal HE OFDMA UL TB PPDU count: %lld",
 
