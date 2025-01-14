@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFB1E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 07:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E972E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 07:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6k3stSyEIrEanzUwiSISkNwbi2gtHUscqjMu+CEvhEo=; b=nLSLmL+0IBgZ0N5o0xr7jX7ucE
-	LxH+iSh1yMmT9r1XR3CpYhho1wtc4kIB/Qt6eagNw/3R5VC5pd41Y3qvqlEgF3LV00a+/1w2eLL63
-	aYmN2SUUH+EGgtWyRZEVprZfEuqyEGpc0ohPy8eKJdm9GjOq4HOhuP1dYZ8rvRl3WG4gDsdmVoXcA
-	0sXFXTLHne0uiBm0JtbfIdj1qQj57fM3iHScnM65oEjCpojW/vwDW6iPUv5txLi6trgVeLo2hYKwf
-	+vB5p9X8X8Im9CAyMIcXBK31ukbm8jHk2N21hU23zSh5LS2DlSm2PtsC6UtYI57Yg/tDFO9Z1MxwS
-	az65z5VA==;
+	bh=ZBNpCa6HRxQaA7BzdE7ThE2xv0zG1/gfy6bDH52Ub8s=; b=VqI1SJP5UGMaCMiNgqtyMzZFJ/
+	Okj2s8GyZFpqWIGdZGAnpjXJ7Kn05z1Ue0VF8hp6dMH+eBGKUgMMPK0m5rrqPpVmci8lkmBel4E6U
+	LFqw/IVVwA6j+bGvq3cnPJYOYVgpn3f5huVKQVmZevlXrMsM5xVcH+H5HvnRUq5gEuRG4R2hqWE/g
+	6N41EDOL+ar+7yEViMffsTYszzV+CY1BhS9pnB+ALoOwSaNzshOT41qGcqtm7uJ3k4s73TvlXsSfY
+	r/WJz5AL5peZHiMe0rmN+wb+wnPPKGZGEoWDDnhtOhqWP0w/Tx6LadI1zMjD1x5oj6G5vZ6P2jMVw
+	225mqxEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXbQR-00000007h0J-2ksf;
-	Tue, 14 Jan 2025 07:33:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tXbVK-00000007hvB-2yAE;
+	Tue, 14 Jan 2025 07:38:26 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXbPC-00000007gsl-0MC2;
-	Tue, 14 Jan 2025 07:32:07 +0000
+	id 1tXbT0-00000007hMh-1hNf;
+	Tue, 14 Jan 2025 07:36:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7979A5C5640;
-	Tue, 14 Jan 2025 07:31:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 051B9C4CEDD;
-	Tue, 14 Jan 2025 07:32:00 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7A692A40BD2;
+	Tue, 14 Jan 2025 07:34:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DFFCC4CEDD;
+	Tue, 14 Jan 2025 07:35:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736839924;
-	bh=6ZWmsJ98LtqBrmv5kenGU63vKf2MG1uFnfOYZD2zNO0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RpHZeMeXxr4DhZpwEMuJceut6Au1JIrlqNV6kj/scPxpsTMPePNK1f7WPjziYfnUC
-	 DhlgOTwqAapp9vQd4lPPa4E3KQKsDE5HtdJNu+CyaBw83L45brgV49YEYxf9PwAWh8
-	 wW6TCZNpchdrbeRFFJq0qMyxBxR6Uma9fYy+aKPnTpgFSDvJlHIJVdJNSxk0Qlsz5g
-	 rSHTi9sbaflsUAryRoNIbT49SRhEXKZrs9P3in3bQYp5y7TP0r99UmUlveZ0paTDD6
-	 uWQB7vYSAz17YVldKigAP+H7tfCszV6gqDSd/vBP8WteByh8vGUqAy4SsHZPGb0Oet
-	 DbDshwRciyExQ==
-Message-ID: <79ad2e41-3d27-4dfd-9136-cb0867cb1a36@kernel.org>
-Date: Tue, 14 Jan 2025 08:31:58 +0100
+	s=k20201202; t=1736840161;
+	bh=KspM6dv9z9XFnDUwS55HawmUBfVDvs0MugL5RUYODF8=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=kP4mpjGo5ADR/B1wGK4kgCaT3kxBAz+dnGpJf0IIIh2uUwvE/8+5jDkmqBBqmhALF
+	 6PT48ch4+UZD40duV0zUz5ix0x8ZCEObB7ud/XLfIaVdFBEkPhhwF3D0hUDlA19kjF
+	 n7MMUUTIp915o4XoHSKoms1S8sVrhkkoicziiLCrBNS6nCfVGyajc1p0PyN6NYroZY
+	 h8lrZ2n1JwI8YnwPSgtHw4UoMkp6IbWPkBJxpXoVbS6/y6a9USlXTEo3HHyij2sVmg
+	 hf3I9gXhk1Gs15fdNee42jFYi9kFZIwkcSVS3qe93zecUxuMHTlMEDY8qI245nNOHY
+	 ITJPOhj1JP7MA==
+Message-ID: <ac3f0efe-c197-4279-9b73-5d7dd3f300fc@kernel.org>
+Date: Tue, 14 Jan 2025 08:35:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] serial: 8250_mtk: Add ACPI support
+From: Jiri Slaby <jirislaby@kernel.org>
 To: Yenchia Chen <yenchia.chen@mediatek.com>, gregkh@linuxfoundation.org,
  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
 Cc: yj.chiang@mediatek.com, tbergstrom@nvidia.com, yujiaoliang@vivo.com,
@@ -53,8 +54,8 @@ Cc: yj.chiang@mediatek.com, tbergstrom@nvidia.com, yujiaoliang@vivo.com,
  linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
+ <79ad2e41-3d27-4dfd-9136-cb0867cb1a36@kernel.org>
 Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
 Autocrypt: addr=jirislaby@kernel.org; keydata=
  xsFNBE6S54YBEACzzjLwDUbU5elY4GTg/NdotjA0jyyJtYI86wdKraekbNE0bC4zV+ryvH4j
  rrcDwGs6tFVrAHvdHeIdI07s1iIx5R/ndcHwt4fvI8CL5PzPmn5J+h0WERR5rFprRh6axhOk
@@ -97,12 +98,13 @@ Autocrypt: addr=jirislaby@kernel.org; keydata=
  f/bIWIr0cqQmqQ33FgRhrG1+Xml6UXyJ2jExmlO8JljuOGeXYh6ZkIEyzqzffzBLXZCujlYQ
  DFXpyMNVJ2ZwPmX2mWEoYuaBU0JN7wM+/zWgOf2zRwhEuD3A2cO2PxoiIfyUEfB9SSmffaK/
  S4xXoB6wvGENZ85Hg37C7WDNdaAt6Xh2uQIly5grkgvWppkNy4ZHxE+jeNsU7tg=
-In-Reply-To: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
+In-Reply-To: <79ad2e41-3d27-4dfd-9136-cb0867cb1a36@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_233206_220655_E4031A10 
-X-CRM114-Status: GOOD (  26.52  )
+X-CRM114-CacheID: sfid-20250113_233602_567929_3D6CE69B 
+X-CRM114-Status: UNSURE (   4.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,124 +119,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14. 01. 25, 4:33, Yenchia Chen wrote:
-> Add ACPI support to 8250_mtk driver. This makes it possible to
-> use uart with edk2 UEFI firmware.
+On 14. 01. 25, 8:31, Jiri Slaby wrote:
+>> @@ -560,16 +566,22 @@ static int mtk8250_probe(struct platform_device 
+>> *pdev)
+>>       uart.port.private_data = data;
+>>       uart.port.shutdown = mtk8250_shutdown;
+>>       uart.port.startup = mtk8250_startup;
+>> -    uart.port.set_termios = mtk8250_set_termios;
 
-Could you mention what hardware this is in particular?
+Wait, ::set_termios() is NOT optional.
 
-> Signed-off-by: Yenchia Chen <yenchia.chen@mediatek.com>
-> ---
->   drivers/tty/serial/8250/8250_mtk.c | 31 ++++++++++++++++++++++++------
->   1 file changed, 25 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index b44de2ed7413..a4f1c30f77b0 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -19,6 +19,7 @@
->   #include <linux/dma-mapping.h>
->   #include <linux/tty.h>
->   #include <linux/tty_flip.h>
-> +#include <linux/acpi.h>
 
-Sort this properly.
-
->   #include "8250.h"
->   
-> @@ -519,6 +520,7 @@ static int mtk8250_probe(struct platform_device *pdev)
->   	struct mtk8250_data *data;
->   	struct resource *regs;
->   	int irq, err;
-> +	acpi_handle hdl = ACPI_HANDLE(&pdev->dev);
-
-'hdl' sounds very weird and is not used in the tree for acpi_handles. 
-I'd use 'acpi_handle' or 'acpi_dev_handle' in this case.
-
->   	irq = platform_get_irq(pdev, 0);
->   	if (irq < 0)
-> @@ -545,8 +547,12 @@ static int mtk8250_probe(struct platform_device *pdev)
->   		err = mtk8250_probe_of(pdev, &uart.port, data);
->   		if (err)
->   			return err;
-> -	} else
-> -		return -ENODEV;
-> +	} else {
-> +		if (!hdl) {
-
-so this should be:
-   } else if () {
-
-> +			dev_err(&pdev->dev, "no device\n");
-
-Why this?
-
-> +			return -ENODEV;
-
-As this is self explanatory already, right?
-
-> +		}
-> +	}
->   
->   	spin_lock_init(&uart.port.lock);
->   	uart.port.mapbase = regs->start;
-> @@ -560,16 +566,22 @@ static int mtk8250_probe(struct platform_device *pdev)
->   	uart.port.private_data = data;
->   	uart.port.shutdown = mtk8250_shutdown;
->   	uart.port.startup = mtk8250_startup;
-> -	uart.port.set_termios = mtk8250_set_termios;
-> -	uart.port.uartclk = clk_get_rate(data->uart_clk);
-> +	if (hdl) {
-> +		uart.port.uartclk = 26000000;
-
-This is a magic constant. Define a macro for this. Hint: 26 * HZ_PER_MHZ.
-
-Is it not/cannot it be part of the acpi table? What does MTKI0511 look like?
-
-> +	} else {
-> +		uart.port.set_termios = mtk8250_set_termios;
-> +		uart.port.uartclk = clk_get_rate(data->uart_clk);
-> +	}
->   #ifdef CONFIG_SERIAL_8250_DMA
->   	if (data->dma)
->   		uart.dma = data->dma;
->   #endif
->   
-> -	/* Disable Rate Fix function */
-> -	writel(0x0, uart.port.membase +
-> +	if (!hdl) {
-> +		/* Disable Rate Fix function */
-
-Why is this only for non-ACPI devices?
-
-> +		writel(0x0, uart.port.membase +
->   			(MTK_UART_RATE_FIX << uart.port.regshift));
-> +	}
->   
->   	platform_set_drvdata(pdev, data);
->   
-> @@ -647,11 +659,18 @@ static const struct of_device_id mtk8250_of_match[] = {
->   };
->   MODULE_DEVICE_TABLE(of, mtk8250_of_match);
->   
-> +static const struct acpi_device_id mtk8250_acpi_match[] = {
-> +	{ "MTKI0511", 0 },
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(acpi, mtk8250_acpi_match);
-> +
->   static struct platform_driver mtk8250_platform_driver = {
->   	.driver = {
->   		.name		= "mt6577-uart",
->   		.pm		= &mtk8250_pm_ops,
->   		.of_match_table	= mtk8250_of_match,
-> +		.acpi_match_table = ACPI_PTR(mtk8250_acpi_match),
->   	},
->   	.probe			= mtk8250_probe,
->   	.remove			= mtk8250_remove,
-
-thanks,
 -- 
 js
 suse labs
+
 
