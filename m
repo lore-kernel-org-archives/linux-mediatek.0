@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD09C02183
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 10:42:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E39EE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 10:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EgDVsyR3KbScI6jcSPg7gWlvGaF54deikM4NZlf8tyo=; b=GQ+XcWwNxyXELXgmWgSrRQssF4
-	iwCiDqHH2USQPvo1ik0/yJesgFypnlw3zmPRmXtHKjT4o2pF4xUKFkZt/Gwl0FF/+/gkPa2YouPJ5
-	jTFIGxwTWsbzkMrOwwcDDxmew28A6aVtg5SNlir4KA3mlJ4Nb1gvP/w1k1TKmllrtH6VxMn75Ipsv
-	b0gdLTmfYORfHB9umQKeNEe4I+zEYmf5rKA2XRRPgD4RvOgaIM4ScjFDVuTrJOtyROicDgrpxF/Na
-	ivqFBcwj9qqGRYMnzO6VgdAJqTtcWqqjzADEEQ6V7nqRphPrelQjyLfAKgqYPwehHsbGFsbsG4vfE
-	f3hBW1xQ==;
+	bh=o1N7xFiNje9aCYN3xxdLskuws49Dt23SKU+L9bCwh3w=; b=OxyEbgI0QTYLPFOgSTCUYVaz3V
+	5QpG6D3Tfunh24Nwg5oHn5ngDNgE3RyFbUqeUAIiOt2qDkIIj5E4iVDJ4u+jmh+trK/K2rihd2ei+
+	Yjj80fZ1T+wsOMgoit9+rdyV0dEscM8p3zLif40ZXDMc3TMKArHX+1ueXpF6EewEsGxg9E8XSGoRd
+	NLhkZcHZ+JIr09kqsj/6pWAH6tbIGaWKRYsK6p4oxmUYU2Jt1Xam5YKSVg3TGYgKu3Wg8okKD6dsr
+	xOMJk0b1QJgKW2B17eTuOXBDIx++u91aC69n4Qd5TYIHO3g1AUHtrbhZ9zzTQzdkk8zgKLr0AzSZX
+	jftepcLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXeNR-000000088UW-04Wq;
-	Tue, 14 Jan 2025 10:42:29 +0000
+	id 1tXeZ8-00000008AFr-38Nv;
+	Tue, 14 Jan 2025 10:54:34 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXeJV-000000087nP-0DX7;
-	Tue, 14 Jan 2025 10:38:26 +0000
+	id 1tXeXq-000000089wa-48gM;
+	Tue, 14 Jan 2025 10:53:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736851103;
-	bh=B+LNGJoxm+2ZW+2zkFsa63Rt6e6ValKEjmMu+3Ps3uM=;
+	s=mail; t=1736851993;
+	bh=VFBTkgvf44it03ebVdBglu18EVaUx1do0GtbExZwx4U=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bK3YiFMbI4ErOnyOl2Px+n/9/cs5S8qo0bWabVA4U52QgrvPsaNtTIiiZSnhzf6Wa
-	 hE+kkN2oepDtoaHq1a+0k4zzG3OyglKrxQXdgKaxNSQC+2XbdRsSvqoKCGKXRbHqk3
-	 es/GP4cSpxAY/EZKcVkLzUMv6CiJ993BfXq4zutma0evuapWmsLzjdJv6OAazQYIUk
-	 OpYFw+Vdzida0LD3hYbnwV/yLIoDaS3hntF7yv9m84+FTv7D6tTwodIsufLDW42OsW
-	 GIgHaV95HysTN62KcVFMIQWGN/sBqDUIBztuDWeACTs0cyDjk9LP2u3Mqb9UxaYNGA
-	 ofZ0CtzX/k/2Q==
+	b=iDFd4VGCE5hZVZcE9/t6wovrVgJmwqegOxRghxqZTJpSB6vfyw+q0+HJvVg7zeZhY
+	 5/iYq1kVtMcg5RFmGSwAlyKyG5YIrdY4bvO1d0wxW3LGeKunPvStLONg3+Oc3grqnt
+	 yzKFSB8km/RuDvhV02jzlTJTRLdL+/7QCSSA7xZ8sMkIdffd/VgRF9lzhGdmc4Km4e
+	 6Nh/1ME5t0ouwDlVcbD4HhUyu46oHBYOcFK3I8J4uJbeG67FkhHQYw0x3CDT1KJksT
+	 jT/12vJZRkkM1gUmPQgS8j5YXkY8uMf9SHcJXC0Mn7uyJRT1CWY2CY+pcEBMXoQDS+
+	 VYDXKmupSmVCQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C206A17E0239;
-	Tue, 14 Jan 2025 11:38:22 +0100 (CET)
-Message-ID: <91ac34bf-e184-486d-9af7-f9ddaf8f26ed@collabora.com>
-Date: Tue, 14 Jan 2025 11:38:22 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B832717E0DB7;
+	Tue, 14 Jan 2025 11:53:12 +0100 (CET)
+Message-ID: <49b100ae-9b81-404d-b64c-93c60baa859f@collabora.com>
+Date: Tue, 14 Jan 2025 11:53:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: add mmc2 support for mt8365-evk
-To: Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- macpaul.Lin@mediatek.com
-Cc: vsatoes@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250109-mmc2-support-v1-1-9b9d1b1ae35d@baylibre.com>
+Subject: Re: [PATCH 2/2] rtc: mt6359: fix year issue
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20250109-enable-rtc-v1-0-e8223bf55bb8@baylibre.com>
+ <20250109-enable-rtc-v1-2-e8223bf55bb8@baylibre.com>
+ <202501091546387cff95fd@mail.local>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250109-mmc2-support-v1-1-9b9d1b1ae35d@baylibre.com>
+In-Reply-To: <202501091546387cff95fd@mail.local>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_023825_258538_2CC11A3C 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20250114_025315_190083_34A9207C 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,86 +80,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/01/25 12:10, Alexandre Mergnat ha scritto:
-> Adds support for the MMC2 interface on the MT8365 EVK board.
-> It introduces a fixed regulator for the MMC2 VDD33 supply and configures
-> the MMC2 node with a 4-bit bus width, high-speed capabilities, UHS
-> modes, and appropriate power supplies. Enabled SDIO IRQ, wakeup source,
-> and kept power during suspend for wireless chip functionality.
+Il 09/01/25 16:46, Alexandre Belloni ha scritto:
+> On 09/01/2025 16:29:52+0100, Alexandre Mergnat wrote:
+>> Removing the RTC_MIN_YEAR_OFFSET addition and subtraction has
+>> introduced a regression.
+>>
+>> ~# hwclock -r --verbose
+>> hwclock from util-linux 2.37.4
+>> System Time: 1262312013.143552
+>> Trying to open: /dev/rtc0
+>> Using the rtc interface to the clock.
+>> Assuming hardware clock is kept in UTC time.
+>> Waiting for clock tick...
+>> hwclock: select() to /dev/rtc0 to wait for clock tick timed out
+>> ...synchronization failed
+>>
+>> Bring back the RTC_MIN_YEAR_OFFSET to fix the RTC.
+>>
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 85 +++++++++++++++++++++++++++++
->   1 file changed, 85 insertions(+)
+> NAK, you'd have to investigate a bit more, I want to get rid of the
+> RTC_MIN_YEAR_OFFSET insanity.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> index 7d90112a7e27..309dc76322d4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> @@ -53,6 +53,15 @@ memory@40000000 {
->   		reg = <0 0x40000000 0 0xc0000000>;
->   	};
->   
-> +	mmc2_vdd33: mmc2_vdd33-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "mmc2_vdd33";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		gpio = <&pio 121 0>;
-> +		enable-active-high;
-> +	};
-> +
->   	usb_otg_vbus: regulator-0 {
->   		compatible = "regulator-fixed";
->   		regulator-name = "otg_vbus";
-> @@ -197,6 +206,28 @@ &mmc1 {
->   	status = "okay";
->   };
->   
-> +&mmc2 {
-> +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-> +	assigned-clocks = <&topckgen CLK_TOP_MSDC50_2_SEL>;
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	hs400-ds-delay = <0x12012>;
-> +	keep-power-in-suspend;
 
-Why keep-power-in-suspend?
+If literally all currently supported MediaTek PMICs RTC are working fine (and
+it's not just one), but the one that is introduced here has issues, clearly
+the problem is *not* about the min_year_offset not being there, I'd say!
 
-> +	max-frequency = <200000000>;
-> +	non-removable;
-> +	pinctrl-0 = <&mmc2_default_pins>;
-> +	pinctrl-1 = <&mmc2_uhs_pins>;
-> +	pinctrl-names = "default", "state_uhs";
-> +	sd-uhs-sdr104;
-> +	sd-uhs-sdr25;
-> +	sd-uhs-sdr50;
-> +	vmmc-supply = <&mmc2_vdd33>;
-> +	vqmmc-supply = <&mt6357_vcn18_reg>;
-> +	wakeup-source;
-> +	status = "okay";
-> +};
-> +
->   &mt6357_pmic {
->   	interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
->   	interrupt-controller;
-> @@ -410,6 +441,60 @@ cmd-dat-pins {
->   		};
->   	};
->   
-> +	mmc2_default_pins: mmc2-default-pins {
-> +		clk-pins {
-> +			pinmux = <MT8365_PIN_81_MSDC2_CLK__FUNC_MSDC2_CLK>;
+Btw:
+"hwclock: select() to /dev/rtc0 to wait for clock tick timed out"
+...is the WRTGR write failing? :-)
 
-pinmux is always first, but then:
+And no, Alexandre M, don't trust the regmap_read_poll_timeout() to return an
+error, I'm not sure that the CBUSY gets set to zero for *literally all* failures...
 
-b ias-pull-....
-d rive-strength
+In particular.... some RTCs are *locked* and need to be *unlocked*, and in that
+case I'm not sure if the write just goes through but gets ignored or if CBUSY
+stays set.
 
-Alphabetical order please :-)
+Anyway, check the RTC_PROT register for the unlocking mechanism :-)
 
 Cheers,
 Angelo
+
+>> Fixes: 34bbdc12d04e ("rtc: mt6359: Add RTC hardware range and add support for start-year")
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   drivers/rtc/rtc-mt6397.c | 9 +++++++++
+>>   1 file changed, 9 insertions(+)
+>>
+>> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+>> index 55e75712edd4..9930b6bdb6ca 100644
+>> --- a/drivers/rtc/rtc-mt6397.c
+>> +++ b/drivers/rtc/rtc-mt6397.c
+>> @@ -96,6 +96,12 @@ static int mtk_rtc_read_time(struct device *dev, struct rtc_time *tm)
+>>   			goto exit;
+>>   	} while (sec < tm->tm_sec);
+>>   
+>> +	/* HW register use 7 bits to store year data, minus
+>> +	 * RTC_MIN_YEAR_OFFSET before write year data to register, and plus
+>> +	 * RTC_MIN_YEAR_OFFSET back after read year from register
+>> +	 */
+>> +	tm->tm_year += RTC_MIN_YEAR_OFFSET;
+>> +
+>>   	/* HW register start mon/wday from one, but tm_mon/tm_wday start from zero. */
+>>   	tm->tm_mon--;
+>>   	tm->tm_wday--;
+>> @@ -110,6 +116,7 @@ static int mtk_rtc_set_time(struct device *dev, struct rtc_time *tm)
+>>   	int ret;
+>>   	u16 data[RTC_OFFSET_COUNT];
+>>   
+>> +	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
+>>   	tm->tm_mon++;
+>>   	tm->tm_wday++;
+>>   
+>> @@ -167,6 +174,7 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
+>>   	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
+>>   	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
+>>   
+>> +	tm->tm_year += RTC_MIN_YEAR_OFFSET;
+>>   	tm->tm_mon--;
+>>   
+>>   	return 0;
+>> @@ -182,6 +190,7 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
+>>   	int ret;
+>>   	u16 data[RTC_OFFSET_COUNT];
+>>   
+>> +	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
+>>   	tm->tm_mon++;
+>>   
+>>   	mutex_lock(&rtc->lock);
+>>
+>> -- 
+>> 2.25.1
+>>
+> 
+
 
 
