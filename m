@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C36ADC02183
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 17:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07757E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 17:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KFnKA0x6AFKKdKjff0q+TwfpiOESRdzhw9jgQvsIAK4=; b=vfj/VLu/tgrp2f2e/Zm8PEjIUS
-	fFuWNpyl1waeb0zjwJiIEwa8hE9ddI77sJ2F2zMw1fB1Dz/zds31LT4QBqD9pErg7OabdrTu0eyi8
-	xH4naF5FLhdOLsNWHdm85oO6YIEkzMeI2IqxODTE7RDrAsV8znCzHcQQn6WqcviyuyzfrcDMXA1im
-	1Xgj8T+I6rI4w3U4RvDYppbOuZQDsGwMLrOHhX45ob4O389Ks82kJlV2IWsg1ASO0ubE0Zxwwymit
-	k9QX7PmAxF7nXdCPYBYrxpyR8fbG/ogiPOS6f8315E6jwFy+8zvTmS77FCYKQUBpgZz26JJBwp+2F
-	DZdjRQHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h2KjFxw06B6LF0hjxFSlzMrtvNrwKNPLhQ/ilvcbkX4=; b=X+8PC7XS82lILL2qfNYKfewCy2
+	BJgW5ekk5ArTblhItsaJZL8mHFitPMYmCcIOlA7k6WjENnn06X0fwlptArGd/oNNB6fCWwmpT1hYz
+	Y9s2dsh+RNexVm6qTgYbwVsNPmbtlb5w4LZ0ocBCdShXu1CrIOK8l5zJSYpcgTR4Z3doewHTKh4T5
+	BL4AykRR8xHMsGt8KkIUyoM+lPV9NEHXUiZJ7qbZeLb1bkzgDJ2rYIzM7KGlvoAUFgzmYfAHU2GAw
+	pUVG/vchE7pZ5aCpYHOA+02b0kk/jl1fDX67mmZqwSCzvBYN4/2vtyx4h8Df5QW49MkUtMPOm1u7K
+	8K64+WAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXkaU-00000009Alw-3o1H;
-	Tue, 14 Jan 2025 17:20:22 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tXl9H-00000009HKu-3leZ;
+	Tue, 14 Jan 2025 17:56:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXkaR-00000009AlF-2rxz
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jan 2025 17:20:20 +0000
+	id 1tXl7z-00000009GxV-3Ou7;
+	Tue, 14 Jan 2025 17:55:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4AC7FA4198A;
-	Tue, 14 Jan 2025 17:18:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41565C4CEE5;
-	Tue, 14 Jan 2025 17:20:18 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6FFA55C4CCF;
+	Tue, 14 Jan 2025 17:54:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B0F6C4CEE0;
+	Tue, 14 Jan 2025 17:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736875218;
-	bh=6MF0dlcJddwJ2j8LDnKkAPEmE1AocvfGYy4073HYR0g=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=dorQIg8H8KLDz3WrEN/YIAyfm0I4vUlZIBQgo+JjIbRIXdXmnvq0QAmq+BeadKx+x
-	 DHtgdsVEVruk60i0ZUXuDXFJbRYYgH71Yh6Ie9BWFPJvALVy8qP1PoGO93XRi4gYKY
-	 /xGS5b44rZf4SbJ0ehoH+Hk5rzqRmV8xrqq55XdfETZiasVcR71sTLvFoI/LMZCoGD
-	 E5uwXxKu8TXqQP+hK2BWvAcqv8U7fEvb0KV29aXpSjjQeRzhl8ZtH9HI50+Mucwxez
-	 r/lEVWAT8WcmysWIDPIxUaPny8/J5yi3JI3t+p97YGRrYSFpG9Q94ByltvDPaLoNKi
-	 xZkw7BCdsRPpg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33FD6380AA5F;
-	Tue, 14 Jan 2025 17:20:42 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1736877298;
+	bh=h2KjFxw06B6LF0hjxFSlzMrtvNrwKNPLhQ/ilvcbkX4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nITs+2XR8wmsdQrQGJWbuKOARecDv2a3AFL/gs+NcQZMLBl3EqGnAeiEgJXU9pqkJ
+	 1dO6vmt9BnP/LxBbBjuHKlHdP7ag8exsuqsZ0Oo6P66DyE8p8f86aRoqoo+gAif500
+	 Yf9VkNkWEhRBJ6HO+sZnBYmD726Ry2jUWPHXKmKI0MBKCxJy/hplIE1Hv7o1v3Ffds
+	 1UGJr6YrdwX/iMhvmrDtNIXpX7Er05V6rBhgyQ3E7CW+J+g2QlxK7+MXqtMqpqsXsP
+	 VWwR1ap9+VpBYslRdKyxxytSfACL7AX6MRVMY88zq5/dt5fsSuNBHN8bLCg8+qKYdD
+	 zX7w00xVaGAow==
+Date: Tue, 14 Jan 2025 17:54:54 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: add mt8370-evk board
+Message-ID: <20250114-lily-defensive-3383449a7945@spud>
+References: <20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com>
+ <20250114-dts_mt8370-genio-510-v1-1-8517ee0fdbe8@collabora.com>
+ <ef8bbe7a-64fa-4e51-86f3-4f7fc0bb3760@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btmtk: Remove resetting mt7921 before downloading
- the fw
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <173687524073.62266.12024494240760693746.git-patchwork-notify@kernel.org>
-Date: Tue, 14 Jan 2025 17:20:40 +0000
-References: <20250110095548.12761-1-hao.qin@mediatek.com>
-In-Reply-To: <20250110095548.12761-1-hao.qin@mediatek.com>
-To: Hao Qin <hao.qin@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, deren.Wu@mediatek.com, aaron.hou@mediatek.com,
- chris.lu@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="RPVpWBDX/FhXg1pP"
+Content-Disposition: inline
+In-Reply-To: <ef8bbe7a-64fa-4e51-86f3-4f7fc0bb3760@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_092019_792288_C8721E54 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250114_095459_888491_88C0266F 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,28 +79,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+--RPVpWBDX/FhXg1pP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Fri, 10 Jan 2025 17:55:48 +0800 you wrote:
-> Remove resetting mt7921 before downloading the fw, as it may cause
-> command timeout when performing the reset.
-> 
-> Signed-off-by: Hao Qin <hao.qin@mediatek.com>
-> ---
->  drivers/bluetooth/btmtk.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Tue, Jan 14, 2025 at 11:32:47AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 14/01/25 08:38, Louis-Alexis Eyraud ha scritto:
+> > Add bindings for the MediaTek mt8370-evk board, also known
+> > as the "Genio 510-EVK".
+> >=20
+> > Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
-Here is the summary with links:
-  - Bluetooth: btmtk: Remove resetting mt7921 before downloading the fw
-    https://git.kernel.org/bluetooth/bluetooth-next/c/c8d46ea46991
+Can either of you explain why there's a fallback here to the mt8188?
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+--RPVpWBDX/FhXg1pP
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4ak7gAKCRB4tDGHoIJi
+0lBDAP9PkgIDwITUruIjeBxtqMSUuwk4v1X1d2SYS+SiD4O9fQEA6DtkErzD+2iZ
+/x0RtcvkgL8gPS8oyQr68/8LSBuoIQE=
+=5gLi
+-----END PGP SIGNATURE-----
+
+--RPVpWBDX/FhXg1pP--
 
