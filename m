@@ -4,98 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0BE5C02180
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 01:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AEB9C02180
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 02:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N+8EgI35uv9hF/0OPf+vuhBaBLFzRkr/a46A2Dy1sAk=; b=LuQgArjoM6cmzo2E7lSeazFs8Q
-	UIWEWTQbJJMbeNF6BpCtREmyk2QOAwyZj9lptsYvNovZDP3WfPmoAYIBSzbiVh3Q+yuGPtv6hdoQO
-	BZeWmaYqQud/FRdnl3/iWm6ArylC08kjKzHDg3rpU8t3QrRAdr44MBgxigPMcC+ijn+3bxnYxMxwU
-	YU7bO8Ij9fYGIjc5ujCWZfI2So3Seo53v9ZehHo9uxUkPgwIL8eb4xlptSdYngY773wd3aJbvXqfm
-	Hc1KLIYqCDqtzJzhbtUUBeTLLZoGVY/QwF8sZ2P5HcSZ5zxJMquIujFDXb7vqBxxT3bLDa564FCo3
-	wLims0QA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=O7tVda83kgsvcWofCoQwXTUD8V5WuoqGzphevzyeA7k=; b=IB0VwDdKzaB4E7jpa06xNrkyjg
+	NDJk/4Acdv2OG3/ZWJNqoX2UfLhROQHO8s1PFD1AHf61msO9eseAtJMCduuUoZzBJLOCC4hBtWiBr
+	SFZO4+e3w8S7zU/+o8/Q2IkIpcWitEF8QH96TA4siKTYXuair3szeROFaQb4LC85ylOfiEq8bIuif
+	QkkIOx6nwCA/K4Gzg1I4pfy/dRboIGKc7CRpK0gzoZv8UoWTzhwr4/qnmLzXm5dHpfgvowOilthRq
+	Xq8AWSS9Lp5bNaXKe9AgOztNnS4rsbWuQYgDWaA3qxUyBcpjm7f1dNrYAk0kFD37VU0LbQrIO/ZXA
+	m/P8m2ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXVzm-00000007Aul-0Yg8;
-	Tue, 14 Jan 2025 01:45:30 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1tXWLg-00000007D2d-2ida;
+	Tue, 14 Jan 2025 02:08:08 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXVzj-00000007Ata-22Xe
+	id 1tXWKt-00000007CxI-1fQP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jan 2025 01:45:28 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e53ef7462b6so8386953276.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2025 17:45:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736819126; x=1737423926; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=N+8EgI35uv9hF/0OPf+vuhBaBLFzRkr/a46A2Dy1sAk=;
-        b=Mdm08VwHvmu9GjL49NPuQQvBJ2p9Y8tWZUPSOu64eNLOulL7jRtt5GIHmHQzi0GIux
-         jsH9i6R+XYZY7Lo4sWdURiWIbY72+uyCKliAMOZRz8SWdGYMFBwsaLSAGwawH3bMwX61
-         Whe37ZlHQcsWKwHErgUIznYgToDsPZvW+GiLZa8Glp6K44s09VDOBbZHQwjq1JLU0PJv
-         am0JVUgR95eR5v+nZWVQcOb2q8hb3thQME4IioA8v+5M1beDtxxZvnMuFxSciX1/nxsa
-         Wm4l8b14wlN0IGqOs808Vc5wqouB5i629FN6TPGHbpDyhUb+VMKYncjpuv1qnTwYj/ro
-         BFsA==
+	Tue, 14 Jan 2025 02:07:20 +0000
+Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-5f32fab5de9so1278447eaf.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2025 18:07:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736819126; x=1737423926;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1736820438; x=1737425238;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=N+8EgI35uv9hF/0OPf+vuhBaBLFzRkr/a46A2Dy1sAk=;
-        b=KIHjPiOjC+nYrvVFwTPo1J1OySNqbMSFX2Nkb9gQYtCC9ICxSC+jznR+1SUB+Js5a3
-         +aRWuzL485D+7K0jZ1O424h9hb4aUd4/5cIcNMlUharr4Zg+dxsO8ob4LpyDt314GKK6
-         2WNirLX0YeLUFQ/NnINCQDQWyRPItJFdGRLyB7nI9ALEIqbEDy4YB6JZ9N2O7Dq9dyXz
-         nCKu6vdrB6cPSGEro1ZP63A2rkzGad0v+v36fDTtarvEQto6rJq3yMlk6ewbMVelvEi6
-         EiUHqT2v9xG+yV0YEmfnSqzqyTAruvH7sy1ejovBMEcJtbDRk4mJZHGfb8+mRYcH2Y+u
-         MF9g==
-X-Forwarded-Encrypted: i=1; AJvYcCWSbp5aInlpODvQpVoHN+jSsSfVXUVoWoUBI0DzFo/U/qLPEfitHC4Q34T5k6GLq8TH7XbPfiUX88pD7nn7Pw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxAClEvkL7BkA/qklmYZFeP0fQjzy21/l4vu8xJluHWSW49yaKC
-	tFn20odvQjoCnyObDBm7WCb4O1OAoyuG4EEuliWd7Px/PaNLknnzQ0Swc0aFB5xSbXI6q0wPEWT
-	nAJ3xfUzV3Vw9KwNk/bgDpXAWMORXi3FQ1/iS3w==
-X-Gm-Gg: ASbGncvyNC2NbLU7kQIA70VpSfu3sq/SC+ylQJTL1qwJ6AB8vNVm2OEPBjUd6exX+JL
-	XRQ82s8XEALFuv8NHnMovF1PTwUiAD316kvfx6XvAhMGyvVmfpYYYsHC7pc/D6qyLRLOirA==
-X-Google-Smtp-Source: AGHT+IFw+8EJH3+sYLytBcSM829UVF01V8OV1UAI+CzwsaCh0PJQpMGC1iXxd5V1WhnvSyXdw+9iFPxRIV5QmN5E1YE=
-X-Received: by 2002:a25:2055:0:b0:e39:8482:5d5f with SMTP id
- 3f1490d57ef6-e54ee2026femr12527255276.46.1736819125705; Mon, 13 Jan 2025
- 17:45:25 -0800 (PST)
+        bh=O7tVda83kgsvcWofCoQwXTUD8V5WuoqGzphevzyeA7k=;
+        b=QazD0jXXibHFO7qUDo0MURAHAIH/Fy9BjF4EVl4MuriFXJaQdjwTHedlxQJvF/RRPM
+         fpkandHIVH/djhstR1KAq00O0HsoVheZIqzQ161k3oZpoGgQ1UvfXbyQXUnU2au1Qo7T
+         SUF1h7mjXcHOdjr8rx+npMOVLZVwqC2oQPkYNfGCGUwIesZTs5lwUrIjvHDeXwZleLk8
+         qqXveNuxK1JEA+T7ZiHeg/SC9fTIwdiI8GyuoMc9E0rR2YgGRZ5bEBowAW2UPK9319CG
+         VmPsdJADNa58OWKv2bmuRZF68fRE5cTUx+GYs+y2kMjzaMu+xmePvgk8q40b9r9ySooG
+         d/8Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVIKhO4MA3qbMWpFbVMcDVxyHHPccHto32VmnygAFbh1jqprlxzg5jSjIrnH3Ke3A/ZSOGHqXlQRir1B5+kEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIJYq+7/wvB7XqY3gL6xEwL+VMyZMrYA0PdM5R3lrrY0+jhxvt
+	w6bxy7iJtCA03UMpT31ObwL+NzGxdUGhpd2owiV7RF94WkHm3NKI
+X-Gm-Gg: ASbGncvv8SzHC15yQwvfSThBwQXOIKjPmzbC8Gia4ztQ49iQ7CP9gY6P/GV+MNEIiyf
+	zDFjadZRyIX9gFhMJD+WmrHcIOuDmp0HdaxRj65eT2kp+RruXHnejttzDS8chbT96gNow53NM2s
+	Lf+syWpt+ymJo2A5CEAJ1ieZQjU6qWwEiIvkB28OxeTydwTxMe95SgJUN9EEaX8E9k2CSa3/PHi
+	hbDiQNvDXcnkV1TbEHHqCIHGxtcQZ64g0lT7glXt8DIl/MESgbjiWpJlNiVBXr+JUXunqo2QA==
+X-Google-Smtp-Source: AGHT+IFFsoFl8vMd43GjQz6AqSSIGc3fZpTQeUhKk2BElyCxz6X5aD74tmtuhUdgRnb6+idqpMQRNw==
+X-Received: by 2002:a05:6820:88b:b0:5f6:e337:9fd with SMTP id 006d021491bc7-5f7308e1a67mr14219984eaf.2.1736820437677;
+        Mon, 13 Jan 2025 18:07:17 -0800 (PST)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5f882755172sm3915340eaf.27.2025.01.13.18.07.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Jan 2025 18:07:16 -0800 (PST)
+From: sean.wang@kernel.org
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com,
+	deren.wu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 1/6] Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO"
+Date: Mon, 13 Jan 2025 18:07:07 -0800
+Message-Id: <20250114020712.704254-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org> <173680655387.149204.17517246537828613856.b4-ty@kernel.org>
-In-Reply-To: <173680655387.149204.17517246537828613856.b4-ty@kernel.org>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Tue, 14 Jan 2025 03:45:15 +0200
-X-Gm-Features: AbW1kvZk-xrGSPiMdguMFD_hc9SYyHKa4i2bZt-kcCNVjxqbFCr5K6kr1tPBECs
-Message-ID: <CAA8EJprDaOTEOYf5JHC7UYwqRn2vXUH9FT==HjZg1QNfDMmBcA@mail.gmail.com>
-Subject: Re: (subset) [PATCH v10 00/10] drm: add DRM HDMI Codec framework
-To: Mark Brown <broonie@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_174527_534080_56A3B200 
-X-CRM114-Status: GOOD (  21.94  )
+X-CRM114-CacheID: sfid-20250113_180719_440042_0F8E1458 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,55 +86,167 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 14 Jan 2025 at 00:16, Mark Brown <broonie@kernel.org> wrote:
->
-> On Tue, 24 Dec 2024 03:47:52 +0200, Dmitry Baryshkov wrote:
-> > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > there was no simple way to get the drm_connector that stayed at the end
-> > of the bridge chain. At the same point the drm_hdmi_connector functions
-> > expected to get drm_connector instance.
-> >
-> > [...]
->
-> Applied to
->
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
->
-> Thanks!
->
-> [01/10] ASoC: hdmi-codec: pass data to get_dai_id too
->         commit: a8e792d3f0bbecb87ab05e9592cadf0b178ab952
-> [02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
->         commit: 5b0779ae13de345b405a67c71cbb63705cadb295
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Mark, they had your Acks, so they were picked into drm-misc-next.
-Would that be a problem?
+For MLO, mac80211 will send the BA action for each link to
+the driver, so the driver does not need to handle it itself.
+Therefore, revert this patch.
 
->
-> All being well this means that it will be integrated into the linux-next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.
->
-> You may get further e-mails resulting from automated or manual testing
-> and review of the tree, please engage with people reporting problems and
-> send followup patches addressing any issues that are reported if needed.
->
-> If any updates are required or you are submitting further changes they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
->
-> Please add any relevant lists and maintainers to the CCs when replying
-> to this mail.
->
-> Thanks,
-> Mark
->
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
+---
+v2:
+  1) generate the patch based on the latest mt76 tree
+  2) update the commit message
+---
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 10 ++--
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 50 ++++---------------
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  2 -
+ 3 files changed, 14 insertions(+), 48 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 99b4879d9a5d..2082e3904d76 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1289,22 +1289,22 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_RX_START:
+ 		mt76_rx_aggr_start(&dev->mt76, &msta->deflink.wcid, tid, ssn,
+ 				   params->buf_size);
+-		mt7925_mcu_uni_rx_ba(dev, vif, params, true);
++		mt7925_mcu_uni_rx_ba(dev, params, true);
+ 		break;
+ 	case IEEE80211_AMPDU_RX_STOP:
+ 		mt76_rx_aggr_stop(&dev->mt76, &msta->deflink.wcid, tid);
+-		mt7925_mcu_uni_rx_ba(dev, vif, params, false);
++		mt7925_mcu_uni_rx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_OPERATIONAL:
+ 		mtxq->aggr = true;
+ 		mtxq->send_bar = false;
+-		mt7925_mcu_uni_tx_ba(dev, vif, params, true);
++		mt7925_mcu_uni_tx_ba(dev, params, true);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH:
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
+ 		mtxq->aggr = false;
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
+-		mt7925_mcu_uni_tx_ba(dev, vif, params, false);
++		mt7925_mcu_uni_tx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_START:
+ 		set_bit(tid, &msta->deflink.wcid.ampdu_state);
+@@ -1313,7 +1313,7 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
+ 		mtxq->aggr = false;
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
+-		mt7925_mcu_uni_tx_ba(dev, vif, params, false);
++		mt7925_mcu_uni_tx_ba(dev, params, false);
+ 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 15815ad84713..d1506ee977a4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -576,10 +576,10 @@ void mt7925_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 
+ static int
+ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+-		  struct mt76_wcid *wcid,
+ 		  struct ieee80211_ampdu_params *params,
+ 		  bool enable, bool tx)
+ {
++	struct mt76_wcid *wcid = (struct mt76_wcid *)params->sta->drv_priv;
+ 	struct sta_rec_ba_uni *ba;
+ 	struct sk_buff *skb;
+ 	struct tlv *tlv;
+@@ -607,60 +607,28 @@ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 
+ /** starec & wtbl **/
+ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+-			 struct ieee80211_vif *vif,
+ 			 struct ieee80211_ampdu_params *params,
+ 			 bool enable)
+ {
+ 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+-	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+-	struct mt792x_link_sta *mlink;
+-	struct mt792x_bss_conf *mconf;
+-	unsigned long usable_links = ieee80211_vif_usable_links(vif);
+-	struct mt76_wcid *wcid;
+-	u8 link_id, ret;
+-
+-	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
+-		mconf = mt792x_vif_to_link(mvif, link_id);
+-		mlink = mt792x_sta_to_link(msta, link_id);
+-		wcid = &mlink->wcid;
+-
+-		if (enable && !params->amsdu)
+-			mlink->wcid.amsdu = false;
++	struct mt792x_vif *mvif = msta->vif;
+ 
+-		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
+-					enable, true);
+-		if (ret < 0)
+-			break;
+-	}
++	if (enable && !params->amsdu)
++		msta->deflink.wcid.amsdu = false;
+ 
+-	return ret;
++	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 enable, true);
+ }
+ 
+ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+-			 struct ieee80211_vif *vif,
+ 			 struct ieee80211_ampdu_params *params,
+ 			 bool enable)
+ {
+ 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+-	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+-	struct mt792x_link_sta *mlink;
+-	struct mt792x_bss_conf *mconf;
+-	unsigned long usable_links = ieee80211_vif_usable_links(vif);
+-	struct mt76_wcid *wcid;
+-	u8 link_id, ret;
+-
+-	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
+-		mconf = mt792x_vif_to_link(mvif, link_id);
+-		mlink = mt792x_sta_to_link(msta, link_id);
+-		wcid = &mlink->wcid;
+-
+-		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
+-					enable, false);
+-		if (ret < 0)
+-			break;
+-	}
++	struct mt792x_vif *mvif = msta->vif;
+ 
+-	return ret;
++	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 enable, false);
+ }
+ 
+ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 8707b5d04743..fd5f9d4ea4a7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -263,11 +263,9 @@ int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
+ 				 struct ieee80211_vif *vif,
+ 				 bool enable);
+ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+-			 struct ieee80211_vif *vif,
+ 			 struct ieee80211_ampdu_params *params,
+ 			 bool enable);
+ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+-			 struct ieee80211_vif *vif,
+ 			 struct ieee80211_ampdu_params *params,
+ 			 bool enable);
+ void mt7925_scan_work(struct work_struct *work);
 -- 
-With best wishes
-Dmitry
+2.25.1
+
 
