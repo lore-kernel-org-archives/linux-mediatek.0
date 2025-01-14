@@ -4,96 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE195E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 14:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 561DCE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 15:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jr+UhJKZsfyYjDO54OHmuicZ8YWvT6WtMPptE5N93Vo=; b=deICoQ9ZZx7Q8SSD7OVvs6VGUX
-	GOz2+YM5QqNzZWqtaP8d4LmFNNShLSecyMntmNEjkcZI4ADYgR12XsO35Wk9C0W7x+GGkucGik6+m
-	/wOejyMjcI+4E4hA6D7cD8lhP+Y70TuV8b8TFk+Q5JlOYx/ipAI+f0GJOVBBcZaiYZSNO4IH/ilKp
-	68BT464ZE8gcZ8cL8mgQNrkL/JXrZJN9nZo5CUWCqliwHDPgwKbi5IeKZwhYwnITynT+ERrb+iSUz
-	ITYiILBZpWfsiV2zMUtmCzJX+ZMS1LZrTk1N1O7cRM99Lsct/bluXvNjzIvVpGkUJ/4z7c3rx/40Z
-	CO0sjrsw==;
+	bh=rYThJmbcOREv3PsHgaHEbArEjAKoBFWcy4BkZMOVNJI=; b=zaSEzBTl4BjnOmyPFGS+nd/5FQ
+	zKs4kbUNNpyTJu0pJGRcNn4dBuzDWoabZSs/UtQS3NS17T8WYUDf299Z3V2k/nd5JzB2GpKBakwKW
+	1xNhFjGrI7nNZuxdQzyJaF2wHgFlSFJUy3qBhtOkUJNNX7MYT7K72yxf5LMrneb2dBJLttowBsd/T
+	GcxT1b0Z2TDt1XAZSoERHXS6i6r7GFlEEpWvGwbRUL78gwh2tMYLCmoNf/99bzVTMSfIpoe2wsJxY
+	EIH251XeJ7tmGnrb0wn+9GP2zVr/4bQsHYiiyduu+neKPC/sTbPU4DXZYxD7uGNVQlZ8SWlS44w4/
+	n/RSM9sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXiCj-00000008jbY-2KOa;
-	Tue, 14 Jan 2025 14:47:41 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tXiai-00000008oac-1jtT;
+	Tue, 14 Jan 2025 15:12:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXiAg-00000008j4L-1zwr;
-	Tue, 14 Jan 2025 14:45:35 +0000
+	id 1tXiYJ-00000008oAO-1GB6;
+	Tue, 14 Jan 2025 15:10:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ED674A416A3;
-	Tue, 14 Jan 2025 14:43:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96D8DC4CEE3;
-	Tue, 14 Jan 2025 14:45:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5F2EA5C5717;
+	Tue, 14 Jan 2025 15:09:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC181C4CEDD;
+	Tue, 14 Jan 2025 15:09:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736865932;
-	bh=njLUbHodj+PkFFJbOpBXMJe/dUHzlPds6g689ssKjDA=;
+	s=k20201202; t=1736867397;
+	bh=pF75XEhCKXfa8xLX7BhBkgUQunabFzT49vPHGlCrxp0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ArLYPNP+SZ3jG9EoUmQe5FLLdIDakxwq6Q7RuSD32e73BsYYGiP0HGskwiYISsVk/
-	 A4cN4oaepryylm2zcdyZvwXYmrLXtLEkSjmh3sypogzbKV5dGowGgn5utBYogoeqCQ
-	 gGkaQY0DleA1JU9QhyMp3KQpXRHFHLHLiauaOSxLBjUzjflCEWHxRDD1Tr5JejWzfB
-	 rDcIoXWLIpb1nRBKBBEyfnD3XWjNbkCB8L9qbqxDEpYrpu5k96LEAYFBhQj/kso8Re
-	 cSId/vsSLtV+VWwQndcoz6njFJXIniqcEvPmIAynpF235AZiTHCOJKUOH9gpbPBxqK
-	 RiYjQh2gbztFQ==
-Date: Tue, 14 Jan 2025 14:45:22 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Liam Girdwood <lgirdwood@gmail.com>, Phong LE <ple@baylibre.com>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	b=Y8BAvFB9wyfMPoiWJw529UvoYSB6t2kMT9i/2h1HSI4JFMtvWoxIsXQ3GcbgJ9oK6
+	 VH0lVO2wZk9/6yQZ5BLvJBD3yi0IhFH84jdw2+29r9kZodDMMx2P/99jEiANO2JKwf
+	 CK6WrnXksNSX1/HcrvXFyZpplL6njbLq/6Uoy9+FHkpk5vrUZesIQg6KgVULRSitMq
+	 ZNw23DEjnUAn33zZvbr/Dg7P3XO1fwJwoqIkeIg7yqnBpnQ5tdDbyqvZiRqZflndLy
+	 5KhYZ0/sbtdcaH6MVKDAph8GpK/xF6W+jlxnbJUmtQis5udz5Q+7tSA6YEtdFYYlsq
+	 8AC0XTwA+RNWQ==
+Received: from johan by xi.lan with local (Exim 4.97.1)
+	(envelope-from <johan@kernel.org>)
+	id 1tXiYK-0000000079j-0bFX;
+	Tue, 14 Jan 2025 16:10:00 +0100
+Date: Tue, 14 Jan 2025 16:10:00 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v10 00/10] drm: add DRM HDMI Codec framework
-Message-ID: <078e2d2f-3bd1-47ed-b6f8-60f6913fdce9@sirena.org.uk>
-References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
- <173680655387.149204.17517246537828613856.b4-ty@kernel.org>
- <CAA8EJprDaOTEOYf5JHC7UYwqRn2vXUH9FT==HjZg1QNfDMmBcA@mail.gmail.com>
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] gnss: mtk: Simplify return variables in mtk_set_active
+ and mtk_set_standby
+Message-ID: <Z4Z-SJZIekQ3SjP4@hovoldconsulting.com>
+References: <20241117052501.1138926-1-iwamatsu@nigauri.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="nKWVI6A6JSkBavZP"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAA8EJprDaOTEOYf5JHC7UYwqRn2vXUH9FT==HjZg1QNfDMmBcA@mail.gmail.com>
-X-Cookie: Sauron is alive in Argentina!
+In-Reply-To: <20241117052501.1138926-1-iwamatsu@nigauri.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_064534_652197_F4AB836D 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20250114_070959_429114_69B6D965 
+X-CRM114-Status: GOOD (  16.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +77,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sun, Nov 17, 2024 at 02:25:01PM +0900, Nobuhiro Iwamatsu wrote:
+> Simply return directly instead of assign the return value.
+> 
+> Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+> ---
+>  drivers/gnss/mtk.c | 14 ++------------
+>  1 file changed, 2 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/gnss/mtk.c b/drivers/gnss/mtk.c
+> index c62b1211f4fe4e..be20f6d6470736 100644
+> --- a/drivers/gnss/mtk.c
+> +++ b/drivers/gnss/mtk.c
+> @@ -24,25 +24,15 @@ struct mtk_data {
+>  static int mtk_set_active(struct gnss_serial *gserial)
+>  {
+>  	struct mtk_data *data = gnss_serial_get_drvdata(gserial);
+> -	int ret;
+>  
+> -	ret = regulator_enable(data->vcc);
+> -	if (ret)
+> -		return ret;
+> -
+> -	return 0;
+> +	return regulator_enable(data->vcc);
 
---nKWVI6A6JSkBavZP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+The current style with separate success and error paths was used on
+purpose (e.g. to make it obvious from just looking at this function to
+determine what is returned).
 
-On Tue, Jan 14, 2025 at 03:45:15AM +0200, Dmitry Baryshkov wrote:
-> On Tue, 14 Jan 2025 at 00:16, Mark Brown <broonie@kernel.org> wrote:
-
-> > [01/10] ASoC: hdmi-codec: pass data to get_dai_id too
-> >         commit: a8e792d3f0bbecb87ab05e9592cadf0b178ab952
-> > [02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
-> >         commit: 5b0779ae13de345b405a67c71cbb63705cadb295
-
-> Mark, they had your Acks, so they were picked into drm-misc-next.
-> Would that be a problem?
-
-No, the reason I applied them was because I was getting fed up of the
-resends and figured it would be easier to just apply the patches so they
-were in -rc1 and could be dropped.  I'll have missed any mail about this
-being applied due to the drm: header.
-
---nKWVI6A6JSkBavZP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmeGeIIACgkQJNaLcl1U
-h9BABAf/Rpl0QApU53vHkXku439fvk1W2JlcIkEhtO9wlYIsly+z2mnUMkCOSX4i
-JLpb+GVB0L2TJAF1Y3HQ0ESBC6JzV7JzQiUqBkOTZEOQIXLdCu40xDg5coebNiS4
-sw5DHqMiE7q3rAcXPCkkACdE+o+7S6CuIKgnMXuvMBcNUlNCcmbDEei/z3aSihs+
-A/02s7UlSruEVd5UZv84abvqrMTVq963YEtAnbufnFJ/+xmJzqxzreVWOOMZFG3v
-EmzqBpCq91RmV1JJ8gJe6RnmIfKn2PjesCresNQhoIQecqVkff5nZFIxu77C2vVF
-UlobtBVzPrmFG8C//RkIpQUHCptnCQ==
-=oDw/
------END PGP SIGNATURE-----
-
---nKWVI6A6JSkBavZP--
+Johan
 
