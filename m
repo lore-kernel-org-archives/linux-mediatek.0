@@ -4,98 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0C6C02183
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 11:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B5CE77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 12:59:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qbJZNH3I2kHSJ3p3lZHpAuzG4uICLJvj/AiJ0Ww5yMA=; b=uY9UbyJky9r5J6RqChOLEkVSpV
-	Dtg8UnpvyC7VXeUiGziOj7cesf5IsM8Vc3gPD/TplFtyXmJy+IgIwtPrwZ40zJEwaRT7oeRfbVUty
-	iWXPg80mT4rtPGyuvffx7BbjBDg2ZWzcPqydhPopjB0PFX4g1LtJEbgi6fxxlvxrjyyjynLwuv//K
-	7q/3zkPNR/B2FwOhG/JnPLBO5RnzxSX8Ev3mA8rQg0TSxA5DSr8yw7yggLHmRDrdI4pmVjsdw2cQB
-	qP87GOhMsLRC8W8AlyZ+2Sa3C6SvvZ5csiDFcEAP2nQbW9AffFb3+jhI569gJ9pyvJxwCukAqzzXS
-	okO8vQ2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n/wqUnPkHUfSZPeicafpwQOCEvjn5Jc9IONjzEWW1Kk=; b=Ul8yINHo3o6v9WyFGSA3TTCC0l
+	Wv9mXLiZrAO5IAnyRP5KorUx4FbMvTilp0xIGr5N+AO9P3aCpZ/WvujcLAOVOoflfr6yr4Oll7dn7
+	kS3BcQzxz07GPuTZ05LDMNZigo08wzd8G+jXKPkdevduevHd2rlBws71noSCzNjd7qWsdahIEqrRO
+	sraMHRVB5Ut5YbDLuxD26N1roeD84uSZP5y+H0u/7J0ixinemjJgEN+/fAAugTkAP3CtYcpXGEIWw
+	0KtFpH99THIbTyXmpkpV2yZewequn/7fq6WthZedm1JT3d9oFd4iuO+qiq5drIBnl6tbsEpnuUJeA
+	HV6GgnGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXfWe-00000008JxF-1Q5h;
-	Tue, 14 Jan 2025 11:56:04 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1tXgVe-00000008Se0-2MCS;
+	Tue, 14 Jan 2025 12:59:06 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXfVO-00000008Jqv-0fO4
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jan 2025 11:54:47 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4361c705434so38377095e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2025 03:54:45 -0800 (PST)
+	id 1tXgUM-00000008SU9-26er;
+	Tue, 14 Jan 2025 12:57:50 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5d9f842f237so132064a12.1;
+        Tue, 14 Jan 2025 04:57:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736855684; x=1737460484; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qbJZNH3I2kHSJ3p3lZHpAuzG4uICLJvj/AiJ0Ww5yMA=;
-        b=AulqPZQePp+TrSK/xOGXb3nQOZJvHu3GMytzJvbNkjQWkMsHZbl2plTolkl2FJ14Iw
-         0BxDf5xBtY7PbjmYtBU57MwgmFfdTLYGaM/3jG3OpIdWtZ9GSUse+76KKrd15BOLPNWw
-         HybrYDOnrEDmP5X224JYv7vv7qShry2vCSeUA4qSdkLuop+X7kSbRUWzE1RilM8JQjZL
-         dqfWII6ZVfp0a3k4GjiwjvI1BG79uI9xJMRFIeToybSPBiwuDNI4BBVSLGmCgFgo/UF9
-         YQKvhtiFgBifeFeOlEkk0C30U5VGDyXjQ2e2lA3WgLq4tTDz+b0mFTcuKDRXh8Rz7aLs
-         YDLw==
+        d=gmail.com; s=20230601; t=1736859464; x=1737464264; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=n/wqUnPkHUfSZPeicafpwQOCEvjn5Jc9IONjzEWW1Kk=;
+        b=XzIx+4F7BX/nBPVt8JzCH/na5o9z1VKiJpuejw5KrBHKyrCo8k/shMrIodJGMVqtGg
+         98Mbm2sc6mTeWJGM1myXiELf8iC4qvEILLHjY9oERfN5BWCdPZ/TD2rz+UXzng8hj8dY
+         h+v3tR53dp9uEOdhGvuVTOR51Mtr5jpQKid6Pi4QKHwHDQON/XSzuq+gbQcHDrFqJgOo
+         47Ph2BZkKtMA354XQxD6V6zE9gRBuypIUtsHfq4sHG9rahNUVrhgpjR/HYT3FOVmx9Ja
+         LCZ9VgLaTcnScB4/0niKih8BdGgZS2GXX4G6orAfIylT66BeamAzOAkusH0IbiVfQBi4
+         2KKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736855684; x=1737460484;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qbJZNH3I2kHSJ3p3lZHpAuzG4uICLJvj/AiJ0Ww5yMA=;
-        b=l5Saab8YC6wZuARBQMm5jv3GkZ9Z+joayQcIoboMbgzacoR8RreS58GEfkhqwz52VZ
-         hOK7zFOwmcv4CzQ3hnywzasIIGuJ2USW1RSrlzqVgqTr/YOfceR853/YbA6mjSV8PAbb
-         djvXMzA9Vl57i0dAiGaLjzKWciWKpOO7Sa7u0+tIm09NAVdA94UNy3cAFgdtxjnWEE1G
-         MK9oys9Ly9LIQDkS7MLcNGqJkoHv5JmA6xhrKm1quI6pShR82P6kjTLeyv7JbS40q5RB
-         YVdPFxjHATOZ6Y+cWVb3oC2iZF35KBcwUIxm83K0e0qLv+PCZ3S6xNd2M92ntB6KhdNn
-         bS+w==
-X-Forwarded-Encrypted: i=1; AJvYcCW64r8nMdLnvLecM1o4Vil80snJ6FOces8dM7pwBP1jn6UL8GPw0xoGI/6/mYoe2J70klNGcae/uU6aEgq9lg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1u7pmQFOhg13iAj0mNT25dCJ8GFkBhuMR6wwZR5KVHA6zQki9
-	NsTyy/Cmfv1llrdNIAH1jqWVF9CttOkVCHsFINtpP8lmbtrS9rfucAVnAgWQK3Y=
-X-Gm-Gg: ASbGncvNUGtKpfzxHaoX/a261xlHAhQGxjLmA3uizhQGkjxzR8Xg6lJyymfyL9/aCDb
-	bnS8nil8c7FgLvLcaeRf6GeIF0us2l3piUcr5R66VX/8AwJXr8Q0zsawVjHIMTP69yK+gYze40c
-	JRr9DYHLqEgUAv31rHESmSe+njPV8ZqceO9/kyIsknutGIa5ykoyYbtGcD/FNjkIKQsajqe0BRu
-	SWIs2bgbOXnkCOwEyt5VP6Ze7aYi0QSce7iyitr1tp3zT4AmrJtnHqwPrGmTSFKRVG5KPn9rSCl
-	YqEZ9FzMLtJtAshvuhnl
-X-Google-Smtp-Source: AGHT+IFlWMbt6nrzrirx/rDmydW/pVj5xprtbzyuAVBQY0lAHuDRdBjo+/B7yttkEhzKPsZ0JknC1w==
-X-Received: by 2002:a05:600c:283:b0:434:f1e9:afae with SMTP id 5b1f17b1804b1-436ee0f8783mr124040565e9.1.1736855684496;
-        Tue, 14 Jan 2025 03:54:44 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-437c0f03984sm13710775e9.0.2025.01.14.03.54.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Jan 2025 03:54:44 -0800 (PST)
-Message-ID: <53f3803f-c6ef-40db-9794-6c90b37659c1@linaro.org>
-Date: Tue, 14 Jan 2025 12:54:43 +0100
+        d=1e100.net; s=20230601; t=1736859464; x=1737464264;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=n/wqUnPkHUfSZPeicafpwQOCEvjn5Jc9IONjzEWW1Kk=;
+        b=hODveoBVaaialvXhTOTGaYnw/3LsXweaqkUOGzTWP013T5ckkrdwYs3ckR1C8FukPt
+         YkrnfSGN/pNTahAwHdVALhCEh1RRkQR+1TLmu5DThWC0KWO++tn/AUqHvJwtzweZHNFK
+         1MM2MezPYkHhv5KefYTiR+jClkxyI162v1fjFBuaoGpSmkWrJPOCoSgaMs70m5tx0Tvq
+         bAWpGPRWWmZCQvWID/chNQS821ugqgOzp9bvvGJitbhxFkHibTlErN4qPjm8GKetlVHw
+         aMIUVN0Jdbq9dHRYG2SbYJH72gu58Fa/cuMMQlJ+jJeUPpHny1lFAb48sCOAKql7aRzh
+         obqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW+NEdiR61XQFA7TL9UWTIYnyTiArMsjvyQitoPygu1bm4ZghxGJbhp2un8xyErhtbrJDR61QV9dU5viqFJn/lj@lists.infradead.org, AJvYcCXt3n/Eu38wTuEq2bHbf0Zo/QPl5q0lOn8t6Lf99mEPjhrM+dsqMF7QanhMxFpdcTZB7AZrAL+EGzUwZNEGAKY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLGv6uaCAgS2J4YBhlSTG4hYpnjqy50xhajxoEyioZndUY+yo7
+	qbM1CukQJ1h51Sf5izgASsExHP87TmVVhC+S+IdjOMMM4/jmj0WW
+X-Gm-Gg: ASbGncvghSxOmdXPMK9FQ4ft+Vnp+2HhdKHFKSdHCmAUrnMErUXaVwkwPu+95alrOzn
+	CObure0QN5utSFnOhkKahsfjBY09Otrnk5vgQ6L4hUNiT9vE5ks9/Ii6nHHf4pDTRZXQwu0BcJQ
+	UiSgl3fS8jQDV7IHEUoVqvBj0vIJ746+MlryMkwO8OD/g/u5rb1v0GzwaAdrWhi7H0Ei+2d0obK
+	G1CHO9DykG/mdxSQT5Z6P0TFnyPNzfqcKkBSiHJ7eHs
+X-Google-Smtp-Source: AGHT+IEeoXDgl4L3Whp5n/U9RhVAoq8DWplfRB8ruTR8XM2o+ta6PkqlFr15CRmR/MehlW4P+BPIAA==
+X-Received: by 2002:a05:6402:2347:b0:5cf:cc32:82f2 with SMTP id 4fb4d7f45d1cf-5d972e1b96dmr8686421a12.5.1736859464073;
+        Tue, 14 Jan 2025 04:57:44 -0800 (PST)
+Received: from skbuf ([86.127.124.81])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d9903c4598sm6028256a12.53.2025.01.14.04.57.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jan 2025 04:57:43 -0800 (PST)
+Date: Tue, 14 Jan 2025 14:57:39 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Alexander Duyck <alexanderduyck@fb.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, kernel-team@meta.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Michal Simek <michal.simek@amd.com>, netdev@vger.kernel.org,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	UNGLinuxDriver@microchip.com, Eric Woudstra <ericwouds@gmail.com>
+Subject: Re: [PATCH net-next v2 5/5] net: phylink: provide fixed state for
+ 1000base-X and 2500base-X
+Message-ID: <20250114125739.sgegfxibbzpc2uor@skbuf>
+References: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
+ <E1tXGei-000EtL-Fn@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND v2 2/5] thermal/drivers/mediatek/lvts: Disable
- Stage 3 thermal threshold
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Balsam CHIHI <bchihi@baylibre.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>,
- Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?=
- <bero@baylibre.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- stable@vger.kernel.org
-References: <20250113-mt8192-lvts-filtered-suspend-fix-v2-0-07a25200c7c6@collabora.com>
- <20250113-mt8192-lvts-filtered-suspend-fix-v2-2-07a25200c7c6@collabora.com>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20250113-mt8192-lvts-filtered-suspend-fix-v2-2-07a25200c7c6@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <E1tXGei-000EtL-Fn@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_035446_188766_92359D10 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20250114_045746_542384_051B5E79 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,32 +124,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2025 14:27, Nícolas F. R. A. Prado wrote:
-> The Stage 3 thermal threshold is currently configured during
-> the controller initialization to 105 Celsius. From the kernel
-> perspective, this configuration is harmful because:
-> * The stage 3 interrupt that gets triggered when the threshold is
->    crossed is not handled in any way by the IRQ handler, it just gets
->    cleared. Besides, the temperature used for stage 3 comes from the
->    sensors, and the critical thermal trip points described in the
->    Devicetree will already cause a shutdown when crossed (at a lower
->    temperature, of 100 Celsius, for all SoCs currently using this
->    driver).
-> * The only effect of crossing the stage 3 threshold that has been
->    observed is that it causes the machine to no longer be able to enter
->    suspend. Even if that was a result of a momentary glitch in the
->    temperature reading of a sensor (as has been observed on the
->    MT8192-based Chromebooks).
+On Mon, Jan 13, 2025 at 09:22:44AM +0000, Russell King (Oracle) wrote:
+> When decoding clause 22 state, if in-band is disabled and using either
+> 1000base-X or 2500base-X, rather than reporting link-down, we know the
+> speed, and we only support full duplex. Pause modes taken from XPCS.
 > 
-> For those reasons, disable the Stage 3 thermal threshold configuration.
+> This fixes a problem reported by Eric Woudstra.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/phy/phylink.c | 29 +++++++++++++++++++----------
+>  1 file changed, 19 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+> index b79f975bc164..ff0efb52189f 100644
+> --- a/drivers/net/phy/phylink.c
+> +++ b/drivers/net/phy/phylink.c
+> @@ -3882,27 +3882,36 @@ void phylink_mii_c22_pcs_decode_state(struct phylink_link_state *state,
+>  	if (!state->link)
+>  		return;
+>  
+> -	/* If in-band is disabled, then the advertisement data is not
+> -	 * meaningful.
+> -	 */
+> -	if (neg_mode != PHYLINK_PCS_NEG_INBAND_ENABLED)
+> -		return;
+> -
+>  	switch (state->interface) {
+>  	case PHY_INTERFACE_MODE_1000BASEX:
+> -		phylink_decode_c37_word(state, lpa, SPEED_1000);
+> +		if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> +			phylink_decode_c37_word(state, lpa, SPEED_1000);
+> +		} else {
+> +			state->speed = SPEED_1000;
+> +			state->duplex = DUPLEX_FULL;
+> +			state->pause |= MLO_PAUSE_TX | MLO_PAUSE_RX;
+> +		}
+>  		break;
+>  
+>  	case PHY_INTERFACE_MODE_2500BASEX:
+> -		phylink_decode_c37_word(state, lpa, SPEED_2500);
+> +		if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> +			phylink_decode_c37_word(state, lpa, SPEED_2500);
+> +		} else {
+> +			state->speed = SPEED_2500;
+> +			state->duplex = DUPLEX_FULL;
+> +			state->pause |= MLO_PAUSE_TX | MLO_PAUSE_RX;
+> +		}
+>  		break;
 
-Does this stage 3 not designed to reset the system ? So the interrupt 
-line should be attached to the reset line ? (just asking)
+Are the "else" branches necessary, given the "else" branch from
+phylink_mac_pcs_get_state?
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+static void phylink_mac_pcs_get_state(struct phylink *pl,
+				      struct phylink_link_state *state)
+{
+	struct phylink_pcs *pcs;
+	bool autoneg;
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+	linkmode_copy(state->advertising, pl->link_config.advertising);
+	linkmode_zero(state->lp_advertising);
+	state->interface = pl->link_config.interface;
+	state->rate_matching = pl->link_config.rate_matching;
+	state->an_complete = 0;
+	state->link = 1;
+
+	pcs = pl->pcs;
+	if (!pcs || pcs->neg_mode)
+		autoneg = pl->pcs_neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED;
+	else
+		autoneg = linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
+					    state->advertising);
+
+	if (autoneg) {
+		state->speed = SPEED_UNKNOWN;
+		state->duplex = DUPLEX_UNKNOWN;
+		state->pause = MLO_PAUSE_NONE;
+	} else {						|
+		state->speed =  pl->link_config.speed;		|
+		state->duplex = pl->link_config.duplex;		| this
+		state->pause = pl->link_config.pause;		|
+	}							|
+
+	if (pcs)
+		pcs->ops->pcs_get_state(pcs, pl->pcs_neg_mode, state);
+	else
+		state->link = 0;
+}
 
