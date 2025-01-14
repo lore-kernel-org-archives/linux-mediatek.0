@@ -4,72 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78994E77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 18:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964A9C02183
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 19:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3f1LwfpsuxGFM6Ddbf631zkX1gdyIWY+1JlKXodGmk0=; b=mZSTWzuf0GFdgYF12GO/Lf4zde
-	CLciytSuns/T4mT7gEiXkcCj+1GvffMHsAywPfsl1RwFsz/LyxR/8MjeQRygVBgijhpEzKY/bAoaw
-	HfkZE+rlMGKmwkPL9xbKTFiLi4rmb+fwGmipId4kTUmiTA0VU1v4MUcjsZ/I0jeZcmk/QuyGYuvJh
-	AydmOBoR0cvEFoj6eFsTff6FTWa+53qB0DhQi2wYE5jDqXIxX6tbPnK98yLlggrxuuINm0/K7pQ00
-	QCXfOjdR1vpVOfkCbjJ+3sHwaSYt7EQ1PtaAGsuW0qtKQBdzbmg7QpQyUgIHil8q9JDx2e0Iufx64
-	fEqWpYLw==;
+	bh=xWXRGYqIYfAFCWYGR5cc8ElnhXv1e/ZNViY5lKk/9zc=; b=ZukI/VPSkEDUTjM53nRLUpcoZo
+	kzWABR2h/FLyRg7u/7sfQ9hE2YeIkSKV4RqwKwFTUyNBcIwGKr9JTgwy9UTqALPlj9fz//vMnPHT8
+	RO4Kjqxr1+2aJh+mdrKGEdoT5cZRdpNtceznS0dKfsMlMmtaUIvdGCsVx/Z84ChVOLAVoz0e0eK6s
+	b53OlDlL9w8CLJ94juptPFAnrwQxqDSGdOxXTY4varwREdiOq5TZIomQmlQ+V6wvy/GMknEtTF9e3
+	1/QbuSCC1y+ayLQsCVMCx9OPVRGM8BP73t6YvBmCjLAW7H7zfb5jg80BUF/96a7lejRdH00OE2IEU
+	bPS0MdOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXlha-00000009Qpb-1RT1;
-	Tue, 14 Jan 2025 18:31:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tXmsp-00000009ZgH-1k3b;
+	Tue, 14 Jan 2025 19:47:27 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXlgH-00000009Qgg-2alH;
-	Tue, 14 Jan 2025 18:30:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Date:To:Cc:From:Subject:References:
-	In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=3f1LwfpsuxGFM6Ddbf631zkX1gdyIWY+1JlKXodGmk0=; b=JDDWdfM/1iwnjOrHfU7DCmY6xR
-	0jML6oUo9S02lyrZN47TWA86koklDpQc8MckCKAJWnhc7adFfX6FYafKqActhfgOFXMFWGvfrSQfU
-	21jvqqOSUgM24muuvAuoToyUF30biHGfeq9/xfBOJr98GgIcY/nYelMGLsnikWTB3MSD2Wn8svAVn
-	z010VRplpTWDFK9jd5l06H8dmTTHqTINFR/yOUKUpPUKoF3XRBtor4DPnoEpBXCxY0izGbURE+yOQ
-	w7P9A6Q91+5Qbeds00D8csPq6yJXhnLGnbz8lH6lx2imqCXsAji5CyK9OkmKBHlQBv1CsyR4tXhLW
-	0auUkkiw==;
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXlgE-0000000AY14-3PHA;
-	Tue, 14 Jan 2025 18:30:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4029BA41B50;
-	Tue, 14 Jan 2025 18:28:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED529C4CEDD;
-	Tue, 14 Jan 2025 18:30:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736879419;
-	bh=Q6ym6NiTLX94Js/7c4QLFam1iJe5mEF/nkdB0iOKssw=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=YN+FKONNKlXuatiYAuftdvXRxbCPQSv4up3Z4rbgCr5xQXIQ5x2T7y6KECjevJsDG
-	 M8Dz9i8yNyMoCU18t9kqDtHSoE6O0oOVwopYMIWkTY9cPmGvYooaG7uMUXG6whA51D
-	 7030/sVD7z7dsL7DzzfePua7d/EKFX/GfZG32wMzZ+UiKIqDOJQjh1HkywCrFyhhCh
-	 C4XvPgW51gSd8x30LWGvoMd+rEW/GJFpfbIHVl7UCiKC5wRu5ecOm7reg2FlQ6gN6C
-	 M5yjc7OxX/4YsghbuW5UpZ44IPY3c6qvBD3pIuBbRqV+ymVUmNd4qH9UH6i4UAik1Z
-	 vz/arfe4cXuNg==
-Message-ID: <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	id 1tXlgQ-00000009Qi1-3v5Z
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Jan 2025 18:30:36 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-43624b2d453so61388185e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2025 10:30:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736879433; x=1737484233; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xWXRGYqIYfAFCWYGR5cc8ElnhXv1e/ZNViY5lKk/9zc=;
+        b=h4OpJ0QwtJJ3RufE41qQ9KZWn0oy+T7Wsu5BGSjBWI69s/W8w6UrIbc63idhERcqhy
+         bulctRsqu4PxnOP1eMlgJwMUOndnmHraeEqCa5LOwk8W5ENttCEzERGmdL2IYnesNuJf
+         iOC2xwChcbRGtm2i+AKjKX1LiMdH5L3IrxYTzEROizm7yHzMnC/ohVnnAh/wHwY0wxAv
+         FdUwmYWY0CNSo37uP4TvjRkoBMKYZ2Hh1fPtmdtgxYrDDowg4TwWEfPvjqMJJIMaDwuB
+         Y/zykrE1AO/iCCCnOTrmScOjs1C3pbi0wY4RSbITCQdeYH3zZxr8uIjmMQuiV9gLHxk6
+         OfbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736879433; x=1737484233;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xWXRGYqIYfAFCWYGR5cc8ElnhXv1e/ZNViY5lKk/9zc=;
+        b=kzWhLwaWGGsjSqGJb1gGANlJncHOdSCr2MrVKYxyqL6Xss4+1MMjuch0njdJ4R1pwz
+         0Rh0nD8D7VNEKr8EDz3zqD1F8+KZsgW7XXWJG3vPs5L/nK1cIHGQEJRWw1fYRzOXFPoZ
+         8BEm8URBWIDtPq0HYg9xbU/3LzfsAQpZyR1YBtgxAIhBocrQ1xhHc1aRbjiOvpleh0Zb
+         3rPR5GgSrKt7wEbzSaU2XLlsmaJqrdK2oPezPXo1KePbdoxWJ9ri3PjA2z6ovP3G+/DN
+         LJ4BUs/7yVZ618NT8mKowGbNxtHlEXUThGVss2QDQsvFxEnWiR2nS7SRzYffmGqcHCe4
+         cbFw==
+X-Forwarded-Encrypted: i=1; AJvYcCXWx+KeWET2ME0t2NzZPAtLaZJn8CN/ZHlwRGKU7YbImJ9eqsxJrSldCDBxB3/vzeHh3xDqTtUTCUJYckcNDQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6zrWCyu3pjq3c/6w4LVTBJNZJmGbKtO3tQRrM7gH8pRCIrJvC
+	NZXl/pNn2Ppv3bvmFZLfcYOC/CxJmldz6gnldxCcndQYg6hT8KJ1+EJ+jOZP4sM=
+X-Gm-Gg: ASbGncvx40TwhG2Atlcb/cyzuihtb5n8Dmvt7c51A9jy/Pr8/HCcKKN8TsdB0Rbsvaa
+	7a9bsm195SOEXRsqy74pODY50/SPEk4IDKQkxvdNkj9p7Yo8Ol6X26GGs6+7JUzGwwMzzLVqtvl
+	ErGZYH4T2ovhXF8cKUCDImSbAmWf3EqXPM77r4+m0Qkt9yaS2Kzil5xG/JbcaXA8TQPYOFaHkpm
+	rJ7cabHWFQakmeXKA+RMctQuxGNDy2S4t7bG3zLkht6hhcs2ws+/kQSIdBTt5XtF/S+5OX8QTB9
+	17pTlLI6jh6IvlUX3n5A
+X-Google-Smtp-Source: AGHT+IEw8eHOips+m7BEL7pSk31Buqsgjf/0/YmNKYluWgMpJRjDHqhoLciiG4fuvyVDzaS9gJVk8A==
+X-Received: by 2002:a05:600c:46d2:b0:434:a1d3:a321 with SMTP id 5b1f17b1804b1-436e2679db4mr237168165e9.3.1736879433323;
+        Tue, 14 Jan 2025 10:30:33 -0800 (PST)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-436e2e8bea5sm217789155e9.31.2025.01.14.10.30.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Jan 2025 10:30:32 -0800 (PST)
+Message-ID: <90dd8d93-5653-47f1-8435-f03502e4c0cc@linaro.org>
+Date: Tue, 14 Jan 2025 19:30:31 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
-References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com> <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org> <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
-Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Marijn Suijten <marijn.suijten@somainline.org>, linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>, Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>, Konrad Dybcio <konradybcio@gmail.com>, Konrad Dybcio <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Date: Tue, 14 Jan 2025 10:30:16 -0800
-User-Agent: alot/0.12.dev1+gaa8c22fdeedb
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND v2 3/5] thermal/drivers/mediatek/lvts: Disable low
+ offset IRQ for minimum threshold
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>, Balsam CHIHI <bchihi@baylibre.com>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?=
+ <bero@baylibre.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+ stable@vger.kernel.org
+References: <20250113-mt8192-lvts-filtered-suspend-fix-v2-0-07a25200c7c6@collabora.com>
+ <20250113-mt8192-lvts-filtered-suspend-fix-v2-3-07a25200c7c6@collabora.com>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20250113-mt8192-lvts-filtered-suspend-fix-v2-3-07a25200c7c6@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_183023_101549_52AAE04F 
-X-CRM114-Status: GOOD (  24.20  )
+X-CRM114-CacheID: sfid-20250114_103034_980454_F98EB534 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,65 +110,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Konrad Dybcio (2025-01-13 14:12:28)
->=20
-> On 1/13/25 22:52, Stephen Boyd wrote:
-> > Quoting Konrad Dybcio (2025-01-13 05:02:58)
-> >>
-> >> Make controller->node specifiable to both benefit from Joe's refcount
-> >> improvements and un-break the aforementioned platforms.
-> >=20
-> > How is it broken? I see spmi_pmic_arb_bus_init() calls
-> > devm_spmi_controller_alloc() which sets the of_node to the parent device
-> > and then spmi_pmic_arb_bus_init() overwrites that with
-> > 'ctrl->dev.of_node =3D node' later on in the same function. That will
-> > cause one more of_node_put() than is expected. I don't see that removed
-> > in this patch though, so the leak is still there?
-> >=20
-> >>
-> >> Fixes: 821b07853e32 ("spmi: hisi-spmi-controller: manage the OF node r=
-eference in device initialization and cleanup")
-> >=20
-> > I've dropped this patch from my queue. I don't know if we're really
-> > doing anything better by managing the of_node lifetime in that function
-> > vs. letting the callers assign the node they want and manage the
-> > lifetime themselves. Maybe we don't need to do anything? Presumably the
-> > parent device driver will unregister the controller anyway, so the
-> > lifetime of the of_node will be ensured regardless. For subnodes like
-> > qcom SPMI, the subnodes are child nodes of the parent device so they
-> > won't be removed. If they are dynamic nodes, then the caller can manage
-> > the lifetime.
->=20
-> Stephen, the wrong node gets assigned in the qcom driver with
-> multi-master controllers, resulting in probe failures.
->=20
-> Since the introduction of the commit referenced in fixes,
-> of_spmi_register_devices() sees the controller's subnodes
-> (which describe each of the two masters) as slave devices
-> - meaning no "real" devices ever get to probe
->=20
+On 13/01/2025 14:27, Nícolas F. R. A. Prado wrote:
+> In order to get working interrupts, a low offset value needs to be
+> configured. The minimum value for it is 20 Celsius, which is what is
+> configured when there's no lower thermal trip (ie the thermal core
+> passes -INT_MAX as low trip temperature). However, when the temperature
+> gets that low and fluctuates around that value it causes an interrupt
+> storm.
 
-Ok, I see that I was reading the already reverted state of the tree
-where the 'ctrl->dev.of_node =3D node' assignment came back. So there's
-nothing to do besides drop the patch in fixes, which I already did. We
-can then apply this patch to drop the duplicate assignment as a cleanup
-and to avoid a refcount bump on the of_node that isn't needed.
+Is it really about an irq storm or about having a temperature threshold 
+set close to the ambiant temperature. So leading to unnecessary wakeups 
+as there is need for mitigation ?
 
-----8<---
-diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-c=
-ontroller.c
-index 3cafdf22c909..122140b97579 100644
---- a/drivers/spmi/hisi-spmi-controller.c
-+++ b/drivers/spmi/hisi-spmi-controller.c
-@@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_device=
- *pdev)
-=20
- 	spin_lock_init(&spmi_controller->lock);
-=20
--	ctrl->dev.parent =3D pdev->dev.parent;
--	ctrl->dev.of_node =3D of_node_get(pdev->dev.of_node);
--
- 	/* Callbacks */
- 	ctrl->read_cmd =3D spmi_read_cmd;
- 	ctrl->write_cmd =3D spmi_write_cmd;
+> Prevent that interrupt storm by not enabling the low offset interrupt if
+> the low threshold is the minimum one.
+
+The case where the high threshold is the INT_MAX should be handled too. 
+The system may have configured a thermal zone without critical trip 
+points, so setting the next upper threshold will program the register 
+with INT_MAX. I guess it is an undefined behavior in this case, right ?
+
+
+> Cc: stable@vger.kernel.org
+
+[ ... ]
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
