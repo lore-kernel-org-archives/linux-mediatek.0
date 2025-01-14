@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A10EE77188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 03:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC7F4E77188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2025 05:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9y9THO3YGyTevXlUAOQxK2U1NAtOu/fcfdt10LFF+wI=; b=rWJ3jPjQp3oWB8q/wLh7TUZcEn
-	c06jj/G3M/XcS/HOjGN32E2gcscdIyoSO6nrCh/nIzgEDQYwfXvm5YmukAnS+/FrpG5H7aaBqR7Qr
-	boXQSuQFTMmHX/gwBMRfdFSjYp0XBFjC2gU+JJVJZzr/ArYh4dTOoVHNXToW/oqgtiwLCj0ROnm8Q
-	VS5wl/528W8H17rehr6KQ2He/U8/xo4/MVzQiUYw1DmoLwxaxTwmUxWDdHH/QCvyHrBVzabDTo6FG
-	EduiwI8YmKVQzX+sr6D8kXi/ZY+1UCr01LghnO9FxGncFvSX0JPpRbpcn0oid5nlTq7CBmOdvGWpL
-	Ih/BjAFA==;
+	bh=7HOyxQBT5ZusYei9YXdbW58Bh82uGCNQLcD0F/T3AVY=; b=TRGQk+RsUzTDkRdX7KfF9jTY2H
+	AlO5WfoP9XlfSM2p4E96NbouP8igWhDMGlSRK9qS2rjr/VkztqE2cTh6TmIyYLtJZIdSOD/4VY6uD
+	Nc1FR7Hvr8XI3gnk0CfvCH1XXjibKBzBbV1PhvjAQvsKul4Rmc8eFW+xOccpWPbv/G0jJa6iIXpQ9
+	nxfrVnH3b4I7xB6EnkeQUoSzonybFG74alToBS685fdqgfhP4ytSFqmn0rI9bwK61IEAGtEVDlDSN
+	JsyDAh1oNWNKTucfiWGxzHy7F0a0k3u/pfkEsHnkbhEQDaOf2rtKemRecux//qz9SwEkO7wAd5o9R
+	CvVNWeTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXXgS-00000007Lu3-11vX;
-	Tue, 14 Jan 2025 03:33:40 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1tXZ8N-00000007TKn-3c1g;
+	Tue, 14 Jan 2025 05:06:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXXgP-00000007LtP-2jD2;
-	Tue, 14 Jan 2025 03:33:39 +0000
-X-UUID: 53a0b1e6d22811ef9048ed6ed365623b-20250113
+	id 1tXZ8L-00000007TKE-106G
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Jan 2025 05:06:35 +0000
+X-UUID: 4f8e9ffcd23511ef9048ed6ed365623b-20250113
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9y9THO3YGyTevXlUAOQxK2U1NAtOu/fcfdt10LFF+wI=;
-	b=s67+htHC/VRh5hdl4uDuYTP34L6SdZ5yYzs6KSFOPHVvQmHjbWbIS81pihr/amGQwuzmvdCuA/NueDfVDjKVbxhZBO8PudNX1HrRinAy4J+m9L9jBOt9mW5Vndgj0nCPwc5L6/wSXR4IJtF2k6UaTAk4aCfIr1gwMAWmssGRJIA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7HOyxQBT5ZusYei9YXdbW58Bh82uGCNQLcD0F/T3AVY=;
+	b=APEdYR76QNS6+Y914E32FsMeT7cadsEbHj+x/xaqeMJRG72p+a3yxZ8E0RaFaw8WIJtdNIaEYvkLSxYvlgJAxNwvXrjfrygl64ztTtM1w+NEXjaA5eW57hgs8BKOdol2AWw3DypXjrtGTUAxW3f11avEgwx+D1uK+GbvETEAGH4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:0af5614e-8b35-4189-a4cf-862b7ff8ac2c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:60aa074,CLOUDID:6c267513-8831-4185-8e40-f83b1917e828,B
+X-CID-O-INFO: VERSION:1.1.46,REQID:49171477-fa49-4499-889e-1ddcd0d7e7fa,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:60aa074,CLOUDID:9628da0e-078a-483b-8929-714244d25c49,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
 	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 53a0b1e6d22811ef9048ed6ed365623b-20250113
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yenchia.chen@mediatek.com>)
+X-UUID: 4f8e9ffcd23511ef9048ed6ed365623b-20250113
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1305615122; Mon, 13 Jan 2025 20:33:31 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 1581553115; Mon, 13 Jan 2025 22:06:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 14 Jan 2025 11:33:28 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 14 Jan 2025 11:33:28 +0800
-From: Yenchia Chen <yenchia.chen@mediatek.com>
-To: <gregkh@linuxfoundation.org>, <jirislaby@kernel.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
-CC: <yenchia.chen@mediatek.com>, <yj.chiang@mediatek.com>,
-	<tbergstrom@nvidia.com>, <yujiaoliang@vivo.com>,
-	<u.kleine-koenig@baylibre.com>, <treapking@chromium.org>,
-	<linux-kernel@vger.kernel.org>, <linux-serial@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] serial: 8250_mtk: Add ACPI support
-Date: Tue, 14 Jan 2025 11:33:21 +0800
-Message-ID: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+ 15.2.1258.28; Tue, 14 Jan 2025 13:06:25 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 14 Jan 2025 13:06:24 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
+	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>
+Subject: [patch] wifi: mt76: mt7925: fix fails to enter low power mode in suspend state
+Date: Tue, 14 Jan 2025 13:06:22 +0800
+Message-ID: <d056938144a3a0336c3a4e3cec6f271899f32bf7.1736775666.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_193337_691106_6CC2DD99 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20250113_210633_288308_9B978C5A 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,96 +90,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ACPI support to 8250_mtk driver. This makes it possible to
-use uart with edk2 UEFI firmware.
+The mt7925 sometimes fails to enter low power mode during suspend.
+This is caused by the chip firmware sending an additional ACK event
+to the host after processing the suspend command. Due to timing issues,
+this event may not reach the host, causing the chip to get stuck.
+To resolve this, the ACK flag in the suspend command is removed,
+as it is not needed in the MT7925 architecture. This prevents the
+firmware from sending the additional ACK event, ensuring the device
+can reliably enter low power mode during suspend.
 
-Signed-off-by: Yenchia Chen <yenchia.chen@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 ---
- drivers/tty/serial/8250/8250_mtk.c | 31 ++++++++++++++++++++++++------
- 1 file changed, 25 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index b44de2ed7413..a4f1c30f77b0 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -19,6 +19,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/tty.h>
- #include <linux/tty_flip.h>
-+#include <linux/acpi.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 15815ad84713..04762a8eac51 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -3266,6 +3266,9 @@ int mt7925_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 		else
+ 			uni_txd->option = MCU_CMD_UNI_EXT_ACK;
  
- #include "8250.h"
- 
-@@ -519,6 +520,7 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	struct mtk8250_data *data;
- 	struct resource *regs;
- 	int irq, err;
-+	acpi_handle hdl = ACPI_HANDLE(&pdev->dev);
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
-@@ -545,8 +547,12 @@ static int mtk8250_probe(struct platform_device *pdev)
- 		err = mtk8250_probe_of(pdev, &uart.port, data);
- 		if (err)
- 			return err;
--	} else
--		return -ENODEV;
-+	} else {
-+		if (!hdl) {
-+			dev_err(&pdev->dev, "no device\n");
-+			return -ENODEV;
-+		}
-+	}
- 
- 	spin_lock_init(&uart.port.lock);
- 	uart.port.mapbase = regs->start;
-@@ -560,16 +566,22 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	uart.port.private_data = data;
- 	uart.port.shutdown = mtk8250_shutdown;
- 	uart.port.startup = mtk8250_startup;
--	uart.port.set_termios = mtk8250_set_termios;
--	uart.port.uartclk = clk_get_rate(data->uart_clk);
-+	if (hdl) {
-+		uart.port.uartclk = 26000000;
-+	} else {
-+		uart.port.set_termios = mtk8250_set_termios;
-+		uart.port.uartclk = clk_get_rate(data->uart_clk);
-+	}
- #ifdef CONFIG_SERIAL_8250_DMA
- 	if (data->dma)
- 		uart.dma = data->dma;
- #endif
- 
--	/* Disable Rate Fix function */
--	writel(0x0, uart.port.membase +
-+	if (!hdl) {
-+		/* Disable Rate Fix function */
-+		writel(0x0, uart.port.membase +
- 			(MTK_UART_RATE_FIX << uart.port.regshift));
-+	}
- 
- 	platform_set_drvdata(pdev, data);
- 
-@@ -647,11 +659,18 @@ static const struct of_device_id mtk8250_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk8250_of_match);
- 
-+static const struct acpi_device_id mtk8250_acpi_match[] = {
-+	{ "MTKI0511", 0 },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(acpi, mtk8250_acpi_match);
++		if (cmd == MCU_UNI_CMD(HIF_CTRL))
++			uni_txd->option &= ~MCU_CMD_ACK;
 +
- static struct platform_driver mtk8250_platform_driver = {
- 	.driver = {
- 		.name		= "mt6577-uart",
- 		.pm		= &mtk8250_pm_ops,
- 		.of_match_table	= mtk8250_of_match,
-+		.acpi_match_table = ACPI_PTR(mtk8250_acpi_match),
- 	},
- 	.probe			= mtk8250_probe,
- 	.remove			= mtk8250_remove,
+ 		goto exit;
+ 	}
+ 
 -- 
-2.45.2
+2.46.0
 
 
