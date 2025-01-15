@@ -4,111 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A96C02188
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 10:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F150EC02183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 11:14:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c0/6KqPYjQ7aI5viQMKS0MXpilBphaQcH0R7fk00p+o=; b=5FJe8CJpoDhRJCZEDRy+NJpoqR
-	TKLlJ0GsfMZACcvaikKCRfSFZNJC1Nn9chZ8Pzns/vqXq3YGIjzkM8qVkPj0Fzfnizqg3RVVJB2VI
-	+iJOIhfbLMidHFJyvBYs8sfXIwBi0gEPlDdaFqtk6zKtFNih7KINq0mFT9ifw9TBVk+OfnNyl04e0
-	geF+YRNfolmyFFbmJ8QqtAw0a3wQodWC7JhlvhT8JM1PJhGeqxoFAknCGvod1CHFqIs5/Amt5/frd
-	ydIuWcUmsSc/pfFp2TP4M5BE7eNociALIJNpGBGjT2k2kc3WdgyrQrwTnLNXAfVi5Uj7cdrMtX2Th
-	Ihc1wYbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YWwH1bDPMW4sIvL8kmJCxcSzCH8Ejrs1sg9Vv46J164=; b=MUVbJUfRRD+x04Dreg6bvWOVHx
+	xdaJu1BnVWykOX46J0ZaQORmUgcckFLv8Ra/vsTs29Nu6nrrTRJLA/GG/0G/S6O7MJOWqC3NWvHni
+	UqsSjleAPY0qjvhjuiXOTVed3p1Yi7DRyWRLqvXXe7vhb8L1iezQbYp3UdihRjBze/JSOukSxSzgF
+	BT7Cyp6baH9IczlzdjxOSv9furJN8poy3QcZ2uDlveNUJnlS7dVRX3oIQgpqEM4WZa2kn23PiEEWq
+	BuxVLrk+ZAkfecXQEIATT0e+4EVg+S3YP7odqWclF8BCq1EwyFhkNylS313mCNqrm3tTeUpNGIRBd
+	ISXQ4Iig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY16v-0000000Bacg-40eQ;
-	Wed, 15 Jan 2025 10:58:57 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tY1MB-0000000BdQ3-05TB;
+	Wed, 15 Jan 2025 11:14:43 +0000
+Received: from mail-pl1-f182.google.com ([209.85.214.182])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY16s-0000000Baay-3EJF;
-	Wed, 15 Jan 2025 10:58:56 +0000
-Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8E93E4AD;
-	Wed, 15 Jan 2025 11:57:54 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1736938675;
-	bh=PHvyrlfL90DWijiSoft7XP7rReZoqz0LHMvPolG3eVc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lzo3SM0Jh0gt3jMLAaQUsepDmw7eYUBnlka5hbbPJnOVGveG2GsivekYsCC/wVcWM
-	 Fpv1tfAAWSv7Wahb71B2n7RvzSXmVxJHOI1MGlNmaSR3eC23tKmnhwmEeri17hRi+x
-	 h9NpTRQ9X4CPbC+pYA0xfkGmK5O2KaoBdQa05y/Q=
-Message-ID: <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
-Date: Wed, 15 Jan 2025 12:58:48 +0200
+	id 1tY1Jw-0000000BcWz-1J6z;
+	Wed, 15 Jan 2025 11:12:25 +0000
+Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-21669fd5c7cso119710035ad.3;
+        Wed, 15 Jan 2025 03:12:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736939543; x=1737544343;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YWwH1bDPMW4sIvL8kmJCxcSzCH8Ejrs1sg9Vv46J164=;
+        b=tyd0GR5CuMV4P/ZdCdSRVO2E2H5m/9KCjge2AF/nO+sHQHMmR9gS0fmDZsX4hZP72j
+         L8Si1MLklDnpRAQsy2WBKs9jXt2HfN0iX4Fgew7r5XU+r30VJ8yw5Id9bCR93dzQf7KP
+         g7eaNovCbF7FVMaWF0iLQkSxYX4TFM4BYpX6SwaDH7H9uLOFoqmnU0KZooOW053n1alc
+         EAusKP0SCpxA304sR615w2kAzWLAABJ+fnT1oAFG1CpRAcqPuGbts53wimUEdlzmU4G9
+         cNlkeR1bGkyDFW4yEZ5LgXSGWySjaqssjNXjz/xgzmZnbeetAvP5ebwr97GA6DhodlTe
+         WorQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU8ARiWmnFsnb8o5OpAVWg3TdLnV4St3tm0zczze279s1UBT8phvp8Hl1d5s/vARCwr3hY5IdMI2Lb2TGl9FnM=@lists.infradead.org, AJvYcCVf4PsvqOJsAgPeGsGsiXH5fexEQXXh3d8fbJ0M1IxyrtfeoNU4BgLsHqiD2tzRm+OueM6sVQHwKvcnZHQaqFFo@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTYAuhMFih/lT5MjmcH+0rLdZ492Nno4q9keGwIN0Jbebtv66S
+	eMjepyjJwiBhx8RvN0jX91zMAsTg+Xs8/TeQPCueMRogHVzNOy1g
+X-Gm-Gg: ASbGncubXYgdiroKY5SGJu7L+CvwZKXgnsm0pijyguH8vcjWPSqleTfcA/S8WFNscuW
+	BS/Eb5a+eahN7gTFc8Hb9j4IGPYVMVUzENYKXNM2WL01VcOxPef4//zhI3VjJTBYOhvNGJUosI1
+	9xGDgbaf+8cdAMRUDT7W9w94zWrtYJk/96l6M/ENTMbhWZvj7HOjm3wERZzYJ02Yd4IlxDmJpzH
+	tnLw95DMYRH3KkwGjWMAORJTN8NYZgf28CuI2aT6LZznnjXfUlz3nkiyiinw1Jv0ZPys4X9qj9x
+	FyHA+M2HMC43iT0=
+X-Google-Smtp-Source: AGHT+IHFoca7ZCISTDX0mGzInAWIQ58L8qkZmkBMA3Zf+oFefoTlL/1UC9F+En3y5YImzKRbiXnU4Q==
+X-Received: by 2002:a05:6a21:a4a:b0:1e1:c8f5:19ee with SMTP id adf61e73a8af0-1e88cfe2ce4mr44391726637.25.1736939543365;
+        Wed, 15 Jan 2025 03:12:23 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a31902b137bsm9540020a12.35.2025.01.15.03.12.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jan 2025 03:12:22 -0800 (PST)
+Date: Wed, 15 Jan 2025 20:12:20 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v6 0/5] PCI: mediatek-gen3: mtk_pcie_en7581_power_up()
+ code
+Message-ID: <20250115111220.GA4176564@rocinante>
+References: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Thomas Zimmermann <tzimmermann@suse.de>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andy Yan <andyshrk@163.com>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-26-tzimmermann@suse.de>
- <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
- <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
-Content-Language: en-US
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
- 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
-In-Reply-To: <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_025854_951504_D52149F2 
-X-CRM114-Status: GOOD (  33.38  )
+X-CRM114-CacheID: sfid-20250115_031224_345228_F6CDB7CC 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,135 +96,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello,
 
-On 15/01/2025 12:26, Thomas Zimmermann wrote:
-> Hi
+> Minor fixes and code refactoring in mtk_pcie_en7581_power_up() routine
 > 
-> 
-> Am 15.01.25 um 11:13 schrieb Tomi Valkeinen:
->> Hi!
->>
->> On 09/01/2025 16:57, Thomas Zimmermann wrote:
->>> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
->>> buffer size. Align the pitch according to hardware requirements.
->>>
->>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->>> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>> Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
->>> ---
->>>   drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
->>>   1 file changed, 5 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/ 
->>> xlnx/zynqmp_kms.c
->>> index b47463473472..7ea0cd4f71d3 100644
->>> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
->>> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
->>> @@ -19,6 +19,7 @@
->>>   #include <drm/drm_crtc.h>
->>>   #include <drm/drm_device.h>
->>>   #include <drm/drm_drv.h>
->>> +#include <drm/drm_dumb_buffers.h>
->>>   #include <drm/drm_encoder.h>
->>>   #include <drm/drm_fbdev_dma.h>
->>>   #include <drm/drm_fourcc.h>
->>> @@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct 
->>> drm_file *file_priv,
->>>                       struct drm_mode_create_dumb *args)
->>>   {
->>>       struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
->>> -    unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
->>> +    int ret;
->>>         /* Enforce the alignment constraints of the DMA engine. */
->>> -    args->pitch = ALIGN(pitch, dpsub->dma_align);
->>> +    ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
->>> +    if (ret)
->>> +        return ret;
->>>         return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
->>>   }
->>
->> I have some trouble with this one.
->>
->> I have sent a series to add some pixel formats:
->>
->> https://lore.kernel.org/all/20250115-xilinx-formats- 
->> v2-0-160327ca652a@ideasonboard.com/
->>
->> Let's look at XV15. It's similar to NV12, but 10 bits per component, 
->> and some packing and padding.
->>
->> First plane: 3 pixels in a 32 bit group
->> Second plane: 3 pixels in a 64 bit group, 2x2 subsampled
->>
->> So, on average, a pixel on the first plane takes 32 / 3 = 10.666... 
->> bits on a line. That's not a usable number for the 
->> DRM_IOCTL_MODE_CREATE_DUMB ioctl.
->>
->> What I did was to use the pixel group size as "bpp" for 
->> DRM_IOCTL_MODE_CREATE_DUMB. So, e.g., for 720 x 576:
->>
->> Stride for first plane: 720 * (32 / 3) / 8 = 960 bytes
->> Stride for second plane: 720 / 2 * (64 / 3) / 8 = 960 bytes
->>
->> First plane: 720 / 3 = 240 pixel groups
->> Second plane: 720 / 2 / 3 = 120 pixel groups
->>
->> So I allocated the two planes with:
->> 240 x 576 with 32 bitspp
->> 120 x 288 with 64 bitspp
->>
->> This worked, and if I look at the DRM_IOCTL_MODE_CREATE_DUMB in the 
->> docs, I can't right away see anything there that says my tactic was 
->> not allowed.
->>
->> The above doesn't work anymore with this patch, as the code calls 
->> drm_driver_color_mode_format(), which fails for 64 bitspp. It feels a 
->> bit odd that DRM_IOCTL_MODE_CREATE_DUMB will try to guess the RGB 
->> fourcc for a dumb buffer allocation.
->>
->> So, what to do here? Am I doing something silly? What's the correct 
->> way to allocate the buffers for XV15? Should I just use 32 bitspp for 
->> the plane 2 too, and double the width (this works)?
->>
->> Is DRM_IOCTL_MODE_CREATE_DUMB only meant for simple RGB formats? The 
->> xilinx driver can, of course, just not use drm_mode_size_dumb(). But 
->> if so, I guess the limitations of drm_mode_size_dumb() should be 
->> documented.
->>
->> Do we need a new dumb-alloc ioctl that takes the format and plane 
->> number as parameters? Or alternatively a simpler dumb-alloc that 
->> doesn't have width and bpp, but instead takes a stride and height as 
->> parameters? I think those would be easier for the userspace to use, 
->> instead of trying to adjust the parameters to be suitable for the kernel.
-> 
-> These are all good points. Did you read my discussion with Andy on patch 
-> 2? I think it resolves all the points you have. The current CREATE_DUMB 
+> Changes in v6:
+> - remove mac_rst support for EN7581 since it is not needed by the SoC
+> - fix typos
+> - Link to v5: https://lore.kernel.org/r/20241130-pcie-en7581-fixes-v5-0-dbffe41566b3@kernel.org
 
-I had missed the discussion, and, indeed, the patch you attached fixes 
-the problem on Xilinx.
+Applied to controller/mediatek for v6.14, thank you!
 
-> ioctl is unsuited for anything but the simple RGB formats. The bpp 
-
-It's a bit difficult to use, but is it really unsuited? bitsperpixel, 
-width and height do give an exact pitch and size, do they not? It does 
-require the userspace to handle the subsampling and planes, though, so 
-far from perfect.
-
-So, I'm all for a new ioctl, but I don't right away see why the current 
-ioctl couldn't be used. Which makes me wonder about the drm_warn() in 
-your patch, and the "userspace throws in arbitrary values for bpp and 
-relies on the kernel to figure it out". Maybe I'm missing something here.
-
-> parameter is not very precise. The solution would be a new ioctl call 
-> that receives the DRM format and returns a buffer for each individual 
-> plane.
-
-Yes, I think that makes sense. That's a long road, though =). So my 
-question is, is CREATE_DUMB really unsuitable for other than simple RGB 
-formats, or can it be suitable if we just define how the userspace 
-should use it for multiplanar, subsampled formats?
-
-  Tomi
-
+	Krzysztof
 
