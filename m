@@ -4,74 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE838C02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 21:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBAADC02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 23:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IkLcnhql8a96A60BHSfkKs2E6DaIk53/sc0MbOHAsjI=; b=bj5VFzCVXbnooPv1nZkpsbyl63
-	E54h6xz/sdxC3DuCZPioM2qk+fKqo1jhlXhzb54tlEeGEf8km1rrNO6dX3UOuqOLRPeINS3vC+r7P
-	FOTMc/Colhz46phKG6pc4YEEptFLLHstUJloP4JENOj61U4UFTqy65T98O06XMHIkqk9tUBLtjlaF
-	Gw7BzEA2ul7KuR6bFNJXk2Y2C147L/07mF+eN2X6c9IeIrpYJS9YenMCI1d3ajp+XF6SDH+wNnOV0
-	g8qhfkEcakyyzyPj7bTc0ni8gxN/yb7WbKVFgNNbGFyKZaCd+1Rc1sPFcQ2kZXJR73cdNzs4ymvV2
-	nrT+GB4Q==;
+	bh=+v6KUQgir/lgW530jnyh5w9zw2n5D+uMgB/N437EbSI=; b=RyJNfpyx91ajYuQUtc4JVyhQgX
+	24YDVL87cv4SwzvpNshgBAtKcPQL4sbGvHuQ4swghgSWUBgrbsFHF99FOCn0CK48YxnOayFSo9cQo
+	FdZQU6Dffz5k9+9IotPaAYm8Or8vJO4AOLx0Q0HMNFfjGegfv7Ud4X/MpPfibqCJwVWy15nvj3C1O
+	RHFiZk3000hd4bJL5C+O1qoLursDfmLXISDHaf8dP86NqKpYJ55S/sZRKmk8ZMc/Wpoees7tREb9J
+	U1Pxal2Evx5xWND0CVFSRsY/ts3pa2PNoPmymiJ5D0EIYI2v7OFNHDhSVTx2+0vtH6W9hzzr1ijbl
+	EMMK6wBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYAzM-0000000DAP2-4A8L;
-	Wed, 15 Jan 2025 21:31:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tYCdh-0000000DKcN-3Lqb;
+	Wed, 15 Jan 2025 23:17:33 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYAy3-0000000DA9F-0UgK;
-	Wed, 15 Jan 2025 21:30:28 +0000
+	id 1tYCcQ-0000000DKVB-2Dmx;
+	Wed, 15 Jan 2025 23:16:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 601BA5C5DDD;
-	Wed, 15 Jan 2025 21:29:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9D10C4CED1;
-	Wed, 15 Jan 2025 21:30:25 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8580FA42643;
+	Wed, 15 Jan 2025 23:14:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26B33C4CED1;
+	Wed, 15 Jan 2025 23:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736976625;
-	bh=LE8fA2hAMhhDI5KwgEq05/0LGmnaeWzG7l9oulZaTgk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=P8yxRWF12yA+CipCEyGIzKRv4g5Vac+F7zE50cg22snFi5j0Jzw+R0LlAaq7GM8xs
-	 0hu70OOCza20MDg9Of2KKGaLlUIACrqeaG3dSmH8T2fUWUgdGI2Iy6pw44BjTcpQbC
-	 7ake8LkLQaVusqCkJ9FjYGLYm+II0P9kFKI8qIk0FDtqcTEB1JByFtJvyhl2RM3aJS
-	 Y4auUQTxemzxvGUjmo1AvO7xaIlxNxhcfWTgyNML3LK3Y/DPZJF0XSyw8Wg9bHPKwC
-	 qTSmNipXmZ7rIe0Lr1a6A1zv13pgAW+vwBoqI0MFRmJbcS9kG4N7KFtV7Un/8Bi+MU
-	 q9j2EyvkM0Mmg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAEB7380AA5F;
-	Wed, 15 Jan 2025 21:30:49 +0000 (UTC)
+	s=k20201202; t=1736982973;
+	bh=3zIKod6x6p/3kPY13t63j93xA6NahssLaW2A/NKgW4I=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=iHehGmGFX02DEW3nQTnGkhXM3MgDB5BxaPXg/ZluMx1nwHpBdHNp7iK2MZSo2+G/h
+	 fCmL/jNkHgrnqULTGDoiVwSZlH80YJhYETrtmNkpcxAkjl4xdsJxVkhq+wQEDNe0EV
+	 6PYXvXBZKgB/LGGvnqQFA7y+TNGQpf/k0EPywX68pHReUY6FkjYGIAAgPNHanXDGSY
+	 +yPJR7WV2E6d0NCaNXSf6dCPS07vGkeLyoweLNZ19XvqV1qF+MTyT9+hy30jloN4Vp
+	 ZdpQvMRPaDnHexGYDqqfv44uLBzYQxfYlC2dsdpw2+fz8A7RSo519PFSaHSP3fOFOy
+	 GwkUA7NphGP4g==
+Message-ID: <848b4dad4f38dc6545b97f7c5007e514.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 0/5] net: phylink: fix PCS without autoneg
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173697664846.885620.3750328889492102157.git-patchwork-notify@kernel.org>
-Date: Wed, 15 Jan 2025 21:30:48 +0000
-References: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
-In-Reply-To: <Z4TbR93B-X8A8iHe@shell.armlinux.org.uk>
-To: Russell King (Oracle) <linux@armlinux.org.uk>
-Cc: andrew@lunn.ch, hkallweit1@gmail.com, lynxis@fe80.eu,
- alexanderduyck@fb.com, andrew+netdev@lunn.ch,
- angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
- claudiu.beznea@tuxon.dev, daniel@makrotopia.org, daniel.machon@microchip.com,
- davem@davemloft.net, dqfext@gmail.com, edumazet@google.com,
- ericwouds@gmail.com, florian.fainelli@broadcom.com,
- horatiu.vultur@microchip.com, ioana.ciornei@nxp.com, kuba@kernel.org,
- Jose.Abreu@synopsys.com, kernel-team@meta.com, lars.povlsen@microchip.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- madalin.bucur@nxp.com, marcin.s.wojtas@gmail.com, matthias.bgg@gmail.com,
- michal.simek@amd.com, netdev@vger.kernel.org, nicolas.ferre@microchip.com,
- pabeni@redhat.com, radhey.shyam.pandey@amd.com, sean.anderson@seco.com,
- sean.wang@mediatek.com, Steen.Hegelund@microchip.com,
- taras.chornyi@plvision.eu, UNGLinuxDriver@microchip.com, olteanv@gmail.com
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
+References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com> <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org> <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com> <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org> <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
+Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>, linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>, Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>, Konrad Dybcio <konradybcio@gmail.com>, Konrad Dybcio <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Wed, 15 Jan 2025 15:16:10 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_133027_203863_1E6E434B 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250115_151614_639010_ABFFF771 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +70,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Quoting Konrad Dybcio (2025-01-14 12:37:20)
+> On 1/14/25 19:30, Stephen Boyd wrote:
+> >=20
+> > Ok, I see that I was reading the already reverted state of the tree
+> > where the 'ctrl->dev.of_node =3D node' assignment came back. So there's
+> > nothing to do besides drop the patch in fixes, which I already did. We
+> > can then apply this patch to drop the duplicate assignment as a cleanup
+> > and to avoid a refcount bump on the of_node that isn't needed.
+> >=20
+> > ----8<---
+> > diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-sp=
+mi-controller.c
+> > index 3cafdf22c909..122140b97579 100644
+> > --- a/drivers/spmi/hisi-spmi-controller.c
+> > +++ b/drivers/spmi/hisi-spmi-controller.c
+> > @@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_de=
+vice *pdev)
+> >  =20
+> >       spin_lock_init(&spmi_controller->lock);
+> >  =20
+> > -     ctrl->dev.parent =3D pdev->dev.parent;
+> > -     ctrl->dev.of_node =3D of_node_get(pdev->dev.of_node);
+> > -
+> >       /* Callbacks */
+> >       ctrl->read_cmd =3D spmi_read_cmd;
+> >       ctrl->write_cmd =3D spmi_write_cmd;
+>=20
+> That works for me, thank you
+>=20
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Mon, 13 Jan 2025 09:22:15 +0000 you wrote:
-> Hi,
-> 
-> Eric Woudstra reported that a PCS attached using 2500base-X does not
-> see link when phylink is using in-band mode, but autoneg is disabled,
-> despite there being a valid 2500base-X signal being received. We have
-> these settings:
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v2,1/5] net: phylink: use pcs_neg_mode in phylink_mac_pcs_get_state()
-    https://git.kernel.org/netdev/net-next/c/0f1396d24658
-  - [net-next,v2,2/5] net: phylink: pass neg_mode into .pcs_get_state() method
-    https://git.kernel.org/netdev/net-next/c/c6739623c91b
-  - [net-next,v2,3/5] net: phylink: pass neg_mode into c22 state decoder
-    https://git.kernel.org/netdev/net-next/c/7e3cb4e874ab
-  - [net-next,v2,4/5] net: phylink: use neg_mode in phylink_mii_c22_pcs_decode_state()
-    https://git.kernel.org/netdev/net-next/c/60a331fff5e8
-  - [net-next,v2,5/5] net: phylink: provide fixed state for 1000base-X and 2500base-X
-    https://git.kernel.org/netdev/net-next/c/e432ffc14b17
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Joe, care to send this patch to replace the one you sent previously?
 
