@@ -4,100 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5280CC02183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 18:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 466E2C02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 18:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jLoWi3Wg0eiQh/tot5fchMc56NRkY1AedYStPaUs9Pk=; b=CRR2DufB2/XJCx51qPt9RuNnFb
-	7I8l+TDGHOYS6ylsTkM/qXxQr7jjyCS0wisDv3ijvOlEMWLTQOWuKSL1goOBr+5kI6c+WgFgUYu2+
-	Os+QPJXdhsbTG+SUrNYFK7n8Rf2/xbxGhiY7y5vatnyTknHhY79SDCEeEVNV2WyBss+Ay9loroZh5
-	ZJlJsHQxP3mOEEycVPJxePZzka+RZK2mfV9IpNjuxZ9eaaNfl6QaA7bVIHzqCpzGful1WZomt/vpk
-	hy1zm0wsVjbUjohT2aaC/oUuaVaW0S4tCFFWBhE3CCmbQr2O0WxRDsp35UO0z1gz8dlqNOQlgt653
-	dCpp0d6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XrE+TT5CMysUYi6uOrS9D9UYzezaxTPWZXRKKi9heC8=; b=1dJnEeBvgNgPic59w/W1/nJRT4
+	kkxPfnUhoWodYIlxJtIsnOB52GndwlDM3UImVKnSAfMy5cc+niyiLS8jUkZTkCXXDUVf0JWn87gmf
+	PQXDSj3RFaIAaDMsqosONdh1dtr3tArwiF+Zev29bN9nccLAYblTzBVN3yk3UOC98tikfq75AhxgP
+	Zk+r6Hp0IlFyXizRACHWnPTKY2ajW4Ln3QlL+aBxoD3FW3HnX984cSWWBvDeI69Cdmw75ZDm/PfPE
+	NOLMM8n4ULt2rUUGU5rR3lfCU+HCNOu3VodKgdrf0uTePLngHkqSG0OEnzD0PHIQaZWkASGXBSsQF
+	S1mDoDgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8OE-0000000CoQs-1ZAW;
-	Wed, 15 Jan 2025 18:45:18 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1tY8UU-0000000CpKU-1vuA;
+	Wed, 15 Jan 2025 18:51:46 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8Ab-0000000ClLs-4ADC;
-	Wed, 15 Jan 2025 18:31:15 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 420B0FF803;
-	Wed, 15 Jan 2025 18:31:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1736965870;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jLoWi3Wg0eiQh/tot5fchMc56NRkY1AedYStPaUs9Pk=;
-	b=XVoQSRAsHPXADFu3jVGI7dBwCecPD+dviwtiINSG7gG2QTYI7ZKoCGbAlzsXnHawAhGKwl
-	24LiXfzCQR3pIZBqvn9qb/WI76bBR/gYM5iK3v27XfrrihWyj6I9DuAIL0fsvT3vsw3I/q
-	czvnLPptcYBnGEnhrm8GhgmQ8vCeUtjENVYUkzFUKo7lU8h2121ib4vf8mK5lggJa2imhw
-	wuKxnh8Eev9ag9+Xsu7zpWrkt2h27deaKdBBBwhgImA9Rm+AwpotMeHj0kiG0/Az9PUc1t
-	KHhtrdM1rJLw5PWkyTBKEJFeu2A3AfGxN8CmN6JVLXE0bXGUEx1cXfp5ava0qA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Mark Brown <broonie@kernel.org>,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Han Xu <han.xu@nxp.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
+	id 1tY8NM-0000000CoIL-0Fg3;
+	Wed, 15 Jan 2025 18:44:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id DD2EFA42064;
+	Wed, 15 Jan 2025 18:42:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D768C4CED1;
+	Wed, 15 Jan 2025 18:44:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736966662;
+	bh=G4PzYBU8G9Uar4bPlnrhRRps7QPD3CQ7Vc8IyR3W9OM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LugFm7/95m0CLhvMD/7uWtivH5QpL+9k0pqN+JjWvb3Z2IQZ4mukW8/TzB40NF1a7
+	 9DHfE1gVk5X9+b0ogSrhsvRxQE5urfgmti2EcbpRHJKvHE1XBCHzbFUQ49xTOb5OuI
+	 DgMuZ9eRVFndwnIHklT0WqHIBrqXbtqTXDT70vsPt/hWFk3Iz3WKAuDMBKWOChH/IX
+	 bRGLotsQE7RksHsd/TVpwapJ9oBzvFr45J1YZXwLLwCXLqDC/zHHJ/1qHe2a+4KPC2
+	 xuyGF1B4x8zTCKS2og7mKnR0gSSDhKlIV9zmtUc+6/4CQ3LIPRqRGdvZragFR9qdPY
+	 +SsaQ5ZXGd73Q==
+Date: Wed, 15 Jan 2025 18:44:17 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Raju Rangoju <Raju.Rangoju@amd.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Steam Lin <stlin2@winbond.com>,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mtd@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Tudor Ambarus <tudor.ambarus@linaro.org>
-Subject: Re: [PATCH v3 21/27] mtd: spinand: Create distinct fast and slow read from cache variants
-Date: Wed, 15 Jan 2025 19:31:02 +0100
-Message-ID: <173696548250.435435.10416906996871126975.b4-ty@bootlin.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
-References: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com> <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
+	Sean Wang <sean.wang@mediatek.com>,
+	devicetree <devicetree@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	kernel <kernel@collabora.com>
+Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: add mt8370-evk board
+Message-ID: <20250115-preformed-lilac-15ccb03e7119@spud>
+References: <20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com>
+ <20250114-dts_mt8370-genio-510-v1-1-8517ee0fdbe8@collabora.com>
+ <ef8bbe7a-64fa-4e51-86f3-4f7fc0bb3760@collabora.com>
+ <20250114-lily-defensive-3383449a7945@spud>
+ <19469767d9c.d70b2edd1099115.3136795565203045474@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="vpJ7qZAU57snQZoU"
+Content-Disposition: inline
+In-Reply-To: <19469767d9c.d70b2edd1099115.3136795565203045474@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_103114_290445_E54B9906 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20250115_104424_163979_BF077CA1 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,40 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Jan 2025 15:45:23 +0100, Miquel Raynal wrote:
-> So far, the SPINAND_PAGE_READ_FROM_CACHE_OP macro was taking a first
-> argument, "fast", which was inducing the possibility to support higher
-> bus frequencies than with the normal (slower) read from cache
-> alternative. In practice, without frequency change on the bus, this was
-> likely without effect, besides perhaps allowing another variant of the
-> same command, that could run at the default highest speed. If we want to
-> support this fully, we need to add a frequency parameter to the slowest
-> command. But before we do that, let's drop the "fast" boolean from the
-> macro and duplicate it, this will further help supporting having
-> different frequencies allowed for each variant.
-> 
-> [...]
 
-The following patches have been applied to nand/next:
+--vpJ7qZAU57snQZoU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[21/27] mtd: spinand: Create distinct fast and slow read from cache variants
-        commit: 042087247835dad1ec5e39052abf022fd13c6326
-[22/27] mtd: spinand: Add an optional frequency to read from cache macros
-        commit: 7ce0d16d5802bfde4209e52ee8ad644ca1eab423
-[23/27] mtd: spinand: Enhance the logic when picking a variant
-        commit: 666c299be696f02c3354da104295fb94b8f65d25
-[24/27] mtd: spinand: Add support for read DTR operations
-        commit: 8586bc8d95488dfaadbc1af89ba59900d2c39119
-[25/27] mtd: spinand: winbond: Update the *JW chip definitions
-        commit: 1ea808b4d15b9bddc48af75b0668b82366b5b927
-[26/27] mtd: spinand: winbond: Add comment about naming
-        commit: 61c7155e3fe938d4da4671b2f84e29eaf79f5f46
-[27/27] mtd: spinand: winbond: Add support for DTR operations
-        commit: be7a05db4252edbffb43484b14755048fb8db710
+On Wed, Jan 15, 2025 at 11:16:00AM +0100, Louis-Alexis Eyraud wrote:
+>  ---- On Tue, 14 Jan 2025 18:54:54 +0100  Conor Dooley  wrote ---=20
+>  > On Tue, Jan 14, 2025 at 11:32:47AM +0100, AngeloGioacchino Del Regno w=
+rote:
+>  > > Il 14/01/25 08:38, Louis-Alexis Eyraud ha scritto:
+>  > > > Add bindings for the MediaTek mt8370-evk board, also known
+>  > > > as the "Genio 510-EVK".
+>  > > >=20
+>  > > > Signed-off-by: Louis-Alexis Eyraud louisalexis.eyraud@collabora.co=
+m>
+>  > >=20
+>  > > Reviewed-by: AngeloGioacchino Del Regno angelogioacchino.delregno@co=
+llabora.com>
+>  >=20
+>  > Can either of you explain why there's a fallback here to the mt8188?
+>  >=20
+>=20
+> The mt8370 SoC belongs to the same family as the mt8188 and mt8390.
+>=20
+> It is a less powerful variant of mt8390, with less A55 and Mali G57 cores=
+ as main differences, and like the mt8390, its hardware register maps are i=
+dentical to mt8188.
+> That is why I added a fallback on mt8188.
 
-Patche(s) should be available on mtd/linux.git and will be
-part of the next PR (provided that no robot complains by then).
+Seems fine then,
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Kind regards,
-Miquèl
+
+--vpJ7qZAU57snQZoU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4gCAQAKCRB4tDGHoIJi
+0vNJAP9hRxZkfQhseHe1QQ9f6Z5WQKGw1EgiIuWo5Aq35jBUZwD/S+nJx4NxwpUN
+ZvVMB0l5bDODSLpz1FaMo24PT6XN0Ac=
+=UM9R
+-----END PGP SIGNATURE-----
+
+--vpJ7qZAU57snQZoU--
 
