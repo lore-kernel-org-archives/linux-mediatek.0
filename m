@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D05C02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 21:00:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0523FC02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 21:23:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ocZ+ymLbnWlh0pOna7G/KIgz+bLTX/tfPSe3NxTLK9E=; b=B43yaf96yapFeOod9G0BRWHFpF
-	d23UdPcWt9e8tc8PouZLmzsHk6goSmPBJwDoNdV7bI5+k0IhGmvLnKQoWgYqbdl63lsMWvv19DQnt
-	eoJpmfeMFpZ5YLrpwLzNjr80DkjI/qxgU7JQ5bTdTbsfUBv0RFEUUlTJMCbae7tP2jxeFaf+R5YuA
-	LrXt+otr3/y95sevMwli8pQxMBu0lW5Fiu7UIqQWSZ31Xnom3fyRCGTiUOj8Y2YZGs5e1UVLsTQeu
-	MCFMjYiA3Oy7kJZOX+hntS71DaI4/W1aeB1uLruzKgE29ZjWqgS8J9P7YFMbzniytBesy2e23lWlR
-	WK2IRzkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RygItKIJJDoEUCzJbxmAIl9MdlXUeeZINpK9kjgMTmo=; b=NbmiwGXWF/fEn1EvPQ/yPN5Te8
+	p/5voHFWYFVXZtLySsEZ3PH8sVcBRiObiF/pzC4fBqtFlNmYS6hXqAhUVQUFMeIwgD+kpnrMWZg09
+	MW4qx2Yw676qd1wyKj6ajVKEeyjwtHiDHaqqLyx5RV5QhuHVw0hTsW1s/8PiSpcbfjjhfoxfjT9B5
+	RVvO0Nj3TKuagQmKJruIplY2LK7ASdWarbNKFvxiFcr7E0qXCNh0jcROxfNhdp4ytYrtY8WqBIvi6
+	fmxzdgxgVK5v65flngcVYxfEYVNuzf4Pa2ezYQqsKB9EBBxzlgzFSM37Oz+1VRjsGrgOfrqbAi6xv
+	wp9AibyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYAV2-0000000D4bh-0ucB;
-	Wed, 15 Jan 2025 21:00:28 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1tYAqx-0000000D9Gt-24nO;
+	Wed, 15 Jan 2025 21:23:07 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYAJC-0000000D2de-2XC2;
-	Wed, 15 Jan 2025 20:48:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736974095; x=1768510095;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NBmFqEdQWXlXOmVjvWnaHQhn5HTvwDLz7apgLNcurQo=;
-  b=Z5ixGcynaYTXL6PJSeNroahoPdOnKeL5Is4JBWNe3FYe6AXOKZW+zak9
-   Xp+mcKYvbVtRpH3L8mpIw7QMWLE+Pm4gqOt76syEH2kO/by9HpK5VCng6
-   5SRevxTh/JXXADueHvyKQlZNN2xgAu994oCp9RF+jGfQiN13Zf34HjVIa
-   GV4nEzKEtkHY+nHxqt94SoSW4mTHahFUCsekRWCAAHqIm8yu1B4s07UD6
-   ZlnQaZkpcQ3Ecduhy6kc1hDscYfLb21hhMAF7y0VzX1UMLyPVw0cbUy8w
-   k+SCLeCo95sQa2h6Nq3XKRHwizhQ+mzxwKmVfG5Xetp0CNEdJvLvLhgKh
-   w==;
-X-CSE-ConnectionGUID: Uk4pvMv/QWGeOGKuqR2nhw==
-X-CSE-MsgGUID: FR0OP/WuSnOTRBJc0+ZHoA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11316"; a="37359037"
-X-IronPort-AV: E=Sophos;i="6.13,207,1732608000"; 
-   d="scan'208";a="37359037"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 12:48:11 -0800
-X-CSE-ConnectionGUID: wkYOM2pFTBG7tT3+IK/nSQ==
-X-CSE-MsgGUID: Wb4Ztt1ATqGwNcp3rxZurw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="105102930"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 15 Jan 2025 12:48:07 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tYAJ2-000Qpv-1t;
-	Wed, 15 Jan 2025 20:48:04 +0000
-Date: Thu, 16 Jan 2025 04:48:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yenchia Chen <yenchia.chen@mediatek.com>, gregkh@linuxfoundation.org,
-	jirislaby@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	yenchia.chen@mediatek.com, yj.chiang@mediatek.com,
-	tbergstrom@nvidia.com, yujiaoliang@vivo.com,
-	u.kleine-koenig@baylibre.com, treapking@chromium.org,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	id 1tYAm5-0000000D8R9-3ZjS
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jan 2025 21:18:06 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-436203f1203so112535e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 13:18:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736975884; x=1737580684; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=RygItKIJJDoEUCzJbxmAIl9MdlXUeeZINpK9kjgMTmo=;
+        b=XOqV/MVZ3yxQD8sRBgB+Ls2gRJoP1Xveqs8IRnUVznlAiVKQh3bTsG2nmdZg46gN+J
+         q32nuPM3fWdOG0M4aA3WwMMzMB/qMvJixAguSKNJnOLTnQ25DlHAZFGUQilMSfQtbCIe
+         vBf2SYBZsBn9TB9OSg3BotlRP5LPGzzziqeX1vjl/qkapUwI2hEASO9G3I6+uIp/la8Z
+         2admhy6WSxFYAWky4Z+M9cTF3+56LNpymY2/oc9r2Ohk9iEW9uPVHgHJRXcZchDX+Sex
+         b9dRH/DpJwDhJLe35pz6bzKoynnIy0EOfBBt28bzZlJQXWpJLvdV5vAc4DIAvs7u9U5X
+         5dOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736975884; x=1737580684;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RygItKIJJDoEUCzJbxmAIl9MdlXUeeZINpK9kjgMTmo=;
+        b=oCutwTEFihEWsoQt0ybzqmZQeMpBIyhQ4HxKTkWMN7MCJiCL1yttH7ueWN+ZEFZIP3
+         jJ6X8zOmy/qhcewQKt5n84n5bFos8ag4+XLVzBOKOLpGBVMzrJIvk/Nmg5q7yMqyQ4ux
+         fa3VbqZUCIur86i7fIjLWTTaJ53UNmxbdlRB4yCq5iDCgbKrGTkpTFRS+XB822clM4DL
+         LmN9ua6DK4RPJR8P5JWa0lgZBDe1B8EKzyfvj3UtqtDuX6pEbX0oMnRKUJn0n/q+m/PC
+         OSXPSWnxnABfJQoiISit3+SmXCqcQgevbnH9amBSwkrbYYSXtNfelNNI07M06Ji0vAHq
+         gI8A==
+X-Forwarded-Encrypted: i=1; AJvYcCUlqmedeaaTM7/w8MYlS76+s0rKpVbaNEYis2dlnwvgtNsj2BOEV1ZXZ5CL1zPPT6OQ8geRpaHbYO6JVDrk0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfhUXE3gPbSSG8BIumYSa0xaXLmCt8pbw+zKbgz8tfV5tE20li
+	KqeW3SrNp51pyTZnLEYSQduTeqQHcD/KCPsBamF5+ytIeYqBlde6eVgCpLQk+Dk=
+X-Gm-Gg: ASbGncvrrcso7Wj2zJ5r/tIOn3q9WU0bZkOWWyeHizZEjACzVRDMOC2GBE+a3eoaOo4
+	mlOXMjl5dL4nsA5tmZUJ4OVDTPm0tHhHrZltGJgIL+rKiFTHTAjlye8WX+1lClOOFeTMggLXRGY
+	HxCo5Wo9AyE3pQXgiU2TBHyEhpQ5g4KBVuIPTIBTyi7lJemLEeCEXqYVZ9iUWGQkt0IlEqE9qvg
+	ze1wS/8bc11sycBOqGNEw/mzZu5YfXZloRiA8Lo12J5tooITJCAxtuzsLDpELQJBAxtjgQ=
+X-Google-Smtp-Source: AGHT+IGsfOhRu6D0LOsuqf3Qj2pk13pONLIyJ5OgpWh66yJEuII6b5Hg8jLGZocLy0vupG9WNXgWuw==
+X-Received: by 2002:a5d:64cd:0:b0:374:ca43:ac00 with SMTP id ffacd0b85a97d-38a872e15f2mr11170817f8f.4.1736975884220;
+        Wed, 15 Jan 2025 13:18:04 -0800 (PST)
+Received: from krzk-bin.. ([178.197.223.165])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e38efeesm18992607f8f.62.2025.01.15.13.18.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jan 2025 13:18:03 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] serial: 8250_mtk: Add ACPI support
-Message-ID: <202501160444.iXv8byKW-lkp@intel.com>
-References: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: mt7622: Align GPIO hog name with bindings
+Date: Wed, 15 Jan 2025 22:18:01 +0100
+Message-ID: <20250115211801.194247-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_124814_693489_6286EE51 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20250115_131805_883226_8215144D 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +100,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yenchia,
+Bindings expect GPIO hog names to end with 'hog' suffix, so correct it
+to fix dtbs_check warning:
 
-kernel test robot noticed the following build warnings:
+  mt7622-bananapi-bpi-r64.dtb: asm_sel: $nodename:0: 'asm_sel' does not match '^(hog-[0-9]+|.+-hog(-[0-9]+)?)$'
 
-[auto build test WARNING on tty/tty-testing]
-[also build test WARNING on tty/tty-next tty/tty-linus usb/usb-testing usb/usb-next usb/usb-linus linus/master v6.13-rc7 next-20250115]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yenchia-Chen/serial-8250_mtk-Add-ACPI-support/20250114-113715
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/tty.git tty-testing
-patch link:    https://lore.kernel.org/r/20250114033324.3533292-1-yenchia.chen%40mediatek.com
-patch subject: [PATCH] serial: 8250_mtk: Add ACPI support
-config: powerpc-randconfig-001-20250116 (https://download.01.org/0day-ci/archive/20250116/202501160444.iXv8byKW-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project f5cd181ffbb7cb61d582fe130d46580d5969d47a)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250116/202501160444.iXv8byKW-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202501160444.iXv8byKW-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/tty/serial/8250/8250_mtk.c:662:36: warning: unused variable 'mtk8250_acpi_match' [-Wunused-const-variable]
-     662 | static const struct acpi_device_id mtk8250_acpi_match[] = {
-         |                                    ^~~~~~~~~~~~~~~~~~
-   1 warning generated.
-
-
-vim +/mtk8250_acpi_match +662 drivers/tty/serial/8250/8250_mtk.c
-
-   661	
- > 662	static const struct acpi_device_id mtk8250_acpi_match[] = {
-   663		{ "MTKI0511", 0 },
-   664		{},
-   665	};
-   666	MODULE_DEVICE_TABLE(acpi, mtk8250_acpi_match);
-   667	
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index d12eac9b3eeb..9f100b18a676 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -320,7 +320,7 @@ &pio {
+ 	/* Attention: GPIO 90 is used to switch between PCIe@1,0 and
+ 	 * SATA functions. i.e. output-high: PCIe, output-low: SATA
+ 	 */
+-	asm_sel {
++	asm-sel-hog {
+ 		gpio-hog;
+ 		gpios = <90 GPIO_ACTIVE_HIGH>;
+ 		output-high;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
 
