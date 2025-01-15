@@ -4,79 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68D7AC02185
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 07:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CE6C02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 07:47:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=irqIrASEQnL/P83qLaBuXsZse+5FN1F0t4SWPoFUX4U=; b=GCL99VAIWxXhkbtIzJCbfpgwz+
-	+11IU2EybIpCyxpcWxq7lqTQDSDk+mAJ3JRDtqZpc5zWVDnp3O+cEXs9CSgsn1lE0Pr09/RieWM9u
-	rcI2GbPz7dbO1QaXk70BQxvJ/WlXhtK3afvAck11Odjuyj6VctwcYNnUEyy2Xfaq1BqRNjy+WLPDs
-	v2smAXCobNw8CmvVe4NzVIQS22ZYq3XWg2VCHapKYw+Mnf07YX6pywo/qj6krvx0wU2gPaB2DlaiK
-	Y84/wse3MlrnLjveYsXy8S819gKU/YxhU0iA4Mpg1jreZUncqOr0c9G7b2jL9TtKScXxGxOQ02lE6
-	VE+zmXnQ==;
+	bh=KBzdP99yV3ZxCwnGo2sE7OX1HCuNFPynfYdsPZrFS/k=; b=MrhqdpnxDXOG1QKadjMNEJBQHI
+	OnfvAnnE2Fg8pOG7oKv3c4kcE7UDqK67Gw5giz5xnXIoDi2EEzz+t6F6WLxAO+7qb4PCp69FPDH6q
+	eaGIGCYxTaxUS5EB4uCueLqKLJJ97N3I/tArki3/04IswuucDrHTbbAK5TZPia6hRmHS8rVOrm7Ha
+	PfIXb3fulvHV81XPQ1moMsy48j12V/NMrams9wk1oDm67devC53D2h1fqa1xdBVrypRpcAYWd52Il
+	38XrZSaC+aHOhbAz3uYNRTIo4i+YnAfLQoYwdOTQ90221sgN70Iq+GyqKZ+YAkmAwQZmtLkkbeZEu
+	6JLK1c4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXy5V-0000000Ayfl-2Ace;
-	Wed, 15 Jan 2025 07:45:17 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1tXy7y-0000000Az0i-1mxk;
+	Wed, 15 Jan 2025 07:47:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXy4I-0000000AySk-3BA8
+	id 1tXy4U-0000000AyWB-2EBV
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 15 Jan 2025 07:44:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=KBzdP99yV3ZxCwnGo2sE7OX1HCuNFPynfYdsPZrFS/k=; b=SnraIbpM2JoflPd+XrRD45Mylr
+	leqWe4+uoKh1l+xS+1yevYQwRrdKogyeoyD8GZMbnhMfHmUiJyOa4Z8rp35oZgKt5AwyHj3V+jegV
+	RIQ/72viFZjd3y0hZDQVDaVDTSNWdM4VS2DOckbl5LaKiE5g2etxiJKQzdQlbEO2IkhyVTWzgQrJr
+	dDrv6sz5j6M1k967Cgw8aSgcv0MFTqHGuOF9YOaKAVT56jyHKOIyaApv3UJs7l/mWR8/3dQAUXSV4
+	55eQl3RQgHre11yuDMG1KvzbpNVvMfFfQdNF/KNUPUAk6sz5kOtxK8Kgi/dodz8QM0IDSU1u3HKQi
+	kDDOoibQ==;
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXy4R-0000000AoO1-1uJN
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jan 2025 07:44:03 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-21649a7bcdcso109421005ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2025 23:44:02 -0800 (PST)
+	Wed, 15 Jan 2025 07:44:13 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-21636268e43so150687375ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2025 23:44:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pegatron-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1736927042; x=1737531842; darn=lists.infradead.org;
+        d=pegatron-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1736927048; x=1737531848; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=irqIrASEQnL/P83qLaBuXsZse+5FN1F0t4SWPoFUX4U=;
-        b=0pdpWLFBgxalU0KPs0mpZmF1PBBu5KNJSYpCC1hl4bxlC/MbCKUCmJ5HxdSrSL1aJH
-         3ehae9WpIR3ieyRcJuyWs1UIRSY7c8Vkk8gEYz1wPogS96hjf63myabZXc4/wr0AjZP2
-         zJJvO3+CTSlGWuNVEwQWXegEIFY7UzwxIxuiKt/+tQbNrtd36cmWcqOR05MewX6Dohka
-         /va53isjmMKwVOlUDORgjTvme0YtJsBnEnMgTsx778+ph3iGgQIJkLVkKCq0NYwE7Bbb
-         KEiCPOjxNIKDmR4Qrooxm9VgfNX13y5lzkpJ/Sz+c8iRX1EqWHikaqPlqDP9U+U1Acf8
-         gSfg==
+        bh=KBzdP99yV3ZxCwnGo2sE7OX1HCuNFPynfYdsPZrFS/k=;
+        b=KCNshPhThheBRkioUL8UNLV4IK+xAeF0HJwWrn9rrF2rw+ouw9AE+g2wDUF2FV00P8
+         Cl2GffHJdti2VlCyfJBBk+vY4QOJTc1lrCCwWEYN3f48dPqbf5UcZOivukQWqLYwdsIh
+         jLxEi/eg8oeA8kztJuMMsuJ80/m1OQFuhYuBbEDEnPNjewbXREd/ipxb1aj/bY3TWagO
+         jR6BhNaHVobOTpRaJn6764k4bj4S8CyfjF3t8xN2Zc2VVVnvx8icpsjKA/Qt6gK+e8OE
+         uA4+PzBpgra01wqIeIjL8OA92YEgNwIDXvJpTrg+MFx4/t34w4Ozl7QETDaYfdh5SfjR
+         BHBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736927042; x=1737531842;
+        d=1e100.net; s=20230601; t=1736927048; x=1737531848;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=irqIrASEQnL/P83qLaBuXsZse+5FN1F0t4SWPoFUX4U=;
-        b=YuDasDPoShDNXcoyxAVdhYL0tYMIV12zGTFZqttO3vJWQ74Biyu/67hLMv7x0jjmBb
-         fI02cKUYka8baOl90Zr6l+IdOBjRYO96OX9Tf49z9fScIygfhpIb/3X2HN4dSckuntyK
-         O8E1EcwkWoEYsCykPCHjWPdZIlhR7820bz9hXJdvUzNtDCtm/xI9Ktpv7PNlsTaxEuDx
-         aK9U2X6A0t/PVE9bmpVbhrJ0atI/ax00fo8nfE1vL37FQnqcFy9sqkCa0oWMrKNz8NYo
-         XdOd6194QvniRpPkvQI9+Y3232Ub1UUgLYIhvqWHqRJtwPLp6/Ez17O5NvPz/8afmmR5
-         KTCA==
-X-Forwarded-Encrypted: i=1; AJvYcCXIBgf98BqFxSikt7CEqCPlyKsA8dzk82pJzPbZ1lSiactfAqcZUBqTJej0JoQmD7bbmTu8aBdgbTk7o7TstQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxT/6DHqMn1MglL27sKsrky4J0tuCquZRA1G5eNIIvDb0yP4rcE
-	54wHKCH9WHYyJb0qwpJlY1l5kl/mICnTTrlNnO17DJ0vlW3dvT1KqvkzxSoyjZQ=
-X-Gm-Gg: ASbGncuxEjjjEoSXaulJJg/2a5JLbFq/UOcWOX0T4l3PZmXMR0tHfW8JoxJesIJhVK2
-	oooGd55Ve7ILdMQUnxV92WOr6ajIBnw1iIqM8btnNNciP7Qh4aObrCIT2FS4Tfp9E8xJtiTlC0T
-	CEFuHrxmxXRmdnUIXv+UyX0KHyajT90PKPE8bz0ggRBwtswtpt2qZqZkHLKHiQxeSrC/A3ThRQO
-	eiSWekXXuFzvztJLrNnelXuMxqDi0VKXO6tHV4R4EaY37+2ZVrkDaY/e/YktFRD6w+U2Mc/vgpW
-	fHMnG3KbLvOdakWq/994eDDF1B8w1/dRRlI74gGaqWpnuctULFKGb8UjIwusN1DdruZCD/pKszc
-	0Rgsex0eItmVqZ0Q5
-X-Google-Smtp-Source: AGHT+IH7wyHxwHg1k5uN8OxK8Li1gA9Eftad7ox/l7Ex95B0bB66qcmyx0Wv80jD0KvFDC+GMHGKTA==
-X-Received: by 2002:a05:6a21:3997:b0:1e0:ca1c:8581 with SMTP id adf61e73a8af0-1e88d108843mr44198267637.21.1736927042246;
-        Tue, 14 Jan 2025 23:44:02 -0800 (PST)
+        bh=KBzdP99yV3ZxCwnGo2sE7OX1HCuNFPynfYdsPZrFS/k=;
+        b=VkMqCdIEaZ3TkWgR8YaouRiQVXk+kMAg199hN1immYzWPXbDuDxdACSYFj3ZY/BC7+
+         2PZlCIUFkDTkkUbFcpzv0nOoEme6KiUnpXM2H7eXSz49HUb3TQZYFbdjDtADNx8JVy72
+         f0Y8Us4JP1qCTZe5RH1YMo+X1p3Enpyb2UEPn+benU1irILlehTGa92g0MvL97YigwRF
+         YLHKpUfTrGpRwXEUlouJ+lHExErNpcaqGcLZjlKsTOr+vAlbMMS3gbQOg+FzKlUVmE1t
+         76vgxhum7B3GappH8ZHN1G6HnJrWC8NXHvovatBnvvWKu4xd6L1OBg7bN7Yf4UZcGOSl
+         yt6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWpXhUSf6w/5l5TclO8HFP9saz/KBOXWfRON6VvU9KTTgYyURHPK2QsBc1FjdGhIDiVByTTi4j86Q7kLnZYIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy4iGAg8lToJ7PlaiMsYuPEUvmmljZZKtyoSFubnH0CgRjE4qDm
+	Bj/BGtski8eaUyMAF+Rx+Ht3MNsFEskaa/k009vaNvZ9tgKPSD7TUCTvu+eGGQk=
+X-Gm-Gg: ASbGncsTSAso8sFHs0X77Zkg5/lReeNAJM70MTScTaaTXQc4EA2wJ4UL5ILW1XFH5Uh
+	WvrhtxaDYyXPxZ1MQ0+wTZOfzIQDU7+B/otW1CLL20hIEYPwd4oAffSJ52EdN4FhAEsb8WlIGEL
+	GxBiuczQObXlS/L7EFhb10VKf6SxYrRfL3E9LuUfADsmb8/nG3hR4pMkd4j1+p7Wq7v4/DqyP3B
+	77AJVcY+I6X5sS/qtE1AOhB/VgG7PVLaVvet/JUZ5+IMizVpnZfbW9L1Y9DmPHRq5Lnhaq2n2/B
+	fVJNGl8S/I2GeSrf+pAztZmjc4DT7SLcj8ZJxp3okHGL/AZbNFpaLgHrnVDUmk47j/Z8j5niZC/
+	/e76TS+scyDTkKm3M
+X-Google-Smtp-Source: AGHT+IHxJYTMrcJUwmiV9sxWbdmBVkObu5KSmsI25YIzuCtHYnmnfHBaHATP9T7P49ge6j/aR2nDyA==
+X-Received: by 2002:a05:6a20:7491:b0:1e1:a06b:375a with SMTP id adf61e73a8af0-1e88d0ddc82mr51120833637.35.1736927047711;
+        Tue, 14 Jan 2025 23:44:07 -0800 (PST)
 Received: from [127.0.1.1] (2001-b400-e25f-ed65-f855-8c86-b103-448b.emome-ip6.hinet.net. [2001:b400:e25f:ed65:f855:8c86:b103:448b])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a31d5047ea0sm9335482a12.58.2025.01.14.23.43.56
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a31d5047ea0sm9335482a12.58.2025.01.14.23.44.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 23:44:01 -0800 (PST)
+        Tue, 14 Jan 2025 23:44:07 -0800 (PST)
 From: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
-Date: Wed, 15 Jan 2025 15:43:43 +0800
-Subject: [PATCH 1/2] dt-bindings: arm: mediatek: Add MT8186 Skitty
- Chromebooks
+Date: Wed, 15 Jan 2025 15:43:44 +0800
+Subject: [PATCH 2/2] arm64: dts: mt8186: Add MT8186 Krabby platform based
+ Skitty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250115-skitty_kernel-v1-1-6ef2086858ba@pegatron.corp-partner.google.com>
+Message-Id: <20250115-skitty_kernel-v1-2-6ef2086858ba@pegatron.corp-partner.google.com>
 References: <20250115-skitty_kernel-v1-0-6ef2086858ba@pegatron.corp-partner.google.com>
 In-Reply-To: <20250115-skitty_kernel-v1-0-6ef2086858ba@pegatron.corp-partner.google.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -89,17 +104,16 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  herbert1_wu@pegatron.corp-partner.google.com, 
  Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1736927028; l=1395;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1736927028; l=11366;
  i=geoffrey_chien@pegatron.corp-partner.google.com; s=20241216;
- h=from:subject:message-id; bh=6hi/w2RSrE+ViDfSgsZQxeXkmC6s+DJOxBgbxZkuhZk=;
- b=mtRfNsy2B+eYE/hksXjSGuB4MmhaoenYcN126RNPUF9qsdO8z0Lhk48HgqBb2OLLWXgQN2yoL
- TtG7FVnKFelBG4I+OYlg4P9mYFjyQBlbG0zqEf5E7bx4AQwFvqtfbQc
+ h=from:subject:message-id; bh=xgFEOHhyTXycUkRi65Eww7YQ5BY7+zt0b7RDW0dNem4=;
+ b=AjUW+fK2yzwazSwM+i9OJNDIJOdJ2TRCqbRPCjvo9HSpqO74liUTsS0Eg92Xnv3J/1bJmYiFF
+ ecyieQcmAgGAzA6U+MlCFLB6E9baYPtNIRDVeAL6nB9s5j87sXKKC36
 X-Developer-Key: i=geoffrey_chien@pegatron.corp-partner.google.com; a=ed25519;
  pk=P8X+ifKsuR9w8T8cIa35nudXKmZX6qk0iS+5EcuwtrU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_234402_798972_547638F2 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250115_074411_791587_E068AB5E 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,30 +136,406 @@ a clamshell laptop with an optional touchscreen and keyboard.
 The SKU IDs of the Skitty devices map to different touchscreen and
 keyboard.
 
+This patch depends on patch "dt-bindings: arm: mediatek: Add MT8186 Skitty"
+
 Signed-off-by: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/mediatek/Makefile              |  4 +
+ .../dts/mediatek/mt8186-corsola-skitty-sku1.dts    | 92 +++++++++++++++++++++
+ .../dts/mediatek/mt8186-corsola-skitty-sku2.dts    | 82 +++++++++++++++++++
+ .../dts/mediatek/mt8186-corsola-skitty-sku3.dts    | 93 ++++++++++++++++++++++
+ .../dts/mediatek/mt8186-corsola-skitty-sku4.dts    | 83 +++++++++++++++++++
+ 5 files changed, 354 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 1d4bb50fcd8d9aadb7b77e144a474b79da005056..b57e86946d7565720fdee31b2bbef288b0508769 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -263,6 +263,14 @@ properties:
-           - const: google,steelix-sku196608
-           - const: google,steelix
-           - const: mediatek,mt8186
-+      - description: Google Skitty (HP Chromebook G1m 11 inch)
-+        items:
-+          - const: google,skitty-sku1
-+          - const: google,skitty-sku2
-+          - const: google,skitty-sku3
-+          - const: google,skitty-sku4
-+          - const: google,skitty
-+          - const: mediatek,mt8186
-       - description: Google Steelix (Lenovo 300e Yoga Chromebook Gen 4)
-         items:
-           - enum:
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 8fd7b2bb7a1590341e7bb4ea1ecf039ae3e8eb0d..328e1ee444bd81b5a2aa3d21acb7a5c5a3318a87 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -59,6 +59,10 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-rusty-sku196608.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku1.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku2.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku3.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-skitty-sku4.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131073.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327681.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts
+new file mode 100644
+index 0000000000000000000000000000000000000000..d0f22888c14914aecc47351408f0fa2474d9ab3d
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts
+@@ -0,0 +1,92 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-krabby.dtsi"
++
++/ {
++	model = "Google Skitty board";
++	compatible = "google,skitty-sku1", "google,skitty", "mediatek,mt8186";
++	chassis-type = "laptop";
++};
++
++&keyboard_controller {
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
++	>;
++
++	linux,keymap = <
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)
++		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
++		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
++		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
++		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
++		CROS_STD_MAIN_KEYMAP
++	>;
++};
++
++&usb_c1 {
++	status = "disabled";
++};
++
++&target {
++	temperature = <76000>;
++};
++
++&i2c1 {
++	/delete-node/ touchscreen@10;
++	touchscreen: touchscreen@10 {
++		compatible = "elan,ekth3500";
++		reg = <0x10>;
++		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
++		status = "okay";
++	};
++};
++
++&i2c2 {
++	touchpad@2c {
++		compatible = "hid-over-i2c";
++		reg = <0x2c>;
++		hid-descr-addr = <0x20>;
++		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		vcc-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
++};
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
++
++&i2c_tunnel {
++	/delete-node/ sbs-battery@b;
++
++	battery: sbs-battery@f {
++		compatible = "sbs,sbs-battery";
++		reg = <0xf>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku2.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku2.dts
+new file mode 100644
+index 0000000000000000000000000000000000000000..201195631d2411880a748bd46dbe4efb200002be
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku2.dts
+@@ -0,0 +1,82 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-krabby.dtsi"
++
++/ {
++	model = "Google Skitty board";
++	compatible = "google,skitty-sku2", "google,skitty", "mediatek,mt8186";
++	chassis-type = "laptop";
++};
++
++&keyboard_controller {
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
++	>;
++
++	linux,keymap = <
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)
++		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
++		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
++		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
++		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
++		CROS_STD_MAIN_KEYMAP
++	>;
++};
++
++&usb_c1 {
++	status = "disabled";
++};
++
++&target {
++	temperature = <76000>;
++};
++
++&i2c2 {
++	touchpad@2c {
++		compatible = "hid-over-i2c";
++		reg = <0x2c>;
++		hid-descr-addr = <0x20>;
++		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		vcc-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
++};
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
++
++&i2c_tunnel {
++	/delete-node/ sbs-battery@b;
++
++	battery: sbs-battery@f {
++		compatible = "sbs,sbs-battery";
++		reg = <0xf>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku3.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku3.dts
+new file mode 100644
+index 0000000000000000000000000000000000000000..42a0bcbd61283c865dd9c167e203694f9d8891b9
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku3.dts
+@@ -0,0 +1,93 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-krabby.dtsi"
++
++/ {
++	model = "Google Skitty board";
++	compatible = "google,skitty-sku3", "google,skitty", "mediatek,mt8186";
++	chassis-type = "laptop";
++};
++
++&keyboard_controller {
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
++	>;
++
++	linux,keymap = <
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)
++		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
++		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
++		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
++		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
++		CROS_STD_MAIN_KEYMAP
++		MATRIX_KEY(0x04, 0x00, KEY_102ND)
++	>;
++};
++
++&usb_c1 {
++	status = "disabled";
++};
++
++&target {
++	temperature = <76000>;
++};
++
++&i2c1 {
++	/delete-node/ touchscreen@10;
++	touchscreen: touchscreen@10 {
++		compatible = "elan,ekth3500";
++		reg = <0x10>;
++		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
++		status = "okay";
++	};
++};
++
++&i2c2 {
++	touchpad@2c {
++		compatible = "hid-over-i2c";
++		reg = <0x2c>;
++		hid-descr-addr = <0x20>;
++		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		vcc-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
++};
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
++
++&i2c_tunnel {
++	/delete-node/ sbs-battery@b;
++
++	battery: sbs-battery@f {
++		compatible = "sbs,sbs-battery";
++		reg = <0xf>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku4.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku4.dts
+new file mode 100644
+index 0000000000000000000000000000000000000000..581642e27043c0149bbf72b4252394f3e2f3c6ec
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku4.dts
+@@ -0,0 +1,83 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-krabby.dtsi"
++
++/ {
++	model = "Google Skitty board";
++	compatible = "google,skitty-sku4", "google,skitty", "mediatek,mt8186";
++	chassis-type = "laptop";
++};
++
++&keyboard_controller {
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
++	>;
++
++	linux,keymap = <
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)
++		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
++		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
++		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
++		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
++		CROS_STD_MAIN_KEYMAP
++		MATRIX_KEY(0x04, 0x00, KEY_102ND)
++	>;
++};
++
++&usb_c1 {
++	status = "disabled";
++};
++
++&target {
++	temperature = <76000>;
++};
++
++&i2c2 {
++	touchpad@2c {
++		compatible = "hid-over-i2c";
++		reg = <0x2c>;
++		hid-descr-addr = <0x20>;
++		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		vcc-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
++};
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
++
++&i2c_tunnel {
++	/delete-node/ sbs-battery@b;
++
++	battery: sbs-battery@f {
++		compatible = "sbs,sbs-battery";
++		reg = <0xf>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
 
 -- 
 2.34.1
