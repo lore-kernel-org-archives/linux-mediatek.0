@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F150EC02183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 11:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77A7FC02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 11:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YWwH1bDPMW4sIvL8kmJCxcSzCH8Ejrs1sg9Vv46J164=; b=MUVbJUfRRD+x04Dreg6bvWOVHx
-	xdaJu1BnVWykOX46J0ZaQORmUgcckFLv8Ra/vsTs29Nu6nrrTRJLA/GG/0G/S6O7MJOWqC3NWvHni
-	UqsSjleAPY0qjvhjuiXOTVed3p1Yi7DRyWRLqvXXe7vhb8L1iezQbYp3UdihRjBze/JSOukSxSzgF
-	BT7Cyp6baH9IczlzdjxOSv9furJN8poy3QcZ2uDlveNUJnlS7dVRX3oIQgpqEM4WZa2kn23PiEEWq
-	BuxVLrk+ZAkfecXQEIATT0e+4EVg+S3YP7odqWclF8BCq1EwyFhkNylS313mCNqrm3tTeUpNGIRBd
-	ISXQ4Iig==;
+	bh=sz8qYCut2vMXxqWmWVOJ5WSfbE/dmnJ2d6EiHkz1mpE=; b=TQMGwURXop6l9bTIv/GXo5VrSv
+	b6U6P1SRAQqbhw4Z8xjB1a/s0NJu9BN4vNVBIIUb92jicbk2PG+SQfC0B+6gHVexvNcVJ+lR9p80G
+	h6xjg/xvIp/CmPE62Q5kjtPwtg91RWgFiulvP+if4Ubh8+Xb9GiWVdkEeqLedQAVt8Xj/C1yJFYPw
+	zNbWy+B8pNmGuiDcHxxPItj47qew1PGNrHl6YJVNa6NSskm8zQdAq8ewMzZ1vZmfvSNzxVXjD8pK4
+	DvhlYfEPVVxot/bHf9Li2Du6YGTIr7pUjtLFIEmTn/sM80Fsycjd++I83RoP2stKG1qBEyrH7nHmP
+	v6Em2rhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY1MB-0000000BdQ3-05TB;
-	Wed, 15 Jan 2025 11:14:43 +0000
-Received: from mail-pl1-f182.google.com ([209.85.214.182])
+	id 1tY1Pq-0000000Be4a-2a1C;
+	Wed, 15 Jan 2025 11:18:30 +0000
+Received: from mail-pl1-f181.google.com ([209.85.214.181])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY1Jw-0000000BcWz-1J6z;
-	Wed, 15 Jan 2025 11:12:25 +0000
-Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-21669fd5c7cso119710035ad.3;
-        Wed, 15 Jan 2025 03:12:23 -0800 (PST)
+	id 1tY1M9-0000000BdPI-2sXD;
+	Wed, 15 Jan 2025 11:14:43 +0000
+Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-2163dc5155fso119917935ad.0;
+        Wed, 15 Jan 2025 03:14:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736939543; x=1737544343;
+        d=1e100.net; s=20230601; t=1736939681; x=1737544481;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YWwH1bDPMW4sIvL8kmJCxcSzCH8Ejrs1sg9Vv46J164=;
-        b=tyd0GR5CuMV4P/ZdCdSRVO2E2H5m/9KCjge2AF/nO+sHQHMmR9gS0fmDZsX4hZP72j
-         L8Si1MLklDnpRAQsy2WBKs9jXt2HfN0iX4Fgew7r5XU+r30VJ8yw5Id9bCR93dzQf7KP
-         g7eaNovCbF7FVMaWF0iLQkSxYX4TFM4BYpX6SwaDH7H9uLOFoqmnU0KZooOW053n1alc
-         EAusKP0SCpxA304sR615w2kAzWLAABJ+fnT1oAFG1CpRAcqPuGbts53wimUEdlzmU4G9
-         cNlkeR1bGkyDFW4yEZ5LgXSGWySjaqssjNXjz/xgzmZnbeetAvP5ebwr97GA6DhodlTe
-         WorQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU8ARiWmnFsnb8o5OpAVWg3TdLnV4St3tm0zczze279s1UBT8phvp8Hl1d5s/vARCwr3hY5IdMI2Lb2TGl9FnM=@lists.infradead.org, AJvYcCVf4PsvqOJsAgPeGsGsiXH5fexEQXXh3d8fbJ0M1IxyrtfeoNU4BgLsHqiD2tzRm+OueM6sVQHwKvcnZHQaqFFo@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTYAuhMFih/lT5MjmcH+0rLdZ492Nno4q9keGwIN0Jbebtv66S
-	eMjepyjJwiBhx8RvN0jX91zMAsTg+Xs8/TeQPCueMRogHVzNOy1g
-X-Gm-Gg: ASbGncubXYgdiroKY5SGJu7L+CvwZKXgnsm0pijyguH8vcjWPSqleTfcA/S8WFNscuW
-	BS/Eb5a+eahN7gTFc8Hb9j4IGPYVMVUzENYKXNM2WL01VcOxPef4//zhI3VjJTBYOhvNGJUosI1
-	9xGDgbaf+8cdAMRUDT7W9w94zWrtYJk/96l6M/ENTMbhWZvj7HOjm3wERZzYJ02Yd4IlxDmJpzH
-	tnLw95DMYRH3KkwGjWMAORJTN8NYZgf28CuI2aT6LZznnjXfUlz3nkiyiinw1Jv0ZPys4X9qj9x
-	FyHA+M2HMC43iT0=
-X-Google-Smtp-Source: AGHT+IHFoca7ZCISTDX0mGzInAWIQ58L8qkZmkBMA3Zf+oFefoTlL/1UC9F+En3y5YImzKRbiXnU4Q==
-X-Received: by 2002:a05:6a21:a4a:b0:1e1:c8f5:19ee with SMTP id adf61e73a8af0-1e88cfe2ce4mr44391726637.25.1736939543365;
-        Wed, 15 Jan 2025 03:12:23 -0800 (PST)
+        bh=sz8qYCut2vMXxqWmWVOJ5WSfbE/dmnJ2d6EiHkz1mpE=;
+        b=eaHCwciVKfHCs9H1oV+gQAlLYqrNb50dE0DBYMpEO/46LzO6jTqB0PGd70dhqld7YU
+         tUpA1Dl0fwmpbEAt+2Smq/y69pccNzOKyoD/Yy9TMTA84OeG4+3Vd2bE/BafnQoJVfQO
+         NQ2693Za02pZRAf1AmtTh1PwVAijfudWvJhgmJ100TF3qii0WmmJklsIILtxOzlbUn67
+         xiQkiwae5tYSsCHn3rSh5grzrt45xuLHXSJHAuj3aGUv5olhRUNcNsIsHnQWVqjkTt7i
+         Ajm+FNmZ2w5TqZUCrHojomAVfB7tt1WVnVsaYWUIUybJEJkYqOCY46UQjvjEGvkBWQtE
+         B/GQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUjq1atxP7emMcaKxOWQbT4PLLTSrGM7PCdcs5IrvaaaM1TCu3584AR7VLNl6vqByFeG1LC0R6O0JiCWZW6OT9l@lists.infradead.org, AJvYcCWT1S8zNa57lnHLhQ5CZsu6FsOmj+akmAgxd4EwMQsr9jwnF43CmLVMegv5R0fIxpHduTPFIJgayN8O3kVBpC8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzgQxW2v6XsXGwZikbs7GSvJh8vodvvFfBGpg2g73OkFVVm9KZS
+	QqvTsob8gzPm+Tm7XeCbdGo7/nDNXgHpghDKvM5ovRw4Je2LybBX
+X-Gm-Gg: ASbGncvQP6UxUqdYWbEfnoN8HPQIyr873HWr4V9/q8M7vjC6qSO39WtnsuoUqQ/hUQd
+	dFl6cE9ORWuKHaupmA0xA3GId4dlOHp6dAhymUhL2GEQ2zngJRZ94IYE4S3SCktQTPbsWUxDVgf
+	YVs9Fifz1cWZeJ/TYW70RA2uFWzpo4yFWek0IiFzxkoRprMGjsYtdQTt4Wh/tDeLSMtlnpiB3Si
+	rbHMCeERSJQ1xlnzv1AaKHlc0TXjSMU7wB7vwwo473V5WsP4KBJIDRjLXT5UYGmF0ZmSbjcd7G7
+	pt8nBdIpNe515Ig=
+X-Google-Smtp-Source: AGHT+IHBi1TpzbH8P/aWhdgwF4SFs6U00POoo7gCP6dZ7wsv46DHk24a0naYWm/T9JwxKv4fWUwHVA==
+X-Received: by 2002:a17:90b:3bc3:b0:2ee:bbd8:2b9d with SMTP id 98e67ed59e1d1-2f548f75de6mr34988834a91.34.1736939680740;
+        Wed, 15 Jan 2025 03:14:40 -0800 (PST)
 Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a31902b137bsm9540020a12.35.2025.01.15.03.12.22
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f7085261dcsm1908286a91.0.2025.01.15.03.14.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jan 2025 03:12:22 -0800 (PST)
-Date: Wed, 15 Jan 2025 20:12:20 +0900
+        Wed, 15 Jan 2025 03:14:40 -0800 (PST)
+Date: Wed, 15 Jan 2025 20:14:38 +0900
 From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Ryder Lee <ryder.lee@mediatek.com>,
@@ -65,22 +65,19 @@ Cc: Ryder Lee <ryder.lee@mediatek.com>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v6 0/5] PCI: mediatek-gen3: mtk_pcie_en7581_power_up()
- code
-Message-ID: <20250115111220.GA4176564@rocinante>
-References: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH v4] PCI: mediatek-gen3: Avoid PCIe resetting via PERST#
+ for Airoha EN7581 SoC
+Message-ID: <20250115111438.GB4176564@rocinante>
+References: <20250109-pcie-en7581-rst-fix-v4-1-4a45c89fb143@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250108-pcie-en7581-fixes-v6-0-21ac939a3b9b@kernel.org>
+In-Reply-To: <20250109-pcie-en7581-rst-fix-v4-1-4a45c89fb143@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_031224_345228_F6CDB7CC 
-X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-CacheID: sfid-20250115_031441_872757_BD5F4A27 
+X-CRM114-Status: UNSURE (   9.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,12 +95,14 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello,
 
-> Minor fixes and code refactoring in mtk_pcie_en7581_power_up() routine
+> Airoha EN7581 has a hw bug asserting/releasing PERST# signal causing
+> occasional PCIe link down issues. In order to overcome the problem,
+> PERST# signal is not asserted/released during device probe or
+> suspend/resume phase and the PCIe block is reset using
+> en7523_reset_assert() and en7581_pci_enable().
 > 
-> Changes in v6:
-> - remove mac_rst support for EN7581 since it is not needed by the SoC
-> - fix typos
-> - Link to v5: https://lore.kernel.org/r/20241130-pcie-en7581-fixes-v5-0-dbffe41566b3@kernel.org
+> Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
+> specify per-SoC capabilities.
 
 Applied to controller/mediatek for v6.14, thank you!
 
