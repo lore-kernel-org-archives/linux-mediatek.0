@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18659C02183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 17:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11E1FC02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 17:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZmGKfjxlT4o2JIXj1sDT8bEwEwluKLzjBiwPR0kyOwQ=; b=v7YCD1pU/3xBwPz64RSBakZtsi
-	f2UndZHf+V2092GfH0b3J0SJmFX0CswGMK+23WC5XSR+3rpwS6xTC9Zu8FfmZAZg7xQyuh1D0hu5m
-	/A9NVEjzBtraIOQCzM2Lq35F3ws+LHbS5pcD9RfPnWyJHfioHyMDPKI+4AN1pPcZ0V3gkgFgk3m0/
-	IBSi7fzzKOiWdnSQ33ym63J1cgjETkCkIp4f+99dmFyfnZqLAFUMrtlnSE8KNuJ7bWBu8xKwPrAyv
-	KXaXBL2yv4nenvVQ3Ew7+UYSjzPxa71iMK3Jbpui/EsVrEI/oO0nb5VUeOl+aw8vIi5RkYFjnQYaS
-	9Aq0k6AA==;
+	bh=BCCjPypjfkl2FIovsFFHVjB/BzI3nlgvwJz5/NwbXsw=; b=xFRVbOyCuXYN192IaIP75CDCn0
+	MOvMGPxz7dW2AFwozO/hebXpuivcWVBfVQBu1gSSA1LTWyoUM1FAs4Q592JsVtjGnsMGgVVsTvJPv
+	LO2jvxsJWz5z6cPqRxsxcgGg4s1qgILiG7F3laBiQ8L+GEQyexwVxQrsNyqQrv/IsHiMUDkdI2zdV
+	GQ+ZLwe7z1oaOlRXNjLFuC5yUzTy3QYIDoDDbJxBQfUgq0RYPvEDiKRbauwmDLr38DZJEQv+jHibB
+	L5qUt625fZcEZpHAbJUTo/ZomMpP3z2fjMLyfc6vS/b5/jLPihWUGlCID88H0Rv3cL9qLW4/ipfMz
+	KUXVuvZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY7Lm-0000000Cd4Y-0kZh;
-	Wed, 15 Jan 2025 17:38:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tY7Pw-0000000Cdxy-0vM4;
+	Wed, 15 Jan 2025 17:43:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY7Gr-0000000Cc53-0z5g;
-	Wed, 15 Jan 2025 17:33:38 +0000
+	id 1tY7NS-0000000CdTY-3w8N;
+	Wed, 15 Jan 2025 17:40:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6AF80A41E80;
-	Wed, 15 Jan 2025 17:31:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5FE2C4CED1;
-	Wed, 15 Jan 2025 17:33:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4B4575C5DA8;
+	Wed, 15 Jan 2025 17:39:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48597C4CEE0;
+	Wed, 15 Jan 2025 17:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736962416;
-	bh=X1iUr4Z3xOp2+2SXrinRazhxNTDYDO8wPhrfSPaaZSo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZeqyiJwQ9iZpAtxKr6wN9eWfGdHiYrJgQL5e7HznK240KZxasrQt6U6xrrjw5YbeB
-	 KL8uk4SpYvjRObFhZbtlabjwjceDWuzBI/6sVKgRxReM7ddari+RbEHrr4rVsRaZml
-	 +9j5GSHQlAARPemjSdclwryAtAJ743Ql6dNyiYy7MwZaH2exoCf5V/fBsRmHtMJfpS
-	 27lCE+0/Di4H6Wr6ej36NGPwHlkZPX7JGTcbb+dx3KH0u36EIE9u1HYWvlQ0KDbUMe
-	 GcOIEYVAe+TEAXcOjRFlxfUeXndppK0g8ArtOSBBvUYFN7hqPIj580FA/QGhJHKWF3
-	 jcmomyEPWN2tQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 15 Jan 2025 18:32:31 +0100
-Subject: [PATCH 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers for
- EN7581 SoC
+	s=k20201202; t=1736962825;
+	bh=MnSQMXREVVBMVqqG4DNkPoiFHSbXoUAQ7+YSxlu2cok=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=svJ45p4OZzWwWOCVuCmsBOLH/Sb0FwOy4O6Wp/nYfGoUPPMIu4eZ5AeCKRw09uHlp
+	 EvOQeh7YceB+VBH+j4VkwK6PCfrLADM0+kATjPLjH7aCrzR0PAMZpFDYT80+5rN/KI
+	 PnsupXJ14Gkmz1GrEPVem0zwAxnL1TuB7n4nFvfuDjEqXhzeC/ujVDdr2lQV1Y4Krq
+	 c5zmA3nAPBk25FZ7Mu0Zv4qFKeQNdCCQrsNUzOhg17VhdcEwcC5/s9KNK8G1BbWH5e
+	 QEVGA5UezKKiGKayItoNcXhtg6FCRgXsglzQd6JOrixy3ENiUZAh6D0jRRsWRcPnhA
+	 wzQYoGNu+WDCA==
+Message-ID: <3a853e1b-b5bf-4709-b8f6-e466e3e7375e@kernel.org>
+Date: Wed, 15 Jan 2025 18:40:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250115-en7581-pcie-pbus-csr-v1-2-40d8fcb9360f@kernel.org>
-References: <20250115-en7581-pcie-pbus-csr-v1-0-40d8fcb9360f@kernel.org>
-In-Reply-To: <20250115-en7581-pcie-pbus-csr-v1-0-40d8fcb9360f@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v7 0/8] fix two bugs related to page_pool
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250110130703.3814407-1-linyunsheng@huawei.com>
+ <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
+ <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_093337_416405_D8C6AFC8 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20250115_094027_071712_DFB768D5 
+X-CRM114-Status: GOOD (  19.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,84 +86,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Configure PBus base address and address mask in order to allow the hw
-detecting if a given address is on PCIE0, PCIE1 or PCIE2.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 29 ++++++++++++++++++++++++++++-
- 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..b172a46cf95a9c728291c5b7a88457d3b725681a 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -15,6 +15,7 @@
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/msi.h>
- #include <linux/of_device.h>
-@@ -24,6 +25,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/reset.h>
- 
- #include "../pci.h"
-@@ -127,6 +129,13 @@
- 
- #define PCIE_MTK_RESET_TIME_US		10
- 
-+#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
-+#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
-+#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
-+	((_n) == 2 ? 0x28000000 :	\
-+	 (_n) == 1 ? 0x24000000 : 0x20000000)
-+#define PCIE_EN7581_PBUS_BASE_ADDR_MASK	GENMASK(31, 26)
-+
- /* Time in ms needed to complete PCIe reset on EN7581 SoC */
- #define PCIE_EN7581_RESET_TIME_MS	100
- 
-@@ -931,7 +940,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
--	int err;
-+	struct regmap *map;
-+	int err, slot;
- 	u32 val;
- 
- 	/*
-@@ -945,6 +955,23 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	/* Wait for the time needed to complete the reset lines assert. */
- 	msleep(PCIE_EN7581_RESET_TIME_MS);
- 
-+	map = syscon_regmap_lookup_by_compatible("airoha,en7581-pbus-csr");
-+	if (IS_ERR(map))
-+		return PTR_ERR(map);
-+
-+	/*
-+	 * Configure PBus base address and address mask in order to allow the
-+	 * hw detecting if a given address is on PCIE0, PCIE1 or PCIE2.
-+	 */
-+	slot = of_get_pci_domain_nr(dev->of_node);
-+	if (slot < 0)
-+		return slot;
-+
-+	regmap_write(map, PCIE_EN7581_PBUS_ADDR(slot),
-+		     PCIE_EN7581_PBUS_BASE_ADDR(slot));
-+	regmap_write(map, PCIE_EN7581_PBUS_ADDR_MASK(slot),
-+		     PCIE_EN7581_PBUS_BASE_ADDR_MASK);
-+
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
- 	 * requires PHY initialization and power-on before PHY reset deassert.
+On 15/01/2025 12.33, Yunsheng Lin wrote:
+> On 2025/1/14 22:31, Jesper Dangaard Brouer wrote:
+>>
+>>
+>> On 10/01/2025 14.06, Yunsheng Lin wrote:
+>>> This patchset fix a possible time window problem for page_pool and
+>>> the dma API misuse problem as mentioned in [1], and try to avoid the
+>>> overhead of the fixing using some optimization.
+>>>
+>>>   From the below performance data, the overhead is not so obvious
+>>> due to performance variations for time_bench_page_pool01_fast_path()
+>>> and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
+>>> for time_bench_page_pool03_slow() for fixing the bug.
+>>>
+>>
+>> My benchmarking on x86_64 CPUs looks significantly different.
+>>   - CPU: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+>>
+>> Benchmark (bench_page_pool_simple) results from before and after patchset:
+>>
+>> | Test name  | Cycles |       |    |Nanosec |        |       |      % |
+>> | (tasklet_*)| Before | After |diff| Before |  After |  diff | change |
+>> |------------+--------+-------+----+--------+--------+-------+--------|
+>> | fast_path  |     19 |    24 |   5|  5.399 |  6.928 | 1.529 |   28.3 |
+>> | ptr_ring   |     54 |    79 |  25| 15.090 | 21.976 | 6.886 |   45.6 |
+>> | slow       |    238 |   299 |  61| 66.134 | 83.298 |17.164 |   26.0 |
+>> #+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
+>>
+>> My above testing show a clear performance regressions across three
+>> different page_pool operating modes.
+> 
+> I retested it on arm64 server patch by patch as the raw performance
+> data in the attachment, it seems the result seemed similar as before.
+> 
+> Before this patchset:
+>              fast_path              ptr_ring            slow
+> 1.         31.171 ns               60.980 ns          164.917 ns
+> 2.         28.824 ns               60.891 ns          170.241 ns
+> 3.         14.236 ns               60.583 ns          164.355 ns
+> 
+> With patch 1-4:
+> 4.         31.443 ns               53.242 ns          210.148 ns
+> 5.         31.406 ns               53.270 ns          210.189 ns
+> 
+> With patch 1-5:
+> 6.         26.163 ns               53.781 ns          189.450 ns
+> 7.         26.189 ns               53.798 ns          189.466 ns
+> 
+> With patch 1-8:
+> 8.         28.108 ns               68.199 ns          202.516 ns
+> 9.         16.128 ns               55.904 ns          202.711 ns
+> 
+> I am not able to get hold of a x86 server yet, I might be able
+> to get one during weekend.
+> 
+> Theoretically, patch 1-4 or 1-5 should not have much performance
+> impact for fast_path and ptr_ring except for the rcu_lock mentioned
+> in page_pool_napi_local(), so it would be good if patch 1-5 is also
+> tested in your testlab with the rcu_lock removing in
+> page_pool_napi_local().
+> 
 
--- 
-2.48.0
+What are you saying?
+  - (1) test patch 1-5
+  - or (2) test patch 1-5 but revert patch 2 with page_pool_napi_local()
 
+--Jesper
+
+>>
+>>
+>> Data also available in:
+>>   - https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org
+>>
 
