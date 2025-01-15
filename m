@@ -4,93 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7934C02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 08:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4BC2C02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 08:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4B/xQ2Yak+fpxIrk/GyFx/NQxbFsrazzrnNpKayLw2k=; b=RyZPXDUOGnbX2uLK2JbgFCzPg8
-	qvQUOYbl7D8SIzjPE2QOGWPfjKHZwbISj+kRAKLWks6VeNCyyQBYmgW6fKoSewWldFyqAcTy0jDbv
-	FJ3eJUNhnFeHV2jxxGZygTbpUZPyhRFsPutIyMNDf+AkbX8Ddp7XEv/nF/YE8nRxVZmfhhEOtPqny
-	sbK+uKICR9iuV/o/jJkkkwxceJfhV9X1Cl15zkhh+6m3rMmf5ot+wwgpVkSmZHfoyxZa0MzzP385a
-	1t8R8IIbn/fU3bovb5wj7CoCIaumYwlPhFXYxpXyzR7gJIH5yB8toaamrvPc/oV2wNoWWGsSMlmM0
-	KxdqHEMw==;
+	bh=P2NGSYf7+2iRNFwDTh4G5mvP9nux8x3hGc1zZpL4N/A=; b=A6KBVN1RwgmkphAtvcNkM58ce2
+	3wxvhAzv3Ej1fpSecpFwJooqNmbWMP357CUmT7otnMYyjsnJgDUPJjH7nVB6qOCajDsDjd3aSlI8M
+	VvELaNkBBI5z/utnBFgnnlXYXwxtpp4QqF0L5oNXJx9Ubay+t+19cG5Q7nzLruET8DilWZFdTUIVv
+	/dNV1AENDd7MmF0FuG+JrYbtlAcbQ9Z0Lv/nSOxWh0LZ5NiiHYgf8nJZdcQJpSYRqm7oTbkd8CEML
+	uHhBjMKj3EXOlQvZDpED1OhHXmnhZsaPKcjPaheOSUnMfU6/28qkX+ObQruLIMiXelZm4mTkWlt4w
+	p/zAJlsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXyw9-0000000B7sV-3ZHZ;
-	Wed, 15 Jan 2025 08:39:41 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1tXzA4-0000000BAwx-3bs2;
+	Wed, 15 Jan 2025 08:54:04 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXyw7-0000000B7rR-2eeY;
-	Wed, 15 Jan 2025 08:39:40 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-43625c4a50dso45770965e9.0;
-        Wed, 15 Jan 2025 00:39:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736930378; x=1737535178; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=4B/xQ2Yak+fpxIrk/GyFx/NQxbFsrazzrnNpKayLw2k=;
-        b=c7Oht+b2JEy/DUD7ulZcwmLraFd+a7jPR1M5/qe/1X+snoyDzFYzQdheZoD3j0fkrx
-         6QD0KhX57O/WV2W+sZnoQVI9ExegCqeFn+TXPZIJVF+Zxts/Zpj6LXurptRlC2K4spic
-         wy0/GpePMtOov8TZlW6mxVd2bBm+z5fOz0TdfGhc7jLUvU744pl63dn+TFgdc15laml9
-         hGSgubGGV1mb0IxlgYviBZOa65HxidM21deFTJdmusedYL7bird3EO/5lIXRrQ1/lX6A
-         jkJMGUtWt69r4sD8p5UOHDcSHF9YogkhLoFcCQd+x9ZWptZVUk/YmD2M56uRStoTL8en
-         GcJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736930378; x=1737535178;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4B/xQ2Yak+fpxIrk/GyFx/NQxbFsrazzrnNpKayLw2k=;
-        b=mZ+woCjFX0Eh7n9i476tfkmZ6gUbRtizcUAoe2O7P57fpWjSISNFaDOkm60IhCVdVw
-         OLhyIcRXtNrmR3qmEkSgGqW6PWMvo7o+BTAIlbvvzLBUcV5km8C0MF45oP+bj2HAyOOJ
-         PoDY423fe3/tZLZBCm9+fioWSFjuwDaGu00h0Fl/i4I+NB0avfJU+gzr7aCHSlTocFPZ
-         pQ3dno0IEfxUnyUKF2cvwUWgkNwQvEktTqfO4nCk12PTAlsJIJtEkNMJfVf3qbWpoQG2
-         4smMqGw6GMDJ+RL5GEDE3qpC4FaTMPfXQAZ6fkdmw07Ivn31YHezqixfasgeIZFqWwun
-         zh6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUDZbhvkwamEnl94N8Irz9UpNmF4hA4u6OveRziIaU6tH5/kYAio3lPQ50/nxy1DHgTDgfNKhLNT3I+F+okFpdx@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlvEvCM/JAeH7xr+5eFShMlw9ATzOu0UmPYaJodbWyyFECB1wU
-	xbmeyxzjAH7X4vLYHPd8px1WLzhaeVyWXCvHBCAUC8f7QF5XByBw
-X-Gm-Gg: ASbGncv0Dr4x4+toa/RAGixmng4sle1U+6PjHTgLcmbr4G2udau2u9ygIZ6+2hWgDLu
-	nq0lDZGZO0BdX70FYhAb3/l3QW3Vr9s+W+o0RQXJxBdrVr4vTap3t97B6frYkHFRkk4sYyLzbhG
-	JzA/WBts4f28Pl6XOySTIiPDkOcyxeXsp0oerKqBteBDSeS7DBVl8yvYUNzUYgujtUgCqNjIeB3
-	nxKNPpcv/kmWJBc1fW5nm/tDy/rxTVgivBOaVyUnaKG2Sd2K3L+eO1qgHLsDyKa7S4bYRgJ9qZl
-	wVj+FrrUVTNt
-X-Google-Smtp-Source: AGHT+IH1S/ypLo4sxdULxIVj7iio6j8QLiJZhFQomKltaJf5Ym2Wv7jn92KqFeZHfzoy72Wy7rxhkg==
-X-Received: by 2002:a05:6000:709:b0:38a:41c9:8544 with SMTP id ffacd0b85a97d-38a87336a6amr23435760f8f.37.1736930377805;
-        Wed, 15 Jan 2025 00:39:37 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e4b81d7sm17016684f8f.73.2025.01.15.00.39.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jan 2025 00:39:37 -0800 (PST)
-Message-ID: <67877449.df0a0220.cdd29.8807@mx.google.com>
-X-Google-Original-Message-ID: <Z4d0RkjDxhtw_655@Ansuel-XPS.>
-Date: Wed, 15 Jan 2025 09:39:34 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-mediatek@lists.infradead.org,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mmc@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Wenbin Mei <wenbin.mei@mediatek.com>,
-	Conor Dooley <conor+dt@kernel.org>, upstream@airoha.com,
-	Chaotian Jing <chaotian.jing@mediatek.com>
+	id 1tXz4b-0000000B9NJ-10oo;
+	Wed, 15 Jan 2025 08:48:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5D68EA4170C;
+	Wed, 15 Jan 2025 08:46:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E3E7C4CEDF;
+	Wed, 15 Jan 2025 08:48:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736930904;
+	bh=fOXw5fOyRt7kI5Izd5k38cCPtug2wf6DvlV5sjdUlDc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uA/vsMSIDCY6rLfEq8TQ9XgQbg1CNxSMkghiE6jRdMUYtJcHkF1jev4UFzq7RxlG5
+	 cNy6+NTHnMzJ8cahf6NuzV1scc0AiA5IImn3W8FH2cC9L2+TF4LJk4RGTuODeQ04GN
+	 UV6hqUrDAFlz0m8wSWNRkTiDgkvfJVgILHtSlLSA207CvmwPP9nk7ppwgRgGXrQzx4
+	 1y5oFK+CUbvageMfCFni/T358jX5Eto7u7/iNTh4gsGy/gauNPGl0T+ZpJpG5vO1m4
+	 i+MwtUQtv2o7Xqxi+EDCPTi+M9PGW6nSoDaD3MfGEDfpCkZx09G4TwN6anhG/uAkp4
+	 JS1hd9D1/BJVA==
+Date: Wed, 15 Jan 2025 09:48:20 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: "Rob Herring (Arm)" <robh@kernel.org>, 
+	linux-mediatek@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mmc@vger.kernel.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, 
+	Conor Dooley <conor+dt@kernel.org>, upstream@airoha.com, Chaotian Jing <chaotian.jing@mediatek.com>
 Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: Add eMMC for AN7581
+Message-ID: <dvt3zgjfliu22uyvxrmuteiet32gb5qdn2u6fh3xw6qp4xohw5@vwtkrgsh7asm>
 References: <20250115073026.31552-1-ansuelsmth@gmail.com>
  <173693027082.3240418.16772447316188600820.robh@kernel.org>
+ <67877449.df0a0220.cdd29.8807@mx.google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <173693027082.3240418.16772447316188600820.robh@kernel.org>
+In-Reply-To: <67877449.df0a0220.cdd29.8807@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_003939_668195_2E77861D 
-X-CRM114-Status: GOOD (  24.79  )
+X-CRM114-CacheID: sfid-20250115_004825_383770_9981EC9A 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,62 +77,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 15, 2025 at 02:37:50AM -0600, Rob Herring (Arm) wrote:
-> 
-> On Wed, 15 Jan 2025 08:29:50 +0100, Christian Marangi wrote:
-> > Document eMMC compatible for AN7581. This eMMC controller doesn't have
-> > regulator exposed to the system and have a single clock only for source
-> > clock and only default pintctrl.
+On Wed, Jan 15, 2025 at 09:39:34AM +0100, Christian Marangi wrote:
+> > dtschema/dtc warnings/errors:
+> > Error: Documentation/devicetree/bindings/mmc/mtk-sd.example.dts:104.31-32 syntax error
+> > FATAL ERROR: Unable to parse input tree
+> > make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/mmc/mtk-sd.example.dtb] Error 1
+> > make[2]: *** Waiting for unfinished jobs....
+> > make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1506: dt_binding_check] Error 2
+> > make: *** [Makefile:251: __sub-make] Error 2
 > > 
-> > Rework the schema to permit these new requirements and make supply
-> > optional only for airoha,an7581-mmc compatible.
+> > doc reference errors (make refcheckdocs):
 > > 
-> > Also provide an example for airoha,an7581-mmc.
+> > See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250115073026.31552-1-ansuelsmth@gmail.com
 > > 
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> > This depends on patch merged in clk-next
-> > bfe257f9780d8f77045a7da6ec959ee0659d2f98
+> > The base for the series is generally the latest rc1. A different dependency
+> > should be noted in *this* patch.
 > > 
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 64 +++++++++++++++++--
-> >  1 file changed, 58 insertions(+), 6 deletions(-)
+> > If you already ran 'make dt_binding_check' and didn't see the above
+> > error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> > date:
 > > 
+> > pip3 install dtschema --upgrade
+> > 
+> > Please check and re-submit after running the above command yourself. Note
+> > that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+> > your schema. However, it must be unset to test all examples with your schema.
+> >
 > 
-> My bot found errors running 'make dt_binding_check' on your patch:
+> Hi Rob, I think this fails as the CLK define is still not merged as said
+> this patch depends on bfe257f9780d8f77045a7da6ec959ee0659d2f98.
 > 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> Error: Documentation/devicetree/bindings/mmc/mtk-sd.example.dts:104.31-32 syntax error
-> FATAL ERROR: Unable to parse input tree
-> make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/mmc/mtk-sd.example.dtb] Error 1
-> make[2]: *** Waiting for unfinished jobs....
-> make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1506: dt_binding_check] Error 2
-> make: *** [Makefile:251: __sub-make] Error 2
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250115073026.31552-1-ansuelsmth@gmail.com
-> 
-> The base for the series is generally the latest rc1. A different dependency
-> should be noted in *this* patch.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your schema.
->
+> Any hint how to make your bot work with that?
 
-Hi Rob, I think this fails as the CLK define is still not merged as said
-this patch depends on bfe257f9780d8f77045a7da6ec959ee0659d2f98.
+Don't use the define, but raw number or just some fake phandle.
 
-Any hint how to make your bot work with that?
+Best regards,
+Krzysztof
 
--- 
-	Ansuel
 
