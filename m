@@ -4,156 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBEAC02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 10:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62485C02183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 10:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o5OaTSBvndaqL7pmKVkJ0tKcrkXR4wXg7zZA1xwdifc=; b=pJKqHf3+B+83zXeRtko8qIFxZo
-	ZT49Fbk1dHq72q5oIF1nGsamkgwOPrZzrNb3jO8Dk2SZ64nA1PL+PAPOYK+KJRIXjudVF1N4JWuE9
-	6Y2OVWY+GklqgpCATDZU1bYSviZ35XFN2MucHs5vIyqT1XDY3OLDVjPhGxONC53QiTXSWQcBwm7j7
-	N2c2Iy0IpIknKs43lt+Nm2OW9jJnKH8uTlMBqMdMcrrwu2730pXpCumbqB40QcnYDOaCkHCMqwBZn
-	NJAOI5IYswdJguP9k7KfQx3tnksA9jbDBrHaRtJ94wytIkopPZgqv4rb4ns6rFSSa/5ZB1HvEmu/T
-	AV4zDXgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NhawSsJmf+tcZBsrtYeiYtBZu62hlVfI9ZFOy+kIXOA=; b=QHgDUnmJdeHefj
+	G/esiLt3vcWeTpw2D6GIB4RTAGQEkb19E5v/fnvtMkZcSYmmOm5qvk9c1R3H2Hsn9CAeD/mzazIJm
+	pmmVwRhhMVjLsQwnv4cOCGV72FyGu3PWjuVf2gHrmPjFuO/2nvlI2PEX66ymXGlhVb6kDobMHZO3w
+	8cGmwVHioGUgdLYotAXrZ7wW8ErAHLAkem37b63cj7Dt68NMxm/l/Txb+n0vUApFfGOWwc6F6z92c
+	HUEYEf+z9YVeHyFPIwkP10QBzCZ+0AJNsGEGvTPmLWSM7tldW0S+FPUdS2kaYnFdNYubu3fZqUvyy
+	5oG1mM8kXcsJ7PbhUXjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY0e6-0000000BUT3-0u0l;
-	Wed, 15 Jan 2025 10:29:10 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	id 1tY0fq-0000000BV2j-2Fbt;
+	Wed, 15 Jan 2025 10:30:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY0b8-0000000BTmq-1Na8;
-	Wed, 15 Jan 2025 10:26:08 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	id 1tY0eZ-0000000BUc5-10kB;
+	Wed, 15 Jan 2025 10:29:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1736936976;
+	bh=YIB7/pe8IoyRD/tOiWEIqXFd8eI6nhsg4+pzvvXcD7s=;
+	h=From:Subject:Date:To:Cc:From;
+	b=oUp+Ui/qSc2BI4/itKcvmIVNHAl+AvQQHK8Eyj+9sKQ16h0CB9FQInPn1GepBywnU
+	 Ybja6791B3q26OdYp1GZoKlf5XitgYOZSuNSUee2Ez3rKj33pfBQlL7SYWvKyc47cR
+	 WKQLJ8S+bIe0KS9pujwPUehX6xlWX8xuCoBHPwFlQIheSv+bZnt/MxNeAd5QwtmqxS
+	 7fHCKz+dcIXURbszn90pnLydCDHbksonnVwdmrmaH2S2xvaz9xPmHWKbNw4yUq5yhR
+	 h0HVOUlHQO2VV5JqujhfwOkvY7lS2PIQXyQpRZvJlmh6jUsd+E6tfcDxvY9i+GH99u
+	 nYO2cirMwXhbg==
+Received: from fedora.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 3A60921285;
-	Wed, 15 Jan 2025 10:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736936763; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=o5OaTSBvndaqL7pmKVkJ0tKcrkXR4wXg7zZA1xwdifc=;
-	b=Mljgl0DvQXsyKMdMzmz5ZwZ3V789zCdVdhgaCjuMtwHrT61J2CLPcsqyigpgNfMgt5s9ED
-	NQBLa2bFnxQBC6Lh8kmGl4ElL6IbxkHaMKnpSDKgAWvZ5RgKmpAEVOTkk2jS/7Dqz07SiL
-	vCLaFHZP1mmjRXmvQ/ScFe4UhJimBB4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736936763;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=o5OaTSBvndaqL7pmKVkJ0tKcrkXR4wXg7zZA1xwdifc=;
-	b=qI2Y6oN0l9JxGfh+RN+mqlivvJYcBaYsV/e1PTdXmK0ZMZeCqm75AAiZVcbCx5W/dssHYm
-	9npljUHucuH2iADw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736936763; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=o5OaTSBvndaqL7pmKVkJ0tKcrkXR4wXg7zZA1xwdifc=;
-	b=Mljgl0DvQXsyKMdMzmz5ZwZ3V789zCdVdhgaCjuMtwHrT61J2CLPcsqyigpgNfMgt5s9ED
-	NQBLa2bFnxQBC6Lh8kmGl4ElL6IbxkHaMKnpSDKgAWvZ5RgKmpAEVOTkk2jS/7Dqz07SiL
-	vCLaFHZP1mmjRXmvQ/ScFe4UhJimBB4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736936763;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=o5OaTSBvndaqL7pmKVkJ0tKcrkXR4wXg7zZA1xwdifc=;
-	b=qI2Y6oN0l9JxGfh+RN+mqlivvJYcBaYsV/e1PTdXmK0ZMZeCqm75AAiZVcbCx5W/dssHYm
-	9npljUHucuH2iADw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B2519139CB;
-	Wed, 15 Jan 2025 10:26:02 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id yds5KjqNh2dqKAAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Wed, 15 Jan 2025 10:26:02 +0000
-Message-ID: <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
-Date: Wed, 15 Jan 2025 11:26:02 +0100
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 367FA17E0CD2;
+	Wed, 15 Jan 2025 11:29:36 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH v2 0/4] Add support for Mediatek Genio 510 EVK board
+Date: Wed, 15 Jan 2025 11:29:01 +0100
+Message-Id: <20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-26-tzimmermann@suse.de>
- <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	FREEMAIL_TO(0.00)[ideasonboard.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ARC_NA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAO2Nh2cC/22NQQ6CMBBFr0Jm7ZgpWKmuvIchpoUBJgFqWkI0h
+ LtbSdy5fC/5768QOQhHuGYrBF4kip8S5IcM6t5OHaM0iSGnXJNSBTZzfIyzKUrCjifxqBVhoc/
+ kDCly9gJp+gzcymvP3qvEvcTZh/f+sqiv/QVP/4OLQkKjVclMbePY3Go/DNb5YI+1H6Hatu0Df
+ B+buLwAAAA=
+X-Change-ID: 20250113-dts_mt8370-genio-510-3560b8010ba9
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ kernel@collabora.com, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1736936976; l=2802;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=YIB7/pe8IoyRD/tOiWEIqXFd8eI6nhsg4+pzvvXcD7s=;
+ b=MXsGbBpsiG+taXT8aiinljSa2LSmQvrn+r6MtlcaIlH/lvZG3HZBr8N6UKI2PE9P4vQZeQGce
+ SBPptf1ZtFXCGszA+/qufCrIAR+YDqqdCsJwxVyrWlb1/ARZfuo3ICi
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_022606_516699_82E63E40 
-X-CRM114-Status: GOOD (  37.94  )
+X-CRM114-CacheID: sfid-20250115_022939_435936_CE2A6417 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,130 +89,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+This patchset adds the basic support of the Mediatek Genio 510 EVK
+board, based on the Mediatek MT8370 SoC.
 
+It adds a device-tree file for the board (mt8370-genio-510-evk.dtb) 
+and an include file for the SoC (mt8370.dtsi), in order to be able to
+boot. As the board is very close to the Genio 700 EVK board, an include file
+(mt8390-genio-common.dtsi) is also created to factorize the common
+definitions.
 
-Am 15.01.25 um 11:13 schrieb Tomi Valkeinen:
-> Hi!
->
-> On 09/01/2025 16:57, Thomas Zimmermann wrote:
->> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
->> buffer size. Align the pitch according to hardware requirements.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
->> ---
->>   drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
->>   1 file changed, 5 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c 
->> b/drivers/gpu/drm/xlnx/zynqmp_kms.c
->> index b47463473472..7ea0cd4f71d3 100644
->> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
->> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
->> @@ -19,6 +19,7 @@
->>   #include <drm/drm_crtc.h>
->>   #include <drm/drm_device.h>
->>   #include <drm/drm_drv.h>
->> +#include <drm/drm_dumb_buffers.h>
->>   #include <drm/drm_encoder.h>
->>   #include <drm/drm_fbdev_dma.h>
->>   #include <drm/drm_fourcc.h>
->> @@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct 
->> drm_file *file_priv,
->>                       struct drm_mode_create_dumb *args)
->>   {
->>       struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
->> -    unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
->> +    int ret;
->>         /* Enforce the alignment constraints of the DMA engine. */
->> -    args->pitch = ALIGN(pitch, dpsub->dma_align);
->> +    ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
->> +    if (ret)
->> +        return ret;
->>         return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
->>   }
->
-> I have some trouble with this one.
->
-> I have sent a series to add some pixel formats:
->
-> https://lore.kernel.org/all/20250115-xilinx-formats-v2-0-160327ca652a@ideasonboard.com/ 
->
->
-> Let's look at XV15. It's similar to NV12, but 10 bits per component, 
-> and some packing and padding.
->
-> First plane: 3 pixels in a 32 bit group
-> Second plane: 3 pixels in a 64 bit group, 2x2 subsampled
->
-> So, on average, a pixel on the first plane takes 32 / 3 = 10.666... 
-> bits on a line. That's not a usable number for the 
-> DRM_IOCTL_MODE_CREATE_DUMB ioctl.
->
-> What I did was to use the pixel group size as "bpp" for 
-> DRM_IOCTL_MODE_CREATE_DUMB. So, e.g., for 720 x 576:
->
-> Stride for first plane: 720 * (32 / 3) / 8 = 960 bytes
-> Stride for second plane: 720 / 2 * (64 / 3) / 8 = 960 bytes
->
-> First plane: 720 / 3 = 240 pixel groups
-> Second plane: 720 / 2 / 3 = 120 pixel groups
->
-> So I allocated the two planes with:
-> 240 x 576 with 32 bitspp
-> 120 x 288 with 64 bitspp
->
-> This worked, and if I look at the DRM_IOCTL_MODE_CREATE_DUMB in the 
-> docs, I can't right away see anything there that says my tactic was 
-> not allowed.
->
-> The above doesn't work anymore with this patch, as the code calls 
-> drm_driver_color_mode_format(), which fails for 64 bitspp. It feels a 
-> bit odd that DRM_IOCTL_MODE_CREATE_DUMB will try to guess the RGB 
-> fourcc for a dumb buffer allocation.
->
-> So, what to do here? Am I doing something silly? What's the correct 
-> way to allocate the buffers for XV15? Should I just use 32 bitspp for 
-> the plane 2 too, and double the width (this works)?
->
-> Is DRM_IOCTL_MODE_CREATE_DUMB only meant for simple RGB formats? The 
-> xilinx driver can, of course, just not use drm_mode_size_dumb(). But 
-> if so, I guess the limitations of drm_mode_size_dumb() should be 
-> documented.
->
-> Do we need a new dumb-alloc ioctl that takes the format and plane 
-> number as parameters? Or alternatively a simpler dumb-alloc that 
-> doesn't have width and bpp, but instead takes a stride and height as 
-> parameters? I think those would be easier for the userspace to use, 
-> instead of trying to adjust the parameters to be suitable for the kernel.
+The Genio 510 EVK has following features:
+- MT8370 SoC
+- MT6365 PMIC
+- MT6319 Buck IC
+- 4GB LPDDR4X
+- 64GB eMMC 5.1
+- 12V DC Jack
+- Micro SD card slot
+- Push Button x 4 (Power, Reset, Download and Home Key)
+- LED x 4 (Power, Reset, System on and Charging Status)
+- USB Device Port x 1 (Micro USB Connector)
+- USB Host Port x 1 (Type-C USB Connector)
+- 3.5mm Earphone Jack x 1 (with Microphone Input)
+- 3.5mm Line Out Audio Jack x 1
+- Analog Microphone x 1
+- Digital Microphone x 2
+- Gigabit Ethernet with RJ45 connector
+- HDMI 2.0 TX port with Type A HDMI connector
+- eDP port
+- 3x UART with serial-to-usb converters and micro USB connectors
+- M.2 Slot x 2
+- I2C Capacitive Touch Pad
+- 4-Lane DSI x 2
+- 4-Data Lane CSI x 2
+- I2S Pin header
+- 40-Pin 2.54mm Pin Header x 1 
 
-These are all good points. Did you read my discussion with Andy on patch 
-2? I think it resolves all the points you have. The current CREATE_DUMB 
-ioctl is unsuited for anything but the simple RGB formats. The bpp 
-parameter is not very precise. The solution would be a new ioctl call 
-that receives the DRM format and returns a buffer for each individual plane.
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Changes in v2:
+- Reword "dt-bindings: arm: mediatek: add mt8370-evk board" commit
+  message to add details on MT8370 SoC and links to MT8188 and MT8390 
+- Add note about gpu support in "arm64: dts: mediatek: add support for
+  MT8370 SoC" commit message
+- Split "arm64: dts: mediatek: add device-tree for Genio 510 EVK board"
+  commit in two, as requested by AngeloGioacchino Del Regno
+- Link to v1: https://lore.kernel.org/r/20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com
 
-I provided a workaround patch that uses the bpp value directly if 
-drm_driver_color_mode_format() does not support the bpp value. 
-User-space code has to allocate a large enough buffer via the current 
-CREATE_DUMB and compute the individual planes itself. See [1] for an 
-example. [1] 
-https://gitlab.freedesktop.org/mesa/drm/-/blob/main/tests/modetest/buffers.c?ref_type=heads#L302 
-Does this work for you? Otherwise, I guess we should be talking about a 
-possible CREATE_DUMB2 that fixes these shortcomings. Best regards Thomas
->
->  Tomi
->
+---
+Louis-Alexis Eyraud (4):
+      dt-bindings: arm: mediatek: add mt8370-evk board
+      arm64: dts: mediatek: add support for MT8370 SoC
+      arm64: dts: mediatek: mt8390-genio-700-evk: Move common parts to dtsi
+      arm64: dts: mediatek: add device-tree for Genio 510 EVK board
 
+ .../devicetree/bindings/arm/mediatek.yaml          |    5 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi           |    8 +-
+ .../boot/dts/mediatek/mt8370-genio-510-evk.dts     |   19 +
+ arch/arm64/boot/dts/mediatek/mt8370.dtsi           |   64 ++
+ .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 1033 +------------------
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 1040 ++++++++++++++++++++
+ 7 files changed, 1134 insertions(+), 1036 deletions(-)
+---
+base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
+change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9
+
+Best regards,
 -- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
