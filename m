@@ -4,137 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C74C02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 19:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAEC6C02185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 19:47:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nYIRfzMIoEey6eiQZC1qlV3nAdw1Yt+nNSYPyfY46Hk=; b=lKgw8ZRxqTcABeXfCh6m2kANWX
-	zaKmI0/980CwW5hvkfvvUtFpHfbdD0dmjfnvOQsHA7nYR6ZDejRV0o8gqc4qcA0DGiCL0BPrK6GLK
-	HNYdfa9xpVsU0b1blTVBTUcVeEQLwrw9haJEsK7fgIyvIVUiypxFFsaQNo6Pi5a2xQmwCpju0DBpN
-	9fzhxBtW9yBAJyC4r5uXoZS8mJug4HfJvVbjV0qJVAL7kpU6aZpAkCbA4wKu3dDuidLDcx+7E81e8
-	2yKUU4s419T9sL448b06Wf704jvZuciBGVuO/WWq9+8+u/W01VjJR5M6VijozO+Mpml7LSwM/5nw6
-	CqUH+vFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EBJgNyWrC0RxqeS3kzcgaSlmgQeV5i+55GjShRf9p8g=; b=A79SD6Dw0WT43uK+jlNLJfkU9d
+	ykOqkbjJVs0fl8QsiD0Q9NjYlwxpb9sgf1zRQaV1bQUNrdcNZqai3SPn34TiGnpQnWnIrKSbWWuR4
+	ClIwtqyBG7dknrOIsqec8CkD6JPIcrACDCg5rT2tMBJYgwnfygJbNlREzKd51UZQSgkDh5kHCJTZL
+	i/vFG7EWKInueUcN6nTsyBdoygsl+6QiLpP1mVLtaun/dxKkWShPqNqOO1TA/gPEjkNdP91QHXsT2
+	bwDnuVAbv3w/0IHGaKT8cFEtrQrOCzA3rYyE3orSaWmerclRV/kpaxSHd+exsdecV5jRca6uEgbUH
+	qq7mYAfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8wY-0000000CtIQ-2AwO;
-	Wed, 15 Jan 2025 19:20:46 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1tY9MX-0000000Cvxo-3ILq;
+	Wed, 15 Jan 2025 19:47:37 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8wW-0000000CtH0-1iWn
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jan 2025 19:20:45 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5d3c0bd1cc4so15548a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 11:20:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736968843; x=1737573643; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nYIRfzMIoEey6eiQZC1qlV3nAdw1Yt+nNSYPyfY46Hk=;
-        b=dc61bTqgTJqVYwGB74OU4sie5OWfTK8Sp0hKe51u9oC+u0+9EufaT0iF1LXHQnj2Ns
-         A3um8fBN32EtGMB9iCsu5HYE2gY7u+97MLyxENrT6XWe+NGAADKPiHCnOKpdtuAiy5dF
-         9KTZWdyIQXBodvM8BdHKrsUDSM9fpzewKWfKefeTLIA7mKId14Zvg1jXlh6yvYhhb0bk
-         kscTM3otCPgjEL4GQ+CguttCoMMXeMQxHX7JSJNhuWMvXctPvVgdXE+cYo92+fO3Le4w
-         RBKcGHBupopyvQMVYaT7+CJahzZYNvGPSjq2DaU5e+pbOVDpkcdglH7UG0GzKGOJHMa5
-         AGKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736968843; x=1737573643;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nYIRfzMIoEey6eiQZC1qlV3nAdw1Yt+nNSYPyfY46Hk=;
-        b=P0YH17tZGkt3p9r1cr0U2+ERd7UkwYl5i8g1/G/0oD6oS4aQ+F3ak23IF6FBmalWvu
-         PPZFCN7F8HzEzswK8brGMfND0cgQDQCdX+912nJg6zrzGSQhUwlyiPCR667ADMU1snXU
-         a6VDwUQ8nYNQ2OOLDtDmxllvpqTKJwPRLYK1KfiUrv/23WIwvtoT8WzgHwj6zjjV9Yok
-         6RMCx5tczd4HtHdOWm9wWIjnMSjAVHh7ca4jLiDFZJHyPTWdzjCHCejZL3/nivQfaNw2
-         2GTyWziGHIf9uDGEXGUDYvhA4sQCFRoz+dinxyUsGb2qwaiiHTaEgTcLGBT+AJK7d3qn
-         nLiA==
-X-Forwarded-Encrypted: i=1; AJvYcCWqXQeM3BTElSf0vlJfJaXy962C0DLIysrAcy4+IsnOpWv+R1ZZhsnUwlgpxdFAi5CzouUtBRkMPBryU22zUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1qApvh8S+gJMLgTlKIZmIo294CzrMBu3XAqUJy/vObQ42Vbx2
-	GYRCssoAg6QaK+TCaADhcjMu+ujG9DTtFpG8U2Ts5+IlLYtG/FYhXebKo7X6SPw=
-X-Gm-Gg: ASbGnculiM6L0++6zPXYhC8CAG9rTwWsbmREchVMlKwSAp1JznZn1ZARU34qLSN1p27
-	Uh3kLzZnM5UT5aX+OQz6HoZDn4VNDVUEi0I4bC1X7xcllRSxzAId1CGLHI3PvKKkxX8ijFb5RAS
-	URMP0hL30DxVhzsvhNRoyR11DdRq92do2EA6vG/pkpw/mGSxUmvhafER614OxgZaNH6MquXw/2M
-	7JBrzfT/OWL1K02hyOmTEc/jViSeDJqD635CsqWw2hJnoJw2QMd2Vh8nABRXSEFJxogi2249uVS
-X-Google-Smtp-Source: AGHT+IEobeKPSb66dhQJB8BVuTHa5PVEBMft92rOBD4aCHAR3KxGt12rfIWH0l1xEEGi6zqG+032uw==
-X-Received: by 2002:a17:907:bb8d:b0:ab3:2719:ca30 with SMTP id a640c23a62f3a-ab32719d024mr384947066b.10.1736968842769;
-        Wed, 15 Jan 2025 11:20:42 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9565517sm800167966b.130.2025.01.15.11.20.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Jan 2025 11:20:42 -0800 (PST)
-Message-ID: <37603c73-cab7-4973-8705-1deee6445a7d@linaro.org>
-Date: Wed, 15 Jan 2025 20:20:40 +0100
+	id 1tY9Kp-0000000Cvf3-3eDO;
+	Wed, 15 Jan 2025 19:45:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1736970352; x=1768506352;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=nJNs4DtnimvoTU3qtzohKzecutGkBG66VbnYL8iKSQE=;
+  b=GSyHm5Z33StaOyCt+dM3RCjNnRDeLEPP33tO6ZaqJPkgq4m8lFxIlvEX
+   7PkcnCIRmOXd1qCXC0wx5uN1ab2/fTWhfXdm1YuAnYd4f5QK0dUVRnt7v
+   wNDSNydeVdIFw/UbXxRybzc+cooqiUbfcmtapexzKh9GuPyyZjkygojsL
+   gxG206sBvZd2hRcRZ+lsbzBVvoqVuYgIN0LaitVIgFoEu+SPxCfmPE9w9
+   m9vbmlVYWlSjdtU7hSjyOjZ7/XjkzrfGbDKTYRX/rqYdTt6E43IMuZJ6R
+   VRS8Dqmu6ka/JXNz65GlpOXtFxJqdNL/VKn161rjMu7L9wD0DghbTPPlk
+   g==;
+X-CSE-ConnectionGUID: XPPH6A9cR0KwdRPRQQ7cGg==
+X-CSE-MsgGUID: Y+iAmhUqTrCVNWrmnD29HA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11316"; a="41260719"
+X-IronPort-AV: E=Sophos;i="6.13,207,1732608000"; 
+   d="scan'208";a="41260719"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 11:45:49 -0800
+X-CSE-ConnectionGUID: e8uQRh9CS4KDLGRInb65Uw==
+X-CSE-MsgGUID: 5IAEEZ/CR1K3LnUoWm/L0A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,207,1732608000"; 
+   d="scan'208";a="110213744"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 15 Jan 2025 11:45:46 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tY9Ki-000QlT-0x;
+	Wed, 15 Jan 2025 19:45:44 +0000
+Date: Thu, 16 Jan 2025 03:45:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yenchia Chen <yenchia.chen@mediatek.com>, gregkh@linuxfoundation.org,
+	jirislaby@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, yenchia.chen@mediatek.com,
+	yj.chiang@mediatek.com, tbergstrom@nvidia.com, yujiaoliang@vivo.com,
+	u.kleine-koenig@baylibre.com, treapking@chromium.org,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] serial: 8250_mtk: Add ACPI support
+Message-ID: <202501160328.DUMWkTOc-lkp@intel.com>
+References: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ufs: Use str_enable_disable-like helpers
-To: Bart Van Assche <bvanassche@acm.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20250114200716.969457-1-krzysztof.kozlowski@linaro.org>
- <ca5482da-1612-4fab-bfeb-bdc72cd65662@acm.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ca5482da-1612-4fab-bfeb-bdc72cd65662@acm.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250114033324.3533292-1-yenchia.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_112044_478755_BAFA3250 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20250115_114551_918886_E58D2DF8 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,40 +92,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/01/2025 18:53, Bart Van Assche wrote:
-> On 1/14/25 12:07 PM, Krzysztof Kozlowski wrote:
->> 2. Is slightly shorter thus also easier to read.
-> 
-> Does this change really make code easier to read? It forces readers
-> of the code to look up a function definition. Isn't there a general
+Hi Yenchia,
 
-There is no general preference, up to you.
+kernel test robot noticed the following build warnings:
 
-> preference in the Linux kernel to inline function definitions if the
-> function body is shorter than or close to the length of the function
-> name? I'm referring to functions like this one:
-> 
-> static inline const char *str_up_down(bool v)
-> {
-> 	return v ? "up" : "down";
-> }
-> 
-> Bart.
+[auto build test WARNING on tty/tty-testing]
+[also build test WARNING on tty/tty-next tty/tty-linus usb/usb-testing usb/usb-next usb/usb-linus linus/master v6.13-rc7 next-20250115]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Yenchia-Chen/serial-8250_mtk-Add-ACPI-support/20250114-113715
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/tty.git tty-testing
+patch link:    https://lore.kernel.org/r/20250114033324.3533292-1-yenchia.chen%40mediatek.com
+patch subject: [PATCH] serial: 8250_mtk: Add ACPI support
+config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20250116/202501160328.DUMWkTOc-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250116/202501160328.DUMWkTOc-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501160328.DUMWkTOc-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/tty/serial/8250/8250_mtk.c:662:36: warning: 'mtk8250_acpi_match' defined but not used [-Wunused-const-variable=]
+     662 | static const struct acpi_device_id mtk8250_acpi_match[] = {
+         |                                    ^~~~~~~~~~~~~~~~~~
 
 
-It's subjective - in some places ternary is really complicating, from my
-other patch:
+vim +/mtk8250_acpi_match +662 drivers/tty/serial/8250/8250_mtk.c
 
-	data & XCSI_DLXINFR_SOTERR ? "true" : "false",
-	video->hq_mode ? "on" : "off", video->jpeg_hq_quality);
+   661	
+ > 662	static const struct acpi_device_id mtk8250_acpi_match[] = {
+   663		{ "MTKI0511", 0 },
+   664		{},
+   665	};
+   666	MODULE_DEVICE_TABLE(acpi, mtk8250_acpi_match);
+   667	
 
-note that's ternary is split here:
-
-	dstat & BT848_DSTATUS_HLOC
-	? "yes" : "no");
-
-I understand if you don't find the code here better.
-
-Best regards,
-Krzysztof
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
