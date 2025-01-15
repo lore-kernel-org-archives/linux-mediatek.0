@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C689E77188
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 02:47:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2958BC02183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 03:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OmZkHxZgYszr9OJLzBc7+VLA9WrD/JWMgUvE0CavqbY=; b=Nj17vEtEJY7mwskTOhVHAvt9k6
-	3x4kwYzc5WaNnhJAjbH5A8dXd5aKpi7pzc1z/3Xne+ys2JkgQ/pUoJ8bLr1nPz1IXFfnxckoKoQ0X
-	7SpyZR9FjyIKjk691TVhfMPPpWnWWRAt0RH6hZoIhMmDw1Kmw9wsd/xLu54W3EoMNlFWxi+wghvvj
-	jPBhiW+s7dZTZrlK3uASLXOI+4aEFgpQBFedfCKu5qkPhyHNuPTcu4kEZgGQ6myDerh4Y3PzwgKdo
-	ZURTr1GWMY9W/+Dfoy3FAcx+tTKPG/17pExp49HANNM4mq/4pMgEx/bCS8ywFlgX+p7CuV+OFcou/
-	Jx0wct/w==;
+	bh=jVhN80lSe9/RJE7xTb/gBfGOBNDnLQWNn0HdoXTdJX4=; b=Dgh5UVSEK525QPLe7DU85ComQq
+	JLMlRHOYSybLEOj2oqT9575nGPeFbO6WgSxlKXe4lzJ5OMQe6EmYWRN2C4v+9U4fO3/Wd1yEK4e15
+	fGF8/3TGfI74a8qmYFalpMLiCXURHOHBzyIaQriUMdFbHds01dPkluywTGyWPIvyFdi0mhp1521PG
+	4q46s8Zx5rjaTsAl3WGbKaOJVNEoDJ4JAiwCBCOgRRfNGbt4WDuZku61yyKiFMZKbv6HBKN3fc4lz
+	GgIiMTL/Tz/Fo8RrNJ1/cYL224+FF4a5Pg12+jTJva7nEEMbZ7CbwJBSLzQpIfgHkryZKf8J5iv5u
+	AmcVV0/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXtRL-0000000ARlE-0j9U;
-	Wed, 15 Jan 2025 02:47:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tXuQh-0000000AYeO-2ba7;
+	Wed, 15 Jan 2025 03:50:55 +0000
+Received: from out-183.mta0.migadu.com ([91.218.175.183])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXsEX-0000000AIiT-3xQD;
-	Wed, 15 Jan 2025 01:30:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 789F35C5A8A;
-	Wed, 15 Jan 2025 01:29:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBF51C4CEDD;
-	Wed, 15 Jan 2025 01:30:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736904613;
-	bh=JGayQbeENovujuBJWgRZ/GamXKwMqxtIrxDsX3uD4PM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=poCMdomjGUuv1enZWrMvQBGikq7XqoWdPgtThSf6VzWj1cHh6JoKhVxbdVGVV5Ikg
-	 5oizYvsuhFMUEDjOVaFAvsIREsVuQIWJI17F0inIkQrpxtB2W8hS/8kMDKB4r2bHQA
-	 jC/kW3Joug10ioV5ozO8enrCq6Ybc5t92fwjCG+rGoArewA56P0xfQFTuDtPSK4ewu
-	 0wgZiobEWDpWuaU3zbC/xzlXm7UFuoPY6xjkWL0On2mGgWwzv1T0sB+WqsPqTGDpWx
-	 cprgUbxTRDIRj9yv6OcZAm8QfTHoSmIH1Yye3D9IUgvo3u3nxqkSdxITZWNGMEbRFa
-	 qk6GtI/rG+6zA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB9DF380AA5F;
-	Wed, 15 Jan 2025 01:30:36 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tXuQd-0000000AYcX-3FDE
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jan 2025 03:50:54 +0000
+Message-ID: <078ddd52-1d04-4aad-935a-67c12ebf569a@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1736913034;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jVhN80lSe9/RJE7xTb/gBfGOBNDnLQWNn0HdoXTdJX4=;
+	b=teidT1Fw63fY1UplJo7A5bi9iE7QpymiDozRtg4zga+cfodcNKCHBs5xeOi588P6Xgf2QP
+	CYp1SqpJZNtGd/fHLlyHIgbHFs46Z3aoqpduhurkaP+sGXJgpt1fvAeSbcUUllSz8kx3vA
+	np+KZYyxC2PBSgowDFD5qMH7M7wgWl8=
+Date: Wed, 15 Jan 2025 11:50:20 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: phy: Constify struct mdio_device_id
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173690463579.211072.4197459392952353174.git-patchwork-notify@kernel.org>
-Date: Wed, 15 Jan 2025 01:30:35 +0000
-References: <403c381b7d9156b67ad68ffc44b8eee70c5e86a9.1736691226.git.christophe.jaillet@wanadoo.fr>
-In-Reply-To: <403c381b7d9156b67ad68ffc44b8eee70c5e86a9.1736691226.git.christophe.jaillet@wanadoo.fr>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: michael.hennerich@analog.com, andrew@lunn.ch, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, florian.fainelli@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com,
- sbranden@broadcom.com, richardcochran@gmail.com, kabel@kernel.org,
- daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, arun.ramadoss@microchip.com,
- UNGLinuxDriver@microchip.com, lxu@maxlinear.com,
- piergiorgio.beruto@gmail.com, andrei.botila@oss.nxp.com, heiko@sntech.de,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 11/25] drm/loongson: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Thomas Zimmermann <tzimmermann@suse.de>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Sui Jingfeng <suijingfeng@loongson.cn>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-12-tzimmermann@suse.de>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sui Jingfeng <sui.jingfeng@linux.dev>
+In-Reply-To: <20250109150310.219442-12-tzimmermann@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_173014_021832_F075BC14 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250114_195051_952764_B0A29631 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,33 +79,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+On 2025/1/9 22:57, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch according to hardware requirements.
+>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Sui Jingfeng <suijingfeng@loongson.cn>
+> Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
 
-On Sun, 12 Jan 2025 15:14:50 +0100 you wrote:
-> 'struct mdio_device_id' is not modified in these drivers.
-> 
-> Constifying these structures moves some data to a read-only section, so
-> increase overall security.
-> 
-> On a x86_64, with allmodconfig, as an example:
-> Before:
-> ======
->    text	   data	    bss	    dec	    hex	filename
->   27014	  12792	      0	  39806	   9b7e	drivers/net/phy/broadcom.o
-> 
-> [...]
 
-Here is the summary with links:
-  - [net-next] net: phy: Constify struct mdio_device_id
-    https://git.kernel.org/netdev/net-next/c/b01b59a4fa87
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 
-You are awesome, thank you!
+
+> ---
+>   drivers/gpu/drm/loongson/lsdc_gem.c | 29 ++++++++---------------------
+>   1 file changed, 8 insertions(+), 21 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/loongson/lsdc_gem.c b/drivers/gpu/drm/loongson/lsdc_gem.c
+> index a720d8f53209..9f982b85301f 100644
+> --- a/drivers/gpu/drm/loongson/lsdc_gem.c
+> +++ b/drivers/gpu/drm/loongson/lsdc_gem.c
+> @@ -6,6 +6,7 @@
+>   #include <linux/dma-buf.h>
+>   
+>   #include <drm/drm_debugfs.h>
+> +#include <drm/drm_dumb_buffers.h>
+>   #include <drm/drm_file.h>
+>   #include <drm/drm_gem.h>
+>   #include <drm/drm_prime.h>
+> @@ -204,45 +205,31 @@ int lsdc_dumb_create(struct drm_file *file, struct drm_device *ddev,
+>   	const struct lsdc_desc *descp = ldev->descp;
+>   	u32 domain = LSDC_GEM_DOMAIN_VRAM;
+>   	struct drm_gem_object *gobj;
+> -	size_t size;
+> -	u32 pitch;
+> -	u32 handle;
+>   	int ret;
+>   
+> -	if (!args->width || !args->height)
+> -		return -EINVAL;
+> -
+> -	if (args->bpp != 32 && args->bpp != 16)
+> -		return -EINVAL;
+> -
+> -	pitch = args->width * args->bpp / 8;
+> -	pitch = ALIGN(pitch, descp->pitch_align);
+> -	size = pitch * args->height;
+> -	size = ALIGN(size, PAGE_SIZE);
+> +	ret = drm_mode_size_dumb(ddev, args, descp->pitch_align, 0);
+> +	if (ret)
+> +		return ret;
+>   
+>   	/* Maximum single bo size allowed is the half vram size available */
+> -	if (size > ldev->vram_size / 2) {
+> -		drm_err(ddev, "Requesting(%zuMiB) failed\n", size >> 20);
+> +	if (args->size > ldev->vram_size / 2) {
+> +		drm_err(ddev, "Requesting(%zuMiB) failed\n", (size_t)(args->size >> PAGE_SHIFT));
+>   		return -ENOMEM;
+>   	}
+>   
+> -	gobj = lsdc_gem_object_create(ddev, domain, size, false, NULL, NULL);
+> +	gobj = lsdc_gem_object_create(ddev, domain, args->size, false, NULL, NULL);
+>   	if (IS_ERR(gobj)) {
+>   		drm_err(ddev, "Failed to create gem object\n");
+>   		return PTR_ERR(gobj);
+>   	}
+>   
+> -	ret = drm_gem_handle_create(file, gobj, &handle);
+> +	ret = drm_gem_handle_create(file, gobj, &args->handle);
+>   
+>   	/* drop reference from allocate, handle holds it now */
+>   	drm_gem_object_put(gobj);
+>   	if (ret)
+>   		return ret;
+>   
+> -	args->pitch = pitch;
+> -	args->size = size;
+> -	args->handle = handle;
+> -
+>   	return 0;
+>   }
+>   
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Best regards,
+Sui
 
 
