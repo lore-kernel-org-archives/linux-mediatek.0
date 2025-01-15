@@ -4,92 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BFB8C02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 14:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A78AC02180
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 17:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wgpCbUXuk0fjx7PlpFBa3YSbnvvXmj+DNx/eEdB8F5M=; b=v+PnmmDbNa1nos2L+P3ejpHBAw
-	dBQ/k4CdkvfVV9rEw8Co68Ng2HayfTapuwk3jN4Ng5vS7uxIzdk7Hif1txqXk8yQKCZwOJhh3HckX
-	VutPVQyg509SdMVhFPPNagImYXFGZf2i5Cy2BsXkTgoZRAOP4NdpZjXpa/6KUIWDdmlzBO+7AyvAF
-	7mDuMZ8TC++ZE9/kYX757h6Bl94Hg6GV8J1rtGdpz9sKtunSTiOPKrj1HppqWKzyh7nDO69bNMcCe
-	SUwkRMy2DaDryIxxOJ96eR3aUriuJrS0s1zdg/mSpfDjkn3lkn3LW0NsJTESSGtALCa+18t1HqDpj
-	JD6eQAmA==;
+	bh=DPXP7MJ0GUj2gpUpKV7kjRxPKFGW6uh1Vn+RZQJ6mVo=; b=eyBXdJ6dv/OIDUFZnWs2zjoHrx
+	qjjtvnRqz6DBdjyCbP+VTtJpud/IUee7AuMGmm7Lteq43reHenv9l24Kfnk+q3rPgO1Cns1QXzguz
+	bLBWwP1ZCxPgH2RpePRxE2wKGJdOOeG8CNAwvN0biQ5f3UQ5kFyrwjMU/dCZsXfsmKORHWobuDXy3
+	h+UPwA0na83vyqthjVhhAt+SUHm4QmdFo3XvQku3AyUmAFf6BmypheNEfVAJHD8gK7JCkUlqXJ7XO
+	ipJH+S01YXrovg3FoEMj1VGkaLpUi7Nt6q/KG6KSudzHIDUztq2zIMVmhJyMn5NlU0b1OSDvfRcBj
+	/sUpPhVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY4UX-0000000C8fR-407H;
-	Wed, 15 Jan 2025 14:35:33 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1tY70S-0000000CZMf-1wUR;
+	Wed, 15 Jan 2025 17:16:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY4Tf-0000000C8ZW-2HBF
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jan 2025 14:34:40 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-6d89a727a19so9128606d6.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 06:34:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1736951678; x=1737556478; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=wgpCbUXuk0fjx7PlpFBa3YSbnvvXmj+DNx/eEdB8F5M=;
-        b=mtZsEk35qOcp+dJB6bF2UgYMnBvKuUewYL9lO+qYKhpDcnWJhVhAvfRkm/EUIHOQFI
-         f9PPFJ6d5RVS7M/2x3QFXHzf9xTmrg9phavH7f3j1VdiuvKoT+i/ELZ8kT/lFxZuMFkc
-         DNmynN9+eykzU9C7Mzvy9cGa4ZcWuv7Q4KSTn5MOoFaHUgI3JlM9PFmLuDBbYRhWhq09
-         uxAaWX1FLfjzuu9WHUBiD2tLiOYzw2LPvpRzLmQKmKuABPIKAjybNnRtXSo8iWfTyZkP
-         I+Bn/bqS/lA6stuVbOnrSRTXg4tNE/idYqGHB42yFFZbL+8XPZq0DEYEC0pXlNqzC0pp
-         gusQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736951678; x=1737556478;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wgpCbUXuk0fjx7PlpFBa3YSbnvvXmj+DNx/eEdB8F5M=;
-        b=gcSPgO0xpeeeu9RTyvU8I1Zfg0VhTmGhwqro9AGQNAAALovvaafIu1iSthrKWeaBes
-         Ytq733cW4k5WI/FFKQPztxa3ETx//+pK0knR23pQGHJ/870pgPRG3YYdRGN40ONvS2Ez
-         Qaoa/X7SuD8YMPfpbSu4u6bLa7WNEeZwUi3cE0LcuyNNuIpcRW32TJqpNJHR3reDTdLZ
-         SA0vZTg7K2A1woiXGpeXXNiD1vBfL+vs+FKWpOF+7Q1Ql0hlyobGdSHOoiTfpuyEA//A
-         SeM5AUrndYBjjuoS54jaDhaTx96oeprrVPtSQkTWhJ3ewGp+HxucInYlNPPmRzCjpvit
-         I+Qg==
-X-Forwarded-Encrypted: i=1; AJvYcCWp0sGtQrxw/HZWJkUOCWaBJGK78M9TIWagnQXbMICf2It9IXRTZEujdqun2p/aOrebNd31p/9aXxazRoUL2Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxzeAOdCEwTzJRbnPrt684E/GpRo2mpSZVhPLDz91i9OFeiOpys
-	oePUOT9R9WGzZgP6LotWpxznBphSxlsNgVnSA30I6Ts0xqm2NL60qne7t4WDYNAZHacPxazGtdD
-	REn+JvTmAcBDGLyi1yiLRNEEZaXY2k8blRS7ixQ==
-X-Gm-Gg: ASbGncss+HIG8o+e3EECtkTfS8JRweqf+vZMelH6OGFUIUSMiUZ9KYXOtgSZjw4XRvc
-	oY915pBCrr+03k5wsaPYRmiB72Pn+kWuvLZM=
-X-Google-Smtp-Source: AGHT+IFPz9fbMcvhhyZZGYYuWLUwXCRTy8s+kBCbi69J2hIRU1+TB7begqOpM0+xy1s6GqB+nx1X6ZJAR0totDSXOwo=
-X-Received: by 2002:a05:6214:486:b0:6d8:e7c9:ffa0 with SMTP id
- 6a1803df08f44-6e192c73ef5mr43851476d6.19.1736951677902; Wed, 15 Jan 2025
- 06:34:37 -0800 (PST)
+	id 1tY6zA-0000000CZHI-2sIE;
+	Wed, 15 Jan 2025 17:15:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5EDF25C5D73;
+	Wed, 15 Jan 2025 17:14:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1E91C4CED1;
+	Wed, 15 Jan 2025 17:15:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736961318;
+	bh=XeJK5selCG6aOykBOS7AbrE28fzidoUy6E/2EIkrpc4=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=Zho0SInEZJb875wPmZjkvQZfzX680y4FWufqIhabcF7LcgWSjiejyzm3ypiHTKzrY
+	 wkzFfNDhk3U/etHJN8fCBSIhFAhPXYdDvGSqKLb8FTuqoJmcPjyGHpJUPDWy00yMJg
+	 p2JLt23DaS4MIV50fwGFwQ0S6YAbanMcJpIwaHM//L9MkMADiPGmqqyjLt9fRPXJEr
+	 jJrpSAU1yCroL17TTrbZqcoCUnycuDX73hsVZDhW3laq+UmguLWUrI/G7g/dQkYHFM
+	 WRxr4w126cr31LfKsdJRuXrJ5QrATLIH+7TrFMkV9xKBmeuoCzvs2La3T42R2a3Egv
+	 jjR5TU9b1dz1Q==
+Date: Wed, 15 Jan 2025 11:15:17 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-References: <20250109150310.219442-1-tzimmermann@suse.de> <20250109150310.219442-26-tzimmermann@suse.de>
- <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com> <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
- <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com> <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
- <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com> <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
- <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com> <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
- <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
-In-Reply-To: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Wed, 15 Jan 2025 14:34:26 +0000
-X-Gm-Features: AbW1kvZOqZIfsgr5MQqIuf1jKNJtcUmkb-2ddanRpBEhDxEw_Wl931RGN2rzkA8
-Message-ID: <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
-	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
-	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Yan <andyshrk@163.com>
-Content-Type: text/plain; charset="UTF-8"
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, 
+ linux-arm-kernel@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+In-Reply-To: <20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com>
+References: <20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com>
+Message-Id: <173696121021.72515.902119199625523031.robh@kernel.org>
+Subject: Re: [PATCH v2 0/4] Add support for Mediatek Genio 510 EVK board
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_063439_576733_21639AC3 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20250115_091520_810002_DA19C88A 
+X-CRM114-Status: GOOD (  21.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,29 +75,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen
-<tomi.valkeinen@ideasonboard.com> wrote:
-> No disagreement there, we need CREATE_DUMB2.
->
-> My point is that we have the current UAPI, and we have userspace using
-> it, but we don't have clear rules what the ioctl does with specific
-> parameters, and we don't document how it has to be used.
->
-> Perhaps the situation is bad, and all we can really say is that
-> CREATE_DUMB only works for use with simple RGB formats, and the behavior
-> for all other formats is platform specific. But I think even that would
-> be valuable in the UAPI docs.
 
-Yeah, CREATE_DUMB only works for use with simple RGB formats in a
-linear layout. Not monochrome or YUV or tiled or displayed rotated or
-whatever.
+On Wed, 15 Jan 2025 11:29:01 +0100, Louis-Alexis Eyraud wrote:
+> This patchset adds the basic support of the Mediatek Genio 510 EVK
+> board, based on the Mediatek MT8370 SoC.
+> 
+> It adds a device-tree file for the board (mt8370-genio-510-evk.dtb)
+> and an include file for the SoC (mt8370.dtsi), in order to be able to
+> boot. As the board is very close to the Genio 700 EVK board, an include file
+> (mt8390-genio-common.dtsi) is also created to factorize the common
+> definitions.
+> 
+> The Genio 510 EVK has following features:
+> - MT8370 SoC
+> - MT6365 PMIC
+> - MT6319 Buck IC
+> - 4GB LPDDR4X
+> - 64GB eMMC 5.1
+> - 12V DC Jack
+> - Micro SD card slot
+> - Push Button x 4 (Power, Reset, Download and Home Key)
+> - LED x 4 (Power, Reset, System on and Charging Status)
+> - USB Device Port x 1 (Micro USB Connector)
+> - USB Host Port x 1 (Type-C USB Connector)
+> - 3.5mm Earphone Jack x 1 (with Microphone Input)
+> - 3.5mm Line Out Audio Jack x 1
+> - Analog Microphone x 1
+> - Digital Microphone x 2
+> - Gigabit Ethernet with RJ45 connector
+> - HDMI 2.0 TX port with Type A HDMI connector
+> - eDP port
+> - 3x UART with serial-to-usb converters and micro USB connectors
+> - M.2 Slot x 2
+> - I2C Capacitive Touch Pad
+> - 4-Lane DSI x 2
+> - 4-Data Lane CSI x 2
+> - I2S Pin header
+> - 40-Pin 2.54mm Pin Header x 1
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+> Changes in v2:
+> - Reword "dt-bindings: arm: mediatek: add mt8370-evk board" commit
+>   message to add details on MT8370 SoC and links to MT8188 and MT8390
+> - Add note about gpu support in "arm64: dts: mediatek: add support for
+>   MT8370 SoC" commit message
+> - Split "arm64: dts: mediatek: add device-tree for Genio 510 EVK board"
+>   commit in two, as requested by AngeloGioacchino Del Regno
+> - Link to v1: https://lore.kernel.org/r/20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com
+> 
+> ---
+> Louis-Alexis Eyraud (4):
+>       dt-bindings: arm: mediatek: add mt8370-evk board
+>       arm64: dts: mediatek: add support for MT8370 SoC
+>       arm64: dts: mediatek: mt8390-genio-700-evk: Move common parts to dtsi
+>       arm64: dts: mediatek: add device-tree for Genio 510 EVK board
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml          |    5 +
+>  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi           |    8 +-
+>  .../boot/dts/mediatek/mt8370-genio-510-evk.dts     |   19 +
+>  arch/arm64/boot/dts/mediatek/mt8370.dtsi           |   64 ++
+>  .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 1033 +------------------
+>  .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 1040 ++++++++++++++++++++
+>  7 files changed, 1134 insertions(+), 1036 deletions(-)
+> ---
+> base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
+> change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9
+> 
+> Best regards,
+> --
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> 
+> 
+> 
 
-If it happens to accidentally work for other uses, that's fine, but
-it's not generically reliable for anything other than simple linear
-RGB. It's intended to let you do splash screens, consoles, recovery
-password entries, and software-rendered compositors if you really
-want. Anything more than that isn't 'dumb'.
 
-Cheers,
-Daniel
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com:
+
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pinctrl@10005000: 'pcie-default' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8188-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: regulators: 'compatible' is a required property
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: '#sound-dai-cells', 'mt6359codec', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10320000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10330000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: jpeg-decoder@1a040000: iommus: [[123, 685], [123, 686], [123, 690], [123, 691], [123, 692], [123, 693]] is too long
+	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dtb: mailbox@10330000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+
+
+
+
+
 
