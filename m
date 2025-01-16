@@ -4,118 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1193BC02183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 10:07:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA47C02187
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 10:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Al2f4JxH1eDc+QqfJXNyqFbsnRt6t9cREWSc2tGMg64=; b=0A+KCZWuF5QOaTMlE3MlueWQ8J
-	00RDZokEifLs1hFG5svhp7tajxnVnnVNRu4yW0I7RMC90YxMVj2oBwSYSuZ0YkbPhvvo355tUvyL0
-	Valm2bYDzJhBNrQzEubEHP+bfz65rVWq88oB0tbBLtYpahPlkDEl41G7qArracO/5wH5uHP+GSubQ
-	H6gzCY7F8AWI+0YhFZmk1UxiY02mNqRPGodTtBzm/5UHIn7sMet2qTzf+Ij0hmTTyYAku0xWeDcYO
-	3SVHvJ/Y+BPG1n3u1RLxJAr1mSUAHZ0i/eYLzK7ebL35FiExD89nle6oeNN/GZlMfz0Lvctb8+GOn
-	oRh+QbIA==;
+	bh=kvQdEoWTAFzPq6kjpuGsuF1l6Lxp7FUmHEBuENkQ6Qo=; b=pKDN5Mgr4MhCkweNXtD7FVZAiy
+	XplNqVoWQ8ziA0Y1JnF9ldOtN2L9ZcxG5OL8L6MURwhpiXfwLaP7hpm+P6Ztn6zWQayrOSzlBvlt3
+	q/eg73FZSoR3c+XzJA0Sv/vWNIwlGam/wOG+hu+MBb9q7QZMjh45OSe3f6Mzspg90rNkEPufz+ZBB
+	cGd6JRJemu3v6p0QEHJoUIM1k1N+mlS7pTtS3464mLkzCohHJFabJMYg3m+v0ylJ9Cuuxkfidvp9U
+	iMAaW9pvjnYrQ4PQIqTGBK1SEnD9gir6BMHL8gLCrgfwp0hnUOrpmFuaTBcPGgYIv7IOHdmVy93G1
+	r32p1kpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYMn8-0000000ESSr-0V8P;
-	Thu, 16 Jan 2025 10:07:58 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tYN0L-0000000ETv6-36Fi;
+	Thu, 16 Jan 2025 10:21:37 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYMn5-0000000ESS4-2I3C;
-	Thu, 16 Jan 2025 10:07:56 +0000
-Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5E9B9169;
-	Thu, 16 Jan 2025 11:06:54 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1737022015;
-	bh=5iBWzPVmw+7VsrlU5C002xE3DHz4wSYEG2lvi9WrW80=;
+	id 1tYMz4-0000000ETgq-0qdf;
+	Thu, 16 Jan 2025 10:20:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 611CAA41452;
+	Thu, 16 Jan 2025 10:18:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F083DC4CED6;
+	Thu, 16 Jan 2025 10:20:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737022817;
+	bh=qqJpTXUP3GhZ0W/fxsUBOFjIJ8kNite2YItXfgc9pgc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GC4JgPWOpTh5fUSUYxE2btYpeplZmk/wc1/y1hysA5w7Ekqjjovy5AnVu0+UP/8PB
-	 WuoMl50q34IhSbq2JjW5zgTeNPTY5ITtuywUrB98SjdmT56zJthdugncYjNOwHs207
-	 UGK7kRU9a0swMfzHVM6e3yIQ8OXcNHWB1aTeIVnk=
-Message-ID: <e8125edc-928a-47b4-80a3-224c945f6d68@ideasonboard.com>
-Date: Thu, 16 Jan 2025 12:07:49 +0200
+	b=Q74jZqpO7BdxmoOsraDvrDdRdxNZ6USgpsfyXkP36HbFERv2Ce1WYgvJNtE1Vltij
+	 /XQH1asFFuKpcYnyZsrhbf63iVwuMPCqf0CN/bQ9Z4kY4+4AAfOyfb7LY1VCVr3qdL
+	 CDCyKVIUw6jOS+7/5BAMTY1BFaxKtvGUNKdFZg4NQyxnM946ggQI76Z4g+4amLa7EU
+	 uv4sJhp7sHebnPhvWVShD1KH0NG3VbcTY+tiQBtOMjKZaLJMVk/kUkHDgbm9glKCo6
+	 MUokw9X++gicc3ie17pRq26I5uz5+BjYeWz9XxSqeMhMM0F5ExEwdS1FBPI6i0sDVE
+	 KCNJbrw9CtaHQ==
+Message-ID: <b212d05d-de3b-41b2-bc48-c6b79ae54a8b@kernel.org>
+Date: Thu, 16 Jan 2025 11:20:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Stone <daniel@fooishbar.org>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
- linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org,
- xen-devel@lists.xenproject.org, Andy Yan <andyshrk@163.com>
-References: <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
- <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
- <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
- <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
- <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
- <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
- <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
- <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
- <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
- <20250116084340.GF6754@pendragon.ideasonboard.com>
- <20250116093854.GG6754@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: mediatek: add support for
+ mt8196
+To: =?UTF-8?B?Q2F0aHkgWHUgKOiuuOWNjuWptyk=?= <ot_cathy.xu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?TGVpIFh1ZSAo6Jab56OKKQ==?= <Lei.Xue@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ =?UTF-8?B?R3VvZG9uZyBMaXUgKOWImOWbveagiyk=?= <Guodong.Liu@mediatek.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "sean.wang@kernel.org" <sean.wang@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250115063555.32492-1-ot_cathy.xu@mediatek.com>
+ <20250115063555.32492-2-ot_cathy.xu@mediatek.com>
+ <nmyxygrya6cpalmirsunvkx32uox3kjxd4l5ggdhjtj7edyizz@yodolm5ktboo>
+ <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
+ <d04bc250-2104-4e02-9bf8-5785f4444c8d@kernel.org>
+ <d11076d3eb2f92018fd3e26cae665a47f71ca838.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
- 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
-In-Reply-To: <20250116093854.GG6754@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <d11076d3eb2f92018fd3e26cae665a47f71ca838.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_020755_728292_CDC10FD6 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20250116_022018_375787_B45ADDA2 
+X-CRM114-Status: GOOD (  20.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,47 +135,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 16/01/2025 11:38, Laurent Pinchart wrote:
-> On Thu, Jan 16, 2025 at 10:43:40AM +0200, Laurent Pinchart wrote:
->> On Wed, Jan 15, 2025 at 02:34:26PM +0000, Daniel Stone wrote:
->>> On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen wrote:
->>>> No disagreement there, we need CREATE_DUMB2.
->>>>
->>>> My point is that we have the current UAPI, and we have userspace using
->>>> it, but we don't have clear rules what the ioctl does with specific
->>>> parameters, and we don't document how it has to be used.
->>>>
->>>> Perhaps the situation is bad, and all we can really say is that
->>>> CREATE_DUMB only works for use with simple RGB formats, and the behavior
->>>> for all other formats is platform specific. But I think even that would
->>>> be valuable in the UAPI docs.
->>>
->>> Yeah, CREATE_DUMB only works for use with simple RGB formats in a
->>> linear layout. Not monochrome or YUV or tiled or displayed rotated or
->>> whatever.
->>>
->>> If it happens to accidentally work for other uses, that's fine, but
->>> it's not generically reliable for anything other than simple linear
->>> RGB. It's intended to let you do splash screens, consoles, recovery
->>> password entries, and software-rendered compositors if you really
->>> want. Anything more than that isn't 'dumb'.
+On 16/01/2025 09:18, Cathy Xu (许华婷) wrote:
+> On Thu, 2025-01-16 at 08:28 +0100, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
 >>
->> We have lots of software out there that rely on CREATE_DUMB supporting
->> YUV linear formats, and lots of drivers (mostly on Arm I suppose) that
->> implement YUV support in CREATE_DUMB. I'm fine replacing it with
->> something better, but I think we need a standard ioctl that can create
->> linear YUV buffers. I've been told many times that DRM doesn't want to
->> standardize buffer allocation further than what CREATE_DUMB is made for.
->> Can we reconsider this rule then ?
+>>
+>> On 16/01/2025 03:20, Cathy Xu (许华婷) wrote:
+>>>>> +          bias-pull-down:
+>>>>> +            oneOf:
+>>>>> +              - type: boolean
+>>>>> +              - enum: [100, 101, 102, 103]
+>>>>> +                description: mt8196 pull down PUPD/R0/R1 type
+>>>>> define value.
+>>>>> +              - enum: [200, 201, 202, 203, 204, 205, 206, 207]
+>>>>> +                description: mt8196 pull down RSEL type define
+>>>>> value.
+>>>>
+>>>> Not much improved.
+>>>
+>>>   I have removed the content related to 'resistance value', we use
+>>> 'RSEL' instead of 'resistance value'.
+>>
+>> So the value in Ohms was removed? I assume above do not have known
+>> value
+>> in Ohms?
 > 
-> Actually... Instead of adding a CREATE_DUMB2, it would be best on trying
-> to leverage DMA heaps and deprecate allocating from the KMS device.
+>   Yes, value in Ohns was removed, no code have knowm value.
 
-If we allocate from DMA heaps, I think we then need a DRM ioctl which 
-will tell you how big buffer(s) you need, based on the size and format.
+Does the hardware have known value in Ohms?
 
-  Tomi
 
+> 
+>>
+>>>
+>>>>
+>>>>
+>>>>> +            description: |
+>>>>> +              For pull down type is normal, it doesn't need
+>>>>> add
+>>>>> RSEL & R1R0.
+>>>>> +              For pull down type is PUPD/R0/R1 type, it can
+>>>>> add
+>>>>> R1R0 define to
+>>>>> +              set different resistance. It can support
+>>>>> "MTK_PUPD_SET_R1R0_00" &
+>>>>> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10"
+>>>>> &
+>>>>> +              "MTK_PUPD_SET_R1R0_11" define in mt8196.
+>>>>> +              For pull down type is PD/RSEL, it can add RSEL
+>>>>> define to set
+>>>>> +              different resistance. It can support
+>>>>> +              "MTK_PULL_SET_RSEL_000" &
+>>>>> "MTK_PULL_SET_RSEL_001" &
+>>>>> +              "MTK_PULL_SET_RSEL_010" &
+>>>>> "MTK_PULL_SET_RSEL_011" &
+>>>>> +              "MTK_PULL_SET_RSEL_100" &
+>>>>> "MTK_PULL_SET_RSEL_101" &
+>>>>> +              "MTK_PULL_SET_RSEL_110" &
+>>>>> "MTK_PULL_SET_RSEL_111"
+>>>>> define in
+>>>>> +              mt8196.
+>>>>> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>> b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>> new file mode 100644
+>>>>> index 000000000000..bf0c8374407c
+>>>>> --- /dev/null
+>>>>> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>> @@ -0,0 +1,1572 @@
+>>>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
+>>>>> +/*
+>>>>> + * Copyright (C) 2025 Mediatek Inc.
+>>>>> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
+>>>>> + */
+>>>>> +
+>>>>> +#ifndef __MT8196_PINFUNC_H
+>>>>> +#define __MT8196_PINFUNC_H
+>>>>> +
+>>>>> +#include <dt-bindings/pinctrl/mt65xx.h>
+>>>>> +
+>>>>> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+>>>>> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
+>>>>> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
+>>>>> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
+>>>>> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
+>>>>> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
+>>>>
+>>>> I do not see how you resolved my comment from v1. In v2 I
+>>>> reminded
+>>>> about
+>>>> it, so you responded that yopu will change something, but I do
+>>>> not
+>>>> see
+>>>> any changes.
+>>>>
+>>>> So explain: how did you resolve my comment?
+>>>>
+>>>> These two examples where you claim you will change something, but
+>>>> send
+>>>> the same. I skipped the rest of the patch.
+>>>
+>>>   Thank you for your patient response, here is my explanation for
+>>> you
+>>> question:
+>>>
+>>>   In v1, I undertand that you meant I didn't sent a real binding,
+>>> and
+>>
+>>
+>> The comment is under specific lines, so I said these defines are not
+>> a
+>> real binding. You sent them again, but they are still not bindings,
+>> because they are not used in the driver. Maybe the usage is
+>> convoluted,
+>> so which part of implementation are these connecting with DTS? IOW,
+>> which part of driver relies on the binding?
+> 
+>   I got you. This binding define many macros, which will be used for
+> 'pinmux' setting in the DTS. The usage like this:
+> 
+>   adsp_uart_pins: adsp-uart-pins {
+>                 pins-tx-rx {
+>                         pinmux = <PINMUX_GPIO35__FUNC_O_ADSP_UTXD0>,
+>                                  <PINMUX_GPIO36__FUNC_I1_ADSP_URXD0>;
+>                 };
+>         };
+
+
+That's DTS, not driver, so not a binding. Drop the header from bindings.
+
+
+Best regards,
+Krzysztof
 
