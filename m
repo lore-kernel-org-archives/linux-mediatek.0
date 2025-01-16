@@ -4,73 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FD2C02180
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 08:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38BAAC02180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 09:13:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=93FsyH6e7MUwWivAJQMQUQlcYjKq5+5kOxEA/zd/7vk=; b=ANloOKhK+Vv6aNcauRgN/85NPv
-	CaDHqOGri+u2tytrRNxDj2PRBTljtiE2NaCjmh1wI+urBGK6Lk+NTFNO75RZcxvcphfVmxLTr1fii
-	Yw277QB/d8TjLmcgEpVv9olRyOr54pStUOO446htGL1s/1U68tvNw5yPl2TdgTUnc829ARQpC9X9X
-	BFzMbxqaEas4AFrHeCPK3Ek/HEqhjNY5rpi6XDIAV1pF0h9DVK4b3A141x7og7K9r3GoQ87HkLnDc
-	K3QwUVnOCqBId4viWxKXPXgK5G5FszIFbulRTMD77os3x6owGUSuaOO1XI5xf7bli5Cm5nUwTsIHf
-	nQR1KD5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XZKRXPVX5N9iqSWVwXzEEYuU/tXxflI/n2D0/vLeP2c=; b=yrBHopFTcpsKJMrEFnft6BlZv+
+	rpSoRAhG3oBFwkulSfAStyONC+GD9yG1nml/WhskymMc80SvME3R+t5x9V8j7X2+CmMp9fzsj9wML
+	uqPC8KQrUqiBr1L6TTmEkfq2Zn1G6XHpq93TkZ5lP36ILpHWdDmeF6cRUERCPcdsrD8LLq+C9Gg/9
+	DE6X1GI1HwDiMb0ZWbgtl583uFukAbLYW77cS/77etL6f3A2qub+YPG/MVdWHrnNFBdrz8CYc4jcd
+	s6IrNFIXNwDuHqvzYk7P+MrszRko6k7UQC7ru1hc1F7MX3OxajjaFdLNTMETkIzWWz2x8VLsDIB6s
+	rmSlsjfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYLTk-0000000EFtN-2Yvc;
-	Thu, 16 Jan 2025 08:43:52 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tYLvy-0000000EKNn-1OSU;
+	Thu, 16 Jan 2025 09:13:02 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYLTh-0000000EFsC-3qaU;
-	Thu, 16 Jan 2025 08:43:51 +0000
-Received: from pendragon.ideasonboard.com (unknown [193.209.96.36])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1CDD7169;
-	Thu, 16 Jan 2025 09:42:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1737016967;
-	bh=YBJYqGqQ2U3g/glMhqBtVA7c9PNcNKm2bF2hwWN3X/8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LEeZiJfRiaftp5JL3OuhSGJ31fbSk67YMrTfIULuryGPguJN8dhwOq+oPh23KD4oZ
-	 oDgG9Q7qiklC025s5e31jn5W8DZrWY3XLnKdac3TlZaKlReDu0jJF+McdlL4rZbfey
-	 vio2zbz4p7HYes9E+SH0Bj1kP+VRYA2cki8/bjIo=
-Date: Thu, 16 Jan 2025 10:43:40 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
-	Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <20250116084340.GF6754@pendragon.ideasonboard.com>
-References: <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
- <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
- <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
- <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
- <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
- <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
- <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
- <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
- <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
- <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
+	id 1tYLvk-0000000EKMj-0GXx;
+	Thu, 16 Jan 2025 09:12:49 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 50G85sXY006715;
+	Thu, 16 Jan 2025 09:12:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=XZKRXPVX5N9iqSWVwXzEEYuU/tXxflI/n2D
+	0/vLeP2c=; b=XRpCB4XwF2FKp8U+TRNXwFTLKp3CizqMGX5Ya+b+1jILNE8XOhs
+	NAilmr4KwPEml8NrfCa7bZVZw4f324Aeiw+n9/wUyqNsjNxAkBr16qxTYmRA/ZHr
+	rwju5t4pMTOpPoOgpU5TeNNA1PbMzujmWnQxMl8lgJcluOUngame+siS64pllcCu
+	hNxoT/hbgF80/KVsqIS1XoiRRRnMHrQaTKvj6MI4S2Qq6akqWMjWqJAXi0nS8/h5
+	Mg0kNKNHwHO6QkTM7Vlr/sFcHA2n1gnsvTE35qi9buOnP35uainYC8OrLBBfbFEV
+	H/gEsBaQhtwkhqgyXVqu4d5YvXAOEncvBQA==
+Received: from aptaippmta02.qualcomm.com (tpe-colo-wan-fw-bordernet.qualcomm.com [103.229.16.4])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 446xa4r5jm-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 Jan 2025 09:12:30 +0000 (GMT)
+Received: from pps.filterd (APTAIPPMTA02.qualcomm.com [127.0.0.1])
+	by APTAIPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 50G9CShs032018;
+	Thu, 16 Jan 2025 09:12:28 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by APTAIPPMTA02.qualcomm.com (PPS) with ESMTPS id 4442bf51r2-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 Jan 2025 09:12:28 +0000
+Received: from APTAIPPMTA02.qualcomm.com (APTAIPPMTA02.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 50G9CRhE032013;
+	Thu, 16 Jan 2025 09:12:27 GMT
+Received: from cbsp-sh-gv.ap.qualcomm.com (CBSP-SH-gv.ap.qualcomm.com [10.231.249.68])
+	by APTAIPPMTA02.qualcomm.com (PPS) with ESMTPS id 50G9CRU0032012
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 Jan 2025 09:12:27 +0000
+Received: by cbsp-sh-gv.ap.qualcomm.com (Postfix, from userid 393357)
+	id 45FEA40BF9; Thu, 16 Jan 2025 17:12:26 +0800 (CST)
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        martin.petersen@oracle.com, quic_ziqichen@quicinc.com,
+        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+        quic_rampraka@quicinc.com
+Cc: linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH 0/8] Support Multi-frequency scale for UFS
+Date: Thu, 16 Jan 2025 17:11:41 +0800
+Message-Id: <20250116091150.1167739-1-quic_ziqichen@quicinc.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: zSS8U_aKh72K2o3eJEkCUbuXW__bBe_x
+X-Proofpoint-GUID: zSS8U_aKh72K2o3eJEkCUbuXW__bBe_x
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-01-16_03,2025-01-16_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
+ suspectscore=0 bulkscore=0 mlxlogscore=788 clxscore=1015
+ priorityscore=1501 impostorscore=0 malwarescore=0 adultscore=0 spamscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2411120000 definitions=main-2501160067
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_004350_089376_5543D6E2 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20250116_011248_103869_52F012D3 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,39 +107,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 15, 2025 at 02:34:26PM +0000, Daniel Stone wrote:
-> On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen wrote:
-> > No disagreement there, we need CREATE_DUMB2.
-> >
-> > My point is that we have the current UAPI, and we have userspace using
-> > it, but we don't have clear rules what the ioctl does with specific
-> > parameters, and we don't document how it has to be used.
-> >
-> > Perhaps the situation is bad, and all we can really say is that
-> > CREATE_DUMB only works for use with simple RGB formats, and the behavior
-> > for all other formats is platform specific. But I think even that would
-> > be valuable in the UAPI docs.
-> 
-> Yeah, CREATE_DUMB only works for use with simple RGB formats in a
-> linear layout. Not monochrome or YUV or tiled or displayed rotated or
-> whatever.
-> 
-> If it happens to accidentally work for other uses, that's fine, but
-> it's not generically reliable for anything other than simple linear
-> RGB. It's intended to let you do splash screens, consoles, recovery
-> password entries, and software-rendered compositors if you really
-> want. Anything more than that isn't 'dumb'.
+With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
+plans. However, the gear speed is only toggled between min and max during
+clock scaling. Enable multi-level gear scaling by mapping clock frequencies
+to gear speeds, so that when devfreq scales clock frequencies we can put
+the UFS link at the appropraite gear speeds accordingly.
 
-We have lots of software out there that rely on CREATE_DUMB supporting
-YUV linear formats, and lots of drivers (mostly on Arm I suppose) that
-implement YUV support in CREATE_DUMB. I'm fine replacing it with
-something better, but I think we need a standard ioctl that can create
-linear YUV buffers. I've been told many times that DRM doesn't want to
-standardize buffer allocation further than what CREATE_DUMB is made for.
-Can we reconsider this rule then ?
+This series has been tested on below platforms -
+SM8650 + UFS3.1
+SM8750 + UFS4.0
+
+
+Can Guo (6):
+  scsi: ufs: core: Pass target_freq to clk_scale_notify() vops
+  scsi: ufs: qcom: Pass target_freq to clk scale pre and post change
+  scsi: ufs: core: Add a vops to map clock frequency to gear speed
+  scsi: ufs: qcom: Implement the freq_to_gear_speed() vops
+  scsi: ufs: core: Enable multi-level gear scaling
+  scsi: ufs: core: Toggle Write Booster during clock scaling base on
+    gear speed
+
+Ziqi Chen (2):
+  scsi: ufs: core: Check if scaling up is required when disable clkscale
+  ARM: dts: msm: Use Operation Points V2 for UFS on SM8650
+
+ arch/arm64/boot/dts/qcom/sm8650.dtsi | 51 ++++++++++++++++----
+ drivers/ufs/core/ufshcd-priv.h       | 17 +++++--
+ drivers/ufs/core/ufshcd.c            | 71 +++++++++++++++++++++-------
+ drivers/ufs/host/ufs-mediatek.c      |  1 +
+ drivers/ufs/host/ufs-qcom.c          | 60 ++++++++++++++++++-----
+ include/ufs/ufshcd.h                 |  8 +++-
+ 6 files changed, 166 insertions(+), 42 deletions(-)
 
 -- 
-Regards,
+2.34.1
 
-Laurent Pinchart
 
