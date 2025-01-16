@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063E1C02183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 14:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297C5C02183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 14:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n/WCT9lwTa8x1CopY7g0YZN5VHpvZeEAjRWs1DEYF94=; b=1F6/ojTA0pqnAu
-	PBLX7IAkQNJwSUQZnpSOnGbpplq4jRLCpqzNoW/3ERTj/I96fhciZE9OmdfOSiBJ5aeQ85TQu5Fxy
-	/xADVvQvdRPBhhyN3xoe1YbcSkaDT0r5DIbM0QbUateXIhOHgNv2lzlcDpom8iLY1ye3n0qogTrlM
-	EVm31oR+J4Ag54cPtmQpwOpP3unK/RH8MW69uL7bvxtZlu1w4M6zdzqJoZ3dW0xC9wYa1FbmxEUEP
-	oQrWsLAEenieHBuQRuKZjF2iVQ1FX3JWSmyhsWSyl8j5t3kN4SRXX/3x1DeHaTIyfwN5LVlVW/Lwc
-	FaXVw1agcOWCGB1X9hQQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N71kakDA4UPLlUE2R1F1PrMO32WM7m/GYzZGqlyC7v0=; b=IB4V5G1uMNa4YI/RWRYBOeTqC7
+	aFFKYQpNwQRe2f9kwCjB9MFfm6CbXg7hKmZzGEnfxkJ18ky9JaRj/Q06JrqrUEhBrDa3ubpzvauLK
+	mcYCjXYjhcwGthbAmZBQS/NJ+jiu1WhfdHguxB9ZaAb3rHb+LIs/Y4Om30TSOshBZqCUO6Cb3K4+/
+	b2RMKBGIuQjpxYFUpPZEQV4zQoCg8uM8IbnUlJZm9BY0PmXVMFs+lv8PKjANiojTi63ms3g0by6U4
+	I0XLQs+bWyWS2YqLzucD8ps/WTGOSdy36dBfDiEVGTHqmY53LcFqstiR7PFBoIUaTyLNuPS+Q8kyS
+	ZyVzs7vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQqo-0000000FAFz-0dcw;
-	Thu, 16 Jan 2025 14:28:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tYQs3-0000000FAUZ-0R2G;
+	Thu, 16 Jan 2025 14:29:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQpW-0000000F9l6-0Fqj;
-	Thu, 16 Jan 2025 14:26:43 +0000
+	id 1tYQpW-0000000F9lp-3QJz;
+	Thu, 16 Jan 2025 14:26:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737037599;
-	bh=UeFDYPRgZQPn6MStyNT1pEJTaMhfDKZvOpT5RqokfRw=;
-	h=From:Subject:Date:To:Cc:From;
-	b=jVateGvYT/rBze/xM8rXFqBD5jEYlAz4A9HtU1Aw5XXQVbbvUCPLpRP8mu1QG7Rn2
-	 xObE/Bx+A6aojDzhpXE+KpXPw4c7fgwjkVH+IklCX2XJkj2e6EdiCe4LjW8T9yErzF
-	 kyUbN0ZUvDnSWlHWl7oMDJnN271HW3YQaSBdKOwidV8lZ8KfW2GlJRUNV/M4b4zJqg
-	 dPt/rcx4ZZ8nmTMA1mqYTw8l07x80UZVWv/Tato+oOaNu/T3S4QZbHTSS/6/QdQq9R
-	 KcyeeXnWCdeEdR4wU4LmXbqEuyEHQIaHRteNIFkjYrelvaqhaNyUJAdmnw0ddew1OD
-	 409rCe8jo4V9g==
+	s=mail; t=1737037601;
+	bh=8yu7sHlF0L2J8I4QtITvucR3TWX1vtVwIa4uOowDQX4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=pLHqYxawEFfhX//hlffTWDVb7MVEpmZ/efsoPvfHKmJvNrl3vxBKcMISazpjPR3Us
+	 HqsEEJUgMKDb75jTxdiCHLsu0u8SJOYPFZSr2sRQTOBx13EbcJrNExhKTTpYl6bt5P
+	 j9S4+VQQ8tTRaj+bAK+lWvawQsPitQrxrmDsOCdxE6HOpr4ZRg+knvvBBquyjzgS3B
+	 er2pcaF9kBojGN8NeEj7uv3J5Dib4MGFdUvR2LTxwpvA2ukJADg+NBQzmwCa8DWAhJ
+	 t1Jnm8JxAgvRJBVS6WTIhfa6JHHLwn3WDA9uES1tifR0OIER+d+N6vR9bn+1VhslRZ
+	 WWRyQR6JuRB+Q==
 Received: from fedora.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1E8F17E0E48;
-	Thu, 16 Jan 2025 15:26:38 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25B6317E0E57;
+	Thu, 16 Jan 2025 15:26:40 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Subject: [PATCH 0/3] Add Mali GPU support for Mediatek MT8370 SoC
-Date: Thu, 16 Jan 2025 15:25:56 +0100
-Message-Id: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
+Date: Thu, 16 Jan 2025 15:25:57 +0100
+Subject: [PATCH 1/3] dt-bindings: gpu: mali-bifrost: Add compatible for
+ MT8370 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAPQWiWcC/02O2wrCMBBEf6XsswtJ02xrf0VEsummBuzFphah+
- O8G9cHHMzAzZ4ckS5QEbbHDIltMcRoz6EMB/urGXjB2maFUpVVaWxzWxtQKZXR8E+znBxqmYI8
- 2ODId5N68SIjPz+bp/OVF7o88vX5DYJcE/TQMcW0LU2tDHKw3jgIxNdTVVah0vnFUKWLxxDV7+
- Fdqi5+QwW5Nl59UL2Oc0GqFxpLiRmnF7thuJZxfrzepNwwZ6wAAAA==
-X-Change-ID: 20250115-mt8370-enable-gpu-3b6f595fa63d
+Message-Id: <20250116-mt8370-enable-gpu-v1-1-0a6b78e925c8@collabora.com>
+References: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
+In-Reply-To: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -69,16 +67,16 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1737037598; l=2043;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1737037598; l=1275;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=UeFDYPRgZQPn6MStyNT1pEJTaMhfDKZvOpT5RqokfRw=;
- b=+A3e6YxoGAsOpzEcB833b1garE16GHGcwIWmz2aTxLJds3c+EMOw1msKeJj1Bc7qYvpJH86/3
- dqZ+q00c9auAkdL2CE67hH8vrP/Mnt3DET6p5lMrIrlp7dFzWxz3vva
+ bh=8yu7sHlF0L2J8I4QtITvucR3TWX1vtVwIa4uOowDQX4=;
+ b=yCw5VTaylfzCb8NuJETVRnUii/5h0PZCc+oIK4nytALD7sRByWwT1c+T0voQUD2vP6aoKaqjJ
+ 4L4zJ1vzc0xCBu4mNjJODTuS0pt7OAeDyD7f9srBcqUFqCDnfALiHJW
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_062642_299026_608E1ED5 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20250116_062643_038081_D2D640BC 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,49 +91,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
-dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
-and to the mt8370.dtsi include file.
-
-I've testing this patchset on a Mediatek Genio 510 EVK board,
-with a kernel based on linux-next (tag: next-20250113) plus [1] patchset.
-
-The panfrost driver probed with the following messages:
-```
-panfrost 13000000.gpu: clock rate = 390000000
-panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
-  80000400
-panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
-  Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-```
-
-[1] https://lore.kernel.org/linux-mediatek/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com/
+This commit adds a compatible for the MediaTek MT8370 SoC, with an
+integrated ARM Mali G57 MC2 GPU (Valhall-JM, dual core).
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
-Louis-Alexis Eyraud (3):
-      dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
-      drm/panfrost: Add support for Mali on the MT8370 SoC
-      arm64: dts: mediatek: mt8370: Enable gpu support
+ Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
- Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml |  5 ++++-
- arch/arm64/boot/dts/mediatek/mt8370.dtsi                    |  9 +++++++++
- drivers/gpu/drm/panfrost/panfrost_drv.c                     | 10 ++++++++++
- 3 files changed, 23 insertions(+), 1 deletion(-)
----
-base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
-change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
-prerequisite-change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9:v2
-prerequisite-patch-id: af53ae39240467340ac4c9cdbc8fdd949c5457a2
-prerequisite-patch-id: ca07485956f81c1a40029b48d2b4bcf00d74fc13
-prerequisite-patch-id: c34d9870b2c61d87ad8a6facba13d8970682e679
-prerequisite-patch-id: 48784acdcdd8b886fdec9f21c9cb88abb327e2e1
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+index 735c7f06c24e632ab738d062f15378f754c8adaf..6f6211950bb495fa6bfcdfe8d1e27e5ce7aeeae0 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+@@ -37,6 +37,7 @@ properties:
+           - enum:
+               - mediatek,mt8188-mali
+               - mediatek,mt8192-mali
++              - mediatek,mt8370-mali
+           - const: arm,mali-valhall-jm # Mali Valhall GPU model/revision is fully discoverable
+ 
+   reg:
+@@ -217,7 +218,9 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            const: mediatek,mt8186-mali
++            enum:
++              - mediatek,mt8186-mali
++              - mediatek,mt8370-mali
+     then:
+       properties:
+         power-domains:
 
-Best regards,
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.48.0
 
 
