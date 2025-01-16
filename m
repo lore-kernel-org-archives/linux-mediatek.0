@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96BCBC02180
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 13:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF8FC02183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 13:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KdMneNMiWUU5nbWg4PpeDhEraN2dp4d46EBa1DqoXcs=; b=LlY9mBXiRPkTzFHGA58/RNg8wJ
-	U37AOWwcg+jNzzta0Zg71gEO4LXl/wLQ6vGw/fE5a2ql+gghXsdJBeqrnaQuyOLzol6vfyr3ddAIy
-	+YweeDaCPEDfa1hXy6l4FxiAnWHr82O8gy5kAH+HruMpZWNe5ifDYsRcxGlAhvlGmdaxl0JUMTMe2
-	Vtq0p1kczCgnN0PAmNXXxNkPLGgDSjZcRQZySdqGFya1Ei72GdENR8+XWouQQUMHAMVB2W4kAMJaI
-	P0y0LTGRzcyPpDv9gV3Xu+fy+Gs/b8T22ZGTk0mE0DjFwZJVHW6acJrEBYA3CLjZm1q+H7vSpfriN
-	6w2gaPwQ==;
+	bh=doori9Bvbmf0yh+rfadTHWNziYl0BNfQpS5Q5pkaIIU=; b=ueML7CyL6AlWYbyCARE5+8EWTQ
+	4H/Nkq/6hOmT0OCm0LSflwis9xKi7IQfqHzg6qbcrJdAw1EGU5lI5h5XiVrs0sqH3bs1ivEqqCflE
+	cZHw8qW1+EfyHUaLxffV34VNtQeVzm4e7xWbM1CXrvQevYm2Qyjnbc8CIgv7LYFUeEvaYt36tu3cH
+	H0DS4alTLfB45mZkbsCBo+S4ZRKkNpERKa6jge0jZOxP35aDvDdAl+ntv5aR9Hxq6tC+QJcGjAUo4
+	fcFzURdVD0m2/lPlz4y7noWotb5yfQDT+/ym6iWiMYFwaKa4l9FvhP5MLrdRRrz4TaDfTsfdsCUoU
+	tkjVybxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYPvB-0000000F0zL-38Z9;
-	Thu, 16 Jan 2025 13:28:29 +0000
+	id 1tYQCb-0000000F2XK-3TKN;
+	Thu, 16 Jan 2025 13:46:29 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYPtu-0000000F0ZJ-3ci8;
-	Thu, 16 Jan 2025 13:27:12 +0000
+	id 1tYQBL-0000000F2SI-2cb0;
+	Thu, 16 Jan 2025 13:45:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737034029;
-	bh=CO6WZPYdeZC8+Bx0ho5URccoE4ccASaq/bcedaSPINk=;
+	s=mail; t=1737035109;
+	bh=D07iJIxZgL4Eb284YnQCEptX34FdVpYWwiTTYDL2kgY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=doa6shUHNfIEHjEAqGxGeNydvwDIsM1DBvzqdtwPGDCSR34OXuitDO+D0BSeQ2Rqt
-	 W9MVXML8f3pjH7YJCaXHs65OgRAOlA3Xwu+tEKOGWrZIMb/qLbCbN0PfaNsCSIhTKS
-	 OfyB55kluekPg1CI9bdfN6AB9eqsWfqdgMHRecFtShYQDb5W+mH7D3b8d1zoHBg/Vy
-	 eN/OWG7kPrF+ditoeDRg4zC5K+JaiSZljxdOotELYC/wvbAoG1DQci3XSrOxopF67G
-	 e0UT5+nAUv00teiH5IQJS4oUGyZWqkqCtPpgYWzqTAGQScsfZfv5RqbHEt8+JQAVFX
-	 +3/Xu0o3qQ7sA==
+	b=DPMmvO8LK5AIvAlhPQDFwCLUTfmnYXxtWxtXl6syBmjm0129bgMzy+GJzfd4Ohru4
+	 mqdhf+8jbskUx98gV1rT07I1ZLh18oClUUvRw7AxEaezZF7B2T1hwExSghjXreXrZz
+	 wZEtIvorszfExkenmmsJxfIaOLj6P75w3s8VaxUO+8qhkROQ3SAfkJfLBZjSTrV7Y+
+	 K1mEo0jps2+hjioZp9uhb9I7Zm1uxegrLNWbWCQgJ24/7a30HeqL/+i+PO0LmmV+Up
+	 xhcPSqEk9K8JGZKt/1NCHjZ5D5xEm+efrmf1aHY3o7uwGflY3OLMwf5shZtA6ySC4W
+	 W08BLW+aWPU6A==
 Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1001])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2CAE817E0E9E;
-	Thu, 16 Jan 2025 14:27:02 +0100 (CET)
-Date: Thu, 16 Jan 2025 10:27:00 -0300
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E24A917E0E48;
+	Thu, 16 Jan 2025 14:45:03 +0100 (CET)
+Date: Thu, 16 Jan 2025 10:45:01 -0300
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
@@ -60,20 +60,20 @@ Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
 	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
 	stable@vger.kernel.org
-Subject: Re: [PATCH RESEND v2 2/5] thermal/drivers/mediatek/lvts: Disable
- Stage 3 thermal threshold
-Message-ID: <a61835ca-a13d-4547-b3a2-3563688bff25@notapiano>
+Subject: Re: [PATCH RESEND v2 3/5] thermal/drivers/mediatek/lvts: Disable low
+ offset IRQ for minimum threshold
+Message-ID: <22c4fc5a-2634-4e14-a659-1a2a6329c7b3@notapiano>
 References: <20250113-mt8192-lvts-filtered-suspend-fix-v2-0-07a25200c7c6@collabora.com>
- <20250113-mt8192-lvts-filtered-suspend-fix-v2-2-07a25200c7c6@collabora.com>
- <53f3803f-c6ef-40db-9794-6c90b37659c1@linaro.org>
+ <20250113-mt8192-lvts-filtered-suspend-fix-v2-3-07a25200c7c6@collabora.com>
+ <90dd8d93-5653-47f1-8435-f03502e4c0cc@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <53f3803f-c6ef-40db-9794-6c90b37659c1@linaro.org>
+In-Reply-To: <90dd8d93-5653-47f1-8435-f03502e4c0cc@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_052711_051421_65320011 
-X-CRM114-Status: GOOD (  22.48  )
+X-CRM114-CacheID: sfid-20250116_054511_844866_74A825C0 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 14, 2025 at 12:54:43PM +0100, Daniel Lezcano wrote:
+On Tue, Jan 14, 2025 at 07:30:31PM +0100, Daniel Lezcano wrote:
 > On 13/01/2025 14:27, Nícolas F. R. A. Prado wrote:
-> > The Stage 3 thermal threshold is currently configured during
-> > the controller initialization to 105 Celsius. From the kernel
-> > perspective, this configuration is harmful because:
-> > * The stage 3 interrupt that gets triggered when the threshold is
-> >    crossed is not handled in any way by the IRQ handler, it just gets
-> >    cleared. Besides, the temperature used for stage 3 comes from the
-> >    sensors, and the critical thermal trip points described in the
-> >    Devicetree will already cause a shutdown when crossed (at a lower
-> >    temperature, of 100 Celsius, for all SoCs currently using this
-> >    driver).
-> > * The only effect of crossing the stage 3 threshold that has been
-> >    observed is that it causes the machine to no longer be able to enter
-> >    suspend. Even if that was a result of a momentary glitch in the
-> >    temperature reading of a sensor (as has been observed on the
-> >    MT8192-based Chromebooks).
-> > 
-> > For those reasons, disable the Stage 3 thermal threshold configuration.
+> > In order to get working interrupts, a low offset value needs to be
+> > configured. The minimum value for it is 20 Celsius, which is what is
+> > configured when there's no lower thermal trip (ie the thermal core
+> > passes -INT_MAX as low trip temperature). However, when the temperature
+> > gets that low and fluctuates around that value it causes an interrupt
+> > storm.
 > 
-> Does this stage 3 not designed to reset the system ? So the interrupt line
-> should be attached to the reset line ? (just asking)
+> Is it really about an irq storm or about having a temperature threshold set
+> close to the ambiant temperature. So leading to unnecessary wakeups as there
+> is need for mitigation ?
 
-Yes, my guess is that the intention of stage 3 is to cause a system reset,
-however it clearly does not cause a system reset, so it is not directly
-connected to the reset line in any way. Instead it is up to the kernel to
-receive the interrupt and deal with it. But then, since there are lower thermal
-thresholds that already cause a system shutdown, it's useless to keep this
-around - it only causes suspend/resume misbehaviors in case there are spurious
-readings.
+Yes, that's what I mean. The irq threshold gets configured to 20C, so whenever
+the temperature drops below that value, the IRQ gets triggered. But this usually
+does not happen just once, because from the thermal frameworks' perspective,
+there's no thermal threshold configured for 20C, since that's done from the
+driver, the framework thinks it's -INT_MAX, so the threshold doesn't get moved
+after the trigger and it just ends up triggering hundreds or thousands of times
+in a short span of time, hence why I say it's an interrupt storm.
+
+> 
+> > Prevent that interrupt storm by not enabling the low offset interrupt if
+> > the low threshold is the minimum one.
+> 
+> The case where the high threshold is the INT_MAX should be handled too. The
+> system may have configured a thermal zone without critical trip points, so
+> setting the next upper threshold will program the register with INT_MAX. I
+> guess it is an undefined behavior in this case, right ?
+
+Ah, yes, I don't think I've tested that before... I'll test it and send a fix if
+needed.
 
 Thanks,
 Nícolas
