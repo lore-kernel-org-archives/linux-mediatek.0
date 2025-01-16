@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF8FC02183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 13:46:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063E1C02183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 14:28:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=doori9Bvbmf0yh+rfadTHWNziYl0BNfQpS5Q5pkaIIU=; b=ueML7CyL6AlWYbyCARE5+8EWTQ
-	4H/Nkq/6hOmT0OCm0LSflwis9xKi7IQfqHzg6qbcrJdAw1EGU5lI5h5XiVrs0sqH3bs1ivEqqCflE
-	cZHw8qW1+EfyHUaLxffV34VNtQeVzm4e7xWbM1CXrvQevYm2Qyjnbc8CIgv7LYFUeEvaYt36tu3cH
-	H0DS4alTLfB45mZkbsCBo+S4ZRKkNpERKa6jge0jZOxP35aDvDdAl+ntv5aR9Hxq6tC+QJcGjAUo4
-	fcFzURdVD0m2/lPlz4y7noWotb5yfQDT+/ym6iWiMYFwaKa4l9FvhP5MLrdRRrz4TaDfTsfdsCUoU
-	tkjVybxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n/WCT9lwTa8x1CopY7g0YZN5VHpvZeEAjRWs1DEYF94=; b=1F6/ojTA0pqnAu
+	PBLX7IAkQNJwSUQZnpSOnGbpplq4jRLCpqzNoW/3ERTj/I96fhciZE9OmdfOSiBJ5aeQ85TQu5Fxy
+	/xADVvQvdRPBhhyN3xoe1YbcSkaDT0r5DIbM0QbUateXIhOHgNv2lzlcDpom8iLY1ye3n0qogTrlM
+	EVm31oR+J4Ag54cPtmQpwOpP3unK/RH8MW69uL7bvxtZlu1w4M6zdzqJoZ3dW0xC9wYa1FbmxEUEP
+	oQrWsLAEenieHBuQRuKZjF2iVQ1FX3JWSmyhsWSyl8j5t3kN4SRXX/3x1DeHaTIyfwN5LVlVW/Lwc
+	FaXVw1agcOWCGB1X9hQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQCb-0000000F2XK-3TKN;
-	Thu, 16 Jan 2025 13:46:29 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tYQqo-0000000FAFz-0dcw;
+	Thu, 16 Jan 2025 14:28:02 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQBL-0000000F2SI-2cb0;
-	Thu, 16 Jan 2025 13:45:12 +0000
+	id 1tYQpW-0000000F9l6-0Fqj;
+	Thu, 16 Jan 2025 14:26:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737035109;
-	bh=D07iJIxZgL4Eb284YnQCEptX34FdVpYWwiTTYDL2kgY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DPMmvO8LK5AIvAlhPQDFwCLUTfmnYXxtWxtXl6syBmjm0129bgMzy+GJzfd4Ohru4
-	 mqdhf+8jbskUx98gV1rT07I1ZLh18oClUUvRw7AxEaezZF7B2T1hwExSghjXreXrZz
-	 wZEtIvorszfExkenmmsJxfIaOLj6P75w3s8VaxUO+8qhkROQ3SAfkJfLBZjSTrV7Y+
-	 K1mEo0jps2+hjioZp9uhb9I7Zm1uxegrLNWbWCQgJ24/7a30HeqL/+i+PO0LmmV+Up
-	 xhcPSqEk9K8JGZKt/1NCHjZ5D5xEm+efrmf1aHY3o7uwGflY3OLMwf5shZtA6ySC4W
-	 W08BLW+aWPU6A==
-Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1001])
+	s=mail; t=1737037599;
+	bh=UeFDYPRgZQPn6MStyNT1pEJTaMhfDKZvOpT5RqokfRw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=jVateGvYT/rBze/xM8rXFqBD5jEYlAz4A9HtU1Aw5XXQVbbvUCPLpRP8mu1QG7Rn2
+	 xObE/Bx+A6aojDzhpXE+KpXPw4c7fgwjkVH+IklCX2XJkj2e6EdiCe4LjW8T9yErzF
+	 kyUbN0ZUvDnSWlHWl7oMDJnN271HW3YQaSBdKOwidV8lZ8KfW2GlJRUNV/M4b4zJqg
+	 dPt/rcx4ZZ8nmTMA1mqYTw8l07x80UZVWv/Tato+oOaNu/T3S4QZbHTSS/6/QdQq9R
+	 KcyeeXnWCdeEdR4wU4LmXbqEuyEHQIaHRteNIFkjYrelvaqhaNyUJAdmnw0ddew1OD
+	 409rCe8jo4V9g==
+Received: from fedora.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E24A917E0E48;
-	Thu, 16 Jan 2025 14:45:03 +0100 (CET)
-Date: Thu, 16 Jan 2025 10:45:01 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Balsam CHIHI <bchihi@baylibre.com>, kernel@collabora.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH RESEND v2 3/5] thermal/drivers/mediatek/lvts: Disable low
- offset IRQ for minimum threshold
-Message-ID: <22c4fc5a-2634-4e14-a659-1a2a6329c7b3@notapiano>
-References: <20250113-mt8192-lvts-filtered-suspend-fix-v2-0-07a25200c7c6@collabora.com>
- <20250113-mt8192-lvts-filtered-suspend-fix-v2-3-07a25200c7c6@collabora.com>
- <90dd8d93-5653-47f1-8435-f03502e4c0cc@linaro.org>
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1E8F17E0E48;
+	Thu, 16 Jan 2025 15:26:38 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH 0/3] Add Mali GPU support for Mediatek MT8370 SoC
+Date: Thu, 16 Jan 2025 15:25:56 +0100
+Message-Id: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <90dd8d93-5653-47f1-8435-f03502e4c0cc@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAPQWiWcC/02O2wrCMBBEf6XsswtJ02xrf0VEsummBuzFphah+
+ O8G9cHHMzAzZ4ckS5QEbbHDIltMcRoz6EMB/urGXjB2maFUpVVaWxzWxtQKZXR8E+znBxqmYI8
+ 2ODId5N68SIjPz+bp/OVF7o88vX5DYJcE/TQMcW0LU2tDHKw3jgIxNdTVVah0vnFUKWLxxDV7+
+ Fdqi5+QwW5Nl59UL2Oc0GqFxpLiRmnF7thuJZxfrzepNwwZ6wAAAA==
+X-Change-ID: 20250115-mt8370-enable-gpu-3b6f595fa63d
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Steven Price <steven.price@arm.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1737037598; l=2043;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=UeFDYPRgZQPn6MStyNT1pEJTaMhfDKZvOpT5RqokfRw=;
+ b=+A3e6YxoGAsOpzEcB833b1garE16GHGcwIWmz2aTxLJds3c+EMOw1msKeJj1Bc7qYvpJH86/3
+ dqZ+q00c9auAkdL2CE67hH8vrP/Mnt3DET6p5lMrIrlp7dFzWxz3vva
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_054511_844866_74A825C0 
-X-CRM114-Status: GOOD (  19.77  )
+X-CRM114-CacheID: sfid-20250116_062642_299026_608E1ED5 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +93,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 14, 2025 at 07:30:31PM +0100, Daniel Lezcano wrote:
-> On 13/01/2025 14:27, Nícolas F. R. A. Prado wrote:
-> > In order to get working interrupts, a low offset value needs to be
-> > configured. The minimum value for it is 20 Celsius, which is what is
-> > configured when there's no lower thermal trip (ie the thermal core
-> > passes -INT_MAX as low trip temperature). However, when the temperature
-> > gets that low and fluctuates around that value it causes an interrupt
-> > storm.
-> 
-> Is it really about an irq storm or about having a temperature threshold set
-> close to the ambiant temperature. So leading to unnecessary wakeups as there
-> is need for mitigation ?
+This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
+dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
+and to the mt8370.dtsi include file.
 
-Yes, that's what I mean. The irq threshold gets configured to 20C, so whenever
-the temperature drops below that value, the IRQ gets triggered. But this usually
-does not happen just once, because from the thermal frameworks' perspective,
-there's no thermal threshold configured for 20C, since that's done from the
-driver, the framework thinks it's -INT_MAX, so the threshold doesn't get moved
-after the trigger and it just ends up triggering hundreds or thousands of times
-in a short span of time, hence why I say it's an interrupt storm.
+I've testing this patchset on a Mediatek Genio 510 EVK board,
+with a kernel based on linux-next (tag: next-20250113) plus [1] patchset.
 
-> 
-> > Prevent that interrupt storm by not enabling the low offset interrupt if
-> > the low threshold is the minimum one.
-> 
-> The case where the high threshold is the INT_MAX should be handled too. The
-> system may have configured a thermal zone without critical trip points, so
-> setting the next upper threshold will program the register with INT_MAX. I
-> guess it is an undefined behavior in this case, right ?
+The panfrost driver probed with the following messages:
+```
+panfrost 13000000.gpu: clock rate = 390000000
+panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
+panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
+  80000400
+panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
+  Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
+panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
+[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
+```
 
-Ah, yes, I don't think I've tested that before... I'll test it and send a fix if
-needed.
+[1] https://lore.kernel.org/linux-mediatek/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com/
 
-Thanks,
-Nícolas
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Louis-Alexis Eyraud (3):
+      dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
+      drm/panfrost: Add support for Mali on the MT8370 SoC
+      arm64: dts: mediatek: mt8370: Enable gpu support
+
+ Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml |  5 ++++-
+ arch/arm64/boot/dts/mediatek/mt8370.dtsi                    |  9 +++++++++
+ drivers/gpu/drm/panfrost/panfrost_drv.c                     | 10 ++++++++++
+ 3 files changed, 23 insertions(+), 1 deletion(-)
+---
+base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
+change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
+prerequisite-change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9:v2
+prerequisite-patch-id: af53ae39240467340ac4c9cdbc8fdd949c5457a2
+prerequisite-patch-id: ca07485956f81c1a40029b48d2b4bcf00d74fc13
+prerequisite-patch-id: c34d9870b2c61d87ad8a6facba13d8970682e679
+prerequisite-patch-id: 48784acdcdd8b886fdec9f21c9cb88abb327e2e1
+
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
