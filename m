@@ -4,112 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7770DC02180
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 12:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBEAC02180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 13:20:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QiSxusJpOnQ/jeMIugTd0yDgezKDfo8uVDclk9o6fco=; b=Qw1rAV+fXDd5j5
-	TsilzZLWC0RoLEpPlBu4IMVtbcCKAKMyFBS4fW/gWnzEUf6uOuiB/hXaA9u1FiUwQ1MdgeVbWko/D
-	OtL/NF7ef0alraVHMCQU8GC+QIL+X87Jx6zcGiXc7JueWRRYBbW4XRiTK50ptjz0JEr9e8cLs1S65
-	jiINqO+4Ie5A0BsLZqNNTPxDkQbAKbD3V7c3FG4czNvjOOjW85WeOgfFWodHueqb5IZ2Ht34qbv6Q
-	EeIF4ExXIJvYn+nehOQ7EgKP9WSmkDTypsmzkPgDkAC/ZX6pH5954UEMjLgFF/RtJl0t/6sqjUc56
-	E3McrlRcCAMnDVPWGQPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pIzT8KyshMGKtJ2NX697FhOxTMTsAMC5Jw9+6iCGtKk=; b=WCS7QfSq7PlIexJ7hQT98SYtUo
+	PAtZsQs7zVSHVKh8BFKBgsOJqePRcbdw5ixdiPwcWjj0kXyilhEF/+hKxOLROH6PUrMgNwgWLM927
+	PodF6WNSbSB/f3/Nvli0fc+W++hXVoTXfZKn0ACNWYBsgI/rn9ULhO7We28fhlegKJvIWk600BHNU
+	CRZWUmYQFSkADHiGV9TxqOx7yjV7WkGZkhiLmj066DgpBpPZIArH3UBcEi3Y48Y3WiGhnFYAuOkfK
+	JFl35k+IThjNeQiE7EkK/iED8K/V3PUZTQMDzUv3mMq0P4JPYLN+IyE7bNlVK81urZQnAZHVms9O+
+	W5Qh9i6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYPQk-0000000EwJ0-0xxR;
-	Thu, 16 Jan 2025 12:57:02 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tYPnQ-0000000EzuC-48sn;
+	Thu, 16 Jan 2025 13:20:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYPOv-0000000Ew5d-1Za8;
-	Thu, 16 Jan 2025 12:55:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 82E16A41995;
-	Thu, 16 Jan 2025 12:53:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 616E7C4CED6;
-	Thu, 16 Jan 2025 12:55:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737032108;
-	bh=SDsYWVDFHCtqpRTEcvKkftdq9j3Hd9+XjId4g7OHfUM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bf+f8Sec3xyMf+ALBGpV/fbi8Ii2Ar9XyUxBuKmJ78D8Lr5zLUPqxb50l7v8AtMBb
-	 KdovV+etbpcTM/GHpYSdVF/QM6UuFCjOExrZNU/krS7ndK+RCDAlk1ayJcwFnrHr5v
-	 ClhboGABvq6Va7YFo4FQszvti1pNNSiLZXyXxWQUpOokc+1uebEc4vI4k019Kho8NI
-	 9D1OGI4MKWyLCmWl5yOTQu12Gb4o/zpnqDrRx158I3nibr5NDnXPf5qgDd/hLDGP+F
-	 FUMHlMeEQgeTJXhQcLXABblsczT7kCLC1ALOkwFBHDo9BwF8FMEEP8D8PGypme9P4a
-	 7iaa8Ung0gN1Q==
-Message-ID: <fa77f4e0-aa5c-4ac6-8223-29b20374dd01@kernel.org>
-Date: Thu, 16 Jan 2025 13:55:00 +0100
+	id 1tYPmA-0000000Eznf-1Qra;
+	Thu, 16 Jan 2025 13:19:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1737033547;
+	bh=BFxVXJJabloKs7r9Ax8zWdGqbl8ktI2pQICt6LoVVE8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L/YsZg8aHcfPf2SBOAGkuZNb0Rd0AgPQTwR+GEt9a/NNVVFH46/KHDX4A/y1i6rGj
+	 QXg7AXFiMperBDsoFI8MxX0p+aI2hv7sMbroQzdreXz/FbBUWhdUTfgKmpOwiPiyLK
+	 tRDw3He6SieKgxXPbamDhWOMrppT6aeF2J9LDjccYLYUAUP+IB97Dl4HtpgWYF4s7o
+	 ZjO0cpn6TVnvRKmutLy22LLM8756cAfgyJJXgLgak5CQSkMalSZ/g+sfTflqqDn4bv
+	 TGx1s1Ue2kA0i5aM9I7lCdAq2awESlrYMnYPMU1sAxOxm8r6EakllcOwDZlnCurUFW
+	 AaUtoOt1ofQug==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1001])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 142D517E0E9E;
+	Thu, 16 Jan 2025 14:19:00 +0100 (CET)
+Date: Thu, 16 Jan 2025 10:18:54 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Balsam CHIHI <bchihi@baylibre.com>, kernel@collabora.com,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Hsin-Te Yuan <yuanhsinte@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH RESEND v2 1/5] thermal/drivers/mediatek/lvts: Disable
+ monitor mode during suspend
+Message-ID: <554102c6-d597-4dc8-b760-3e2b9078e471@notapiano>
+References: <20250113-mt8192-lvts-filtered-suspend-fix-v2-0-07a25200c7c6@collabora.com>
+ <20250113-mt8192-lvts-filtered-suspend-fix-v2-1-07a25200c7c6@collabora.com>
+ <20828ba5-ecb5-46a4-8be3-9119d93c383a@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/3] net: phy: mediatek: Add token ring access
- helper functions in mtk-phy-lib
-To: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
- Qingfang Deng <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Simon Horman <horms@kernel.org>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250116012159.3816135-1-SkyLake.Huang@mediatek.com>
- <20250116012159.3816135-2-SkyLake.Huang@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250116012159.3816135-2-SkyLake.Huang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20828ba5-ecb5-46a4-8be3-9119d93c383a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_045509_551482_AC44EFE6 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20250116_051910_538261_CD29D0EA 
+X-CRM114-Status: GOOD (  31.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,30 +85,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "paul-pl.chen" <paul-pl.chen@mediatek.com>, Steven Liu <Steven.Liu@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/01/2025 02:21, Sky Huang wrote:
-> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+On Tue, Jan 14, 2025 at 10:23:42AM +0100, Daniel Lezcano wrote:
 > 
-> This patch adds TR(token ring) manipulations and adds correct
-> macro names for those magic numbers. TR is a way to access
-> proprietary registers on page 52b5. Use these helper functions
-> so we can see which fields we're going to modify/set/clear.
+> Hi Nicolas,
 > 
-> This patch doesn't really change registers' settings but just
-> enhances readability and maintainability.
+> On 13/01/2025 14:27, Nícolas F. R. A. Prado wrote:
+> > When configured in filtered mode, the LVTS thermal controller will
+> > monitor the temperature from the sensors and trigger an interrupt once a
+> > thermal threshold is crossed.
+> > 
+> > Currently this is true even during suspend and resume. The problem with
+> > that is that when enabling the internal clock of the LVTS controller in
+> > lvts_ctrl_set_enable() during resume, the temperature reading can glitch
+> > and appear much higher than the real one, resulting in a spurious
+> > interrupt getting generated.
+> > 
+> > Disable the temperature monitoring and give some time for the signals to
+> > stabilize during suspend in order to prevent such spurious interrupts.
+> > 
+> > Cc: stable@vger.kernel.org
+> > Reported-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > Closes: https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
+> > Fixes: 8137bb90600d ("thermal/drivers/mediatek/lvts_thermal: Add suspend and resume")
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >   drivers/thermal/mediatek/lvts_thermal.c | 36 +++++++++++++++++++++++++++++++--
+> >   1 file changed, 34 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> > index 07f7f3b7a2fb569cfc300dc2126ea426e161adff..a1a438ebad33c1fff8ca9781e12ef9e278eef785 100644
+> > --- a/drivers/thermal/mediatek/lvts_thermal.c
+> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> > @@ -860,6 +860,32 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+> >   	return 0;
+> >   }
+> > +static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl, bool enable)
+> > +{
+> > +	/*
+> > +	 * Bitmaps to enable each sensor on filtered mode in the MONCTL0
+> > +	 * register.
+> > +	 */
+> > +	static const u8 sensor_filt_bitmap[] = { BIT(0), BIT(1), BIT(2), BIT(3) };
+> > +	u32 sensor_map = 0;
+> > +	int i;
+> > +
+> > +	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
+> > +		return;
+> > +
+> > +	if (enable) {
+> > +		lvts_for_each_valid_sensor(i, lvts_ctrl)
+> > +			sensor_map |= sensor_filt_bitmap[i];
+> > +	}
+> > +
+> > +	/*
+> > +	 * Bits:
+> > +	 *      9: Single point access flow
+> > +	 *    0-3: Enable sensing point 0-3
+> > +	 */
+> > +	writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
+> > +}
+> > +
+> >   /*
+> >    * At this point the configuration register is the only place in the
+> >    * driver where we write multiple values. Per hardware constraint,
+> > @@ -1381,8 +1407,11 @@ static int lvts_suspend(struct device *dev)
+> >   	lvts_td = dev_get_drvdata(dev);
+> > -	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
+> > +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
+> > +		lvts_ctrl_monitor_enable(dev, &lvts_td->lvts_ctrl[i], false);
+> > +		usleep_range(100, 200);
 > 
-> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
-Few days ago I complained the Mediatek too frequent uses login as full
-name. Several different Mediatek contributors repeat the same mistake,
-so I asked to fix this internally with some sort of
-guideline/checklist/internal reviews.
+> From where this delay is coming from ?
 
-Other patches here look OK, so there is some progress, but not complete
-- please fix here as well.
+That's empirical. I tested several times doing system suspend and resume on the
+machines hooked to our lab and that was the minimum delay I could find that
+still never resulted in the spurious readings.
 
-Best regards,
-Krzysztof
+Unfortunately the technical documentation I have access to never even mentioned
+that this issue could arise, let alone what the timing constraints were, so this
+had to be figured out empirically.
+
+Thanks,
+Nícolas
 
