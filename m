@@ -4,90 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8768AC02180
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 03:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADD9E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 03:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7cuWckv2mg3iIR5MCaEBEb/4QCrqfrfbJmqZ9RuoMko=; b=VUn/1D1atmGSUM2K6xdHCyszr9
-	iHvPVTwASdLOO/k0DKokt52BlThoibhZylXHm6J9iYtGLBfUTTXcOML38wBhoSIxAQItclh+1cB0G
-	ENWqpsJtnutQgtwZ3ldfOsgDnxKTG+rEQoC/GKaJehlYFANuU7dp3ywDqyJ4uqXE8he/MJCR+/h7b
-	TqjjBAGkqf6UBExmiT/9H6g2+jk/SRaD9WFBFQ4d5/vbNuNJMKvexNHzz7fcNM7Sz4rMDvcAzlDXO
-	HDGIE5FrKn9joz5M4OLfHudPFPP6w697mxiE1U7Ra0oVXJGC0Oydp9bhHpIenj7+fBEut+onyn7wa
-	72mVtRrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EHN8VwPtCZBq9Z4WoEOrhUz545+6IZdCnpT0dOgO/wY=; b=e7LcgBGMN2mVONvICpE8weT/NX
+	wuHuimnHp7Ebf1AEfvoCDf3paQ6pfElR+/RidyJ/UgdSC87XPVJhypNgwFp+xbUsfjPnJJlmadnoe
+	+XhA5UgtS4XdCwGLuA5FIKVKPA1I0KJZ3ncNhEjRfDC/eOS2wHTwKweYckZdx1wIj+z1tXfJy1lEr
+	fH8QRuu8rjojwGawl1OfU3BwojrQvfZdSMUszvP5AkPkv/3OUIhc4f30+QJpsESGfjd1WqEDl7aEY
+	C9OWa1gkS/H64fOrpHs6eHtkpkjgksh6MDRHkSDH4Iv2PM3//l111nbdTFQ0KwtRUKKIIfd5igyeD
+	Fxa9uFNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYGDG-0000000DhIf-2K9n;
-	Thu, 16 Jan 2025 03:06:30 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1tYGhI-0000000Dk42-39bI;
+	Thu, 16 Jan 2025 03:37:32 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYGBz-0000000Dh3N-357R
+	id 1tYGhG-0000000Dk2s-0blt
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jan 2025 03:05:13 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2163affd184so43495ad.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 19:05:10 -0800 (PST)
+	Thu, 16 Jan 2025 03:37:31 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-215770613dbso4663845ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 19:37:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1736996710; x=1737601510; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=7cuWckv2mg3iIR5MCaEBEb/4QCrqfrfbJmqZ9RuoMko=;
-        b=Gb485FGif74mBzCnrSSbdC6jKxKLVzjmXc+4NF6YRSKwABhkPjiyqOYBjxaiy/WE4g
-         YmG/NQy2/9GEZQdIB0epj1nhNPmodg9ud3nHcR6WSJhDXR7FsA2QORJJbvGpb9DKaUba
-         c/kF8JBI26wSdUzj30jnUJbzVVHjRXEftAO/gxkIY6NbzTUbO5AnVboEqILtQE9bV2Mb
-         YTebA6R30iqubJay0x66IzE93E2h3pZcPCbOJEAdQGr4/a7NlXHxyk/sW3hzrGXVl3Ek
-         kWv3EIiIOZLJ5ZTV8MBDxN4qYf1GrEwpBcg+nKP+kN7VUJ1zDOqA5IjQkp2FgBg6KsgU
-         VzsA==
+        d=chromium.org; s=google; t=1736998649; x=1737603449; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=EHN8VwPtCZBq9Z4WoEOrhUz545+6IZdCnpT0dOgO/wY=;
+        b=gfrQWm7KsIzAgFihjFzOhtFo0VbRaPKKoEeWtM2DFP/Y0LPjXB81ME0ojqUw60aGbJ
+         0KgjF25RiZTtSNjMsny17ZJQ4vT6EvsowS8+MmlHl+Or+7vrIDXRFD4kI9aHE7DPhkGz
+         PtsRt/NV/ZWCzNNfmEn/dBWeS+5L+w4KM3Xx8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736996710; x=1737601510;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7cuWckv2mg3iIR5MCaEBEb/4QCrqfrfbJmqZ9RuoMko=;
-        b=WxhJHngrZetvc0tfOpJS3NSeDEO9AlOaTUdBRfj4c3RMmnoaOE8WES2i0cvOKjpObq
-         QFUc20ZHjmA1SqpacCz1EDWg+KSr8mjjrc+Xwzck5Z/SS4PAPxXYV93p6qRyL0puSgwU
-         zmuU2xMcC1jfOiagvf7ENHusvhCogtoQKOzQrYXhPPIWFJiCQsF4nHRaw8QBMhKaNa4Y
-         iqBjf3lbizF+hTmmlgJQsRX1u9oF/Jgwf5AEq30gT7N1ZhSnKoy4hQSj2/ukSoqHa8M1
-         Ey7ZGryuJy8CLP/iBCGY2hLXeSIW9vH9DYezcnQgM6HCNngqjyEEQQglOy0lC1IVCpoc
-         zL4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWZ8+JqWr+ICCPpkeVwZDuOzVgeDann86Lo0Do50/+2KsgLWvY9kPyBBXTRNYYor4sbqEHGawzcPTeQGn/+lA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/rnNGCl6JKTWmjQrfcjT99vsmp2X+megwhOFFGBJSdqZiiEbf
-	jTSWDpT3YR+BtrlMwqaqzaIAVSKupx/xYGfOVCqzN7fdx21OlGPy7vIzVx7k/w==
-X-Gm-Gg: ASbGncuZSpH2bKWzubVqxe9z+nEvgW2sPsHhqgPm/3EtVX1CMsPba3ksUGKOcvjdwwL
-	AijEAMeYIKXcK5noNtf49qY73yStLhxSD9eISfsHeZIZ0kx8vERVQeBoXooMPIRDBS4bPusPrHe
-	k23oa6l95sHl6rtxQJxKeeMbRPF5VSFri4KrJT65U4b1tJ/bEwY89MGWWIjGpjYEaMXyJZnZlGW
-	y+LgaUzh7ykaDEpkhS/TEoVM5At7z4jRlgjW3kt4s4ZxRG44t1TLoJofcfrFMqCaVAGTXZjBhi+
-	5UpOHKviO9a8
-X-Google-Smtp-Source: AGHT+IGgvey12XcQ8iP4n+eaUVK+cmvSLWMH2UIplRse6X8rSW8rrU74w2Bbqndq54XuqjUDHEawSg==
-X-Received: by 2002:a17:902:f785:b0:215:69a3:1c94 with SMTP id d9443c01a7336-21c12cfe139mr1268815ad.28.1736996710051;
-        Wed, 15 Jan 2025 19:05:10 -0800 (PST)
-Received: from google.com (1.243.198.35.bc.googleusercontent.com. [35.198.243.1])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f72c151cbfsm2135397a91.6.2025.01.15.19.05.06
+        d=1e100.net; s=20230601; t=1736998649; x=1737603449;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EHN8VwPtCZBq9Z4WoEOrhUz545+6IZdCnpT0dOgO/wY=;
+        b=G/Oe3JNV0yjuNOTGqpGVdFf2xI4xu1OftR3gQavJNaXpldV845W7AqcSiTsR4zhLpQ
+         iDmjR6pA1CASQHyNF7PrEq12s0VJ3JGjjBP899Ay/tyKkSUgnND/ibVdFWSQ8pzKGh4P
+         EmUuApWlUBmeILGqJvwlz8GZwX42YsT4Ofr+eww0CKUyrB9sSbuLBQ5Kn/bXzkBn1l2z
+         im06rLIYDBpis8ulsy8P9lnYbFKjDuCc8T71/48z8WN+xMT3ENqQ7M6souo6oRXUeSTD
+         lZGqd5eS7/bvpioeNsS9q1iczvROqdDYvUO8wwgBzPmItr2p5L07arVW7hYPkMfZsN4F
+         0Urg==
+X-Forwarded-Encrypted: i=1; AJvYcCVCtQzn3uu7hr9S7eZip6Tfy3uHifReEmM+53wPzB0QskoVt6jNio0FFznwJn+XHNvw/y9QpN+5O6KcI0y7wg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzTp1UQpaCGC6Ug3APJZ/BUPZBB3s2dekpCYHG+BsfVbcERwpcU
+	dPtNq6td3NahJw64WfPqwU7agBG2gng07gQsfiplEDtm2DXOh8Dd788Uw7Iudw==
+X-Gm-Gg: ASbGncuJEV7AYlnHH8dsxevJ+0t6AiL743cZ9N+bzyAMlxxkq8ikAkwXgN8VZBL4Hy8
+	IiY3dwXWxAXoh39iAJRTFVkPUgBndPgu10XpSDJFc0MuZ946f7JW+wJQsbdABujcp4gvwd8qMMI
+	3YbDxFJSNNvEdF81YpUjiV3yYyySD3uQAUL0auG1j61Jf29Egzr76shzbjE7qwtGhX3DeYDnAxa
+	qnc2fl31zCbqxUSZPlZpYZ90tmFTLvuQKqqK7RP884VByLCXqKEw8XHuCmasz6ej1xr3snsr/MP
+X-Google-Smtp-Source: AGHT+IGPHIlyquGny12YcL75NXc3XgLlu5eAhXbesmptiMTKimMfUbrOU/zhdc5d6pmMnPuAyOKk6g==
+X-Received: by 2002:a17:902:c951:b0:216:5b64:90f6 with SMTP id d9443c01a7336-21a83fd28e4mr487517675ad.45.1736998649039;
+        Wed, 15 Jan 2025 19:37:29 -0800 (PST)
+Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:534a:ac09:3752:7758])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f2339dasm87714485ad.177.2025.01.15.19.37.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jan 2025 19:05:09 -0800 (PST)
-Date: Thu, 16 Jan 2025 03:05:00 +0000
-From: Pranjal Shrivastava <praan@google.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Joerg Roedel <joro@8bytes.org>, Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+        Wed, 15 Jan 2025 19:37:28 -0800 (PST)
+From: Douglas Anderson <dianders@chromium.org>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: Douglas Anderson <dianders@chromium.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] iommu: Use str_enable_disable-like helpers
-Message-ID: <Z4h3XHrzB53IAvys@google.com>
-References: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
+	Chris Lu <chris.lu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] Bluetooth: btusb: mediatek: Add locks for usb_driver_claim_interface()
+Date: Wed, 15 Jan 2025 19:36:36 -0800
+Message-ID: <20250115193636.1.If8b655b5c6877bd9a1136ba0f1cd61cc6a4b6e9c@changeid>
+X-Mailer: git-send-email 2.48.0.rc2.279.g1de40edade-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_190511_792464_55EA17DF 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20250115_193730_213127_8BE3A3A0 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,76 +97,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 14, 2025 at 08:26:42PM +0100, Krzysztof Kozlowski wrote:
-> Replace ternary (condition ? "enable" : "disable") syntax with helpers
-> from string_choices.h because:
-> 1. Simple function call with one argument is easier to read.  Ternary
->    operator has three arguments and with wrapping might lead to quite
->    long code.
-> 2. Is slightly shorter thus also easier to read.
-> 3. It brings uniformity in the text - same string.
-> 4. Allows deduping by the linker, which results in a smaller binary
->    file.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 3 ++-
->  drivers/iommu/arm/arm-smmu/arm-smmu.c       | 3 ++-
->  drivers/iommu/mtk_iommu.c                   | 9 +++++----
->  drivers/iommu/mtk_iommu_v1.c                | 3 ++-
->  drivers/iommu/rockchip-iommu.c              | 3 ++-
->  5 files changed, 13 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> index 0e4cbb2c64d7..358072b4e293 100644
-> --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> @@ -26,6 +26,7 @@
->  #include <linux/pci.h>
->  #include <linux/pci-ats.h>
->  #include <linux/platform_device.h>
-> +#include <linux/string_choices.h>
+The documentation for usb_driver_claim_interface() says that "the
+device lock" is needed when the function is called from places other
+than probe(). This appears to be the lock for the USB interface
+device. The Mediatek btusb code gets called via this path:
 
-JFYI, this include was merged in the arm/smmu/updates branch recently,
-hence it shouldn't cause any trouble while merging.
+  Workqueue: hci0 hci_power_on [bluetooth]
+  Call trace:
+   usb_driver_claim_interface
+   btusb_mtk_claim_iso_intf
+   btusb_mtk_setup
+   hci_dev_open_sync
+   hci_power_on
+   process_scheduled_works
+   worker_thread
+   kthread
 
->  #include <kunit/visibility.h>
->  #include <uapi/linux/iommufd.h>
->  
-> @@ -4321,7 +4322,7 @@ static int arm_smmu_device_hw_probe(struct arm_smmu_device *smmu)
->  	 */
->  	if (!!(reg & IDR0_COHACC) != coherent)
->  		dev_warn(smmu->dev, "IDR0.COHACC overridden by FW configuration (%s)\n",
-> -			 coherent ? "true" : "false");
-> +			 str_true_false(coherent));
->  
->  	switch (FIELD_GET(IDR0_STALL_MODEL, reg)) {
->  	case IDR0_STALL_MODEL_FORCE:
-> diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> index 79afc92e1d8b..de205a34ffc6 100644
-> --- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> +++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> @@ -34,6 +34,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/ratelimit.h>
->  #include <linux/slab.h>
-> +#include <linux/string_choices.h>
->  
->  #include <linux/fsl/mc.h>
->  
-> @@ -2106,7 +2107,7 @@ static void arm_smmu_rmr_install_bypass_smr(struct arm_smmu_device *smmu)
->  	}
->  
->  	dev_notice(smmu->dev, "\tpreserved %d boot mapping%s\n", cnt,
-> -		   cnt == 1 ? "" : "s");
-> +		   str_plural(cnt));
->  	iort_put_rmr_sids(dev_fwnode(smmu->dev), &rmr_list);
->  }
->  
+With the above call trace the device lock hasn't been claimed. Claim
+it.
 
-For the arm-smmu part.
-Acked-by: Pranjal Shrivastava <praan@google.com>
+Without this fix, we'd sometimes see the error "Failed to claim iso
+interface". Sometimes we'd even see worse errors, like a NULL pointer
+dereference (where `intf->dev.driver` was NULL) with a trace like:
 
-Thanks,
-Praan
+  Call trace:
+   usb_suspend_both
+   usb_runtime_suspend
+   __rpm_callback
+   rpm_suspend
+   pm_runtime_work
+   process_scheduled_works
+
+Both errors appear to be fixed with the proper locking.
+
+Fixes: ceac1cb0259d ("Bluetooth: btusb: mediatek: add ISO data transmission functions")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ drivers/bluetooth/btusb.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 279fe6c115fa..f69df515d668 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2638,8 +2638,15 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
+ 	struct btmtk_data *btmtk_data = hci_get_priv(data->hdev);
+ 	int err;
+ 
++	/*
++	 * The function usb_driver_claim_interface() is documented to need
++	 * locks held if it's not called from a probe routine. The code here
++	 * is called from the hci_power_on workqueue, so grab the lock.
++	 */
++	device_lock(&btmtk_data->isopkt_intf->dev);
+ 	err = usb_driver_claim_interface(&btusb_driver,
+ 					 btmtk_data->isopkt_intf, data);
++	device_unlock(&btmtk_data->isopkt_intf->dev);
+ 	if (err < 0) {
+ 		btmtk_data->isopkt_intf = NULL;
+ 		bt_dev_err(data->hdev, "Failed to claim iso interface");
+-- 
+2.48.0.rc2.279.g1de40edade-goog
+
 
