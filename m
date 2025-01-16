@@ -4,89 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6BDCE77188
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 04:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE10E77188
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 04:54:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AOWmyxksIGQ0wwOhQFWR2aE2r3LuQkCrmyY8eIZP3Dc=; b=xE0JwocCwQSHy9y/tKN1bTkiE/
-	wrFHS9YMr1MOOvSgTb5eU5dvpsiqGbP6Z5g0VokIF7vtdYn+ue959o5UAywRlO8NfimFLQS1ysFRw
-	MxvI9+1txG88aRR+3dqvROFgxhYaLOE+MtO/35NbNn3uwsyak7Pi2XDYM4FP9aT+tQQArDeMxInY3
-	ZDUY2WYmaWFOZ4b+fY56R8ups5wdWKGfDrjPEBjkBohBJ2dCQ/VHmGTtNdtwpxtcJ5GBaZ8UNYJ1s
-	EPvYMR0WpUggez3/CDi+doW3baiDgCC+aMbOVW88HVrXdBSqGBjmFX1rR/3GcX9ZAXXoC4RZp0z1P
-	P55VeJ7Q==;
+	bh=e4lTg0T9hFxSt/NfABOy8Ts2GGYfCa7L7ZN3BcykZak=; b=XKzBjudcAEYMhxuHdGOH1E3F7/
+	XGSHUTQg8W0PExEvhk7IvWLieScIT8uuxEXoeXzjsjk4o3UUhp72FjIa12/cuzkbdDJIp2qhdUI3U
+	8aiz0annY688WuwLBfvb8NJuzj0zdcF1bEC6D59DHb0ciRX+7++l2O3ulRIKUIsHy/4u9vT8/h1FX
+	X1lYBfVZ5ngj+SKmxvEXs0xAagNgXuw+DjM+I9ElDVu7LJY2Bqtfqw7bxhdjL2fIRqX/1BBji2Yqf
+	A30Ir5+jXYvUTC8Ym2tKss/QLGDSNXNTlCqirfYlA192vX6TRuRxPGDahypEhb3pSJVkzUjFl59rS
+	nvqU241Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYHrZ-0000000DpVH-3Jrb;
-	Thu, 16 Jan 2025 04:52:13 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1tYHtd-0000000Dpfb-3WGg;
+	Thu, 16 Jan 2025 04:54:21 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYHrX-0000000DpUO-0m9k
+	id 1tYHtb-0000000Dpe7-1awE
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jan 2025 04:52:12 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2165cb60719so7328405ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 20:52:11 -0800 (PST)
+	Thu, 16 Jan 2025 04:54:20 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-215770613dbso5207305ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 20:54:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pf-is-s-u-tokyo-ac-jp.20230601.gappssmtp.com; s=20230601; t=1737003130; x=1737607930; darn=lists.infradead.org;
+        d=pf-is-s-u-tokyo-ac-jp.20230601.gappssmtp.com; s=20230601; t=1737003259; x=1737608059; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AOWmyxksIGQ0wwOhQFWR2aE2r3LuQkCrmyY8eIZP3Dc=;
-        b=NeItmDZFlDmCCTgAqAwdyOF9CjmPnHJHUEH2ls9tYxpWdSVB5x5mxGVA9Bd71o217X
-         oUKLrimZjPxaFFcqtQulpAFV+EEophbi2V9s4Bahy3unxF+uGKQA8B/W/EREL173SFHd
-         4eoVFJXnRadxO1MRTU9lxpX91S6y006KxAel9aTUUIlEg/y+lQbe/fFrto15KSMUvSWY
-         4L7Zkku/ao2z/3huZVrNEmPy0Xyxap2nHDHU8XUucM6hDv+KKqFcq1cxHl/Wiyg2REGL
-         LyQPS5eaKSh/WOgfMhZqk2sB8TKyPz2C3BRhdem8WMx/2ilKgS97voWN+r1n8Pd4lSeQ
-         46sA==
+        bh=e4lTg0T9hFxSt/NfABOy8Ts2GGYfCa7L7ZN3BcykZak=;
+        b=aZbhMDHIBtw5gzHl49KpCAUtFM7bCmR7CsITIGMinrx0Lcge7UEj6mkLg9kHRRTL/3
+         ulMornvRkiT9MdS70a7b6iz6xliSvi2M455pBh/vxe3FsJEqKylLQpR63Q8FuTpkdg5H
+         xUaYqikFn+gusgwu3jj/+lUXeE7lNXUm80iGvMP2DYgxraN8a+7hvASRfyIscFmkskWv
+         +dIHYLDaDEKlG4CuxS9tmB875ddbHfWzHRDSbiBoOeH6KSyCU5FiUZdcBY340PflN5RG
+         +uYFfWfvdMdEMQZQgrOjg2uTURndzj7G+PXW2UFiwfNyEiMuoKat8TrVU+ef1u017wj1
+         H8tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737003130; x=1737607930;
+        d=1e100.net; s=20230601; t=1737003259; x=1737608059;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AOWmyxksIGQ0wwOhQFWR2aE2r3LuQkCrmyY8eIZP3Dc=;
-        b=ReSohCdrKR7FQmzVkZNnIhbWWc33dI2fdQjXGIb7/y0j0O/9rl5VwbGqPPTVFXK5XI
-         l3JFL0Uwkh1AvmwAMpi0C0zhOQxl/SK7+54aOPKH1LtWiYAlsmwOXFNp7zURsRoY187j
-         sKAODtBw2Qwq71dfIBccONlfAR/aePAucwfRjZYpU9L0eILplwCa8O+K1FgWjfAurdso
-         ++Wq1mNkO/W41/8Gf3OObIaKhnrWS6d4u8em+aRdFf9zvyyVJ3gpzmH6z3vcJT2Bdy0H
-         7cV7+MlUM0AzG0ICrMUSnc6HKA40kXVSW9u+UHnN4Br9twKRJFLIXZyQ9wLO0oyTmWAG
-         njZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXMijDRTFDZnCdHTejqr0ZnWq7jSyTmiPdfFrr3x3tlVuAM0k9jHCxxoeZh0Ezwz+efniUgD3i7ogSW46upXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUaCt4JdxnhgathDgd7ZejzDIT23NpMh7eFgArbCDHAoDlOums
-	nW/96Ovf130HWTHS7kYa4bpQi+8T3Iws7KErsxRS2CJbjDNYg1On7RmbAWpV5aA=
-X-Gm-Gg: ASbGncvP2roheeaOabv/W7D8ocgPSMs2yyBpXIFu5IXBCdtH2a5ZCINVMe0DvESNKfY
-	jQ0cqJ/maF/Hd2AegCHyW4X5mVfTDhbJwhc8mKFkZP4wzIIecDTThZW5aF1YlpKWbKtFqoTEc8v
-	vJ7bg/CiecRCs5BjHPO+6aSDY7yNhg6qa1a7BoUrSdSHjqmKoXOHcZIecnZvw8ZTOKab0Jgy6cA
-	o3Nmg2aexziTeoXIFrivZrhdtH44AHLnaEXYUZt1ig1T8OqvXTi1/yIpoMaHNjG0WseB5c=
-X-Google-Smtp-Source: AGHT+IFdClh55M2sh3NGGkRxPih7LhmCsVDPwH4rFFOPzqgi1cC12kO5lb+ICakqsGCKRHcDhEzKVA==
-X-Received: by 2002:a17:902:c411:b0:216:2bd7:1c49 with SMTP id d9443c01a7336-21a83f64abemr481766055ad.29.1737003130537;
-        Wed, 15 Jan 2025 20:52:10 -0800 (PST)
+        bh=e4lTg0T9hFxSt/NfABOy8Ts2GGYfCa7L7ZN3BcykZak=;
+        b=eOgCWq5wkB//81A4xJe/KMLTEVntbOV4p26xnYY0Suw5rZvn4tWxfvnp38I8naJejg
+         Pb+Mr0zSjkJ9rbp2qBEmczo85LxfoyDCR4hzKABj4dXm5BfuT3XuoBrBoyRVeRny3OCo
+         ouqOeHx70pEH4OCATyb9SHdN+oT4FYmDOpeXgHhsa+quCezy6TA+QDfWlOe0dIiYMYWR
+         VdvPuiytHXFx8L3WHxhsEj1stSjCNzFVopIe0vLqhHGGdvB5bFr3syhQJOJ6WMVVFrEh
+         eu76mWcfuEchAnn2otebzSZcBnWvB1HMAq/uiKR0CKrR2oMpMS2w/+V8IE69kLRnbSQW
+         H/jw==
+X-Forwarded-Encrypted: i=1; AJvYcCUhW3EPp7S01W+PcLHAb8Hry2YvxFwzyQXjsBcQpU2ikw9mvaFM7a08wyL4yLJOMWvKEJubtDvi3O/FhzoLEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzKTsP4n7MTyfdby6r0kbMw8vNSzN6La1vV0FPOmQFKiYiaz7bw
+	qKVHT+/bdF3vc4HX1sdAgQji0dnw6VN2kl0P0SdomlIYO/P7ivie0r98SuZGzyw=
+X-Gm-Gg: ASbGncvlcFZebr3YKeTZjR/kVlLTXbHWtwx/Jv1v3IUHeZIKrX9D8N9YCFGk3w6M6g4
+	Ts54zIJOdEE8cIghdKpiyh5LYD6RJa1+W64MPYGSLa1l3mcBKL14Q/7lZKF9ahieDlK6cvnbSuX
+	Xi5K4p0J7UOKEQDDCOVXKegpBlPYWEf6/eDYiARwth2kEppXPlWrwPMhJSzhz5KwS+tNu08EiCj
+	HkbBpkvMx8ewf/is4zMWSYVFw/Ck5mGHu5DNmw43Fnrvl9dS5lQ2GCeo5ftFNu0iGb9Hs0=
+X-Google-Smtp-Source: AGHT+IGrIee2UMyxZ1TjWISfaNWFFsUV/xQqvtny3X7oWRWZJQq5c4TtrQOvGnVq1jkMQDFxC4rirA==
+X-Received: by 2002:a05:6a21:a24b:b0:1d9:6c9c:75ea with SMTP id adf61e73a8af0-1e88d0df9efmr47653820637.5.1737003258724;
+        Wed, 15 Jan 2025 20:54:18 -0800 (PST)
 Received: from [157.82.204.145] ([157.82.204.145])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f13c92dsm89358035ad.97.2025.01.15.20.52.07
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a31857cfb2bsm10568472a12.26.2025.01.15.20.54.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Jan 2025 20:52:10 -0800 (PST)
-Message-ID: <05f32e33-8cf7-4c23-bbcd-aaed0c7aa02b@pf.is.s.u-tokyo.ac.jp>
-Date: Thu, 16 Jan 2025 13:52:06 +0900
+        Wed, 15 Jan 2025 20:54:18 -0800 (PST)
+Message-ID: <b864aba0-fb12-4409-ab82-a7c6ed09674a@pf.is.s.u-tokyo.ac.jp>
+Date: Thu, 16 Jan 2025 13:54:13 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] spmi: hisi-spmi-controller: Drop duplicated OF node
- assignment in spmi_controller_probe()
-To: mchehab+huawei@kernel.org, sboyd@kernel.org
-Cc: konradybcio@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, marijn.suijten@somainline.org,
- bjorn.andersson@oss.qualcomm.com, abel.vesa@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250116044725.2946205-1-joe@pf.is.s.u-tokyo.ac.jp>
+Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
+To: Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Konrad Dybcio <konradybcio@gmail.com>, Konrad Dybcio
+ <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>,
+ linux-kernel@vger.kernel.org,
+ Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>,
+ Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com>
+ <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org>
+ <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com>
+ <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org>
+ <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
+ <848b4dad4f38dc6545b97f7c5007e514.sboyd@kernel.org>
 Content-Language: en-US
 From: Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>
-In-Reply-To: <20250116044725.2946205-1-joe@pf.is.s.u-tokyo.ac.jp>
+In-Reply-To: <848b4dad4f38dc6545b97f7c5007e514.sboyd@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_205211_229327_2DA8BA13 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20250115_205419_424235_FC20354D 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,36 +113,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 1/16/25 13:47, Joe Hattori wrote:
-> spmi_controller_probe() assigns a parent device and an OF node to an
-> SPMI controller. However, the operations are not needed as they are
-> already assigned in spmi_controller_alloc(). Thus, remove the duplicated
-> assignments. An unnecessary OF node reference acquisition is also
-> dropped by this patch.
+On 1/16/25 08:16, Stephen Boyd wrote:
+> Quoting Konrad Dybcio (2025-01-14 12:37:20)
+>> On 1/14/25 19:30, Stephen Boyd wrote:
+>>>
+>>> Ok, I see that I was reading the already reverted state of the tree
+>>> where the 'ctrl->dev.of_node = node' assignment came back. So there's
+>>> nothing to do besides drop the patch in fixes, which I already did. We
+>>> can then apply this patch to drop the duplicate assignment as a cleanup
+>>> and to avoid a refcount bump on the of_node that isn't needed.
+>>>
+>>> ----8<---
+>>> diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-controller.c
+>>> index 3cafdf22c909..122140b97579 100644
+>>> --- a/drivers/spmi/hisi-spmi-controller.c
+>>> +++ b/drivers/spmi/hisi-spmi-controller.c
+>>> @@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_device *pdev)
+>>>    
+>>>        spin_lock_init(&spmi_controller->lock);
+>>>    
+>>> -     ctrl->dev.parent = pdev->dev.parent;
+>>> -     ctrl->dev.of_node = of_node_get(pdev->dev.of_node);
+>>> -
+>>>        /* Callbacks */
+>>>        ctrl->read_cmd = spmi_read_cmd;
+>>>        ctrl->write_cmd = spmi_write_cmd;
+>>
+>> That works for me, thank you
+>>
 > 
-> Signed-off-by: Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>est,
-> Suggested-by: Stephen Boyd <sboyd@kernel.org>
-> ---
->   drivers/spmi/hisi-spmi-controller.c | 3 ---
->   1 file changed, 3 deletions(-)
-> 
-> diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-controller.c
-> index 3cafdf22c909..122140b97579 100644
-> --- a/drivers/spmi/hisi-spmi-controller.c
-> +++ b/drivers/spmi/hisi-spmi-controller.c
-> @@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_device *pdev)
->   
->   	spin_lock_init(&spmi_controller->lock);
->   
-> -	ctrl->dev.parent = pdev->dev.parent;
-> -	ctrl->dev.of_node = of_node_get(pdev->dev.of_node);
-> -
->   	/* Callbacks */
->   	ctrl->read_cmd = spmi_read_cmd;
->   	ctrl->write_cmd = spmi_write_cmd;
+> Joe, care to send this patch to replace the one you sent previously?
 
-Kindly disregard this patch since I forgot to CC 
-linux-kernel@vger.kernel.org. The new patch can be found at
+Thank you for the fix and the suggestion. I just sent a patch removing 
+the three lines [1].
+
+[1]: 
 https://lore.kernel.org/all/20250116044725.2946205-1-joe@pf.is.s.u-tokyo.ac.jp/
 
 Best,
