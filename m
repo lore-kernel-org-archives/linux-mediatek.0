@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E24C02188
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 17:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D6AC02187
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 18:04:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=; b=Ygr8nG4sSjqSb6AyjVp3lBdXSn
-	GkMwecZJaliu4pqfx9o3mL1+dSYo9LmksTZQrETYZ2dQ/nQmdMksq+IDjgAyfnSWEw/ox+rPgJCQ4
-	ZmSfws1fRt8Zn+fxd0koFJq+P0z/4gRpZXOlSgldya+7TIA+HY6MCZ1QHyIhBE7aKzfXTfj1b75vY
-	nSWYG4qnFDSpHp9YuvwSrKL+osHWFtcam7i1+n3d+72Lf9OvKKvHVuQnbAICFnm2dXBtO+84aJnMC
-	Cxk36DMrtbDzKRUU6EqkD03B858EizcfolgVHhAXFRMbOdWPkthQBcqw5aHIMBxRAOND4Is5ZxDJ3
-	3e0cqcbg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T/ueRQzMQN/S+kB1tovVzhUu17r+Mocepb7YVFoxlgE=; b=LYqFfiaeY90x2mihXLP+cxmPk7
+	yD9Xlg5La6ujvZ6556LvaZgnN0aVfXtp20sYDynLRHJxuc6fKrhei8ArRdNcCnucJEg/sdnWjN3c6
+	Ek5BVns+AgVZkbED5tdIpJSXrfz9k6PZkebbLD8qMdUCDwhvXbBig8l2Zx00+ESJPKFtRG+uQDjga
+	znjGQ4nKkSd7JfpfrOqVdofzyWtT2ZfxwJ7kALyPZkMU6LZPDbKtmWza5xJHTwqCQ5GD+rot1RTv3
+	0y9//xC+YDs6ixLsLIPv2oTzD0TOc+lD3AQHaQruRZNnycd4XnmtmRCnGwpY31pNQzo0qOVSuovf6
+	FL+6KMXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYTtt-0000000FiDp-3JXO;
-	Thu, 16 Jan 2025 17:43:25 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1tYUEG-0000000Fkvf-3e9c;
+	Thu, 16 Jan 2025 18:04:28 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYTtq-0000000FiCa-3S0U
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jan 2025 17:43:24 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-21628b3fe7dso22978725ad.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jan 2025 09:43:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1737049402; x=1737654202; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=;
-        b=PAe4sUivB5LVKdBIRBb9grsil7ZbWSGlicuTors1a2idxqpQzhCs2NxU1BJlZsKEPA
-         9uFFftla+3XGuN/0dq2X0CTkp9ij+QrJh45VHuv1rszfdXYvjeO3VOprguQ176Fh5u/d
-         2hkM4g1aoaktdhMMMPak2JX3FJWpIPy2wVVuM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737049402; x=1737654202;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=;
-        b=pXqTkiYbbOsN5n2bqo2+TXIB3apHT/D7rQP4Qe35yQzMb0068Nh0Dob58K84AOC6wO
-         pvh9cn8R+CtMw7urSqzr6ao5Qr1PsNjXnC70fEeVAZyjdw74Hc40XpRKmqzAKqPVMfbT
-         aBJiim0R+Pu9YFyR7C+z4iBYQMHJmyZsvUqwfRb9qJ58gA6aZ1RE55IDtwTSxvXsMkR6
-         i4N7C7LGH6ayW0FKPI6UbLtTmCjjyAoCj/r4a+ZZJUrjArtA9zLuyOsrsEiBS7D++mSj
-         V5zd3qlawiCO7njk7VSYexdyia8uHZHdnWJncva+R/K/U2QyqOSROXQ2r1O3K7ZJBqI1
-         cikQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUPSVnrlSpueYpxzfLQvE05LgAwm3cYxm/CTn2k6jccdKyJmkl8ll6/XAkKAt1xm2rb5huDVS90+gBc7KgnKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2WoPrAY8QXLc9mDNoXkYrBQbMEG/LN/0wSf7aFnePFxoDk7+x
-	EC9C6kqKIKmm5ctV/gYwjbEffm02J8lbgl9PiQJ0nlX7FUOFTn8MYscfqpc1qA==
-X-Gm-Gg: ASbGnctDyiQs5LE8bmBMbz++ignLWeXY/Gbs/IuHzftGYdjI95K4PDlPzLJXXIV97US
-	VAcgYJQzaoOv+FJ8q/PRt9h+OUnjPyxpmEzFqlLr/Ef/xUNdnv6ImE40HNla0Sz5nYgvqCP4yPJ
-	nMvLHYfQBkIAuEU4t5eroWGNWEZxEBOyNTF/5daYk3QMoVW5BYbB0TbBiAurzteYZ6fo7VlNDPH
-	hCihfRbXADxvJybpI8V0BfWOPSKy5sPhMErXYbl2L4SFT2XFLkVB8puwUWDte9NtqeULj+OuuTS
-X-Google-Smtp-Source: AGHT+IEoWJyIWX3XBujOXaws+wrtmniQvJSQSjRB+r+y96gKyl0M0uolS/sv8wolEPPpMrJANi3UYA==
-X-Received: by 2002:a05:6a20:2593:b0:1d9:aa1:23e3 with SMTP id adf61e73a8af0-1e88d2d5e64mr65470929637.32.1737049401836;
-        Thu, 16 Jan 2025 09:43:21 -0800 (PST)
-Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:8dc2:8743:5c90:724f])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72daba4956esm259207b3a.128.2025.01.16.09.43.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jan 2025 09:43:20 -0800 (PST)
-From: Douglas Anderson <dianders@chromium.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	David Airlie <airlied@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] drm/mediatek: dp: drm_err => dev_err in HPD path to avoid NULL ptr
-Date: Thu, 16 Jan 2025 09:42:50 -0800
-Message-ID: <20250116094249.1.I29b0b621abb613ddc70ab4996426a3909e1aa75f@changeid>
-X-Mailer: git-send-email 2.48.0.rc2.279.g1de40edade-goog
+	id 1tYUCz-0000000FkeQ-0D1c;
+	Thu, 16 Jan 2025 18:03:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8DC1BA4252A;
+	Thu, 16 Jan 2025 18:01:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E65FAC4CED6;
+	Thu, 16 Jan 2025 18:03:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737050587;
+	bh=NJ3mCKVaerTWKdIY3yecqSXXrLTSZSkqHQ/cdTJWkEI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JeJd3zInKgbOG12tOr+M4tKEbxueUw/GyR+YtZoFsftDzz0NwbDdOaZmqF5FjYFUW
+	 fq6OXxaf+kc1UKQI2xkfNOn0SjTKJnNQ6aXrCf7yXLUanwJgEZH991A6sCCJnotDSa
+	 45KUpiLVVf0vfVmDz6J+L0vQgxFwLj175YRjmd52cG4KnnH6aZEz/BDLoa+3C2t4i0
+	 kFtpeTJZdQUiafVv1ZfytHfbDixLf90R7zdAKIEem/f2ynVZGfoZoC/U9Zb8dAxh/z
+	 MRQBfGJg4zbVKAH1DtDFnZUofqYFq86ctZEd5OYqGxAaLB1XT8L0cfy+QG3chLi3AZ
+	 KqN2d3gF1mAPw==
+Message-ID: <f558df7a-d983-4fc5-8358-faf251994d23@kernel.org>
+Date: Thu, 16 Jan 2025 19:02:59 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v7 0/8] fix two bugs related to page_pool
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250110130703.3814407-1-linyunsheng@huawei.com>
+ <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
+ <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
+ <3a853e1b-b5bf-4709-b8f6-e466e3e7375e@kernel.org>
+ <1bef4a35-efaa-4083-8ed5-8818fe285db5@huawei.com>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <1bef4a35-efaa-4083-8ed5-8818fe285db5@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_094322_890139_5991A7B9 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20250116_100309_231292_FC93ACEC 
+X-CRM114-Status: GOOD (  18.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,74 +88,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The function mtk_dp_wait_hpd_asserted() may be called before the
-`mtk_dp->drm_dev` pointer is assigned in mtk_dp_bridge_attach().
-Specifically it can be called via this callpath:
- - mtk_edp_wait_hpd_asserted
- - [panel probe]
- - dp_aux_ep_probe
 
-Using "drm" level prints anywhere in this callpath causes a NULL
-pointer dereference. Change the error message directly in
-mtk_dp_wait_hpd_asserted() to dev_err() to avoid this. Also change the
-error messages in mtk_dp_parse_capabilities(), which is called by
-mtk_dp_wait_hpd_asserted().
 
-While touching these prints, also add the error code to them to make
-future debugging easier.
+On 16/01/2025 13.52, Yunsheng Lin wrote:
+> On 2025/1/16 1:40, Jesper Dangaard Brouer wrote:
+>>
+>>
+>> On 15/01/2025 12.33, Yunsheng Lin wrote:
+>>> On 2025/1/14 22:31, Jesper Dangaard Brouer wrote:
+>>>>
+>>>>
+>>>> On 10/01/2025 14.06, Yunsheng Lin wrote:
+>>>>> This patchset fix a possible time window problem for page_pool and
+>>>>> the dma API misuse problem as mentioned in [1], and try to avoid the
+>>>>> overhead of the fixing using some optimization.
+>>>>>
+>>>>>    From the below performance data, the overhead is not so obvious
+>>>>> due to performance variations for time_bench_page_pool01_fast_path()
+>>>>> and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
+>>>>> for time_bench_page_pool03_slow() for fixing the bug.
+>>>>>
+>>>>
+>>>> My benchmarking on x86_64 CPUs looks significantly different.
+>>>>    - CPU: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+>>>>
+>>>> Benchmark (bench_page_pool_simple) results from before and after patchset:
+>>>>
+>>>> | Test name  | Cycles |       |    |Nanosec |        |       |      % |
+>>>> | (tasklet_*)| Before | After |diff| Before |  After |  diff | change |
+>>>> |------------+--------+-------+----+--------+--------+-------+--------|
+>>>> | fast_path  |     19 |    24 |   5|  5.399 |  6.928 | 1.529 |   28.3 |
+>>>> | ptr_ring   |     54 |    79 |  25| 15.090 | 21.976 | 6.886 |   45.6 |
+>>>> | slow       |    238 |   299 |  61| 66.134 | 83.298 |17.164 |   26.0 |
+>>>> #+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
+>>>>
+>>>> My above testing show a clear performance regressions across three
+>>>> different page_pool operating modes.
+>>>
+>>> I retested it on arm64 server patch by patch as the raw performance
+>>> data in the attachment, it seems the result seemed similar as before.
+>>>
+>>> Before this patchset:
+>>>               fast_path              ptr_ring            slow
+>>> 1.         31.171 ns               60.980 ns          164.917 ns
+>>> 2.         28.824 ns               60.891 ns          170.241 ns
+>>> 3.         14.236 ns               60.583 ns          164.355 ns
+>>>
+>>> With patch 1-4:
+>>> 4.         31.443 ns               53.242 ns          210.148 ns
+>>> 5.         31.406 ns               53.270 ns          210.189 ns
+>>>
+>>> With patch 1-5:
+>>> 6.         26.163 ns               53.781 ns          189.450 ns
+>>> 7.         26.189 ns               53.798 ns          189.466 ns
+>>>
+>>> With patch 1-8:
+>>> 8.         28.108 ns               68.199 ns          202.516 ns
+>>> 9.         16.128 ns               55.904 ns          202.711 ns
+>>>
+>>> I am not able to get hold of a x86 server yet, I might be able
+>>> to get one during weekend.
+>>>
+>>> Theoretically, patch 1-4 or 1-5 should not have much performance
+>>> impact for fast_path and ptr_ring except for the rcu_lock mentioned
+>>> in page_pool_napi_local(), so it would be good if patch 1-5 is also
+>>> tested in your testlab with the rcu_lock removing in
+>>> page_pool_napi_local().
+>>>
+>>
+>> What are you saying?
+>>   - (1) test patch 1-5
+>>   - or (2) test patch 1-5 but revert patch 2 with page_pool_napi_local()
+> 
+> patch 1-5 with below applied.
+> 
+> --- a/net/core/page_pool.c
+> +++ b/net/core/page_pool.c
+> @@ -1207,10 +1207,8 @@ static bool page_pool_napi_local(const struct page_pool *pool)
+>          /* Synchronizated with page_pool_destory() to avoid use-after-free
+>           * for 'napi'.
+>           */
+> -       rcu_read_lock();
+>          napi = READ_ONCE(pool->p.napi);
+>          napi_local = napi && READ_ONCE(napi->list_owner) == cpuid;
+> -       rcu_read_unlock();
+> 
+>          return napi_local;
+>   }
+> 
 
-Fixes: 7eacba9a083b ("drm/mediatek: dp: Add .wait_hpd_asserted() for AUX bus")
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-Unfortunately, I have only been able to compile-time test this code. I
-hit the NULL pointer dereference on a device that's nowhere near
-upstream and it was running (sigh) a heavily modified copy of this
-code where the eDP stuff has been forked out of DP. Specifically, you
-can see <https://crrev.com/c/6073744>. It's pretty easy to understand
-that the same problem affects both codebases though, so I'm posting
-this "blind" in the hopes to at least fix upstream.
+Benchmark (bench_page_pool_simple) results from before and after
+patchset with patches 1-5m and rcu lock removal as requested.
 
-I'll also note that the fact that mtk_edp_wait_hpd_asserted() calls
-mtk_dp_parse_capabilities() feels weird/wrong to me based on other eDP
-code I've worked on, but I've only barely looked at the Mediatek
-driver and perhaps others have already debated this. In any case,
-that's not directly related to this patch.
+| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
+| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
+|------------+-------+-------+----+---------+--------+--------+--------|
+| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
+| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
+| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
+#+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
 
- drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+This test with patches 1-5 looks much better regarding performance.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 0687672f0e52..ccd104d8851f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1763,7 +1763,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
- 
- 	ret = drm_dp_dpcd_readb(&mtk_dp->aux, DP_MSTM_CAP, &val);
- 	if (ret < 1) {
--		drm_err(mtk_dp->drm_dev, "Read mstm cap failed\n");
-+		dev_err(mtk_dp->dev, "Read mstm cap failed: %zd\n", ret);
- 		return ret == 0 ? -EIO : ret;
- 	}
- 
-@@ -1773,7 +1773,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
- 					DP_DEVICE_SERVICE_IRQ_VECTOR_ESI0,
- 					&val);
- 		if (ret < 1) {
--			drm_err(mtk_dp->drm_dev, "Read irq vector failed\n");
-+			dev_err(mtk_dp->dev, "Read irq vector failed: %zd\n", ret);
- 			return ret == 0 ? -EIO : ret;
- 		}
- 
-@@ -2056,7 +2056,7 @@ static int mtk_dp_wait_hpd_asserted(struct drm_dp_aux *mtk_aux, unsigned long wa
- 
- 	ret = mtk_dp_parse_capabilities(mtk_dp);
- 	if (ret) {
--		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
-+		dev_err(mtk_dp->dev, "Can't parse capabilities: %d\n", ret);
- 		return ret;
- 	}
- 
--- 
-2.48.0.rc2.279.g1de40edade-goog
+--Jesper
+
+https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org#e5-1650-pp01-dma-fix-v7-p1-5
+
+Kernel:
+  - 6.13.0-rc6-pp01-DMA-fix-v7-p1-5+ #5 SMP PREEMPT_DYNAMIC Thu Jan 16 
+18:06:53 CET 2025 x86_64 GNU/Linux
+
+Machine: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+
+modprobe bench_page_pool_simple loops=100000000
+
+Raw data:
+[  187.309423] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+[  187.872849] time_bench: Type:no-softirq-page_pool01 Per elem: 19 
+cycles(tsc) 5.539 ns (step:0) - (measurement period time:0.553906443 sec 
+time_interval:553906443) - (invoke count:100000000 tsc_interval:1994123064)
+[  187.892023] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+[  189.611070] time_bench: Type:no-softirq-page_pool02 Per elem: 61 
+cycles(tsc) 17.095 ns (step:0) - (measurement period time:1.709580367 
+sec time_interval:1709580367) - (invoke count:100000000 
+tsc_interval:6154679394)
+[  189.630414] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+Cannot use page_pool fast-path
+[  197.222387] time_bench: Type:no-softirq-page_pool03 Per elem: 272 
+cycles(tsc) 75.826 ns (step:0) - (measurement period time:7.582681388 
+sec time_interval:7582681388) - (invoke count:100000000 
+tsc_interval:27298499214)
+[  197.241926] bench_page_pool_simple: pp_tasklet_handler(): 
+in_serving_softirq fast-path
+[  197.249968] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+[  197.808470] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 
+19 cycles(tsc) 5.492 ns (step:0) - (measurement period time:0.549225541 
+sec time_interval:549225541) - (invoke count:100000000 
+tsc_interval:1977272238)
+[  197.828174] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+[  199.422305] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 
+57 cycles(tsc) 15.849 ns (step:0) - (measurement period time:1.584920736 
+sec time_interval:1584920736) - (invoke count:100000000 
+tsc_interval:5705890830)
+[  199.442087] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+in_serving_softirq fast-path
+[  207.342120] time_bench: Type:tasklet_page_pool03_slow Per elem: 284 
+cycles(tsc) 78.909 ns (step:0) - (measurement period time:7.890955151 
+sec time_interval:7890955151) - (invoke count:100000000 
+tsc_interval:28408319289)
 
 
