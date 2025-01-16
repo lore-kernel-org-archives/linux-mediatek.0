@@ -4,123 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA47C02187
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 10:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE04C02183
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 10:24:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kvQdEoWTAFzPq6kjpuGsuF1l6Lxp7FUmHEBuENkQ6Qo=; b=pKDN5Mgr4MhCkweNXtD7FVZAiy
-	XplNqVoWQ8ziA0Y1JnF9ldOtN2L9ZcxG5OL8L6MURwhpiXfwLaP7hpm+P6Ztn6zWQayrOSzlBvlt3
-	q/eg73FZSoR3c+XzJA0Sv/vWNIwlGam/wOG+hu+MBb9q7QZMjh45OSe3f6Mzspg90rNkEPufz+ZBB
-	cGd6JRJemu3v6p0QEHJoUIM1k1N+mlS7pTtS3464mLkzCohHJFabJMYg3m+v0ylJ9Cuuxkfidvp9U
-	iMAaW9pvjnYrQ4PQIqTGBK1SEnD9gir6BMHL8gLCrgfwp0hnUOrpmFuaTBcPGgYIv7IOHdmVy93G1
-	r32p1kpg==;
+	bh=hEBC4YtYCJgyImQmIlExzdfeh9O+mJTPH+y0EtpZi1E=; b=Ua7O3JDehyW26yqqVzVDA9IOTC
+	oYHElMvSJNqZK1pZIsvI4FJJb/P1PMnHO/GRAVQAgTh9s2VViHNn2pg9JXgyO5XX7iDNtmiKKlK4S
+	GP19sFjBQgF3+OzgKtho0ujrXFN1hc0Xtc01Do23pZj220ZVyIWnDp7RG+MNCgOWC11Ke+ojmoYDw
+	xg5GcFwfkWOS4eLFxQMr+T5J63HicpJ2BUWRViJRoVqFwL+BWJi3JCV7pUEZkNiDyDgTh4qJA6sye
+	fQfVCX9+XRdf47iI/cS3SBvb+xZH1DkdNvi2e3CvMaxETG7jQIv/2+gwp0VZje2fG3Gdaj0Z1LENQ
+	XXxx+Ngw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYN0L-0000000ETv6-36Fi;
-	Thu, 16 Jan 2025 10:21:37 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tYN3Q-0000000EUIN-09Bp;
+	Thu, 16 Jan 2025 10:24:48 +0000
+Received: from mail-pl1-f180.google.com ([209.85.214.180])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYMz4-0000000ETgq-0qdf;
-	Thu, 16 Jan 2025 10:20:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 611CAA41452;
-	Thu, 16 Jan 2025 10:18:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F083DC4CED6;
-	Thu, 16 Jan 2025 10:20:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737022817;
-	bh=qqJpTXUP3GhZ0W/fxsUBOFjIJ8kNite2YItXfgc9pgc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q74jZqpO7BdxmoOsraDvrDdRdxNZ6USgpsfyXkP36HbFERv2Ce1WYgvJNtE1Vltij
-	 /XQH1asFFuKpcYnyZsrhbf63iVwuMPCqf0CN/bQ9Z4kY4+4AAfOyfb7LY1VCVr3qdL
-	 CDCyKVIUw6jOS+7/5BAMTY1BFaxKtvGUNKdFZg4NQyxnM946ggQI76Z4g+4amLa7EU
-	 uv4sJhp7sHebnPhvWVShD1KH0NG3VbcTY+tiQBtOMjKZaLJMVk/kUkHDgbm9glKCo6
-	 MUokw9X++gicc3ie17pRq26I5uz5+BjYeWz9XxSqeMhMM0F5ExEwdS1FBPI6i0sDVE
-	 KCNJbrw9CtaHQ==
-Message-ID: <b212d05d-de3b-41b2-bc48-c6b79ae54a8b@kernel.org>
-Date: Thu, 16 Jan 2025 11:20:09 +0100
+	id 1tYN3N-0000000EUHV-49al;
+	Thu, 16 Jan 2025 10:24:47 +0000
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-21644aca3a0so15228585ad.3;
+        Thu, 16 Jan 2025 02:24:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737023085; x=1737627885;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hEBC4YtYCJgyImQmIlExzdfeh9O+mJTPH+y0EtpZi1E=;
+        b=ZxtXIIh3V+JhC1TkmQEMbF+fCqnnDviQ91Jull1dZggNZU+4oCWyYrmRCRPi1YTMIR
+         1yav4Ih4D5kWlqwuGmZVgF+4YKC055oa+2KgGiOIuuYoDhGPJFpAqq6gckJTYdadHA0z
+         5DFI982JLQbyAUhV8J2hBwkvOHkZ6+2DEVHYrp1gdcIXcE9rxfN/M5IIsdTOEwZ6DPLp
+         vT3QvBLSOJKOdWuUrisOFtUjhW6j+4Vi8B3fxFVd4QMn6Zc5gYlKntfoA9A3b4t6q+1E
+         SjeRF+EBJGjpa7USIyRhVZ7LzjRLyiL+GfYVHaW2nr9h76Clkt2UQGhlHhveZ4uR6a0D
+         SBhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUyNvEXv+q+zouGlIJ6IKzL17isPJFbKWuHYW6qiq1lbd+cL4jeE30H+2413nEQKNjzr639K/y8Z95p56tFrzs=@lists.infradead.org, AJvYcCV8D4PjazBWI5aA4M2Hi+lqRJvGOvdLgmcvHBPRhKUaAVjNgoU95AKoRMaCzkyY1Wvb/Cixnw+z2T4X8rCOYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwB47uvwgBAKspnuudSbbyCcJIOuLGKe6vkqQrTRrVuFcYhQNhK
+	6GU+5kyvFBgTr++6/NHKycoRV1va5EbaqcmCdD+TZeqqzFwSX1ELRXEORVDbQk0=
+X-Gm-Gg: ASbGnctA49gf/zhnmB+lW18n5Sq76MN7No5zqV7u3yDl4vIk14djlFhK1SeBP5vYvsW
+	/tQ0jLPx2eEVf/dRKgLibIZVtj110OKfxikUdrdzuljKFGb2MI4gXkPLKdtzfj99E9UDgbGZ1k0
+	IrovIIPHZcPnBUGNdLjf5ECHOgOqzETgm/yEtnJMGx0t5ghD4fo7x6GGSZZ6bUOEDXpap7KjT4C
+	q2Ma3sw0HGc87hKva+RASD3rE9kURZnT+zkLiXq4dSOOfoFoZ3M73oIhKslwgU1BZYuzS/FBnzA
+	oEVfTADdi1DahdYYmAZQY3Q=
+X-Google-Smtp-Source: AGHT+IEdJHp80+VW/Nk9goKvWlIOxWSeakS0tzyODFxjFDmO//aNcVC6D8zy+tYJfw8u4/velgzVig==
+X-Received: by 2002:a17:902:ce88:b0:215:a3fd:61f5 with SMTP id d9443c01a7336-21a83f46a1dmr527410625ad.5.1737023084717;
+        Thu, 16 Jan 2025 02:24:44 -0800 (PST)
+Received: from mail-pl1-f170.google.com (mail-pl1-f170.google.com. [209.85.214.170])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f22dcf5sm95167695ad.181.2025.01.16.02.24.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Jan 2025 02:24:44 -0800 (PST)
+Received: by mail-pl1-f170.google.com with SMTP id d9443c01a7336-21636268e43so15700675ad.2;
+        Thu, 16 Jan 2025 02:24:44 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUrp9F58SHJ7IA6LSrPtBpuBTLossOKHLb1a5BIrEYxMLSJei+8PzelcnIoGDIgSIiUKnR/9UYmin/WnOuDtQ==@lists.infradead.org, AJvYcCXfoDH0zZJirEfe7uocqnRZQ0EzJYeVmmBmIH0s5znOfue7kBrRbbRT6RA49oJK+E8Ko8rTvo72AC1mSwnXD4s=@lists.infradead.org
+X-Received: by 2002:a05:6102:3a14:b0:4b2:5c2a:cc9d with SMTP id
+ ada2fe7eead31-4b3d0dc0215mr29032050137.16.1737022681773; Thu, 16 Jan 2025
+ 02:18:01 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: mediatek: add support for
- mt8196
-To: =?UTF-8?B?Q2F0aHkgWHUgKOiuuOWNjuWptyk=?= <ot_cathy.xu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?TGVpIFh1ZSAo6Jab56OKKQ==?= <Lei.Xue@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- =?UTF-8?B?R3VvZG9uZyBMaXUgKOWImOWbveagiyk=?= <Guodong.Liu@mediatek.com>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "sean.wang@kernel.org" <sean.wang@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250115063555.32492-1-ot_cathy.xu@mediatek.com>
- <20250115063555.32492-2-ot_cathy.xu@mediatek.com>
- <nmyxygrya6cpalmirsunvkx32uox3kjxd4l5ggdhjtj7edyizz@yodolm5ktboo>
- <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
- <d04bc250-2104-4e02-9bf8-5785f4444c8d@kernel.org>
- <d11076d3eb2f92018fd3e26cae665a47f71ca838.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <d11076d3eb2f92018fd3e26cae665a47f71ca838.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20250109150310.219442-1-tzimmermann@suse.de> <20250109150310.219442-26-tzimmermann@suse.de>
+ <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com> <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com> <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com> <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com> <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com> <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+ <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+In-Reply-To: <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 16 Jan 2025 11:17:50 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+X-Gm-Features: AbW1kvbCtGVmgNJ1oRyFqRTMVO1bCUCk0WwRoRvrPqq521tQuGLKMDrWmAM4CG4
+Message-ID: <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>, maarten.lankhorst@linux.intel.com, 
+	mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
+	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Yan <andyshrk@163.com>, 
+	Daniel Stone <daniel@fooishbar.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_022018_375787_B45ADDA2 
-X-CRM114-Status: GOOD (  20.59  )
+X-CRM114-CacheID: sfid-20250116_022446_022668_5487BBEB 
+X-CRM114-Status: GOOD (  39.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,136 +107,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/01/2025 09:18, Cathy Xu (许华婷) wrote:
-> On Thu, 2025-01-16 at 08:28 +0100, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On 16/01/2025 03:20, Cathy Xu (许华婷) wrote:
->>>>> +          bias-pull-down:
->>>>> +            oneOf:
->>>>> +              - type: boolean
->>>>> +              - enum: [100, 101, 102, 103]
->>>>> +                description: mt8196 pull down PUPD/R0/R1 type
->>>>> define value.
->>>>> +              - enum: [200, 201, 202, 203, 204, 205, 206, 207]
->>>>> +                description: mt8196 pull down RSEL type define
->>>>> value.
->>>>
->>>> Not much improved.
->>>
->>>   I have removed the content related to 'resistance value', we use
->>> 'RSEL' instead of 'resistance value'.
->>
->> So the value in Ohms was removed? I assume above do not have known
->> value
->> in Ohms?
-> 
->   Yes, value in Ohns was removed, no code have knowm value.
+On Thu, Jan 16, 2025 at 11:03=E2=80=AFAM Tomi Valkeinen
+<tomi.valkeinen@ideasonboard.com> wrote:
+> On 16/01/2025 10:09, Thomas Zimmermann wrote:
+> > Am 15.01.25 um 15:20 schrieb Tomi Valkeinen:
+> > [...]
+> >>
+> >> My point is that we have the current UAPI, and we have userspace using
+> >> it, but we don't have clear rules what the ioctl does with specific
+> >> parameters, and we don't document how it has to be used.
+> >>
+> >> Perhaps the situation is bad, and all we can really say is that
+> >> CREATE_DUMB only works for use with simple RGB formats, and the
+> >> behavior for all other formats is platform specific. But I think even
+> >> that would be valuable in the UAPI docs.
+> >
+> > To be honest, I would not want to specify behavior for anything but the
+> > linear RGB formats. If anything, I'd take Daniel's reply mail for
+> > documentation as-is. Anyone stretching the UAPI beyond RGB is on their =
+own.
+> >
+> >> Thinking about this, I wonder if this change is good for omapdrm or
+> >> xilinx (probably other platforms too that support non-simple non-RGB
+> >> formats via dumb buffers): without this patch, in both drivers, the
+> >> pitch calculations just take the bpp as bit-per-pixels, align it up,
+> >> and that's it.
+> >>
+> >> With this patch we end up using drm_driver_color_mode_format(), and
+> >> aligning buffers according to RGB formats figured out via heuristics.
+> >> It does happen to work, for the formats I tested, but it sounds like
+> >> something that might easily not work, as it's doing adjustments based
+> >> on wrong format.
+> >>
+> >> Should we have another version of drm_mode_size_dumb() which just
+> >> calculates using the bpp, without the drm_driver_color_mode_format()
+> >> path? Or does the drm_driver_color_mode_format() path provide some
+> >> value for the drivers that do not currently do anything similar?
+> >
+> > With the RGB-only rule, using drm_driver_color_mode_format() makes
+> > sense. It aligns dumb buffers and video=3D, provides error checking, an=
+d
+> > overall harmonizes code. The fallback is only required because of the
+> > existing odd cases that already bend the UAPI's rules.
+>
+> I have to disagree here.
+>
+> On the platforms I have been using (omap, tidss, xilinx, rcar) the dumb
+> buffers are the only buffers you can get from the DRM driver. The dumb
+> buffers have been used to allocate linear and multiplanar YUV buffers
+> for a very long time on those platforms.
+>
+> I tried to look around, but I did not find any mentions that CREATE_DUMB
+> should only be used for RGB buffers. Is anyone outside the core
+> developers even aware of it?
+>
+> If we don't use dumb buffers there, where do we get the buffers? Maybe
+> from a v4l2 device or from a gpu device, but often you don't have those.
+> DMA_HEAP is there, of course.
 
-Does the hardware have known value in Ohms?
+Why can't there be a variant that takes a proper fourcc format instead of
+an imprecise bpp value?
 
+Gr{oetje,eeting}s,
 
-> 
->>
->>>
->>>>
->>>>
->>>>> +            description: |
->>>>> +              For pull down type is normal, it doesn't need
->>>>> add
->>>>> RSEL & R1R0.
->>>>> +              For pull down type is PUPD/R0/R1 type, it can
->>>>> add
->>>>> R1R0 define to
->>>>> +              set different resistance. It can support
->>>>> "MTK_PUPD_SET_R1R0_00" &
->>>>> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10"
->>>>> &
->>>>> +              "MTK_PUPD_SET_R1R0_11" define in mt8196.
->>>>> +              For pull down type is PD/RSEL, it can add RSEL
->>>>> define to set
->>>>> +              different resistance. It can support
->>>>> +              "MTK_PULL_SET_RSEL_000" &
->>>>> "MTK_PULL_SET_RSEL_001" &
->>>>> +              "MTK_PULL_SET_RSEL_010" &
->>>>> "MTK_PULL_SET_RSEL_011" &
->>>>> +              "MTK_PULL_SET_RSEL_100" &
->>>>> "MTK_PULL_SET_RSEL_101" &
->>>>> +              "MTK_PULL_SET_RSEL_110" &
->>>>> "MTK_PULL_SET_RSEL_111"
->>>>> define in
->>>>> +              mt8196.
->>>>> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>>>> b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>>>> new file mode 100644
->>>>> index 000000000000..bf0c8374407c
->>>>> --- /dev/null
->>>>> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>>>> @@ -0,0 +1,1572 @@
->>>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
->>>>> +/*
->>>>> + * Copyright (C) 2025 Mediatek Inc.
->>>>> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
->>>>> + */
->>>>> +
->>>>> +#ifndef __MT8196_PINFUNC_H
->>>>> +#define __MT8196_PINFUNC_H
->>>>> +
->>>>> +#include <dt-bindings/pinctrl/mt65xx.h>
->>>>> +
->>>>> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
->>>>> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
->>>>> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
->>>>> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
->>>>> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
->>>>> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
->>>>
->>>> I do not see how you resolved my comment from v1. In v2 I
->>>> reminded
->>>> about
->>>> it, so you responded that yopu will change something, but I do
->>>> not
->>>> see
->>>> any changes.
->>>>
->>>> So explain: how did you resolve my comment?
->>>>
->>>> These two examples where you claim you will change something, but
->>>> send
->>>> the same. I skipped the rest of the patch.
->>>
->>>   Thank you for your patient response, here is my explanation for
->>> you
->>> question:
->>>
->>>   In v1, I undertand that you meant I didn't sent a real binding,
->>> and
->>
->>
->> The comment is under specific lines, so I said these defines are not
->> a
->> real binding. You sent them again, but they are still not bindings,
->> because they are not used in the driver. Maybe the usage is
->> convoluted,
->> so which part of implementation are these connecting with DTS? IOW,
->> which part of driver relies on the binding?
-> 
->   I got you. This binding define many macros, which will be used for
-> 'pinmux' setting in the DTS. The usage like this:
-> 
->   adsp_uart_pins: adsp-uart-pins {
->                 pins-tx-rx {
->                         pinmux = <PINMUX_GPIO35__FUNC_O_ADSP_UTXD0>,
->                                  <PINMUX_GPIO36__FUNC_I1_ADSP_URXD0>;
->                 };
->         };
+                        Geert
 
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
-That's DTS, not driver, so not a binding. Drop the header from bindings.
-
-
-Best regards,
-Krzysztof
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
