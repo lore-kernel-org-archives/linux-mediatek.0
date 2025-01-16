@@ -4,121 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B5FE77188
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 07:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A443C02180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 08:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rQAC6kCDdEI6iOII1wHqk8tAdoIl8H2yE4YFJdgv50Y=; b=joMLiC5bTU39HLkvMljdOzzksv
-	PK0Wu5Jrzdrp7S+P06h8Youj0gAR80cv8vfJ3rrTDxof5nN+UOWqXEJRNchfseDEkw9FFnJk7TzmF
-	eIwy2g7WqSwEkVyau5EW5nG+XsQEUQ/djvj8DIlwo3psCaZpkUlgCe/RdbirDj0frwM/ZolCEI390
-	QljHa89YOuzGQyNQKZD39+oW9GqkZIKjeGGsPogrHHZcEntzOw0YvdHtXQByjp8KR28Iu/CEovbsz
-	4QWDQ15er+BAT1uKOPwAL07VW1pW7F0uk5bKHyGyzOt+MU30jV5qa+VIUp4KLwYGOTBsSZRnCegK+
-	P+WxlEZg==;
+	bh=xcxRML23Nx7RFNokQB2O02aJnU9nWJlVXpAUoW6/DUc=; b=lS8rUvmcJ3tIgvR1kNWcK+cgTa
+	w46y1IjBT8OuBvFWvNqbKbucL4sVbz586px2Qe7Y6DH3viK/0rGo5C72KfyLdrPhNsqpMGcxH2Oh2
+	JsDyUv8R7yJXd2CdW9Bd/dGPGc0VOatmLyKMUDC+kC+Om0Mw+idIl66u8V93uvYd39L1lnycT1uUa
+	DGdDR7eJwMk1VEVmuBwAlSN7FCi1PoRnDt/SHR8Gm3c78+wbGiogNL2bOarj6D0nkI6t4ZxRm/wkC
+	rVerxjZHah5YT+jR0YYWEeLGG2BJr4X9qo9+x4z9ADM4/PgRrWaHO24kQn2RTLBwWqxw4+YskGE+c
+	rflTvmjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYKKe-0000000E30u-42VT;
-	Thu, 16 Jan 2025 07:30:24 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tYKwR-0000000E9ck-107E;
+	Thu, 16 Jan 2025 08:09:27 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYKJO-0000000E2hj-0gOA;
-	Thu, 16 Jan 2025 07:29:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 567B6A4086D;
-	Thu, 16 Jan 2025 07:27:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8831DC4CED6;
-	Thu, 16 Jan 2025 07:29:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737012545;
-	bh=I80ogNUmSoIctG6ONpKiNo6HZ4UauiCnTHsIxxGNjNM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DSVVfmGeGo50uvx1iR1+zuD4GZH/KUEs3SnyVF2/ETu7ac8C0OjvfVVA8d2BMV0d2
-	 fpjfDDcWO8Ste7vrxmabwbjy5PdPDgQxEqUCJ9GnYCwykhUwM37tsXQtPJWDv8zlUA
-	 8SIdnXUGvOUEX2048h4kYIqG4zzfRYPsH0dBWYOfg/DAXWiu60PEeifpAg2aHGkuso
-	 lOTEwUfOgLw8agZp331WibpK5NEG56FAXbMRR1sBkbiGr9V5ZuC40S+2aYaALlMroH
-	 Fnjfz7HhiuDHCwjNYEmXW28OZOwa3nhjpvped0ECXkiEArziIYNZfTPnvaSuJQ2/bb
-	 ipvysAZo/ZMSg==
-Message-ID: <d04bc250-2104-4e02-9bf8-5785f4444c8d@kernel.org>
-Date: Thu, 16 Jan 2025 08:28:58 +0100
+	id 1tYKwN-0000000E9aA-2SRE;
+	Thu, 16 Jan 2025 08:09:25 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id AF679211D2;
+	Thu, 16 Jan 2025 08:09:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1737014961; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=xcxRML23Nx7RFNokQB2O02aJnU9nWJlVXpAUoW6/DUc=;
+	b=guL7z/7g3EcabgvnEePbbCuZQv7xD8Nwr9UitmLW0HdQwyFjV2SSCQgHXiJw8V8gnCT1K2
+	PWtPwlEQencxyOkZzRFYa02U7TT7cyGEKiFsdqSu4Fbz6rTKbBaplstwxqYo2gR84TVDZg
+	EoU34+EHEiZW91gRDl+FfWH9McSLkvo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1737014961;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=xcxRML23Nx7RFNokQB2O02aJnU9nWJlVXpAUoW6/DUc=;
+	b=QhcTxwz2tTYoCTzfudp0U1RC65EHxbTx4mcJuk8sOgRjhjNV0lXRty1p1dQWnKcwWKutz2
+	DR+iY8oRFsTbZEBQ==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1737014961; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=xcxRML23Nx7RFNokQB2O02aJnU9nWJlVXpAUoW6/DUc=;
+	b=guL7z/7g3EcabgvnEePbbCuZQv7xD8Nwr9UitmLW0HdQwyFjV2SSCQgHXiJw8V8gnCT1K2
+	PWtPwlEQencxyOkZzRFYa02U7TT7cyGEKiFsdqSu4Fbz6rTKbBaplstwxqYo2gR84TVDZg
+	EoU34+EHEiZW91gRDl+FfWH9McSLkvo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1737014961;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=xcxRML23Nx7RFNokQB2O02aJnU9nWJlVXpAUoW6/DUc=;
+	b=QhcTxwz2tTYoCTzfudp0U1RC65EHxbTx4mcJuk8sOgRjhjNV0lXRty1p1dQWnKcwWKutz2
+	DR+iY8oRFsTbZEBQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3205713A57;
+	Thu, 16 Jan 2025 08:09:21 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 3VTFCrG+iGf+BAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Thu, 16 Jan 2025 08:09:21 +0000
+Message-ID: <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+Date: Thu, 16 Jan 2025 09:09:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: mediatek: add support for
- mt8196
-To: =?UTF-8?B?Q2F0aHkgWHUgKOiuuOWNjuWptyk=?= <ot_cathy.xu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?TGVpIFh1ZSAo6Jab56OKKQ==?= <Lei.Xue@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- =?UTF-8?B?R3VvZG9uZyBMaXUgKOWImOWbveagiyk=?= <Guodong.Liu@mediatek.com>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "sean.wang@kernel.org" <sean.wang@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250115063555.32492-1-ot_cathy.xu@mediatek.com>
- <20250115063555.32492-2-ot_cathy.xu@mediatek.com>
- <nmyxygrya6cpalmirsunvkx32uox3kjxd4l5ggdhjtj7edyizz@yodolm5ktboo>
- <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andy Yan <andyshrk@163.com>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-26-tzimmermann@suse.de>
+ <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
+ <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
+ <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
+ <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
+ <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	FREEMAIL_TO(0.00)[ideasonboard.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ARC_NA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[163.com,gmail.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,ideasonboard.com,163.com];
+	TO_DN_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_232906_326753_B781F2E0 
-X-CRM114-Status: GOOD (  23.79  )
+X-CRM114-CacheID: sfid-20250116_000923_766768_CEF8ABAD 
+X-CRM114-Status: GOOD (  20.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,114 +178,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/01/2025 03:20, Cathy Xu (许华婷) wrote:
->>> +          bias-pull-down:
->>> +            oneOf:
->>> +              - type: boolean
->>> +              - enum: [100, 101, 102, 103]
->>> +                description: mt8196 pull down PUPD/R0/R1 type
->>> define value.
->>> +              - enum: [200, 201, 202, 203, 204, 205, 206, 207]
->>> +                description: mt8196 pull down RSEL type define
->>> value.
->>
->> Not much improved.
->   I have removed the content related to 'resistance value', we use
-> 'RSEL' instead of 'resistance value'.
-
-So the value in Ohms was removed? I assume above do not have known value
-in Ohms?
-
-> 
->>
->>
->>> +            description: |
->>> +              For pull down type is normal, it doesn't need add
->>> RSEL & R1R0.
->>> +              For pull down type is PUPD/R0/R1 type, it can add
->>> R1R0 define to
->>> +              set different resistance. It can support
->>> "MTK_PUPD_SET_R1R0_00" &
->>> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
->>> +              "MTK_PUPD_SET_R1R0_11" define in mt8196.
->>> +              For pull down type is PD/RSEL, it can add RSEL
->>> define to set
->>> +              different resistance. It can support
->>> +              "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
->>> +              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" &
->>> +              "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101" &
->>> +              "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
->>> define in
->>> +              mt8196.
->>> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>> b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>> new file mode 100644
->>> index 000000000000..bf0c8374407c
->>> --- /dev/null
->>> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
->>> @@ -0,0 +1,1572 @@
->>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
->>> +/*
->>> + * Copyright (C) 2025 Mediatek Inc.
->>> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
->>> + */
->>> +
->>> +#ifndef __MT8196_PINFUNC_H
->>> +#define __MT8196_PINFUNC_H
->>> +
->>> +#include <dt-bindings/pinctrl/mt65xx.h>
->>> +
->>> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
->>> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
->>> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
->>> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
->>> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
->>> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
->>
->> I do not see how you resolved my comment from v1. In v2 I reminded
->> about
->> it, so you responded that yopu will change something, but I do not
->> see
->> any changes.
->>
->> So explain: how did you resolve my comment?
->>
->> These two examples where you claim you will change something, but
->> send
->> the same. I skipped the rest of the patch.
-> 
->   Thank you for your patient response, here is my explanation for you
-> question:
-> 
->   In v1, I undertand that you meant I didn't sent a real binding, and
+Hi
 
 
-The comment is under specific lines, so I said these defines are not a
-real binding. You sent them again, but they are still not bindings,
-because they are not used in the driver. Maybe the usage is convoluted,
-so which part of implementation are these connecting with DTS? IOW,
-which part of driver relies on the binding?
+Am 15.01.25 um 15:20 schrieb Tomi Valkeinen:
+[...]
+>
+> My point is that we have the current UAPI, and we have userspace using 
+> it, but we don't have clear rules what the ioctl does with specific 
+> parameters, and we don't document how it has to be used.
+>
+> Perhaps the situation is bad, and all we can really say is that 
+> CREATE_DUMB only works for use with simple RGB formats, and the 
+> behavior for all other formats is platform specific. But I think even 
+> that would be valuable in the UAPI docs.
 
+To be honest, I would not want to specify behavior for anything but the 
+linear RGB formats. If anything, I'd take Daniel's reply mail for 
+documentation as-is. Anyone stretching the UAPI beyond RGB is on their own.
 
+>
+> Thinking about this, I wonder if this change is good for omapdrm or 
+> xilinx (probably other platforms too that support non-simple non-RGB 
+> formats via dumb buffers): without this patch, in both drivers, the 
+> pitch calculations just take the bpp as bit-per-pixels, align it up, 
+> and that's it.
+>
+> With this patch we end up using drm_driver_color_mode_format(), and 
+> aligning buffers according to RGB formats figured out via heuristics. 
+> It does happen to work, for the formats I tested, but it sounds like 
+> something that might easily not work, as it's doing adjustments based 
+> on wrong format.
+>
+> Should we have another version of drm_mode_size_dumb() which just 
+> calculates using the bpp, without the drm_driver_color_mode_format() 
+> path? Or does the drm_driver_color_mode_format() path provide some 
+> value for the drivers that do not currently do anything similar?
 
-> the bindings should be separated from driver. In addition, I should
-> run scripts/checkpatch.pl and scripts/get_maintainers.pl. So in v2, I
-> sent a real binding(mediatek,mt8196-pinctrl.yaml), and sent two
-> separate patches, one for driver and one for bindings, also ran
-> scripts/get_maintainers.pl get necessary people and sent to them.
-> 
->   In v2, I understand that I need refer to git history to modify the
-> commit msgs, so I made the changes in v3. Then you asked me about the
-> difference between 'RSEL' and 'resistance value'. I replied that the
-> 'resistance value' method is no longer use, so in v3, I removed all
-> content about it(include entire 'rsel-resistance-in-si-unit' property
-> and the parts mentioned in bias-pull-up/down).
+With the RGB-only rule, using drm_driver_color_mode_format() makes 
+sense. It aligns dumb buffers and video=, provides error checking, and 
+overall harmonizes code. The fallback is only required because of the 
+existing odd cases that already bend the UAPI's rules.
 
-Yes, thank you this I saw, the comments appear under specific places, so
-only these places are discussed.
+Best regards
+Thomas
 
+>
+>  Tomi
+>
 
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
 
-Best regards,
-Krzysztof
 
