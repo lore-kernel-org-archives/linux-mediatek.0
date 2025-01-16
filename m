@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F3A8C02183
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 16:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E24C02188
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 17:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QGPiUeQaDByXyGYfaiyGjoevsH3zwreWTmPpwDEUSo8=; b=CAZL8yDQ6n6iTEkMvV5T57ArIR
-	bc76q1vv5OBHDnbsjQ9b2L0qBlaC6lHKeMvs/cUBbAzGPmLVPNkfaTBdqmHEhupqONl6Z++5JMEgv
-	sjZYsSEvMvbq/NwDcCsQbyXYjxvyQaHmkzJeK03Q7s4ubigoOC/9AneJWJgmC7sNydFrObuvwPezc
-	mntt45VNd0LA6lt50VhXWgkaxhFAkWxIZoaO4AHthdqTeX4vhIHHufEvg5eTUtUir+U7m64v03EYM
-	EUSKLb+lmUVzdJQUtyQ2Yl68qxi3YN4fpSZX5urwN17cMedlNhoYJDrs4Yd1iGYPtw/E1/Yjvpb0G
-	KtW33/uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=; b=Ygr8nG4sSjqSb6AyjVp3lBdXSn
+	GkMwecZJaliu4pqfx9o3mL1+dSYo9LmksTZQrETYZ2dQ/nQmdMksq+IDjgAyfnSWEw/ox+rPgJCQ4
+	ZmSfws1fRt8Zn+fxd0koFJq+P0z/4gRpZXOlSgldya+7TIA+HY6MCZ1QHyIhBE7aKzfXTfj1b75vY
+	nSWYG4qnFDSpHp9YuvwSrKL+osHWFtcam7i1+n3d+72Lf9OvKKvHVuQnbAICFnm2dXBtO+84aJnMC
+	Cxk36DMrtbDzKRUU6EqkD03B858EizcfolgVHhAXFRMbOdWPkthQBcqw5aHIMBxRAOND4Is5ZxDJ3
+	3e0cqcbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYSLd-0000000FSEx-458K;
-	Thu, 16 Jan 2025 16:03:57 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1tYTtt-0000000FiDp-3JXO;
+	Thu, 16 Jan 2025 17:43:25 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYSGe-0000000FQ5Y-0xve
+	id 1tYTtq-0000000FiCa-3S0U
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jan 2025 15:58:49 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-e4419a47887so1684234276.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jan 2025 07:58:48 -0800 (PST)
+	Thu, 16 Jan 2025 17:43:24 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-21628b3fe7dso22978725ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jan 2025 09:43:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737043127; x=1737647927; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=QGPiUeQaDByXyGYfaiyGjoevsH3zwreWTmPpwDEUSo8=;
-        b=oY8+W8R6Ym7AeM8vUv7+7Eu66MVBPMA57lnzisPE4teL34ZoTzZzDBdPSC8PuJp5Fx
-         rgrURwRjsgkWSh+4mCIJZXkd+W89kv/Z7NfXL5FZuVt45vPxgXiwCo5cfAcrSV5m6NUl
-         PeevADCOUPG0Cxhkxt0axKcYZI2nPAzeG2mLKR06xyBiTkfCDvF13Vsn6+UXMZzXWYWV
-         c5rqhDbgZ6pUc1RzwRLkV7doq8OqJ2r/zQw1lHxQ9xfFSzugEKu1K0bzi+nwb381ElTP
-         DWkKgff8Bw92vxhTNQo6iFXxQqc+7/yYuS2zpHdjQued/rB/TRQFXOBgHuvA20ALG6ve
-         kFYA==
+        d=chromium.org; s=google; t=1737049402; x=1737654202; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=;
+        b=PAe4sUivB5LVKdBIRBb9grsil7ZbWSGlicuTors1a2idxqpQzhCs2NxU1BJlZsKEPA
+         9uFFftla+3XGuN/0dq2X0CTkp9ij+QrJh45VHuv1rszfdXYvjeO3VOprguQ176Fh5u/d
+         2hkM4g1aoaktdhMMMPak2JX3FJWpIPy2wVVuM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737043127; x=1737647927;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1737049402; x=1737654202;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=QGPiUeQaDByXyGYfaiyGjoevsH3zwreWTmPpwDEUSo8=;
-        b=InPR08Bo7urQ21f1v/lTUw96BGg+SaOqWSoxPHlk91Y7Z//cw7864/y6cWXcXbPf/n
-         oiZEZ9YyldRLibMr73q/yr5hY9QGeOwMEN81qjX7jG7FEhSf0QwnPAqzXeB1WoLLzhyD
-         Oxi4FAFfJvo5QkCW/5+j6H5fMzz/ax+zQD0N5SSKI+mNarZUKFB4svETdQ4xj5fzYgI9
-         WhbievHNN5zoZCzUJigz+yE4B1V2XTe6zV6ZUbKm76TrdYndFPvZ3rRF+QCOR0v/WRWy
-         fclVVLa1Tbnacuzepmvk1X3fUwHS+lTDxevOGDRQvy9hpQ13TvCR7w9tUviKSQ8r8cjd
-         QDLw==
-X-Forwarded-Encrypted: i=1; AJvYcCXxw4sfuRvpSeDi7m7cprQQI5V86tnWAR0q3I8oydxt/xeXhKjb6VRWTvdYldVFh2su+7ZDTM15SPvIQ5FqFA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzg7DYKCyENlV6qQwm0976poiBV5zk2AvHYIW5ROPa0EgE1uKEO
-	2ioMMr4Hg/SOJm9WlNkH6uqoNXiYJPEQAPpXOgkCupT8hRekVKIklYlD0oFI1yTHyDFzJ2YPiwb
-	nb325WSt8Ymqk3jpx4VhN+wVi0LCyWHHSuXV7tg==
-X-Gm-Gg: ASbGncsPpWRxF8yNP5BLXr1/09hBVtwu3TWw0bYf0HcPIYp9tnC6OiszcJHIazH6poe
-	V1FUA0Sq1s72TbpWrLLvKMfo98lNZlrmBc5QZN9E=
-X-Google-Smtp-Source: AGHT+IHzQbQYAi6FZO8GNmu8t3VQrhl2ccDWHjHOxE3SLBVC4VwnOsYtSa0UftO9WxJZ8AnPeBd+o1qUAP/ZQG8iuDk=
-X-Received: by 2002:a05:6902:18c3:b0:e57:8814:13a6 with SMTP id
- 3f1490d57ef6-e5788141804mr6901177276.17.1737043127387; Thu, 16 Jan 2025
- 07:58:47 -0800 (PST)
+        bh=uBtKYlWCmsTWJXAsi/P2qVR1BJEci/r4rzSkSdKkiNI=;
+        b=pXqTkiYbbOsN5n2bqo2+TXIB3apHT/D7rQP4Qe35yQzMb0068Nh0Dob58K84AOC6wO
+         pvh9cn8R+CtMw7urSqzr6ao5Qr1PsNjXnC70fEeVAZyjdw74Hc40XpRKmqzAKqPVMfbT
+         aBJiim0R+Pu9YFyR7C+z4iBYQMHJmyZsvUqwfRb9qJ58gA6aZ1RE55IDtwTSxvXsMkR6
+         i4N7C7LGH6ayW0FKPI6UbLtTmCjjyAoCj/r4a+ZZJUrjArtA9zLuyOsrsEiBS7D++mSj
+         V5zd3qlawiCO7njk7VSYexdyia8uHZHdnWJncva+R/K/U2QyqOSROXQ2r1O3K7ZJBqI1
+         cikQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUPSVnrlSpueYpxzfLQvE05LgAwm3cYxm/CTn2k6jccdKyJmkl8ll6/XAkKAt1xm2rb5huDVS90+gBc7KgnKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw2WoPrAY8QXLc9mDNoXkYrBQbMEG/LN/0wSf7aFnePFxoDk7+x
+	EC9C6kqKIKmm5ctV/gYwjbEffm02J8lbgl9PiQJ0nlX7FUOFTn8MYscfqpc1qA==
+X-Gm-Gg: ASbGnctDyiQs5LE8bmBMbz++ignLWeXY/Gbs/IuHzftGYdjI95K4PDlPzLJXXIV97US
+	VAcgYJQzaoOv+FJ8q/PRt9h+OUnjPyxpmEzFqlLr/Ef/xUNdnv6ImE40HNla0Sz5nYgvqCP4yPJ
+	nMvLHYfQBkIAuEU4t5eroWGNWEZxEBOyNTF/5daYk3QMoVW5BYbB0TbBiAurzteYZ6fo7VlNDPH
+	hCihfRbXADxvJybpI8V0BfWOPSKy5sPhMErXYbl2L4SFT2XFLkVB8puwUWDte9NtqeULj+OuuTS
+X-Google-Smtp-Source: AGHT+IEoWJyIWX3XBujOXaws+wrtmniQvJSQSjRB+r+y96gKyl0M0uolS/sv8wolEPPpMrJANi3UYA==
+X-Received: by 2002:a05:6a20:2593:b0:1d9:aa1:23e3 with SMTP id adf61e73a8af0-1e88d2d5e64mr65470929637.32.1737049401836;
+        Thu, 16 Jan 2025 09:43:21 -0800 (PST)
+Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:8dc2:8743:5c90:724f])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72daba4956esm259207b3a.128.2025.01.16.09.43.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Jan 2025 09:43:20 -0800 (PST)
+From: Douglas Anderson <dianders@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Douglas Anderson <dianders@chromium.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	David Airlie <airlied@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] drm/mediatek: dp: drm_err => dev_err in HPD path to avoid NULL ptr
+Date: Thu, 16 Jan 2025 09:42:50 -0800
+Message-ID: <20250116094249.1.I29b0b621abb613ddc70ab4996426a3909e1aa75f@changeid>
+X-Mailer: git-send-email 2.48.0.rc2.279.g1de40edade-goog
 MIME-Version: 1.0
-References: <20250109131313.32317-1-ansuelsmth@gmail.com> <20250116070214.vdnbyyqnciifngha@vireshk-i7>
-In-Reply-To: <20250116070214.vdnbyyqnciifngha@vireshk-i7>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 16 Jan 2025 16:58:11 +0100
-X-Gm-Features: AbW1kvYjzgMKu3xCJVK7F5l29WK5ilTbahAEoFI6YcNzZrqQ5wXTPLxX0mm-M2A
-Message-ID: <CAPDyKFr_z3WUyO2bTV7fPt8=ECdoHCERd=f5UN8MmNpyN=Rm_A@mail.gmail.com>
-Subject: Re: [PATCH v10 1/2] pmdomain: airoha: Add Airoha CPU PM Domain support
-To: Christian Marangi <ansuelsmth@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, upstream@airoha.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_075848_269642_D65E0E2E 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20250116_094322_890139_5991A7B9 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +100,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Jan 2025 at 08:02, Viresh Kumar <viresh.kumar@linaro.org> wrote:
->
-> Ulf,
->
-> On 09-01-25, 14:12, Christian Marangi wrote:
-> > Add Airoha CPU PM Domain support to control frequency and power of CPU
-> > present on Airoha EN7581 SoC.
-> >
-> > Frequency and power can be controlled with the use of the SMC command by
-> > passing the performance state. The driver also expose a read-only clock
-> > that expose the current CPU frequency with SMC command.
-> >
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> > Changes v10:
-> > - Depends on HAVE_ARM_SMCCC
-> > Changes v9:
-> > - Fix compile error targetting wrong branch (remove_new change)
-> > Changes v8:
-> > - Add this patch
-> > - Use SMC invoke instead of 1.2
->
-> Any inputs on this ?
+The function mtk_dp_wait_hpd_asserted() may be called before the
+`mtk_dp->drm_dev` pointer is assigned in mtk_dp_bridge_attach().
+Specifically it can be called via this callpath:
+ - mtk_edp_wait_hpd_asserted
+ - [panel probe]
+ - dp_aux_ep_probe
 
-Apologize for the delay! This looks good to me! So, applied for next
-to my pmdomain tree, thanks!
+Using "drm" level prints anywhere in this callpath causes a NULL
+pointer dereference. Change the error message directly in
+mtk_dp_wait_hpd_asserted() to dev_err() to avoid this. Also change the
+error messages in mtk_dp_parse_capabilities(), which is called by
+mtk_dp_wait_hpd_asserted().
 
-I assume Viresh will take the cpufreq patch via his tree? Please let
-me know if you prefer another route.
+While touching these prints, also add the error code to them to make
+future debugging easier.
 
-Kind regards
-Uffe
+Fixes: 7eacba9a083b ("drm/mediatek: dp: Add .wait_hpd_asserted() for AUX bus")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+Unfortunately, I have only been able to compile-time test this code. I
+hit the NULL pointer dereference on a device that's nowhere near
+upstream and it was running (sigh) a heavily modified copy of this
+code where the eDP stuff has been forked out of DP. Specifically, you
+can see <https://crrev.com/c/6073744>. It's pretty easy to understand
+that the same problem affects both codebases though, so I'm posting
+this "blind" in the hopes to at least fix upstream.
+
+I'll also note that the fact that mtk_edp_wait_hpd_asserted() calls
+mtk_dp_parse_capabilities() feels weird/wrong to me based on other eDP
+code I've worked on, but I've only barely looked at the Mediatek
+driver and perhaps others have already debated this. In any case,
+that's not directly related to this patch.
+
+ drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 0687672f0e52..ccd104d8851f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1763,7 +1763,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
+ 
+ 	ret = drm_dp_dpcd_readb(&mtk_dp->aux, DP_MSTM_CAP, &val);
+ 	if (ret < 1) {
+-		drm_err(mtk_dp->drm_dev, "Read mstm cap failed\n");
++		dev_err(mtk_dp->dev, "Read mstm cap failed: %zd\n", ret);
+ 		return ret == 0 ? -EIO : ret;
+ 	}
+ 
+@@ -1773,7 +1773,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
+ 					DP_DEVICE_SERVICE_IRQ_VECTOR_ESI0,
+ 					&val);
+ 		if (ret < 1) {
+-			drm_err(mtk_dp->drm_dev, "Read irq vector failed\n");
++			dev_err(mtk_dp->dev, "Read irq vector failed: %zd\n", ret);
+ 			return ret == 0 ? -EIO : ret;
+ 		}
+ 
+@@ -2056,7 +2056,7 @@ static int mtk_dp_wait_hpd_asserted(struct drm_dp_aux *mtk_aux, unsigned long wa
+ 
+ 	ret = mtk_dp_parse_capabilities(mtk_dp);
+ 	if (ret) {
+-		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
++		dev_err(mtk_dp->dev, "Can't parse capabilities: %d\n", ret);
+ 		return ret;
+ 	}
+ 
+-- 
+2.48.0.rc2.279.g1de40edade-goog
+
 
