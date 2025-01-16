@@ -4,89 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F935E77188
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 07:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B5FE77188
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 07:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZS/zLNoMtbOmAlXztUQxM70zl6Vh6C5NkcTxONG7DqM=; b=azADnVg7Y3hhNpUWKwfz0kyca0
-	X5aZBVF9S4bxyRb0zhkqvvc26FBPWAx9QykITiDjyaUirktHQ+2aOnhRRUiMtGdPyC8l9gFq3nw6a
-	rss8uj2UaGbaxNI1Fbkvja1ZIbV2GMb9WmF5/pdRGiAq6/ilLI5SQAJ64BOiuvOEanP/0mmo/O6ij
-	MG7NFI4F5ndNy5BeqwIBDVr1cTIf0A8Xwz7L0mqZMtpYHCZaATw3+lWE91zSpU5eSI4+R3SXpiDPA
-	OJ/fSsoTt+2c0qg2q3Lpjj5ooLtxGAAd0bc047XcpRPwVfv1M8cD/9RvjkizU9BXMlGJq1KYTyxhn
-	FTR98azQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rQAC6kCDdEI6iOII1wHqk8tAdoIl8H2yE4YFJdgv50Y=; b=joMLiC5bTU39HLkvMljdOzzksv
+	PK0Wu5Jrzdrp7S+P06h8Youj0gAR80cv8vfJ3rrTDxof5nN+UOWqXEJRNchfseDEkw9FFnJk7TzmF
+	eIwy2g7WqSwEkVyau5EW5nG+XsQEUQ/djvj8DIlwo3psCaZpkUlgCe/RdbirDj0frwM/ZolCEI390
+	QljHa89YOuzGQyNQKZD39+oW9GqkZIKjeGGsPogrHHZcEntzOw0YvdHtXQByjp8KR28Iu/CEovbsz
+	4QWDQ15er+BAT1uKOPwAL07VW1pW7F0uk5bKHyGyzOt+MU30jV5qa+VIUp4KLwYGOTBsSZRnCegK+
+	P+WxlEZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYJv7-0000000E0Of-0V3o;
-	Thu, 16 Jan 2025 07:04:01 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1tYKKe-0000000E30u-42VT;
+	Thu, 16 Jan 2025 07:30:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYJtR-0000000E0E0-1qIR
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jan 2025 07:02:19 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-219f8263ae0so8716285ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jan 2025 23:02:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737010937; x=1737615737; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZS/zLNoMtbOmAlXztUQxM70zl6Vh6C5NkcTxONG7DqM=;
-        b=S31+CS+qFweKu8/cDgdeCCQtPNZeMOJEW4ZGzS9THB+f5FoXrCZDb+srQ8OdryrHIT
-         9tvSe8HLDympqCZ/+asmTHHky4N0muh1hXGXfhv7MA+ZaE3+oputtGmLTo0D/7WwBi6E
-         ezlHw6S/meVAobuiV0qbY99johpB7ks3nqdLsnxlBgtMMLNc38Y28xXbc0s7/ULb/gPv
-         oQRGspqr6GSj1Edc/e9oryRR7Rf5XW5SKxHzZzCaViagoCOkhsSm5BXI3uap/OKqVUlD
-         iyKC+XSDfnu+QKltEfiMjOWd/kCD7vbLy6I+jYrdS0Pu0vRDDb080qv0Fy2vOyLxdzYX
-         DcSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737010937; x=1737615737;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZS/zLNoMtbOmAlXztUQxM70zl6Vh6C5NkcTxONG7DqM=;
-        b=ilgYBrTaoVeAIrUDX1R/YO5vyoIZiqDvgWxJboV+gX5td7p28ZJ9ManI5NMMIeJL/O
-         VTwyM/onMnxHqFgkYmrwyhuvfUdng2+Q8pj3nofngypR4Ebo+6hfUXhnEtrB9A+VHhpO
-         Dh3sbGTvBagsUd26mAQOAJ/wHyhxguXLMknL2HealslzYa/KZTWgMww24+/AeZ6YtptH
-         UnG1wkMjl3vcDIMNc5SJrXGE++TomrHCN9q9HEOSitTJkZOFaijnBS0Z4/oXiV3BxtmG
-         9mL9oTXZoNrsWXj3M2keOI1+HoiNcBG9G8K9NI1zNuS0wtTLecl5T7QY0o+EEH3I1NTz
-         BKtA==
-X-Forwarded-Encrypted: i=1; AJvYcCWCyS82tkSr09y03Y798e9ikdhYQqk3XaFF1u9s5JtU7sLhEkZoZbHDuYN8f3yV/nIL5DCYMKoxrZyiBye/3Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLSkK+W34Z7Agx1OrOmwLScvaz+/RsL8F924jdMFA0t108pgRE
-	uau5vI30HuP7vzOenJ193p+BzgJK/awoapfMk2o1uKc6jvhQXYfpsARyFQ25Lsw=
-X-Gm-Gg: ASbGnctiGSLBv+4cBLmnEvR1piWTWGuVzGlY/u+w+bKLSjIdIFYZ4Ch3OAFCIUW07od
-	TBiZwRkStlYWJqYrOoAMMNZteXdEmfJKcAACVCsPYyUQz02H5yodh+yi3FLdypgdHwKQlEI/w5/
-	AdNbDu8xF5ntzfszsXnp/npSjMcSc2rWuJ9OrNvMdwP/8wJXu2w2ySnvJ07XFiZHliGkUlDPM0S
-	9oOxNp2FlrEwdeVzxGje/3nzpUmV7egrALH1XwdkP6PFd93tShtkncfWd4=
-X-Google-Smtp-Source: AGHT+IFlzrBcdUY0bs4/8Sj7xVrCBP3SbPdaZMKXeURQBEhXHLuZJom44Aw7mHBQtMkoxQPSA6dA9w==
-X-Received: by 2002:aa7:88cc:0:b0:71e:4930:162c with SMTP id d2e1a72fcca58-72d21f4ac63mr45499683b3a.6.1737010936743;
-        Wed, 15 Jan 2025 23:02:16 -0800 (PST)
-Received: from localhost ([122.172.84.139])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72d40549322sm10135399b3a.8.2025.01.15.23.02.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jan 2025 23:02:16 -0800 (PST)
-Date: Thu, 16 Jan 2025 12:32:14 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, upstream@airoha.com
-Subject: Re: [PATCH v10 1/2] pmdomain: airoha: Add Airoha CPU PM Domain
- support
-Message-ID: <20250116070214.vdnbyyqnciifngha@vireshk-i7>
-References: <20250109131313.32317-1-ansuelsmth@gmail.com>
+	id 1tYKJO-0000000E2hj-0gOA;
+	Thu, 16 Jan 2025 07:29:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 567B6A4086D;
+	Thu, 16 Jan 2025 07:27:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8831DC4CED6;
+	Thu, 16 Jan 2025 07:29:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737012545;
+	bh=I80ogNUmSoIctG6ONpKiNo6HZ4UauiCnTHsIxxGNjNM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DSVVfmGeGo50uvx1iR1+zuD4GZH/KUEs3SnyVF2/ETu7ac8C0OjvfVVA8d2BMV0d2
+	 fpjfDDcWO8Ste7vrxmabwbjy5PdPDgQxEqUCJ9GnYCwykhUwM37tsXQtPJWDv8zlUA
+	 8SIdnXUGvOUEX2048h4kYIqG4zzfRYPsH0dBWYOfg/DAXWiu60PEeifpAg2aHGkuso
+	 lOTEwUfOgLw8agZp331WibpK5NEG56FAXbMRR1sBkbiGr9V5ZuC40S+2aYaALlMroH
+	 Fnjfz7HhiuDHCwjNYEmXW28OZOwa3nhjpvped0ECXkiEArziIYNZfTPnvaSuJQ2/bb
+	 ipvysAZo/ZMSg==
+Message-ID: <d04bc250-2104-4e02-9bf8-5785f4444c8d@kernel.org>
+Date: Thu, 16 Jan 2025 08:28:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250109131313.32317-1-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: mediatek: add support for
+ mt8196
+To: =?UTF-8?B?Q2F0aHkgWHUgKOiuuOWNjuWptyk=?= <ot_cathy.xu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?TGVpIFh1ZSAo6Jab56OKKQ==?= <Lei.Xue@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ =?UTF-8?B?R3VvZG9uZyBMaXUgKOWImOWbveagiyk=?= <Guodong.Liu@mediatek.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "sean.wang@kernel.org" <sean.wang@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250115063555.32492-1-ot_cathy.xu@mediatek.com>
+ <20250115063555.32492-2-ot_cathy.xu@mediatek.com>
+ <nmyxygrya6cpalmirsunvkx32uox3kjxd4l5ggdhjtj7edyizz@yodolm5ktboo>
+ <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_230217_476891_7074E90D 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20250115_232906_326753_B781F2E0 
+X-CRM114-Status: GOOD (  23.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +133,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ulf,
+On 16/01/2025 03:20, Cathy Xu (许华婷) wrote:
+>>> +          bias-pull-down:
+>>> +            oneOf:
+>>> +              - type: boolean
+>>> +              - enum: [100, 101, 102, 103]
+>>> +                description: mt8196 pull down PUPD/R0/R1 type
+>>> define value.
+>>> +              - enum: [200, 201, 202, 203, 204, 205, 206, 207]
+>>> +                description: mt8196 pull down RSEL type define
+>>> value.
+>>
+>> Not much improved.
+>   I have removed the content related to 'resistance value', we use
+> 'RSEL' instead of 'resistance value'.
 
-On 09-01-25, 14:12, Christian Marangi wrote:
-> Add Airoha CPU PM Domain support to control frequency and power of CPU
-> present on Airoha EN7581 SoC.
+So the value in Ohms was removed? I assume above do not have known value
+in Ohms?
+
 > 
-> Frequency and power can be controlled with the use of the SMC command by
-> passing the performance state. The driver also expose a read-only clock
-> that expose the current CPU frequency with SMC command.
+>>
+>>
+>>> +            description: |
+>>> +              For pull down type is normal, it doesn't need add
+>>> RSEL & R1R0.
+>>> +              For pull down type is PUPD/R0/R1 type, it can add
+>>> R1R0 define to
+>>> +              set different resistance. It can support
+>>> "MTK_PUPD_SET_R1R0_00" &
+>>> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
+>>> +              "MTK_PUPD_SET_R1R0_11" define in mt8196.
+>>> +              For pull down type is PD/RSEL, it can add RSEL
+>>> define to set
+>>> +              different resistance. It can support
+>>> +              "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
+>>> +              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" &
+>>> +              "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101" &
+>>> +              "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
+>>> define in
+>>> +              mt8196.
+>>> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>> b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>> new file mode 100644
+>>> index 000000000000..bf0c8374407c
+>>> --- /dev/null
+>>> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>> @@ -0,0 +1,1572 @@
+>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
+>>> +/*
+>>> + * Copyright (C) 2025 Mediatek Inc.
+>>> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
+>>> + */
+>>> +
+>>> +#ifndef __MT8196_PINFUNC_H
+>>> +#define __MT8196_PINFUNC_H
+>>> +
+>>> +#include <dt-bindings/pinctrl/mt65xx.h>
+>>> +
+>>> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+>>> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
+>>> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
+>>> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) | 4)
+>>> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) | 5)
+>>> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) | 6)
+>>
+>> I do not see how you resolved my comment from v1. In v2 I reminded
+>> about
+>> it, so you responded that yopu will change something, but I do not
+>> see
+>> any changes.
+>>
+>> So explain: how did you resolve my comment?
+>>
+>> These two examples where you claim you will change something, but
+>> send
+>> the same. I skipped the rest of the patch.
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
-> Changes v10:
-> - Depends on HAVE_ARM_SMCCC
-> Changes v9:
-> - Fix compile error targetting wrong branch (remove_new change)
-> Changes v8:
-> - Add this patch
-> - Use SMC invoke instead of 1.2
+>   Thank you for your patient response, here is my explanation for you
+> question:
+> 
+>   In v1, I undertand that you meant I didn't sent a real binding, and
 
-Any inputs on this ?
 
--- 
-viresh
+The comment is under specific lines, so I said these defines are not a
+real binding. You sent them again, but they are still not bindings,
+because they are not used in the driver. Maybe the usage is convoluted,
+so which part of implementation are these connecting with DTS? IOW,
+which part of driver relies on the binding?
+
+
+
+> the bindings should be separated from driver. In addition, I should
+> run scripts/checkpatch.pl and scripts/get_maintainers.pl. So in v2, I
+> sent a real binding(mediatek,mt8196-pinctrl.yaml), and sent two
+> separate patches, one for driver and one for bindings, also ran
+> scripts/get_maintainers.pl get necessary people and sent to them.
+> 
+>   In v2, I understand that I need refer to git history to modify the
+> commit msgs, so I made the changes in v3. Then you asked me about the
+> difference between 'RSEL' and 'resistance value'. I replied that the
+> 'resistance value' method is no longer use, so in v3, I removed all
+> content about it(include entire 'rsel-resistance-in-si-unit' property
+> and the parts mentioned in bias-pull-up/down).
+
+Yes, thank you this I saw, the comments appear under specific places, so
+only these places are discussed.
+
+
+
+Best regards,
+Krzysztof
 
