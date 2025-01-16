@@ -4,58 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBAADC02180
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2025 23:17:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3013DC02180
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2025 01:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+v6KUQgir/lgW530jnyh5w9zw2n5D+uMgB/N437EbSI=; b=RyJNfpyx91ajYuQUtc4JVyhQgX
-	24YDVL87cv4SwzvpNshgBAtKcPQL4sbGvHuQ4swghgSWUBgrbsFHF99FOCn0CK48YxnOayFSo9cQo
-	FdZQU6Dffz5k9+9IotPaAYm8Or8vJO4AOLx0Q0HMNFfjGegfv7Ud4X/MpPfibqCJwVWy15nvj3C1O
-	RHFiZk3000hd4bJL5C+O1qoLursDfmLXISDHaf8dP86NqKpYJ55S/sZRKmk8ZMc/Wpoees7tREb9J
-	U1Pxal2Evx5xWND0CVFSRsY/ts3pa2PNoPmymiJ5D0EIYI2v7OFNHDhSVTx2+0vtH6W9hzzr1ijbl
-	EMMK6wBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eSHmQM8NATK6SZ+a/IRk6MOrqMnMNmxZlWOSIrLuWAw=; b=KKw+wDtNYUEz7DSNF7B3cmfJCU
+	qh4CxC0Q+F5TSpJ0MK2b8c+shEdWkgVPASlgEw3pryDGClD+yWXmdMG8ZIp+LWx4t++XZLGMrU1Sr
+	+T/X4yLROV/K7rPBkDw5lHzPvdNmgSGalcXzqnoyHHq+SzbIyesyP30kvpmhHjF2YfkuXIdde1ruq
+	Ke7SJJKJhZAHa8cbFlrwq79QHJm49d0aWOuoaS/B0C8RMeVHe3mi0ad7yamGIHSHqGNiI6pcRpLJ9
+	inkPJMh+Ywwp+UIjHdIbY8ZJVW3mMQEGO29aZ3x0DtGKkcgIXA+VZ5ilI/7BNvAmNwKvp7HZ37iJW
+	mC1ksHVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYCdh-0000000DKcN-3Lqb;
-	Wed, 15 Jan 2025 23:17:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tYEaK-0000000DXDG-1MrT;
+	Thu, 16 Jan 2025 01:22:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYCcQ-0000000DKVB-2Dmx;
-	Wed, 15 Jan 2025 23:16:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8580FA42643;
-	Wed, 15 Jan 2025 23:14:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26B33C4CED1;
-	Wed, 15 Jan 2025 23:16:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736982973;
-	bh=3zIKod6x6p/3kPY13t63j93xA6NahssLaW2A/NKgW4I=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=iHehGmGFX02DEW3nQTnGkhXM3MgDB5BxaPXg/ZluMx1nwHpBdHNp7iK2MZSo2+G/h
-	 fCmL/jNkHgrnqULTGDoiVwSZlH80YJhYETrtmNkpcxAkjl4xdsJxVkhq+wQEDNe0EV
-	 6PYXvXBZKgB/LGGvnqQFA7y+TNGQpf/k0EPywX68pHReUY6FkjYGIAAgPNHanXDGSY
-	 +yPJR7WV2E6d0NCaNXSf6dCPS07vGkeLyoweLNZ19XvqV1qF+MTyT9+hy30jloN4Vp
-	 ZdpQvMRPaDnHexGYDqqfv44uLBzYQxfYlC2dsdpw2+fz8A7RSo519PFSaHSP3fOFOy
-	 GwkUA7NphGP4g==
-Message-ID: <848b4dad4f38dc6545b97f7c5007e514.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	id 1tYEaH-0000000DXBs-3eLa;
+	Thu, 16 Jan 2025 01:22:10 +0000
+X-UUID: 4aafc320d3a811ef9048ed6ed365623b-20250115
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eSHmQM8NATK6SZ+a/IRk6MOrqMnMNmxZlWOSIrLuWAw=;
+	b=TJPeFUJyRE3CSIis570PGm9UUWgBBlSpSYSrpOBnFhsrus2ODSILJ6lxTwN6EZqSSvUqzTIkvsY2d7kpZcEf+LP2adTN3WwxFRD5OguSY7oTZ64uwMs3ecbrr8zdsBK75hkY3+DzwjMaQ8FviR0LT4kWNLnBi4NRlA4PEFYBFfg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:f865b730-5703-4b62-870f-8ce41314a508,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:5f90f337-e11c-4c1a-89f7-e7a032832c40,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1|19,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 4aafc320d3a811ef9048ed6ed365623b-20250115
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 687432178; Wed, 15 Jan 2025 18:22:03 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Thu, 16 Jan 2025 09:22:00 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Thu, 16 Jan 2025 09:22:00 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Simon
+ Horman" <horms@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, Sky Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next 0/3] net: phy: mediatek: Add token-ring ops
+Date: Thu, 16 Jan 2025 09:21:55 +0800
+Message-ID: <20250116012159.3816135-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
-References: <20250113-topic-spmi_node_breakage-v2-1-dd35a3a6daa6@oss.qualcomm.com> <5b139af8d639e20a14c8bd00e8e03a4a.sboyd@kernel.org> <58cb6c37-0ea0-4866-a2b1-92cb0f0391a7@gmail.com> <305d7cf5f0a66efc01181f24d3a288d3.sboyd@kernel.org> <91e2bd5b-71fa-402a-82cb-e68d3295804a@gmail.com>
-Subject: Re: [PATCH v2] spmi: Fix controller->node != parent->node breakage
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Marijn Suijten <marijn.suijten@somainline.org>, linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@oss.qualcomm.com>, Abel Vesa <abel.vesa@linaro.org>, Johan Hovold <johan+linaro@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>, Konrad Dybcio <konradybcio@gmail.com>, Konrad Dybcio <konradybcio@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Date: Wed, 15 Jan 2025 15:16:10 -0800
-User-Agent: alot/0.12.dev1+gaa8c22fdeedb
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_151614_639010_ABFFF771 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20250115_172209_913581_F17BF605 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,35 +91,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Konrad Dybcio (2025-01-14 12:37:20)
-> On 1/14/25 19:30, Stephen Boyd wrote:
-> >=20
-> > Ok, I see that I was reading the already reverted state of the tree
-> > where the 'ctrl->dev.of_node =3D node' assignment came back. So there's
-> > nothing to do besides drop the patch in fixes, which I already did. We
-> > can then apply this patch to drop the duplicate assignment as a cleanup
-> > and to avoid a refcount bump on the of_node that isn't needed.
-> >=20
-> > ----8<---
-> > diff --git a/drivers/spmi/hisi-spmi-controller.c b/drivers/spmi/hisi-sp=
-mi-controller.c
-> > index 3cafdf22c909..122140b97579 100644
-> > --- a/drivers/spmi/hisi-spmi-controller.c
-> > +++ b/drivers/spmi/hisi-spmi-controller.c
-> > @@ -300,9 +300,6 @@ static int spmi_controller_probe(struct platform_de=
-vice *pdev)
-> >  =20
-> >       spin_lock_init(&spmi_controller->lock);
-> >  =20
-> > -     ctrl->dev.parent =3D pdev->dev.parent;
-> > -     ctrl->dev.of_node =3D of_node_get(pdev->dev.of_node);
-> > -
-> >       /* Callbacks */
-> >       ctrl->read_cmd =3D spmi_read_cmd;
-> >       ctrl->write_cmd =3D spmi_write_cmd;
->=20
-> That works for me, thank you
->=20
+From: Sky Huang <skylake.huang@mediatek.com>
 
-Joe, care to send this patch to replace the one you sent previously?
+This patchset add token-ring ops and moves some macros from mtk-ge.c
+into mtk-phy-lib.c. Also, MediaTek's built-in 2.5Gphy driver is added.
+
+Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
+---
+Sky Huang (2):
+  net: phy: mediatek: Move some macros to phy-lib for later use
+  net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on
+    MT7988
+
+SkyLake.Huang (1):
+  net: phy: mediatek: Add token ring access helper functions in
+    mtk-phy-lib
+
+ MAINTAINERS                            |   1 +
+ drivers/net/phy/mediatek/Kconfig       |  11 +
+ drivers/net/phy/mediatek/Makefile      |   1 +
+ drivers/net/phy/mediatek/mtk-2p5ge.c   | 343 +++++++++++++++++++++++++
+ drivers/net/phy/mediatek/mtk-ge-soc.c  | 297 +++++++++++++--------
+ drivers/net/phy/mediatek/mtk-ge.c      |  78 ++++--
+ drivers/net/phy/mediatek/mtk-phy-lib.c |  91 +++++++
+ drivers/net/phy/mediatek/mtk.h         |  17 ++
+ 8 files changed, 714 insertions(+), 125 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
+
+-- 
+2.45.2
+
 
