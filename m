@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33119C02188
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 17:13:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C9DC02183
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 18:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wjwQpODvobkfiZASFrGVqsRrnXdcuv2VPJLKEtXc4oU=; b=ydEk2Ag0w3P+jrHp5Vc2f8xhsz
-	xbjZUNEnUArme1qCOxzPuV3dZpklOPMLGPRP0dRsK4MAlEcdrk801mIKb+Ghv0eI9sSjJJV1lTVfd
-	+zSwczd2uAZop/yt4KQD6/sY3GS15Bsc/X09wsveVQfSDD068+Aphd19QotdMfxyFv5Oea+BBO3N7
-	sjq7LjXQL8budIGMhCwJ1eUJE823isn2dtw9c/5zBMJSmQfaWuvqrvzp31Q2hW/1/yPU6F3YJ6S85
-	6RcLiulzptzkNH8HYB46YWPTBNcawQaCe8OP7ZCF7N28Yf3BxDp21o9Soj8Z0k0YYsDD9zhUk4YyI
-	LGwl+Cpw==;
+	bh=Mt4YQ5I0aOBm8Wx8Ld+bzp8XQiHDr9QBnfewQyVv7Vc=; b=LmwRAfyu6t1RHRbz+Z3aA+SnLH
+	Apl4KF+rd4R0JgmJZgaPXq9+Tn0kFPn2qOuJ71pSOop9z3aFBn07KmHElxA9dyI3fTxrMeocIUTAN
+	K7TFCaItGpVzkUnHMTOymRi9YTm2aAKh5mLOtVo0guWqGn+SHinyDzzIInDnsYgmDq/G88qheHSIO
+	xdTSJWDEuyC7DGDY7S0zvtV5ua5qwcC7ziGbrkHFUNB1a8f7vmWqp0cD+a0oBjRKrW32sIKUGSi/Z
+	5eJqUpGPB1XSDudTtbpsvj0OjKnHazO48k7YCC4gl3PL08C/NhkCuqNO+ciuNNdEcuXmod9hUsdI8
+	uf19AS9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYpu6-00000000vcz-1LgS;
-	Fri, 17 Jan 2025 17:13:06 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tYrIy-000000017bu-3bDk;
+	Fri, 17 Jan 2025 18:42:52 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYpkr-00000000teT-1JOB;
-	Fri, 17 Jan 2025 17:03:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4E738A4327D;
-	Fri, 17 Jan 2025 17:01:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BAE4C4CEDD;
-	Fri, 17 Jan 2025 17:03:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737133411;
-	bh=7+7jqSST9DXKAARHg+D99JW6DXAhw6kqu5zZwJaCdA0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kJJbfjFa60XiZ4VAGecLla1hbgUb65SMy6TIOGVyF5tJSyQeauVWNKrNjy/T7bYyy
-	 K1T0nkgFCn2ErUYFkyx3JrEa4tdOCLmK13CZa/I0/PXk1J+CyYAur6WoFHk0UTYt/f
-	 1U0V+ZHS7IGMxcJ4gihPHVLalHEfcFxXgXQhkusdT8PDouxUODx6ZLt//DFWtalmBw
-	 Uw+eMw1BtR8ARe8h+qKukUYKcT5E1vKa1NtRn2sVlcOJphox5oqcDiZ8mdirLpvt5p
-	 wfjJ9u6gztvti5Q4ZiMqw9/BszLDYvBlDA7flt4qmqsXBbzhZkixdu1REnmtGqniPE
-	 9mgu4A/E2zLxg==
-Date: Fri, 17 Jan 2025 18:03:28 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, upstream@airoha.com
-Subject: Re: [net PATCH] net: airoha: Fix wrong GDM4 register definition
-Message-ID: <Z4qNYBWBFn-Adbli@lore-desk>
-References: <20250117155257.19263-1-ansuelsmth@gmail.com>
+	id 1tYrIb-000000017Tj-0DwK;
+	Fri, 17 Jan 2025 18:42:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1737139349; x=1768675349;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=+2nmW2NKMU28nyZzdx1UxlGMW1MKoytc0yORwfK08tI=;
+  b=Hl5pFcF/ayFkfikjvYwMWvfSlq1OMMepjqWf8BXM1hxM50S95kTn48Gv
+   8HrULS/MQd0pGHDa4YGU36Y+kXneR5/wMgNNG0FSgtqmTp8I6+zDE08Qc
+   KUEe3/4nWqiY7piRy+No492i93J5VenyOFxQR/e+JVbeI0Br6M/3KM0i7
+   5xkIpPzD90OBAvbZXW++TLvrK6PTRsPo7J9DlDJNgybaOMhTtM3e/ZsQR
+   u2QAcgH+7NDB98rznD01gkl66fbGHxNDbZrMBNIMaT0TOLaw7/xZ9MSvk
+   0kOXbYRtLxgOPYaQ3e/3cEg2K1baELI/f4LTg361OZf0FpAipejWaDbDL
+   A==;
+X-CSE-ConnectionGUID: 7NS4nzqASgCmb1xXPFoBlQ==
+X-CSE-MsgGUID: HUTvdIEpQW++gY4fpXQMHw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11318"; a="48244887"
+X-IronPort-AV: E=Sophos;i="6.13,212,1732608000"; 
+   d="scan'208";a="48244887"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jan 2025 10:42:27 -0800
+X-CSE-ConnectionGUID: DFlZGaCrRF+VTsoFUySQWw==
+X-CSE-MsgGUID: sC6n3vS5Tt2eoHcile/hHA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,212,1732608000"; 
+   d="scan'208";a="110871489"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 17 Jan 2025 10:42:21 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tYrIQ-000TaB-2o;
+	Fri, 17 Jan 2025 18:42:18 +0000
+Date: Sat, 18 Jan 2025 02:41:24 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chunkuang.hu@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
+	jitao.shi@mediatek.com, jie.qiu@mediatek.com,
+	junzhi.zhao@mediatek.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, dmitry.baryshkov@linaro.org,
+	lewis.liao@mediatek.com, ives.chenjh@mediatek.com,
+	tommyyl.chen@mediatek.com, jason-jh.lin@mediatek.com
+Subject: Re: [PATCH v5 32/34] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+Message-ID: <202501180257.A2Og8gLK-lkp@intel.com>
+References: <20250113145232.227674-33-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dDHGaHO6hPydbGRy"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250117155257.19263-1-ansuelsmth@gmail.com>
+In-Reply-To: <20250113145232.227674-33-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250117_090333_485022_CC08A6AE 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20250117_104229_137973_2F891023 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,66 +99,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi AngeloGioacchino,
 
---dDHGaHO6hPydbGRy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+kernel test robot noticed the following build errors:
 
-On Jan 17, Christian Marangi wrote:
-> Fix wrong GDM4 register definition, in Airoha SDK GDM4 is defined at
-> offset 0x2400 but this doesn't make sense as it does conflict with the
-> CDM4 that is in the same location.
->=20
-> Following the pattern where each GDM base is at the FWD_CFG, currently
-> GDM4 base offset is set to 0x2500. This is correct but REG_GDM4_FWD_CFG
-> and REG_GDM4_SRC_PORT_SET are still using the SDK reference with the
-> 0x2400 offset. Fix these 2 define by subtracting 0x100 to each register
-> to reflect the real address location.
+[auto build test ERROR on next-20250113]
+[cannot apply to robh/for-next pza/reset/next linus/master pza/imx-drm/next drm-misc/drm-misc-next v6.13-rc7 v6.13-rc6 v6.13-rc5 v6.13-rc7]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-display-mediatek-dpi-Add-MT8195-and-MT8188-compat/20250113-225554
+base:   next-20250113
+patch link:    https://lore.kernel.org/r/20250113145232.227674-33-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v5 32/34] drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188
+config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20250118/202501180257.A2Og8gLK-lkp@intel.com/config)
+compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project c23f2417dc5f6dc371afb07af5627ec2a9d373a0)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250118/202501180257.A2Og8gLK-lkp@intel.com/reproduce)
 
->=20
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
-SoC")
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/net/ethernet/mediatek/airoha_regs.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/airoha_regs.h b/drivers/net/et=
-hernet/mediatek/airoha_regs.h
-> index e448b66b5334..30c96f679735 100644
-> --- a/drivers/net/ethernet/mediatek/airoha_regs.h
-> +++ b/drivers/net/ethernet/mediatek/airoha_regs.h
-> @@ -249,11 +249,11 @@
->  #define REG_GDM3_FWD_CFG		GDM3_BASE
->  #define GDM3_PAD_EN_MASK		BIT(28)
-> =20
-> -#define REG_GDM4_FWD_CFG		(GDM4_BASE + 0x100)
-> +#define REG_GDM4_FWD_CFG		GDM4_BASE
->  #define GDM4_PAD_EN_MASK		BIT(28)
->  #define GDM4_SPORT_OFFSET0_MASK		GENMASK(11, 8)
-> =20
-> -#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x33c)
-> +#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x23c)
->  #define GDM4_SPORT_OFF2_MASK		GENMASK(19, 16)
->  #define GDM4_SPORT_OFF1_MASK		GENMASK(15, 12)
->  #define GDM4_SPORT_OFF0_MASK		GENMASK(11, 8)
-> --=20
-> 2.47.1
->=20
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501180257.A2Og8gLK-lkp@intel.com/
 
---dDHGaHO6hPydbGRy
-Content-Type: application/pgp-signature; name="signature.asc"
+All errors (new ones prefixed by >>):
 
------BEGIN PGP SIGNATURE-----
+>> drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:345:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     345 |         val = FIELD_PREP(SD0_MAP, sd0) | FIELD_PREP(SD1_MAP, sd1);
+         |               ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:378:51: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     378 |         regmap_update_bits(hdmi->regs, AIP_CTRL, I2S_EN, FIELD_PREP(I2S_EN, chnum));
+         |                                                          ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:410:13: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     410 |         fifo_map = FIELD_PREP(FIFO0_MAP, 0) | FIELD_PREP(FIFO1_MAP, 1);
+         |                    ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:477:53: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     477 |         regmap_update_bits(hdmi->regs, AIP_CTRL, SPDIF_EN, FIELD_PREP(SPDIF_EN, spdif_i2s));
+         |                                                            ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:554:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     554 |                            FIELD_PREP(MAX_2UI_I2S_HI_WRITE, swapbit));
+         |                            ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:579:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     579 |                            FIELD_PREP(MAX_1UI_WRITE, 4));
+         |                            ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:715:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     715 |                            FIELD_PREP(TMDS_PACK_MODE, TMDS_PACK_MODE_8BPP));
+         |                            ^
+>> drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:812:16: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     812 |         hpd_pin_sta = FIELD_GET(HPD_PIN_STA, hpd_status);
+         |                       ^
+   8 errors generated.
+--
+>> drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:59:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      59 |                                    FIELD_PREP(DDC_CTRL_CMD, DDC_CMD_CLOCK_SCL));
+         |                                    ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:87:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      87 |                            FIELD_PREP(HPD_DDC_DELAY_CNT, DDC2_DLY_CNT));
+         |                            ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:133:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     133 |                            FIELD_PREP(DDC_CTRL_CMD, DDC_CMD_CLEAR_FIFO));
+         |                            ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:139:9: warning: comparison of distinct pointer types ('typeof ((loop_counter)) *' (aka 'unsigned short *') and 'uint64_t *' (aka 'unsigned long long *')) [-Wcompare-distinct-pointer-types]
+     139 |                 rem = do_div(loop_counter, temp_length);
+         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/asm-generic/div64.h:183:28: note: expanded from macro 'do_div'
+     183 |         (void)(((typeof((n)) *)0) == ((uint64_t *)0));  \
+         |                ~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~
+>> drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:139:9: error: incompatible pointer types passing 'u16 *' (aka 'unsigned short *') to parameter of type 'uint64_t *' (aka 'unsigned long long *') [-Werror,-Wincompatible-pointer-types]
+     139 |                 rem = do_div(loop_counter, temp_length);
+         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/asm-generic/div64.h:199:22: note: expanded from macro 'do_div'
+     199 |                 __rem = __div64_32(&(n), __base);       \
+         |                                    ^~~~
+   include/asm-generic/div64.h:174:38: note: passing argument to parameter 'dividend' here
+     174 | extern uint32_t __div64_32(uint64_t *dividend, uint32_t divisor);
+         |                                      ^
+>> drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:207:26: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     207 |                         puc_value[read_idx] = FIELD_GET(DDC_DATA_OUT, val);
+         |                                               ^
+   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:139:9: warning: shift count >= width of type [-Wshift-count-overflow]
+     139 |                 rem = do_div(loop_counter, temp_length);
+         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/asm-generic/div64.h:195:25: note: expanded from macro 'do_div'
+     195 |         } else if (likely(((n) >> 32) == 0)) {          \
+         |                                ^  ~~
+   include/linux/compiler.h:76:40: note: expanded from macro 'likely'
+      76 | # define likely(x)      __builtin_expect(!!(x), 1)
+         |                                             ^
+   2 warnings and 5 errors generated.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ4qNYAAKCRA6cBh0uS2t
-rKM9AP9qxIC+KDo4D2c6L+3TtapTrfantCgjpRZKdGBE3AW47QEAxqhGFldb4QF/
-WgB/p4rDxSN9ukHVhmmzMDKo0ICFTAY=
-=QQSQ
------END PGP SIGNATURE-----
 
---dDHGaHO6hPydbGRy--
+vim +/FIELD_PREP +345 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+
+   333	
+   334	static u32 mtk_hdmi_v2_aud_output_channel_map(u8 sd0, u8 sd1, u8 sd2, u8 sd3,
+   335						      u8 sd4, u8 sd5, u8 sd6, u8 sd7)
+   336	{
+   337		u32 val;
+   338	
+   339		/*
+   340		 * Each of the Output Channels (0-7) can be mapped to get their input
+   341		 * from any of the available Input Channels (0-7): this function
+   342		 * takes input channel numbers and formats a value that must then
+   343		 * be written to the TOP_AUD_MAP hardware register by the caller.
+   344		 */
+ > 345		val = FIELD_PREP(SD0_MAP, sd0) | FIELD_PREP(SD1_MAP, sd1);
+   346		val |= FIELD_PREP(SD2_MAP, sd2) | FIELD_PREP(SD3_MAP, sd3);
+   347		val |= FIELD_PREP(SD4_MAP, sd4) | FIELD_PREP(SD5_MAP, sd5);
+   348		val |= FIELD_PREP(SD6_MAP, sd6) | FIELD_PREP(SD7_MAP, sd7);
+   349	
+   350		return val;
+   351	}
+   352	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
