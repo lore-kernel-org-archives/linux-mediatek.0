@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5C8C02183
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 11:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05018C02183
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 12:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nw3/DrLiwmOZMrf3Bo9q5a7A+MBqjyNFVfEpa7H6w6U=; b=w3NuflQTUTDwz9+f2ChDVQvtwS
-	Jzy4gCd3M2Zm5GoAJ93tqTzSwMGp4jrN11kEirlYP+nMvoVaztLDgVyedcQoGcyVHRRIn5iVKL6Ub
-	CovmPBZ9RxLd+1g+qUrmVvBOt6oVX2O34EI/T+73pA/S3UosJHca0Rp7SaX7OEWaGb6nlb7HvR3UP
-	OUFLw3dJGA16m4kz4CELiM7BOHZ8agL/IfeXJSSLH8d4a72kabMBiCRq/GGf/nt6w8EOISEZYinfA
-	TjyQ0rcyY6ri8eI2ESDgkVuDra2qS5aiwnQnW3JOhpH3gYtIu2cTuOTBc4cBTyJEfWwEWaShkNpY7
-	fxAQtw2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nrf2Xa5xJOGUeO6KsphcOxhHf/jvR2i99qlGeNx6RJw=; b=ZNrZidGA7BJUx+x0cpW3cG/oUN
+	6n++JpaFJ+GV0m+QkxW0DgnvvLp5IA0ehaACuhuCg8B8svtDJamYej5Y0p/+OwKoV43ArlHj+ZSYy
+	6EH7ls/kObKv7Zg9AW4/zAQR1gByM1uMSehE+lc/j+EE5IbQkqQ1cjiDynIfr4bhcIj+PCuvp+Pze
+	xOgaziXvyHB+MAHdzM6Jk5SE/0N+369mv3HIBaBkCdUZN4b7guREyeswFjdhIS33hDJ/bigX5tOYk
+	V0Un8PzaS/+v2rXWs9NHlYm9lBMt5pxxm8Ez6z/xCm/2Ej6tVAQYzTadWIz7EYhCqPSSxm2mVGJYl
+	mcKC2YkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYket-000000009zF-3uIi;
-	Fri, 17 Jan 2025 11:37:03 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1tYl8m-00000000DC2-3d09;
+	Fri, 17 Jan 2025 12:07:56 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYkdX-000000009nZ-3rw9;
-	Fri, 17 Jan 2025 11:35:42 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.254])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4YZHcq34sJzjYBg;
-	Fri, 17 Jan 2025 19:31:39 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 2DBB1180101;
-	Fri, 17 Jan 2025 19:35:33 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 17 Jan 2025 19:35:32 +0800
-Message-ID: <304b542d-514d-4269-ae11-b2e214659483@huawei.com>
-Date: Fri, 17 Jan 2025 19:35:32 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v7 0/8] fix two bugs related to page_pool
-To: Jesper Dangaard Brouer <hawk@kernel.org>, <davem@davemloft.net>,
-	<kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Robin Murphy <robin.murphy@arm.com>, Alexander Duyck
-	<alexander.duyck@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, IOMMU
-	<iommu@lists.linux.dev>, MM <linux-mm@kvack.org>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, John Fastabend
-	<john.fastabend@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1tYl7V-00000000Cz5-11zS;
+	Fri, 17 Jan 2025 12:06:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1737115598; x=1768651598;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=DLRrKOUp9u7sPT49SGdZaxl1UKYfCm8vrUFE1vSBPIE=;
+  b=Fp9AaJ3R/KtddLRgbxWnJ7q00OQloJXzi6gzbAdeps+H9Jq5r14rCvTU
+   BcPAwWz29kPl917qrexGdgqpUdNvnUx6NhEEYB8JiT8FlGDtfWnpFGYnt
+   N3Z2I2HXSHYy1hXOHDajKahmMemClZzTId1bsn7vnnJVIoDJaNkLTlsGi
+   akR0t7IH3znbxbc0aqlU4ptXK7aMdnk6xTAPSGKCHbkXXXGqXnY5DTFQ1
+   hRLmAAs0OIp33EFuQ8fovTsnEduAl2Tf0/vehnStz3/OkubbMYx4p4lbE
+   7IwYNUZgbg5ACHR8n8q38sRUVwtOzR3cHuxWbkz9d85gMETWImb7Be7D8
+   g==;
+X-CSE-ConnectionGUID: wkv47j6xQNeBJvqlHGwykA==
+X-CSE-MsgGUID: HYuBTJqgSIyNBDDi6DtFhQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11317"; a="37567408"
+X-IronPort-AV: E=Sophos;i="6.13,212,1732608000"; 
+   d="scan'208";a="37567408"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jan 2025 04:06:37 -0800
+X-CSE-ConnectionGUID: 4BtuMSxaQoKOP0bxr8WgHQ==
+X-CSE-MsgGUID: a1W/BoZAS6G9ipHiyWRDpA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="106263069"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 17 Jan 2025 04:06:34 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tYl7P-000TAC-15;
+	Fri, 17 Jan 2025 12:06:31 +0000
+Date: Fri, 17 Jan 2025 20:06:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<netdev@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
-	<bpf@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20250110130703.3814407-1-linyunsheng@huawei.com>
- <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
- <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
- <3a853e1b-b5bf-4709-b8f6-e466e3e7375e@kernel.org>
- <1bef4a35-efaa-4083-8ed5-8818fe285db5@huawei.com>
- <f558df7a-d983-4fc5-8358-faf251994d23@kernel.org>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <f558df7a-d983-4fc5-8358-faf251994d23@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+	Sean Wang <sean.wang@mediatek.com>
+Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	herbert1_wu@pegatron.corp-partner.google.com,
+	Geoffrey Chien <geoffrey_chien@pegatron.corp-partner.google.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mt8186: Add MT8186 Krabby platform based
+ Skitty
+Message-ID: <202501171915.sG65nBFc-lkp@intel.com>
+References: <20250115-skitty_kernel-v1-2-6ef2086858ba@pegatron.corp-partner.google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250115-skitty_kernel-v1-2-6ef2086858ba@pegatron.corp-partner.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250117_033540_274696_6206FE14 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20250117_040637_336478_1D3D9C1E 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,52 +97,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2025/1/17 2:02, Jesper Dangaard Brouer wrote:
+Hi Geoffrey,
 
-> 
-> Benchmark (bench_page_pool_simple) results from before and after
-> patchset with patches 1-5m and rcu lock removal as requested.
-> 
-> | Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
-> | (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
-> |------------+-------+-------+----+---------+--------+--------+--------|
-> | fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
-> | ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
-> | slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
-> #+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
-> 
-> This test with patches 1-5 looks much better regarding performance.
+kernel test robot noticed the following build errors:
 
-Thanks for the testing.
+[auto build test ERROR on 619f0b6fad524f08d493a98d55bac9ab8895e3a6]
 
-Is there any notiable performance variation during different test running
-for the same built kernel in your machine?
+url:    https://github.com/intel-lab-lkp/linux/commits/Geoffrey-Chien/dt-bindings-arm-mediatek-Add-MT8186-Skitty-Chromebooks/20250115-154648
+base:   619f0b6fad524f08d493a98d55bac9ab8895e3a6
+patch link:    https://lore.kernel.org/r/20250115-skitty_kernel-v1-2-6ef2086858ba%40pegatron.corp-partner.google.com
+patch subject: [PATCH 2/2] arm64: dts: mt8186: Add MT8186 Krabby platform based Skitty
+config: arm64-randconfig-r051-20250116 (https://download.01.org/0day-ci/archive/20250117/202501171915.sG65nBFc-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250117/202501171915.sG65nBFc-lkp@intel.com/reproduce)
 
-> 
-> --Jesper
-> 
-> https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org#e5-1650-pp01-dma-fix-v7-p1-5
-> 
-> Kernel:
->  - 6.13.0-rc6-pp01-DMA-fix-v7-p1-5+ #5 SMP PREEMPT_DYNAMIC Thu Jan 16 18:06:53 CET 2025 x86_64 GNU/Linux
-> 
-> Machine: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
-> 
-> modprobe bench_page_pool_simple loops=100000000
-> 
-> Raw data:
-> [  187.309423] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
-> [  187.872849] time_bench: Type:no-softirq-page_pool01 Per elem: 19 cycles(tsc) 5.539 ns (step:0) - (measurement period time:0.553906443 sec time_interval:553906443) - (invoke count:100000000 tsc_interval:1994123064)
-> [  187.892023] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
-> [  189.611070] time_bench: Type:no-softirq-page_pool02 Per elem: 61 cycles(tsc) 17.095 ns (step:0) - (measurement period time:1.709580367 sec time_interval:1709580367) - (invoke count:100000000 tsc_interval:6154679394)
-> [  189.630414] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
-> [  197.222387] time_bench: Type:no-softirq-page_pool03 Per elem: 272 cycles(tsc) 75.826 ns (step:0) - (measurement period time:7.582681388 sec time_interval:7582681388) - (invoke count:100000000 tsc_interval:27298499214)
-> [  197.241926] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
-> [  197.249968] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
-> [  197.808470] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 19 cycles(tsc) 5.492 ns (step:0) - (measurement period time:0.549225541 sec time_interval:549225541) - (invoke count:100000000 tsc_interval:1977272238)
-> [  197.828174] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
-> [  199.422305] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 57 cycles(tsc) 15.849 ns (step:0) - (measurement period time:1.584920736 sec time_interval:1584920736) - (invoke count:100000000 tsc_interval:5705890830)
-> [  199.442087] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
-> [  207.342120] time_bench: Type:tasklet_page_pool03_slow Per elem: 284 cycles(tsc) 78.909 ns (step:0) - (measurement period time:7.890955151 sec time_interval:7890955151) - (invoke count:100000000 tsc_interval:28408319289)
-> 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501171915.sG65nBFc-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   Error: arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku1.dts:48.1-8 Label or path target not found
+>> FATAL ERROR: Syntax error parsing input tree
+--
+   Error: arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku2.dts:48.1-8 Label or path target not found
+>> FATAL ERROR: Syntax error parsing input tree
+--
+   Error: arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku3.dts:49.1-8 Label or path target not found
+>> FATAL ERROR: Syntax error parsing input tree
+--
+   Error: arch/arm64/boot/dts/mediatek/mt8186-corsola-skitty-sku4.dts:49.1-8 Label or path target not found
+>> FATAL ERROR: Syntax error parsing input tree
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
