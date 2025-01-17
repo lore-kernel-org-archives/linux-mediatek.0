@@ -4,67 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE0EC02183
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 14:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513F8C02183
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2025 15:54:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6E97du1jBIpiCRokeFFeyg45GmkKa5zK/LBIBtq9IvI=; b=aM3gYU4VGEbpYkGMnuMcPGlcqA
-	ycfvJrOfPQvZIK3nZ8P5Uw2S9JO6Hr5hnKXvH44R3BCyndAC0nbSzJWnuUrz+zvS93rgY/ZDC29gG
-	nuB2TDyCLme6jX8MC/93fefwtBfC3eCQLh7m+iZ41LoRmgtEJV/U9Er6jauWwGqRjHQ6Hqs5guFax
-	Rm3hqxqbNFTpwbTR7EGx9hngK7mIbMfhMVxFzCTvee5w92bH0BspIxTTBguYEpqy+1xMLiJfRpCQ0
-	o0CPawd8UxY+S0YLlt/9m647bovufSSYZUkoMhCeZwTqBIr+I1rQwZZyc5HNojLG3lNUO5OzC5vLC
-	oPFVQQow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pWEO4mXmrgX9A+rahUTkZPxpsEQKDRWEFh1XmmPE8bg=; b=S2JkiXDGvLpizjk7tWlDpAw4is
+	bLkZnsl6I2sBNZAjX3tJF4qQMvMOgEqJ3g4Bp2arQbpaGqu1ApQSUmuy4VJcMq0TjzYsnV4APeygy
+	16RqfetbpezGq7C8DEHfLse96YXqGAJ6AcxwVtyOJaerHGG4qhgeR0jrBXaB6yW5OYX3wqb/VyYAp
+	o2+p1OoxD0IRAtZR3am8RKs6L8z5kM/JUAgXxJCNVDRde0QXzdrDhyDpMF1gkMKVBkIxWnvE7PPpH
+	TbSFsTr3Q/nY6ByGkyXZWAfNkyqFaiBqkbqTO6+JECvv4tFZjM7gCkeL132pm/Tr8NFbTMRrKTDZ+
+	4M/GxkEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYnPh-00000000Uwn-2Mns;
-	Fri, 17 Jan 2025 14:33:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tYogS-00000000gfR-1kDG;
+	Fri, 17 Jan 2025 15:54:56 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYnOQ-00000000Uj9-1iZs;
-	Fri, 17 Jan 2025 14:32:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AE9F8A42BCA;
-	Fri, 17 Jan 2025 14:30:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15454C4CEE2;
-	Fri, 17 Jan 2025 14:32:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737124333;
-	bh=T8PZajPEts8hiVvPkTDdvWpLe1pkhFePBotfq454ChY=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=LFqFrkFEVNscEv0YeH/sYXrvxMdJfFMAieYNA9i6pmPXd5QRzY9yu4XZfaN3AGxs8
-	 G+iNr6qE6o1sRfc5gCjwUPkIwye8trsk/Cs9NUNL9XNCKcb3xzrfdVhF46tOXU3W41
-	 6pLgLP2VN4QJCFsdjup8taPy0yvUFkfC1q7XOIwp2yLqAYCv9kSzg1yWiFos0170cQ
-	 53U/W3W0Wan8pQOT1+o9rtr4NrzsUwCpXNdQ4x7+Esv8Amj3gt2vXRrKfj49xGNJau
-	 jwIZo8tlX2NASe3CQYA6uSF/ohvcX5tz90ixxEhcnZlXXQw+fyXOnMHOOE3abk0ydD
-	 bh+SYtZ9nE+Fw==
-Date: Fri, 17 Jan 2025 08:32:12 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tYofA-00000000gSO-3BzD;
+	Fri, 17 Jan 2025 15:53:37 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3863494591bso1206774f8f.1;
+        Fri, 17 Jan 2025 07:53:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737129215; x=1737734015; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pWEO4mXmrgX9A+rahUTkZPxpsEQKDRWEFh1XmmPE8bg=;
+        b=lfPDSvMpRzOJlhzzewDIKHuhAQ5yslRACtnuUe6TOTFmQYqXLe85bm8ULaRdKlxsDz
+         coRoSQMbUpG5W4MlQN7PpzC0F/i2SJBtxMlEhZLI+TZFV/hGQEGxhKyRlx5ThSbPKl6M
+         rvfsQvt/VgbqszMUmocmo6iNPzsOs4FmUDVIAd6QMFqDlyYzvTDRjpFPOm2WiesVg+p+
+         zj75ECcPvgi/WkPLDP5Wq1YtPRabtUc4N/bKLEyqcfgNX1U+tKo683Sq3WeriDasHLYI
+         3PZEUoEUB7eDFFXwp7ALN1zyDXNSwHiDEvq4oXpwk5fFIN1opoPQE3Glt/lVSVQljiCH
+         99uQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737129215; x=1737734015;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pWEO4mXmrgX9A+rahUTkZPxpsEQKDRWEFh1XmmPE8bg=;
+        b=W0vstfRjcG1xG112DwX8DI4eSYLk5tVokOpgby6kE438ihh1Oz+Kqsy2QdeUzBdixn
+         VolEah46FiBchkxSy0gweWXX0441EOeUpnFXiPBVWV4VjWGT8dBNUl4rF+X/8vgmwbC1
+         fNKD9AKtDADYR9TI0ZU7f6wBH1bQg43szP9sUbpdooWkjI55bj/DoJWGCHuENxYiw2rC
+         vURHEW6akUeLJ6DJHIH5qYgPnNKuL64YKRnu2vFhLCeNFSB86ZK7+gYSIQSShXO6+0w5
+         zUzzMDWsKK8mYG5QO/2/j1EbZI2C5i/Ca6HxdIHp+A86yoBoR4NXtT0pcZXpFiv5LsMl
+         DJ8w==
+X-Forwarded-Encrypted: i=1; AJvYcCUhcYgAQL+hwYDVntVBgYUPSzPY0x0RUMcrlY6N7l1tbxXsQBo9TWm/ZEZjH3g6cP91eFGmkHNJrSH6dQeKqbBU@lists.infradead.org, AJvYcCV/GYucbZCcVMy+BTYxgwO4kbg/q33ePdYQDgquUbFpa/+0nriGiLRDwlxYC4LyeLOMWmPRGLKgWZaoiWKeHKo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzgNs1K1icIA5wIhF0ImWM6ZajYYxbVnWOVZSw8ekOWUvYhnuHh
+	ynSO6SoNl9GMxdrKOI9H7P6z81KD4CJW5Sj3qqzYWRs1FMrY+m/h
+X-Gm-Gg: ASbGncsUYzij0kdGtuekpxFabfkeXtX9uOwuIm/KBhyuLdKGIIS34Eq+fVvA4wQkNQ6
+	dslzPRLRb9n/5yoRKCbZ5mEsYYiMoYH/U9VSRv6j2Pfv3aZ1m1gbuNDSpZJ6pJ3MW6kOv2JRFIv
+	4sLrMxJ4lEt18rmo7/7v/nSskb7q8VT3yvdy4u4SAfvfLGAcs4ySWg06P+mF6zzSpUykyPRhz4d
+	lAoSuS/u/EufH8JMwHuoMW7el143llN+vZ3eDmIZNpdRMybSN9/slXN6+8Oqi3yzEnPfNWaVO95
+	nQyZ8zxgBt0dLOX8Ng3OUkpIgg==
+X-Google-Smtp-Source: AGHT+IGNGiONpxV+GF6eyRmRWscmpLkuIBdAedL5zi2YGx6prpKmmwhZLampYCznTsZBL5ObecUgjg==
+X-Received: by 2002:a5d:5848:0:b0:38b:dbf0:34f2 with SMTP id ffacd0b85a97d-38bf59f03c7mr3119509f8f.52.1737129214512;
+        Fri, 17 Jan 2025 07:53:34 -0800 (PST)
+Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38bf32758dbsm2854779f8f.64.2025.01.17.07.53.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jan 2025 07:53:34 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	upstream@airoha.com
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [net PATCH] net: airoha: Fix wrong GDM4 register definition
+Date: Fri, 17 Jan 2025 16:52:39 +0100
+Message-ID: <20250117155257.19263-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: David Airlie <airlied@gmail.com>, linux-mediatek@lists.infradead.org, 
- Thomas Zimmermann <tzimmermann@suse.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Simona Vetter <simona@ffwll.ch>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Boris Brezillon <boris.brezillon@collabora.com>, kernel@collabora.com, 
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, Steven Price <steven.price@arm.com>, 
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Conor Dooley <conor+dt@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-In-Reply-To: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
-References: <20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com>
-Message-Id: <173712392224.809745.9286641261845067078.robh@kernel.org>
-Subject: Re: [PATCH 0/3] Add Mali GPU support for Mediatek MT8370 SoC
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250117_063214_590941_61BFC509 
-X-CRM114-Status: GOOD (  18.89  )
+X-CRM114-CacheID: sfid-20250117_075336_796176_3D846B7E 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,88 +106,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fix wrong GDM4 register definition, in Airoha SDK GDM4 is defined at
+offset 0x2400 but this doesn't make sense as it does conflict with the
+CDM4 that is in the same location.
 
-On Thu, 16 Jan 2025 15:25:56 +0100, Louis-Alexis Eyraud wrote:
-> This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
-> dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
-> and to the mt8370.dtsi include file.
-> 
-> I've testing this patchset on a Mediatek Genio 510 EVK board,
-> with a kernel based on linux-next (tag: next-20250113) plus [1] patchset.
-> 
-> The panfrost driver probed with the following messages:
-> ```
-> panfrost 13000000.gpu: clock rate = 390000000
-> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-> panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
->   80000400
-> panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
->   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-> panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-> [drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-> ```
-> 
-> [1] https://lore.kernel.org/linux-mediatek/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com/
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> Louis-Alexis Eyraud (3):
->       dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
->       drm/panfrost: Add support for Mali on the MT8370 SoC
->       arm64: dts: mediatek: mt8370: Enable gpu support
-> 
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml |  5 ++++-
->  arch/arm64/boot/dts/mediatek/mt8370.dtsi                    |  9 +++++++++
->  drivers/gpu/drm/panfrost/panfrost_drv.c                     | 10 ++++++++++
->  3 files changed, 23 insertions(+), 1 deletion(-)
-> ---
-> base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
-> change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
-> prerequisite-change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9:v2
-> prerequisite-patch-id: af53ae39240467340ac4c9cdbc8fdd949c5457a2
-> prerequisite-patch-id: ca07485956f81c1a40029b48d2b4bcf00d74fc13
-> prerequisite-patch-id: c34d9870b2c61d87ad8a6facba13d8970682e679
-> prerequisite-patch-id: 48784acdcdd8b886fdec9f21c9cb88abb327e2e1
-> 
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> 
-> 
-> 
+Following the pattern where each GDM base is at the FWD_CFG, currently
+GDM4 base offset is set to 0x2500. This is correct but REG_GDM4_FWD_CFG
+and REG_GDM4_SRC_PORT_SET are still using the SDK reference with the
+0x2400 offset. Fix these 2 define by subtracting 0x100 to each register
+to reflect the real address location.
 
+Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/ethernet/mediatek/airoha_regs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com:
-
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pinctrl@10005000: 'pcie-default' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8188-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: regulators: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: '#sound-dai-cells', 'mt6359codec', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10320000: 'clock-names' is a required property
-	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10330000: 'clock-names' is a required property
-	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: jpeg-decoder@1a040000: iommus: [[123, 685], [123, 686], [123, 690], [123, 691], [123, 692], [123, 693]] is too long
-	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
-
-
-
-
+diff --git a/drivers/net/ethernet/mediatek/airoha_regs.h b/drivers/net/ethernet/mediatek/airoha_regs.h
+index e448b66b5334..30c96f679735 100644
+--- a/drivers/net/ethernet/mediatek/airoha_regs.h
++++ b/drivers/net/ethernet/mediatek/airoha_regs.h
+@@ -249,11 +249,11 @@
+ #define REG_GDM3_FWD_CFG		GDM3_BASE
+ #define GDM3_PAD_EN_MASK		BIT(28)
+ 
+-#define REG_GDM4_FWD_CFG		(GDM4_BASE + 0x100)
++#define REG_GDM4_FWD_CFG		GDM4_BASE
+ #define GDM4_PAD_EN_MASK		BIT(28)
+ #define GDM4_SPORT_OFFSET0_MASK		GENMASK(11, 8)
+ 
+-#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x33c)
++#define REG_GDM4_SRC_PORT_SET		(GDM4_BASE + 0x23c)
+ #define GDM4_SPORT_OFF2_MASK		GENMASK(19, 16)
+ #define GDM4_SPORT_OFF1_MASK		GENMASK(15, 12)
+ #define GDM4_SPORT_OFF0_MASK		GENMASK(11, 8)
+-- 
+2.47.1
 
 
