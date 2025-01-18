@@ -4,78 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F61C02185
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 08:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F794C02187
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 08:38:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4FOLWoiBdOZIbz+rGO7a7GwSxpk27LE1qCoksXK33CE=; b=JZMFYR2NTh+4Pm7OL2mP9HZN33
-	/yhWIln3T1USujaE99F+yHFvZOMwQjm9pFgezJgv653C04rR+hjSgKsX+frvdRY+9PsM9yXEFmupa
-	NujtHnewdGjnjI/58wiZqhoqlaUvnpqsm92LcSTdqKunJdbp3ffarInj8LbwrhR5BLzoCHKJwtDH/
-	hZVKHemrdC1aiUTCDyK8FaLHI47pfOVUQGy7VUHWA0VIz2xZwy38HVQnwIg88r+RWbes5pTSjyKE0
-	WktvQob4+VLUI9HuTMsvdsgrWw6Uz2d8l3Z1JmLQ2/6L3W6gksQot6zxGksq3h8J9HtEvhRcdoa+e
-	xu3jt6vA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zKuPDlOMPDO5oGq08bHFWi7TOK0868onJ3Gwccm4HFo=; b=kCWmbc4R7m5rWq
+	0oNUCHbazFrD3fceq5e6cVxbt5OI4ooeYWaCnD0sG5sPHmVv10HaOgn/DW2x6c93AUeOAStY9NhYi
+	dNfh2HWNnbfAMlMGLuBPWzBgfe+Q2ZhmPYDHppValJZWf4vTKzL+9Y1XNjkXw+eYeplVZ2va79Fiy
+	ShoNLEAQH8EfE6XqoCzZAxVJLR4XlFeMD643cRXeJzHP/dC0l9KEi92DlbWo8wyUttceVmZTFlohy
+	3zH7BDvXE3s0PuUEACuqMvTwv5+vfnYXCd2JSwJnB7ENEVb7hcV1bvYktelgjMcbZTxf4zWgvyz4c
+	bwInAP/pre/JGNIEr1lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ3pl-00000001zbk-2HgD;
-	Sat, 18 Jan 2025 08:05:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tZ4Lv-000000022ZA-0dkL;
+	Sat, 18 Jan 2025 08:38:47 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ3oU-00000001zSx-1W4L;
-	Sat, 18 Jan 2025 08:04:15 +0000
+	id 1tZ4Kd-000000022SY-3Qna;
+	Sat, 18 Jan 2025 08:37:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E6CCBA4043E;
-	Sat, 18 Jan 2025 08:02:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B24DC4CED1;
-	Sat, 18 Jan 2025 08:04:07 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21E89A41462;
+	Sat, 18 Jan 2025 08:35:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E47F9C4CED1;
+	Sat, 18 Jan 2025 08:37:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737187452;
-	bh=X8xl+FikvEsefyJsKMCnT/zbfddcbexbuTDnIId5TZQ=;
+	s=k20201202; t=1737189446;
+	bh=tvFTbNI16dWEiQ0a1DxdbCn/gVCZieFS78UcbDryCxo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Jwwr4yFvVLsCkvAYidGgHqdk1SqnXor04i9X94Db2qJ0QhORGpQHZOZkOPmZ0GQtJ
-	 97no8YhrF+z3OTjQ1lxCNFIVYAjcGr8mU7o6rOF0vKBZ4er/XmYA+kcxB1nNqYB5xi
-	 I4C2VEEVFterxQ3SKCBXurdH9MFkI3wJEd4w52mAp4+2zxpjHpAqcxGouwiJC8tXqr
-	 cAmuba8ya9Vapi35c8+kl1peNietydCSD5VpLFVteL1O30Vd+ZhbSsCzExQc5RQRQH
-	 zyCh1DkSlCRZ1x9ehDtdukIbZ4w4vxBXMukSP8LJ8AQkZHSGVcSYl5qh1n/eyyJkBJ
-	 PJtjuFWuoRbIw==
-Message-ID: <e0096465-a941-4a1e-9cad-8f5906a31554@kernel.org>
-Date: Sat, 18 Jan 2025 09:04:05 +0100
+	b=Vt5NL/gKLDm/Wrkb8SUMOQwwRjr3aRNsqTWpIaF7cbZFBb+1wBA2Wg0AIVfoKm9Yc
+	 0rKfOW0O3zSXXRm0tNacj4hNeS26RZs6mtzWuqRs6O0all5P+x6RuvTP0SjFkgpN94
+	 HKFr21WH7OBJaH87vQ4BVs6yE9SHgbd9cnFKygRWCtOO9a5mVIf0EI83Geh4NNWuzx
+	 tDKNXIw3SQG3UMPWDv9zWTSh2AeLIT7yVBLrlaOVqtRwXD+8m0480YI49CEl2k1SKN
+	 u+yA07OjzyiIyG+4kLTM84IDJsviaBsh3fJN6o5pNljCFhmQ5ymSeeMDD/ROcGwVLd
+	 G+MMTBLmFywvg==
+Message-ID: <cc043dcd-b46e-4b4b-9b80-0450efde86eb@kernel.org>
+Date: Sat, 18 Jan 2025 09:37:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v7 0/8] fix two bugs related to page_pool
-To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com
-Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Robin Murphy <robin.murphy@arm.com>,
- Alexander Duyck <alexander.duyck@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>,
- MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250110130703.3814407-1-linyunsheng@huawei.com>
- <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
- <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
- <3a853e1b-b5bf-4709-b8f6-e466e3e7375e@kernel.org>
- <1bef4a35-efaa-4083-8ed5-8818fe285db5@huawei.com>
- <f558df7a-d983-4fc5-8358-faf251994d23@kernel.org>
- <304b542d-514d-4269-ae11-b2e214659483@huawei.com>
+Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml for
+ MT8196
+To: =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
+ <20250110123835.2719824-4-paul-pl.chen@mediatek.com>
+ <abadfae8-56f7-499c-83ff-7d79e3fe1f52@kernel.org>
+ <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Jesper Dangaard Brouer <hawk@kernel.org>
-In-Reply-To: <304b542d-514d-4269-ae11-b2e214659483@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250118_000414_535571_00831C6C 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20250118_003727_981100_8BF2BDDF 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,66 +118,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 17/01/2025 12.35, Yunsheng Lin wrote:
-> On 2025/1/17 2:02, Jesper Dangaard Brouer wrote:
+On 17/01/2025 11:36, Paul-pl Chen (陳柏霖) wrote:
+>>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,exdma
+>>> .yaml
+>>
+>> Filename matching compatible.
+>>
+>> Why is this in display? DMA goes to dma.
 > 
->>
->> Benchmark (bench_page_pool_simple) results from before and after
->> patchset with patches 1-5m and rcu lock removal as requested.
->>
->> | Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
->> | (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
->> |------------+-------+-------+----+---------+--------+--------+--------|
->> | fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
->> | ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
->> | slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
->> #+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
->>
->> This test with patches 1-5 looks much better regarding performance.
+> Hi Krzysztof ,
 > 
-> Thanks for the testing.
+> Regarding the issue of the EXDMA driver, we have conducted an internal
+> survey of drivers under the DMA subsystem. We found that EXDMA operates
+
+
+I did not talk about driver. I talked about this patch. Look at patch
+title - it starts with dt-bindings. Is here anything about driver? No.
+Why do we talk about driver?
+
+> differently from typical DMA drivers, and therefore we believe that the
+> EXDMA driver may not be suitable to be placed under the
+> driver/mediatek/drm directory. The main reasons are as follows:
 > 
-> Is there any notiable performance variation during different test running
-> for the same built kernel in your machine?
+> (1)No Memory Allocation within EXDMA Engine:
+> The EXDMA engine does not perform memory allocation operations itself.
+> Instead, it relies on GEM (Graphics Execution Manager) to allocate
+> memory.Traditional DMA drivers often handle their own memory
+> allocations, but in the case of EXDMA, memory management is delegated
+> to GEM.
 > 
-
-My machine have quite stable performance for this benchmark.
-
-
->> https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org#e5-1650-pp01-dma-fix-v7-p1-5
-
-Like documented in above link. I have also increased the loops count for
-the test to get it more stable, given this will be measured over a
-longer period.
-
-  modprobe bench_page_pool_simple loops=100000000
+> (2)Primary Task of EXDMA:
+> The main function of EXDMA is to transfer buffers allocated by GEM to
+> the subsequent display pipeline.
+> EXDMA serves as a bridge between memory allocated by GEM and the
+> display components, rather than acting as a general-purpose DMA engine.
+> Based on the points above, we have decided to place the EXDMA driver
+> under the DRM display subsystem rather than under the DMA subsystem.
 
 
->> Kernel:
->>   - 6.13.0-rc6-pp01-DMA-fix-v7-p1-5+ #5 SMP PREEMPT_DYNAMIC Thu Jan 16 18:06:53 CET 2025 x86_64 GNU/Linux
->>
->> Machine: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
->>
->> modprobe bench_page_pool_simple loops=100000000
->>
->> Raw data:
->> [  187.309423] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
->> [  187.872849] time_bench: Type:no-softirq-page_pool01 Per elem: 19 cycles(tsc) 5.539 ns (step:0) - (measurement period time:0.553906443 sec time_interval:553906443) - (invoke count:100000000 tsc_interval:1994123064)
->> [  187.892023] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
->> [  189.611070] time_bench: Type:no-softirq-page_pool02 Per elem: 61 cycles(tsc) 17.095 ns (step:0) - (measurement period time:1.709580367 sec time_interval:1709580367) - (invoke count:100000000 tsc_interval:6154679394)
->> [  189.630414] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
->> [  197.222387] time_bench: Type:no-softirq-page_pool03 Per elem: 272 cycles(tsc) 75.826 ns (step:0) - (measurement period time:7.582681388 sec time_interval:7582681388) - (invoke count:100000000 tsc_interval:27298499214)
->> [  197.241926] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
->> [  197.249968] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
->> [  197.808470] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 19 cycles(tsc) 5.492 ns (step:0) - (measurement period time:0.549225541 sec time_interval:549225541) - (invoke count:100000000 tsc_interval:1977272238)
->> [  197.828174] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
->> [  199.422305] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 57 cycles(tsc) 15.849 ns (step:0) - (measurement period time:1.584920736 sec time_interval:1584920736) - (invoke count:100000000 tsc_interval:5705890830)
->> [  199.442087] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
->> [  207.342120] time_bench: Type:tasklet_page_pool03_slow Per elem: 284 cycles(tsc) 78.909 ns (step:0) - (measurement period time:7.890955151 sec time_interval:7890955151) - (invoke count:100000000 tsc_interval:28408319289)
->>
+I don't care if it uses GEM or kernel allocator or even 3rd party
+allocator. The question is: what is this device? If it is performing
+DMA, then it should be placed in "dma" directory. The rdma was placed
+differently but as you can easily check: it was never acked/reviewed, so
+don't use it as an example.
+
+Of course if it does not perform DMA, then it should not be in dma, but
+then I don't agree on using dma-cells here and anything like that in the
+driver.
+
+Best regards,
+Krzysztof
 
