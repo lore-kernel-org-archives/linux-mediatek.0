@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F794C02187
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 08:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8530C02185
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 09:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKuPDlOMPDO5oGq08bHFWi7TOK0868onJ3Gwccm4HFo=; b=kCWmbc4R7m5rWq
-	0oNUCHbazFrD3fceq5e6cVxbt5OI4ooeYWaCnD0sG5sPHmVv10HaOgn/DW2x6c93AUeOAStY9NhYi
-	dNfh2HWNnbfAMlMGLuBPWzBgfe+Q2ZhmPYDHppValJZWf4vTKzL+9Y1XNjkXw+eYeplVZ2va79Fiy
-	ShoNLEAQH8EfE6XqoCzZAxVJLR4XlFeMD643cRXeJzHP/dC0l9KEi92DlbWo8wyUttceVmZTFlohy
-	3zH7BDvXE3s0PuUEACuqMvTwv5+vfnYXCd2JSwJnB7ENEVb7hcV1bvYktelgjMcbZTxf4zWgvyz4c
-	bwInAP/pre/JGNIEr1lA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NZMXgDSbnWZHpGzpPRtNfl4EmQSfseJ3TepsemcClTg=; b=qJGWNGKzNNF7xG1y0lwAx2/o2D
+	OTmzZ/bHAMWq6ind4AM5CVkTI6hAmSjRMUyZRg2epcjwwsoiRROzwJetyQT363KtBj4YgsdERBy0D
+	jjwpeVZ/5jK0CxyU0DA5+vbiueU+8fDQcGvxlgaFCIaqE+dp00SWfU9Obgo11i96+GisAq499+8wT
+	A8wZBgs2rmQuCooXSPfZRxKGrN0s4B+wj2NBi3SLN3zmlDsCNMxkiSL5XbwciRz92uf8/5HpsFYPd
+	o+KvcBUVmGTBoi3XXJCyd2iXYHKIu4HS9NU2kl6SKedVqeUODGKbH6emkp0zg4zNJ0viiMp84x5k2
+	qMzzWHng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ4Lv-000000022ZA-0dkL;
-	Sat, 18 Jan 2025 08:38:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tZ4uX-000000025d0-3mYH;
+	Sat, 18 Jan 2025 09:14:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ4Kd-000000022SY-3Qna;
-	Sat, 18 Jan 2025 08:37:29 +0000
+	id 1tZ4tG-000000025YI-3JO2;
+	Sat, 18 Jan 2025 09:13:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 21E89A41462;
-	Sat, 18 Jan 2025 08:35:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E47F9C4CED1;
-	Sat, 18 Jan 2025 08:37:19 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 876A05C4982;
+	Sat, 18 Jan 2025 09:12:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 376C1C4CED1;
+	Sat, 18 Jan 2025 09:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737189446;
-	bh=tvFTbNI16dWEiQ0a1DxdbCn/gVCZieFS78UcbDryCxo=;
+	s=k20201202; t=1737191593;
+	bh=MUQ5voLVemt+kelhaaFIJwaMgdhz0IGii3dF1Sgvl/4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Vt5NL/gKLDm/Wrkb8SUMOQwwRjr3aRNsqTWpIaF7cbZFBb+1wBA2Wg0AIVfoKm9Yc
-	 0rKfOW0O3zSXXRm0tNacj4hNeS26RZs6mtzWuqRs6O0all5P+x6RuvTP0SjFkgpN94
-	 HKFr21WH7OBJaH87vQ4BVs6yE9SHgbd9cnFKygRWCtOO9a5mVIf0EI83Geh4NNWuzx
-	 tDKNXIw3SQG3UMPWDv9zWTSh2AeLIT7yVBLrlaOVqtRwXD+8m0480YI49CEl2k1SKN
-	 u+yA07OjzyiIyG+4kLTM84IDJsviaBsh3fJN6o5pNljCFhmQ5ymSeeMDD/ROcGwVLd
-	 G+MMTBLmFywvg==
-Message-ID: <cc043dcd-b46e-4b4b-9b80-0450efde86eb@kernel.org>
-Date: Sat, 18 Jan 2025 09:37:17 +0100
+	b=SH+nbyF5pfP92lYbAZViosCRfe7m0iFRe41lx1vaCB/jhLDZZfxXCWExWGRjP6Tt1
+	 QjbcNFNuHMQH8PToGCoKQqszn4kDKxXSIrGdSxDMO2fI+EsmLNuBJ76SEILgtc6JHv
+	 0orsSQ7Dqh1vnWe8m+mUaUHyIatpIMWbptRZldVSjhFccFzi+tzM9hhkyFptHrQxaZ
+	 kYaCuZ5Ei0jd5nLt19HaTDQd34JqE9+XCXL1mLQc8Vy0qMBy2XxptrYdmwDOckJkYH
+	 J0L6a1tSil/RDsl9URsnB12IjSI6GwHAFpXvh0nfgqm6dB8atpQ1t2EWlgsxsRRsUD
+	 1F1IclRR/HriA==
+Message-ID: <76ab492e-ae9c-46eb-bf2e-d794863baf8d@kernel.org>
+Date: Sat, 18 Jan 2025 10:13:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml for
- MT8196
-To: =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
- <20250110123835.2719824-4-paul-pl.chen@mediatek.com>
- <abadfae8-56f7-499c-83ff-7d79e3fe1f52@kernel.org>
- <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mediatek: add support for
+ mt8196
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Cathy Xu <ot_cathy.xu@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
+ wenbin.mei@mediatek.com, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Guodong Liu <guodong.liu@mediatek.com>
+References: <20250110104703.13625-1-ot_cathy.xu@mediatek.com>
+ <20250110104703.13625-2-ot_cathy.xu@mediatek.com>
+ <dnjtaapqbn6zy55k5ky7zltswkbg7cjh2xwlnrmqdiz7tfm6rc@wbepc5koem6e>
+ <66218a3c-04c5-42ea-ba9c-e0fbc72ed16f@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,12 +106,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
+In-Reply-To: <66218a3c-04c5-42ea-ba9c-e0fbc72ed16f@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250118_003727_981100_8BF2BDDF 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20250118_011314_937474_48FDCE2D 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,57 +123,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/01/2025 11:36, Paul-pl Chen (陳柏霖) wrote:
->>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,exdma
->>> .yaml
+On 13/01/2025 14:20, AngeloGioacchino Del Regno wrote:
+>>> +
+>>> +        properties:
+>>> +          pinmux:
+>>> +            description:
+>>> +              Integer array, represents gpio pin number and mux setting.
+>>> +              Supported pin number and mux varies for different SoCs, and are
+>>> +              defined as macros in dt-bindings/pinctrl/mt8196-pinfunc.h
+>>> +              directly, for this SoC.
+>>> +
+>>> +          drive-strength:
+>>> +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+>>> +
+>>> +          drive-strength-microamp:
+>>> +            enum: [125, 250, 500, 1000]
 >>
->> Filename matching compatible.
+>> Why duplicating properties? No, use only one.
 >>
->> Why is this in display? DMA goes to dma.
 > 
-> Hi Krzysztof ,
+> The problem here is not entirely about duplicating properties, and I'm not
+> sure that the reason is actually acceptable (but being this a special case
+> the `description` field would be mandatory to have IMO!!).
 > 
-> Regarding the issue of the EXDMA driver, we have conducted an internal
-> survey of drivers under the DMA subsystem. We found that EXDMA operates
-
-
-I did not talk about driver. I talked about this patch. Look at patch
-title - it starts with dt-bindings. Is here anything about driver? No.
-Why do we talk about driver?
-
-> differently from typical DMA drivers, and therefore we believe that the
-> EXDMA driver may not be suitable to be placed under the
-> driver/mediatek/drm directory. The main reasons are as follows:
+> So, the reason for this separation is that the drive-strength-microamp does
+> activate a special feature in the controller called "advanced drive strength
+> mode", which is switching to different shunts that will decrease the power
+> efficiency of the chip (by an ignorable amount, if that's one pin - but if
+> that goes to something like 100 pins, it's not ignorable anymore).
 > 
-> (1)No Memory Allocation within EXDMA Engine:
-> The EXDMA engine does not perform memory allocation operations itself.
-> Instead, it relies on GEM (Graphics Execution Manager) to allocate
-> memory.Traditional DMA drivers often handle their own memory
-> allocations, but in the case of EXDMA, memory management is delegated
-> to GEM.
-> 
-> (2)Primary Task of EXDMA:
-> The main function of EXDMA is to transfer buffers allocated by GEM to
-> the subsequent display pipeline.
-> EXDMA serves as a bridge between memory allocated by GEM and the
-> display components, rather than acting as a general-purpose DMA engine.
-> Based on the points above, we have decided to place the EXDMA driver
-> under the DRM display subsystem rather than under the DMA subsystem.
-
-
-I don't care if it uses GEM or kernel allocator or even 3rd party
-allocator. The question is: what is this device? If it is performing
-DMA, then it should be placed in "dma" directory. The rdma was placed
-differently but as you can easily check: it was never acked/reviewed, so
-don't use it as an example.
-
-Of course if it does not perform DMA, then it should not be in dma, but
-then I don't agree on using dma-cells here and anything like that in the
-driver.
+> I'd be happy if we could let them retain both properties after putting a
+> clear description of what's happening and why there are two of them.
+It would be fine then, but please add some sort of description to these
+fields documenting that difference.
 
 Best regards,
 Krzysztof
