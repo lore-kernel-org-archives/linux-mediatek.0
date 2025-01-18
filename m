@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8530C02185
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 09:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E31C02185
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jan 2025 09:24:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NZMXgDSbnWZHpGzpPRtNfl4EmQSfseJ3TepsemcClTg=; b=qJGWNGKzNNF7xG1y0lwAx2/o2D
-	OTmzZ/bHAMWq6ind4AM5CVkTI6hAmSjRMUyZRg2epcjwwsoiRROzwJetyQT363KtBj4YgsdERBy0D
-	jjwpeVZ/5jK0CxyU0DA5+vbiueU+8fDQcGvxlgaFCIaqE+dp00SWfU9Obgo11i96+GisAq499+8wT
-	A8wZBgs2rmQuCooXSPfZRxKGrN0s4B+wj2NBi3SLN3zmlDsCNMxkiSL5XbwciRz92uf8/5HpsFYPd
-	o+KvcBUVmGTBoi3XXJCyd2iXYHKIu4HS9NU2kl6SKedVqeUODGKbH6emkp0zg4zNJ0viiMp84x5k2
-	qMzzWHng==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iFzZcMaZb9ckXICcukQ4D4HdB9qQ5Vb2KslJUxlV42s=; b=WxRjHuonJHk01c
+	+kF71Fu1lV7jWDqEx15kUyR1m+Ekt4dgT8meDUWGrNeBq/8OT+20FfUq+qB+NiyHjxIwvHZOdiE1c
+	ANrERclrYlPOsXE1hOF2nLFnYRHzsN9fDcJobxnZzqsMl4HLiRP7C58OPe+kkqza1jI2Q7acnPW7G
+	CletVkwngLtPSeKcwGrZFEBLykceQMQlI+NEzpVy8F4eusyZnNmhS+7OxbYKuyhD4TJ9ybcdCNGPn
+	xdbbqsmCknKeSiEpOWJmkJahmpw4T5Ycgd+mJBkAak1QdW4vDzsnHOIQ9FBWY+O4mcvHm4WUz6TZm
+	9XUh8tBag7+pQ5dFd3BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ4uX-000000025d0-3mYH;
-	Sat, 18 Jan 2025 09:14:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tZ546-000000026D4-2VIC;
+	Sat, 18 Jan 2025 09:24:26 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ4tG-000000025YI-3JO2;
-	Sat, 18 Jan 2025 09:13:16 +0000
+	id 1tZ52p-0000000268D-075Q;
+	Sat, 18 Jan 2025 09:23:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 876A05C4982;
-	Sat, 18 Jan 2025 09:12:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 376C1C4CED1;
-	Sat, 18 Jan 2025 09:13:08 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1E1E7A40FE4;
+	Sat, 18 Jan 2025 09:21:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E467DC4CED1;
+	Sat, 18 Jan 2025 09:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737191593;
-	bh=MUQ5voLVemt+kelhaaFIJwaMgdhz0IGii3dF1Sgvl/4=;
+	s=k20201202; t=1737192185;
+	bh=JNO4AtFnhefCCioa2iS6EMqb2clG0iuuvwbLgnxmwFE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SH+nbyF5pfP92lYbAZViosCRfe7m0iFRe41lx1vaCB/jhLDZZfxXCWExWGRjP6Tt1
-	 QjbcNFNuHMQH8PToGCoKQqszn4kDKxXSIrGdSxDMO2fI+EsmLNuBJ76SEILgtc6JHv
-	 0orsSQ7Dqh1vnWe8m+mUaUHyIatpIMWbptRZldVSjhFccFzi+tzM9hhkyFptHrQxaZ
-	 kYaCuZ5Ei0jd5nLt19HaTDQd34JqE9+XCXL1mLQc8Vy0qMBy2XxptrYdmwDOckJkYH
-	 J0L6a1tSil/RDsl9URsnB12IjSI6GwHAFpXvh0nfgqm6dB8atpQ1t2EWlgsxsRRsUD
-	 1F1IclRR/HriA==
-Message-ID: <76ab492e-ae9c-46eb-bf2e-d794863baf8d@kernel.org>
-Date: Sat, 18 Jan 2025 10:13:06 +0100
+	b=gC4ugii0PIzagQzEdaBRAD+Pg6YG2OXAhWzIENbuV28lyFoiCh/Gd+VDW4kXohGVg
+	 ZDnIKgket3wZnuW4e1VZ+llg1r80ESZhbDMZIyXtAY6HxttnltjPPlsRkOq+NijlPR
+	 Livq0V0R9UiRhVXtwTwqkCKL1SM420Tue/LCGDDpsppb7DiWHUr2uL28HXw5Ml2IZK
+	 X5UUJIicjQDjn+8jfGwh0pozQ/VSUp3ITF1a6gRWvADMUY0LAejkJTGVCT4LXI3VBT
+	 uqtU0Upl1Af1yKsF9Vwvomq0HSp2AFx0GzKJkRqamjeYy8I9t6axY7UFs32UWVqFxu
+	 8oPCAZFoBZ3PQ==
+Message-ID: <d116e180-a056-4595-851c-ed1bb6f24cef@kernel.org>
+Date: Sat, 18 Jan 2025 10:22:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mediatek: add support for
- mt8196
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Cathy Xu <ot_cathy.xu@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
- wenbin.mei@mediatek.com, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Guodong Liu <guodong.liu@mediatek.com>
-References: <20250110104703.13625-1-ot_cathy.xu@mediatek.com>
- <20250110104703.13625-2-ot_cathy.xu@mediatek.com>
- <dnjtaapqbn6zy55k5ky7zltswkbg7cjh2xwlnrmqdiz7tfm6rc@wbepc5koem6e>
- <66218a3c-04c5-42ea-ba9c-e0fbc72ed16f@collabora.com>
+Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml for
+ MT8196
+To: =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
+ "Rob Herring (Arm)" <robh@kernel.org>
+References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
+ <20250110123835.2719824-5-paul-pl.chen@mediatek.com>
+ <173651725269.2671643.2891127782637834272.robh@kernel.org>
+ <SG2PR03MB66367B4A9DBCC971F55DB326BC182@SG2PR03MB6636.apcprd03.prod.outlook.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,12 +98,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <66218a3c-04c5-42ea-ba9c-e0fbc72ed16f@collabora.com>
+In-Reply-To: <SG2PR03MB66367B4A9DBCC971F55DB326BC182@SG2PR03MB6636.apcprd03.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250118_011314_937474_48FDCE2D 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20250118_012307_199017_D9423032 
+X-CRM114-Status: UNSURE (   6.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,42 +116,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2025 14:20, AngeloGioacchino Del Regno wrote:
->>> +
->>> +        properties:
->>> +          pinmux:
->>> +            description:
->>> +              Integer array, represents gpio pin number and mux setting.
->>> +              Supported pin number and mux varies for different SoCs, and are
->>> +              defined as macros in dt-bindings/pinctrl/mt8196-pinfunc.h
->>> +              directly, for this SoC.
->>> +
->>> +          drive-strength:
->>> +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
->>> +
->>> +          drive-strength-microamp:
->>> +            enum: [125, 250, 500, 1000]
->>
->> Why duplicating properties? No, use only one.
->>
-> 
-> The problem here is not entirely about duplicating properties, and I'm not
-> sure that the reason is actually acceptable (but being this a special case
-> the `description` field would be mandatory to have IMO!!).
-> 
-> So, the reason for this separation is that the drive-strength-microamp does
-> activate a special feature in the controller called "advanced drive strength
-> mode", which is switching to different shunts that will decrease the power
-> efficiency of the chip (by an ignorable amount, if that's one pin - but if
-> that goes to something like 100 pins, it's not ignorable anymore).
-> 
-> I'd be happy if we could let them retain both properties after putting a
-> clear description of what's happening and why there are two of them.
-It would be fine then, but please add some sort of description to these
-fields documenting that difference.
+On 14/01/2025 06:49, Paul-pl Chen (陳柏霖) wrote:
+> Hi Rob
+> Thanks for the advice.
+> The root cause of the erroneous log message is due to missing power/clock dependencies.
+> Once the MTK clock/power header file is upstreamed, 
+So this cannot be merged.
+
+Decouple dependencies or wait with your submission till depenedncy is
+applied to *LINUS* tree, not even maintainer. Otherwise this breaks
+maintainer's tree. I really suggest decoupling.
 
 Best regards,
 Krzysztof
