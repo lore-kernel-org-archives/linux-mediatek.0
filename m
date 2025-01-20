@@ -4,90 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A2EC02188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 06:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C873C02185
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 07:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sNXo4WaOxS///tBpR9StPLUAZBNZkjfmled10g42wXE=; b=mKWvstoZl7g2i03VVG5mZUC3fV
-	zamB0k+OPuRI1A0vrKVLiOSdaY4gyCNpPR2Ci5LICoebcAdaHO8n03f0RdDRP1T6qcGiFvIt0Ue66
-	fZrIyPAFiJkpXdUX9oqQxqnu4BiubrV8s3I90SdIjG3Hagi/QZEph0/hy8LjvUVD87sRHjhE+inaG
-	Ln+zkz1KeTG7XkKYWGpVXTcVQabObssdNPty0BROQlsulIhpGzlL08+JdwyN5ukE5ymQa8chfB+9T
-	SkM5+wkQZKPXwTaxuyRi/MxpQZrv1jFOBugDCUMkBSz0j7E2sYRIDy9LKicPRiSpDNzUphpr7AXun
-	jcTWJRbA==;
+	bh=s4k8B9SqdOW/b4nXIri28MHaonby69L1MPYqhyNKUX0=; b=mgDs+Jg7yxknEhASeMwp7N3gQn
+	0SPpuldJdOkYJ6ly8clLUARaS9h3DJvBTW5gBVGuEYXUFlJKOH7bvHDbQN6DGxhxSOYDrJAN6TIaL
+	QupdwYwh5a2gTKIWv2Et2lHPJgyc58ZPYETFk9RJlAMwosiKqFzj2cThLYc9S8/EF8d95NuzyWncT
+	oqKQmfsRYY7MdxcloIItxaDwwLCWbDQtKNDst7WltYkxZVdJSMOhoOMhs98QX6LZcs/26lD6VNDjx
+	I8QPqDIWjVsronEoDkeuWY8jipKhmQ47X5UoiMJAX3qglfFOcZ1+JvX+0hrtQbXyFJuIqP2brQoJE
+	K6uKLjWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZlYY-00000004qlP-3bhL;
-	Mon, 20 Jan 2025 06:46:42 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1tZlqU-00000004sHj-3hRb;
+	Mon, 20 Jan 2025 07:05:14 +0000
+Received: from out-182.mta0.migadu.com ([91.218.175.182])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZlYV-00000004qke-3ss1
+	id 1tZlqS-00000004sHJ-1GMR
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jan 2025 06:46:41 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-540218726d5so3878537e87.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jan 2025 22:46:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1737355597; x=1737960397; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sNXo4WaOxS///tBpR9StPLUAZBNZkjfmled10g42wXE=;
-        b=YIbjdCfhZmG3fTvKHnDHFwV6Y7zITHtpNgrhgYZsYAwhb5D5Y/LBP9Ml7WbLICgQjo
-         0ZtHtyouVaaH9rpsSbtfYYxKdqBKhrq1Z8HIS2zzLOjo6PUfCQIYHV3VaqKKyOe+AQ6S
-         VSnonCi5+cg/3Wz3hqltbW5tXpdlgMNhifLro=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737355597; x=1737960397;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sNXo4WaOxS///tBpR9StPLUAZBNZkjfmled10g42wXE=;
-        b=lNfx6Ur0D0z+kNKlAV+6xVHjM2v9o4wdb/BuRzvyTo0cIyJ9ArZXf+nTN/0F5mUIGA
-         8rtEfHPQ/ytHyjqDg8KemiGbqqWPyhDIVSBcPieOFt+RE+5oBYl6cfNRF7QoFYzARpwf
-         T1+XYLvZE/WEmTSzTh4qXsElH286tFhcoO6zrq9cli9aXxsg21eMeSlEn0cH/+R524pp
-         y1P3dsU+wNnGcJBsh6ezgC0XFVIGDFzNCsdfqYrqMcjVwavucpmWblWHgb8OOpxiqubU
-         QFxuj3HkiW7oDb/5S9RLKURtMRU5d0fMhYicyr3J4oBiknh/l4Pt96qMVE3YpbAglrok
-         hRKw==
-X-Forwarded-Encrypted: i=1; AJvYcCWWkV/CE77NEUY2oe9AnUr0V8/gatEMpGSAazfh0rz7Vuyel5st+IS8GyTu045NGOCkbLyTZWV6fRZU2ogVkw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZi7He1/pHW59gXLsI3A8drYTByQ1V2ETfJ2vYl4T30sQkAYoo
-	wIru1pvzfrbq4U5NAmBMWnHl1I3aK+EBU5pv6ZUNbUczO33BPF8hc8GN2pM7X/jdqrPwwHEXSl0
-	ri46iLt4vRckmctmY19x2t/4As971m57EGUSz
-X-Gm-Gg: ASbGncvpcU87M7C/TT8or2r83P80k1q1b/E9a/qiNpAh/AI53Eiafzw4n1UYWhtlB46
-	xdSZmz3njqpyR+RIA9OjqyHDMkn1LAXh7BIZrgwpkKY5ao26yO05+5usFC45Q8vykgHNhr4gCWs
-	08Jw4=
-X-Google-Smtp-Source: AGHT+IGe4S6TYf+4ulYMixEZAJCcy5WdGlwRlwQfzdR0+wuoegjONvE0lGUgeRF49B9dTczKUXEO+792vM5swITbus4=
-X-Received: by 2002:a05:6512:b23:b0:53e:fa8b:822e with SMTP id
- 2adb3069b0e04-5439c28258dmr3579236e87.37.1737355597391; Sun, 19 Jan 2025
- 22:46:37 -0800 (PST)
+	Mon, 20 Jan 2025 07:05:13 +0000
+Message-ID: <84adda72-24c1-428d-9c55-8bb9ec189584@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1737356708;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=s4k8B9SqdOW/b4nXIri28MHaonby69L1MPYqhyNKUX0=;
+	b=H42Z2l+UXNpZWYWEmHERkXyThqLsthOt2Tl1gQlgH7BXsUNxeI/rr3PfiugdYdU7zHqpvq
+	dLqd9siDrRP2RNM9ARbxgV6zGEqcH+5CdCKOZz1TBdC0GDysb1JYpX1OOzaYOnjlwgwB22
+	siLOW8pFM6wtm6a+laFnQN1GQRPRQXE=
+Date: Mon, 20 Jan 2025 15:04:56 +0800
 MIME-Version: 1.0
-References: <20241219170800.2957-1-jason-jh.lin@mediatek.com>
- <20241219170800.2957-2-jason-jh.lin@mediatek.com> <CABb+yY2t7rBnoBEf3Pog0eRW_zvb0YggbgKBspnZOS1bsyQBPQ@mail.gmail.com>
-In-Reply-To: <CABb+yY2t7rBnoBEf3Pog0eRW_zvb0YggbgKBspnZOS1bsyQBPQ@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 20 Jan 2025 14:46:26 +0800
-X-Gm-Features: AbW1kvYbC_aCNW0ewDsvXV7P02TnnXE-2bnIKZ2gq8f_DneY-FzYQmVy3vGEru8
-Message-ID: <CAGXv+5Eg_5CFiCYPk29wvjPq03wO9js5nQNhF8A_kB9+K452uw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/7] dt-bindings: mailbox: mediatek: Add MT8196 support
- for gce-mailbox
-To: Jassi Brar <jassisinghbrar@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-media@vger.kernel.org, Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>, 
-	Xavier Chang <xavier.chang@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Andy Yan <andyshrk@163.com>, Daniel Stone <daniel@fooishbar.org>
+References: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+ <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+ <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+ <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+ <xz5ncq67bgmdase2jg3cfvyaxpiwhol2eqpfzow6dqpauvslo5@2w3rw27lhnxo>
+ <b97fcd2f-516a-4172-aef3-631418564cfa@linux.dev>
+ <ef52dab0-058f-408f-a298-c4b2453a3d2f@ideasonboard.com>
+ <f4562dbf-b132-4cfd-8f7e-43cd69f2673f@linux.dev>
+ <cf34be39-ce92-4ea5-b548-03008c163d31@ideasonboard.com>
+ <8234927e-0d12-4655-813d-8ec94179b737@linux.dev>
+ <20250119201443.GB2467@pendragon.ideasonboard.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sui Jingfeng <sui.jingfeng@linux.dev>
+In-Reply-To: <20250119201443.GB2467@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250119_224640_139036_44847534 
-X-CRM114-Status: GOOD (  33.59  )
+X-CRM114-CacheID: sfid-20250119_230512_663029_28F175B2 
+X-CRM114-Status: GOOD (  37.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,320 +91,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 19, 2025 at 5:24=E2=80=AFAM Jassi Brar <jassisinghbrar@gmail.co=
-m> wrote:
->
-> On Thu, Dec 19, 2024 at 11:08=E2=80=AFAM Jason-JH.Lin <jason-jh.lin@media=
-tek.com> wrote:
-> >
-> > 1. Add compatible name and iommus property to mediatek,gce-mailbox.yaml
-> >    for MT8196.
-> >
-> >    - The compatible name "mediatek,mt8196-gce-mailbox" is added to
-> >      ensure that the device tree can correctly identify and configure
-> >      the GCE mailbox for the MT8196 SoC.
-> >
-> >    - The iommus property is added to specify the IOMMU configuration
-> >      for the GCE mailbox, ensuring proper memory management and access
-> >      control.
-> >
-> > 2. Add the Global Command Engine (GCE) binding header to define the
-> >    abstrct symbol binding to the GCE hardware settings of GCE Thread
-> >    Priority, GCE Subsys ID and GCE Event for MT8196.
-> >
-> >    - GCE Thread Priority: Defined to configure the priority level for
-> >      each GCE hardware thread. This is necessary for proper scheduling
-> >      and execution of commands in the GCE.
-> >
-> >    - GCE Subsys ID: Defined to specify the subsystem ID for GCE clients=
-.
-> >      This is used to correctly address and access different subsystems
-> >      within the GCE.
-> >
-> >    - GCE Event: Defined to specify the events that the GCE can handle.
-> >      These events are used by the driver to synchronize and manage
-> >      hardware operations.
-> >
-> >    Examples of the binding usage in the driver code:
-> >    1) GCE Thread Priority:
-> >    - Defined in the header file: `#define CMDQ_THR_PRIO_4 4`
-> >    - Used in the Device Tree: `mboxes =3D <&gce0 0 CMDQ_THR_PRIO_4>;`
-> >    - Parsed and used in the driver to set thread priority:
-> >      ```c
-> >      static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox,i
-> >                                          const struct of_phandle_args *=
-sp)
-> >      {
-> >         thread->priority =3D sp->args[1];
-> >      }
-> >      // set GCE thread priority to the priority level 4 for GCE thread =
-0
-> >      writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> >      ```
-> >
-> >    2) GCE Subsys ID:
-> >    - Defined in the header file: `#define SUBSYS_1c00XXXX 3`
-> >    - Used in the Device Tree:
-> >         `mediatek,gce-client-reg =3D <&gce SUBSYS_1c00XXXX 0x0000 0x100=
-0>;`
-> >    - Parsed and used in the driver to configure subsys ID:
-> >      ```c
-> >      int cmdq_dev_get_client_reg(struct device *dev,
-> >                                  struct cmdq_client_reg *client_reg,
-> >                                  int idx)
-> >      {
-> >         client_reg->subsys =3D (u8)spec.args[0];
-> >         client_reg->offset =3D (u16)spec.args[1];
-> >      }
-> >      // GCE write the value to the register 0x1c000000 + 0x0000 + offse=
-t
-> >      cmdq_pkt_write(cmdq_handle, client_reg->subsys,
-> >                     client_reg->offset + offset, value);
-> >      ```
-> >
-> >    3) GCE Event:
-> >    - Defined in the header file:
-> >         `#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0 574`
-> >    - Used in the Device Tree:
-> >         `mediatek,gce-events =3D <CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0>;`
-> >    - Parsed and used in the driver to handle events:
-> >      ```c
-> >      int mtk_crtc_create(struct drm_device *drm_dev,
-> >                          const unsigned int *path,
-> >                          unsigned int path_len, int priv_data_index,
-> >                          const struct mtk_drm_route *conn_routes,
-> >                          unsigned int num_conn_routes)
-> >      {
-> >         of_property_read_u32_index(priv->mutex_node,
-> >                                    "mediatek,gce-events", i,
-> >                                    &mtk_crtc->cmdq_event);
-> >      }
-> >      // GCE clear the STREAM_DONE event sent from DISP_MUTEX hardware
-> >      cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
-> >      ```
-> >
-> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> > ---
-> >  .../mailbox/mediatek,gce-mailbox.yaml         |    4 +
-> >  .../dt-bindings/mailbox/mediatek,mt8196-gce.h | 1415 +++++++++++++++++
-> >  2 files changed, 1419 insertions(+)
-> >  create mode 100644 include/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> >
-> > diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mai=
-lbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.=
-yaml
-> > index cef9d7601398..73d6db34d64a 100644
-> > --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
-ml
-> > +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
-ml
-> > @@ -25,6 +25,7 @@ properties:
-> >            - mediatek,mt8188-gce
-> >            - mediatek,mt8192-gce
-> >            - mediatek,mt8195-gce
-> > +          - mediatek,mt8196-gce
-> >        - items:
-> >            - const: mediatek,mt6795-gce
-> >            - const: mediatek,mt8173-gce
-> > @@ -49,6 +50,9 @@ properties:
-> >      items:
-> >        - const: gce
-> >
-> > +  iommus:
-> > +    maxItems: 1
-> > +
-> >  required:
-> >    - compatible
-> >    - "#mbox-cells"
-> > diff --git a/include/dt-bindings/mailbox/mediatek,mt8196-gce.h b/includ=
-e/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> > new file mode 100644
-> > index 000000000000..9e0700236033
-> > --- /dev/null
-> > +++ b/include/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> > @@ -0,0 +1,1415 @@
->
-> 1415 ?  90% seem unnecessary.
->
-> > +
-> > +/* GCE thread priority */
-> > +#define CMDQ_THR_PRIO_LOWEST   0
-> > +#define CMDQ_THR_PRIO_1                1
-> > +#define CMDQ_THR_PRIO_2                2
-> > +#define CMDQ_THR_PRIO_3                3
-> > +#define CMDQ_THR_PRIO_4                4
-> > +#define CMDQ_THR_PRIO_5                5
-> > +#define CMDQ_THR_PRIO_6                6
-> > +#define CMDQ_THR_PRIO_HIGHEST  7
-> >
->  Only need to HIGHEST maybe
+Hi,
 
-Or maybe we could just get rid of them and describe the valid values
-and ordering in the YAML part?
+On 2025/1/20 04:14, Laurent Pinchart wrote:
+> On Mon, Jan 20, 2025 at 12:26:30AM +0800, Sui Jingfeng wrote:
+>> On 2025/1/19 23:22, Tomi Valkeinen wrote:
+>>> On 19/01/2025 16:59, Sui Jingfeng wrote:
+>>>
+>>>>>>> But userspace must be able to continue allocating YUV buffers through
+>>>>>>> CREATE_DUMB.
+>>>>>> I think, allocating YUV buffers through CREATE_DUMB interface is just
+>>>>>> an *abuse* and *misuse* of this API for now.
+>>>>>>
+>>>>>> Take the NV12 format as an example, NV12 is YUV420 planar format, have
+>>>>>> two planar: the Y-planar and the UV-planar. The Y-planar appear first
+>>>>>> in memory as an array of unsigned char values. The Y-planar is followed
+>>>>>> immediately by the UV-planar, which is also an array of unsigned char
+>>>>>> values that contains packed U (Cb) and V (Cr) samples.
+>>>>>>
+>>>>>> But the 'drm_mode_create_dumb' structure is only intend to provide
+>>>>>> descriptions for *one* planar.
+>>>>>>
+>>>>>> struct drm_mode_create_dumb {
+>>>>>>       __u32 height;
+>>>>>>       __u32 width;
+>>>>>>       __u32 bpp;
+>>>>>>       __u32 flags;
+>>>>>>       __u32 handle;
+>>>>>>       __u32 pitch;
+>>>>>>       __u64 size;
+>>>>>> };
+>>>>>>
+>>>>>> An width x height NV12 image takes up width*height*(1 + 1/4 + 1/4)
+>>>>>> bytes.
+>>>>>>
+>>>>>> So we can allocate an *equivalent* sized buffer to store the NV12
+>>>>>> raw data.
+>>>>>>
+>>>>>> Either 'width * (height * 3/2)' where each pixel take up 8 bits,
+>>>>>> or just 'with * height' where each pixels take up 12 bits.
+>>>>>>
+>>>>>> However, all those math are just equivalents description to the original
+>>>>>> NV12 format, neither are concrete correct physical description.
+>>>>> I don't see the problem. Allocating dumb buffers, if we don't have
+>>>>> any heuristics related to RGB behind it, is essentially just
+>>>>> allocating a specific amount of memory, defined by width, height and
+>>>>> bitsperpixel.
+>>>>>
+>>>> I think, the problem will be that the 'width', 'height' and 'bpp'
+>>>> are originally used to describe one plane. Those three parameters
+>>>> has perfectly defined physical semantics.
+>>>>
+>>>> But with multi planar formats, take NV12 image as an example,
+>>>> for a 2×2 square of pixels, there are 4 Y samples but only 1 U
+>>>> sample and 1 V sample. This format requires 4x8+1x8+1x8=48 bits
+>>>> to store the 2x2 square.
+>>>>
+>>>> So its depth is 12 bits per pixel (48 / (2 * 2)).
+>>>>
+>>>> so my problem is that the mentioned 12bpp in this example only
+>>>> make sense in mathematics, it doesn't has a good physical
+>>>> interpret. Do you agree with me on this technique point?
+>>>>
+>>>>> If I want to create an NV12 framebuffer, I allocate two dumb
+>>>>> buffers, one for Y and one for UV planes, and size them accordingly.
+>>>>> And then create the DRM framebuffer with those.
+>>>>>
+>>>> Then how you fill the value of the 'width', 'height' and 'bpp' of
+>>>> each dumb buffers?
+>>> For 640x480-NV12:
+>>> plane 0: width = 640, height = 480, bpp = 8
+>>> plane 1: width = 640 / 2, height = 480 / 2, bpp = 16
+>> But i think this should be hardware dependent. The hardware I'm using
+>> load NV12  raw data as a whole. I only need to feed gpuva of the backing
+>> memory to the hardware register once.
+>>
+>> Not familiar with your hardware, so I can't talk more on this software
+>> design. Perhaps someone know more could have a comment on this.
+> Layout of planes in memory is just one hardware constraint, the same way
+> we have constraints on alignment and strides. Some devices require the
+> planes to be contiguous (likely with some alignment constraints), some
+> can work with planes being in discontiguous pieces of memory, and even
+> require them to be discontiguous and located in separate DRAM banks.
 
-> > +
-> > +/* GCE subsys table */
-> > +#define SUBSYS_1300XXXX                0
-> > +#define SUBSYS_1400XXXX                1
-> > +#define SUBSYS_1401XXXX                2
-> > +#define SUBSYS_1402XXXX                3
-> > +#define SUBSYS_1502XXXX                4
-> > +#define SUBSYS_1880XXXX                5
-> > +#define SUBSYS_1881XXXX                6
-> > +#define SUBSYS_1882XXXX                7
-> > +#define SUBSYS_1883XXXX                8
-> > +#define SUBSYS_1884XXXX                9
-> > +#define SUBSYS_1000XXXX                10
-> > +#define SUBSYS_1001XXXX                11
-> > +#define SUBSYS_1002XXXX                12
-> > +#define SUBSYS_1003XXXX                13
-> > +#define SUBSYS_1004XXXX                14
-> > +#define SUBSYS_1005XXXX                15
-> > +#define SUBSYS_1020XXXX                16
-> > +#define SUBSYS_1028XXXX                17
-> > +#define SUBSYS_1700XXXX                18
-> > +#define SUBSYS_1701XXXX                19
-> > +#define SUBSYS_1702XXXX                20
-> > +#define SUBSYS_1703XXXX                21
-> > +#define SUBSYS_1800XXXX                22
-> > +#define SUBSYS_1801XXXX                23
-> > +#define SUBSYS_1802XXXX                24
-> > +#define SUBSYS_1804XXXX                25
-> > +#define SUBSYS_1805XXXX                26
-> > +#define SUBSYS_1808XXXX                27
-> > +#define SUBSYS_180aXXXX                28
-> > +#define SUBSYS_180bXXXX                29
-> > +#define SUBSYS_NO_SUPPORT      99
-> > +
-> Keep only that you use now or plan in  the near future. But ok.
->
-> > +/* GCE-D hardware events */
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF0                                  =
-         0
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF1                                  =
-         1
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF2                                  =
-         2
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF3                                  =
-         3
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF4                                  =
-         4
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF5                                  =
-         5
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF6                                  =
-         6
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF7                                  =
-         7
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF8                                  =
-         8
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF9                                  =
-         9
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF10                                 =
-         10
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF11                                 =
-         11
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF12                                 =
-         12
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF13                                 =
-         13
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF14                                 =
-         14
-> > +#define CMDQ_EVENT_DISP0_STREAM_SOF15                                 =
-         15
-> >
->  you mean
->   #define CMDQ_EVENT_DISP0_STREAM_SOF(n)  n
->
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL0                              =
-         16
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL1                              =
-         17
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL2                              =
-         18
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL3                              =
-         19
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL4                              =
-         20
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL5                              =
-         21
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL6                              =
-         22
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL7                              =
-         23
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL8                              =
-         24
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL9                              =
-         25
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL10                             =
-         26
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL11                             =
-         27
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL12                             =
-         28
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL13                             =
-         29
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL14                             =
-         30
-> > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL15                             =
-         31
->
->    #define CMDQ_EVENT_DISP0_FRAME_DONE_SEL(n)
->             (16 + n)
->
-> > +#define CMDQ_EVENT_DISP0_DISP_WDMA0_TARGET_LINE_END_ENG_EVENT         =
-         32
-> > +#define CMDQ_EVENT_DISP0_DISP_WDMA0_SW_RST_DONE_ENG_EVENT             =
-         33
-> > +#define CMDQ_EVENT_DISP0_DISP_POSTMASK1_RST_DONE_ENG_EVENT            =
-         34
-> > +#define CMDQ_EVENT_DISP0_DISP_POSTMASK0_RST_DONE_ENG_EVENT            =
-         35
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_TIMEOUT_ENG_EVENT                =
-         36
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT0            =
-         37
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT1            =
-         38
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT2            =
-         39
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT3            =
-         40
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT4            =
-         41
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT5            =
-         42
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT6            =
-         43
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT7            =
-         44
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT8            =
-         45
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT9            =
-         46
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT10           =
-         47
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT11           =
-         48
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT12           =
-         49
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT13           =
-         50
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT14           =
-         51
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT15           =
-         52
-> > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_GET_RELEASE_ENG_EVENT            =
-         53
-> > +#define CMDQ_EVENT_DISP0_DISP_MDP_RDMA0_SW_RST_DONE_ENG_EVENT         =
-         54
-> > +
->  keep only the used ones and use
-
-This is the only publicly available table of the numbers. Having
-the complete table somewhere would be nice. OOTH the numbers being
-like IRQ or DRQ numbers, don't actually get used in the driver.
-So maybe we could keep the full list but move it under the dts directory?
+Right.
 
 
-ChenYu
+>>>> Why not allocate storage for the whole on one shoot?
+>>> You can, if you adjust the parameters accordingly. However, if the
+>>> strides of the planes are not equal, I guess it might cause problems
+>>> on some platforms.
+>>>
+>>> But I think it's usually simpler to allocate one buffer per plane, and
+>>> perhaps even better as it doesn't require as large contiguous memory
+>>> area.
+>>>
+>>>> The modetest in libdrm can be an good example, send it[1] to you as
+>>>> an reference.
+>>> Right, so modetest already does it successfully. So... What is the issue?
+>> But then, the problem will become that it override the 'height' parameter.
+>> What's the physical interpretation of the 'height' parameter when creating
+>> an NV12 image with the dump API then?
+> I wouldn't be too concerned about physical interpretations. Yes, the
+> height, width and bpp parameters were likely designed with RGB formats
+> in mind. Yes, using DUMB_CREATE for YUV formats is probably something
+> that the original authors didn't envision. And yes, from that point of
+> view, it could be seen by the original authors as an abuse of the API.
+> But I don't think that's a problem as such.
+
+Sometimes there may have 2D GPU or Image Process Unit get involved.
+Setting the dimension, the clip window and pitch etc parameters to the
+hardware are needed.
+
+The value of bpp affects pitch, bigger pitch may cause the hardware load
+more bytes than it should on one line. While the 'height' may affect the
+size of the clip window, depend on the calculation method.
+
+But I have no strong opinion toward with this and agree with you in overall.
+
+> An API is just an API. True, it would be nicer if the usage of the ioctl
+> parameters was more intuitive for YUV formats, but I believe we could
+> still standardize how the existing parameters map to linear scanout YUV
+> formats without causing the world to end. As has been said before, lots
+> of drivers are using DUMB_CREATE for this purpose, and we can't change
+> that.
+>
+> This doesn't mean we shouldn't work on improving memory allocation, but
+> I see that as a separate issue.
+>
+>> I guess, solving complex problems with simple APIs may see the limitation,
+>> sooner or later. But I not very sure and might be wrong. So other peoples
+>> can override me words.
+>>
+>>> Everyone agrees that CREATE_DUMB is not the best ioctl to allocate
+>>> buffers, and one can't consider it to work identically across the
+>>> platforms. But it's what we have and what has been used for ages.
+>> Yeah, your request are not unreasonable. It can be seen as a kind of rigid demand.
+>> Since GEM DMA helpers doesn't export an more advanced interface to userspace so far.
+>> As a result, drivers that employing GEM DMA has no other choice, but to abuse the
+>> dumb buffer API to do allocation for the more complex format buffers.
+>>
+>> The dumb buffer API doesn't support to specify buffer format, tile status and
+>> placement etc. The more advance drivers has been exposed the xxx_create_gem()
+>> to user-space. It seems that a few more experienced programmers hint us to
+>> create an new ioctl at above thread, so that we can keep employing simple API
+>> to do simple things and to suit complex needs with the more advanced APIs.
+> I'd really like to explore adding new ioctls to exposure memory
+> allocation constraints, and allocating the memory itself from DMA heaps.
+>
+-- 
+Best regards,
+Sui
+
 
