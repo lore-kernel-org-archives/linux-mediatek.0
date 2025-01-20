@@ -4,81 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABCEC02185
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 09:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D18AC02185
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 09:57:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mN2vzQN2MHhC7vsZGZLLyTF4vEgyb2J5Y6QFwZ7uVNs=; b=GmvunnRc8PBtWdCrTktMjLfVGF
-	p/F+7EC6in5KfcA01NPhUKDiBb2fG2YTltw98U3LRRcnN1eb13+rzd10KIAtWBItgBgjRe7S66aWU
-	KYc+j8SIg5te3pFlLfs+Kcd/Pwk+R+NSillHQGxhWET6wX+kC64IupBUI2Cb1EC67FiLxqRsTfKVN
-	ZdTh9czljp2CGpD1+rprXlNiYv5spy07sb5ZlC00ZVhtnrwWT44e6gqzaN/9CfgLDH2ALsTXeU8nR
-	v4JG0I/fLa7Xj3w+A42gAie4UB1e9D4Xpv4G98KquL1lgNkXoQl4+f9a0+EB//aFVqeQbD4t9pkV/
-	fknRoMsA==;
+	bh=VM6sOkfE8iqC95N0AKyRjkMPid32wJ87nN4QCxrUuqo=; b=lUOgNQAB9nZJ7bLF2iNrvHKCLD
+	9JsOvG9vf0qUTZ8cEJ5ApaRReb/baEh9eeqtD3VD0Jvld/sGXPVk1CDcE/uXN+bKoJtEMdzPWh/QL
+	9zUFa+bgbBziS/m2gsIpTUCwskwCoq4NuOhXL47RPSGH8/ra5bR9ZGuhB/KanJFKtoX/X/vrEuVPG
+	IRfhbyid+8CtJT9/XmmtjVrUlETrWEmf7Y3j/FHruNxnkTeQ8zAXREDN1XoLX0tufGBTnq0GTTyn2
+	bIaTB67CazjCfbCs0E9AgsjsY00dCr99DBhcii973fo3OXlECb26OCdLEj9N62Co1D4zRw98Fn8st
+	KrcTHgYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZoV3-00000005Fi4-3n1X;
-	Mon, 20 Jan 2025 09:55:17 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1tZoXY-00000005G6s-0toq;
+	Mon, 20 Jan 2025 09:57:52 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZo6x-00000005Bpb-1ncy
+	id 1tZoN6-00000005EMq-05gT
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jan 2025 09:30:24 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-38a34e8410bso2192175f8f.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jan 2025 01:30:23 -0800 (PST)
+	Mon, 20 Jan 2025 09:47:05 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-38632b8ae71so3405558f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jan 2025 01:47:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737365422; x=1737970222; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1737366422; x=1737971222; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=mN2vzQN2MHhC7vsZGZLLyTF4vEgyb2J5Y6QFwZ7uVNs=;
-        b=ffixmnZFJXXCRgiSILTL/XI1wUbdC6rbZQ/Q7T2Xk1wSYKMGMJii9P9OA9aL87AezZ
-         ni1dVh7HC0q7NOLdUD/VeAaAY6RX+uM40MgEp0FASJnvLDxOVESg6VO+ku+UfuYBR2jG
-         TTVIRc8ErA4O4CaK8nitigxT82t6G5C/poEHOSOkHGorschfd8fyKILQzGyJFCePNwrl
-         qsZyjGAz4po4jqVnbuXie8UleIWuJptbEHmiPeqO36eh8S4rCpd7cfyml8BkMJM35kYW
-         lH67d5PPonwkQytwS0H4cYnt5J9XgVYje/I+iNhYF5rT3HQ7SiC856u3caRFcJGwRDRe
-         XtTw==
+        bh=VM6sOkfE8iqC95N0AKyRjkMPid32wJ87nN4QCxrUuqo=;
+        b=pA2iqZ52MWqZ4+HR35lBaop4SlqV3md4Wamq9SobcYhXfFVP7o7xqoXQ3Dntf15lol
+         LUsZ579QThdwuMJYsuIvBRkZwrDQqd6MjLvLwEeKwGdgaqAdR3oes+4yb5fpHSswk5c1
+         gTZ3Z2itKzv1gpZysL4tHAkfcMIf/TM5mhSSOnC9Aln1iotbAUw+V4+OaZWvGUY/kyy9
+         oPF2Kv11hV7Pe+iakxjnvySt5eBnkTW/YkPeWAadWcKH33S6WIqkITScHW+8cv2eQ5Wk
+         5GHhpK1ugXtCHjSKz8HGaRsoWRIbdocelow7SCTmsNFxs2g/9q2/1MOCeS6W5zqXdHIW
+         Gn/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737365422; x=1737970222;
+        d=1e100.net; s=20230601; t=1737366422; x=1737971222;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mN2vzQN2MHhC7vsZGZLLyTF4vEgyb2J5Y6QFwZ7uVNs=;
-        b=qTGmQS3t1kzYqkXoKhZRnpUh5dgG9TvNn78h6OJTQ/s0k1eslSIXeVul1Q1rovkkLP
-         /7EauCjCOfY5xpZbb7h/bMMPATuV5siPzVHEuywwqMsmJJ/CaHZKQBU4mBSG91EWW3yh
-         AHYlTDIZaMnICh9exAB8dl+dhiJK6UueIjUlzFJEXn4hflfbmN5RRqhoKsF3FiT7KOgl
-         tVChWir5/+GfFdViUS6UXfxtHvOSbl46iflQsJ3ISi75hbbqfA4ODco/8FZr5ervvJPE
-         rO2E5lsci/1kTLk3IleXn+7T/LnYS8Tnj0jebWytGiJCGWTfZh8Mi91hq8VtxvgTBsl/
-         piRQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVyyfdxMUvDX1DXW1IwQixOJAt6dpnG7ysm875htPnU5JC1bgcAKahmmdilK2QKyWmnS2RWhCNcPfa8pnNi9w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxD9kmYrbNsnZr5msBnx9D9F5JreA8SJ1LYRLuOFOKzGJb0k5lN
-	ReJhontlN0BADeffGApTMSGpuASmLuO1vM3KKJbTRmKKGApr0XxZqbPeyyX7wRg=
-X-Gm-Gg: ASbGncvm4+VfUINL8axyoaKXnRDUpWzpcxT+mIJYLYIamgqc3lm9lELTD72favdZa9V
-	G1cAmjWLs1LwGFAJbIjcAybslCIv73y/j0jzuJ/c+VKLG8OuoNL69r5OnQNUdvzzbgvkQwvnAt8
-	NYNsfZI1JgFElYFd6XrW+FGSpmYLvtQnaVN4d4zshDnzJjpc9lV5hhOe7IFj6SkaXGPQ947rLrt
-	+y13NVIgj8jwap2wkTvdAkl3f0t3vM2sCEsRKYbCafbFsxfFiPeJTd0+aUWmd/OA1VrrVRaHqo=
-X-Google-Smtp-Source: AGHT+IEZXASFrmYShzNvlF7HMBo84fpqQweouX7QZO3kXwCjuF6druhkZHwPyP/GtHrteNSIXdX06w==
-X-Received: by 2002:a05:6000:1f85:b0:38b:e32a:109d with SMTP id ffacd0b85a97d-38bf59e1d83mr9745687f8f.34.1737365421747;
-        Mon, 20 Jan 2025 01:30:21 -0800 (PST)
+        bh=VM6sOkfE8iqC95N0AKyRjkMPid32wJ87nN4QCxrUuqo=;
+        b=vX1+pzA37E162+lePWs3VU/SWD3sEJeXIy8pwibb/wGqegF4XXtjNNJe/+4dv5cYPd
+         VpqgIEZ5sgfF3ugY2IlAwmB+nDkMiHawZvmG+KGQ/Ja3Cg6xq3W7Xn3hSBDgcoJxTZ59
+         J35M6f/bvQ7MfhZMmw6SJatuuAETmCCv3W0/NhgROqpt3x8Qp47odt167GjbPTzaX8Wv
+         e6JqF5KfqXeh0PG1TUbjds0rW/dW7N/0EcC3nMokXiqEx2FzRiMAwzzHS0ZksYJZP+s6
+         X5P0YGvwUi3VOSi8rMnN4OCfvPSRh3qwUXFa+iDgY722WE0QysFVrVCKACs1wYhsqhvT
+         1/rQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWExcI7VLc2Cs5vrWVBrWBc+3Ptu3u8q2UIZ5+Xnfu6s2WwYznI7wWvK8/G5PfaSwQGAaXrj13F7citjImyTw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwVibxef8ifbnJIQGsX8eYzo03YdXhQZt0U9YgIL8zEk2Rw9TeG
+	i+gOll6dxEIrGhQn0p+rc+XPWVPXTJ/xcmPPrnhVAoDAFZKkOjAjt5GHTr8RzwU=
+X-Gm-Gg: ASbGnctn+6ocvvvlqIyBCxECJ8wFWingjsguW+DtUDZDUjU59NbaaPzlFxMFyCuybJ6
+	5qXdV9431hlTW3ZKGTr9dq3s2nBiMWxJLZGyG+/sLNamwq7i4/cM2Qe9bYkeT7VGBhOlY9EMY0f
+	WW/5vdXFs11bDewdKkZRC24DMktEMuv9Y10owQbojEjOYmiM/4bXFMCrN7UrA2YGaRsIZp2IUDt
+	2DAWgdmCP1SWQWoueQICgzwtn8Q6pq+xT+mzW7YB0zoRGIxzEBWQHpS20M0w6zN/wgiSKZSWm0=
+X-Google-Smtp-Source: AGHT+IGPG329V2074yOYSMY1ziObuL2UZ+m5lYehxxQsiJfOBHTxj4D3R6O9lmeqMjiIW6U9yiBaRw==
+X-Received: by 2002:adf:9bca:0:b0:386:3356:f3ac with SMTP id ffacd0b85a97d-38bf57937a7mr7522401f8f.26.1737366422340;
+        Mon, 20 Jan 2025 01:47:02 -0800 (PST)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43890468869sm130364155e9.35.2025.01.20.01.30.20
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf32758dbsm10018595f8f.64.2025.01.20.01.47.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jan 2025 01:30:21 -0800 (PST)
-Date: Mon, 20 Jan 2025 12:30:18 +0300
+        Mon, 20 Jan 2025 01:47:01 -0800 (PST)
+Date: Mon, 20 Jan 2025 12:46:58 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Charles Han <hanchunchao@inspur.com>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7925: fix NULL deref check in
- mt7925_change_vif_links
-Message-ID: <7f806676-a698-4081-81b7-4a48435d2f82@stanley.mountain>
+To: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Deren Wu <deren.wu@mediatek.com>, linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH next] wifi: mt76: mt7925: fix error checking in
+ mt7925_mcu_uni_rx/tx_ba()
+Message-ID: <063aafdf-3234-42ac-a4ea-3ff98e2835b6@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_013023_576958_71DB7327 
-X-CRM114-Status: UNSURE (   7.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250120_014704_071857_6CCC8AED 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,128 +101,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Charles Han,
+The "ret" variable in mt7925_mcu_uni_[rx/tx]_ba() needs to be signed for
+the if (ret < 0) condition to be true.
 
-Commit 5cd0bd815c8a ("wifi: mt76: mt7925: fix NULL deref check in
-mt7925_change_vif_links") from Oct 25, 2024 (linux-next), leads to
-the following Smatch static checker warning:
+Also the mt7925_mcu_sta_ba() function returns positive values on success.
+The code currently returns whatever non-negative value was returned on
+the last iteration.  It would be better to return zero on success.  This
+function is called from mt7925_ampdu_action() which does not check the
+return value so the return value doesn't affect runtime.  However, it
+still makes sense to return zero even though nothing is affected in the
+current code.
 
-	drivers/net/wireless/mediatek/mt76/mt7925/main.c:2053 mt7925_change_vif_links()
-	warn: inconsistent returns '&dev->mt76.mutex'.
+Fixes: eb2a9a12c609 ("wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-drivers/net/wireless/mediatek/mt76/mt7925/main.c
-    1947 static int
-    1948 mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-    1949                         u16 old_links, u16 new_links,
-    1950                         struct ieee80211_bss_conf *old[IEEE80211_MLD_MAX_NUM_LINKS])
-    1951 {
-    1952         struct mt792x_bss_conf *mconfs[IEEE80211_MLD_MAX_NUM_LINKS] = {}, *mconf;
-    1953         struct mt792x_link_sta *mlinks[IEEE80211_MLD_MAX_NUM_LINKS] = {}, *mlink;
-    1954         struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-    1955         unsigned long add = new_links & ~old_links;
-    1956         unsigned long rem = old_links & ~new_links;
-    1957         struct mt792x_dev *dev = mt792x_hw_dev(hw);
-    1958         struct mt792x_phy *phy = mt792x_hw_phy(hw);
-    1959         struct ieee80211_bss_conf *link_conf;
-    1960         unsigned int link_id;
-    1961         int err;
-    1962 
-    1963         if (old_links == new_links)
-    1964                 return 0;
-    1965 
-    1966         mt792x_mutex_acquire(dev);
-    1967 
-    1968         for_each_set_bit(link_id, &rem, IEEE80211_MLD_MAX_NUM_LINKS) {
-    1969                 mconf = mt792x_vif_to_link(mvif, link_id);
-    1970                 mlink = mt792x_sta_to_link(&mvif->sta, link_id);
-    1971 
-    1972                 if (!mconf || !mlink)
-    1973                         continue;
-    1974 
-    1975                 if (mconf != &mvif->bss_conf) {
-    1976                         mt792x_mac_link_bss_remove(dev, mconf, mlink);
-    1977                         devm_kfree(dev->mt76.dev, mconf);
-    1978                         devm_kfree(dev->mt76.dev, mlink);
-    1979                 }
-    1980 
-    1981                 rcu_assign_pointer(mvif->link_conf[link_id], NULL);
-    1982                 rcu_assign_pointer(mvif->sta.link[link_id], NULL);
-    1983         }
-    1984 
-    1985         for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-    1986                 if (!old_links) {
-    1987                         mvif->deflink_id = link_id;
-    1988                         mconf = &mvif->bss_conf;
-    1989                         mlink = &mvif->sta.deflink;
-    1990                 } else {
-    1991                         mconf = devm_kzalloc(dev->mt76.dev, sizeof(*mconf),
-    1992                                              GFP_KERNEL);
-    1993                         mlink = devm_kzalloc(dev->mt76.dev, sizeof(*mlink),
-    1994                                              GFP_KERNEL);
-    1995                         if (!mconf || !mlink)
-    1996                                 return -ENOMEM;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 15815ad84713..b3a00964e802 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -617,7 +617,8 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ 	struct mt792x_bss_conf *mconf;
+ 	unsigned long usable_links = ieee80211_vif_usable_links(vif);
+ 	struct mt76_wcid *wcid;
+-	u8 link_id, ret;
++	u8 link_id;
++	int ret;
+ 
+ 	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
+ 		mconf = mt792x_vif_to_link(mvif, link_id);
+@@ -630,10 +631,10 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ 		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
+ 					enable, true);
+ 		if (ret < 0)
+-			break;
++			return ret;
+ 	}
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+@@ -647,7 +648,8 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 	struct mt792x_bss_conf *mconf;
+ 	unsigned long usable_links = ieee80211_vif_usable_links(vif);
+ 	struct mt76_wcid *wcid;
+-	u8 link_id, ret;
++	u8 link_id;
++	int ret;
+ 
+ 	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
+ 		mconf = mt792x_vif_to_link(mvif, link_id);
+@@ -657,10 +659,10 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
+ 					enable, false);
+ 		if (ret < 0)
+-			break;
++			return ret;
+ 	}
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+-- 
+2.45.2
 
-Need to call mt792x_mutex_release(dev) before returning.
-
-    1997                 }
-    1998 
-    1999                 mconfs[link_id] = mconf;
-    2000                 mlinks[link_id] = mlink;
-    2001                 mconf->link_id = link_id;
-    2002                 mconf->vif = mvif;
-    2003                 mlink->wcid.link_id = link_id;
-    2004                 mlink->wcid.link_valid = !!vif->valid_links;
-    2005                 mlink->wcid.def_wcid = &mvif->sta.deflink.wcid;
-    2006         }
-    2007 
-    2008         if (hweight16(mvif->valid_links) == 0)
-    2009                 mt792x_mac_link_bss_remove(dev, &mvif->bss_conf,
-    2010                                            &mvif->sta.deflink);
-    2011 
-    2012         for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-    2013                 mconf = mconfs[link_id];
-    2014                 mlink = mlinks[link_id];
-    2015                 link_conf = mt792x_vif_to_bss_conf(vif, link_id);
-    2016 
-    2017                 rcu_assign_pointer(mvif->link_conf[link_id], mconf);
-    2018                 rcu_assign_pointer(mvif->sta.link[link_id], mlink);
-    2019 
-    2020                 err = mt7925_mac_link_bss_add(dev, link_conf, mlink);
-    2021                 if (err < 0)
-    2022                         goto free;
-    2023 
-    2024                 if (mconf != &mvif->bss_conf) {
-    2025                         mt7925_mcu_set_bss_pm(dev, link_conf, true);
-    2026 
-    2027                         err = mt7925_set_mlo_roc(phy, &mvif->bss_conf,
-    2028                                                  vif->active_links);
-    2029                         if (err < 0)
-    2030                                 goto free;
-    2031                 }
-    2032         }
-    2033 
-    2034         mvif->valid_links = new_links;
-    2035 
-    2036         mt792x_mutex_release(dev);
-    2037 
-    2038         return 0;
-    2039 
-    2040 free:
-    2041         for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-    2042                 rcu_assign_pointer(mvif->link_conf[link_id], NULL);
-    2043                 rcu_assign_pointer(mvif->sta.link[link_id], NULL);
-    2044 
-    2045                 if (mconf != &mvif->bss_conf)
-    2046                         devm_kfree(dev->mt76.dev, mconfs[link_id]);
-    2047                 if (mlink != &mvif->sta.deflink)
-    2048                         devm_kfree(dev->mt76.dev, mlinks[link_id]);
-    2049         }
-    2050 
-    2051         mt792x_mutex_release(dev);
-    2052 
---> 2053         return err;
-    2054 }
-
-regards,
-dan carpenter
 
