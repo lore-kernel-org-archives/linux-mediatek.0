@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1422C02185
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 12:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D4BC02181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 15:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyKvAs4M1JCBbf2bf8AVNrrZhsYbXTCiT7iPWwU+l50=; b=rsCjAVByfFxhDi6KnWWD8jzefC
-	XCmYIWsCE2Di6rJz/ooAjIHJhFA443CaXoCa+veiJyzdwy2drYmrliqDpalky9HS6zQIT2Y1b219A
-	mpxUUehdfgxgahQuy4ZIrvA+FoDP6fp2Wg16hctfMd64HrQjXj8jnTI839cy/ibna4Dt8cD2aUHcy
-	kUJybmB5Ey9LyX8Iku8c8Dzmg+i7g4eTN4MYN4fmoWfoUq1z5OGjMAfKcHiE/15TQid4vxn+0aTsm
-	/alOWtlUDavns2YZ8nWVFAc4b7v9J7BFaIHs3BU97GmsbSYfgdONOllnA+GNquc2NJQWq+t8VL8To
-	c6uxiD8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ANJPCSkCCb0eS2yvATOLuOGqa6XlfMQzzFOr0IfNQxY=; b=ynlBurE470T+qVqPsV8qtnDYsD
+	s6gQaFfMHioSaVzj1aehBJoXv9t6gKcWyIJszO4QTIF09Vp/2bmQQcuq2YnZnC681L/CLElpELYS2
+	Tztk8MkPM48+baGvoHVEuyqrt5pOrkH9pjS5r2lO6jf6rkO9mXAiNPE7S2N+lplf8tmDjilug/XQE
+	yVX42FmEvipPkGlfMF9zhW3+meE6O1NgKoW9ZCDlHER7C9V0jMFkX68k5wRJohvJ8oRt0JqXj+KgY
+	gALvLrkrzJlKifKTJS1ZAlP4Mc3zjtV0qJO/Qv+a2IwDmkHmxL/zeZ+5ZVvg3i6+af2CU7jjC3lUm
+	NZ4p+ZOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZrNa-00000005avU-3Ytr;
-	Mon, 20 Jan 2025 12:59:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tZtqQ-00000005tls-1E5e;
+	Mon, 20 Jan 2025 15:37:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZrMJ-00000005aot-1ggU;
-	Mon, 20 Jan 2025 12:58:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737377905;
-	bh=DD53uhNj6LwdrJl6hL2eBnCsm6oKdkojK2oOswBhZrI=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=MzUKpUy6eAO9Low0cid5YvDD3L4ML3IXM5S24O4r8b6/xPEp8BF9F3Em3HVEC1+1/
-	 b0QxzWngOiybOrbuPs+oMxvmjRPwOfPpaC/VCDPvjgq71U6uZQBDxBCWtIEtL/ak9p
-	 A6cWA5G5cJYNCc8Kcpr4fswHhuRza5GTZrqeGk0FuBbAo2QH9RZi9YKpPaqUlyHjhu
-	 h/BPUh+3o6oMsG+tUpHiAp3mvft4uFFZ7G5cRxZlpqkacIx7ZsUOLFCJ80mruuYLhC
-	 KL7ajupU9cUAHZmHYk1Hio4yeD0D4EoK3qL4vH+qT4Vv57ZkfvjItlfwjrdSs+JgTW
-	 mPSc0iWf9PUFQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04FED17E0343;
-	Mon, 20 Jan 2025 13:58:24 +0100 (CET)
-Message-ID: <15006d4c-81ac-4691-b817-d6510992a14a@collabora.com>
-Date: Mon, 20 Jan 2025 13:58:24 +0100
+	id 1tZtp8-00000005td8-1nsJ;
+	Mon, 20 Jan 2025 15:36:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id DC3EF5C5B1C;
+	Mon, 20 Jan 2025 15:35:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6F9AC4CEDD;
+	Mon, 20 Jan 2025 15:36:12 +0000 (UTC)
+Date: Mon, 20 Jan 2025 21:06:02 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Ziqi Chen <quic_ziqichen@quicinc.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>, quic_cang@quicinc.com,
+	bvanassche@acm.org, beanhuo@micron.com, avri.altman@wdc.com,
+	junwoo80.lee@samsung.com, martin.petersen@oracle.com,
+	quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+	quic_rampraka@quicinc.com, linux-scsi@vger.kernel.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	"James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Stanley Jhu <chu.stanley@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Halaney <ahalaney@redhat.com>,
+	Maramaina Naresh <quic_mnaresh@quicinc.com>,
+	Eric Biggers <ebiggers@google.com>,
+	Minwoo Im <minwoo.im@samsung.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>,
+	"open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..." <linux-arm-msm@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH 1/8] scsi: ufs: core: Pass target_freq to
+ clk_scale_notify() vops
+Message-ID: <20250120153602.wij4vbodjzi24aok@thinkpad>
+References: <20250116091150.1167739-1-quic_ziqichen@quicinc.com>
+ <20250116091150.1167739-2-quic_ziqichen@quicinc.com>
+ <20250119071131.4hepn6msmh76npi7@thinkpad>
+ <57d52f72-31ec-46cf-b632-74b09e29f501@quicinc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/panfrost: Drop redundant Mediatek driver data
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250118160645.78473-1-krzysztof.kozlowski@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250118160645.78473-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <57d52f72-31ec-46cf-b632-74b09e29f501@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_045827_597239_23724527 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250120_073622_559170_AD5B31BD 
+X-CRM114-Status: GOOD (  37.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,23 +82,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/01/25 17:06, Krzysztof Kozlowski ha scritto:
-> mediatek_mt8192_supplies are exactly the same as
-> mediatek_mt8183_b_supplies.  mediatek_mt8188_data is exactly the same as
-> &mediatek_mt8183_b_data.  There is never point in duplicating all these
-> structures - it only raises questions or encourages bugs when someone
-> updates one variant without changing the other.  Drop duplicated code.
+On Mon, Jan 20, 2025 at 08:01:03PM +0800, Ziqi Chen wrote:
+> Hi Mani,
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Thanks for you review~
+> 
+> On 1/19/2025 3:11 PM, Manivannan Sadhasivam wrote:
+> > On Thu, Jan 16, 2025 at 05:11:42PM +0800, Ziqi Chen wrote:
+> > > From: Can Guo <quic_cang@quicinc.com>
+> > > 
+> > > If OPP V2 is used, devfreq clock scaling may scale clock amongst more than
+> > > two freqs,
+> > 
+> > 'amongst more than two freqs': I couldn't parse this.
+> > 
+> 
+> It means that the devfreq framework will tell UFS core driver the devfreq
+> freq, then UFS core driver will find the recommended freq from our freq
+> table based on the devfreq freq. For legacy mode , we can only have 2
+> frequencies in the table. But if the OPP V2 is used, we can have 3 , 4 or
+> more freq tables. You can refer to my PATCH 8/8.
+> 
 
-The reason why these are different is that 8183 and 8192 have different
-GPU architectures, where the former is bifrost and the latter is valhall.
+I got the motive, but the wording is not correct.
 
-Regardless, even if there actually was a reason for that, I agree about
-this deduplication here, as the architecture is anyway made clear by the
-devicetree bindings for those SoCs.
+> > > so just passing up/down to vops clk_scale_notify() is not enough
+> > > to cover the intermediate clock freqs between the min and max freqs. Hence
+> > > pass the target_freq to clk_scale_notify() to allow the vops to perform
+> > > corresponding configurations with regard to the clock freqs.
+> > > 
+> > 
+> > Add a note that the 'target_freq' is not used in this commit.
+> > 
+> 
+> Sorry, I don't very understand this comment, I mentioned the "target_freq"
+> in the commit message,  Could you let me know what note you want me do add?
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This patch is introducing 'target_freq' as a parameter, but it is not used. I
+was asking you to mention that it will be used in successive commits.
 
-Cheers!
+> > > Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+> > > Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+> > > Signed-off-by: Can Guo <quic_cang@quicinc.com>
+> > 
+> > Signed-off-by tag order is not correct here. This implies that Ziqi originally
+> > worked on it, then Can took over and submitted. But it seems the reverse.
+> 
+> Thanks for your reminder. Is below tag order OK ?
+>     Signed-off-by: Can Guo <quic_cang@quicinc.com>
+>     Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+>     Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+> > 
+> > - Mani
+> 
+> -Ziqi
+> 
+> > 
+> > > ---
+> > >   drivers/ufs/core/ufshcd-priv.h  | 7 ++++---
+> > >   drivers/ufs/core/ufshcd.c       | 4 ++--
+> > >   drivers/ufs/host/ufs-mediatek.c | 1 +
+> > >   drivers/ufs/host/ufs-qcom.c     | 5 +++--
+> > >   include/ufs/ufshcd.h            | 2 +-
+> > >   5 files changed, 11 insertions(+), 8 deletions(-)
+> > > 
+> > > diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+> > > index 9ffd94ddf8c7..0549b65f71ed 100644
+> > > --- a/drivers/ufs/core/ufshcd-priv.h
+> > > +++ b/drivers/ufs/core/ufshcd-priv.h
+> > > @@ -117,11 +117,12 @@ static inline u32 ufshcd_vops_get_ufs_hci_version(struct ufs_hba *hba)
+> > >   	return ufshcd_readl(hba, REG_UFS_VERSION);
+> > >   }
+> > > -static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
+> > > -			bool up, enum ufs_notify_change_status status)
+> > > +static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba, bool up,
+> > > +					       unsigned long target_freq,
+> > > +					       enum ufs_notify_change_status status)
+> > >   {
+> > >   	if (hba->vops && hba->vops->clk_scale_notify)
+> > > -		return hba->vops->clk_scale_notify(hba, up, status);
+> > > +		return hba->vops->clk_scale_notify(hba, up, target_freq, status);
+> > >   	return 0;
+> > >   }
+> > > diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> > > index acc3607bbd9c..8d295cc827cc 100644
+> > > --- a/drivers/ufs/core/ufshcd.c
+> > > +++ b/drivers/ufs/core/ufshcd.c
+> > > @@ -1157,7 +1157,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
+> > >   	int ret = 0;
+> > >   	ktime_t start = ktime_get();
+> > > -	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, PRE_CHANGE);
+> > > +	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, PRE_CHANGE);
+> > >   	if (ret)
+> > >   		goto out;
+> > > @@ -1168,7 +1168,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
+> > >   	if (ret)
+> > >   		goto out;
+> > > -	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, POST_CHANGE);
+> > > +	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, POST_CHANGE);
+> > >   	if (ret) {
+> > >   		if (hba->use_pm_opp)
+> > >   			ufshcd_opp_set_rate(hba,
+> > > diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+> > > index 135cd78109e2..977dd0caaef6 100644
+> > > --- a/drivers/ufs/host/ufs-mediatek.c
+> > > +++ b/drivers/ufs/host/ufs-mediatek.c
+> > > @@ -1643,6 +1643,7 @@ static void ufs_mtk_clk_scale(struct ufs_hba *hba, bool scale_up)
+> > >   }
+> > >   static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
+> > > +				    unsigned long target_freq,
+> > >   				    enum ufs_notify_change_status status)
+> > >   {
+> > >   	if (!ufshcd_is_clkscaling_supported(hba))
+> > > diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+> > > index 68040b2ab5f8..b6eef975dc46 100644
+> > > --- a/drivers/ufs/host/ufs-qcom.c
+> > > +++ b/drivers/ufs/host/ufs-qcom.c
+> > > @@ -1333,8 +1333,9 @@ static int ufs_qcom_clk_scale_down_post_change(struct ufs_hba *hba)
+> > >   	return ufs_qcom_set_core_clk_ctrl(hba, false);
+> > >   }
+> > > -static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba,
+> > > -		bool scale_up, enum ufs_notify_change_status status)
+> > > +static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
+> > > +				     unsigned long target_freq,
+> > > +				     enum ufs_notify_change_status status)
+> > >   {
+> > >   	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
+> > >   	int err;
+> > > diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+> > > index d7aca9e61684..a4dac897a169 100644
+> > > --- a/include/ufs/ufshcd.h
+> > > +++ b/include/ufs/ufshcd.h
+> > > @@ -344,7 +344,7 @@ struct ufs_hba_variant_ops {
+> > >   	void    (*exit)(struct ufs_hba *);
+> > >   	u32	(*get_ufs_hci_version)(struct ufs_hba *);
+> > >   	int	(*set_dma_mask)(struct ufs_hba *);
+> > > -	int	(*clk_scale_notify)(struct ufs_hba *, bool,
+> > > +	int (*clk_scale_notify)(struct ufs_hba *, bool, unsigned long,
+> > >   				    enum ufs_notify_change_status);
+> > >   	int	(*setup_clocks)(struct ufs_hba *, bool,
+> > >   				enum ufs_notify_change_status);
+> > > -- 
+> > > 2.34.1
+> > > 
+> > 
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
