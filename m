@@ -4,92 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A9C6C02185
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 16:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E2FC02181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 17:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rBTKFm64zeVxsmK1OA1HXiKNddoRElmBx0NQjXwUk/g=; b=dFLIzF+8xxpAh0Lh3pJEvTQZb9
-	c2SJDcmaQwb2qPRf7xoqVXmOsw+xMLBOY+Svs+VFNUQXtqIToyoEmRK2Nb1lKRrwSIcu1ME+mmf8F
-	i3FAPRg9oAfz4TQoo5XF4iFkjI3hoNelmzBtdnwnvZfTS/du8dE5kDebp5hISBaHXnq8oNAJVYJ/5
-	TLvVJ7DKBcQ2WzMvF/SN5PiOd247ihwqjWmnFDgs47oL2z0Hyws0K+iRTpTrJ1Z6RhJ1z1Qb3cUvg
-	DM30A3hZHaJEUrC4ogWqL03PVlwcjqrbhU6apCZzLNCfUyiZArLJV67z6sI538kl6AEktMthxq7ud
-	h8fGAmyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0B3gemxUmaJrs7DfKycRLMmy76Q0qp/FE8e2Q2hM4To=; b=JHOcJhmN69rnetZEsAByHMhH9E
+	NhEBV9elFnGK9B4FsitxZMcRb1pwGF4uJUgbKMYc2XzF1GC0JFo29Yg3BeP5HZ304uOqnxm9i7I16
+	u5lfrVUiO9vvxvURHwfGqQpq43ZRKeRv1F2pmKJngn6RrxXbUNhU+EKcdkfgEqQxeMudL2aL1mjTb
+	+7OMGuyD6JLz80ZPMpmyl+ixrfrry457ppqBj0UHHJNarr5pQfcql4Y/2SQa1JBRPakZYz86ynYAN
+	EsPsRd2hqMNtBnw4HyKifxO+0SKvPvLkcmg/i7WByNNlzmHJHi6RsbMKmtqikqltFBSSKrSLfGegk
+	GU/FCMuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZv4a-000000063z6-0LUh;
-	Mon, 20 Jan 2025 16:56:24 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1tZvb9-00000006ARf-0bAe;
+	Mon, 20 Jan 2025 17:30:03 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZv4X-000000063yg-3F9w;
-	Mon, 20 Jan 2025 16:56:22 +0000
-Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3eb98b3b63dso1205695b6e.1;
-        Mon, 20 Jan 2025 08:56:21 -0800 (PST)
+	id 1tZvb6-00000006AQv-3u55;
+	Mon, 20 Jan 2025 17:30:02 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-437a92d7b96so47058365e9.2;
+        Mon, 20 Jan 2025 09:30:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1737392181; x=1737996981; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rBTKFm64zeVxsmK1OA1HXiKNddoRElmBx0NQjXwUk/g=;
-        b=HOAk717lSzYdlgwvVaAFSPKMh9O+gXlkohacNi+Q4FtCq/2IipCrXsAV42FJyfzVUB
-         Pld292VySujDcbXCTsuPUCGAhtuWrFhXbfzsLqpZr2tftKdGgh0vVyxIZKyDt//FANlA
-         MSj/k/RgtTRxCrEz6VSMJojeeDoHxc59X0UmvTuK4opNNk93zEWRqnvbGW2sNdNy2jKp
-         7P/fVyE65K4lUV0dQBpJSjrLPb69B0HPwgOMAUD5aIm8yyIStXrKDiB8me9/T8ugi/nP
-         TMISdrId4LUWvj48+b9dKg9F/0MjAWjTpvMPMqZwzDkrGY+ioHr47cz9bHvqxcr145aO
-         UW8Q==
+        d=gmail.com; s=20230601; t=1737394199; x=1737998999; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=0B3gemxUmaJrs7DfKycRLMmy76Q0qp/FE8e2Q2hM4To=;
+        b=DO3vUijtzJejxaVcc5Yb6zN9zNVOZswcC9FCNlrk/ZDAO3TYT3y9qo/dG8E/Y3laU+
+         Z4Ntb30Tb5JNei/VqXMHxpKTEwEc8mU1CgjjjbDZc0PbbjUbw5LKJVkKe/kvY1xF71e2
+         BK/uroBsP2i7qfPEMsB2MOxAV+88CfbpU7DSAJ53g2ts53MQ1UKOJyx/8EKpiTY2sX5U
+         NcAklJD0EIo04lXJ3dGU8yTZK7sakZUZGZInbvdmFfSfVG7vmEKhtn4n/ptZBG13R0Gv
+         Qy+sngOTTss3AC8Zywf1m7gva8+8v7ikCFA5MWKY02HRhC9qVTSLSfpzXJr1BPvMbAE/
+         JHhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737392181; x=1737996981;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rBTKFm64zeVxsmK1OA1HXiKNddoRElmBx0NQjXwUk/g=;
-        b=l5JJp9bDcKezIDn7t9cOtpAK/NKgQu7DtRQA0+JuzJgg0h+jOWCHeB3RziTesCzDSE
-         Mr60BZJy7h2S9Ksgdm5+F728XHDZ4qAetkhHL50xKrFuKJnX+3+Gk5rBKtz/aJy/Fk+A
-         oEX3wyaBlUBi3d7wwt0LA4qsL88NLFrp8fZ+TA8/F8jkwZTr4zo4JkhE9icMuuxEzX3d
-         wVf+9nOcNJFJ9HHfbfpwREkUsQiNG+WVNu7BufldwbgB7DMgARPlAHWIKZnL8KCwLnex
-         FujfAUsQG/tTMQG56L7+Vlq/ztb+MdpXa8AIFxcQDw7rxT8HMMGx5dl8djyGy88G3dMg
-         H4Ng==
-X-Forwarded-Encrypted: i=1; AJvYcCV/HQMQgcOSmC+YwccdhIWYWl7QOgpBtgqcliffbN/OksTbCBrBXs3lvCE+iYbmjFca1+nQJt+PF/h6IWLY39hG@lists.infradead.org, AJvYcCVF6VjxqWCdpOBkwIsdByr06DOHtG/CTO9yjxTf3lyAalJOT8GWlxXkgh8bpllvF5WGT4liSQwmk553M8dUvMQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwWyFFJdCQRomIsadjdYuIV9GpdVL0ZaZjOLwsb00pwhAwvDAty
-	UmmM14RRKAC6hO1e8ZTyUy4xF29pwcjkO0hd5nqhYaArBw8WriCz4xVNP6pnYdf4TjpbfM63z3x
-	7BaZYv/0U7k5vsBNflmGo2GxEcHU4LCloEIg=
-X-Gm-Gg: ASbGncumhzrV5d3xN3R+nKhVOjZO0js6ktEzE+WHUwoOF1khUYNyLUXuoZL7GlLOmtB
-	C6l9Om1UIdKmBe/TwDYbUQtrTRifFlKhYAiCe4ylZ4drvGN/vNzYF
-X-Google-Smtp-Source: AGHT+IEoP2e+7bSwz6pgkVvjG9/PFKiXeIWQGmnmyTFk/oD8l+kOF1PpHfZH6vSBLZJsIs0ulv7986+m8aR9Wrs02S8=
-X-Received: by 2002:a05:6871:5e15:b0:29e:5c94:5afd with SMTP id
- 586e51a60fabf-2b1c099e645mr7442126fac.1.1737392180686; Mon, 20 Jan 2025
- 08:56:20 -0800 (PST)
+        d=1e100.net; s=20230601; t=1737394199; x=1737998999;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0B3gemxUmaJrs7DfKycRLMmy76Q0qp/FE8e2Q2hM4To=;
+        b=k5xEXw1uiBgnemoAE9wW8NsEQkra3F2jhFOyF2Bu5xyEyzuych7k3D+BVydpEXa8Zd
+         u1tEuGTybFhB+sHO5ECwsd3TdRQySsPiVWWmdBhcK10jNIlH0jrGnTJn2iI8CegVVUX0
+         eVnOhmbAhreyn1rJaCOIHO0nhH+brANPpv3T97xXA/45PFEzB91BHGc2JoMAlvK3mXRG
+         psin1tlfdnyQgkky5Pvq8X7pDr8xfYyIOKeEs7n2So7GlfGiy5JGuWhnZeNJ2+GhaYos
+         dB55Dn297z2DL44+acFWg10j4favUW3e+Z4Tskx2JliFPSBMhe/7Li2zVpFSRmj2McuO
+         1Owg==
+X-Forwarded-Encrypted: i=1; AJvYcCUGncEOATIGepOIwMKknWtEOpyXBKdHmNHqSVj/zSwjqonxSzY7hwqjEFIimD79YWcM2P3YFYjvN8MK7Lqms70W@lists.infradead.org, AJvYcCULopocvBLh3Ex+574eDZ0zYXCIx4stwXfxtLEXIq25s2tH8zqiUE+WzdQ+zYmXIgRDqPeUTGiFBkcDeGp3R+w=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxyKapZ+dtBbU3IsN5FNQ9q9mVhgca7Kl0Mz6D/lbKxCuNQFW/f
+	A7t0zKqZwY3uDyIPasMCmN1m6m6M72IJFOl+cytXcV/2ljRMbKRj
+X-Gm-Gg: ASbGncsGsbD8RKivWyosUl5jRsJNle4k7Tnol835+jiVqgDmMmfVgQFftczKU8cy/Tl
+	1WR/3CCW3LcQZnURLQvLeLDrYjmj4IeRGrvhDAZCC3/r1cMz1AyNGc0AACmNVeWD+dQQbJzbu/k
+	GhAQkmwWeP7M/WW0BlHV1W8zcbwwOCdNE/St3SV4oRj8cZPZ/SiF0X+eFqMwIzuvhDUdeldeHFp
+	guvTBtqvP/DFrsr3hv5JTB7jrx0JFy3/juVrd5Kp6Kzb08xNt7Zt4J98jlYyOiwuDuR60rL8Ku+
+	cdXHv0zA88iY1LuxrjoFkvsYxw==
+X-Google-Smtp-Source: AGHT+IF1Ls2ZGh8+noLN6wNSkCbP/7nO9y+DgQ3y6uIFFRbvHCZR1LGZjFHMdzf8bf1nnMgw+5jwqA==
+X-Received: by 2002:a05:600c:6a94:b0:434:f753:600f with SMTP id 5b1f17b1804b1-438914376b1mr117703705e9.19.1737394198893;
+        Mon, 20 Jan 2025 09:29:58 -0800 (PST)
+Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c0efccf7sm137517235e9.0.2025.01.20.09.29.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Jan 2025 09:29:58 -0800 (PST)
+Message-ID: <678e8816.050a0220.b6bb9.f588@mx.google.com>
+X-Google-Original-Message-ID: <Z46IEs6HyZJd3eHV@Ansuel-XPS.>
+Date: Mon, 20 Jan 2025 18:29:54 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andy-ld Lu =?utf-8?B?KOWNouS4nCk=?= <Andy-ld.Lu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Wenbin Mei =?utf-8?B?KOaiheaWh+W9rCk=?= <Wenbin.Mei@mediatek.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Chaotian Jing =?utf-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>,
+	"robh@kernel.org" <robh@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	upstream <upstream@airoha.com>
+Subject: Re: [PATCH 2/2] mmc: mtk-sd: add support for AN7581 MMC Host
+References: <20250115073026.31552-1-ansuelsmth@gmail.com>
+ <20250115073026.31552-2-ansuelsmth@gmail.com>
+ <9e022bf13354f544962491cf8061ff3edb878c30.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20241219170800.2957-1-jason-jh.lin@mediatek.com>
- <20241219170800.2957-2-jason-jh.lin@mediatek.com> <CABb+yY2t7rBnoBEf3Pog0eRW_zvb0YggbgKBspnZOS1bsyQBPQ@mail.gmail.com>
- <CAGXv+5Eg_5CFiCYPk29wvjPq03wO9js5nQNhF8A_kB9+K452uw@mail.gmail.com>
-In-Reply-To: <CAGXv+5Eg_5CFiCYPk29wvjPq03wO9js5nQNhF8A_kB9+K452uw@mail.gmail.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Mon, 20 Jan 2025 10:56:09 -0600
-X-Gm-Features: AbW1kvbxZOSlVPP7JzmeHsWfSHUBXc8gyLQ1WLr-4v-ZhYWtO-p105-4I2g0SiA
-Message-ID: <CABb+yY3U9Ud5KNQ-4V9m327ZdumDPperRXvkaVV2RbKscSYH-Q@mail.gmail.com>
-Subject: Re: [PATCH v3 1/7] dt-bindings: mailbox: mediatek: Add MT8196 support
- for gce-mailbox
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-media@vger.kernel.org, Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>, 
-	Xavier Chang <xavier.chang@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9e022bf13354f544962491cf8061ff3edb878c30.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_085621_817838_821E1AEE 
-X-CRM114-Status: GOOD (  34.69  )
+X-CRM114-CacheID: sfid-20250120_093000_977568_76D8FC2A 
+X-CRM114-Status: GOOD (  39.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,336 +112,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 20, 2025 at 12:46=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
+On Thu, Jan 16, 2025 at 07:01:13AM +0000, Andy-ld Lu (卢东) wrote:
+> On Wed, 2025-01-15 at 08:29 +0100, Christian Marangi wrote:
+> > Add support for AN7581 MMC Host. The MMC Host controller is based on
+> > mt7622 with the difference of not having regulator supply and
+> > state_uhs
+> > pins and hclk clock.
+> > 
+> > Some minor fixes are applied to check if the state_uhs pins are
+> > defined
+> > and make hclk optional for the new airoha compatible.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  drivers/mmc/host/mtk-sd.c | 55 ++++++++++++++++++++++++++++++++-----
+> > --
+> >  1 file changed, 46 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> > index efb0d2d5716b..9d6868883c91 100644
+> > --- a/drivers/mmc/host/mtk-sd.c
+> > +++ b/drivers/mmc/host/mtk-sd.c
+> > @@ -666,6 +666,20 @@ static const struct mtk_mmc_compatible
+> > mt8196_compat = {
+> >  	.support_new_rx = true,
+> >  };
+> >  
+> > +static const struct mtk_mmc_compatible an7581_compat = {
+> > +	.clk_div_bits = 12,
+> > +	.recheck_sdio_irq = true,
+> > +	.hs400_tune = false,
+> > +	.pad_tune_reg = MSDC_PAD_TUNE0,
+> > +	.async_fifo = true,
+> > +	.data_tune = true,
+> > +	.busy_check = true,
+> > +	.stop_clk_fix = true,
+> > +	.stop_dly_sel = 3,
+> > +	.enhance_rx = true,
+> > +	.support_64g = false,
+> > +};
+> > +
+> >  static const struct of_device_id msdc_of_ids[] = {
+> >  	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
+> >  	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+> > @@ -680,7 +694,7 @@ static const struct of_device_id msdc_of_ids[] =
+> > {
+> >  	{ .compatible = "mediatek,mt8183-mmc", .data = &mt8183_compat},
+> >  	{ .compatible = "mediatek,mt8196-mmc", .data = &mt8196_compat},
+> >  	{ .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
+> > -
+> > +	{ .compatible = "airoha,an7581-mmc", .data = &an7581_compat},
+> >  	{}
+> >  };
+> >  MODULE_DEVICE_TABLE(of, msdc_of_ids);
+> > @@ -1600,6 +1614,10 @@ static int msdc_ops_switch_volt(struct
+> > mmc_host *mmc, struct mmc_ios *ios)
+> >  	struct msdc_host *host = mmc_priv(mmc);
+> >  	int ret;
+> >  
+> > +	/* Skip setting supply if not supported */
+> > +	if (!mmc->supply.vqmmc)
+> > +		return 0;
+> > +
+> Hi Christian,
+> 
+> I think here is no need. If you have not 'vqmmc' in the
+> dts, IS_ERR(mmc->supply.vqmmc) would be -ENODEV and the corresponding
+> flow would not be executed.
+> 
+> And another question, host->pins_default is just selected here, that
+> would be lost.
+>  
+> >  	if (!IS_ERR(mmc->supply.vqmmc)) {
+> >  		if (ios->signal_voltage != MMC_SIGNAL_VOLTAGE_330 &&
+> >  		    ios->signal_voltage != MMC_SIGNAL_VOLTAGE_180) {
+> > @@ -1699,7 +1717,9 @@ static void msdc_enable_sdio_irq(struct
+> > mmc_host *mmc, int enb)
+> >  				dev_dbg(host->dev, "SDIO eint irq:
+> > %d!\n", host->eint_irq);
+> >  			}
+> >  
+> > -			pinctrl_select_state(host->pinctrl, host-
+> > >pins_uhs);
+> > +			/* Skip setting uhs pins if not supported */
+> > +			if (host->pins_uhs)
+> > +				pinctrl_select_state(host->pinctrl,
+> > host->pins_uhs);
+> >  		} else {
+> >  			dev_pm_clear_wake_irq(host->dev);
+> >  		}
+> > @@ -2036,6 +2056,10 @@ static void msdc_ops_set_ios(struct mmc_host
+> > *mmc, struct mmc_ios *ios)
+> >  
+> >  	msdc_set_buswidth(host, ios->bus_width);
+> >  
+> > +	/* Skip regulator if not supported */
+> > +	if (!mmc->supply.vmmc)
+> > +		goto skip_regulator;
+> > +
+> No need too.
+> 
+> >  	/* Suspend/Resume will do power off/on */
+> >  	switch (ios->power_mode) {
+> >  	case MMC_POWER_UP:
+> > @@ -2071,6 +2095,7 @@ static void msdc_ops_set_ios(struct mmc_host
+> > *mmc, struct mmc_ios *ios)
+> >  		break;
+> >  	}
+> >  
+> > +skip_regulator:
+> >  	if (host->mclk != ios->clock || host->timing != ios->timing)
+> >  		msdc_set_mclk(host, ios->timing, ios->clock);
+> >  }
+> > @@ -2816,9 +2841,12 @@ static int msdc_of_clock_parse(struct
+> > platform_device *pdev,
+> >  	if (IS_ERR(host->src_clk))
+> >  		return PTR_ERR(host->src_clk);
+> >  
+> > -	host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> > -	if (IS_ERR(host->h_clk))
+> > -		return PTR_ERR(host->h_clk);
+> > +	/* AN7581 SoC doesn't have hclk */
+> > +	if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
+> > +		host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> > +		if (IS_ERR(host->h_clk))
+> > +			return PTR_ERR(host->h_clk);
+> > +	}
+> devm_clk_get_optional could be used to instead here, no need to use
+> compatible to distinguish.
 >
-> On Sun, Jan 19, 2025 at 5:24=E2=80=AFAM Jassi Brar <jassisinghbrar@gmail.=
-com> wrote:
-> >
-> > On Thu, Dec 19, 2024 at 11:08=E2=80=AFAM Jason-JH.Lin <jason-jh.lin@med=
-iatek.com> wrote:
-> > >
-> > > 1. Add compatible name and iommus property to mediatek,gce-mailbox.ya=
-ml
-> > >    for MT8196.
-> > >
-> > >    - The compatible name "mediatek,mt8196-gce-mailbox" is added to
-> > >      ensure that the device tree can correctly identify and configure
-> > >      the GCE mailbox for the MT8196 SoC.
-> > >
-> > >    - The iommus property is added to specify the IOMMU configuration
-> > >      for the GCE mailbox, ensuring proper memory management and acces=
-s
-> > >      control.
-> > >
-> > > 2. Add the Global Command Engine (GCE) binding header to define the
-> > >    abstrct symbol binding to the GCE hardware settings of GCE Thread
-> > >    Priority, GCE Subsys ID and GCE Event for MT8196.
-> > >
-> > >    - GCE Thread Priority: Defined to configure the priority level for
-> > >      each GCE hardware thread. This is necessary for proper schedulin=
-g
-> > >      and execution of commands in the GCE.
-> > >
-> > >    - GCE Subsys ID: Defined to specify the subsystem ID for GCE clien=
-ts.
-> > >      This is used to correctly address and access different subsystem=
-s
-> > >      within the GCE.
-> > >
-> > >    - GCE Event: Defined to specify the events that the GCE can handle=
-.
-> > >      These events are used by the driver to synchronize and manage
-> > >      hardware operations.
-> > >
-> > >    Examples of the binding usage in the driver code:
-> > >    1) GCE Thread Priority:
-> > >    - Defined in the header file: `#define CMDQ_THR_PRIO_4 4`
-> > >    - Used in the Device Tree: `mboxes =3D <&gce0 0 CMDQ_THR_PRIO_4>;`
-> > >    - Parsed and used in the driver to set thread priority:
-> > >      ```c
-> > >      static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox=
-,i
-> > >                                          const struct of_phandle_args=
- *sp)
-> > >      {
-> > >         thread->priority =3D sp->args[1];
-> > >      }
-> > >      // set GCE thread priority to the priority level 4 for GCE threa=
-d 0
-> > >      writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> > >      ```
-> > >
-> > >    2) GCE Subsys ID:
-> > >    - Defined in the header file: `#define SUBSYS_1c00XXXX 3`
-> > >    - Used in the Device Tree:
-> > >         `mediatek,gce-client-reg =3D <&gce SUBSYS_1c00XXXX 0x0000 0x1=
-000>;`
-> > >    - Parsed and used in the driver to configure subsys ID:
-> > >      ```c
-> > >      int cmdq_dev_get_client_reg(struct device *dev,
-> > >                                  struct cmdq_client_reg *client_reg,
-> > >                                  int idx)
-> > >      {
-> > >         client_reg->subsys =3D (u8)spec.args[0];
-> > >         client_reg->offset =3D (u16)spec.args[1];
-> > >      }
-> > >      // GCE write the value to the register 0x1c000000 + 0x0000 + off=
-set
-> > >      cmdq_pkt_write(cmdq_handle, client_reg->subsys,
-> > >                     client_reg->offset + offset, value);
-> > >      ```
-> > >
-> > >    3) GCE Event:
-> > >    - Defined in the header file:
-> > >         `#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0 574`
-> > >    - Used in the Device Tree:
-> > >         `mediatek,gce-events =3D <CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0>=
-;`
-> > >    - Parsed and used in the driver to handle events:
-> > >      ```c
-> > >      int mtk_crtc_create(struct drm_device *drm_dev,
-> > >                          const unsigned int *path,
-> > >                          unsigned int path_len, int priv_data_index,
-> > >                          const struct mtk_drm_route *conn_routes,
-> > >                          unsigned int num_conn_routes)
-> > >      {
-> > >         of_property_read_u32_index(priv->mutex_node,
-> > >                                    "mediatek,gce-events", i,
-> > >                                    &mtk_crtc->cmdq_event);
-> > >      }
-> > >      // GCE clear the STREAM_DONE event sent from DISP_MUTEX hardware
-> > >      cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
-> > >      ```
-> > >
-> > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> > > ---
-> > >  .../mailbox/mediatek,gce-mailbox.yaml         |    4 +
-> > >  .../dt-bindings/mailbox/mediatek,mt8196-gce.h | 1415 +++++++++++++++=
-++
-> > >  2 files changed, 1419 insertions(+)
-> > >  create mode 100644 include/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-m=
-ailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbo=
-x.yaml
-> > > index cef9d7601398..73d6db34d64a 100644
-> > > --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.=
-yaml
-> > > +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.=
-yaml
-> > > @@ -25,6 +25,7 @@ properties:
-> > >            - mediatek,mt8188-gce
-> > >            - mediatek,mt8192-gce
-> > >            - mediatek,mt8195-gce
-> > > +          - mediatek,mt8196-gce
-> > >        - items:
-> > >            - const: mediatek,mt6795-gce
-> > >            - const: mediatek,mt8173-gce
-> > > @@ -49,6 +50,9 @@ properties:
-> > >      items:
-> > >        - const: gce
-> > >
-> > > +  iommus:
-> > > +    maxItems: 1
-> > > +
-> > >  required:
-> > >    - compatible
-> > >    - "#mbox-cells"
-> > > diff --git a/include/dt-bindings/mailbox/mediatek,mt8196-gce.h b/incl=
-ude/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> > > new file mode 100644
-> > > index 000000000000..9e0700236033
-> > > --- /dev/null
-> > > +++ b/include/dt-bindings/mailbox/mediatek,mt8196-gce.h
-> > > @@ -0,0 +1,1415 @@
-> >
-> > 1415 ?  90% seem unnecessary.
-> >
-> > > +
-> > > +/* GCE thread priority */
-> > > +#define CMDQ_THR_PRIO_LOWEST   0
-> > > +#define CMDQ_THR_PRIO_1                1
-> > > +#define CMDQ_THR_PRIO_2                2
-> > > +#define CMDQ_THR_PRIO_3                3
-> > > +#define CMDQ_THR_PRIO_4                4
-> > > +#define CMDQ_THR_PRIO_5                5
-> > > +#define CMDQ_THR_PRIO_6                6
-> > > +#define CMDQ_THR_PRIO_HIGHEST  7
-> > >
-> >  Only need to HIGHEST maybe
->
-> Or maybe we could just get rid of them and describe the valid values
-> and ordering in the YAML part?
->
-> > > +
-> > > +/* GCE subsys table */
-> > > +#define SUBSYS_1300XXXX                0
-> > > +#define SUBSYS_1400XXXX                1
-> > > +#define SUBSYS_1401XXXX                2
-> > > +#define SUBSYS_1402XXXX                3
-> > > +#define SUBSYS_1502XXXX                4
-> > > +#define SUBSYS_1880XXXX                5
-> > > +#define SUBSYS_1881XXXX                6
-> > > +#define SUBSYS_1882XXXX                7
-> > > +#define SUBSYS_1883XXXX                8
-> > > +#define SUBSYS_1884XXXX                9
-> > > +#define SUBSYS_1000XXXX                10
-> > > +#define SUBSYS_1001XXXX                11
-> > > +#define SUBSYS_1002XXXX                12
-> > > +#define SUBSYS_1003XXXX                13
-> > > +#define SUBSYS_1004XXXX                14
-> > > +#define SUBSYS_1005XXXX                15
-> > > +#define SUBSYS_1020XXXX                16
-> > > +#define SUBSYS_1028XXXX                17
-> > > +#define SUBSYS_1700XXXX                18
-> > > +#define SUBSYS_1701XXXX                19
-> > > +#define SUBSYS_1702XXXX                20
-> > > +#define SUBSYS_1703XXXX                21
-> > > +#define SUBSYS_1800XXXX                22
-> > > +#define SUBSYS_1801XXXX                23
-> > > +#define SUBSYS_1802XXXX                24
-> > > +#define SUBSYS_1804XXXX                25
-> > > +#define SUBSYS_1805XXXX                26
-> > > +#define SUBSYS_1808XXXX                27
-> > > +#define SUBSYS_180aXXXX                28
-> > > +#define SUBSYS_180bXXXX                29
-> > > +#define SUBSYS_NO_SUPPORT      99
-> > > +
-> > Keep only that you use now or plan in  the near future. But ok.
-> >
-> > > +/* GCE-D hardware events */
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF0                                =
-           0
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF1                                =
-           1
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF2                                =
-           2
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF3                                =
-           3
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF4                                =
-           4
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF5                                =
-           5
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF6                                =
-           6
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF7                                =
-           7
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF8                                =
-           8
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF9                                =
-           9
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF10                               =
-           10
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF11                               =
-           11
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF12                               =
-           12
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF13                               =
-           13
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF14                               =
-           14
-> > > +#define CMDQ_EVENT_DISP0_STREAM_SOF15                               =
-           15
-> > >
-> >  you mean
-> >   #define CMDQ_EVENT_DISP0_STREAM_SOF(n)  n
-> >
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL0                            =
-           16
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL1                            =
-           17
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL2                            =
-           18
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL3                            =
-           19
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL4                            =
-           20
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL5                            =
-           21
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL6                            =
-           22
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL7                            =
-           23
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL8                            =
-           24
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL9                            =
-           25
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL10                           =
-           26
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL11                           =
-           27
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL12                           =
-           28
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL13                           =
-           29
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL14                           =
-           30
-> > > +#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL15                           =
-           31
-> >
-> >    #define CMDQ_EVENT_DISP0_FRAME_DONE_SEL(n)
-> >             (16 + n)
-> >
-> > > +#define CMDQ_EVENT_DISP0_DISP_WDMA0_TARGET_LINE_END_ENG_EVENT       =
-           32
-> > > +#define CMDQ_EVENT_DISP0_DISP_WDMA0_SW_RST_DONE_ENG_EVENT           =
-           33
-> > > +#define CMDQ_EVENT_DISP0_DISP_POSTMASK1_RST_DONE_ENG_EVENT          =
-           34
-> > > +#define CMDQ_EVENT_DISP0_DISP_POSTMASK0_RST_DONE_ENG_EVENT          =
-           35
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_TIMEOUT_ENG_EVENT              =
-           36
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT0          =
-           37
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT1          =
-           38
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT2          =
-           39
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT3          =
-           40
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT4          =
-           41
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT5          =
-           42
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT6          =
-           43
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT7          =
-           44
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT8          =
-           45
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT9          =
-           46
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT10         =
-           47
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT11         =
-           48
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT12         =
-           49
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT13         =
-           50
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT14         =
-           51
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT15         =
-           52
-> > > +#define CMDQ_EVENT_DISP0_DISP_MUTEX0_GET_RELEASE_ENG_EVENT          =
-           53
-> > > +#define CMDQ_EVENT_DISP0_DISP_MDP_RDMA0_SW_RST_DONE_ENG_EVENT       =
-           54
-> > > +
-> >  keep only the used ones and use
->
-> This is the only publicly available table of the numbers. Having
-> the complete table somewhere would be nice. OOTH the numbers being
-> like IRQ or DRQ numbers, don't actually get used in the driver.
-> So maybe we could keep the full list but move it under the dts directory?
->
-Why introduce bloat in the kernel? We shouldn't be carrying what are
-basically 'addition' tables, not even 'multiplication' ;)
-The same knowledge can be represented concisely by the formula
-  #define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT(n)  (n + 37)
-especially for ~50 char defines
 
-thnx
+I can make the hclk optional but I think this would affect also every
+other compatible by hiding broken clock configuration.
+
+> >  	host->bus_clk = devm_clk_get_optional(&pdev->dev, "bus_clk");
+> >  	if (IS_ERR(host->bus_clk))
+> > @@ -2926,10 +2954,13 @@ static int msdc_drv_probe(struct
+> > platform_device *pdev)
+> >  		return PTR_ERR(host->pins_default);
+> >  	}
+> >  
+> > -	host->pins_uhs = pinctrl_lookup_state(host->pinctrl,
+> > "state_uhs");
+> > -	if (IS_ERR(host->pins_uhs)) {
+> > -		dev_err(&pdev->dev, "Cannot find pinctrl uhs!\n");
+> > -		return PTR_ERR(host->pins_uhs);
+> > +	/* AN7581 doesn't have state_uhs pins */
+> > +	if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
+> > +		host->pins_uhs = pinctrl_lookup_state(host->pinctrl,
+> > "state_uhs");
+> > +		if (IS_ERR(host->pins_uhs)) {
+> > +			dev_err(&pdev->dev, "Cannot find pinctrl
+> > uhs!\n");
+> > +			return PTR_ERR(host->pins_uhs);
+> > +		}
+> >  	}
+> Could you consider to set a dummy 'state_uhs' same as 'state_default'
+> in the dts, that you could not use compatible to distinguish here.
+> 
+
+This is problematic, correct me if I'm wrong, you are suggesting to
+assign the emmc pins to both default and uhs? This is problematic as the
+pinctrl driver would complain that such pins are already assigned to
+something. Also I don't think it's possible to assign these pins to a
+dummy pin.
+
+> >  
+> >  	/* Support for SDIO eint irq ? */
+> > @@ -3010,6 +3041,12 @@ static int msdc_drv_probe(struct
+> > platform_device *pdev)
+> >  		dev_err(&pdev->dev, "Cannot ungate clocks!\n");
+> >  		goto release_clk;
+> >  	}
+> > +
+> > +	/* AN7581 without regulator require tune to OCR values */
+> > +	if (device_is_compatible(&pdev->dev, "airoha,an7581-mmc") &&
+> > +	    !mmc->ocr_avail)
+> > +		mmc->ocr_avail = MMC_VDD_32_33 | MMC_VDD_33_34;
+> > +
+> Maybe you could use regulator-fixed in the dts and configure min/max
+> voltage to get ocr_avail, no need to set hard code here. 
+> 
+
+Also suggested by Wenbin Mei (梅文彬) and I just tried this.
+
+This can't be done, fixed-regulator needs to have the same min and max
+voltage or they fail to probe sooo fixed-regulator saddly can't be used
+:(
+
+I will send a new version of this with the other point corrected but I
+think a compatible and these additional if is a must :(
+
+> >  	msdc_init_hw(host);
+> >  
+> >  	if (mmc->caps2 & MMC_CAP2_CQE) {
+
+-- 
+	Ansuel
 
