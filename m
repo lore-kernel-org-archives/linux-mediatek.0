@@ -4,117 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D402C02181
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 12:01:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CCEC02181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 12:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3DQbrXOH7EBpZfQidjrwhRte3GxbuO55d8/EWNxu7J0=; b=X31OHM1ElzmW334BM/tNqpflr4
-	4IliK3HKOhGHxKC9q04k5SRAoSPVMtiqeRt+ZuhxACStVH/oAFPRG+ujuLhu6SeYzUIBv9VAZaWNf
-	A/eKW444efC8Rjt+lB62PPhhyjJDI6rIcG5u/cEHklxZMK5t9DIn/w3Ky9YAcUGF7FjZPWTsRmPin
-	9HLSjSw6rLDJcRS5fBmbCccHDzXkpQLwhS5fbAloj5wBqR3wgqJn7smwM7J5cw7nMFAEUqoT4jzFR
-	IJrCxitjmAlN6X/zeK1OIDXt9LUzp3bVXEGKyHsJa3PafYwSwGM0ThCgZHL+ap2oilmkHpXCPKGrx
-	Nib0zeFA==;
+	bh=8/DVdlrVoXcTUlLhGfvwAA7dr+O9VTylvZ3HNVi2N90=; b=z5sE3wF54OeFqkedtl8NdC5hiD
+	cVIizUIso7WSxTvl3voXthN66k25X69t9vzrlrXLZY2EjRWgRrJhiDsLz25RYXCwofGaKzP1pixK+
+	QBciauFdXSS5GdeoIWq1PuPu9CqrC2v6LkMVWlUcFEG24pr/vP8nvuCFfj64mYI0Nn2Z33a01/523
+	reThksOCqDF2HHpPrdNKVFTl4unATJJIKYg92jn1XCymJ9CT5RQZ0az26bykxHmjAGN6Auy1YFSwq
+	ts21w+A7oQtiz28apkN3SANxqAR60FbehFjv+snDD0/VRa805nE+Hlv+Bhn003YhjA7nFenTPyG1u
+	TMAiJLAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZqTH-00000005Uoj-1KY7;
-	Mon, 20 Jan 2025 12:01:35 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tZr7s-00000005ZKN-0GiL;
+	Mon, 20 Jan 2025 12:43:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZqTF-00000005UoF-1nvN;
-	Mon, 20 Jan 2025 12:01:34 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 50KAQ8Yc016868;
-	Mon, 20 Jan 2025 12:01:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	3DQbrXOH7EBpZfQidjrwhRte3GxbuO55d8/EWNxu7J0=; b=j/wAOhBJUjVTrdox
-	LKBT3K81inicIYwUcXICcRjcgTr8Gq48M4VuP6mJHyiV6S54Z7QNTg+2uzJsMVu+
-	Ix1bkRbSONZwNs8Nz/fSs4UsYDI4k4iU8GcRdUZ6Q/K+pG9QL9+Ndr8uB0QZcy1/
-	W6+6BLSGd61IxeEC9Ci7WcZqNkXlI3Onsg1Zn7DoP2ZHbYB9GGIp5NipkTTnciLg
-	IJW+NpNNBPOsYOpZGOvd3AdV++LfNu0oZhzH86U4ZK8MD+UhbN37mMvcUg8u1LF4
-	B7IfdsdmDyCXt5BTSQ4DkRCPj6dP0yshqO2harzyhCIO5JZvEWgpBOHSdFdULTjQ
-	e0Kr9g==
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 449mqpg6yp-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 Jan 2025 12:01:13 +0000 (GMT)
-Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
-	by NASANPPMTA04.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 50KC1Cwb013780
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 Jan 2025 12:01:12 GMT
-Received: from [10.239.155.136] (10.80.80.8) by nasanex01b.na.qualcomm.com
- (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 20 Jan
- 2025 04:01:07 -0800
-Message-ID: <57d52f72-31ec-46cf-b632-74b09e29f501@quicinc.com>
-Date: Mon, 20 Jan 2025 20:01:03 +0800
+	id 1tZr6Z-00000005ZAF-3Nxg;
+	Mon, 20 Jan 2025 12:42:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1737376928;
+	bh=4buDT01o+ogkMLuBe/lVOY9SSe5oxu1NeJw/qESAoWE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=geCnwOdjgZ1CvL2aCSZU72KpP7iYX76xdIjm45dgqCiR2nqRUzCFf442ZYJ3i8vmj
+	 ADTCelvCDXcwXyeHiY04tqxrRHrDphkMHmK0cdZ2DPYG4GHC+pwDazBRQrU4Ow+1bG
+	 qHX3xu38aWVbcFnh42zqPHphrQFEpQNjvkfeuuwXIaaW/3DLxKE+w4S3yUFHDQ+que
+	 xFFgtYX+jMZJTJj0cMNVicZd8mZslwCZEMrtPC3oBemDjhANLZ6efVAoPfcDXTH07U
+	 Qte/P6404Ye+rvePMwsOlggg7bx6MuZenkUMUlpfnGCxj9lvBePR3oJhBQgKN30KeF
+	 jBqFqelOLz31g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7CA0A17E0FAA;
+	Mon, 20 Jan 2025 13:42:07 +0100 (CET)
+Message-ID: <e7d49bda-8aaa-4897-8117-ab889fb27be0@collabora.com>
+Date: Mon, 20 Jan 2025 13:42:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] scsi: ufs: core: Pass target_freq to
- clk_scale_notify() vops
-To: Manivannan Sadhasivam <mani@kernel.org>
-CC: <quic_cang@quicinc.com>, <bvanassche@acm.org>, <beanhuo@micron.com>,
-        <avri.altman@wdc.com>, <junwoo80.lee@samsung.com>,
-        <martin.petersen@oracle.com>, <quic_nguyenb@quicinc.com>,
-        <quic_nitirawa@quicinc.com>, <quic_rampraka@quicinc.com>,
-        <linux-scsi@vger.kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-        "James
- E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Peter Wang
-	<peter.wang@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>,
-        "Manivannan
- Sadhasivam" <manivannan.sadhasivam@linaro.org>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Andrew Halaney
-	<ahalaney@redhat.com>,
-        Maramaina Naresh <quic_mnaresh@quicinc.com>,
-        "Eric
- Biggers" <ebiggers@google.com>,
-        Minwoo Im <minwoo.im@samsung.com>,
-        open list
-	<linux-kernel@vger.kernel.org>,
-        "moderated list:UNIVERSAL FLASH STORAGE HOST
- CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>,
-        "open
- list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
-	<linux-arm-msm@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>
-References: <20250116091150.1167739-1-quic_ziqichen@quicinc.com>
- <20250116091150.1167739-2-quic_ziqichen@quicinc.com>
- <20250119071131.4hepn6msmh76npi7@thinkpad>
+Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: mediatek: add support for
+ mt8196
+To: =?UTF-8?B?Q2F0aHkgWHUgKOiuuOWNjuWptyk=?= <ot_cathy.xu@mediatek.com>,
+ "krzk@kernel.org" <krzk@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?TGVpIFh1ZSAo6Jab56OKKQ==?= <Lei.Xue@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ =?UTF-8?B?R3VvZG9uZyBMaXUgKOWImOWbveagiyk=?= <Guodong.Liu@mediatek.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "sean.wang@kernel.org" <sean.wang@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+References: <20250115063555.32492-1-ot_cathy.xu@mediatek.com>
+ <20250115063555.32492-2-ot_cathy.xu@mediatek.com>
+ <nmyxygrya6cpalmirsunvkx32uox3kjxd4l5ggdhjtj7edyizz@yodolm5ktboo>
+ <f7ba63c8afcef1d1925d51e35e4b81f0d0e773ff.camel@mediatek.com>
+ <d04bc250-2104-4e02-9bf8-5785f4444c8d@kernel.org>
+ <d11076d3eb2f92018fd3e26cae665a47f71ca838.camel@mediatek.com>
+ <b212d05d-de3b-41b2-bc48-c6b79ae54a8b@kernel.org>
+ <bec17d1e215a11daa1fdede78c8070c8e1763c72.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Ziqi Chen <quic_ziqichen@quicinc.com>
-In-Reply-To: <20250119071131.4hepn6msmh76npi7@thinkpad>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01b.na.qualcomm.com (10.46.141.250)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: VENylyuD6ARMvEn7Xktrchqo8rK9ZTdH
-X-Proofpoint-ORIG-GUID: VENylyuD6ARMvEn7Xktrchqo8rK9ZTdH
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-01-20_02,2025-01-20_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
- priorityscore=1501 suspectscore=0 mlxlogscore=999 adultscore=0
- impostorscore=0 clxscore=1015 lowpriorityscore=0 malwarescore=0
- phishscore=0 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.19.0-2411120000 definitions=main-2501200100
+In-Reply-To: <bec17d1e215a11daa1fdede78c8070c8e1763c72.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_040133_481704_6A41DB2A 
-X-CRM114-Status: GOOD (  26.16  )
+X-CRM114-CacheID: sfid-20250120_044212_026781_6A027FED 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,149 +96,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mani,
-
-Thanks for you review~
-
-On 1/19/2025 3:11 PM, Manivannan Sadhasivam wrote:
-> On Thu, Jan 16, 2025 at 05:11:42PM +0800, Ziqi Chen wrote:
->> From: Can Guo <quic_cang@quicinc.com>
+Il 20/01/25 10:17, Cathy Xu (许华婷) ha scritto:
+> On Thu, 2025-01-16 at 11:20 +0100, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
 >>
->> If OPP V2 is used, devfreq clock scaling may scale clock amongst more than
->> two freqs,
-> 
-> 'amongst more than two freqs': I couldn't parse this.
->
-
-It means that the devfreq framework will tell UFS core driver the 
-devfreq freq, then UFS core driver will find the recommended freq from 
-our freq table based on the devfreq freq. For legacy mode , we can only 
-have 2 frequencies in the table. But if the OPP V2 is used, we can have 
-3 , 4 or more freq tables. You can refer to my PATCH 8/8.
-
->> so just passing up/down to vops clk_scale_notify() is not enough
->> to cover the intermediate clock freqs between the min and max freqs. Hence
->> pass the target_freq to clk_scale_notify() to allow the vops to perform
->> corresponding configurations with regard to the clock freqs.
 >>
-> 
-> Add a note that the 'target_freq' is not used in this commit.
->
+>> On 16/01/2025 09:18, Cathy Xu (许华婷) wrote:
+>>> On Thu, 2025-01-16 at 08:28 +0100, Krzysztof Kozlowski wrote:
+>>>> External email : Please do not click links or open attachments
+>>>> until
+>>>> you have verified the sender or the content.
+>>>>
+>>>>
+>>>> On 16/01/2025 03:20, Cathy Xu (许华婷) wrote:
+>>>>>>> +          bias-pull-down:
+>>>>>>> +            oneOf:
+>>>>>>> +              - type: boolean
+>>>>>>> +              - enum: [100, 101, 102, 103]
+>>>>>>> +                description: mt8196 pull down PUPD/R0/R1
+>>>>>>> type
+>>>>>>> define value.
+>>>>>>> +              - enum: [200, 201, 202, 203, 204, 205, 206,
+>>>>>>> 207]
+>>>>>>> +                description: mt8196 pull down RSEL type
+>>>>>>> define
+>>>>>>> value.
+>>>>>>
+>>>>>> Not much improved.
+>>>>>
+>>>>>    I have removed the content related to 'resistance value', we
+>>>>> use
+>>>>> 'RSEL' instead of 'resistance value'.
 
-Sorry, I don't very understand this comment, I mentioned the 
-"target_freq" in the commit message,  Could you let me know what note 
-you want me do add?
+This is wrong.
 
->> Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
->> Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
->> Signed-off-by: Can Guo <quic_cang@quicinc.com>
-> 
-> Signed-off-by tag order is not correct here. This implies that Ziqi originally
-> worked on it, then Can took over and submitted. But it seems the reverse.
-
-Thanks for your reminder. Is below tag order OK ?
-     Signed-off-by: Can Guo <quic_cang@quicinc.com>
-     Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
-     Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
-> 
-> - Mani
-
--Ziqi
-
-> 
->> ---
->>   drivers/ufs/core/ufshcd-priv.h  | 7 ++++---
->>   drivers/ufs/core/ufshcd.c       | 4 ++--
->>   drivers/ufs/host/ufs-mediatek.c | 1 +
->>   drivers/ufs/host/ufs-qcom.c     | 5 +++--
->>   include/ufs/ufshcd.h            | 2 +-
->>   5 files changed, 11 insertions(+), 8 deletions(-)
+>>>>
+>>>> So the value in Ohms was removed? I assume above do not have
+>>>> known
+>>>> value
+>>>> in Ohms?
+>>>
+>>>    Yes, value in Ohns was removed, no code have knowm value.
 >>
->> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
->> index 9ffd94ddf8c7..0549b65f71ed 100644
->> --- a/drivers/ufs/core/ufshcd-priv.h
->> +++ b/drivers/ufs/core/ufshcd-priv.h
->> @@ -117,11 +117,12 @@ static inline u32 ufshcd_vops_get_ufs_hci_version(struct ufs_hba *hba)
->>   	return ufshcd_readl(hba, REG_UFS_VERSION);
->>   }
->>   
->> -static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
->> -			bool up, enum ufs_notify_change_status status)
->> +static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba, bool up,
->> +					       unsigned long target_freq,
->> +					       enum ufs_notify_change_status status)
->>   {
->>   	if (hba->vops && hba->vops->clk_scale_notify)
->> -		return hba->vops->clk_scale_notify(hba, up, status);
->> +		return hba->vops->clk_scale_notify(hba, up, target_freq, status);
->>   	return 0;
->>   }
->>   
->> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
->> index acc3607bbd9c..8d295cc827cc 100644
->> --- a/drivers/ufs/core/ufshcd.c
->> +++ b/drivers/ufs/core/ufshcd.c
->> @@ -1157,7 +1157,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
->>   	int ret = 0;
->>   	ktime_t start = ktime_get();
->>   
->> -	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, PRE_CHANGE);
->> +	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, PRE_CHANGE);
->>   	if (ret)
->>   		goto out;
->>   
->> @@ -1168,7 +1168,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
->>   	if (ret)
->>   		goto out;
->>   
->> -	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, POST_CHANGE);
->> +	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, POST_CHANGE);
->>   	if (ret) {
->>   		if (hba->use_pm_opp)
->>   			ufshcd_opp_set_rate(hba,
->> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
->> index 135cd78109e2..977dd0caaef6 100644
->> --- a/drivers/ufs/host/ufs-mediatek.c
->> +++ b/drivers/ufs/host/ufs-mediatek.c
->> @@ -1643,6 +1643,7 @@ static void ufs_mtk_clk_scale(struct ufs_hba *hba, bool scale_up)
->>   }
->>   
->>   static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
->> +				    unsigned long target_freq,
->>   				    enum ufs_notify_change_status status)
->>   {
->>   	if (!ufshcd_is_clkscaling_supported(hba))
->> diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
->> index 68040b2ab5f8..b6eef975dc46 100644
->> --- a/drivers/ufs/host/ufs-qcom.c
->> +++ b/drivers/ufs/host/ufs-qcom.c
->> @@ -1333,8 +1333,9 @@ static int ufs_qcom_clk_scale_down_post_change(struct ufs_hba *hba)
->>   	return ufs_qcom_set_core_clk_ctrl(hba, false);
->>   }
->>   
->> -static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba,
->> -		bool scale_up, enum ufs_notify_change_status status)
->> +static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
->> +				     unsigned long target_freq,
->> +				     enum ufs_notify_change_status status)
->>   {
->>   	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
->>   	int err;
->> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
->> index d7aca9e61684..a4dac897a169 100644
->> --- a/include/ufs/ufshcd.h
->> +++ b/include/ufs/ufshcd.h
->> @@ -344,7 +344,7 @@ struct ufs_hba_variant_ops {
->>   	void    (*exit)(struct ufs_hba *);
->>   	u32	(*get_ufs_hci_version)(struct ufs_hba *);
->>   	int	(*set_dma_mask)(struct ufs_hba *);
->> -	int	(*clk_scale_notify)(struct ufs_hba *, bool,
->> +	int (*clk_scale_notify)(struct ufs_hba *, bool, unsigned long,
->>   				    enum ufs_notify_change_status);
->>   	int	(*setup_clocks)(struct ufs_hba *, bool,
->>   				enum ufs_notify_change_status);
->> -- 
->> 2.34.1
+>> Does the hardware have known value in Ohms?
+
+It does.
+
+> 
+>    What do you mean by 'hardware'? When writing to the rsel register,
+> the value written is 0-7.
+> 
+
+Hardware means "the pin controller of the mt8196 SoC" :-)
+
+Anyway.
+
+The RSEL registers' function is to select a specific resistance value to
+pullup/down a pin, or a group of pins.
+
+Devicetree bindings require to specify values in known units, so in device tree
+you *need* to specify the RSEL resistance in Ohms.
+
+You cannot specify RSEL register value in device-tree. That's unacceptable.
+
+Regards,
+Angelo
+
 >>
+>>
+>>>
+>>>>
+>>>>>
+>>>>>>
+>>>>>>
+>>>>>>> +            description: |
+>>>>>>> +              For pull down type is normal, it doesn't
+>>>>>>> need
+>>>>>>> add
+>>>>>>> RSEL & R1R0.
+>>>>>>> +              For pull down type is PUPD/R0/R1 type, it
+>>>>>>> can
+>>>>>>> add
+>>>>>>> R1R0 define to
+>>>>>>> +              set different resistance. It can support
+>>>>>>> "MTK_PUPD_SET_R1R0_00" &
+>>>>>>> +              "MTK_PUPD_SET_R1R0_01" &
+>>>>>>> "MTK_PUPD_SET_R1R0_10"
+>>>>>>> &
+>>>>>>> +              "MTK_PUPD_SET_R1R0_11" define in mt8196.
+>>>>>>> +              For pull down type is PD/RSEL, it can add
+>>>>>>> RSEL
+>>>>>>> define to set
+>>>>>>> +              different resistance. It can support
+>>>>>>> +              "MTK_PULL_SET_RSEL_000" &
+>>>>>>> "MTK_PULL_SET_RSEL_001" &
+>>>>>>> +              "MTK_PULL_SET_RSEL_010" &
+>>>>>>> "MTK_PULL_SET_RSEL_011" &
+>>>>>>> +              "MTK_PULL_SET_RSEL_100" &
+>>>>>>> "MTK_PULL_SET_RSEL_101" &
+>>>>>>> +              "MTK_PULL_SET_RSEL_110" &
+>>>>>>> "MTK_PULL_SET_RSEL_111"
+>>>>>>> define in
+>>>>>>> +              mt8196.
+>>>>>>> diff --git a/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>>>> b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>>>> new file mode 100644
+>>>>>>> index 000000000000..bf0c8374407c
+>>>>>>> --- /dev/null
+>>>>>>> +++ b/include/dt-bindings/pinctrl/mt8196-pinfunc.h
+>>>>>>> @@ -0,0 +1,1572 @@
+>>>>>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>>>>>> */
+>>>>>>> +/*
+>>>>>>> + * Copyright (C) 2025 Mediatek Inc.
+>>>>>>> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
+>>>>>>> + */
+>>>>>>> +
+>>>>>>> +#ifndef __MT8196_PINFUNC_H
+>>>>>>> +#define __MT8196_PINFUNC_H
+>>>>>>> +
+>>>>>>> +#include <dt-bindings/pinctrl/mt65xx.h>
+>>>>>>> +
+>>>>>>> +#define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+>>>>>>> +#define PINMUX_GPIO0__FUNC_DMIC1_CLK (MTK_PIN_NO(0) | 1)
+>>>>>>> +#define PINMUX_GPIO0__FUNC_SPI3_A_MO (MTK_PIN_NO(0) | 3)
+>>>>>>> +#define PINMUX_GPIO0__FUNC_FMI2S_B_LRCK (MTK_PIN_NO(0) |
+>>>>>>> 4)
+>>>>>>> +#define PINMUX_GPIO0__FUNC_SCP_DMIC1_CLK (MTK_PIN_NO(0) |
+>>>>>>> 5)
+>>>>>>> +#define PINMUX_GPIO0__FUNC_TP_GPIO14_AO (MTK_PIN_NO(0) |
+>>>>>>> 6)
+>>>>>>
+>>>>>> I do not see how you resolved my comment from v1. In v2 I
+>>>>>> reminded
+>>>>>> about
+>>>>>> it, so you responded that yopu will change something, but I
+>>>>>> do
+>>>>>> not
+>>>>>> see
+>>>>>> any changes.
+>>>>>>
+>>>>>> So explain: how did you resolve my comment?
+>>>>>>
+>>>>>> These two examples where you claim you will change something,
+>>>>>> but
+>>>>>> send
+>>>>>> the same. I skipped the rest of the patch.
+>>>>>
+>>>>>    Thank you for your patient response, here is my explanation
+>>>>> for
+>>>>> you
+>>>>> question:
+>>>>>
+>>>>>    In v1, I undertand that you meant I didn't sent a real
+>>>>> binding,
+>>>>> and
+>>>>
+>>>>
+>>>> The comment is under specific lines, so I said these defines are
+>>>> not
+>>>> a
+>>>> real binding. You sent them again, but they are still not
+>>>> bindings,
+>>>> because they are not used in the driver. Maybe the usage is
+>>>> convoluted,
+>>>> so which part of implementation are these connecting with DTS?
+>>>> IOW,
+>>>> which part of driver relies on the binding?
+>>>
+>>>    I got you. This binding define many macros, which will be used
+>>> for
+>>> 'pinmux' setting in the DTS. The usage like this:
+>>>
+>>>    adsp_uart_pins: adsp-uart-pins {
+>>>                  pins-tx-rx {
+>>>                          pinmux =
+>>> <PINMUX_GPIO35__FUNC_O_ADSP_UTXD0>,
+>>>                                   <PINMUX_GPIO36__FUNC_I1_ADSP_URXD0
+>>>> ;
+>>>                  };
+>>>          };
+>>
+>>
+>> That's DTS, not driver, so not a binding. Drop the header from
+>> bindings.
+> 
+>    Sorry, I don't quite understand the relationship between binding and
+> driver. Driver will parse this macro to get gpio number and function.
 > 
 
