@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6256C02188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 02:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E1EEC02188
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 03:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J9ZWe8HvrjHUq6KMvkIr3ITCXLGdt7dy5Uw4QDQYtMQ=; b=xsQwigYKvkPTEBi+ZJsDPSus1M
-	EPgVV4hgmF9T+sWK9gbhhJc4sY0WQsqOqnG+Q6Sw1EKTDwASak50PgDNVF+nTL6YqlC4mnF2Eyjjz
-	nGDaWEXyAJv6iZHyKD2R6Tugav+sQGrQMmcyqRyjlRn8/F/X0D/ImwRzqWCZqU8jNjqjq5HAamb+q
-	NGxrlN1l/B0MPOR/fjf/g1T/ClgcKh+ZCEfGnJKjXTJ1NVO+VdoedXKKJriLDszEMsEXuuvGEGJIr
-	1XV+svR/ggSexjqz24rAnkPr8Lz+aPSwVNzi9BvlAgnu55tBu3Tkh+kIZkWgPHDo9JkFM8yGMETbu
-	BrK7vOBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R9tPeFJh3Z8KzRS9nqqf16JZtB2EUc5uK4Rq+n7DfNw=; b=0i/I06m4F24UJnqrfeTsXSTwWK
+	uFrCCcmLwIQIW0kDTw0awQvfVo8LvFbt/vjVEWAe4HFCAYGjp3jdSgNpbMg5fC+8eEoDeEy+9/Y11
+	am6/feMd3Oa0jZL1ePkzcvxLYNA3Wjy/AC3k7a/xZulMQW8YUOGUMjSj0S35PeBkhNApMPmQjLm1/
+	iMk/RCpvhpol+GvVk0KSPlgst3KU/r2BylFGtqIGqtEQBlBhgdsP+lFLCrtr0kB4tjLJ3ARR7mhoi
+	cNU61qQiJuLjuag73rNucCf1Zzco4hmrzxlFp3tmYST+lZ9qXYLMqTKuCnX8g5UG2fBKjthYQIvD1
+	e5xWGjgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZhSt-00000004Zqo-3glH;
-	Mon, 20 Jan 2025 02:24:35 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1tZiYz-00000004end-32yk;
+	Mon, 20 Jan 2025 03:34:57 +0000
+Received: from out-177.mta0.migadu.com ([91.218.175.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZhSr-00000004ZpX-1Nkp
+	id 1tZiYx-00000004emD-2Jz8
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jan 2025 02:24:34 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7b6ed9ed5b9so567726885a.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jan 2025 18:24:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1737339872; x=1737944672; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=J9ZWe8HvrjHUq6KMvkIr3ITCXLGdt7dy5Uw4QDQYtMQ=;
-        b=F7gVJdS/slE+kN4mV6MF6EevG0LL9rHevkfbM7RSO5fFUUGZ5wsFZvrma9SB1dyMUk
-         zCw9/iwGrcEnZb6T56tMpc8RMQ29x/eLNnTyIpclD0P68NGs2kEunvAu+gl0633vBXY4
-         SC6R7vH3FGrcvKgaHBTUY6wyr6JiaSGLEiNLKwVfbKBAGUes8Wv4G6LqxPbevDp4WudA
-         3R8WIhEDnFNv+rCcVWWDYtRNk2HsJ1bnLWSYIKdYUB/vNGMMjVodY5bW3O43D4Bd1GAr
-         d+/1lix8+jXeqR+kVwcnb6tsxNGf4oDO320K4gftVxOuBcu6d5nXNkEl/khRzGDwDFuE
-         lqUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737339872; x=1737944672;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=J9ZWe8HvrjHUq6KMvkIr3ITCXLGdt7dy5Uw4QDQYtMQ=;
-        b=InL14PyEh0lzxLZ9XEJXioy2kLI9R/3ysC3Tc+gdaIM6HwGmjG/x1abWxvVy0FzXGf
-         3iMfQ3v9ZDkR4ouLAh9gMPOKoNF7jogkDzHey4ajpux5m6Or2nra6lVp+MtZwpq5yrGo
-         6gYMSttwgaIY5eid/nKQ7qOhPnuRM4YnnsPZcFnJrXwwpNgujR8s2zWwSzWAL8r+ozfz
-         +tWckzD87lqkxfNSuLdeSxOUuu5CpMxHmdZHJcp1pLFHhWKUcpLsFcCdEc+LC317/xBV
-         choEI/xCY82rwxDdGz721XVvISwtXL5cus0C9Fz9n1zphGhHqGJMp7+SsAXue8R+fNsL
-         eNwA==
-X-Forwarded-Encrypted: i=1; AJvYcCVXM6AJ3bwVWm+NRuMuEcW+EM2U4Rj1TgMrLHVpN2AtE2/IZkKMNLUPrt93fhB6TNFE8vbl3hb2WuVA/XUWcg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7VtHnvJhsInkNHtVhSyOFB0Gy/5kL0/8b/FgxAMsdC0c2Jbe6
-	b/QaKmtpdV1LCVTyTm3DQ9p7l4UQX8tbXdQG0ZGV8hBxr8OK/cGH
-X-Gm-Gg: ASbGnctzF+61wRSWRf30AazNQMWjFya6Me4awC1OyseDSpx1+LOoiHEo3vB+8ELYBkr
-	Yimyxs6xJGpuJjc4A70TEL+kdcg9CwtENLE39PaYbwHGWHkU8eUSraOMVlE0TMhT9zDQyE1T1xX
-	0noERofZFknvAJnGaMXpeVNdQGcyvHUompEsDXwggsWDo0hGK1gqUMkUUvgLp4lvjYs4E/F9u/U
-	8YHtgyXPhK68cNCspbZPu5EZErNtEklqbyPLB1tMRb+th0aR3GiNJdJZDBYYscuKO/yirOH07Nu
-	zc0J/7wLCtN6gYs6NDyyU+juYT65eeXVm5DoQZly8XKnV8bUdhM=
-X-Google-Smtp-Source: AGHT+IHg3lkhvUPdnFYgZ1tPEEo9g1X77YZUxL9CF5ZC2UGsWatwkfnzg7TSKWb8vf2XtTXuq3mgWg==
-X-Received: by 2002:a05:620a:2484:b0:7b6:d799:1f84 with SMTP id af79cd13be357-7be631f5c52mr1646967485a.15.1737339871641;
-        Sun, 19 Jan 2025 18:24:31 -0800 (PST)
-Received: from ?IPv6:2600:4041:5b0d:f100:fec2:7085:7ce5:711c? ([2600:4041:5b0d:f100:fec2:7085:7ce5:711c])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7be614d9949sm393481885a.71.2025.01.19.18.24.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Jan 2025 18:24:30 -0800 (PST)
-Message-ID: <3600f032dc921e44459c266aab76806428267c5e.camel@gmail.com>
-Subject: mt7915e card fails to init on Linux 6.3 and newer
-From: Jared Van Bortel <jared.e.vb@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Sun, 19 Jan 2025 21:24:29 -0500
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 
+	Mon, 20 Jan 2025 03:34:57 +0000
+Message-ID: <3d4e4bda-f465-4c8a-97c4-846b2f3ecb54@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1737344078;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R9tPeFJh3Z8KzRS9nqqf16JZtB2EUc5uK4Rq+n7DfNw=;
+	b=YY0vmGRwrZUTBrUrgVqfAahrdf8E2LNioasg7jg8ibtK9oZUoF3Gyb6ENECPTEd6jx4ozD
+	dCAprAdgpk+wCkRotDFwZGdWs/yRlXxl8a6R+PVCHx5z5L1Gon1hTd9+nMflzGPYruxiHZ
+	vu7GbnHgrZEtNupovuNQyF4Ah1bgbyA=
+Date: Mon, 20 Jan 2025 11:34:27 +0800
 MIME-Version: 1.0
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Geert Uytterhoeven <geert@linux-m68k.org>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
+ linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org,
+ xen-devel@lists.xenproject.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andy Yan <andyshrk@163.com>, Daniel Stone <daniel@fooishbar.org>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-26-tzimmermann@suse.de>
+ <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
+ <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
+ <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
+ <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
+ <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+ <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+ <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+ <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sui Jingfeng <sui.jingfeng@linux.dev>
+In-Reply-To: <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250119_182433_372537_83337D4A 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20250119_193455_900584_9461F5EA 
+X-CRM114-Status: GOOD (  22.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,154 +94,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Hi,
 
-I recently purchased a WallysTech DR7915 mPCIe Wi-Fi card (PCI ID
-14c3:7915) for my ThinkPad W500. It is ostensibly based on the MT7915
-and MT7975 chips, using the mt7915e driver. I tried it on linux-stable
-6.12.10 and was unable to get it to work. But it works fine on 6.1 LTS.
+On 2025/1/16 18:17, Geert Uytterhoeven wrote:
+> On Thu, Jan 16, 2025 at 11:03 AM Tomi Valkeinen
+> <tomi.valkeinen@ideasonboard.com> wrote:
+>> On 16/01/2025 10:09, Thomas Zimmermann wrote:
+>>> Am 15.01.25 um 15:20 schrieb Tomi Valkeinen:
+>>> [...]
+>>>> My point is that we have the current UAPI, and we have userspace using
+>>>> it, but we don't have clear rules what the ioctl does with specific
+>>>> parameters, and we don't document how it has to be used.
+>>>>
+>>>> Perhaps the situation is bad, and all we can really say is that
+>>>> CREATE_DUMB only works for use with simple RGB formats, and the
+>>>> behavior for all other formats is platform specific. But I think even
+>>>> that would be valuable in the UAPI docs.
+>>> To be honest, I would not want to specify behavior for anything but the
+>>> linear RGB formats. If anything, I'd take Daniel's reply mail for
+>>> documentation as-is. Anyone stretching the UAPI beyond RGB is on their own.
+>>>
+>>>> Thinking about this, I wonder if this change is good for omapdrm or
+>>>> xilinx (probably other platforms too that support non-simple non-RGB
+>>>> formats via dumb buffers): without this patch, in both drivers, the
+>>>> pitch calculations just take the bpp as bit-per-pixels, align it up,
+>>>> and that's it.
+>>>>
+>>>> With this patch we end up using drm_driver_color_mode_format(), and
+>>>> aligning buffers according to RGB formats figured out via heuristics.
+>>>> It does happen to work, for the formats I tested, but it sounds like
+>>>> something that might easily not work, as it's doing adjustments based
+>>>> on wrong format.
+>>>>
+>>>> Should we have another version of drm_mode_size_dumb() which just
+>>>> calculates using the bpp, without the drm_driver_color_mode_format()
+>>>> path? Or does the drm_driver_color_mode_format() path provide some
+>>>> value for the drivers that do not currently do anything similar?
+>>> With the RGB-only rule, using drm_driver_color_mode_format() makes
+>>> sense. It aligns dumb buffers and video=, provides error checking, and
+>>> overall harmonizes code. The fallback is only required because of the
+>>> existing odd cases that already bend the UAPI's rules.
+>> I have to disagree here.
+>>
+>> On the platforms I have been using (omap, tidss, xilinx, rcar) the dumb
+>> buffers are the only buffers you can get from the DRM driver. The dumb
+>> buffers have been used to allocate linear and multiplanar YUV buffers
+>> for a very long time on those platforms.
+>>
+>> I tried to look around, but I did not find any mentions that CREATE_DUMB
+>> should only be used for RGB buffers. Is anyone outside the core
+>> developers even aware of it?
+>>
+>> If we don't use dumb buffers there, where do we get the buffers? Maybe
+>> from a v4l2 device or from a gpu device, but often you don't have those.
+>> DMA_HEAP is there, of course.
+> Why can't there be a variant that takes a proper fourcc format instead of
+> an imprecise bpp value?
 
-(As an aside - why is the latest firmware provided by mainline Linux
-version 20220929104113a, while OpenWRT is providing 20240429200502?)
-
-I bisected the issue to commit 9e81c2c7b9af6a5f160e0a9a7f009c37910402ee
-("wifi: mt76: mt7915: enable per-phy led support"), which is included in
-kernel 6.3. This is what I get in dmesg before this commit (good
-behavior):
-
-[   34.976575] mt7915e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time:=
- 20220929104113a
-[   34.990089] mt7915e 0000:03:00.0: WM Firmware Version: ____000000, Build=
- Time: 20220929104145
-[   35.012664] mt7915e 0000:03:00.0: WA Firmware Version: DEV_000000, Build=
- Time: 20220929104205
-[   35.178619] mt7915e 0000:03:00.0 wlp3s0: renamed from wlan0
-[   44.588223] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-[   44.598831] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-[   44.601589] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-[   44.601594] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-[   44.611058] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-[   44.611064] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-[   44.612714] wlan0: authenticated
-
-This is what I get after that commit (bad behavior):
-
-[   37.507795] mt7915e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time:=
- 20220929104113a
-[   37.521157] mt7915e 0000:03:00.0: WM Firmware Version: ____000000, Build=
- Time: 20220929104145
-[   37.541817] mt7915e 0000:03:00.0: WA Firmware Version: DEV_000000, Build=
- Time: 20220929104205
-[   37.707782] mt7915e 0000:03:00.0 wlp3s0: renamed from wlan0
-[   42.984991] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Link Down
-[   42.984999] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card not present
-[   64.651072] mt7915e 0000:03:00.0: Message 00001eed (seq 9) timeout
-[   85.131081] mt7915e 0000:03:00.0: Message 000007ed (seq 11) timeout
-[   85.132693] mt7915e 0000:03:00.0 wlp3s0f0: renamed from wlan0
-[  105.614421] mt7915e 0000:03:00.0: Message 000007ed (seq 1) timeout
-[  107.701101] mt7915e 0000:03:00.0: Timeout for initializing firmware
-[  107.701154] mt7915e 0000:03:00.0: Failed to exit mcu
-[  107.844646] pci 0000:03:00.0: Removing from iommu group 6
-[  107.844679] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card present
-[  109.541013] pcieport 0000:00:1c.1: pciehp: Slot(1-2): No link
-[  109.541024] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card present
-[  111.234338] pcieport 0000:00:1c.1: pciehp: Slot(1-2): No link
-
-On kernel 6.12.10, this failure leads to a page fault, sometimes
-immediately:
-
-[  127.807503] [     T73] mt7915e 0000:03:00.0: Message 00001eed (seq 7) ti=
-meout
-[  127.914244] [     T73] BUG: unable to handle page fault for address: fff=
-fabc5c0628ff0
-[  127.914294] [     T73] #PF: supervisor write access in kernel mode
-[  127.914329] [     T73] #PF: error_code(0x0002) - not-present page
-[  127.914363] [     T73] PGD 100000067 P4D 100000067 PUD 100209067 PMD 103=
-e7f067 PTE 0
-[  127.914406] [     T73] Oops: Oops: 0002 [#1] PREEMPT SMP NOPTI
-[  127.914429] [     T73] CPU: 0 UID: 0 PID: 73 Comm: kworker/u16:6 Kdump: =
-loaded Tainted: G          I        6.12.10-arch1-1 #1 ac0cff2c6581af0a10f6=
-e278cbc98026cc1e3dec
-[  127.914489] [     T73] Tainted: [I]=3DFIRMWARE_WORKAROUND
-[  127.914510] [     T73] Hardware name: LENOVO 40612ZU/40612ZU, BIOS 6FET9=
-3WW (3.23 ) 10/12/2012
-[  127.914538] [     T73] Workqueue: mt76 mt7915_mac_reset_work [mt7915e]
-[  127.914578] [     T73] RIP: 0010:mt76_dma_rx_fill+0x157/0x4c0 [mt76]
-[  127.914615] [     T73] Code: 8b 54 24 40 85 c0 4c 8b 44 24 18 4c 8b 4c 2=
-4 20 4c 8b 5c 24 28 0f 88 2a 03 00 00 c1 e0 10 44 89 ce 44 09 d8 81 ce 00 0=
-1 00 00 <45> 89 34 24 41 89 44 24 08 41 89 74 24 04 41 c7 44 24 0c 00 00 00
-[  127.914677] [     T73] RSP: 0018:ffffabc5c03afcf8 EFLAGS: 00010246
-[  127.914699] [     T73] RAX: 0000000000000000 RBX: ffff9b694630d800 RCX: =
-0000000000000000
-[  127.914726] [     T73] RDX: 0000000000000000 RSI: 0000000006c00000 RDI: =
-0000000000000000
-[  127.914753] [     T73] RBP: ffff9b6947ef45d8 R08: ffff9b6948210000 R09: =
-0000000006c00000
-[  127.914779] [     T73] R10: 00000000000006c0 R11: 0000000000000000 R12: =
-ffffabc5c0628ff0
-[  127.914806] [     T73] R13: ffff9b69c630d800 R14: 00000000ffd15800 R15: =
-0000000000000000
-[  127.914833] [     T73] FS:  0000000000000000(0000) GS:ffff9b6a77c00000(0=
-000) knlGS:0000000000000000
-[  127.914868] [     T73] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  127.914891] [     T73] CR2: ffffabc5c0628ff0 CR3: 000000004b622000 CR4: =
-00000000000426f0
-[  127.914918] [     T73] Call Trace:
-[  127.914930] [     T73]  <TASK>
-[  127.914942] [     T73]  ? __die_body.cold+0x19/0x27
-[  127.914967] [     T73]  ? page_fault_oops+0x15a/0x2d0
-[  127.914992] [     T73]  ? search_bpf_extables+0x5f/0x80
-[  127.915016] [     T73]  ? exc_page_fault+0x18a/0x190
-[  127.915035] [     T73]  ? asm_exc_page_fault+0x26/0x30
-[  127.915056] [     T73]  ? mt76_dma_rx_fill+0x157/0x4c0 [mt76 8ebc1f1034f=
-dcf4b82c21f7f79b6854fd3dd0e30]
-[  127.915096] [     T73]  ? mt76_dma_rx_fill+0x1ef/0x4c0 [mt76 8ebc1f1034f=
-dcf4b82c21f7f79b6854fd3dd0e30]
-[  127.915137] [     T73]  ? mt76_dma_rx_cleanup.part.0+0x5e/0x160 [mt76 8e=
-bc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-[  127.915185] [     T73]  ? mt76_dma_rx_cleanup.part.0+0x6c/0x160 [mt76 8e=
-bc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-[  127.915233] [     T73]  mt7915_dma_reset+0x1e1/0x230 [mt7915e 7945e3c7bf=
-de237a78fef4a04127eb6221537724]
-[  127.915280] [     T73]  mt7915_mac_reset_work+0x67e/0xcd0 [mt7915e 7945e=
-3c7bfde237a78fef4a04127eb6221537724]
-[  127.915323] [     T73]  process_one_work+0x17b/0x330
-[  127.915343] [     T73]  worker_thread+0x2ce/0x3f0
-[  127.915365] [     T73]  ? __pfx_worker_thread+0x10/0x10
-[  127.915389] [     T73]  kthread+0xcf/0x100
-[  127.915406] [     T73]  ? __pfx_kthread+0x10/0x10
-[  127.915428] [     T73]  ret_from_fork+0x31/0x50
-[  127.915449] [     T73]  ? __pfx_kthread+0x10/0x10
-[  127.915470] [     T73]  ret_from_fork_asm+0x1a/0x30
-[  127.915494] [     T73]  </TASK>
-[  127.915507] [     T73] Modules linked in: mt7915e mt76_connac_lib mt76 m=
-ac80211 libarc4 cfg80211 snd_seq_dummy snd_hrtimer snd_seq snd_seq_device i=
-p6t_REJECT nf_reject_ipv6 ipt_REJECT xt_multiport xt_cgroup xt_mark xt_owne=
-r xt_tcpudp nft_compat amdgpu amdxcp drm_exec gpu_sched nft_masq drm_buddy =
-nft_ct nft_reject_ipv4 nf_reject_ipv4 nft_reject act_csum cls_u32 sch_htb n=
-ft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables br=
-idge stp llc btusb btrtl btintel btbcm btmtk bluetooth crc16 joydev mousede=
-v snd_hda_codec_hdmi snd_hda_codec_conexant kvm_intel iTCO_wdt snd_hda_code=
-c_generic intel_pmc_bxt radeon snd_hda_intel mei_wdt iTCO_vendor_support sn=
-d_intel_dspcfg kvm i2c_algo_bit snd_intel_sdw_acpi pcmcia i2c_i801 drm_suba=
-lloc_helper snd_hda_codec drm_ttm_helper i2c_smbus snd_hda_core sha512_ssse=
-3 ttm i2c_mux sha1_ssse3 snd_hwdep yenta_socket psmouse acpi_cpufreq pcspkr=
- e1000e r592 pcmcia_rsrc pktcdvd mei_me snd_pcm memstick ptp drm_display_he=
-lper pcmcia_core lpc_ich intel_agp snd_timer mei pps_core cec intel_gtt
-[  127.915596] [     T73]  think_lmi mac_hid firmware_attributes_class wmi_=
-bmof coretemp thinkpad_acpi platform_profile sparse_keymap rfkill snd sound=
-core video wmi sg crypto_user dm_mod loop nfnetlink ip_tables x_tables btrf=
-s blake2b_generic libcrc32c crc32c_generic serio_raw sdhci_pci xor atkbd ra=
-id6_pq libps2 vivaldi_fmap firewire_ohci cqhci sr_mod sdhci firewire_core s=
-ha256_ssse3 mmc_core cdrom i8042 crc_itu_t serio
-[  127.916035] [     T73] CR2: ffffabc5c0628ff0
+The 'flags' parameter of the 'struct drm_mode_create_dumb' doesn't gets
+in used so far, I guess the situation will be much better if passing a
+correct fourcc code from the user-space to kernel is allowed.
 
 
-It would be nice to be able to use this card on a more recent kernel. I
-can assist with debugging and testing, assuming I haven't somehow gotten
-a defective unit - but I don't think that would really explain why I can
-use it just fine on 6.1 LTS.
+> Gr{oetje,eeting}s,
+>
+>                          Geert
+>
+-- 
+Best regards,
+Sui
 
-Thanks,
-Jared Van Bortel
 
