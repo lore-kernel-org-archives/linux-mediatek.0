@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6449C02185
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 07:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C28C0218B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2025 07:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=; b=Yn5vbuWQwze3S/nH7zc7eeYIO5
-	uyyDFZQ5ItVcMHyOvnK4nW5mcSZzDB7+FXJ4jKx/ci73JNpONCORtYWdbzeFpgyhlZeDEQL86B9jT
-	Eh3ghuTwn82b1EtWatAxuhKqIgkTM7Van0GA7UinBPsecezblZPQd8Ok6O96diy8ETa0T+QKGUQlh
-	JCY6BMs/sa73AhwIpWaeXz4hVENzfrBp9H3N+Efm2WyJ0Nsg6RJEBKQI0OyDr4thmLewOaoRwFnym
-	ffZLPkwxp0V9LjZ0P/uQr1ydgJyjwQlxsgjpnuSo0XRdyIMjvbpfLKOH4JzTUZx43ajk6KdK+q+qR
-	WM6H6PJg==;
+	bh=62CCysYlf1kTpBmg533SyW74Db9V4YMx6+JH5cKqFcA=; b=1dN2r/vqH491u1iJl+IbMmUGaR
+	fFpHynd/wBPEau9J9lG4vr9cUrweFMciTxMeijxlnX9j9WhssdffHmMjpu4ldqvtxff/c+nyerI/C
+	dkgjQQcjyU74gxv1ct6Oys0kmbJQLvlugamGptE7RMEeWgAs+imFC3eu8hz0PYuskbCePMuOUyp+P
+	oRxI0vHfJ8duKeCtlu5hYZFN4hYs+VL079/Avy1HJjw9RX8VfCE3jnKiaj60ONj+Ck+UlS9rCA3tB
+	SsLXzBSvtRb4UUVdwUmKpRXv2HYJo1hJlWNVJymFxSmLRgOM8myqU9zuQYlDsfBjtCfeV8c7FCO03
+	ArPHHm+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZmXD-00000004xbR-44PI;
-	Mon, 20 Jan 2025 07:49:23 +0000
-Received: from smtp-out2.suse.de ([195.135.223.131])
+	id 1tZmcU-00000004y6X-1Vus;
+	Mon, 20 Jan 2025 07:54:50 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZmXA-00000004xZp-0opf;
-	Mon, 20 Jan 2025 07:49:21 +0000
+	id 1tZmcS-00000004y5r-0Cvn;
+	Mon, 20 Jan 2025 07:54:49 +0000
 Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id EFFAF1F7A0;
-	Mon, 20 Jan 2025 07:49:16 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 62A7721165;
+	Mon, 20 Jan 2025 07:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1737359357; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1737359686; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
-	b=rxs81/qA+bqzO4BE/s58b3QnZ9ySonlik4XEccALctdyByQ0CfWLJZO4UVHI5jtBECf6RV
-	cmXxgS7mzJNeBldU+QkbCQ/JOHv3CD/IC3KG5cD+dcZ1XLmX81Q1qDPmwlkhuezC9c6J65
-	pXDSfpcuX4rUspcXjJZWoQzkUvEU8wM=
+	bh=62CCysYlf1kTpBmg533SyW74Db9V4YMx6+JH5cKqFcA=;
+	b=FRr113FrvNY+g8Scutf0XfwDasSBYHi5AIkPEyrAWic0hYaJzGtbFSWGAz9Rpcw/asWHqo
+	+uzbzX10wlrE+dm2eEj7tENItEGpadqCgd0lMj5CystsyyE59+mdYpMMFVPhU0r+e6Ffyn
+	NKRkdJejoy6uAm3BnpZflXT2UCPvQKM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1737359357;
+	s=susede2_ed25519; t=1737359686;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
-	b=+Mr1oFFrBhsU+w8y11IF2x35dxiOsGhsMELD00UtG2qwMf7mYXoPuoXKDHLWyP5HflI4YR
-	KV4qljNpKhKcuHAA==
-Authentication-Results: smtp-out2.suse.de;
+	bh=62CCysYlf1kTpBmg533SyW74Db9V4YMx6+JH5cKqFcA=;
+	b=6cfO3rrQTWcPgKhBaNClVtc+LDctjRhzKgk3CpddogOxdYxc/bEclN3oJiG2Z+z22Okltj
+	b5LuMPJO8sDPSMAg==
+Authentication-Results: smtp-out1.suse.de;
 	none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1737359356; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1737359686; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
-	b=2YEQodiuZ3UsPCWnqdQR5j65/V3LzIyTQOZmU+zah5ybLMPcCp2h8kDcRvxehKn20iQ/Xi
-	2P8iRS8l+8D8L4xJj9TGLESugE124kevxgeqjiUoW4bK3KbBS8TYObyw6uPets5WiVIFCv
-	2xtZw3gud2Zba+Nr9FAP5CT1rpKPbOI=
+	bh=62CCysYlf1kTpBmg533SyW74Db9V4YMx6+JH5cKqFcA=;
+	b=FRr113FrvNY+g8Scutf0XfwDasSBYHi5AIkPEyrAWic0hYaJzGtbFSWGAz9Rpcw/asWHqo
+	+uzbzX10wlrE+dm2eEj7tENItEGpadqCgd0lMj5CystsyyE59+mdYpMMFVPhU0r+e6Ffyn
+	NKRkdJejoy6uAm3BnpZflXT2UCPvQKM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1737359356;
+	s=susede2_ed25519; t=1737359686;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
-	b=Y38vcmSMf3QLl1H/CftXf7wTfovn1ctCaZ2FOKCqx9I5f1sOR0jqGX7BJ+poBWrpS+flOa
-	IsIoNujSOz8vXSCg==
+	bh=62CCysYlf1kTpBmg533SyW74Db9V4YMx6+JH5cKqFcA=;
+	b=6cfO3rrQTWcPgKhBaNClVtc+LDctjRhzKgk3CpddogOxdYxc/bEclN3oJiG2Z+z22Okltj
+	b5LuMPJO8sDPSMAg==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 6B5AC1393E;
-	Mon, 20 Jan 2025 07:49:16 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CC5C81393E;
+	Mon, 20 Jan 2025 07:54:45 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id OWHAGPz/jWeMZgAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Mon, 20 Jan 2025 07:49:16 +0000
-Message-ID: <156804a9-3095-4c93-888f-d9041f523da6@suse.de>
-Date: Mon, 20 Jan 2025 08:49:16 +0100
+	id fe4aMEUBjmdrTgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 20 Jan 2025 07:54:45 +0000
+Message-ID: <a8a37f7c-a60b-4644-9640-3fabc7257f9b@suse.de>
+Date: Mon, 20 Jan 2025 08:54:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
@@ -141,7 +141,7 @@ In-Reply-To: <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[99.99%];
+	BAYES_HAM(-3.00)[100.00%];
 	SUSPICIOUS_RECIPS(1.50)[];
 	NEURAL_HAM_LONG(-1.00)[-1.000];
 	NEURAL_HAM_SHORT(-0.20)[-1.000];
@@ -162,10 +162,10 @@ X-Spamd-Result: default: False [-2.80 / 50.00];
 	RCVD_COUNT_TWO(0.00)[2];
 	TO_MATCH_ENVRCPT_ALL(0.00)[];
 	FUZZY_BLOCKED(0.00)[rspamd.com];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250119_234920_478978_1A6E43E6 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20250119_235448_270838_30259924 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -185,18 +185,6 @@ Hi
 
 Am 16.01.25 um 11:03 schrieb Tomi Valkeinen:
 [...]
-> Aligning video= and dumb buffers almost sounds like going backwards. 
-> video= parameter is bad,
-
-Who told you that? Video= is still the way to specify an initial display 
-mode to the kernel and it will remain so.
-
-Of course, it is better to auto-detect settings, but that's for a 
-different use case.
-
-Best regards
-Thomas
-
 >
 > Harmonizing code is fine, but I think that can be done with a function 
 > that only does the fallback-case.
@@ -204,6 +192,16 @@ Thomas
 > So... I can only speak for the platforms I'm using and maintaining, 
 > but I'd rather keep the old behavior for CREATE_DUMB that we've had 
 > for ages.
+
+And we're not going to change that. I'll also include documentation of 
+the intended behavior and semantics in the series' next update.
+
+Whatever else is being discussed here, such as new ioctls, is a topic 
+for a different series.
+
+Best regards
+Thomas
+
 >
 >  Tomi
 >
