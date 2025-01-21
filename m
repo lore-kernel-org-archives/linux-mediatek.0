@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F4DCC02185
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 08:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EBAC02187
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 08:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nkrn1gkI6oGI3zDKq3zJTXpkyPNHBfJXH5PfFJqL0A4=; b=GuL8rojbbsHHxkS0Y1HO4Dz13A
-	K5ZOUfBrpBbgoznw+QEiqvycVZlzr3u9JWI3+X6DcWSwr8MRxliYLKCK9Wyrq7g16EaQe1z4DfrpO
-	pzGcuxKpt6hWW33IYdcI31aakG+M2083znTPUwgou3fAKORV9GbcvAACbEH/T6U5y8PopefTU4+Ao
-	kDLEZcxcSRItIsspV/hXo5jUMwRXz5CWJjGeAru3/mnnmgrDdTzwr0p+P6qpE1+eINRWDIr66tJwU
-	S28EwV8JdkgypSmqAscGn64RB2LK6ly8piYarH4ZVs6/q1RtBxIw5M9sGMVZssPTx176BNIaiojiR
-	8/xlDBBA==;
+	bh=IzKU10bagC8QLYBmLhpwVe32MCxBcC146OOm5NeHEiM=; b=PmraeVmq2r3lNrL2v9veEamGzg
+	olXgeH6/uJIH0OLG/d8BYNrjzBIy6x6iRYSb3nZh95LhXEOPnyjxPzmIPBjVvBudz9KfI/7tq+AYg
+	avjCMXJ5XKusnjb9y3szLtLB0rhK1hHd8vpOiQqqeoLdCtfVadyYStmBnNprd9DZE8Coo9BCGoY0M
+	EQbnq/AC0Bs7+dUOeE9R8NmNRyekjIDS++wsukuI28SG2fUxAp7KF8EFGFGFS7jGv3KGUCfTMOdGp
+	w3St9nNowqBD+1R5dqr57r4BdzAoYsVevKRrt2D3f1OlX5U4pkAHoDeOlbn8cI4KFvYeJTVHGeTEX
+	GY89stwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta9HG-00000007Cx3-3lHe;
-	Tue, 21 Jan 2025 08:06:26 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1taA35-00000007Kbp-1Wvm;
+	Tue, 21 Jan 2025 08:55:51 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta9AR-00000007C4I-3GCI;
-	Tue, 21 Jan 2025 07:59:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 67A9FA40EB1;
-	Tue, 21 Jan 2025 07:57:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE0EDC4CEDF;
-	Tue, 21 Jan 2025 07:59:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737446362;
-	bh=1sW03D4JYjdR1oZ97WjKdWnJzzKwgUK7haavl1Dli8I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uVo4NKhIrBKzg3cz0dISq6baOKDz6NV+zfrADVUA6dm7iRN+Kg72RITkx7MqXSLBx
-	 +6fVMi8wRWU/ehdEjaKqMw6l3rzYouqA/YhL8yiRr9jqo3/RKpJo0NJdjPZUXAvGT5
-	 mdxrwpYNPQ99YAlqd3h1JrzNWhx52Q1wcnmXoTvGL9PS9Kvke/REvje6aSoRIt60Zj
-	 XKnH7V01rgbsdbMlk9r18ijQtA70a1HQUippzJluj35bzIXspZfNMwJLEmnqU+QHIc
-	 5iscnX3VAEaQbj4fDZ3hXoCdY2yd7xTtlPbaKc96XIe/zmtUMp7fIZ37CxT1Urtaw4
-	 KsenzX6hGoWuQ==
-Date: Tue, 21 Jan 2025 08:59:19 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, upstream@airoha.com
-Subject: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for AN7581 MMC Host
-Message-ID: <20250121-zippy-umber-fossa-abbfb0@krzk-bin>
-References: <20250120184728.18325-1-ansuelsmth@gmail.com>
- <20250120184728.18325-2-ansuelsmth@gmail.com>
+	id 1taA1E-00000007K6B-2Cc7
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Jan 2025 08:53:57 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1taA14-00051k-IY; Tue, 21 Jan 2025 09:53:46 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1taA12-0014uC-2o;
+	Tue, 21 Jan 2025 09:53:44 +0100
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1taA12-00026M-2Z;
+	Tue, 21 Jan 2025 09:53:44 +0100
+Message-ID: <98d064a635467dcc3937d1ec9c5b1659bd71eb91.camel@pengutronix.de>
+Subject: Re: [PATCH v3 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
+ for MT8188
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, 
+	Krzysztof Kozlowski
+	 <krzk@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley
+	 <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Tue, 21 Jan 2025 09:53:44 +0100
+In-Reply-To: <20250121064934.13482-3-friday.yang@mediatek.com>
+References: <20250121064934.13482-1-friday.yang@mediatek.com>
+	 <20250121064934.13482-3-friday.yang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250120184728.18325-2-ansuelsmth@gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_235923_877008_43CB4620 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20250121_005356_562095_B4EC5F7B 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +83,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 20, 2025 at 07:47:02PM +0100, Christian Marangi wrote:
-> -			pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> +			/* Skip setting uhs pins if not supported */
-> +			if (host->pins_uhs)
-> +				pinctrl_select_state(host->pinctrl, host->pins_uhs);
->  		} else {
->  			dev_pm_clear_wake_irq(host->dev);
->  		}
-> @@ -2816,9 +2835,12 @@ static int msdc_of_clock_parse(struct platform_device *pdev,
->  	if (IS_ERR(host->src_clk))
->  		return PTR_ERR(host->src_clk);
->  
-> -	host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> -	if (IS_ERR(host->h_clk))
-> -		return PTR_ERR(host->h_clk);
-> +	/* AN7581 SoC doesn't have hclk */
-> +	if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
+On Di, 2025-01-21 at 14:49 +0800, Friday Yang wrote:
+> From: "friday.yang" <friday.yang@mediatek.com>
+>=20
+> To prevent handling glitch signals during MTCMOS on/off transitions,
+> SMI requires clamp and reset operations. Parse the reset settings for
+> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
+> genpd callback for the SMI LARBs located in image, camera and IPE
+> subsystems, and apply reset and clamp operations within the callback.
+>=20
+> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> ---
+>  drivers/memory/mtk-smi.c | 141 +++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 137 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 5710348f72f6..aaeb80379ec1 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+[...]
+> @@ -528,6 +598,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, =
+struct mtk_smi *smi,
+>  	return ret;
+>  }
+>=20
+> +static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev =3D larb->dev;
+> +	const struct mtk_smi_larb_gen *larb_gen =3D larb->larb_gen;
+> +	u32 larb_id;
+> +	int ret;
+> +
+> +	/**
+> +	 * Only SMI LARBs in camera, image and IPE subsys need to
+> +	 * apply clamp and reset operations, others can be skipped.
+> +	 */
+> +	ret =3D of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id=
+);
+> +	if (ret)
+> +		return -EINVAL;
+> +	if (!larb_gen->clamp_port || !larb_gen->clamp_port[larb_id])
+> +		return 0;
+> +
+> +	larb->sub_comm_inport =3D larb_gen->clamp_port[larb_id];
+> +	larb->sub_comm_syscon =3D syscon_regmap_lookup_by_phandle(dev->of_node,=
+ "mediatek,smi");
+> +	if (IS_ERR(larb->sub_comm_syscon)) {
+> +		larb->sub_comm_syscon =3D NULL;
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "Unknown clamp port for larb %d\n", larb_id);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_smi_larb_parse_reset_optional(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev =3D larb->dev;
+> +	int ret;
+> +
+> +	larb->rst_con =3D devm_reset_control_get(dev, "larb");
 
-Please avoid coding compatible in multiple places. Not only because
-above check is slow comparing to check on integer, but it just scales
-poorly and leads to less readable further code. Use driver data with
-model name or flags/quirks bitmask.
+Please use devm_reset_control_get_exclusive() directly.
+Or use devm_reset_control_get_optional_exclusive(), which returns NULL
+instead of -ENOENT. That way you can ...
 
-Best regards,
-Krzysztof
+> +	if (IS_ERR(larb->rst_con))
+> +		return dev_err_probe(dev, PTR_ERR(larb->rst_con),
+> +				     "Failed to get larb reset controller\n");
 
+... suppress this error message in case of -ENOENT and return with:
+
+	if (!larb->rst_con)
+		return 0;
+
+here.
+
+> +
+> +	larb->nb.notifier_call =3D mtk_smi_genpd_callback;
+> +	ret =3D dev_pm_genpd_add_notifier(dev, &larb->nb);
+> +	if (ret)
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "Failed to add genpd callback %d\n", ret);
+> +
+> +	return 0;
+> +}
+> +
+>  static int mtk_smi_larb_probe(struct platform_device *pdev)
+>  {
+>  	struct mtk_smi_larb *larb;
+> @@ -538,6 +655,7 @@ static int mtk_smi_larb_probe(struct platform_device =
+*pdev)
+>  	if (!larb)
+>  		return -ENOMEM;
+>=20
+> +	larb->dev =3D dev;
+>  	larb->larb_gen =3D of_device_get_match_data(dev);
+>  	larb->base =3D devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(larb->base))
+> @@ -554,15 +672,24 @@ static int mtk_smi_larb_probe(struct platform_devic=
+e *pdev)
+>  	if (ret < 0)
+>  		return ret;
+>=20
+> -	pm_runtime_enable(dev);
+> +	ret =3D mtk_smi_larb_parse_clamp_optional(larb);
+> +	if (ret)
+> +		goto err_link_remove;
+> +
+> +	ret =3D mtk_smi_larb_parse_reset_optional(larb);
+> +	if (ret && ret !=3D -ENOENT)
+
+The ret !=3D -ENOENT check could be dropped if you use
+devm_reset_control_get_optional_exclusive() above.
+
+
+regards
+Philipp
 
