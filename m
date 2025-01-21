@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EBAC02187
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 08:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD56BC02182
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 09:48:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IzKU10bagC8QLYBmLhpwVe32MCxBcC146OOm5NeHEiM=; b=PmraeVmq2r3lNrL2v9veEamGzg
-	olXgeH6/uJIH0OLG/d8BYNrjzBIy6x6iRYSb3nZh95LhXEOPnyjxPzmIPBjVvBudz9KfI/7tq+AYg
-	avjCMXJ5XKusnjb9y3szLtLB0rhK1hHd8vpOiQqqeoLdCtfVadyYStmBnNprd9DZE8Coo9BCGoY0M
-	EQbnq/AC0Bs7+dUOeE9R8NmNRyekjIDS++wsukuI28SG2fUxAp7KF8EFGFGFS7jGv3KGUCfTMOdGp
-	w3St9nNowqBD+1R5dqr57r4BdzAoYsVevKRrt2D3f1OlX5U4pkAHoDeOlbn8cI4KFvYeJTVHGeTEX
-	GY89stwg==;
+	bh=xCznPro7DzazvTiUhQrmITM+It7rrjrCA9i0Q4NMQd0=; b=eQh/3/IxygAEKwJNWOZx8CJfej
+	SSDYzBur3s4CVFAPF7le+W94sz707rn3QuHN0i+jhbcdqNGFJh399Z/dblyNvTCMrIwDV6tQYdgkd
+	ufrvmKq9I2P5wy3TS6u1I5D+ReETIYfBddiBzqOTCjRMIE4audqv0IBCIdsaTtt6SME9YnMuV1KsE
+	+0K37mVUxsHnA29Zhw0+jSZNU5gJyVzkLa9oFQ7/S1wmlhSvlPPt1Sv/3jVHQF/lHSfTFlyoVG1Wv
+	ZMJNhigf/BVY7vQamUI6MYsoceK5HIwFMmBYMO2FhVBDrydHsmA71dVxkWsyuD3HnepYyaXxisYiR
+	Hy5ElrKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taA35-00000007Kbp-1Wvm;
-	Tue, 21 Jan 2025 08:55:51 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1taArh-00000007SM5-19J0;
+	Tue, 21 Jan 2025 09:48:09 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taA1E-00000007K6B-2Cc7
+	id 1taAqP-00000007SC7-0ZQD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jan 2025 08:53:57 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1taA14-00051k-IY; Tue, 21 Jan 2025 09:53:46 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1taA12-0014uC-2o;
-	Tue, 21 Jan 2025 09:53:44 +0100
-Received: from pza by lupine with local (Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1taA12-00026M-2Z;
-	Tue, 21 Jan 2025 09:53:44 +0100
-Message-ID: <98d064a635467dcc3937d1ec9c5b1659bd71eb91.camel@pengutronix.de>
-Subject: Re: [PATCH v3 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, 
-	Krzysztof Kozlowski
-	 <krzk@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley
-	 <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Tue, 21 Jan 2025 09:53:44 +0100
-In-Reply-To: <20250121064934.13482-3-friday.yang@mediatek.com>
-References: <20250121064934.13482-1-friday.yang@mediatek.com>
-	 <20250121064934.13482-3-friday.yang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+	Tue, 21 Jan 2025 09:46:51 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e53c9035003so8351386276.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jan 2025 01:46:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1737452807; x=1738057607; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=xCznPro7DzazvTiUhQrmITM+It7rrjrCA9i0Q4NMQd0=;
+        b=ivvCBlroX381SHtW+7GJTB5jI+HlLeue0QbC8nhEUTQU6g6OrFNQeYBmADj/Baw1cU
+         uD5XPn3Y07jzzp2tLUKWTfryHBgUHu3+id6D3hl7nw73aMkYTI28HMJMmlalcSvPHKQl
+         mXcS0G+QB8UcdQMxvk86EqurrjzC8DKvVNllBOHNhPMfLEgwUnBgraeIGWV/t8yjWyrY
+         co+TWbnibTwbH4vjwzG9EW9kEjsdGX+W5jjjVWPUKaL5GA6DyDX3bCa+S8vw0/QwjIoZ
+         9LQ6Nl356I3GsZ0HTAcXqMlXlGAUvsv6Er6uMkfw4P6yzOGsILrhenRrpVbZ9ddhaoj+
+         V+sA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737452807; x=1738057607;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xCznPro7DzazvTiUhQrmITM+It7rrjrCA9i0Q4NMQd0=;
+        b=VAyRM3qzaaD/5zytKC+EHqHUBsACgOn9MwTpl5IlyHXUMB/04+ZJtoMN/9S3SgBQww
+         jczyFLTCbACHr8fGHClGaE52CrhGXspMQz6LtdOXr0KNxe1Rcv0cPSKipxRvuzZmqI0U
+         rEOIu38ROv2WvggEN8xLc85h1nLVbYvHtr0h8Ea29FfuS2zbf7x89jiFjWafCXrgQngo
+         Itu4r7F23+kJDblq5L5R8ALinxxeW9IgncbtqC47fXxpRmRqpvXs+xWSgjQirrEC1Cyx
+         LnoYt72Jtao6WqVJ7j1q9sJMrIw/uESydXn1FoqO44EQjTZnxXw/cTVK/KqYkil5MGxX
+         DuGw==
+X-Forwarded-Encrypted: i=1; AJvYcCUTWN2HG2b6gRvw1+95FynV0UiaHoXZZ3/fJJaAp7a90bjYjAqzEZ6UD3OYbHJc4yRup89faJOCG+4pSSYvzw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwiRW1GUKqaD88J3tTHRmZeEgRqdmK2Pm4g6kub3fo+uZRmIjEm
+	lb4tLEYXAmfycNwBU+FDNf+gGqMUnNrBaFRpSFpU6bEzmnY+gMuAY+9WHcx3udNVrJ5s+bf/x1Q
+	FCSe047BbcIq9HSHtPByDuILRu7E2Y0D6xA94Rg==
+X-Gm-Gg: ASbGncuwgSsE2zHoZ/Ngb/Mjl4cgKX+HjkuTLOb/bZuWuxEdAEa+HVWMwuXVHUbVH08
+	3RWWTjyBlXeqzYcGLCE1J9giOwTAhnBy674rmHq6ThJHZEdPYfCQ=
+X-Google-Smtp-Source: AGHT+IE4NvWjhVwcZefMFMPsNF1/yZL/+GizgE7O5W0l1UUq/sk+Rp9xLLX7buviHENqfSARwR8NAFZJ6rRHBgoskwA=
+X-Received: by 2002:a05:690c:7344:b0:6ef:5ab8:2c53 with SMTP id
+ 00721157ae682-6f6eb68695cmr133051747b3.19.1737452807535; Tue, 21 Jan 2025
+ 01:46:47 -0800 (PST)
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <20250120153817.11807-1-ansuelsmth@gmail.com>
+In-Reply-To: <20250120153817.11807-1-ansuelsmth@gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 21 Jan 2025 10:46:11 +0100
+X-Gm-Features: AbW1kvZ21pVNkI7qM7rGH-9wFnhv5SdIw9t28_ewxvHO8LS13hlMrra20J6gTIc
+Message-ID: <CAPDyKFpBtnsEfMg73UHdXzZvSNHaL8H4N1h6-2wAMnFWNTM75w@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: airoha: Fix compilation error with Clang-20 and
+ Thumb2 mode
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
+	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev, 
+	Sudeep Holla <sudeep.holla@arm.com>, kernel test robot <lkp@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_005356_562095_B4EC5F7B 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20250121_014649_201972_806DC01C 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,121 +97,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Di, 2025-01-21 at 14:49 +0800, Friday Yang wrote:
-> From: "friday.yang" <friday.yang@mediatek.com>
->=20
-> To prevent handling glitch signals during MTCMOS on/off transitions,
-> SMI requires clamp and reset operations. Parse the reset settings for
-> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
-> genpd callback for the SMI LARBs located in image, camera and IPE
-> subsystems, and apply reset and clamp operations within the callback.
->=20
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+On Mon, 20 Jan 2025 at 16:38, Christian Marangi <ansuelsmth@gmail.com> wrote:
+>
+> The use of R7 in the SMCCC conflicts with the compiler's use of R7 as a frame
+> pointer in Thumb2 mode, which is forcibly enabled by Clang when profiling
+> hooks are inserted via the -pg switch.
+>
+> This is a known issue and similar driver workaround this with a Makefile
+> ifdef. Exact workaround are applied in
+> drivers/firmware/arm_scmi/transports/Makefile and other similar driver.
+>
+> Suggested-by: Sudeep Holla <sudeep.holla@arm.com>
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202501201840.XmpHXpQ4-lkp@intel.com/
+> Fixes: 82e703dd438b ("pmdomain: airoha: Add Airoha CPU PM Domain support")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+
+Applied for next, thanks!
+
+Kind regards
+Uffe
+
 > ---
->  drivers/memory/mtk-smi.c | 141 +++++++++++++++++++++++++++++++++++++--
->  1 file changed, 137 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 5710348f72f6..aaeb80379ec1 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-[...]
-> @@ -528,6 +598,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, =
-struct mtk_smi *smi,
->  	return ret;
->  }
->=20
-> +static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
-> +{
-> +	struct device *dev =3D larb->dev;
-> +	const struct mtk_smi_larb_gen *larb_gen =3D larb->larb_gen;
-> +	u32 larb_id;
-> +	int ret;
+>  drivers/pmdomain/mediatek/Makefile | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/drivers/pmdomain/mediatek/Makefile b/drivers/pmdomain/mediatek/Makefile
+> index 0f6edce9239b..18ba92e3c418 100644
+> --- a/drivers/pmdomain/mediatek/Makefile
+> +++ b/drivers/pmdomain/mediatek/Makefile
+> @@ -2,3 +2,10 @@
+>  obj-$(CONFIG_MTK_SCPSYS)               += mtk-scpsys.o
+>  obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS)    += mtk-pm-domains.o
+>  obj-$(CONFIG_AIROHA_CPU_PM_DOMAIN)     += airoha-cpu-pmdomain.o
 > +
-> +	/**
-> +	 * Only SMI LARBs in camera, image and IPE subsys need to
-> +	 * apply clamp and reset operations, others can be skipped.
-> +	 */
-> +	ret =3D of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id=
-);
-> +	if (ret)
-> +		return -EINVAL;
-> +	if (!larb_gen->clamp_port || !larb_gen->clamp_port[larb_id])
-> +		return 0;
-> +
-> +	larb->sub_comm_inport =3D larb_gen->clamp_port[larb_id];
-> +	larb->sub_comm_syscon =3D syscon_regmap_lookup_by_phandle(dev->of_node,=
- "mediatek,smi");
-> +	if (IS_ERR(larb->sub_comm_syscon)) {
-> +		larb->sub_comm_syscon =3D NULL;
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Unknown clamp port for larb %d\n", larb_id);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_smi_larb_parse_reset_optional(struct mtk_smi_larb *larb)
-> +{
-> +	struct device *dev =3D larb->dev;
-> +	int ret;
-> +
-> +	larb->rst_con =3D devm_reset_control_get(dev, "larb");
-
-Please use devm_reset_control_get_exclusive() directly.
-Or use devm_reset_control_get_optional_exclusive(), which returns NULL
-instead of -ENOENT. That way you can ...
-
-> +	if (IS_ERR(larb->rst_con))
-> +		return dev_err_probe(dev, PTR_ERR(larb->rst_con),
-> +				     "Failed to get larb reset controller\n");
-
-... suppress this error message in case of -ENOENT and return with:
-
-	if (!larb->rst_con)
-		return 0;
-
-here.
-
-> +
-> +	larb->nb.notifier_call =3D mtk_smi_genpd_callback;
-> +	ret =3D dev_pm_genpd_add_notifier(dev, &larb->nb);
-> +	if (ret)
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Failed to add genpd callback %d\n", ret);
-> +
-> +	return 0;
-> +}
-> +
->  static int mtk_smi_larb_probe(struct platform_device *pdev)
->  {
->  	struct mtk_smi_larb *larb;
-> @@ -538,6 +655,7 @@ static int mtk_smi_larb_probe(struct platform_device =
-*pdev)
->  	if (!larb)
->  		return -ENOMEM;
->=20
-> +	larb->dev =3D dev;
->  	larb->larb_gen =3D of_device_get_match_data(dev);
->  	larb->base =3D devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(larb->base))
-> @@ -554,15 +672,24 @@ static int mtk_smi_larb_probe(struct platform_devic=
-e *pdev)
->  	if (ret < 0)
->  		return ret;
->=20
-> -	pm_runtime_enable(dev);
-> +	ret =3D mtk_smi_larb_parse_clamp_optional(larb);
-> +	if (ret)
-> +		goto err_link_remove;
-> +
-> +	ret =3D mtk_smi_larb_parse_reset_optional(larb);
-> +	if (ret && ret !=3D -ENOENT)
-
-The ret !=3D -ENOENT check could be dropped if you use
-devm_reset_control_get_optional_exclusive() above.
-
-
-regards
-Philipp
+> +ifeq ($(CONFIG_THUMB2_KERNEL)$(CONFIG_CC_IS_CLANG),yy)
+> +# The use of R7 in the SMCCC conflicts with the compiler's use of R7 as a frame
+> +# pointer in Thumb2 mode, which is forcibly enabled by Clang when profiling
+> +# hooks are inserted via the -pg switch.
+> +CFLAGS_REMOVE_airoha-cpu-pmdomain.o += $(CC_FLAGS_FTRACE)
+> +endif
+> --
+> 2.47.1
+>
 
