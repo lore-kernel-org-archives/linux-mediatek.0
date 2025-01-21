@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655A6C02182
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 17:32:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A3D1C02182
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2025 23:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=35MWvWUX+y9FbjxI6z260ZVWsxzfCHFj7/oCaThUJWA=; b=2/QeARCo7P4RhxOuvTDK0AQjLG
-	SgrjensczNkB2+X0QqYgiggQ0xFBS2SEU8nMo34Qppb0lbCvPam09HfE9QHKN6xcdfAP+0NNT2ZBc
-	JCzr3SJqm+XTlOFqXNKKT6i5AIuC04PnXf+rH8N6LTUl51JjvZgkieUAoYhwBM+1U2bUzbvH956XB
-	U/b9jG3lAUjMW5aNxJzWSAcsPFWoqVnMO5IetOGGoFBaLcTjxb7GtdQvvsfcpNyvDLr7g93hWPl/2
-	MrlBWy4L+zrorh032Ke+Y4naZtK5pntfmKt/T2+iFSFujhJy9a+kow/XOGZW54GLHvhh1IonqqfGt
-	TBJMKh8Q==;
+	bh=AuYhx4ivzz0E1AuPp+VdpQD15ncC9/RM8+DNV9taH/M=; b=njkQP9mxzjBYxXj+n43eliLq8U
+	b3M/eAhrr69XED8VbBFkXZ0vT1vZ0HlpiO1VFoDLyqInn5qEo6Ef41PqCQgAjYwLFqfDFtmCXJsRW
+	i8TF9xNEEvXeTnIF5qrI/mDaBbgvqWLSFiRsMiJCoH4jdmN4O1nuusAXQjW21Dh04TvCVuymUisni
+	lMhmp/zG596Qnj7E+DPCtnBfh/D8FrpYsIqtBcCzuf1t4cYT1dA7vd3V/5NPXp5imxIAASB0MJ2wO
+	m/5yAdWetDijidKgXfSmm1mUmUYTVTX2C5ENXt8/lvWL9zHDkP7/srI9FTPpB+cj6novrpHx7g8tX
+	3VavOhJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taI7I-00000008UOv-1gOY;
-	Tue, 21 Jan 2025 17:32:44 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1taO2Y-00000008zhL-0ji8;
+	Tue, 21 Jan 2025 23:52:14 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taI57-00000008U3s-1D1m;
-	Tue, 21 Jan 2025 17:30:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3123F5C5A44;
-	Tue, 21 Jan 2025 17:29:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56442C4CEDF;
-	Tue, 21 Jan 2025 17:30:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737480628;
-	bh=Govg89tiGbSn5yl9wzSlsxsIzUrVeToBKInXCkUD1UU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qyfPVyKzB1Cw46YjJnd5wRP11zBPA/rGHs4f7GcLunyOZEkHoGCizSoVGwm19rN30
-	 Te4LA5dXTAHtqlEc29+BhrS+BTDWI7F7QBkGtDnRPK1n6UwE5t1tQ5odrHZR9Geke4
-	 WlD+XGkjWaTF/zkbEczagQMu/y7x9DQ23ySs9r2TJRWe55wk9y4m2ajTP2HuUHcFMT
-	 IWIv1JkTsmHzaZob77Z+FLHV1gEYE76BqlhOnGDVHEFR+zP5czc0LQrECjJH+wrFv2
-	 6D3KB+btja9yJE2tQfIakNmxcdvMUsvdDfAy7VW6dUO1inwgY1aBJXC8Iy58GEEaw2
-	 iT5o/kW0yS8bw==
-Date: Tue, 21 Jan 2025 17:30:23 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Friday Yang <friday.yang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1taO1F-00000008zbf-3ela;
+	Tue, 21 Jan 2025 23:50:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=AuYhx4ivzz0E1AuPp+VdpQD15ncC9/RM8+DNV9taH/M=; b=A6QEpfly++bM7NYGmP3SnrNw46
+	tzmrW4bt3urzf1A4m8tC0jM+IPQbXwCo6UjGQnaXpgaSxnQwj7NTl3gMT250EkSz8azZGdC6FTKkH
+	mAQZcJBLjsXeUD+EdhuPJGZtujaBkPOe/s9/hh4QEdd4cm5G6OWOqq+jSIct6tfDA4Qg=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1taO0v-006mUm-5p; Wed, 22 Jan 2025 00:50:33 +0100
+Date: Wed, 22 Jan 2025 00:50:33 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Shengyu Qu <wiagn233@outlook.com>
+Cc: Elad Yifee <eladwf@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Garmin Chang <garmin.chang@mediatek.com>,
-	Yong Wu <yong.wu@mediatek.com>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
- for MT8188
-Message-ID: <20250121-violet-widely-df3567b085a4@spud>
-References: <20250121065045.13514-1-friday.yang@mediatek.com>
- <20250121065045.13514-2-friday.yang@mediatek.com>
+	Daniel Golle <daniel@makrotopia.org>,
+	Joe Damato <jdamato@fastly.com>, sr@denx.de
+Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch
+ methods
+Message-ID: <6359f0e9-6f13-4b87-993a-313a378742d5@lunn.ch>
+References: <20240729183038.1959-1-eladwf@gmail.com>
+ <20240729183038.1959-2-eladwf@gmail.com>
+ <TYCPR01MB8437EC132CBC033368FC40A998102@TYCPR01MB8437.jpnprd01.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="234HpXv0PCqVfF3i"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250121065045.13514-2-friday.yang@mediatek.com>
+In-Reply-To: <TYCPR01MB8437EC132CBC033368FC40A998102@TYCPR01MB8437.jpnprd01.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_093029_409246_B2D85F95 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20250121_155053_909637_1B3B4017 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +81,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jan 06, 2025 at 10:28:46PM +0800, Shengyu Qu wrote:
+> Hello,
+> 
+> Sorry to bother, but what happened to this patch? Is it given up or
+> something?
 
---234HpXv0PCqVfF3i
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+There appear to be open questions about it. Those questions need
+answering. Also, the net-next is closed at the moment for the merge
+window. So a new version will need to be submitted once net-next
+reopens in two weeks time.
 
-On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
-> SMI LARBs require reset functions when applying clamp operations.
-> Add '#reset-cells' for the clock controller located in image, camera
-> and IPE subsystems.
 
-A new required property is an abi break, please explain why this is
-required. What are "SMI LARBs"? Why did things previously work without
-acting as a reset controller?
+    Andrew
 
->=20
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
-> ---
->  .../bindings/clock/mediatek,mt8188-clock.yaml | 21 +++++++++++++++++++
->  1 file changed, 21 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8188-cloc=
-k.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> index 860570320545..2985c8c717d7 100644
-> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> @@ -57,6 +57,27 @@ required:
->    - reg
->    - '#clock-cells'
->=20
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8188-camsys-rawa
-> +              - mediatek,mt8188-camsys-rawb
-> +              - mediatek,mt8188-camsys-yuva
-> +              - mediatek,mt8188-camsys-yuvb
-> +              - mediatek,mt8188-imgsys-wpe1
-> +              - mediatek,mt8188-imgsys-wpe2
-> +              - mediatek,mt8188-imgsys-wpe3
-> +              - mediatek,mt8188-imgsys1-dip-nr
-> +              - mediatek,mt8188-imgsys1-dip-top
-> +              - mediatek,mt8188-ipesys
-> +
-> +    then:
-> +      required:
-> +        - '#reset-cells'
-> +
->  additionalProperties: false
->=20
->  examples:
-> --
-> 2.46.0
->=20
-
---234HpXv0PCqVfF3i
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHQEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4/ZrwAKCRB4tDGHoIJi
-0pWsAPUdBV9ZoeWHEnWqUr1Shp9vd4lHhIWVWH6d7kO3PIJqAP4xDK4Kgf1eou4H
-43tgZR/e7RChn/6kgYrsxa86J5XpAA==
-=x+CA
------END PGP SIGNATURE-----
-
---234HpXv0PCqVfF3i--
+---
+pw-bot: cr
 
