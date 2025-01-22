@@ -4,105 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0EAAC02181
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 10:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2FFC02181
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 13:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4manhHXny9Fi7hRVodbdsginf0hAnZ34xkZ6PFG3Ifw=; b=x7odsNLGIHnsQ22iBbID/iQEMW
-	g2wtOAjklfWF7MHq3Hg6QOAsoraL9RlUymxlDZWGrTYRxfAnPcmG/vL9PgtRbX7oI8oaRbNeCQEEl
-	zJGt005a/4FIIUSTPvoe8Rpz3D/VqWhxXQgP8FFOyI5HCo8XRAq64pkkavngoAnXDfa3J+XJM+VC9
-	AmQ/Qha9p8cV3O1XWQneZr6lt0kq7bfoBs+TmdCFVOi/WezEWVN/otWn3sGsz+GwMkK3zhU0eqGEO
-	83SMxsE0ukiIliZs1ud0XRCKqh6cy1R/k1GsNhtBlQ/w21T/HvQlib/8J2qktgS8Cz/TGFYCggX0N
-	FYnejP5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jv2yDZtHcpSll2NLJ4TWnj6kWytYEK0xigOiSIN3QPQ=; b=EW0/vSc2cKw3YF//IRSDw5jHWl
+	wOHGJugg0hBA9fP7kOkFF65rsKM/5lvp3n0cLu2X3ByM1ZD4JMU8HezNw1jN8Ul7TGnKl/Ha40GKv
+	wWH5V3k5CdpNNq11/BRix6Zh3SUW6koX+mn0YVVs4sO3F1qRWl0LWTk9coo/xw0JLJImQDQxRo8ph
+	/VRT1Km5zEiz/kqkrE8cwmMVx6ORxIlturCb+dBQkyXccRmzRugurmOQI8NpJPWfxr6gu/nst5ODH
+	UAXn2KmXGUdx5vvypCiTnbbcHkC+1ZeX+xHL9XxQ+BmQ0VdA7iT6K2aCL6QEImd7dWn3TliofNwh3
+	VLTAHxSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXaz-00000009srS-3KsB;
-	Wed, 22 Jan 2025 10:04:25 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1tabAO-0000000AKro-11tC;
+	Wed, 22 Jan 2025 13:53:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXam-00000009sq1-0P78;
-	Wed, 22 Jan 2025 10:04:13 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 50M6I7aY023350;
-	Wed, 22 Jan 2025 10:02:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=4manhHXny9F
-	i7hRVodbdsginf0hAnZ34xkZ6PFG3Ifw=; b=EhxhfuoUpWcrw4H3JiOfxw+aMZW
-	FAakIlbxCzmYw0fqijNY3Z+0WtePR4B+pMolM8nOY2qsWsEDzuHhNR5v3MObgNs8
-	pLUEdlyvJLGISsi9XrNp6g6xA8Cph6Bx2ooVrv5mwVH/mddBEPtiWeFDgXcqaRxq
-	yZVFsSO3iE8uzSj6lCh5PeWbXghV70IW8NFcQX/D/RWNIFlH+E4k+IbYSSIxb7Gn
-	5B64YwZ406jJMSjz/pUdHlbkFUeMVowEDuBxjTvYFsM2M6iF+x6KlE/DXnab0Ao7
-	i2GDEjxWrvX28zh6TUFU/sxEKE8NZs5MJLzXIaVF5ruCmA4Mx6pweGPNpxw==
-Received: from aptaippmta01.qualcomm.com (tpe-colo-wan-fw-bordernet.qualcomm.com [103.229.16.4])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 44au9eghj9-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jan 2025 10:02:57 +0000 (GMT)
-Received: from pps.filterd (APTAIPPMTA01.qualcomm.com [127.0.0.1])
-	by APTAIPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 50MA2cRs006767;
-	Wed, 22 Jan 2025 10:02:54 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 4485cm3b6d-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jan 2025 10:02:54 +0000
-Received: from APTAIPPMTA01.qualcomm.com (APTAIPPMTA01.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 50MA2saQ006794;
-	Wed, 22 Jan 2025 10:02:54 GMT
-Received: from cbsp-sh-gv.ap.qualcomm.com (CBSP-SH-gv.ap.qualcomm.com [10.231.249.68])
-	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 50MA2sZ2006792
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jan 2025 10:02:54 +0000
-Received: by cbsp-sh-gv.ap.qualcomm.com (Postfix, from userid 393357)
-	id 274BB40CE9; Wed, 22 Jan 2025 18:02:53 +0800 (CST)
-From: Ziqi Chen <quic_ziqichen@quicinc.com>
-To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
-        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
-        martin.petersen@oracle.com, quic_ziqichen@quicinc.com,
-        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
-        quic_rampraka@quicinc.com
-Cc: linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Peter Wang <peter.wang@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>,
-        Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Andrew Halaney <ahalaney@redhat.com>,
-        Maramaina Naresh <quic_mnaresh@quicinc.com>,
-        Eric Biggers <ebiggers@google.com>, Minwoo Im <minwoo.im@samsung.com>,
-        linux-kernel@vger.kernel.org (open list),
-        linux-mediatek@lists.infradead.org (moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER...),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH v2 1/8] scsi: ufs: core: Pass target_freq to clk_scale_notify() vops
-Date: Wed, 22 Jan 2025 18:02:07 +0800
-Message-Id: <20250122100214.489749-2-quic_ziqichen@quicinc.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250122100214.489749-1-quic_ziqichen@quicinc.com>
-References: <20250122100214.489749-1-quic_ziqichen@quicinc.com>
+	id 1tab95-0000000AKaa-1rFL;
+	Wed, 22 Jan 2025 13:51:52 +0000
+X-UUID: 0390f958d8c811ef9048ed6ed365623b-20250122
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jv2yDZtHcpSll2NLJ4TWnj6kWytYEK0xigOiSIN3QPQ=;
+	b=kWFYFfZKJ3WRuGl47YcW5NFG9PImD+uW6f6BBv5qA7WenMBkeKscomph1xKMRy6dlagrITq2geDi6mqFu/+vIAh0xt1qzEqajfuKWJQjqSIsuSTpli7K+wXqi9GpiWmKp9WHqeT3AfuehLhzVfRuGbyd4Avq0uC9HNDaapdZDeI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:1055a063-c382-43a8-b647-983014b8cf2b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:31d88e7e-427a-4311-9df4-bfaeeacd8532,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 0390f958d8c811ef9048ed6ed365623b-20250122
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ot_chhao.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 623293458; Wed, 22 Jan 2025 06:51:43 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Wed, 22 Jan 2025 21:51:40 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Wed, 22 Jan 2025 21:51:40 +0800
+From: Hao Chang <ot_chhao.chang@mediatek.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
+	Qingliang Li <qingliang.li@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Hao
+ Chang" <ot_chhao.chang@mediatek.com>
+Subject: [PATCH v2 0/3] pinctrl: mediatek: add support for multi-instance EINT
+Date: Wed, 22 Jan 2025 21:51:22 +0800
+Message-ID: <20250122135135.15234-1-ot_chhao.chang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 5ZQFgq9QRSnfX9-yTrJraYm7RFXEx-Dv
-X-Proofpoint-ORIG-GUID: 5ZQFgq9QRSnfX9-yTrJraYm7RFXEx-Dv
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-01-22_04,2025-01-22_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- suspectscore=0 mlxlogscore=999 clxscore=1015 mlxscore=0 phishscore=0
- impostorscore=0 adultscore=0 lowpriorityscore=0 spamscore=0 malwarescore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2501220073
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_020412_250457_1F10D820 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20250122_055151_484945_CAA10A14 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,114 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Can Guo <quic_cang@quicinc.com>
-
-Instead of only two frequencies, If OPP V2 is used, the UFS devfreq clock
-scaling may scale the clock among multiple frequencies, so just passing
-up/down to vops clk_scale_notify() is not enough to cover the intermediate
-clock freqs between the min and max freqs. Hence pass the target_freq ,
-which will be used in successive commits, to clk_scale_notify() to allow
-the vops to perform corresponding configurations with regard to the clock
-freqs.
-
-Signed-off-by: Can Guo <quic_cang@quicinc.com>
-Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
-Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+Change in v2:
+1)Remove debug code
+2)Remove instance structure
+3)Change from providing mapping table by device tree to providing it by
+pinctrl
+4)Use eint hw structure as the basis for private data
 ---
+This patch depends on
+[v3,2/2] pinctrl: mediatek: add mt8196 driver
+[v3,1/2] dt-bindings: pinctrl: mediatek: add support for mt8196
 
-v1 -> v2:
-Modify commit message to make it more clear.
+Please also accept this patch together with [1]
+to avoid build and dt binding check error.
+[1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=&submitter=215008&state=&q=v3&archive=&delegate=
 ---
- drivers/ufs/core/ufshcd-priv.h  | 7 ++++---
- drivers/ufs/core/ufshcd.c       | 4 ++--
- drivers/ufs/host/ufs-mediatek.c | 1 +
- drivers/ufs/host/ufs-qcom.c     | 5 +++--
- include/ufs/ufshcd.h            | 2 +-
- 5 files changed, 11 insertions(+), 8 deletions(-)
+ot_chhao.chang (3):
+  pinctrl: mediatek: add support for multi-instance EINT
+  pinctrl: mediatek: update EINT base retrieval method
+  pinctrl: mediatek: adapt to multi-base design
 
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 9ffd94ddf8c7..0549b65f71ed 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -117,11 +117,12 @@ static inline u32 ufshcd_vops_get_ufs_hci_version(struct ufs_hba *hba)
- 	return ufshcd_readl(hba, REG_UFS_VERSION);
- }
- 
--static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
--			bool up, enum ufs_notify_change_status status)
-+static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba, bool up,
-+					       unsigned long target_freq,
-+					       enum ufs_notify_change_status status)
- {
- 	if (hba->vops && hba->vops->clk_scale_notify)
--		return hba->vops->clk_scale_notify(hba, up, status);
-+		return hba->vops->clk_scale_notify(hba, up, target_freq, status);
- 	return 0;
- }
- 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index acc3607bbd9c..8d295cc827cc 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -1157,7 +1157,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
- 	int ret = 0;
- 	ktime_t start = ktime_get();
- 
--	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, PRE_CHANGE);
-+	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, PRE_CHANGE);
- 	if (ret)
- 		goto out;
- 
-@@ -1168,7 +1168,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
- 	if (ret)
- 		goto out;
- 
--	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, POST_CHANGE);
-+	ret = ufshcd_vops_clk_scale_notify(hba, scale_up, freq, POST_CHANGE);
- 	if (ret) {
- 		if (hba->use_pm_opp)
- 			ufshcd_opp_set_rate(hba,
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 135cd78109e2..977dd0caaef6 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1643,6 +1643,7 @@ static void ufs_mtk_clk_scale(struct ufs_hba *hba, bool scale_up)
- }
- 
- static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
-+				    unsigned long target_freq,
- 				    enum ufs_notify_change_status status)
- {
- 	if (!ufshcd_is_clkscaling_supported(hba))
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 68040b2ab5f8..b6eef975dc46 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1333,8 +1333,9 @@ static int ufs_qcom_clk_scale_down_post_change(struct ufs_hba *hba)
- 	return ufs_qcom_set_core_clk_ctrl(hba, false);
- }
- 
--static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba,
--		bool scale_up, enum ufs_notify_change_status status)
-+static int ufs_qcom_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
-+				     unsigned long target_freq,
-+				     enum ufs_notify_change_status status)
- {
- 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 	int err;
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index d7aca9e61684..a4dac897a169 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -344,7 +344,7 @@ struct ufs_hba_variant_ops {
- 	void    (*exit)(struct ufs_hba *);
- 	u32	(*get_ufs_hci_version)(struct ufs_hba *);
- 	int	(*set_dma_mask)(struct ufs_hba *);
--	int	(*clk_scale_notify)(struct ufs_hba *, bool,
-+	int (*clk_scale_notify)(struct ufs_hba *, bool, unsigned long,
- 				    enum ufs_notify_change_status);
- 	int	(*setup_clocks)(struct ufs_hba *, bool,
- 				enum ufs_notify_change_status);
+ drivers/pinctrl/mediatek/mtk-eint.c           | 219 ++++++++++-------
+ drivers/pinctrl/mediatek/mtk-eint.h           |  22 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8196.c     |   1 +
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |  45 ++--
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |   1 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h | 232 ++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-paris.h      |   7 +
+ 7 files changed, 418 insertions(+), 109 deletions(-)
+
 -- 
 2.34.1
 
