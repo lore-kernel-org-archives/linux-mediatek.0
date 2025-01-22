@@ -4,102 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96EF3C02181
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 09:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2134DC02181
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 10:03:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
-	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YV31ap+hTk7A9j35eAwWYQDQxUENrLNo4C4Wd2gbJZI=; b=HpmnRqQMkr6jObwZTvmsL33mhp
-	1Xuk6GVcqJ2ZjeAYjqt7ndpguCAR/yThtx7UbjDyeVGLedDVR32QPl8bt18jPQJknjQtwGVtxmMBP
-	mP8M7tM8tCfLOUJHv/lm/GVuV3DAqMq4kVWw4102eB5gqqeeYOekcSJ9UaSAVTiVSeqL5Uj09qJfK
-	xZmP0VC1XMUYsB7rKKTRLdJWDlFuzpTU7lXVgKLH3ongSh+TkzRds+QKIIkPgma8eXJzydAdbWXGK
-	bOimU0h+vBffeCCQYzDnway4iZDaNQuJZK8WFrxW8QEk6Vv29vUgj6Ys3IfH7I8fyKwXyBEUPSfG/
-	3nHMZaQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Xl5+0tlZrLoM3ZeRbUgvSA4AIYam567wP93TMSoVT5s=; b=CB32oxmsbvWSezOAN029LUZKbZ
+	1Z/Nqq8wGJ3zZazyoZMt4ivxa62yFDiEUnJA7Y8WqReD6HLacr/5rzLLjtm6pQpeAYqpS7kM+JK8d
+	ZhKmzS7lwRW9sC0y2pIALkcMICt299CkT7fZKqvofERQ2zvoFL2Jx0NMI4H3+W8AV/7Cn6lEB3CqA
+	ZyBwySGeYK9XSanFeBxKvqx/OJtaX+qcpOHALjmuU6cMwFg/RRu3ORWhuKn7didxg6149vOGYv4Ty
+	QbAaUtQxDaJ4jmWnzgvPVN9xoNH5iUzPzwscStoTZnNRqYPesy38QmOOSrYthRkvdOlpautiMvI8e
+	lwyhGr8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taX6F-00000009ns6-2Z4P;
-	Wed, 22 Jan 2025 09:32:39 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1taXZi-00000009sbn-15wK;
+	Wed, 22 Jan 2025 10:03:06 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taX6D-00000009nrf-008x;
-	Wed, 22 Jan 2025 09:32:38 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3863703258fso388414f8f.1;
-        Wed, 22 Jan 2025 01:32:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1737538355; x=1738143155; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=YV31ap+hTk7A9j35eAwWYQDQxUENrLNo4C4Wd2gbJZI=;
-        b=TRi8rBWvvfxTGh8ZjFveGIm2gOpO8Va8sjABBXTcYtg6xVA+uCSaxw/FRUc+YF07sK
-         95WVs/EGsi+hoa0xU47rrYBxz3EmOGjKYWdRoaEnEurn7qkzVBocZK1RdP6Fs0htSmV2
-         /ZCCUDEsMGJhCRptP8mzhbPlKS0BxzpJ1/KFKEUXcym4DJP4gJ3IBTDEL29JpRnZ3ZNG
-         Oy8IWS/RiIJY6AnLC742aan7u8PelXULgtav0BLzi6lQT8TBFTDhkADuD22kyyNVWp2M
-         53S+sZzxJsUOCDFyyzYjc5iEPb75WzG0jE7pynkh7mdKbFV/J33gNjL0VS31bV7j6bqf
-         6UNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737538355; x=1738143155;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YV31ap+hTk7A9j35eAwWYQDQxUENrLNo4C4Wd2gbJZI=;
-        b=SR8Cgf2VOphtw3YtPvGjhYiYiWdVRafcs74i0ga4YLus6221toQgpGucL3YG+TFYFu
-         hQ/ydr8gv+L+0kSwmfDwdteVmIXGtRk+pdumPQrMEf9XgeLT7PidHX1kATnYFCQNQDkH
-         xyTiFijhZ+y/E1XDfsvSWK2DuYgXCRTpoHV4iS9tGbmYvmKvNUzpxpajP7b0UUf5F1EV
-         UKdv0stlAp1nkKct7l6u3sLVOvDW27FZHyMfGtWUcU7vXCzjnDKmR1NVoIFHfMfCRD8s
-         9+07HdVzkwr1qNPmriUfmrrKsMq0IltLGEod/tERAUJaRrHRPS+Hz9k6WAAa11Jvrnak
-         wHDg==
-X-Forwarded-Encrypted: i=1; AJvYcCW+P5QHNDji6f+afcF3QmjRWHP1F1LIJnknPLeAviOcv4dt35XwmKhXfNSEdyol9m9YEwFzo2mxYTbmPUfGV7A=@lists.infradead.org, AJvYcCXsPrzhWHJQgANWqmQ57jlk+qkpe9ELDc8aR9LVCKeKHG5buiW/575jQ+Or3FymSe+lj9boec/pG9gYNP3Oa0Zd@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPphnZ2XUbC5SEdwNdJDdHM3UnHDB9tIMILBnvp02dMKFw6mqT
-	9g0Eb/x4+edv9EPehkkxW9zwh4iLDsjOhYA2PsQjz8LOFp/J7P1K
-X-Gm-Gg: ASbGncvxzuo8ujuVGLW++jQm2c54uskFiHu1FV3opDDSfK+/IqxHOWUMC3Ecp3od+s/
-	qENwI21zJeg15CH5Ej+xkaijWtzUP2ehf8upKIpEGrlO6mUUlUsS+YBPvR38jqox7GxLqAxADiN
-	tdjEtlZcSatm5DaE/ZdGBSYnO/40xP8+KOD4vdAkHNtKgdaK6arsr/aeXA8qvswsYISbPXYBdZT
-	eR48w2bDWHygBZsxolSCwGpLe8y9hiDpBcmhL7uTuxAxAPitxWaNwKc8L51q4+VV3TjTUL0mTuj
-	lQwLi7TBwdR5/BBaKhp71salGA==
-X-Google-Smtp-Source: AGHT+IEPa16/GommLca/ZabHQ6R/9IpeTlIhByFGnz2RnxfnxdP8CfDb1RQsqRARjMyM70FdR1u6+w==
-X-Received: by 2002:adf:9dce:0:b0:38a:88bc:aea6 with SMTP id ffacd0b85a97d-38bec4f592amr16953017f8f.6.1737538354689;
-        Wed, 22 Jan 2025 01:32:34 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf327e19fsm16106067f8f.93.2025.01.22.01.32.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jan 2025 01:32:34 -0800 (PST)
-Message-ID: <6790bb32.5d0a0220.168b1e.7c5b@mx.google.com>
-X-Google-Original-Message-ID: <Z5C7L3W26Ae_vlE4@Ansuel-XPS.>
-Date: Wed, 22 Jan 2025 10:32:31 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andy-ld Lu =?utf-8?B?KOWNouS4nCk=?= <Andy-ld.Lu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Wenbin Mei =?utf-8?B?KOaiheaWh+W9rCk=?= <Wenbin.Mei@mediatek.com>,
-	Chaotian Jing =?utf-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	upstream <upstream@airoha.com>
-Subject: Re: [PATCH 2/2] mmc: mtk-sd: add support for AN7581 MMC Host
-References: <20250115073026.31552-1-ansuelsmth@gmail.com>
- <20250115073026.31552-2-ansuelsmth@gmail.com>
- <9e022bf13354f544962491cf8061ff3edb878c30.camel@mediatek.com>
- <678e8816.050a0220.b6bb9.f588@mx.google.com>
- <eb064f0873fd47e7cbd07f8e403f11dd6060ff34.camel@mediatek.com>
+	id 1taXZf-00000009sae-2Bmm;
+	Wed, 22 Jan 2025 10:03:04 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 50M6I5f2023262;
+	Wed, 22 Jan 2025 10:02:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=Xl5+0tlZrLoM3ZeRbUgvSA4AIYam567wP93
+	TMSoVT5s=; b=kTBGf3qUkJvZoUtED5yKsIO4yNr/L1sUefoIISyk+35pbOu9d3p
+	JaCshhlnX726yqzrhTWXjryYK1w9TvpQM1oeUxM6hvWTpnS2ZyFe6jBG5EaOinBi
+	kSrxRVDkFk7oA9/Ji3KKSviivEMmvSjIoya3hLsv4YfaGPQLkYEMpw7PhIzmKLzH
+	qBWmc5FP6uwx7XV7sntDK7kmgTgaOLX6N/MUZGWcQa38BiqbSY39c7yvVTRA4Uny
+	OahphmBlQ8qRuBP2tggbA3xg1YCLob6gCiRlgW91Pf64ioiUPhxH6mkQC+1hiA1o
+	HKju7H5WIp3gKM72JULVg7M6NVV0ZgwQobQ==
+Received: from aptaippmta01.qualcomm.com (tpe-colo-wan-fw-bordernet.qualcomm.com [103.229.16.4])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 44au9eghht-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 22 Jan 2025 10:02:42 +0000 (GMT)
+Received: from pps.filterd (APTAIPPMTA01.qualcomm.com [127.0.0.1])
+	by APTAIPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 50MA2cRr006767;
+	Wed, 22 Jan 2025 10:02:38 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 4485cm3b5r-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 22 Jan 2025 10:02:38 +0000
+Received: from APTAIPPMTA01.qualcomm.com (APTAIPPMTA01.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 50MA2cIZ006762;
+	Wed, 22 Jan 2025 10:02:38 GMT
+Received: from cbsp-sh-gv.ap.qualcomm.com (CBSP-SH-gv.ap.qualcomm.com [10.231.249.68])
+	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 50MA2btX006760
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 22 Jan 2025 10:02:38 +0000
+Received: by cbsp-sh-gv.ap.qualcomm.com (Postfix, from userid 393357)
+	id C713840CE9; Wed, 22 Jan 2025 18:02:36 +0800 (CST)
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        martin.petersen@oracle.com, quic_ziqichen@quicinc.com,
+        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+        quic_rampraka@quicinc.com
+Cc: linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v2 0/8] Support Multi-frequency scale for UFS
+Date: Wed, 22 Jan 2025 18:02:06 +0800
+Message-Id: <20250122100214.489749-1-quic_ziqichen@quicinc.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <eb064f0873fd47e7cbd07f8e403f11dd6060ff34.camel@mediatek.com>
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: agubquMuDltbqzngpxf_iB_hHI7oG_fn
+X-Proofpoint-ORIG-GUID: agubquMuDltbqzngpxf_iB_hHI7oG_fn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-01-22_04,2025-01-22_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ suspectscore=0 mlxlogscore=999 clxscore=1015 mlxscore=0 phishscore=0
+ impostorscore=0 adultscore=0 lowpriorityscore=0 spamscore=0 malwarescore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2411120000 definitions=main-2501220073
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_013237_064650_87D1C614 
-X-CRM114-Status: GOOD (  53.67  )
+X-CRM114-CacheID: sfid-20250122_020303_673295_27FAF584 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,267 +107,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 21, 2025 at 06:25:48AM +0000, Andy-ld Lu (卢东) wrote:
-> On Mon, 2025-01-20 at 18:29 +0100, Christian Marangi wrote:
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> > 
-> > 
-> > On Thu, Jan 16, 2025 at 07:01:13AM +0000, Andy-ld Lu (卢东) wrote:
-> > > On Wed, 2025-01-15 at 08:29 +0100, Christian Marangi wrote:
-> > > > Add support for AN7581 MMC Host. The MMC Host controller is based
-> > > > on
-> > > > mt7622 with the difference of not having regulator supply and
-> > > > state_uhs
-> > > > pins and hclk clock.
-> > > > 
-> > > > Some minor fixes are applied to check if the state_uhs pins are
-> > > > defined
-> > > > and make hclk optional for the new airoha compatible.
-> > > > 
-> > > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > > > ---
-> > > >  drivers/mmc/host/mtk-sd.c | 55 ++++++++++++++++++++++++++++++++-
-> > > > ----
-> > > > --
-> > > >  1 file changed, 46 insertions(+), 9 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-
-> > > > sd.c
-> > > > index efb0d2d5716b..9d6868883c91 100644
-> > > > --- a/drivers/mmc/host/mtk-sd.c
-> > > > +++ b/drivers/mmc/host/mtk-sd.c
-> > > > @@ -666,6 +666,20 @@ static const struct mtk_mmc_compatible
-> > > > mt8196_compat = {
-> > > >     .support_new_rx = true,
-> > > >  };
-> > > > 
-> > > > +static const struct mtk_mmc_compatible an7581_compat = {
-> > > > +   .clk_div_bits = 12,
-> > > > +   .recheck_sdio_irq = true,
-> > > > +   .hs400_tune = false,
-> > > > +   .pad_tune_reg = MSDC_PAD_TUNE0,
-> > > > +   .async_fifo = true,
-> > > > +   .data_tune = true,
-> > > > +   .busy_check = true,
-> > > > +   .stop_clk_fix = true,
-> > > > +   .stop_dly_sel = 3,
-> > > > +   .enhance_rx = true,
-> > > > +   .support_64g = false,
-> > > > +};
-> > > > +
-> > > >  static const struct of_device_id msdc_of_ids[] = {
-> > > >     { .compatible = "mediatek,mt2701-mmc", .data =
-> > > > &mt2701_compat},
-> > > >     { .compatible = "mediatek,mt2712-mmc", .data =
-> > > > &mt2712_compat},
-> > > > @@ -680,7 +694,7 @@ static const struct of_device_id
-> > > > msdc_of_ids[] =
-> > > > {
-> > > >     { .compatible = "mediatek,mt8183-mmc", .data =
-> > > > &mt8183_compat},
-> > > >     { .compatible = "mediatek,mt8196-mmc", .data =
-> > > > &mt8196_compat},
-> > > >     { .compatible = "mediatek,mt8516-mmc", .data =
-> > > > &mt8516_compat},
-> > > > -
-> > > > +   { .compatible = "airoha,an7581-mmc", .data = &an7581_compat},
-> > > >     {}
-> > > >  };
-> > > >  MODULE_DEVICE_TABLE(of, msdc_of_ids);
-> > > > @@ -1600,6 +1614,10 @@ static int msdc_ops_switch_volt(struct
-> > > > mmc_host *mmc, struct mmc_ios *ios)
-> > > >     struct msdc_host *host = mmc_priv(mmc);
-> > > >     int ret;
-> > > > 
-> > > > +   /* Skip setting supply if not supported */
-> > > > +   if (!mmc->supply.vqmmc)
-> > > > +           return 0;
-> > > > +
-> > > 
-> > > Hi Christian,
-> > > 
-> > > I think here is no need. If you have not 'vqmmc' in the
-> > > dts, IS_ERR(mmc->supply.vqmmc) would be -ENODEV and the
-> > > corresponding
-> > > flow would not be executed.
-> > > 
-> > > And another question, host->pins_default is just selected here,
-> > > that
-> > > would be lost.
-> > > 
-> > > >     if (!IS_ERR(mmc->supply.vqmmc)) {
-> > > >             if (ios->signal_voltage != MMC_SIGNAL_VOLTAGE_330 &&
-> > > >                 ios->signal_voltage != MMC_SIGNAL_VOLTAGE_180) {
-> > > > @@ -1699,7 +1717,9 @@ static void msdc_enable_sdio_irq(struct
-> > > > mmc_host *mmc, int enb)
-> > > >                             dev_dbg(host->dev, "SDIO eint irq:
-> > > > %d!\n", host->eint_irq);
-> > > >                     }
-> > > > 
-> > > > -                   pinctrl_select_state(host->pinctrl, host-
-> > > > > pins_uhs);
-> > > > 
-> > > > +                   /* Skip setting uhs pins if not supported */
-> > > > +                   if (host->pins_uhs)
-> > > > +                           pinctrl_select_state(host->pinctrl,
-> > > > host->pins_uhs);
-> > > >             } else {
-> > > >                     dev_pm_clear_wake_irq(host->dev);
-> > > >             }
-> > > > @@ -2036,6 +2056,10 @@ static void msdc_ops_set_ios(struct
-> > > > mmc_host
-> > > > *mmc, struct mmc_ios *ios)
-> > > > 
-> > > >     msdc_set_buswidth(host, ios->bus_width);
-> > > > 
-> > > > +   /* Skip regulator if not supported */
-> > > > +   if (!mmc->supply.vmmc)
-> > > > +           goto skip_regulator;
-> > > > +
-> > > 
-> > > No need too.
-> > > 
-> > > >     /* Suspend/Resume will do power off/on */
-> > > >     switch (ios->power_mode) {
-> > > >     case MMC_POWER_UP:
-> > > > @@ -2071,6 +2095,7 @@ static void msdc_ops_set_ios(struct
-> > > > mmc_host
-> > > > *mmc, struct mmc_ios *ios)
-> > > >             break;
-> > > >     }
-> > > > 
-> > > > +skip_regulator:
-> > > >     if (host->mclk != ios->clock || host->timing != ios->timing)
-> > > >             msdc_set_mclk(host, ios->timing, ios->clock);
-> > > >  }
-> > > > @@ -2816,9 +2841,12 @@ static int msdc_of_clock_parse(struct
-> > > > platform_device *pdev,
-> > > >     if (IS_ERR(host->src_clk))
-> > > >             return PTR_ERR(host->src_clk);
-> > > > 
-> > > > -   host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> > > > -   if (IS_ERR(host->h_clk))
-> > > > -           return PTR_ERR(host->h_clk);
-> > > > +   /* AN7581 SoC doesn't have hclk */
-> > > > +   if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
-> > > > +           host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> > > > +           if (IS_ERR(host->h_clk))
-> > > > +                   return PTR_ERR(host->h_clk);
-> > > > +   }
-> > > 
-> > > devm_clk_get_optional could be used to instead here, no need to use
-> > > compatible to distinguish.
-> > > 
-> > 
-> > I can make the hclk optional but I think this would affect also every
-> > other compatible by hiding broken clock configuration.
-> > 
-> > > >     host->bus_clk = devm_clk_get_optional(&pdev->dev, "bus_clk");
-> > > >     if (IS_ERR(host->bus_clk))
-> > > > @@ -2926,10 +2954,13 @@ static int msdc_drv_probe(struct
-> > > > platform_device *pdev)
-> > > >             return PTR_ERR(host->pins_default);
-> > > >     }
-> > > > 
-> > > > -   host->pins_uhs = pinctrl_lookup_state(host->pinctrl,
-> > > > "state_uhs");
-> > > > -   if (IS_ERR(host->pins_uhs)) {
-> > > > -           dev_err(&pdev->dev, "Cannot find pinctrl uhs!\n");
-> > > > -           return PTR_ERR(host->pins_uhs);
-> > > > +   /* AN7581 doesn't have state_uhs pins */
-> > > > +   if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
-> > > > +           host->pins_uhs = pinctrl_lookup_state(host->pinctrl,
-> > > > "state_uhs");
-> > > > +           if (IS_ERR(host->pins_uhs)) {
-> > > > +                   dev_err(&pdev->dev, "Cannot find pinctrl
-> > > > uhs!\n");
-> > > > +                   return PTR_ERR(host->pins_uhs);
-> > > > +           }
-> > > >     }
-> > > 
-> > > Could you consider to set a dummy 'state_uhs' same as
-> > > 'state_default'
-> > > in the dts, that you could not use compatible to distinguish here.
-> > > 
-> > 
-> > This is problematic, correct me if I'm wrong, you are suggesting to
-> > assign the emmc pins to both default and uhs? This is problematic as
-> > the
-> > pinctrl driver would complain that such pins are already assigned to
-> > something. Also I don't think it's possible to assign these pins to a
-> > dummy pin.
-> > 
-> Maybe I have not expressed clearly...What I mean is that you could set
-> as below, and the content of &mmc_pins_uhs is just copied from
-> &mmc_pins_default.
-> 
-> mmc@1fa0e000 {
-> 	...
-> 	pinctrl-names = "default", "state_uhs";
-> 	pinctrl-0 = <&mmc_pins_default>;
-> 	pinctrl-1 = <&mmc_pins_uhs>;
-> }
+With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
+plans. However, the gear speed is only toggled between min and max during
+clock scaling. Enable multi-level gear scaling by mapping clock frequencies
+to gear speeds, so that when devfreq scales clock frequencies we can put
+the UFS link at the appropraite gear speeds accordingly.
 
-Ok my bad. I did declared the second pin to pinctrl-0 instead of adding
-pinctrl-1. With that it does work correctly.
+This series has been tested on below platforms -
+sm8550 mtp + UFS3.1
+SM8650 MTP + UFS3.1
+SM8750 MTP + UFS4.0
 
-> > > > 
-> > > >     /* Support for SDIO eint irq ? */
-> > > > @@ -3010,6 +3041,12 @@ static int msdc_drv_probe(struct
-> > > > platform_device *pdev)
-> > > >             dev_err(&pdev->dev, "Cannot ungate clocks!\n");
-> > > >             goto release_clk;
-> > > >     }
-> > > > +
-> > > > +   /* AN7581 without regulator require tune to OCR values */
-> > > > +   if (device_is_compatible(&pdev->dev, "airoha,an7581-mmc") &&
-> > > > +       !mmc->ocr_avail)
-> > > > +           mmc->ocr_avail = MMC_VDD_32_33 | MMC_VDD_33_34;
-> > > > +
-> > > 
-> > > Maybe you could use regulator-fixed in the dts and configure
-> > > min/max
-> > > voltage to get ocr_avail, no need to set hard code here.
-> > > 
-> > 
-> > Also suggested by Wenbin Mei (梅文彬) and I just tried this.
-> > 
-> > This can't be done, fixed-regulator needs to have the same min and
-> > max
-> > voltage or they fail to probe sooo fixed-regulator saddly can't be
-> > used
-> > :(
-> > 
-> > I will send a new version of this with the other point corrected but
-> > I
-> > think a compatible and these additional if is a must :(
-> If use the fixed regulator such as below, you will get the same
-> ocr_avail as 'MMC_VDD_32_33 | MMC_VDD_33_34' through
-> mmc_regulator_get_ocrmask().
-> 
-> vmmc_3v3: regulator-vmmc-3v3 {
-> 	compatible = "regulator-fixed";
-> 	regulator-name = "vmmc";
-> 	regulator-min-microvolt = <3300000>;
-> 	regulator-max-microvolt = <3300000>;
-> 	regulator-always-on;
-> }
+v1 -> v2:
+1. Withdraw old patch 8/8 "ARM: dts: msm: Use Operation Points V2 for UFS on SM8650"
+2. Add new patch 8/8 "ABI: sysfs-driver-ufs: Add missing UFS sysfs addributes"
+3. Modify commit message for  "scsi: ufs: core: Pass target_freq to clk_scale_notify() vops" and "scsi: ufs: qcom: Pass target_freq to clk scale pre and post change"
+4. In "scsi: ufs: qcom: Pass target_freq to clk scale pre and post change", use common Macro HZ_PER_MHZ in function ufs_qcom_set_core_clk_ctrl()
+5. In "scsi: ufs: qcom: Implement the freq_to_gear_speed() vops", print out freq and gear info as debugging message
+6. In "scsi: ufs: core: Enable multi-level gear scaling", rename the lable "do_pmc" to "config_pwr_mode"
+7. In "scsi: ufs: core: Toggle Write Booster during clock", initialize the local variables "wb_en" as "false"
 
-Ok the code was a bit confusing but yes I can confirm that a 3.3 fixed
-regulator define those 2 flags so also this is OK.
+Can Guo (6):
+  scsi: ufs: core: Pass target_freq to clk_scale_notify() vops
+  scsi: ufs: qcom: Pass target_freq to clk scale pre and post change
+  scsi: ufs: core: Add a vops to map clock frequency to gear speed
+  scsi: ufs: qcom: Implement the freq_to_gear_speed() vops
+  scsi: ufs: core: Enable multi-level gear scaling
+  scsi: ufs: core: Toggle Write Booster during clock scaling base on
+    gear speed
 
-There is still the discussion about clock. You are totally against a new
-compatible for the hclk? 
+Ziqi Chen (2):
+  scsi: ufs: core: Check if scaling up is required when disable clkscale
+  ABI: sysfs-driver-ufs: Add missing UFS sysfs addributes
 
-> > 
-> > > >     msdc_init_hw(host);
-> > > > 
-> > > >     if (mmc->caps2 & MMC_CAP2_CQE) {
-> > 
-> > --
-> >         Ansuel
+ Documentation/ABI/testing/sysfs-driver-ufs | 31 ++++++++++
+ drivers/ufs/core/ufshcd-priv.h             | 17 +++++-
+ drivers/ufs/core/ufshcd.c                  | 71 ++++++++++++++++------
+ drivers/ufs/host/ufs-mediatek.c            |  1 +
+ drivers/ufs/host/ufs-qcom.c                | 66 +++++++++++++++-----
+ include/ufs/ufshcd.h                       |  8 ++-
+ 6 files changed, 159 insertions(+), 35 deletions(-)
 
 -- 
-	Ansuel
+2.34.1
+
 
