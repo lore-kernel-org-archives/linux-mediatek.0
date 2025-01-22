@@ -4,76 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE32C02181
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 13:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C38C02181
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2025 13:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qa1a4J09IZroRfnMvAaal6iEwKvksoRdj5GEz3hJKuI=; b=TbDr+xKlZkNUOQyDjsmAhl05S1
-	Bg1zHYZhFRHfnvfHY1a51et5eqDMcRUSsLh9aJRaCy84EDLS0zogrYf+0wzljv7W9imk02n2CvC9m
-	23M2OeRgUnPzJX/VFw2b593LDNEd+zQKLTh+BCxbX3RLKCyfGcT7aubQLyrFjzMBvXHCAOHCtfpTk
-	hYdLC3gVm0N5owV9Q8zUj3gJVgFR03Be16omv6hq5toCngYKfUTk0R4QidvUqvTJ/48df5zIqo2l2
-	h89cAh3ZfMzXINx7zj4UmVCd9qfAtjollmqnXwmOWgUh39JWOBTOnSgE89+m7S1g3lozKf/OU8zRf
-	vn+BSHoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GCK1JKe2ZK0bAyJjP9ZoAIohmsbMcH2iCBmdiLRqWmo=; b=elgAMQS9a0eQ4A
+	nDoKXxExezYcxL7pQn6bcALgw6HQ+Xu8G7/1KwNx6/l73b52ZJpIyOyAZfSsDkM3DJxgkwd+eckWX
+	jBLDnnqcTOwzLc9+8sTA/uj+x9jOMz3Fw5tUzG1Ndfnwi13YzgOn4GZjn++suGwRCtMvCK7roHuaF
+	gskMzNdzk8xOHReFY821gKk6yUDotdjq330D+jYNHBYy330ycCoLsk0Ore3WOahRztMJqNlGKgbWx
+	pmJ4nYdxzMnWu9lmQi6t9nRM8QvPQzdAOgKlIyHWBkGt6YCBIywv6iOspohwDHsL2LqThfHlx08q0
+	k8cf403xD7XQ2Rh/eCgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tabE9-0000000ALVV-2zDZ;
-	Wed, 22 Jan 2025 13:57:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tabGH-0000000ALvG-3thc;
+	Wed, 22 Jan 2025 13:59:17 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tab9I-0000000AKee-0Ni1;
-	Wed, 22 Jan 2025 13:52:05 +0000
-X-UUID: 0db6fd42d8c811ef9048ed6ed365623b-20250122
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Qa1a4J09IZroRfnMvAaal6iEwKvksoRdj5GEz3hJKuI=;
-	b=vD0mXe2D83pi9trraSwZKaB8ATJN9sjRC7nQrhiFE2GKCGiREQfvUuYh8t1NlC4yBVoe0e8+NfOSIUvhcWVooqAr+pqk7FOR1l3c8+XpwEGpK2plkCiPqCyOBhm972FPEwWiB4WqIhXGkHc/LZkHPcnPocKWiNo356tex2fb7B8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:dd2a302c-d390-4afc-8057-e4ba3846105e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:60aa074,CLOUDID:9ed88e7e-427a-4311-9df4-bfaeeacd8532,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1,
-	IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 0db6fd42d8c811ef9048ed6ed365623b-20250122
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <ot_chhao.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1260138993; Wed, 22 Jan 2025 06:52:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Wed, 22 Jan 2025 21:51:57 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Wed, 22 Jan 2025 21:51:57 +0800
-From: Hao Chang <ot_chhao.chang@mediatek.com>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
-	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
-	Qingliang Li <qingliang.li@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Hao
- Chang <ot_chhao.chang@mediatek.com>
-Subject: [PATCH v2 3/3] pinctrl: mediatek: adapt to multi-base design
-Date: Wed, 22 Jan 2025 21:51:25 +0800
-Message-ID: <20250122135135.15234-4-ot_chhao.chang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250122135135.15234-1-ot_chhao.chang@mediatek.com>
-References: <20250122135135.15234-1-ot_chhao.chang@mediatek.com>
+	id 1tabGE-0000000ALsq-31K1
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Jan 2025 13:59:17 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-385f06d0c8eso3702778f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jan 2025 05:59:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1737554352; x=1738159152; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GCK1JKe2ZK0bAyJjP9ZoAIohmsbMcH2iCBmdiLRqWmo=;
+        b=XlBQILRHUtECpJR0t4Sb8egMRot3cx5E05jRfHcjxPBB3QcMOYojFYauna9VgyScnz
+         RVMjI595SYXaMvtvKmU4PZOYgIh+p7lvQfeszixn2PBeQVHOZmrQ+u5zRjpoH9BVM7u4
+         Dnwr6Mn7gejAJxAtwuuoO8TZWFJTkjrRtqUFEz/kzWl/TW+QqmX6uN40lfX6vfMM5VZ7
+         zKdBlDNCbgZjkTVY0cZmo1gsil5EPFzDvAXE+EmkZMu4LF1E65SqazWVMlrL8kfne1pm
+         QJZS5bfjN4iXmcvqBs9Tf0o4ZAz/BdJKGdXJLxF9QhfcUZ7tcO9WfVVCPpWOm7ICeroQ
+         ah2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737554352; x=1738159152;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GCK1JKe2ZK0bAyJjP9ZoAIohmsbMcH2iCBmdiLRqWmo=;
+        b=oeOyScmdD/UJpUzJHvVDJGQx5QFlD3hQ7UsJU7BAoFopcMxL3PU1jjHMa34QjpUt3P
+         OjfPY5ACIUgRPmpaaYpzcjbKSZ5wkURJ84y/ZBNeXYFXD+oCXxKtf6RfIPRymYgsH5vE
+         rH19O0nNeEzoifYmu/O4++m1jvyQkVMMawbetg6VIAq7a5vUpMdt5OnCD5GLzTYEZ97E
+         nApP2sC5t1IG16DJv4cgvqcV7p1ps3DPFBIV9lWR7jcVW9Vr0AuE7dulVdvgqp3NckZ9
+         GeueHDKNph1rDfyYDtucNEQ6W/3dYOjgLjBIyTvkENy9OVfpYCWVuIF4yMjPpeA01OLp
+         3VVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXN9//5nj+lZUCzNGlZFwwGMbVQJPIEVQekzVuy4cKdAcAKpOcHP9XHiUi9NFsE+uR/nPApe5pHo+6dOJU7vA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTqna7Zcoptf5z5sJPEOQ5OprkKksMt3q6h+8dyEpTpDrFGcDc
+	wVjdQ4TBSITR3ZbTolGaHgHJM2KS3W5n78/TVPebhAQjlLwcDOt2HMhaO1fCvx4=
+X-Gm-Gg: ASbGnctL3MOgZjKDO/HQGU1kJSwcbS/q3TX1JwQ7LtROKVV115Njr0+ptkkfBrV2hJJ
+	WtrJvVFe9aaWbEGKcPRDIEDcR/XsIUs0CHo0s1HZdRbIAR8xDPZqzWh3ClXxE5M0pPGj/WGWpo7
+	3RO5EIP/Jda3rL7+RyrmPy9shMOmiUzEO3G8UrucoW2kgJDrNhS3IJEspwPph/OWRW+Oh7zRJK5
+	5+qWhsDwqKprnnjfPk5uLk9GT+RsYUbPJANbhltJ/aPubWeUzvv9nuGAlZZ3Eq9AkesnUqZuxO7
+	O2XIlmL5yQhlBTRJqThk8/wPY5UJIyLpTLPRGr4hxu3QqKyPI2lyXEAZyeYSbV9mh7dH15MMYnI
+	=
+X-Google-Smtp-Source: AGHT+IHWF3nO5p5fYa1wUcc11MSGstbqFgrOBJA9XIo/6RP2eDA4+qf2JAiaGGM9QBwZIAEKJMGZEg==
+X-Received: by 2002:a5d:5f4e:0:b0:38a:9f27:82f2 with SMTP id ffacd0b85a97d-38bf59eff10mr21554379f8f.49.1737554352559;
+        Wed, 22 Jan 2025 05:59:12 -0800 (PST)
+Received: from [192.168.42.0] (2a02-8428-e55b-1101-1e41-304e-170b-482f.rev.sfr.net. [2a02:8428:e55b:1101:1e41:304e:170b:482f])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf3278f06sm16418985f8f.70.2025.01.22.05.59.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Jan 2025 05:59:12 -0800 (PST)
+From: Julien Stephan <jstephan@baylibre.com>
+Subject: [PATCH v8 0/5] Add Mediatek ISP3.0
+Date: Wed, 22 Jan 2025 14:59:09 +0100
+Message-Id: <20250122-add-mtk-isp-3-0-support-v8-0-a3d3731eef45@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAK35kGcC/4XO0Q6CIBSA4VdxXEcDRJCueo/WBR4wWaUOzOWc7
+ x540VrLxd1/tvMdZhSsdzagQzYjb0cXXNfGKHcZgka3F4udiY0YYZxIwrE2Bt+HK3ahxzkmODz
+ 6vvMD1qTUSpagIRcobvfe1u65yqdz7MaFofPTemgs0vS/ORYxqhrSKywweqz0dHOVt3vo7iixo
+ /igmNqmRAzIJQdlCQjJflDyTVHK6DYl068IN6AEJYKqL2pZlhe+U5X4VwEAAA==
+X-Change-ID: 20240704-add-mtk-isp-3-0-support-a08a978cac36
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Andy Hsieh <andy.hsieh@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Julien Stephan <jstephan@baylibre.com>, 
+ Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>, 
+ Florian Sylvestre <fsylvestre@baylibre.com>, 
+ Paul Elder <paul.elder@ideasonboard.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_055204_137599_563FFD67 
-X-CRM114-Status: GOOD (  24.84  )
+X-CRM114-CacheID: sfid-20250122_055915_026910_A7FE46F8 
+X-CRM114-Status: GOOD (  20.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,481 +111,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The eint num will obtain the operation address through pins.
-Change the traversal method of irq handle from traversing a set of
-registers to traversing one by one.
+This series adds the support of the Mediatek ISP3.0 found on some
+Mediatek SoCs such as the mt8365. The driver is divided into 2 parts:
 
-Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
-Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
+* SENINF: the sensor interface
+* CAMSV: this driver provides a path to bypass the SoC ISP so that image
+  data coming from the SENINF can go directly into memory without any
+  image processing. This allows the use of an external ISP or camera
+  sensor directly.
+
+The SENINF driver is based on previous work done by Louis Kuo available
+as an RFC here: https://lore.kernel.org/all/20200708104023.3225-1-louis.kuo@mediatek.com/
+
+Changes in v8:
+For the whole series:
+- rebase  on v6.13-rc1 --> drop iommu_present and use device_iommu_mapped instead
+- apply new trailers
+- fix several coding style issues reported by Laurent and CK
+- fix warnings and errors reported by media-ci:
+  https://linux-media.pages.freedesktop.org/-/users/patchwork/-/jobs/66966282/artifacts/report.htm
+
+Camsv bindings:
+- sort header alphabetically
+
+Seninf driver:
+- remove test pattern generator, as it was legacy untested code
+- use v4l2_subdev_enable_streams/v4l2_subdev_disable_streams instead of
+  v4l2_subdev_call(s_stream)
+- simplify mtk_seninf_v4l2_register: correctly split the media device
+  and seninf subdev initialization. Create an seninf_subdev_init
+function and drop mtk_seninf_media_init which was confusing
+- Fix several style issues
+
+Camsv driver:
+- remove the "30" suffix: renaming camsv30 to camsv (file name and
+  function name)
+- add comment to properly describe the fbc mechanism
+- reduce spin_lock region in isp_irq_camsv function
+- remove pm operation from mtk_camsv_fbc_inc
+- call mtk_camsv_fbc_inc at the beginning of streaming or only when
+  streaming: buf_queue touch the hw only if streaming
+- remove op_lock and rely on the video device lock
+- implement .link_validate() and drop mtk_cam_verify_format
+- use video_device_pipeline_start instead of media_pipeline_start
+- remove useless stream_count counter
+- add various defines for constants
+- merge content of mtk_camsv.c into mtk_camsv_video.c as suggested by CK
+- merge mtk_cam_mbus_formats and mtk_cam_format_info intpo a single
+  struct, and extend it with fields to remove the fmt_to_sparams() function.
+
+- Link to v7: https://lore.kernel.org/r/20241121-add-mtk-isp-3-0-support-v7-0-b04dc9610619@baylibre.com
+
+Changes in v7:
+- fix several comments from Laurent Pinchart and CK about style issues,
+  such as: sort Kconfig and Makefile alphabetically, remove unneeded headers,
+  use 80 char limits ...
+- add back I/O accessors around readl/writel
+- use enable_streams/disable_streams instead of s_stream
+- use v4l2_subdev_init_finalize and don't store active format
+- remove mtk_camsv30_regs.h file to merge it inside mtk_camsv30_hw.c
+- adding reviewed-by tag from robh and angelo
+- implement .has_pad_interdep callback to fix multistream error
+- fix mtk_seninf_get_clk_divider to give the correct pad number. This
+  caused an issue for multi camera
+- use hardware FBC (framce buffer control) instead of dummy buffer to
+  deal with underrruns
+- simplify directory architecture and remove isp_30, camsv and seninf
+  directories
+
+- Link to v6: https://lore.kernel.org/r/20240729-add-mtk-isp-3-0-support-v6-0-c374c9e0c672@baylibre.com
+
+Changes in v6:
+- remove unneeded "link" tag from commits
+
+bindings:
+- remove labels from example node
+- remove complexity for phy and phy-name properties
+
+driver:
+- fix some comments from CK :
+  - remove unneeded variables
+  - rename irqlock to buf_list_lock for clarity
+  - remove unneeded lock/unlock around hw_enable/hw_disable
+
+- Link to v5: https://lore.kernel.org/r/20240704-add-mtk-isp-3-0-support-v5-0-bfccccc5ec21@baylibre.com
+
+Changes on v5:
+drivers:
+- rebase on 6.10-rc1
+- fix various comments from all reviews (mostly style issues and minor
+  code refactor)
+- add a function to calculate the clock divider for the master sensor
+  clock: NOTE: setting this register seems to have no effect at all,
+  currently checking with mediatek apps engineer (OOO until 17/04)
+
+bindings:
+- camsv: update description
+- seninf: fix phy definition and example indentation
+- use generic name for node example
+
+dts:
+- sort nodes by addresses
+- use lower case for hexadecimal
+
+Changes in v4:
+- fix suspend/resume deadlock
+- fix various locking issues reported by Laurent Pinchart on v3
+- run LOCKDEP
+- add missing include reported by kernel-test-robot for non mediatek arch and COMPILE_TEST=y
+- use atomic poll inside mtk_camsv30_setup
+- drop second lane support as it was not used
+- remove useless members in structs
+- fix media entity initialization
+- initialize correct pad for camsv video device
+- add isp support in mt8365.dtsi
+- rebase on 6.7
+
+Changes in v3:
+- fix a lot of formatting issues/coding style issues found in camsv/seninf reported by Angelo on v2
+- fix camsv/seninf binding file error reported by Rob
+
+Changes in v2:
+- renamed clock `cam_seninf` to `camsys`
+- renamed clock `top_mux_seninf` to `top_mux`
+- moved phy properties from port nodes to top level
+- remove patternProperties
+- specify power management dependency in the cover letter description to fix
+  missing include in dt-binding example
+- change '$ref' properties on some endpoint nodes from
+  '$ref: video-interfaces.yaml#' to '$ref: /schemas/graph.yaml#/$defs/endpoint-base'
+ where applicable
+
+Best
+Julien Stephan
+
+Signed-off-by: Julien Stephan <jstephan@baylibre.com>
 ---
- drivers/pinctrl/mediatek/mtk-eint.c | 219 +++++++++++++++++-----------
- drivers/pinctrl/mediatek/mtk-eint.h |   9 +-
- 2 files changed, 140 insertions(+), 88 deletions(-)
+Julien Stephan (1):
+      arm64: dts: mediatek: mt8365: Add support for camera
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 27f0a54e12bf..540245c3128d 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -1,11 +1,13 @@
- // SPDX-License-Identifier: GPL-2.0
--// Copyright (c) 2014-2018 MediaTek Inc.
-+// Copyright (c) 2014-2025 MediaTek Inc.
- 
- /*
-  * Library for MediaTek External Interrupt Support
-  *
-  * Author: Maoguang Meng <maoguang.meng@mediatek.com>
-  *	   Sean Wang <sean.wang@mediatek.com>
-+ *	   Hao Chang <ot_chhao.chang@mediatek.com>
-+ *	   Qingliang Li <qingliang.li@mediatek.com>
-  *
-  */
- 
-@@ -20,6 +22,7 @@
- #include <linux/platform_device.h>
- 
- #include "mtk-eint.h"
-+#include "pinctrl-mtk-common-v2.h"
- 
- #define MTK_EINT_EDGE_SENSITIVE           0
- #define MTK_EINT_LEVEL_SENSITIVE          1
-@@ -68,13 +71,11 @@ static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
- 					 unsigned int eint_num,
- 					 unsigned int offset)
- {
--	unsigned int eint_base = 0;
-+	unsigned int idx = eint->pins[eint_num].index;
-+	unsigned int inst = eint->pins[eint_num].instance;
- 	void __iomem *reg;
- 
--	if (eint_num >= eint->hw->ap_num)
--		eint_base = eint->hw->ap_num;
--
--	reg = eint->base + offset + ((eint_num - eint_base) / 32) * 4;
-+	reg = eint->base[inst] + offset + (idx / 32 * 4);
- 
- 	return reg;
- }
-@@ -83,7 +84,7 @@ static unsigned int mtk_eint_can_en_debounce(struct mtk_eint *eint,
- 					     unsigned int eint_num)
- {
- 	unsigned int sens;
--	unsigned int bit = BIT(eint_num % 32);
-+	unsigned int bit = BIT(eint->pins[eint_num].index % 32);
- 	void __iomem *reg = mtk_eint_get_offset(eint, eint_num,
- 						eint->regs->sens);
- 
-@@ -92,7 +93,7 @@ static unsigned int mtk_eint_can_en_debounce(struct mtk_eint *eint,
- 	else
- 		sens = MTK_EINT_EDGE_SENSITIVE;
- 
--	if (eint_num < eint->hw->db_cnt && sens != MTK_EINT_EDGE_SENSITIVE)
-+	if (eint->pins[eint_num].debounce && sens != MTK_EINT_EDGE_SENSITIVE)
- 		return 1;
- 	else
- 		return 0;
-@@ -102,9 +103,9 @@ static int mtk_eint_flip_edge(struct mtk_eint *eint, int hwirq)
- {
- 	int start_level, curr_level;
- 	unsigned int reg_offset;
--	u32 mask = BIT(hwirq & 0x1f);
--	u32 port = (hwirq >> 5) & eint->hw->port_mask;
--	void __iomem *reg = eint->base + (port << 2);
-+	unsigned int mask = BIT(eint->pins[hwirq].index & 0x1f);
-+	unsigned int port = (eint->pins[hwirq].index >> 5) & eint->hw->port_mask;
-+	void __iomem *reg = eint->base[eint->pins[hwirq].instance] + (port << 2);
- 
- 	curr_level = eint->gpio_xlate->get_gpio_state(eint->pctl, hwirq);
- 
-@@ -126,11 +127,13 @@ static int mtk_eint_flip_edge(struct mtk_eint *eint, int hwirq)
- static void mtk_eint_mask(struct irq_data *d)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
--	u32 mask = BIT(d->hwirq & 0x1f);
-+	u32 idx = eint->pins[d->hwirq].index;
-+	u32 inst = eint->pins[d->hwirq].instance;
-+	u32 mask = BIT(idx & 0x1f);
- 	void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
- 						eint->regs->mask_set);
- 
--	eint->cur_mask[d->hwirq >> 5] &= ~mask;
-+	eint->cur_mask[inst][idx >> 5] &= ~mask;
- 
- 	writel(mask, reg);
- }
-@@ -138,32 +141,44 @@ static void mtk_eint_mask(struct irq_data *d)
- static void mtk_eint_unmask(struct irq_data *d)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
--	u32 mask = BIT(d->hwirq & 0x1f);
-+	u32 idx = eint->pins[d->hwirq].index;
-+	u32 inst = eint->pins[d->hwirq].instance;
-+	u32 mask = BIT(idx & 0x1f);
- 	void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
- 						eint->regs->mask_clr);
- 
--	eint->cur_mask[d->hwirq >> 5] |= mask;
-+	eint->cur_mask[inst][idx >> 5] |= mask;
- 
- 	writel(mask, reg);
- 
--	if (eint->dual_edge[d->hwirq])
-+	if (eint->pins[d->hwirq].dual_edge)
- 		mtk_eint_flip_edge(eint, d->hwirq);
- }
- 
- static unsigned int mtk_eint_get_mask(struct mtk_eint *eint,
- 				      unsigned int eint_num)
- {
--	unsigned int bit = BIT(eint_num % 32);
-+	unsigned int bit = BIT(eint->pins[eint_num].index % 32);
- 	void __iomem *reg = mtk_eint_get_offset(eint, eint_num,
- 						eint->regs->mask);
- 
- 	return !!(readl(reg) & bit);
- }
- 
-+static unsigned int mtk_eint_get_status(struct mtk_eint *eint,
-+					unsigned int eint_num)
-+{
-+	unsigned int bit = BIT(eint->pins[eint_num].index % 32);
-+	void __iomem *reg = mtk_eint_get_offset(eint, eint_num,
-+						eint->regs->stat);
-+
-+	return !!(readl(reg) & bit);
-+}
-+
- static void mtk_eint_ack(struct irq_data *d)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
--	u32 mask = BIT(d->hwirq & 0x1f);
-+	u32 mask = BIT(eint->pins[d->hwirq].index & 0x1f);
- 	void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
- 						eint->regs->ack);
- 
-@@ -174,7 +189,7 @@ static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
- 	bool masked;
--	u32 mask = BIT(d->hwirq & 0x1f);
-+	unsigned int mask = BIT(eint->pins[d->hwirq].index & 0x1f);
- 	void __iomem *reg;
- 
- 	if (((type & IRQ_TYPE_EDGE_BOTH) && (type & IRQ_TYPE_LEVEL_MASK)) ||
-@@ -186,9 +201,9 @@ static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
- 	}
- 
- 	if ((type & IRQ_TYPE_EDGE_BOTH) == IRQ_TYPE_EDGE_BOTH)
--		eint->dual_edge[d->hwirq] = 1;
-+		eint->pins[d->hwirq].dual_edge = 1;
- 	else
--		eint->dual_edge[d->hwirq] = 0;
-+		eint->pins[d->hwirq].dual_edge = 0;
- 
- 	if (!mtk_eint_get_mask(eint, d->hwirq)) {
- 		mtk_eint_mask(d);
-@@ -223,27 +238,32 @@ static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
- static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
--	int shift = d->hwirq & 0x1f;
--	int reg = d->hwirq >> 5;
-+	unsigned int idx = eint->pins[d->hwirq].index;
-+	unsigned int inst = eint->pins[d->hwirq].instance;
-+	unsigned int shift = idx & 0x1f;
-+	unsigned int port = idx >> 5;
- 
- 	if (on)
--		eint->wake_mask[reg] |= BIT(shift);
-+		eint->wake_mask[inst][port] |= BIT(shift);
- 	else
--		eint->wake_mask[reg] &= ~BIT(shift);
-+		eint->wake_mask[inst][port] &= ~BIT(shift);
- 
- 	return 0;
- }
- 
- static void mtk_eint_chip_write_mask(const struct mtk_eint *eint,
--				     void __iomem *base, u32 *buf)
-+				     void __iomem *base, u32 **buf)
- {
--	int port;
-+	int inst, port, port_num;
- 	void __iomem *reg;
- 
--	for (port = 0; port < eint->hw->ports; port++) {
--		reg = base + (port << 2);
--		writel_relaxed(~buf[port], reg + eint->regs->mask_set);
--		writel_relaxed(buf[port], reg + eint->regs->mask_clr);
-+	for (inst = 0; inst < eint->nbase; inst++) {
-+		port_num = (eint->base_pin_num[inst] + 31) / 32;
-+		for (port = 0; port < port_num; port++) {
-+			reg = eint->base[inst] + (port << 2);
-+			writel_relaxed(~buf[inst][port], reg + eint->regs->mask_set);
-+			writel_relaxed(buf[inst][port], reg + eint->regs->mask_clr);
-+		}
- 	}
- }
- 
-@@ -303,15 +323,18 @@ static struct irq_chip mtk_eint_irq_chip = {
- 
- static unsigned int mtk_eint_hw_init(struct mtk_eint *eint)
- {
--	void __iomem *dom_en = eint->base + eint->regs->dom_en;
--	void __iomem *mask_set = eint->base + eint->regs->mask_set;
--	unsigned int i;
--
--	for (i = 0; i < eint->hw->ap_num; i += 32) {
--		writel(0xffffffff, dom_en);
--		writel(0xffffffff, mask_set);
--		dom_en += 4;
--		mask_set += 4;
-+	void __iomem *dom_reg, *mask_reg;
-+	unsigned int i, j;
-+
-+	for (i = 0; i < eint->nbase; i++) {
-+		dom_reg = eint->base[i] + eint->regs->dom_en;
-+		mask_reg = eint->base[i] + eint->regs->mask_set;
-+		for (j = 0; j < eint->base_pin_num[i]; j += 32) {
-+			writel(0xffffffff, dom_reg);
-+			writel(0xffffffff, mask_reg);
-+			dom_reg += 4;
-+			mask_reg += 4;
-+		}
- 	}
- 
- 	return 0;
-@@ -322,14 +345,16 @@ mtk_eint_debounce_process(struct mtk_eint *eint, int index)
- {
- 	unsigned int rst, ctrl_offset;
- 	unsigned int bit, dbnc;
-+	unsigned int inst = eint->pins[index].instance;
-+	unsigned int idx = eint->pins[index].index;
- 
--	ctrl_offset = (index / 4) * 4 + eint->regs->dbnc_ctrl;
--	dbnc = readl(eint->base + ctrl_offset);
--	bit = MTK_EINT_DBNC_SET_EN << ((index % 4) * 8);
-+	ctrl_offset = (idx / 4) * 4 + eint->regs->dbnc_ctrl;
-+	dbnc = readl(eint->base[inst] + ctrl_offset);
-+	bit = MTK_EINT_DBNC_SET_EN << ((idx % 4) * 8);
- 	if ((bit & dbnc) > 0) {
--		ctrl_offset = (index / 4) * 4 + eint->regs->dbnc_set;
--		rst = MTK_EINT_DBNC_RST_BIT << ((index % 4) * 8);
--		writel(rst, eint->base + ctrl_offset);
-+		ctrl_offset = (idx / 4) * 4 + eint->regs->dbnc_set;
-+		rst = MTK_EINT_DBNC_RST_BIT << ((idx % 4) * 8);
-+		writel(rst, eint->base[inst] + ctrl_offset);
- 	}
- }
- 
-@@ -337,20 +362,16 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
- {
- 	struct irq_chip *chip = irq_desc_get_chip(desc);
- 	struct mtk_eint *eint = irq_desc_get_handler_data(desc);
--	unsigned int status, eint_num;
--	int offset, mask_offset, index;
--	void __iomem *reg =  mtk_eint_get_offset(eint, 0, eint->regs->stat);
-+	unsigned int index, inst, idx, mask;
-+	void __iomem *reg;
- 	int dual_edge, start_level, curr_level;
- 
- 	chained_irq_enter(chip, desc);
--	for (eint_num = 0; eint_num < eint->hw->ap_num; eint_num += 32,
--	     reg += 4) {
--		status = readl(reg);
--		while (status) {
--			offset = __ffs(status);
--			mask_offset = eint_num >> 5;
--			index = eint_num + offset;
--			status &= ~BIT(offset);
-+	for (index = 0; index < eint->hw->ap_num; index++) {
-+		if (mtk_eint_get_status(eint, index)) {
-+			inst = eint->pins[index].instance;
-+			idx = eint->pins[index].index;
-+			mask = BIT(idx & 0x1f);
- 
- 			/*
- 			 * If we get an interrupt on pin that was only required
-@@ -358,21 +379,22 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
- 			 * interrupt (as would mtk_eint_resume do anyway later
- 			 * in the resume sequence).
- 			 */
--			if (eint->wake_mask[mask_offset] & BIT(offset) &&
--			    !(eint->cur_mask[mask_offset] & BIT(offset))) {
--				writel_relaxed(BIT(offset), reg -
--					eint->regs->stat +
--					eint->regs->mask_set);
-+			if (eint->wake_mask[inst][idx >> 5] & mask &&
-+			    !(eint->cur_mask[inst][idx >> 5] & mask)) {
-+				reg = mtk_eint_get_offset(eint, index,
-+							  eint->regs->mask_set);
-+				writel_relaxed(mask, reg);
- 			}
- 
--			dual_edge = eint->dual_edge[index];
-+			dual_edge = eint->pins[index].dual_edge;
- 			if (dual_edge) {
- 				/*
- 				 * Clear soft-irq in case we raised it last
- 				 * time.
- 				 */
--				writel(BIT(offset), reg - eint->regs->stat +
--				       eint->regs->soft_clr);
-+				reg = mtk_eint_get_offset(eint, index,
-+							  eint->regs->soft_clr);
-+				writel(mask, reg);
- 
- 				start_level =
- 				eint->gpio_xlate->get_gpio_state(eint->pctl,
-@@ -388,13 +410,14 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
- 				 * If level changed, we might lost one edge
- 				 * interrupt, raised it through soft-irq.
- 				 */
--				if (start_level != curr_level)
--					writel(BIT(offset), reg -
--					       eint->regs->stat +
--					       eint->regs->soft_set);
-+				if (start_level != curr_level) {
-+					reg = mtk_eint_get_offset(eint, index,
-+								  eint->regs->soft_set);
-+					writel(mask, reg);
-+				}
- 			}
- 
--			if (index < eint->hw->db_cnt)
-+			if (eint->pins[index].debounce)
- 				mtk_eint_debounce_process(eint, index);
- 		}
- 	}
-@@ -423,6 +446,8 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
- 	int virq, eint_offset;
- 	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask,
- 		     dbnc;
-+	unsigned int inst = eint->pins[eint_num].instance;
-+	unsigned int idx = eint->pins[eint_num].index;
- 	struct irq_data *d;
- 
- 	if (!eint->hw->db_time)
-@@ -432,8 +457,8 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
- 	eint_offset = (eint_num % 4) * 8;
- 	d = irq_get_irq_data(virq);
- 
--	set_offset = (eint_num / 4) * 4 + eint->regs->dbnc_set;
--	clr_offset = (eint_num / 4) * 4 + eint->regs->dbnc_clr;
-+	set_offset = (idx / 4) * 4 + eint->regs->dbnc_set;
-+	clr_offset = (idx / 4) * 4 + eint->regs->dbnc_clr;
- 
- 	if (!mtk_eint_can_en_debounce(eint, eint_num))
- 		return -EINVAL;
-@@ -454,12 +479,12 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
- 	}
- 
- 	clr_bit = 0xff << eint_offset;
--	writel(clr_bit, eint->base + clr_offset);
-+	writel(clr_bit, eint->base[inst] + clr_offset);
- 
- 	bit = ((dbnc << MTK_EINT_DBNC_SET_DBNC_BITS) | MTK_EINT_DBNC_SET_EN) <<
- 		eint_offset;
- 	rst = MTK_EINT_DBNC_RST_BIT << eint_offset;
--	writel(rst | bit, eint->base + set_offset);
-+	writel(rst | bit, eint->base[inst] + set_offset);
- 
- 	/*
- 	 * Delay a while (more than 2T) to wait for hw debounce counter reset
-@@ -487,27 +512,53 @@ EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
- 
- int mtk_eint_do_init(struct mtk_eint *eint)
- {
--	int i;
-+	unsigned int size, i, port;
- 
- 	/* If clients don't assign a specific regs, let's use generic one */
- 	if (!eint->regs)
- 		eint->regs = &mtk_generic_eint_regs;
- 
--	eint->wake_mask = devm_kcalloc(eint->dev, eint->hw->ports,
--				       sizeof(*eint->wake_mask), GFP_KERNEL);
--	if (!eint->wake_mask)
-+	eint->base_pin_num = devm_kmalloc_array(eint->dev, eint->nbase, sizeof(u16),
-+						GFP_KERNEL);
-+	if (!eint->base_pin_num)
- 		return -ENOMEM;
- 
--	eint->cur_mask = devm_kcalloc(eint->dev, eint->hw->ports,
--				      sizeof(*eint->cur_mask), GFP_KERNEL);
--	if (!eint->cur_mask)
-+	if (!eint->pins) {
-+		size = eint->hw->ap_num * sizeof(struct mtk_eint_pin);
-+		eint->pins = devm_kmalloc(eint->dev, size, GFP_KERNEL);
-+		if (!eint->pins)
-+			return -ENOMEM;
-+
-+		eint->base_pin_num[0] = eint->hw->ap_num;
-+		for (i = 0; i < eint->hw->ap_num; i++) {
-+			eint->pins[i].instance = 0;
-+			eint->pins[i].index = i;
-+			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
-+		}
-+	} else {
-+		for (i = 0; i < eint->hw->ap_num; i++)
-+			eint->base_pin_num[eint->pins[i].instance]++;
-+	}
-+
-+	eint->wake_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
-+	if (!eint->wake_mask)
- 		return -ENOMEM;
- 
--	eint->dual_edge = devm_kcalloc(eint->dev, eint->hw->ap_num,
--				       sizeof(int), GFP_KERNEL);
--	if (!eint->dual_edge)
-+	eint->cur_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
-+	if (!eint->wake_mask)
- 		return -ENOMEM;
- 
-+	for (i = 0; i < eint->nbase; i++) {
-+		port = (eint->base_pin_num[i] + 31) / 32;
-+		eint->wake_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
-+		if (!eint->wake_mask[i])
-+			return -ENOMEM;
-+
-+		eint->cur_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
-+		if (!eint->cur_mask[i])
-+			return -ENOMEM;
-+	}
-+
- 	eint->domain = irq_domain_add_linear(eint->dev->of_node,
- 					     eint->hw->ap_num,
- 					     &irq_domain_simple_ops, NULL);
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-index c1efdf02fb49..959afc4b950b 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.h
-+++ b/drivers/pinctrl/mediatek/mtk-eint.h
-@@ -1,10 +1,11 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- /*
-- * Copyright (C) 2014-2018 MediaTek Inc.
-+ * Copyright (C) 2014-2025 MediaTek Inc.
-  *
-  * Author: Maoguang Meng <maoguang.meng@mediatek.com>
-  *	   Sean Wang <sean.wang@mediatek.com>
-- *
-+ *	   Hao Chang <ot_chhao.chang@mediatek.com>
-+ *	   Qingliang Li <qingliang.li@mediatek.com>
-  */
- #ifndef __MTK_EINT_H
- #define __MTK_EINT_H
-@@ -71,8 +72,8 @@ struct mtk_eint {
- 	int irq;
- 
- 	int *dual_edge;
--	u32 *wake_mask;
--	u32 *cur_mask;
-+	u32 **wake_mask;
-+	u32 **cur_mask;
- 
- 	/* Used to fit into various EINT device */
- 	const struct mtk_eint_hw *hw;
+Louis Kuo (2):
+      dt-bindings: media: add mediatek ISP3.0 sensor interface
+      media: platform: mediatek: isp: add mediatek ISP3.0 sensor interface
+
+Phi-bang Nguyen (2):
+      dt-bindings: media: add mediatek ISP3.0 camsv
+      media: platform: mediatek: isp: add mediatek ISP3.0 camsv
+
+ .../bindings/media/mediatek,mt8365-camsv.yaml      |  109 ++
+ .../bindings/media/mediatek,mt8365-seninf.yaml     |  259 ++++
+ MAINTAINERS                                        |    9 +
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi           |  125 ++
+ drivers/media/platform/mediatek/Kconfig            |    1 +
+ drivers/media/platform/mediatek/Makefile           |    1 +
+ drivers/media/platform/mediatek/isp/Kconfig        |   36 +
+ drivers/media/platform/mediatek/isp/Makefile       |    8 +
+ drivers/media/platform/mediatek/isp/mtk_camsv.h    |  152 ++
+ drivers/media/platform/mediatek/isp/mtk_camsv_hw.c |  440 ++++++
+ drivers/media/platform/mediatek/isp/mtk_camsv_hw.h |   19 +
+ .../media/platform/mediatek/isp/mtk_camsv_reg.h    |   90 ++
+ .../media/platform/mediatek/isp/mtk_camsv_video.c  | 1017 ++++++++++++++
+ drivers/media/platform/mediatek/isp/mtk_seninf.c   | 1454 ++++++++++++++++++++
+ .../media/platform/mediatek/isp/mtk_seninf_reg.h   |  114 ++
+ 15 files changed, 3834 insertions(+)
+---
+base-commit: 414788dae5ac03f80234629c6d140a38fb1fbf9d
+change-id: 20240704-add-mtk-isp-3-0-support-a08a978cac36
+
+Best regards,
 -- 
-2.34.1
+Julien Stephan <jstephan@baylibre.com>
 
 
