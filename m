@@ -4,71 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AEE1C02182
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jan 2025 09:26:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35750C02182
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jan 2025 11:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JWWAzItImoWGXYtJ3eWXsoeT9tJE5bcK6MiBbovl0yo=; b=35YIuqCCSzNp1f+7fOgmt8N1e8
-	BNjyHsP5hegfOqk/l14HgO+nczBQwS5paaBm8ganFHxw4xpV7G9reduxfhfQI7FanvAGTaKj3iY47
-	lGyap9Ci21aSIIAgp1Nb5Y+xMVyUB41Msa3TU7hC5EaimJzd5b/0JdU0UaDmVDA2QRoI5vLFdPAIA
-	6T/qtfAu+jEsOL1y0sE3sMpEai6YXymrQIViuVzy0yu/VW/m4jBAcS6Ala4Jnk2Kgh9BMtwt+L0LL
-	/vO7BbDHYNIAdrFNtvW33T/M5Abu2895iTC/94zcwWLzjwg2LJlIDZvfQ3/35PHvh2pswyRLAoIWS
-	JsQVc6bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G5e0D4ceKro9Yb8N26UgxQagAkkEg3LLRP/2T93ftQc=; b=Bf1QpoMU4JE0mwioTCd8P+ZwH0
+	7817x5nhGVmkGOQ1sSBlHO8HgjTdzTLXGk+0kqoS7b1PrRNEU/ZK7csgK7hCxX1R7FjsZlYVDgUJq
+	WNBHfD66NNlAQER5sqGesXQr8b8iNTUJzr0Szko/94ruTwRAnRMHVP/IwQK4ujQyOq6Yu3UxexbG7
+	Zby2sTsJBggqwCZnGd79bHCpLNDfAOFXrr+NaCPcxFH0/d944OoOiI+4hR0FH66yCEG1/hiFfwNRa
+	XoQRq5aVnqMKoFq09Xau3RgvGViw4iQEr6jNJa1hXrWbaCw1Ha+WS6TnXz738lEFkvsrOGtkelX8a
+	HxP+MTAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tatUF-0000000C5k5-35rU;
-	Thu, 23 Jan 2025 09:26:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tavYQ-0000000CM1q-1Ytz;
+	Thu, 23 Jan 2025 11:39:22 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tatUE-0000000C5ja-1R5b;
-	Thu, 23 Jan 2025 09:26:55 +0000
-X-UUID: 2cadbd68d96c11ef82ff63e91e7eb18c-20250123
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=JWWAzItImoWGXYtJ3eWXsoeT9tJE5bcK6MiBbovl0yo=;
-	b=Q+1o6WiQRMWjQrGuftnUxvTbZDpBV40O64KrHLIq2HOy/tDSP1CLGdn6ZcF9RIcK8k32vY+oemxiJzHey3dz4/5dZaG4gJM9oGeFh5NhqKYj5YymUJzrOrPk4LHse6m1BiTvLcg6yMJE5RLugu+ZRItS0yaRnXvuURdI/Z+8v8I=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:148e94b0-0579-4a06-a3fb-e0ac23011d0a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:60aa074,CLOUDID:10db943d-da39-4471-8a46-23da908abe46,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2cadbd68d96c11ef82ff63e91e7eb18c-20250123
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <andy-ld.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1923785544; Thu, 23 Jan 2025 02:26:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Thu, 23 Jan 2025 17:26:47 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Thu, 23 Jan 2025 17:26:46 +0800
-From: Andy-ld Lu <andy-ld.lu@mediatek.com>
-To: <ulf.hansson@linaro.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Andy-ld Lu <andy-ld.lu@mediatek.com>
-Subject: [PATCH v2] mmc: mtk-sd: Fix register settings for hs400(es) mode
-Date: Thu, 23 Jan 2025 17:26:01 +0800
-Message-ID: <20250123092644.7359-1-andy-ld.lu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1tavX8-0000000CLkd-05W4
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Jan 2025 11:38:03 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-2eec9b3a1bbso1188288a91.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jan 2025 03:38:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1737632281; x=1738237081; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=G5e0D4ceKro9Yb8N26UgxQagAkkEg3LLRP/2T93ftQc=;
+        b=RZ9X5xWs/mCoWDw1OpGivmb1GBXfIGraRCROQpbIBQ3xcFl/exf5R0+Hkk3a93DhaU
+         PJuD0lmoJKPOvT/U4ZEEDBSKqtl8gSPO6B+jeaEYfoLx9ClQxsDXoL2TT187EaebQL5Q
+         F3/kOWlPWekWXbSfXSRRYHWF0HTn/PezkMDw7rHL+71T98GinhpHQtEboCCMQfxpBVBT
+         n9S48tVX9riB/vTCdO70obYVnQ6EW0AwCl2M35vzHb1O9Eb7A0Wu6B1UzYPM1zLuG52G
+         JRCLMPkOgtNr48hv/hW/dIWsHwlm/v5vS6A1OdFRhfXaeSmG1MJp4a2n7wXQSxGj2gZV
+         rfbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737632281; x=1738237081;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=G5e0D4ceKro9Yb8N26UgxQagAkkEg3LLRP/2T93ftQc=;
+        b=tnjMsLGo7ErmUgr7cv6c2Ict3Axe6qjsx+PvmfBZxlcD8cCiuXlEbs0XatjQ5oXHL8
+         1958TK+kWen2tjThvsLtSYzInpLMhC4KrgEQ4cKfsqpL1qWKbIh1B+HQYX/m4ObLGhPD
+         QpgOoFNsoaeIWl6+6/NC1TGoA+158n8OuPizYkLROIGUHQPDO7W5HtUaj4ovjDU4acGM
+         S4v/abZ5XaieXR73LbF8cpl8X8y7IoLCm1xPbi2rJGSUhUNog+Ia/1Js04r9t8iktRsJ
+         kObbC3B/NGyInQuPWlK3yK43rGnKz/8ohl1Mx2VpJXBpSKjcXdKRhxfJO6jcfSdaS56m
+         879A==
+X-Forwarded-Encrypted: i=1; AJvYcCXJyZ/kVu/D3Z2JRp8C/ofjFhUpbrH0WHsd0H+TBqKCmSR2NNNU8/Azu6Y2qrda1wBpQ/z+UjdsKZ4IJ560hQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyazrB/fUlYCgL0uIz7Up6Kqk1497sBtjuNQhvVjTWb45fQ5rHX
+	kBoVq53jksImRizEtNJgDR/vG63X/22WRI0gfKFLujTA68v1ZSVig1VW7V4Sylc=
+X-Gm-Gg: ASbGncv6erAZbixfdDgQ87ctr5dF5P/Iw0BhLMmDiHuUAaWOtueXs09650uuOh8SckT
+	UKhoQe4ffeGCSFWdIdRpEV69dFZgsrbS7FUEhZEFgyAQyvO9+WqQKXf9EXzvL+BWePs1cv5oxWh
+	IA4wOg9UQ7Kp3xyFGHhyClyQOMIPAOFBe8jIlj6xc95/pn3yW2K2JI4Aw88MYItDusHJ15M4Fju
+	4Y/v25taPFyrJgVUN227Jt7ADIxlVcB3Z3ILgpWIM+oYsTai19ow6DABHcEUTbmmEAg2s1A6OhZ
+	5lvHXFE=
+X-Google-Smtp-Source: AGHT+IGtsIzzGfAcKL/PEpiuES32TcQcp9F7OLmJOeJMP9wYjML8Ng6LAzORWCaFKdsDKOmTsmrEHA==
+X-Received: by 2002:a17:90b:5206:b0:2f4:f7f8:fc8b with SMTP id 98e67ed59e1d1-2f782d4ed77mr37302192a91.27.1737632280204;
+        Thu, 23 Jan 2025 03:38:00 -0800 (PST)
+Received: from localhost ([122.172.84.139])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f7e6a5e2b2sm3705966a91.3.2025.01.23.03.37.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Jan 2025 03:37:59 -0800 (PST)
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Hector Martin <marcan@marcan.st>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kevin Hilman <khilman@kernel.org>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Naveen N Rao <naveen@kernel.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	WANG Xuerui <kernel@xen0n.name>
+Cc: linux-pm@vger.kernel.org,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	arm-scmi@vger.kernel.org,
+	asahi@lists.linux.dev,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-tegra@vger.kernel.org,
+	loongarch@lists.linux.dev
+Subject: [PATCH 00/33] cpufreq: manage common sysfs attributes from core
+Date: Thu, 23 Jan 2025 17:05:36 +0530
+Message-Id: <cover.1737631669.git.viresh.kumar@linaro.org>
+X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_012654_387269_7E4EB5BB 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20250123_033802_059504_47B4788E 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,105 +133,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For hs400(es) mode, the 'hs400-ds-delay' is typically configured in the
-dts. However, some projects may only define 'mediatek,hs400-ds-dly3',
-which can lead to initialization failures in hs400es mode. CMD13 reported
-response crc error in the mmc_switch_status() just after switching to
-hs400es mode.
+Hello,
 
-[    1.914038][   T82] mmc0: mmc_select_hs400es failed, error -84
-[    1.914954][   T82] mmc0: error -84 whilst initialising MMC card
+Most of the drivers add available and boost frequencies related attributes. This
+patch series tries to avoid duplication and simplify driver's code by managing
+these from core code.
 
-Currently, the hs400_ds_dly3 value is set within the tuning function. This
-means that the PAD_DS_DLY3 field is not configured before tuning process,
-which is the reason for the above-mentioned CMD13 response crc error.
+A quick search revealed that only the drivers that set the
+policy->freq_table field, enable these attributes. Which makes sense as
+well, since the show_available_freqs() helper works only if the
+freq_table is present.
 
-Move the PAD_DS_DLY3 field configuration into msdc_prepare_hs400_tuning(),
-and add a value check of hs400_ds_delay to prevent overwriting by zero when
-the 'hs400-ds-delay' is not set in the dts. In addition, since hs400(es)
-only tune the PAD_DS_DLY1, the PAD_DS_DLY2_SEL bit should be cleared to
-bypass it.
+In order to simplify drivers, create the relevant sysfs files forcefully
+from cpufreq core.
 
-Fixes: c4ac38c6539b ("mmc: mtk-sd: Add HS400 online tuning support")
-Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
----
-Changes in v2:
-- Change commit title from 'optimize' to 'Fix'
-- Add a Fixes tag
-- Change spaces back to tabs
+Pushed here:
 
----
- drivers/mmc/host/mtk-sd.c | 31 ++++++++++++++++++++-----------
- 1 file changed, 20 insertions(+), 11 deletions(-)
+git://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git cpufreq/core-attr
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 4b6e91372526..345ea91629e0 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -273,6 +273,7 @@
- #define MSDC_PAD_TUNE_CMD2_SEL	  BIT(21)   /* RW */
- 
- #define PAD_DS_TUNE_DLY_SEL       BIT(0)	  /* RW */
-+#define PAD_DS_TUNE_DLY2_SEL      BIT(1)	  /* RW */
- #define PAD_DS_TUNE_DLY1	  GENMASK(6, 2)   /* RW */
- #define PAD_DS_TUNE_DLY2	  GENMASK(11, 7)  /* RW */
- #define PAD_DS_TUNE_DLY3	  GENMASK(16, 12) /* RW */
-@@ -318,6 +319,7 @@
- 
- /* EMMC50_PAD_DS_TUNE mask */
- #define PAD_DS_DLY_SEL		BIT(16)	/* RW */
-+#define PAD_DS_DLY2_SEL		BIT(15)	/* RW */
- #define PAD_DS_DLY1		GENMASK(14, 10)	/* RW */
- #define PAD_DS_DLY3		GENMASK(4, 0)	/* RW */
- 
-@@ -2504,13 +2506,23 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
- static int msdc_prepare_hs400_tuning(struct mmc_host *mmc, struct mmc_ios *ios)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
-+
- 	host->hs400_mode = true;
- 
--	if (host->top_base)
--		writel(host->hs400_ds_delay,
--		       host->top_base + EMMC50_PAD_DS_TUNE);
--	else
--		writel(host->hs400_ds_delay, host->base + PAD_DS_TUNE);
-+	if (host->top_base) {
-+		if (host->hs400_ds_dly3)
-+			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
-+				      PAD_DS_DLY3, host->hs400_ds_dly3);
-+		if (host->hs400_ds_delay)
-+			writel(host->hs400_ds_delay,
-+			       host->top_base + EMMC50_PAD_DS_TUNE);
-+	} else {
-+		if (host->hs400_ds_dly3)
-+			sdr_set_field(host->base + PAD_DS_TUNE,
-+				      PAD_DS_TUNE_DLY3, host->hs400_ds_dly3);
-+		if (host->hs400_ds_delay)
-+			writel(host->hs400_ds_delay, host->base + PAD_DS_TUNE);
-+	}
- 	/* hs400 mode must set it to 0 */
- 	sdr_clr_bits(host->base + MSDC_PATCH_BIT2, MSDC_PATCH_BIT2_CFGCRCSTS);
- 	/* to improve read performance, set outstanding to 2 */
-@@ -2530,14 +2542,11 @@ static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct mmc_card *card
- 	if (host->top_base) {
- 		sdr_set_bits(host->top_base + EMMC50_PAD_DS_TUNE,
- 			     PAD_DS_DLY_SEL);
--		if (host->hs400_ds_dly3)
--			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
--				      PAD_DS_DLY3, host->hs400_ds_dly3);
-+		sdr_clr_bits(host->top_base + EMMC50_PAD_DS_TUNE,
-+			     PAD_DS_DLY2_SEL);
- 	} else {
- 		sdr_set_bits(host->base + PAD_DS_TUNE, PAD_DS_TUNE_DLY_SEL);
--		if (host->hs400_ds_dly3)
--			sdr_set_field(host->base + PAD_DS_TUNE,
--				      PAD_DS_TUNE_DLY3, host->hs400_ds_dly3);
-+		sdr_clr_bits(host->base + PAD_DS_TUNE, PAD_DS_TUNE_DLY2_SEL);
- 	}
- 
- 	host->hs400_tuning = true;
+--
+Viresh
+
+Viresh Kumar (33):
+  cpufreq: Always create freq-table related sysfs file
+  cpufreq: dt: Stop setting cpufreq_driver->attr field
+  cpufreq: acpi: Stop setting common freq attributes
+  cpufreq: apple: Stop setting cpufreq_driver->attr field
+  cpufreq: bmips: Stop setting cpufreq_driver->attr field
+  cpufreq: brcmstb: Stop setting common freq attributes
+  cpufreq: davinci: Stop setting cpufreq_driver->attr field
+  cpufreq: e_powersaver: Stop setting cpufreq_driver->attr field
+  cpufreq: elanfreq: Stop setting cpufreq_driver->attr field
+  cpufreq: imx6q: Stop setting cpufreq_driver->attr field
+  cpufreq: kirkwood: Stop setting cpufreq_driver->attr field
+  cpufreq: longhaul: Stop setting cpufreq_driver->attr field
+  cpufreq: loongson: Stop setting cpufreq_driver->attr field
+  cpufreq: mediatek: Stop setting cpufreq_driver->attr field
+  cpufreq: omap: Stop setting cpufreq_driver->attr field
+  cpufreq: p4: Stop setting cpufreq_driver->attr field
+  cpufreq: pasemi: Stop setting cpufreq_driver->attr field
+  cpufreq: pmac: Stop setting cpufreq_driver->attr field
+  cpufreq: powernow: Stop setting cpufreq_driver->attr field
+  cpufreq: powernv: Stop setting common freq attributes
+  cpufreq: qcom: Stop setting cpufreq_driver->attr field
+  cpufreq: qoriq: Stop setting cpufreq_driver->attr field
+  cpufreq: sc520_freq: Stop setting cpufreq_driver->attr field
+  cpufreq: scmi: Stop setting cpufreq_driver->attr field
+  cpufreq: scpi: Stop setting cpufreq_driver->attr field
+  cpufreq: sh: Stop setting cpufreq_driver->attr field
+  cpufreq: spear: Stop setting cpufreq_driver->attr field
+  cpufreq: speedstep: Stop setting cpufreq_driver->attr field
+  cpufreq: tegra: Stop setting cpufreq_driver->attr field
+  cpufreq: vexpress: Stop setting cpufreq_driver->attr field
+  cpufreq: virtual: Stop setting cpufreq_driver->attr field
+  cpufreq: Remove cpufreq_generic_attrs
+  cpufreq: Stop checking for duplicate available/boost freq attributes
+
+ drivers/cpufreq/acpi-cpufreq.c         |  1 -
+ drivers/cpufreq/apple-soc-cpufreq.c    |  8 --------
+ drivers/cpufreq/bmips-cpufreq.c        |  1 -
+ drivers/cpufreq/brcmstb-avs-cpufreq.c  |  1 -
+ drivers/cpufreq/cpufreq-dt.c           |  8 --------
+ drivers/cpufreq/cpufreq.c              | 15 +++++++++++++++
+ drivers/cpufreq/davinci-cpufreq.c      |  1 -
+ drivers/cpufreq/e_powersaver.c         |  1 -
+ drivers/cpufreq/elanfreq.c             |  1 -
+ drivers/cpufreq/freq_table.c           |  8 --------
+ drivers/cpufreq/imx6q-cpufreq.c        |  1 -
+ drivers/cpufreq/kirkwood-cpufreq.c     |  1 -
+ drivers/cpufreq/longhaul.c             |  1 -
+ drivers/cpufreq/loongson2_cpufreq.c    |  1 -
+ drivers/cpufreq/loongson3_cpufreq.c    |  1 -
+ drivers/cpufreq/mediatek-cpufreq-hw.c  |  1 -
+ drivers/cpufreq/mediatek-cpufreq.c     |  1 -
+ drivers/cpufreq/omap-cpufreq.c         |  1 -
+ drivers/cpufreq/p4-clockmod.c          |  1 -
+ drivers/cpufreq/pasemi-cpufreq.c       |  1 -
+ drivers/cpufreq/pmac32-cpufreq.c       |  1 -
+ drivers/cpufreq/pmac64-cpufreq.c       |  1 -
+ drivers/cpufreq/powernow-k6.c          |  1 -
+ drivers/cpufreq/powernow-k7.c          |  1 -
+ drivers/cpufreq/powernow-k8.c          |  1 -
+ drivers/cpufreq/powernv-cpufreq.c      |  2 --
+ drivers/cpufreq/qcom-cpufreq-hw.c      |  7 -------
+ drivers/cpufreq/qoriq-cpufreq.c        |  1 -
+ drivers/cpufreq/sc520_freq.c           |  1 -
+ drivers/cpufreq/scmi-cpufreq.c         |  8 --------
+ drivers/cpufreq/scpi-cpufreq.c         |  1 -
+ drivers/cpufreq/sh-cpufreq.c           |  1 -
+ drivers/cpufreq/spear-cpufreq.c        |  1 -
+ drivers/cpufreq/speedstep-centrino.c   |  1 -
+ drivers/cpufreq/speedstep-ich.c        |  1 -
+ drivers/cpufreq/speedstep-smi.c        |  1 -
+ drivers/cpufreq/tegra186-cpufreq.c     |  1 -
+ drivers/cpufreq/tegra194-cpufreq.c     |  1 -
+ drivers/cpufreq/vexpress-spc-cpufreq.c |  1 -
+ drivers/cpufreq/virtual-cpufreq.c      |  1 -
+ include/linux/cpufreq.h                |  1 -
+ 41 files changed, 15 insertions(+), 75 deletions(-)
+
 -- 
-2.46.0
+2.31.1.272.g89b43f80a514
 
 
