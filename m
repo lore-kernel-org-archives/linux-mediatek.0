@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B9CC0218D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 15:13:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65988C02181
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 17:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qQsRU5egikGwVZJmhP5HrHOi5E90elYU3n1vwgyXe9Q=; b=Cii/6L9RkQ0EPSnkGxVWjoVVEg
-	pN8zryQ7XDc2rI28Hrk0gZsPHx7fWXmi3QFKkGLPUKJ7A7Vx29fGJdlsM6dHghld1PaQrgQwvz/zd
-	/dKRc9LGHZ599qYnaJsIpcAkPrfFjeURdG3EsE/wWjRfumRgtxureqdB8f63suW5CzUDzS4kEtFIh
-	1eVIkdWBdqbLWlJk84C32G+SGzvV9G+/YhdmQnv1rPXDQf4wntIGcrDQ1SIG13BkoNUZ/hassTt2f
-	80rqSOHakytbGsSIPp3JDFErYXrAOydJbzIv7gIk8l3q5t4vRA8F9X+8nVWSLT7x0e8i550CCg3A+
-	tM7I7bdw==;
+	bh=K59hpdystkn8QFRkAhSRoR2AxPXCsaehF/2nh6Z9iJE=; b=dfouQKk+SkGFduSUUQ3aEyH/a4
+	GQkXMNREnPFa+dzOsmvP8Sd035xpwWqxOZIuBA5QTAoNdJr9D3VyF3rvXJcgrIoM8uhbYROl+/DPz
+	yZgMd1BOGFIQXp6Q65npXZyR6QzwgEBE7OIMg/fKrgvbsszfs1/HTuXERatavjyQRt3EMkEw9+NS8
+	qmpFWninhUjZGiUsk1f5TPBL1wsZW9rVN6bKvZbDthL2ZXBcR0LMYT6M3MEnZxA3Z34MreBUICxiH
+	8JXi/ocqi6nW9JT2zrcKC+0N4ie5wdatp1UDgduWFkV+h8MFYN1W3JZQeRFCAjlrcOa1sfDdCXeLm
+	CUC+6Klw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbLMt-0000000EvyN-0Qiw;
-	Fri, 24 Jan 2025 15:13:11 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1tbNYD-0000000FDG5-1kZ4;
+	Fri, 24 Jan 2025 17:33:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbLJ8-0000000EvEL-0wOE;
-	Fri, 24 Jan 2025 15:09:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1737731358; x=1769267358;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=nu5L0oHkKO/XvEtpmpggRMODnIIoAWZ2OPQcpyBS/x8=;
-  b=QiM0s3nZzI6Gbt6BrPIVA/ui1O4o3Lxuvmqu05M3sVzPZ7pLYGDnBjy9
-   +V07nknvMxrdvGOHSUlV8hmyUsuLZpIdbcwODVfBMITJH2oCLAqCdOElT
-   8URFiaHsr/qA748hS/17Em4Q3IhEFdC/DC1vUIk4pBQnfi7TaRD2pmPUo
-   Q3hZik5l6mcgQqB3xJhSWHsLuLbXDOYlujpTwpKOdxDgjsScDR3XOieyj
-   vsLZElFyz1/ln86/VxYWQdIN+J9GVLEu3c0zR87oX3ccKQnh+RGhm1cPM
-   cVqvXXZmJ/ytk+Amn3RDjNGAdmtFz7F83fRPwCAcPm2yIDl0pZGhz/QKS
-   Q==;
-X-CSE-ConnectionGUID: lFlNbcIGRdibuNZcwiAwCg==
-X-CSE-MsgGUID: ONoCOpvUSMCNgMWN0fCE+w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11325"; a="48773118"
-X-IronPort-AV: E=Sophos;i="6.13,231,1732608000"; 
-   d="scan'208";a="48773118"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 07:09:17 -0800
-X-CSE-ConnectionGUID: FGtdc2FbRdObUS8rE2/eYQ==
-X-CSE-MsgGUID: QpmEVMWQQXS0uR6y2gE0SQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="131087548"
-Received: from smile.fi.intel.com ([10.237.72.58])
-  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 07:09:14 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1tbLJ0-00000004qdD-3BFn;
-	Fri, 24 Jan 2025 17:09:10 +0200
-Date: Fri, 24 Jan 2025 17:09:10 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Yenchia Chen <yenchia.chen@mediatek.com>
-Cc: gregkh@linuxfoundation.org, jirislaby@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	yj.chiang@mediatek.com, tbergstrom@nvidia.com,
-	treapking@chromium.org, u.kleine-koenig@baylibre.com,
-	yujiaoliang@vivo.com, linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] serial: 8250_mtk: Add ACPI support
-Message-ID: <Z5OtFqtf4dpvvc9v@smile.fi.intel.com>
-References: <20250124031835.1788995-1-yenchia.chen@mediatek.com>
+	id 1tbNWu-0000000FD8C-1jCT;
+	Fri, 24 Jan 2025 17:31:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8FB325C60DC;
+	Fri, 24 Jan 2025 17:30:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FE7DC4CED2;
+	Fri, 24 Jan 2025 17:31:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737739899;
+	bh=hgo5Gm6nDhGIQgSJHFT/RmxBxdtq+iVJ5SoDgdrUDWI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hQvRZcd4e2GNQdo7p0U4OCCfPvGv6YOcR/Ps8DznEY6RoRrIRB/osheeIqYU+O+0B
+	 9EGwizhOSWwtVXT53fP3XGQeR05fXIKdOkbPDIQPh6yLWIhqhSSSWR//PK5LRWv5vR
+	 CubAIK9WJR+q0+wPXdUfkkTDnJQk8Xcb5vv7eZf6D+7a6m1opDV2Z7oeVjPT3UCqOV
+	 7ZQfxwNyvo76Z1kH6z5oMzCBHC8AFM/RFpTbpspC5qC2AzCvbGnMIm3UHEpnAHpaAG
+	 DY0WtlHXROP9+injXE/p8n9p914ERjlxe9yPN0/Ldm4qh9RNalYVmFIhQxmke/TjQI
+	 VwOJNjGPP9Iyw==
+Date: Fri, 24 Jan 2025 17:31:33 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Friday Yang =?utf-8?B?KOadqOmYsyk=?= <Friday.Yang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"mturquette@baylibre.com" <mturquette@baylibre.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Garmin Chang =?utf-8?B?KOW8teWutumKmCk=?= <Garmin.Chang@mediatek.com>,
+	"sboyd@kernel.org" <sboyd@kernel.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>,
+	"robh@kernel.org" <robh@kernel.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
+ for MT8188
+Message-ID: <20250124-aide-feisty-821cf9cf1382@spud>
+References: <20250121065045.13514-1-friday.yang@mediatek.com>
+ <20250121065045.13514-2-friday.yang@mediatek.com>
+ <20250121-violet-widely-df3567b085a4@spud>
+ <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="D7rLUrhVT1Wjp55T"
 Content-Disposition: inline
-In-Reply-To: <20250124031835.1788995-1-yenchia.chen@mediatek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_070918_313551_0090C7D4 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20250124_093140_540210_D93B6EE8 
+X-CRM114-Status: GOOD (  32.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,102 +88,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 24, 2025 at 11:18:32AM +0800, Yenchia Chen wrote:
-> Add ACPI support to 8250_mtk driver. This makes it possible to
-> use UART on ARM-based desktops with EDK2 UEFI firmware.
 
-...
+--D7rLUrhVT1Wjp55T
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +#include <linux/acpi.h>
+On Wed, Jan 22, 2025 at 07:40:12AM +0000, Friday Yang (=E6=9D=A8=E9=98=B3) =
+wrote:
+> On Tue, 2025-01-21 at 17:30 +0000, Conor Dooley wrote:
+> > On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
+> > > SMI LARBs require reset functions when applying clamp operations.
+> > > Add '#reset-cells' for the clock controller located in image,
+> > > camera
+> > > and IPE subsystems.
+> >=20
+> > A new required property is an abi break, please explain why this is
+> > required.
 
-This will not be needed (see below)
+You never answered this part. From a quick check, looks like the change
+you made will cause probe failures if the resets are not present? Maybe
+I misread the driver code in my quick skim - but that is the implication
+of a new required property, so I didn't dig super far.
 
->  #include <linux/clk.h>
->  #include <linux/io.h>
->  #include <linux/module.h>
-> @@ -15,6 +16,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/serial_8250.h>
->  #include <linux/serial_reg.h>
+Adding new properties that break a driver is not really acceptable, so I
+hope I made a mistake there.
 
-> +#include <linux/units.h>
+> What are "SMI LARBs"? Why did things previously work
+> > without
+> > acting as a reset controller?
+> >=20
+>=20
+> The background can refer to the discussion in the following link:
+>=20
+> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3DwXpobD=
+WU1CnvkA@mail.gmail.com/
+>=20
+> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fa=
+sm2rFg@mail.gmail.com/
+> SMI clamp and reset operations should be implemented in SMI driver
+> instead of PM driver.
 
-This might not be needed either (see below)
+So the answer to how it worked previously was that nothing actually used
+this multimedia interface?
 
->  #include <linux/console.h>
->  #include <linux/dma-mapping.h>
->  #include <linux/tty.h>
+Your commit message needs to explain why a new required property is okay
+and why it was not there before.
 
-You probably want to sort header inclusions first for easier maintenance and
-feature additions like this one.
+Thanks,
+Conor.
 
-Can you add that one?
+>=20
+> I previously added the SMI reset control driver. However, the
+> reviewer's comments are correct, these functions have already
+> been implemented in the clock control driver. There is no need
+> to submit duplicate code.=20
+>=20
+> https://lore.kernel.org/lkml/20241120063305.8135-2-friday.yang@mediatek.c=
+om/
+>=20
+> https://lore.kernel.org/lkml/20241120063305.8135-3-friday.yang@mediatek.c=
+om/
+>=20
+>=20
+> On the MediaTek platform, the SMI block diagram like this:
+>=20
+>                 DRAM
+>                  |
+>             EMI(External Memory Interface)
+>                  |  |
+>           MediaTek IOMMU(Input Output Memory Management Unit)
+>                  |  |
+>              SMI-Common(Smart Multimedia Interface Common)
+>                  |
+>          +----------------+------------------+
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>        larb0       SMI-Sub-Common0     SMI-Sub-Common1
+>                    |      |     |      |             |
+>                   larb1  larb2 larb3  larb7       larb9
+>=20
+> The SMI-Common connects with SMI LARBs and IOMMU. The maximum LARBs
+> number that connects with a SMI-Common is 8. If the engines number is
+> over 8, sometimes we use a SMI-Sub-Common which is nearly same with
+> SMI-Common. It supports up to 8 input and 1 output(SMI-Common has 2
+> output).
+>=20
+> > >=20
+> > > Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> > > ---
+> > >  .../bindings/clock/mediatek,mt8188-clock.yaml | 21
+> > > +++++++++++++++++++
+> > >  1 file changed, 21 insertions(+)
+> > >=20
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+> > > clock.yaml
+> > > b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+> > > clock.yaml
+> > > index 860570320545..2985c8c717d7 100644
+> > > --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+> > > clock.yaml
+> > > +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+> > > clock.yaml
+> > > @@ -57,6 +57,27 @@ required:
+> > >    - reg
+> > >    - '#clock-cells'
+> > >=20
+> > > +allOf:
+> > > +  - if:
+> > > +      properties:
+> > > +        compatible:
+> > > +          contains:
+> > > +            enum:
+> > > +              - mediatek,mt8188-camsys-rawa
+> > > +              - mediatek,mt8188-camsys-rawb
+> > > +              - mediatek,mt8188-camsys-yuva
+> > > +              - mediatek,mt8188-camsys-yuvb
+> > > +              - mediatek,mt8188-imgsys-wpe1
+> > > +              - mediatek,mt8188-imgsys-wpe2
+> > > +              - mediatek,mt8188-imgsys-wpe3
+> > > +              - mediatek,mt8188-imgsys1-dip-nr
+> > > +              - mediatek,mt8188-imgsys1-dip-top
+> > > +              - mediatek,mt8188-ipesys
+> > > +
+> > > +    then:
+> > > +      required:
+> > > +        - '#reset-cells'
+> > > +
+> > >  additionalProperties: false
+> > >=20
+> > >  examples:
+> > > --
+> > > 2.46.0
+> > >=20
 
-...
+--D7rLUrhVT1Wjp55T
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> +	} else if (!acpi_dev_handle) {
+-----BEGIN PGP SIGNATURE-----
 
-> +	}
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ5POdQAKCRB4tDGHoIJi
+0i5YAP9Dx5bXus4xwjvaYC4iLzVHrcUXsxmP4pUtVR6hWDrycwD9GKZ11XB4OJbc
+HOrve7a/fbLIiPLQfLUBCD2A5m4nbQ8=
+=oF2i
+-----END PGP SIGNATURE-----
 
-This should look like
-
-	struct fwnode_handle *fwnode = dev_fwnode(&pdev->dev);
-	...
-	if (is_of_node(fwnode)) {
-		...parse OF...
-	} else if (!fwnode) {
-		return -ENODEV;
-	}
-
-...
-
->  	uart.port.uartclk = clk_get_rate(data->uart_clk);
-> +	if (!uart.port.uartclk)
-> +		uart.port.uartclk = 26 * HZ_PER_MHZ;
-
-Why doesn't your table provide the clock-frequency property?
-
-What I expect to see is the use of uart_read_port_properties().
-
-...
-
->  #ifdef CONFIG_SERIAL_8250_DMA
->  	if (data->dma)
->  		uart.dma = data->dma;
->  #endif
-
-Btw, how do you handle DMA in ACPI case?
-
-...
-
-> -	/* Disable Rate Fix function */
-> -	writel(0x0, uart.port.membase +
-> +	if (!acpi_dev_handle) {
-> +		/* Disable Rate Fix function */
-> +		writel(0x0, uart.port.membase +
->  			(MTK_UART_RATE_FIX << uart.port.regshift));
-> +	}
-
-	if (is_of_node()) {
-		...
-	}
-
-...
-
-> +static const struct acpi_device_id mtk8250_acpi_match[] = {
-> +	{ "MTKI0511", 0 },
-
-No ', 0' part, please.
-
-> +	{},
-
-No comma in the terminator line.
-
-> +};
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+--D7rLUrhVT1Wjp55T--
 
