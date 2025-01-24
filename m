@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4194C02181
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 14:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B9CC0218D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 15:13:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KpLfynM31yo/shZxF3ZUy2NRwhB39YpYEBEOuQQVK5g=; b=Qf1bspPA7JJy6626n9ll2WEh9/
-	CVqGHfgdId+uvYXgd+jNv0LK0cChCTj9gbtTNhpUQZ8Jmr94TUiAjqSlc8X1yD20yTpur8BGmFUJh
-	Vkdi0mggUPBH7eZ0zps5M85nhYcMcLcnpep2IFLS5h97CweDK6tZs6fGuj4Wv3KFedE2USe7h8x1p
-	SPssDI7GWZ2SWA/Fr9RZs5938Z0ayVKApznNj+o+jcFrkTNJwz778UHh1RH6NXHR2VpsEoHK00cV6
-	8fJxZdFm27f6uzRe38xgdV78rfJxQX+v8ii/RFCJUxUBywBW/bnvTcde79/xP1MBzfNqqnVtyK0nz
-	NK4immjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qQsRU5egikGwVZJmhP5HrHOi5E90elYU3n1vwgyXe9Q=; b=Cii/6L9RkQ0EPSnkGxVWjoVVEg
+	pN8zryQ7XDc2rI28Hrk0gZsPHx7fWXmi3QFKkGLPUKJ7A7Vx29fGJdlsM6dHghld1PaQrgQwvz/zd
+	/dKRc9LGHZ599qYnaJsIpcAkPrfFjeURdG3EsE/wWjRfumRgtxureqdB8f63suW5CzUDzS4kEtFIh
+	1eVIkdWBdqbLWlJk84C32G+SGzvV9G+/YhdmQnv1rPXDQf4wntIGcrDQ1SIG13BkoNUZ/hassTt2f
+	80rqSOHakytbGsSIPp3JDFErYXrAOydJbzIv7gIk8l3q5t4vRA8F9X+8nVWSLT7x0e8i550CCg3A+
+	tM7I7bdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbL1D-0000000EtB1-0za5;
-	Fri, 24 Jan 2025 14:50:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tbLMt-0000000EvyN-0Qiw;
+	Fri, 24 Jan 2025 15:13:11 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbJvX-0000000EmHa-1sJl;
-	Fri, 24 Jan 2025 13:40:52 +0000
-X-UUID: cfa7ae7eda5811ef9048ed6ed365623b-20250124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KpLfynM31yo/shZxF3ZUy2NRwhB39YpYEBEOuQQVK5g=;
-	b=Q/bERLsfNbu1bhwMI7iCUJQr5/biIEBimb2r3bqVhx73pCqbXC3tBw2ZDdAVaUVxtLxjCH4TjAXJhIfghZZkHqWaE7mZIcXwruDYMzGAmxKgSmfciLrM4U1olcLsqoxx6Fg3aLHOe8sfE8MeA4tHrtKa0f9cbGYXn4rhqNQQtSA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:cc03b8cb-3a73-45fd-aa0e-8e9ebfd2cf74,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:5068a53d-da39-4471-8a46-23da908abe46,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: cfa7ae7eda5811ef9048ed6ed365623b-20250124
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <ot_chhao.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1100366859; Fri, 24 Jan 2025 06:40:44 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 24 Jan 2025 21:40:42 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 24 Jan 2025 21:40:41 +0800
-From: Hao Chang <ot_chhao.chang@mediatek.com>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
-	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
-	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen
-	<hanks.chen@mediatek.com>, Chunhui Li <chunhui.li@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Hao
- Chang <ot_chhao.chang@mediatek.com>
-Subject: [PATCH v3 0/2]
-Date: Fri, 24 Jan 2025 21:40:12 +0800
-Message-ID: <20250124134025.2666-1-ot_chhao.chang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1tbLJ8-0000000EvEL-0wOE;
+	Fri, 24 Jan 2025 15:09:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1737731358; x=1769267358;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=nu5L0oHkKO/XvEtpmpggRMODnIIoAWZ2OPQcpyBS/x8=;
+  b=QiM0s3nZzI6Gbt6BrPIVA/ui1O4o3Lxuvmqu05M3sVzPZ7pLYGDnBjy9
+   +V07nknvMxrdvGOHSUlV8hmyUsuLZpIdbcwODVfBMITJH2oCLAqCdOElT
+   8URFiaHsr/qA748hS/17Em4Q3IhEFdC/DC1vUIk4pBQnfi7TaRD2pmPUo
+   Q3hZik5l6mcgQqB3xJhSWHsLuLbXDOYlujpTwpKOdxDgjsScDR3XOieyj
+   vsLZElFyz1/ln86/VxYWQdIN+J9GVLEu3c0zR87oX3ccKQnh+RGhm1cPM
+   cVqvXXZmJ/ytk+Amn3RDjNGAdmtFz7F83fRPwCAcPm2yIDl0pZGhz/QKS
+   Q==;
+X-CSE-ConnectionGUID: lFlNbcIGRdibuNZcwiAwCg==
+X-CSE-MsgGUID: ONoCOpvUSMCNgMWN0fCE+w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11325"; a="48773118"
+X-IronPort-AV: E=Sophos;i="6.13,231,1732608000"; 
+   d="scan'208";a="48773118"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 07:09:17 -0800
+X-CSE-ConnectionGUID: FGtdc2FbRdObUS8rE2/eYQ==
+X-CSE-MsgGUID: QpmEVMWQQXS0uR6y2gE0SQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="131087548"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 07:09:14 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1tbLJ0-00000004qdD-3BFn;
+	Fri, 24 Jan 2025 17:09:10 +0200
+Date: Fri, 24 Jan 2025 17:09:10 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Yenchia Chen <yenchia.chen@mediatek.com>
+Cc: gregkh@linuxfoundation.org, jirislaby@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	yj.chiang@mediatek.com, tbergstrom@nvidia.com,
+	treapking@chromium.org, u.kleine-koenig@baylibre.com,
+	yujiaoliang@vivo.com, linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] serial: 8250_mtk: Add ACPI support
+Message-ID: <Z5OtFqtf4dpvvc9v@smile.fi.intel.com>
+References: <20250124031835.1788995-1-yenchia.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250124031835.1788995-1-yenchia.chen@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_054051_490238_A6F461AC 
-X-CRM114-Status: UNSURE (   7.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250124_070918_313551_0090C7D4 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +92,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change in v3:
-1)Add error handling to prevent memory leaks
-2)Move the eint pin assignment action to eint for processing
----
-This patch depends on
-[v3,2/2] pinctrl: mediatek: add mt8196 driver
-[v3,1/2] dt-bindings: pinctrl: mediatek: add support for mt8196
+On Fri, Jan 24, 2025 at 11:18:32AM +0800, Yenchia Chen wrote:
+> Add ACPI support to 8250_mtk driver. This makes it possible to
+> use UART on ARM-based desktops with EDK2 UEFI firmware.
 
-Please also accept this patch together with [1]
-to avoid build and dt binding check error.
-[1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=&submitter=215008&state=&q=v3&archive=&delegate=
----
+...
 
-Hao Chang (2):
-  pinctrl: mediatek: update EINT base retrieval method
-  pinctrl: mediatek: adapt to multi-base design
+> +#include <linux/acpi.h>
 
- drivers/pinctrl/mediatek/mtk-eint.c           | 38 +++++++++-----
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 50 +++++++++++++------
- 2 files changed, 60 insertions(+), 28 deletions(-)
+This will not be needed (see below)
+
+>  #include <linux/clk.h>
+>  #include <linux/io.h>
+>  #include <linux/module.h>
+> @@ -15,6 +16,7 @@
+>  #include <linux/pm_runtime.h>
+>  #include <linux/serial_8250.h>
+>  #include <linux/serial_reg.h>
+
+> +#include <linux/units.h>
+
+This might not be needed either (see below)
+
+>  #include <linux/console.h>
+>  #include <linux/dma-mapping.h>
+>  #include <linux/tty.h>
+
+You probably want to sort header inclusions first for easier maintenance and
+feature additions like this one.
+
+Can you add that one?
+
+...
+
+> +	} else if (!acpi_dev_handle) {
+
+> +	}
+
+This should look like
+
+	struct fwnode_handle *fwnode = dev_fwnode(&pdev->dev);
+	...
+	if (is_of_node(fwnode)) {
+		...parse OF...
+	} else if (!fwnode) {
+		return -ENODEV;
+	}
+
+...
+
+>  	uart.port.uartclk = clk_get_rate(data->uart_clk);
+> +	if (!uart.port.uartclk)
+> +		uart.port.uartclk = 26 * HZ_PER_MHZ;
+
+Why doesn't your table provide the clock-frequency property?
+
+What I expect to see is the use of uart_read_port_properties().
+
+...
+
+>  #ifdef CONFIG_SERIAL_8250_DMA
+>  	if (data->dma)
+>  		uart.dma = data->dma;
+>  #endif
+
+Btw, how do you handle DMA in ACPI case?
+
+...
+
+> -	/* Disable Rate Fix function */
+> -	writel(0x0, uart.port.membase +
+> +	if (!acpi_dev_handle) {
+> +		/* Disable Rate Fix function */
+> +		writel(0x0, uart.port.membase +
+>  			(MTK_UART_RATE_FIX << uart.port.regshift));
+> +	}
+
+	if (is_of_node()) {
+		...
+	}
+
+...
+
+> +static const struct acpi_device_id mtk8250_acpi_match[] = {
+> +	{ "MTKI0511", 0 },
+
+No ', 0' part, please.
+
+> +	{},
+
+No comma in the terminator line.
+
+> +};
 
 -- 
-2.46.0
+With Best Regards,
+Andy Shevchenko
+
 
 
