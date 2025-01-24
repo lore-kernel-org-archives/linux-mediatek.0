@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BBDC02181
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 13:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5DAC02181
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 13:55:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vHG0wIAtoOemWkPtzFx9h/lFGmdkP7r/cg9y4ucBGZw=; b=vvVrfKHPPPnZ1C14eXQSoQeZbQ
-	rlSszBE9enuDwu40A8UoDn94Ag/FfOnyZvNySBsV39AERI2/Xy3iOELU7Y8otSAp0zlvcm+UgVhB2
-	xBPbiJ1SlUgdW+Fu+3CLbX2h3rJUoCS5SOGsb/6R8BqHyOIB1RZD67iGoriJ5ntNrXN+kyLfC4x20
-	wi/IxvCISkF1LFaDgEFJdr4CGFnLZ7Q66PZVn+VykbPy/sfAOjvPYbdEw8RuAF5LtFDLbe+Z0xRyg
-	4ALQ33qVRIaBoJ0x+D+MQpn/MfEW+vlWfWJ1UFCgrhvdb5G1mUbmC8xnpskyQvPxmWlFFXQNhjy8u
-	8HMRwOAQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KpLfynM31yo/shZxF3ZUy2NRwhB39YpYEBEOuQQVK5g=; b=4hjxVvGnXZebOFtgL3xOExOLiM
+	xISsRB65kdvHfkupetrzklJDnRmyw19wNMcndjx2Cf2ZyRTgezWZcrKTIZEWaYtsOux3MM0QFN2gG
+	I3/VEU0WsOkSdYpXXT8nm6rz1ee2mlffNtT6Tk6NS8B/BsOhjZ22FlcQlMvWmqQjpd/uXOA2UsGYC
+	fQ+FZmaKskYzg1/Ay6Wy6ZROqfTXZ6ndNFTpNhIw7IjlDXOanzX+VeBXLQZ8FAZJafDHpM/hnOmxp
+	qQmcr+EYU/vJ18jwKw3GHtxCXC/rHOdj/mHUDWOmiJyVFsFaW3Wi6AppQIbVnWl+EpW/QyCnN9bUO
+	CFZ5GVvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbJzS-0000000EnFg-2eAl;
-	Fri, 24 Jan 2025 13:44:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tbK9m-0000000EoOW-1rp7;
+	Fri, 24 Jan 2025 13:55:34 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbJvq-0000000EmPO-2va1;
-	Fri, 24 Jan 2025 13:41:11 +0000
-X-UUID: dcb8b342da5811ef82ff63e91e7eb18c-20250124
+	id 1tbK3v-0000000Enp9-1Z92;
+	Fri, 24 Jan 2025 13:49:32 +0000
+X-UUID: 06c6b278da5a11ef9048ed6ed365623b-20250124
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vHG0wIAtoOemWkPtzFx9h/lFGmdkP7r/cg9y4ucBGZw=;
-	b=FbbuCz5rig0R7dbLi2deTTtoi+6AIC9FRf9g4jLH63nUgcKz/R2ihcB1kI+ijtmBxWKIt+nnWRAQgtIMaRY5TXJ2C/sM34GXczh/bqnqehi+13IlDNBwZr9up/J1DdqDYnuaXZF2VVa85WmQg+3PBYxzLVJovghWuVXcbipoFXI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KpLfynM31yo/shZxF3ZUy2NRwhB39YpYEBEOuQQVK5g=;
+	b=GctpTKJXrFyzooruAB9Qxs9S3SKhpcACyIzOO7lm0I76yMeT7w2Xb50L8mIKX2OATth63wB3Unb1q58QgayDg1nQEnGdRVXBfn0mZkIiWLJZX6o+j38oJbaevoGk59mjLgUY8QcjkT7FLiUsQw4sHiLQAIrix0Rgvg/KeDGSWK8=;
+X-CID-CACHE: Type:Local,Time:202501240640-07,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:947f6ff0-43c3-48e4-9d10-f0c6faebdf2c,IP:0,U
-	RL:0,TC:0,Content:29,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:4
-X-CID-META: VersionHash:60aa074,CLOUDID:7117c0fe-c190-4cfe-938d-595d7f10e0dc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:4|50,EDM:1,
-	IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: dcb8b342da5811ef82ff63e91e7eb18c-20250124
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.46,REQID:68d016cd-83b0-4c21-b612-a373f79a39ac,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:5068a53d-da39-4471-8a46-23da908abe46,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 06c6b278da5a11ef9048ed6ed365623b-20250124
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <ot_chhao.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 87694891; Fri, 24 Jan 2025 06:41:06 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 2006452046; Fri, 24 Jan 2025 06:49:26 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 24 Jan 2025 21:41:03 +0800
+ 15.2.1258.28; Fri, 24 Jan 2025 21:49:23 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 24 Jan 2025 21:41:03 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 24 Jan 2025 21:49:23 +0800
 From: Hao Chang <ot_chhao.chang@mediatek.com>
 To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
 	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -63,18 +64,17 @@ CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Hao
  Chang <ot_chhao.chang@mediatek.com>
-Subject: [PATCH v3 2/2] pinctrl: mediatek: adapt to multi-base design
-Date: Fri, 24 Jan 2025 21:40:14 +0800
-Message-ID: <20250124134025.2666-3-ot_chhao.chang@mediatek.com>
+Subject: [PATCH v3 0/2]
+Date: Fri, 24 Jan 2025 21:49:04 +0800
+Message-ID: <20250124134918.2779-1-ot_chhao.chang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250124134025.2666-1-ot_chhao.chang@mediatek.com>
-References: <20250124134025.2666-1-ot_chhao.chang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_054110_758139_2ECB4C82 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20250124_054931_415827_F788C145 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,107 +89,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The eint num will obtain the operation address through pins.
-Change the traversal method of irq handle from traversing a set of
-registers to traversing one by one.
-
-Change-Id: I3962b78042d32501a73153201cddf52c6b62a695
-Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
-Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
+Change in v3:
+1)Add error handling to prevent memory leaks
+2)Move the eint pin assignment action to eint for processing
 ---
- drivers/pinctrl/mediatek/mtk-eint.c | 38 +++++++++++++++++++----------
- 1 file changed, 25 insertions(+), 13 deletions(-)
+This patch depends on
+[v3,2/2] pinctrl: mediatek: add mt8196 driver
+[v3,1/2] dt-bindings: pinctrl: mediatek: add support for mt8196
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 540245c3128d..949a20196f74 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -513,6 +513,7 @@ EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
- int mtk_eint_do_init(struct mtk_eint *eint)
- {
- 	unsigned int size, i, port;
-+	struct mtk_pinctrl *hw = (struct mtk_pinctrl *)eint->pctl;
- 
- 	/* If clients don't assign a specific regs, let's use generic one */
- 	if (!eint->regs)
-@@ -523,11 +524,11 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 	if (!eint->base_pin_num)
- 		return -ENOMEM;
- 
--	if (!eint->pins) {
-+	if (eint->nbase == 1) {
- 		size = eint->hw->ap_num * sizeof(struct mtk_eint_pin);
- 		eint->pins = devm_kmalloc(eint->dev, size, GFP_KERNEL);
- 		if (!eint->pins)
--			return -ENOMEM;
-+			goto err_eint;
- 
- 		eint->base_pin_num[0] = eint->hw->ap_num;
- 		for (i = 0; i < eint->hw->ap_num; i++) {
-@@ -536,34 +537,29 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
- 		}
- 	} else {
-+		eint->pins = hw->soc->eint_pin;
- 		for (i = 0; i < eint->hw->ap_num; i++)
- 			eint->base_pin_num[eint->pins[i].instance]++;
- 	}
- 
- 	eint->wake_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
--	if (!eint->wake_mask)
--		return -ENOMEM;
--
- 	eint->cur_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
--	if (!eint->wake_mask)
--		return -ENOMEM;
-+	if (!eint->wake_mask || !eint->wake_mask)
-+		goto err_eint;
- 
- 	for (i = 0; i < eint->nbase; i++) {
- 		port = (eint->base_pin_num[i] + 31) / 32;
- 		eint->wake_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
--		if (!eint->wake_mask[i])
--			return -ENOMEM;
--
- 		eint->cur_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
--		if (!eint->cur_mask[i])
--			return -ENOMEM;
-+		if (!eint->cur_mask[i] || !eint->wake_mask[i])
-+			goto err_eint;
- 	}
- 
- 	eint->domain = irq_domain_add_linear(eint->dev->of_node,
- 					     eint->hw->ap_num,
- 					     &irq_domain_simple_ops, NULL);
- 	if (!eint->domain)
--		return -ENOMEM;
-+		goto err_eint;
- 
- 	if (eint->hw->db_time) {
- 		for (i = 0; i < MTK_EINT_DBNC_MAX; i++)
-@@ -585,6 +581,22 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 					 eint);
- 
- 	return 0;
-+
-+err_eint:
-+	for (i = 0; i < eint->nbase; i++) {
-+		if (eint->wake_mask[i])
-+			devm_kfree(eint->dev, eint->wake_mask[i]);
-+		if (eint->cur_mask[i])
-+			devm_kfree(eint->dev, eint->cur_mask[i]);
-+	}
-+	if (eint->cur_mask)
-+		devm_kfree(eint->dev, eint->cur_mask);
-+	if (eint->wake_mask)
-+		devm_kfree(eint->dev, eint->wake_mask);
-+	if (eint->nbase == 1)
-+		devm_kfree(eint->dev, eint->pins);
-+	devm_kfree(eint->dev, eint->base_pin_num);
-+	return -ENOMEM;
- }
- EXPORT_SYMBOL_GPL(mtk_eint_do_init);
- 
+Please also accept this patch together with [1]
+to avoid build and dt binding check error.
+[1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=&submitter=215008&state=&q=v3&archive=&delegate=
+---
+
+Hao Chang (2):
+  pinctrl: mediatek: update EINT base retrieval method
+  pinctrl: mediatek: adapt to multi-base design
+
+ drivers/pinctrl/mediatek/mtk-eint.c           | 38 +++++++++-----
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 50 +++++++++++++------
+ 2 files changed, 60 insertions(+), 28 deletions(-)
+
 -- 
 2.46.0
 
