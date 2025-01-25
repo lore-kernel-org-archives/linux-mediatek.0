@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65988C02181
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jan 2025 17:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B20E5C02181
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jan 2025 02:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K59hpdystkn8QFRkAhSRoR2AxPXCsaehF/2nh6Z9iJE=; b=dfouQKk+SkGFduSUUQ3aEyH/a4
-	GQkXMNREnPFa+dzOsmvP8Sd035xpwWqxOZIuBA5QTAoNdJr9D3VyF3rvXJcgrIoM8uhbYROl+/DPz
-	yZgMd1BOGFIQXp6Q65npXZyR6QzwgEBE7OIMg/fKrgvbsszfs1/HTuXERatavjyQRt3EMkEw9+NS8
-	qmpFWninhUjZGiUsk1f5TPBL1wsZW9rVN6bKvZbDthL2ZXBcR0LMYT6M3MEnZxA3Z34MreBUICxiH
-	8JXi/ocqi6nW9JT2zrcKC+0N4ie5wdatp1UDgduWFkV+h8MFYN1W3JZQeRFCAjlrcOa1sfDdCXeLm
-	CUC+6Klw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bbT7/cMJ6b0IwK66Kd6AS83TnC0ha8OJJhp7htsNqC4=; b=K2ErzJugwd91KxaKjcFb/tJe+0
+	zGRfQpzkSvvmYA/Jh+An4QYNc344IHjsOLp2IkLHAhkxHIV4dm2zZ26ImyP5lAcSpzu1Rptfj7GVa
+	ZA96HqAZFZLjIxh+ivvXNfcAAxyTVMtG3Bp30yqN7fKyBZ7imbJo5LaQ1eHAzMw8H0eugGfOW81hz
+	WOLs6q+R/zsjkQUd+G49mLtQepn7ysq0cnTAk0EcBlxaGkj3i6OW1222XBRlXxwM4s2Xbh0uAKVFd
+	IPjt67tTzTryIrXm4upG4lkGsGswVXxmI0EWDG28Y739RQ8VBsiNe+Y1Kt19Of6SvPkdKNYSNke6G
+	QNuIwmVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbNYD-0000000FDG5-1kZ4;
-	Fri, 24 Jan 2025 17:33:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tbWIT-0000000FvpV-20U2;
+	Sat, 25 Jan 2025 02:53:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbNWu-0000000FD8C-1jCT;
-	Fri, 24 Jan 2025 17:31:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8FB325C60DC;
-	Fri, 24 Jan 2025 17:30:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FE7DC4CED2;
-	Fri, 24 Jan 2025 17:31:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737739899;
-	bh=hgo5Gm6nDhGIQgSJHFT/RmxBxdtq+iVJ5SoDgdrUDWI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hQvRZcd4e2GNQdo7p0U4OCCfPvGv6YOcR/Ps8DznEY6RoRrIRB/osheeIqYU+O+0B
-	 9EGwizhOSWwtVXT53fP3XGQeR05fXIKdOkbPDIQPh6yLWIhqhSSSWR//PK5LRWv5vR
-	 CubAIK9WJR+q0+wPXdUfkkTDnJQk8Xcb5vv7eZf6D+7a6m1opDV2Z7oeVjPT3UCqOV
-	 7ZQfxwNyvo76Z1kH6z5oMzCBHC8AFM/RFpTbpspC5qC2AzCvbGnMIm3UHEpnAHpaAG
-	 DY0WtlHXROP9+injXE/p8n9p914ERjlxe9yPN0/Ldm4qh9RNalYVmFIhQxmke/TjQI
-	 VwOJNjGPP9Iyw==
-Date: Fri, 24 Jan 2025 17:31:33 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Friday Yang =?utf-8?B?KOadqOmYsyk=?= <Friday.Yang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"mturquette@baylibre.com" <mturquette@baylibre.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Garmin Chang =?utf-8?B?KOW8teWutumKmCk=?= <Garmin.Chang@mediatek.com>,
-	"sboyd@kernel.org" <sboyd@kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>,
-	"robh@kernel.org" <robh@kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	id 1tbWH8-0000000Fvge-0XnX;
+	Sat, 25 Jan 2025 02:51:59 +0000
+X-UUID: 546cdbcadac711ef82ff63e91e7eb18c-20250124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bbT7/cMJ6b0IwK66Kd6AS83TnC0ha8OJJhp7htsNqC4=;
+	b=oEni+9xBi+xt0RmznEpKGz3mSIeh1IMCEfS2p7I60n1fN8Nt+NHIV4rRtCdVvCcKsocyTNTrGJjOz7F3ahIaxNh5YRbRMMCpOdQtFNL7DWSqQ1MWuDYP4Lzd6X1AOEQVCVLtxNMjbAFg+a5pFFBCO9Ewwk+L1oKhWWyt57L9J2M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:49242dea-69dd-4523-9c19-c47240c8c026,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:601eaa3d-da39-4471-8a46-23da908abe46,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 546cdbcadac711ef82ff63e91e7eb18c-20250124
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <ot_chhao.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1590534204; Fri, 24 Jan 2025 19:51:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Sat, 25 Jan 2025 10:51:49 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Sat, 25 Jan 2025 10:51:48 +0800
+From: Hao Chang <ot_chhao.chang@mediatek.com>
+To: Sean Wang <seann.wang@kernel.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
- for MT8188
-Message-ID: <20250124-aide-feisty-821cf9cf1382@spud>
-References: <20250121065045.13514-1-friday.yang@mediatek.com>
- <20250121065045.13514-2-friday.yang@mediatek.com>
- <20250121-violet-widely-df3567b085a4@spud>
- <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
+CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
+	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen
+	<hanks.chen@mediatek.com>, Chunhui Li <chunhui.li@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Hao
+ Chang" <ot_chhao.chang@mediatek.com>
+Subject: [RESEND v3 0/2]
+Date: Sat, 25 Jan 2025 10:51:21 +0800
+Message-ID: <20250125025145.14405-1-ot_chhao.chang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="D7rLUrhVT1Wjp55T"
-Content-Disposition: inline
-In-Reply-To: <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_093140_540210_D93B6EE8 
-X-CRM114-Status: GOOD (  32.83  )
+X-CRM114-CacheID: sfid-20250124_185158_182592_69ADFD3D 
+X-CRM114-Status: UNSURE (   6.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,154 +88,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Change in v3:
+1)Add error handling to prevent memory leaks 2)Move the eint pin assignment action to eint for processing
+---
+This patch depends on
+[v3,2/2] pinctrl: mediatek: add mt8196 driver [v3,1/2] dt-bindings: pinctrl: mediatek: add support for mt8196
 
---D7rLUrhVT1Wjp55T
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Please also accept this patch together with [1] to avoid build and dt binding check error.
+[1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=&submitter=215008&state=&q=v3&archive=&delegate=
+---
 
-On Wed, Jan 22, 2025 at 07:40:12AM +0000, Friday Yang (=E6=9D=A8=E9=98=B3) =
-wrote:
-> On Tue, 2025-01-21 at 17:30 +0000, Conor Dooley wrote:
-> > On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
-> > > SMI LARBs require reset functions when applying clamp operations.
-> > > Add '#reset-cells' for the clock controller located in image,
-> > > camera
-> > > and IPE subsystems.
-> >=20
-> > A new required property is an abi break, please explain why this is
-> > required.
+Hao Chang (2):
+  pinctrl: mediatek: update EINT base retrieval method
+  pinctrl: mediatek: adapt to multi-base design
 
-You never answered this part. From a quick check, looks like the change
-you made will cause probe failures if the resets are not present? Maybe
-I misread the driver code in my quick skim - but that is the implication
-of a new required property, so I didn't dig super far.
+ drivers/pinctrl/mediatek/mtk-eint.c           | 38 +++++++++-----
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 50 +++++++++++++------
+ 2 files changed, 60 insertions(+), 28 deletions(-)
 
-Adding new properties that break a driver is not really acceptable, so I
-hope I made a mistake there.
+-- 
+2.46.0
 
-> What are "SMI LARBs"? Why did things previously work
-> > without
-> > acting as a reset controller?
-> >=20
->=20
-> The background can refer to the discussion in the following link:
->=20
-> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3DwXpobD=
-WU1CnvkA@mail.gmail.com/
->=20
-> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fa=
-sm2rFg@mail.gmail.com/
-> SMI clamp and reset operations should be implemented in SMI driver
-> instead of PM driver.
-
-So the answer to how it worked previously was that nothing actually used
-this multimedia interface?
-
-Your commit message needs to explain why a new required property is okay
-and why it was not there before.
-
-Thanks,
-Conor.
-
->=20
-> I previously added the SMI reset control driver. However, the
-> reviewer's comments are correct, these functions have already
-> been implemented in the clock control driver. There is no need
-> to submit duplicate code.=20
->=20
-> https://lore.kernel.org/lkml/20241120063305.8135-2-friday.yang@mediatek.c=
-om/
->=20
-> https://lore.kernel.org/lkml/20241120063305.8135-3-friday.yang@mediatek.c=
-om/
->=20
->=20
-> On the MediaTek platform, the SMI block diagram like this:
->=20
->                 DRAM
->                  |
->             EMI(External Memory Interface)
->                  |  |
->           MediaTek IOMMU(Input Output Memory Management Unit)
->                  |  |
->              SMI-Common(Smart Multimedia Interface Common)
->                  |
->          +----------------+------------------+
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->        larb0       SMI-Sub-Common0     SMI-Sub-Common1
->                    |      |     |      |             |
->                   larb1  larb2 larb3  larb7       larb9
->=20
-> The SMI-Common connects with SMI LARBs and IOMMU. The maximum LARBs
-> number that connects with a SMI-Common is 8. If the engines number is
-> over 8, sometimes we use a SMI-Sub-Common which is nearly same with
-> SMI-Common. It supports up to 8 input and 1 output(SMI-Common has 2
-> output).
->=20
-> > >=20
-> > > Signed-off-by: Friday Yang <friday.yang@mediatek.com>
-> > > ---
-> > >  .../bindings/clock/mediatek,mt8188-clock.yaml | 21
-> > > +++++++++++++++++++
-> > >  1 file changed, 21 insertions(+)
-> > >=20
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
-> > > clock.yaml
-> > > b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
-> > > clock.yaml
-> > > index 860570320545..2985c8c717d7 100644
-> > > --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
-> > > clock.yaml
-> > > +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
-> > > clock.yaml
-> > > @@ -57,6 +57,27 @@ required:
-> > >    - reg
-> > >    - '#clock-cells'
-> > >=20
-> > > +allOf:
-> > > +  - if:
-> > > +      properties:
-> > > +        compatible:
-> > > +          contains:
-> > > +            enum:
-> > > +              - mediatek,mt8188-camsys-rawa
-> > > +              - mediatek,mt8188-camsys-rawb
-> > > +              - mediatek,mt8188-camsys-yuva
-> > > +              - mediatek,mt8188-camsys-yuvb
-> > > +              - mediatek,mt8188-imgsys-wpe1
-> > > +              - mediatek,mt8188-imgsys-wpe2
-> > > +              - mediatek,mt8188-imgsys-wpe3
-> > > +              - mediatek,mt8188-imgsys1-dip-nr
-> > > +              - mediatek,mt8188-imgsys1-dip-top
-> > > +              - mediatek,mt8188-ipesys
-> > > +
-> > > +    then:
-> > > +      required:
-> > > +        - '#reset-cells'
-> > > +
-> > >  additionalProperties: false
-> > >=20
-> > >  examples:
-> > > --
-> > > 2.46.0
-> > >=20
-
---D7rLUrhVT1Wjp55T
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ5POdQAKCRB4tDGHoIJi
-0i5YAP9Dx5bXus4xwjvaYC4iLzVHrcUXsxmP4pUtVR6hWDrycwD9GKZ11XB4OJbc
-HOrve7a/fbLIiPLQfLUBCD2A5m4nbQ8=
-=oF2i
------END PGP SIGNATURE-----
-
---D7rLUrhVT1Wjp55T--
 
