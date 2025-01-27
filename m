@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB08C0218C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 15:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E63EC02188
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 16:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z3fdf68cKnEaIGamBbArQHWaVBKPqUrbMqE+m1JNXYk=; b=AybrZqZZSodrLdy1qTtI4fKS4y
-	eOKM7pI/GnwYRahufnpqt1aeupZwQhSPdWSQNKey+gfoPvFKTos1HLZi004pXqCbrEo/fce4E1G0r
-	xX+ZLHV2ZqX76+jL+5M2nf+29jwjlUr9u96F+5WfbapM29Fm+5401/W5W0hKGVvcuZyZaGXVyHt9L
-	8sftx9MbCdQPrQMtcOFAP85PU6TczRCz2rnmjPLl5lPkdfD5gnMR0Zl3gc3TqH7UJKflIk7+kBy7K
-	DlGsqCMH2tyxTaVg2pUHSaMK7IErPRtmjBBumn07gfCUxn7LOjeqRSLea3RrqGFsg25LKshNiAUDi
-	Bkcqh3XA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WlQ0Imi4TI1g2HJ/WhDlE3//wGfnD+n5Npq7eYW5xxc=; b=IraL3u7Z71/YIik6+mje4v6MFr
+	Y7Vciq03i7nfp4uA0xoayGZBConpXtUnrT3e79GpfPvSgltL8rCUabfvXPxXXPAGvevS/6VfuiSmm
+	LC9FYa4iffu9iTS5/iJMIYunlzDfxxdCJ3SdsUq1ULooW5bhkSyRfupDH1AE/45o69KGJeZ8cRy92
+	ZfSaRLQE7evrxh/4D4RYVkpjXHZuDjsbibZh6M41rRIr2fVyaBmC9DTrGgayKthIui55aJPIH4/7k
+	4rWp3Z6W9AMoIJ6HKu7hd5xYamDeWmPprkzRHE6x6CbgqQO1QuMHvQtdCTaRsKel4QLTGGZT3UoI7
+	uMxEaPyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcQrp-00000002ZwY-21wo;
-	Mon, 27 Jan 2025 15:17:37 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1tcS1V-00000002n0M-1FS7;
+	Mon, 27 Jan 2025 16:31:41 +0000
+Received: from mail-vk1-f180.google.com ([209.85.221.180])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcQqT-00000002Zec-3URD
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jan 2025 15:16:15 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e398484b60bso6702650276.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jan 2025 07:16:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737990972; x=1738595772; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Z3fdf68cKnEaIGamBbArQHWaVBKPqUrbMqE+m1JNXYk=;
-        b=LO/r0+63ZMl+ex3ZsFUVzafXuUKJvWU1PtPdTeEJ1mvWlRqMdnh8S8HM7ZrULG9uqF
-         1xYUGaZTdsiF4fk6aWhO4vGby+2krZSiHsw/qZsqTt1rAH58utt5joQaLt7mGjVHJgci
-         sguQeccMDhGQ963XHJ4+M7lRCtprJbNiCmywSVC6m63x3UnqnekqS87VUR3Bw0BCLmeN
-         Bno9OFshc5S1oGpaDhoH2q7XfFiD8iv8Bj9FLGWpgQPi3e/rGYrgBTqbPrTn6/17s+ui
-         40ATiJzq83aXkKbK9JbV2GpYaLMBTuLhrw4Z2JTO5My27tYvJWTWgZtb5eOhmnUdQ6bM
-         5bag==
+	id 1tcS0B-00000002miy-0svE;
+	Mon, 27 Jan 2025 16:30:20 +0000
+Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-518a861612eso3153560e0c.1;
+        Mon, 27 Jan 2025 08:30:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737990972; x=1738595772;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Z3fdf68cKnEaIGamBbArQHWaVBKPqUrbMqE+m1JNXYk=;
-        b=ccdEZ0bSSC/ymdMAVzNtm7l4pfMy2RifXQdzZiyKKWfE2g7PhCuL6fgQemvdKPi5eC
-         +1xfOKdM2kAy8Q+RzIgvp2gueCeLobGOiYx/8A0QV7NvCGaH3Xh+HU5TeIhfLbQ063Kk
-         Y+2Us3KiylY20BUxyHdtd4m5rAy4IwpJatr3QaISsHJSlyscud2t/tjB1hNQJD1SuYmB
-         4D70m3wxJYWomO29bAZmXZNcICQ8KIp92StFA1lg6fAtCYXEoTZEtLWyklHM7ngjhEen
-         fTATucMcUi7s1064oG8UyAPVoIxGzsCcOBaJtbbX6AREovz3BI8rJqy/UZEY7Lq93mJS
-         Yp1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXTzbZr1fNPW9SriSjO/vHA3B6BdjY3t28yPoaFtv+B+Mkh4G6STGV2nca/RU+FrIx9wKsE2JOTbJ+S96jF3Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHOs/uSbHdvraha5pryv5+B0yRLB8vIUbejFVkECBHUMVjtydz
-	RTlIm5fsh7R0A1ZPF4IEAS7vAfCY3luZ4cuNOXeWlVPlkOAmbNZwpTuC89GCHrf8nFryGkytCJx
-	XRI/ivn1+Vi34oYyw+m02FHdoHKWvS3rCbqvBSw==
-X-Gm-Gg: ASbGncv/QnS6Y91WBt5NIJqO3xP1f6GQKpsK1EmZLslcyavdEVM75k+3HdGlS6g590w
-	RmfQ8z5c3zfU3DKwxs9uH9cXMTsyCbJnmSm/kaas4FOZltD534fbCP6llb2AnpwI=
-X-Google-Smtp-Source: AGHT+IE7Vja9677she6CObvFAbVBiI5Ys+p+eByoUyFiITh4qV3MJatrF8vKcAYHzhv31KbUMJyT51BBZJ0PLRNDtTM=
-X-Received: by 2002:a05:6902:150c:b0:e57:88a0:3ca with SMTP id
- 3f1490d57ef6-e57b1344ac2mr27218044276.40.1737990972298; Mon, 27 Jan 2025
- 07:16:12 -0800 (PST)
+        d=1e100.net; s=20230601; t=1737995417; x=1738600217;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WlQ0Imi4TI1g2HJ/WhDlE3//wGfnD+n5Npq7eYW5xxc=;
+        b=Pa8jtr1Yhiq849fYAFm9hZ87+z0zVCm3H8LXRw5qOox2zKihUaNxMdA7v+lqW0PYoj
+         u9Nw8WeLHL2SFublBAqPftxDTWVYolBSPvi4TKOL58yuz1mSn3fkH16yZ66v7faHKXwH
+         pDMy3PX0g15Wmf1eksnpveBQjXbs7ZSXITlsYUmjC6mgSIGlD+L8rYEZn+y4Txd5uorQ
+         7CXX6tbS9yxZnMgrKddz0HvlBpplkLcviyPPTKz9GQnIwObMP+njxycCwr17gYbGmU3l
+         D5Jtc+Aog8EamUVw2q+uKYLI2TYgGBh98WSzesXPJQjuwbMEypMxESCDHgSGjb/UlDGG
+         PbTw==
+X-Forwarded-Encrypted: i=1; AJvYcCUD40o1XfmYJPiE9ZgSMfdHbyawlWqs6Hobycg7XGyDb7z0llGUJdxJnKV3MzsCDjr3GgolXTH5F1YvLRLV864=@lists.infradead.org, AJvYcCXxG+K0aLpgp84pcnd1KzXtCXh0fr8KJpAXsYLkr/EP0w5DdXQ72BrfwEjdO/za4sxFmiKXTtlW8moDQprS0oIu@lists.infradead.org
+X-Gm-Message-State: AOJu0YzYXjYTt57ZEk4egXgJ+fon3lIPt/6hfnHELs9PBPf+lghbFh24
+	wxg5JPUM/2nUMs2VNDeWonQwkhP6pr6/F0IHLRnulAn/d3wD++MzMr2Hm6uakVA=
+X-Gm-Gg: ASbGncte5kLVaCNwhBlaBjvb4jQYhSxl/UkUBhtaFL3o/jJ2D95UhCG6xBAzrQAj4k4
+	XPC5VMEb+FZ22fSmFUOBFosWAz5LN6UlFoEzacC7ohK1ePqOziIKLbdq5RpaAi6QsG23MEQ8xEl
+	sWjYpzZPmZ56RkK7+FKVYIbT9rPVLOzHiJ+dDQNRPo1D6O/5uioxvFnt72xv0my9bltIlp+eJr9
+	18nd8Mw/76YE4cua6cMtLL7o/ElqG2NnDETc9w9Qc6PJX+j/Lo8BbyIZiExj9+y+Op85Q6hW5YP
+	7oDGhDJSlBwedvW/shCiWsWl0LbP5gfBUSl/oFILhHE=
+X-Google-Smtp-Source: AGHT+IE7TcI+wZeczxQQ7Ikiku10xmwCXdvnLayVtAW+2k/Jbg1rLXTlA4zfq56P4T71Do7cEm135Q==
+X-Received: by 2002:a05:6122:2402:b0:51c:93a2:d809 with SMTP id 71dfb90a1353d-51e3de6de6bmr13973146e0c.5.1737995416960;
+        Mon, 27 Jan 2025 08:30:16 -0800 (PST)
+Received: from mail-ua1-f50.google.com (mail-ua1-f50.google.com. [209.85.222.50])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-51e4ebea379sm1458656e0c.42.2025.01.27.08.30.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 Jan 2025 08:30:16 -0800 (PST)
+Received: by mail-ua1-f50.google.com with SMTP id a1e0cc1a2514c-860f0e91121so3089183241.0;
+        Mon, 27 Jan 2025 08:30:16 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUuQup78sfUfrXG8zMFxr9mEulwkLPRwH5aG77MPT2wuLuaZ+Hb1kmlGfQJQv9U9Ot0uU+ebTzjlrgydy2zElE=@lists.infradead.org, AJvYcCWg7MgdXvqtn2GwRzJdT4zLw/2Z17BVwIDEZuZNIrGl3MDRVJGINbbRtoPTRKUbJ4GGh+TT0jO4F7nX6aGzCbG0@lists.infradead.org
+X-Received: by 2002:a05:6122:2028:b0:515:20e6:7861 with SMTP id
+ 71dfb90a1353d-51e4fb68a06mr12748400e0c.2.1737995415897; Mon, 27 Jan 2025
+ 08:30:15 -0800 (PST)
 MIME-Version: 1.0
-References: <20250120184728.18325-1-ansuelsmth@gmail.com> <20250120184728.18325-2-ansuelsmth@gmail.com>
- <20250121-zippy-umber-fossa-abbfb0@krzk-bin> <679770d8.7b0a0220.b6f23.38b4@mx.google.com>
-In-Reply-To: <679770d8.7b0a0220.b6f23.38b4@mx.google.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 27 Jan 2025 16:15:36 +0100
-X-Gm-Features: AWEUYZnk9Xh1b_Hveu4tndN_oObnjQYSeVJzcpRRCX5DJCyFhAmHsJWAlWuduBA
-Message-ID: <CAPDyKFoEDbSfQA3xPCUPsJCOdiDVdAjB1Fno=S7yrqJXSqnfXA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for AN7581 MMC Host
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+References: <20250127-pm_ata-v1-0-f8f50c821a2a@gmail.com>
+In-Reply-To: <20250127-pm_ata-v1-0-f8f50c821a2a@gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 27 Jan 2025 17:30:04 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdV7GwMNm5tYvWugehstM07W9JkLdKrE9hwPhxcEab8ajA@mail.gmail.com>
+X-Gm-Features: AWEUYZmGy-5V1Zbo64bUIwl2HUW8rq3_GydwTJUAoMljjyEePEDEnt0EQDD7GTM
+Message-ID: <CAMuHMdV7GwMNm5tYvWugehstM07W9JkLdKrE9hwPhxcEab8ajA@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/14] AHCI power management cleanup
+To: Raphael Gallais-Pou <rgallaispou@gmail.com>
+Cc: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Hans de Goede <hdegoede@redhat.com>, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Viresh Kumar <vireshk@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, linux-ide@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	upstream@airoha.com
+	linux-sunxi@lists.linux.dev, linux-renesas-soc@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250127_071613_878573_52730309 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20250127_083019_255875_EDAB1852 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +102,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Jan 2025 at 12:41, Christian Marangi <ansuelsmth@gmail.com> wrote:
->
-> On Tue, Jan 21, 2025 at 08:59:19AM +0100, Krzysztof Kozlowski wrote:
-> > On Mon, Jan 20, 2025 at 07:47:02PM +0100, Christian Marangi wrote:
-> > > -                   pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> > > +                   /* Skip setting uhs pins if not supported */
-> > > +                   if (host->pins_uhs)
-> > > +                           pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> > >             } else {
-> > >                     dev_pm_clear_wake_irq(host->dev);
-> > >             }
-> > > @@ -2816,9 +2835,12 @@ static int msdc_of_clock_parse(struct platform_device *pdev,
-> > >     if (IS_ERR(host->src_clk))
-> > >             return PTR_ERR(host->src_clk);
-> > >
-> > > -   host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> > > -   if (IS_ERR(host->h_clk))
-> > > -           return PTR_ERR(host->h_clk);
-> > > +   /* AN7581 SoC doesn't have hclk */
-> > > +   if (!device_is_compatible(&pdev->dev, "airoha,an7581-mmc")) {
-> >
-> > Please avoid coding compatible in multiple places. Not only because
-> > above check is slow comparing to check on integer, but it just scales
-> > poorly and leads to less readable further code. Use driver data with
-> > model name or flags/quirks bitmask.
-> >
->
-> I implemented this in a more compatible way so we don't need an
-> additional compatible anymore. Soo this series is not needed anymore.
->
-> Should I flag these as not applicable anywhere in the patchwork systems?
+Hi Raphael,
 
-No need to, just send new versions.
+On Mon, 27 Jan 2025 at 13:46, Raphael Gallais-Pou <rgallaispou@gmail.com> w=
+rote:
+> Several AHCI drivers expose suspend/resume functions in a way that can
+> be simplified.  Using pre-processor operation can lead to errors, while
+> relying on automatic kernel configuration is safer.  It also shrinks the
+> kernel size when CONFIG_PM_SLEEP is not used[1].
 
-Kind regards
-Uffe
+m68k/allyesconfig:
+
+drivers/ata/sata_highbank.c: In function =E2=80=98ahci_highbank_suspend=E2=
+=80=99:
+drivers/ata/sata_highbank.c:590:9: error: implicit declaration of
+function =E2=80=98ata_host_suspend=E2=80=99; did you mean =E2=80=98ata_sas_=
+port_suspend=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/sata_highbank.c: In function =E2=80=98ahci_highbank_resume=E2=
+=80=99:
+drivers/ata/sata_highbank.c:607:9: error: implicit declaration of
+function =E2=80=98ata_host_resume=E2=80=99; did you mean =E2=80=98ahci_port=
+_resume=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/pata_arasan_cf.c: In function =E2=80=98arasan_cf_suspend=E2=80=
+=99:
+drivers/ata/pata_arasan_cf.c:938:9: error: implicit declaration of
+function =E2=80=98ata_host_suspend=E2=80=99; did you mean =E2=80=98ata_sas_=
+port_suspend=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/pata_arasan_cf.c: In function =E2=80=98arasan_cf_resume=E2=80=
+=99:
+drivers/ata/pata_arasan_cf.c:948:9: error: implicit declaration of
+function =E2=80=98ata_host_resume=E2=80=99; did you mean =E2=80=98sata_link=
+_resume=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/sata_rcar.c: In function =E2=80=98sata_rcar_suspend=E2=80=99:
+drivers/ata/sata_rcar.c:936:9: error: implicit declaration of function
+=E2=80=98ata_host_suspend=E2=80=99; did you mean =E2=80=98sata_rcar_suspend=
+=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/sata_rcar.c: In function =E2=80=98sata_rcar_resume=E2=80=99:
+drivers/ata/sata_rcar.c:973:9: error: implicit declaration of function
+=E2=80=98ata_host_resume=E2=80=99; did you mean =E2=80=98sata_rcar_resume=
+=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/pata_imx.c: In function =E2=80=98pata_imx_suspend=E2=80=99:
+drivers/ata/pata_imx.c:209:9: error: implicit declaration of function
+=E2=80=98ata_host_suspend=E2=80=99; did you mean =E2=80=98pata_imx_suspend=
+=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
+drivers/ata/pata_imx.c: In function =E2=80=98pata_imx_resume=E2=80=99:
+drivers/ata/pata_imx.c:232:9: error: implicit declaration of function
+=E2=80=98ata_host_resume=E2=80=99; did you mean =E2=80=98pata_imx_resume=E2=
+=80=99?
+[-Werror=3Dimplicit-function-declaration]
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
