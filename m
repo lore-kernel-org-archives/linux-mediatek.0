@@ -4,78 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C9A7C0218D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 03:07:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E830BC0218C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 08:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MHB4GCIrieOlgIAlOfPmpnVGbdUh/k6mqUapsheOE10=; b=wkuMyTSGrIuavIqrN+nKp0BQ0E
-	hx58efLA9Fbhtc16z9AKKlp1XMh6f/2++8r5ptmnlbfIHaADIclI06XFXXI8eTyKeirKwT3USPvgI
-	XSFg2/1IYr3KyQ8aYGd3aU8MPONvjaSrIMz2TzygDXBRmhkNyXxhTxnXnfXAxyGkxHd9vfG1WCn6s
-	pLsJlH1Jt6xH5wetjxhdPodU6W36ri2SyGemro1/OFXKWhRas1FXCs/XLx3xNmsSiEiCKMeJc1sFj
-	RaRWiW8decngmYCdnnLPlPTladveTa4wIRXP8E4iJtZtGI2wPS2VFSOAOhSNOC27aeaEprZDntMLL
-	aGMSvNKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3raht9WbEIWoEVofIfUptY7E8c8iwOKEoVbR8rHP0sU=; b=RH6g7XHH5SF7PwSDVQQHvQKwo5
+	elXA8grJ34xlId9sCrxoq2Ai02pVf6it+n8WoNzXgYeBzW12ORYUr0Bh7RL2OROnG/B9CLxqQSDx7
+	fMZSPMUjud/REFtcZ543Ys9FpuxPdVrTcv0Umx1YE86OF6cAKbFS1IVC/hgljJYNqZRdXc6CRmQfJ
+	Jo3VBGedZ1ecvuOckKbsRrWuw9VPd4n3MpennC0oUH3iPynYOIOwTcnZOfTvCDCdduEQTtphkNN5w
+	OSzXg+k/plqqP++736Jcc4pB7iNixVugkBRf8V+Kp3xRo/XK6aGcylmD/tBFdxPuH2dVMPxw5mkOA
+	50b/y1Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcFTR-00000001YtB-2qBa;
-	Mon, 27 Jan 2025 03:07:41 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1tcKwQ-00000001vnW-0BAl;
+	Mon, 27 Jan 2025 08:57:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcFQn-00000001YPS-1DTG;
-	Mon, 27 Jan 2025 03:04:59 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.105])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4YhCqf1TZHz11TB4;
-	Mon, 27 Jan 2025 11:01:34 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 2F3481402CF;
-	Mon, 27 Jan 2025 11:04:49 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 27 Jan 2025 11:04:48 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Wei Fang
-	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
-	<xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet
-	<edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
-	<przemyslaw.kitszel@intel.com>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
-	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
- Horman <horms@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	<imx@lists.linux.dev>, <netdev@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
-	<bpf@vger.kernel.org>, <linux-rdma@vger.kernel.org>,
-	<linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [RFC v8 1/5] page_pool: introduce page_pool_get_pp() API
-Date: Mon, 27 Jan 2025 10:57:30 +0800
-Message-ID: <20250127025734.3406167-2-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20250127025734.3406167-1-linyunsheng@huawei.com>
-References: <20250127025734.3406167-1-linyunsheng@huawei.com>
+	id 1tcKv5-00000001vUU-3W1g;
+	Mon, 27 Jan 2025 08:56:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1737968193;
+	bh=TPpiy3zgnN/Boyv66TB9NhHG05kaN1e+33CML8Libeo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=o/DdY28C1N5QFMQUOlY8aBioFp/kzmWW8MCwO56H9J91gb6VmMRUrQZHOB+oNTb8k
+	 9LK4PO8ZQFozXZ74q0cRXlMP1qpYV9c6bVaVsXoWV3krKe/p9LSoJZPwQPE+lM669R
+	 tKLwkRACXRcW//AZechUm94lpVileJYhhw7aBR3yG+CUoh6nVejRz6pxBIzGUyyOUf
+	 26ssUH1cTo7gl/AHmTlixOoE7ewWA0+892yp9k9PHqdoZolZue+4uc10wR7A5cIMu8
+	 FQsSpnvRXQ4WdwTtKorQoy2TkqhfWwTogUOk+e0XyAV38R/e/gQyCmUpL2x1b/LjJu
+	 6POF0kE+LEv4A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F0E217E0858;
+	Mon, 27 Jan 2025 09:56:32 +0100 (CET)
+Message-ID: <6100a94f-0485-4db5-a599-877b2364ed9a@collabora.com>
+Date: Mon, 27 Jan 2025 09:56:31 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 06/34] drm/mediatek: Add support for MT8195 Digital
+ Parallel Interface
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
+ =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
+ <20250113145232.227674-7-angelogioacchino.delregno@collabora.com>
+ <c729539dae9bc882574ea9e1048e0fd23b4c5aca.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <c729539dae9bc882574ea9e1048e0fd23b4c5aca.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250126_190457_719376_D2E4C3CE 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20250127_005636_222888_37D16C63 
+X-CRM114-Status: GOOD (  28.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,249 +101,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-introduce page_pool_get_pp() API to avoid caller accessing
-page->pp directly.
+Il 24/01/25 10:00, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Mon, 2025-01-13 at 15:52 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Add support for the DPI block found in the MT8195 and MT8188 SoCs.
+>> Inside of the SoC, this block is directly connected to the HDMI IP.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_dpi.c      | 55 ++++++++++++++++++++++---
+>>   drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  6 +++
+>>   drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  2 +
+>>   3 files changed, 58 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> index bb1a17f1384b..dca801f589c8 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> @@ -145,6 +145,7 @@ struct mtk_dpi_factor {
+>>    * @csc_enable_bit: Enable bit of CSC.
+>>    * @pixels_per_iter: Quantity of transferred pixels per iteration.
+>>    * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
+>> + * @is_internal_hdmi: Specifies whether the DPI is internally connected to the HDMI block
+> 
+> MT8173 HDMI is also internal hdmi, so I think modification for this is not because of internal hdmi.
+> Find out the reason and use a correct naming.
+> 
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
- .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
- drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
- drivers/net/netdevsim/netdev.c                     |  6 ++++--
- drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
- include/net/libeth/rx.h                            |  3 ++-
- include/net/page_pool/helpers.h                    |  5 +++++
- net/core/xdp.c                                     |  3 ++-
- 11 files changed, 36 insertions(+), 18 deletions(-)
+Right. That should be hdmi_shared_clocks or something similar.
+I'll change that in the next version.
 
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index 1b55047c0237..8709426ae6d9 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -1009,7 +1009,8 @@ static void fec_enet_bd_init(struct net_device *dev)
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
- 				if (page)
--					page_pool_put_page(page->pp, page, 0, false);
-+					page_pool_put_page(page_pool_get_pp(page),
-+							   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-@@ -1549,7 +1550,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
- 			xdp_return_frame_rx_napi(xdpf);
- 		} else { /* recycle pages of XDP_TX frames */
- 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
--			page_pool_put_page(page->pp, page, 0, true);
-+			page_pool_put_page(page_pool_get_pp(page), page, 0, true);
- 		}
- 
- 		txq->tx_buf[index].buf_p = NULL;
-@@ -3311,7 +3312,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
- 			} else {
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
--				page_pool_put_page(page->pp, page, 0, false);
-+				page_pool_put_page(page_pool_get_pp(page),
-+						   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-index 403f0f335ba6..87422b8828ff 100644
---- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-+++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-@@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
- 	if (!page)
- 		return;
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- 	buf_state->page_info.page = NULL;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 26b424fd6718..e1bf5554f6e3 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- 			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
- 			rx_buffer->offset + hr, size, rx_buffer->truesize);
-@@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 2fa9c36e33c9..04f2347716ca 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
- 	if (unlikely(!rx_buf->page))
- 		return;
- 
--	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-+	page_pool_put_full_page(page_pool_get_pp(rx_buf->page), rx_buf->page,
-+				false);
- 
- 	rx_buf->page = NULL;
- 	rx_buf->offset = 0;
-@@ -3098,7 +3099,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
- void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
- 		      unsigned int size)
- {
--	u32 hr = rx_buf->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buf->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->offset + hr, size, rx_buf->truesize);
-@@ -3130,8 +3132,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
- 	if (!libeth_rx_sync_for_cpu(buf, copy))
- 		return 0;
- 
--	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
--	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-+	dst = page_address(hdr->page) + hdr->offset +
-+		page_pool_get_pp(hdr->page)->p.offset;
-+	src = page_address(buf->page) + buf->offset +
-+		page_pool_get_pp(buf->page)->p.offset;
- 	memcpy(dst, src, LARGEST_ALIGN(copy));
- 
- 	buf->offset += copy;
-@@ -3149,7 +3153,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
-  */
- struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
- {
--	u32 hr = buf->page->pp->p.offset;
-+	u32 hr = page_pool_get_pp(buf->page)->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index 66d1d23b8ad2..8de0c3a3b146 100644
---- a/drivers/net/ethernet/intel/libeth/rx.c
-+++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, "LIBETH");
-  */
- void libeth_rx_recycle_slow(struct page *page)
- {
--	page_pool_recycle_direct(page->pp, page);
-+	page_pool_recycle_direct(page_pool_get_pp(page), page);
- }
- EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, "LIBETH");
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 94b291662087..30baca49c71e 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 				 * as we know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(page_pool_get_pp(page),
-+							 page);
- 			} while (++n < num);
- 
- 			break;
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index e068a9761c09..e583415f9088 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -632,7 +632,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
- 		if (!ns->page)
- 			ret = -ENOMEM;
- 	} else {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-@@ -831,7 +832,8 @@ void nsim_destroy(struct netdevsim *ns)
- 
- 	/* Put this intentionally late to exercise the orphaning path */
- 	if (ns->page) {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 0b75a45ad2e8..c3f79686f3b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1688,7 +1688,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
- {
- 	struct page *page = virt_to_head_page(buf);
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- }
- 
- static inline void *
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index 43574bd6612f..f4ae75f9cc1b 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
- 		return false;
- 	}
- 
--	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-+	page_pool_dma_sync_for_cpu(page_pool_get_pp(page), page, fqe->offset,
-+				   len);
- 
- 	return true;
- }
-diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-index 793e6fd78bc5..d48e17f571bc 100644
---- a/include/net/page_pool/helpers.h
-+++ b/include/net/page_pool/helpers.h
-@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
- }
- #endif
- 
-+static inline struct page_pool *page_pool_get_pp(struct page *page)
-+{
-+	return page->pp;
-+}
-+
- /**
-  * page_pool_dev_alloc_pages() - allocate a page.
-  * @pool:	pool from which to allocate
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index bcc5551c6424..73576192710b 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -384,7 +384,8 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 		 * as mem->type knows this a page_pool page
- 		 */
--		page_pool_put_full_page(page->pp, page, napi_direct);
-+		page_pool_put_full_page(page_pool_get_pp(page), page,
-+					napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
- 		page_frag_free(data);
--- 
-2.33.0
+>>    */
+>>   struct mtk_dpi_conf {
+>>          const struct mtk_dpi_factor *dpi_factor;
+>> @@ -165,6 +166,7 @@ struct mtk_dpi_conf {
+>>          u32 csc_enable_bit;
+>>          u32 pixels_per_iter;
+>>          bool edge_cfg_in_mmsys;
+>> +       bool is_internal_hdmi;
+>>   };
+>>
+>>   static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+>> @@ -493,6 +495,7 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+>>
+>>          mtk_dpi_disable(dpi);
+>>          clk_disable_unprepare(dpi->pixel_clk);
+>> +       clk_disable_unprepare(dpi->tvd_clk);
+> 
+> You control tvd_clk for all SoC.
+> Does other SoC need this modification?
+> If so, separate tvd_clk control to another patch.
+
+This doesn't need to be in a different patch because the TVD clock, on instances
+that are not reserved to HDMI (so, on DPINTF and on other SoCs' DPI), this is a
+parent (or a parent of a parent) of engine_clk.
+
+Of course this means that in the aforementioned case, the TVD clock is already
+being prepared and enabled by the clock framework.
+
+In the case of MT8195 DPI, this is not a parent of engine or pixel, so we need
+to enable it manually.
+
+The call to clk_prepare_enable(clk->tvd_clk) practically does *nothing* on the
+currently supported SoCs (so this does not change any behavior!), other than
+incrementing the refcount for this clock (and decrementing it later, obviously,
+when we disable it).
+
+Cheers,
+Angelo
+
+> 
+> Regards,
+> CK
+> 
+>>          clk_disable_unprepare(dpi->engine_clk);
+>>   }
+>>
+>> @@ -509,6 +512,12 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+>>                  goto err_refcount;
+>>          }
+>>
+>> +       ret = clk_prepare_enable(dpi->tvd_clk);
+>> +       if (ret) {
+>> +               dev_err(dpi->dev, "Failed to enable tvd pll: %d\n", ret);
+>> +               goto err_engine;
+>> +       }
+>> +
+>>          ret = clk_prepare_enable(dpi->pixel_clk);
+>>          if (ret) {
+>>                  dev_err(dpi->dev, "Failed to enable pixel clock: %d\n", ret);
+>> @@ -518,6 +527,8 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+>>          return 0;
+>>
+>>   err_pixel:
+>> +       clk_disable_unprepare(dpi->tvd_clk);
+>> +err_engine:
+>>          clk_disable_unprepare(dpi->engine_clk);
+>>   err_refcount:
+>>          dpi->refcount--;
+>> @@ -585,7 +596,9 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>>          struct videomode vm = { 0 };
+>>
+>>          drm_display_mode_to_videomode(mode, &vm);
+>> -       mtk_dpi_set_pixel_clk(dpi, &vm, mode->clock);
+>> +
+>> +       if (!dpi->conf->is_internal_hdmi)
+>> +               mtk_dpi_set_pixel_clk(dpi, &vm, mode->clock);
+>>
+>>          dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+>>          dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+>> @@ -648,10 +661,18 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>>          if (dpi->conf->support_direct_pin) {
+>>                  mtk_dpi_config_yc_map(dpi, dpi->yc_map);
+>>                  mtk_dpi_config_2n_h_fre(dpi);
+>> -               mtk_dpi_dual_edge(dpi);
+>> +               /* DPI can connect to either an external bridge or the internal HDMI encoder */
+>> +               if (dpi->conf->is_internal_hdmi) {
+>> +                       mtk_dpi_mask(dpi, DPI_CON, DPI_OUTPUT_1T1P_EN, DPI_OUTPUT_1T1P_EN);
+>> +                       mtk_dpi_mask(dpi, DPI_CON,
+>> +                                    dpi->conf->input_2pixel ? DPI_INPUT_2P_EN : 0,
+>> +                                    DPI_INPUT_2P_EN);
+>> +               } else {
+>> +                       mtk_dpi_dual_edge(dpi);
+>> +               }
+>>                  mtk_dpi_config_disable_edge(dpi);
+>>          }
+>> -       if (dpi->conf->input_2pixel) {
+>> +       if (dpi->conf->input_2pixel && !dpi->conf->is_internal_hdmi) {
+>>                  mtk_dpi_mask(dpi, DPI_CON, DPINTF_INPUT_2P_EN,
+>>                               DPINTF_INPUT_2P_EN);
+>>          }
+>> @@ -920,14 +941,16 @@ void mtk_dpi_start(struct device *dev)
+>>   {
+>>          struct mtk_dpi *dpi = dev_get_drvdata(dev);
+>>
+>> -       mtk_dpi_power_on(dpi);
+>> +       if (!dpi->conf->is_internal_hdmi)
+>> +               mtk_dpi_power_on(dpi);
+>>   }
+>>
+>>   void mtk_dpi_stop(struct device *dev)
+>>   {
+>>          struct mtk_dpi *dpi = dev_get_drvdata(dev);
+>>
+>> -       mtk_dpi_power_off(dpi);
+>> +       if (!dpi->conf->is_internal_hdmi)
+>> +               mtk_dpi_power_off(dpi);
+>>   }
+>>
+>>   unsigned int mtk_dpi_encoder_index(struct device *dev)
+>> @@ -1022,6 +1045,8 @@ static const struct mtk_dpi_factor dpi_factor_mt8195_dp_intf[] = {
+>>          { 70000 - 1, 4 }, { 200000 - 1, 2 }, { U32_MAX, 1 }
+>>   };
+>>
+>> +static const struct mtk_dpi_factor dpi_factor_mt8195_dpi = { U32_MAX, 1 };
+>> +
+>>   static const struct mtk_dpi_conf mt8173_conf = {
+>>          .dpi_factor = dpi_factor_mt8173,
+>>          .num_dpi_factor = ARRAY_SIZE(dpi_factor_mt8173),
+>> @@ -1114,6 +1139,25 @@ static const struct mtk_dpi_conf mt8192_conf = {
+>>          .csc_enable_bit = CSC_ENABLE,
+>>   };
+>>
+>> +static const struct mtk_dpi_conf mt8195_conf = {
+>> +       .dpi_factor = &dpi_factor_mt8195_dpi,
+>> +       .num_dpi_factor = 1,
+>> +       .max_clock_khz = 594000,
+>> +       .output_fmts = mt8183_output_fmts,
+>> +       .num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
+>> +       .pixels_per_iter = 1,
+>> +       .is_ck_de_pol = true,
+>> +       .swap_input_support = true,
+>> +       .support_direct_pin = true,
+>> +       .dimension_mask = HPW_MASK,
+>> +       .hvsize_mask = HSIZE_MASK,
+>> +       .channel_swap_shift = CH_SWAP,
+>> +       .yuv422_en_bit = YUV422_EN,
+>> +       .csc_enable_bit = CSC_ENABLE,
+>> +       .is_internal_hdmi = true,
+>> +       .input_2pixel = true,
+>> +};
+>> +
+>>   static const struct mtk_dpi_conf mt8195_dpintf_conf = {
+>>          .dpi_factor = dpi_factor_mt8195_dp_intf,
+>>          .num_dpi_factor = ARRAY_SIZE(dpi_factor_mt8195_dp_intf),
+>> @@ -1217,6 +1261,7 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+>>          { .compatible = "mediatek,mt8188-dp-intf", .data = &mt8195_dpintf_conf },
+>>          { .compatible = "mediatek,mt8192-dpi", .data = &mt8192_conf },
+>>          { .compatible = "mediatek,mt8195-dp-intf", .data = &mt8195_dpintf_conf },
+>> +       { .compatible = "mediatek,mt8195-dpi", .data = &mt8195_conf },
+>>          { /* sentinel */ },
+>>   };
+>>   MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+>> index a0b1d18bbbf7..3c24d9e9f241 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+>> @@ -40,6 +40,12 @@
+>>   #define FAKE_DE_LEVEN                  BIT(21)
+>>   #define FAKE_DE_RODD                   BIT(22)
+>>   #define FAKE_DE_REVEN                  BIT(23)
+>> +
+>> +/* DPI_CON: DPI instances */
+>> +#define DPI_OUTPUT_1T1P_EN             BIT(24)
+>> +#define DPI_INPUT_2P_EN                        BIT(25)
+>> +
+>> +/* DPI_CON: DPINTF instances */
+>>   #define DPINTF_YUV422_EN               BIT(24)
+>>   #define DPINTF_CSC_ENABLE              BIT(26)
+>>   #define DPINTF_INPUT_2P_EN             BIT(29)
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index f22ad2882697..772c3d0f5d14 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> @@ -810,6 +810,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+>>            .data = (void *)MTK_DPI },
+>>          { .compatible = "mediatek,mt8195-dp-intf",
+>>            .data = (void *)MTK_DP_INTF },
+>> +       { .compatible = "mediatek,mt8195-dpi",
+>> +         .data = (void *)MTK_DPI },
+>>          { .compatible = "mediatek,mt2701-dsi",
+>>            .data = (void *)MTK_DSI },
+>>          { .compatible = "mediatek,mt8173-dsi",
+>> --
+>> 2.47.0
+>>
+> 
 
 
