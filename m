@@ -4,68 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C550C02188
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 11:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99649C0218C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 12:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j3rCrfBQxRg34UHrvcXEAEaVpRPffRi4D+KAYfBVRcE=; b=iykS0DTXkOzCZGjyRd5A3q+/U/
-	hjdq1ojb/2VhiJzyx/NbYf1OBzAUfrnlGW0ylZyW1begeRvpFoY7bUhPmoyj3y+LX0i981oHDFlqY
-	/9+uXLkTFFQyv/OPtaq4mh/H1+hu5bsewRtjSFw5NZ78hBIN3aInvt1hFb/xb9k0AU0ZLG3/Qnjig
-	EYY0EBBErb+MjvSodmJ+fdSEe+2KF7Tr5ELNsHPurcdjnS6w/0GHY/aEe3RvpPTd8KEq5qwoA1rYA
-	WGbDRMjIG6Cpz6HEwoSUoWhTJ21qwU01pRPUo+yFq/TVQOC186zZYRyoxQKWqb5Ct+nXFpdxAHI9K
-	GpYlmLeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=z8eYln85d4V0XxkISkF3B47hIlXSQBbJiZ4zG36gYUY=; b=uDRVPwokmxK3uk
+	jPdxnrLApJNaaItAE0pXU2rY/tktoOI+WyMDYnWlElv13l9mt10sJRYItOc8A1Pwz5M//649pYkGr
+	rihkPrOhv6DDTFMxGDqsfZXGM6n7FSAsmNCjOI/r6NxOpy8p0DIen18sMLIzbXF+ZN7xjhG/Z+J/l
+	7c5XTcZIqe8odpNiBl6kVdAAGjlTvTOjhVF3JQGc/xzqqSjpGfuRK/+cq5eZuDFOKDWzXgIcq/xAf
+	R0iOOUVmH3FjUDWN+uKrm9t7mzDvwLt2zKQChgjLhc+0OLRthYF6iWWNMA41p3aVdX/M/HALAd2f2
+	j5Z/ode7L9XQ/C4FHewQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcNci-00000002FDN-1iOm;
-	Mon, 27 Jan 2025 11:49:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tcOVm-00000002IH0-32XK;
+	Mon, 27 Jan 2025 12:46:42 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcNbQ-00000002F8V-3ccm;
-	Mon, 27 Jan 2025 11:48:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737978507;
-	bh=lc+C2L2elEfWKiD8GPckPA2FJyMup+IhWEW4zlgFAig=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gzg2v/os61vIFPi7VAU4A/Dvy9J/wCYbsI/vpiIrry+fjO6XL+/NABr8UWmP7c3o2
-	 +E+M3bW3V/jygyD7Fi7KDySzISf5Jk4mPh9xcMFYtbHJH/IpmbICdDgCHKJ8ETU9Jb
-	 YKO29XB9mfWFxi8J8xtyGCCfKvXR7aOj0X5ePCXAL9PTY/IpRynjpVXrBuJyTRT0xV
-	 pZR+bmMmXZXlXaBu45qNC5EK1ELPYlfTD0yCyUCrB0h2D/XlhrcREIUzI72A27d8eP
-	 lBl018apjofsBdTuIJdL+PhYSmlkgNQQ9so/RM/+bQI2Av/1D4AFAuHpoH9sdJsnRc
-	 C/rvwcQ8MQZPw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 91FA717E0B18;
-	Mon, 27 Jan 2025 12:48:26 +0100 (CET)
-Message-ID: <bfce3aea-490b-4311-ad4a-ab567d2a0572@collabora.com>
-Date: Mon, 27 Jan 2025 12:48:26 +0100
+	id 1tcOVk-00000002IFj-0sOW;
+	Mon, 27 Jan 2025 12:46:41 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43624b2d453so47723805e9.2;
+        Mon, 27 Jan 2025 04:46:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737981998; x=1738586798; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=z8eYln85d4V0XxkISkF3B47hIlXSQBbJiZ4zG36gYUY=;
+        b=NVaCSbi3ANWaSVlQykC8rU+akfBpp+6CDSRLs0MWMijfwZz1cPAi4eSXhOeScu11tg
+         ey0v47fqsZ0YZViHC64T0CHxksFvyKZKR/Wgu5ntvlnXzDpae4YqhyNesIi60TdfeBe1
+         mN+0qSVlJfyBpONqzEVPy38eyo2cWSDlMeqCzgRAY6U1uZug5rro7po0XUj01z6OPhht
+         z/bJCzXYD1LusYAjpJGx1upram53EMU6CM+S2G/AfVK5rjmknpTlBLdrQUyIHyke+4pg
+         eskwqt/eZM3+10M5xYescGVOH1kUg41GoZKWGIZeo9mHQG/x4143WfSmTYafOnch9xYW
+         jcSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737981998; x=1738586798;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=z8eYln85d4V0XxkISkF3B47hIlXSQBbJiZ4zG36gYUY=;
+        b=NfY9yaAYE5l3s7gChZM8tdnC/9YWAoYFHvvC9yoqd2QTX51NFTP56bE1peBZoB5+q9
+         y9eUM00w2n+FWlKvMRMWC9yYnyc3ZaAgl0xtsgJ7viB5R7vGqE8E5PKCf+w4IytwklQ9
+         GR5dYq6zqmhtki8+vhLFgGwujBYJhfTYdZs1EkmaB6493v8/jc0pOEC0pMBf90TAaewt
+         Zu5/g83Z6Invxn8xEGoGLM0hzzKHvNDlwD0MS8w/WrfPDswO3mE0B8ocjrsgNVDLsgIO
+         1WZn0OcE6jFH3O4Fz/B4JJ3+F2Mslq9dZ1LwnDZEWWUmXuGy5cONH4KTS8DOYuQ1evJm
+         vxmw==
+X-Forwarded-Encrypted: i=1; AJvYcCWOAVgrpdDiMVjMNBG/Sp+TKqLET4d6P7WTMflycMES1Q54WWjw69EmNDzypgGNvgxktBc+Hhf5aeuWDEm1Nh7P@lists.infradead.org, AJvYcCX2pxhsXKqfhkUGpmkPuLMejyCfw77U1t/51W5YRONeqAbhWoClp3tg2AHMvZoHFmZBRSa+u3lZWbM/57Ro4fE=@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywm2e1yS1SA2fUx0knYFWsDJnlFpWWBpG9IwJVrZaQDZMvlMEvj
+	GMlmAWqDA7AedoT+9uWI3RQmrL7RxDkKTzjDBLmthFsqWESYADtz
+X-Gm-Gg: ASbGncuTi49gkxKYAHDl1CqvCAq1nk+3xL4IGn86pTxwmUWcXSnlssyM+6zBY/0Xlnq
+	lSAEKAkFvVDZsMv8qsmhuslzXWiw+T/hnAH8grQ2G10ee6Q3ixMriXTmNaKTiWLUaSVfwnBQYwE
+	NZkDtQom5iD7aed+wQthl4EULfv+Kb+RnsLp0yx4vrC/tdD4v+Hz2AEE8dXvLK4QR8PToPAZa4q
+	coGPqe7qqcKxpElxzL59FQa1cYnzVilI+5yjPlIJw9fgxpNgGYigTWCHYaxe7OlES5lmj1onX0b
+	yKSG
+X-Google-Smtp-Source: AGHT+IFfSd38Ri9jN8sfQ5L5B554TUZX0q25wsFyyX/2uMgyGS67py+XFULHlQy6v7HbU7SVRYe6KQ==
+X-Received: by 2002:a05:600c:3495:b0:431:5c3d:1700 with SMTP id 5b1f17b1804b1-4389143b450mr317083695e9.21.1737981997803;
+        Mon, 27 Jan 2025 04:46:37 -0800 (PST)
+Received: from localhost ([2001:861:3385:e20:6384:4cf:52c5:3194])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd4b9990sm135476565e9.29.2025.01.27.04.46.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Jan 2025 04:46:37 -0800 (PST)
+From: Raphael Gallais-Pou <rgallaispou@gmail.com>
+Subject: [RFC PATCH 00/14] AHCI power management cleanup
+Date: Mon, 27 Jan 2025 13:45:55 +0100
+Message-Id: <20250127-pm_ata-v1-0-f8f50c821a2a@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND v3 2/2] pinctrl: mediatek: adapt to multi-base design
-To: Hao Chang <ot_chhao.chang@mediatek.com>, Sean Wang
- <seann.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
- Qingliang Li <qingliang.li@mediatek.com>,
- Hanks Chen <hanks.chen@mediatek.com>, Chunhui Li <chunhui.li@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250125025145.14405-1-ot_chhao.chang@mediatek.com>
- <20250125025145.14405-3-ot_chhao.chang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250125025145.14405-3-ot_chhao.chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAOAl2cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDQ0Nj3YLc+MSSRN2UpGQD8yTjJIOUNGMloOKCotS0zAqwQdGxtbUAIVP
+ XsFgAAAA=
+X-Change-ID: 20250113-pm_ata-dbc07b3b0df3
+To: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hans de Goede <hdegoede@redhat.com>, 
+ Patrice Chotard <patrice.chotard@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Viresh Kumar <vireshk@kernel.org>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+ linux-renesas-soc@vger.kernel.org
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2376; i=rgallaispou@gmail.com;
+ h=from:subject:message-id; bh=RfFf9mqe7wnUpvIjSrHj6CQMvmZLwVEjIiP2MewLm8g=;
+ b=owEBbQKS/ZANAwAIAechimjUEsK1AcsmYgBnl4AqHXy802/pdPDCEw20R6+hBBw+dOLQVfY0K
+ QKOcufY0oGJAjMEAAEIAB0WIQQgmXv2E+fvbV/9ui/nIYpo1BLCtQUCZ5eAKgAKCRDnIYpo1BLC
+ te79EACIeSoH/vfRi6LCb3ARwUq4Q7HhYCKxv2xDX3f+4IFS6pryCyaXp3kgdqBqgNYaMdQ5ShF
+ VKytt+DR+0DGoHcn+C1yMz3KxmukzDBedfB8k+fdD5hjGgh795mkqmPw6E5AETkN6odr6wAyzIg
+ tWrhzoJpeY6SH+gkPflAR3Tc/PXkxWMQgV5zCrvWb3KmYDX/BrBPHX0A6LwyF7L8v6t4As3cIHH
+ QC+bBsP+G0uA4AFupeTs/LMOX+UkfCKthpVUYsspVDUpXv6ntLa/zQn8F2lhD4b3U9cP5OchTmz
+ g76Etrn5y2YHML03AKRXgtNpQNcpyedeIHMY7I4EcyKhK/dka5UTl/sM1W18Js+vQUbDo+OhEQo
+ uerK1Ke58MwavucFUFK+hmqJtJJXwhjOqUUzAFRoVSWNLuod0jGTTB1rGC6IasIdP3cSsOYxpF3
+ AJqZ0p8Vpad0JWvKza2mYOsdtAMvX4ym8T6iwt70ipD2TONcNxhaNuLJYc5Ae3zvTgE6kjd5Uph
+ hS0V69QysEsSK6BhUOHKlR5Y6G3/nhCSvV9iTjMhfMP+MToZO1ZCZrKN/J3FtuVHDDZHeNHTZ49
+ sMTOG3cHWP5kkCzdI0rnBPZAVzQlmyvrDmr+O298eFnNIKSWDq21+i7ubogmftWYSINmMsEQ2j5
+ VG38IVjlMtsqAIg==
+X-Developer-Key: i=rgallaispou@gmail.com; a=openpgp;
+ fpr=20997BF613E7EF6D5FFDBA2FE7218A68D412C2B5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250127_034829_060742_C75C4027 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20250127_044640_253863_D4E2F881 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,132 +127,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/01/25 03:51, Hao Chang ha scritto:
-> The eint num will obtain the operation address through pins.
-> Change the traversal method of irq handle from traversing a set of
-> registers to traversing one by one.
-> 
-> Change-Id: I3962b78042d32501a73153201cddf52c6b62a695
-> Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
-> Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
-> ---
->   drivers/pinctrl/mediatek/mtk-eint.c | 38 +++++++++++++++++++----------
->   1 file changed, 25 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-> index 540245c3128d..949a20196f74 100644
-> --- a/drivers/pinctrl/mediatek/mtk-eint.c
-> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
-> @@ -513,6 +513,7 @@ EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
->   int mtk_eint_do_init(struct mtk_eint *eint)
->   {
->   	unsigned int size, i, port;
-> +	struct mtk_pinctrl *hw = (struct mtk_pinctrl *)eint->pctl;
->   
->   	/* If clients don't assign a specific regs, let's use generic one */
->   	if (!eint->regs)
-> @@ -523,11 +524,11 @@ int mtk_eint_do_init(struct mtk_eint *eint)
->   	if (!eint->base_pin_num)
->   		return -ENOMEM;
->   
-> -	if (!eint->pins) {
-> +	if (eint->nbase == 1) {
->   		size = eint->hw->ap_num * sizeof(struct mtk_eint_pin);
->   		eint->pins = devm_kmalloc(eint->dev, size, GFP_KERNEL);
->   		if (!eint->pins)
-> -			return -ENOMEM;
-> +			goto err_eint;
->   
->   		eint->base_pin_num[0] = eint->hw->ap_num;
->   		for (i = 0; i < eint->hw->ap_num; i++) {
-> @@ -536,34 +537,29 @@ int mtk_eint_do_init(struct mtk_eint *eint)
->   			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
->   		}
->   	} else {
-> +		eint->pins = hw->soc->eint_pin;
->   		for (i = 0; i < eint->hw->ap_num; i++)
->   			eint->base_pin_num[eint->pins[i].instance]++;
->   	}
->   
->   	eint->wake_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
-> -	if (!eint->wake_mask)
-> -		return -ENOMEM;
-> -
->   	eint->cur_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
-> -	if (!eint->wake_mask)
-> -		return -ENOMEM;
+Several AHCI drivers expose suspend/resume functions in a way that can
+be simplified.  Using pre-processor operation can lead to errors, while
+relying on automatic kernel configuration is safer.  It also shrinks the
+kernel size when CONFIG_PM_SLEEP is not used[1].
 
-This error checking was fine. Please keep it correct.
+This has been compile-tested on x86, arm and arm64.
 
-if (!eint->wake_mask) {
-	ret = -ENOMEM;
-	goto err_wake_mask_alloc;
-}
+[1] https://lore.kernel.org/lkml/261f9fac-82de-4f39-bf5c-cdfcee917588@gmail.com/
 
-and
+Signed-off-by: Raphael Gallais-Pou <rgallaispou@gmail.com>
+---
+Raphael Gallais-Pou (14):
+      ahci: brcm: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: ceva: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: da850: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: dm816: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: imx: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: mtk: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: platform: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: qoriq: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: seattle: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: sunxi: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: pata_arasan_cf: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: pata_imx: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: sata_highbank: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
+      ahci: sata_rcar: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
 
-if (!eint->cur_mask) {
-	ret = -ENOMEM;
-	goto err_cur_mask_alloc;
-}
+ drivers/ata/ahci_brcm.c      | 6 +++---
+ drivers/ata/ahci_ceva.c      | 8 ++++----
+ drivers/ata/ahci_da850.c     | 7 ++++---
+ drivers/ata/ahci_dm816.c     | 8 ++++----
+ drivers/ata/ahci_imx.c       | 6 ++----
+ drivers/ata/ahci_mtk.c       | 7 ++++---
+ drivers/ata/ahci_platform.c  | 7 ++++---
+ drivers/ata/ahci_qoriq.c     | 9 ++++-----
+ drivers/ata/ahci_seattle.c   | 7 ++++---
+ drivers/ata/ahci_sunxi.c     | 9 ++++-----
+ drivers/ata/pata_arasan_cf.c | 6 ++----
+ drivers/ata/pata_imx.c       | 6 ++----
+ drivers/ata/sata_highbank.c  | 9 ++++-----
+ drivers/ata/sata_rcar.c      | 6 +-----
+ 14 files changed, 46 insertions(+), 55 deletions(-)
+---
+base-commit: 5ffa57f6eecefababb8cbe327222ef171943b183
+change-id: 20250113-pm_ata-dbc07b3b0df3
 
-> +	if (!eint->wake_mask || !eint->wake_mask)
-> +		goto err_eint;
->   
->   	for (i = 0; i < eint->nbase; i++) {
->   		port = (eint->base_pin_num[i] + 31) / 32;
->   		eint->wake_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
-> -		if (!eint->wake_mask[i])
-> -			return -ENOMEM;
-> -
->   		eint->cur_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
-> -		if (!eint->cur_mask[i])
-> -			return -ENOMEM;
-> +		if (!eint->cur_mask[i] || !eint->wake_mask[i])
-> +			goto err_eint;
-
-same here
-
->   	}
->   
->   	eint->domain = irq_domain_add_linear(eint->dev->of_node,
->   					     eint->hw->ap_num,
->   					     &irq_domain_simple_ops, NULL);
->   	if (!eint->domain)
-> -		return -ENOMEM;
-> +		goto err_eint;
->   
->   	if (eint->hw->db_time) {
->   		for (i = 0; i < MTK_EINT_DBNC_MAX; i++)
-> @@ -585,6 +581,22 @@ int mtk_eint_do_init(struct mtk_eint *eint)
->   					 eint);
->   
->   	return 0;
-> +
-> +err_eint:
-> +	for (i = 0; i < eint->nbase; i++) {
-> +		if (eint->wake_mask[i])
-> +			devm_kfree(eint->dev, eint->wake_mask[i]);
-> +		if (eint->cur_mask[i])
-> +			devm_kfree(eint->dev, eint->cur_mask[i]);
-> +	}
-> +	if (eint->cur_mask)
-> +		devm_kfree(eint->dev, eint->cur_mask);
-> +	if (eint->wake_mask)
-> +		devm_kfree(eint->dev, eint->wake_mask);
-> +	if (eint->nbase == 1)
-> +		devm_kfree(eint->dev, eint->pins);
-> +	devm_kfree(eint->dev, eint->base_pin_num);
-
-...and you should only kfree what was successfully allocated before.
-
-Regards,
-Angelo
-
-> +	return -ENOMEM;
->   }
->   EXPORT_SYMBOL_GPL(mtk_eint_do_init);
->   
-
+Best regards,
+-- 
+Raphael Gallais-Pou <rgallaispou@gmail.com>
 
 
