@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A415C02181
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jan 2025 02:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C52C0218D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jan 2025 03:06:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vHG0wIAtoOemWkPtzFx9h/lFGmdkP7r/cg9y4ucBGZw=; b=lImA0Bsc+V7IymerRJDPiyAJYb
-	dBzdahVSMu4cPozV5NDIubhTWpes6df3murzeZlKl+iiB9NetQxgb6o4zxntrPlXs4f6eEWsNE85I
-	V7llBacqWDIsUwIuArbL8Am5UuBD4a9LfpQOzGErUVskNwojXudM3fKTKYXQD8e4KfTMEBuLtHnX7
-	59V7s1llZyKnFHdgZvrDsKACh5Nyj7am3trqOyPekS0btQMZZJv/l+HdkiDz0t0BkmHMK8SFY4Sim
-	6blt+3vVRp0DOz4MdahB8c95Lv6wOPSEWy5PMRbvs1CQAoDhV0WuF19WAV2htOSVfLgU2F5D510kw
-	vQfiHebg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5hPEoOXD7vh0YSjHsAN+Af8DsMrKotGPIYAaWMuUu+U=; b=tyEo6FmSdcmGG7E4+Mpjr6q/ei
+	Np2dW4KLa2Wo9gGuw5kHtETxN9NA173QPGXfLFoKVTVV3t34icHWfZz36fOLIyAfoWVuIjA1Y4vfj
+	oR3r+SrOxV5z1ZLOqtSsb0STjt7CcKjLgM+iGqrSYTpllydEAQ1P1pnEFxBwZCumMcHkf8ArvxHzL
+	7vNYs0uenxZSWoIU582FUHfKxb2m4/NiSAJ1CrN0lMMqU1M6e3UqExyS9pW7HlWcxIpPWBttxQow1
+	WCLZdj5I6IF06U268zt5GYAEeJQC3fbsAvcpRPMlls8MDFTWjUrHair82KL7ezQBJuHumJdx89LBs
+	F/7ajp/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbWL1-0000000Fw46-1XKH;
-	Sat, 25 Jan 2025 02:55:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tcFS8-00000001Yih-22fH;
+	Mon, 27 Jan 2025 03:06:20 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbWHD-0000000FvhS-2pzw;
-	Sat, 25 Jan 2025 02:52:04 +0000
-X-UUID: 5818d936dac711ef82ff63e91e7eb18c-20250124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vHG0wIAtoOemWkPtzFx9h/lFGmdkP7r/cg9y4ucBGZw=;
-	b=U7f5PjIjFKjlioN9mNPhq1BC0h8SrwJmxKZ9vZ0CRc2Ug3uPMwzfju3bwkOUsRVq1yUKAmDidR+7yXc7lzmIB1sH0GoBc8xC0u0uRNAzBAxyi5Vm17YkQHKLakaBQpXqtCX7C9+As0Eoje4ON/9l0AEZfjtMSr5BS5RKkjY+D4U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:a57e2111-35e0-480a-92de-9f1211061deb,IP:0,U
-	RL:0,TC:0,Content:29,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:4
-X-CID-META: VersionHash:60aa074,CLOUDID:3672b07e-427a-4311-9df4-bfaeeacd8532,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:4|50,EDM:1,
-	IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 5818d936dac711ef82ff63e91e7eb18c-20250124
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <ot_chhao.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1083577739; Fri, 24 Jan 2025 19:51:58 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	id 1tcFQm-00000001YPQ-41En;
+	Mon, 27 Jan 2025 03:04:58 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4YhCt359LFz1JJ4v;
+	Mon, 27 Jan 2025 11:03:39 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 3AB8E180042;
+	Mon, 27 Jan 2025 11:04:45 +0800 (CST)
+Received: from localhost.localdomain (10.90.30.45) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Sat, 25 Jan 2025 10:51:55 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Sat, 25 Jan 2025 10:51:54 +0800
-From: Hao Chang <ot_chhao.chang@mediatek.com>
-To: Sean Wang <seann.wang@kernel.org>, Linus Walleij
-	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>,
-	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen
-	<hanks.chen@mediatek.com>, Chunhui Li <chunhui.li@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Hao
- Chang <ot_chhao.chang@mediatek.com>
-Subject: [RESEND v3 2/2] pinctrl: mediatek: adapt to multi-base design
-Date: Sat, 25 Jan 2025 10:51:23 +0800
-Message-ID: <20250125025145.14405-3-ot_chhao.chang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250125025145.14405-1-ot_chhao.chang@mediatek.com>
-References: <20250125025145.14405-1-ot_chhao.chang@mediatek.com>
+ 15.2.1544.11; Mon, 27 Jan 2025 11:04:44 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
+	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
+ Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+	Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+	<akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>, MM
+	<linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+	<daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [RFC v8 0/5] fix two bugs related to page_pool
+Date: Mon, 27 Jan 2025 10:57:29 +0800
+Message-ID: <20250127025734.3406167-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-Originating-IP: [10.90.30.45]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_185203_714625_C4C82D33 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20250126_190457_349891_3B722349 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,108 +78,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The eint num will obtain the operation address through pins.
-Change the traversal method of irq handle from traversing a set of
-registers to traversing one by one.
+This patchset fix a possible time window problem for page_pool and
+the dma API misuse problem as mentioned in [1], and try to avoid the
+overhead of the fixing using some optimization.
 
-Change-Id: I3962b78042d32501a73153201cddf52c6b62a695
-Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
-Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
----
- drivers/pinctrl/mediatek/mtk-eint.c | 38 +++++++++++++++++++----------
- 1 file changed, 25 insertions(+), 13 deletions(-)
+From the below performance data, the overhead is not so obvious
+due to performance variations in arm64 server and less than 1 ns in
+x86 server for time_bench_page_pool01_fast_path() and
+time_bench_page_pool02_ptr_ring, and there is about 10~20ns overhead
+for time_bench_page_pool03_slow(), see more detail in [2].
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 540245c3128d..949a20196f74 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -513,6 +513,7 @@ EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
- int mtk_eint_do_init(struct mtk_eint *eint)
- {
- 	unsigned int size, i, port;
-+	struct mtk_pinctrl *hw = (struct mtk_pinctrl *)eint->pctl;
- 
- 	/* If clients don't assign a specific regs, let's use generic one */
- 	if (!eint->regs)
-@@ -523,11 +524,11 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 	if (!eint->base_pin_num)
- 		return -ENOMEM;
- 
--	if (!eint->pins) {
-+	if (eint->nbase == 1) {
- 		size = eint->hw->ap_num * sizeof(struct mtk_eint_pin);
- 		eint->pins = devm_kmalloc(eint->dev, size, GFP_KERNEL);
- 		if (!eint->pins)
--			return -ENOMEM;
-+			goto err_eint;
- 
- 		eint->base_pin_num[0] = eint->hw->ap_num;
- 		for (i = 0; i < eint->hw->ap_num; i++) {
-@@ -536,34 +537,29 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
- 		}
- 	} else {
-+		eint->pins = hw->soc->eint_pin;
- 		for (i = 0; i < eint->hw->ap_num; i++)
- 			eint->base_pin_num[eint->pins[i].instance]++;
- 	}
- 
- 	eint->wake_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
--	if (!eint->wake_mask)
--		return -ENOMEM;
--
- 	eint->cur_mask = devm_kmalloc(eint->dev, eint->nbase * sizeof(u32 *), GFP_KERNEL);
--	if (!eint->wake_mask)
--		return -ENOMEM;
-+	if (!eint->wake_mask || !eint->wake_mask)
-+		goto err_eint;
- 
- 	for (i = 0; i < eint->nbase; i++) {
- 		port = (eint->base_pin_num[i] + 31) / 32;
- 		eint->wake_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
--		if (!eint->wake_mask[i])
--			return -ENOMEM;
--
- 		eint->cur_mask[i] = devm_kzalloc(eint->dev, port * sizeof(u32), GFP_KERNEL);
--		if (!eint->cur_mask[i])
--			return -ENOMEM;
-+		if (!eint->cur_mask[i] || !eint->wake_mask[i])
-+			goto err_eint;
- 	}
- 
- 	eint->domain = irq_domain_add_linear(eint->dev->of_node,
- 					     eint->hw->ap_num,
- 					     &irq_domain_simple_ops, NULL);
- 	if (!eint->domain)
--		return -ENOMEM;
-+		goto err_eint;
- 
- 	if (eint->hw->db_time) {
- 		for (i = 0; i < MTK_EINT_DBNC_MAX; i++)
-@@ -585,6 +581,22 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 					 eint);
- 
- 	return 0;
-+
-+err_eint:
-+	for (i = 0; i < eint->nbase; i++) {
-+		if (eint->wake_mask[i])
-+			devm_kfree(eint->dev, eint->wake_mask[i]);
-+		if (eint->cur_mask[i])
-+			devm_kfree(eint->dev, eint->cur_mask[i]);
-+	}
-+	if (eint->cur_mask)
-+		devm_kfree(eint->dev, eint->cur_mask);
-+	if (eint->wake_mask)
-+		devm_kfree(eint->dev, eint->wake_mask);
-+	if (eint->nbase == 1)
-+		devm_kfree(eint->dev, eint->pins);
-+	devm_kfree(eint->dev, eint->base_pin_num);
-+	return -ENOMEM;
- }
- EXPORT_SYMBOL_GPL(mtk_eint_do_init);
- 
+arm64 server:
+Before this patchset:
+              fast_path              ptr_ring            slow
+1.         31.171 ns               60.980 ns          164.917 ns
+2.         28.824 ns               60.891 ns          170.241 ns
+3.         14.236 ns               60.583 ns          164.355 ns
+
+With patchset:
+6.         26.163 ns               53.781 ns          189.450 ns
+7.         26.189 ns               53.798 ns          189.466 ns
+
+X86 server:
+| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
+| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
+|------------+-------+-------+----+---------+--------+--------+--------|
+| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
+| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
+| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
+
+And about 16 bytes of memory is also needed for each page_pool owned
+page to fix the dma API misuse problem 
+
+1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
+2. https://lore.kernel.org/all/f558df7a-d983-4fc5-8358-faf251994d23@kernel.org/
+
+CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+CC: Robin Murphy <robin.murphy@arm.com>
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+CC: Andrew Morton <akpm@linux-foundation.org>
+CC: IOMMU <iommu@lists.linux.dev>
+CC: MM <linux-mm@kvack.org>
+
+Change log:
+V8:
+  1. Drop last 3 patch as it causes observable performance degradation
+     for x86 system.
+  2. Remove rcu read lock in page_pool_napi_local().
+  3. Renaming item function more consistently.
+
+V7:
+  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
+  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
+     by Simon.
+
+V6:
+  1. Repost based on latest net-next.
+  2. Rename page_pool_to_pp() to page_pool_get_pp().
+
+V5:
+  1. Support unlimit inflight pages.
+  2. Add some optimization to avoid the overhead of fixing bug.
+
+V4:
+  1. use scanning to do the unmapping
+  2. spilt dma sync skipping into separate patch
+
+V3:
+  1. Target net-next tree instead of net tree.
+  2. Narrow the rcu lock as the discussion in v2.
+  3. Check the ummapping cnt against the inflight cnt.
+
+V2:
+  1. Add a item_full stat.
+  2. Use container_of() for page_pool_to_pp().
+
+Yunsheng Lin (5):
+  page_pool: introduce page_pool_get_pp() API
+  page_pool: fix timing for checking and disabling napi_local
+  page_pool: fix IOMMU crash when driver has already unbound
+  page_pool: support unlimited number of inflight pages
+  page_pool: skip dma sync operation for inflight pages
+
+ drivers/net/ethernet/freescale/fec_main.c     |   8 +-
+ .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
+ drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
+ include/linux/mm_types.h                      |   2 +-
+ include/linux/skbuff.h                        |   1 +
+ include/net/libeth/rx.h                       |   3 +-
+ include/net/netmem.h                          |  22 +-
+ include/net/page_pool/helpers.h               |  15 +
+ include/net/page_pool/types.h                 |  46 +-
+ net/core/devmem.c                             |   4 +-
+ net/core/netmem_priv.h                        |   5 +-
+ net/core/page_pool.c                          | 425 ++++++++++++++++--
+ net/core/page_pool_priv.h                     |  10 +-
+ net/core/xdp.c                                |   3 +-
+ 19 files changed, 500 insertions(+), 79 deletions(-)
+
 -- 
-2.46.0
+2.33.0
 
 
