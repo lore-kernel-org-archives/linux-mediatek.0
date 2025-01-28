@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2C7CC02188
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 00:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36086C02188
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 00:54:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=f8X97oLmgMT31JHzy2fB5vVdQsKef7+n1kp81Yennkc=; b=xMKuJvHbhQqBCjH1Y2zDc6VcF1
-	soGCS2aO7uf7OY/QDz4iLJ3ysRliS2ODUBhA4WlO6PUYBVzoEA3OJpULuRPzL4D767XAx+IGofkhK
-	AloH9RH+TAht2CwKHhIBFT/NWWOs6Lw37haIZZ4ltkPPiHnbHPZybGxKslYHcgzYy7tRXumHb7QtK
-	kUqomMhTpxUha5jpM7wGtOyCNoXCT7D+JL45Nr4r4O5ZUGxlH7Kap20EmbAyGScKY/M8OVVswH/qm
-	anvU3aWc3zvF+OgWY9LcP0M5N6w1r3QRTRCIzzXvbcYbnPK/o0NOXUxShalyQyAnBpZFPvFH2Ia1N
-	zJlJXgpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SykZfNWuy7YlKNuIYwyzV55UjWxya80le8VNlDTlmu4=; b=fQeRB+umDfE0ik23SevXdAENXT
+	mp6N+5U/ao1WCpang4tMAGgRJcJM7L1VCG3Kji8fyam8fLNueUl8CWRGxHaFsjMvvj0JIL1i38NvJ
+	q7c3vBsZxR8p3TpSuSgPvzDaVREJKwdZy8CFJXTg3+Mfu7N8KJlmY116d5XpiVyylcQryLbToAp98
+	uiF4HrLsQ03IenSS2awktRALyGJ3GciEVrVkWhAqaXMr1lIn+HmucXS482ls/weXsq1dYOAwEHCx1
+	urh2Jio6C30ouNCSZ/LhkTb+bKg5SXKdGbbnPz941w7RWCuS9JcjkvsdOM/eMwf6GPvzruj+gDCXt
+	DMgHZFpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcZhH-00000003okZ-1naR;
-	Tue, 28 Jan 2025 00:43:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tcZru-00000003r3I-1Dj2;
+	Tue, 28 Jan 2025 00:54:18 +0000
+Received: from mx.treblig.org ([2a00:1098:5b::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcZfu-00000003oFD-3xEP;
-	Tue, 28 Jan 2025 00:41:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DF99C5C5831;
-	Tue, 28 Jan 2025 00:41:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AB84C4CED2;
-	Tue, 28 Jan 2025 00:41:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738024913;
-	bh=oCREAUY8j++SAnl6wUczMC3oNy5q6RrIqFAVM4y07BE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=FcC4HA2QignI5R4l3o/YmS/xowOZeJHr7dmscyJpxRRDZJJ8H+mzQhSEf5Q9S7Xzr
-	 4ifN0P6MJa3gw9931ZBKIXO1o4Aq07ec9kFAhcBSi1Sd7NllrHZegL6x9x0eJyveM/
-	 hHHkrqdFGN7GDsUCOwEPL+UTwjLnprHlnBqmkUNxRe1dJynjm4AQB1EWOi0oZhho44
-	 aHezCFuTHaiuHA2S5M0Bq5Oi/zC3cnj6r+g8TkJoXaxBfLuyyvEefdckFdjICAZsGz
-	 6sZa+wAVFAxNak08KCU1njcZk64JeDlhV+/Av9uJEuy4iGFLxTGJRs+pULMOabLmbc
-	 +z9ApykI++BTA==
-Date: Mon, 27 Jan 2025 18:41:50 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>
-Cc: "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <Ryder.Lee@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
-Message-ID: <20250128004150.GA183319@bhelgaas>
+	id 1tcZqb-00000003qnw-0Cwd;
+	Tue, 28 Jan 2025 00:52:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+	; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
+	:Subject; bh=SykZfNWuy7YlKNuIYwyzV55UjWxya80le8VNlDTlmu4=; b=MEtgfelHghgCzYOp
+	cgteMoUKm6a2Kqz6Z2CiQLss0kKMKvdry6PlE1ilssYv/s6G62lYWTVk+v5LN0sHdHuG7flcvfk8C
+	KM4qax+cVi2vwSgIeh18I07qsV0rfsoCdwWPMZYvCV2meSXbW++Q4b5+/mE3nQKzxrYEcn8tpl7Zx
+	ldcRlFKZdGbmN5JWmYrY269z765lgFcn5lER8fSskKTVy4+W6FiLG9iuy+J8OC+++du+yqDpMbsin
+	wC7fy2d0ydrF0YDXFxfsXhEhFfTMabhPVxd1mjzLbbtqNmwc2plTCP+bnXUnfoIa01oIAM8ii4tJZ
+	kcLkkcx6RYNyzvoCPg==;
+Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
+	by mx.treblig.org with esmtp (Exim 4.96)
+	(envelope-from <linux@treblig.org>)
+	id 1tcZqO-00COvY-0E;
+	Tue, 28 Jan 2025 00:52:44 +0000
+From: linux@treblig.org
+To: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com
+Cc: linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	"Dr. David Alan Gilbert" <linux@treblig.org>
+Subject: [PATCH] ASoC: mediatek: mt6358: Remove unused functions
+Date: Tue, 28 Jan 2025 00:52:43 +0000
+Message-ID: <20250128005243.295977-1-linux@treblig.org>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <9e629b1779c2cb9c6fa34347ac16f9b4e2241430.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250127_164155_065963_1B770A23 
-X-CRM114-Status: GOOD (  30.80  )
+X-CRM114-CacheID: sfid-20250127_165257_180147_A4880C3F 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,132 +75,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 23, 2025 at 08:11:19AM +0000, Jianjun Wang (王建军) wrote:
-> On Wed, 2025-01-15 at 23:01 +0530, Manivannan Sadhasivam wrote:
-> > On Tue, Jan 07, 2025 at 01:20:58PM +0800, Jianjun Wang wrote:
-> > > Remove the usage of virt_to_phys, as it will cause sparse warnings
-> > > when
-> > > building on some platforms.
-> > 
-> > Strange. What are those warnings and platforms?
-> 
-> There are some warning messages when building tests with different
-> configs on different platforms (e.g., allmodconfig.arm,
-> allmodconfig.i386, allmodconfig.mips, etc.):
-> 
-> pcie-mediatek.c:399:40: sparse: warning: incorrect type in argument 1
-> (different address spaces)
-> pcie-mediatek.c:399:40: sparse:    expected void const volatile *x
-> pcie-mediatek.c:399:40: sparse:    got void [noderef] __iomem *
-> pcie-mediatek.c:515:44: sparse: warning: incorrect type in argument 1
-> (different address spaces)
-> pcie-mediatek.c:515:44: sparse:    expected void const volatile *x
-> pcie-mediatek.c:515:44: sparse:    got void [noderef] __iomem *
->
-> > > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > > ---
-> > >  drivers/pci/controller/pcie-mediatek.c | 19 ++++++++++++-------
-> > >  1 file changed, 12 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/drivers/pci/controller/pcie-mediatek.c
-> > > b/drivers/pci/controller/pcie-mediatek.c
-> > > index 3bcfc4e58ba2..dc1e5fd6c7aa 100644
-> > > --- a/drivers/pci/controller/pcie-mediatek.c
-> > > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > > @@ -178,6 +178,7 @@ struct mtk_pcie_soc {
-> > >   * @phy: pointer to PHY control block
-> > >   * @slot: port slot
-> > >   * @irq: GIC irq
-> > > + * @msg_addr: MSI message address
-> > >   * @irq_domain: legacy INTx IRQ domain
-> > >   * @inner_domain: inner IRQ domain
-> > >   * @msi_domain: MSI IRQ domain
-> > > @@ -198,6 +199,7 @@ struct mtk_pcie_port {
-> > >       struct phy *phy;
-> > >       u32 slot;
-> > >       int irq;
-> > > +     phys_addr_t msg_addr;
-> > >       struct irq_domain *irq_domain;
-> > >       struct irq_domain *inner_domain;
-> > >       struct irq_domain *msi_domain;
-> > > @@ -393,12 +395,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
-> > >  static void mtk_compose_msi_msg(struct irq_data *data, struct
-> > > msi_msg *msg)
-> > >  {
-> > >       struct mtk_pcie_port *port =
-> > > irq_data_get_irq_chip_data(data);
-> > > -     phys_addr_t addr;
-> > > 
-> > >       /* MT2712/MT7622 only support 32-bit MSI addresses */
-> > > -     addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+From: "Dr. David Alan Gilbert" <linux@treblig.org>
 
-Thanks for working on this!  We should definitely try to get rid of
-virt_to_phys().
+The functions:
+  mt6358_mtkaif_calibration_disable()
+  mt6358_mtkaif_calibration_enable()
+  mt6358_set_mtkaif_calibration_phase()
+were added in the 2019
+commit 6a8d4198ca80 ("ASoC: mediatek: mt6358: add codec driver")
 
-> > >       msg->address_hi = 0;
-> > > -     msg->address_lo = lower_32_bits(addr);
-> > > +     msg->address_lo = lower_32_bits(port->msg_addr);
-> > > 
-> > >       msg->data = data->hwirq;
-> > > 
-> > > @@ -510,10 +510,8 @@ static int
-> > > mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
-> > >  static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
-> > >  {
-> > >       u32 val;
-> > > -     phys_addr_t msg_addr;
-> > > 
-> > > -     msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> > > -     val = lower_32_bits(msg_addr);
-> > > +     val = lower_32_bits(port->msg_addr);
-> > >       writel(val, port->base + PCIE_IMSI_ADDR);
-> > > 
-> > >       val = readl(port->base + PCIE_INT_MASK);
-> > > @@ -913,6 +911,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie
-> > > *pcie,
-> > >       struct mtk_pcie_port *port;
-> > >       struct device *dev = pcie->dev;
-> > >       struct platform_device *pdev = to_platform_device(dev);
-> > > +     struct resource *regs;
-> > >       char name[10];
-> > >       int err;
-> > > 
-> > > @@ -921,12 +920,18 @@ static int mtk_pcie_parse_port(struct
-> > > mtk_pcie *pcie,
-> > >               return -ENOMEM;
-> > > 
-> > >       snprintf(name, sizeof(name), "port%d", slot);
-> > > -     port->base = devm_platform_ioremap_resource_byname(pdev,
-> > > name);
-> > > +     regs = platform_get_resource_byname(pdev, IORESOURCE_MEM,
-> > > name);
-> > > +     if (!regs)
-> > > +             return -EINVAL;
-> > > +
-> > > +     port->base = devm_ioremap_resource(dev, regs);
-> > >       if (IS_ERR(port->base)) {
-> > >               dev_err(dev, "failed to map port%d base\n", slot);
-> > >               return PTR_ERR(port->base);
-> > >       }
-> > > 
-> > > +     port->msg_addr = regs->start + PCIE_MSI_VECTOR;
+but never used.
 
-I think this still assumes that a CPU physical address (regs->start)
-is the same as the PCI bus address used for MSI, so this doesn't seem
-like the right solution to me.
+Remove them.
 
-Apparently they happen to be the same on this platform because (I
-assume) MSIs actually do work, but it's not a good pattern for drivers
-to copy.  I think what we really need is a dma_addr_t, and I think
-there are one or two PCI controller drivers that do that.
+This leaves mt6358_set_dcxo(), mt6358_set_clksq(),
+mt6358_set_aud_global_bias(), also unused.
 
-> > >       snprintf(name, sizeof(name), "sys_ck%d", slot);
-> > >       port->sys_ck = devm_clk_get(dev, name);
-> > >       if (IS_ERR(port->sys_ck)) {
-> > > --
-> > > 2.46.0
-> > > 
-> > 
-> > --
-> > மணிவண்ணன் சதாசிவம்
+Remove them.
+
+Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+---
+ sound/soc/codecs/mt6358.c | 104 --------------------------------------
+ sound/soc/codecs/mt6358.h |   4 --
+ 2 files changed, 108 deletions(-)
+
+diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
+index 9247b90d1b99..e033027fd4c7 100644
+--- a/sound/soc/codecs/mt6358.c
++++ b/sound/soc/codecs/mt6358.c
+@@ -162,47 +162,6 @@ static void capture_gpio_reset(struct mt6358_priv *priv)
+ 			   0xf << 12, 0x0);
+ }
+ 
+-/* use only when not govern by DAPM */
+-static int mt6358_set_dcxo(struct mt6358_priv *priv, bool enable)
+-{
+-	regmap_update_bits(priv->regmap, MT6358_DCXO_CW14,
+-			   0x1 << RG_XO_AUDIO_EN_M_SFT,
+-			   (enable ? 1 : 0) << RG_XO_AUDIO_EN_M_SFT);
+-	return 0;
+-}
+-
+-/* use only when not govern by DAPM */
+-static int mt6358_set_clksq(struct mt6358_priv *priv, bool enable)
+-{
+-	/* audio clk source from internal dcxo */
+-	regmap_update_bits(priv->regmap, MT6358_AUDENC_ANA_CON6,
+-			   RG_CLKSQ_IN_SEL_TEST_MASK_SFT,
+-			   0x0);
+-
+-	/* Enable/disable CLKSQ 26MHz */
+-	regmap_update_bits(priv->regmap, MT6358_AUDENC_ANA_CON6,
+-			   RG_CLKSQ_EN_MASK_SFT,
+-			   (enable ? 1 : 0) << RG_CLKSQ_EN_SFT);
+-	return 0;
+-}
+-
+-/* use only when not govern by DAPM */
+-static int mt6358_set_aud_global_bias(struct mt6358_priv *priv, bool enable)
+-{
+-	regmap_update_bits(priv->regmap, MT6358_AUDDEC_ANA_CON13,
+-			   RG_AUDGLB_PWRDN_VA28_MASK_SFT,
+-			   (enable ? 0 : 1) << RG_AUDGLB_PWRDN_VA28_SFT);
+-	return 0;
+-}
+-
+-/* use only when not govern by DAPM */
+-static int mt6358_set_topck(struct mt6358_priv *priv, bool enable)
+-{
+-	regmap_update_bits(priv->regmap, MT6358_AUD_TOP_CKPDN_CON0,
+-			   0x0066, enable ? 0x0 : 0x66);
+-	return 0;
+-}
+-
+ static int mt6358_mtkaif_tx_enable(struct mt6358_priv *priv)
+ {
+ 	switch (priv->mtkaif_protocol) {
+@@ -252,69 +211,6 @@ static int mt6358_mtkaif_tx_disable(struct mt6358_priv *priv)
+ 	return 0;
+ }
+ 
+-int mt6358_mtkaif_calibration_enable(struct snd_soc_component *cmpnt)
+-{
+-	struct mt6358_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+-
+-	playback_gpio_set(priv);
+-	capture_gpio_set(priv);
+-	mt6358_mtkaif_tx_enable(priv);
+-
+-	mt6358_set_dcxo(priv, true);
+-	mt6358_set_aud_global_bias(priv, true);
+-	mt6358_set_clksq(priv, true);
+-	mt6358_set_topck(priv, true);
+-
+-	/* set dat_miso_loopback on */
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_DAT_MISO2_LOOPBACK_MASK_SFT,
+-			   1 << RG_AUD_PAD_TOP_DAT_MISO2_LOOPBACK_SFT);
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_DAT_MISO_LOOPBACK_MASK_SFT,
+-			   1 << RG_AUD_PAD_TOP_DAT_MISO_LOOPBACK_SFT);
+-	return 0;
+-}
+-EXPORT_SYMBOL_GPL(mt6358_mtkaif_calibration_enable);
+-
+-int mt6358_mtkaif_calibration_disable(struct snd_soc_component *cmpnt)
+-{
+-	struct mt6358_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+-
+-	/* set dat_miso_loopback off */
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_DAT_MISO2_LOOPBACK_MASK_SFT,
+-			   0 << RG_AUD_PAD_TOP_DAT_MISO2_LOOPBACK_SFT);
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_DAT_MISO_LOOPBACK_MASK_SFT,
+-			   0 << RG_AUD_PAD_TOP_DAT_MISO_LOOPBACK_SFT);
+-
+-	mt6358_set_topck(priv, false);
+-	mt6358_set_clksq(priv, false);
+-	mt6358_set_aud_global_bias(priv, false);
+-	mt6358_set_dcxo(priv, false);
+-
+-	mt6358_mtkaif_tx_disable(priv);
+-	playback_gpio_reset(priv);
+-	capture_gpio_reset(priv);
+-	return 0;
+-}
+-EXPORT_SYMBOL_GPL(mt6358_mtkaif_calibration_disable);
+-
+-int mt6358_set_mtkaif_calibration_phase(struct snd_soc_component *cmpnt,
+-					int phase_1, int phase_2)
+-{
+-	struct mt6358_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+-
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_PHASE_MODE_MASK_SFT,
+-			   phase_1 << RG_AUD_PAD_TOP_PHASE_MODE_SFT);
+-	regmap_update_bits(priv->regmap, MT6358_AUDIO_DIG_CFG,
+-			   RG_AUD_PAD_TOP_PHASE_MODE2_MASK_SFT,
+-			   phase_2 << RG_AUD_PAD_TOP_PHASE_MODE2_SFT);
+-	return 0;
+-}
+-EXPORT_SYMBOL_GPL(mt6358_set_mtkaif_calibration_phase);
+-
+ /* dl pga gain */
+ enum {
+ 	DL_GAIN_8DB = 0,
+diff --git a/sound/soc/codecs/mt6358.h b/sound/soc/codecs/mt6358.h
+index a5953315eaa2..b729c3899b7e 100644
+--- a/sound/soc/codecs/mt6358.h
++++ b/sound/soc/codecs/mt6358.h
+@@ -2307,8 +2307,4 @@ enum {
+ /* set only during init */
+ int mt6358_set_mtkaif_protocol(struct snd_soc_component *cmpnt,
+ 			       int mtkaif_protocol);
+-int mt6358_mtkaif_calibration_enable(struct snd_soc_component *cmpnt);
+-int mt6358_mtkaif_calibration_disable(struct snd_soc_component *cmpnt);
+-int mt6358_set_mtkaif_calibration_phase(struct snd_soc_component *cmpnt,
+-					int phase_1, int phase_2);
+ #endif /* __MT6358_H__ */
+-- 
+2.48.1
+
 
