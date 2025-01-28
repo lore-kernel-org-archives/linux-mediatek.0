@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D68C0218D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 22:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDDCC0218A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 22:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:MIME-Version:Message-Id:Date:Subject:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Bbih3RuEKQlUkWbTQ/PFCmKMuLjifWffxPwT42Mo1uc=; b=mdxyMAhFQ8paDMsYsytpZyv5Sa
-	pY1L2Q3kZAdQKHQS93Wyho7mSdcrNVceqOVcKqD/RIsz09LZK+H+yYVZ9PzLpuhWUt0lCt1sQ7XRO
-	lgSFzCaLbTS1vcsP/U14UW4oFZvk1GbVrqs3RBtMY9A8RPYj/YWk9EuLVcm8JRl4+yuY367DjHyMr
-	uj6Mi85nPg4i35NfQxQb81VoVxTujaAk8AbZOBYytbUxyPdlCFCzvf3JlqLtXcPMBRD+i2A+cjIAQ
-	UAGScNmRLZS6WzQAt1lSV3QysRRPIDAQbGkALfWnfEqSPhknHk+LpgoppI2qv432m/hOHO8Xbh9Qo
-	VkUodI0Q==;
+	Content-Type:Cc:To:In-Reply-To:References:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4eOh+r5POEBIZHTbq+nHznMj04j4TeTNMfqN9ncpUe8=; b=SIc134+hGZoTMu/K+e/DoQrSIF
+	e2fT4OZgTMi2Rf8JZdakTKd8n6dTbQQfaEv5YYspGbq/W0uUCkETzYjgixfImC/pZ4icwHU30aaOs
+	esmvzQu19juavPuOpnfFAV/Ohlqj+aROv6jKUVx9sgTVMYD2CnuzO/tdh68fns2SgT3aV3cvtKO7g
+	vPzRs7szdEh7qFKnc0+14ezPcPm5D16+JklMMNU+40D8eP/pR6OVhFO7mfuaNVadvvy//lNwmY/Ko
+	fiixc93PxeaLHXI5x0ORtQWlerLKlDtBrBQlLdWzoAYlDJbm7OzFrc3PSI9AFejIRtPKd5I/RY6zF
+	jXNwPgRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu8q-00000005xz8-3gBf;
-	Tue, 28 Jan 2025 22:33:08 +0000
+	id 1tcu8w-00000005y5d-1eEB;
+	Tue, 28 Jan 2025 22:33:14 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu8l-00000005xq2-0JWm
+	id 1tcu8t-00000005y1k-2i6d
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jan 2025 22:33:06 +0000
+	Tue, 28 Jan 2025 22:33:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738103582;
+	s=mimecast20190719; t=1738103590;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=Bbih3RuEKQlUkWbTQ/PFCmKMuLjifWffxPwT42Mo1uc=;
-	b=Jz5Op8x15yqITGCcxJnreYOqjq48udwKLNxC7BJK2XkbLFFlYQxBQwNXgGzwp306+nuqTK
-	wGV5WX246CHcZWEDO0P4rpUH97m9WW4OcUyKGJBE6GBm84IQv9aPymzmqX7b03bk4jzg5k
-	N3ALAOd3gPuE+ZqN2UiLLtl9qAijabo=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4eOh+r5POEBIZHTbq+nHznMj04j4TeTNMfqN9ncpUe8=;
+	b=LFsLAf3+RSy/McjcjBj3KBZMgbdXjP9t0lGRBYsQ/boZlOUSCbqsjQ7H31/PLWjL6YQyuI
+	pPcx8VbICkILcINOCy7QNm2UqI//fee6inH2cNt/VmRHPgCBkFWs+QoivSq4vWEue6+ScF
+	xm5tH+OtuPhIKPYqbBux4iW7i9/JOX4=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-390-LtV_82jsOVW9ot0uekBm9Q-1; Tue,
- 28 Jan 2025 17:30:37 -0500
-X-MC-Unique: LtV_82jsOVW9ot0uekBm9Q-1
-X-Mimecast-MFC-AGG-ID: LtV_82jsOVW9ot0uekBm9Q
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-646-JJiTDf_rMPiltZe2Gtxs5w-1; Tue,
+ 28 Jan 2025 17:33:07 -0500
+X-MC-Unique: JJiTDf_rMPiltZe2Gtxs5w-1
+X-Mimecast-MFC-AGG-ID: JJiTDf_rMPiltZe2Gtxs5w
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5EE851800360;
-	Tue, 28 Jan 2025 22:30:27 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C65151800268;
+	Tue, 28 Jan 2025 22:33:01 +0000 (UTC)
 Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.231])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 83018180035E;
-	Tue, 28 Jan 2025 22:30:10 +0000 (UTC)
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 6E29418008C0;
+	Tue, 28 Jan 2025 22:32:50 +0000 (UTC)
 From: Anusha Srivatsa <asrivats@redhat.com>
-Subject: [PATCH 00/14] drm: Move to using devm_platform_ioremap_resource
-Date: Tue, 28 Jan 2025 17:29:24 -0500
-Message-Id: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
+Date: Tue, 28 Jan 2025 17:29:37 -0500
+Subject: [PATCH 13/14] drm/vc4: move to devm_platform_ioremap_resource()
+ usage
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAERamWcC/x3MTQqAIBBA4avErBtQI42uEi3EppqFPyhEEd49a
- fkt3nuhUGYqMHcvZLq4cAwNsu/AnTYchLw1gxJqFFJN6KJzjJ58zA/axKi0JjlYMRoy0LKUaef
- 7Xy5rrR8zCerIYgAAAA==
-X-Change-ID: 20250128-cocci-memory-api-266e13a057e7
+Message-Id: <20250128-cocci-memory-api-v1-13-0d1609a29587@redhat.com>
+References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
+In-Reply-To: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
 To: Joel Stanley <joel@jms.id.au>, 
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
@@ -106,25 +106,23 @@ Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
  linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103409; l=4607;
+ linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=1689;
  i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
- bh=t1B4jwyIADVA6S8X7DXOmIb01Pyst5f0UX1jMRzVBZA=;
- b=TKPB6evzfjTeNzV82GgFaRIEt8PBIygsoHwoHMJY6JP3p+kHHMkgJH10gfKAjIAyEApxibsX1
- CFZ8Xj5+QaQDJehni2woQbUyEUZMq2rh8dkQ+4RKwUZp27t3QE5BRgr
+ bh=4vxmIMCntNkLYWUXI5TlhVdnqmm2AsRbVZgcmO441nM=;
+ b=5O8Ivj3HJZboc/7qkLN9ieN1tdgZ+256U7GLYJr170ZR/+aEj1nNMDOzAkFeg5anubD5oaxWF
+ sGYOK3IPQARAgRjIsuLaaVG0kGOTrTsEWSIShMKxlngxbxGfGebRp+0
 X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
  pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 65UNuhoMXW1y4r1MxIEq32J7fJelieobjI39QERuN8w_1738103431
+X-Mimecast-MFC-PROC-ID: 9H4J4UUBXPRz1WxY420uTeIcpR76PfI-m2iw65JFU7k_1738103582
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_143303_337856_9705442A 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250128_143311_762235_EB4B6701 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,50 +137,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Start replacing the below occurences with the newer API:
-- (devm_)platform_get_resource + devm_ioremap_resource
-- (devm_)platform_get_resource + (devm_)ioremap
-- platform_get_resource_byname + devm_ioremap
-Move all these occurences to uses devm_platform_ioremap_resource
-instead.
+Replace platform_get_resource_byname + devm_ioremap_resource
+with just devm_platform_ioremap_resource()
 
-Address a TODO item in the GPU section.
-
-Used Coccinelle to make the code changes.Semantic patch:
-
-//First Case
-//rule s/platform_get_resource + devm_ioremap_resource/devm_platform_ioremap_resource
-@rule_1@
-identifier res;
-expression ioremap_res;
-identifier pdev;
-@@
--struct resource *res;
-...
--res = platform_get_resource(pdev,...);
--ioremap_res = devm_ioremap_resource(...);
-+ioremap_res = devm_platform_ioremap_resource(pdev,0);
-
-//Second case
-//rule s/(devm_)platform_get_resource + (devm_)ioremap/devm_platform_ioremap_resource.
-@rule_2@
-identifier res;
-expression ioremap;
-identifier pdev;
-@@
--struct resource *res;
-...
--res = platform_get_resource(pdev,...);
-<...
--if (!res) {
--...
--}
-...>
--ioremap = devm_ioremap(...);
-+ioremap = devm_platform_ioremap_resource(pdev,0);
-
-//Third case
-//rule s/(devm_)platform_get_resource_byname + (devm_)ioremap/devm_platform_ioremap_resource_byname.
+Used Coccinelle to do this change. SmPl patch:
+//rule s/(devm_)platform_get_resource_byname +
+//(devm_)ioremap/devm_platform_ioremap_resource.
 @rule_3@
 identifier res;
 expression ioremap;
@@ -201,61 +161,38 @@ expression name;
 -ioremap = devm_ioremap(...);
 +ioremap = devm_platform_ioremap_resource_byname(pdev,name);
 
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Cc: "Maíra Canal" <mcanal@igalia.com>
 Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 ---
-Anusha Srivatsa (14):
-      drm/aspeed: move to devm_platform_ioremap_resource() usage
-      drm/fsl-dcu: move to devm_platform_ioremap_resource() usage
-      drm/hisilicon: move to devm_platform_ioremap_resource() usage
-      drm/mediatek: move to devm_platform_ioremap_resource() usage
-      drm/meson: move to devm_platform_ioremap_resource() usage
-      drm/mxsfb: move to devm_platform_ioremap_resource() usage
-      drm/rockchip: move to devm_platform_ioremap_resource() usage
-      drm/sprd: move to devm_platform_ioremap_resource() usage
-      drm/sti: move to devm_platform_ioremap_resource() usage
-      drm/stm: move to devm_platform_ioremap_resource() usage
-      drm/tegra: move to devm_platform_ioremap_resource() usage
-      drm/tiny: move to devm_platform_ioremap_resource() usage
-      drm/vc4: move to devm_platform_ioremap_resource() usage
-      Documentation: Update the todo
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
- Documentation/gpu/todo.rst                      | 15 ---------------
- drivers/gpu/drm/aspeed/aspeed_gfx_drv.c         |  4 +---
- drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c       |  4 +---
- drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c    |  4 +---
- drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c |  4 +---
- drivers/gpu/drm/mediatek/mtk_disp_color.c       |  4 +---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c       |  4 +---
- drivers/gpu/drm/mediatek/mtk_disp_merge.c       |  4 +---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |  4 +---
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c        |  4 +---
- drivers/gpu/drm/mediatek/mtk_dsi.c              |  4 +---
- drivers/gpu/drm/mediatek/mtk_hdmi.c             |  4 +---
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         |  4 +---
- drivers/gpu/drm/meson/meson_drv.c               |  9 +--------
- drivers/gpu/drm/mxsfb/lcdif_drv.c               |  4 +---
- drivers/gpu/drm/mxsfb/mxsfb_drv.c               |  4 +---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 +---
- drivers/gpu/drm/sprd/sprd_dpu.c                 |  9 +--------
- drivers/gpu/drm/sprd/sprd_dsi.c                 |  9 +--------
- drivers/gpu/drm/sti/sti_compositor.c            | 10 +---------
- drivers/gpu/drm/sti/sti_dvo.c                   | 10 +---------
- drivers/gpu/drm/sti/sti_hda.c                   | 10 +---------
- drivers/gpu/drm/sti/sti_hdmi.c                  | 11 +----------
- drivers/gpu/drm/sti/sti_hqvdp.c                 | 10 +---------
- drivers/gpu/drm/sti/sti_tvout.c                 | 10 +---------
- drivers/gpu/drm/sti/sti_vtg.c                   | 10 +---------
- drivers/gpu/drm/stm/ltdc.c                      |  4 +---
- drivers/gpu/drm/tegra/dsi.c                     |  4 +---
- drivers/gpu/drm/tiny/arcpgu.c                   |  4 +---
- drivers/gpu/drm/vc4/vc4_hdmi.c                  |  9 ++-------
- 30 files changed, 30 insertions(+), 164 deletions(-)
----
-base-commit: c4b9570cfb63501638db720f3bee9f6dfd044b82
-change-id: 20250128-cocci-memory-api-266e13a057e7
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 47d9ada98430634cfd8c1e21c2a4d00d501bab7e..e22733f8159aa4b247a915e24a236f620bae932c 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -2951,15 +2951,10 @@ static int vc5_hdmi_init_resources(struct drm_device *drm,
+ {
+ 	struct platform_device *pdev = vc4_hdmi->pdev;
+ 	struct device *dev = &pdev->dev;
+-	struct resource *res;
+ 	int ret;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "hdmi");
+-	if (!res)
+-		return -ENODEV;
+-
+-	vc4_hdmi->hdmicore_regs = devm_ioremap(dev, res->start,
+-					       resource_size(res));
++	vc4_hdmi->hdmicore_regs = devm_platform_ioremap_resource_byname(pdev,
++									"hdmi");
+ 	if (!vc4_hdmi->hdmicore_regs)
+ 		return -ENOMEM;
+ 
 
-Best regards,
 -- 
-Anusha Srivatsa <asrivats@redhat.com>
+2.47.0
 
 
