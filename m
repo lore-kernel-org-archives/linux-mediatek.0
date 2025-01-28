@@ -4,75 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9C5C0218A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 17:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5479C0218D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jan 2025 22:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:In-Reply-To:References:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gl11OPX80cgoQ96lpDm8YOIC2yE90hWsJxNKd3hvQjY=; b=2OiVxX19qKAXtwwGxfP9uG8B+P
-	drGmphGZ7hOhkCF+mAIDpZKb+ilb7TfR/xvue+js138Ji/OeBIgEeriplO0YvSaR4TtaHpOW8h5UB
-	/RuYpcOLXLmSFTe2SsO7GNG52DnadM7BWfMOzNZYB13s3Vg2v4KvKY5vwhhM0q+VznxFjv7oHUzqG
-	LWfUOdl+MpGw4tJQVPMWeH7Uvo2NjOZjb0EmoQA0+pCv0Tyw7e6lz0ffjaOeMH/rLOqAaJxZyt71J
-	t275TrjwnrrVyFyA3PZsTSzf6ChMumo53+soruiBeYs8wQdmV1jShU7BIJrwHMIKsSpny+5JC4wCw
-	eZOOodEg==;
+	bh=uBHgf3oei/qHmIZpbMF9VehDvC+EICOlxAHVG2vbAos=; b=Frl31wsKueR5o7JQoRFmMbMq2u
+	1aScQ27avOGtLMqyU0rR0q/hfbUgy+MRnUeH/FY+qs0d8e1bZcIdfFg/Jzyzf+qxz6iZlhQweBTY2
+	GSeiMkTMha5feJ+DNfZ3x8uXOABryICptNseISVEStUSFGFcGUAwcfv7H+liUMb2paaGrAfSy0aJd
+	Y7vEiXb/E9zcw+zs6huxD3RdkBypLGMAGHZQMoj5Y6+m549LNQf7OwgCsxMXcCUQmyFedC1LIOPin
+	Gc5wEFcIuVsseJa2/WKQz5u0kVOJDXNMhlBObHR1jH2WLHmGJsHERIR+K8v6swrf5ubVwmCzb1MN2
+	PI6cYhUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcppL-00000005UAb-2eFJ;
-	Tue, 28 Jan 2025 17:56:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tcu7U-00000005wWn-28xE;
+	Tue, 28 Jan 2025 22:31:44 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcpms-00000005TVR-09mM;
-	Tue, 28 Jan 2025 17:54:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 67B665C6136;
-	Tue, 28 Jan 2025 17:53:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B1F7C4CEE1;
-	Tue, 28 Jan 2025 17:54:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738086849;
-	bh=uTwbAGSjoYcmoPMQdSqt8uRACDufhTf/5L9rzTY3n90=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=a6HDviyGfVHeSrpIL5DkIp26a2Blcsnv2V4ming+k5LEF7HvMT3jqTMQ4aXbjYsjz
-	 a62l+Rqv6WxxoMUa9FQH/GclxE234l3DNZIVwst5j/XaZx5MFgkcKoE/n2+41i+0zO
-	 mmkXYGK0T86xnR8b/zMe9216xMfHCWcX/+RSDvElhN9izQdTYkKP98st3QVsdoBWHY
-	 ClldlPPcTcjmIFWkeSl0pmnBnylkZ3tJCVoUIHL8sJLqEK4yYoUMYwRgCxoKxEwPF0
-	 BQ8Tyb9WhImr/rk0LLAYai1p/oqVK0TfYjGzX7EqKlCbLJxZRqY6mI18auONhZwa5n
-	 1dXEM/v+eB8FA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Hui Ma <hui.ma@airoha.com>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.13 12/15] PCI: mediatek-gen3: Avoid PCIe resetting via PERST# for Airoha EN7581 SoC
-Date: Tue, 28 Jan 2025 12:53:43 -0500
-Message-Id: <20250128175346.1197097-12-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250128175346.1197097-1-sashal@kernel.org>
-References: <20250128175346.1197097-1-sashal@kernel.org>
+	id 1tcu7R-00000005wTD-05ED
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Jan 2025 22:31:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1738103499;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uBHgf3oei/qHmIZpbMF9VehDvC+EICOlxAHVG2vbAos=;
+	b=jIY3QfC9PtFjT9dAJ7JyzPEEIfHkjAAq6HnhBMQw8Ml54ZWTAWPEe5NbAgVJZCLQf9xKYC
+	lg70R/MbLmz06Fjv/bSSqaTQoalhM2ua7I+dAspT5av9FUDrreGDF0mPhjPXjsLJB2iZLl
+	rWhH1m4CDWoIDnvZGtpxXHkXwkch+00=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-673-fxGDwM2BPi2Fc2IPObJXkg-1; Tue,
+ 28 Jan 2025 17:31:37 -0500
+X-MC-Unique: fxGDwM2BPi2Fc2IPObJXkg-1
+X-Mimecast-MFC-AGG-ID: fxGDwM2BPi2Fc2IPObJXkg
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3F1441800366;
+	Tue, 28 Jan 2025 22:31:31 +0000 (UTC)
+Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.231])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 67E34180035E;
+	Tue, 28 Jan 2025 22:31:19 +0000 (UTC)
+From: Anusha Srivatsa <asrivats@redhat.com>
+Date: Tue, 28 Jan 2025 17:29:29 -0500
+Subject: [PATCH 05/14] drm/meson: move to devm_platform_ioremap_resource()
+ usage
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.13
-Content-Transfer-Encoding: 8bit
+Message-Id: <20250128-cocci-memory-api-v1-5-0d1609a29587@redhat.com>
+References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
+In-Reply-To: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
+To: Joel Stanley <joel@jms.id.au>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
+ Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>, 
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Alexey Brodkin <abrodkin@synopsys.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Jonathan Corbet <corbet@lwn.net>
+Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=1714;
+ i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
+ bh=f2q+dLROh+nmfHqYKZQjWCkJEGeXIqlbeRtQt42VgCQ=;
+ b=lhClH7lzArBOUdWbc4Q4UnvQ1RCQ19pVNRVv63WKBHzCVgJMxuArGJpHa8TYtAgCNIzt7DlYr
+ NxuKblbIiv5BF/Ek4dNs87o4KLEP61IBFsptwDPsRW00XhC+FVopP4m
+X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
+ pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: f5Im36_-s8O0uuC-j73dQkS73ijvvaNdqmEZHkh0eqk_1738103492
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_095410_162513_31BA83E7 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20250128_143141_135587_A5E1F89B 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,133 +137,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+Replace platform_get_resource_byname + devm_ioremap
+with just devm_platform_ioremap_resource()
 
-[ Upstream commit 491cb9c5084790aafa02e843349492c284373231 ]
+Used Coccinelle to do this change. SmPl patch:
+@rule_3@
+identifier res;
+expression ioremap;
+identifier pdev;
+constant mem;
+expression name;
+@@
+-struct resource *res;
+...
+-res = platform_get_resource_byname(pdev,mem,name);
+<...
+-if (!res) {
+-...
+-}
+...>
+-ioremap = devm_ioremap(...);
++ioremap = devm_platform_ioremap_resource_byname(pdev,name);
 
-Airoha EN7581 has a hw bug asserting/releasing PERST# signal causing
-occasional PCIe link down issues. In order to overcome the problem,
-PERST# signal is not asserted/released during device probe or
-suspend/resume phase and the PCIe block is reset using
-en7523_reset_assert() and en7581_pci_enable().
-
-Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-specify per-SoC capabilities.
-
-Link: https://lore.kernel.org/r/20250109-pcie-en7581-rst-fix-v4-1-4a45c89fb143@kernel.org
-Tested-by: Hui Ma <hui.ma@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Krzysztof Wilczyński <kwilczynski@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>
+Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 59 ++++++++++++++-------
- 1 file changed, 41 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/meson/meson_drv.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index be52e3a123abd..74dfef8ce9ec1 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -133,10 +133,18 @@ struct mtk_gen3_pcie;
- #define PCIE_CONF_LINK2_CTL_STS		(PCIE_CFG_OFFSET_ADDR + 0xb0)
- #define PCIE_CONF_LINK2_LCR2_LINK_SPEED	GENMASK(3, 0)
+diff --git a/drivers/gpu/drm/meson/meson_drv.c b/drivers/gpu/drm/meson/meson_drv.c
+index 81d2ee37e7732dca89d02347b9c972300b38771a..6c805805b7a7f675f8bb03944318972eb4df864e 100644
+--- a/drivers/gpu/drm/meson/meson_drv.c
++++ b/drivers/gpu/drm/meson/meson_drv.c
+@@ -184,7 +184,6 @@ static int meson_drv_bind_master(struct device *dev, bool has_components)
+ 	const struct meson_drm_match_data *match;
+ 	struct meson_drm *priv;
+ 	struct drm_device *drm;
+-	struct resource *res;
+ 	void __iomem *regs;
+ 	int ret, i;
  
-+enum mtk_gen3_pcie_flags {
-+	SKIP_PCIE_RSTB	= BIT(0), /* Skip PERST# assertion during device
-+				   * probing or suspend/resume phase to
-+				   * avoid hw bugs/issues.
-+				   */
-+};
-+
- /**
-  * struct mtk_gen3_pcie_pdata - differentiate between host generations
-  * @power_up: pcie power_up callback
-  * @phy_resets: phy reset lines SoC data.
-+ * @flags: pcie device flags.
-  */
- struct mtk_gen3_pcie_pdata {
- 	int (*power_up)(struct mtk_gen3_pcie *pcie);
-@@ -144,6 +152,7 @@ struct mtk_gen3_pcie_pdata {
- 		const char *id[MAX_NUM_PHY_RESETS];
- 		int num_resets;
- 	} phy_resets;
-+	u32 flags;
- };
- 
- /**
-@@ -438,22 +447,33 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
- 	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
- 	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
- 
--	/* Assert all reset signals */
--	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
--	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
--	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
--
- 	/*
--	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
--	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
--	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
--	 * for the power and clock to become stable.
-+	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-+	 * causing occasional PCIe link down. In order to overcome the issue,
-+	 * PCIE_RSTB signals are not asserted/released at this stage and the
-+	 * PCIe block is reset using en7523_reset_assert() and
-+	 * en7581_pci_enable().
- 	 */
--	msleep(100);
--
--	/* De-assert reset signals */
--	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
--	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-+		/* Assert all reset signals */
-+		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-+		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-+		       PCIE_PE_RSTB;
-+		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+
-+		/*
-+		 * Described in PCIe CEM specification revision 6.0.
-+		 *
-+		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-+		 * for the power and clock to become stable.
-+		 */
-+		msleep(PCIE_T_PVPERL_MS);
-+
-+		/* De-assert reset signals */
-+		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-+			 PCIE_PE_RSTB);
-+		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	}
- 
- 	/* Check if the link is up or not */
- 	err = readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-@@ -1231,10 +1251,12 @@ static int mtk_pcie_suspend_noirq(struct device *dev)
- 		return err;
+@@ -220,14 +219,8 @@ static int meson_drv_bind_master(struct device *dev, bool has_components)
  	}
  
--	/* Pull down the PERST# pin */
--	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
--	val |= PCIE_PE_RSTB;
--	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-+		/* Assert the PERST# pin */
-+		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-+		val |= PCIE_PE_RSTB;
-+		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	}
- 
- 	dev_dbg(pcie->dev, "entered L2 states successfully");
- 
-@@ -1285,6 +1307,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_en7581 = {
- 		.id[2] = "phy-lane2",
- 		.num_resets = 3,
- 	},
-+	.flags = SKIP_PCIE_RSTB,
- };
- 
- static const struct of_device_id mtk_pcie_of_match[] = {
+ 	priv->io_base = regs;
+-
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "hhi");
+-	if (!res) {
+-		ret = -EINVAL;
+-		goto free_drm;
+-	}
+ 	/* Simply ioremap since it may be a shared register zone */
+-	regs = devm_ioremap(dev, res->start, resource_size(res));
++	regs = devm_platform_ioremap_resource_byname(pdev, "hhi");
+ 	if (!regs) {
+ 		ret = -EADDRNOTAVAIL;
+ 		goto free_drm;
+
 -- 
-2.39.5
+2.47.0
 
 
