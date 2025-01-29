@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AD2C02190
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jan 2025 15:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C0CC02193
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jan 2025 15:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2bHyTajC4mwqOH3jd7tPC1C66TdJNJC1XudzRdu7F+M=; b=j6ZdIBwXZS9gmQNG2a+SP6qQqD
-	paqEU6c0VhL2bx9/ioP4WXwTGVkRcI61Ky24l3HwyM3Q4J3kOpNnVM63J/N+QFZaOD1UZLsewmNKk
-	E/xTrjuxs9H1NuQLTjgS410Qh07D9GDToAYANYE4zS4JD/jbh19Y21Fo+xvZ/oABw9jDMk89EfLfW
-	OwgeuIbdf3awGHzmubpnCNfMuqliXesjmUYkW4w6GIXyIVuP9xD/iQEnwt5HMcI8DPpo3RFV5EaAO
-	z07yGRsT8rpyDjzEyfM2hHVnylH/Cp1f1GbdwfbkIshRZZgfu/hlzykpwj1GkfWpYgcxBBbNSMaJZ
-	5QpMItlA==;
+	bh=3eFheDSpWiyXUMIVePzaMmKiY4Irw4pDvAOo/KLDnaE=; b=1r7NFU+8bPDq2l50px+BBcUrXd
+	iTr4r6/B6/l4+qjj1eUEZLinWVxVjSz9vXvfu52BjhQ5lZyDX4LLvSZfq86WtA+op9q0GuDdpZGeK
+	5pT9p3Cz2kjKMJhpbTwuWnhgw7BMm2cZjqFC8auA4KoIaRYbJZO+SAzFD+2cw/m4KOuCCS+W8XiLq
+	AwUKmPZLVxq9dzbyKukYj1wv0OVrLOtqtfIvhw3tsmpLeSsIGWCOTlpIs/L1x9/qEDg7rXw/7jbfY
+	B3gSzXz6H6a+cQfdooHlAXjcRPYPytAbLTJrSNuKVW8zLCjaZqhN0+IweW2oYVrzA/OSplW/JSQLh
+	nIXtB0Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdA26-00000007FzN-0Utf;
-	Wed, 29 Jan 2025 15:31:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tdA2x-00000007GCR-30qi;
+	Wed, 29 Jan 2025 15:32:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdA22-00000007Fy5-3Plo;
-	Wed, 29 Jan 2025 15:31:12 +0000
+	id 1tdA2u-00000007GBK-1HsE;
+	Wed, 29 Jan 2025 15:32:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 573EC5C5DD4;
-	Wed, 29 Jan 2025 15:30:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33696C4CED1;
-	Wed, 29 Jan 2025 15:31:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 06A655C5A46;
+	Wed, 29 Jan 2025 15:31:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3BE9C4CED1;
+	Wed, 29 Jan 2025 15:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738164669;
-	bh=2bHyTajC4mwqOH3jd7tPC1C66TdJNJC1XudzRdu7F+M=;
+	s=k20201202; t=1738164722;
+	bh=3eFheDSpWiyXUMIVePzaMmKiY4Irw4pDvAOo/KLDnaE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hg08j7Ur3nGyM5zBmp03uHV1XYf0M9UupChK0iMx27cfi1AFnnDVYU10CwoPhaSqV
-	 pFliZLawazhqzZL2gvKgk0WFxEKM8YIomrdInbcERXTMpbQAkUyXO4gpEvPAxigyBI
-	 bnwWi1epktQ/GfI51R1Nuqub6TT4FhtlpsSuWEy13hpSgsZ41Nx+s1ZGnqji8K8MdE
-	 yXMqmjWRXKP8JovcEpIG9+lK4foCpaZc24O908abNAWS+wCFHv9iu0DvwPruDZgBUR
-	 PzIIZXu44Puh95x9FUSniZuA52zdtdC/OpNWRjdnTsjriLVzbrwUPnib2OQGvSZ4zR
-	 ydYnSW7KKZ5Sg==
-Date: Wed, 29 Jan 2025 16:31:05 +0100
+	b=eNEyerr8J8cbrkMBUgupRCxukgjLdit161gsKlHuJxa+5IqchUKpPVtU4BV55gLHH
+	 arBcFMgvi5A3NFA1OOSoAZUoqHmhTBa8NxmwyXTU767gowKxQF2CYOKypUqndM2Dw4
+	 gMSGB/Rs7OZtmzE+zSYKGK7fR8O+vuWcQeSoRX0J0b6FiT5uxyH537PUh3ICy3gBE7
+	 qGorehjzmtey9b4Ie1xvoPiBep7Y95l8e4v8qYDm+4UZz/i0Ss81LEaBI2zJeYXHU1
+	 pwkIwiqaZHM9XFV7eReEW18xKSuzUrbPdEWsOuwBBrTaa3/7ZMCwQo/ZSyVQmAsg4Z
+	 xfrQZrqytCJow==
+Date: Wed, 29 Jan 2025 16:31:59 +0100
 From: Maxime Ripard <mripard@kernel.org>
 To: Anusha Srivatsa <asrivats@redhat.com>
 Cc: Joel Stanley <joel@jms.id.au>, 
@@ -72,19 +72,19 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
 	linux-amlogic@lists.infradead.org, imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH 01/14] drm/aspeed: move to
+Subject: Re: [PATCH 02/14] drm/fsl-dcu: move to
  devm_platform_ioremap_resource() usage
-Message-ID: <quo4lit26u7b4xjhc23o7y6npyeh44uywddti2vb7mjv325ymr@rk3bb2wq2gok>
+Message-ID: <re7tzoh5jc62tne5yjxwedzgwytjiaobe7lmthufl64ianzkwd@5tr3snkco7n5>
 References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
- <20250128-cocci-memory-api-v1-1-0d1609a29587@redhat.com>
+ <20250128-cocci-memory-api-v1-2-0d1609a29587@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="feetlxquiqryfdkp"
+	protocol="application/pgp-signature"; boundary="4ecgy27a4bl56ypl"
 Content-Disposition: inline
-In-Reply-To: <20250128-cocci-memory-api-v1-1-0d1609a29587@redhat.com>
+In-Reply-To: <20250128-cocci-memory-api-v1-2-0d1609a29587@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_073110_956158_FC636AAE 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20250129_073204_540745_975E28D7 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,15 +100,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---feetlxquiqryfdkp
+--4ecgy27a4bl56ypl
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 01/14] drm/aspeed: move to
+Subject: Re: [PATCH 02/14] drm/fsl-dcu: move to
  devm_platform_ioremap_resource() usage
 MIME-Version: 1.0
 
-On Tue, Jan 28, 2025 at 05:29:25PM -0500, Anusha Srivatsa wrote:
+On Tue, Jan 28, 2025 at 05:29:26PM -0500, Anusha Srivatsa wrote:
 > Replace platform_get_resource + devm_ioremap_resource
 > with just devm_platform_ioremap_resource()
 >=20
@@ -124,24 +124,25 @@ On Tue, Jan 28, 2025 at 05:29:25PM -0500, Anusha Srivatsa wrote:
 > -ioremap_res =3D devm_ioremap_resource(...);
 > +ioremap_res =3D devm_platform_ioremap_resource(pdev,0);
 >=20
-> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: Stefan Agner <stefan@agner.ch>
+> Cc: Alison Wang <alison.wang@nxp.com>
 > Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 
 Reviewed-by: Maxime Ripard <mripard@kernel.org>
 
 Maxime
 
---feetlxquiqryfdkp
+--4ecgy27a4bl56ypl
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ5pJuAAKCRAnX84Zoj2+
-dol7AX9FewsZOX9vP+EVK4qeoWf32JdhX+9xPUxub7t3hZMZVyjaJ6JgOFU6IUge
-eZR6Dc4BgLc6zLKxiOmAsFpEg32IZBmVbKZ5J8gvcbJ7pFhcd4DjotbJ9cJDXfKk
-y8YQlkhvhA==
-=Yi1X
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ5pJ7gAKCRAnX84Zoj2+
+dtrgAYCFjfwtMfB3t6F45oNqmLk0ks3YVtwAXdgRfdShn6/wFj/BV7iDvIgrpcCH
+qLlOFWEBgMW8WvTRwXwIETDgFjCMTrxFlK4L2dh4+vwJLxCZFKsXy41VgEFoC+Qs
+LXrrPbNtgw==
+=AGCA
 -----END PGP SIGNATURE-----
 
---feetlxquiqryfdkp--
+--4ecgy27a4bl56ypl--
 
