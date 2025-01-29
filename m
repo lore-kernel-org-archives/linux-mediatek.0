@@ -4,100 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50850C0218D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jan 2025 18:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECBB0C0218D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jan 2025 18:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cBAmHsVRYatgodxfmWfN1c6yV3AJ+2DuOOOfnLu1pdU=; b=tL87R7ox7Wy10x+Vib6oRGgKk0
-	wjIOSvvm+veE8JVA0MzjTQc49O8h0yU+FD62j47zC/l9JXmLp0tXGkqPvD7olxtPjjnyQN0J6pVT+
-	uxflbUHLt6rsbLuo+doJOWl5fSRQjN55qNbHoXMtS2E8tF9IyFoOWANvMZFk++4UevwFkwLG+jMan
-	TNnM8tvhcJ0JL6M+ilfm8eN2BlU+Ivz7E2Rdh4QpJrkxM7ePmmKpeLuHUSfwXxCzHVvzk9n6XkBrO
-	GQp2XCsazh7xt0f1qiYyNnkVVLzFbqE1ouEWDgbHAQpTLmmESBffsZ5MZiVBvG44k07HoCjTmLqDP
-	lfY+w46A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wpLtJQJSXibrZpozKG1QF6LlfcAJa9vamGSJco/f5II=; b=AAp7E0P7Gp6ns8oZSiCBKARfpR
+	LtN8tvwrr5dBOpt4NS7lIxqBvnVkuZL+QYuIWcFwN9JM/fbjkGQ3XwyORLiazdZpyJUILxWA9E1Q5
+	bt9sonBtfpfTQhrHj/FKO/BJ6WwAUumBn2U/Ymyo2FBYxaPD7TX2LPsT0vKjI0iaRrrqCagjJwkJb
+	6MDAM/ceFt9rZvaYR6oeWHraYb8OAKHPLR4TaQP9MhIopO9OHL78/huvoQlHfyJ1a6zw7fvx/2L2/
+	Hw0hb3+I/YrcIAPXPyZJS8fhKvxWfpTEnTJQKRmFbQ53jseKQWBL+DON1u45gB4wkA4Rb8NQ6Vure
+	vBlb0GXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdCqT-00000007c0V-0KXo;
-	Wed, 29 Jan 2025 18:31:25 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1tdD3X-00000007dTD-0Gmn;
+	Wed, 29 Jan 2025 18:44:55 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdCqM-00000007byi-2p5S
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Jan 2025 18:31:23 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-2a8690dcb35so2378036fac.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Jan 2025 10:31:17 -0800 (PST)
+	id 1tdD2D-00000007dIR-3hwC;
+	Wed, 29 Jan 2025 18:43:35 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-43635796b48so7764235e9.0;
+        Wed, 29 Jan 2025 10:43:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1738175477; x=1738780277; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1738176212; x=1738781012; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cBAmHsVRYatgodxfmWfN1c6yV3AJ+2DuOOOfnLu1pdU=;
-        b=aNZ3DAxe6gt32nsGoqC17DfKqsLjBkKRIHuE885H19to2x41gg5hAnCdn60YR6JTHx
-         /TLMiGb32owEQORgHrvmtPtZOQW0aW/9hdR6knReItIxI1N8WIYw5t/gGCXOqQJF/mgp
-         PfGXZuaBJmss3jVxTEZcHN+1KWkecEAjvDwZwqXgfUWBA0bEg4ILqBIzQMScL/POU6Hs
-         hTAupbhLGaj529xk7OG/0tj9ZVnXM6zmCp99rkeysYru15qY4JqgDlZsoveAUp8d6z3Z
-         t/5qgiz28Z9IOxz48Nb14BbAYHAOpsm3yn/ebuHr7KvaskGeWlfzRPuoVfLgxMtyVDUJ
-         Tx+w==
+        bh=wpLtJQJSXibrZpozKG1QF6LlfcAJa9vamGSJco/f5II=;
+        b=V8ACvsyhTH5OMEGuZTHjp1I70/cAlUCkCdNmL96n3CWjpJPfcZkWDK+proXaeiUyVf
+         Xrg3mYVzTpH+ab5PH2ztov2D71gcG0q//mf+0Pw6qxe80SjUWYrPzGj9noiPNitdTa5a
+         P7VV5qennWnO+wDQ+lwpfbtgXazD9Wcyc9Wm9xTQVv8AdnRh5W0s2lczQFDC9W1mB9UN
+         3POooTU//9ZZf/AaAc8ohijwyrxeEYE2RLtKGLvwuVB+xwQbuuEvoN4AnEmHHjoULKpw
+         PcIPjOmQaC+sO8ltOoC8cfIk6ZTjF3SVPZV3jX05EB1YhyyBRmSYQ5Ho7KeT0hUusLUO
+         nH8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738175477; x=1738780277;
+        d=1e100.net; s=20230601; t=1738176212; x=1738781012;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cBAmHsVRYatgodxfmWfN1c6yV3AJ+2DuOOOfnLu1pdU=;
-        b=WKFGYOZL1ZjqKdayVdCsIWkNxERmCdrMjvc8RIJIbhQPjMwTYPgLOId7s5kMNm4eUF
-         rjlTMFDvHjOpI9p8s7x47C4CwVJo6H6rZMbJBpON496cPGTQecuS+FQBujxxRgBUvl/Q
-         HqhMRqUHXQjiEPF+WI47XxcQ/3smt2oCLA4/EmRU52J/JUy6xBbM3T7swQfX7+5Cuis5
-         dw1RZTKkRK9mEoNFKOLABy3UT00dOU4Vx+AYA7Uqg0u54JzAW2RoaqAO12BzfATiq71Q
-         zU46uBYYTJbHMt1Des8/2G02LQwHCXg5GTZZGSpUdxdgUbXKMRoYlXn2OtK6pXz3zT+q
-         U4eg==
-X-Forwarded-Encrypted: i=1; AJvYcCXJamcqxShVp9zJUR2yFrWI8vB/4YPDnYGpG65ZdRSbyQYRBlvMbf7WIsuDxLHdpu6VJQISX1Z5vdt4VrAq6w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwzCr5DKxhIEjZ5MoCVUGrAOY741zPmbL1TilKhr4R20d4yPLZD
-	eh2SW2lobeV/GJTTsxA0Q20gqh+lrd+Vy99gdq6DjMMtgB3TCluR
-X-Gm-Gg: ASbGncsNbgYxsXdlSNkwrv5xyt5lmZCUH7tIqsBu6akknOk5e+2lEqiEgWGbgHZK/8D
-	RHboJuHHwRlX8B2ZeuTwQ2gT2MBbSaaXe9+W5w9yEjyVvOjPUbv9G9sctxbBx5j4bdveG9M2J8m
-	9pDSnWc5B8lnik2Ix79dZX5vD6MCTUauNxktaJk5y1ooNAeXZuj11IsaIJUm9bjiF+H9nD5+tG/
-	yOIA9syYS7KYz8xAIA5P701iTZg3GQgEJngWl049c/XoqlkV2YCa/CFjXbg+2mk7ioCSEBD0c5q
-	ede4YXnUnTTHCmvSgmpLlhOm1Vf2Rq/3wxOt
-X-Google-Smtp-Source: AGHT+IFoQgrhZqWDNWjsi+GsbUHYEMoaVrN1HbdaP4CDNbX4DiAKWLHn2kW1C0kpPifUGxx4C7Cu5g==
-X-Received: by 2002:a05:6870:2a44:b0:297:2479:a35b with SMTP id 586e51a60fabf-2b32efdb093mr2435058fac.1.1738175477149;
-        Wed, 29 Jan 2025 10:31:17 -0800 (PST)
-Received: from localhost.localdomain ([23.151.240.73])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2b28f4134e0sm4482433fac.40.2025.01.29.10.31.15
+        bh=wpLtJQJSXibrZpozKG1QF6LlfcAJa9vamGSJco/f5II=;
+        b=YoUgQsKNOtAQqEtblw2qLfr54mjLukJ5kPAFX1/S0y7swpZrJbj+kIed9WtPXi4dWC
+         lxOS6Kv2NEMy5O6/yVKA6S+e0rcJFCQbgQnqPu2vYTX0pdd7Bum//27y8JdL4JhU21ck
+         xL7p0xslptBq7xbhlF0647OMrnppzKjDqG1qOm1bVx2snNpD4jAmrCmiN/1XPMcPWAU1
+         CpdPzU5U/OfIhgthazlrCCWcJ2ilWeXqdaE42qaGx4w13wPYlxpcAUg/RJTAzqoXfpZb
+         wak2ymnkB12kRSwUbmlbIE0hFWsLCQty3HFYd0PmgkfGOJyaDHG23Wuo/NRrUk9Vhpmg
+         YFrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU6I/egvrvnAdqT4lsRXwI4qV/4wRmwJchaqizpOfEwIgjuc7Ypp5nSjh5LOJWKcxmG7prM2xHI7o9sGzUvSU8=@lists.infradead.org, AJvYcCVEK5l/Riz6b+AbJYZn4Qx65uOlRZlkBeAMgOVtGjZbx5hiIyP/dUj0uk33UFe6UnX4Vq43dSOAZNxnIS9xTMFp@lists.infradead.org
+X-Gm-Message-State: AOJu0YyuSqJZICiBpZx6LcZv59wSuswbmF18WbxgSkYdPH+JLAp2WSOs
+	2gFsbr4IUNaUlFMv1IEedrygXAGAI0hpclkt6s0sYwPf25om7GZK
+X-Gm-Gg: ASbGncsE4YNHLaiA6fCB5+lNu5chyrhImwSySlly13SbRQTOsnCrJd0j6cwNqW8WU22
+	tr7qcOMd2R82kQlLsMVMJridzpVehP9bGO6mBKPvlItd/G8aGp4MXjAoOV7YrdaVwvfWx/S0e9l
+	vK8SlLjMZv19tkL7C2VCrZHf/ViH3rfdts+H8pXAxvZg842YD/prbDuF8CRTyLFNJu3NeIbPHHC
+	TH3I7V7PFqXq3W5xztNQ9Gg2Jj6YGIhW3ZhDBS3G5JU1FRQ1xegq4duQbwGtHqWJ0b/ySjmj7F4
+	lg9csFSKY4ClQwQ6H70Gs/rBgJy6ISjP591dRNshxO1n2M2HowpQcChwcgRZCW5hmZg=
+X-Google-Smtp-Source: AGHT+IEPFrQXMJ4B9NwKJTHyw+XoKc8K85X25SwaFjwRXkdgX7SF83b7AlrXrbk9HgCflphZbgeZng==
+X-Received: by 2002:a05:600c:3d8c:b0:438:9280:61d5 with SMTP id 5b1f17b1804b1-438e15db9f6mr3330685e9.5.1738176211643;
+        Wed, 29 Jan 2025 10:43:31 -0800 (PST)
+Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438dcc80e61sm32258705e9.34.2025.01.29.10.43.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jan 2025 10:31:16 -0800 (PST)
-From: John Glotzer <jglotzer@gmail.com>
-To: rtl8821cerfe2@gmail.com
-Cc: Aaron.Hou@mediatek.com,
-	Chris.Lu@mediatek.com,
-	Deren.Wu@mediatek.com,
-	Hao.Qin@mediatek.com,
-	Sean.Wang@mediatek.com,
-	jglotzer@gmail.com,
-	johan.hedberg@gmail.com,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	luiz.dentz@gmail.com,
-	marc.payne@mdpsys.co.uk,
-	marcel@holtmann.org,
-	regressions@lists.linux.dev,
-	sergio.callegari@unibo.it,
-	steve.lee@mediatek.com,
-	tiwai@suse.de
-Subject: Re: [PATCH] Bluetooth: btmtk: Remove resetting mt7921 before downloading the fw
-Date: Wed, 29 Jan 2025 12:31:09 -0600
-Message-ID: <20250129183109.10770-1-jglotzer@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <585f1075-a662-489b-bd5c-cf9f24291804@gmail.com>
-References: <585f1075-a662-489b-bd5c-cf9f24291804@gmail.com>
+        Wed, 29 Jan 2025 10:43:31 -0800 (PST)
+From: Jernej =?UTF-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans de Goede <hdegoede@redhat.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>, Viresh Kumar <vireshk@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Raphael Gallais-Pou <rgallaispou@gmail.com>
+Cc: linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH RFC 10/14] ahci: sunxi: Switch from CONFIG_PM_SLEEP guards to
+ pm_sleep_ptr()
+Date: Wed, 29 Jan 2025 19:43:29 +0100
+Message-ID: <2765029.mvXUDI8C0e@jernej-laptop>
+In-Reply-To: <20250127-pm_ata-v1-10-f8f50c821a2a@gmail.com>
+References: <20250127-pm_ata-v1-0-f8f50c821a2a@gmail.com>
+ <20250127-pm_ata-v1-10-f8f50c821a2a@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_103118_713736_E5444672 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20250129_104333_928203_42E98B38 
+X-CRM114-Status: UNSURE (   6.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,16 +111,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Good news/TLDR
-   Yes, so far I have resumed from sleep 2x without any issues
-   with both of my workarounds disabled (kernel command line/systemd rfkill on sleep).
+Dne ponedeljek, 27. januar 2025 ob 13:46:05 Srednjeevropski standardni =C4=
+=8Das je Raphael Gallais-Pou napisal(a):
+> Letting the compiler remove these functions when the kernel is built
+> without CONFIG_PM_SLEEP support is simpler and less error prone than the
+> use of #ifdef based kernel configuration guards.
+>=20
+> Signed-off-by: Raphael Gallais-Pou <rgallaispou@gmail.com>
 
-What I don't yet understand
-   This commit
-   (https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/diff/drivers/bluetooth/btusb.c?id=v6.12.8&id2=v6.12.7)
-   was a pure USB fix. My mt7922 device (not a USB dongle but built into the motherboard)
-   seems to be both a bluetooth device (bound to btusb driver) *and* a Wifi device (bound to mt7921e driver).
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-   I remain puzzled as to how is it that the issue that is on the USB side was *also* fixed by
-   adding mt7921e.disable_aspm=y to the kernel command line (since that would act on the wifi/pci pathway)?
+Best regards,
+Jernej
+
+
 
