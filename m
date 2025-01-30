@@ -4,77 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEFDC0218D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 02:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA1AC0218A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 08:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BpOlv1ZTtdy2ufgpFbyrTvo0t538XvobXfuNLeiCjfI=; b=UfbFBpLMtVgIdr35OvJz2DAJz9
-	hm89kSbFCmPdZvPS09NXquHnwkCSu0ttlKjp5Vt/dBy4gCbQNVB/KJfLhHCK/sQOMfffOazE0+K0F
-	YGQkVYh0rye7ShiwV8p8YyIAbV2pyG/BdS5a1fgwFk++IQHSj8s5NtrLb0QEI5zhokkJih50eE27E
-	jfcCj/UC20cNj+XS+EIdLgsTMM7yZ7cLy3u69QhyiTbDxKX/7dnD7hhB4rPohOimDmBLXwzQgf0gd
-	WFLvb9oEj4cpyJohi9PvKhF77kgCT3f/Nv5CUZwbw7nq/1R+7IiOG/YpFTQKvs4eCQRc4DvA0aVzI
-	Wng1LYEA==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=; b=x82CMa1l9HhWIQBqsaKJXSdYk8
+	Z2eihp+O0LkDVPb8ap7He3EwiS7As9t23xd0lGjiBcZS/8RnSgbdM7arjFPSCjDALpFWhMsT/gxZt
+	m6vVRRQeL4eyqy6wJNxZHGYtYfTaM//y55TpHbDs0LLDOQNPFQHU3eV7pSyzd2brZfgQwGxizN5RX
+	t4G+A/T/mFggXBGV8YwS0A7OPbz9WMyrPOx1Ser3XgG5ezcpXgm/nDKJcfYKrjcF6V9PJOpN/MYJ8
+	2Sra7EhTtiQ/RI98pP6JV+BGbqmzE6cu1TuTAcjoYDmPhX/WKFCGGAIJEptsnnyuXuck8O9Ki18nL
+	Lgfla/dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdKLj-000000084n6-1vR2;
-	Thu, 30 Jan 2025 02:32:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tdQFw-00000008S8l-0eCL;
+	Thu, 30 Jan 2025 08:50:36 +0000
+Received: from mail.cybercitadel.pl ([57.128.173.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdKKQ-000000084hw-0247;
-	Thu, 30 Jan 2025 02:30:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8AA2AA4157E;
-	Thu, 30 Jan 2025 02:29:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B50C2C4CED1;
-	Thu, 30 Jan 2025 02:30:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738204247;
-	bh=e4jbTg/JY2I7eJPj0aXC/9HSq2Ljb5HCCsZGm12Jwr0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Y2nGbi0T6W0Oi8KOuLylVn2xAg2yXpQ2n5IISfJfVxbHKfSqWlxGXS5zVm7Do/Gio
-	 7bp8aPT5RgM3Wo4MacJLJlpnGqbmB6ttpLNLme1jLj2+I20HUBQECEvrVz6Pd36Yu3
-	 L9yEuGCVz/cJPl3Fr/tvqGhi2vq9UIH7kgzlEodzDg06ftpHLiVS3qbBkS2D6mZI1/
-	 OUAdyzBIDYiI6eKfFnpbmuI2UKzoPdbzDqDmvvdqOa6Sfub4EVNYBdlVElNLKqtVgw
-	 cYRSYqP15TSYZsp6oSQQvYJgRCOMV9ByiCElgbFd4927X3VAag+HRpkxQ+4Mz2i0D9
-	 esvKqqdHF/IlA==
-Message-ID: <5d8d4fa6-66ef-48c1-b13a-607a70e476f4@kernel.org>
-Date: Thu, 30 Jan 2025 11:30:43 +0900
+	id 1tdQFu-00000008S6t-2YRE
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Jan 2025 08:50:35 +0000
+Received: by mail.CyberCitadel.pl (Postfix, from userid 1002)
+	id 689E54D645; Thu, 30 Jan 2025 09:40:55 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=CyberCitadel.pl;
+	s=mail; t=1738226566;
+	bh=vUvp0ttX3lOxjdOrvZsKvJKNpHHNusfF6naBdS8j1E8=;
+	h=Date:From:To:Subject:From;
+	b=saLRhVWDZxc8+iKdy8n+Z2Scqd534HdkTwTB5BeBkl9giTdOoyeRo0TQyH+aYvdLm
+	 f/KOb/s2TmAhX8ahQE8EsIHu5LLxIa+XwzS3d/RLQFYrgLhWOkPr3Rwtw+uz9QOFIa
+	 34IHG/tjDiW7gX2i/b9uY8gzfiqmHrEBGgBLLcUxGCLtZ0/j2WnMDPrZZRQjSy7ChD
+	 u98y8sNjbQiC2akaZACPTx9BVgM6HukSdNhHEKdGFEOHIevo4qf/5rvGB0pr0AhqFE
+	 p/+X0mAYj8iuAofq7qih5kwdvWD9Jsn1wi1mepiD0ANq1xkmM7NPIzwRUlddrEzOrK
+	 IucXxaRmII47w==
+Received: by mail.CyberCitadel.pl for <linux-mediatek@lists.infradead.org>; Thu, 30 Jan 2025 08:40:22 GMT
+Message-ID: <20250130084500-0.1.d8.2db15.0.36x1a5bahf@CyberCitadel.pl>
+Date: Thu, 30 Jan 2025 08:40:22 GMT
+From: "Marek Kucharski" <marek.kucharski@cybercitadel.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.CyberCitadel.pl
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC 14/14] ahci: sata_rcar: Switch from CONFIG_PM_SLEEP
- guards to pm_sleep_ptr()
-To: Geert Uytterhoeven <geert@linux-m68k.org>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>
-Cc: Niklas Cassel <cassel@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hans de Goede <hdegoede@redhat.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Viresh Kumar <vireshk@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, linux-ide@vger.kernel.org,
- linux-kernel@vger.kernel.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-renesas-soc@vger.kernel.org
-References: <20250127-pm_ata-v1-0-f8f50c821a2a@gmail.com>
- <20250127-pm_ata-v1-14-f8f50c821a2a@gmail.com>
- <CAMuHMdWdXNB=ijpWHWY5HgwJw8yw4jk9Bnmez-8MLzGRCQrXdg@mail.gmail.com>
-From: Damien Le Moal <dlemoal@kernel.org>
-Content-Language: en-US
-Organization: Western Digital Research
-In-Reply-To: <CAMuHMdWdXNB=ijpWHWY5HgwJw8yw4jk9Bnmez-8MLzGRCQrXdg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_183050_188760_79829B48 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20250130_005034_780402_1FAFB1C9 
+X-CRM114-Status: UNSURE (   1.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,87 +67,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/27/25 22:45, Geert Uytterhoeven wrote:
-> Hi Raphael,
-> 
-> On Mon, 27 Jan 2025 at 13:46, Raphael Gallais-Pou <rgallaispou@gmail.com> wrote:
->> Letting the compiler remove these functions when the kernel is built
->> without CONFIG_PM_SLEEP support is simpler and less error prone than the
->> use of #ifdef based kernel configuration guards.
->>
->> Signed-off-by: Raphael Gallais-Pou <rgallaispou@gmail.com>
-> 
-> Thanks for your patch!
-> 
-> The subsystem prefix is "ata", not "ahci" (not all ATA-drivers are
-> AHCI-drivers).
+Dzie=C5=84 dobry,
 
-Yep. The convention is:
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-ata: driver_name: xxx
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-So it would be:
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
 
-ata: sata_rcar: Switch from CONFIG_PM_SLEEP guards to pm_sleep_ptr()
-
-for this patch. And the same comment applies to all your other patches in the
-series.
-
-> 
->> --- a/drivers/ata/sata_rcar.c
->> +++ b/drivers/ata/sata_rcar.c
->> @@ -927,7 +927,6 @@ static void sata_rcar_remove(struct platform_device *pdev)
->>         pm_runtime_disable(&pdev->dev);
->>  }
->>
->> -#ifdef CONFIG_PM_SLEEP
->>  static int sata_rcar_suspend(struct device *dev)
->>  {
->>         struct ata_host *host = dev_get_drvdata(dev);
->> @@ -1005,7 +1004,6 @@ static const struct dev_pm_ops sata_rcar_pm_ops = {
->>         .poweroff       = sata_rcar_suspend,
->>         .restore        = sata_rcar_restore,
->>  };
->> -#endif
-> 
-> If CONFIG_PM_SLEEP is disabled (e.g. m68k allyesconfig):
-> 
->     drivers/ata/sata_rcar.c: In function ‘sata_rcar_suspend’:
->     drivers/ata/sata_rcar.c:936:9: error: implicit declaration of
-> function ‘ata_host_suspend’; did you mean ‘sata_rcar_suspend’?
-> [-Werror=implicit-function-declaration]
->       936 |         ata_host_suspend(host, PMSG_SUSPEND);
->           |         ^~~~~~~~~~~~~~~~
->           |         sata_rcar_suspend
->     drivers/ata/sata_rcar.c: In function ‘sata_rcar_resume’:
->     drivers/ata/sata_rcar.c:973:9: error: implicit declaration of
-> function ‘ata_host_resume’; did you mean ‘sata_rcar_resume’?
-> [-Werror=implicit-function-declaration]
->       973 |         ata_host_resume(host);
->           |         ^~~~~~~~~~~~~~~
->           |         sata_rcar_resume
-> 
->>
->>  static struct platform_driver sata_rcar_driver = {
->>         .probe          = sata_rcar_probe,
->> @@ -1013,9 +1011,7 @@ static struct platform_driver sata_rcar_driver = {
->>         .driver = {
->>                 .name           = DRV_NAME,
->>                 .of_match_table = sata_rcar_match,
->> -#ifdef CONFIG_PM_SLEEP
->> -               .pm             = &sata_rcar_pm_ops,
->> -#endif
->> +               .pm             = pm_sleep_ptr(&sata_rcar_pm_ops),
->>         },
->>  };
-> 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
-> 
+Zapraszam do kontaktu.
 
 
--- 
-Damien Le Moal
-Western Digital Research
+Pozdrawiam
+Marek Kucharski
 
