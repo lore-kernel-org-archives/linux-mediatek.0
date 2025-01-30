@@ -4,72 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C44DC02195
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 13:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A68C0218A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 16:00:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EuUPqq+kQAgQjGRSw/fmnrDDAPSV2MNnVjP7RQG9yPM=; b=Mt6a1TlPQZr77uHe0wOKzxeelE
-	cbS9zFgwlbqO1RukHRyZFpEH+YUPUHOEQPDfA5nKIloZTs2X87nmm8rXnAIq60lZjd+CAty+ZnoOV
-	rjn6/eJLhierNTMj+MYdSAMstnSTc+wGoQ4NQkW8GkQVPp/cYj2O17NN5UDWs/PsXk7PCGB8TEpZi
-	kuULcWaeflt168qguSNq87nqTrF72uSnebQDonua/mjPvmZ30IkeEO6flZEljrSGFxDr/AmOWp968
-	hwh9gyrvZ3zPemolkbsf25KspFlY2C55QxXv9rmdr3qMdBJmkBWQROhSpYT4SJuB8UEdb4ORTVlEY
-	qyH7zBNQ==;
+	bh=Vrukcyab91NQAAPHSNd07R2nM2xtss7X+LvbFgz2NCI=; b=lzLHI7qAFngSvLr/fw1+d6rHbq
+	41ZD/al3kr5xeiMOH+wdFryh9USrjD+Tj6Koa6qnDhScH1TwUN0DCbyaWq+v3Bu7+udSbioToJH7s
+	FWg6vcKUfOq8PkmPmc0neeqAunImtGB046UtWxMnWkgpK0n12F//KA474JkB01QEbsz09XAt/6WN9
+	AVCTqD75oHb2FJZKSM5jy9epQ53Wls9/EdNDXc02cegkXkX+SB5Ngxzl6H9NgRWx9sGi0fdoVy9kz
+	eJhmq3CVUEFi8zk4Q5YlNc4ikmcG3ghkg5u0kBRa0eLlv20E4/hPf5t43kCIHvI15wVLNwLa3CkgI
+	17ZdRAXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdUu7-00000008uBG-2cKF;
-	Thu, 30 Jan 2025 13:48:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tdWxY-000000096XV-0Kld;
+	Thu, 30 Jan 2025 16:00:04 +0000
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdUso-00000008u3d-1w0R;
-	Thu, 30 Jan 2025 13:47:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ABBB95C5D67;
-	Thu, 30 Jan 2025 13:46:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC69DC4CED2;
-	Thu, 30 Jan 2025 13:47:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738244821;
-	bh=1HcMWa+Krm0evLloVfTaMDioU4vbaxg54rfXDQtmf5g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AVevpFFhICWy5gdtLgxOYly145CXHa5QtjLlFolUZN+6Efeki+9DKjDK0k9iHYnZt
-	 HTmak8Jk9KLr+REnfRqTz1TBJ6KIXUaXNYWY5rDo56lLO0k8IqwGpTbyxy6fBnir23
-	 ql5N7/J69pa99ob9XyApcvDrxaIv+4jixqjLJyLgK6yRTKYcmr1U7yuKkkXDmTi3ap
-	 J0eiKCsuxxZxlhqs3/ByKvITUC6Mmd4yrPtMCJAua+9IfntoHx0/3K5NiG8s1bZiFx
-	 4czILs0mdAHc9YVe9nglJKrrI3UsXriubNyT9XtI9MVCYRwvoyVn1rgISbaqaMT9zb
-	 yERv6witqaUiQ==
-Date: Thu, 30 Jan 2025 14:46:57 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Florent Tomasin <florent.tomasin@arm.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, nd@arm.com, 
-	Akash Goel <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-Message-ID: <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
+	id 1tdWxT-000000096Uq-3beF
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Jan 2025 16:00:01 +0000
+Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-7b9bc648736so103982385a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jan 2025 07:59:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1738252798; x=1738857598; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Vrukcyab91NQAAPHSNd07R2nM2xtss7X+LvbFgz2NCI=;
+        b=rEDjnuk8crLE59MGcpjvsh7VjLS4gVgczVT/Np2KeJCpXFv+SUl4nvslw9t87rP5Du
+         Ik3cH/Ic/+tDlwKlYRLF0hOGZWZQybTMIfApHO2H4Lsum4E/Fqam1Cz8WXkFGtaKi6HD
+         gjHD4HRdtO1hK48zwxuwSnEvps2A1J/4Mu3QMeECfDBLteuc5lBiiGtR37EEQp5ulx9Z
+         4Mbu3zAf+pGcArEMaeBKA7WKpNN6dRaY3g5/RhidabdKaUg5uWFwLzbhlIRdQQYjlWKg
+         L7Awb7irrqxiXVmd/YFVchYtHKCqk8W6HZ4bPzo6hHvAwPvqCff40lrV6tvAelQFJF4+
+         TCFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738252798; x=1738857598;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Vrukcyab91NQAAPHSNd07R2nM2xtss7X+LvbFgz2NCI=;
+        b=bgKbT0o/MCYbedJvtf9Tkmh5xdQpP3VKmZS7w3RK2M0G3GY6DCYTAMj2M81Cd9R43j
+         VusgtG5oPZPzDKUtmCmGVl2KFNJdaE2H/yQqlIKL1Q9eWug6mJ4JW6gYcvgPtOYL6SgU
+         BQqE1AbHLuDzFN36UgAE9wepignKKuMBipecHnnRieiMVNOaN3lqmjp7bgPFKkm/eIL5
+         LgXn8Ce+3UQo9JqLGG622ER9TgYqdY5JRqYnjHVhEYDWfzolYi++fxQRafUPvScRepOH
+         XVe2QvNKmp4X9wOgI+PSl/7Tt0s/pJkKs3qeZydFMvjkS0r8iRg/reJxF1qtcwvtM9UZ
+         4CDw==
+X-Forwarded-Encrypted: i=1; AJvYcCVMEBQdiIv7WHizWSjyoD4vUJ0Mm4QdSgjY16vfcMygr7jwyJDgxajonNQqPtGeTBvi/RMq+HsB+nlHZ2y7GQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz8ybSXSjtrNvRlZuBHxI0RS1DCmU35TwNfxBVvqaOcGyCJiQ+h
+	X0yG1J/LkYBoT/XC7afZqEW5aUM1WOUsOLd1G9WMpaCN+HKA78yrIGZuQMuuk2s=
+X-Gm-Gg: ASbGnctQOItK3QK8Cb0BxDabLX9XG9bzSScEFjpVcETKKNAluBnOdDFZTBu9RZ20UL1
+	D/PZJ3YwVKh1zS4m1AP6GPPK+9shzSsU0V7YzZRecudjMSfAERuxqpYBdOAh7xs1DBbfjkggnjz
+	Ubv7lLNnphQM0oVYZrWR9nad+azUqn2zVxfL9WPxLUJjfVqfVTaeuCQBCVBztt7Wkpln9/bkTkJ
+	AxhCzn6rxVrvLISpuvHR3U9VAbq+L5AnVEO0VW3Xy2D67WJK+Uefsmdq8w5eUEyB/+s9XLUfSk1
+	NhNoHWUvu1bQYiAs
+X-Google-Smtp-Source: AGHT+IHjdyr1ZGxcyMCqDyCVkI8EVFcDwH70UC+E+hsL30A1qjTpY04odV1a3HSLhMUSwyh/u08bDw==
+X-Received: by 2002:a05:620a:44ca:b0:7b7:342:a0a5 with SMTP id af79cd13be357-7bffcda883bmr1361614185a.55.1738252798246;
+        Thu, 30 Jan 2025 07:59:58 -0800 (PST)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:11:e976::7a9])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c00a90d14asm85504285a.104.2025.01.30.07.59.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jan 2025 07:59:57 -0800 (PST)
+Message-ID: <1a73c3acee34a86010ecd25d76958bca4f16d164.camel@ndufresne.ca>
+Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali
+ CSF GPUs
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Maxime Ripard <mripard@kernel.org>, Florent Tomasin
+	 <florent.tomasin@arm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Boris
+ Brezillon	 <boris.brezillon@collabora.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>,  Sumit Semwal <sumit.semwal@linaro.org>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey	
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier"	 <tjmercier@google.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
+ <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong
+ Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, 
+	linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, nd@arm.com, Akash Goel
+ <akash.goel@arm.com>
+Date: Thu, 30 Jan 2025 10:59:56 -0500
+In-Reply-To: <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
 References: <cover.1738228114.git.florent.tomasin@arm.com>
+	 <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="34o7hfemb7lyu5o2"
-Content-Disposition: inline
-In-Reply-To: <cover.1738228114.git.florent.tomasin@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_054702_581910_7DDD99DA 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20250130_080000_161900_8D5463AB 
+X-CRM114-Status: GOOD (  27.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,78 +117,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---34o7hfemb7lyu5o2
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-MIME-Version: 1.0
-
-Hi,
-
-I started to review it, but it's probably best to discuss it here.
-
-On Thu, Jan 30, 2025 at 01:08:56PM +0000, Florent Tomasin wrote:
+Le jeudi 30 janvier 2025 =C3=A0 14:46 +0100, Maxime Ripard a =C3=A9crit=C2=
+=A0:
 > Hi,
 >=20
-> This is a patch series covering the support for protected mode execution =
-in
-> Mali Panthor CSF kernel driver.
+> I started to review it, but it's probably best to discuss it here.
 >=20
-> The Mali CSF GPUs come with the support for protected mode execution at t=
-he
-> HW level. This feature requires two main changes in the kernel driver:
+> On Thu, Jan 30, 2025 at 01:08:56PM +0000, Florent Tomasin wrote:
+> > Hi,
+> >=20
+> > This is a patch series covering the support for protected mode executio=
+n in
+> > Mali Panthor CSF kernel driver.
+> >=20
+> > The Mali CSF GPUs come with the support for protected mode execution at=
+ the
+> > HW level. This feature requires two main changes in the kernel driver:
+> >=20
+> > 1) Configure the GPU with a protected buffer. The system must provide a=
+ DMA
+> >    heap from which the driver can allocate a protected buffer.
+> >    It can be a carved-out memory or dynamically allocated protected mem=
+ory region.
+> >    Some system includes a trusted FW which is in charge of the protecte=
+d memory.
+> >    Since this problem is integration specific, the Mali Panthor CSF ker=
+nel
+> >    driver must import the protected memory from a device specific expor=
+ter.
 >=20
-> 1) Configure the GPU with a protected buffer. The system must provide a D=
-MA
->    heap from which the driver can allocate a protected buffer.
->    It can be a carved-out memory or dynamically allocated protected memor=
-y region.
->    Some system includes a trusted FW which is in charge of the protected =
-memory.
->    Since this problem is integration specific, the Mali Panthor CSF kernel
->    driver must import the protected memory from a device specific exporte=
-r.
+> Why do you need a heap for it in the first place? My understanding of
+> your series is that you have a carved out memory region somewhere, and
+> you want to allocate from that carved out memory region your buffers.
+>=20
+> How is that any different from using a reserved-memory region, adding
+> the reserved-memory property to the GPU device and doing all your
+> allocation through the usual dma_alloc_* API?
 
-Why do you need a heap for it in the first place? My understanding of
-your series is that you have a carved out memory region somewhere, and
-you want to allocate from that carved out memory region your buffers.
+How do you then multiplex this region so it can be shared between
+GPU/Camera/Display/Codec drivers and also userspace ? Also, how the secure
+memory is allocted / obtained is a process that can vary a lot between SoC,=
+ so
+implementation details assumption should not be coded in the driver.
 
-How is that any different from using a reserved-memory region, adding
-the reserved-memory property to the GPU device and doing all your
-allocation through the usual dma_alloc_* API?
+Nicolas
 
-Or do you expect to have another dma-buf heap that would call into the
-firmware to perform the allocations?
+>=20
+> Or do you expect to have another dma-buf heap that would call into the
+> firmware to perform the allocations?
+>=20
+> The semantics of the CMA heap allocations is a concern too.
+>=20
+> Another question is how would you expect something like a secure
+> video-playback pipeline to operate with that kind of interface. Assuming
+> you have a secure codec, you would likely get that protected buffer from
+> the codec, right? So the most likely scenario would be to then import
+> that dma-buf into the GPU driver, but not allocate the buffer from it.
+>=20
+> Overall, I think a better abstraction would be to have a heap indeed to
+> allocate your protected buffers from, and then import them in the
+> devices that need them. The responsibility would be on the userspace to
+> do so, but it already kind of does with your design anyway.
+>=20
+> Maxime
 
-The semantics of the CMA heap allocations is a concern too.
-
-Another question is how would you expect something like a secure
-video-playback pipeline to operate with that kind of interface. Assuming
-you have a secure codec, you would likely get that protected buffer from
-the codec, right? So the most likely scenario would be to then import
-that dma-buf into the GPU driver, but not allocate the buffer from it.
-
-Overall, I think a better abstraction would be to have a heap indeed to
-allocate your protected buffers from, and then import them in the
-devices that need them. The responsibility would be on the userspace to
-do so, but it already kind of does with your design anyway.
-
-Maxime
-
---34o7hfemb7lyu5o2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ5uC0QAKCRAnX84Zoj2+
-dkA4AYDYrS5bk2TFxito0yjOXO6So47lFz5UzaXuosDfn5WUytk/shyJlNgqK8Qe
-ytvE2GkBgNtOW+4ZQtCmW9i1X2peM2q+jrrnhD6soQun0iSdlrVLjvNIXKHT4ViO
-p7LJbwkZTQ==
-=pw8X
------END PGP SIGNATURE-----
-
---34o7hfemb7lyu5o2--
 
