@@ -4,81 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3DE8C0218A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 23:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B564C0218A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 23:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WQHn6edfgzFGCG4vfRDpC4aYK7sN8+4+UbMutzj7pZs=; b=S1Tgdj8IURxzD65wOvljS2q0Zj
-	F7iiYltOy7h0BE4kVcaT1wKR36rcjZZqmM7/NhP4yZvK+3NtoIprgS7altRycM/NyzdFl40C1xWph
-	fSzWF3uBibmClZRGDcAttIoICq+PkrwEKBzYe7lbz95yGy7pDJ9pFOHaTO1JSMkS8T8tw131oUvKS
-	xdCazxO4erx1ylfy5EUM1bd2cVvp48xtdGFztdmGotOEf1Hi0oFGZ3VGJKkeCiE3QtJRdUN5MYVbE
-	I9PEfoVAeAsHScZYIXWybxvZT0q15SDwm/IZzQ81cnwUduk28C+bhkarNmj1tuTNzsI4iL3NfNQrT
-	ifJs2Bgg==;
+	bh=q+vcircnt8u7rSNQKFmfCOYwmnEC48+y3xYGBpBwRHI=; b=W4Y3SFM2IZZi8eLuqp+v4LG2JG
+	q9+DHTGD5aALdFz5TxYdDySCGbmhUDM2Ga7EMoTsxYAcWzSinnWI38PEtfOU3Ql7HGCouqRkpExmC
+	WPHR/lmE4VxtGXWdH4e9RxfjmEKp22NKufFMsZNldxjrMFwYn90nc0r9PBxf8d54gb30phj3FNAzT
+	HWB8w36KySMSIIHleyyuuq1QaAzZh3tilAiSVTbcHsYGKb84AQ8RBD7zmy9uxWJaGUbGJAbtq3KuP
+	ole+J1JWhRdgUHQK3a3HGLjLFzT7wtnoezAj3fl4d6p2JkK6lftdBtO/HsKKzo9SxsiXbVH8X4KAc
+	JGHA73yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tddqj-00000009m3t-00Nu;
-	Thu, 30 Jan 2025 23:21:29 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tdeAj-00000009oDE-0TeX;
+	Thu, 30 Jan 2025 23:42:09 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tddpP-00000009luk-1LRb;
-	Thu, 30 Jan 2025 23:20:08 +0000
+	id 1tde6q-00000009nid-0Cca;
+	Thu, 30 Jan 2025 23:38:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4BD82A425B0;
-	Thu, 30 Jan 2025 23:18:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62DBEC4CED2;
-	Thu, 30 Jan 2025 23:20:05 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 85632A4258D;
+	Thu, 30 Jan 2025 23:36:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0A0BC4CED2;
+	Thu, 30 Jan 2025 23:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738279205;
-	bh=KpU19pPWgjFCuwWnk0SmFXgxBVKLllJYcw36Fo9osrg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ERqVUCNtbs+MzLdhNdvgBbEjriNPD+yPZlBdTguGqhpz6nhLt0Q1qEpzAz1NpSC+U
-	 UJRC4z+qMWIPBsk+AkOOIm8AAYpM0t2iMy1oWJ3OisQC2mXpY2wDDNo7yMV5e5te0d
-	 qjeh/puZLvAbfjwaYR+VQcPxIdPfDGSMakwFr6s5tWOGEYAvliMRWa3/burDmWPvc7
-	 aWJsFVAKeOPJP3JgMiUv3mLaItpjObrdvpYggJrl1DzHKdWgxWFIST81ZsBDj5ZBo1
-	 W7KIlck3OGfLXlCXHkzatU6xx1VGcNbZ0Nmx360SlZWcm1LWhyjcrTQcRMDnsD7Y7D
-	 NJYRI+1Iq4ldg==
-Date: Thu, 30 Jan 2025 17:20:04 -0600
-From: Rob Herring <robh@kernel.org>
-To: Florent Tomasin <florent.tomasin@arm.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Steven Price <steven.price@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Brian Starkey <Brian.Starkey@arm.com>,
-	John Stultz <jstultz@google.com>,
-	"T . J . Mercier" <tjmercier@google.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org,
-	linaro-mm-sig@lists.linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, nd@arm.com,
-	Akash Goel <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
-Message-ID: <20250130232004.GA1818629-robh@kernel.org>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
- <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
+	s=k20201202; t=1738280286;
+	bh=HjJYBTW0IoZ0H/z1rvQ5WqWeGTuLb26yUom1+Nax96I=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=AZa+QhU6He2ZKIaqTsDg3KAsdcQ09dTlw80gm1uBOcOb0JS4w82cGz1mPvDmuZawG
+	 dbhO1Mhwu1huDDQVR6lTqSJMIAF1DX4zHKDyq2/fH0dUEysxOtxJEyhT82Elw7N0Rs
+	 qHoSplFspUrolqBVHylHL+K/pHFiSZ9/2gAcuDsRpNvqhjN4TRup1ro2gjMnh0UfC5
+	 gqDcaByhH+5Hhn6QE+RiF3+uf53hCjfqK+cY+FgvJ/zDbZYK+Y9669S1Bz8H4CSIWp
+	 CQGjyLbWJyRkk1satxl1oQEiaPPaKsh4K4LOWw9XjD4tAbeJZ/oYKe8xXDEjTh2qjx
+	 gmuqLy2DdmsUg==
+Date: Thu, 30 Jan 2025 17:38:05 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ David Airlie <airlied@gmail.com>, kernel@collabora.com, 
+ Steven Price <steven.price@arm.com>, linux-kernel@vger.kernel.org, 
+ Maxime Ripard <mripard@kernel.org>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+In-Reply-To: <20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com>
+References: <20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com>
+Message-Id: <173828013321.1872542.6559997266281744152.robh@kernel.org>
+Subject: Re: [PATCH v2 0/3] Add Mali GPU support for Mediatek MT8370 SoC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_152007_425943_D6179392 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20250130_153808_231949_9692FEC3 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,21 +81,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 30, 2025 at 01:08:57PM +0000, Florent Tomasin wrote:
-> Introduce a CMA Heap dt-binding allowing custom
-> CMA heap registrations.
+
+On Thu, 30 Jan 2025 13:30:58 +0100, Louis-Alexis Eyraud wrote:
+> This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
+> dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
+> and to the mt8370.dtsi include file.
 > 
-> * Note to the reviewers:
-> The patch was used for the development of the protected mode
-> feature in Panthor CSF kernel driver and is not initially thought
-> to land in the Linux kernel. It is mostly relevant if someone
-> wants to reproduce the environment of testing. Please, raise
-> interest if you think the patch has value in the Linux kernel.
+> I've testing this patchset on a Mediatek Genio 510 EVK board,
+> with a kernel based on linux-next (tag: next-20250113) plus [1] patchset.
+> 
+> The panfrost driver probed with the following messages:
+> ```
+> panfrost 13000000.gpu: clock rate = 390000000
+> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
+> panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
+>   80000400
+> panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
+>   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
+> panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
+> [drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
+> ```
+> 
+> [1] https://lore.kernel.org/linux-mediatek/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com/
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+> Changes in v2:
+> - Rework "drm/panfrost: Add support for Mali on the MT8370 SoC" to avoid
+>   data structure duplication, as requested by Krzysztof Kozlowski
+> - Reword commit messages to use imperative mood and make new compatible
+>   need more explicit
+> - Link to v1: https://lore.kernel.org/r/20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com
+> 
+> ---
+> Louis-Alexis Eyraud (3):
+>       dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
+>       drm/panfrost: Add support for Mali on the MT8370 SoC
+>       arm64: dts: mediatek: mt8370: Enable gpu support
+> 
+>  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 5 ++++-
+>  arch/arm64/boot/dts/mediatek/mt8370.dtsi                    | 9 +++++++++
+>  drivers/gpu/drm/panfrost/panfrost_drv.c                     | 1 +
+>  3 files changed, 14 insertions(+), 1 deletion(-)
+> ---
+> base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
+> change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
+> prerequisite-change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9:v2
+> prerequisite-patch-id: af53ae39240467340ac4c9cdbc8fdd949c5457a2
+> prerequisite-patch-id: ca07485956f81c1a40029b48d2b4bcf00d74fc13
+> prerequisite-patch-id: c34d9870b2c61d87ad8a6facba13d8970682e679
+> prerequisite-patch-id: 48784acdcdd8b886fdec9f21c9cb88abb327e2e1
+> 
+> Best regards,
+> --
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> 
+> 
+> 
 
-Why would panthor need CMA, it has an MMU.
 
-In any case, I agree with Maxime that this is redundant.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Rob
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com:
+
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pinctrl@10005000: 'pcie-default' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8188-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: regulators: 'compatible' is a required property
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: '#sound-dai-cells', 'mt6359codec', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10320000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: jpeg-decoder@1a040000: iommus: [[123, 685], [123, 686], [123, 690], [123, 691], [123, 692], [123, 693]] is too long
+	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+
+
+
+
 
 
