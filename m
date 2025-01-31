@@ -4,69 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B564C0218A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jan 2025 23:42:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45D9CC0218A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2025 01:30:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q+vcircnt8u7rSNQKFmfCOYwmnEC48+y3xYGBpBwRHI=; b=W4Y3SFM2IZZi8eLuqp+v4LG2JG
-	q9+DHTGD5aALdFz5TxYdDySCGbmhUDM2Ga7EMoTsxYAcWzSinnWI38PEtfOU3Ql7HGCouqRkpExmC
-	WPHR/lmE4VxtGXWdH4e9RxfjmEKp22NKufFMsZNldxjrMFwYn90nc0r9PBxf8d54gb30phj3FNAzT
-	HWB8w36KySMSIIHleyyuuq1QaAzZh3tilAiSVTbcHsYGKb84AQ8RBD7zmy9uxWJaGUbGJAbtq3KuP
-	ole+J1JWhRdgUHQK3a3HGLjLFzT7wtnoezAj3fl4d6p2JkK6lftdBtO/HsKKzo9SxsiXbVH8X4KAc
-	JGHA73yg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nsBQ15KPAbNgDIj2dwTdXPvw6ebbg9GOZ64wqvoRjZM=; b=UgN4Gy2KRFd+uOEDV2vHtrwIDC
+	LjwDJmmH6171CtjspLy15mm4WrhOF6AvqrGkZXvkhV/npwr6S2Kf4+XUhBOw1/sKr8mL9u6jMwKWV
+	J4KUt2X86gv+nZu8j6OeN9Eb5BoGa/taCbPUfkWlhXYoyCXEutXSqKQ+DejuRyYnajA/hLR9JkwwD
+	OoERPHqMnb5rESKzHIrwKUTzssWzmpiwko0r8eO4IJtLBoHQ9E4KbEvD5NL/aFQjITCLxLv25iOis
+	/meB+X1O3eWhajXl+cZsS8RVmcLDxSHlFpMMkSq9OS4SXe77MavWktKEOdtpAaGcn8WAQA5N13pey
+	E69db8Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdeAj-00000009oDE-0TeX;
-	Thu, 30 Jan 2025 23:42:09 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tdfr6-00000009tpQ-0NiE;
+	Fri, 31 Jan 2025 01:30:00 +0000
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tde6q-00000009nid-0Cca;
-	Thu, 30 Jan 2025 23:38:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 85632A4258D;
-	Thu, 30 Jan 2025 23:36:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0A0BC4CED2;
-	Thu, 30 Jan 2025 23:38:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738280286;
-	bh=HjJYBTW0IoZ0H/z1rvQ5WqWeGTuLb26yUom1+Nax96I=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=AZa+QhU6He2ZKIaqTsDg3KAsdcQ09dTlw80gm1uBOcOb0JS4w82cGz1mPvDmuZawG
-	 dbhO1Mhwu1huDDQVR6lTqSJMIAF1DX4zHKDyq2/fH0dUEysxOtxJEyhT82Elw7N0Rs
-	 qHoSplFspUrolqBVHylHL+K/pHFiSZ9/2gAcuDsRpNvqhjN4TRup1ro2gjMnh0UfC5
-	 gqDcaByhH+5Hhn6QE+RiF3+uf53hCjfqK+cY+FgvJ/zDbZYK+Y9669S1Bz8H4CSIWp
-	 CQGjyLbWJyRkk1satxl1oQEiaPPaKsh4K4LOWw9XjD4tAbeJZ/oYKe8xXDEjTh2qjx
-	 gmuqLy2DdmsUg==
-Date: Thu, 30 Jan 2025 17:38:05 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tdfpj-00000009tkp-10tf;
+	Fri, 31 Jan 2025 01:28:36 +0000
+Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-6d8a3e99e32so13238506d6.2;
+        Thu, 30 Jan 2025 17:28:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738286914; x=1738891714; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nsBQ15KPAbNgDIj2dwTdXPvw6ebbg9GOZ64wqvoRjZM=;
+        b=UODF0KbmvlHbVJZWGk3Z1rc0dm0P+T7ApXMxXtj0czXpMWCYfNpICigEEqoknm9L0L
+         57W8RPC93iuWxUFls62IdP5LmpCfczAPvKfWCcoCeJc5DL4f8AgWn12J2au9K+WIF10s
+         GxYv1ZGxT7LGyXos6HuJhe5FtsLZNX5LugC/7HHMISBjhUSpwOw+dxb/8aKuk17L4zVr
+         0aLielrINZYvKpum905yrkGEWOmh0TnHVP3yoE5O1NErSfv+vq+vD3flBJ9MC7QV4BVw
+         jrOt+LXuQaIIOyt8yxDEITkuUEd7owUWE9UTUv2HOrMBBTZLG74znjMoNNQvQq8u4lDq
+         We/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738286914; x=1738891714;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nsBQ15KPAbNgDIj2dwTdXPvw6ebbg9GOZ64wqvoRjZM=;
+        b=uuRdpXflr2rjcfZRTiq4fp0cgKjk8C/LWtOCEYGurHz0j6Jj0nsDrAS1Tj8q1E/U9h
+         cgqXE9zC9DB1JB+cdsvY1h7KYK/z27DMSA7pJ1Lep8hGJmhYr2gmZf4tt80DfiZmQ9eQ
+         syoEaAHekUwz+sAJbb0qNTUJIMEoh9QuSG67/d/5zyYlePKAHLjmzfrGqD1f2ECqn3sr
+         oZLs2LtA0MZJ/P2c1LSjMGvaWt8q+4qBg4Qhz1mvNl7zvuzJBn6sIXrClcqNVUgm+3Aj
+         Kj73VTW1B8QJCRscg3rhZkENCkCEK+U443jHauFnSXOjc7RS8Zfm4BYZ9t26iaevjXzy
+         do0g==
+X-Forwarded-Encrypted: i=1; AJvYcCUUUlsB+jBY3fUE3hqQTbeUbIjD5GteasifBwT9Wi7IE8Lm+dfaXwyxRaPehmMo753IVjoAGWFobfQ3LVgqWtg=@lists.infradead.org, AJvYcCUkO8tlCNJNODL7bNeOS9KiQH5d2UnmWoN0PeUeX7vPXiPFvnUZiJ4FfkBQsEfnNlKnZaNsG6+Hb1KeNgJtldAX@lists.infradead.org
+X-Gm-Message-State: AOJu0YyaXOJkCJXm0mSKOBVYRVft2hKW3KuD3IKsnYatJNOO3Zb56l72
+	zFuJ1x9j2aHfSUXFiUnjLLkI4WjHxTG45mbUFbPJN3FFCsa7WtmV
+X-Gm-Gg: ASbGnctN4064uE/4p37XsyC1mUpFP/oZmMp2Sc1YH/s5ae6iWbMcERMxD5da7IGciWt
+	/kHAyj6daa6UzuvIkn3Mee+G6C3TPxyji8F+FKcN6wwKgEVhiptclN6fzHpRAdUX3JjSYUha5aY
+	fEiME5zmxz2rArI1ZCP7auA1EOaNrVEDDsrqbBacC+jm+wo1Kynnmd5TG3up6F+KS3RI6QXxN71
+	126GIdsiRvGxGGYf+sb8ucwmU/zo7e0XK3sQbbU+gpZpxhq6VUtWhgM8Jmw2h4fXhYXtq7Stp4V
+	9OPz05UCw3t6ydISfL0YrgWkgyJ4z8lGyBylAQ==
+X-Google-Smtp-Source: AGHT+IEDTGGykK3VT3IFwkV7jiAPCUT4mQR5DWO7oY08yzO1EcFsGxxZjoFcYEQky+5HouyGEl7YYQ==
+X-Received: by 2002:a05:6214:430a:b0:6d8:aeda:dd93 with SMTP id 6a1803df08f44-6e243c8fe49mr147890246d6.39.1738286913646;
+        Thu, 30 Jan 2025 17:28:33 -0800 (PST)
+Received: from newman.cs.purdue.edu ([128.10.127.250])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e254818bb7sm12366476d6.47.2025.01.30.17.28.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jan 2025 17:28:33 -0800 (PST)
+From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+To: tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	fullwaywang@outlook.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Subject: [PATCH] media: mediatek: vcodec: Add scp_put() to free the scp
+Date: Fri, 31 Jan 2025 01:28:30 +0000
+Message-Id: <20250131012830.22394-1-jiashengjiangcool@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
- David Airlie <airlied@gmail.com>, kernel@collabora.com, 
- Steven Price <steven.price@arm.com>, linux-kernel@vger.kernel.org, 
- Maxime Ripard <mripard@kernel.org>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
- Simona Vetter <simona@ffwll.ch>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- linux-arm-kernel@lists.infradead.org
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-In-Reply-To: <20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com>
-References: <20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com>
-Message-Id: <173828013321.1872542.6559997266281744152.robh@kernel.org>
-Subject: Re: [PATCH v2 0/3] Add Mali GPU support for Mediatek MT8370 SoC
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_153808_231949_9692FEC3 
-X-CRM114-Status: GOOD (  20.90  )
+X-CRM114-CacheID: sfid-20250130_172835_276889_5587E80D 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,94 +102,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add scp_put() to free the scp if devm_kzalloc() fails to avoid memory
+leak.
 
-On Thu, 30 Jan 2025 13:30:58 +0100, Louis-Alexis Eyraud wrote:
-> This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
-> dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
-> and to the mt8370.dtsi include file.
-> 
-> I've testing this patchset on a Mediatek Genio 510 EVK board,
-> with a kernel based on linux-next (tag: next-20250113) plus [1] patchset.
-> 
-> The panfrost driver probed with the following messages:
-> ```
-> panfrost 13000000.gpu: clock rate = 390000000
-> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-> panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
->   80000400
-> panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
->   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-> panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-> [drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-> ```
-> 
-> [1] https://lore.kernel.org/linux-mediatek/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com/
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> Changes in v2:
-> - Rework "drm/panfrost: Add support for Mali on the MT8370 SoC" to avoid
->   data structure duplication, as requested by Krzysztof Kozlowski
-> - Reword commit messages to use imperative mood and make new compatible
->   need more explicit
-> - Link to v1: https://lore.kernel.org/r/20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com
-> 
-> ---
-> Louis-Alexis Eyraud (3):
->       dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
->       drm/panfrost: Add support for Mali on the MT8370 SoC
->       arm64: dts: mediatek: mt8370: Enable gpu support
-> 
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 5 ++++-
->  arch/arm64/boot/dts/mediatek/mt8370.dtsi                    | 9 +++++++++
->  drivers/gpu/drm/panfrost/panfrost_drv.c                     | 1 +
->  3 files changed, 14 insertions(+), 1 deletion(-)
-> ---
-> base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
-> change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
-> prerequisite-change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9:v2
-> prerequisite-patch-id: af53ae39240467340ac4c9cdbc8fdd949c5457a2
-> prerequisite-patch-id: ca07485956f81c1a40029b48d2b4bcf00d74fc13
-> prerequisite-patch-id: c34d9870b2c61d87ad8a6facba13d8970682e679
-> prerequisite-patch-id: 48784acdcdd8b886fdec9f21c9cb88abb327e2e1
-> 
-> Best regards,
-> --
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> 
-> 
-> 
+Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
+Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+---
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com:
-
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pinctrl@10005000: 'pcie-default' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8188-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: regulators: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: '#sound-dai-cells', 'mt6359codec', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10320000: 'clock-names' is a required property
-	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
-arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: jpeg-decoder@1a040000: iommus: [[123, 685], [123, 686], [123, 690], [123, 691], [123, 692], [123, 693]] is too long
-	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
-
-
-
-
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+index ff23b225db70..1b0bc47355c0 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+@@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
+ 	}
+ 
+ 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+-	if (!fw)
++	if (!fw) {
++		scp_put(scp);
+ 		return ERR_PTR(-ENOMEM);
++	}
++
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
+-- 
+2.25.1
 
 
