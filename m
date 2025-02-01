@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 685ADC0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 11:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A65C0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 12:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w2ITBtEEmiKmCLSkbITdbXNFbI14slpq57PFgMvxP0g=; b=RFWQrRuvM+KK3BIt0ch+FFoz8Q
-	NMW2w0u4U7L+loICq9l9auzcDC0pN86yS68an+wBoIcAICkh/h24eqZS+0JcbF2PQDfAuls85H8nN
-	NSMYkWExZmIupz9gyfmdz3AvhZTFcFQnXtVUb8GC5fxivrajMWV1DmYME0Sa3r+DQ14fr2I8JRbMs
-	IRv1Tmb9SgrKhcRSRxPCiPi0LRhJojWs7ux2uV0yfZ/G9pfTJdnB+ruEiM5anFlDyqL+oQ9X3bTDB
-	cPZLceiT31h7GJqtjiyMGwC4+3p6NM2V1QMIPtRpWS4+AlDe+fuOi0m3wySVSlMz8gXL1TMhFGoIE
-	MEkYNCdA==;
+	bh=X0s4c1z7BZ7bSDDIII2Wq8XIoVPljTquKppMciXTq00=; b=wEjhPvAHuzYqgsJ1pB6hTQ7JgG
+	FkqEjc31+3KElF15fA5KYk6EKXK7ky050R5hQStiNa1l12QyepU+MwHXGnfD+kNvQg/bYtxPrZmlV
+	RXxSjG+MKpg4h6Jp/S8mB8qX4mLHDJG3Ej4GUX2eCIYGRNa4r5Ms/+N4Kk8quO6G3gd9SjctGBAiu
+	GBHC5LegppeGneDagwlE7t7kO1++zuQPXdoI7vxHbFuPAd31wNScL9WYZs90Ehn5ITtZ79xiS2eKa
+	6OGXai3Cr1J/dz8s5BNrIW2YoUJ7b43pZ1szZFsFkg79XIfunrnQVOdkFS9NJ5wxUNQVRlztgypMG
+	ElL3tqhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teC1j-0000000CFGW-3wo5;
-	Sat, 01 Feb 2025 11:51:07 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1teCLO-0000000CGLU-111j;
+	Sat, 01 Feb 2025 12:11:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teC1g-0000000CFFs-3NEH
-	for linux-mediatek@lists.infradead.org;
-	Sat, 01 Feb 2025 11:51:06 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <pza@pengutronix.de>)
-	id 1teC1D-0004FA-LI; Sat, 01 Feb 2025 12:50:35 +0100
-Received: from pty.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::c5])
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <pza@pengutronix.de>)
-	id 1teC1B-002xKx-1k;
-	Sat, 01 Feb 2025 12:50:33 +0100
-Received: from pza by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <pza@pengutronix.de>)
-	id 1teC1B-008EGS-1M;
-	Sat, 01 Feb 2025 12:50:33 +0100
-Date: Sat, 1 Feb 2025 12:50:33 +0100
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	id 1teCK4-0000000CGIq-1arQ;
+	Sat, 01 Feb 2025 12:10:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 97CC95C0FE6;
+	Sat,  1 Feb 2025 12:09:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C261DC4CED3;
+	Sat,  1 Feb 2025 12:10:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738411803;
+	bh=X0s4c1z7BZ7bSDDIII2Wq8XIoVPljTquKppMciXTq00=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cpq9H9wzoeKLys+TJRtugW5oiduKaC/GKF69xFa7GJzYWan0Tbm224z1hSpD4KgcX
+	 y9ooIpWAJVP1kUcyMxuJqtwqIDHxJREb50SZjH5L2PbhHZPOtzjTfnIhg2rqR3rklA
+	 d28CXTBnN4lDxaa4/HjGCn892eErdhkUHg2iwdWbUPPk+xH6oBczCszx5tQ5JQ+SQ5
+	 ecXhK0iQq+8lOZQ3QacSq76jQXWWvDTw58gEf96uN1DKUTe/l0sURAfiOo/dZiYMV3
+	 ZZ9dX3fEKtJ9jjc4+5umFoKHODuuZm/llTRC94qapOlo82nUOeCuNxOtGI0TwqawwW
+	 g57AtHVZum1aQ==
+Date: Sat, 1 Feb 2025 13:10:00 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	Jianjun Wang <jianjun.wang@mediatek.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Remove leftover mac_reset assert
- for Airoha EN7581 SoC.
-Message-ID: <Z54KiWqgSiLZ_nZj@pengutronix.de>
-References: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
+Subject: Re: [PATCH 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers for
+ EN7581 SoC
+Message-ID: <Z54PGPz1fJ0yiTJw@lore-desk>
+References: <20250115-en7581-pcie-pbus-csr-v1-0-40d8fcb9360f@kernel.org>
+ <20250115-en7581-pcie-pbus-csr-v1-2-40d8fcb9360f@kernel.org>
+ <20250118-astonishing-ermine-of-painting-4d3eaa@krzk-bin>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="LgyfW4RVq7N0GtkC"
 Content-Disposition: inline
-In-Reply-To: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: pza@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+In-Reply-To: <20250118-astonishing-ermine-of-painting-4d3eaa@krzk-bin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_035104_847622_3292A384 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250201_041004_473085_E316AE69 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,15 +85,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 01, 2025 at 12:00:18PM +0100, Lorenzo Bianconi wrote:
-> Remove a leftover assert for mac_reset line in mtk_pcie_en7581_power_up().
-> This is not harmful since EN7581 does not requires mac_reset and
-> mac_reset is not defined in EN7581 device tree.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+--LgyfW4RVq7N0GtkC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-regards
-Philipp
+> On Wed, Jan 15, 2025 at 06:32:31PM +0100, Lorenzo Bianconi wrote:
+
+[./.]
+
+>=20
+> No, don't sprinkle compatibles in other drivers. It does not scale, does
+> not allow reuse and you kind of try to escape ABI break, but you won't.
+> This is still clear ABI break without any statement in commit msg and
+> without explanation.
+>=20
+> NAK.
+>=20
+> Relationship between devices is expressed with phandles. There are
+> plenty of examples how to do that with syscon.
+
+ack, I will fix it in v2.
+
+Regards,
+Lorenzo
+
+>=20
+> Best regards,
+> Krzysztof
+>=20
+
+--LgyfW4RVq7N0GtkC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ54PGAAKCRA6cBh0uS2t
+rJaQAQDvoThUNUgQ9p0u9J7P0D1NUZr6t4u565b4/aq7YCxqJgD+IWQYJyLpBXTv
+OTQVwK0TDl9pNcOoMhg3kyCg1i+IWwc=
+=uMb3
+-----END PGP SIGNATURE-----
+
+--LgyfW4RVq7N0GtkC--
 
