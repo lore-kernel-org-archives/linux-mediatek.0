@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441E9C0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 11:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 685ADC0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 11:51:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=husOVBxxb+JwN8Jg0YoEaEiVT0azMwi+L2W2E0taOe8=; b=2f4RjS7x2dob6S5tqSBhGZj07W
-	7WIiPfiJ20maTEtzTyKKW+Mpxu5TJy4187+bYcQIwvJ1MAG1erutqrvn6RXkshMiTUNpigFRUBByo
-	mqMy6ujdzrw3BaW5djntSzk1ynhxq5KQlVGKDnlFQbA/Klb6WQZV65rrnlAx8mlTCPCr2HyaxTvek
-	i0QUE6GryCszv2n3zUYtdZpCoDPz+6BCd7ermvxulklhcIC10DfOQBbSIjiEdoXDNr6WTVM4+K9yf
-	GU7jpoFyg6Jca40+isa+KPDi0YqwRmpyyfbPPpx9a9sCK1ArYLsN1e1SPHCc9bbbBQheJJ05Jf432
-	ZD5uOyiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w2ITBtEEmiKmCLSkbITdbXNFbI14slpq57PFgMvxP0g=; b=RFWQrRuvM+KK3BIt0ch+FFoz8Q
+	NMW2w0u4U7L+loICq9l9auzcDC0pN86yS68an+wBoIcAICkh/h24eqZS+0JcbF2PQDfAuls85H8nN
+	NSMYkWExZmIupz9gyfmdz3AvhZTFcFQnXtVUb8GC5fxivrajMWV1DmYME0Sa3r+DQ14fr2I8JRbMs
+	IRv1Tmb9SgrKhcRSRxPCiPi0LRhJojWs7ux2uV0yfZ/G9pfTJdnB+ruEiM5anFlDyqL+oQ9X3bTDB
+	cPZLceiT31h7GJqtjiyMGwC4+3p6NM2V1QMIPtRpWS4+AlDe+fuOi0m3wySVSlMz8gXL1TMhFGoIE
+	MEkYNCdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teBGJ-0000000CBVv-00Oc;
-	Sat, 01 Feb 2025 11:02:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1teC1j-0000000CFGW-3wo5;
+	Sat, 01 Feb 2025 11:51:07 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teBEz-0000000CBO2-2L7W;
-	Sat, 01 Feb 2025 11:00:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1C41B5C117A;
-	Sat,  1 Feb 2025 11:00:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3286C4CED3;
-	Sat,  1 Feb 2025 11:00:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738407643;
-	bh=JmWAHXdOaXV/M3CCGGuc0twYRRreA4gPfNaDgyIKvt4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=jObRT3yyoJqHYF5aDMmUTZBS1b4olMA/WGDtswtX1sg1FnX4jM9X0sbWfPaUoPx+J
-	 DaW8nU+IKhT+oi13JNz9UOHqQ5Lsk3CLqbwsBheuTzz7O7fLn5BMSUeC7JT6wNcNi+
-	 N/IlrlurmoPB/iynqZgAKAdICNNl/zrUx0LUe9xvWBU3voty2uosTzCNcg0e/JHgTn
-	 PtbBJoQoVzE+ZfafA7EprUrsl7flCxV1HVdOkmL0r1KFPWJPsYkBiyxG03oVVtFoAp
-	 g3AKzNL+/TfIWABKHtTMHSfAFLMbZkQi8QS+MSGmjZKk03poAAh+p24Nd4JQTU5mpY
-	 K9IMjjjlGgvdA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 01 Feb 2025 12:00:18 +0100
-Subject: [PATCH v2] PCI: mediatek-gen3: Remove leftover mac_reset assert
+	id 1teC1g-0000000CFFs-3NEH
+	for linux-mediatek@lists.infradead.org;
+	Sat, 01 Feb 2025 11:51:06 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <pza@pengutronix.de>)
+	id 1teC1D-0004FA-LI; Sat, 01 Feb 2025 12:50:35 +0100
+Received: from pty.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::c5])
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <pza@pengutronix.de>)
+	id 1teC1B-002xKx-1k;
+	Sat, 01 Feb 2025 12:50:33 +0100
+Received: from pza by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <pza@pengutronix.de>)
+	id 1teC1B-008EGS-1M;
+	Sat, 01 Feb 2025 12:50:33 +0100
+Date: Sat, 1 Feb 2025 12:50:33 +0100
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Remove leftover mac_reset assert
  for Airoha EN7581 SoC.
+Message-ID: <Z54KiWqgSiLZ_nZj@pengutronix.de>
+References: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAMH+nWcC/x3MQQqEMAwF0KtI1gbailXmKoOIU7+ahVVSEUG8u
- 2WWb/NuSlBBok9xk+KUJFvMcGVBYRniDJYxm5xxtXHG8h4EjNjUrWXFup3gdQi9IuFg69H8PCp
- MxlMudsUk17//ds/zAifk0mNuAAAA
-X-Change-ID: 20250201-pcie-en7581-remove-mac_reset-16e7b6e3ef06
-To: Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: pza@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_030045_653176_7CF75EAB 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20250201_035104_847622_3292A384 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,37 +89,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove a leftover assert for mac_reset line in mtk_pcie_en7581_power_up().
-This is not harmful since EN7581 does not requires mac_reset and
-mac_reset is not defined in EN7581 device tree.
+On Sat, Feb 01, 2025 at 12:00:18PM +0100, Lorenzo Bianconi wrote:
+> Remove a leftover assert for mac_reset line in mtk_pcie_en7581_power_up().
+> This is not harmful since EN7581 does not requires mac_reset and
+> mac_reset is not defined in EN7581 device tree.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- fix typo in commit log
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 1 -
- 1 file changed, 1 deletion(-)
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..0f64e76e2111468e6a453889ead7fbc75804faf7 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -940,7 +940,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	 */
- 	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
- 				  pcie->phy_resets);
--	reset_control_assert(pcie->mac_reset);
- 
- 	/* Wait for the time needed to complete the reset lines assert. */
- 	msleep(PCIE_EN7581_RESET_TIME_MS);
-
----
-base-commit: 647d69605c70368d54fc012fce8a43e8e5955b04
-change-id: 20250201-pcie-en7581-remove-mac_reset-16e7b6e3ef06
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+regards
+Philipp
 
