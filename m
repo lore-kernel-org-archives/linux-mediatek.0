@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A65C0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 12:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEC4C0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 12:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X0s4c1z7BZ7bSDDIII2Wq8XIoVPljTquKppMciXTq00=; b=wEjhPvAHuzYqgsJ1pB6hTQ7JgG
-	FkqEjc31+3KElF15fA5KYk6EKXK7ky050R5hQStiNa1l12QyepU+MwHXGnfD+kNvQg/bYtxPrZmlV
-	RXxSjG+MKpg4h6Jp/S8mB8qX4mLHDJG3Ej4GUX2eCIYGRNa4r5Ms/+N4Kk8quO6G3gd9SjctGBAiu
-	GBHC5LegppeGneDagwlE7t7kO1++zuQPXdoI7vxHbFuPAd31wNScL9WYZs90Ehn5ITtZ79xiS2eKa
-	6OGXai3Cr1J/dz8s5BNrIW2YoUJ7b43pZ1szZFsFkg79XIfunrnQVOdkFS9NJ5wxUNQVRlztgypMG
-	ElL3tqhg==;
+	bh=7VznLV0JKpcCBTnFQ0aIXrE6/BQhUnAWkkIGKnBzIeY=; b=vXCJF8jAf5K1VjjVvlM3X9eu0N
+	AxbOtj/hVjWlHkN98r5zlu31cSM/8WxuSYAIrBvQU6mxTBka040JiyQmPndH5yCghtqXT6SDAQWFd
+	fpRcjPP+fqsWEmtoVX1Qs+DrJ2GqULM3gBZAb8BEXbJEizevxhOk9NSbvyn4hB3v/EGDMOngSm5Qy
+	UDbfw7USofoayxZJFFAECHD/vI7CkgwGmfAg1hZFCLVJ839ND11oeqhMFFC6r1DuRDcyYS7MjDleU
+	rK4mR6WcXOYvMulmnhmIyJcTVoRwMC2s+8QLL6BcjsSP0eFrcj8kHDZxEi0PJVdxCX5exTsvod2C4
+	IbyFtvtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teCLO-0000000CGLU-111j;
-	Sat, 01 Feb 2025 12:11:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1teCS4-0000000CH6S-04Ex;
+	Sat, 01 Feb 2025 12:18:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teCK4-0000000CGIq-1arQ;
-	Sat, 01 Feb 2025 12:10:05 +0000
+	id 1teCQi-0000000CGuF-1loP;
+	Sat, 01 Feb 2025 12:16:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 97CC95C0FE6;
-	Sat,  1 Feb 2025 12:09:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C261DC4CED3;
-	Sat,  1 Feb 2025 12:10:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E7E7CA40A7C;
+	Sat,  1 Feb 2025 12:15:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AD52C4CED3;
+	Sat,  1 Feb 2025 12:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738411803;
-	bh=X0s4c1z7BZ7bSDDIII2Wq8XIoVPljTquKppMciXTq00=;
+	s=k20201202; t=1738412215;
+	bh=QnYD3OHN1APboHaaBk2QkON9NMRe/FRmrahjz9mSLTM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cpq9H9wzoeKLys+TJRtugW5oiduKaC/GKF69xFa7GJzYWan0Tbm224z1hSpD4KgcX
-	 y9ooIpWAJVP1kUcyMxuJqtwqIDHxJREb50SZjH5L2PbhHZPOtzjTfnIhg2rqR3rklA
-	 d28CXTBnN4lDxaa4/HjGCn892eErdhkUHg2iwdWbUPPk+xH6oBczCszx5tQ5JQ+SQ5
-	 ecXhK0iQq+8lOZQ3QacSq76jQXWWvDTw58gEf96uN1DKUTe/l0sURAfiOo/dZiYMV3
-	 ZZ9dX3fEKtJ9jjc4+5umFoKHODuuZm/llTRC94qapOlo82nUOeCuNxOtGI0TwqawwW
-	 g57AtHVZum1aQ==
-Date: Sat, 1 Feb 2025 13:10:00 +0100
+	b=qGTpMXaTPcE/N7GIot4YmqlRszV2+5nmFPfqmymkvCZCzVRFuFJeXNatfK3a7oelY
+	 4LsqG7Xpf+ohyRG7DalllgjrJqg+l348HCzaDLx9Rgoq/WL0V3n0C9rDffEDaGD0RO
+	 DLuU/vKZOq3Fn/NR28SDO79vLUqaafy+N+10rAemlh9nllJBNuU1Zg8ePq6odrN1pi
+	 PSmYadC9ZMFXGf9v0+nW7Nlqtq/JcFBFFr0sDkygJRhNMbjLrvIhjD3sXAn0E754mk
+	 GmyKrbuyE5fRat6M5G7zwU2jGTXAsKHFSmA0ELvHXDWDZZTVGv7GdU3unfa/vGjmO3
+	 nX00SLuhl4Hbg==
+Date: Sat, 1 Feb 2025 13:16:52 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -57,20 +57,20 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers for
+Subject: Re: [PATCH 1/2] dt-bindings: arm: airoha: Add the pbus-csr node for
  EN7581 SoC
-Message-ID: <Z54PGPz1fJ0yiTJw@lore-desk>
+Message-ID: <Z54QtFIpX6a1eBm0@lore-desk>
 References: <20250115-en7581-pcie-pbus-csr-v1-0-40d8fcb9360f@kernel.org>
- <20250115-en7581-pcie-pbus-csr-v1-2-40d8fcb9360f@kernel.org>
- <20250118-astonishing-ermine-of-painting-4d3eaa@krzk-bin>
+ <20250115-en7581-pcie-pbus-csr-v1-1-40d8fcb9360f@kernel.org>
+ <20250118-sturgeon-of-incredible-endeavor-73a815@krzk-bin>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LgyfW4RVq7N0GtkC"
+	protocol="application/pgp-signature"; boundary="xdV9V4QeKacnl1fi"
 Content-Disposition: inline
-In-Reply-To: <20250118-astonishing-ermine-of-painting-4d3eaa@krzk-bin>
+In-Reply-To: <20250118-sturgeon-of-incredible-endeavor-73a815@krzk-bin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_041004_473085_E316AE69 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20250201_041656_594205_7B8C41CF 
+X-CRM114-Status: GOOD (  23.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,27 +86,74 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---LgyfW4RVq7N0GtkC
+--xdV9V4QeKacnl1fi
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Wed, Jan 15, 2025 at 06:32:31PM +0100, Lorenzo Bianconi wrote:
+> On Wed, Jan 15, 2025 at 06:32:30PM +0100, Lorenzo Bianconi wrote:
+> > This patch adds the pbus-csr document bindings for EN7581 SoC.
+>=20
+> Please do not use "This commit/patch/change", but imperative mood. See
+> longer explanation here:
+> https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/sub=
+mitting-patches.rst#L95
 
-[./.]
+ack, I will fix it in v2
 
 >=20
-> No, don't sprinkle compatibles in other drivers. It does not scale, does
-> not allow reuse and you kind of try to escape ABI break, but you won't.
-> This is still clear ABI break without any statement in commit msg and
-> without explanation.
+> > The airoha pbus-csr block provides a configuration interface for the
+> > PBUS controller used to detect if a given address is on PCIE0, PCIE1 or
+> > PCIE2.
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  .../bindings/arm/airoha,en7581-pbus-csr.yaml       | 41 ++++++++++++++=
+++++++++
+> >  1 file changed, 41 insertions(+)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/arm/airoha,en7581-pbus-c=
+sr.yaml b/Documentation/devicetree/bindings/arm/airoha,en7581-pbus-csr.yaml
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..80b237e195cd3607645efe3=
+fda1eb6152134481c
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/airoha,en7581-pbus-csr.yaml
+> > @@ -0,0 +1,41 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/arm/airoha,en7581-pbus-csr.yaml#
 >=20
-> NAK.
->=20
-> Relationship between devices is expressed with phandles. There are
-> plenty of examples how to do that with syscon.
+> arm is only top level bindings and ARM stuff. This is soc.
 
-ack, I will fix it in v2.
+in this case we should create an airoha folder in
+'Documentation/devicetree/bindings/soc', correct?
+
+>=20
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Airoha Pbus CSR Controller for EN7581 SoC
+> > +
+> > +maintainers:
+> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > +
+> > +description:
+> > +  The airoha pbus-csr block provides a configuration interface for the=
+ PBUS
+> > +  controller used to detect if a given address is on PCIE0, PCIE1 or P=
+CIE2.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - airoha,en7581-pbus-csr
+>=20
+> Does not fit standard syscon bindings?
+
+I think standard syscon is fine. In this case we could drop this patch. Agr=
+ee?
 
 Regards,
 Lorenzo
@@ -116,16 +163,16 @@ Lorenzo
 > Krzysztof
 >=20
 
---LgyfW4RVq7N0GtkC
+--xdV9V4QeKacnl1fi
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ54PGAAKCRA6cBh0uS2t
-rJaQAQDvoThUNUgQ9p0u9J7P0D1NUZr6t4u565b4/aq7YCxqJgD+IWQYJyLpBXTv
-OTQVwK0TDl9pNcOoMhg3kyCg1i+IWwc=
-=uMb3
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ54QtAAKCRA6cBh0uS2t
+rGPKAP9AV9aNELAnQMAvN6T3ATp+1UdQqYNuozqYanheocrXTQEA3ANKLoaql0H9
+KBX3Imbz0GhzL2vi2MiGUzicgh24HwU=
+=Cqhn
 -----END PGP SIGNATURE-----
 
---LgyfW4RVq7N0GtkC--
+--xdV9V4QeKacnl1fi--
 
