@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D50C0218F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 00:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B320C0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 04:39:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yUp8gIamITNTXKVgHV8c7KipsP99RyQ4CH6ynQ6dYic=; b=1+yvmLkHFZh2k99YxJOX5VreHE
-	v4M1Xz98rMySr4b4U9vs/omp77BIp86lMWFAS7zRUsg3OCarQ3YdQnw5OtJoNLuYSgP1a6BtuOyY+
-	ef8XthwVqLcFg4Kg6cphJbvCw1yG+oyPO9xYUmricnf75QR9Q4iGvIQDmBS1dfRBjN2dKqgMtGu+g
-	qhWKMxKtlQ60zi6VhhSqSSF3F9poSFVHxrIu5GeHTjSK/oZ7MIikqx7LMncw4wIeVfGlNFH9Un9P1
-	Tg1K8djo/rJxs3iPqLYklRRSvz/Vhv7WNDlFV3DFKY0Zfu8855SquRhwIX7vhZzfJxkKfHIj5ue6z
-	2F6na7+g==;
+	bh=TPvbENIkCjAlZ0ZdoWwlQuAVit2DLR0jTmE0sNCqPts=; b=bOUa4GETTqrqW7Lyd4LEVUi37I
+	YiyeQP70wtsUWtS/rk3OcNTeakog3BBG0pdZt5k/cIDtE75ECw6uEbRvW/l/HJ4g8k/3McgQmOZMh
+	3aXYK9h9Dl39cj3YHmJnxX9uZOUbAI9D5eH+mPcj+dCQP/3V8PjOBqeD3eFkcBrPPfAnlN6PN6QRd
+	qazTVzLm8G8ymx9r3ofVy3Pfr9V8P7C4BgGwTx82SnOJbLe7FZjChpd8GvgO9+zDsMKISxoGJpQRi
+	BifECo086laiT9mIpB24XY4konPirbHK53b0K1HIWG/0oNw5Wwp8q3nQziX2b4ZjzlTUrxx2ZKoHg
+	lJRxXGYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1te1jo-0000000BhzA-1REd;
-	Sat, 01 Feb 2025 00:51:56 +0000
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+	id 1te5Ht-0000000BtDf-0Ez2;
+	Sat, 01 Feb 2025 04:39:21 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1te1iU-0000000Bhl3-0VhU;
-	Sat, 01 Feb 2025 00:50:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
-	:Subject; bh=yUp8gIamITNTXKVgHV8c7KipsP99RyQ4CH6ynQ6dYic=; b=HUJcy39lMxUXStXz
-	6bUsXiUrd/32C/YFSorb+y7RKX6GZoMOhHg+GA5l4mbVhRYm6CK5gcj0UvwR7OSeuJmM9Q6DfzUpK
-	XjSrJdpwrBOezf2U939lpIkEUkIeRACZWYKl7/Jd0jIHPI4Av/hKgFFxti4eILQlFTbYhRj49vl2q
-	ygCL0ae+9L/9NfkDnuREx6JUU5surcQViAllbpnYIUSQjioDVCR6OiUkzFAwtWDWKkfN9eBd7pHy4
-	0TzTnE1KkwMo9yxXaNgxnLEudxkk32i/mPKWpfBOIuS0HCT/mVn9IorxULM4ScLYysprtHXUjovYR
-	rssdPKVQjOHqiAod6g==;
-Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
-	by mx.treblig.org with esmtp (Exim 4.96)
-	(envelope-from <linux@treblig.org>)
-	id 1te1iH-00D1GY-2d;
-	Sat, 01 Feb 2025 00:50:21 +0000
-From: linux@treblig.org
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-sound@vger.kernel.org,
+	id 1te5GY-0000000Bt7d-3XVh;
+	Sat, 01 Feb 2025 04:37:59 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1te5GP-0000000076H-0inf;
+	Sat, 01 Feb 2025 04:37:49 +0000
+Date: Sat, 1 Feb 2025 04:37:43 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	"Dr. David Alan Gilbert" <linux@treblig.org>
-Subject: [PATCH] ASoC: mediatek: Remove unused mtk_memif_set_rate
-Date: Sat,  1 Feb 2025 00:50:21 +0000
-Message-ID: <20250201005021.447726-1-linux@treblig.org>
-X-Mailer: git-send-email 2.48.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH RESEND] arm64: dts: mediatek: mt7622: readd syscon to pciesys
+ node
+Message-ID: <98bc223d174c7f544e8f6c4f0caa8fa144f2f4dc.1738384400.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_165034_250629_3199C1F6 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250131_203758_888853_3FFCABF3 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +67,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
+From: Christian Marangi <ansuelsmth@gmail.com>
 
-mtk_memif_set_rate() has been unused since it was added in the 2019
-commit 9cdf85a19b3a ("ASoC: mediatek: common: add some helpers to control
-mtk_memif")
+The sata node references the pciesys with the property
+mediatek,phy-mode and that is used as a syscon to access the pciesys
+registers.
 
-Remove it.
+Readd the syscon compatible to pciesys node to restore correct
+functionality of the SATA interface.
 
-(The _substream version is used, and is left in)
-
-Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+Cc: stable@vger.kernel.org
+Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
+Fixes: 3ba5a6159434 ("arm64: dts: mediatek: mt7622: fix clock controllers")
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 20 --------------------
- sound/soc/mediatek/common/mtk-afe-fe-dai.h |  2 --
- 2 files changed, 22 deletions(-)
+Note that the dt-bindings part of the original series has already been
+applied with commit 9f7809c6a882 ("dt-bindings: clock: mediatek: add
+syscon compatible for mt7622 pciesys").
 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index 3044d9ab3d4d..3809068f5620 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -500,26 +500,6 @@ static int mtk_memif_set_rate_fs(struct mtk_base_afe *afe,
- 	return 0;
- }
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index e3421fd2c0ef..0710b8959ae8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -790,7 +790,7 @@ u2port1: usb-phy@1a0c5000 {
+ 	};
  
--int mtk_memif_set_rate(struct mtk_base_afe *afe,
--		       int id, unsigned int rate)
--{
--	int fs = 0;
--
--	if (!afe->get_dai_fs) {
--		dev_err(afe->dev, "%s(), error, afe->get_dai_fs == NULL\n",
--			__func__);
--		return -EINVAL;
--	}
--
--	fs = afe->get_dai_fs(afe, id, rate);
--
--	if (fs < 0)
--		return -EINVAL;
--
--	return mtk_memif_set_rate_fs(afe, id, fs);
--}
--EXPORT_SYMBOL_GPL(mtk_memif_set_rate);
--
- int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
- 				 int id, unsigned int rate)
- {
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-index 8cec90671827..b6d0f2b27e86 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-@@ -42,8 +42,6 @@ int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
- 		       size_t dma_bytes);
- int mtk_memif_set_channel(struct mtk_base_afe *afe,
- 			  int id, unsigned int channel);
--int mtk_memif_set_rate(struct mtk_base_afe *afe,
--		       int id, unsigned int rate);
- int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
- 				 int id, unsigned int rate);
- int mtk_memif_set_format(struct mtk_base_afe *afe,
+ 	pciesys: clock-controller@1a100800 {
+-		compatible = "mediatek,mt7622-pciesys";
++		compatible = "mediatek,mt7622-pciesys", "syscon";
+ 		reg = <0 0x1a100800 0 0x1000>;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
 -- 
 2.48.1
 
