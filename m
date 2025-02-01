@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBF5C0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 18:49:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D10C0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 18:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yS833fRfTqk4hSOqu5d67lTzJvylEPdj7NPQYtvP3fk=; b=4DvNx4q6WhMwQUGEvKyqMd/xVQ
-	dWN4OQ7TWWce6jYHO1obTOS+JdLaYXC9xPmumJjZNFcwxHgZZeaG09Bqfgomtu9UOvuDwOqufycZr
-	b59kZaFZrnwSaPw78olBPpXjaD+s2DJBX1eJeVY/Nz8mnnaDQ7tA4b/NWgZRsUDpkxo+3+MOenAem
-	py8/+NsOj/YgWknQJsjjJdRnYlXQ/nKl5dZbj9WwJpv+ttMWz5sBTleLtjbh5uzUqwuLMAdtPb6Wy
-	m9jyaTL5yJZ4Bn0K/8BThRdwagUiskzx+BY4A40K+iS88oYCIKlB9W3qc6PrgTf6jjc/UO1JWVjrr
-	mMRHloHg==;
+	bh=hXottbKrzMtxg7raCfDXdUUAenpabP+oslp6hK4XRyA=; b=F0Q6HgJdvN0G8XBhtQpTftfrUu
+	XWq/umxb19oVESn3j4v1SkWe0EArHtUQyQxgymLwD5ltuhO06OHGHd4LMHVAyvCj06jMTW6cK8Uj2
+	7wLjQJtL9sdtZYJHUcXVXWZSzTckvgH5n2J/auCxAm76CCR7NBB/ywd6wyGstKfNEN11wyIIG3r4W
+	SMJQ23r5H+Op0UUAuBu7E1RMinBIKtdEFVvOe5tWsfv2vrA4zRIN/f2/hppLEdSNIvXusn/S5xAuS
+	WDmGBP4C70ssth8REoBkGeOH/vdD6ICH4khATMjcYahXiA6IoXsW1KR36MQ7AKPzEjDy4mEwC8YvK
+	lkpMcQBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teIY9-0000000D1Vi-1dW7;
-	Sat, 01 Feb 2025 18:49:01 +0000
+	id 1teIge-0000000D22L-22tF;
+	Sat, 01 Feb 2025 18:57:48 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teIWp-0000000D1T7-34JE;
-	Sat, 01 Feb 2025 18:47:40 +0000
+	id 1teIeh-0000000D1u2-3aMN;
+	Sat, 01 Feb 2025 18:55:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=yS833fRfTqk4hSOqu5d67lTzJvylEPdj7NPQYtvP3fk=; b=eOIr+7wbaaPPWDE+8lnaYcvT1Z
-	wrUSkrDpf6jp4cR/7ITm/bLZIyWMiz7Z7q2yZ2ik4niohDmaE3P/g1TS+A35zxXGhvVF2V2+zvrDV
-	tlhKsyRocluPkIcLMR9Xc8cEoB/pS5uUtjnbjNE347qnBfuN2W7DujD7JIdbmoBG/fq8=;
+	bh=hXottbKrzMtxg7raCfDXdUUAenpabP+oslp6hK4XRyA=; b=CsDUTUmUU7xfLO1MF1r4UnhbVS
+	/+BYdqqVd7ZpFKVZWsHBYN+JNYhOQBKDIDUlUd6eFHCj+Ik4NaxbulnQ+1qREUvEvgR8o7hg6ZaAz
+	bpKX3NN9old/Qq7xEbhlA0MWhq259gJljgSainpnvEhBt4wZ0+h25ewONiAaeVlrP9yE=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1teIWW-00A2Sf-9S; Sat, 01 Feb 2025 19:47:20 +0100
-Date: Sat, 1 Feb 2025 19:47:20 +0100
+	id 1teIeW-00A2aY-Au; Sat, 01 Feb 2025 19:55:36 +0100
+Date: Sat, 1 Feb 2025 19:55:36 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Biju Das <biju.das.jz@bp.renesas.com>
 Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
@@ -52,17 +52,18 @@ Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>,
 	Biju Das <biju.das.au@gmail.com>
-Subject: Re: [PATCH] net: ethernet: mtk-star-emac: Use
+Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: Use
  of_get_available_child_by_name()
-Message-ID: <28da459d-a611-48aa-8ad1-da5f6d605442@lunn.ch>
-References: <20250201162135.46443-1-biju.das.jz@bp.renesas.com>
+Message-ID: <3e7538bb-6877-4dff-9cab-5a398884d34f@lunn.ch>
+References: <20250201172258.56148-1-biju.das.jz@bp.renesas.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250201162135.46443-1-biju.das.jz@bp.renesas.com>
+In-Reply-To: <20250201172258.56148-1-biju.das.jz@bp.renesas.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_104739_773921_FC13C0F9 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20250201_105547_890090_A060B40E 
+X-CRM114-Status: UNSURE (   4.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +78,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 01, 2025 at 04:21:32PM +0000, Biju Das wrote:
-> Use the helper of_get_available_child_by_name() to simplify
-> mtk_star_mdio_init().
-> 
-> Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
-> ---
-> This patch is only compile tested and depend upon[1]
-> [1] https://lore.kernel.org/all/20250201093126.7322-1-biju.das.jz@bp.renesas.com/
-> ---
->  drivers/net/ethernet/mediatek/mtk_star_emac.c | 24 ++++---------------
->  1 file changed, 5 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> index 25989c79c92e..beb0500fe9d5 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> @@ -1422,25 +1422,15 @@ static int mtk_star_mdio_init(struct net_device *ndev)
->  {
->  	struct mtk_star_priv *priv = netdev_priv(ndev);
->  	struct device *dev = mtk_star_get_dev(priv);
-> -	struct device_node *of_node, *mdio_node;
-> -	int ret;
-> -
-> -	of_node = dev->of_node;
-> +	struct device_node *mdio_node _free(device_node) =
-> +		of_get_available_child_by_name(dev->of_node, "mdio");
-
-Same comment as for you other similar patch.
+> +	struct device_node *mii_np _free(device_node) =
+> +		of_get_available_child_by_name(eth->dev->of_node, "mdio-bus");
 
     Andrew
 
