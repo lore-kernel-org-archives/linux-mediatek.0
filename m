@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622E2C0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 14:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2143C02194
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 16:23:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8go4AGqudFIZZyYHBzgN/R6QG4WQF0Rag9QeFgE6DyM=; b=lcbD6dCyej38146jBMXLw6snk+
-	ZXlQd/JfLFENjhevx1KKFDDMyPUn1fuN4EFFqfUdros3fFMle0Tykh0LylHzBQ73K9PX4bzKm2Hv7
-	c9/SIlKMLMJlxroCMr2z8z1s8nksNeBAriApYin4NCnnI0VS3PnXl1mIeWuV/lwW6A7OgzrZW2G9F
-	IlyV3G3Xgty4jwBTMFRvtImEiFeN+gaZza/pZ3LTiKou38E8Q0opbb5SY8qd6qxVg9T9Iw644DajM
-	YAEu+0N/zk2aE7TLvZjfypXixUQvrd7RYCeBr4QMJVwTdpt5vRu7jsdNmpQa9TH97STsXsQ043J3D
-	Hni/zMoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jF3dILZL9ojgbbbVrguUHH2h8IXx6sdfDdVa8Zo2QhI=; b=kA8cGqPPMRzdDyESVbKK2gnwZS
+	kr6VGirU6jzSlSPoJGSIqZZb9KB2uPzR+ziAVPVcOrlYulzu7nx9HDe+JuF0xJVGw/XkuAAcW16pR
+	cr+FsMDtIMGQk5DFfx1GDfLc6Y2PTkOH4KdCSwaxMQwUp7Et9TqCw1g/aa09G2eYVOAYa6lflD5E3
+	cO4PhnVJF4P8kc3YevnIKc6Omxd8wvC8iP5aEkngh0T+kBAbjp0lv7NOSnF6D421sVAkihMhV6+cc
+	wt566WHi77ha8rvbfBkL0Sfw28l3z2Cs32U+jAHtXrqeql0gwO7hy6xpxxDYn6kCD4bhuqm1kUVsm
+	RKFD1kiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teEgd-0000000Cl5T-1Y70;
-	Sat, 01 Feb 2025 14:41:31 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teEfI-0000000Ckv5-33ei;
-	Sat, 01 Feb 2025 14:40:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 16095A40548;
-	Sat,  1 Feb 2025 14:38:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDDE2C4CED3;
-	Sat,  1 Feb 2025 14:40:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738420807;
-	bh=UETDdbZTrbH3aziuRcpTKdm0bPASnj4ies4k7W717dM=;
-	h=From:Date:Subject:To:Cc:From;
-	b=CRyEnErp+gTzppgdtRpJOp9Pyqp7y1CBRVJnXwFkiwt/YjwUPREIeCG6PevpTFbox
-	 QR+HrzaSSJsr61BUaGzoW58rxBUUDpCT4ZJcXzzam3uGxWw9HRU5tixVw/X35V/Nw3
-	 UnTbOFS3ZvPkszSYK6g/knfVWpweXHwQAyA6yC8XBu85KNACCrnWyp4IPDV7hlE+Qy
-	 iynevsfj4OShU+FXm/kQBVJiy9tk5nIsdRDjMyAZANH1ld+ZMq8k0VTc/GGOWZTX/z
-	 vdDm6tF3FzGagXbHrm5z7DgjrtPT6BI0SfsC7eN492IRSW+qQsXQLawHxWGbsi01Gd
-	 DUgSrEtgXdhmQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 01 Feb 2025 15:39:48 +0100
-Subject: [PATCH] arm64: dts: Introduce more nodes to EN7581 SoC evaluation
- board
+	id 1teGH1-0000000Cr4Y-0BMl;
+	Sat, 01 Feb 2025 16:23:11 +0000
+Received: from relmlor1.renesas.com ([210.160.252.171] helo=relmlie5.idc.renesas.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1teGFg-0000000CqwL-3S0r;
+	Sat, 01 Feb 2025 16:21:50 +0000
+X-CSE-ConnectionGUID: AgGFxWtbTL2lG5Lg6U9uWg==
+X-CSE-MsgGUID: l+OeNAZxSs+/vPP+FVGizw==
+Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
+  by relmlie5.idc.renesas.com with ESMTP; 02 Feb 2025 01:21:45 +0900
+Received: from localhost.localdomain (unknown [10.226.92.62])
+	by relmlir6.idc.renesas.com (Postfix) with ESMTP id DBB7B401E6AA;
+	Sun,  2 Feb 2025 01:21:37 +0900 (JST)
+From: Biju Das <biju.das.jz@bp.renesas.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Biju Das <biju.das.jz@bp.renesas.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Biju Das <biju.das.au@gmail.com>
+Subject: [PATCH] net: ethernet: mtk-star-emac: Use of_get_available_child_by_name()
+Date: Sat,  1 Feb 2025 16:21:32 +0000
+Message-ID: <20250201162135.46443-1-biju.das.jz@bp.renesas.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org>
-X-B4-Tracking: v=1; b=H4sIADMynmcC/x3MTQqAIBBA4avErBtQyf6uEi1KpxoIEyciiO6et
- PwW7z0glJgE+uKBRBcLHyFDlwW4bQorIftsMMpYZZRGCo1tNfpTUCJj5ODOtGOlazW3xrqp85D
- jmGjh+x8P4/t+YVDV12gAAAA=
-X-Change-ID: 20250201-en7581-dts-spi-pinctrl-4160b825ca9d
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_064008_902297_41A8257F 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250201_082148_978141_5CE6BB51 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,149 +73,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the following nodes to EN7581 SoC and EN7581 evaluation board:
-- clock controller
-- rng controller
-- pinctrl
-- i2c controllers
-- spi nand controller
+Use the helper of_get_available_child_by_name() to simplify
+mtk_star_mdio_init().
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
 ---
- arch/arm64/boot/dts/airoha/en7581-evb.dts |  8 +++
- arch/arm64/boot/dts/airoha/en7581.dtsi    | 90 +++++++++++++++++++++++++++++++
- 2 files changed, 98 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-index cf58e43dd5b21dbf4f64e305a4b4a2daee100858..1126da4b795f5d5df9725ec4d75cd9353b011710 100644
---- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-+++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-@@ -24,3 +24,11 @@ memory@80000000 {
- 		reg = <0x0 0x80000000 0x2 0x00000000>;
- 	};
- };
-+
-+&i2c0 {
-+	status = "okay";
-+};
-+
-+&snfi {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index 55eb1762fb11364877695960f5a2d3e42caf8611..b1cf650efd78c6c20d19e7f18c204cf5862215c0 100644
---- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-+++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -2,6 +2,7 @@
- 
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/clock/en7523-clk.h>
- 
- / {
- 	interrupt-parent = <&gic>;
-@@ -150,5 +151,94 @@ uart1: serial@1fbf0000 {
- 			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
- 			clock-frequency = <1843200>;
- 		};
-+
-+		scuclk: clock-controller@1fa20000 {
-+			compatible = "airoha,en7581-scu";
-+			reg = <0x0 0x1fb00000 0x0 0x970>;
-+			#clock-cells = <1>;
-+			#reset-cells = <1>;
-+		};
-+
-+		rng@1faa1000 {
-+			compatible = "airoha,en7581-trng";
-+			reg = <0x0 0x1faa1000 0x0 0xc04>;
-+			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-+		};
-+
-+		system-controller@1fbf0200 {
-+			compatible = "syscon", "simple-mfd";
-+			reg = <0x0 0x1fbf0200 0x0 0xc0>;
-+
-+			en7581_pinctrl: pinctrl {
-+				compatible = "airoha,en7581-pinctrl";
-+
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
-+
-+				gpio-controller;
-+				#gpio-cells = <2>;
-+
-+				interrupt-controller;
-+				#interrupt-cells = <2>;
-+			};
-+		};
-+
-+		i2cclock: i2cclock@0 {
-+			#clock-cells = <0>;
-+			compatible = "fixed-clock";
-+
-+			/* 20 MHz */
-+			clock-frequency = <20000000>;
-+		};
-+
-+		i2c0: i2c0@1fbf8000 {
-+			compatible = "mediatek,mt7621-i2c";
-+			reg = <0x0 0x1fbf8000 0x0 0x100>;
-+
-+			clocks = <&i2cclock>;
-+
-+			/* 100 kHz */
-+			clock-frequency = <100000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			status = "disable";
-+		};
-+
-+		i2c1: i2c1@1fbf8100 {
-+			compatible = "mediatek,mt7621-i2c";
-+			reg = <0x0 0x1fbf8100 0x0 0x100>;
-+
-+			clocks = <&i2cclock>;
-+
-+			/* 100 kHz */
-+			clock-frequency = <100000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			status = "disable";
-+		};
-+
-+		snfi: spi@1fa10000 {
-+			compatible = "airoha,en7581-snand";
-+			reg = <0x0 0x1fa10000 0x0 0x140>,
-+			      <0x0 0x1fa11000 0x0 0x160>;
-+
-+			clocks = <&scuclk EN7523_CLK_SPI>;
-+			clock-names = "spi";
-+
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			status = "disabled";
-+
-+			spi_nand: nand@0 {
-+				compatible = "spi-nand";
-+				reg = <0>;
-+				spi-max-frequency = <50000000>;
-+				spi-tx-bus-width = <1>;
-+				spi-rx-bus-width = <2>;
-+			};
-+		};
- 	};
- };
-
+This patch is only compile tested and depend upon[1]
+[1] https://lore.kernel.org/all/20250201093126.7322-1-biju.das.jz@bp.renesas.com/
 ---
-base-commit: 7605336e9d136c14c94482ce7385de783f2f748e
-change-id: 20250201-en7581-dts-spi-pinctrl-4160b825ca9d
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 24 ++++---------------
+ 1 file changed, 5 insertions(+), 19 deletions(-)
 
-Best regards,
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 25989c79c92e..beb0500fe9d5 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1422,25 +1422,15 @@ static int mtk_star_mdio_init(struct net_device *ndev)
+ {
+ 	struct mtk_star_priv *priv = netdev_priv(ndev);
+ 	struct device *dev = mtk_star_get_dev(priv);
+-	struct device_node *of_node, *mdio_node;
+-	int ret;
+-
+-	of_node = dev->of_node;
++	struct device_node *mdio_node _free(device_node) =
++		of_get_available_child_by_name(dev->of_node, "mdio");
+ 
+-	mdio_node = of_get_child_by_name(of_node, "mdio");
+ 	if (!mdio_node)
+ 		return -ENODEV;
+ 
+-	if (!of_device_is_available(mdio_node)) {
+-		ret = -ENODEV;
+-		goto out_put_node;
+-	}
+-
+ 	priv->mii = devm_mdiobus_alloc(dev);
+-	if (!priv->mii) {
+-		ret = -ENOMEM;
+-		goto out_put_node;
+-	}
++	if (!priv->mii)
++		return -ENOMEM;
+ 
+ 	snprintf(priv->mii->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
+ 	priv->mii->name = "mtk-mac-mdio";
+@@ -1449,11 +1439,7 @@ static int mtk_star_mdio_init(struct net_device *ndev)
+ 	priv->mii->write = mtk_star_mdio_write;
+ 	priv->mii->priv = priv;
+ 
+-	ret = devm_of_mdiobus_register(dev, priv->mii, mdio_node);
+-
+-out_put_node:
+-	of_node_put(mdio_node);
+-	return ret;
++	return devm_of_mdiobus_register(dev, priv->mii, mdio_node);
+ }
+ 
+ static __maybe_unused int mtk_star_suspend(struct device *dev)
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.43.0
 
 
