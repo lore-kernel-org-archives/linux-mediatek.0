@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87FA2C0218A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 09:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441E9C0218A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2025 11:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/y1tCaIJIRMuWtY5X8ScN+Ehwj3HaJvQiyS5r+vb39k=; b=zNYL1hMr7wkPL2WQqGmy0/Y49m
-	xyObZBqJq5vop2IGhMDXeNooMNOpuk7vVuE0Wpm+IwYbnRiReKy//f3aiS1B0tvHHoIcKn4hviHuI
-	wBEdkFti+1kerVYVralo0JLWJxP3dVhWFf2VW27DmFqsSqhlTm5TbT0J9Dn6myB+cKcXtp9f9bPWP
-	Gw1DdoEj1wonrnHnMP91XMoFrk0E4FJUoB1PSi0GORLc10UvPBiSunWY3yjm2fMJQCYRu1zQwR5O6
-	59JPe/Ggvhdc9ktMtrS08FONSqrPcewtW0ccNAzJRITKZx+PLbkUa7SD0CM1VTkdxlqne6GHuIoQT
-	Hor7KqQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=husOVBxxb+JwN8Jg0YoEaEiVT0azMwi+L2W2E0taOe8=; b=2f4RjS7x2dob6S5tqSBhGZj07W
+	7WIiPfiJ20maTEtzTyKKW+Mpxu5TJy4187+bYcQIwvJ1MAG1erutqrvn6RXkshMiTUNpigFRUBByo
+	mqMy6ujdzrw3BaW5djntSzk1ynhxq5KQlVGKDnlFQbA/Klb6WQZV65rrnlAx8mlTCPCr2HyaxTvek
+	i0QUE6GryCszv2n3zUYtdZpCoDPz+6BCd7ermvxulklhcIC10DfOQBbSIjiEdoXDNr6WTVM4+K9yf
+	GU7jpoFyg6Jca40+isa+KPDi0YqwRmpyyfbPPpx9a9sCK1ArYLsN1e1SPHCc9bbbBQheJJ05Jf432
+	ZD5uOyiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1te9sG-0000000C5nn-1C20;
-	Sat, 01 Feb 2025 09:33:12 +0000
-Received: from relmlor1.renesas.com ([210.160.252.171] helo=relmlie5.idc.renesas.com)
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1te9qu-0000000C5lK-0xhu;
-	Sat, 01 Feb 2025 09:31:49 +0000
-X-CSE-ConnectionGUID: AkWdZp+FTmOL0FXebDBvzw==
-X-CSE-MsgGUID: l7gPDljdTleUh2byncMmtA==
-Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
-  by relmlie5.idc.renesas.com with ESMTP; 01 Feb 2025 18:31:43 +0900
-Received: from localhost.localdomain (unknown [10.226.92.62])
-	by relmlir6.idc.renesas.com (Postfix) with ESMTP id 8AC2941D4003;
-	Sat,  1 Feb 2025 18:31:28 +0900 (JST)
-From: Biju Das <biju.das.jz@bp.renesas.com>
-To: Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Biju Das <biju.das.jz@bp.renesas.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Prabhakar Mahadev Lad <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Biju Das <biju.das.au@gmail.com>,
-	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v2] of: base: Add of_get_available_child_by_name()
-Date: Sat,  1 Feb 2025 09:31:24 +0000
-Message-ID: <20250201093126.7322-1-biju.das.jz@bp.renesas.com>
-X-Mailer: git-send-email 2.43.0
+	id 1teBGJ-0000000CBVv-00Oc;
+	Sat, 01 Feb 2025 11:02:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1teBEz-0000000CBO2-2L7W;
+	Sat, 01 Feb 2025 11:00:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1C41B5C117A;
+	Sat,  1 Feb 2025 11:00:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3286C4CED3;
+	Sat,  1 Feb 2025 11:00:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738407643;
+	bh=JmWAHXdOaXV/M3CCGGuc0twYRRreA4gPfNaDgyIKvt4=;
+	h=From:Date:Subject:To:Cc:From;
+	b=jObRT3yyoJqHYF5aDMmUTZBS1b4olMA/WGDtswtX1sg1FnX4jM9X0sbWfPaUoPx+J
+	 DaW8nU+IKhT+oi13JNz9UOHqQ5Lsk3CLqbwsBheuTzz7O7fLn5BMSUeC7JT6wNcNi+
+	 N/IlrlurmoPB/iynqZgAKAdICNNl/zrUx0LUe9xvWBU3voty2uosTzCNcg0e/JHgTn
+	 PtbBJoQoVzE+ZfafA7EprUrsl7flCxV1HVdOkmL0r1KFPWJPsYkBiyxG03oVVtFoAp
+	 g3AKzNL+/TfIWABKHtTMHSfAFLMbZkQi8QS+MSGmjZKk03poAAh+p24Nd4JQTU5mpY
+	 K9IMjjjlGgvdA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sat, 01 Feb 2025 12:00:18 +0100
+Subject: [PATCH v2] PCI: mediatek-gen3: Remove leftover mac_reset assert
+ for Airoha EN7581 SoC.
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAMH+nWcC/x3MQQqEMAwF0KtI1gbailXmKoOIU7+ahVVSEUG8u
+ 2WWb/NuSlBBok9xk+KUJFvMcGVBYRniDJYxm5xxtXHG8h4EjNjUrWXFup3gdQi9IuFg69H8PCp
+ MxlMudsUk17//ds/zAifk0mNuAAAA
+X-Change-ID: 20250201-pcie-en7581-remove-mac_reset-16e7b6e3ef06
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_013148_372688_73145F51 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20250201_030045_653176_7CF75EAB 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,109 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are lot of drivers using of_get_child_by_name() followed by
-of_device_is_available() to find the available child node by name for a
-given parent. Provide a helper for these users to simplify the code.
+Remove a leftover assert for mac_reset line in mtk_pcie_en7581_power_up().
+This is not harmful since EN7581 does not requires mac_reset and
+mac_reset is not defined in EN7581 device tree.
 
-Suggested-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-v1->v2:
- * Updated commit description.
- * Updated kerneldoc comment block
- * Avoided code duplication by using of_get_child_by_name().
-
-Note:
-grep showed the below files will be the users for this new API.
-I will be updating these drivers once this patch is in mainline.
-
-drivers/net/dsa/rzn1_a5psw.c
-drivers/net/can/rcar/rcar_canfd.c
-
-drivers/net/ethernet/mediatek/mtk_star_emac.c
-drivers/net/dsa/mt7530.c
-drivers/net/dsa/sja1105/sja1105_mdio.c
-drivers/net/dsa/qca/qca8k-8xxx.c
-drivers/net/wireless/mediatek/mt76/mac80211.c
-drivers/net/ethernet/ibm/emac/core.c
-drivers/net/ethernet/ti/am65-cpsw-nuss.c
-drivers/net/ethernet/actions/owl-emac.c
-drivers/net/ethernet/mediatek/mtk_eth_soc.c
-drivers/media/platform/samsung/exynos4-is/media-dev.h
-drivers/gpu/drm/tegra/rgb.c
-drivers/gpu/drm/msm/adreno/adreno_gpu.c
-drivers/clk/davinci/pll.c
+Changes in v2:
+- fix typo in commit log
 ---
- drivers/of/base.c  | 27 +++++++++++++++++++++++++++
- include/linux/of.h |  9 +++++++++
- 2 files changed, 36 insertions(+)
+ drivers/pci/controller/pcie-mediatek-gen3.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/of/base.c b/drivers/of/base.c
-index af6c68bbb427..e37b088f1fad 100644
---- a/drivers/of/base.c
-+++ b/drivers/of/base.c
-@@ -824,6 +824,33 @@ struct device_node *of_get_child_by_name(const struct device_node *node,
- }
- EXPORT_SYMBOL(of_get_child_by_name);
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..0f64e76e2111468e6a453889ead7fbc75804faf7 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -940,7 +940,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+ 	 */
+ 	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
+ 				  pcie->phy_resets);
+-	reset_control_assert(pcie->mac_reset);
  
-+/**
-+ * of_get_available_child_by_name - Find the available child node by name for a given parent
-+ * @node:	parent node
-+ * @name:	child name to look for.
-+ *
-+ * This function looks for child node for given matching name and checks the
-+ * device's availability for use.
-+ *
-+ * Return: A node pointer if found, with refcount incremented, use
-+ * of_node_put() on it when done.
-+ * Returns NULL if node is not found.
-+ */
-+struct device_node *of_get_available_child_by_name(const struct device_node *node,
-+						   const char *name)
-+{
-+	struct device_node *child;
-+
-+	child = of_get_child_by_name(node, name);
-+	if (child && !of_device_is_available(child)) {
-+		of_node_put(child);
-+		return NULL;
-+	}
-+
-+	return child;
-+}
-+EXPORT_SYMBOL(of_get_available_child_by_name);
-+
- struct device_node *__of_find_node_by_path(const struct device_node *parent,
- 						const char *path)
- {
-diff --git a/include/linux/of.h b/include/linux/of.h
-index eaf0e2a2b75c..9d6b8a61607f 100644
---- a/include/linux/of.h
-+++ b/include/linux/of.h
-@@ -301,6 +301,8 @@ extern struct device_node *of_get_compatible_child(const struct device_node *par
- 					const char *compatible);
- extern struct device_node *of_get_child_by_name(const struct device_node *node,
- 					const char *name);
-+extern struct device_node *of_get_available_child_by_name(const struct device_node *node,
-+							  const char *name);
- 
- /* cache lookup */
- extern struct device_node *of_find_next_cache_node(const struct device_node *);
-@@ -578,6 +580,13 @@ static inline struct device_node *of_get_child_by_name(
- 	return NULL;
- }
- 
-+static inline struct device_node *of_get_available_child_by_name(
-+					const struct device_node *node,
-+					const char *name)
-+{
-+	return NULL;
-+}
-+
- static inline int of_device_is_compatible(const struct device_node *device,
- 					  const char *name)
- {
+ 	/* Wait for the time needed to complete the reset lines assert. */
+ 	msleep(PCIE_EN7581_RESET_TIME_MS);
+
+---
+base-commit: 647d69605c70368d54fc012fce8a43e8e5955b04
+change-id: 20250201-pcie-en7581-remove-mac_reset-16e7b6e3ef06
+
+Best regards,
 -- 
-2.43.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
