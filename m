@@ -4,70 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E214C0218F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2025 19:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CABAC02195
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2025 08:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+2aGAxjbAdwFKujLg/eNYHEFxNEe6obl2fXXxzMZFSU=; b=EWyCwktc/lYyHWG9ZIe4Ulqyto
-	DQqt0vc6VVledhUmxhSnRBIgKn8pjbdKo2Drevv0eVI4acpy36Mvws8WGCezTOlprq+iHFx+KtMJn
-	GUM1wdZ2teeBICfxKTzptEwhld+kZ8ZLCF5kpOYfwa3FY2ee+ClwiGkwOEMNnOfs8pddoQOeLnDsc
-	+W/g1Edi6Jn0bbF+7LO02er/wmyuU4DMc6BhguUxkWa2OxHjQqXbNZ9iwX1fStfPvcKudaqoPXSUm
-	mnUDP46s1ikE+7hL0rfg6xyW6k95G8yFgRu4vsf4TakiXaGLkUGKkKZByE9cVpFHdPAvlz3vOobS3
-	QV1jS6gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uOeb8efLQiEOJZxiEbHRsSqxowE6l9kgH/W2YzzMtQE=; b=gwOq/KAH8OICo1EUuYD05xWwHG
+	r2DC44FAMpOYhCvCS0WXLbFioEMsiONdDDov92my5U1n7BxCH768rMcqAOdlxOjya/tymYZarQF/U
+	viUPUcLDs3TqnCAmd5RW1ZHKDJcdLIEjh67ECBiSV1HDJLsSYUU5kiYxjYLpqqmYnA5Enu6G5n0tp
+	N7kcx6T9zeAZlYYoXDpQ8bXoCpBl5dKyF/5H5RS6n5HVB1qKKU5JUkAvNw2ljLTsMrSZqvM3Hl7UI
+	dfgb19OGe2lAqzZFyWvPsH+fgwb7jMuF752jZvXw70Hs1I+AK8yUCGBkmJ2cQ5ZPM7bRm86NyaWoC
+	ipVbiNxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tefnx-0000000E7Bh-1A26;
-	Sun, 02 Feb 2025 19:38:53 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1terZF-0000000EmjJ-3hGN;
+	Mon, 03 Feb 2025 08:12:29 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tefk7-0000000E6n7-1gNu;
-	Sun, 02 Feb 2025 19:34:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5F590A40C2C;
-	Sun,  2 Feb 2025 19:33:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD378C4CED1;
-	Sun,  2 Feb 2025 19:34:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738524894;
-	bh=K2iI3AiKvjoEFvWs1oYEwnuQSWAbsXtBtq6KCTpCm8s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FbN+JRDrD7nKr2dLBNZOe1qC5aTOv060C1/q8JE2jiFqpQZfLWCDIQ+vBM7WVNPF0
-	 CbNRTCsKPrraZwXbK+C6dIr8cRj8OoVb9fRzlKOqMkm9LWL0FWD7KpDaXQv6PnTzar
-	 VYyYAbh0aY7JvMwLHcXdW/SeuLmpwdKUqCHbcN0YrtVzJZpxOZy/I0wErBhtYsTRJm
-	 X2FTJAE44lFt05ch1YlEgJpGSE0vyBL87XergSHCM8bjAxtRsL1BGqHaFAZmZmqAXl
-	 Myfn6cCiNzhPR32po55YKJNj9dVSeM5yczAgBdD94pJWhv+PV5PgwM7GMTBpvSf7Wt
-	 /3kw0y5UnTBoA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 02 Feb 2025 20:34:24 +0100
-Subject: [PATCH v2 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
- for EN7581 SoC
+	id 1terYT-0000000EmZd-2Cby;
+	Mon, 03 Feb 2025 08:11:43 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 512KqXs6022506;
+	Mon, 3 Feb 2025 08:11:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:message-id
+	:mime-version:subject:to; s=qcppdkim1; bh=uOeb8efLQiEOJZxiEbHRsS
+	qxowE6l9kgH/W2YzzMtQE=; b=C1/ZZc3v5CjA1wgv7weTJ5RZgZgySsE3wk5LLD
+	55Fs8rFAIWbV+tDm4l5JoD2Bmb4J+iOtbP59vXjr2m0xUx0np8sa0bQNIZUZTddl
+	nKPRXgnxzWuy++9fLUXH8VtFh4hKAxdPGQ3NIvUA53QQwD+bjtAyvwEAoGeFDssi
+	4grgDIDoyoVkVZ00URQjvfpPUhcXvHsm60BNN1qpJX+Fl41hKfSZ3bp82Bkx4joq
+	gBa/QwJUXAlw//EKlcB1VHh0pFIo4VLpoq5yvYVjgB+p0UetEy7pPLECKXyiFYkF
+	XRaJqUr+RHrybHmxVLCuRj7lTeDrm2ch3cmFAHTEhwPExbaw==
+Received: from aptaippmta01.qualcomm.com (tpe-colo-wan-fw-bordernet.qualcomm.com [103.229.16.4])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 44jd429238-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 03 Feb 2025 08:11:23 +0000 (GMT)
+Received: from pps.filterd (APTAIPPMTA01.qualcomm.com [127.0.0.1])
+	by APTAIPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 5138BJxr013123;
+	Mon, 3 Feb 2025 08:11:19 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 44hcpkhs9n-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 03 Feb 2025 08:11:19 +0000
+Received: from APTAIPPMTA01.qualcomm.com (APTAIPPMTA01.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5138BJoB013118;
+	Mon, 3 Feb 2025 08:11:19 GMT
+Received: from cbsp-sh-gv.ap.qualcomm.com (CBSP-SH-gv.ap.qualcomm.com [10.231.249.68])
+	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 5138BJC7013114
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 03 Feb 2025 08:11:19 +0000
+Received: by cbsp-sh-gv.ap.qualcomm.com (Postfix, from userid 393357)
+	id 0FD1A40BFE; Mon,  3 Feb 2025 16:11:18 +0800 (CST)
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        martin.petersen@oracle.com, quic_ziqichen@quicinc.com,
+        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+        quic_rampraka@quicinc.com
+Cc: linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v3 0/8] Support Multi-frequency scale for UFS
+Date: Mon,  3 Feb 2025 16:11:01 +0800
+Message-Id: <20250203081109.1614395-1-quic_ziqichen@quicinc.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
-References: <20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org>
-In-Reply-To: <20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=y
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: ugiwuoD0R0Q0RPMlmh3RWsC-Co_GUm0y
+X-Proofpoint-ORIG-GUID: ugiwuoD0R0Q0RPMlmh3RWsC-Co_GUm0y
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-02-03_03,2025-01-31_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0
+ priorityscore=1501 suspectscore=0 mlxlogscore=999 malwarescore=0
+ spamscore=0 bulkscore=0 mlxscore=0 lowpriorityscore=0 impostorscore=0
+ adultscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2501170000 definitions=main-2502030065
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250202_113455_570336_77782389 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20250203_001141_681357_B5B225DF 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,85 +108,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Configure PBus base address and address mask to allow the hw
-to detect if a given address is on PCIE0, PCIE1 or PCIE2.
+With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
+plans. However, the gear speed is only toggled between min and max during
+clock scaling. Enable multi-level gear scaling by mapping clock frequencies
+to gear speeds, so that when devfreq scales clock frequencies we can put
+the UFS link at the appropraite gear speeds accordingly.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 30 ++++++++++++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
+This series has been tested on below platforms -
+sm8550 mtp + UFS3.1
+SM8650 MTP + UFS3.1
+SM8750 MTP + UFS4.0
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..9c2a592cae959de8fbe9ca5c5c2253f8eadf2c76 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -15,6 +15,7 @@
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/msi.h>
- #include <linux/of_device.h>
-@@ -24,6 +25,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/reset.h>
- 
- #include "../pci.h"
-@@ -127,6 +129,13 @@
- 
- #define PCIE_MTK_RESET_TIME_US		10
- 
-+#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
-+#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
-+#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
-+	((_n) == 2 ? 0x28000000 :	\
-+	 (_n) == 1 ? 0x24000000 : 0x20000000)
-+#define PCIE_EN7581_PBUS_BASE_ADDR_MASK	GENMASK(31, 26)
-+
- /* Time in ms needed to complete PCIe reset on EN7581 SoC */
- #define PCIE_EN7581_RESET_TIME_MS	100
- 
-@@ -931,7 +940,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
--	int err;
-+	struct regmap *map;
-+	int err, slot;
- 	u32 val;
- 
- 	/*
-@@ -945,6 +955,24 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	/* Wait for the time needed to complete the reset lines assert. */
- 	msleep(PCIE_EN7581_RESET_TIME_MS);
- 
-+	map = syscon_regmap_lookup_by_phandle(dev->of_node,
-+					      "mediatek,pbus-csr");
-+	if (IS_ERR(map))
-+		return PTR_ERR(map);
-+
-+	/*
-+	 * Configure PBus base address and address mask to allow the
-+	 * hw to detect if a given address is on PCIE0, PCIE1 or PCIE2.
-+	 */
-+	slot = of_get_pci_domain_nr(dev->of_node);
-+	if (slot < 0)
-+		return slot;
-+
-+	regmap_write(map, PCIE_EN7581_PBUS_ADDR(slot),
-+		     PCIE_EN7581_PBUS_BASE_ADDR(slot));
-+	regmap_write(map, PCIE_EN7581_PBUS_ADDR_MASK(slot),
-+		     PCIE_EN7581_PBUS_BASE_ADDR_MASK);
-+
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
- 	 * requires PHY initialization and power-on before PHY reset deassert.
+v1 -> v2:
+1. Withdraw old patch 8/8 "ARM: dts: msm: Use Operation Points V2 for UFS on SM8650"
+2. Add new patch 8/8 "ABI: sysfs-driver-ufs: Add missing UFS sysfs addributes"
+3. Modify commit message for  "scsi: ufs: core: Pass target_freq to clk_scale_notify() vops" and "scsi: ufs: qcom: Pass target_freq to clk scale pre and post change"
+4. In "scsi: ufs: qcom: Pass target_freq to clk scale pre and post change", use common Macro HZ_PER_MHZ in function ufs_qcom_set_core_clk_ctrl()
+5. In "scsi: ufs: qcom: Implement the freq_to_gear_speed() vops", print out freq and gear info as debugging message
+6. In "scsi: ufs: core: Enable multi-level gear scaling", rename the lable "do_pmc" to "config_pwr_mode"
+7. In "scsi: ufs: core: Toggle Write Booster during clock", initialize the local variables "wb_en" as "false"
+
+v2 -> v3:
+1. Change 'vops' to 'vop' in all commit message
+2. keep the indentation consistent for clk_scale_notify() definition.
+3. In "scsi: ufs: core: Add a vop to map clock frequency to gear speed", "scsi: ufs: qcom: Implement the freq_to_gear_speed() vop"
+   and "scsi: ufs: core: Enable multi-level gear scaling", remove the parameter 'gear' and use it as return result in function freq_to_gear_speed()
+4. In "scsi: ufs: qcom: Implement the freq_to_gear_speed(), removed the variable 'ret' in function ufs_qcom_freq_to_gear_speed()
+5. In "scsi: ufs: core: Enable multi-level gear scaling", use assignment instead memcpy() in function ufshcd_scale_gear()
+6. Improve the grammar of attributes' descriptions in “ABI: sysfs-driver-ufs: Add missing UFS sysfs attributes”
+7. Typo fixed for some commit messages.
+
+Can Guo (6):
+  scsi: ufs: core: Pass target_freq to clk_scale_notify() vop
+  scsi: ufs: qcom: Pass target_freq to clk scale pre and post change
+  scsi: ufs: core: Add a vop to map clock frequency to gear speed
+  scsi: ufs: qcom: Implement the freq_to_gear_speed() vop
+  scsi: ufs: core: Enable multi-level gear scaling
+  scsi: ufs: core: Toggle Write Booster during clock scaling base on
+    gear speed
+
+Ziqi Chen (2):
+  scsi: ufs: core: Check if scaling up is required when disable clkscale
+  ABI: sysfs-driver-ufs: Add missing UFS sysfs attributes
+
+ Documentation/ABI/testing/sysfs-driver-ufs | 33 ++++++++++
+ drivers/ufs/core/ufshcd-priv.h             | 15 ++++-
+ drivers/ufs/core/ufshcd.c                  | 76 +++++++++++++++++-----
+ drivers/ufs/host/ufs-mediatek.c            |  1 +
+ drivers/ufs/host/ufs-qcom.c                | 62 ++++++++++++++----
+ include/ufs/ufshcd.h                       |  9 ++-
+ 6 files changed, 160 insertions(+), 36 deletions(-)
 
 -- 
-2.48.1
+2.34.1
 
 
