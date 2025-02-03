@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 902D6C02193
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2025 19:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E716CC02192
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2025 21:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=m8IEI4G7xd+V7ksOohXdzZthJzMKPeEae45dEIZjAYs=; b=ueJ5KI8TA9By/wyWna9QitgNJU
-	XWAJMOlBpZLp8Bys2Bzz56tHJ8hLTq4fAGJtX6zrDZH8bgcLoboQWk5HDbOBGKLdSJYI82pMKQeJX
-	XMtY808BXguAV/QJaIDabNcNeGtB5HseJRCW4xQHKggVx4ZBEcLJP/eHqGsC9CpbFUX2IB1UrBhBh
-	LsbA16+4gSp9pYzXvTKqTlTC86O9NCmKuV+gUmFXfmIYuBSYiJRwpPQyU/J6Ie8XyuVonepCHPSgi
-	wQH2oEy4HlpTOT4Jh5ghcfcn9WeqNP7GG6MPezxT87pup8SEdUzcEXMq8QrIpGp0My0v9LbSQMi5z
-	nEn5dZpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oal2aMH2hPYfw3LtDtrd7q3DEM09V7WsU6DrXT1jLCY=; b=ROtdfGFKQkUcmxz9CHTI7sRnO8
+	frxabJ4qEK6ddBKqPB9ZIFGRnAmPEfQdW2AlzXRS34cFRWRxKU5chWsHTAJlWoyWqePMgHLlIWeBw
+	9rdJN1fpGreb1dErZIfvqEc8fndqGce9hst8oOc/p954a0YWr9u/6eOSieseDVwiYdlf64gX+DfTB
+	3umf40RCb76N8kDQ0Onx9zre+zA11iUtw83EWfaMB2WuwEaFxlWBvbd1hLtxk+uF5OaCbCby65zcY
+	IbgEpmPTXZLV9AF+c1YA7Dr0rB5uc0AeL0xS3ix0sl569Km2LYq3KP8m7r3u2q0ou4a57NJDx3eeY
+	YpxrvXMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tf1iq-0000000GOII-2pR6;
-	Mon, 03 Feb 2025 19:03:04 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tf3w4-0000000GeYA-0kJi;
+	Mon, 03 Feb 2025 21:24:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tf1Yv-0000000GL22-333Z;
-	Mon, 03 Feb 2025 18:52:50 +0000
+	id 1tf3dz-0000000Gbwy-0htv;
+	Mon, 03 Feb 2025 21:06:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ABDFDA41BB3;
-	Mon,  3 Feb 2025 18:51:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7286AC4CED2;
-	Mon,  3 Feb 2025 18:52:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A7F1D5C6939;
+	Mon,  3 Feb 2025 21:05:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29347C4CEE7;
+	Mon,  3 Feb 2025 21:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738608768;
-	bh=cp8ezIVsa4VCsFDICxF3SyrDQWm0vPmWgmthTsoKoqY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=sLhSkgfrtiXM1d6scqupsldIN28bx0T9WxyPXfHVo8A0P9qumifaHA8ihb8wOmVW/
-	 1B9v11/JtaUgT+dJGbOGTr/1gn+6qbtl9NnxCBwzjSoWBh0Uh3xhgO6GUgHFHd9x6z
-	 9eAGB33aOGE2z2GmO4QOBh/YZhLxRQKa4R9q5fHpT1S/M5BZhwxFZjbrgnnUB5D1H+
-	 tyV/Dj5wFHfMY4zuEYR71SaN1vCa3bNp/LPdDqcd1fMxaJXjY1lNInCsO6jjwM1Ia9
-	 OgaFs8I2iicsAKZ2HsG8xcDp4G7eZBDYuMYUGEtIj06JlRFSWOpYhECw3427VyhAVP
-	 QWWr9nrS2c2qA==
-Date: Mon, 3 Feb 2025 12:52:46 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>
-Cc: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <Ryder.Lee@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
-Message-ID: <20250203185246.GA794570@bhelgaas>
+	s=k20201202; t=1738616770;
+	bh=cBsOd6wcSiVV2e1fytZZdNGIp2DUe5yMg3BzjkT0Yr4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=lN0NurEP59jw3KFihk3UbtTdOqxRtqK5UFsYGY46T/FDOIUUOGEXuY5wOgZrFnfyC
+	 Yop1IGJDUrXUuZnuQxWXBF4Ifxr+rq9ms58p7eR2x5lW7B/iKbbxc+OrpSpFmgBLIm
+	 b4JwC4pIQ1La+mgOAMowI85qTQxRlZZZo4lZb6+2d37uIZzmF8JCzQxaeMz77O0UWU
+	 n8Hms12AU1JnJvdBRI7G7USTCO5Y76axkwKwNKI2sklF42+2nos7xR2M5DbaIgn6p9
+	 m6NV+ESbC7j/m6FqLnkt0oc4P8WNGg/XAPoRIiBrgpRuPNdk9zHUwCLaeEoIYENAjI
+	 n/bxcXfFKO1oA==
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-5dc89df7eccso5570703a12.3;
+        Mon, 03 Feb 2025 13:06:10 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUYW9xjGZJyBth/vWNkqdOat6HXyWVysJc8VXffg5H/k6vVYQGv4vqvZrfDVLyJzdQhrJ4I9R3Thonu1S+p+h9i@lists.infradead.org, AJvYcCUrWYBTw1CPnuJfxofnRm7RK8D9R5aNteBfTxaMccMa6SF2tFa8n6r59/XJzT91iT1eOoEfEMpgzLFJpU/+R74=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+/Bg5acEm0dbKaYjvaXf0I8+omL1vgJDXNQWlz5RA4FZmk81D
+	Fh2p0kgBbgm4tYGx5e3ywDcah2KwdmgejGqwrLJzHoIv0AY7tKnNEt/b3QAFYzn9ZSYq+YrmWqo
+	P8kyWKW7L03stEJDGWy7nAjzPbw==
+X-Google-Smtp-Source: AGHT+IHeWZHdJjC4YN+OOJHAB8++nTLMgl7MUL+pvf+VvcXzFyBuc+YptThIQgLhGlBcwS62U/h/TbXO0dgmymUExPY=
+X-Received: by 2002:a05:6402:274a:b0:5d1:2535:84d7 with SMTP id
+ 4fb4d7f45d1cf-5dc5effb1c0mr22570412a12.29.1738616768432; Mon, 03 Feb 2025
+ 13:06:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250203175049.idxegqqsfwf4dmvq@thinkpad>
+References: <20250201093126.7322-1-biju.das.jz@bp.renesas.com>
+ <CAL_Jsq+dn5wyEKbvAT8M2V=nM-vV_eHiRtwO_0h6EiJ=8OkHSw@mail.gmail.com> <TY3PR01MB11346E1FA592E731E0D32E96686F52@TY3PR01MB11346.jpnprd01.prod.outlook.com>
+In-Reply-To: <TY3PR01MB11346E1FA592E731E0D32E96686F52@TY3PR01MB11346.jpnprd01.prod.outlook.com>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 3 Feb 2025 15:05:57 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLo4uSGYMcLXN=0iSUMHdW8RaGCY+o8ThQHq3_eUTV9wQ@mail.gmail.com>
+X-Gm-Features: AWEUYZnrMYgeFmznny2afQJcB_ErB5ngAuWrI9ehgUSHGdkfF9dpCy3oKUhDEGQ
+Message-ID: <CAL_JsqLo4uSGYMcLXN=0iSUMHdW8RaGCY+o8ThQHq3_eUTV9wQ@mail.gmail.com>
+Subject: Re: [PATCH v2] of: base: Add of_get_available_child_by_name()
+To: Biju Das <biju.das.jz@bp.renesas.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Jakub Kicinski <kuba@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Saravana Kannan <saravanak@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Prabhakar Mahadev Lad <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	"biju.das.au" <biju.das.au@gmail.com>, 
+	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>, 
+	Network Development <netdev@vger.kernel.org>, 
+	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	linux-media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250203_105249_893869_67C612EE 
-X-CRM114-Status: GOOD (  37.21  )
+X-CRM114-CacheID: sfid-20250203_130611_305388_139D32B4 
+X-CRM114-Status: GOOD (  23.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,78 +95,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 03, 2025 at 11:20:49PM +0530, manivannan.sadhasivam@linaro.org wrote:
-> On Sat, Feb 01, 2025 at 11:07:40AM -0600, Bjorn Helgaas wrote:
-> > On Sat, Feb 01, 2025 at 09:54:16PM +0530, manivannan.sadhasivam@linaro.org wrote:
-> > > On Mon, Jan 27, 2025 at 06:41:50PM -0600, Bjorn Helgaas wrote:
-> > > > On Thu, Jan 23, 2025 at 08:11:19AM +0000, Jianjun Wang (王建军) wrote:
-> > > > > On Wed, 2025-01-15 at 23:01 +0530, Manivannan Sadhasivam wrote:
-> > > > > > On Tue, Jan 07, 2025 at 01:20:58PM +0800, Jianjun Wang wrote:
-> > > > > > > Remove the usage of virt_to_phys, as it will cause sparse warnings
-> > > > > > > when
-> > > > > > > building on some platforms.
-> > 
-> > > > > > >       snprintf(name, sizeof(name), "port%d", slot);
-> > > > > > > -     port->base = devm_platform_ioremap_resource_byname(pdev,
-> > > > > > > name);
-> > > > > > > +     regs = platform_get_resource_byname(pdev, IORESOURCE_MEM,
-> > > > > > > name);
-> > > > > > > +     if (!regs)
-> > > > > > > +             return -EINVAL;
-> > > > > > > +
-> > > > > > > +     port->base = devm_ioremap_resource(dev, regs);
-> > > > > > >       if (IS_ERR(port->base)) {
-> > > > > > >               dev_err(dev, "failed to map port%d base\n", slot);
-> > > > > > >               return PTR_ERR(port->base);
-> > > > > > >       }
-> > > > > > > 
-> > > > > > > +     port->msg_addr = regs->start + PCIE_MSI_VECTOR;
-> > > > 
-> > > > I think this still assumes that a CPU physical address
-> > > > (regs->start) is the same as the PCI bus address used for MSI, so
-> > > > this doesn't seem like the right solution to me.
+On Mon, Feb 3, 2025 at 11:17=E2=80=AFAM Biju Das <biju.das.jz@bp.renesas.co=
+m> wrote:
+>
+> Hi Rob,
+>
+> +Cc relevant subsystems.
+>
+> > -----Original Message-----
+> > From: Rob Herring <robh@kernel.org>
+> > Sent: 03 February 2025 16:53
+> > Subject: Re: [PATCH v2] of: base: Add of_get_available_child_by_name()
+> >
+> > On Sat, Feb 1, 2025 at 3:31=E2=80=AFAM Biju Das <biju.das.jz@bp.renesas=
+.com> wrote:
+> > >
+> > > There are lot of drivers using of_get_child_by_name() followed by
+> > > of_device_is_available() to find the available child node by name for
+> > > a given parent. Provide a helper for these users to simplify the code=
+.
+> > >
+> > > Suggested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> > > Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
+> >
+> > Reviewed-by: Rob Herring <robh@kernel.org>
+> >
+> > > ---
+> > > v1->v2:
+> > >  * Updated commit description.
+> > >  * Updated kerneldoc comment block
+> > >  * Avoided code duplication by using of_get_child_by_name().
+> > >
+> > > Note:
+> > > grep showed the below files will be the users for this new API.
+> > > I will be updating these drivers once this patch is in mainline.
+> >
+> > No need to wait. Please convert all the net ones and send this patch wi=
+th them.
+>
+> Thanks for the feedback.
+>
+> Subsequently, I have send the patches. However, Andrew[1]/Krystoff[2]
+> mentioned me to wait till this patch appear in -rc ,
+>
+> Can it be fast tracked to 6.14-rcX?? Otherwise, it needs to wait till 6.1=
+5-rc1
+> and other patches will then appear on 6.16-rc1.
 
-Apart from the question of what type should be used, what do you think
-about this part?  I don't think we should assume that the address on
-PCI is identical to the CPU physical address.  IOMMUs and (I assume)
-iATUs can make them different, can't they?  If so, this looks like an
-implicit assumption that PCI bus==CPU physical, and I think we should
-make that a little more explicit somehow.
+Most maintainer trees are based on rc1. So are you sure everyone is
+going to be fine with a rc2 dependency? Generally, new APIs don't go
+in without a user.
 
-> > > > Apparently they happen to be the same on this platform because (I
-> > > > assume) MSIs actually do work, but it's not a good pattern for
-> > > > drivers to copy.  I think what we really need is a dma_addr_t, and
-> > > > I think there are one or two PCI controller drivers that do that.
-> > > 
-> > > I don't see why we would need 'dma_addr_t' here. The MSI address is
-> > > a static physical address on this platform and that is not a DMA
-> > > address. Other drivers can *only* copy this pattern if they also
-> > > have the physical address allocated for MSI.
-> > 
-> > Isn't an MSI on PCI just a DMA write to a certain address?
-> 
-> That's from the endpoint prespective when it triggers MSI.
-> 
-> > My assumption is that if you put an analyzer on that link, an MSI
-> > from a device would be structurally indistinguishable from a DMA
-> > write from the device.  The MSI uses a different address, but
-> > doesn't it use the same size and kind of address, at least from
-> > the PCIe protocol perspective?
-> 
-> Yeah, but in this case the address allocated to MSI belongs to a
-> hardcoded region in the host memory (not allocated by the DMA APIs
-> which will have the region attributed as DMA capable). So it doesn't
-> belong to the DMA domain, and we cannot use 'dma_addr_t'.
+That being said, if this was 10s of different trees I'd reconsider,
+but since most of the callers are in net, I'm less willing to apply
+"not a fix" to fixes.
 
-Doesn't .irq_compose_msi_msg() build the Message Address/Data pair
-that is programmed into a device's MSI Capability or MSI-X Table?
-The device will eventually use that to initiate a DMA write to that
-address.
+> [1] https://lore.kernel.org/all/96fbccd3-fd79-4b2f-8f41-bd0e3fdb2c69@lunn=
+.ch/
+>
+> [2] https://lore.kernel.org/all/7fe9dad9-85e2-4cf0-98bc-cca20ff62df5@kern=
+el.org/
 
-In that sense, I would argue that the Message Address does belong to
-the DMA domain.  I don't think the size of the address (32 vs 64 bits)
-is determined by the CPU physical address size (phys_addr_t); it's
-determined by the size of DMA addresses.
+It's not like they are saying to do the opposite of what I said. If
+the dependency is not part of your series, then it needs to be in rc1.
 
-Bjorn
+Rob
 
