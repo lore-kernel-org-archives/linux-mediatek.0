@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F10C02194
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 12:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B752C0219A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 15:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lMfIKaiQsZajbFthZnROtOHbljWUDtuc2xlWJrPjPX0=; b=AkepFOx3Ip8oq6Hb6FI0ZP3U/R
-	nolV/9KrEe4zAvFw3ZRpzbL8vJ5jD9aDK4VmeJMeEdp4ElEiCFAeqqsSTACA1+vdyW5tqZcLqDJaS
-	osw4mr8ha86nEtCKhaY/ESEU6yF4l1oX6XhZ8avDlw8PDJbBV6+QS7gprjfiEI6wLkXSFedHWO/DW
-	0lu7EOpNbEAlvn672TdXiICH9Ydi8gdALm0KthEduk9vq077e8VQBGM1GAYK9nOd7/g++O++QyTDW
-	RYGoQc60HGpoyn1aBvx0RcAeiYB5yimce5Y7wqXqmSBrVwSAirqrnKYVc+wDK6z2Kxs/tcDOhEh64
-	wNV+mYjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9P7/wKz7LVAPwtYVbSKf70e789kM9BvyeB6cnxCHqgw=; b=BsSbmVbFB8h+2bIehYQCKiu040
+	PEby0sn2VANMHK++qVMyzbF2bH69GIa9mjfVzM4iamJAacJdVwIQ1mh6ozGZZSjiiDbpj+uhGt0/b
+	O2F38pd4QqgVhQkPbECayPfp05A1Rx0ZkhxxMnHU1eGP4ICpk+1J2XabIRw1VTwah2j+36Zxz+UJg
+	u8BFFbBGhbQp2Nuz6kqTuzsNH+XGXOs3cFeaAF4AjDH2am3RRzvyhK2zTLI2qyiRiTGARykoBr2tl
+	ABlBEGLcVxdhw+4rJRlbt/WRxZDFH2yCeuab7EWJLsEakjXlGCFSJa3Cx7pOHKRttQKMPqCxGNFFp
+	V3DN1x1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfHeg-00000000Kg7-04FX;
-	Tue, 04 Feb 2025 12:03:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tfLCF-00000000sWJ-280w;
+	Tue, 04 Feb 2025 15:50:43 +0000
+Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfHdK-00000000KJc-25aF;
-	Tue, 04 Feb 2025 12:02:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738670529; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MPcT3PirMFcVUC6K5t+AiATIRZ+CMVblzoAioon0E9pkEuM2cUC1z4kjP7uYQtIcyaumTz18yDQpwyn2QEdER4c7lzK1SiTuCT+jRmSF/sNHUYzIQ8fkEzqADo3BdLbSddZGFIxqWyBKtNXEqG1Hy16wXypfDq5jODSb+jfKxhw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738670529; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lMfIKaiQsZajbFthZnROtOHbljWUDtuc2xlWJrPjPX0=; 
-	b=YZPNdX1MnjKFJ9O96tMPuDrRfJVY8wtHPSsgYhFFSXoRWgmNqE/INkx3i51/ak7zlBP5JKm17S+EJMnTsBwb8Ouq4Nvrnz0lmpckWdsPLw0rTElqMKvMrd/bfRHNYNmSRduySP3XIfH/IH/iCoMwK3LDglh4G3i23elkQuvdo8M=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738670529;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=lMfIKaiQsZajbFthZnROtOHbljWUDtuc2xlWJrPjPX0=;
-	b=YWYyoggyW7pIQOCMB9+QJEPhc3auu0nXNRL7xu6GYC1bF/iogPSf+nvn+yW8/5YM
-	g6zcipTx7iODxfC/u7p2XAkMN3FMMSA6vl6LFjQUQje3LhzyF4nm1SYcS5Iowyko7++
-	qtEMfgi2eTUA10TAyWv5mGTdkMM1gP5ztFVhMjRw=
-Received: by mx.zohomail.com with SMTPS id 1738670525370363.03205209504824;
-	Tue, 4 Feb 2025 04:02:05 -0800 (PST)
-Message-ID: <59eb99d253676ca7f117726260122363469867ab.camel@collabora.com>
-Subject: Re: [PATCH v2 2/3] drm/panfrost: Add support for Mali on the MT8370
- SoC
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Rob Herring	 <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley	 <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Boris Brezillon
- <boris.brezillon@collabora.com>, Steven Price	 <steven.price@arm.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Tue, 04 Feb 2025 13:02:00 +0100
-In-Reply-To: <2d1780d3-ae78-4adf-a20a-8b6b3891b9b0@kernel.org>
-References: <20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com>
-	 <20250130-mt8370-enable-gpu-v2-2-c154d0815db5@collabora.com>
-	 <2d1780d3-ae78-4adf-a20a-8b6b3891b9b0@kernel.org>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1tfL0b-00000000qmm-00Lk;
+	Tue, 04 Feb 2025 15:38:42 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1738683517;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=9P7/wKz7LVAPwtYVbSKf70e789kM9BvyeB6cnxCHqgw=;
+	b=uaTfxH0EoY8gZDNZu0+ATwtuZXuYWyK92npFC74jGNgWcNSAnqlP/1/C0vZSmcnO3qDWzS
+	JjlesU2Dhf4Eir7+qSHye9860H3WIHA7RuRpvaAem4m/O3WdA3O7C9JziOGBXCDCWEZkdg
+	/skAsoEpKBBLXHLjkG9jCSCcsj6JT/o=
+From: Thorsten Blum <thorsten.blum@linux.dev>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Thorsten Blum <thorsten.blum@linux.dev>,
+	sound-open-firmware@alsa-project.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: SOF: mediatek: Use str_on_off() helper function
+Date: Tue,  4 Feb 2025 16:38:04 +0100
+Message-ID: <20250204153806.3587-2-thorsten.blum@linux.dev>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_040226_602861_AE331093 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20250204_073841_175301_0FF54A98 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,49 +79,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-01-30 at 14:17 +0100, Krzysztof Kozlowski wrote:
-> On 30/01/2025 13:31, Louis-Alexis Eyraud wrote:
-> > Add a compatible for the MediaTek MT8370 SoC, with an
-> > integrated ARM Mali G57 MC2 GPU (Valhall-JM, dual core),
-> > with the same platform data as MT8186 (one regulator, two power
-> > domains).
-> >=20
-> > Reviewed-by: Steven Price <steven.price@arm.com>
-> > Signed-off-by: Louis-Alexis Eyraud
-> > <louisalexis.eyraud@collabora.com>
-> > ---
-> > =C2=A0drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
-> > =C2=A01 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> > b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> > index
-> > 0f3935556ac761adcd80197d87e8e478df436fd5..7b7e9f6f620659a7fdcb5d907
-> > ebc4f01eca876e0 100644
-> > --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> > +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> > @@ -859,6 +859,7 @@ static const struct of_device_id dt_match[] =3D {
-> > =C2=A0	{ .compatible =3D "mediatek,mt8186-mali", .data =3D
-> > &mediatek_mt8186_data },
-> > =C2=A0	{ .compatible =3D "mediatek,mt8188-mali", .data =3D
-> > &mediatek_mt8188_data },
-> > =C2=A0	{ .compatible =3D "mediatek,mt8192-mali", .data =3D
-> > &mediatek_mt8192_data },
-> > +	{ .compatible =3D "mediatek,mt8370-mali", .data =3D
-> > &mediatek_mt8186_data },
->=20
-> Nothing improved here. All my previous comments still stand.
->=20
-> Best regards,
-> Krzysztof
-Hi,
+Remove hard-coded strings by using the str_on_off() helper function.
 
-I'll reword this commit message in V3 to add that despite GPU
-architecture difference (making them being not compatible), the MT8186
-platform data can still be used for MT8370 too because it only
-describes supplies, domains and enablement of power management features
-in the driver.
+Signed-off-by: Thorsten Blum <thorsten.blum@linux.dev>
+---
+ sound/soc/sof/mediatek/mt8195/mt8195-clk.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Regards,
-Louis-Alexis
+diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
+index 7cffcad00f9b..2c2c4cd323fc 100644
+--- a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
++++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
+@@ -8,6 +8,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/io.h>
++#include <linux/string_choices.h>
+ #include "mt8195.h"
+ #include "mt8195-clk.h"
+ #include "../adsp_helper.h"
+@@ -114,7 +115,7 @@ static int adsp_default_clk_init(struct snd_sof_dev *sdev, bool enable)
+ 	struct adsp_priv *priv = sdev->pdata->hw_pdata;
+ 	int ret;
+ 
+-	dev_dbg(dev, "%s: %s\n", __func__, enable ? "on" : "off");
++	dev_dbg(dev, "%s: %s\n", __func__, str_on_off(enable));
+ 
+ 	if (enable) {
+ 		ret = clk_set_parent(priv->clk[CLK_TOP_ADSP],
+-- 
+2.48.1
+
 
