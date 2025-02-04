@@ -4,67 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BDAC02193
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 16:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B12C02194
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 18:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1om8YbeuY3FiZXBm5pqswmLpWJAdjtFeqEad2mTTikQ=; b=rbxABVoOJJOoyYw9FuWyhHtG+f
-	jOwzYbWD2KXH8kS80TlC0ENmz+CbRjdjVG+zPNC3BzPvgkfxjxDVOyTnm4ANTeh66WyivywL+zUBL
-	ILOI7LJ/aVIogzkLPqyByBHImeyOFDLg6mZ7/Rny0SczXJGOa/KxpUfe6WLCP38mXqoM0T8FPlGVl
-	qCK59cCAdYK7DYZhnO+TZwWEe0L/A43ha9dcGUpOCdy/TsRuOLOa/96plYaE+6vge0pdkdUeReOgA
-	ExR+XjPaxyqyGa6jvV72PSR+l1vAy+Dz6z6u6b8Tw/SGq3Dx63nuiNLUYWKSYS+SfDbkGNNGSy2Xj
-	lZBbGNqQ==;
+	bh=7FLDKP+B1KLmToqN0+wbXjgRxetp1/agS67Xma08wWo=; b=Wg3qknZfxHKmIB5VxhpOJvVgXx
+	Fa2mCOGNTl4h1sRbXzF58fxn0xp5Yue+nNh5vfuQJQhpJnZGYttg/kgQiD55Ue9y+vw0UqKvts81K
+	BP9/ABS8PrTb3G75FtQeVmdlHDPS49BCYvV/BUUHuOMw2khE+nuurPh2dHRjVoX2l9zGeko4oYj7B
+	LqMy2I2r/oFozGka2fippL0d+i9Dryas9j+qSRicSUeFw+ZxHutWHj5sFsJ3gbofg0xVCBiRsTkEK
+	uJydDoFjhTMcBDkBSm28lUoNAXDHfnvH06AumM83Y26nopktmoJpPQIevqZxztQaWXP1NDrWf3XY7
+	2C82fB3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfLcU-00000000wIv-25jR;
-	Tue, 04 Feb 2025 16:17:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tfNR6-00000001BTH-2iER;
+	Tue, 04 Feb 2025 18:14:12 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfLaN-00000000vyD-24lg;
-	Tue, 04 Feb 2025 16:15:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 622955C5596;
-	Tue,  4 Feb 2025 16:14:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BB94C4CEDF;
-	Tue,  4 Feb 2025 16:15:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738685737;
-	bh=QgWlamS94vS3vGAG/pHtXY7wtWDDLe5dqXG87XVePgA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nhCQur0FfjxOhKL9RDst4vNpY75oEzasHNvW1DxWJb9hxojf+QTH08/wIYKNq8N5X
-	 XrIU9Sep2NhtFQy68eXDok0cbGTwbQW6nvPwrY/v9cJYT6Ej+wkM0s0R4UtNraO7v+
-	 +0WS+e/M73lWqGLPaJ/6/WGqt3X9taDK8svlXwmcDOcA1M2/E+oIjA0ry77UzDDcHl
-	 qXcLAdS/1QN8mjLkgNbZQrIVFNJhr6GEO/fvwgJzco7CSHE2AwBAP2QKRT1Vo1d9ha
-	 iBWJQcu2JYeXnhZc81WVqER23Abjam9VoJCIXjMMb18tmuPqRMyPzpX1SYAIMG6nhd
-	 EmCCnKliXUC0w==
-Date: Tue, 4 Feb 2025 17:15:35 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: Introduce more nodes to EN7581 SoC
- evaluation board
-Message-ID: <Z6I9JzAVv3VjKOiE@lore-desk>
-References: <20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org>
- <4656ae57-c6a1-48ac-a60f-72d7b988c307@kernel.org>
- <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
+	id 1tfNPk-00000001BFj-2UmA
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Feb 2025 18:12:49 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-6e4295b72b5so8903916d6.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Feb 2025 10:12:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1738692767; x=1739297567; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=7FLDKP+B1KLmToqN0+wbXjgRxetp1/agS67Xma08wWo=;
+        b=dPEXx6OJK+wzJfTNRDBGFHaPd2y22B6vTFRYcEoZfnhvVxLJLiM77j7estrK//RZRp
+         IKnjCMmtoV/0dZjvKyhWL8KABJnB0Yxba7wacLY/leTVgbiAy9fh1NTqPB3DcLd2ScGq
+         SwZdFwI4n4um8kUx0MY0mj+276xyNghc+t6JC3dwdmiB9PVOgeAPHrJF7Stc6oqM6ZFF
+         bsEdEt3F7y4SOyHtPkqZ5vAHH4XoI7IK1lyKZ5+cmTElsYR4lu0H4fqDJc0E50SWK0G+
+         JDpJB8f3PWK7AKRPGM5OAa/Jv+FZm0Ol3mZts53QS/ps1CEiwbsbRn2zbIbcszUyC0yP
+         KYCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738692767; x=1739297567;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7FLDKP+B1KLmToqN0+wbXjgRxetp1/agS67Xma08wWo=;
+        b=YDt7YTZntPkDOU0l7ivK6WCZ45vCYkGHcNu2ru7O/8SGP7/igNrMn7vOifhm75Lm/M
+         M8FBPMN5KRvldROW7vkxVLz22nMu93sfholErX0VYTs1D6ZzndR04LLRhsrXt94edQPg
+         +y/QxbF3nTLnvmI2J/UYskLyRfmtU3P+HqRSR7Y4I8ZlCCXJEudtT5MS2hIt5/PJimQI
+         unLSHrzZIB6dxLoTnGJnVl19aIblg8IIJf+o/TPYztuwR0FBEDWZlyC/36fwzGw/GPFX
+         b7ItBd6WOEmMr1TC2M+35FuB4UcsFDTs+ebGTFCHa2Z+tRmcdcEk4YHunduO80FzE1B7
+         jKpQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU3ORHtkNJSJBnLEM613QUzokvvqU8A44KycgSsj5Br8pJYJXJl6ZmOTVKR4By+klRJDFcJVfRNKu48e3LpNQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxxq5wppmUr2OKDWuMQ6X3nxxXQ6JvNjvgufoNVSV5KFNIKMXFu
+	4bpRSvVVoVfYmGdvN5z/igAPlEshtYSMpbHhRn5VTzDD63H2JONYlEpGK2HEb4w=
+X-Gm-Gg: ASbGnct5kUzmqRjoa8ZnpYQtHMtlWn5konMIM/kYeCe8JJ8KzPkGCd/Q6gQi0qA6cK1
+	54BH2W5bT2e6T99PM+YvY6MjXScE+6uodBtlNyt2oa+sJoH15cJnNIwK2wmffplG9/Rg62wBB/1
+	ppaY4/3t3HS9ElgcRkKqEydbv5HsD1MjUym39rNtJ+KhNywDhA303atI3ux2W4PSJ6GnYU73qan
+	VztNHZ345ySzsdV70zjJyFvw7KgdbI0QrZDFOP4nAseDe+fQMPTW0XqiHZt8QPbeLQWKfVB9/Vt
+	2/N+kBzZZQY28rUy
+X-Google-Smtp-Source: AGHT+IEUFtl7TqQiYVbLC5fRURyW+Ho5rjSwqMbAkbu0qwIuaYAMXRJbz+FDijkjOelVbHDYm/RAhg==
+X-Received: by 2002:a05:6214:3291:b0:6e1:a4d6:185f with SMTP id 6a1803df08f44-6e243c9b8c2mr427636956d6.34.1738692766625;
+        Tue, 04 Feb 2025 10:12:46 -0800 (PST)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:11:e976::7a9])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e2548143c4sm64370106d6.35.2025.02.04.10.12.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Feb 2025 10:12:46 -0800 (PST)
+Message-ID: <b02711c901e8acf2bc47926919de7673a0cb0b98.camel@ndufresne.ca>
+Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Florent Tomasin <florent.tomasin@arm.com>, Maxime Ripard
+	 <mripard@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Boris
+ Brezillon	 <boris.brezillon@collabora.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>,  Sumit Semwal <sumit.semwal@linaro.org>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey	
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier"	 <tjmercier@google.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
+ <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong
+ Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, 
+	linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, nd@arm.com, Akash Goel
+ <akash.goel@arm.com>
+Date: Tue, 04 Feb 2025 13:12:44 -0500
+In-Reply-To: <be8e6b9f-c3c6-41d1-af9c-3dcd102f0fe3@arm.com>
+References: <cover.1738228114.git.florent.tomasin@arm.com>
+	 <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
+	 <ats2unrml5a7vbpdrqrzowodrsfj44bnubpbujg2igk3imeklx@nrpmg5oeq3gz>
+	 <be8e6b9f-c3c6-41d1-af9c-3dcd102f0fe3@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="EpiTytTZELGaMO09"
-Content-Disposition: inline
-In-Reply-To: <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_081539_575788_DCBEFFF2 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20250204_101248_626930_28C715D4 
+X-CRM114-Status: GOOD (  38.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +118,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Florent,
 
---EpiTytTZELGaMO09
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On 03/02/2025 17:04, Krzysztof Kozlowski wrote:
-> >> +
-> >> +		rng@1faa1000 {
-> >> +			compatible =3D "airoha,en7581-trng";
-> >> +			reg =3D <0x0 0x1faa1000 0x0 0xc04>;
-> >> +			interrupts =3D <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-> >> +		};
-> >> +
-> >> +		system-controller@1fbf0200 {
-> >> +			compatible =3D "syscon", "simple-mfd";
-> >=20
-> > These are never allowed alone. I am pretty sure I added proper checks
-> > which should point it out, so I think you did not really test your DTS.
-> >=20
-> > It does not look like you tested the DTS against bindings. Please run
-> > `make dtbs_check W=3D1` (see
-> > Documentation/devicetree/bindings/writing-schema.rst or
-> > https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-s=
-ources-with-the-devicetree-schema/
-> > for instructions).
-> > Maybe you need to update your dtschema and yamllint. Don't rely on
-> > distro packages for dtschema and be sure you are using the latest
-> > released dtschema.
-> >=20
+Le lundi 03 f=C3=A9vrier 2025 =C3=A0 13:36 +0000, Florent Tomasin a =C3=A9c=
+rit=C2=A0:
 >=20
-> Now I see Rob's report:
-> arch/arm64/boot/dts/airoha/en7581-evb.dtb: system-controller@1fbf0200:
-> compatible: ['syscon', 'simple-mfd'] is too short
-> which confirms untested code. Schema is there for a reason. :(
+> On 30/01/2025 13:28, Maxime Ripard wrote:
+> > Hi,
+> >=20
+> > On Thu, Jan 30, 2025 at 01:08:57PM +0000, Florent Tomasin wrote:
+> > > Introduce a CMA Heap dt-binding allowing custom
+> > > CMA heap registrations.
+> > >=20
+> > > * Note to the reviewers:
+> > > The patch was used for the development of the protected mode
 
-actually I have tested them with the following command (but without W=3D1).
+Just to avoid divergence in nomenclature, and because this is not a new sub=
+ject,
+perhaps you should also adhere to the name "restricted". Both Linaro and
+Mediatek have moved from "secure" to that name in their proposal. As you ar=
+e the
+third proposing this (at least for the proposal that are CCed on linux-medi=
+a), I
+would have expected in your cover letter a summary of how the other require=
+ment
+have been blended in your proposal.
 
-make CHECK_DTBS=3Dy DT_SCHEMA_FILES=3Dairoha airoha/en7581-evb.dtb
+regards,
+Nicolas
 
-- dtschema 2024.11
-- yamllint 1.35.1
-
-With W=3D1 I can see more issues, I will fix issues in v2.
-
-Regards,
-Lorenzo
-
+> > > feature in Panthor CSF kernel driver and is not initially thought
+> > > to land in the Linux kernel. It is mostly relevant if someone
+> > > wants to reproduce the environment of testing. Please, raise
+> > > interest if you think the patch has value in the Linux kernel.
+> > >=20
+> > > Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
+> > > ---
+> > >  .../devicetree/bindings/dma/linux,cma.yml     | 43 +++++++++++++++++=
+++
+> > >  1 file changed, 43 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/dma/linux,cma.y=
+ml
+> > >=20
+> > > diff --git a/Documentation/devicetree/bindings/dma/linux,cma.yml b/Do=
+cumentation/devicetree/bindings/dma/linux,cma.yml
+> > > new file mode 100644
+> > > index 000000000000..c532e016bbe5
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/dma/linux,cma.yml
+> > > @@ -0,0 +1,43 @@
+> > > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/dma/linux-cma.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Custom Linux CMA heap
+> > > +
+> > > +description:
+> > > +  The custom Linux CMA heap device tree node allows registering
+> > > +  of multiple CMA heaps.
+> > > +
+> > > +  The CMA heap name will match the node name of the "memory-region".
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    enum:
+> > > +      - linux,cma
+> > > +
+> > > +  memory-region:
+> > > +    maxItems: 1
+> > > +    description: |
+> > > +      Phandle to the reserved memory node associated with the CMA He=
+ap.
+> > > +      The reserved memory node must follow this binding convention:
+> > > +       - Documentation/devicetree/bindings/reserved-memory/reserved-=
+memory.txt
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    reserved-memory {
+> > > +      #address-cells =3D <2>;
+> > > +      #size-cells =3D <2>;
+> > > +
+> > > +      custom_cma_heap: custom-cma-heap {
+> > > +        compatible =3D "shared-dma-pool";
+> > > +        reg =3D <0x0 0x90600000 0x0 0x1000000>;
+> > > +        reusable;
+> > > +      };
+> > > +    };
+> > > +
+> > > +    device_cma_heap: device-cma-heap {
+> > > +      compatible =3D "linux,cma";
+> > > +      memory-region =3D <&custom_cma_heap>;
+> > > +    };
+> >=20
+> > Isn't it redundant with the linux,cma-default shared-dma-pool property
+> > already?
+> >=20
+> > Maxime
 >=20
-> Best regards,
-> Krzysztof
+> Hi Maxime,
+>=20
+> Please correct me if my understanding is wrong,
+>=20
+> The existing properties: linux,cma-default and shared-dma-pool, do not
+> allow the creations of multiple standalone CMA heaps, those will create
+> a single CMA heap: `dma_contiguous_default_area`? Other CMA heaps will
+> be bound to a driver.
+>=20
+> I introduced the "linux,cma" to allow creating multiple standalone CMA
+> heaps, with the intention of validating the protected mode support on
+> Mali CSG GPUs. It was included in the RFC in there are interests in
+> this approach.
+>=20
+> Since the Panthor CSF kernel driver does not own or manage a heap,
+> I needed a way to create a standalone heap. The idea here is for the
+> kernel driver to be an importer. I relied on a patch series to retrieve
+> the heap and allocate a DMA buffer from it:
+> - dma_heap_find()
+> - dma_heap_buffer_alloc()
+> - dma_heap_put()
+>=20
+> Ref:
+> https://lore.kernel.org/lkml/20230911023038.30649-1-yong.wu@mediatek.com/=
+#t
+>=20
+>=20
+> Since the protected/secure memory management is integration specific,
+> I needed a generic way for Panthor to allocate from such heap.
+>=20
+> In some scenarios it might be a carved-out memory, in others a FW will
+> reside in the system (TEE) and require a secure heap driver to allocate
+> memory (e.g: a similar approach is followd by MTK). Such driver would
+> implement the allocation and free logic.
+>=20
+> Florent
+>=20
+>=20
+>=20
 
---EpiTytTZELGaMO09
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6I9JgAKCRA6cBh0uS2t
-rIMyAP4uP2ubCPuXLcNH5JUy4qPhLnxjvsCqrv6WyRfdB6RAygEA2OwuGuOQUP10
-1Az6VVla3vIb+KN0Ff+m+hHoFjADGgY=
-=uAFD
------END PGP SIGNATURE-----
-
---EpiTytTZELGaMO09--
 
