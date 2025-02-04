@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B752C0219A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 15:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BDAC02193
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 16:17:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9P7/wKz7LVAPwtYVbSKf70e789kM9BvyeB6cnxCHqgw=; b=BsSbmVbFB8h+2bIehYQCKiu040
-	PEby0sn2VANMHK++qVMyzbF2bH69GIa9mjfVzM4iamJAacJdVwIQ1mh6ozGZZSjiiDbpj+uhGt0/b
-	O2F38pd4QqgVhQkPbECayPfp05A1Rx0ZkhxxMnHU1eGP4ICpk+1J2XabIRw1VTwah2j+36Zxz+UJg
-	u8BFFbBGhbQp2Nuz6kqTuzsNH+XGXOs3cFeaAF4AjDH2am3RRzvyhK2zTLI2qyiRiTGARykoBr2tl
-	ABlBEGLcVxdhw+4rJRlbt/WRxZDFH2yCeuab7EWJLsEakjXlGCFSJa3Cx7pOHKRttQKMPqCxGNFFp
-	V3DN1x1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1om8YbeuY3FiZXBm5pqswmLpWJAdjtFeqEad2mTTikQ=; b=rbxABVoOJJOoyYw9FuWyhHtG+f
+	jOwzYbWD2KXH8kS80TlC0ENmz+CbRjdjVG+zPNC3BzPvgkfxjxDVOyTnm4ANTeh66WyivywL+zUBL
+	ILOI7LJ/aVIogzkLPqyByBHImeyOFDLg6mZ7/Rny0SczXJGOa/KxpUfe6WLCP38mXqoM0T8FPlGVl
+	qCK59cCAdYK7DYZhnO+TZwWEe0L/A43ha9dcGUpOCdy/TsRuOLOa/96plYaE+6vge0pdkdUeReOgA
+	ExR+XjPaxyqyGa6jvV72PSR+l1vAy+Dz6z6u6b8Tw/SGq3Dx63nuiNLUYWKSYS+SfDbkGNNGSy2Xj
+	lZBbGNqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfLCF-00000000sWJ-280w;
-	Tue, 04 Feb 2025 15:50:43 +0000
-Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
+	id 1tfLcU-00000000wIv-25jR;
+	Tue, 04 Feb 2025 16:17:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfL0b-00000000qmm-00Lk;
-	Tue, 04 Feb 2025 15:38:42 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1738683517;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=9P7/wKz7LVAPwtYVbSKf70e789kM9BvyeB6cnxCHqgw=;
-	b=uaTfxH0EoY8gZDNZu0+ATwtuZXuYWyK92npFC74jGNgWcNSAnqlP/1/C0vZSmcnO3qDWzS
-	JjlesU2Dhf4Eir7+qSHye9860H3WIHA7RuRpvaAem4m/O3WdA3O7C9JziOGBXCDCWEZkdg
-	/skAsoEpKBBLXHLjkG9jCSCcsj6JT/o=
-From: Thorsten Blum <thorsten.blum@linux.dev>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Thorsten Blum <thorsten.blum@linux.dev>,
-	sound-open-firmware@alsa-project.org,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1tfLaN-00000000vyD-24lg;
+	Tue, 04 Feb 2025 16:15:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 622955C5596;
+	Tue,  4 Feb 2025 16:14:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BB94C4CEDF;
+	Tue,  4 Feb 2025 16:15:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738685737;
+	bh=QgWlamS94vS3vGAG/pHtXY7wtWDDLe5dqXG87XVePgA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nhCQur0FfjxOhKL9RDst4vNpY75oEzasHNvW1DxWJb9hxojf+QTH08/wIYKNq8N5X
+	 XrIU9Sep2NhtFQy68eXDok0cbGTwbQW6nvPwrY/v9cJYT6Ej+wkM0s0R4UtNraO7v+
+	 +0WS+e/M73lWqGLPaJ/6/WGqt3X9taDK8svlXwmcDOcA1M2/E+oIjA0ry77UzDDcHl
+	 qXcLAdS/1QN8mjLkgNbZQrIVFNJhr6GEO/fvwgJzco7CSHE2AwBAP2QKRT1Vo1d9ha
+	 iBWJQcu2JYeXnhZc81WVqER23Abjam9VoJCIXjMMb18tmuPqRMyPzpX1SYAIMG6nhd
+	 EmCCnKliXUC0w==
+Date: Tue, 4 Feb 2025 17:15:35 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: SOF: mediatek: Use str_on_off() helper function
-Date: Tue,  4 Feb 2025 16:38:04 +0100
-Message-ID: <20250204153806.3587-2-thorsten.blum@linux.dev>
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: Introduce more nodes to EN7581 SoC
+ evaluation board
+Message-ID: <Z6I9JzAVv3VjKOiE@lore-desk>
+References: <20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org>
+ <4656ae57-c6a1-48ac-a60f-72d7b988c307@kernel.org>
+ <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EpiTytTZELGaMO09"
+Content-Disposition: inline
+In-Reply-To: <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_073841_175301_0FF54A98 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250204_081539_575788_DCBEFFF2 
+X-CRM114-Status: GOOD (  18.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +79,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove hard-coded strings by using the str_on_off() helper function.
 
-Signed-off-by: Thorsten Blum <thorsten.blum@linux.dev>
----
- sound/soc/sof/mediatek/mt8195/mt8195-clk.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+--EpiTytTZELGaMO09
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-index 7cffcad00f9b..2c2c4cd323fc 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-@@ -8,6 +8,7 @@
- 
- #include <linux/clk.h>
- #include <linux/io.h>
-+#include <linux/string_choices.h>
- #include "mt8195.h"
- #include "mt8195-clk.h"
- #include "../adsp_helper.h"
-@@ -114,7 +115,7 @@ static int adsp_default_clk_init(struct snd_sof_dev *sdev, bool enable)
- 	struct adsp_priv *priv = sdev->pdata->hw_pdata;
- 	int ret;
- 
--	dev_dbg(dev, "%s: %s\n", __func__, enable ? "on" : "off");
-+	dev_dbg(dev, "%s: %s\n", __func__, str_on_off(enable));
- 
- 	if (enable) {
- 		ret = clk_set_parent(priv->clk[CLK_TOP_ADSP],
--- 
-2.48.1
+> On 03/02/2025 17:04, Krzysztof Kozlowski wrote:
+> >> +
+> >> +		rng@1faa1000 {
+> >> +			compatible =3D "airoha,en7581-trng";
+> >> +			reg =3D <0x0 0x1faa1000 0x0 0xc04>;
+> >> +			interrupts =3D <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+> >> +		};
+> >> +
+> >> +		system-controller@1fbf0200 {
+> >> +			compatible =3D "syscon", "simple-mfd";
+> >=20
+> > These are never allowed alone. I am pretty sure I added proper checks
+> > which should point it out, so I think you did not really test your DTS.
+> >=20
+> > It does not look like you tested the DTS against bindings. Please run
+> > `make dtbs_check W=3D1` (see
+> > Documentation/devicetree/bindings/writing-schema.rst or
+> > https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-s=
+ources-with-the-devicetree-schema/
+> > for instructions).
+> > Maybe you need to update your dtschema and yamllint. Don't rely on
+> > distro packages for dtschema and be sure you are using the latest
+> > released dtschema.
+> >=20
+>=20
+> Now I see Rob's report:
+> arch/arm64/boot/dts/airoha/en7581-evb.dtb: system-controller@1fbf0200:
+> compatible: ['syscon', 'simple-mfd'] is too short
+> which confirms untested code. Schema is there for a reason. :(
 
+actually I have tested them with the following command (but without W=3D1).
+
+make CHECK_DTBS=3Dy DT_SCHEMA_FILES=3Dairoha airoha/en7581-evb.dtb
+
+- dtschema 2024.11
+- yamllint 1.35.1
+
+With W=3D1 I can see more issues, I will fix issues in v2.
+
+Regards,
+Lorenzo
+
+>=20
+> Best regards,
+> Krzysztof
+
+--EpiTytTZELGaMO09
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6I9JgAKCRA6cBh0uS2t
+rIMyAP4uP2ubCPuXLcNH5JUy4qPhLnxjvsCqrv6WyRfdB6RAygEA2OwuGuOQUP10
+1Az6VVla3vIb+KN0Ff+m+hHoFjADGgY=
+=uAFD
+-----END PGP SIGNATURE-----
+
+--EpiTytTZELGaMO09--
 
