@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81939C02194
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 12:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C68C02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 14:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5bSZVshzrjkinWqjSAFuVs+darkV+EJzG4bFX1AZBm8=; b=Ufn5p7bjhMIZIhU8iv6lGeO2ty
-	BT/8pMUSDLQVO/ujfadhRnUE3c1imsFyPsbyfvsKRXsWUmRYk6wA9ANpLgsY+BJzU5vqvGDlRzEw1
-	tIDv8AiAzxlo+mwYutZ/hCnRjkpUzft8G4VUIEtllsBQI5E7SbwieJx+mI/AXr9TqyRTcONypx7q2
-	N5/9kKUFqauWVrn73pK/nBSpJYEtF0vMgSu59/cY+torlsyh2WNCXeOXrLIolXX/MUDntq5pZTId5
-	xfDd8OqokeFqyxEsXs+7qV/7nVJh7/hbJMpdtgMnlVSjPt09boHSDhcAqTrndOOk1b0An5wQWZRe2
-	cI/mmWwg==;
+	bh=r4GsADFOHfjcUX4KtlxuL+Z7Dquvlgf9Jzn55Ai7h/Y=; b=0j+wH38+Gl+QOSMpiygR6Vq9GP
+	1gsNjAtVDqo+zMXiLwilZXtgL6eMbC2i33OJaLIcFtNLHkujC38FsQmOPjRwBaLg9msKvhbAX+lco
+	8tB/MMfUbunBHOvdbo8h7IjsRTBf+tiUTAdA9RyjNT/5QDPfHwCn9qf42lcqE7CUWI9u8JS5/pCIE
+	1e4wJSQ/OKsSpdw7bmEaNbI7pqOEI2rJLMAV2m9iGnXGHOU5j5PwufrAOi9Xd0zvC9SBgDH7FY7nX
+	0Ikkj8zRwFl3NlKphCKIsJkyRBWFB7J02GxeujihWaCvdO9INNc5uD/MnqYa2pJaNvlllQ0R911XG
+	AkxZhNyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfetW-00000003Htb-2jRN;
-	Wed, 05 Feb 2025 12:52:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tfgJB-00000003Wew-0CF9;
+	Wed, 05 Feb 2025 14:23:17 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfelg-00000003G8z-2YH0;
-	Wed, 05 Feb 2025 12:44:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A7CC8A41085;
-	Wed,  5 Feb 2025 12:42:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93B4BC4CEE2;
-	Wed,  5 Feb 2025 12:44:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738759475;
-	bh=BKicQvUmuXjDNbRZxUNlJ8r+EcHKaqqCQZUX4SaRzuA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=IjYjSZvwELSQpD5fB7WkqjYVoxJq4rM1/k43Ug4L7RVYc8tveaU3L2TBDc/fdHgaI
-	 qnUoeGvd/JwyW+FcHFNFKluby6U/yZP2HSsp/sTT96hMRvdEVcnPdQBBGVAWpE7RWl
-	 VH3L02IuUR+P6PXu9O60xRnhSBwuurZ1MJKOEeXbHXk1vB0FQ23e498CuVggoISxWc
-	 jUhCuNFw4F1zwCEql9Up5sji8o8iG9WdiwnPItFGlMBr3si2cT+1614uklRtIzzfPL
-	 jhbLmnMUaiK5lMnKe8Z8wjnaPOjB9cXYXpsCDWrEcLBQQvDrNjyBGFsikae59SB1BS
-	 oSdWN6fJ8roBw==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- linux@treblig.org
-Cc: linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250201005021.447726-1-linux@treblig.org>
-References: <20250201005021.447726-1-linux@treblig.org>
-Subject: Re: [PATCH] ASoC: mediatek: Remove unused mtk_memif_set_rate
-Message-Id: <173875947335.32457.7286096499117133517.b4-ty@kernel.org>
-Date: Wed, 05 Feb 2025 12:44:33 +0000
+	id 1tfgHn-00000003WSX-0eTB;
+	Wed, 05 Feb 2025 14:21:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1738765308;
+	bh=fhMEwcALAhSfK+SWPU9qQDr85DpG/Eze5bn+xtW7Z4I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DrbhifpmzXk3n6sKkMH891McvA2rfGevLNNwxdqOuE5qZGNITVOXx6bZBzTJ/TEaX
+	 wAb7wOkk7PCzGg0+DiFM0FmZdTSIJUzsKoJPWYYnKyCqDRXlsaRUSxUjpXKaCN83Gs
+	 eqJqE4z2CRGnz57Z7NUeyjif7aW9XQlMM2xq51Obyg/fh0YYdAp1U6yK7glHGBQxVv
+	 qXp4jKAHq4T6GH2t0W1OHAGMDoxggPLXkz7UhggqGtHDTeCIJtQQ1XibX3ZwRITdqp
+	 aWcpQBY3KglIt2YK9PYTq4SZldTHOkjm9yDbBBsT9bmz6oSyVwHCAeExLuFzYCQQRs
+	 ZIybmSCm7sQ2w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3ACE517E1519;
+	Wed,  5 Feb 2025 15:21:48 +0100 (CET)
+Message-ID: <83a354d0-e220-449e-b03a-12012ab0d5b6@collabora.com>
+Date: Wed, 5 Feb 2025 15:21:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] dt-bindings: arm: mediatek: add mt8370-evk board
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com>
+ <20250115-dts_mt8370-genio-510-v2-1-fc9b01d08834@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250115-dts_mt8370-genio-510-v2-1-fc9b01d08834@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_044436_722837_E0455246 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20250205_062151_346436_9AB21178 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +80,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 01 Feb 2025 00:50:21 +0000, linux@treblig.org wrote:
-> mtk_memif_set_rate() has been unused since it was added in the 2019
-> commit 9cdf85a19b3a ("ASoC: mediatek: common: add some helpers to control
-> mtk_memif")
+Il 15/01/25 11:29, Louis-Alexis Eyraud ha scritto:
+> 1. Add compatible for MT8370.
+> 2. Add bindings for the MediaTek mt8370-evk board, also known
+> as the "Genio 510-EVK".
 > 
-> Remove it.
+> The MT8370, MT8390 and MT8188 belong to the same SoC family.
+> It is a less powerful variant of MT8390 SoC and their main
+> differences are:
+>   - Arm Cortex-A55 cores number (4 vs 6)
+>   - Arm Cortex-A78 core speed (2.0 GHz vs 2.2 Ghz)
+>   - Arm Mali-G57 GPU core number (2 vs 3)
 > 
-> (The _substream version is used, and is left in)
+> Like MT8390, MT8370 hardware register maps are identical to MT8188.
 > 
-> [...]
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Applied to
+Since you have to resend the series, please remember to add Conor's Ack
+that was released in v1; in v2, this commit didn't change at all.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Meanwhile... please also collect my
 
-Thanks!
-
-[1/1] ASoC: mediatek: Remove unused mtk_memif_set_rate
-      commit: c9e9aa80022c6db71bc097a621a6145f39aa0ade
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
