@@ -4,69 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507F5C02192
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 08:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFC7C02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 09:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4pAWlKYQAsQwsC7GkBiYLNZ5M/vv7xcDnFC5tspjJOY=; b=bVeCd3y9ms+uEF981dh2nl6W/e
-	8QF215AVuG9ef7hDRoyJ+Yitgdwe9BddHHAs5d++cwyuZyRZfS6orCR11vXdgMOA0keG1fmVbnoMz
-	TmX3TEzVfW1DBUZGm6WcP6LNMcunFZka21zhcsasxUEPRzftnPpcUXNIpjrFwFi1wHUXhhfOdTxN9
-	sQjkaluwFKSE0BYuzhE1tMAJOyKxoPHQDRU30/kJbkLrPnXtjkTq5hra+JkTIT8EbqRCqaDOtAsv/
-	al2aaaPQQCrVbyTcntkK+SDcISB4FCMITAOGsDBbDz2NpJaZ/RvMqf4EfadCPwNlofXtX6svChqTW
-	18CkIMAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wlvvt5ovoMWCErTTdfe2Vt8LrPlHxGdstTFLeXQ9fbI=; b=sWB+KlFPaLF1fzK4JvVl93OmTN
+	Muw+KSy3baxruloSVkE2G7x2PVBtKxKNhWcxiW4Ejb/sWE0VVPkWEkC24OPnOjVIyR7ZnmWINjFk+
+	Ap+mOHGA5grPR4dDuD38SrBQnkI35OzX+aet1UAMtGUW31Vo78M/yPFAXP4ubR7NF4tIOImbaUHYV
+	MTZJKJTWp4EmXNcEGFHcmA82bNu2wqgUj6hO9wquPGm6Hi8L+MRQKZ1hTe1/TiTxsbUnjx7fSjw2k
+	1FRRYITHkH3rJUjQ+58iMqejWrMsaL3UCc0i75C67dmIeU6VkKpVbe3MmF9sYMkcKThr8eKhoBsoP
+	yZ9gYEwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfahB-00000002Zco-46kj;
-	Wed, 05 Feb 2025 08:23:41 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tfbVK-00000002fco-2IWy;
+	Wed, 05 Feb 2025 09:15:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfafo-00000002ZZy-4ANQ;
-	Wed, 05 Feb 2025 08:22:18 +0000
+	id 1tfbTx-00000002fSC-0HiF;
+	Wed, 05 Feb 2025 09:14:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 05709A4324F;
-	Wed,  5 Feb 2025 08:20:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D4BC4CED1;
-	Wed,  5 Feb 2025 08:22:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 94F6B5C5E1D;
+	Wed,  5 Feb 2025 09:13:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D14B7C4CED1;
+	Wed,  5 Feb 2025 09:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738743735;
-	bh=plWBqjVepzAuiutGiFeK2rxapKZ0OgBeLuxkv7ZfeeU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SDvjgAmScUamgc00gwGEzO4oY3ekKdYGSYKdIR2SrFxIXDB632igGoIiMaTVQu/sj
-	 emUbDY8yf1ri+4b/LnOKkxWyYzfl4SF6PB5YLhI7N+q4uTjTJgsbFj+JxmsacUJe0J
-	 V5bJ27wRFwqS/P+L8rym6mmVIkaQEm/WKpNYhvuMUE2Li/xviItzCo4UMWfhjG+gRb
-	 Mo7u0xA6SMty7kUwZtn6wQn04R5j5tuqg8SFQ10hcAX7UZJLN1kJTF2ge53U1KvQ9M
-	 pO5Q0GPmz3VG05yiApvEY5/zYn9dbbBIW60JAHFE7MMs7QEdP9N/MLyND5no15GUSw
-	 5cOKBYZS8LxIw==
-Date: Wed, 5 Feb 2025 09:22:12 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: Introduce more nodes to EN7581 SoC
- evaluation board
-Message-ID: <Z6MftNE6JrbISVZH@lore-desk>
-References: <20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org>
- <4656ae57-c6a1-48ac-a60f-72d7b988c307@kernel.org>
- <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
- <Z6I9JzAVv3VjKOiE@lore-desk>
- <8b79700d-f628-4e65-b9a5-63bbc3958cc1@kernel.org>
+	s=k20201202; t=1738746844;
+	bh=4C2JCBvwyEf/X2nHPrRMmWtMS/VF3OfV5sTLegNX37Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qgTAJYj7he3xj5vx6537c+N0Gqm8DOtAgpmH3h1hKA+KhJr6iB1oBfJrM/4FpnYK9
+	 zY5e/VJxhZPBQMwAQQgUeZ/cNHG0tTwtgErxvItRjxJOiVejHN0FirRST+0kSMMJRr
+	 ut6HN5jaAgWOFwxv64Vv/+xG8oEXJQxPIe/ymoaNkxM8LPiXkwuAK/zahlRbALG2V6
+	 WnhtEt6n3F7hqezB6lJRWKI2GEgcZNPpq9Xqoq7IIxVoaMLwm7QWSoFkspkjvCHz2U
+	 W+GDekkfQDVL82VGA+02ti+atf6xdm2gc65+nD7vW0MnGFPN8DVul8qOMJWlmT5kNm
+	 ndaQtCogl6k4A==
+Message-ID: <c0aad911-ecc4-4b04-a453-6da226f76ed2@kernel.org>
+Date: Wed, 5 Feb 2025 10:13:52 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LiQRrPQ3+vR+Xwkq"
-Content-Disposition: inline
-In-Reply-To: <8b79700d-f628-4e65-b9a5-63bbc3958cc1@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 3/5] dt-bindings: gpu: Add protected heap name to Mali
+ Valhall CSF binding
+To: Florent Tomasin <florent.tomasin@arm.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: dmaengine@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ nd@arm.com, Akash Goel <akash.goel@arm.com>
+References: <cover.1738228114.git.florent.tomasin@arm.com>
+ <36b57dcf20860398ba83985e1c5b6f6958d08ba7.1738228114.git.florent.tomasin@arm.com>
+ <7234f25c-a2aa-4834-931b-aeeb7a49dfa7@kernel.org>
+ <4b9deab1-e330-4c93-8260-75276c2bc9ff@arm.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <4b9deab1-e330-4c93-8260-75276c2bc9ff@arm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_002217_172743_D0F5DE6D 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20250205_011405_197300_CB9195B7 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,77 +137,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 03/02/2025 16:31, Florent Tomasin wrote:
+> Hi Krzysztof
+> 
+> On 30/01/2025 13:25, Krzysztof Kozlowski wrote:
+>> On 30/01/2025 14:08, Florent Tomasin wrote:
+>>> Allow mali-valhall-csf driver to retrieve a protected
+>>> heap at probe time by passing the name of the heap
+>>> as attribute to the device tree GPU node.
+>>
+>> Please wrap commit message according to Linux coding style / submission
+>> process (neither too early nor over the limit):
+>> https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
+> Apologies, I think I made quite few other mistakes in the style of the
+> patches I sent. I will work on improving this aspect, appreciated
+> 
+>> Why this cannot be passed by phandle, just like all reserved regions?
+>>
+>> From where do you take these protected heaps? Firmware? This would
+>> explain why no relation is here (no probe ordering, no device links,
+>> nothing connecting separate devices).
+> 
+> The protected heap is generaly obtained from a firmware (TEE) and could
+> sometimes be a carved-out memory with restricted access.
 
---LiQRrPQ3+vR+Xwkq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Which is a reserved memory, isn't it?
 
-> On 04/02/2025 17:15, Lorenzo Bianconi wrote:
-> >> On 03/02/2025 17:04, Krzysztof Kozlowski wrote:
-> >>>> +
-> >>>> +		rng@1faa1000 {
-> >>>> +			compatible =3D "airoha,en7581-trng";
-> >>>> +			reg =3D <0x0 0x1faa1000 0x0 0xc04>;
-> >>>> +			interrupts =3D <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-> >>>> +		};
-> >>>> +
-> >>>> +		system-controller@1fbf0200 {
-> >>>> +			compatible =3D "syscon", "simple-mfd";
-> >>>
-> >>> These are never allowed alone. I am pretty sure I added proper checks
-> >>> which should point it out, so I think you did not really test your DT=
-S.
-> >>>
-> >>> It does not look like you tested the DTS against bindings. Please run
-> >>> `make dtbs_check W=3D1` (see
-> >>> Documentation/devicetree/bindings/writing-schema.rst or
-> >>> https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree=
--sources-with-the-devicetree-schema/
-> >>> for instructions).
-> >>> Maybe you need to update your dtschema and yamllint. Don't rely on
-> >>> distro packages for dtschema and be sure you are using the latest
-> >>> released dtschema.
-> >>>
-> >>
-> >> Now I see Rob's report:
-> >> arch/arm64/boot/dts/airoha/en7581-evb.dtb: system-controller@1fbf0200:
-> >> compatible: ['syscon', 'simple-mfd'] is too short
-> >> which confirms untested code. Schema is there for a reason. :(
-> >=20
-> > actually I have tested them with the following command (but without W=
-=3D1).
-> >=20
-> > make CHECK_DTBS=3Dy DT_SCHEMA_FILES=3Dairoha airoha/en7581-evb.dtb
-> >=20
-> > - dtschema 2024.11
-> > - yamllint 1.35.1
-> >=20
-> > With W=3D1 I can see more issues, I will fix issues in v2.
->=20
-> Rob's warning does not come from W=3D1. Your test cmd was incorrect: drop
-> DT_SCHEMA_FILES. You must test your code against ENTIRE bindings, not
-> some subset.
+> 
+> The Panthor CSF kernel driver does not own or manage the protected heap
+> and is instead a consumer of it (assuming the heap is made available by
+> the system integrator).
+> 
+> I initially used a phandle, but then I realised it would introduce a new
+> API to share the heap across kernel driver. In addition I found this
+> patch series:
+> -
+> https://lore.kernel.org/lkml/20230911023038.30649-1-yong.wu@mediatek.com/#t
+> 
+> which introduces a DMA Heap API to the rest of the kernel to find a
+> heap by name:
+> - dma_heap_find()
+> 
+> I then decided to follow that approach to help isolate the heap
+> management from the GPU driver code. In the Panthor driver, if the
+> heap is not found at probe time, the driver will defer the probe until
+> the exporter made it available.
 
-ack, thx for pointing this out.
 
-Regards,
-Lorenzo
+I don't talk here really about the driver but even above mediatek
+patchset uses reserved memory bindings.
 
->=20
-> Best regards,
-> Krzysztof
+You explained some things about driver yet you did not answer the
+question. This looks like reserved memory. If it does not, bring
+arguments why this binding cannot be a reserved memory, why hardware is
+not a carve out memory.
 
---LiQRrPQ3+vR+Xwkq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6MftAAKCRA6cBh0uS2t
-rIdRAP0T8iB3DoaOfZdbT+HBVFT7fwKaImgcPD/jY4Yf/Ldr8wEAoH7z/VszoODJ
-1lATWykY0c7IScLhRndOZArIN8AeuAw=
-=4f92
------END PGP SIGNATURE-----
-
---LiQRrPQ3+vR+Xwkq--
+Best regards,
+Krzysztof
 
