@@ -4,112 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F9B5C02194
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2025 21:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B2BC02193
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 00:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=; b=HrgHAZ1wkxIuk+6zp2MlzAm4+v
-	XBYJhx0mC5d4L3IacZX+uuysWZWMtIGMTI5+VeAlJx7/lWHFslhDVG5th+/NWynUdOoq5TD8wilJw
-	3tvs3MMra/TKidCBx4fm3du7XH3i+Tq9Jy/8kQxjoZ3oeu6aaZxUlolHMLQpoNcuhMqOd0Tk9LOFs
-	y/SZAXhAXs2vQiWBCHauL/AanCAY/4UbnaJy2urBRog5CSwxbO+1z6+Nzl0OzUl1pm3qzQWfFxqPM
-	S4cmaPpzwy1Bt5O9E9mHKZ+cFmEbYvO64Aqx8rn/fARN9kMPr6ZlbG/A0S1zlh2gjVVJmsdPgj/kS
-	9dFVnKHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iSkwaCdJ3qkpnEhd4+OKrM05apqAmrP75BoSYKqIRzk=; b=NEvoSicz1tzI876pm5wuL2lkeq
+	WZnjMk8g+ZUR2GQAu2cOLzXYSHQLk6gTwJ0vO5qaeqVyYPhRpxjcN9hDQyHIi624C1P3au4G4nO7D
+	eYBIsBVvJtdI2C23ZZlX4PGJB402ONEYdADVoXIZAQnhFfi5qrBwAhxSIDuY+fRLpc2ocwHpdaSK4
+	vZuUN/E7P2FTwlZVfyjQOLB895SvnpChXbbkKLsdOqayBTjD/OZkkxmdbj32O+T5ChQOF6s8dRvJQ
+	ShOt8apNOpJIXel3O7bkIWv8p619c73cU9GKakO12kyM2sE3oCJlouwQD5TqQGGwYZCnI7LLrjArD
+	Nsm3Vqgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfQHG-00000001ZUg-0ouN;
-	Tue, 04 Feb 2025 21:16:14 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1tfSzO-00000001tOA-11CK;
+	Wed, 05 Feb 2025 00:09:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfOvz-00000001QPi-1UlY;
-	Tue, 04 Feb 2025 19:50:12 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-ab6fb2940d4so22300966b.1;
-        Tue, 04 Feb 2025 11:50:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1738698610; x=1739303410; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=;
-        b=N+yCzvyQxhKppx0qG1NmPVXKvCu08U+wLA5Hkf34sJt4cT/tm5mjUUxgzSdDMBmE/I
-         s1sKESk7hlBh/Aw48WmF0ddqYp9k5Db6GSOA8esJSZ0sTXxxUXSUrDaU73f8k7OpkFS0
-         om9EVnFuZDZUI0NG/A+S14k5U1glLHZ2txUn/jWU7s6GQGJpKzMOZ+WTFMGfXC3TcHIJ
-         ItYXlyTCC8F97ZrPWuXomYSUjNEwq8kLsLltJSEWc6wasx9klu++sAs4jzLLkeA7uPI3
-         NLcyg3SvRzlHpYk47Z9JzFdPW2hkwt+99ACuYEziWl5RnKyqaL/kYuYlPK/8J9cvycE/
-         U+Ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738698610; x=1739303410;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=;
-        b=L0ZdGtweB9UB9zqgiaJK99Qzwuo9SHtdBgTU3UhICqnRLW+mX47mnL2fxdpV1X6FvB
-         LMUu5uQ0srfSeDh4WD2AuIpwMH9Vti4HrlHRSqcse2u9HAAfhiEZVih9vy7qWm+GGRYJ
-         zJFgNaHPkLnMjPC3EeQbavoVrcxiV95h548MfMIwVv9VmXAwlaapX5HAqQ+vb5GgDG2L
-         GyS5BoEqPLW0PpPWrXFQY5ZUoTBPZOYDHBe3KBugYjsI/KurWYGri0JIzno2PVixwo39
-         s30M3EIyT+4QbHAtU6SoNE6nOgrCCBpcMwztryYuu9CKk6wpz0yQ7izUc+LTZEzX6R5f
-         Ekfw==
-X-Forwarded-Encrypted: i=1; AJvYcCU3bzYjQrhkXZkCFojwFN+XrdO5OodZpl4SETRVLRkR6Bsp19AYYeEel6tgSYCxRO3syi3/Kx0euXS/ktBXsbr/@lists.infradead.org, AJvYcCUxMpbAQOcXXT1+TI45PIXwof8jYuug4ENx4+6UqxoPcORXMOwO7bdswrmGOmk2WPll+fM02G9UWHEVLUuP3GQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwC00qRAOnRY0o/6FeUs8SsNpnG9X/kUxh90udroKfHj3wV4DjV
-	0BTwrrdQHDhj3WCvehEE7H7GaoiVKYWIck4ys/rK2d5/aYdFwXzE
-X-Gm-Gg: ASbGncs0djLw/xPj87mRwU4kK5CFL/Tnf86b2zE7QdYfs+fKvnat+S6KDezQKS5al5L
-	rVLbfPkec5+2jAXiTKqfLtndtqL9tZhBaZWkimI/BWbySUY8ncihZUDchIsYVOMDvjsS3txL/nv
-	F9GyrFpKcMwUOS0Y2dFLUykLfqfDL7haNhkP71BVts4CLkbKjXAiVCxXjoQrth8QNGsZpbrMHTu
-	+J3W9valdBWO1NKLScd2dVwSKly8OWcbdKwDkRHKn9OVJQrHU/4J/jzByUaqstpxecC18hhhE4e
-	VJIXIwUKJMnxTDhP8/pDijSyltVFmyBFRT6i9/z5eYG0BHDfCS3R+qWi9oHgj85PY2/ss8VnEQ1
-	KJmRn8LoTHavA3iWVKaX5OrV1M2hp7VDw
-X-Google-Smtp-Source: AGHT+IEaPWaX8cpFgoktU0XxOZBCl8fVUKiJfRfuUx0hZEzWqrcdoDVy6k8mIpAoqS72uk21QIlM+g==
-X-Received: by 2002:a17:907:6d23:b0:ab6:8bb8:af2e with SMTP id a640c23a62f3a-ab75d481861mr16287166b.26.1738698609919;
-        Tue, 04 Feb 2025 11:50:09 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6e4a5635bsm964684466b.164.2025.02.04.11.50.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Feb 2025 11:50:09 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Joe Damato <jdamato@fastly.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v5 net-next 14/14] netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
-Date: Tue,  4 Feb 2025 20:49:21 +0100
-Message-ID: <20250204194921.46692-15-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250204194921.46692-1-ericwouds@gmail.com>
-References: <20250204194921.46692-1-ericwouds@gmail.com>
+	id 1tfSy2-00000001tIe-1pXx;
+	Wed, 05 Feb 2025 00:08:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C65255C5EE2;
+	Wed,  5 Feb 2025 00:07:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C02E4C4CEE4;
+	Wed,  5 Feb 2025 00:08:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738714113;
+	bh=+cEOMy8ydUtssgVKpjALmKCooZqZQVWRptFfWsZE5Cs=;
+	h=From:Date:Subject:To:Cc:From;
+	b=u5DerNbvJmIvph3GFJrq8qTVKNZcshmpkkS1p4LCVDMQvMblFIJyseVAW4OiWTpnM
+	 sFWf/JIoDKA/mVla0JXjQbO74gxJ4Tftl2dYqHnBmRteabC2T4xQ+f5KN5mf0+ZVDe
+	 3/d56xRYtyvvSU/ZFhNXHZhZ/QFlDaq39oTZrPorjQ2dVnO4tIwBPihVvJ6ysS+WOO
+	 NrOKZKkAM8EjnyDUJcDOy9BHwjG0dAmfkjI9hoRr9hwFFAJfrwRaBsPw5TzaKg2SKo
+	 asr+smq5AskK5H1xOkmzWsqEc/GSU+4s0Y7zHnSMWvkTqJYZkDWjiTDquAU/Y+kwAh
+	 iQggh3+EBViIg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 05 Feb 2025 01:08:24 +0100
+Subject: [PATCH v2] arm64: dts: airoha: en7581: Add more nodes to EN7581
+ SoC evaluation board
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250205-en7581-dts-spi-pinctrl-v2-1-ae61df01802a@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAPeromcC/4WNQQ6CMBBFr0Jm7Zi2oYiuvIdhUcsAE0lppoRoS
+ O9u5QIu30v++zskEqYEt2oHoY0TL6GAOVXgJxdGQu4Lg1HGKqM0UrjYVmO/JkyRMXLwq8xY60Y
+ 9W2O9u/ZQxlFo4PcRfnSFJ07rIp/jZ9M/+ze5adTonKtLcvC1a+4vkkDzeZERupzzF+3sJvq9A
+ AAA
+X-Change-ID: 20250201-en7581-dts-spi-pinctrl-4160b825ca9d
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_115011_420324_6B410A6C 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20250204_160834_587054_8CAE83E4 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,197 +79,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Edit nft_flow_offload_eval() to make it possible to handle a flowtable of
-the nft bridge family.
+Introduce the following nodes to EN7581 SoC and EN7581 evaluation board:
+- clock controller
+- rng controller
+- pinctrl
+- i2c controllers
+- spi nand controller
 
-Use nft_flow_offload_bridge_init() to fill the flow tuples. It uses
-nft_dev_fill_bridge_path() in each direction.
-
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- net/netfilter/nft_flow_offload.c | 142 +++++++++++++++++++++++++++++--
- 1 file changed, 137 insertions(+), 5 deletions(-)
+Changes in v2:
+- Fix dtschema warnings
+- Fix i2c nodes generic name
+- Fix commit log
+- Link to v1: https://lore.kernel.org/r/20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org
+---
+ arch/arm64/boot/dts/airoha/en7581-evb.dts |  8 +++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 90 +++++++++++++++++++++++++++++++
+ 2 files changed, 98 insertions(+)
 
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index c0c310c569cd..03a0b5f7e8d2 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -193,6 +193,128 @@ static bool nft_flowtable_find_dev(const struct net_device *dev,
- 	return found;
- }
+diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+index cf58e43dd5b21dbf4f64e305a4b4a2daee100858..1126da4b795f5d5df9725ec4d75cd9353b011710 100644
+--- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
++++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+@@ -24,3 +24,11 @@ memory@80000000 {
+ 		reg = <0x0 0x80000000 0x2 0x00000000>;
+ 	};
+ };
++
++&i2c0 {
++	status = "okay";
++};
++
++&snfi {
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+index 55eb1762fb11364877695960f5a2d3e42caf8611..8e3c53edce2e40103e825b3123d54e2c9f1e8638 100644
+--- a/arch/arm64/boot/dts/airoha/en7581.dtsi
++++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+@@ -2,6 +2,8 @@
  
-+static int nft_dev_fill_bridge_path(struct flow_offload *flow,
-+				    struct nft_flowtable *ft,
-+				    enum ip_conntrack_dir dir,
-+				    const struct net_device *src_dev,
-+				    const struct net_device *dst_dev,
-+				    unsigned char *src_ha,
-+				    unsigned char *dst_ha)
-+{
-+	struct flow_offload_tuple_rhash *th = flow->tuplehash;
-+	struct net_device_path_ctx ctx = {};
-+	struct net_device_path_stack stack;
-+	struct nft_forward_info info = {};
-+	int i, j = 0;
-+
-+	for (i = th[dir].tuple.encap_num - 1; i >= 0 ; i--) {
-+		if (info.num_encaps >= NF_FLOW_TABLE_ENCAP_MAX)
-+			return -1;
-+
-+		if (th[dir].tuple.in_vlan_ingress & BIT(i))
-+			continue;
-+
-+		info.encap[info.num_encaps].id = th[dir].tuple.encap[i].id;
-+		info.encap[info.num_encaps].proto = th[dir].tuple.encap[i].proto;
-+		info.num_encaps++;
-+
-+		if (th[dir].tuple.encap[i].proto == htons(ETH_P_PPP_SES))
-+			continue;
-+
-+		if (ctx.num_vlans >= NET_DEVICE_PATH_VLAN_MAX)
-+			return -1;
-+		ctx.vlan[ctx.num_vlans].id = th[dir].tuple.encap[i].id;
-+		ctx.vlan[ctx.num_vlans].proto = th[dir].tuple.encap[i].proto;
-+		ctx.num_vlans++;
-+	}
-+	ctx.dev = src_dev;
-+	ether_addr_copy(ctx.daddr, dst_ha);
-+
-+	if (dev_fill_bridge_path(&ctx, &stack) < 0)
-+		return -1;
-+
-+	nft_dev_path_info(&stack, &info, dst_ha, &ft->data);
-+
-+	if (!info.indev || info.indev != dst_dev)
-+		return -1;
-+
-+	th[!dir].tuple.iifidx = info.indev->ifindex;
-+	for (i = info.num_encaps - 1; i >= 0; i--) {
-+		th[!dir].tuple.encap[j].id = info.encap[i].id;
-+		th[!dir].tuple.encap[j].proto = info.encap[i].proto;
-+		if (info.ingress_vlans & BIT(i))
-+			th[!dir].tuple.in_vlan_ingress |= BIT(j);
-+		j++;
-+	}
-+	th[!dir].tuple.encap_num = info.num_encaps;
-+
-+	th[dir].tuple.mtu = dst_dev->mtu;
-+	ether_addr_copy(th[dir].tuple.out.h_source, src_ha);
-+	ether_addr_copy(th[dir].tuple.out.h_dest, dst_ha);
-+	th[dir].tuple.out.ifidx = info.outdev->ifindex;
-+	th[dir].tuple.xmit_type = FLOW_OFFLOAD_XMIT_DIRECT;
-+
-+	return 0;
-+}
-+
-+static int nft_flow_offload_bridge_init(struct flow_offload *flow,
-+					const struct nft_pktinfo *pkt,
-+					enum ip_conntrack_dir dir,
-+					struct nft_flowtable *ft)
-+{
-+	const struct net_device *in_dev, *out_dev;
-+	struct ethhdr *eth = eth_hdr(pkt->skb);
-+	struct flow_offload_tuple *tuple;
-+	struct pppoe_hdr *phdr;
-+	struct vlan_hdr *vhdr;
-+	int err, i = 0;
-+
-+	in_dev = nft_in(pkt);
-+	if (!in_dev || !nft_flowtable_find_dev(in_dev, ft))
-+		return -1;
-+
-+	out_dev = nft_out(pkt);
-+	if (!out_dev || !nft_flowtable_find_dev(out_dev, ft))
-+		return -1;
-+
-+	tuple =  &flow->tuplehash[!dir].tuple;
-+
-+	if (skb_vlan_tag_present(pkt->skb)) {
-+		tuple->encap[i].id = skb_vlan_tag_get(pkt->skb);
-+		tuple->encap[i].proto = pkt->skb->vlan_proto;
-+		i++;
-+	}
-+	switch (pkt->skb->protocol) {
-+	case htons(ETH_P_8021Q):
-+		vhdr = (struct vlan_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(vhdr->h_vlan_TCI);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	case htons(ETH_P_PPP_SES):
-+		phdr = (struct pppoe_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(phdr->sid);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	}
-+	tuple->encap_num = i;
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, !dir, out_dev, in_dev,
-+				       eth->h_dest, eth->h_source);
-+	if (err < 0)
-+		return err;
-+
-+	memset(tuple->encap, 0, sizeof(tuple->encap));
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, dir, in_dev, out_dev,
-+				       eth->h_source, eth->h_dest);
-+	if (err < 0)
-+		return err;
-+
-+	return 0;
-+}
-+
- static void nft_dev_forward_path(struct nf_flow_route *route,
- 				 const struct nf_conn *ct,
- 				 enum ip_conntrack_dir dir,
-@@ -311,6 +433,7 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- {
- 	struct nft_flow_offload *priv = nft_expr_priv(expr);
- 	struct nf_flowtable *flowtable = &priv->flowtable->data;
-+	bool routing = flowtable->type->family != NFPROTO_BRIDGE;
- 	struct tcphdr _tcph, *tcph = NULL;
- 	struct nf_flow_route route = {};
- 	enum ip_conntrack_info ctinfo;
-@@ -364,14 +487,21 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 		goto out;
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/clock/en7523-clk.h>
++#include <dt-bindings/reset/airoha,en7581-reset.h>
  
- 	dir = CTINFO2DIR(ctinfo);
--	if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
--		goto err_flow_route;
-+	if (routing) {
-+		if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
-+	}
+ / {
+ 	interrupt-parent = <&gic>;
+@@ -122,6 +124,12 @@ timer {
+ 			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+ 	};
  
- 	flow = flow_offload_alloc(ct);
- 	if (!flow)
- 		goto err_flow_alloc;
- 
--	flow_offload_route_init(flow, &route);
-+	if (routing)
-+		flow_offload_route_init(flow, &route);
-+	else
-+		if (nft_flow_offload_bridge_init(flow, pkt, dir, priv->flowtable) < 0)
-+			goto err_flow_add;
++	clk20m: clock-20000000 {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <20000000>;
++	};
 +
- 	if (tcph)
- 		flow_offload_ct_tcp(ct);
- 
-@@ -419,8 +549,10 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- err_flow_add:
- 	flow_offload_free(flow);
- err_flow_alloc:
--	dst_release(route.tuple[dir].dst);
--	dst_release(route.tuple[!dir].dst);
-+	if (routing) {
-+		dst_release(route.tuple[dir].dst);
-+		dst_release(route.tuple[!dir].dst);
-+	}
- err_flow_route:
- 	clear_bit(IPS_OFFLOAD_BIT, &ct->status);
- out:
+ 	soc {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+@@ -150,5 +158,87 @@ uart1: serial@1fbf0000 {
+ 			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
+ 			clock-frequency = <1843200>;
+ 		};
++
++		scuclk: clock-controller@1fb00000 {
++			compatible = "airoha,en7581-scu";
++			reg = <0x0 0x1fb00000 0x0 0x970>;
++			#clock-cells = <1>;
++			#reset-cells = <1>;
++		};
++
++		rng@1faa1000 {
++			compatible = "airoha,en7581-trng";
++			reg = <0x0 0x1faa1000 0x0 0xc04>;
++			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
++		system-controller@1fbf0200 {
++			compatible = "airoha,en7581-gpio-sysctl", "syscon",
++				     "simple-mfd";
++			reg = <0x0 0x1fbf0200 0x0 0xc0>;
++
++			en7581_pinctrl: pinctrl {
++				compatible = "airoha,en7581-pinctrl";
++
++				interrupt-parent = <&gic>;
++				interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				interrupt-controller;
++				#interrupt-cells = <2>;
++			};
++		};
++
++		i2c0: i2c@1fbf8000 {
++			compatible = "mediatek,mt7621-i2c";
++			reg = <0x0 0x1fbf8000 0x0 0x100>;
++
++			resets = <&scuclk EN7581_I2C2_RST>;
++
++			clocks = <&clk20m>;
++			clock-frequency = <100000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = "disabled";
++		};
++
++		i2c1: i2c@1fbf8100 {
++			compatible = "mediatek,mt7621-i2c";
++			reg = <0x0 0x1fbf8100 0x0 0x100>;
++
++			resets = <&scuclk EN7581_I2C_MASTER_RST>;
++
++			clocks = <&clk20m>;
++			clock-frequency = <100000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = "disabled";
++		};
++
++		snfi: spi@1fa10000 {
++			compatible = "airoha,en7581-snand";
++			reg = <0x0 0x1fa10000 0x0 0x140>,
++			      <0x0 0x1fa11000 0x0 0x160>;
++
++			clocks = <&scuclk EN7523_CLK_SPI>;
++			clock-names = "spi";
++
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = "disabled";
++
++			spi_nand: nand@0 {
++				compatible = "spi-nand";
++				reg = <0>;
++				spi-max-frequency = <50000000>;
++				spi-tx-bus-width = <1>;
++				spi-rx-bus-width = <2>;
++			};
++		};
+ 	};
+ };
+
+---
+base-commit: 7605336e9d136c14c94482ce7385de783f2f748e
+change-id: 20250201-en7581-dts-spi-pinctrl-4160b825ca9d
+
+Best regards,
 -- 
-2.47.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
