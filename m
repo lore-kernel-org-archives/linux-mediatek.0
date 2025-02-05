@@ -4,79 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA67C02192
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 15:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B677C02194
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 15:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qzc18F39yPzvat+K0alllCe+hx6K8Z4IAOid0E8Q0yc=; b=Fr9G45g+GgnD0hOeL/YjF/lUl0
-	NWJXuDbQg/EH5kZt90doHz1kIMS/08+iH+3UwU77uWH/IANSuZuG0NsZpzK2lPWLbS9eyoL77jd9O
-	EjPkXHso56PmE7IihJFmEtBxOgoqSvyQCFvXAlh2Bfo9KvzuUi+jOc51MhHFayhI8P57sSdgIOQKt
-	Cvez9cGMlR3Mtr2xkxPDO2zBo+RvfGg1qIOE43EvLMEGliLHPZRWgWrIplv1vp2p9vZg4G9n7x78A
-	ZEQnBfmrvIULpsPg389aSv4b8eH5eqAlfB6jgMVJSqp6cBB3RrJ/vfshQGbrP0fpapmM74U2CXV//
-	ugo2WP9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=; b=dk3MJOIq73TUXq
+	k5jXo0aTAw7b8YAUqrbxDy0yUp1Zfafsu5hNcdb4iTuAeNj2Y4gvpkjq6YGRTw7V5M8WWfuTTrgGL
+	XK5P2L0QqBLJFuZzXcpfs8ndhw32UD4LSN+Wo5orSf9FeOEAvlUXRZJ38d2vj5tZrgPCasvrHYmjZ
+	yijEmPS4MYyA+G7u3w/yPl9QFToUCrwCRlNUriKJ28KGH5jcbyqVFeVnY/ZUAD9o7SiVj/Y/PAMz9
+	z5YRvCFeDGH2qP/b/6OX5oOH1ewa5/az05ftQ1agpOAqI3a0DTo+hVwX+tcR20iYIaFnOJXhaPZvU
+	xfSXElnm0OsrkkjFy3NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfhV5-00000003o0m-3nXe;
-	Wed, 05 Feb 2025 15:39:39 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tfhZZ-00000003pEO-0tQv;
+	Wed, 05 Feb 2025 15:44:17 +0000
+Received: from cross.elm.relay.mailchannels.net ([23.83.212.46])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfh3r-00000003iVH-1H2Y;
-	Wed, 05 Feb 2025 15:11:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Qzc18F39yPzvat+K0alllCe+hx6K8Z4IAOid0E8Q0yc=; b=M4G54XpJan6QaSWOMBWzZuEgK6
-	gwcy7aov4kKXVzj+vaY9GdS9w1NfdHCM7AdsW5XeffBPgSsJDgfdhpM17xVCh2+J3pjX389fZwrgg
-	hZTqNUKZi1BZ2GCahh6zPlSLirdrfJKJlfZjlkqpkapNe7xblFrCO/fSM/g/2wAzNsy3kGqiUhjzI
-	3iVJsShYxhOAfGnWzTvlioQntJBFgJn/FWzfffe7tNZYxmT20/UXvmY9rhYCcXZxQAlMioVDm86nI
-	onKzrofsd7afL56UeB/VPhkaJbrVrYFQcZcCHUevIWQUI1hW8GdkCO+IeUJZgs3lbahLht+EnnLlF
-	vjjwuaMg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:33054 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tfh3k-0007TD-2H;
-	Wed, 05 Feb 2025 15:11:24 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tfh3R-003aRS-3M; Wed, 05 Feb 2025 15:11:05 +0000
-In-Reply-To: <Z6N_ge7H5oTYt6n8@shell.armlinux.org.uk>
-References: <Z6N_ge7H5oTYt6n8@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Simon Horman <horms@kernel.org>,
-	Vladimir Oltean <olteanv@gmail.com>
-Subject: [PATCH net-next 3/3] net: dsa: mt7530: convert to phylink managed EEE
+	id 1tfhYB-00000003ovo-2PdD;
+	Wed, 05 Feb 2025 15:42:53 +0000
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id C48B890122A;
+	Wed,  5 Feb 2025 15:42:41 +0000 (UTC)
+Received: from uk-fast-smtpout3.hostinger.io (100-119-10-57.trex-nlb.outbound.svc.cluster.local [100.119.10.57])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 8C5B490333A;
+	Wed,  5 Feb 2025 15:42:38 +0000 (UTC)
+ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1738770161; a=rsa-sha256;
+	cv=none;
+	b=OsjNgaApkZXHkKD/sbtUQKjQRhGJ2Zq4aYcD2R2LQ+7V4IHpBZY5MnRt6cd4THcDWdpqrp
+	0I1dewPpzuBAhBfRcxTDAR/ECYZKlUjrrsQe8cv7UzXK7Ywd0AhHzELZLzRgOS/uouqzlS
+	IJRtyxwnw12iBOZrjnnvhtsU+ZyRYaCdErq3wk9cRDtnNLqgqhwnF4c+MwEl045EZkLX7e
+	1oHp7JYLGgdpcL+yVMdYNVXPCG0XGtLj/QWQhx7hZgK77iH+aDxyxlZoPT5uCQSD2SKda9
+	izXxs+Qszu/KZrbdp7bzXQUh4QH8heR9CNQMq9DfHGFF4a3QUMI40Zw2wAS4mQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1738770161;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:dkim-signature;
+	bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=;
+	b=t6+W/vx5mso4vB+SWRCH8lmC9dKhTPMhggT7XrhJ96mbDPYsnXo/jUXSMIjceYy4/dhu6w
+	8y3jDg5870/ubnGlERD0ICP3XjUf+xZ8waOCaK1rBR+QLmcaWxnEJ2FHUudIVMNpHmGA3c
+	BYLnPcW0PgviCjLkB3fVrB84L1kBJ2HVHF7MtC3JPMvsi4wj9jto1Wtsy+dZ3lvkWV4sVc
+	TeEEYvH9Bcd15zkE6/RhvMNP+6NrcbNjVqVlRGpfOCVDU9aFW5o8/j4xvOQeHNC0P7BezG
+	cmd+HlgTFx3YJf4AGN8LVyP8C67sdFO71FzKYw+ZoYWrMeomwduRGJXJN9PxHg==
+ARC-Authentication-Results: i=1;
+	rspamd-854f7f575d-hc7pr;
+	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Keen-Shrill: 6d08bb6615a96223_1738770161601_1876515665
+X-MC-Loop-Signature: 1738770161601:354085814
+X-MC-Ingress-Time: 1738770161601
+Received: from uk-fast-smtpout3.hostinger.io (uk-fast-smtpout3.hostinger.io
+ [31.220.23.37])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.119.10.57 (trex/7.0.2);
+	Wed, 05 Feb 2025 15:42:41 +0000
+Message-ID: <10de11cf-a443-472e-aaec-df9e2ed54090@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
+	s=hostingermail-a; t=1738770156;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=;
+	b=j8IPL+DuU8GProATJm/Duv9PuKhykYmg2E302XRtT0REzY7Xwyuw+AODU+wsrNKKnCH0Gq
+	Pi8RuEsYTrm8lSe5baEgUQ8WboBnIbhpdjrTaowqnNWEgzMzEGa5ahAkvmbMbfVvbRMaWJ
+	kW2tuUGiICsBsneDgqZR60Nm2rk8kKKepv2+l1hxZKdV38DpIrd/z1QHQ9jmgGTed8s/Cc
+	2nvhl7M/UkFqNCge5BY93gZfhGoYxQOic8FulAB7rXS8mRZnV5AbKNzyeZlxTj3DBfXlhR
+	5drXh2xtuX6XJZhg0Z4dprka1SvB7AMlBMX5XF9n3wugc5pViJx/6jbsGG+sNA==
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tfh3R-003aRS-3M@rmk-PC.armlinux.org.uk>
-Date: Wed, 05 Feb 2025 15:11:05 +0000
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 3/3] net: dsa: mt7530: convert to phylink managed
+ EEE
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, "David S. Miller"
+ <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+ Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>
+References: <Z6N_ge7H5oTYt6n8@shell.armlinux.org.uk>
+ <E1tfh3R-003aRS-3M@rmk-PC.armlinux.org.uk>
+Content-Language: en-US
+From: "Chester A. Unal" <chester.a.unal@arinc9.com>
+In-Reply-To: <E1tfh3R-003aRS-3M@rmk-PC.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Wed, 05 Feb 2025 15:42:30 +0000 (UTC)
+X-CM-Analysis: v=2.4 cv=FNtJxPos c=1 sm=1 tr=0 ts=67a386ec a=gmHaVq+lWCOlvlVL1vhg7g==:117 a=gmHaVq+lWCOlvlVL1vhg7g==:17 a=IkcTkHD0fZMA:10 a=6jP-D5u7NbJpRVPPYh4A:9 a=QEXdDO2ut3YA:10
+X-CM-Envelope: MS4xfAbWRb9fpDBlM9PTOARaxKCQyT5N9lFLaT9hxBqpt8YY33csIIzo851RrRdUcj5OuWXj7LSHEKhkC6+c5m8RjZidR1ptXPzfh8YMhel7wLhrOeBLbUpf JgMvwFTcDNgAx3ceEmj3huh1o46TpAlX5mSthdlNUUIQ6s1l1yhTlRncANe2sWXi50R9YEKDeu1r5brkFSXnd8aZCi4pMYOoC+ltzo6qC5mVKQ0Eeyxo7pJZ A/LidGzRHjB84GsE/q6zji3shJkrIMh18zrw9S6FoYyLWGc61BvYGM906zB+L5NvO4KAxYMUnhDGlwMlNnRHWNVnFYdGIlEikxpHcUSsz8tTfR8c/ncy0kay rpFcvj9dCveq0qgLroiqbutE249qdK93MlZqSoFgPJmKuFc44LG9ky2wz86e5B5NL8Z2ZYVIFNy4ipvY9BhyF2KirZC9ZMiRR5pX1n+fxDlmEZImQ5+O8Elk V/8ZyDAJq7+sE163uO91r2sDP4m2zdtzVyIAUFjeObQHbv/0T9Qs1EoQFcnoxgsZnIh8rGklhoyCoeTVIunvX58mTuV8YgxCPG1WQsDS8VTZc5dTgh/JlukD B2OnJPwM+GuYpKwpX75MCEGhHlh5wzn0QNxGhwmkclXZJdIfGBq6sWCZRYzH2A+qu5del/RcL2XgBfRcD+GF5+swHwrvSqh0XxYXFM7ohvC9yFM2idldV5mh c9vh3AIl/ffLLXCNTfVReOReLYBeC2Jwa80fuJr6CIjfYzhas2U8xA==
+X-AuthUser: chester.a.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_071131_344405_D3E6CB7D 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20250205_074252_034732_B71353FD 
+X-CRM114-Status: UNSURE (   5.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,122 +125,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fixme: doesn't bit 25 and 26 also need to be set in the PMCR for
-PMCR_FORCE_EEE100 and PMCR_FORCE_EEE1G to take effect?
+Hello Russell.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/mt7530.c | 69 ++++++++++++++++++++++++++++------------
- 1 file changed, 48 insertions(+), 21 deletions(-)
+On 05/02/2025 15:11, Russell King (Oracle) wrote:
+> Fixme: doesn't bit 25 and 26 also need to be set in the PMCR for
+> PMCR_FORCE_EEE100 and PMCR_FORCE_EEE1G to take effect?
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1c83af805209..24191c4d5221 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2957,28 +2957,62 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 			mcr |= PMCR_FORCE_RX_FC_EN;
- 	}
- 
--	if (mode == MLO_AN_PHY && phydev && phy_init_eee(phydev, false) >= 0) {
--		switch (speed) {
--		case SPEED_1000:
--		case SPEED_2500:
--			mcr |= PMCR_FORCE_EEE1G;
--			break;
--		case SPEED_100:
--			mcr |= PMCR_FORCE_EEE100;
--			break;
--		}
--	}
--
- 	mt7530_set(priv, MT753X_PMCR_P(dp->index), mcr);
- }
- 
-+static void mt753x_phylink_mac_disable_tx_lpi(struct phylink_config *config)
-+{
-+	struct dsa_port *dp = dsa_phylink_to_port(config);
-+	struct mt7530_priv *priv = dp->ds->priv;
-+
-+	mt7530_clear(priv, MT753X_PMCR_P(dp->index),
-+		     PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100);
-+}
-+
-+static int mt753x_phylink_mac_enable_tx_lpi(struct phylink_config *config,
-+					    u32 timer, bool tx_clock_stop)
-+{
-+	struct dsa_port *dp = dsa_phylink_to_port(config);
-+	struct mt7530_priv *priv = dp->ds->priv;
-+	u32 val;
-+
-+	/* If the timer is zero, then set LPI_MODE_EN, which allows the
-+	 * system to enter LPI mode immediately rather than waiting for
-+	 * the LPI threshold.
-+	 */
-+	if (!timer)
-+		val = LPI_MODE_EN;
-+	else if (FIELD_FIT(LPI_THRESH_MASK, timer))
-+		val = FIELD_PREP(LPI_THRESH_MASK, timer);
-+	else
-+		val = LPI_THRESH_MASK;
-+
-+	mt7530_rmw(priv, MT753X_PMEEECR_P(dp->index),
-+		   LPI_THRESH_MASK | LPI_MODE_EN, val);
-+
-+	mt7530_set(priv, MT753X_PMCR_P(dp->index),
-+		   PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100);
-+
-+	return 0;
-+}
-+
- static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
- 				    struct phylink_config *config)
- {
- 	struct mt7530_priv *priv = ds->priv;
-+	u32 eeecr;
- 
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE;
- 
-+	config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
-+	config->lpi_timer_limit_us = FIELD_MAX(LPI_THRESH_MASK);
-+
-+	eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
-+	/* tx_lpi_timer should be in microseconds. The time units for
-+	 * LPI threshold are unspecified.
-+	 */
-+	config->lpi_timer_default = FIELD_GET(LPI_THRESH_MASK, eeecr);
-+
- 	priv->info->mac_port_get_caps(ds, port, config);
- }
- 
-@@ -3088,18 +3122,9 @@ mt753x_setup(struct dsa_switch *ds)
- static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 			      struct ethtool_keee *e)
- {
--	struct mt7530_priv *priv = ds->priv;
--	u32 set, mask = LPI_THRESH_MASK | LPI_MODE_EN;
--
- 	if (e->tx_lpi_timer > 0xFFF)
- 		return -EINVAL;
- 
--	set = LPI_THRESH_SET(e->tx_lpi_timer);
--	if (!e->tx_lpi_enabled)
--		/* Force LPI Mode without a delay */
--		set |= LPI_MODE_EN;
--	mt7530_rmw(priv, MT753X_PMEEECR_P(port), mask, set);
--
- 	return 0;
- }
- 
-@@ -3238,6 +3263,8 @@ static const struct phylink_mac_ops mt753x_phylink_mac_ops = {
- 	.mac_config	= mt753x_phylink_mac_config,
- 	.mac_link_down	= mt753x_phylink_mac_link_down,
- 	.mac_link_up	= mt753x_phylink_mac_link_up,
-+	.mac_disable_tx_lpi = mt753x_phylink_mac_disable_tx_lpi,
-+	.mac_enable_tx_lpi = mt753x_phylink_mac_enable_tx_lpi,
- };
- 
- const struct mt753x_info mt753x_table[] = {
--- 
-2.30.2
+Yes, but only for MT7531 and the switch component of the MT7988 SoC. For
+MT7530 and the switch component of the AN7581 SoC, bit 15
+(MT7530_FORCE_MODE) must be set. The MT753X DSA subdriver sets these bits
+accordingly at the setup function that pertains to the specific switch
+model.
 
+Chester A.
 
