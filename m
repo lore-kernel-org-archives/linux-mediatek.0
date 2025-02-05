@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE30C02192
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 19:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A470FC02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 19:16:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZxmPkxju0bqkthdY4DxuNKOG1AYb+XTMaSuW/Yn7jbs=; b=qsw9DQ9OExQBlZmFZSYDB8GwHb
-	F7h3cadtcCWc4ecSYvwtNcg1tUnCMF3BM9f7NV7h8JiQ4skOaSzSImsaDfYNLMHek2iRrmYb4kXH+
-	c+1epMLE5ZUOYfo3NHlt4iBx3RI2W6bjBwfkFLObYakRPI6nCcehRP+jum8qG0IzjzMDepMrVYytY
-	YvrlDka0u1WZgWglYZ8LcKqXlwSw7h8AnAhsmfpyBiXtRPcP7NlhyDmcSRKYactKv848GMuu4zDwe
-	jtHXm7kJYVKwPqscEoNopOCfHm7bMvgvdPx/4U4GT4cz9uQLait9nM82qK7rrl3B/rGOLVJKaUnYN
-	5QXizPFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MhYh0K0cs6hRJ2EkOy56lZy1JN8Whdz+VjNW5lkSwwA=; b=aMhuJ06O+eheyPVx5aMdrXu85l
+	Tr7h7Xn91ekruHOOsiQP89xU//9iQfLRU4Bqb/NRq2lf3A3luul+wlPNfe+jEY/hbKAr2i2z5tP7w
+	r8DUfxUjt3AhY92Wyh7/2MkqYr2BgbTleCki9sts6mwgfb0/XZs//GwID0qeTAYa5pvy299U02KTS
+	4ozInmatz8pY9PInTKNqV0CHtKxJSCAaI8T3oiTOFFOpvy1KXAHY6bSRGcavZ5Cqj+nafQNtDQMpD
+	MOltn547eGM/UvjbXuQ3xVKOB9PZL+W4JRMovxYPzyWAxhWsOVwdjdO3TPsqixN1EkXL+0e8myEKQ
+	M9t9cLVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfkoc-00000004MXv-2ND8;
-	Wed, 05 Feb 2025 19:12:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tfksj-00000004NXP-1P1k;
+	Wed, 05 Feb 2025 19:16:17 +0000
+Received: from 009.lax.mailroute.net ([199.89.1.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfknD-00000004MNO-43jb;
-	Wed, 05 Feb 2025 19:10:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F3BC35C6E32;
-	Wed,  5 Feb 2025 19:09:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19032C4CED1;
-	Wed,  5 Feb 2025 19:10:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738782634;
-	bh=ETdqFpdQWKnBh+I298fz06UxdSXFr90lIy6URSg4kaA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IW9+39AID1lcEbXaiCKZIk7Cm+9fGecb98BRFaRHhP9a1Iyi3q9gmTF0VE+8Gqdz6
-	 6Gn3MD174LfUMy2NeBzeXsMH66CTU4yWmleh54TGTdYvywqkeSWFULL3UeTmJ4UmpO
-	 EhrA66XdJDnwXnJCUSt/+6KbgSDUsy97XJflygurMKjb6jH27FBAJR2IcqHGqzBuQ0
-	 rXCqaRMa4d8QxePE6ZYQl2vTvHym5SKVhHHeF/vFQsAe8f+2rML9WgboYcBcubtXzq
-	 9gyiIdc5MukId3ZAjg6yjOEwoXCW92eam1wc3FM9/L0LUxgr//JEP52TxjR7MzWPtu
-	 IzvlMlC6Gb90g==
-Date: Wed, 5 Feb 2025 19:10:28 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next 09/13] dt-bindings: net: airoha: Add airoha,npu
- phandle property
-Message-ID: <20250205-cleaver-evaluator-648c8f0b99bb@spud>
-References: <20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org>
- <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
+	id 1tfjjs-00000004ByD-0IRt;
+	Wed, 05 Feb 2025 18:03:05 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 009.lax.mailroute.net (Postfix) with ESMTP id 4Yp7Pg4mNTzlgTwJ;
+	Wed,  5 Feb 2025 18:03:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1738778574; x=1741370575; bh=MhYh0K0cs6hRJ2EkOy56lZy1
+	JN8Whdz+VjNW5lkSwwA=; b=KgqAQ+ZyBTnOrx4lrw7J5MNMgRb9DWfwiFF+nyfE
+	0ECqUOSNnBEMfFYO5vah6+KGICdbDdJqrNb4JMogDb29erGrkDZeyeatDqpIxn0W
+	Gp77cx3Ar3deNjqZYOEx8e3LSUFd/I4Jvd2pJVqJa7fysnXrgxR4QFVyJz38g4mZ
+	68GwmE9kpsy7WF54QEBKGGxHOqn80Sh/W0q69MbvsUt1oYdgpZ4YscY6SZxryEbK
+	kDV0hLPJY53bDXayl9uxuL/famauO2GvCy3km08peZo394QSwikrd1hAJ8uvz0tw
+	S9+vtOkM0LYo5Of+ZbDtU0ovn/0eKixBDrhFElAf87YjHA==
+X-Virus-Scanned: by MailRoute
+Received: from 009.lax.mailroute.net ([127.0.0.1])
+ by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id yPbHVnEeDhAD; Wed,  5 Feb 2025 18:02:54 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4Yp7PJ56d7zlgTw2;
+	Wed,  5 Feb 2025 18:02:44 +0000 (UTC)
+Message-ID: <45a2da01-966f-4019-8d7f-ee2b66575804@acm.org>
+Date: Wed, 5 Feb 2025 10:02:42 -0800
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="JnOj/fdaK/Kw9pqY"
-Content-Disposition: inline
-In-Reply-To: <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/8] scsi: ufs: core: Pass target_freq to
+ clk_scale_notify() vop
+To: Ziqi Chen <quic_ziqichen@quicinc.com>, quic_cang@quicinc.com,
+ mani@kernel.org, beanhuo@micron.com, avri.altman@wdc.com,
+ junwoo80.lee@samsung.com, martin.petersen@oracle.com,
+ quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+ quic_rampraka@quicinc.com
+Cc: linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Halaney <ahalaney@redhat.com>, Eric Biggers <ebiggers@google.com>,
+ Minwoo Im <minwoo.im@samsung.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-arm-kernel@lists.infradead.org>
+References: <20250203081109.1614395-1-quic_ziqichen@quicinc.com>
+ <20250203081109.1614395-2-quic_ziqichen@quicinc.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250203081109.1614395-2-quic_ziqichen@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_111036_110311_0ECFF8EB 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20250205_100304_134071_C20DE724 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,70 +100,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 2/3/25 12:11 AM, Ziqi Chen wrote:
+> Instead of only two frequencies, if OPP V2 is used, the UFS devfreq clock
+> scaling may scale the clock among multiple frequencies, so just passing
+> up/down to vop clk_scale_notify() is not enough to cover the intermediate
+> clock freqs between the min and max freqs. Hence pass the target_freq ,
+> which will be used in successive commits, to clk_scale_notify() to allow
+> the vop to perform corresponding configurations with regard to the clock
+> freqs.
 
---JnOj/fdaK/Kw9pqY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Feb 05, 2025 at 07:21:28PM +0100, Lorenzo Bianconi wrote:
-> Introduce the airoha,npu property for the npu syscon node available on
-> EN7581 SoC. The airoha Network Processor Unit (NPU) is used to offload
-> network traffic forwarded between Packet Switch Engine (PSE) ports.
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 8 ++++++++
->  1 file changed, 8 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
- b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> index c578637c5826db4bf470a4d01ac6f3133976ae1a..6388afff64e990a20230b0c4e=
-58534aa61f984da 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> @@ -63,6 +63,12 @@ properties:
->    "#size-cells":
->      const: 0
-> =20
-> +  airoha,npu:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to the syscon node used to configure the NPU module
-> +      used for traffic offloading.
-
-Why do you need a phandle for this, instead of a lookup by compatible?
-Do you have multiple instances of this ethernet controller on the
-device, that each need to look up a different npu?
-
-> +
->  patternProperties:
->    "^ethernet@[1-4]$":
->      type: object
-> @@ -132,6 +138,8 @@ examples:
->                       <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>,
->                       <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-> =20
-> +        airoha,npu =3D <&npu>;
-> +
->          #address-cells =3D <1>;
->          #size-cells =3D <0>;
-> =20
->=20
-> --=20
-> 2.48.1
->=20
-
---JnOj/fdaK/Kw9pqY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6O3pAAKCRB4tDGHoIJi
-0r90AQCPFWieY3rJFPgYre/U5p5JhiHPBES11cYsO6z7cPd7JgD+LbhWNBtMLabp
-sVw4Vk5SnTfpxAWmdYRThF4q2n8QHAU=
-=ee/X
------END PGP SIGNATURE-----
-
---JnOj/fdaK/Kw9pqY--
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
