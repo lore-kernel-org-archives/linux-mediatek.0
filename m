@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA3CC02192
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 18:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE30C02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 19:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PI6l+DCnB4qLuGfYAK7vjHWZQ4rt1naY29DBk3+X1b0=; b=SqqjwosE8ZOAMTgphxd7X33dPL
-	kxjPlMoXKd+Bswq6DXFAnPXyaXjTRiaIBngsxcjShu0vDa01qEVSm3C/RRnz2I5rnsL99J/kG2D45
-	TQDYm+PqrwevtAz1mPU+IgE7PHB2lLLdUa8STDz7VNXs1Jkj6Vmt1e4XLVwjGBi+xgpoN1uuZaoWO
-	+3JmcSHr3oHy7K2ewVjhzqY4gfT8X/EKd5/kGXSDxJI0t0lqhcF+KsS6yfheDAx6mX+PD9fHAUpFF
-	vcbl4UrKCzsMWLgjhN8WyJ0cGTqFlcRTQThakEEu3/zGIjfHgNgWG8dZUvE7GRJVkNAjq5YuBBdZ5
-	8kZuvpXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZxmPkxju0bqkthdY4DxuNKOG1AYb+XTMaSuW/Yn7jbs=; b=qsw9DQ9OExQBlZmFZSYDB8GwHb
+	F7h3cadtcCWc4ecSYvwtNcg1tUnCMF3BM9f7NV7h8JiQ4skOaSzSImsaDfYNLMHek2iRrmYb4kXH+
+	c+1epMLE5ZUOYfo3NHlt4iBx3RI2W6bjBwfkFLObYakRPI6nCcehRP+jum8qG0IzjzMDepMrVYytY
+	YvrlDka0u1WZgWglYZ8LcKqXlwSw7h8AnAhsmfpyBiXtRPcP7NlhyDmcSRKYactKv848GMuu4zDwe
+	jtHXm7kJYVKwPqscEoNopOCfHm7bMvgvdPx/4U4GT4cz9uQLait9nM82qK7rrl3B/rGOLVJKaUnYN
+	5QXizPFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfkJg-00000004IIm-2x8Q;
-	Wed, 05 Feb 2025 18:40:04 +0000
+	id 1tfkoc-00000004MXv-2ND8;
+	Wed, 05 Feb 2025 19:12:02 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfk2m-00000004Eeg-3QFY;
-	Wed, 05 Feb 2025 18:22:38 +0000
+	id 1tfknD-00000004MNO-43jb;
+	Wed, 05 Feb 2025 19:10:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7F0C25C6DD1;
-	Wed,  5 Feb 2025 18:21:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64805C4CED1;
-	Wed,  5 Feb 2025 18:22:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id F3BC35C6E32;
+	Wed,  5 Feb 2025 19:09:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19032C4CED1;
+	Wed,  5 Feb 2025 19:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738779755;
-	bh=P2I/3RHzFpVnt49oJEHtW/oCB7rnjPKC9FAZgPOn5bU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JMw/Cn6TZyy7BtOxW2iAWL2Kms3pPaKMoXNAuLyUi+ZqfP6c6u1dXS7jg7IJIDE1i
-	 49h9N46CjIWbMr6qbIOdhZhoa/eQFQT6S2ZcIVhR9AKP/4J0R5ihKmOaY61Jduu84L
-	 eFzNVl6vOVOsjoJwJqcUVc2Ea7l4S6NxgMNJQpHsnJo4OgulOUAiXjWNGd9qD32V4E
-	 LxPxIaI2KxFcElx09H8DQQiAtzmOWWih9/zdkhOYoFwqxfC76vvnUM1G0IZDx2T89r
-	 K9D+KiEHXSPpg6hIx4gZ5FIOFeo3BfhPsAyjAzWHc3yLfqO6vPTIAOfFEo+LLGiV3/
-	 m+dDVarvjZNNA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 05 Feb 2025 19:21:31 +0100
-Subject: [PATCH net-next 12/13] net: airoha: Add loopback support for GDM2
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250205-airoha-en7581-flowtable-offload-v1-12-d362cfa97b01@kernel.org>
+	s=k20201202; t=1738782634;
+	bh=ETdqFpdQWKnBh+I298fz06UxdSXFr90lIy6URSg4kaA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IW9+39AID1lcEbXaiCKZIk7Cm+9fGecb98BRFaRHhP9a1Iyi3q9gmTF0VE+8Gqdz6
+	 6Gn3MD174LfUMy2NeBzeXsMH66CTU4yWmleh54TGTdYvywqkeSWFULL3UeTmJ4UmpO
+	 EhrA66XdJDnwXnJCUSt/+6KbgSDUsy97XJflygurMKjb6jH27FBAJR2IcqHGqzBuQ0
+	 rXCqaRMa4d8QxePE6ZYQl2vTvHym5SKVhHHeF/vFQsAe8f+2rML9WgboYcBcubtXzq
+	 9gyiIdc5MukId3ZAjg6yjOEwoXCW92eam1wc3FM9/L0LUxgr//JEP52TxjR7MzWPtu
+	 IzvlMlC6Gb90g==
+Date: Wed, 5 Feb 2025 19:10:28 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next 09/13] dt-bindings: net: airoha: Add airoha,npu
+ phandle property
+Message-ID: <20250205-cleaver-evaluator-648c8f0b99bb@spud>
 References: <20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org>
-In-Reply-To: <20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- upstream@airoha.com
-X-Mailer: b4 0.14.2
+ <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="JnOj/fdaK/Kw9pqY"
+Content-Disposition: inline
+In-Reply-To: <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_102236_948044_5C4CE9D8 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20250205_111036_110311_0ECFF8EB 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,216 +85,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable hw redirection for traffic received on GDM2 port to GDM{3,4}.
-This is required to apply Qdisc offloading (HTB or ETS) for traffic to
-and from GDM{3,4} port.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 67 ++++++++++++++++++++++++++++++-
- drivers/net/ethernet/airoha/airoha_eth.h  |  7 ++++
- drivers/net/ethernet/airoha/airoha_ppe.c  | 13 +++---
- drivers/net/ethernet/airoha/airoha_regs.h | 29 +++++++++++++
- 4 files changed, 108 insertions(+), 8 deletions(-)
+--JnOj/fdaK/Kw9pqY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 138e33845d5c7b1ef421d672a18d312d77b625c9..b17476b446466f9bb5a0be6a55fa2ad208443cbb 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1583,14 +1583,77 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
- 	return 0;
- }
- 
-+static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
-+{
-+	u32 pse_port = port->id == 3 ? FE_PSE_PORT_GDM3 : FE_PSE_PORT_GDM4;
-+	struct airoha_eth *eth = port->qdma->eth;
-+	u32 chan = port->id == 3 ? 4 : 0;
-+
-+	/* Forward the traffic to the proper GDM port */
-+	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(2), pse_port);
-+	airoha_fe_clear(eth, REG_GDM_FWD_CFG(2), GDM_STRIP_CRC);
-+	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(2), GDM_LONG_LEN_MASK,
-+		      FIELD_PREP(GDM_LONG_LEN_MASK, 2000));
-+
-+	/* Enable GDM2 loopback */
-+	airoha_fe_wr(eth, REG_GDM_TXCHN_EN(2), 0xffffffff);
-+	airoha_fe_wr(eth, REG_GDM_RXCHN_EN(2), 0xffff);
-+	airoha_fe_rmw(eth, REG_GDM_LPBK_CFG(2),
-+		      LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK,
-+		      FIELD_PREP(LPBK_CHAN_MASK, chan) | LPBK_EN_MASK);
-+
-+	/* Disable VIP and IFC for GDM2 */
-+	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(2));
-+	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(2));
-+
-+	if (port->id == 3) {
-+		/* FIXME: handle XSI_PCE1_PORT */
-+		airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(0),  0x5500);
-+		airoha_fe_rmw(eth, REG_FE_WAN_PORT,
-+			      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
-+			      FIELD_PREP(WAN0_MASK, HSGMII_LAN_PCIE0_SRCPORT));
-+		airoha_fe_rmw(eth,
-+			      REG_SP_DFT_CPORT(HSGMII_LAN_PCIE0_SRCPORT >> 3),
-+			      SP_CPORT_PCIE0_MASK,
-+			      FIELD_PREP(SP_CPORT_PCIE0_MASK,
-+					 FE_PSE_PORT_CDM2));
-+	} else {
-+		/* FIXME: handle XSI_USB_PORT */
-+		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
-+			      FC_ID_OF_SRC_PORT24_MASK,
-+			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
-+		airoha_fe_rmw(eth, REG_FE_WAN_PORT,
-+			      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
-+			      FIELD_PREP(WAN0_MASK, HSGMII_LAN_ETH_SRCPORT));
-+		airoha_fe_rmw(eth,
-+			      REG_SP_DFT_CPORT(HSGMII_LAN_ETH_SRCPORT >> 3),
-+			      SP_CPORT_ETH_MASK,
-+			      FIELD_PREP(SP_CPORT_ETH_MASK, FE_PSE_PORT_CDM2));
-+	}
-+}
-+
- static int airoha_dev_init(struct net_device *dev)
- {
- 	struct airoha_gdm_port *port = netdev_priv(dev);
- 	struct airoha_eth *eth = port->qdma->eth;
-+	u32 pse_port;
- 
- 	airoha_set_macaddr(port, dev->dev_addr);
--	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id),
--				    FE_PSE_PORT_PPE1);
-+
-+	switch (port->id) {
-+	case 3:
-+	case 4:
-+		airhoha_set_gdm2_loopback(port);
-+		fallthrough;
-+	case 2:
-+		pse_port = FE_PSE_PORT_PPE2;
-+		break;
-+	default:
-+		pse_port = FE_PSE_PORT_PPE1;
-+		break;
-+	}
-+
-+	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id), pse_port);
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 14f2d863fd1cc3f087f3f168714d0993db9e1ba7..20e870a5c20091f0bb572f87f111c660b2075c32 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -72,6 +72,13 @@ enum {
- 	QDMA_INT_REG_MAX
- };
- 
-+enum {
-+	HSGMII_LAN_PCIE0_SRCPORT = 0x16,
-+	HSGMII_LAN_PCIE1_SRCPORT,
-+	HSGMII_LAN_ETH_SRCPORT,
-+	HSGMII_LAN_USB_SRCPORT,
-+};
-+
- enum {
- 	XSI_PCIE0_VIP_PORT_MASK	= BIT(22),
- 	XSI_PCIE1_VIP_PORT_MASK	= BIT(23),
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index e9d67a6d1fbcc2a565d7de043e705b6b4ab26059..00bf30d102ee868ab51d72e09a013adf8d6e1fad 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -124,21 +124,22 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
- 	      AIROHA_FOE_IB1_BIND_TTL;
- 	hwe->ib1 = val;
- 
--	val = FIELD_PREP(AIROHA_FOE_IB2_PORT_AG, 0x1f);
-+	val = FIELD_PREP(AIROHA_FOE_IB2_PORT_AG, 0x1f) |
-+	      AIROHA_FOE_IB2_PSE_QOS;
- 	if (dsa_port >= 0)
- 		val |= FIELD_PREP(AIROHA_FOE_IB2_NBQ, dsa_port);
-+
- 	if (dev) {
- 		struct airoha_gdm_port *port = netdev_priv(dev);
- 		u8 pse_port;
- 
--		pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-+		if (dsa_port >= 0)
-+			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-+		else
-+			pse_port = 2; /* uplink relies on GDM2 loopback */
- 		val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port);
- 	}
- 
--	/* FIXME: implement QoS support setting pse_port to 2 (loopback)
--	 * for uplink and setting qos bit in ib2
--	 */
--
- 	if (is_multicast_ether_addr(dest_mac))
- 		val |= AIROHA_FOE_IB2_MULTICAST;
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 3ad2c5d11c2f9b0d00744cc43394d02d47347f61..9ec2476af24101c7789c8816a236fec977fcf437 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -38,6 +38,12 @@
- #define FE_RST_CORE_MASK		BIT(0)
- 
- #define REG_FE_FOE_TS			0x0010
-+
-+#define REG_FE_WAN_PORT			0x0024
-+#define WAN1_EN_MASK			BIT(16)
-+#define WAN1_MASK			GENMASK(12, 8)
-+#define WAN0_MASK			GENMASK(4, 0)
-+
- #define REG_FE_WAN_MAC_H		0x0030
- #define REG_FE_LAN_MAC_H		0x0040
- 
-@@ -126,6 +132,7 @@
- #define GDM_IP4_CKSUM			BIT(22)
- #define GDM_TCP_CKSUM			BIT(21)
- #define GDM_UDP_CKSUM			BIT(20)
-+#define GDM_STRIP_CRC			BIT(16)
- #define GDM_UCFQ_MASK			GENMASK(15, 12)
- #define GDM_BCFQ_MASK			GENMASK(11, 8)
- #define GDM_MCFQ_MASK			GENMASK(7, 4)
-@@ -139,6 +146,16 @@
- #define GDM_SHORT_LEN_MASK		GENMASK(13, 0)
- #define GDM_LONG_LEN_MASK		GENMASK(29, 16)
- 
-+#define REG_GDM_LPBK_CFG(_n)		(GDM_BASE(_n) + 0x1c)
-+#define LPBK_GAP_MASK			GENMASK(31, 24)
-+#define LPBK_LEN_MASK			GENMASK(23, 10)
-+#define LPBK_CHAN_MASK			GENMASK(8, 4)
-+#define LPBK_MODE_MASK			GENMASK(3, 1)
-+#define LPBK_EN_MASK			BIT(0)
-+
-+#define REG_GDM_TXCHN_EN(_n)		(GDM_BASE(_n) + 0x24)
-+#define REG_GDM_RXCHN_EN(_n)		(GDM_BASE(_n) + 0x28)
-+
- #define REG_FE_CPORT_CFG		(GDM1_BASE + 0x40)
- #define FE_CPORT_PAD			BIT(26)
- #define FE_CPORT_PORT_XFC_MASK		BIT(25)
-@@ -346,6 +363,18 @@
- 
- #define REG_MC_VLAN_DATA		0x2108
- 
-+#define REG_SP_DFT_CPORT(_n)		(0x20e0 + ((_n) << 2))
-+#define SP_CPORT_PCIE1_MASK		GENMASK(31, 28)
-+#define SP_CPORT_PCIE0_MASK		GENMASK(27, 24)
-+#define SP_CPORT_USB_MASK		GENMASK(7, 4)
-+#define SP_CPORT_ETH_MASK		GENMASK(7, 4)
-+
-+#define REG_SRC_PORT_FC_MAP6		0x2298
-+#define FC_ID_OF_SRC_PORT27_MASK	GENMASK(28, 24)
-+#define FC_ID_OF_SRC_PORT26_MASK	GENMASK(20, 16)
-+#define FC_ID_OF_SRC_PORT25_MASK	GENMASK(12, 8)
-+#define FC_ID_OF_SRC_PORT24_MASK	GENMASK(4, 0)
-+
- #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
- 
- /* QDMA */
+On Wed, Feb 05, 2025 at 07:21:28PM +0100, Lorenzo Bianconi wrote:
+> Introduce the airoha,npu property for the npu syscon node available on
+> EN7581 SoC. The airoha Network Processor Unit (NPU) is used to offload
+> network traffic forwarded between Packet Switch Engine (PSE) ports.
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
+ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> index c578637c5826db4bf470a4d01ac6f3133976ae1a..6388afff64e990a20230b0c4e=
+58534aa61f984da 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> @@ -63,6 +63,12 @@ properties:
+>    "#size-cells":
+>      const: 0
+> =20
+> +  airoha,npu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the syscon node used to configure the NPU module
+> +      used for traffic offloading.
 
--- 
-2.48.1
+Why do you need a phandle for this, instead of a lookup by compatible?
+Do you have multiple instances of this ethernet controller on the
+device, that each need to look up a different npu?
 
+> +
+>  patternProperties:
+>    "^ethernet@[1-4]$":
+>      type: object
+> @@ -132,6 +138,8 @@ examples:
+>                       <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>,
+>                       <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+> =20
+> +        airoha,npu =3D <&npu>;
+> +
+>          #address-cells =3D <1>;
+>          #size-cells =3D <0>;
+> =20
+>=20
+> --=20
+> 2.48.1
+>=20
+
+--JnOj/fdaK/Kw9pqY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6O3pAAKCRB4tDGHoIJi
+0r90AQCPFWieY3rJFPgYre/U5p5JhiHPBES11cYsO6z7cPd7JgD+LbhWNBtMLabp
+sVw4Vk5SnTfpxAWmdYRThF4q2n8QHAU=
+=ee/X
+-----END PGP SIGNATURE-----
+
+--JnOj/fdaK/Kw9pqY--
 
