@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD11C02194
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 14:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32894C02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 15:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PkUPt9U05YjjPJxZ4JjPpNBEi2lRt9jVFobtXPea1ZQ=; b=BZCN3N4JSBORWD85kTVQReLZcM
-	7uqDBcYiz1NDomZ4OjZndKQkzZqcV9cqk29QJx0y/qUNv9GtrKQB07LO1ib00H7YQvB/89ceLEM76
-	VCSuWGEU+cJr2e0Vwo1QKmnGsj4nwFSZ6nyw5XLLCD4bZJ6sSrB1GitAA2TbWHOcy2cHXvn3Ftse2
-	7m05Ev8BgTPi+rZ6nYKAKTVxcZQbKTEqCmNdNGczOQHeEiWjCjFTS6zEP/WNOwd6bgyJYbf9CQsyf
-	oSoXIcIshVWw+UKDX6adf6puIoubDnuNfjKmU1WPNC3glTU2PF2lsGNRiV/X3p+rPv/GKghPqkzY9
-	QjZmb9vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=asjGkuilfuFLJnSpoKLSbi0nWNbGb+gg0jInBWQp74k=; b=HbV5cXEPrVba+6JHtQtU8KVBP3
+	gvBQ7Q/yhWE1W4A2wM7UYRlUzzWBD8bx+CCaIlHNuJw0jqBe2m22VHN2oH+hlloYgn9g509qw17R/
+	YUHWvObKaNK1va72925kJmOUeNR7mBhcNqB1CvKO64NPa4fpZUMGKqv0ONBm02QVApSx2Un578BYe
+	xYwt6IiBT87jo96+Cwf+JZK2SA+07+21cJT9+YK4ach4hsXckjpixElWD0Yji3OTgpY/ror/e/VWr
+	TCgrJO/sxOHGI1DLDB2PygLkb6lDFh5NDHXRHrpAHkdgLBGfkIcSTQqCiAX+QrkAx8ksHliqG65f4
+	Vd5PARZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfgoP-00000003fmz-1NAB;
-	Wed, 05 Feb 2025 14:55:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tfhR4-00000003n95-0uN9;
+	Wed, 05 Feb 2025 15:35:30 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfgmS-00000003fTE-1xpj;
-	Wed, 05 Feb 2025 14:53:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A53E7A436D4;
-	Wed,  5 Feb 2025 14:51:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDF1FC4CED1;
-	Wed,  5 Feb 2025 14:53:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738767211;
-	bh=ly4tyRLO/ehfMN/FLCIRG16hKWOkEGsQKwgjdbw72Qs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bnE4QYFLfLaYNfccMdfqWT+RYN9yf+Gjxza7rzCut/1l9oMaUuiijDdd/DhaRbESZ
-	 XgFg6X3q4ifc0Xq8xBrBd3RLOXS/4Y33jlkUTNozgo2VcesBo2wJwSkQaRsQqJZa0a
-	 T67JDf8W1XRZNMD5C9zAXRKf4SEEAxGwkW8xeIPTCdscEvhIh30okn0Sv7Z9Jvpu3E
-	 PHUledK8RTCFdrv8PmcgPFa163+tjJbY8mwv5asDoBKS5o2hovBwjFoJP+EmXlJDXt
-	 0al3PgvxiEK16LH5cWdsPOTO8FTFJ0qmea/GqbeiLRwUna6jGtHUrHA0uLaWFwRXQg
-	 MrFxL1PvPIaEA==
-Date: Wed, 5 Feb 2025 15:53:29 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Florent Tomasin <florent.tomasin@arm.com>, 
-	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, nd@arm.com, 
-	Akash Goel <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-Message-ID: <20250205-robust-tall-parrot-69baf7@houat>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
- <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
- <1a73c3acee34a86010ecd25d76958bca4f16d164.camel@ndufresne.ca>
- <ppznh3xnfuqrozhrc7juyi3enxc4v3meu4wadkwwzecj7oxex7@moln2fiibbxo>
- <9d0e381758c0e83882b57102fb09c5d3a36fbf57.camel@ndufresne.ca>
- <1f436caa-1c27-4bbd-9b43-a94dad0d89d0@arm.com>
- <c856a7059171bcc6afd6d829c6c025882855778b.camel@ndufresne.ca>
+	id 1tfh3f-00000003iSP-23pX;
+	Wed, 05 Feb 2025 15:11:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=asjGkuilfuFLJnSpoKLSbi0nWNbGb+gg0jInBWQp74k=; b=zINUhAreYraWVOimVGIKsPbkuK
+	1KANzkOOeCL74/NExiEa+vl7my11e0x9zwtnsGzpebzdHKGA+WXOTn0wkOkatNUmg0ij6W31nWvBt
+	gq2vdE2dzHZ93vCbrLpbTO51Xb9poKCDdLyDx2+gloxxu7CL6FhTsl1X+kqkyTecQb2MHLTHYeMlz
+	xW5i/Iarel+jr8dJgSfL5fCl8ltY/HsoGLIZxUV2zdp9vfBNUl+JDvRi9ZycLJNdWoXp/YDPNJkzG
+	4SxOIznT57230T2yQPvQb8ygVtwU+w/lK+UuTxM/Z55jt+nTpP4sfvRsyDp9udySnL2gMmCGVS8+p
+	8Xh9LmsA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:41434)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tfh3O-0007SW-2X;
+	Wed, 05 Feb 2025 15:11:03 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tfh3J-0002Vt-1S;
+	Wed, 05 Feb 2025 15:10:57 +0000
+Date: Wed, 5 Feb 2025 15:10:57 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Simon Horman <horms@kernel.org>,
+	Vladimir Oltean <olteanv@gmail.com>
+Subject: [PATCH net-next 0/3] net: dsa: add support for phylink managed EEE
+Message-ID: <Z6N_ge7H5oTYt6n8@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="edrbb66pldmq62jz"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <c856a7059171bcc6afd6d829c6c025882855778b.camel@ndufresne.ca>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_065332_649391_5B54B7BC 
-X-CRM114-Status: GOOD (  47.17  )
+X-CRM114-CacheID: sfid-20250205_071119_529363_ADBF8F14 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,139 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---edrbb66pldmq62jz
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-MIME-Version: 1.0
+This series adds support for phylink managed EEE to DSA, and converts
+mt753x to make use of this feature.
 
-On Tue, Feb 04, 2025 at 01:22:58PM -0500, Nicolas Dufresne wrote:
-> Le lundi 03 f=E9vrier 2025 =E0 16:43 +0000, Florent Tomasin a =E9crit=A0:
-> > Hi Maxime, Nicolas
-> >=20
-> > On 30/01/2025 17:47, Nicolas Dufresne wrote:
-> > > Le jeudi 30 janvier 2025 =E0 17:38 +0100, Maxime Ripard a =E9crit=A0:
-> > > > Hi Nicolas,
-> > > >=20
-> > > > On Thu, Jan 30, 2025 at 10:59:56AM -0500, Nicolas Dufresne wrote:
-> > > > > Le jeudi 30 janvier 2025 =E0 14:46 +0100, Maxime Ripard a =E9crit=
-=A0:
-> > > > > > Hi,
-> > > > > >=20
-> > > > > > I started to review it, but it's probably best to discuss it he=
-re.
-> > > > > >=20
-> > > > > > On Thu, Jan 30, 2025 at 01:08:56PM +0000, Florent Tomasin wrote:
-> > > > > > > Hi,
-> > > > > > >=20
-> > > > > > > This is a patch series covering the support for protected mod=
-e execution in
-> > > > > > > Mali Panthor CSF kernel driver.
-> > > > > > >=20
-> > > > > > > The Mali CSF GPUs come with the support for protected mode ex=
-ecution at the
-> > > > > > > HW level. This feature requires two main changes in the kerne=
-l driver:
-> > > > > > >=20
-> > > > > > > 1) Configure the GPU with a protected buffer. The system must=
- provide a DMA
-> > > > > > >    heap from which the driver can allocate a protected buffer.
-> > > > > > >    It can be a carved-out memory or dynamically allocated pro=
-tected memory region.
-> > > > > > >    Some system includes a trusted FW which is in charge of th=
-e protected memory.
-> > > > > > >    Since this problem is integration specific, the Mali Panth=
-or CSF kernel
-> > > > > > >    driver must import the protected memory from a device spec=
-ific exporter.
-> > > > > >=20
-> > > > > > Why do you need a heap for it in the first place? My understand=
-ing of
-> > > > > > your series is that you have a carved out memory region somewhe=
-re, and
-> > > > > > you want to allocate from that carved out memory region your bu=
-ffers.
-> > > > > >=20
-> > > > > > How is that any different from using a reserved-memory region, =
-adding
-> > > > > > the reserved-memory property to the GPU device and doing all yo=
-ur
-> > > > > > allocation through the usual dma_alloc_* API?
-> > > > >=20
-> > > > > How do you then multiplex this region so it can be shared between
-> > > > > GPU/Camera/Display/Codec drivers and also userspace ?
-> > > >=20
-> > > > You could point all the devices to the same reserved memory region,=
- and
-> > > > they would all allocate from there, including for their userspace-f=
-acing
-> > > > allocations.
-> > >=20
-> > > I get that using memory region is somewhat more of an HW description,=
- and
-> > > aligned with what a DT is supposed to describe. One of the challenge =
-is that
-> > > Mediatek heap proposal endup calling into their TEE, meaning knowing =
-the region
-> > > is not that useful. You actually need the TEE APP guid and its IPC pr=
-otocol. If
-> > > we can dell drivers to use a head instead, we can abstract that SoC s=
-pecific
-> > > complexity. I believe each allocated addressed has to be mapped to a =
-zone, and
-> > > that can only be done in the secure application. I can imagine simila=
-r needs
-> > > when the protection is done using some sort of a VM / hypervisor.
-> > >=20
-> > > Nicolas
-> > >=20
-> >=20
-> > The idea in this design is to abstract the heap management from the
-> > Panthor kernel driver (which consumes a DMA buffer from it).
-> >=20
-> > In a system, an integrator would have implemented a secure heap driver,
-> > and could be based on TEE or a carved-out memory with restricted access,
-> > or else. This heap driver would be responsible of implementing the
-> > logic to: allocate, free, refcount, etc.
-> >=20
-> > The heap would be retrieved by the Panthor kernel driver in order to
-> > allocate protected memory to load the FW and allow the GPU to enter/exit
-> > protected mode. This memory would not belong to a user space process.
-> > The driver allocates it at the time of loading the FW and initialization
-> > of the GPU HW. This is a device globally owned protected memory.
->=20
-> This use case also applies well for codec. The Mediatek SCP firmware need=
-s to be
-> loaded with a restricted memory too, its a very similar scenario, plus Me=
-diatek
-> chips often include a Mali. On top of that, V4L2 codecs (in general) do n=
-eed to
-> allocate internal scratch buffer for the IP to write to for things like m=
-otion
-> vectors, reconstruction frames, entropy statistics, etc. The IP will only=
- be
-> able to write if the memory is restricted.
+Patch 1 implements a helper to indicate whether the MAC LPI operations
+are populated (suggested by Vladimir)
 
-BTW, in such a case, do the scratch buffers need to be
-protected/secure/whatever too, or would codecs be able to use any buffer
-as a scratch buffer?
+Patch 2 makes the necessary changes to the core code - we retain calling
+set_mac_eee(), but this method now becomes a way to merely validate the
+arguments when using phylink managed EEE rather than performing any
+configuration.
 
-Maxime
+Patch 3 converts the mt7530 driver to use phylink managed EEE.
 
---edrbb66pldmq62jz
-Content-Type: application/pgp-signature; name="signature.asc"
+ drivers/net/dsa/mt7530.c  | 69 ++++++++++++++++++++++++++++++++---------------
+ drivers/net/phy/phylink.c |  3 +--
+ include/linux/phylink.h   | 12 +++++++++
+ net/dsa/user.c            | 21 +++++++++------
+ 4 files changed, 74 insertions(+), 31 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6N7aAAKCRAnX84Zoj2+
-doTZAYC3KraTKaHat9Tiq3AbNilzp/uyB6OJohhC6KgS8ip7Em2xWpjYSTaqcm0i
-XDstePQBf2GNysp5QIxHwmbP32dTXWpJP67ChoVOCgGc+5xAqzvPeAGxw97hlfZf
-HYSF4lENtQ==
-=HDp7
------END PGP SIGNATURE-----
-
---edrbb66pldmq62jz--
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
