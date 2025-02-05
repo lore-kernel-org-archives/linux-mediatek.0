@@ -4,113 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B677C02194
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 15:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE39C02198
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 18:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=; b=dk3MJOIq73TUXq
-	k5jXo0aTAw7b8YAUqrbxDy0yUp1Zfafsu5hNcdb4iTuAeNj2Y4gvpkjq6YGRTw7V5M8WWfuTTrgGL
-	XK5P2L0QqBLJFuZzXcpfs8ndhw32UD4LSN+Wo5orSf9FeOEAvlUXRZJ38d2vj5tZrgPCasvrHYmjZ
-	yijEmPS4MYyA+G7u3w/yPl9QFToUCrwCRlNUriKJ28KGH5jcbyqVFeVnY/ZUAD9o7SiVj/Y/PAMz9
-	z5YRvCFeDGH2qP/b/6OX5oOH1ewa5/az05ftQ1agpOAqI3a0DTo+hVwX+tcR20iYIaFnOJXhaPZvU
-	xfSXElnm0OsrkkjFy3NQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ewgPkFmEX3mInvEnIhY/6iT5VC+yD3hq+wlM8kNCGHw=; b=pnHlz7GBXghH6IlqHaBSJZPNGo
+	diHC5FrDxrFpAEqLc2Oj8/re4cKK/TUZ4P/9B/oHgylwWuv1Bp9zL0ROIcdHxax+JtfgY99pDHeoZ
+	pGq28MTc+haDlgfTokB4MdqwtLEH1ahf66GbHtY9Py0XoyUSNutNx+oP/fZED3MMHW8bEL8rOM4Km
+	U8gWJWYIFUkDt3qmT/hDMvxmKbI7ybK5dZCaGc0tZRX7i0gOtHwDlbFvcYbjrK3nticAkaMekvWYC
+	6TtTwcd4yhJqO41OqkXsjctdyc4lwwCus35M8ffAPwsFmbk5CgqUS4bLzi09NM86cnNDi13TJnXkC
+	UIHDIZlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfhZZ-00000003pEO-0tQv;
-	Wed, 05 Feb 2025 15:44:17 +0000
-Received: from cross.elm.relay.mailchannels.net ([23.83.212.46])
+	id 1tfjun-00000004DgT-1Smb;
+	Wed, 05 Feb 2025 18:14:21 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfhYB-00000003ovo-2PdD;
-	Wed, 05 Feb 2025 15:42:53 +0000
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id C48B890122A;
-	Wed,  5 Feb 2025 15:42:41 +0000 (UTC)
-Received: from uk-fast-smtpout3.hostinger.io (100-119-10-57.trex-nlb.outbound.svc.cluster.local [100.119.10.57])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 8C5B490333A;
-	Wed,  5 Feb 2025 15:42:38 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1738770161; a=rsa-sha256;
-	cv=none;
-	b=OsjNgaApkZXHkKD/sbtUQKjQRhGJ2Zq4aYcD2R2LQ+7V4IHpBZY5MnRt6cd4THcDWdpqrp
-	0I1dewPpzuBAhBfRcxTDAR/ECYZKlUjrrsQe8cv7UzXK7Ywd0AhHzELZLzRgOS/uouqzlS
-	IJRtyxwnw12iBOZrjnnvhtsU+ZyRYaCdErq3wk9cRDtnNLqgqhwnF4c+MwEl045EZkLX7e
-	1oHp7JYLGgdpcL+yVMdYNVXPCG0XGtLj/QWQhx7hZgK77iH+aDxyxlZoPT5uCQSD2SKda9
-	izXxs+Qszu/KZrbdp7bzXQUh4QH8heR9CNQMq9DfHGFF4a3QUMI40Zw2wAS4mQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1738770161;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=;
-	b=t6+W/vx5mso4vB+SWRCH8lmC9dKhTPMhggT7XrhJ96mbDPYsnXo/jUXSMIjceYy4/dhu6w
-	8y3jDg5870/ubnGlERD0ICP3XjUf+xZ8waOCaK1rBR+QLmcaWxnEJ2FHUudIVMNpHmGA3c
-	BYLnPcW0PgviCjLkB3fVrB84L1kBJ2HVHF7MtC3JPMvsi4wj9jto1Wtsy+dZ3lvkWV4sVc
-	TeEEYvH9Bcd15zkE6/RhvMNP+6NrcbNjVqVlRGpfOCVDU9aFW5o8/j4xvOQeHNC0P7BezG
-	cmd+HlgTFx3YJf4AGN8LVyP8C67sdFO71FzKYw+ZoYWrMeomwduRGJXJN9PxHg==
-ARC-Authentication-Results: i=1;
-	rspamd-854f7f575d-hc7pr;
-	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Keen-Shrill: 6d08bb6615a96223_1738770161601_1876515665
-X-MC-Loop-Signature: 1738770161601:354085814
-X-MC-Ingress-Time: 1738770161601
-Received: from uk-fast-smtpout3.hostinger.io (uk-fast-smtpout3.hostinger.io
- [31.220.23.37])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.119.10.57 (trex/7.0.2);
-	Wed, 05 Feb 2025 15:42:41 +0000
-Message-ID: <10de11cf-a443-472e-aaec-df9e2ed54090@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1738770156;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YxqsoO5YRFSxRwF52mpSuo5ohU/ja/zCcFmdgD0i/xY=;
-	b=j8IPL+DuU8GProATJm/Duv9PuKhykYmg2E302XRtT0REzY7Xwyuw+AODU+wsrNKKnCH0Gq
-	Pi8RuEsYTrm8lSe5baEgUQ8WboBnIbhpdjrTaowqnNWEgzMzEGa5ahAkvmbMbfVvbRMaWJ
-	kW2tuUGiICsBsneDgqZR60Nm2rk8kKKepv2+l1hxZKdV38DpIrd/z1QHQ9jmgGTed8s/Cc
-	2nvhl7M/UkFqNCge5BY93gZfhGoYxQOic8FulAB7rXS8mRZnV5AbKNzyeZlxTj3DBfXlhR
-	5drXh2xtuX6XJZhg0Z4dprka1SvB7AMlBMX5XF9n3wugc5pViJx/6jbsGG+sNA==
+	id 1tfjuj-00000004Deo-30IN
+	for linux-mediatek@lists.infradead.org;
+	Wed, 05 Feb 2025 18:14:20 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-7b6edb82f85so1003993085a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Feb 2025 10:14:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1738779256; x=1739384056; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=ewgPkFmEX3mInvEnIhY/6iT5VC+yD3hq+wlM8kNCGHw=;
+        b=vcBCyiiD+OghxCIuXCUf9Zh2ExO5bpjkIh2q9GBZS3nTHXcxIj3Twky2Fh5cxS/DKg
+         bugp7xIO0AMAUQG12bSQxvQ+6hD2WsENy4zAZsqiEJDqxKGu1hJVlrE04YZAbBc5XN/q
+         E9vi213rRabEHDdEPgSrPXIadpGEajW8Ao/PFJ5/zNQb6MLmisr71BIXKKX7k9Do0x5i
+         68cMSCgHi7NO8xcuBlsFN93e2xo4tiDqiQtaQE8549BujHWyvrPHaeNbtLaSxRkx3sRQ
+         qUaf5Ctexzv1pORykeeCbLCraRD3GphvaISkWSid/lEDCkaMOPyFwZcqek0KnV4TV6sG
+         X1kQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738779256; x=1739384056;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ewgPkFmEX3mInvEnIhY/6iT5VC+yD3hq+wlM8kNCGHw=;
+        b=mJ5sz7cbOpRVZWLeDJYs7HAfXZeXBL1LM9slMR31/hDwj0hJGKuPeaqwjDvSe5AGYs
+         PjlO4fOMi1DCrjc21uil14OYNJWcTiZlBD6KxKnKPZlBKMjF8vKig11bdZjChU8lKt3q
+         cLKNGVXWs+0S2YJ6bBnrN4rAe7puriGfdtqFK5W8b7sPXPYIO9zbtUHkK1uv6Wd+Izgb
+         OIxEsyXF1s8cn6wOzl+fuSr79CI+OeXIHiYFaWwXu1+/NR4x0wKYfaUjkWQNjdaxVT5X
+         vWV52JgSYMBlYVNHV+UOKxz4jYk+d+4mI7CeSu+83sAVgbHniIvZeUSElZqip2nLCQd8
+         jy2w==
+X-Forwarded-Encrypted: i=1; AJvYcCWXlIei52Ed9dAP/JI2umrdihxsGKQ9+KlJFdMfTMZ3d0QgE0a6QWu1//X6xzv6oUMQB3x3Qk4UuYizmsgRGg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAK+ZAwZImobn2raBCi3e0tbp8EboiEKa0D80XIFRHpX/KVJuP
+	pHrjKwMjvs9d9Z8xVlZ8pXCU2H3w924CB22Wv3vYB3uWFzkL55EgxAqX6IMn+JQ=
+X-Gm-Gg: ASbGncvMZ1t2xgc+U4Anh99YQ0CcIdjZNcBRlWcxVQ2oTVmWusv+RPQlB1lKnileiNA
+	oEABNvWOSg+n+hZC12x8Et3N83IgQmB0kCkrEfsqyrcF2IXBsr/2IFUgVKqcv2kBzM3TwVkap9i
+	3nAYnJf6/DjR6qixpWRhCmxHdJac73GBe9PzQxTItrQiFuHJhYgh2KLiOspNx7ZFPYFo3eysPrN
+	Xt2gQ2cxDtE6UIqVlam0jPtdxYAVOaIs3SuGrj6DV89ALUda3NH6cAggrwIf4Hc/xdIwIxA9tkC
+	LJ/w8zCNyw5vbBOX
+X-Google-Smtp-Source: AGHT+IFnnl9J6glnO7ave49R6IT/Ma233dmOTJ29e9pjZONK8+NxUm972OtvZRgYYQ8KwgzNcY3a5Q==
+X-Received: by 2002:a05:620a:d8c:b0:7be:3d2f:16fc with SMTP id af79cd13be357-7c03a029359mr549685385a.51.1738779255841;
+        Wed, 05 Feb 2025 10:14:15 -0800 (PST)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:11:e976::7a9])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c00a9047eesm781781685a.72.2025.02.05.10.14.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Feb 2025 10:14:15 -0800 (PST)
+Message-ID: <2085fb785095dc5abdac2352adfb3e1e1c8ae549.camel@ndufresne.ca>
+Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali
+ CSF GPUs
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Maxime Ripard <mripard@kernel.org>, Florent Tomasin
+	 <florent.tomasin@arm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Boris
+ Brezillon	 <boris.brezillon@collabora.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>,  Sumit Semwal <sumit.semwal@linaro.org>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey	
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier"	 <tjmercier@google.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
+ <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong
+ Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, 
+	linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, nd@arm.com, Akash Goel
+ <akash.goel@arm.com>
+Date: Wed, 05 Feb 2025 13:14:14 -0500
+In-Reply-To: <20250205-amorphous-nano-agouti-b5baba@houat>
+References: <cover.1738228114.git.florent.tomasin@arm.com>
+	 <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
+	 <1a73c3acee34a86010ecd25d76958bca4f16d164.camel@ndufresne.ca>
+	 <ppznh3xnfuqrozhrc7juyi3enxc4v3meu4wadkwwzecj7oxex7@moln2fiibbxo>
+	 <9d0e381758c0e83882b57102fb09c5d3a36fbf57.camel@ndufresne.ca>
+	 <1f436caa-1c27-4bbd-9b43-a94dad0d89d0@arm.com>
+	 <20250205-amorphous-nano-agouti-b5baba@houat>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 3/3] net: dsa: mt7530: convert to phylink managed
- EEE
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Golle <daniel@makrotopia.org>, "David S. Miller"
- <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
- Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>
-References: <Z6N_ge7H5oTYt6n8@shell.armlinux.org.uk>
- <E1tfh3R-003aRS-3M@rmk-PC.armlinux.org.uk>
-Content-Language: en-US
-From: "Chester A. Unal" <chester.a.unal@arinc9.com>
-In-Reply-To: <E1tfh3R-003aRS-3M@rmk-PC.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Wed, 05 Feb 2025 15:42:30 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=FNtJxPos c=1 sm=1 tr=0 ts=67a386ec a=gmHaVq+lWCOlvlVL1vhg7g==:117 a=gmHaVq+lWCOlvlVL1vhg7g==:17 a=IkcTkHD0fZMA:10 a=6jP-D5u7NbJpRVPPYh4A:9 a=QEXdDO2ut3YA:10
-X-CM-Envelope: MS4xfAbWRb9fpDBlM9PTOARaxKCQyT5N9lFLaT9hxBqpt8YY33csIIzo851RrRdUcj5OuWXj7LSHEKhkC6+c5m8RjZidR1ptXPzfh8YMhel7wLhrOeBLbUpf JgMvwFTcDNgAx3ceEmj3huh1o46TpAlX5mSthdlNUUIQ6s1l1yhTlRncANe2sWXi50R9YEKDeu1r5brkFSXnd8aZCi4pMYOoC+ltzo6qC5mVKQ0Eeyxo7pJZ A/LidGzRHjB84GsE/q6zji3shJkrIMh18zrw9S6FoYyLWGc61BvYGM906zB+L5NvO4KAxYMUnhDGlwMlNnRHWNVnFYdGIlEikxpHcUSsz8tTfR8c/ncy0kay rpFcvj9dCveq0qgLroiqbutE249qdK93MlZqSoFgPJmKuFc44LG9ky2wz86e5B5NL8Z2ZYVIFNy4ipvY9BhyF2KirZC9ZMiRR5pX1n+fxDlmEZImQ5+O8Elk V/8ZyDAJq7+sE163uO91r2sDP4m2zdtzVyIAUFjeObQHbv/0T9Qs1EoQFcnoxgsZnIh8rGklhoyCoeTVIunvX58mTuV8YgxCPG1WQsDS8VTZc5dTgh/JlukD B2OnJPwM+GuYpKwpX75MCEGhHlh5wzn0QNxGhwmkclXZJdIfGBq6sWCZRYzH2A+qu5del/RcL2XgBfRcD+GF5+swHwrvSqh0XxYXFM7ohvC9yFM2idldV5mh c9vh3AIl/ffLLXCNTfVReOReLYBeC2Jwa80fuJr6CIjfYzhas2U8xA==
-X-AuthUser: chester.a.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_074252_034732_B71353FD 
-X-CRM114-Status: UNSURE (   5.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250205_101417_758257_ED843B58 
+X-CRM114-Status: GOOD (  49.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,17 +122,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Russell.
+Le mercredi 05 f=C3=A9vrier 2025 =C3=A0 15:52 +0100, Maxime Ripard a =C3=A9=
+crit=C2=A0:
+> On Mon, Feb 03, 2025 at 04:43:23PM +0000, Florent Tomasin wrote:
+> > Hi Maxime, Nicolas
+> >=20
+> > On 30/01/2025 17:47, Nicolas Dufresne wrote:
+> > > Le jeudi 30 janvier 2025 =C3=A0 17:38 +0100, Maxime Ripard a =C3=A9cr=
+it=C2=A0:
+> > > > Hi Nicolas,
+> > > >=20
+> > > > On Thu, Jan 30, 2025 at 10:59:56AM -0500, Nicolas Dufresne wrote:
+> > > > > Le jeudi 30 janvier 2025 =C3=A0 14:46 +0100, Maxime Ripard a =C3=
+=A9crit=C2=A0:
+> > > > > > Hi,
+> > > > > >=20
+> > > > > > I started to review it, but it's probably best to discuss it he=
+re.
+> > > > > >=20
+> > > > > > On Thu, Jan 30, 2025 at 01:08:56PM +0000, Florent Tomasin wrote=
+:
+> > > > > > > Hi,
+> > > > > > >=20
+> > > > > > > This is a patch series covering the support for protected mod=
+e execution in
+> > > > > > > Mali Panthor CSF kernel driver.
+> > > > > > >=20
+> > > > > > > The Mali CSF GPUs come with the support for protected mode ex=
+ecution at the
+> > > > > > > HW level. This feature requires two main changes in the kerne=
+l driver:
+> > > > > > >=20
+> > > > > > > 1) Configure the GPU with a protected buffer. The system must=
+ provide a DMA
+> > > > > > >    heap from which the driver can allocate a protected buffer=
+.
+> > > > > > >    It can be a carved-out memory or dynamically allocated pro=
+tected memory region.
+> > > > > > >    Some system includes a trusted FW which is in charge of th=
+e protected memory.
+> > > > > > >    Since this problem is integration specific, the Mali Panth=
+or CSF kernel
+> > > > > > >    driver must import the protected memory from a device spec=
+ific exporter.
+> > > > > >=20
+> > > > > > Why do you need a heap for it in the first place? My understand=
+ing of
+> > > > > > your series is that you have a carved out memory region somewhe=
+re, and
+> > > > > > you want to allocate from that carved out memory region your bu=
+ffers.
+> > > > > >=20
+> > > > > > How is that any different from using a reserved-memory region, =
+adding
+> > > > > > the reserved-memory property to the GPU device and doing all yo=
+ur
+> > > > > > allocation through the usual dma_alloc_* API?
+> > > > >=20
+> > > > > How do you then multiplex this region so it can be shared between
+> > > > > GPU/Camera/Display/Codec drivers and also userspace ?
+> > > >=20
+> > > > You could point all the devices to the same reserved memory region,=
+ and
+> > > > they would all allocate from there, including for their userspace-f=
+acing
+> > > > allocations.
+> > >=20
+> > > I get that using memory region is somewhat more of an HW description,=
+ and
+> > > aligned with what a DT is supposed to describe. One of the challenge =
+is that
+> > > Mediatek heap proposal endup calling into their TEE, meaning knowing =
+the region
+> > > is not that useful. You actually need the TEE APP guid and its IPC pr=
+otocol. If
+> > > we can dell drivers to use a head instead, we can abstract that SoC s=
+pecific
+> > > complexity. I believe each allocated addressed has to be mapped to a =
+zone, and
+> > > that can only be done in the secure application. I can imagine simila=
+r needs
+> > > when the protection is done using some sort of a VM / hypervisor.
+> > >=20
+> > > Nicolas
+> > >=20
+> >=20
+> > The idea in this design is to abstract the heap management from the
+> > Panthor kernel driver (which consumes a DMA buffer from it).
+> >=20
+> > In a system, an integrator would have implemented a secure heap driver,
+> > and could be based on TEE or a carved-out memory with restricted access=
+,
+> > or else. This heap driver would be responsible of implementing the
+> > logic to: allocate, free, refcount, etc.
+> >=20
+> > The heap would be retrieved by the Panthor kernel driver in order to
+> > allocate protected memory to load the FW and allow the GPU to enter/exi=
+t
+> > protected mode. This memory would not belong to a user space process.
+> > The driver allocates it at the time of loading the FW and initializatio=
+n
+> > of the GPU HW. This is a device globally owned protected memory.
+>=20
+> The thing is, it's really not clear why you absolutely need to have the
+> Panthor driver involved there. It won't be transparent to userspace,
+> since you'd need an extra flag at allocation time, and the buffers
+> behave differently. If userspace has to be aware of it, what's the
+> advantage to your approach compared to just exposing a heap for those
+> secure buffers, and letting userspace allocate its buffers from there?
 
-On 05/02/2025 15:11, Russell King (Oracle) wrote:
-> Fixme: doesn't bit 25 and 26 also need to be set in the PMCR for
-> PMCR_FORCE_EEE100 and PMCR_FORCE_EEE1G to take effect?
+Unless I'm mistaken, the Panthor driver loads its own firmware. Since loadi=
+ng
+the firmware requires placing the data in a protected memory region, and th=
+at
+this aspect has no exposure to userspace, how can Panthor not be implicated=
+ ?
 
-Yes, but only for MT7531 and the switch component of the MT7988 SoC. For
-MT7530 and the switch component of the AN7581 SoC, bit 15
-(MT7530_FORCE_MODE) must be set. The MT753X DSA subdriver sets these bits
-accordingly at the setup function that pertains to the specific switch
-model.
+>=20
+> > When I came across this patch series:
+> > -
+> > https://lore.kernel.org/lkml/20230911023038.30649-1-yong.wu@mediatek.co=
+m/#t
+> > I found it could help abstract the interface between the secure heap an=
+d
+> > the integration of protected memory in Panthor.
+> >=20
+> > A kernel driver would have to find the heap: `dma_heap_find()`, then
+> > request allocation of a DMA buffer from it. The heap driver would deal
+> > with the specifities of the protected memory on the system.
+>=20
+> Sure, but we still have to address *why* it would be a good idea for the
+> driver to do it in the first place. The mediatek series had the same
+> feedback.
 
-Chester A.
+Which got pretty clear replies iirc. The drivers needs scratch buffers and
+secondary buffers to be protected, and these are not visible to userspace. =
+No
+one have made a proper counter argument yet. In MTK, the remote-proc driver=
+ for
+the SCP (a multi-purpose multimedia co-processor) will also need to place t=
+he
+firmware data into a protected buffer (with the help of the tee to copy the=
+ data
+into it of course).
+
+Nicolas
+
+>=20
+> Maxime
+
 
