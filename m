@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 097D2C02194
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 12:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E17BC02196
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 12:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TSKKiDf9lV2pLaZCxyIkP363VASdX2bT57ifNm/GbSY=; b=HWjLaEzbmQpKp2UjOtzFfuhsBm
-	HxUYU8lSNXOMted/YTJ0ECXBVbfzSWYHESKOOXTqKRoJCAVhbJJmt6A1lz8/fwl1W1DxN3CSicPt+
-	JbJLPYL5FN+6dO4aYIrmZKrTjIAvLkQ3s9+aSudRGCa/0wlipbNjeiCyodxLIXwXxpyRg4zgoONXn
-	eroRQoG4GZ9ts8ML08n1WBcotqxqZOjCwU90/nRAmjobq5TKTi8aJgNqWT84NwwvKApL8zgM4iFX+
-	l8bAZTDldwmu9dTWxjKVcJFCuHwD7MY9mgFpCFsUZ/T7V2NdXVceknAJvSYBDK/OmjaJcQjefZP9l
-	13YzjLcQ==;
+	bh=lbSs2LOWzdNenXX0oELvI/bNNE458C+NZ9lgVj5hXDQ=; b=IGX/xivv6c7I4NucEHFP4LeDIe
+	qERfj0BZllZUl/Do8Wx2yDJYLtimwJYq4Yu1Pq/L9saHO9XDxxLcAi12NjEweVkVCWeQIZKVyHDPk
+	FwOc/Dj2IwqL5V57Ibh8EWQyUPaD3pXnnDbhtFyPLDZ7tr81gWL3pMkFZ13tO2Wo+h8xd27uXcKi3
+	7U3i7mZ7Amt5/BIwVjFEInzALER71km9ohv28/aO9qwfALWF/HIbA8s/gX2Zf+DspzIDpIVPRJXqb
+	5BjAVfYb3UFso942Ow7BW797nRA0cnNortQFu383F8JSHoqQmvuW57c22yQbW0h2F1D1qjAQg3a7P
+	CZYqb3Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfeo8-00000003GtM-0Ct6;
-	Wed, 05 Feb 2025 12:47:08 +0000
+	id 1tfeqq-00000003HMA-2WeS;
+	Wed, 05 Feb 2025 12:49:56 +0000
 Received: from relmlor1.renesas.com ([210.160.252.171] helo=relmlie5.idc.renesas.com)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfekB-00000003Fgi-0LDp;
-	Wed, 05 Feb 2025 12:43:04 +0000
-X-CSE-ConnectionGUID: KTNcS2wNQMaUlothZ7KZaQ==
-X-CSE-MsgGUID: zctjB0xES0S1VXpVZgYMxQ==
+	id 1tfekM-00000003FjP-1KV5;
+	Wed, 05 Feb 2025 12:43:15 +0000
+X-CSE-ConnectionGUID: kZEjbmkXQmKuWVWpCE4ldQ==
+X-CSE-MsgGUID: heLXhqTjSwWnRtR0B4PM8w==
 Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
-  by relmlie5.idc.renesas.com with ESMTP; 05 Feb 2025 21:43:02 +0900
+  by relmlie5.idc.renesas.com with ESMTP; 05 Feb 2025 21:43:13 +0900
 Received: from localhost.localdomain (unknown [10.226.92.225])
-	by relmlir6.idc.renesas.com (Postfix) with ESMTP id 45B7241F86AB;
-	Wed,  5 Feb 2025 21:42:56 +0900 (JST)
+	by relmlir6.idc.renesas.com (Postfix) with ESMTP id AC44F41F86B5;
+	Wed,  5 Feb 2025 21:43:02 +0900 (JST)
 From: Biju Das <biju.das.jz@bp.renesas.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
@@ -50,17 +50,17 @@ Cc: Biju Das <biju.das.jz@bp.renesas.com>,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>,
 	Biju Das <biju.das.au@gmail.com>
-Subject: [PATCH net-next v2 4/7] net: ethernet: mtk-star-emac: Use of_get_available_child_by_name()
-Date: Wed,  5 Feb 2025 12:42:24 +0000
-Message-ID: <20250205124235.53285-5-biju.das.jz@bp.renesas.com>
+Subject: [PATCH net-next v2 5/7] net: ethernet: mtk_eth_soc: Use of_get_available_child_by_name()
+Date: Wed,  5 Feb 2025 12:42:25 +0000
+Message-ID: <20250205124235.53285-6-biju.das.jz@bp.renesas.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250205124235.53285-1-biju.das.jz@bp.renesas.com>
 References: <20250205124235.53285-1-biju.das.jz@bp.renesas.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_044303_232030_960402A4 
-X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-CacheID: sfid-20250205_044314_464330_98C9F0C7 
+X-CRM114-Status: UNSURE (   8.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,36 +77,38 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Use the helper of_get_available_child_by_name() to simplify
-mtk_star_mdio_init().
+mtk_mdio_init().
 
 Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
 ---
 v1->v2:
- *  Dropped using _free()
+ * Dropped using _free().
 ---
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 7 +------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 +------
  1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 25989c79c92e..76f202d7f055 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1427,15 +1427,10 @@ static int mtk_star_mdio_init(struct net_device *ndev)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 53485142938c..0ad965ced5ef 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -830,17 +830,12 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 	int ret;
+ 	u32 val;
  
- 	of_node = dev->of_node;
- 
--	mdio_node = of_get_child_by_name(of_node, "mdio");
-+	mdio_node = of_get_available_child_by_name(of_node, "mdio");
- 	if (!mdio_node)
+-	mii_np = of_get_child_by_name(eth->dev->of_node, "mdio-bus");
++	mii_np = of_get_available_child_by_name(eth->dev->of_node, "mdio-bus");
+ 	if (!mii_np) {
+ 		dev_err(eth->dev, "no %s child node found", "mdio-bus");
  		return -ENODEV;
+ 	}
  
--	if (!of_device_is_available(mdio_node)) {
+-	if (!of_device_is_available(mii_np)) {
 -		ret = -ENODEV;
--		goto out_put_node;
+-		goto err_put_node;
 -	}
 -
- 	priv->mii = devm_mdiobus_alloc(dev);
- 	if (!priv->mii) {
+ 	eth->mii_bus = devm_mdiobus_alloc(eth->dev);
+ 	if (!eth->mii_bus) {
  		ret = -ENOMEM;
 -- 
 2.43.0
