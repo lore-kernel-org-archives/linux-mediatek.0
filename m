@@ -4,121 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0881EC02192
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 20:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A728CC02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 20:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:In-Reply-To:References:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZN6lOxdYMjUO49jm3bB80agqHnejl+uLnWAidVCm81Y=; b=JvkHlWkgnWtUySrBE15zF2cfjv
-	QFoXXaoUNI93PAT7/jTKnt3E8HYMc3UQypk8edWAZy2zPY4IE0QePUopw8xQHb6dfBU0ivuOedckz
-	DoKiCtWjsO3493evzqe/1TqcgztdatKExbB5aBsLlyiEMc9zKMqSoY+zrdtDS8LjBbud6o5iRvPZp
-	qc6UmTKDvhpugv5QiiksE+ALWduZLiJP/9wvRpTKKnH4qIaK+Lm5Y3Isbm1CtcIZjZaAtOgAJ2sQF
-	T7lyrXv2jWExyMijw8ALW+appb3RnGTjUrZDVgqvBULbvUgdokN+yeFg+zPJUZuVJ/fgU641Pe/+W
-	jv2ji9Cg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M0Rwf+7KXmSBpd29XWcnSBKvyFjgwiRGrhZblTkj1Lo=; b=0yFGJfOriounTSDpqNE9CCULLj
+	oRR/LLYT2jJ94b9Tp4zVzknnLpM0tFgL/ntfr+Qyf4U35QnobP/TErzJYPMq74/mpZJb28UTfCu80
+	5xJU7AuCZ+8oyTryjhFm2jqc9XbLqXj5b6D7DPrE9709jW8cKYNT2/1bmWy/yhLXPT8x5YlvY9v6D
+	TOYQhzBfxImTzqo6km1UP0m20DVw9GYXReG0IdrVpbftEoSNlu3ewfcjllm5D4eao8sw/XaiE01KD
+	OWrZLgBmWm/7TzVZCeFh7gAv5Qvo1eWp6AkgXHKL59Xh4wTfk1HCs73QW5P8dBVfd7/SvtjtW6jV3
+	xKCdQarg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tflkP-00000004WHc-0Ocp;
-	Wed, 05 Feb 2025 20:11:45 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1tfm2Z-00000004YWQ-2ALO;
+	Wed, 05 Feb 2025 20:30:31 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tflkM-00000004WFg-3aA6
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Feb 2025 20:11:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738786302;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZN6lOxdYMjUO49jm3bB80agqHnejl+uLnWAidVCm81Y=;
-	b=aWZQ4kdiKWYkisF1CGSjqkEcY8ulOjbmH5pkkoB83JViwOAJKk+KQOQHn0xPeF5WZDUER3
-	ZXmcO1IVU4r+C4umLkIe38AoT//KeYkFEEM9BgoxrFXBz+4b60ZJEN0ehLScUn4cZrxlwZ
-	5N++8GozMHUE3ouqymQZMB7dIbtnyiE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-VivRk6b0MMGXZMwAVSQiaA-1; Wed,
- 05 Feb 2025 15:11:35 -0500
-X-MC-Unique: VivRk6b0MMGXZMwAVSQiaA-1
-X-Mimecast-MFC-AGG-ID: VivRk6b0MMGXZMwAVSQiaA
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BA2681801A18;
-	Wed,  5 Feb 2025 20:11:28 +0000 (UTC)
-Received: from asrivats-na.rmtustx.csb (unknown [10.2.17.21])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 760DD19560AB;
-	Wed,  5 Feb 2025 20:11:18 +0000 (UTC)
-From: Anusha Srivatsa <asrivats@redhat.com>
-Date: Wed, 05 Feb 2025 15:08:08 -0500
-Subject: [PATCH 12/12] Documentation: Update the todo
+	id 1tfm1B-00000004YMM-2sbK;
+	Wed, 05 Feb 2025 20:29:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id BB3E1A43A3D;
+	Wed,  5 Feb 2025 20:27:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 313CBC4CED1;
+	Wed,  5 Feb 2025 20:29:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738787344;
+	bh=UHkPohJyD6W+yHwDxBWd3ec6wZ6zz/r14WTyWTqKyDM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LrV8oUjBaTMt0iHnJGaHE8EBmG+hkGWw/HWjit7ByqbUbaROY/m73cSUN9VgB2142
+	 oCFt2uPCTv/A5D6UeZXdkb6rYhNqj/d+9oDX9db+j94sRjSwHDoBUn1xWXMXW9rWZI
+	 1wU3ljHEqkligtCTCrJ6qK+vcixxkdVhzf1hs2gMxVL4rlI+CoxidUcmZjzuD9coDV
+	 3FTvP8DtqU4DTlyv3LR4DxEV3MCdUEk36+me4c3GNtNxTzt4a/SagwaxUVTFeCzGuY
+	 aufDHWbbSIt+L8ZeCF4YyuCuF7pHDHEIH5HiSsaFzcV1af2lBg3L7RcZtL4LCcmytj
+	 F90H504cKB20g==
+Date: Wed, 5 Feb 2025 20:28:59 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next 09/13] dt-bindings: net: airoha: Add airoha,npu
+ phandle property
+Message-ID: <20250205-patronage-finisher-bbfbdb5b7dbc@spud>
+References: <20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org>
+ <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
+ <20250205-cleaver-evaluator-648c8f0b99bb@spud>
+ <Z6O8-dUrLNmvnW1u@lore-desk>
+ <20250205-disagree-motive-517efca2b90c@spud>
 MIME-Version: 1.0
-Message-Id: <20250205-mem-cocci-newapi-v1-12-aebf2b0e2300@redhat.com>
-References: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
-In-Reply-To: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
-To: Joel Stanley <joel@jms.id.au>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
- Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>, 
- Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- Alain Volmat <alain.volmat@foss.st.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Yannick Fertre <yannick.fertre@foss.st.com>, 
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
- Philippe Cornu <philippe.cornu@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, 
- Alexey Brodkin <abrodkin@synopsys.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
- Jonathan Corbet <corbet@lwn.net>
-Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
- linux-rockchip@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1738786137; l=1470;
- i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
- bh=8E/zDOS2y2jXYtpxt4v/XPpri1L2d3Hp1icGGz6XyLc=;
- b=kvdtINpTCFoOpfqXf/fVrI+PlDBH109lqvGOt8aqdxgPNRLHbndphfZbHS68h26FBvlE/Lev1
- rwTEVkvxYkZBkVPbSaO6vTBgPPPOtlnOVyP8CR4ue3yQ+gZM3xTUog2
-X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
- pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mwmjpKfwawZMCeM-JWX9gA68JmEJhTnOiGcLddMosJ4_1738786288
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="JrqZzneimgP/IQht"
+Content-Disposition: inline
+In-Reply-To: <20250205-disagree-motive-517efca2b90c@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_121142_957496_CC274DB8 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250205_122905_857348_3C9B9CA8 
+X-CRM114-Status: GOOD (  29.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,42 +88,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the Documentation to be more precise.
 
-v2: Update for clarity
+--JrqZzneimgP/IQht
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Cc: Thomas Zimmermann <tzimmermann@suse.de>
-Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
----
- Documentation/gpu/todo.rst | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+On Wed, Feb 05, 2025 at 08:01:26PM +0000, Conor Dooley wrote:
+> On Wed, Feb 05, 2025 at 08:33:13PM +0100, Lorenzo Bianconi wrote:
+> > > On Wed, Feb 05, 2025 at 07:21:28PM +0100, Lorenzo Bianconi wrote:
+> > > > Introduce the airoha,npu property for the npu syscon node available=
+ on
+> > > > EN7581 SoC. The airoha Network Processor Unit (NPU) is used to offl=
+oad
+> > > > network traffic forwarded between Packet Switch Engine (PSE) ports.
+> > > >=20
+> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > > ---
+> > > >  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 8 +=
++++++++
+> > > >  1 file changed, 8 insertions(+)
+> > > >=20
+> > > > diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-et=
+h.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > > > index c578637c5826db4bf470a4d01ac6f3133976ae1a..6388afff64e990a2023=
+0b0c4e58534aa61f984da 100644
+> > > > --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > > > +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > > > @@ -63,6 +63,12 @@ properties:
+> > > >    "#size-cells":
+> > > >      const: 0
+> > > > =20
+> > > > +  airoha,npu:
+> > > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > > +    description:
+> > > > +      Phandle to the syscon node used to configure the NPU module
+> > > > +      used for traffic offloading.
+> > >=20
+> > > Why do you need a phandle for this, instead of a lookup by compatible?
+> > > Do you have multiple instances of this ethernet controller on the
+> > > device, that each need to look up a different npu?
+> >=20
+> > actually not, but looking up via the compatible string has been naked by
+> > Krzysztof on a different series [0].
+>=20
+> Hmm, I disagree with adding phandles that are not needed. I don't agree
+> that there's no reuse, if you can treat the phandle identically on a new
+> device, in all likelihood, that node should have a fallback to the
+> existing one.
 
-diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-index 256d0d1cb2164bd94f9b610a751b907834d96a21..03fcd086889acbd1294669b260292ffc79e97e2f 100644
---- a/Documentation/gpu/todo.rst
-+++ b/Documentation/gpu/todo.rst
-@@ -441,13 +441,13 @@ Contact: Thomas Zimmermann <tzimmermann@suse.de>
- 
- Level: Intermediate
- 
--Request memory regions in all drivers
---------------------------------------
-+Request memory regions in all fbdev drivers
-+--------------------------------------------
- 
--Go through all drivers and add code to request the memory regions that the
--driver uses. This requires adding calls to request_mem_region(),
--pci_request_region() or similar functions. Use helpers for managed cleanup
--where possible.
-+Old/ancient fbdev drivers do not request their memory properly.
-+Go through these drivers and add code to request the memory regions that the
-+driver uses. Problematic areas include hardware that has exclusive ranges like
-+VGA. VGA16fb does not request the range as it is expected.
- 
- Drivers are pretty bad at doing this and there used to be conflicts among
- DRM and fbdev drivers. Still, it's the correct thing to do.
+Also, where is the binding for this npu? It looks like a brand-new
+module that you're adding a driver for in this series and a phandle to
+the node for here but I see no binding for it.
 
--- 
-2.47.0
+>=20
+> That said, the bigger problem in what you link is the ABI break caused by
+> requiring the presence of a new node. I'd NAK that patch too.
+>=20
+> >=20
+> > Regards,
+> > Lorenzo
+> >=20
+> > [0] https://patchwork.kernel.org/project/linux-pci/patch/20250115-en758=
+1-pcie-pbus-csr-v1-2-40d8fcb9360f@kernel.org/
+> >=20
+> > >=20
+> > > > +
+> > > >  patternProperties:
+> > > >    "^ethernet@[1-4]$":
+> > > >      type: object
+> > > > @@ -132,6 +138,8 @@ examples:
+> > > >                       <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>,
+> > > >                       <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+> > > > =20
+> > > > +        airoha,npu =3D <&npu>;
+> > > > +
+> > > >          #address-cells =3D <1>;
+> > > >          #size-cells =3D <0>;
+> > > > =20
+> > > >=20
+> > > > --=20
+> > > > 2.48.1
+> > > >=20
+> >=20
+> >=20
+>=20
+>=20
 
+
+
+--JrqZzneimgP/IQht
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6PKCwAKCRB4tDGHoIJi
+0kebAQCz6BaGDCwUWDirTEOkxpfSmpiIgYPo05mdyydf0MuO8QD+JZVQu1ZGmOgT
+e9zBvQ58441WWLaD6GSiqMwKzpKmHws=
+=yZil
+-----END PGP SIGNATURE-----
+
+--JrqZzneimgP/IQht--
 
