@@ -4,68 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A97A5C02197
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 06:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DB5C02192
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Feb 2025 07:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gew1xg9tGmhycefVQilgpYpxDvqbmdULT4xeC9VD2dA=; b=ZkmWntOx7PBWt0vWQaunuTR1/M
-	264N5xkOydrKhdmWvv+Wpc8sbRpC1KPc2pYYQ64KtOoqGpas6lucvr80lLspsVIA9KR2LzcN/P3Yr
-	wVVLZmZwb3f4dYbzHRMwJ0BYT4C4c4teZMS24uzuzO6/wAkTnCQrY9ATUO9JbZoZXDrSSeI+p+q4+
-	Bro/ZRvEIL6oFORzq7GT6ULg7f7QMyQDFwnLkDp36AHGQhwmpBGtFuhN1pCogfPVkEJAQMlau+3o+
-	SwG6skXfhzofZ0DpVHFHa1TjA91FrR3qylG13zQwshMrZAEyMvodnLII8kxjMk4XhIQ3WGEVDpJjw
-	JTmU6dmQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LOj9VlryOmQZmCz+R78WiYvIvniQhLw4kRALfZcRkwI=; b=kQy9rV44q+qvEdMfm3NGDiFfgs
+	DkKmHiOEiyVcui8xvYCx6BnR9I8/dSHblechiBuXkVSNGTNDLydDANOriVCOGrF7nVTsZLrV1WZDM
+	kEd88AFUvoyQuFLsw9B6w4Nr6pGWbzpNn+YTw7oK8TJ5BZYueZV+Bo4QdIcdd6ZPEM50S5A+94Wpt
+	k2RzDVaNxy1pnij5UPXO3LQCWDJuHsUQXDWGGqp0nzezGe6O3Nz6XpVUO2b/HKyj0BDEm2Q14F4Jd
+	Ik9EhpDZ/zvpRS6VscK+cDsCvFGTHgYKMIThqK05AeSCYE0bmw5Qxgd8w4/b4KFH14O67/mk83sb0
+	GUhL40Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfYrE-00000002QJH-3HFm;
-	Wed, 05 Feb 2025 06:25:56 +0000
-Received: from [192.198.163.17] (helo=mgamail.intel.com)
+	id 1tfZwf-00000002VDJ-21Fc;
+	Wed, 05 Feb 2025 07:35:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfYoo-00000002Pdt-1HKc;
-	Wed, 05 Feb 2025 06:23:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1738736606; x=1770272606;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=HP9+g74QEkY9kBAOGEAE+ZVm8tC/bXMDrX7XPQ/5eCs=;
-  b=jF7PATptU3lkSNZ+dwhB76h/swfjrEwDBfXfC6irTw/LYQjJxM8Orut2
-   TaEjRCd/frfAsOeMqGYWtTUjT+UrrrTdY6bpR4rRNv9PiK0kxZv9rrPUu
-   1t/u+lurocPJilDZQ5tDSewYkJRV1COSIf+LSvAaDe/0+msIDRVnLMhPC
-   KsX5WWGbjx11pOfcUCEFsiQNrwnlZQ2PS+N0WwxLSlnT3U6VDJG0tTy//
-   AhL/dMWrAIaBPx0rHfpEKcqkrI4Xviqs4wLZw98+uZKczI4qGrqj5BdLD
-   eHt9diMK62KfcXkZn7Ai9KJUvw23+kQb1dXoHojl4MMRDgVKkTyqiYoOH
-   w==;
-X-CSE-ConnectionGUID: hWjQW4YERUmRqr7FY/YOzQ==
-X-CSE-MsgGUID: YFow/LR7RuWFu7BOsqq85w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39187860"
-X-IronPort-AV: E=Sophos;i="6.13,260,1732608000"; 
-   d="scan'208";a="39187860"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Feb 2025 22:23:14 -0800
-X-CSE-ConnectionGUID: lNSBHWnpTgCzYu0jrN7DVQ==
-X-CSE-MsgGUID: bRJ2CwhTQgWO+oJMETI0/Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="141696589"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Feb 2025 22:23:09 -0800
-Date: Wed, 5 Feb 2025 07:19:37 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v2 net-next] net: ethernet: mtk_ppe_offload: Allow QinQ
-Message-ID: <Z6MC+WUALT3H6unG@mev-dev.igk.intel.com>
-References: <20250204194624.46560-1-ericwouds@gmail.com>
+	id 1tfZvH-00000002V9w-2oD1;
+	Wed, 05 Feb 2025 07:34:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 48B5D5C0713;
+	Wed,  5 Feb 2025 07:33:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E10EC4CED1;
+	Wed,  5 Feb 2025 07:34:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738740850;
+	bh=hfSf8djy5hTtllDF2aFI0BXeoZW85f56NLjc1r4dcOg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IUO8UoyC94v2p/uPu2QedFxw6ksTgCG+xykgtw7nBFNxIutrAuvRkPsnND7CV1JAS
+	 xj48DN1T9GSXMfyWjX9yZ8K/6+YdK2aAr5ZXmsEnmnfH7eiC5iuxmLiuQdCfoxn/oZ
+	 mlcE5udHOAh6EWmdedjtv5NPCyLU4AI0yiXVlnzHntIINWDPzQomhFGW14sfi0Pksv
+	 feJOUMw81pIwILmCmdv65ov7Dzw3UCw/Vbk9y0Yyv/8aWYWn+9a+O1RIPI3qHEvFT+
+	 kxwx2gCcdkB9O/r0Iug93/ZCBi5IVQVjxL442dCkdhxr/feiiknmG+eQ46QXZlNGkO
+	 y/cU1TRiFBarw==
+Message-ID: <8b79700d-f628-4e65-b9a5-63bbc3958cc1@kernel.org>
+Date: Wed, 5 Feb 2025 08:34:04 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250204194624.46560-1-ericwouds@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: Introduce more nodes to EN7581 SoC evaluation
+ board
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+References: <20250201-en7581-dts-spi-pinctrl-v1-1-aaa4a9dfc4a6@kernel.org>
+ <4656ae57-c6a1-48ac-a60f-72d7b988c307@kernel.org>
+ <231c1f01-dea1-4c39-bbe1-cb629f7c109d@kernel.org>
+ <Z6I9JzAVv3VjKOiE@lore-desk>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <Z6I9JzAVv3VjKOiE@lore-desk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_222326_354203_829B8F2A 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20250204_233411_801506_853F6A42 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,94 +119,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 04, 2025 at 08:46:24PM +0100, Eric Woudstra wrote:
-> mtk_foe_entry_set_vlan() in mtk_ppe.c already seems to support
-> double vlan tagging, but mtk_flow_offload_replace() in
-> mtk_ppe_offload.c only allows for 1 vlan tag, optionally in
-> combination with pppoe and dsa tags.
+On 04/02/2025 17:15, Lorenzo Bianconi wrote:
+>> On 03/02/2025 17:04, Krzysztof Kozlowski wrote:
+>>>> +
+>>>> +		rng@1faa1000 {
+>>>> +			compatible = "airoha,en7581-trng";
+>>>> +			reg = <0x0 0x1faa1000 0x0 0xc04>;
+>>>> +			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+>>>> +		};
+>>>> +
+>>>> +		system-controller@1fbf0200 {
+>>>> +			compatible = "syscon", "simple-mfd";
+>>>
+>>> These are never allowed alone. I am pretty sure I added proper checks
+>>> which should point it out, so I think you did not really test your DTS.
+>>>
+>>> It does not look like you tested the DTS against bindings. Please run
+>>> `make dtbs_check W=1` (see
+>>> Documentation/devicetree/bindings/writing-schema.rst or
+>>> https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+>>> for instructions).
+>>> Maybe you need to update your dtschema and yamllint. Don't rely on
+>>> distro packages for dtschema and be sure you are using the latest
+>>> released dtschema.
+>>>
+>>
+>> Now I see Rob's report:
+>> arch/arm64/boot/dts/airoha/en7581-evb.dtb: system-controller@1fbf0200:
+>> compatible: ['syscon', 'simple-mfd'] is too short
+>> which confirms untested code. Schema is there for a reason. :(
 > 
-> This patch adds QinQ support to mtk_flow_offload_replace().
+> actually I have tested them with the following command (but without W=1).
 > 
-> Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
-> of PPPoE and Q-in-Q is not allowed.
+> make CHECK_DTBS=y DT_SCHEMA_FILES=airoha airoha/en7581-evb.dtb
 > 
-> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-> ---
+> - dtschema 2024.11
+> - yamllint 1.35.1
 > 
-> Since the RFC v1 did not recieve any comments, I'm sending v2 as PATCH
-> unchanged.
-> 
-> Tested on the BPI-R3(mini), on non-dsa-ports and dsa-ports.
-> 
->  .../net/ethernet/mediatek/mtk_ppe_offload.c   | 21 +++++++++++--------
->  1 file changed, 12 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> index f20bb390df3a..c19789883a9d 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> @@ -34,8 +34,10 @@ struct mtk_flow_data {
->  	u16 vlan_in;
->  
->  	struct {
-> -		u16 id;
-> -		__be16 proto;
-> +		struct {
-> +			u16 id;
-> +			__be16 proto;
-> +		} vlans[2];
->  		u8 num;
->  	} vlan;
->  	struct {
-> @@ -349,18 +351,19 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
->  		case FLOW_ACTION_CSUM:
->  			break;
->  		case FLOW_ACTION_VLAN_PUSH:
-> -			if (data.vlan.num == 1 ||
-> +			if (data.vlan.num + data.pppoe.num == 2 ||
->  			    act->vlan.proto != htons(ETH_P_8021Q))
->  				return -EOPNOTSUPP;
->  
-> -			data.vlan.id = act->vlan.vid;
-> -			data.vlan.proto = act->vlan.proto;
-> +			data.vlan.vlans[data.vlan.num].id = act->vlan.vid;
-> +			data.vlan.vlans[data.vlan.num].proto = act->vlan.proto;
->  			data.vlan.num++;
->  			break;
->  		case FLOW_ACTION_VLAN_POP:
->  			break;
->  		case FLOW_ACTION_PPPOE_PUSH:
-> -			if (data.pppoe.num == 1)
-> +			if (data.pppoe.num == 1 ||
-> +			    data.vlan.num == 2)
->  				return -EOPNOTSUPP;
->  
->  			data.pppoe.sid = act->pppoe.sid;
-> @@ -450,11 +453,11 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
->  	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
->  		foe.bridge.vlan = data.vlan_in;
->  
-> -	if (data.vlan.num == 1) {
-> -		if (data.vlan.proto != htons(ETH_P_8021Q))
-> +	for (i = 0; i < data.vlan.num; i++) {
-> +		if (data.vlan.vlans[i].proto != htons(ETH_P_8021Q))
-It is already checked in FLOW_ACTION_VLAN_PUSH, so data.vlan.num can't be
-increased if proto is different. No need to check it again.
+> With W=1 I can see more issues, I will fix issues in v2.
 
-Other than that rest looks fine.
+Rob's warning does not come from W=1. Your test cmd was incorrect: drop
+DT_SCHEMA_FILES. You must test your code against ENTIRE bindings, not
+some subset.
 
->  			return -EOPNOTSUPP;
->  
-> -		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
-> +		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.vlans[i].id);
->  	}
->  	if (data.pppoe.num == 1)
->  		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
-> -- 
-> 2.47.1
-> 
+Best regards,
+Krzysztof
 
