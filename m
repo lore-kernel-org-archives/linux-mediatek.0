@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E2EEC02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 12:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04175C0219C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 12:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4GGW6iInM2fXnbOa6e7rwuDhnJObhpRoaaocsvZJX4w=; b=oHx/B2+cLRm0KXke1lEvZf8qUM
-	7JUHuj84DnFYLT0UmpqtI5G9d/ZLpRIz5KpYd09GudB3S959qQhbobyttTiTL4bgpRfSE/l02t7T1
-	xWt1PBMGMTDAGEpiQUJCUBqCttqIYgbIRtylzcEFB3LMFPa2E/L+G2ttJw1WyxQ2+Xc3cWNx8slZI
-	4oq3/DXKs+Ub69KgR2x5MlEfRxtNKrPSl/yRjFp9I5QyP4H8t1IF2qGKKQBB9Vicdy7NheTsoH1lO
-	VxcPhyepc0rNQnQHaJhdY4T/Xh5TJx/CryTvdjLuLTZRbYkZKvznfqhlDG7uFiNsW1T+cMa2W3Hze
-	Mv6YmbAA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xRnnqccViHY7/lghQF8XBSkl+CSYtWIn8P+USXrKzcc=; b=geRkCrFGuPW07DP71EnpgwjZXl
+	HUKjXfF0G1twojOJI6QIa4cCkP1UypFhiZ+FFnxGjrWPlejMv/BGwhk9PIk3mRJlPSfG/J4V6aJSd
+	Ji5PcbzNnmP+a09m3D+kSgSwiBOOTreHBNYo3UnWKm+Y0agDVwdguivGLHRLW43cMTlw0yKtSIGo/
+	uz3gvIOaK47cyjgzF1sGqaTkj2Ka1lmHSqVDD1e/DZGDgvBjYR48Nnd0KCG45fiAyP1DmScPTnZr0
+	+EC1voDu+WrPAiLu2lGALoMuuQFb/Ne09fWBzrNixQTkm72y/qLzTtRbKqDhJ8aXO4aiq5LQfc253
+	GB96MfKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg0t0-00000006GBl-1NOR;
-	Thu, 06 Feb 2025 12:21:38 +0000
+	id 1tg0t1-00000006GC2-0lWh;
+	Thu, 06 Feb 2025 12:21:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg0oE-00000006FGn-1bNB;
-	Thu, 06 Feb 2025 12:16:43 +0000
-X-UUID: 35175662e48411ef82ff63e91e7eb18c-20250206
+	id 1tg0oF-00000006FHx-23Eb;
+	Thu, 06 Feb 2025 12:16:44 +0000
+X-UUID: 35f933c0e48411ef82ff63e91e7eb18c-20250206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4GGW6iInM2fXnbOa6e7rwuDhnJObhpRoaaocsvZJX4w=;
-	b=S2QZBAuZHpoiA6hBUFAOcWRc62ATxW1+QGZZwneoA7i9aua/pIwAYk77N9Nxg/L5RB5SqbLYZ36FsgGs6G7SMECWMQwT5zNkt6g/qhifdVZvpSHloRpKn2S6L/BnbOmAwFQ9xtKuJX5mLZKZ/LBVYSwY3XnGKAksZY5dvP7BVHQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xRnnqccViHY7/lghQF8XBSkl+CSYtWIn8P+USXrKzcc=;
+	b=evF1VNiYvi7/7ZTNV9HxDthbEnLebT1Gh6AXoG7yn1eLDRCQ6WJaiyNKnlmflnQVJMnwCB8gzPbur8GnUFX4HwxgAWZsGdfaKzIxZ0OkipBW/c22FA1LtLPhcrjRVEFRSbuSxCL4AOEEOF/IHU2htRYt1QJWJRZ5cYF0DmqHHFQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:87f820e7-d614-42b7-8949-083dbaf7e89a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:60aa074,CLOUDID:d1a2243e-da39-4471-8a46-23da908abe46,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.46,REQID:1c6a2498-48bb-4be8-8028-5b79632c2eb6,IP:0,U
+	RL:25,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:003b3fff-c190-4cfe-938d-595d7f10e0dc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1|
+	19,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 35175662e48411ef82ff63e91e7eb18c-20250206
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 35f933c0e48411ef82ff63e91e7eb18c-20250206
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <crystal.guo@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2037694014; Thu, 06 Feb 2025 05:16:34 -0700
+	with ESMTP id 1258812141; Thu, 06 Feb 2025 05:16:36 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Thu, 6 Feb 2025 20:16:32 +0800
+ 15.2.1258.28; Thu, 6 Feb 2025 20:16:33 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Thu, 6 Feb 2025 20:16:31 +0800
+ 15.2.1258.28 via Frontend Transport; Thu, 6 Feb 2025 20:16:33 +0800
 From: Crystal Guo <crystal.guo@mediatek.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -62,18 +62,19 @@ To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
 CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [v2,0/2] Add an interface to get current DDR data rate
-Date: Thu, 6 Feb 2025 20:16:07 +0800
-Message-ID: <20250206121629.12186-1-crystal.guo@mediatek.com>
+Subject: [v2,2/2] dt-bindings: memory-controllers: Add MediaTek DRAM controller interface
+Date: Thu, 6 Feb 2025 20:16:09 +0800
+Message-ID: <20250206121629.12186-3-crystal.guo@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250206121629.12186-1-crystal.guo@mediatek.com>
+References: <20250206121629.12186-1-crystal.guo@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_041642_426003_D9A6E870 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250206_041643_542623_7A50A9EC 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +89,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-*** BLURB HERE ***
-This series is based on linux-next, tag: next-20250206.
+A MediaTek DRAM controller interface to provide the current DDR data rate.
 
-Vcore DVFS feature need know the current DDR data rate.
-Add MediaTek DRAMC driver to provide an interface that can
-obtain current DDR data rate.
-
+Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 ---
-Changes in v2:
-- Remove pr_info and pr_err, use dev_err or dev_err_probe to print
-  error message;
-- Replace module_init by module_platform_driver;
-- Remove unnecessary global variables;
-- Change fmeter-verison to platform data;
-- Remove mtk-dramc.h;
-- Refine compatible to "mediatek,mt8196-dramc";
-- Refine CONFIG name to MEDIATEK_MC;
-- Fix yaml build errors, remove unnecessary properties on yaml file.
-
-Link to v1:
-https://patchwork.kernel.org/patch/13904862
-
-Crystal Guo (2):
-  memory/mediatek: Add an interface to get current DDR data rate
-  dt-bindings: memory-controllers: Add MediaTek DRAM controller
-    interface
-
- .../mediatek,common-dramc.yaml                | 129 ------
- .../memory-controllers/mediatek,dramc.yaml    |  44 ++
- drivers/memory/Makefile                       |   2 +-
- drivers/memory/mediatek/Kconfig               |   6 +-
- drivers/memory/mediatek/mtk-dramc.c           | 415 ++++++------------
- include/linux/soc/mediatek/mtk-dramc.h        |  41 --
- 6 files changed, 191 insertions(+), 446 deletions(-)
+ .../mediatek,common-dramc.yaml                | 129 ------------------
+ .../memory-controllers/mediatek,dramc.yaml    |  44 ++++++
+ 2 files changed, 44 insertions(+), 129 deletions(-)
  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
- delete mode 100644 include/linux/soc/mediatek/mtk-dramc.h
 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
+deleted file mode 100644
+index c9e608c7f183..000000000000
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,common-dramc.yaml
++++ /dev/null
+@@ -1,129 +0,0 @@
+-# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+-# Copyright (c) 2024 MediaTek Inc.
+-%YAML 1.2
+----
+-$id: http://devicetree.org/schemas/memory-controllers/mediatek,common-dramc.yaml#
+-$schema: http://devicetree.org/meta-schemas/core.yaml#
+-
+-title: MediaTek Common DRAMC (DRAM Controller)
+-
+-maintainers:
+-  - Crystal Guo <crystal.guo@mediatek.com>
+-
+-description: |
+-  The DRAM controller of MediaTek SoC provides an interface to
+-  get the current data rate of DRAM.
+-
+-properties:
+-  compatible:
+-    const: mediatek,common-dramc
+-
+-  reg:
+-    minItems: 9
+-    items:
+-      - description: DRAMC_AO_CHA_BASE
+-      - description: DRAMC_AO_CHB_BASE
+-      - description: DRAMC_AO_CHC_BASE
+-      - description: DRAMC_AO_CHD_BASE
+-      - description: DRAMC_NAO_CHA_BASE
+-      - description: DRAMC_NAO_CHB_BASE
+-      - description: DRAMC_NAO_CHC_BASE
+-      - description: DRAMC_NAO_CHD_BASE
+-      - description: DDRPHY_AO_CHA_BASE
+-      - description: DDRPHY_AO_CHB_BASE
+-      - description: DDRPHY_AO_CHC_BASE
+-      - description: DDRPHY_AO_CHD_BASE
+-      - description: DDRPHY_NAO_CHA_BASE
+-      - description: DDRPHY_NAO_CHB_BASE
+-      - description: DDRPHY_NAO_CHC_BASE
+-      - description: DDRPHY_NAO_CHD_BASE
+-      - description: SLEEP_BASE
+-
+-  support-ch-cnt:
+-    maxItems: 1
+-
+-  fmeter-version:
+-    maxItems: 1
+-    description:
+-      Fmeter version for calculating dram data rate
+-
+-  crystal-freq:
+-    maxItems: 1
+-    description:
+-      Reference clock rate in MHz
+-
+-  shu-of:
+-    maxItems: 1
+-
+-  pll-id: true
+-  shu-lv: true
+-  sdmpcw: true
+-  posdiv: true
+-  fbksel: true
+-  dqsopen: true
+-  async-ca: true
+-  dq-ser-mode: true
+-
+-required:
+-  - compatible
+-  - reg
+-  - support-ch-cnt
+-  - fmeter-version
+-  - crystal-freq
+-  - pll-id
+-  - shu-lv
+-  - shu-of
+-  - sdmpcw
+-  - posdiv
+-  - fbksel
+-  - dqsopen
+-  - async-ca
+-  - dq-ser-mode
+-
+-additionalProperties: false
+-
+-examples:
+-  - |
+-    soc {
+-        #address-cells = <2>;
+-        #size-cells = <2>;
+-
+-        dramc: dramc@10230000 {
+-            compatible = "mediatek,common-dramc";
+-            reg = <0 0x10230000 0 0x2000>, /* DRAMC_AO_CHA_BASE */
+-                <0 0x10240000 0 0x2000>, /* DRAMC_AO_CHB_BASE */
+-                <0 0x10250000 0 0x2000>, /* DRAMC_AO_CHC_BASE */
+-                <0 0x10260000 0 0x2000>, /* DRAMC_AO_CHD_BASE */
+-                <0 0x10234000 0 0x1000>, /* DRAMC_NAO_CHA_BASE */
+-                <0 0x10244000 0 0x1000>, /* DRAMC_NAO_CHB_BASE */
+-                <0 0x10254000 0 0x1000>, /* DRAMC_NAO_CHC_BASE */
+-                <0 0x10264000 0 0x1000>, /* DRAMC_NAO_CHD_BASE */
+-                <0 0x10238000 0 0x2000>, /* DDRPHY_AO_CHA_BASE */
+-                <0 0x10248000 0 0x2000>, /* DDRPHY_AO_CHB_BASE */
+-                <0 0x10258000 0 0x2000>, /* DDRPHY_AO_CHC_BASE */
+-                <0 0x10268000 0 0x2000>, /* DDRPHY_AO_CHD_BASE */
+-                <0 0x10236000 0 0x2000>, /* DDRPHY_NAO_CHA_BASE */
+-                <0 0x10246000 0 0x2000>, /* DDRPHY_NAO_CHB_BASE */
+-                <0 0x10256000 0 0x2000>, /* DDRPHY_NAO_CHC_BASE */
+-                <0 0x10266000 0 0x2000>, /* DDRPHY_NAO_CHD_BASE */
+-                <0 0x10006000 0 0x1000>; /* SLEEP_BASE */
+-            support-ch-cnt = <4>;
+-            fmeter-version = <1>;
+-            crystal-freq = <26>;
+-            pll-id = <0x0e98 0x02000000 25>;
+-            shu-lv = <0x0e98 0x0000c000 14>;
+-            shu-of = <0x700>;
+-            sdmpcw = <0x0908 0x0007fff8 3>,
+-                <0x0928 0x0007fff8 3>;
+-            posdiv = <0x090c 0x00003800 11>,
+-                <0x092c 0x00003800 11>;
+-            fbksel = <0x0910 0x00000040 6>,
+-                <0x0910 0x00000040 6>;
+-            dqsopen = <0x0d94 0x04000000 26>,
+-                <0x0d94 0x04000000 26>;
+-            async-ca = <0x0d08 0x00000001 0>,
+-                <0x0d08 0x00000001 0>;
+-            dq-ser-mode = <0x0dc4 0x00000018 3>,
+-                <0x0dc4 0x00000018 3>;
+-        };
+-    };
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+new file mode 100644
+index 000000000000..8bdacfc36cb5
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+@@ -0,0 +1,44 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2025 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,dramc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek DRAM Controller (DRAMC)
++
++maintainers:
++  - Crystal Guo <crystal.guo@mediatek.com>
++
++description:
++  A MediaTek DRAM controller interface to provide the current data rate of DRAM.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8196-dramc
++
++  reg:
++    items:
++      - description: anaphy registers
++      - description: ddrphy registers
++
++additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        memory-controller@10236000 {
++            compatible = "mediatek,mt8196-dramc";
++            reg = <0 0x10236000 0 0x2000>,
++                  <0 0x10238000 0 0x2000>;
++        };
++    };
 -- 
 2.18.0
 
