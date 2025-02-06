@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A586C02196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 14:31:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AC03C02199
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 14:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AtE/V7UyaqCUm/jEvMcWRgFAvov74MHFiHvUqv3+ay4=; b=Ua05HUrJT9XWbf8Y9Z2uJVU6g8
-	zkEzsu+1otGPpepo94reXaFynpIiUgiC9Ktw4UUDTqsyTQRYZDqfOuxgwPSm6l+2FsLECiLNolKFV
-	nefcN5ei4Lr+m3UPyY6g/q2BxZHG7j8ku1TzYn2CJhs6IvGkWyW7E5sEx+kTmopFvfoA9yJlCzrkY
-	tbesH0eqArXftONGszjep0qQ93b1UsFEw0HZI0Lewuve0gyCvdU7iULdD3jQe8RRrIVyv85gEioHr
-	2sNyhXlbQHK3Yw7V/K23l4At07gzTXqWS+XoMKa6pf+8hqLNFSM4oGh6p69701iWgbzOL5btQxKR5
-	gN5Bv6+A==;
+	bh=Qy52E7wooPVVAtEuLO+Qhyc2iLHEhNjVLiIzlhHyrWs=; b=QDK1IiaQBArvqL7l7s1JKFhW1t
+	Ebb2fpKWPGthXkCjhSIW50E/axBncviWuQkyq+vJxdX7n9ASTyqdOR0gUJnubdgUYAsVGRd+NkwAu
+	p7pN41MyLZgWyi+t/rfYOyLqVm/ufpj/hqIQLInz3a2404q+adW0FwE9v3p60bcTH8EqhFPRGejvn
+	9Es17sJHEC1naicZMfDSBBFL2U+5Ixlkisr/AjTbsmOnqMQGjUNgkcvg4fn65tfU5xFIpsQlvJJW2
+	pFxKpVJu3V9183Ek2/UJHUsfyVYcRaBRZAkZyOLSk+be899WbLlwfQA4NF/9/OKZSmxoq0RCuSyTc
+	sisuVljA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg2uE-00000006aa7-02RJ;
-	Thu, 06 Feb 2025 14:31:02 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1tg2va-00000006b6t-0OPi;
+	Thu, 06 Feb 2025 14:32:26 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg2lX-00000006YRy-3ukJ
+	id 1tg2ll-00000006YV2-2Qoi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Feb 2025 14:22:05 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5dcef821092so1117058a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2025 06:22:03 -0800 (PST)
+	Thu, 06 Feb 2025 14:22:18 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-ab74ecfdae4so143941466b.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2025 06:22:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1738851722; x=1739456522; darn=lists.infradead.org;
+        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1738851736; x=1739456536; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AtE/V7UyaqCUm/jEvMcWRgFAvov74MHFiHvUqv3+ay4=;
-        b=dQHCfSeXd3Cq7MyEmSl+4BXco82f1utsexiOCeDqwrygGc5qLYFZTuy83xKjGtIcUG
-         L6YUlW4K1mz7H2gi1sMOmCHCnHdGAwgafUev/O8nqSsGLEfR75Me1GHW004O6l1LITVx
-         DC3tVWEmXDcjow5IX87U+UjBGidsPan2EYrtzIiRggyg7cOLsPzjCYrtGs9Wm2LcOq0u
-         yEqKhb8y137ml//cxJcuNxB4xMUikMmho8IRYuAQMqD+UQ8y8F+mreqsiAL3cdWcgMpa
-         m05PaMJymiejk+ukGL24MV0hpCnNKKKAI+gj9ja9SPDMrBUSpqjpRpf6bis8RkDAIdQI
-         p17Q==
+        bh=Qy52E7wooPVVAtEuLO+Qhyc2iLHEhNjVLiIzlhHyrWs=;
+        b=pM/nAHsXAtqxMs0+OpDQzeMnBeu6sOEpI6Ee4E/JCfe+9gHBaKamPhh4YCUj6bKGRe
+         fplN/9MTwoHM5Lo0fSjg0tQc3HmvoURDaIPfFD+2wTZ6ET8+ZJ/wmRp60BHwz+TYHr5H
+         kKo+Wgaj/50s2lJolL/3aTYKjbCVKKyHojsL4LX7eZcpGONvPsNNSyPeTtpixDC2rQ3T
+         mqIoYVlzaWHW4TTBRlvQiHDPUElbQPIFSKXKskIVzo7S5rtoBPAsoTOIqZRJlSAiyUKl
+         zxzeAWrupQVBaKSJJUFzn1Pd4ueesH64yt310nb3S6fd7pkaKxhC83gK+z5QNdYe7S5x
+         UVFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738851722; x=1739456522;
+        d=1e100.net; s=20230601; t=1738851736; x=1739456536;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AtE/V7UyaqCUm/jEvMcWRgFAvov74MHFiHvUqv3+ay4=;
-        b=Ii2j44IzRBwxI9N1JOefqx/p7DYilgf15M4lL5L5mEZayg+fZWY8xWwr6CNvJVnIyd
-         7wg/g5JjWr9R4hARSPZixpBzGxXK69X5Y5q7aa+lhQg2bXW/M4LBVWnltZYtGRV+7K6M
-         BVp8cn7Ktuz9TolPihyEaaLAqiJmyhiL1oPhQFVncV00u186Cyu/sgTAsHXTX5oC8G5I
-         CY8gko+gpslmKXf34pds7gfS01384neU0KUkCsEGksm24AwIe0rQd5tn7kakY0MgkQ8G
-         b2Pq8LNJKHgwH6aPsHBU+Hw3KbU6bQi/d27b+FD1oYLPmrYynZqp97zlN6DuE/MGlJr1
-         5Kog==
-X-Forwarded-Encrypted: i=1; AJvYcCVQZWyTPnpacE9QeEA6LXpEyyTjReaSeh1PU/8jM76LZCVm/8GHmPpJVMcBAdiDxdhsq5Pg8WhFIyWm1WBcnw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/asK+kbvWjYdM77x4DYyolDAVmA5u1ZqtSQey7LOvjThKfgJr
-	PXomIFqh0xxQJcEpg7unuxViboaEVdDfWp70rHD+o5Me6HazU+lKQ+PmPuPnO4M=
-X-Gm-Gg: ASbGnctM9fywmW4NlEF8QbwB1go9tIsWEYKWLj9e9LB1m8IiU4dIDoIUZLdHopa92lN
-	CrBReSc4/+3VWcpSY/96bzwIX0K2cnWSyFjrRmeHSMOwa6+JWrrZO3zUG/AJ1m4M7xuXgQVSem2
-	N9FhL+kXzPsOi9vyfYXrVI1WrnEGkydwBYkgQ88irv1ZDokIM2j+VW4XUaSp38sCpFTY2EuGsgU
-	Nn6Lgag7v3G/JflpOVKZBAtzJg3KfTzAAZUpqNok/bhHSA/42UihAuTMLiDPtuGv135BsGsucSz
-	P4W3SHB4s3a8XM71Gsb2fwoD5ITkwRb4DArD+TbXoT7jjrw=
-X-Google-Smtp-Source: AGHT+IEe7WdSsNkjgnty/HyvHskjlhljY6wt44W4IMiUaDBB3MI2H2nfwFKZUIVfpj7A/eSHa7SXrA==
-X-Received: by 2002:a05:6402:4486:b0:5db:f423:19b9 with SMTP id 4fb4d7f45d1cf-5dcdb72958cmr8121194a12.16.1738851721184;
-        Thu, 06 Feb 2025 06:22:01 -0800 (PST)
+        bh=Qy52E7wooPVVAtEuLO+Qhyc2iLHEhNjVLiIzlhHyrWs=;
+        b=jwcfwwg0sOd0tuuXV5t13WsGBYMOiEKidj0pdIU37KQnHyX8EIht9ynbG5RRdVw1ia
+         yCXsmNRr2MZ55RkCAOn2aHvRivXw6823lU49xXrsfVhI39UB/SiUrAcipAbAre089/nv
+         obnC24C5CK0rZV4Q7sboLzwzuZELNPsX2lCBNJqYY8Ffu0mmGAT/vqgD4CR2/d0EGi/M
+         XtA5ejTz8QjMCkLWFZ7kFxbu+ajHU3syjB3VYHF7yEY2I4kU8iC7Xo+FHIi+hhf1ZfVM
+         n7yyEwK9jIx4LE42AKhZznUmFzgidBZvl8kFR4BApscmJk0zWxs7G3Z2RDDqfw/0ol7N
+         OR2Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX7A9/vz4JsFaKbm2Wz8yS+f9BdZKfrSYpu9gEAHvrgCVsBmf9HWEBDtOyLVqVJGF+VKa02UnuD0qzSQ+DuJw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywwgVQhKjRnOWldecVtGZczqtCggfHF4d/wFmf2VpsgYYlHTk2
+	bPLmOnsQNRqu2awO5mRRakbHdyLRGHD4tP1Mt5yBTo0oARqJJ6LsMWVEGsouTjM=
+X-Gm-Gg: ASbGncufD0xcrRKw4EcCErPaKzuzX3foyNVXfztMgOkuhhL+RG9ORLojhcd9x2F9jyf
+	1FoR5R5wVZllHXF0WqMKT1FQwGprCkZg8o9DdKNVIHJYuHh9qmj+vNlQngTHyQFN45O0nI37/Up
+	vrxkGaSF4B/1TR8zjyojCxCcjn3YfT0Jd6Y99jwA9cJ9NzpTtigYy1xG1uadUyaMJCDImPiPU3f
+	0fGGwhTuRlm8QFUkIKLLDDB90qzm2Q2fkJ/bK8wPTd7V296If+kTVfuQsLua85sK0AYk+X4pEJC
+	L4B5E8aX4L7cys1TkoqOls+DkYqK+e1RA+9fMa09s4FJrMg=
+X-Google-Smtp-Source: AGHT+IG6aiDjgy1nFvIKHnHHwV2g9kBo0v+xziTDZFU9m8b3NS4nlzYz1Qp3ZZ0dcQwrhEvWNvqV8Q==
+X-Received: by 2002:a17:907:7249:b0:ab6:36fd:1c8f with SMTP id a640c23a62f3a-ab75e2f655emr719799466b.39.1738851735691;
+        Thu, 06 Feb 2025 06:22:15 -0800 (PST)
 Received: from [192.168.0.205] (78-154-15-142.ip.btc-net.bg. [78.154.15.142])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5dcf1b85a3fsm941354a12.46.2025.02.06.06.21.59
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab77f5f5a0esm40785966b.155.2025.02.06.06.22.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Feb 2025 06:22:00 -0800 (PST)
-Message-ID: <cd2926cf-b32b-4de7-851e-97a3ce2118af@blackwall.org>
-Date: Thu, 6 Feb 2025 16:21:58 +0200
+        Thu, 06 Feb 2025 06:22:15 -0800 (PST)
+Message-ID: <cc8b741a-72a4-4059-bbcd-3f32c7ef56d0@blackwall.org>
+Date: Thu, 6 Feb 2025 16:22:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 net-next 12/14] bridge: No DEV_PATH_BR_VLAN_UNTAG_HW
- for dsa foreign
+Subject: Re: [PATCH v5 net-next 13/14] bridge: Introduce
+ DEV_PATH_BR_VLAN_KEEP_HW for bridge-fastpath
 To: Eric Woudstra <ericwouds@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -94,15 +94,15 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250204194921.46692-1-ericwouds@gmail.com>
- <20250204194921.46692-13-ericwouds@gmail.com>
+ <20250204194921.46692-14-ericwouds@gmail.com>
 Content-Language: en-US
 From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <20250204194921.46692-13-ericwouds@gmail.com>
+In-Reply-To: <20250204194921.46692-14-ericwouds@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_062203_986430_AB58046E 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20250206_062217_625461_47FDD630 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,57 +118,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2/4/25 21:49, Eric Woudstra wrote:
-> In network setup as below:
+> This patch introduces DEV_PATH_BR_VLAN_KEEP_HW. It is needed in the
+> bridge fastpath for switchdevs supporting SWITCHDEV_OBJ_ID_PORT_VLAN.
 > 
->              fastpath bypass
->  .----------------------------------------.
-> /                                          \
-> |                        IP - forwarding    |
-> |                       /                \  v
-> |                      /                  wan ...
-> |                     /
-> |                     |
-> |                     |
-> |                   brlan.1
-> |                     |
-> |    +-------------------------------+
-> |    |           vlan 1              |
-> |    |                               |
-> |    |     brlan (vlan-filtering)    |
-> |    |               +---------------+
-> |    |               |  DSA-SWITCH   |
-> |    |    vlan 1     |               |
-> |    |      to       |               |
-> |    |   untagged    1     vlan 1    |
-> |    +---------------+---------------+
-> .         /                   \
->  ----->wlan1                 lan0
->        .                       .
->        .                       ^
->        ^                     vlan 1 tagged packets
->      untagged packets
+> It is similar to DEV_PATH_BR_VLAN_TAG, with the correcponding bit in
+> ingress_vlans set.
 > 
-> br_vlan_fill_forward_path_mode() sets DEV_PATH_BR_VLAN_UNTAG_HW when
-> filling in from brlan.1 towards wlan1. But it should be set to
-> DEV_PATH_BR_VLAN_UNTAG in this case. Using BR_VLFLAG_ADDED_BY_SWITCHDEV
-> is not correct. The dsa switchdev adds it as a foreign port.
-> 
-> The same problem for all foreignly added dsa vlans on the bridge.
-> 
-> First add the vlan, trying only native devices.
-> If this fails, we know this may be a vlan from a foreign device.
-> 
-> Use BR_VLFLAG_TAGGING_BY_SWITCHDEV to make sure DEV_PATH_BR_VLAN_UNTAG_HW
-> is set only when there if no foreign device involved.
+> In the forward fastpath it is not needed.
 > 
 > Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 > ---
->  include/net/switchdev.h   |  1 +
->  net/bridge/br_private.h   | 10 ++++++++++
->  net/bridge/br_switchdev.c | 15 +++++++++++++++
->  net/bridge/br_vlan.c      |  7 ++++++-
->  net/switchdev/switchdev.c |  2 +-
->  5 files changed, 33 insertions(+), 2 deletions(-)
+>  include/linux/netdevice.h        |  1 +
+>  net/bridge/br_device.c           |  4 ++++
+>  net/bridge/br_vlan.c             | 18 +++++++++++-------
+>  net/netfilter/nft_flow_offload.c |  3 +++
+>  4 files changed, 19 insertions(+), 7 deletions(-)
 > 
 
 Acked-by: Nikolay Aleksandrov <razor@blackwall.org>
