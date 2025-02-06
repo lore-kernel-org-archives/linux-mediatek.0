@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BCEBC02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 19:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1B7C02194
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 20:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lFYs9CF2krLOKV1+Ib/ZV5GYYaYEcVMj0+s+Jrj0azU=; b=P6pwIGo+1O4HswQDWz+a1LrlnJ
-	oUyfZdRe1/cw3+8Boau6FtpDlY6gP6lgnGcyowujSVuo7dlJ+KsNL0eWwAqRC7Epb/U45j1NmLfdE
-	AMHXGJGtJ9OW5WEpob5iEC3Wfe362RMh1Y3/1TY0Rewssj7Cyqi8Nwh3jWpwrSwItjpmnua1lUbBj
-	scFMQxHG/f/+vxnAl0oWxBdBHNMJduZ5fluO9gRYigNtNxP2wwg/0o+kQy9ITjQ2R+A54GapQaUb8
-	by7iWY59LSKxH6bMYFbn83QAII5BsOJ+fLy6X9pns8gHpm1ctafEtuoFxXgFLiv0pKzOXRqFWnrWa
-	h66Qikvg==;
+	bh=Wp1vAa9FBC8xV8GKJ1p2ZFuvg2iVsICkoDp8a9xb6eE=; b=Ajg8mEfIvoeVQr1VVi/g3nHqdR
+	gXyA9DAMXyEpDxiqG7ph+Z/cmcCqp28HPi/QMr1uu2134s48lH3qabKKLfiKKDpRZ6Yh+/kFGCjL0
+	53XM1EJkT2zCWaNMZYf3D7NCdVNHxCq45lGfeP7AH3pWvb4BWtJF9tEhk0S6UqBrxSjByq4J4fH8f
+	CA+rgCZiM9dAtckyYuOq0Q2hsYeO5Vm2KKxlUpEiMCGL2R/8+Z3ng6fJRZC6dDZ851HdLOYGAo3qL
+	2D10y9RQES9d4X+L6ZDRYHPLgTAtjiAXtWtBJpTYLdEOe/hyehEvdnBrV9c6j6CFugDwVQ5+6D4oF
+	JQKNm+jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg782-00000007IRy-3b66;
-	Thu, 06 Feb 2025 19:01:34 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tg8Zm-00000007Uu1-1Nvl;
+	Thu, 06 Feb 2025 20:34:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg6YR-00000007Aza-0LYB;
-	Thu, 06 Feb 2025 18:24:48 +0000
+	id 1tg8Xh-00000007UYK-3Ey0;
+	Thu, 06 Feb 2025 20:32:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 55640A4440F;
-	Thu,  6 Feb 2025 18:23:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A9C7C4CEDD;
-	Thu,  6 Feb 2025 18:24:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E08D95C6DE2;
+	Thu,  6 Feb 2025 20:31:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4A34C4CEDD;
+	Thu,  6 Feb 2025 20:32:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738866286;
-	bh=53zJkpFR18b9Ggt/TwIC2xs8XPYRRBAHjr15GY57Wrw=;
+	s=k20201202; t=1738873928;
+	bh=8++XfkeoGTNTrOI9Lv+WUaBkvALFfxwEBpO7jocNRuI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EchApnR6LI/AE9zaSEU0xrSO5CJrAIwdYiOYs3nEpROrfkzXVB23aqPS6Tiurf2bl
-	 g9FM3C3yDhm8aRh825IAWU+FFnqD90dBqy6sjjWjYWL7BQW6LttgflCdt+oKxa8F1d
-	 iSwrD5Z/uxSNpyTw2xFkoLESoir/Z8KjKUeFmriKF7Hqm/63Hwx60SnBoNfMoMnO+3
-	 deCndpmR70QViPcvDbgf2IwGciFQ1GcNeHv7mOYXfQZ9D8zWzeew1Pw3cL9OzlGS8V
-	 F6wbqCbigrDRVxLTWsZp/x4swPMvR6NOIdWT3lyblAK2/a1uWB3baigFDYYfa2TEsv
-	 e3l5RDUubNQjA==
-Date: Thu, 6 Feb 2025 18:24:40 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	b=nmG54vlzC1bt1aRdUOQzfumbyhGlfb21qRuMJhXeYPFF1oMw2+7jCmbrO2wyUHexJ
+	 utnZ3E3MxKRRmhVaMXZqWRGM013iABImXjkuf+ZgJ1P2+rmPRHT7hmG67fCyI2nR9S
+	 x4I3rm1jEseTWanEkQI+exbcLNZ7H9jbrvXB6/CQ6FEs2ZNe+tS6u0Vcdl4KbPfrBJ
+	 zunfJ76KNiJlG6oErceWoE+qXLCYVGMYf0EIFFkWqcdRL4JOlq4BohxDsWWloBJoi1
+	 WBXlvN4EwHH9Yp66eeAjRG9vCs9yGFCxEdAeYzImhvQMsDbAmvmx/3E75RdfVyTAq9
+	 dwVxljhMlkVcA==
+Date: Thu, 6 Feb 2025 21:32:05 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -61,21 +61,23 @@ Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
 	upstream@airoha.com
 Subject: Re: [PATCH net-next 09/13] dt-bindings: net: airoha: Add airoha,npu
  phandle property
-Message-ID: <20250206-charbroil-armhole-078069994058@spud>
+Message-ID: <Z6UcRRaLmUSvWS9Y@lore-desk>
 References: <20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org>
  <20250205-airoha-en7581-flowtable-offload-v1-9-d362cfa97b01@kernel.org>
  <20250205-cleaver-evaluator-648c8f0b99bb@spud>
  <Z6O8-dUrLNmvnW1u@lore-desk>
  <20250205-disagree-motive-517efca2b90c@spud>
- <Z6PPfnYV57NmWV6N@lore-desk>
+ <20250205-patronage-finisher-bbfbdb5b7dbc@spud>
+ <Z6PQEzvvCdDKQSnl@lore-desk>
+ <20250206-sabbath-carded-2bd52c03440d@spud>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="2K4ihKtAKq5vhnGT"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zvsYUP/vzkaeMiCQ"
 Content-Disposition: inline
-In-Reply-To: <Z6PPfnYV57NmWV6N@lore-desk>
+In-Reply-To: <20250206-sabbath-carded-2bd52c03440d@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_102447_255999_524A5D1A 
-X-CRM114-Status: GOOD (  30.67  )
+X-CRM114-CacheID: sfid-20250206_123209_901026_1FD03602 
+X-CRM114-Status: GOOD (  37.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +93,94 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---2K4ihKtAKq5vhnGT
+--zvsYUP/vzkaeMiCQ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Feb 05, 2025 at 09:52:14PM +0100, Lorenzo Bianconi wrote:
-> > On Wed, Feb 05, 2025 at 08:33:13PM +0100, Lorenzo Bianconi wrote:
-> > > > On Wed, Feb 05, 2025 at 07:21:28PM +0100, Lorenzo Bianconi wrote:
-> > > > > Introduce the airoha,npu property for the npu syscon node availab=
-le on
-> > > > > EN7581 SoC. The airoha Network Processor Unit (NPU) is used to of=
-fload
-> > > > > network traffic forwarded between Packet Switch Engine (PSE) port=
-s.
+> On Wed, Feb 05, 2025 at 09:54:43PM +0100, Lorenzo Bianconi wrote:
+> > > On Wed, Feb 05, 2025 at 08:01:26PM +0000, Conor Dooley wrote:
+> > > > On Wed, Feb 05, 2025 at 08:33:13PM +0100, Lorenzo Bianconi wrote:
+> > > > > > On Wed, Feb 05, 2025 at 07:21:28PM +0100, Lorenzo Bianconi wrot=
+e:
+> > > > > > > Introduce the airoha,npu property for the npu syscon node ava=
+ilable on
+> > > > > > > EN7581 SoC. The airoha Network Processor Unit (NPU) is used t=
+o offload
+> > > > > > > network traffic forwarded between Packet Switch Engine (PSE) =
+ports.
+> > > > > > >=20
+> > > > > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > > > > > ---
+> > > > > > >  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
+ | 8 ++++++++
+> > > > > > >  1 file changed, 8 insertions(+)
+> > > > > > >=20
+> > > > > > > diff --git a/Documentation/devicetree/bindings/net/airoha,en7=
+581-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > > > > > > index c578637c5826db4bf470a4d01ac6f3133976ae1a..6388afff64e99=
+0a20230b0c4e58534aa61f984da 100644
+> > > > > > > --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth=
+=2Eyaml
+> > > > > > > +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth=
+=2Eyaml
+> > > > > > > @@ -63,6 +63,12 @@ properties:
+> > > > > > >    "#size-cells":
+> > > > > > >      const: 0
+> > > > > > > =20
+> > > > > > > +  airoha,npu:
+> > > > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > > > > > +    description:
+> > > > > > > +      Phandle to the syscon node used to configure the NPU m=
+odule
+> > > > > > > +      used for traffic offloading.
+> > > > > >=20
+> > > > > > Why do you need a phandle for this, instead of a lookup by comp=
+atible?
+> > > > > > Do you have multiple instances of this ethernet controller on t=
+he
+> > > > > > device, that each need to look up a different npu?
 > > > > >=20
-> > > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > > ---
-> > > > >  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 8=
- ++++++++
-> > > > >  1 file changed, 8 insertions(+)
-> > > > >=20
-> > > > > diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-=
-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> > > > > index c578637c5826db4bf470a4d01ac6f3133976ae1a..6388afff64e990a20=
-230b0c4e58534aa61f984da 100644
-> > > > > --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> > > > > +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> > > > > @@ -63,6 +63,12 @@ properties:
-> > > > >    "#size-cells":
-> > > > >      const: 0
-> > > > > =20
-> > > > > +  airoha,npu:
-> > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > > +    description:
-> > > > > +      Phandle to the syscon node used to configure the NPU module
-> > > > > +      used for traffic offloading.
+> > > > > actually not, but looking up via the compatible string has been n=
+aked by
+> > > > > Krzysztof on a different series [0].
 > > > >=20
-> > > > Why do you need a phandle for this, instead of a lookup by compatib=
-le?
-> > > > Do you have multiple instances of this ethernet controller on the
-> > > > device, that each need to look up a different npu?
+> > > > Hmm, I disagree with adding phandles that are not needed. I don't a=
+gree
+> > > > that there's no reuse, if you can treat the phandle identically on =
+a new
+> > > > device, in all likelihood, that node should have a fallback to the
+> > > > existing one.
 > > >=20
-> > > actually not, but looking up via the compatible string has been naked=
- by
-> > > Krzysztof on a different series [0].
+> > > Also, where is the binding for this npu? It looks like a brand-new
+> > > module that you're adding a driver for in this series and a phandle to
+> > > the node for here but I see no binding for it.
 > >=20
-> > Hmm, I disagree with adding phandles that are not needed. I don't agree
-> > that there's no reuse, if you can treat the phandle identically on a new
-> > device, in all likelihood, that node should have a fallback to the
-> > existing one.
+> > The driver loads the NPU node just as syscon so I have not added the bi=
+nding
+> > for it to the series. I will add it in v2.
 >=20
-> honestly I do not have a strong opinion about it, I am fine both ways.
->=20
-> >=20
-> > That said, the bigger problem in what you link is the ABI break caused =
-by
-> > requiring the presence of a new node. I'd NAK that patch too.
->=20
-> there is no PCIe support in dts for this device upstream yet, so I guess =
-there
-> is no ABI break, right?
+> I don't think it is "just as syscon", you've got an entire driver for it
+> that you're loading via the phandle, it's not just some generic syscon th=
+at
+> you're looking up here - at least that's what it seemed like to me after
+> my scan of the driver patches.
 
-The binding and driver are upstream and therefore there could be users.
-Whether or not the dts is upstream isn't what determines ABI break or not!
-If the thing worked before adding the syscon in the PCIe patch you'd linked,
-the syscon should remain optional - unless there really are no users
-that will be impacted. If it didn't work without the syscon, then I
-wonder why it was upstreamed like that at all.
+ack, fine. I will add binding for it in v2.
 
---2K4ihKtAKq5vhnGT
+Regards,
+Lorenzo
+
+--zvsYUP/vzkaeMiCQ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6T+aAAKCRB4tDGHoIJi
-0q4aAQDZ7TcfNn+m4kHVpqE+dO6WwwXPFBYx5ZPAIVaG70FGqwD+L/yuigkFs46b
-+PUbXOf0VcC8ooyHGLrQiOQ+p3oOSgA=
-=l89c
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6UcRQAKCRA6cBh0uS2t
+rCzfAQD0HAk5INsFs2L2kyrtH38gO74kQpiDIptn5lb5dfb+IgEAwlmjHSO5IZEc
+WKie0fs9KqDUq4KwzBlYR3b1Ae7nDgw=
+=AbnL
 -----END PGP SIGNATURE-----
 
---2K4ihKtAKq5vhnGT--
+--zvsYUP/vzkaeMiCQ--
 
