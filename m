@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38727C02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 10:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A715C02194
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 11:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bi9BUf3pdKKyMt0VRjhegUThiBTcOkYoWzmQrly/90g=; b=Z9XiIOW0IXMxMFV2FoGpNHS1n5
-	4CbjKk40KfcjBTi/kvW744jC+FNKNCcC8okBoYPJBoLQgSIDLhrLk9EbHEpd1WVrQ8i6Kvaj1t+Id
-	d/96A0kfspyE0+yAoGO3RVyvXScA/8u25gn4i5b/MnMtcLg6ZgIS3Yy7fdW3May/oRb5f9NBnpnEz
-	xTkcj2K2/eV1mbIBVlci/iSlS0Dq5KFOaswcLzClSjxB9IqOPjgI9l2HI/xJSr7KWEVad6hNxggMb
-	/WFjCReCdyKNfnHabwzen86OObd/8ByZtn8FXUxc3rwZWOMYxJ8NJd6u+0KqNQ3pn4Dcv86WjvZI9
-	POnLSk4w==;
+	bh=qNh4bBgia2Ipni7dJuXwcTOev81RT+xOna48XaoTDik=; b=hkJcByoMNjOJ958mpNIIX7W1Mn
+	KpYebwzfpTTagaIvAFVHNffxHKQJ6K3AHWPOaSZcgGjUUstRLNHqh5h4YfIXH3VVFfwIWxJR76yxk
+	e9U6AGTPzxbTrU6+IiG7hpNQuBLeDCGPbUGMbIgUObNKFpl3WLNll6FMjjcIKSV4O0hFqmGDo+w6F
+	lG9HXZAKHDWz9ccPL6gpBgO6ZtVgJQPUJtHlI5j6BHKyLgTgdVR/g69ElJK5wnUqB1/JvMgabPH+s
+	SvCYyjIIu8vNSevxBSHQAT0Xqsyp2o/iOKHfl19N5NT1eCc0YCa9hm8Kp5G292N97W5D1XrygNzX9
+	lVcZDYJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfzPh-000000060l2-1ObT;
-	Thu, 06 Feb 2025 10:47:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfzJ6-00000005ziy-0EnW;
-	Thu, 06 Feb 2025 10:40:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=bi9BUf3pdKKyMt0VRjhegUThiBTcOkYoWzmQrly/90g=; b=Xh56aTDP8zHfXdXl0nLJkP1wdC
-	YuvcEc1HaKa5azADd5h0ibthtqaZb8C5x495XPt5vI6Zfe1g12AMUhnBurITDe73p3VCaUfIsEuP9
-	Gb1SVsgFoaW0nNbmIMdivkezaVpiTz2NggCdVSBaGNpaIDdTsMQoCsRA8u5OGOuvp3Iem2aiHMoLG
-	imNc11Z2uh2SGznL2LjWoVUX7LAXUl+L3Qgo+/ZJLeClQmO5aq8lk6BinHRFHQjUUXf8VC4h7fzcu
-	M0kuOs7KM9HRpnGGgbezuJFfZsaV1i6KatvmZkfCEayNQdm/37/DVFF+nOEqqo4YCzvkX4Jyegn3j
-	m1lZiDTg==;
+	id 1tg0JZ-00000006BMZ-2aB5;
+	Thu, 06 Feb 2025 11:45:01 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfzJ2-0000000GuVa-3d2P;
-	Thu, 06 Feb 2025 10:40:26 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tfzkT-000000064hf-28ae;
+	Thu, 06 Feb 2025 11:08:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1738838419;
-	bh=ZyICc/mqZ+XVKDTrqCzrM8zOi9VXfm+MUmIjVQg1srk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pOnSxLcKxU/pB/I/8a3thNQPK8aiR/syY3YJsVh/l/ibb24w+XmC8v7z2e/Qx1fhj
-	 sDXnCaucpksNuQAjZvOT1CNIiiHQxRQ1hxiVBPIVEFFVwPv1j8beYVxfXAod+iyCmo
-	 sbbicje6wB6sFxuMU7FEDlEWxLw6r0ZbrjZGrkLbyAOLx0H93+5uP/0d1bm/33qtvB
-	 a3q4i2LKnAWwJmLbf1bFnfPuEqHqSqfaGOx12wUpLrOEPLseTKeo2eB3xeMqfmCZ8N
-	 j3oxsAzureHkQuL/sCK0x+b3MXYyLUs3sm+zDSvTyrD/MnSi+p9e9RtePkz8rJ+HmZ
-	 7DBq1HHsrTrlQ==
-Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	s=mail; t=1738840123;
+	bh=YsyAjTedAN5lyZo0FlAMasVTbgpk/AriGqi3k2NqfyI=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=YO9wn3cq+a2cUFa1ojHtArWBgvsEXO2/5exII35hqGFtERjeT/HUdGMicR8is2p42
+	 PMAh5yoAiaONcZ5/4ZQetDuCBICzQpnYXGBoN+uG6+5wuFo4EWdtL0F4/2TBj7JzuV
+	 UasLuj0oBb/g6Ciwbv1L0vAF5Cn9YUzs1zktw2IPiptsVngA6xzP6iywkOg4RTk1w1
+	 2D4FLbeSvEGL5truUC0NHAytEeqzTP6jgH4+KsvnQ3cNuKuHif5lBjICFaTbdt7SYF
+	 iYl3eJv7P2Bl8Jp+asbIRZQGHosjZqdxzph/GiLg8cVAE/sFtjaPIJV5MNXbrX0VFh
+	 PFtI27MiYf6ig==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AB33E17E1090;
-	Thu,  6 Feb 2025 11:40:18 +0100 (CET)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 06 Feb 2025 11:38:09 +0100
-Subject: [PATCH v3 2/4] arm64: dts: mediatek: add support for MT8370 SoC
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 510A617E0F9F;
+	Thu,  6 Feb 2025 12:08:43 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Daniel Danzberger <dd@embedd.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, upstream@airoha.com, 
+ Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250105150328.15172-1-ansuelsmth@gmail.com>
+References: <20250105150328.15172-1-ansuelsmth@gmail.com>
+Subject: Re: [PATCH 1/3] arm64: dts: airoha: en7581: Add Clock Controller
+ node
+Message-Id: <173884012324.110657.10404370781267442733.b4-ty@collabora.com>
+Date: Thu, 06 Feb 2025 12:08:43 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250206-dts_mt8370-genio-510-v3-2-5ca5c3257a4c@collabora.com>
-References: <20250206-dts_mt8370-genio-510-v3-0-5ca5c3257a4c@collabora.com>
-In-Reply-To: <20250206-dts_mt8370-genio-510-v3-0-5ca5c3257a4c@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sean Wang <sean.wang@mediatek.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1738838416; l=4210;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=ZyICc/mqZ+XVKDTrqCzrM8zOi9VXfm+MUmIjVQg1srk=;
- b=7wwXJe+DI7Lif4ON4ocgNXgwqPuyGM2pT1YL9jg9NX+Pwq5Wnlsa0CLX7Vluc3pIFlbmwnwUJ
- zFsIH34ODWEAiOHlf4UmfKEU3SOvvF2WGA/JeVfrFrWZY9obzhhz/JJ
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_104025_203332_45FAFABB 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20250206_030845_703094_9357AF37 
+X-CRM114-Status: UNSURE (   6.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,139 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the support of the Mediatek MT8370 SoC, a less powerful variant of
-MT8390 SoC.
-Their main differences are:
-- Arm Cortex-A55 cores number (4 vs 6)
-- Arm Cortex-A78 core speed (2.0 GHz vs 2.2 Ghz)
-- Arm Mali-G57 GPU core number (2 vs 3)
+On Sun, 05 Jan 2025 16:03:02 +0100, Christian Marangi wrote:
+> Add Clock Controller node for EN7581 SoC to correctly expose supported
+> clock for any user in the SoC.
+> 
+> 
 
-Like MT8390, MT8370 hardware register maps are identical to MT8188.
+Applied to v6.14-next/dts64, thanks!
 
-Note:
-The devicetree for MT8370 SoC does not currently contain the needed
-overrides to support the Mali GPU integrated into this SoC. This is
-scheduled to be done with a later change.
+[1/3] arm64: dts: airoha: en7581: Add Clock Controller node
+      commit: 7693017580e9be839fa5f27130bb6500f3597595
+[2/3] arm64: dts: airoha: en7581: Add SNAND node
+      commit: 8e2e6908a8919a8608866626e5b3bcf242f90b38
+[3/3] arm64: dts: airoha: en7581: Add default partition table for EVB board
+      commit: 34833a6f17f6ea99fa9d7788d93221f610061d23
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8188.dtsi |  8 ++--
- arch/arm64/boot/dts/mediatek/mt8370.dtsi | 64 ++++++++++++++++++++++++++++++++
- 2 files changed, 68 insertions(+), 4 deletions(-)
+Cheers,
+Angelo
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 338120930b819645662465fa7b3c6be6491764ff..5d78f51c6183c15018986df2c76e6fdc1f9f43b4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -492,7 +492,7 @@ cpu_little0_crit: trip-crit {
- 			};
- 
- 			cooling-maps {
--				map0 {
-+				cpu_little0_cooling_map0: map0 {
- 					trip = <&cpu_little0_alert0>;
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-@@ -530,7 +530,7 @@ cpu_little1_crit: trip-crit {
- 			};
- 
- 			cooling-maps {
--				map0 {
-+				cpu_little1_cooling_map0: map0 {
- 					trip = <&cpu_little1_alert0>;
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-@@ -568,7 +568,7 @@ cpu_little2_crit: trip-crit {
- 			};
- 
- 			cooling-maps {
--				map0 {
-+				cpu_little2_cooling_map0: map0 {
- 					trip = <&cpu_little2_alert0>;
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-@@ -606,7 +606,7 @@ cpu_little3_crit: trip-crit {
- 			};
- 
- 			cooling-maps {
--				map0 {
-+				cpu_little3_cooling_map0: map0 {
- 					trip = <&cpu_little3_alert0>;
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-diff --git a/arch/arm64/boot/dts/mediatek/mt8370.dtsi b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-new file mode 100644
-index 0000000000000000000000000000000000000000..cf1a3759451ff899ce9e63e5a00f192fb483f6e5
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-@@ -0,0 +1,64 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2025 Collabora Ltd.
-+ * Author: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-+ */
-+
-+/dts-v1/;
-+#include "mt8188.dtsi"
-+
-+/ {
-+	compatible = "mediatek,mt8370";
-+
-+	cpus {
-+		/delete-node/ cpu@400;
-+		/delete-node/ cpu@500;
-+
-+		cpu-map {
-+			cluster0 {
-+				/delete-node/ core4;
-+				/delete-node/ core5;
-+			};
-+		};
-+	};
-+};
-+
-+&cpu6 {
-+	clock-frequency = <2200000000>;
-+};
-+
-+&cpu7 {
-+	clock-frequency = <2200000000>;
-+};
-+
-+&cpu_little0_cooling_map0 {
-+	cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+};
-+
-+&cpu_little1_cooling_map0 {
-+	cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+};
-+
-+&cpu_little2_cooling_map0 {
-+	cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+};
-+
-+&cpu_little3_cooling_map0 {
-+	cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+};
-+
-+&ppi_cluster0 {
-+	affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
-+};
-
--- 
-2.48.1
 
 
