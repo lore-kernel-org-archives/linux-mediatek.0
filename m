@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EE5C02192
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 01:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5A8C02198
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 06:11:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xO8GKg14rdVcQiYhVd953yc4D8d7fV5o/+Fei2DJjHc=; b=rSdpUWnaWSp5ltS4CQ+b6RjBAj
-	0gw6R+xy1NNzFIq4Tl1ZuEaFifTENtLCPFf+Z3RRR2I191hNRFEoisbBZKxFTY4VRbnyxnzzrxmby
-	VGi82LcUUvB0E6UcSlPOuOp+IrrZvc0duNRGhNWxNSPqg6wkxbrizXPUHb0eoCyAa2ubaGK5ui9ff
-	Pl+4nJHNC/KXv0jikMjX8eLa3Nu/0MDx5Ds/TSuxYnZMbqpWeS4PyWz6dqFNpPWXjLfXrR1nBSpSp
-	xFVD1rooSOGv4aLgeK+dY5WfGW/YziBJsEptFQMszGvoGlLfDN2wT9gGEJ8fFbKphGckYfYC9SnIj
-	09sc4ggQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CRSfEf2M4ecLsopoPb2+M/Ujy7qVTEij8K5gI3vgVwo=; b=Caa5TmSPc84n0Oxr8Xd4yhOtFD
+	CsxhK2fIYplr80vpCltYnY7jevclVN5fU37GwNmVJdCMH0+flNCDtgahqOIS5vwMjt5WeAEKtrcc/
+	1QbkJZo0JTu2bbAUg6byFg+54a+/LWmX5nRV9QCDZeeD0eIPJ2OOqt/jL7RYDbwHaQZ84pS9g/2gb
+	NeYZ9bwaIGUDzerntE+3KAcGCf8DIJYovPsMPKNiaIle7QV/p9Qbwpy3VVCXKnrWw8tI4pYqaA2QR
+	E0ln7WdnIwNTP04GZi4U91BtCp8ijZDFVVic0ECwsrhqq2aIZVzpKnFpQLYF20/0gVD8wxyAkeLq6
+	avkqxBCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfqu4-000000050VR-1zGJ;
-	Thu, 06 Feb 2025 01:42:04 +0000
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+	id 1tfv6g-00000005MO3-3UCp;
+	Thu, 06 Feb 2025 06:11:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfqsg-000000050Ni-3WvA;
-	Thu, 06 Feb 2025 01:40:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
-	:Subject; bh=xO8GKg14rdVcQiYhVd953yc4D8d7fV5o/+Fei2DJjHc=; b=rtcAF/UOamg2nGMB
-	jIQHvZpO4Fv9WjkEvlVa0HskXdSIfspoBKcRyi8ebF4xshRIhh+gFk96K4zIqXwq4ZjcceCLkq3G+
-	QvoiMs68+Cb4pMZ1wcHkOKv6qb+txb03G8ypyhyqS80qelnwrwUTxwnnswT6vZkFPqsqPMyG9t/vr
-	CCiYgyWCAIiMqE99hi5Q4CRA8/OAmaHvSt/5F55f4bswdy/k3XEXoYFNLiL5eSY3VovdInNnX0cPl
-	71cJ2gotJokf75bafOhAUlVf2svUEYaUUEjyz2cUgskzFQc1TN+NXN2WOiVU1Lx+lfks3kxjiPguZ
-	/XZM3kB9ugtmNTnNiw==;
-Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
-	by mx.treblig.org with esmtp (Exim 4.96)
-	(envelope-from <linux@treblig.org>)
-	id 1tfqsX-00DsqW-1N;
-	Thu, 06 Feb 2025 01:40:29 +0000
-From: linux@treblig.org
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	"Dr. David Alan Gilbert" <linux@treblig.org>
-Subject: [PATCH] ASoC: mediatek: mt8186: Remove unused mt8186_afe_(suspend|resume)_clock
-Date: Thu,  6 Feb 2025 01:40:28 +0000
-Message-ID: <20250206014028.237423-1-linux@treblig.org>
-X-Mailer: git-send-email 2.48.1
+	id 1tfv6e-00000005MNT-27I4
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Feb 2025 06:11:21 +0000
+X-UUID: 2b386b28e45111ef82ff63e91e7eb18c-20250205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=CRSfEf2M4ecLsopoPb2+M/Ujy7qVTEij8K5gI3vgVwo=;
+	b=lAccUspiT/xuAgYu2DRGu1gDbdjdzGX9EWvylloQN0SfVS84zYzi7+P0M3o25VrZL+4RQOpYcSPDwiAOynciatnrLFSOB5Vd2IDxP+bQ5iVaTEq77d3GMDHL53X3cJ7hZ3EraKZXJSk2c0hiSOe3NTgMLXdf2DKraQH3PVoveQA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:009fbf6b-a3c5-4376-b55b-e87e1a486a67,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:2325267f-427a-4311-9df4-bfaeeacd8532,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 2b386b28e45111ef82ff63e91e7eb18c-20250205
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1374617399; Wed, 05 Feb 2025 23:11:14 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Thu, 6 Feb 2025 14:11:11 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Thu, 6 Feb 2025 14:11:11 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, Steve
+ Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btusb: Add 2 HWIDs for MT7922
+Date: Thu, 6 Feb 2025 14:11:07 +0800
+Message-ID: <20250206061107.3541537-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_174039_051844_EF2EBC8E 
-X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-CacheID: sfid-20250205_221120_548087_7BC1D696 
+X-CRM114-Status: UNSURE (   8.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,103 +89,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
+Add below HWIDs for MediaTek MT7922 USB Bluetooth chip.
+VID 0x0489, PID 0xe152
+VID 0x0489, PID 0xe153
 
-mt8186_afe_resume_clock() and mt8186_afe_suspend_clock() were
-added in 2022 by
-commit 55b423d5623c ("ASoC: mediatek: mt8186: support audio clock control
-in platform driver")
+Patch has been tested successfully and controller is recognized
+device pair successfully.
 
-but have remained unused.
+MT7922 module bring up message as below.
+Bluetooth: Core ver 2.22
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: L2CAP socket layer initialized
+Bluetooth: SCO socket layer initialized
+Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20241106163512
+Bluetooth: hci0: Device setup in 2284925 usecs
+Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+Bluetooth: hci0: AOSP extensions version v1.00
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Bluetooth: MGMT ver 1.22
+Bluetooth: RFCOMM TTY layer initialized
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
 
-Remove them.
-
-Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
 ---
- sound/soc/mediatek/mt8186/mt8186-afe-clk.c | 55 ----------------------
- sound/soc/mediatek/mt8186/mt8186-afe-clk.h |  2 -
- 2 files changed, 57 deletions(-)
+ drivers/bluetooth/btusb.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-clk.c b/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-index 70ec101890d3..daaca36a2d08 100644
---- a/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-@@ -329,61 +329,6 @@ void mt8186_afe_disable_clock(struct mtk_base_afe *afe)
- 	clk_disable_unprepare(afe_priv->clk[CLK_INFRA_SYS_AUDIO]);
- }
- 
--int mt8186_afe_suspend_clock(struct mtk_base_afe *afe)
--{
--	struct mt8186_afe_private *afe_priv = afe->platform_priv;
--	int ret;
--
--	/* set audio int bus to 26M */
--	ret = clk_prepare_enable(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--	if (ret) {
--		dev_info(afe->dev, "%s clk_prepare_enable %s fail %d\n",
--			 __func__, aud_clks[CLK_MUX_AUDIOINTBUS], ret);
--		goto clk_mux_audio_intbus_err;
--	}
--	ret = mt8186_set_audio_int_bus_parent(afe, CLK_CLK26M);
--	if (ret)
--		goto clk_mux_audio_intbus_parent_err;
--
--	clk_disable_unprepare(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--
--	return 0;
--
--clk_mux_audio_intbus_parent_err:
--	mt8186_set_audio_int_bus_parent(afe, CLK_TOP_MAINPLL_D2_D4);
--clk_mux_audio_intbus_err:
--	clk_disable_unprepare(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--	return ret;
--}
--
--int mt8186_afe_resume_clock(struct mtk_base_afe *afe)
--{
--	struct mt8186_afe_private *afe_priv = afe->platform_priv;
--	int ret;
--
--	/* set audio int bus to normal working clock */
--	ret = clk_prepare_enable(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--	if (ret) {
--		dev_info(afe->dev, "%s clk_prepare_enable %s fail %d\n",
--			 __func__, aud_clks[CLK_MUX_AUDIOINTBUS], ret);
--		goto clk_mux_audio_intbus_err;
--	}
--	ret = mt8186_set_audio_int_bus_parent(afe,
--					      CLK_TOP_MAINPLL_D2_D4);
--	if (ret)
--		goto clk_mux_audio_intbus_parent_err;
--
--	clk_disable_unprepare(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--
--	return 0;
--
--clk_mux_audio_intbus_parent_err:
--	mt8186_set_audio_int_bus_parent(afe, CLK_CLK26M);
--clk_mux_audio_intbus_err:
--	clk_disable_unprepare(afe_priv->clk[CLK_MUX_AUDIOINTBUS]);
--	return ret;
--}
--
- int mt8186_apll1_enable(struct mtk_base_afe *afe)
- {
- 	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-clk.h b/sound/soc/mediatek/mt8186/mt8186-afe-clk.h
-index a9d59e506d9a..e524833ce780 100644
---- a/sound/soc/mediatek/mt8186/mt8186-afe-clk.h
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-clk.h
-@@ -85,8 +85,6 @@ int mt8186_afe_enable_cgs(struct mtk_base_afe *afe);
- void mt8186_afe_disable_cgs(struct mtk_base_afe *afe);
- int mt8186_afe_enable_clock(struct mtk_base_afe *afe);
- void mt8186_afe_disable_clock(struct mtk_base_afe *afe);
--int mt8186_afe_suspend_clock(struct mtk_base_afe *afe);
--int mt8186_afe_resume_clock(struct mtk_base_afe *afe);
- 
- int mt8186_apll1_enable(struct mtk_base_afe *afe);
- void mt8186_apll1_disable(struct mtk_base_afe *afe);
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 1caf7a071a73..6db25b8d6d42 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -667,6 +667,10 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe152), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe153), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
 -- 
-2.48.1
+2.45.2
 
 
