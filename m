@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85241C02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 16:19:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85A99C02194
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 17:15:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HsVx1KaNwgqNLZilcbZny92AtsUxM9BfF1vMwKADwMk=; b=0K6O7V1z4gFQhdLleE6mRo14vq
-	xmU5otd2pucSYPnFiQ9jbvQ9Li2r3pHr9s/I3O6tljVtHkACl+LtYTWpaRTzWYaDsTPE6GqnzEXhh
-	+SNi4asfDXmLb0o9dp8uNxofqfQOMNDyr1+gun6XYETXhWCkyJMaklwsIaELenenoPn9RLg9/Siv+
-	0vEuB89rftOLlKXrt/xDfySERItXD4h5KHq+jq1HE4A29S6G4qoYKK3bjQpfMsENbP0KzEb+wrfmi
-	aR8e0BtAnYktx2svgVEUPGEAaQk2QyhJFt/wVSFVEmPkkylWCUJEJOUboDnvu11/S6ULuzQ77KJBF
-	4OxqttPg==;
+	bh=++On7KDtroDf34oNj2vJEgLtoair4LXrAFytlgiGD50=; b=K0RzE4gM0eGdcRsIL34VP7fhNS
+	WUBABM0Hk3S3HEVTN+BC7k0TRhu12cW83bp/nmxZ0CsrhFvOsYKxEeQhoACKe5KE7/FbEvJdPpZUR
+	FHRm7SiQpPu4CNyZ/VvQztWL6/zvT2xtXa071YJy7zJhS8pvmrjM2ExPzPG6gt3+IS9VKVOJ0tH98
+	wkAH1vDjjeylquZLY6yxpy35U5fitgK5BbIt3WnW0m1KkxoUiYCUzJY2wgHSOH1dlPXolg1Yy3Rvr
+	71gBQa5a9J+3QdaynG0Tbq2j7dqIvTU/YG+MFqerPu1Q6Pm802OS2tslGr2xv+Z2/ewFVejq9+CYi
+	0xk5ZLyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg4ai-00000006pXQ-1oQB;
-	Thu, 06 Feb 2025 16:19:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tg5TB-00000006xvd-2O3w;
+	Thu, 06 Feb 2025 17:15:17 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg4Vf-00000006oW3-2Nao;
-	Thu, 06 Feb 2025 16:13:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 23F095C64A4;
-	Thu,  6 Feb 2025 16:13:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F07F8C4CEDD;
-	Thu,  6 Feb 2025 16:13:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738858425;
-	bh=yugtap81E+1XEiUSlot9N/ao/3tXx/zIxbLqkf5yQ2s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dYCFPFSLLiDASvYd4s42uud1DtC2OYpyDgEeLT35r+DrvE2jij76XmTWQ9G67IkkY
-	 GXlKlZixxwv1mXchRyKAC2XLHInGz7nXltb/sepWggEKQB2TlbKf/zl7RmfFuI/bgH
-	 POQtLfiwx3vOBe+qHPtYDAHCNvMvnzxOt413CP2Ky6rkPlhy2ILdMwAJlRvRLqD0vj
-	 Zr7POyxFiXm5+iQmgkdVq1+ZtMEZUnmtN8vK+HRSG+ejF6wz2rbhMHSIENz/QYTel5
-	 LTPtPbUTgV8Ae2h5Vlge1PtDZVU6vqHxlAMGJQmuO06gQkxOszYi8GtT6wvI2wkZns
-	 f+nG5+ZFP0G5A==
-Date: Thu, 6 Feb 2025 17:13:43 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Anusha Srivatsa <asrivats@redhat.com>
-Cc: Joel Stanley <joel@jms.id.au>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Stefan Agner <stefan@agner.ch>, 
-	Alison Wang <alison.wang@nxp.com>, Xinliang Liu <xinliang.liu@linaro.org>, 
-	Tian Tao <tiantao6@hisilicon.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu <yongqin.liu@linaro.org>, 
-	John Stultz <jstultz@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jonathan Corbet <corbet@lwn.net>, linux-aspeed@lists.ozlabs.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
- usage
-Message-ID: <20250206-hallowed-ultra-tiger-cfec8e@houat>
-References: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
- <20250205-mem-cocci-newapi-v1-11-aebf2b0e2300@redhat.com>
+	id 1tg5Rm-00000006xev-33Ty
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Feb 2025 17:13:52 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-21f49837d36so6104465ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2025 09:13:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1738862029; x=1739466829; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=++On7KDtroDf34oNj2vJEgLtoair4LXrAFytlgiGD50=;
+        b=fpfAHKb7pDYNc64cADbo6j8EGZlKU22YG9c3pZ3EZTP84RNJ7nVmoKEN/mGcmzYxRf
+         KYfxBQdXE+IMfMFBeVbbtEGQC4WQtjGfBhynzsWLhVbV4djfnIwXs3eTNe08OtkeKfCj
+         cjnohZ0T6O6J0OYiXUoUR6Jaz5Sbjo8Zw5fudBLrE+qPK5MXjCKXMSW66oAFuDsbcUd2
+         H1s7Th9coj6AwMV+ZLhhZ3+NlKMUU7BtTtojvhElBMoZEK6RtzpUnuo4Uuw6VvEPF+Oz
+         n9Zg38WT1rMBcU2Uw9b2g/GpatU0xsz3p3bkKXv9/bTggY1tdBtjTd+Vy8sG6DfA+aaO
+         D1Zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738862029; x=1739466829;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=++On7KDtroDf34oNj2vJEgLtoair4LXrAFytlgiGD50=;
+        b=R2jj7A088nL9O1UAFEEO/961DtJ32StU+0A31V0hfeskyaD/ccDWy3fzrVryloC62W
+         GVhAtlHuIllGVn4GyzheSgM4NVUBsR+hOGJFB9o5IrX/HW8/hFsmfI/wmMoCeJInDNBf
+         mNTyrkSMoRuPKBC1ZJL91AdjSwyk4ldLfSTGliZqwd7nrehMjcJoew0kpMYavKMMZpfB
+         EKsyAHYU3z5tP70cSRSSzNUNj6ZxGlQ1nkzabuPMtoFxlRdMPOIO6ZiXY5SFrw19yLZT
+         TGgaLGUsNeYPgEFSi+bt9YuBXa4TvQzmjrw3nTclwEUEA6ugYi8C1tMeZYNXZdX+1jWI
+         EbzA==
+X-Forwarded-Encrypted: i=1; AJvYcCUDUsWC84JlALa1qv+G5+gdFscdLzDkkI7rl4R/hY/SFiFeECIcsEWoJo8qk7yuXgFLSxYGX/d61tZJdEMcKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyUOW4wRmGPzgXjlIlvX2h+egFUS8Qq6jJ7cy7kZ17auf9SDqb/
+	CZ1Rn+G+YBCVd9h6xfDtwqJBa4qJETugR64y8As7/H3n8sQo3iJPtafInuvc6g==
+X-Gm-Gg: ASbGncuzRpXDTESGdI7tmQNYCnlEZEWQJGObHCjz3cRpmosnuEE/yBjtMaagclHM+81
+	RNaYPKVvk5V95rau2kFqnNfsRHAQCmd4qRNaphbEhcg7zcxskb9eUH5YR66nugmeqrWYlIeq/Kk
+	H9wiOdSAANY+QSHYow692skGN9Pvkysqxy25EqAEZa+cy8MqMK6dmKg+H664eBu0qyWy5XjtApE
+	Mh16S3ZHrkGmsxvUVWdaq4N+zVN8xBRSUdY+551EzXRyOr1IKu7qcdymOEsTBKiQOjc6eOSD3p6
+	E9zPTSyrfPzbdzwLNgbuyLHJw0A=
+X-Google-Smtp-Source: AGHT+IEi7kDHTM5kqvCT3m8M3uGH2PtQ237ql11AqlpeMMU7B/j29LzSOZBi2OJPv95Pp6eAwXZ+0A==
+X-Received: by 2002:a17:902:f686:b0:216:2426:7666 with SMTP id d9443c01a7336-21f17df5651mr126780975ad.12.1738862029434;
+        Thu, 06 Feb 2025 09:13:49 -0800 (PST)
+Received: from thinkpad ([120.60.140.157])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fa09a4f875sm1794525a91.24.2025.02.06.09.13.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Feb 2025 09:13:48 -0800 (PST)
+Date: Thu, 6 Feb 2025 22:43:41 +0530
+From: "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"bhelgaas@google.com" <bhelgaas@google.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <Ryder.Lee@mediatek.com>
+Subject: Re: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
+Message-ID: <20250206171341.ms357hjxvegyspi6@thinkpad>
+References: <20250203175049.idxegqqsfwf4dmvq@thinkpad>
+ <20250203185246.GA794570@bhelgaas>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="nds2ddkwji5fimma"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250205-mem-cocci-newapi-v1-11-aebf2b0e2300@redhat.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250203185246.GA794570@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_081347_700895_CAE910CA 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20250206_091350_778535_65D46F2A 
+X-CRM114-Status: GOOD (  42.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,106 +108,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Feb 03, 2025 at 12:52:46PM -0600, Bjorn Helgaas wrote:
+> On Mon, Feb 03, 2025 at 11:20:49PM +0530, manivannan.sadhasivam@linaro.org wrote:
+> > On Sat, Feb 01, 2025 at 11:07:40AM -0600, Bjorn Helgaas wrote:
+> > > On Sat, Feb 01, 2025 at 09:54:16PM +0530, manivannan.sadhasivam@linaro.org wrote:
+> > > > On Mon, Jan 27, 2025 at 06:41:50PM -0600, Bjorn Helgaas wrote:
+> > > > > On Thu, Jan 23, 2025 at 08:11:19AM +0000, Jianjun Wang (王建军) wrote:
+> > > > > > On Wed, 2025-01-15 at 23:01 +0530, Manivannan Sadhasivam wrote:
+> > > > > > > On Tue, Jan 07, 2025 at 01:20:58PM +0800, Jianjun Wang wrote:
+> > > > > > > > Remove the usage of virt_to_phys, as it will cause sparse warnings
+> > > > > > > > when
+> > > > > > > > building on some platforms.
+> > > 
+> > > > > > > >       snprintf(name, sizeof(name), "port%d", slot);
+> > > > > > > > -     port->base = devm_platform_ioremap_resource_byname(pdev,
+> > > > > > > > name);
+> > > > > > > > +     regs = platform_get_resource_byname(pdev, IORESOURCE_MEM,
+> > > > > > > > name);
+> > > > > > > > +     if (!regs)
+> > > > > > > > +             return -EINVAL;
+> > > > > > > > +
+> > > > > > > > +     port->base = devm_ioremap_resource(dev, regs);
+> > > > > > > >       if (IS_ERR(port->base)) {
+> > > > > > > >               dev_err(dev, "failed to map port%d base\n", slot);
+> > > > > > > >               return PTR_ERR(port->base);
+> > > > > > > >       }
+> > > > > > > > 
+> > > > > > > > +     port->msg_addr = regs->start + PCIE_MSI_VECTOR;
+> > > > > 
+> > > > > I think this still assumes that a CPU physical address
+> > > > > (regs->start) is the same as the PCI bus address used for MSI, so
+> > > > > this doesn't seem like the right solution to me.
+> 
+> Apart from the question of what type should be used, what do you think
+> about this part?  I don't think we should assume that the address on
+> PCI is identical to the CPU physical address.  IOMMUs and (I assume)
+> iATUs can make them different, can't they?
 
---nds2ddkwji5fimma
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
- usage
-MIME-Version: 1.0
+IOMMU/iATU only gets into play if the address gets mapped and translated. If you
+look at the patch, even though it maps the physical address to 'port->base', the
+MSI address 'port->msg_addr' is actually populated with 'regs->start +
+PCIE_MSI_VECTOR' which corresponds to the physical address without any
+translation or mapping.
 
-On Wed, Feb 05, 2025 at 03:08:07PM -0500, Anusha Srivatsa wrote:
-> Replace platform_get_resource_byname + devm_ioremap_resource
-> with just devm_platform_ioremap_resource()
->=20
-> Used Coccinelle to do this change. SmPl patch:
-> //rule s/(devm_)platform_get_resource_byname +
-> //(devm_)ioremap/devm_platform_ioremap_resource.
-> @rule_3@
-> identifier res;
-> expression ioremap;
-> identifier pdev;
-> constant mem;
-> expression name;
-> @@
-> -struct resource *res;
-> <+...
-> -res =3D platform_get_resource_byname(pdev,mem,name);
-> <...
-> -if (!res) {
-> -...
-> -}
-> ...>
-> -ioremap =3D devm_ioremap(...);
-> +ioremap =3D devm_platform_ioremap_resource_byname(pdev,name);
-> ...+>
->=20
-> v2: Change the SmPl patch to work on multiple occurences of
-> the pattern. This also fixes the compilation error.
->=20
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> Cc: Ma=EDra Canal <mcanal@igalia.com>
-> Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
-> ---
->  drivers/gpu/drm/vc4/vc4_hdmi.c | 55 +++++++++++-------------------------=
-------
->  1 file changed, 14 insertions(+), 41 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdm=
-i.c
-> index 47d9ada98430634cfd8c1e21c2a4d00d501bab7e..066f1246dab420ee889845b0c=
-573d80ce7c88595 100644
-> --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> @@ -2951,71 +2951,44 @@ static int vc5_hdmi_init_resources(struct drm_dev=
-ice *drm,
->  {
->  	struct platform_device *pdev =3D vc4_hdmi->pdev;
->  	struct device *dev =3D &pdev->dev;
-> -	struct resource *res;
->  	int ret;
-> =20
-> -	res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hdmi");
-> -	if (!res)
-> -		return -ENODEV;
-> -
-> -	vc4_hdmi->hdmicore_regs =3D devm_ioremap(dev, res->start,
-> -					       resource_size(res));
-> +	vc4_hdmi->hdmicore_regs =3D devm_platform_ioremap_resource_byname(pdev,
-> +									"hdmi");
->  	if (!vc4_hdmi->hdmicore_regs)
->  		return -ENOMEM;
-> =20
-> -	res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hd");
-> -	if (!res)
-> -		return -ENODEV;
-> -
-> -	vc4_hdmi->hd_regs =3D devm_ioremap(dev, res->start, resource_size(res));
-> +	vc4_hdmi->hd_regs =3D devm_platform_ioremap_resource_byname(pdev, "hd");
->  	if (!vc4_hdmi->hd_regs)
->  		return -ENOMEM;
+>  If so, this looks like an
+> implicit assumption that PCI bus==CPU physical, and I think we should
+> make that a little more explicit somehow.
+> 
 
-I *think* that one is shared between both HDMI controllers on the
-RaspberryPi4, so we can't claim them from both instances. We should add
-a comment there to document that it's on purpose.
+In this specific case, MSI address == Physical address.
 
-The rest looks good.
+> > > > > Apparently they happen to be the same on this platform because (I
+> > > > > assume) MSIs actually do work, but it's not a good pattern for
+> > > > > drivers to copy.  I think what we really need is a dma_addr_t, and
+> > > > > I think there are one or two PCI controller drivers that do that.
+> > > > 
+> > > > I don't see why we would need 'dma_addr_t' here. The MSI address is
+> > > > a static physical address on this platform and that is not a DMA
+> > > > address. Other drivers can *only* copy this pattern if they also
+> > > > have the physical address allocated for MSI.
+> > > 
+> > > Isn't an MSI on PCI just a DMA write to a certain address?
+> > 
+> > That's from the endpoint prespective when it triggers MSI.
+> > 
+> > > My assumption is that if you put an analyzer on that link, an MSI
+> > > from a device would be structurally indistinguishable from a DMA
+> > > write from the device.  The MSI uses a different address, but
+> > > doesn't it use the same size and kind of address, at least from
+> > > the PCIe protocol perspective?
+> > 
+> > Yeah, but in this case the address allocated to MSI belongs to a
+> > hardcoded region in the host memory (not allocated by the DMA APIs
+> > which will have the region attributed as DMA capable). So it doesn't
+> > belong to the DMA domain, and we cannot use 'dma_addr_t'.
+> 
+> Doesn't .irq_compose_msi_msg() build the Message Address/Data pair
+> that is programmed into a device's MSI Capability or MSI-X Table?
+> The device will eventually use that to initiate a DMA write to that
+> address.
+> 
 
-Maxime
+The device can indeed initiate the DMA transaction on this MSI address, but that
+doesn't mean that the host will also use DMA to handle it. Given that the
+physical address is used directly for MSI, the host might do non-DMA access
+while receiving MSIs.
 
---nds2ddkwji5fimma
-Content-Type: application/pgp-signature; name="signature.asc"
+To clarify, if the device initiates a MSI by sending the MWr TLP to the host,
+the host RC will intercept it and will signal the host CPU of the interrupt.
+In this process, there is no need for the host to use DMA. DMA would certainly
+make sense if the endpoint is issuing MWr/MRd TLPs to write/read to the host
+DDR.
 
------BEGIN PGP SIGNATURE-----
+- Mani
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6TftgAKCRAnX84Zoj2+
-drfXAYDBINKHBSckIuo/kq/HoUvq16io0SUMaLB/CVkeidnE3EXaDz9M3WhZ60Ha
-n8d4HmABf0i2bHqp4iPr3Cr3YiSEnV9zX0sFLdFl/FejJMglsT19c+7lwsGMwuaH
-8nnPGZ1q6A==
-=1kXI
------END PGP SIGNATURE-----
-
---nds2ddkwji5fimma--
+-- 
+மணிவண்ணன் சதாசிவம்
 
