@@ -4,114 +4,194 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D03A2C02196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 07:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351FEC02196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 08:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WUlG3UNtQJExnVI2dfP6DGSLfDrec9VsYrxCHKK+B9Q=; b=MKdA1YC4w1m32nl1BZGnzpd6lk
-	g/VgmyvPY6ypiAtUdM6Z8hEMFF0PygRKvgWngz9pG9oi1kdHtZEwN/vtQGOdc3Tk/5i2ZMncP1mIg
-	qLgfMCQRvrpmVEnCQUdxPYjQTWFkO1q80eCiFq1fyG2KJk+Xvuv/8LC30gDLIuIu4OIgohPEOjSZ7
-	9iUsNT0T5ofyfvpyD+MtXcrNda7g+ecNYSiKwGTlzRRQWHxCRPjNjEeIntqlJW1Sl5zLn22u+S6ic
-	mQu6Mr7cGVKhQiSS9+HPORhOn1Xo3j0vWWAJxJo9u/NbJV/W37FhLj27vCZKdyVr5+ssJKGEV/yK3
-	evWde7NA==;
+	bh=KDYCmBOGb4xTAklwCidsim6czDQYd5zcQdD1tQKuGyU=; b=OXnDR1EykVPzy04eJn2dqS4OVf
+	D4FdQ6KnoIN03+bvH6i0Rya19peqAWfMQ1Tq8efjN9LD2dNqmgrRhIXus7dt0JdvaqfGrAxkDd+rb
+	ILq8XySsJLTiB4U/ZmuYCVVYM2sSPD5xvw/kzcb0tyVAWJ6yVImOQhAOiLjzxqrTaKJaajWEbmAJD
+	S3fHA8z43XtgVYJKVSwFd3T/A1JTfdaPa9kLmJ597c5USBvSmvdOskxTAfn/JGtbxTmw8MvWPIDLZ
+	TcYzTiuA9SNT4U42cl/ytNll4/g6tA6/xOe0gSCBMuvi7ZCZRgfN5ZMx83xDiVvz3a9V2JiUvmqgz
+	bRBlqMfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfwhw-00000005egw-0mRL;
-	Thu, 06 Feb 2025 07:53:56 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tfwvI-00000005gB2-0xui;
+	Thu, 06 Feb 2025 08:07:44 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfwOW-00000005bZN-1Pee;
-	Thu, 06 Feb 2025 07:33:53 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5163JoOM017544;
-	Thu, 6 Feb 2025 07:32:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	WUlG3UNtQJExnVI2dfP6DGSLfDrec9VsYrxCHKK+B9Q=; b=btVR24liqNCeM9Pr
-	EtL5s5B+8EeiipP6Vg6GGPUkkKDE1MMbC3xyoyq3REh+1JVp9KskNuo/fHkey7FP
-	rmVGhSThcXEmbAj6xloDDepk5LKAZ+yIEF0IABfBjT+hp4ngRXGeILgxExmt60uU
-	7HoVQmVyJ5tnWVAtUPb7rRL/ASnTK+T9WJQCjbiDyn58fISm3eeBDQbVLypbMfoM
-	dAHKtOfZv/koM0V5d36dTJFFMOAG3bu/zkHG8fKTu4FMHBgSouRhDzhR4SVMcH92
-	vzUbxp5jK0VRvoRJrgtEeSv+vEyOV2TAAkETYtQNc3UMk5CvMxyUJnFbtxpGknc/
-	55Owzw==
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 44mn2ygge1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 06 Feb 2025 07:32:39 +0000 (GMT)
-Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
-	by NASANPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 5167WcmY004871
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 6 Feb 2025 07:32:38 GMT
-Received: from [10.239.155.136] (10.80.80.8) by nasanex01b.na.qualcomm.com
- (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 5 Feb 2025
- 23:32:32 -0800
-Message-ID: <a56ee502-658c-4189-a963-51b488da95a6@quicinc.com>
-Date: Thu, 6 Feb 2025 15:32:09 +0800
+	id 1tfwlQ-00000005f4g-37f6;
+	Thu, 06 Feb 2025 07:57:34 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id ADAA81F397;
+	Thu,  6 Feb 2025 07:57:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1738828649; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=KDYCmBOGb4xTAklwCidsim6czDQYd5zcQdD1tQKuGyU=;
+	b=1txTOlkCv21S2vTjLJ68cZxl4jsQ9ELFo/3lM7aE8z9MUmN/ZfUvuFHosGpCWUYqa3ZfYZ
+	9OAk/1R5sB6jCPKj4lheu+LybPTLxbeOLNccjYC19a9Jg3HcywlKiOKoGbz+Ws77xJqFWl
+	JgtWjDEzXQc3tBDjKMZjxUeug3yIoQM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1738828649;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=KDYCmBOGb4xTAklwCidsim6czDQYd5zcQdD1tQKuGyU=;
+	b=86WS+XUcHnvTFYUQUcShqzKdwDJyOWE7MEKQ9TG8amX86ECJ8RUpO/X14DKvP0q3yTgmqA
+	CkcRsjz1W4Fxd9Bw==
+Authentication-Results: smtp-out2.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=1txTOlkC;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=86WS+XUc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1738828649; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=KDYCmBOGb4xTAklwCidsim6czDQYd5zcQdD1tQKuGyU=;
+	b=1txTOlkCv21S2vTjLJ68cZxl4jsQ9ELFo/3lM7aE8z9MUmN/ZfUvuFHosGpCWUYqa3ZfYZ
+	9OAk/1R5sB6jCPKj4lheu+LybPTLxbeOLNccjYC19a9Jg3HcywlKiOKoGbz+Ws77xJqFWl
+	JgtWjDEzXQc3tBDjKMZjxUeug3yIoQM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1738828649;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=KDYCmBOGb4xTAklwCidsim6czDQYd5zcQdD1tQKuGyU=;
+	b=86WS+XUcHnvTFYUQUcShqzKdwDJyOWE7MEKQ9TG8amX86ECJ8RUpO/X14DKvP0q3yTgmqA
+	CkcRsjz1W4Fxd9Bw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 63B8513697;
+	Thu,  6 Feb 2025 07:57:28 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id oE1eFmhrpGcBKgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Thu, 06 Feb 2025 07:57:28 +0000
+Message-ID: <73bad044-f5fc-40ea-9e32-571912573a5f@suse.de>
+Date: Thu, 6 Feb 2025 08:57:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/8] scsi: ufs: core: Pass target_freq to
- clk_scale_notify() vop
-To: Bean Huo <huobean@gmail.com>, <quic_cang@quicinc.com>,
-        <bvanassche@acm.org>, <mani@kernel.org>, <beanhuo@micron.com>,
-        <avri.altman@wdc.com>, <junwoo80.lee@samsung.com>,
-        <martin.petersen@oracle.com>, <quic_nguyenb@quicinc.com>,
-        <quic_nitirawa@quicinc.com>, <quic_rampraka@quicinc.com>
-CC: <linux-arm-msm@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley"
-	<James.Bottomley@HansenPartnership.com>,
-        Peter Wang
-	<peter.wang@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>,
-        "Manivannan
- Sadhasivam" <manivannan.sadhasivam@linaro.org>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Andrew Halaney
-	<ahalaney@redhat.com>,
-        Eric Biggers <ebiggers@google.com>, Minwoo Im
-	<minwoo.im@samsung.com>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated
- list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
-	<linux-mediatek@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>
-References: <20250203081109.1614395-1-quic_ziqichen@quicinc.com>
- <20250203081109.1614395-2-quic_ziqichen@quicinc.com>
- <ceeee4f93b22ab53c4243eec85449a95b0305c70.camel@gmail.com>
+Subject: Re: [PATCH 12/12] Documentation: Update the todo
+To: Anusha Srivatsa <asrivats@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Stefan Agner <stefan@agner.ch>,
+ Alison Wang <alison.wang@nxp.com>, Xinliang Liu <xinliang.liu@linaro.org>,
+ Tian Tao <tiantao6@hisilicon.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu
+ <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat
+ <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>,
+ Yannick Fertre <yannick.fertre@foss.st.com>,
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
+ Philippe Cornu <philippe.cornu@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Mikko Perttunen <mperttunen@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Alexey Brodkin <abrodkin@synopsys.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Jonathan Corbet <corbet@lwn.net>
+Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
+ linux-doc@vger.kernel.org
+References: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
+ <20250205-mem-cocci-newapi-v1-12-aebf2b0e2300@redhat.com>
 Content-Language: en-US
-From: Ziqi Chen <quic_ziqichen@quicinc.com>
-In-Reply-To: <ceeee4f93b22ab53c4243eec85449a95b0305c70.camel@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <20250205-mem-cocci-newapi-v1-12-aebf2b0e2300@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01b.na.qualcomm.com (10.46.141.250)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: HCq-x5_05vsA-b4SdG6bzT-DOJeaUXeF
-X-Proofpoint-GUID: HCq-x5_05vsA-b4SdG6bzT-DOJeaUXeF
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-02-06_01,2025-02-05_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 mlxscore=0
- impostorscore=0 spamscore=0 mlxlogscore=999 clxscore=1011
- lowpriorityscore=0 bulkscore=0 suspectscore=0 phishscore=0
- priorityscore=1501 malwarescore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.19.0-2501170000 definitions=main-2502060061
+X-Rspamd-Queue-Id: ADAA81F397
+X-Spamd-Result: default: False [-3.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	RCVD_TLS_ALL(0.00)[];
+	ARC_NA(0.00)[];
+	FREEMAIL_TO(0.00)[redhat.com,jms.id.au,linux.intel.com,kernel.org,gmail.com,ffwll.ch,codeconstruct.com.au,agner.ch,nxp.com,linaro.org,hisilicon.com,google.com,pengutronix.de,collabora.com,denx.de,rock-chips.com,sntech.de,linux.alibaba.com,foss.st.com,nvidia.com,synopsys.com,raspberrypi.com,igalia.com,lwn.net];
+	DKIM_TRACE(0.00)[suse.de:+];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	R_RATELIMIT(0.00)[to_ip_from(RL5qdohruh175rhiw1bqi96ifb)];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	TO_MATCH_ENVRCPT_SOME(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCPT_COUNT_GT_50(0.00)[55];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[];
+	TO_DN_SOME(0.00)[]
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Action: no action
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_233352_386112_E6357FFC 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20250205_235732_938334_5FD5C768 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,38 +206,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bean,
+Hi
 
-Thanks for your review ~
 
--Ziqi
+Am 05.02.25 um 21:08 schrieb Anusha Srivatsa:
+> Update the Documentation to be more precise.
+>
+> v2: Update for clarity
+>
+> Cc: Thomas Zimmermann <tzimmermann@suse.de>
+> Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+> ---
+>   Documentation/gpu/todo.rst | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+> index 256d0d1cb2164bd94f9b610a751b907834d96a21..03fcd086889acbd1294669b260292ffc79e97e2f 100644
+> --- a/Documentation/gpu/todo.rst
+> +++ b/Documentation/gpu/todo.rst
+> @@ -441,13 +441,13 @@ Contact: Thomas Zimmermann <tzimmermann@suse.de>
+>   
+>   Level: Intermediate
+>   
+> -Request memory regions in all drivers
+> --------------------------------------
+> +Request memory regions in all fbdev drivers
+> +--------------------------------------------
+>   
+> -Go through all drivers and add code to request the memory regions that the
+> -driver uses. This requires adding calls to request_mem_region(),
+> -pci_request_region() or similar functions. Use helpers for managed cleanup
+> -where possible.
+> +Old/ancient fbdev drivers do not request their memory properly.
+> +Go through these drivers and add code to request the memory regions that the
+> +driver uses. Problematic areas include hardware that has exclusive ranges like
+> +VGA. VGA16fb does not request the range as it is expected.
 
-On 2/3/2025 5:37 PM, Bean Huo wrote:
-> On Mon, 2025-02-03 at 16:11 +0800, Ziqi Chen wrote:
->> From: Can Guo <quic_cang@quicinc.com>
->>
->> Instead of only two frequencies, if OPP V2 is used, the UFS devfreq
->> clock
->> scaling may scale the clock among multiple frequencies, so just
->> passing
->> up/down to vop clk_scale_notify() is not enough to cover the
->> intermediate
->> clock freqs between the min and max freqs. Hence pass the target_freq
->> ,
->> which will be used in successive commits, to clk_scale_notify() to
->> allow
->> the vop to perform corresponding configurations with regard to the
->> clock
->> freqs.
->>
->> Signed-off-by: Can Guo <quic_cang@quicinc.com>
->> Co-developed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
->> Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
-> 
-> I have reviewed patches [1/8], [2/8], [3/8], [4/8] in the v2, since you
-> just changed coding types, and typos , but no logic change in v3. Add
-> my review tag agaion:
-> 
-> Reviewed-by: Bean Huo <beanhuo@micron.com>
+I'd keep both, old and new text, and turn them into a single paragraph. 
+The old text explains what to do and the new text gives examples.
+
+Best regards
+Thomas
+
+>   
+>   Drivers are pretty bad at doing this and there used to be conflicts among
+>   DRM and fbdev drivers. Still, it's the correct thing to do.
+>
+
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
 
 
