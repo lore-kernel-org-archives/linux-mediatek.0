@@ -4,108 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5CFC02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 21:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A713DC02194
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 23:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6DxvZdZPg1+c/4MiY+1eFG+nW41sRJmolNY7AFhKpW0=; b=IXOw03t0+ko0QzRb6e8ypaKLbJ
-	nqYA6DjHRedMmBpjgOBZKA9zyS6nFU5nNim+5+0jWpgX+xbplFwpXvyeA4tpwJivpRs1N3CuvjaSJ
-	ZtTke6vxSvoV6RmZ5GsaDaPQk0IKXb0GdepSBAShjm3Zw4fLkzUsxNSGpSX4zzoKs42vgYlT3sJ1L
-	BDPavDMgj6xYgxM6nkdWsMW0IZDNCpdAG0n94aduMApBXoCz3qqWAFPGX6Z2zroUncXsHghaGkSv9
-	zENXJSR/Sj8/Bl1m5iqUtycNkPNABqDjGa0bEg4Y6o6sZForEDM6f1QnP+AgGUSX90bvotZxAtHnB
-	8Ylga4FQ==;
+	bh=smQJl3ePCs8jGnt2Sj26A0AseZjXwWnj+sjvgFlY7DA=; b=H1HZAnWXnlLIp1c6bCHsSotw10
+	nCORUhX5RbJqQ99mNHquP5gNCTOhIPzwH2LnGHyRuCxsJ89ZYGMhNlHMS/5PiuLlZn8TN8Mjdjh8O
+	S/ETFeHYhujapvNMLJKzMEcYKd80j8UnVHUSBIJ4dbOjcJEx71EXzuwtFikLkg9AmoZLu94YG6kSy
+	iI7q5Z177Et9frBbhBWuPkTyI0yNi18RNVOAsn5RQOwa6Sr54BpRJDtJ/2CECiX6W7V3yRjzMDtXd
+	wUabd8jBHA9evCXWEo1kaKo7QqvjctH3rrQELxVAyYvL0h9BSUaS8l3SJo5ivXAlg4P6+Sbfaj9nH
+	ubl8siLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg9JG-00000007ZOt-06zJ;
-	Thu, 06 Feb 2025 21:21:18 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1tgAzT-00000007lbl-3WOU;
+	Thu, 06 Feb 2025 23:08:59 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg9JD-00000007ZO2-0u91
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Feb 2025 21:21:16 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-46c7855df10so23714321cf.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2025 13:21:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1738876874; x=1739481674; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=6DxvZdZPg1+c/4MiY+1eFG+nW41sRJmolNY7AFhKpW0=;
-        b=XFB3IHaDZ0z0ciMyZr37lb04JpnCt1PadZABABB7CTVxIv1s1Bc+j28VfxyZ3USab6
-         P6xM4VFwSm6YjWryz+yy6KOv3Li4fqYpl+WRAN71Km+rxuTVHzo32si48sisVanuKFan
-         BKwxYO+EzwdV+hIxh8hEbvZbOPW76sXgJKERln8DfgiG7ZA9XBcbAB6CqPip+vWuVpog
-         /AU3b317cb3+6LIomD/K42wi3XEyKQim/t0iiJUc0pcxbfGQRmHSCv6FDPDhcLnQGXGq
-         5GGwDC+mcN4UJC4rvgHnU/r19TEtJELeigqnqe8gcbqu315znxJPZVWG2TOCq+b/CM6s
-         5hwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738876874; x=1739481674;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6DxvZdZPg1+c/4MiY+1eFG+nW41sRJmolNY7AFhKpW0=;
-        b=p5D6MLLIcugCubJaS2XEAKifgDp8dCF2i9D9LtnZdeH/6rmEmp94wIPwZ7hjXgfni4
-         w2TX8AFdMPhGHRmxmUn+zwksLq/Ks8O0pa7O9D6/PpO2Wp//FCEcKhUX6mHtjkiBKCzP
-         ue8qdGhiYQPHldRi2rUg3tXrrRHaldw/z2mGrE2T1lGs/2kY3naLHEFVMq6kzIxRBHf+
-         2AWA+f01Nq7ihgI3/PyXRmrPuxSl5J5OC+Gx/92H6MPHEjv7Nq2PMhd08Mt6FN9hoRc2
-         BF+UPZ0jzZ+KGGmFcqtVCQuB4yXSqbPi7+5tpWTMaGkQSrCxL9gWeUCq32eeeM+rRKiX
-         o1tw==
-X-Forwarded-Encrypted: i=1; AJvYcCWGGjZVJjONtOHgdcmsI6o8SBrI8E3NOHufUebVDbCwAmcgukmkLFNz3Xfv0BmSMbKss8Sfm8kRbTHqr4oSgA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4cmw0W68lfg/WjxDgOE1b+wHXGJHxB7Q3ssumDqofJ+2JtW3W
-	HVfKVwC/Oz4RQ/iftBz6HfRs+M2lhTiOKP1dyiDwu9aR4ZXu1TAor3Ex2/YKv+4=
-X-Gm-Gg: ASbGncterK/Qs26ePGGhCJmJDwg14Kn4TO9CNd/oXsISi+gr0ef6QrX2QK9aUC/FkEZ
-	RQ2bcovq8tqlcZkpqkRBwu4B2+7cHXnCaqc1vOajX4l0DUgt8ms3yc9KHcQtV10A5J66zcCW/1o
-	IG50CUgf4SYsEDlQPgd2sugW2scSHcCzLe5IUnfuFLVvKIbCiY1r+OK86/02Ysbtb4WfDlKUCgy
-	3QQmoumGi/u5uaFMZIYhDZR7PpUj7StG+pHUUncwzPqi3yGPQVZeU2eF0goAszoNWBpDEezxIRO
-	CYkHwkCw4bS3XttE
-X-Google-Smtp-Source: AGHT+IHI8yMd/5aYfmfZcfbDFH3h4Fy2Z99LYvivEu182Bj0ddc/CD4GBHcML5OVdc/uP/LZDxsEvA==
-X-Received: by 2002:a05:622a:5a95:b0:466:a06f:ae0a with SMTP id d75a77b69052e-47167ae29c0mr13578771cf.32.1738876873855;
-        Thu, 06 Feb 2025 13:21:13 -0800 (PST)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:11:e976::7a9])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-47153bc741asm9168671cf.62.2025.02.06.13.21.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Feb 2025 13:21:12 -0800 (PST)
-Message-ID: <5e0e2fbb22c2ffb0c5281727cd95d70f5f5ba696.camel@ndufresne.ca>
-Subject: Re: [RFC PATCH 3/5] dt-bindings: gpu: Add protected heap name to
- Mali Valhall CSF binding
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Florent Tomasin	
- <florent.tomasin@arm.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring	
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>, 
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst	 <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>,  Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Sumit Semwal
- <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T . J . Mercier"	
- <tjmercier@google.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
- <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong
- Wu <yong.wu@mediatek.com>
-Cc: dmaengine@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	nd@arm.com, Akash Goel <akash.goel@arm.com>
-Date: Thu, 06 Feb 2025 16:21:10 -0500
-In-Reply-To: <c0aad911-ecc4-4b04-a453-6da226f76ed2@kernel.org>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
-	 <36b57dcf20860398ba83985e1c5b6f6958d08ba7.1738228114.git.florent.tomasin@arm.com>
-	 <7234f25c-a2aa-4834-931b-aeeb7a49dfa7@kernel.org>
-	 <4b9deab1-e330-4c93-8260-75276c2bc9ff@arm.com>
-	 <c0aad911-ecc4-4b04-a453-6da226f76ed2@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1tgAy5-00000007lVZ-3yCA;
+	Thu, 06 Feb 2025 23:07:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1738883253; x=1770419253;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=boGdQ7S8b0YyNfxIm4I50jD6mtmzak8c74/jeqYssO4=;
+  b=k1xniVivBAiawgDg65TlbBya4MT+frFcK3aywFGPcR9vJZ6h4wdlOZqZ
+   5ec6nGNZfmTL/6UFgT+mYW9TJL9qLjiTeE2hrlSXq0ql3IiVfTzVQVwlj
+   94hxokEO2W589mfYkWM7dLDgTRaVi76cVkdaNNb24RRU1TukOiHAPSC9a
+   M1IhFryblXcqoPXd9lMSW4cgjfIa9p/+6ha8u0e0Lda/oJSpOgzDOYij/
+   xgfIrMhKsREMO+slB6zA1xEsUavSFXDdFJ91fqVYZy2hc7yQBTQ+W/qPs
+   snX/KVh4qQyR/rmQ+Vg1VbpVF9yhjsHaABnAcre9y/C6XADkStrn5zYPQ
+   Q==;
+X-CSE-ConnectionGUID: S58PUdRgRAKBJoWUJSOn+w==
+X-CSE-MsgGUID: tL1AE8syRsCmclwuapAJZg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="50946262"
+X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; 
+   d="scan'208";a="50946262"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Feb 2025 15:07:32 -0800
+X-CSE-ConnectionGUID: EQwYRrGCRW2DHPzG7W2gkg==
+X-CSE-MsgGUID: q85618KpRbu5Bb86PHmPeQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,265,1732608000"; 
+   d="scan'208";a="111132680"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 06 Feb 2025 15:07:27 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tgAxw-000xUd-1j;
+	Thu, 06 Feb 2025 23:07:24 +0000
+Date: Fri, 7 Feb 2025 07:06:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next 10/13] net: airoha: Introduce PPE initialization
+ via NPU
+Message-ID: <202502070610.tbfoIwkS-lkp@intel.com>
+References: <20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_132115_441846_88871F82 
-X-CRM114-Status: GOOD (  30.83  )
+X-CRM114-CacheID: sfid-20250206_150733_996860_715D7584 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,85 +100,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mercredi 05 f=C3=A9vrier 2025 =C3=A0 10:13 +0100, Krzysztof Kozlowski a =
-=C3=A9crit=C2=A0:
-> On 03/02/2025 16:31, Florent Tomasin wrote:
-> > Hi Krzysztof
-> >=20
-> > On 30/01/2025 13:25, Krzysztof Kozlowski wrote:
-> > > On 30/01/2025 14:08, Florent Tomasin wrote:
-> > > > Allow mali-valhall-csf driver to retrieve a protected
-> > > > heap at probe time by passing the name of the heap
-> > > > as attribute to the device tree GPU node.
-> > >=20
-> > > Please wrap commit message according to Linux coding style / submissi=
-on
-> > > process (neither too early nor over the limit):
-> > > https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/proces=
-s/submitting-patches.rst#L597
-> > Apologies, I think I made quite few other mistakes in the style of the
-> > patches I sent. I will work on improving this aspect, appreciated
-> >=20
-> > > Why this cannot be passed by phandle, just like all reserved regions?
-> > >=20
-> > > From where do you take these protected heaps? Firmware? This would
-> > > explain why no relation is here (no probe ordering, no device links,
-> > > nothing connecting separate devices).
-> >=20
-> > The protected heap is generaly obtained from a firmware (TEE) and could
-> > sometimes be a carved-out memory with restricted access.
->=20
-> Which is a reserved memory, isn't it?
->=20
-> >=20
-> > The Panthor CSF kernel driver does not own or manage the protected heap
-> > and is instead a consumer of it (assuming the heap is made available by
-> > the system integrator).
-> >=20
-> > I initially used a phandle, but then I realised it would introduce a ne=
-w
-> > API to share the heap across kernel driver. In addition I found this
-> > patch series:
-> > -
-> > https://lore.kernel.org/lkml/20230911023038.30649-1-yong.wu@mediatek.co=
-m/#t
-> >=20
-> > which introduces a DMA Heap API to the rest of the kernel to find a
-> > heap by name:
-> > - dma_heap_find()
-> >=20
-> > I then decided to follow that approach to help isolate the heap
-> > management from the GPU driver code. In the Panthor driver, if the
-> > heap is not found at probe time, the driver will defer the probe until
-> > the exporter made it available.
->=20
->=20
-> I don't talk here really about the driver but even above mediatek
-> patchset uses reserved memory bindings.
->=20
-> You explained some things about driver yet you did not answer the
-> question. This looks like reserved memory. If it does not, bring
-> arguments why this binding cannot be a reserved memory, why hardware is
-> not a carve out memory.
+Hi Lorenzo,
 
-I think the point is that from the Mali GPU view, the memory does not need =
-to be
-within the range the Linux Kernel actually see, even though current integra=
-tion
-have that. From Mali GPU driver stand point (or codec drivers and what's no=
-t),
-the memory range is not useful to allocate protected/restricted memory. On =
-top
-of which, its not reserved specifically for the Mali GPU.
+kernel test robot noticed the following build warnings:
 
-What's your practical suggestion here ? Introduce dma_heap_find_by_region()=
- ?
+[auto build test WARNING on 135c3c86a7cef4ba3d368da15b16c275b74582d3]
 
-Nicolas
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/net-airoha-Move-airoha_eth-driver-in-a-dedicated-folder/20250206-022555
+base:   135c3c86a7cef4ba3d368da15b16c275b74582d3
+patch link:    https://lore.kernel.org/r/20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01%40kernel.org
+patch subject: [PATCH net-next 10/13] net: airoha: Introduce PPE initialization via NPU
+config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20250207/202502070610.tbfoIwkS-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250207/202502070610.tbfoIwkS-lkp@intel.com/reproduce)
 
->=20
-> Best regards,
-> Krzysztof
->=20
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202502070610.tbfoIwkS-lkp@intel.com/
 
+All warnings (new ones prefixed by >>):
+
+   In file included from include/linux/device.h:15,
+                    from include/linux/devcoredump.h:8,
+                    from drivers/net/ethernet/airoha/airoha_npu.c:7:
+   drivers/net/ethernet/airoha/airoha_npu.c: In function 'airoha_npu_run_firmware':
+>> drivers/net/ethernet/airoha/airoha_npu.c:200:30: warning: format '%ld' expects argument of type 'long int', but argument 4 has type 'size_t' {aka 'unsigned int'} [-Wformat=]
+     200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                              ^~~
+   include/linux/dev_printk.h:154:56: note: in expansion of macro 'dev_fmt'
+     154 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                                        ^~~~~~~
+   drivers/net/ethernet/airoha/airoha_npu.c:200:17: note: in expansion of macro 'dev_err'
+     200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                 ^~~~~~~
+   drivers/net/ethernet/airoha/airoha_npu.c:200:60: note: format string is defined here
+     200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                                                          ~~^
+         |                                                            |
+         |                                                            long int
+         |                                                          %d
+   drivers/net/ethernet/airoha/airoha_npu.c:220:30: warning: format '%ld' expects argument of type 'long int', but argument 4 has type 'size_t' {aka 'unsigned int'} [-Wformat=]
+     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                              ^~~
+   include/linux/dev_printk.h:154:56: note: in expansion of macro 'dev_fmt'
+     154 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                                        ^~~~~~~
+   drivers/net/ethernet/airoha/airoha_npu.c:220:17: note: in expansion of macro 'dev_err'
+     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                 ^~~~~~~
+   drivers/net/ethernet/airoha/airoha_npu.c:220:60: note: format string is defined here
+     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                                                          ~~^
+         |                                                            |
+         |                                                            long int
+         |                                                          %d
+
+
+vim +200 drivers/net/ethernet/airoha/airoha_npu.c
+
+   187	
+   188	static int airoha_npu_run_firmware(struct airoha_npu *npu, struct reserved_mem *rmem)
+   189	{
+   190		struct device *dev = &npu->pdev->dev;
+   191		const struct firmware *fw;
+   192		void __iomem *addr;
+   193		int ret;
+   194	
+   195		ret = request_firmware(&fw, NPU_EN7581_FIRMWARE_RV32, dev);
+   196		if (ret)
+   197			return ret;
+   198	
+   199		if (fw->size > NPU_EN7581_FIRMWARE_RV32_MAX_SIZE) {
+ > 200			dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+   201				NPU_EN7581_FIRMWARE_RV32, fw->size);
+   202			ret = -E2BIG;
+   203			goto out;
+   204		}
+   205	
+   206		addr = devm_ioremap(dev, rmem->base, rmem->size);
+   207		if (!addr) {
+   208			ret = -ENOMEM;
+   209			goto out;
+   210		}
+   211	
+   212		memcpy_toio(addr, fw->data, fw->size);
+   213		release_firmware(fw);
+   214	
+   215		ret = request_firmware(&fw, NPU_EN7581_FIRMWARE_DATA, dev);
+   216		if (ret)
+   217			return ret;
+   218	
+   219		if (fw->size > NPU_EN7581_FIRMWARE_DATA_MAX_SIZE) {
+   220			dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+   221				NPU_EN7581_FIRMWARE_DATA, fw->size);
+   222			ret = -E2BIG;
+   223			goto out;
+   224		}
+   225	
+   226		memcpy_toio(npu->base + REG_NPU_LOCAL_SRAM, fw->data, fw->size);
+   227	out:
+   228		release_firmware(fw);
+   229	
+   230		return ret;
+   231	}
+   232	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
