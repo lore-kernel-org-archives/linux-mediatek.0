@@ -4,96 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BA4C02194
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 17:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24B7C0219B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 17:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4xyFJhUKmXvISbhvlxrsKbalUZLIqSWCZyj7Xp1Z3rU=; b=GSf86L3lK3OiYg1wgl4OSfUXAb
-	bginm0TZEnp83/2doWgBckud6WvdmVRzSaCQSkt1Tl76Lbgenlo5YxpPdgoMVkzz2uT7K1ZShm42G
-	9Jxv7oakHomFUnY+jWePa02DcnQidy+LugihhZkYO+yf20ROAzK23Z+HmNo/++oHMXqIVpk6eI2TK
-	mnRlXDa1wLPaNE4ZUEqQj8cA4U7IYMfErudc64a2Q9iW6jtLTp8QeM8hYHmxu8iHeDPtG9klzeiTN
-	fuCyE4NR4zz8PKZprcNOkaxoi57aGUzI57Q738yZwhRGNTHCRh38lMaht2s4CYVaiYqYdoA7WwvFY
-	C6vmUa7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MlXjtyzT0awBuxej0ALsl35Zl5WCC4lgXasicAd2b6k=; b=LwZzdt7pCrfFpv
+	I/lofZAwRHFlvGnjRv8tei/55yVI/FscNw9VYIkQbGS4rg2KAe6VXSLOuaCEq7X8H+I8MScNkznxM
+	VWd/nVxTL0p582WSH6ONCpdyEIYVuRCAzR4UFLL8xfpJZ1Qd9db06YYLl9F6nJb5ainrX8/8VBfEF
+	+a66z8h6obJHWI4SUkHWn9v4EOKoXDOk4e6gyXwMNkYDdeTPUbcUj0Y1sZtiEbjw617X1jNGe8GrZ
+	hY8dchRvlRF9AieNNHNLkICGt4tNdzClxkDQMRzsV3Liwuqs4tXoudK/o3cdoXDfR3yAivnxGr9dv
+	zZblvskn++K6ZOBBCcfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgSQH-0000000AXqa-1vmt;
-	Fri, 07 Feb 2025 17:45:49 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1tgSQv-0000000AY3w-1eqn;
+	Fri, 07 Feb 2025 17:46:29 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgSIy-0000000AWS6-2y7W
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Feb 2025 17:38:17 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2f9d627b5fbso4229704a91.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Feb 2025 09:38:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738949896; x=1739554696; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=4xyFJhUKmXvISbhvlxrsKbalUZLIqSWCZyj7Xp1Z3rU=;
-        b=EnCMseUUBIR15C2Ydob9yPm2vi6sxoCyuF5akBWhkIB47T5gBbLMSKKi0RAjtLT+kg
-         3bjv1OvnMb+WsjO8lgEIVL+yVvciZHU4jw1fYhNNEItU2ewbqxR083ezqEdx0+HgBGva
-         VvFv1SwWEy8XGX9+bkOvgGhkX+y1/rNVW2/bxybdteHnNIqba2kZOWzxFxTHXyqAiJvZ
-         3YtEVyqeyBsCCXRbIcmVL8Qcl0wBatyuWDeKhd8XBnUwfzURP/RE6RtvikluMkaXWAnn
-         LqUloWf0BkS/9x5pB3ryPGEMNpRVaKrSYe0HCpIJZsNH3M6bIeopCl+UxbAQMtw+YXlN
-         MoGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738949896; x=1739554696;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4xyFJhUKmXvISbhvlxrsKbalUZLIqSWCZyj7Xp1Z3rU=;
-        b=MOgUBRG2S+exEJeOIfNpshvsQRK+lwUoksRA129kbeLmWI1mb9YnmlLVrFvhONFiEB
-         6RYPNopckvZpg8PmiyOP02H2i5n6pfxDYQzKk+uxOLVM/dP73WPYLqLkAgZl8XODSIXi
-         KAT2olkvi3l/bX1vWf/3q788xQuwb6nVnVCS/mQUDr6rruvtOJbzYFeE4oWxuyL0QaML
-         60gZ5vdNTpIDH07TymWJSxJBLt2MAQRDx3qDyjGRbUZuEj4sPTpwQqPt/XyqtojZwLuO
-         TkhU0qSGxnqxFO7bVZ9BO3o8PKxHTQGZvj3el8eOq4JKS/gV98vHJoJmUDW6zAnJGIW3
-         YI9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXCbTzOkhWqthfTiYeryYPhWKP1vUwQTEOVl7S8QdOrDnHrzV57DdBub7Wt1qEOdx3eItJ+3rnyQ3uIjVrczw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVIKhuzWeFzDaRZ6KyEPqsvbT5TM4I1GOP0DMHQRdzaMDpBJjs
-	qPsKerhuDBG4B3z+/Rh1Igl2feiTENo0IL3cN1/rzGIDJkmoy6IOYjsNcC0l+8QNSu9xXwA4M3g
-	=
-X-Gm-Gg: ASbGncvzNzjEbw6+Y0a/Fk8sTJ7HRVa0du3UDxdnfX92+UHmhWtgzLW5un1Y47+Madm
-	KAk7p/wd9VWoPCGsi3IAU/rObgkW0US4DaZDudSpM5iBna7NpxuixH7YhTmDO0KcUSB6/KWzoET
-	3Y3/N+szZtvdUdz1STcXPaQQyzv5EiQWflyBKt8HM6XE9OzrzJUjXGJ4S2Yeda3ioWCH8GPUo6v
-	fTHfZ+OF+fz9lVpPFCiAh/mBijJ7T8QDE+cSsrQC2xWKbMebelrdInORVv+5Usea5soNVWVN0u8
-	8ZnbFCCEpW//Hll3M9FaZZbLZQ==
-X-Google-Smtp-Source: AGHT+IFprNv/Fxes+yO0Is4d70/qLRRGy5XcxfptGmrec0u4U5JshNdQEzKB4xo6nsXGXHm3iHyxoQ==
-X-Received: by 2002:a17:90b:3903:b0:2fa:229f:d03a with SMTP id 98e67ed59e1d1-2fa243e9e0fmr5424081a91.26.1738949896065;
-        Fri, 07 Feb 2025 09:38:16 -0800 (PST)
-Received: from thinkpad ([120.60.76.168])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fa0942d30esm3647036a91.0.2025.02.07.09.38.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Feb 2025 09:38:15 -0800 (PST)
-Date: Fri, 7 Feb 2025 23:08:09 +0530
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Remove leftover mac_reset assert
- for Airoha EN7581 SoC.
-Message-ID: <20250207173809.wykxrugz3neinpru@thinkpad>
-References: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
+	id 1tgRBn-0000000AHHg-06Ah;
+	Fri, 07 Feb 2025 16:26:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4A218A43752;
+	Fri,  7 Feb 2025 16:25:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FE8AC4CED1;
+	Fri,  7 Feb 2025 16:26:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738945605;
+	bh=u+i95IR3MVOK1O+Tnb4juPc0WoJPr81JyopjZ2dKp/Q=;
+	h=From:Subject:Date:To:Cc:From;
+	b=GCIZMgYTQkqmivbMNyPjb1wStpCQeA8rKEqwbug0hMrRDg2I9XcmWSxjbQov4GffM
+	 iG7RWsQDUZ+EFjoDaorFRmItUvlB0o6orqGjkiUEhbpg9js5j6hA2eZ8HhH7L3Arvy
+	 FgHa9pD/kWPIc5m6tFbR+XXdda6RbHr3aJE657YbTv7F22OuujNmWOW9+SQmEGeWaY
+	 I+BbFXFsioKC5DTmmyRFhxqh6cPSZhOCyanwcQHdA5/aESpfYWtuoq3vmkxFQ6dWT8
+	 LnoOdk/LwG9lUtBaN/y5Up9fVOKh5ga2be98K25euO+4smAmFaL+b4bdR64voLHdjT
+	 VKcKI4YWr7bcQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 00/15] Introduce flowtable hw offloading in
+ airoha_eth driver
+Date: Fri, 07 Feb 2025 17:26:15 +0100
+Message-Id: <20250207-airoha-en7581-flowtable-offload-v2-0-3a2239692a67@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250201-pcie-en7581-remove-mac_reset-v2-1-a06786cdc683@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIACc0pmcC/42NTQ6CMBBGr0K6dkx/RNSV9zAspnQKjaQlU4Iaw
+ t2tnMDd977Fe6vIxIGyuFWrYFpCDikW0IdKdAPGniC4wkJLXUsta8DAaUCg2NQXBX5MrxntSJB
+ 82eiADCpljTUndKJYJiYf3nvh0RYeQp4Tf/bgon7v/+5FgQRnzrrzeG2sVPcncaTxmLgX7bZtX
+ zMzGZPPAAAA
+X-Change-ID: 20250205-airoha-en7581-flowtable-offload-e3a11b3b34ad
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ upstream@airoha.com, Christian Marangi <ansuelsmth@gmail.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_093816_753327_C6FAB322 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20250207_082647_203399_35ACED78 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,46 +87,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 01, 2025 at 12:00:18PM +0100, Lorenzo Bianconi wrote:
-> Remove a leftover assert for mac_reset line in mtk_pcie_en7581_power_up().
-> This is not harmful since EN7581 does not requires mac_reset and
-> mac_reset is not defined in EN7581 device tree.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Introduce netfilter flowtable integration in airoha_eth driver to
+offload 5-tuple flower rules learned by the PPE module if the user
+accelerates them using a nft configuration similar to the one reported
+below:
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+table inet filter {
+	flowtable ft {
+		hook ingress priority filter
+		devices = { lan1, lan2, lan3, lan4, eth1 }
+		flags offload;
+	}
+	chain forward {
+		type filter hook forward priority filter; policy accept;
+		meta l4proto { tcp, udp } flow add @ft
+	}
+}
 
-- Mani
+Packet Processor Engine (PPE) module available on EN7581 SoC populates
+the PPE table with 5-tuples flower rules learned from traffic forwarded
+between the GDM ports connected to the Packet Switch Engine (PSE) module.
+airoha_eth driver configures and collects data from the PPE module via a
+Network Processor Unit (NPU) RISC-V module available on the EN7581 SoC.
+Move airoha_eth driver in a dedicated folder
+(drivers/net/ethernet/airoha).
 
-> ---
-> Changes in v2:
-> - fix typo in commit log
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..0f64e76e2111468e6a453889ead7fbc75804faf7 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -940,7 +940,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
->  	 */
->  	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
->  				  pcie->phy_resets);
-> -	reset_control_assert(pcie->mac_reset);
->  
->  	/* Wait for the time needed to complete the reset lines assert. */
->  	msleep(PCIE_EN7581_RESET_TIME_MS);
-> 
-> ---
-> base-commit: 647d69605c70368d54fc012fce8a43e8e5955b04
-> change-id: 20250201-pcie-en7581-remove-mac_reset-16e7b6e3ef06
-> 
-> Best regards,
-> -- 
-> Lorenzo Bianconi <lorenzo@kernel.org>
-> 
+---
+Changes in v2:
+- Add airoha-npu document binding
+- Enable Rx SPTAG on MT7530 dsa switch for EN7581 SoC.
+- Fix warnings in airoha_npu_run_firmware()
+- Fix sparse warnings
+- Link to v1: https://lore.kernel.org/r/20250205-airoha-en7581-flowtable-offload-v1-0-d362cfa97b01@kernel.org
 
+---
+Lorenzo Bianconi (15):
+      net: airoha: Move airoha_eth driver in a dedicated folder
+      net: airoha: Move definitions in airoha_eth.h
+      net: airoha: Move reg/write utility routines in airoha_eth.h
+      net: airoha: Move register definitions in airoha_regs.h
+      net: airoha: Move DSA tag in DMA descriptor
+      net: dsa: mt7530: Enable Rx sptag for EN7581 SoC
+      net: airoha: Enable support for multiple net_devices
+      net: airoha: Move REG_GDM_FWD_CFG() initialization in airoha_dev_init()
+      net: airoha: Rename airoha_set_gdm_port_fwd_cfg() in airoha_set_vip_for_gdm_port()
+      dt-bindings: arm: airoha: Add the NPU node for EN7581 SoC
+      dt-bindings: net: airoha: Add airoha,npu phandle property
+      net: airoha: Introduce PPE initialization via NPU
+      net: airoha: Introduce flowtable offload support
+      net: airoha: Add loopback support for GDM2
+      net: airoha: Introduce PPE debugfs support
+
+ .../devicetree/bindings/arm/airoha,en7581-npu.yaml |   71 ++
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |   10 +
+ drivers/net/dsa/mt7530.c                           |    5 +
+ drivers/net/dsa/mt7530.h                           |    4 +
+ drivers/net/ethernet/Kconfig                       |    2 +
+ drivers/net/ethernet/Makefile                      |    1 +
+ drivers/net/ethernet/airoha/Kconfig                |   23 +
+ drivers/net/ethernet/airoha/Makefile               |    9 +
+ .../net/ethernet/{mediatek => airoha}/airoha_eth.c | 1261 +++++---------------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  626 ++++++++++
+ drivers/net/ethernet/airoha/airoha_npu.c           |  501 ++++++++
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  823 +++++++++++++
+ drivers/net/ethernet/airoha/airoha_ppe_debugfs.c   |  175 +++
+ drivers/net/ethernet/airoha/airoha_regs.h          |  793 ++++++++++++
+ drivers/net/ethernet/mediatek/Kconfig              |    8 -
+ drivers/net/ethernet/mediatek/Makefile             |    1 -
+ 16 files changed, 3310 insertions(+), 1003 deletions(-)
+---
+base-commit: 26db4dbb747813b5946aff31485873f071a10332
+change-id: 20250205-airoha-en7581-flowtable-offload-e3a11b3b34ad
+
+Best regards,
 -- 
-மணிவண்ணன் சதாசிவம்
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
