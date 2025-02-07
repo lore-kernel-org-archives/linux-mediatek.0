@@ -4,75 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9FDC02194
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 17:51:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BBA6C0219D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 20:30:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C42kTFuQ0a+Iy/q2899HMRKX4dk5Wr5ajbcwGL6zv/4=; b=tj0hcD23J/jTpsdj4jTtYUBjLe
-	2QbXo9AkyzNi1CfudgTBOlHkLyjkzwTv2jMMIiIDgqW1k7nn65I9I5lOyjolBRDCtQNMqg9S0A8Ie
-	hPAouAfbeV8vgGnEK3hEDxzIyYZyWk+oX0C3kNeQkCIXmJomfRXMF7QMRyULJvkDqr2Q3yyes6hsS
-	MmjAruIZhQQiAWBe+u8arc6zrnhObEMv+Ipg7Y7Qbp1s0fGEe+AiiBZ8rpiWA6lO0zkGGwt/D9nzO
-	MrHcaWJvAwBOvXuxPq4XZTSbuDSgO8txfN+OIZEfMWaIuz+nNEpgt2YEabcMJeRBFVdwJdK4hh+A/
-	lQgnCybw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=; b=CqRQBtDdgw5HKu
+	Bbpq7fOlqpTSj2wTan1z/CeIwpuOymrh70fSOjs/b7Mzk+zMtlZGXTHFzOMgzuDtobRsvOkEMc1nu
+	95AjIJSYekIrWtbLAGohHyfH6X1aTxzdtkz2tBQwLxwZHJons4RN034w0IBHJ77Ng45FzTD6VNY1i
+	o0rdgoyiuGRmJZ/U1up6Rc4ZC23bT1iKuf5uhriQp4MFC8L3rGhGOdR+avv3/ouxrb/QtG6W53Ivb
+	b+FPWY3DIBNFAtnsHJaWoQvFYYrlD5uWs/QYzZ+cO9JlFgemy9Qpdy2UaN9elAwZd/hYizAm7OD2L
+	lQVgS60qCcRJlWVMAMYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgSVh-0000000AZEP-2sX1;
-	Fri, 07 Feb 2025 17:51:25 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tgUzQ-0000000B57w-1qhe;
+	Fri, 07 Feb 2025 20:30:16 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgSMK-0000000AWzd-2gPs;
-	Fri, 07 Feb 2025 17:41:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1738950102;
-	bh=gt6tOFngHm78d/hp3pS3kUPBsTjqkKCK6t6jGboTc54=;
-	h=From:Date:Subject:To:Cc:From;
-	b=bXEOx/MHPCuwaFB3A2Twmd8u6znm+0tGgUhhzmh9uzYGjaXB9gQ3CEvOZMFFka3Hj
-	 4cmg+btcIpUG45tv1Ln1rkA7ldl1nJbETO1rHKsmjiBy7XHpxPARsolUk1tw5za+li
-	 GnE5wYbtOJc8NU27T+HpYdgQ4mjU+w9/nnVxVKmSDknYJEA/bis8BzT3PpDK0+I03x
-	 hcaPaWigjIk5e8C8EA8avIzJHF23wI//md21gk6GLudKV1V0jsmvSoe6UMv6W5xukA
-	 eCg80pBZGGZnJa2Ek9Pwr4S32HtdGtICZtttWLEa0S1PYz6Bel66hBJWj8qf/ydsy3
-	 x8inU3vDae/yg==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1002])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 346D717E02AF;
-	Fri,  7 Feb 2025 18:41:38 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 07 Feb 2025 14:41:24 -0300
-Subject: [PATCH v2] arm64: dts: mediatek: mt8188: Assign apll1 clock as
- parent to avoid hang
+	id 1tgUaX-0000000B0kn-1X2u;
+	Fri, 07 Feb 2025 20:04:34 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5de4c7720bcso1505587a12.0;
+        Fri, 07 Feb 2025 12:04:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738958671; x=1739563471; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=;
+        b=i2YmerWBZYkK3Q5WLlaSzlERc24DvrQjDoa5OCP7tD2+cSK6mIS616n5JNOQVvu/tD
+         taO+uSyA225vlNKeB4GLm4QsstFpvmJYNwJC/l9f1dvEZ3do+Tv8aCQ938sbtp0159ps
+         kQEdTX+8v6IUWLS0uojpGejxKAY4q6PUe7bg3MIvxrewWIUIgyXOJaz/V5oO3HYiBtjB
+         bsWDNRY45JDIX0GKDEZUmj5TeOIf0i7QE9XtvmZDdTBNsf2JrQXbsAiKZAOyFmLSO2vB
+         1I4137o+YVNLKWKw5zeCv6l5ejWBwN4N1DBpAmSSAGxpFDE918jPkVLDDawbq4p2dCtg
+         nJVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738958671; x=1739563471;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=;
+        b=h1avQDrxb8iJcjjxg3JV3Qt+ELUARZzHkoE8kG6sLkANA5FT+SOQucHexzxBkBhrdM
+         7/kPvQVgKyaqjNckMBL8Tr2GvlbeJ/7KJIwMFKfWBf6wLWqmjFDtusCiloK71+fHlSAr
+         StmfDoBjrUXhEjhNZc2/G3bCNg8BZxni9ZSiidbqomh5WvJv0izlaGO+Ph61Zo2w2ts6
+         pfKpmZhWv51AOXV6HXneu5zT9CJBbhogN9O/oNHCaT5qV7mwW0Tynzuc0zFPXm5xbfRu
+         RMJrcK6dzAi/3we31qL1prLQRiDGLp0Pf5SUGdw8I0FkP1l14iyiRYW6slYVtna0SvOt
+         qs5g==
+X-Forwarded-Encrypted: i=1; AJvYcCVFRt0Qu5yXDinCtttoGYLAzsnlaPrvExxuk26ZgwqnzhSy+sqQuIVuSvfYahPMf7Qd1EHC5fykrDMio0v9fZk=@lists.infradead.org, AJvYcCWiE8oGYZ6ea4oWWlSfCQsBPbHvqTM0M6B4j41m8I0K+CqoTLFUqOIe7/gjZ+tFQ5dRYnd7hjlspoNwtmg7ceiN@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAizsN+XNUp4ay8OOGy2rOicyFIxPfv5Ba4/BD4hXqGfsiZnaV
+	voYmVqealC9wkFzVBMR3CUH9imEequ3mcDypjqk/PsU+EhyL349E
+X-Gm-Gg: ASbGnctPZlPEo4JpIPaFH6prARskoA9vBPGYPzS5a/JF60oUVg3Mv29r1p7XzghPBLv
+	GNRCtnwaMnwa/3UwWySnR9EMoZFk25/FboGqZbCdZqjgTjSASyCpUM4qhlsyk9UtENGD5vZZ930
+	HmVFsRXfnMNl7ABtAoZkoI/3U2WIKYn6RGMVlL+RFXz4T7cz4nzBnsGuL7Tj0mRs6pBtZ4e6YKw
+	rTTwh+6DZt6apGBHl+q+ZK61K8Ddgk458qmefew5oiZohccPr837157+Wh2GDxOxpG9ELm5e+EG
+	r7BP5bD5umrtitp9+xB5M+pqYnvt7kHMvCSD1ZbrzHlp8DoAu3Ka+NGfYLRc0f0k4+Aj1K6QJXe
+	dCBtjh9xGXb3P5XbLB0j3xgrPDPxRLIqnBU01t+Ae4oHt3p+0WjNfgc2twH7HBnWR6A==
+X-Google-Smtp-Source: AGHT+IFwhFFxWKhiLiV5wk2B71s8k88eNWyrwlatwlmZhNRtZGKXQn0gb2lgnlR7Mo2Je7BPaqOlyA==
+X-Received: by 2002:a05:6402:2383:b0:5dc:7fbe:7313 with SMTP id 4fb4d7f45d1cf-5de44feb7bfmr6015830a12.6.1738958670962;
+        Fri, 07 Feb 2025 12:04:30 -0800 (PST)
+Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5de39feff59sm2298672a12.77.2025.02.07.12.04.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Feb 2025 12:04:30 -0800 (PST)
+Message-ID: <78a30eab-cae6-4026-b701-7d7002fe3abb@gmail.com>
+Date: Fri, 7 Feb 2025 21:04:28 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250207-mt8188-afe-fix-hang-disabled-apll1-clk-v2-1-a636d844c272@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAMNFpmcC/5WNSwqDMBRFtyIZ95W8KE3oqPsoDvKzPhqNJBJax
- L03uoMOz+Vwz8ayT+QzuzcbS75QpjhXEJeG2VHPLw/kKjPBRYeCtzCtCpUCPXgY6AOHA46yNsE
- 70EsICDa8wbQWUSphjR5YPVuSr/oZevaVR8prTN+zW/BY/04UBAQurXNS3rhqu4eNIWgTk77aO
- LF+3/cf2tTWM+AAAAA=
-X-Change-ID: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-b3c11782cbaf
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Fei Shao <fshao@chromium.org>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Trevor_Wu_=28=E5=90=B3=E6=96=87=E8=89=AF=29?= <Trevor.Wu@mediatek.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, devicetree@vger.kernel.org, 
- stable@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 net-next 12/14] bridge: No DEV_PATH_BR_VLAN_UNTAG_HW
+ for dsa foreign
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20250204194921.46692-1-ericwouds@gmail.com>
+ <20250204194921.46692-13-ericwouds@gmail.com>
+ <20250207150340.sxhsva7qz7bb7qjd@skbuf>
+From: Eric Woudstra <ericwouds@gmail.com>
+Content-Language: en-US
+In-Reply-To: <20250207150340.sxhsva7qz7bb7qjd@skbuf>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_094144_824741_C2AE692D 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20250207_120433_407338_F225FB61 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,57 +97,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Ivan Vecera <ivecera@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Pablo Neira Ayuso <pablo@netfilter.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Joe Damato <jdamato@fastly.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Alexander Lobakin <aleksander.lobakin@intel.com>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Certain registers in the AFE IO space require the apll1 clock to be
-enabled in order to be read, otherwise the machine hangs (registers like
-0x280, 0x410 (AFE_GAIN1_CON0) and 0x830 (AFE_CONN0_5)). During AFE
-driver probe, when initializing the regmap for the AFE IO space those
-registers are read, resulting in a hang during boot.
 
-This has been observed on the Genio 700 EVK, Genio 510 EVK and
-MT8188-Geralt-Ciri Chromebook, all of which are based on the MT8188 SoC.
 
-Assign CLK_TOP_APLL1_D4 as the parent for CLK_TOP_A1SYS_HP, which is
-enabled during register read and write, to make sure the apll1 is
-enabled during register operations and prevent the MT8188 machines from
-hanging during boot.
+On 2/7/25 4:03 PM, Vladimir Oltean wrote:
+> On Tue, Feb 04, 2025 at 08:49:19PM +0100, Eric Woudstra wrote:
+>> In network setup as below:
+>>
+>>              fastpath bypass
+>>  .----------------------------------------.
+>> /                                          \
+>> |                        IP - forwarding    |
+>> |                       /                \  v
+>> |                      /                  wan ...
+>> |                     /
+>> |                     |
+>> |                     |
+>> |                   brlan.1
+>> |                     |
+>> |    +-------------------------------+
+>> |    |           vlan 1              |
+>> |    |                               |
+>> |    |     brlan (vlan-filtering)    |
+>> |    |               +---------------+
+>> |    |               |  DSA-SWITCH   |
+>> |    |    vlan 1     |               |
+>> |    |      to       |               |
+>> |    |   untagged    1     vlan 1    |
+>> |    +---------------+---------------+
+>> .         /                   \
+>>  ----->wlan1                 lan0
+>>        .                       .
+>>        .                       ^
+>>        ^                     vlan 1 tagged packets
+>>      untagged packets
+>>
+>> br_vlan_fill_forward_path_mode() sets DEV_PATH_BR_VLAN_UNTAG_HW when
+>> filling in from brlan.1 towards wlan1. But it should be set to
+>> DEV_PATH_BR_VLAN_UNTAG in this case. Using BR_VLFLAG_ADDED_BY_SWITCHDEV
+>> is not correct. The dsa switchdev adds it as a foreign port.
+>>
+>> The same problem for all foreignly added dsa vlans on the bridge.
+>>
+>> First add the vlan, trying only native devices.
+>> If this fails, we know this may be a vlan from a foreign device.
+>>
+>> Use BR_VLFLAG_TAGGING_BY_SWITCHDEV to make sure DEV_PATH_BR_VLAN_UNTAG_HW
+>> is set only when there if no foreign device involved.
+>>
+>> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+>> ---
+> 
+> Shouldn't mlxsw_sp_switchdev_vxlan_vlans_add() also respect the
+> SWITCHDEV_F_NO_FOREIGN flag? My (maybe incorrect) understanding of
+> bridging topologies with vxlan and mlxsw is that they are neighbor
+> bridge ports, and mlxsw doesn't (seem to) call
+> switchdev_bridge_port_offload() for the vxlan bridge port. This
+> technically makes vxlan a foreign bridge port to mlxsw, so it should
+> skip reacting on VLAN switchdev objects when that flag is set, just
+> for uniform behavior across the board.
+> 
+> (your patch repeats the notifier without the SWITCHDEV_F_NO_FOREIGN
+> flag anyway, so it only matters for flowtable offload).
 
-Cc: stable@vger.kernel.org
-Fixes: 4dbec3a59a71 ("arm64: dts: mediatek: mt8188: Add audio support")
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
-Changes in v2:
-- Changed patch from explicitly enabling apll1 clock in the driver to
-  assigning apll1_d4 as the parent for the a1sys_hp clock in the
-  mt8188.dtsi
-- Link to v1: https://lore.kernel.org/r/20241203-mt8188-afe-fix-hang-disabled-apll1-clk-v1-1-07cdd7760834@collabora.com
----
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Or should mlxsw_sp_switchdev_blocking_event() use
+switchdev_handle_port_obj_add_foreign() to add the vxlan
+foreign port?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 5d78f51c6183c15018986df2c76e6fdc1f9f43b4..6352c9bd436550dce66435f23653ebcb43ccf0cd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1392,7 +1392,7 @@ afe: audio-controller@10b10000 {
- 			compatible = "mediatek,mt8188-afe";
- 			reg = <0 0x10b10000 0 0x10000>;
- 			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
--			assigned-clock-parents =  <&clk26m>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_APLL1_D4>;
- 			clocks = <&clk26m>,
- 				 <&apmixedsys CLK_APMIXED_APLL1>,
- 				 <&apmixedsys CLK_APMIXED_APLL2>,
+Then all foreign ports are added in a uniform manner and
+SWITCHDEV_F_NO_FOREIGN is respected.
 
----
-base-commit: ed58d103e6da15a442ff87567898768dc3a66987
-change-id: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-b3c11782cbaf
-
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
+I do not have the hardware to test any changes in that code.
 
