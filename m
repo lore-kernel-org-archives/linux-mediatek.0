@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A713DC02194
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2025 23:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59B6C02194
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 01:24:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=smQJl3ePCs8jGnt2Sj26A0AseZjXwWnj+sjvgFlY7DA=; b=H1HZAnWXnlLIp1c6bCHsSotw10
-	nCORUhX5RbJqQ99mNHquP5gNCTOhIPzwH2LnGHyRuCxsJ89ZYGMhNlHMS/5PiuLlZn8TN8Mjdjh8O
-	S/ETFeHYhujapvNMLJKzMEcYKd80j8UnVHUSBIJ4dbOjcJEx71EXzuwtFikLkg9AmoZLu94YG6kSy
-	iI7q5Z177Et9frBbhBWuPkTyI0yNi18RNVOAsn5RQOwa6Sr54BpRJDtJ/2CECiX6W7V3yRjzMDtXd
-	wUabd8jBHA9evCXWEo1kaKo7QqvjctH3rrQELxVAyYvL0h9BSUaS8l3SJo5ivXAlg4P6+Sbfaj9nH
-	ubl8siLQ==;
+	bh=VqZZpWBZ668dwRr9RbM0eCZzUJ3gWQaP5QU0O8HjZzQ=; b=cgqdwxfo61myvovt1qPbITx0sm
+	s6DllRVbWW+IpC7aQq7oS/XODXVSqsp9W/UI5iQaQN3dizQ5Zx/KpcXDfnKSk5j4drSwo8FiTGojx
+	NHsct6VXFaVXdflcIoZ7r9ZwMKgyQfGt+ePspeC7LAnwACVnB/ANHij9dfiLdZnZFrnNAnt2Q3XdM
+	vptY3dSh/i6OKY6LFLBzpknYp3QnvhDAQ2XBanSdWiYYiSDUb/URzMYe+v7oysI/4TatgovWuXlEf
+	1ray8IwibNTurZkOtpGChqqXnxQsWJddg+89lPueBc7K4km3KBjE978+z/FfEC4e7D7Ay3BkLedld
+	7y+j2+nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgAzT-00000007lbl-3WOU;
-	Thu, 06 Feb 2025 23:08:59 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1tgD6J-00000007wJF-2edb;
+	Fri, 07 Feb 2025 01:24:11 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgAy5-00000007lVZ-3yCA;
-	Thu, 06 Feb 2025 23:07:35 +0000
+	id 1tgD4u-00000007wF0-3qHU;
+	Fri, 07 Feb 2025 01:22:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1738883253; x=1770419253;
+  t=1738891365; x=1770427365;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=boGdQ7S8b0YyNfxIm4I50jD6mtmzak8c74/jeqYssO4=;
-  b=k1xniVivBAiawgDg65TlbBya4MT+frFcK3aywFGPcR9vJZ6h4wdlOZqZ
-   5ec6nGNZfmTL/6UFgT+mYW9TJL9qLjiTeE2hrlSXq0ql3IiVfTzVQVwlj
-   94hxokEO2W589mfYkWM7dLDgTRaVi76cVkdaNNb24RRU1TukOiHAPSC9a
-   M1IhFryblXcqoPXd9lMSW4cgjfIa9p/+6ha8u0e0Lda/oJSpOgzDOYij/
-   xgfIrMhKsREMO+slB6zA1xEsUavSFXDdFJ91fqVYZy2hc7yQBTQ+W/qPs
-   snX/KVh4qQyR/rmQ+Vg1VbpVF9yhjsHaABnAcre9y/C6XADkStrn5zYPQ
+  bh=5ut+Ydpor1ahOdNF19/psEAjOTq+kvpzRyrgKmmrAj0=;
+  b=BrVaz5iUlC7yYoUYPWs35bzOm5/0IbeNK2pmEF/2lF2NdYroSlBIVUkT
+   ovpAl68h/2VpAKE/qtAWLPLMQIZW226RLHdLPWJ2tIkr9ODmcxeH0q+/z
+   rV7r+emhAlMPstqC6o3d6i49KyRYNm0SaQ2YdyBi8Y9evg+VM4Z/Abh1f
+   YeOCMZFJ7jwxLdjxXFzd/CwIW2w4d8MpmdKdDFlQplnfqfaikLX38PLW1
+   0VWr+yL+ZQwwhngA1bgJOz0CCv3/1eG7LYDF+Ro/dgwVHvFTIp2RBooNZ
+   BZCXcrdx2gu8P5T/VUiPYUZssHNcGp8Eu4U6z9O0vyqAWiiHRCTchPYrj
    Q==;
-X-CSE-ConnectionGUID: S58PUdRgRAKBJoWUJSOn+w==
-X-CSE-MsgGUID: tL1AE8syRsCmclwuapAJZg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="50946262"
-X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; 
-   d="scan'208";a="50946262"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Feb 2025 15:07:32 -0800
-X-CSE-ConnectionGUID: EQwYRrGCRW2DHPzG7W2gkg==
-X-CSE-MsgGUID: q85618KpRbu5Bb86PHmPeQ==
+X-CSE-ConnectionGUID: H7AiynxKSceW07/rsCqdSg==
+X-CSE-MsgGUID: ypC5MAmeS4O6JDXQS8K51w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="50163527"
+X-IronPort-AV: E=Sophos;i="6.13,265,1732608000"; 
+   d="scan'208";a="50163527"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Feb 2025 17:22:44 -0800
+X-CSE-ConnectionGUID: 3BgyQzXhS+O8cXOSB2i9Dg==
+X-CSE-MsgGUID: TVAGk+wRSrKWwYeco9ojng==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.13,265,1732608000"; 
-   d="scan'208";a="111132680"
+   d="scan'208";a="112002202"
 Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by orviesa009.jf.intel.com with ESMTP; 06 Feb 2025 15:07:27 -0800
+  by fmviesa009.fm.intel.com with ESMTP; 06 Feb 2025 17:22:40 -0800
 Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1tgAxw-000xUd-1j;
-	Thu, 06 Feb 2025 23:07:24 +0000
-Date: Fri, 7 Feb 2025 07:06:33 +0800
+	id 1tgD4n-000xbb-2Y;
+	Fri, 07 Feb 2025 01:22:37 +0000
+Date: Fri, 7 Feb 2025 09:21:37 +0800
 From: kernel test robot <lkp@intel.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -71,21 +71,21 @@ To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	upstream@airoha.com
 Subject: Re: [PATCH net-next 10/13] net: airoha: Introduce PPE initialization
  via NPU
-Message-ID: <202502070610.tbfoIwkS-lkp@intel.com>
+Message-ID: <202502070935.LuHfHz3M-lkp@intel.com>
 References: <20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_150733_996860_715D7584 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20250206_172244_967491_945D8DE7 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,60 +110,45 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/net-airo
 base:   135c3c86a7cef4ba3d368da15b16c275b74582d3
 patch link:    https://lore.kernel.org/r/20250205-airoha-en7581-flowtable-offload-v1-10-d362cfa97b01%40kernel.org
 patch subject: [PATCH net-next 10/13] net: airoha: Introduce PPE initialization via NPU
-config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20250207/202502070610.tbfoIwkS-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250207/202502070610.tbfoIwkS-lkp@intel.com/reproduce)
+config: hexagon-allyesconfig (https://download.01.org/0day-ci/archive/20250207/202502070935.LuHfHz3M-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250207/202502070935.LuHfHz3M-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202502070610.tbfoIwkS-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202502070935.LuHfHz3M-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
-   In file included from include/linux/device.h:15,
-                    from include/linux/devcoredump.h:8,
-                    from drivers/net/ethernet/airoha/airoha_npu.c:7:
-   drivers/net/ethernet/airoha/airoha_npu.c: In function 'airoha_npu_run_firmware':
->> drivers/net/ethernet/airoha/airoha_npu.c:200:30: warning: format '%ld' expects argument of type 'long int', but argument 4 has type 'size_t' {aka 'unsigned int'} [-Wformat=]
+>> drivers/net/ethernet/airoha/airoha_npu.c:201:30: warning: format specifies type 'long' but the argument has type 'size_t' (aka 'unsigned int') [-Wformat]
      200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
-     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                              ^~~
-   include/linux/dev_printk.h:154:56: note: in expansion of macro 'dev_fmt'
+         |                                                          ~~~
+         |                                                          %zu
+     201 |                         NPU_EN7581_FIRMWARE_RV32, fw->size);
+         |                                                   ^~~~~~~~
+   include/linux/dev_printk.h:154:65: note: expanded from macro 'dev_err'
      154 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                                                        ^~~~~~~
-   drivers/net/ethernet/airoha/airoha_npu.c:200:17: note: in expansion of macro 'dev_err'
-     200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                 ^~~~~~~
-   drivers/net/ethernet/airoha/airoha_npu.c:200:60: note: format string is defined here
-     200 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                                                          ~~^
-         |                                                            |
-         |                                                            long int
-         |                                                          %d
-   drivers/net/ethernet/airoha/airoha_npu.c:220:30: warning: format '%ld' expects argument of type 'long int', but argument 4 has type 'size_t' {aka 'unsigned int'} [-Wformat=]
-     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
+         |                                                                ~~~     ^~~~~~~~~~~
+   include/linux/dev_printk.h:110:23: note: expanded from macro 'dev_printk_index_wrap'
      110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                              ^~~
-   include/linux/dev_printk.h:154:56: note: in expansion of macro 'dev_fmt'
+         |                              ~~~    ^~~~~~~~~~~
+   drivers/net/ethernet/airoha/airoha_npu.c:221:30: warning: format specifies type 'long' but the argument has type 'size_t' (aka 'unsigned int') [-Wformat]
+     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+         |                                                          ~~~
+         |                                                          %zu
+     221 |                         NPU_EN7581_FIRMWARE_DATA, fw->size);
+         |                                                   ^~~~~~~~
+   include/linux/dev_printk.h:154:65: note: expanded from macro 'dev_err'
      154 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                                                        ^~~~~~~
-   drivers/net/ethernet/airoha/airoha_npu.c:220:17: note: in expansion of macro 'dev_err'
-     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                 ^~~~~~~
-   drivers/net/ethernet/airoha/airoha_npu.c:220:60: note: format string is defined here
-     220 |                 dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-         |                                                          ~~^
-         |                                                            |
-         |                                                            long int
-         |                                                          %d
+         |                                                                ~~~     ^~~~~~~~~~~
+   include/linux/dev_printk.h:110:23: note: expanded from macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                              ~~~    ^~~~~~~~~~~
+   2 warnings generated.
 
 
-vim +200 drivers/net/ethernet/airoha/airoha_npu.c
+vim +201 drivers/net/ethernet/airoha/airoha_npu.c
 
    187	
    188	static int airoha_npu_run_firmware(struct airoha_npu *npu, struct reserved_mem *rmem)
@@ -178,8 +163,8 @@ vim +200 drivers/net/ethernet/airoha/airoha_npu.c
    197			return ret;
    198	
    199		if (fw->size > NPU_EN7581_FIRMWARE_RV32_MAX_SIZE) {
- > 200			dev_err(dev, "%s: fw size too overlimit (%ld)\n",
-   201				NPU_EN7581_FIRMWARE_RV32, fw->size);
+   200			dev_err(dev, "%s: fw size too overlimit (%ld)\n",
+ > 201				NPU_EN7581_FIRMWARE_RV32, fw->size);
    202			ret = -E2BIG;
    203			goto out;
    204		}
