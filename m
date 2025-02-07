@@ -4,88 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BBA6C0219D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 20:30:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC0AC02194
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 20:31:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=; b=CqRQBtDdgw5HKu
-	Bbpq7fOlqpTSj2wTan1z/CeIwpuOymrh70fSOjs/b7Mzk+zMtlZGXTHFzOMgzuDtobRsvOkEMc1nu
-	95AjIJSYekIrWtbLAGohHyfH6X1aTxzdtkz2tBQwLxwZHJons4RN034w0IBHJ77Ng45FzTD6VNY1i
-	o0rdgoyiuGRmJZ/U1up6Rc4ZC23bT1iKuf5uhriQp4MFC8L3rGhGOdR+avv3/ouxrb/QtG6W53Ivb
-	b+FPWY3DIBNFAtnsHJaWoQvFYYrlD5uWs/QYzZ+cO9JlFgemy9Qpdy2UaN9elAwZd/hYizAm7OD2L
-	lQVgS60qCcRJlWVMAMYQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e40Jc1bncfnnok4EoMl4mL/cKzNvltZ9PFkWvtOtsvw=; b=y3Z8xElcYdeXDDG0FjXSY0YSCY
+	7jMqOwqmUhMYv2NfqHV/ok6fWF6kTH1x4ez9ez4R2iYcuZcb5BJYlNHChtQb7+j9AgFjfixi69RY2
+	teXwNABflQaG5pJh2/7jN7OqJOMusPqKG+DWGUHau+wK99dF+FP3+Lqc99A5cGRVZvfwMdDQsB6kF
+	ez/LXemEGdBExmCW9NVCfGtXCBiCcPX4KlJZ0IH0Au7e4h8dJK2SVsUi5ug5LC7k8bXjVOw8zd/R5
+	Vj274L16o3U0PDwNeEgBw7j07ZbEQC+QkJZ9SYWcGEZ6JrykQk3fUjS9kvl8b5g+OUdk4fWpQomdh
+	NBV3gpEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgUzQ-0000000B57w-1qhe;
-	Fri, 07 Feb 2025 20:30:16 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1tgV0a-0000000B6eE-3SRg;
+	Fri, 07 Feb 2025 20:31:28 +0000
+Received: from fout-a5-smtp.messagingengine.com ([103.168.172.148])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgUaX-0000000B0kn-1X2u;
-	Fri, 07 Feb 2025 20:04:34 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5de4c7720bcso1505587a12.0;
-        Fri, 07 Feb 2025 12:04:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1738958671; x=1739563471; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=;
-        b=i2YmerWBZYkK3Q5WLlaSzlERc24DvrQjDoa5OCP7tD2+cSK6mIS616n5JNOQVvu/tD
-         taO+uSyA225vlNKeB4GLm4QsstFpvmJYNwJC/l9f1dvEZ3do+Tv8aCQ938sbtp0159ps
-         kQEdTX+8v6IUWLS0uojpGejxKAY4q6PUe7bg3MIvxrewWIUIgyXOJaz/V5oO3HYiBtjB
-         bsWDNRY45JDIX0GKDEZUmj5TeOIf0i7QE9XtvmZDdTBNsf2JrQXbsAiKZAOyFmLSO2vB
-         1I4137o+YVNLKWKw5zeCv6l5ejWBwN4N1DBpAmSSAGxpFDE918jPkVLDDawbq4p2dCtg
-         nJVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738958671; x=1739563471;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=G2tTSDZ2XD8g2DNn6kyimdWtnPTRpKW0MbS5kEtAlX8=;
-        b=h1avQDrxb8iJcjjxg3JV3Qt+ELUARZzHkoE8kG6sLkANA5FT+SOQucHexzxBkBhrdM
-         7/kPvQVgKyaqjNckMBL8Tr2GvlbeJ/7KJIwMFKfWBf6wLWqmjFDtusCiloK71+fHlSAr
-         StmfDoBjrUXhEjhNZc2/G3bCNg8BZxni9ZSiidbqomh5WvJv0izlaGO+Ph61Zo2w2ts6
-         pfKpmZhWv51AOXV6HXneu5zT9CJBbhogN9O/oNHCaT5qV7mwW0Tynzuc0zFPXm5xbfRu
-         RMJrcK6dzAi/3we31qL1prLQRiDGLp0Pf5SUGdw8I0FkP1l14iyiRYW6slYVtna0SvOt
-         qs5g==
-X-Forwarded-Encrypted: i=1; AJvYcCVFRt0Qu5yXDinCtttoGYLAzsnlaPrvExxuk26ZgwqnzhSy+sqQuIVuSvfYahPMf7Qd1EHC5fykrDMio0v9fZk=@lists.infradead.org, AJvYcCWiE8oGYZ6ea4oWWlSfCQsBPbHvqTM0M6B4j41m8I0K+CqoTLFUqOIe7/gjZ+tFQ5dRYnd7hjlspoNwtmg7ceiN@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAizsN+XNUp4ay8OOGy2rOicyFIxPfv5Ba4/BD4hXqGfsiZnaV
-	voYmVqealC9wkFzVBMR3CUH9imEequ3mcDypjqk/PsU+EhyL349E
-X-Gm-Gg: ASbGnctPZlPEo4JpIPaFH6prARskoA9vBPGYPzS5a/JF60oUVg3Mv29r1p7XzghPBLv
-	GNRCtnwaMnwa/3UwWySnR9EMoZFk25/FboGqZbCdZqjgTjSASyCpUM4qhlsyk9UtENGD5vZZ930
-	HmVFsRXfnMNl7ABtAoZkoI/3U2WIKYn6RGMVlL+RFXz4T7cz4nzBnsGuL7Tj0mRs6pBtZ4e6YKw
-	rTTwh+6DZt6apGBHl+q+ZK61K8Ddgk458qmefew5oiZohccPr837157+Wh2GDxOxpG9ELm5e+EG
-	r7BP5bD5umrtitp9+xB5M+pqYnvt7kHMvCSD1ZbrzHlp8DoAu3Ka+NGfYLRc0f0k4+Aj1K6QJXe
-	dCBtjh9xGXb3P5XbLB0j3xgrPDPxRLIqnBU01t+Ae4oHt3p+0WjNfgc2twH7HBnWR6A==
-X-Google-Smtp-Source: AGHT+IFwhFFxWKhiLiV5wk2B71s8k88eNWyrwlatwlmZhNRtZGKXQn0gb2lgnlR7Mo2Je7BPaqOlyA==
-X-Received: by 2002:a05:6402:2383:b0:5dc:7fbe:7313 with SMTP id 4fb4d7f45d1cf-5de44feb7bfmr6015830a12.6.1738958670962;
-        Fri, 07 Feb 2025 12:04:30 -0800 (PST)
-Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5de39feff59sm2298672a12.77.2025.02.07.12.04.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Feb 2025 12:04:30 -0800 (PST)
-Message-ID: <78a30eab-cae6-4026-b701-7d7002fe3abb@gmail.com>
-Date: Fri, 7 Feb 2025 21:04:28 +0100
+	id 1tgV0X-0000000B6a8-2MHk
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Feb 2025 20:31:27 +0000
+Received: from phl-compute-06.internal (phl-compute-06.phl.internal [10.202.2.46])
+	by mailfout.phl.internal (Postfix) with ESMTP id 392F213801F7;
+	Fri,  7 Feb 2025 15:31:22 -0500 (EST)
+Received: from phl-frontend-02 ([10.202.2.161])
+  by phl-compute-06.internal (MEProxy); Fri, 07 Feb 2025 15:31:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fluxnic.net; h=
+	cc:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm3;
+	 t=1738960282; x=1739046682; bh=e40Jc1bncfnnok4EoMl4mL/cKzNvltZ9
+	PFkWvtOtsvw=; b=cdx3OY+cqA2vkEO9Sgt7jFDFuo1yo2jbniZ4BYFRc3Pt3ewx
+	E6+VGw/RxBzkGwKR2KL3QZ2IM9CZR6U54mmrBKootRB4JN5URJ05/XvC/FNNqx8q
+	J+em7tNwNDz8aBdtexLncNKXHDHnHZOdugzCShYW3jYhLulrhFskXL5S3eJbhZcB
+	hTajvtF5n6/Hj5EUd6OpZcfa0vWFvpqV6n/XuR6xQ3Tnz1tmYIiE8DXQxCNNp8dc
+	T6wz/iX5LOcUaZjxrpe9wEjvDEkcUizMiOAfTXil4eHKWrTUl45ihVHYA6I+MuO5
+	M2LSoiBMzdvtZJjMMXsj8/whAC67IS7bwqEdaA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1738960282; x=
+	1739046682; bh=e40Jc1bncfnnok4EoMl4mL/cKzNvltZ9PFkWvtOtsvw=; b=A
+	xdWMWsGFdbUZR/7KI105Ba0HUhcYtppZDbLYL2X6hqvsAUovaAra7S2j8UlSlK9G
+	My4ZMLgs58e0pZvQ7Px1+hBr50eoPzY+6oJMPRWVjxs9JtNJEbKV6aYis0hCY/Hj
+	tkd0k/c9mXXFPajUCg4ZgMzubWjAfeteykYzlH+/o2h/5/h6BvKBI9zYcxGEVJlf
+	RIIuI3qMdEkJ8XfUSZJJCEBOOZOf+A5iKyb/QQMGkuGjxth/EwLrp1nlfoRlJqdQ
+	Z7vdfXDtywdf6CQkNV18yVABBqetBg6vLCc7yvQO+3/V6/3O7msh3PoprwNUT/kz
+	WgfAZcnM9RHl5cHpQ8MnQ==
+X-ME-Sender: <xms:mW2mZ3DL_yeDTRkYP8a030j8lNinjT7vlYBTLqBb4BvkPpki35aY4Q>
+    <xme:mW2mZ9ha5su5wY_ur-e7dUg7Jgp7VToi3SfrJAki_Y9xTJaWygGqx_aGP-JpE6hJ4
+    giqUe8Sc6vRQankSnE>
+X-ME-Received: <xmr:mW2mZykWM81lbmfZe97zbsya5_gMJlXFq_MDPgN1jqZ2KYxP4TIuP4MUPK1lbEcZZ9o0fe_lxKtrCfUUSx24aKH0uyRCbaJzcsPxmbtfXMTV2Bgx0Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdeftddvhecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
+    uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivg
+    hnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfggtgesthdtredttddtvdenucfh
+    rhhomheppfhitgholhgrshcurfhithhrvgcuoehnihgtohesfhhluhignhhitgdrnhgvth
+    eqnecuggftrfgrthhtvghrnhephefhheduieehlefghfelueetgeeggeejgeefgeduteeh
+    ueffffeuieefleetvedvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrg
+    hilhhfrhhomhepnhhitghosehflhhugihnihgtrdhnvghtpdhnsggprhgtphhtthhopeeg
+    pdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehnphhithhrvgessggrhihlihgsrh
+    gvrdgtohhmpdhrtghpthhtohepuggrnhhivghlrdhlvgiitggrnhhosehlihhnrghrohdr
+    ohhrghdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfh
+    hrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhpmhesvhhgvghrrdhkvghr
+    nhgvlhdrohhrgh
+X-ME-Proxy: <xmx:mm2mZ5yxWIUGvKJTBZtcdBPRpz4-40ljlWkcz2wmj40QumaK0KlLeQ>
+    <xmx:mm2mZ8SLabZWlR2xA2BKzYp1MjyzSTo_1n__lxfiwL1WV1mVzRQxxg>
+    <xmx:mm2mZ8Y2GdAKHm3rpSWo4X8k6yY174ejLOmcYQQr07pFKDaDqOPXEQ>
+    <xmx:mm2mZ9THF-fi6FaGAKkyD8Zj9V4eikr19d-M31Y0J_eOXLJ1Pv0CHA>
+    <xmx:mm2mZyP9wnHBUDGVDqgjJ2L8A30j7jxrKO1cMaBG8Je7s65K2P7TkMo0>
+Feedback-ID: i58514971:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 7 Feb 2025 15:31:21 -0500 (EST)
+Received: from xanadu (unknown [IPv6:fd17:d3d3:663b:0:9696:df8a:e3:af35])
+	by yoda.fluxnic.net (Postfix) with ESMTPSA id E2CC61008D93;
+	Fri,  7 Feb 2025 15:31:20 -0500 (EST)
+Date: Fri, 7 Feb 2025 15:31:20 -0500 (EST)
+From: Nicolas Pitre <nico@fluxnic.net>
+To: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+    Daniel Lezcano <daniel.lezcano@linaro.org>
+cc: Nicolas Pitre <npitre@baylibre.com>
+Subject: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip points
+Message-ID: <696pn9r7-63r9-r2pp-rq18-471269pss1nr@syhkavp.arg>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 net-next 12/14] bridge: No DEV_PATH_BR_VLAN_UNTAG_HW
- for dsa foreign
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <20250204194921.46692-1-ericwouds@gmail.com>
- <20250204194921.46692-13-ericwouds@gmail.com>
- <20250207150340.sxhsva7qz7bb7qjd@skbuf>
-From: Eric Woudstra <ericwouds@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20250207150340.sxhsva7qz7bb7qjd@skbuf>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_120433_407338_F225FB61 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20250207_123126_267327_84FA1035 
+X-CRM114-Status: UNSURE (   5.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,78 +106,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Ivan Vecera <ivecera@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Pablo Neira Ayuso <pablo@netfilter.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Joe Damato <jdamato@fastly.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Alexander Lobakin <aleksander.lobakin@intel.com>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Nicolas Pitre <npitre@baylibre.com>
 
+Provide the "switch on" thermal trip point to be used by the power
+allocator governor.
 
-On 2/7/25 4:03 PM, Vladimir Oltean wrote:
-> On Tue, Feb 04, 2025 at 08:49:19PM +0100, Eric Woudstra wrote:
->> In network setup as below:
->>
->>              fastpath bypass
->>  .----------------------------------------.
->> /                                          \
->> |                        IP - forwarding    |
->> |                       /                \  v
->> |                      /                  wan ...
->> |                     /
->> |                     |
->> |                     |
->> |                   brlan.1
->> |                     |
->> |    +-------------------------------+
->> |    |           vlan 1              |
->> |    |                               |
->> |    |     brlan (vlan-filtering)    |
->> |    |               +---------------+
->> |    |               |  DSA-SWITCH   |
->> |    |    vlan 1     |               |
->> |    |      to       |               |
->> |    |   untagged    1     vlan 1    |
->> |    +---------------+---------------+
->> .         /                   \
->>  ----->wlan1                 lan0
->>        .                       .
->>        .                       ^
->>        ^                     vlan 1 tagged packets
->>      untagged packets
->>
->> br_vlan_fill_forward_path_mode() sets DEV_PATH_BR_VLAN_UNTAG_HW when
->> filling in from brlan.1 towards wlan1. But it should be set to
->> DEV_PATH_BR_VLAN_UNTAG in this case. Using BR_VLFLAG_ADDED_BY_SWITCHDEV
->> is not correct. The dsa switchdev adds it as a foreign port.
->>
->> The same problem for all foreignly added dsa vlans on the bridge.
->>
->> First add the vlan, trying only native devices.
->> If this fails, we know this may be a vlan from a foreign device.
->>
->> Use BR_VLFLAG_TAGGING_BY_SWITCHDEV to make sure DEV_PATH_BR_VLAN_UNTAG_HW
->> is set only when there if no foreign device involved.
->>
->> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
->> ---
-> 
-> Shouldn't mlxsw_sp_switchdev_vxlan_vlans_add() also respect the
-> SWITCHDEV_F_NO_FOREIGN flag? My (maybe incorrect) understanding of
-> bridging topologies with vxlan and mlxsw is that they are neighbor
-> bridge ports, and mlxsw doesn't (seem to) call
-> switchdev_bridge_port_offload() for the vxlan bridge port. This
-> technically makes vxlan a foreign bridge port to mlxsw, so it should
-> skip reacting on VLAN switchdev objects when that flag is set, just
-> for uniform behavior across the board.
-> 
-> (your patch repeats the notifier without the SWITCHDEV_F_NO_FOREIGN
-> flag anyway, so it only matters for flowtable offload).
+Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
 
-Or should mlxsw_sp_switchdev_blocking_event() use
-switchdev_handle_port_obj_add_foreign() to add the vxlan
-foreign port?
-
-Then all foreign ports are added in a uniform manner and
-SWITCHDEV_F_NO_FOREIGN is respected.
-
-I do not have the hardware to test any changes in that code.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index 338120930b..262eab8fd3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -472,6 +472,12 @@ cpu-little0-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
+ 
+ 			trips {
++				cpu_little0_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little0_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -510,6 +516,12 @@ cpu-little1-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
+ 
+ 			trips {
++				cpu_little1_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little1_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -548,6 +560,12 @@ cpu-little2-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
+ 
+ 			trips {
++				cpu_little2_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little2_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -586,6 +604,12 @@ cpu-little3-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
+ 
+ 			trips {
++				cpu_little3_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little3_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -624,6 +648,12 @@ cpu-big0-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
+ 
+ 			trips {
++				cpu_big0_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_big0_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -658,6 +688,12 @@ cpu-big1-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
+ 
+ 			trips {
++				cpu_big1_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_big1_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
 
