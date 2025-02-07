@@ -4,96 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2075C02194
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 15:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619E4C02194
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2025 15:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lh728/h5T9UnM+HASA8Jq2heTWOphh/67rcOx7NkUt0=; b=NxhVg/Zw2uv3lyJF/PHjHqoZdt
-	WXsy5dGywJI3z6zxoiy4gcq5CtHaZBixVcogX6b+/f4+gD3NM1K4hsHOfBn5RuAVVMCAP4Ubfm2Hk
-	ogExn//fLDV6by4aXBbBaiYIdXRBLOhgrV9KpJKQdJ5Iv1dJY/suEMDjbbrbvkVz9PlUBriNGJl9d
-	UlxXFzeIRXbH3OUWm2kXJbWvqtjGbUQzNpqojajbtiqKLYXSNjnOBq2WJXtX194IpZbPLBPWUlfeV
-	lDXdX1+UJSEuszrK/iper6gkJ3DkDMO4yYTkeKDrry0+s/gi4nT2bRrub221OHgsC5riW45GWcpyE
-	A5JGBcVg==;
+	bh=4/T0xWBuXVRxU1P7IMQd29/h9SUwW7qNaqLQlXla6a0=; b=4y0ELKY1XgjZCsDD+/KJ7cGWOX
+	M5dhbIla04ZUZQIPbtmQeLoziaUbKnUQwKMklnyobHKfv+XQTnwxciRv1XrKwuRkW+dQ5omCWz9gY
+	UJ+OrBmFQt6iKJsVbJc82XTOOHwmct7RXXQWXHt+1CGuShzoXMCzxLtidaDRg3lCFsQuB8MSJwsaT
+	fTKHS9G/O0h+T9lfrwdsitReV1FKVNvfgznqE7szKewKqssO+Xr2t4NP1HCtw/POR8VQ7+Fps917O
+	LzrtxE8PtWmnWtyI2IIehuUp8sFBn4sq4b37AkWn4s/BiYhD+7fNyywkdd8XjvlTO4fk+0X0K0Oyc
+	OlhoQKgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQEh-0000000A3od-47cX;
-	Fri, 07 Feb 2025 15:25:43 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1tgQPW-0000000A6Oe-1hl4;
+	Fri, 07 Feb 2025 15:36:54 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQ9F-0000000A2Eb-2wPg;
-	Fri, 07 Feb 2025 15:20:07 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-5de427a1d12so198962a12.1;
-        Fri, 07 Feb 2025 07:20:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1738941604; x=1739546404; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Lh728/h5T9UnM+HASA8Jq2heTWOphh/67rcOx7NkUt0=;
-        b=ZLrIhD1xLHTRK+61XV1+VcvsX67IZrbUggVi3ZtL2/LIlo0yzMWLQxq/3cUsvZ7M+i
-         r2eP589hHbPv4v95mBACRHhDuLyd3Q9hv49rFCNdwq8PaxQQz4lUbXUdrbt8xxvLG1xh
-         Whco83kA45A/j60MhmMkVKO2LeK1CrkA3b7zy7WNo5+Hj/gss+/EmY0B5y1PZSduinEP
-         FIHbfpkH93iCnqvljSd17US7fmjiMAncwSr4z+RoEZY+2VGHeB1DCteY3q8Qirqr9Lhr
-         0SbRtAVsB3Fqcn4iWXcGs48AZkeeg/Bh+eBRzU7Ilmw5k0cLN4VyCmivx12gWWKOkPSN
-         ngNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738941604; x=1739546404;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Lh728/h5T9UnM+HASA8Jq2heTWOphh/67rcOx7NkUt0=;
-        b=XH9s15LLjRHyqxXLeRmVLSUawXqw3hHh2IvV18SDelbNUSAcvBzsvWFU4fUhcR/9xK
-         CyXfVfzkUbPD5fM8NKIBgIQtx5+t/795nJ9vYXk4vW5j6uFCXf2Lqc4bxDFBgj9J73B0
-         YAw0He4qXY+9BnXXTccMVQdy3ZlZsQ2PYQZh2ZwDjt9lqhaASjhBgRzwI7kit0sCCgkF
-         kYZP574gqb7p2NzwU8/MwIJwlOUbxnxf9a3KAohEt/t2pnjrRNFXIclwBTtz/IC3N7tt
-         +eOk9s4g03bGhtmkAlS1xnM1o90vv8RG0v0GXfjre+9sk1fOHL11MBdHcQbY+9kmb9Nr
-         W3vw==
-X-Forwarded-Encrypted: i=1; AJvYcCUmtUYS7t4dLI8o+75bhlBiknshFBjanM/ODu8DHey9xueCzS+1MleFKGtltE7pQXtj5lrBbjBDNbhZJNA3Snqn@lists.infradead.org, AJvYcCV+qUx07rXaj3H2fwPToX+NP6ZxB2XfHKW7V0be8JC+xF8bKPv3a+wVizQiMfbyqNzMUk2fB93/H2NI3GbrVdU=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZggEAF2a5qJkkwMijHFzfrvjG99VszAlwZkLF7JwlyisUHI1k
-	75ZqbuWbJQUHL1m3Nh9xj3I+BIJXcgr4o7XRTsvSpmCloDLfaIoF
-X-Gm-Gg: ASbGncvPhyg3hrPGJH7tvRHy0BLPIEss0zkLV/vOZ0F7puWeZLN4VddJuqmjjNnuZeB
-	kU0WRa6u+6um/PAJbafsfn6tnFEO1Sd+S1aZbQrJ29GL05L5YbJLPCYyEuWQeEiXw/I5oyG9rXg
-	QUQZ5DauOAgSLoXt0AH1hm/cP53LqQ69jjmzCJZUjP7Q6z5/SR/AoCfpUiUqLfWdkVRtC8jJnqg
-	rkc5KwlZxotFAaDNhapqJK95NgwlgAooTfkYpYJSMJbe9AINziC55zm5oFLyG/e9OrDItToD4gQ
-	gKw=
-X-Google-Smtp-Source: AGHT+IFUjfhOH0beogOCy9/ovimvABwSwvmh22ByKVKZ5A30iXNQpGJX9oTjv2FUtPbwL+S7YBZBEQ==
-X-Received: by 2002:a05:6402:1e91:b0:5de:39fd:b310 with SMTP id 4fb4d7f45d1cf-5de44e5dafamr1699198a12.0.1738941603629;
-        Fri, 07 Feb 2025 07:20:03 -0800 (PST)
-Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5dcf6c9f9a6sm2677109a12.55.2025.02.07.07.20.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Feb 2025 07:20:02 -0800 (PST)
-Date: Fri, 7 Feb 2025 17:19:59 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH net-next v2 2/3] net: dsa: allow use of phylink managed
- EEE support
-Message-ID: <20250207151959.jab2c36oejmdhf3k@skbuf>
-References: <Z6YF4o0ED0KLqYS9@shell.armlinux.org.uk>
- <E1tgO70-003ilF-1x@rmk-PC.armlinux.org.uk>
+	id 1tgQAl-0000000A2oE-2c4k;
+	Fri, 07 Feb 2025 15:21:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id EF516A43692;
+	Fri,  7 Feb 2025 15:19:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54999C4CEE7;
+	Fri,  7 Feb 2025 15:21:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1738941698;
+	bh=BcaIGD1WwgtYK/3UX6TqGEgv5jNlncxbn2IW0AxOsfo=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=WNirZF3Uc/QsUCNhuzr9RMbWlPSjcImb9wTl6ZQ2stdTTSAmakYsbMZj5itB0GC1o
+	 4h5m0tLmMggkNXSSI+SZ5GFtDqnb1LcO7TW/uNlbkMvg/n74J3E56DZS/71GXpaaVO
+	 uBuhCJtpnfCTzgqeNiMNaSA+D/kf+SCjuiP1WKcp8UDklRWKWxXb15KMv5rSFzjz9Y
+	 wJjGmbI5AXOlRI+xHN48Zc+NpJtr4ZeJJ7wkmWXJzHgqLP3IHVR87VL3jD0HGn8O/B
+	 lzxvzwRnXoexFWgE37+Sxdd4UU/jc1O2oLzPgj39ScQ/RuUaqhiZbdS75tUiwkDeUD
+	 g6GeTxYfB2cdg==
+Date: Fri, 07 Feb 2025 09:21:37 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <E1tgO70-003ilF-1x@rmk-PC.armlinux.org.uk>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, kernel@collabora.com
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+In-Reply-To: <20250206-dts_mt8370-genio-510-v3-0-5ca5c3257a4c@collabora.com>
+References: <20250206-dts_mt8370-genio-510-v3-0-5ca5c3257a4c@collabora.com>
+Message-Id: <173894150906.331293.4896725763364735044.robh@kernel.org>
+Subject: Re: [PATCH v3 0/4] Add support for Mediatek Genio 510 EVK board
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_072005_738019_DA9EAB2B 
-X-CRM114-Status: GOOD (  21.14  )
+X-CRM114-CacheID: sfid-20250207_072139_801015_E68AFF0F 
+X-CRM114-Status: GOOD (  22.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,58 +76,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 07, 2025 at 01:09:38PM +0000, Russell King (Oracle) wrote:
-> In order to allow DSA drivers to use phylink managed EEE, changes are
-> necessary to the DSA .set_eee() and .get_eee() methods. Where drivers
-> make use of phylink managed EEE, these should just pass the method on
-> to their phylink implementation without calling the DSA specific
-> operations.
+
+On Thu, 06 Feb 2025 11:38:07 +0100, Louis-Alexis Eyraud wrote:
+> This patchset adds the basic support of the Mediatek Genio 510 EVK
+> board, based on the Mediatek MT8370 SoC.
 > 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> It adds a device-tree file for the board (mt8370-genio-510-evk.dtb)
+> and an include file for the SoC (mt8370.dtsi), in order to be able to
+> boot. As the board is very close to the Genio 700 EVK board, an include file
+> (mt8390-genio-common.dtsi) is also created to factorize the common
+> definitions.
+> 
+> The Genio 510 EVK has following features:
+> - MT8370 SoC
+> - MT6365 PMIC
+> - MT6319 Buck IC
+> - 4GB LPDDR4X
+> - 64GB eMMC 5.1
+> - 12V DC Jack
+> - Micro SD card slot
+> - Push Button x 4 (Power, Reset, Download and Home Key)
+> - LED x 4 (Power, Reset, System on and Charging Status)
+> - USB Device Port x 1 (Micro USB Connector)
+> - USB Host Port x 1 (Type-C USB Connector)
+> - 3.5mm Earphone Jack x 1 (with Microphone Input)
+> - 3.5mm Line Out Audio Jack x 1
+> - Analog Microphone x 1
+> - Digital Microphone x 2
+> - Gigabit Ethernet with RJ45 connector
+> - HDMI 2.0 TX port with Type A HDMI connector
+> - eDP port
+> - 3x UART with serial-to-usb converters and micro USB connectors
+> - M.2 Slot x 2
+> - I2C Capacitive Touch Pad
+> - 4-Lane DSI x 2
+> - 4-Data Lane CSI x 2
+> - I2S Pin header
+> - 40-Pin 2.54mm Pin Header x 1
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 > ---
->  net/dsa/user.c | 21 +++++++++++++--------
->  1 file changed, 13 insertions(+), 8 deletions(-)
+> Changes in v3:
+> - Reword commit messages to use imperative mood
+> - Add missing code-review trailers in commit messages
+> - Link to v2: https://lore.kernel.org/r/20250115-dts_mt8370-genio-510-v2-0-fc9b01d08834@collabora.com
 > 
-> diff --git a/net/dsa/user.c b/net/dsa/user.c
-> index 291ab1b4acc4..2e0a51c1b750 100644
-> --- a/net/dsa/user.c
-> +++ b/net/dsa/user.c
-> @@ -1243,16 +1243,21 @@ static int dsa_user_set_eee(struct net_device *dev, struct ethtool_keee *e)
->  	if (!ds->ops->support_eee || !ds->ops->support_eee(ds, dp->index))
->  		return -EOPNOTSUPP;
->  
-> -	/* Port's PHY and MAC both need to be EEE capable */
-> -	if (!dev->phydev)
-> -		return -ENODEV;
-> +	/* If the port is using phylink managed EEE, then get_mac_eee is
-> +	 * unnecessary.
-
-You thanked me for spotting that this should have been set_mac_eee() in
-the comment, but you didn't update it.
-https://lore.kernel.org/netdev/Z4bC77mwoeypDAdH@shell.armlinux.org.uk/
-
-> +	 */
-> +	if (!phylink_mac_implements_lpi(ds->phylink_mac_ops)) {
-> +		/* Port's PHY and MAC both need to be EEE capable */
-> +		if (!dev->phydev)
-> +			return -ENODEV;
->  
-> -	if (!ds->ops->set_mac_eee)
-> -		return -EOPNOTSUPP;
-> +		if (!ds->ops->set_mac_eee)
-> +			return -EOPNOTSUPP;
->  
-> -	ret = ds->ops->set_mac_eee(ds, dp->index, e);
-> -	if (ret)
-> -		return ret;
-> +		ret = ds->ops->set_mac_eee(ds, dp->index, e);
-> +		if (ret)
-> +			return ret;
-> +	}
->  
->  	return phylink_ethtool_set_eee(dp->pl, e);
->  }
-> -- 
-> 2.30.2
+> Changes in v2:
+> - Reword "dt-bindings: arm: mediatek: add mt8370-evk board" commit
+>   message to add details on MT8370 SoC and links to MT8188 and MT8390
+> - Add note about gpu support in "arm64: dts: mediatek: add support for
+>   MT8370 SoC" commit message
+> - Split "arm64: dts: mediatek: add device-tree for Genio 510 EVK board"
+>   commit in two, as requested by AngeloGioacchino Del Regno
+> - Link to v1: https://lore.kernel.org/r/20250114-dts_mt8370-genio-510-v1-0-8517ee0fdbe8@collabora.com
 > 
+> ---
+> Louis-Alexis Eyraud (4):
+>       dt-bindings: arm: mediatek: add mt8370-evk board
+>       arm64: dts: mediatek: add support for MT8370 SoC
+>       arm64: dts: mediatek: mt8390-genio-700-evk: Move common parts to dtsi
+>       arm64: dts: mediatek: add device-tree for Genio 510 EVK board
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml          |    5 +
+>  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi           |    8 +-
+>  .../boot/dts/mediatek/mt8370-genio-510-evk.dts     |   19 +
+>  arch/arm64/boot/dts/mediatek/mt8370.dtsi           |   64 ++
+>  .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 1033 +------------------
+>  .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 1040 ++++++++++++++++++++
+>  7 files changed, 1134 insertions(+), 1036 deletions(-)
+> ---
+> base-commit: 37136bf5c3a6f6b686d74f41837a6406bec6b7bc
+> change-id: 20250113-dts_mt8370-genio-510-3560b8010ba9
+> 
+> Best regards,
+> --
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> 
+> 
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250206-dts_mt8370-genio-510-v3-0-5ca5c3257a4c@collabora.com:
+
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pinctrl@10005000: 'pcie-default' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8188-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: regulators: 'compatible' is a required property
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: pmic: '#sound-dai-cells', 'mt6359codec', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10320000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: mailbox@10330000: 'clock-names' is a required property
+	from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb: jpeg-decoder@1a040000: iommus: [[123, 685], [123, 686], [123, 690], [123, 691], [123, 692], [123, 693]] is too long
+	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+
+
+
+
+
 
