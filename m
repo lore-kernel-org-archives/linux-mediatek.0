@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF10C02199
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 11:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC7AC02199
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 11:26:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mNvAyhAv6GepxNEYkCskllQBVi38mrCeZ4SsbbR7WSY=; b=S6kxtShhsdXkehMNYuFP7/CXv9
-	+ddC8vYQHXWoBfGVoQzYfR9/710NgzEH2hgWrH5hHYD7Bp0IMhuquaZGVzj3ppHx+27oK7jH7/7Az
-	/LsoEdWM+qi6GuUrtJ9kY5Q92awGJTyDz9+zQG2FpPQWcGWl9+nOzGE1jUi8cICsssJ8p97jzr+5l
-	Fc42jj7R41iOgdL+qYHUgv92z8ymIWI8EJGfVsbbkDfztgiiPI8rTJYzaPskvCX6ObegPsyAZgZue
-	C+UgzNeQ8XuxH8l3rqmAKqJ+hZu+4bLQoAauTH706XtQ0f8aWPb4WsuoNjOs4YU+0CsmECn0P8JkF
-	dpsXvyIw==;
+	bh=x342s989e3SqEpDprSMMdkIM/WvPO0edPGoockwe0Ec=; b=S79hR+eUeyVwvIJmnZLJHzBtBH
+	+3gFqWsf8Y3qZcDO5Hok93W1oRhNSGv2+jQmhKdLPO59XzQcHlgsQvTSWLngeZjKeVynwy8Dh4qDS
+	TnuDebshv4fGq1KXxtUJXw0xGQTtPkzpYmXMHebu92WHwKxE43WXpm8Xb2f5ogf3fL+U3dT2XmScA
+	OXstt6TNLZuTis1VclwbxOJ2a6UZSUoNwQKm1JAHEh0IlO22I5OCwY9U/XLqXVal5iTtitZGGKOVf
+	1D2rOGFgUjF7Lt3HEcGJN98X6pLRuB0DoGdn1yMZlbe/IOPTo+GxOKiHKqhEE0JKB9IkoD7OTiMIO
+	IJYtBV2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1th5RG-0000000EjUs-0xHT;
-	Sun, 09 Feb 2025 11:25:26 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1th5Sg-0000000EjcT-28Wz;
+	Sun, 09 Feb 2025 11:26:54 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1th5DI-0000000EgdH-33ou;
-	Sun, 09 Feb 2025 11:11:01 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-ab771575040so665152266b.1;
-        Sun, 09 Feb 2025 03:11:00 -0800 (PST)
+	id 1th5DL-0000000Egel-0RPf;
+	Sun, 09 Feb 2025 11:11:04 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-ab7c14b880dso303466b.1;
+        Sun, 09 Feb 2025 03:11:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739099459; x=1739704259; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1739099462; x=1739704262; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mNvAyhAv6GepxNEYkCskllQBVi38mrCeZ4SsbbR7WSY=;
-        b=CzRR7tljg5u++HuONKShmvWlHsHPokQywrg0eZVSvCO/weJkI3h89hYUdsUbzXq/7D
-         X2ziV1MmQLzA0iOzCrwOHAhq0JBucFylKxFQkYYia8UD3rmSD+d0kvvOIXoHRwvgzQzj
-         biwKiQHkwtVb8ze1FWZntISPay8syrouW0KwwGu9/dftkIaZDfXMoC3LrNNLbzUU6iKx
-         ztfMRqnRnpZQhuGNE9rS90Z8xByvzRQsMb+8k/l5XUSqhyIF3nR6C5N5Y14zhV+6VSXJ
-         B8gSOfa02iLiLY328ikanaYw0Try6+bqgk5huQrnWQ4iHGnopztwllDxu1dxEPGtn4+d
-         AhUw==
+        bh=x342s989e3SqEpDprSMMdkIM/WvPO0edPGoockwe0Ec=;
+        b=BY41/XT6T/7eeXk4+S7VBiTpzWZJwgJZGEFtwrTSDvw/OezL+Sgus2/19kDqkeZ9bt
+         sGtLp6pchkm7dZCTpjrlrsDzqfo2zRaxQIhWmpjs1pInkS5M0V591ELCG+7YT7Eq2BxH
+         2wSk01fGwNgrwHeLosKYcyzNl+Vwg+9hkkch3WVZyjEyQMJlcZhldJ2BPqdZBln1eoTC
+         E0N99Pr+u3xD5mYJ7BiKOgX36V+U+hLLfm++Z02gpMzLaIMJ8bUzh08rtbTRl0M3VrYs
+         8RznXl8/8101DeMCaYdhCPKm3Ok4czpw33Jt1ppU25Xa+g/5mCjF8bumWhcvlsObTPvG
+         5H8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739099459; x=1739704259;
+        d=1e100.net; s=20230601; t=1739099462; x=1739704262;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mNvAyhAv6GepxNEYkCskllQBVi38mrCeZ4SsbbR7WSY=;
-        b=BjjgeFXICyVBeon5ExmCzg6jOaULIDn6hCGf79OaMXR9sGlDDtjE92YJxV8SkGeLrf
-         losu0ZDnr4NKCS3MFJHonG30DsojtswSkGBkTL5p6Vy4nBXPb96Rf8nm6+4mLCssh3na
-         vVFfCKaHrTc+URDTDGcpKtV62ZHVKiiNKrtTKNmY9HOO61r0PYmVyYadH1a6n5HO5xdR
-         oRU0DEmKush1rz3bVBQHW/JCoINCben+lbDGuCoz+SO025GySOp5O3dlDIps7DI8Ai9E
-         mqIQlGq2yDC2RgrghWn6K7pORXoo48yzN2vroPxdzTju7K3XmOSdwu6bbTHHshoWsQFM
-         Y8QQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUB5S/dqeYWZvSb3HKFAF+/mcB+BolN7XeXNW4euwrN0WOh7FPNd1K0UUEBZMKX4fw2sDFvUjEXhmgtMhYyCX4x@lists.infradead.org, AJvYcCW55oP7o+jNpI8N23zVTOVnKFBPlFuoOgSzTbXhFXxi2kKaUBcnPu1XZ90C2wkiilyJ4Y0pvoCAP4uAy9JOMmQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YydDUQBoi7WVCClfAmVaoQFpAp+t1SZLkF9BmK6QQvIe1tgeF1O
-	ArCJcp4RrxbO8scSZH9xLKJGEX8fxSXnGbVOx7zoQrdsuP2XtCiM
-X-Gm-Gg: ASbGncv6A0oukPtiGHbfkbVy1P5JtLd9Vgas6vQDZ6A+5TlYBOOc4AG93AMtKJfXffT
-	nWX46sKSN2zIbIclvAOKbaPYdUP8PjsNHMxpmo19qhDuGST5DRboaPsVvckqxz1EumQeI9Lhy4U
-	todbykfov/zBa8fldB1EEtuMfKiNbd2p2gAuYxM+o5UZw4n8+T8xGMi2HbwHztK5xaVGdw9omht
-	t7XYF6b8DHrVFFj/ZIW4xm9sJ+gx3GIRSMgpCcuDnyycoNMAyg3/TachNCp6+koMDtWqEGHMErh
-	jhSomlW0o+R/PjeLIPYp6nGea9DseCprMS3FuI9kSMIQLmgeSKhVBY1uQbzIo0oc+Q+WTrTMHCn
-	XuGNqsGLgTIxnd40v2+uQ/d1EaW/7VZsZ
-X-Google-Smtp-Source: AGHT+IFJaFbx7ete5KJozyvNC8/oWulX5RI94rWh7h2VsoTHF0Lp2lI///kU0TTT1M4WqEm7capUsA==
-X-Received: by 2002:a17:907:9719:b0:ab2:f255:59f5 with SMTP id a640c23a62f3a-ab789b4a40dmr1114278166b.16.1739099459229;
-        Sun, 09 Feb 2025 03:10:59 -0800 (PST)
+        bh=x342s989e3SqEpDprSMMdkIM/WvPO0edPGoockwe0Ec=;
+        b=ol33+BKs2TkJfigHDImDsbMLz9cZJhYEGg43nl2cTAHp1/Ia6J0dSdg2C4DMASwOx2
+         9JJ7DGTRvGnta6qfJVqr9KnuHDu+ipNMbOBvqpvRshNtafaycbRkiJ3lrQG5+L2/1U8z
+         Opvb6HtDW9C8VOHHkVY8p64goTjAST37GMXgLx6sZ2TPcblODQ6UZ5PNdxZfJKrguWUr
+         r5ihQtvlFutsSAKsicQCBu6SxO7qCnldt25trp5xXBoK78ylx0ryIqxY64c2jzE+/81I
+         srgUY7FVVza6u70ROOezGgUV0WWdxdcr4xeyBLxmQ6dVW67dNCAzwmsFUj98F4Gzn3HP
+         OT1g==
+X-Forwarded-Encrypted: i=1; AJvYcCVCNxr5uqidbRwo6H3ZJmR2yWUpucjer1oExFJKbtAHGn8JHG2D7g08p1SM2lJesOseZ4/15mhPlOqNQ011CTW6@lists.infradead.org, AJvYcCVg5LXfjmLczLA0gEX42+kztdkgG4FKBLo/6diYvRz5mK1hGGVkvAs2CU1TV2sX5hIUBlIMitQm4UTAkIVfuME=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzgDyuW/zAHp959AenE9efn3eSyDTb+3ti0Ru3oAaFQ4PfMc55Z
+	zJVVv/oZmQ40KNVEsxBHbKxROgVOt7t634dWDTjLW9dJoZpqhVxc
+X-Gm-Gg: ASbGncsy/LW9fWwelRWnYk0r5Y81C0/aw4y7QbgJy4JgWNp7v8FUMbUXNzVs4fM5aMi
+	Bi0aGUlwxjG2GQ+b3vdTsCDXPRPCrnQX9SIfJyUdxOw9ShweTwikIWmC2N2tS4qSUdmePzUpSFW
+	2Cl0oTbvVsapaJAqZdVEhoMBd8Ot4pcUyABGn71NKlazILr3i5m7QK0qArVASObqOnxn2x6SJjH
+	v/f1gjoz73vvf78eAsTu0uITP5P9OeUL3qmAeqsZyPIrcOPbfvriCNiWrOL8ahwaRl8PTRY9QVb
+	i73bjuM92X3eNJcF7+FVEsOvY3k2IU4RKCCNAONLHIUzFFVSlWCmjLmnBqMvBS1F1dO18mIXh44
+	wq2h87dSBUB4seEWOZ6GV57G6wreZ+pZx
+X-Google-Smtp-Source: AGHT+IGzFOqbzdxNGu8XFTKkecQMR7PLLsHBIzTQkjtLs9gLGZn/h4ghB6cukLwFR4KP5Q7Rs/NF3g==
+X-Received: by 2002:a17:907:c283:b0:aa6:66eb:9c06 with SMTP id a640c23a62f3a-ab789a9be1fmr1119975466b.5.1739099461657;
+        Sun, 09 Feb 2025 03:11:01 -0800 (PST)
 Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab79afc7452sm357516366b.163.2025.02.09.03.10.57
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab79afc7452sm357516366b.163.2025.02.09.03.10.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 09 Feb 2025 03:10:58 -0800 (PST)
+        Sun, 09 Feb 2025 03:11:00 -0800 (PST)
 From: Eric Woudstra <ericwouds@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -99,17 +99,17 @@ Cc: netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v6 net-next 10/14] netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to nft_dev_path_info()
-Date: Sun,  9 Feb 2025 12:10:30 +0100
-Message-ID: <20250209111034.241571-11-ericwouds@gmail.com>
+Subject: [PATCH v6 net-next 11/14] netfilter: nft_flow_offload: No ingress_vlan forward info for dsa user port
+Date: Sun,  9 Feb 2025 12:10:31 +0100
+Message-ID: <20250209111034.241571-12-ericwouds@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250209111034.241571-1-ericwouds@gmail.com>
 References: <20250209111034.241571-1-ericwouds@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250209_031100_781972_60B321F4 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20250209_031103_149882_8DE85E6A 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,47 +124,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In case of using mediatek wireless, in nft_dev_fill_forward_path(), the
-forward path is filled, ending with mediatek wlan1.
+The bitfield info->ingress_vlans and correcponding vlan encap are used for
+a switchdev user port. However, they should not be set for a dsa user port.
 
-Because DEV_PATH_MTK_WDMA is unknown inside nft_dev_path_info() it returns
-with info.indev = NULL. Then nft_dev_forward_path() returns without
-setting the direct transmit parameters.
-
-This results in a neighbor transmit, and direct transmit not possible.
-But we want to use it for flow between bridged interfaces.
-
-So this patch adds DEV_PATH_MTK_WDMA to nft_dev_path_info() and makes
-direct transmission possible.
-
+Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
 Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 ---
  net/netfilter/nft_flow_offload.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index 323c531c7046..b9e6d9e6df66 100644
+index b9e6d9e6df66..c95fad495460 100644
 --- a/net/netfilter/nft_flow_offload.c
 +++ b/net/netfilter/nft_flow_offload.c
-@@ -105,6 +105,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
- 		switch (path->type) {
- 		case DEV_PATH_ETHERNET:
- 		case DEV_PATH_DSA:
-+		case DEV_PATH_MTK_WDMA:
- 		case DEV_PATH_VLAN:
- 		case DEV_PATH_PPPOE:
- 			info->indev = path->dev;
-@@ -117,6 +118,10 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+@@ -116,6 +116,11 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+ 				break;
+ 			if (path->type == DEV_PATH_DSA) {
  				i = stack->num_paths;
++				if (!info->num_encaps ||
++				    !(info->ingress_vlans & BIT(info->num_encaps - 1)))
++					break;
++				info->num_encaps--;
++				info->ingress_vlans &= ~BIT(info->num_encaps - 1);
  				break;
  			}
-+			if (path->type == DEV_PATH_MTK_WDMA) {
-+				i = stack->num_paths;
-+				break;
-+			}
- 
- 			/* DEV_PATH_VLAN and DEV_PATH_PPPOE */
- 			if (info->num_encaps >= NF_FLOW_TABLE_ENCAP_MAX) {
+ 			if (path->type == DEV_PATH_MTK_WDMA) {
 -- 
 2.47.1
 
