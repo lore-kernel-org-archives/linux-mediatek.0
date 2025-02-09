@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13A2BC02198
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Feb 2025 10:15:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3F9C02198
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 02:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHlCTa++JQNY5yLxRtdf8QoMcBzRNGTE2Vwy5/XMOCY=; b=0m622eC8JfCw2ot/gx7ALnl+mz
-	ywaRyyNDxzwfbOooNuwWPKTMrc48UER9K7zpGcapyuFTIjm7k1SfzNXTlnG0HUmcp/DavFIaNvLPp
-	T3Y/dME4iVu98B3U3G3DskoWKTYrAj7IhHIk3+wwHjBw15xvCHzmcis5XEZ6daUHtz412fzrYrNqP
-	dKUnd020lOrnZnk5Y9BYYpcjtGmX32b3nen8mZPQ8QQbOWjIQFz5Bz6oH2GN6EiZKkg21DmE1NEmN
-	JPy/01vwBY0cpFmrJLfIjBcIPCWFObsbRKg3Pve2m/ivsTNq03eaiE8iICBmVBdbNPiJhruOO7r6c
-	8Rv17/eA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BiR6jPxkOnLAagXEhEW/SSBXilTT30QIgH9a11uZjl0=; b=kP5QT89v8EW1U5C9x4ANd1N2+G
+	CuERww+haRSWs2ng/B1gOoGcru7+7fcD6L/8bwmIofVVOWxf8x0JN6BAhEm52MhkYcRSNOl69e9CX
+	pZcBIW50gCxuKyilpmwc8fpNoNYBHXi4j+NFbl957UyaPqihy2d90gDwjiB4AbXKuoBg0LDwodTB9
+	M9Kynu+bFLHUxM3uL7b5k8RyKkKvHjodI/pHoFnifPJvyZt+x0glGcV2lGGlUCAhKg9ognkTS4C8M
+	ObLXUTbOudH1ChoNR3ddtUvsfaNtX27EeUBf4+uO4ZNyIOH2BRsfVFfW/GL+ARp+lqY8Hu6IZ1aDS
+	DBvIhymw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tghsL-0000000Ciot-0tFw;
-	Sat, 08 Feb 2025 10:15:49 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1tgwoS-0000000DttX-3QcB;
+	Sun, 09 Feb 2025 02:12:48 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tghqw-0000000Cido-2x2y;
-	Sat, 08 Feb 2025 10:14:24 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id 3f1490d57ef6-e455bf1f4d3so2212911276.2;
-        Sat, 08 Feb 2025 02:14:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739009661; x=1739614461; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lHlCTa++JQNY5yLxRtdf8QoMcBzRNGTE2Vwy5/XMOCY=;
-        b=Pgrf+n1bmsd2uMxhS2rPbU+lsT2JewYYX915q3BCtxcj49QKZ+jm+upO60Yk3HYsR6
-         crqkd3Nc3K6cyBrgoaaazv0cg6+yMTqyW7RLneNH7yM9579v/eV+6J5skmWslfnoR609
-         uxgWJ8mKZuFbS/YnlTq0IqEtyzXcK6lxJGSLxXqfctzKZYSpHuXaxuGmdfN3Q1M5nHin
-         F6DwKqNUzUUiTbh/tQpoSPiH0wsZSlgBmJ1iz52LS5P4rw1/WrftEgcHPQH3lRqrJRfa
-         QBIZk7AetFW+ad/opcLEvukqaR+lEcAlNl4MEW2xwmEC8cB0bVfHp3e5ozNuEPdyOLHQ
-         1kvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739009661; x=1739614461;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lHlCTa++JQNY5yLxRtdf8QoMcBzRNGTE2Vwy5/XMOCY=;
-        b=FJcYnj8YlRzkWYjZzxbh2a3M3XOMkG0Ty4rGWMZjYC1UMIO/l41CYKF+F2CjF7hcpw
-         FSXsntnkX45H64YjKZNbtzevltwtDkbafj/RD/VZ6Iv/FTkdZb4VSZCRB8tjvx+h1hhW
-         GbDfuBP06EWWez5fateSApZvJS4JwddIKyoopuCKRGlPCakFIFjI6LCTyMvurJQUe80z
-         WpGQmk716TzvTSsxI1wCASM9vb7yFo0S+b3dPho32RgVXuVdogZmhAYjvXySs9exuan1
-         vnCoTIslVlA0yL1/5jSf5XwXl8s0YhVVWEjpUe5iJMZxGkWX8tgwk574rYgGldGLie3U
-         4GmA==
-X-Forwarded-Encrypted: i=1; AJvYcCUsmytyAyHZZFmQhPgTksIN6OGvbZZxUrnKzl5QYS4PTBGtsS30sAKbBkMK8rIIuh2WQhwC23CbzfzsBpHH1loc@lists.infradead.org, AJvYcCWB5zIL+NHdxWUiL/Sq6bvTTDgdDAtCyMpN/dIV7RbPgi83SQfHsNg8xo7XP991QyaKn55Mepk6Kh0mnbdlNlU=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx0042vgRuGdVdrBd5IhZIuoesfkj3CGsCLbvAiFW4DTb2lqAAy
-	q8YDz6ji974epe4Wt3MYLhuYmzLu+ykYsQE3D995ZyBcyw9xQRyKnOhkz2bETMdJb1vrvK/4FPz
-	cxGcZ/73irgIrfD8WmGGZNTio4o4=
-X-Gm-Gg: ASbGnctvk7q0t4nmafFQ/5xilUe+caSznDk74wb0kA0w3Cvvt/qFOM8OiosXpmE/r2f
-	LWY9gOh6w0g3tyN/AdA2o52YbLUs0VvM2qeMshstTQuvIjXDkyg9Gd5uwRq22OI1KncyHbzg=
-X-Google-Smtp-Source: AGHT+IGJTnv0Jv1zGgHunoHT2gol4/G0RMD4RSz3LklZiU8Fl/L4w4+Hl+f6eU1srrJYqwe1I2fUwS7Kk/Ykj0OnFyM=
-X-Received: by 2002:a05:6902:188d:b0:e5b:1858:9f34 with SMTP id
- 3f1490d57ef6-e5b4619f369mr5462498276.16.1739009661634; Sat, 08 Feb 2025
- 02:14:21 -0800 (PST)
+	id 1tgwn3-0000000DtjZ-26d7;
+	Sun, 09 Feb 2025 02:11:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5E155A418EA;
+	Sun,  9 Feb 2025 02:09:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2782CC4CED6;
+	Sun,  9 Feb 2025 02:11:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739067079;
+	bh=qFK7B8RPzAwL/YK1uWbMTQGDX7kc0N5pqqW9E/GIQFM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=UfGVUaSbzy61F1Nfo0EybrDZkz2Aa+sbXQksZSSK/Ab3V7vnvtc3Mh91xGX06xcuD
+	 wRl7wyRGBI0clcSVSxJdl7s1TZv2hWqSkVdZPFBFFKuyPvqN9pKxnU9S4Zdkrr4xJ7
+	 MJytwX87tmJ2Uxwv0s2v5N1pcI1nu3zVRAJ0HAQ87S7MUajMx0xhGugouoW/uB+DAc
+	 pWsDBzhzNYcAmN6DiqPowJYtmmZefuwqjr2ilOhryac4Zn2grh61fiiE4fcsSychc5
+	 3Erj4lREgtElqqlxg9svZMEHYFdSRPxZejV5WHC3VFfM6ZuntKbyyZZ8pY5eQyk5xQ
+	 CLk9Bo4hZPWwQ==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Jassi Brar <jassisinghbrar@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH] mailbox: mtk-cmdq: remove cl in struct cmdq_pkt
+Date: Sun,  9 Feb 2025 02:11:02 +0000
+Message-Id: <20250209021102.5253-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20250208092732.3136629-1-dqfext@gmail.com> <Z6ckCZpOo1_rvmh6@shell.armlinux.org.uk>
- <CALW65jYG3vv9aCY_HDU4Wyij1kqfiOVOsZ3YnvioUf4AgSbnaw@mail.gmail.com> <Z6cp-TCckCNReUPd@shell.armlinux.org.uk>
-In-Reply-To: <Z6cp-TCckCNReUPd@shell.armlinux.org.uk>
-From: Qingfang Deng <dqfext@gmail.com>
-Date: Sat, 8 Feb 2025 18:14:07 +0800
-X-Gm-Features: AWEUYZmoA4XiGxbkn50VzS3TXo8SJfjOy3CnNZmFpsB8QTfYUzOVzyDXS0kfqNU
-Message-ID: <CALW65jY1kzcJT6sxvko5GMC3P4odon=ZvKn+ZfufAZR9jqb1Hg@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: ethernet: mediatek: add ethtool EEE callbacks
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250208_021422_742745_60E78C01 
-X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-CacheID: sfid-20250208_181121_606871_6BE27499 
+X-CRM114-Status: UNSURE (   8.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,18 +74,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 8, 2025 at 5:55=E2=80=AFPM Russell King (Oracle)
-<linux@armlinux.org.uk> wrote:
-> Doesn't it need a bit more code to configure the MAC?
+Every client driver has the struct cmdq_client information, so
+it's not necessary to store it in struct cmdq_pkt. cl is used to
+store struct cmdq_client information and now no client driver use
+it, so remove it.
 
-I think you're right. The MT7622 reference manual does not mention the
-EEE configuration register so I assumed it would be automatically
-enabled.
-I just checked the mtk_eth_soc.h and found two unused defs
-"MAC_MSR_EEE1G" and "MAC_MSR_EEE100M". I will use those to enable EEE.
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+---
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 1 -
+ 1 file changed, 1 deletion(-)
 
->
-> --
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index a8f0070c7aa9..4c1a91b07de3 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -75,7 +75,6 @@ struct cmdq_pkt {
+ 	dma_addr_t		pa_base;
+ 	size_t			cmd_buf_size; /* command occupied size */
+ 	size_t			buf_size; /* real buffer size */
+-	void			*cl;
+ };
+ 
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+-- 
+2.34.1
+
 
