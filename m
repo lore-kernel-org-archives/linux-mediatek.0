@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D5F7C02199
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 10:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616EAC02199
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 10:58:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uu8JRJQfAhwg5bov/rJA/hep/byZVR9T0TEt9EVnJ1g=; b=q1cZiaO/sVvpV6PIKEWfvEtTgL
-	aygfVb/yXp56oq36uyaPfNv6KBvtooU+bhIgAFNI8JUY/TuNGXp7XIhdlsjIz50FBsX4EQTbZdkcw
-	z4OpKPnAEIlFwAgRI046TxhSY6vUmvWtN+sQm0cfUCAfTU1mb+HGq/HkBlizgBuBPIh8wveND0Ixu
-	CjKPyjhWiZwW2xxOhA7XXbiEMC63E8KS9g/HnVp6mZA1HiHtud0dK/3hiN0XaR5g4mN4ykfMsQmM5
-	OgoQ4TlqyFlp7QYQswcwy/n2bZstNjo+hZEODsOKq3D+IF/umx1dieLdmyk0XWOqsQRFCmQU4JSZL
-	gmmAU6Sg==;
+	bh=ILHWETeyWM7/hxom7yN/cpvTSTLfT9vD68lpoyg1LuM=; b=48yaalS285F1SCUkfnTxRXP3eK
+	umDaMzW40376btWGGUeI4ityKUwFWYXTPecQuTT23YRRXXA0CJoLqnhfoOVBXGZiicPHTfcqFM34V
+	Q2vuGoHeF/oYwjAMlkbcs/NPqZvuC2RbOk0QO7/CEWldx/j/h6u6oV6smJ0flz/pbLP04r08jSY1D
+	4H3tietsCEXYvg77lkWJYYFBhpZq58rYJ12et2OYOwyhA/oKpYbWT+E1SLC5QAyYtqfbXa1oyF1RN
+	QRj5PjNWDKF+vCB6GJYHuRnmTthROF7PhGMBRIjIvNEgY83smqxlc6Za1NXH1J2VMm+1zLLdqmeh5
+	fRH+OpmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1th4yt-0000000EcG7-29MF;
-	Sun, 09 Feb 2025 10:56:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1th51c-0000000EdFt-21B7;
+	Sun, 09 Feb 2025 10:58:56 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1th4v1-0000000Eawu-1OnU;
-	Sun, 09 Feb 2025 10:52:08 +0000
+	id 1th4vl-0000000EbEz-1RMF;
+	Sun, 09 Feb 2025 10:52:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 176635C4C14;
-	Sun,  9 Feb 2025 10:51:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DED42C4CEDD;
-	Sun,  9 Feb 2025 10:52:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D501DA401E2;
+	Sun,  9 Feb 2025 10:51:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B124C4CEDD;
+	Sun,  9 Feb 2025 10:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739098326;
-	bh=Bum5g239Xhor2LHlA16e9wEojA4q1pFCVhiTPMAEbMI=;
+	s=k20201202; t=1739098372;
+	bh=ILHWETeyWM7/hxom7yN/cpvTSTLfT9vD68lpoyg1LuM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XBvdd+qQyO5c7GiTnIzUcULCy3jccXb/5HLpRixk4+qOmAyfO3Juz+OBFzbDsRSlc
-	 oOX28JfDaRlXucZCA18CZl4OaPxironqER5kNIY93HD35ur1Mm/XRz2mpa5AFP6V6H
-	 80Dq6+ZDm+EQkkZwjeqUOZb4k57uvP1xTPvkZ04+FNVULhqlZpngHYe1Er3PgAsAJc
-	 /8Nwvkk3k/65tORTqY7PbbKTPeHv6chFN/IsYvZxkhrHDBap1XHXHPwAvkUxXI6cF9
-	 jm0Ub+84zLZCfs2YrN4aua6Ff22uaI8TKKsa3JyEUICYQUnuP/oIbnPZH8QSJoBRFi
-	 LN4Md+PeGCoXw==
-Message-ID: <d2bced2f-a791-471e-89b6-d78017c9d306@kernel.org>
-Date: Sun, 9 Feb 2025 11:51:58 +0100
+	b=Iw9lUXV+kA+3kE6ZR24CbCmNtyvJQoE6quYA2txGV0ZZ/NGQy0FK6EDSUWG8taI33
+	 OtjhZEYo58cIIgdPTePoS3VeBGK2v/0pU11Ptyeqd1JEbIMukvUgQlWcNT3UfnyMst
+	 UHkgfl26vmTrtUf4bKhjP9Fg3GvLitPd6vopUYTMOtqtJHh3fLHsw55HD1l6GkRedm
+	 rKZtYVsajIpRGoaBmzeBvOzTXgL0ltaDPZgNdHhAjD8tKzinGJj5ict5O18r7+W4Qu
+	 z2dH6H/3OkXxiEchPaIDrOdiuEU+RIsb57zvfYmMmPQMgIXr2PxF0IPejmD9rM1raF
+	 13SPhVzfYWjyg==
+Message-ID: <9302b338-9905-4720-ae41-c1e2713528f2@kernel.org>
+Date: Sun, 9 Feb 2025 11:52:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,1/2] memory/mediatek: Add an interface to get current DDR
- data rate
-To: Crystal Guo <crystal.guo@mediatek.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
+Subject: Re: [PATCH 2/2] dt-bindings: memory-controllers: Add mediatek
+ common-dramc dt-bindings
+To: =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- kernel test robot <lkp@intel.com>
-References: <20250206121629.12186-1-crystal.guo@mediatek.com>
- <20250206121629.12186-2-crystal.guo@mediatek.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20241212090029.13692-1-crystal.guo@mediatek.com>
+ <20241212090029.13692-3-crystal.guo@mediatek.com>
+ <c978937a-e589-4e9a-ba37-265dbfc1b252@kernel.org>
+ <82cf93733dd14abfbcd17b100d1b3c40c6aed916.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,12 +108,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250206121629.12186-2-crystal.guo@mediatek.com>
+In-Reply-To: <82cf93733dd14abfbcd17b100d1b3c40c6aed916.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250209_025207_484023_6A871FEF 
-X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-CacheID: sfid-20250209_025253_512335_DF8E1B99 
+X-CRM114-Status: UNSURE (   6.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,25 +129,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/02/2025 13:16, Crystal Guo wrote:
-> Add MediaTek DRAMC driver to provide an interface that can
-> obtain current DDR data rate.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202412210955.FvO0Pee3-lkp@intel.
-> com/
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+On 08/02/2025 05:40, Crystal Guo (郭晶) wrote:
+> On Thu, 2024-12-12 at 11:58 +0100, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On 12/12/2024 09:59, Crystal Guo wrote:
+>>> Add devicetree binding for mediatek common-dramc driver.
+>>>
+>>> The DRAM controller of MediaTek SoC provides an interface to
+>>> get the current data rate of DRAM.
+>>
+>> Bindings are before users.
 
-<form letter>
-This is a friendly reminder during the review process.
-
-It seems my or other reviewer's previous comments were not fully
-addressed. Maybe the feedback got lost between the quotes, maybe you
-just forgot to apply it. Please go back to the previous discussion and
-either implement all requested changes or keep discussing them.
-
-Thank you.
-</form letter>
+Do not ignore comments but implement them or keep discussing.
 
 Best regards,
 Krzysztof
