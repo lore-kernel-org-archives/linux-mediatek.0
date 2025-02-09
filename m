@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A86FC02199
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 10:54:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D5F7C02199
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2025 10:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0vX+go1XBX/XIQBsI4fwuuRjVCt8tkSK+wOGuW8MagY=; b=VobTFXRdI1EwTREsiWmAPW4fti
-	D0ifihgRQgubSea3mJFBKDMXHEeGFdzGSRB6dFrm9rkG+2gkgs24tebQE9nBUxPPHZHJzOpIog0/D
-	spzJs8BnA4NQ8TarPMD++O2HxfmtkZvxk55jlXt/M9aQ25IufSOr6OaBPQFTdAYUm16l78AOcZY43
-	Z06tAVNA4dD+JUGRJaSqos4GtkxWzTmF1yDsMwBeLp3y5OhN23TQztmgk+iBkhZKXD2Pwy4WabIiv
-	WiliMjqXLqvrcVB5WU6ZCbWEwwOj3EAavgM5KIhjtTWs7riC+KrzvBOZuzCuj65QUnqCI5+NH45xp
-	9l2otxHg==;
+	bh=Uu8JRJQfAhwg5bov/rJA/hep/byZVR9T0TEt9EVnJ1g=; b=q1cZiaO/sVvpV6PIKEWfvEtTgL
+	aygfVb/yXp56oq36uyaPfNv6KBvtooU+bhIgAFNI8JUY/TuNGXp7XIhdlsjIz50FBsX4EQTbZdkcw
+	z4OpKPnAEIlFwAgRI046TxhSY6vUmvWtN+sQm0cfUCAfTU1mb+HGq/HkBlizgBuBPIh8wveND0Ixu
+	CjKPyjhWiZwW2xxOhA7XXbiEMC63E8KS9g/HnVp6mZA1HiHtud0dK/3hiN0XaR5g4mN4ykfMsQmM5
+	OgoQ4TlqyFlp7QYQswcwy/n2bZstNjo+hZEODsOKq3D+IF/umx1dieLdmyk0XWOqsQRFCmQU4JSZL
+	gmmAU6Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1th4xW-0000000Ebpc-1oKn;
-	Sun, 09 Feb 2025 10:54:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1th4yt-0000000EcG7-29MF;
+	Sun, 09 Feb 2025 10:56:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1th4uU-0000000Eah2-25Jg;
-	Sun, 09 Feb 2025 10:51:35 +0000
+	id 1th4v1-0000000Eawu-1OnU;
+	Sun, 09 Feb 2025 10:52:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1222AA400E3;
-	Sun,  9 Feb 2025 10:49:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FB5EC4CEDD;
-	Sun,  9 Feb 2025 10:51:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 176635C4C14;
+	Sun,  9 Feb 2025 10:51:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DED42C4CEDD;
+	Sun,  9 Feb 2025 10:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739098293;
-	bh=gymlXchE1X2Mi5HturvFxODMkGlE+6Fknw2D00ypeLw=;
+	s=k20201202; t=1739098326;
+	bh=Bum5g239Xhor2LHlA16e9wEojA4q1pFCVhiTPMAEbMI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cljLsJTMFJ70nnAYdWOlI2nx0RjdQ3pzCPH+wuHrs3WRAVMaGAUasVRUloiaTyhIb
-	 BXxsQKARNs5eTvvnDxXD6bLDQt202LyauVWHOnXjhxoaXO89cH5PECKgcarAT7fYX+
-	 wcOE2AwauN0t4E9sWZVRiL39vIKCI7vwLOLyTJvM8YtiADS4k/jVtkZz2pYnF73dp5
-	 RLzK032K01GR6oAPsk42TOw/rHs4l6PhmWXWVFGlFkzefWkfgy+qfvuUbqRxsv7afU
-	 mnPBCMzXHpdq+MAQxkXTyzp4rWn4Qsu14ItFtdbTRdQAQSHTbd7p8+l37gp+ZRzG6C
-	 G79QpJg/VZjvw==
-Message-ID: <2942fbc2-55c5-4789-89d4-e4bf3158a34b@kernel.org>
-Date: Sun, 9 Feb 2025 11:51:27 +0100
+	b=XBvdd+qQyO5c7GiTnIzUcULCy3jccXb/5HLpRixk4+qOmAyfO3Juz+OBFzbDsRSlc
+	 oOX28JfDaRlXucZCA18CZl4OaPxironqER5kNIY93HD35ur1Mm/XRz2mpa5AFP6V6H
+	 80Dq6+ZDm+EQkkZwjeqUOZb4k57uvP1xTPvkZ04+FNVULhqlZpngHYe1Er3PgAsAJc
+	 /8Nwvkk3k/65tORTqY7PbbKTPeHv6chFN/IsYvZxkhrHDBap1XHXHPwAvkUxXI6cF9
+	 jm0Ub+84zLZCfs2YrN4aua6Ff22uaI8TKKsa3JyEUICYQUnuP/oIbnPZH8QSJoBRFi
+	 LN4Md+PeGCoXw==
+Message-ID: <d2bced2f-a791-471e-89b6-d78017c9d306@kernel.org>
+Date: Sun, 9 Feb 2025 11:51:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,2/2] dt-bindings: memory-controllers: Add MediaTek DRAM
- controller interface
+Subject: Re: [v2,1/2] memory/mediatek: Add an interface to get current DDR
+ data rate
 To: Crystal Guo <crystal.guo@mediatek.com>, Rob Herring <robh@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250207014437.17920-1-crystal.guo@mediatek.com>
- <20250207014437.17920-3-crystal.guo@mediatek.com>
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ kernel test robot <lkp@intel.com>
+References: <20250206121629.12186-1-crystal.guo@mediatek.com>
+ <20250206121629.12186-2-crystal.guo@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,12 +102,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250207014437.17920-3-crystal.guo@mediatek.com>
+In-Reply-To: <20250206121629.12186-2-crystal.guo@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250209_025134_677507_F7C1E542 
-X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-CacheID: sfid-20250209_025207_484023_6A871FEF 
+X-CRM114-Status: UNSURE (   8.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,12 +123,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/02/2025 02:42, Crystal Guo wrote:
-> A MediaTek DRAM controller interface to provide the current DDR data rate.
+On 06/02/2025 13:16, Crystal Guo wrote:
+> Add MediaTek DRAMC driver to provide an interface that can
+> obtain current DDR data rate.
 > 
-Duplicated patch.
-
-You also ignored several comments so that's a NAK.
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202412210955.FvO0Pee3-lkp@intel.
+> com/
+> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 
 <form letter>
 This is a friendly reminder during the review process.
