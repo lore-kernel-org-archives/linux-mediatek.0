@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54ABCC02198
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 11:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF2AC02198
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 11:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OFprhQeNmmCYEp+8aOLRLch/0cM3jigib4motf9TPiA=; b=I1Ay+SB3rAOs22UuuaWqX9CYmv
-	6VWxdKhosg2tAHPQf6z8M5IVoQtICKljZjGSsPv1MHBp7ilgAmv1ZDnLgG4TDsj5unVdeVSHJGts1
-	V+HApTPIdSY89yg0E7COPOwvyraoPhVQiknrX6+EYArqrR6aBBPUcfJUStFpmAI2uGx5azJGGYQEk
-	A1U96q2AemMJlFMnbZupiPizO91G2HqVokhKJSbl4NkfvP0zHZ64eQXQwV0ztjLrHpW4SxSqC6Z6E
-	VsbBnwv/zCwrYvTe/jB+Yp2iubCvJ7Xg8Xy3KPyOyEC2iLEjAFDMHhbgmchpfztFw0OMfVF3U4fZR
-	321RHIUw==;
+	bh=yvrIWGbdAifvUXhLfTRzn0xK7IHZXqoJJXO0S3kdaFw=; b=PamOQuY5leCr6urehZHSuAU16c
+	2wuz8UdHSJUz+3zYbLGIPmiANI2Ywc1tKLw/SpfEX08paqZlzwpy7SfKzvK7P4Ixp/sQJC4ikqGsR
+	UzH9Pz4H/gIbhdX+yGe0VtM8fASke968lvucWbPlZ61izrwVmJE6zxonu2tx8iOeXgsTmudXf6AYs
+	4SX/cS3I9KHeTjOKQih8KUkXHRpWVaDPq4fZkvVUFO3LJw7krtJVxFgUadi26yq4pTc+Cbf3oplYD
+	iQsuFu0FT5iZ6pl4vEELtfbqO4Kehc1J+glnYOrhvDMgJSoWsCgtnnxJtdh4Is7UGMsGdmputlnI6
+	8qWsCNLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thS8t-0000000HGWA-1d1m;
-	Mon, 10 Feb 2025 11:39:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1thSMg-0000000HJiA-2xcW;
+	Mon, 10 Feb 2025 11:54:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thRsZ-0000000HCNj-3xZi;
-	Mon, 10 Feb 2025 11:23:10 +0000
+	id 1thSCK-0000000HHE0-0xxw;
+	Mon, 10 Feb 2025 11:43:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739186586;
-	bh=2TfBb8YkHBjUcd2qbTj06jtJqA74ipyI1dLzWmzyRp4=;
+	s=mail; t=1739187810;
+	bh=tycYPKLg38RvdhS16xCjIBsLq91Al6Z9Y/oCR8632u8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eQ4nxJESKZB4J0JFkg5Nk8KYNqeTOzP+Sf8VljtKSgz/vbFYNKynyDTvsGRDBIe/K
-	 NH0EcNQ8rHXCiiHdMgXvClbJABoqnKs+kaTOg2raVeJI/NbsXC7V/OHMk4LMWpTjdr
-	 /IqGJgFtoXI5JyzztBVldciULs31BkopnpoJR0vT6klju0S1HxyasgIYuLIAusPwvm
-	 tBIfg0GkaJQwf453X/lQxlHqGu2gqV4Y+ohZ6Ec23Vig626spJpLuLFLG6QyRrTnI6
-	 o5BQJCZr/Jky0L5WT8E1vc5U0aRGGIPVGpZT9ZOhGQTLUiIP4IFUNOQ0C+CcwbOn1d
-	 ZNfkne9lGJwnQ==
+	b=oJpamBIHuqr2lATsB2etB4kCzp90Y+I5bwWiqGPCEEWBmKStjWRpJ+UjXYo5pb/78
+	 UcqmscYvy0CTTo526+PavoEmea5E5a5mhdPzxBQkKDnh4ZLaWVHipRTYXqPETTfk90
+	 aWAq3dmeNuQxn8as3m/h1eQcFF4yz/8ArwY4IGAhsXoaT29EGca39sSooGuPc2cB+f
+	 Uy2nTS9Jllxxm3tG3QaGkMbDcmjanyV8mX+aTpDP9tcsBQMd6bLWnrMxBi/jZtld8S
+	 CuFPSwlA5Nxtl2oYj9/l+czapoAY9TA4WLEgcRCT/S910IdnW6tmQEXlL60iRLpEcb
+	 n4Fchmar65ODA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF3F417E09F6;
-	Mon, 10 Feb 2025 12:23:04 +0100 (CET)
-Message-ID: <2fd97b1e-6546-4f43-bc60-15a812e66467@collabora.com>
-Date: Mon, 10 Feb 2025 12:23:04 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4023F17E0B59;
+	Mon, 10 Feb 2025 12:43:29 +0100 (CET)
+Message-ID: <dabbf4a7-1856-458a-b88d-2a16bc80bff0@collabora.com>
+Date: Mon, 10 Feb 2025 12:43:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 27/34] drm/mediatek: mtk_hdmi: Cleanup function
- mtk_hdmi_resume()
+Subject: Re: [PATCH v5 25/34] drm/mediatek: mtk_hdmi: Remove ifdef for
+ CONFIG_PM_SLEEP
 To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
  "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
 Cc: "robh@kernel.org" <robh@kernel.org>,
@@ -77,16 +77,16 @@ Cc: "robh@kernel.org" <robh@kernel.org>,
  =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
  "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
 References: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
- <20250113145232.227674-28-angelogioacchino.delregno@collabora.com>
- <f25eaced46e18a54896f20ae1c42ed6894da5e18.camel@mediatek.com>
+ <20250113145232.227674-26-angelogioacchino.delregno@collabora.com>
+ <a9c0027b1d02365389624c5cb9b42b5bf39dac85.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <f25eaced46e18a54896f20ae1c42ed6894da5e18.camel@mediatek.com>
+In-Reply-To: <a9c0027b1d02365389624c5cb9b42b5bf39dac85.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_032308_172919_40F7230C 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20250210_034332_426249_05DBCA8F 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,57 +101,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/02/25 07:04, CK Hu (胡俊光) ha scritto:
+Il 07/02/25 07:10, CK Hu (胡俊光) ha scritto:
 > Hi, Angelo:
 > 
 > On Mon, 2025-01-13 at 15:52 +0100, AngeloGioacchino Del Regno wrote:
 >> External email : Please do not click links or open attachments until you have verified the sender or the content.
 >>
 >>
->> Remove the error print in case of mtk_hdmi_clk_enable_audio()
->> failures: since the APIs will already print on their own, having
->> one in there is redundant.
+>> Since the SIMPLE_DEV_PM_OPS macro and the pm pointer are anyway
+>> defined when CONFIG_PM_SLEEP is not set, remove the ifdef for it
+>> and indicate that the mtk_hdmi_{remove,suspend} functions may be
+>> unused (as they are, in case PM support is not built-in).
+>>
+>> While at it, to improve readability, also compress the
+>> SIMPLE_DEV_PM_OPS declaration as it even fits in less
+>> than 80 columns.
 >>
 >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >> ---
->>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 +--------
->>   1 file changed, 1 insertion(+), 8 deletions(-)
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 ++++------
+>>   1 file changed, 4 insertions(+), 6 deletions(-)
 >>
 >> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> index 40eea5c125d2..c5431f160fe4 100644
+>> index 0ec3bfe528f8..f6b463aaba47 100644
 >> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 >> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> @@ -1703,15 +1703,8 @@ static __maybe_unused int mtk_hdmi_suspend(struct device *dev)
->>   static __maybe_unused int mtk_hdmi_resume(struct device *dev)
->>   {
->>          struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
->> -       int ret = 0;
+>> @@ -1692,8 +1692,7 @@ static void mtk_hdmi_remove(struct platform_device *pdev)
+>>          mtk_hdmi_clk_disable_audio(hdmi);
+>>   }
 >>
->> -       ret = mtk_hdmi_clk_enable_audio(hdmi);
+>> -#ifdef CONFIG_PM_SLEEP
+>> -static int mtk_hdmi_suspend(struct device *dev)
+>> +static __maybe_unused int mtk_hdmi_suspend(struct device *dev)
 > 
-> I do not find where to print the error message, could you provide where would print the error message?
+> I see many driver use CONFIG_PM_SLEEP,
+> and SIMPLE_DEV_PM_OPS() is defined to support suspend/resume function is not exist when CONFIG_PM_SLEEP is not defined,
+> so there is no strong purpose to apply this patch.
 > 
 
-It's handled in drivers/base/power/main.c - upon failure, a pm_dev_err() will be
-executed, printing an error message stating that this (or any other) driver has
-failed resuming.
+This allows to improve the compile time coverage and at the same, this will not
+increase the binary size of this driver, because the compiler (or, all of the
+linkers associated to the compilers that can be used to build the kernel, anyway!)
+will drop the two functions when CONFIG_PM_SLEEP is *not* defined.
 
-Cheers,
+Also:
+  * This ifdef is redundant, as it's already handled by SIMPLE_DEV_PM_OPS
+  * Removing ugly ifdeffery increases human readability while also slightly
+    reducing the number of lines
+
+Regards,
 Angelo
 
 > Regards,
 > CK
 > 
->> -       if (ret) {
->> -               dev_err(dev, "hdmi resume failed!\n");
->> -               return ret;
->> -       }
->> -
->> -       return 0;
->> +       return mtk_hdmi_clk_enable_audio(hdmi);
+>>   {
+>>          struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>>
+>> @@ -1702,7 +1701,7 @@ static int mtk_hdmi_suspend(struct device *dev)
+>>          return 0;
 >>   }
 >>
->>   static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops, mtk_hdmi_suspend, mtk_hdmi_resume);
+>> -static int mtk_hdmi_resume(struct device *dev)
+>> +static __maybe_unused int mtk_hdmi_resume(struct device *dev)
+>>   {
+>>          struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>>          int ret = 0;
+>> @@ -1715,9 +1714,8 @@ static int mtk_hdmi_resume(struct device *dev)
+>>
+>>          return 0;
+>>   }
+>> -#endif
+>> -static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
+>> -                        mtk_hdmi_suspend, mtk_hdmi_resume);
+>> +
+>> +static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops, mtk_hdmi_suspend, mtk_hdmi_resume);
+>>
+>>   static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 = {
+>>          .tz_disabled = true,
 >> --
 >> 2.47.0
 >>
