@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09F0C02198
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 14:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07030C0219B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 14:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WHL3dN12cZfiqrpQ91ncKM7YasTAZTmSy6+gYCoByzs=; b=uCJwUEXHS8Q1Vg6WCfgBynHx+i
-	YeFEXxBzS2z9ZBrTLMEAm0qjptgrAcYwvmWVPFV9wmWpEl7rHbnrDg+fzlKwJUqAix4v45gN1ssd4
-	Cg1T8fUMtjpjBrMSHdbDBGbOS/3y8ENaFf5JhBkziprjiIeDllRIB/T4IN3grg0J6eXpcBx2Ep5D+
-	swiMv9KDV7X++fgKVlaIy6HPereHu0HN2NpWdhhPD6cz9j4E955sviqpbnNZ2uynF8tTD0L2FGsW4
-	FFpXlNo5vSWYQU8mCWfk7nxqdObQdkskrhqc0tPGuPZMNoWP8t3HzZgj7aFvjCCS5illdj8RHcteZ
-	cpRcxihA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:To:Subject:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eUjZ6nL8w17oREQOvkvYBXo6SX9OZgpgfq7fRKD2fXc=; b=YnHV6ZnKnzUyI6x0FBUUGEPwlG
+	ct/vZt3RSWTYKn1qMRoAdU1p98gJDG4Z4ew5fgtagizn/Ds8z+6gqo2zWGUGbDiFgd2qeGtKXcyIY
+	7E+1MtFD/A/xbz2RypGWPBt5If16ufutmpvXuDbaLQ58pkB/Sf50MHzcckLH/emYy6V0Ay+Luni7o
+	LW1ifASf3bFe7PyFyQtUEfJYlQDMHYsrTS1AT8mdIK6xt3Zp5PWbubym5R2WNPuDOFOhKazFE2O/E
+	ehi7WNznifzKaa/x+PgMDF/LrzSrl7kUfk9mA63/TwtEudZD0AbWxVya+rMf77s1Fb4gGXNDDv7Bi
+	arg6NhGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUlk-000000007tI-35HN;
-	Mon, 10 Feb 2025 14:28:16 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1thVEU-00000000D6E-44VZ;
+	Mon, 10 Feb 2025 14:57:58 +0000
+Received: from mail.botevgrad.com ([84.22.5.30])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUk2-000000007c9-1LrM;
-	Mon, 10 Feb 2025 14:26:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=WHL3dN12cZfiqrpQ91ncKM7YasTAZTmSy6+gYCoByzs=; b=fd0fglPztCXBx8mpibEUk4hjrb
-	U/mdf7XKKn380K0TMQLav6Nif2k/ZPUOWfkkBHhpS8EgBMXoPsmFnO7oaSEXrGLbNnakGndmL0Ilf
-	ljmLgU+AxBphLAYtBDDDu9vIB5HJJHYNSUZZXAONu26tK553VeO32vjtJiMSGwklDhZ9+OdZlbWRP
-	GapFrAroqfysPv00Hz1II24f8MuGhEYueF+d3DazlcQEjfqjguciZ639hdI8fal/dQu95ETYTYQFt
-	YPeidu3lAImAMobwYlDxgUPoCVf8OwZhJALFqZajuQOM1IqEvIq7inpV2M81pSOfp/OJNZXn4mjTu
-	pcYniMWw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58998)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1thUju-000794-1B;
-	Mon, 10 Feb 2025 14:26:22 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1thUjr-0007ZG-0z;
-	Mon, 10 Feb 2025 14:26:19 +0000
-Date: Mon, 10 Feb 2025 14:26:19 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH net-next v3 1/3] net: phylink: provide
- phylink_mac_implements_lpi()
-Message-ID: <Z6oMi8rTeuwHHDt8@shell.armlinux.org.uk>
-References: <Z6nWujbjxlkzK_3P@shell.armlinux.org.uk>
- <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
- <20250210132054.oaqb5mboh6qiixfv@skbuf>
- <Z6oHxrtBHAvaMqd3@shell.armlinux.org.uk>
+	id 1thVD5-00000000Cpi-0E5Z;
+	Mon, 10 Feb 2025 14:56:32 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6FC226018ED00;
+	Mon, 10 Feb 2025 16:56:25 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=devture.com; s=dkim;
+	t=1739199388;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=eUjZ6nL8w17oREQOvkvYBXo6SX9OZgpgfq7fRKD2fXc=;
+	b=I2YfSUjIvFE6ccoGMTV1CoWbZTd8yX1YkdJVoW5eGKl4A8K8hRp7UNnJf0XZ/5EJ/uIX6E
+	XcNOJJOFA82LYBJuA9AsFFUlLRJywrBnZsCL0Ox0KZS/rIdgR0ok0ztb46KToJ0aWQ+YW9
+	yYWp6K+G0WZruJ8As+5uMoU+r7LHAKeClGacIHiiiuoAeOXyuai52PqmTVnNh3vQzSc4+r
+	Hgqt2sJIDByucK57ExmM1b2XRYoF2Vy1FnKafZEYfNMs4f1ehsvqxyxvjfx41nUa99awm6
+	KO0Vi8A2uY4RDd34KFVy1iI7NYxU1ffRTabQYGbvfruMjj25tb1kFrX8nsMerg==
+Message-ID: <18be5ba2-6dc4-4766-9944-59cb46c8dfaf@devture.com>
+Date: Mon, 10 Feb 2025 16:56:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z6oHxrtBHAvaMqd3@shell.armlinux.org.uk>
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+From: Slavi Pantaleev <slavi@devture.com>
+Subject: 6 Ghz frequencies always listed as disabled in newer kernels with
+ Mediatek MT7921K (RZ608)
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Deren Wu
+ <deren.wu@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_062630_362237_2D5E551C 
-X-CRM114-Status: GOOD (  28.48  )
+X-CRM114-CacheID: sfid-20250210_065631_252122_E9D21EDD 
+X-CRM114-Status: UNSURE (   3.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,63 +76,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 10, 2025 at 02:05:58PM +0000, Russell King (Oracle) wrote:
-> On Mon, Feb 10, 2025 at 03:20:54PM +0200, Vladimir Oltean wrote:
-> > On Mon, Feb 10, 2025 at 10:36:44AM +0000, Russell King (Oracle) wrote:
-> > > diff --git a/include/linux/phylink.h b/include/linux/phylink.h
-> > > index 898b00451bbf..0de78673172d 100644
-> > > --- a/include/linux/phylink.h
-> > > +++ b/include/linux/phylink.h
-> > > @@ -737,6 +737,18 @@ static inline int phylink_get_link_timer_ns(phy_interface_t interface)
-> > >  	}
-> > >  }
-> > >  
-> > > +/**
-> > > + * phylink_mac_implements_lpi() - determine if MAC implements LPI ops
-> > > + * @ops: phylink_mac_ops structure
-> > > + *
-> > > + * Returns true if the phylink MAC operations structure indicates that the
-> > > + * LPI operations have been implemented, false otherwise.
-> > 
-> > This is something that I only noticed for v3 because I wanted to leave a
-> > review tag, so I first checked the status in patchwork, but there it says:
-> > 
-> > include/linux/phylink.h:749: warning: No description found for return value of 'phylink_mac_implements_lpi'
-> > 
-> > I am aware of this conversation from November where you raised the point
-> > about tooling being able to accept the syntax without the colon as well:
-> > https://lore.kernel.org/netdev/87v7wjffo6.fsf@trenco.lwn.net/
-> > 
-> > but it looks like it didn't go anywhere, with Jon still preferring the
-> > strict syntax for now, and no follow-up that I can see. So, the current
-> > conventions are not these, and you haven't specifically said anywhere
-> > that you are deliberately ignoring them.
-> 
-> It was explained in this email as part of that thread:
-> 
-> https://lore.kernel.org/netdev/ZzjHH-L-ylLe0YhU@shell.armlinux.org.uk/
-> 
-> The reason is that it goes against natural grammar. The only time that
-> "Returns:" would make sense in grammar is when listing with e.g. a
-> bulleted list, where the part before the colon doesn't have to be a
-> complete sentence.
-> 
-> This is why it's going to be an uphill battle - grammatically it is
-> wrong, and thus it doesn't flow when thinking about documenting the
-> return value.
-> 
-> If we want to go to a bulleted list, then it will be natural to add
-> the colon.
-> 
-> I'm not going to explain to this level of detail in every email, and
-> because of the grammatical nature of this, it's going to be very
-> difficult to use a form that goes against proper grammar.
+Hello!
 
-Also note that it follows the style already present in that file
-with one exception (which is one of the few cases I remembered to use
-the new format.)
+This is in regard to Bugzilla Bug 218731 - Tri-band AMD RZ608 (MediaTek 
+MT7921K) has 6GHz band disabled in kernel 6.7+ despite working in <=6.6
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+URL: https://bugzilla.kernel.org/show_bug.cgi?id=218731
+
+I'm in Bulgaria and `iw reg get` reports this:
+
+```
+global
+country BG: DFS-ETSI
+         (2400 - 2483 @ 40), (N/A, 20), (N/A)
+         (5150 - 5250 @ 80), (N/A, 23), (N/A), NO-OUTDOOR, AUTO-BW
+         (5250 - 5350 @ 80), (N/A, 20), (0 ms), NO-OUTDOOR, DFS, AUTO-BW
+         (5470 - 5725 @ 160), (N/A, 26), (0 ms), DFS
+         (5725 - 5875 @ 80), (N/A, 13), (N/A)
+         (5945 - 6425 @ 160), (N/A, 23), (N/A), NO-OUTDOOR
+         (57000 - 66000 @ 2160), (N/A, 40), (N/A)
+```
+
+For testing purposes, I've also tried switching to another regulatory 
+domain (`US`, `DE`, `SE`, `NL`) via `iw reg set ..`.
+
+Regardless of the regulatory domain, `iw list | grep -A 15 Frequencies` 
+always reports the 6 Ghz frequencies as disabled on newer kernels.
+
+As the original bug reporter has discovered, the regression begins to 
+appear in kernel 6.7.0 while it isn't present in 6.6.30.
+I've done a bisection and the results are like this:
+
+1. [bad] mainline (954a209f431c06b62718a49b403bd4c549f0d6fb)
+2. [good] v6.6.30
+3. [bad] v6.7.12
+4. [good] v6.6
+5. [bad] edd8e84ae9514e93368f56c3715b11af52df6c3b
+6. [bad] 89ed67ef126c4160349c1b96fdb775ea6170ac90
+7. [good] b827ac419721a106ae2fccaa40576b0594edad92
+8. [bad] d1a02ed66fe62aa2edd77bd54e270ebc33bd12ff
+9. [good] 3abbd0699b678fc48e0100704338cff9180fe4bb
+10. [good] 5a423552e0d9bb882f22cb0bf85f520ca2692706
+11. [bad] 56a7bb12c78ffa1b02e154b1d779ed2a1555fa3c
+12. [good] a3c2dd96487f1dd734c9443a3472c8dafa689813
+13. [bad] 089482a06b74a40d45773b1871182e8f04be026b
+14. [good] fce9c967820a72f600abbf061d7077861685a14d
+15. [good] c948b5da6bbec742b433138e3e3f9537a85af2e5
+16. [good] 9585316a2aaf773a67846bdc8bbdd4df1e9622fa
+17. [good] 51ba0e3a15eb1643116a93674e230e11b9499592
+18. [bad] 09382d8f8641bc12fffc41a93eb9b37be0e653c0
+19. [good] 4fc8df50fd41c2762d893211487be0ecb24c6a05
+
+09382d8f8641bc12fffc41a93eb9b37be0e653c0 is reported as the first bad 
+commit.
+
+URL: 
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux/+/09382d8f8641bc12fffc41a93eb9b37be0e653c0
+
+Regards
+
 
