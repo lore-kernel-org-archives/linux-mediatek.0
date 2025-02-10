@@ -4,63 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE96BC02198
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 11:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 286AEC02198
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 11:35:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=701lOTwvBQqrihNU39WbbYRFpPnSdZwDaGPQJEns54E=; b=iNdiWA3RmzWCOn
-	zH2GR/SMzM6s6FO/0McJ58OdFJJYRV1FfOJbgRPniGGGOewOlztJl8K4OxfBnS9aqlm3LVA5K96tx
-	blr4EentXD2RezX/ZFmuG3gaLo1pkNC5UyNHFtnANd32y9TyedC7TQO5ZN1hGkCdSN53rEcCH+4bo
-	GIl7Y2uE28vLUAL7jyRHB+mjqLHE+zrZNpRinojc2tXGO/Do6/l2aXcnBruCe5+cml2hsplnkXc5f
-	MnPjFqDwIBg/gG3KNfmL5KtmNmWD9e+Meq4ULe0PDkSRehz/PtlQxhVT3MkZbLOD8yBuAYqtBkjum
-	8MJvpqcCtlly7W3wp1qQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=he2gukp9Ijs5lH2UJ4ZL02Mw6U3kiJzlvUOst957xeo=; b=jObauSif0V/xoujHAV95Aqxbje
+	OrJeglhUpFXQ3pJyqo9wtkD1d25P5/G4ajjs6jHR0JJzUFjh/6OQBsduT4wX9VuLWtdVfDDfycywK
+	ftXC/umg0LhSAcT/QlTp5fbXKgyC24T1FIchqa0ZSYF/7G2niGW2KAQkxHVL4IE5/kqzTQp5tK4IO
+	w8QMO4GYLT3wU8IuQs7Qf8yebzz6NupKRosDsL9rA+RqDmvmTfbV+c4Xl1qnicbLNKUiRGW3Hdg6P
+	VBLBB20956DneEYsZSmSO1+yu5pxm2lK4hnieC38GPHT8YQr87y6yq9CP6eICIMV9Ao7l3p9cIMDf
+	4Jj3xbKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thRpn-0000000HBxf-3AvL;
-	Mon, 10 Feb 2025 11:20:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1thS4n-0000000HF5Y-15h1;
+	Mon, 10 Feb 2025 11:35:45 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thRT1-0000000H6qU-2v8k;
-	Mon, 10 Feb 2025 10:56:45 +0000
+	id 1thRlD-0000000HB6c-2Ytv;
+	Mon, 10 Feb 2025 11:15:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739185002;
-	bh=ktC9CGjjL2cK7vFGI+t8o65NobGAFD0a2MtqEaxpWTI=;
+	s=mail; t=1739186129;
+	bh=yghw6cquksN8zPqbgLipZY4BM8xR8DkXkhGUySC4WRA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VDIALnGMNk86NrAPmfAd//FQLk4s/j7kOe0F0n8rU1AgHnkN+pGf2mMHWtgI2EcLT
-	 EJuZCOQfrFUko7tDluFAUWNZ+QgrJ/t0yExuxM+74rynDfLRqcsFoJf23rVUQQlB26
-	 TwrHNQxxJdHe5gcN+8SsrU7j5IVjGvzgu0TvvCtCwx10WGhQV2WC7X0RBjUwt7mmkW
-	 QrW+7OO7oAR6TbKLfDGGroGrKflj6HdDOmsDI+WDwqsvxJ1lSRlNEGgINxLDJtrdcn
-	 mCX83JTYosnDUGW4HNpIM4CQupfp2bHWXNP6A/mSxhGuCW0yfzBc9iUhPsm14DKUiH
-	 wxQwbGJSDiGDg==
+	b=ESmPJunGKo+yuyT+lTgsSKQkXws5Oh5vtwZRmhalZJPGz9I7fqqA1b5qZVgeScorm
+	 7fiHrJE9BW5p5by+M6fn++6G8oZZp16w+p+0puAsBVg0drC36ANH0wqBpmez62KFz7
+	 U/2nXk7Bg7CokDrDbVCEGM9y1xZsPTIrn4rGMvVKsyY/RN5V/eRJjdoO4sF5ybqdzg
+	 vV9FGtZz+Co5iGC1twH5yDOfNG3gsXGQbIwjW0UUAnQOjQfGR/7Mg/JdUhfQSZT6zq
+	 P5kFUrMn3pteKxxx7JLw0nZPSPCdNyBhww+p+UUE0vQaNSi76MZXeSP7LDMP0778/m
+	 gn1No4pdI4JfQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9E57917E0EA4;
-	Mon, 10 Feb 2025 11:56:41 +0100 (CET)
-Message-ID: <b56a7597-fa39-4e02-b601-db05bfa48472@collabora.com>
-Date: Mon, 10 Feb 2025 11:56:40 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9548817E014F;
+	Mon, 10 Feb 2025 12:15:28 +0100 (CET)
+Message-ID: <98caee8a-b78e-4dcb-96d9-37fd4f279e68@collabora.com>
+Date: Mon, 10 Feb 2025 12:15:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw variants
- of bpi-r4
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <20250207135501.30741-1-linux@fw-web.de>
+Subject: Re: [PATCH v5 23/34] drm/mediatek: mtk_hdmi: Move output init to
+ mtk_hdmi_register_audio_driver()
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
+ =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
+ <20250113145232.227674-24-angelogioacchino.delregno@collabora.com>
+ <1d5a94f3b974d4617a58f2d9dfc54d5dc889f18a.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250207135501.30741-1-linux@fw-web.de>
+In-Reply-To: <1d5a94f3b974d4617a58f2d9dfc54d5dc889f18a.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_025643_881031_A3782F01 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20250210_031531_957250_F115E402 
+X-CRM114-Status: GOOD (  21.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,36 +98,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/02/25 14:54, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Il 07/02/25 06:46, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
 > 
-> Sinovoip has released other variants of Bananapi-R4 board.
-> The known changes affecting only the LAN SFP+ slot which is replaced
-> by a 2.5G phy with optional PoE.
+> On Mon, 2025-01-13 at 15:52 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> In preparation for moving the common bits of this driver, merge the
+>> contents of mtk_hdmi_output_init in mtk_hdmi_register_audio_driver
+>> function to aggregate all of the initial audio setup together in
+>> the same function and to make it clear that all of the setup that
+>> is performed in mtk_hdmi_output_init is specifically related only
+>> to audio and not video.
+>>
+>> While at it, also remove the "%s driver bound to HDMI" debugging
+>> print disguised as informative.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 28 ++++++++--------------------
+>>   1 file changed, 8 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> index e2393f7558f9..4345c91e92e7 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> @@ -1025,20 +1025,6 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
+>>          return 0;
+>>   }
+>>
+>> -static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
+>> -{
+>> -       struct hdmi_audio_param *aud_param = &hdmi->aud_param;
+>> -
+>> -       aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> -       aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> -       aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
+>> -       aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> -       aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
+>> -       aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> -
+>> -       return 0;
+>> -}
+>> -
+>>   static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
+>>   {
+>>          mtk_hdmi_hw_send_aud_packet(hdmi, true);
+>> @@ -1616,6 +1602,7 @@ static void mtk_hdmi_unregister_audio_driver(void *data)
+>>   static int mtk_hdmi_register_audio_driver(struct device *dev)
+>>   {
+>>          struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +       struct hdmi_audio_param *aud_param = &hdmi->aud_param;
+>>          struct hdmi_codec_pdata codec_data = {
+>>                  .ops = &mtk_hdmi_audio_codec_ops,
+>>                  .max_i2s_channels = 2,
+>> @@ -1625,6 +1612,13 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
+>>          };
+>>          int ret;
+>>
+>> +       aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> +       aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> +       aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
+>> +       aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> +       aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
+>> +       aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> +
+>>          hdmi->audio_pdev = platform_device_register_data(dev,
+>>                                                           HDMI_CODEC_DRV_NAME,
+>>                                                           PLATFORM_DEVID_AUTO,
+>> @@ -1638,7 +1632,6 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
+>>          if (ret)
+>>                  return ret;
+>>
+>> -       DRM_INFO("%s driver bound to HDMI\n", HDMI_CODEC_DRV_NAME);
 > 
-> As the SFP-Ports are not upstreamed yet this patch simply renames the
-> current board dts to dtsi, creating new dts for the board including
-> the new dtsi and move i2c-mux channel for sfp lan to board dts.
+> This modification is not related to the title. If necessary, separate this to another patch.
+> But I don't know why remove this. Could you explain more?
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-I understand what's going on, and I agree, but this change alone doesn't make a lot
-of sense, does it?
+It's a cleanup... if every driver in the kernel said "bound to" or "registered",
+the kernel log would be extremely long and unreadable... so that's why this print
+was removed.
 
-If I were to see a commit that moves everything in a dtsi, and justifies that by
-adding two dts for the two variants, though, things would be different.... :-)
+I can separate this to a different patch if you want, even though that'd be
+overkill, imo.
 
 Cheers,
 Angelo
 
-> ---
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 404 +-----------------
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 403 +++++++++++++++++
->   2 files changed, 407 insertions(+), 400 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> Regards,
+> CK
 > 
+>>          return 0;
+>>   }
+>>
+>> @@ -1667,11 +1660,6 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
+>>          mutex_init(&hdmi->update_plugged_status_lock);
+>>          platform_set_drvdata(pdev, hdmi);
+>>
+>> -       ret = mtk_hdmi_output_init(hdmi);
+>> -       if (ret)
+>> -               return dev_err_probe(dev, ret,
+>> -                                    "Failed to initialize hdmi output\n");
+>> -
+>>          ret = mtk_hdmi_register_audio_driver(dev);
+>>          if (ret)
+>>                  return dev_err_probe(dev, ret,
+>> --
+>> 2.47.0
+>>
+> 
+
 
