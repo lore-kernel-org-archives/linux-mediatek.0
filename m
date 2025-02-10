@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB0EC0219D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 13:22:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7115FC021A1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 13:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=; b=yAMA6q/D32/lGYgxWY8UY0GjvG
-	z3P0DoIcWl963Kp/A5ekexDd8xtP0AKrNIkfG9nSD4ryGJ/fpDGk6rmjmbxR/fsbGVArPjIZGLa4T
-	cPxkZkm07y3hcQROIfNF6ROrPImgkhrjsGhWqWqsqq1L0H4Eub+bndYPO3pmGR8843IMstcDzTo+D
-	1F7XaqUQyl66HildVhD23TR5Mu1kM5dMq2n8lm3hNr9RLdCiU5foLB+PnhQXvvjXcfPQ1JmuKofLM
-	zI1Ih2sQos9cF/alxbC+Okt1VzXlEEk06fehnOrlvhA1t91EoumP3+aMNzBK9Yn7wP5/o/3rNI5Bv
-	cPcUnNgw==;
+	bh=oK6wtvTaEd+SXRdZypndNe+C4kPnw1fsW71LVIJ2s+c=; b=nt4vV4SefUsdBYEGubHyp69jje
+	gWwiYu6UOvqjGRlz7p8pY05VeMLZc55dckyzV+sX4AYbiciIxJPv4oUuFb+tK0Qw/Eiqq3wa82zW+
+	HmZ9HFczCNoU0dprqA4NvDH8QziPqKGva0K1GI4f79DbtuIFVifGb/Vf4SgdIRWYLnFtUumzkZOIk
+	v/RYlJXZvc39c7zRDfaClponbwku/GY3KyekugJY23ROYJnm9V5mbMnUm4r0+gxQu/5fEMmaeEPka
+	D5UK20++MlUpaEtIx0NBJoNGRS9rKJVF2Me9P7zokKuIlkFb9sRkEgUjl/DfD5lVY/4KqLItCmsQA
+	TdxrOiRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTkJ-0000000HWkm-1JUK;
-	Mon, 10 Feb 2025 13:22:43 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1thU6C-000000000ru-26JV;
+	Mon, 10 Feb 2025 13:45:20 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTie-0000000HWGa-1fVk;
-	Mon, 10 Feb 2025 13:21:01 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-436284cdbe0so6420625e9.3;
-        Mon, 10 Feb 2025 05:20:59 -0800 (PST)
+	id 1thTpb-0000000HY4a-3aEf;
+	Mon, 10 Feb 2025 13:28:13 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-439490f5b7dso681425e9.2;
+        Mon, 10 Feb 2025 05:28:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739193658; x=1739798458; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1739194090; x=1739798890; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=;
-        b=bVwaaKadkWJqnR6tUeSXqaEtj4AheiaBvmPO3TWLXQV98ijA0BJk6S9yRGtCDeffVy
-         inuNyXsodHcUNi7JO0t+8tu/4bOPt4hcdN7LGVs+oia0rcSD1SE5zX2kQSHBvmsWYi5p
-         m27KND+f3LyObpdPfTUfLj077ExAVRhuqIGxys5JGYiLLqK+vEJb5UHWU5NCqRQDLa1O
-         4/l6nl/hhm5TVK0hQuv1am04yOyy1sb1RXah2nsNO+HcLlMXIgXlYj96zcWglAoOUi/E
-         mrKJCHkF/B7837eKh/LRwQbutmecRa9bJhnw94vmShxJA6M8KboH5L5cki1PFmRdkSH7
-         uwgQ==
+        bh=oK6wtvTaEd+SXRdZypndNe+C4kPnw1fsW71LVIJ2s+c=;
+        b=V/dY6y/O//O4nz9rk3+ta1Tq6tkGkGl4Nj3KkpIBfb3rUKKuL0+fyvsSppZZdHMGR3
+         je3eL26LlVFf1LukwnSe3w0Tacr9XhRC7NY8tqR0gzxyv3QLeVq3YfjJ/CrFS7wycyUo
+         ea+2bo58q7tCmTewcICT5ZktCX1LbghU8nxPFjGkP4u0UVKj9swfveQ6KR9YSsv9r9EM
+         mykxdpuu463WemZLpCjVbqm87j/WngeiVmfbUxrbYL9ya+gpX6i3SIrAWY0wT4rGejb3
+         AQUPLVzeJGHFbqvKb61HfF2i8uDiQ/L9qDZIqiRzSeh01WbkZ8jfonY80Lz8vBWXUY3z
+         XHOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739193658; x=1739798458;
+        d=1e100.net; s=20230601; t=1739194090; x=1739798890;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=;
-        b=JhQIC55R/kfrjK1PtRPOusZuJgt5LSG4ikd08Nz4J31+vNxxKIgkfwiLLDSr82wivW
-         rSjOvKoRt07Bu9f7m2LnAg0wNheoD4aKHckkIk4OqQZmTLnYXZfNxoTJapVYXBcWS5KV
-         X181iQvzpnUkbQapoU9RjYDQJ7ZxcCLzYM7ZHgYgSzZXtw0JmA9FmtT8SHPzbZZRihzj
-         CphJyxtv/y9eKHYOzawEN7kc4HP6X1aZ1a0fxR3Mb44M3ptTamjpCatLRG0eQvt+Za5c
-         eK3lmbsPx51PFgBcvYLTB+5fiP7+A3ATJRh7rQwTQ5k9t+c9Grm9ye2HgFG/t23NHwkJ
-         wv6w==
-X-Forwarded-Encrypted: i=1; AJvYcCVezNthZGQMB63CaNVwohgyAUoQYLHKleBxPlFLLv/a+WBCCsZmVczOOTpX0ko5w9RWbtCb1DeyGTNUUZZi7Hyc@lists.infradead.org, AJvYcCWWHNQADqEos0sB2RPqSffYzpsUsZuzA9RhQu/De2wfPtsWdQkJunrGQ/DIQOU6ZHfsRd6XYzjeftZEG7zVnoU=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yya1PdGa5RI0PV1iKW8sFqfvWfrdfWdGBAQiYBd13T0rfdO2MJ4
-	Mcv88GccjPfYlwHlLByoOcaXN8nQycCLa3rhg1skRR76Lfs9wAPO
-X-Gm-Gg: ASbGnctJ3K72iaxpAUiOFEm3NEk1GuVBHDn8nTxDFCxLYcwYZQbr8+O01utdY2wQrGs
-	aGBDY4VjV1AHvvoflreuER7YXNuHBZ+KikqFv3OGlJkVNIWoKw/CE2y0l+OoXFQfyvFWQ2rlK3k
-	kckhqiVmU+SiQzsFdRcthRn8HRIdSFEmkZIAjvt12lomv3uVxLqNemB0JLUz9mfg3cXzUDWFzjB
-	WQI2NbttVCeGUpvmCUORjn6dy9LOOiF8quS/CCV8gNl26YKT+hlFbAFxT0ssM80GedJqbU1zJI8
-	cmA=
-X-Google-Smtp-Source: AGHT+IHKAnx4OMOJyxd+FsV4Q2cMCuFMhriiOBiD/pKtcrVChJIsEdo0ysTRISiCt7SIXZmiHfdEkg==
-X-Received: by 2002:a05:600c:444a:b0:439:4b67:555f with SMTP id 5b1f17b1804b1-4394b67585fmr4261405e9.6.1739193658476;
-        Mon, 10 Feb 2025 05:20:58 -0800 (PST)
+        bh=oK6wtvTaEd+SXRdZypndNe+C4kPnw1fsW71LVIJ2s+c=;
+        b=YGb13hSn5ENpY92PE3PThDvCTvMb1U0Q4d0DhMTIZW8jWTaY8lXjx8Tn+tJxWRKTNA
+         DDQkxldvMr7TKvJAVYllG+WSnj58wXhk2yAMXTp9QK26N34D+3zcNFUn64weLjogaBH7
+         Qh86kKRihi7ovQLVBcISN0hbVDpfg/gIXfx6KDEJtZKDJ9pWcQFXxclCZtFPBuBzC7LO
+         vwO4ngIK1NaP/L3biABNh3jsYEUk/9oMC/IGIJnHdlu8Y7/I6WQLxFC9o8JDIC/1bAmW
+         c8417+5horFVzZu0zYqKsnbAiKxlhHRqRnhcJH0FmRtfacpA+zCtQ0dg36EEX0gJ697V
+         zt3w==
+X-Forwarded-Encrypted: i=1; AJvYcCUHrLMnVg9cJc/RoAA5uNBAzqk1xP/uplvnV2euDsLgvHUwUnPbB+8VJVoJTG59rQvo9i+im+21qU3ve7iUj0I=@lists.infradead.org, AJvYcCXXT5ZI4jDO929GmzUv/4GGpCsI/IHx4Ok9H3gbBF1IIfw1asFlN+vJqFd1JR1YMGU3fm6BkyTDsd8BOZaZJroB@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMKnAl8MG3kTSz4sv5sHcPVJIpfPf0mqoU2PL8ddezqfjFCK6p
+	2XdAAICcIz0zPKJA5Dy3b0cN5kfCurmVd0ESMCDqMggUW32PfJ4G
+X-Gm-Gg: ASbGnctElRBZbtpmzi89vKvgthipUgQ5Ot5QMsdusbX1hIjxRN+YHti0kpi9s+w/hu4
+	/9pSocFHMMMJqJ8KKbdoCgwGW34h33ZnvJi3qlIn9OAG9FZdfg4wduu+Q7d9FCPsuZqJG1Mqo8U
+	+ntnnJnwbh+wNKtDnpum2EuCf2LLNEHR6gozu7lAXILKNH5bxt3cefDsNd6nKGkMuo1iqRgH5vT
+	e6jm6t43/adlxo8Fmpkogo+rbejpZzYGAQO6N+wLGFM33nPWYIRb2/ZsgHfSFBmrTyD4mDKJ+xJ
+	LXM=
+X-Google-Smtp-Source: AGHT+IHNhPhl11CHj4a45PNKxZKnynVbzux780L09zjRvHkFs6XNbonfvQMbHlQqT/H3bN4FlF9GoA==
+X-Received: by 2002:a05:600c:46c7:b0:434:a30b:5433 with SMTP id 5b1f17b1804b1-43924b5dcdfmr45242695e9.5.1739194089779;
+        Mon, 10 Feb 2025 05:28:09 -0800 (PST)
 Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dd4764880sm6684638f8f.25.2025.02.10.05.20.56
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dc5839877sm10736992f8f.3.2025.02.10.05.28.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Feb 2025 05:20:57 -0800 (PST)
-Date: Mon, 10 Feb 2025 15:20:54 +0200
+        Mon, 10 Feb 2025 05:28:09 -0800 (PST)
+Date: Mon, 10 Feb 2025 15:28:06 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	"Chester A. Unal" <chester.a.unal@arinc9.com>,
@@ -82,18 +82,17 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
 	Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH net-next v3 1/3] net: phylink: provide
- phylink_mac_implements_lpi()
-Message-ID: <20250210132054.oaqb5mboh6qiixfv@skbuf>
+Subject: Re: [PATCH net-next v3 0/3] net: dsa: add support for phylink
+ managed EEE
+Message-ID: <20250210132806.djzhqgemh4egiz2w@skbuf>
 References: <Z6nWujbjxlkzK_3P@shell.armlinux.org.uk>
- <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
+In-Reply-To: <Z6nWujbjxlkzK_3P@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_052100_440402_F62431AB 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20250210_052811_919220_030FA922 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,47 +107,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 10, 2025 at 10:36:44AM +0000, Russell King (Oracle) wrote:
-> diff --git a/include/linux/phylink.h b/include/linux/phylink.h
-> index 898b00451bbf..0de78673172d 100644
-> --- a/include/linux/phylink.h
-> +++ b/include/linux/phylink.h
-> @@ -737,6 +737,18 @@ static inline int phylink_get_link_timer_ns(phy_interface_t interface)
->  	}
->  }
->  
-> +/**
-> + * phylink_mac_implements_lpi() - determine if MAC implements LPI ops
-> + * @ops: phylink_mac_ops structure
-> + *
-> + * Returns true if the phylink MAC operations structure indicates that the
-> + * LPI operations have been implemented, false otherwise.
+On Mon, Feb 10, 2025 at 10:36:42AM +0000, Russell King (Oracle) wrote:
+> Hi,
+> 
+> This series adds support for phylink managed EEE to DSA, and converts
+> mt753x to make use of this feature.
+> 
+> Patch 1 implements a helper to indicate whether the MAC LPI operations
+> are populated (suggested by Vladimir)
+> 
+> Patch 2 makes the necessary changes to the core code - we retain calling
+> set_mac_eee(), but this method now becomes a way to merely validate the
+> arguments when using phylink managed EEE rather than performing any
+> configuration.
+> 
+> Patch 3 converts the mt7530 driver to use phylink managed EEE.
+> 
+> v2: fix mt7530 build error
+> v3: send correct patch 2
+> 
+>  drivers/net/dsa/mt7530.c  | 68 ++++++++++++++++++++++++++++++++---------------
+>  drivers/net/phy/phylink.c |  3 +--
+>  include/linux/phylink.h   | 12 +++++++++
+>  net/dsa/user.c            | 21 +++++++++------
+>  4 files changed, 73 insertions(+), 31 deletions(-)
 
-This is something that I only noticed for v3 because I wanted to leave a
-review tag, so I first checked the status in patchwork, but there it says:
+Apart from the kernel-doc thing this looks fine to me. Please keep the
+tags in patches if there is a need to resend.
 
-include/linux/phylink.h:749: warning: No description found for return value of 'phylink_mac_implements_lpi'
-
-I am aware of this conversation from November where you raised the point
-about tooling being able to accept the syntax without the colon as well:
-https://lore.kernel.org/netdev/87v7wjffo6.fsf@trenco.lwn.net/
-
-but it looks like it didn't go anywhere, with Jon still preferring the
-strict syntax for now, and no follow-up that I can see. So, the current
-conventions are not these, and you haven't specifically said anywhere
-that you are deliberately ignoring them.
-
-In the end it's not something for me to decide, but I thought maybe I'm
-speeding things up a little bit by opening up the discussion now, rather
-than wait for a maintainer to look at it.
-
-> + */
-> +static inline bool phylink_mac_implements_lpi(const struct phylink_mac_ops *ops)
-> +{
-> +	return ops && ops->mac_disable_tx_lpi && ops->mac_enable_tx_lpi;
-> +}
-> +
->  void phylink_mii_c22_pcs_decode_state(struct phylink_link_state *state,
->  				      unsigned int neg_mode, u16 bmsr, u16 lpa);
->  void phylink_mii_c22_pcs_get_state(struct mdio_device *pcs,
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
