@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3B2C02198
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 14:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D65C02198
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 14:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xTLRAdkTuSFHJ+3Ve3ETh/yMvA+mR4ZXU9rR+ig+l60=; b=pRPw7sqjilEYf9vGU/CXdyqSkZ
-	jpRMVPKfEgJM3OsgsRQe+3qZ23cQQZVAUMEH+KPJ3W5jytIG8gsL3iNZ5OxxrlcCQ1PaFIqqqahvD
-	jhESl1Pm8/NToToO0b6HkFIPjBMLh9NnaqVHMtGG32WfVUKcvLR+bAt/Ot5XF8EWEfvh3mOqwx8ZJ
-	IsKnVBmjeY+VthjO1nncqyMiAAyfxhuMne9z5P0rbZhN2qbzUjRGHHjBUBe4yNUsNAI8cGyJzWT/4
-	7uy/QayVZGWOCxLepAST9dmFM8D34LpeM5vwNZbEa1v6oVciqOOny6fdVrSXxA9nyFPQuZnjpQI8K
-	rFEd9fBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IoB0EWW2RDZaUJiqYLd1EGoHFiBhYJK8r8MHAwgkWuw=; b=mp0ZAKBLpwsgNno1LHAfIY8kr0
+	EHutJziVC1dHIjmwog81nVu1mQtUIDuvn+faOz/YS1b3zpoHQrbhfxpUdaeTdDplHqZNfzFy/epXP
+	62OpNHUk48tNrtoDJSlFC9HiEOzPIj1ijLzyJx/BAffTlNdoa/qo6SOVS15UbN35R2L84W6dngii4
+	cZ3sC+nAyrh+8pl1lXgOolAR+nIlmrMwGl+3NX6K7wkZBA/RoniLE5VH2I0XU7W413Ez69LqHcWHn
+	TdF+iaGc3yqIPxdXYxpyDl57BICNWn0zWJ0posl+6C+nrEei86NkcXVl2lhAkIW4xZL9jPdlqoGN4
+	lnV+LqVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUNZ-000000003j0-15qH;
-	Mon, 10 Feb 2025 14:03:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1thUSo-000000004eM-15Vt;
+	Mon, 10 Feb 2025 14:08:42 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thULv-000000003S7-1bdO;
-	Mon, 10 Feb 2025 14:01:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739196093;
-	bh=kPze+pNQzUNpjNT8GEkxqP89h6kiJEF9oU3AtIW6GJ0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=O1az4Imi7vbK17ebnEZtl4LDIpkzxnqo8kHLyjUQYOdnNOH7h73+Yd/aL4PQjLM2b
-	 CJqv1y6Y+MPP6WEBojc5j8KMsXP8FXPQNdpuo97+aElvlLYuJjMN60D7mOFuszp9qj
-	 WlpJUBiKyQZs8UCycYpE5Wa+RFYuXMMz0IC3CSneoXueXTmm8R7AtgwVT5Krw24gmg
-	 BbTO+YSMIt3krTefnDzKh10veVZ3xlVoNmkoibT4hLI/09ajpxHk2UNwm3e/CUfkW+
-	 bBsDkQ8Pt3N63Me0HJMkJeW+yD+77g5xKyH6xQWGED1MZUT7RLvgcYE93WSV001l9X
-	 L7rosibweWwkA==
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0C4A317E0B59;
-	Mon, 10 Feb 2025 15:01:32 +0100 (CET)
-Date: Mon, 10 Feb 2025 15:01:25 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Florent Tomasin <florent.tomasin@arm.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Steven
- Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Sumit Semwal
- <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
- <dmaengine@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-media@vger.kernel.org>, <linaro-mm-sig@lists.linaro.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <nd@arm.com>, Akash Goel
- <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 5/5] drm/panthor: Add support for entering and
- exiting protected mode
-Message-ID: <20250210150125.3da7bcf5@collabora.com>
-In-Reply-To: <d41f08f356d9fa01f497e8b8f95f1bed069be464.1738228114.git.florent.tomasin@arm.com>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
-	<d41f08f356d9fa01f497e8b8f95f1bed069be464.1738228114.git.florent.tomasin@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1thUQQ-00000000490-1x4r;
+	Mon, 10 Feb 2025 14:06:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=IoB0EWW2RDZaUJiqYLd1EGoHFiBhYJK8r8MHAwgkWuw=; b=V+TIswjDzP474U55wenzHJBHaU
+	I7bVlVRKEZYOxz4+ozjuh0ic6srYPKzMs2BpF4V9QaKdFqmRCQ0syBWBHi389hqnAzl3QzvGGuxrN
+	Y6N4HhmQj/iits0ndz6xaGAXkoGpbXMHGS6O89ZM2uqIH1Hq81y2604BLxmLE28s2s0bDB5J3P+Yh
+	/nNxjmzIQ5dYHc+e2oK6M8oWSme8N4S1ab6YHPCjibgdQNZrxYOZbDQrL4G4XV8+OjijAKa/WjLLI
+	nVpNrQuIn8ULwKuv4BRe23J+3e572a9G63H6PAa3Xm2ptrDVEkNsneaKSBxe6IPLja+c6DyAQZe5a
+	eE0iPPIg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57222)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1thUQE-00075e-35;
+	Mon, 10 Feb 2025 14:06:03 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1thUQA-0007Y7-0X;
+	Mon, 10 Feb 2025 14:05:58 +0000
+Date: Mon, 10 Feb 2025 14:05:58 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Simon Horman <horms@kernel.org>
+Subject: Re: [PATCH net-next v3 1/3] net: phylink: provide
+ phylink_mac_implements_lpi()
+Message-ID: <Z6oHxrtBHAvaMqd3@shell.armlinux.org.uk>
+References: <Z6nWujbjxlkzK_3P@shell.armlinux.org.uk>
+ <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
+ <20250210132054.oaqb5mboh6qiixfv@skbuf>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250210132054.oaqb5mboh6qiixfv@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_060135_729298_32FAC875 
-X-CRM114-Status: GOOD (  54.28  )
+X-CRM114-CacheID: sfid-20250210_060614_502509_CC1D15BD 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,360 +91,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 30 Jan 2025 13:09:01 +0000
-Florent Tomasin <florent.tomasin@arm.com> wrote:
-
-> This patch modifies the Panthor driver code to allow handling
-> of the GPU HW protected mode enter and exit.
+On Mon, Feb 10, 2025 at 03:20:54PM +0200, Vladimir Oltean wrote:
+> On Mon, Feb 10, 2025 at 10:36:44AM +0000, Russell King (Oracle) wrote:
+> > diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+> > index 898b00451bbf..0de78673172d 100644
+> > --- a/include/linux/phylink.h
+> > +++ b/include/linux/phylink.h
+> > @@ -737,6 +737,18 @@ static inline int phylink_get_link_timer_ns(phy_interface_t interface)
+> >  	}
+> >  }
+> >  
+> > +/**
+> > + * phylink_mac_implements_lpi() - determine if MAC implements LPI ops
+> > + * @ops: phylink_mac_ops structure
+> > + *
+> > + * Returns true if the phylink MAC operations structure indicates that the
+> > + * LPI operations have been implemented, false otherwise.
 > 
-> The logic added by this patch only includes the mechanisms
-> needed for entering and exiting protected mode. The submission of
-> a protected mode jobs is not covered by this patch series
-> and is responsibility of the user space program.
+> This is something that I only noticed for v3 because I wanted to leave a
+> review tag, so I first checked the status in patchwork, but there it says:
 > 
-> To help with the review, here are some important information
-> about Mali GPU protected mode enter and exit:
-> - When the GPU detects a protected mode job needs to be
->   executed, an IRQ is sent to the CPU to notify the kernel
->   driver that the job is blocked until the GPU has entered
->   protected mode. The entering of protected mode is controlled
->   by the kernel driver.
-> - The Mali Panthor CSF driver will schedule a tick and evaluate
->   which CS in the CSG to schedule on slot needs protected mode.
->   If the priority of the CSG is not sufficiently high, the
->   protected mode job will not progress until the CSG is
->   scheduled at top priority.
-> - The Panthor scheduler notifies the GPU that the blocked
->   protected jobs will soon be able to progress.
-> - Once all CSG and CS slots are updated, the scheduler
->   requests the GPU to enter protected mode and waits for
->   it to be acknowledged.
-> - If successful, all protected mode jobs will resume execution
->   while normal mode jobs block until the GPU exits
->   protected mode, or the kernel driver rotates the CSGs
->   and forces the GPU to exit protected mode.
-> - If unsuccessful, the scheduler will request a GPU reset.
-> - When a protected mode job is suspended as a result of
->   the CSGs rotation, the GPU will send an IRQ to the CPU
->   to notify that the protected mode job needs to resume.
+> include/linux/phylink.h:749: warning: No description found for return value of 'phylink_mac_implements_lpi'
 > 
-> This sequence will continue so long the user space is
-> submitting protected mode jobs.
+> I am aware of this conversation from November where you raised the point
+> about tooling being able to accept the syntax without the colon as well:
+> https://lore.kernel.org/netdev/87v7wjffo6.fsf@trenco.lwn.net/
 > 
-> Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
-> ---
->  drivers/gpu/drm/panthor/panthor_device.h |   3 +
->  drivers/gpu/drm/panthor/panthor_fw.c     |  10 +-
->  drivers/gpu/drm/panthor/panthor_sched.c  | 119 +++++++++++++++++++++--
->  3 files changed, 122 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.h b/drivers/gpu/drm/panthor/panthor_device.h
-> index 406de9e888e2..0c76bfd392a0 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.h
-> +++ b/drivers/gpu/drm/panthor/panthor_device.h
-> @@ -196,6 +196,9 @@ struct panthor_device {
->  	struct {
->  		/** @heap: Pointer to the protected heap */
->  		struct dma_heap *heap;
-> +
-> +		/** @pending: Set to true if a protected mode enter request is pending. */
-> +		bool pending;
+> but it looks like it didn't go anywhere, with Jon still preferring the
+> strict syntax for now, and no follow-up that I can see. So, the current
+> conventions are not these, and you haven't specifically said anywhere
+> that you are deliberately ignoring them.
 
-If this is only used by panthor_sched.c, I'd be tempted to keep that in
-the panthor_scheduler struct.
+It was explained in this email as part of that thread:
 
->  	} protm;
->  };
->  
-> diff --git a/drivers/gpu/drm/panthor/panthor_fw.c b/drivers/gpu/drm/panthor/panthor_fw.c
-> index 7822af1533b4..2006d652f4db 100644
-> --- a/drivers/gpu/drm/panthor/panthor_fw.c
-> +++ b/drivers/gpu/drm/panthor/panthor_fw.c
-> @@ -1025,13 +1025,19 @@ static void panthor_fw_init_global_iface(struct panthor_device *ptdev)
->  	glb_iface->input->progress_timer = PROGRESS_TIMEOUT_CYCLES >> PROGRESS_TIMEOUT_SCALE_SHIFT;
->  	glb_iface->input->idle_timer = panthor_fw_conv_timeout(ptdev, IDLE_HYSTERESIS_US);
->  
-> -	/* Enable interrupts we care about. */
-> +	/* Enable interrupts we care about.
-> +	 *
-> +	 * GLB_PROTM_ENTER and GLB_PROTM_EXIT interrupts are only
-> +	 * relevant if a protected memory heap is present.
-> +	 */
->  	glb_iface->input->ack_irq_mask = GLB_CFG_ALLOC_EN |
->  					 GLB_PING |
->  					 GLB_CFG_PROGRESS_TIMER |
->  					 GLB_CFG_POWEROFF_TIMER |
->  					 GLB_IDLE_EN |
-> -					 GLB_IDLE;
-> +					 GLB_IDLE |
-> +					 (ptdev->protm.heap ?
-> +					 (GLB_PROTM_ENTER | GLB_PROTM_EXIT) : 0);
+https://lore.kernel.org/netdev/ZzjHH-L-ylLe0YhU@shell.armlinux.org.uk/
 
-How about we keep things simple and unconditionally enable the PROTM
-interrupts? If the group doesn't support protected mode, it should
-generate PROTM events anyway. And if it does, we probably want to know
-and kill the group immediately.
+The reason is that it goes against natural grammar. The only time that
+"Returns:" would make sense in grammar is when listing with e.g. a
+bulleted list, where the part before the colon doesn't have to be a
+complete sentence.
 
->  
->  	panthor_fw_update_reqs(glb_iface, req, GLB_IDLE_EN, GLB_IDLE_EN);
->  	panthor_fw_toggle_reqs(glb_iface, req, ack,
-> diff --git a/drivers/gpu/drm/panthor/panthor_sched.c b/drivers/gpu/drm/panthor/panthor_sched.c
-> index e260ed8aef5b..c10a21f9d075 100644
-> --- a/drivers/gpu/drm/panthor/panthor_sched.c
-> +++ b/drivers/gpu/drm/panthor/panthor_sched.c
-> @@ -573,6 +573,9 @@ struct panthor_group {
->  	/** @fatal_queues: Bitmask reflecting the queues that hit a fatal exception. */
->  	u32 fatal_queues;
->  
-> +	/** @protm_queues: Bitmask reflecting the queues that are waiting on a CS_PROTM_PENDING. */
-> +	u32 protm_queues;
+This is why it's going to be an uphill battle - grammatically it is
+wrong, and thus it doesn't flow when thinking about documenting the
+return value.
 
-How about protm_pending_queues or protm_pending_mask, otherwise
-it gets confusing. I initially thought it was a mask encoding the CS
-that are in protected mode, but the bit is cleared as soon as we
-acknowledge a request. BTW, what happens when we resume a CS that was
-suspended inside a protected section? Do we get a new PROTM_PEND event?
+If we want to go to a bulleted list, then it will be natural to add
+the colon.
 
-I feel like the whole sequence and corner cases should be documented
-somewhere in the code, because it's not obvious.
+I'm not going to explain to this level of detail in every email, and
+because of the grammatical nature of this, it's going to be very
+difficult to use a form that goes against proper grammar.
 
-> +
->  	/** @tiler_oom: Mask of queues that have a tiler OOM event to process. */
->  	atomic_t tiler_oom;
->  
-> @@ -870,6 +873,31 @@ panthor_queue_get_syncwait_obj(struct panthor_group *group, struct panthor_queue
->  	return NULL;
->  }
->  
-> +static int glb_protm_enter(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_fw_global_iface *glb_iface;
-> +	u32 acked;
-> +	int ret;
-> +
-> +	lockdep_assert_held(&ptdev->scheduler->lock);
-> +
-> +	if (!ptdev->protm.pending)
-> +		return 0;
-> +
-> +	glb_iface = panthor_fw_get_glb_iface(ptdev);
-> +
-> +	panthor_fw_toggle_reqs(glb_iface, req, ack, GLB_PROTM_ENTER);
-> +	gpu_write(ptdev, CSF_DOORBELL(CSF_GLB_DOORBELL_ID), 1);
-> +
-> +	ret = panthor_fw_glb_wait_acks(ptdev, GLB_PROTM_ENTER, &acked, 4000);
-> +	if (ret)
-> +		drm_err(&ptdev->base, "FW protm enter timeout, scheduling a reset");
-> +	else
-> +		ptdev->protm.pending = false;
-> +
-> +	return ret;
-> +}
-> +
->  static void group_free_queue(struct panthor_group *group, struct panthor_queue *queue)
->  {
->  	if (IS_ERR_OR_NULL(queue))
-> @@ -1027,6 +1055,7 @@ group_unbind_locked(struct panthor_group *group)
->   * @ptdev: Device.
->   * @csg_id: Group slot ID.
->   * @cs_id: Queue slot ID.
-> + * @protm_ack: Acknowledge pending protected mode queues
->   *
->   * Program a queue slot with the queue information so things can start being
->   * executed on this queue.
-> @@ -1034,10 +1063,13 @@ group_unbind_locked(struct panthor_group *group)
->   * The group slot must have a group bound to it already (group_bind_locked()).
->   */
->  static void
-> -cs_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 cs_id)
-> +cs_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 cs_id, bool protm_ack)
->  {
-> -	struct panthor_queue *queue = ptdev->scheduler->csg_slots[csg_id].group->queues[cs_id];
-> +	struct panthor_group * const group = ptdev->scheduler->csg_slots[csg_id].group;
-> +	struct panthor_queue *queue = group->queues[cs_id];
->  	struct panthor_fw_cs_iface *cs_iface = panthor_fw_get_cs_iface(ptdev, csg_id, cs_id);
-> +	u32 const cs_protm_pending_mask =
-> +		protm_ack && (group->protm_queues & BIT(cs_id)) ? CS_PROTM_PENDING : 0;
->  
->  	lockdep_assert_held(&ptdev->scheduler->lock);
->  
-> @@ -1055,15 +1087,22 @@ cs_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 cs_id)
->  			       CS_IDLE_SYNC_WAIT |
->  			       CS_IDLE_EMPTY |
->  			       CS_STATE_START |
-> -			       CS_EXTRACT_EVENT,
-> +			       CS_EXTRACT_EVENT |
-> +			       cs_protm_pending_mask,
->  			       CS_IDLE_SYNC_WAIT |
->  			       CS_IDLE_EMPTY |
->  			       CS_STATE_MASK |
-> -			       CS_EXTRACT_EVENT);
-> +			       CS_EXTRACT_EVENT |
-> +			       CS_PROTM_PENDING);
->  	if (queue->iface.input->insert != queue->iface.input->extract && queue->timeout_suspended) {
->  		drm_sched_resume_timeout(&queue->scheduler, queue->remaining_time);
->  		queue->timeout_suspended = false;
->  	}
-> +
-> +	if (cs_protm_pending_mask) {
-> +		group->protm_queues &= ~BIT(cs_id);
-> +		ptdev->protm.pending = true;
-> +	}
->  }
->  
->  /**
-> @@ -1274,7 +1313,7 @@ csg_slot_sync_state_locked(struct panthor_device *ptdev, u32 csg_id)
->  }
->  
->  static int
-> -csg_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 priority)
-> +csg_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 priority, bool protm_ack)
->  {
->  	struct panthor_fw_csg_iface *csg_iface;
->  	struct panthor_csg_slot *csg_slot;
-> @@ -1291,14 +1330,14 @@ csg_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 priority)
->  
->  	csg_slot = &ptdev->scheduler->csg_slots[csg_id];
->  	group = csg_slot->group;
-> -	if (!group || group->state == PANTHOR_CS_GROUP_ACTIVE)
-> +	if (!group || (group->state == PANTHOR_CS_GROUP_ACTIVE && !protm_ack))
->  		return 0;
->  
->  	csg_iface = panthor_fw_get_csg_iface(group->ptdev, csg_id);
->  
->  	for (i = 0; i < group->queue_count; i++) {
->  		if (group->queues[i]) {
-> -			cs_slot_prog_locked(ptdev, csg_id, i);
-> +			cs_slot_prog_locked(ptdev, csg_id, i, protm_ack);
->  			queue_mask |= BIT(i);
->  		}
->  	}
-> @@ -1329,6 +1368,34 @@ csg_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 priority)
->  	return 0;
->  }
->  
-> +static void
-> +cs_slot_process_protm_pending_event_locked(struct panthor_device *ptdev,
-> +					   u32 csg_id, u32 cs_id)
-> +{
-> +	struct panthor_scheduler *sched = ptdev->scheduler;
-> +	struct panthor_csg_slot *csg_slot = &sched->csg_slots[csg_id];
-> +	struct panthor_group *group = csg_slot->group;
-> +
-> +	lockdep_assert_held(&sched->lock);
-> +
-> +	if (!group)
-> +		return;
-> +
-> +	/* No protected memory heap, a user space program tried to
-> +	 * submit a protected mode jobs resulting in the GPU raising
-> +	 * a CS_PROTM_PENDING request.
-> +	 *
-> +	 * This scenario is invalid and the protected mode jobs must
-> +	 * not be allowed to progress.
-> +	 */
-> +	if (drm_WARN_ON_ONCE(&ptdev->base, !ptdev->protm.heap))
-> +		return;
-> +
-> +	group->protm_queues |= BIT(cs_id);
-> +
-> +	sched_queue_delayed_work(sched, tick, 0);
-> +}
-> +
->  static void
->  cs_slot_process_fatal_event_locked(struct panthor_device *ptdev,
->  				   u32 csg_id, u32 cs_id)
-> @@ -1566,6 +1633,9 @@ static bool cs_slot_process_irq_locked(struct panthor_device *ptdev,
->  	if (events & CS_TILER_OOM)
->  		cs_slot_process_tiler_oom_event_locked(ptdev, csg_id, cs_id);
->  
-> +	if (events & CS_PROTM_PENDING)
-> +		cs_slot_process_protm_pending_event_locked(ptdev, csg_id, cs_id);
-> +
->  	/* We don't acknowledge the TILER_OOM event since its handling is
->  	 * deferred to a separate work.
->  	 */
-> @@ -1703,6 +1773,17 @@ static void sched_process_idle_event_locked(struct panthor_device *ptdev)
->  	sched_queue_delayed_work(ptdev->scheduler, tick, 0);
->  }
->  
-> +static void sched_process_protm_exit_event_locked(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_fw_global_iface *glb_iface = panthor_fw_get_glb_iface(ptdev);
-> +
-> +	lockdep_assert_held(&ptdev->scheduler->lock);
-> +
-> +	/* Acknowledge the protm exit and schedule a tick. */
-> +	panthor_fw_update_reqs(glb_iface, req, glb_iface->output->ack, GLB_PROTM_EXIT);
-
-I would keep this ack in panthor_fw.c (just like I would keep the enter
-handler at the _fw.c level).
-
-> +	sched_queue_delayed_work(ptdev->scheduler, tick, 0);
-> +}
-> +
->  /**
->   * sched_process_global_irq_locked() - Process the scheduling part of a global IRQ
->   * @ptdev: Device.
-> @@ -1720,6 +1801,9 @@ static void sched_process_global_irq_locked(struct panthor_device *ptdev)
->  
->  	if (evts & GLB_IDLE)
->  		sched_process_idle_event_locked(ptdev);
-> +
-> +	if (evts & GLB_PROTM_EXIT)
-> +		sched_process_protm_exit_event_locked(ptdev);
->  }
->  
->  static void process_fw_events_work(struct work_struct *work)
-> @@ -2238,9 +2322,22 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
->  		list_for_each_entry(group, &ctx->groups[prio], run_node) {
->  			int csg_id = group->csg_id;
->  			struct panthor_fw_csg_iface *csg_iface;
-> +			bool protm_ack = false;
-> +
-> +			/* The highest priority group has pending protected mode queues */
-> +			if (new_csg_prio == MAX_CSG_PRIO && group->protm_queues)
-> +				protm_ack = true;
-
-I'd rather have an `enter_protm` field added to panthor_sched_tick_ctx,
-and then have this ctx passed to csg_slot_prog_locked() so they can
-check themselves if they need to ack PROTM requests.
-
->  
->  			if (csg_id >= 0) {
->  				new_csg_prio--;
-> +
-> +				/* This group is on slot but at least one queue
-> +				 * is waiting for PROTM_ENTER.
-> +				 */
-> +				if (protm_ack)
-> +					csg_slot_prog_locked(ptdev, csg_id,
-> +							     new_csg_prio, protm_ack);
-> +
->  				continue;
->  			}
->  
-> @@ -2251,7 +2348,7 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
->  			csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
->  			csg_slot = &sched->csg_slots[csg_id];
->  			group_bind_locked(group, csg_id);
-> -			csg_slot_prog_locked(ptdev, csg_id, new_csg_prio--);
-> +			csg_slot_prog_locked(ptdev, csg_id, new_csg_prio--, protm_ack);
->  			csgs_upd_ctx_queue_reqs(ptdev, &upd_ctx, csg_id,
->  						group->state == PANTHOR_CS_GROUP_SUSPENDED ?
->  						CSG_STATE_RESUME : CSG_STATE_START,
-> @@ -2303,6 +2400,12 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
->  
->  	sched->used_csg_slot_count = ctx->group_count;
->  	sched->might_have_idle_groups = ctx->idle_group_count > 0;
-> +
-> +	ret = glb_protm_enter(ptdev);
-> +	if (ret) {
-> +		panthor_device_schedule_reset(ptdev);
-> +		ctx->csg_upd_failed_mask = U32_MAX;
-> +	}
->  }
->  
->  static u64
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
