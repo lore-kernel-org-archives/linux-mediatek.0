@@ -4,92 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC2BAC0219E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 12:59:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB0EC0219D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 13:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3mTGFzTWHveCEIuDfSBcwTGP4FJ6Gf4w5lufq1wRrVY=; b=yl78TjcOwe8joDMQxLgOcf1FoO
-	sq37tswREvtQBjIh9okjwVYXuw5faBL4aG27Jgu/1Lwz4aAstnDCFZM6J2YgZt5WqRUk1nF7wryYQ
-	MDGb6YtArz2QpTBvtxz7bg3Al2AaLyIuM6TPwggT5OgQAG8ZYqA8+zi8EnCouFwpb+MSWv86qhWf3
-	n6KnEVICPWM25OBi1D796factrD/3SK2w02rc5h6Pox+LETQ6V14xOIw8IDkIhe2tQokYLVRBlE02
-	F9tK3z7fJcy4q0Q4sjvV40rHc545loLVK/t6acH1GolynDWjskSXrU/Qi6X7HNWregWRKUEOG/jXu
-	Hqrfen4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=; b=yAMA6q/D32/lGYgxWY8UY0GjvG
+	z3P0DoIcWl963Kp/A5ekexDd8xtP0AKrNIkfG9nSD4ryGJ/fpDGk6rmjmbxR/fsbGVArPjIZGLa4T
+	cPxkZkm07y3hcQROIfNF6ROrPImgkhrjsGhWqWqsqq1L0H4Eub+bndYPO3pmGR8843IMstcDzTo+D
+	1F7XaqUQyl66HildVhD23TR5Mu1kM5dMq2n8lm3hNr9RLdCiU5foLB+PnhQXvvjXcfPQ1JmuKofLM
+	zI1Ih2sQos9cF/alxbC+Okt1VzXlEEk06fehnOrlvhA1t91EoumP3+aMNzBK9Yn7wP5/o/3rNI5Bv
+	cPcUnNgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTOE-0000000HTdh-0Dfd;
-	Mon, 10 Feb 2025 12:59:54 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1thTkJ-0000000HWkm-1JUK;
+	Mon, 10 Feb 2025 13:22:43 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTHR-0000000HSV7-1A0o;
-	Mon, 10 Feb 2025 12:52:55 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-21f4500a5c3so81634495ad.3;
-        Mon, 10 Feb 2025 04:52:52 -0800 (PST)
+	id 1thTie-0000000HWGa-1fVk;
+	Mon, 10 Feb 2025 13:21:01 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-436284cdbe0so6420625e9.3;
+        Mon, 10 Feb 2025 05:20:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739191972; x=1739796772; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=3mTGFzTWHveCEIuDfSBcwTGP4FJ6Gf4w5lufq1wRrVY=;
-        b=PWtFl8G01Po5j7H7niogHhcOxGOiGq/YMW/4bQW5e6jMa5oymIR3N+pMcamtTG3YM1
-         z83ZOTtVnfagmp6vREn7GaCjt2YK4RFTn3uuDWnSN9KHTmPTOeRndqt/BIiOVTI2hn1u
-         uYEbWaICwgQszByrTHG3+WCUydsmBLa59vanox9WAeazhbnD1vOiYEWLB4YawGreghXH
-         r1UZTsplu18Ud8f6G7mG38eGoqdTpSCHJRbQmbY8NnmS2LbsgfX6gQo06PbNoc1M2Tlx
-         jy1EJgm+q0f3iB7a0OXn5PDAck/JW9tSxl406oDo8JwEAF9kBhXXINGl4JEU7jDe1i5/
-         HIhg==
+        d=gmail.com; s=20230601; t=1739193658; x=1739798458; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=;
+        b=bVwaaKadkWJqnR6tUeSXqaEtj4AheiaBvmPO3TWLXQV98ijA0BJk6S9yRGtCDeffVy
+         inuNyXsodHcUNi7JO0t+8tu/4bOPt4hcdN7LGVs+oia0rcSD1SE5zX2kQSHBvmsWYi5p
+         m27KND+f3LyObpdPfTUfLj077ExAVRhuqIGxys5JGYiLLqK+vEJb5UHWU5NCqRQDLa1O
+         4/l6nl/hhm5TVK0hQuv1am04yOyy1sb1RXah2nsNO+HcLlMXIgXlYj96zcWglAoOUi/E
+         mrKJCHkF/B7837eKh/LRwQbutmecRa9bJhnw94vmShxJA6M8KboH5L5cki1PFmRdkSH7
+         uwgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739191972; x=1739796772;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3mTGFzTWHveCEIuDfSBcwTGP4FJ6Gf4w5lufq1wRrVY=;
-        b=qjASM3n9+iaViSuVvTul1ezDWhJEJTSld9o89zgLy43acRTcB6MysoTiOHsY/4nBdW
-         2SHm/hNlfbEDAun54zGZZtYgFrIBJasTq3NYPxuVbYtuZkiw7MVCzLDkFwC/JHuEeE6K
-         HFwCTPeL4X/KPebCuWj5NZU2RiD2cw+jkzUvsWh0zOoYkYA1ReaLVKHaEiAJV9x5E7dC
-         YhmZCbQbV+fkpPIrpixuKPXV0aSmh46ovCoN4VTghfOP+VxW/mCHTPFEdgHJw891fzO7
-         r1d+Ad8wL3aTNjEHhQ6k4U3q1llGx52UUjIFFSKUtZ3vVV9Xtf7KWEi+6lgdJVay+BDC
-         g8mg==
-X-Forwarded-Encrypted: i=1; AJvYcCVPkJzhafvM7y374lpB525HzzWq2PZ0cYkG9JVB8wX5nIdkojFvT3FS9kY0BLMKOTxbgLHO5GQkUCmDEuxfMmE=@lists.infradead.org, AJvYcCXnd9rDUVwi6G2m7VfwcUAb4IXYVIiUhRkVLHgbmOr2EnTek5Onrml90d6sCFwrsv2hugr14GObDu73mneDT2Js@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxl7NNenGxA+QcBwvTAu+G+MCl3RZphn45CoQ22JILrKMe+Dbgx
-	nammimQCuSxUVf7ki+OqTtypW8IA3mP6WI68z/U3e4KMSqaiYIPy
-X-Gm-Gg: ASbGncsnBVzVDS/8HCE18dmOxcxAtY5AlVp8DVZE2AJWc5u7LPqEgReQusdeher8yPM
-	B8NOre1cQpRyTYH5hP/LdeZ74wZZPVaeTkqzv9J+Ab+sAjYfeH8iyLdh2HmpFuCZfpG5W1gfC0M
-	ACUzd5IdYiKgk+XMSEnN8e9a22oVVz2jF1JWM6szPoPTecmlcA08y9pTKN5mnALPNgeP8B02CuM
-	G+W53X+d+TL+nak4uM+woe7ZH4SWl6Hv/jAJTeAuObiEFLE7MHGe5a4w3uNC/tUvjV4WxNYAj7A
-	agKPaHpq
-X-Google-Smtp-Source: AGHT+IFY/eAAJFcD4vitGkVHUca2pVMuKjtQU6WUb3jtGtjhnnqqn/1iKAiFbhnjbTQxyI8lnuDV3w==
-X-Received: by 2002:a05:6a21:8cc2:b0:1e1:a9dd:5a58 with SMTP id adf61e73a8af0-1ee03b129eemr26979741637.30.1739191972089;
-        Mon, 10 Feb 2025 04:52:52 -0800 (PST)
-Received: from gmail.com ([116.237.135.88])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-730851fa25bsm2641825b3a.180.2025.02.10.04.52.48
+        d=1e100.net; s=20230601; t=1739193658; x=1739798458;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IR1STzBHWflyOdMHe8euRfwJ+fzKwFGSyoXduLUKaJw=;
+        b=JhQIC55R/kfrjK1PtRPOusZuJgt5LSG4ikd08Nz4J31+vNxxKIgkfwiLLDSr82wivW
+         rSjOvKoRt07Bu9f7m2LnAg0wNheoD4aKHckkIk4OqQZmTLnYXZfNxoTJapVYXBcWS5KV
+         X181iQvzpnUkbQapoU9RjYDQJ7ZxcCLzYM7ZHgYgSzZXtw0JmA9FmtT8SHPzbZZRihzj
+         CphJyxtv/y9eKHYOzawEN7kc4HP6X1aZ1a0fxR3Mb44M3ptTamjpCatLRG0eQvt+Za5c
+         eK3lmbsPx51PFgBcvYLTB+5fiP7+A3ATJRh7rQwTQ5k9t+c9Grm9ye2HgFG/t23NHwkJ
+         wv6w==
+X-Forwarded-Encrypted: i=1; AJvYcCVezNthZGQMB63CaNVwohgyAUoQYLHKleBxPlFLLv/a+WBCCsZmVczOOTpX0ko5w9RWbtCb1DeyGTNUUZZi7Hyc@lists.infradead.org, AJvYcCWWHNQADqEos0sB2RPqSffYzpsUsZuzA9RhQu/De2wfPtsWdQkJunrGQ/DIQOU6ZHfsRd6XYzjeftZEG7zVnoU=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yya1PdGa5RI0PV1iKW8sFqfvWfrdfWdGBAQiYBd13T0rfdO2MJ4
+	Mcv88GccjPfYlwHlLByoOcaXN8nQycCLa3rhg1skRR76Lfs9wAPO
+X-Gm-Gg: ASbGnctJ3K72iaxpAUiOFEm3NEk1GuVBHDn8nTxDFCxLYcwYZQbr8+O01utdY2wQrGs
+	aGBDY4VjV1AHvvoflreuER7YXNuHBZ+KikqFv3OGlJkVNIWoKw/CE2y0l+OoXFQfyvFWQ2rlK3k
+	kckhqiVmU+SiQzsFdRcthRn8HRIdSFEmkZIAjvt12lomv3uVxLqNemB0JLUz9mfg3cXzUDWFzjB
+	WQI2NbttVCeGUpvmCUORjn6dy9LOOiF8quS/CCV8gNl26YKT+hlFbAFxT0ssM80GedJqbU1zJI8
+	cmA=
+X-Google-Smtp-Source: AGHT+IHKAnx4OMOJyxd+FsV4Q2cMCuFMhriiOBiD/pKtcrVChJIsEdo0ysTRISiCt7SIXZmiHfdEkg==
+X-Received: by 2002:a05:600c:444a:b0:439:4b67:555f with SMTP id 5b1f17b1804b1-4394b67585fmr4261405e9.6.1739193658476;
+        Mon, 10 Feb 2025 05:20:58 -0800 (PST)
+Received: from skbuf ([86.127.124.81])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dd4764880sm6684638f8f.25.2025.02.10.05.20.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Feb 2025 04:52:51 -0800 (PST)
-From: Qingfang Deng <dqfext@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+        Mon, 10 Feb 2025 05:20:57 -0800 (PST)
+Date: Mon, 10 Feb 2025 15:20:54 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
 	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v2] net: ethernet: mediatek: add EEE support
-Date: Mon, 10 Feb 2025 20:52:45 +0800
-Message-ID: <20250210125246.1950142-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Simon Horman <horms@kernel.org>
+Subject: Re: [PATCH net-next v3 1/3] net: phylink: provide
+ phylink_mac_implements_lpi()
+Message-ID: <20250210132054.oaqb5mboh6qiixfv@skbuf>
+References: <Z6nWujbjxlkzK_3P@shell.armlinux.org.uk>
+ <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <E1thR9g-003vX6-4s@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_045253_326475_292B7A92 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20250210_052100_440402_F62431AB 
+X-CRM114-Status: GOOD (  18.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,142 +108,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add EEE support to MediaTek SoC Ethernet. The register fields are
-similar to the ones in MT7531, except that the LPI threshold is in
-milliseconds.
+On Mon, Feb 10, 2025 at 10:36:44AM +0000, Russell King (Oracle) wrote:
+> diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+> index 898b00451bbf..0de78673172d 100644
+> --- a/include/linux/phylink.h
+> +++ b/include/linux/phylink.h
+> @@ -737,6 +737,18 @@ static inline int phylink_get_link_timer_ns(phy_interface_t interface)
+>  	}
+>  }
+>  
+> +/**
+> + * phylink_mac_implements_lpi() - determine if MAC implements LPI ops
+> + * @ops: phylink_mac_ops structure
+> + *
+> + * Returns true if the phylink MAC operations structure indicates that the
+> + * LPI operations have been implemented, false otherwise.
 
-Signed-off-by: Qingfang Deng <dqfext@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 64 +++++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 11 ++++
- 2 files changed, 75 insertions(+)
+This is something that I only noticed for v3 because I wanted to leave a
+review tag, so I first checked the status in patchwork, but there it says:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 53485142938c..943636d822b5 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -786,6 +786,7 @@ static void mtk_mac_link_up(struct phylink_config *config,
- 
- 	mcr = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
- 	mcr &= ~(MAC_MCR_SPEED_100 | MAC_MCR_SPEED_1000 |
-+		 MAC_MCR_EEE100M | MAC_MCR_EEE1G |
- 		 MAC_MCR_FORCE_DPX | MAC_MCR_FORCE_TX_FC |
- 		 MAC_MCR_FORCE_RX_FC);
- 
-@@ -811,6 +812,18 @@ static void mtk_mac_link_up(struct phylink_config *config,
- 	if (rx_pause)
- 		mcr |= MAC_MCR_FORCE_RX_FC;
- 
-+	if (mode == MLO_AN_PHY && phy && phy_init_eee(phy, false) >= 0) {
-+		switch (speed) {
-+		case SPEED_2500:
-+		case SPEED_1000:
-+			mcr |= MAC_MCR_EEE1G;
-+			break;
-+		case SPEED_100:
-+			mcr |= MAC_MCR_EEE100M;
-+			break;
-+		}
-+	}
-+
- 	mcr |= MAC_MCR_TX_EN | MAC_MCR_RX_EN | MAC_MCR_FORCE_LINK;
- 	mtk_w32(mac->hw, mcr, MTK_MAC_MCR(mac->id));
- }
-@@ -4474,6 +4487,55 @@ static int mtk_set_pauseparam(struct net_device *dev, struct ethtool_pauseparam
- 	return phylink_ethtool_set_pauseparam(mac->phylink, pause);
- }
- 
-+static int mtk_get_eee(struct net_device *dev, struct ethtool_keee *eee)
-+{
-+	struct mtk_mac *mac = netdev_priv(dev);
-+	u32 reg;
-+	int ret;
-+
-+	ret = phylink_ethtool_get_eee(mac->phylink, eee);
-+	if (ret)
-+		return ret;
-+
-+	reg = mtk_r32(mac->hw, MTK_MAC_EEECR(mac->id));
-+	eee->tx_lpi_enabled = !(reg & MAC_EEE_LPI_MODE);
-+	eee->tx_lpi_timer = FIELD_GET(MAC_EEE_LPI_TXIDLE_THD, reg) * 1000;
-+
-+	return 0;
-+}
-+
-+static int mtk_set_eee(struct net_device *dev, struct ethtool_keee *eee)
-+{
-+	struct mtk_mac *mac = netdev_priv(dev);
-+	u32 txidle_thd_ms, reg;
-+	int ret;
-+
-+	/* Tx idle timer in ms */
-+	txidle_thd_ms = DIV_ROUND_UP(eee->tx_lpi_timer, 1000);
-+	if (!FIELD_FIT(MAC_EEE_LPI_TXIDLE_THD, txidle_thd_ms))
-+		return -EINVAL;
-+
-+	reg = FIELD_PREP(MAC_EEE_LPI_TXIDLE_THD, txidle_thd_ms);
-+
-+	/* PHY Wake-up time, this field does not have a reset value, so use the
-+	 * reset value from MT7531 (36us for 100BaseT and 17us for 1000BaseT).
-+	 */
-+	reg |= FIELD_PREP(MAC_EEE_WAKEUP_TIME_1000, 17) |
-+	       FIELD_PREP(MAC_EEE_WAKEUP_TIME_100, 36);
-+
-+	if (!eee->tx_lpi_enabled)
-+		/* Force LPI Mode without a delay */
-+		reg |= MAC_EEE_LPI_MODE;
-+
-+	ret = phylink_ethtool_set_eee(mac->phylink, eee);
-+	if (ret)
-+		return ret;
-+
-+	mtk_w32(mac->hw, reg, MTK_MAC_EEECR(mac->id));
-+
-+	return 0;
-+}
-+
- static u16 mtk_select_queue(struct net_device *dev, struct sk_buff *skb,
- 			    struct net_device *sb_dev)
- {
-@@ -4506,6 +4568,8 @@ static const struct ethtool_ops mtk_ethtool_ops = {
- 	.set_pauseparam		= mtk_set_pauseparam,
- 	.get_rxnfc		= mtk_get_rxnfc,
- 	.set_rxnfc		= mtk_set_rxnfc,
-+	.get_eee		= mtk_get_eee,
-+	.set_eee		= mtk_set_eee,
- };
- 
- static const struct net_device_ops mtk_netdev_ops = {
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 0d5225f1d3ee..90a377ab4359 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -453,6 +453,8 @@
- #define MAC_MCR_RX_FIFO_CLR_DIS	BIT(12)
- #define MAC_MCR_BACKOFF_EN	BIT(9)
- #define MAC_MCR_BACKPR_EN	BIT(8)
-+#define MAC_MCR_EEE1G		BIT(7)
-+#define MAC_MCR_EEE100M		BIT(6)
- #define MAC_MCR_FORCE_RX_FC	BIT(5)
- #define MAC_MCR_FORCE_TX_FC	BIT(4)
- #define MAC_MCR_SPEED_1000	BIT(3)
-@@ -461,6 +463,15 @@
- #define MAC_MCR_FORCE_LINK	BIT(0)
- #define MAC_MCR_FORCE_LINK_DOWN	(MAC_MCR_FORCE_MODE)
- 
-+/* Mac EEE control registers */
-+#define MTK_MAC_EEECR(x)		(0x10104 + (x * 0x100))
-+#define MAC_EEE_WAKEUP_TIME_1000	GENMASK(31, 24)
-+#define MAC_EEE_WAKEUP_TIME_100		GENMASK(23, 16)
-+#define MAC_EEE_LPI_TXIDLE_THD		GENMASK(15, 8)
-+#define MAC_EEE_CKG_TXIDLE		BIT(3)
-+#define MAC_EEE_CKG_RXLPI		BIT(2)
-+#define MAC_EEE_LPI_MODE		BIT(0)
-+
- /* Mac status registers */
- #define MTK_MAC_MSR(x)		(0x10108 + (x * 0x100))
- #define MAC_MSR_EEE1G		BIT(7)
--- 
-2.43.0
+include/linux/phylink.h:749: warning: No description found for return value of 'phylink_mac_implements_lpi'
 
+I am aware of this conversation from November where you raised the point
+about tooling being able to accept the syntax without the colon as well:
+https://lore.kernel.org/netdev/87v7wjffo6.fsf@trenco.lwn.net/
+
+but it looks like it didn't go anywhere, with Jon still preferring the
+strict syntax for now, and no follow-up that I can see. So, the current
+conventions are not these, and you haven't specifically said anywhere
+that you are deliberately ignoring them.
+
+In the end it's not something for me to decide, but I thought maybe I'm
+speeding things up a little bit by opening up the discussion now, rather
+than wait for a maintainer to look at it.
+
+> + */
+> +static inline bool phylink_mac_implements_lpi(const struct phylink_mac_ops *ops)
+> +{
+> +	return ops && ops->mac_disable_tx_lpi && ops->mac_enable_tx_lpi;
+> +}
+> +
+>  void phylink_mii_c22_pcs_decode_state(struct phylink_link_state *state,
+>  				      unsigned int neg_mode, u16 bmsr, u16 lpa);
+>  void phylink_mii_c22_pcs_get_state(struct mdio_device *pcs,
 
