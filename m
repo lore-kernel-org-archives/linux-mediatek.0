@@ -4,89 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2DEEC02198
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 12:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28244C02198
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2025 12:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=44y8j+AwXW+Xy0HJDEfrJNBigjIXgkSJ5/Vx3gjsh+s=; b=dVxbR1F0sI2IiLQ3iw20LTnHi9
-	w75WozXTdc8OgV0lLfoEWcBWSctg+aCCrIlj5go80Ed7lJV88LGu2ZC3fqkE5Fzc51roNS4Ap+roz
-	Hegy1LmxaoSTqKeNOfb7jXdmItdbUVjKtF/TZcIxlErI6Y7XODlSKJCNbltTouKlRKTNZadBVpRnK
-	jTWc1c46pEKsZklGp5ixVxRNGQWjmxvgqDjkARDJYnDzjRP0jIrydyJuleUIQddwlkKxoDzCfXe9q
-	jQ9ReI4C18b5v3Xrrgx0iH+XYTQI4jXNKkBf+YuCGmQotGn7uj8kswydtqJtXtRSenVDpCt4a5YVR
-	PpuCBW4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K3MtQ5idC4oHoXTcpqKWeJSzAGrhCwaVTOUqmUG9xiY=; b=zLLUjSBPPvO0X/Zwfhm5JEDrsB
+	jP2nrUxsUoLeHy2qJNjGACSVTT+R56YzPyr6DIRBc3Nz1j7ljI+saVwIbbJVbAHtNwi7qyXLRFGPe
+	dcGMjEWzyhMMIMWahOyhF2YF4gArDFg0wNBgfkjU+zr+RdsWJN4eeiN9X55lHFSsN5MAki04R5AbG
+	UUPHWxguNqTTvhQFW2jr4cWmVyolf9+wWEs4uSHw4btYPlpaOP+wChDMJW2sAYVnJOMnOZyEXYzdW
+	ZHMmq+DjlwmrQx+10OJHHdaKFVZ7lqnJsc2ZN6eZNXWYYXuvQVmTPx1U/U61upHGm4wa1WTW5ON4O
+	OATz9AAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thSjG-0000000HMtm-2fps;
-	Mon, 10 Feb 2025 12:17:34 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1thT3a-0000000HQdu-0jCD;
+	Mon, 10 Feb 2025 12:38:34 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thSJQ-0000000HJD0-1QSR;
-	Mon, 10 Feb 2025 11:50:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739188250;
-	bh=+WeROGh0IxRi9ENLiNY69RRv2egDN0g2bYDLctyHo44=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HEz9H+6QOsA296TDuoufEDidTU7hVQ6bZYMICdFoHQ/oorkC4Tv0eaj0Ukyn4tHVO
-	 8vnoitsAR4mJmDb1TNiBo51HH8eevn+Jq5Rz6Vs5iXCKrC4j+jIhyrOjrbtVsfzEXw
-	 ZArZ/75YuNonfRn3AZyxa/pNCregDZHtgDI5UZ7Yaw37odh+wZbVEbS7VqEX0iOYeh
-	 fDkXjbc2lwrjBnM/ErdRjwcXF4u6OpNIl9EXqWaxrmSIyHtlWL3pTEEF4RT2nrY38W
-	 LbWutO0VmtLnvJfyqmCkNEYdhqg3Gm5JPQOAhbo5qt+dWt/LeMewFSGJYOqv0L9MOw
-	 WhBU6GAdaW0Lw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 74CA117E0239;
-	Mon, 10 Feb 2025 12:50:49 +0100 (CET)
-Message-ID: <b85aeb50-1cfc-4f26-a488-f01564108d61@collabora.com>
-Date: Mon, 10 Feb 2025 12:50:49 +0100
+	id 1thT2B-0000000HQNI-1lxy;
+	Mon, 10 Feb 2025 12:37:08 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-434f398a171so3928975e9.2;
+        Mon, 10 Feb 2025 04:37:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739191025; x=1739795825; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=K3MtQ5idC4oHoXTcpqKWeJSzAGrhCwaVTOUqmUG9xiY=;
+        b=VtoVS4cO7naNzv5ghM2dlDD0Uv4a8qWduD+IFRfu3RlvhZIi6en3dtPJT0CYczwCjI
+         86xKbbRcTz9FW8rvhsoLwgC4RKo4xLaq0rgUeJMCj41MDX6sXHYfANzCOjjVJg3QbeFb
+         KWxu7BohGSz/hWiSXeA9Nxe1f1/nBqj32X/XbgoJBuI5GPXAZlXPd4qjP8PfgAGZpKLd
+         BYoazhCoWJrZ5DIkJhHTFz2CuM5aIryyyFULb96SVE/J82ZFHmuQuDo+a1n8xo4DJ/Aj
+         gLfbv2Azf2+f/jglb95hSHJtPcPuObe+rkJ0ZV/X6Vak9E9x5qeSwCf6VcD8iL7WHPLX
+         M4MQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739191025; x=1739795825;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=K3MtQ5idC4oHoXTcpqKWeJSzAGrhCwaVTOUqmUG9xiY=;
+        b=M4Lf2mnswvROFMR75nzOKZAqv/OBVu+9jbQwGEG4DP6g0xcEw/WC+UPlMSPGyYvgyh
+         VsXLz0DLp3thGWcVijYrH3ePTp3EDujasWoZIK3Ix8LF+djRl52Bz/ixSA44FMn0idzA
+         UyDdnCAfKIAxp6cUv3vUoA+0HrGGrtqHYa8zKjQ2WOBqRqfAAS2CBqB8cxGT9JM58Ga9
+         p0VQ/Sfp0Dan9HCJC+e8BXwueNmNyzm8o7zNOv8/OmBBsoeqa/szKmfVa4Q/BQTur6xS
+         liZrzZD/I/3uwTeO/4HZ/X43jGJjS2uPFcPWnFpjVsJCdsHlVFsJ59ksnedazZR13lXp
+         xM9w==
+X-Forwarded-Encrypted: i=1; AJvYcCW5lcNtHcWoct9SAmISdxmsvTodn34Qh05sWN9ENAyWWUeJ14ZEDCSHLPFiXcGiTflDlZxy/ZMD0pLgApRCtgQ=@lists.infradead.org, AJvYcCXuOMKucdDm+AU2B1/sMsVIp60sX49te3rE5IyW9mPvyo3p0c+K5axTdvCwcmlO0nEQhFIKwgQevqHnQyL3HhDA@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywa4xDYXGFuHKf83hPGI8JPEGVz4cVof4qG1ghzwPa2CjTuoKS9
+	SdOyRns8DItSwWlpz9a6SdjnpYY4A4oGfhqxhqivnjCj8QJbTHPG
+X-Gm-Gg: ASbGnctVOAYu1YulYd+jn7QblBHz+ZGRJgJ27R7R7PiN8zE7gvdS8jd9csc0IwUMtew
+	LXq/FfCSvA8nW4Wi5s0iE2Asz22N7bMfcwoY5W/qHIsKY+EaepY8g438uu1z+BzQJc/avRNr7rE
+	AxRJBOBs7aS5BGo8LUpX6M6BeVZcvGrP0lOlzPAX/hH1a34n0a/MBI5CYcAf7uyrNvpXUef6l4T
+	4d2EN0f7R3AMo3WvCXW3f6+KsnHyMkz2pREjk288/AuLvFVSZmWBFI20mRCqtm+4Y5c2EEZX0Fo
+	ETk=
+X-Google-Smtp-Source: AGHT+IFp/qrMqpF0QewcGTK19D8rZ6WhmzABzEYZiO2aWnKT/+1DEN2GE0Y0xC2bvfjR6EFR1vJt5w==
+X-Received: by 2002:a05:600c:3b24:b0:434:a0fd:95d0 with SMTP id 5b1f17b1804b1-439249af823mr44302995e9.4.1739191025313;
+        Mon, 10 Feb 2025 04:37:05 -0800 (PST)
+Received: from skbuf ([86.127.124.81])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38dd34f2af5sm7073731f8f.78.2025.02.10.04.37.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Feb 2025 04:37:04 -0800 (PST)
+Date: Mon, 10 Feb 2025 14:37:01 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Simon Horman <horms@kernel.org>
+Subject: Re: [PATCH net-next v2 2/3] net: dsa: allow use of phylink managed
+ EEE support
+Message-ID: <20250210123701.7gdt56l5m6t5c6ge@skbuf>
+References: <Z6YF4o0ED0KLqYS9@shell.armlinux.org.uk>
+ <E1tgO70-003ilF-1x@rmk-PC.armlinux.org.uk>
+ <20250207151959.jab2c36oejmdhf3k@skbuf>
+ <Z6Yn2jTVmbEmhPf9@shell.armlinux.org.uk>
+ <20250207213823.2uofelxulqxpdtka@skbuf>
+ <Z6aIGzHWdzF5Rlci@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 10/34] drm/mediatek: mtk_hdmi_ddc: Switch to register
- as module_platform_driver
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
- =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20250113145232.227674-1-angelogioacchino.delregno@collabora.com>
- <20250113145232.227674-11-angelogioacchino.delregno@collabora.com>
- <424656ad6c9fbd1c32a62d7ed7b35eb322e94720.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <424656ad6c9fbd1c32a62d7ed7b35eb322e94720.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z6aIGzHWdzF5Rlci@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_035052_537464_CED05AC6 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20250210_043707_460717_C40AE3AA 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,124 +112,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/02/25 08:01, CK Hu (胡俊光) ha scritto:
-> On Mon, 2025-01-13 at 15:52 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> In preparation for splitting out the common bits from the HDMI
->> driver, change the mtk_cec driver from being registered from the
->> HDMI driver itself to be a module_platform_driver of its own.
-> 
-> "change the mtk_hdmi_ddc driver"
-> 
-> I think ddc is not the common part, so the reason is not splitting out the common bits.
-> 
+On Fri, Feb 07, 2025 at 10:24:27PM +0000, Russell King (Oracle) wrote:
+> You may have noticed that I'm no longer putting as much effort into
+> cover messages - and this is precisely why. I honestly don't see
+> that there's any point in spending much time on cover messages anymore.
 
-Thanks, I didn't notice this typo!
+I have things to do and places to be, and I'm sure you do too, so
+I won't drag this out more than I need to. I'll just give you one
+self-contained example of what bothers me, from this very thread.
+I'm not even expecting you to change all of a sudden, I know it's hard
+and takes time and a deeper understanding of what is happening.
 
-Regards,
-Angelo
+First of all, if "I tend not to read cover messages" isn't sarcastic
+when you've make it pretty obvious so many times that this is important
+to you, then I don't know what sarcasm is. So, your message starts off
+from the very beginning by not acknowledging the way in which your
+reaction is perceived.
 
->>
->> With this change, there are no more users of the mtk_hdmi.h header
->> so, while at it, also remove it.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/Makefile       |  6 ++----
->>   drivers/gpu/drm/mediatek/mtk_hdmi.c     |  2 --
->>   drivers/gpu/drm/mediatek/mtk_hdmi.h     | 13 -------------
->>   drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c |  2 +-
->>   4 files changed, 3 insertions(+), 20 deletions(-)
->>   delete mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi.h
->>
->> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
->> index bdd3a062f797..43afd0a26d14 100644
->> --- a/drivers/gpu/drm/mediatek/Makefile
->> +++ b/drivers/gpu/drm/mediatek/Makefile
->> @@ -21,10 +21,8 @@ mediatek-drm-y := mtk_crtc.o \
->>
->>   obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
->>
->> -mediatek-drm-hdmi-objs := mtk_hdmi.o \
->> -                         mtk_hdmi_ddc.o
->> -
->>   obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_cec.o
->> -obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
->> +obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_hdmi.o
->> +obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_hdmi_ddc.o
-> 
-> It's not necessary to separate ddc to an independent module.
-> 
-> Regards,
-> CK
-> 
->>
->>   obj-$(CONFIG_DRM_MEDIATEK_DP) += mtk_dp.o
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> index da725182f0db..e648fb5714e7 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> @@ -31,7 +31,6 @@
->>   #include <drm/drm_probe_helper.h>
->>
->>   #include "mtk_cec.h"
->> -#include "mtk_hdmi.h"
->>   #include "mtk_hdmi_regs.h"
->>
->>   #define NCTS_BYTES     7
->> @@ -1804,7 +1803,6 @@ static struct platform_driver mtk_hdmi_driver = {
->>   };
->>
->>   static struct platform_driver * const mtk_hdmi_drivers[] = {
->> -       &mtk_hdmi_ddc_driver,
->>          &mtk_hdmi_driver,
->>   };
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.h b/drivers/gpu/drm/mediatek/mtk_hdmi.h
->> deleted file mode 100644
->> index e40bc4651995..000000000000
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.h
->> +++ /dev/null
->> @@ -1,13 +0,0 @@
->> -/* SPDX-License-Identifier: GPL-2.0-only */
->> -/*
->> - * Copyright (c) 2014 MediaTek Inc.
->> - * Author: Jie Qiu <jie.qiu@mediatek.com>
->> - */
->> -#ifndef _MTK_HDMI_CTRL_H
->> -#define _MTK_HDMI_CTRL_H
->> -
->> -struct platform_driver;
->> -
->> -extern struct platform_driver mtk_hdmi_ddc_driver;
->> -
->> -#endif /* _MTK_HDMI_CTRL_H */
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
->> index 07db68067844..6358e1af69b4 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
->> @@ -20,7 +20,6 @@
->>   #include <linux/of_platform.h>
->>
->>   #include "mtk_drm_drv.h"
->> -#include "mtk_hdmi.h"
->>
->>   #define SIF1_CLOK              (288)
->>   #define DDC_DDCMCTL0           (0x0)
->> @@ -337,6 +336,7 @@ struct platform_driver mtk_hdmi_ddc_driver = {
->>                  .of_match_table = mtk_hdmi_ddc_match,
->>          },
->>   };
->> +module_platform_driver(mtk_hdmi_ddc_driver);
->>
->>   MODULE_AUTHOR("Jie Qiu <jie.qiu@mediatek.com>");
->>   MODULE_DESCRIPTION("MediaTek HDMI DDC Driver");
->> --
->> 2.47.0
->>
-> 
+Then, your message goes off to justify your reaction by essentially
+reiterating what you've publicly said elsewhere about not being noticed,
+making things sew with no Singer sewing machines required, and what not.
+Apart from the fact that you seem to build certain expectations of others'
+reactions in your mind and behave bizarrely when they react differently
+to how you expect (or not at all), my personal problem is that you've
+responded to a complaint which was really hard for me to verbalize by
+talking about you, again. Everything I've said in the previous email,
+about you expecting more respect and attention than you are willing to
+give, still stands.
 
-
+You are an important and valued member of the community, but you don't
+have to be so hard on people when they don't rise to your expectations.
+Your inflexibility makes it difficult at least for me to find a place
+around you.
 
