@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B04DC0219B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 13:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5643C0219D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 14:15:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HhrEWkQ8Yfb/yxadCqYSAJ4yj96BCv7jbPq5D3C9NWk=; b=OqgAnXI9mRlMuK/9XOSk5QudQW
-	MAMIYuQKPVNOdbbNiDlcgHgAWzB9jO/iZCgezIBAJxmObex7n5b/kIQD5ihw/wm82769BUvoZC9aj
-	fIthf0onRxBjIzgYnnDklpVVYbA9uI09sBIPIM4dpV/3ehRYfoms36PjF+mjuoyJ+vSFb4YbTIBW6
-	o+94nE7txyUjb+b31Qo1dyNKKGfEOj3JIv95SFQ7n74uQmWVOxcDBvu+4BjMJWfVlog3Hvenx4cDA
-	JqBdccvda2abjfV34y6iivw7/JzMaXKGXbRMk1Pm3drhtqUjFP4RHCwm5CKEBM6HOTYF7kEgK2NMu
-	Opk36BfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6n6Nfwi0yASpn2bo2NJp0U4RKqJuQiSS/v/IRx84GAM=; b=SbOTPslMVR+WZE
+	xRGcpGl/NirIJZdDwzBjajMttDq6/57RhHjELCglJcz+2cGaj9pakNGBwHMFB5PqUDtWszZZOGEb+
+	L9U3ZyG8fmRSHaundJRjYMWOwsiHiS0eBb1buohwBrHhjMripjkY5bz23eZ1lefPBmVCocS+D36AP
+	/0x+i6Fzm0jZEVZPQruV0cJftjp5/rmNV3Z2pXszoW0CLIN0Ral1meAnIQCnUfbl+HUfZGZPom4Zh
+	BIpar4hxp2RpxDXIOhtS/XcNWZQPaLV67lCtY3za60zDE+xwAk5fWq2Ww0d9VX91+dNpIttunW3be
+	9DggDv8d0F6T0PK3ef6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thqdL-000000040f5-0zyC;
-	Tue, 11 Feb 2025 13:49:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1thr3J-000000045EW-38Eu;
+	Tue, 11 Feb 2025 14:15:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thqbM-000000040QX-19zK;
-	Tue, 11 Feb 2025 13:47:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0D3065C177A;
-	Tue, 11 Feb 2025 13:46:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE831C4CEDD;
-	Tue, 11 Feb 2025 13:46:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739281619;
-	bh=r0ToB49ByRRzoTR0oX73//wrpRH+Zm+uP9UF3X+7p9g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sBPzhl2NVuEMaafcbYRqdMQbyiA1V2OZVr1xOgSfAQtvZm8x3mBLBwzbWBZSAiDp4
-	 4ykKhDfiwsyS+z+iwnEaxVvVlgn+PZPJvF9wDFNlKuY/Fk703/6puft0Etaj7ypLT1
-	 UzeGGg2ennTLcuirZqEl1GClmJiqL+uY8bWL3Yzzhee9NvAza24wMn5OIt/fEbRuz0
-	 MyDBsDZgLDr9CYHOC1Za+6+Z3Or/Mr6WY7TEqyEdIV8WVKLpA8Cl58EIbR/9nCURKI
-	 UssICMNVI1nU1TqMcHm1p4m+ylj10qyYAD2eJS2dN8FV/mBWIAGagj3kQNS9Xg8KyG
-	 1jTCIRwEzIufQ==
-Date: Tue, 11 Feb 2025 14:46:56 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, 
-	Florent Tomasin <florent.tomasin@arm.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, nd@arm.com, 
-	Akash Goel <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-Message-ID: <20250211-robust-lush-skink-0dcc5b@houat>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
- <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
- <1a73c3acee34a86010ecd25d76958bca4f16d164.camel@ndufresne.ca>
- <ppznh3xnfuqrozhrc7juyi3enxc4v3meu4wadkwwzecj7oxex7@moln2fiibbxo>
- <9d0e381758c0e83882b57102fb09c5d3a36fbf57.camel@ndufresne.ca>
- <1f436caa-1c27-4bbd-9b43-a94dad0d89d0@arm.com>
- <20250205-amorphous-nano-agouti-b5baba@houat>
- <2085fb785095dc5abdac2352adfb3e1e1c8ae549.camel@ndufresne.ca>
- <20250207160253.42551fb1@collabora.com>
+	id 1thr1s-000000044rV-1pXk;
+	Tue, 11 Feb 2025 14:14:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739283262;
+	bh=1/ws8Ki6NG7C14KSm+ch5kNrGgb87tdV3KuV8rop8R4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=dRRGBCsfCfungegBbvb/QdKKTbpVYpHAf1LLbUuN1+w4janWZxOa1n8O//jP2zOzH
+	 6ppaQ+Gl81LAqTtvhY93YVTFXOriBezIBP9Zbzz894DfjePJyDqxoRqy3h2bwoimWv
+	 2bgniwdsQ8GJ75ZmQ/gt7SO4AXV7Oi+5Fw2GLssmoP+Vsd3GIRLr/Ie5sJGNphDNx2
+	 hpkRrL9wtUeJNgQx5nBrEWz+b17xRQLWi2+WOcAEKj7nI7DZxBiqdh959XbuTrL1tk
+	 PHxGFy4cBjgXmeHXCEyAr33JGMazC0BT8/mgxyCxQIXuSu2jKzaXdOTJ6pQo8GeBky
+	 NhiW3EfX3fGkw==
+Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7CA3D17E0EB8;
+	Tue, 11 Feb 2025 15:14:21 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH v4 0/3] Add Mali GPU support for Mediatek MT8370 SoC
+Date: Tue, 11 Feb 2025 15:13:07 +0100
+Message-Id: <20250211-mt8370-enable-gpu-v4-0-77deb7a75c23@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="htbc2pgomj3vttd2"
-Content-Disposition: inline
-In-Reply-To: <20250207160253.42551fb1@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAPNaq2cC/23Oy2rDMBAF0F8xWldFD48eWfU/Shd6jBKBbaWyY
+ 1qC/72qU2gp3s0dmDP3TmasGWdy6u6k4prnXKYW+qeOhIubzkhzbJkIJoBxDnRcjNSM4uT8gPR
+ 8vVHpVQILySkZSbu7Vkz5Yzdf3x654vut0ctjSbybkYYyjnk5dRjBRM4kqug4uL4XKRkNShtrt
+ DIxSKdUG8m3dcnzUurnXnflO/bTTB00WzlllDnltUErIJiXUIbB+VLdc3u/i6v4o0h2pIimBA5
+ 9ZIZD9HCkyF9FMH2kyKZoQOstE8kG/l/Ztu0LeLh9Ao4BAAA=
+X-Change-ID: 20250115-mt8370-enable-gpu-3b6f595fa63d
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Steven Price <steven.price@arm.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1739283261; l=2673;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=1/ws8Ki6NG7C14KSm+ch5kNrGgb87tdV3KuV8rop8R4=;
+ b=l1gLMSzjHXCVSRBr92COcRy+kiCGv7Kl0gIzGok5LHsCKjfHRZngn+hJp6eC0Y2Go+86iLx4L
+ 5oocFMwDJ0kCQXELbaTcT3SodmZNUjl/o7MHsMGpqEuoZRzf8Z3WKow
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_054700_412477_A5B312DF 
-X-CRM114-Status: GOOD (  70.90  )
+X-CRM114-CacheID: sfid-20250211_061424_632239_5B796B45 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,232 +95,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
+dual core), integrated in the Mediatek MT8370 SoC, to the panfrost driver
+and to the mt8370.dtsi include file.
 
---htbc2pgomj3vttd2
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali CSF
- GPUs
-MIME-Version: 1.0
+I've tested this patchset on a Mediatek Genio 510 EVK board,
+with a kernel based on linux-next (tag: next-20250207) plus [1] patch
+(not needed for building, only for testing to avoid boot issues on this
+board).
 
-Hi Boris,
+The panfrost driver probed with the following messages:
+```
+panfrost 13000000.gpu: clock rate = 390000000
+panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
+panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
+  80000400
+panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
+  Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
+panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
+[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
+```
 
-On Fri, Feb 07, 2025 at 04:02:53PM +0100, Boris Brezillon wrote:
-> Sorry for joining the party late, a couple of comments to back Akash
-> and Nicolas' concerns.
->=20
-> On Wed, 05 Feb 2025 13:14:14 -0500
-> Nicolas Dufresne <nicolas@ndufresne.ca> wrote:
->=20
-> > Le mercredi 05 f=E9vrier 2025 =E0 15:52 +0100, Maxime Ripard a =E9crit=
-=A0:
-> > > On Mon, Feb 03, 2025 at 04:43:23PM +0000, Florent Tomasin wrote: =20
-> > > > Hi Maxime, Nicolas
-> > > >=20
-> > > > On 30/01/2025 17:47, Nicolas Dufresne wrote: =20
-> > > > > Le jeudi 30 janvier 2025 =E0 17:38 +0100, Maxime Ripard a =E9crit=
-=A0: =20
-> > > > > > Hi Nicolas,
-> > > > > >=20
-> > > > > > On Thu, Jan 30, 2025 at 10:59:56AM -0500, Nicolas Dufresne wrot=
-e: =20
-> > > > > > > Le jeudi 30 janvier 2025 =E0 14:46 +0100, Maxime Ripard a =E9=
-crit=A0: =20
-> > > > > > > > Hi,
-> > > > > > > >=20
-> > > > > > > > I started to review it, but it's probably best to discuss i=
-t here.
-> > > > > > > >=20
-> > > > > > > > On Thu, Jan 30, 2025 at 01:08:56PM +0000, Florent Tomasin w=
-rote: =20
-> > > > > > > > > Hi,
-> > > > > > > > >=20
-> > > > > > > > > This is a patch series covering the support for protected=
- mode execution in
-> > > > > > > > > Mali Panthor CSF kernel driver.
-> > > > > > > > >=20
-> > > > > > > > > The Mali CSF GPUs come with the support for protected mod=
-e execution at the
-> > > > > > > > > HW level. This feature requires two main changes in the k=
-ernel driver:
-> > > > > > > > >=20
-> > > > > > > > > 1) Configure the GPU with a protected buffer. The system =
-must provide a DMA
-> > > > > > > > >    heap from which the driver can allocate a protected bu=
-ffer.
-> > > > > > > > >    It can be a carved-out memory or dynamically allocated=
- protected memory region.
-> > > > > > > > >    Some system includes a trusted FW which is in charge o=
-f the protected memory.
-> > > > > > > > >    Since this problem is integration specific, the Mali P=
-anthor CSF kernel
-> > > > > > > > >    driver must import the protected memory from a device =
-specific exporter. =20
-> > > > > > > >=20
-> > > > > > > > Why do you need a heap for it in the first place? My unders=
-tanding of
-> > > > > > > > your series is that you have a carved out memory region som=
-ewhere, and
-> > > > > > > > you want to allocate from that carved out memory region you=
-r buffers.
-> > > > > > > >=20
-> > > > > > > > How is that any different from using a reserved-memory regi=
-on, adding
-> > > > > > > > the reserved-memory property to the GPU device and doing al=
-l your
-> > > > > > > > allocation through the usual dma_alloc_* API? =20
-> > > > > > >=20
-> > > > > > > How do you then multiplex this region so it can be shared bet=
-ween
-> > > > > > > GPU/Camera/Display/Codec drivers and also userspace ? =20
-> > > > > >=20
-> > > > > > You could point all the devices to the same reserved memory reg=
-ion, and
-> > > > > > they would all allocate from there, including for their userspa=
-ce-facing
-> > > > > > allocations. =20
-> > > > >=20
-> > > > > I get that using memory region is somewhat more of an HW descript=
-ion, and
-> > > > > aligned with what a DT is supposed to describe. One of the challe=
-nge is that
-> > > > > Mediatek heap proposal endup calling into their TEE, meaning know=
-ing the region
-> > > > > is not that useful. You actually need the TEE APP guid and its IP=
-C protocol. If
-> > > > > we can dell drivers to use a head instead, we can abstract that S=
-oC specific
-> > > > > complexity. I believe each allocated addressed has to be mapped t=
-o a zone, and
-> > > > > that can only be done in the secure application. I can imagine si=
-milar needs
-> > > > > when the protection is done using some sort of a VM / hypervisor.
-> > > > >=20
-> > > > > Nicolas
-> > > > >  =20
-> > > >=20
-> > > > The idea in this design is to abstract the heap management from the
-> > > > Panthor kernel driver (which consumes a DMA buffer from it).
-> > > >=20
-> > > > In a system, an integrator would have implemented a secure heap dri=
-ver,
-> > > > and could be based on TEE or a carved-out memory with restricted ac=
-cess,
-> > > > or else. This heap driver would be responsible of implementing the
-> > > > logic to: allocate, free, refcount, etc.
-> > > >=20
-> > > > The heap would be retrieved by the Panthor kernel driver in order to
-> > > > allocate protected memory to load the FW and allow the GPU to enter=
-/exit
-> > > > protected mode. This memory would not belong to a user space proces=
-s.
-> > > > The driver allocates it at the time of loading the FW and initializ=
-ation
-> > > > of the GPU HW. This is a device globally owned protected memory. =
-=20
-> > >=20
-> > > The thing is, it's really not clear why you absolutely need to have t=
-he
-> > > Panthor driver involved there. It won't be transparent to userspace,
-> > > since you'd need an extra flag at allocation time, and the buffers
-> > > behave differently. If userspace has to be aware of it, what's the
-> > > advantage to your approach compared to just exposing a heap for those
-> > > secure buffers, and letting userspace allocate its buffers from there=
-? =20
-> >=20
-> > Unless I'm mistaken, the Panthor driver loads its own firmware. Since l=
-oading
-> > the firmware requires placing the data in a protected memory region, an=
-d that
-> > this aspect has no exposure to userspace, how can Panthor not be implic=
-ated ?
->=20
-> Right, the very reason we need protected memory early is because some
-> FW sections need to be allocated from the protected pool, otherwise the
-> TEE will fault as soon at the FW enters the so-called 'protected mode'.
+[1] https://lore.kernel.org/all/20250124191644.2309790-1-robh@kernel.org/
 
-How does that work if you don't have some way to allocate the protected
-memory? You can still submit jobs to the GPU, but you can't submit /
-execute "protected jobs"?
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Changes in v4:
+- Add warning comment in mt8370.dtsi about GPU node override
+- Reword "dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 
+  SoC" commit message
+- Add code-review trailers
+- Link to v3: https://lore.kernel.org/r/20250207-mt8370-enable-gpu-v3-0-75e9b902f9c1@collabora.com
 
-> Now, it's not impossible to work around this limitation. For instance,
-> we could load the FW without this protected section by default (what we
-> do right now), and then provide a DRM_PANTHOR_ENABLE_FW_PROT_MODE
-> ioctl that would take a GEM object imported from a dmabuf allocated
-> from the protected dma-heap by userspace. We can then reset the FW and
-> allow it to operate in protected mode after that point.
+Changes in v3:
+- Rebased on linux-next (tag: next-20250207)
+- Remove prerequisite change/patch ids
+- Reword commit messages to better explicit compatible needs 
+- Link to v2: https://lore.kernel.org/r/20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com
 
-Urgh, I'd rather avoid that dance if possible :)
+Changes in v2:
+- Rework "drm/panfrost: Add support for Mali on the MT8370 SoC" to avoid
+  data structure duplication, as requested by Krzysztof Kozlowski
+- Reword commit messages to use imperative mood and make new compatible
+  need more explicit
+- Link to v1: https://lore.kernel.org/r/20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com
 
-> This approach has two downsides though:
->=20
-> 1. We have no way of checking that the memory we're passed is actually
-> suitable for FW execution in a protected context. If we're passed
-> random memory, this will likely hang the platform as soon as we enter
-> protected mode.
+---
+Louis-Alexis Eyraud (3):
+      dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
+      drm/panfrost: Add support for Mali on the MT8370 SoC
+      arm64: dts: mediatek: mt8370: Enable gpu support
 
-It's a current limitation of dma-buf in general, and you'd have the same
-issue right now if someone imports a buffer, or misconfigure the heap
-for a !protected heap.
+ .../devicetree/bindings/gpu/arm,mali-bifrost.yaml        |  5 ++++-
+ arch/arm64/boot/dts/mediatek/mt8370.dtsi                 | 16 ++++++++++++++++
+ drivers/gpu/drm/panfrost/panfrost_drv.c                  |  1 +
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+---
+base-commit: ed58d103e6da15a442ff87567898768dc3a66987
+change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
 
-I'd really like to have some way to store some metadata in dma_buf, if
-only to tell that the buffer is protected.
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-I suspect you'd also need that if you do things like do protected video
-playback through a codec, get a protected frame, and want to import that
-into the GPU. Depending on how you allocate it, either the codec or the
-GPU or both will want to make sure it's protected.
-
-> 2. If the driver already boot the FW and exposed a DRI node, we might
-> have GPU workloads running, and doing a FW reset might incur a slight
-> delay in GPU jobs execution.
->=20
-> I think #1 is a more general issue that applies to suspend buffers
-> allocated for GPU contexts too. If we expose ioctls where we take
-> protected memory buffers that can possibly lead to crashes if they are
-> not real protected memory regions, and we have no way to ensure the
-> memory is protected, we probably want to restrict these ioctls/modes to
-> some high-privilege CAP_SYS_.
->=20
-> For #2, that's probably something we can live with, since it's a
-> one-shot thing. If it becomes an issue, we can even make sure we enable
-> the FW protected-mode before the GPU starts being used for real.
->=20
-> This being said, I think the problem applies outside Panthor, and it
-> might be that the video codec can't reset the FW/HW block to switch to
-> protected mode as easily as Panthor.
->
-> Note that there's also downsides to the reserved-memory node approach,
-> where some bootloader stage would ask the secure FW to reserve a
-> portion of mem and pass this through the DT. This sort of things tend to
-> be an integration mess, where you need all the pieces of the stack (TEE,
-> u-boot, MTK dma-heap driver, gbm, ...) to be at a certain version to
-> work properly. If we go the ioctl() way, we restrict the scope to the
-> TEE, gbm/mesa and the protected-dma-heap driver, which is still a lot,
-> but we've ripped the bootloader out of the equation at least.
-
-Yeah. I also think there's two discussions in parallel here:
-
- 1) Being able to allocate protected buffers from the driver
- 2) Exposing an interface to allocate those to userspace
-
-I'm not really convinced we need 2, but 1 is obviously needed from what
-you're saying.
-
-Maxime
-
---htbc2pgomj3vttd2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6tUzwAKCRAnX84Zoj2+
-dgyXAX9Mpc+TjVfAcyCQN/n7q9zZ5lmbptADZW4LEBnXwTWDkkiDiB1S1nzvFyd0
-xywePzABgNQe/OpXr+aMBUmIbrbXc0/Yc/5KJdkXmAf8AsGGC198Qo6AbnZL4M8x
-oYxodaBcBA==
-=GufS
------END PGP SIGNATURE-----
-
---htbc2pgomj3vttd2--
 
