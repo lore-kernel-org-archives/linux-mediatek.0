@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D77F4C021A1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 16:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0DD9C0219E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 17:06:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mIIV8i2tvb8tBK+tEU2BRevQmqyOqUAI4Z6TbcBV6q0=; b=muRAkkSkYO2NK0
-	a7BnhGPJD60nJi3ZmZhpKGeb7Zu0QE29rkoRvlq30J4gxDcN1aHv82Z/SrjS+BnZWoazT1XgSsAii
-	caJZ5Ax2mQ8tVLt0xjT4jkQoGCXMpioXTe3QtQL6ObFkgqWXXAAra9FaohJUhWwMaU7IFG+5wOFVr
-	xCs/1t5/x7mQbP1fZlynynB7efL0JxEteL+O1QdyTJC+VYM8Dab045MVkPjm0sNX32uqI8I3F6Odh
-	bJJgCyBgpti0F4wOYiVFzBrbiIPHoAXBe1W/o3+bYLi1SXQIrw10kqCDmTfMw0BTPCNJhT1v8etoh
-	793pXbWfNHY0lDOsPYkg==;
+	List-Owner; bh=b/56BFQCA/x0+5Zxz4AvQg+9pW1+xObkEyrqUGNwQiI=; b=ZWPfxvoW3fFHGS
+	axmCvPWKmFfP3qmuFGo2ZKBPdFr7xvn/d2hmEypoknwnYkRO11MtekgxCkacb+KcZz1hixJl8UHYh
+	CR3dnR4jhYRlwCeqXmVuaobFv/6QNARCB5BOxMgsDEJpPzhC/R25WJIDo9PSro6aqqpuAqepac8MV
+	MS7KIiVE71kdqxwxYIndsCxbABP0XvS8YijPGLsj4W07zooHyFCi2DLe0kc9TWmKr85H9BNayhQbY
+	jiaxeVLrS0oxFygeZ7VseNZuvPuZQwZ9LeV589jxlCeulprQ/oVm0T4boNLMhuB3+yGgR0vSR1ezv
+	yjAaAc9zBxw6oRuZkWNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thta4-00000004bGA-1BVl;
-	Tue, 11 Feb 2025 16:57:52 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1thtiL-00000004ch3-1qg2;
+	Tue, 11 Feb 2025 17:06:25 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thtEc-00000004Xbq-26Ke;
-	Tue, 11 Feb 2025 16:35:43 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-ab7483b9bf7so848874766b.3;
-        Tue, 11 Feb 2025 08:35:42 -0800 (PST)
+	id 1thtes-00000004c5t-28uF
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Feb 2025 17:02:51 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-ab771575040so1118276166b.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Feb 2025 09:02:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739291741; x=1739896541; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
+        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1739293369; x=1739898169; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=mIIV8i2tvb8tBK+tEU2BRevQmqyOqUAI4Z6TbcBV6q0=;
-        b=ADqVWB8YEvJo8Rhb1ZFcgePdgyyfs+aMGT1rzZeBQ0ynhpNoe1pVkNyCW3l05nTg57
-         e/eE+p4DjyF4hMbZWUGpPt3upWylcGZ9GmEZymDCIoc2V3JrSBkIfjdJbZ3Un0VFSAxe
-         8lD0UUS7lButb/kBHz3Cc/PPgxnWymeEmAOMoIzMjQz8kGpW84fcpKdCYfeiUj/p91B8
-         bo3umTHwqIw4PEnvrhp8uPb0Ja6lwZkzKK+7P3WO2DOvcE1MUAa1b+qwOwTjKb8/+RSr
-         MnIn9bjyqs+t5BIzImvEtJLxq9YEn5DWHaX45EtnPTPAxmIBAtvAe5buuOawqRe0lOK/
-         v/3g==
+        bh=b/56BFQCA/x0+5Zxz4AvQg+9pW1+xObkEyrqUGNwQiI=;
+        b=opnXNsUBJagtxrgbBLsVT0mkAQOEV5qkEXooAfxheSTZ3Be1FekM9ClfUaSbAvAWCJ
+         dzBT/0PLlgiIdm9J2l8aX18cVPZtN1wfXiodGNlxHAhVoHY47/csoSXjDBFEH6LfftEy
+         G07w7Oke36WwaBbCQXQziOOxEFLiF+xQW6Cw23qMUNvID2P2+vC+4iQKdMxD6Ebejzff
+         xN7Zu/rZ+3sumuQej4cGemysQ2hF0EdQ+vLfttB+hA2La8Ci5Yab5tQCmtd3xBLqnaEk
+         nNCPEQ6vrol2CFITIkObHnm2KlFm7BvueI5qmgTWpczj4tTXdTUQ98WF+jXsbiRqilF+
+         v3oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739291741; x=1739896541;
-        h=content-transfer-encoding:in-reply-to:content-language:from
+        d=1e100.net; s=20230601; t=1739293369; x=1739898169;
+        h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mIIV8i2tvb8tBK+tEU2BRevQmqyOqUAI4Z6TbcBV6q0=;
-        b=WO61CIvPA1S7LXD2K6EOnlpbEWGmpUdtHlJ/Oda63t6A6ZyQ0Tk4IyZR59ll7sYrff
-         IERYVUJ0PbZJZ7aoO1gsL/dDNcVbqn8MsOJqNqmIe+2ZhXa2wz8jshIYZMYGa4SuoHZY
-         QWZ2fpHcZFHd+n2MJ2pEIElmFEIf8qxgYImObOUKTjnfLPKUpcf2UlhNONbKwS1B6p5b
-         ikw4PBpxPokgT9gNoXSMvHpr/D3p4CqzpEfiFih2KnaAC2mfy0+tfNUb4h9k0WWe9ywd
-         Jp9Q0PJnVPqpcxa8OnHv9CPkMQjw/9b+FB6NTqZOIVppMyGevt1gYGXUkHPHGD17j3Lu
-         ROhw==
-X-Forwarded-Encrypted: i=1; AJvYcCVt8pbx4jLNSEJ76EflZ5RokZ5zTIUucg9wV9PM1Z/lw+KhamvCAnNgz7tfWv/wlNQI/GvKj17GAvz+oPQ5vuo=@lists.infradead.org, AJvYcCWgA6PRnd1Y2zim+j1cUs5Zce4UsSAfv2zQGtjV30p0dnj6Y/F1llXUN8Y+naUBod9G98Xk+/3Z/MxD4A9xQc6H@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFUQ6T1SUqaNxBWuGBZQEJV268s0IadhRyvtN9Dzt+fIldeS9X
-	lbUCPc3b9U8USlk1VOEY3h3uZCKPOyxJUmspOHchBinvk4CtoYn5
-X-Gm-Gg: ASbGnctCBLcTQteZbSg7XuKphBLY7CMdvtGk20K4W+/YTuVuzFX3Se4x5DuOXsNniMk
-	6YIjTULjeT7B5z59EvETtekbRZukWrFwgDlF7W1ZvVUNGx4IR749MT6mQjJcQx31a2RsIzNqepA
-	rgvWLZQSPHHJMybROIItTCzPzmxNm/BzGjDRA0aCnUf7alDt4q+YhItNRFREcLyw1HYNRpTxhO1
-	aVgmyJiKwIsV1qw8+ysOTT8JtBLnQ4ErDARHMaL3ylgxgDXSME6qdCA0cJCLmhiWK/L3MwWtgUG
-	4oU7h6y7QIyGaBAyKjKoxjSRWW09pxT4Yn5GX/erf1Hh/k/v271ndgmlwAGbZN5kk+ucMG3I9Gm
-	9z53K7KWrgC9fWjbIwGSNsG7zuV0Bc2rK1k2njYnk+lWG9OVlPaWrIX07V5FJX0SQpg==
-X-Google-Smtp-Source: AGHT+IEaE5wrrlIY6nl8fC2Lf84LvPSm2KRFTGEbR5fKUB08K5dstyn+LuQpM8Wzz6vHlCpVh97tIA==
-X-Received: by 2002:a17:907:72c5:b0:ab7:c284:7245 with SMTP id a640c23a62f3a-ab7c284dcb7mr766174866b.18.1739291740484;
-        Tue, 11 Feb 2025 08:35:40 -0800 (PST)
-Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab7bf9ae406sm445655466b.82.2025.02.11.08.35.39
+        bh=b/56BFQCA/x0+5Zxz4AvQg+9pW1+xObkEyrqUGNwQiI=;
+        b=cy74jI4E4UETrEIVmG1A94fYHs3v8n+6yHNPv35ZIuNpyVqyjJxwciE3iRNpPFanT/
+         l4uVSwnppD2I4Ivwsl9/Wv2nTSeTHYHkldv+GrnxMZdRB6JGBnCr4YlVgIbF22v3zFlZ
+         0J3YbIHb7D1lsGjiBBQRha3P+yPGEzzzq7zCJ5cIWEQJyw9q/ECQyNphskvoFJ0aKw0x
+         FNgyuz6c5oItfobmEZvNUDLVoMuaremQd+83XIT/Rc6PHG9+F6fGyRwvTsub1xnzkN/E
+         iuMWqKFamJyEKWiUZM5Q+XdXMocFBPJwScuRPS6vZdzvlN4Gmc/sCoJT356ysDLYeHib
+         gXoA==
+X-Forwarded-Encrypted: i=1; AJvYcCUm0e+ExJyNNoJzSJ3WKZCG7+CYbKpGwVXhpM3Rh4cys52JSQ4g386Z20UEjq1aN53ScSbZL6z1Rhpsk9h+9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+8L1vErKzcFfYbj60UaZWcLByxrCB2T0g551J56oxcwqSWh1f
+	RyNSf4rdk5hM9OsacYX0Ik2+HcCu26dVBu3vlXQYqQQAA0vW3lt4f5JTVZwmefk=
+X-Gm-Gg: ASbGncsG6+/OIi5S4Y8Ms6+r75MsPC2uiUIBTpkiUIS1iQAf8r/DETZSnRM+Y2PtMWk
+	nRHa0btAXOeezqNqM6lYBLgA4zy7q9pm3I+bSsUHZZlx82oYuXmFPlV3+K4SebPl5AuUKcK+RJh
+	pf1dbnbrva8LZ43I0XrmF2IWNJ8yBk4/nPEmjOGpgfQevoERzDRWgz7qFF/A8G/PcnqxQN7Wjln
+	odZACYiW/OYY4NfWi3t2OGjrPiPlbtaJBoNn5y3HcS/jXZbaLUVF9AG7vHm5K9vj4I9vEECNleX
+	F3jfMAyrFfhXJRXocr+lAqB0RMF0cBR2CB7HlH3TvIIiefw=
+X-Google-Smtp-Source: AGHT+IGAPbzjetBMyKn9xpkEx6mNiLaz6Iu+7FJStrC2CQYkHtGpuLCTUuKU+eMJA/ubyZG+xRvimw==
+X-Received: by 2002:a17:907:7fac:b0:ab7:cd14:2472 with SMTP id a640c23a62f3a-ab7dafca27emr340636066b.23.1739293367291;
+        Tue, 11 Feb 2025 09:02:47 -0800 (PST)
+Received: from [192.168.0.205] (78-154-15-142.ip.btc-net.bg. [78.154.15.142])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab7b4e96185sm543848166b.86.2025.02.11.09.02.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 11 Feb 2025 08:35:40 -0800 (PST)
-Message-ID: <1aa60578-ba4c-458b-b020-cff59b119bdc@gmail.com>
-Date: Tue, 11 Feb 2025 17:35:38 +0100
+        Tue, 11 Feb 2025 09:02:46 -0800 (PST)
+Message-ID: <2609939e-fce9-42ff-93ee-890598437f25@blackwall.org>
+Date: Tue, 11 Feb 2025 19:02:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v6 net-next 05/14] bridge: Add filling forward path from
  port to port
-To: Nikolay Aleksandrov <razor@blackwall.org>,
- Vladimir Oltean <olteanv@gmail.com>
+To: Eric Woudstra <ericwouds@gmail.com>, Vladimir Oltean <olteanv@gmail.com>
 References: <20250209111034.241571-1-ericwouds@gmail.com>
  <20250209111034.241571-6-ericwouds@gmail.com>
  <20250211132832.aiy6ocvqppoqkd65@skbuf>
  <91d709aa-2414-4fb4-b3e1-94e0e330d33c@blackwall.org>
-From: Eric Woudstra <ericwouds@gmail.com>
+ <1aa60578-ba4c-458b-b020-cff59b119bdc@gmail.com>
 Content-Language: en-US
-In-Reply-To: <91d709aa-2414-4fb4-b3e1-94e0e330d33c@blackwall.org>
+From: Nikolay Aleksandrov <razor@blackwall.org>
+In-Reply-To: <1aa60578-ba4c-458b-b020-cff59b119bdc@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_083542_541900_11724D6F 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20250211_090250_808794_C9352691 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,34 +103,38 @@ Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Daniel Golle <daniel@makr
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2/11/25 5:00 PM, Nikolay Aleksandrov wrote:
-> On 2/11/25 15:28, Vladimir Oltean wrote:
->> On Sun, Feb 09, 2025 at 12:10:25PM +0100, Eric Woudstra wrote:
->>> @@ -1453,7 +1454,10 @@ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
->>>  	if (!br_opt_get(br, BROPT_VLAN_ENABLED))
->>>  		return;
->>>  
->>> -	vg = br_vlan_group(br);
->>> +	if (p)
->>> +		vg = nbp_vlan_group(p);
->>> +	else
->>> +		vg = br_vlan_group(br);
->>>  
->>>  	if (idx >= 0 &&
->>>  	    ctx->vlan[idx].proto == br->vlan_proto) {
+On 2/11/25 18:35, Eric Woudstra wrote:
+> 
+> 
+> On 2/11/25 5:00 PM, Nikolay Aleksandrov wrote:
+>> On 2/11/25 15:28, Vladimir Oltean wrote:
+>>> On Sun, Feb 09, 2025 at 12:10:25PM +0100, Eric Woudstra wrote:
+>>>> @@ -1453,7 +1454,10 @@ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
+>>>>  	if (!br_opt_get(br, BROPT_VLAN_ENABLED))
+>>>>  		return;
+>>>>  
+>>>> -	vg = br_vlan_group(br);
+>>>> +	if (p)
+>>>> +		vg = nbp_vlan_group(p);
+>>>> +	else
+>>>> +		vg = br_vlan_group(br);
+>>>>  
+>>>>  	if (idx >= 0 &&
+>>>>  	    ctx->vlan[idx].proto == br->vlan_proto) {
+>>>
+>>> I think the original usage of br_vlan_group() here was incorrect, and so
+>>> is the new usage of nbp_vlan_group(). They should be br_vlan_group_rcu()
+>>> and nbp_vlan_group_rcu().
+>>>
 >>
->> I think the original usage of br_vlan_group() here was incorrect, and so
->> is the new usage of nbp_vlan_group(). They should be br_vlan_group_rcu()
->> and nbp_vlan_group_rcu().
+>> Oops, right. Nice catch!
 >>
 > 
-> Oops, right. Nice catch!
+> Hi Nikolay,
+> 
+> I gather that I can include your Acked-by also in the corrected patch.
 > 
 
-Hi Nikolay,
-
-I gather that I can include your Acked-by also in the corrected patch.
+Yes, thanks.
 
 
