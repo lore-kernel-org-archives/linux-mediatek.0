@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03411C0219D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EEB5C0219D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:50:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=alK85kQSykN7KGu9xzLMvJjUUV/IfmgP1oUnM+MoMxE=; b=nRWTRFn4ZVzlSoF5Vp3JUPb0FQ
-	YTrBB+1PiQO2UYsQS6MU6ahmBXaV8NYcc53kmphY0K1giS4LSDASDs+Mmc3BcIb7NsVhgmlqH3r3r
-	uDVFUiCrcT/DgvO0uNHCjg8WqVBdR6PSWYevvLTihzTImTKx8CH6j/lGk4P3E2JCMdPwCeZtWSHjq
-	4rSo7zzLofbOxdpjATeRJAwHnI54m3QSpj8pl2s2escblcSbc4/gaBYmEEGh1TtpWOkkH2259MY6T
-	HZ2ALu/rzCoq+qU35YEGbP1CNHouscxaqVGKsHXNohCn6BPYRQEUfnW1GW79rLQmUFHLcJysqr0lk
-	veyVsW8g==;
+	bh=OgBh8AQcVi7AFRtRmzFb3WZybV4Wj3hRk4V1MujGIEE=; b=oyYwbcYMVolQb2AMvQQvnm+oqU
+	zLYlrr7hWOSQ5Ic3Y9L5amvH5YKA8AcnkRvvxpmzolk4LYkYwFM/JSXb2Ff9jWh/q4+EJSZEvI/xh
+	Z5n/gW7uH6ES+iorHlSK/gHYS0RjbZGqp5VX26cDOA+dBbFHBGBr8tpCtTF/aS5QNXw8tyDv8MtAj
+	/qEyfLn9uHH536EYWlqKUTGILfRPSAGXOuiRBgzjRC/ckkisj5LeQNRX8CUkERilqT97Q/qT9ehXr
+	XQf4JPY23gTx3KUhSzgIiH+o1XPMSu6taFseT0T7farh9kABn8VVShjs4CBsDLtdT6D7LofWdjKcW
+	U69zjbuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlrF-000000032F4-3pzU;
-	Tue, 11 Feb 2025 08:43:05 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1thlyN-0000000340t-2Och;
+	Tue, 11 Feb 2025 08:50:27 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlp2-000000031h3-2kb6;
-	Tue, 11 Feb 2025 08:40:49 +0000
+	id 1thlvU-000000033Cu-2Ckj;
+	Tue, 11 Feb 2025 08:47:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5D422A40144;
-	Tue, 11 Feb 2025 08:39:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4D22C4CEDD;
-	Tue, 11 Feb 2025 08:40:46 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 38B48A40123;
+	Tue, 11 Feb 2025 08:45:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0A91C4CEE4;
+	Tue, 11 Feb 2025 08:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739263247;
-	bh=yfxUOCmD0cUqeG9HoTFs80RQBFgDMIs07GaFv6eezd4=;
+	s=k20201202; t=1739263647;
+	bh=k21+EIxAbZ2RNWIs6sTtq5HkT0oP1NdfuQqJ3Cg0Xns=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LVdIrvsA3Ht1DgAfLA+b9wt7TVUMk00P//UZrubEEcFld6Uu3p36AS3GGw3PAn9d2
-	 GxW2sE+52XrKmk0bkzeYTqAWAcJxcVLo8lVhMgErfYJsMFNn9aT2aZ04Y8ihOporMv
-	 pdRCPmNUoOIpSjgsFUJTjVEVbpnXisDLwKjN5hP5hVWsXwhDNLAuCkc3PGEgwpoy9w
-	 +e4g8LhB+VnpQ9iWHDwq93J+rKf63T1Ir6mMwTs2fq4J1hT9AxRpqaYdJfYw4Jejhi
-	 OPM70gsFKgKLHOh+yAozEUPNV3g0QHdph2IyrxRfQMQudr0Y+6KGUNun4HU/ErFrxL
-	 Ysn/NLU3MXudA==
-Date: Tue, 11 Feb 2025 09:40:44 +0100
+	b=hxbS8OPr0wU/c6E85F335oSSbrLRCaeujvXRA/pMYWGZJfoXEbIJdZBcnJWK0L3Uj
+	 9g1oOOPo3F/iK9m+/pCESvVcC2ygY+Z+4K+6vWgREaNUoPOox7gvJvLCyR4lH7pzBs
+	 kDZlUtdKVIa1h7cXUo0xolCxaGzYoSq53xtDrybMSGYzKC1i3TIHOX3SeJdqMCIKBK
+	 D/Lv3AS6he/Q363o079npAvyOhBtCXTg4A/fZZp3RxXaHPLPFg0SU24Pb111btNqrY
+	 HtgBzYCsg1HQIUcvilN8c9+Dzhc4efaErZsasZj4LHMV9Z8fz1qokGa5BJZHIyeH7o
+	 hWsPzX+uPwscQ==
+Date: Tue, 11 Feb 2025 09:47:24 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -54,18 +54,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
 	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH net-next v3 12/16] dt-bindings: net: airoha: Add
- airoha,npu phandle property
-Message-ID: <20250211-chinchilla-of-luxurious-focus-950fc7@krzk-bin>
+Subject: Re: [PATCH net-next v3 13/16] net: airoha: Introduce PPE
+ initialization via NPU
+Message-ID: <20250211-fanatic-smoky-wren-f0dcc9@krzk-bin>
 References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
- <20250209-airoha-en7581-flowtable-offload-v3-12-dba60e755563@kernel.org>
+ <20250209-airoha-en7581-flowtable-offload-v3-13-dba60e755563@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250209-airoha-en7581-flowtable-offload-v3-12-dba60e755563@kernel.org>
+In-Reply-To: <20250209-airoha-en7581-flowtable-offload-v3-13-dba60e755563@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_004048_757943_670292C0 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20250211_004728_747230_2F6CBEE5 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +80,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 09, 2025 at 01:09:05PM +0100, Lorenzo Bianconi wrote:
-> Introduce the airoha,npu property for the NPU node available on
-> EN7581 SoC. The airoha Network Processor Unit (NPU) is used to
-> offload network traffic forwarded between Packet Switch Engine
-> (PSE) ports.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> index c578637c5826db4bf470a4d01ac6f3133976ae1a..0fdd1126541774acacc783d98e4c089b2d2b85e2 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> @@ -63,6 +63,14 @@ properties:
->    "#size-cells":
->      const: 0
->  
-> +  airoha,npu:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to the node used to configure the NPU module.
-> +      The Airoha Network Processor Unit (NPU) provides a configuration
-> +      interface to implement hardware flow offloading programming Packet
-> +      Processor Engine (PPE) flow table.
+On Sun, Feb 09, 2025 at 01:09:06PM +0100, Lorenzo Bianconi wrote:
+> +static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
+> +{
+> +	struct airoha_npu_core *core = core_instance;
+> +	struct airoha_npu *npu = core->npu;
+> +	int c = core - &npu->cores[0];
+> +	u32 val;
+> +
+> +	airoha_npu_rmw(npu, REG_WDT_TIMER_CTRL(c), 0, WDT_INTR_MASK);
+> +	val = airoha_npu_rr(npu, REG_WDT_TIMER_CTRL(c));
+> +	if (FIELD_GET(WDT_EN_MASK, val))
+> +		schedule_work(&core->wdt_work);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +struct airoha_npu *airoha_npu_init(struct airoha_eth *eth)
+> +{
+> +	struct reserved_mem *rmem;
+> +	int i, irq, err = -ENODEV;
+> +	struct airoha_npu *npu;
+> +	struct device_node *np;
+> +
+> +	npu = devm_kzalloc(eth->dev, sizeof(*npu), GFP_KERNEL);
+> +	if (!npu)
+> +		return ERR_PTR(-ENOMEM);
+> +
+> +	npu->np = of_parse_phandle(eth->dev->of_node, "airoha,npu", 0);
+> +	if (!npu->np)
+> +		return ERR_PTR(-ENODEV);
 
-I see Conor had here objections, but it looks fine to me. So unless
-Conor naks it:
+Why? The property is not required, so how can missing property fail the
+probe?
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+This is also still unnecessary ABI break without explanation/reasoning.
+
+> +
+> +	npu->pdev = of_find_device_by_node(npu->np);
+> +	if (!npu->pdev)
+> +		goto error_of_node_put;
+
+You should also add device link and probably try_module_get. See
+qcom,ice (patch for missing try_module_get is on the lists).
+
+> +
+> +	get_device(&npu->pdev->dev);
+
+Why? of_find_device_by_node() does it.
+
+> +
+> +	npu->base = devm_platform_ioremap_resource(npu->pdev, 0);
+> +	if (IS_ERR(npu->base))
+> +		goto error_put_dev;
+> +
+> +	np = of_parse_phandle(npu->np, "memory-region", 0);
+> +	if (!np)
+> +		goto error_put_dev;
+> +
+> +	rmem = of_reserved_mem_lookup(np);
+> +	of_node_put(np);
+> +
+> +	if (!rmem)
+> +		goto error_put_dev;
+> +
+> +	irq = platform_get_irq(npu->pdev, 0);
+> +	if (irq < 0) {
+> +		err = irq;
+> +		goto error_put_dev;
+> +	}
+> +
+> +	err = devm_request_irq(&npu->pdev->dev, irq, airoha_npu_mbox_handler,
+> +			       IRQF_SHARED, "airoha-npu-mbox", npu);
+> +	if (err)
+> +		goto error_put_dev;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++) {
+> +		struct airoha_npu_core *core = &npu->cores[i];
+> +
+> +		spin_lock_init(&core->lock);
+> +		core->npu = npu;
+> +
+> +		irq = platform_get_irq(npu->pdev, i + 1);
+> +		if (irq < 0) {
+> +			err = irq;
+> +			goto error_put_dev;
+> +		}
+
+This is all confusing. Why are you requesting IRQs for other - the npu -
+device? That device driver is responsible for its interrupts, not you
+here. This breaks encapsulation. And what do you do if the other device
+starts handling interrupts on its own? This is really unexpected to see
+here.
+
+> +
+> +		err = devm_request_irq(&npu->pdev->dev, irq,
+> +				       airoha_npu_wdt_handler, IRQF_SHARED,
+> +				       "airoha-npu-wdt", core);
+> +		if (err)
+> +			goto error_put_dev;
+> +
+> +		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
+> +	}
+> +
+> +	if (dma_set_coherent_mask(&npu->pdev->dev, 0xbfffffff))
+> +		dev_err(&npu->pdev->dev,
+> +			"failed coherent DMA configuration\n");
+> +
+> +	err = airoha_npu_run_firmware(npu, rmem);
+> +	if (err)
+> +		goto error_put_dev;
+> +
+> +	airoha_npu_wr(npu, REG_CR_NPU_MIB(10),
+> +		      rmem->base + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
+> +	airoha_npu_wr(npu, REG_CR_NPU_MIB(11), 0x40000); /* SRAM 256K */
+> +	airoha_npu_wr(npu, REG_CR_NPU_MIB(12), 0);
+> +	airoha_npu_wr(npu, REG_CR_NPU_MIB(21), 1);
+> +	msleep(100);
+> +
+> +	/* setting booting address */
+> +	for (i = 0; i < AIROHA_NPU_NUM_CORES; i++)
+> +		airoha_npu_wr(npu, REG_CR_BOOT_BASE(i), rmem->base);
+> +	usleep_range(1000, 2000);
+> +
+> +	/* enable NPU cores */
+> +	/* do not start core3 since it is used for WiFi offloading */
+> +	airoha_npu_wr(npu, REG_CR_BOOT_CONFIG, 0xf7);
+> +	airoha_npu_wr(npu, REG_CR_BOOT_TRIGGER, 0x1);
+> +	msleep(100);
+> +
+> +	return npu;
+> +
+> +error_put_dev:
+> +	put_device(&npu->pdev->dev);
+
+Missing platform_device_put()
+
+> +error_of_node_put:
+> +	of_node_put(npu->np);
+> +
+> +	return ERR_PTR(err);
+> +}
+> +
+> +void airoha_npu_deinit(struct airoha_npu *npu)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++)
+> +		cancel_work_sync(&npu->cores[i].wdt_work);
+> +
+
+Leaking device put.
+
+> +	put_device(&npu->pdev->dev);
+> +	of_node_put(npu->np);
 
 Best regards,
 Krzysztof
