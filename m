@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 475BEC0219B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 11:46:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA949C0219B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 11:47:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5SRar6MGHG1xObe7Mk77mQs+iai0bo020Zv7w6PayHM=; b=11mElg3UZgMG2Rww2Fe2Niw0mm
-	EAQGG8k3DeD5qW+eBb6SRt0h0C+McWz+Q63FoHzSpl4Ypmx8KCZ/ftzjawIrNp4jHwnPRi7+u1/3L
-	1LOBpSC412wEqh1xbbfLwpSWtT480thWjc8LKN1L5VkGvnJaotWHsLpvMCGbVRc6B5MLPqF48OV+b
-	uKT1A8W5brm4jkha4A8VRP0lwkfkXxcj4hxMi3E2jdPyOyXjACboX7jlhBmnevYVyiCfXo1EF+vxP
-	iZ39G9FsK2oFjkbXr76rDVKw3AdQxaf3pdcBdrosobs2EOAuea6DyhMg5t16i72WCzSnFqgh+6fa3
-	09rvvN7Q==;
+	bh=QAyr0lYWyMkm+NTunGQP1gtafC0I6Uoi9qrYm9Puok8=; b=beVOKTIhkclMgl1d9ubNlWUxNV
+	g6cc/temyHXYXNGXA6ai1XrzhcZXBF6pz2/b+q9+pEXK3k1PKPgv1wdjli2OnBOdpZxSagRDbwDA1
+	hFkSiKnBxUNR/5ZO8o5u7jUwvyG6mYPPUktI4aIbt1LfBA9a4PRWBgjbxuhGGPMkukOLVMcFnUL5Y
+	MSB0fu06dF7lnhzHLtQx5jhjcO2UtxrZahkIUbCU6wIWaRFnYbEtUNVZT+PYi2FRQTnAAArxVL0FB
+	x26tFy/Ko/FiedOGMEQpuz9gMRPGvad+6WRHtZepFDRlp1dF8xRtUi9l7PkkqhuZQWXA9yhuLaIuA
+	nvWgZIOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thoiR-00000003cbl-0seO;
-	Tue, 11 Feb 2025 11:46:11 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1thojo-00000003d1v-2hUn;
+	Tue, 11 Feb 2025 11:47:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thoX8-00000003YVh-31ab;
-	Tue, 11 Feb 2025 11:34:32 +0000
+	id 1thoXA-00000003YXR-0pxT;
+	Tue, 11 Feb 2025 11:34:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739273669;
-	bh=XMWOWL24gBRtlT/Oi19T7IB/aDtle5upg0g4+u+CtdU=;
+	s=mail; t=1739273670;
+	bh=mNGHdB9wdNquPPNVmVlfm/qkiqXvSV3ngefhRX5Hv1U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T1lC8y/pFNISyAavVX7rZUfo+cVMx0k3S3oYB0/XB8keOLvEvOuS16HCW4+o83Fu6
-	 9g4xUnNIYu3MujRfXT9GhzCsp4zyC0dmjNy9wqDFBKuDgW70Lsm6b2U38TTCBzisBE
-	 SCg1WMwsA0kpDEEAH+TEBDe+isjDXYLAT7feBIig+6MOYBK7re3hdmzcdyWSniyzpa
-	 SWxOcFhH4mxSdWIXsRQvhVCEvbe1+S8gUziNXuRU/mywYKgfy7FntsGVtfAfSB/Cdo
-	 /lO1IEnbz9nagsWgzhm69mZ8eoSAz5hZXXSnia2eftrDf/0QfbXVvlE2LBuXqQqgnO
-	 f0yL/lp7capOg==
+	b=jgW3SJlfZ9vUs/UnmlE1a/0pbF81XCxnyheWmJ6MPU0NQFnY6Y9jD9wOQOyLpJBdo
+	 2d8ehRiF1uc+PkxRz/krtsUjl1LWcUyveYWkR1q8qufjAWMRxYowqUGvD85an/Rp5P
+	 QEEDId0Zzfl3zejKws/h2ONv2hUuvf/bkmUM2S4e38ACT3hY5qxNb8SAQl5IM6cuLm
+	 Koa3Z5lSm8zFGd8OGniJPzwXleFklctd/nzY0Zu3QcB4SwAVlpTmu3rwXgy4wWb9YQ
+	 9UQVwWnLVWWdyZBdq+GJSTlfcUBZH11wkVZxKQGNKWf73GLbtHhMVktEF6/Y0pvema
+	 G5lqxLtaMAC/A==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2EC1117E154C;
-	Tue, 11 Feb 2025 12:34:28 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A015217E154E;
+	Tue, 11 Feb 2025 12:34:29 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -71,17 +71,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v6 06/42] drm/mediatek: mtk_dpi: Move the input_2p_en bit to platform data
-Date: Tue, 11 Feb 2025 12:33:33 +0100
-Message-ID: <20250211113409.1517534-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 07/42] drm/mediatek: mtk_dpi: Add support for DPI input clock from HDMI
+Date: Tue, 11 Feb 2025 12:33:34 +0100
+Message-ID: <20250211113409.1517534-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250211113409.1517534-1-angelogioacchino.delregno@collabora.com>
 References: <20250211113409.1517534-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_033430_901371_97E927DD 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20250211_033432_386448_2D95ED7F 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +96,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for MT8195's HDMI reserved DPI
-instance, move the input_2p_en bit for DP_INTF to platform data.
+On some SoCs, like MT8195 and MT8188, the DPI instance that is
+reserved to the HDMI Transmitter uses a different clock topology.
+
+In this case, the DPI is clocked by the HDMI IP, and this outputs
+its clock to the MM input of dpi_pixel_clk, which is essential to
+enable register access to the DPI IP.
+
+Add a `clocked_by_hdmi` member to struct mtk_dpi_conf, and check
+it to avoid enabling the DPI clocks in the mediatek-drm internal
+.start() callback (and avoid disabing in the .stop() component
+callback): this will make sure that the clock configuration
+sequence is respected during display pipeline setup by following
+the bridge ops between DPI and HDMI, where the HDMI driver is
+expected to enable the clocks in the bridge's pre_enable(), and
+DPI in the enable() cb.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index bb1a17f1384b..ad07005ad56e 100644
+index ad07005ad56e..6493c7e2fae4 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -143,6 +143,7 @@ struct mtk_dpi_factor {
-  * @channel_swap_shift: Shift value of channel swap.
-  * @yuv422_en_bit: Enable bit of yuv422.
-  * @csc_enable_bit: Enable bit of CSC.
-+ * @input_2p_en_bit: Enable bit of two pixel per round feature
+@@ -146,6 +146,8 @@ struct mtk_dpi_factor {
+  * @input_2p_en_bit: Enable bit of two pixel per round feature
   * @pixels_per_iter: Quantity of transferred pixels per iteration.
   * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
++ * @clocked_by_hdmi: HDMI IP outputs clock to dpi_pixel_clk input clock, needed
++ *		     for DPI registers access.
   */
-@@ -163,6 +164,7 @@ struct mtk_dpi_conf {
- 	u32 channel_swap_shift;
- 	u32 yuv422_en_bit;
- 	u32 csc_enable_bit;
-+	u32 input_2p_en_bit;
+ struct mtk_dpi_conf {
+ 	const struct mtk_dpi_factor *dpi_factor;
+@@ -167,6 +169,7 @@ struct mtk_dpi_conf {
+ 	u32 input_2p_en_bit;
  	u32 pixels_per_iter;
  	bool edge_cfg_in_mmsys;
- };
-@@ -651,9 +653,9 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 		mtk_dpi_dual_edge(dpi);
- 		mtk_dpi_config_disable_edge(dpi);
- 	}
--	if (dpi->conf->input_2pixel) {
--		mtk_dpi_mask(dpi, DPI_CON, DPINTF_INPUT_2P_EN,
--			     DPINTF_INPUT_2P_EN);
-+	if (dpi->conf->input_2p_en_bit && dpi->conf->input_2pixel) {
-+		mtk_dpi_mask(dpi, DPI_CON, dpi->conf->input_2p_en_bit,
-+			     dpi->conf->input_2p_en_bit);
- 	}
- 	mtk_dpi_sw_reset(dpi, false);
- 
-@@ -1127,6 +1129,7 @@ static const struct mtk_dpi_conf mt8195_dpintf_conf = {
- 	.channel_swap_shift = DPINTF_CH_SWAP,
- 	.yuv422_en_bit = DPINTF_YUV422_EN,
- 	.csc_enable_bit = DPINTF_CSC_ENABLE,
-+	.input_2p_en_bit = DPINTF_INPUT_2P_EN,
++	bool clocked_by_hdmi;
  };
  
- static int mtk_dpi_probe(struct platform_device *pdev)
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -587,7 +590,9 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	struct videomode vm = { 0 };
+ 
+ 	drm_display_mode_to_videomode(mode, &vm);
+-	mtk_dpi_set_pixel_clk(dpi, &vm, mode->clock);
++
++	if (!dpi->conf->clocked_by_hdmi)
++		mtk_dpi_set_pixel_clk(dpi, &vm, mode->clock);
+ 
+ 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+ 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+@@ -922,14 +927,16 @@ void mtk_dpi_start(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+ 
+-	mtk_dpi_power_on(dpi);
++	if (!dpi->conf->clocked_by_hdmi)
++		mtk_dpi_power_on(dpi);
+ }
+ 
+ void mtk_dpi_stop(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+ 
+-	mtk_dpi_power_off(dpi);
++	if (!dpi->conf->clocked_by_hdmi)
++		mtk_dpi_power_off(dpi);
+ }
+ 
+ unsigned int mtk_dpi_encoder_index(struct device *dev)
 -- 
 2.48.1
 
