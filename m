@@ -4,78 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09D20C0219B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 17:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC7FC0219B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 18:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y2HO1ToWfLOBrHdxLGmqitpQWzJ6khmroR/88qsX9BY=; b=HDatNCJ9jTZzb7mMbqTVjuutTE
-	dp/+Qy/uU04Cu0z9kHzPG17QsDKgHZH4s7EDSwHSg0aHiP0Y55C7KMSKrIOWlxc6q7a0ClKkSBmBp
-	EIRG8Mb8Mg6kq7EZe5DZBxCQ6/ZCvjcWyDmtrIyX6bgbMer5w3UHklTRpQuW6vcIsIY6YNzkz6nJh
-	ihw9tmTDcWxtZpNNE9xL3eEgICRfCdpGltFy1YQ1wYLc65CiNCmHRCZ1minciQTc51Ql32QZMFoHj
-	QKSlQFLUeOwbncNzkwFT4UKj7R5N9Ba42/7X++ucTpCXyhUkgjDeTcXCSILdEnxHAtJ1DmIsoYiGw
-	i910Onrw==;
+	bh=+81GJ2Ed5kEguiInJKiepzHO9GSn8dLtYS8lNL93dKc=; b=2veaE/e+Py7zhnF+gd7faFvM5u
+	5++UtyvWoCvm8rq6Bg+++H97MILwu+jKWeOMdi+j9y/E4Dz3IwfArxhC0WpK+WEeq8qmTg8jfILoM
+	CiLcIDqCiEPG2mGgpq8vRLdYNV3F6cn6Go+JPtpHLfRNjSExFL8yDCrzLztVRMR/17ualVyDqGFfP
+	AtUYWl5thp67vvF4z3w7IlvvRZIrhJucYCmGYsmRG4xwIU+UmORq6nq9zyHQRPkAt5llSMNeRzcYV
+	wewCcuII1mpfsEuVMQTOGHgis3/FqClYff99H5UQkjAG19bzinPEZBIhA/vsAPwYRxpElVPwpNH/c
+	pVISb/zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thuUJ-00000004lb9-3AWL;
-	Tue, 11 Feb 2025 17:55:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1thvD6-00000004t2A-3OUb;
+	Tue, 11 Feb 2025 18:42:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thtAF-00000004WNL-0uNZ;
-	Tue, 11 Feb 2025 16:31:12 +0000
+	id 1thv1p-00000004qlg-2Gyn;
+	Tue, 11 Feb 2025 18:30:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=+81GJ2Ed5kEguiInJKiepzHO9GSn8dLtYS8lNL93dKc=; b=nBkvSj70UI3gVuMe4oRYyKQvpg
+	aAwk66xqmQflX6iB7Oetn2SMefuFJVqdIqenPvotXvohLZv0SRdo+8WBz3M1ouJdgK30EGIiesoFu
+	DCYKwR1008twCxfXCxmyRdcMsZnfLsi5DIVDv9OO3zwU7owymfwh8TDV/0T0WNt1t+Y0vh2LzbuwB
+	0fF2oC8dTaoyetAieNA2SDcD3HQYGJlPkBhrjVz1Hb5s0r3YwBKRrd5F9eV91rdpCuKPVZZvivmhb
+	OoANAKT54DpybGglU45R0UiyLO9U/5vhyOgeiRF60IR0rps7eBwNm7VemIWta8v1UWEj5c2YRqdPD
+	AyO878Aw==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thv1m-00000000g8n-2gbg;
+	Tue, 11 Feb 2025 18:30:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 812065C4848;
-	Tue, 11 Feb 2025 16:30:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D06C4CEDD;
-	Tue, 11 Feb 2025 16:31:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 666A95C4D7F;
+	Tue, 11 Feb 2025 18:29:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44F90C4CEDD;
+	Tue, 11 Feb 2025 18:30:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739291469;
-	bh=oNhS/OBG05YZ+KCQ5QX2hfKKhn/P9r6dBgmu5lyTEck=;
+	s=k20201202; t=1739298632;
+	bh=MXkpdxUrKwlNGyhfGqjpT3gM++JqSC+ekFB+wz6S6C4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NG70fRgbr/NArbeLI4XwktHJ14RVRgAUMRyVVKt+VVJiehyoI0RrETiIRDzicTvhl
-	 7HjgRml0wM+6lKDGa6BXOM7L8qIWhOAqfaVspzZ38BqQ1Qw0xb2ZpLtNFIK+am5ueC
-	 6c2Wcuh35njecJWyK7aQ/EurXnODJK/rnDQqhNxZCHIHpv8/MV8FdigUeT8rWM/wnX
-	 lQ2Jv2RtNT51wUtYvb/iCO8JcoVQt16Axa1JF4j8SP+N8uLsH/prWoBASkF5K976Ec
-	 q5jF8l5dZbCoT9/kBQNjt3QyQ0zWviXDPHbN15b5cWVKkL78nVe6K1s2UgWufupyDP
-	 ntm5IEEZzgMng==
-Date: Tue, 11 Feb 2025 17:31:06 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next v3 13/16] net: airoha: Introduce PPE
- initialization via NPU
-Message-ID: <Z6t7SuFurbGwJjt_@lore-desk>
-References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
- <20250209-airoha-en7581-flowtable-offload-v3-13-dba60e755563@kernel.org>
- <20250211-fanatic-smoky-wren-f0dcc9@krzk-bin>
+	b=LCyHpRREJtOY2Tvjhmv03vG4+reEXqTnt+Z16GX1SfqS0MjxOwCo1EkI7LsyZe667
+	 yI9on/ejRJGqty+zjK9W38REK0RkwwpIRuQCIMMu6VGuc7I6Sxdor9CL8VJA9sQSfP
+	 hfqIGAk+U6UY8++83IseOi+KOi6orwI9zC5TEWJ4IV/KxoyZtizGTzuofkrl2/UHl+
+	 9EzKiewIdemBesCWREr8SU6FJWyoQgcHnhUIsC3VfdrS9uL/ckmRjak7S4HIkz0wIN
+	 kToARy9Bzz1GXAlbUO7Ubvq1yuhDW3JxiOMRQ5HoRrVzJomx/qY8WCJS2yFDlKE22U
+	 L8GFUoMbB1QzA==
+Date: Tue, 11 Feb 2025 18:30:28 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"robh@kernel.org" <robh@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"vkoul@kernel.org" <vkoul@kernel.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [RESEND PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add
+ property to set disconnect threshold
+Message-ID: <20250211-destiny-crablike-ab17a2814b7a@spud>
+References: <20250111141542.5007-1-chunfeng.yun@mediatek.com>
+ <20250113-aerobics-tall-e570d8bbcf2c@spud>
+ <e61b61574bd58c1bbc0648257fb4ab23ed582de0.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="g2jqDdovRQTl6Nrb"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EJv8ebh2m2tBBLDa"
 Content-Disposition: inline
-In-Reply-To: <20250211-fanatic-smoky-wren-f0dcc9@krzk-bin>
+In-Reply-To: <e61b61574bd58c1bbc0648257fb4ab23ed582de0.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_083111_346964_84D1D4EF 
-X-CRM114-Status: GOOD (  30.35  )
+X-CRM114-CacheID: sfid-20250211_183035_014843_90BC83E8 
+X-CRM114-Status: GOOD (  20.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,205 +98,74 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---g2jqDdovRQTl6Nrb
-Content-Type: text/plain; charset=us-ascii
+--EJv8ebh2m2tBBLDa
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Sun, Feb 09, 2025 at 01:09:06PM +0100, Lorenzo Bianconi wrote:
-> > +static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
-> > +{
-> > +	struct airoha_npu_core *core =3D core_instance;
-> > +	struct airoha_npu *npu =3D core->npu;
-> > +	int c =3D core - &npu->cores[0];
-> > +	u32 val;
-> > +
-> > +	airoha_npu_rmw(npu, REG_WDT_TIMER_CTRL(c), 0, WDT_INTR_MASK);
-> > +	val =3D airoha_npu_rr(npu, REG_WDT_TIMER_CTRL(c));
-> > +	if (FIELD_GET(WDT_EN_MASK, val))
-> > +		schedule_work(&core->wdt_work);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +struct airoha_npu *airoha_npu_init(struct airoha_eth *eth)
-> > +{
-> > +	struct reserved_mem *rmem;
-> > +	int i, irq, err =3D -ENODEV;
-> > +	struct airoha_npu *npu;
-> > +	struct device_node *np;
-> > +
-> > +	npu =3D devm_kzalloc(eth->dev, sizeof(*npu), GFP_KERNEL);
-> > +	if (!npu)
-> > +		return ERR_PTR(-ENOMEM);
-> > +
-> > +	npu->np =3D of_parse_phandle(eth->dev->of_node, "airoha,npu", 0);
-> > +	if (!npu->np)
-> > +		return ERR_PTR(-ENODEV);
->=20
-> Why? The property is not required, so how can missing property fail the
-> probe?
+On Sun, Feb 09, 2025 at 03:34:12AM +0000, Chunfeng Yun (=E4=BA=91=E6=98=A5=
+=E5=B3=B0) wrote:
+> On Mon, 2025-01-13 at 18:30 +0000, Conor Dooley wrote:
+> > On Sat, Jan 11, 2025 at 10:15:41PM +0800, Chunfeng Yun wrote:
+> > > Add a property to tune usb2 phy's disconnect threshold.
+> > > And add a compatible for mt8196.
+> > >=20
+> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > ---
+> > > based on kernel 6.13-rc1
+> > >=20
+> > > this property is porting from t-phy driver, due to the u2 phy are
+> > > similar.
+> > > ---
+> > >  Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8
+> > > ++++++++
+> > >  1 file changed, 8 insertions(+)
+> > >=20
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> > > b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> > > index a9e3139fd421..2e012d5e1da1 100644
+> > > --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> > > +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> > > @@ -49,6 +49,7 @@ properties:
+> > >        - enum:
+> > >            - mediatek,mt3611-xsphy
+> > >            - mediatek,mt3612-xsphy
+> > > +          - mediatek,mt8196-xsphy
+> > >        - const: mediatek,xsphy
+> > > =20
+> > >    reg:
+> > > @@ -129,6 +130,13 @@ patternProperties:
+> > >          minimum: 1
+> > >          maximum: 7
+> > > =20
+> > > +      mediatek,discth:
 
-similar to mtk_wed device, airoha_npu is not modeled as a standalone driver,
-but it is part of the airoha_eth driver. If you think it is better, I can
-rework it implementing a dedicated driver for it. What do you think?
+Just make it "disconnect-threshold" please.
 
->=20
-> This is also still unnecessary ABI break without explanation/reasoning.
+> > > +        description:
+> > > +          The selection of disconnect threshold (U2 phy)
+> > > +        $ref: /schemas/types.yaml#/definitions/uint32
+> > > +        minimum: 1
+> > > +        maximum: 15
+> >=20
+> > What unit is this? Unitless? How are the values determined?
+> No unit, it's a level, may be treat it as an index to select different
+> threshold.
 
-At the moment if airoha_npu_init() fails (e.g. if the npu node is not prese=
-nt),
-it will not cause any failure in airoha_hw_init() (so in the core ethernet
-driver probing).
+So this is a register value of some sort? What is the actual threshold
+measured in?
 
->=20
-> > +
-> > +	npu->pdev =3D of_find_device_by_node(npu->np);
-> > +	if (!npu->pdev)
-> > +		goto error_of_node_put;
->=20
-> You should also add device link and probably try_module_get. See
-> qcom,ice (patch for missing try_module_get is on the lists).
-
-thx for the pointer, I will take a look to it.
-
->=20
-> > +
-> > +	get_device(&npu->pdev->dev);
->=20
-> Why? of_find_device_by_node() does it.
-
-ack, I will fix it.
-
->=20
-> > +
-> > +	npu->base =3D devm_platform_ioremap_resource(npu->pdev, 0);
-> > +	if (IS_ERR(npu->base))
-> > +		goto error_put_dev;
-> > +
-> > +	np =3D of_parse_phandle(npu->np, "memory-region", 0);
-> > +	if (!np)
-> > +		goto error_put_dev;
-> > +
-> > +	rmem =3D of_reserved_mem_lookup(np);
-> > +	of_node_put(np);
-> > +
-> > +	if (!rmem)
-> > +		goto error_put_dev;
-> > +
-> > +	irq =3D platform_get_irq(npu->pdev, 0);
-> > +	if (irq < 0) {
-> > +		err =3D irq;
-> > +		goto error_put_dev;
-> > +	}
-> > +
-> > +	err =3D devm_request_irq(&npu->pdev->dev, irq, airoha_npu_mbox_handle=
-r,
-> > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
-> > +	if (err)
-> > +		goto error_put_dev;
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
-> > +		struct airoha_npu_core *core =3D &npu->cores[i];
-> > +
-> > +		spin_lock_init(&core->lock);
-> > +		core->npu =3D npu;
-> > +
-> > +		irq =3D platform_get_irq(npu->pdev, i + 1);
-> > +		if (irq < 0) {
-> > +			err =3D irq;
-> > +			goto error_put_dev;
-> > +		}
->=20
-> This is all confusing. Why are you requesting IRQs for other - the npu -
-> device? That device driver is responsible for its interrupts, not you
-> here. This breaks encapsulation. And what do you do if the other device
-> starts handling interrupts on its own? This is really unexpected to see
-> here.
-
-As pointed out above, there is no other driver for airoha_npu at the moment,
-but I am fine to implement it.
-
-Regards,
-Lorenzo
-
->=20
-> > +
-> > +		err =3D devm_request_irq(&npu->pdev->dev, irq,
-> > +				       airoha_npu_wdt_handler, IRQF_SHARED,
-> > +				       "airoha-npu-wdt", core);
-> > +		if (err)
-> > +			goto error_put_dev;
-> > +
-> > +		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
-> > +	}
-> > +
-> > +	if (dma_set_coherent_mask(&npu->pdev->dev, 0xbfffffff))
-> > +		dev_err(&npu->pdev->dev,
-> > +			"failed coherent DMA configuration\n");
-> > +
-> > +	err =3D airoha_npu_run_firmware(npu, rmem);
-> > +	if (err)
-> > +		goto error_put_dev;
-> > +
-> > +	airoha_npu_wr(npu, REG_CR_NPU_MIB(10),
-> > +		      rmem->base + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
-> > +	airoha_npu_wr(npu, REG_CR_NPU_MIB(11), 0x40000); /* SRAM 256K */
-> > +	airoha_npu_wr(npu, REG_CR_NPU_MIB(12), 0);
-> > +	airoha_npu_wr(npu, REG_CR_NPU_MIB(21), 1);
-> > +	msleep(100);
-> > +
-> > +	/* setting booting address */
-> > +	for (i =3D 0; i < AIROHA_NPU_NUM_CORES; i++)
-> > +		airoha_npu_wr(npu, REG_CR_BOOT_BASE(i), rmem->base);
-> > +	usleep_range(1000, 2000);
-> > +
-> > +	/* enable NPU cores */
-> > +	/* do not start core3 since it is used for WiFi offloading */
-> > +	airoha_npu_wr(npu, REG_CR_BOOT_CONFIG, 0xf7);
-> > +	airoha_npu_wr(npu, REG_CR_BOOT_TRIGGER, 0x1);
-> > +	msleep(100);
-> > +
-> > +	return npu;
-> > +
-> > +error_put_dev:
-> > +	put_device(&npu->pdev->dev);
->=20
-> Missing platform_device_put()
->=20
-> > +error_of_node_put:
-> > +	of_node_put(npu->np);
-> > +
-> > +	return ERR_PTR(err);
-> > +}
-> > +
-> > +void airoha_npu_deinit(struct airoha_npu *npu)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++)
-> > +		cancel_work_sync(&npu->cores[i].wdt_work);
-> > +
->=20
-> Leaking device put.
->=20
-> > +	put_device(&npu->pdev->dev);
-> > +	of_node_put(npu->np);
->=20
-> Best regards,
-> Krzysztof
->=20
-
---g2jqDdovRQTl6Nrb
+--EJv8ebh2m2tBBLDa
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6t7SgAKCRA6cBh0uS2t
-rGOSAP9ajQ5bBXTGIXJFOaDlhfq5P0lEKUu7Bq7as0Wrb/CiHwD+MjobPeqtgWPG
-gTwY8bZNqtz2FbpzlvqWNUyz/50ToAo=
-=svVA
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6uXRAAKCRB4tDGHoIJi
+0tleAQCvurEiAzM1BdOVDJ9+251emEMUXx+UXepVHn6w3KdPIgD+I1IyvZElSdMC
+2wI8UZTiXnHTsxxuyayinbiJi5M2LwM=
+=2LgZ
 -----END PGP SIGNATURE-----
 
---g2jqDdovRQTl6Nrb--
+--EJv8ebh2m2tBBLDa--
 
