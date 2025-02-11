@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26523C02198
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 02:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821D4C02198
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 02:53:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Osz1/jocrFEzgFhLEIhFRrb4kDNRJq8rHtYsDHvteoI=; b=5BedQpsBMs2XWzg+b6jq1CuxL/
-	A/P+oDzPwGA2iPwJOEddXWzYArHmvD1IEFkeAC0jRTQjJI2KYRrZBvLxMsFSFA8/HcuZ0n3RuSSew
-	XIYULwiYOtk/33XLWwrI+eXiVZuECFlXRt3E0kqONhOHf/ouX31ANpy82BM/BKoAv2Jmxr/VKfx+Z
-	Yr5IJ2J8W0qgwSER2qmqpNGG592cdr0SKBlwM9rG4RlxfHv4FgoxdsGz8B0N3iDsq5ILT8gRMfH93
-	c2rRzPCLBS1xrZMkfcoZLnC4LXhm3qY22mTEt4i4AsiISpSs/dW1YhmgFciccRmL4fzRKzJyjwMHI
-	RhzmDHlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uIyrTTeXw+C4BCHVXGUIGZGr+s1+Cv96AxvzOxDoOWg=; b=TCrceqqerEXjxvIVN1gAw07mPC
+	PpxRmSFjmX2HwxT9lU6n5ASKWCrSPBSO5a2O93Fk0YCVbZ78DEdt7vqOX4liUJsQgT/Udt6jFwU23
+	Ddc0q+bW26GjL5z6xP6I0+J/+tHSwPgvJi5I774N7JxcxK5FvlSgo02MyF5ol8Ix2+3IBfTVJTWBz
+	fZvMzYYZEodI7vj73/0tPZgsJUG89+ooyVLcMTFN/UFl0WCwwNaDQGhva3Y7yAVvmPh6DxVAmwDLA
+	w8v2gcuTW9cqwwmiW9g+2VL+8LqJxEHvaAThWSk+l5S7ghMY/1+mBsv20+rA/Q1xg+kPZoU4PQ1e0
+	aeVvLcrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thg36-00000002HNa-1Ep6;
-	Tue, 11 Feb 2025 02:30:56 +0000
+	id 1thgP3-00000002KWl-0y8T;
+	Tue, 11 Feb 2025 02:53:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thg34-00000002HMZ-0TDg;
-	Tue, 11 Feb 2025 02:30:55 +0000
-X-UUID: 3444a9fce82011ef9048ed6ed365623b-20250210
+	id 1thgP0-00000002KVW-3zmL;
+	Tue, 11 Feb 2025 02:53:36 +0000
+X-UUID: 5ec4e392e82311ef9048ed6ed365623b-20250210
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Osz1/jocrFEzgFhLEIhFRrb4kDNRJq8rHtYsDHvteoI=;
-	b=FNLzOXu0WbQTQjobIbyftOeYx/uzzERhGi1LNLmDYnZqEx0eeDKTsxmkeFe0nWljHrREa9x27uup4RBJUQemwTO33cuG/63webiu6PQIF7sNY1IxmMgutdeenTUG9DKcHxACiWsUsmLjiqhdi7ZCIKx/d3QXHC0mDXWf2tNsoF8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uIyrTTeXw+C4BCHVXGUIGZGr+s1+Cv96AxvzOxDoOWg=;
+	b=scj4I0q8ajkCM7GKjoRHQ9Rs8dsZ9LaLxwOtorLzzev38j5rb7Cy1/yaclSd+mUWpW8KIrfP8avf8EGy6zKtIWMPfdE1KPTmdLNI8gSVx7ykNocHywePp+QwaGS+JMoCK0fqosiRuy0jlGjP5wcnSJu0glYjBCesVXZLCGLhkzg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:1b6c68a0-7129-49fd-ae13-eb8f0a145b5f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:76f5249c-f55b-41e7-a712-ffbe7a973280,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 3444a9fce82011ef9048ed6ed365623b-20250210
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <bo.ye@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.46,REQID:2dbbd65a-542d-48ca-9b05-f5c18d858078,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:60aa074,CLOUDID:44ca627f-427a-4311-9df4-bfaeeacd8532,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 5ec4e392e82311ef9048ed6ed365623b-20250210
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <sunny.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 287322901; Mon, 10 Feb 2025 19:30:48 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 1836505567; Mon, 10 Feb 2025 19:53:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 11 Feb 2025 10:30:45 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 11 Feb 2025 10:30:45 +0800
-From: Bo Ye <bo.ye@mediatek.com>
-To: Thomas Gleixner <tglx@linutronix.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <dicken.ding@mediatek.com>, <hanks.chen@mediatek.com>,
-	<xiujuan.tan@mediatek.co>, Bosser Ye <bo.ye@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] genirq: clear IRQS_PENDING in irq descriptor
-Date: Tue, 11 Feb 2025 10:30:39 +0800
-Message-ID: <20250211023040.180330-1-bo.ye@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+ 15.2.1258.28; Tue, 11 Feb 2025 10:53:25 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 11 Feb 2025 10:53:25 +0800
+From: Sunny Shen <sunny.shen@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/5] dt-bindings: display: mediatek: mdp-rsz: Add rules for MT8196
+Date: Tue, 11 Feb 2025 10:52:50 +0800
+Message-ID: <20250211025317.399534-2-sunny.shen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250211025317.399534-1-sunny.shen@mediatek.com>
+References: <20250211025317.399534-1-sunny.shen@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_183054_162008_24BE956E 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20250210_185334_997372_6FC85965 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,73 +80,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, "Paul
+ Chen --cc=devicetree @ vger . kernel . org" <paul-pl.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Sunny Shen <sunny.shen@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bosser Ye <bo.ye@mediatek.com>
+Add MDP-RSZ hardware description for MediaTek MT8196 SoC
 
-In the kernel-6.6 IRQ subsystem, there is a case of IRQ retrigger:
-Due to the possibility of electrical signal glitches causing false interrupts for edge-triggered type IRQs,
-it is necessary to clear any potential false interrupts or re-triggered interrupt signals from the interrupt
-source between disabling and enabling the edge-triggered IRQ.
-
-When the module using this IRQ may disable the IRQ as needed and then If the disabled IRQ is triggered, the IRQ
-subsystem will set the istate of the corresponding IRQ descriptor to pending. After the module using this
-IRQ completes other tasks, it clears the pending state on the GIC using irq_set_irqchip_state(). However,
-the pending state in the IRQ descriptor's istate is not cleared, which leads to the module receiving the IRQ
-again after enabling it, even though the interrupt source has not triggered, because the IRQ subsystem
-retriggers the interrupt based on the pending state in the IRQ descriptor.
-
-[ 1015.093550] [T300432] ccci_fsm: CPU: 3 PID: 432 Comm: ccci_fsm Tainted: P        W  OE      6.6.30-android15-8-o-g3d1adaff8937-4k #1 4e6ae6c76d81ac612e982b5e84c39c55b332fb77
-...
-[ 1015.093609] [T300432] ccci_fsm: Call trace:
-[ 1015.093628] [T300432] ccci_fsm:  dump_backtrace+0xec/0x138
-[ 1015.093668] [T300432] ccci_fsm:  show_stack+0x18/0x28
-[ 1015.093697] [T300432] ccci_fsm:  dump_stack_lvl+0x50/0x6c
-[ 1015.093728] [T300432] ccci_fsm:  dump_stack+0x18/0x24
-[ 1015.093747] [T300432] ccci_fsm:  gic_retrigger+0x74/0x7c
-[ 1015.093764] [T300432] ccci_fsm:  check_irq_resend+0x8c/0x16c
-[ 1015.093777] [T300432] ccci_fsm:  irq_startup+0x2ec/0x360
-[ 1015.093788] [T300432] ccci_fsm:  enable_irq+0x84/0xf4
-[ 1015.093798] [T300432] ccci_fsm:  wdt_enable_irq+0x2c/0xec [ccci_md_all 029335d5c64293385f41211c1eb232e631274782]
-[ 1015.094263] [T300432] ccci_fsm:  md_cd_start+0x34c/0x510 [ccci_md_all 029335d5c64293385f41211c1eb232e631274782]
-[ 1015.094707] [T300432] ccci_fsm:  ccci_md_start+0x38/0x48 [ccci_md_all 029335d5c64293385f41211c1eb232e631274782]
-[ 1015.095150] [T300432] ccci_fsm:  fsm_routine_start+0x448/0x1ed8 [ccci_md_all 029335d5c64293385f41211c1eb232e631274782]
-[ 1015.095593] [T300432] ccci_fsm:  fsm_main_thread+0x20c/0xa78 [ccci_md_all 029335d5c64293385f41211c1eb232e631274782]
-[ 1015.096035] [T300432] ccci_fsm:  kthread+0x110/0x1b8
-[ 1015.096049] [T300432] ccci_fsm:  ret_from_fork+0x10/0x20
-...
-[ 1015.096067] [    C0] swapper/0: HWIRQ 107 handle_fasteoi_irq[714] set desc->istates to IRQS_PENDING // CPU execute IRQ's ISR
-
-Solution: the corresponding upstream patch modifies the irq_set_irqchip_state(...) in the IRQ subsystem.
-The purpose is to clear the pending state in the IRQ descriptor's istate when successfully clearing the
-corresponding IRQ on the GIC.
-
-Test: Stress tests have verified that the patch is effective and does not cause any side effects.
-
-Signed-off-by: Bosser Ye <bo.ye@mediatek.com>
+Signed-off-by: Sunny Shen <sunny.shen@mediatek.com>
 ---
- kernel/irq/manage.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ .../display/mediatek/mediatek,mdp-rsz.yaml    | 46 +++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rsz.yaml
 
-diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
-index 8a936c1ffad3..ad1cefb2e5aa 100644
---- a/kernel/irq/manage.c
-+++ b/kernel/irq/manage.c
-@@ -2893,8 +2893,11 @@ int irq_set_irqchip_state(unsigned int irq, enum irqchip_irq_state which,
- #endif
- 	} while (data);
- 
--	if (data)
-+	if (data) {
- 		err = chip->irq_set_irqchip_state(data, which, val);
-+		if (!err && which == IRQCHIP_STATE_PENDING && !val)
-+			desc->istate &= ~IRQS_PENDING;
-+	}
- 
- out_unlock:
- 	irq_put_desc_busunlock(desc, flags);
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rsz.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rsz.yaml
+new file mode 100644
+index 000000000000..6642b9aa651a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rsz.yaml
+@@ -0,0 +1,46 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rsz.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek display multimedia data path resizer
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  MediaTek display multimedia data path resizer, namely MDP-RSZ,
++  can do scaling up/down to the picture.
++
++properties:
++  compatible:
++    const: mediatek,mt8196-disp-mdp-rsz
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: MDP-RSZ Clock
++
++required:
++  - compatible
++  - reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        disp_mdp_rsz0: disp-mdp-rsz0@321a0000 {
++            compatible = "mediatek,mt8196-disp-mdp-rsz";
++            reg = <0 0x321a0000 0 0x1000>;
++            clocks = <&dispsys_config_clk 101>;
++        };
++    };
 -- 
-2.17.0
+2.34.1
 
 
