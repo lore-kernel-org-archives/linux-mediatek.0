@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1142C0219B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 14:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BB6C0219B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 14:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cGS99IR6r+vXb195phTJWqUilac9XLQ8gIYYmxhuvCY=; b=ZhCLflqHpnqXNIFIMjtn+vERXY
-	p3D9kExIKMNLdWMCeDAFXUvarP+8OSDAX38qgYjvbFKkLOgBmLyvXU4NE6mdqoJQt6mqG1JQsaaUJ
-	K8BddvuxOVGdYe4Y2iP2pIyQOzwaVg/+kb280tdCLMGm27Tv8JhFXLRxtJR/8u6yibRc9iynErUZl
-	lwEpMksVsjYmoZQBDYMxWlSXaxpu5Qe8OgmsulEV7nK05auONQua2Y2aBDIptTd/KJxads4RlaOke
-	N1peJdgHeLqXaf/zm6s3z6BqrYbeonBZuUklp/kn8GV5OcPK7HFiJFixBKXzURm8SOVDBu94Shk7z
-	DdP2o0qA==;
+	bh=RTukOEt0duVEzWcVCW2PRpsFfsww49TWD0w2DSDo5+o=; b=WhimnmG779pRb6rXcw0mbjvfHo
+	LynNtiTJWDfnxrPRG4AS4x0nZxlXH/MN9vTJbqWugumqc6GsEsLFTJoHE6vquk8xV0c4DugoNpa5g
+	oVckrmjnLfwZVxM+GsC7AIWX8zYzgnfM3xq5oiUQRQy2DScLGjyHrVXZAx2sm6KAXxWXwoDBHDY6E
+	Txi1+D1n+/oUFfvwiWMjqQTJb1WxOp5d9suZao1UnluWufM2k/ks8Qdh59wkUnAZ+YlUkKNrLV0Qw
+	dK0pG51kJU6qrheVnj2bFHMyI1gtDgQZki/SbKlHnLvbGV9cDbN8+Z65js0metke0oUwFLtjTdnm2
+	S+iEfX+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thr7T-0000000460m-2aYu;
-	Tue, 11 Feb 2025 14:20:11 +0000
+	id 1thrJB-000000047rL-21PL;
+	Tue, 11 Feb 2025 14:32:17 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thr1v-000000044sm-2ByR;
-	Tue, 11 Feb 2025 14:14:28 +0000
+	id 1thrHk-000000047cZ-34la;
+	Tue, 11 Feb 2025 14:30:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739283266;
-	bh=r8GSQt4Fmtk2nUUtsyC/9rHcXIOOOzg63rG69cNIuyg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=laCkDPdTknse85VhAVNJGiJax/fYG8P+5oXXFk/i2BLlJUdp/VjazgWQlXPg4gX58
-	 KnvtkuiXZaLTbMa4T9+YGkrvIi2YQ5FuLFRX7MIJsgg4FFiTh9mejtBJYXo97QPUdE
-	 YqDPYTb6IIaz09HuftSoc5Q+gaIJscJI+kmLDGbiK5ayzTn1f3mljYFT4SnQYwu0UQ
-	 7VIwC0FdZZB8hIviV1SeETqUdvhvVG43PiyMtbVHznMlLqpgmLQxr1slFzcKLhn7yg
-	 DytAyLij5vj0ILhHQXmYl5XIQgFbldJ8Zzt1aQYBRC71WJXhgkCE/afpKq4JocZp7r
-	 x8qTMi8figsQA==
-Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1739284246;
+	bh=tbjejdOouQ6QCsqtz77VNBHHu2oCAUL9pu87VbKonQ8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Cpj4GfBArV/d+/vj523v6D8xuOowB6481kI4EOBzfLzYPJFUOo3fboXCd7xUwJkqK
+	 4EWkZ6iXu1Qoflc+N0T6g6OEqN9DbAFgtSCV19eGUId+fy6YtuK7VxhJADupJtzHRs
+	 GHtv3tK4zMxd8yilOuOSkuXqksXQPEr8dDbuRLjZ92M3y9veHdZKB5XlK6WlTbtG8s
+	 SftwxK6M2ZFN5c5NywRyuT7oI2Bnm5+KThQDPrsI/pRvGh5SktlRjWjWdRECGlJ7pw
+	 BbJYr6cKkAF6o+k18eUTShluGHpb95XHJOPcPG2sPiXm8DClYHtFzs7Fw98qC170du
+	 K1rjmsawSlQDw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0A64117E14D5;
-	Tue, 11 Feb 2025 15:14:24 +0100 (CET)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 11 Feb 2025 15:13:10 +0100
-Subject: [PATCH v4 3/3] arm64: dts: mediatek: mt8370: Enable gpu support
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D32C617E0EAD;
+	Tue, 11 Feb 2025 15:30:45 +0100 (CET)
+Message-ID: <6350446a-f253-4702-b1da-02e2915a3d30@collabora.com>
+Date: Tue, 11 Feb 2025 15:30:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250211-mt8370-enable-gpu-v4-3-77deb7a75c23@collabora.com>
-References: <20250211-mt8370-enable-gpu-v4-0-77deb7a75c23@collabora.com>
-In-Reply-To: <20250211-mt8370-enable-gpu-v4-0-77deb7a75c23@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Steven Price <steven.price@arm.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1739283261; l=1948;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=r8GSQt4Fmtk2nUUtsyC/9rHcXIOOOzg63rG69cNIuyg=;
- b=RVgfl0lBwwqykOnm/tB7a5QYLPJ6sXQ+7vvt2INaxPYJU0jW5tuJvYC24r5c3i3nKE+Ek1rWl
- bwgif4T/yvxDR5oWO/zeRR/Irr8/RIx77r+XCzRueqnHD/qvOk79nbZ
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8188: Assign apll1 clock as
+ parent to avoid hang
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Fei Shao <fshao@chromium.org>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?=
+ <Trevor.Wu@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ devicetree@vger.kernel.org, stable@vger.kernel.org
+References: <20250207-mt8188-afe-fix-hang-disabled-apll1-clk-v2-1-a636d844c272@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250207-mt8188-afe-fix-hang-disabled-apll1-clk-v2-1-a636d844c272@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_061427_740146_DEC25842 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20250211_063048_959417_4644CEBC 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,58 +83,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new gpu node in mt8370.dtsi to enable support for the
-ARM Mali G57 MC2 GPU (Valhall-JM) found on the MT8370 SoC, using the
-Panfrost driver.
-
-On a Mediatek Genio 510 EVK board, the panfrost driver probed with the
-following message:
-```
-panfrost 13000000.gpu: clock rate = 390000000
-panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
-   80000400
-panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
-   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-```
+Il 07/02/25 18:41, Nícolas F. R. A. Prado ha scritto:
+> Certain registers in the AFE IO space require the apll1 clock to be
+> enabled in order to be read, otherwise the machine hangs (registers like
+> 0x280, 0x410 (AFE_GAIN1_CON0) and 0x830 (AFE_CONN0_5)). During AFE
+> driver probe, when initializing the regmap for the AFE IO space those
+> registers are read, resulting in a hang during boot.
+> 
+> This has been observed on the Genio 700 EVK, Genio 510 EVK and
+> MT8188-Geralt-Ciri Chromebook, all of which are based on the MT8188 SoC.
+> 
+> Assign CLK_TOP_APLL1_D4 as the parent for CLK_TOP_A1SYS_HP, which is
+> enabled during register read and write, to make sure the apll1 is
+> enabled during register operations and prevent the MT8188 machines from
+> hanging during boot.
+> 
+> Cc: stable@vger.kernel.org
+> Fixes: 4dbec3a59a71 ("arm64: dts: mediatek: mt8188: Add audio support")
+> Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8370.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8370.dtsi b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-index cf1a3759451ff899ce9e63e5a00f192fb483f6e5..7ac8b8d0349455922a73f35db607b2b27cad23d7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-@@ -59,6 +59,22 @@ &cpu_little3_cooling_map0 {
- 				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- };
- 
-+/*
-+ * Please note that overriding compatibles is a discouraged practice and is a
-+ * clear indication of nodes not being, well, compatible!
-+ *
-+ * This is a special case, where the GPU is the same as MT8188, but with one
-+ * of the cores fused out in this lower-binned SoC.
-+ */
-+&gpu {
-+	compatible = "mediatek,mt8370-mali", "arm,mali-valhall-jm";
-+
-+	power-domains = <&spm MT8188_POWER_DOMAIN_MFG2>,
-+			<&spm MT8188_POWER_DOMAIN_MFG3>;
-+
-+	power-domain-names = "core0", "core1";
-+};
-+
- &ppi_cluster0 {
- 	affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
- };
+> ---
+> Changes in v2:
+> - Changed patch from explicitly enabling apll1 clock in the driver to
+>    assigning apll1_d4 as the parent for the a1sys_hp clock in the
+>    mt8188.dtsi
+> - Link to v1: https://lore.kernel.org/r/20241203-mt8188-afe-fix-hang-disabled-apll1-clk-v1-1-07cdd7760834@collabora.com
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> index 5d78f51c6183c15018986df2c76e6fdc1f9f43b4..6352c9bd436550dce66435f23653ebcb43ccf0cd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> @@ -1392,7 +1392,7 @@ afe: audio-controller@10b10000 {
+>   			compatible = "mediatek,mt8188-afe";
+>   			reg = <0 0x10b10000 0 0x10000>;
+>   			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
+> -			assigned-clock-parents =  <&clk26m>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_APLL1_D4>;
+>   			clocks = <&clk26m>,
+>   				 <&apmixedsys CLK_APMIXED_APLL1>,
+>   				 <&apmixedsys CLK_APMIXED_APLL2>,
+> 
+> ---
+> base-commit: ed58d103e6da15a442ff87567898768dc3a66987
+> change-id: 20241203-mt8188-afe-fix-hang-disabled-apll1-clk-b3c11782cbaf
+> 
+> Best regards,
 
--- 
-2.48.1
 
 
