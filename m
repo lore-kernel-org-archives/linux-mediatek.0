@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79FEC0219D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:39:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03411C0219D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:43:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H5X7mNS0fzaFL/Jeh+IGtto2CR/ZZblr9gdWcO8Sg48=; b=FMcE2csaJ3mQb6c41+GDvdtZgz
-	9SvA7G3SuvdF534D6HiXgG43YlDD4H3V+9H+qDKFs0aTp6mFyUxU1pThjFvm9ySuKzyoxJ+r+THJp
-	LE5NsrJFmXd6YgIVd68Ye0PV/XqzOAdmstAOYpR2tBoDaeMEJGy0zdQ3w0kkniXFQVchxdHrmV5qB
-	0rR45AnNb63YGtKYMIcRswebsUSFa18TWZzTYIcSsCD/+JPW+KjubS6V1qHHM8pqNL5kiwJF/Le6+
-	PI19K7nva+PlT8ez7huoS/JgTiTK5VAcTO6eFpzpFCPXKOsnq2CK4bEB2BaJWGTywo7qNZvA7U8qi
-	N8WyaFTA==;
+	bh=alK85kQSykN7KGu9xzLMvJjUUV/IfmgP1oUnM+MoMxE=; b=nRWTRFn4ZVzlSoF5Vp3JUPb0FQ
+	YTrBB+1PiQO2UYsQS6MU6ahmBXaV8NYcc53kmphY0K1giS4LSDASDs+Mmc3BcIb7NsVhgmlqH3r3r
+	uDVFUiCrcT/DgvO0uNHCjg8WqVBdR6PSWYevvLTihzTImTKx8CH6j/lGk4P3E2JCMdPwCeZtWSHjq
+	4rSo7zzLofbOxdpjATeRJAwHnI54m3QSpj8pl2s2escblcSbc4/gaBYmEEGh1TtpWOkkH2259MY6T
+	HZ2ALu/rzCoq+qU35YEGbP1CNHouscxaqVGKsHXNohCn6BPYRQEUfnW1GW79rLQmUFHLcJysqr0lk
+	veyVsW8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlnn-000000031TF-1lv5;
-	Tue, 11 Feb 2025 08:39:31 +0000
+	id 1thlrF-000000032F4-3pzU;
+	Tue, 11 Feb 2025 08:43:05 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlmM-000000031Ia-1HJu;
-	Tue, 11 Feb 2025 08:38:03 +0000
+	id 1thlp2-000000031h3-2kb6;
+	Tue, 11 Feb 2025 08:40:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C93F1A400C6;
-	Tue, 11 Feb 2025 08:36:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BA10C4CEDD;
-	Tue, 11 Feb 2025 08:37:59 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5D422A40144;
+	Tue, 11 Feb 2025 08:39:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4D22C4CEDD;
+	Tue, 11 Feb 2025 08:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739263081;
-	bh=acDJAoI2Hy9Ib3oKvNTqC5QM2P0qdH2TPw3xnelV7Aw=;
+	s=k20201202; t=1739263247;
+	bh=yfxUOCmD0cUqeG9HoTFs80RQBFgDMIs07GaFv6eezd4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZKc2PE6UVRp+bbtAjc45TWebgPOJ3XvV+R4FKs0hwT7YQvom7Gc2tdw4AlDDH/gCK
-	 fEu9mhJNsNjcYEU4y7jH5SkbfWHqJpHzBzbj/t3Y2lzpn6aSIIZfrEdqjrm47e5O8j
-	 UqfOooY02/rHae3bIhMBz5XW/Ui1srWUPKF9mGL69E3sUO5c/LQyZKt9kpIlrBuEIv
-	 Lr2oI2qGEjajZTYdz/tsgr5RYcmZ/b5ZyK9xEDR5OTTtL7DrS2hdm1v0lfSxUwHHh2
-	 Rh6o8o3qx3VGDiIoGocinaEQlfEbAW7Z3OEfIoMhKO75UkbUVSSUqEDpKvMypA1ibz
-	 aXDVKjQIY67fA==
-Date: Tue, 11 Feb 2025 09:37:57 +0100
+	b=LVdIrvsA3Ht1DgAfLA+b9wt7TVUMk00P//UZrubEEcFld6Uu3p36AS3GGw3PAn9d2
+	 GxW2sE+52XrKmk0bkzeYTqAWAcJxcVLo8lVhMgErfYJsMFNn9aT2aZ04Y8ihOporMv
+	 pdRCPmNUoOIpSjgsFUJTjVEVbpnXisDLwKjN5hP5hVWsXwhDNLAuCkc3PGEgwpoy9w
+	 +e4g8LhB+VnpQ9iWHDwq93J+rKf63T1Ir6mMwTs2fq4J1hT9AxRpqaYdJfYw4Jejhi
+	 OPM70gsFKgKLHOh+yAozEUPNV3g0QHdph2IyrxRfQMQudr0Y+6KGUNun4HU/ErFrxL
+	 Ysn/NLU3MXudA==
+Date: Tue, 11 Feb 2025 09:40:44 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -54,18 +54,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
 	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH net-next v3 11/16] dt-bindings: arm: airoha: Add the NPU
- node for EN7581 SoC
-Message-ID: <20250211-judicious-polite-capuchin-ff8cdf@krzk-bin>
+Subject: Re: [PATCH net-next v3 12/16] dt-bindings: net: airoha: Add
+ airoha,npu phandle property
+Message-ID: <20250211-chinchilla-of-luxurious-focus-950fc7@krzk-bin>
 References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
- <20250209-airoha-en7581-flowtable-offload-v3-11-dba60e755563@kernel.org>
+ <20250209-airoha-en7581-flowtable-offload-v3-12-dba60e755563@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250209-airoha-en7581-flowtable-offload-v3-11-dba60e755563@kernel.org>
+In-Reply-To: <20250209-airoha-en7581-flowtable-offload-v3-12-dba60e755563@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_003802_481004_ABB23A19 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20250211_004048_757943_670292C0 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +80,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 09, 2025 at 01:09:04PM +0100, Lorenzo Bianconi wrote:
-> This patch adds the NPU document binding for EN7581 SoC.
-> The Airoha Network Processor Unit (NPU) provides a configuration interface
-> to implement wired and wireless hardware flow offloading programming Packet
-> Processor Engine (PPE) flow table.
+On Sun, Feb 09, 2025 at 01:09:05PM +0100, Lorenzo Bianconi wrote:
+> Introduce the airoha,npu property for the NPU node available on
+> EN7581 SoC. The airoha Network Processor Unit (NPU) is used to
+> offload network traffic forwarded between Packet Switch Engine
+> (PSE) ports.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  .../devicetree/bindings/arm/airoha,en7581-npu.yaml | 71 ++++++++++++++++++++++
->  1 file changed, 71 insertions(+)
+>  Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..a5bcfa299e7cd54f51e70f7ded113f1efcd3e8b7
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml
-
-arm is for top-level nodes, this has to go to proper directory or as
-last-resort to the soc.
-
-> @@ -0,0 +1,71 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/airoha,en7581-npu.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha Network Processor Unit for EN7581 SoC
-> +
-> +maintainers:
-> +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> +
-> +description:
-> +  The Airoha Network Processor Unit (NPU) provides a configuration interface
-> +  to implement wired and wireless hardware flow offloading programming Packet
-> +  Processor Engine (PPE) flow table.
-
-Sounds like network device, so maybe net?
-
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - airoha,en7581-npu
-> +      - const: syscon
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 15
-
-You need to list the items.
-
-> +
-> +  memory-region:
-> +    maxItems: 1
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> index c578637c5826db4bf470a4d01ac6f3133976ae1a..0fdd1126541774acacc783d98e4c089b2d2b85e2 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> @@ -63,6 +63,14 @@ properties:
+>    "#size-cells":
+>      const: 0
+>  
+> +  airoha,npu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
 > +    description:
-> +      Phandle to the node describing memory used to store NPU firmware binary.
+> +      Phandle to the node used to configure the NPU module.
+> +      The Airoha Network Processor Unit (NPU) provides a configuration
+> +      interface to implement hardware flow offloading programming Packet
+> +      Processor Engine (PPE) flow table.
 
-s/Phandle to the node describing//
+I see Conor had here objections, but it looks fine to me. So unless
+Conor naks it:
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
