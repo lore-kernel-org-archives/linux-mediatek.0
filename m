@@ -4,85 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F50CC0219B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 14:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C76B0C0219B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 15:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6uWVDSjgS6JIISR3Ig9ZHEbq8J0PF0Iw5i8ZVq3tF3Q=; b=Bsv2fdbLmkxCduMrkn5Ciin/JE
-	RuDWH/CqmcOZTvL93ZQInK20hPBLbAWs6neNeFjeyGgALYMRur6Z+9xXUNNuTF54zvgYux/qKx7ZA
-	BS2uzlqwWdkc0j+Tc14pQHgs9bDi+Vzw54ptLrmTNh6K3vzDZZmFCuVKUkvpDtnthXNomUIDfpHZY
-	tb8Qs5TjVxTl11MTcvqJ9KwLJYXEiITYlQNUMYiLI5hen++DAmPJ6SxXwroFCq0GBv4z+lcaB/sCI
-	w+fcOjcbSoL7IUQNUo6x3543wfG9W6x9ar9Wlcetuxh/NlpsvPL/A52OGsNnQgs9sokzQPBRpbz8d
-	CZXdUT/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Aj/zZWLiOp0sZr8jGtsU7IqlQMK+yhKTerymVsQwIeU=; b=KYkkgHBXPnvhMRok7zgdQ5FTvb
+	3yphBjrcC96ujMGuzUEmUKIw8gwC4QhPI8vtNODcfGcviz/L/FuA1t9NlCU4j3JTk+QJNtpJbl0Ww
+	Bo+X1oVax/U3aglsbK6BDsd6QZFB9cQJZQqNNpEnmWpSafRyu3H+mXH2BHWOn18T5NFboAm/jq+I9
+	GT1EE1dR+o/uMJvjIzZS+RvS2wUx3Q2M2x/bh00e8Hh+4jDkLNHXQuR2IZjepgtblLblHdSyQDTDh
+	h5F3oNE/D2CELk+PNhB/lNWWtGiilTrAWEWUZUFnFLBj8QLQROTXmoijC1uEdLriCd7LMAZdmPeUz
+	AhRF7jcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thref-00000004CM9-0kQ2;
-	Tue, 11 Feb 2025 14:54:29 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1thscz-00000004Nv0-2yfi;
+	Tue, 11 Feb 2025 15:56:49 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thrWe-00000004Ayi-3m5r;
-	Tue, 11 Feb 2025 14:46:13 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-ab7dd005cb0so17209066b.3;
-        Tue, 11 Feb 2025 06:46:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739285171; x=1739889971; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=6uWVDSjgS6JIISR3Ig9ZHEbq8J0PF0Iw5i8ZVq3tF3Q=;
-        b=gTqgiTPIMiHt31oGiC+G1CljFFZbEZODF3VilgGRB3Q+iJlwiZl40fVe36BhUC7LSr
-         X7nXVo2X1bvAXa5HbHoELcT+QQxPoc62VYDmfq+BNYCLcm18Op+7HjQ/Es8Lb305eUz/
-         ddgH7wYdRiqv14DIux5cppUtxrfQtv0t9E76Xa6/Fk2Z//vFXy/PB9FxOR4BxVCAP3x0
-         v9QVZDP4oM+4XK/jRPqRCJ+diBJnGNaUOGRNTzehP5EdQ2mDH0YLEkzTlDJNqDCTKBVf
-         e+7NlAo3p/PRSFizdhEdhhIgpKDP3UOOkJqyuKdT3TP4MRNxkR8sWumzcMNy7ohJgIWo
-         AbIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739285171; x=1739889971;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6uWVDSjgS6JIISR3Ig9ZHEbq8J0PF0Iw5i8ZVq3tF3Q=;
-        b=YpZ5S0VAXYRxhXiMMRolEhhX8lAwJXOnWsOqbRbqeG1MHXrVtp0AFBLYk/PImOmXlw
-         MxTiMswn6n4HSUmaIK95DkDXxSi256fiW0Q5PhBfO5HlqhLxOfEJ8hpEJwLjOGrKwddE
-         /Wy/toeDlTvUDChhTX+7tMvY0jVldA1htgudNOBhOnb2Em1a8FDTBS++3/MQPAMKiSoy
-         q+j61vOYOeCKsPPG4exZuyyry8QKmw4/BxwtODSeKi0UtLZ/oVB2rxik4SDkOEfgeEBD
-         RSvPu7m3vMfMyTSHHvaGE7dApPyeT+8XDTBrt0Qpm2w4deH1ZszCqfAsxHXxcYD9qNsG
-         cu3g==
-X-Forwarded-Encrypted: i=1; AJvYcCV6eZgpExVOfVovW/3PvGjoF/sUpoiAj8x7gY1AZMFzsrSPMaNjRBvaDVAQe9JHouXttR1nwgbUCKDCijgec7ly@lists.infradead.org, AJvYcCVkvwcbEggj6ozBK4T6qYwF3y0r6vA1M0vT65sXDzV/pG7dimraRk3U0UFpV0m6ygj+gtBmB1j8FteH8bRwULI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzNNufYgN1GnCr+6qdkvYSFNu9EZCZar22FZTnWuoVIabeS4iEX
-	u5FzXOfGws/WfPKOxoGLfyIW+cK6warGqugGPgAbMQ6AyR04Qd7i
-X-Gm-Gg: ASbGncv39ircAuj+2OIBsyMNndnUmdNizdGdhjWCr/uDDII1gEW55W1i4+lqKiC/eXw
-	SGdD3Iw1crPwa+jcFlEEUOdnAKOOjC9DngHE7iMFjgU6DEj0goVnRMVRN+AhJa3+gxNI7yDuoUC
-	VWvhXeKgQoZhvdBhgfTJ+KNGFCL4HzIMXE1t6m0mejEhLFTgBTMR86opn//2HpU/to9+ZvvS7X0
-	d0Mi7wZu8s/H87vfyvefyEkdnW4aEeq0qPaz14IsuvJhvtQBvTp1F/tTenqSukCin83sbnWYPKg
-	X2w=
-X-Google-Smtp-Source: AGHT+IERuaTSU0FjfFqdLB/FrYmkIXox+hXTzqKNJOTUEB7oHG1m+Cn9NfYp8r8pLkOryAH3/WRqyQ==
-X-Received: by 2002:a17:907:96aa:b0:ab6:eec4:c9c2 with SMTP id a640c23a62f3a-ab7e0eeb604mr95768366b.7.1739285170925;
-        Tue, 11 Feb 2025 06:46:10 -0800 (PST)
-Received: from skbuf ([86.127.124.81])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab78e561ba0sm898239966b.137.2025.02.11.06.46.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Feb 2025 06:46:10 -0800 (PST)
-Date: Tue, 11 Feb 2025 16:46:06 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v6 net-next 05/14] bridge: Add filling forward path from
- port to port
-Message-ID: <20250211144606.ljj2rddz32p6gooe@skbuf>
-References: <20250209111034.241571-1-ericwouds@gmail.com>
- <20250209111034.241571-6-ericwouds@gmail.com>
- <20250211132832.aiy6ocvqppoqkd65@skbuf>
- <9ae3548a-844e-4449-9c00-5dd79e804922@gmail.com>
+	id 1thsbY-00000004NjB-2vw1;
+	Tue, 11 Feb 2025 15:55:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 52A9AA40808;
+	Tue, 11 Feb 2025 15:53:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EC65C4CEDD;
+	Tue, 11 Feb 2025 15:55:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739289319;
+	bh=M1/OJ7oCvUKvR27rDX+k2QZ5R/MtI/RabABd+WlSS2M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=T7Egnyot+P43in3laKiCZaR1gSsKw5uM9r0lOuRYvosobgpNBigDHP8Am8gCLpE8a
+	 GO2Dcq3UCKC8kGoGwvtlh5J0KPmsyezcuvqgaX3PaxMUGPi7May6tXN8pKQ8FAVy/k
+	 /6qsMjMpF1fg/f+nhFjOCd1A6hPVVgXGse9TPzz81ozWZCVGR5+T0A6BNrh46h3h7H
+	 MsXwnNzaIzgHglo5kQZkUytlVbIADfU8pfYR1ka/Y4hxSd5YybRalnKdpxaI1+n4EQ
+	 L3mYy/I5G4pIGv5ohZYMGlOuj5hA9QSvPR+9HM86+mRrlLjRW2MxxD7NYwkMi+1PWS
+	 n/alb/+eEEkQA==
+Message-ID: <d81c46ca-45de-4c69-a786-9c74bd06333c@kernel.org>
+Date: Tue, 11 Feb 2025 16:55:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9ae3548a-844e-4449-9c00-5dd79e804922@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] dt-bindings: memory-controllers: Add mediatek
+ common-dramc dt-bindings
+To: =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20241212090029.13692-1-crystal.guo@mediatek.com>
+ <20241212090029.13692-3-crystal.guo@mediatek.com>
+ <c978937a-e589-4e9a-ba37-265dbfc1b252@kernel.org>
+ <8746bc17ef28da632e9ca765d2c3ce6bdc56c6f4.camel@mediatek.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <8746bc17ef28da632e9ca765d2c3ce6bdc56c6f4.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_064612_938844_A6ECD824 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20250211_075520_872313_FE5EC199 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,14 +125,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Ivan Vecera <ivecera@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Pablo Neira Ayuso <pablo@netfilter.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Joe Damato <jdamato@fastly.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Alexander Lobakin <aleksander.lobakin@intel.com>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 11, 2025 at 03:43:22PM +0100, Eric Woudstra wrote:
-> Thanks. I will correct both in v7.
+On 11/02/2025 13:56, Crystal Guo (郭晶) wrote:
+>>> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+>>> ---
+>>>  .../mediatek,common-dramc.yaml                | 129
+>>> ++++++++++++++++++
+>>>  1 file changed, 129 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,common-dramc.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,common-dramc.yaml
+>>> b/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,common-dramc.yaml
+>>> new file mode 100644
+>>> index 000000000000..c9e608c7f183
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,common-dramc.yaml
+>>> @@ -0,0 +1,129 @@
+>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>> +# Copyright (c) 2024 MediaTek Inc.
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: 
+>>> https://urldefense.com/v3/__http://devicetree.org/schemas/memory-controllers/mediatek,common-dramc.yaml*__;Iw!!CTRNKA9wMg0ARbw!mztYfN3n6_IAx78S44PFOetQS51-h6obm2HHrjEVRI-HJYyzJ2VWbbik2rn3pybssUBOT4gp5GD5-Mgk$
+>>> +$schema: 
+>>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!mztYfN3n6_IAx78S44PFOetQS51-h6obm2HHrjEVRI-HJYyzJ2VWbbik2rn3pybssUBOT4gp5AGE5Eci$
+>>> +
+>>> +title: MediaTek Common DRAMC (DRAM Controller)
+>>
+>> Common? Is this a real thing? Please describe the hardware.
+>>
+> 
+> Sorry, my original description was not accurate. It has been changed
+> to:
+> 
+> Title: MediaTek DRAM Controller (DRAMC)
+> 
+>>> +
+>>> +maintainers:
+>>> +  - Crystal Guo <crystal.guo@mediatek.com>
+>>> +
+>>> +description: |
+>>
+>> Do not need '|' unless you need to preserve formatting.
+>>
+> 
+> Okay, remove it in v2.
+> 
+>>> +  The DRAM controller of MediaTek SoC provides an interface to
+>>> +  get the current data rate of DRAM.
+>>
+>> So not common here?
+> 
+> Sorry, my original title description was not accurate.
+> 
+>>
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,common-dramc
+>>
+>> This has to be SoC.
+>>
+> 
+> Change to "mediatek,mt8196-dramc"
+> 
+>>> +
+>>> +  reg:
+>>> +    minItems: 9
+>>
+>> Why this is flexible?
+>>
+> The original implementation was incorrect and has been corrected in v2
 
-Please wait a bit more for v7. I'm trying really hard to ask a pertinent
-question on patch 11/14, which currently I don't understand very well
-what it does and why it is needed.
+
+You replied to two months old review. I don't have the context and I do
+not have these emails in my inbox, therefore if you have any questions I
+cannot answer.
+
+Please implement entire feedback or discuss within reasonable amount of
+time. If something is unresolved, please mention it in the changelog of
+future versions.
+
+Best regards,
+Krzysztof
 
