@@ -4,73 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082FFC0219D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:17:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28665C0219E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 08:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q9ICIc2tHJNQXL43Nm1ltNdAEKKkMBQM1HN7ctpn74w=; b=T7PK7uC+w3Xzvhxn1G66snyz/E
-	7cFsKj6jmUueokkjXj1ePmFQdBsD0sL7sbWsjqkCENkirdOIVcJD/utr2Z0ORGR5yGDtUFuwtC1c3
-	iuhvhPa36A/yWgOb0HvzkZmibMKQWLwnq+qvp/RPWTgwe4rkPjZBobsOQfQK7GZnP8h/Cn2TJc4Sk
-	puIymqWUZtne0x1KWBHE0LZawhsu8m1x3GkeEesLfH205g7MLR3rFPY0zKQrzIyHd/DiPJDgkRESU
-	qQfhLDHZPE3ikTOOzHcoGRRVEoJ/K3N7rlKb6Ge2mKFamcIrCUTqURAwi+Cm0CiXtJQfo7UAoymM8
-	mvDsW2Jw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KkOLO3+N7FDczkhby7I7NSNhK0zE55+iVoHuoQGhHfU=; b=gUcw0LsmZOIdaACVrl5nr/TI2C
+	WE96/1tymBLcrikgxKC+A5b573z0cEZsBdTbulQvJFi+1Q+rc0NinT7tYSh6U33t1OqvM/ujCfaAY
+	0A6NlnAIxl7A1M3JObf5Lw/1B/pVJJ+CmoHj6foF0Bujx0uC1vt6c0pp9CdzB0J0PN73aa9QSV0f7
+	A2dM0+dlvJM+eq+90EJeJ/lIZLFyYZRbfX84+QE4wxrsS0VfaiXa5USnZEylKa/Jl7fTwq9DxIXZl
+	Fbwqg/e1KiHAOBhk7FNZt3bUZXc0a8JCHY8j5Hwx3VxPZDVDJRMeZ4icNaFb40IoaU7w4wp81rVtg
+	aSG5FTAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlSB-00000002xvl-3ecP;
-	Tue, 11 Feb 2025 08:17:11 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1thlg7-0000000309f-0Fju;
+	Tue, 11 Feb 2025 08:31:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thlQS-00000002xaB-2Q8Y
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Feb 2025 08:15:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 1EA21442FD;
-	Tue, 11 Feb 2025 08:15:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1739261720;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Q9ICIc2tHJNQXL43Nm1ltNdAEKKkMBQM1HN7ctpn74w=;
-	b=nKLX3de0d0HIIzHbm+CIp52F9ue5vYVCTzvvHdDxneSpqrhIL5elf4QqQiKNEzcx/bOJST
-	7+fAaYfqFEyucRQsniuJrgqyJy9YliBom1a9dam1MS8g+sS9lhb89rPwX65EUhwBu/x0Rj
-	GI5cdcHpK2R1HVRWguC21DwYLEz9um7ZUPKyVsAZsQbpTnsBfJXhS9xse/CbBuM6/Vl4YP
-	BgDC+fF5gB1k9oageil87XBMus6NuJMuRoQ/pwTFtbsY6pQvKRxJmAUV+u0BsMI2zzZdem
-	HOWcXP/KT+0AVZO3Zzh9DGlhNy+gRHNLO6+y51P/mXAfMYb2fX3UOp7YWU972w==
-Date: Tue, 11 Feb 2025 09:15:07 +0100
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Bo-Cun Chen <bc-bocun.chen@mediatek.com>, Chad Monroe
- <chad.monroe@adtran.com>, John Crispin <john@phrozen.org>, "Russell King
- (Oracle)" <linux@armlinux.org.uk>, Vladimir Oltean <olteanv@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>, "David S. Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org
-Subject: Re: upstream Linux support for Ethernet combo ports via external
- mux
-Message-ID: <20250211091507.59238fc1@fedora-1.home>
-In-Reply-To: <Z6qHi1bQZEnYUDp7@makrotopia.org>
-References: <Z6qHi1bQZEnYUDp7@makrotopia.org>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1thlei-00000002zyq-0iyW;
+	Tue, 11 Feb 2025 08:30:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KkOLO3+N7FDczkhby7I7NSNhK0zE55+iVoHuoQGhHfU=; b=LJtzUx+ulhZt4G+JPmklhp3CQy
+	VpW+z8s/lxKZ4MNnArQTuL0wywYBXT6EGP572JGISeMb63hMwOP3biQtyOOHA9ZobmIXCi0Fa4qDO
+	ZRqZXR0nPoO6V1CVzGYR/St6q6qBXhhO1TtPbdcW4hu+L5W60uQharMvvH4i2RUrrUhWbGnLHjFP0
+	wQclO2rsYi95uCGdpqy02Vu/fE4m7wnUSNDomXT9PQmYM4OiBUYbXk3S+hrnqBzvuzJzNivm8pZsG
+	pNyMVjITPiLaZJcsPkIAaem9qAxD1YjKV5H9MXYXPOuAwj2tCGg7t53ylopRnjt9+Mrs9sPpfawNu
+	P6dW+RWA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thlee-00000000Wmj-3SLG;
+	Tue, 11 Feb 2025 08:30:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AB97B5C0352;
+	Tue, 11 Feb 2025 08:29:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18BD5C4CEDD;
+	Tue, 11 Feb 2025 08:30:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739262603;
+	bh=KkOLO3+N7FDczkhby7I7NSNhK0zE55+iVoHuoQGhHfU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GPsM920zDczb0Yxbv7ZH2WHn+G3xOMFEpF64NBqd6gsSIm5tbxc1IKsEdAfvHv2Fw
+	 0W++zDfDwxRFm66KqDgAtlEydhrenhMuobv6sz8L+ACiLe13VptrzGPOWk5z7XADrX
+	 +3cgoSS6WfiH7G5PmPuX+HpYdMlTM+VbPGejhQZOcJ4OdMv8h0VICBos6cZvJDU6Y5
+	 IVe/TmIqD4eHPMzO4XKk0YkpPkCe2gs3S8H76b4tmE42OXc0huuELbovx04aoD0Zol
+	 DoTkj8SHhx8n8GuOJgYIGT+upF+Q78k/WbBj/LcnUgUzVZ7MEQdhHIa9WF66oXtfq4
+	 Fw2UlaZeNpYhw==
+Date: Tue, 11 Feb 2025 09:29:59 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
+	Steven Price <steven.price@arm.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/3] dt-bindings: gpu: mali-bifrost: Add compatible
+ for MT8370 SoC
+Message-ID: <20250211-judicious-tentacled-chihuahua-9bb5b6@krzk-bin>
+References: <20250207-mt8370-enable-gpu-v3-0-75e9b902f9c1@collabora.com>
+ <20250207-mt8370-enable-gpu-v3-1-75e9b902f9c1@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdegtdeglecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkjghfohfogggtgfesthhqredtredtjeenucfhrhhomhepofgrgihimhgvucevhhgvvhgrlhhlihgvrhcuoehmrgigihhmvgdrtghhvghvrghllhhivghrsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeekheegieejkeetfffhleehteffgefhfffhueefieefffejfeethfevudetudeuueenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecukfhppedvrgdtudemtggsudelmeekugegtgemlehftddtmegttgeftgemgeelfhegmeefieehheemsgehjeegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugegtmeelfhdttdemtggtfegtmeeglehfgeemfeeiheehmegsheejgedphhgvlhhopehfvgguohhrrgdquddrhhhomhgvpdhmrghilhhfrhhomhepmhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudehpdhrtghpthhtohepuggrnhhivghlsehmrghkrhhothhophhirgdrohhrghdprhgtphhtthhopegstgdqsghotghunhdrtghhvghnsehmvgguihgrthgvkhdrtghom
- hdprhgtphhtthhopegthhgrugdrmhhonhhrohgvsegrughtrhgrnhdrtghomhdprhgtphhtthhopehjohhhnhesphhhrhhoiigvnhdrohhrghdprhgtphhtthhopehlihhnuhigsegrrhhmlhhinhhugidrohhrghdruhhkpdhrtghpthhtohepohhlthgvrghnvhesghhmrghilhdrtghomhdprhgtphhtthhopegrnhgurhgvfieslhhunhhnrdgthhdprhgtphhtthhopehhkhgrlhhlfigvihhtudesghhmrghilhdrtghomh
-X-GND-Sasl: maxime.chevallier@bootlin.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250207-mt8370-enable-gpu-v3-1-75e9b902f9c1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_001525_244025_2231A709 
-X-CRM114-Status: GOOD (  32.46  )
+X-CRM114-CacheID: sfid-20250211_083005_377573_642335B9 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,228 +93,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+On Fri, Feb 07, 2025 at 04:18:30PM +0100, Louis-Alexis Eyraud wrote:
+> Add a compatible for the MediaTek MT8370 SoC, with an
+> integrated ARM Mali G57 MC2 GPU (Valhall-JM, dual core).
+> This new compatible is needed for this SoC support, as the other
 
-On Mon, 10 Feb 2025 23:11:07 +0000
-Daniel Golle <daniel@makrotopia.org> wrote:
+You *always* need new compatible.
 
-> Hi,
->=20
-> Looking for ways to support a passive SerDes mux in vanilla Linux I
-> found Maxime's slides "Multi-port and Multi-PHY Ethernet interfaces"[1].
+> existing compatibles for the same GPU architecture (MT8188, MT8192) do
+> not match the required power domain number.
+> The other compatibles (especially MT8186) cannot be reused because of
+> GPU architecture difference.
 
-I'm actively working on getting this exact case supported. The MUX I
-have is an RGMII MUX, but gpio-driven just as in your case :) I'll make
-sure to CC: you in the next iterations
+Just FYI: you must not *ever* reuse compatibles. What you wanted is to
+mark devices compatible and not. You claim devices are not compatible
+because of this and that.
 
-> The case I want to support is probably quite common nowadays but isn't
-> covered there nor implemented in Linux.
->=20
->  +----------------------------+
->  |            SoC             |
->  |    +-----------------+     |
->  |    |       MAC       |     |
->  |    +----+-------+----+     |
->  |         |  PCS  |   +------+
->  |         +---=3D---+   | GPIO |
->  +-------------=3D-------+---=3D--+
->               |            |
->            +---=3D---+       |
->            |  Mux  <-------+
->            +-=3D---=3D-+
->              |   |
->             /     \
->      +-----=3D-+   +-=3D-----+
->      |  PHY  |   |  SFP  |
->      +-------+   +-------+
+Please fix the commit msg because I am afraid later people will use it:
+"I can reuse the compatible because that commit msg was acked".
 
-The work in question is here :
 
-https://lore.kernel.org/netdev/20250210095542.721bf967@fedora-1.home/
-
-Preliminary work was merged here :
-
-https://lore.kernel.org/netdev/20240821151009.1681151-1-maxime.chevallier@b=
-ootlin.com/
-
-To summarize the whole process :
-
-I started with a use-case similar as yours, but instead of PHY - SFP
-combo I have a PHY-PHY combo. That's fairly analoguous to what you have
-(say you plug a copper SFP on the cage, you now have 2 parallel PHYs
-behind the MAC)
-
-So the first step was the intrduction of phy_link_topology to allow
-tracking PHYs attached to a MAC, even if they aren't directly on the
-active datapath (the PHY isolated by the MUX). That was clearly a
-pre-requisite for any kind of muxing.
-
-=46rom all the feedback (among other, from Oleksji Rempel, Russell King,
-Marek Beh=C3=B9n), it appears that this setup you have is not that unusual,
-and also ressembles other setups such as :
-
-        +-- SFP
-MAC - PHY
-        +-- RJ45
-
-If we look at the big picture from the end-user's point of view,
-there's no difference between a MAC connected to a dual-port PHY and a
-MAC connected to a PHY + SFP through a MUX, it's just a NIC with 2
-ports.
-
-So where I'm at today is that I'm trying to get a "generic"
-representation of front-facing ports accepted, that will be the kernel
-objects used for configuration.
-
-If user wants to enable the SFP port for example, if the SFP is behind
-a MUX, the MUX will be cntrolled to set the correct output, and if the
-SFP is behind a PHY, then the PHY driver will be in charge of the
-mux'ing.
-
-> So other than it was when SoCs didn't have built-in PCSs, now the SFP is
-> not connected to the PHY, but there is an additional mux IC controlled
-> by the SoC to connect the serialized MII either to the PHY (in case no
-> SFP is inserted) or to the SFP (in case a module is inserted).
->=20
-> MediaTek came up with a vendor-specific solution[2] for that which works
-> well -- but obviously it would be much nicer to have generic, vendor-
-> agnostic support for such setups in phylink, ideally based on the
-> existing gpio-mux driver.
->=20
-> So I imagine something like a generic phylink-mux, controlled by hooking
-> to the module_insert and module_remove remove SFP ops (assuming the
-> moddef0 signal is connected...).
->=20
-> Before I get my hands dirty, please join my line of thought for one
-> moment, so we can agree on a sketch:
->=20
-> Does everyone agree that phylink would be the right place to do this?
-
-As Andrew says, we can't really let phylink alone handle that. The
-approach I have taken is to model the MUX as a dedicated driver, that
-would have "parent" ops allowing to notify whatever is upstream of the
-mux to know about state change :
-
-> DT bindings could look like this (option A):
->  ...
->     mux: mux-controller {
->         compatible =3D "gpio-mux";
->         #mux-control-cells =3D <0>;
->=20
->         mux-gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
->     };
->=20
->     mux0: mii-mux {
->         compatible =3D "mii-mux";
->         mux-controls =3D <&mux>;
->         #address-cells =3D <1>;
->         #size-cells =3D <0>;
->=20
->         channel@0 {
->             reg =3D <0>;
->             sfp =3D <&sfp0>;
->             managed =3D "in-band-status";
->             module-presence-controls-mux;
->         };
->=20
->         channel@1 {
->             reg =3D <1>;
->             phy-handle =3D <&phy0>;
->             phy-connection-type =3D "sgmii";
->         };
->     };
->   };
->=20
->   soc {
->       ethernet@12340000 {
->           mii-mux =3D <&mux0>;
->       };
->   };
-
-I have some code written for that, and I have a very similar binding in
-the end :
-
-		eth1: ucc@2200 {
-			far-id =3D <0 1 3 4 5 6 7>;
-			device_type =3D "network";
-			compatible =3D "ucc_geth", "cs,mia-far";
-			cell-index =3D <3>;
-			reg =3D <0x2200 0x200>;
-			interrupts =3D <34>;
-			interrupt-parent =3D <&qeic>;
-			local-mac-address =3D [ 00 00 00 00 00 00 ];
-			rx-clock-name =3D "clk12";
-			tx-clock-name =3D "clk12";
-			phy-mux-handle =3D <&phymux>;
-			pio-handle =3D <&ucc3pio>;
-			phy-connection-type =3D "rmii";
-		};
-
-		phymux: phymux@0 {
-			compatible =3D "gpio-phy-mux";
-			status =3D "okay";
-			select-gpios =3D <&qe_pio_c 21 1>;
-
-			phy-node@0 {
-				phy-handle =3D <&phy2>;
-				phy-mode =3D "rmii";
-			};
-
-			phy-node@1 {
-				active-low;
-				phy-handle =3D <&phy3>;
-				phy-mode =3D "rmii";
-			};
-		};
-
-The mux node can of course include SFP.
-
->=20
-> or like this (option B):
->  ...
->     mux: mux-controller {
->         compatible =3D "gpio-mux";
->         #mux-control-cells =3D <0>;
->=20
->         mux-gpios =3D <&pio 7 GPIO_ACTIVE_HIGH>;
->     };
->   };
->=20
->   soc {
->       ethernet@12340000 {
->           sfp =3D <&sfp0>;
->           phy =3D <&phy0>;
->           phy-connection-type =3D "sgmii";
->           mux-controls =3D <&mux>;
->       };
->   };
->=20
->=20
-> Obviously option A is more expressive, but also more complex, and I'm
-> not 100% sure if all that complexity is really needed in practise.
-> However, for "better safe than sorry" reasons I'd opt for option A,
-> unless anyone comes up with a better idea.
-
-Maybe we can sync our work, I'm all in to get more hands on this. The
-current roadmap I have in mind is :
-
- - Get the port representation stable and accepted
- - Get muxing working for the "simple" case of PHY-driven muxes, which
-includes a new netlink API, and muxing operations for front-facing ports
- - Get PHY muxes going, with a PHY mux framework and mux drivers
-(gpio-driven, MMIO-register driven, completely passive muxes based on
-PHY powerdown...)
-
-I've made some attemps to get the phy mux support first, but we've
-discussed that extensively with Andrew and Russell on that thread
-here and the path forward would be to get that problem first from the
-perspective of the ports :
-
-https://lore.kernel.org/netdev/20241004161601.2932901-1-maxime.chevallier@b=
-ootlin.com/
-
-Thanks,
-
-Maxime
+Best regards,
+Krzysztof
 
 
