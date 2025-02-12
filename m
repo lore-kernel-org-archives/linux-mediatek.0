@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE29C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01735C021A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BMUWx50kpTrgGLiiJsGiGKpzbJ9p1c/efMM3/I4YH7M=; b=A2aRF1f8PBJEI+byM3zW/h38EC
-	udP2+5GDxB25GrUSKBCC8sZhGQq5flTdve1XWS9OKrdvZ4VHKG0TnzL4YyKvSBL83KYel+r2rA9gN
-	U2W5zThReX1IjlRw7t35XoP/GFnz8yTvejIXwvc7CF1BB8k/9DqGHktJ8SGZnM2/PyPj5LRVO8Mpa
-	8ZKQu3pWT99WW4xrThZ7Rem4HXjUqjF2UEPHAAf/mqYU2QWCluh4DluUbGhQ9UYk5xODLz0K2l8Dm
-	zVl7W1zDPQC/7e3sON3BmnZE1mfUmucaPA1p82m7gUoHv187z9EQl2Wur1w4Tu6enLkVqjomItiDj
-	xDaitwyg==;
+	bh=3yQoYy4cuA4mzA0DKHv3VzkC9jasrIyQDTDAp6AzCb4=; b=jKCv8NfheAZJHrj0UvL0N7gtHe
+	uSQ7A10neW/fio+LnZM7u+TSwNePM0QrOZ5akCkwNu5dy7VFAOsanTYZTucz+/wPKSnhkajx3IUuP
+	p4ThnCBC5yuvrldcnH4r+YNOtwUlbt+bGOOlBEOFjr7XcLPwFeItyETbqiqe1P6HsbvYTkbXMTabA
+	gTRvE5v5iYrWSPwHHwu81EZ3ncw7vByFUuJTT4MzX6GFofmkCRpfXIjNCShWqYLM1BQe3vl3wTcWe
+	YTXPURalB/4x+qfW4Jigq8cd7QlZpwkLp8tc3vGQExIUgUKXzFilToXMoNk/5KHvjWTgli/7IQBCn
+	G9+z4tow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9qE-00000006xda-2mHe;
-	Wed, 12 Feb 2025 10:19:38 +0000
+	id 1ti9qP-00000006xgM-0S29;
+	Wed, 12 Feb 2025 10:19:49 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9XY-00000006tfV-3kMM;
+	id 1ti9XZ-00000006tfy-2ef3;
 	Wed, 12 Feb 2025 10:00:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739354419;
-	bh=0F/0qyTpLblJN9bn3oUmfcJlpoiaYpBNrYXmmjYDh2E=;
+	s=mail; t=1739354420;
+	bh=4OBZG7uX/8CsjJnTc/XKtHc+h4pbWEM3iLpBrSk7XGs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PN+zMyYhBYF0Rtv/CBkX7kCjGOZ4oMLI4PD5HbgrS+k4+5S/yI3yi3YeNL0omuQN0
-	 0CNV7ABcioAGJrefwmykvcVFjSre/+0g7KCGzBIttiM2V5zJ7QY8FwGDRWq+B27bOE
-	 q9jTGF07XG1eGO6Btn2+Qv9NNl8DDOwwUTAfPmyZk1gjzfpVfHlC+F2Bq30TIW0FPu
-	 iB2sQpyu+tC66TqujIe6Hl759NkGTeWyQUrr7UkCVR7js9XtPDpNVnJEDkvve2NMbp
-	 ijuDQQomBqv9hREVOaSu6GYWWIpWtPMrTajfaVTlYqWUvSx/5bCk9e94/e8ge110ls
-	 hBLeAggH3LoMw==
+	b=mNP2xFoNXIDZ7NNXdzVu7NRA4380M6RigKXK+u401dsLvBr+ubh0hYGfQqMGB3jBW
+	 cGsndad8GZZ43KSuv05hI/rIl1TEs7ZqfCy81jLQ9G8w+IbfMPGdOzUZWVT7qYbO3o
+	 TH1Cr3Rf0Qt7vVtIiFpzb85NSHDx6IdcxL2k+W0Cb4iydppLdZN2lmkjYpIQvJsRrA
+	 79dPOXNi3496vj6M/NyPRqtTkypqVwn8YjsBJlLZWljnzlaCwnq+uKZquteTzpQV38
+	 wE+D6EtbCF0uvBNwYbAHuLf6UhJ/JC+c1sPLszRkNByTclR0yQ/bHChyl5mct0tXXd
+	 A4Nwbq2ons27g==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF98117E154B;
-	Wed, 12 Feb 2025 11:00:18 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A648717E154E;
+	Wed, 12 Feb 2025 11:00:19 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: angelogioacchino.delregno@collabora.com,
@@ -53,17 +53,17 @@ Cc: angelogioacchino.delregno@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	pablo.sun@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH v1 2/8] soc: mediatek: mtk-mmsys: Fix MT8188 VDO1 DPI1 output selection
-Date: Wed, 12 Feb 2025 11:00:06 +0100
-Message-ID: <20250212100012.33001-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 3/8] soc: mediatek: mtk-mmsys: Add compile time check for mmsys routes
+Date: Wed, 12 Feb 2025 11:00:07 +0100
+Message-ID: <20250212100012.33001-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250212100012.33001-1-angelogioacchino.delregno@collabora.com>
 References: <20250212100012.33001-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_020021_074826_5694E498 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20250212_020021_813681_360B5F63 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,35 +78,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The VDO1_MERGE4 hardware (merge5 software component) should be
-set to enable output to DPI1_SEL by setting BIT(2) but, despite
-the intention being exactly that, this won't work because the
-declared register mask is wrong as it is set as GENMASK(1, 0).
+Every MediaTek SoC with multimedia capabilities has an array of
+structure mtk_mmsys_routes that defines a multimedia connection
+between hardware components.
 
-Register MERGE4_MOUT_EN in VDO1 has four used bits [3, 0] so
-fix the mask to reflect that.
-That, in turn, allows the mmsys driver to actually set BIT(2)
-in this register, fixing the MERGE4 output to DPI1 selection.
+This connection is activated by writing a (masked) value in each
+specific register, and the association between from->to path and
+value to write is expressed as an entry in that array.
 
-Fixes: c0349314d5a0 ("soc: mediatek: Support MT8188 VDOSYS1 in mtk-mmsys")
+Failing to set the right path does not give any meaningful error
+and makes things to simply not work as the data will either not
+be retrieved from the right input port, or will be written to
+the wrong output port (or both): since a misconfiguration may
+effectively still be a possibly correct configuration at the HW
+level, this may be only giving side effects in terms of simply
+getting no functionality but, again, no errors.
+
+In order to reduce room for mistakes in declarations of the
+mmsys routes, add a macro that compile-time checks that the
+provided value does at least fit in the register mask.
+
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mt8188-mmsys.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/soc/mediatek/mtk-mmsys.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mt8188-mmsys.h b/drivers/soc/mediatek/mt8188-mmsys.h
-index 6bebf1a69fc0..a1d63be0a73d 100644
---- a/drivers/soc/mediatek/mt8188-mmsys.h
-+++ b/drivers/soc/mediatek/mt8188-mmsys.h
-@@ -343,7 +343,7 @@ static const struct mtk_mmsys_routes mmsys_mt8188_vdo1_routing_table[] = {
- 		MT8188_DISP_DPI1_SEL_IN_FROM_VPP_MERGE4_MOUT
- 	}, {
- 		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DPI1,
--		MT8188_VDO1_MERGE4_SOUT_SEL, GENMASK(1, 0),
-+		MT8188_VDO1_MERGE4_SOUT_SEL, GENMASK(3, 0),
- 		MT8188_MERGE4_SOUT_TO_DPI1_SEL
- 	}, {
- 		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF1,
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index d370192737ca..d5f6fbdc6f72 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -80,6 +80,20 @@
+ 
+ #define MMSYS_RST_NR(bank, bit) (((bank) * 32) + (bit))
+ 
++/*
++ * This macro adds a compile time check to make sure that the in/out
++ * selection bit(s) fit in the register mask, similar to bitfield
++ * macros, but this does not transform the value.
++ */
++#define MMSYS_ROUTE(from, to, reg_addr, reg_mask, selection)		\
++	{ DDP_COMPONENT_##from, DDP_COMPONENT_##to, reg_addr, reg_mask,	\
++	  (__BUILD_BUG_ON_ZERO_MSG((reg_mask) == 0, "Invalid mask") +	\
++	   __BUILD_BUG_ON_ZERO_MSG(~(reg_mask) & (selection),		\
++				   #selection " does not fit in "	\
++				   #reg_mask) +				\
++	   (selection))							\
++	}
++
+ struct mtk_mmsys_routes {
+ 	u32 from_comp;
+ 	u32 to_comp;
 -- 
 2.48.1
 
