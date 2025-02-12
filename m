@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3A3C021A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 18:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E855FC02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 19:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZoN3YQWZuS7gLH6YxFu9pp95THUbAVtpkTvz38GaATY=; b=aPT7xl8npQhGcZ9FNQBA0qZGM7
-	5INGgMhlOlXroO2HKh60ZVsaOQDhsLxcsPZZeNqy8VoRZR+CaOFPR8+nCBEX0BRrEm1SeiFl+uCMV
-	5tJCn9GLRhTh4Mg+YsL9uw/xiZCcG7jIuE6FtMsG6oBYM/LM4ji95LDpBzjDAiIPRYYLnMS+ocRAM
-	odL+B3EIeIktSR6HoEWHmlb2bK4T+vConJe29/JFHYBNvT+3QYSZg/zJYbo6Ipq3+Gy6EpUm5eVj9
-	CRIAGYgeu2PAzXLlKONFPnz76MqQTGMfuksdl19MAPm9QEA8MXyZO6k6o9PRyx/l1qEVwvwXEvJlh
-	B1jkvSxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IlCPPCMoqGTANvgdM81Ho64fytQhFh0y5vX0r3XRQ0E=; b=Tvc6Zm3me5+kFqtvDFb3TqryKj
+	T7NiMvHFTNOEllnZpXUghDU8oopvORUPrB4UrppR72CTy17NMUriVBwDgNHbHhF/XxDcJcjhQ/9Pb
+	nQFzbIx8NVFIcbB0Bq3e9CLfOnBdzqsU40NA7Tj4WG4Q9wkb7JDY2JLC1i6NyDugcLR0D2j/hOiyX
+	w3S14Zi8CAmxt1Z0U8CSNZ5eSnSc31VKLFqVHQbwPjPoR5UYtrEPM4mOBwSp/AhASTZtIVCs1gXGm
+	zQIA+uddF2szUpDn/ukeOysxpnNaYCELSamiICDGWtyNb5shAABoCCtE3ymXUzEl5MKiTn01CDg3g
+	vuYS4thQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiHv7-00000008YmN-0Iei;
-	Wed, 12 Feb 2025 18:57:13 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1tiI3P-00000008a4l-0MEp;
+	Wed, 12 Feb 2025 19:05:47 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiHv4-00000008YhP-3PRv
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Feb 2025 18:57:12 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4YtSGr3K9RzlgTxf;
-	Wed, 12 Feb 2025 18:57:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1739386619; x=1741978620; bh=ZoN3YQWZuS7gLH6YxFu9pp95
-	THUbAVtpkTvz38GaATY=; b=4fQKToov+7bwrlUC3Yjn57OE6wdkw/xyGLaZht05
-	Vts8DefGP0zIq/wI7s7QqT3Z0kcJcvJSI+LPNmYNzv3EOwmrhk8ydBvdVR9FlkR3
-	MFyFp4FTVTfRSgtxQ47IvIQgQXCaAYYvzsDDroDiHi6A3MJyulQ+MgvJFb5NodUv
-	PIbu9PIH7R2yh85PBL7MHY2d5mUVwtaP9Gbtu6NkkIbgDI+ibparZq1ZsTJy36Kl
-	L49kqD3IRA8CZMd9/VhGjdue02XsUgs1z+A2g6hjTyKyqiFuzhiEVe5LdCTK1yuO
-	WWUKk1z1dZ4xyixQ1iw/AuGyHjDuMfDZbVqggc7Qwj24HQ==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id dePFMeHZ9OkH; Wed, 12 Feb 2025 18:56:59 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4YtSGZ2ZGzzlgTwc;
-	Wed, 12 Feb 2025 18:56:53 +0000 (UTC)
-Message-ID: <2fed801d-9cba-40cc-b50e-7ec9de041f1a@acm.org>
-Date: Wed, 12 Feb 2025 10:56:53 -0800
+	id 1tiI1y-00000008ZrY-13O5;
+	Wed, 12 Feb 2025 19:04:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1739387058; x=1770923058;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=BxoXSqBhEvRgMwVZ/Lsu4gBKNSrjVQ6Vg0s/Z8jm2bw=;
+  b=CxO6A8hCMTmkhSJ3aM9SdEJ8LWAXcUY0qB8do8LRpH/ikX6Gy4C0VEcz
+   RmqTeGo1C8ZJeeQAPvuvUlazNmXQxUFAtIq29iAjoYNRmqbTlYIuENwxd
+   TmDsEkSU3gV6pTycoAOQUan/doRdl8EFEcd7ipdjl7KGooo7S0SE7J9kq
+   2OvyIiKuFlSiqsCA/UGEvDRCJKeNP0pP3wBhmVH1Hc/ngPDTR9NgP+Y8s
+   Iu8LiwJJ2ZAYSnv4oS09emJ7H3OJMZMbQxkteHdI+viU2rDQ3xkvK1RLK
+   RWWf8dPoDDkx5rks3aY7zA0aXU939CXKbPoxWBJ/dIBzCYiW2Eyvw4wra
+   w==;
+X-CSE-ConnectionGUID: gSmL4KRBQP+nbv48/bOYFQ==
+X-CSE-MsgGUID: xlYNxt7HSMiG5T2LAY1AZQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11343"; a="50692898"
+X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
+   d="scan'208";a="50692898"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 11:04:18 -0800
+X-CSE-ConnectionGUID: 9fa88icUR72valktVDhKhw==
+X-CSE-MsgGUID: Di7M1Du7RpyTDVR3QRe60Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
+   d="scan'208";a="117915659"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 11:04:13 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1tiI1p-0000000Avre-3MI0;
+	Wed, 12 Feb 2025 21:04:09 +0200
+Date: Wed, 12 Feb 2025 21:04:09 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Andi Shyti <andi.shyti@kernel.org>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Stefan Roese <sr@denx.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gregory CLEMENT <gregory.clement@bootlin.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: Re: [PATCH v1 1/8] i2c: Introduce i2c_10bit_addr_from_msg()
+Message-ID: <Z6zwqbzd5evG0H2z@smile.fi.intel.com>
+References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
+ <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: add hba parameter to trace events
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com, subhashj@codeaurora.org, sutoshd@codeaurora.org
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com
-References: <20250212101723.716477-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250212101723.716477-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_105710_866707_D9C52937 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250212_110418_302513_AE7B5F5E 
+X-CRM114-Status: GOOD (  21.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,40 +102,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/12/25 2:14 AM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
-> index 84deca2b841d..e175020a2fcc 100644
-> --- a/drivers/ufs/core/ufs_trace.h
-> +++ b/drivers/ufs/core/ufs_trace.h
-> @@ -83,17 +83,19 @@ UFS_CMD_TRACE_TSF_TYPES
->   
->   TRACE_EVENT(ufshcd_clk_gating,
->   
-> -	TP_PROTO(const char *dev_name, int state),
-> +	TP_PROTO(const char *dev_name, struct ufs_hba *hba, int state),
->   
-> -	TP_ARGS(dev_name, state),
-> +	TP_ARGS(dev_name, hba, state),
->   
->   	TP_STRUCT__entry(
->   		__string(dev_name, dev_name)
-> +		__field(struct ufs_hba *, hba)
->   		__field(int, state)
->   	),
->   
->   	TP_fast_assign(
->   		__assign_str(dev_name);
-> +		__entry->hba = hba;
->   		__entry->state = state;
->   	),
+On Wed, Feb 12, 2025 at 07:36:46PM +0100, Geert Uytterhoeven wrote:
+> On Wed, 12 Feb 2025 at 17:35, Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > There are already a lot of drivers that have been using
+> > i2c_8bit_addr_from_msg() for 7-bit addresses, now it's time
+> > to have the similar for 10-bit addresses.
 
-Why to include the HBA pointer in tracing events if this pointer is not
-used in any TP_printk() call?
+...
 
-dev_name == dev_name(hba->dev) so the dev_name argument should be left
-out from all tracing events that now have a HBA pointer as argument.
+> > +static inline u8 i2c_10bit_addr_from_msg(const struct i2c_msg *msg)
+> 
+> Having never used 10-bit addressing myself, or even looked into it,
+> it took me a while to understand what this helper really does...
+> So this returns the high byte of the artificial 16-bit address that
+> must be used to address a target that uses 10-bit addressing?
+> Hence I think this should be renamed, to better match its purpose.
 
-Thanks,
+Since you are giving a constructive feedback, please, propose the name.
 
-Bart.
+> > +{
+> > +       /*
+> > +        * 10-bit address
+> > +        *   addr_1: 5'b11110 | addr[9:8] | (R/nW)
+> > +        *   addr_2: addr[7:0]
+> 
+> I think the second comment line does not belong here, as this function
+> doesn't care about that part.
+
+I think the comment is okay to stay. It explains the full picture which is
+helpful. It may be extended to say that the function returns only addr_1.
+
+> > +        */
+> > +       return 0xf0 | ((msg->addr & GENMASK(9, 8)) >> 7) | (msg->flags & I2C_M_RD);
+> > +}
+> 
+> Probably you also want to add a similar but much simpler helper to
+> return the low byte?
+
+Wouldn't it be too much?
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
