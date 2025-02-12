@@ -4,118 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A63BC02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 06:28:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC81C02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 06:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kcY3b9SQcQ435Naa36eW7SElnt1qAF2rcRt4gVjJvUk=; b=Yar6/BZP/KKTgAsP/hQR9OH7+2
-	Gn5uvzwlBUhWv4owre+mJpZ2N5uG8dyRAOK4IIdJRGTNCDK4BgPXKXflojmwiQM93FQX86GAe8VQ5
-	qXXZpydbRJHW32lHVWB7CC7OXC8e53xgxqPoufJVqBE4Sd+TzPz1qJ2EGR27N7ZnJptJ0G9Am4/0t
-	HfjalSinNRsa9boE5wvS4XwG8j4EcIIu6dFQb4S9DGtlDKjh+95a9qzHPf+J9TH+xJcX/k3ode0Um
-	lufAfH7/aFDUfAphIzrln0vHgDGawP871ZQSXcVk/veELYNKBoA0hK9wLW+ySOuYYT+Nt0Zq+udPC
-	In+o1XZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KEy6pEobXOu7/UzBRGh/yfFsLlUWWHtB4P1bKj6uuSo=; b=wCiLNXxXDj+FGvhSJmSRw7UCR7
+	tjpD2owp0odxkMclKUXamPRIDWfKs5WuDWStkwSlS8osaR/5ag7924Yq+BTLf1IVMrlbtv9ea3EFZ
+	r27Qb4QNRPciSpddZsv1XNGlJmE3nB1W1hP7LNv867maMc/PftmaUQd0WKZiaeAAS4kMIwH9NhTlU
+	d1nuz5O4kir2pJ0MnAI5BtdICVRFkU/RShnHxqdGwJrNmcE8ZJ5pXP/4wRRUL0Q2DBqfbdBMYu2n8
+	NcneuP2EKtH6EMLsp48UsgCIDO03kOxcLozh4ysP3qilSCCz/N2R2tFnwAOxJd97bJAAUoKjJ86Jo
+	cd3LAiaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti6Ej-00000006LsY-14QU;
-	Wed, 12 Feb 2025 06:28:41 +0000
+	id 1ti6ac-00000006PoR-1JTA;
+	Wed, 12 Feb 2025 06:51:18 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti6DI-00000006LaP-3G4r;
-	Wed, 12 Feb 2025 06:27:13 +0000
+	id 1ti6ZB-00000006PbH-2Yzr;
+	Wed, 12 Feb 2025 06:49:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 804D2A40F8F;
-	Wed, 12 Feb 2025 06:25:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 920F6C4CEE6;
-	Wed, 12 Feb 2025 06:27:03 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 57BDEA40F6F;
+	Wed, 12 Feb 2025 06:48:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CCE9C4CEDF;
+	Wed, 12 Feb 2025 06:49:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739341631;
-	bh=1/zhjK+0+G05v1hwwn5tz/H+8Cz4vmPRU7clBN3k0ls=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=j2u+pa9v36ZbhRZph5rV/yE+zheeNljbSA2hCK+QxpqUUozTROOu+Bp9e9rPsiCn4
-	 sr/F2tK6INMhPIZHrkjHpv/yxCHNwYrsM+87zlpR119ozsWj1qVRrCYlXouW0KM8W4
-	 CQR6VyZyoMu8gqW16WkpKAebx/0UiE8DIPWFsHGgqX9w/f6KStjHuQaWA3TaVQnBm3
-	 NV/kFzuXc1SiT0U9sZz0+JGhp0Bo+Ds8/saVBFz20xn9tx3GXscJj15FDGXCD0aJL4
-	 BG11EpfhoMYdyx7SIPli3YJUVgVKGqVRDm1/mm/Yv3o+k4aL5Sc1l+OQaJwLQhtaEW
-	 3qW5TzMlSD/lA==
-Message-ID: <66b554f0-e11c-4801-9a5e-2ccb85a105fe@kernel.org>
-Date: Wed, 12 Feb 2025 07:27:00 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v3 13/16] net: airoha: Introduce PPE
- initialization via NPU
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- upstream@airoha.com
-References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
- <20250209-airoha-en7581-flowtable-offload-v3-13-dba60e755563@kernel.org>
- <20250211-fanatic-smoky-wren-f0dcc9@krzk-bin> <Z6t7SuFurbGwJjt_@lore-desk>
+	s=k20201202; t=1739342988;
+	bh=TQTxyc4gErD77Nn6rbZxay/35+TdsfVXIQZ5PlMQYi0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=koYdMOi2cpNanzXzA9//aq6WOPBLTOr4hW+GWxd16dUFJS2V60pi2NKXVClMzd1jU
+	 w4NHASYymVmSATBGYNuRV+EiN/lF4M6b/ZtCtv5MjAgjhsDxDhXx4iuQ5fA8pgGAPC
+	 DYaz2xiEsSGj2/JUAQ66vkFr5E116q0ktfO/EGj57RnPZggLfIAtEhajALbnFaoM2h
+	 Sadtbz6WQMXHhVGAUwwp9ajCH9evjyEtVvU0IQiBO02cZAbqymTu8NL+coIPCAXIyG
+	 o2SzXBbjG/T8zscDSWSDtwBM2Kh9FeJCsHxLhW0F6FIYl1oMaGjTtl0MpgkbBMAjZc
+	 Jodb1FEjchpxw==
+Date: Wed, 12 Feb 2025 07:49:44 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <Z6t7SuFurbGwJjt_@lore-desk>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, 
+	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH net-next v3 11/16] dt-bindings: arm: airoha: Add the NPU
+ node for EN7581 SoC
+Message-ID: <20250212-polite-finicky-vulture-b5adc3@krzk-bin>
+References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
+ <20250209-airoha-en7581-flowtable-offload-v3-11-dba60e755563@kernel.org>
+ <20250211-judicious-polite-capuchin-ff8cdf@krzk-bin>
+ <Z6t7s0m1xzsnjAsV@lore-desk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <Z6t7s0m1xzsnjAsV@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_222712_954061_12C6E3F2 
-X-CRM114-Status: GOOD (  29.92  )
+X-CRM114-CacheID: sfid-20250211_224949_814833_414FA4E3 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,136 +82,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/02/2025 17:31, Lorenzo Bianconi wrote:
->> On Sun, Feb 09, 2025 at 01:09:06PM +0100, Lorenzo Bianconi wrote:
->>> +static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
->>> +{
->>> +	struct airoha_npu_core *core = core_instance;
->>> +	struct airoha_npu *npu = core->npu;
->>> +	int c = core - &npu->cores[0];
->>> +	u32 val;
->>> +
->>> +	airoha_npu_rmw(npu, REG_WDT_TIMER_CTRL(c), 0, WDT_INTR_MASK);
->>> +	val = airoha_npu_rr(npu, REG_WDT_TIMER_CTRL(c));
->>> +	if (FIELD_GET(WDT_EN_MASK, val))
->>> +		schedule_work(&core->wdt_work);
->>> +
->>> +	return IRQ_HANDLED;
->>> +}
->>> +
->>> +struct airoha_npu *airoha_npu_init(struct airoha_eth *eth)
->>> +{
->>> +	struct reserved_mem *rmem;
->>> +	int i, irq, err = -ENODEV;
->>> +	struct airoha_npu *npu;
->>> +	struct device_node *np;
->>> +
->>> +	npu = devm_kzalloc(eth->dev, sizeof(*npu), GFP_KERNEL);
->>> +	if (!npu)
->>> +		return ERR_PTR(-ENOMEM);
->>> +
->>> +	npu->np = of_parse_phandle(eth->dev->of_node, "airoha,npu", 0);
->>> +	if (!npu->np)
->>> +		return ERR_PTR(-ENODEV);
->>
->> Why? The property is not required, so how can missing property fail the
->> probe?
+On Tue, Feb 11, 2025 at 05:32:51PM +0100, Lorenzo Bianconi wrote:
+> On Feb 11, Krzysztof Kozlowski wrote:
+> > On Sun, Feb 09, 2025 at 01:09:04PM +0100, Lorenzo Bianconi wrote:
+> > > This patch adds the NPU document binding for EN7581 SoC.
+> > > The Airoha Network Processor Unit (NPU) provides a configuration interface
+> > > to implement wired and wireless hardware flow offloading programming Packet
+> > > Processor Engine (PPE) flow table.
+> > > 
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > ---
+> > >  .../devicetree/bindings/arm/airoha,en7581-npu.yaml | 71 ++++++++++++++++++++++
+> > >  1 file changed, 71 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml
+> > > new file mode 100644
+> > > index 0000000000000000000000000000000000000000..a5bcfa299e7cd54f51e70f7ded113f1efcd3e8b7
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/arm/airoha,en7581-npu.yaml
+> > 
+> > arm is for top-level nodes, this has to go to proper directory or as
+> > last-resort to the soc.
+> > 
+> > > @@ -0,0 +1,71 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/arm/airoha,en7581-npu.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Airoha Network Processor Unit for EN7581 SoC
+> > > +
+> > > +maintainers:
+> > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > > +
+> > > +description:
+> > > +  The Airoha Network Processor Unit (NPU) provides a configuration interface
+> > > +  to implement wired and wireless hardware flow offloading programming Packet
+> > > +  Processor Engine (PPE) flow table.
+> > 
+> > Sounds like network device, so maybe net?
 > 
-> similar to mtk_wed device, airoha_npu is not modeled as a standalone driver,
-> but it is part of the airoha_eth driver. If you think it is better, I can
-> rework it implementing a dedicated driver for it. What do you think?
+> yes. Do you mean to move it in Documentation/devicetree/bindings/net/ ?
 
 
-Whether it is separate or not, does not matter. Behavior in both cases
-would be the same so does not answer my question. But below does however:
+Yes... and no, because after second look at your driver it looks more
+like a mailbox. So basically I don't know. I usually hope contributors
+know better. :)
 
-> 
->>
->> This is also still unnecessary ABI break without explanation/reasoning.
-> 
-> At the moment if airoha_npu_init() fails (e.g. if the npu node is not present),
-> it will not cause any failure in airoha_hw_init() (so in the core ethernet
-> driver probing).
-
-
-Indeed, it will fail airoha_ppe_init() but airoha_ppe_init() is not
-fatal. You will have dmesg errors though, so this should be probably
-dev_warn.
-
-> 
->>
->>> +
->>> +	npu->pdev = of_find_device_by_node(npu->np);
->>> +	if (!npu->pdev)
->>> +		goto error_of_node_put;
->>
->> You should also add device link and probably try_module_get. See
->> qcom,ice (patch for missing try_module_get is on the lists).
-> 
-> thx for the pointer, I will take a look to it.
-> 
->>
->>> +
->>> +	get_device(&npu->pdev->dev);
->>
->> Why? of_find_device_by_node() does it.
-> 
-> ack, I will fix it.
-> 
->>
->>> +
->>> +	npu->base = devm_platform_ioremap_resource(npu->pdev, 0);
->>> +	if (IS_ERR(npu->base))
->>> +		goto error_put_dev;
->>> +
->>> +	np = of_parse_phandle(npu->np, "memory-region", 0);
->>> +	if (!np)
->>> +		goto error_put_dev;
->>> +
->>> +	rmem = of_reserved_mem_lookup(np);
->>> +	of_node_put(np);
->>> +
->>> +	if (!rmem)
->>> +		goto error_put_dev;
->>> +
->>> +	irq = platform_get_irq(npu->pdev, 0);
->>> +	if (irq < 0) {
->>> +		err = irq;
->>> +		goto error_put_dev;
->>> +	}
->>> +
->>> +	err = devm_request_irq(&npu->pdev->dev, irq, airoha_npu_mbox_handler,
->>> +			       IRQF_SHARED, "airoha-npu-mbox", npu);
->>> +	if (err)
->>> +		goto error_put_dev;
->>> +
->>> +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++) {
->>> +		struct airoha_npu_core *core = &npu->cores[i];
->>> +
->>> +		spin_lock_init(&core->lock);
->>> +		core->npu = npu;
->>> +
->>> +		irq = platform_get_irq(npu->pdev, i + 1);
->>> +		if (irq < 0) {
->>> +			err = irq;
->>> +			goto error_put_dev;
->>> +		}
->>
->> This is all confusing. Why are you requesting IRQs for other - the npu -
->> device? That device driver is responsible for its interrupts, not you
->> here. This breaks encapsulation. And what do you do if the other device
->> starts handling interrupts on its own? This is really unexpected to see
->> here.
-> 
-> As pointed out above, there is no other driver for airoha_npu at the moment,
-> but I am fine to implement it.
-
-I see. The second driver is there - syscon - just provided by MFD core.
-It also looks like the NPU is some sort of mailbox, so maybe NPU should
-not have been syscon in the first place, but mailbox?
-
-
+If this is onlt mailbox provider, then should be placed in mailbox. If
+this is much more (including mailbox) but main function is network, then
+could be in net. So it all depends...
 
 Best regards,
 Krzysztof
+
 
