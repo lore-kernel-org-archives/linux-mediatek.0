@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEFEC02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 19:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C28C8C021A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 19:36:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=; b=3iSs5H6H9qji/D
-	L4eVVNwPz9paTbCPmWVWnl1UxCrBNbu3qoo0cKNGUeHqXHwVYR6AlipO+dTdFRtLPQaCP6weELgyy
-	klc8tRfqAxFTVQOV3n27cYPcwNDdZsXBSzqbV6QriUf1vlhpzstTFfEUWhVBUFQEqv3HPRGYiJE7E
-	2gfDD8SAENCIVYq82AyyBZAUss5uCWC3H15W53Fq+xHNQF1sAE2oxh8BbZDkHxqTzPxq32L50v+32
-	eqXI4Vqmjb7NNYecG8y9zLb5F1RLdPDY9KP2sgKoxbi94dcjlNKYANR2Bul4UGAR3aVVKP0wbyvXq
-	feeM9O5U2MbttQn8DVSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oBQtzG5jgWAy0fJPiBU/SOSz9hcA3WZM/DGjMQ8Vqfw=; b=sixavTpBPXOtgJRJKVHNg8hb3c
+	wWmy60p/IM2xbqvf0/LWHOTXF7HbgH38U71HsjDuWlvBXEjQTwFo8gya2jBHmmpp2BNurOEVkVtog
+	n6AFxO5CUcxWZLJHzIhaZ5YFm3qsX8cydvc6XezJfADCMp3wyo03ldzlpJv0QjugUGjlVA2RtjVYs
+	rB579MC27AUhSO8OdiORgTFo0W0WYvwY6K/cZkKMYxjyAn7tFhM3/CH4VBKjBfkdv7xbOjLD14NZv
+	TAEytvVFB4RQBtoPQ+weh9XBoAqPGzM+6K+Wdl6iIiWzo6NYC/aX78HDa+e0ocvPxWlhMtPZDeheg
+	jmAzmJvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiIW9-00000008eoL-2aHj;
-	Wed, 12 Feb 2025 19:35:29 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1tiIXY-00000008fA6-301U;
+	Wed, 12 Feb 2025 19:36:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiIUh-00000008eXq-379V;
-	Wed, 12 Feb 2025 19:34:00 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5de6c708315so65227a12.0;
-        Wed, 12 Feb 2025 11:33:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739388838; x=1739993638; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=;
-        b=M9/jpvLaVjv3zvviXzp/pk4YCub9t1QtY4esbVfCUUgJ4tVOdiwnZMaY4/xLtRNLOb
-         WizZDWeRzcRwJ+hTGomLmbsn6rOcNviBuAcN4whEfmIi8ST29amqrWra+cJckhElpRyz
-         NL29d0Cayr8W18vzXDgvRKcEwWBsktTAMn1nXVpxFxOqgUroi3d9H+hWp+OppXF6Uknz
-         HCW8C5dtUT63sqcKzhGg707khDoxP15nax7WexylcpchfLey5tWiplVYWO3KMbocM/vL
-         DER66cL5/Ln775E2HWq6mRP6bwFtOOa4S42m7BygZ33LqJZNL+8Es2k3Cd6ibKie5k+i
-         qt8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739388838; x=1739993638;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=;
-        b=vUQFAYy08NyDaejf1VxrBbu8GCxoW2MlbyevqWgXjEdyd8gMNKCF17XGDf8hofZbgf
-         8BXSCtdyuqupf/xA/jBj0yTVzfMmQHe9h/xZn/ZAQP4vaYD72pXXrvEdrK/q3rHHGBvU
-         yM1AMJs0Gmo5SrY8q6YkIN56/S+bA8gpvrLMTzNHoKag0p4q/eQyB3f6d+3wVP6ouQHu
-         w2mABUuupiEsskrA3lBUnM7U2DGOmbmKShbtXdDkmnHCYkS7PUqx0HdW0JGUv8qeH7tz
-         8tYGgof6rXI4fXyiRwVPHR7R94dksQNd3kzCdp2E5QuoP3JaVYpsHkm24yHEnS9duHaY
-         q2qQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVG0GL5aHip4qhp5CkAyIZ4qUr23+YQCjxTyU3uQx7/1ycXKg+kNr6b8v7epLQLjhzF3Sz1Hz/oG3wwd1/ku3s=@lists.infradead.org, AJvYcCWpS4YBousf1xvOorz2M0+XTIX3wGplKzIv1DMatMR9ioYrqQXuSWi6hQEU4M23PWVv9iGj2HrxtClQ598n0mQr@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6xcIh/MVpMlBD1Osp+5r7z1AaXa+neJCc2ETWU85lSDCgP2qr
-	UtF4d4WDMLUfLDrXNhkVgqVVNAuApLqGtOORNRVrnNeEN3cic5wC
-X-Gm-Gg: ASbGncsxHG8RB5k8fPL8wxkRo0uFqzRlT+2fJCHYWt8k9lUkdOZ8uHaJfS1T9kQDoqW
-	0QN1TOcEz+zKrj7xreLC1WYtYiV00NxBxuij3dHefRrzmBNvK7H7Z4unCTRl/fYH2m6hlZxZ6nk
-	ETs+yvvk//HQgnprncjMwaCTOA7hJSA+yGJQrshR265EYTAD7dZocFufAtJb/y4EkhuN/mV8FpI
-	hsArIJwaKP2z8zvaCTHRGnKPNKzvXOhpRE0ULLT63cEpGmyZ4OwdhoviLKnyPxEU2biUK43QWmr
-	txK0EfkzZ5dbdqih1BDx3jx59K67ESaceBHaY9w6+4IU6B2lim+oRapgrCbIhE1yEtpw3lTgMtw
-	GxoTqOGRGTBPJ7OwY/xEPmit5x7Ogj6qc4+2ckl/Be6o9u+GWx01p9GjPtuF4p+lk/A==
-X-Google-Smtp-Source: AGHT+IHkmVd30f3deykKxL2ZIUBA3+EnIW5l4h6W1mPQ91mHlha7qyevukukOy5IENG+fcG0BHpRFA==
-X-Received: by 2002:a05:6402:2106:b0:5de:4877:ef41 with SMTP id 4fb4d7f45d1cf-5deade00a82mr4171173a12.25.1739388837360;
-        Wed, 12 Feb 2025 11:33:57 -0800 (PST)
-Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5de63a89b6asm8193610a12.46.2025.02.12.11.33.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Feb 2025 11:33:56 -0800 (PST)
-Message-ID: <fe6509ab-c186-47c1-b004-4e17a875c5c7@gmail.com>
-Date: Wed, 12 Feb 2025 20:33:52 +0100
+	id 1tiIW4-00000008emC-2tdM
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Feb 2025 19:35:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A2D035C61E3;
+	Wed, 12 Feb 2025 19:34:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A419C4CEDF;
+	Wed, 12 Feb 2025 19:35:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739388923;
+	bh=Ugf2g2Yhg5Aw7lvSOZInqiVQU41aKtxd+Iq+ubuXWEg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=uI3m2wF4Xy0uTW4CBkbjuWo3J7yN1REN3JcZj1mpdYXFEtL7T88sdAvRnb1/MVrU0
+	 HXdV7MmRBPS0YI+UXLj+AvaYht9/ohnRiXQU3tnh31cN9WYwW57S2uZmvTjg7rm4nw
+	 oekL0p384QdGbuQvSSCQ4s6AWgb+kU89zVwLeZbeYvUmavrBOZlotZjvR2VO6YQqbK
+	 jnZncsAC7MCaP/DmaCPaN/jfVVcmZLr2Ce+PLa8l2dk3LIQ9d3K2s21TZcme6sYMx0
+	 L0TcvYDJaO9zmPCvT39dPi7GgTfEVyAn7Q5nPyLTrcmfn28Vm+FuSEJlJBot2Lv4D7
+	 65O8+aKHg5kaw==
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: =?UTF-8?q?Marek=20Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>,
+	linux-pci@vger.kernel.org
+Cc: =?UTF-8?q?J=C3=BCrgen=20Gro=C3=9F?= <jgross@suse.com>,
+	=?UTF-8?q?Roger=20Pau=20Monn=C3=A9?= <roger.pau@citrix.com>,
+	Boris Ostrovsky <boris.ostrovsky@oracle.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jan Beulich <jbeulich@suse.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Deren Wu <Deren.Wu@mediatek.com>,
+	Kai-Heng Feng <kai.heng.feng@canonical.com>,
+	Shayne Chen <Shayne.Chen@mediatek.com>,
+	Sean Wang <Sean.Wang@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>,
+	linux-mediatek@lists.infradead.org,
+	regressions@lists.linux.dev,
+	xen-devel@lists.xenproject.org,
+	linux-kernel@vger.kernel.org,
+	Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH] PCI: Avoid FLR for Mediatek MT7922 WiFi
+Date: Wed, 12 Feb 2025 13:35:16 -0600
+Message-Id: <20250212193516.88741-1-helgaas@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 net-next] net: ethernet: mtk_ppe_offload: Allow QinQ
-To: Jakub Kicinski <kuba@kernel.org>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-References: <20250209110936.241487-1-ericwouds@gmail.com>
- <20250211165127.3282acb0@kernel.org>
-From: Eric Woudstra <ericwouds@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20250211165127.3282acb0@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_113359_785743_C0CAAA77 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20250212_113524_817888_C3E4C525 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +83,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Bjorn Helgaas <bhelgaas@google.com>
 
+The Mediatek MT7922 WiFi device advertises FLR support, but it apparently
+does not work, and all subsequent config reads return ~0:
 
-On 2/12/25 1:51 AM, Jakub Kicinski wrote:
-> On Sun,  9 Feb 2025 12:09:36 +0100 Eric Woudstra wrote:
->> This patch adds QinQ support to mtk_flow_offload_replace().
->>
->> Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
->> of PPPoE and Q-in-Q is not allowed.
-> 
-> AFAIU the standard asks for outer tag in Q-in-Q to be ETH_P_8021AD,
-> but you still check:
-> 
->> 			    act->vlan.proto != htons(ETH_P_8021Q))
->> 				return -EOPNOTSUPP;
-> 
-> If this is a HW limitation I think you should document that more
-> clearly in the commit message. If you can fix it, I think you should..
+  pci 0000:01:00.0: [14c3:0616] type 00 class 0x028000 PCIe Endpoint
+  pciback 0000:01:00.0: not ready 65535ms after FLR; giving up
 
-It will be the first case. mtk_foe_entry_set_vlan() is limited to using
-only 1 fixed protocol. I'll drop the reviewed-by, amend the commit
-message and send v4.
+After an FLR, pci_dev_wait() waits for the device to become ready.  Prior
+to d591f6804e7e ("PCI: Wait for device readiness with Configuration RRS"),
+it polls PCI_COMMAND until it is something other that PCI_POSSIBLE_ERROR
+(~0).  If it times out, pci_dev_wait() returns -ENOTTY and
+__pci_reset_function_locked() tries the next available reset method.
+Typically this is Secondary Bus Reset, which does work, so the MT7922 is
+eventually usable.
+
+After d591f6804e7e, if Configuration Request Retry Status Software
+Visibility (RRS SV) is enabled, pci_dev_wait() polls PCI_VENDOR_ID until it
+is something other than the special 0x0001 Vendor ID that indicates a
+completion with RRS status.
+
+When RRS SV is enabled, reads of PCI_VENDOR_ID should return either 0x0001,
+i.e., the config read was completed with RRS, or a valid Vendor ID.  On the
+MT7922, it seems that all config reads after FLR return ~0 indefinitely.
+When pci_dev_wait() reads PCI_VENDOR_ID and gets 0xffff, it assumes that's
+a valid Vendor ID and the device is now ready, so it returns with success.
+
+After pci_dev_wait() returns success, we restore config space and continue.
+Since the MT7922 is not actually ready after the FLR, the restore fails and
+the device is unusable.
+
+We considered changing pci_dev_wait() to continue polling if a
+PCI_VENDOR_ID read returns either 0x0001 or 0xffff.  This "works" as it did
+before d591f6804e7e, although we have to wait for the timeout and then fall
+back to SBR.  But it doesn't work for SR-IOV VFs, which *always* return
+0xffff as the Vendor ID.
+
+Mark Mediatek MT7922 WiFi devices to avoid the use of FLR completely.  This
+will cause fallback to another reset method, such as SBR.
+
+Fixes: d591f6804e7e ("PCI: Wait for device readiness with Configuration RRS")
+Link: https://github.com/QubesOS/qubes-issues/issues/9689#issuecomment-2582927149
+Link: https://lore.kernel.org/r/Z4pHll_6GX7OUBzQ@mail-itl
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+---
+ drivers/pci/quirks.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index b84ff7bade82..82b21e34c545 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -5522,7 +5522,7 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
+  * AMD Matisse USB 3.0 Host Controller 0x149c
+  * Intel 82579LM Gigabit Ethernet Controller 0x1502
+  * Intel 82579V Gigabit Ethernet Controller 0x1503
+- *
++ * Mediatek MT7922 802.11ax PCI Express Wireless Network Adapter
+  */
+ static void quirk_no_flr(struct pci_dev *dev)
+ {
+@@ -5534,6 +5534,7 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x149c, quirk_no_flr);
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x7901, quirk_no_flr);
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1502, quirk_no_flr);
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1503, quirk_no_flr);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_MEDIATEK, 0x0616, quirk_no_flr);
+ 
+ /* FLR may cause the SolidRun SNET DPU (rev 0x1) to hang */
+ static void quirk_no_flr_snet(struct pci_dev *dev)
+-- 
+2.34.1
 
 
