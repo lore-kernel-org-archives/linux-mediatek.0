@@ -4,78 +4,241 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 487F1C0219E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 09:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3DEC021A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:11:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TDUIxlkYIM0fq8vhk37pxal3Qy2EdhE1D2dWYAdNW8o=; b=DhEOhcOZc/2gYwDycEtuAPGNHH
-	igJ+NNpORBv8cvbaxGza8OGhumTj6JYt7kVC5gEPi48IxYj893egchO0+UV2kgvL7oHwVlfmodUEj
-	x0FbgNuaWw7Zaptcxsoc8lUalRqP3t+o2lo7SFn/OsK3ZXtuXXWe/RfVPC6GRJ/Vhc4JYVsTY2hvc
-	G96aDXYIsyWVQH3gaxGce5aLbzRnut7C8yu/UJHtM57mhj82HI9nK2Z+Inv4YtInEp1HwZ1tdgKKE
-	Y3wt+Upv9bmhzug6Ka3gMX7k44FVMA9b58b8xyUz1z33tEdxsVmS8u66kT8WNXGBCARnKxY1wjS+9
-	f+FAGzUg==;
+	bh=L9nnzDSPE+EidbdHEfcVSsL5ckUnh3VMW6wGoOEeprM=; b=SdIHjpAobU0nQ+vuvxBc56AwA1
+	nKN3zhthFLGUiHE3c183J3cPpUhocOcDzx0/OnY0KykLH8tCb3S9nLN/2x8mzJJlCyKX1jN2IeJkU
+	rUwjPWDdh0r7rXEoNfhLos95ZnXaD0b9gRIlyc8K8hXzpZMJAddqCCtZ0eMTh4XDkASizInPyKMVw
+	OkJXdFUAXDnQ6nGqMEDMEUdLjRaFfo/T7RteU7YsDPflxiwyA/js6uA/fbM4WBJowmuMpyptPYsgq
+	nvHRwV5F2OydR0voK8GUhMoVtkmAcmIfypo+PulzV3pSTUueLYDbTTZJUswSwCpXUkS8vZ9mOz5Dq
+	Fy1j4tFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9AV-00000006o3q-1VjS;
-	Wed, 12 Feb 2025 09:36:31 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1ti9hr-00000006wKq-3r4m;
+	Wed, 12 Feb 2025 10:10:59 +0000
+Received: from mail-db5eur02on20601.outbound.protection.outlook.com ([2a01:111:f403:2608::601] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti97T-00000006n8I-0bPr;
-	Wed, 12 Feb 2025 09:33:25 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.44])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4YtChx2ffWz22n1N;
-	Wed, 12 Feb 2025 17:30:25 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 24B74140368;
-	Wed, 12 Feb 2025 17:33:18 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 12 Feb 2025 17:33:17 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Wei Fang
-	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
-	<xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet
-	<edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
-	<przemyslaw.kitszel@intel.com>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
-	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
- Horman <horms@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	<imx@lists.linux.dev>, <netdev@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
-	<bpf@vger.kernel.org>, <linux-rdma@vger.kernel.org>,
-	<linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v9 1/4] page_pool: introduce page_pool_get_pp() API
-Date: Wed, 12 Feb 2025 17:25:48 +0800
-Message-ID: <20250212092552.1779679-2-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20250212092552.1779679-1-linyunsheng@huawei.com>
-References: <20250212092552.1779679-1-linyunsheng@huawei.com>
-MIME-Version: 1.0
+	id 1ti9Nl-00000006rRk-1OF7;
+	Wed, 12 Feb 2025 09:50:15 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=EmV/wxWms0s7C8zVukXr5fFZzI7fUGbmaJZ0yCcq5EJSCuBvgQKlSfHnIuR1SFZvGBEPu2NCH/0UbPGOnaq5wezi7kFPUTG2vgqfhkjlxrGWNLJdWpoCGEdpPdgO4PhrMMhFQhkolrMGrvtpNkF5HYDUcKPkvz9lUaLZvnE8h7gMyzlLzj/aZjEh4u/vNihq9PZPrlFkDxcBXQPXD9SPCxmUeLF6k3u5ZlUHBjjf33Q3U0LsOGJlyFW9xJnsDAS6NoR0wjUCi6Dl77dqUeVFQH/TiMLPfWyHOEBtkEQYBxzBj6lSCXuqdSZMsYtGa3/9u4+7yyTBaopF3A6f283Dfw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L9nnzDSPE+EidbdHEfcVSsL5ckUnh3VMW6wGoOEeprM=;
+ b=mihFJ65UpuT/iR/eJrqY6gNLSr72ay5G2szzTvOAwYU9cl/wHyfQIRmk2sSqBfoN6zT5kpscjAxb64h2W6MQ8sApfMNMy98F19kSzrBdy7GeeVyPXg2QRnvSE3SerWpIAcPt4Bt8sMpxB62zGlKqgRpKMhMoa000zU34v/LoJ2HOuU/NfTGjzjSZKxhBCX8Zk5vjifJwaoeFN1+DUrzGDQKj4yKDNA+iHRL50fRKZIXAmJkfXt3m9G+JhoLQohxUWK3fr/x/wJK4vzUaIgtr95BT/lNIhoI+3EnuBl3KXbumbfmNpN0UV5s+q8UZNG9LXrrujHjsjxZRU3GQQmacdQ==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 63.35.35.123) smtp.rcpttodomain=lists.infradead.org smtp.mailfrom=arm.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=arm.com;
+ dkim=pass (signature was verified) header.d=arm.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,1,smtp.mailfrom=arm.com] dkim=[1,1,header.d=arm.com]
+ dmarc=[1,1,header.from=arm.com])
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L9nnzDSPE+EidbdHEfcVSsL5ckUnh3VMW6wGoOEeprM=;
+ b=gvdLfuwpj62/hiZfqMyDpj9ElpUIJc1P7WaDhLLiqePjRbnztjfUb2hpUIe3Xx+A8+ScpRyfbiG1TCjLC3jPipEVqhES0EtdAU5vcV+5UV9QGPwU/j/zCeDQI0lJj18DbaJSvxzobqBrOS8bEZXf+cDF0Md+aO2mYq30yIebL44=
+Received: from DU7PR01CA0012.eurprd01.prod.exchangelabs.com
+ (2603:10a6:10:50f::15) by PAVPR08MB9580.eurprd08.prod.outlook.com
+ (2603:10a6:102:31b::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.18; Wed, 12 Feb
+ 2025 09:50:07 +0000
+Received: from DU6PEPF0000B61F.eurprd02.prod.outlook.com
+ (2603:10a6:10:50f:cafe::d) by DU7PR01CA0012.outlook.office365.com
+ (2603:10a6:10:50f::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8445.12 via Frontend Transport; Wed,
+ 12 Feb 2025 09:50:06 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 63.35.35.123)
+ smtp.mailfrom=arm.com; dkim=pass (signature was verified)
+ header.d=arm.com;dmarc=pass action=none header.from=arm.com;
+Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
+ 63.35.35.123 as permitted sender) receiver=protection.outlook.com;
+ client-ip=63.35.35.123; helo=64aa7808-outbound-1.mta.getcheckrecipient.com;
+ pr=C
+Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
+ DU6PEPF0000B61F.mail.protection.outlook.com (10.167.8.134) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8445.10
+ via Frontend Transport; Wed, 12 Feb 2025 09:50:07 +0000
+Received: ("Tessian outbound d73f074635d5:v567"); Wed, 12 Feb 2025 09:50:06 +0000
+X-CheckRecipientChecked: true
+X-CR-MTA-CID: 6df9c6bf7683384b
+X-TessianGatewayMetadata: 4M0JT0e1YttWwI5J1aFwVdVJADMGnyveM9FVPWq063QYidGdnrEPt2aOFUim9c1bLrc0bXgZXOvFC6zWTraRu69MPBTpQhZncTCY6epcfgouGxaQFuttH4eR9M2BRMnsdrice4KmK8NkXTLgu61KsQ2b9vKYnkAItTgeiZCQLRw=
+X-CR-MTA-TID: 64aa7808
+Received: from L17136468abae.2
+	by 64aa7808-outbound-1.mta.getcheckrecipient.com id A0A385C2-D2AD-4534-8C08-78AD9C5DD0CD.1;
+	Wed, 12 Feb 2025 09:50:00 +0000
+Received: from DB3PR0202CU003.outbound.protection.outlook.com
+    by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id L17136468abae.2
+    (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+    Wed, 12 Feb 2025 09:50:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=nk4Or2GcAKAziL2Hc6u5tWiAvMYaoadzyGZFPSXYP8rAHhnmdofYkqWLyaqaSSWiMLnoauNE0D24B8Bk+QkBs1Spr1OR+/sbDpXoA9fMME2mYv62N0R+w5PrcdMYd5QftdSq+gIMWe11XFiHcBntVNkQIPVDcAMDShfZb4vbxfbJ+7W0WkoNca7+KPLy3v/E7fLpIJ7B0q30pxt9KEYBiCR2y2p0+8X7hTCbQQLTzRlWQlQ0ugXYgJOwdSzxfEk5CzLPBOzRlo+pdw7BOsKm8j+50vACehxavgJpctGQ69nHURegpcvWlSQvD4ETs5yyEO6vilrKOaeTAU0zwN/f5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L9nnzDSPE+EidbdHEfcVSsL5ckUnh3VMW6wGoOEeprM=;
+ b=qzkQ+gXyC6CBcPncaJsN8nHAqVVOJ8sIg71Dvl1LZa/FaADHYGus4XxEzDgmHa6JbovS5GG/RJOx/KthRrRMhuxTkluayOaDzznrVHxaxHZ2dvAMx9fm8IDxfu64CUROP48Pjsc4QrqygeyRUMoz4PUQA23DTQWDYR23vViG41f9HjBI2ssSd9ehnCeO+lPJkW+4g2a5U+1RsCqMlFNlwPvFzAZIrGzPZ7WEieRX4h4tsv18c0JMt4+73/RYgaeu0lm/qrwWvkn2p88ZtjvdSMzQL07CGCYsM/vHxVyHDuvPkmH03JOMUWR+4z4T8sDftyFIHyGQOme/IxsbwoEvVw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
+ header.d=arm.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L9nnzDSPE+EidbdHEfcVSsL5ckUnh3VMW6wGoOEeprM=;
+ b=gvdLfuwpj62/hiZfqMyDpj9ElpUIJc1P7WaDhLLiqePjRbnztjfUb2hpUIe3Xx+A8+ScpRyfbiG1TCjLC3jPipEVqhES0EtdAU5vcV+5UV9QGPwU/j/zCeDQI0lJj18DbaJSvxzobqBrOS8bEZXf+cDF0Md+aO2mYq30yIebL44=
+Authentication-Results-Original: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=arm.com;
+Received: from AS4PR08MB7925.eurprd08.prod.outlook.com (2603:10a6:20b:574::8)
+ by DBAPR08MB5607.eurprd08.prod.outlook.com (2603:10a6:10:1ae::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.22; Wed, 12 Feb
+ 2025 09:49:59 +0000
+Received: from AS4PR08MB7925.eurprd08.prod.outlook.com
+ ([fe80::8ef3:b027:e22f:1ea7]) by AS4PR08MB7925.eurprd08.prod.outlook.com
+ ([fe80::8ef3:b027:e22f:1ea7%4]) with mapi id 15.20.8445.011; Wed, 12 Feb 2025
+ 09:49:58 +0000
+Message-ID: <fae8df2a-3e47-4266-aace-392c5f37581f@arm.com>
+Date: Wed, 12 Feb 2025 09:49:56 +0000
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
+Content-Language: en-GB
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, nd@arm.com,
+ Akash Goel <akash.goel@arm.com>
+References: <cover.1738228114.git.florent.tomasin@arm.com>
+ <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
+ <ats2unrml5a7vbpdrqrzowodrsfj44bnubpbujg2igk3imeklx@nrpmg5oeq3gz>
+ <be8e6b9f-c3c6-41d1-af9c-3dcd102f0fe3@arm.com>
+ <b02711c901e8acf2bc47926919de7673a0cb0b98.camel@ndufresne.ca>
+From: Florent Tomasin <florent.tomasin@arm.com>
+In-Reply-To: <b02711c901e8acf2bc47926919de7673a0cb0b98.camel@ndufresne.ca>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+X-ClientProxiedBy: LO4P123CA0462.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:1aa::17) To AS4PR08MB7925.eurprd08.prod.outlook.com
+ (2603:10a6:20b:574::8)
+MIME-Version: 1.0
+X-MS-TrafficTypeDiagnostic: AS4PR08MB7925:EE_|DBAPR08MB5607:EE_|DU6PEPF0000B61F:EE_|PAVPR08MB9580:EE_
+X-MS-Office365-Filtering-Correlation-Id: fb14f8a4-3df7-4fca-d0a6-08dd4b4aa1f5
+X-LD-Processed: f34e5979-57d9-4aaa-ad4d-b122a662184d,ExtAddr
+x-checkrecipientrouted: true
+NoDisclaimer: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info-Original: =?utf-8?B?ZTcvc3M5VkhxVjFUcVcvbW1GS2ZjQ25scW9hdWZ6THpQTzNxQ2c4K21aUDhR?=
+ =?utf-8?B?cllFZWUrd2FWUG0zb1B3V2k1SEIxdUZ3QjFwSDhpd0xrRDBvVHJMRGlBN3Bz?=
+ =?utf-8?B?b1RvTzRDN0c3eDc5QkVEQTZRSWdmOWs0SHBKb0xJUE9Ka3lEc0VaRVkvNG1S?=
+ =?utf-8?B?VnZUOWFPQzFrODZrNVhIaUYrVzZaYnVYRjIrejBETzQvREFsSVdKclFsRGpx?=
+ =?utf-8?B?cXBkU1ZOTWM5YWk1a0FBQnErWFkyc3BSV2pzR1BBODQ0T2pqT0orZDQ5UlVO?=
+ =?utf-8?B?WXNFWGVjck00V0gxUUNpR3JPbnRGdWdpeEp6QTNOT0huTFJERUdNWndONEpX?=
+ =?utf-8?B?UzdhczNMTHpMOE43MmkvYmYrbXI4VE9idTl0WTU5Tk9CdzY2UWluT1ZkQ0tq?=
+ =?utf-8?B?VzRZQzFHYVFxRVh0SCtwRDV6eEpUS1hMc0E0VTZHZllhTDdhUzhBa3hrVDJF?=
+ =?utf-8?B?SGpXL1AvVTQ1WnNrYXBFSmNIUUgyWWt0SnNJcGtMYTUrTVZwNU1ISlNKZjRt?=
+ =?utf-8?B?RGNSaER2UlBOeG02WkdvUnF0WkdBS1hCV0dYY3M3QTZjU0UwbXNDb3V3WkVw?=
+ =?utf-8?B?LzBKZmJSdFh1N0RMOHJlMlBhSWpIZ1ZGclhDbXEzNDlvUXAvVTNsc0pRc1Jm?=
+ =?utf-8?B?WGMvdkoxV0pGQ1ZDU3dPMHRHZ3dNUXlmNmZ4NkEyTndTRE5qa25PL2NIaFJh?=
+ =?utf-8?B?d1V3WStSclVoUTd3Mk9ja2xKRkVkdnRVOTd5c0tLR0ZyNVhvOU91bjNGSEtN?=
+ =?utf-8?B?QkE0VFBmekZ5OUJxbloyN1NPK3dlaERGa1JyYkJ3RHBiakxMdnFZek9rK3RX?=
+ =?utf-8?B?amV1ZlMwL1RnenlPakFKbkNZNytYY2xiV2Z0eGQ0YksvNlZBRURDeHl6NUw5?=
+ =?utf-8?B?OGl4d3R4dHZIOFEvUE93NGRZVno4WWdQRkZxRC91cUVDV0ZDaDU1SjRoL2xi?=
+ =?utf-8?B?Y1RubzhqVFdJVmJJeEFENnRQQ3dpZHVmbC83RWNFaHhSU2wvWmh4REhsZzBu?=
+ =?utf-8?B?NzNNaHpWM0dhRnpmcnRvbi9Ic2JteWsrQ3ZjdFBmK3FXMGZxTXZYOUZBam9q?=
+ =?utf-8?B?dDdJOERTNWtETlZKOUlxaWdyUVg3NEJMR1dqSDArVnFIdHBHSWtjTW1vV3Bv?=
+ =?utf-8?B?L2VMMU9rOEgvV0R5UDlGbHlPMWk3Tk9YbTNnOUtKN2pDNjFWTTB2TXI1OXZL?=
+ =?utf-8?B?cUMyQlloOEhTclBqRGJlcElCTGk4TmhkNmhPUHJHcmxyd0ZmK1JBT0NlTjV2?=
+ =?utf-8?B?VzRGV3dNR3dmTU1kQnpDSXBFOWZSMDRhY2dmbVpaT2VGd3Q1K2dZUDE3aG5w?=
+ =?utf-8?B?cFpGK3hwY1JGR1Q5VEZ5Z2JsR2lUNTczaWFNSGYzb24rcXVHT0thOFpKTXJv?=
+ =?utf-8?B?akpaUG1oY0xCYUVqbUFuRlR6SDhtc3REMkZQZ0dLLzJRdE5mRGlUNTdrd2NF?=
+ =?utf-8?B?S29CTkJrcmNpV1BlOElONlpYNXlYaGtUMzRnZ0VWNFpOajNGVmVoTHBkOEg4?=
+ =?utf-8?B?VU4zZ0lKVUpBeGlGYzEzbi9lRDFOMXdWRzI3RTFJTGVnWU9hQmhoaDdobkhX?=
+ =?utf-8?B?dVIvZHkvNThPS054YmdJOStOb28xZlp3TEpxa0xMZS8zU004VG8xcmtvOWtQ?=
+ =?utf-8?B?c1VQclcrSzYxemFEMkRoN0tubTAxbmN3b1ByaVJjWU9hOG5zZU41NU5ZMzJG?=
+ =?utf-8?B?ckpaNnhPMklNVENyNzFFYlRaWGlqQnJLNHY0V2srdjhXTWpQcVhBZlhFZHJV?=
+ =?utf-8?B?b1QwSlRoMlVwcTdTNVlJOSt4K1NXUmoyTTdTSTVlRktmd1N4dEpSTlZRTUc5?=
+ =?utf-8?B?aHZrME1IamJzQjJidWlkVjB4RTN5bmNneEdRUTJYQjU2VldHOFBlOXdUaWo1?=
+ =?utf-8?Q?kpf+B/TZEFrQ3?=
+X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS4PR08MB7925.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR08MB5607
+Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=arm.com;
+X-EOPAttributedMessage: 0
+X-MS-Exchange-SkipListedInternetSender: ip=[2603:10a6:20b:574::8];domain=AS4PR08MB7925.eurprd08.prod.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: DU6PEPF0000B61F.eurprd02.prod.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 1d339af0-1ede-426f-f647-08dd4b4a9c49
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|36860700013|1800799024|14060799003|82310400026|35042699022|13003099007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TURyOEhRMzJwdm1aU0N3R09pMzZEZlQzdUZyK2xwRlc0UUxwb3R1S1ZhRnN2?=
+ =?utf-8?B?a0dSanREc3BGemhkWXlXVFZzMnFlbE1ZZkVtYksvV0tiR2hNa2Fuek5EU1pz?=
+ =?utf-8?B?ZUZHZnR1TU5rSDBnaVBnL0R6cFRIMnRrVGpSa1gyNUV6Q1F5bDZVT0doR3Ex?=
+ =?utf-8?B?Z0U2eW8zNERKQ3k5RVl4WnVGNjFvUzBxMzhnOUNJTzhjTXErc1RKTWtPdGhP?=
+ =?utf-8?B?bXM4SHhpclRlc3Q3SG5TTUpxUFlPVUtMK3RsaWxoU01UbmZxaGRMOWV1U3Rz?=
+ =?utf-8?B?ajZFNlBuLzdIc0VFcWtvVGVqdXpRVnFtRHJ0QWFVRVh2TFliUERhZGFKWW5x?=
+ =?utf-8?B?ZzhhNnFkdStXV3llOXVBNEo1bzFhUURTaitJWkNUUDVlYmE0ZWNVemdmYlRE?=
+ =?utf-8?B?cm90c3NzeWlCN0VjbzNzc2h0dHREQVRhWFkyWEo4aU95TFk3cysxRkdWUmxN?=
+ =?utf-8?B?V2huSDh6RTF0OFJseHJHTzQ0dERzOUxlWTBXZGc1M0pFdENjbStEeXpLV1Ax?=
+ =?utf-8?B?N3ljR1Zmd0FoeU5CM1o1WmxTUmhiMTcxTmFkVW5mU2hUV3JIK3czWGI4Q2hZ?=
+ =?utf-8?B?T0dJV2lJcy9jNHBQM3NNdStDWGV3azNlNWlKK3FNL0J6RUVOQjlQQ3U4ejBS?=
+ =?utf-8?B?VVFydkNEbXAzNWRQbi9wQXc5NkQ0bFNlcGwzV3BYSjhQUUIyOUVYNHhsTHRw?=
+ =?utf-8?B?K0dwaGRneGl0U2hVRFVieDh0a1BROXBvbHVUSW5PUEMvTjFHeUhlemV5WHRC?=
+ =?utf-8?B?VEJZQzRKamFkZTNzcGFQTjk0V0FoSzJYMTVDSG90SUd4K0NsSEpOVnNVeXV4?=
+ =?utf-8?B?OFpjNnBmbkVMYXRUWTlHOXhSYUtsWEhlcGJ6RjFNWlJVNTZKVkl0YlR0TEg1?=
+ =?utf-8?B?M0lnOGdZRkFVQ0U5Q0g5ZkVrQlZHMVY4aE9sWHFhM1crc3FROGxNTmErM3dl?=
+ =?utf-8?B?SHZQaTRRclRBbVMwaHVjb3NJcGlxcjlmYVB4ZC9ZRUNPRTBvVE9xekxFYnpX?=
+ =?utf-8?B?THk5Q1JMNWlvWTBXNXlWN0N4VjFIZnlub29ZOGFXazlrOUtDRVk5Z1IxQUht?=
+ =?utf-8?B?eXRadDhMQitsVktLTjdneWtDaXlJTWsvS0NEUEYwcDV6L3pkZC9LUzZ6QmFQ?=
+ =?utf-8?B?VUgrUnFPM2ZlRVBMYjZrMGJQRHR0K2p0dEFtZ0JNc2g1dklpS29vODlpYlY5?=
+ =?utf-8?B?WnJ5UFFyb25Wc2xoUE8xa2ZaZW1HR2plakZYdVhwRWlZN2tYRExDbDNnbFFL?=
+ =?utf-8?B?RkNTejlnbjBIYlNTaDNYZ04xdkVhZ2ZCbEFaTXByRnQvNEc2dDArVjNNSE9P?=
+ =?utf-8?B?ZWZSSWJEbTEvNS9GSUs5bHJRejJqak8vd2hCM3RsWVR1NVY2ZEhyUHZrbk5l?=
+ =?utf-8?B?SWxHazFGWWFYbTFFeFNHZmwrN0hqMXNQblJqSHQyc3ZOVGgzaVQ5aURjblRv?=
+ =?utf-8?B?ZWZBbjg2RTdONzM1UkR0aHFWaU1qYjJkVktIdzhDWnY5REQrTjN5UVVQNm1D?=
+ =?utf-8?B?b1lRbllhMmJZbTdnRlIvT09yNzMwbEVuRWtydFdLRk9vakZuRHRKQWFYeVQ5?=
+ =?utf-8?B?d3UvUWJCTVU5U3g0bWE4SlBERDdwTGo1V204V3QzZWxKaTh3ZXZHcVl3TEh3?=
+ =?utf-8?B?S1BKcmM4WW5sTFhxMW56SysyeWVMSnZYOW14MjBLMHgxTmp2dkdNU2tYNFBP?=
+ =?utf-8?B?VmNGcDJDWjZobHRzSU5zMXhKcC9ldXZ0SEphRm93RFM2T2l2TUdjVU9HVGlv?=
+ =?utf-8?B?TlZjeDZCYVRJMWhsTUw2eHA5RjlESlBQT3drYWNpQ2IvRmZPV3VZNXJRd1pS?=
+ =?utf-8?B?bGhvbVZENU94a0FkREVVS2xrblFQaDNDYXNhS2NacFgvczdDcTZ0bE5nY2sv?=
+ =?utf-8?B?UXVoTkxxWFB3bENVQXdvZWhnNmZUK3pzdWZkUXdOV09NdzZRRmpwbTlFOVpJ?=
+ =?utf-8?B?Uml5dFBSTHBzTXhXTG1vUzFzS08rU3ZoVFZuRnNPTjBUMmRYdkVtZUhZaVdL?=
+ =?utf-8?Q?1X3EyMj4RjDqh1nbIUUo0Q0OiAYOmk=3D?=
+X-Forefront-Antispam-Report: CIP:63.35.35.123;CTRY:IE;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:64aa7808-outbound-1.mta.getcheckrecipient.com;PTR:64aa7808-outbound-1.mta.getcheckrecipient.com;CAT:NONE;SFS:(13230040)(376014)(36860700013)(1800799024)(14060799003)(82310400026)(35042699022)(13003099007);DIR:OUT;SFP:1101;
+X-OriginatorOrg: arm.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2025 09:50:07.2758
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb14f8a4-3df7-4fca-d0a6-08dd4b4aa1f5
+X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[63.35.35.123];Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
+X-MS-Exchange-CrossTenant-AuthSource: DU6PEPF0000B61F.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAVPR08MB9580
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_013323_523387_17353971 
-X-CRM114-Status: GOOD (  16.28  )
+X-CRM114-CacheID: sfid-20250212_015013_525844_49F3EB1D 
+X-CRM114-Status: UNSURE (   4.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,236 +253,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce page_pool_get_pp() API to avoid caller accessing
-page->pp directly, in order to make the following patch more
-reviewable as the following patch will change page->pp to
-page->pp_item to fix the DMA API misuse problem.
+Hi Nicolas,
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
- .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
- drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
- drivers/net/netdevsim/netdev.c                     |  6 ++++--
- drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
- include/net/libeth/rx.h                            |  3 ++-
- include/net/page_pool/helpers.h                    |  5 +++++
- 10 files changed, 34 insertions(+), 17 deletions(-)
+On 04/02/2025 18:12, Nicolas Dufresne wrote:
+> Hi Florent,
+> 
+> Le lundi 03 février 2025 à 13:36 +0000, Florent Tomasin a écrit :
+>>
+>> On 30/01/2025 13:28, Maxime Ripard wrote:
+>>> Hi,
+>>>
+>>> On Thu, Jan 30, 2025 at 01:08:57PM +0000, Florent Tomasin wrote:
+>>>> Introduce a CMA Heap dt-binding allowing custom
+>>>> CMA heap registrations.
+>>>>
+>>>> * Note to the reviewers:
+>>>> The patch was used for the development of the protected mode
+> 
+> Just to avoid divergence in nomenclature, and because this is not a new subject,
+> perhaps you should also adhere to the name "restricted". Both Linaro and
+> Mediatek have moved from "secure" to that name in their proposal. As you are the
+> third proposing this (at least for the proposal that are CCed on linux-media), I
+> would have expected in your cover letter a summary of how the other requirement
+> have been blended in your proposal.
 
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index a86cfebedaa8..4ade1553557a 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -1038,7 +1038,8 @@ static void fec_enet_bd_init(struct net_device *dev)
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
- 				if (page)
--					page_pool_put_page(page->pp, page, 0, false);
-+					page_pool_put_page(page_pool_get_pp(page),
-+							   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-@@ -1576,7 +1577,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
- 			xdp_return_frame_rx_napi(xdpf);
- 		} else { /* recycle pages of XDP_TX frames */
- 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
--			page_pool_put_page(page->pp, page, 0, true);
-+			page_pool_put_page(page_pool_get_pp(page), page, 0, true);
- 		}
- 
- 		txq->tx_buf[index].buf_p = NULL;
-@@ -3343,7 +3344,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
- 			} else {
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
--				page_pool_put_page(page->pp, page, 0, false);
-+				page_pool_put_page(page_pool_get_pp(page),
-+						   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-index 403f0f335ba6..87422b8828ff 100644
---- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-+++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-@@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
- 	if (!page)
- 		return;
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- 	buf_state->page_info.page = NULL;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 26b424fd6718..e1bf5554f6e3 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- 			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
- 			rx_buffer->offset + hr, size, rx_buffer->truesize);
-@@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 2fa9c36e33c9..04f2347716ca 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
- 	if (unlikely(!rx_buf->page))
- 		return;
- 
--	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-+	page_pool_put_full_page(page_pool_get_pp(rx_buf->page), rx_buf->page,
-+				false);
- 
- 	rx_buf->page = NULL;
- 	rx_buf->offset = 0;
-@@ -3098,7 +3099,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
- void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
- 		      unsigned int size)
- {
--	u32 hr = rx_buf->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buf->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->offset + hr, size, rx_buf->truesize);
-@@ -3130,8 +3132,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
- 	if (!libeth_rx_sync_for_cpu(buf, copy))
- 		return 0;
- 
--	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
--	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-+	dst = page_address(hdr->page) + hdr->offset +
-+		page_pool_get_pp(hdr->page)->p.offset;
-+	src = page_address(buf->page) + buf->offset +
-+		page_pool_get_pp(buf->page)->p.offset;
- 	memcpy(dst, src, LARGEST_ALIGN(copy));
- 
- 	buf->offset += copy;
-@@ -3149,7 +3153,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
-  */
- struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
- {
--	u32 hr = buf->page->pp->p.offset;
-+	u32 hr = page_pool_get_pp(buf->page)->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index 66d1d23b8ad2..8de0c3a3b146 100644
---- a/drivers/net/ethernet/intel/libeth/rx.c
-+++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, "LIBETH");
-  */
- void libeth_rx_recycle_slow(struct page *page)
- {
--	page_pool_recycle_direct(page->pp, page);
-+	page_pool_recycle_direct(page_pool_get_pp(page), page);
- }
- EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, "LIBETH");
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 3cc4d55613bf..e5cc5af1b848 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 				 * as we know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(page_pool_get_pp(page),
-+							 page);
- 			} while (++n < num);
- 
- 			break;
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index 9b394ddc5206..917f987e89fa 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -817,7 +817,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
- 		if (!ns->page)
- 			ret = -ENOMEM;
- 	} else {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-@@ -1029,7 +1030,8 @@ void nsim_destroy(struct netdevsim *ns)
- 
- 	/* Put this intentionally late to exercise the orphaning path */
- 	if (ns->page) {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 132148f7b107..11a88ecf8533 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1777,7 +1777,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
- {
- 	struct page *page = virt_to_head_page(buf);
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- }
- 
- static inline void *
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index 43574bd6612f..f4ae75f9cc1b 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
- 		return false;
- 	}
- 
--	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-+	page_pool_dma_sync_for_cpu(page_pool_get_pp(page), page, fqe->offset,
-+				   len);
- 
- 	return true;
- }
-diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-index 582a3d00cbe2..ab91911af215 100644
---- a/include/net/page_pool/helpers.h
-+++ b/include/net/page_pool/helpers.h
-@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
- }
- #endif
- 
-+static inline struct page_pool *page_pool_get_pp(struct page *page)
-+{
-+	return page->pp;
-+}
-+
- /**
-  * page_pool_dev_alloc_pages() - allocate a page.
-  * @pool:	pool from which to allocate
--- 
-2.33.0
+Just to be sure I undertand your suggestion correctly, are you
+proposing to use "restricted mode" instead of "protected mode"?
 
+In the case of Panthor CSF driver, the term: "protected mode" refers to
+a Mali CSF GPU HW concept:
+-
+https://developer.arm.com/documentation/100964/1127/Fast-Models-components/Media-components/Mali-G71
+
+If preferred and to avoid confusion, I can remove the reference to
+"protected mode" and "Panthor CSF driver" from the commit message to
+focus only on the CMA heap changes, which are more generic and can apply
+to any type of CMA memory.
+
+Note that the CMA patches were initially shared to help reproduce my
+environment of development, I can isolate them in a separate patch
+series and include a reference or "base-commit:" tag to it in the
+Panthor protected mode RFC, to help progress this review in another
+thread. It will avoid overlapping these two topics:
+
+- Multiple standalone CMA heaps support
+- Panthor protected mode handling
+
+Regards,
+Florent
 
