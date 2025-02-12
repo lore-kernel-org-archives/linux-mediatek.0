@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D076FC021A7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E06C02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=woz7pk/+ngx1fAXXik33xpEwcwvHhgnlnzWIambURC4=; b=Fgf5fPS/YHyOYjkBm3TGpmRC7J
-	B1RsgC11JXmkPQea12cFvBw5AFqhOvQMW9brSAti/TpaCIq4JlpvuB8x6j+fXPerKzsGDWOxBwVy4
-	a7BoMmzclUCEUQBrQXijvMEjMZtupbjSiFXcEPdCcuZ1MoEXf7WyPElspqJrl5nJ9h5JQ7ctP/nXi
-	yFrCYEzUANeS63kzkqYFhXH2T8tTe5g7SeX/RUsMkCgKSOI22NiKXialfG7sJcyEBKv0NUXkD/GQ+
-	C9Kv6vV+CM9o3MN8L8dNmseXYhXXumTXEao1y9eq76oWtN7scGBC+VCEAcM2ZNJnJoj9UFuiUlgkJ
-	X3RTlovA==;
+	bh=peYayiw1Pcm7s0g14z10cDJ8yjfXjHJS8Eoterahf1w=; b=hwfnzmQwVZuh920EXlJe9D0m8l
+	7DXnl6x8agHJe4QwuslsYqnOsiuuJkx79s5ZT/StwjdKgYxlb/1OJBfggbrfj80QU3MgrWZBqdkvC
+	n+gvp+p0KsFtwRHorN9PgRRCKbXsM/vDpXJjy7Yq9imaLmO9iU1B7j6Mh2d2JvcbjIJm0oT6fmVVz
+	jo/UR+bpg9uquct5ncJ661Oev2KephDyLnC66GZ5tTJw2maYpY/nKkxa3GqACu+ec/j86boUoJOD5
+	0R2rTBZX2pfrIPpJeV2gZnkaWICJ3+d6W/rGLGUn2hrnFL9KoILkQ4YAm91HzBC515ceocR/v5kOw
+	8H5Cjjlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9rR-00000006xyc-1xnf;
-	Wed, 12 Feb 2025 10:20:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ti9uE-00000006yJp-1H1U;
+	Wed, 12 Feb 2025 10:23:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9YQ-00000006twu-2Zpd;
-	Wed, 12 Feb 2025 10:01:15 +0000
+	id 1ti9aZ-00000006uT4-2ZqY;
+	Wed, 12 Feb 2025 10:03:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 764BE5C5DAE;
-	Wed, 12 Feb 2025 10:00:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 373AEC4CEDF;
-	Wed, 12 Feb 2025 10:01:13 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7883AA41B5A;
+	Wed, 12 Feb 2025 10:01:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CF3EC4CEDF;
+	Wed, 12 Feb 2025 10:03:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739354473;
-	bh=woz7pk/+ngx1fAXXik33xpEwcwvHhgnlnzWIambURC4=;
+	s=k20201202; t=1739354606;
+	bh=5nIGClIepa3vn8Kx0AIIOulxeLtJZx+xFkAW9HB1GUk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JFknMvAYCwTyrVf3OxL2gYhdX1gCloKqAmyPXLmtzPDsbcRVkduTdz/DV5ooCn6B8
-	 4+t2DpEMJiVVr1HQy/UiPXnSvdRjYZe/W+HkI0ERWJH1/abm0dKszP95sM9O6UTc7F
-	 cLOzYQhgS2NJc9exC2em9aL/Mx1QYAwOIbY8AESaYkLTGqh4r4i4tds7+BKUhmiddw
-	 rV8PgQzg43sxTHsHorGuUbkQHjEZkYtDbHRc+gM3WRI8ALQ9y2UmKa7xUpmV7xI6eF
-	 3dF5FTcTfKWbuXXv91blHqqWPM6YquxAfS0ysnR7v22PRyei45Pal7UpfLtSsX8Q6B
-	 eI9d4Ema9btyQ==
-Date: Wed, 12 Feb 2025 11:01:11 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Florent Tomasin <florent.tomasin@arm.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, Vinod Koul <vkoul@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, nd@arm.com, 
-	Akash Goel <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
-Message-ID: <20250212-naughty-chipmunk-of-potency-7e0ced@houat>
-References: <cover.1738228114.git.florent.tomasin@arm.com>
- <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
- <ats2unrml5a7vbpdrqrzowodrsfj44bnubpbujg2igk3imeklx@nrpmg5oeq3gz>
- <be8e6b9f-c3c6-41d1-af9c-3dcd102f0fe3@arm.com>
- <b02711c901e8acf2bc47926919de7673a0cb0b98.camel@ndufresne.ca>
- <fae8df2a-3e47-4266-aace-392c5f37581f@arm.com>
+	b=rqHoJraiptilXADmxS1SNDibvf5crLWII9M2ufZI3e4Z2XrwTmbv6qisVhe45f93S
+	 lrwsDxa6P8OJPIhUXN7nRDvl+598EkGzmOq3/dyQeweypW1YNDh9aodQTV0LkXc/Em
+	 wFUmaV3ig8z5Ge6TIdC2UtGOdPtyDV0xTqdGFBOD7vWzzm257JI6/yXi3ccrmWkecp
+	 fx1b3McW81oKzUOUdv8gn2/e+hDKR3ZG5oVd7g10HBhkZKJfZK/tdbYfP6iHd6ytCr
+	 njiagqgMKdmwhh/Rqi9Lu9Gr4m7WMuoHEOUbz4bIkwY2fX5jZYTqMjkx9PFBFoforC
+	 NQT/mujTJuMMw==
+Date: Wed, 12 Feb 2025 11:03:24 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 0/2] Enable TSO for DSA ports on Airoha EN7581
+ SoC
+Message-ID: <Z6xx7AwglUEt_9J0@lore-desk>
+References: <20250212-airoha-fix-tso-v1-0-1652558a79b4@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="uxrfo3idfywaw7zh"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="K9tnhGwKobYJn02N"
 Content-Disposition: inline
-In-Reply-To: <fae8df2a-3e47-4266-aace-392c5f37581f@arm.com>
+In-Reply-To: <20250212-airoha-fix-tso-v1-0-1652558a79b4@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_020114_743425_6E773BC2 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20250212_020327_717460_6D94F4D7 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +79,50 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---uxrfo3idfywaw7zh
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--K9tnhGwKobYJn02N
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
-MIME-Version: 1.0
 
-On Wed, Feb 12, 2025 at 09:49:56AM +0000, Florent Tomasin wrote:
-> Note that the CMA patches were initially shared to help reproduce my
-> environment of development, I can isolate them in a separate patch
-> series and include a reference or "base-commit:" tag to it in the
-> Panthor protected mode RFC, to help progress this review in another
-> thread. It will avoid overlapping these two topics:
+> Add missing vlan_features configuration to enable TSO/Scatter Gather for
+> airoha_eth lan ports.
+> Fix checksum configuration for TSO packets with cloned headers.
 >=20
-> - Multiple standalone CMA heaps support
-> - Panthor protected mode handling
+> ---
+> Lorenzo Bianconi (2):
+>       net: airoha: Fix TSO support for header cloned skbs
+>       net: airoha: Enable TSO/Scatter Gather for LAN port
+>=20
+>  drivers/net/ethernet/mediatek/airoha_eth.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> ---
+> base-commit: 4e41231249f4083a095085ff86e317e29313c2c3
+> change-id: 20250211-airoha-fix-tso-44a6f9cb14c0
 
-You keep insisting on using CMA here, but it's really not clear to me
-why you would need CMA in the first place.
+Hi,
 
-By CMA, do you mean the CMA allocator, and thus would provide buffers
-through the usual dma_alloc_* API, or would any allocator providing
-physically contiguous memory work?
+I figured out I am missing a patch in this series, please drop it, I will
+repost. Sorry for the noise.
 
-In the latter case, would something like this work:
-https://lore.kernel.org/all/20240515-dma-buf-ecc-heap-v1-1-54cbbd049511@ker=
-nel.org/
+Regards,
+Lorenzo
 
-Maxime
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
 
---uxrfo3idfywaw7zh
+--K9tnhGwKobYJn02N
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6xxYgAKCRAnX84Zoj2+
-doOXAYCmJnHBgdesgUZVquuWr6GPMIwXNegsF2kF9WE8cUf8QZREQljZMta1yPl+
-Y3KyEfEBf2GAaLjFhJfdk0/CAvLXAP/kO5oVGERfJbRdGvpysS+9JiElAhrVFTWR
-1Zzqx2VRSg==
-=Jh+j
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ6xx6wAKCRA6cBh0uS2t
+rJm3AQDXbXlIcf436GJupafNCG7ANsY51fU/rVvITbR48Yhd4wEA766hQ2x5T3rJ
+s/ksDQ/sB+rrQKgeQJ9wUZu2gGC2FQM=
+=bCuL
 -----END PGP SIGNATURE-----
 
---uxrfo3idfywaw7zh--
+--K9tnhGwKobYJn02N--
 
