@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D069C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 19:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEFEC02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 19:35:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dgj9CZu7zXIogkyD+jX4DSWTvh9FYVRAGZAzj5lgs2g=; b=mxa46uNFKtOY3oIypOwu7DkFql
-	5mgpGieM6aHeh2rPBKRpWhKoFfS/9nFZLsFuZlx5mAzRyBXc321hiNoQqbxPPmEfLi6jFZQ3SQZI5
-	q8jnfiTQhQBaPX+diE1CKsPQ0L00zrOgdgUr80OJbnNCadBVufF1dAG4xgJYr6o/xNm1tXODjO5Gl
-	zOYLMY5Y9MH2xQDkWw1mxPhe267EW0+WHI/3N1FvfNdORRyc4+XujfrYxn/0q3ABEBNkswHeNEmWH
-	l5GLoHeoj1LkgJTz+w6xJFI9zittEUKIfHYz3SqWH66/R7T7gqrQ0qzvK4eLhTTHl1s0CebXkL+Qh
-	2YsR8Ucw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=; b=3iSs5H6H9qji/D
+	L4eVVNwPz9paTbCPmWVWnl1UxCrBNbu3qoo0cKNGUeHqXHwVYR6AlipO+dTdFRtLPQaCP6weELgyy
+	klc8tRfqAxFTVQOV3n27cYPcwNDdZsXBSzqbV6QriUf1vlhpzstTFfEUWhVBUFQEqv3HPRGYiJE7E
+	2gfDD8SAENCIVYq82AyyBZAUss5uCWC3H15W53Fq+xHNQF1sAE2oxh8BbZDkHxqTzPxq32L50v+32
+	eqXI4Vqmjb7NNYecG8y9zLb5F1RLdPDY9KP2sgKoxbi94dcjlNKYANR2Bul4UGAR3aVVKP0wbyvXq
+	feeM9O5U2MbttQn8DVSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiIGk-00000008cIQ-17i2;
-	Wed, 12 Feb 2025 19:19:34 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tiIW9-00000008eoL-2aHj;
+	Wed, 12 Feb 2025 19:35:29 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiIFJ-00000008c4I-12pe;
-	Wed, 12 Feb 2025 19:18:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0D40EA40F73;
-	Wed, 12 Feb 2025 19:16:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BEE9DC4CEDF;
-	Wed, 12 Feb 2025 19:18:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739387884;
-	bh=KE8NFBZhke42TjOODGp2XRVLni+shJE2sRyusGK/pag=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=B5ynI4nwc6w1XNI9qPwckWeV4YuE4E65ocyJWXxfyjAmbKPlnB8qJgHRCG3LYBig1
-	 6bGafsyrO2f8/XyQwSaoPiVaQ53Xic3ygFkdmOmHeH9sKpvHpowLJ2sOR62m87jPtY
-	 mKavz+BbG7/j0p3ItzfZXC96KbYPTGRyvjfMmCafzxtYRN/H5dm+v09dn7FwKX4M8f
-	 MpYAb24OGkh8+kOl/YNvzBBmVw1bg6U2zQq6loB9xTpiuuy4PERbVpIhOLlpntqTMm
-	 IC7qm+ycr3pr/rQBStyhe7F7Gbv120TcdHY8uEln7YyhARZv2wz1KeGBH4vJKCbjPP
-	 g8pB07jSEpYCQ==
-Date: Wed, 12 Feb 2025 19:17:58 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	geert+renesas@glider.be, u.kleine-koenig@baylibre.com,
-	amergnat@baylibre.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	kernel@collabora.com, macpaul.lin@mediatek.com,
-	pablo.sun@mediatek.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek,mt8188: Add
- VDO1_DPI1_HDMI clock
-Message-ID: <20250212-arming-gyration-103e42b94ed6@spud>
-References: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
+	id 1tiIUh-00000008eXq-379V;
+	Wed, 12 Feb 2025 19:34:00 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5de6c708315so65227a12.0;
+        Wed, 12 Feb 2025 11:33:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739388838; x=1739993638; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=;
+        b=M9/jpvLaVjv3zvviXzp/pk4YCub9t1QtY4esbVfCUUgJ4tVOdiwnZMaY4/xLtRNLOb
+         WizZDWeRzcRwJ+hTGomLmbsn6rOcNviBuAcN4whEfmIi8ST29amqrWra+cJckhElpRyz
+         NL29d0Cayr8W18vzXDgvRKcEwWBsktTAMn1nXVpxFxOqgUroi3d9H+hWp+OppXF6Uknz
+         HCW8C5dtUT63sqcKzhGg707khDoxP15nax7WexylcpchfLey5tWiplVYWO3KMbocM/vL
+         DER66cL5/Ln775E2HWq6mRP6bwFtOOa4S42m7BygZ33LqJZNL+8Es2k3Cd6ibKie5k+i
+         qt8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739388838; x=1739993638;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lasNycot9OROMRz3Tf45TsHUJIexVqDWGvappPiMilU=;
+        b=vUQFAYy08NyDaejf1VxrBbu8GCxoW2MlbyevqWgXjEdyd8gMNKCF17XGDf8hofZbgf
+         8BXSCtdyuqupf/xA/jBj0yTVzfMmQHe9h/xZn/ZAQP4vaYD72pXXrvEdrK/q3rHHGBvU
+         yM1AMJs0Gmo5SrY8q6YkIN56/S+bA8gpvrLMTzNHoKag0p4q/eQyB3f6d+3wVP6ouQHu
+         w2mABUuupiEsskrA3lBUnM7U2DGOmbmKShbtXdDkmnHCYkS7PUqx0HdW0JGUv8qeH7tz
+         8tYGgof6rXI4fXyiRwVPHR7R94dksQNd3kzCdp2E5QuoP3JaVYpsHkm24yHEnS9duHaY
+         q2qQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVG0GL5aHip4qhp5CkAyIZ4qUr23+YQCjxTyU3uQx7/1ycXKg+kNr6b8v7epLQLjhzF3Sz1Hz/oG3wwd1/ku3s=@lists.infradead.org, AJvYcCWpS4YBousf1xvOorz2M0+XTIX3wGplKzIv1DMatMR9ioYrqQXuSWi6hQEU4M23PWVv9iGj2HrxtClQ598n0mQr@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6xcIh/MVpMlBD1Osp+5r7z1AaXa+neJCc2ETWU85lSDCgP2qr
+	UtF4d4WDMLUfLDrXNhkVgqVVNAuApLqGtOORNRVrnNeEN3cic5wC
+X-Gm-Gg: ASbGncsxHG8RB5k8fPL8wxkRo0uFqzRlT+2fJCHYWt8k9lUkdOZ8uHaJfS1T9kQDoqW
+	0QN1TOcEz+zKrj7xreLC1WYtYiV00NxBxuij3dHefRrzmBNvK7H7Z4unCTRl/fYH2m6hlZxZ6nk
+	ETs+yvvk//HQgnprncjMwaCTOA7hJSA+yGJQrshR265EYTAD7dZocFufAtJb/y4EkhuN/mV8FpI
+	hsArIJwaKP2z8zvaCTHRGnKPNKzvXOhpRE0ULLT63cEpGmyZ4OwdhoviLKnyPxEU2biUK43QWmr
+	txK0EfkzZ5dbdqih1BDx3jx59K67ESaceBHaY9w6+4IU6B2lim+oRapgrCbIhE1yEtpw3lTgMtw
+	GxoTqOGRGTBPJ7OwY/xEPmit5x7Ogj6qc4+2ckl/Be6o9u+GWx01p9GjPtuF4p+lk/A==
+X-Google-Smtp-Source: AGHT+IHkmVd30f3deykKxL2ZIUBA3+EnIW5l4h6W1mPQ91mHlha7qyevukukOy5IENG+fcG0BHpRFA==
+X-Received: by 2002:a05:6402:2106:b0:5de:4877:ef41 with SMTP id 4fb4d7f45d1cf-5deade00a82mr4171173a12.25.1739388837360;
+        Wed, 12 Feb 2025 11:33:57 -0800 (PST)
+Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5de63a89b6asm8193610a12.46.2025.02.12.11.33.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Feb 2025 11:33:56 -0800 (PST)
+Message-ID: <fe6509ab-c186-47c1-b004-4e17a875c5c7@gmail.com>
+Date: Wed, 12 Feb 2025 20:33:52 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="LekUKq0CadfRs7yd"
-Content-Disposition: inline
-In-Reply-To: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 net-next] net: ethernet: mtk_ppe_offload: Allow QinQ
+To: Jakub Kicinski <kuba@kernel.org>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+References: <20250209110936.241487-1-ericwouds@gmail.com>
+ <20250211165127.3282acb0@kernel.org>
+From: Eric Woudstra <ericwouds@gmail.com>
+Content-Language: en-US
+In-Reply-To: <20250211165127.3282acb0@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_111805_353064_FD23283A 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20250212_113359_785743_C0CAAA77 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,52 +96,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---LekUKq0CadfRs7yd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Feb 12, 2025 at 11:03:41AM +0100, AngeloGioacchino Del Regno wrote:
-> Add binding for the HDMI TX clock found in the VDO1 controller.
-> While at it, also remove the unused CLK_VDO1_NR_CLK.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  include/dt-bindings/clock/mediatek,mt8188-clk.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/include/dt-bindings/clock/mediatek,mt8188-clk.h b/include/dt=
--bindings/clock/mediatek,mt8188-clk.h
-> index bd5cd100b796..0e87f61c90f4 100644
-> --- a/include/dt-bindings/clock/mediatek,mt8188-clk.h
-> +++ b/include/dt-bindings/clock/mediatek,mt8188-clk.h
-> @@ -721,6 +721,6 @@
->  #define CLK_VDO1_DPINTF				58
->  #define CLK_VDO1_DISP_MONITOR_DPINTF		59
->  #define CLK_VDO1_26M_SLOW			60
-> -#define CLK_VDO1_NR_CLK				61
-> +#define CLK_VDO1_DPI1_HDMI			61
+On 2/12/25 1:51 AM, Jakub Kicinski wrote:
+> On Sun,  9 Feb 2025 12:09:36 +0100 Eric Woudstra wrote:
+>> This patch adds QinQ support to mtk_flow_offload_replace().
+>>
+>> Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
+>> of PPPoE and Q-in-Q is not allowed.
+> 
+> AFAIU the standard asks for outer tag in Q-in-Q to be ETH_P_8021AD,
+> but you still check:
+> 
+>> 			    act->vlan.proto != htons(ETH_P_8021Q))
+>> 				return -EOPNOTSUPP;
+> 
+> If this is a HW limitation I think you should document that more
+> clearly in the commit message. If you can fix it, I think you should..
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+It will be the first case. mtk_foe_entry_set_vlan() is limited to using
+only 1 fixed protocol. I'll drop the reviewed-by, amend the commit
+message and send v4.
 
-btw, I see the mt8195 has this same CLK_VDO1_NR_CLK define in it, if you
-fancy getting rid of that too.
-
---LekUKq0CadfRs7yd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6zz5gAKCRB4tDGHoIJi
-0lA+AP9ZvwrE6cb7EIWC6+imuEZ4+HNaO4ihg1Gx2VOD2gTcogD9EUucq+I84ADz
-YOvqTsY6j0BbiLvG+Hw8gfslDBKozAI=
-=Pmfl
------END PGP SIGNATURE-----
-
---LekUKq0CadfRs7yd--
 
