@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE7BC021A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 17:10:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D99C021A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 17:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LYn0fgjRDLK7we1WSOcVCL7eXddRMLXfF5g2iN6bwXY=; b=rS+1kdrEdcvHxHS3pLp+yRXh1x
-	sP2CuUVcXNCHL95DNkZcg4rM2TvFXSMWDyG9h0cFyztskN45wEuh0inNsTiXRwC6qZevgm6dq6p68
-	h1PeZh9aXIaPVLASqWOVnybdwJclMbAEYhxPD/NErn42u2e83HTTEy8rjRO1OtAm+A3FlZCqBrSsF
-	imgX2/pcNd4OxL9dSR6A71fU9Jxht/NehJaMxMYcWAH9hYsiwjJp7DEdpLWYRk//OBVxqKcLUKI8j
-	9u0ZB7L8SNT65SX57ycAIClvO5RE2iIFZau82hewNFF8CsdhB/aqJpoehLU2med/QiHD4gILhQ3en
-	8HlzsTsA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ywv536guZWyP/Lc9tX7tX/h7w5n/JNLArjRwgvxbIig=; b=CPPCaUfd3UnrvLQEGoMG2UdVYQ
+	KXhWexDkEif1g9s95IgHK/W5hjBTBVxQVfeLckB4iPwJY0aYKag16ladSPceB6dDJyzDwYW/Fk8nS
+	PrZOuIt/qE5zJy+6Z/O5mzZ1x+uPKy9jxjE/UZnc9phY7f0z9QG5NEVxkdv3flglfH8LlSqLlMuv3
+	CyfAjBvehS0t0D5nWQWqdK/MxuUm9Kj6D7IOvyrLq/6d6JOVAkV4GQRnehuHz4dPPPek215xhouuu
+	lAeW4x7wT0p4h544bF4M1k8kxBlAhj0YP8d3xTWUwpOXtcNQSHeCNW2JpUnj5KKSaf/6npL7JU5/D
+	lLsxe4EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiGGE-00000008EWy-1ioT;
-	Wed, 12 Feb 2025 17:10:54 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1tiGGD-00000008EVj-1YDG;
+	Wed, 12 Feb 2025 17:10:53 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiFgf-000000086HB-3BBO;
+	id 1tiFge-000000086HD-3QFt;
 	Wed, 12 Feb 2025 16:34:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1739378050; x=1770914050;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=kCFQDLNfPixVyUh7+fi7hXH2lVNVmZoD/srcHAu/zkY=;
-  b=QG9YHrgJCJEiRPB+RpFGdmWrmwf1Yuj04MXg/QQ4B1F8jHyGZt5WWCDu
-   HFGjk8v2A7nU5dD0p0k+T4oAe7UNHTkHDfRSmduCA0AWthkZNtKPdQL+M
-   j7iNkqqVtpNE/ffILIreJ0Ok9F8XWMjzcpvK+FSEdYTNJKNOEJ+QmEq47
-   tuWJPqpDp0VqBMhxRMQDAtkDuqn0vqLyiVk5LVw4ejiqkvfIDZ1bbKs3c
-   4crcknXXaROcKgOfzWNfNxpaZQ5x0pVL1gtW0hA3jp0j/qlifD7Cj3J6Y
-   HwcEoNJDNsoWKMZQiFrQ8/aNmi2pQ0Ez+1Yt1j79+o4zV+sHeKJfV/+rq
+  t=1739378049; x=1770914049;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=lw0AQ9Rpd28XddSfg/O8nWXU4S88r7p5CG7C4eayPmU=;
+  b=PlQacMNz8fboZxzi8oU4IKGff+SxvqjsWSx9GVMAhhYkJcK03Ua/oFRN
+   c/ZF5GxHO66cQpXoTmBpptnMSUu0hESmYRprdZx2gb+oSeE+p/Hd11wOR
+   bBTJO3mvMRTAfo3auYItCHw90hdoJNNa5vZARQBkzj6W6CNBRx/kT/qfg
+   rMRlHjNL9Gl4mnwJQiSWacGYPKLrrOnBAkeSe6XHZuRzy81O26BjK4Nhw
+   k4Q1GfMaL8RaGuxU4an+cZ+0IuWxCBCAYd3Fz8AsUIJ2sq5nWMchQa/Zb
+   c6yYRbVz4/ceP9ni3VdBu3uDzN3iq6DEFRe0griq9nyR681yD4+cD+eCy
    Q==;
-X-CSE-ConnectionGUID: tRycJX5kR2Sci1Ps3flmjg==
-X-CSE-MsgGUID: rQc9+lCDRKiFlHVhu/nhtQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11343"; a="51032329"
+X-CSE-ConnectionGUID: TkpBu8/ARjGgv0nYRYkgYw==
+X-CSE-MsgGUID: 25TpQSvAQr2HzyHCgV8JwQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11343"; a="39969203"
 X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
-   d="scan'208";a="51032329"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 08:34:08 -0800
-X-CSE-ConnectionGUID: irz/hdSsQPyHAJdCuCCBCA==
-X-CSE-MsgGUID: lO25qOasSlKvhSxXSqtPRQ==
+   d="scan'208";a="39969203"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 08:34:08 -0800
+X-CSE-ConnectionGUID: pHECftlpSbC3O2TFvy+LFw==
+X-CSE-MsgGUID: RnMIYfAdRvS/SfwDNyDA1g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
-   d="scan'208";a="117879143"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="143815131"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orviesa004.jf.intel.com with ESMTP; 12 Feb 2025 08:34:02 -0800
+  by fmviesa001.fm.intel.com with ESMTP; 12 Feb 2025 08:34:03 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 8E55F11E; Wed, 12 Feb 2025 18:34:01 +0200 (EET)
+	id D3A3431C; Wed, 12 Feb 2025 18:34:01 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Andi Shyti <andi.shyti@kernel.org>,
@@ -74,16 +74,17 @@ Cc: Krzysztof Adamski <krzysztof.adamski@nokia.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Gregory CLEMENT <gregory.clement@bootlin.com>,
 	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Subject: [PATCH v1 0/8] i2c: busses: Introduce and use i2c_10bit_addr_from_msg()
-Date: Wed, 12 Feb 2025 18:32:25 +0200
-Message-ID: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 4/8] i2c: eg20t: Use i2c_10bit_addr_from_msg() helper
+Date: Wed, 12 Feb 2025 18:32:29 +0200
+Message-ID: <20250212163359.2407327-5-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.45.1.3035.g276e886db78b
+In-Reply-To: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
+References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_083409_839913_A08783D7 
-X-CRM114-Status: UNSURE (   7.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250212_083408_892714_23D991C9 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,30 +99,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For 8-bit addresses we have a helper function, define similar one
-for 10-bit addresses and use it in the drivers. It allows to remove
-some boilerplate code.
+Use i2c_10bit_addr_from_msg() helper instead of local copy.
+No functional change intended.
 
-Andy Shevchenko (8):
-  i2c: Introduce i2c_10bit_addr_from_msg()
-  i2c: axxia: Use i2c_10bit_addr_from_msg() helper
-  i2c: bcm-kona: Use i2c_10bit_addr_from_msg() helper
-  i2c: eg20t: Use i2c_10bit_addr_from_msg() helper
-  i2c: kempld: Use i2c_10bit_addr_from_msg() helper
-  i2c: mt7621: Use i2c_10bit_addr_from_msg() helper
-  i2c: mv64xxx: Use i2c_*bit_addr_from_msg() helpers
-  i2c: rzv2m: Use i2c_10bit_addr_from_msg() helper
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/i2c/busses/i2c-eg20t.c | 28 +++++-----------------------
+ 1 file changed, 5 insertions(+), 23 deletions(-)
 
- drivers/i2c/busses/i2c-axxia.c    | 19 ++-----------------
- drivers/i2c/busses/i2c-bcm-kona.c |  9 ++++-----
- drivers/i2c/busses/i2c-eg20t.c    | 28 +++++-----------------------
- drivers/i2c/busses/i2c-kempld.c   |  4 +---
- drivers/i2c/busses/i2c-mt7621.c   |  4 +---
- drivers/i2c/busses/i2c-mv64xxx.c  | 10 ++--------
- drivers/i2c/busses/i2c-rzv2m.c    | 10 +++-------
- include/linux/i2c.h               | 10 ++++++++++
- 8 files changed, 28 insertions(+), 66 deletions(-)
-
+diff --git a/drivers/i2c/busses/i2c-eg20t.c b/drivers/i2c/busses/i2c-eg20t.c
+index 4914bfbee2a9..20151408bf9c 100644
+--- a/drivers/i2c/busses/i2c-eg20t.c
++++ b/drivers/i2c/busses/i2c-eg20t.c
+@@ -48,8 +48,6 @@
+ 
+ #define BUS_IDLE_TIMEOUT	20
+ #define PCH_I2CCTL_I2CMEN	0x0080
+-#define TEN_BIT_ADDR_DEFAULT	0xF000
+-#define TEN_BIT_ADDR_MASK	0xF0
+ #define PCH_START		0x0020
+ #define PCH_RESTART		0x0004
+ #define PCH_ESR_START		0x0001
+@@ -58,7 +56,6 @@
+ #define PCH_ACK			0x0008
+ #define PCH_GETACK		0x0001
+ #define CLR_REG			0x0
+-#define I2C_RD			0x1
+ #define I2CMCF_BIT		0x0080
+ #define I2CMIF_BIT		0x0002
+ #define I2CMAL_BIT		0x0010
+@@ -76,8 +73,6 @@
+ #define I2CMBB_BIT		0x0020
+ #define BUFFER_MODE_MASK	(I2CBMFI_BIT | I2CBMAL_BIT | I2CBMNA_BIT | \
+ 				I2CBMTO_BIT | I2CBMIS_BIT)
+-#define I2C_ADDR_MSK		0xFF
+-#define I2C_MSB_2B_MSK		0x300
+ #define FAST_MODE_CLK		400
+ #define FAST_MODE_EN		0x0001
+ #define SUB_ADDR_LEN_MAX	4
+@@ -371,16 +366,12 @@ static s32 pch_i2c_writebytes(struct i2c_adapter *i2c_adap,
+ 	struct i2c_algo_pch_data *adap = i2c_adap->algo_data;
+ 	u8 *buf;
+ 	u32 length;
+-	u32 addr;
+-	u32 addr_2_msb;
+-	u32 addr_8_lsb;
+ 	s32 wrcount;
+ 	s32 rtn;
+ 	void __iomem *p = adap->pch_base_address;
+ 
+ 	length = msgs->len;
+ 	buf = msgs->buf;
+-	addr = msgs->addr;
+ 
+ 	/* enable master tx */
+ 	pch_setbit(adap->pch_base_address, PCH_I2CCTL, I2C_TX_MODE);
+@@ -394,8 +385,7 @@ static s32 pch_i2c_writebytes(struct i2c_adapter *i2c_adap,
+ 	}
+ 
+ 	if (msgs->flags & I2C_M_TEN) {
+-		addr_2_msb = ((addr & I2C_MSB_2B_MSK) >> 7) & 0x06;
+-		iowrite32(addr_2_msb | TEN_BIT_ADDR_MASK, p + PCH_I2CDR);
++		iowrite32(i2c_10bit_addr_from_msg(msgs), p + PCH_I2CDR);
+ 		if (first)
+ 			pch_i2c_start(adap);
+ 
+@@ -403,8 +393,7 @@ static s32 pch_i2c_writebytes(struct i2c_adapter *i2c_adap,
+ 		if (rtn)
+ 			return rtn;
+ 
+-		addr_8_lsb = (addr & I2C_ADDR_MSK);
+-		iowrite32(addr_8_lsb, p + PCH_I2CDR);
++		iowrite32(msgs->addr & 0xff, p + PCH_I2CDR);
+ 	} else {
+ 		/* set 7 bit slave address and R/W bit as 0 */
+ 		iowrite32(i2c_8bit_addr_from_msg(msgs), p + PCH_I2CDR);
+@@ -490,15 +479,11 @@ static s32 pch_i2c_readbytes(struct i2c_adapter *i2c_adap, struct i2c_msg *msgs,
+ 	u8 *buf;
+ 	u32 count;
+ 	u32 length;
+-	u32 addr;
+-	u32 addr_2_msb;
+-	u32 addr_8_lsb;
+ 	void __iomem *p = adap->pch_base_address;
+ 	s32 rtn;
+ 
+ 	length = msgs->len;
+ 	buf = msgs->buf;
+-	addr = msgs->addr;
+ 
+ 	/* enable master reception */
+ 	pch_clrbit(adap->pch_base_address, PCH_I2CCTL, I2C_TX_MODE);
+@@ -509,8 +494,7 @@ static s32 pch_i2c_readbytes(struct i2c_adapter *i2c_adap, struct i2c_msg *msgs,
+ 	}
+ 
+ 	if (msgs->flags & I2C_M_TEN) {
+-		addr_2_msb = ((addr & I2C_MSB_2B_MSK) >> 7);
+-		iowrite32(addr_2_msb | TEN_BIT_ADDR_MASK, p + PCH_I2CDR);
++		iowrite32(i2c_10bit_addr_from_msg(msgs) & ~I2C_M_RD, p + PCH_I2CDR);
+ 		if (first)
+ 			pch_i2c_start(adap);
+ 
+@@ -518,8 +502,7 @@ static s32 pch_i2c_readbytes(struct i2c_adapter *i2c_adap, struct i2c_msg *msgs,
+ 		if (rtn)
+ 			return rtn;
+ 
+-		addr_8_lsb = (addr & I2C_ADDR_MSK);
+-		iowrite32(addr_8_lsb, p + PCH_I2CDR);
++		iowrite32(msgs->addr & 0xff, p + PCH_I2CDR);
+ 
+ 		pch_i2c_restart(adap);
+ 
+@@ -527,8 +510,7 @@ static s32 pch_i2c_readbytes(struct i2c_adapter *i2c_adap, struct i2c_msg *msgs,
+ 		if (rtn)
+ 			return rtn;
+ 
+-		addr_2_msb |= I2C_RD;
+-		iowrite32(addr_2_msb | TEN_BIT_ADDR_MASK, p + PCH_I2CDR);
++		iowrite32(i2c_10bit_addr_from_msg(msgs), p + PCH_I2CDR);
+ 	} else {
+ 		/* 7 address bits + R/W bit */
+ 		iowrite32(i2c_8bit_addr_from_msg(msgs), p + PCH_I2CDR);
 -- 
 2.45.1.3035.g276e886db78b
 
