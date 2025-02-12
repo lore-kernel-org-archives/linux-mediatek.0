@@ -4,95 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA865C021A4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04118C02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cduO5R39pOTRIfYm2N4ZkWSQKQCnLkVWOo57ZNX/C8k=; b=iXa509HnrorhhgG4Nio4UcWjE9
-	jEZ1qwIXxK8YNgblnLNoJXgDMGojUgC9pspakdiP5FBvwzXG24c6ODsaB0khw7xlcSyUK4Z3hNjx/
-	d//rCajdmk8gUcLAFSv9xHBAnwphSNwHbYyXGzq5+xkx06SvcE4hfU7bRuUj3BIbNk6emR5b/f2Ad
-	j06KETpuYsa2zsqs+Z/Ne2G+ELQ4MEl5yoAju1Xajz9aqYoEXALGwgFu47H6EGEC3eBJSQoU+1bHH
-	o6NlsxOTEo+khoWH58qyzCRKJ8+IPtph5zpQsW8Rui/WfjymvPdH1VlWwZWGKN3ZFk+C3kJ7ogatK
-	P1+sp1NQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SrZ7q3UddXW1p49/GdRvgpUzejtlAUiY6e9x0tcKinE=; b=i3KP+GqGPXXiQUIbGCT86olLTG
+	z9iItn7gDN6XCdbCNIvIfRVvIJ7K8sbtX/hn3oVy9jkkvSrY3u5bmTuMDPrBJ0IIe6rFehL/G5CTq
+	G51Iycn7lb7uXVfxkSx8yE1ufg4K6x/Ov2hIfQf/LrLS43EYv7EPwulnEBoHeuntphNfZUwETGkxr
+	3YQNDoHfBGYgAr7oWg4DqTHRjK8K7PpFPKGTuOKBTeCx2YKq4wJGXxiSU22I8XcQ0pBeYKNp0uTPP
+	JLJcO1CjMGRgxLevpZW4f8b66IJ4tgH96k4+aCZfEjWTE1rSaMiijdExG2bI9edgoYWn4vdWvqTEB
+	VTf13WwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiANk-0000000740k-29Gw;
-	Wed, 12 Feb 2025 10:54:16 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tiAPp-000000074R5-2ssU;
+	Wed, 12 Feb 2025 10:56:25 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiADY-000000071jd-2Nrx;
-	Wed, 12 Feb 2025 10:43:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:Content-ID
-	:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
-	Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=cduO5R39pOTRIfYm2N4ZkWSQKQCnLkVWOo57ZNX/C8k=; b=RpSjZ9pWnIGxnj4+VyWkzAoJFi
-	Y2pbaeKhFMylO9AcWFErS19y2CQA0BMs28DJJgUcMvHHPxv/sGoUHSPCwERQ+Ler3DiWtytecX92A
-	p0KSwvSGkSjTDAUNoylCwtNqMAjZ9XBazo0o9IpYm+UmcBAtnwMpAPt+KcDgwVcIe2evipjeC8dm5
-	gVwquZ9zoaSKh/OuCZaqy9H2pi57+gVKZIUBSuqCTaEKZ+N0tA8MsCzbpknnRrZHBQRlnsab0dY+X
-	STxxfuoJPIQJm+SOGb2H0ygmNwPKXgJw1/1loQD5U0AYMLUk7uwIjJLCHx4+qfQvQA2GG0XqhlOqk
-	LUNqeumA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36322 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tiACy-0005YL-0w;
-	Wed, 12 Feb 2025 10:43:08 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tiACe-003yZe-IZ; Wed, 12 Feb 2025 10:42:48 +0000
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Florian Fainelli <florian.fainelli@broadcom.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Sean Anderson <sean.anderson@seco.com>,
-	Marcin Wojtas <marcin.s.wojtas@gmail.com>,
-	Taras Chornyi <taras.chornyi@plvision.eu>,
-	Alexander Duyck <alexanderduyck@fb.com>,
-	kernel-team@meta.com,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next] net: remove phylink_pcs .neg_mode boolean
+	id 1tiAJF-0000000736L-2aVT;
+	Wed, 12 Feb 2025 10:49:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 70768A402E4;
+	Wed, 12 Feb 2025 10:47:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01860C4CEDF;
+	Wed, 12 Feb 2025 10:49:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739357376;
+	bh=SrZ7q3UddXW1p49/GdRvgpUzejtlAUiY6e9x0tcKinE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fsCk99ecgG1X1H4oCmDUZgnbAUfRIvj8fWtdlwdoQ07gzWE7fmKGgOCFbXT8zxU8z
+	 E17uZ/CKSWTiBSsXf6Z6vZWKYpqlNlcKGIyrhcObTMnI1Vs8SOuMqX9285cpyLhl3h
+	 i4BACZrSu2IrhvuCBWekSlYRZzO3qid0P9Ajy4xYJi/PyBLZ+A2HVA8MjrFX049Kga
+	 aC8profD5qguMrsDfEYi5k14CfG/ZS5ZwDrn1/hjq/RJX6KfdiM3+g5V+nuBxEflNE
+	 BuOxNawNPtWooUTQhU4pS84J5mQd1EBbum7ylQPZiEkomLW6MNCo51OZTDyrBZ+Ri7
+	 Mh4FqItv9flOg==
+Date: Wed, 12 Feb 2025 11:49:34 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Florent Tomasin <florent.tomasin@arm.com>
+Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, Vinod Koul <vkoul@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>, 
+	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
+	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, nd@arm.com, 
+	Akash Goel <akash.goel@arm.com>
+Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
+Message-ID: <20250212-sweet-nano-penguin-e85e7d@houat>
+References: <cover.1738228114.git.florent.tomasin@arm.com>
+ <771534be8dfa2a3bdc3876502752f518224b9298.1738228114.git.florent.tomasin@arm.com>
+ <ats2unrml5a7vbpdrqrzowodrsfj44bnubpbujg2igk3imeklx@nrpmg5oeq3gz>
+ <be8e6b9f-c3c6-41d1-af9c-3dcd102f0fe3@arm.com>
+ <b02711c901e8acf2bc47926919de7673a0cb0b98.camel@ndufresne.ca>
+ <fae8df2a-3e47-4266-aace-392c5f37581f@arm.com>
+ <20250212-naughty-chipmunk-of-potency-7e0ced@houat>
+ <8ee8e684-0164-4e70-b42e-3827c7885685@arm.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="hofcel2epznouj7x"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tiACe-003yZe-IZ@rmk-PC.armlinux.org.uk>
-Date: Wed, 12 Feb 2025 10:42:48 +0000
+In-Reply-To: <8ee8e684-0164-4e70-b42e-3827c7885685@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_024344_888336_48913D71 
-X-CRM114-Status: GOOD (  16.86  )
+X-CRM114-CacheID: sfid-20250212_024937_793692_ED773560 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,387 +91,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As all PCS are using the neg_mode parameter rather than the legacy
-an_mode, remove the ability to use the legacy an_mode. We remove the
-tests in the phylink code, unconditionally passing the PCS neg_mode
-parameter to PCS methods, and remove setting the flag from drivers.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/b53/b53_serdes.c              |  1 -
- drivers/net/dsa/mt7530.c                      |  1 -
- drivers/net/dsa/mv88e6xxx/pcs-6185.c          |  1 -
- drivers/net/dsa/mv88e6xxx/pcs-6352.c          |  1 -
- drivers/net/dsa/mv88e6xxx/pcs-639x.c          |  4 ---
- drivers/net/dsa/qca/qca8k-8xxx.c              |  1 -
- drivers/net/ethernet/cadence/macb_main.c      |  2 --
- .../net/ethernet/freescale/fman/fman_dtsec.c  |  1 -
- drivers/net/ethernet/marvell/mvneta.c         |  1 -
- .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  2 --
- .../ethernet/marvell/prestera/prestera_main.c |  1 -
- .../net/ethernet/meta/fbnic/fbnic_phylink.c   |  1 -
- .../ethernet/microchip/lan966x/lan966x_main.c |  1 -
- .../ethernet/microchip/sparx5/sparx5_main.c   |  1 -
- .../net/ethernet/xilinx/xilinx_axienet_main.c |  1 -
- drivers/net/pcs/pcs-lynx.c                    |  1 -
- drivers/net/pcs/pcs-mtk-lynxi.c               |  1 -
- drivers/net/pcs/pcs-rzn1-miic.c               |  1 -
- drivers/net/pcs/pcs-xpcs.c                    |  1 -
- drivers/net/phy/phylink.c                     | 30 ++++---------------
- include/linux/phylink.h                       |  1 -
- 21 files changed, 5 insertions(+), 50 deletions(-)
+--hofcel2epznouj7x
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [RFC PATCH 1/5] dt-bindings: dma: Add CMA Heap bindings
+MIME-Version: 1.0
 
-diff --git a/drivers/net/dsa/b53/b53_serdes.c b/drivers/net/dsa/b53/b53_serdes.c
-index 4730982b6840..7460122f6abc 100644
---- a/drivers/net/dsa/b53/b53_serdes.c
-+++ b/drivers/net/dsa/b53/b53_serdes.c
-@@ -239,7 +239,6 @@ int b53_serdes_init(struct b53_device *dev, int port)
- 	pcs->dev = dev;
- 	pcs->lane = lane;
- 	pcs->pcs.ops = &b53_pcs_ops;
--	pcs->pcs.neg_mode = true;
- 
- 	return 0;
- }
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1c83af805209..b767be593dbe 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3071,7 +3071,6 @@ mt753x_setup(struct dsa_switch *ds)
- 	/* Initialise the PCS devices */
- 	for (i = 0; i < priv->ds->num_ports; i++) {
- 		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
--		priv->pcs[i].pcs.neg_mode = true;
- 		priv->pcs[i].priv = priv;
- 		priv->pcs[i].port = i;
- 	}
-diff --git a/drivers/net/dsa/mv88e6xxx/pcs-6185.c b/drivers/net/dsa/mv88e6xxx/pcs-6185.c
-index 75ed1fa500a5..af7e06d265f7 100644
---- a/drivers/net/dsa/mv88e6xxx/pcs-6185.c
-+++ b/drivers/net/dsa/mv88e6xxx/pcs-6185.c
-@@ -138,7 +138,6 @@ static int mv88e6185_pcs_init(struct mv88e6xxx_chip *chip, int port)
- 	mpcs->chip = chip;
- 	mpcs->port = port;
- 	mpcs->phylink_pcs.ops = &mv88e6185_phylink_pcs_ops;
--	mpcs->phylink_pcs.neg_mode = true;
- 
- 	irq = mv88e6xxx_serdes_irq_mapping(chip, port);
- 	if (irq) {
-diff --git a/drivers/net/dsa/mv88e6xxx/pcs-6352.c b/drivers/net/dsa/mv88e6xxx/pcs-6352.c
-index 143fe21d1834..36993400837e 100644
---- a/drivers/net/dsa/mv88e6xxx/pcs-6352.c
-+++ b/drivers/net/dsa/mv88e6xxx/pcs-6352.c
-@@ -275,7 +275,6 @@ static struct marvell_c22_pcs *marvell_c22_pcs_alloc(struct device *dev,
- 	mpcs->mdio.bus = bus;
- 	mpcs->mdio.addr = addr;
- 	mpcs->phylink_pcs.ops = &marvell_c22_pcs_ops;
--	mpcs->phylink_pcs.neg_mode = true;
- 
- 	return mpcs;
- }
-diff --git a/drivers/net/dsa/mv88e6xxx/pcs-639x.c b/drivers/net/dsa/mv88e6xxx/pcs-639x.c
-index 59f63d6beec8..5db17c0b77f5 100644
---- a/drivers/net/dsa/mv88e6xxx/pcs-639x.c
-+++ b/drivers/net/dsa/mv88e6xxx/pcs-639x.c
-@@ -565,9 +565,7 @@ static int mv88e6390_pcs_init(struct mv88e6xxx_chip *chip, int port)
- 		return -ENOMEM;
- 
- 	mpcs->sgmii_pcs.ops = &mv88e639x_sgmii_pcs_ops;
--	mpcs->sgmii_pcs.neg_mode = true;
- 	mpcs->xg_pcs.ops = &mv88e6390_xg_pcs_ops;
--	mpcs->xg_pcs.neg_mode = true;
- 
- 	if (chip->info->prod_num == MV88E6XXX_PORT_SWITCH_ID_PROD_6190X ||
- 	    chip->info->prod_num == MV88E6XXX_PORT_SWITCH_ID_PROD_6390X)
-@@ -945,9 +943,7 @@ static int mv88e6393x_pcs_init(struct mv88e6xxx_chip *chip, int port)
- 		return -ENOMEM;
- 
- 	mpcs->sgmii_pcs.ops = &mv88e6393x_sgmii_pcs_ops;
--	mpcs->sgmii_pcs.neg_mode = true;
- 	mpcs->xg_pcs.ops = &mv88e6393x_xg_pcs_ops;
--	mpcs->xg_pcs.neg_mode = true;
- 	mpcs->supports_5g = true;
- 
- 	err = mv88e6393x_erratum_4_6(mpcs);
-diff --git a/drivers/net/dsa/qca/qca8k-8xxx.c b/drivers/net/dsa/qca/qca8k-8xxx.c
-index e8cb4da15dbe..a36b8b07030e 100644
---- a/drivers/net/dsa/qca/qca8k-8xxx.c
-+++ b/drivers/net/dsa/qca/qca8k-8xxx.c
-@@ -1634,7 +1634,6 @@ static void qca8k_setup_pcs(struct qca8k_priv *priv, struct qca8k_pcs *qpcs,
- 			    int port)
- {
- 	qpcs->pcs.ops = &qca8k_pcs_ops;
--	qpcs->pcs.neg_mode = true;
- 
- 	/* We don't have interrupts for link changes, so we need to poll */
- 	qpcs->pcs.poll = true;
-diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
-index 48496209fb16..4db61372a78e 100644
---- a/drivers/net/ethernet/cadence/macb_main.c
-+++ b/drivers/net/ethernet/cadence/macb_main.c
-@@ -853,9 +853,7 @@ static int macb_mii_probe(struct net_device *dev)
- 	struct macb *bp = netdev_priv(dev);
- 
- 	bp->phylink_sgmii_pcs.ops = &macb_phylink_pcs_ops;
--	bp->phylink_sgmii_pcs.neg_mode = true;
- 	bp->phylink_usx_pcs.ops = &macb_phylink_usx_pcs_ops;
--	bp->phylink_usx_pcs.neg_mode = true;
- 
- 	bp->phylink_config.dev = &dev->dev;
- 	bp->phylink_config.type = PHYLINK_NETDEV;
-diff --git a/drivers/net/ethernet/freescale/fman/fman_dtsec.c b/drivers/net/ethernet/freescale/fman/fman_dtsec.c
-index b3e2a596ad2c..51402dff72c5 100644
---- a/drivers/net/ethernet/freescale/fman/fman_dtsec.c
-+++ b/drivers/net/ethernet/freescale/fman/fman_dtsec.c
-@@ -1446,7 +1446,6 @@ int dtsec_initialization(struct mac_device *mac_dev,
- 		goto _return_fm_mac_free;
- 	}
- 	dtsec->pcs.ops = &dtsec_pcs_ops;
--	dtsec->pcs.neg_mode = true;
- 	dtsec->pcs.poll = true;
- 
- 	supported = mac_dev->phylink_config.supported_interfaces;
-diff --git a/drivers/net/ethernet/marvell/mvneta.c b/drivers/net/ethernet/marvell/mvneta.c
-index 4fe121b9f94b..44b18c573909 100644
---- a/drivers/net/ethernet/marvell/mvneta.c
-+++ b/drivers/net/ethernet/marvell/mvneta.c
-@@ -5557,7 +5557,6 @@ static int mvneta_probe(struct platform_device *pdev)
- 		clk_prepare_enable(pp->clk_bus);
- 
- 	pp->phylink_pcs.ops = &mvneta_phylink_pcs_ops;
--	pp->phylink_pcs.neg_mode = true;
- 
- 	pp->phylink_config.dev = &dev->dev;
- 	pp->phylink_config.type = PHYLINK_NETDEV;
-diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-index dd76c1b7ed3a..f166dc4e6503 100644
---- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-+++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-@@ -7024,9 +7024,7 @@ static int mvpp2_port_probe(struct platform_device *pdev,
- 	dev->dev_port = port->id;
- 
- 	port->pcs_gmac.ops = &mvpp2_phylink_gmac_pcs_ops;
--	port->pcs_gmac.neg_mode = true;
- 	port->pcs_xlg.ops = &mvpp2_phylink_xlg_pcs_ops;
--	port->pcs_xlg.neg_mode = true;
- 
- 	if (!mvpp2_use_acpi_compat_mode(port_fwnode)) {
- 		port->phylink_config.dev = &dev->dev;
-diff --git a/drivers/net/ethernet/marvell/prestera/prestera_main.c b/drivers/net/ethernet/marvell/prestera/prestera_main.c
-index 440a4c42b405..8cdecf61253c 100644
---- a/drivers/net/ethernet/marvell/prestera/prestera_main.c
-+++ b/drivers/net/ethernet/marvell/prestera/prestera_main.c
-@@ -396,7 +396,6 @@ static int prestera_port_sfp_bind(struct prestera_port *port)
- 			continue;
- 
- 		port->phylink_pcs.ops = &prestera_pcs_ops;
--		port->phylink_pcs.neg_mode = true;
- 
- 		port->phy_config.dev = &port->dev->dev;
- 		port->phy_config.type = PHYLINK_NETDEV;
-diff --git a/drivers/net/ethernet/meta/fbnic/fbnic_phylink.c b/drivers/net/ethernet/meta/fbnic/fbnic_phylink.c
-index bb11fc83367d..860b02b22c15 100644
---- a/drivers/net/ethernet/meta/fbnic/fbnic_phylink.c
-+++ b/drivers/net/ethernet/meta/fbnic/fbnic_phylink.c
-@@ -133,7 +133,6 @@ int fbnic_phylink_init(struct net_device *netdev)
- 	struct fbnic_net *fbn = netdev_priv(netdev);
- 	struct phylink *phylink;
- 
--	fbn->phylink_pcs.neg_mode = true;
- 	fbn->phylink_pcs.ops = &fbnic_phylink_pcs_ops;
- 
- 	fbn->phylink_config.dev = &netdev->dev;
-diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_main.c b/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-index 3234a960fcc3..0af143ec0f86 100644
---- a/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-+++ b/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-@@ -828,7 +828,6 @@ static int lan966x_probe_port(struct lan966x *lan966x, u32 p,
- 	port->phylink_config.type = PHYLINK_NETDEV;
- 	port->phylink_pcs.poll = true;
- 	port->phylink_pcs.ops = &lan966x_phylink_pcs_ops;
--	port->phylink_pcs.neg_mode = true;
- 
- 	port->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 		MAC_10 | MAC_100 | MAC_1000FD | MAC_2500FD;
-diff --git a/drivers/net/ethernet/microchip/sparx5/sparx5_main.c b/drivers/net/ethernet/microchip/sparx5/sparx5_main.c
-index 6a0e5b83ecd0..74ad1d73b465 100644
---- a/drivers/net/ethernet/microchip/sparx5/sparx5_main.c
-+++ b/drivers/net/ethernet/microchip/sparx5/sparx5_main.c
-@@ -338,7 +338,6 @@ static int sparx5_create_port(struct sparx5 *sparx5,
- 	spx5_port->custom_etype = 0x8880; /* Vitesse */
- 	spx5_port->phylink_pcs.poll = true;
- 	spx5_port->phylink_pcs.ops = &sparx5_phylink_pcs_ops;
--	spx5_port->phylink_pcs.neg_mode = true;
- 	spx5_port->is_mrouter = false;
- 	INIT_LIST_HEAD(&spx5_port->tc_templates);
- 	sparx5->ports[config->portno] = spx5_port;
-diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-index 0673b2694e4c..2ffaad0b0477 100644
---- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-+++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-@@ -3073,7 +3073,6 @@ static int axienet_probe(struct platform_device *pdev)
- 		}
- 		of_node_put(np);
- 		lp->pcs.ops = &axienet_pcs_ops;
--		lp->pcs.neg_mode = true;
- 		lp->pcs.poll = true;
- 	}
- 
-diff --git a/drivers/net/pcs/pcs-lynx.c b/drivers/net/pcs/pcs-lynx.c
-index e46f588cae7d..23b40e9eacbb 100644
---- a/drivers/net/pcs/pcs-lynx.c
-+++ b/drivers/net/pcs/pcs-lynx.c
-@@ -355,7 +355,6 @@ static struct phylink_pcs *lynx_pcs_create(struct mdio_device *mdio)
- 	mdio_device_get(mdio);
- 	lynx->mdio = mdio;
- 	lynx->pcs.ops = &lynx_pcs_phylink_ops;
--	lynx->pcs.neg_mode = true;
- 	lynx->pcs.poll = true;
- 
- 	for (i = 0; i < ARRAY_SIZE(lynx_interfaces); i++)
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 7d6261dee534..149ddf51d785 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -305,7 +305,6 @@ struct phylink_pcs *mtk_pcs_lynxi_create(struct device *dev,
- 	mpcs->regmap = regmap;
- 	mpcs->flags = flags;
- 	mpcs->pcs.ops = &mtk_pcs_lynxi_ops;
--	mpcs->pcs.neg_mode = true;
- 	mpcs->pcs.poll = true;
- 	mpcs->interface = PHY_INTERFACE_MODE_NA;
- 
-diff --git a/drivers/net/pcs/pcs-rzn1-miic.c b/drivers/net/pcs/pcs-rzn1-miic.c
-index a808ac7375f5..d79bb9b06cd2 100644
---- a/drivers/net/pcs/pcs-rzn1-miic.c
-+++ b/drivers/net/pcs/pcs-rzn1-miic.c
-@@ -349,7 +349,6 @@ struct phylink_pcs *miic_create(struct device *dev, struct device_node *np)
- 	miic_port->miic = miic;
- 	miic_port->port = port - 1;
- 	miic_port->pcs.ops = &miic_phylink_ops;
--	miic_port->pcs.neg_mode = true;
- 
- 	phy_interface_set_rgmii(miic_port->pcs.supported_interfaces);
- 	__set_bit(PHY_INTERFACE_MODE_RMII, miic_port->pcs.supported_interfaces);
-diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-index ee0c1a27f06c..e32dec4b812e 100644
---- a/drivers/net/pcs/pcs-xpcs.c
-+++ b/drivers/net/pcs/pcs-xpcs.c
-@@ -1403,7 +1403,6 @@ static struct dw_xpcs *xpcs_create_data(struct mdio_device *mdiodev)
- 	mdio_device_get(mdiodev);
- 	xpcs->mdiodev = mdiodev;
- 	xpcs->pcs.ops = &xpcs_phylink_ops;
--	xpcs->pcs.neg_mode = true;
- 	xpcs->pcs.poll = true;
- 
- 	return xpcs;
-diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-index 840af19488d8..b76ac1322b68 100644
---- a/drivers/net/phy/phylink.c
-+++ b/drivers/net/phy/phylink.c
-@@ -1365,7 +1365,6 @@ static void phylink_major_config(struct phylink *pl, bool restart,
- 	struct phylink_pcs *pcs = NULL;
- 	bool pcs_changed = false;
- 	unsigned int rate_kbd;
--	unsigned int neg_mode;
- 	int err;
- 
- 	phylink_dbg(pl, "major config, requested %s/%s\n",
-@@ -1428,11 +1427,7 @@ static void phylink_major_config(struct phylink *pl, bool restart,
- 	if (pl->pcs_state == PCS_STATE_STARTING || pcs_changed)
- 		phylink_pcs_enable(pl->pcs);
- 
--	neg_mode = pl->act_link_an_mode;
--	if (pl->pcs && pl->pcs->neg_mode)
--		neg_mode = pl->pcs_neg_mode;
--
--	err = phylink_pcs_config(pl->pcs, neg_mode, state,
-+	err = phylink_pcs_config(pl->pcs, pl->pcs_neg_mode, state,
- 				 !!(pl->link_config.pause & MLO_PAUSE_AN));
- 	if (err < 0)
- 		phylink_err(pl, "pcs_config failed: %pe\n",
-@@ -1475,7 +1470,6 @@ static void phylink_major_config(struct phylink *pl, bool restart,
-  */
- static int phylink_change_inband_advert(struct phylink *pl)
- {
--	unsigned int neg_mode;
- 	int ret;
- 
- 	if (test_bit(PHYLINK_DISABLE_STOPPED, &pl->phylink_disable_state))
-@@ -1491,15 +1485,11 @@ static int phylink_change_inband_advert(struct phylink *pl)
- 	phylink_pcs_neg_mode(pl, pl->pcs, pl->link_config.interface,
- 			     pl->link_config.advertising);
- 
--	neg_mode = pl->act_link_an_mode;
--	if (pl->pcs->neg_mode)
--		neg_mode = pl->pcs_neg_mode;
--
- 	/* Modern PCS-based method; update the advert at the PCS, and
- 	 * restart negotiation if the pcs_config() helper indicates that
- 	 * the programmed advertisement has changed.
- 	 */
--	ret = phylink_pcs_config(pl->pcs, neg_mode, &pl->link_config,
-+	ret = phylink_pcs_config(pl->pcs, pl->pcs_neg_mode, &pl->link_config,
- 				 !!(pl->link_config.pause & MLO_PAUSE_AN));
- 	if (ret < 0)
- 		return ret;
-@@ -1523,13 +1513,7 @@ static void phylink_mac_pcs_get_state(struct phylink *pl,
- 	state->an_complete = 0;
- 	state->link = 1;
- 
--	pcs = pl->pcs;
--	if (!pcs || pcs->neg_mode)
--		autoneg = pl->pcs_neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED;
--	else
--		autoneg = linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
--					    state->advertising);
--
-+	autoneg = pl->pcs_neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED;
- 	if (autoneg) {
- 		state->speed = SPEED_UNKNOWN;
- 		state->duplex = DUPLEX_UNKNOWN;
-@@ -1540,6 +1524,7 @@ static void phylink_mac_pcs_get_state(struct phylink *pl,
- 		state->pause = pl->link_config.pause;
- 	}
- 
-+	pcs = pl->pcs;
- 	if (pcs)
- 		pcs->ops->pcs_get_state(pcs, pl->pcs_neg_mode, state);
- 	else
-@@ -1649,7 +1634,6 @@ static void phylink_link_up(struct phylink *pl,
- 			    struct phylink_link_state link_state)
- {
- 	struct net_device *ndev = pl->netdev;
--	unsigned int neg_mode;
- 	int speed, duplex;
- 	bool rx_pause;
- 
-@@ -1680,11 +1664,7 @@ static void phylink_link_up(struct phylink *pl,
- 
- 	pl->cur_interface = link_state.interface;
- 
--	neg_mode = pl->act_link_an_mode;
--	if (pl->pcs && pl->pcs->neg_mode)
--		neg_mode = pl->pcs_neg_mode;
--
--	phylink_pcs_link_up(pl->pcs, neg_mode, pl->cur_interface, speed,
-+	phylink_pcs_link_up(pl->pcs, pl->pcs_neg_mode, pl->cur_interface, speed,
- 			    duplex);
- 
- 	pl->mac_ops->mac_link_up(pl->config, pl->phydev, pl->act_link_an_mode,
-diff --git a/include/linux/phylink.h b/include/linux/phylink.h
-index a692d638568f..a0c6249b9b8e 100644
---- a/include/linux/phylink.h
-+++ b/include/linux/phylink.h
-@@ -459,7 +459,6 @@ struct phylink_pcs {
- 	DECLARE_PHY_INTERFACE_MASK(supported_interfaces);
- 	const struct phylink_pcs_ops *ops;
- 	struct phylink *phylink;
--	bool neg_mode;
- 	bool poll;
- 	bool rxc_always_on;
- };
--- 
-2.30.2
+On Wed, Feb 12, 2025 at 10:29:32AM +0000, Florent Tomasin wrote:
+>=20
+>=20
+> On 12/02/2025 10:01, Maxime Ripard wrote:
+> > On Wed, Feb 12, 2025 at 09:49:56AM +0000, Florent Tomasin wrote:
+> >> Note that the CMA patches were initially shared to help reproduce my
+> >> environment of development, I can isolate them in a separate patch
+> >> series and include a reference or "base-commit:" tag to it in the
+> >> Panthor protected mode RFC, to help progress this review in another
+> >> thread. It will avoid overlapping these two topics:
+> >>
+> >> - Multiple standalone CMA heaps support
+> >> - Panthor protected mode handling
+> >=20
+> > You keep insisting on using CMA here, but it's really not clear to me
+> > why you would need CMA in the first place.
+> >=20
+> > By CMA, do you mean the CMA allocator, and thus would provide buffers
+> > through the usual dma_alloc_* API, or would any allocator providing
+> > physically contiguous memory work?
+>=20
+> You are correct only the CMA allocator is relevant. I needed a way to
+> sub-allocate from a carved-out memory.
 
+I'm still confused, sorry. You're saying that you require CMA but...
+
+> > In the latter case, would something like this work:
+> > https://lore.kernel.org/all/20240515-dma-buf-ecc-heap-v1-1-54cbbd049511=
+@kernel.org/
+>=20
+> Thanks for sharing this link, I was not aware previous work was done
+> on this aspect. The new carveout heap introduced in the series could
+> probably be a good alternative. I will play-around with it and share
+> some updates.
+
+=2E.. you seem to be ok with a driver that doesn't use it?
+
+Maxime
+
+--hofcel2epznouj7x
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6x8uQAKCRAnX84Zoj2+
+dhpNAX9dpZ7jCHWS9XEKQqdeu+k8bL1z43DeFaKsONHamJEssyPacY4cU20LNyHZ
+dE3EP2gBfigcyv0UGOHYi7iyKQFw7lfvXnKfZ2/xUjJoWzSqoXVjjOm3bVKTr4WT
+bTbtf2LYNw==
+=IIBH
+-----END PGP SIGNATURE-----
+
+--hofcel2epznouj7x--
 
