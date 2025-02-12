@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E880C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 11:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6123AC02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 11:17:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hICn6iQr4RTRQbEF00NQouXJgoo3oXDoUoBKtFTMUvI=; b=W/QTjWMJEsGDmJCjUQPTBOIg8y
-	0jBgc2uFeMJruun0QRSlr9B+gIsoHfsu99NaOaIF7+RXW5rHW/G4+zbdDZ7sYEvD2p/hrgUuAHLsw
-	c1qgqPX+XcpnvW6X6XDA9ipXqF/BD7BTWkQzNEs/Uao+7Y1/KbCu5VooU6LYBLRLUyVtYe83J08JF
-	jRcUixUMXeezJgLW99uTmMHu+7jyEPKCdejX3cjqYMfK+1R1INNGBBcHFR5EhBWJ6mOxuAkTqTXc6
-	1LgOhBsrgiHBhzzgMK+ILb319J9C3pPgcaP0nRCrRLL5Y9PllpbZ0Jr3UtbiGCG9vAzFdkfTjhqjo
-	J+1a7Rlw==;
+	bh=cL0ahKHpf9ACh+d0cvaqcwnoJdIKRiqLgLV8f1UErxE=; b=iFZJYaQm46u/dkUlmjLFJuBj8t
+	2BT5rSH7etUu9KqVPapr7ldRAaALWbjLNj0YfxyKlLR4zwthazcYjJ1yddKq9KlQ78PoRmhJP1y0v
+	5SGCIprBXO+fORlBAYL+3zILCPbPUwrl7PEZ4PrwBVQdSBexLlMRMxrvpyjoZtJOAdd0XhsG1htW/
+	LxUVKFStBirV9En3yF7IZgsjJmeoJ2+XQKWQysuTKEEULU7Q1RyuxnPvotpNa3EvtnVssURn2u11n
+	lKQluvgUaoGLOCmksTEdUSN4mcEn5I7LGakXDB1S3QhOwg8FTzRw32MIIVIbEQcUmxVJ9LxsW4NXQ
+	1OYsfv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiAeZ-000000077RV-19Uw;
-	Wed, 12 Feb 2025 11:11:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tiAk1-000000078vF-1GVQ;
+	Wed, 12 Feb 2025 11:17:17 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiAc5-000000076yN-3LpO;
-	Wed, 12 Feb 2025 11:09:07 +0000
+	id 1tiAia-000000078bZ-24vp;
+	Wed, 12 Feb 2025 11:15:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739358544;
-	bh=0WMcpkgL+kzI3wuew8Ndfo8EQnxAuf57HxbK5IfZrRY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RQ294yJNqb53NHibL46kTJCyFUsetkdQa7DtxTTTHDVuGx0/4KZsSMzsk99kedW5n
-	 m4eMWwwVGDraz6U+Qi/7/oOqSbweyl3dHK70ClKIByimu/QHsfZfSqxk7XSOC824wt
-	 Pppf0NTU5tnO8UFI207x3XF6TywPbJ6FaKhuNf3bPKE1QASHJrCbiOFtS/leBB1gJb
-	 KQrviYKDPTMo7revohw/yudk54gWnPaXiLtWqT1pQEf3L76HzYgav/kzFrhbYqfVz1
-	 5p+h7nY03xDZWEh0k22GXhm/NV3PTLUe7+ehX6nOt4ODo9NG7Ickcaz34n3XzOHHFs
-	 6eYmuA40vR0xQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1739358946;
+	bh=YKDYw4EgJ1J5b/WF+gfNmcPIuyPdAY3GNHs6SNyZAFQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=K7oHOn+zn3EE8LPVGFyRSAMjIWrVt7o1s38DJhLtiSgGb7LPbrWXP5jeCfm8foiAJ
+	 D5oViv6VPCYNh7KtLmUxhS8ZQ9kZkqhZx1iIo+THiMdYv9r8fkrszbpsslUYvEft1y
+	 iXqButssceRsGWaKkDrCT4ljpzX/1LeoOt1JShZtcZYksetScIECZn4QJBnF3nFkaR
+	 aB4xkjXNYFjOOA0d4VYlw5UED+DVEAbdRqYKrWokox39rPEwkL3A2+ul8HI9pxZw0B
+	 +CYxbwKS/KKFEbEDTEpRLGhsBYYXjuD3PB+mwKwZCAOcM8fxIaB+TYrre6AIiAOBlH
+	 ZP1wcP/4NcbYg==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EAFF717E0FBA;
-	Wed, 12 Feb 2025 12:09:02 +0100 (CET)
-Message-ID: <70436de1-7ad0-41f0-a101-7373662aa008@collabora.com>
-Date: Wed, 12 Feb 2025 12:09:02 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/3] MediaTek MT8188 MDP3 Enablement
-To: chunkuang.hu@kernel.org, mchehab@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, moudy.ho@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, sebastian.fricke@collabora.com,
- macpaul.lin@mediatek.com
-References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19DF917E0F8B;
+	Wed, 12 Feb 2025 12:15:46 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com, macpaul.lin@mediatek.com
+In-Reply-To: <20241218105356.39111-1-angelogioacchino.delregno@collabora.com>
+References: <20241218105356.39111-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188: Add VDO0's DSC and MERGE
+ block nodes
+Message-Id: <173935894602.45655.9401418712379275131.b4-ty@collabora.com>
+Date: Wed, 12 Feb 2025 12:15:46 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_030905_996735_9A1F0723 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20250212_031548_732162_595EC8F4 
+X-CRM114-Status: UNSURE (   6.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,49 +78,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/12/24 11:53, AngeloGioacchino Del Regno ha scritto:
-> This series adds the necessary bindings and devicetree nodes to enable
-> the entire Multimedia Data Path 3 (MDP3) macro-block, found in MediaTek's
-> MT8188 SoC.
+On Wed, 18 Dec 2024 11:53:56 +0100, AngeloGioacchino Del Regno wrote:
+> Add nodes for the DSC0 and MERGE0 blocks, located in VDOSYS0 and
+> necessary to add support for Display Stream Compression with a
+> display pipeline that looks like:
 > 
-> This was tested on a MediaTek Genio 700 EVK board.
+>     [other components] -> DSC0 -> MERGE0 -> Display Interface
 > 
-> AngeloGioacchino Del Regno (3):
->    dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
->    dt-bindings: media: mediatek: mdp3: Add compatibles for MT8188 MDP3
+> 
+> [...]
 
-CK, Mauro,
+Applied to v6.14-next/dts64, thanks!
 
-If it's okay for you, I'd like to take the display and media bindings
-patches in the MediaTek trees, so that I can also safely take the DT patch
-without immutable branching, etc.
+[1/1] arm64: dts: mediatek: mt8188: Add VDO0's DSC and MERGE block nodes
+      commit: 449d7d1dcea3ff5bc454c586bbdf9eb4c8ecb0b9
 
-It's a very old series, yes, but it's still applicable.
-
-Can you please ack the display and media bindings so that I can safely pick?
-
-For display: 20241218105320.38980-2-angelogioacchino.delregno@collabora.com
-For media:   20241218105320.38980-3-angelogioacchino.delregno@collabora.com
-
-Thanks!
+Cheers,
 Angelo
-
->    arm64: dts: mediatek: mt8188: Add all Multimedia Data Path 3 nodes
-> 
->   .../display/mediatek/mediatek,aal.yaml        |   4 +
->   .../display/mediatek/mediatek,color.yaml      |   4 +
->   .../display/mediatek/mediatek,merge.yaml      |   4 +
->   .../display/mediatek/mediatek,padding.yaml    |  10 +-
->   .../bindings/media/mediatek,mdp3-fg.yaml      |   8 +-
->   .../bindings/media/mediatek,mdp3-hdr.yaml     |   8 +-
->   .../bindings/media/mediatek,mdp3-rsz.yaml     |   1 +
->   .../bindings/media/mediatek,mdp3-stitch.yaml  |   8 +-
->   .../bindings/media/mediatek,mdp3-tcc.yaml     |   8 +-
->   .../bindings/media/mediatek,mdp3-tdshp.yaml   |   8 +-
->   .../bindings/media/mediatek,mdp3-wrot.yaml    |   1 +
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 313 ++++++++++++++++++
->   12 files changed, 364 insertions(+), 13 deletions(-)
-> 
 
 
 
