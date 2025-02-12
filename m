@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF68C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 05:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA66C02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 05:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ePycMTte+nZrn/YCiFdW6sBuggDP38YyDQPYZ0DYIpU=; b=2WWobNBuIyQ+IM5QCXRe+iHN/m
-	S/FCq4SxMJwb6M2F4HFybyjOubY1EDy0NIWMvT4+RMYWDqejiZ7yA/OcV1Y2AIqXASln45RcRmgXx
-	7tW5ZSTONEf14NQNGvWzRc6NlsvDs/nLPKg3y+V2sd5pNaVOFByEBT513Ps8KEL7nxRi9NCXLf94W
-	hZ4up6sDstKOTpMxovz3M/kMvpFb4m9RSY08q0wX6V3tux7loAQUkpH2/UNa6cHJKaj3RdlwLewYM
-	fsEVWx/aoxDPGU9Oqv0FMvasjUEZCPUqR72c2os+aFkNm98JYb6kOG1+QpQK6F2ElIS3KVmjJUgEq
-	N3TmMR1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1cdOanfYSwbR9rjVAcJVCin94xEIsljunhQmM7O95bY=; b=PxGY232W4JAYeV
+	Q8IPo3okP2EGX/wUB2FeFpaauFR8rtoZeml+HNUEE/zKrN9nrnctcj1s/JZlIb7lqxOHL4muEJLE0
+	nDXpMro6FHsPGnY7i68F7wNDt2Lh5+o5k4WD6jjxb2NahkgU66hpB93XVIV9XLnweFG1BXPRxw5o3
+	Zpx/MKPror9nJvZ8V81we1WEDXXX+bdAsSLY1GqSx+zL8ZZYEaEzBi/FkPiRKH8n7uAPGhGc/L0GH
+	D7mYHEDstsswr+huN8CMT3lJaVY9xKF9Kf8kG1scr8eCNo64zm2ZOuK5t14Bi29JRRgScrACCh2C8
+	ptC/DtV1uEa0GyS7Vw4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti5R4-00000006GCt-1Zex;
-	Wed, 12 Feb 2025 05:37:22 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ti5VS-00000006GuW-0A7q;
+	Wed, 12 Feb 2025 05:41:54 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti5OH-00000006Fkh-0D1S;
-	Wed, 12 Feb 2025 05:34:30 +0000
+	id 1ti5U1-00000006GdY-0Jsh;
+	Wed, 12 Feb 2025 05:40:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A80A4A40FB5;
-	Wed, 12 Feb 2025 05:32:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F963C4CEDF;
-	Wed, 12 Feb 2025 05:34:24 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E41F0A40B33;
+	Wed, 12 Feb 2025 05:38:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A75B9C4CEDF;
+	Wed, 12 Feb 2025 05:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739338467;
-	bh=SMRSQgzynkdliJFi44SbvxDOy6uwp77VJmO6yKAcX1g=;
+	s=k20201202; t=1739338824;
+	bh=KEhGUrXE1fCsrHtoX6tuVRiuAmt3qPnhL+sQJHMcJbY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=t3/vFvdX2/tlni/5t3kugatHirhwy7BZ/5ic9a7e/FRnYGaPnT1qMCE4/SPpINYsX
-	 yYjyZGfm/AA2mxXUw5/UrVOPmD95hEi942sU0bsZn9GzgmOlHIVCIw4nUeSR9CguQB
-	 MP7DwFNN4vzZ6bKH9tfbDfH9LqjYgvt/l/1VbzPEhfBCBepA7nwTQXV61MGgo701jW
-	 onTSCZbV/hpTHdK1IWAowU9vv4hYcIGJMAMDP3NClaQNDbIucwqbUuyEOKRrgjt23m
-	 N40HsLhImZmi3laQ6NllbxYToOmLwP4zW2GTl3rjob/yyrTogFlQUDh9d/GusIXwm+
-	 nAZxnVFM3DbOg==
-Message-ID: <43c6bc3b-5dac-4925-99de-76764ea77424@kernel.org>
-Date: Wed, 12 Feb 2025 06:34:22 +0100
+	b=m1T1XwiE3mJ1Dl9M93DQxeJgCK+aRKaXbdNoC2gW3nC6pc9u7bOwo+tMKDEFBFf8y
+	 sVk8KYAzZjl3CI1TV4xAutadSkOO174jbZ3M84Bq3ygGH70sImlWzTmC5OvoVcLd0q
+	 z0sOocHYTY4H2GE4AEIacR2pWG6G1QSrHFbXecrazs/JC7R1DtKo83UHIDJbX/MgaS
+	 KHD5/DW/hKo0kvfm1XRohMc8XToQAAMgMyj4526aCZaKljpZIhPp48qzHjs0DqDZEs
+	 UeYzB9LheGzeWjnO+PFCF3TcnN0/r6ftamc2xetFuIMvcVAVVBBtFJRHqVDw1ZKkqJ
+	 oZcjhSqGe59lQ==
+Message-ID: <91428aa7-5b96-480d-8f0d-c742ed25f327@kernel.org>
+Date: Wed, 12 Feb 2025 06:40:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,2/2] dt-bindings: memory-controllers: Add MediaTek DRAM
- controller interface
-To: =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
+Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml for
+ MT8196
+To: =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250207014437.17920-1-crystal.guo@mediatek.com>
- <20250207014437.17920-3-crystal.guo@mediatek.com>
- <2942fbc2-55c5-4789-89d4-e4bf3158a34b@kernel.org>
- <eb63bd2c9e5e31ff189d2c957bfcb4bd222ec778.camel@mediatek.com>
+References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
+ <20250110123835.2719824-4-paul-pl.chen@mediatek.com>
+ <abadfae8-56f7-499c-83ff-7d79e3fe1f52@kernel.org>
+ <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
+ <cc043dcd-b46e-4b4b-9b80-0450efde86eb@kernel.org>
+ <d1f64020a9fa819a7928ea96a2608e4021b325a8.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,13 +103,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <eb63bd2c9e5e31ff189d2c957bfcb4bd222ec778.camel@mediatek.com>
+In-Reply-To: <d1f64020a9fa819a7928ea96a2608e4021b325a8.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_213429_239336_FD20A911 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250211_214025_250094_D2047FB7 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,33 +120,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/02/2025 04:50, Crystal Guo (郭晶) wrote:
-> On Sun, 2025-02-09 at 11:51 +0100, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+On 11/02/2025 09:23, Paul-pl Chen (陳柏霖) wrote:
+> On Sat, 2025-01-18 at 09:37 +0100, Krzysztof Kozlowski wrote:
+>>
+>>>
+>>> (2)Primary Task of EXDMA:
+>>> The main function of EXDMA is to transfer buffers allocated by GEM
+>>> to
+>>> the subsequent display pipeline.
+>>> EXDMA serves as a bridge between memory allocated by GEM and the
+>>> display components, rather than acting as a general-purpose DMA
+>>> engine.
+>>> Based on the points above, we have decided to place the EXDMA
+>>> driver
+>>> under the DRM display subsystem rather than under the DMA
+>>> subsystem.
 >>
 >>
->> On 07/02/2025 02:42, Crystal Guo wrote:
->>> A MediaTek DRAM controller interface to provide the current DDR
->>> data rate.
+>> I don't care if it uses GEM or kernel allocator or even 3rd party
+>> allocator. The question is: what is this device? If it is performing
+>> DMA, then it should be placed in "dma" directory. The rdma was placed
+>> differently but as you can easily check: it was never acked/reviewed,
+>> so
+>> don't use it as an example.
+>>
+>> Of course if it does not perform DMA, then it should not be in dma,
+>> but
+>> then I don't agree on using dma-cells here and anything like that in
+>> the
+>> driver.
+>>
+>> Best regards,
+>> Krzysztof
+>>
+>>
+>>
 > 
-> Hi Krzysztof,
+> Hi KK,
 > 
-> Regarding this commit message, you previously commented as follows: 
-> "Please wrap commit message according to Linux coding style /     
-> submission process (neither too early nor over the limit): 
-> https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L5
-> "
+> Sorry, I just found this email was not send. 
 > 
-> May I ask if this means that the description "A MediaTek DRAM
-> controller interface to provide the current DDR data rate." needs to be
-> split into two lines? The total number of characters in this
-> description is 74.
+> This email is discuss about the EXDMA under the display subsystem
+> 
+> The current placement of EXDMA under the display subsystem in
+> Mediatek's architecture is primarily due to its functional role as a
+> sub-device within the display pipeline.
+>  
+> In MT8196 hardware design, the sub-devices in display pipeline follow a
+> sequence of: EXDMA -> BLENDER -> OUTPROC -> PQ -> DVO.
+>  
+> In MT8195 hardware design, the sub-devices in display pipeline follow a
+> sequence of: OVL -> PQ ->DSI.
+>  
+> As we see, OVL has been divided into three new hardware IPs in MT8196.
+> OVL and EXDMA both have the ability to fetch data directly from DRAM
+> and can be regarded as DMA controller.
+>  
+> I also have confirmed with the hardware designer that EXDMA is a kind
+> of DMA, but it is specially designed to handle the graphical layer, and
+> has better performance than ordinary DMA.
 
-And what is the wrapping limit?
+To me the decisive factor is that you use dma-cells here, so it is a DMA
+controller. DMA controllers should placed in a directory of their
+maintainer, so they can review it.
+
+>  
+> Therefore, I think that moving EXDMA and OVL from the display folder to
+> the DMA folder, or only kepping them in the display folder is decided
+> by the two different views of DMA ability or display sub-device.
+>  
+> We will follow your instructions to put EXDMA on the place you decided.
+> 
+> 
+> Best, Paul 
+> 
 
 
 Best regards,
