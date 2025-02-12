@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374B8C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 18:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F280FC02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 18:55:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vUYlrivVsyugZVPMjqeEa50o/uftrAaXb4g0AKp9+6g=; b=tv7zHeI5WenUwl8WAMatJ2rheS
-	Ptdh/73DnT5OQO/ar/ZfjeY3VhhvWNFilYzo0EsiSaeZv7c6u7u6JenINmNhY/RbS7XhGTUqJRT08
-	itKB6xeWU17N0Ir70eJc4/7DaKP79nrLPhwViqqCUYYHyrFInmzTY33ZZNx8FOq+PifddbatFCezX
-	weTvyGJ/2ieIuFwXE22rpLtGV2fu3/ZX/1czuwm+K1lziOfoBtdUWsF5w1k2aEFFRFamyPw1mrH7I
-	t8p4gO41mZ6mHEqB+PG3+2+q20G1zS11K/njBxA6LT1yWmJn3n415Dm/HBxDEI2Zncc4Zha3relMW
-	Iy8p+0xA==;
+	bh=oUOokMrKASXdzZOA3VRoZ7fdfSIasrczhgZC+ARdsyE=; b=mDjHpCV4I6t85mgsfw4fDQGpPF
+	hOX0Dl1wWZNU/Uc56E4315Nfn0B3oM/GKx+75+76pUeRpI2gCwFdYyNEPwYsb73jt+BT/Pa2d4Zse
+	jIaSNTd/7W7BY1SVeC+PrsWDui/5Sruh9ebqIqyfQq7ynTW/Y/W54kZfy8Xt8yYCOCjlN0g8vwuGF
+	amfIG9hZtD+5f9n48fzA0seHBXwmwP4/3zZdMYmQx03iVgI6GPZw+1hzRSbWzxatZCMx0qqOg3jWQ
+	xP9Yx459GlDISKGl+iCTr49gRnQQlFzDeZ29X1q14zdwkBSWQt+UUWPoVd1zgGo5uf916zYRFhL+e
+	t7d8AFyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiHf7-00000008VYD-1shn;
-	Wed, 12 Feb 2025 18:40:41 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tiHtS-00000008YCe-00H2;
+	Wed, 12 Feb 2025 18:55:30 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiHbo-00000008V2R-0q3N;
-	Wed, 12 Feb 2025 18:37:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8CF67A40A22;
-	Wed, 12 Feb 2025 18:35:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6310C4CEDF;
-	Wed, 12 Feb 2025 18:37:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739385434;
-	bh=MqYIPwPX2fN8FIm6K1ROUFQveHjsiR7V4H6VXdFj48M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sxuLxvnqYXvHV2r5iyP2hIHTQFy+b6N6Ao/6tx20f7FpDH3VwCNEm+Z4FSaBJ5mhV
-	 PDJ7cG83QT9xDGGYT1VhmIChi9UVRvNmP2mmOrUOdx0N7TrjOE6xnvGdXDoucs3UEa
-	 0BzshAx9HiG9rZO3C6a/ozETYKkH7x2TuPJtiSJlhyBpfJVbZLuMJhCKdpFl0VfaaY
-	 exJOsphy9AxhVXxyU2zXOIyvMRT1AKDM0sAX0AqKxkSrbUAfRGctKLankRC8EzJrzn
-	 hk1Cv72NdUge8xO7ycnz/7Bp/q1sM7iP029fAw4xGS8vmuMj+/6GkncpBkFHHpFvQ4
-	 1GU4T1McR0UAg==
-Date: Wed, 12 Feb 2025 19:37:08 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Zoie Lin <zoie.lin@mediatek.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, teddy.chen@mediatek.com, 
-	joseph-cc.chang@mediatek.com, leilk.liu@mediatek.com
-Subject: Re: [PATCH v4 0/1] i2c: mediatek: add runtime PM operations and bus
- regulator control
-Message-ID: <minka4xfg4pymy4hjekooqyqk6xpbgenacsw32u6pdf3llcyyl@eh4u4ohccx3d>
-References: <20250211144016.488001-1-zoie.lin@mediatek.com>
+	id 1tiHrf-00000008Xel-0stv;
+	Wed, 12 Feb 2025 18:53:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=oUOokMrKASXdzZOA3VRoZ7fdfSIasrczhgZC+ARdsyE=; b=RQsJzdIo4sjdvkb3W0fwkdFRaa
+	O57YRtnEq+Dfi18rN1QQwUuBy8dYpnMr5IQlIOiChqEyQR5T5MXOqbangz7v/EBYWW/HkX+P8uxVd
+	idVVcsVuC1PGXaAK7beZ2GFCmN9Y3Y8pSbs17s98gPhCfsWxM/EmI7xjeGTmmG7zZ3FYar1vcZ1GW
+	h55laSfKYbPWaVvzr2P1udrViDnu1von3OwcqpmZgx3g3jQPH5tdQFFtQN3ZwqwAF5L+Oug9GX7y+
+	ZjNB66u0s3SGCr440I3G2m1FDfd3d+xBpNUtfFXpL6XIDVSPSq0qiSv8tjXfWua6lN4yAYuGQBmSo
+	eK0Oz+Zw==;
+Received: from willy by casper.infradead.org with local (Exim 4.98 #2 (Red Hat Linux))
+	id 1tiHrZ-00000005dDY-05Hq;
+	Wed, 12 Feb 2025 18:53:33 +0000
+Date: Wed, 12 Feb 2025 18:53:32 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+	zhangkun09@huawei.com, liuyonglong@huawei.com,
+	fanghaiqing@huawei.com,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Alexander Duyck <alexander.duyck@gmail.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	IOMMU <iommu@lists.linux.dev>, MM <linux-mm@kvack.org>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+	bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v9 0/4] fix the DMA API misuse problem for
+ page_pool
+Message-ID: <Z6zuLJU7o_gRsQRu@casper.infradead.org>
+References: <20250212092552.1779679-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250211144016.488001-1-zoie.lin@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_103716_301084_B30089A7 
-X-CRM114-Status: GOOD (  21.70  )
+In-Reply-To: <20250212092552.1779679-1-linyunsheng@huawei.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +82,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Zoie,
-
-my comment was on the [PATCH v3 ...], this should have been
-[PATCH v4 1/1]. If you use git-format-patch, most probably you
-will get it right.
-
-If you have more than one patch, you can use the --cover-letter.
-option to get the patch 0/X.
-
-On Tue, Feb 11, 2025 at 10:39:37PM +0800, Zoie Lin wrote:
-> Introduce support for runtime PM operations in
-> the I2C driver, enabling runtime suspend and resume functionality.
+On Wed, Feb 12, 2025 at 05:25:47PM +0800, Yunsheng Lin wrote:
+> This patchset fix the dma API misuse problem as mentioned in [1].
 > 
-> Although in most platforms, the bus power of i2c is always
-> on, some platforms disable the i2c bus power in order to meet
-> low power request.
-> 
-> This implementation includes bus regulator control to facilitate
-> proper handling of the bus power based on platform requirements.
-> 
-> Signed-off-by: Zoie Lin <zoie.lin@mediatek.com>
+> 1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
 
-Is it possible to have an ack from Qii?
-
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 73 +++++++++++++++++++++++++++------
->  1 file changed, 61 insertions(+), 12 deletions(-)
-> 
-> This series is based on linux-next, tag: next-20250210
-> 
-> Changes in v4:
-
-what about the previous versions?
-
-> - Removed unnecessary variable initialization.
-> - Removed unnecessary brackets.
-> - Corrected grammar issues in the commit message.
-> - Confirmed autosuspend delay is not necessary.
-> 
-
-...
-
-> @@ -1472,13 +1507,18 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> -	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	ret = clk_bulk_prepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->  	if (ret) {
-> -		dev_err(&pdev->dev, "clock enable failed!\n");
-
-Why have you removed this dev_err? You coulde have rather changed
-it to match the error. While at it you could also replace it with
-dev_err_probe()
-
-The rest looks good to me, I'll be happy if you can have an ack
-from Qii.
-
-Andi
-
->  		return ret;
+That's a very long and complicated thread.  I gave up.  You need to
+provide a proper description of the problem.
 
