@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D38B1C021A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 17:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F2EC021A7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 17:11:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aTJ3OgERgaCDW+LQkBlZMWmTLghyw5QjbL4bGzZjkyM=; b=RzKqT9CrC+W12PFVtx4otca+yZ
-	zLuRTSUmZaUkcCNm6Tl1PkETz0ysMWD2k3wFrL/H5FmhHgfqTKa4syE06ATTEtNymfxzk9nVctVCm
-	u4Hwc8HyqvFhtHLDtt8ujMb5V5hHMWe6X0dZWYNN9N3wBN2BjdFvK9MprYQl4YsJQ+HfdR7kObx/0
-	LN3hQXHAcSnw5yTpNuhKfHLs5BjJ9Nn4unhcB3i88K6a9PGcizDwHryD9V2XZ1TPrYbjR+Ht9Q6ZF
-	8llzPmGX8JO6F+syGujiGtZHn1NyJlpp2nGP942fq/SysfWkzNvimKKrcHj0iHYIZoLwbNpiKBQNr
-	rKwVyneg==;
+	bh=6ObtcrTuelHoaZzgReqhFbeEfbfvzB90jJfxNART9a8=; b=TbkPJ/+qo3Ml+MR+TFdGf4Lxh2
+	yL3cTClVT9fZdD8aGsuLlkLDOGyLCTcUDly0PGeDE0s60pa9zBZUUWCAgNJj9fVMCmhvQ/f+pb24D
+	XuOhENM4lWfDuzxziXoC5SDhQhXiS/LAzMEjPj0in6JrgIiNIEGFZDTI2por+t25pUFVWpyKiRxhz
+	KuK/hLtTxs05XvHQ1paSn4bzd2uIk9j2Fv19tjSr9a48GhGW2EruESGH44ZnuNaHtMiq1BnAuH92D
+	lkypt37lEUUUKDamGqHn2eNasp0vc0dpJT/Msh1g5Y3yV+Lk6+G7cN1TEB0/hdTvoCzWcF84kxVDC
+	vVHWDJCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiGGL-00000008Ejz-3ghA;
-	Wed, 12 Feb 2025 17:11:01 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1tiGGN-00000008EmA-1wbQ;
+	Wed, 12 Feb 2025 17:11:03 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiFgi-000000086HB-499y;
+	id 1tiFgi-000000086Js-45aX;
 	Wed, 12 Feb 2025 16:34:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1739378053; x=1770914053;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=6LcH/n/8RKz7Qn8xIS3YjC1iiVGNtYLVAm7DIZYYkeY=;
-  b=SHpoqde6Nm+tECA6jCwZdx08DLm/BXl9wko974GOVBt18ej6zv0U4iyd
-   7jbRkbC32yv/1hBDRZ7f9tHm+zBK3ViVY6YSc6OLfSxJ1r4VE3Zm8qq39
-   PRI54Z+pqKE8K1e1jL7t6Rfgj1iQ1foheifnT03tGq7fcidbpj2z55un2
-   y7u8vAs15CAgayrAJdscEApZf89UFBl6boNOSSGD19lFv2Le9d/M3e1NY
-   vYbIzkNlHKDrIiJ+SZV9LQnz5dMLLLg79PS4B+WNAh9GQfQczgPS0p4Iy
-   LnF7kXmPo6pZKmXSf8QPfJCw+R5xB10nnsvkYtkr5wCeNlM0d+QkrSgWg
-   g==;
-X-CSE-ConnectionGUID: V+jBqZOgTyyLJxEQIZLhbg==
-X-CSE-MsgGUID: F9AzBJnyQ+SD+TgYJQglLQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11343"; a="51032404"
+  bh=34yUH4FReh//Shi3Q14PxOJohJbKhtrPmtlmxuM90Cw=;
+  b=PKrKXApIfURcRxczAdbn2gpl5u4kqBFaHD1QWbhaQ5raWU+neENjWBiz
+   B2ca++sF25532JVJtsClSL7IGvflW8GeJQOOZd7fKBMq3hSj2jZicggYj
+   Xqgp1FxrokPb1tF6JjseWn5mAnvyqM4k49pEqbJSGZPrqT0Ae7c1AWpNb
+   rjzcgBukKqYktY+kcT266PmXH8EzGWg1JYqOoXLDXQCi4Bu6DDEJjcqyT
+   BX447KgRKlwjps82h2+YVz8Se5tKhnYNNOZmz51VbL5vsFeVD0a/rpmGp
+   ULpdkLueY2YllTClHZkfES5wWkw7+OTAXNyM5Oz4dBBaaiqDwt3P0R1ED
+   Q==;
+X-CSE-ConnectionGUID: h18MuCyBSvWAo95qzc932w==
+X-CSE-MsgGUID: lx1iR6j9RVCahd2BDc/VfA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11343"; a="43811888"
 X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
-   d="scan'208";a="51032404"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 08:34:13 -0800
-X-CSE-ConnectionGUID: ywYT84jHTgqIZemsslPwlQ==
-X-CSE-MsgGUID: 1fXgybwmTnmsx5GqXBiEuA==
+   d="scan'208";a="43811888"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2025 08:34:12 -0800
+X-CSE-ConnectionGUID: +vdWh79iQG6OMwT6nXvM4w==
+X-CSE-MsgGUID: MwpZszTMTVaYHbh6HJ9xRg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,280,1732608000"; 
-   d="scan'208";a="117879160"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="143815136"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orviesa004.jf.intel.com with ESMTP; 12 Feb 2025 08:34:08 -0800
+  by fmviesa001.fm.intel.com with ESMTP; 12 Feb 2025 08:34:08 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id E0A00322; Wed, 12 Feb 2025 18:34:01 +0200 (EET)
+	id 0F81F4D1; Wed, 12 Feb 2025 18:34:02 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Andi Shyti <andi.shyti@kernel.org>,
@@ -74,17 +74,17 @@ Cc: Krzysztof Adamski <krzysztof.adamski@nokia.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Gregory CLEMENT <gregory.clement@bootlin.com>,
 	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Subject: [PATCH v1 5/8] i2c: kempld: Use i2c_10bit_addr_from_msg() helper
-Date: Wed, 12 Feb 2025 18:32:30 +0200
-Message-ID: <20250212163359.2407327-6-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 8/8] i2c: rzv2m: Use i2c_10bit_addr_from_msg() helper
+Date: Wed, 12 Feb 2025 18:32:33 +0200
+Message-ID: <20250212163359.2407327-9-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.45.1.3035.g276e886db78b
 In-Reply-To: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
 References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_083413_089742_8A95E63C 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20250212_083413_055863_ACFEDA34 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,24 +104,30 @@ No functional change intended.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/i2c/busses/i2c-kempld.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/i2c/busses/i2c-rzv2m.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-kempld.c b/drivers/i2c/busses/i2c-kempld.c
-index 212196af68ba..7508cc7a33a6 100644
---- a/drivers/i2c/busses/i2c-kempld.c
-+++ b/drivers/i2c/busses/i2c-kempld.c
-@@ -115,9 +115,7 @@ static int kempld_i2c_process(struct kempld_i2c_data *i2c)
- 	if (i2c->state == STATE_ADDR) {
- 		/* 10 bit address? */
- 		if (i2c->msg->flags & I2C_M_TEN) {
--			addr = 0xf0 | ((i2c->msg->addr >> 7) & 0x6);
--			/* Set read bit if necessary */
--			addr |= (i2c->msg->flags & I2C_M_RD) ? 1 : 0;
-+			addr = i2c_10bit_addr_from_msg(msg);
- 			i2c->state = STATE_ADDR10;
- 		} else {
- 			addr = i2c_8bit_addr_from_msg(i2c->msg);
+diff --git a/drivers/i2c/busses/i2c-rzv2m.c b/drivers/i2c/busses/i2c-rzv2m.c
+index 02b76e24a476..55c5ce3b0f97 100644
+--- a/drivers/i2c/busses/i2c-rzv2m.c
++++ b/drivers/i2c/busses/i2c-rzv2m.c
+@@ -287,13 +287,9 @@ static int rzv2m_i2c_send_address(struct rzv2m_i2c_priv *priv,
+ 	int ret;
+ 
+ 	if (msg->flags & I2C_M_TEN) {
+-		/*
+-		 * 10-bit address
+-		 *   addr_1: 5'b11110 | addr[9:8] | (R/nW)
+-		 *   addr_2: addr[7:0]
+-		 */
+-		addr = 0xf0 | ((msg->addr & GENMASK(9, 8)) >> 7);
+-		addr |= !!(msg->flags & I2C_M_RD);
++		/* 10-bit address */
++		addr = i2c_10bit_addr_from_msg(msg);
++
+ 		/* Send 1st address(extend code) */
+ 		ret = rzv2m_i2c_write_with_ack(priv, addr);
+ 		if (ret)
 -- 
 2.45.1.3035.g276e886db78b
 
