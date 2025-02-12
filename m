@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA66C02198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 05:41:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A63BC02198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 06:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1cdOanfYSwbR9rjVAcJVCin94xEIsljunhQmM7O95bY=; b=PxGY232W4JAYeV
-	Q8IPo3okP2EGX/wUB2FeFpaauFR8rtoZeml+HNUEE/zKrN9nrnctcj1s/JZlIb7lqxOHL4muEJLE0
-	nDXpMro6FHsPGnY7i68F7wNDt2Lh5+o5k4WD6jjxb2NahkgU66hpB93XVIV9XLnweFG1BXPRxw5o3
-	Zpx/MKPror9nJvZ8V81we1WEDXXX+bdAsSLY1GqSx+zL8ZZYEaEzBi/FkPiRKH8n7uAPGhGc/L0GH
-	D7mYHEDstsswr+huN8CMT3lJaVY9xKF9Kf8kG1scr8eCNo64zm2ZOuK5t14Bi29JRRgScrACCh2C8
-	ptC/DtV1uEa0GyS7Vw4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kcY3b9SQcQ435Naa36eW7SElnt1qAF2rcRt4gVjJvUk=; b=Yar6/BZP/KKTgAsP/hQR9OH7+2
+	Gn5uvzwlBUhWv4owre+mJpZ2N5uG8dyRAOK4IIdJRGTNCDK4BgPXKXflojmwiQM93FQX86GAe8VQ5
+	qXXZpydbRJHW32lHVWB7CC7OXC8e53xgxqPoufJVqBE4Sd+TzPz1qJ2EGR27N7ZnJptJ0G9Am4/0t
+	HfjalSinNRsa9boE5wvS4XwG8j4EcIIu6dFQb4S9DGtlDKjh+95a9qzHPf+J9TH+xJcX/k3ode0Um
+	lufAfH7/aFDUfAphIzrln0vHgDGawP871ZQSXcVk/veELYNKBoA0hK9wLW+ySOuYYT+Nt0Zq+udPC
+	In+o1XZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti5VS-00000006GuW-0A7q;
-	Wed, 12 Feb 2025 05:41:54 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1ti6Ej-00000006LsY-14QU;
+	Wed, 12 Feb 2025 06:28:41 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti5U1-00000006GdY-0Jsh;
-	Wed, 12 Feb 2025 05:40:26 +0000
+	id 1ti6DI-00000006LaP-3G4r;
+	Wed, 12 Feb 2025 06:27:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E41F0A40B33;
-	Wed, 12 Feb 2025 05:38:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A75B9C4CEDF;
-	Wed, 12 Feb 2025 05:40:16 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 804D2A40F8F;
+	Wed, 12 Feb 2025 06:25:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 920F6C4CEE6;
+	Wed, 12 Feb 2025 06:27:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739338824;
-	bh=KEhGUrXE1fCsrHtoX6tuVRiuAmt3qPnhL+sQJHMcJbY=;
+	s=k20201202; t=1739341631;
+	bh=1/zhjK+0+G05v1hwwn5tz/H+8Cz4vmPRU7clBN3k0ls=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m1T1XwiE3mJ1Dl9M93DQxeJgCK+aRKaXbdNoC2gW3nC6pc9u7bOwo+tMKDEFBFf8y
-	 sVk8KYAzZjl3CI1TV4xAutadSkOO174jbZ3M84Bq3ygGH70sImlWzTmC5OvoVcLd0q
-	 z0sOocHYTY4H2GE4AEIacR2pWG6G1QSrHFbXecrazs/JC7R1DtKo83UHIDJbX/MgaS
-	 KHD5/DW/hKo0kvfm1XRohMc8XToQAAMgMyj4526aCZaKljpZIhPp48qzHjs0DqDZEs
-	 UeYzB9LheGzeWjnO+PFCF3TcnN0/r6ftamc2xetFuIMvcVAVVBBtFJRHqVDw1ZKkqJ
-	 oZcjhSqGe59lQ==
-Message-ID: <91428aa7-5b96-480d-8f0d-c742ed25f327@kernel.org>
-Date: Wed, 12 Feb 2025 06:40:14 +0100
+	b=j2u+pa9v36ZbhRZph5rV/yE+zheeNljbSA2hCK+QxpqUUozTROOu+Bp9e9rPsiCn4
+	 sr/F2tK6INMhPIZHrkjHpv/yxCHNwYrsM+87zlpR119ozsWj1qVRrCYlXouW0KM8W4
+	 CQR6VyZyoMu8gqW16WkpKAebx/0UiE8DIPWFsHGgqX9w/f6KStjHuQaWA3TaVQnBm3
+	 NV/kFzuXc1SiT0U9sZz0+JGhp0Bo+Ds8/saVBFz20xn9tx3GXscJj15FDGXCD0aJL4
+	 BG11EpfhoMYdyx7SIPli3YJUVgVKGqVRDm1/mm/Yv3o+k4aL5Sc1l+OQaJwLQhtaEW
+	 3qW5TzMlSD/lA==
+Message-ID: <66b554f0-e11c-4801-9a5e-2ccb85a105fe@kernel.org>
+Date: Wed, 12 Feb 2025 07:27:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/12] dt-bindings: display: mediatek: add EXDMA yaml for
- MT8196
-To: =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250110123835.2719824-1-paul-pl.chen@mediatek.com>
- <20250110123835.2719824-4-paul-pl.chen@mediatek.com>
- <abadfae8-56f7-499c-83ff-7d79e3fe1f52@kernel.org>
- <c1440608060e4b2fabf07ff5ac0a7fe49201ba9d.camel@mediatek.com>
- <cc043dcd-b46e-4b4b-9b80-0450efde86eb@kernel.org>
- <d1f64020a9fa819a7928ea96a2608e4021b325a8.camel@mediatek.com>
+Subject: Re: [PATCH net-next v3 13/16] net: airoha: Introduce PPE
+ initialization via NPU
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ upstream@airoha.com
+References: <20250209-airoha-en7581-flowtable-offload-v3-0-dba60e755563@kernel.org>
+ <20250209-airoha-en7581-flowtable-offload-v3-13-dba60e755563@kernel.org>
+ <20250211-fanatic-smoky-wren-f0dcc9@krzk-bin> <Z6t7SuFurbGwJjt_@lore-desk>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,12 +110,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <d1f64020a9fa819a7928ea96a2608e4021b325a8.camel@mediatek.com>
+In-Reply-To: <Z6t7SuFurbGwJjt_@lore-desk>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_214025_250094_D2047FB7 
-X-CRM114-Status: GOOD (  23.85  )
+X-CRM114-CacheID: sfid-20250211_222712_954061_12C6E3F2 
+X-CRM114-Status: GOOD (  29.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,84 +127,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U3VubnkgU2hlbiAo5rKI5aeN5aeNKQ==?= <Sunny.Shen@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/02/2025 09:23, Paul-pl Chen (陳柏霖) wrote:
-> On Sat, 2025-01-18 at 09:37 +0100, Krzysztof Kozlowski wrote:
+On 11/02/2025 17:31, Lorenzo Bianconi wrote:
+>> On Sun, Feb 09, 2025 at 01:09:06PM +0100, Lorenzo Bianconi wrote:
+>>> +static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
+>>> +{
+>>> +	struct airoha_npu_core *core = core_instance;
+>>> +	struct airoha_npu *npu = core->npu;
+>>> +	int c = core - &npu->cores[0];
+>>> +	u32 val;
+>>> +
+>>> +	airoha_npu_rmw(npu, REG_WDT_TIMER_CTRL(c), 0, WDT_INTR_MASK);
+>>> +	val = airoha_npu_rr(npu, REG_WDT_TIMER_CTRL(c));
+>>> +	if (FIELD_GET(WDT_EN_MASK, val))
+>>> +		schedule_work(&core->wdt_work);
+>>> +
+>>> +	return IRQ_HANDLED;
+>>> +}
+>>> +
+>>> +struct airoha_npu *airoha_npu_init(struct airoha_eth *eth)
+>>> +{
+>>> +	struct reserved_mem *rmem;
+>>> +	int i, irq, err = -ENODEV;
+>>> +	struct airoha_npu *npu;
+>>> +	struct device_node *np;
+>>> +
+>>> +	npu = devm_kzalloc(eth->dev, sizeof(*npu), GFP_KERNEL);
+>>> +	if (!npu)
+>>> +		return ERR_PTR(-ENOMEM);
+>>> +
+>>> +	npu->np = of_parse_phandle(eth->dev->of_node, "airoha,npu", 0);
+>>> +	if (!npu->np)
+>>> +		return ERR_PTR(-ENODEV);
 >>
->>>
->>> (2)Primary Task of EXDMA:
->>> The main function of EXDMA is to transfer buffers allocated by GEM
->>> to
->>> the subsequent display pipeline.
->>> EXDMA serves as a bridge between memory allocated by GEM and the
->>> display components, rather than acting as a general-purpose DMA
->>> engine.
->>> Based on the points above, we have decided to place the EXDMA
->>> driver
->>> under the DRM display subsystem rather than under the DMA
->>> subsystem.
->>
->>
->> I don't care if it uses GEM or kernel allocator or even 3rd party
->> allocator. The question is: what is this device? If it is performing
->> DMA, then it should be placed in "dma" directory. The rdma was placed
->> differently but as you can easily check: it was never acked/reviewed,
->> so
->> don't use it as an example.
->>
->> Of course if it does not perform DMA, then it should not be in dma,
->> but
->> then I don't agree on using dma-cells here and anything like that in
->> the
->> driver.
->>
->> Best regards,
->> Krzysztof
->>
->>
->>
+>> Why? The property is not required, so how can missing property fail the
+>> probe?
 > 
-> Hi KK,
-> 
-> Sorry, I just found this email was not send. 
-> 
-> This email is discuss about the EXDMA under the display subsystem
-> 
-> The current placement of EXDMA under the display subsystem in
-> Mediatek's architecture is primarily due to its functional role as a
-> sub-device within the display pipeline.
->  
-> In MT8196 hardware design, the sub-devices in display pipeline follow a
-> sequence of: EXDMA -> BLENDER -> OUTPROC -> PQ -> DVO.
->  
-> In MT8195 hardware design, the sub-devices in display pipeline follow a
-> sequence of: OVL -> PQ ->DSI.
->  
-> As we see, OVL has been divided into three new hardware IPs in MT8196.
-> OVL and EXDMA both have the ability to fetch data directly from DRAM
-> and can be regarded as DMA controller.
->  
-> I also have confirmed with the hardware designer that EXDMA is a kind
-> of DMA, but it is specially designed to handle the graphical layer, and
-> has better performance than ordinary DMA.
+> similar to mtk_wed device, airoha_npu is not modeled as a standalone driver,
+> but it is part of the airoha_eth driver. If you think it is better, I can
+> rework it implementing a dedicated driver for it. What do you think?
 
-To me the decisive factor is that you use dma-cells here, so it is a DMA
-controller. DMA controllers should placed in a directory of their
-maintainer, so they can review it.
 
->  
-> Therefore, I think that moving EXDMA and OVL from the display folder to
-> the DMA folder, or only kepping them in the display folder is decided
-> by the two different views of DMA ability or display sub-device.
->  
-> We will follow your instructions to put EXDMA on the place you decided.
+Whether it is separate or not, does not matter. Behavior in both cases
+would be the same so does not answer my question. But below does however:
+
 > 
+>>
+>> This is also still unnecessary ABI break without explanation/reasoning.
 > 
-> Best, Paul 
+> At the moment if airoha_npu_init() fails (e.g. if the npu node is not present),
+> it will not cause any failure in airoha_hw_init() (so in the core ethernet
+> driver probing).
+
+
+Indeed, it will fail airoha_ppe_init() but airoha_ppe_init() is not
+fatal. You will have dmesg errors though, so this should be probably
+dev_warn.
+
 > 
+>>
+>>> +
+>>> +	npu->pdev = of_find_device_by_node(npu->np);
+>>> +	if (!npu->pdev)
+>>> +		goto error_of_node_put;
+>>
+>> You should also add device link and probably try_module_get. See
+>> qcom,ice (patch for missing try_module_get is on the lists).
+> 
+> thx for the pointer, I will take a look to it.
+> 
+>>
+>>> +
+>>> +	get_device(&npu->pdev->dev);
+>>
+>> Why? of_find_device_by_node() does it.
+> 
+> ack, I will fix it.
+> 
+>>
+>>> +
+>>> +	npu->base = devm_platform_ioremap_resource(npu->pdev, 0);
+>>> +	if (IS_ERR(npu->base))
+>>> +		goto error_put_dev;
+>>> +
+>>> +	np = of_parse_phandle(npu->np, "memory-region", 0);
+>>> +	if (!np)
+>>> +		goto error_put_dev;
+>>> +
+>>> +	rmem = of_reserved_mem_lookup(np);
+>>> +	of_node_put(np);
+>>> +
+>>> +	if (!rmem)
+>>> +		goto error_put_dev;
+>>> +
+>>> +	irq = platform_get_irq(npu->pdev, 0);
+>>> +	if (irq < 0) {
+>>> +		err = irq;
+>>> +		goto error_put_dev;
+>>> +	}
+>>> +
+>>> +	err = devm_request_irq(&npu->pdev->dev, irq, airoha_npu_mbox_handler,
+>>> +			       IRQF_SHARED, "airoha-npu-mbox", npu);
+>>> +	if (err)
+>>> +		goto error_put_dev;
+>>> +
+>>> +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++) {
+>>> +		struct airoha_npu_core *core = &npu->cores[i];
+>>> +
+>>> +		spin_lock_init(&core->lock);
+>>> +		core->npu = npu;
+>>> +
+>>> +		irq = platform_get_irq(npu->pdev, i + 1);
+>>> +		if (irq < 0) {
+>>> +			err = irq;
+>>> +			goto error_put_dev;
+>>> +		}
+>>
+>> This is all confusing. Why are you requesting IRQs for other - the npu -
+>> device? That device driver is responsible for its interrupts, not you
+>> here. This breaks encapsulation. And what do you do if the other device
+>> starts handling interrupts on its own? This is really unexpected to see
+>> here.
+> 
+> As pointed out above, there is no other driver for airoha_npu at the moment,
+> but I am fine to implement it.
+
+I see. The second driver is there - syscon - just provided by MFD core.
+It also looks like the NPU is some sort of mailbox, so maybe NPU should
+not have been syscon in the first place, but mailbox?
+
 
 
 Best regards,
