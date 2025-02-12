@@ -4,59 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14C78C0219E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2025 19:11:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E675C0219B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 00:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SO7X7qZVsW+G0MiLmhSCzhRDY0YQ1kOhBbsoR4z5aYU=; b=QWlmqqsCbkyqTYSc8avSV7aaj0
-	AoujLhYJLuv/g/T1HIgfqbvjbNgeSLJ5MR8LhPg7RwphPjUUAZjcHW/eIBaqs3A5/hngE2HoG2F0d
-	zFMBSmgK/74tpbE/Afd2Fb1RAyrGcq7H9OhNGFIQhMI6MmLUm1FdmsdI53rCJjMdbFecHvqiPM19V
-	gqHKO4yU4Hqna+bspixC/p8UWUWz/yyHJEUc+GKDKTee7JBJOqD8TMmfNvA0AIYxiJ2H8JFynLIVw
-	POkx1QI1R/xsCKyqC85Wyc+tErC4otJI5Wi6BkeJ/Eu9p0dIYhToeOEy0nNR+lfeDdu1zUPpcroOZ
-	rOUc7SPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mZNbqOyLMkR4zYGETdYI1Ds8jvtDMMy7KcjMP1dhBIk=; b=v3xQ/rQW/f/h6xq5Y8K/YT4sRR
+	+Of9IxOuMx5f2lCsPJu0b8vqUQEyQCqFrDLCUJWSTzz4JssqLHUaHGNl+5QdGQueoGAI8v6HUAhLo
+	M7wSMyVdN88Ba6x4eGbrmjMIwUzFrO+r6lfw3ZlghjJN2lcnQG494tqqYEHr15EbkNRFp0N6TkKWF
+	7/XCGqlOyS26XSVOksXTc5ExrkIfQ2xGlnMuvEjpNuLDXynqoxOCg2QMAWnfRJf2P8HNo0kpvUw2T
+	5lEoMFolOPWYQABWJK1zIQ0vTOnr6140my6njT32YSa2c/Ol++ucuLu1khJiN+gu+AZt9VYc+PRhg
+	Yu6H+Qqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thvet-00000004xgd-45Dq;
-	Tue, 11 Feb 2025 19:10:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ti0ii-00000005iIl-0jzD;
+	Wed, 12 Feb 2025 00:35:16 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thuSt-00000004lMT-2WuU;
-	Tue, 11 Feb 2025 17:54:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7EC1A5C4D73;
-	Tue, 11 Feb 2025 17:53:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C9EFC4CEDD;
-	Tue, 11 Feb 2025 17:54:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739296470;
-	bh=5rmXpuduF/u7vqhQmmIvfQ9KEO3o9/3YAw2HM+4dEfY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ORhJUFZuBi0N/fPSErbN9tgZDcMqiiMEWc8jMASSf5bjnb+MMeuds7a6jGNEcLpk1
-	 4ZZy56likvWzUXQrRuDm7xfiDnlgPPPjlMe5H/2/3j0bUv5Jtkjbg1Fa9MS/JSPKEj
-	 C+hjYgi5+su6mDQ2CYkSJesdNFN6voFWjzB2g/aIeRE+OfNyoKIR+i/ott4QcWqv+6
-	 izjSSQsj3zf7GkboFlt9TAvozOz28BCmvnNtzQkOO06V2yBxy67pEhHLpYdGl9mrMP
-	 hAOF3m/bjUY/FprmIAWE9ca/FCFORT7c7UDSqnjsmEygzMwl685ICS+pnFvLRdiM2N
-	 aPBYMjgXHTRxg==
-Date: Tue, 11 Feb 2025 17:54:25 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Sunny Shen <sunny.shen@mediatek.com>
-Subject: Re: [PATCH 1/5] dt-bindings: display: mediatek: mdp-rsz: Add rules
- for MT8196
-Message-ID: <20250211-feed-shed-4b32f146cc54@spud>
-References: <20250211025317.399534-1-sunny.shen@mediatek.com>
- <20250211025317.399534-2-sunny.shen@mediatek.com>
+	id 1ti0if-00000005iHw-3GT5
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Feb 2025 00:35:15 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-21f61b01630so4492665ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Feb 2025 16:35:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1739320512; x=1739925312; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mZNbqOyLMkR4zYGETdYI1Ds8jvtDMMy7KcjMP1dhBIk=;
+        b=HbGAoPUO23vRKKxTm5aJOhwXS2KAu9zqDJ2Nhorq9xcefiWLuT8XfWtnDeOR3PYcRK
+         kLPAJnmHc/ZI94D8kDq+hZYX1s8FM84rcpSQxThYhlVhY9RJoknTg5jtTCbUySqDbBuU
+         WcMVUktBGRw/ldU5rrA+Y8+L14F5fpqnWCyLY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739320512; x=1739925312;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mZNbqOyLMkR4zYGETdYI1Ds8jvtDMMy7KcjMP1dhBIk=;
+        b=HaUWUlaVAvGokSpcAP0arEumJ/VyeoL1DA+2/Kj6HXeSwigRUEQ28/gC8rUe+Q9hjF
+         X0KceQB3+dG7nYTVTzjOqmi4VDINeuSHXZe/MQdAKwRBNgAy7497f1WMnYAhCh3btfIC
+         QmQ9nHPVpZou13yfh9SricB86ojIC9C5FpP3TYVb1xI4734wGAb89QeQj6Ta2n6ITEyX
+         0jffre9ADp57m8mO0xZmcTgS/mSFV+Ng4kCA6r1+hsUBqjrQWtCxpMbGPpJMTteD4CCQ
+         rgV4PFuXlCZZhGjYOjoT2bv7Bi+roZ/VnqCaGA75ZfedfM8I+GzMlGcINuiIsGEbagkp
+         KChg==
+X-Gm-Message-State: AOJu0YwMViPiFfNndGJZmZaCJGv+mN3I045eZkFjrVghO+Y7VTP6hyf1
+	yG5u//q1VPBE32/XeQamoRjG55Kp64YZ2jOPz4ZQSdDLVhx07lyC7n5xS97sFA==
+X-Gm-Gg: ASbGncvG8/aNELAiWNehi5XXaNmzfHcyWH6oU9q4zjDUOebUqRz/ieJZmsbjEBN8NF7
+	7xJBlPfwC4fCNMM3pNKepNbI6oCiDZyiM7Z4YWKU137vDc7QU5mHQFcHgQiBfQRkN2lcquHxqka
+	OE4w4NRRfW0c/KJJaY/2d902X4XWdGRzoEuVc1+2Y+4h4Rl1se5eugDqUU/OuXatFhT1Xxkse4N
+	sfOOURIZ/PePuQcKTe4rYXeGUWoYXg5rgP0byhx9IXKkMnT3gxB43+SZY9BQs/0ptumKzX4Ym+D
+	dxdG6nrYnBNczYi4jiuRigop9p5DcVnky85YpmjhRw+YFY5Fi7ufKDZJkqVtJMCeiyuAkyO+
+X-Google-Smtp-Source: AGHT+IGU2vBf6I17uMlZ6vPzIppLSPDMm3Mc2t33rkKE8ywv2pPmz0SDcC2eFj6qRDS96L9Z49Rppg==
+X-Received: by 2002:a17:90b:510a:b0:2fa:2c61:3e5a with SMTP id 98e67ed59e1d1-2faa0913af0mr8652088a91.10.1739320512530;
+        Tue, 11 Feb 2025 16:35:12 -0800 (PST)
+Received: from nhebert9.pdx.corp.google.com ([2a00:79e0:2e13:6:34c2:323:b5a8:3074])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fbf999b639sm165958a91.38.2025.02.11.16.35.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Feb 2025 16:35:12 -0800 (PST)
+From: Nathan Hebert <nhebert@chromium.org>
+Date: Tue, 11 Feb 2025 16:34:51 -0800
+Subject: [PATCH] media: mediatek: vcodec: Enable HEVC main still picture
+ decode
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="TeColmbo9d48spU6"
-Content-Disposition: inline
-In-Reply-To: <20250211025317.399534-2-sunny.shen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAKrsq2cC/x3MWwqDMBBG4a3IPDeQjHihWxEJJv7qQEglsVIQ9
+ 27o4/dwzkUZSZDpXV2UcEqWTywwr4r8NsUVSuZiYs2NZmMU4uQC7IbT23xICHYXf3wTFLeubuB
+ 0z52m0u8Ji/z+72G87wcNGPdLawAAAA==
+To: Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Nathan Hebert <nhebert@chromium.org>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_095431_730123_3E5F2F45 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20250211_163513_997675_BA2475C0 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,109 +98,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, "Paul Chen --cc=devicetree @ vger . kernel . org" <paul-pl.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Mediatek devices that support HEVC also support the main still picture
+profile, but today, the main still picture profile is excluded.
 
---TeColmbo9d48spU6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This removes the skip mask for HEVC, and enables the main still
+picture profile decoding.
 
-On Tue, Feb 11, 2025 at 10:52:50AM +0800, Sunny Shen wrote:
-> Add MDP-RSZ hardware description for MediaTek MT8196 SoC
->=20
-> Signed-off-by: Sunny Shen <sunny.shen@mediatek.com>
-> ---
->  .../display/mediatek/mediatek,mdp-rsz.yaml    | 46 +++++++++++++++++++
->  1 file changed, 46 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/me=
-diatek,mdp-rsz.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-mdp-rsz.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-mdp-rsz.yaml
-> new file mode 100644
-> index 000000000000..6642b9aa651a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rsz=
-=2Eyaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rsz.yam=
-l#
+Signed-off-by: Nathan Hebert <nhebert@chromium.org>
+---
+On Mediatek devices that support HEVC decoding, HEVC Main Still Picture
+profile is also supported by the SOC and firmware. However, this
+capability is turned off in the vcodec driver.
 
-Filename matching compatible please
+This removes the code that disables HEVC Main Still Picture profile
+decoding. Validation of the decoder has been done via V4L2-backed
+Android CTS tests on an MT8196 device.
+---
+ .../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c   | 2 --
+ 1 file changed, 2 deletions(-)
 
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek display multimedia data path resizer
-> +
-> +maintainers:
-> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> +  - Philipp Zabel <p.zabel@pengutronix.de>
-> +
-> +description: |
-> +  MediaTek display multimedia data path resizer, namely MDP-RSZ,
-> +  can do scaling up/down to the picture.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8196-disp-mdp-rsz
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: MDP-RSZ Clock
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index afa224da0f41..d873159b9b30 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -152,8 +152,6 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+ 			.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
+ 			.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+ 			.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
+-			.menu_skip_mask =
+-				BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
+ 		},
+ 		.codec_type = V4L2_PIX_FMT_HEVC_SLICE,
+ 	},
 
-This can just be "maxItems: 1"
+---
+base-commit: ffd294d346d185b70e28b1a28abe367bbfe53c04
+change-id: 20250211-enable_hevc_still_picture-26b35eb08270
 
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    soc {
-> +        #address-cells =3D <2>;
-> +        #size-cells =3D <2>;
-> +
-> +        disp_mdp_rsz0: disp-mdp-rsz0@321a0000 {
+Best regards,
+-- 
+Nathan Hebert <nhebert@chromium.org>
 
-And "disp-mdp-rsz0" isn't anything close to a generic node name.
-
-> +            compatible =3D "mediatek,mt8196-disp-mdp-rsz";
-> +            reg =3D <0 0x321a0000 0 0x1000>;
-> +            clocks =3D <&dispsys_config_clk 101>;
-
-Surprised there are so few properties, no ports link or anything like
-that?
-
-> +        };
-> +    };
-> --=20
-> 2.34.1
->=20
-
---TeColmbo9d48spU6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ6uO0AAKCRB4tDGHoIJi
-0sY+AQC0Vco77whZIp3/tgk1bNN+9gXooiLJUhwGAHf4Gg/oTwD+OPXyvK0GT0dj
-g+jzc91WFWTOwC/l9B6XKr8nX2rgSQI=
-=EAWO
------END PGP SIGNATURE-----
-
---TeColmbo9d48spU6--
 
