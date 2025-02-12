@@ -4,203 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B73C021A1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:28:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71297C021A1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2025 10:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5gXMKt75/xZdcjF4rw09pSjUFtl/BQqogNk6HiRuw6M=; b=sWhNvmDyTGpQUbXE3p9oreEM5e
-	5SQt73wJVrKxLji5iaDf3eyroNFjEdbeqFZboO3NTCl0Dc4PYLBBFGpq/73+1dxjcRl4sHVa4agcl
-	jr+NcSvNm247nhes5ygC0eKMrZOk9+FScqDS4nNiaHGxqWsnYvmvONnogE7QO7mZAsdGJu5Mowxrq
-	0A757YipXe1E6Xcvrti1sbUb74sUema/TSPvYmriieNIbgO3bW8QPV/6XIET2k003/V8VQ5khfnNi
-	nokNd0Zk81dZ0kPQ5OUakWAtCrajW/wlAO490rqXvt3+BpzapPjjGqWYznnpBSLtEDIaGEiH4okQU
-	PUQJBMlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cq5H3mQmSv9EspNatrh4m/cO1xbUZveHlLxWxW6cZ+0=; b=SiFUgP4Y4WqrYV5acVqhEumvXB
+	yh3I8AepOfKKeHI8eLlKvFqSuutuC3SwLEMLJBWSZKkfK81L3OuPHI1Rqb6mn4FMAu4sR7kKNTFeX
+	TDpPSkkrQCJNDg8biyNG7t7Xc0mf7nZpZ1upuWFdmWSH5xUm0uq3LgK4vWl1/Iu7BGFvYh48S2vqt
+	AxeuXeQHhCOF7oNdUh2kTiqC3fwc4i4N4nrPdTa8acO1MG9XPKAdWDfAYQMhZ0ltbXtKgw2/V9dAi
+	oEL0vHHnYOcdeX56mCEB6Vi8c+MlyAawruDzMPUh2lRMfdNYmG1rAcl8iaKHHaw6OjvnFpAuxT1bu
+	Kr5LC3Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9yZ-00000006yz9-2bTk;
-	Wed, 12 Feb 2025 10:28:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tiADr-000000071nW-1iet;
+	Wed, 12 Feb 2025 10:44:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9ev-00000006vdp-1pLY;
-	Wed, 12 Feb 2025 10:07:58 +0000
-X-UUID: 38974758e92911ef9048ed6ed365623b-20250212
+	id 1ti9oE-00000006xI6-3JkX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Feb 2025 10:17:36 +0000
+X-UUID: 8fba08b2e92a11ef82ff63e91e7eb18c-20250212
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=5gXMKt75/xZdcjF4rw09pSjUFtl/BQqogNk6HiRuw6M=;
-	b=pB2+uQ0E0GrGye1e4T6pC3UDSEurMHw72YNVZGbRSJkHw6qMvsnsG90SKvCpI4psKygiowzJbEs1aQdp+iFjrOR4w1bEQIB1Lg/LL65RF/Xj6w8GP3eDVPnSm0bRvrqSTlSvvFMmN9QbpQU5JM1hte5YC0boB8UFHYcedc9x+D0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cq5H3mQmSv9EspNatrh4m/cO1xbUZveHlLxWxW6cZ+0=;
+	b=Dq5ipiQ8J0n2vhY6oSgXyrVMcB5V+1yi9MUEYVnFdwXSj+7NtPro6awE9DpDVfJK1LFRu8kX8ZCnBWOf0M/vQPbcmUGesXIo7iqiBNLo8KN2Vrj3aZ17QPuNvpk48ZEbjxUg+9VYv9nHPQyVcGErKlDUThz7g8T9FNKosoqwnHE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:11372611-2718-4df9-b4aa-454a9e383e22,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:43bd5aa1-97df-4c26-9c83-d31de0c9db26,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 38974758e92911ef9048ed6ed365623b-20250212
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <crystal.guo@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.46,REQID:435a38ca-f2f5-4c2e-ac15-0978fbfc202b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-30
+X-CID-META: VersionHash:60aa074,CLOUDID:62d85aa1-97df-4c26-9c83-d31de0c9db26,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1,IP:nil
+	,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 8fba08b2e92a11ef82ff63e91e7eb18c-20250212
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2118360332; Wed, 12 Feb 2025 03:07:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 297376445; Wed, 12 Feb 2025 03:17:28 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Wed, 12 Feb 2025 18:07:49 +0800
-Received: from HK2PR02CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Wed, 12 Feb 2025 18:07:49 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pJV4sXSBDJInLnYkqG/TrDwyy3I/rt/jUB2QW0RMpZEED0sWkP7srnAggXZjOTAlqCPPIw2xUi02Hfs8XWvquO+EqFySantM32q5VyKQxvz4+kUK5c7He0pvjrn07+uTZoVOo/SSKoEVQa7EpiO7pfNpKjGSBPFprFn2jMpOP3XR2fwaue9NHPcmxFaE+T3c5fJ13Zkx7IRLapHOaJS/cvdRI2AaOmnzfA9lBBFaoX/lqsOgYwQvG11KBtIwjk42ZDzlc9Ax1R577hJZ13jJB4Xhciie5tclNsxvAYN3JiNjLeDtQe9dkCudjZklfjY3dynIT63gk01CE223CIJRDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5gXMKt75/xZdcjF4rw09pSjUFtl/BQqogNk6HiRuw6M=;
- b=EYoxCDzaP5fHWxNZiokVEjexJUDvRr+RjnW+uJuFn0t5V0H7mDYAhJzZFKWGzS7LIh1dCsMJbgBeZIpy965EhR+dxOgmlc1lH/vHv0/mRbgQkWPJQrlLnGEwAzVeH2MSIXjH8vLq6QOkaoWwaEXhRplKbticEuwRi9jbNEzGIMRZrkxIq70iU7RBKf+rqHios0WlwXukSgi5qI4azpDR+E3SpYXb8YsoCerYqE6MNj7YCS89/uBkw4xdIwoQShCY0CQPixmD0GIeX/l8Sap19Hw8QWNlH0odR0c8qMmsUk8oAKUY9BxJKPrfEPvbR7op2masnYiBOWZjoxQhf3ZaRg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5gXMKt75/xZdcjF4rw09pSjUFtl/BQqogNk6HiRuw6M=;
- b=Jdm2mfGdKvt6KmLvhYNyjxfXvcWuHJcOtn7a6fZ1N4Xf1bXz8gTeWYdbkPzs39qBufPNqO+OCHGWlWimU/EKPz0IsLBDgAATEaoxF1398SwTxXCz9IXVi0AgdmLeXYkmlL12iXKqHTjPTx2nN34phmI2QVVczxhyXgbipFnliK4=
-Received: from SI2PR03MB5468.apcprd03.prod.outlook.com (2603:1096:4:104::5) by
- SI6PR03MB8651.apcprd03.prod.outlook.com (2603:1096:4:251::10) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8422.19; Wed, 12 Feb 2025 10:07:48 +0000
-Received: from SI2PR03MB5468.apcprd03.prod.outlook.com
- ([fe80::28b5:41ba:aefd:a96f]) by SI2PR03MB5468.apcprd03.prod.outlook.com
- ([fe80::28b5:41ba:aefd:a96f%7]) with mapi id 15.20.8422.015; Wed, 12 Feb 2025
- 10:07:47 +0000
-From: =?utf-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"krzk@kernel.org" <krzk@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [v2,2/2] dt-bindings: memory-controllers: Add MediaTek DRAM
- controller interface
-Thread-Topic: [v2,2/2] dt-bindings: memory-controllers: Add MediaTek DRAM
- controller interface
-Thread-Index: AQHbeQHh852dOXgO/k6/Tc8X/FZWJ7M+zx+AgARBfACAABzrAIAATGMA
-Date: Wed, 12 Feb 2025 10:07:47 +0000
-Message-ID: <468d079e89a5459dfe894402af10605c62676412.camel@mediatek.com>
-References: <20250207014437.17920-1-crystal.guo@mediatek.com>
-	 <20250207014437.17920-3-crystal.guo@mediatek.com>
-	 <2942fbc2-55c5-4789-89d4-e4bf3158a34b@kernel.org>
-	 <eb63bd2c9e5e31ff189d2c957bfcb4bd222ec778.camel@mediatek.com>
-	 <43c6bc3b-5dac-4925-99de-76764ea77424@kernel.org>
-In-Reply-To: <43c6bc3b-5dac-4925-99de-76764ea77424@kernel.org>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5468:EE_|SI6PR03MB8651:EE_
-x-ms-office365-filtering-correlation-id: 7e8ca302-5ae6-4f4d-8bfd-08dd4b4d19fd
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?STQ4ZDRsbU96b1FwQmRjYlhNZWsrbkxIMFlZbjlvMXluRDdMaUQrVXN6elNv?=
- =?utf-8?B?YllMMnA5S0RJaVFXQ1Y3c3QyRjJHMkJSc3dsbzFMcXZNZGdUb0c4UVYrMXJP?=
- =?utf-8?B?ejg1RDNUWHlJcjRpRlIxSjFtbmlhSE44V0htUFp2NlJXK0RLZ1RURy92SUNq?=
- =?utf-8?B?MUFjcVVFNEpEZVcvaGQwS01NeTdGZGJQZThwbmdHU1RlTDlCMlhrUXNZbFdE?=
- =?utf-8?B?VDBzV0hIQ3pWNGk4Wm9BV0t0L29QWktJWWJBaWxJbEV3V29NS1d1ODlMZW1W?=
- =?utf-8?B?UUx6RzhKQXRJaXNtbVE1SHcrb1lHMWFoN3kwdVBtS2NBRmxSUWwrL1pROHNx?=
- =?utf-8?B?Vkh6SDdjWnZkMFR3SFpEWCs5NWhJNXdDeDhpY29xSDA3L3BjdjdsNDZYYzlK?=
- =?utf-8?B?emN3aXk3Q3RFaUY4RDI5bnZ4YXFmcFEwWDRyaVNESE5rcmNYWE1iTXF6Y1I1?=
- =?utf-8?B?TWRkOWovNGlGRU0xK253NGhjVm9xKzBhekpWOE1CZkt1QUJYdDluS2duSWtY?=
- =?utf-8?B?S2pGTjFraXVHalRGdUt6WHdSTE90NE44bkhMUlI4NVdFZHpKS2lnQ0FFNGhW?=
- =?utf-8?B?U3lFQ0Ywa2x4MUNxdjAzQm55RzlrZms2Y3RBYlU5NzVVYW1hVDg1aHBRWHFD?=
- =?utf-8?B?NzJxSTJtTG9lTTJGMXdGNGRPYndSVGQ2RmE4QUU4UmhobmhmaHM2OFVPbnU3?=
- =?utf-8?B?c3JhRlV6TFFYWlZpdG5uYW1ZNUVZWi9GMEdnL3JkTDBzSUJDZzFLU1kyQXd4?=
- =?utf-8?B?RmhWUGw0R1Jld1BoUFVZQnoxL2RwWjN3am1xc2taNTliS0QzQlZPSDJMWFFo?=
- =?utf-8?B?SE8zZWtKMzZFSWVhV1dQNnJpZGk3dmF4b0JUcENEQkcxWEZwNXpvN2l3MDY5?=
- =?utf-8?B?OHRYM29pRDE2M2FtdTJJNmEza3pkcTc1MjJUeFlscnRRWnBzUVRneFpwN1JB?=
- =?utf-8?B?WlhRSWk3VUpLekNFUlpzc0JPSGdkWG10LzN5bmJWRzhGL203QVV3UW9Qd2x5?=
- =?utf-8?B?WnJNRDl4Njg5a3VMQmlrbHVWeng4VU4rL0wwenR6ck5HaHh2eEFWWlZkVnVw?=
- =?utf-8?B?Q28wSi9nMkNNVEN3UTlHdVhuajFWQVVLZG4xa1ZsYWgxSXp4aEtTS1B5MUt1?=
- =?utf-8?B?TnlCejNLTXg4dEpjUDJjeGxOZzhLL0c2VU5QL1o2VWovRDN6cnN3TmI3ZFBQ?=
- =?utf-8?B?WmhYWXE3UzJzZWZNRktnWThQTmRjMEVnL3U5TUk5dnVDS1IwRWN4eFdTREw4?=
- =?utf-8?B?amZtSEYvRU5tR3BuUExUTzV1Wk90L0h4S2EwMU5oNFlpaUMzWDBYYmJ3MFAz?=
- =?utf-8?B?K2V2Qit5UjZrSzl2ZTBpdE50WW5EZVRuZlVQNXBBbjd2Yzk4c3pFb2x5a0s2?=
- =?utf-8?B?UndwWDhNenpKTVRYMzVtcVFXUEE0bk1BZGpTK2p3VWxFOUJEb2xmY09paEN6?=
- =?utf-8?B?RkdRSmw3am1YRmIxRlpHeVhDamZMZEJzQlFJQVJCWXo2cUZYaVlVZTBLSmhD?=
- =?utf-8?B?dE5KeG9udEhIVTBTcGNsM1Y1TTZQbFhXZDM4WGl3dVE5cUZ1R0Zlakp4NjRn?=
- =?utf-8?B?Z1N1OXVQdmFacWdRRXdmN1VCMDlZY1Iwd1hqTWFLS3QzVVU1U2Jpd3E1WVZy?=
- =?utf-8?B?ZTJoSjVuR09nQjJQaGxYWjlaWmJZMzJvMVFSak9tTDBOc21abGxjbTlaQWNr?=
- =?utf-8?B?YXBYMDZUMlNTL24xRnRWWlB3RFltcWtmeWI0VTlCMWxvVHp5K3hyaVRldStS?=
- =?utf-8?B?a3dRQ3hyVjdMWnNUaHpFZ0RBL2hJYnExamJINkVyZnJIazdtWGh6cHd2K25q?=
- =?utf-8?B?bEdzUTRGT0hIQjdqOTY4STNFY21XNjlrV1dOdUx4TmFiR21QaE82VjhGdTJD?=
- =?utf-8?Q?NSw455nG9udSG?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5468.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eXI0TEszT3B0czArc2Rxa0RMcHdBK0RhbnE4dHdDN0pDRzlBTUpGTkhWMEly?=
- =?utf-8?B?eXdvdkNwUHdFdlJ6L2JOT2oyMFhNYWdEUlpmSlYrcGNFUy93TDd6dHNDYzNQ?=
- =?utf-8?B?U1VmY1EwbUZsdzRwT3czbFRBYUlBQWJMb3ZNeUw2UnZmMkEyV0NzM0VlWDFk?=
- =?utf-8?B?VGlSVTZzem9ncXF2ZFJieVRCRUQ5VU16MDlPanFOdkc4Y2NNdUZ4b1hoL3h6?=
- =?utf-8?B?b3NOWWxDeDZUTGdudlFMaEhUUmFldzA0NWxkd1R2cUhJaG80MGdVZ1RvRDlv?=
- =?utf-8?B?Z0hTWHZwenM4dTluMHZrSU5NSHFiUEFITGpOZ0szUmdqdDNOMDRqSyt4YXFk?=
- =?utf-8?B?dTVzTURMcVlrejYwYTQxeU9RWG50SWhxWXVteDc5bklYVTdwbnRhM0k1b0xY?=
- =?utf-8?B?ZHFFbk5XK2twOFpMUnBRNnl1RWp1c0FVZ1FObDloekx6UDR3RktJNmRCRVVS?=
- =?utf-8?B?Tk5uRWU2UDI0YUhwZUdiRVUwRDk3Yk94UURhRGd2YmtkTjRVMFBrdGd3UFJY?=
- =?utf-8?B?MzhubS94U3JjcHRnR1FRT3ExT2FuVk9BbHNmMTJkdVl1WS9WaW4zSWxKOTRY?=
- =?utf-8?B?eGUxNnBpUmtHMmh6dExTVENITXpuUExRNkRCKzhlZ0pqcjlINTFNRWpUNC9I?=
- =?utf-8?B?Q2k4S3dBOGhwaTlaRWQ0VEhkVjR2OG5HVSszdGh0cjQ0cEViVDNZVkpqdkFk?=
- =?utf-8?B?c1BuaFU5RWNEbDJkeThLTm1SK3FyNVdwdmhEZWtGelVLcGVJM1JEeHFFQmsy?=
- =?utf-8?B?czRYRm5GRTRkd0RMTHVnNllyR2RhOTF0Q1RYcTdKR2l6eGIrczZ6TmlyRnhF?=
- =?utf-8?B?NHNKZjJ4aGZwei9TSTcyMU1jWDRGc1dNelQ5REl4T1Z4d2JUeE5qRHRod0JM?=
- =?utf-8?B?clZmcXZTU010T1p3SHFldkk3U016Ym50VjNISXVQZUgvaFo0V0ZHMTNiYzRy?=
- =?utf-8?B?L3B4QVRzb0R2Nk12cEk0Z3VnSzRWVzU0Y0VTYy8vMS9wNG9lamxLVzVVSWVM?=
- =?utf-8?B?eUZjaXpXb3lxem90blRMSHlXWktOdFlDei9TR1VzQmdEV0ZxM0NXdnQvWkxp?=
- =?utf-8?B?cklOZVVzclJHS0NCUmJ3UVQ1UWsveGdmWmFqUU5oL3lwZHRWeis0Rk9TUStS?=
- =?utf-8?B?Y1NCVWtZU1VYclNud0c1UU52c01oa1VLMFozWXRxeHJ5V1Rvd2dqdVlPVGxU?=
- =?utf-8?B?Y1BMTW5xeVJieTkvb3FLcFAzQTB2T1hWcjJGUC9VRUoxZld4RW5ZblFTWE96?=
- =?utf-8?B?K0pOMFV3bEJ4bjZnZnJyd0ZLNER5Rm9SRlRmMzRVYWJtak5nRUhwazByRDVM?=
- =?utf-8?B?dUJZd3hmMXlvN0IrVmo4Z2VoOFBVUlVDQ2VzanlYd0gwYktsV24rY2pHL2t3?=
- =?utf-8?B?QTUrWU9YQ3hERkpnRzdGQWI1NXJiejlnNThkdldjOVFlSHdXcm45cm85R05V?=
- =?utf-8?B?anV1ZEhrKys0MXhvTTFqNDlNSlhvaUJQeC85blI5S2J6TEJlbGFjZUlXT0hx?=
- =?utf-8?B?SW91R2xIVlkvdXVJVDRVd3BPQkhqeWVoM3RFM3RXRCtjdnF1UWRTYmg4a1ZP?=
- =?utf-8?B?N0JRZ1V4OEVrWDllWkNDTnlNWStWZ1hYdHY5eSt6Vm5xdGI3TmxwZS9JeHZF?=
- =?utf-8?B?Z28xZUNxVGtXUGJpTkVCNzQ0Vk9tSkY3UE1QbXNVVGdBVkRzUEFvOGJFUEpy?=
- =?utf-8?B?cGo4bG5UNmYzeFZWOUdDQmkvbzIrcmtPbmVKcEVEMDgrUzJ1VlhrN3NSZEhy?=
- =?utf-8?B?cmRPVWQ0eFlBWDhVUk5RODhITmZsWDlrR21CTlpYZVE5cHlENE0vM0R5VHQ2?=
- =?utf-8?B?UTJWWjhZMVc4ajhuSkg4QkN5U3VhVUE1VEo4OHgxNzgwc2lRSlkwcmRCeWF5?=
- =?utf-8?B?M1IyNmV0VU4vVVhNSXpwOWRMR25laUV0dnk4WWUvN1RrR0ZZTDdHUWIzanZv?=
- =?utf-8?B?OXBxc3ByT3pIMFJlNXdKMHJOak50RDhYUWF3blZuOFJWOGszYWxTVGFiTC9R?=
- =?utf-8?B?WnJiem1QT2ZpQ2t6SHhDMEt2SkRVQ0xHbGVmckN5b08yQ1VpYkdNQ0VzM2N6?=
- =?utf-8?B?TEZ5UDRSWjVIKzFRZ2dpS3Fqdkl5am9NUmFwWnFTWGJqc2psSS8wN1c5S0gv?=
- =?utf-8?B?RFM5VUQ3QTgxL0FSekd4SVcwZHBDbHVSTDBNZldGNCtDQXMrOEJVckZ5dUNU?=
- =?utf-8?B?d2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E8E28D52BE8C264086695B90FB68C079@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1258.28; Wed, 12 Feb 2025 18:17:25 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Wed, 12 Feb 2025 18:17:25 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+	<subhashj@codeaurora.org>, <sutoshd@codeaurora.org>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: [PATCH v1] ufs: core: add hba parameter to trace events
+Date: Wed, 12 Feb 2025 18:14:30 +0800
+Message-ID: <20250212101723.716477-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5468.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e8ca302-5ae6-4f4d-8bfd-08dd4b4d19fd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Feb 2025 10:07:47.6584
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: an+Gf94RvVahRoL6ZbhMvC/Y4zuuSCmcz+B/9LxJctTPIcylLFWi4UCeNkZmQeTSGD35HbIkb9Xt6mqWZGEhwj8uWWO1XTfHmDHvyG4SRac=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI6PR03MB8651
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_020757_482652_C50668EB 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20250212_021734_849932_BAD1BE10 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -215,33 +91,645 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI1LTAyLTEyIGF0IDA2OjM0ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mgb3Igb3Bl
-biBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRo
-ZSBjb250ZW50Lg0KPiANCj4gDQo+IE9uIDEyLzAyLzIwMjUgMDQ6NTAsIENyeXN0YWwgR3VvICjp
-g63mmbYpIHdyb3RlOg0KPiA+IE9uIFN1biwgMjAyNS0wMi0wOSBhdCAxMTo1MSArMDEwMCwgS3J6
-eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4gPiA+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRv
-IG5vdCBjbGljayBsaW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzDQo+ID4gPiB1bnRpbA0KPiA+ID4g
-eW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gPiA+IA0KPiA+
-ID4gDQo+ID4gPiBPbiAwNy8wMi8yMDI1IDAyOjQyLCBDcnlzdGFsIEd1byB3cm90ZToNCj4gPiA+
-ID4gQSBNZWRpYVRlayBEUkFNIGNvbnRyb2xsZXIgaW50ZXJmYWNlIHRvIHByb3ZpZGUgdGhlIGN1
-cnJlbnQgRERSDQo+ID4gPiA+IGRhdGEgcmF0ZS4NCj4gPiANCj4gPiBIaSBLcnp5c3p0b2YsDQo+
-ID4gDQo+ID4gUmVnYXJkaW5nIHRoaXMgY29tbWl0IG1lc3NhZ2UsIHlvdSBwcmV2aW91c2x5IGNv
-bW1lbnRlZCBhcyBmb2xsb3dzOg0KPiA+ICJQbGVhc2Ugd3JhcCBjb21taXQgbWVzc2FnZSBhY2Nv
-cmRpbmcgdG8gTGludXggY29kaW5nIHN0eWxlIC8NCj4gPiBzdWJtaXNzaW9uIHByb2Nlc3MgKG5l
-aXRoZXIgdG9vIGVhcmx5IG5vciBvdmVyIHRoZSBsaW1pdCk6DQo+ID4gDQpodHRwczovL3VybGRl
-ZmVuc2UuY29tL3YzL19faHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20vbGludXgvdjYuNC1yYzEv
-c291cmNlL0RvY3VtZW50YXRpb24vcHJvY2Vzcy9zdWJtaXR0aW5nLXBhdGNoZXMucnN0Kkw1X187
-SXchIUNUUk5LQTl3TWcwQVJidyFqWTBpM21SWTBtQTN5TGh2eG00Mk5aaUZuaGVZNkw1UTlkS1ZK
-a3Y5MTFlUTlaMDNTQmkzLU1nc2xnX2ZPemt3QWZrSkpPRGNqRDZLYTVfSSQNCj4gPiAiDQo+ID4g
-DQo+ID4gTWF5IEkgYXNrIGlmIHRoaXMgbWVhbnMgdGhhdCB0aGUgZGVzY3JpcHRpb24gIkEgTWVk
-aWFUZWsgRFJBTQ0KPiA+IGNvbnRyb2xsZXIgaW50ZXJmYWNlIHRvIHByb3ZpZGUgdGhlIGN1cnJl
-bnQgRERSIGRhdGEgcmF0ZS4iIG5lZWRzDQo+ID4gdG8gYmUNCj4gPiBzcGxpdCBpbnRvIHR3byBs
-aW5lcz8gVGhlIHRvdGFsIG51bWJlciBvZiBjaGFyYWN0ZXJzIGluIHRoaXMNCj4gPiBkZXNjcmlw
-dGlvbiBpcyA3NC4NCj4gDQo+IEFuZCB3aGF0IGlzIHRoZSB3cmFwcGluZyBsaW1pdD8NCj4gDQo+
-IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlzenRvZg0KDQpUaGUgd3JhcHBpbmcgbGltaXQgZm9y
-IHRoZSBjb21taXQgbWVzc2FnZSBib2R5IGlzIDc1IGNvbHVtbnMuDQpJIHdpbGwgdXBkYXRlIHRo
-ZSBjb21taXQgbWVzc2FnZSBib2R5IGluIG5leHQgdmVyc2lvbjoNCkEgTWVkaWFUZWsgRFJBTSBj
-b250cm9sbGVyIGludGVyZmFjZSB0byBwcm92aWRlIHRoZSBjdXJyZW50IEREUg0KZGF0YSByYXRl
-Lg0KSXMgdGhpcyBPa2F5Pw0KDQpCZXN0IHJlZ2FyZHMsDQpDcnlzdGFsDQo=
+From: Peter Wang <peter.wang@mediatek.com>
+
+Included the ufs_hba structure as a parameter in various trace events
+to provide more context and improve debugging capabilities.
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs_trace.h | 132 ++++++++++++++++++++---------------
+ drivers/ufs/core/ufshcd.c    |  66 +++++++++---------
+ 2 files changed, 111 insertions(+), 87 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
+index 84deca2b841d..e175020a2fcc 100644
+--- a/drivers/ufs/core/ufs_trace.h
++++ b/drivers/ufs/core/ufs_trace.h
+@@ -83,17 +83,19 @@ UFS_CMD_TRACE_TSF_TYPES
+ 
+ TRACE_EVENT(ufshcd_clk_gating,
+ 
+-	TP_PROTO(const char *dev_name, int state),
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba, int state),
+ 
+-	TP_ARGS(dev_name, state),
++	TP_ARGS(dev_name, hba, state),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__field(int, state)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__entry->state = state;
+ 	),
+ 
+@@ -104,13 +106,15 @@ TRACE_EVENT(ufshcd_clk_gating,
+ 
+ TRACE_EVENT(ufshcd_clk_scaling,
+ 
+-	TP_PROTO(const char *dev_name, const char *state, const char *clk,
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		const char *state, const char *clk,
+ 		u32 prev_state, u32 curr_state),
+ 
+-	TP_ARGS(dev_name, state, clk, prev_state, curr_state),
++	TP_ARGS(dev_name, hba, state, clk, prev_state, curr_state),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__string(state, state)
+ 		__string(clk, clk)
+ 		__field(u32, prev_state)
+@@ -119,6 +123,7 @@ TRACE_EVENT(ufshcd_clk_scaling,
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__assign_str(state);
+ 		__assign_str(clk);
+ 		__entry->prev_state = prev_state;
+@@ -132,17 +137,19 @@ TRACE_EVENT(ufshcd_clk_scaling,
+ 
+ TRACE_EVENT(ufshcd_auto_bkops_state,
+ 
+-	TP_PROTO(const char *dev_name, const char *state),
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba, const char *state),
+ 
+-	TP_ARGS(dev_name, state),
++	TP_ARGS(dev_name, hba, state),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__string(state, state)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__assign_str(state);
+ 	),
+ 
+@@ -151,13 +158,14 @@ TRACE_EVENT(ufshcd_auto_bkops_state,
+ );
+ 
+ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+-	TP_PROTO(const char *dev_name, const char *profile_info, s64 time_us,
+-		 int err),
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		 const char *profile_info, s64 time_us, int err),
+ 
+-	TP_ARGS(dev_name, profile_info, time_us, err),
++	TP_ARGS(dev_name, hba, profile_info, time_us, err),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__string(profile_info, profile_info)
+ 		__field(s64, time_us)
+ 		__field(int, err)
+@@ -165,6 +173,7 @@ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__assign_str(profile_info);
+ 		__entry->time_us = time_us;
+ 		__entry->err = err;
+@@ -176,30 +185,31 @@ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+ );
+ 
+ DEFINE_EVENT(ufshcd_profiling_template, ufshcd_profile_hibern8,
+-	TP_PROTO(const char *dev_name, const char *profile_info, s64 time_us,
+-		 int err),
+-	TP_ARGS(dev_name, profile_info, time_us, err));
++	TP_PROTO(const char *dev_name,  struct ufs_hba *hba,
++		 const char *profile_info, s64 time_us, int err),
++	TP_ARGS(dev_name, hba, profile_info, time_us, err));
+ 
+ DEFINE_EVENT(ufshcd_profiling_template, ufshcd_profile_clk_gating,
+-	TP_PROTO(const char *dev_name, const char *profile_info, s64 time_us,
+-		 int err),
+-	TP_ARGS(dev_name, profile_info, time_us, err));
++	TP_PROTO(const char *dev_name,  struct ufs_hba *hba,
++		 const char *profile_info, s64 time_us, int err),
++	TP_ARGS(dev_name, hba, profile_info, time_us, err));
+ 
+ DEFINE_EVENT(ufshcd_profiling_template, ufshcd_profile_clk_scaling,
+-	TP_PROTO(const char *dev_name, const char *profile_info, s64 time_us,
+-		 int err),
+-	TP_ARGS(dev_name, profile_info, time_us, err));
++	TP_PROTO(const char *dev_name,  struct ufs_hba *hba,
++		 const char *profile_info, s64 time_us, int err),
++	TP_ARGS(dev_name, hba, profile_info, time_us, err));
+ 
+ DECLARE_EVENT_CLASS(ufshcd_template,
+-	TP_PROTO(const char *dev_name, int err, s64 usecs,
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba, int err, s64 usecs,
+ 		 int dev_state, int link_state),
+ 
+-	TP_ARGS(dev_name, err, usecs, dev_state, link_state),
++	TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state),
+ 
+ 	TP_STRUCT__entry(
+ 		__field(s64, usecs)
+ 		__field(int, err)
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__field(int, dev_state)
+ 		__field(int, link_state)
+ 	),
+@@ -208,6 +218,7 @@ DECLARE_EVENT_CLASS(ufshcd_template,
+ 		__entry->usecs = usecs;
+ 		__entry->err = err;
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__entry->dev_state = dev_state;
+ 		__entry->link_state = link_state;
+ 	),
+@@ -223,60 +234,62 @@ DECLARE_EVENT_CLASS(ufshcd_template,
+ );
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_system_suspend,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_system_resume,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_runtime_suspend,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_runtime_resume,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_init,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_wl_suspend,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_wl_resume,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_wl_runtime_suspend,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ DEFINE_EVENT(ufshcd_template, ufshcd_wl_runtime_resume,
+-	     TP_PROTO(const char *dev_name, int err, s64 usecs,
+-		      int dev_state, int link_state),
+-	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
++	     TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		      int err, s64 usecs, int dev_state, int link_state),
++	     TP_ARGS(dev_name, hba, err, usecs, dev_state, link_state));
+ 
+ TRACE_EVENT(ufshcd_command,
+-	TP_PROTO(struct scsi_device *sdev, enum ufs_trace_str_t str_t,
++	TP_PROTO(struct scsi_device *sdev, struct ufs_hba *hba,
++		 enum ufs_trace_str_t str_t,
+ 		 unsigned int tag, u32 doorbell, u32 hwq_id, int transfer_len,
+ 		 u32 intr, u64 lba, u8 opcode, u8 group_id),
+ 
+-	TP_ARGS(sdev, str_t, tag, doorbell, hwq_id, transfer_len, intr, lba,
++	TP_ARGS(sdev, hba, str_t, tag, doorbell, hwq_id, transfer_len, intr, lba,
+ 		opcode, group_id),
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct scsi_device *, sdev)
++		__field(struct ufs_hba *, hba)
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__field(unsigned int, tag)
+ 		__field(u32, doorbell)
+@@ -290,6 +303,7 @@ TRACE_EVENT(ufshcd_command,
+ 
+ 	TP_fast_assign(
+ 		__entry->sdev = sdev;
++		__entry->hba = hba;
+ 		__entry->str_t = str_t;
+ 		__entry->tag = tag;
+ 		__entry->doorbell = doorbell;
+@@ -312,13 +326,15 @@ TRACE_EVENT(ufshcd_command,
+ );
+ 
+ TRACE_EVENT(ufshcd_uic_command,
+-	TP_PROTO(const char *dev_name, enum ufs_trace_str_t str_t, u32 cmd,
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		 enum ufs_trace_str_t str_t, u32 cmd,
+ 		 u32 arg1, u32 arg2, u32 arg3),
+ 
+-	TP_ARGS(dev_name, str_t, cmd, arg1, arg2, arg3),
++	TP_ARGS(dev_name, hba, str_t, cmd, arg1, arg2, arg3),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__field(u32, cmd)
+ 		__field(u32, arg1)
+@@ -328,6 +344,7 @@ TRACE_EVENT(ufshcd_uic_command,
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__entry->str_t = str_t;
+ 		__entry->cmd = cmd;
+ 		__entry->arg1 = arg1;
+@@ -343,13 +360,15 @@ TRACE_EVENT(ufshcd_uic_command,
+ );
+ 
+ TRACE_EVENT(ufshcd_upiu,
+-	TP_PROTO(const char *dev_name, enum ufs_trace_str_t str_t, void *hdr,
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba,
++		 enum ufs_trace_str_t str_t, void *hdr,
+ 		 void *tsf, enum ufs_trace_tsf_t tsf_t),
+ 
+-	TP_ARGS(dev_name, str_t, hdr, tsf, tsf_t),
++	TP_ARGS(dev_name, hba, str_t, hdr, tsf, tsf_t),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__array(unsigned char, hdr, 12)
+ 		__array(unsigned char, tsf, 16)
+@@ -358,6 +377,7 @@ TRACE_EVENT(ufshcd_upiu,
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__entry->str_t = str_t;
+ 		memcpy(__entry->hdr, hdr, sizeof(__entry->hdr));
+ 		memcpy(__entry->tsf, tsf, sizeof(__entry->tsf));
+@@ -375,17 +395,19 @@ TRACE_EVENT(ufshcd_upiu,
+ 
+ TRACE_EVENT(ufshcd_exception_event,
+ 
+-	TP_PROTO(const char *dev_name, u16 status),
++	TP_PROTO(const char *dev_name, struct ufs_hba *hba, u16 status),
+ 
+-	TP_ARGS(dev_name, status),
++	TP_ARGS(dev_name, hba, status),
+ 
+ 	TP_STRUCT__entry(
+ 		__string(dev_name, dev_name)
++		__field(struct ufs_hba *, hba)
+ 		__field(u16, status)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__assign_str(dev_name);
++		__entry->hba = hba;
+ 		__entry->status = status;
+ 	),
+ 
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 1893a7ad9531..7f3ae89cf28d 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -369,7 +369,7 @@ static void ufshcd_add_cmd_upiu_trace(struct ufs_hba *hba, unsigned int tag,
+ 	else
+ 		header = &hba->lrb[tag].ucd_rsp_ptr->header;
+ 
+-	trace_ufshcd_upiu(dev_name(hba->dev), str_t, header, &rq->sc.cdb,
++	trace_ufshcd_upiu(dev_name(hba->dev), hba, str_t, header, &rq->sc.cdb,
+ 			  UFS_TSF_CDB);
+ }
+ 
+@@ -380,7 +380,7 @@ static void ufshcd_add_query_upiu_trace(struct ufs_hba *hba,
+ 	if (!trace_ufshcd_upiu_enabled())
+ 		return;
+ 
+-	trace_ufshcd_upiu(dev_name(hba->dev), str_t, &rq_rsp->header,
++	trace_ufshcd_upiu(dev_name(hba->dev), hba, str_t, &rq_rsp->header,
+ 			  &rq_rsp->qr, UFS_TSF_OSF);
+ }
+ 
+@@ -393,12 +393,12 @@ static void ufshcd_add_tm_upiu_trace(struct ufs_hba *hba, unsigned int tag,
+ 		return;
+ 
+ 	if (str_t == UFS_TM_SEND)
+-		trace_ufshcd_upiu(dev_name(hba->dev), str_t,
++		trace_ufshcd_upiu(dev_name(hba->dev), hba, str_t,
+ 				  &descp->upiu_req.req_header,
+ 				  &descp->upiu_req.input_param1,
+ 				  UFS_TSF_TM_INPUT);
+ 	else
+-		trace_ufshcd_upiu(dev_name(hba->dev), str_t,
++		trace_ufshcd_upiu(dev_name(hba->dev), hba, str_t,
+ 				  &descp->upiu_rsp.rsp_header,
+ 				  &descp->upiu_rsp.output_param1,
+ 				  UFS_TSF_TM_OUTPUT);
+@@ -418,7 +418,7 @@ static void ufshcd_add_uic_command_trace(struct ufs_hba *hba,
+ 	else
+ 		cmd = ufshcd_readl(hba, REG_UIC_COMMAND);
+ 
+-	trace_ufshcd_uic_command(dev_name(hba->dev), str_t, cmd,
++	trace_ufshcd_uic_command(dev_name(hba->dev), hba, str_t, cmd,
+ 				 ufshcd_readl(hba, REG_UIC_COMMAND_ARG_1),
+ 				 ufshcd_readl(hba, REG_UIC_COMMAND_ARG_2),
+ 				 ufshcd_readl(hba, REG_UIC_COMMAND_ARG_3));
+@@ -473,7 +473,7 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
+ 	} else {
+ 		doorbell = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
+ 	}
+-	trace_ufshcd_command(cmd->device, str_t, tag, doorbell, hwq_id,
++	trace_ufshcd_command(cmd->device, hba, str_t, tag, doorbell, hwq_id,
+ 			     transfer_len, intr, lba, opcode, group_id);
+ }
+ 
+@@ -1064,6 +1064,7 @@ static int ufshcd_set_clk_freq(struct ufs_hba *hba, bool scale_up)
+ 					break;
+ 				}
+ 				trace_ufshcd_clk_scaling(dev_name(hba->dev),
++						hba,
+ 						"scaled up", clki->name,
+ 						clki->curr_freq,
+ 						clki->max_freq);
+@@ -1082,6 +1083,7 @@ static int ufshcd_set_clk_freq(struct ufs_hba *hba, bool scale_up)
+ 					break;
+ 				}
+ 				trace_ufshcd_clk_scaling(dev_name(hba->dev),
++						hba,
+ 						"scaled down", clki->name,
+ 						clki->curr_freq,
+ 						clki->min_freq);
+@@ -1122,7 +1124,7 @@ int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
+ 				return ret;
+ 			}
+ 
+-			trace_ufshcd_clk_scaling(dev_name(dev),
++			trace_ufshcd_clk_scaling(dev_name(dev), hba,
+ 				(scaling_down ? "scaled down" : "scaled up"),
+ 				clki->name, hba->clk_scaling.target_freq, freq);
+ 		}
+@@ -1186,7 +1188,7 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
+ 	ufshcd_pm_qos_update(hba, scale_up);
+ 
+ out:
+-	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
++	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev), hba,
+ 			(scale_up ? "up" : "down"),
+ 			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 	return ret;
+@@ -1548,7 +1550,7 @@ static int ufshcd_devfreq_target(struct device *dev,
+ 	if (!ret)
+ 		hba->clk_scaling.target_freq = *freq;
+ 
+-	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
++	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev), hba,
+ 		(scale_up ? "up" : "down"),
+ 		ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 
+@@ -1881,7 +1883,7 @@ void ufshcd_hold(struct ufs_hba *hba)
+ 	case REQ_CLKS_OFF:
+ 		if (cancel_delayed_work(&hba->clk_gating.gate_work)) {
+ 			hba->clk_gating.state = CLKS_ON;
+-			trace_ufshcd_clk_gating(dev_name(hba->dev),
++			trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 						hba->clk_gating.state);
+ 			break;
+ 		}
+@@ -1893,7 +1895,7 @@ void ufshcd_hold(struct ufs_hba *hba)
+ 		fallthrough;
+ 	case CLKS_OFF:
+ 		hba->clk_gating.state = REQ_CLKS_ON;
+-		trace_ufshcd_clk_gating(dev_name(hba->dev),
++		trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 					hba->clk_gating.state);
+ 		queue_work(hba->clk_gating.clk_gating_workq,
+ 			   &hba->clk_gating.ungate_work);
+@@ -1933,7 +1935,7 @@ static void ufshcd_gate_work(struct work_struct *work)
+ 		if (hba->clk_gating.is_suspended ||
+ 		    hba->clk_gating.state != REQ_CLKS_OFF) {
+ 			hba->clk_gating.state = CLKS_ON;
+-			trace_ufshcd_clk_gating(dev_name(hba->dev),
++			trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 						hba->clk_gating.state);
+ 			return;
+ 		}
+@@ -1955,7 +1957,7 @@ static void ufshcd_gate_work(struct work_struct *work)
+ 			hba->clk_gating.state = CLKS_ON;
+ 			dev_err(hba->dev, "%s: hibern8 enter failed %d\n",
+ 					__func__, ret);
+-			trace_ufshcd_clk_gating(dev_name(hba->dev),
++			trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 						hba->clk_gating.state);
+ 			return;
+ 		}
+@@ -1980,7 +1982,7 @@ static void ufshcd_gate_work(struct work_struct *work)
+ 	guard(spinlock_irqsave)(&hba->clk_gating.lock);
+ 	if (hba->clk_gating.state == REQ_CLKS_OFF) {
+ 		hba->clk_gating.state = CLKS_OFF;
+-		trace_ufshcd_clk_gating(dev_name(hba->dev),
++		trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 					hba->clk_gating.state);
+ 	}
+ }
+@@ -2006,7 +2008,7 @@ static void __ufshcd_release(struct ufs_hba *hba)
+ 	}
+ 
+ 	hba->clk_gating.state = REQ_CLKS_OFF;
+-	trace_ufshcd_clk_gating(dev_name(hba->dev), hba->clk_gating.state);
++	trace_ufshcd_clk_gating(dev_name(hba->dev), hba, hba->clk_gating.state);
+ 	queue_delayed_work(hba->clk_gating.clk_gating_workq,
+ 			   &hba->clk_gating.gate_work,
+ 			   msecs_to_jiffies(hba->clk_gating.delay_ms));
+@@ -4422,7 +4424,7 @@ int ufshcd_uic_hibern8_enter(struct ufs_hba *hba)
+ 	ufshcd_vops_hibern8_notify(hba, UIC_CMD_DME_HIBER_ENTER, PRE_CHANGE);
+ 
+ 	ret = ufshcd_uic_pwr_ctrl(hba, &uic_cmd);
+-	trace_ufshcd_profile_hibern8(dev_name(hba->dev), "enter",
++	trace_ufshcd_profile_hibern8(dev_name(hba->dev), hba, "enter",
+ 			     ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 
+ 	if (ret)
+@@ -4447,7 +4449,7 @@ int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+ 	ufshcd_vops_hibern8_notify(hba, UIC_CMD_DME_HIBER_EXIT, PRE_CHANGE);
+ 
+ 	ret = ufshcd_uic_pwr_ctrl(hba, &uic_cmd);
+-	trace_ufshcd_profile_hibern8(dev_name(hba->dev), "exit",
++	trace_ufshcd_profile_hibern8(dev_name(hba->dev), hba, "exit",
+ 			     ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 
+ 	if (ret) {
+@@ -5808,7 +5810,7 @@ static int ufshcd_enable_auto_bkops(struct ufs_hba *hba)
+ 	}
+ 
+ 	hba->auto_bkops_enabled = true;
+-	trace_ufshcd_auto_bkops_state(dev_name(hba->dev), "Enabled");
++	trace_ufshcd_auto_bkops_state(dev_name(hba->dev), hba, "Enabled");
+ 
+ 	/* No need of URGENT_BKOPS exception from the device */
+ 	err = ufshcd_disable_ee(hba, MASK_EE_URGENT_BKOPS);
+@@ -5859,7 +5861,7 @@ static int ufshcd_disable_auto_bkops(struct ufs_hba *hba)
+ 	}
+ 
+ 	hba->auto_bkops_enabled = false;
+-	trace_ufshcd_auto_bkops_state(dev_name(hba->dev), "Disabled");
++	trace_ufshcd_auto_bkops_state(dev_name(hba->dev), hba, "Disabled");
+ 	hba->is_urgent_bkops_lvl_checked = false;
+ out:
+ 	return err;
+@@ -6193,7 +6195,7 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
+ 		return;
+ 	}
+ 
+-	trace_ufshcd_exception_event(dev_name(hba->dev), status);
++	trace_ufshcd_exception_event(dev_name(hba->dev), hba, status);
+ 
+ 	if (status & hba->ee_drv_mask & MASK_EE_URGENT_BKOPS)
+ 		ufshcd_bkops_exception_event_handler(hba);
+@@ -7652,7 +7654,7 @@ static void ufshcd_process_probe_result(struct ufs_hba *hba,
+ 		hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+ 	spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 
+-	trace_ufshcd_init(dev_name(hba->dev), ret,
++	trace_ufshcd_init(dev_name(hba->dev), hba, ret,
+ 			  ktime_to_us(ktime_sub(ktime_get(), probe_start)),
+ 			  hba->curr_dev_pwr_mode, hba->uic_link_state);
+ }
+@@ -9148,12 +9150,12 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
+ 	} else if (!ret && on && hba->clk_gating.is_initialized) {
+ 		scoped_guard(spinlock_irqsave, &hba->clk_gating.lock)
+ 			hba->clk_gating.state = CLKS_ON;
+-		trace_ufshcd_clk_gating(dev_name(hba->dev),
++		trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 					hba->clk_gating.state);
+ 	}
+ 
+ 	if (clk_state_changed)
+-		trace_ufshcd_profile_clk_gating(dev_name(hba->dev),
++		trace_ufshcd_profile_clk_gating(dev_name(hba->dev), hba,
+ 			(on ? "on" : "off"),
+ 			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 	return ret;
+@@ -9853,7 +9855,7 @@ static int ufshcd_wl_runtime_suspend(struct device *dev)
+ 	if (ret)
+ 		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
+ 
+-	trace_ufshcd_wl_runtime_suspend(dev_name(dev), ret,
++	trace_ufshcd_wl_runtime_suspend(dev_name(dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 
+@@ -9873,7 +9875,7 @@ static int ufshcd_wl_runtime_resume(struct device *dev)
+ 	if (ret)
+ 		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
+ 
+-	trace_ufshcd_wl_runtime_resume(dev_name(dev), ret,
++	trace_ufshcd_wl_runtime_resume(dev_name(dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 
+@@ -9905,7 +9907,7 @@ static int ufshcd_wl_suspend(struct device *dev)
+ out:
+ 	if (!ret)
+ 		hba->is_sys_suspended = true;
+-	trace_ufshcd_wl_suspend(dev_name(dev), ret,
++	trace_ufshcd_wl_suspend(dev_name(dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 
+@@ -9928,7 +9930,7 @@ static int ufshcd_wl_resume(struct device *dev)
+ 	if (ret)
+ 		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
+ out:
+-	trace_ufshcd_wl_resume(dev_name(dev), ret,
++	trace_ufshcd_wl_resume(dev_name(dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	if (!ret)
+@@ -9966,7 +9968,7 @@ static int ufshcd_suspend(struct ufs_hba *hba)
+ 	}
+ 	if (ufshcd_is_clkgating_allowed(hba)) {
+ 		hba->clk_gating.state = CLKS_OFF;
+-		trace_ufshcd_clk_gating(dev_name(hba->dev),
++		trace_ufshcd_clk_gating(dev_name(hba->dev), hba,
+ 					hba->clk_gating.state);
+ 	}
+ 
+@@ -10039,7 +10041,7 @@ int ufshcd_system_suspend(struct device *dev)
+ 
+ 	ret = ufshcd_suspend(hba);
+ out:
+-	trace_ufshcd_system_suspend(dev_name(hba->dev), ret,
++	trace_ufshcd_system_suspend(dev_name(hba->dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	return ret;
+@@ -10067,7 +10069,7 @@ int ufshcd_system_resume(struct device *dev)
+ 	ret = ufshcd_resume(hba);
+ 
+ out:
+-	trace_ufshcd_system_resume(dev_name(hba->dev), ret,
++	trace_ufshcd_system_resume(dev_name(hba->dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 
+@@ -10093,7 +10095,7 @@ int ufshcd_runtime_suspend(struct device *dev)
+ 
+ 	ret = ufshcd_suspend(hba);
+ 
+-	trace_ufshcd_runtime_suspend(dev_name(hba->dev), ret,
++	trace_ufshcd_runtime_suspend(dev_name(hba->dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	return ret;
+@@ -10120,7 +10122,7 @@ int ufshcd_runtime_resume(struct device *dev)
+ 
+ 	ret = ufshcd_resume(hba);
+ 
+-	trace_ufshcd_runtime_resume(dev_name(hba->dev), ret,
++	trace_ufshcd_runtime_resume(dev_name(hba->dev), hba, ret,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)),
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	return ret;
+-- 
+2.45.2
+
 
