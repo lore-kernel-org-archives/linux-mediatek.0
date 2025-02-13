@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBBFAC021A8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 16:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06124C021A6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 16:56:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C51iiAHVT3vDNfkeqXUJtAutZGCOhAHahDQm3Gape3k=; b=0XqpIsogiozKZe9Pf8yH/tCOe5
-	UHKgYjo6t/DVMSukHVa9XYmX+3DCtsj71v18CKyIvqMcI03T5zI40sNCmY/EFU+3jmOxFr5dz/qAp
-	2sUExiL9IpWgiReabVljJjvUIgyQ9zKi10iSbhPyFxAloT40xmAsmgCSmVlvwdqV/qDZ/uYCtzJPa
-	NU12y16hm/jawYwdwEZuKTdKVbx0rjS0bEb9WHhPKMDJALRmM7e0NNfM/Gckk5ypCPywn93SyKMEi
-	EKypu/WhEuZicn8RIqBddUiXzaKp5hS0wpr2QZmbVykpGBIQe/yj9gnLGnoldKqZ6hjC3Gsiky6Wr
-	1dSioFmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QGnbw1yc2Wp4X+bHTQYoKxaJgLXfXHOChU0InoSB5tU=; b=yKKyceuE9L1cOYVKEsxRCr+BpR
+	Wro5v2Yjil2IzrpesTbqlOGAp7xDqwWRR5f9Lf3TJtXgdmxUbUUihBNsPjgjKvEkXHGKdMWXYeqXj
+	wUIOdz63UsOrrOKrEgKM+lEG4RqEAUXfXD7W0uho1n/WWkxX1MObFWneuApVgt9AqMgEwqYSkqvxY
+	RXzuDlD+ZLSYvudMug0M56OEH5qt9GrRqESDsWfTHp2al3r6SLAtFzOg27Mw54HWXIqpwXdPGfW4d
+	+FglXhCIaeeCID/BKWfsBZlP5VdPzFqx8edvAsog7scE7DHrGl6GLTL2qwR/+0RibV8owCfH+0M1U
+	XO+g3gkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ticHG-0000000Bp3N-12fx;
-	Thu, 13 Feb 2025 16:41:26 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1ticVd-0000000BuNZ-3Caj;
+	Thu, 13 Feb 2025 16:56:17 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tibrt-0000000BiWI-0yiM
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Feb 2025 16:15:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=C51i
-	iAHVT3vDNfkeqXUJtAutZGCOhAHahDQm3Gape3k=; b=bmOGSEgvInf30Ab23XEB
-	ZSvM8t2hj+wuVYy+0VNcnl2Oqzij9O9BDcizEid1xrPe7k69gHAyEm2scxbZqtY5
-	iHCIgL/rNquBKNnhD92Qp+/pw6Hzbme+/ha9sgDBuO/vfR0cE3ZhdidUjsSzzGBi
-	HH/AYcXyAlBSg5R1KHj0DnwdeyUYE6LChTeciXONrf/E9LCdoh8E8WN3p5ywLVf3
-	MaQsIqeSFs0UoYq8E3Kgjh25qSBKuBMmO29zVpKBOFlauXvSZAv76qAIjRYbM4Rb
-	z4cdCofFbykqrJ9wRQmS+zEJwB5kRX6VxkbmGtX3F7C0gwESETI4YGk8Vq0hoQq3
-	AA==
-Received: (qmail 1940101 invoked from network); 13 Feb 2025 17:15:09 +0100
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 13 Feb 2025 17:15:09 +0100
-X-UD-Smtp-Session: l3s3148p1@TtimXAguZMtehh99
-Date: Thu, 13 Feb 2025 17:15:09 +0100
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Kamal Dasu <kamal.dasu@broadcom.com>, Stefan Roese <sr@denx.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gregory CLEMENT <gregory.clement@bootlin.com>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Subject: Re: [PATCH v2 06/10] i2c: kempld: Use i2c_10bit_addr_*_from_msg()
- helpers
-Message-ID: <Z64ajR7CSIDNmIKz@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Kamal Dasu <kamal.dasu@broadcom.com>, Stefan Roese <sr@denx.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gregory CLEMENT <gregory.clement@bootlin.com>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-References: <20250213141045.2716943-1-andriy.shevchenko@linux.intel.com>
- <20250213141045.2716943-7-andriy.shevchenko@linux.intel.com>
+	id 1tibFF-0000000BYnb-2Yyt;
+	Thu, 13 Feb 2025 15:35:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7DE8AA41CDB;
+	Thu, 13 Feb 2025 15:33:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28696C4CEE8;
+	Thu, 13 Feb 2025 15:35:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739460916;
+	bh=LwwtkOpdej/qZv1Ihtwk/09yNh2N86nJc5Uj66l1lg8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=c10AqJOZKOyKErUBcYbRfhLxES2xvgnwyMuFyOqzO5Pg1GyyDm7dj1Q65BuPr0ui3
+	 NTuYGinpvMb/rn4SK3RfFRAUfM8c6QLhfT7rtj2pimgbAr4zI/ttePwcMeJpaBrm4U
+	 Gxvu8X2CwvMk0kPZZfMItAvJxh1ts0fDhUNd/UZNGD0dVwsU8ebD7xz8ZZ9pnjtir8
+	 p+Kmj6vNEzREu3ohEJrUgZAuL0K0o5JCzxM/P8j1A4ygeoYX6bEcakZiYK4C1i0LTq
+	 X3DCxVj3H1apk3BS8YhRV1Z9KAkxiJZN6HdaAPKvxRk23ockBPaQWgumv7joQNtQs4
+	 JbH3lfeifopKQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 13 Feb 2025 16:34:30 +0100
+Subject: [PATCH net-next v4 11/16] dt-bindings: net: airoha: Add the NPU
+ node for EN7581 SoC
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lJSRca1oCsfvYLnD"
-Content-Disposition: inline
-In-Reply-To: <20250213141045.2716943-7-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250213-airoha-en7581-flowtable-offload-v4-11-b69ca16d74db@kernel.org>
+References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
+In-Reply-To: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ upstream@airoha.com
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_081513_552992_6C0081F1 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250213_073517_801651_FB27F926 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,54 +84,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch adds the NPU document binding for EN7581 SoC.
+The Airoha Network Processor Unit (NPU) provides a configuration interface
+to implement wired and wireless hardware flow offloading programming Packet
+Processor Engine (PPE) flow table.
 
---lJSRca1oCsfvYLnD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../devicetree/bindings/net/airoha,en7581-npu.yaml | 72 ++++++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..414e5c0615b8a8db487c23978a283b0254b2b63c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+@@ -0,0 +1,72 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/airoha,en7581-npu.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Airoha Network Processor Unit for EN7581 SoC
++
++maintainers:
++  - Lorenzo Bianconi <lorenzo@kernel.org>
++
++description:
++  The Airoha Network Processor Unit (NPU) provides a configuration interface
++  to implement wired and wireless hardware flow offloading programming Packet
++  Processor Engine (PPE) flow table.
++
++properties:
++  compatible:
++    enum:
++      - airoha,en7581-npu
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    items:
++      - description: mbox host irq line
++      - description: watchdog0 irq line
++      - description: watchdog1 irq line
++      - description: watchdog2 irq line
++      - description: watchdog3 irq line
++      - description: watchdog4 irq line
++      - description: watchdog5 irq line
++      - description: watchdog6 irq line
++      - description: watchdog7 irq line
++
++  memory-region:
++    maxItems: 1
++    description:
++      Memory used to store NPU firmware binary.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - memory-region
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      npu@1e900000 {
++        compatible = "airoha,en7581-npu";
++        reg = <0 0x1e900000 0 0x313000>;
++        interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
++        memory-region = <&npu_binary>;
++      };
++    };
 
-> @@ -132,10 +130,12 @@ static int kempld_i2c_process(struct kempld_i2c_dat=
-a *i2c)
-> =20
->  	/* Second part of 10 bit addressing */
->  	if (i2c->state =3D=3D STATE_ADDR10) {
-> -		kempld_write8(pld, KEMPLD_I2C_DATA, i2c->msg->addr & 0xff);
-> +		addr =3D i2c_10bit_addr_lo_from_msg(msg);
-> +		i2c->state =3D STATE_START;
+-- 
+2.48.1
 
-Any reason you moved this?
-
-> +
-> +		kempld_write8(pld, KEMPLD_I2C_DATA, addr);
-
-Maybe we could skip using 'addr' here?
-
->  		kempld_write8(pld, KEMPLD_I2C_CMD, I2C_CMD_WRITE);
-> =20
-> -		i2c->state =3D STATE_START;
->  		return 0;
->  	}
-
---lJSRca1oCsfvYLnD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmeuGokACgkQFA3kzBSg
-KbZulg/+J22rNnR6Yu2i8QVlWFeEaAZKIv1ksHQrj0QpkW1k7ZiMG1gPZad043ax
-Dn4VnOCgTDfMGM0tRO+RslfP8QwFNhi7vj6SNHq1b5AAzArl0EJMQJbxOku03Uw6
-Rs6FZyjJd/9mdS64pjXBGpIrEqA032jxL0CgmMNZN8WXB4iJo4cUDkRnNHv8gY9Y
-W0EPAKWpLDbDIHge/zTd+x547y7qQUsp8pV5+h2z6Nfgbd5/k27rE87/yxcTG443
-nx0BtBAfODwujcrAhNXHyl/Q7eX4sImUOpz7wetHHAtIEioH3OOG4/D1Ggk1rtJT
-eL3nlGxlIPJH0P1yZtvj++PTL5HYwXbCD7oTD6JEdy3+Lt9MXEpsKpTX6X9NNB3S
-Fqz3Puo+Hd/2nPmJEIGuX30fKup7UO1a0b2e/AUoedNZGT1PpX8v/JIoqOvNU6I5
-htn1IeaHh16BvSSZZQ57wbAXbv2Z52xRVH/bjO+HWT3TJ5yCIMeY1SWdfw1tZ6ri
-palSy7QZgrvN7M2K+iymB+rhHrkDdHGh+NlgaEkW/kN2gDo/izjmQVFoXnH2vpMM
-bADn9rxmbM6u3vVfJESnbE6sik3kSbykAj1E6JqWq9huA+vnGXmvbJL+jxTQNP8G
-2G+F4nPACxsxrkJQIXA3m/1QZ6yZxp9KuKIcgGswsZpOLOlK5gs=
-=eGZz
------END PGP SIGNATURE-----
-
---lJSRca1oCsfvYLnD--
 
