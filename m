@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F31BEC0219D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 13:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7579C021A5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 14:34:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R50a18/XceTIu+K0e6cu++nzkdHqZi6rYS9zj+7bDAI=; b=0GbOPo9F9Zhp+1aSRlJ3blTH7s
-	zW5wcIeDi+eRvufX4WsEnSzRxTshU9Egtuy+piFk3KdsPaDswzGMxceyilU1MwsusLxSdOdDf9yMM
-	NkDMSY6t0VFBsrsUFY+HR7FS8KUUUYDYSSXNpzcSKjNb2uqAsxjidYkDTHpfuz+m8oGtvr5G6PGZj
-	wJ/XEcZyBqxPevZxOc5kmIcq8RBzz+F75hUei2pftwJUGP+h9USXSD2mCCKQaSv+y+k62rDBS8+D4
-	ex1FFOdg6SO54pBjLDcng9ov3GYcWjohZ3Gol4Y3EPRWxLKNlN3TrmSZ2rq0VXupY+fsHj6a1vFnE
-	3HNO927w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cMQIobRAiC9b1s++SknNRneALJeSW+q1BooQBxmWRuE=; b=PsD3MWz1kCriFo9tCaaB7ovfz7
+	Bkh2nPgfTE9b0wYA/FnI/dpR/JEz8oaZgSYGWMsL3ClMgpeI79kBeBwfHfDrahlBtYkEtNEvf9Xme
+	KcczfAaZEphNvXTsbTRJAc9fI/18UtMI1b1mVLrOLZ2YuFrPM/8Q3uMHAPGfqH1UyrAcGE5nA/WEo
+	jcOKUYaTsXWNgXmOif2hnxT8lzUDsNxKCo/2tnVInIECz1rO6zhVcEJSlbuz6ap3dDJml3sZgWby3
+	BxQv9ynkG41tIjkVVoZDEx2zG9rJgXluX5MLIVcRJ0DHrmwx767VzOO5CxTVPUlydD7DrI0PhlWTE
+	u8HteLOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiZaE-0000000BCSA-0h0Y;
-	Thu, 13 Feb 2025 13:48:50 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1tiaIM-0000000BL62-252a;
+	Thu, 13 Feb 2025 14:34:26 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiZVe-0000000BBTW-3zJT;
-	Thu, 13 Feb 2025 13:44:08 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1tiZVU-000000006S5-2pBC;
-	Thu, 13 Feb 2025 13:43:56 +0000
-Date: Thu, 13 Feb 2025 13:43:53 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
+	id 1tiZva-0000000BGnm-2Pb3;
+	Thu, 13 Feb 2025 14:10:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1739455855; x=1770991855;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=ToTyMsihtZioDgRW6E04wgRS/tvQ6CsQiomouIaR97s=;
+  b=fscsdpw+4Tfs8baB+993VKylTUOkvC2GTT6RLbwFcNLEWVwnHtJmjrtE
+   h9EvUlXxO2mSzQJMYZM9yCR7fFpS0wUb15DhRtsa1DYEnf/MOX63VBEvH
+   S0+W/X3u4Rkbc9XVL6sZpwyqx2rEgSgyEOoTaLofFYfZfWx9CdEBijIha
+   ADsKk8ZOpXVJjt4y6eOs+0qTG+uj0czIDH+uh9JuxLEbw56j6z9YQmkF9
+   VECWLNyoH9TGgpAYyotgL4nBE9ZyBSLL4Nam8fkcCZG786weTmAmRnvFC
+   s6hNeydkfjMaiGzqEdcbn1XP0YlBUkAUTVBKJ2zENl1SomX5fsDSkDTfC
+   Q==;
+X-CSE-ConnectionGUID: P7ajX1LMTtuH4GeYIWS+Wg==
+X-CSE-MsgGUID: 8EWOxWLlR6aUvYCPpAhlkg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="40273328"
+X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; 
+   d="scan'208";a="40273328"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 06:10:54 -0800
+X-CSE-ConnectionGUID: 74s6Vg81S52j4/6jpBZxHA==
+X-CSE-MsgGUID: femaWunTSu+NHGOUW7Rs2Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,282,1732608000"; 
+   d="scan'208";a="113815326"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by fmviesa009.fm.intel.com with ESMTP; 13 Feb 2025 06:10:48 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id 214361FD; Thu, 13 Feb 2025 16:10:47 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Cc: Krzysztof Adamski <krzysztof.adamski@nokia.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Kamal Dasu <kamal.dasu@broadcom.com>,
+	Stefan Roese <sr@denx.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"horms@kernel.org" <horms@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH net-next 1/3] net: phy: mediatek: Add token ring access
- helper functions in mtk-phy-lib
-Message-ID: <Z633GUUhyxinwWiP@makrotopia.org>
-References: <20250116012159.3816135-1-SkyLake.Huang@mediatek.com>
- <20250116012159.3816135-2-SkyLake.Huang@mediatek.com>
- <5546788b-606e-489b-bb1a-2a965e8b2874@lunn.ch>
- <385ba7224bbcc5ad9549b1dfb60ace63e80f2691.camel@mediatek.com>
- <64b70b2d-b9b6-4925-b3f6-f570ddb70e95@lunn.ch>
+	Gregory CLEMENT <gregory.clement@bootlin.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: [PATCH v2 00/10] i2c: busses: Introduce and use i2c_10bit_addr_*_from_msg()
+Date: Thu, 13 Feb 2025 16:07:14 +0200
+Message-ID: <20250213141045.2716943-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.45.1.3035.g276e886db78b
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <64b70b2d-b9b6-4925-b3f6-f570ddb70e95@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_054406_994590_42ABA1AF 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20250213_061054_654477_20446A26 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +99,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2025 at 02:29:35PM +0100, Andrew Lunn wrote:
-> On Thu, Feb 13, 2025 at 07:39:39AM +0000, SkyLake Huang (黃啟澤) wrote:
-> > On Sun, 2025-01-19 at 18:12 +0100, Andrew Lunn wrote:
-> > > 
-> > > External email : Please do not click links or open attachments until
-> > > you have verified the sender or the content.
-> > > 
-> > > 
-> > > > +/* ch_addr = 0x1, node_addr = 0xf, data_addr = 0x1 */
-> > > > +/* MrvlTrFix100Kp */
-> > > > +#define MRVL_TR_FIX_100KP_MASK                       GENMASK(22,
-> > > > 20)
-> > > > +/* MrvlTrFix100Kf */
-> > > > +#define MRVL_TR_FIX_100KF_MASK                       GENMASK(19,
-> > > > 17)
-> > > > +/* MrvlTrFix1000Kp */
-> > > > +#define MRVL_TR_FIX_1000KP_MASK                      GENMASK(16,
-> > > > 14)
-> > > > +/* MrvlTrFix1000Kf */
-> > > > +#define MRVL_TR_FIX_1000KF_MASK                      GENMASK(13,
-> > > > 11)
-> > > 
-> > > What does the Mrvl prefix stand for?
-> > > 
-> > > This patch is pretty much impossible to review because it makes so
-> > > many changes. Please split it up into lots of small simple changes.
-> > > 
-> > >     Andrew
-> > > 
-> > > ---
-> > > pw-bot: cr
-> > Those registers with Mrvl* prefix were originally designed for
-> > connection with certain Marvell devices. It's our DSP parameters.
-> 
-> Will this code work with real Marvell devices? Is this PHY actually
-> licensed from Marvell?
+For 8-bit addresses we have a helper function, define similar ones
+for 10-bit addresses and use it in the drivers. It allows to remove
+some boilerplate code.
 
-From what I understood the tuning of those parameters is required
-to connect to a Marvell PHY link partner on the other end.
+Fabrizio, I haven't collected your tags as code changed more than 50%, however
+semantically the parts you reviewed stay the same.
+
+In v2:
+- introduced hi/lo helpers (Geert)
+- rewrote series based on the above
+- added a couple of new converted drivers
+
+v1: https://lore.kernel.org/r/20250212163359.2407327-1-andriy.shevchenko@linux.intel.com
+
+Andy Shevchenko (10):
+  i2c: Introduce i2c_10bit_addr_*_from_msg() helpers
+  i2c: axxia: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: bcm-kona: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: brcmstb: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: eg20t: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: kempld: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: mt7621: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: rzv2m: Use i2c_10bit_addr_*_from_msg() helpers
+  i2c: ibm_iic: Use i2c_*bit_addr*_from_msg() helpers
+  i2c: mv64xxx: Use i2c_*bit_addr*_from_msg() helpers
+
+ drivers/i2c/busses/i2c-axxia.c    | 21 +++------------------
+ drivers/i2c/busses/i2c-bcm-kona.c |  6 +++---
+ drivers/i2c/busses/i2c-brcmstb.c  | 11 +++++------
+ drivers/i2c/busses/i2c-eg20t.c    | 28 +++++-----------------------
+ drivers/i2c/busses/i2c-ibm_iic.c  | 14 ++++++--------
+ drivers/i2c/busses/i2c-kempld.c   | 10 +++++-----
+ drivers/i2c/busses/i2c-mt7621.c   | 20 ++++++++------------
+ drivers/i2c/busses/i2c-mv64xxx.c  | 12 +++---------
+ drivers/i2c/busses/i2c-rzv2m.c    | 15 +++++----------
+ include/linux/i2c.h               | 14 ++++++++++++++
+ 10 files changed, 57 insertions(+), 94 deletions(-)
+
+-- 
+2.45.1.3035.g276e886db78b
+
 
