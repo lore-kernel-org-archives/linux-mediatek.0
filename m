@@ -4,71 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCF2C0219D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 10:48:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37704C0219D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 10:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10QtXMfgerDPTPBPttpmqpqBaL1nIQxL7Z7YJ+2BWoQ=; b=MTfpfo3HsdudfP7oJnWD3WTPfQ
-	aef0qZUpEcxSFf9mx4u79qtC5oUb8SEjMZ57gRD8TXOQh3rhUOfjqDQS5ihFZWtul2GyoGgpPjLtJ
-	uZHgl1m42ur7oSyR5yiDSNGNmhmR/E7CbEXWunPiSPVhxjZLn6oaDQX0GGTihdRK7a8j2jea+QflT
-	xlkfWCaya6YYUBbqKYkDK38T7qoz+YFt5Z1F8EwoSTBpTbwGU868nCiLh9Wp9YgGr58Pmo5rHx45o
-	d50fW/dwoffjHWTPH7x5z3P68LenHLlqyM82D8mjjhtrqkUSEnZ/GocaSVQPbOnTebz0TPiI4VORN
-	Fp62O29A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WG9nHCTvM1dTCKPm7f3ySs8mv4StPQ3vt+CXBnQbhf8=; b=BpBG27ypypd342dFyaQ3NX3pbW
+	+tNoxhoR6JptXcPDa7BIrxLwZCxLA6yWeU7RwKM7fRSlE9TgluVk8JnkF9t1XGsaRIvDMKJqwIzKN
+	m3OHIlkSCvqCuQrpNAy2EUQEmSyvEoTUp2y5sJFpt+PgJaEPzJlVB80JTYLoQdH3i0dW7VNtg1fG1
+	9pzVgk4fILSq2WsIU9i3hUsQm6mnieXZ3kHu8+/f8YdDcd6t1YDdx3kULEVoV6h97RwhFYgepat78
+	X7Amjs/YihJWqUiWiyw3kNCOtabj+b2eVvOxGVxTTgfck9OQ1dvqy7ALuGOkcOZPDLCJ9XYgz7f24
+	bvDX6Sdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiWlM-0000000AiaE-2cW6;
-	Thu, 13 Feb 2025 10:48:08 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tiWtX-0000000Ajqc-1VT0;
+	Thu, 13 Feb 2025 10:56:35 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiWd1-0000000AhNp-44zt;
-	Thu, 13 Feb 2025 10:39:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739443170;
-	bh=LXVJThLjduv+7chq4ELKcznat12qJGf5A21gp7uWdNk=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=PAMFv8qoeRaLMo0F2+g1tIxH7+SuM/So8+w8LA3Ez6Eau2HcNoN0HMyzU080OD7CM
-	 Nuws4daGm9/ZleXUPus/28MhtcxeZfOlC0O3IQ1vQQ1swQX7akV7MDjSCVn1SHrKvw
-	 6UbNVSQFG3b5yoNN4JzKVbABm16J+4Oqd+ByfX6DoNDkeRX2bascC31u+vtLZQxY9o
-	 PvdBu0eiRucRK3hWGp82/Zo9AI10//aaA5NRF6PbOYSg5YSRMtjXqFFulT3kz0tmGy
-	 UCZFcROdSYGWyknjdVCBIqzNv/SMahUXAxeOv+nyyLRzJgow5UskF5s/QO+9vsrW6P
-	 o0IlQL5jSA8Rw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0B7A17E00A3;
-	Thu, 13 Feb 2025 11:39:29 +0100 (CET)
-Message-ID: <b2ee0b9a-2d7a-4bbb-ae1a-c4abe6e7aeff@collabora.com>
-Date: Thu, 13 Feb 2025 11:39:29 +0100
+	id 1tiWs0-0000000AjcN-4APq;
+	Thu, 13 Feb 2025 10:55:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1739444101; x=1770980101;
+  h=date:from:to:subject:message-id:references:mime-version:
+   in-reply-to;
+  bh=FC+osHMM1wMl321HcyQTgueNyff8+QNBAFPiwB2uKhA=;
+  b=KCNMHMIHhVQyy+lCpUjIOV1UaSIE/yDzIG0aWIPOVDCJjRwSEk9UZ3/8
+   v2jBbqkLCvUjO9bVGs5Qd40mFdkgaW6xue0dR9E619lppe8G4VBTmLBUy
+   ZDUfvXCsbShOuxFF2Gs2oRq/mpxpIt9VNdmJ4Mzv/F+KU8ijdcgW6GwNm
+   981NcgdQkG2NBuCG9Z0/Xx91lpiEytBDlnwPAOl4FRnpLCt1/lqBgvEYG
+   2H3mXnSPpwQ7FNItrg4D0rpnS+MvvFB3ZAhIUmrYV1kTijUNCQv5LrFey
+   0ntpPU9HHkBvW0vS2zZah6W6bH2YJOuQtsgWC/6p9KTx0PlKNequ0tznp
+   g==;
+X-CSE-ConnectionGUID: ke9j+w35RYy/V0CS7tiThg==
+X-CSE-MsgGUID: wtywGlBIRbeVrpzsGJENKg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="51568220"
+X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; 
+   d="scan'208";a="51568220"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 02:54:59 -0800
+X-CSE-ConnectionGUID: gH7RkWeCSpOd3hLhl3vVuA==
+X-CSE-MsgGUID: qaKLpqIXQIm8x0zlic78AQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="118049979"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2025 02:54:55 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1tiWrr-0000000B8iO-2JGV;
+	Thu, 13 Feb 2025 12:54:51 +0200
+Date: Thu, 13 Feb 2025 12:54:51 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Stefan Roese <sr@denx.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gregory CLEMENT <gregory.clement@bootlin.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: Re: [PATCH v1 1/8] i2c: Introduce i2c_10bit_addr_from_msg()
+Message-ID: <Z63Pe1clM4VZBmIX@smile.fi.intel.com>
+References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
+ <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
+ <Z6zwqbzd5evG0H2z@smile.fi.intel.com>
+ <Z63DT_XdzEWrP4eR@shikoro>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] drm/mediatek/hdmi: Simplify with dev_err_probe
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
- <20250112134708.46100-2-krzysztof.kozlowski@linaro.org>
- <ef0baed6-54d2-4f1f-9a4a-769ec09a069f@collabora.com>
- <59f8a02e-a716-40a8-bf73-111ad2a7af79@linaro.org>
- <8e8e3eca-dee0-43ab-95d9-aebd636245c7@collabora.com>
- <7341db6b-aed0-4da0-a5b2-6992d86ffaf3@linaro.org>
- <a65b01d8-3716-40bb-9171-ad6ed3121a89@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <a65b01d8-3716-40bb-9171-ad6ed3121a89@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z63DT_XdzEWrP4eR@shikoro>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_023932_201878_08B53800 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20250213_025501_046564_F06CA84C 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +104,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/02/25 11:07, Krzysztof Kozlowski ha scritto:
-> On 12/02/2025 21:33, Krzysztof Kozlowski wrote:
->> On 13/01/2025 14:48, AngeloGioacchino Del Regno wrote:
->>> Il 13/01/25 14:07, Krzysztof Kozlowski ha scritto:
->>>> On 13/01/2025 13:41, AngeloGioacchino Del Regno wrote:
->>>>> Il 12/01/25 14:47, Krzysztof Kozlowski ha scritto:
->>>>>> Use dev_err_probe() to make error code and deferred probe handling
->>>>>> simpler.
->>>>>>
->>>>>
->>>>> That's already done in [1] so you can drop this commit.
->>>>>
->>>>> [1]:
->>>>> https://lore.kernel.org/r/20250108112744.64686-1-angelogioacchino.delregno@collabora.com
->>>>>
->>>> Eh, this was first in v3 in the middle of Dec, so why you cannot get it
->>>> merged first? Creating such 34-behemoths causes simple cleanups to
->>>> unnecessarily wait.
->>>>
->>>
->>> Getting the series partially merged is okay for me, no complaints about that,
->>> but then ... in v4, there are two minor comments to address (one of which
->>> is a one-char nitpick!) that might as well be done while applying, depending
->>> on what CK thinks about that, so there's no real benefit in getting 28 commits
->>> out of 34 picked instead of, well, just everything...
->>>
->>
->> OK, month passed, I waited, so is your big patchset merged? If it is,
->> then this will effectively rebase my patch, as you requested.
+On Thu, Feb 13, 2025 at 11:02:55AM +0100, Wolfram Sang wrote:
 > 
-> I think I missed that you took the patch to your patchset, so sorry for
-> the noise.
+> Just a generic comment: please don't spend too much energy on 10-bit
+> support. I have never seen it used in the wild. It seems more like an
+> academic excercise.
 
-No problem.
+True, but still it makes sense to reduce the respective code base.
 
-Cheers,
-Angelo
-
-> 
-> Best regards,
-> Krzysztof
-
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
