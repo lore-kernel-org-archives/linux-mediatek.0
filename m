@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC26BC021A0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 22:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDECEC021A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 23:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2hzS+FI60VI/+g6PwObbT206hn4do5C5OgJom8eIEiE=; b=HHcaG+VG/+lgn+IEVsvFVcQeBl
-	niDAAnlMR7fyTAxVhQxBPVbRj8qJlQwuZegHgKwfXjwUAbwdSDhD85VtXF5cbvpq0fMSrj+hp1aK2
-	PDRuXfyL9ZyK7e54nC/ugt5thPju5O9sFb4MmmqfGu92VddBpTEQsPu8D/N1sUrbkb0e80PGi2t7/
-	dp8R5TCViJPHmWgsXRzZGBEGX562FOLNt28UU4712pcqxXacNuo9BvG7N70S6cxE5nu8ZWqcCAVQ3
-	7sJE4ylV8wpXWKZzhbZdCxsqGJOAh/dow2Hl6FZl1SJQLnFCpUEodojeg52mLCWZzw/MW/6H3nMSX
-	KoAh2nlA==;
+	bh=mMe0Glge3D7ye0hvoXBCjdXL7BoWkgtD1n4dsYywEng=; b=vO8y3XTTLygb3gyDHDh7wrDktC
+	1EPGgkAoW7ZlbXbfEAoHGOF34xxMOywBXvRS1ZVZ109ktqa3L22P14b3jVNXLXPGHuwJtd3Q4JqRe
+	cdnvdsjAZh8WfNtJYQftwNM8fvo+8QjCnsGOthtSKcKbGUOuROpIzx7rIUUfMbTwrqCS+C8PUvS+L
+	UVXkuPKh7p/nLnbS47uCqow3fwFPF3SqbVe4aIksTFFjFYx0WrPRfPib3bz4dnqsOngi2/JOuompw
+	1Em3/N8fo+3+U7IEU15oeWKIwTjnryA75SDO/9RYetQBI9mDeOmGZ8hbj4YqnmOeMZwdG9prxddfA
+	9KKkJakQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tihtx-0000000CqTF-1vlK;
-	Thu, 13 Feb 2025 22:41:45 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tij48-0000000D09K-1zKC;
+	Thu, 13 Feb 2025 23:56:20 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tihsU-0000000CqJt-3RCs;
-	Thu, 13 Feb 2025 22:40:15 +0000
+	id 1tihtf-0000000CqQr-1MWA;
+	Thu, 13 Feb 2025 22:41:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E8C975C5B15;
-	Thu, 13 Feb 2025 22:39:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B82A4C4CED1;
-	Thu, 13 Feb 2025 22:40:12 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E563AA42784;
+	Thu, 13 Feb 2025 22:39:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7856EC4CED1;
+	Thu, 13 Feb 2025 22:41:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739486413;
-	bh=0ZOnBBooSu9QRCdFCYo96n8iF9G3PFZPyQIsWCF0pk0=;
+	s=k20201202; t=1739486485;
+	bh=CAUs6/nDNjcTwNdHYChXbiqiDRrypj8AA18+T0T5af4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LDaOMRT+uzhZjygG3ZKdmKi4aVHXqmFSkP4S4em1YBqZM/3NHQwWdOWk/XnIy3TI8
-	 r7uzSQeUc5CnTiJM8IFGjV+6udouVUw+jJj/pBmC416kCsnsKqa5v/DwK2tN9+OtoD
-	 qzHxDNBnBjcXH70HtaGX9nCwE4hysG3dyd8YyCsuzEZUNHEeRSzPXNJqHH8R05HMq5
-	 k7uqKOoMpVDpebEzYSqs4h1iYkCCsvXQZ57wncKCWQIHeG8xW3QleMAGCws18psgNl
-	 OOT43jMG0gRbfQIyaPSJIz8Vn/hwU95cgTOJ7x9WuAay7n9nhHNbHIzTxZiZGp8K4o
-	 E1AlSHXlAU/GA==
-Date: Thu, 13 Feb 2025 23:40:10 +0100
+	b=ODO1fwjiA4au/KUL3n4jxyKJl8PNOod+scC0fQbLvGK84PNz5zukCpL4Cq/HJcTti
+	 2rsvAMFqqkotzEIXWF9oYxp8kGLTeXIMaQBtORe+jQ/ULXQnhep1BZXJINtsHTKsGU
+	 7I+N0QOySIACYzzp7NyZkFX/Aj9Tv9yoGXNL5JGQz9cSZFAjSBv76Ve96m+av4+yIR
+	 RE/2PCyQzFiqvE5c1G3NGFswOplVTDhOgOYysKL2dvserTbwEAi5+3QAVnhnbZlQ7G
+	 hYU/lstAjeqfG6j2J9cj0RhvAtgWflgIBt/5X7FTlDS2bvSltTVc3KMuBuvj4Dl42B
+	 SWBkVDwwo5Znw==
+Date: Thu, 13 Feb 2025 23:41:23 +0100
 From: Andi Shyti <andi.shyti@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
 	linux-renesas-soc@vger.kernel.org, Krzysztof Adamski <krzysztof.adamski@nokia.com>, 
 	Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
@@ -55,16 +55,18 @@ Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Gregory CLEMENT <gregory.clement@bootlin.com>, 
 	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
 Subject: Re: [PATCH v1 1/8] i2c: Introduce i2c_10bit_addr_from_msg()
-Message-ID: <n7o3pkxkfw7jdvoce56jyxuzsnnpzkxaa2nrb725yut3i2twso@q7prmvzihysr>
+Message-ID: <65f5eiy6kh6nhdjgpylrdjpw35jbae4s454u7qeqamh5hny7ms@ip4btvgxlaq4>
 References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
  <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_144014_903391_BA14327D 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20250213_144127_427463_7051DC6C 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +81,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Hi Geert,
 
-On Wed, Feb 12, 2025 at 06:32:26PM +0200, Andy Shevchenko wrote:
-> There are already a lot of drivers that have been using
-> i2c_8bit_addr_from_msg() for 7-bit addresses, now it's time
-> to have the similar for 10-bit addresses.
+> > @@ -952,6 +952,16 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
+> >         return (msg->addr << 1) | (msg->flags & I2C_M_RD);
+> >  }
+> >
+> > +static inline u8 i2c_10bit_addr_from_msg(const struct i2c_msg *msg)
 > 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Having never used 10-bit addressing myself, or even looked into it,
+> it took me a while to understand what this helper really does...
+> So this returns the high byte of the artificial 16-bit address that
+> must be used to address a target that uses 10-bit addressing?
+> Hence I think this should be renamed, to better match its purpose.
 
-...
-
-> +static inline u8 i2c_10bit_addr_from_msg(const struct i2c_msg *msg)
-> +{
-> +	/*
-> +	 * 10-bit address
-> +	 *   addr_1: 5'b11110 | addr[9:8] | (R/nW)
-> +	 *   addr_2: addr[7:0]
-> +	 */
-> +	return 0xf0 | ((msg->addr & GENMASK(9, 8)) >> 7) | (msg->flags & I2C_M_RD);
-> +}
-> +
-
-I personally like this patch and it was an item of my todo list.
-I'm OK with having it merged.
-
-Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
+It's coherent with i2c_8bit_addr_from_msg(), right?
 
 Andi
 
