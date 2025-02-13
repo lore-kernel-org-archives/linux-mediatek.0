@@ -4,140 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65A15C0219D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 10:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15752C0219D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 10:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3HpnRFaO6LyDrB0tNs4qU/vnoM0HaZ5yBSFhhlK6Y8o=; b=FzVoB3N7Jk1dyTtfzp3T3bwinl
-	iKQxjRWYtFiCg8l/Mv2GswQc2DUat9+yCwV86JBYjF2P5y6CBQ/HrNWBBdMZwMls9xjskmFyDK9c5
-	Jg22VH3kDPqbk/PXQt+4lxcZ8up8b7cVFNqSwIuYx4GheTXb2KDb2hBtLiWeUJerhdyTe4DQEtxA4
-	JbC18+mRfkBV9BquGGqSf0iLSOeX0V5QxvwKi73WNAErLXga43Cn4gGhrzgfipJzMr476vFlmLivb
-	a1NQoaO1LgWdafWalKtRnBeB/0znaZqUTJLE5ml3cfpA7HGQOpN/+9Jn1z1eW1VnKKVpaOdrJ/Kqc
-	2KWc2vow==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aaE/dSNeGdgX1WoQr6YE8kL6dnuBFwLeIbEwR1+HkHg=; b=ZrOUKe/juXPMTnry+mwhQeBuDi
+	XZIDQ69X/BghmnaTQTdzLfGjY1O37C6PV/bqLP6NEhKizcQnexByTI535p9j2OBvvooVrY3Fz2Qt3
+	sWfDA6sZZAaGOyLLW5vUU97K0xReCpfySV2onsQ9h9S1ceKyWkGdkctSqfN6e+ERfmftaS647dYfC
+	q2/1ndiInM6YFgmVrCX4h7cDTlI0DpWoMH/OWhUNOBHYS6uTCXz+z9altTOyF1l4M7wUd1M77UnE2
+	0ri5SE0KeOlTsHin/s65yC2B4i8BUbYHPIYXD5lwJaohs03o+WlCoxtYMmum3pPCFiJeprUDv/a1m
+	edD4xF1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiW8K-0000000Aafc-1fcJ;
-	Thu, 13 Feb 2025 10:07:48 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1tiWiY-0000000AiE4-2ktU;
+	Thu, 13 Feb 2025 10:45:14 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiW88-0000000AaZx-2hSe
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Feb 2025 10:07:38 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-38c62ef85daso96739f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Feb 2025 02:07:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739441255; x=1740046055; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:to:from:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3HpnRFaO6LyDrB0tNs4qU/vnoM0HaZ5yBSFhhlK6Y8o=;
-        b=yK0VqydMCiwEp/EhUrhaO5mCMXj6oXG2Z/AQk1jbzhMNTG6TPsqgzBL6iEZyGRIffd
-         DYOJ7rJDI8i3JxTlyuHDEoel7K+73F7NxKfIG/rPoog7rf1X+T8LHCHalXJ5F679SUt+
-         oG/fN1EWagg1hFSqo/0ncKlc59bgxnZ+5QmATryHJxsL4iTPiKyDzaOPEJjnD7HfWNT0
-         IRZ5/p5oCPU5Xz2sSumYzG4GtF+/cAf51ru8otFN925zkZiLbFnjPdDn4o07oa4UY5sy
-         089VvqGQ8NKBLEbIKl+0xhhTnqwCG5E1Xe3KNzxMoyQ2pqjWaDFNoChW6rPbiq4QsS4X
-         kH4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739441255; x=1740046055;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3HpnRFaO6LyDrB0tNs4qU/vnoM0HaZ5yBSFhhlK6Y8o=;
-        b=VU4Yovu2a8mYSTUyIWiH56uKkQ2MU0szhBu0/jTd9iWfWfjQx4wzUmFCOJNVeQmZJs
-         /O2FvjmaFRmgI5w7vBqCSeFSw3OFQxAqjicKEC123toEyMaRqrML09RTq9JVn/1eQ+uS
-         vhZc7qVjoS6KttTWo/SUs0XjjNJXYqx1lB4jqGDe7HBGtaSTNZoSDOAeRbHkD4bCx4Gi
-         fBKAIZIGelB7AmZLJTjksCs63X8i7t4rKzr8hBxlXBEmhZ7Yzgt7WGKYrjKewY70Uheu
-         rcMKUjR+Yvwhh/suZQIr0nIXiP1kxzQbINB6VTGp/zRDQURt4PSWG7cLVSdbMJwPtHH1
-         S6fA==
-X-Forwarded-Encrypted: i=1; AJvYcCXRrhOMnQiz52R8K/hwKKtQiGWm9fZxqjnwxqEMTwJrk7cOf8g55EqKunHxV6RIxvhK3nbUmRSUtaYf2YdACA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzvTDc4zAbuDckQTJdBK2Dx1Bd8UnrYiEuMydx5K1JN4k2kk+0v
-	ly5dB7z8GAfKGhh6LXEME6fMZXfqNbZXL6i8QcXcP2hp8njXTL6p+EjOzhxPcm0=
-X-Gm-Gg: ASbGncvYyZtYghWYJCyJFD8QeGndx/40X0JxSyi07SDuxApLXpuDM6mGyV5IldaXWCy
-	C6FYfwEuAbQ2FyDGAGsTy7ZTZ9Ob4hjoZkq/BOzZKJRUdSpiOPIIEwQKX7QViov/752ZMzNlWab
-	1TqYeW656ihZxSBR4kGPWswN5tqZz7FacErf2edq7choz9jhp1Hsgz5Gy2ruF4iBLQ9tClSGQaf
-	osS/JhZaa71mfEOM3X1ymBRLqyYTFsq9/0+/xZvnoG5rkqq/SU5WVv/sgJjnAzvfslVMZbec01P
-	C5dDvBcUU0d7JeKirYAx9cnelsHTSn7lprQ=
-X-Google-Smtp-Source: AGHT+IEGBSMos4dnXH8Z9e/r2DkaLMZeByaK6cdnxiNACJ6A5ennEr+gFHmT8jQk5lXlL0LNQfy0WA==
-X-Received: by 2002:a5d:648a:0:b0:38f:2113:fb66 with SMTP id ffacd0b85a97d-38f21144679mr2168260f8f.9.1739441254758;
-        Thu, 13 Feb 2025 02:07:34 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.144])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f259d65dfsm1423241f8f.64.2025.02.13.02.07.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Feb 2025 02:07:34 -0800 (PST)
-Message-ID: <a65b01d8-3716-40bb-9171-ad6ed3121a89@linaro.org>
-Date: Thu, 13 Feb 2025 11:07:32 +0100
+	id 1tiWYU-0000000AgiF-370Y;
+	Thu, 13 Feb 2025 10:34:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739442888;
+	bh=35xQ3XU/c9jHM/pt/XsRyFhzFFeSPKtFpTinc1AhEc0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=g3ifTBzgbJKTXGVF0K8jfa8nrnSiGhPZ2FBE2Gd8LzlMualD71Rv/oyMKJ+a7Nr/X
+	 mBwFMLSVbmYpxQtjmymtUgTyoUdgzzsehiQCI54bVajj93s7eeQfu41neTg1tsO9Oe
+	 gSDilPzenaLsRn7WfyO/HKKCjEDyg9wdXFYPGCS/0pwMqnLBVOzec28PwqKP0qW8vA
+	 7fYTDeFoseI+vc/Rkh2QxAUNCwRaANJ6uCzP0Khx0TpPV46AuM0DyMjeAbo+kxJjr6
+	 q8Ric2B8PdlEKfABLqZbC1YkF1yT61ZOnPqmDWA4AL4SlRNbHlL+28bQWeKZiE+l0v
+	 1k376nYV5DPzw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CDF6717E1247;
+	Thu, 13 Feb 2025 11:34:46 +0100 (CET)
+Message-ID: <d7ca076e-4359-4e1e-a700-820198388a66@collabora.com>
+Date: Thu, 13 Feb 2025 11:34:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] drm/mediatek/hdmi: Simplify with dev_err_probe
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250112134708.46100-1-krzysztof.kozlowski@linaro.org>
- <20250112134708.46100-2-krzysztof.kozlowski@linaro.org>
- <ef0baed6-54d2-4f1f-9a4a-769ec09a069f@collabora.com>
- <59f8a02e-a716-40a8-bf73-111ad2a7af79@linaro.org>
- <8e8e3eca-dee0-43ab-95d9-aebd636245c7@collabora.com>
- <7341db6b-aed0-4da0-a5b2-6992d86ffaf3@linaro.org>
+Subject: Re: [PATCH v6 25/42] drm/mediatek: mtk_hdmi: Move CEC device parsing
+ in new function
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
+ =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20250211113409.1517534-1-angelogioacchino.delregno@collabora.com>
+ <20250211113409.1517534-26-angelogioacchino.delregno@collabora.com>
+ <0e164efeaa3cde827293bfed001d7a2c5fbb56fc.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <7341db6b-aed0-4da0-a5b2-6992d86ffaf3@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <0e164efeaa3cde827293bfed001d7a2c5fbb56fc.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_020736_702543_D7196C22 
-X-CRM114-Status: UNSURE (   9.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250213_023450_959979_A7A74EBE 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,38 +101,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/02/2025 21:33, Krzysztof Kozlowski wrote:
-> On 13/01/2025 14:48, AngeloGioacchino Del Regno wrote:
->> Il 13/01/25 14:07, Krzysztof Kozlowski ha scritto:
->>> On 13/01/2025 13:41, AngeloGioacchino Del Regno wrote:
->>>> Il 12/01/25 14:47, Krzysztof Kozlowski ha scritto:
->>>>> Use dev_err_probe() to make error code and deferred probe handling
->>>>> simpler.
->>>>>
->>>>
->>>> That's already done in [1] so you can drop this commit.
->>>>
->>>> [1]:
->>>> https://lore.kernel.org/r/20250108112744.64686-1-angelogioacchino.delregno@collabora.com
->>>>
->>> Eh, this was first in v3 in the middle of Dec, so why you cannot get it
->>> merged first? Creating such 34-behemoths causes simple cleanups to
->>> unnecessarily wait.
->>>
+Il 13/02/25 08:42, CK Hu (胡俊光) ha scritto:
+> On Tue, 2025-02-11 at 12:33 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
 >>
->> Getting the series partially merged is okay for me, no complaints about that,
->> but then ... in v4, there are two minor comments to address (one of which
->> is a one-char nitpick!) that might as well be done while applying, depending
->> on what CK thinks about that, so there's no real benefit in getting 28 commits
->> out of 34 picked instead of, well, just everything...
+>>
+>> Move the CEC device parsing logic to a new function called
+>> mtk_hdmi_get_cec_dev(), and move the parsing action to the end
+>> of mtk_hdmi_dt_parse_pdata(), allowing to remove gotos in this
+>> function, reducing code size and improving readability.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 82 ++++++++++++++---------------
+>>   1 file changed, 39 insertions(+), 43 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> index 6140b55c2830..03b56588fc7d 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> @@ -1367,20 +1367,12 @@ static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
+>>          .edid_read = mtk_hdmi_bridge_edid_read,
+>>   };
+>>
+>> -static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+>> -                                  struct platform_device *pdev)
+>> +static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struct device_node *np)
+>>   {
+>> -       struct device *dev = &pdev->dev;
+>> -       struct device_node *np = dev->of_node;
+>> -       struct device_node *remote, *i2c_np;
+>>          struct platform_device *cec_pdev;
+>> -       struct regmap *regmap;
+>> +       struct device_node *cec_np;
+>>          int ret;
+>>
+>> -       ret = mtk_hdmi_get_all_clk(hdmi, np);
+>> -       if (ret)
+>> -               return dev_err_probe(dev, ret, "Failed to get clocks\n");
+>> -
+>>          /* The CEC module handles HDMI hotplug detection */
+>>          cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
+>>          if (!cec_np)
+>> @@ -1394,65 +1386,69 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+>>                  return -EPROBE_DEFER;
+>>          }
+>>          of_node_put(cec_np);
+>> -       hdmi->cec_dev = &cec_pdev->dev;
+>>
+>>          /*
+>>           * The mediatek,syscon-hdmi property contains a phandle link to the
+>>           * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
+>>           * registers it contains.
+>>           */
+>> -       regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
+>> -       ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1,
+>> -                                        &hdmi->sys_offset);
+>> -       if (IS_ERR(regmap))
+>> -               ret = PTR_ERR(regmap);
+>> -       if (ret) {
+>> -               dev_err_probe(dev, ret,
+>> -                             "Failed to get system configuration registers\n");
+>> -               goto put_device;
+>> -       }
+>> -       hdmi->sys_regmap = regmap;
+>> +       hdmi->sys_regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
+>> +       if (IS_ERR(hdmi->sys_regmap))
+>> +               return PTR_ERR(hdmi->sys_regmap);
+>> +
+>> +       ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
+>> +       if (ret)
+>> +               return dev_err_probe(dev, ret,
+>> +                                    "Failed to get system configuration registers\n");
+>> +
+>> +       hdmi->cec_dev = &cec_pdev->dev;
+>> +       return 0;
+>> +}
+>> +
+>> +static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+>> +                                  struct platform_device *pdev)
+>> +{
+>> +       struct device *dev = &pdev->dev;
+>> +       struct device_node *np = dev->of_node;
+>> +       struct device_node *remote, *i2c_np;
+>> +       int ret;
+>> +
+>> +       ret = mtk_hdmi_get_all_clk(hdmi, np);
+>> +       if (ret)
+>> +               return dev_err_probe(dev, ret, "Failed to get clocks\n");
+>>
+>>          hdmi->regs = device_node_to_regmap(dev->of_node);
+>> -       if (IS_ERR(hdmi->regs)) {
+>> -               ret = PTR_ERR(hdmi->regs);
+>> -               goto put_device;
+>> -       }
+>> +       if (IS_ERR(hdmi->regs))
+>> +               return PTR_ERR(hdmi->regs);
+>>
+>>          remote = of_graph_get_remote_node(np, 1, 0);
+>> -       if (!remote) {
+>> -               ret = -EINVAL;
+>> -               goto put_device;
+>> -       }
+>> +       if (!remote)
+>> +               return -EINVAL;
+>>
+>>          if (!of_device_is_compatible(remote, "hdmi-connector")) {
+>>                  hdmi->next_bridge = of_drm_find_bridge(remote);
+>>                  if (!hdmi->next_bridge) {
+>>                          dev_err(dev, "Waiting for external bridge\n");
+>>                          of_node_put(remote);
+>> -                       ret = -EPROBE_DEFER;
+>> -                       goto put_device;
+>> +                       return -EPROBE_DEFER;
+>>                  }
+>>          }
+>>
+>>          i2c_np = of_parse_phandle(remote, "ddc-i2c-bus", 0);
+>>          of_node_put(remote);
+>> -       if (!i2c_np) {
+>> -               ret = dev_err_probe(dev, -EINVAL, "No ddc-i2c-bus in connector\n");
+>> -               goto put_device;
+>> -       }
+>> +       if (!i2c_np)
+>> +               return dev_err_probe(dev, -EINVAL, "No ddc-i2c-bus in connector\n");
+>>
+>>          hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
+>>          of_node_put(i2c_np);
+>> -       if (!hdmi->ddc_adpt) {
+>> -               ret = dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
+>> -               goto put_device;
+>> -       }
+>> +       if (!hdmi->ddc_adpt)
+>> +               return dev_err_probe(dev, -EINVAL, "Failed to get ddc i2c adapter by node\n");
+>> +
+>> +       ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
+>> +       if (ret)
+>> +               return ret;
+>>
+>>          return 0;
+> 
+> return mtk_hdmi_get_cec_dev(hdmi, dev, np);
+> 
+> or
+> 
+> ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
+> 
+> return ret;
+> 
+> After this,
+> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> 
+
+Can we please avoid this change?
+
+That's done so that any addition to the end of the function produces a smaller diff
+and for return value readability.
+
+Thanks,
+Angelo
+
+>> -put_device:
+>> -       put_device(hdmi->cec_dev);
+>> -       return ret;
+>>   }
+>>
+>>   /*
+>> --
+>> 2.48.1
 >>
 > 
-> OK, month passed, I waited, so is your big patchset merged? If it is,
-> then this will effectively rebase my patch, as you requested.
 
-I think I missed that you took the patch to your patchset, so sorry for
-the noise.
-
-Best regards,
-Krzysztof
 
