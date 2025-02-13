@@ -4,71 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40487C0219D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 14:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DB7C021A4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 15:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=Z08yf7xSn4ebRxWVhDq0V9OGTjDmF+4LyuWzts2+yN0=; b=V+ku8BZbKmE9tg
-	6vwC0+xzqijdoVePaRvTnyu7UKmcP4ssfM9gKJBPk4EPAxDiYygjCRGn9vb8PbeAMF42RTkMj8skB
-	i5FmW+J8jra+f6J607lE8oMrZ5WaWCsXPxa6S2h+7stZd/LRZnThpSoHUwJCdk8HkqvPpQ3l4DQVr
-	E54ZIAIGk3rnz9u1lLKFparTNTzrRF573UHEORj26+LiHeau6uoZOemeEQ5R/7VkUZ5j/WfcJGDaw
-	CdnmVzcfPYH/5Hz0lx2xWgshjGEyJ7F6SJGltFjKTZleEz+Y73e2x9FLFYksVfYqH2bm3S9AOMfy6
-	3uf1782qsQx6JqDf+3Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/JRSwFTLcKJvaGUhd7mNWEaWNfTd1j4s92cCD0xMuMs=; b=yTWXmf7DE/MGdwA3XTww3Dxnoi
+	P8NksMm5none2On3YVG6sWXT4RTgv6O81iuD5dvSZ1/ZA7pXijw9lacen7EbOOxgJHxGyAqDPoBP5
+	nZzPQ5HVyH6LXu54H4FxmtKYbq7yHesYBHI/6gc+7uAB3zJT6pE9cwRNc06UO9/z3wR/ALX+UXi51
+	Jh3qrHQIuvdBAxNkZoKhxRPw0os421ottPZDa2HvqSgn+Dwk7pwpELjgkL+UUmjEgDaYtglhGb8bq
+	HSUElWK0/UOYlNjKCAmpc3aniDzsFkzkTU795SyRf81d6MIZCoDfacXaMcnS+NfU/HQySSBdMsTeh
+	dD4HomDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiacc-0000000BQgY-1Gdc;
-	Thu, 13 Feb 2025 14:55:22 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tib5l-0000000BWWW-29Ll;
+	Thu, 13 Feb 2025 15:25:29 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiaO8-0000000BNmH-42nI
+	id 1tib5S-0000000BWRN-3vrs
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Feb 2025 14:40:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 83364A42101;
-	Thu, 13 Feb 2025 14:38:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 592D4C4CED1;
-	Thu, 13 Feb 2025 14:40:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739457623;
-	bh=c2EICeY4G2Sh4ub6i//PddhAY/cHWby1P7zXvPMW3SM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=tsx9dFEjBaK+AawFbQcXoElNPU7qIwnloBmvgufjKOAwVh5LLDuVNyz5hpceHJO2T
-	 3qpOWYilaa/vs/YHgU60T/29cv15HjCgIKss0ibnUz+8k3fOcrafSM3dvnfkgKViWG
-	 9GU3ujspmzjIDN1rBVI8c0r/uNK7DinvsZ4js0NihiJsIYvJo4ECDOuJI0WQyq3Bv7
-	 PSGws4wLn8+tG1bv7ue27JqdnpVV4JySewDSfbSErYgDXn4m3YNQlDgiEJ/3glPQ6F
-	 KlVm0zFwVSoMqYMG8Kf/n4LoCv+wwAToYy5BJPmbJyF2M8AC9uqcS591VKr3+FzosD
-	 BpAcj9zg4ZAWw==
-Date: Thu, 13 Feb 2025 08:40:21 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>,
-	linux-pci@vger.kernel.org
-Cc: =?utf-8?B?SsO8cmdlbiBHcm/Dnw==?= <jgross@suse.com>,
-	Roger Pau =?utf-8?B?TW9ubsOp?= <roger.pau@citrix.com>,
-	Boris Ostrovsky <boris.ostrovsky@oracle.com>,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>, Jan Beulich <jbeulich@suse.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Deren Wu <Deren.Wu@mediatek.com>,
-	Kai-Heng Feng <kai.heng.feng@canonical.com>,
-	Shayne Chen <Shayne.Chen@mediatek.com>,
-	Sean Wang <Sean.Wang@mediatek.com>,
-	Leon Yen <Leon.Yen@mediatek.com>,
-	linux-mediatek@lists.infradead.org, regressions@lists.linux.dev,
-	xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH] PCI: Avoid FLR for Mediatek MT7922 WiFi
-Message-ID: <20250213144021.GA114126@bhelgaas>
+	Thu, 13 Feb 2025 15:25:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1739460310;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/JRSwFTLcKJvaGUhd7mNWEaWNfTd1j4s92cCD0xMuMs=;
+	b=eRDzDO1QTFvwRvfN1az14h4iFgaeGVa/3H1CEg4F4F7lr457TzsWpj7NvpK05yrywlzwt9
+	6SSeI1RXuzIpIA7Iv5WpL7NuZ98CK2l+cAxCA1PMSsZRpZ0ZgcKDsYVwiNCUNDOP0HaZWH
+	bbxGgryvbcfvqTQe3rF3WDkDAKUI4hY=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-225-cIR4a08OPveeOcieh1a8Zw-1; Thu, 13 Feb 2025 10:23:27 -0500
+X-MC-Unique: cIR4a08OPveeOcieh1a8Zw-1
+X-Mimecast-MFC-AGG-ID: cIR4a08OPveeOcieh1a8Zw_1739460206
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4395b5d6f8fso5492295e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Feb 2025 07:23:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739460204; x=1740065004;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/JRSwFTLcKJvaGUhd7mNWEaWNfTd1j4s92cCD0xMuMs=;
+        b=mo/PFA4Ye37Xr26Pg8KmJmqbQkmG64yOw66Ae0nTlQpNUhhLkLI2HCin3A+d+JNXVm
+         AzL3N85ZR544xAtAdgE37/r92tzVEx1wiytN3rHZlUlBfJLWIgKLot8sxQcIrNvogk9O
+         iXjTNW52s3x1dNbUNeBX6eiaqJNw5s5OZidYgNKR2d9C7viXZzBbinmB6Z1xWzGOruvS
+         zLhQDFjdwu613uYADMN5JdRaDCDUtsmYA/bIcw71TVGDRdteC7VP9fxjxRllHtYPl55N
+         JVyTSXeMz3KItcvdJwOZSy+ldruYxIRKnyVevj1a04VJZ9BakdSgtASkkvA1MKhzosaw
+         7AfQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXLk50Q1tRnT5ckJ9A17I+bo2tyNgQqJFl7znytAQltD5vCv7RzdcnMobkUaTr1Suu4v6oIp0RZFJWXCPGHTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzooRLHE9Bes5kIa6u5/Wd+/XRf+BZ+yX9FAOrVTdBqhOMnZ7gi
+	85dtQfp5x2j5qlkAKNphKVHHAtBmmrFI3WPB6txpNEpm1ZjkkZQ0A8gl8+meIsB0hyFOywNecJr
+	K6YCh97gmiX5iCqNd8NTQGQg+mWzYso3Z3XyNF8yCSDB25ClU+OamNOPs7BCHZFKHDjuWyQ==
+X-Gm-Gg: ASbGncuA1mXpvn8uMiI/ANaLyIgyF3Qib7O/NsF4zAEv5oaLsIGKdWI6YNdx5Xy7wVr
+	ieQJFyH6kHSfaWK9MbMp8uqxHjzrZP/iyiQiotTUY8dn6F9sNru6pCUZGQVzDmuwFFkyAIiM73x
+	5DdPH/f8qo5l5sEXscu5BFwENOKtZTdjUGVrPBY6sY0+/pejJO9iZuTBgrfK4FE8Y5DAkJbhETa
+	d4PAB2ZWmY1Z1vqXGp/FVq3FxyljldwbXo82jb0FdglOa55JBzG5sAh1CVxOvFqvgDiLeAanc0j
+	tyrsT6tHYHSkP82nYlfbbw53YeniqLSC/B0=
+X-Received: by 2002:a05:600c:3485:b0:439:4a1f:cf8b with SMTP id 5b1f17b1804b1-439600fd7dfmr54743575e9.0.1739460204561;
+        Thu, 13 Feb 2025 07:23:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGymZURXlriQ+0kCVr74FRJDVtnnFD1vedc8hYAtNzuqdxLQ8CZrwzTUv5N0m6aIs3OGJqbiw==
+X-Received: by 2002:a05:600c:3485:b0:439:4a1f:cf8b with SMTP id 5b1f17b1804b1-439600fd7dfmr54743035e9.0.1739460204161;
+        Thu, 13 Feb 2025 07:23:24 -0800 (PST)
+Received: from [192.168.88.253] (146-241-31-160.dyn.eolo.it. [146.241.31.160])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38f259d5655sm2157953f8f.77.2025.02.13.07.23.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Feb 2025 07:23:23 -0800 (PST)
+Message-ID: <6032f70f-4609-46d7-bbfa-c29a63f402ec@redhat.com>
+Date: Thu, 13 Feb 2025 16:23:22 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250212193516.88741-1-helgaas@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2] net: ethernet: mediatek: add EEE support
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Qingfang Deng <dqfext@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>
+References: <20250210125246.1950142-1-dqfext@gmail.com>
+ <a42ec2d4-2e4f-4d1d-b204-b637c1106690@redhat.com>
+ <Z623GQHI_FHyDyjE@shell.armlinux.org.uk>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <Z623GQHI_FHyDyjE@shell.armlinux.org.uk>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Tud67qxEhrsk9KrV6PWk564Cd8wQSKxlK9-J1pBdcFY_1739460206
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_064025_143797_BECCDA2F 
-X-CRM114-Status: GOOD (  23.81  )
+X-CRM114-CacheID: sfid-20250213_072511_048137_BCFB3EAC 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,82 +117,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 12, 2025 at 01:35:16PM -0600, Bjorn Helgaas wrote:
-> From: Bjorn Helgaas <bhelgaas@google.com>
+On 2/13/25 10:10 AM, Russell King (Oracle) wrote:
+> On Thu, Feb 13, 2025 at 10:04:50AM +0100, Paolo Abeni wrote:
+>> On 2/10/25 1:52 PM, Qingfang Deng wrote:
+>>> Add EEE support to MediaTek SoC Ethernet. The register fields are
+>>> similar to the ones in MT7531, except that the LPI threshold is in
+>>> milliseconds.
+>>>
+>>> Signed-off-by: Qingfang Deng <dqfext@gmail.com>
+>>
+>> @Felix, @Sean, @Lorenzo: could you please have a look?
 > 
-> The Mediatek MT7922 WiFi device advertises FLR support, but it apparently
-> does not work, and all subsequent config reads return ~0:
+> That would be a waste of time, because it's implementing the "old way"
+> including using phy_init_eee() which Andrew wants to get rid of. It
+> should be using phylink's EEE management.
 > 
->   pci 0000:01:00.0: [14c3:0616] type 00 class 0x028000 PCIe Endpoint
->   pciback 0000:01:00.0: not ready 65535ms after FLR; giving up
-> 
-> After an FLR, pci_dev_wait() waits for the device to become ready.  Prior
-> to d591f6804e7e ("PCI: Wait for device readiness with Configuration RRS"),
-> it polls PCI_COMMAND until it is something other that PCI_POSSIBLE_ERROR
-> (~0).  If it times out, pci_dev_wait() returns -ENOTTY and
-> __pci_reset_function_locked() tries the next available reset method.
-> Typically this is Secondary Bus Reset, which does work, so the MT7922 is
-> eventually usable.
-> 
-> After d591f6804e7e, if Configuration Request Retry Status Software
-> Visibility (RRS SV) is enabled, pci_dev_wait() polls PCI_VENDOR_ID until it
-> is something other than the special 0x0001 Vendor ID that indicates a
-> completion with RRS status.
-> 
-> When RRS SV is enabled, reads of PCI_VENDOR_ID should return either 0x0001,
-> i.e., the config read was completed with RRS, or a valid Vendor ID.  On the
-> MT7922, it seems that all config reads after FLR return ~0 indefinitely.
-> When pci_dev_wait() reads PCI_VENDOR_ID and gets 0xffff, it assumes that's
-> a valid Vendor ID and the device is now ready, so it returns with success.
-> 
-> After pci_dev_wait() returns success, we restore config space and continue.
-> Since the MT7922 is not actually ready after the FLR, the restore fails and
-> the device is unusable.
-> 
-> We considered changing pci_dev_wait() to continue polling if a
-> PCI_VENDOR_ID read returns either 0x0001 or 0xffff.  This "works" as it did
-> before d591f6804e7e, although we have to wait for the timeout and then fall
-> back to SBR.  But it doesn't work for SR-IOV VFs, which *always* return
-> 0xffff as the Vendor ID.
-> 
-> Mark Mediatek MT7922 WiFi devices to avoid the use of FLR completely.  This
-> will cause fallback to another reset method, such as SBR.
-> 
-> Fixes: d591f6804e7e ("PCI: Wait for device readiness with Configuration RRS")
-> Link: https://github.com/QubesOS/qubes-issues/issues/9689#issuecomment-2582927149
-> Link: https://lore.kernel.org/r/Z4pHll_6GX7OUBzQ@mail-itl
-> Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+> The patches for the mt753x driver converting that over have now been
+> apparently merged last night according to patchwork into net-next, but
+> something's gone wrong because there's no updates to the git trees
+> on korg,
 
-Applied with Marek's tested-by to pci/for-linus for v6.14.
+this series:
 
-I also added a cc: stable tag.
+https://lore.kernel.org/all/Z6nWujbjxlkzK_3P@shell.armlinux.org.uk/
 
-> ---
->  drivers/pci/quirks.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-> index b84ff7bade82..82b21e34c545 100644
-> --- a/drivers/pci/quirks.c
-> +++ b/drivers/pci/quirks.c
-> @@ -5522,7 +5522,7 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
->   * AMD Matisse USB 3.0 Host Controller 0x149c
->   * Intel 82579LM Gigabit Ethernet Controller 0x1502
->   * Intel 82579V Gigabit Ethernet Controller 0x1503
-> - *
-> + * Mediatek MT7922 802.11ax PCI Express Wireless Network Adapter
->   */
->  static void quirk_no_flr(struct pci_dev *dev)
->  {
-> @@ -5534,6 +5534,7 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x149c, quirk_no_flr);
->  DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x7901, quirk_no_flr);
->  DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1502, quirk_no_flr);
->  DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1503, quirk_no_flr);
-> +DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_MEDIATEK, 0x0616, quirk_no_flr);
->  
->  /* FLR may cause the SolidRun SNET DPU (rev 0x1) to hang */
->  static void quirk_no_flr_snet(struct pci_dev *dev)
-> -- 
-> 2.34.1
-> 
+is in net-next commit 443b5ca4d7245eec9a9192461113a4c341e441e5.
+
+In the past few days there has been a few slowdowns in the kernel infra.
+Perhaps some mirror or cache not updated?
+
+Cheers,
+
+Paolo
+
 
