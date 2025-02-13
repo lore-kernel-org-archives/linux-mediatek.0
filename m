@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC164C0219D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 11:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E732CC0219D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2025 11:40:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6e1PBfYc7K+bLWshKemdsFGbQdiqTONlX7YiZarYPNg=; b=VIBb7qpSSzibXIWb/255BXD2A6
-	QeGICTdB2jhF6zB6vFyHo4U2V6Ftgj7yjmqNTZ5pCul1GqNOuH9G2Sf+hdemLNx2AwhIdoPN+Xf8R
-	snEjN9R74vAZyraBmYrRPMrWYpVvCNAv+L9TI1IWalDtPw/lB0U6F4WxDWEdVd4IdSYba/HYYobtO
-	Fj+aUjT2+hd+gAA5FdlsAx0Qmsl68eW87yi793lA7Mjd61yS+wsdZo/a8A0o1AkXzak48lAv8qYKn
-	JUrzVsCVEFWS5CXeGObXnVnOcJmoSXYwKUJK0pHfrnZwI8AOqEXaUtBO0ZF+Hs/rAvPUMtuq9nxel
-	6xuoTvqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BA4Rrz13yIvgpUnDYRiUiQn6eNCsiZnBZO/XX9ez/vw=; b=tBkqfs+ph48dO6M/HA9LoSLs2e
+	DsJpXIWLYMMvqfIB9VmaLcJfGuGqFVEHd/RFB0pgUNK2b0Rr3HOHWj6/IfKcUlmuN7tro+6amEXSu
+	7+MkCpwgAb9ADNKeQ9+CuVFO7Kg6FMRWgcfskIiUtJ12RKZDwAx9Ghrlw+Djx52sWP7bs1cqjzQTV
+	LGPZbwhKfs7bzmXieCqK/qrMeslX0tWhJAsWMwscM46UGalrutfhF5by84fb0IeKNGy5QYRQIYk29
+	Z9dN7QCZj/ZTQ/IP+kj4w5ZIWaKDaFBCLu2+Y/xYiVwdUpmbWaP9Q7N56CYzEyKOpwIU1l7HM/l+z
+	xW3kO5Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiXMp-0000000AqEq-0Fs4;
-	Thu, 13 Feb 2025 11:26:51 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tiXaP-0000000AtW4-40gq;
+	Thu, 13 Feb 2025 11:40:53 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiXH1-0000000Aodf-1pJp;
-	Thu, 13 Feb 2025 11:20:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739445650;
-	bh=e0eGua7t7TvlPBa9LwHKZrO9ganTKJP++6K1ucHteGE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TqEPr+8kYbymOGE/ORH11JUEEdKWYxPB7p25Xt+OeO7Nn4/SY/ClqOP4vY1tOmzvq
-	 kQTsyLM0OehqUXgQ6pjd76W9tjrwy8hSG1mF5dNvYSQAs95u5TymWVIIi+V6HoGddy
-	 +P/GvCBoeeNW0LQqncxqpkiQkvjlGKg7Dxaa5hCseGow1dwAlGMv+odl00upckl7nm
-	 fwUFdhqnM6eOL646G4Q1wUxXXrrGCCtnIlWKyOWOMB8475Qk3pJL8BDK0yioYqFdCF
-	 xOtnFU6PqDJXiKPqnCHsMgUOxir8jFejEjZipX1uriYmbXN1rr3JCc+OYmeR80OiIU
-	 u/x6tyrm/ZGbg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 71A9917E151F;
-	Thu, 13 Feb 2025 12:20:49 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	pablo.sun@mediatek.com
-Subject: [PATCH v1 3/3] arm64: dts: mediatek: mt8395-nio-12l: Preconfigure DSI0 pipeline
-Date: Thu, 13 Feb 2025 12:20:08 +0100
-Message-ID: <20250213112008.56394-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250213112008.56394-1-angelogioacchino.delregno@collabora.com>
-References: <20250213112008.56394-1-angelogioacchino.delregno@collabora.com>
+	id 1tiXYy-0000000At9q-0Ihh;
+	Thu, 13 Feb 2025 11:39:25 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1739446761;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BA4Rrz13yIvgpUnDYRiUiQn6eNCsiZnBZO/XX9ez/vw=;
+	b=Y7JnLtuqeGi0rmpxv/vPGQORRne7WWYG8Nl9lt0zUfE0AtlFVTrlYLco4+gwrSa4T/udny
+	sdVjF3BoP51h3fU+3huj2IGTdvA7fUI4AB+Ubve+pXXudLG2O+Uu/OD7LENer5x2XsPhuo
+	X7qf9gFnCvRtDBJXCVj3KZY9fTJnpdvSZO5k7hIgyMDXAlBTI2h/KMrjx2Cy32AO7a+nR+
+	n/MlV/ID0vKF92mrKH+D7UiYJ07Wu3x3zTTtlxfLNZFhr/c4+nBxTArOiZKQwem4BX31BW
+	k4Yy3J1kqpfIhhAyv5vW5xn/2b/rUct9zPfS5x6w7KkZaAUuPGVWIsNBWaLWyQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1739446761;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BA4Rrz13yIvgpUnDYRiUiQn6eNCsiZnBZO/XX9ez/vw=;
+	b=pyXptmk6f4o5MyrZck6ChWgS+VS+YZIexkO70mru2gCXgb+M0EOct+hRlwQoOGWGl6zsf4
+	zWHi8vQeC42cOXCg==
+To: Bo Ye <bo.ye@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dicken.ding@mediatek.com, hanks.chen@mediatek.com,
+ xiujuan.tan@mediatek.co, Bosser Ye <bo.ye@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] genirq: clear IRQS_PENDING in irq descriptor
+In-Reply-To: <20250211023040.180330-1-bo.ye@mediatek.com>
+References: <20250211023040.180330-1-bo.ye@mediatek.com>
+Date: Thu, 13 Feb 2025 12:39:21 +0100
+Message-ID: <871pw2kr9y.ffs@tglx>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_032051_641943_C903457F 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250213_033924_257274_514B7674 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,57 +76,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This board can use a MIPI-DSI panel on the DSI0 connector: in
-preparation for adding an overlay for the Radxa Display 8HD,
-add a pipeline connecting VDOSYS0 components to DSI0.
+On Tue, Feb 11 2025 at 10:30, Bo Ye wrote:
+> In the kernel-6.6 IRQ subsystem, there is a case of IRQ retrigger:
 
-This pipeline remains disabled by default, as it is expected
-to be enabled only by a devicetree overlay that declares the
-actual DSI panel node, completing the graph.
+How is kernel 6.6 relevant here?
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt8395-radxa-nio-12l.dts     | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+> Due to the possibility of electrical signal glitches causing false
+> interrupts for edge-triggered type IRQs, it is necessary to clear any
+> potential false interrupts or re-triggered interrupt signals from the
+> interrupt source between disabling and enabling the edge-triggered
+> IRQ.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index 41dc34837b02..7184dc99296c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -172,6 +172,32 @@ &cpu7 {
- 	cpu-supply = <&mt6315_6_vbuck1>;
- };
- 
-+&dither0_out {
-+	remote-endpoint = <&dsi0_in>;
-+};
-+
-+&dsi0 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			dsi0_in: endpoint {
-+				remote-endpoint = <&dither0_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			dsi0_out: endpoint { };
-+		};
-+	};
-+};
-+
- &eth {
- 	phy-mode = "rgmii-rxid";
- 	phy-handle = <&rgmii_phy>;
--- 
-2.48.1
+This claim is just wrong.
 
+A disable_irq(); enable_irq(); sequence must preserve the pending bit so
+that interrupts do not get lost. The lazy disabling mechanism is there
+to guarantee that.
+
+> When the module using this IRQ may disable the IRQ as needed and then
+> If the disabled IRQ is triggered, the IRQ subsystem will set the
+> istate of the corresponding IRQ descriptor to pending.
+
+Rightfully so.
+
+> After the module using this IRQ completes other tasks, it clears the
+> pending state on the GIC using irq_set_irqchip_state().
+
+So this is a problem related to a specific out of tree driver and the
+GIC, right? 
+
+> However, the pending state in the IRQ descriptor's istate is not
+> cleared, which leads to the module receiving the IRQ again after
+> enabling it, even though the interrupt source has not triggered,
+> because the IRQ subsystem retriggers the interrupt based on the
+> pending state in the IRQ descriptor.
+
+What's the actual problem here? A driver has to be able to handle
+spurious interrupts at any given time.
+
+> Solution: the corresponding upstream patch modifies the
+> irq_set_irqchip_state(...) in the IRQ subsystem.
+
+Which corresponding upstream patch?
+
+> The purpose is to clear the pending state in the IRQ descriptor's
+> istate when successfully clearing the corresponding IRQ on the GIC.
+
+Sure that's the purpose, but you fail to explain the actual problem and
+the interaction with irq_set_irqchip_state().
+
+Thanks,
+
+        tglx
 
