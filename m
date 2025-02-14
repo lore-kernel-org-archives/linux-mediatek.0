@@ -4,122 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3236C02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 15:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF33C021A4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 17:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gCiDPtQC7qxltpn+0eyPZLISrfxC7mrgM0GM+Hoep9s=; b=XKSWJ5T/tyP54uGSTCjhqPoL53
-	fe3lqiBifYwyND93kx0+KKFsmJZ0wcNLEnUn8hHVoe6gwB6Taucc4n07nielxLdDISgH5DdKr+j8v
-	ghKmVjemzbsNahMYi9pQN9P7YA0iMWm1iVShpFxdfuzZpO2uZNlRYo9XG18lbVsFCJ3tu9mvTn8En
-	f4PoGtAX9vdS4aJdrTBy97aTZNBi0+HgcgU++lAa2XOGeooDrFzRjfuYJ7RkmA4h84b9xL6NvWoDO
-	KU4Xhv2bM8UGHjryUp2ozlq8e/74NuIOR6fK+s15GmW3gwN0xmCAbEcf8G1wAUxuBv4wlJd1D7X/J
-	G9wIKLaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5tFVk1CSr4Gjhn3uWBeLqopf2bxAI2GHatmkSuDvmcY=; b=CLpnSAql/gc0jooV+6ozrItNaV
+	B2VtBznfXTECiuKLFzI031m8/gTChdh8X5fYY9ham7Bhf0eMjK76y2lcpUWrm3jAdJ8jrg7d4yDmM
+	aZryXAhtGOj8beRiMUCVdt2OoFmr3SevO1Ad57jXSoqo2BeVD9+WPmNXD+l59ZR48f+sy5hf5uoOZ
+	xneTBenk0Cq2w8ezEI3za6PN/u2VpaQK9azRAz88JBPdV3tERC4T/KAvWh8eg+OgE22uR7H23uffR
+	1FfF2e91msGEo1nBaTvZvkBFIIWrjnZ9aDEFMFRsNG24648oAfQ9907VbB++vfQouKUtn4ZY5rlAu
+	wjOEuUvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tixpK-0000000FMrg-067Z;
-	Fri, 14 Feb 2025 15:42:02 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tizkj-0000000Fli6-3p6b;
+	Fri, 14 Feb 2025 17:45:25 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tixfc-0000000FKix-3yrV;
-	Fri, 14 Feb 2025 15:32:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 03560A42DB9;
-	Fri, 14 Feb 2025 15:30:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D13E4C4CED1;
-	Fri, 14 Feb 2025 15:31:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739547119;
-	bh=KCDFKHc9ZM5Ox9QzR1rz3yyEmfiZGegSVP6n+hKiNTw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mAOM1XOkaSwGMmCZJF0siuvK027HA4akMrVHBw/HNJ1G/YlovIjCYRalILudDt17Q
-	 OkfJUPQrzyisirDB+2R8GCuC4ELSipKb9i0yIMXHQbzzeOtJhrGOCOtaLBCfWCH4jf
-	 Tos5hlYEyQNysU2O+Bsai9OyYGn8KXyJrzufSnHhZM40WhVpr2HEHIURouXK/WW6Bo
-	 QmkjDDwn3ZYRIoceel598tbcLov6pHWXSZ6vWosyXvE8tQTJh0oWLkjDuMKlwkdCiV
-	 IOQCRYZsGTOXsD4SxUy9dxWeE6EZ4hXHis8ha95tpYe6ckNgFchy11yRpykSFDjr41
-	 2UIYtRRdvp59g==
-Message-ID: <6dac6db1-60ef-4a14-8998-7da44c26690f@kernel.org>
-Date: Fri, 14 Feb 2025 16:31:52 +0100
+	id 1tizDm-0000000Fdr7-2AFr
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Feb 2025 17:11:25 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-220c8f38febso43547305ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Feb 2025 09:11:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1739553081; x=1740157881; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=5tFVk1CSr4Gjhn3uWBeLqopf2bxAI2GHatmkSuDvmcY=;
+        b=CWC3kv9zsxUGcKssTUlDsAerVwTFX/91bFuqN17afQppRAAWpHq71nbjZGArnx72g1
+         tZ2ZTSF36yXjMIZplVgiHLAha/utBodAP0UuMBJsuGn5e1dxHeeYsfTzeZoCH1FJo2/Y
+         YWA5gcDU+k3RBM31WCpg/EtfxTYbnQOs9yJ/U2L9Cz+Ia96WdTSLv1pywvXikZ9lGnK0
+         68LS1umVW3GLGOm9GHuRGZPDHImpTMCjayPOHqKNn4AMo2RLqM5QabZAlUGonXxwsgD+
+         iLKGbyfIawHM7yZeF1nq+oQLdoJ3xpdDNaxGa8Pv8VlDSq3SzWgA5zNET+YuiM/DxHB6
+         UM2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739553081; x=1740157881;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5tFVk1CSr4Gjhn3uWBeLqopf2bxAI2GHatmkSuDvmcY=;
+        b=cA7alM4zYYyZxCfVWoSoes1HKjeduDYpBhuG7swmkPdmBvPSNS9RveSc7eFci1o2xg
+         f50EJum8DDWK2NkpsdH3XMFSto5r6DT8lcihjsVogPpQ4ZLnysTiSJNiBtXSOGJ2lBwd
+         uOpQINSf/qGGgwITHU8EsxnCnYHGOSwzV4yftKjtyGsG/10EfZ/2Bu6oXWuKShr/cmzT
+         oz0gMeLtTvZp76dRNTjj5teAWVWsXraRzsU48pOACyhSOxQ+k0Kmtn53Z6Sun89CzwvV
+         hbxNMGvk7tN2k6MXEG5aIYbobhXmiy+pptWAwGMz+UcH2tbqITggou+bEOCqC1WbB41h
+         XkrA==
+X-Forwarded-Encrypted: i=1; AJvYcCXSX7Yc4/Pt740CcywEXFAiZBNijtesovKtf2/yWBd5i7Oj7sRMXZlk1iq6+PQ+MRhgjrAl46nhqAeb1BKs/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzmLeF3IVy7i8RwkjzfbaEvZQf2x8eW+371qTTj9SE9zFL0ojb+
+	e+nLKkofSEPhkY0GjD+d8u6/k1hFcQb7ztTEpWHwqcZpybNvPHddkW9xH7V9kQ==
+X-Gm-Gg: ASbGncuxfIgjAf55AV49XXVEeEKiOfdnDJSkTzs/GiS3Rv1ztY2fCmEy2VWpUqmGXV/
+	fZ4ZS/wmHWA8TPIaEz4Sd9sCUE53h2EQN8p4lelQK/ktlqWwgLveFHEaRHxbmvo3dD1BqE9lpdj
+	Tgnl55vlyWN9kanuyELveuvkyMTwKypBaW0VhUrufS/213nKo9QLlLtxSpPCOEPHlclHGaxJqg3
+	pqFRVLWpKQ82sTs0VP/7Beb4UxsS69lvJzzOv32FKoL1i3kMGxydXPzvduszrxEuSgO931cXea8
+	ev4F5zZQgU8lvxYt3cimV6N67S0=
+X-Google-Smtp-Source: AGHT+IFtRcsC8lGjgRbp1ycQlIbd0zSbe+MhBv3YgVh5mcJFxmhiI53DBGqspGZoSEm1cJUzqXNGXA==
+X-Received: by 2002:a17:902:fc8e:b0:215:a05d:fb05 with SMTP id d9443c01a7336-220bdfee6a5mr208218855ad.32.1739553081492;
+        Fri, 14 Feb 2025 09:11:21 -0800 (PST)
+Received: from thinkpad ([120.60.134.139])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-220d545d09esm31064135ad.112.2025.02.14.09.11.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Feb 2025 09:11:21 -0800 (PST)
+Date: Fri, 14 Feb 2025 22:41:06 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
+ for EN7581 SoC
+Message-ID: <20250214171106.ul3fwzcwhadhdwhj@thinkpad>
+References: <20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org>
+ <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 3/3] net: phy: mediatek: add driver for built-in
- 2.5G ethernet PHY on MT7988
-To: =?UTF-8?B?U2t5TGFrZSBIdWFuZyAo6buD5ZWf5r6kKQ==?=
- <SkyLake.Huang@mediatek.com>, "andrew@lunn.ch" <andrew@lunn.ch>,
- "dqfext@gmail.com" <dqfext@gmail.com>,
- "davem@davemloft.net" <davem@davemloft.net>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "edumazet@google.com" <edumazet@google.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>,
- "daniel@makrotopia.org" <daniel@makrotopia.org>,
- "horms@kernel.org" <horms@kernel.org>, "kuba@kernel.org" <kuba@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu@mediatek.com>
-References: <20250116012159.3816135-1-SkyLake.Huang@mediatek.com>
- <20250116012159.3816135-4-SkyLake.Huang@mediatek.com>
- <df2a463c-102c-4eb1-905d-96dbd926db7e@kernel.org>
- <e58dabed4915e5c2dcece5f047e045ca08f836b6.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <e58dabed4915e5c2dcece5f047e045ca08f836b6.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_073201_117237_EDA87CB3 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20250214_091122_582918_3829B74A 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,45 +109,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/02/2025 14:23, SkyLake Huang (黃啟澤) wrote:
-> On Thu, 2025-01-16 at 13:45 +0100, Krzysztof Kozlowski wrote:
->>
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On 16/01/2025 02:21, Sky Huang wrote:
->>> +
->>> +static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
->>> +{
->>> +     struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
->>> +     void __iomem *mcu_csr_base, *pmb_addr;
->>> +     struct device *dev = &phydev->mdio.dev;
->>> +     const struct firmware *fw;
->>> +     struct device_node *np;
->>> +     int ret, i;
->>> +     u32 reg;
->>> +
->>> +     if (priv->fw_loaded)
->>> +             return 0;
->>> +
->>> +     np = of_find_compatible_node(NULL, NULL, "mediatek,2p5gphy-
->>> fw");
->>
->> There is no such compatible. You cannot just add undocumented
->> bindings.
->>
->> Also, devices should not just look for some random compatibles.
->> Express
->> proper relationships with phandles or node hierarchy.
->>
-> Hi Krzysztof,
->   OK. I'll add dt-bindings' document in next version.
+On Sun, Feb 02, 2025 at 08:34:24PM +0100, Lorenzo Bianconi wrote:
+> Configure PBus base address and address mask to allow the hw
+> to detect if a given address is on PCIE0, PCIE1 or PCIE2.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 30 ++++++++++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..9c2a592cae959de8fbe9ca5c5c2253f8eadf2c76 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/irqchip/chained_irq.h>
+>  #include <linux/irqdomain.h>
+>  #include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/msi.h>
+>  #include <linux/of_device.h>
+> @@ -24,6 +25,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <linux/reset.h>
+>  
+>  #include "../pci.h"
+> @@ -127,6 +129,13 @@
+>  
+>  #define PCIE_MTK_RESET_TIME_US		10
+>  
+> +#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
+> +#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
+> +#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
+> +	((_n) == 2 ? 0x28000000 :	\
+> +	 (_n) == 1 ? 0x24000000 : 0x20000000)
+> +#define PCIE_EN7581_PBUS_BASE_ADDR_MASK	GENMASK(31, 26)
+> +
+>  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
+>  #define PCIE_EN7581_RESET_TIME_MS	100
+>  
+> @@ -931,7 +940,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+>  static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  {
+>  	struct device *dev = pcie->dev;
+> -	int err;
+> +	struct regmap *map;
+> +	int err, slot;
+>  	u32 val;
+>  
+>  	/*
+> @@ -945,6 +955,24 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	/* Wait for the time needed to complete the reset lines assert. */
+>  	msleep(PCIE_EN7581_RESET_TIME_MS);
+>  
+> +	map = syscon_regmap_lookup_by_phandle(dev->of_node,
+> +					      "mediatek,pbus-csr");
+> +	if (IS_ERR(map))
+> +		return PTR_ERR(map);
 
-Carefully read the comment instead. Anyway, if you come with response to
-the comment after one month (nice disproportion between received review
-and responding to feedback), my entire context is gone.
+So this is going to regress the devicetree's that do not define this syscon
+region? But I do not see any devicetree using this 'airoha,en7581-pcie'
+compatible, so not sure if this is going to be an issue. Are the downstream
+devicetrees used?
 
-Best regards,
-Krzysztof
+- Mani
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
