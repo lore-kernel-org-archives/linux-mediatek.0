@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F1ABC02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 13:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB02EC02198
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 14:07:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1sPXxRT2Maq+oq6WLJLRCYE8nX4bhpYR3XY/iFY+v24=; b=SdwvjzJ+7FXx5U8OIU/zUnMnzS
-	Kg7VAxzGRMdaz5TGO9m4aPcBRQD4oFMPDIK75GwNsdEiUKKYw2PS8BDRTB3SUUw6/bt/2pBeGOJ/1
-	m07hUIW/9O8h7Xbqb6vXWES3NFlmrFn2mOulVeEg39lXw4Q5QBASzOhNnSKvBulIJUlY4XMT5PiTS
-	/ZW7g9ovNJ8cVs4E1SLsdr8ajILakNJCivwxSTCcmq6uhDOZSQXbg5/6zp83/8pnzJRdzpLs0XbCB
-	a4Hgg4gAsgbCvgdGoTPIimGw48OakpCnTkZ0Ovn8O0a+e/JLVp/725Jpbu0lYBpKSCfFZiQcrbsNI
-	70+p5HSg==;
+	bh=j1isEgqz4lMKKGjFq9i8WFvGCGtkmoVJAb+vZr5tW5s=; b=p766Cr2kqOBdM/BLGKha4QHLo+
+	BqtdiCzq/NSoxmH1mubqyrUh6LMrv6VV2LV6wgl44JQENi8PvkAWzLvp1KhVys00EFWxO6Hud/ZR5
+	Db9jBxEC2L6Tnzpv+A9qC7eEI2kGDyHVOniIXhkrMdivJvDeNkzhOpG+nUO3r+6BJ1I2erXeh2kLQ
+	ImlEiUM8aX2D6920ZVGrCqWhVZuPc9hZGarnsal/FwPrU+x+i0WZxEsCyqis11zT74a9rY9NX4g8+
+	CZn652+L8QUyPqNoKoESJd1QxxmzhkRzqzP7XFl9RgGTCpr0aqsM6infb6A8edNQCNyj1stJGn8T3
+	4QX4ZbPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiwBn-0000000F4Z7-3pZI;
-	Fri, 14 Feb 2025 13:57:07 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1tiwMH-0000000F6KS-3PGR;
+	Fri, 14 Feb 2025 14:07:57 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiwAL-0000000F4IA-0qDP;
-	Fri, 14 Feb 2025 13:55:38 +0000
+	id 1tiwKp-0000000F67b-2ZHY;
+	Fri, 14 Feb 2025 14:06:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1739541337; x=1771077337;
+  t=1739541987; x=1771077987;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=wTI8w/v9e9Rb84CllROH8OzFtvROoc5l4ay396nLp7A=;
-  b=H0x39ncK3o/HORhBLpwlwgh7lK0xyu6MmYAeMN6Ay1mr90487Pk5iZJl
-   KP3oxhTNA7ktjy8z18Y44t7iEY7E5a5ig4weic6g5XhlOyGBnBbXI19+o
-   bK3ilgY5/evyx/Tre/MvNWTdeR86buhn263fW9erbP0PmkzmJBmu6hy7G
-   X+D3ipH8YaNu/AkgjowUuthPMordb0KACLC/BtP5mLK6JzJrgyOO0rzoP
-   JtgKlOjSBHjJ0tMtxmeYu5+aal7dqWMKBo0pfaZaQX2XAhTiNCCNzn0RD
-   MUbd/KerPlBzBdelwxkwHibeH0QgYxPi2POb8SIX6VX/fdulKtpHg4EMH
+  bh=9cBFlk2elfhIUBovJUgc2pj982hQ8Go+77xQ1AoDVOk=;
+  b=CCrWJsCruHl4hK68obUB2qrJNgX96WuWIl0gz62cmUKUCge3e7tUjKEP
+   D7e7kDRKJbEZ6NvwA9DcZ9WGioeXz13GJfTqO0gVXCfCIuv82dnFtIJBO
+   c7PcL4hlsj514wbfmzIyFbD+GhxEDyt/+jXw4N0Hor4u247XEYwFeQLKz
+   k6hkxf3OFbNAg9dI3HSuK8JZgUbRtSfPyvgPtGj6zRwoB1XvqWfP6EWKt
+   rxOotn4sVQhImIcGjWmAAlSXNjR6Sn22ncuMpi1hQBSpd3HJPzAkFeJt5
+   BzsJF4is7FXDq6jneZbOFWybr3FQ0OJG4VcYRU57Udfu47V4Gqe0urQuW
    g==;
-X-CSE-ConnectionGUID: 9D05XvGcRO2td69AAGhGFg==
-X-CSE-MsgGUID: u0ZicCbWQ+q29mXqK0AAvw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="39520280"
+X-CSE-ConnectionGUID: rDgNbYgAQdOG2dkVWfvevQ==
+X-CSE-MsgGUID: 5K1sD+ZCQNuk11OTftFiLw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="51690481"
 X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; 
-   d="scan'208";a="39520280"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Feb 2025 05:55:32 -0800
-X-CSE-ConnectionGUID: 5wI/a5w8RZG6uE1e5D2VEA==
-X-CSE-MsgGUID: Wolqe3ftT++lWNrCklu2zQ==
+   d="scan'208";a="51690481"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Feb 2025 06:06:26 -0800
+X-CSE-ConnectionGUID: GAM0Tt/hQbO7u9VXlp1RNg==
+X-CSE-MsgGUID: OeYg75QKQSWqKE5danBI+g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; 
-   d="scan'208";a="144320806"
-Received: from smile.fi.intel.com ([10.237.72.58])
-  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Feb 2025 05:55:28 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1tiwA8-0000000BV4U-2nDd;
-	Fri, 14 Feb 2025 15:55:24 +0200
-Date: Fri, 14 Feb 2025 15:55:24 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Andi Shyti <andi.shyti@kernel.org>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Stefan Roese <sr@denx.de>,
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="118399870"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa003.jf.intel.com with ESMTP; 14 Feb 2025 06:06:22 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tiwKg-0019df-34;
+	Fri, 14 Feb 2025 14:06:18 +0000
+Date: Fri, 14 Feb 2025 22:06:02 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gregory CLEMENT <gregory.clement@bootlin.com>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Subject: Re: [PATCH v1 1/8] i2c: Introduce i2c_10bit_addr_from_msg()
-Message-ID: <Z69LTGY4mpiCCWY3@smile.fi.intel.com>
-References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
- <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
- <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com>
- <65f5eiy6kh6nhdjgpylrdjpw35jbae4s454u7qeqamh5hny7ms@ip4btvgxlaq4>
- <CAMuHMdXfj=kmaQ6OgUwyhNq+ZK2ZbpSfD2BS0B96VHoKAMonVQ@mail.gmail.com>
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next v4 14/16] net: airoha: Introduce flowtable
+ offload support
+Message-ID: <202502142131.na71FjkW-lkp@intel.com>
+References: <20250213-airoha-en7581-flowtable-offload-v4-14-b69ca16d74db@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAMuHMdXfj=kmaQ6OgUwyhNq+ZK2ZbpSfD2BS0B96VHoKAMonVQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20250213-airoha-en7581-flowtable-offload-v4-14-b69ca16d74db@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_055537_254476_15D1CAD8 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20250214_060627_694150_8609F216 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,29 +104,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 14, 2025 at 09:04:34AM +0100, Geert Uytterhoeven wrote:
+Hi Lorenzo,
 
-...
+kernel test robot noticed the following build warnings:
 
-> > > > +static inline u8 i2c_10bit_addr_from_msg(const struct i2c_msg *msg)
-> > >
-> > > Having never used 10-bit addressing myself, or even looked into it,
-> > > it took me a while to understand what this helper really does...
-> > > So this returns the high byte of the artificial 16-bit address that
-> > > must be used to address a target that uses 10-bit addressing?
-> > > Hence I think this should be renamed, to better match its purpose.
-> >
-> > It's coherent with i2c_8bit_addr_from_msg(), right?
-> 
-> Is it? Unlike i2c_8bit_addr_from_msg(), it does not return the full
-> address,
+[auto build test WARNING on c3a97ccaed80986fc3c0581661bf9170847d23ba]
 
-Yeah, hi/lo together will be coherent, hence I sent a v2 with Geert's
-suggestion being incorporated.
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/net-airoha-Fix-TSO-support-for-header-cloned-skbs/20250213-234737
+base:   c3a97ccaed80986fc3c0581661bf9170847d23ba
+patch link:    https://lore.kernel.org/r/20250213-airoha-en7581-flowtable-offload-v4-14-b69ca16d74db%40kernel.org
+patch subject: [PATCH net-next v4 14/16] net: airoha: Introduce flowtable offload support
+config: hexagon-allyesconfig (https://download.01.org/0day-ci/archive/20250214/202502142131.na71FjkW-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250214/202502142131.na71FjkW-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202502142131.na71FjkW-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/ethernet/airoha/airoha_ppe.c:818:6: warning: variable 'err' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+     818 |         if (!eth->npu)
+         |             ^~~~~~~~~
+   drivers/net/ethernet/airoha/airoha_ppe.c:820:7: note: uninitialized use occurs here
+     820 |         if (!err)
+         |              ^~~
+   drivers/net/ethernet/airoha/airoha_ppe.c:818:2: note: remove the 'if' if its condition is always true
+     818 |         if (!eth->npu)
+         |         ^~~~~~~~~~~~~~
+     819 |                 err = airoha_ppe_offload_setup(eth);
+   drivers/net/ethernet/airoha/airoha_ppe.c:811:9: note: initialize the variable 'err' to silence this warning
+     811 |         int err;
+         |                ^
+         |                 = 0
+   1 warning generated.
+
+
+vim +818 drivers/net/ethernet/airoha/airoha_ppe.c
+
+   803	
+   804	int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
+   805					 void *cb_priv)
+   806	{
+   807		struct flow_cls_offload *cls = type_data;
+   808		struct net_device *dev = cb_priv;
+   809		struct airoha_gdm_port *port = netdev_priv(dev);
+   810		struct airoha_eth *eth = port->qdma->eth;
+   811		int err;
+   812	
+   813		if (!tc_can_offload(dev) || type != TC_SETUP_CLSFLOWER)
+   814			return -EOPNOTSUPP;
+   815	
+   816		mutex_lock(&flow_offload_mutex);
+   817	
+ > 818		if (!eth->npu)
+   819			err = airoha_ppe_offload_setup(eth);
+   820		if (!err)
+   821			err = airoha_ppe_flow_offload_cmd(port, cls);
+   822	
+   823		mutex_unlock(&flow_offload_mutex);
+   824	
+   825		return err;
+   826	}
+   827	
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
