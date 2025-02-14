@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D63C02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 19:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D374C02198
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 20:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rOxHHSAUSuNc7w/lG1CMaa9WS/XHdtKtefSnIfHOdVQ=; b=BEwyNhz7fT/dCuETuQOwH0hysQ
-	cqPFIkKN5KWTCAOnOzqeo09kg2E/0jp/6rUT+7BYK33OzoGR9woUx6uQfPon9d6Se1LlqnluUAarh
-	ghZ7GbVUma7JrSufwabyTEnB/Z5Diz9KhpznY/QiZPhHCxg9/WP7M/Y1ClWBYJJjxQ8zz2eEe6mhz
-	D+kiIhDbseWPWfRfDEBqts+JLBejkTAjchR0PzbvJAuq5M+bERS1u9EmyzQb1kSHwv1rEpSpx10e2
-	F4YH1HNcy+ms1iAPJKyXa+NVXecfSdzszd+U35YXcY6/ozfLZyWOf0LtfKAekXRtmmizr/WBLWrnj
-	6gzqB7vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=; b=0QY3CxJW0Hnx0kIWO3NeHj/GiV
+	PPFzTVI1dMhThzNpusqGxLpCfgLX56AlqFvMQHqewABOF8MvDBVLSI/p+87dmJWIZpV37C+vQ72Zb
+	decaIpwTusHaVQIrphcDZg2/o+Rf32iU6wzGaVeNvmpsmgIGBgzUCnnPhNHYd1PA8Xe6ylVzVdWzc
+	ir2CQzbRAjC8tfjiYbGt7hlFVzh9E2G2QxQtGPwcL3qeH2k5lj2exdWu2cqgGX7nkE6S262wuHKcZ
+	DTg5Z/TtXBSxBz/4uqM0DJxZn89s4Wuuj/EIYIiscqn9kkB8lXm1vWhI+VnB80GWgl9zrz358hSDi
+	woRzGcjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0wl-0000000FyCG-0eA2;
-	Fri, 14 Feb 2025 19:01:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tj2CM-0000000G9aP-1cnP;
+	Fri, 14 Feb 2025 20:22:06 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0Nz-0000000Frva-2ZHU;
-	Fri, 14 Feb 2025 18:26:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739557557;
-	bh=+x+hwGbeiiewIBUcuyA6IeK0Cv+3CNmAHDuMbjvIz6Y=;
-	h=From:Date:Subject:To:Cc:From;
-	b=FnJ6qMU3StLaOoSe1JuVVdejdtt0RqIDPk1bTxBFNPP0dyUhngVKn9kqDNFKYlq2E
-	 c1EEOmz7gTi9JWcSicMlwqgr7TGQMbQc2rDHUqj7zCYrhqLnN9o3LbZBB6gqV4mtdU
-	 Zbm8NhvE0J7qGytFx+wCCli69zHhYmb+BfNhuO49HY0IBUCVXFcqclyXBYi6y9Nys8
-	 GUJ/apo2REPQlP8MhiONgLcvqvV853LqLw1mqxUtGd7Ctg8ESzkLvX+i0SnE/p7HVS
-	 mBDby8L0H1MDAj0JfXf4h5UapUUsLXug3j6Y+YW2T7dBxmShfluNJxI3W71lC3/NxE
-	 FZlJogFvF3SWA==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1003])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F08E417E0FC1;
-	Fri, 14 Feb 2025 19:25:54 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 14 Feb 2025 15:25:48 -0300
-Subject: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Add DMIC codec
- for delay
+	id 1tj2Au-0000000G9S4-02Kl;
+	Fri, 14 Feb 2025 20:20:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739564430; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=goflvi9jAIVrizOs8HAMfz9P6xsSRiAVP1kJDCkvg6DSiv1QuOhaK5FLKqW53jZRtjIe9+UJrWDk5GeRX5l1QUQAm/WRUl4UOYK2qOtAOg1F5D/KpBvOGhHDdesaroDsKnqTeqRW34URJlQLQL/S/GeDFGNPDCoMb9woF1ynhhQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1739564430; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=; 
+	b=Mu8xyI5z9zsc2sqR1sWZ+4zfneVTC+KVXQ28e/rYFLsqbTgXdjE+JJKhCpzyvV4dskZKybtQkP+Jjhil4Rh69yG7EoGCWZ9McLk7rfjf8toHEf1BtqJNIgZXOkXOPakvldAF+x3oowY7Lx34c9RKT8HJHnneynjl3vQCj87yMlE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
+	dmarc=pass header.from=<sebastian.fricke@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739564430;
+	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=;
+	b=WHV1mtgydivRLBm2fKfMEu/VYfQQmNABRuysJXeudaEXSJ/orR4qWCErPkFkvGNJ
+	PNDIPSFaJChmW6N+8Rcz73L+whm9AtITOrgp0WZ46er8A8DrK6EN3gCylp4A6Tgzy32
+	7YqlBJZk4j3IlnExKMSfbuFrb5H9r/YrNrCNQBU8=
+Received: from mail.zoho.com by mx.zohomail.com
+	with SMTP id 1739564427824276.79924110833304; Fri, 14 Feb 2025 12:20:27 -0800 (PST)
+Date: Fri, 14 Feb 2025 21:20:27 +0100
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: "Jiasheng Jiang" <jiashengjiangcool@gmail.com>
+Cc: "tiffany.lin" <tiffany.lin@mediatek.com>,
+	"andrew-ct.chen" <andrew-ct.chen@mediatek.com>,
+	"yunfei.dong" <yunfei.dong@mediatek.com>,
+	"mchehab" <mchehab@kernel.org>,
+	"matthias.bgg" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno" <angelogioacchino.delregno@collabora.com>,
+	"fullwaywang" <fullwaywang@outlook.com>,
+	"linux-media" <linux-media@vger.kernel.org>,
+	"linux-kernel" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek" <linux-mediatek@lists.infradead.org>
+Message-ID: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+In-Reply-To: <20250131012830.22394-1-jiashengjiangcool@gmail.com>
+References: <20250131012830.22394-1-jiashengjiangcool@gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Add scp_put() to free the scp
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250214-genio700-amic-wakeup-delay-200ms-v1-1-0094837c62b7@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAKuKr2cC/x3NSwqDQBBF0a1IjVNQdvxAthIyKPXFFGor3ZhEx
- L3bODyTe3eKCIZIj2yngK9Fm31Cfsuo/ajvwdYlkxNXissL7uFtrkVYJ2v5pwPWhTuMurETmSI
- 3dVMpyuoOCKXMEvC2/7V4vo7jBBfc4ldyAAAA
-X-Change-ID: 20250214-genio700-amic-wakeup-delay-200ms-b7b6ae563ee0
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Zoran Zhan <zoran.zhan@mediatek.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Importance: Medium
+User-Agent: Zoho Mail
+X-Mailer: Zoho Mail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_102559_800876_6B04AFB9 
-X-CRM114-Status: UNSURE (   8.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_122036_140348_D5628CDD 
+X-CRM114-Status: GOOD (  21.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +87,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The UL_SRC_BE DAI is connected to the MT6359 PMIC which can switch
-between a headset microphone and a built-in analog microphone. Both
-microphones' signals require around 200ms to settle after being enabled.
-Add a dmic-codec DAI to the UL_SRC_BE dai link with the corresponding
-wakeup-delay-ms to let the signal stabilize and prevent a "pop" sound.
+Hey Jiasheng,
 
-Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
-Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ ---- On Fri, 31 Jan 2025 02:28:30 +0100  Jiasheng Jiang <jiashengjiangcool@gmail.com> wrote --- 
+ > Add scp_put() to free the scp if devm_kzalloc() fails to avoid memory
+ > leak.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index a37cf102a6e928440cc88e7e8fe0225fc28ec962..6c934d70c1eadbc7af3f97af1961e629ab62ab3d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -218,6 +218,13 @@ usb_p2_vbus: regulator-9 {
- 		regulator-max-microvolt = <5000000>;
- 		enable-active-high;
- 	};
-+
-+	amic_codec: amic-codec {
-+		compatible = "dmic-codec";
-+		#sound-dai-cells = <0>;
-+		num-channels = <2>;
-+		wakeup-delay-ms = <200>;
-+	};
- };
- 
- &adsp {
-@@ -970,6 +977,14 @@ codec {
- 			sound-dai = <&pmic 0>;
- 		};
- 	};
-+
-+	dai-link-1 {
-+		link-name = "UL_SRC_BE";
-+
-+		codec {
-+			sound-dai = <&pmic 0>, <&amic_codec>;
-+		};
-+	};
- };
- 
- &spi2 {
+Your commit message sounds a bit like you copy-pasted your code into the commit message.
+What kind of memory is leaking here? Are we talking about SRAM memory?
+I'd reword the commit message to something like this to give a bit more context:
+
+On Mediatek devices with a system companion processor (SCP) the mtk_scp structure has to be removed explicitly to avoid a memory leak.
+Free the structure in case the allocation of the firmware structure fails during the firmware initialization.
 
 ---
-base-commit: 0ae0fa3bf0b44c8611d114a9f69985bf451010c3
-change-id: 20250214-genio700-amic-wakeup-delay-200ms-b7b6ae563ee0
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Additionally, the commit title says close to nothing to the reader as well.
+How about: Fix memory leak in FW initialization
+
+But as I stated above you should clarify what kind of memory we are talking about here.
+
+Also just out of interest have you ever actually experienced issues with this?
+It seems to me that the situation where you run out of Kernel memory should be quite rare.
+
+Regards,
+Sebastian
+
+ > 
+ > Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
+ > Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+ > ---
+ >  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++-
+ >  1 file changed, 4 insertions(+), 1 deletion(-)
+ > 
+ > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+ > index ff23b225db70..1b0bc47355c0 100644
+ > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+ > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+ > @@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
+ >      }
+ >  
+ >      fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+ > -    if (!fw)
+ > +    if (!fw) {
+ > +        scp_put(scp);
+ >          return ERR_PTR(-ENOMEM);
+ > +    }
+ > +
+ >      fw->type = SCP;
+ >      fw->ops = &mtk_vcodec_rproc_msg;
+ >      fw->scp = scp;
+ > -- 
+ > 2.25.1
+ > 
+ > 
+ > 
 
 
