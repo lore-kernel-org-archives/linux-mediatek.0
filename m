@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D374C02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 20:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C48BC02198
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 20:26:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=; b=0QY3CxJW0Hnx0kIWO3NeHj/GiV
-	PPFzTVI1dMhThzNpusqGxLpCfgLX56AlqFvMQHqewABOF8MvDBVLSI/p+87dmJWIZpV37C+vQ72Zb
-	decaIpwTusHaVQIrphcDZg2/o+Rf32iU6wzGaVeNvmpsmgIGBgzUCnnPhNHYd1PA8Xe6ylVzVdWzc
-	ir2CQzbRAjC8tfjiYbGt7hlFVzh9E2G2QxQtGPwcL3qeH2k5lj2exdWu2cqgGX7nkE6S262wuHKcZ
-	DTg5Z/TtXBSxBz/4uqM0DJxZn89s4Wuuj/EIYIiscqn9kkB8lXm1vWhI+VnB80GWgl9zrz358hSDi
-	woRzGcjw==;
+	bh=KeFm5uN/dcweRabrSluxP8oPq78OsF2hf9MOMtJHy/M=; b=kCAXjbY2Gw6jKJwiEIBKaluZRk
+	eWv+qCBW0i07egMLKnZFE57s0SuCan+1Sj/kuLgo3B+uHGgGoFKgqAaz/An62dxL6WCJw/YnP8Wv/
+	ydyCQt8DwF2JeKq4az8K5/ep3wzfrKGz+Avla2HngkdWOK7+lrTWy4Gxej0kMC6kkGsx22bzezaIN
+	Co0wXeqSdAQTGCuboXLdI9ZKuvOnwou3fJ5MTXuPqzFevKXElFKMCaG/V+x2LfRICIG4Jox7vBRDH
+	mqz7hZc/NwPeSyzrPLpWB8yBmrwFCn7SeR3DbuTbG35sW1fXMNQslB4erbEP0yLTpvW6D96CIX+j8
+	zom0BcBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj2CM-0000000G9aP-1cnP;
-	Fri, 14 Feb 2025 20:22:06 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1tj2Ga-0000000GA4X-17DE;
+	Fri, 14 Feb 2025 20:26:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj2Au-0000000G9S4-02Kl;
-	Fri, 14 Feb 2025 20:20:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739564430; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=goflvi9jAIVrizOs8HAMfz9P6xsSRiAVP1kJDCkvg6DSiv1QuOhaK5FLKqW53jZRtjIe9+UJrWDk5GeRX5l1QUQAm/WRUl4UOYK2qOtAOg1F5D/KpBvOGhHDdesaroDsKnqTeqRW34URJlQLQL/S/GeDFGNPDCoMb9woF1ynhhQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739564430; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=; 
-	b=Mu8xyI5z9zsc2sqR1sWZ+4zfneVTC+KVXQ28e/rYFLsqbTgXdjE+JJKhCpzyvV4dskZKybtQkP+Jjhil4Rh69yG7EoGCWZ9McLk7rfjf8toHEf1BtqJNIgZXOkXOPakvldAF+x3oowY7Lx34c9RKT8HJHnneynjl3vQCj87yMlE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739564430;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=SqOfoj2KSrjVqeuyp909FB717ygPmWnh3bKUWLSJo4w=;
-	b=WHV1mtgydivRLBm2fKfMEu/VYfQQmNABRuysJXeudaEXSJ/orR4qWCErPkFkvGNJ
-	PNDIPSFaJChmW6N+8Rcz73L+whm9AtITOrgp0WZ46er8A8DrK6EN3gCylp4A6Tgzy32
-	7YqlBJZk4j3IlnExKMSfbuFrb5H9r/YrNrCNQBU8=
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1739564427824276.79924110833304; Fri, 14 Feb 2025 12:20:27 -0800 (PST)
-Date: Fri, 14 Feb 2025 21:20:27 +0100
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: "Jiasheng Jiang" <jiashengjiangcool@gmail.com>
-Cc: "tiffany.lin" <tiffany.lin@mediatek.com>,
-	"andrew-ct.chen" <andrew-ct.chen@mediatek.com>,
-	"yunfei.dong" <yunfei.dong@mediatek.com>,
-	"mchehab" <mchehab@kernel.org>,
-	"matthias.bgg" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno" <angelogioacchino.delregno@collabora.com>,
-	"fullwaywang" <fullwaywang@outlook.com>,
-	"linux-media" <linux-media@vger.kernel.org>,
-	"linux-kernel" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek" <linux-mediatek@lists.infradead.org>
-Message-ID: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
-In-Reply-To: <20250131012830.22394-1-jiashengjiangcool@gmail.com>
-References: <20250131012830.22394-1-jiashengjiangcool@gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Add scp_put() to free the scp
+	id 1tizLq-0000000Ffx1-0YeR;
+	Fri, 14 Feb 2025 17:19:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739553580;
+	bh=mp9J76YP/HsVdMmLzZKcE6D8+8zelpiTKlZzw4q9iyA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=DkS1ptnka7mTCYFzCt3C4eiZfK5/Fs4EOLoFJO0U41PpywCfMKAg3Pr0SRh1YfFF3
+	 auBkT7X170y7/8M7Bg/XDOPQ5zGbgE185dqRq/vYhJp+NIOszHfEkcV3cZ2NzcH6KX
+	 D3cyMpA4QWEW/OHg2fNWHls6kyqxv+F6z8HjrhEE7scfSDQFgFfx59004VR9biWlbJ
+	 j9TJNcBWG/kR9FkSPIpMMRq+IGymWkCJOYX9U9L75KETufkN6vBs25XI4LBGNqNQQL
+	 gAx24d/z6dOT70sK4rzsI2hqelWHdcabQezFkNV4rGDJHdq/xKNHrAGdFL2/L65VaB
+	 xdlBCVBAKnTBg==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1003])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1287E17E0239;
+	Fri, 14 Feb 2025 18:19:35 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 14 Feb 2025 14:18:36 -0300
+Subject: [PATCH 05/13] ASoC: mediatek: mt6359-accdet: Implement EINT IRQ
+ polarity configuration
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250214-mt6359-accdet-dts-v1-5-677a151b9b4c@collabora.com>
+References: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+In-Reply-To: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Andrew Perepech <andrew.perepech@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_122036_140348_D5628CDD 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20250214_091942_317832_BF860FB5 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,60 +85,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Jiasheng,
+From: Andrew Perepech <andrew.perepech@mediatek.com>
 
- ---- On Fri, 31 Jan 2025 02:28:30 +0100  Jiasheng Jiang <jiashengjiangcool@gmail.com> wrote --- 
- > Add scp_put() to free the scp if devm_kzalloc() fails to avoid memory
- > leak.
+The driver currently reads the EINT IRQ polarity from the
+"mediatek,eint-level-pol" property but never actually configures the
+hardware accordingly.
 
-Your commit message sounds a bit like you copy-pasted your code into the commit message.
-What kind of memory is leaking here? Are we talking about SRAM memory?
-I'd reword the commit message to something like this to give a bit more context:
+Implement the IRQ polarity configuration in hardware.
 
-On Mediatek devices with a system companion processor (SCP) the mtk_scp structure has to be removed explicitly to avoid a memory leak.
-Free the structure in case the allocation of the firmware structure fails during the firmware initialization.
-
+Signed-off-by: Andrew Perepech <andrew.perepech@mediatek.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
+ sound/soc/codecs/mt6359-accdet.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-Additionally, the commit title says close to nothing to the reader as well.
-How about: Fix memory leak in FW initialization
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index 6f07db879c6a56ce4843954f51bb9602373e4aa5..eee676d1faef2076bc837a12a2ee3615216752b7 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -733,6 +733,22 @@ static void config_digital_init_by_mode(struct mt6359_accdet *priv)
+ 					   BIT(ACCDET_EINT1_INVERTER_SW_EN_SFT));
+ 		}
+ 	}
++
++	if (priv->data->eint_pol == IRQ_TYPE_LEVEL_LOW) {
++		/* EINT polarity normal */
++		regmap_update_bits(priv->regmap,
++				ACCDET_EINT_IN_INVERSE_ADDR,
++				ACCDET_EINT_IN_INVERSE_MASK_SFT,
++				0);
++	} else if (priv->data->eint_pol == IRQ_TYPE_LEVEL_HIGH) {
++		/* EINT polarity inverse */
++		regmap_update_bits(priv->regmap,
++				ACCDET_EINT_IN_INVERSE_ADDR,
++				ACCDET_EINT_IN_INVERSE_MASK_SFT,
++				BIT(ACCDET_EINT_IN_INVERSE_SFT));
++	} else {
++		dev_warn(priv->dev, "Unacceptable EINT level type, using default\n");
++	}
+ }
+ 
+ static void config_eint_init_by_mode(struct mt6359_accdet *priv)
 
-But as I stated above you should clarify what kind of memory we are talking about here.
-
-Also just out of interest have you ever actually experienced issues with this?
-It seems to me that the situation where you run out of Kernel memory should be quite rare.
-
-Regards,
-Sebastian
-
- > 
- > Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
- > Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
- > ---
- >  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++-
- >  1 file changed, 4 insertions(+), 1 deletion(-)
- > 
- > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
- > index ff23b225db70..1b0bc47355c0 100644
- > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
- > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
- > @@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
- >      }
- >  
- >      fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
- > -    if (!fw)
- > +    if (!fw) {
- > +        scp_put(scp);
- >          return ERR_PTR(-ENOMEM);
- > +    }
- > +
- >      fw->type = SCP;
- >      fw->ops = &mtk_vcodec_rproc_msg;
- >      fw->scp = scp;
- > -- 
- > 2.25.1
- > 
- > 
- > 
+-- 
+2.48.1
 
 
