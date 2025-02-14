@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53BF1C02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 18:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D63C02198
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 19:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0MWFk+dTHQBz1p7Hv/WwHFEEiTXSBr4DDoFyvcQqzI=; b=oVhSZhJd6TdNJ5V0N3vVEfKbTj
-	SUOqWo76bsGK6OyqgrESM1Xt6UYEPD2SsdIx1j/Q8CRrPgREuI4kM8OGrFmOXj4w1GNMmuZrbxvt5
-	rE/9hPGnoBf+1EEpXiFPNaQGlHSX0cIbvbttW7yM+EZKaiVVpHM3qvdEnUjGTL+J1Of80TBQuIAXQ
-	PsR12i3LkoRbsRJyp3MlaTIGHanPFBoQJWPRZ+YUau/LQBTZ4578LIaf2a7TBmOOGXwma6GEI3Ez4
-	LUJqt1TwqTrd6eINKykXvfZhKwSSuhgtnrognLSwrNFbtH/b0rgqc3FlIpuXBtLDJL7t7Cq5t4L9e
-	GQnT36wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rOxHHSAUSuNc7w/lG1CMaa9WS/XHdtKtefSnIfHOdVQ=; b=BEwyNhz7fT/dCuETuQOwH0hysQ
+	cqPFIkKN5KWTCAOnOzqeo09kg2E/0jp/6rUT+7BYK33OzoGR9woUx6uQfPon9d6Se1LlqnluUAarh
+	ghZ7GbVUma7JrSufwabyTEnB/Z5Diz9KhpznY/QiZPhHCxg9/WP7M/Y1ClWBYJJjxQ8zz2eEe6mhz
+	D+kiIhDbseWPWfRfDEBqts+JLBejkTAjchR0PzbvJAuq5M+bERS1u9EmyzQb1kSHwv1rEpSpx10e2
+	F4YH1HNcy+ms1iAPJKyXa+NVXecfSdzszd+U35YXcY6/ozfLZyWOf0LtfKAekXRtmmizr/WBLWrnj
+	6gzqB7vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0rY-0000000FxA8-0EnM;
-	Fri, 14 Feb 2025 18:56:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tj0wl-0000000FyCG-0eA2;
+	Fri, 14 Feb 2025 19:01:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tizLk-0000000Ffvr-3b2g;
-	Fri, 14 Feb 2025 17:19:38 +0000
+	id 1tj0Nz-0000000Frva-2ZHU;
+	Fri, 14 Feb 2025 18:26:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739553575;
-	bh=lPL1S5SCW1+PI23N/jcgP12hMhBfoTHib8FSUQooe88=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gIesuFvpOQ7/iFIFngOzZTm6MMmukdjPv3X0ec+jjsVWTpHWiOj8ZTRn4iHbg8i6n
-	 lkHkV3Gk83RNtg/wMlqz+n34f+cNavlirn+ucU7LgH3qNPZIQ/byWB7VHvRFpy6asJ
-	 /0awctKwFeOOnw7M5HSD16qVlUHQQiG2NRMlP5bb8QndM4gG4fbhUKOo9cUlYKKrd+
-	 XKjboOZrfkQVV4KWAsMK018sUEq2pj77ABcw33a7Xg9JlZGdYeoU20IGYXP8YJPNkY
-	 Fya6ZtvLW8cMLAxUaGFpiDqtOBwbe1z0iDECm6R2IJ4c6jGAg39NeV6qZbCvq5rAFV
-	 fjnRMsE8Wp+sA==
+	s=mail; t=1739557557;
+	bh=+x+hwGbeiiewIBUcuyA6IeK0Cv+3CNmAHDuMbjvIz6Y=;
+	h=From:Date:Subject:To:Cc:From;
+	b=FnJ6qMU3StLaOoSe1JuVVdejdtt0RqIDPk1bTxBFNPP0dyUhngVKn9kqDNFKYlq2E
+	 c1EEOmz7gTi9JWcSicMlwqgr7TGQMbQc2rDHUqj7zCYrhqLnN9o3LbZBB6gqV4mtdU
+	 Zbm8NhvE0J7qGytFx+wCCli69zHhYmb+BfNhuO49HY0IBUCVXFcqclyXBYi6y9Nys8
+	 GUJ/apo2REPQlP8MhiONgLcvqvV853LqLw1mqxUtGd7Ctg8ESzkLvX+i0SnE/p7HVS
+	 mBDby8L0H1MDAj0JfXf4h5UapUUsLXug3j6Y+YW2T7dBxmShfluNJxI3W71lC3/NxE
+	 FZlJogFvF3SWA==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1003])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B7F8417E1551;
-	Fri, 14 Feb 2025 18:19:30 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F08E417E0FC1;
+	Fri, 14 Feb 2025 19:25:54 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 14 Feb 2025 14:18:35 -0300
-Subject: [PATCH 04/13] ASoC: mediatek: mt6359-accdet: Add compatible
- property
+Date: Fri, 14 Feb 2025 15:25:48 -0300
+Subject: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Add DMIC codec
+ for delay
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250214-mt6359-accdet-dts-v1-4-677a151b9b4c@collabora.com>
-References: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
-In-Reply-To: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+Message-Id: <20250214-genio700-amic-wakeup-delay-200ms-v1-1-0094837c62b7@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAKuKr2cC/x3NSwqDQBBF0a1IjVNQdvxAthIyKPXFFGor3ZhEx
+ L3bODyTe3eKCIZIj2yngK9Fm31Cfsuo/ajvwdYlkxNXissL7uFtrkVYJ2v5pwPWhTuMurETmSI
+ 3dVMpyuoOCKXMEvC2/7V4vo7jBBfc4ldyAAAA
+X-Change-ID: 20250214-genio700-amic-wakeup-delay-200ms-b7b6ae563ee0
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-pm@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Andrew Perepech <andrew.perepech@mediatek.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Zoran Zhan <zoran.zhan@mediatek.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_091937_045118_69DB34C1 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20250214_102559_800876_6B04AFB9 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,43 +82,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible property and add it to the module device table for the
-mt6359-accdet platform driver to allow automatic module loading and
-probing when the compatible is present in DT.
+The UL_SRC_BE DAI is connected to the MT6359 PMIC which can switch
+between a headset microphone and a built-in analog microphone. Both
+microphones' signals require around 200ms to settle after being enabled.
+Add a dmic-codec DAI to the UL_SRC_BE dai link with the corresponding
+wakeup-delay-ms to let the signal stabilize and prevent a "pop" sound.
 
-Co-developed-by: Andrew Perepech <andrew.perepech@mediatek.com>
-Signed-off-by: Andrew Perepech <andrew.perepech@mediatek.com>
+Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
+Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- sound/soc/codecs/mt6359-accdet.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index ed34cc15b80e856356c07fd53af22207124e0d19..6f07db879c6a56ce4843954f51bb9602373e4aa5 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -1047,9 +1047,19 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+const struct of_device_id accdet_of_match[] = {
-+	{
-+		.compatible = "mediatek,mt6359-accdet",
-+	}, {
-+		/* sentinel */
-+	},
-+};
-+MODULE_DEVICE_TABLE(of, accdet_of_match);
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index a37cf102a6e928440cc88e7e8fe0225fc28ec962..6c934d70c1eadbc7af3f97af1961e629ab62ab3d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -218,6 +218,13 @@ usb_p2_vbus: regulator-9 {
+ 		regulator-max-microvolt = <5000000>;
+ 		enable-active-high;
+ 	};
 +
- static struct platform_driver mt6359_accdet_driver = {
- 	.driver = {
- 		.name = "pmic-codec-accdet",
-+		.of_match_table = accdet_of_match,
- 	},
- 	.probe = mt6359_accdet_probe,
++	amic_codec: amic-codec {
++		compatible = "dmic-codec";
++		#sound-dai-cells = <0>;
++		num-channels = <2>;
++		wakeup-delay-ms = <200>;
++	};
  };
+ 
+ &adsp {
+@@ -970,6 +977,14 @@ codec {
+ 			sound-dai = <&pmic 0>;
+ 		};
+ 	};
++
++	dai-link-1 {
++		link-name = "UL_SRC_BE";
++
++		codec {
++			sound-dai = <&pmic 0>, <&amic_codec>;
++		};
++	};
+ };
+ 
+ &spi2 {
 
+---
+base-commit: 0ae0fa3bf0b44c8611d114a9f69985bf451010c3
+change-id: 20250214-genio700-amic-wakeup-delay-200ms-b7b6ae563ee0
+
+Best regards,
 -- 
-2.48.1
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
