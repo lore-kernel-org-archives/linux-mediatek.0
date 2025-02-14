@@ -4,69 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D83DBC02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 08:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C27C02198
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 08:08:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5zPJSzB3ans/Le3b+v/iIwQk+DMI5JmC1qjWM3kVcJo=; b=jm7nIwAN9LD40RLue7Hmvfsewo
-	7cmZ5uvT/lq1Wgd+VR2z81xgCe5VxwAgXXWdEKcJYICuQBkbDtjn9CA9VeeBeS8Awp5afkkIOSTaP
-	iz0srrgH8TJJKFPvnixA68iOrpNqHY2dUzSL2DFOXUUHvwh6KJno/tlqNFtrthPzVJZhN2nMTzlvY
-	mdgS/GfT8uxMVFFJBorz0wkClN66SmEF382WNG6W8eE+eRpbO7T6iiyEIBGLLnc9vLWXwZu+6JDd1
-	Zv+GB5fMlntplv2RgS0iz83mzYLly1eImAMlrryzT7rzXM5k5TI3qglJzUuCrggcebaPK9qDVn8Vw
-	rF4SMdkg==;
+	bh=GEmjeJJTOC7QfeGz/l1e5CAhsK/j60DY8H03y2S0Hl8=; b=jfWe94J9s3INISn3V9xyjsyGUn
+	ujgcSUunCa4xl9QEoMg+ktjdCV2FdP+31dXi8+9F0fX0ZUdsUbT0JECcyUN5y4JqaxhKbAkIRWsDo
+	8tJScELfz9DBNKLJusMo58baOH5musU8qquwz21ypdPTThCcjxqPvfNxsdBxt2hCD9W3Zk0eeNhxx
+	+Mg+9RV5+sviEcpd8XekXkm3Fdy85mNz9h0gV9Yqe0jkHlzRsUzzOUpne7tiRP1u+zcemy1pWOtCv
+	JqK51VhIksxROTo0paLEvCrt4UIGH8J4PcqyWitHzz5DgGuZkWSb6CRJhj09AxQEpNA07QXpHyhFb
+	2Gym7a1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiqhS-0000000E3BV-40a7;
-	Fri, 14 Feb 2025 08:05:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tiqkG-0000000E3cA-3j1M;
+	Fri, 14 Feb 2025 08:08:20 +0000
+Received: from mail-vk1-f169.google.com ([209.85.221.169])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiqg1-0000000E2vS-2cs4;
-	Fri, 14 Feb 2025 08:03:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 528E25C10B8;
-	Fri, 14 Feb 2025 08:03:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA967C4CED1;
-	Fri, 14 Feb 2025 08:03:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739520236;
-	bh=ZJTleOr+aCVydGuBXvDe9vmxgmg7Hou12+O0aC141WM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rNQyXiewYUFgMh/V+W+aYjDpnFSpGmByYccCQTdDs+utzhny0WTB/CV7Pzdtk6unF
-	 nIZ0LXNKlBANxtHtRqoN/q8ugYylWxYSafBFsUVmBpkTH94wGaT1JQqaZgbT+l9KDo
-	 z0kzoy37mljipUA+YCzLw1g7xedqbQIcv4I7rQqsIeztYoss6AhLGzabOMvyYAeNdX
-	 n5Vv4k4vXto83RiJc6QeEI8esqSmTLfSN7ncfglGEkHynuy6Xi5aZHy7icTc0oCJHf
-	 +ZCpiRW6GuWfeSokxvBGKZbOttm7c0ISkKTwJcaObnz2KeSVknBe3wxh7sz+8td7SS
-	 bO7KKW97He9/g==
-Date: Fri, 14 Feb 2025 09:03:52 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, 
-	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH net-next v4 11/16] dt-bindings: net: airoha: Add the NPU
- node for EN7581 SoC
-Message-ID: <20250214-futuristic-goat-of-enthusiasm-bba020@krzk-bin>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
- <20250213-airoha-en7581-flowtable-offload-v4-11-b69ca16d74db@kernel.org>
+	id 1tiqgu-0000000E36t-0MnG;
+	Fri, 14 Feb 2025 08:04:53 +0000
+Received: by mail-vk1-f169.google.com with SMTP id 71dfb90a1353d-5203bbb969cso509415e0c.3;
+        Fri, 14 Feb 2025 00:04:51 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739520288; x=1740125088;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GEmjeJJTOC7QfeGz/l1e5CAhsK/j60DY8H03y2S0Hl8=;
+        b=sLu1Mbmk2ZteJV6rDh9+5LchUelYBNqS7mmQscgw6C9yak8Nkqp5n6cTeWXLhVN6iX
+         MtWm4LUUe5qJMn2IKX1szRGDm5XsPl9rW+mpIJ5gOYxJ8qAyiTxF0xcNXgwU3wgtcCtk
+         YhVvc4crD9Ff16j74ePsuq1XLy2uPIMYdiKcabnE3gp8xV2FG8bB4FsUdC1/sKLY/hAY
+         zpRTUGn7iLl+rS6jv1MSBzzfYYTE/DBbVgMsNHjrACMyKREpkjgF9a/kfQ+7aIwp3UwP
+         cptGdmxookx5JSSI/TN0hPwQuwWWzc2d4VSfaBpn/aBDuuWJrQ8nIpwB58aSyPPpdjNS
+         u8AA==
+X-Forwarded-Encrypted: i=1; AJvYcCW2OwbxbFKYIjGXq8HFExLH0vPiO57p0KXyDBKB/+MKQpbX019AFo7UELsrkokpIQ+I5LykMKL7lY+OTiLdfxQ/@lists.infradead.org, AJvYcCWet5HOCrQOHE8XdLQ6X2VKnWA1rs5KSZD0peRo96d2K+t3vDctUxJskF6B5SqpY/RlFsEHF/Yf7DTpmRF7q84=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCpp45Vgy8ah5JFYviNJcfYS+VExjJSliNtORgMdDER/vUfmJs
+	dgTctH/aOctNl520a3BLu8l9tIQJ3GePe5MV5Tr8+ZVepwPqRftiB4ZxgzDaU/A=
+X-Gm-Gg: ASbGncvCCfeQa7JsVGts+aV7HE1xIhNGrhbi5ryWbcZ8fUVNtyVGcG89xyWtlEYCv4f
+	D9o621jOjjYDtL19dyTdcu5ZjNo7IELp7GGRbYfIWzyvY8bbt/OO6QkJA6EfmPXiPVrhb8CczLS
+	15R+YdsDIYOrwNJCYKU2zkmPFOL8kCG1Kd8IFMnkyd05gjxG88UV7wbIASkEzNt6PUJC7qWuwZO
+	nl/dUaCf+1Kda36VvSQ9lr6WYuiHZqy5DmO12c8mYCaZ0pm010LZE/eMWWo7JL9ZoP0iDaOAOJb
+	AHTswilptqzUGplBWBA4BU30wpFSKhs4a21vfuSkO02iyh6xjdVEdg==
+X-Google-Smtp-Source: AGHT+IH8d9/j2SQhmmOEHrsYJUNgoUos8VpH/s1daewYwejIHi4uRjZXNJFupIXOC4BEQW56MWWDTg==
+X-Received: by 2002:a05:6122:1683:b0:520:61ee:c805 with SMTP id 71dfb90a1353d-52067c2e4f3mr9223360e0c.3.1739520287908;
+        Fri, 14 Feb 2025 00:04:47 -0800 (PST)
+Received: from mail-vs1-f46.google.com (mail-vs1-f46.google.com. [209.85.217.46])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5209437e711sm55672e0c.37.2025.02.14.00.04.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 14 Feb 2025 00:04:46 -0800 (PST)
+Received: by mail-vs1-f46.google.com with SMTP id ada2fe7eead31-4bbefec9362so507676137.1;
+        Fri, 14 Feb 2025 00:04:46 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUN/cuGAmlN0szJEJ1g6d89yF5RfP7mcoirxow+RWH3RQ2uijv3aEfjLKoOXsUXvITvAi+TnoJn2+6rut+tV7A=@lists.infradead.org, AJvYcCVxZ0T4e0CJnsBcSgpBNSHBAJ7kxp0VUna16ozSq+uu1WOp9XYDK5weeSceWZOcug8rcKn7STcH49gzLpbQ9drG@lists.infradead.org
+X-Received: by 2002:a05:6102:1611:b0:4bb:9b46:3f87 with SMTP id
+ ada2fe7eead31-4bbf21b4b54mr9074741137.6.1739520286475; Fri, 14 Feb 2025
+ 00:04:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250213-airoha-en7581-flowtable-offload-v4-11-b69ca16d74db@kernel.org>
+References: <20250212163359.2407327-1-andriy.shevchenko@linux.intel.com>
+ <20250212163359.2407327-2-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdW1wxQ0cddeE72D+Sii4HkT4bJfeTWX4-8FfHiFr+=3DA@mail.gmail.com> <65f5eiy6kh6nhdjgpylrdjpw35jbae4s454u7qeqamh5hny7ms@ip4btvgxlaq4>
+In-Reply-To: <65f5eiy6kh6nhdjgpylrdjpw35jbae4s454u7qeqamh5hny7ms@ip4btvgxlaq4>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 14 Feb 2025 09:04:34 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXfj=kmaQ6OgUwyhNq+ZK2ZbpSfD2BS0B96VHoKAMonVQ@mail.gmail.com>
+X-Gm-Features: AWEUYZlKBGDrp8GUpmIDR1fGcTzBqQ1-W6-xx6LlSCcVReodURXv16fRWTmPbuY
+Message-ID: <CAMuHMdXfj=kmaQ6OgUwyhNq+ZK2ZbpSfD2BS0B96VHoKAMonVQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/8] i2c: Introduce i2c_10bit_addr_from_msg()
+To: Andi Shyti <andi.shyti@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-i2c@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Stefan Roese <sr@denx.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Gregory CLEMENT <gregory.clement@bootlin.com>, 
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_000357_737347_6F66323B 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_000452_123700_4D4B7BC5 
+X-CRM114-Status: GOOD (  20.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +103,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2025 at 04:34:30PM +0100, Lorenzo Bianconi wrote:
-> This patch adds the NPU document binding for EN7581 SoC.
-> The Airoha Network Processor Unit (NPU) provides a configuration interface
-> to implement wired and wireless hardware flow offloading programming Packet
-> Processor Engine (PPE) flow table.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-npu.yaml | 72 ++++++++++++++++++++++
->  1 file changed, 72 insertions(+)
+Hi Andi,
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Thu, 13 Feb 2025 at 23:41, Andi Shyti <andi.shyti@kernel.org> wrote:
+> > > @@ -952,6 +952,16 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
+> > >         return (msg->addr << 1) | (msg->flags & I2C_M_RD);
+> > >  }
+> > >
+> > > +static inline u8 i2c_10bit_addr_from_msg(const struct i2c_msg *msg)
+> >
+> > Having never used 10-bit addressing myself, or even looked into it,
+> > it took me a while to understand what this helper really does...
+> > So this returns the high byte of the artificial 16-bit address that
+> > must be used to address a target that uses 10-bit addressing?
+> > Hence I think this should be renamed, to better match its purpose.
+>
+> It's coherent with i2c_8bit_addr_from_msg(), right?
 
-Best regards,
-Krzysztof
+Is it? Unlike i2c_8bit_addr_from_msg(), it does not return the full
+address,
 
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
