@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72B7C021A4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 00:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7765AC021A0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 00:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vpuRtzEq0QQBKTFe7oiNde6xdrTLT6xb1c3fW35+XOM=; b=2W1+BMbxBtAjhJcGQW/JYa8hBK
-	fOV6C7LZcaBg3a/ngyjBz0yDBok7lZ2R7SV7NKLBYfYB6olll78EV0QWZ1fy4IqrExi+ufEfbYhIg
-	2QzpqWKNKp9krrmPoaeMmLeOFXpbPvpGPhaonMYNRPACFBXXrDquGqjx+b8FN9hjLZNji0V3UqC5z
-	pdSuV4nIb3vVqPe3IBmc1J+zg4o3FCD6gJ5cZMmxshvk6wxxPNW2jr2eY84Ui6MvOnH/ogZxyOspH
-	TMXCDzVr1ytUFsQ1/YWXeIVGjRJqMm1dUoIvmNZF3wSvrCTNx2tB/RU4H2tQbO8ZwfaaJodWGHggE
-	SVmiBRkw==;
+	bh=WV3CUjfdiDqmiVITg/ki0rg01TIBSPaLDwHXu/1B6+E=; b=GdaZytLIIHDkjiV0ZYm8NB+U7F
+	PFoKg8B80ah26Jb+cXSPxwv0PeUkl5n1l2IIPwwBHUvzG0TRRysc08LRtTRK2HJnDk/FoYIZg31Jz
+	q/cDrXQrQ0tEl8puunTKouRC6VIcGoqUDDpYQeEpPoNMLX28EsLNvl23KkEBqGdMoKNj1kZVVw7mQ
+	8gJ+OZsCXgvESUVfUw7yO5gyPj1oB7NN5FA/5Pf/vnYahVKDNhaf5xTTjwRRqVBFAoW8fQIOlkYIS
+	Ge5kHadjwHDDEQqoFzm9hIyRrCRX8EMM1EjRMFzoptUiuori71ea/Y2y8gtHQACXMnBI4Ij/SVcxs
+	ayMZI/OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tijSN-0000000D2lO-2Xd4;
-	Fri, 14 Feb 2025 00:21:23 +0000
+	id 1tijSO-0000000D2mE-0FQF;
+	Fri, 14 Feb 2025 00:21:24 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tijS9-0000000D2cr-2Zdj
+	id 1tijSE-0000000D2fE-3CUA
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Feb 2025 00:21:10 +0000
+	Fri, 14 Feb 2025 00:21:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1739492468;
+	s=mimecast20190719; t=1739492474;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=vpuRtzEq0QQBKTFe7oiNde6xdrTLT6xb1c3fW35+XOM=;
-	b=E0+VU4HcUSGgWxZKVsNwP8lw9qa+mp2MLVsFCpBKP3w+zlEYTXRyXb6LteCvjvQoCMNn2z
-	+6ahv3ZVHhItFdHe8QltoN//cRNX+6ZESmGYXfAD6Ll+Gz7mYwGIgDJsQSu7NUnTWcdTrq
-	xLRAKb0Oaf1hVOcaS2c+ZCyIO840Gsw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	bh=WV3CUjfdiDqmiVITg/ki0rg01TIBSPaLDwHXu/1B6+E=;
+	b=LuCR42MWd9fxGwQ/YJIVQ4wcpWSEq5jNT2WyFHWc4nuvwAe0WOOv30I1KR3OYDkIAY96dM
+	cwyJ6NvC007tAXGr9d5L8V1mlZh7fc5MyHLsvLoQWdLACAT6vqXFFQiqIkHTkM1TN55gVZ
+	/85S0TCR/jcRuCD2WYa1XdaLFvjLtAU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-586-LxgCWGsVN_6f4FwaIITdEQ-1; Thu,
- 13 Feb 2025 19:21:03 -0500
-X-MC-Unique: LxgCWGsVN_6f4FwaIITdEQ-1
-X-Mimecast-MFC-AGG-ID: LxgCWGsVN_6f4FwaIITdEQ
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-644-VWyHsseaPNaZQ615f1HAfw-1; Thu,
+ 13 Feb 2025 19:21:10 -0500
+X-MC-Unique: VWyHsseaPNaZQ615f1HAfw-1
+X-Mimecast-MFC-AGG-ID: VWyHsseaPNaZQ615f1HAfw
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A699618EB2C6;
-	Fri, 14 Feb 2025 00:20:54 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AD23F19560B9;
+	Fri, 14 Feb 2025 00:21:04 +0000 (UTC)
 Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.199])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 65EF8191D7C8;
-	Fri, 14 Feb 2025 00:20:45 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id F337119373C4;
+	Fri, 14 Feb 2025 00:20:54 +0000 (UTC)
 From: Anusha Srivatsa <asrivats@redhat.com>
-Date: Thu, 13 Feb 2025 19:19:21 -0500
-Subject: [PATCH 08/12] drm/stm: move to devm_platform_ioremap_resource()
+Date: Thu, 13 Feb 2025 19:19:22 -0500
+Subject: [PATCH 09/12] drm/tegra: move to devm_platform_ioremap_resource()
  usage
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250213-mem-cocci-v3-v1-8-93466d165349@redhat.com>
+Message-Id: <20250213-mem-cocci-v3-v1-9-93466d165349@redhat.com>
 References: <20250213-mem-cocci-v3-v1-0-93466d165349@redhat.com>
 In-Reply-To: <20250213-mem-cocci-v3-v1-0-93466d165349@redhat.com>
 To: Joel Stanley <joel@jms.id.au>, 
@@ -103,18 +103,17 @@ Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
  linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
  linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1739492356; l=1617;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1739492356; l=1560;
  i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
- bh=i8LWrfxom0nQSC05REsfBXvlA+tOy6QpDxqqftn+kA0=;
- b=ODnHfrPCdxaG+cvlimJF1bdgqI5DCS6OaKBsHAK5YPWr4Mpni0r1miA8pb0l5FvqKULISA+19
- cfaUlB7iF9zDhK/+tlgHhQD7bnbWSZd0UKCrc2LMMV6SZmEUSfLoFcf
+ bh=66gfH4HaVcJzuzQX0NHIOkeT0eso2EOo8AHIoNrPiQ8=;
+ b=lERldx+LESWFe45bunCkBz/hTi0YUBRXtlg7nEd9i+5NiEJuicyc5TDHv4kGFLqu6nL+Q4mjK
+ OFl9sPsgdQeB02s6YY5/9O/HjCjt3dM44IBUwlkbzFjZuraMmQBWPEO
 X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
  pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_162109_718204_16B46B27 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250213_162114_878896_FF9DF9FB 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,37 +143,36 @@ identifier pdev;
 -ioremap_res = devm_ioremap_resource(...);
 +ioremap_res = devm_platform_ioremap_resource(pdev,0);
 
-Cc: Yannick Fertre <yannick.fertre@foss.st.com>
-Cc: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
-Cc: Philippe Cornu <philippe.cornu@foss.st.com>
-Acked-by: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>
+Cc: Mikko Perttunen <mperttunen@nvidia.com>
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 ---
- drivers/gpu/drm/stm/ltdc.c | 4 +---
+ drivers/gpu/drm/tegra/dsi.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/stm/ltdc.c b/drivers/gpu/drm/stm/ltdc.c
-index 54a73753eff98902012c6012914fa8c6482affbd..ba315c66a04d72758b9d3cfcd842432877f66d3a 100644
---- a/drivers/gpu/drm/stm/ltdc.c
-+++ b/drivers/gpu/drm/stm/ltdc.c
-@@ -1900,7 +1900,6 @@ int ltdc_load(struct drm_device *ddev)
- 	struct drm_panel *panel;
- 	struct drm_crtc *crtc;
- 	struct reset_control *rstc;
--	struct resource *res;
- 	int irq, i, nb_endpoints;
- 	int ret = -ENODEV;
+diff --git a/drivers/gpu/drm/tegra/dsi.c b/drivers/gpu/drm/tegra/dsi.c
+index 4a8cd9ed0a9414b2f40b716fa8c02aff038a53e0..51f1ed897f8e473f45f89ff3e2d99f66d2c80f21 100644
+--- a/drivers/gpu/drm/tegra/dsi.c
++++ b/drivers/gpu/drm/tegra/dsi.c
+@@ -1564,7 +1564,6 @@ static int tegra_dsi_ganged_probe(struct tegra_dsi *dsi)
+ static int tegra_dsi_probe(struct platform_device *pdev)
+ {
+ 	struct tegra_dsi *dsi;
+-	struct resource *regs;
+ 	int err;
  
-@@ -1966,8 +1965,7 @@ int ltdc_load(struct drm_device *ddev)
- 		reset_control_deassert(rstc);
+ 	dsi = devm_kzalloc(&pdev->dev, sizeof(*dsi), GFP_KERNEL);
+@@ -1636,8 +1635,7 @@ static int tegra_dsi_probe(struct platform_device *pdev)
+ 		goto remove;
  	}
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	ldev->regs = devm_ioremap_resource(dev, res);
-+	ldev->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(ldev->regs)) {
- 		DRM_ERROR("Unable to get ltdc registers\n");
- 		ret = PTR_ERR(ldev->regs);
+-	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	dsi->regs = devm_ioremap_resource(&pdev->dev, regs);
++	dsi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(dsi->regs)) {
+ 		err = PTR_ERR(dsi->regs);
+ 		goto remove;
 
 -- 
 2.47.0
