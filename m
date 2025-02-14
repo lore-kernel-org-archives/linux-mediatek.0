@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA4BC02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 17:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E4CC021A4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 17:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ERJOKrkPTqG54cRHxFMcIcDN+46bus5YIHhkbkRGCME=; b=Lf8GB94BWtIu//cR8yx3Zm7/ZW
-	CJry8R1T+bjpbwAZL/qQhfqW8PgeuVQ8jBMOFuPaEK2ssY7rnIKMiZXu6xhXWaRkKlsYCrWFNvdDv
-	YszAuhl0BaayrZJSr4HX9Yk43zJv+wmrUm9C4Xz9cCDoco7TqonAxpBWl6yg/8sJEB5zmXQqtn57V
-	n9AfLbIqenGF7r2HNTyzGx1FP27pKxfRDE+Fg/ZumwbVAaV8L2Ba+DZ1i0qmOzly9F4N73zsxsL59
-	sh3DVVMBaMpeQ+Nh90aNcj8o5+kOKHle8lVbJmDqt/UZNY9skhXSuAZKAJ/rQJUixPkIF58vIXiQG
-	pI3Fw9Sw==;
+	bh=Vlq54jWBVD9Rm0zHtwMOcSIjo2+gkktdxezngWCjnSI=; b=3HIg8HAw3c02jjcKpxAmZyFAj2
+	8JHw+GLcuyzf/gPLqwTmFoO4ShSncajKJhd3ovoqdhzZ+N8UAsaBc5OAnm6PtNbvIsZBYR8IfNkK3
+	stp/6rNkaL5BGe/F9IZlX7UiCIYnoJS8PH9MfJPHJSm3oWivFLQrxsp6TjiBHe0BaljtxIUZSBqD2
+	XgakmsoI0JVn2PkKaOQ+nla/Xys4vxmm0RIHHMRhm6yeyRSfHbn/ew0K6Snw+brr92T+yB/ODG+d+
+	Rs3PqKrISyDjXjTptLoUiEBcCYLy+i9EfI2J5Pilm5ednC2WoPDdlLQ2iWRUyR3GtZD9CV02v+M5m
+	7Lntjhuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tizkk-0000000FliF-0s1z;
-	Fri, 14 Feb 2025 17:45:26 +0000
-Received: from 008.lax.mailroute.net ([199.89.1.11])
+	id 1tizxP-0000000FnBk-3Q54;
+	Fri, 14 Feb 2025 17:58:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tizEy-0000000Fe3x-1a6t
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Feb 2025 17:12:37 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 008.lax.mailroute.net (Postfix) with ESMTP id 4Yvds31cl9z6ClRNk;
-	Fri, 14 Feb 2025 17:12:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1739553140; x=1742145141; bh=ERJOKrkPTqG54cRHxFMcIcDN
-	+46bus5YIHhkbkRGCME=; b=TYlKQLtBnPAVn5caFBR+Ja8IFEAJ5csNKWk/2hBz
-	Yt8jk7sukLgZpop4H9I9vAVUFkJ2juTQ5sTmqyUVTWUUv9Sm359f4kvrlN3kP7o+
-	R5pINrQfZJob0l0mkdpeYgFHPMqBhZKVNir6codEGOoq/xybcl0rw6ZzIM51AYCC
-	AtmZ5P1ORM1F3X5qgYIS/KzOWLOQVV03a5Yl1NuK0T2cTQ5AutVnVheUfev2tKCX
-	T2K7hrNzrrl/SwfHOiHSnF6DU+9efgbscN/0vkbSeGxS7yIzcBrH/D8nFl2sI8eq
-	n/xeXgb7Qi7XWTos0TaQd0ubeaFhLw1Xa3OAkud3qCktbw==
-X-Virus-Scanned: by MailRoute
-Received: from 008.lax.mailroute.net ([127.0.0.1])
- by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id d-mvZBhj0FZx; Fri, 14 Feb 2025 17:12:20 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
+	id 1tizLv-0000000Ffz3-1EuK;
+	Fri, 14 Feb 2025 17:19:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739553585;
+	bh=vJ93fyDfMroysl58pmK4LB0ei52PWUbfp+wax1ulrhk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=iRu7SqZnHmZMxyu8W02fGyQa/wGbL/cGVz4tnGT41QMdkwm5K4om+wH1Z0TbKS25L
+	 vevjesfWzwLfXnc5iovD6wAsDrI0baCey402OdpA/mLYf77xkCd2Y8oGOmqqY7r94t
+	 1hdfIrUTJk6fRVFI9lwD08R7/wa9lzaWhDCaWIdBVa4MQxqDtcwzlpKKu06oPFeEZd
+	 HQdUa15mIJzyiBCHAeboi/rnPCtVNuK6K22LB0lIbjKzHDOJYHNQUFNXDAqk96ZuAy
+	 t0eKrMigLmMpKKXFPBIXh1e7cJQ+XHNX6+Kal7Rq13rQVaGOJshaypy30Ql4QdjXpm
+	 kKH9KKEKvDVTg==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1003])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4Yvdrs683Vz6Ckh6m;
-	Fri, 14 Feb 2025 17:12:13 +0000 (UTC)
-Message-ID: <88680b95-97b8-41aa-a39b-b1d03f93669b@acm.org>
-Date: Fri, 14 Feb 2025 09:12:11 -0800
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4931E17E1553;
+	Fri, 14 Feb 2025 18:19:41 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 14 Feb 2025 14:18:37 -0300
+Subject: [PATCH 06/13] ASoC: mediatek: mt6359-accdet: Use
+ IRQ_TYPE_LEVEL_LOW not raw value
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] ufs: core: add hba parameter to trace events
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com
-References: <20250214083026.1177880-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250214083026.1177880-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250214-mt6359-accdet-dts-v1-6-677a151b9b4c@collabora.com>
+References: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+In-Reply-To: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Andrew Perepech <andrew.perepech@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_091236_420036_E8C88B97 
-X-CRM114-Status: UNSURE (   4.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_091947_505170_C1F94419 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,10 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/14/25 12:29 AM, peter.wang@mediatek.com wrote:
-> Included the ufs_hba structure as a parameter in various trace events
-> to provide more context and improve debugging capabilities.
-> Also remove dev_name which can replace by dev_name(hba->dev).
+From: Andrew Perepech <andrew.perepech@mediatek.com>
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+The symbol IRQ_TYPE_LEVEL_LOW is equivalent to 8, but the former should
+be used for legibility. Update the code accordingly.
+
+Signed-off-by: Andrew Perepech <andrew.perepech@mediatek.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ sound/soc/codecs/mt6359-accdet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index eee676d1faef2076bc837a12a2ee3615216752b7..b71957f7a2edb352add23884fd9e231e36b08621 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -581,7 +581,7 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
+ 	ret = of_property_read_u32(node, "mediatek,eint-level-pol",
+ 				   &priv->data->eint_pol);
+ 	if (ret)
+-		priv->data->eint_pol = 8;
++		priv->data->eint_pol = IRQ_TYPE_LEVEL_LOW;
+ 
+ 	ret = of_property_read_u32(node, "mediatek,eint-use-ap", &tmp);
+ 	if (ret)
+
+-- 
+2.48.1
+
 
