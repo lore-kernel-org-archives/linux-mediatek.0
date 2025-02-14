@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0D2C021A4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B73FC02198
 	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 18:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=N6snzrDgUTK8ck9Ry9M8mhs36pJFOnl7+SAC181yyLg=; b=R8C7jsHcvg8jZy
-	gvsCSnY6j2Lyfblk0AqvTKXjmky1s/DKawJdvTPm3vt4wRKeYNMgUz+HoCG5sFqrIRb0dtSqxRfVM
-	M8UPYpyeznERECBS5oljzPkleJKvp8BpXotJw3+6O54EaO5yjhOXRJjEwt5N8r/4aZjJA6Yojn2eg
-	xm/7s4A3vTV4/hv4PXoACYQQnGx0zz/L7b+MC0B7nrrgTvNhP7pVjrr0zE6n1mb4JtAaRKP0oh+N6
-	UQiCyX0UbOC6co1963ih+jrsEvN7LW6jjyPgxnFIYCAj19RsvQsafDMI5lblm3Y3lqo0l3rB1H0tj
-	Q9bFyiZvxlpIvuxGSRPA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wDA3tQ1b7n+5GlP2UC0q0O5SgA/zkF4porktAWg3d0k=; b=teTqmbjOhGwLQvZP9AaYrqRKpW
+	7ENkhXVrbJBpCETA5LUbgbUunGRCs3ykCIM2murUk3/4dsxsv9+WRLqbcXR+HbfAQNthXs2JKBMpe
+	tFtyg+75Xg3AqWQpnleYnaKOAs9hHEBszU4PterMq5sz4uQaRlMD04WQht37FTKMvzbxWQ3wwGvRp
+	zu5YYxH3O8JzEmY/5FyFjgcctE1b93E/gqFMaxru5FUq9pPh/BJWShMrDcU719jKWRHnPVT1/J0Cs
+	jIOPyeYfYyyAu10R3xBapwSSjrt/Y+zG4YDyWLu+k4vvynn6RP6KbhcfX2FGLBpA6SEpKWXqxyG1k
+	7zUaOshA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0rT-0000000Fx4h-46WB;
-	Fri, 14 Feb 2025 18:56:27 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tj0rU-0000000Fx5Y-3fML;
+	Fri, 14 Feb 2025 18:56:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tizLQ-0000000Ffno-1WBj;
-	Fri, 14 Feb 2025 17:19:17 +0000
+	id 1tizLV-0000000FfqC-1Xuu;
+	Fri, 14 Feb 2025 17:19:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739553554;
-	bh=/Vq4HRI2BN0XjmmO8kOb2O01hlISp/5ZPmuCinm7xyQ=;
-	h=From:Subject:Date:To:Cc:From;
-	b=IUGXUY/ikc92B5KBNi1Q/E/BPJeorXdvdXpf9z4MeLr8tHubO3s6O1iySo15XcYST
-	 6B226mq0N8mUcJH3admq/6+MBMlT7HUgPMxa/51nMmJbRP1pXX/VTjlGz95cMO/JwO
-	 vc+dIWIB9bz3wf2E5o7JNYWZxGIB7pvDEYVWOwoZaJIICHdHBvcq9KrkL2BrND1+Y7
-	 odvR+2y6YZ4HymROR5zvlB4de0l3ZnCTgPcP+9upl45Do7khw20IBeggDCkaxPsfn/
-	 RMwtzwVK/LOJ1p2dpzIxIUM0mZqA9bZL8HQ6W8SoDtdedZwgiMF6iUGElE++mnBLar
-	 jNYjW/FkrF8eg==
+	s=mail; t=1739553559;
+	bh=0R9z82uYLHvZq/ZMlFXfZkW3m4VdLNpXjo+5ho6sUN0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=fyVuWwIzp04LN5oANUcC1i84G4bqMTDULj87UfWPrvUvacBfKFAb/xweQUyLiCL/m
+	 dWM/GxLwrIu+qgwET9T902Ckh6Or9NWwq245VMX51O+/fBsZMiLsW9ENrWuvLPKiM3
+	 zUczZ/KfbOyaRH6M2w2ZjlUk/EAla8zx/cs9t7DfH68VpUo5YqNJKrMFxw7zvJ8/hx
+	 4RyxAm02E08doRQB1fR96GuOaLFvq2JQk8QOTclE9QHiCOmhJiR8IIVC4lRm6Hrz1J
+	 AmdCcsOOvgs5sZdFVze+RWesFQMbK/A11LfE7rXSQjM05sWUJJPI+q4PsDB6furluc
+	 kuFcYRXmgeliA==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1003])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDEEA17E0239;
-	Fri, 14 Feb 2025 18:19:09 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4759717E0FC1;
+	Fri, 14 Feb 2025 18:19:15 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Subject: [PATCH 00/13] Get mt6359-accdet ready for usage in Devicetree
-Date: Fri, 14 Feb 2025 14:18:31 -0300
-Message-Id: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+Date: Fri, 14 Feb 2025 14:18:32 -0300
+Subject: [PATCH 01/13] ASoC: dt-bindings: Add document for mt6359-accdet
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAOd6r2cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDI0MT3dwSM2NTS93E5OSU1BLdlJJiXQODJEMLSwsT8zTjZCWgvoKi1LT
- MCrCZ0bG1tQBQBtbGYwAAAA==
-X-Change-ID: 20250214-mt6359-accdet-dts-00b189847f3c
+Message-Id: <20250214-mt6359-accdet-dts-v1-1-677a151b9b4c@collabora.com>
+References: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+In-Reply-To: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -66,13 +64,11 @@ Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-pm@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Andrew Perepech <andrew.perepech@mediatek.com>
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_091916_554281_7AFEAB07 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_091921_554764_001F489C 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,51 +83,314 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series prepares the MT6359 ACCDET for actual usage in the
-Devicetree. Patches 1 and 2 add the required DT bindings, patches 3 and
-4 get the mt6359-accdet driver probing, patches 5-12 clean up code
-related to DT property parsing, and patch 13 adds the node in the
-Devicetree.
-
-Together with the series "Allow retrieving accessory detection reference
-on MT8188" [1], and one extra patch on top enabling it on the
-genio-700-evk DT, this series was tested on the Genio 700 EVK to get
-audio jack detection working on it.
-
-[1] https://lore.kernel.org/all/20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com
+Add dt-binding for the MT6359 ACCDET hardware block.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
-Andrew Perepech (3):
-      mfd: mt6397-core: Add mfd_cell for mt6359-accdet
-      ASoC: mediatek: mt6359-accdet: Implement EINT IRQ polarity configuration
-      ASoC: mediatek: mt6359-accdet: Use IRQ_TYPE_LEVEL_LOW not raw value
-
-Nícolas F. R. A. Prado (10):
-      ASoC: dt-bindings: Add document for mt6359-accdet
-      dt-bindings: mfd: mediatek: mt6397: Add accdet subnode
-      ASoC: mediatek: mt6359-accdet: Add compatible property
-      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT/GPIO IRQ handling
-      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT trigger setting
-      ASoC: mediatek: mt6359-accdet: Drop dead code for button detection
-      ASoC: mediatek: mt6359-accdet: Drop dead code for plugout-debounce
-      ASoC: mediatek: mt6359-accdet: Handle mediatek,eint-use-ext-res as bool
-      ASoC: mediatek: mt6359-accdet: Split mediatek,pwm-deb-setting properties
-      arm64: dts: mt6359: Add accessory detect node
-
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml   |   7 +
  .../bindings/sound/mediatek,mt6359-accdet.yaml     | 293 +++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt6359.dtsi           |  24 ++
- drivers/mfd/mt6397-core.c                          |  12 +
- sound/soc/codecs/mt6359-accdet.c                   | 208 +++++----------
- sound/soc/codecs/mt6359-accdet.h                   |  18 +-
- 6 files changed, 404 insertions(+), 158 deletions(-)
----
-base-commit: dab2734f8e9ecba609d66d1dd087a392a7774c04
-change-id: 20250214-mt6359-accdet-dts-00b189847f3c
+ 1 file changed, 293 insertions(+)
 
-Best regards,
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..8922003d3b9d039d2a0355add7a90cf42b1a9da6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
+@@ -0,0 +1,293 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt6359-accdet.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MT6359 Accessory Detection
++
++maintainers:
++  - Nícolas F. R. A. Prado <nfraprado@collabora.com>
++
++description: |
++  The MT6359 Accessory Detection block is part of the MT6359 PMIC and allows
++  detecting audio jack insertion and removal, as well as identifying the type of
++  events connected to the jack.
++
++properties:
++  compatible:
++    const: mediatek,mt6359-accdet
++
++  mediatek,mic-vol:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: MIC bias1 output voltage setting
++    enum:
++      - 0 # 1.7V
++      - 1 # 1.8V
++      - 2 # 1.9V
++      - 3 # 2.0V
++      - 4 # 2.1V
++      - 5 # 2.5V
++      - 6 # 2.6V
++      - 7 # 2.7V
++      - 8 # 2.8V
++      - 9 # 2.85V
++
++  mediatek,mic-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Mic mode setting
++    enum:
++      - 1 # ACC
++      - 2 # DCC mode. Low cost mode without internal bias
++      - 6 # DCC mode. Low cost mode with internal bias
++
++  mediatek,eint-cmpmen-pwm-width:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT CMPMEN PWM width
++    enum:
++      - 0 # 50ms
++      - 1 # 80ms
++      - 2 # 100ms
++      - 3 # 200ms
++      - 4 # 400ms
++      - 5 # 500ms
++      - 6 # 800ms
++      - 7 # 1000ms
++
++  mediatek,eint-cmpmen-pwm-thresh:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT CMPMEN PWM threshold
++    enum:
++      - 0 # 1ms
++      - 1 # 2ms
++      - 2 # 4ms
++      - 3 # 5ms
++      - 4 # 8ms
++      - 5 # 10ms
++      - 6 # 20ms
++      - 7 # 30ms
++
++  mediatek,pwm-width:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: PWM width
++    minimum: 0
++    maximum: 65535
++
++  mediatek,pwm-thresh:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: PWM threshold
++    minimum: 0
++    maximum: 65535
++
++  mediatek,pwm-rise-delay:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Rise delay for PWM
++    minimum: 0
++    maximum: 65535
++
++  mediatek,pwm-fall-delay:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Fall delay for PWM
++    minimum: 0
++    maximum: 65535
++
++  mediatek,debounce0:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for state 0
++    minimum: 0
++    maximum: 65535
++
++  mediatek,debounce1:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for state 1
++    minimum: 0
++    maximum: 65535
++
++  mediatek,debounce3:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for state 3
++    minimum: 0
++    maximum: 65535
++
++  mediatek,debounce-auxadc:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for AUXADC
++    minimum: 0
++    maximum: 65535
++
++  mediatek,eint-debounce0:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for EINT state 0
++    enum:
++      - 0 # 0ms
++      - 1 # 0.12ms
++      - 2 # 0.25ms
++      - 3 # 0.5ms
++      - 4 # 0.75ms
++      - 5 # 1ms
++      - 6 # 2ms
++      - 7 # 4ms
++      - 8 # 8ms
++      - 9 # 16ms
++      - 10 # 32ms
++      - 11 # 48ms
++      - 12 # 64ms
++      - 13 # 128ms
++      - 14 # 256ms
++      - 15 # 512ms
++
++  mediatek,eint-debounce1:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for EINT state 1
++    enum:
++      - 0 # 0ms
++      - 1 # 0.5ms
++      - 2 # 0.75ms
++      - 3 # 0.9ms
++      - 4 # 1.5ms
++      - 5 # 1.8ms
++      - 6 # 3ms
++      - 7 # 3.5ms
++      - 8 # 3.8ms
++      - 9 # 16ms
++      - 10 # 32ms
++      - 11 # 48ms
++      - 12 # 64ms
++      - 13 # 128ms
++      - 14 # 256ms
++      - 15 # 512ms
++
++  mediatek,eint-debounce2:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for EINT state 2
++    enum:
++      - 0 # 0ms
++      - 1 # 0.5ms
++      - 2 # 0.75ms
++      - 3 # 0.9ms
++      - 4 # 1.5ms
++      - 5 # 1.8ms
++      - 6 # 3ms
++      - 7 # 3.5ms
++      - 8 # 3.8ms
++      - 9 # 4ms
++      - 10 # 4.5ms
++      - 11 # 5ms
++      - 12 # 7ms
++      - 13 # 9ms
++      - 14 # 19ms
++      - 15 # 25ms
++
++  mediatek,eint-debounce3:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for EINT state 3
++    enum:
++      - 0 # 0ms
++      - 1 # 0.12ms
++      - 2 # 0.25ms
++      - 3 # 0.5ms
++      - 4 # 0.75ms
++      - 5 # 1ms
++      - 6 # 2ms
++      - 7 # 4ms
++      - 8 # 8ms
++      - 9 # 16ms
++      - 10 # 32ms
++      - 11 # 48ms
++      - 12 # 64ms
++      - 13 # 128ms
++      - 14 # 256ms
++      - 15 # 512ms
++
++  mediatek,eint-inverter-debounce:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Debounce time for EINT inverter
++    enum:
++      - 0 # 0ms
++      - 1 # 0.12ms
++      - 2 # 0.25ms
++      - 3 # 0.5ms
++      - 4 # 0.75ms
++      - 5 # 1ms
++      - 6 # 2ms
++      - 7 # 4ms
++      - 8 # 8ms
++      - 9 # 16ms
++      - 10 # 32ms
++      - 11 # 48ms
++      - 12 # 64ms
++      - 13 # 128ms
++      - 14 # 256ms
++      - 15 # 512ms
++
++  mediatek,eint-detect-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT detection mode
++    enum:
++      - 0 # Higher detection power
++      - 1 # Lower detection power
++      - 2 # SW moisture detection mode1
++      - 3 # HW moisture detection mode1
++      - 4 # HW moisture detection mode2
++
++  mediatek,eint-num:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT interrupt that should be enabled
++    enum:
++      - 0 # EINT0
++      - 1 # EINT1
++      - 2 # EINT0 | EINT1
++
++  mediatek,eint-use-ext-res:
++    type: boolean
++    description:
++      Whether an external resistor should be used for the HP_EINT signal.
++      By default an internal pull-up resistor is used.
++
++  mediatek,eint-comp-vth:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT comparator threshold
++    enum:
++      - 0 # 2.4V
++      - 1 # 2V
++      - 2 # 1.6V
++      - 3 # 1.2V
++      - 4 # 0.8V
++
++  mediatek,eint-level-pol:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: EINT interrupt polarity
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    accdet: accdet {
++        compatible = "mediatek,mt6359-accdet";
++        mediatek,mic-vol = <8>;
++        mediatek,mic-mode = <2>;
++        mediatek,pwm-width = <0x500>;
++        mediatek,pwm-thresh = <0x500>;
++        mediatek,pwm-fall-delay = <1>;
++        mediatek,pwm-rise-delay = <0x1f0>;
++        mediatek,debounce0 = <0x800>;
++        mediatek,debounce1 = <0x800>;
++        mediatek,debounce3 = <0x20>;
++        mediatek,debounce-auxadc = <0x44>;
++        mediatek,eint-cmpmen-pwm-width = <4>;
++        mediatek,eint-cmpmen-pwm-thresh = <1>;
++        mediatek,eint-debounce0 = <5>;
++        mediatek,eint-debounce1 = <3>;
++        mediatek,eint-debounce2 = <3>;
++        mediatek,eint-debounce3 = <5>;
++        mediatek,eint-inverter-debounce = <0xe>;
++        mediatek,eint-detect-mode = <4>;
++        mediatek,eint-num = <0>;
++        mediatek,eint-comp-vth = <2>;
++        mediatek,eint-level-pol = <IRQ_TYPE_LEVEL_LOW>;
++    };
+
 -- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+2.48.1
 
 
