@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE77C02198
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2025 21:36:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A80FC02198
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Feb 2025 01:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SjtjrT420mYUlb0fxYSKm7OFC++eW35bsr/vWZzU78s=; b=sj6bZn65g+qDdACaKommbzQrkL
-	+0G/Yox2efD3vIn62Ydii7a6+M+BSJWkFeEa98T6jeZER5YdTs3UT4mGc21WDaLRmW/HiHl5gmg/i
-	ac1aX8s61PTJLDfFWtFnCDGma0vsZKd047Rf1hxfWPE8aZZJCPgnbeghfX93FEa7P8Na4uPwSbZme
-	8RiwH5VxjYS/yENHitRRy4L4MvlFr69noHoy42/NslXVWurg72x2kNAMpGai4ITVLKndvi6mLjcim
-	D26dKp444Gumv8xG9CkDaJecqrkXJTdomv7gsseYkpq8Xt9mZ+4s81huIQOg3eh9FJJ4upGxY4560
-	Cg+mNbnA==;
+	bh=0W+3YSjOVKr7mZCE2fE5mJKFoag0r9vF6QtnBhgtPNI=; b=uSr7j4SYK9M+Z2se8op6/kJ1mB
+	BktvftLpqp6o5DQwXbhELOXyUH4UJl5B7rNcGa8mluhsun8WIvD3sEJhJTWwJSWsz5v3TTqy6FaGR
+	DHyPl62zZYUqy3nnNjmJ+ysrTYlJzNX51hUviHhD9dMfEEk+u5tbJJcIhbBXLJbruUQkknfsBnQ39
+	PS9PJ06oA1+0NWoBECC3tjUaiGCf9Uzo3Ys2MLi5neGkzEg9yjZa7SGq9OAjqL/mParsFwZVOFzQA
+	itUsUMdpqTlh5qLoq6DxEUNleyvY3MFYxGIdbZWF8PBeXE+g22VIEmxT3NBaUnOoByKgje1wVVemq
+	f1b1d72A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj3MW-0000000GHm3-2KM7;
-	Fri, 14 Feb 2025 21:36:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tj6su-0000000Gkb5-3MPF;
+	Sat, 15 Feb 2025 01:22:20 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj3L3-0000000GHdD-1Wi8;
-	Fri, 14 Feb 2025 21:35:10 +0000
+	id 1tj6qn-0000000GkCn-3jiS;
+	Sat, 15 Feb 2025 01:20:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 552EA5C57FC;
-	Fri, 14 Feb 2025 21:34:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6A6BC4CED1;
-	Fri, 14 Feb 2025 21:35:06 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id B99AFA44D27;
+	Sat, 15 Feb 2025 01:18:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B38A9C4CEE7;
+	Sat, 15 Feb 2025 01:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739568907;
-	bh=SjtjrT420mYUlb0fxYSKm7OFC++eW35bsr/vWZzU78s=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=DHP7nNRg/KFypnHBYoKCAJLXHKI2hR9YhY3Eb37iONUHFZB/fLQsjnPESclPsY/nD
-	 N/esdW85cVJ1E0SEKs+rsK+fkn8J95H9LxfJfcx3M/4mmL1463DFfnRW51QdmPjsT1
-	 3KbZxOGMjnZPdwUI8GLC+5TzJLtKO1A2pAOQjui3RBym2Zl3WzJjhGI5hapB5/EP5H
-	 ZI6fV+n/dYNs0Iexv2P8FXQYKcLmYIRHUfliVaJkW+AQDKNT+iROQkKQpwmAG+62S2
-	 XO5dbIi2D582s7cvgJlpKTCdp6LVDMiVd3/OgoLYu36HZc93ykppIEOA+EsD4QqnyZ
-	 GuZbreVuLpLxw==
-Date: Fri, 14 Feb 2025 13:35:06 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
- <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- upstream@airoha.com, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Subject: Re: [PATCH net-next v4 01/16] net: airoha: Fix TSO support for
- header cloned skbs
-Message-ID: <20250214133506.1e4a619b@kernel.org>
-In-Reply-To: <20250213-airoha-en7581-flowtable-offload-v4-1-b69ca16d74db@kernel.org>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
-	<20250213-airoha-en7581-flowtable-offload-v4-1-b69ca16d74db@kernel.org>
+	s=k20201202; t=1739582408;
+	bh=MTMnbHfP7UmJ4+8AVRrDwbtZaMSAaGd1tx0ryrdVYM4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=gn57QJf422/GzkD0zjSqMIEpc4JDO1lQpobI8GAIgmrRFp5XifgxlxOwF67fd4n0D
+	 pXSTdIQX3RwAZNc4l2uCkXKFrqa+YMo1qVrzC/CrJNDbuKNBPxurYtYcqT86GTjh7J
+	 uOuA8QEpBWjMgUWcWYhk6efsdhHMGmUXehZvN/RHGzDca42LR679s6TooPGQB5+E9V
+	 G9IDDsQ4Yj40ibLuJVktPoVuuG4d0FJM7ctkOBjOFkYBPXZr9o0nWEU+qftHecf2hw
+	 xCIDVB4CiJlOyb+huCG/UvI9/8W5w5NaJNkRT2A31HPnyZ9buOBNNpZv9eKmYi4h/g
+	 K9QHtqMFX8DAg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70E39380CEE8;
+	Sat, 15 Feb 2025 01:20:39 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2] net: remove phylink_pcs .neg_mode boolean
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173958243825.2159741.12525730465881025727.git-patchwork-notify@kernel.org>
+Date: Sat, 15 Feb 2025 01:20:38 +0000
+References: <E1tidPn-0040hd-2R@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1tidPn-0040hd-2R@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, florian.fainelli@broadcom.com,
+ olteanv@gmail.com, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, chester.a.unal@arinc9.com, daniel@makrotopia.org,
+ dqfext@gmail.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, nicolas.ferre@microchip.com,
+ claudiu.beznea@tuxon.dev, madalin.bucur@nxp.com, sean.anderson@seco.com,
+ marcin.s.wojtas@gmail.com, taras.chornyi@plvision.eu, alexanderduyck@fb.com,
+ kernel-team@meta.com, horatiu.vultur@microchip.com,
+ UNGLinuxDriver@microchip.com, Steen.Hegelund@microchip.com,
+ daniel.machon@microchip.com, radhey.shyam.pandey@amd.com,
+ michal.simek@amd.com, ioana.ciornei@nxp.com, lynxis@fe80.eu,
+ clement.leger@bootlin.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_133509_449177_B1B19C84 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20250214_172009_991618_9DF9FE93 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,14 +86,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Feb 2025 16:34:20 +0100 Lorenzo Bianconi wrote:
-> For GSO packets, skb_cow_head() will reallocate the skb for TSO header
-> cloned skbs in airoha_dev_xmit(). For this reason, sinfo pointer can be
-> no more valid. Fix the issue relying on skb_shinfo() macro directly in
-> airoha_dev_xmit().
-> This is not a user visible issue since we can't currently enable TSO for
-> DSA user ports since we are missing to initialize net_device
-> vlan_features field.
+Hello:
 
-Im gonna apply this already so you're <= 15 for v5
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 13 Feb 2025 17:54:19 +0000 you wrote:
+> As all PCS are using the neg_mode parameter rather than the legacy
+> an_mode, remove the ability to use the legacy an_mode. We remove the
+> tests in the phylink code, unconditionally passing the PCS neg_mode
+> parameter to PCS methods, and remove setting the flag from drivers.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2] net: remove phylink_pcs .neg_mode boolean
+    https://git.kernel.org/netdev/net-next/c/de38503b74e2
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
