@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DA6C02198
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Feb 2025 14:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E19FC02198
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Feb 2025 16:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k/dEYJoO4Qk0W2/aYoTFiGpV/VHj1MHfhfjKfCBVoWg=; b=FhDLWIXsA2CjUP7+abI5yRM2kr
-	Zbv1JF7nFgp6hLn3j/s212gHV/O/Pc5+Qc4wGQmRoK8hMWw0D22nPrmAate26WtxkI0HCsT+jEAnc
-	TZwUOWRd4Rx8r44w67WgqWLi66Dlem8usvWHi/YCyDlxRM3SGDbmcAmURISA8T6ApMGn7XuKRKgt9
-	hIIi2Bfr6t6lkPx6YAeEiEdjwuc75vd+bI/pfrWUtplZQu5Tbt1+NeLhtZo3x48vr7vICcr7XjtTb
-	SoxY9BJxPu5631G3qtitVcvTjPiuaLYoQEeFmbmuYpA4q1zoMxr1iniCQfo4X8hPVaSvRPBr5lnNd
-	/BwKHhJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ui7HEUJhEQf9Ds/ECcnB0minOtGYjZZ90SeYLQsSlUw=; b=0jLLppLp7Yoauu/ESG6JqBRO8p
+	K/CVqbHbEabe2ezMfK4NQe7/bJYnlFK+cHqtdmJPv4vWMAJkObf2XswlvwDNIzxCblIgF2n78OjI+
+	5FoTfNpKVzpgJVUD+oXfHs1X/8UAic8z1g8d51bF0XrBRMCWbaWUPkIAz28XIksrezv7x7eexWabz
+	BoersScTz0tIv4i6a7YKNcg9V9MP6pRoqPt44jcfdLHVsVxOzmxyjTbpaSXne7agR0jeoCC6Uw0Tx
+	0d0mRYAMNDAp1GaUe+5M3DQhJObixlE6sKCgGCFVdn6IfzHAePWrU79dGl5v8nPpUuymu4mP+36yz
+	tP2388Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjfsW-00000001xXK-4AIB;
-	Sun, 16 Feb 2025 14:44:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tjhhx-000000029EZ-2pK8;
+	Sun, 16 Feb 2025 16:41:29 +0000
+Received: from [156.67.10.101] (helo=vps0.lunn.ch)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjfsT-00000001xWf-2nOO;
-	Sun, 16 Feb 2025 14:44:14 +0000
-X-UUID: 7aaeb498ec7411efa1e849db4cc18d44-20250216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=k/dEYJoO4Qk0W2/aYoTFiGpV/VHj1MHfhfjKfCBVoWg=;
-	b=GHS+PHwDdBkVw5ixuvT5jV7YqGuYx+/Y6VBHs2HaZ6d6CMolbwLE9Fx7nNyIM9+cGTDSbklVU5y9z/wr5siYOBozK+7MwxcvXDYAwAAdVENzIt4e7d4V/3Qjz+dADfR1mGhF2Yt3aD2u56DQ6lUEDs8q6yHiGbsoMNKSSI6YYzA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:a823c4bf-f2d0-406b-8961-88d2c0dd76ba,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:44176dfc-7800-43c5-b97b-ddbe32561a5b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 7aaeb498ec7411efa1e849db4cc18d44-20250216
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 859932867; Sun, 16 Feb 2025 07:44:09 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Sun, 16 Feb 2025 22:44:06 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Sun, 16 Feb 2025 22:44:06 +0800
-From: <ed.tsai@mediatek.com>
-To: Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@kernel.org>,
-	Mikulas Patocka <mpatocka@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-block@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<chun-hung.wu@mediatek.com>, Ed Tsai <ed.tsai@mediatek.com>,
-	<dm-devel@lists.linux.dev>
-Subject: [PATCH 1/1] dm: Enable inline crypto passthrough for striped target
-Date: Sun, 16 Feb 2025 22:42:21 +0800
-Message-ID: <20250216144224.1702385-2-ed.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tjhgU-0000000292T-2w0X;
+	Sun, 16 Feb 2025 16:39:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=Ui7HEUJhEQf9Ds/ECcnB0minOtGYjZZ90SeYLQsSlUw=; b=Tn
+	qXdLS5oE5zr4X/BKFyfbTLBPyRQnjEEEE+6IOI4N4TUmlx4pmDBdKCfMTX8IkxB2Mphf5neeQPE1L
+	QXoyTXni+ghDDX/hh6v0/8sem8mFgGzC/3unW6xWd4FdDVTcKU2nXaKuAJrIL3UaKEXthOnMBAixt
+	A1o30917TYG4+qU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tjhgC-00Ehdh-2m; Sun, 16 Feb 2025 17:39:40 +0100
+Date: Sun, 16 Feb 2025 17:39:40 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: "daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"horms@kernel.org" <horms@kernel.org>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"kuba@kernel.org" <kuba@kernel.org>
+Subject: Re: [PATCH net-next 1/3] net: phy: mediatek: Add token ring access
+ helper functions in mtk-phy-lib
+Message-ID: <1b4c3254-c596-486a-bde9-d4737dfc5a48@lunn.ch>
+References: <20250116012159.3816135-1-SkyLake.Huang@mediatek.com>
+ <20250116012159.3816135-2-SkyLake.Huang@mediatek.com>
+ <5546788b-606e-489b-bb1a-2a965e8b2874@lunn.ch>
+ <385ba7224bbcc5ad9549b1dfb60ace63e80f2691.camel@mediatek.com>
+ <64b70b2d-b9b6-4925-b3f6-f570ddb70e95@lunn.ch>
+ <Z633GUUhyxinwWiP@makrotopia.org>
+ <81234e04-f37c-4b10-81e6-d8508c9fb487@lunn.ch>
+ <ea348d0a4b30c4926ba16a6e79cb52196aebcf47.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <ea348d0a4b30c4926ba16a6e79cb52196aebcf47.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_064413_739653_BED2CD2D 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20250216_083958_750268_97A09881 
+X-CRM114-Status: GOOD (  21.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +90,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ed Tsai <ed.tsai@mediatek.com>
+On Fri, Feb 14, 2025 at 03:35:10AM +0000, SkyLake Huang (黃啟澤) wrote:
+> On Thu, 2025-02-13 at 16:34 +0100, Andrew Lunn wrote:
+> > 
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> > 
+> > 
+> > > > > Those registers with Mrvl* prefix were originally designed for
+> > > > > connection with certain Marvell devices. It's our DSP
+> > > > > parameters.
+> > > > 
+> > > > Will this code work with real Marvell devices? Is this PHY
+> > > > actually
+> > > > licensed from Marvell?
+> > > 
+> > > > From what I understood the tuning of those parameters is required
+> > > to connect to a Marvell PHY link partner on the other end.
+> > 
+> > If so, the naming is bad. I assume you need the same settings for
+> > Microchip, Atheros, Broadcom, etc. These settings just tune the
+> > hardware to be standards conforming?
+> > 
+> >         Andrew
+> > 
+> This part is pretty old old old design. Some compatibility issues were
+> firstly found on Marvell link partners, so the registers are named
+> accordingly. And yes, now, those Kf/Kp settings will be used for
+> connection with other link partners. However, if I change the register
+> names, it violates our hardware register map application note. If this
+> does bother, I can add some comments before these macros like:
+> 
+> /* Mrvl* prefix only means that in the very beginning we tune the
+>  * parameters with Marvell link partners. These settings will be used
+>  * for all link partners now.
+>  */
 
-Added DM_TARGET_PASSES_CRYPTO feature to the striped target to utilize
-the hardware encryption of the underlying storage devices, preventing
-fallback to the crypto API.
+A comment would be good. The current names lead the questions....
 
-Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
----
- drivers/md/dm-stripe.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/md/dm-stripe.c b/drivers/md/dm-stripe.c
-index 3786ac67cefe..a1b7535c508a 100644
---- a/drivers/md/dm-stripe.c
-+++ b/drivers/md/dm-stripe.c
-@@ -467,7 +467,7 @@ static struct target_type stripe_target = {
- 	.name   = "striped",
- 	.version = {1, 7, 0},
- 	.features = DM_TARGET_PASSES_INTEGRITY | DM_TARGET_NOWAIT |
--		    DM_TARGET_ATOMIC_WRITES,
-+		    DM_TARGET_ATOMIC_WRITES | DM_TARGET_PASSES_CRYPTO,
- 	.module = THIS_MODULE,
- 	.ctr    = stripe_ctr,
- 	.dtr    = stripe_dtr,
--- 
-2.45.2
-
+	Andrew
 
