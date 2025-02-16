@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568DCC02198
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Feb 2025 16:53:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD24C02198
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Feb 2025 16:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iZqorBL9NC50sKW8xRpM5vQTORnlBE5flNUJrgysfng=; b=KVkDAwrxfuO8TbDxPkhGfHZZOM
-	sHq9EkVXe7PMA1R47VVYOFS3TnjnAaHHQBdX8NZJwqYXN/sGJm/68xZ2MTRPRTdgUxyU+yzCnD8X5
-	xNf2SCIvJQrKw9QZTDlVseL0kKAEqUdNYhC4/kTtEHwCDhLy/Vh2WhXR+E49fx0dZu+r92hG//Pq2
-	wqLAhA+dImje8KcUX+y0QGHcyHx0d5/h/SOXzEEtnE37ArdA93G4eQmyJjfaCsTvaHvh7MYv1dKej
-	Lbvxrwq1lpBpV4wiB8PZINg2PzmbDKaXbkX0lUFUtxKoDnRUdV/PlhWU/ju4bw/DY/FmNMW9959tL
-	wFz83Vig==;
+	bh=IBP8PjFk2WAxOxQm9t/o4fjQueGDTjyIu8J/74eb6dM=; b=XULojntw9aHhci40q3fhq+bcAK
+	Xd55UBaTFa4Jb5grUtWaQHrlFohEotYhMfnxSFerglMUGiRf6Ot5djknfSjQxCWNcVB/Cqe0BIL9F
+	8E8+I7aC179m/PciDP9iFal3CV/LFbP0sgS5LNEyLg20fdHUL6GNLMdX3tSWgMRyWNM/dyDZ0KsXz
+	DkNbWVnqewq9unua089af/A7iKnuNkHwPWHctvFHAsbg9ERy8Ma8G4TUOgXMcmgAv/LQ/oyd7f4rc
+	wHPyAPdMxn8NSI5BZhnHx2Yh32c8fJx42nOm2YgZ2mC5zc+9yY6FyznWZ5gLRflhQ95yU4JDPeRq4
+	7GM5m3/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjhtv-00000002B1r-28oJ;
-	Sun, 16 Feb 2025 16:53:51 +0000
+	id 1tjhvL-00000002BIU-3ADl;
+	Sun, 16 Feb 2025 16:55:19 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjhpi-00000002AG5-3Ura;
-	Sun, 16 Feb 2025 16:49:31 +0000
+	id 1tjhq4-00000002ALm-2x9l;
+	Sun, 16 Feb 2025 16:49:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=iZqorBL9NC50sKW8xRpM5vQTORnlBE5flNUJrgysfng=; b=E4mMZ4LTDwAdjflnhCdA8uC2f4
-	rkJmaJNQ7qWcJgtQ1rog2qM54zWWe8DM577XKEG7XRhuiMvdvBWNTAThh09Nsh125TkiGb61qecot
-	Oy7FpDw2FJVSG2H4qx+F3n70XrAbTYNMztDm/0wn/wf5RbC1aTa7sjg4rNq4t6/K28nM=;
+	bh=IBP8PjFk2WAxOxQm9t/o4fjQueGDTjyIu8J/74eb6dM=; b=XWvrAn0eNnYtGT3Mp6+TrT4WuP
+	L6TG4g6Ft+8WcdysYSDIei+lNuQsbh/OreRE4miKyD5Jk4V/CC9io0v2CtlvnjRUasoLLj0MgSL7o
+	kj1W7DadwGFe9pq5OdMID8MLYe5Ne7K8SAjV+g36uOCS7OZEXcPXACG07YF4IQ5PecNY=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1tjhpW-00EhmQ-N6; Sun, 16 Feb 2025 17:49:18 +0100
-Date: Sun, 16 Feb 2025 17:49:18 +0100
+	id 1tjhpt-00EhnG-Eb; Sun, 16 Feb 2025 17:49:41 +0100
+Date: Sun, 16 Feb 2025 17:49:41 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Sky Huang <SkyLake.Huang@mediatek.com>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -53,18 +53,18 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v2 4/5] net: phy: mediatek: Add token ring clear
- bit operation support
-Message-ID: <082f3095-d83f-47b6-b902-2d99482855b7@lunn.ch>
+Subject: Re: [PATCH net-next v2 5/5] net: phy: mediatek: Move some macros to
+ phy-lib for later use
+Message-ID: <10060033-532c-4462-9a1b-13a72f790ca1@lunn.ch>
 References: <20250213080553.921434-1-SkyLake.Huang@mediatek.com>
- <20250213080553.921434-5-SkyLake.Huang@mediatek.com>
+ <20250213080553.921434-6-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250213080553.921434-5-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20250213080553.921434-6-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_084930_874624_AF87A82C 
-X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-CacheID: sfid-20250216_084952_738187_8EE20BEF 
+X-CRM114-Status: UNSURE (   7.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,13 +80,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2025 at 04:05:52PM +0800, Sky Huang wrote:
+On Thu, Feb 13, 2025 at 04:05:53PM +0800, Sky Huang wrote:
 > From: Sky Huang <skylake.huang@mediatek.com>
 > 
-> Similar to __mtk_tr_set_bits() support. Previously in mtk-ge-soc.c,
-> we clear some register bits via token ring, which were also implemented
-> in three __phy_write(). Now we can do the same thing via
-> __mtk_tr_clr_bits() helper.
+> Move some macros to phy-lib because MediaTek's 2.5G built-in
+> ethernet PHY will also use them.
 > 
 > Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
 
