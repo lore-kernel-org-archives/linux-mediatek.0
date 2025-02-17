@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDC6C021A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 21:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0974CC021A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 23:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=43uJaFV1XaLbZY2gv7/aOGMZi9iFcy4zO2iAFZvjvgE=; b=dJM0SRYOmKRJVp1yP/xXhveaIu
-	WhAq6eaKq5LsXsZmm+3GUOooOpauSvujM/oVVgoYQSj6/WrxG2PwzPciS4Ctuw95moEBfz8U2J4wk
-	QRNlBIBPBwU8FCFT0bsnngaTCVGsuD1SuuePmA885y5/70uMa9odFrNlKZX+lmJExMki2uyaMYkD8
-	OAxubc6FSHzYV/qeQrLBSK6aLUT579FJJ+YoCkz7V/zRP3RGnoH1OpR+5FzwoSYJl7jj+ZXhj5erM
-	2Qkp/5yADnpNrMhv952HZGq5POe2k+Bv3ik70dEY72e5gSEiO+xNsqEqY2Vp/Cd18S6K9nS6YilWG
-	IPcwX+rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q8KzBySVtwo2IDazHBvVh86VLnyiAyEXlsWF5joqIm4=; b=FMri6cstHeiQGAYSrrqOAS6c05
+	aF35UugbUMMB+wy6Bkv0rn/s06Dvthn7bhV4Zi7eMQH6iBjcuHabBxbOWliAXk7mKkYFyP27Kz1Hc
+	EcYeMgt6qQqegsk08tAMNKrIC2hlK1h0GNv71boSLvdccawgdXsp3JSJv21XR8lxD6yfjSqliGv+G
+	GyQGT7GA6mNQEpWi7wRrkY+k/QC0HSilMDt1ZJ1y9RP/9q8W5f9Em+bxplzSjavyubdrgKeXKY1Fj
+	tyzbAU/F/aBLDt9cESgIJBiXL9ZpYa6f8iCSYEg2rVGxdkltXEz1UBho1PFXBZ5KWZYr/7Vj3ZaHK
+	zram9V1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk8xT-000000063io-2IGU;
-	Mon, 17 Feb 2025 21:47:19 +0000
+	id 1tkArq-00000006HCx-07RS;
+	Mon, 17 Feb 2025 23:49:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk8u3-000000063JC-07eB;
-	Mon, 17 Feb 2025 21:43:48 +0000
+	id 1tkAqK-00000006GzD-48r4;
+	Mon, 17 Feb 2025 23:48:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 03C9A5C5926;
-	Mon, 17 Feb 2025 21:43:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81CFEC4CED1;
-	Mon, 17 Feb 2025 21:43:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 700C65C4316;
+	Mon, 17 Feb 2025 23:47:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6DDEC4CED1;
+	Mon, 17 Feb 2025 23:48:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739828626;
-	bh=fV5/lqWGfh3qpEkBAhNmPg/nL6+cObQOKlclxbrkpOU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nJGvcCNcA8GLdHDvn3WwlK7TrNUMxGChJ0q66aeKYBrluYRzx1WlJ5LnEHjc35A5F
-	 fMP6AgLITZvBbJ/HrQ7tOkyNwg5weamaB5uTbC9rcOzDC+qwVb7NOp/8deQGwvYgHT
-	 KJyjqcF2+iAM4SLpFNhuvrdNoglMFcplAJo2wUXL2dBoWf1kHNLpsMQ6pHHHvqp38c
-	 /YmZwGKnU3ydlL1R9GGNfMhbuxdE0rp0lSQ1O1Rh90AV7AMtgQaMFAVtIS/YjlzDwG
-	 dD/VFYtxX7ZwTSv98QBsWCqRkU1coSHAZ4WWuE20mSpdmbE3I5LPEA7zXhU8rlgIlG
-	 K2qlgEGf4ztdQ==
-Date: Mon, 17 Feb 2025 22:43:43 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next v4 16/16] net: airoha: Introduce PPE debugfs
- support
-Message-ID: <Z7Otj0v0PSKy8nSH@lore-desk>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
- <20250213-airoha-en7581-flowtable-offload-v4-16-b69ca16d74db@kernel.org>
- <20250217184416.GQ1615191@kernel.org>
+	s=k20201202; t=1739836083;
+	bh=Ec/oz3AfnETndpRHCs7Z69waq5sKF9/Av7l587y2Qp0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=IyeONvhg7qcvLkCd8JGbNQyO1gcfkNb0fKmCust+WEBSfG+UhbjMyKXwQpCXgheMM
+	 NNkwkm4BIy+V5Y0R8GEW9iugbbDJpsMJRIeF0CtLyr777bTTj8RFDvLy2GHErKvWUn
+	 YURvKZV+QxGLQdntsJ4HjyjBM6sXVTpvTMjP3LW3vbFKBGz/nua8ybRm2v7uLVUKwl
+	 8yWL77sGbH+f+rerYCR7r1eVgv8li0gr+eY4nukCUf5x6yTGOtnBChj+tBfGi5XghB
+	 UWT8Ca92Iqegc0h2uv4F1s9+tVsjRaMBzZxLnN/8bIol6TXALZxvLC7w2e/8TukhOO
+	 e0ALtJOHZZM7g==
+Date: Mon, 17 Feb 2025 15:48:01 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Qingfang Deng <dqfext@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Russell King
+ <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v3] net: ethernet: mediatek: add EEE support
+Message-ID: <20250217154801.338f2de4@kernel.org>
+In-Reply-To: <20250217033954.3698772-1-dqfext@gmail.com>
+References: <20250217033954.3698772-1-dqfext@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wuYdrUezw6LFqrzk"
-Content-Disposition: inline
-In-Reply-To: <20250217184416.GQ1615191@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_134347_189248_80E94A16 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20250217_154805_086578_9F26BCE4 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,176 +78,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 17 Feb 2025 11:39:53 +0800 Qingfang Deng wrote:
+> Add EEE support to MediaTek SoC Ethernet. The register fields are
+> similar to the ones in MT7531, except that the LPI threshold is in
+> milliseconds.
 
---wuYdrUezw6LFqrzk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Feb 17, Simon Horman wrote:
-> On Thu, Feb 13, 2025 at 04:34:35PM +0100, Lorenzo Bianconi wrote:
-> > Similar to PPE support for Mediatek devices, introduce PPE debugfs
-> > in order to dump binded and unbinded flows.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> ...
->=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers=
-/net/ethernet/airoha/airoha_ppe_debugfs.c
->=20
-> ...
->=20
-> > +static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *priva=
-te,
-> > +				       bool bind)
-> > +{
-> > +	static const char *const ppe_type_str[] =3D {
-> > +		[PPE_PKT_TYPE_IPV4_HNAPT] =3D "IPv4 5T",
-> > +		[PPE_PKT_TYPE_IPV4_ROUTE] =3D "IPv4 3T",
-> > +		[PPE_PKT_TYPE_BRIDGE] =3D "L2B",
-> > +		[PPE_PKT_TYPE_IPV4_DSLITE] =3D "DS-LITE",
-> > +		[PPE_PKT_TYPE_IPV6_ROUTE_3T] =3D "IPv6 3T",
-> > +		[PPE_PKT_TYPE_IPV6_ROUTE_5T] =3D "IPv6 5T",
-> > +		[PPE_PKT_TYPE_IPV6_6RD] =3D "6RD",
-> > +	};
-> > +	static const char *const ppe_state_str[] =3D {
-> > +		[AIROHA_FOE_STATE_INVALID] =3D "INV",
-> > +		[AIROHA_FOE_STATE_UNBIND] =3D "UNB",
-> > +		[AIROHA_FOE_STATE_BIND] =3D "BND",
-> > +		[AIROHA_FOE_STATE_FIN] =3D "FIN",
-> > +	};
-> > +	struct airoha_ppe *ppe =3D m->private;
-> > +	int i;
-> > +
-> > +	for (i =3D 0; i < PPE_NUM_ENTRIES; i++) {
-> > +		const char *state_str, *type_str =3D "UNKNOWN";
-> > +		u16 *src_port =3D NULL, *dest_port =3D NULL;
-> > +		struct airoha_foe_mac_info_common *l2;
-> > +		unsigned char h_source[ETH_ALEN] =3D {};
-> > +		unsigned char h_dest[ETH_ALEN];
-> > +		struct airoha_foe_entry *hwe;
-> > +		u32 type, state, ib2, data;
-> > +		void *src_addr, *dest_addr;
-> > +		bool ipv6 =3D false;
-> > +
-> > +		hwe =3D airoha_ppe_foe_get_entry(ppe, i);
-> > +		if (!hwe)
-> > +			continue;
-> > +
-> > +		state =3D FIELD_GET(AIROHA_FOE_IB1_STATE, hwe->ib1);
-> > +		if (!state)
-> > +			continue;
-> > +
-> > +		if (bind && state !=3D AIROHA_FOE_STATE_BIND)
-> > +			continue;
-> > +
-> > +		state_str =3D ppe_state_str[state % ARRAY_SIZE(ppe_state_str)];
-> > +		type =3D FIELD_GET(AIROHA_FOE_IB1_PACKET_TYPE, hwe->ib1);
-> > +		if (type < ARRAY_SIZE(ppe_type_str) && ppe_type_str[type])
-> > +			type_str =3D ppe_type_str[type];
-> > +
-> > +		seq_printf(m, "%05x %s %7s", i, state_str, type_str);
-> > +
-> > +		switch (type) {
-> > +		case PPE_PKT_TYPE_IPV4_HNAPT:
-> > +		case PPE_PKT_TYPE_IPV4_DSLITE:
-> > +			src_port =3D &hwe->ipv4.orig_tuple.src_port;
-> > +			dest_port =3D &hwe->ipv4.orig_tuple.dest_port;
-> > +			fallthrough;
-> > +		case PPE_PKT_TYPE_IPV4_ROUTE:
-> > +			src_addr =3D &hwe->ipv4.orig_tuple.src_ip;
-> > +			dest_addr =3D &hwe->ipv4.orig_tuple.dest_ip;
-> > +			break;
-> > +		case PPE_PKT_TYPE_IPV6_ROUTE_5T:
-> > +			src_port =3D &hwe->ipv6.src_port;
-> > +			dest_port =3D &hwe->ipv6.dest_port;
-> > +			fallthrough;
-> > +		case PPE_PKT_TYPE_IPV6_ROUTE_3T:
-> > +		case PPE_PKT_TYPE_IPV6_6RD:
-> > +			src_addr =3D &hwe->ipv6.src_ip;
-> > +			dest_addr =3D &hwe->ipv6.dest_ip;
-> > +			ipv6 =3D true;
-> > +			break;
-> > +		}
->=20
-> Hi Lorenzo,
-
-Hi Simon,
-
->=20
-> Perhaps it can't happen, but if type is not one of the cases handled
-> by the switch statement above then src_addr and dest_addr will
-> be used while uninitialised by the call to airoha_debugfs_ppe_print_tuple=
-()
-> below.
-
-ack, right. I will fix it in v6.
-
-Regards,
-Lorenzo
-
->=20
-> Flagged by Smatch.
->=20
-> > +
-> > +		seq_puts(m, " orig=3D");
-> > +		airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-> > +					       src_port, dest_port, ipv6);
-> > +
-> > +		switch (type) {
-> > +		case PPE_PKT_TYPE_IPV4_HNAPT:
-> > +		case PPE_PKT_TYPE_IPV4_DSLITE:
-> > +			src_port =3D &hwe->ipv4.new_tuple.src_port;
-> > +			dest_port =3D &hwe->ipv4.new_tuple.dest_port;
-> > +			fallthrough;
-> > +		case PPE_PKT_TYPE_IPV4_ROUTE:
-> > +			src_addr =3D &hwe->ipv4.new_tuple.src_ip;
-> > +			dest_addr =3D &hwe->ipv4.new_tuple.dest_ip;
-> > +			seq_puts(m, " new=3D");
-> > +			airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-> > +						       src_port, dest_port,
-> > +						       ipv6);
-> > +			break;
-> > +		}
-> > +
-> > +		if (type >=3D PPE_PKT_TYPE_IPV6_ROUTE_3T) {
-> > +			data =3D hwe->ipv6.data;
-> > +			ib2 =3D hwe->ipv6.ib2;
-> > +			l2 =3D &hwe->ipv6.l2;
-> > +		} else {
-> > +			data =3D hwe->ipv4.data;
-> > +			ib2 =3D hwe->ipv4.ib2;
-> > +			l2 =3D &hwe->ipv4.l2.common;
-> > +			*((__be16 *)&h_source[4]) =3D
-> > +				cpu_to_be16(hwe->ipv4.l2.src_mac_lo);
-> > +		}
-> > +
-> > +		*((__be32 *)h_dest) =3D cpu_to_be32(l2->dest_mac_hi);
-> > +		*((__be16 *)&h_dest[4]) =3D cpu_to_be16(l2->dest_mac_lo);
-> > +		*((__be32 *)h_source) =3D cpu_to_be32(l2->src_mac_hi);
-> > +
-> > +		seq_printf(m, " eth=3D%pM->%pM etype=3D%04x data=3D%08x"
-> > +			      " vlan=3D%d,%d ib1=3D%08x ib2=3D%08x\n",
-> > +			   h_source, h_dest, l2->etype, data,
-> > +			   l2->vlan1, l2->vlan2, hwe->ib1, ib2);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
->=20
-> ...
-
---wuYdrUezw6LFqrzk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7OtjwAKCRA6cBh0uS2t
-rOPEAP9+/F0RFgMoQ0v35rX2VDR696DE6FoGDfgFuWkgme4QIwEAvv1IjrUHIdRu
-8U1RB+R6NcBYpY09go8lwjjS2DAvAQE=
-=kYTW
------END PGP SIGNATURE-----
-
---wuYdrUezw6LFqrzk--
+Please wait 24h before reposting next time.
+-- 
+pv-bot: 24h
 
