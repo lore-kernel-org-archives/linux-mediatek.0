@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C0AC021AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 18:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE1FC021A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 18:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EwsNs4rTkCq+1gD7AYy++hzMPwVpqQxCJeslYKSIXTY=; b=XFFgg2b23nDXRa7xnnUmOv/ZNz
-	ykHQ818hLoqLumU/s3uchSgPNXC7n8P3gMl2z54TnUsU9diyoyU5p0kqg5StbksjgwAgsARHh6NZL
-	VA1ox53zBLeCtBrJMlZSSstE46OgkDqOmlg7F7PZ3XYcAGxhhi4T7DO8FA3QH2X2Q54QQTKqv6o3y
-	zfDVzkDKiFcEc4RJw8xdnm1JaPq22mtRw5CMyzpgO9aN8u5ai/Qlmcgv4vaSmMAUt+SUbHkd+Y/vo
-	zMlt6zgDZLLHGmcznOV0EvvanE5o8Hy4f3PPgKddp7GEOjA91aIkrRJv1mbWz/Ui3kKXk1OGf42cU
-	bwhzRN0A==;
+	bh=6L6CLEKqcPrRJhrzPfeseJlwds1PXfz2BxfcoLKD2Oc=; b=W2gQ0cEYyJqGfCYU9J1I/IZX0l
+	So2wFatXofrY7LLp1n/XcIYur6OPw2WwFTwh3y/W7/4nWCB/y0DFLXHQ4DkzFGp3qThG3RXIsxjor
+	SkiW8IpwtsSjyzJ0ug+n04N3xYSpW6BWERyg2P46dI+ksyhXZ9MSRTWfk9Dwt0tFl2PJ0ju0EaeVo
+	gmKy/A/fYZoeLd+QrLO2XkXQQkt6MbnEw8FAcvrmAbA1rvF4AnVGs6o4xyBEVtygoD55O04z1WSTU
+	SAfPot/WcLCJidGC83Y30nwzg1cxrYdp44pBUKH2ccsKNUEtH3ndH8mgqYRceiuc91PA1vjw224eE
+	iq8VCd9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk681-00000005eOM-15fy;
-	Mon, 17 Feb 2025 18:46:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tk69S-00000005ecH-0mOY;
+	Mon, 17 Feb 2025 18:47:30 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk66Y-00000005eA3-12Q3;
-	Mon, 17 Feb 2025 18:44:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=EwsNs4rTkCq+1gD7AYy++hzMPwVpqQxCJeslYKSIXTY=; b=QDX1P+ctaBzPfHZ8Sa9jxwJs8L
-	JcSMki5tqUx/DA2/nE8aNpazpnrlbUdO7Oozd/YPLGylqFTgK7YcYisKBLboJM5CuPXAxjX9AG7fN
-	5OkcnlCnQCXQKGB27w0TtSHJeFF3fo17Ve02FlfBeW6hyNvmw5McT0qEnIpbI9MnaFw7RjnAORosH
-	hhv+Lk12e1atry5kVnWnLf+PuYeWMUM9ZER0dDM4n8EkNOSUJbH7l65WRVxu+kqNJVMhNegtUjU5F
-	QVBrezmjIsSbPcIJmCk/pYeuxAMbTVXKgW1mDnclVl4GAlnpoLeS6DQfV3/rXvzOsiY/hUVTpVrkR
-	400er2XA==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk66V-00000001sDf-1NbX;
-	Mon, 17 Feb 2025 18:44:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7513AA40FC9;
-	Mon, 17 Feb 2025 18:42:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCBF9C4CED1;
-	Mon, 17 Feb 2025 18:44:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739817863;
-	bh=hvJmtOA0hWqdrwewer4IWWSTXNheMWESg95g21xhQrU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ECO4WBLVH6vcxQaP1em3PQFuRdPLwaJyGRECgte5JxlUQg1SE2w9c4ZETGj9bYn96
-	 BTxsCXe7x/dvdDGteIZHJdpiOG7cqvSrAUvROo4x7h//C6W72zLNRrXmpAVGYJSQVd
-	 NhuVpbUduXFTY1QwO8PYkH2qLBh+VysqtAdmV5zv09bXnmko1+2PNaJV07deqxLvV2
-	 U6vV0ZMgVKT7Hb1K24nZixUabg0/URFZyN+GKFzuHCO7HGHcKYKQhutA6vhjjQzDXj
-	 p13Lzp5sAPXkhyZhb5shtiSB5kfHYMB3f6nUIp4nwXYvajhQ4AWQ96vq7kM23OOofk
-	 yNsY0nMF/bBSA==
-Date: Mon, 17 Feb 2025 18:44:16 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next v4 16/16] net: airoha: Introduce PPE debugfs
- support
-Message-ID: <20250217184416.GQ1615191@kernel.org>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
- <20250213-airoha-en7581-flowtable-offload-v4-16-b69ca16d74db@kernel.org>
+	id 1tk67O-00000005eGb-3nLI
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Feb 2025 18:45:24 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-6e660740061so42947856d6.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Feb 2025 10:45:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1739817920; x=1740422720; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=6L6CLEKqcPrRJhrzPfeseJlwds1PXfz2BxfcoLKD2Oc=;
+        b=XKrAk+dZMadnBtrlIEb4TRaBviMWCZieh4AaGFGYMlod8C9cZbR2hOo7AkGAPF/wY8
+         HIvwoeDvgk3NSQLNVdEclGuAY7YNXlO1jsCvcw+XiNhXzHFA+iEfIjw54e5BjMpEvcpI
+         nO20TVbOhVLEjrSAA8wdPUT4i1PRZjpzWfjaGr1OzjFkm+FBlcYhSSnQcTR1zOnpFpy5
+         tlVWZ+KocOWBVBWGlvYGHnVtylQrpbfB1TF++VH3GURD3Fs2C4S2/3l+fE05CwobbX8C
+         CMP8K1UZ0vrFy5BGqnN+akv7QSGtptKyNRsgHlsZ4DbSTVdoHHpAM2Jgkf+xMuKd0udu
+         TVhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739817920; x=1740422720;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6L6CLEKqcPrRJhrzPfeseJlwds1PXfz2BxfcoLKD2Oc=;
+        b=p9PM9Skxc33RBnyiFBPdFKDPMXa88oZS0EWzR4KHp0h9j5VOI44gQNrbLTFLqSzVGk
+         sNQ0lIpzgmY6e/SvvNJYDiSzCALtmtBqRHrScuPuGAVENiMrtiWMbSUqcHrrYHUWkYuv
+         KQaz8EwFA+lwzd2L6iMrcKgsfz3oRf8yFc848U231M2+TBJcKGZopuiKU6Tqy+SVTfR3
+         sxi1mRIAVPv++HSOF/c99JJzj4X2K18nJnn1heqb+np6x5bI+/V7IcM4c5wTXcW5ClOO
+         xtgt3xCEwpOzSvB+tnUTqqMoNqz42PzxNdItC9fQXpS53/dn0r5X3eif8KdFYokKRcSJ
+         5jIg==
+X-Gm-Message-State: AOJu0Yz2SuNTVPKM6LjaOj+qqMtmvq8tDOvHRO5AonNKzl2sfHljfWtn
+	68eIcQfLdpGnJRudAS+KkoHFTs61nZusFajAGvvLNq8SDkZU39M3DftysQtSaHs=
+X-Gm-Gg: ASbGncu7L+EsmxhpO4sVPi+DuqjCmIFlFoHNBDGq3SFIUiF0BApc+eMTf7w/9JzqRe/
+	aZ0Igt3h6tTXF/X3+XsJUxXzqgdvNcMuBGtY829hCYD7QgKb+7jWNvI31f/+rdZG3DKw8qqrWvr
+	z3vaJgaG4Nngi9aQJ8CxXQkGKBQUe6IHCzNMKN42kw/AsqTtTERyUQySrMDYSXTkRcQbdI0EAFf
+	a05OJGau7qtXragsM1gMWYfONm65wgfgKKrjq/aqLd7PjpSM5XZBNMaIYbZnBYYi6jun2eVnSIw
+	/gTNcK9acjwrVgqP9sxj
+X-Google-Smtp-Source: AGHT+IGNdl7vF080sQ0ioTe7+4SN17jK4snwRBjBnucmBNF6nJHjI5dIs2Whm+kD76Bwzk4VXdCbEw==
+X-Received: by 2002:a05:6214:1bce:b0:6e6:6711:d7f1 with SMTP id 6a1803df08f44-6e66cc865b6mr166508596d6.8.1739817919179;
+        Mon, 17 Feb 2025 10:45:19 -0800 (PST)
+Received: from ?IPv6:2606:6d00:11:e976::5ac? ([2606:6d00:11:e976::5ac])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-471f0bfe304sm14136191cf.55.2025.02.17.10.45.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Feb 2025 10:45:18 -0800 (PST)
+Message-ID: <f257832e823d23c8324a9eaf7890dd4b6d50a6f0.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mediatek: vcodec: Enable HEVC main still picture
+ decode
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Nathan Hebert <nhebert@chromium.org>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Mon, 17 Feb 2025 13:45:17 -0500
+In-Reply-To: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
+References: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250213-airoha-en7581-flowtable-offload-v4-16-b69ca16d74db@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_184427_677407_43B6DEA3 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20250217_104522_940231_0668DB33 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,144 +102,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2025 at 04:34:35PM +0100, Lorenzo Bianconi wrote:
-> Similar to PPE support for Mediatek devices, introduce PPE debugfs
-> in order to dump binded and unbinded flows.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Hi Nathan,
 
-...
+Le mardi 11 f=C3=A9vrier 2025 =C3=A0 16:34 -0800, Nathan Hebert a =C3=A9cri=
+t=C2=A0:
+> Mediatek devices that support HEVC also support the main still picture
+> profile, but today, the main still picture profile is excluded.
+>=20
+> This removes the skip mask for HEVC, and enables the main still
+> picture profile decoding.
+>=20
+> Signed-off-by: Nathan Hebert <nhebert@chromium.org>
+> ---
+> On Mediatek devices that support HEVC decoding, HEVC Main Still Picture
+> profile is also supported by the SOC and firmware. However, this
+> capability is turned off in the vcodec driver.
+>=20
+> This removes the code that disables HEVC Main Still Picture profile
+> decoding. Validation of the decoder has been done via V4L2-backed
+> Android CTS tests on an MT8196 device.
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+While its nice to know that you are working on upcoming SoC, we need
+confirmation that this is working on all the upstream stateless
+decoders supported: 8183, 8186, 8192, 8195. Ideally testing on 8188,
+which I can see has merged support without the linux-firmware file to
+go with it.
 
-...
+I'll wait for that and Yunfei's ack before picking it. Yunfei, please
+fix the situation with 8188 in linux-firmware, and CC me.
 
-> +static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
-> +				       bool bind)
-> +{
-> +	static const char *const ppe_type_str[] = {
-> +		[PPE_PKT_TYPE_IPV4_HNAPT] = "IPv4 5T",
-> +		[PPE_PKT_TYPE_IPV4_ROUTE] = "IPv4 3T",
-> +		[PPE_PKT_TYPE_BRIDGE] = "L2B",
-> +		[PPE_PKT_TYPE_IPV4_DSLITE] = "DS-LITE",
-> +		[PPE_PKT_TYPE_IPV6_ROUTE_3T] = "IPv6 3T",
-> +		[PPE_PKT_TYPE_IPV6_ROUTE_5T] = "IPv6 5T",
-> +		[PPE_PKT_TYPE_IPV6_6RD] = "6RD",
-> +	};
-> +	static const char *const ppe_state_str[] = {
-> +		[AIROHA_FOE_STATE_INVALID] = "INV",
-> +		[AIROHA_FOE_STATE_UNBIND] = "UNB",
-> +		[AIROHA_FOE_STATE_BIND] = "BND",
-> +		[AIROHA_FOE_STATE_FIN] = "FIN",
-> +	};
-> +	struct airoha_ppe *ppe = m->private;
-> +	int i;
-> +
-> +	for (i = 0; i < PPE_NUM_ENTRIES; i++) {
-> +		const char *state_str, *type_str = "UNKNOWN";
-> +		u16 *src_port = NULL, *dest_port = NULL;
-> +		struct airoha_foe_mac_info_common *l2;
-> +		unsigned char h_source[ETH_ALEN] = {};
-> +		unsigned char h_dest[ETH_ALEN];
-> +		struct airoha_foe_entry *hwe;
-> +		u32 type, state, ib2, data;
-> +		void *src_addr, *dest_addr;
-> +		bool ipv6 = false;
-> +
-> +		hwe = airoha_ppe_foe_get_entry(ppe, i);
-> +		if (!hwe)
-> +			continue;
-> +
-> +		state = FIELD_GET(AIROHA_FOE_IB1_STATE, hwe->ib1);
-> +		if (!state)
-> +			continue;
-> +
-> +		if (bind && state != AIROHA_FOE_STATE_BIND)
-> +			continue;
-> +
-> +		state_str = ppe_state_str[state % ARRAY_SIZE(ppe_state_str)];
-> +		type = FIELD_GET(AIROHA_FOE_IB1_PACKET_TYPE, hwe->ib1);
-> +		if (type < ARRAY_SIZE(ppe_type_str) && ppe_type_str[type])
-> +			type_str = ppe_type_str[type];
-> +
-> +		seq_printf(m, "%05x %s %7s", i, state_str, type_str);
-> +
-> +		switch (type) {
-> +		case PPE_PKT_TYPE_IPV4_HNAPT:
-> +		case PPE_PKT_TYPE_IPV4_DSLITE:
-> +			src_port = &hwe->ipv4.orig_tuple.src_port;
-> +			dest_port = &hwe->ipv4.orig_tuple.dest_port;
-> +			fallthrough;
-> +		case PPE_PKT_TYPE_IPV4_ROUTE:
-> +			src_addr = &hwe->ipv4.orig_tuple.src_ip;
-> +			dest_addr = &hwe->ipv4.orig_tuple.dest_ip;
-> +			break;
-> +		case PPE_PKT_TYPE_IPV6_ROUTE_5T:
-> +			src_port = &hwe->ipv6.src_port;
-> +			dest_port = &hwe->ipv6.dest_port;
-> +			fallthrough;
-> +		case PPE_PKT_TYPE_IPV6_ROUTE_3T:
-> +		case PPE_PKT_TYPE_IPV6_6RD:
-> +			src_addr = &hwe->ipv6.src_ip;
-> +			dest_addr = &hwe->ipv6.dest_ip;
-> +			ipv6 = true;
-> +			break;
-> +		}
+regards,
+Nicolas
 
-Hi Lorenzo,
+> ---
+> =C2=A0.../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless=
+.c=C2=A0=C2=A0 | 2 --
+> =C2=A01 file changed, 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
+c_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_d=
+ec_stateless.c
+> index afa224da0f41..d873159b9b30 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state=
+less.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state=
+less.c
+> @@ -152,8 +152,6 @@ static const struct mtk_stateless_control mtk_statele=
+ss_controls[] =3D {
+> =C2=A0			.id =3D V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
+> =C2=A0			.def =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+> =C2=A0			.max =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
+> -			.menu_skip_mask =3D
+> -				BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
+> =C2=A0		},
+> =C2=A0		.codec_type =3D V4L2_PIX_FMT_HEVC_SLICE,
+> =C2=A0	},
+>=20
+> ---
+> base-commit: ffd294d346d185b70e28b1a28abe367bbfe53c04
+> change-id: 20250211-enable_hevc_still_picture-26b35eb08270
+>=20
+> Best regards,
 
-Perhaps it can't happen, but if type is not one of the cases handled
-by the switch statement above then src_addr and dest_addr will
-be used while uninitialised by the call to airoha_debugfs_ppe_print_tuple()
-below.
-
-Flagged by Smatch.
-
-> +
-> +		seq_puts(m, " orig=");
-> +		airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-> +					       src_port, dest_port, ipv6);
-> +
-> +		switch (type) {
-> +		case PPE_PKT_TYPE_IPV4_HNAPT:
-> +		case PPE_PKT_TYPE_IPV4_DSLITE:
-> +			src_port = &hwe->ipv4.new_tuple.src_port;
-> +			dest_port = &hwe->ipv4.new_tuple.dest_port;
-> +			fallthrough;
-> +		case PPE_PKT_TYPE_IPV4_ROUTE:
-> +			src_addr = &hwe->ipv4.new_tuple.src_ip;
-> +			dest_addr = &hwe->ipv4.new_tuple.dest_ip;
-> +			seq_puts(m, " new=");
-> +			airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-> +						       src_port, dest_port,
-> +						       ipv6);
-> +			break;
-> +		}
-> +
-> +		if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
-> +			data = hwe->ipv6.data;
-> +			ib2 = hwe->ipv6.ib2;
-> +			l2 = &hwe->ipv6.l2;
-> +		} else {
-> +			data = hwe->ipv4.data;
-> +			ib2 = hwe->ipv4.ib2;
-> +			l2 = &hwe->ipv4.l2.common;
-> +			*((__be16 *)&h_source[4]) =
-> +				cpu_to_be16(hwe->ipv4.l2.src_mac_lo);
-> +		}
-> +
-> +		*((__be32 *)h_dest) = cpu_to_be32(l2->dest_mac_hi);
-> +		*((__be16 *)&h_dest[4]) = cpu_to_be16(l2->dest_mac_lo);
-> +		*((__be32 *)h_source) = cpu_to_be32(l2->src_mac_hi);
-> +
-> +		seq_printf(m, " eth=%pM->%pM etype=%04x data=%08x"
-> +			      " vlan=%d,%d ib1=%08x ib2=%08x\n",
-> +			   h_source, h_dest, l2->etype, data,
-> +			   l2->vlan1, l2->vlan2, hwe->ib1, ib2);
-> +	}
-> +
-> +	return 0;
-> +}
-
-...
 
