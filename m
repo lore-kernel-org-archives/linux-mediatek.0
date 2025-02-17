@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE23DC021A1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 11:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C309C021A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 12:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DbjxxvFUSINuD+GS4bDK4+YmMPoBQQThSlhkpsMhcDg=; b=MJj9Rz3FdwZ6+2JfgskJwFROGM
-	PtfGJEnTKk1lr0RSUTp5sRk8+duEkAiZKtLivX14DcDDak0Y138SE+AnKTiRsuhVOjKKQQlOU/nPl
-	nIaDuHUj7/dbO+eN1XDLE+UnqurNwpYYgNZyOCFeF7fcqLmgutma2XL/nQ3G8EHWwXKdMQCap20Fh
-	DpjShRhfBjmHO3NjN8j3etjyKqbk5qG5yklWexy7atGQcJhDwqn5LQ72Whlt3bsJUYLWQYZP874pL
-	g7elOtngz3R8ZuExmfimdgs8hxcZahHqDDkug0PXCbRTUg/ro/ucqY2ML/lOpFiiTPp8HT5qbd9jl
-	xW4raIbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vtt7prXDEjZ4aMiH3Y0nAYK4aEl2wQJc9YSXnvv/CzU=; b=4IeB0iR4kCOI09pADfYunK7CBE
+	0fxoVXLMo9O5t2GjTyjzSmJ3I51Q9xw4b7peXfNzFbc9QStnmfFD6G9z99Zz/GcdMWfs8n17FJzv1
+	y3sWVkUCJan/XUVjClRyWqpbCJK/mjsRZCD7zoXskrubl3cy3nH9HK6X5DhbCdAMtNgLhaolzd5yd
+	ADJ6fUqdC8ZqtS+zIrc1upffcD7DQcUsJZHpCox09DldCpkwpTZAazzZdIrK0sUlCsp6qFqdoYmjm
+	2nUwz9LytR2EuEGxN08R68FRtu1j+Tad3M1GGa3iZGOiiiGt7joq+hfop/Jvi1gJnHuieP66Ylzp7
+	xnUFBu/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjzTH-00000004Kxj-2eWG;
-	Mon, 17 Feb 2025 11:39:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tk0GY-00000004TMt-1IQm;
+	Mon, 17 Feb 2025 12:30:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjzRl-00000004KjK-0Xzs;
-	Mon, 17 Feb 2025 11:37:58 +0000
-X-UUID: 9ecab39aed2311efa1e849db4cc18d44-20250217
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DbjxxvFUSINuD+GS4bDK4+YmMPoBQQThSlhkpsMhcDg=;
-	b=FVnEflPk2PsDj3/N4oTcnyRQvjt03qjd/n959qEcD7g4Gah8BsrzVdYsyUSk3mO9WIFFrV/km6GaAL9pxcyuoFWPIg6OYS3SocNCed0Fx448rQODp0sAFfNVh412/x9tv5pWQMT1KTLD2tMW+ItstL4BT6YCe9FiMJSockubjmA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:f8b2b1e0-64e4-49fb-b269-e710bbbf8f91,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:c9c37f88-f9ab-4ac1-951b-e3a689bed90c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9ecab39aed2311efa1e849db4cc18d44-20250217
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 399981751; Mon, 17 Feb 2025 04:37:51 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Mon, 17 Feb 2025 19:37:48 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Mon, 17 Feb 2025 19:37:48 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Sen Chu <sen.chu@mediatek.com>, Chris-qj chen
-	<chris-qj.chen@mediatek.com>
-Subject: [PATCH v3] arm64: dts: mediatek: mt6359: fix dtbs_check error for audio-codec
-Date: Mon, 17 Feb 2025 19:37:36 +0800
-Message-ID: <20250217113736.1867808-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tk05Y-00000004QqP-1Jtz;
+	Mon, 17 Feb 2025 12:19:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 728E25C1038;
+	Mon, 17 Feb 2025 12:18:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 256D2C4CED1;
+	Mon, 17 Feb 2025 12:19:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739794742;
+	bh=wyEMxJSE4ut2qD9vvgKYF1uHbf5olLm7PCB7mopaezc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Zj3zJVGLaouZLXnzIJXFuNsrKpMsmPoeDnw9lLcRLibpLL+oIqHjoQnx53/NpJMaT
+	 1obkaYTrOUIoO+baSTIgHL3v+87w0VtQxnnPh71a6wpmwuy0OlH/uutPpBt2ASdEXw
+	 Y1a2lkUKXWaHGBHR/ao6nkcEvLaBe4SbvJCu0rwZySIQcJfLNqJO6AtZsIjlcQXqAt
+	 FJ1jA4lLVpjCBWk1vSr7bY0oGqyJx9vu4bR5NYF+SFaWIvvWyyTLhAXMr3Qb/A0wlo
+	 GUzWRedJnc7Q4WYfKXUEGhiklHWnDqROR2KlwtKY5zO7ZIHZUhEBsP01yqAW2DqRha
+	 b95ToCfNsaezA==
+Date: Mon, 17 Feb 2025 13:19:00 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
+ for EN7581 SoC
+Message-ID: <Z7MpNADDFxPTX1Yy@lore-desk>
+References: <20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org>
+ <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
+ <20250214171106.ul3fwzcwhadhdwhj@thinkpad>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2DDNq2ksAqtJIqnN"
+Content-Disposition: inline
+In-Reply-To: <20250214171106.ul3fwzcwhadhdwhj@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_033757_181897_471E6A79 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20250217_041904_464201_60220B70 
+X-CRM114-Status: GOOD (  25.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +83,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This change fixes these dtbs_check errors for audio-codec:
-1. pmic: 'mt6359codec' does not match any of the regexes: 'pinctrl-[0-9]+'
- - Replace device node name to generic 'audio-codec'
-2. pmic: regulators: 'compatible' is a required property
- - Add 'mediatek,mt6359-codec' to compatible.
 
-Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6359.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+--2DDNq2ksAqtJIqnN
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes for v2:
- - No change. Because the 2/3 patch has been dropped from the v1 patch.
-   Hence the new patch set v2 needs to be updated.
+> On Sun, Feb 02, 2025 at 08:34:24PM +0100, Lorenzo Bianconi wrote:
+> > Configure PBus base address and address mask to allow the hw
+> > to detect if a given address is on PCIE0, PCIE1 or PCIE2.
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek-gen3.c | 30 +++++++++++++++++++++=
++++++++-
+> >  1 file changed, 29 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
+controller/pcie-mediatek-gen3.c
+> > index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..9c2a592cae959de8fbe9ca5=
+c5c2253f8eadf2c76 100644
+> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -15,6 +15,7 @@
+> >  #include <linux/irqchip/chained_irq.h>
+> >  #include <linux/irqdomain.h>
+> >  #include <linux/kernel.h>
+> > +#include <linux/mfd/syscon.h>
+> >  #include <linux/module.h>
+> >  #include <linux/msi.h>
+> >  #include <linux/of_device.h>
+> > @@ -24,6 +25,7 @@
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pm_domain.h>
+> >  #include <linux/pm_runtime.h>
+> > +#include <linux/regmap.h>
+> >  #include <linux/reset.h>
+> > =20
+> >  #include "../pci.h"
+> > @@ -127,6 +129,13 @@
+> > =20
+> >  #define PCIE_MTK_RESET_TIME_US		10
+> > =20
+> > +#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
+> > +#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
+> > +#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
+> > +	((_n) =3D=3D 2 ? 0x28000000 :	\
+> > +	 (_n) =3D=3D 1 ? 0x24000000 : 0x20000000)
+> > +#define PCIE_EN7581_PBUS_BASE_ADDR_MASK	GENMASK(31, 26)
+> > +
+> >  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
+> >  #define PCIE_EN7581_RESET_TIME_MS	100
+> > =20
+> > @@ -931,7 +940,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie=
+ *pcie)
+> >  static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+> >  {
+> >  	struct device *dev =3D pcie->dev;
+> > -	int err;
+> > +	struct regmap *map;
+> > +	int err, slot;
+> >  	u32 val;
+> > =20
+> >  	/*
+> > @@ -945,6 +955,24 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen=
+3_pcie *pcie)
+> >  	/* Wait for the time needed to complete the reset lines assert. */
+> >  	msleep(PCIE_EN7581_RESET_TIME_MS);
+> > =20
+> > +	map =3D syscon_regmap_lookup_by_phandle(dev->of_node,
+> > +					      "mediatek,pbus-csr");
+> > +	if (IS_ERR(map))
+> > +		return PTR_ERR(map);
+>=20
+> So this is going to regress the devicetree's that do not define this sysc=
+on
+> region? But I do not see any devicetree using this 'airoha,en7581-pcie'
+> compatible, so not sure if this is going to be an issue. Are the downstre=
+am
+> devicetrees used?
 
-Changes for v3:
- - Add "Reviewed-by:" tag. Thanks!.
+AFAIK there is no upstream or downstream (e.g. OpenWrt) en7581 dts with PCIe
+support yet so I do not know if this is an issue or not. If so, I guess we
+need to add the proper Fixes tag:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-index 8e1b8c85c6ed..98a4aaac7911 100644
---- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-@@ -14,7 +14,8 @@ pmic_adc: adc {
- 			#io-channel-cells = <1>;
- 		};
- 
--		mt6359codec: mt6359codec {
-+		mt6359codec: audio-codec {
-+			compatible = "mediatek,mt6359-codec";
- 		};
- 
- 		regulators {
--- 
-2.45.2
+Fixes: f6ab898356dd ("PCI: mediatek-gen3: Add Airoha EN7581 support")
 
+Regards,
+Lorenzo
+
+>=20
+> - Mani
+>=20
+> --=20
+> =E0=AE=AE=E0=AE=A3=E0=AE=BF=E0=AE=B5=E0=AE=A3=E0=AF=8D=E0=AE=A3=E0=AE=A9=
+=E0=AF=8D =E0=AE=9A=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AE=BF=E0=AE=B5=E0=AE=AE=
+=E0=AF=8D
+
+--2DDNq2ksAqtJIqnN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7MpNAAKCRA6cBh0uS2t
+rIuEAP9rnTTRV1mWaP3Z7uCsLUu0NlHr8BpEtVsjDGVDIPv7+wEA9eryLOzy0dp5
+zACOFi5/qvhsY75r70+bG8mpUeyRYg8=
+=IvLf
+-----END PGP SIGNATURE-----
+
+--2DDNq2ksAqtJIqnN--
 
