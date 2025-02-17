@@ -4,78 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86776C021A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 19:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435C2C021A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 19:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KfKnUUWtStrtKV9wPRAsZoWjhplTNxGCRujGqNOYsHo=; b=m7/VUxV36Fh+MdbF//KwbDi3sg
-	iBcvh7fO7fydYYOA+sexWYqgyHJIDmtkcMb62L0hdQ1KOcpizlgENGAtbLqMTBrjCLqTZT/An9K+3
-	uiDJdstcngZEA2rExeAuJ15JOi5uHnv+ncr8bQ0qkiC/hhJGCSCXjxwxkcJ65YKxQkudWOgTnfSUk
-	hbM1EiX9edANgiFoDaVJRUyZbp0cJ5JAaugO9rsoC2G/ViacGSJGj5tdOgokikqKN4JjV1KRn3QmD
-	6S+BTdKskK7MtK50JyGxmH0JH/z5qBow050GsW5aG0DqOZnD03PXHCS28DRd7F0ocMVPqoCB37WZE
-	mxrMXR7A==;
+	bh=AzAfbcIU/2Am+v+jnPFOtCbj7SMgMMXKSogURXBFTnU=; b=iShgObvM6O/r5I5ERIP2L2yOgb
+	9p7OWWpMCsUqS9s6Red3Y+WPy/SJjggfm8FtZY6jgDzd83ts3yEuWulN0HhHOt41h90+cga5Ny9Oi
+	x4SwV6Dw8CWbSL9/UChniXcw68TGoRcuauHgdiaWCTmL0OdukQFwxCDuHSNym2UCYoOVtBupy/+Ql
+	yYfYztAvxCbiRyCrj/2rx1hwHuWg22A97enA4rDrOEUtpmfwTqt3JkyMwcdNMZ3zpEZm2ieRUlIVa
+	IAXx0C6ZHiXqpfdy6Zd03Sk2MzqnYoaLV4n4BlMpVkE31/2R3U/H2AjHaIVG5nw0JQQu71R5ZQPKI
+	FI1dJH5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk6k3-00000005kAA-1pUN;
-	Mon, 17 Feb 2025 19:25:19 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tk6nV-00000005knn-1YAs;
+	Mon, 17 Feb 2025 19:28:53 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk6iZ-00000005jvO-1FMv;
-	Mon, 17 Feb 2025 19:23:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 83F9BA41B71;
-	Mon, 17 Feb 2025 19:22:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F75BC4CED1;
-	Mon, 17 Feb 2025 19:23:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739820226;
-	bh=di2f8ZfXxCBNhR7tv+4nGQXXN3J9VR0ctQdlXHHgSYk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pIo9w2YblFjZSZMaEOhGejB9c414kgaJgJ6HG5VwvXh/+u51F3hBjG/gA7rz5T7RS
-	 GT/Fj7TqqhkeDjZuZG4PO6MRq3+QBTVfNyV2I6CUFY9apW4eyL6ijfJnGymzXjAhy/
-	 ZsjwRwoMo7Q34ReT01vHNVIfwHPuzdPZ5LZqDZ3OW71n1ZTD91WSzBlCJ2pgb9k1fA
-	 4YGEVdmqgIYF8UHMqXLoAwf49oyeBkPqapQ79aIpzefGKN1rvk71XHuiN+kwVQHcgO
-	 asLClEcALL+ODomNhlQyUL4qK1++i0s0IUGFIpytZQrIwLL2brjvJswkE6RiCyAWz+
-	 du9M2PEAqi62w==
-Date: Mon, 17 Feb 2025 20:23:43 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next v4 13/16] net: airoha: Introduce Airoha NPU
- support
-Message-ID: <Z7OMv-7UBVtKaEFb@lore-desk>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
- <20250213-airoha-en7581-flowtable-offload-v4-13-b69ca16d74db@kernel.org>
- <20250217183854.GP1615191@kernel.org>
+	id 1tk6nS-00000005kle-1J8n
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Feb 2025 19:28:51 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-7c07838973eso445936085a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Feb 2025 11:28:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1739820528; x=1740425328; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=AzAfbcIU/2Am+v+jnPFOtCbj7SMgMMXKSogURXBFTnU=;
+        b=22gSFExae+aEu43kckWWrCwxFrVRh0+5A/8pYEuS2QKYRq5xreyQXKzCm01N74YApz
+         F7XX758Xs+uZhJ9IljLNc5uAgoavZMHO5UVNG7bXcBL/ER9T/oKA3uILielRK+iAZAOV
+         iiRN7Uo5P63Ot51YGwxjTuWv3QpWYUT2oVIxHtovGJyzQJsnyvemXW/aMYJj+B7WJT1E
+         3nRlDvdrGS7jvCn2POUQCSpkxp7rvOELYHhlfmh6efLKDSsZW/Y+kVj+Omuh2Qv0dKjH
+         x8HPI5WpMx5Ccuh4hp+463Shmp2GaJwwP59QUEUXVGqUtRZxhqVjWCLNm2JE5r8KDD/Q
+         54qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739820528; x=1740425328;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AzAfbcIU/2Am+v+jnPFOtCbj7SMgMMXKSogURXBFTnU=;
+        b=QVdBnHV1bdzn8kT9zV0MhchRwYwP2QsyPo5risfivo4L162SzAWfCirY2UPZYl7rzO
+         kB64ewiBpyuMvuKwVtGKUNSl3HGTZ5Lx7fWXEFH7xo0un6OiHwuk3z1Lg97A2jFfq4OU
+         XXH5/0w6vR5lAJHVtILenb3IGeDLWlm35CI5vadyxAnnoM0XGWZ4jveDnXK5r165MgIB
+         cxQJO0pq+Rvr6jkYSPMyFZg51yWmXul6YHh8tmEg+NGlIz3Jhq8jF//B02/b3vXC7l8P
+         skn+OJGd/zBxjS/cnNhc4mxTCDUwP9KGvhwGZRBlJqHSHeFlzKIkcIg3k1SzDOg4lTeA
+         yi0A==
+X-Gm-Message-State: AOJu0Yw96VS9n+LNAIMKEpByQwMIVHJ8FskDNnEFAnBw1x4dqbrbRiOb
+	C6xcrRo1hFjqtuziPWEoFjgvn+CQLIhC062IW8WhGE+uU6Bc+DboDLt19QN9rmY=
+X-Gm-Gg: ASbGncscM/gRpaH9t0h6sBh+91wLeMGwTUiUKdFkSPTAHInMUgMvSGf3RLZYNMNc5zJ
+	p86//Kqg1g45EnokIYWEcpbWN7ZGBjWOyFYABSK6L2194eYzIyvNyUn9R9Vioxjqhcno06ctnzf
+	Ob/RoJeA3OMToMrZzd61//D8kUk2oMk50U6oXUucd1mJyMgTmchLLTDdZw4V/HIuIDtyIPcSlIl
+	KNtyBZy6lp4Pg2Wmvo/ZaCIjWBNn572Jtftk89Kz1khXjSLPF9PDtpLaJJilDp11Gl0N6o7y+x0
+	IJJ7CcSY5ONnxZquRLG+
+X-Google-Smtp-Source: AGHT+IF0M1JuegcbLy3i0Bijjwl67r9LgXH3tketiaHBXEgodxNXXo5qAbFCYzz/X43MZ2CJv0eXEA==
+X-Received: by 2002:a05:620a:40c1:b0:7c0:7350:9adb with SMTP id af79cd13be357-7c08a9801b5mr1443794485a.11.1739820527975;
+        Mon, 17 Feb 2025 11:28:47 -0800 (PST)
+Received: from ?IPv6:2606:6d00:11:e976::5ac? ([2606:6d00:11:e976::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c096e87af7sm193307485a.79.2025.02.17.11.28.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Feb 2025 11:28:46 -0800 (PST)
+Message-ID: <1f1e41700b16eef7fe790b9b14d6ccfd157f67ad.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mediatek: vcodec: Enable HEVC main still picture
+ decode
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Nathan Hebert <nhebert@chromium.org>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Mon, 17 Feb 2025 14:28:45 -0500
+In-Reply-To: <f257832e823d23c8324a9eaf7890dd4b6d50a6f0.camel@ndufresne.ca>
+References: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
+	 <f257832e823d23c8324a9eaf7890dd4b6d50a6f0.camel@ndufresne.ca>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7RDTmljb2xhcyBEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0
+ aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDA
+ gQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCgzYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDi
+ cVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA
+ 8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udWs+iGIEExECACIFAkuzca8CGwMGCwkIBwMC
+ BhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Ro
+ x8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2
+ xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRB
+ xUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypwCfWKc9DorA9f5pyYlD5pQo6SgSoiC0J05p
+ Y29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPohiBBMRAgAiBQJVwNwgAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHCZ4AJ0QwU6/G4c7h9CkMBT9ZxGLX4KSnQ
+ Cgq0P7CX7hv/M7HeyfMFZe8t3vAEW0RE5pY29sYXMgRHVmcmVzbmUgKEIuIFNjLiBJbmZvcm1hdGl
+ xdWUpIDxuaWNvbGFzZEBibHVlc3RyZWFrdGVjaC5jb20+iGAEExECACAFAkZjGzoCGwMGCwkIBwMC
+ BBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHBl7AJ0d2lrzshMmJaik/EaDEakzEwqgxQCg0JVZM
+ Zm9gRfEou1FvinuZxwf/mu0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF1ZSkgPG
+ 5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkIBwMCBBU
+ CCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr+E7ItOq
+ ZEHAs+xabBgknYZIFPU=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="F5Pg8/RejpjKeEzO"
-Content-Disposition: inline
-In-Reply-To: <20250217183854.GP1615191@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_112347_474008_2E855818 
-X-CRM114-Status: GOOD (  31.10  )
+X-CRM114-CacheID: sfid-20250217_112850_348479_51FFD5A6 
+X-CRM114-Status: GOOD (  23.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,580 +129,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---F5Pg8/RejpjKeEzO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Thu, Feb 13, 2025 at 04:34:32PM +0100, Lorenzo Bianconi wrote:
-> > Packet Processor Engine (PPE) module available on EN7581 SoC populates
-> > the PPE table with 5-tuples flower rules learned from traffic forwarded
-> > between the GDM ports connected to the Packet Switch Engine (PSE) modul=
-e.
-> > The airoha_eth driver can enable hw acceleration of learned 5-tuples
-> > rules if the user configure them in netfilter flowtable (netfilter
-> > flowtable support will be added with subsequent patches).
-> > airoha_eth driver configures and collects data from the PPE module via a
-> > Network Processor Unit (NPU) RISC-V module available on the EN7581 SoC.
-> > Introduce basic support for Airoha NPU moudle.
+aLe lundi 17 f=C3=A9vrier 2025 =C3=A0 13:45 -0500, Nicolas Dufresne a =C3=
+=A9crit=C2=A0:
+> Hi Nathan,
 >=20
-> nit: module
-
-ack, I will fix it in v6
-
->=20
+> Le mardi 11 f=C3=A9vrier 2025 =C3=A0 16:34 -0800, Nathan Hebert a =C3=A9c=
+rit=C2=A0:
+> > Mediatek devices that support HEVC also support the main still picture
+> > profile, but today, the main still picture profile is excluded.
 > >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > This removes the skip mask for HEVC, and enables the main still
+> > picture profile decoding.
+> >=20
+> > Signed-off-by: Nathan Hebert <nhebert@chromium.org>
+> > ---
+> > On Mediatek devices that support HEVC decoding, HEVC Main Still Picture
+> > profile is also supported by the SOC and firmware. However, this
+> > capability is turned off in the vcodec driver.
+> >=20
+> > This removes the code that disables HEVC Main Still Picture profile
+> > decoding. Validation of the decoder has been done via V4L2-backed
+> > Android CTS tests on an MT8196 device.
 >=20
-> ...
+> While its nice to know that you are working on upcoming SoC, we need
+> confirmation that this is working on all the upstream stateless
+> decoders supported: 8183, 8186, 8192, 8195. Ideally testing on 8188,
+> which I can see has merged support without the linux-firmware file to
+> go with it.
 >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/eth=
-ernet/airoha/airoha_npu.c
->=20
-> ...
->=20
-> > +static int airoha_npu_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev =3D &pdev->dev;
-> > +	struct reserved_mem *rmem;
-> > +	struct airoha_npu *npu;
-> > +	struct device_node *np;
-> > +	void __iomem *base;
-> > +	int i, irq, err;
-> > +
-> > +	base =3D devm_platform_ioremap_resource(pdev, 0);
-> > +	if (IS_ERR(base))
-> > +		return PTR_ERR(base);
-> > +
-> > +	npu =3D devm_kzalloc(dev, sizeof(*npu), GFP_KERNEL);
-> > +	if (!npu)
-> > +		return -ENOMEM;
-> > +
-> > +	npu->dev =3D dev;
-> > +	npu->regmap =3D devm_regmap_init_mmio(dev, base, &regmap_config);
-> > +	if (IS_ERR(npu->regmap))
-> > +		return PTR_ERR(npu->regmap);
-> > +
-> > +	np =3D of_parse_phandle(dev->of_node, "memory-region", 0);
-> > +	if (!np)
-> > +		return -ENODEV;
-> > +
-> > +	rmem =3D of_reserved_mem_lookup(np);
-> > +	of_node_put(np);
-> > +
-> > +	if (!rmem)
-> > +		return -ENODEV;
-> > +
-> > +	irq =3D platform_get_irq(pdev, 0);
-> > +	if (irq < 0)
-> > +		return irq;
-> > +
-> > +	err =3D devm_request_irq(dev, irq, airoha_npu_mbox_handler,
-> > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
-> > +		struct airoha_npu_core *core =3D &npu->cores[i];
-> > +
-> > +		spin_lock_init(&core->lock);
-> > +		core->npu =3D npu;
-> > +
-> > +		irq =3D platform_get_irq(pdev, i + 1);
-> > +		if (irq < 0)
-> > +			return err;
->=20
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..3620f4e771e659de4c91b40=
-575e18d689199fb4c
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> > @@ -0,0 +1,521 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2025 AIROHA Inc
-> > + * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-> > + */
-> > +
-> > +#include <linux/devcoredump.h>
-> > +#include <linux/firmware.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/of_net.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/of_reserved_mem.h>
-> > +#include <linux/regmap.h>
-> > +
-> > +#include "airoha_npu.h"
-> > +
-> > +#define NPU_EN7581_FIRMWARE_DATA		"airoha/en7581_npu_data.bin"
-> > +#define NPU_EN7581_FIRMWARE_RV32		"airoha/en7581_npu_rv32.bin"
-> > +#define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
-> > +#define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
-> > +#define NPU_DUMP_SIZE				512
-> > +
-> > +#define REG_NPU_LOCAL_SRAM		0x0
-> > +
-> > +#define NPU_PC_BASE_ADDR		0x305000
-> > +#define REG_PC_DBG(_n)			(0x305000 + ((_n) * 0x100))
-> > +
-> > +#define NPU_CLUSTER_BASE_ADDR		0x306000
-> > +
-> > +#define REG_CR_BOOT_TRIGGER		(NPU_CLUSTER_BASE_ADDR + 0x000)
-> > +#define REG_CR_BOOT_CONFIG		(NPU_CLUSTER_BASE_ADDR + 0x004)
-> > +#define REG_CR_BOOT_BASE(_n)		(NPU_CLUSTER_BASE_ADDR + 0x020 + ((_n) <=
-< 2))
-> > +
-> > +#define NPU_MBOX_BASE_ADDR		0x30c000
-> > +
-> > +#define REG_CR_MBOX_INT_STATUS		(NPU_MBOX_BASE_ADDR + 0x000)
-> > +#define MBOX_INT_STATUS_MASK		BIT(8)
-> > +
-> > +#define REG_CR_MBOX_INT_MASK(_n)	(NPU_MBOX_BASE_ADDR + 0x004 + ((_n) <=
-< 2))
-> > +#define REG_CR_MBQ0_CTRL(_n)		(NPU_MBOX_BASE_ADDR + 0x030 + ((_n) << 2=
-))
-> > +#define REG_CR_MBQ8_CTRL(_n)		(NPU_MBOX_BASE_ADDR + 0x0b0 + ((_n) << 2=
-))
-> > +#define REG_CR_NPU_MIB(_n)		(NPU_MBOX_BASE_ADDR + 0x140 + ((_n) << 2))
-> > +
-> > +#define NPU_TIMER_BASE_ADDR		0x310100
-> > +#define REG_WDT_TIMER_CTRL(_n)		(NPU_TIMER_BASE_ADDR + ((_n) * 0x100))
-> > +#define WDT_EN_MASK			BIT(25)
-> > +#define WDT_INTR_MASK			BIT(21)
-> > +
-> > +enum {
-> > +	NPU_OP_SET =3D 1,
-> > +	NPU_OP_SET_NO_WAIT,
-> > +	NPU_OP_GET,
-> > +	NPU_OP_GET_NO_WAIT,
-> > +};
-> > +
-> > +enum {
-> > +	NPU_FUNC_WIFI,
-> > +	NPU_FUNC_TUNNEL,
-> > +	NPU_FUNC_NOTIFY,
-> > +	NPU_FUNC_DBA,
-> > +	NPU_FUNC_TR471,
-> > +	NPU_FUNC_PPE,
-> > +};
-> > +
-> > +enum {
-> > +	NPU_MBOX_ERROR,
-> > +	NPU_MBOX_SUCCESS,
-> > +};
-> > +
-> > +enum {
-> > +	PPE_FUNC_SET_WAIT,
-> > +	PPE_FUNC_SET_WAIT_HWNAT_INIT,
-> > +	PPE_FUNC_SET_WAIT_HWNAT_DEINIT,
-> > +	PPE_FUNC_SET_WAIT_API,
-> > +};
-> > +
-> > +enum {
-> > +	PPE2_SRAM_SET_ENTRY,
-> > +	PPE_SRAM_SET_ENTRY,
-> > +	PPE_SRAM_SET_VAL,
-> > +	PPE_SRAM_RESET_VAL,
-> > +};
-> > +
-> > +enum {
-> > +	QDMA_WAN_ETHER =3D 1,
-> > +	QDMA_WAN_PON_XDSL,
-> > +};
-> > +
-> > +#define MBOX_MSG_FUNC_ID	GENMASK(14, 11)
-> > +#define MBOX_MSG_STATIC_BUF	BIT(5)
-> > +#define MBOX_MSG_STATUS		GENMASK(4, 2)
-> > +#define MBOX_MSG_DONE		BIT(1)
-> > +#define MBOX_MSG_WAIT_RSP	BIT(0)
-> > +
-> > +#define PPE_TYPE_L2B_IPV4	2
-> > +#define PPE_TYPE_L2B_IPV4_IPV6	3
-> > +
-> > +struct ppe_mbox_data {
-> > +	u32 func_type;
-> > +	u32 func_id;
-> > +	union {
-> > +		struct {
-> > +			u8 cds;
-> > +			u8 xpon_hal_api;
-> > +			u8 wan_xsi;
-> > +			u8 ct_joyme4;
-> > +			int ppe_type;
-> > +			int wan_mode;
-> > +			int wan_sel;
-> > +		} init_info;
-> > +		struct {
-> > +			int func_id;
-> > +			u32 size;
-> > +			u32 data;
-> > +		} set_info;
-> > +	};
-> > +};
-> > +
-> > +static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> > +			       void *p, int size)
-> > +{
-> > +	u16 core =3D 0; /* FIXME */
-> > +	u32 val, offset =3D core << 4;
-> > +	dma_addr_t dma_addr;
-> > +	void *addr;
-> > +	int ret;
-> > +
-> > +	addr =3D kzalloc(size, GFP_ATOMIC | GFP_DMA);
-> > +	if (!addr)
-> > +		return -ENOMEM;
-> > +
-> > +	memcpy(addr, p, size);
-> > +	dma_addr =3D dma_map_single(npu->dev, addr, size, DMA_TO_DEVICE);
-> > +	ret =3D dma_mapping_error(npu->dev, dma_addr);
-> > +	if (ret)
-> > +		goto out;
-> > +
-> > +	spin_lock_bh(&npu->cores[core].lock);
-> > +
-> > +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, dma_addr);
-> > +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, size);
-> > +	regmap_read(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, &val);
-> > +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, val + 1);
-> > +	val =3D FIELD_PREP(MBOX_MSG_FUNC_ID, func_id) | MBOX_MSG_WAIT_RSP;
-> > +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(3) + offset, val);
-> > +
-> > +	ret =3D regmap_read_poll_timeout_atomic(npu->regmap,
-> > +					      REG_CR_MBQ0_CTRL(3) + offset,
-> > +					      val, (val & MBOX_MSG_DONE),
-> > +					      100, 100 * MSEC_PER_SEC);
-> > +	if (!ret && FIELD_GET(MBOX_MSG_STATUS, val) !=3D NPU_MBOX_SUCCESS)
-> > +		ret =3D -EINVAL;
-> > +
-> > +	spin_unlock_bh(&npu->cores[core].lock);
-> > +
-> > +	dma_unmap_single(npu->dev, dma_addr, size, DMA_TO_DEVICE);
-> > +out:
-> > +	kfree(addr);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int airoha_npu_run_firmware(struct device *dev, void __iomem *b=
-ase,
-> > +				   struct reserved_mem *rmem)
-> > +{
-> > +	const struct firmware *fw;
-> > +	void __iomem *addr;
-> > +	int ret;
-> > +
-> > +	ret =3D request_firmware(&fw, NPU_EN7581_FIRMWARE_RV32, dev);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	if (fw->size > NPU_EN7581_FIRMWARE_RV32_MAX_SIZE) {
-> > +		dev_err(dev, "%s: fw size too overlimit (%zu)\n",
-> > +			NPU_EN7581_FIRMWARE_RV32, fw->size);
-> > +		ret =3D -E2BIG;
-> > +		goto out;
-> > +	}
-> > +
-> > +	addr =3D devm_ioremap(dev, rmem->base, rmem->size);
-> > +	if (!addr) {
-> > +		ret =3D -ENOMEM;
-> > +		goto out;
-> > +	}
-> > +
-> > +	memcpy_toio(addr, fw->data, fw->size);
-> > +	release_firmware(fw);
-> > +
-> > +	ret =3D request_firmware(&fw, NPU_EN7581_FIRMWARE_DATA, dev);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	if (fw->size > NPU_EN7581_FIRMWARE_DATA_MAX_SIZE) {
-> > +		dev_err(dev, "%s: fw size too overlimit (%zu)\n",
-> > +			NPU_EN7581_FIRMWARE_DATA, fw->size);
-> > +		ret =3D -E2BIG;
-> > +		goto out;
-> > +	}
-> > +
-> > +	memcpy_toio(base + REG_NPU_LOCAL_SRAM, fw->data, fw->size);
-> > +out:
-> > +	release_firmware(fw);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static irqreturn_t airoha_npu_mbox_handler(int irq, void *npu_instance)
-> > +{
-> > +	struct airoha_npu *npu =3D npu_instance;
-> > +
-> > +	/* clear mbox interrupt status */
-> > +	regmap_write(npu->regmap, REG_CR_MBOX_INT_STATUS,
-> > +		     MBOX_INT_STATUS_MASK);
-> > +
-> > +	/* acknowledge npu */
-> > +	regmap_update_bits(npu->regmap, REG_CR_MBQ8_CTRL(3),
-> > +			   MBOX_MSG_STATUS | MBOX_MSG_DONE, MBOX_MSG_DONE);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static void airoha_npu_wdt_work(struct work_struct *work)
-> > +{
-> > +	struct airoha_npu_core *core;
-> > +	struct airoha_npu *npu;
-> > +	void *dump;
-> > +	u32 val[3];
-> > +	int c;
-> > +
-> > +	core =3D container_of(work, struct airoha_npu_core, wdt_work);
-> > +	npu =3D core->npu;
-> > +
-> > +	dump =3D vzalloc(NPU_DUMP_SIZE);
-> > +	if (!dump)
-> > +		return;
-> > +
-> > +	c =3D core - &npu->cores[0];
-> > +	regmap_bulk_read(npu->regmap, REG_PC_DBG(c), val, ARRAY_SIZE(val));
-> > +	snprintf(dump, NPU_DUMP_SIZE, "PC: %08x SP: %08x LR: %08x\n",
-> > +		 val[0], val[1], val[2]);
-> > +
-> > +	dev_coredumpv(npu->dev, dump, NPU_DUMP_SIZE, GFP_KERNEL);
-> > +}
-> > +
-> > +static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
-> > +{
-> > +	struct airoha_npu_core *core =3D core_instance;
-> > +	struct airoha_npu *npu =3D core->npu;
-> > +	int c =3D core - &npu->cores[0];
-> > +	u32 val;
-> > +
-> > +	regmap_set_bits(npu->regmap, REG_WDT_TIMER_CTRL(c), WDT_INTR_MASK);
-> > +	if (!regmap_read(npu->regmap, REG_WDT_TIMER_CTRL(c), &val) &&
-> > +	    FIELD_GET(WDT_EN_MASK, val))
-> > +		schedule_work(&core->wdt_work);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static int airoha_npu_ppe_init(struct airoha_npu *npu)
-> > +{
-> > +	struct ppe_mbox_data ppe_data =3D {
-> > +		.func_type =3D NPU_OP_SET,
-> > +		.func_id =3D PPE_FUNC_SET_WAIT_HWNAT_INIT,
-> > +		.init_info =3D {
-> > +			.ppe_type =3D PPE_TYPE_L2B_IPV4_IPV6,
-> > +			.wan_mode =3D QDMA_WAN_ETHER,
-> > +		},
-> > +	};
-> > +
-> > +	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
-> > +				   sizeof(struct ppe_mbox_data));
-> > +}
-> > +
-> > +int airoha_npu_ppe_deinit(struct airoha_npu *npu)
-> > +{
-> > +	struct ppe_mbox_data ppe_data =3D {
-> > +		.func_type =3D NPU_OP_SET,
-> > +		.func_id =3D PPE_FUNC_SET_WAIT_HWNAT_DEINIT,
-> > +	};
-> > +
-> > +	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
-> > +				   sizeof(struct ppe_mbox_data));
-> > +}
-> > +EXPORT_SYMBOL_GPL(airoha_npu_ppe_deinit);
-> > +
-> > +int airoha_npu_ppe_flush_sram_entries(struct airoha_npu *npu,
-> > +				      dma_addr_t foe_addr,
-> > +				      int sram_num_entries)
-> > +{
-> > +	struct ppe_mbox_data ppe_data =3D {
-> > +		.func_type =3D NPU_OP_SET,
-> > +		.func_id =3D PPE_FUNC_SET_WAIT_API,
-> > +		.set_info =3D {
-> > +			.func_id =3D PPE_SRAM_RESET_VAL,
-> > +			.data =3D foe_addr,
-> > +			.size =3D sram_num_entries,
-> > +		},
-> > +	};
-> > +
-> > +	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
-> > +				   sizeof(struct ppe_mbox_data));
-> > +}
-> > +EXPORT_SYMBOL_GPL(airoha_npu_ppe_flush_sram_entries);
-> > +
-> > +int airoha_npu_foe_commit_entry(struct airoha_npu *npu, dma_addr_t foe=
-_addr,
-> > +				u32 entry_size, u32 hash, bool ppe2)
-> > +{
-> > +	struct ppe_mbox_data ppe_data =3D {
-> > +		.func_type =3D NPU_OP_SET,
-> > +		.func_id =3D PPE_FUNC_SET_WAIT_API,
-> > +		.set_info =3D {
-> > +			.data =3D foe_addr,
-> > +			.size =3D entry_size,
-> > +		},
-> > +	};
-> > +	int err;
-> > +
-> > +	ppe_data.set_info.func_id =3D ppe2 ? PPE2_SRAM_SET_ENTRY
-> > +					 : PPE_SRAM_SET_ENTRY;
-> > +
-> > +	err =3D airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
-> > +				  sizeof(struct ppe_mbox_data));
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	ppe_data.set_info.func_id =3D PPE_SRAM_SET_VAL;
-> > +	ppe_data.set_info.data =3D hash;
-> > +	ppe_data.set_info.size =3D sizeof(u32);
-> > +
-> > +	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
-> > +				   sizeof(struct ppe_mbox_data));
-> > +}
-> > +EXPORT_SYMBOL_GPL(airoha_npu_foe_commit_entry);
-> > +
-> > +struct airoha_npu *airoha_npu_get(struct device *dev)
-> > +{
-> > +	struct platform_device *pdev;
-> > +	struct device_node *np;
-> > +	struct airoha_npu *npu;
-> > +
-> > +	np =3D of_parse_phandle(dev->of_node, "airoha,npu", 0);
-> > +	if (!np)
-> > +		return ERR_PTR(-ENODEV);
-> > +
-> > +	pdev =3D of_find_device_by_node(np);
-> > +	of_node_put(np);
-> > +
-> > +	if (!pdev) {
-> > +		dev_err(dev, "cannot find device node %s\n", np->name);
-> > +		return ERR_PTR(-ENODEV);
-> > +	}
-> > +
-> > +	if (!try_module_get(THIS_MODULE)) {
-> > +		dev_err(dev, "failed to get the device driver module\n");
-> > +		npu =3D ERR_PTR(-ENODEV);
-> > +		goto error_pdev_put;
-> > +	}
-> > +
-> > +	npu =3D platform_get_drvdata(pdev);
-> > +	if (!npu) {
-> > +		npu =3D ERR_PTR(-ENODEV);
-> > +		goto error_module_put;
-> > +	}
-> > +
-> > +	if (!device_link_add(dev, &pdev->dev, DL_FLAG_AUTOREMOVE_SUPPLIER)) {
-> > +		dev_err(&pdev->dev,
-> > +			"failed to create device link to consumer %s\n",
-> > +			dev_name(dev));
-> > +		npu =3D ERR_PTR(-EINVAL);
-> > +		goto error_module_put;
-> > +	}
-> > +
-> > +	return npu;
-> > +
-> > +error_module_put:
-> > +	module_put(THIS_MODULE);
-> > +error_pdev_put:
-> > +	platform_device_put(pdev);
-> > +
-> > +	return npu;
-> > +}
-> > +EXPORT_SYMBOL_GPL(airoha_npu_get);
-> > +
-> > +void airoha_npu_put(struct airoha_npu *npu)
-> > +{
-> > +	module_put(THIS_MODULE);
-> > +	put_device(npu->dev);
-> > +}
-> > +EXPORT_SYMBOL_GPL(airoha_npu_put);
-> > +
-> > +static const struct of_device_id of_airoha_npu_match[] =3D {
-> > +	{ .compatible =3D "airoha,en7581-npu" },
-> > +	{ /* sentinel */ }
-> > +};
-> > +MODULE_DEVICE_TABLE(of, of_airoha_npu_match);
-> > +
-> > +static const struct regmap_config regmap_config =3D {
-> > +	.name			=3D "npu",
-> > +	.reg_bits		=3D 32,
-> > +	.val_bits		=3D 32,
-> > +	.reg_stride		=3D 4,
-> > +	.disable_locking	=3D true,
-> > +};
->=20
-> Should this return irq rather than err?
+> I'll wait for that and Yunfei's ack before picking it. Yunfei, please
+> fix the situation with 8188 in linux-firmware, and CC me.
 
-are you referring to devm_request_irq()?
+In case this is useful, we recommend providing fluster scores for the
+codec, which in that case runs some public ITU conformance vectors.
+Since most of the testing has been done with GStreamer, you may be able
+to find old report and confirm it it works. GStreamer does not
+currently filter the profile/level (on my todo), so it will try anyway.
+IPRED_B_Nokia_3 is the one vector in the base suite that expose that
+profile.
 
-https://elixir.bootlin.com/linux/v6.13.2/source/include/linux/interrupt.h#L=
-215
-https://elixir.bootlin.com/linux/v6.13.2/source/kernel/irq/devres.c#L52
+resources/JCT-VC-HEVC_V1/IPRED_B_Nokia_3/IPRED_B_Nokia_3.bit
+  Stream #0:0: Video: hevc (Main Still Picture), none, 1920x1080, 25 fps, 1=
+200k tbr, 1200k tbn
 
-I guess it returns 0 on success and a negative value in case of error.
-
-Regards,
-Lorenzo
+regards,
+Nicolas
 
 >=20
-> Flagged by Smatch.
+> regards,
+> Nicolas
 >=20
-> > +
-> > +		err =3D devm_request_irq(dev, irq, airoha_npu_wdt_handler,
-> > +				       IRQF_SHARED, "airoha-npu-wdt", core);
-> > +		if (err)
-> > +			return err;
-> > +
-> > +		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
-> > +	}
-> > +
-> > +	if (dma_set_coherent_mask(dev, 0xbfffffff))
-> > +		dev_warn(dev, "failed coherent DMA configuration\n");
-> > +
-> > +	err =3D airoha_npu_run_firmware(dev, base, rmem);
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	regmap_write(npu->regmap, REG_CR_NPU_MIB(10),
-> > +		     rmem->base + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
-> > +	regmap_write(npu->regmap, REG_CR_NPU_MIB(11), 0x40000); /* SRAM 256K =
-*/
-> > +	regmap_write(npu->regmap, REG_CR_NPU_MIB(12), 0);
-> > +	regmap_write(npu->regmap, REG_CR_NPU_MIB(21), 1);
-> > +	msleep(100);
-> > +
-> > +	/* setting booting address */
-> > +	for (i =3D 0; i < NPU_NUM_CORES; i++)
-> > +		regmap_write(npu->regmap, REG_CR_BOOT_BASE(i), rmem->base);
-> > +	usleep_range(1000, 2000);
-> > +
-> > +	/* enable NPU cores */
-> > +	/* do not start core3 since it is used for WiFi offloading */
-> > +	regmap_write(npu->regmap, REG_CR_BOOT_CONFIG, 0xf7);
-> > +	regmap_write(npu->regmap, REG_CR_BOOT_TRIGGER, 0x1);
-> > +	msleep(100);
-> > +
-> > +	err =3D airoha_npu_ppe_init(npu);
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	platform_set_drvdata(pdev, npu);
-> > +
-> > +	return 0;
-> > +}
+> > ---
+> > =C2=A0.../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_statele=
+ss.c=C2=A0=C2=A0 | 2 --
+> > =C2=A01 file changed, 2 deletions(-)
+> >=20
+> > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_=
+dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec=
+_dec_stateless.c
+> > index afa224da0f41..d873159b9b30 100644
+> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta=
+teless.c
+> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta=
+teless.c
+> > @@ -152,8 +152,6 @@ static const struct mtk_stateless_control mtk_state=
+less_controls[] =3D {
+> > =C2=A0			.id =3D V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
+> > =C2=A0			.def =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+> > =C2=A0			.max =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
+> > -			.menu_skip_mask =3D
+> > -				BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
+> > =C2=A0		},
+> > =C2=A0		.codec_type =3D V4L2_PIX_FMT_HEVC_SLICE,
+> > =C2=A0	},
+> >=20
+> > ---
+> > base-commit: ffd294d346d185b70e28b1a28abe367bbfe53c04
+> > change-id: 20250211-enable_hevc_still_picture-26b35eb08270
+> >=20
+> > Best regards,
 >=20
-> ...
 
---F5Pg8/RejpjKeEzO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7OMvwAKCRA6cBh0uS2t
-rNdoAQCWECWS+xpZrJhW08Zy2QpYhsJo0Gc0KMrwPgcgruXSbAD/ROnhy1StLrYn
-aSa2+VJUlypYktccdeQA3FymQxN9xwQ=
-=sz77
------END PGP SIGNATURE-----
-
---F5Pg8/RejpjKeEzO--
 
