@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DA9C021A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 15:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A547DC021A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 15:35:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UrdZzv9cuiNnuR35Esmm7sowtV31qCGuysM8C5a4aZo=; b=QLE6cqFzTPQ55ZRSDm6Eki1E3r
-	N2rHemHoGFITzzfszSce9+wTmgSiQ0YroGzys+bPpTmifBZ3lxz1BfXpzcgst/lkdJqFgaowPN7Zx
-	7kKLG1QyLEs/K89U3Xe8Y4y1TsXYtbl/VpVICv1x8Tvl22yL+1thfidONOPAIzebQQpNEptNHhQ/l
-	dcdqNmzpmscBTmpp7W9SY1u9h8gJunpt4u31rEuaPTQrfyhrnuPzLt2kbb5JHwxM/vzSefZLiXqm9
-	zfMMJsg2MlipVikyVu0zoFvl06B0ciWgqysV/mvL2HV4HY8zdtrKwlWRNvsXQ5i0+xRgy4kaBHRTy
-	KhviJaDA==;
+	bh=Zn9X5QbkJIdIagTel3G7oOAnIXhkOjaCrnBaeYGODeE=; b=4cw+ldSy9KkzGprvRGUZ1gcpLW
+	8J6cPhXIKP1uhcIKqtnoQIB4fel5PZntFeV08Hgvk7fLAJ7+0QoN3kks3NKk4ukXnyVxN2lSTTqJt
+	va/ml0qeDRRvY+qvmleBK+ed0x6c17Kq0C/HrR1p2QTuqZ04RdQQ1xB7l1lUrwoDc9O2qMzc88c//
+	7+WZvPYs0TQDAS7qcYxIQzErdXs3FG1PNZXbcwqWCT+hmOC8tSiVnN1ks1SKviDmkot20j4RzH/JV
+	2qb8tsuw4zJ3LgvxiXrnLw8R8cLdLoNhVsQGdjM5g4Q/Uxd6KTARwKqG9fbSfanzK6JRd9rQEGBu8
+	r1eB7IHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk2pr-000000050Oa-2LYC;
-	Mon, 17 Feb 2025 15:15:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tk39x-000000054OC-3CKp;
+	Mon, 17 Feb 2025 15:35:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk2li-00000004zjF-2I5V;
-	Mon, 17 Feb 2025 15:10:48 +0000
+	id 1tk38S-000000053X2-2UhI;
+	Mon, 17 Feb 2025 15:34:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739805044;
-	bh=xsqdmzcQVf4MaVLIq+wCHoFk6tUjSd/ZSKbG3ogYrWM=;
+	s=mail; t=1739806454;
+	bh=lyGfHrjhZ3jptbHzIILAzBz3U/SLoQdMy2EzDU6nSXk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gCg6LPARAAeFfI2o/RKgT8DMH4oTejs18JXRaXx2LyQKw5onjWYm9SgVsTmBjPtlM
-	 pZWDyv7bH5FcAr67KlV6y7JpHgCKmyv/dwZLbmFbcqsKh3xTC1dSYNCj6YUEdBo8uY
-	 PNSUtM/3XMyuSIDauvfhgKhSYDF/MaD8CFxq+jiirWhK9uIUhMJVIuGsPMXRZKUGPl
-	 aLg9QsQpfv3CrBejxijBgMz3pn5/IU5EKfERRN8PE5ImgR6lBE0FnzXYdoImGYlbN7
-	 olEHbagdWKOn1eroAwABeGcg3Te/CbsLbM2gp3sx2GzLoxVYtAZmN7AUCYexsBv5lf
-	 uieOeFJKyMGVQ==
+	b=a1VS6O25oIsd0ptLDudjGC9gQqK/8d9OW1uYWMPEwY/goXTIElKTAw6J5Juio8/qd
+	 14MqJJ2qkXQa3WITW6nDmoWe6RO4oSIug3DhUgU31l33ycBd9NvI4/e2aD8YMM71px
+	 exrlMpEQ3n42aZTu9NmpZclEvnAAjkb6bft7PAEdZEdfoBnQGwT5Mjb3hzGYoT7RxA
+	 fD3i9IE7RFHdy67eG/+cqq0T3Y4ReU7vEzoJ+tPORmhgp47M6REl2ELw7S0R1laiop
+	 fJI67ItULKckWvdchfZgmUh76Xd7TKaS8vti1ngdk8SpXwEhN5gDza0YADdtAkn+7k
+	 ztQjn0KGh52XQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5437217E0CD1;
-	Mon, 17 Feb 2025 16:10:43 +0100 (CET)
-Message-ID: <358623c0-a81a-4a17-8979-f11de5b71675@collabora.com>
-Date: Mon, 17 Feb 2025 16:10:42 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7D92817E1507;
+	Mon, 17 Feb 2025 16:34:13 +0100 (CET)
+Message-ID: <5d09d32b-d5cf-44a9-96de-30c8b5e23256@collabora.com>
+Date: Mon, 17 Feb 2025 16:34:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 41/42] drm/mediatek: mtk_hdmi_v2: Add debugfs ops and
- implement ABIST
+Subject: Re: [PATCH v6 27/42] drm/mediatek: mtk_hdmi: Move output init to
+ mtk_hdmi_register_audio_driver()
 To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
  "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
 Cc: "robh@kernel.org" <robh@kernel.org>,
@@ -77,16 +77,16 @@ Cc: "robh@kernel.org" <robh@kernel.org>,
  =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
  "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
 References: <20250211113409.1517534-1-angelogioacchino.delregno@collabora.com>
- <20250211113409.1517534-42-angelogioacchino.delregno@collabora.com>
- <0541a9bedef16763cc0279127ab258015b9a8a82.camel@mediatek.com>
+ <20250211113409.1517534-28-angelogioacchino.delregno@collabora.com>
+ <6378d714b5f5197b70aba1adaa6ca5d358aa2c41.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <0541a9bedef16763cc0279127ab258015b9a8a82.camel@mediatek.com>
+In-Reply-To: <6378d714b5f5197b70aba1adaa6ca5d358aa2c41.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_071046_934696_E6C4AF2F 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20250217_073416_787351_F79CF54E 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,195 +101,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/02/25 06:21, CK Hu (胡俊光) ha scritto:
-> On Tue, 2025-02-11 at 12:34 +0100, AngeloGioacchino Del Regno wrote:
+Il 14/02/25 04:20, CK Hu (胡俊光) ha scritto:
+> On Tue, 2025-02-11 at 12:33 +0100, AngeloGioacchino Del Regno wrote:
 >> External email : Please do not click links or open attachments until you have verified the sender or the content.
 >>
 >>
->> Implement the Automated Built-In Self-Test ABIST functionality
->> provided by the HDMIv2 IP and expose it through the "hdmi_abist"
->> debugfs file.
+>> In preparation for moving the common bits of this driver, merge the
+>> contents of mtk_hdmi_output_init in mtk_hdmi_register_audio_driver
+>> function to aggregate all of the initial audio setup together in
+>> the same function and to make it clear that all of the setup that
+>> is performed in mtk_hdmi_output_init is specifically related only
+>> to audio and not video.
 >>
->> Write "1" to this file to activate ABIST, or "0" to deactivate.
+>> While at it, also remove the "%s driver bound to HDMI" debugging
+>> print disguised as informative.
 > 
-> Describe what we would see when activate ABIST.
-> Give some example of when to use it.
+> Previous reply only to Angelo, so re-replay to all agian.
+> 
+> This patch does not include print modification,
+> After remove this message,
 > 
 
-Sure, I will.
+Sorry, forgot to remove that, too many patches to care about :')
 
+Removing for v7.
+
+Thanks!
+Angelo
+
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> 
 >>
 >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >> ---
->>   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 123 +++++++++++++++++++++++++
->>   1 file changed, 123 insertions(+)
+>>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 27 ++++++++-------------------
+>>   1 file changed, 8 insertions(+), 19 deletions(-)
 >>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
->> index 36b7f8d8d218..f4a086b92dae 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
->> @@ -1170,6 +1170,128 @@ static int mtk_hdmi_v2_hdmi_write_infoframe(struct drm_bridge *bridge,
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> index e43dbcc0d068..98e8c186dff4 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+>> @@ -1025,20 +1025,6 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
 >>          return 0;
 >>   }
 >>
->> +static int mtk_hdmi_v2_set_abist(struct mtk_hdmi *hdmi, bool enable)
->> +{
->> +       struct drm_display_mode *mode = &hdmi->mode;
->> +       int abist_format = -EINVAL;
->> +       bool interlaced;
->> +
->> +       if (!enable) {
->> +               regmap_clear_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_ENABLE);
->> +               return 0;
->> +       }
->> +
->> +       if (!mode->hdisplay || !mode->vdisplay)
->> +               return -EINVAL;
->> +
->> +       interlaced = mode->flags & DRM_MODE_FLAG_INTERLACE;
->> +
->> +       switch (mode->hdisplay) {
->> +       case 720:
->> +               if (mode->vdisplay == 480)
->> +                       abist_format = 2;
->> +               else if (mode->vdisplay == 576)
->> +                       abist_format = 11;
->> +               break;
->> +       case 1280:
->> +               if (mode->vdisplay == 720)
->> +                       abist_format = 3;
->> +               break;
->> +       case 1440:
->> +               if (mode->vdisplay == 480)
->> +                       abist_format = interlaced ? 5 : 9;
->> +               else if (mode->vdisplay == 576)
->> +                       abist_format = interlaced ? 14 : 18;
->> +               break;
->> +       case 1920:
->> +               if (mode->vdisplay == 1080)
->> +                       abist_format = interlaced ? 4 : 10;
->> +               break;
->> +       case 3840:
->> +               if (mode->vdisplay == 2160)
->> +                       abist_format = 25;
->> +               break;
->> +       case 4096:
->> +               if (mode->vdisplay == 2160)
->> +                       abist_format = 26;
->> +               break;
->> +       default:
->> +               break;
->> +       }
->> +       if (!abist_format)
-> 
-> abist_format's initial value is -EINVAL, so this checking would never be true.
-> Let abist_format's initial value be zero.
-> 
-
-No, because abist_format 0 is a valid format.
-
-I'll change this to
-
-if (abist_format < 0)
-	return abist_format;
-
-Thanks!
-
-Regards,
-Angelo
-
-> Regards,
-> CK
-> 
->> +               return -EINVAL;
->> +
->> +       regmap_update_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_VIDEO_FORMAT,
->> +                          FIELD_PREP(HDMI_ABIST_VIDEO_FORMAT, abist_format));
->> +       regmap_set_bits(hdmi->regs, TOP_CFG00, HDMI_ABIST_ENABLE);
->> +       return 0;
->> +}
->> +
->> +static int mtk_hdmi_v2_debug_abist_show(struct seq_file *m, void *arg)
->> +{
->> +       struct mtk_hdmi *hdmi = m->private;
->> +       bool en;
->> +       u32 val;
->> +       int ret;
->> +
->> +       if (!hdmi)
->> +               return -EINVAL;
->> +
->> +       ret = regmap_read(hdmi->regs, TOP_CFG00, &val);
->> +       if (ret)
->> +               return ret;
->> +
->> +       en = FIELD_GET(HDMI_ABIST_ENABLE, val);
->> +
->> +       seq_printf(m, "HDMI Automated Built-In Self Test: %s\n",
->> +                  en ? "Enabled" : "Disabled");
->> +
->> +       return 0;
->> +}
->> +
->> +static ssize_t mtk_hdmi_v2_debug_abist_write(struct file *file,
->> +                                            const char __user *ubuf,
->> +                                            size_t len, loff_t *offp)
->> +{
->> +       struct seq_file *m = file->private_data;
->> +       int ret;
->> +       u32 en;
->> +
->> +       if (!m || !m->private || *offp)
->> +               return -EINVAL;
->> +
->> +       ret = kstrtouint_from_user(ubuf, len, 0, &en);
->> +       if (ret)
->> +               return ret;
->> +
->> +       if (en < 0 || en > 1)
->> +               return -EINVAL;
->> +
->> +       mtk_hdmi_v2_set_abist((struct mtk_hdmi *)m->private, en);
->> +       return len;
->> +}
->> +
->> +static int mtk_hdmi_v2_debug_abist_open(struct inode *inode, struct file *file)
->> +{
->> +       return single_open(file, mtk_hdmi_v2_debug_abist_show, inode->i_private);
->> +}
->> +
->> +static const struct file_operations mtk_hdmi_debug_abist_fops = {
->> +       .owner = THIS_MODULE,
->> +       .open = mtk_hdmi_v2_debug_abist_open,
->> +       .read = seq_read,
->> +       .write = mtk_hdmi_v2_debug_abist_write,
->> +       .llseek = seq_lseek,
->> +       .release = single_release,
->> +};
->> +
->> +static void mtk_hdmi_v2_debugfs_init(struct drm_bridge *bridge, struct dentry *root)
->> +{
->> +       struct mtk_hdmi *dpi = hdmi_ctx_from_bridge(bridge);
->> +
->> +       debugfs_create_file("hdmi_abist", 0640, root, dpi, &mtk_hdmi_debug_abist_fops);
->> +}
->> +
->>   static const struct drm_bridge_funcs mtk_v2_hdmi_bridge_funcs = {
->>          .attach = mtk_hdmi_v2_bridge_attach,
->>          .detach = mtk_hdmi_v2_bridge_detach,
->> @@ -1189,6 +1311,7 @@ static const struct drm_bridge_funcs mtk_v2_hdmi_bridge_funcs = {
->>          .hdmi_tmds_char_rate_valid = mtk_hdmi_v2_hdmi_tmds_char_rate_valid,
->>          .hdmi_clear_infoframe = mtk_hdmi_v2_hdmi_clear_infoframe,
->>          .hdmi_write_infoframe = mtk_hdmi_v2_hdmi_write_infoframe,
->> +       .debugfs_init = mtk_hdmi_v2_debugfs_init,
->>   };
+>> -static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
+>> -{
+>> -       struct hdmi_audio_param *aud_param = &hdmi->aud_param;
+>> -
+>> -       aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> -       aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> -       aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
+>> -       aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> -       aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
+>> -       aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> -
+>> -       return 0;
+>> -}
+>> -
+>>   static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
+>>   {
+>>          mtk_hdmi_hw_send_aud_packet(hdmi, true);
+>> @@ -1617,6 +1603,7 @@ static void mtk_hdmi_unregister_audio_driver(void *data)
+>>   static int mtk_hdmi_register_audio_driver(struct device *dev)
+>>   {
+>>          struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +       struct hdmi_audio_param *aud_param = &hdmi->aud_param;
+>>          struct hdmi_codec_pdata codec_data = {
+>>                  .ops = &mtk_hdmi_audio_codec_ops,
+>>                  .max_i2s_channels = 2,
+>> @@ -1626,6 +1613,13 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
+>>          };
+>>          int ret;
 >>
->>   /*
+>> +       aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
+>> +       aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
+>> +       aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
+>> +       aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+>> +       aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
+>> +       aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
+>> +
+>>          hdmi->audio_pdev = platform_device_register_data(dev,
+>>                                                           HDMI_CODEC_DRV_NAME,
+>>                                                           PLATFORM_DEVID_AUTO,
+>> @@ -1668,11 +1662,6 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
+>>          mutex_init(&hdmi->update_plugged_status_lock);
+>>          platform_set_drvdata(pdev, hdmi);
+>>
+>> -       ret = mtk_hdmi_output_init(hdmi);
+>> -       if (ret)
+>> -               return dev_err_probe(dev, ret,
+>> -                                    "Failed to initialize hdmi output\n");
+>> -
+>>          ret = mtk_hdmi_register_audio_driver(dev);
+>>          if (ret)
+>>                  return dev_err_probe(dev, ret,
 >> --
 >> 2.48.1
 >>
 > 
-
-
 
 
