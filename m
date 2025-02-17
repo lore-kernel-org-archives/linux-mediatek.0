@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72406C0219E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 10:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE23DC021A1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 11:39:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oTm1fXXyNbEjaSytwTVBGR6jZI+/WfArELCCgciIDnY=; b=4iD37iKUY61ti24dovLClV2UCm
-	wMH5yky4b9CBzFveG66hEDd+fanz94ndoiTKDASS/xbcnhhLuVmok1885B2WkpEHZZvCnYPoNJIB4
-	px3w9bIMUYeEAZ+U13CXtkHLzhS8VcdQSZIBZyqrQJ6AeIm0XVF48J2oBVM3tJ7V+Zkce9bA7B217
-	Pr98OhoJJdwWTYyoT8/t24xOQOuHZeMtpdZ395X7tYSauX4525hmJQZ5PMsf1C3615d2WHF6Jq2Yb
-	fqnjoWOFaqhuzQLwkryGLfu3I8POwLrFIMKJW8Qw5kuhgc2OKvs1ezkWRY/yV/7F6FUmx9OwbB6Ch
-	aSaioCfQ==;
+	bh=DbjxxvFUSINuD+GS4bDK4+YmMPoBQQThSlhkpsMhcDg=; b=MJj9Rz3FdwZ6+2JfgskJwFROGM
+	PtfGJEnTKk1lr0RSUTp5sRk8+duEkAiZKtLivX14DcDDak0Y138SE+AnKTiRsuhVOjKKQQlOU/nPl
+	nIaDuHUj7/dbO+eN1XDLE+UnqurNwpYYgNZyOCFeF7fcqLmgutma2XL/nQ3G8EHWwXKdMQCap20Fh
+	DpjShRhfBjmHO3NjN8j3etjyKqbk5qG5yklWexy7atGQcJhDwqn5LQ72Whlt3bsJUYLWQYZP874pL
+	g7elOtngz3R8ZuExmfimdgs8hxcZahHqDDkug0PXCbRTUg/ro/ucqY2ML/lOpFiiTPp8HT5qbd9jl
+	xW4raIbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjylM-00000004Byt-0DnL;
-	Mon, 17 Feb 2025 10:54:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tjzTH-00000004Kxj-2eWG;
+	Mon, 17 Feb 2025 11:39:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjyLh-000000046v2-1ETV;
-	Mon, 17 Feb 2025 10:27:38 +0000
-X-UUID: cafbac94ed1911ef83f2a1c9db70dae0-20250217
+	id 1tjzRl-00000004KjK-0Xzs;
+	Mon, 17 Feb 2025 11:37:58 +0000
+X-UUID: 9ecab39aed2311efa1e849db4cc18d44-20250217
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oTm1fXXyNbEjaSytwTVBGR6jZI+/WfArELCCgciIDnY=;
-	b=dXCQZGot1auTr7crYJkjJ6hCVDw9x2erR2ryM0gffgjZbvG6HBFLhMFmxxTTkEaSJweRvMpzTvI48ynA9+S8f3+r95LjhTGMpqO5juWBVQ7hv64QNBnmBPy/JnxSyotearM9ruD6vx462LYoI7YnUfCIBBuB0iopbPJcY57KZOc=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DbjxxvFUSINuD+GS4bDK4+YmMPoBQQThSlhkpsMhcDg=;
+	b=FVnEflPk2PsDj3/N4oTcnyRQvjt03qjd/n959qEcD7g4Gah8BsrzVdYsyUSk3mO9WIFFrV/km6GaAL9pxcyuoFWPIg6OYS3SocNCed0Fx448rQODp0sAFfNVh412/x9tv5pWQMT1KTLD2tMW+ItstL4BT6YCe9FiMJSockubjmA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:3dfd5f3f-8056-4d0f-b7dd-b8227ec77b5f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.46,REQID:f8b2b1e0-64e4-49fb-b269-e710bbbf8f91,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:200a7afc-7800-43c5-b97b-ddbe32561a5b,B
+X-CID-META: VersionHash:60aa074,CLOUDID:c9c37f88-f9ab-4ac1-951b-e3a689bed90c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
 	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cafbac94ed1911ef83f2a1c9db70dae0-20250217
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 9ecab39aed2311efa1e849db4cc18d44-20250217
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2092940999; Mon, 17 Feb 2025 03:27:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 399981751; Mon, 17 Feb 2025 04:37:51 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Mon, 17 Feb 2025 18:27:27 +0800
+ 15.2.1258.28; Mon, 17 Feb 2025 19:37:48 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Mon, 17 Feb 2025 18:27:27 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Mon, 17 Feb 2025 19:37:48 +0800
 From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Alexandre Mergnat
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
 	<amergnat@baylibre.com>
 CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
 	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-usb@vger.kernel.org>, <stable@vger.kernel.org>, Chris-qj chen
+	<linux-usb@vger.kernel.org>, Sen Chu <sen.chu@mediatek.com>, Chris-qj chen
 	<chris-qj.chen@mediatek.com>
-Subject: [PATCH v6 RESEND] dt-bindings: iommu: mediatek: Fix interrupt count constraint for new SoCs
-Date: Mon, 17 Feb 2025 18:26:52 +0800
-Message-ID: <20250217102652.1858304-1-macpaul.lin@mediatek.com>
+Subject: [PATCH v3] arm64: dts: mediatek: mt6359: fix dtbs_check error for audio-codec
+Date: Mon, 17 Feb 2025 19:37:36 +0800
+Message-ID: <20250217113736.1867808-1-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_022737_338345_EB6D04EE 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20250217_033757_181897_471E6A79 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,93 +91,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
-to an excessively long 'interrupts' property. The error message was:
+This change fixes these dtbs_check errors for audio-codec:
+1. pmic: 'mt6359codec' does not match any of the regexes: 'pinctrl-[0-9]+'
+ - Replace device node name to generic 'audio-codec'
+2. pmic: regulators: 'compatible' is a required property
+ - Add 'mediatek,mt6359-codec' to compatible.
 
-  infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
-                     [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
-                     is too long
-
-To address this issue, update the compatbile matching rule for
-'interrupts' property. This change allows flexibility in the number
-of interrupts for new SoCs like MT8195.
-The purpose of these 5 interrupts is also added into description.
-
-Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/iommu/mediatek,iommu.yaml        | 28 ++++++++++++++++++-
- 1 file changed, 27 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 Changes for v2:
- - commit message: re-formatting and add a description of adding 5 interrupts.
- - add 'description' and 'maxItems: 5' for 'interrupt' property of
-   'mt8195-iommu-infra'
- - others keeps 'maxItems: 1'
+ - No change. Because the 2/3 patch has been dropped from the v1 patch.
+   Hence the new patch set v2 needs to be updated.
 
 Changes for v3:
- - Refine the description for 'interrupts' property and fixes the compatible
-   matching rules.
- - Refine commit message.
+ - Add "Reviewed-by:" tag. Thanks!.
 
-Changes for v4:
-  - add missing 'minItems: 5' to 'mediatek,mt8195-iommu-infra'.
-    Thanks the explanation from Conor and Krzysztof. 
-
-Changes for v5:
-  - Repharse the description for interrupts property of MT8195.
-
-Changes for v6:
-  - Remove maxItems for mt8195-iommu-infra.
-  - Add 'Reviewed-by' tag from Rob. Thanks for the review.
-
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index ea6b0f5f24de..eeb39f5acf7e 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -96,7 +96,16 @@ properties:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+index 8e1b8c85c6ed..98a4aaac7911 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+@@ -14,7 +14,8 @@ pmic_adc: adc {
+ 			#io-channel-cells = <1>;
+ 		};
  
-   interrupts:
--    maxItems: 1
-+    description: |
-+      Usually, the IOMMU requires only one interrupt.
-+
-+      The infra IOMMU in MT8195 has five banks: each features one set
-+      of APB registers. One for the normal world (set 0), three for the
-+      protected world (sets 1-3), and one for the secure world (set 4).
-+      and each set has its own interrupt. Therefore, five interrupts
-+      are needed.
-+    minItems: 1
-+    maxItems: 5
+-		mt6359codec: mt6359codec {
++		mt6359codec: audio-codec {
++			compatible = "mediatek,mt6359-codec";
+ 		};
  
-   clocks:
-     items:
-@@ -210,6 +219,23 @@ allOf:
-       required:
-         - mediatek,larbs
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8195-iommu-infra
-+
-+    then:
-+      properties:
-+        interrupts:
-+          minItems: 5
-+
-+    else:
-+      properties:
-+        interrupts:
-+          maxItems: 1
-+
- additionalProperties: false
- 
- examples:
+ 		regulators {
 -- 
 2.45.2
 
