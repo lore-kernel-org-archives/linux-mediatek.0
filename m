@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01B3FC021AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 15:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 278E1C021AA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 16:52:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KZBDJtxcaW+EbK7xr8lVciQc5WFsH1M+cUzHurUjtms=; b=HXLQXeSDGEuz48VuCeg1Zy/M3n
-	4Oo5rL3d1UYt/OAdgcLtMnWxLlXaICS8SduP3abDm6oKfWcyO/m+ZOGezsg2olrDis1usf9G5i3Rl
-	c+RF9p8I6XZw8nHvSwMut1HQA4AIzIw2eJnI74bjU2PiBcvZc7wVw+fgDZ6za+1QyKIqJkZ8lS0lD
-	Vh5OfSX1y/navBXq1O/zLO9O/bqFI35EhOA4q/ir45WdBvBKKblpktvhbdRT9KTe4V8uPxLheUQhZ
-	ywhT++Zlez4jG4qxj6de77vx/3FhhSlsEpiNExUEevNPy8AsuGiw5bu+FH35jIbA3UIdAy+OqMJdb
-	SbiSLwrw==;
+	bh=QHCQLJGugEQsQZhnJVqruuSwE0827hNxe+wi51NaIlo=; b=RCKrc2pEho677mlN0AT5acB3yo
+	b2tuyqijsfYycIG5S/KB4NQxzRMWenRqX3K50H5fbFItiIqxeOTgdThXZMF1LH3WlkB9Tsn8aSjjO
+	ln6z/vWPeMGWsyE8TkKWRgTOMeEzA+G+juJSFxvwtiy1xLspiLWqmSzKk9iFf9s498u2TKrwJf9Q/
+	J+XIDBFqpZSsS1onc+NPoG8QE/RDrzonP+0Rb7eEORezWsa3l4MzHBr8ToHx7O3hdEUQKEXbzLBZY
+	70uGab6bkX3REgrTnHGSA0dPTDDS3uD5zfICLou6SwK2zjDKKztSrDoF7hCvkOtmn1cH8dNl8qOw4
+	BxPUFuYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkPyj-00000008quX-0bZ5;
-	Tue, 18 Feb 2025 15:57:45 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tkQpL-000000092Xr-0jxc;
+	Tue, 18 Feb 2025 16:52:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkPyK-00000008qsQ-2hiK;
-	Tue, 18 Feb 2025 15:57:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=KZBDJtxcaW+EbK7xr8lVciQc5WFsH1M+cUzHurUjtms=; b=TPgp3EXJIxknNdQRFhGKtjsSGD
-	zh4oCSSNqtHdPQMgdkyQvRpsrKvYx+FfAcbjG1SEjN46nlQGNh1VzvYSPlgseTPRMjdLM/i9cpMj9
-	fLr8mhI8SxYDvXtugtqKsWdgSXeq87xwkVhYvmajXXxibojsAq/8Wk39wKqtPz3T4beE9QXZafPNF
-	soUyX6Y40/lic0qMOCa+I1W6Oi9kgpSzpKz0zAjPH5iiEZvMycxwI/2JnlVvGxZaUgUy6GfjlffP5
-	GYZGJ2RSLoTewgKGctKEHMR4CVHcP5yxhFQXwUwiw1GhFZxNPyh87MOEhHyi/DyOlzN1euG+K476r
-	oh59WZhw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37344)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tkPy8-0002Wi-1o;
-	Tue, 18 Feb 2025 15:57:08 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tkPy4-0007NT-0f;
-	Tue, 18 Feb 2025 15:57:04 +0000
-Date: Tue, 18 Feb 2025 15:57:04 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v3 06/25] drm/armada: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <Z7St0O3A_mXEYK49@shell.armlinux.org.uk>
-References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-7-tzimmermann@suse.de>
+	id 1tkQnr-000000092K0-2ZHf;
+	Tue, 18 Feb 2025 16:50:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C1D9E5C60D0;
+	Tue, 18 Feb 2025 16:49:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61C74C4CEE2;
+	Tue, 18 Feb 2025 16:50:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739897434;
+	bh=/YVHQ+p5V3VCdn+u9aKhlu71S03saM0vo09sgG79sWU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qDqc9UkkxW2nMEk503wToA7FM1ONqMLx5RxYYa0YBCAQy+2Uxgtk2qJ7veH03JWTM
+	 JeNXodB/0x36gmhoNiS5jDt0pUodg8nlD+P0K9gzwp5hOdld34yotKzi8cPR5acJem
+	 /gWw33X4Fzt1czqg5v5AJOcXhNlkRAb+1ZqgAaC+RqhiXAaz1Iiuv0XHfJcAMxlinS
+	 8esBOwlcuxaK2Jd5ctgNIS6QT0TwCGIgXUfECcMSodmFqesrREcU8ExwGw4ENrgVHn
+	 ePwfCtEVUozIlhZQN4+liIK+LbtQJjQl3N/acjqWIpXbu2RRZ6xr1Ca82dFEudnGxH
+	 I9irZQomDOdqg==
+Date: Tue, 18 Feb 2025 16:50:29 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	geert+renesas@glider.be, u.kleine-koenig@baylibre.com,
+	amergnat@baylibre.com, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com, macpaul.lin@mediatek.com,
+	pablo.sun@mediatek.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek,mt8188: Add
+ VDO1_DPI1_HDMI clock
+Message-ID: <20250218-ferry-glorifier-e10b0ae13371@spud>
+References: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
+ <20250212-arming-gyration-103e42b94ed6@spud>
+ <906ed1df-3c63-4028-ae7d-97e086acca32@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="koIZKDiabKMrvHLl"
 Content-Disposition: inline
-In-Reply-To: <20250218142542.438557-7-tzimmermann@suse.de>
+In-Reply-To: <906ed1df-3c63-4028-ae7d-97e086acca32@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_075720_679148_1DFD266F 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250218_085035_742287_313BC30B 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,20 +80,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 18, 2025 at 03:23:29PM +0100, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. No alignment required.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Russell King <linux@armlinux.org.uk>
 
-armada_pitch() does have some special alignment (it aligns the pitch to
-128 bytes). I've no idea what drm_mode_size_dumb() does. Can you check
-whether it does the same please?
+--koIZKDiabKMrvHLl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-If it doesn't, then this patch is incorrect.
+On Tue, Feb 18, 2025 at 02:22:25PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 12/02/25 20:17, Conor Dooley ha scritto:
+> > On Wed, Feb 12, 2025 at 11:03:41AM +0100, AngeloGioacchino Del Regno wr=
+ote:
+> > > Add binding for the HDMI TX clock found in the VDO1 controller.
+> > > While at it, also remove the unused CLK_VDO1_NR_CLK.
+> > >=20
+> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@=
+collabora.com>
+> > > ---
+> > >   include/dt-bindings/clock/mediatek,mt8188-clk.h | 2 +-
+> > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > >=20
+> > > diff --git a/include/dt-bindings/clock/mediatek,mt8188-clk.h b/includ=
+e/dt-bindings/clock/mediatek,mt8188-clk.h
+> > > index bd5cd100b796..0e87f61c90f4 100644
+> > > --- a/include/dt-bindings/clock/mediatek,mt8188-clk.h
+> > > +++ b/include/dt-bindings/clock/mediatek,mt8188-clk.h
+> > > @@ -721,6 +721,6 @@
+> > >   #define CLK_VDO1_DPINTF				58
+> > >   #define CLK_VDO1_DISP_MONITOR_DPINTF		59
+> > >   #define CLK_VDO1_26M_SLOW			60
+> > > -#define CLK_VDO1_NR_CLK				61
+> > > +#define CLK_VDO1_DPI1_HDMI			61
+> >=20
+> > Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> >=20
+> > btw, I see the mt8195 has this same CLK_VDO1_NR_CLK define in it, if you
+> > fancy getting rid of that too.
+>=20
+> Thanks Conor, yeah I'll do that asap... one commit for each NR_CLK is a b=
+it
+> too much... I should just clean them all up :-)
+>=20
+> That requires a bit of work though, so it's not something that I can do in
+> a few minutes; let's see if I can make it for this cycle, but no promises.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Yah, no worries. Was just pointing it out, don't need to let this
+particular patch wait around for it by any means.
+
+--koIZKDiabKMrvHLl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7S6VAAKCRB4tDGHoIJi
+0menAPwMIMl/Yz8zjCE/wgQtTGuMlk04Porrv7GFsIP8l1gNMQEArAqwMMdmP2j1
+yXgjRkIPaKsOrL54hlT7KowOxubhEAo=
+=hGQS
+-----END PGP SIGNATURE-----
+
+--koIZKDiabKMrvHLl--
 
