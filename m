@@ -4,87 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9817EC021AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 18:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F85C021AA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 19:42:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=; b=kFTs9EZ3i/DreMXqymx1NIh4NO
-	D/egxVI6uMEDtJ88+CMVbaFGSsprcZaLvc4wYmGr6dJeeUT6ImIddqvN9+8g3DXppQ/E6kv2Eog7D
-	BHPhTeythzt0EElMCPJfwtQi6CHjhtMxzArA5pBwTKy4ERm6j/iMVcqeG6gzRqdrRvQz0tkRlmQli
-	DyREUzDKubajn1b2dD3Qa+1oliT/LNgX/UkW7voGM5zUU/U5hfZkFR7cfq3st9BHbVEJjUwBf7x9Z
-	4jYj83CQluScvOA4i7SMXbeqv9ZBz3Rn8I6W0SkYU0iKq2I00a50VGgwkFMuClTOjVRuK5XPd4Zwz
-	7VU4KSHg==;
+	bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=; b=qFbBMJcI4t195pvGefYdHKEOXV
+	3aRR9rvdRn4q+F0i2TcAVQjb1TT+3rNpJFop1hbKGEMR0rV5o8Jm1AhMSMNrSV1pUSyjAfYGAXngn
+	xSmZDhFdDUk24jdFwYUD5QGVUPQqcXZSM1RYZVLXB01QiMZGMu5sPIidj3ydQViZJ2jLyIQmaJvKG
+	2e4PEch/Gnh/uUk+FlWg4UmzzEWLW9s8ER9r+8C5R2h/ZrOHCxX7Ase1qMmED1SeZcXklkXMk+RzC
+	6gAy+RzD4qodl/WZcYRXY9+eIg2bZYA2iDSejrJ+d095sQQzvPtNbfIe+xHna7rvSyZfwg9bSDqly
+	APFdemhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkSGG-00000009Knw-30TC;
-	Tue, 18 Feb 2025 18:24:00 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1tkTUY-00000009ci6-3XMj;
+	Tue, 18 Feb 2025 19:42:50 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkSEm-00000009KLG-0twH;
-	Tue, 18 Feb 2025 18:22:29 +0000
-Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-471f2e1bea9so18908371cf.2;
-        Tue, 18 Feb 2025 10:22:27 -0800 (PST)
+	id 1tkSnN-00000009T2S-1BPk;
+	Tue, 18 Feb 2025 18:58:14 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-471eb0e3536so46684431cf.3;
+        Tue, 18 Feb 2025 10:58:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739902946; x=1740507746; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1739905092; x=1740509892; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=;
-        b=ankq1JCSO/ukGPlipaNgSLHUxXDiTXNf1FgxzQvDRIAZdjSqxeo9NZ6/dXHgOvvHk0
-         osNSoOqkBafrok985hLiwR1GJ862QWUCkJqX3CsM5h/HdpcX7QSHauRMlve1pPXz/xi8
-         4kQF0KFxncj7MjOoqWvAilS47N6JrxhD/yeTavng4Jkh0oQhRd79L3seoPR3hEs8OyDH
-         ENM0hngmIXCh89pSvX8QgpdwruneI5tOWV/O8vkozVVdA7P2cNcKdnsb5V4vWPdjP7za
-         H4/YkGe1qo18y6Bj1ejUTpoUK3f+gnF2fTQP+hMRjyUARM4yDjfURXaEsrvISOQ4QWzl
-         Udtw==
+        bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=;
+        b=g9bmTcK9o+0aMcRjy8klpobB03KzNgnil87dsQRb9O0bVGnubHdb2/IRkLZJnpJhJJ
+         DoXFZwi+/6nle/VJ2EcZdGbdsxkIhbijcsz2D5yvjwkrdC1QwTiGTtyTZwE4Tiay/zYX
+         ycA/yBMGjoKfy+fQSmp+JjPmJjpvgFgBVpXynNiZwV2cia6l+/Gbb7pEs0UVk+tv2dj2
+         iP6OTEWycnhnKReLaHICGJCUi+FbgJtER85m17VFjRcnxbBOItuF1ipbY/Qs6ey5fslc
+         zRLAIaZctU9nBJGdJpeOokN0hXKcvUialL/jWwW0xPPI22JR3i09LB/LNRZpEdejPnpS
+         cbTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739902946; x=1740507746;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1739905092; x=1740509892;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=;
-        b=rfno2SsJPX7hUm1neKE7AikZnxSfOMbnWdfS4xOxBTwx8qHiuP7njlsCcHbh0qh0Ru
-         z9SDrxyVggKXlfc4nPgHxcuzYC/krL68uavTHrwlx8toCXVOGZJ8LhSLxFKO6u8d3xLp
-         3xtDImGURmRjqPe+c8zJ85Caa2oojVxJ2GbMKcSbUYvIuqx0GpofWsITKGiaxemwWN4P
-         5uRqQVkG4c+IkNCWPRGGZQ3z2HQPgbO78IkQ1BKQbhdw7b+p2rJlI6gfQtl+I1GMgeyP
-         gY8rptevsEVenAC8gPmNT/65OX2wvLqa3sCHIKLWy3R0owDs1il7dDtUPNogSdr/bFY1
-         EtsA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXLhccXP1m3EwoiHw5jRmR4HjzUQDcSgBET1FnSiZS65MtY2vBoJlwHoJwR9/5KVGwOvOqPejtjZ+KvZFIB3I=@lists.infradead.org, AJvYcCV+3Gea8jnSq9cC9eAFIWSfZwdz36EMuMCdQRylldHno8dDA1rAeIzqwiRC6cVYkdiHPk5i1uu2raaaFV9+kM10@lists.infradead.org
-X-Gm-Message-State: AOJu0YxsteVnJXjqPjZOqPnYA1p+C5ZhnUw+RACfGoudJ5EZZsqiE8VI
-	r0OJbUEqA0ePrYNbcKr4DU7DKAH0NVK2nw05D2QQ4dMpYIGHFweTZOPkRqltnengox6ejsS+Q1s
-	AqabpDshDr36voPxub/CCifZTGEk=
-X-Gm-Gg: ASbGncssmmbEFivgyWq/70pE2/v1Bfr4vhRovopBWVqrj5tSeW6h4hZypqNAYc21TOy
-	gPlRW2Ob1zRsU3y7sFteK1G1bwn1zG3ypAPFYGuoQ8y5nAskwoD6vCMovuD7YeG5ed9z7rvGL4w
-	==
-X-Google-Smtp-Source: AGHT+IFvTzf/pQHM1jlaSiSziUnZTXPg31KgeAid7qaMz8VLGP3h7h8UvBSajmKY8qqFANiz5VWrRvfUIUlMXw+xeQ4=
-X-Received: by 2002:a05:622a:14f:b0:471:fecd:103 with SMTP id
- d75a77b69052e-47208299ec9mr9120631cf.37.1739902945548; Tue, 18 Feb 2025
- 10:22:25 -0800 (PST)
-MIME-Version: 1.0
-References: <20250131012830.22394-1-jiashengjiangcool@gmail.com> <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
-In-Reply-To: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+        bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=;
+        b=uDzgAx7LUZbwQ83zxc72im2T4dMEiT9+hLbPRTrdf3+qM5nqqDRG/Oah2e2BxovsWN
+         dEAmYISO/2pjNHtQH8wJt60svqeGysOfopEQXfEMdE3nbG5u4/77XgH3V/sy8wYLZL/L
+         4J/S5YshfU9pDp2FsmVdOeKnbasR3ye6uRqSBmWoybTyrXtw24jb/UOsb/UUGbTuOPez
+         Q3WzKdOnEVCTgaSiNmtKz1hN5cg551LxQEsGNXiHWVoRuKmT4FzE/HYEzVr7ZrBn+uWv
+         GIk3c+lNyz1B3kq8HBDZ/+WkDybtyvByYYfZrcHK9MvMzQJHWm5hi98hyRnicx/4Vvym
+         4/YQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUr7ETuSxVC8e8GYgIPEXbyrdsbUedivG97JNx7IgmJAQ5WaAXzEdHXm65uAxCN4+wDuP3yI6eGJT4t+DSpRD7R@lists.infradead.org, AJvYcCXd97OfDi9uLpBJULfoiW3IBKRxELPmBLoGEwFnKIMlypeyLBnkAAUGgtu9zjDQnzChBqWmUgiPLgFaUEarYXQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyrfBziIpW6HsNo7lphVYPtd7seOcjoFum//ftHmsHl/jSzFBSp
+	asLUp+XAAHRgjnCgRqJkO3+RDNVnMsMBzyM6UG8ITqjBXcr5dTi8
+X-Gm-Gg: ASbGncvbpQOeCpng60n4yO5lo/t8ntiOZdIsF4dl5l0FKpvLyt2JrFA2yyhPJN3Ft/J
+	WSRIqUp1/xyOYhtsWF9vvkZZJu8HSrXXbUXW0gS9v3ksn2DO+xFV/ViaJwpib1utYaXotvyHEt1
+	4nMek3JOff7EP/U+bO8CZb8zLo6+Q/jEeGhjeSFuffmQ2kT6WUgrMz5JYhyFtgwa6AMgwy4npYF
+	VDa5xvqXr1/+FV7n0MJ+6hfrWVUr/gAILG4Yqxby9w73vmw9Nmmkn5OrGWs5JTk4B4oH3Xy7hK9
+	Qquv4Oar7JHFix5CeBft1ZcM1pkiNP87Cq+xMw==
+X-Google-Smtp-Source: AGHT+IEBUpcPJIeS91rT5iM8/z85eHzjoA42gXRp32LDonh/AwlEudjIz2MzjR25aealFM9CLGUITw==
+X-Received: by 2002:ad4:4eed:0:b0:6d4:e0a:230e with SMTP id 6a1803df08f44-6e66ccc114cmr224422306d6.16.1739905092130;
+        Tue, 18 Feb 2025 10:58:12 -0800 (PST)
+Received: from newman.cs.purdue.edu ([128.10.127.250])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e65d7a40bdsm66803016d6.59.2025.02.18.10.58.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Feb 2025 10:58:11 -0800 (PST)
 From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
-Date: Tue, 18 Feb 2025 13:22:14 -0500
-X-Gm-Features: AWEUYZn99Dl5M0kMGSPw5mLsYJhT6mWJQUJVNXXhgTF798gaCxq6q20urJwFd14
-Message-ID: <CANeGvZUhFV362NztbvicehGzTDWJP7uu45hT0ebmbgLTx_v-3w@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Add scp_put() to free the scp
-To: Sebastian Fricke <sebastian.fricke@collabora.com>
-Cc: "tiffany.lin" <tiffany.lin@mediatek.com>, 
-	"andrew-ct.chen" <andrew-ct.chen@mediatek.com>, "yunfei.dong" <yunfei.dong@mediatek.com>, 
-	mchehab <mchehab@kernel.org>, "matthias.bgg" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno" <angelogioacchino.delregno@collabora.com>, 
-	fullwaywang <fullwaywang@outlook.com>, linux-media <linux-media@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: sebastian.fricke@collabora.com
+Cc: andrew-ct.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com,
+	fullwaywang@outlook.com,
+	jiashengjiangcool@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	mchehab@kernel.org,
+	tiffany.lin@mediatek.com,
+	yunfei.dong@mediatek.com
+Subject: [PATCH v2] media: mediatek: vcodec: Fix a resource leak related to the scp device in FW initialization
+Date: Tue, 18 Feb 2025 18:58:09 +0000
+Message-Id: <20250218185809.37130-1-jiashengjiangcool@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+References: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_102228_252370_B776C86C 
-X-CRM114-Status: GOOD (  24.55  )
+X-CRM114-CacheID: sfid-20250218_105813_319993_989119B3 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,89 +106,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+On Mediatek devices with a system companion processor (SCP) the mtk_scp
+structure has to be removed explicitly to avoid a resource leak.
+Free the structure in case the allocation of the firmware structure fails
+during the firmware initialization.
 
-On Fri, Feb 14, 2025 at 3:20=E2=80=AFPM Sebastian Fricke
-<sebastian.fricke@collabora.com> wrote:
->
-> Hey Jiasheng,
->
->  ---- On Fri, 31 Jan 2025 02:28:30 +0100  Jiasheng Jiang <jiashengjiangco=
-ol@gmail.com> wrote ---
->  > Add scp_put() to free the scp if devm_kzalloc() fails to avoid memory
->  > leak.
->
-> Your commit message sounds a bit like you copy-pasted your code into the =
-commit message.
-> What kind of memory is leaking here? Are we talking about SRAM memory?
-> I'd reword the commit message to something like this to give a bit more c=
-ontext:
->
-> On Mediatek devices with a system companion processor (SCP) the mtk_scp s=
-tructure has to be removed explicitly to avoid a memory leak.
-> Free the structure in case the allocation of the firmware structure fails=
- during the firmware initialization.
->
-> ---
->
-> Additionally, the commit title says close to nothing to the reader as wel=
-l.
-> How about: Fix memory leak in FW initialization
->
-> But as I stated above you should clarify what kind of memory we are talki=
-ng about here.
->
-> Also just out of interest have you ever actually experienced issues with =
-this?
-> It seems to me that the situation where you run out of Kernel memory shou=
-ld be quite rare.
+Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
+Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+---
+Changelog:
 
-Yes, I just detected such a bug with a static analysis tool and I have
-no idea how to trigger it.
-I will submit a v2 to reword the commit message.
+v1 -> v2:
 
-Thanks,
-Jiasheng
+1. Reword the commit message to give more context.
+---
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
->
-> Regards,
-> Sebastian
->
->  >
->  > Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer defere=
-nce in SCP")
->  > Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
->  > ---
->  >  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++=
--
->  >  1 file changed, 4 insertions(+), 1 deletion(-)
->  >
->  > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_=
-fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
-c
->  > index ff23b225db70..1b0bc47355c0 100644
->  > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
-c
->  > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
-c
->  > @@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *=
-priv, enum mtk_vcodec_fw_use
->  >      }
->  >
->  >      fw =3D devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
->  > -    if (!fw)
->  > +    if (!fw) {
->  > +        scp_put(scp);
->  >          return ERR_PTR(-ENOMEM);
->  > +    }
->  > +
->  >      fw->type =3D SCP;
->  >      fw->ops =3D &mtk_vcodec_rproc_msg;
->  >      fw->scp =3D scp;
->  > --
->  > 2.25.1
->  >
->  >
->  >
->
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+index ff23b225db70..1b0bc47355c0 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+@@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
+ 	}
+ 
+ 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+-	if (!fw)
++	if (!fw) {
++		scp_put(scp);
+ 		return ERR_PTR(-ENOMEM);
++	}
++
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
+-- 
+2.25.1
+
 
