@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B1C02198
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E87EC02198
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CadJhOiuOL+bA49PAWirsjDCGJLOFaxwmiT2F0EYUzM=; b=jeKDxe4nxt3M3+lA8ttAjOfJBl
-	ZLRvgPfC0J5Iw6ufO2iQL12AxugyQb/0kkskkMFRlVSRP3ovlBFkJ2h/1fImp0ZyDe6ZJYqyhCYKT
-	svcRDHUNBSWS6YakI0XV0hF+PRo9+gXZ07nBjMHm4PmZLZZzHToD5O6LEPMdslKzboui/aGwjOFFZ
-	mZK7rWFGhg6jiG6/YbLcPnlaBa7c3DaqFXiN7g4OfUQZvg1kAQulGsoitTNyYtXny5OBGV3cxIcpK
-	K9IcIG4RAqCYyQq1Iy3TaB1lN8V2F9jX80eGSLxNW7uSLsmri3DiKTm7ENFXiAITaJ7b1tZKvSGBk
-	PzFpe2mQ==;
+	bh=xkiIQbCYuJxvPIEx8w0K/33uiKeZt+fjfi4aaY1D3Rw=; b=ly99UOQxpGO172gC/kYPhb8X78
+	u7nzMIfAuTxwsPflnChqHaf34KFeNXFdM48MfoNXyKVy8tUP9MYRjaDPGBSfHdoMw+whFMVNrZXm1
+	fJgzWudZhQKHOjQr1hq0oWgAavDHSczz/bmoLQGObqAKd3da0PzTTQwb2ehem8hWE0s6tcXg+ikgb
+	ZI6xXaaPnB8B+DNXuKeA4z4C+wBtZhOIY9csKNfS76FZ1dcnGUqyCvsxDaQ4OdFmfmonnq2YpkOYW
+	vLdWapkMLH5DHoPfBnphj42paHgFvDuAtgbp8alvZkSDSueMVkikC83U7bNgy7UwnCEwLOEi0AE70
+	sxyheOwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNgV-00000008KU1-3JIk;
-	Tue, 18 Feb 2025 13:30:47 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tkNwU-00000008NbU-1WEb;
+	Tue, 18 Feb 2025 13:47:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNds-00000008JqK-1KJC;
-	Tue, 18 Feb 2025 13:28:05 +0000
+	id 1tkNv0-00000008NKi-3Yem;
+	Tue, 18 Feb 2025 13:45:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AF724A40C18;
-	Tue, 18 Feb 2025 13:26:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0B20C4CEE2;
-	Tue, 18 Feb 2025 13:27:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 747C45C57BB;
+	Tue, 18 Feb 2025 13:45:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E85FFC4CEE6;
+	Tue, 18 Feb 2025 13:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739885283;
-	bh=WUKim6I0GIa7OB0lKVP3eWVJgzUnm9e3oqomWqD2WwE=;
+	s=k20201202; t=1739886344;
+	bh=NGVf+P6KvHNTb1CcTFmAMfl9hGQIGIue5R+BMUnA0bk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QRkY5wkhLUTZa8Vgk9CcWZJea74bEM97C45lbFLORkAUB5t+VRmdEfU71ySeA/yxW
-	 5NMqAIX9A0mbShZ+R0dswW7gak2vOJLFcxXy6KrkdB5sPzBqsEpf3AzkIGxXnIhi1j
-	 jMtH7ZgyYxe6ZU5hCKKLmDtFA4fD/bK+9C7rBVuEwPMl03ASmv8RMDMtUK75L5AGBj
-	 gSoA+Q3PlsZPfztif70R0TpNPtuuu2NmOTlfjkyJlRXepDS0ZzSBdQ9hWCbfFthAl9
-	 QZaaiqQDwFbj7B/EIHbZFOtv1qiyrmUw8WSerUvHwo6E8JULcreHVOo51tozIV+s6t
-	 eXpiL0Mo+Wqbw==
-Date: Tue, 18 Feb 2025 13:27:56 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
+	b=LMtz+lIUo5lJA/yhcSPVdzxocKt3ncQeer0uUJhqtEaSVQw4aCu4SDtNRMQt0WS4d
+	 kX0ec66X2rAvJGMh/28M8li2Q3cNSfYfmFU4zPfOgSwMPl4+cclCkudB2SNnaTRxqA
+	 7OZq9wiIwS668tKQ3ntagl25dodHmPY3HPucf5OXJ0q7YB5k3xT6nlez5axGKQcCV0
+	 5OWeWKG/HlsD1CcwFQgU2JBlQDT1LbNFSEekqkwUDzbEApRkOvwxD2skK3OOmI56vF
+	 JVVQwzKX+if8AohHa/q2s8S7rN+NBdI+OslrEvT5kXJHLz3PT4pIJQL+G0jEfGZJ76
+	 4ouz70a8E6rTw==
+Date: Tue, 18 Feb 2025 14:45:41 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -64,18 +64,20 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	upstream@airoha.com
 Subject: Re: [PATCH net-next v4 13/16] net: airoha: Introduce Airoha NPU
  support
-Message-ID: <20250218132756.GU1615191@kernel.org>
+Message-ID: <Z7SPBfzzKt1nhYFo@lore-desk>
 References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
  <20250213-airoha-en7581-flowtable-offload-v4-13-b69ca16d74db@kernel.org>
  <20250217183854.GP1615191@kernel.org>
  <Z7OMv-7UBVtKaEFb@lore-desk>
+ <20250218132756.GU1615191@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bN7niAAw7M/hEpBR"
 Content-Disposition: inline
-In-Reply-To: <Z7OMv-7UBVtKaEFb@lore-desk>
+In-Reply-To: <20250218132756.GU1615191@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_052804_420733_6D957FB6 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20250218_054546_975157_9BC870EC 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +92,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 17, 2025 at 08:23:43PM +0100, Lorenzo Bianconi wrote:
 
-...
+--bN7niAAw7M/hEpBR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > > +	err = devm_request_irq(dev, irq, airoha_npu_mbox_handler,
-> > > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
-> > > +	if (err)
-> > > +		return err;
-> > > +
-> > > +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++) {
-> > > +		struct airoha_npu_core *core = &npu->cores[i];
-> > > +
-> > > +		spin_lock_init(&core->lock);
-> > > +		core->npu = npu;
-> > > +
-> > > +		irq = platform_get_irq(pdev, i + 1);
-> > > +		if (irq < 0)
-> > > +			return err;
+On Feb 18, Simon Horman wrote:
+> On Mon, Feb 17, 2025 at 08:23:43PM +0100, Lorenzo Bianconi wrote:
+>=20
+> ...
+>=20
+> > > > +	err =3D devm_request_irq(dev, irq, airoha_npu_mbox_handler,
+> > > > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
+> > > > +	if (err)
+> > > > +		return err;
+> > > > +
+> > > > +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
+> > > > +		struct airoha_npu_core *core =3D &npu->cores[i];
+> > > > +
+> > > > +		spin_lock_init(&core->lock);
+> > > > +		core->npu =3D npu;
+> > > > +
+> > > > +		irq =3D platform_get_irq(pdev, i + 1);
+> > > > +		if (irq < 0)
+> > > > +			return err;
+>=20
+> ...
+>=20
+> > > Should this return irq rather than err?
+> >=20
+> > are you referring to devm_request_irq()?
+> >=20
+> > https://elixir.bootlin.com/linux/v6.13.2/source/include/linux/interrupt=
+=2Eh#L215
+> > https://elixir.bootlin.com/linux/v6.13.2/source/kernel/irq/devres.c#L52
+> >=20
+> > I guess it returns 0 on success and a negative value in case of error.
+>=20
+> Hi Lorenzo,
 
-...
+Hi Simon,
 
-> > Should this return irq rather than err?
-> 
-> are you referring to devm_request_irq()?
-> 
-> https://elixir.bootlin.com/linux/v6.13.2/source/include/linux/interrupt.h#L215
-> https://elixir.bootlin.com/linux/v6.13.2/source/kernel/irq/devres.c#L52
-> 
-> I guess it returns 0 on success and a negative value in case of error.
+>=20
+> Sorry, somehow I completely messed-up trimming context and managed to make
+> things utterly confusing.
+>=20
+> I've trimmed things again, and it is the platform_get_irq() call
+> not far above this line that I'm referring to. It assigns the
+> return value of a function to irq, tests irq, but returns err.
 
-Hi Lorenzo,
+ack, right. I will fix it in v6.
 
-Sorry, somehow I completely messed-up trimming context and managed to make
-things utterly confusing.
+Regards,
+Lorenzo
 
-I've trimmed things again, and it is the platform_get_irq() call
-not far above this line that I'm referring to. It assigns the
-return value of a function to irq, tests irq, but returns err.
+>=20
+> It is one of (at least) two calls to platform_get_irq() in airoha_npu_pro=
+be().
+>=20
 
-It is one of (at least) two calls to platform_get_irq() in airoha_npu_probe().
+--bN7niAAw7M/hEpBR
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7SPBQAKCRA6cBh0uS2t
+rKsQAP9QYUVrqGhw3N4HoThHMo6upM1fVYEMznrrOpbmN0z4iwEApdOkmd6OHAnI
+qAhZUPJpZNB70oO/k90a0TMOLcqBfAg=
+=AafE
+-----END PGP SIGNATURE-----
+
+--bN7niAAw7M/hEpBR--
 
