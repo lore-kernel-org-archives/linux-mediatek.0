@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553AAC021AA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 16:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9817EC021AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 18:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YoP2Wb22V7FT45qYcDXO9+AVfW/P/IXMCuLIm9GpAPo=; b=w6ywBydA8ou8l8/WSgd0DtcAIf
-	oTVkbgg6ZILIU/oztabnMvxly4jKvLKfOEy1m8imqjdZhMVXNPN8p/rSbD9512Z8PmpQtddpAKUr/
-	I0fG9o0xdbUNlniGu2LPsppYYpPC3PeLdM1xM7LHuHVrlIkzaeP13pbJh7GFJh9bflafyuSfK0tmW
-	90JB1mZ4HzTrcsXkSZoZrKbn4mJg1385k8s+XjZt/aLV6g2rLzU21qppzAyvJ9WXWbDnjM20lo58t
-	s77nwhWJD84EQIC7979cSZ6gn383w8WVT/c6zIHYwxN7NIXzSOc5trWCU2QbrsyTnz62geblriFNS
-	3FfgktfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=; b=kFTs9EZ3i/DreMXqymx1NIh4NO
+	D/egxVI6uMEDtJ88+CMVbaFGSsprcZaLvc4wYmGr6dJeeUT6ImIddqvN9+8g3DXppQ/E6kv2Eog7D
+	BHPhTeythzt0EElMCPJfwtQi6CHjhtMxzArA5pBwTKy4ERm6j/iMVcqeG6gzRqdrRvQz0tkRlmQli
+	DyREUzDKubajn1b2dD3Qa+1oliT/LNgX/UkW7voGM5zUU/U5hfZkFR7cfq3st9BHbVEJjUwBf7x9Z
+	4jYj83CQluScvOA4i7SMXbeqv9ZBz3Rn8I6W0SkYU0iKq2I00a50VGgwkFMuClTOjVRuK5XPd4Zwz
+	7VU4KSHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkQsg-0000000931Q-197T;
-	Tue, 18 Feb 2025 16:55:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tkSGG-00000009Knw-30TC;
+	Tue, 18 Feb 2025 18:24:00 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkQrC-000000092qp-34zb;
-	Tue, 18 Feb 2025 16:54:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DAC475C6080;
-	Tue, 18 Feb 2025 16:53:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D458AC4CEE4;
-	Tue, 18 Feb 2025 16:53:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739897641;
-	bh=YoP2Wb22V7FT45qYcDXO9+AVfW/P/IXMCuLIm9GpAPo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BB/WU+GohTnBhEdVx//Bcczd08fH2btl7+G5G7+hCNodMJ0M9BcCQe/7ZDr9uBQs1
-	 AGnVubcCxB/KXfdba1nkdePAPAPfexDl1fNh4zq0F/DUyu2nP6+qdcHKED7034b7O4
-	 FSoib2elHKMpF7H6khU7y8fpaeOx1vm2yzxOQixtjQzrw0nu8PDIy0I00h22dk0kk7
-	 JjHDGxBP8nB9/5t+e732ByF8GmRftWalHUAxibZqT9lh4DC+5btqyXfVevwOuA+X0h
-	 zwG6ZkTh/XciZgBNkzXLgi8Y6enlKpoAH0VRvkktuKwY66kALgGKJDTwzVYmrN/rF9
-	 C2L3cYQ+2abUg==
-Date: Tue, 18 Feb 2025 16:53:56 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Friday Yang =?utf-8?B?KOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"mturquette@baylibre.com" <mturquette@baylibre.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Garmin Chang =?utf-8?B?KOW8teWutumKmCk=?= <Garmin.Chang@mediatek.com>,
-	"sboyd@kernel.org" <sboyd@kernel.org>,
-	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
- for MT8188
-Message-ID: <20250218-imaginary-prism-d097ebd4a38b@spud>
-References: <20250121065045.13514-1-friday.yang@mediatek.com>
- <20250121065045.13514-2-friday.yang@mediatek.com>
- <20250121-violet-widely-df3567b085a4@spud>
- <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
- <20250124-aide-feisty-821cf9cf1382@spud>
- <85c616dd195da26313cab552b24f514b539193c1.camel@mediatek.com>
- <ddd1d62e-b1d2-4271-99a3-74bb0a48fb48@collabora.com>
+	id 1tkSEm-00000009KLG-0twH;
+	Tue, 18 Feb 2025 18:22:29 +0000
+Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-471f2e1bea9so18908371cf.2;
+        Tue, 18 Feb 2025 10:22:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739902946; x=1740507746; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=;
+        b=ankq1JCSO/ukGPlipaNgSLHUxXDiTXNf1FgxzQvDRIAZdjSqxeo9NZ6/dXHgOvvHk0
+         osNSoOqkBafrok985hLiwR1GJ862QWUCkJqX3CsM5h/HdpcX7QSHauRMlve1pPXz/xi8
+         4kQF0KFxncj7MjOoqWvAilS47N6JrxhD/yeTavng4Jkh0oQhRd79L3seoPR3hEs8OyDH
+         ENM0hngmIXCh89pSvX8QgpdwruneI5tOWV/O8vkozVVdA7P2cNcKdnsb5V4vWPdjP7za
+         H4/YkGe1qo18y6Bj1ejUTpoUK3f+gnF2fTQP+hMRjyUARM4yDjfURXaEsrvISOQ4QWzl
+         Udtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739902946; x=1740507746;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zzjPJByPMPi1+tDKNkZmLEEa2KEFBG7ARwPPLuUbuME=;
+        b=rfno2SsJPX7hUm1neKE7AikZnxSfOMbnWdfS4xOxBTwx8qHiuP7njlsCcHbh0qh0Ru
+         z9SDrxyVggKXlfc4nPgHxcuzYC/krL68uavTHrwlx8toCXVOGZJ8LhSLxFKO6u8d3xLp
+         3xtDImGURmRjqPe+c8zJ85Caa2oojVxJ2GbMKcSbUYvIuqx0GpofWsITKGiaxemwWN4P
+         5uRqQVkG4c+IkNCWPRGGZQ3z2HQPgbO78IkQ1BKQbhdw7b+p2rJlI6gfQtl+I1GMgeyP
+         gY8rptevsEVenAC8gPmNT/65OX2wvLqa3sCHIKLWy3R0owDs1il7dDtUPNogSdr/bFY1
+         EtsA==
+X-Forwarded-Encrypted: i=1; AJvYcCUXLhccXP1m3EwoiHw5jRmR4HjzUQDcSgBET1FnSiZS65MtY2vBoJlwHoJwR9/5KVGwOvOqPejtjZ+KvZFIB3I=@lists.infradead.org, AJvYcCV+3Gea8jnSq9cC9eAFIWSfZwdz36EMuMCdQRylldHno8dDA1rAeIzqwiRC6cVYkdiHPk5i1uu2raaaFV9+kM10@lists.infradead.org
+X-Gm-Message-State: AOJu0YxsteVnJXjqPjZOqPnYA1p+C5ZhnUw+RACfGoudJ5EZZsqiE8VI
+	r0OJbUEqA0ePrYNbcKr4DU7DKAH0NVK2nw05D2QQ4dMpYIGHFweTZOPkRqltnengox6ejsS+Q1s
+	AqabpDshDr36voPxub/CCifZTGEk=
+X-Gm-Gg: ASbGncssmmbEFivgyWq/70pE2/v1Bfr4vhRovopBWVqrj5tSeW6h4hZypqNAYc21TOy
+	gPlRW2Ob1zRsU3y7sFteK1G1bwn1zG3ypAPFYGuoQ8y5nAskwoD6vCMovuD7YeG5ed9z7rvGL4w
+	==
+X-Google-Smtp-Source: AGHT+IFvTzf/pQHM1jlaSiSziUnZTXPg31KgeAid7qaMz8VLGP3h7h8UvBSajmKY8qqFANiz5VWrRvfUIUlMXw+xeQ4=
+X-Received: by 2002:a05:622a:14f:b0:471:fecd:103 with SMTP id
+ d75a77b69052e-47208299ec9mr9120631cf.37.1739902945548; Tue, 18 Feb 2025
+ 10:22:25 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="z+c1Hyo5mnPQvSBK"
-Content-Disposition: inline
-In-Reply-To: <ddd1d62e-b1d2-4271-99a3-74bb0a48fb48@collabora.com>
+References: <20250131012830.22394-1-jiashengjiangcool@gmail.com> <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+In-Reply-To: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Date: Tue, 18 Feb 2025 13:22:14 -0500
+X-Gm-Features: AWEUYZn99Dl5M0kMGSPw5mLsYJhT6mWJQUJVNXXhgTF798gaCxq6q20urJwFd14
+Message-ID: <CANeGvZUhFV362NztbvicehGzTDWJP7uu45hT0ebmbgLTx_v-3w@mail.gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Add scp_put() to free the scp
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: "tiffany.lin" <tiffany.lin@mediatek.com>, 
+	"andrew-ct.chen" <andrew-ct.chen@mediatek.com>, "yunfei.dong" <yunfei.dong@mediatek.com>, 
+	mchehab <mchehab@kernel.org>, "matthias.bgg" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno" <angelogioacchino.delregno@collabora.com>, 
+	fullwaywang <fullwaywang@outlook.com>, linux-media <linux-media@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_085402_886871_EC3E7FBE 
-X-CRM114-Status: GOOD (  48.63  )
+X-CRM114-CacheID: sfid-20250218_102228_252370_B776C86C 
+X-CRM114-Status: GOOD (  24.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,162 +99,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Sebastian,
 
---z+c1Hyo5mnPQvSBK
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, Feb 14, 2025 at 3:20=E2=80=AFPM Sebastian Fricke
+<sebastian.fricke@collabora.com> wrote:
+>
+> Hey Jiasheng,
+>
+>  ---- On Fri, 31 Jan 2025 02:28:30 +0100  Jiasheng Jiang <jiashengjiangco=
+ol@gmail.com> wrote ---
+>  > Add scp_put() to free the scp if devm_kzalloc() fails to avoid memory
+>  > leak.
+>
+> Your commit message sounds a bit like you copy-pasted your code into the =
+commit message.
+> What kind of memory is leaking here? Are we talking about SRAM memory?
+> I'd reword the commit message to something like this to give a bit more c=
+ontext:
+>
+> On Mediatek devices with a system companion processor (SCP) the mtk_scp s=
+tructure has to be removed explicitly to avoid a memory leak.
+> Free the structure in case the allocation of the firmware structure fails=
+ during the firmware initialization.
+>
+> ---
+>
+> Additionally, the commit title says close to nothing to the reader as wel=
+l.
+> How about: Fix memory leak in FW initialization
+>
+> But as I stated above you should clarify what kind of memory we are talki=
+ng about here.
+>
+> Also just out of interest have you ever actually experienced issues with =
+this?
+> It seems to me that the situation where you run out of Kernel memory shou=
+ld be quite rare.
 
-On Tue, Feb 18, 2025 at 03:24:58PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 18/02/25 13:44, Friday Yang (=E6=9D=A8=E9=98=B3) ha scritto:
-> > On Fri, 2025-01-24 at 17:31 +0000, Conor Dooley wrote:
-> > > On Wed, Jan 22, 2025 at 07:40:12AM +0000, Friday Yang (=E6=9D=A8=E9=
-=98=B3) wrote:
-> > > > On Tue, 2025-01-21 at 17:30 +0000, Conor Dooley wrote:
-> > > > > On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
-> > > > > > SMI LARBs require reset functions when applying clamp
-> > > > > > operations.
-> > > > > > Add '#reset-cells' for the clock controller located in image,
-> > > > > > camera
-> > > > > > and IPE subsystems.
-> > > > >=20
-> > > > > A new required property is an abi break, please explain why this
-> > > > > is
-> > > > > required.
-> > >=20
-> > > You never answered this part. From a quick check, looks like the
-> > > change
-> > > you made will cause probe failures if the resets are not present?
-> > > Maybe
-> > > I misread the driver code in my quick skim - but that is the
-> > > implication
-> > > of a new required property, so I didn't dig super far.
-> > >=20
-> > > Adding new properties that break a driver is not really acceptable,
-> > > so I
-> > > hope I made a mistake there.
-> > >=20
-> >=20
-> > Sorry to reply late.
-> > This is a known bus glitch issue. It worked because MediaTek has
-> > provided patches 1, 2 and 3. In other word, it can not work
-> > without patches 1, 2 and 3.
-> >=20
-> > 1.
-> > https://lore.kernel.org/all/20240327055732.28198-1-yu-chang.lee@mediate=
-k.com/
-> > 2.
-> > https://lore.kernel.org/all/20240327055732.28198-2-yu-chang.lee@mediate=
-k.com/
-> > 3.
-> > https://lore.kernel.org/all/20240327055732.28198-3-yu-chang.lee@mediate=
-k.com/
-> >=20
-> > Patches 1, 2 and 3 have been previously reviewed, and the reviewers
-> > provided the following comments:
-> > 4.
-> > https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3DwXpo=
-bDWU1CnvkA@mail.gmail.com/
-> > 5.
-> > https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5=
-Fasm2rFg@mail.gmail.com/
-> > As I mentioned earlier, SMI clamp and reset operations should be
-> > implemented in SMI driver rather than the PM driver. Additionally, the
-> > reset operations have already been implemented in the clock control
-> > driver. There is no need to submit duplicate code.
-> >=20
-> > To address this, I have provided patches 6, 7 to replace patches 1, 2,
-> > and 3, as I believe this approach aligns more closely with the
-> > reviewers' requirements.
-> > 6.
-> > https://lore.kernel.org/lkml/20250121065045.13514-1-friday.yang@mediate=
-k.com/
-> > 7.
-> > https://lore.kernel.org/lkml/20250121064934.13482-1-friday.yang@mediate=
-k.com/
-> >=20
-> > What's more, I have tested the patch 6, 7 in MediaTek MT8188 SoC.
-> > It could work well. If you have any questions, please feel free to
-> > contact me.
-> >=20
-> > > > What are "SMI LARBs"? Why did things previously work
-> > > > > without
-> > > > > acting as a reset controller?
-> > > > >=20
-> > > >=20
-> > > > The background can refer to the discussion in the following link:
-> > > >=20
-> > > >=20
-> > https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3DwXpo=
-bDWU1CnvkA@mail.gmail.com/
-> > > >=20
-> > > >=20
-> > https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5=
-Fasm2rFg@mail.gmail.com/
-> > > > SMI clamp and reset operations should be implemented in SMI driver
-> > > > instead of PM driver.
-> > >=20
-> > > So the answer to how it worked previously was that nothing actually
-> > > used
-> > > this multimedia interface?
-> > >=20
-> > > Your commit message needs to explain why a new required property is
-> > > okay
-> > > and why it was not there before.
-> > >=20
->=20
-> This conversation slipped through the cracks - wanted to reply to this qu=
-ite a bit
-> of time ago but then for whatever reason .... eh here we are :-)
->=20
-> Anyway.
->=20
-> The cleanest option to get the glitching situation to get resolved is pro=
-bably
-> exactly the one that Friday proposed with this series...
->=20
-> I agree that the commit needs a proper description, though, and even thou=
-gh the
-> drivers were never actually used (so it's not a huge problem - as in - no=
- device
-> gets broken when this is merged), it's still an ABI breakage, and that ha=
-s to be
-> justified with a good reason.
->=20
-> The good reason is that there's a hardware bug that you're trying to reso=
-lve here
-> and that emerged only after the initial upstreaming of this binding (do *=
-not*
-> mention drivers in DT bindings, those describe the hardware, not software=
-!), and
-> the only way to resolve this situation is by resetting the Local Arbiter =
-(LARB)
-> of the cam/img/ipe macro-blocks.
->=20
-> Failing to do this, the hardware is going to be unstable during high/dyna=
-mic load
-> conditions.
->=20
-> So, just describe the problem and how you're solving it in the commit des=
-cription:
-> that's going to be okay and justifying everything that you're doing here.
+Yes, I just detected such a bug with a static analysis tool and I have
+no idea how to trigger it.
+I will submit a v2 to reword the commit message.
 
-Aye, seems fair enough to me to make the change if nothings ever used it
-as it currently is, provided it's justified in the commit message :+1:
+Thanks,
+Jiasheng
 
->=20
-> I'm sorry for chiming in that late, btw.
-
---z+c1Hyo5mnPQvSBK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7S7JAAKCRB4tDGHoIJi
-0oIiAQDqz4r1wVNOAZjXPgcI3xZ7o90OxQ88cFEcH3wj/cvyRwD+JCkthqKwQ1xq
-Lz4TBSkNQL1uBnH/mhgpnht6GEakHAI=
-=GoZv
------END PGP SIGNATURE-----
-
---z+c1Hyo5mnPQvSBK--
+>
+> Regards,
+> Sebastian
+>
+>  >
+>  > Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer defere=
+nce in SCP")
+>  > Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+>  > ---
+>  >  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++=
+-
+>  >  1 file changed, 4 insertions(+), 1 deletion(-)
+>  >
+>  > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_=
+fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
+c
+>  > index ff23b225db70..1b0bc47355c0 100644
+>  > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
+c
+>  > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.=
+c
+>  > @@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *=
+priv, enum mtk_vcodec_fw_use
+>  >      }
+>  >
+>  >      fw =3D devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+>  > -    if (!fw)
+>  > +    if (!fw) {
+>  > +        scp_put(scp);
+>  >          return ERR_PTR(-ENOMEM);
+>  > +    }
+>  > +
+>  >      fw->type =3D SCP;
+>  >      fw->ops =3D &mtk_vcodec_rproc_msg;
+>  >      fw->scp =3D scp;
+>  > --
+>  > 2.25.1
+>  >
+>  >
+>  >
+>
 
