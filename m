@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3165AC021AD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00ABEC02198
 	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 14:27:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=; b=YwzzpkXtlE8NgMIHds8MTPhXxP
-	Wa6PmoXkMWRvxFCwyiqrt0j/xeHcihWRD5LnyoBFl62dWBYnS58BuxdwtRubYiAhpJvn7LiqUz9rY
-	OZLm8DqumuvRj+6/B02pSJ1P/+At2+/biAwHs1k/CDIj0kVT6YfVPr9Q040XJx71qaeRhn9qB4HJ9
-	FVhk4SerZpf/txmEoIyP8qh1R3NrXP1/QAD8ppXV9xpbwVGKTXM7hHpeQWCeeP9xd8KDgvqfcpZNr
-	9ZMIWjx4KGyz8/GARkpEix+oBb7CIwvCWV+q73JdPWUlmK0sFCuBBYoigSzQpMx7PPCayU/bHR2m5
-	14JjrLMg==;
+	bh=Tbf57XV86Tm6EvbxFqN8dNXgcVQxv+oJqp/TEZsU4UA=; b=zU8joSujjGBw4z3Yd4rOwK1OIY
+	KKQKVmzVK2vNicRZZ8B1xiL+meus3FV1+3Lkz4yF3lhYsIWwoYFOu9mz50aAMPafISger/tU01Rrn
+	I6MaBSHtDT11x4Af80wswZ5ccqVJ5cvj+UGm/TZhgw/fd/tXhbLjiWCJZ2L7N1UGKx4a82zpDxsMF
+	zPCcEKP59dDpyqutcIuSAMSlTl4/DA7vligEhc38wXBawabh8YwAc6SNIhgGo4PF8I3AB0AAgrAdZ
+	tXebPe0qD7vFIDinN0w8or9hUqLgiGYJZ7Bmz8seyFbVjtqRiQG9q4fpYcFlc0g+IQd0tSRggPoLk
+	0YlMlj2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkOYx-00000008WKX-2Tts;
-	Tue, 18 Feb 2025 14:27:03 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	id 1tkOYz-00000008WO0-0Ifz;
+	Tue, 18 Feb 2025 14:27:05 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkOYG-00000008VFA-2lhg
+	id 1tkOYJ-00000008VIb-217V
 	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Feb 2025 14:26:22 +0000
+	Tue, 18 Feb 2025 14:26:24 +0000
 Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 5AC5A21178;
-	Tue, 18 Feb 2025 14:25:53 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id B79C71F449;
+	Tue, 18 Feb 2025 14:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1739888753; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1739888755; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
-	b=XmJhhnzh3yjjCwMXlBMhpaZpY2XXit13YkgmNofAtYEH7VmcOLvqfCpl3WCKetKW1gCNdm
-	LeO5yYju/cvB2jlIkMfWkX1dlhKsAIWk5Ht9ygepckSlLLg8aYMvTi4dX+Gm13q+PEj7Nw
-	FWDzp8jg8/duAl2tyqjJXr+Ja5XS5e0=
+	bh=Tbf57XV86Tm6EvbxFqN8dNXgcVQxv+oJqp/TEZsU4UA=;
+	b=BDcTg0cHVizXX78YYwxYcAVtQjVmjoJMdeFQpJFYTajpspZcIR2lbhuYdMjTQsCh2VdlRp
+	y4j5prmifIXwFmVUC2ZvFZ0giFUyJ63SOI151Ti1RAoV6/VXxcUWZR9ya5Pp5PWHCpFn3v
+	jc7RSUfDBASqK/5SoJZJPOWjvVrNmLE=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1739888753;
+	s=susede2_ed25519; t=1739888755;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
-	b=7uSLZzm+QCK8Sk1f9sr1K0+1MpeCVEz6oKn8L/KZqgKu3u/EhKhGi4fs1wgUs9rKNEmCLu
-	Yo+5/ngwnCXKqPDw==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=XmJhhnzh;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=7uSLZzm+
+	bh=Tbf57XV86Tm6EvbxFqN8dNXgcVQxv+oJqp/TEZsU4UA=;
+	b=Not8bb/ryhqDxIY+iTi29fEmqzZvsRguwroSydLgomhMjYaA7BfVac0rPuzTZmGMyAvgbM
+	20di2VXBP7ZrFfDA==
+Authentication-Results: smtp-out2.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=BDcTg0cH;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b="Not8bb/r"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1739888753; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1739888755; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
-	b=XmJhhnzh3yjjCwMXlBMhpaZpY2XXit13YkgmNofAtYEH7VmcOLvqfCpl3WCKetKW1gCNdm
-	LeO5yYju/cvB2jlIkMfWkX1dlhKsAIWk5Ht9ygepckSlLLg8aYMvTi4dX+Gm13q+PEj7Nw
-	FWDzp8jg8/duAl2tyqjJXr+Ja5XS5e0=
+	bh=Tbf57XV86Tm6EvbxFqN8dNXgcVQxv+oJqp/TEZsU4UA=;
+	b=BDcTg0cHVizXX78YYwxYcAVtQjVmjoJMdeFQpJFYTajpspZcIR2lbhuYdMjTQsCh2VdlRp
+	y4j5prmifIXwFmVUC2ZvFZ0giFUyJ63SOI151Ti1RAoV6/VXxcUWZR9ya5Pp5PWHCpFn3v
+	jc7RSUfDBASqK/5SoJZJPOWjvVrNmLE=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1739888753;
+	s=susede2_ed25519; t=1739888755;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
-	b=7uSLZzm+QCK8Sk1f9sr1K0+1MpeCVEz6oKn8L/KZqgKu3u/EhKhGi4fs1wgUs9rKNEmCLu
-	Yo+5/ngwnCXKqPDw==
+	bh=Tbf57XV86Tm6EvbxFqN8dNXgcVQxv+oJqp/TEZsU4UA=;
+	b=Not8bb/ryhqDxIY+iTi29fEmqzZvsRguwroSydLgomhMjYaA7BfVac0rPuzTZmGMyAvgbM
+	20di2VXBP7ZrFfDA==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D0F0913A82;
-	Tue, 18 Feb 2025 14:25:52 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 37A7113A82;
+	Tue, 18 Feb 2025 14:25:55 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id qBWxMXCYtGdXYQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Tue, 18 Feb 2025 14:25:52 +0000
+	id gAMqDHOYtGdXYQAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Tue, 18 Feb 2025 14:25:55 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com,
 	mripard@kernel.org,
@@ -102,16 +102,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Sui Jingfeng <sui.jingfeng@linux.dev>
-Subject: [PATCH v3 11/25] drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Tue, 18 Feb 2025 15:23:34 +0100
-Message-ID: <20250218142542.438557-12-tzimmermann@suse.de>
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Subject: [PATCH v3 15/25] drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Tue, 18 Feb 2025 15:23:38 +0100
+Message-ID: <20250218142542.438557-16-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250218142542.438557-1-tzimmermann@suse.de>
 References: <20250218142542.438557-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: 5AC5A21178
+X-Rspamd-Queue-Id: B79C71F449
 X-Rspamd-Action: no action
 X-Spamd-Result: default: False [-1.51 / 50.00];
 	BAYES_HAM(-3.00)[100.00%];
@@ -136,15 +136,15 @@ X-Spamd-Result: default: False [-1.51 / 50.00];
 	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
-	R_RATELIMIT(0.00)[to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
+	R_RATELIMIT(0.00)[to(RLbwen1niosrcqbxsafh1),to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
 	RCVD_TLS_ALL(0.00)[];
 	DKIM_TRACE(0.00)[suse.de:+];
 	TO_DN_SOME(0.00)[];
 	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_062620_997907_D7C3A1F3 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20250218_062623_809548_27E3D1E3 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,80 +160,49 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch according to hardware requirements.
+buffer size. Align the pitch to a multiple of 8.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
-Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
+Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/gpu/drm/loongson/lsdc_gem.c | 29 ++++++++---------------------
- 1 file changed, 8 insertions(+), 21 deletions(-)
+ drivers/gpu/drm/omapdrm/omap_gem.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/loongson/lsdc_gem.c b/drivers/gpu/drm/loongson/lsdc_gem.c
-index a720d8f53209..9f982b85301f 100644
---- a/drivers/gpu/drm/loongson/lsdc_gem.c
-+++ b/drivers/gpu/drm/loongson/lsdc_gem.c
-@@ -6,6 +6,7 @@
- #include <linux/dma-buf.h>
+diff --git a/drivers/gpu/drm/omapdrm/omap_gem.c b/drivers/gpu/drm/omapdrm/omap_gem.c
+index b9c67e4ca360..b8413a2dcdeb 100644
+--- a/drivers/gpu/drm/omapdrm/omap_gem.c
++++ b/drivers/gpu/drm/omapdrm/omap_gem.c
+@@ -11,6 +11,7 @@
+ #include <linux/pfn_t.h>
+ #include <linux/vmalloc.h>
  
- #include <drm/drm_debugfs.h>
 +#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_file.h>
- #include <drm/drm_gem.h>
  #include <drm/drm_prime.h>
-@@ -204,45 +205,31 @@ int lsdc_dumb_create(struct drm_file *file, struct drm_device *ddev,
- 	const struct lsdc_desc *descp = ldev->descp;
- 	u32 domain = LSDC_GEM_DOMAIN_VRAM;
- 	struct drm_gem_object *gobj;
--	size_t size;
--	u32 pitch;
--	u32 handle;
- 	int ret;
+ #include <drm/drm_vma_manager.h>
  
--	if (!args->width || !args->height)
--		return -EINVAL;
+@@ -583,15 +584,13 @@ static int omap_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struc
+ int omap_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
+ 		struct drm_mode_create_dumb *args)
+ {
+-	union omap_gem_size gsize;
 -
--	if (args->bpp != 32 && args->bpp != 16)
--		return -EINVAL;
+-	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
 -
--	pitch = args->width * args->bpp / 8;
--	pitch = ALIGN(pitch, descp->pitch_align);
--	size = pitch * args->height;
--	size = ALIGN(size, PAGE_SIZE);
-+	ret = drm_mode_size_dumb(ddev, args, descp->pitch_align, 0);
+-	args->size = PAGE_ALIGN(args->pitch * args->height);
++	union omap_gem_size gsize = { };
++	int ret;
+ 
+-	gsize = (union omap_gem_size){
+-		.bytes = args->size,
+-	};
++	ret = drm_mode_size_dumb(dev, args, SZ_8, 0);
 +	if (ret)
 +		return ret;
++	gsize.bytes = args->size;
  
- 	/* Maximum single bo size allowed is the half vram size available */
--	if (size > ldev->vram_size / 2) {
--		drm_err(ddev, "Requesting(%zuMiB) failed\n", size >> 20);
-+	if (args->size > ldev->vram_size / 2) {
-+		drm_err(ddev, "Requesting(%zuMiB) failed\n", (size_t)(args->size >> PAGE_SHIFT));
- 		return -ENOMEM;
- 	}
- 
--	gobj = lsdc_gem_object_create(ddev, domain, size, false, NULL, NULL);
-+	gobj = lsdc_gem_object_create(ddev, domain, args->size, false, NULL, NULL);
- 	if (IS_ERR(gobj)) {
- 		drm_err(ddev, "Failed to create gem object\n");
- 		return PTR_ERR(gobj);
- 	}
- 
--	ret = drm_gem_handle_create(file, gobj, &handle);
-+	ret = drm_gem_handle_create(file, gobj, &args->handle);
- 
- 	/* drop reference from allocate, handle holds it now */
- 	drm_gem_object_put(gobj);
- 	if (ret)
- 		return ret;
- 
--	args->pitch = pitch;
--	args->size = size;
--	args->handle = handle;
--
- 	return 0;
- }
- 
+ 	return omap_gem_new_handle(dev, file, gsize,
+ 			OMAP_BO_SCANOUT | OMAP_BO_WC, &args->handle);
 -- 
 2.48.1
 
