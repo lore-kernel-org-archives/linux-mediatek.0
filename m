@@ -4,94 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F85C021AA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 19:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26536C021AA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 21:18:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=; b=qFbBMJcI4t195pvGefYdHKEOXV
-	3aRR9rvdRn4q+F0i2TcAVQjb1TT+3rNpJFop1hbKGEMR0rV5o8Jm1AhMSMNrSV1pUSyjAfYGAXngn
-	xSmZDhFdDUk24jdFwYUD5QGVUPQqcXZSM1RYZVLXB01QiMZGMu5sPIidj3ydQViZJ2jLyIQmaJvKG
-	2e4PEch/Gnh/uUk+FlWg4UmzzEWLW9s8ER9r+8C5R2h/ZrOHCxX7Ase1qMmED1SeZcXklkXMk+RzC
-	6gAy+RzD4qodl/WZcYRXY9+eIg2bZYA2iDSejrJ+d095sQQzvPtNbfIe+xHna7rvSyZfwg9bSDqly
-	APFdemhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pyeX1fCE1r0zvV9wwJ1gCpuCvVhlIzctRjDyzHOqBC0=; b=gizxkQW8rEtUsG
+	DCp5Vdde4PS3XquHXPP5mk0ZzJGJgShKnjVTvWoiHWlTqLraXN3bE4z0JVRc/fwq0nKNSIKahOuaC
+	nLRKzheIN4zsQeSBWnv85mCIh9OVYaScW23c0FkMZybXnMM9YRFQGLvg+QpDvn0MAxNJ6eE9KU0a7
+	c8xKaEU18cFqtsr6Mfb5AtjHfi0dGeWi0dij0+zFMqU5/070YMzmMw3Y3BIyaYnCCJ+a5nbxsFxzH
+	FhTAR+AeK2HeYHKHX8WzJ1BW6/KlI7jwIZRAlZ5pUX+9iM+7Jz+rPkK8F/TPQKlTtW8d/1uZtzDDH
+	vc8ihbnZZVW+F54+YaSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkTUY-00000009ci6-3XMj;
-	Tue, 18 Feb 2025 19:42:50 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1tkUyv-00000009xTz-0AIr;
+	Tue, 18 Feb 2025 21:18:17 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkSnN-00000009T2S-1BPk;
-	Tue, 18 Feb 2025 18:58:14 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-471eb0e3536so46684431cf.3;
-        Tue, 18 Feb 2025 10:58:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739905092; x=1740509892; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=;
-        b=g9bmTcK9o+0aMcRjy8klpobB03KzNgnil87dsQRb9O0bVGnubHdb2/IRkLZJnpJhJJ
-         DoXFZwi+/6nle/VJ2EcZdGbdsxkIhbijcsz2D5yvjwkrdC1QwTiGTtyTZwE4Tiay/zYX
-         ycA/yBMGjoKfy+fQSmp+JjPmJjpvgFgBVpXynNiZwV2cia6l+/Gbb7pEs0UVk+tv2dj2
-         iP6OTEWycnhnKReLaHICGJCUi+FbgJtER85m17VFjRcnxbBOItuF1ipbY/Qs6ey5fslc
-         zRLAIaZctU9nBJGdJpeOokN0hXKcvUialL/jWwW0xPPI22JR3i09LB/LNRZpEdejPnpS
-         cbTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739905092; x=1740509892;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ae5CUAqvFWLqCxBuF5XhzMM5neQb6Ke5yTuZdxcdHBI=;
-        b=uDzgAx7LUZbwQ83zxc72im2T4dMEiT9+hLbPRTrdf3+qM5nqqDRG/Oah2e2BxovsWN
-         dEAmYISO/2pjNHtQH8wJt60svqeGysOfopEQXfEMdE3nbG5u4/77XgH3V/sy8wYLZL/L
-         4J/S5YshfU9pDp2FsmVdOeKnbasR3ye6uRqSBmWoybTyrXtw24jb/UOsb/UUGbTuOPez
-         Q3WzKdOnEVCTgaSiNmtKz1hN5cg551LxQEsGNXiHWVoRuKmT4FzE/HYEzVr7ZrBn+uWv
-         GIk3c+lNyz1B3kq8HBDZ/+WkDybtyvByYYfZrcHK9MvMzQJHWm5hi98hyRnicx/4Vvym
-         4/YQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUr7ETuSxVC8e8GYgIPEXbyrdsbUedivG97JNx7IgmJAQ5WaAXzEdHXm65uAxCN4+wDuP3yI6eGJT4t+DSpRD7R@lists.infradead.org, AJvYcCXd97OfDi9uLpBJULfoiW3IBKRxELPmBLoGEwFnKIMlypeyLBnkAAUGgtu9zjDQnzChBqWmUgiPLgFaUEarYXQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyrfBziIpW6HsNo7lphVYPtd7seOcjoFum//ftHmsHl/jSzFBSp
-	asLUp+XAAHRgjnCgRqJkO3+RDNVnMsMBzyM6UG8ITqjBXcr5dTi8
-X-Gm-Gg: ASbGncvbpQOeCpng60n4yO5lo/t8ntiOZdIsF4dl5l0FKpvLyt2JrFA2yyhPJN3Ft/J
-	WSRIqUp1/xyOYhtsWF9vvkZZJu8HSrXXbUXW0gS9v3ksn2DO+xFV/ViaJwpib1utYaXotvyHEt1
-	4nMek3JOff7EP/U+bO8CZb8zLo6+Q/jEeGhjeSFuffmQ2kT6WUgrMz5JYhyFtgwa6AMgwy4npYF
-	VDa5xvqXr1/+FV7n0MJ+6hfrWVUr/gAILG4Yqxby9w73vmw9Nmmkn5OrGWs5JTk4B4oH3Xy7hK9
-	Qquv4Oar7JHFix5CeBft1ZcM1pkiNP87Cq+xMw==
-X-Google-Smtp-Source: AGHT+IEBUpcPJIeS91rT5iM8/z85eHzjoA42gXRp32LDonh/AwlEudjIz2MzjR25aealFM9CLGUITw==
-X-Received: by 2002:ad4:4eed:0:b0:6d4:e0a:230e with SMTP id 6a1803df08f44-6e66ccc114cmr224422306d6.16.1739905092130;
-        Tue, 18 Feb 2025 10:58:12 -0800 (PST)
-Received: from newman.cs.purdue.edu ([128.10.127.250])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e65d7a40bdsm66803016d6.59.2025.02.18.10.58.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 10:58:11 -0800 (PST)
-From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
-To: sebastian.fricke@collabora.com
-Cc: andrew-ct.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	fullwaywang@outlook.com,
-	jiashengjiangcool@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mchehab@kernel.org,
-	tiffany.lin@mediatek.com,
-	yunfei.dong@mediatek.com
-Subject: [PATCH v2] media: mediatek: vcodec: Fix a resource leak related to the scp device in FW initialization
-Date: Tue, 18 Feb 2025 18:58:09 +0000
-Message-Id: <20250218185809.37130-1-jiashengjiangcool@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
-References: <195061eaa10.dcfe0edc1589793.425795569509706466@collabora.com>
+	id 1tkUcC-00000009sSk-3RQM;
+	Tue, 18 Feb 2025 20:54:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739912086;
+	bh=vBUNOnqBjWLVeVhdw5eyFkY+aGATqfPN9HO6x7rP1xQ=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Oov72omcTiL2NCLqUyV3GmRpH9qXVL5qb++fQxd+V3RpbhP0471n2V89tvSsscYL3
+	 JwXtOrBPi+olWxGGKsp/A7yiWdZN0Gm5OTb1Pmp96imUQjMSQzEL9Q9ISZikWrg3Hz
+	 p9sbhufnM4vN4o8rAJ6l77rF2Ma4w0uSYGG4hu7FF41BmXA50wzYzSK8ir9+UYQxF2
+	 2XXLJNdJFNrqvQiN5DwO/N7AcFFbWQ1b96GAVCoZKjyj9eVMeZg030/4LnYmY4dQ9Z
+	 XVigbWNBCMKABwx3jTsgUiekHp5FTit9Q4YTYdsnT57pPxuLP7AvXwdcIX/CeUptQ0
+	 I3kXwAFhGMsWw==
+Received: from [192.168.0.47] (unknown [177.33.139.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 809A717E154A;
+	Tue, 18 Feb 2025 21:54:42 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH 0/6] Enable DMIC for Genio 700/510 EVK
+Date: Tue, 18 Feb 2025 17:52:13 -0300
+Message-Id: <20250218-genio700-dmic-v1-0-6bc653da60f7@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAP3ytGcC/x3MQQqAIBBA0avIrBNGI7OuEi1CJ5tFGgoRSHdPW
+ r7F/xUKZaYCs6iQ6ebCKTaoToA7thhIsm8GjXpArawMFDmNiNKf7KR3hmjyDk1voTVXpp2f/7e
+ s7/sBChFmqF8AAAA=
+X-Change-ID: 20250218-genio700-dmic-dc6ee9dc0638
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ parkeryang <Parker.Yang@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_105813_319993_989119B3 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20250218_125449_036902_7DD814FF 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,41 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mediatek devices with a system companion processor (SCP) the mtk_scp
-structure has to be removed explicitly to avoid a resource leak.
-Free the structure in case the allocation of the firmware structure fails
-during the firmware initialization.
+This series enables the dual digital microphones present on the Genio
+700 and 510 EVK boards.
 
-Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
-Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Patches 1 and 2 add some required clocks, patch 3 adds the DMIC DAI
+driver for MT8188, patch 4 adds the DMIC routes for the MT8188 platform,
+patch 5 adds the DMIC backend and widget to the mt8188-6359 machine
+sound driver and patch 6 adds the audio routes for the DMIC to the
+Devicetree.
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
-Changelog:
+Nícolas F. R. A. Prado (4):
+      ASoC: mediatek: mt8188: Add audsys hires clocks
+      ASoC: mediatek: mt8188: Add reference for dmic clocks
+      ASoC: mediatek: mt8188-mt6359: Add DMIC
+      arm64: dts: mediatek: mt8390-genio-common: Add routes for DMIC
 
-v1 -> v2:
+parkeryang (2):
+      ASoC: mediatek: mt8188: Add DMIC DAI driver
+      ASoC: mediatek: mt8188: Support DMIC in AFE
 
-1. Reword the commit message to give more context.
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     |   6 +-
+ sound/soc/mediatek/mt8188/Makefile                 |   1 +
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.c         |   8 +
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.h         |   8 +
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h      |   1 +
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c         |  28 +-
+ sound/soc/mediatek/mt8188/mt8188-audsys-clk.c      |   4 +
+ sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h    |   4 +
+ sound/soc/mediatek/mt8188/mt8188-dai-dmic.c        | 754 +++++++++++++++++++++
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c          |  14 +
+ sound/soc/mediatek/mt8188/mt8188-reg.h             |  18 +-
+ 11 files changed, 839 insertions(+), 7 deletions(-)
 ---
- .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+base-commit: 253c82b3a2cec22bf9db65645f934fbe095899a3
+change-id: 20250218-genio700-dmic-dc6ee9dc0638
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-index ff23b225db70..1b0bc47355c0 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-@@ -79,8 +79,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
- 	}
- 
- 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
--	if (!fw)
-+	if (!fw) {
-+		scp_put(scp);
- 		return ERR_PTR(-ENOMEM);
-+	}
-+
- 	fw->type = SCP;
- 	fw->ops = &mtk_vcodec_rproc_msg;
- 	fw->scp = scp;
+Best regards,
 -- 
-2.25.1
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
