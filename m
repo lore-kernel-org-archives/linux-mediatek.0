@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E87EC02198
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:47:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D64C021AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 14:26:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xkiIQbCYuJxvPIEx8w0K/33uiKeZt+fjfi4aaY1D3Rw=; b=ly99UOQxpGO172gC/kYPhb8X78
-	u7nzMIfAuTxwsPflnChqHaf34KFeNXFdM48MfoNXyKVy8tUP9MYRjaDPGBSfHdoMw+whFMVNrZXm1
-	fJgzWudZhQKHOjQr1hq0oWgAavDHSczz/bmoLQGObqAKd3da0PzTTQwb2ehem8hWE0s6tcXg+ikgb
-	ZI6xXaaPnB8B+DNXuKeA4z4C+wBtZhOIY9csKNfS76FZ1dcnGUqyCvsxDaQ4OdFmfmonnq2YpkOYW
-	vLdWapkMLH5DHoPfBnphj42paHgFvDuAtgbp8alvZkSDSueMVkikC83U7bNgy7UwnCEwLOEi0AE70
-	sxyheOwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r1w3SuJ03gvDIe9MXtj8IMQSlg/9NytuFaJY97llj9s=; b=MlnyIUUolvKiPmZ8C5TORMOpoW
+	TxIYNjlznm33EwyqTviYoeBoGnn+r8jWUzJTnIBrQrieHLtTyr/z8by8qiZBqCa6GRaUUmV+qriab
+	ZMkWhSQPqm5TjQvN0S84TENZoDFmnp1PalIrIDGpwGEbqypjJPDdVRRIRscCKIQT1aXhHfIqQ+EuA
+	zcVg8HFzz/JcWk6xqpz8a7hOELWn3DgnZvWqFR2AuOkKSO76M+TK9gp8lFUGTmja0UKWwnXu25szf
+	vhD4SsIR4BATphUqBSra+Dwp1X5zekQ76ZZWTUsvcMXLqbWzhHi90SnB8CyLMqa5dNA1hTCuJOAj1
+	aPRvaUsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNwU-00000008NbU-1WEb;
-	Tue, 18 Feb 2025 13:47:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tkOYV-00000008VWx-2rsg;
+	Tue, 18 Feb 2025 14:26:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNv0-00000008NKi-3Yem;
-	Tue, 18 Feb 2025 13:45:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 747C45C57BB;
-	Tue, 18 Feb 2025 13:45:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E85FFC4CEE6;
-	Tue, 18 Feb 2025 13:45:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739886344;
-	bh=NGVf+P6KvHNTb1CcTFmAMfl9hGQIGIue5R+BMUnA0bk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LMtz+lIUo5lJA/yhcSPVdzxocKt3ncQeer0uUJhqtEaSVQw4aCu4SDtNRMQt0WS4d
-	 kX0ec66X2rAvJGMh/28M8li2Q3cNSfYfmFU4zPfOgSwMPl4+cclCkudB2SNnaTRxqA
-	 7OZq9wiIwS668tKQ3ntagl25dodHmPY3HPucf5OXJ0q7YB5k3xT6nlez5axGKQcCV0
-	 5OWeWKG/HlsD1CcwFQgU2JBlQDT1LbNFSEekqkwUDzbEApRkOvwxD2skK3OOmI56vF
-	 JVVQwzKX+if8AohHa/q2s8S7rN+NBdI+OslrEvT5kXJHLz3PT4pIJQL+G0jEfGZJ76
-	 4ouz70a8E6rTw==
-Date: Tue, 18 Feb 2025 14:45:41 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [PATCH net-next v4 13/16] net: airoha: Introduce Airoha NPU
- support
-Message-ID: <Z7SPBfzzKt1nhYFo@lore-desk>
-References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
- <20250213-airoha-en7581-flowtable-offload-v4-13-b69ca16d74db@kernel.org>
- <20250217183854.GP1615191@kernel.org>
- <Z7OMv-7UBVtKaEFb@lore-desk>
- <20250218132756.GU1615191@kernel.org>
+	id 1tkOX0-00000008UhJ-0n5k;
+	Tue, 18 Feb 2025 14:25:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739888700;
+	bh=J2eO9J9+mwdPHssF4xChq4+/7PjWA0b/HAjHIFjPlDM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=T0PM7SUXm0tzDEgb3p7/B4sIX18u9xqr1zsMb31gron78SXny/pUQb6dWPugS+zHK
+	 zoRxMEOJH5ELNcNoNXjLsff5yFYH9vXdMnovMKc7AMmN62b2pQNnov79IbV0FQLk3B
+	 PXFsY/eKKaFsJH2puzbVSOdMjnxVVnDaIFcUftyxAvwpHK/X54+h5zn/KiNHU+9j/5
+	 VucuGlCZG1/a1HhI92k+VT46yqGIAsFt0VVpaC6SkCDd4pHOvCciFMzuexi8zTfCIk
+	 2vVJ3A3uIonc1hKstWUjrHX7JeMqNSLFHvAZzL7rTzLm+7LB+UPa04mp/oKg3+4mxU
+	 hhbiJDpHVNpUw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 636C717E0391;
+	Tue, 18 Feb 2025 15:24:59 +0100 (CET)
+Message-ID: <ddd1d62e-b1d2-4271-99a3-74bb0a48fb48@collabora.com>
+Date: Tue, 18 Feb 2025 15:24:58 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bN7niAAw7M/hEpBR"
-Content-Disposition: inline
-In-Reply-To: <20250218132756.GU1615191@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
+ for MT8188
+To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>,
+ "sboyd@kernel.org" <sboyd@kernel.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
+ <Yong.Wu@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "conor@kernel.org" <conor@kernel.org>
+References: <20250121065045.13514-1-friday.yang@mediatek.com>
+ <20250121065045.13514-2-friday.yang@mediatek.com>
+ <20250121-violet-widely-df3567b085a4@spud>
+ <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
+ <20250124-aide-feisty-821cf9cf1382@spud>
+ <85c616dd195da26313cab552b24f514b539193c1.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <85c616dd195da26313cab552b24f514b539193c1.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_054546_975157_9BC870EC 
-X-CRM114-Status: GOOD (  21.22  )
+X-CRM114-CacheID: sfid-20250218_062502_382612_4EAA21F3 
+X-CRM114-Status: GOOD (  38.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,76 +94,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 18/02/25 13:44, Friday Yang (杨阳) ha scritto:
+> On Fri, 2025-01-24 at 17:31 +0000, Conor Dooley wrote:
+>> On Wed, Jan 22, 2025 at 07:40:12AM +0000, Friday Yang (杨阳) wrote:
+>>> On Tue, 2025-01-21 at 17:30 +0000, Conor Dooley wrote:
+>>>> On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
+>>>>> SMI LARBs require reset functions when applying clamp
+>>>>> operations.
+>>>>> Add '#reset-cells' for the clock controller located in image,
+>>>>> camera
+>>>>> and IPE subsystems.
+>>>>
+>>>> A new required property is an abi break, please explain why this
+>>>> is
+>>>> required.
+>>
+>> You never answered this part. From a quick check, looks like the
+>> change
+>> you made will cause probe failures if the resets are not present?
+>> Maybe
+>> I misread the driver code in my quick skim - but that is the
+>> implication
+>> of a new required property, so I didn't dig super far.
+>>
+>> Adding new properties that break a driver is not really acceptable,
+>> so I
+>> hope I made a mistake there.
+>>
+> 
+> Sorry to reply late.
+> This is a known bus glitch issue. It worked because MediaTek has
+> provided patches 1, 2 and 3. In other word, it can not work
+> without patches 1, 2 and 3.
+> 
+> 1.
+> https://lore.kernel.org/all/20240327055732.28198-1-yu-chang.lee@mediatek.com/
+> 2.
+> https://lore.kernel.org/all/20240327055732.28198-2-yu-chang.lee@mediatek.com/
+> 3.
+> https://lore.kernel.org/all/20240327055732.28198-3-yu-chang.lee@mediatek.com/
+> 
+> Patches 1, 2 and 3 have been previously reviewed, and the reviewers
+> provided the following comments:
+> 4.
+> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com/
+> 5.
+> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fasm2rFg@mail.gmail.com/
+> As I mentioned earlier, SMI clamp and reset operations should be
+> implemented in SMI driver rather than the PM driver. Additionally, the
+> reset operations have already been implemented in the clock control
+> driver. There is no need to submit duplicate code.
+> 
+> To address this, I have provided patches 6, 7 to replace patches 1, 2,
+> and 3, as I believe this approach aligns more closely with the
+> reviewers' requirements.
+> 6.
+> https://lore.kernel.org/lkml/20250121065045.13514-1-friday.yang@mediatek.com/
+> 7.
+> https://lore.kernel.org/lkml/20250121064934.13482-1-friday.yang@mediatek.com/
+> 
+> What's more, I have tested the patch 6, 7 in MediaTek MT8188 SoC.
+> It could work well. If you have any questions, please feel free to
+> contact me.
+> 
+>>> What are "SMI LARBs"? Why did things previously work
+>>>> without
+>>>> acting as a reset controller?
+>>>>
+>>>
+>>> The background can refer to the discussion in the following link:
+>>>
+>>>
+> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com/
+>>>
+>>>
+> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fasm2rFg@mail.gmail.com/
+>>> SMI clamp and reset operations should be implemented in SMI driver
+>>> instead of PM driver.
+>>
+>> So the answer to how it worked previously was that nothing actually
+>> used
+>> this multimedia interface?
+>>
+>> Your commit message needs to explain why a new required property is
+>> okay
+>> and why it was not there before.
+>>
 
---bN7niAAw7M/hEpBR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This conversation slipped through the cracks - wanted to reply to this quite a bit
+of time ago but then for whatever reason .... eh here we are :-)
 
-On Feb 18, Simon Horman wrote:
-> On Mon, Feb 17, 2025 at 08:23:43PM +0100, Lorenzo Bianconi wrote:
->=20
-> ...
->=20
-> > > > +	err =3D devm_request_irq(dev, irq, airoha_npu_mbox_handler,
-> > > > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
-> > > > +	if (err)
-> > > > +		return err;
-> > > > +
-> > > > +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
-> > > > +		struct airoha_npu_core *core =3D &npu->cores[i];
-> > > > +
-> > > > +		spin_lock_init(&core->lock);
-> > > > +		core->npu =3D npu;
-> > > > +
-> > > > +		irq =3D platform_get_irq(pdev, i + 1);
-> > > > +		if (irq < 0)
-> > > > +			return err;
->=20
-> ...
->=20
-> > > Should this return irq rather than err?
-> >=20
-> > are you referring to devm_request_irq()?
-> >=20
-> > https://elixir.bootlin.com/linux/v6.13.2/source/include/linux/interrupt=
-=2Eh#L215
-> > https://elixir.bootlin.com/linux/v6.13.2/source/kernel/irq/devres.c#L52
-> >=20
-> > I guess it returns 0 on success and a negative value in case of error.
->=20
-> Hi Lorenzo,
+Anyway.
 
-Hi Simon,
+The cleanest option to get the glitching situation to get resolved is probably
+exactly the one that Friday proposed with this series...
 
->=20
-> Sorry, somehow I completely messed-up trimming context and managed to make
-> things utterly confusing.
->=20
-> I've trimmed things again, and it is the platform_get_irq() call
-> not far above this line that I'm referring to. It assigns the
-> return value of a function to irq, tests irq, but returns err.
+I agree that the commit needs a proper description, though, and even though the
+drivers were never actually used (so it's not a huge problem - as in - no device
+gets broken when this is merged), it's still an ABI breakage, and that has to be
+justified with a good reason.
 
-ack, right. I will fix it in v6.
+The good reason is that there's a hardware bug that you're trying to resolve here
+and that emerged only after the initial upstreaming of this binding (do *not*
+mention drivers in DT bindings, those describe the hardware, not software!), and
+the only way to resolve this situation is by resetting the Local Arbiter (LARB)
+of the cam/img/ipe macro-blocks.
 
-Regards,
-Lorenzo
+Failing to do this, the hardware is going to be unstable during high/dynamic load
+conditions.
 
->=20
-> It is one of (at least) two calls to platform_get_irq() in airoha_npu_pro=
-be().
->=20
+So, just describe the problem and how you're solving it in the commit description:
+that's going to be okay and justifying everything that you're doing here.
 
---bN7niAAw7M/hEpBR
-Content-Type: application/pgp-signature; name="signature.asc"
+I'm sorry for chiming in that late, btw.
 
------BEGIN PGP SIGNATURE-----
+Cheers,
+Angelo
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7SPBQAKCRA6cBh0uS2t
-rKsQAP9QYUVrqGhw3N4HoThHMo6upM1fVYEMznrrOpbmN0z4iwEApdOkmd6OHAnI
-qAhZUPJpZNB70oO/k90a0TMOLcqBfAg=
-=AafE
------END PGP SIGNATURE-----
+>> Thanks,
+>> Conor.
+>>
+>>>
+>>> I previously added the SMI reset control driver. However, the
+>>> reviewer's comments are correct, these functions have already
+>>> been implemented in the clock control driver. There is no need
+>>> to submit duplicate code.
+>>>
+>>>
+> https://lore.kernel.org/lkml/20241120063305.8135-2-friday.yang@mediatek.com/
+>>>
+>>>
+> https://lore.kernel.org/lkml/20241120063305.8135-3-friday.yang@mediatek.com/
+>>>
+>>>
+>>> On the MediaTek platform, the SMI block diagram like this:
+>>>
+>>>                  DRAM
+>>>                   |
+>>>              EMI(External Memory Interface)
+>>>                   |  |
+>>>            MediaTek IOMMU(Input Output Memory Management Unit)
+>>>                   |  |
+>>>               SMI-Common(Smart Multimedia Interface Common)
+>>>                   |
+>>>           +----------------+------------------+
+>>>           |                |                  |
+>>>           |                |                  |
+>>>           |                |                  |
+>>>           |                |                  |
+>>>           |                |                  |
+>>>         larb0       SMI-Sub-Common0     SMI-Sub-Common1
+>>>                     |      |     |      |             |
+>>>                    larb1  larb2 larb3  larb7       larb9
+>>>
+>>> The SMI-Common connects with SMI LARBs and IOMMU. The maximum LARBs
+>>> number that connects with a SMI-Common is 8. If the engines number
+>>> is
+>>> over 8, sometimes we use a SMI-Sub-Common which is nearly same with
+>>> SMI-Common. It supports up to 8 input and 1 output(SMI-Common has 2
+>>> output).
+>>>
+>>>>>
+>>>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+>>>>> ---
+>>>>>   .../bindings/clock/mediatek,mt8188-clock.yaml | 21
+>>>>> +++++++++++++++++++
+>>>>>   1 file changed, 21 insertions(+)
+>>>>>
+>>>>> diff --git
+>>>>> a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+>>>>> clock.yaml
+>>>>> b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+>>>>> clock.yaml
+>>>>> index 860570320545..2985c8c717d7 100644
+>>>>> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+>>>>> clock.yaml
+>>>>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
+>>>>> clock.yaml
+>>>>> @@ -57,6 +57,27 @@ required:
+>>>>>     - reg
+>>>>>     - '#clock-cells'
+>>>>>
+>>>>> +allOf:
+>>>>> +  - if:
+>>>>> +      properties:
+>>>>> +        compatible:
+>>>>> +          contains:
+>>>>> +            enum:
+>>>>> +              - mediatek,mt8188-camsys-rawa
+>>>>> +              - mediatek,mt8188-camsys-rawb
+>>>>> +              - mediatek,mt8188-camsys-yuva
+>>>>> +              - mediatek,mt8188-camsys-yuvb
+>>>>> +              - mediatek,mt8188-imgsys-wpe1
+>>>>> +              - mediatek,mt8188-imgsys-wpe2
+>>>>> +              - mediatek,mt8188-imgsys-wpe3
+>>>>> +              - mediatek,mt8188-imgsys1-dip-nr
+>>>>> +              - mediatek,mt8188-imgsys1-dip-top
+>>>>> +              - mediatek,mt8188-ipesys
+>>>>> +
+>>>>> +    then:
+>>>>> +      required:
+>>>>> +        - '#reset-cells'
+>>>>> +
+>>>>>   additionalProperties: false
+>>>>>
+>>>>>   examples:
+>>>>> --
+>>>>> 2.46.0
+>>>>>
 
---bN7niAAw7M/hEpBR--
+
 
