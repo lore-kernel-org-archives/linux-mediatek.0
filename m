@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC7C2C021A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 03:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FAFCC02198
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 05:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jYfLsQz2vVDXyMu7G7dGGNxPBYtbHclJtLhy9S100qM=; b=uy/a8QrYaUXtdzz2uXtPn3zRjn
-	Yc2ZC/QjK9E+H06b/Yv5XcMKxXQU8GL3nxYDnD+CJGcG9ZjI3Yc1r6ZLxwrcqZThfSNNW6e/pUpLw
-	ZnhjdUNtMgH4+k2DgdU+VQIXEX1CF16IHmnZJPAP4ZBnE1gFc4zJvopYqrcoZ9wJ9syenE+c/Uzvn
-	ArlnKukkg3MJTBXee2g5ZKJT0mGUTvu7ZQxFMf3uHfOjiruDOCA70jz+gDoKgbm326OnY/K/QiUz8
-	hLPuZfN7w+GoOcfRkyF9gMd9oXwHuUssL5WIyN4njH1FcmQV6Wv0+Uy/1kb0ozgTS3mDUQgu6+lx5
-	g3VGWC4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/tKxS03PG0Vffgu5/sgRrkk00CkhFa/vPJwapkUlzZ0=; b=WkMHipQuBwIwyny6UXL8ZA1Hyp
+	QqZ0f8q2ZEjMVMNapOQnUC/JqF6Dee71GxCfCL5caaTl2YSIwRI8C4EiGvat+O/n94dhN6uvkijA7
+	DAY0cbymBLb4QzZayyexe4qknH1XTZlH3JdsQSfvCgSilQbMH+S6MMCE0eKYpNopJr9AUidDkw6bV
+	pg7z8Yeu4jG8g30IoMeNjiaPDP9cq/0QS0mSleOuK7ggHGofviYfxYlfgyISH5MkRjnNz6oKZBX2g
+	vzjXhIOu5Nbbzoul013kV36O3H6wnk06rR3+GeSGwjtBo+xkltTLwGUClydmVcSG9mq52bqnsDNdp
+	415SAAqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkEMs-00000006ctt-28ys;
-	Tue, 18 Feb 2025 03:33:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tkGQX-00000006tWp-4AN2;
+	Tue, 18 Feb 2025 05:45:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkEMq-00000006csi-2zfm
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Feb 2025 03:33:53 +0000
-X-UUID: 2962f44ceda911ef83f2a1c9db70dae0-20250217
+	id 1tkGP1-00000006t1P-3ob5;
+	Tue, 18 Feb 2025 05:44:17 +0000
+X-UUID: 60364354edbb11efa1e849db4cc18d44-20250217
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jYfLsQz2vVDXyMu7G7dGGNxPBYtbHclJtLhy9S100qM=;
-	b=tUmx8OtJiCl3XNJi+vKA1IZmEeORwuvrfLhu6uUi96RPPtE2GJ+TRPRe8QdKwD15Y5JZGfnAgx4Z6XdiGtbCRG72k37sZ5J1Rc+pOOak3PridAq+CdhslYg4NJM1OnRA6LP8eWNzq008iiO29LcH8OypTlvnhU5HPre1d+Ecg9E=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/tKxS03PG0Vffgu5/sgRrkk00CkhFa/vPJwapkUlzZ0=;
+	b=sUqToYsGIH6spNdSCZipZT1n57tg2VGXezDxkeXJx8mMeNeqOTlfDwTwnASbIZIrwdNuJNNHJTq5ewVvNztU+OVwhLsb36fL0zrDmWsXWyxLIITG3d4jnztBBHNZbLVFJEbanQ421vjCrKBbtHIY1yaamwQgdkon32eGUYxSOF0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:cf062ce7-3170-4f4f-b38f-8432e5c74120,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:6c007aa3-3e52-4e5b-a515-5e42bbdb1515,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.46,REQID:b156350f-6caf-47e2-93ea-967c16283f7a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:414e7ba3-3e52-4e5b-a515-5e42bbdb1515,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1,
+	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
+	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 2962f44ceda911ef83f2a1c9db70dae0-20250217
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 60364354edbb11efa1e849db4cc18d44-20250217
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 943939080; Mon, 17 Feb 2025 20:33:47 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+	with ESMTP id 262686978; Mon, 17 Feb 2025 22:44:10 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 18 Feb 2025 11:33:44 +0800
+ 15.2.1258.28; Tue, 18 Feb 2025 13:44:07 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 18 Feb 2025 11:33:44 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>, <kvalo@kernel.org>,
-	<kuba@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, Nick Morrow <usbwifi2024@gmail.com>,
-	<stable@vger.kernel.org>, Salah Coronya <salah.coronya@gmail.com>
-Subject: [net-next, v3] wifi: mt76: mt7921: fix kernel panic due to null pointer dereference
-Date: Tue, 18 Feb 2025 11:33:42 +0800
-Message-ID: <20250218033343.1999648-1-mingyen.hsieh@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 18 Feb 2025 13:44:07 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>
+Subject: [PATCH v4 5/8] soc: mediatek: mtk-cmdq: Add mminfra_offset compatibility for DRAM address
+Date: Tue, 18 Feb 2025 13:41:50 +0800
+Message-ID: <20250218054405.2017918-6-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
+References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_193352_760736_B4F19019 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20250217_214415_953059_5DA19AEB 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,84 +83,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Since GCE has been moved to mminfra in MT8196, all transactions from
+mminfra to DRAM will have their addresses adjusted by subtracting a
+mminfra offset.
+This information should be handled inside the CMDQ driver, allowing
+CMDQ users to call CMDQ APIs as usual.
 
-Address a kernel panic caused by a null pointer dereference in the
-`mt792x_rx_get_wcid` function. The issue arises because the `deflink` structure
-is not properly initialized with the `sta` context. This patch ensures that the
-`deflink` structure is correctly linked to the `sta` context, preventing the 
-null pointer dereference.
+Therefore, CMDQ driver needs to use the mbox API to get the
+mminfra_offset value of the SoC, and then add it to the DRAM address
+when generating instructions to ensure GCE accesses the correct DRAM
+address.
 
- BUG: kernel NULL pointer dereference, address: 0000000000000400
- #PF: supervisor read access in kernel mode
- #PF: error_code(0x0000) - not-present page
- PGD 0 P4D 0
- Oops: Oops: 0000 [#1] PREEMPT SMP NOPTI
- CPU: 0 UID: 0 PID: 470 Comm: mt76-usb-rx phy Not tainted 6.12.13-gentoo-dist #1
- Hardware name:  /AMD HUDSON-M1, BIOS 4.6.4 11/15/2011
- RIP: 0010:mt792x_rx_get_wcid+0x48/0x140 [mt792x_lib]
- RSP: 0018:ffffa147c055fd98 EFLAGS: 00010202
- RAX: 0000000000000000 RBX: ffff8e9ecb652000 RCX: 0000000000000000
- RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffff8e9ecb652000
- RBP: 0000000000000685 R08: ffff8e9ec6570000 R09: 0000000000000000
- R10: ffff8e9ecd2ca000 R11: ffff8e9f22a217c0 R12: 0000000038010119
- R13: 0000000080843801 R14: ffff8e9ec6570000 R15: ffff8e9ecb652000
- FS:  0000000000000000(0000) GS:ffff8e9f22a00000(0000) knlGS:0000000000000000
- CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
- CR2: 0000000000000400 CR3: 000000000d2ea000 CR4: 00000000000006f0
- Call Trace:
-  <TASK>
-  ? __die_body.cold+0x19/0x27
-  ? page_fault_oops+0x15a/0x2f0
-  ? search_module_extables+0x19/0x60
-  ? search_bpf_extables+0x5f/0x80
-  ? exc_page_fault+0x7e/0x180
-  ? asm_exc_page_fault+0x26/0x30
-  ? mt792x_rx_get_wcid+0x48/0x140 [mt792x_lib]
-  mt7921_queue_rx_skb+0x1c6/0xaa0 [mt7921_common]
-  mt76u_alloc_queues+0x784/0x810 [mt76_usb]
-  ? __pfx___mt76_worker_fn+0x10/0x10 [mt76]
-  __mt76_worker_fn+0x4f/0x80 [mt76]
-  kthread+0xd2/0x100
-  ? __pfx_kthread+0x10/0x10
-  ret_from_fork+0x34/0x50
-  ? __pfx_kthread+0x10/0x10
-  ret_from_fork_asm+0x1a/0x30
-  </TASK>
- ---[ end trace 0000000000000000 ]---
-
-Reported-by: Nick Morrow <usbwifi2024@gmail.com>
-Closes: https://github.com/morrownr/USB-WiFi/issues/577
-Cc: stable@vger.kernel.org
-Fixes: 90c10286b176 ("wifi: mt76: mt7925: Update mt792x_rx_get_wcid for per-link STA")
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Tested-by: Salah Coronya <salah.coronya@gmail.com>
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
-v2:
-  - Change Nick from "Tested-by" to "Reported-by".
-v3:
-  - Rewrite the commit msg in the imperative mood.
-  - Remove the boot time for code trace.
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 35 ++++++++++++++++++++++++--
+ 1 file changed, 33 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 13e58c328aff..78b77a54d195 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -811,6 +811,7 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->deflink.wcid.phy_idx = mvif->bss_conf.mt76.band_idx;
- 	msta->deflink.wcid.tx_info |= MT_WCID_TX_INFO_SET;
- 	msta->deflink.last_txs = jiffies;
-+	msta->deflink.sta = msta;
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index aa9853100d78..f2853a74af01 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -314,10 +314,22 @@ EXPORT_SYMBOL(cmdq_pkt_write_s_mask_value);
  
- 	ret = mt76_connac_pm_wake(&dev->mphy, &dev->pm);
- 	if (ret)
+ int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_addr)
+ {
++	struct cmdq_client *cl = (struct cmdq_client *)pkt->cl;
+ 	const u16 high_addr_reg_idx  = CMDQ_THR_SPR_IDX0;
+ 	const u16 value_reg_idx = CMDQ_THR_SPR_IDX1;
+ 	int ret;
+ 
++	if (!cl) {
++		pr_err("%s %d: pkt->cl is NULL!\n", __func__, __LINE__);
++		return -EINVAL;
++	}
++
++	if (cmdq_addr_need_offset(cl->chan, src_addr))
++		src_addr += cmdq_get_offset_pa(cl->chan);
++
++	if (cmdq_addr_need_offset(cl->chan, dst_addr))
++		dst_addr += cmdq_get_offset_pa(cl->chan);
++
+ 	/* read the value of src_addr into high_addr_reg_idx */
+ 	ret = cmdq_pkt_assign(pkt, high_addr_reg_idx, CMDQ_ADDR_HIGH(src_addr));
+ 	if (ret < 0)
+@@ -428,10 +440,19 @@ EXPORT_SYMBOL(cmdq_pkt_poll_mask);
+ 
+ int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mask)
+ {
++	struct cmdq_client *cl = (struct cmdq_client *)pkt->cl;
+ 	struct cmdq_instruction inst = { {0} };
+ 	u8 use_mask = 0;
+ 	int ret;
+ 
++	if (!cl) {
++		pr_err("%s %d: pkt->cl is NULL!\n", __func__, __LINE__);
++		return -EINVAL;
++	}
++
++	if (cmdq_addr_need_offset(cl->chan, addr))
++		addr += cmdq_get_offset_pa(cl->chan);
++
+ 	/*
+ 	 * Append an MASK instruction to set the mask for following POLL instruction
+ 	 * which enables use_mask bit.
+@@ -509,11 +530,21 @@ EXPORT_SYMBOL(cmdq_pkt_assign);
+ 
+ int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
+ {
++	struct cmdq_client *cl = (struct cmdq_client *)pkt->cl;
+ 	struct cmdq_instruction inst = {
+ 		.op = CMDQ_CODE_JUMP,
+-		.offset = CMDQ_JUMP_ABSOLUTE,
+-		.value = addr >> shift_pa
++		.offset = CMDQ_JUMP_ABSOLUTE
+ 	};
++
++	if (!cl) {
++		pr_err("%s %d: pkt->cl is NULL!\n", __func__, __LINE__);
++		return -EINVAL;
++	}
++
++	if (cmdq_addr_need_offset(cl->chan, addr))
++		addr += cmdq_get_offset_pa(cl->chan);
++
++	inst.value = addr >> shift_pa;
+ 	return cmdq_pkt_append_command(pkt, inst);
+ }
+ EXPORT_SYMBOL(cmdq_pkt_jump_abs);
 -- 
-2.45.2
+2.43.0
 
 
