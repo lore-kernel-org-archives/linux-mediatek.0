@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 786ACC02198
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 09:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE2BC021AA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 09:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0y8uBx3shNoDx7XeM2Xo0zJgnxxZH7YN+MAcnT5fj0=; b=ko54WgPWFRBoPXSPrVM7c0Q6wh
-	9/81Qj/5bdXJ64xY5WPhS8MwhxhqznIx9BAtCe9xopaB4Da/rpYQyotmRa6Fr1IEBLGGVJp0YA1I8
-	jS7MHPtwRVpl3V+D7+dqpjB8Mazke9SggKwPKYi99Hf0ULZS+OocWragOiU3OIHi0QdQcRITXb9Gr
-	Ea0exJAw8bcvuyof0LaJV1kL/b7ZtI9Uhcw4BSAWUdY7Yzuc6vRDx1K97Declu2hLGPmtNq+y6+iG
-	1rh1EFXTpO3N41DvVSQiqY9X04rx/rhxy35l+kMeespZ9L3dlpsuvpYq9JxnXr5BbkWnaagYNlMdo
-	LRlq7O9g==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mTG9ySL5bXbfM/ZILqB1ODcUmfTC/s+Or9ohha4u3oY=; b=I9V6L65C09lyX54+vvRx+21CAK
+	MxF8NhfzKYtuwrYkEN/Xh1IdNnoqkP3GFXGeIPungFneyTApo85Tu/XbKUG+Lngoxkpd0bd5W/0ua
+	xuKzdWYKJqBYdE4Gz6urHYGtoE9U4yGyiSsOhbb5vXGNuGyECJmcoc4ogfCD8X75gDY9euGjkBvcO
+	eMnbZiV2zkdffIaw/QbtjdQk0J0PBPckjc5ryMw4dMITSb29TKnp1yVcaUzP8t611nC3R6gzDkoT8
+	Zo68QL2mNPtAmR+HOMSvgZGwBXuo7CTr+3o0eijYdTL5Ue/whJEQ1gzoC4S1oKdjBEJ2qQnf+MK1L
+	roMxy8Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkJVX-00000007PLD-2cB1;
-	Tue, 18 Feb 2025 09:03:11 +0000
+	id 1tkJju-00000007TGp-0XLo;
+	Tue, 18 Feb 2025 09:18:02 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkJPn-00000007O7l-0UBG;
-	Tue, 18 Feb 2025 08:57:16 +0000
+	id 1tkJWr-00000007Phh-0N2w;
+	Tue, 18 Feb 2025 09:04:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739869033;
-	bh=mhaR2Trnlsu8FfYdF9a/LlPy376WKizOyZDhx/r8OTY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FERSaw+wUWOJgkTZm1leH65FcMticAx2ZDEkReE80eTRzAVt9txumwGUCAKfspNmc
-	 C7NTo7l5jcGXmclVLKA82mcoI9NhdambccpMm6NoxeGrBSWIjXXqnJvodIo8Zlqvdl
-	 kJGFbw6dkqivDA7MHQDyPm+tbw67VX4q/JFzzS4+N34JS6krZhHcoEgcLtASxkGi/G
-	 iN68mETOMiboV58T8sC8CJtWImg/gj+22aU39j2m/hu65ldnzLP2Dlb2c2j84xIcRj
-	 YUxcmNcGkgFA191chGVGDoM8uzYl/kdzIonJjEbp9vKidJMvFwWLJfeBNc2Yahw5y3
-	 qPgbOc9Auxzgw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1739869471;
+	bh=IoSrMv71ID9ekjkacGKInTn1Qnx2Ah1BUMPVIHvGazY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WijSGcACUlEnBBBHl8nT/4Mfk4xzfBSRXR9zDgaGaZAuN+hz5zIunMgnkpZxb6KzL
+	 2hsGGvmV9bxvViftYTpmr1oaVMM2GEhSn+0Hd1BuK+Hn6KwmhjjICZMwp9qQbkq/Ez
+	 4IaGG6UYhQcfcuxWOgL+fxElV6KG/pDFZEsVwlrpaTFfFdoliFJWGAdPuSxIPTo+xC
+	 EiNpnrIdrdjKgbUoKTiCaEPuOc9RKl8+LR5mQCvh7gB2mG1zDydpBrdxhCGf100yVv
+	 pp6clctCSE9HALXCRLZ7/H3cjLILN+m3VVgNMoSti06dTFSZ+CD0nRHPITe8/+AIuM
+	 qc2Qkrlwgc1Zw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 329F417E1562;
-	Tue, 18 Feb 2025 09:57:13 +0100 (CET)
-Message-ID: <7804ef70-efe7-476b-ae5e-bf665bfb4a47@collabora.com>
-Date: Tue, 18 Feb 2025 09:57:13 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/4] usb: mtk-xhci: add support remote wakeup of mt8196
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20250215100615.808-1-chunfeng.yun@mediatek.com>
- <20250215100615.808-3-chunfeng.yun@mediatek.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90FDC17E154A;
+	Tue, 18 Feb 2025 10:04:30 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250215100615.808-3-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	pablo.sun@mediatek.com
+Subject: [PATCH] dt-bindings: display: mediatek: dsc: Add MT8188 compatible
+Date: Tue, 18 Feb 2025 10:04:27 +0100
+Message-ID: <20250218090427.20318-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.48.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_005715_302423_4A15EDD2 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20250218_010433_268107_F6F97642 
+X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,82 +87,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/02/25 11:06, Chunfeng Yun ha scritto:
-> There are three USB controllers on mt8196, each controller's wakeup
-> control is different, add some specific versions for them.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Add compatible for Display Stream Compression (DSC) IP found in
+the display controller of the MT8188 SoC.
 
-Since all of the USB controllers of the MT8196 SoC are behind MTU3, and
-since the wakeup control for all of them will be handled by the MTU3 driver
-and *not* by the xhci-mtk driver....
+This IP is fully compatible with the one found on MT8195.
 
-NACK!
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dsc.yaml     | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Please drop this commit.
-
-Cheers,
-Angelo
-
-> ---
-> v3: no changes
-> v2: modify marcos name
-> ---
->   drivers/usb/host/xhci-mtk.c | 26 ++++++++++++++++++++++++++
->   1 file changed, 26 insertions(+)
-> 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 904831344440..3f8e37b25322 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -113,6 +113,14 @@
->   #define WC1_IS_P_95		BIT(12)
->   #define WC1_IS_EN_P0_95		BIT(6)
->   
-> +/* mt8196 */
-> +#define PERI_WK_CTRL0_8196	0x08
-> +#define WC0_IS_EN_P0_96		BIT(0)
-> +#define WC0_IS_EN_P1_96		BIT(7)
-> +
-> +#define PERI_WK_CTRL1_8196	0x10
-> +#define WC1_IS_EN_P2_96		BIT(0)
-> +
->   /* mt2712 etc */
->   #define PERI_SSUSB_SPM_CTRL	0x0
->   #define SSC_IP_SLEEP_EN	BIT(4)
-> @@ -129,6 +137,9 @@ enum ssusb_uwk_vers {
->   	SSUSB_UWK_V1_4,		/* mt8195 IP1 */
->   	SSUSB_UWK_V1_5,		/* mt8195 IP2 */
->   	SSUSB_UWK_V1_6,		/* mt8195 IP3 */
-> +	SSUSB_UWK_V1_7,		/* mt8196 IP0 */
-> +	SSUSB_UWK_V1_8,		/* mt8196 IP1 */
-> +	SSUSB_UWK_V1_9,		/* mt8196 IP2 */
->   };
->   
->   /*
-> @@ -381,6 +392,21 @@ static void usb_wakeup_ip_sleep_set(struct xhci_hcd_mtk *mtk, bool enable)
->   		msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
->   		val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) : 0;
->   		break;
-> +	case SSUSB_UWK_V1_7:
-> +		reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
-> +		msk = WC0_IS_EN_P0_96;
-> +		val = enable ? msk : 0;
-> +		break;
-> +	case SSUSB_UWK_V1_8:
-> +		reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
-> +		msk = WC0_IS_EN_P1_96;
-> +		val = enable ? msk : 0;
-> +		break;
-> +	case SSUSB_UWK_V1_9:
-> +		reg = mtk->uwk_reg_base + PERI_WK_CTRL1_8196;
-> +		msk = WC1_IS_EN_P2_96;
-> +		val = enable ? msk : 0;
-> +		break;
->   	case SSUSB_UWK_V2:
->   		reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
->   		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
-
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+index 846de6c17d93..a5b88eb97e3b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -22,6 +22,9 @@ properties:
+     oneOf:
+       - enum:
+           - mediatek,mt8195-disp-dsc
++      - items:
++          - const: mediatek,mt8188-disp-dsc
++          - const: mediatek,mt8195-disp-dsc
+ 
+   reg:
+     maxItems: 1
+-- 
+2.48.1
 
 
