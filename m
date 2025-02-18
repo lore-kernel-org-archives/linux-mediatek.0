@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0974CC021A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2025 23:49:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DBEAC021A9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 00:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q8KzBySVtwo2IDazHBvVh86VLnyiAyEXlsWF5joqIm4=; b=FMri6cstHeiQGAYSrrqOAS6c05
-	aF35UugbUMMB+wy6Bkv0rn/s06Dvthn7bhV4Zi7eMQH6iBjcuHabBxbOWliAXk7mKkYFyP27Kz1Hc
-	EcYeMgt6qQqegsk08tAMNKrIC2hlK1h0GNv71boSLvdccawgdXsp3JSJv21XR8lxD6yfjSqliGv+G
-	GyQGT7GA6mNQEpWi7wRrkY+k/QC0HSilMDt1ZJ1y9RP/9q8W5f9Em+bxplzSjavyubdrgKeXKY1Fj
-	tyzbAU/F/aBLDt9cESgIJBiXL9ZpYa6f8iCSYEg2rVGxdkltXEz1UBho1PFXBZ5KWZYr/7Vj3ZaHK
-	zram9V1w==;
+	bh=k+CVnFJ4ICfnmzXz87lZkwc+AqjEbc+S9K2HW3KB0dg=; b=3GT+ky82FYG91fvuA6om520znz
+	KoqXtmRoCPeMW1yh85oOWdP11M/keDcqeBruIVPr4NmJPjgXOOlxqO1oyLJahJvsUSuOd5oDN5bB/
+	4Qa90fVNR1jdRMJUqPEYm6VAqFHQCJROLHNSgI+USixonNPoAW6IHZnBXp1WaZgV6FnmjpI4viufc
+	qOYkYaAccp0XhQbAi5+SExfNWCdykJnl44VhkxciLrILrbP1B4D6wyxuAcfMs/pwEb1VvX7Of22Ea
+	2FpyhcicTjS1LT3LRl/XN5DnReIPReOTWDx2faMC2AfAnkwwd+Lp2ee+DXXAdwIqGFhlF5/mbL8md
+	62sVqjYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkArq-00000006HCx-07RS;
-	Mon, 17 Feb 2025 23:49:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tkBWT-00000006Kx2-1II5;
+	Tue, 18 Feb 2025 00:31:37 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkAqK-00000006GzD-48r4;
-	Mon, 17 Feb 2025 23:48:08 +0000
+	id 1tkBUz-00000006Klk-0s32;
+	Tue, 18 Feb 2025 00:30:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 700C65C4316;
-	Mon, 17 Feb 2025 23:47:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6DDEC4CED1;
-	Mon, 17 Feb 2025 23:48:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7E4DFA41B88;
+	Tue, 18 Feb 2025 00:28:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14468C4CEE7;
+	Tue, 18 Feb 2025 00:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739836083;
-	bh=Ec/oz3AfnETndpRHCs7Z69waq5sKF9/Av7l587y2Qp0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=IyeONvhg7qcvLkCd8JGbNQyO1gcfkNb0fKmCust+WEBSfG+UhbjMyKXwQpCXgheMM
-	 NNkwkm4BIy+V5Y0R8GEW9iugbbDJpsMJRIeF0CtLyr777bTTj8RFDvLy2GHErKvWUn
-	 YURvKZV+QxGLQdntsJ4HjyjBM6sXVTpvTMjP3LW3vbFKBGz/nua8ybRm2v7uLVUKwl
-	 8yWL77sGbH+f+rerYCR7r1eVgv8li0gr+eY4nukCUf5x6yTGOtnBChj+tBfGi5XghB
-	 UWT8Ca92Iqegc0h2uv4F1s9+tVsjRaMBzZxLnN/8bIol6TXALZxvLC7w2e/8TukhOO
-	 e0ALtJOHZZM7g==
-Date: Mon, 17 Feb 2025 15:48:01 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Qingfang Deng <dqfext@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Russell King
- <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3] net: ethernet: mediatek: add EEE support
-Message-ID: <20250217154801.338f2de4@kernel.org>
-In-Reply-To: <20250217033954.3698772-1-dqfext@gmail.com>
-References: <20250217033954.3698772-1-dqfext@gmail.com>
+	s=k20201202; t=1739838603;
+	bh=d6CWwgW19OdA/2Ji7FIZ+CWAq2AbqXRMXAygzlW8J8M=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=im1MYjQmyAtO7fQn6VjXNUjFYQ2QhbuAivdMVXl8TI6fAuzwPmTvY1YkeeHwlgB/c
+	 QuN/Nczrc8peJ69yW5gtJao/krpdVfDSlpnQEthZFteXbwHm0mSfh9AJ59JzkpoiMt
+	 vo9V8v9KtMdzqrJ/KU3/z4jAFRQlRRkh6GyCuSDX0bI4N8XPUzfYu4RRb2f7fiOQ/r
+	 34SBT+FKp/l0lMatdaLGO3duX0GYFAbeCn5W44eLD3DbSpY5bw6/yREIgPUh8PJx8h
+	 hKPDBTjOZUilbI13iyncqNj5xtOT8HOd2Ey5/o4PdS7ESduFpAVYmjbOs1r8dOMKO1
+	 SnIRucQI2Chww==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 71762380CEE2;
+	Tue, 18 Feb 2025 00:30:34 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2 0/5] net: phy: mediatek: Add token-ring helper
+ functions
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173983863299.3581223.1664796707026603430.git-patchwork-notify@kernel.org>
+Date: Tue, 18 Feb 2025 00:30:32 +0000
+References: <20250213080553.921434-1-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20250213080553.921434-1-SkyLake.Huang@mediatek.com>
+To: =?utf-8?b?U2t5TGFrZSBIdWFuZyAo6buD5ZWf5r6kKSA8c2t5bGFrZS5odWFuZ0BtZWRpYXRl?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org,
+	=?utf-8?b?ay5jb20+?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ horms@kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Steven.Liu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_154805_086578_9F26BCE4 
-X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-CacheID: sfid-20250217_163005_312527_68821CC2 
+X-CRM114-Status: UNSURE (   8.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,12 +81,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Feb 2025 11:39:53 +0800 Qingfang Deng wrote:
-> Add EEE support to MediaTek SoC Ethernet. The register fields are
-> similar to the ones in MT7531, except that the LPI threshold is in
-> milliseconds.
+Hello:
 
-Please wait 24h before reposting next time.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 13 Feb 2025 16:05:48 +0800 you wrote:
+> From: Sky Huang <skylake.huang@mediatek.com>
+> 
+> This patchset add token-ring helper functions and moves some macros from
+> mtk-ge.c into mtk-phy-lib.c.
+> 
+> Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2,1/5] net: phy: mediatek: Change to more meaningful macros
+    https://git.kernel.org/netdev/net-next/c/2f435137a048
+  - [net-next,v2,2/5] net: phy: mediatek: Add token ring access helper functions in mtk-phy-lib
+    https://git.kernel.org/netdev/net-next/c/afa08fde7c47
+  - [net-next,v2,3/5] net: phy: mediatek: Add token ring set bit operation support
+    https://git.kernel.org/netdev/net-next/c/40d33d6d3c90
+  - [net-next,v2,4/5] net: phy: mediatek: Add token ring clear bit operation support
+    https://git.kernel.org/netdev/net-next/c/4786eff288bc
+  - [net-next,v2,5/5] net: phy: mediatek: Move some macros to phy-lib for later use
+    https://git.kernel.org/netdev/net-next/c/be378ebd6cfb
+
+You are awesome, thank you!
 -- 
-pv-bot: 24h
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
