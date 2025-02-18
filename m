@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7877C02198
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:26:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B1C02198
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bI8pLujwINb2xEn9T5kFhu/KxJQ/eT0deywxw8O6Vgw=; b=cPnwwlxxKlN1q+7OA6OpBH/3iv
-	euStnpxrzG58+eaoEzPln4YfMvb5b4/KPV2E0QiWmWJ8o3SAOd6kfmbvelyQZcNgW/osanTcbN41z
-	seNXAk2rWraBE2Ta09n/8cCx3rmt8uH6+VtLWCCzGrjdFprD5mWeNLrHwD7HFPPPx+SORJtoeryyM
-	IEtt+1efEA8/nM4Ex5/a0LkAKZJon3b6D0M/Xa4Q1yDLpo8sGp5u3ghA70MyJ8pKZAuidy5zpH+pO
-	+5Aa7cHbCCI4WorC82jJePoh02fyqFI5+oFbkFMZeZKfyAw/GvsUC9XWTejp+HbiIDpMDtSMAJJ8Y
-	iBLX2PoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CadJhOiuOL+bA49PAWirsjDCGJLOFaxwmiT2F0EYUzM=; b=jeKDxe4nxt3M3+lA8ttAjOfJBl
+	ZLRvgPfC0J5Iw6ufO2iQL12AxugyQb/0kkskkMFRlVSRP3ovlBFkJ2h/1fImp0ZyDe6ZJYqyhCYKT
+	svcRDHUNBSWS6YakI0XV0hF+PRo9+gXZ07nBjMHm4PmZLZZzHToD5O6LEPMdslKzboui/aGwjOFFZ
+	mZK7rWFGhg6jiG6/YbLcPnlaBa7c3DaqFXiN7g4OfUQZvg1kAQulGsoitTNyYtXny5OBGV3cxIcpK
+	K9IcIG4RAqCYyQq1Iy3TaB1lN8V2F9jX80eGSLxNW7uSLsmri3DiKTm7ENFXiAITaJ7b1tZKvSGBk
+	PzFpe2mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNc5-00000008JMp-4AO2;
-	Tue, 18 Feb 2025 13:26:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tkNgV-00000008KU1-3JIk;
+	Tue, 18 Feb 2025 13:30:47 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNYS-00000008Ihq-28SC;
-	Tue, 18 Feb 2025 13:22:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739884947;
-	bh=ZDfqbmocK+423Jahwe7zgbMnj1LWV19yQk0w9+HSXIk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=abA8pKcguLXGqpD8h2qV0xFL5ZHPK3oa0OpuBiAN60c5jK7mDFobcGInl23OnZ0TX
-	 bro4OW8UmLxEovUcqpsoeART8iEfUp5lLDe9rZrXGOz0fhPWyVDFoh506x0SIcBtMc
-	 vrVQ3/4b5VDXniuBluN/mt1BvKR65Ow+sTpa/fxe2aVG/q/F7p6P8uTmEq77MEF+IF
-	 h0eX5pBjALlYhUtp7PHhNfwo/OK2Sh/DG1N7CX5o5Uort0b06Kaf0NwDv06okPIR9C
-	 OzubKP1dIXeMcBR5KOCYfZt0ffLMjpwvi2fLo251wpAEUzPqZNJ+Q3y0vAAYy3BdOg
-	 t/+vbzQ8mXfRQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 176C317E0657;
-	Tue, 18 Feb 2025 14:22:26 +0100 (CET)
-Message-ID: <906ed1df-3c63-4028-ae7d-97e086acca32@collabora.com>
-Date: Tue, 18 Feb 2025 14:22:25 +0100
+	id 1tkNds-00000008JqK-1KJC;
+	Tue, 18 Feb 2025 13:28:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id AF724A40C18;
+	Tue, 18 Feb 2025 13:26:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0B20C4CEE2;
+	Tue, 18 Feb 2025 13:27:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739885283;
+	bh=WUKim6I0GIa7OB0lKVP3eWVJgzUnm9e3oqomWqD2WwE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QRkY5wkhLUTZa8Vgk9CcWZJea74bEM97C45lbFLORkAUB5t+VRmdEfU71ySeA/yxW
+	 5NMqAIX9A0mbShZ+R0dswW7gak2vOJLFcxXy6KrkdB5sPzBqsEpf3AzkIGxXnIhi1j
+	 jMtH7ZgyYxe6ZU5hCKKLmDtFA4fD/bK+9C7rBVuEwPMl03ASmv8RMDMtUK75L5AGBj
+	 gSoA+Q3PlsZPfztif70R0TpNPtuuu2NmOTlfjkyJlRXepDS0ZzSBdQ9hWCbfFthAl9
+	 QZaaiqQDwFbj7B/EIHbZFOtv1qiyrmUw8WSerUvHwo6E8JULcreHVOo51tozIV+s6t
+	 eXpiL0Mo+Wqbw==
+Date: Tue, 18 Feb 2025 13:27:56 +0000
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next v4 13/16] net: airoha: Introduce Airoha NPU
+ support
+Message-ID: <20250218132756.GU1615191@kernel.org>
+References: <20250213-airoha-en7581-flowtable-offload-v4-0-b69ca16d74db@kernel.org>
+ <20250213-airoha-en7581-flowtable-offload-v4-13-b69ca16d74db@kernel.org>
+ <20250217183854.GP1615191@kernel.org>
+ <Z7OMv-7UBVtKaEFb@lore-desk>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek,mt8188: Add
- VDO1_DPI1_HDMI clock
-To: Conor Dooley <conor@kernel.org>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- geert+renesas@glider.be, u.kleine-koenig@baylibre.com,
- amergnat@baylibre.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, macpaul.lin@mediatek.com, pablo.sun@mediatek.com
-References: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
- <20250212-arming-gyration-103e42b94ed6@spud>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250212-arming-gyration-103e42b94ed6@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z7OMv-7UBVtKaEFb@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_052228_695546_110D2F80 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20250218_052804_420733_6D957FB6 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +90,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/02/25 20:17, Conor Dooley ha scritto:
-> On Wed, Feb 12, 2025 at 11:03:41AM +0100, AngeloGioacchino Del Regno wrote:
->> Add binding for the HDMI TX clock found in the VDO1 controller.
->> While at it, also remove the unused CLK_VDO1_NR_CLK.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   include/dt-bindings/clock/mediatek,mt8188-clk.h | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/include/dt-bindings/clock/mediatek,mt8188-clk.h b/include/dt-bindings/clock/mediatek,mt8188-clk.h
->> index bd5cd100b796..0e87f61c90f4 100644
->> --- a/include/dt-bindings/clock/mediatek,mt8188-clk.h
->> +++ b/include/dt-bindings/clock/mediatek,mt8188-clk.h
->> @@ -721,6 +721,6 @@
->>   #define CLK_VDO1_DPINTF				58
->>   #define CLK_VDO1_DISP_MONITOR_DPINTF		59
->>   #define CLK_VDO1_26M_SLOW			60
->> -#define CLK_VDO1_NR_CLK				61
->> +#define CLK_VDO1_DPI1_HDMI			61
+On Mon, Feb 17, 2025 at 08:23:43PM +0100, Lorenzo Bianconi wrote:
+
+...
+
+> > > +	err = devm_request_irq(dev, irq, airoha_npu_mbox_handler,
+> > > +			       IRQF_SHARED, "airoha-npu-mbox", npu);
+> > > +	if (err)
+> > > +		return err;
+> > > +
+> > > +	for (i = 0; i < ARRAY_SIZE(npu->cores); i++) {
+> > > +		struct airoha_npu_core *core = &npu->cores[i];
+> > > +
+> > > +		spin_lock_init(&core->lock);
+> > > +		core->npu = npu;
+> > > +
+> > > +		irq = platform_get_irq(pdev, i + 1);
+> > > +		if (irq < 0)
+> > > +			return err;
+
+...
+
+> > Should this return irq rather than err?
 > 
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> are you referring to devm_request_irq()?
 > 
-> btw, I see the mt8195 has this same CLK_VDO1_NR_CLK define in it, if you
-> fancy getting rid of that too.
+> https://elixir.bootlin.com/linux/v6.13.2/source/include/linux/interrupt.h#L215
+> https://elixir.bootlin.com/linux/v6.13.2/source/kernel/irq/devres.c#L52
+> 
+> I guess it returns 0 on success and a negative value in case of error.
 
-Thanks Conor, yeah I'll do that asap... one commit for each NR_CLK is a bit
-too much... I should just clean them all up :-)
+Hi Lorenzo,
 
-That requires a bit of work though, so it's not something that I can do in
-a few minutes; let's see if I can make it for this cycle, but no promises.
+Sorry, somehow I completely messed-up trimming context and managed to make
+things utterly confusing.
 
-Cheers,
-Angelo
+I've trimmed things again, and it is the platform_get_irq() call
+not far above this line that I'm referring to. It assigns the
+return value of a function to irq, tests irq, but returns err.
+
+It is one of (at least) two calls to platform_get_irq() in airoha_npu_probe().
+
 
