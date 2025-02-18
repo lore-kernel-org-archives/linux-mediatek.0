@@ -4,93 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19568C021AA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35681C02198
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 13:21:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=seJOt702BxciOrZQGfbCE9NbiygJD+aaFMVx5CIWE5E=; b=HSjvh7jK4LxyXH4MinYxBY/7Js
-	Oq9xIid8x6S+LQwWGUcpXWa+nrVNlhL1UwIedKvwGzHO4UburuJmcIIjw0NTJYJyKTW/p/0USp0PU
-	p2lkFDEGpHnj9WbGFdGT49LCKdZrVOfjJuAfckpKk8T+lt7MhMBh6+6P+iG+KWBXqjyjSmdLwDJIA
-	7hM2gq8lLxfrgzHmAFtfX7IdXeT3+ACpkU4nobtQ1f2LM7l+QRyjv2ZUGqKCUqafoYzBIJkXUH9XB
-	tAQuMe5806KdkB/ugd+eZ/vARvpa8G8hbxvhFsaKajdPCIwZFMxFB4p7qcd7CKpe0YS6IsO+YBKxt
-	yFoMclOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oie+WZykjpaiAtBGt7Vl8jucV+kCiqDcQGg81BQanoE=; b=U7WwpsFsV8RnshOtv8cd3wdKvq
+	+WFnDxh3GwGG0HJMK/B1x8z+Cv6Qy0mWde2Mcn5eT3LoCwUlDWENSO1CJBlgyWao4swvF7RSLrI6/
+	JeQ9RNxKfqmcjONXHvpW7QFFzv6eqjGVKbXwNgPZ6VAZfLVTTdKlAR9yMX5faLJ+7ElMq4gfA+kA1
+	zt8i3O6bvJpfff29MMi9xjggs2X70nRxl/MorC9QBxPI8Bz83k0/cBKJiFwNVOcF7AKTNoDVadWlK
+	Nk6yAe/hu4DZKiUZY67VE7/YQ35ZmRRKUcQojQfUkFhTyg0Z8kwxqxK80YT8v5M2PAxs72Q//L75x
+	Dd+agg4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNWM-00000008IIe-19m2;
-	Tue, 18 Feb 2025 13:20:18 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1tkNXn-00000008IZ4-1Ruj;
+	Tue, 18 Feb 2025 13:21:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkNRv-00000008HJM-0fax
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Feb 2025 13:15:44 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-abb7520028bso385702966b.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Feb 2025 05:15:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739884541; x=1740489341; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=seJOt702BxciOrZQGfbCE9NbiygJD+aaFMVx5CIWE5E=;
-        b=lyiaWJ34uNJnEyEC/vqZ8KgbnfoFjbdLD3uEoT5Adt/UZJvy9Rh2nrSVLPe6R2JEXh
-         SMOR6X3/jPFbXWdol5dJBgLT3JZ2zhvR3N5eABAqk+ntiVbtdr6MbxAZYT3hAHSOEfgB
-         70foo3tJDMyR85DKG+VxMO3BxOjzRzvev8RSZOQyZEL+s2y7uJAnaEMd79+kFWsR39Rt
-         zbUBljFD0ep3gxxJ/vzACVmgNQ+QwI0K/kjaIb4IMBer7fKWaRvZ4P5sJ5nts8YPIN8h
-         eqEQgLWyXCM5BylocUxxzSW1wzFXynY2CXFpPEHN9vMMRvWmFOU+xBO4E4X8v5Leaqjd
-         PKcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739884541; x=1740489341;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=seJOt702BxciOrZQGfbCE9NbiygJD+aaFMVx5CIWE5E=;
-        b=faxvzipe0c0ZX7EpDy0YdcTQjq/C4b48+BiYEORqxe2TCN4AAiUYJ9++Ak1GRsDEec
-         5XptyAg8gLkj1G3T9F/N5Gq64qVthV8CiuZAK06Ra7gyFcNjdlKDjC7M3MGvtd+snPN2
-         5SjmVNNX11ue1O33kAuLlvTMyoxM1dk7C/F2g3cqiVqBm28B0pgYxoXXqA0pXYq+2+pE
-         K6B7uUhyXKaUwiDXR97eLLUmRBewZUfJGpo8slCg4i2uzASOCEan1uoMxaCKN4V6tgCv
-         4YVeWhp+FCFgiBsOvtTPN89HHpglU7NqDKfBhizVNGOuRxr2tcqRplbW9geNfF9OBGyA
-         asDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUYnrHvuqRPmRWQxJd1rFBDICxM9wESfDon/4bUsAgxGx/x6LDzhOFUM4KdIzIpD2B79jNp1VycDspSe3845g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxX/pzttDWAsGPg2BrUZvMZl1hud7UcYTpeN0relzMGkG3dG6k1
-	t+F3Hw+8jHVvRIGv2cTiIXIjeNDtck8/QMLjNYc//V/ytJ+l7pB4y5kLCBN8bfN4/7uyN9mRkoW
-	L
-X-Gm-Gg: ASbGncv2wxA3JKT884kyuerouT3lq0u3O7Gr3IzLv4uzu71j7RTgGDxc6lXdmWF4Okk
-	ZAjfxpwMAD5jYR83xo06yCaA0w87movvdQrVk2QKVuFqDNr/pQljxFLH3qWiA/R1vUyXMP0aNfu
-	J4nft2gW74dJkkbSyzU8+Q44AfSTMQIayW7mf6F9740vgQYFA9MIj+0Ir9MIePZJbxPS86sDuSr
-	Sd2uCCZP3AfUsQkT4BqDCUkMwcxOBruPUZOT2ixpqKW2Y4Cisekq8SS7Z83AQijOZL2o21jiiaZ
-	A2WMjqQ0wCwTMa6kuWrJ
-X-Google-Smtp-Source: AGHT+IHnl+jBmdJsRUXRwBR/mH52YC23EuGVS0vmhx7dq14tgwuSG89//4yrt5azsXLFxS0+HMeVxw==
-X-Received: by 2002:a17:906:e0c5:b0:abb:ac56:fcf8 with SMTP id a640c23a62f3a-abbac570080mr510173266b.57.1739884540816;
-        Tue, 18 Feb 2025 05:15:40 -0800 (PST)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 4fb4d7f45d1cf-5dece288e38sm8604786a12.79.2025.02.18.05.15.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 05:15:40 -0800 (PST)
-Date: Tue, 18 Feb 2025 16:15:37 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Deren Wu <deren.wu@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH next] wifi: mt76: mt7925: fix error checking in
- mt7925_mcu_uni_rx/tx_ba()
-Message-ID: <5e7bc52b-332d-475e-94ca-571864cb1a6a@stanley.mountain>
-References: <063aafdf-3234-42ac-a4ea-3ff98e2835b6@stanley.mountain>
+	id 1tkNUS-00000008Hnl-4B4Q;
+	Tue, 18 Feb 2025 13:18:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739884698;
+	bh=qRk4j53lVB7FEHXKltoWq+UEMmzfmhZUgATQ1zdoUhA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NEXXYBrlzizv19XYV6v6Mk7Kh6oUFjKcuqHZxeuwMjrxx5KkiHPaKs2Tftp9OS7oe
+	 11M0LwsI7OPyhzIsB2CPUi/VCZrsEjWJ5v9mCDbbyx7ap/s3wIdHcDm6iLgYXeYsDi
+	 RzsY0TX3IF8MJQglqvkoBzMITXMcnzJZdMZUujC3anU70NBUDNM8LitTPubbecl/dN
+	 Xp4372euwvf9D7rpGTjviR4neFS2T80Fu7CDMFsDIQc3A3xyAm6Bg1VBbLr1K0nPnD
+	 zh3gg4nT4ojSX4SFP4xIYoyrkGSt35hxGFm13h32GGypz/+Fd7aL06yUyvE9hW3fbH
+	 YjyxuEHyBBAUg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF03517E0657;
+	Tue, 18 Feb 2025 14:18:17 +0100 (CET)
+Message-ID: <89fb495b-0171-49b3-a34b-022ba04f54df@collabora.com>
+Date: Tue, 18 Feb 2025 14:18:17 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <063aafdf-3234-42ac-a4ea-3ff98e2835b6@stanley.mountain>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/13] ASoC: dt-bindings: Add document for mt6359-accdet
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Lee Jones <lee@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+References: <20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com>
+ <20250214-mt6359-accdet-dts-v1-1-677a151b9b4c@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250214-mt6359-accdet-dts-v1-1-677a151b9b4c@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_051543_202065_717106DB 
-X-CRM114-Status: GOOD (  21.55  )
+X-CRM114-CacheID: sfid-20250218_051821_209748_DC447B34 
+X-CRM114-Status: GOOD (  21.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,80 +84,376 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ping.
-
-regards,
-dan carpenter
-
-On Mon, Jan 20, 2025 at 12:46:58PM +0300, Dan Carpenter wrote:
-> The "ret" variable in mt7925_mcu_uni_[rx/tx]_ba() needs to be signed for
-> the if (ret < 0) condition to be true.
+Il 14/02/25 18:18, Nícolas F. R. A. Prado ha scritto:
+> Add dt-binding for the MT6359 ACCDET hardware block.
 > 
-> Also the mt7925_mcu_sta_ba() function returns positive values on success.
-> The code currently returns whatever non-negative value was returned on
-> the last iteration.  It would be better to return zero on success.  This
-> function is called from mt7925_ampdu_action() which does not check the
-> return value so the return value doesn't affect runtime.  However, it
-> still makes sense to return zero even though nothing is affected in the
-> current code.
-> 
-> Fixes: eb2a9a12c609 ("wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
+>   .../bindings/sound/mediatek,mt6359-accdet.yaml     | 293 +++++++++++++++++++++
+>   1 file changed, 293 insertions(+)
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> index 15815ad84713..b3a00964e802 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -617,7 +617,8 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
->  	struct mt792x_bss_conf *mconf;
->  	unsigned long usable_links = ieee80211_vif_usable_links(vif);
->  	struct mt76_wcid *wcid;
-> -	u8 link_id, ret;
-> +	u8 link_id;
-> +	int ret;
->  
->  	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
->  		mconf = mt792x_vif_to_link(mvif, link_id);
-> @@ -630,10 +631,10 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
->  		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
->  					enable, true);
->  		if (ret < 0)
-> -			break;
-> +			return ret;
->  	}
->  
-> -	return ret;
-> +	return 0;
->  }
->  
->  int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
-> @@ -647,7 +648,8 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
->  	struct mt792x_bss_conf *mconf;
->  	unsigned long usable_links = ieee80211_vif_usable_links(vif);
->  	struct mt76_wcid *wcid;
-> -	u8 link_id, ret;
-> +	u8 link_id;
-> +	int ret;
->  
->  	for_each_set_bit(link_id, &usable_links, IEEE80211_MLD_MAX_NUM_LINKS) {
->  		mconf = mt792x_vif_to_link(mvif, link_id);
-> @@ -657,10 +659,10 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
->  		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, wcid, params,
->  					enable, false);
->  		if (ret < 0)
-> -			break;
-> +			return ret;
->  	}
->  
-> -	return ret;
-> +	return 0;
->  }
->  
->  static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
-> -- 
-> 2.45.2
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..8922003d3b9d039d2a0355add7a90cf42b1a9da6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
+> @@ -0,0 +1,293 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt6359-accdet.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MT6359 Accessory Detection
+> +
+> +maintainers:
+> +  - Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> +
+> +description: |
+> +  The MT6359 Accessory Detection block is part of the MT6359 PMIC and allows
+> +  detecting audio jack insertion and removal, as well as identifying the type of
+> +  events connected to the jack.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6359-accdet
+> +
+> +  mediatek,mic-vol:
+
+mediatek,micbias1-microvolts = <1700000>;
+
+enum: [1700000, 1800000 ... etc ]
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: MIC bias1 output voltage setting
+> +    enum:
+> +      - 0 # 1.7V
+> +      - 1 # 1.8V
+> +      - 2 # 1.9V
+> +      - 3 # 2.0V
+> +      - 4 # 2.1V
+> +      - 5 # 2.5V
+> +      - 6 # 2.6V
+> +      - 7 # 2.7V
+> +      - 8 # 2.8V
+> +      - 9 # 2.85V
+> +
+> +  mediatek,mic-mode:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Mic mode setting
+> +    enum:
+> +      - 1 # ACC
+> +      - 2 # DCC mode. Low cost mode without internal bias
+> +      - 6 # DCC mode. Low cost mode with internal bias
+
+This is already defined in mt6359.yaml....?!
+
+> +
+> +  mediatek,eint-cmpmen-pwm-width:
+
+mediatek,eint-cmpm-pwm-width-ms:
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT CMPMEN PWM width
+
+P.S.: CMPMEN = CoMParator Monitor ENable
+
+description: EINT Comparator Monitor PWM Width
+
+enum: [50, 80, 100, 200, 400, 500, 800, 1000]
+
+> +    enum:
+> +      - 0 # 50ms
+> +      - 1 # 80ms
+> +      - 2 # 100ms
+> +      - 3 # 200ms
+> +      - 4 # 400ms
+> +      - 5 # 500ms
+> +      - 6 # 800ms
+> +      - 7 # 1000ms
+> +
+> +  mediatek,eint-cmpmen-pwm-thresh:
+
+mediatek,eint-cmpm-pwm-threshold-ms:
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT CMPMEN PWM threshold
+
+description: EINT Comparator Monitor PWM Threshold
+
+enum: [1, 2, 3, 4, 5, 8, 10, 20, 30]
+
+> +    enum:
+> +      - 0 # 1ms
+> +      - 1 # 2ms
+> +      - 2 # 4ms
+> +      - 3 # 5ms
+> +      - 4 # 8ms
+> +      - 5 # 10ms
+> +      - 6 # 20ms
+> +      - 7 # 30ms
+> +
+> +  mediatek,pwm-width:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: PWM width
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,pwm-thresh:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: PWM threshold
+> +    minimum: 0
+> +    maximum: 65535
+
+You can simplify those two with one param "mediatek,pwm-duty-cycle", I think.
+But then, regardless, you still need to express this in decent units...
+
+make a few calculations - but the equation is...
+
+PWM Width      = (32768 / (mediatek,pwm-width + 1)) [hertz]
+PWM Duty Cycle = ((mediatek,pwm-thresh + 1) / (mediatek,pwm-width + 1)) [ns?]
+PWM High Time  = (mediatek,pwm-thresh + 1) / 32768 [seconds]
+
+> +
+> +  mediatek,pwm-rise-delay:
+
+mediatek,pwm-rise-delay-cycle:
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Rise delay for PWM
+
+description: Rising delay of PWM waveform in cycles
+
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,pwm-fall-delay:
+
+same for the falling one
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Fall delay for PWM
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,debounce0:
+
+mediatek,adc-debounce-ns = < debounce0 debounce1 debounce2 debounce3 >
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for state 0
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,debounce1:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for state 1
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,debounce3:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for state 3
+> +    minimum: 0
+> +    maximum: 65535
+> +
+> +  mediatek,debounce-auxadc:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for AUXADC
+> +    minimum: 0
+> +    maximum: 65535
+> +
+
+mediatek,eint-debounce-ns = < same as adc-debounce-ns >
+
+> +  mediatek,eint-debounce0:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for EINT state 0
+> +    enum:
+> +      - 0 # 0ms
+> +      - 1 # 0.12ms
+> +      - 2 # 0.25ms
+> +      - 3 # 0.5ms
+> +      - 4 # 0.75ms
+> +      - 5 # 1ms
+> +      - 6 # 2ms
+> +      - 7 # 4ms
+> +      - 8 # 8ms
+> +      - 9 # 16ms
+> +      - 10 # 32ms
+> +      - 11 # 48ms
+> +      - 12 # 64ms
+> +      - 13 # 128ms
+> +      - 14 # 256ms
+> +      - 15 # 512ms
+> +
+> +  mediatek,eint-debounce1:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for EINT state 1
+> +    enum:
+> +      - 0 # 0ms
+> +      - 1 # 0.5ms
+> +      - 2 # 0.75ms
+> +      - 3 # 0.9ms
+> +      - 4 # 1.5ms
+> +      - 5 # 1.8ms
+> +      - 6 # 3ms
+> +      - 7 # 3.5ms
+> +      - 8 # 3.8ms
+> +      - 9 # 16ms
+> +      - 10 # 32ms
+> +      - 11 # 48ms
+> +      - 12 # 64ms
+> +      - 13 # 128ms
+> +      - 14 # 256ms
+> +      - 15 # 512ms
+> +
+> +  mediatek,eint-debounce2:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for EINT state 2
+> +    enum:
+> +      - 0 # 0ms
+> +      - 1 # 0.5ms
+> +      - 2 # 0.75ms
+> +      - 3 # 0.9ms
+> +      - 4 # 1.5ms
+> +      - 5 # 1.8ms
+> +      - 6 # 3ms
+> +      - 7 # 3.5ms
+> +      - 8 # 3.8ms
+> +      - 9 # 4ms
+> +      - 10 # 4.5ms
+> +      - 11 # 5ms
+> +      - 12 # 7ms
+> +      - 13 # 9ms
+> +      - 14 # 19ms
+> +      - 15 # 25ms
+> +
+> +  mediatek,eint-debounce3:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for EINT state 3
+> +    enum:
+> +      - 0 # 0ms
+> +      - 1 # 0.12ms
+> +      - 2 # 0.25ms
+> +      - 3 # 0.5ms
+> +      - 4 # 0.75ms
+> +      - 5 # 1ms
+> +      - 6 # 2ms
+> +      - 7 # 4ms
+> +      - 8 # 8ms
+> +      - 9 # 16ms
+> +      - 10 # 32ms
+> +      - 11 # 48ms
+> +      - 12 # 64ms
+> +      - 13 # 128ms
+> +      - 14 # 256ms
+> +      - 15 # 512ms
+> +
+> +  mediatek,eint-inverter-debounce:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Debounce time for EINT inverter
+> +    enum:
+> +      - 0 # 0ms
+> +      - 1 # 0.12ms
+> +      - 2 # 0.25ms
+> +      - 3 # 0.5ms
+> +      - 4 # 0.75ms
+> +      - 5 # 1ms
+> +      - 6 # 2ms
+> +      - 7 # 4ms
+> +      - 8 # 8ms
+> +      - 9 # 16ms
+> +      - 10 # 32ms
+> +      - 11 # 48ms
+> +      - 12 # 64ms
+> +      - 13 # 128ms
+> +      - 14 # 256ms
+> +      - 15 # 512ms
+> +
+> +  mediatek,eint-detect-mode:
+
+This is fine, I think.
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT detection mode
+> +    enum:
+> +      - 0 # Higher detection power
+> +      - 1 # Lower detection power
+> +      - 2 # SW moisture detection mode1
+> +      - 3 # HW moisture detection mode1
+> +      - 4 # HW moisture detection mode2
+> +
+> +  mediatek,eint-num:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT interrupt that should be enabled
+> +    enum:
+> +      - 0 # EINT0
+> +      - 1 # EINT1
+> +      - 2 # EINT0 | EINT1
+> +
+> +  mediatek,eint-use-ext-res:
+> +    type: boolean
+> +    description:
+> +      Whether an external resistor should be used for the HP_EINT signal.
+> +      By default an internal pull-up resistor is used.
+> +
+> +  mediatek,eint-comp-vth:
+
+mediatek,eint-comp-vth-microvolts = ....
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT comparator threshold
+> +    enum:
+> +      - 0 # 2.4V
+> +      - 1 # 2V
+> +      - 2 # 1.6V
+> +      - 3 # 1.2V
+> +      - 4 # 0.8V
+> +
+
+...and that's more or less it....
+
+Cheers,
+Angelo
+
+> +  mediatek,eint-level-pol:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: EINT interrupt polarity
+> +
+> +required:
+> +  - compatible
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    accdet: accdet {
+> +        compatible = "mediatek,mt6359-accdet";
+> +        mediatek,mic-vol = <8>;
+> +        mediatek,mic-mode = <2>;
+> +        mediatek,pwm-width = <0x500>;
+> +        mediatek,pwm-thresh = <0x500>;
+> +        mediatek,pwm-fall-delay = <1>;
+> +        mediatek,pwm-rise-delay = <0x1f0>;
+> +        mediatek,debounce0 = <0x800>;
+> +        mediatek,debounce1 = <0x800>;
+> +        mediatek,debounce3 = <0x20>;
+> +        mediatek,debounce-auxadc = <0x44>;
+> +        mediatek,eint-cmpmen-pwm-width = <4>;
+> +        mediatek,eint-cmpmen-pwm-thresh = <1>;
+> +        mediatek,eint-debounce0 = <5>;
+> +        mediatek,eint-debounce1 = <3>;
+> +        mediatek,eint-debounce2 = <3>;
+> +        mediatek,eint-debounce3 = <5>;
+> +        mediatek,eint-inverter-debounce = <0xe>;
+> +        mediatek,eint-detect-mode = <4>;
+> +        mediatek,eint-num = <0>;
+> +        mediatek,eint-comp-vth = <2>;
+> +        mediatek,eint-level-pol = <IRQ_TYPE_LEVEL_LOW>;
+> +    };
 > 
+
 
