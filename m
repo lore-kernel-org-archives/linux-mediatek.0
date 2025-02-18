@@ -4,82 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D64C021AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 14:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE58C021AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2025 14:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r1w3SuJ03gvDIe9MXtj8IMQSlg/9NytuFaJY97llj9s=; b=MlnyIUUolvKiPmZ8C5TORMOpoW
-	TxIYNjlznm33EwyqTviYoeBoGnn+r8jWUzJTnIBrQrieHLtTyr/z8by8qiZBqCa6GRaUUmV+qriab
-	ZMkWhSQPqm5TjQvN0S84TENZoDFmnp1PalIrIDGpwGEbqypjJPDdVRRIRscCKIQT1aXhHfIqQ+EuA
-	zcVg8HFzz/JcWk6xqpz8a7hOELWn3DgnZvWqFR2AuOkKSO76M+TK9gp8lFUGTmja0UKWwnXu25szf
-	vhD4SsIR4BATphUqBSra+Dwp1X5zekQ76ZZWTUsvcMXLqbWzhHi90SnB8CyLMqa5dNA1hTCuJOAj1
-	aPRvaUsA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QM5J5/B9G8ujP3c8N205nGSWXTw5wg263Hg0+XOJCnY=; b=KACykq0eXiKCoNKc7lGE2ONaIp
+	rxmz3eAG2rFHxoHlRu47F3C1jxzN/VEyZUgpnsk87hBrxMdKWS6dOXi3tFU9PjKlivAvtG3LEarNG
+	5cHidjDjDLuNxk47FXmlzAf3Y0p3ydQsauLlwLQTfYgxkQ0Hy3FVqXMZl1T7Q8taMxGOiZzCuEVz6
+	9Tx99hpKfgFT8/OZcue4Kgb2txAeZWrtKDqfpZ/QWPDwPNwQuaz4qi0VRSZweqNfSJlWNk2Abp2Tv
+	2s4DdobQQt/DhQQTtmG+ulIoRopSRr3WUgpUWYPjQWegri9tfot7Gz/HGety0/6bKV+uzqxjthVfJ
+	EJcFbmNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkOYV-00000008VWx-2rsg;
-	Tue, 18 Feb 2025 14:26:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tkOYW-00000008VYl-2gM5;
+	Tue, 18 Feb 2025 14:26:36 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkOX0-00000008UhJ-0n5k;
-	Tue, 18 Feb 2025 14:25:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739888700;
-	bh=J2eO9J9+mwdPHssF4xChq4+/7PjWA0b/HAjHIFjPlDM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T0PM7SUXm0tzDEgb3p7/B4sIX18u9xqr1zsMb31gron78SXny/pUQb6dWPugS+zHK
-	 zoRxMEOJH5ELNcNoNXjLsff5yFYH9vXdMnovMKc7AMmN62b2pQNnov79IbV0FQLk3B
-	 PXFsY/eKKaFsJH2puzbVSOdMjnxVVnDaIFcUftyxAvwpHK/X54+h5zn/KiNHU+9j/5
-	 VucuGlCZG1/a1HhI92k+VT46yqGIAsFt0VVpaC6SkCDd4pHOvCciFMzuexi8zTfCIk
-	 2vVJ3A3uIonc1hKstWUjrHX7JeMqNSLFHvAZzL7rTzLm+7LB+UPa04mp/oKg3+4mxU
-	 hhbiJDpHVNpUw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	id 1tkOXm-00000008Upz-0hnW
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Feb 2025 14:25:51 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 636C717E0391;
-	Tue, 18 Feb 2025 15:24:59 +0100 (CET)
-Message-ID: <ddd1d62e-b1d2-4271-99a3-74bb0a48fb48@collabora.com>
-Date: Tue, 18 Feb 2025 15:24:58 +0100
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 3493B21178;
+	Tue, 18 Feb 2025 14:25:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1739888747; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QM5J5/B9G8ujP3c8N205nGSWXTw5wg263Hg0+XOJCnY=;
+	b=LlSs4fnKPUxG0YDSkxS+AScK2zHHU6AUFcTXFMqoBfjmib46R4TId977rux8ciCDiPyIUV
+	S2M449+jRQKbixMD2cad0wE/SD6qgyzDKj00hFbcDdJfgbzsUVwJFPiG2BfVfKVadK/8z3
+	73pLe+yXwh/4zHCYJ+glSBbIdv8wtIM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1739888747;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QM5J5/B9G8ujP3c8N205nGSWXTw5wg263Hg0+XOJCnY=;
+	b=zfjHjFGYF0dL+zF8PaNbOFZbq2k6XV3o4mDpz+e90ubbpxZi99z68oCRZhaGD9oDnmQBXN
+	FbDkD4gD2J20JMDQ==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=LlSs4fnK;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=zfjHjFGY
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1739888747; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QM5J5/B9G8ujP3c8N205nGSWXTw5wg263Hg0+XOJCnY=;
+	b=LlSs4fnKPUxG0YDSkxS+AScK2zHHU6AUFcTXFMqoBfjmib46R4TId977rux8ciCDiPyIUV
+	S2M449+jRQKbixMD2cad0wE/SD6qgyzDKj00hFbcDdJfgbzsUVwJFPiG2BfVfKVadK/8z3
+	73pLe+yXwh/4zHCYJ+glSBbIdv8wtIM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1739888747;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QM5J5/B9G8ujP3c8N205nGSWXTw5wg263Hg0+XOJCnY=;
+	b=zfjHjFGYF0dL+zF8PaNbOFZbq2k6XV3o4mDpz+e90ubbpxZi99z68oCRZhaGD9oDnmQBXN
+	FbDkD4gD2J20JMDQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id A7E59132C7;
+	Tue, 18 Feb 2025 14:25:46 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id jEGGJ2qYtGdXYQAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Tue, 18 Feb 2025 14:25:46 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	airlied@gmail.com,
+	simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v3 00/25] drm/dumb-buffers: Fix and improve buffer-size calculation
+Date: Tue, 18 Feb 2025 15:23:23 +0100
+Message-ID: <20250218142542.438557-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
- for MT8188
-To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>,
- "sboyd@kernel.org" <sboyd@kernel.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
- <Yong.Wu@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor@kernel.org" <conor@kernel.org>
-References: <20250121065045.13514-1-friday.yang@mediatek.com>
- <20250121065045.13514-2-friday.yang@mediatek.com>
- <20250121-violet-widely-df3567b085a4@spud>
- <2bfb6c05a3471e54f51c06895709853661e82c9a.camel@mediatek.com>
- <20250124-aide-feisty-821cf9cf1382@spud>
- <85c616dd195da26313cab552b24f514b539193c1.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <85c616dd195da26313cab552b24f514b539193c1.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-Rspamd-Queue-Id: 3493B21178
+X-Spamd-Result: default: False [-2.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	MID_CONTAINS_FROM(1.00)[];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[19];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns];
+	RCVD_COUNT_TWO(0.00)[2];
+	DKIM_TRACE(0.00)[suse.de:+]
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Action: no action
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_062502_382612_4EAA21F3 
-X-CRM114-Status: GOOD (  38.36  )
+X-CRM114-CacheID: sfid-20250218_062550_354328_4D6DD45D 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,214 +151,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/25 13:44, Friday Yang (杨阳) ha scritto:
-> On Fri, 2025-01-24 at 17:31 +0000, Conor Dooley wrote:
->> On Wed, Jan 22, 2025 at 07:40:12AM +0000, Friday Yang (杨阳) wrote:
->>> On Tue, 2025-01-21 at 17:30 +0000, Conor Dooley wrote:
->>>> On Tue, Jan 21, 2025 at 02:50:40PM +0800, Friday Yang wrote:
->>>>> SMI LARBs require reset functions when applying clamp
->>>>> operations.
->>>>> Add '#reset-cells' for the clock controller located in image,
->>>>> camera
->>>>> and IPE subsystems.
->>>>
->>>> A new required property is an abi break, please explain why this
->>>> is
->>>> required.
->>
->> You never answered this part. From a quick check, looks like the
->> change
->> you made will cause probe failures if the resets are not present?
->> Maybe
->> I misread the driver code in my quick skim - but that is the
->> implication
->> of a new required property, so I didn't dig super far.
->>
->> Adding new properties that break a driver is not really acceptable,
->> so I
->> hope I made a mistake there.
->>
-> 
-> Sorry to reply late.
-> This is a known bus glitch issue. It worked because MediaTek has
-> provided patches 1, 2 and 3. In other word, it can not work
-> without patches 1, 2 and 3.
-> 
-> 1.
-> https://lore.kernel.org/all/20240327055732.28198-1-yu-chang.lee@mediatek.com/
-> 2.
-> https://lore.kernel.org/all/20240327055732.28198-2-yu-chang.lee@mediatek.com/
-> 3.
-> https://lore.kernel.org/all/20240327055732.28198-3-yu-chang.lee@mediatek.com/
-> 
-> Patches 1, 2 and 3 have been previously reviewed, and the reviewers
-> provided the following comments:
-> 4.
-> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com/
-> 5.
-> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fasm2rFg@mail.gmail.com/
-> As I mentioned earlier, SMI clamp and reset operations should be
-> implemented in SMI driver rather than the PM driver. Additionally, the
-> reset operations have already been implemented in the clock control
-> driver. There is no need to submit duplicate code.
-> 
-> To address this, I have provided patches 6, 7 to replace patches 1, 2,
-> and 3, as I believe this approach aligns more closely with the
-> reviewers' requirements.
-> 6.
-> https://lore.kernel.org/lkml/20250121065045.13514-1-friday.yang@mediatek.com/
-> 7.
-> https://lore.kernel.org/lkml/20250121064934.13482-1-friday.yang@mediatek.com/
-> 
-> What's more, I have tested the patch 6, 7 in MediaTek MT8188 SoC.
-> It could work well. If you have any questions, please feel free to
-> contact me.
-> 
->>> What are "SMI LARBs"? Why did things previously work
->>>> without
->>>> acting as a reset controller?
->>>>
->>>
->>> The background can refer to the discussion in the following link:
->>>
->>>
-> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com/
->>>
->>>
-> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fasm2rFg@mail.gmail.com/
->>> SMI clamp and reset operations should be implemented in SMI driver
->>> instead of PM driver.
->>
->> So the answer to how it worked previously was that nothing actually
->> used
->> this multimedia interface?
->>
->> Your commit message needs to explain why a new required property is
->> okay
->> and why it was not there before.
->>
+Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
+plus various hardware-specific alignments. The calculation of these
+values is inconsistent and duplicated among drivers. The results for
+formats with bpp < 8 are incorrect.
 
-This conversation slipped through the cracks - wanted to reply to this quite a bit
-of time ago but then for whatever reason .... eh here we are :-)
+This series fixes this for most drivers. Default scanline pitch and
+buffer size are now calculated with the existing 4CC helpers. There is
+a new helper drm_mode_size_dumb() that calculates scanline pitch and
+buffer size according to driver requirements.
 
-Anyway.
+The series fixes the common GEM implementations for DMA, SHMEM and
+VRAM. It further changes most implementations of dumb_create to use
+the new helper. A small number of drivers has more complicated
+calculations and will be updated by a later patches.
 
-The cleanest option to get the glitching situation to get resolved is probably
-exactly the one that Friday proposed with this series...
+v3:
+- document UAPI semantics
+- fall back to bpp-based allocation for unknown color modes
+- cleanups
+v2:
+- rewrite series
+- convert many individual drivers besides the shared GEM helpers
 
-I agree that the commit needs a proper description, though, and even though the
-drivers were never actually used (so it's not a huge problem - as in - no device
-gets broken when this is merged), it's still an ABI breakage, and that has to be
-justified with a good reason.
+Thomas Zimmermann (25):
+  drm/dumb-buffers: Sanitize output on errors
+  drm/dumb-buffers: Provide helper to set pitch and size
+  drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/renesas/rcar-du: Compute dumb-buffer sizes with
+    drm_mode_size_dumb()
+  drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
 
-The good reason is that there's a hardware bug that you're trying to resolve here
-and that emerged only after the initial upstreaming of this binding (do *not*
-mention drivers in DT bindings, those describe the hardware, not software!), and
-the only way to resolve this situation is by resetting the Local Arbiter (LARB)
-of the cam/img/ipe macro-blocks.
+ drivers/gpu/drm/armada/armada_gem.c           |  16 +-
+ drivers/gpu/drm/drm_dumb_buffers.c            | 156 ++++++++++++++++--
+ drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
+ drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
+ drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++-------
+ drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
+ drivers/gpu/drm/gma500/gem.c                  |  21 +--
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
+ drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 +++-
+ drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +---
+ drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
+ drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
+ drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
+ drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
+ drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
+ drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   7 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
+ drivers/gpu/drm/tegra/gem.c                   |   8 +-
+ drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
+ drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
+ drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
+ drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
+ include/drm/drm_dumb_buffers.h                |  14 ++
+ include/drm/drm_gem_vram_helper.h             |   6 -
+ include/uapi/drm/drm_mode.h                   |  46 +++++-
+ 27 files changed, 401 insertions(+), 228 deletions(-)
+ create mode 100644 include/drm/drm_dumb_buffers.h
 
-Failing to do this, the hardware is going to be unstable during high/dynamic load
-conditions.
-
-So, just describe the problem and how you're solving it in the commit description:
-that's going to be okay and justifying everything that you're doing here.
-
-I'm sorry for chiming in that late, btw.
-
-Cheers,
-Angelo
-
->> Thanks,
->> Conor.
->>
->>>
->>> I previously added the SMI reset control driver. However, the
->>> reviewer's comments are correct, these functions have already
->>> been implemented in the clock control driver. There is no need
->>> to submit duplicate code.
->>>
->>>
-> https://lore.kernel.org/lkml/20241120063305.8135-2-friday.yang@mediatek.com/
->>>
->>>
-> https://lore.kernel.org/lkml/20241120063305.8135-3-friday.yang@mediatek.com/
->>>
->>>
->>> On the MediaTek platform, the SMI block diagram like this:
->>>
->>>                  DRAM
->>>                   |
->>>              EMI(External Memory Interface)
->>>                   |  |
->>>            MediaTek IOMMU(Input Output Memory Management Unit)
->>>                   |  |
->>>               SMI-Common(Smart Multimedia Interface Common)
->>>                   |
->>>           +----------------+------------------+
->>>           |                |                  |
->>>           |                |                  |
->>>           |                |                  |
->>>           |                |                  |
->>>           |                |                  |
->>>         larb0       SMI-Sub-Common0     SMI-Sub-Common1
->>>                     |      |     |      |             |
->>>                    larb1  larb2 larb3  larb7       larb9
->>>
->>> The SMI-Common connects with SMI LARBs and IOMMU. The maximum LARBs
->>> number that connects with a SMI-Common is 8. If the engines number
->>> is
->>> over 8, sometimes we use a SMI-Sub-Common which is nearly same with
->>> SMI-Common. It supports up to 8 input and 1 output(SMI-Common has 2
->>> output).
->>>
->>>>>
->>>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
->>>>> ---
->>>>>   .../bindings/clock/mediatek,mt8188-clock.yaml | 21
->>>>> +++++++++++++++++++
->>>>>   1 file changed, 21 insertions(+)
->>>>>
->>>>> diff --git
->>>>> a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
->>>>> clock.yaml
->>>>> b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
->>>>> clock.yaml
->>>>> index 860570320545..2985c8c717d7 100644
->>>>> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-
->>>>> clock.yaml
->>>>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-
->>>>> clock.yaml
->>>>> @@ -57,6 +57,27 @@ required:
->>>>>     - reg
->>>>>     - '#clock-cells'
->>>>>
->>>>> +allOf:
->>>>> +  - if:
->>>>> +      properties:
->>>>> +        compatible:
->>>>> +          contains:
->>>>> +            enum:
->>>>> +              - mediatek,mt8188-camsys-rawa
->>>>> +              - mediatek,mt8188-camsys-rawb
->>>>> +              - mediatek,mt8188-camsys-yuva
->>>>> +              - mediatek,mt8188-camsys-yuvb
->>>>> +              - mediatek,mt8188-imgsys-wpe1
->>>>> +              - mediatek,mt8188-imgsys-wpe2
->>>>> +              - mediatek,mt8188-imgsys-wpe3
->>>>> +              - mediatek,mt8188-imgsys1-dip-nr
->>>>> +              - mediatek,mt8188-imgsys1-dip-top
->>>>> +              - mediatek,mt8188-ipesys
->>>>> +
->>>>> +    then:
->>>>> +      required:
->>>>> +        - '#reset-cells'
->>>>> +
->>>>>   additionalProperties: false
->>>>>
->>>>>   examples:
->>>>> --
->>>>> 2.46.0
->>>>>
-
+-- 
+2.48.1
 
 
