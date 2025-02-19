@@ -4,80 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA4EC021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 20:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 026C1C021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 21:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wYk7IoDOhVTSXNZWST8oeA8vpoiIKHkfmZGy3i6g7lA=; b=dW1tYY10+t8xlVNL8TmWzE3LJn
-	AKpmzRki/4/26w0BWtoTNP+4AqbLIGdhmf2IOL6PfHHowBGpzZWbTGSNv4rXmtXXpPDIekiALIycu
-	dd94EHgBPJcfp+X3sgZSvvc4Dhk/bq5zalXCZ0nF4IV5fFxTkTPrSycWxFIW5cb4Fx+yM3VqLVH+R
-	AInhOMNF7u2qjfLa8kbqIhPmRN1/n5qcpcU/MSqXCkagspwzeL+V+6s0weiKPDyBVr5+9HTl1HmLw
-	pVZpiMg1af7zBrsjEPtzpfLl4ky64f/stTpRDKIKk1XGS8VXHS4YccM58FvpsUeD3IDWhdtMW9BN4
-	lAQpvgvw==;
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=n/HcLc1vBRDNLkVs/ylW8/ztC8KcpMW5l5ZyrlNLue4=; b=IkhQxahxzwvGwxDlRUwPCqED9h
+	mx0gEt394NDtJx8TOU5JGhytcYRuqx7QUUd4kXbvCYqfKSCfoATS+uDe2uFZCkZuRGiUsRqYHWhfc
+	aOi2rwtqe61iJbkTVZyCESth0SyfizQHQr/CvAuJYE9N+sDS/8OQPxlbe7cqFpGvibZHe3RjyWq2v
+	uOHMUfe+KKZ7Oxv4zqhqqJ/G+Wkr+gIAwAE1bIMzD/7sKo9z1Wb3nwA8axxrfuU6sTxevLFUeoNQZ
+	fiJqOLwKnFXbTbyh2dTGuaeySNQubyt0GQm6oS8jZFZ6QEDA/ByY7pqsx1f1bGyRBNa+3JAaAQQz/
+	xGHCN6nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkqZf-0000000ErDN-3CE3;
-	Wed, 19 Feb 2025 20:21:39 +0000
-Received: from lelvem-ot01.ext.ti.com ([198.47.23.234])
+	id 1tkrEu-0000000F4Bi-41yk;
+	Wed, 19 Feb 2025 21:04:16 +0000
+Received: from mail-ed1-f52.google.com ([209.85.208.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkqZc-0000000ErCP-36PX
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Feb 2025 20:21:38 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelvem-ot01.ext.ti.com (8.15.2/8.15.2) with ESMTPS id 51JKLUfQ2070043
-	(version=TLSv1.2 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 19 Feb 2025 14:21:30 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1739996490;
-	bh=wYk7IoDOhVTSXNZWST8oeA8vpoiIKHkfmZGy3i6g7lA=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=rGzePrNrQiLPSoOjIIIhjU8M5Q6JkTiILn0p0IgMnGa8Mr28TfvC+DXchN9DSJ8tp
-	 R3qKZmfEy1h6p9oCJdknIYse8jnF9mSpyBu1jwvR8g4h1BU7Ln5DlxY2p/+CEbycm8
-	 ud+OrYBSWRbpC4OsE5q3CDOj9RsGWmBGOZMIEUtY=
-Received: from DFLE101.ent.ti.com (dfle101.ent.ti.com [10.64.6.22])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 51JKLU7t062178
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Wed, 19 Feb 2025 14:21:30 -0600
-Received: from DFLE103.ent.ti.com (10.64.6.24) by DFLE101.ent.ti.com
- (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Wed, 19
- Feb 2025 14:21:29 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Wed, 19 Feb 2025 14:21:29 -0600
-Received: from [128.247.83.102] (lt5cd302htfz.dhcp.ti.com [128.247.83.102] (may be forged))
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 51JKLTET125776;
-	Wed, 19 Feb 2025 14:21:29 -0600
-Message-ID: <35b8d02f-15b6-4f8c-8179-5cf3825f3697@ti.com>
-Date: Wed, 19 Feb 2025 14:21:29 -0600
+	id 1tkrBu-0000000F3IA-3v4Z;
+	Wed, 19 Feb 2025 21:01:12 +0000
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-5debbced002so505791a12.1;
+        Wed, 19 Feb 2025 13:01:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739998868; x=1740603668; darn=lists.infradead.org;
+        h=content-transfer-encoding:autocrypt:subject:from:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=n/HcLc1vBRDNLkVs/ylW8/ztC8KcpMW5l5ZyrlNLue4=;
+        b=BXfhcCLlpNMEpLSZbA47J2EzfTRFhDYurSSTInsroTWCnQEXnReRxgw3Mc6UBHhrqc
+         vKVO0IHpCQ/FGl0oBd49hCmzLThXmjqA/QkFnSmq0Ib0BHzOn8T52QG9Orl8KoRPGTEH
+         iNm4HMtwpsL0fyzLyOiEMVbYMVrnOhJOdVX4Gy6bk+Nkb1BfKzdYuA6nDNa3PtT4kL92
+         aFmlvxmllwKNSoPilFyr3sM7TzozQvL8CTA8U9Vzw0to2M4O8c4rN8UICnbsyUpJWHDQ
+         10pkoAqmZ9kIQYh+2pFGb1PIXmLjcIeDEHnxlL5io4WabnkyzAD3VJotDr6dntIKPqbg
+         jOKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739998868; x=1740603668;
+        h=content-transfer-encoding:autocrypt:subject:from:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=n/HcLc1vBRDNLkVs/ylW8/ztC8KcpMW5l5ZyrlNLue4=;
+        b=RkGW037Wf8gJI76gN+oAm0IcW3ZwU/De6JCYJvVmD1TsiCGJpWdBG+rsrk6wD+yrI9
+         fvE3hLEDrhXHH85wtNjQsNvK+/BD2KtmN6MZgLlpKajt6UpgiwcNGSfmQAhCX67idhMW
+         LSIhxMtZXerR90rmgTrAGGrSzTfgR1upFql4DfpvnyXAFSXmsH7QdrrcA24CAq3+eHKO
+         QgpuK9MEdfKL1iGS3YfPFVkA/mkoY+Wp+YML8+X6ByOsVwyI7L0J8O3GYbR5ExRRRCUn
+         xuEIJwJEBxAX1I/n74zHZ33Suj2apoFEIVs9Na+CZdZULq/zPwjdOeHMZWCGPBQEoeO0
+         8ECw==
+X-Forwarded-Encrypted: i=1; AJvYcCVQ2Obo+zrKtL6mabxwluQ/N5Dl9Pp6izAi0cvC8UdTAgI5IC7Id3VsvQ3qt6JeO96VW/uX3teg8a27S/gNwoc=@lists.infradead.org, AJvYcCXCwJXquMNsyml/cuDwwFSLqweX8K9bgjJsehOJJsiNfIHjjhn41VPDHxcUx8SgsnhWNHLhG+breBH/wNugtjTR@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSKhP9zp2I7fWspbkml/uuEgcgFnQT0tZd9gVwnFB+dciUE43P
+	Dsc/kZ79axeAZN3mOUUE32HNCrr7ektjSLmYi+XOHsjB3tXimF9T
+X-Gm-Gg: ASbGncv4f/HzVJDUVlPrCbLnBWXPja/Juu8X6IFyPJc/cUf7HtlEijj5k57IxfGb6C/
+	qr8o66FyXhN0K4bkT20z3Qi55kL5qYQ1Iu63CDupN6lTgA+sbcpWUY/fvoReJnmxlkWfTZlZS4q
+	rAkejXw1Hy/xvQQ6R0/bHVV45J3yARu+n/NcoOEBG9rn15DMNZpzMChvzGFbyGYc4A6W8U1gB0i
+	WDWCcArhVusmbi0cZ/zn1mcZjPBw2ofViH6JjEoPG4cIxxl7rIB0Eh7J7ejVqLy0F3JocaPaOQD
+	6M2A+ZyE3/0ks9wAEeuFD6VcH5LVOMfBDAQMYRMgFFB6mdBWHR7inylSzS6GwrIsqtuURrCGa+B
+	TGz9SWejzrsB1tmSocLgBVj2DHNHIm9ni1yAJgnllVM3rX+v+ssL0FzvnuoeEdyDMMcx2iLPHOi
+	hukfyunzY=
+X-Google-Smtp-Source: AGHT+IH9ZMq8ky2erXIOhsHzCfqhRS36ZUg26/HaCIV4syGcJuFX40SQztd94cUQWV3y4A8uHd5E5g==
+X-Received: by 2002:a05:6402:1d4f:b0:5de:d932:a54c with SMTP id 4fb4d7f45d1cf-5e0a1200077mr873058a12.2.1739998868275;
+        Wed, 19 Feb 2025 13:01:08 -0800 (PST)
+Received: from ?IPV6:2a02:3100:a982:e400:6dd0:628c:981b:2783? (dynamic-2a02-3100-a982-e400-6dd0-628c-981b-2783.310.pool.telefonica.de. [2a02:3100:a982:e400:6dd0:628c:981b:2783])
+        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-5dece28808fsm10877033a12.75.2025.02.19.13.01.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Feb 2025 13:01:07 -0800 (PST)
+Message-ID: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
+Date: Wed, 19 Feb 2025 22:01:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: mt7925: introduce MLO capability control
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, <nbd@nbd.name>,
-        <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-        <Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-        <Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-        <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
-        <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-        <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-        <Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20250217081729.1840930-1-mingyen.hsieh@mediatek.com>
 Content-Language: en-US
-From: "Khan, Sabeeh" <sabeeh-khan@ti.com>
-In-Reply-To: <20250217081729.1840930-1-mingyen.hsieh@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+To: Andrew Lunn <andrew@lunn.ch>,
+ Russell King - ARM Linux <linux@armlinux.org.uk>,
+ Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, David Miller <davem@davemloft.net>,
+ Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Richard Cochran <richardcochran@gmail.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next 0/8] net: phy: move PHY package code to its own
+ source file
+Autocrypt: addr=hkallweit1@gmail.com; keydata=
+ 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
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-C2ProcessedOrg: 333ef613-75bf-4e12-a4b1-8e3623f5dcea
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_122136_875631_268323DD 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20250219_130110_996353_4BA8C2E6 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,79 +153,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mingyen,
+This series contributes to cleaning up phylib by moving PHY package
+related code to its own source file.
 
-On 2/17/2025 2:17 AM, Mingyen Hsieh wrote:
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->
-> This patch introduces MLO capability control for the MT792x Wi-Fi driver.
-> It removes the unused `MT792x_CHIP_CAP_MLO_EVT_EN` flag and introduces new
-> capability flags `MT792x_CHIP_CAP_MLO_EN` and `MT792x_CHIP_CAP_MLO_EML_EN`
-> to enable MLO and EML features based on firmware capabilities.
->
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7925/main.c |  2 +-
->  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c  | 10 ++++++++--
->  drivers/net/wireless/mediatek/mt76/mt792x.h      |  3 ++-
->  3 files changed, 11 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> index 98daf80ac131..ad47a4b153da 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -251,7 +251,7 @@ int mt7925_init_mlo_caps(struct mt792x_phy *phy)
->  		},
->  	};
->  
-> -	if (!(phy->chip_cap & MT792x_CHIP_CAP_MLO_EVT_EN))
-> +	if (!(phy->chip_cap & MT792x_CHIP_CAP_MLO_EN))
->  		return 0;
->  
->  	ext_capab[0].eml_capabilities = phy->eml_cap;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> index 15815ad84713..5f40c3c1ffa1 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -2559,6 +2559,7 @@ mt7925_mcu_bss_mld_tlv(struct sk_buff *skb,
->  	struct ieee80211_vif *vif = link_conf->vif;
->  	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
->  	struct mt792x_vif *mvif = (struct mt792x_vif *)link_conf->vif->drv_priv;
-> +	struct mt792x_phy *phy = mvif->phy;
->  	struct bss_mld_tlv *mld;
->  	struct tlv *tlv;
->  	bool is_mld;
-> @@ -2574,8 +2575,13 @@ mt7925_mcu_bss_mld_tlv(struct sk_buff *skb,
->  	mld->group_mld_id = is_mld ? mvif->bss_conf.mt76.idx : 0xff;
->  	mld->own_mld_id = mconf->mt76.idx + 32;
->  	mld->remap_idx = 0xff;
-> -	mld->eml_enable = !!(link_conf->vif->cfg.eml_cap &
-> -			     IEEE80211_EML_CAP_EMLSR_SUPP);
-> +
-> +	if (phy->chip_cap & MT792x_CHIP_CAP_MLO_EML_EN) {
-> +		mld->eml_enable = !!(link_conf->vif->cfg.eml_cap &
-> +				     IEEE80211_EML_CAP_EMLSR_SUPP);
-> +	} else {
-> +		mld->eml_enable = 0;
-> +	}
->  
->  	memcpy(mld->mac_addr, vif->addr, ETH_ALEN);
->  }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-> index 32ed01a96bf7..454c6f523cc2 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-> @@ -27,8 +27,9 @@
->  
->  #define MT792x_CHIP_CAP_CLC_EVT_EN BIT(0)
->  #define MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN BIT(1)
-> -#define MT792x_CHIP_CAP_MLO_EVT_EN BIT(2)
->  #define MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN BIT(3)
-> +#define MT792x_CHIP_CAP_MLO_EN BIT(8)
-> +#define MT792x_CHIP_CAP_MLO_EML_EN BIT(9)
->  
->  /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
->  #define MT792x_BASIC_RATES_TBL	11
-Reviewed-by: Sabeeh Khan <sabeeh-khan@ti.com>
+Heiner Kallweit (8):
+  net: phy: move PHY package code from phy_device.c to own source file
+  net: phy: move PHY package related code from phy.h to phy_package.c
+  net: phy: add getters for public members in struct phy_package_shared
+  net: phy: qca807x: use new phy_package_shared getters
+  net: phy: micrel: use new phy_package_shared getters
+  net: phy: mtk-ge-soc: use new phy_package_shared getters
+  net: phy: mscc: use new phy_package_shared getters
+  net: phy: make struct phy_package_shared private to phylib
+
+ drivers/net/phy/Makefile              |   3 +-
+ drivers/net/phy/mediatek/mtk-ge-soc.c |  10 +-
+ drivers/net/phy/micrel.c              |  12 +-
+ drivers/net/phy/mscc/mscc_ptp.c       |  15 +-
+ drivers/net/phy/phy_device.c          | 237 ------------------
+ drivers/net/phy/phy_package.c         | 348 ++++++++++++++++++++++++++
+ drivers/net/phy/qcom/qca807x.c        |  20 +-
+ include/linux/phy.h                   | 125 +--------
+ 8 files changed, 396 insertions(+), 374 deletions(-)
+ create mode 100644 drivers/net/phy/phy_package.c
+
+-- 
+2.48.1
 
 
