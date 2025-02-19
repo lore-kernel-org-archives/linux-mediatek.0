@@ -4,54 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FD62C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 09:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 427A0C021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 09:37:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+oYP7ZwnEeonL1pLtE73TJ85xaesKIG0Ys99vCW5hiU=; b=PHzufk8kn9hDc5AT8UuPOmaTq3
-	H+CH6roMMICRQMwP2yXxhIE8R9Y7ixq+fD+mko9mtpHL11vXUjmrasEzDNJAqcwSRmc8SP0Pf0GWA
-	KMTzWr3V36dQ+KHPTfmicSylC90urdbx45DBiVi24Wu2ahrex6ySi2X84fIzdXhPXPmYP7pM++K1n
-	qrMAsO16LwenhEKO3xvgGh7ErT7KczAmtmCQSbMOBDlydQeCXw6W0cFlqrRDK3FLRJdyJCxBb9dVw
-	lM/EjM2qCG+DT4QSQtYbKmyyamMFp15HYrdiEt07sR7SWXqmePR9H0UH02kn4pPPhtWlagd6nVwJg
-	fxHbVNlg==;
+	bh=PFZv3z4jR0cKH8tuf5xjGltFAPzbkhIXtmr8YZRX4Ak=; b=RymcD1q1kK5PkZ3o3a1frQmQ0H
+	H7v/IV0Ivb6b5DMg5Um08upnrl1RxiXW6dGhpR04SK8mRdX/M2FQprfJcpxvbBUwuMK65r8d3+EpE
+	IRRLZhaxXUNjmh4cKxXwHyE4+aUMBAurTZgO1LMXvBwXR7Qd0EBzCLGFgMl/eI8pIeubx46b7iThK
+	I55WgoST3GOsl1NDPcMFv19dtsRA6OFMF1mjLaaKfuxZpeH3OZtl1+4Pza57+oFyenwiUSDQdIGSJ
+	ODLvFKARZqwNqdYx6GZntMs+I6AIzJG8HSGvXxxCClTvJrLQkC1KAvqCq/GjunZ7e7ubVkQDxiA0z
+	8krYosxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkgKY-0000000Bpxg-1crb;
-	Wed, 19 Feb 2025 09:25:22 +0000
-Received: from mail.corporix.pl ([151.80.59.204])
+	id 1tkgWA-0000000Buis-0H9y;
+	Wed, 19 Feb 2025 09:37:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkg7i-0000000BlA8-250P
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Feb 2025 09:12:08 +0000
-Received: by mail.corporix.pl (Postfix, from userid 1002)
-	id 05095243A9; Wed, 19 Feb 2025 09:06:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=corporix.pl; s=mail;
-	t=1739955993; bh=+oYP7ZwnEeonL1pLtE73TJ85xaesKIG0Ys99vCW5hiU=;
-	h=Date:From:To:Subject:From;
-	b=PjJVq5oXvPzvDjjZaQuWc8JtOe07kBgUTlwewFA9RXIx3FpnecGevvmhxw5GLtouS
-	 bwzVNKW9rTAO0w07EZzQC7ip7uGwbNmltvk7k0SyorteLp9UO1IpbgegcbB/j7sCJe
-	 PdQsHt6v+Fse6n5teXsamhR2ljLbwrg4OoFWy2jhFaGo2WduMcP4LiCYHMx64q3p0t
-	 0P8RtjfLce+6SM+Pifjbomq9ZEkNWtC61fUV1ly99ZOpYS5m1Hfpl9STgehB/qdCqU
-	 JvjfoxQAvXT1iRND9FXVNwd7o0qB5hBnU4W0qQsf4REgFHfnahL06QWQD4/NPFcXKh
-	 AMHjN4KfnmdNg==
-Received: by mail.corporix.pl for <linux-mediatek@lists.infradead.org>; Wed, 19 Feb 2025 09:06:02 GMT
-Message-ID: <20250219074500-0.1.h.4e6v.0.22u7uvk57n@corporix.pl>
-Date: Wed, 19 Feb 2025 09:06:02 GMT
-From: "Patryk Wysocki" <patryk.wysocki@corporix.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.corporix.pl
+	id 1tkgGK-0000000BoZk-37mL;
+	Wed, 19 Feb 2025 09:21:02 +0000
+X-UUID: d0ee6e68eea211efa1e849db4cc18d44-20250219
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=PFZv3z4jR0cKH8tuf5xjGltFAPzbkhIXtmr8YZRX4Ak=;
+	b=hyb504uAlN3JfcVfD5+Q0fLLA9YvO6vFGOfj/nbF6AtRPXqR6A1IBOKeihaOobgf6HQ4Stll27FBXbobEHZvOl2q9LvZSHvtwTGL1NEXFL+hEE0ZqursOk19tzSljSKg5pNvvogqn0WeemGcR+dhqQcIT8W2nxirI+oMBrQliRE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:7eab2def-9448-404e-b7d6-7bce771f013b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:3df8fe28-e0f8-414e-b8c3-b75c08217be8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: d0ee6e68eea211efa1e849db4cc18d44-20250219
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jay.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 235045163; Wed, 19 Feb 2025 02:20:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Wed, 19 Feb 2025 17:20:50 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Wed, 19 Feb 2025 17:20:49 +0800
+From: Jay Liu <jay.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jay Liu
+	<jay.liu@mediatek.com>
+Subject: [PATCH 0/7] porting pq compnent for MT8196
+Date: Wed, 19 Feb 2025 17:20:33 +0800
+Message-ID: <20250219092040.11227-1-jay.liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_011207_157779_2DD047CF 
-X-CRM114-Status: UNSURE (   1.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250219_012100_795574_B54AB9D7 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,17 +92,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+add ccorr/dither/gamma/tdshp support for MT8196
 
-Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
-yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
+This patch series id base on [1]
+[1] Add components to support PQ in display path for MT8196
+	- https://patchwork.kernel.org/project/linux-mediatek/list/?series=932469
 
-Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
-owych informacji?=20
+Jay Liu (7):
+  drm/mediatek: Add CCORR component support for MT8196
+  drm/mediatek: fix CCORR mtk_ctm_s31_32_to_s1_n function issue
+  drm/mediatek: Add TDSHP component support for MT8196
+  dt-bindings: display: mediatek: ccorr: Add support for MT8196
+  dt-bindings: display: mediatek: dither: Add support for MT8196
+  dt-bindings: display: mediatek: gamma: Add support for MT8196
+  dt-bindings: display: mediatek: tdshp: Add support for MT8196
 
+ .../display/mediatek/mediatek,ccorr.yaml      |  1 +
+ .../display/mediatek/mediatek,dither.yaml     |  1 +
+ .../display/mediatek/mediatek,gamma.yaml      |  1 +
+ .../display/mediatek/mediatek,tdshp.yaml      | 51 ++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 61 ++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |  1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     | 25 ++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 +
+ 8 files changed, 142 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,tdshp.yaml
 
-Pozdrawiam
-Patryk Wysocki
+-- 
+2.18.0
+
 
