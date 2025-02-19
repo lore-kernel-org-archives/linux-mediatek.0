@@ -4,93 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD45C021AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 05:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC46C021AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 07:25:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nf8/3/DreRNzXlFHg2AgTTtfjDRLaudroEyy156u0qE=; b=RiEXy27Xb9qHnj8msu23l+EOpj
-	HAFRIsG2yT3LNJsALVI9x/eHihg+XSVuo/7jGUGgikUVffKFaY33sFvH2sYSRdzUzc6Obfl+U1DVh
-	8+ZemSYuQIXizKavSoTIzKEmzAcmiIFuJfp17FRlXeSi3fZZ/W7UcqwZMnfYl51OMZxTNb9b7c8uT
-	0PAPw7HzmpURmm+GSruKYZM5Ge4zBDEPWDJww9HZMR3ShKsKcapS1J6OWMBKQWK6tYwAFITi2vaNh
-	J+LOstqPPsiEGG33Hks4BmeUImGEXR2fBTpez6+thKxsCLCiGsWrSBYDr1OHvzsexum+Swdzi7gAG
-	SgWErW+w==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=MrkL1EzynOEYQjnCeAURIHzh4kwI++Df9MFvfdWTjOg=; b=3iswFuOwkNSDX+
+	bHExgKbes8z1KQgA4/4K513PIYrKUBre2H7lvSuKQbT5Ft8LyRlZqsbKg9VjYxYl6dUADQKvZyJGT
+	SNN6jaor/CNw2MPPH1R/rROhOyxVlEaQLyLeBpHnce49Fur5aQqQme2N2PYR9wK0AIaciyEEbrQ/o
+	FmhsIi/liB6vCItiLt8wO6A1dCygPjtM44xVMjX4YUg6+wNlf5A0YlYARW5TbeBaiZCxnmyN1SR2s
+	DEGsIQSWvBOizxhFRGRBeor93BXx5sy3ORtkNr4vXe3RBuA68u/Q3zn374fbIAXOfXl/eYHHms+sq
+	+owkwTCDkIoMQ/VxVmmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkczQ-0000000AxKb-0SS5;
-	Wed, 19 Feb 2025 05:51:20 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1tkeSI-0000000BE86-2BK0;
+	Wed, 19 Feb 2025 07:25:14 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkcxv-0000000Ax7P-3x1g
+	id 1tkeQn-0000000BDmP-3a0K
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Feb 2025 05:49:50 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-221206dbd7eso55169665ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Feb 2025 21:49:47 -0800 (PST)
+	Wed, 19 Feb 2025 07:23:43 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-abb9709b5b5so580610466b.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Feb 2025 23:23:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739944187; x=1740548987; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Nf8/3/DreRNzXlFHg2AgTTtfjDRLaudroEyy156u0qE=;
-        b=Z0ZH5GCBfb0iSixroAL8TZotC5Mqq4rG07SZf8Sy2PRFTpXKun+Ft8AxgoUTpTOiz5
-         /EQB9YKENDHp7icH1VquW2mToBvXc8AZDI++jO1nnYDWRXBdcpMbh4fW4J4zq1qcE1L/
-         xdf672FmX6/ZMqfM8rOubrdEn/scfLsRw+gRQxuh90agRAgWxBjTKlCPsyYZlqcX7eR8
-         PGJXw7NwAggWQzFRfqEdjCRkvBKs6Bt+JQmmpgsRs5QUQxDgPjgOclfxTADc3OcaW/UE
-         gSaPzdhkXTBvJ+N9QPOmR/aA7S6M7Df6siulfM/iwg0ixvnmdZMjJxNFAymlXbIe7pxb
-         YnDg==
+        d=linaro.org; s=google; t=1739949820; x=1740554620; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=MrkL1EzynOEYQjnCeAURIHzh4kwI++Df9MFvfdWTjOg=;
+        b=DDexjJrW99Ec0MchI3ka0a+E62+3MdAFUf3ou0OPrv+d/xzF5QXRAEq9k092Ll0s5a
+         KPvSOUb02OccjghV7qCaEWq0xD1nPeG6hpDQEfLFjTLDx5oxw2WKm9oPDQI2Ml+57NDt
+         HZE5wd+iHdGk1wjZIPqlrUy4xVW8Lv1lTZlqoH1fy2WNuQhIL0cv+gL891tjyOv1UNve
+         2R4Te7k2aEKsegjmVwDTZgS0IczuHgAtPx//9Ae7F/Y1paArze5HyCDmrW/d3dNmrTod
+         BpFAWGDT6pZWdPafkvBod06ZRM2DbB5iii5ZoVJj2adX8hLGz4JbIWTyzwkQpX9ebd4X
+         n2fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739944187; x=1740548987;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Nf8/3/DreRNzXlFHg2AgTTtfjDRLaudroEyy156u0qE=;
-        b=V1FMfuHIRpYuc33cPDpuQTFQY1mvDbsV/EZYZcYVfRyj7xE6bU1yQxcTpDjwjAl4ND
-         AnXqmWx0wxjkkMCJ7y9OrsK4PE54sY+2HAxdlN2j+kGdJDxL4NAZWfJf/ygeMb4C+UQ3
-         9lfBAmhie3jx+CvJ94fIyK7L55qOIH/Q6MOuVNE/SQ4Kjy9OtTuDMvyhO0e1bMv0FQPl
-         ipFoyqzqJj21NKqw04TGYxpjqSY6u4dANygteZeg1p414njavk6zkk4JK/OXo4KXtTOd
-         XQ6t42+TOH6n1gK/xllDDN8Lxf8nlSLOm4fX5anf2taCWLMc0SL+EFk1IAGLGFGQ/DV/
-         7P+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUVLCBPnblpC2bGM4cWZsOArCpRxCBsiONoNnY5ZqkRddzQr3FPCHdyLVPXpiO/1nmk250rgYYJ5gw80/k3Pw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtCe/4Hf1BgK2PesdOh62gZjQ3r4glzkH/BCRSx0gcvjzXTBS/
-	Dg4MHQNJAstpiCAiCHBccBCoE9PpDphS/WDOtdfYupleehkASwm+W6ehti+TP1s=
-X-Gm-Gg: ASbGncuzUq46R5KlZ/qoC74mjMawbZcdicZ279dp+rMl5cGGgKSeLZD8f10u7lc6Qin
-	qLoyVdAR3azZG/vFcSOAI21Pt5T+nfioO1T9oN/t1qlyu90YVevBvjBrrEvm/RUjkLdA3qe0MuO
-	R0VqV+6ie2seuM+2mFVwMIiVqCydBHYfne5PhB2u361iBZKD825+sxmEl2NPXEcsT7vQHPMO7lw
-	4dOOHToNmUZ+l3EE7vPZkIuJc9g3DOHSI+ypLqxg7MLD1lr2MTN1goaW+T/v1axcOb6Mp/FF+Os
-	8nAmFD/KXU1umBs39g==
-X-Google-Smtp-Source: AGHT+IGTrwUiHai/F6Gc6jLbRLvEYwLeRI5NCdNzX1yb+2FEyc1a3QDq5aXdiTbSDtTZsAlf5lbhwQ==
-X-Received: by 2002:a05:6a20:b58b:b0:1ee:8bd5:81c4 with SMTP id adf61e73a8af0-1eed4fb2d4bmr3091062637.28.1739944187132;
-        Tue, 18 Feb 2025 21:49:47 -0800 (PST)
-Received: from localhost ([122.172.84.139])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73274399467sm5972331b3a.140.2025.02.18.21.49.46
+        d=1e100.net; s=20230601; t=1739949820; x=1740554620;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MrkL1EzynOEYQjnCeAURIHzh4kwI++Df9MFvfdWTjOg=;
+        b=tapgCC+yBPCOCsCwXrvRqXE9RYIopYecizWcVgQoO3Z9rU0UynDQSrbA2erWyRtFV8
+         B867wXNRNTZAI5/83wK7EkK3xQdial7jK8gOegEypEqAXh6DqT44SnVBZvDqOpxwW07V
+         aNh3tOogymyMplyQqY5Zje4gpAGpnc+zMY2h5uhrn1+oQ4WIlywu5JHCSlRF6VOKcChk
+         4L3Ut3owW6eAdgFP5v+tkB3oL7k/JgNic2bPBWXOiHvRswwi7/X0cYVrAGM8yKyEgLld
+         Wvx7v8Pel0mdNGPS+YO+9wyPrAA3OBBA0+4WIinbnmBm86Ec9xFKUmIkQb/YKDUaHq3W
+         HicQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWTCPZfp8kRF2sxzpBG13eU23e5nPVX0X1Un0hpjfBDhp2IqyZUbaBOQfde4YvEtl0p3qPcNvWiFCQyKcaDZw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4N09DbG1fYkgtnmJk0X/Zaar1hvN8CjmX7Xy0gMLIW/JDUf49
+	Tq+vJwWNcflNO0Gi78hUaTj+I8jafv3FXXkU6LyqdM/uFU8xBgp6ESgab9giGJM4UCFyfjG5EOW
+	r
+X-Gm-Gg: ASbGncsyiqEwspQ+ywTgBmAU8jK5D0y6lwpwaEYWef+gi03c+L5gGP/BresvLpJADOd
+	2G5W6rx85/jM/H7ZnKaPNXAndTqllclb9SKXc8jEue/2VtVJsEOwXUY1zPWPKrvrQhbhp6ER+zB
+	ybe2yq7in4WZwUQg/0z5ZXkeQuhqCexfSVHRLtAQjqvMxcWaochhUTXix0pf9cfptm6JYRh7Ok6
+	Nyjq4NN5cU6I1rzRfQUd7P3sRE6F6R/l26TUix8L9TTIqDttJv+c6FWxXSMUBVgRRma3jF7cr3Q
+	1bFI153cU3LunVNgS7wZ
+X-Google-Smtp-Source: AGHT+IHZWXCuEpvT3xvdDN/MFE3D6j40MB5FYWQcEZO+pokW/icP1OWkegX28oeygqnpWf0djqcvPg==
+X-Received: by 2002:a17:907:3e82:b0:abb:db78:a25c with SMTP id a640c23a62f3a-abbdb78ac9amr70624766b.46.1739949820011;
+        Tue, 18 Feb 2025 23:23:40 -0800 (PST)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id a640c23a62f3a-abb837378e7sm729086166b.52.2025.02.18.23.23.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 21:49:46 -0800 (PST)
-Date: Wed, 19 Feb 2025 11:19:44 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Mark Tseng <chun-jen.tseng@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
+        Tue, 18 Feb 2025 23:23:39 -0800 (PST)
+Date: Wed, 19 Feb 2025 10:23:36 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Mark Tseng <chun-jen.tseng@mediatek.com>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
 	MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
 	Chanwoo Choi <cw00.choi@samsung.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3 3/3] cpufreq: mediatek: data safety protect
-Message-ID: <20250219054944.4kztb6rtumdt3x7h@vireshk-i7>
-References: <20250214074353.1169864-1-chun-jen.tseng@mediatek.com>
- <20250214074353.1169864-4-chun-jen.tseng@mediatek.com>
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	chun-jen.tseng@mediatek.com
+Subject: Re: [PATCH v3 1/3] cpufreq: mediatek: using global lock avoid race
+ condition
+Message-ID: <23e24631-aee4-43cc-8f85-29ec58241c03@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250214074353.1169864-4-chun-jen.tseng@mediatek.com>
+In-Reply-To: <20250214074353.1169864-2-chun-jen.tseng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_214947_981025_52FED82C 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20250218_232341_904575_42B64F4F 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,20 +108,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14-02-25, 15:43, Mark Tseng wrote:
-> get policy data in global lock session avoid get wrong data.
-> 
-> Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+Hi Mark,
 
-I think there is some confusion on why exactly locking is required and where
-exactly you need it. This patch is incorrect.
+kernel test robot noticed the following build warnings:
 
-If you really think some locking issue is present here, please explain in
-detail how a race can happen between different threads.
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Mark-Tseng/cpufreq-mediatek-using-global-lock-avoid-race-condition/20250214-154521
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git linux-next
+patch link:    https://lore.kernel.org/r/20250214074353.1169864-2-chun-jen.tseng%40mediatek.com
+patch subject: [PATCH v3 1/3] cpufreq: mediatek: using global lock avoid race condition
+config: sparc-randconfig-r071-20250218 (https://download.01.org/0day-ci/archive/20250219/202502190807.fz6fs2jz-lkp@intel.com/config)
+compiler: sparc64-linux-gcc (GCC) 14.2.0
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202502190807.fz6fs2jz-lkp@intel.com/
+
+smatch warnings:
+drivers/cpufreq/mediatek-cpufreq.c:367 mtk_cpufreq_opp_notifier() warn: inconsistent returns 'global &mtk_policy_lock'.
+
+vim +367 drivers/cpufreq/mediatek-cpufreq.c
+
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  317  static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  318  				    unsigned long event, void *data)
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  319  {
+5f81d7eeae239d drivers/cpufreq/mediatek-cpufreq.c Mark Tseng    2025-02-14  320  	struct dev_pm_opp *opp;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  321  	struct dev_pm_opp *new_opp;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  322  	struct mtk_cpu_dvfs_info *info;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  323  	unsigned long freq, volt;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  324  	struct cpufreq_policy *policy;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  325  	int ret = 0;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  326  
+5f81d7eeae239d drivers/cpufreq/mediatek-cpufreq.c Mark Tseng    2025-02-14  327  	mutex_lock(&mtk_policy_lock);
+5f81d7eeae239d drivers/cpufreq/mediatek-cpufreq.c Mark Tseng    2025-02-14  328  	opp = data;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  329  	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  330  
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  331  	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  332  		freq = dev_pm_opp_get_freq(opp);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  333  
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  334  		if (info->current_freq == freq) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  335  			volt = dev_pm_opp_get_voltage(opp);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  336  			ret = mtk_cpufreq_set_voltage(info, volt);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  337  			if (ret)
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  338  				dev_err(info->cpu_dev,
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  339  					"failed to scale voltage: %d\n", ret);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  340  		}
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  341  	} else if (event == OPP_EVENT_DISABLE) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  342  		freq = dev_pm_opp_get_freq(opp);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  343  
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  344  		/* case of current opp item is disabled */
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  345  		if (info->current_freq == freq) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  346  			freq = 1;
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  347  			new_opp = dev_pm_opp_find_freq_ceil(info->cpu_dev,
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  348  							    &freq);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  349  			if (IS_ERR(new_opp)) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  350  				dev_err(info->cpu_dev,
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  351  					"all opp items are disabled\n");
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  352  				ret = PTR_ERR(new_opp);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  353  				return notifier_from_errno(ret);
+
+mutex_unlock(&mtk_policy_lock) before returning.
+
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  354  			}
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  355  
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  356  			dev_pm_opp_put(new_opp);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  357  			policy = cpufreq_cpu_get(info->opp_cpu);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  358  			if (policy) {
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  359  				cpufreq_driver_target(policy, freq / 1000,
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  360  						      CPUFREQ_RELATION_L);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  361  				cpufreq_cpu_put(policy);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  362  			}
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  363  		}
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  364  	}
+5f81d7eeae239d drivers/cpufreq/mediatek-cpufreq.c Mark Tseng    2025-02-14  365  	mutex_unlock(&mtk_policy_lock);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  366  
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05 @367  	return notifier_from_errno(ret);
+c210063b40acab drivers/cpufreq/mediatek-cpufreq.c Rex-BC Chen   2022-05-05  368  }
 
 -- 
-viresh
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
 
