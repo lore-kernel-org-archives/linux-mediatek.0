@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA0B0C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 12:58:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DBAC021B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 13:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Jdvct6r77PKN9vgY343Ulkos+bhV9Qzzfs97r9bi4I=; b=QSC9Ui97RBDHuHp0DJPFTvz6sA
-	RnG0nxo1VPgwZLRe5xVqu9mA0NhpzqwC8mJlUJtZLt7JViIPILAKO3M2kpyU2ipbpSigCtGeCv8x8
-	lmgTrPf/jWn9gmLcLT7v9PWqdSbYL5+4QS8O22ZvjqAmBwQUvxq1lHQSwbLGXx7FqZ4sRnsgeIJIE
-	j03VyIa4J6HJltUzXtBlgkRZvm9KC6EJIh1TCgUYSsRojeJo6wQ6F+NqMFyD/o84nRg9amP9q3IfV
-	S6CbyiHwH5TWRdTMnDE8HKoa0pjDdpETqmsObAgp8X4lpvqJ1R/Uno9hccChWDbuKUfZ6J3IqzAY6
-	K+eLG3Cg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wzJ7CaXPWnaD0j4NZCCbi9ZiYtRZoPl8IlmG9ATr+Wo=; b=TBnTQP2U5LTE/m3WNoZOZNB97Y
+	hXRJGrvQJ4aCaWNUc7AuvqqxLfrjqhzLP03epbL1PQguW6vMYXVLhEFX/el39CUM6Bfm8Ss0rkgea
+	A8l9lhJqKSDfNM7YAWMgWVaLPcob4Jnfddq5IY1IZO0iX9mhZcEPJpzk9W/Ngl+KjHuZO6jg0n5DO
+	6wXD74MMtqXGqEBKImraL0qKIE+/s6eX1nKkY2pFiW1KYQQhaKFqZRFPKQUtEZDo5++8laX/yghU7
+	QxuwjrSFhF85qvXi7eRCSPtHAnF04uPLkc8OHhpWsMck23RJni9pl1ywMlA2iTd/8qBFBO43zab1E
+	u5bRgRzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkjey-0000000CoZT-3S0t;
-	Wed, 19 Feb 2025 12:58:40 +0000
+	id 1tkkDK-0000000Cyvp-3yKf;
+	Wed, 19 Feb 2025 13:34:10 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkjVz-0000000ClIh-3Iuh;
-	Wed, 19 Feb 2025 12:49:25 +0000
+	id 1tkk9j-0000000CxlK-41yI;
+	Wed, 19 Feb 2025 13:30:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739969362;
-	bh=JtCFmUUtrIS/1k4JkzCecit2Kb9gJDSyTekDFBqRn5s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BoFJwlehHzLHswimyS6738I+f/x3tTiFvGkMWVEz+qn3QCdBvMUw+81CaryIEvLGa
-	 M1zQylEbDaQIkxPTakQ4n+OPp0Rk5Ss4JGZeJqsnhWdBvdtI21bfZ6qTVASRPSYaz6
-	 Z8wNjy+dXT5Jdamjzr9lCe4+oUqyOsubYjhpMYM/4gBbv3CYP1zUe5rp6CAJNeOKHx
-	 pGkTrTJvDynLRbfxmoWaMmAcuC2yGealIojDe+dbmtZgSRfgyjp2c6bklFVUa3D0H0
-	 hDWyInVFE5P2ne3wzPE8KoPJTojnhFPaqzlIkEfyx04Z4U/cNJHaywWnmkhn8ddfwE
-	 at8RWKN5fHTsg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1739971826;
+	bh=O6x7SNy89g82HPWJGUfqA0X9THHPpDCJB2dBOG1XwF0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L+wa9Ip+3fVnUNZolzRaAGSL2sX+SgtItJw7JvBgQDuSf8T+1JlHglR7p0r/ZkpmC
+	 tJ6AfyICKKTVWd1I+tcnoDj1r7vGdpBq9C1Ho38SxrC21H4WYTHQJrOpoT0MDkJhqB
+	 tGOukiQF4+w0Eop1Qdg4pbhIN8dlOXpyEGrdXtW6gXh6h8mQzH7uZt70ZC60eJV7aj
+	 9q0wuWAPXe962QypjHmLp0Rfy06a5ZJRJtQu0hZBEgCt5WUDmazZhedy44TGutYHsZ
+	 PjLg9xNBmjbKvKDaSTU2ZFCFqQJx/7vO5VQZ8rhi+isQMRdgIcERR4c3R1lUtlb4s5
+	 yk1PE4ZQ29y5A==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1000])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 51BF917E14E7;
-	Wed, 19 Feb 2025 13:49:21 +0100 (CET)
-Message-ID: <779b0915-f0fa-46b6-8c5b-57745114252f@collabora.com>
-Date: Wed, 19 Feb 2025 13:49:21 +0100
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3DEBE17E1566;
+	Wed, 19 Feb 2025 14:30:22 +0100 (CET)
+Date: Wed, 19 Feb 2025 10:30:19 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com,
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	parkeryang <Parker.Yang@mediatek.com>
+Subject: Re: [PATCH 6/6] arm64: dts: mediatek: mt8390-genio-common: Add
+ routes for DMIC
+Message-ID: <5e7d7461-1af4-4e16-b808-072fe7c34e36@notapiano>
+References: <20250218-genio700-dmic-v1-0-6bc653da60f7@collabora.com>
+ <20250218-genio700-dmic-v1-6-6bc653da60f7@collabora.com>
+ <CAGXv+5H1pfJMQPBTF_K72D3-JFsZDvZ277erZ449sc6FTkNFSA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/7] drm/mediatek: Add CCORR component support for MT8196
-To: Jay Liu <jay.liu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250219092040.11227-1-jay.liu@mediatek.com>
- <20250219092040.11227-2-jay.liu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250219092040.11227-2-jay.liu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5H1pfJMQPBTF_K72D3-JFsZDvZ277erZ449sc6FTkNFSA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_044923_979576_7C8C63CC 
-X-CRM114-Status: GOOD (  26.50  )
+X-CRM114-CacheID: sfid-20250219_053028_154372_9D368DE7 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,111 +85,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/25 10:20, Jay Liu ha scritto:
-> Add CCORR component support for MT8196.
+On Wed, Feb 19, 2025 at 12:29:15PM +0800, Chen-Yu Tsai wrote:
+> On Wed, Feb 19, 2025 at 5:27 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+> >
+> > Add necessary routes for the onboard dual DMIC present on the Genio
+> > 700/510 EVK. The dmic is supplied by micbias0 and micbias2, and inputs
+> > into the MT8188 DMIC DAI.
+> >
+> > Co-developed-by: parkeryang <Parker.Yang@mediatek.com>
+> > Signed-off-by: parkeryang <Parker.Yang@mediatek.com>
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 6 +++++-
+> >  1 file changed, 5 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+> > index a37cf102a6e928440cc88e7e8fe0225fc28ec962..efdeca88b8c4e58f0c17825156276babf19af145 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+> > @@ -959,7 +959,11 @@ &sound {
+> >         pinctrl-0 = <&audio_default_pins>;
+> >         audio-routing =
+> >                 "Headphone", "Headphone L",
+> > -               "Headphone", "Headphone R";
+> > +               "Headphone", "Headphone R",
+> > +               "DMIC_INPUT", "AP DMIC",
+> > +               "AP DMIC", "AUDGLB",
+> > +               "AP DMIC", "MIC_BIAS_0",
+> > +               "AP DMIC", "MIC_BIAS_2";
+> >         mediatek,adsp = <&adsp>;
+> >         status = "okay";
 > 
-> CCORR is a hardware module that optimizes the visual effects of
-> images by adjusting the color matrix, enabling features such as
-> night light.
-> 
-> The 8196 hardware platform includes two CCORR (Color Correction) units.
-> However, the `mtk_ccorr_ctm_set` API only utilizes one of these units.
-> To prevent the unused CCORR unit from inadvertently taking effect,
-> we need to block it by adding mandatory_ccorr flag in the driver_data.
-> 
-> Signed-off-by: Jay Liu <jay.liu@mediatek.com>
+> Shouldn't there also be one or two new dmic-codecs, and a dai-link here?
 
-This is yet another thing that can be resolved by using OF Graph for defining the
-display pipeline: by using that, I don't see how can CCORR1 be used instead of
-CCORR0, if the latter is in the pipeline, but not the former.
+The DMIC codec is only needed to get a wakeup delay and avoid an initial "pop"
+noise. Same as for the analog mic, for which I've recently sent a patch [1].
 
-NACK.
+Depending on the order that things get picked up, I can either add the patch for
+it to this series, or the series in [1]. (Well, looks like I'll be sending a v2
+for this series anyway, so I can add that patch here).
 
-Regards,
-Angelo
+Thanks,
+Nícolas
 
-> ---
->   drivers/gpu/drm/mediatek/mtk_ddp_comp.c   |  3 ++-
->   drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 16 ++++++++++++++++
->   2 files changed, 18 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-> index edc6417639e6..d7e230bac53e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-> @@ -457,7 +457,8 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
->   	[DDP_COMPONENT_AAL0]		= { MTK_DISP_AAL,		0, &ddp_aal },
->   	[DDP_COMPONENT_AAL1]		= { MTK_DISP_AAL,		1, &ddp_aal },
->   	[DDP_COMPONENT_BLS]		= { MTK_DISP_BLS,		0, NULL },
-> -	[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,		0, &ddp_ccorr },
-> +	[DDP_COMPONENT_CCORR0]		= { MTK_DISP_CCORR,		0, &ddp_ccorr },
-> +	[DDP_COMPONENT_CCORR1]		= { MTK_DISP_CCORR,		1, &ddp_ccorr },
->   	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,		0, &ddp_color },
->   	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,		1, &ddp_color },
->   	[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,		0, &ddp_dither },
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> index 10d60d2c2a56..94e82b3fa2d8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> @@ -31,11 +31,13 @@
->   
->   struct mtk_disp_ccorr_data {
->   	u32 matrix_bits;
-> +	enum mtk_ddp_comp_id mandatory_ccorr;
->   };
->   
->   struct mtk_disp_ccorr {
->   	struct clk *clk;
->   	void __iomem *regs;
-> +	enum mtk_ddp_comp_id comp_id;
->   	struct cmdq_client_reg cmdq_reg;
->   	const struct mtk_disp_ccorr_data	*data;
->   };
-> @@ -115,6 +117,9 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
->   	if (!blob)
->   		return;
->   
-> +	if (ccorr->comp_id != ccorr->data->mandatory_ccorr)
-> +		return;
-> +
->   	ctm = (struct drm_color_ctm *)blob->data;
->   	input = ctm->matrix;
->   
-> @@ -154,6 +159,7 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
->   	struct device *dev = &pdev->dev;
->   	struct mtk_disp_ccorr *priv;
->   	int ret;
-> +	enum mtk_ddp_comp_id comp_id;
->   
->   	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
->   	if (!priv)
-> @@ -169,6 +175,14 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
->   		return dev_err_probe(dev, PTR_ERR(priv->regs),
->   				     "failed to ioremap ccorr\n");
->   
-> +	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_CCORR);
-> +	if (comp_id < 0) {
-> +		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
-> +		return comp_id;
-> +	}
-> +
-> +	priv->comp_id = comp_id;
-> +
->   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
->   	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
->   	if (ret)
-> @@ -192,10 +206,12 @@ static void mtk_disp_ccorr_remove(struct platform_device *pdev)
->   
->   static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
->   	.matrix_bits = 10,
-> +	.mandatory_ccorr = DDP_COMPONENT_CCORR0,
->   };
->   
->   static const struct mtk_disp_ccorr_data mt8192_ccorr_driver_data = {
->   	.matrix_bits = 11,
-> +	.mandatory_ccorr = DDP_COMPONENT_CCORR0,
->   };
->   
->   static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
-
+[1] https://lore.kernel.org/all/20250214-genio700-amic-wakeup-delay-200ms-v1-1-0094837c62b7@collabora.com
 
