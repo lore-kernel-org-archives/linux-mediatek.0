@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C633C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 13:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E22C1C021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 13:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fyVzxjSlpw7Rufi0vwm/fgYVGIFdY2X6Os1sOaklEt0=; b=ms6aNqcUcaHejDqScAGDAXqbh8
-	8BtJuNmd+3zTaSOGc4GcBZnt18h5zSzc/8S+8SzaIZQAj7pbe8rTnEEHi/Hd5TeEP5pBH+/BluJ3c
-	EZfq3SQmeiiQtJRiJZ6LohNi27IBSVT3nC413FzgZSI+Wuw7+u3fprx0wmBZGbipZBBGNNLjbWUni
-	zAoqWx6KQTuEiIZzxUf0IvQ+b2zIetFiuUdkmWBHWoIAQkTE2Ffb2odxDUuRk7/NN+eMRyXVLs1G2
-	anoXdFPzk7VlyTJmXJb46TNcNPhDqostnQ5HunLov9kP5MUVwT75o7IsLbuh/Ici/QpD2/+qAHlZR
-	8LPFVklA==;
+	bh=zF47/8EC2KHEsU4F8AzdjZS60vO+erdRnvGPlyuH6mU=; b=GlbUMcZZFr8apLC3qb6f7nhzve
+	mYd8qhgNlwUQKVnYN7qrJjJan1L2BqDuiZ2puohGZingR+IetzjF/Da7h8q3cVO85NWGeaj+saa7K
+	YyfxqJcoqkkptQ27nMLqBH0paBRGQ58CAbo+Kb3ju0j2fP3VcZPgTwSGTJywyZ+SI7GVDenHul8YB
+	aTVxREo8CuocabiwOsxf+XcVAUJPYJ5w9T/JlWsW2PDPnl1sshhLE3At0XmmQfaZE0lnQoNtUi60I
+	Uxy8mg/683LYdREaN+6eZ2NX5lUDzwjSHsQZYydWLxilcg4XInPcIgdWx3KSc5OFOMDkVaOiyqcWI
+	hZ4PYkHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkkOJ-0000000D2ll-2RHG;
-	Wed, 19 Feb 2025 13:45:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tkkTK-0000000D4hd-07Py;
+	Wed, 19 Feb 2025 13:50:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkkMg-0000000D1uZ-0LIh;
-	Wed, 19 Feb 2025 13:43:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739972628;
-	bh=AWOeMCIP6k+DdjeVem59jvHAY8phtfH/61lO07anvnQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dAWINYM61MZADtGlLWmkm/IFpcjX4E0KXCvxozxCyciEcdp+Sq0J4Rwu1txzlB2gN
-	 oWmZ/2UzkdCAZKMt13Q5yYscplizcr/uHx6S8Fv1Kxuu3KnBaeZsL1H3vP2PilHRJY
-	 1fyRqK1SmPesLsGhNv7yeIHD4Wma5knfmojHEALD6ZLsAc9hfGI8NRSRebqwZJ1lFV
-	 Mx/wWETOXNCzYCTB62VNDVJLflr4AZqmB8oBEFHn5L958tHi3NwE7S3gzyIJ1caOWt
-	 h8tD3pEXyWZVy83DqXR2AaJWzxHIRX0Mz2pwOmOgOyosflYwT6N3AK2GFK7EcUFOG9
-	 nTTDWJO/e21mA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E1C4C17E14D5;
-	Wed, 19 Feb 2025 14:43:47 +0100 (CET)
-Message-ID: <8204f202-9af5-46f5-96f8-3cb32fe32179@collabora.com>
-Date: Wed, 19 Feb 2025 14:43:47 +0100
+	id 1tkkRp-0000000D3xN-0FUA;
+	Wed, 19 Feb 2025 13:49:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id DAE9E5C597C;
+	Wed, 19 Feb 2025 13:48:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCDF7C4CEE0;
+	Wed, 19 Feb 2025 13:49:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739972947;
+	bh=A1jQdtZvRbIjirpi/QpXD1jZ8tpStZUExtEIfK1U5Cc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=IFIwFIYx0ARMx+0zY1HAfpnbVgkm//Wuvx46GSLkxcqt8pyR8cUWXdqQX9Ej8EiXY
+	 lOcuGfIVJCls3eng4yKpq6pAOUAIFyjgJeOMXv/uc14jU0fNAWka+TYNrkG31Zby4A
+	 q5VS+9iwtZOHE40aGcTDcdLU23EEaiFCpiIqVrn1HUceDqzWSED6ATPKac07FqWy18
+	 xGWm3cfbewXnj16OJw5uP5S/dxWwk8fUQBiuNCzCP4YyUOTi2SA4nzyCv46RrN8pxN
+	 geAc5o/X9/8YtXZmLfPdQPqnu0SC7k0Hm5aYQkVlcEXfFH68vkhwsmQAihN3TDx49u
+	 +73uOfTOqinSg==
+Received: by mail-pj1-f49.google.com with SMTP id 98e67ed59e1d1-2fc0026eb79so12733446a91.0;
+        Wed, 19 Feb 2025 05:49:07 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCW7NFLDK+bqr7TaQgOCs8EfojYDin5I+p1OD8mZ5kzkZ9KZW/CpythNUHWcOc3HyGCAsQz+2vpnzTKSS3eY6G71@lists.infradead.org, AJvYcCXBZtDtYMSCpD26gy8H2YyRKW0mJEZI5QSOvjL4KAx3jhEEU6Ousiac2BVBCbycM/EptT5HnclpZFCo9K3PbsY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJe9WYNLOE1NjXk69LexK7KzR415NUfaQVc/Z2xZSjB3/N7LIf
+	MSi74XF2AQDDPX3vgihFTFfG4B4PZLyT3PpwpOF0VKqeFbUIkFod148WvFJpm128cE++ouxUte0
+	GRSc6/Ic6OONzmVmHmBxEpJ7prA==
+X-Google-Smtp-Source: AGHT+IHzQqtYsvHwADMmf9VWFRyvbp1G6Xfgzoq4kaeRwD/sC1OC2iDXSHRlVSxq3fcQCkZrXfrGdEMDnJjaCDjhs5g=
+X-Received: by 2002:a17:90b:17c4:b0:2ef:2f49:7d7f with SMTP id
+ 98e67ed59e1d1-2fcb5a39f93mr6272302a91.18.1739972947332; Wed, 19 Feb 2025
+ 05:49:07 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] ASoC: mediatek: mt8188: Support DMIC in AFE
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, kernel@collabora.com, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- parkeryang <Parker.Yang@mediatek.com>
-References: <20250218-genio700-dmic-v1-0-6bc653da60f7@collabora.com>
- <20250218-genio700-dmic-v1-4-6bc653da60f7@collabora.com>
- <6cd2be03-a3e8-4bdc-b91e-51b3e1029782@collabora.com>
- <51ac7a72-9113-46c6-98d8-2924a9572966@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <51ac7a72-9113-46c6-98d8-2924a9572966@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com> <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20241218105320.38980-2-angelogioacchino.delregno@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 19 Feb 2025 21:49:51 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9J4TE=qo+00N7T6-daMET+eTt8psp+eV1DXdgrz+avEQ@mail.gmail.com>
+X-Gm-Features: AWEUYZkyNYkPz9DDQbj1WmcsisPQynG6ha2xkIpk0KuCjDPQnw0UB2_LYJk3Qtw
+Message-ID: <CAAOTY_9J4TE=qo+00N7T6-daMET+eTt8psp+eV1DXdgrz+avEQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] dt-bindings: display: mediatek: Add compatibles
+ for MT8188 MDP3
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
+	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	mchehab@kernel.org, matthias.bgg@gmail.com, moudy.ho@mediatek.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com, sebastian.fricke@collabora.com, 
+	macpaul.lin@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_054350_262407_F6F4D426 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20250219_054909_185727_B3F02277 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,44 +90,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/25 14:40, Nícolas F. R. A. Prado ha scritto:
-> On Wed, Feb 19, 2025 at 12:29:13PM +0100, AngeloGioacchino Del Regno wrote:
->> Il 18/02/25 21:52, Nícolas F. R. A. Prado ha scritto:
->>> From: parkeryang <Parker.Yang@mediatek.com>
->>>
->>> Add the AFE routes that connect the DMIC (I004-I011) to the UL9 frontend
->>> (O002-O009) and register the mt8188-dmic DAI driver during probe.
->>>
->>> Signed-off-by: parkeryang <Parker.Yang@mediatek.com>
->>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>> ---
->>>    sound/soc/mediatek/mt8188/Makefile            |  1 +
->>>    sound/soc/mediatek/mt8188/mt8188-afe-common.h |  1 +
->>>    sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    | 24 ++++++++++++++++++++++++
->>>    3 files changed, 26 insertions(+)
->>>
->>> diff --git a/sound/soc/mediatek/mt8188/Makefile b/sound/soc/mediatek/mt8188/Makefile
->>> index 1178bce45c50ba252672a32b3877732a5a76c610..b9f3e4ad7b07ba9e21c846706371c53269f894db 100644
->>> --- a/sound/soc/mediatek/mt8188/Makefile
->>> +++ b/sound/soc/mediatek/mt8188/Makefile
->>> @@ -6,6 +6,7 @@ snd-soc-mt8188-afe-y := \
->>>    	mt8188-afe-pcm.o \
->>>    	mt8188-audsys-clk.o \
->>>    	mt8188-dai-adda.o \
->>> +	mt8188-dai-dmic.o \
->>>    	mt8188-dai-etdm.o \
->>>    	mt8188-dai-pcm.o
->>
->> The Makefile addition doesn't belong to this commit. Please fix.
-> 
-> I was divided between adding it here or in the previous commit that adds the
-> dmic driver. Only in this commit is the mt8188_dai_dmic_register() added, so
-> this is the first commit in which any of the code from the dmic driver is
-> actually used, hence why I added it here. But adding the makefile entry together
-> with the driver code, even if it's not used, makes sense too, so I'll move it
-> there.
-> 
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2024=E5=B9=B412=E6=9C=8818=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:=
+53=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Add compatible strings for the AAL, COLOR, MERGE and PADDING
+> hardware components found in MediaTek's MT8188 SoC.
+>
+> This hardware is compatible with MT8195.
 
-You can even squash the two commits... after all, adding a piece that doesn't
-get used until a later time is practically useless... right?! :-)
+Acked-by: Chun-Kuang Hu <chunkuang.hu@mediatek.com>
+
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,aal.yaml        |  4 ++++
+>  .../bindings/display/mediatek/mediatek,color.yaml      |  4 ++++
+>  .../bindings/display/mediatek/mediatek,merge.yaml      |  4 ++++
+>  .../bindings/display/mediatek/mediatek,padding.yaml    | 10 +++++++---
+>  4 files changed, 19 insertions(+), 3 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.=
+yaml
+> index cf24434854ff..1479035da409 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yam=
+l
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yam=
+l
+> @@ -25,6 +25,10 @@ properties:
+>            - mediatek,mt8173-disp-aal
+>            - mediatek,mt8183-disp-aal
+>            - mediatek,mt8195-mdp3-aal
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-mdp3-aal
+> +          - const: mediatek,mt8195-mdp3-aal
+>        - items:
+>            - enum:
+>                - mediatek,mt2712-disp-aal
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,co=
+lor.yaml
+> index 7df786bbad20..799c0b8fc1f9 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.y=
+aml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.y=
+aml
+> @@ -27,6 +27,10 @@ properties:
+>            - mediatek,mt8167-disp-color
+>            - mediatek,mt8173-disp-color
+>            - mediatek,mt8195-mdp3-color
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-mdp3-color
+> +          - const: mediatek,mt8195-mdp3-color
+>        - items:
+>            - enum:
+>                - mediatek,mt7623-disp-color
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,me=
+rge.yaml
+> index dae839279950..415a25bc18fa 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.y=
+aml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.y=
+aml
+> @@ -25,6 +25,10 @@ properties:
+>            - mediatek,mt8173-disp-merge
+>            - mediatek,mt8195-disp-merge
+>            - mediatek,mt8195-mdp3-merge
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-mdp3-merge
+> +          - const: mediatek,mt8195-mdp3-merge
+>        - items:
+>            - const: mediatek,mt6795-disp-merge
+>            - const: mediatek,mt8173-disp-merge
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+padding.yaml
+> index be07bbdc54e3..86787866ced0 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding=
+.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding=
+.yaml
+> @@ -20,9 +20,13 @@ description:
+>
+>  properties:
+>    compatible:
+> -    enum:
+> -      - mediatek,mt8188-disp-padding
+> -      - mediatek,mt8195-mdp3-padding
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt8188-disp-padding
+> +          - mediatek,mt8195-mdp3-padding
+> +      - items:
+> +          - const: mediatek,mt8188-mdp3-padding
+> +          - const: mediatek,mt8195-mdp3-padding
+>
+>    reg:
+>      maxItems: 1
+> --
+> 2.46.1
+>
 
