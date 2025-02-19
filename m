@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AD40C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 15:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A631FC021B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 18:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gzj0SwPRaTNirTrm9WLzsRKYWUJkOtFVhEJhOoLZ8NU=; b=5CMNBoEg5eQwPkL4mhTj00Opu7
-	i+lvieZFjOPH8aVNDLE7ZPwXolWZjaQ19r+awmIkbYk/I1yG/n6se7Shnr6TfUFZj3580kQf9go/d
-	uHCuMh//LUk90JJp7RAbUF+CfuUuOolrt7+RZrqAkt9VjDbxJc+dqdZJEXeefSe/wLPSBn0kuUEly
-	WkSok5KIBPkmBfDNut3S5TKTe20PGeC9gkbQY2wEouy57UCXm5WXxr7ucw3BbnBHLGI0s+8U+AI6V
-	lCSTeBqk/3H1127wdzXa0CfpqAG9wcz3OY/Q7Dnxaj1+jh4/sM+98PYpyDCLSTL+SaoBKxAcrys1j
-	gJxV1GGA==;
+	bh=vfPRJbxZK2Ym9zwCuaZFrNJOtzYGGpknms/xM2gWx20=; b=X5TA/aCaUg5S3I3rfVuxMSfNdV
+	bAlfBUQ/GFnaTpKmEtKBsgN+MCYMd08nfn7YFx1ULcRr9A6b20ua38uyiB+qBjniqjRursEDXd4TK
+	i1SCe42rwyuLmUARPmCbQqFkTOcOL40yAaIKj95HUuuWKOBxJhm3885q1CTD3oD8rRm/JjL1Id0sO
+	ngxRY5FCMczWTvK1Y95kfrM5dMnOruxpQA+f5l+V7IVaxCUuyrAM7CEI6UWtwUN90TV8/XdJZqOVy
+	YpdioTM8v+cZ0rkHSf549nGMoBbaPfPjrkVRLo4V50i84tk5+NIyAGTpjkE94Wkv8httZqKLHykv5
+	CAQn5bcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkmKi-0000000Dds4-2iFB;
-	Wed, 19 Feb 2025 15:49:56 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tkooF-0000000EMPa-17P9;
+	Wed, 19 Feb 2025 18:28:35 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkmIx-0000000DdND-2H0B;
-	Wed, 19 Feb 2025 15:48:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Gzj0SwPRaTNirTrm9WLzsRKYWUJkOtFVhEJhOoLZ8NU=; b=wYl0ItI6OysoRYTR2q06G8db9m
-	xrqJ+Qb/eBCyNzxAC5xNTOThx6DwY+l1zz0mkvDE1nW0Ef4+USboaTSwCkHkY62Awu71DRmFK/1lN
-	ZevniaXm6WXfyNWd/Nkl6CoJLI5K/f0jqwUbV2h58AxxTTDnM7bXkibhpQg+41z6r/js=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tkmIh-00Ffmc-UA; Wed, 19 Feb 2025 16:47:51 +0100
-Date: Wed, 19 Feb 2025 16:47:51 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sky Huang <SkyLake.Huang@mediatek.com>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
+	id 1tkomi-0000000ELob-3xBp;
+	Wed, 19 Feb 2025 18:27:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5FFE2A42A3A;
+	Wed, 19 Feb 2025 18:25:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAD40C4CED1;
+	Wed, 19 Feb 2025 18:26:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739989619;
+	bh=sKmUoYnW4UEhcRUdgQh6f5TeK27U5t+wS+GMuUa4uMI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=t5NtC7HmsBVbNsePYWhw98WxAvLmLuJimdX8lQwOobH0N+jGMNqJhY4ah8sJN9wN3
+	 bdRfu10DyAOM+6fUsN6l6J4HWJG9SpdgAbu5Pgk7lSnQTzbD91WqTal4Hw2fgpZsqX
+	 QvrhGjy+V922k9ZEoVyObaz/G6qkwaKyOU6hjxxRzlsbfW2K0vGbmrd388umDtJRiE
+	 E5GkJ3SbkrqUwvlUp7ktHcXtghhP7M9BDlAklUe8h2IAQXYHQcMpCMghNAPURKQX2i
+	 HjdZC16uvcSRUk/wIwS2D+lpGaJl9QGeIkKN2ftPd08rW8cxjD/sinWC4dPKDmPSHL
+	 +/2Bp1r4I5ilQ==
+Date: Wed, 19 Feb 2025 23:56:50 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v2 3/3] net: phy: mediatek: add driver for
- built-in 2.5G ethernet PHY on MT7988
-Message-ID: <724eff11-c6d1-40e1-a99f-205f5426a07d@lunn.ch>
-References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
- <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
+ for EN7581 SoC
+Message-ID: <20250219182650.gxzlbl6ovgbacmkm@thinkpad>
+References: <20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org>
+ <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250202-en7581-pcie-pbus-csr-v2-2-65dcb201c9a9@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_074807_578330_87DC3491 
-X-CRM114-Status: GOOD (  23.88  )
+X-CRM114-CacheID: sfid-20250219_102701_103707_91EA30EF 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,126 +83,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +config MEDIATEK_2P5GE_PHY
-> +	tristate "MediaTek 2.5Gb Ethernet PHYs"
-> +	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
-> +	select MTK_NET_PHYLIB
-> +	help
-> +	  Supports MediaTek SoC built-in 2.5Gb Ethernet PHYs.
+On Sun, Feb 02, 2025 at 08:34:24PM +0100, Lorenzo Bianconi wrote:
+> Configure PBus base address and address mask to allow the hw
+> to detect if a given address is on PCIE0, PCIE1 or PCIE2.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+
+- Mani
+
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 30 ++++++++++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index aa24ac9aaecc749b53cfc4faf6399913d20cdbf2..9c2a592cae959de8fbe9ca5c5c2253f8eadf2c76 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/irqchip/chained_irq.h>
+>  #include <linux/irqdomain.h>
+>  #include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/msi.h>
+>  #include <linux/of_device.h>
+> @@ -24,6 +25,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <linux/reset.h>
+>  
+>  #include "../pci.h"
+> @@ -127,6 +129,13 @@
+>  
+>  #define PCIE_MTK_RESET_TIME_US		10
+>  
+> +#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
+> +#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
+> +#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
+> +	((_n) == 2 ? 0x28000000 :	\
+> +	 (_n) == 1 ? 0x24000000 : 0x20000000)
+> +#define PCIE_EN7581_PBUS_BASE_ADDR_MASK	GENMASK(31, 26)
 > +
-> +	  This will load necessary firmware and add appropriate time delay.
-> +	  Accelerate this procedure through internal pbus instead of MDIO
-> +	  bus. Certain link-up issues will also be fixed here.
-
-Please keep the file sorted, this should be the first entry.
-
-> diff --git a/drivers/net/phy/mediatek/Makefile b/drivers/net/phy/mediatek/Makefile
-> index 814879d0abe5..c6db8abd2c9c 100644
-> --- a/drivers/net/phy/mediatek/Makefile
-> +++ b/drivers/net/phy/mediatek/Makefile
-> @@ -2,3 +2,4 @@
->  obj-$(CONFIG_MTK_NET_PHYLIB)		+= mtk-phy-lib.o
->  obj-$(CONFIG_MEDIATEK_GE_PHY)		+= mtk-ge.o
->  obj-$(CONFIG_MEDIATEK_GE_SOC_PHY)	+= mtk-ge-soc.o
-> +obj-$(CONFIG_MEDIATEK_2P5GE_PHY)	+= mtk-2p5ge.o
-
-I suppose you could say this file is sorted in reverse order so is
-correct?
-
-> diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-> new file mode 100644
-> index 000000000000..adb03df331ab
-> --- /dev/null
-> +++ b/drivers/net/phy/mediatek/mtk-2p5ge.c
-> @@ -0,0 +1,346 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +#include <linux/bitfield.h>
-> +#include <linux/firmware.h>
-> +#include <linux/module.h>
-> +#include <linux/nvmem-consumer.h>
-
-Is this header needed?
-
-> +#include <linux/of_address.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/pinctrl/consumer.h>
-> +#include <linux/phy.h>
-> +#include <linux/pm_domain.h>
-> +#include <linux/pm_runtime.h>
-
-And these two? Please only use those that are needed.
-
-> +static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
-> +{
+>  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
+>  #define PCIE_EN7581_RESET_TIME_MS	100
+>  
+> @@ -931,7 +940,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+>  static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  {
+>  	struct device *dev = pcie->dev;
+> -	int err;
+> +	struct regmap *map;
+> +	int err, slot;
+>  	u32 val;
+>  
+>  	/*
+> @@ -945,6 +955,24 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	/* Wait for the time needed to complete the reset lines assert. */
+>  	msleep(PCIE_EN7581_RESET_TIME_MS);
+>  
+> +	map = syscon_regmap_lookup_by_phandle(dev->of_node,
+> +					      "mediatek,pbus-csr");
+> +	if (IS_ERR(map))
+> +		return PTR_ERR(map);
 > +
-> +	writew(reg & ~MD32_EN, mcu_csr_base + MD32_EN_CFG);
-> +	writew(reg | MD32_EN, mcu_csr_base + MD32_EN_CFG);
-> +	phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-> +	/* We need a delay here to stabilize initialization of MCU */
-> +	usleep_range(7000, 8000);
-
-Does the reset bit clear when the MCU is ready? That is what 802.3
-defines. phy_poll_reset() might do what you need.
-
-> +	dev_info(dev, "Firmware loading/trigger ok.\n");
-
-dev_dbg(), if at all. You have already spammed the log with the
-firmware version, so this adds nothing useful.
-
-> +		phydev->duplex = DUPLEX_FULL;
-> +		/* FIXME:
-> +		 * The current firmware always enables rate adaptation mode.
-> +		 */
-> +		phydev->rate_matching = RATE_MATCH_PAUSE;
-
-Can we tell current firmware for future firmware? Is this actually
-fixable?
-
-> +	}
+> +	/*
+> +	 * Configure PBus base address and address mask to allow the
+> +	 * hw to detect if a given address is on PCIE0, PCIE1 or PCIE2.
+> +	 */
+> +	slot = of_get_pci_domain_nr(dev->of_node);
+> +	if (slot < 0)
+> +		return slot;
 > +
-> +	return 0;
-> +}
+> +	regmap_write(map, PCIE_EN7581_PBUS_ADDR(slot),
+> +		     PCIE_EN7581_PBUS_BASE_ADDR(slot));
+> +	regmap_write(map, PCIE_EN7581_PBUS_ADDR_MASK(slot),
+> +		     PCIE_EN7581_PBUS_BASE_ADDR_MASK);
 > +
+>  	/*
+>  	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
+>  	 * requires PHY initialization and power-on before PHY reset deassert.
+> 
+> -- 
+> 2.48.1
+> 
 
-
-
-> +static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
-> +{
-> +	struct mtk_i2p5ge_phy_priv *priv;
-> +
-> +	priv = devm_kzalloc(&phydev->mdio.dev,
-> +			    sizeof(struct mtk_i2p5ge_phy_priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	switch (phydev->drv->phy_id) {
-> +	case MTK_2P5GPHY_ID_MT7988:
-> +		/* The original hardware only sets MDIO_DEVS_PMAPMD */
-
-What do you mean by "original hardware"? 
-
-You use PHY_ID_MATCH_MODEL(MTK_2P5GPHY_ID_MT7988), so do you mean
-revision 0 is broken, but revision 1 fixed it?
-
-
-> +		phydev->c45_ids.mmds_present |= MDIO_DEVS_PCS |
-> +						MDIO_DEVS_AN |
-> +						MDIO_DEVS_VEND1 |
-> +						MDIO_DEVS_VEND2;
-> +		break;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +
-> +	priv->fw_loaded = false;
-> +	phydev->priv = priv;
-> +
-> +	mtk_phy_leds_state_init(phydev);
-
-The LEDs work without firmware?
-
-    Andrew
-
----
-pw-bot: cr
+-- 
+மணிவண்ணன் சதாசிவம்
 
