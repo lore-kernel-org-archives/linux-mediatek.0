@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 361ABC021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 21:04:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81EF4C021B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 21:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LTazg9BGcpTNM1FEEAymLCtsaeHNiUCA6IgZYSoJOOQ=; b=RaWMhFM7MkuHB/DTAiRgV3i2iD
-	kyly/t4b86DJXTWHZEce51iIkvuvC0YmPcrxaH/lnsMGuPqSkHpZY6kWPxjsSPb0DWtK4yj8KEw8p
-	NM5JeQC1BqD4hTi6SBRiyQL4BdhTIfYMUm88I1nobH/7BKSfXoVifN/BUgJf61vKI74SySDUV+ues
-	/g1hZY+uGszfPCNGX4VYR7AYWxUGdP5ItP+fy/CJu9I4FspA6BiyRkJ5uXFFpEq7YLhtHgccQWduG
-	ZMmq2MhTxV+4HuNc1gTR7yprjB4UM7AzJBWi40O7E1uoWxDsYdf0xwiqw7X2dbeKOZlmSHnPyV7Jz
-	nqcy4CnA==;
+	bh=4ba7sBd79KvT0DgpIWK/dwQDT1LJYkzaju3LI4FWecw=; b=mdfd3iJYqWdQdOiaKD09z9cO2d
+	eNEwG34NJdhr0o3NcHj9tVaAUBwEJnInvNEtkmByY491RTRyWhDBMucBM9Cm/U2nDvYaR23npqhmJ
+	G4wr4TISF0TFSZtcvvDarJbiVnmv4YrmlSgszuuNYWk4+Ijlg3KppbM3/PYy7vWnVJPQSUSB8O5w3
+	UswPz9jrEzNANZg+xB97d+LMdhGXi67wzxz/+cUiX8mO77C4fA3b9euSB+7C+t/V4LQgaa/5LTPun
+	ZsM8LhxDWBgQM7r46v5NibBLAbi9oJgGZzqRaCGASOf2CFCvOyix2d/4HQWXzBMuwUwmpRP5ZnTso
+	M3IY0hCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkrF5-0000000F4Fi-1CIO;
-	Wed, 19 Feb 2025 21:04:27 +0000
+	id 1tkrGd-0000000F4rD-2MMm;
+	Wed, 19 Feb 2025 21:06:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkrDH-0000000F3lD-0RUJ;
-	Wed, 19 Feb 2025 21:02:35 +0000
+	id 1tkrDt-0000000F3vz-0I3f;
+	Wed, 19 Feb 2025 21:03:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=LTazg9BGcpTNM1FEEAymLCtsaeHNiUCA6IgZYSoJOOQ=; b=Txs9I8OIoKHrl2+3CrznrXgloK
-	gVXVNnymyJx5KcKUI/3VWgQuhRjaZX6dJCSAviWxMv6/NXIDSun1LnVPeaUlfnKYiLb7Da3B+sob8
-	Jj5nALrHG8DlLA4pfs0Gc5wwH+HNbHCZTeNY0xbnZLr6ufjbXOJgTTh01V2GhyvptHo8ikUPhG2j+
-	pCYacPaz8Ie+9cql5Ni/X/sDCkajFYPIwBKe0IvxxAC5/vYhVhKDHoAqSBimv2hhJHWlntNFNstpW
-	ZivUDh2um7FSUjBKOru7W7pm7Fzf4lREHgfBa8enmRHAjoiAEaNsD9PSCO2C8Sg3tG2GgfgB6+JMC
-	avlK7AaA==;
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	bh=4ba7sBd79KvT0DgpIWK/dwQDT1LJYkzaju3LI4FWecw=; b=aPd+fkHIYCMn9nQth5Iv25N4vL
+	J4we+eb/yB1LmmAoMmlm7yIlP6xp2MUEQ1ZkcMsaLR15tk3/kkivpA36Njmhs3bFTf9MQAtPY5snh
+	Olchw5QxABooMi2aY4c1Rs3xo9so79My6vYnmzLCsNntQhsyBHLzLSWKjFJPTCr+jwItFrS4GjXgF
+	oKcgi0qnaWzc/e73IhQmmBxa38/dAxWIZWSZiOGFu2qXFBmIhoZPdvTaumkvPYMr/qZr15fMMtiq/
+	ZghDvknh5H+pwThDtprf1u5o4LDodTqWStY7m20h6W379ocDFd4aAQo6vyQdHR2bwXdo4yOsS5glH
+	oUz4GnuA==;
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkrD6-00000002KcQ-1Oac;
-	Wed, 19 Feb 2025 21:02:33 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5e05717755bso255109a12.0;
-        Wed, 19 Feb 2025 13:02:22 -0800 (PST)
+	id 1tkrDp-00000002KdP-0xnB;
+	Wed, 19 Feb 2025 21:03:11 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-abb7520028bso38365766b.3;
+        Wed, 19 Feb 2025 13:03:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739998941; x=1740603741; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1739998987; x=1740603787; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=LTazg9BGcpTNM1FEEAymLCtsaeHNiUCA6IgZYSoJOOQ=;
-        b=Sx3IK6ZCj63V6dPdiKmsWtU7U/l08MKj8tkiJ+/yCF2+jWSy9tywftScaMFVGHXxx2
-         fcy1uIc4YuC/tXUNHUl0Ux1iTOHcAHte8o4nUma7BVoa2iuz5MWCZiO3VDssPTHG5e4w
-         HQqFUjISrg6gniJS4YO39WVJ/N77lsHkU0eVceED2SnmhG/Mf/XPNTDJ7XOjJT4PNd/J
-         gQU/2NI97T0+8gKbCbbNsk5mFCYUjJfpeK4WG9g+xhX0AcSSqg2kqaoDjGiRDFQmAx0N
-         KlesqFYtLKAwbpWQu1mMOFUcp9LNBQd1jfeUZ6Vuujdd0nJO9LTlGhh44oqlbdhb2/3O
-         wdvg==
+        bh=4ba7sBd79KvT0DgpIWK/dwQDT1LJYkzaju3LI4FWecw=;
+        b=EngsbzWH3BQIBXx2ig4iT0eFeqbLAfPIrAipv3ZME4xs6DhfsCN+jn9F/hlzAb1FFC
+         ikk0EsCnwM3/sxGNQovtTdPSbotl71eRIyLi9veZTZktlHBHZYy2m5qCaxYKfy+c8Dpv
+         yPobhtd+i9bK2fySa6zW6jRbtW5lEwaxmrOlEEWWDSP3/qHnL0KTiYYe4w3FN4AANyOA
+         /jMICh5Q0etMF24tiKQewA436vt6rjlV59hHL1hBCMRf8TGW5+uWVSpCvOiSRwKMRgQ1
+         DoSAWoHTUkMSXX9GCrZeGk4tSTCSlUZMhQsdaPVzD/CEhlH6SkQSa4U8FCAFNLEmXHg0
+         KByA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739998941; x=1740603741;
+        d=1e100.net; s=20230601; t=1739998987; x=1740603787;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=LTazg9BGcpTNM1FEEAymLCtsaeHNiUCA6IgZYSoJOOQ=;
-        b=QSZOADrDok30SIj9KBpeXWFBwRHMrM6cP3/dHeZB7ZDXS/k99mFXO7xm12mGaBM7SR
-         ly4JMiCJjuIGKpJhAExBlBjic2GEGAA8/A504LxWd1BiPqNqjiEOnZRlpIRnihRqsVsO
-         7HE/Qc/JWKUxKtmK0oSKsvYw9I/uLRPCDAC8PjamegAZSnbNoBSDRhFL+fmaMtVWn/EV
-         oHopPi/8q909lnh1R2ABTlQOX9DJseO7WNhSWB/DUX0eo17ZNe7qNuX6VgnIUMLOXLUt
-         Yj00tRiBOmAQ9ECxwGLgG3FvkbmD+VZ2CTdh/Z6rzew+M7VrMJ9Ecj9wRIDNzDD7NCj4
-         mzuA==
-X-Forwarded-Encrypted: i=1; AJvYcCWc8V9oyaxtMIhVdSdHmUZCzHYuzz9pVpFt1r13qq7XTAAEsubGQfQr9P+Dr6mM2NW4pwoD+eST+Fj64qX2zm4=@lists.infradead.org, AJvYcCXr3ylQznX/4JaNVdcadut9VKUUEW49330IAQGOjcSej168y+xKoFODUBzGqJtWwZKj0TfkaEWWZE37YR/0yLLo@lists.infradead.org
-X-Gm-Message-State: AOJu0YwxiEJ9/e2jGriqmusKam+aoOZzjw2CW7yF3f4aiVKFMBNU6J4j
-	x+oBiYLXZu33qc28Nzp2Pa8HziG6PD0nHmcAieQm+s8jc3tdOfPyOreFWiWD
-X-Gm-Gg: ASbGncuWqGVvReVxtyFU3UFHwIB5uXrA+pyfr6ingvJkmHaXwwVU6wQZVuHC9l/Y4qJ
-	Lygz/sMtwA0chNMhZ8XjQxUK6e3c/Qj1rrXsK5E8r4VMz7pRm1VBLK/iaNakinQZLJBBhQez4iT
-	VsTygnRL3tpcH7y71Ltm+k+Keqa6hBKYAt5H06q0oDw0DmNFvSQH+5nIOptmDrB4D/B0wQpg7ti
-	0HsfAZlWnqrtFvh6Ht7XtQLXe9nVKYu8tvbI1fC9im4fxB1/WL9jKzL3WzpMKLiELeMdghnkVgL
-	Ch2wMW0PAzUTSKc0ZJUlZfMiaNg+ncS5nn5n1xh8So9/Wwm0HnDtM9NXf/euYYa04AQ8wG7ic83
-	vRi+7GQeckY6SmnnGO2aBaYk9FIAaB2lxoiLYUeKirAbUcpctidFaR1Ttq4qB+8Gm34mZ2RQT2a
-	SRDMujRd0=
-X-Google-Smtp-Source: AGHT+IHprOe4MPJUbVlEKnY0AKzMXHUw/DFl+y2L8TtOSH3EBqkUTzpq3+94PV00Bo0nCCp1cgrbsg==
-X-Received: by 2002:a05:6402:2707:b0:5de:dff7:7d8f with SMTP id 4fb4d7f45d1cf-5e0360e0582mr23625431a12.18.1739998940701;
-        Wed, 19 Feb 2025 13:02:20 -0800 (PST)
+        bh=4ba7sBd79KvT0DgpIWK/dwQDT1LJYkzaju3LI4FWecw=;
+        b=SIoZRsqRvKu3Vp7JMxUJBmn+Z351p+voudwlhlNfn2R2VC6CVHub9OBK+imHE8VCHJ
+         ZU4BfWm+eWcN48be/NIN9qzHnkzPmKmXKNkYybGWPLOqUmbh9keiwvopSOffSKMytsZy
+         /AJbTx7X1VSqsP5RN3xLRkKf+Fs0QgY3RERMtfKalpWvZtRk+yY86WhIg+BokDLNRPpw
+         rn8HfDn59Ov4Nh8zdpjpQccoPEDQrINQlap1yHR1EeW2NsV8FOMx9dBwnqFOUAUo5HIL
+         XrbgvzB7oOprVpSKWN9gb7PVfOvED/eA5SmAO49wkNdoUb5IgOiSOUs5HweIzHHbvOG8
+         27tg==
+X-Forwarded-Encrypted: i=1; AJvYcCW6VXVKMD34BkcyXEqy/3/QnCy4v1921jzIj/kjE6ztG1lkDUVb2l3dlQXy0mI8PzOoQ/W5liONjzx6fLGelvsY@lists.infradead.org, AJvYcCWJQ9+Mn1F4Afh6VAzqWm5iz7u73Danqx4tX8zMYB1hMq0Wx4XB+cIXF6+u2NnsqmtPMHGUtIvvvyvEIkvxFs8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwginNNelggC2aMhlUWeSOkHc8Gj9laTpQynFb410HtSgZaHhPa
+	5dijAhRG68h0sx69n216OGYbfFj19HovLdHGQZ2+IrThI/yy2oq1
+X-Gm-Gg: ASbGnctISEg9GYg7/lHyMvv6qPFBQP1nIynfoNEL25RdtdmHVFCNQ+bBgxxrpycNflb
+	I29FZhdTV5KCcMEWuQDSVHoHD4zeb+mCoF7n5mYwqoRhbGIHk6ETxJ/LBoKEz/IgJlueSvjygQb
+	nNEIPM+9bO7RmHKiIobyeVJ913tkhbd3kmvsZB3fwR6t4UaPxne5WPl7+Nv4pV7/T+xP+l05jPh
+	WyXxNbeeDMBaaURltphRkzbLnA+jZCUp4s6o2qF0oBMpR5h1D4kZ80yaseMY8FKMsdJiA16aG7Q
+	jEhl+47UM/4ABXSxTv4JWmsLeSIyfj5Hdotr0t6vnkfdFqtY83gWd+yENt1EqHlJAsXbwZ2wAL5
+	f1epWbDxt5XgMR5In0Iaq4wuv7YAktFHSKkdqalXDdG5EcVElxPD065z2VpZAEMPnFfkMRokDkj
+	8re719fPM=
+X-Google-Smtp-Source: AGHT+IFq4cWZ/GF6xGipbxkKRa+D7h6dWZTRsoGzCPuvbMMN2SzodAHuSFimNssepCWeypERBTC2Pw==
+X-Received: by 2002:a17:906:f5a3:b0:ab7:eead:57f2 with SMTP id a640c23a62f3a-abbcd0bafefmr542280366b.48.1739998986742;
+        Wed, 19 Feb 2025 13:03:06 -0800 (PST)
 Received: from ?IPV6:2a02:3100:a982:e400:6dd0:628c:981b:2783? (dynamic-2a02-3100-a982-e400-6dd0-628c-981b-2783.310.pool.telefonica.de. [2a02:3100:a982:e400:6dd0:628c:981b:2783])
-        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-5dece1c43a0sm11052090a12.28.2025.02.19.13.02.18
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-abb86c9320csm836912266b.55.2025.02.19.13.03.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Feb 2025 13:02:19 -0800 (PST)
-Message-ID: <1beee958-1b12-4d09-a464-67125e27f55d@gmail.com>
-Date: Wed, 19 Feb 2025 22:03:04 +0100
+        Wed, 19 Feb 2025 13:03:06 -0800 (PST)
+Message-ID: <ea0f203b-ee9a-4769-a27a-8dfa6a11ff01@gmail.com>
+Date: Wed, 19 Feb 2025 22:03:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: [PATCH net-next 1/8] net: phy: move PHY package code from
- phy_device.c to own source file
+Subject: [PATCH net-next 2/8] net: phy: move PHY package related code from
+ phy.h to phy_package.c
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>,
  Russell King - ARM Linux <linux@armlinux.org.uk>,
@@ -153,8 +153,8 @@ In-Reply-To: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_210230_352606_1101FD86 
-X-CRM114-Status: GOOD (  28.05  )
+X-CRM114-CacheID: sfid-20250219_210310_246816_4D717938 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,529 +169,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is the first step in moving the PHY package related code
-to its own source file. No functional change intended.
+Move PHY package related inline functions from phy.h to phy_package.c.
+While doing so remove locked versions phy_package_read() and
+phy_package_write() which have no user.
 
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
- drivers/net/phy/Makefile      |   3 +-
- drivers/net/phy/phy_device.c  | 237 ---------------------------------
- drivers/net/phy/phy_package.c | 244 ++++++++++++++++++++++++++++++++++
- 3 files changed, 246 insertions(+), 238 deletions(-)
- create mode 100644 drivers/net/phy/phy_package.c
+ drivers/net/phy/phy_package.c | 61 +++++++++++++++++++++++
+ include/linux/phy.h           | 91 +++--------------------------------
+ 2 files changed, 68 insertions(+), 84 deletions(-)
 
-diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
-index c8dac6e92..8f9ba5e82 100644
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
-@@ -2,7 +2,8 @@
- # Makefile for Linux PHY drivers
- 
- libphy-y			:= phy.o phy-c45.o phy-core.o phy_device.o \
--				   linkmode.o phy_link_topology.o
-+				   linkmode.o phy_link_topology.o \
-+				   phy_package.o
- mdio-bus-y			+= mdio_bus.o mdio_device.o
- 
- ifdef CONFIG_MDIO_DEVICE
-diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index 7d21379fa..22588dce1 100644
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
-@@ -1686,243 +1686,6 @@ bool phy_driver_is_genphy_10g(struct phy_device *phydev)
- }
- EXPORT_SYMBOL_GPL(phy_driver_is_genphy_10g);
- 
--/**
-- * phy_package_join - join a common PHY group
-- * @phydev: target phy_device struct
-- * @base_addr: cookie and base PHY address of PHY package for offset
-- *   calculation of global register access
-- * @priv_size: if non-zero allocate this amount of bytes for private data
-- *
-- * This joins a PHY group and provides a shared storage for all phydevs in
-- * this group. This is intended to be used for packages which contain
-- * more than one PHY, for example a quad PHY transceiver.
-- *
-- * The base_addr parameter serves as cookie which has to have the same values
-- * for all members of one group and as the base PHY address of the PHY package
-- * for offset calculation to access generic registers of a PHY package.
-- * Usually, one of the PHY addresses of the different PHYs in the package
-- * provides access to these global registers.
-- * The address which is given here, will be used in the phy_package_read()
-- * and phy_package_write() convenience functions as base and added to the
-- * passed offset in those functions.
-- *
-- * This will set the shared pointer of the phydev to the shared storage.
-- * If this is the first call for a this cookie the shared storage will be
-- * allocated. If priv_size is non-zero, the given amount of bytes are
-- * allocated for the priv member.
-- *
-- * Returns < 1 on error, 0 on success. Esp. calling phy_package_join()
-- * with the same cookie but a different priv_size is an error.
-- */
--int phy_package_join(struct phy_device *phydev, int base_addr, size_t priv_size)
--{
--	struct mii_bus *bus = phydev->mdio.bus;
--	struct phy_package_shared *shared;
--	int ret;
--
--	if (base_addr < 0 || base_addr >= PHY_MAX_ADDR)
--		return -EINVAL;
--
--	mutex_lock(&bus->shared_lock);
--	shared = bus->shared[base_addr];
--	if (!shared) {
--		ret = -ENOMEM;
--		shared = kzalloc(sizeof(*shared), GFP_KERNEL);
--		if (!shared)
--			goto err_unlock;
--		if (priv_size) {
--			shared->priv = kzalloc(priv_size, GFP_KERNEL);
--			if (!shared->priv)
--				goto err_free;
--			shared->priv_size = priv_size;
--		}
--		shared->base_addr = base_addr;
--		shared->np = NULL;
--		refcount_set(&shared->refcnt, 1);
--		bus->shared[base_addr] = shared;
--	} else {
--		ret = -EINVAL;
--		if (priv_size && priv_size != shared->priv_size)
--			goto err_unlock;
--		refcount_inc(&shared->refcnt);
--	}
--	mutex_unlock(&bus->shared_lock);
--
--	phydev->shared = shared;
--
--	return 0;
--
--err_free:
--	kfree(shared);
--err_unlock:
--	mutex_unlock(&bus->shared_lock);
--	return ret;
--}
--EXPORT_SYMBOL_GPL(phy_package_join);
--
--/**
-- * of_phy_package_join - join a common PHY group in PHY package
-- * @phydev: target phy_device struct
-- * @priv_size: if non-zero allocate this amount of bytes for private data
-- *
-- * This is a variant of phy_package_join for PHY package defined in DT.
-- *
-- * The parent node of the @phydev is checked as a valid PHY package node
-- * structure (by matching the node name "ethernet-phy-package") and the
-- * base_addr for the PHY package is passed to phy_package_join.
-- *
-- * With this configuration the shared struct will also have the np value
-- * filled to use additional DT defined properties in PHY specific
-- * probe_once and config_init_once PHY package OPs.
-- *
-- * Returns < 0 on error, 0 on success. Esp. calling phy_package_join()
-- * with the same cookie but a different priv_size is an error. Or a parent
-- * node is not detected or is not valid or doesn't match the expected node
-- * name for PHY package.
-- */
--int of_phy_package_join(struct phy_device *phydev, size_t priv_size)
--{
--	struct device_node *node = phydev->mdio.dev.of_node;
--	struct device_node *package_node;
--	u32 base_addr;
--	int ret;
--
--	if (!node)
--		return -EINVAL;
--
--	package_node = of_get_parent(node);
--	if (!package_node)
--		return -EINVAL;
--
--	if (!of_node_name_eq(package_node, "ethernet-phy-package")) {
--		ret = -EINVAL;
--		goto exit;
--	}
--
--	if (of_property_read_u32(package_node, "reg", &base_addr)) {
--		ret = -EINVAL;
--		goto exit;
--	}
--
--	ret = phy_package_join(phydev, base_addr, priv_size);
--	if (ret)
--		goto exit;
--
--	phydev->shared->np = package_node;
--
--	return 0;
--exit:
--	of_node_put(package_node);
--	return ret;
--}
--EXPORT_SYMBOL_GPL(of_phy_package_join);
--
--/**
-- * phy_package_leave - leave a common PHY group
-- * @phydev: target phy_device struct
-- *
-- * This leaves a PHY group created by phy_package_join(). If this phydev
-- * was the last user of the shared data between the group, this data is
-- * freed. Resets the phydev->shared pointer to NULL.
-- */
--void phy_package_leave(struct phy_device *phydev)
--{
--	struct phy_package_shared *shared = phydev->shared;
--	struct mii_bus *bus = phydev->mdio.bus;
--
--	if (!shared)
--		return;
--
--	/* Decrease the node refcount on leave if present */
--	if (shared->np)
--		of_node_put(shared->np);
--
--	if (refcount_dec_and_mutex_lock(&shared->refcnt, &bus->shared_lock)) {
--		bus->shared[shared->base_addr] = NULL;
--		mutex_unlock(&bus->shared_lock);
--		kfree(shared->priv);
--		kfree(shared);
--	}
--
--	phydev->shared = NULL;
--}
--EXPORT_SYMBOL_GPL(phy_package_leave);
--
--static void devm_phy_package_leave(struct device *dev, void *res)
--{
--	phy_package_leave(*(struct phy_device **)res);
--}
--
--/**
-- * devm_phy_package_join - resource managed phy_package_join()
-- * @dev: device that is registering this PHY package
-- * @phydev: target phy_device struct
-- * @base_addr: cookie and base PHY address of PHY package for offset
-- *   calculation of global register access
-- * @priv_size: if non-zero allocate this amount of bytes for private data
-- *
-- * Managed phy_package_join(). Shared storage fetched by this function,
-- * phy_package_leave() is automatically called on driver detach. See
-- * phy_package_join() for more information.
-- */
--int devm_phy_package_join(struct device *dev, struct phy_device *phydev,
--			  int base_addr, size_t priv_size)
--{
--	struct phy_device **ptr;
--	int ret;
--
--	ptr = devres_alloc(devm_phy_package_leave, sizeof(*ptr),
--			   GFP_KERNEL);
--	if (!ptr)
--		return -ENOMEM;
--
--	ret = phy_package_join(phydev, base_addr, priv_size);
--
--	if (!ret) {
--		*ptr = phydev;
--		devres_add(dev, ptr);
--	} else {
--		devres_free(ptr);
--	}
--
--	return ret;
--}
--EXPORT_SYMBOL_GPL(devm_phy_package_join);
--
--/**
-- * devm_of_phy_package_join - resource managed of_phy_package_join()
-- * @dev: device that is registering this PHY package
-- * @phydev: target phy_device struct
-- * @priv_size: if non-zero allocate this amount of bytes for private data
-- *
-- * Managed of_phy_package_join(). Shared storage fetched by this function,
-- * phy_package_leave() is automatically called on driver detach. See
-- * of_phy_package_join() for more information.
-- */
--int devm_of_phy_package_join(struct device *dev, struct phy_device *phydev,
--			     size_t priv_size)
--{
--	struct phy_device **ptr;
--	int ret;
--
--	ptr = devres_alloc(devm_phy_package_leave, sizeof(*ptr),
--			   GFP_KERNEL);
--	if (!ptr)
--		return -ENOMEM;
--
--	ret = of_phy_package_join(phydev, priv_size);
--
--	if (!ret) {
--		*ptr = phydev;
--		devres_add(dev, ptr);
--	} else {
--		devres_free(ptr);
--	}
--
--	return ret;
--}
--EXPORT_SYMBOL_GPL(devm_of_phy_package_join);
--
- /**
-  * phy_detach - detach a PHY device from its network device
-  * @phydev: target phy_device struct
 diff --git a/drivers/net/phy/phy_package.c b/drivers/net/phy/phy_package.c
-new file mode 100644
-index 000000000..260469f02
---- /dev/null
+index 260469f02..9b9c200ae 100644
+--- a/drivers/net/phy/phy_package.c
 +++ b/drivers/net/phy/phy_package.c
-@@ -0,0 +1,244 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * PHY package support
-+ */
-+
-+#include <linux/of.h>
-+#include <linux/phy.h>
-+
-+/**
-+ * phy_package_join - join a common PHY group
-+ * @phydev: target phy_device struct
-+ * @base_addr: cookie and base PHY address of PHY package for offset
-+ *   calculation of global register access
-+ * @priv_size: if non-zero allocate this amount of bytes for private data
-+ *
-+ * This joins a PHY group and provides a shared storage for all phydevs in
-+ * this group. This is intended to be used for packages which contain
-+ * more than one PHY, for example a quad PHY transceiver.
-+ *
-+ * The base_addr parameter serves as cookie which has to have the same values
-+ * for all members of one group and as the base PHY address of the PHY package
-+ * for offset calculation to access generic registers of a PHY package.
-+ * Usually, one of the PHY addresses of the different PHYs in the package
-+ * provides access to these global registers.
-+ * The address which is given here, will be used in the phy_package_read()
-+ * and phy_package_write() convenience functions as base and added to the
-+ * passed offset in those functions.
-+ *
-+ * This will set the shared pointer of the phydev to the shared storage.
-+ * If this is the first call for a this cookie the shared storage will be
-+ * allocated. If priv_size is non-zero, the given amount of bytes are
-+ * allocated for the priv member.
-+ *
-+ * Returns < 1 on error, 0 on success. Esp. calling phy_package_join()
-+ * with the same cookie but a different priv_size is an error.
-+ */
-+int phy_package_join(struct phy_device *phydev, int base_addr, size_t priv_size)
-+{
-+	struct mii_bus *bus = phydev->mdio.bus;
-+	struct phy_package_shared *shared;
-+	int ret;
-+
-+	if (base_addr < 0 || base_addr >= PHY_MAX_ADDR)
-+		return -EINVAL;
-+
-+	mutex_lock(&bus->shared_lock);
-+	shared = bus->shared[base_addr];
-+	if (!shared) {
-+		ret = -ENOMEM;
-+		shared = kzalloc(sizeof(*shared), GFP_KERNEL);
-+		if (!shared)
-+			goto err_unlock;
-+		if (priv_size) {
-+			shared->priv = kzalloc(priv_size, GFP_KERNEL);
-+			if (!shared->priv)
-+				goto err_free;
-+			shared->priv_size = priv_size;
-+		}
-+		shared->base_addr = base_addr;
-+		shared->np = NULL;
-+		refcount_set(&shared->refcnt, 1);
-+		bus->shared[base_addr] = shared;
-+	} else {
-+		ret = -EINVAL;
-+		if (priv_size && priv_size != shared->priv_size)
-+			goto err_unlock;
-+		refcount_inc(&shared->refcnt);
-+	}
-+	mutex_unlock(&bus->shared_lock);
-+
-+	phydev->shared = shared;
-+
-+	return 0;
-+
-+err_free:
-+	kfree(shared);
-+err_unlock:
-+	mutex_unlock(&bus->shared_lock);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(phy_package_join);
-+
-+/**
-+ * of_phy_package_join - join a common PHY group in PHY package
-+ * @phydev: target phy_device struct
-+ * @priv_size: if non-zero allocate this amount of bytes for private data
-+ *
-+ * This is a variant of phy_package_join for PHY package defined in DT.
-+ *
-+ * The parent node of the @phydev is checked as a valid PHY package node
-+ * structure (by matching the node name "ethernet-phy-package") and the
-+ * base_addr for the PHY package is passed to phy_package_join.
-+ *
-+ * With this configuration the shared struct will also have the np value
-+ * filled to use additional DT defined properties in PHY specific
-+ * probe_once and config_init_once PHY package OPs.
-+ *
-+ * Returns < 0 on error, 0 on success. Esp. calling phy_package_join()
-+ * with the same cookie but a different priv_size is an error. Or a parent
-+ * node is not detected or is not valid or doesn't match the expected node
-+ * name for PHY package.
-+ */
-+int of_phy_package_join(struct phy_device *phydev, size_t priv_size)
-+{
-+	struct device_node *node = phydev->mdio.dev.of_node;
-+	struct device_node *package_node;
-+	u32 base_addr;
-+	int ret;
-+
-+	if (!node)
-+		return -EINVAL;
-+
-+	package_node = of_get_parent(node);
-+	if (!package_node)
-+		return -EINVAL;
-+
-+	if (!of_node_name_eq(package_node, "ethernet-phy-package")) {
-+		ret = -EINVAL;
-+		goto exit;
-+	}
-+
-+	if (of_property_read_u32(package_node, "reg", &base_addr)) {
-+		ret = -EINVAL;
-+		goto exit;
-+	}
-+
-+	ret = phy_package_join(phydev, base_addr, priv_size);
-+	if (ret)
-+		goto exit;
-+
-+	phydev->shared->np = package_node;
-+
-+	return 0;
-+exit:
-+	of_node_put(package_node);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(of_phy_package_join);
-+
-+/**
-+ * phy_package_leave - leave a common PHY group
-+ * @phydev: target phy_device struct
-+ *
-+ * This leaves a PHY group created by phy_package_join(). If this phydev
-+ * was the last user of the shared data between the group, this data is
-+ * freed. Resets the phydev->shared pointer to NULL.
-+ */
-+void phy_package_leave(struct phy_device *phydev)
+@@ -6,6 +6,67 @@
+ #include <linux/of.h>
+ #include <linux/phy.h>
+ 
++int phy_package_address(struct phy_device *phydev, unsigned int addr_offset)
 +{
 +	struct phy_package_shared *shared = phydev->shared;
-+	struct mii_bus *bus = phydev->mdio.bus;
++	u8 base_addr = shared->base_addr;
++
++	if (addr_offset >= PHY_MAX_ADDR - base_addr)
++		return -EIO;
++
++	/* we know that addr will be in the range 0..31 and thus the
++	 * implicit cast to a signed int is not a problem.
++	 */
++	return base_addr + addr_offset;
++}
++EXPORT_SYMBOL_GPL(phy_package_address);
++
++int __phy_package_read(struct phy_device *phydev, unsigned int addr_offset,
++		       u32 regnum)
++{
++	int addr = phy_package_address(phydev, addr_offset);
++
++	if (addr < 0)
++		return addr;
++
++	return __mdiobus_read(phydev->mdio.bus, addr, regnum);
++}
++EXPORT_SYMBOL_GPL(__phy_package_read);
++
++int __phy_package_write(struct phy_device *phydev, unsigned int addr_offset,
++			u32 regnum, u16 val)
++{
++	int addr = phy_package_address(phydev, addr_offset);
++
++	if (addr < 0)
++		return addr;
++
++	return __mdiobus_write(phydev->mdio.bus, addr, regnum, val);
++}
++EXPORT_SYMBOL_GPL(__phy_package_write);
++
++static bool __phy_package_set_once(struct phy_device *phydev, unsigned int b)
++{
++	struct phy_package_shared *shared = phydev->shared;
 +
 +	if (!shared)
-+		return;
++		return false;
 +
-+	/* Decrease the node refcount on leave if present */
-+	if (shared->np)
-+		of_node_put(shared->np);
-+
-+	if (refcount_dec_and_mutex_lock(&shared->refcnt, &bus->shared_lock)) {
-+		bus->shared[shared->base_addr] = NULL;
-+		mutex_unlock(&bus->shared_lock);
-+		kfree(shared->priv);
-+		kfree(shared);
-+	}
-+
-+	phydev->shared = NULL;
++	return !test_and_set_bit(b, &shared->flags);
 +}
-+EXPORT_SYMBOL_GPL(phy_package_leave);
 +
-+static void devm_phy_package_leave(struct device *dev, void *res)
++bool phy_package_init_once(struct phy_device *phydev)
 +{
-+	phy_package_leave(*(struct phy_device **)res);
++	return __phy_package_set_once(phydev, 0);
 +}
++EXPORT_SYMBOL_GPL(phy_package_init_once);
 +
-+/**
-+ * devm_phy_package_join - resource managed phy_package_join()
-+ * @dev: device that is registering this PHY package
-+ * @phydev: target phy_device struct
-+ * @base_addr: cookie and base PHY address of PHY package for offset
-+ *   calculation of global register access
-+ * @priv_size: if non-zero allocate this amount of bytes for private data
-+ *
-+ * Managed phy_package_join(). Shared storage fetched by this function,
-+ * phy_package_leave() is automatically called on driver detach. See
-+ * phy_package_join() for more information.
-+ */
-+int devm_phy_package_join(struct device *dev, struct phy_device *phydev,
-+			  int base_addr, size_t priv_size)
++bool phy_package_probe_once(struct phy_device *phydev)
 +{
-+	struct phy_device **ptr;
-+	int ret;
-+
-+	ptr = devres_alloc(devm_phy_package_leave, sizeof(*ptr),
-+			   GFP_KERNEL);
-+	if (!ptr)
-+		return -ENOMEM;
-+
-+	ret = phy_package_join(phydev, base_addr, priv_size);
-+
-+	if (!ret) {
-+		*ptr = phydev;
-+		devres_add(dev, ptr);
-+	} else {
-+		devres_free(ptr);
-+	}
-+
-+	return ret;
++	return __phy_package_set_once(phydev, 1);
 +}
-+EXPORT_SYMBOL_GPL(devm_phy_package_join);
++EXPORT_SYMBOL_GPL(phy_package_probe_once);
 +
-+/**
-+ * devm_of_phy_package_join - resource managed of_phy_package_join()
-+ * @dev: device that is registering this PHY package
-+ * @phydev: target phy_device struct
-+ * @priv_size: if non-zero allocate this amount of bytes for private data
-+ *
-+ * Managed of_phy_package_join(). Shared storage fetched by this function,
-+ * phy_package_leave() is automatically called on driver detach. See
-+ * of_phy_package_join() for more information.
-+ */
-+int devm_of_phy_package_join(struct device *dev, struct phy_device *phydev,
-+			     size_t priv_size)
-+{
-+	struct phy_device **ptr;
-+	int ret;
-+
-+	ptr = devres_alloc(devm_phy_package_leave, sizeof(*ptr),
-+			   GFP_KERNEL);
-+	if (!ptr)
-+		return -ENOMEM;
-+
-+	ret = of_phy_package_join(phydev, priv_size);
-+
-+	if (!ret) {
-+		*ptr = phydev;
-+		devres_add(dev, ptr);
-+	} else {
-+		devres_free(ptr);
-+	}
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(devm_of_phy_package_join);
+ /**
+  * phy_package_join - join a common PHY group
+  * @phydev: target phy_device struct
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index e36eb247c..a8f39e817 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -353,10 +353,6 @@ struct phy_package_shared {
+ 	void *priv;
+ };
+ 
+-/* used as bit number in atomic bitops */
+-#define PHY_SHARED_F_INIT_DONE  0
+-#define PHY_SHARED_F_PROBE_DONE 1
+-
+ /**
+  * struct mii_bus - Represents an MDIO bus
+  *
+@@ -2135,66 +2131,11 @@ int __phy_hwtstamp_set(struct phy_device *phydev,
+ 		       struct kernel_hwtstamp_config *config,
+ 		       struct netlink_ext_ack *extack);
+ 
+-static inline int phy_package_address(struct phy_device *phydev,
+-				      unsigned int addr_offset)
+-{
+-	struct phy_package_shared *shared = phydev->shared;
+-	u8 base_addr = shared->base_addr;
+-
+-	if (addr_offset >= PHY_MAX_ADDR - base_addr)
+-		return -EIO;
+-
+-	/* we know that addr will be in the range 0..31 and thus the
+-	 * implicit cast to a signed int is not a problem.
+-	 */
+-	return base_addr + addr_offset;
+-}
+-
+-static inline int phy_package_read(struct phy_device *phydev,
+-				   unsigned int addr_offset, u32 regnum)
+-{
+-	int addr = phy_package_address(phydev, addr_offset);
+-
+-	if (addr < 0)
+-		return addr;
+-
+-	return mdiobus_read(phydev->mdio.bus, addr, regnum);
+-}
+-
+-static inline int __phy_package_read(struct phy_device *phydev,
+-				     unsigned int addr_offset, u32 regnum)
+-{
+-	int addr = phy_package_address(phydev, addr_offset);
+-
+-	if (addr < 0)
+-		return addr;
+-
+-	return __mdiobus_read(phydev->mdio.bus, addr, regnum);
+-}
+-
+-static inline int phy_package_write(struct phy_device *phydev,
+-				    unsigned int addr_offset, u32 regnum,
+-				    u16 val)
+-{
+-	int addr = phy_package_address(phydev, addr_offset);
+-
+-	if (addr < 0)
+-		return addr;
+-
+-	return mdiobus_write(phydev->mdio.bus, addr, regnum, val);
+-}
+-
+-static inline int __phy_package_write(struct phy_device *phydev,
+-				      unsigned int addr_offset, u32 regnum,
+-				      u16 val)
+-{
+-	int addr = phy_package_address(phydev, addr_offset);
+-
+-	if (addr < 0)
+-		return addr;
+-
+-	return __mdiobus_write(phydev->mdio.bus, addr, regnum, val);
+-}
++int phy_package_address(struct phy_device *phydev, unsigned int addr_offset);
++int __phy_package_read(struct phy_device *phydev, unsigned int addr_offset,
++		       u32 regnum);
++int __phy_package_write(struct phy_device *phydev, unsigned int addr_offset,
++			u32 regnum, u16 val);
+ 
+ int __phy_package_read_mmd(struct phy_device *phydev,
+ 			   unsigned int addr_offset, int devad,
+@@ -2212,26 +2153,8 @@ int phy_package_write_mmd(struct phy_device *phydev,
+ 			  unsigned int addr_offset, int devad,
+ 			  u32 regnum, u16 val);
+ 
+-static inline bool __phy_package_set_once(struct phy_device *phydev,
+-					  unsigned int b)
+-{
+-	struct phy_package_shared *shared = phydev->shared;
+-
+-	if (!shared)
+-		return false;
+-
+-	return !test_and_set_bit(b, &shared->flags);
+-}
+-
+-static inline bool phy_package_init_once(struct phy_device *phydev)
+-{
+-	return __phy_package_set_once(phydev, PHY_SHARED_F_INIT_DONE);
+-}
+-
+-static inline bool phy_package_probe_once(struct phy_device *phydev)
+-{
+-	return __phy_package_set_once(phydev, PHY_SHARED_F_PROBE_DONE);
+-}
++bool phy_package_init_once(struct phy_device *phydev);
++bool phy_package_probe_once(struct phy_device *phydev);
+ 
+ extern const struct bus_type mdio_bus_type;
+ 
 -- 
 2.48.1
 
