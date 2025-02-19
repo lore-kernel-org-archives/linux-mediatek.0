@@ -4,164 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47332C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 08:23:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11071C021AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 08:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7n22irSeGWIqSBNiIIhY8dUu78jzeyktmwLlH058QWI=; b=MHWAqBmwMuc1QbOqonNl2T2oJ6
-	zYL0zr2/ZYUps2npSM5f9JgziHSgumXlUSmeZDQ/HUXawQ5uVFFlyRbEsiFuDm/GzvrCTzEb5HIWj
-	i7t0LmSe/BXo/SPLf+eAAQ5/DGsw6mmZPtYL8PSGWo0FA6hBbc3c+3Dl0FCEsduhZtPmxCJi4XD7Q
-	tzAZUpxywiC/1putYsKkZ+9wKAKgNGMzJ+SJt1VSDz+5ExVocnsGH3q/JaOTXxOU+AfSFw4mnZWEa
-	vW+Kn2v1qZGplMYnz1hdhBsp7QZnw5tx26nlx/4SfI2szEgydsSsDkbITi0nGfwvZOqor2Z719/rb
-	NBwv2Ibw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M/94G8XwfehYGMeoQoABmIBqM/+UAgSwp1ee0Ztqu24=; b=TEiV1eklhuILpVsbdEfYO0hghL
+	+Bitd95C9Y7yyULzkWo34v/G7xefzrYPPLK6fXmRdnWWV7xfgp7a4BK+Ale0sk6wV0ZfQgspFKg6B
+	tG9XDY3opwiu4Xi2l1RiQ1MyWnGwvGUkRYaj/H/ksY5MoXIK4RkNcoB6Wobj58/px8B3ckeoNSZgK
+	jD2TZcSNANUC22hiIuSxnHE5ufsNXVbKXAEfX0FfvsU9o4QOSHRQp8Uv1H7t9Gd6e81tLH+rqlSzY
+	xHz0Ad+knhzKow84J4P8b7ntLXROi0fj3IMgxJuLa7O2OdRYjSPC1++2xfgS+6KYgtUZplHcV7et1
+	Skg/bJ1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkfMx-0000000BUfR-1W9n;
-	Wed, 19 Feb 2025 08:23:47 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1tkfoQ-0000000BekF-03if;
+	Wed, 19 Feb 2025 08:52:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkf9c-0000000BQsc-2L8w
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Feb 2025 08:10:01 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 1D76821940;
-	Wed, 19 Feb 2025 08:09:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1739952599; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=7n22irSeGWIqSBNiIIhY8dUu78jzeyktmwLlH058QWI=;
-	b=dKPf/W8OQXbxt6ftlFfGpxSgQu7gVp2dstzZ3XzqVgl5Z357Tinp+N+mnS5eZMNrmbpIct
-	ERkIgZLFbCqLer2bR/7cT4Nal5dezMobDUN5PBm/4ffPV3aQDn17w9FIeMBLCA5L6STVWi
-	Fu675OecpkfIKo5+vbkkfz5g/IUDu/c=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1739952599;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=7n22irSeGWIqSBNiIIhY8dUu78jzeyktmwLlH058QWI=;
-	b=MeWi0m6iVBnfg747H1LUoCuWVrL86D9smnRpv47ULAXeqgfodW1nBInmL14qgH8vx7K4fX
-	EIRt6Mg5pinhPRCA==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b="dKPf/W8O";
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=MeWi0m6i
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1739952599; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=7n22irSeGWIqSBNiIIhY8dUu78jzeyktmwLlH058QWI=;
-	b=dKPf/W8OQXbxt6ftlFfGpxSgQu7gVp2dstzZ3XzqVgl5Z357Tinp+N+mnS5eZMNrmbpIct
-	ERkIgZLFbCqLer2bR/7cT4Nal5dezMobDUN5PBm/4ffPV3aQDn17w9FIeMBLCA5L6STVWi
-	Fu675OecpkfIKo5+vbkkfz5g/IUDu/c=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1739952599;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=7n22irSeGWIqSBNiIIhY8dUu78jzeyktmwLlH058QWI=;
-	b=MeWi0m6iVBnfg747H1LUoCuWVrL86D9smnRpv47ULAXeqgfodW1nBInmL14qgH8vx7K4fX
-	EIRt6Mg5pinhPRCA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 93F3213806;
-	Wed, 19 Feb 2025 08:09:58 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id p5PBItaRtWd5FwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Wed, 19 Feb 2025 08:09:58 +0000
-Message-ID: <0b68b63f-a826-45f5-8845-11db9b46757d@suse.de>
-Date: Wed, 19 Feb 2025 09:09:58 +0100
+	id 1tkfc4-0000000BaW1-0HYJ;
+	Wed, 19 Feb 2025 08:39:25 +0000
+X-UUID: 003421beee9d11efa1e849db4cc18d44-20250219
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M/94G8XwfehYGMeoQoABmIBqM/+UAgSwp1ee0Ztqu24=;
+	b=PmF+4QxHUISPOw9gKJ6U3JSdLP0rHl9YjyHDio0xn+2IM+zYIRFlqZAg5LQ+DiIJer1VP0lUFbn88bhjZ3I8As7dYXrZpZ+7ETUoouJRuE/JigqHSVN+YyW11O29qKEoTJhnTRkXgLIOc2yZkIgqGde04z7H9y7aghnJzOB23rg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:6ca16711-dfd1-47d7-b5cb-a5d481fb6df2,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:c2d750b5-a2a1-4ef3-9ef9-e116773da0a7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 003421beee9d11efa1e849db4cc18d44-20250219
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 321965628; Wed, 19 Feb 2025 01:39:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Wed, 19 Feb 2025 16:39:12 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Wed, 19 Feb 2025 16:39:12 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
+ Horman <horms@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, Sky Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v2 0/2] Add 2.5G ethernet phy support on MT7988
+Date: Wed, 19 Feb 2025 16:39:07 +0800
+Message-ID: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 06/25] drm/armada: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
- linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org,
- xen-devel@lists.xenproject.org
-References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-7-tzimmermann@suse.de>
- <Z7St0O3A_mXEYK49@shell.armlinux.org.uk>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <Z7St0O3A_mXEYK49@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: 1D76821940
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[19];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_TLS_ALL(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch,lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org];
-	TO_DN_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:dkim,suse.de:mid];
-	RCVD_COUNT_TWO(0.00)[2];
-	DKIM_TRACE(0.00)[suse.de:+]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_001000_880270_50FB2F48 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250219_003924_113937_A85BC6C1 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,36 +91,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+From: Sky Huang <skylake.huang@mediatek.com>
 
-Am 18.02.25 um 16:57 schrieb Russell King (Oracle):
-> On Tue, Feb 18, 2025 at 03:23:29PM +0100, Thomas Zimmermann wrote:
->> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
->> buffer size. No alignment required.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> Cc: Russell King <linux@armlinux.org.uk>
-> armada_pitch() does have some special alignment (it aligns the pitch to
-> 128 bytes). I've no idea what drm_mode_size_dumb() does. Can you check
-> whether it does the same please?
->
-> If it doesn't, then this patch is incorrect.
+This patchset adds support for built-in 2.5Gphy on MT7988,
+corresponding dt-bindings and dts. It's based from previous commit:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250116012159.
+3816135-4-SkyLake.Huang@mediatek.com/
 
-Indeed, I should have noticed. Will be fixed in the next iteration. 
-Thanks for the review.
+Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
+---
+Change in v2:
+- Add missing dt-bindings and dts node.
+- Remove mtk_phy_leds_state_init() temporarily. I'm going to add LED support
+later.
+- Remove "Firmware loading/trigger ok" log.
+- Add macro define for 0x800e & 0x800f
+---
+Sky Huang (3):
+  net: phy: mediatek: Add 2.5Gphy firmware dt-bindings and dts node
+  dts: mt7988a: Add built-in ethernet phy firmware node
+  net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on
+    MT7988
 
-Best regards
-Thomas
-
->
+ .../bindings/net/mediatek,2p5gphy-fw.yaml     |  37 ++
+ MAINTAINERS                                   |   4 +-
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi     |   6 +
+ drivers/net/phy/mediatek/Kconfig              |  11 +
+ drivers/net/phy/mediatek/Makefile             |   1 +
+ drivers/net/phy/mediatek/mtk-2p5ge.c          | 346 ++++++++++++++++++
+ 6 files changed, 404 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek,2p5gphy-fw.yaml
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
 
 -- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+2.45.2
 
 
