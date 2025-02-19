@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61CB2C021AD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 02:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD8DC021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 03:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dWhyf/mIS4S54437JZI8WoZ9NsQu/7bL+L062bk/878=; b=M77iCscigvG8uZ+Xt8FdzrNL3J
-	H0ITRX93461wgH8lQ4lA2PLyd2QukbO/z+QE8sUMlLRVOSuosda7pZXLCtrNu91ERBQLs5trwre5O
-	ZyZX5NKj/KFthC8bKJc3VRVpkk4SzGufJrJY99kLeqX5K2TplUkKvQ+U+TuW+RortFUkqyh2FFBOj
-	ySh4SWyyewSxCr2UiKRmY060C7LktopnWrouGj/g3oATun62iSU+/J285Yiw/y9E8JGWLBpcaFg1P
-	6JNjeFpI8XzexCCQKTPJrLoqD+zz4Julw0PWNWnourt6rjZDMoAkZrW78gRHriIRgk5Z8w09lPT0I
-	BxajSuQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Kl7u8bFLHAjtaElzFILg5UyTJziKGgGFb4LO1YSKTug=; b=iij8LOwXHvKNSHtq7FpjaOReGH
+	NyT9MPXE7rqXs3jOMWtMbqYbJd6ERivBNhjE0cTTodIUGn0ZkbxkqrzI2fy+orvI9amNwJAAg1CPY
+	O+klWoEES2XLD+ZIgQQQ2WAt8M/G1TPDMIZdpM5K4gOE4Lhes1mCgN9USZsLGFcn2NkPbH+9NkDcr
+	eHM68/WMJaYchiL9SPrbO7LjLFpndqumvo4Fhye8kurqwVgHnK5+JL1EEbHdTrOAeyiYk8tsnggV+
+	WzKbdHNvivl+4/VtJbC+xqaHJ9PfWZifpxa4Cii+BSMeLRn4ee69uRSKUOYXbq7p/5ldCxmyjXK7f
+	yuDZD3VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkZid-0000000Adoc-2YcK;
-	Wed, 19 Feb 2025 02:21:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkZh9-0000000AdWx-3MnM;
-	Wed, 19 Feb 2025 02:20:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CE3E55C49F8;
-	Wed, 19 Feb 2025 02:19:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D15DCC4CEE9;
-	Wed, 19 Feb 2025 02:20:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739931614;
-	bh=DswjrUyYsDs3+IZvhRKtKvmN18DdCWY7JhrEcaJjCb8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=AmOD3FEZyF4CnPgWxvicEIk6Zt20e8cNsH7oM6uYr263aqvyFqC96juyH7aDHslcI
-	 Z8peFyH+1Jyv3diFZlC8aMWBg2zYGpM5BGC7rLwgr5GELGVIv+ipZBbEWnMymRd8nP
-	 k4We1fErCUA1E+FyIbtazhGvr2MVjYoLeuTrBugh1TkiNlIq/bAz8XYtX3N14UwCwb
-	 7cmBhO/gTO4vDrl8QzQXre+EU5vUgVeHX46EsuJdeLb+7R18vxDzCnmwEq85jbohDp
-	 TQr/5u7gDssMkmNfp4gXLUfxFD1cB/Ismiv35es1Ns57LhfvlgUxKMEjzJkJJhan9w
-	 QSIWNN9tpu5gQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70CDE380AAE9;
-	Wed, 19 Feb 2025 02:20:46 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tkav1-0000000AlYw-2yDN;
+	Wed, 19 Feb 2025 03:38:39 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tkatW-0000000AlPd-2n1r;
+	Wed, 19 Feb 2025 03:37:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=Kl7u8
+	bFLHAjtaElzFILg5UyTJziKGgGFb4LO1YSKTug=; b=BzC9sW61lpYTYF70UeYs9
+	3pgGYPYcyNd+RXZb8SFZXSlWn62tp14ZoF4276oyxRjo2W+I+4D9lztbuUmIfwPb
+	RvskGq2T5hB18evYkfulaO0P0ep5Xmu23lqP8Dg8NlVatDlPCAn3CeawzhBYOwZ7
+	qP1ZyhP2IssKpgsKsjmobA=
+Received: from icess-ProLiant-DL380-Gen10.. (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wCH0CvPUbVnWpNgNA--.30420S4;
+	Wed, 19 Feb 2025 11:36:49 +0800 (CST)
+From: Haoxiang Li <haoxiang_li2024@163.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	johannes@sipsolutions.net,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haoxiang Li <haoxiang_li2024@163.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: Add check for devm_kstrdup()
+Date: Wed, 19 Feb 2025 11:36:45 +0800
+Message-Id: <20250219033645.2594753-1-haoxiang_li2024@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v4] net: ethernet: mediatek: add EEE support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173993164504.106119.18028680299291793484.git-patchwork-notify@kernel.org>
-Date: Wed, 19 Feb 2025 02:20:45 +0000
-References: <20250217094022.1065436-1-dqfext@gmail.com>
-In-Reply-To: <20250217094022.1065436-1-dqfext@gmail.com>
-To: Qingfang Deng <dqfext@gmail.com>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-CM-TRANSID: _____wCH0CvPUbVnWpNgNA--.30420S4
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Wr4DCr48uF45Cw18ZFyUGFg_yoWDGrc_uF
+	s7Zrn3Xry7Gr1Ykr4jyFsIv34Yk3y8JF1kZrySqrySqrZIgrWkGr9xZrn5XrWDuwnxZr9r
+	ua1DJ3WrZ39IvjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRNtxhDUUUUU==
+X-Originating-IP: [183.174.60.14]
+X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/1tbiqAv4bme1R0DC6QABsK
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_182015_893558_36C12CCC 
-X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-CacheID: sfid-20250218_193707_064403_0EEAA594 
+X-CRM114-Status: UNSURE (   9.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,30 +81,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add check for the return value of devm_kstrdup() in
+mt76_get_of_data_from_mtd() to catch potential exception.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Fixes: e7a6a044f9b9 ("mt76: testmode: move mtd part to mt76_dev")
+Cc: stable@vger.kernel.org
+Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-On Mon, 17 Feb 2025 17:40:21 +0800 you wrote:
-> Add EEE support to MediaTek SoC Ethernet. The register fields are
-> similar to the ones in MT7531, except that the LPI threshold is in
-> milliseconds.
-> 
-> Signed-off-by: Qingfang Deng <dqfext@gmail.com>
-> ---
-> v4: fix build warning
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v4] net: ethernet: mediatek: add EEE support
-    https://git.kernel.org/netdev/net-next/c/952d7325362f
-
-You are awesome, thank you!
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 0bc66cc19acd..443517d06c9f 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -95,6 +95,10 @@ int mt76_get_of_data_from_mtd(struct mt76_dev *dev, void *eep, int offset, int l
+ 
+ #ifdef CONFIG_NL80211_TESTMODE
+ 	dev->test_mtd.name = devm_kstrdup(dev->dev, part, GFP_KERNEL);
++	if (!dev->test_mtd.name) {
++		ret = -ENOMEM;
++		goto out_put_node;
++	}
+ 	dev->test_mtd.offset = offset;
+ #endif
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.25.1
 
 
