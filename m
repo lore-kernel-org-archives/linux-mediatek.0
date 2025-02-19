@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA03DC021B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 14:10:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B057FC021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 14:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EfeKlX7pXgRi7R4JhhSFexI5hR+puM3QgUM/1fFuIdY=; b=xxEp3FOqO69mY61M9a46mN6gxQ
-	kPlJRFWAhfex7dYmOiZ6PKyxWqeklNheORQkLX0Syp85KYCBKN62C+nb9EW1M2iZFnBxT0fJjSEI5
-	6kO+p0sFfn20n/c+qh/WaDh9y/0tTAScSmwzWO2j3NGK56Saeiih6cwl9WPzoS75n3sCBGIXGX9B8
-	Whle49gDUcn9J27EsAc3h0ezzHIRTQDXXVWlzWjcyLm2e+5MH6faupgsFEydTHA2JOEavmyxJD+UD
-	v65k8wYG6qs1ogVmxK5CR/baJSZIboXHhyb2MbEx3NPaIyaJRXJmmR8lzuEKZN0/2jgn3OzroCZ5f
-	SeN9uQtA==;
+	bh=KLIy6CECexAieIsq+mzz/klmXdiOSgsGZ6XYGWPdny4=; b=2pWGdw4KBf5vbFOXgwbb9lP8Ek
+	rSGiYci9CYZX4vgZmGFmMztBboexubYwKI9sCBE5C7SKrIsEoed82Whw0PobE5mXkP1Wwc+7iKtPU
+	txnK8X+2Ow13R5QafPiLnhJ02f/0EzG6fq7CDeU0p+k1d3TsIFvxJhWpDjVwhHMJYGjwX5T1k+jjq
+	Zwbv7/QNRxD9Nt9SSsoAidm9H2dzqcrBYx4b3vi+ioJ4tSfcvI2dhK+uk8lI4Tw3YFCK6YaoK/9Og
+	KJCjNtdW5KywaJkhihZBpvD9bFSozbH3+9Otb6dZYsjpqOVeqw4s8fVF8G6GdlzplYFIoPxrccCJ+
+	zA8USRXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkkmD-0000000DCiQ-2duj;
-	Wed, 19 Feb 2025 14:10:13 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tkkzi-0000000DGi2-3Hph;
+	Wed, 19 Feb 2025 14:24:10 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkki0-0000000DAW9-10rU;
-	Wed, 19 Feb 2025 14:05:53 +0000
+	id 1tkkyD-0000000DG5e-3B13;
+	Wed, 19 Feb 2025 14:22:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 999F9A4281F;
-	Wed, 19 Feb 2025 14:04:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B65BC4CED6;
-	Wed, 19 Feb 2025 14:05:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B674D5C5A33;
+	Wed, 19 Feb 2025 14:21:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EB7DC4CEEC;
+	Wed, 19 Feb 2025 14:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739973950;
-	bh=85tPlsB4usIu6yhe/BHQqQ4y6WX5bDga5umRKzU2bKY=;
+	s=k20201202; t=1739974956;
+	bh=reh2ru3wGs4xpgkwhP9irvC0VjoDeR95OIEbA777fUo=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=BUlQLfY8V3xQrs5YrlQNv3smrE6Q7+YS5w+c+n95W1TBOprHNjsOYaI1d93dFRSuS
-	 Jj6eNJrTjb30dsRR2H83KNhHckPWX1D30v1Z3L8HrjzhCmVACDogFuUUKz60P0tNM4
-	 phxfX9Ewg14lO3NDcDO6v+/G5OlFXIcawGUCSrR9tsd5ViNVr0HgRpqiMHIaJL9QoQ
-	 35ebM/cE25/0P9ThxM2X6VnbAAdRnyD5jDmSeqJyVzut7DBFvOBlg5T3VvTvE4AVlz
-	 zd+5enri1W/wbw3Q20QvWCmbTIm7SS08GAiDJ3gAy/KAwFAJYJWsUWH8wA23aixsGj
-	 gDmAcyEcRG4Gg==
-Received: by mail-pj1-f50.google.com with SMTP id 98e67ed59e1d1-2fc0d44a876so9791814a91.3;
-        Wed, 19 Feb 2025 06:05:50 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWFGSNiKwpFbxA3gbX6b9h8KZzvUvvNU8XUPW0s737rgXgNK1IwEKvOAOeOabpOUKhZhYfs4urdAvcVFV/hp6Ek@lists.infradead.org, AJvYcCXEOLbuWt32ArpupYf+TUy76tzZPqmBjhKEg6eeemzqjOg7ofO5/8kPSHKqtCV7OpNqp0HqZYCgci03/mjh8BQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yza/vIEmHhqmTNl4M+DFSDp0+JFKflK7QyZimEDOEitglcp6KlZ
-	1YT+S42haYXfGEsEU5xufD5hOxhQCyabNaDPDBJSnQ2wmBigCpy+FpjFCpOqqZUw+ma7bcLq45o
-	TOVcYoOzqp/uQEe+pVtj6sTsUVw==
-X-Google-Smtp-Source: AGHT+IEsdOUobKrxzG2bHgh8FAnY3IxI3OdMrs5IpBFPR0BmaGsai+pHLZwpl46Br4o8jc93c37YtHPS/ZvBONvysZQ=
-X-Received: by 2002:a17:90b:510c:b0:2ee:ab29:1a57 with SMTP id
- 98e67ed59e1d1-2fc40d13203mr28805344a91.2.1739973950021; Wed, 19 Feb 2025
- 06:05:50 -0800 (PST)
+	b=Rm8Lp1ml+GLe9LpjM4u789wk9VDrcRCHCwOx5d1y1OyHKpQWu1SkSPWkLEj/iHM8K
+	 DhtqHwrVw9g5PBRsYAc09f/9PVPYCl78tlWVq7n12KDwO3oQyvj1K8udCXPVo2Xumc
+	 WRIok7A9Y6AeZRRgvrlNJLUoawaTA1/5LH7n1EYvbOBZtCPEyVuoampbIn2/R5dtDs
+	 /VPI3NwDIqO3E2udYGT8Q9n3e+vb42vS1fle+5mIAwLqbK7Vg3fAxONZsxm2T01Gfn
+	 gdIWBWtvVcBDtWRVhKRneSEyttJX26itrB7o/cTI44gZJt94az8kEgvd9i25Bu9C8E
+	 ErfCOx1KUGaQg==
+Received: by mail-pj1-f53.google.com with SMTP id 98e67ed59e1d1-2fa48404207so13620162a91.1;
+        Wed, 19 Feb 2025 06:22:36 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUvVwE+9zK7DKIY70192MX5ERzh7A3xSBIsLjCEBgBQCeWOPImfXmd/qRy/mG6fbr/RDp4D44Qq7vbpT8Up3D4=@lists.infradead.org, AJvYcCXLjxvwjrRZmlT8dXRcGmYb9WJ1p6YJS8GCM2c+zyXc0nrNPqg8SSv8dbEqLhqE5QIFZIhk2Q4Cn4IhkogRUvID@lists.infradead.org
+X-Gm-Message-State: AOJu0YzdKwEMI4MK/+uI++Yk0a9svrVzyTxG1Klzkpo/iDnbI78iufEP
+	lY24JHeKM8N/j0dosMDeMxjRTdg6rOIxoiF1PL+dPewtmczKpwIP8aSu7hX/E/jmOyvQOdluoHn
+	qjD+6XkJlS5EG9q2fNH6+N9ILjg==
+X-Google-Smtp-Source: AGHT+IFcqF5yaXmkd1Kkc/nRemVogPJJE5Ke5gvEz4B9RO5EGqWKjgjJjYnTiJJa8/Cdthu+CTDKxzr7KsWY9zI/Ph4=
+X-Received: by 2002:a17:90b:39cc:b0:2fa:229f:d03a with SMTP id
+ 98e67ed59e1d1-2fc4104056emr23304153a91.26.1739974955900; Wed, 19 Feb 2025
+ 06:22:35 -0800 (PST)
 MIME-Version: 1.0
-References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-20-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250217154836.108895-20-angelogioacchino.delregno@collabora.com>
+References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-25-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250217154836.108895-25-angelogioacchino.delregno@collabora.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 19 Feb 2025 22:06:35 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-BaK-160A4=oWKkEuYnJE69BXqk7CY3yoc71zn-M9y+Q@mail.gmail.com>
-X-Gm-Features: AWEUYZlzg0d2_e6rOyz76Y9yADZ6uIl1Va12EUEGab7yKc_JPlmQYlOnNcjVbhg
-Message-ID: <CAAOTY_-BaK-160A4=oWKkEuYnJE69BXqk7CY3yoc71zn-M9y+Q@mail.gmail.com>
-Subject: Re: [PATCH v7 19/43] drm/mediatek: mtk_hdmi: Fix typo for
- aud_sampe_size member
+Date: Wed, 19 Feb 2025 22:23:20 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8qu6QeV=KJypYm=25PSGJD=jaMK6tMa2gWAoEF-mgPGg@mail.gmail.com>
+X-Gm-Features: AWEUYZm6NK2d9V3p_Lp0cN8OApA1MPTl0H47EFaINMxZJFCgqd5UGa_xL6LrvNY
+Message-ID: <CAAOTY_8qu6QeV=KJypYm=25PSGJD=jaMK6tMa2gWAoEF-mgPGg@mail.gmail.com>
+Subject: Re: [PATCH v7 24/43] drm/mediatek: mtk_hdmi: Move vendor/product
+ strings to drm_bridge
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
@@ -76,8 +76,8 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_060552_420650_CE27B339 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20250219_062237_907964_2CE07221 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,10 +99,12 @@ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
 2025=E5=B9=B42=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=8811:=
 49=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Rename member aud_sampe_size of struct hdmi_audio_param to
-> aud_sample_size to fix a typo and enhance readability.
+> Move the vendor and product strings to the appropriate entries
+> of struct drm_bridge and use that in mtk_hdmi_setup_spd_infoframe
+> instead of having the same as function parameters.
 >
-> This commit brings no functional changes.
+> While at it, also beautify the strings, setting them to read
+> "MediaTek On-Chip HDMI".
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -113,58 +115,60 @@ Regards,
 Chun-Kuang.
 
 >
-> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
 ek/mtk_hdmi.c
-> index 29000cfcf761..6257503ce639 100644
+> index e9f2f15e98fa..4bf19574463d 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -136,7 +136,7 @@ enum hdmi_aud_channel_swap_type {
+> @@ -952,15 +952,14 @@ static int mtk_hdmi_setup_avi_infoframe(struct mtk_=
+hdmi *hdmi,
+>         return 0;
+>  }
 >
->  struct hdmi_audio_param {
->         enum hdmi_audio_coding_type aud_codec;
-> -       enum hdmi_audio_sample_size aud_sampe_size;
-> +       enum hdmi_audio_sample_size aud_sample_size;
->         enum hdmi_aud_input_type aud_input_type;
->         enum hdmi_aud_i2s_fmt aud_i2s_fmt;
->         enum hdmi_aud_mclk aud_mclk;
-> @@ -1033,7 +1033,7 @@ static int mtk_hdmi_output_init(struct mtk_hdmi *hd=
-mi)
+> -static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi,
+> -                                       const char *vendor,
+> -                                       const char *product)
+> +static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi)
+>  {
+> +       struct drm_bridge *bridge =3D &hdmi->bridge;
+>         struct hdmi_spd_infoframe frame;
+>         u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_SPD_INFOFRAME_SIZE];
+>         ssize_t err;
 >
->         hdmi->csp =3D HDMI_COLORSPACE_RGB;
->         aud_param->aud_codec =3D HDMI_AUDIO_CODING_TYPE_PCM;
-> -       aud_param->aud_sampe_size =3D HDMI_AUDIO_SAMPLE_SIZE_16;
-> +       aud_param->aud_sample_size =3D HDMI_AUDIO_SAMPLE_SIZE_16;
->         aud_param->aud_input_type =3D HDMI_AUD_INPUT_I2S;
->         aud_param->aud_i2s_fmt =3D HDMI_I2S_MODE_I2S_24BIT;
->         aud_param->aud_mclk =3D HDMI_AUD_MCLK_128FS;
-> @@ -1529,14 +1529,14 @@ static int mtk_hdmi_audio_hw_params(struct device=
- *dev, void *data,
->         switch (daifmt->fmt) {
->         case HDMI_I2S:
->                 hdmi_params.aud_codec =3D HDMI_AUDIO_CODING_TYPE_PCM;
-> -               hdmi_params.aud_sampe_size =3D HDMI_AUDIO_SAMPLE_SIZE_16;
-> +               hdmi_params.aud_sample_size =3D HDMI_AUDIO_SAMPLE_SIZE_16=
-;
->                 hdmi_params.aud_input_type =3D HDMI_AUD_INPUT_I2S;
->                 hdmi_params.aud_i2s_fmt =3D HDMI_I2S_MODE_I2S_24BIT;
->                 hdmi_params.aud_mclk =3D HDMI_AUD_MCLK_128FS;
->                 break;
->         case HDMI_SPDIF:
->                 hdmi_params.aud_codec =3D HDMI_AUDIO_CODING_TYPE_PCM;
-> -               hdmi_params.aud_sampe_size =3D HDMI_AUDIO_SAMPLE_SIZE_16;
-> +               hdmi_params.aud_sample_size =3D HDMI_AUDIO_SAMPLE_SIZE_16=
-;
->                 hdmi_params.aud_input_type =3D HDMI_AUD_INPUT_SPDIF;
->                 break;
->         default:
+> -       err =3D hdmi_spd_infoframe_init(&frame, vendor, product);
+> +       err =3D hdmi_spd_infoframe_init(&frame, bridge->vendor, bridge->p=
+roduct);
+>         if (err < 0) {
+>                 dev_err(hdmi->dev, "Failed to initialize SPD infoframe: %=
+zd\n",
+>                         err);
+> @@ -1328,7 +1327,7 @@ static void mtk_hdmi_send_infoframe(struct mtk_hdmi=
+ *hdmi,
+>  {
+>         mtk_hdmi_setup_audio_infoframe(hdmi);
+>         mtk_hdmi_setup_avi_infoframe(hdmi, mode);
+> -       mtk_hdmi_setup_spd_infoframe(hdmi, "mediatek", "On-chip HDMI");
+> +       mtk_hdmi_setup_spd_infoframe(hdmi);
+>         if (mode->flags & DRM_MODE_FLAG_3D_MASK)
+>                 mtk_hdmi_setup_vendor_specific_infoframe(hdmi, mode);
+>  }
+> @@ -1707,6 +1706,8 @@ static int mtk_hdmi_probe(struct platform_device *p=
+dev)
+>         hdmi->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
+>                          | DRM_BRIDGE_OP_HPD;
+>         hdmi->bridge.type =3D DRM_MODE_CONNECTOR_HDMIA;
+> +       hdmi->bridge.vendor =3D "MediaTek";
+> +       hdmi->bridge.product =3D "On-Chip HDMI";
+>         drm_bridge_add(&hdmi->bridge);
+>
+>         ret =3D mtk_hdmi_clk_enable_audio(hdmi);
 > --
 > 2.48.1
 >
