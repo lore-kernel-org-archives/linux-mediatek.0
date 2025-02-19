@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3138C021AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 21:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A41AC021AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2025 21:18:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sQOC6VBdO7JTZWJW4HQ8BotVjJhyczmNPNqI6tVh0A0=; b=FyY4ZCruFFdvVEPoz2oSHgvhOM
-	99aJ7vIEc8yBYQSxamHeMwxrmIyLsgwepQASHq5D2frntcYDDgE5pvFnHUp4mGs9OCz4aLBqfk/Zt
-	wes7MUswnewXuUURsapJrrpCQg2qNLp3ojfx2yQo7AoHOplRoEGW5g0DOdVDMIGfHbBzTWkxSVdg0
-	VR0q49cAzy3/60KJD9hO2NPHyejiR4zzT14CdFw0oOuRuFqXreWmwP1m2bTH2jGNKG+K2CHXXozvh
-	XjDm9ZZwxLtsAJnCB27qPj679U5+hytsdBWxmzs5J1HDXW/STzVQ/zMBTf1CJyN0Q/UB60dPrXUtN
-	rx4RpyDg==;
+	bh=QZs3YbRvN8DNt3197H8da0uczE1W96IyWr4w3SXE9jo=; b=ETRHkkBxej7KjEVZ4dDMKv1fe/
+	zQJoDc2Z5m5eMSTyqGIUiqP6hEgQ0fFhVdToVcEpI42SQmBRIFHPk7TUF8xt7G1VVo5SuElvR3i8Z
+	zd1Mm1Xl/U323DTeBj/aumFbzEzuT7mT8x0JyCuKV5slsoTXVHoU+8kWOhv3bZKkKmL6fG52o8OE1
+	jimwC66pybsAQh8NczQDZVohIEAtvOUN96/CtU7YUY7KYx0/EqIt4BxumgY7cwF7M/TAYESXe+hyk
+	Hx760WyHcYPPrMcNI+J+ASIYeCkKRvrRcLkgn1mneWp277ueqn6k3xUiR2Zh3+z2WBtLVLdwxNfHQ
+	wpLSOI7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkrSJ-0000000F9E7-3f6s;
-	Wed, 19 Feb 2025 21:18:07 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1tkrSU-0000000F9KK-28zr;
+	Wed, 19 Feb 2025 21:18:18 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkrHN-0000000F5BY-00fa;
-	Wed, 19 Feb 2025 21:06:50 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-abbd96bef64so42425366b.3;
-        Wed, 19 Feb 2025 13:06:48 -0800 (PST)
+	id 1tkrIC-0000000F5UU-3lxx;
+	Wed, 19 Feb 2025 21:07:42 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-abbda4349e9so47191766b.0;
+        Wed, 19 Feb 2025 13:07:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739999207; x=1740604007; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1739999259; x=1740604059; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=sQOC6VBdO7JTZWJW4HQ8BotVjJhyczmNPNqI6tVh0A0=;
-        b=QfkP2ylGUO+o8nwqNXUTPmXobDGMZoyYW86pGrngWHpHsBG35EoR9RG6SLUwsC0GCs
-         ZtPa/MvNzq/msmvspHkDCAleEzooZV1D/HH2mmrdmTwn6wsl151eD/ZJ7vEOMLONcOFZ
-         QvHqpA+jqNcgj+7AmRTUuNMn2iD5GrpWabacnZYwtGP+xiRzCVssAzWw37hOE/Jg5wjf
-         cUUIB0w93D0a0DOdc8zWMVb2GNdleacVNyAhFzWPAi4R+N+I3oNKpd+AFSsMvP5TszLP
-         SmZ9rXFD+5jHDV2eJggk0yvMoKFmtj0qNwy5yJhzPzfl+Iy8WAb3TThW1bKuteGWExXW
-         JBzA==
+        bh=QZs3YbRvN8DNt3197H8da0uczE1W96IyWr4w3SXE9jo=;
+        b=CA/kSqKu7o6T5HJXZDnnMz0/rL/60XOCKza/S+UlQ4XK3qgFNlagZPX599ys9o4qMQ
+         ymZeoJRxfb492lXeq+qKwWGRGkXDCg164Q8b3uI0NojX4nmsogsRjKMU2Vn86VIi2seW
+         zVGSBrfFm+7M1rK8QkwyH60moljVo1OFK+3qtBbyfaAjg10gYmk5O/j+Ir024wYhlTZy
+         uR2CBv4vBWsi7Upxk/SUlBo3D11EYklahnfptyklUWgyF81XGFyn/Bfd1TPbxO7jQbBC
+         FFsMIINYzaEvoJLDhsqWMkUhWb/cj5lukl4CJFHhEsBh0+rGw1H7HwaBmuX/OnIHgTWB
+         d/Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739999207; x=1740604007;
+        d=1e100.net; s=20230601; t=1739999259; x=1740604059;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=sQOC6VBdO7JTZWJW4HQ8BotVjJhyczmNPNqI6tVh0A0=;
-        b=RZsCtHKKImq+7pjRz4yVWKjzIwkslZwnjyyaM1fEodygyXIiMFRCXTqq/IhNGyXBpT
-         HzVhM3L4fGrkwP/0ITP36nMVqccY6LnVj2yxl0GTzo0Ajd646xrKBRjm8kEaFohjbiWy
-         WlnxAtwLSnL8wKGzGkXM/SoJ6+zryaJ9yjqYL7oIVA0GSeU3ZzwkOcfe5fPG3MnBa/CW
-         +pCsVpF1LwobSLDxQPFP9nxhfKdM9R2garCqKXGmpX2PAAC/HBTvGf6H611Mjbm6J4Gi
-         yEyHSV75h9ccQ9Ov/l1qXcPZYuxW8pHGCdgTVQ7H/e+yhegGkZN3NoW7m4U6x0vL5KH8
-         S+nQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVZ08INk3NGp16ERc3NiX55R4Am8FaOANdxLyo9d2XSUn45QfSszxcK5C+mE5VlqlVjr1oTwOQ+I5GCeGT1ip87@lists.infradead.org, AJvYcCX5MtaPeCMixNCbZk45N+fqzqi2lZmqQ7U4pK3sr71TaPQywJ9sNFMivp5dqMw/hw5+ATqRoO4CYsL8rg+/Plo=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5AEEOQYLfMLWyhRuNZ8muK6yvV53FW8wS8Shlk6TlwadmgRuv
-	eGcxaKuCAiRM9n3mOTPFmzp1ZvE4CYU8GujQ9FsRGgmvI8W/ue20
-X-Gm-Gg: ASbGncsPu6blISeYopC0XQByNR/ia91NskexeYSFv8Zp2lrW0Vey8DUJApippO1iJFi
-	10KGBf+dmWJofzXj1Rz2DC2WVBdkybtCHcQ+tcUa2V8ExaPtFMza1n9LGzVzf3/2ZrVlK+6yi+l
-	1UdSf5MXXOkFetHvOmTMwG2E1vwmND5vIUqd7DNVR902uLa2DrmExalKLLwqlEDb34Qw2AK6pTh
-	rhS+fptKL3qeEk3yVb0qCmodacObk06IapNxg3xgJfo4H7oE17JBgH4U74kQoik++VNtOJXTT/z
-	bdTwkaNuwML1U08PCVbh0DIMrxytRf1otXPcFyFjreo5QqdQKeEVIMD/fWlPzMo4hxgPitt4Ww4
-	UHlohh7mkpRhd2yqnNEKt2mGImss7w9InSbwF5oOqsYzGAqJjYu11U21FbeYVwTVXulxYjosx/V
-	4IAC3krGA=
-X-Google-Smtp-Source: AGHT+IGu7yDhimqarpn/Kul5ATaQYK3XNF+RsBue2iV/8jImfh2cK1HapM9OHJ5Cw2ex5dYQq6jdSw==
-X-Received: by 2002:a17:907:9494:b0:aba:6385:b46d with SMTP id a640c23a62f3a-abb711c8145mr2105807966b.50.1739999207287;
-        Wed, 19 Feb 2025 13:06:47 -0800 (PST)
+        bh=QZs3YbRvN8DNt3197H8da0uczE1W96IyWr4w3SXE9jo=;
+        b=EjFfUwvLUCKSxMjq4UzC8VNYMdEvYt5iy+qukl9bwVlNSArkacV2216qolipA5qnZe
+         ePq6WeD4pCKk05BpxjjCUeT8YaUjgK0aRSXiLDE0XOHfrgMsQXs1tQabkZYGt0c/kdUT
+         3t9rSipygJlOjAdwjYfMrX8FXlv9BJKyc38uk+nrhJdVZaeg/UN6omM2kJO22oISIruR
+         liTjTjtgToDqBUWyo3ypOWmB6ChCUOgyQ+fcRYWzdorVghaDVQs+RJ8SAHaPZp9wchD8
+         +6nhE1bgBDQtVyKH7kAopllFfyZ9IAB5TguN/tE1Zw/erog0+eHo3KkH7zWWhDmO5s+M
+         ORPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXgxLkay/qWEDck5uGPDh2Ql8mAOswZlYSoV6D+ea6VVJ2druT4w5zgLrp/ZQygBqk3eimPBT+VgPOZXgucuk59@lists.infradead.org, AJvYcCXr6KebEUHq11kEPFjmbklMOVQaaALzB4hkdpD1hwDZNRuDof5nkDn7i/OLz+lMZNX36FSsH8Zi8vcG7n5I9Nw=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7Q2MpJzWYBLL92fRoVZerZOwR95deSRlaJdms24iE0zmc97Rs
+	6S4Cqqn5xcQXs93xS6WMeaARLQqBfRhOaO8LdLi0KXwEkPjKquRe
+X-Gm-Gg: ASbGncuDNlKi0a9zb2ML6P180HBrUq8W3ePPFWFg1/uVa7nYY5hQ6pblw/IjNlNf+dP
+	RAfX3IxIig1HVQBhUYCbrwl5M0QuPjFFGlWAFYLFBXCqjj+8TrH901/Ql/EVgcftTNOFrFInYkw
+	xIMiEoGtPSZRUVF4ix9S8+b2bhV19H1A492nASnAm0Q68A2jIN/daIkIM7E4AhbusUaqgKMKoKq
+	ITXtaqpAmkS6b7sMlNOaFoahoFmWl5C0+vMiFDtkVKUKeAFvXtFpFuS0yWc8J5f8ge2FjfFGWln
+	9O36fzxHQ1PVNSU/U95kWjEgpIUz4YgwDS5wWWFO1VTM01YBFTepIPW+C3/izZ8G/KrxOyv8vxR
+	e6t11Q3jo0QUfQsT4d7+s0a4/z7LMC1jSzENhYCBRl1gY9u1E6QZ4Cbs4QM29eo9j0NGOGLfKRi
+	BYzd1pgWM=
+X-Google-Smtp-Source: AGHT+IFB8TbXEW8oyxCMw5I9hPAsJ5x8xBIRsmTCx+D4bgFcD07BpYfc68ij8nWfwZBgDBmj8kWcvA==
+X-Received: by 2002:a17:906:c154:b0:ab8:95f8:b5e4 with SMTP id a640c23a62f3a-abb70d943c3mr2292970066b.41.1739999259305;
+        Wed, 19 Feb 2025 13:07:39 -0800 (PST)
 Received: from ?IPV6:2a02:3100:a982:e400:6dd0:628c:981b:2783? (dynamic-2a02-3100-a982-e400-6dd0-628c-981b-2783.310.pool.telefonica.de. [2a02:3100:a982:e400:6dd0:628c:981b:2783])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-abb9553fbd0sm712082766b.84.2025.02.19.13.06.44
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-abb8eea4d65sm762573866b.161.2025.02.19.13.07.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Feb 2025 13:06:46 -0800 (PST)
-Message-ID: <3ea191bd-7b59-40b4-b357-7fe7a9565420@gmail.com>
-Date: Wed, 19 Feb 2025 22:07:30 +0100
+        Wed, 19 Feb 2025 13:07:38 -0800 (PST)
+Message-ID: <ee5947e6-9bf0-4c69-a014-57fb0da015cd@gmail.com>
+Date: Wed, 19 Feb 2025 22:08:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: [PATCH net-next 7/8] net: phy: mscc: use new phy_package_shared
- getters
+Subject: [PATCH net-next 8/8] net: phy: make struct phy_package_shared private
+ to phylib
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>,
  Russell King - ARM Linux <linux@armlinux.org.uk>,
@@ -139,8 +139,8 @@ In-Reply-To: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_130649_058620_DE708400 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20250219_130740_949155_01475EC4 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,59 +155,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new getters for members of struct phy_package_shared.
+Move definition of struct phy_package_shared to phy_package.c to
+make it private to phylib.
 
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
- drivers/net/phy/mscc/mscc_ptp.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/net/phy/phy_package.c | 31 +++++++++++++++++++++++++++++++
+ include/linux/phy.h           | 31 -------------------------------
+ 2 files changed, 31 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/net/phy/mscc/mscc_ptp.c b/drivers/net/phy/mscc/mscc_ptp.c
-index 738a8822f..ca4203d6a 100644
---- a/drivers/net/phy/mscc/mscc_ptp.c
-+++ b/drivers/net/phy/mscc/mscc_ptp.c
-@@ -645,11 +645,12 @@ static int __vsc85xx_gettime(struct ptp_clock_info *info, struct timespec64 *ts)
- {
- 	struct vsc85xx_ptp *ptp = container_of(info, struct vsc85xx_ptp, caps);
- 	struct phy_device *phydev = ptp->phydev;
--	struct vsc85xx_shared_private *shared =
--		(struct vsc85xx_shared_private *)phydev->shared->priv;
- 	struct vsc8531_private *priv = phydev->priv;
-+	struct vsc85xx_shared_private *shared;
- 	u32 val;
+diff --git a/drivers/net/phy/phy_package.c b/drivers/net/phy/phy_package.c
+index 6955b4132..a8c3f26d2 100644
+--- a/drivers/net/phy/phy_package.c
++++ b/drivers/net/phy/phy_package.c
+@@ -6,6 +6,37 @@
+ #include <linux/of.h>
+ #include <linux/phy.h>
  
-+	shared = phy_package_shared_get_priv(phydev);
++/**
++ * struct phy_package_shared - Shared information in PHY packages
++ * @base_addr: Base PHY address of PHY package used to combine PHYs
++ *   in one package and for offset calculation of phy_package_read/write
++ * @np: Pointer to the Device Node if PHY package defined in DT
++ * @refcnt: Number of PHYs connected to this shared data
++ * @flags: Initialization of PHY package
++ * @priv_size: Size of the shared private data @priv
++ * @priv: Driver private data shared across a PHY package
++ *
++ * Represents a shared structure between different phydev's in the same
++ * package, for example a quad PHY. See phy_package_join() and
++ * phy_package_leave().
++ */
++struct phy_package_shared {
++	u8 base_addr;
++	/* With PHY package defined in DT this points to the PHY package node */
++	struct device_node *np;
++	refcount_t refcnt;
++	unsigned long flags;
++	size_t priv_size;
 +
- 	val = vsc85xx_ts_read_csr(phydev, PROCESSOR, MSCC_PHY_PTP_LTC_CTRL);
- 	val |= PTP_LTC_CTRL_SAVE_ENA;
- 	vsc85xx_ts_write_csr(phydev, PROCESSOR, MSCC_PHY_PTP_LTC_CTRL, val);
-@@ -696,11 +697,12 @@ static int __vsc85xx_settime(struct ptp_clock_info *info,
- {
- 	struct vsc85xx_ptp *ptp = container_of(info, struct vsc85xx_ptp, caps);
- 	struct phy_device *phydev = ptp->phydev;
--	struct vsc85xx_shared_private *shared =
--		(struct vsc85xx_shared_private *)phydev->shared->priv;
- 	struct vsc8531_private *priv = phydev->priv;
-+	struct vsc85xx_shared_private *shared;
- 	u32 val;
- 
-+	shared = phy_package_shared_get_priv(phydev);
++	/* private data pointer */
++	/* note that this pointer is shared between different phydevs and
++	 * the user has to take care of appropriate locking. It is allocated
++	 * and freed automatically by phy_package_join() and
++	 * phy_package_leave().
++	 */
++	void *priv;
++};
 +
- 	vsc85xx_ts_write_csr(phydev, PROCESSOR, MSCC_PHY_PTP_LTC_LOAD_SEC_MSB,
- 			     PTP_LTC_LOAD_SEC_MSB(ts->tv_sec));
- 	vsc85xx_ts_write_csr(phydev, PROCESSOR, MSCC_PHY_PTP_LTC_LOAD_SEC_LSB,
-@@ -1580,8 +1582,9 @@ int vsc8584_ptp_probe(struct phy_device *phydev)
- 
- int vsc8584_ptp_probe_once(struct phy_device *phydev)
+ struct device_node *phy_package_shared_get_node(struct phy_device *phydev)
  {
--	struct vsc85xx_shared_private *shared =
--		(struct vsc85xx_shared_private *)phydev->shared->priv;
-+	struct vsc85xx_shared_private *shared;
-+
-+	shared = phy_package_shared_get_priv(phydev);
+ 	return phydev->shared->np;
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index ce591307a..3008f31de 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -322,37 +322,6 @@ struct mdio_bus_stats {
+ 	struct u64_stats_sync syncp;
+ };
  
- 	/* Initialize shared GPIO lock */
- 	mutex_init(&shared->gpio_lock);
+-/**
+- * struct phy_package_shared - Shared information in PHY packages
+- * @base_addr: Base PHY address of PHY package used to combine PHYs
+- *   in one package and for offset calculation of phy_package_read/write
+- * @np: Pointer to the Device Node if PHY package defined in DT
+- * @refcnt: Number of PHYs connected to this shared data
+- * @flags: Initialization of PHY package
+- * @priv_size: Size of the shared private data @priv
+- * @priv: Driver private data shared across a PHY package
+- *
+- * Represents a shared structure between different phydev's in the same
+- * package, for example a quad PHY. See phy_package_join() and
+- * phy_package_leave().
+- */
+-struct phy_package_shared {
+-	u8 base_addr;
+-	/* With PHY package defined in DT this points to the PHY package node */
+-	struct device_node *np;
+-	refcount_t refcnt;
+-	unsigned long flags;
+-	size_t priv_size;
+-
+-	/* private data pointer */
+-	/* note that this pointer is shared between different phydevs and
+-	 * the user has to take care of appropriate locking. It is allocated
+-	 * and freed automatically by phy_package_join() and
+-	 * phy_package_leave().
+-	 */
+-	void *priv;
+-};
+-
+ /**
+  * struct mii_bus - Represents an MDIO bus
+  *
 -- 
 2.48.1
 
