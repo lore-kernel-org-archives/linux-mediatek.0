@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D83AC021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 16:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B02EC021B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 17:21:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=; b=L22x2rZw3cTPRS/0ZELpi9AEjL
-	1BOcdT7s1aTCJTXtKmSjablWj/eoV3Viz8yiJ54ZLHMYuPfRya7qz6ORr3gNZ76JVM4YHgunkQOXp
-	W882EsnIf4e8x3Cq7hfbVL4+QqxgpDSTP2o787+kG1aC2BndwOEZ3sLztXOwaoWsg/mVjRYqUKKiL
-	MNYZjOoDOET4Uzo3HrIBoG3Y/kUcYumZYBif1fconCSPa7niyirp8TI+OvAglXlxh2AXYUoe/2MBS
-	YIdSwK16AqYoNTcy9xkLqn45/7Lwj+f08EN+dZo5pBPgARKdxVz2WDt7WCWaqUJfX4FluNcvbAc/v
-	7SZdybnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z2dgO0/WumT0UHpa9g/06CqR8KBq3+iPEhbdAQlISMM=; b=UletK/MhUtpCahkWwOliRVXZn4
+	pkpWha8928QkcVBdAf+5K+bUsyl5cMCF9ymK9yMr94dV0+3MkmVyA0uFn5mN/GGqQTROXw1BRSFBe
+	6k97mnMTbqSePMNqTuw2nYg8+zj1RNqIOBQykHpWxpazNwdA2IDohuLgDdEdKYWK7lAmQFfdKiCfI
+	dW+qf/D5vJXJHozxdQSQZ+c3/EYKbZENiO8z1O1gzMbAtIWUbCiGlgG/3Owjk54qHPKWLCvulzSu2
+	0D6HtISKbAlYsyPzJF1yJGI0lrZVtcALs6krXUexfTF/waE7S3meLFcGP4wWL9PryfxdtfSOENxge
+	9lISLz1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl98u-00000001mSh-0M6U;
-	Thu, 20 Feb 2025 16:11:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tlAEX-000000026af-00a1;
+	Thu, 20 Feb 2025 17:21:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl98F-00000001mHW-334F;
-	Thu, 20 Feb 2025 16:10:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740067826; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=fK0hgpnSc7wHdnScZwsvHvmbOkyWb03c01zpIeu3IanN4S/24IADwzwMmHCxMzZh69e0QFLKw+VJlDSQ5aln/0YB2RDSXVsVBcOmmHiTso9hMIalmUv2v2fkpsh2ReLVgNiLiHMfkoe1PZI015y2wn/sO3WfP5mg6mjLzsr/2s8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740067826; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=; 
-	b=ViwEYwSYLaplLiRRebA+EavTbgXaGFDif39tG9l0dYzvRf0ts/sv5Zr3fKIj0Tpa2mXGglvmOEcv8ZzesWzbD/NQRcb1JjyqPZqc3wMYU5+EunyG9GZcm9+M2YI1x2DBHIaTHIgSZWttgVwQS7+aK1fAp99vFS8yjuL3nyBC814=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740067826;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=;
-	b=EduweB5KBkR0ccyYBTaR71kHlB+Cm2C1+uOYpnAGhP8fsVCU4dd1oLWvb0mZNeiJ
-	5LPdG3Z1MweoTCjWRid30oQ6iHV9OeNchE42cx4IMeeJ1b4OBPQ5wC3b9rSZ5Fztbc0
-	7ra/K4+6kLD4/HJUfSiWtBOZSIxhWfXx8uvFMDg0=
-Received: by mx.zohomail.com with SMTPS id 1740067825336681.7729656180264;
-	Thu, 20 Feb 2025 08:10:25 -0800 (PST)
-Message-ID: <d2bd8baf-e1f7-4e8a-9e33-259051d6f97a@collabora.com>
-Date: Thu, 20 Feb 2025 19:10:18 +0300
+	id 1tlABc-000000025bM-46b5;
+	Thu, 20 Feb 2025 17:18:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id ECCC6615D1;
+	Thu, 20 Feb 2025 17:18:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B913DC4CEE2;
+	Thu, 20 Feb 2025 17:18:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740071887;
+	bh=Z2dgO0/WumT0UHpa9g/06CqR8KBq3+iPEhbdAQlISMM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dcmOzMvW4JIwJparBiYVKIryFuiTlW2Pqv3d/5vZ9aqOGbSzX2myip7poZdKwQxF/
+	 kco7+x0wcGepCahG6fG0kJ+OX+2q6DDFFYRksccaPpTzcUSASKXlGr+6DGjPx3ti0L
+	 47IhkEtO1nGrTNLup+6HGfXnihDHyi+0n72UbxHTcyrDs6sg1PTdp2IzIzDZkG3Dur
+	 MUbJx9n0ZcRIGxSKiCheGaeoXS5Z+cSQhdrWXy2+XHij3t67Xc12I50Od96cKnkh1S
+	 wbXDmzuOmXXcv0PQiFkWqau/auRrUmJClFqqUkE3ogOx6lKLKIx46SiljExgCDS1aa
+	 NAZTXhuW/V3Vw==
+Date: Thu, 20 Feb 2025 17:18:02 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	pablo.sun@mediatek.com
+Subject: Re: [PATCH v3 1/3] dt-bindings: usb: mediatek,mtk-xhci: Add port for
+ SuperSpeed EP
+Message-ID: <20250220-travel-undercoat-339822407907@spud>
+References: <20250220105514.43107-1-angelogioacchino.delregno@collabora.com>
+ <20250220105514.43107-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 21/25] drm/virtio: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Content-Language: en-US
-To: Thomas Zimmermann <tzimmermann@suse.de>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu <olvaffe@gmail.com>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-22-tzimmermann@suse.de>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <20250109150310.219442-22-tzimmermann@suse.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-ZohoMailClient: External
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ZISaQ+/FlBvHadWX"
+Content-Disposition: inline
+In-Reply-To: <20250220105514.43107-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_081035_856977_FBD7762D 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20250220_091809_076610_9466C3EF 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +77,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/9/25 17:57, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch to a multiple of 4.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: David Airlie <airlied@redhat.com>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: Gurchetan Singh <gurchetansingh@chromium.org>
-> Cc: Chia-I Wu <olvaffe@gmail.com>
-> ---
->  drivers/gpu/drm/virtio/virtgpu_gem.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/virtio/virtgpu_gem.c b/drivers/gpu/drm/virtio/virtgpu_gem.c
-> index 5aab588fc400..22cf1cd2fdfd 100644
-> --- a/drivers/gpu/drm/virtio/virtgpu_gem.c
-> +++ b/drivers/gpu/drm/virtio/virtgpu_gem.c
-> @@ -23,6 +23,7 @@
->   * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
->   */
->  
-> +#include <drm/drm_dumb_buffers.h>
->  #include <drm/drm_file.h>
->  #include <drm/drm_fourcc.h>
->  
-> @@ -66,15 +67,14 @@ int virtio_gpu_mode_dumb_create(struct drm_file *file_priv,
->  	struct virtio_gpu_object_params params = { 0 };
->  	struct virtio_gpu_device *vgdev = dev->dev_private;
->  	int ret;
-> -	uint32_t pitch;
-> +
-> +	ret = drm_mode_size_dumb(dev, args, SZ_4, 0);
 
-Nit: I'd keep using PAGE_SIZE instead of 0 for more clarity, but that's
-an optional wish.
+--ZISaQ+/FlBvHadWX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +	if (ret)
-> +		return ret;
->  
->  	if (args->bpp != 32)
->  		return -EINVAL;
->  
-> -	pitch = args->width * 4;
-> -	args->size = pitch * args->height;
-> -	args->size = ALIGN(args->size, PAGE_SIZE);
-> -
->  	params.format = virtio_gpu_translate_format(DRM_FORMAT_HOST_XRGB8888);
->  	params.width = args->width;
->  	params.height = args->height;
-> @@ -92,7 +92,6 @@ int virtio_gpu_mode_dumb_create(struct drm_file *file_priv,
->  	if (ret)
->  		goto fail;
->  
-> -	args->pitch = pitch;
->  	return ret;
->  
->  fail:
+On Thu, Feb 20, 2025 at 11:55:12AM +0100, AngeloGioacchino Del Regno wrote:
+> Add a port used to connect the SuperSpeed output endpoint to a
+> Type-C connector.
+>=20
+> Note that the MediaTek XHCI controllers are always in front of a
+> different controller handling the USB HS (usually, MTU3), so the
+> only port that this controller provides is SuperSpeed, while the
+> HighSpeed one comes from elsewhere.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
--- 
-Best regards,
-Dmitry
+--ZISaQ+/FlBvHadWX
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7djygAKCRB4tDGHoIJi
+0pwNAP9LSza0fN2VrkokGvJROiNTsBtv8u28z6YZ0tVasE/wSQD9GZqsn3abIJ14
+wNsSo8xwfhXVj8RsgcZpEbcLFtCN+Ag=
+=OB/N
+-----END PGP SIGNATURE-----
+
+--ZISaQ+/FlBvHadWX--
 
