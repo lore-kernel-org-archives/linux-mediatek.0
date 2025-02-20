@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EAA4C021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 15:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAF3C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 15:27:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=blR87zOJZSCLfkfi9UWh6XyMqpQ7ACy6oKBvJ9caTrY=; b=KME0ukjENQakBel6h0GDVyT00G
-	CF+XXCPkuPILJqzI5SX83L6T07YrCgk3SbyZPgDELeRnr6pnAdiKf+1ZSbAmj1V8QjLyuBP+c68E0
-	jQArLlVoyeBJoXJQt4oFUgZEYaZKI1hEmmlpUjwpDBlFxkMZ16lRAjIgZonewPbDoDSKVzoW0aqFG
-	1f2VsJLatGTuWMFWEF+JCrLMHUvsj9wnervSoZfQFmK0vUsvbs597e5q9/wWkkPQ0IPE7jquo+Hht
-	f53xKp6Q9ePoXeGbogAxsx60rBs9lb2lQeT6gRVIMmU2D+01D1Sg4yI0P+djnVAbKsRZdak9EZEti
-	edE5mChA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ljcamiHceLHvMZ6EjNE08m1v0jlWkjmD/bZHz1N2SMQ=; b=2sbMWZP/2mbTaG+L2dKOSGwGkF
+	KE7nRtuffn6WDxQo7f5B1wLS2o3BvpB7ItBP7tsJuq/eujQLdzbZbVhW7kqlf2erNexvaER6yXr+o
+	kzGWiXoCsrvk24/MR5Pls8TkW60HZXfN2tniTiDy1O9gQdF49tB1RIKWcg5d/dIkVA4/VWcdJ+2EG
+	WvYLRL328DE+cduvSfDgEYO6jXlRYom1kpH8iGw7fTwMl7dXC4yEd7yYC3ZIW2GjCRqDa0IZLSXnt
+	P9qmSuTc0NHOgdMSHOkjNTYziza4rUZlk7OEjHLGj5MCMyN5dxo3YFipCjL3m9CXr0WW0oRA5ulkd
+	h1ZVIE7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl8Mr-00000001Xht-1yXV;
-	Thu, 20 Feb 2025 15:21:37 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tl8S7-00000001Yxo-1DUS;
+	Thu, 20 Feb 2025 15:27:03 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl8KX-00000001X0s-2oP1;
-	Thu, 20 Feb 2025 15:19:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740064751;
-	bh=q+rI1MFGx1dmzUkCsd87R8AaxLfHoGvv+Cb6RXBBXvo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Fx5+gHuek4r6O15kJIdNiY8QLR8+QYAZewk/yQq9aAnvCyRYpmG/UWaON1i06z2aQ
-	 TLUMvvJUzO6B7s46LFKcheLn4Z/EBXrD2IgUQNzDTMIVIv7DfMoP0uN6KXdHMUQyc9
-	 /ByHxhbKp/hBSgmd+Vb67byCfX7kWU2krqZh9wHLN7p4BCGWIVer7E3tEMg4wB6T7d
-	 If/ujMqhJAkOYxNDNHt1ga7g/am38tK4YmUwuHgSRTqzNjkv/H8ejvqeLQiuSUEGZN
-	 CleBAjd3/4LTvz8zaqduKNZNzsFMSXZTFMXqT2hmMZ3CCnxyiu8EwdTiDb0AVk81b8
-	 uUn3f8PFzlsHQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 60DC717E0E95;
-	Thu, 20 Feb 2025 16:19:11 +0100 (CET)
-Message-ID: <10d4c956-4f46-495e-b91f-adf69a1565ef@collabora.com>
-Date: Thu, 20 Feb 2025 16:19:10 +0100
+	id 1tl8Qc-00000001Yc7-2as6;
+	Thu, 20 Feb 2025 15:25:31 +0000
+X-CSE-ConnectionGUID: 0gAseKUiTN2NdTxxR0whMg==
+X-CSE-MsgGUID: V/2ZfnclTq+bPy3sZkLG7A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11351"; a="40705308"
+X-IronPort-AV: E=Sophos;i="6.13,302,1732608000"; 
+   d="scan'208";a="40705308"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 07:25:30 -0800
+X-CSE-ConnectionGUID: qmtVSK5cSNy+QcnRA6L5zQ==
+X-CSE-MsgGUID: +upU1mqiQfig88j8PogIog==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,302,1732608000"; 
+   d="scan'208";a="145924174"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 07:25:25 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andy@kernel.org>)
+	id 1tl8QT-0000000DNH5-3Gm6;
+	Thu, 20 Feb 2025 17:25:21 +0200
+Date: Thu, 20 Feb 2025 17:25:21 +0200
+From: Andy Shevchenko <andy@kernel.org>
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	llvm@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] media: cx231xx: Convert enum into a define
+Message-ID: <Z7dJYemMR-mgZXG6@smile.fi.intel.com>
+References: <20241202-fix-llvm9-v1-0-2a50f5acfd0b@chromium.org>
+ <20241202-fix-llvm9-v1-1-2a50f5acfd0b@chromium.org>
+ <20241203093114.0ca49c01@foz.lan>
+ <c896221c-5ff2-4a2b-b431-7c7f805b4f68@xs4all.nl>
+ <Z7c252IKhXdysjAi@smile.fi.intel.com>
+ <55389b80-9f0e-4423-8e92-c486de058720@xs4all.nl>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: Add extra entry for
- MT8395AV/ZA Genio 1200
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250220-mtk-socinfo-genio-1200-evk-v1-1-a683ad028bc5@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250220-mtk-socinfo-genio-1200-evk-v1-1-a683ad028bc5@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <55389b80-9f0e-4423-8e92-c486de058720@xs4all.nl>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_071913_894901_C0C317B7 
-X-CRM114-Status: UNSURE (   6.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250220_072530_690403_FFD3AF23 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,13 +96,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/02/25 16:02, Louis-Alexis Eyraud ha scritto:
-> The Mediatek Genio 1200 EVK P1V2 board has a different socinfo match
-> for MT8395 SoC (commercial name Genio 1200), so add it the driver.
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+On Thu, Feb 20, 2025 at 04:12:38PM +0100, Hans Verkuil wrote:
+> On 2/20/25 15:06, Andy Shevchenko wrote:
+> > On Thu, Feb 20, 2025 at 02:55:42PM +0100, Hans Verkuil wrote:
+> >> On 12/3/24 09:31, Mauro Carvalho Chehab wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+...
+
+> >> ORing enums is really not a good idea: you would normally never do that, and
+> > 
+> > I think you missed a keyword "different", so "ORing different enums ..."
+> > which I totally agree on, but the same enum values are fine.
+> 
+> While the compiler might be happy with that, I think ORing enums regardless
+> is weird. It's not what enums are for.
+
+I disagree. It's totally normal to have "mixed" enums where we have ranges of
+sequential values mixed with bit flags. Cross-enum bit operations (and what
+this patch is about) should be prohibited, indeed.
+
+> >> the compiler warning is IMHO appropriate.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
