@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48463C021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 16:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D83AC021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 16:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vh9Xz0z7OiS4ofBIj3fyQWSQjX/C6PXbtjaOP2WulQI=; b=WViRKnjyS0SnZ6wGkCvrGiSNX+
-	JTq1x4RkwT7erhquJNbUTaKhWKJA5CebsU4P+wzAn3Q2kUSJZxuYumqbEmh0YZFM/Ewe0tIHA/hTC
-	TrAFDGNXDbQC8qaGf3rlxzYBt8Fj4GDCtzWGD+seYZjvmTByra+fEfUfbIcf3khxj1craH6MKO47o
-	OeX2XaGNPfRproiC6Yror/yVHTDkJy5m1jEDSTqmfKzWdpVRzkctlR5OdT+5rnmlITlisl7diVCUX
-	Wf2rccOd7x2gtUkYEO5VUqkB0MOQZZCxMt75LK60vplYGFI1q72kmXNTekHBrD6nchBZZN6jCSf2U
-	QzlgalOw==;
+	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=; b=L22x2rZw3cTPRS/0ZELpi9AEjL
+	1BOcdT7s1aTCJTXtKmSjablWj/eoV3Viz8yiJ54ZLHMYuPfRya7qz6ORr3gNZ76JVM4YHgunkQOXp
+	W882EsnIf4e8x3Cq7hfbVL4+QqxgpDSTP2o787+kG1aC2BndwOEZ3sLztXOwaoWsg/mVjRYqUKKiL
+	MNYZjOoDOET4Uzo3HrIBoG3Y/kUcYumZYBif1fconCSPa7niyirp8TI+OvAglXlxh2AXYUoe/2MBS
+	YIdSwK16AqYoNTcy9xkLqn45/7Lwj+f08EN+dZo5pBPgARKdxVz2WDt7WCWaqUJfX4FluNcvbAc/v
+	7SZdybnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl91z-00000001k9q-0tnm;
-	Thu, 20 Feb 2025 16:04:07 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tl98u-00000001mSh-0M6U;
+	Thu, 20 Feb 2025 16:11:16 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl8wx-00000001iek-2nF7;
-	Thu, 20 Feb 2025 15:58:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740067134;
-	bh=Kos+DGfj4UcSE7PWFsm4JxiAjanMiFXuRS8fX8RLC40=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CZ3NeBh09m5iEN9Y83oNd0toGDYXbFuapo1ZPhFtl5wB/wFPcLsL++KIJriKxuZOB
-	 0ZS2t1b5fUxJFu3tybbtxlsuWxjijHN4smfQJVgMmPBlA1Qe+AABHOTXojCJiArRbM
-	 OoJE0Z2Gm0NMwnVV+OYRQbzVAIH1l+DGbrt8F+LUIwiUuw+e6ZTwRMT+IKLV2/+uQz
-	 TsTrHp9ItkWV/YYR5vHFc8AdwHoFnAwGCHW4uW/CpftiwMMlt/yu1SgTNe2pVgYqyL
-	 U4lnLadsLIoHD8WZn1vsF2Q9OdVY0Mmlv3ufW/QGenRes0F8qrG4MYSFpHadzbAhmS
-	 1CuoUB/R7wh1A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1042917E1247;
-	Thu, 20 Feb 2025 16:58:53 +0100 (CET)
-Message-ID: <cb392432-e452-4460-ace6-54b3649aed52@collabora.com>
-Date: Thu, 20 Feb 2025 16:58:52 +0100
+	id 1tl98F-00000001mHW-334F;
+	Thu, 20 Feb 2025 16:10:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740067826; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=fK0hgpnSc7wHdnScZwsvHvmbOkyWb03c01zpIeu3IanN4S/24IADwzwMmHCxMzZh69e0QFLKw+VJlDSQ5aln/0YB2RDSXVsVBcOmmHiTso9hMIalmUv2v2fkpsh2ReLVgNiLiHMfkoe1PZI015y2wn/sO3WfP5mg6mjLzsr/2s8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740067826; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=; 
+	b=ViwEYwSYLaplLiRRebA+EavTbgXaGFDif39tG9l0dYzvRf0ts/sv5Zr3fKIj0Tpa2mXGglvmOEcv8ZzesWzbD/NQRcb1JjyqPZqc3wMYU5+EunyG9GZcm9+M2YI1x2DBHIaTHIgSZWttgVwQS7+aK1fAp99vFS8yjuL3nyBC814=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740067826;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ZELLhyNrX/AMU/X/XLHluCd0loXd+7aqRfqJaYVGOoE=;
+	b=EduweB5KBkR0ccyYBTaR71kHlB+Cm2C1+uOYpnAGhP8fsVCU4dd1oLWvb0mZNeiJ
+	5LPdG3Z1MweoTCjWRid30oQ6iHV9OeNchE42cx4IMeeJ1b4OBPQ5wC3b9rSZ5Fztbc0
+	7ra/K4+6kLD4/HJUfSiWtBOZSIxhWfXx8uvFMDg0=
+Received: by mx.zohomail.com with SMTPS id 1740067825336681.7729656180264;
+	Thu, 20 Feb 2025 08:10:25 -0800 (PST)
+Message-ID: <d2bd8baf-e1f7-4e8a-9e33-259051d6f97a@collabora.com>
+Date: Thu, 20 Feb 2025 19:10:18 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add
- support for TCPC port
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-usb@vger.kernel.org, Chris-qj chen <chris-qj.chen@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>,
- Yow-Shin Liou <yow-shin.liou@mediatek.com>,
- Simon Sun <simon.sun@yunjingtech.com>
-References: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 21/25] drm/virtio: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
 Content-Language: en-US
-In-Reply-To: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Thomas Zimmermann <tzimmermann@suse.de>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu <olvaffe@gmail.com>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-22-tzimmermann@suse.de>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20250109150310.219442-22-tzimmermann@suse.de>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_075855_996893_982F09AD 
-X-CRM114-Status: GOOD (  20.97  )
+X-CRM114-CacheID: sfid-20250220_081035_856977_FBD7762D 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,137 +89,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/02/25 15:33, Macpaul Lin ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
+On 1/9/25 17:57, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch to a multiple of 4.
 > 
-> Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
-> configuration for TCPC Port, USB-C connector, and related settings.
-> 
-> Configure dual role switch capability, set up PD (Power Delivery) profiles,
-> and establish endpoints for SS (SuperSpeed) and HS (HighSpeed) USB.
-> 
-> Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
-> to "otg" for OTG (On-The-Go) mode operation.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
-> Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: David Airlie <airlied@redhat.com>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Gurchetan Singh <gurchetansingh@chromium.org>
+> Cc: Chia-I Wu <olvaffe@gmail.com>
 > ---
->   .../dts/mediatek/mt8395-genio-1200-evk.dts    | 72 +++++++++++++++++++
->   1 file changed, 72 insertions(+)
+>  drivers/gpu/drm/virtio/virtgpu_gem.c | 11 +++++------
+>  1 file changed, 5 insertions(+), 6 deletions(-)
 > 
-> Changes for v2:
->   - Drop the no need '1/2' DT Schema update patch in the 1st version.
->   - Fix indent for 'ports' node, it should under the 'connector' node.
->   - Correct the index for 'port@0' and 'port@1' node.
-> 
-> Changes for v3:
->   - Correct the order between new added nodes.
-> 
-> Changes for v4:
->   - Reorder for property 'op-sink-microwatt'.
->   - Fix indentation for 'source-pdos' and 'sink-pdos' nodes.
->   - Correct node 'pin-cmd-dat' with 'pins-vbus'.
->   - Add both Highspeed and Superspeed ports to ssusb0 port.
->   - Set 'role-switch-default-mode' = "peripheral" for ssusb0 port.
->   - Rename endpoint of USB data port to 'mtu3_hs0_role_sw' and
->     'mtu3_ss0_role_sw'.
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> index 1ef6262b65c9..ca039c8e4c71 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> @@ -330,6 +330,47 @@ mt6360_ldo7: ldo7 {
->   				regulator-always-on;
->   			};
->   		};
+> diff --git a/drivers/gpu/drm/virtio/virtgpu_gem.c b/drivers/gpu/drm/virtio/virtgpu_gem.c
+> index 5aab588fc400..22cf1cd2fdfd 100644
+> --- a/drivers/gpu/drm/virtio/virtgpu_gem.c
+> +++ b/drivers/gpu/drm/virtio/virtgpu_gem.c
+> @@ -23,6 +23,7 @@
+>   * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+>   */
+>  
+> +#include <drm/drm_dumb_buffers.h>
+>  #include <drm/drm_file.h>
+>  #include <drm/drm_fourcc.h>
+>  
+> @@ -66,15 +67,14 @@ int virtio_gpu_mode_dumb_create(struct drm_file *file_priv,
+>  	struct virtio_gpu_object_params params = { 0 };
+>  	struct virtio_gpu_device *vgdev = dev->dev_private;
+>  	int ret;
+> -	uint32_t pitch;
 > +
-> +		tcpc {
-> +			compatible = "mediatek,mt6360-tcpc";
-> +			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
-> +			interrupt-names = "PD_IRQB";
-> +
-> +			connector {
-> +				compatible = "usb-c-connector";
-> +				label = "USB-C";
-> +				data-role = "dual";
-> +				op-sink-microwatt = <10000000>;
-> +				power-role = "dual";
-> +				try-power-role = "sink";
+> +	ret = drm_mode_size_dumb(dev, args, SZ_4, 0);
 
-Would be appreciated if you could also complete the node by adding the pd-revision
-property, enabling full USBC Power Delivery for the MT6360 PMIC.
+Nit: I'd keep using PAGE_SIZE instead of 0 for more clarity, but that's
+an optional wish.
 
-Same for the alternate modes, adding the DP alt mode is a matter of seconds... and
-well, it does sound a bit weird to add alternate modes without a mux... so, in this
-case you can choose either to:
-  - Squash the two commits (tcpc, it5205) and do everything in one; or
-  - Add the alternate mode node to the connector in the commit introducing the mux.
+> +	if (ret)
+> +		return ret;
+>  
+>  	if (args->bpp != 32)
+>  		return -EINVAL;
+>  
+> -	pitch = args->width * 4;
+> -	args->size = pitch * args->height;
+> -	args->size = ALIGN(args->size, PAGE_SIZE);
+> -
+>  	params.format = virtio_gpu_translate_format(DRM_FORMAT_HOST_XRGB8888);
+>  	params.width = args->width;
+>  	params.height = args->height;
+> @@ -92,7 +92,6 @@ int virtio_gpu_mode_dumb_create(struct drm_file *file_priv,
+>  	if (ret)
+>  		goto fail;
+>  
+> -	args->pitch = pitch;
+>  	return ret;
+>  
+>  fail:
 
-Either of the two options is okay for me, so you choose.
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-> +
-> +				source-pdos = <PDO_FIXED(5000, 1000,
-> +							 PDO_FIXED_DUAL_ROLE |
-> +							 PDO_FIXED_DATA_SWAP)>;
-> +				sink-pdos = <PDO_FIXED(5000, 2000,
-> +						       PDO_FIXED_DUAL_ROLE |
-> +						       PDO_FIXED_DATA_SWAP)>;
-> +
-> +				ports {
-> +					#address-cells = <1>;
-> +					#size-cells = <0>;
-> +
-> +					port@0 {
-> +						reg = <0>;
-> +						typec_con_hs: endpoint {
-> +							remote-endpoint = <&mtu3_hs0_role_sw>;
-> +						};
-> +					};
-> +
-> +					port@1 {
-> +						reg = <1>;
-> +						typec_con_ss: endpoint {
-> +							remote-endpoint = <&mtu3_ss0_role_sw>;
-> +						};
-> +					};
-> +				};
-> +			};
-> +		};
->   	};
->   };
->   
-> @@ -755,6 +796,13 @@ pins-reset {
->   		};
->   	};
->   
-> +	u3_p0_vbus: u3-p0-vbus-default-pins {
-> +		pins-vbus {
-> +			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
-> +			input-enable;
-> +		};
-> +	};
-> +
->   	uart0_pins: uart0-pins {
->   		pins {
->   			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
-> @@ -885,8 +933,32 @@ &ufsphy {
->   };
->   
->   &ssusb0 {
-> +	dr_mode = "otg";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&u3_p0_vbus>;
-> +	role-switch-default-mode = "peripheral";
-
-There's no need for a default mode here, luckily the MediaTek MTU3 controllers
-don't need that for real :-)
-
-Drop please.
-
-Cheers,
-Angelo
-
+-- 
+Best regards,
+Dmitry
 
 
