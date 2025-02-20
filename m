@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0320EC021B3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28177C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 15:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PSrQTSCqMjbqIbURLRKTd4NKXbT6AEa8/dleY0GQJaQ=; b=YxolUfm2Ac9XrtUCPPzNwG3uYc
-	HnIeWf9w0ZV5QTFyIUewe45EwBX8XsFFiPINJwVjiCY6tEhKFPqPEpOKd66CRCnist+zVXw18h7xC
-	piKfmcc5RM+6HuisT5XLMFVBlC9UJzl2FARbuUhSD7t/L4naLApA2QLs43Zi+ei8lThTRK5k8MYKV
-	u+3BWSDCUWEUEFR/Y6nyvRW1SG1uoAs45P1Y8x3+wKIxV93lhHkOomwdnMptQWrDXbsTwX0hAwkTK
-	AYTh7DmeZ7zL9oa7F+0Exf4GHbh9MBHGtV2IglbP4LP0278LVWslXunHKkzZ93SiPxM5ljW+OAFzs
-	WS/LD28g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ewNBcxlBPeKEAVRlE4+JYHKqmJRY8BNPDlD5uFq3lMo=; b=gS8GR5vHZmrosYNXRd9y1zn4lW
+	LTFcJmHu3lhkf0DvVLqRWTYWP5uaOpX7OE04Uw3n8gOW7h3oEp2yntf20KyuVkJeAamDfTwU/8WFw
+	AiduvX+0/OL89xSEXGW/lY2IIBN4J1TqVeFrfHwPOfPAO2XQ0MUSNTMXZdtF+KWF4e8o7pWXPTl51
+	HsdCq8T3KZerhjpmWcXKw/dyGuzTDkDdTjrNRjGrir1eX7iG5BWT6swuESYGZLX6ID6azU2ec3XsY
+	0g9nmtpktnAnt2mt0sprQWhoSWjiIH8i7QekJlxHt+Xwt+0+nxgxOrKgdnaGm7Kog2oaQrh4QMm/x
+	kkXHBKRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7mi-00000001Nvz-0r2j;
-	Thu, 20 Feb 2025 14:44:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tl85z-00000001T3j-4Bm6;
+	Thu, 20 Feb 2025 15:04:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7de-00000001LC6-0JGD;
-	Thu, 20 Feb 2025 14:34:55 +0000
-X-UUID: d6819526ef9711ef83f2a1c9db70dae0-20250220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PSrQTSCqMjbqIbURLRKTd4NKXbT6AEa8/dleY0GQJaQ=;
-	b=pOPGWVnnNq48hkYu4FY898PCNbCrVpZpKkJIgVMO+nkEmfRYrDDh7V/FHSVQIW2iN+I1Faiu7/9iRzNe6nPUSRSTVClE78miqt2BhK8l+VZLbAxNs0FYbfNPdfNriJUkJJxIFR4mjlOlEUS9LFlLiSO3Vg66uMEDo2dijLxWXvE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:36786209-3b83-4799-a12a-d548dfc68dd6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:ae9921dc-d480-4873-806f-0f365159227b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d6819526ef9711ef83f2a1c9db70dae0-20250220
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1040269369; Thu, 20 Feb 2025 07:34:48 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Thu, 20 Feb 2025 22:34:46 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Thu, 20 Feb 2025 22:34:46 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	Fabien Parent <fparent@baylibre.com>, Simon Sun <simon.sun@yunjingtech.com>
-Subject: [PATCH v4 2/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add support for MUX IT5205
-Date: Thu, 20 Feb 2025 22:33:54 +0800
-Message-ID: <20250220143354.2532448-2-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
-References: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
+	id 1tl84U-00000001Sch-1O89;
+	Thu, 20 Feb 2025 15:02:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740063756;
+	bh=rck6B72os/DWioFHMOmH67JN8LqxpYdTERiLlS+nlTw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=DwHMrhftva+2vJ3zQamsc79qDX+CINE6HLPpu75s0Z8Zr7NRsl26Qw7l35PPVaxBG
+	 1yKXd+e5cHoKyNtKoRK0wLG+FAUqto69/oYX3nAtxKTm9lwg6/Mvl6qDjBsnOF/i4+
+	 KAsNZEKYuxQuom0f1ixxiQBCnOzbxmVKJtFJ8En+v14m9KcePBgdvU5r3HAWxHOwtj
+	 /mbSZo1XMf31/MpidFckD/z5LJSlTvZkrarx5PhqU3iPMitZaovj6V73unDHhTNkTz
+	 X/EwrWwv+Y8o4L+HPhPAH4QqtNRasaKRnirN9HJD/BRYwijzoI/mi36nu7WZMnq3I2
+	 IuObWD5cgelbw==
+Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AE1D617E1557;
+	Thu, 20 Feb 2025 16:02:35 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 20 Feb 2025 16:02:09 +0100
+Subject: [PATCH] soc: mediatek: mtk-socinfo: Add extra entry for
+ MT8395AV/ZA Genio 1200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250220-mtk-socinfo-genio-1200-evk-v1-1-a683ad028bc5@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAPBDt2cC/zWNQQqDMBAAvxL23IVkobX4leJBk9UukqRNogji3
+ xsqHmcOMztkTsIZWrVD4lWyxFDB3BTYdx8mRnGVgTTdNZFGX2bM0UoYI04cJKIhrZHXGRtDw8M
+ 9yVljoAY+iUfZ/vFXd3Li71If5ZQw9JnRRu+ltCrwVvD6QHccPx8glG2dAAAA
+X-Change-ID: 20250220-mtk-socinfo-genio-1200-evk-712b6d82dc11
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740063755; l=1266;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=rck6B72os/DWioFHMOmH67JN8LqxpYdTERiLlS+nlTw=;
+ b=utlvnCOJj4zzso5Z1dtj4zu9mvNrVqF9Y9tC6p7GZPke22xBquuAUlGIEX64Egw4QHjvotDls
+ QV9FKciTZt+BrkX9eRTaSRNb9HAbgk9j8XmwsYUtVtvbyPFpkEaen42
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_063454_113074_6248FD1D 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20250220_070238_523381_79F8F081 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,70 +86,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ITE IT5205 (TYPEC MUX) under I2C2 bus and configure its properties;
-also add references to it5205fn from MT6360 TYPE-C connector for TYPEC
-configuration.
+The Mediatek Genio 1200 EVK P1V2 board has a different socinfo match
+for MT8395 SoC (commercial name Genio 1200), so add it the driver.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- .../dts/mediatek/mt8395-genio-1200-evk.dts    | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/soc/mediatek/mtk-socinfo.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Changes for v2:
- - This is a new patch in the v2 patch.
-
-Changes for v3:
- - No change.
-
-Changes fo4 v4:
- - Drop it5205fn phandle for node typec-mux@48.
- - Reorder properties of typec-mux@48
- - Add "Reviewed-by:" tag. Thanks!
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index ca039c8e4c71..8ec5c4cf59f3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -224,6 +224,21 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	pinctrl-names = "default";
- 	status = "okay";
-+
-+	typec-mux@48 {
-+		compatible = "ite,it5205";
-+		reg = <0x48>;
-+		vcc-supply = <&mt6359_vibr_ldo_reg>;
-+		mode-switch;
-+		orientation-switch;
-+		status = "okay";
-+
-+		port {
-+			it5205_sbu_ep: endpoint {
-+				remote-endpoint = <&mt6360_ssusb_sbu_ep>;
-+			};
-+		};
-+	};
+diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
+index a15d8f854cefa90883377b47bbc16a7072ee21cd..fbaf82a6e14c31d447f7725c82b306ff055e1c7d 100644
+--- a/drivers/soc/mediatek/mtk-socinfo.c
++++ b/drivers/soc/mediatek/mtk-socinfo.c
+@@ -59,6 +59,7 @@ static struct socinfo_data socinfo_data_table[] = {
+ 	MTK_SOCINFO_ENTRY("MT8370", "MT8370AV/AZA", "Genio 510", 0x83700000, 0x00000081),
+ 	MTK_SOCINFO_ENTRY("MT8390", "MT8390AV/AZA", "Genio 700", 0x83900000, 0x00000080),
+ 	MTK_SOCINFO_ENTRY("MT8395", "MT8395AV/ZA", "Genio 1200", 0x83950100, CELL_NOT_USED),
++	MTK_SOCINFO_ENTRY("MT8395", "MT8395AV/ZA", "Genio 1200", 0x83950800, CELL_NOT_USED),
  };
  
- &i2c6 {
-@@ -368,6 +383,13 @@ typec_con_ss: endpoint {
- 							remote-endpoint = <&mtu3_ss0_role_sw>;
- 						};
- 					};
-+
-+					port@2 {
-+						reg = <2>;
-+						mt6360_ssusb_sbu_ep: endpoint {
-+							remote-endpoint = <&it5205_sbu_ep>;
-+						};
-+					};
- 				};
- 			};
- 		};
+ static int mtk_socinfo_create_socinfo_node(struct mtk_socinfo *mtk_socinfop)
+
+---
+base-commit: 964b0ceed00032fa0fa841fd61e5f315880a2d36
+change-id: 20250220-mtk-socinfo-genio-1200-evk-712b6d82dc11
+
+Best regards,
 -- 
-2.45.2
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
