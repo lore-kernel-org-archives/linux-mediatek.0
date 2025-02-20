@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08DE5C021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E41C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RmKPFSbPJ5WoKs6gi+7FSv/KQmaSdQEKbDBEKB0rK4A=; b=ikUwGzu8niOaK4Tr9YwaHi+riU
-	bPBlFmR1fVDwvPghcH05tztuehCaVgSxwBQCgswHstHW9HeqxRiT+u5jNSqfNee2I3IB81p9mXuqo
-	ruiRHAa4Ph6TdT4doEtw/EmYBS1FGwEYyCg9AzY5FU/mMu6dCYpfyKUKhvSbF4vF3NL1U3ySCFIdO
-	y6tB5ujr/fbxJze+XXv7Y5119fHi5Fp6WH2OCgcKNxlypsSJe4IhkSJDYFfybbmEeDUuoD8hlA+uR
-	xP85PfwU/YR2X7HyDXjL8vX9cmsaDVM87YSAHuvgRXRcsv3FB7m3P50t59JJZpbk0+640omWF1Nuy
-	FNUbkmsQ==;
+	bh=aj7ytsnbant7AQal2MJqRPTY52l29Np/6crP9TfZEBc=; b=ItAfc9B9Q0pLrUSRudwOdciCTf
+	lRQlITx+UGeawfRnTXGjANbwEDk1ssNt4xfjPskbF8Jym5jDV/mS+e58Py5YSrht0slI+6Jd/QDJY
+	+jI4ETK9US5fePkBAJPH9pzD53IyEb57Z8c9cyLerrlCayrHjty9tEr09IvGFMzCmg832hj0zye3U
+	QVdkBdThR+hxFZLYerTpkxHTLXjIDCRqXV8cF9eGDCRZiwaFwQVBuFaKRgaW01bq6b0oHLim+f6Di
+	oA0OcEL8fEQ7LUaG6mH+6CYNsKc4z2G6saZYJfh8ZqePDmnJAMIIB4rxExhCZLfWcoL9Sz0R44pa9
+	gNESD0Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7PH-00000001H03-0fig;
-	Thu, 20 Feb 2025 14:20:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tl7az-00000001KRY-3cSy;
+	Thu, 20 Feb 2025 14:32:09 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7MR-00000001GBj-3Ca2;
-	Thu, 20 Feb 2025 14:17:09 +0000
+	id 1tl7QV-00000001HMW-07hh;
+	Thu, 20 Feb 2025 14:21:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8323861494;
-	Thu, 20 Feb 2025 14:17:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC4E8C4CED1;
-	Thu, 20 Feb 2025 14:17:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 45A095C5B9B;
+	Thu, 20 Feb 2025 14:20:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1685BC4CED1;
+	Thu, 20 Feb 2025 14:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740061026;
-	bh=phtVfpAQP2gqJ9uhxpOiCBTEsxgIpvS5igy/qXNkMDI=;
+	s=k20201202; t=1740061278;
+	bh=t1YRfXHSR0r4DzbqO4O5hCHBJK6Wk9U+htitk02MAB8=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=hmDAx/bL+DtKimxCl9L1Ouu9reCfWS9G4jSWwbwFIt62paGHuLWpefNgpk6rEu9mY
-	 xZW4LhwkcMuT7rH1d6qZGTSApMyHQYHP/fpyyRhBvV+DjXvOnUH6GOLoTa2xssxUow
-	 bUZuyAFc+GmYnNKCa5ACj4s+NdjMC/QflQ6vupSIK5wqLBtCH250twMfbw5duc4ltw
-	 nuH3lqb+ocRpyyMo4xPgz18M58FQS6S7PFLwq7rc/+9gl/OkZgzgl28Ex0gxg+7D7r
-	 w0AQgd+dHiiP6+vcctnz/+qeAh4+MirPOfxaOcaZqqEt8BYd1ahdBw9+OYkkuOqrJh
-	 5EfRZBi4NQS1A==
-Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-2f42992f608so1610844a91.0;
-        Thu, 20 Feb 2025 06:17:06 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUOduCGstu9Gj97nHR+2g2kjt+JnO0WU9wq1XrEuZmN6oPwAXSyCMmD2/d/M0WhdO4xRUBrqjyuMHsw2+LnuVLP@lists.infradead.org, AJvYcCUclle6FehYPHyQfzIq3VEYXoBYHpZ/yHRbNTg+F5Tnw8hJO28UsW9EuNfC/wJ8lrGF7TxhnzdREFCK6fRDD9g=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwL6f6N6HszkGc7OMFHZzRlXRCxoh8agv1sFoyYmN/YchQdBhFA
-	nD3wH3YxdROkqvepBDPlsSDXiE7/kQWyNLPDqOuVH6VSe8ECXv5EVOqiy+wp8nQHHJNT/aKlHP5
-	Lu7/oul89wgDNiy05YTwY9ipafA==
-X-Google-Smtp-Source: AGHT+IGyx5QWB4rzHyre9LMXoPdg2qp8oLeofiBp2HooA+47pReCBBVwzDOuk8vQdFLX+87Wzj+OpnchkAQUrEFYbI8=
-X-Received: by 2002:a17:90b:2e50:b0:2ee:aa28:79aa with SMTP id
- 98e67ed59e1d1-2fc40d14ac5mr32787274a91.6.1740061026314; Thu, 20 Feb 2025
- 06:17:06 -0800 (PST)
+	b=pTQJE6OD2Wd1RK/TY96gGa7OLrWKjlapSJ9+hEKgspSGa7NMMEswTg4pLgf5PhESR
+	 01sOIB5OdAY2Ax5kGfuICyeMuo20X0kiE7bDMJxqsMWGrj3ZL/AWVoUWu2cFWi8hVJ
+	 a5XN0lV5TJiAtfsgShNAePZ/esyekVbL+rn/3tsFVIX1JVbfefTa6rKK1Qq1fuWcXJ
+	 N9sXWpJfhUWq1b8mc8pFPrdKogm1UTYmVYfJuSyKs6a+nyEg9M4nnpw9MwGappcGH/
+	 hXfj3IVJUVXI9OCIY3wo/BkTwBKDJjU44bCQD8iFNEDV8NRpflFHMkT6Dyu2OmVl2e
+	 wIaT4/Y4tTJvA==
+Received: by mail-pj1-f52.google.com with SMTP id 98e67ed59e1d1-2fa48404207so2059356a91.1;
+        Thu, 20 Feb 2025 06:21:18 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUefj9CL2cIQR+mNJwGttQYsEbT2Yyatomjt6z38f10HmMSn8rY3BBd6+SnTtJihBnXvaWoUvFMAs2yICvrqyc=@lists.infradead.org, AJvYcCXSPNKNbutLYCLqEU9wr19nmvQ7VA1VQr0j5NTATTCwWzdg5A7+6PFR5/f4cwVlLNZorcSe9HWUnPZLzSmlPlu6@lists.infradead.org
+X-Gm-Message-State: AOJu0YyORpAsqnscbtTedjAtYemvW0vH0BxWcbzJpKiMCJ1CdGDNTvhy
+	e5XB2O0RszGWA19nGyYr51KmuTYMqB49Jl10a3gkkUaKwkETezPa+iKWKN53k6VGyBXNHkuau9H
+	4oR/kjvW/CM18/ji8vcsxkxaJAA==
+X-Google-Smtp-Source: AGHT+IEM7TeLueuZHPQaOMtrQ+jefGLGWiXk9sVHtvUBeiE5X3S4o44Ic7KtorBRdm5c8t14xyWBYmEyM00igBUqouk=
+X-Received: by 2002:a17:90b:2250:b0:2fa:b84:b31f with SMTP id
+ 98e67ed59e1d1-2fc41040fcemr33893917a91.25.1740061277661; Thu, 20 Feb 2025
+ 06:21:17 -0800 (PST)
 MIME-Version: 1.0
-References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-31-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250217154836.108895-31-angelogioacchino.delregno@collabora.com>
+References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-32-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250217154836.108895-32-angelogioacchino.delregno@collabora.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 20 Feb 2025 22:17:49 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8G36w1KZpfcVPbfZ6RjbAs3=GHdzdnPHZw=4Njnid35A@mail.gmail.com>
-X-Gm-Features: AWEUYZn7UqFdQMaggAe3FK4XBZKbvE_M4ZaCHMfj6Eg3FDhoHOMNrpbhRQkeUao
-Message-ID: <CAAOTY_8G36w1KZpfcVPbfZ6RjbAs3=GHdzdnPHZw=4Njnid35A@mail.gmail.com>
-Subject: Re: [PATCH v7 30/43] drm/mediatek: mtk_hdmi: Remove ifdef for CONFIG_PM_SLEEP
+Date: Thu, 20 Feb 2025 22:22:01 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8JLpoF4isgm-F7Z6W-tSxkdqACSaHvyARgaPo8PNdWsg@mail.gmail.com>
+X-Gm-Features: AWEUYZkuEEgZl0b7vlV6l42zcGpmz08ZpO3TrJPmfidMvCivGVZgPuOu7_J_xKI
+Message-ID: <CAAOTY_8JLpoF4isgm-F7Z6W-tSxkdqACSaHvyARgaPo8PNdWsg@mail.gmail.com>
+Subject: Re: [PATCH v7 31/43] drm/mediatek: mtk_hdmi: Remove goto in mtk_hdmi_clk_enable_audio()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
@@ -75,8 +75,8 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_061707_919527_221CD88F 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20250220_062119_151280_2C6E3D19 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,14 +98,12 @@ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
 2025=E5=B9=B42=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=8811:=
 50=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Since the SIMPLE_DEV_PM_OPS macro and the pm pointer are anyway
-> defined when CONFIG_PM_SLEEP is not set, remove the ifdef for it
-> and indicate that the mtk_hdmi_{remove,suspend} functions may be
-> unused (as they are, in case PM support is not built-in).
+> If the clk_prepare_enable() call for the SPDIF clock fails, just
+> disable and unprepare the clock in the error check branch and
+> return immediately instead of jumping to the end with a goto,
+> slightly reducing code size.
 >
-> While at it, to improve readability, also compress the
-> SIMPLE_DEV_PM_OPS declaration as it even fits in less
-> than 80 columns.
+> This commit brings no functional changes.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -120,47 +118,33 @@ Chun-Kuang.
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
 ek/mtk_hdmi.c
-> index f539472307e2..bf8cf7fc8c07 100644
+> index bf8cf7fc8c07..2e98a8ed6cbe 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1694,8 +1694,7 @@ static void mtk_hdmi_remove(struct platform_device =
-*pdev)
->         mtk_hdmi_clk_disable_audio(hdmi);
->  }
+> @@ -1095,13 +1095,12 @@ static int mtk_hdmi_clk_enable_audio(struct mtk_h=
+dmi *hdmi)
+>                 return ret;
 >
-> -#ifdef CONFIG_PM_SLEEP
-> -static int mtk_hdmi_suspend(struct device *dev)
-> +static __maybe_unused int mtk_hdmi_suspend(struct device *dev)
->  {
->         struct mtk_hdmi *hdmi =3D dev_get_drvdata(dev);
->
-> @@ -1704,7 +1703,7 @@ static int mtk_hdmi_suspend(struct device *dev)
->         return 0;
->  }
->
-> -static int mtk_hdmi_resume(struct device *dev)
-> +static __maybe_unused int mtk_hdmi_resume(struct device *dev)
->  {
->         struct mtk_hdmi *hdmi =3D dev_get_drvdata(dev);
->         int ret =3D 0;
-> @@ -1717,9 +1716,8 @@ static int mtk_hdmi_resume(struct device *dev)
+>         ret =3D clk_prepare_enable(hdmi->clk[MTK_HDMI_CLK_AUD_SPDIF]);
+> -       if (ret)
+> -               goto err;
+> +       if (ret) {
+> +               clk_disable_unprepare(hdmi->clk[MTK_HDMI_CLK_AUD_BCLK]);
+> +               return ret;
+> +       }
 >
 >         return 0;
+> -err:
+> -       clk_disable_unprepare(hdmi->clk[MTK_HDMI_CLK_AUD_BCLK]);
+> -       return ret;
 >  }
-> -#endif
-> -static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
-> -                        mtk_hdmi_suspend, mtk_hdmi_resume);
-> +
-> +static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops, mtk_hdmi_suspend, mtk_hdmi_res=
-ume);
 >
->  static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 =3D {
->         .tz_disabled =3D true,
+>  static void mtk_hdmi_clk_disable_audio(struct mtk_hdmi *hdmi)
 > --
 > 2.48.1
 >
