@@ -4,91 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98AB1C021B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 10:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB94C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 10:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=65zE77FFO0s0D2ildlq3h1u4o6X5a++vxcNcTRVNHEs=; b=Tb/7xT1fDKUO/QNk9dk5vtcgNY
-	oxEB4UsxYjCxutwbYRtrodRzBAIIm2ldS0gb1pr3JMqBB7ov7/rrArbK8r9rDxZioewQ2q8Mw66lm
-	AgaPMwDByn/X4mS4shpac1dtKy9rJGZXQ3M6ifIwK4jSQRuhukvDPH/f8uM6tkHtuCpC/e0dOEyaT
-	ImnLDu0AlRs9eaXi/lfgq5BKKTZY1vj/zwbGT6Gh8N/sw0YjwNgSQ28zC5+rPkDXnMKu/1CvIoW6+
-	2PgiRA/CS9lMWZOhJJoylw1+oShy8pCRW/opWwSwthwpVr3B88jqcp/p30bYuQZ6Iqu+NWfQGgs9R
-	MS+VgStw==;
+	bh=s5cICI1srA6AL9a1+pOUSOCIV5EtvwUaabHRqHMrz9I=; b=ThJ6oBHdHfb8LICEWmBO30BfQ4
+	ywRQ85P8EbkWbL4jicmGXyXC41kSAV6VPw9+yMAPp8qQsvQlBz763D3wAso4UaYIMc7nTrbowWsUF
+	EccR2qCC+Otup++6fBPdsSiIGMLQnnl5DjciOSdqNiSmqFpf8c+Oxm77hcPYiZMqr4LPGxoDDiDoV
+	hxTmRPsVbEzxU84n/WEkPGW/UyuVwMYmj00FChPIlm7P/ZdMmT1LYHMYE7K0M+UU4Jg/5h+Z7cndT
+	Jfi7born458YFCLq9j+CLKzAH5HgRMDAsiPTr4qEyDxOVgoCHASRk6Y5NYs4yktLGyn+LDKB1OLxE
+	50Oz94Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl3Qh-00000000CYO-2lOQ;
-	Thu, 20 Feb 2025 10:05:15 +0000
-Received: from smtp-out2.suse.de ([195.135.223.131])
+	id 1tl3U5-00000000DVP-2RGb;
+	Thu, 20 Feb 2025 10:08:45 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl3Qe-00000000CVl-2TDs
-	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Feb 2025 10:05:14 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 6C61F1F387;
-	Thu, 20 Feb 2025 10:05:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1740045909; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=65zE77FFO0s0D2ildlq3h1u4o6X5a++vxcNcTRVNHEs=;
-	b=e5eq5uP0lSiK917nOXNtjo5B2Il1opJ5S/TBMSPN4GHpYevG6+GNEH5dc8U5aFcpfpK5Cw
-	9dyUqjpExeG/vOFUhwpAb2s+6fZYEFh8FlGNz8QvfTSNrsWn8qj0c2mzG9WiFdt5gULRCW
-	TGicx3LEipQvDm3ioB7HkQ9PlaM5NCU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1740045909;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=65zE77FFO0s0D2ildlq3h1u4o6X5a++vxcNcTRVNHEs=;
-	b=ajjYyaE/xQ9d1+3WLRm22ouGPNw8XS1zONxWMbXADKRkZi7IsWu7kBhUGdbRBvbDAACQLH
-	ia8HYBlw60OiJ8Cg==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=U56jNFDp;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Y6Z3Xnwq
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1740045908; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=65zE77FFO0s0D2ildlq3h1u4o6X5a++vxcNcTRVNHEs=;
-	b=U56jNFDpLXJPaOrLQJfvYY3y3udSaNl+sAmV78MflSnzJ2pXFkRW0fkt6nNPommYWeJs5b
-	EObtbJwATSyG1yNBNUY8Q7ziNK7zMoXp/lIACti91Fo4GF8dJ6/bW/cfl+z2xiSc6Q8kLz
-	E3iDjmZLFv7MoYUNUKKnoGOm4d4Ko3Y=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1740045908;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=65zE77FFO0s0D2ildlq3h1u4o6X5a++vxcNcTRVNHEs=;
-	b=Y6Z3XnwqK8EgqLKD0rh0pt2PA9+fiVOipGfoO3odSV+zAHeoAfRNIAoiwb4DyQ4mJsF/Cn
-	VtFt6JqsYZumY3Bw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id E2B7A13301;
-	Thu, 20 Feb 2025 10:05:07 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id jF2hNVP+tmf1AQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 20 Feb 2025 10:05:07 +0000
-Message-ID: <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
-Date: Thu, 20 Feb 2025 11:05:07 +0100
+	id 1tl3U3-00000000DTT-28tE;
+	Thu, 20 Feb 2025 10:08:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740046124; x=1771582124;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=qEEkaGFEKdByIXhxlRz4s/blmxr0i3FKT7WWs7RYcVE=;
+  b=JjH7fQ3zl2KHGFYf9gNOL5hrsis6bu1Hyb3zZDBnLrflpHGo0Y2+kltV
+   TzXXZxJLLH+a52oq2ubTf89YbCa2uzY4EJFicxf35+Df9qtysFUIwS4Yw
+   slBRGT0Uo4UHah7HubrnW2pU5DnOpc/L2oh3bdmshNmMdhnr9d4jsgwG0
+   MAzG1lKT8Pddo708yhziBYm34yiFX1qf4bL+hqDO/07MWUGu3IfM9mRnk
+   ZSp9RTUf0U047IgdQHDTafNMbfdrYrOCBx2rExoxVq1umdN65DjODKvhw
+   al5BUKcgEscuL+Q5nN3aB10KTVQrzuCPO25NusmCp6IkC4R6p2b1GAbyP
+   A==;
+X-CSE-ConnectionGUID: WfjmW+mWRBeUJ8zhDUs4iw==
+X-CSE-MsgGUID: nlSxkwuoRC+uC0pjHDW+wQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11350"; a="44734928"
+X-IronPort-AV: E=Sophos;i="6.13,301,1732608000"; 
+   d="scan'208";a="44734928"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 02:08:40 -0800
+X-CSE-ConnectionGUID: UUemawqKTUWXKRiDeorKDQ==
+X-CSE-MsgGUID: hc9L0Du1SByRgSK2VuJbDQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="120221268"
+Received: from dhhellew-desk2.ger.corp.intel.com (HELO [10.245.244.161]) ([10.245.244.161])
+  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 02:08:36 -0800
+Message-ID: <92c1b182-5a0b-4d13-9b16-172ac970b62e@intel.com>
+Date: Thu, 20 Feb 2025 10:08:33 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 02/25] drm/dumb-buffers: Provide helper to set pitch
- and size
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+Subject: Re: [PATCH v3 23/25] drm/xe: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Thomas Zimmermann <tzimmermann@suse.de>,
  maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
  simona@ffwll.ch
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
@@ -98,73 +69,19 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
  intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+ Lucas De Marchi <lucas.demarchi@intel.com>,
+ =?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>
 References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-3-tzimmermann@suse.de>
- <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com>
+ <20250218142542.438557-24-tzimmermann@suse.de>
+Content-Language: en-GB
+From: Matthew Auld <matthew.auld@intel.com>
+In-Reply-To: <20250218142542.438557-24-tzimmermann@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: 6C61F1F387
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	ARC_NA(0.00)[];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	FREEMAIL_TO(0.00)[ideasonboard.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch];
-	MIME_TRACE(0.00)[0:+];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_020512_944457_C87F2DA1 
-X-CRM114-Status: GOOD (  22.61  )
+X-CRM114-CacheID: sfid-20250220_020843_552235_1472B798 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,67 +96,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 18/02/2025 14:23, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch
+> and buffer size. Align the pitch to a multiple of 8. Align the
+> buffer size according to hardware requirements.
+> 
+> Xe's internal calculation allowed for 64-bit wide buffer sizes, but
+> the ioctl's internal checks always verified against 32-bit wide limits.
+> Hance, it is safe to limit the driver code to 32-bit calculations as
+> well.
+> 
+> v3:
+> - mention 32-bit calculation in commit description (Matthew)
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Lucas De Marchi <lucas.demarchi@intel.com>
+> Cc: "Thomas Hellström" <thomas.hellstrom@linux.intel.com>
+> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Reviewed-by: Matthew Auld <matthew.auld@intel.com>
 
-Am 20.02.25 um 10:18 schrieb Tomi Valkeinen:
-[...]
->> + * Color modes of 10, 12, 15, 30 and 64 are only supported for use by
->> + * legacy user space. Please don't use them in new code. Other modes
->> + * are not support.
->> + *
->> + * Do not attempt to allocate anything but linear framebuffer memory
->> + * with single-plane RGB data. Allocation of other framebuffer
->> + * layouts requires dedicated ioctls in the respective DRM driver.
->
-> According to this, every driver that supports, say, NV12, should 
-> implement their own custom ioctl to do the exact same thing? And, of 
-> course, every userspace app that uses, say, NV12, should then add code 
-> for all these platforms to call the custom ioctls?
 
-Yes, that's exactly the current status.
-
-There has been discussion about a new dumb-create ioctl that takes a DRM 
-format as parameter. I'm all for it, but it's out of the scope for this 
-series.
-
->
-> As libdrm's modetest currently supports YUV formats with dumb buffers, 
-> should we remove that code, as it's not correct and I'm sure people 
-> use libdrm code as a reference?
-
-Of course not.
-
->
-> Well, I'm not serious above, but I think all my points from the 
-> earlier version are still valid. I don't like this. It changes the 
-> parameters of the ioctl (bpp used to be bits-per-pixel, not it's 
-> "color mode"), and the behavior of the ioctl, behavior that we've had 
-> for a very long time, and we have no idea how many users there are 
-> that will break (could be none, of course). And the documentation 
-> changes make the current behavior and uses wrong or legacy.
-
-Before I go into details about this statement, what use case exactly are 
-you referring to when you say that behavior changes?
-
-Best regards
-Thomas
-
->
-> Clearly we need something new and better for the buffer allocation, 
-> but for the time being, I'd be more comfortable just keep the current 
-> behavior, at least for all the drivers I use or maintain: omapdrm, 
-> tidss, renesas, xlnx, tilcdc.
->
->  Tomi
->
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+> ---
+>   drivers/gpu/drm/xe/xe_bo.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
+> index 78d09c5ed26d..b34f446ad57d 100644
+> --- a/drivers/gpu/drm/xe/xe_bo.c
+> +++ b/drivers/gpu/drm/xe/xe_bo.c
+> @@ -9,6 +9,7 @@
+>   #include <linux/nospec.h>
+>   
+>   #include <drm/drm_drv.h>
+> +#include <drm/drm_dumb_buffers.h>
+>   #include <drm/drm_gem_ttm_helper.h>
+>   #include <drm/drm_managed.h>
+>   #include <drm/ttm/ttm_device.h>
+> @@ -2672,14 +2673,13 @@ int xe_bo_dumb_create(struct drm_file *file_priv,
+>   	struct xe_device *xe = to_xe_device(dev);
+>   	struct xe_bo *bo;
+>   	uint32_t handle;
+> -	int cpp = DIV_ROUND_UP(args->bpp, 8);
+>   	int err;
+>   	u32 page_size = max_t(u32, PAGE_SIZE,
+>   		xe->info.vram_flags & XE_VRAM_FLAGS_NEED64K ? SZ_64K : SZ_4K);
+>   
+> -	args->pitch = ALIGN(args->width * cpp, 64);
+> -	args->size = ALIGN(mul_u32_u32(args->pitch, args->height),
+> -			   page_size);
+> +	err = drm_mode_size_dumb(dev, args, SZ_64, page_size);
+> +	if (err)
+> +		return err;
+>   
+>   	bo = xe_bo_create_user(xe, NULL, NULL, args->size,
+>   			       DRM_XE_GEM_CPU_CACHING_WC,
 
 
