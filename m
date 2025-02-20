@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B02EC021B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 17:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74692C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 18:19:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z2dgO0/WumT0UHpa9g/06CqR8KBq3+iPEhbdAQlISMM=; b=UletK/MhUtpCahkWwOliRVXZn4
-	pkpWha8928QkcVBdAf+5K+bUsyl5cMCF9ymK9yMr94dV0+3MkmVyA0uFn5mN/GGqQTROXw1BRSFBe
-	6k97mnMTbqSePMNqTuw2nYg8+zj1RNqIOBQykHpWxpazNwdA2IDohuLgDdEdKYWK7lAmQFfdKiCfI
-	dW+qf/D5vJXJHozxdQSQZ+c3/EYKbZENiO8z1O1gzMbAtIWUbCiGlgG/3Owjk54qHPKWLCvulzSu2
-	0D6HtISKbAlYsyPzJF1yJGI0lrZVtcALs6krXUexfTF/waE7S3meLFcGP4wWL9PryfxdtfSOENxge
-	9lISLz1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KuRBlEKv0IQZ8Vu9TgskcFco2+889dbRYek2aozSRNw=; b=vdUfT+4ctdvOWSvk2Q3FS9qGVK
+	dBv9rFH/SmxmkfE5F+wsLL0Ebhf95DL18G63Rq/ISl/2g6u4Uhm+1NAMLOPH3cBkv9Ti1bOOn1gH8
+	LIoEndYGV3dmo0D93DtMTQZ8byCl4gMK+LATM/NxuB51EfEU/C2k9A8KbyI8pBEeCWVf+52ZGi/AK
+	oEvz326/Cb1J6DD0j0ra/N305MEK/vYmL+wGpDUrftV5ifcjGWBK9HXRFIAGzr27u1Jx5KYHyErCw
+	Sr4l8hmrWhHn9kG8ts/chqA6hVsodl98dcKpGPEgO3yP4XAcnplGgT+tgJL/KLy0IuWtrBgJMSTXm
+	V9JWPr1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlAEX-000000026af-00a1;
-	Thu, 20 Feb 2025 17:21:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tlB9Q-00000002Kl3-1sEN;
+	Thu, 20 Feb 2025 18:19:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlABc-000000025bM-46b5;
-	Thu, 20 Feb 2025 17:18:10 +0000
+	id 1tlAzw-00000002Ia3-0Qjq
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Feb 2025 18:10:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ECCC6615D1;
-	Thu, 20 Feb 2025 17:18:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B913DC4CEE2;
-	Thu, 20 Feb 2025 17:18:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 089875C5F59;
+	Thu, 20 Feb 2025 18:09:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE364C4CED1;
+	Thu, 20 Feb 2025 18:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740071887;
-	bh=Z2dgO0/WumT0UHpa9g/06CqR8KBq3+iPEhbdAQlISMM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dcmOzMvW4JIwJparBiYVKIryFuiTlW2Pqv3d/5vZ9aqOGbSzX2myip7poZdKwQxF/
-	 kco7+x0wcGepCahG6fG0kJ+OX+2q6DDFFYRksccaPpTzcUSASKXlGr+6DGjPx3ti0L
-	 47IhkEtO1nGrTNLup+6HGfXnihDHyi+0n72UbxHTcyrDs6sg1PTdp2IzIzDZkG3Dur
-	 MUbJx9n0ZcRIGxSKiCheGaeoXS5Z+cSQhdrWXy2+XHij3t67Xc12I50Od96cKnkh1S
-	 wbXDmzuOmXXcv0PQiFkWqau/auRrUmJClFqqUkE3ogOx6lKLKIx46SiljExgCDS1aa
-	 NAZTXhuW/V3Vw==
-Date: Thu, 20 Feb 2025 17:18:02 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	pablo.sun@mediatek.com
-Subject: Re: [PATCH v3 1/3] dt-bindings: usb: mediatek,mtk-xhci: Add port for
- SuperSpeed EP
-Message-ID: <20250220-travel-undercoat-339822407907@spud>
-References: <20250220105514.43107-1-angelogioacchino.delregno@collabora.com>
- <20250220105514.43107-2-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1740075007;
+	bh=Y7MaMfD9DEqfEQuEhCmvFOzAfwIYc7wHGUXF/wMwcLk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=SbkhjCY+Mc+k1rpe591Ru7OuVHxSEOmm7ZWLxr6z0eR8+v5fu1ecN/E4ACaJYw/D+
+	 rUbMSWPcl0MdHexu5uH7ULwD1ujdQT2t/5WP8/4Hz2v290/gL4vQEjRLqyFY/GPogu
+	 nYrPmDOAo1N4CdMWYbO7CEXAkfonjmZVEwLeiCe/8AbG6gakTr+1ymHLlIYTUpPikJ
+	 KReViCnQfAAoTpNcHXYarKYemFsW5fAu8qkPF9ZapburQ4WE/5I+4MXaZkCfVbjZVl
+	 FeD1ayCHJi6aXsKnqPOgOOyrWuoFjWpOzsLI++74/U1irZO3Y3YwlXcGb72mSFiU4i
+	 Pv/u2S1YJDGKA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAFBB380CEE2;
+	Thu, 20 Feb 2025 18:10:38 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ZISaQ+/FlBvHadWX"
-Content-Disposition: inline
-In-Reply-To: <20250220105514.43107-2-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btusb: Add 2 HWIDs for MT7922
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <174007503776.1411319.11609386550305618639.git-patchwork-notify@kernel.org>
+Date: Thu, 20 Feb 2025 18:10:37 +0000
+References: <20250220020129.2400730-1-jiande.lu@mediatek.com>
+In-Reply-To: <20250220020129.2400730-1-jiande.lu@mediatek.com>
+To: Jiande Lu <jiande.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, chris.lu@mediatek.com, deren.Wu@mediatek.com,
+ aaron.hou@mediatek.com, steve.lee@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_091809_076610_9466C3EF 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250220_101008_194563_DB8C44A0 
+X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---ZISaQ+/FlBvHadWX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Thu, Feb 20, 2025 at 11:55:12AM +0100, AngeloGioacchino Del Regno wrote:
-> Add a port used to connect the SuperSpeed output endpoint to a
-> Type-C connector.
->=20
-> Note that the MediaTek XHCI controllers are always in front of a
-> different controller handling the USB HS (usually, MTU3), so the
-> only port that this controller provides is SuperSpeed, while the
-> HighSpeed one comes from elsewhere.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+On Thu, 20 Feb 2025 10:01:28 +0800 you wrote:
+> Add below HWIDs for MediaTek MT7922 USB Bluetooth chip.
+> VID 0x0489, PID 0xe152
+> VID 0x0489, PID 0xe153
+> 
+> Patch has been tested successfully and controller is recognized
+> device pair successfully.
+> 
+> [...]
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Here is the summary with links:
+  - Bluetooth: btusb: Add 2 HWIDs for MT7922
+    https://git.kernel.org/bluetooth/bluetooth-next/c/5118199eaca2
 
---ZISaQ+/FlBvHadWX
-Content-Type: application/pgp-signature; name="signature.asc"
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7djygAKCRB4tDGHoIJi
-0pwNAP9LSza0fN2VrkokGvJROiNTsBtv8u28z6YZ0tVasE/wSQD9GZqsn3abIJ14
-wNsSo8xwfhXVj8RsgcZpEbcLFtCN+Ag=
-=OB/N
------END PGP SIGNATURE-----
-
---ZISaQ+/FlBvHadWX--
 
