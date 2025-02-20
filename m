@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0955DC021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:15:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08DE5C021B1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yTwyAcmmwfP6+HY9ca4ejBuxhsbqDgDNfhSKxTLRk78=; b=5GcRXiV5+05b3cYlaklF8aFanZ
-	aSB2DrO6ePpJyrQoinb8VN9NjrBjACTmyvO07kPvq0LJ8R60rIk1FeTY2yQ8Pc6Ncwhi7mwwF+7Ml
-	JdkjjtvwZV4PsIVLCrOvFnpSmgCtU4PWujmC/1YRZXpB9E2RWV/uq4cW6zd344/r2l9cv1riwiwR5
-	Qi+kPpXqcMZa4yzKntlUpg4WIZmGiEtX8NWPWXr7V0uVWMOn7bIEKpWQ/phH+vAsLGb5z/nA1wKaC
-	GB6LAN03CiF7iZbh5Hp0SD00mv5b3MF8MJJ5/I1ypzk2wYQNFg9HvkCWnvPNVHh8mpwYQFgxrYmlQ
-	NcgrhZ8Q==;
+	bh=RmKPFSbPJ5WoKs6gi+7FSv/KQmaSdQEKbDBEKB0rK4A=; b=ikUwGzu8niOaK4Tr9YwaHi+riU
+	bPBlFmR1fVDwvPghcH05tztuehCaVgSxwBQCgswHstHW9HeqxRiT+u5jNSqfNee2I3IB81p9mXuqo
+	ruiRHAa4Ph6TdT4doEtw/EmYBS1FGwEYyCg9AzY5FU/mMu6dCYpfyKUKhvSbF4vF3NL1U3ySCFIdO
+	y6tB5ujr/fbxJze+XXv7Y5119fHi5Fp6WH2OCgcKNxlypsSJe4IhkSJDYFfybbmEeDUuoD8hlA+uR
+	xP85PfwU/YR2X7HyDXjL8vX9cmsaDVM87YSAHuvgRXRcsv3FB7m3P50t59JJZpbk0+640omWF1Nuy
+	FNUbkmsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7Ks-00000001Fg5-0ZbH;
-	Thu, 20 Feb 2025 14:15:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tl7PH-00000001H03-0fig;
+	Thu, 20 Feb 2025 14:20:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7FS-00000001EBn-4BIU;
-	Thu, 20 Feb 2025 14:09:56 +0000
+	id 1tl7MR-00000001GBj-3Ca2;
+	Thu, 20 Feb 2025 14:17:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A2CE25C5CD4;
-	Thu, 20 Feb 2025 14:09:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A04AC4CEE3;
-	Thu, 20 Feb 2025 14:09:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8323861494;
+	Thu, 20 Feb 2025 14:17:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC4E8C4CED1;
+	Thu, 20 Feb 2025 14:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740060593;
-	bh=x9CYPp92qt7nrQ8n1R6hogiZ3ztLUyzp5dk9F+0pnAE=;
+	s=k20201202; t=1740061026;
+	bh=phtVfpAQP2gqJ9uhxpOiCBTEsxgIpvS5igy/qXNkMDI=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=HiWxuCynedPnTLyt9VduRt3IIwD1IfgC1Cnl08Vn2y0UtKvqjmxX7ucBMSN8sRzkA
-	 8XEK6trVBftYiqPjsDxU5Hn3rX7tZ/WsbN0JNuKQY5BGUFikvybXRtAwPvTXNeZthT
-	 jYhAR5N91dXRWNGvY9vysE7EvcsmJGMzS6hY2YMuCJvdbTFarAu4H0Urq2WE/H+pdb
-	 ttRKIzKxjpjfOKtPFZ5DTBfbWISx/puz4crnoNVq+KTT5C3eZnD2ud8w1YZ73edmHz
-	 pLq9FhUZ4cxQfGqaKPph2YRru4cADZYuseTSZf3/ZjDXAh+k39ze+ZqVL0TBXzoMkf
-	 wWS15/BieXUeg==
-Received: by mail-pj1-f42.google.com with SMTP id 98e67ed59e1d1-2fcce9bb0ecso1726269a91.3;
-        Thu, 20 Feb 2025 06:09:53 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWCNl26ubm7LEqC26ozYc6V3RzCOxHapyMdj0iHWufWWWvqUwxggG8+364fLD3jjhNK6CArzrG1Z1HiqW9qrU8=@lists.infradead.org, AJvYcCXeZCq5TwFEEFXOFeEDV5i0yHBrVaP9dRzl17q02xouz5PJvWzJARK0PeEHeRlzZ8M+3bjNUH98hjc8/lc5QO1P@lists.infradead.org
-X-Gm-Message-State: AOJu0YxD7290IaFDdCueeiUPQbqQCDKwfFLbpuubmoe5e3pwfnp4BLga
-	9FicfLZ/lxUoBOtc9q2z67KTrOIgy4hxpAA6wGd0ZfvzfrRks8c8CrJbX9a3B0Z9U389Qk9Xo9H
-	LK5UmgH6NdmN46LIPuD+vaply4g==
-X-Google-Smtp-Source: AGHT+IE0v84Qb6FC/gDtH8xNJeXoFkB/nAfUjSnTsVJesFFxd/imMIypRaefBomgcHEC0WrtRHoFrNT9UaSnKPKXvqk=
-X-Received: by 2002:a17:90b:4c07:b0:2ee:b8ac:73b0 with SMTP id
- 98e67ed59e1d1-2fc40d1245fmr35061143a91.2.1740060593030; Thu, 20 Feb 2025
- 06:09:53 -0800 (PST)
+	b=hmDAx/bL+DtKimxCl9L1Ouu9reCfWS9G4jSWwbwFIt62paGHuLWpefNgpk6rEu9mY
+	 xZW4LhwkcMuT7rH1d6qZGTSApMyHQYHP/fpyyRhBvV+DjXvOnUH6GOLoTa2xssxUow
+	 bUZuyAFc+GmYnNKCa5ACj4s+NdjMC/QflQ6vupSIK5wqLBtCH250twMfbw5duc4ltw
+	 nuH3lqb+ocRpyyMo4xPgz18M58FQS6S7PFLwq7rc/+9gl/OkZgzgl28Ex0gxg+7D7r
+	 w0AQgd+dHiiP6+vcctnz/+qeAh4+MirPOfxaOcaZqqEt8BYd1ahdBw9+OYkkuOqrJh
+	 5EfRZBi4NQS1A==
+Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-2f42992f608so1610844a91.0;
+        Thu, 20 Feb 2025 06:17:06 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUOduCGstu9Gj97nHR+2g2kjt+JnO0WU9wq1XrEuZmN6oPwAXSyCMmD2/d/M0WhdO4xRUBrqjyuMHsw2+LnuVLP@lists.infradead.org, AJvYcCUclle6FehYPHyQfzIq3VEYXoBYHpZ/yHRbNTg+F5Tnw8hJO28UsW9EuNfC/wJ8lrGF7TxhnzdREFCK6fRDD9g=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwL6f6N6HszkGc7OMFHZzRlXRCxoh8agv1sFoyYmN/YchQdBhFA
+	nD3wH3YxdROkqvepBDPlsSDXiE7/kQWyNLPDqOuVH6VSe8ECXv5EVOqiy+wp8nQHHJNT/aKlHP5
+	Lu7/oul89wgDNiy05YTwY9ipafA==
+X-Google-Smtp-Source: AGHT+IGyx5QWB4rzHyre9LMXoPdg2qp8oLeofiBp2HooA+47pReCBBVwzDOuk8vQdFLX+87Wzj+OpnchkAQUrEFYbI8=
+X-Received: by 2002:a17:90b:2e50:b0:2ee:aa28:79aa with SMTP id
+ 98e67ed59e1d1-2fc40d14ac5mr32787274a91.6.1740061026314; Thu, 20 Feb 2025
+ 06:17:06 -0800 (PST)
 MIME-Version: 1.0
-References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-30-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250217154836.108895-30-angelogioacchino.delregno@collabora.com>
+References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-31-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250217154836.108895-31-angelogioacchino.delregno@collabora.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 20 Feb 2025 22:10:36 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9U4gNASfdiF=B-5+er0qs+F7V=gO1RwjuXw7FagMiUwA@mail.gmail.com>
-X-Gm-Features: AWEUYZkEgaHMKjmDQHz4a-_W0aseAk_FLY9Y1EUWnfNXr-s5564_MkXpbtF3WgU
-Message-ID: <CAAOTY_9U4gNASfdiF=B-5+er0qs+F7V=gO1RwjuXw7FagMiUwA@mail.gmail.com>
-Subject: Re: [PATCH v7 29/43] drm/mediatek: mtk_hdmi: Use devm managed version
- of drm_bridge_add
+Date: Thu, 20 Feb 2025 22:17:49 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8G36w1KZpfcVPbfZ6RjbAs3=GHdzdnPHZw=4Njnid35A@mail.gmail.com>
+X-Gm-Features: AWEUYZn7UqFdQMaggAe3FK4XBZKbvE_M4ZaCHMfj6Eg3FDhoHOMNrpbhRQkeUao
+Message-ID: <CAAOTY_8G36w1KZpfcVPbfZ6RjbAs3=GHdzdnPHZw=4Njnid35A@mail.gmail.com>
+Subject: Re: [PATCH v7 30/43] drm/mediatek: mtk_hdmi: Remove ifdef for CONFIG_PM_SLEEP
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
@@ -76,8 +75,8 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_060955_120023_92F2EFA6 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20250220_061707_919527_221CD88F 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,8 +98,14 @@ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
 2025=E5=B9=B42=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=8811:=
 50=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Simplify the probe/remove functions by using devm_drm_bridge_add()
-> as now there is no more need to manually remove the bridge.
+> Since the SIMPLE_DEV_PM_OPS macro and the pm pointer are anyway
+> defined when CONFIG_PM_SLEEP is not set, remove the ifdef for it
+> and indicate that the mtk_hdmi_{remove,suspend} functions may be
+> unused (as they are, in case PM support is not built-in).
+>
+> While at it, to improve readability, also compress the
+> SIMPLE_DEV_PM_OPS declaration as it even fits in less
+> than 80 columns.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -115,44 +120,47 @@ Chun-Kuang.
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
 ek/mtk_hdmi.c
-> index e79ebed21eab..f539472307e2 100644
+> index f539472307e2..bf8cf7fc8c07 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1674,14 +1674,15 @@ static int mtk_hdmi_probe(struct platform_device =
+> @@ -1694,8 +1694,7 @@ static void mtk_hdmi_remove(struct platform_device =
 *pdev)
->         hdmi->bridge.type =3D DRM_MODE_CONNECTOR_HDMIA;
->         hdmi->bridge.vendor =3D "MediaTek";
->         hdmi->bridge.product =3D "On-Chip HDMI";
-> -       drm_bridge_add(&hdmi->bridge);
-> +
-> +       ret =3D devm_drm_bridge_add(dev, &hdmi->bridge);
-> +       if (ret)
-> +               return dev_err_probe(dev, ret, "Failed to add bridge\n");
->
->         ret =3D mtk_hdmi_clk_enable_audio(hdmi);
-> -       if (ret) {
-> -               drm_bridge_remove(&hdmi->bridge);
-> +       if (ret)
->                 return dev_err_probe(dev, ret,
->                                      "Failed to enable audio clocks\n");
-> -       }
->
->         return 0;
->  }
-> @@ -1690,7 +1691,6 @@ static void mtk_hdmi_remove(struct platform_device =
-*pdev)
->  {
->         struct mtk_hdmi *hdmi =3D platform_get_drvdata(pdev);
->
-> -       drm_bridge_remove(&hdmi->bridge);
 >         mtk_hdmi_clk_disable_audio(hdmi);
 >  }
 >
+> -#ifdef CONFIG_PM_SLEEP
+> -static int mtk_hdmi_suspend(struct device *dev)
+> +static __maybe_unused int mtk_hdmi_suspend(struct device *dev)
+>  {
+>         struct mtk_hdmi *hdmi =3D dev_get_drvdata(dev);
+>
+> @@ -1704,7 +1703,7 @@ static int mtk_hdmi_suspend(struct device *dev)
+>         return 0;
+>  }
+>
+> -static int mtk_hdmi_resume(struct device *dev)
+> +static __maybe_unused int mtk_hdmi_resume(struct device *dev)
+>  {
+>         struct mtk_hdmi *hdmi =3D dev_get_drvdata(dev);
+>         int ret =3D 0;
+> @@ -1717,9 +1716,8 @@ static int mtk_hdmi_resume(struct device *dev)
+>
+>         return 0;
+>  }
+> -#endif
+> -static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
+> -                        mtk_hdmi_suspend, mtk_hdmi_resume);
+> +
+> +static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops, mtk_hdmi_suspend, mtk_hdmi_res=
+ume);
+>
+>  static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 =3D {
+>         .tz_disabled =3D true,
 > --
 > 2.48.1
 >
