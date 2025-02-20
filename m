@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20FF5C021B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C17CEC021B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2025 14:42:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YlxhZTcybyNtPRIMzFM8i89G6HvYvhD9073mPHkmSyU=; b=1YDT4QFKouOqVaTBoXNgAsiyt0
-	l0/WKrh25ktWPinLTdeUCagkDUDpUwoEWUlQexjbRJwcTi7JRJi+fIaGnWQO2wgZ9UtY4uDlDRDIR
-	ggfH6XXa7/38HwCXAsKkZUgndMAWsgVM9S2uZ5BHojICdpi129mN0elt9iqrcdvu9WvERBTPogY6h
-	cSQrV/zhvDoSZldjRGZio/T/UaaVOG+aH9fby305L37SpSddI/P3fh4OE6CaXXRHl3UA0Lv2QJfJZ
-	FEXXSe+JsgJQjKeRBeAxi9bi7zlZBsURd3mZDoDPfvSBgbcG3H95YRgCubiIBMLQwmGwXx7hixvRc
-	2w7Ykdfw==;
+	bh=6XTzpe0dvPkb56/2C4infeIOzW79ECT/46k3G7K0Ygo=; b=AZaq4AzUq2cJiAzbqjkG1JkoFn
+	IkAmfkvSmrGaEhKkZLxgQKCz/GjgeYEAuA7RahC0IuVJ66SFKqma6mBtwUOkx4NGvJ7VjGCmpLt36
+	FGLMBVglq9pfMUUhPHNXNA3A/Feo11Hx/fjmgkm5cBpLoMZck3wU1ei83K4DjXgDBLvLwY3NWH3uB
+	epI6ralTOXQxWxmre5kMmj6pnY0zYsOo4JPOLgyEmpuwT6Zhb2SMjmPIXhFpWRwWVpd+wZ6ZRzJt6
+	ztW/nyfR9wF6ydf6+vB+Glx8zcipUm/bt0iubS6/muS3oIrlrGqvi3liycJu4DpYVkc4aPA4Ve9/f
+	PGwhX+YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7gr-00000001MBP-11Ky;
-	Thu, 20 Feb 2025 14:38:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tl7lF-00000001NXA-3xKq;
+	Thu, 20 Feb 2025 14:42:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl7UQ-00000001IU2-21dA;
-	Thu, 20 Feb 2025 14:25:23 +0000
+	id 1tl7at-00000001KOq-46hy;
+	Thu, 20 Feb 2025 14:32:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 32A535C5E4D;
-	Thu, 20 Feb 2025 14:24:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBB9EC4CEEB;
-	Thu, 20 Feb 2025 14:25:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 97A71614AF;
+	Thu, 20 Feb 2025 14:32:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1277C4CEE3;
+	Thu, 20 Feb 2025 14:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740061520;
-	bh=iJw0LuLV1NQL5MljcDvcrTafJWx8F0Mgu90Nuo9CPBQ=;
+	s=k20201202; t=1740061922;
+	bh=GoGvedSskUunt8JR0ab0OKe1KhMr9oaefFluEv4FAqY=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=fgYP5nVX6K3cEeC6Xtpa2YYOrXt4jQeXL8JCyvGMF/Wq9c/Dl1/rzYfnGKwkDKuVR
-	 gHb6C+na0d68Og2C7gXIj0iZJM/3qULNH6hQDAa+vTSZk+GFYMOa3A6fCw2mvk5u6/
-	 5uVn7cN2Q4sF+6TSewFuRa6c15BcwOzD6G3+xxYO1TO42azPYmzrGDuN94WZ9MN13A
-	 /zC+sCSTBD90yJpZAjlY+scHgCW6bQaqC1h6OSdy3vVf4GhwPcG90FifloOqbqG+JM
-	 Q3kcjg4+GG8Qe7hehQ2kR6/y1OqdCXRiFqVcwDx9tuwEGi1ReteqysuVMEMzKcrt/F
-	 TSz8OW1ul2wig==
-Received: by mail-pj1-f49.google.com with SMTP id 98e67ed59e1d1-2fce3b01efcso269570a91.3;
-        Thu, 20 Feb 2025 06:25:20 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWVoPDWVTUNHulNoPg7jywsLaucEExqyvmKpFo3CgrUP5rk4CWx9KiNeq39ks4+pdN+XLnCoeOc+w4ZnS2GyLpX@lists.infradead.org, AJvYcCWfYEmISA81ysScTkkYJXgPJfWXSG22KNSB5VigwjTcnrbQWHqoTKlvA1JvUDRMGrRjWE0AIEGN2Jo0DcAunuE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCMYUkGBbXWPMN8iizxONI2ahfPw9OVXZhjHAxaVzZaZXZO4H+
-	u0dLO1nTO9ZhktkzKXCAzFRBA98nOyNmD5DpV7WOs9+LD+vjTErISw2WcokQJLg2XQexteRXIqs
-	h7A4tbb3VoVp3d9YYTRoh96L5Gw==
-X-Google-Smtp-Source: AGHT+IG6zBpHgkEKWKPXjExGKcMJ3P8RA+4Pl+cW3k6VsvdLJSFhWdQ6SLc1qU7bLx4Pas4JfqVSRji56XJkJ5sp9FQ=
-X-Received: by 2002:a17:90b:510b:b0:2ee:f076:20f1 with SMTP id
- 98e67ed59e1d1-2fcb56e68dfmr15217411a91.0.1740061520261; Thu, 20 Feb 2025
- 06:25:20 -0800 (PST)
+	b=MRVxiU7o67O3FIKBBl1kglyQ70mhNufEgyvsPm24+MnObiKppxwPDeGetnAbCnP1n
+	 bfInsRGRgTuWHoen6CmytTuo2OvSOwJkMnUVHwEAYef1ogM2pcoPjbZp9qkDolEEE/
+	 u1rCUshyBtkb2WhY4Fprtqm4fqT9yxPdzLw8GQYznAH270ttdYmBHAoMsZs3Cdtl27
+	 mvQalAbMWwa3ZBAgbfU6IFNCoEdpzh9zPOY61wFYG8WgLUxBAVq5vAVFkY04sC2d/X
+	 Rxms8YbodBco+uhh1HvvpwiA1sDRIv+8EGRX7e6oLC1f1kG5xbmMIX5PqelXRlDidB
+	 D+BXbBZHlHsQQ==
+Received: by mail-pj1-f52.google.com with SMTP id 98e67ed59e1d1-2fa8ada6662so2072305a91.1;
+        Thu, 20 Feb 2025 06:32:02 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWWV6huQg6MVkR/xb5NtLy6zCJZFFCCNtwnnobxZLINu0P0BrNxl1A3bbZAiQbFgeyJwQRyKGnyvq5M2DHr+Prr@lists.infradead.org, AJvYcCXFwmqvx8m7y1xxBqxk98hGI3IDUXQp6lpZ2004EB4a3up4ymjGe90hkrNyf62v5xPAwOwmiUpa8Ln9OYnaOhc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwzXF72w8+fDi9tkXkpXrctrx3y1gHssHNs3UmdpJkAD0LDKHt6
+	C4Bwv9EWCrmS3yhktSId4QL29iKFRBy09PMM6b4KhnPq3O/TjxiQZzrgCoVizxvjeu3YCsB6ZmE
+	2dgFeSbYIEyFAhoxTgIZLtnC40w==
+X-Google-Smtp-Source: AGHT+IEEvVnA4H81470tv1H4G5h0w0yEGHELm51+9xXj/GLBqX14Y9VHjS4nUzKS5Ntqk6uBqNxa9Lc6bKjwcl3wf1E=
+X-Received: by 2002:a17:90b:3809:b0:2ee:d024:e4fc with SMTP id
+ 98e67ed59e1d1-2fc411509b7mr38299734a91.33.1740061922487; Thu, 20 Feb 2025
+ 06:32:02 -0800 (PST)
 MIME-Version: 1.0
-References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-33-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250217154836.108895-33-angelogioacchino.delregno@collabora.com>
+References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-34-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250217154836.108895-34-angelogioacchino.delregno@collabora.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 20 Feb 2025 22:26:05 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-54w+_nZtoKiOjw0z3+BxoygKR0zUvUevW4ZijrBWA4Q@mail.gmail.com>
-X-Gm-Features: AWEUYZm7oGrflVbB-goWTArAWPiYKFdjfVm86uPsqne31Recqtf46FuqDQvfcSk
-Message-ID: <CAAOTY_-54w+_nZtoKiOjw0z3+BxoygKR0zUvUevW4ZijrBWA4Q@mail.gmail.com>
-Subject: Re: [PATCH v7 32/43] drm/mediatek: mtk_hdmi: Remove driver bound to
- HDMI print
+Date: Thu, 20 Feb 2025 22:32:47 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8a+oV_XwBACyy09bKdwKVy+iEPxbfZBkkdYm2jYD_k2w@mail.gmail.com>
+X-Gm-Features: AWEUYZnj0eBVMJFGwcqYWEal64YwZLRUffmMdq4xRpXkJqA2A3_JsPYTIk5oAgc
+Message-ID: <CAAOTY_8a+oV_XwBACyy09bKdwKVy+iEPxbfZBkkdYm2jYD_k2w@mail.gmail.com>
+Subject: Re: [PATCH v7 33/43] drm/mediatek: mtk_hdmi: Cleanup function mtk_hdmi_resume()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
@@ -76,8 +75,8 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_062522_634997_9ABA51C3 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20250220_063204_126423_0AF89564 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,9 +98,9 @@ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
 2025=E5=B9=B42=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=8811:=
 50=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Remove the "driver bound to HDMI" print to avoid useless spam in
-> the kernel log, as registered and bound drivers can be debugged
-> through debugfs.
+> Remove the error print in case of mtk_hdmi_clk_enable_audio()
+> failures: since the APIs will already print on their own, having
+> one in there is redundant.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -116,23 +115,33 @@ Chun-Kuang.
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 -
->  1 file changed, 1 deletion(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
 ek/mtk_hdmi.c
-> index 2e98a8ed6cbe..50f9ab48cbf9 100644
+> index 50f9ab48cbf9..2614561e2634 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1632,7 +1632,6 @@ static int mtk_hdmi_register_audio_driver(struct de=
-vice *dev)
->         if (ret)
->                 return ret;
+> @@ -1704,15 +1704,8 @@ static __maybe_unused int mtk_hdmi_suspend(struct =
+device *dev)
+>  static __maybe_unused int mtk_hdmi_resume(struct device *dev)
+>  {
+>         struct mtk_hdmi *hdmi =3D dev_get_drvdata(dev);
+> -       int ret =3D 0;
 >
-> -       DRM_INFO("%s driver bound to HDMI\n", HDMI_CODEC_DRV_NAME);
->         return 0;
+> -       ret =3D mtk_hdmi_clk_enable_audio(hdmi);
+> -       if (ret) {
+> -               dev_err(dev, "hdmi resume failed!\n");
+> -               return ret;
+> -       }
+> -
+> -       return 0;
+> +       return mtk_hdmi_clk_enable_audio(hdmi);
 >  }
 >
+>  static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops, mtk_hdmi_suspend, mtk_hdmi_res=
+ume);
 > --
 > 2.48.1
 >
