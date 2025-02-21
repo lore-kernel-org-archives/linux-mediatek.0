@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90093C021B3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 16:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48B9C021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 17:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1cFf3ZwDxIYx/5yEXExCL4qhSuwo33een15heIA/zVk=; b=SjOLX0v7mdUAc4/w9+wRPwQedT
-	k7gzNo1uHqxTz4EYiA5IVYXe73sZksKRzsul8xNvsyVWVAmzLp0JHb2yJMl0LbtfzaymS0wjBKru3
-	uCqSG7JTjTRSN8ePyYA0WYiKFduA8I7UpkpidFVvlGqAt40y9Xjo50aUQAD9QRAEZW9zTSA4CrUAL
-	INDeRFBc1xfalY229uaWREc3pD9JopiXItj9ZNGSA7+QdNMFUIjzB4vhtjI9u1HMR0q2Cap2kgTE4
-	2ZDEpGFLNRDm0Z4RI7neq/c4YoN5j86fobbLQWzYPXqtN9WDthVC2xVlXCFkkMXoC/x9GISpfuGeI
-	Ze3evsSQ==;
+	bh=pkMm6RkLxj0MLvOjXO6Zq/qKdEhQUSinbouhRvXjrME=; b=osSZFG1WaLo+Ag4Ly3FaVh8CuP
+	FYE+rc71mhDTLyjr99jKupgP7QxHsPM0OjQzq4hu+n5LjTj8NZe6EjBCGylvitWqqjKbqxvdW6CZJ
+	Bu8wPxqjwjDrqmnK5dhj9U2nOzcdjEpc5r3lgkp757VjCEyNfKHj93F5OCDEPMzG5XI0JhHH9tIIf
+	Uy68ZVkPdJsvNeQjQN49E1GoedI39jVhH5/lDmyw+4YPLY9wnx2dbYM1Yv6tSCmRaL5t1uLqrjHnc
+	5/X5Vbd6evq/TwUk3WT9WMRd+1DgXmGZgVMiMXc3OH/p8D161/yK+a+T4CHLr+s5YZKCVGh0ChYIk
+	+qmBkrxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlWMT-00000006HY1-24ov;
-	Fri, 21 Feb 2025 16:58:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tlX8V-00000006QJV-3JHk;
+	Fri, 21 Feb 2025 17:48:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlWL0-00000006HLu-2rZj;
-	Fri, 21 Feb 2025 16:57:18 +0000
+	id 1tlX72-00000006Q4Q-1bZq;
+	Fri, 21 Feb 2025 17:46:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A65C76150C;
-	Fri, 21 Feb 2025 16:57:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB91BC4CEE2;
-	Fri, 21 Feb 2025 16:57:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2F4AB613C2;
+	Fri, 21 Feb 2025 17:46:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEF7AC4CED6;
+	Fri, 21 Feb 2025 17:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740157037;
-	bh=Zermek77njNBefiJAHShs4Pi/BmVFoEIkevP8SsNO7c=;
+	s=k20201202; t=1740160015;
+	bh=pkMm6RkLxj0MLvOjXO6Zq/qKdEhQUSinbouhRvXjrME=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KjnfJHw4iEGxUc/9qW1y7MXbhibKG8rh7AogVr9UljZJegm57+LQQHRNYxKckJ7CF
-	 FWayh52wKAV7sxOYBy2yRP1kIBucfaUT//Oz6Smay5wM4rX3aDy1XWtHwWW7TEQmw3
-	 SptwbeiWbL/fTdM1HOAih5VwfFervTEScmXCZsx8pEdHzYHE8WrTynaqiBwG4OZ6Ke
-	 vDGpq5FRy5051igtlr0CdoKc2Eih2iIJKMOuJP390ZByyLDQ2pj0Fwqyp9YV6FQXND
-	 O04FwzPPaYC+BJYhF3zEGDLtqIbpBXVRvhPU3jEGlY5r9nvEPOEH4m0Pu+KdL2FdgE
-	 +dM9ARU52UE5A==
-Date: Fri, 21 Feb 2025 16:57:12 +0000
+	b=T2M1eUcu8YEAN59gO+QTHvsz8Moc4Z/JlLwFqm+v/GWd1vBBTNc2rH24rR6ZVcXwL
+	 dzZJm7j3LZoRHOURuEfI/MDagEjV+GlTv+Eb67Am2ydeTZq7BxXc7lchUWMQjDohVW
+	 22UXQr6iX7OYOL84YR3P8NFyPiDcF9DjhJTTSWNPptqAUH3B9Fuj8Ef87jObOvwgnh
+	 Zy4Z/MtHsvC7wWf3SN4pl5hMfn4f2iQpsIjLRHzf0zVb+UZoHHMq7YF6QOIXSbvOYa
+	 HOOH324RwhLUXaRVOoqfs1oEYc/BvNbwy0ziBrR9Sa3NJwlm/V91QWfbALwNK7oSkp
+	 hwnMT3PYOfYaQ==
+Date: Fri, 21 Feb 2025 17:46:49 +0000
 From: Conor Dooley <conor@kernel.org>
-To: Friday Yang <friday.yang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Garmin Chang <garmin.chang@mediatek.com>,
-	Yong Wu <yong.wu@mediatek.com>, linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
- for MT8188
-Message-ID: <20250221-cavalier-property-7e7eceba7bc6@spud>
-References: <20250221075058.14180-1-friday.yang@mediatek.com>
- <20250221075058.14180-2-friday.yang@mediatek.com>
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Chris-qj chen <chris-qj.chen@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: usb: mtu3: Add ports property
+Message-ID: <20250221-reenter-sassy-5b27b03f8b06@spud>
+References: <20250220142230.2530583-1-macpaul.lin@mediatek.com>
+ <ae34efcd-4fe1-4e45-a1e1-0744138a84b9@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="+dgGrOCgl0PEyxI6"
+	protocol="application/pgp-signature"; boundary="szY3iyQERCl/suc/"
 Content-Disposition: inline
-In-Reply-To: <20250221075058.14180-2-friday.yang@mediatek.com>
+In-Reply-To: <ae34efcd-4fe1-4e45-a1e1-0744138a84b9@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,69 +83,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---+dgGrOCgl0PEyxI6
+--szY3iyQERCl/suc/
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Feb 21, 2025 at 03:50:53PM +0800, Friday Yang wrote:
-> On the MediaTek platform, some SMI LARBs are directly connected to
-> the SMI Common, while others are connected to the SMI Sub-Common,
-> which in turn is connected to the SMI Common. The hardware block
-> diagram can be described as follows.
+On Thu, Feb 20, 2025 at 04:56:00PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 20/02/25 15:22, Macpaul Lin ha scritto:
+> > Define the ports property in the mediatek,mtu3 device tree binding sche=
+ma.
+> > Include definitions for port@0 and port@1, specifying their roles as
+> > High Speed (HS) and Super Speed (SS) data buses, respectively.
+> >=20
+> > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
+labora.com>
+> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 >=20
->              SMI-Common(Smart Multimedia Interface Common)
->                  |
->          +----------------+------------------+
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->        larb0       SMI-Sub-Common0     SMI-Sub-Common1
->                    |      |     |      |             |
->                   larb1  larb2 larb3  larb7       larb9
+> Some SoCs do have SuperSpeed peripheral mode, so for this commit
 >=20
-> For previous discussion on the direction of the code modifications,
-> please refer to:
-> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3D
-> wXpobDWU1CnvkA@mail.gmail.com/
-> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8ey
-> hP+KJ5Fasm2rFg@mail.gmail.com/
->=20
-> On the MediaTek MT8188 SoC platform, we encountered power-off failures
-> and SMI bus hang issues during camera stress tests. The issue arises
-> because bus glitches are sometimes produced when MTCMOS powers on or
-> off. While this is fairly normal, the software must handle these
-> glitches to avoid mistaking them for transaction signals. What's
-> more, this issue emerged only after the initial upstreaming of this
-> binding. Without these patches, the SMI becomes unstable during camera
-> stress tests.
->=20
-> The software solutions can be summarized as follows:
->=20
-> 1. Use CLAMP to disable the SMI sub-common port after turning off the
->    LARB CG and before turning off the LARB MTCMOS.
-> 2. Use CLAMP to disable/enable the SMI sub-common port.
-> 3. Implement an AXI reset for SMI LARBs.
->=20
-> This patch add '#reset-cells' for the clock controller located in image,
-> camera and IPE subsystems.
->=20
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
---+dgGrOCgl0PEyxI6
+--szY3iyQERCl/suc/
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7iwaAAKCRB4tDGHoIJi
-0uzgAP4v0yoFN7BfxFWWiitccUXoshHXQp4HLPtHW7d1YoN4TAD+IQ2jThGJf4Pc
-L5rsRAnTiFrghIbu/VG+WOs0atI7nAI=
-=soR+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7i8CQAKCRB4tDGHoIJi
+0nPqAP0fP5poDJRA3Z3q8SHg6Q/EHMEj/DnqgJGRMdIOzsP9RAD7Bc10OD+TWsBu
+8fXcBQQfSDrvW31wIXdCY/T7A+BXmwE=
+=4Nd+
 -----END PGP SIGNATURE-----
 
---+dgGrOCgl0PEyxI6--
+--szY3iyQERCl/suc/--
 
