@@ -4,80 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF12C021B3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 14:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F6CC021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 15:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cyoFmNA4gH9PoRDuPAgIw3tFvZSaFPLD3iSzf04UG9o=; b=Ex28ZOSJWQRKUwVpBexJM8bLuY
-	ZNhyFIEK+sJ6vVsT+NoqtrXU7kWVCx7v8NRl2ew3Xg8+bicy+V/JZB3+iZMLmIAxKM8abn1n4kgGV
-	m1A2T6Xr8vCsmROF7jadp9wxoEBrJVNdAGuNrWfYO2/36vtpEAkIFRn+co0aSQfpjVFrG19SeI/23
-	gP97O62BpPhFrq0ImBnZxmDXVjhPaTZWTw+5GoAQ3DIuLJ/OrTa2D6hPkFG+Ok3JExNZQDgXGKawM
-	bOJgwI7kPum0jSe0DQHDMsQuYX9lyBXHrW7BIaoMZnq74Xo1uoVckpWF5ErOIN51U+cQH3ABlDH+m
-	8rbwUJzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=evPi6dQiCO3IoUOpjRp0eIR+zPz18r17WDupYoyNt7I=; b=pDhKpJEClMmB5cUj1OujpLR35r
+	khLBx948vMnXWDGEd37RLX84DpOI/V4/MwtF458A2WKAdI/1WEERBxX0Rpgj4dJ6LlcinLtBaAlra
+	TmCTvBSYn/9KKNq2W+fCLNmVB2UfTfHBYiRxHt81K+po522wIga7ohw/Gs11nhr6TWjUwTClNY3pr
+	9+xkOOAgJ5R5hQa3QQsZXzl2u4zxDEmwtEzyiDtOQQQHopiu9MhPpdBueTAvyMz314JXXy/wPloF2
+	enIjvtMtGMjxSFxj4hd2U2v009XrT0KSD5z80lQAw+8sFLjxO3Tnle2igw+N6sF0fCzU7Dk+HFmzm
+	qtQXEZeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlUNU-00000005t46-08VT;
-	Fri, 21 Feb 2025 14:51:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tlVMb-000000063N3-3qE0;
+	Fri, 21 Feb 2025 15:54:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlULp-00000005snn-0yUR;
-	Fri, 21 Feb 2025 14:50:02 +0000
-X-UUID: 1cacc50ef06311ef83f2a1c9db70dae0-20250221
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cyoFmNA4gH9PoRDuPAgIw3tFvZSaFPLD3iSzf04UG9o=;
-	b=HFSQI30CL/bCkUjyNO5ulEUFCHIsHdcPf/1XNPGQ2+uuhSki7mgVcEUgbOo7R0volV8R/k+m3rTMyfmW+0VZAUm+4/KlDWEsBsAIXqEQoLm6vYKlIHutvMijEaiYolfoEuV8MnQJK+N2MYFR2mtQFwXx8QmMEuNxHRK73tMB4lI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:f1cfa8ed-152b-42d0-a08a-5543db880dca,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:60aa074,CLOUDID:30812ddc-d480-4873-806f-0f365159227b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1|19,IP:
-	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
-	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1cacc50ef06311ef83f2a1c9db70dae0-20250221
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1469128924; Fri, 21 Feb 2025 07:49:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 21 Feb 2025 22:49:51 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 21 Feb 2025 22:49:51 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	Fabien Parent <fparent@baylibre.com>, Yow-Shin Liou
-	<yow-shin.liou@mediatek.com>, Simon Sun <simon.sun@yunjingtech.com>
-Subject: [PATCH v5] arm64: dts: mediatek: mt8395-genio-1200-evk: add support for TCPC port
-Date: Fri, 21 Feb 2025 22:49:41 +0800
-Message-ID: <20250221144941.2844333-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tlVL8-00000006319-2sSA;
+	Fri, 21 Feb 2025 15:53:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740153200;
+	bh=DRRk8ySHM7d80jUzaigsI9T4dZ5O56rDrKF/hwqGjjE=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=LGll4wxMdtC9VuU1cqAJl3FPPep48bfwtMgKC4WgcM/G8HMuayRO29U0ZUSgfakeq
+	 tBq1E4kJN6BHNSfXtNb6p1qo7xGOi0P5Xm02uplDWaE7YJtYoKI4NJtea35tD54mcE
+	 EQh2uwfFMkJzmfvwlfUKsPkAlf5epvS3tFqakLDOCamE6Sdlq9rP37BFbCfKYyrvp/
+	 fzQyeBkIvQ7724xVu1CEFsY6H0qyIzQ/RksSUeN9WLwDf5UaDOhynR0AnCpviJISut
+	 uHgqKDSgMMJGaYK64TAfB6Y0mYvYLizMcimTLF8DiQzRgNjr/l3w9GOTH644nscv57
+	 R3kv+iVFRl6sg==
+Received: from [IPv6:2606:6d00:11:e976::5ac] (unknown [IPv6:2606:6d00:11:e976::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1DE1217E0199;
+	Fri, 21 Feb 2025 16:53:19 +0100 (CET)
+Message-ID: <cd8f43a310f771f7db7ae1ab7fb2f8b5d554c2da.camel@collabora.com>
+Subject: Re: [PATCH 0/2] Add support for MT8196 video encoder
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+	angelogioacchino.delregno@collabora.com, Yunfei Dong
+ <yunfei.dong@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Longfei Wang <longfei.wang@mediatek.com>
+Date: Fri, 21 Feb 2025 10:53:17 -0500
+In-Reply-To: <20250221031004.9050-1-irui.wang@mediatek.com>
+References: <20250221031004.9050-1-irui.wang@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPU=
+Organization: Collabora Canada
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_065001_281965_A539DD4A 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20250221_075322_869208_6171AB1B 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,192 +103,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Hi,
 
-Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
-configuration for TCPC Port, USB-C connector, MUX IT5205 and related
-settings.
+Le vendredi 21 février 2025 à 11:10 +0800, Irui Wang a écrit :
+> This patch series adds support for MT8196 video encoder. The changes
+> include introducing a new encoder driver interface and add support
+> for the
+> new encoder driver encoding process.
 
-Configure dual role switch capability, set up PD (Power Delivery) profiles,
-and establish endpoints for SS (SuperSpeed) and HS (HighSpeed) USB.
+thanks for your contribution. In general, when adding new HW support,
+we would like to see in your cover letter your v4l2-compliance report. 
 
-Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
-to "otg" for OTG (On-The-Go) mode operation.
+Since this is a firmware based encoder, we also want to know how the
+process with uploading your firmware in linux-firmware is going. We can
+do reviews ahead of this of course, but merging depends on having
+firmware upstream. We did some favours in the past and it worked for
+many SoC, but things seems to have changed lately with the MT8188
+firmware situation. Hope you understand this concern.
 
-Add ITE IT5205 (TYPEC MUX) under I2C2 bus and configure its properties;
-also add references and configurations to 'typec-mux' node.
+regards,
+Nicolas
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
-Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- .../dts/mediatek/mt8395-genio-1200-evk.dts    | 100 ++++++++++++++++++
- 1 file changed, 100 insertions(+)
-
-Changes for v2:
- - Drop the no need '1/2' DT Schema update patch in the 1st version.  
- - Fix indent for 'ports' node, it should under the 'connector' node.
- - Correct the index for 'port@0' and 'port@1' node.
-
-Changes for v3:
- - Correct the order between new added nodes.
-
-Changes for v4:
- - Reorder for property 'op-sink-microwatt'.
- - Fix indentation for 'source-pdos' and 'sink-pdos' nodes.
- - Correct node 'pin-cmd-dat' with 'pins-vbus'.
- - Add both Highspeed and Superspeed ports to ssusb0 port.
- - Set 'role-switch-default-mode' = "peripheral" for ssusb0 port.
- - Rename endpoint of USB data port to 'mtu3_hs0_role_sw' and
-   'mtu3_ss0_role_sw'.
- - Drop it5205fn phandle for node typec-mux@48.
- - Reorder properties of typec-mux@48
- - Add "Reviewed-by:" tag. Thanks!
-
-Changes for v5:
- - Squash two patches into one patch and refine commit messages:
-   suggested by reviewer.
- - Drop 'role-switch-default-mode'
- - Add altmodes settings
- - Drop 'Reviewed-by:' tag since the two sub patches has been combined
-   into a new patch.
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index 1ef6262b65c9..6d139d40f8b3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -224,6 +224,21 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	pinctrl-names = "default";
- 	status = "okay";
-+
-+	typec-mux@48 {
-+		compatible = "ite,it5205";
-+		reg = <0x48>;
-+		vcc-supply = <&mt6359_vibr_ldo_reg>;
-+		mode-switch;
-+		orientation-switch;
-+		status = "okay";
-+
-+		port {
-+			it5205_sbu_ep: endpoint {
-+				remote-endpoint = <&mt6360_ssusb_sbu_ep>;
-+			};
-+		};
-+	};
- };
- 
- &i2c6 {
-@@ -330,6 +345,61 @@ mt6360_ldo7: ldo7 {
- 				regulator-always-on;
- 			};
- 		};
-+
-+		tcpc {
-+			compatible = "mediatek,mt6360-tcpc";
-+			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
-+			interrupt-names = "PD_IRQB";
-+
-+			connector {
-+				compatible = "usb-c-connector";
-+				label = "USB-C";
-+				data-role = "dual";
-+				op-sink-microwatt = <10000000>;
-+				power-role = "dual";
-+				try-power-role = "sink";
-+
-+				source-pdos = <PDO_FIXED(5000, 1000,
-+							 PDO_FIXED_DUAL_ROLE |
-+							 PDO_FIXED_DATA_SWAP)>;
-+				sink-pdos = <PDO_FIXED(5000, 2000,
-+						       PDO_FIXED_DUAL_ROLE |
-+						       PDO_FIXED_DATA_SWAP)>;
-+
-+				altmodes {
-+					displayport {
-+						svid = /bits/ 16 <0xff01>;
-+						vdo = <0x00001c46>;
-+					};
-+				};
-+
-+				ports {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+
-+					port@0 {
-+						reg = <0>;
-+						typec_con_hs: endpoint {
-+							remote-endpoint = <&mtu3_hs0_role_sw>;
-+						};
-+					};
-+
-+					port@1 {
-+						reg = <1>;
-+						typec_con_ss: endpoint {
-+							remote-endpoint = <&mtu3_ss0_role_sw>;
-+						};
-+					};
-+
-+					port@2 {
-+						reg = <2>;
-+						mt6360_ssusb_sbu_ep: endpoint {
-+							remote-endpoint = <&it5205_sbu_ep>;
-+						};
-+					};
-+				};
-+			};
-+		};
- 	};
- };
- 
-@@ -755,6 +825,13 @@ pins-reset {
- 		};
- 	};
- 
-+	u3_p0_vbus: u3-p0-vbus-default-pins {
-+		pins-vbus {
-+			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
-+			input-enable;
-+		};
-+	};
-+
- 	uart0_pins: uart0-pins {
- 		pins {
- 			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
-@@ -885,8 +962,31 @@ &ufsphy {
- };
- 
- &ssusb0 {
-+	dr_mode = "otg";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&u3_p0_vbus>;
-+	usb-role-switch;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
- 	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			mtu3_hs0_role_sw: endpoint {
-+				remote-endpoint = <&typec_con_hs>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			mtu3_ss0_role_sw: endpoint {
-+				remote-endpoint = <&typec_con_ss>;
-+			};
-+		};
-+	};
- };
- 
- &ssusb2 {
--- 
-2.45.2
-
+> 
+> Irui Wang (2):
+>   media: mediatek: encoder: Add a new encoder driver interface
+>   media: mediatek: encoder: Add support for common driver encode
+> process
+> 
+>  .../platform/mediatek/vcodec/encoder/Makefile |   1 +
+>  .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +
+>  .../vcodec/encoder/mtk_vcodec_enc_drv.h       |   3 +
+>  .../vcodec/encoder/venc/venc_common_if.c      | 704
+> ++++++++++++++++++
+>  .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
+>  .../mediatek/vcodec/encoder/venc_drv_if.h     |   3 +
+>  .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
+>  .../mediatek/vcodec/encoder/venc_vpu_if.c     |  37 +-
+>  8 files changed, 764 insertions(+), 15 deletions(-)
+>  create mode 100644
+> drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
+> 
 
