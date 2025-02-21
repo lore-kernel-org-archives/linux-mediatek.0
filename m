@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFB4C021AA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 10:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CFB0C021AA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 10:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZNLfBripyGCcRpodlSQDvf0KC5poyX1fpkm5nakZ/Is=; b=bPr6HZlF6ZM0on01/pv3Ah77dK
-	AfqWgYE0ootnp+oUM0klcyRG3/Mf9PpO+XTJtAwZ93CCLwDkKXqP5HrWU2FDMO1Z03Os5+QRbYZkf
-	glJeRzuqOLjrFAoOvUxUXsrdr+veOeOFoc7mL5zGQNopC+ecEmFfsUKt91vFcLWc3F8n5kIzjGJtM
-	lVhGGPVb01WoA72wVCaPjPx1tAucu89EUBnKc6pRD1JZOrZ/co4hhM5bvLhXLYm2c/SDA2qarBo3T
-	8/76AhjvBY9Vn90Udlf8FMZyA0W4R4R39nqol1WCRONR7jxzYfbTcGDnKFoV+6ltF8az4q/p2Sbj4
-	KJNoLmyw==;
+	bh=EwGaWXHhQHmpp+8YimtJQkbVyBouNYjRbDtM3LP68+U=; b=hTbAh5o9V/P/pTJS+lN9MNBqYX
+	06BUDJBXVIC35+7nnaIZBebcSKbGTIGPUU11T7Pjme3lf3ICv2ePYvLJPxj6/FIWc8pGVHHdfhY8h
+	C49vM5pt+WiyVXDsqx9NsSAw9nw1DGn6cnPfHhQD5nTUxn0wjVfG5AL3euHcepE+Sq+5oc2pqNNiS
+	b0L7TyRZcw3YljA0IRrjI1TGCXtgV3UuVTTCxUp7VifcLiC4we5HWkFoV30/P8RPSYEWNsqAPDmia
+	ksnnwD7R5mdC0rIZJD2XKr4Lk1jv8yQKAcZ6O/1XgVvdgReeFyE6hihkb7Jm2ykjqxRe1HD/fDgj6
+	P8DIZhVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQMY-00000005CHt-1Zsz;
-	Fri, 21 Feb 2025 10:34:30 +0000
+	id 1tlQO2-00000005CSu-1VYi;
+	Fri, 21 Feb 2025 10:36:02 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQ9W-000000059uh-1WWb;
-	Fri, 21 Feb 2025 10:21:02 +0000
+	id 1tlQAI-00000005A04-0hVT;
+	Fri, 21 Feb 2025 10:21:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8CFC76119B;
-	Fri, 21 Feb 2025 10:20:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8BFCC4CEE6;
-	Fri, 21 Feb 2025 10:21:00 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 713FF61189;
+	Fri, 21 Feb 2025 10:21:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8CB3C4CED6;
+	Fri, 21 Feb 2025 10:21:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740133261;
-	bh=fUVaLTqcC5c+bm4iIiTWH4PyCaBTZWkrdFfnT7KKx9k=;
+	s=k20201202; t=1740133309;
+	bh=XGK2u8TzDSVYk6sYqHcLEUtV1chH/9Nf1/m1rp6PLFk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tdaAdtItOplD992wbpZNI3he2hf6xVYugM2PYF5rEGymF/G5YrQns0JZopipOO9MM
-	 BoNF1OqMpjKsgq8VvcxReJithgND9W34P13mPh5P4EwMGhY6+NE1F2lakfBcXct+zx
-	 VenyyKva/dTsHfQ9823wnEpvA+rUYgRZyyT21q3eb5CXVCpGLLCDEiKBu7aX1Hlzvq
-	 bA3jWyMQU0fuqalK/8WChGN9CJ+VQsqQDYySlWlNJBkbe7Jnu0v8cQQGTodqdafr/Q
-	 ef4u4VHGdwvWGcdRx7GFsIolkSZeJQsRok04div7TK/9JCvm+rvcfF5FzbkB0bFWeV
-	 2FOQ9nNoMGgew==
-Date: Fri, 21 Feb 2025 11:20:58 +0100
+	b=TvcUqRO/wdyzQqZ5+SB544WaloOOKDZNuHTBCKvW+7CKs50oi/U8PLV45rCydbztx
+	 eI03a66HfPq+gU/kWT3snjZAMEzAdno1YL2FwkdFu79HZY60KB2YVpGSd7lH05mpfq
+	 NEOHRSOBFjmBUin5DC+CUoLSCFl1pNq+hwQGu4bJSC/TZnd1VJeFJ5+Nkq/anr72XT
+	 Srd42611UD0zqqp3wNGozkxmgbOhJEvmsPB6lJf0UDrGa6yfMdgLE4xos9FNIm0eyj
+	 739Y04BzEU5Zc5miWg53unjJMXGzla/6gHq6nZvheOQXrmMBKyUwu56ZJ9n9q7Efib
+	 4TjYeFeJhLMuw==
+Date: Fri, 21 Feb 2025 11:21:46 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -61,17 +61,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [PATCH net-next v5 05/15] net: airoha: Move DSA tag in DMA
- descriptor
-Message-ID: <Z7hTilouR44BUuHb@lore-desk>
+Subject: Re: [PATCH net-next v5 12/15] net: airoha: Introduce Airoha NPU
+ support
+Message-ID: <Z7hTujrG-zOiBcZe@lore-desk>
 References: <20250217-airoha-en7581-flowtable-offload-v5-0-28be901cb735@kernel.org>
- <20250217-airoha-en7581-flowtable-offload-v5-5-28be901cb735@kernel.org>
- <20250220142535.584b0423@kernel.org>
+ <20250217-airoha-en7581-flowtable-offload-v5-12-28be901cb735@kernel.org>
+ <20250220143839.5ea18735@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5YB+kcl4xBIiQadY"
+	protocol="application/pgp-signature"; boundary="RxJWLYxefS/CP3b0"
 Content-Disposition: inline
-In-Reply-To: <20250220142535.584b0423@kernel.org>
+In-Reply-To: <20250220143839.5ea18735@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,92 +87,55 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---5YB+kcl4xBIiQadY
+--RxJWLYxefS/CP3b0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Mon, 17 Feb 2025 14:01:09 +0100 Lorenzo Bianconi wrote:
-> > +static u32 airoha_get_dsa_tag(struct sk_buff *skb, struct net_device *=
-dev)
+On Feb 20, Jakub Kicinski wrote:
+> On Mon, 17 Feb 2025 14:01:16 +0100 Lorenzo Bianconi wrote:
+> > +static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> > +			       void *p, int size)
 > > +{
-> > +#if IS_ENABLED(CONFIG_NET_DSA)
-> > +	struct ethhdr *ehdr;
-> > +	struct dsa_port *dp;
-> > +	u8 xmit_tpid;
-> > +	u16 tag;
+> > +	u16 core =3D 0; /* FIXME */
+> > +	u32 val, offset =3D core << 4;
+> > +	dma_addr_t dma_addr;
+> > +	void *addr;
+> > +	int ret;
 > > +
-> > +	if (!netdev_uses_dsa(dev))
-> > +		return 0;
-> > +
-> > +	dp =3D dev->dsa_ptr;
-> > +	if (IS_ERR(dp))
-> > +		return 0;
-> > +
-> > +	if (dp->tag_ops->proto !=3D DSA_TAG_PROTO_MTK)
-> > +		return 0;
-> > +
-> > +	if (skb_ensure_writable(skb, ETH_HLEN))
-> > +		return 0;
+> > +	addr =3D kzalloc(size, GFP_ATOMIC | GFP_DMA);
 >=20
-> skb_cow_head() is a lot cheaper (for TCP)
+> You need the actual "zone DMA" memory from ISA times?
+> I think that's what GFP_DMA is for. Any kmalloc'd memory
+> can be DMA'ed to/from.
 
-ack, I will fix it in v6
+ack, I agree. We can drop it. I will fix it in v6.
 
 >=20
-> > +	ehdr =3D (struct ethhdr *)skb->data;
-> > +	tag =3D be16_to_cpu(ehdr->h_proto);
-> > +	xmit_tpid =3D tag >> 8;
+> > +	if (dma_set_coherent_mask(dev, 0xbfffffff))
 >=20
-> > @@ -2390,8 +2498,10 @@ static int airoha_probe(struct platform_device *=
-pdev)
-> >  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> >  		struct airoha_gdm_port *port =3D eth->ports[i];
-> > =20
-> > -		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED)
-> > +		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED) {
-> > +			airoha_metadata_dst_free(port);
-> >  			unregister_netdev(port->dev);
->=20
-> Looks a tiny bit reversed, isn't it?
-> First unregister the netdev, then free its metadata.
+> Coherent mask is not contiguous on purpose?
+> Quick grep reveals no such cases at present, not sure if it works.
+> Maybe add a comment, at least ?
 
-ack, I will fix it in v6
-
->=20
-> > +		}
-> >  	}
-> >  	free_netdev(eth->napi_dev);
-> >  	platform_set_drvdata(pdev, NULL);
-> > @@ -2416,6 +2526,7 @@ static void airoha_remove(struct platform_device =
-*pdev)
-> >  			continue;
-> > =20
-> >  		airoha_dev_stop(port->dev);
-> > +		airoha_metadata_dst_free(port);
-> >  		unregister_netdev(port->dev);
->=20
-> same here
-
-ack, I will fix it in v6
+Ack, right. I think it is wrong. I will fix it in v6.
 
 Regards,
 Lorenzo
 
->=20
-> >  	}
-> >  	free_netdev(eth->napi_dev);
+> --=20
+> pw-bot: cr
 
---5YB+kcl4xBIiQadY
+--RxJWLYxefS/CP3b0
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7hTigAKCRA6cBh0uS2t
-rCeUAQCB/2t2Wdyb4IQv5rKQRZKe1GYUM3uFFfEksdbnFdyb0gD/ZY1D+76DwjUj
-DnnmpDydOAQ+1nCYsY5EaOgWAq9p5Qg=
-=cQbl
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7hTugAKCRA6cBh0uS2t
+rANTAQDEQ8k7BX7x63iA2wmUooQvqpv1wCUZnNUKVcwf10KapgEAwCZGXymtR/Vg
+ssK3jSJEkoXsWRojYyqODeH7VvJcfgA=
+=KhfQ
 -----END PGP SIGNATURE-----
 
---5YB+kcl4xBIiQadY--
+--RxJWLYxefS/CP3b0--
 
