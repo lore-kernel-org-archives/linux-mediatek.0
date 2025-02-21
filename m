@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48B9C021B3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 17:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D21E1C021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 18:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pkMm6RkLxj0MLvOjXO6Zq/qKdEhQUSinbouhRvXjrME=; b=osSZFG1WaLo+Ag4Ly3FaVh8CuP
-	FYE+rc71mhDTLyjr99jKupgP7QxHsPM0OjQzq4hu+n5LjTj8NZe6EjBCGylvitWqqjKbqxvdW6CZJ
-	Bu8wPxqjwjDrqmnK5dhj9U2nOzcdjEpc5r3lgkp757VjCEyNfKHj93F5OCDEPMzG5XI0JhHH9tIIf
-	Uy68ZVkPdJsvNeQjQN49E1GoedI39jVhH5/lDmyw+4YPLY9wnx2dbYM1Yv6tSCmRaL5t1uLqrjHnc
-	5/X5Vbd6evq/TwUk3WT9WMRd+1DgXmGZgVMiMXc3OH/p8D161/yK+a+T4CHLr+s5YZKCVGh0ChYIk
-	+qmBkrxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ug5SJCeUtM4Us9l64osKbi0C5iCf3occVKXeUSjbr6M=; b=zFjedAs/rDNwTZkzGSMmrRxFDF
+	i6B/o1ZWt2d4+k2IVV7xut/xbj4bmajdG9DkAigNLpk3Vegseh+7iUlJpKxAvVy/J5rNsKGh6nVJ7
+	04SXXqzlBSkoR0Pk/xvvGiiDog1FT28EZcNVx1N5McBGHPiAQiytDVR5lq9qzlKzSW/gDon5MA13b
+	x6PAieGeiXvPlGSsf0AXb4AV1g5NQsEyAcmBwhRf4gDfM/tSfhKo3tjcoSd/K5AxYc1OFAB+gTkum
+	T+EOMQF4DX82oNumID5au6D3CwfCIntfTRnuTHwo8axy5rlAlFhTtGMNKQja5Nz3D44z1s5ooLEHc
+	+WDWgb5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlX8V-00000006QJV-3JHk;
-	Fri, 21 Feb 2025 17:48:27 +0000
+	id 1tlXjL-00000006WbQ-2OME;
+	Fri, 21 Feb 2025 18:26:31 +0000
 Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlX72-00000006Q4Q-1bZq;
-	Fri, 21 Feb 2025 17:46:56 +0000
+	id 1tlWVz-00000006Jdi-1ZVa;
+	Fri, 21 Feb 2025 17:08:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2F4AB613C2;
-	Fri, 21 Feb 2025 17:46:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEF7AC4CED6;
-	Fri, 21 Feb 2025 17:46:51 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2A4DF6157C;
+	Fri, 21 Feb 2025 17:08:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E397C4CEEC;
+	Fri, 21 Feb 2025 17:08:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740160015;
-	bh=pkMm6RkLxj0MLvOjXO6Zq/qKdEhQUSinbouhRvXjrME=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T2M1eUcu8YEAN59gO+QTHvsz8Moc4Z/JlLwFqm+v/GWd1vBBTNc2rH24rR6ZVcXwL
-	 dzZJm7j3LZoRHOURuEfI/MDagEjV+GlTv+Eb67Am2ydeTZq7BxXc7lchUWMQjDohVW
-	 22UXQr6iX7OYOL84YR3P8NFyPiDcF9DjhJTTSWNPptqAUH3B9Fuj8Ef87jObOvwgnh
-	 Zy4Z/MtHsvC7wWf3SN4pl5hMfn4f2iQpsIjLRHzf0zVb+UZoHHMq7YF6QOIXSbvOYa
-	 HOOH324RwhLUXaRVOoqfs1oEYc/BvNbwy0ziBrR9Sa3NJwlm/V91QWfbALwNK7oSkp
-	 hwnMT3PYOfYaQ==
-Date: Fri, 21 Feb 2025 17:46:49 +0000
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-usb@vger.kernel.org,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Chris-qj chen <chris-qj.chen@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: usb: mtu3: Add ports property
-Message-ID: <20250221-reenter-sassy-5b27b03f8b06@spud>
-References: <20250220142230.2530583-1-macpaul.lin@mediatek.com>
- <ae34efcd-4fe1-4e45-a1e1-0744138a84b9@collabora.com>
+	s=k20201202; t=1740157718;
+	bh=s5eo+jWFRpAipFm09lCIDLtuXzM+294r4TRujXXE5u0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=GzjWBLIbRxpFtvcpYed3KJH5oTstoyhONMh/76infiaUq8+BKchsHfECQe7rxsIqF
+	 qFcpc8lIOphgU56JOdmPiHKujaATg0VW9uoRwxwBPQfyI3sPAXrly4pFA18F7KGWNL
+	 NwoG9XpzqWnq+f+a0L78ehWlYynKd4CiEsPHyaZrD4oAmPCR9IYJYgqMx1K2vds61F
+	 FEmTYM4LhyFNfXyTfRI0N1ACovuQO4ZA4AeXRs5g0uVERIQI+fDEDiDFZmPsvnKVm8
+	 pj9479jGjo1KY/PzySQYuxqdo61I+bvpRxMZCkBO3lFaJX9yUMRAOjxaBY5wzIgPsG
+	 yBAgKohor6mFA==
+Received: by mail-ed1-f53.google.com with SMTP id 4fb4d7f45d1cf-5e0452f859cso3679379a12.2;
+        Fri, 21 Feb 2025 09:08:37 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCULaCj4oPIElmwWoazcudSwk7pUHmZGt8+18bKBR7g9DZXHERr3AnD7fMDSuoZkoXcWjNQGx2VmsaD1D2DLiSY=@lists.infradead.org, AJvYcCVZrvngXpYatSgbh8+llFEk8lwdPX59T5+z1WKTrvqylt0Agp/mOl3pJAt0J6q86Uon4X/fufVX0rg4A4PzmccE@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzb4hiXLcknl0GS05FiZoK3GmwcCXKBAzu2ZUVDJUfUenVQhBKb
+	+ujqZOdePWSlglWc7/udJ6Wv1Im09nbbf37ueMnZl1AFRykGknM0ri2iyWc5LubX/FkGdWKXJej
+	EFznYPWuDh6BNDgtrkve+t9nSBg==
+X-Google-Smtp-Source: AGHT+IF3O3vdI8KmOvbFRUGPLCBofMuxQiMkHrsWb3wzJcHfb8wAPbp8iF9eEU1cB0o4czpk21gl9NW97USVLhVQ01s=
+X-Received: by 2002:a05:6402:e02:b0:5e0:9ec6:12d1 with SMTP id
+ 4fb4d7f45d1cf-5e0b70f0800mr4060556a12.18.1740157716547; Fri, 21 Feb 2025
+ 09:08:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="szY3iyQERCl/suc/"
-Content-Disposition: inline
-In-Reply-To: <ae34efcd-4fe1-4e45-a1e1-0744138a84b9@collabora.com>
+References: <20250218090427.20318-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250218090427.20318-1-angelogioacchino.delregno@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 21 Feb 2025 11:08:25 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+4+=3ccuwa1whv+UQ56H6ueia4Mqy2z73M-5D15zZw=Q@mail.gmail.com>
+X-Gm-Features: AWEUYZmwuM1JP26BKUCaWcwByGaIWjPB3I55aqksnOcD6mvIR49_PbC1vcSeCe8
+Message-ID: <CAL_Jsq+4+=3ccuwa1whv+UQ56H6ueia4Mqy2z73M-5D15zZw=Q@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: display: mediatek: dsc: Add MT8188 compatible
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, 
+	airlied@gmail.com, simona@ffwll.ch, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com, pablo.sun@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +84,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Feb 18, 2025 at 3:04=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add compatible for Display Stream Compression (DSC) IP found in
+> the display controller of the MT8188 SoC.
+>
+> This IP is fully compatible with the one found on MT8195.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dsc.yaml     | 3 +++
+>  1 file changed, 3 insertions(+)
 
---szY3iyQERCl/suc/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Feb 20, 2025 at 04:56:00PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 20/02/25 15:22, Macpaul Lin ha scritto:
-> > Define the ports property in the mediatek,mtu3 device tree binding sche=
-ma.
-> > Include definitions for port@0 and port@1, specifying their roles as
-> > High Speed (HS) and Super Speed (SS) data buses, respectively.
-> >=20
-> > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
-labora.com>
-> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->=20
-> Some SoCs do have SuperSpeed peripheral mode, so for this commit
->=20
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
---szY3iyQERCl/suc/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7i8CQAKCRB4tDGHoIJi
-0nPqAP0fP5poDJRA3Z3q8SHg6Q/EHMEj/DnqgJGRMdIOzsP9RAD7Bc10OD+TWsBu
-8fXcBQQfSDrvW31wIXdCY/T7A+BXmwE=
-=4Nd+
------END PGP SIGNATURE-----
-
---szY3iyQERCl/suc/--
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
