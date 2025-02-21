@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7222BC021AA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 11:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6659C021AA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 11:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zI2NaFXtCNAAcLn9axAPJOBAp9dC8kW+ekIv6/0Lejc=; b=GWvn/OtmX2Td5xetaVu8ySuoTm
-	hKALvYCrmFCtd9tiMN6di5I330RhJAfgnOiX3Y3sJL7DxA6iykVfTdflbSS08Hn17wT6oLNf0NAgL
-	Cy6w2kndghVx7CZZ/3VSnzCgwng5/jcRmuttyXIKbUzwd9kpa1cnjJg6Ge21fdIVhJueAXt5hNkuY
-	kR5XV6NdWNc2QHrQKXSzJhzndiO1wl1s4RpCUdZzleo+c7JgwX3fCyW1D2tPc0HgAwNeJI7t0Yqk5
-	G1u8cZoePIYo3Vu6amGrqVhOC5X8EscEctw6dR4GvqcmufOPeG6rKs1rWEJBL/lX1LxVMAi29S8rm
-	BctziVuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JwohrPAvCZ/qg3MA5g5m35rC3ir1Vy9aIxHkgumCgKo=; b=ztIHTpFKwTlK89EEEfsnjF4Jlm
+	DJha/LHHgdu2XOTG+q9nAj4OcT+eRFSdtMYRMdhkMHwccQxfFWB9BkgRcpeZpSjlipOSHpx+mi8oB
+	z5kWPL7WHc/LAJAu47hQMLs8iVLPP8t7HQOK7oYSTHvwN8dwWkvHq+mYAS5mlk3jPg46EeiA5P1iT
+	2wzp5QFbLDK7wWNVB/sJlbtXMVhMEf7QgvwZAvM8lX7Q4JzumDvlZCmVSUNdx6jKJY/kp9uRrSTl6
+	2T4zu1vkcOGBwXT3cSSP4RKEQmgzQeuElx9mnJXUVq2cFR5H9eQ/E0osWI1yxQ2/qX0z27rRCXEWP
+	fXg3W+3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQz9-00000005IiF-0tdH;
-	Fri, 21 Feb 2025 11:14:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tlRJd-00000005LLF-2hiX;
+	Fri, 21 Feb 2025 11:35:33 +0000
+Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQpH-00000005Gte-1u3E;
-	Fri, 21 Feb 2025 11:04:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740135849;
-	bh=RCnNhgw75I/wEW2JWpngXCKAxqIVcEwXxTd7/ahkD3Q=;
-	h=From:Date:Subject:To:Cc:From;
-	b=DZhea9b4fkr8gbhixEfwqn6OlEv6qNZu0rW2pu+Kqx+ThaqfXU0cmkDBJrAfFkqVb
-	 aHb0AstOTFgzh5g/Ch+DiO9m7Ils+0F2qIIEz4pUyaAsKlMHTH2DP3mVKBty5tiLAU
-	 151ZbRyu4AhIddUjcaB2smqtU/i3Ve3X/P+wflspqQA5ZbpGZJN92lOoLr21Itzo+c
-	 W5WhkqGvnoBAQKXtWnlLPfSjZD79Wulcty0dUuwM+l28qEPNmBm87CchGV3ZBfCDrA
-	 8Z4A93cVUY9p44vkArcOR/HSCbgPjVBFDk7DlDloGmgcAfS9SRbzMzUl2utClmNf2r
-	 cE+g11KjuyyXw==
-Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB6E017E02BE;
-	Fri, 21 Feb 2025 12:04:08 +0100 (CET)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 21 Feb 2025 12:04:02 +0100
-Subject: [PATCH] soc: mediatek: mtk-socinfo: Avoid using machine attribute
- in SoC detection log
+	id 1tlRJa-00000005LKQ-2Ah0
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Feb 2025 11:35:31 +0000
+Received: by mail-vs1-xe2b.google.com with SMTP id ada2fe7eead31-4b9486a15a0so1859544137.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Feb 2025 03:35:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1740137729; x=1740742529; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JwohrPAvCZ/qg3MA5g5m35rC3ir1Vy9aIxHkgumCgKo=;
+        b=ZyATv2ZwNanx3xmQ9CdLdVhJEffqW2Lr8tE+5zbhTt82drzKdmWAP1Nmv7zksWdwsV
+         SfuTEUQAHE3DtwE+Fnw0FREJDksVIEpbnzJoz1n+qfhbFFUKxDHS28vpt4npHEp4pBkU
+         pvnL5hgxkSpbC2qrXQSjC9Nhgvra6ZQh1GGIE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740137729; x=1740742529;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=JwohrPAvCZ/qg3MA5g5m35rC3ir1Vy9aIxHkgumCgKo=;
+        b=Rr0zmL/Yyvh65iNFZOeQXs9kx6GOXcW5Una5FeOE+L4DaKFV1xOM5u/Xke3LjNnMXq
+         hfTrGwlLISe26Hdvo1XqJPEazWHA7iNS6acWMcb/SKIjBvI6YgGJBUP4Ss6dg/dog3Zh
+         ArpXshs3dFtiG8HNaoejDLLrAaJ2AzqTVSJzA7HTUv3fk6JQvw2nJENyVPCcSAryjuEx
+         5LUKrPKwpWng5+m0EZkWkFEYHWHIbMTakK9HVP5pSTGK/DvOcsXwizthofy9DmCB3kl8
+         LCELKKWzGPKthHcACKv5XOFL6fNNkDgqEkhVzs5I0jvlAyK2QSwd64El5Z/cf0UO+KUZ
+         3Kdw==
+X-Forwarded-Encrypted: i=1; AJvYcCW6UWe5wceNVsAg259WdQc3pX9ldb4xjFHndobWAmQKCFfKDaB+DbxXqwXrkc/Sb1ne+ahth65KffVYH23JNw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxyiDR+Y1DUZz1OyVaJOgkGOjm5TY+qL1t0wcg+f89BNusFNKRg
+	eMMAHg9VwDF2pjbmupCqBTxdfjtWMyLohcZd1oRKqZSehbqZagcbWrR2wTnaWh6Vg0M95+zJqUs
+	=
+X-Gm-Gg: ASbGncuIP571EkUAs2/MAydsR3HaEG5d79SmfO6Avp8ta4Sbi6CERB84LQEhTFFwJcN
+	jpsyFFD+306SdAjFbl6E0b1XGfII5JQci4CZHPqzGGKtgGj09jFPPxJwz/sRYLkoKbD3liwE/bo
+	Zv4ctHY26Gd+/+uAPThQhuQazGH784VKRn6AT6xASKzENQmyJEPB3SlQxSJR38m7E4gUJcZLicb
+	9zK66xJw6zoKeRldAKFUJXC+4fMKfZdSSzOM8yAwGZRit2ZDFrS7Cyh4k+KSDAPFQgVA3S4wuP8
+	0EI6lX9KW3F3VYVAs60cZfQv5T9ml5p2a0eTrCgbkm/WwWH2odRMkGrh8IU/0A==
+X-Google-Smtp-Source: AGHT+IEkKHwpI+OJ0tZ7eQ2VgIxWASZ1jCNPqiWeZzwL/UfaNLybTNpNK3Qa/7wYZp65MBLVnk6nVQ==
+X-Received: by 2002:a05:6102:5090:b0:4bc:d2d7:3e9c with SMTP id ada2fe7eead31-4be9930df0cmr3927446137.12.1740137728879;
+        Fri, 21 Feb 2025 03:35:28 -0800 (PST)
+Received: from mail-ua1-f50.google.com (mail-ua1-f50.google.com. [209.85.222.50])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4be26117ab8sm2693077137.15.2025.02.21.03.35.28
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Feb 2025 03:35:28 -0800 (PST)
+Received: by mail-ua1-f50.google.com with SMTP id a1e0cc1a2514c-860f0e91121so2106500241.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Feb 2025 03:35:28 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWYFGCi+3IUEkKGgMhyPSLpy49o6ajPQemJDf1em87NtlMUKjpna4PoZmOkOUeXoT1DDHBOiYviTld9NHcaQw==@lists.infradead.org
+X-Received: by 2002:a05:6102:2921:b0:4bd:22d9:b117 with SMTP id
+ ada2fe7eead31-4bfc0fdf40bmr1459685137.10.1740137727505; Fri, 21 Feb 2025
+ 03:35:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250221-mtk-socinfo-fix-print-v1-1-20500f30ef66@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAKFduGcC/zWNwQrCMBBEfyXs2YWYUJD+ivTQxI0ukk1NohRK/
- 93F4vHNMG82aFSZGoxmg0ofblxE4XwyEB+z3An5pgzOusE6ZzH3J7YSWVLBxCsulaUjXXzywdN
- gQwDdLpW0/Hmv08GVXm/V9yOEMDfCWHLmPhqhteP/AqZ9/wIYnOWumAAAAA==
-X-Change-ID: 20250220-mtk-socinfo-fix-print-e83f3b3e50bb
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Fei Shao <fshao@chromium.org>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740135848; l=1637;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=RCnNhgw75I/wEW2JWpngXCKAxqIVcEwXxTd7/ahkD3Q=;
- b=RekhF+VTRj/NNwFMjsJNiXVDNcX0IETBIKOwOKIFzwREB2y/iLivfFzlt/glLTGYP7+5tgcGH
- E3wiP8tO2XEBeM21mk/eX31XadTZyDtkw8hNyGXGVJ9ttDoTT0PG8YZ
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+References: <20250221-mtk-socinfo-fix-print-v1-1-20500f30ef66@collabora.com>
+In-Reply-To: <20250221-mtk-socinfo-fix-print-v1-1-20500f30ef66@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Fri, 21 Feb 2025 19:34:51 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njHBs27TtTZXgED4wdLw=FrSDCazbb6ZssZywvSWV2h3A@mail.gmail.com>
+X-Gm-Features: AWEUYZmV51gkv5en-4xAlrGPHtRp_UB_-TGQXQmxc_me0FZsV0tfUBhu-ic9sd8
+Message-ID: <CAC=S1njHBs27TtTZXgED4wdLw=FrSDCazbb6ZssZywvSWV2h3A@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: Avoid using machine attribute
+ in SoC detection log
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_030411_652835_795E16C0 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20250221_033530_675206_9E3E034C 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +107,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The recently introduced SoC attribute info rework avoided modifying the
-machine attribut but still used it in the log message on successful SoC
-matching. It leads to print a confusing log about a board-related info
-(read from devicetree) and not about the matched SoC:
-```
-mtk-socinfo mtk-socinfo.0.auto: MediaTek MediaTek Genio-510 EVK SoC
-  detected
-```
+On Fri, Feb 21, 2025 at 7:04=E2=80=AFPM Louis-Alexis Eyraud
+<louisalexis.eyraud@collabora.com> wrote:
+>
+> The recently introduced SoC attribute info rework avoided modifying the
+> machine attribut but still used it in the log message on successful SoC
+> matching. It leads to print a confusing log about a board-related info
+> (read from devicetree) and not about the matched SoC:
+> ```
+> mtk-socinfo mtk-socinfo.0.auto: MediaTek MediaTek Genio-510 EVK SoC
+>   detected
+> ```
+>
+> So, fix the dev_info format to display SoC family and name attribute
+> instead.
+> ```
+> mtk-socinfo mtk-socinfo.0.auto: MediaTek Genio 510 (MT8370) SoC detected.
+> ```
+>
+> Fixes: da77c2d3d06c ("soc: mediatek: mtk-socinfo: Restructure SoC attribu=
+te information")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-So, fix the dev_info format to display SoC family and name attribute
-instead.
-```
-mtk-socinfo mtk-socinfo.0.auto: MediaTek Genio 510 (MT8370) SoC detected.
-```
+Ah... my bad, I forgot to update the log. Thanks for the follow-up fix.
 
-Fixes: da77c2d3d06c ("soc: mediatek: mtk-socinfo: Restructure SoC attribute information")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/soc/mediatek/mtk-socinfo.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Fei Shao <fshao@chromium.org>
+Tested-by: Fei Shao <fshao@chromium.org>
 
-diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
-index a15d8f854cefa90883377b47bbc16a7072ee21cd..ac7bb0cbff2df5e1c4033646cd3b644e67ee7f69 100644
---- a/drivers/soc/mediatek/mtk-socinfo.c
-+++ b/drivers/soc/mediatek/mtk-socinfo.c
-@@ -87,7 +87,7 @@ static int mtk_socinfo_create_socinfo_node(struct mtk_socinfo *mtk_socinfop)
- 	if (IS_ERR(mtk_socinfop->soc_dev))
- 		return PTR_ERR(mtk_socinfop->soc_dev);
- 
--	dev_info(mtk_socinfop->dev, "%s %s SoC detected.\n", soc_manufacturer, attrs->machine);
-+	dev_info(mtk_socinfop->dev, "%s (%s) SoC detected.\n", attrs->family, attrs->soc_id);
- 	return 0;
- }
- 
-
----
-base-commit: 964b0ceed00032fa0fa841fd61e5f315880a2d36
-change-id: 20250220-mtk-socinfo-fix-print-e83f3b3e50bb
-
-Best regards,
--- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-
+> ---
+>  drivers/soc/mediatek/mtk-socinfo.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mt=
+k-socinfo.c
+> index a15d8f854cefa90883377b47bbc16a7072ee21cd..ac7bb0cbff2df5e1c4033646c=
+d3b644e67ee7f69 100644
+> --- a/drivers/soc/mediatek/mtk-socinfo.c
+> +++ b/drivers/soc/mediatek/mtk-socinfo.c
+> @@ -87,7 +87,7 @@ static int mtk_socinfo_create_socinfo_node(struct mtk_s=
+ocinfo *mtk_socinfop)
+>         if (IS_ERR(mtk_socinfop->soc_dev))
+>                 return PTR_ERR(mtk_socinfop->soc_dev);
+>
+> -       dev_info(mtk_socinfop->dev, "%s %s SoC detected.\n", soc_manufact=
+urer, attrs->machine);
+> +       dev_info(mtk_socinfop->dev, "%s (%s) SoC detected.\n", attrs->fam=
+ily, attrs->soc_id);
+>         return 0;
+>  }
+>
+>
+> ---
+> base-commit: 964b0ceed00032fa0fa841fd61e5f315880a2d36
+> change-id: 20250220-mtk-socinfo-fix-print-e83f3b3e50bb
+>
+> Best regards,
+> --
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+>
 
