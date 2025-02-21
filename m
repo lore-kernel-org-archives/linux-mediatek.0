@@ -4,69 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F4D5C021AA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 11:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01962C021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 11:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MOdIoQSeChpNEczInPEwC/mMU6VY1HMTN3HZJLDc1VA=; b=4f+Dt3ygvJJnFYlCIcE9B1k2Xy
-	uu/kHgfiAGh+wkuKdQPE5WxqaZA/R9M1kJJwExIAYz7STF+bzB++5IG/vFtdjJdqQNUPHdPplxU04
-	gr+H2JL+YP/ttaNjCEF3nE9JnWkwjymj8Xmtce3DuDXKw1BjGbSS+p0jh6gWDuKttyKQet78eA6iQ
-	GBGwAqtKz5wRru4Nbp/7GcUC3lrdTiMlOsCdgGssd4/c9kD7JoY/Vv0QP+8G0/VYg1tdZgK2eF7o6
-	Z4CM/O0vznz6V4vMLUhJ6fkHI6jIs+TCvgwI5cg5EPnFTNKIiE7nM4RUjsomtaohnlQ3HjJ9EZm6O
-	MFKkrgyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VRmDUg88sJqiPwLbbhmS638djtZJpa1TX+xwhTJhivE=; b=giCfXWIs9CgS7EzUSrOsk1mUtj
+	KHiIkpOcQmL8m0LHvzoOtf+0EoF1FrG9PHSJ57FInvQRHTrToCXlj9wU+NnvTPd3j8e3xD2raU8zp
+	XfCuHcOAu88MFD7KTZnig+VfE2byO/2DsNIxRcWx15UNi+I2R8B+wblhrThx4XCGRgcNvoQDG1hcE
+	rygUINnHEzPNTe60HpN2f6Yqntzbbo/+cW01apDkKxdDuEAen0CtWFjPcay7VLb2GI9UY+VcafZ1/
+	2ucJNn4SEZ+ncP08MCWnWOuscY8Dv1vIYpFHczDeBAKcxbv/wVhQ87PLgAHdTqWu5dFbruMprC7f6
+	xUghZxJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQos-00000005Goq-0vsF;
-	Fri, 21 Feb 2025 11:03:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tlQwJ-00000005I6N-06ET;
+	Fri, 21 Feb 2025 11:11:27 +0000
+Received: from mail-vs1-f52.google.com ([209.85.217.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQHK-00000005BLZ-3n1V;
-	Fri, 21 Feb 2025 10:29:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0DA90611AD;
-	Fri, 21 Feb 2025 10:29:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8194FC4CED6;
-	Fri, 21 Feb 2025 10:29:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740133745;
-	bh=e8wci36g2POAAVn69BnDKaO0K8Qn0U6FIZaaoMy9+nY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=j9GbW3W5Q+ynhKsnS0/Gqu1jPdJnDfIorKRo0Q8bCmaCs/Sgx6TpEjxLrw/6HcFUP
-	 7284Su8h/8djq1O6hoJeLVgm41mH2V6853uu+WnXM+ZRY/cxE6TV359l1f9eN9XH1D
-	 dalLVLN1IRSjNgsMWAErvXQrL+3Wb2unOaN0o5t7FFj7VTuFCUZmWxEclZdEeXW0DH
-	 u3JeCiTA39wAk4PfOG3jiCAfVcS5I4L6ktM6OFyejNRJtQvSQfvuSEeCcmxKyylErd
-	 FE1XbKl2TeZPkenRd3V0ahMHxNZ1hznusrwRsTb8IPzWOmU3F1RJLq2d0SMH6IoYwa
-	 dfDmBHAtTE/pw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 21 Feb 2025 11:28:16 +0100
-Subject: [PATCH net-next v6 15/15] net: airoha: Introduce PPE debugfs
- support
+	id 1tlPn3-000000052jb-2p6h;
+	Fri, 21 Feb 2025 09:57:50 +0000
+Received: by mail-vs1-f52.google.com with SMTP id ada2fe7eead31-4be5033a2cbso864413137.1;
+        Fri, 21 Feb 2025 01:57:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740131866; x=1740736666;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=VRmDUg88sJqiPwLbbhmS638djtZJpa1TX+xwhTJhivE=;
+        b=utjiu9HdUWt/f74YvghaetCPcel7DZkI3oXSVnvTRKrp0Mulsol+fWfiI1VAn34bpP
+         7zAIj4r3HA5ragywH+7gKaXo0V61R2kxpinHvzv5pxaltKW7VelQvcijNGnpxY0KFaVC
+         g2L2a89c+etbTEytC5Xi+gCYtT+ph9POfrPlg1R+V/jDBjb3L5p4OK+D5rfgtN8nmZQs
+         1Yw+chpGysh5jxTLzvDwAaCaxmHLTBkAUHfcUFb45VQ/cIMB0NqobsCEWZrUT5LD4ilG
+         j1a4vIAGE/Emt0tz/+oxdsaFXFxa176Wx/23IPgoqWrwnPC166fOdmS8oqdOZRFY11vz
+         V8aQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU22QpExskcOqYn0bbiv7fD/rhCqdZuxxbdmGeuAeTkCT3qrNE2nP5rBoLqIyyCj9gTpSRzAcfhq/JPvDsJeA==@lists.infradead.org, AJvYcCWuvg0ZzsNcSGIn0w6LnCWTG/RtMVhyv9xIEtE32BisiU/5Oa9oK8X5vCT69j3XJ/MxH5lmVNL1dJnLGXiwDPo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNatNPviZrM2fApor97lu2cYgqaPLN1Ek5SlSBX2ezbOxvO3NO
+	XjHwwGbS3YNXtXgnyrI8bzaFTR0IEYyBD20O180jYJBuUqIz2Tbn0unB3SdZ
+X-Gm-Gg: ASbGncunLWeEZkVjJMgpDXxlKsZMf/RYAPDHQZjMjMlCbnfSlByZ8iMFMMz281gzZ0D
+	yxv3hSPI4WWWR/APf2CgSI0S87FY6KyeDN3Y6J2SVKVVl78oNC1PPtrg6Hz/6RY0HSEPChft930
+	G8xBcInMXDhwpiNsW6gwrWnYsaKND7DHxTY7ZP+xRErPRKqGHNED5Wm/QkgbkIGnvtbhyP4VRrc
+	RqKCdNDdPbsi4oVtMgdOzZpzAoCO8W9xpk6aJRAQJmQg82Xx/g1GwexGeLzZA72UlbP118tcT5m
+	w9gVBhieL7rX1i3lIMYZEEWY9rWSUF2zf4Om+volvVAtUh+DMmHgUmRRk1/JSYVk
+X-Google-Smtp-Source: AGHT+IGxH1iGmvLQBtbV6fLBU9gA6nXc/4fRJCH9i0Zy1Ejju98yeWz86+GKpHG/IyTdnBUPKimuXg==
+X-Received: by 2002:a05:6102:2acb:b0:4bb:d062:43e with SMTP id ada2fe7eead31-4bfbfdc459emr1766236137.0.1740131866452;
+        Fri, 21 Feb 2025 01:57:46 -0800 (PST)
+Received: from mail-ua1-f47.google.com (mail-ua1-f47.google.com. [209.85.222.47])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4bc18de1d31sm3433419137.1.2025.02.21.01.57.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Feb 2025 01:57:45 -0800 (PST)
+Received: by mail-ua1-f47.google.com with SMTP id a1e0cc1a2514c-8622c3be2f4so467764241.1;
+        Fri, 21 Feb 2025 01:57:45 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV98qZsJiLUNXKsf53ApVSsPDcSeS1+B3eyoxSsrXeioZvnBPeAXOBfMhlpNgJbYKchNRhZEdKLCUN/ItwPVQ==@lists.infradead.org, AJvYcCVNwkmWzXAmGVMZwTRRnLgIqX/bq3EuKNX7++sF47wXEC/1I4bVdjM0Nxje57Q61+DjxVPrF6THEpZFtfll+OI=@lists.infradead.org
+X-Received: by 2002:a05:6102:441c:b0:4b1:1eb5:8ee3 with SMTP id
+ ada2fe7eead31-4bfc0277734mr1360564137.22.1740131865660; Fri, 21 Feb 2025
+ 01:57:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250221-airoha-en7581-flowtable-offload-v6-15-d593af0e9487@kernel.org>
-References: <20250221-airoha-en7581-flowtable-offload-v6-0-d593af0e9487@kernel.org>
-In-Reply-To: <20250221-airoha-en7581-flowtable-offload-v6-0-d593af0e9487@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- "Chester A. Unal" <chester.a.unal@arinc9.com>, 
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- upstream@airoha.com
-X-Mailer: b4 0.14.2
+References: <20250218142542.438557-1-tzimmermann@suse.de> <20250218142542.438557-3-tzimmermann@suse.de>
+ <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com> <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
+ <596b960e-71f8-4c2c-9abe-058206df1dfb@ideasonboard.com> <87ca2b81-a67a-468b-ae2b-30d02a3a64bc@suse.de>
+In-Reply-To: <87ca2b81-a67a-468b-ae2b-30d02a3a64bc@suse.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 21 Feb 2025 10:57:34 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdVnZTj-8bqsbbZdhp0H7Bwib8GkEuXPcKNZjdo_jRRXgg@mail.gmail.com>
+X-Gm-Features: AWEUYZnV-ULUCYHgs2rYqHTa6wPlfKvTAAqMyxRQ0em_d1IVN8Mw0n8NQD9eWqI
+Message-ID: <CAMuHMdVnZTj-8bqsbbZdhp0H7Bwib8GkEuXPcKNZjdo_jRRXgg@mail.gmail.com>
+Subject: Re: [PATCH v3 02/25] drm/dumb-buffers: Provide helper to set pitch
+ and size
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, maarten.lankhorst@linux.intel.com, 
+	mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
+	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250221_015749_710358_7CEB716F 
+X-CRM114-Status: GOOD (  32.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,301 +102,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to PPE support for Mediatek devices, introduce PPE debugfs
-in order to dump binded and unbinded flows.
+Hi Thomas,
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/Makefile             |   1 +
- drivers/net/ethernet/airoha/airoha_eth.h         |  14 ++
- drivers/net/ethernet/airoha/airoha_ppe.c         |  17 ++-
- drivers/net/ethernet/airoha/airoha_ppe_debugfs.c | 181 +++++++++++++++++++++++
- 4 files changed, 209 insertions(+), 4 deletions(-)
+On Fri, 21 Feb 2025 at 10:19, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+> Am 20.02.25 um 11:53 schrieb Tomi Valkeinen:
+> > This change also first calls the drm_driver_color_mode_format(), which
+> > could change the behavior even more, but afaics at the moment does not.
+>
+> Because currently each driver does its own thing, it can be hard to
+> write user space that reliably allocates on all drivers. That's why it's
+> important that parameters are not just raw numbers, but have
+> well-defined semantics. The raw bpp is meaningless; it's also important
+> to know which formats are associated with each value. Otherwise, you
+> might get a dumb buffer with a bpp of 15, but it will be displayed
+> incorrectly. This patch series finally implements this and clearly
+> documents the assumptions behind the interfaces. The assumptions
+> themselves have always existed.
+>
+> The color modes in drm_driver_color_mode_format() are set in stone and
+> will not change incompatibly. It's already a user interface. I've taken
+> care that the results do not change incompatibly compared to what the
+> dumb-buffer ioctl currently assumes. (C1-C4 are special, see below.)
+>
+> > Although, maybe some platform does width * DIV_ROUND_UP(bpp, 8) even
+> > for bpp < 8, and then this series changes it for 1, 2 and 4 bpps (but
+> > not for 3, 5, 6, 7, if I'm not mistaken).
+>
+> True. 1, 2 and 4 would currently over-allocate significantly on some
+> drivers and the series will reduce this to actual requirements. Yet our
+> most common memory managers, gem-dma and gem-shmem, compute the sizes
+> correctly.
+>
+> But there are currently no drivers that support C4, C2 or C1 formats;
+> hence there's likely no user space either. I know that Geert is
+> interested in making a driver that uses these formats on very low-end
+> hardware (something Atari or Amiga IIRC). Over-allocating on such
+> hardware is likely not an option.
 
-diff --git a/drivers/net/ethernet/airoha/Makefile b/drivers/net/ethernet/airoha/Makefile
-index 6deff2f16229a7638be0737caa06282ba63183a4..94468053e34bef8fd155760e13745a8663592f4a 100644
---- a/drivers/net/ethernet/airoha/Makefile
-+++ b/drivers/net/ethernet/airoha/Makefile
-@@ -5,4 +5,5 @@
- 
- obj-$(CONFIG_NET_AIROHA) += airoha-eth.o
- airoha-eth-y := airoha_eth.o airoha_ppe.o
-+airoha-eth-$(CONFIG_DEBUG_FS) += airoha_ppe_debugfs.o
- obj-$(CONFIG_NET_AIROHA_NPU) += airoha_npu.o
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 064941348bd91f1115082bf5e7734f34007953f8..18b5fed7ff286b813b260fae121892f44eb1cf8c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -7,6 +7,7 @@
- #ifndef AIROHA_ETH_H
- #define AIROHA_ETH_H
- 
-+#include <linux/debugfs.h>
- #include <linux/etherdevice.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-@@ -482,6 +483,8 @@ struct airoha_ppe {
- 
- 	struct hlist_head *foe_flow;
- 	u16 foe_check_time[PPE_NUM_ENTRIES];
-+
-+	struct dentry *debugfs_dir;
- };
- 
- struct airoha_eth {
-@@ -535,5 +538,16 @@ int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
-+struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
-+						  u32 hash);
-+
-+#if CONFIG_DEBUG_FS
-+int airoha_ppe_debugfs_init(struct airoha_ppe *ppe);
-+#else
-+static inline int airoha_ppe_debugfs_init(struct airoha_ppe *ppe)
-+{
-+	return 0;
-+}
-+#endif
- 
- #endif /* AIROHA_ETH_H */
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 086210d6894a2ed47cdd71039a2aea452f276be0..3a705f56aacac4f2fd91e3f4fe8da49a9722d98c 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -377,8 +377,8 @@ static u32 airoha_ppe_foe_get_entry_hash(struct airoha_foe_entry *hwe)
- 	return hash;
- }
- 
--static struct airoha_foe_entry *
--airoha_ppe_foe_get_entry(struct airoha_ppe *ppe, u32 hash)
-+struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
-+						  u32 hash)
- {
- 	if (hash < PPE_SRAM_NUM_ENTRIES) {
- 		u32 *hwe = ppe->foe + hash * sizeof(struct airoha_foe_entry);
-@@ -849,7 +849,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash)
- int airoha_ppe_init(struct airoha_eth *eth)
- {
- 	struct airoha_ppe *ppe;
--	int foe_size;
-+	int foe_size, err;
- 
- 	ppe = devm_kzalloc(eth->dev, sizeof(*ppe), GFP_KERNEL);
- 	if (!ppe)
-@@ -870,7 +870,15 @@ int airoha_ppe_init(struct airoha_eth *eth)
- 	if (!ppe->foe_flow)
- 		return -ENOMEM;
- 
--	return rhashtable_init(&eth->flow_table, &airoha_flow_table_params);
-+	err = rhashtable_init(&eth->flow_table, &airoha_flow_table_params);
-+	if (err)
-+		return err;
-+
-+	err = airoha_ppe_debugfs_init(ppe);
-+	if (err)
-+		rhashtable_destroy(&eth->flow_table);
-+
-+	return err;
- }
- 
- void airoha_ppe_deinit(struct airoha_eth *eth)
-@@ -886,4 +894,5 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
- 	rcu_read_unlock();
- 
- 	rhashtable_destroy(&eth->flow_table);
-+	debugfs_remove(eth->ppe->debugfs_dir);
- }
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..0216d0d5e52b995f9ac956892a3cc105aa896c19
---- /dev/null
-+++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-@@ -0,0 +1,181 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2025 AIROHA Inc
-+ * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-+ */
-+
-+#include "airoha_eth.h"
-+
-+static void airoha_debugfs_ppe_print_tuple(struct seq_file *m,
-+					   void *src_addr, void *dest_addr,
-+					   u16 *src_port, u16 *dest_port,
-+					   bool ipv6)
-+{
-+	__be32 n_addr[IPV6_ADDR_WORDS];
-+
-+	if (ipv6) {
-+		ipv6_addr_cpu_to_be32(n_addr, src_addr);
-+		seq_printf(m, "%pI6", n_addr);
-+	} else {
-+		seq_printf(m, "%pI4h", src_addr);
-+	}
-+	if (src_port)
-+		seq_printf(m, ":%d", *src_port);
-+
-+	seq_puts(m, "->");
-+
-+	if (ipv6) {
-+		ipv6_addr_cpu_to_be32(n_addr, dest_addr);
-+		seq_printf(m, "%pI6", n_addr);
-+	} else {
-+		seq_printf(m, "%pI4h", dest_addr);
-+	}
-+	if (dest_port)
-+		seq_printf(m, ":%d", *dest_port);
-+}
-+
-+static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
-+				       bool bind)
-+{
-+	static const char *const ppe_type_str[] = {
-+		[PPE_PKT_TYPE_IPV4_HNAPT] = "IPv4 5T",
-+		[PPE_PKT_TYPE_IPV4_ROUTE] = "IPv4 3T",
-+		[PPE_PKT_TYPE_BRIDGE] = "L2B",
-+		[PPE_PKT_TYPE_IPV4_DSLITE] = "DS-LITE",
-+		[PPE_PKT_TYPE_IPV6_ROUTE_3T] = "IPv6 3T",
-+		[PPE_PKT_TYPE_IPV6_ROUTE_5T] = "IPv6 5T",
-+		[PPE_PKT_TYPE_IPV6_6RD] = "6RD",
-+	};
-+	static const char *const ppe_state_str[] = {
-+		[AIROHA_FOE_STATE_INVALID] = "INV",
-+		[AIROHA_FOE_STATE_UNBIND] = "UNB",
-+		[AIROHA_FOE_STATE_BIND] = "BND",
-+		[AIROHA_FOE_STATE_FIN] = "FIN",
-+	};
-+	struct airoha_ppe *ppe = m->private;
-+	int i;
-+
-+	for (i = 0; i < PPE_NUM_ENTRIES; i++) {
-+		const char *state_str, *type_str = "UNKNOWN";
-+		void *src_addr = NULL, *dest_addr = NULL;
-+		u16 *src_port = NULL, *dest_port = NULL;
-+		struct airoha_foe_mac_info_common *l2;
-+		unsigned char h_source[ETH_ALEN] = {};
-+		unsigned char h_dest[ETH_ALEN];
-+		struct airoha_foe_entry *hwe;
-+		u32 type, state, ib2, data;
-+		bool ipv6 = false;
-+
-+		hwe = airoha_ppe_foe_get_entry(ppe, i);
-+		if (!hwe)
-+			continue;
-+
-+		state = FIELD_GET(AIROHA_FOE_IB1_STATE, hwe->ib1);
-+		if (!state)
-+			continue;
-+
-+		if (bind && state != AIROHA_FOE_STATE_BIND)
-+			continue;
-+
-+		state_str = ppe_state_str[state % ARRAY_SIZE(ppe_state_str)];
-+		type = FIELD_GET(AIROHA_FOE_IB1_PACKET_TYPE, hwe->ib1);
-+		if (type < ARRAY_SIZE(ppe_type_str) && ppe_type_str[type])
-+			type_str = ppe_type_str[type];
-+
-+		seq_printf(m, "%05x %s %7s", i, state_str, type_str);
-+
-+		switch (type) {
-+		case PPE_PKT_TYPE_IPV4_HNAPT:
-+		case PPE_PKT_TYPE_IPV4_DSLITE:
-+			src_port = &hwe->ipv4.orig_tuple.src_port;
-+			dest_port = &hwe->ipv4.orig_tuple.dest_port;
-+			fallthrough;
-+		case PPE_PKT_TYPE_IPV4_ROUTE:
-+			src_addr = &hwe->ipv4.orig_tuple.src_ip;
-+			dest_addr = &hwe->ipv4.orig_tuple.dest_ip;
-+			break;
-+		case PPE_PKT_TYPE_IPV6_ROUTE_5T:
-+			src_port = &hwe->ipv6.src_port;
-+			dest_port = &hwe->ipv6.dest_port;
-+			fallthrough;
-+		case PPE_PKT_TYPE_IPV6_ROUTE_3T:
-+		case PPE_PKT_TYPE_IPV6_6RD:
-+			src_addr = &hwe->ipv6.src_ip;
-+			dest_addr = &hwe->ipv6.dest_ip;
-+			ipv6 = true;
-+			break;
-+		default:
-+			break;
-+		}
-+
-+		if (src_addr && dest_addr) {
-+			seq_puts(m, " orig=");
-+			airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-+						       src_port, dest_port, ipv6);
-+		}
-+
-+		switch (type) {
-+		case PPE_PKT_TYPE_IPV4_HNAPT:
-+		case PPE_PKT_TYPE_IPV4_DSLITE:
-+			src_port = &hwe->ipv4.new_tuple.src_port;
-+			dest_port = &hwe->ipv4.new_tuple.dest_port;
-+			fallthrough;
-+		case PPE_PKT_TYPE_IPV4_ROUTE:
-+			src_addr = &hwe->ipv4.new_tuple.src_ip;
-+			dest_addr = &hwe->ipv4.new_tuple.dest_ip;
-+			seq_puts(m, " new=");
-+			airoha_debugfs_ppe_print_tuple(m, src_addr, dest_addr,
-+						       src_port, dest_port,
-+						       ipv6);
-+			break;
-+		default:
-+			break;
-+		}
-+
-+		if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
-+			data = hwe->ipv6.data;
-+			ib2 = hwe->ipv6.ib2;
-+			l2 = &hwe->ipv6.l2;
-+		} else {
-+			data = hwe->ipv4.data;
-+			ib2 = hwe->ipv4.ib2;
-+			l2 = &hwe->ipv4.l2.common;
-+			*((__be16 *)&h_source[4]) =
-+				cpu_to_be16(hwe->ipv4.l2.src_mac_lo);
-+		}
-+
-+		*((__be32 *)h_dest) = cpu_to_be32(l2->dest_mac_hi);
-+		*((__be16 *)&h_dest[4]) = cpu_to_be16(l2->dest_mac_lo);
-+		*((__be32 *)h_source) = cpu_to_be32(l2->src_mac_hi);
-+
-+		seq_printf(m, " eth=%pM->%pM etype=%04x data=%08x"
-+			      " vlan=%d,%d ib1=%08x ib2=%08x\n",
-+			   h_source, h_dest, l2->etype, data,
-+			   l2->vlan1, l2->vlan2, hwe->ib1, ib2);
-+	}
-+
-+	return 0;
-+}
-+
-+static int airoha_ppe_debugfs_foe_all_show(struct seq_file *m, void *private)
-+{
-+	return airoha_ppe_debugfs_foe_show(m, private, false);
-+}
-+DEFINE_SHOW_ATTRIBUTE(airoha_ppe_debugfs_foe_all);
-+
-+static int airoha_ppe_debugfs_foe_bind_show(struct seq_file *m, void *private)
-+{
-+	return airoha_ppe_debugfs_foe_show(m, private, true);
-+}
-+DEFINE_SHOW_ATTRIBUTE(airoha_ppe_debugfs_foe_bind);
-+
-+int airoha_ppe_debugfs_init(struct airoha_ppe *ppe)
-+{
-+	ppe->debugfs_dir = debugfs_create_dir("ppe", NULL);
-+	debugfs_create_file("entries", 0444, ppe->debugfs_dir, ppe,
-+			    &airoha_ppe_debugfs_foe_all_fops);
-+	debugfs_create_file("bind", 0444, ppe->debugfs_dir, ppe,
-+			    &airoha_ppe_debugfs_foe_bind_fops);
-+
-+	return 0;
-+}
+Note that the gud and ssd130x drivers do support R1, and I believe
+work is underway to add grayscale formats to ssd130x.
+
+> The other values (3, 5, 6, 7) have no meaning I know of. 6 could be
+> XRGB2222, but I not aware of anything using that. We don't even have a
+> format constant for this.
+
+Yeah, e.g. Amiga supports 3, 5, 6, and 7 bpp, but that is using
+bitplanes.  There is already some sort of consensus to not expose
+bitplanes to userspace in DRM, so limiting to 1, 2, 4, and 8 bpp
+(which can be converted from C[1248]) is fine.
+
+Gr{oetje,eeting}s,
+
+                        Geert
 
 -- 
-2.48.1
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
