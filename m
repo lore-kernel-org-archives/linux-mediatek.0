@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69019C021B2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 01:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B47C021B2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 02:03:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Fha4YI2mYKfCkDzRF7XHFB3HaXdJTPSTjEgrEB9aEg=; b=SJAivEw3UnrGtmgM2aaDVkckZf
-	DDpxxJvUaNxogNL2pwG223l15nyu6Fe9ZnVU51bhZOhO3b8dhaPLXvl1HHvOQx3GvCboZnqYvmJNy
-	NACZU99H3088pDFtu3+Uw3+Iyv64FE944d+CnUFxY9fspOXyp2JpCV2hU8Gbv29Lu1e6IrG+rp5vy
-	4+796ZYzcfZp5GleEMNniFRyclLND7OoPGDU4Bg7EONV8bEVYfuTXwrxGtFF3E+hErblu97RCb6U3
-	WgwKKcDYjhFUnUiyHthxC42pzQbogNbbyCn+pn8DThwOEf+ibB3vCi0Yvcz0CZyuFW6prk+OH7UfA
-	W8ISHV7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tkF2DYghDX+VQfWwEAkZ56brYwDEfPo9ZbyXaVQNw8w=; b=CWYIxcvWEM9OudWDO7vXQooVEe
+	QjHO9HfPg6HVvWlkTEulyUk9yCudKYrrDA2v8Se1FqaoOiOwnA9XUNlDgkK3Fo5D6QsnI+X2OfmHG
+	eReokJsga0jyK66xS/qcXYeGZNrdPZiZ8MPiZaTS1DGMxR7q8lYsdaizfhj/bw6JfL71eB0RzKMeD
+	37ZMifI8cKhMEJv7qiakClCGoiFjFRkTHaveW/fvdcfDdnRF1Sv32BHNKFYn+Fz+vSBjQBRNlhSP5
+	pMfCPjGBGhTAVCOTBfRhSygaXS4rqZHqbW8yQSlwWYDwH8bueqhP0ucSXP97i1DJvG8EmY4cYhwPk
+	WPKRL4gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlIJB-00000003m7v-2RvJ;
-	Fri, 21 Feb 2025 01:58:29 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tlIOE-00000003n6H-3V18;
+	Fri, 21 Feb 2025 02:03:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlIHg-00000003lra-1DMS;
-	Fri, 21 Feb 2025 01:56:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=9Fha4YI2mYKfCkDzRF7XHFB3HaXdJTPSTjEgrEB9aEg=; b=P2Oy2ykZbTSTVZjMFNIR3HIkBn
-	hEYuAWhquN5lZc73w5QNaIkSs8R5igTQuZr6PiJeFeuUScebrk7hE527wMacTjmedfA8zskqx9hQ3
-	CDXrxYdPfc0TKAXXPk44hTShyYyTE0f/d8GPUb+5PM0PRX9OeS/T26Si6m/PmAU+jx1Q=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tlIH6-00G9c2-ED; Fri, 21 Feb 2025 02:56:20 +0100
-Date: Fri, 21 Feb 2025 02:56:20 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Russell King - ARM Linux <linux@armlinux.org.uk>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	David Miller <davem@davemloft.net>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Richard Cochran <richardcochran@gmail.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH net-next 2/8] net: phy: move PHY package related code
- from phy.h to phy_package.c
-Message-ID: <e8ced800-6ee3-4ee6-9b6c-228f04c15f41@lunn.ch>
-References: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
- <ea0f203b-ee9a-4769-a27a-8dfa6a11ff01@gmail.com>
+	id 1tlIO8-00000003n4x-1GbJ;
+	Fri, 21 Feb 2025 02:03:37 +0000
+X-UUID: 0c60b90aeff811ef83f2a1c9db70dae0-20250220
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tkF2DYghDX+VQfWwEAkZ56brYwDEfPo9ZbyXaVQNw8w=;
+	b=FBxZhjDiDZyq/yDBZGhpyPxqy5M8N54Xb4drAPN2gfruuTrtwWP2d4C3lczIACSL1qEQW81oZZGv7WNR9XDxkfR7hQd31o97hrISOPYADPm0vrjM2/pe79FxHRvNkgeys+vkoIoMnK8OBJeqEn037cUblvdnUNYD15p7v8cq+w0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:e551a41d-e9ae-4e12-940f-89ac8195b1e7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:60aa074,CLOUDID:bbbc1129-e0f8-414e-b8c3-b75c08217be8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 0c60b90aeff811ef83f2a1c9db70dae0-20250220
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1518745619; Thu, 20 Feb 2025 19:03:31 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Fri, 21 Feb 2025 10:03:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 21 Feb 2025 10:03:27 +0800
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+To: Vivek Goyal <vgoyal@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Miklos Szeredi <miklos@szeredi.hu>, <eperezma@redhat.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <virtualization@lists.linux.dev>, <linux-fsdevel@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <xiangsheng.hou@mediatek.com>,
+	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
+Subject: [PATCH] virtiofs: add filesystem context source name check
+Date: Fri, 21 Feb 2025 10:03:19 +0800
+Message-ID: <20250221020325.7184-1-xiangsheng.hou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ea0f203b-ee9a-4769-a27a-8dfa6a11ff01@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_175656_323984_E95F1F44 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20250220_180336_346032_0E463117 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,15 +87,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 19, 2025 at 10:03:50PM +0100, Heiner Kallweit wrote:
-> Move PHY package related inline functions from phy.h to phy_package.c.
-> While doing so remove locked versions phy_package_read() and
-> phy_package_write() which have no user.
+In certain scenarios, for example, during fuzz testing, the source
+name may be NULL, which could lead to a kernel panic. Therefore, an
+extra check for the source name should be added.
 
-What combination of builtin and modules have you tried? Code like this
-is often in the header because we get linker errors in some
-configurations. It might be worth checking the versions of the
-original patches from Christian to see if there was such issues.
+Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+---
+ fs/fuse/virtio_fs.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-	Andrew
+diff --git a/fs/fuse/virtio_fs.c b/fs/fuse/virtio_fs.c
+index 2c7b24cb67ad..53c2626e90e7 100644
+--- a/fs/fuse/virtio_fs.c
++++ b/fs/fuse/virtio_fs.c
+@@ -1669,6 +1669,9 @@ static int virtio_fs_get_tree(struct fs_context *fsc)
+ 	unsigned int virtqueue_size;
+ 	int err = -EIO;
+ 
++	if (!fsc->source)
++		return invalf(fsc, "No source specified");
++
+ 	/* This gets a reference on virtio_fs object. This ptr gets installed
+ 	 * in fc->iq->priv. Once fuse_conn is going away, it calls ->put()
+ 	 * to drop the reference to this object.
+-- 
+2.46.0
+
 
