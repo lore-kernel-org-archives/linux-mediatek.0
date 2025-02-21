@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA2CC021B3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 18:26:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74522C021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 18:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h7E0dv8dad8ykAZHYhwM6AXzi3dNkuvSDcWdTKiL1UY=; b=XW3NV74iC+IA1zhpl4sCMSmCa7
-	oDHajMzSnr54RSN4QftAVNt4nHdEy3+mofxVVynyEjm83DQNOBg8o6FNJ++TINjXSR4ZxlzOn213F
-	Jb91/OCcKp40eBcBDIl6zYIQCF6kGlIEfmSFCy+Dupfe792wKy9mt/29sAWOH34zkCNN2pc9KecIP
-	KkUa25RLLfUx4aK5WPf3HM+GjcKH5gOc7D/1B6/+GUClfDUuDxkX8WtEIMdo0NCYC04lNw7rmT3UI
-	3UigY0BTtIhac6+totfhzuPHRU+Y1SdJ2K/5LJwuqKF+bkYXPbnlArCbaFt9UU6QgGsW4mRcRQiri
-	Py4HA8sQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=hspZqKnDsW+0SMjzjTTSl903U3dGoPMdHv6ZvoqxDJI=; b=krLOkCb1meF27eLJsQfp6KMMFh
+	RFHrFAD0rsDMDihkp6rAI5EZzBgA6UuqXwVE8YbiVY6/SZegCSadXVS7bGmU+8L00BjD48coN8KBq
+	8jzgroVdgp4NADtpeQ/FRvbbl0wj58HklDYeQPPmxoiEuZrbGmcVQGjE72MHjhCODMDrUrVHPKGvc
+	4++BTNfKxq1cHWl/KK6p1qnRnvrr+pgm+bjAZBj/Wr953WrBs3cUNDv0IeDDVpZsuEtB/WS2mcEe7
+	hSsX1XJpHGdbKAm2P7I4yUKwjDl60DViXZioSP9WRP5AmMiOR/KVV2F4A1Up0MN8g1V6z/301fwUs
+	wcDD2sTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlXjW-00000006Whs-3v3c;
-	Fri, 21 Feb 2025 18:26:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tlXqj-00000006Xyr-2MGE;
+	Fri, 21 Feb 2025 18:34:09 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlXUR-00000006Tn0-0uir;
-	Fri, 21 Feb 2025 18:11:07 +0000
+	id 1tlXoF-00000006XV6-3N9V;
+	Fri, 21 Feb 2025 18:31:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 22321615D4;
-	Fri, 21 Feb 2025 18:11:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 217A1C4CED6;
-	Fri, 21 Feb 2025 18:11:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B19216160F;
+	Fri, 21 Feb 2025 18:31:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9F4CC4CED6;
+	Fri, 21 Feb 2025 18:31:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740161466;
-	bh=mb3+FQLiAdF0GxPdTxxNZ1nsfmB1mwgJcruotyetN9Y=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=CUO5XUpE5/sksVVDBuF3JnxmN+bHo+c1O9ILuMJqjeQdO+1d4uH9jXDth3xbNBetl
-	 b9lCeEagUllp9vXDf12sYZJscUOgiOjcu57Es5G3iiVC8zOpU7vLE/MyHdotn1oJEA
-	 VPiOP12WJaT2QMAXEL/G9HIN+dllsF+42fpaZZTSuTdqBkXE/i8l7lFuLgpCXjTPYA
-	 u2/TtfZuka8QjTNTQqME60gh7MZErwn2Gbis8sy2tusEo2rDNqEMHSrlYZycoxpgLM
-	 qBjp06wjA6Jk/WF5wqsV/5fntE6+n/eM/SsyiFpdu13hL8xYkpSueAGhdYn3Kt5w0W
-	 pwOjHKW9HN2XQ==
-Date: Fri, 21 Feb 2025 12:11:04 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1740162694;
+	bh=w9dzlHwE4zOZSXrrOMFXhcyCGCwY0q2gs3vSEVl5ROo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=TSsUI0O/LPq4tUi+VtJdBejS0VyBbnZ9CEQNTq6bY3jWmDeMZfurbKC+P/JikOtij
+	 VvFnMYIIAlWnK42mwCiGL8Fr36g/om3oZRKfQ+X8Ze0QKjeykT31YPfp+XgAFjmzmL
+	 PYcjuUSFIt8oVFLrci4VItDo0qKSxr5YDZJ5zw11zKtY4muX2F8VxrChohhPPqm5rX
+	 +7hRYvXXSbUUEfo+cY07eMcnrMPTK1+vVgZy3jNk4z8HeRoMKkanA9k6ge3pj+YIpD
+	 Ba6EU1qw4JLJ9EXASUOk5rpXPSWnRm+wCZfc//WkJnFrHSZvWQkc1O3/lOMr1/5Z0K
+	 GHTSL2mAKWmKQ==
+Date: Fri, 21 Feb 2025 12:31:31 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Hui Ma =?utf-8?B?KOmprOaFpyk=?= <Hui.Ma@airoha.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <Ryder.Lee@mediatek.com>,
+	Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Frank Li <Frank.li@nxp.com>, upstream <upstream@airoha.com>
+Subject: Re: =?utf-8?B?5Zue5aSNOiBbUEFUQ0ggdjIgMi8y?= =?utf-8?Q?=5D_PCI?=
+ =?utf-8?Q?=3A?= mediatek-gen3: Configure PBUS_CSR registers for EN7581 SoC
+Message-ID: <20250221183131.GA353053@bhelgaas>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Simon Sun <simon.sun@yunjingtech.com>, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, Macpaul Lin <macpaul@gmail.com>, 
- Conor Dooley <conor+dt@kernel.org>, Bear Wang <bear.wang@mediatek.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Yow-Shin Liou <yow-shin.liou@mediatek.com>, 
- Fabien Parent <fparent@baylibre.com>, 
- Chris-qj chen <chris-qj.chen@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Pablo Sun <pablo.sun@mediatek.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20250221144941.2844333-1-macpaul.lin@mediatek.com>
-References: <20250221144941.2844333-1-macpaul.lin@mediatek.com>
-Message-Id: <174015998416.3469778.7696460950092748736.robh@kernel.org>
-Subject: Re: [PATCH v5] arm64: dts: mediatek: mt8395-genio-1200-evk: add
- support for TCPC port
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <SG2PR03MB6341ACD4DADDB280A8ACAA29FFC72@SG2PR03MB6341.apcprd03.prod.outlook.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,82 +82,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 21 Feb 2025 22:49:41 +0800, Macpaul Lin wrote:
-> From: Fabien Parent <fparent@baylibre.com>
+On Fri, Feb 21, 2025 at 09:30:40AM +0000, Hui Ma (马慧) wrote:
+> > On Thu, Feb 20, 2025 at 08:54:06PM +0100, Lorenzo Bianconi wrote:
+> > > On Feb 20, Bjorn Helgaas wrote:
+> > > > On Sun, Feb 02, 2025 at 08:34:24PM +0100, Lorenzo Bianconi wrote:
+> > > > > Configure PBus base address and address mask to allow the hw to 
+> > > > > detect if a given address is on PCIE0, PCIE1 or PCIE2.
+> > 
+> > > > > +#define PCIE_EN7581_PBUS_ADDR(_n)	(0x00 + ((_n) << 3))
+> > > > > +#define PCIE_EN7581_PBUS_ADDR_MASK(_n)	(0x04 + ((_n) << 3))
+> > > > > +#define PCIE_EN7581_PBUS_BASE_ADDR(_n)	\
+> > > > > +	((_n) == 2 ? 0x28000000 :	\
+> > > > > +	 (_n) == 1 ? 0x24000000 : 0x20000000)
+> > > > 
+> > > > Are these addresses something that should be expressed in devicetree?
+> > > 
+> > > Do you have any example/pointer for it?
+> > > 
+> > > > It seems unusual to encode addresses directly in a driver.
+> > > 
+> > > AFAIK they are fixed for EN7581 SoC.
+> > 
+> > So this is used to detect if a given address is on PCIE0, PCIE1 or
+> > PCIE2.  What does that mean?  There are no other mentions of PCIE0
+> > etc in the driver, but maybe they match up to "pcie0/1/2" in
+> > arch/arm64/boot/dts/mediatek/mt7988a.dtsi?
+> > 
+> > It looks like you use PCIE_EN7581_PBUS_ADDR(slot), where "slot"
+> > came from of_get_pci_domain_nr(), which suggests that these might
+> > be three separate Root Ports?
 > 
-> Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
-> configuration for TCPC Port, USB-C connector, MUX IT5205 and related
-> settings.
+> >I was using pci_domain to detect the specific PCIe controller
+> >(something similar to what is done here [0]) but I agree with
+> >Frank, it does not seem completely correct.
 > 
-> Configure dual role switch capability, set up PD (Power Delivery) profiles,
-> and establish endpoints for SS (SuperSpeed) and HS (HighSpeed) USB.
+> > [0] https://github.com/torvalds/linux/blob/master/drivers/pci/controller/pcie-mediatek.c#L1048
 > 
-> Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
-> to "otg" for OTG (On-The-Go) mode operation.
+> > Are we talking about an MMIO address that an endpoint driver uses
+> > for readw() etc, and this code configures the hardware apertures
+> > through the host bridge?  Seems like that would be related to the
+> > "ranges" properties in DT.
 > 
-> Add ITE IT5205 (TYPEC MUX) under I2C2 bus and configure its properties;
-> also add references and configurations to 'typec-mux' node.
+> >I guess so, but I do not have any documentation about pbus-csr
+> >(adding Hui in the loop).
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
-> Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../dts/mediatek/mt8395-genio-1200-evk.dts    | 100 ++++++++++++++++++
->  1 file changed, 100 insertions(+)
+> >As pointed out by Frank, do you agree to add these info in the dts?
+> >Something like:
 > 
-> Changes for v2:
->  - Drop the no need '1/2' DT Schema update patch in the 1st version.
->  - Fix indent for 'ports' node, it should under the 'connector' node.
->  - Correct the index for 'port@0' and 'port@1' node.
+> >pcie0: pcie@1fc00000 {
+> >	....
+> >	mediatek,pbus-csr = <&pbus_csr 0x0 0x20000000 0x4 0xfc000000>;
+> >	....
+> >};
+> >
+> >pcie1: pcie@1fc20000 {
+> >	....
+> >	mediatek,pbus-csr = <&pbus_csr 0x8 0x24000000 0xc 0xfc000000>;
+> >	....
+> >};
 > 
-> Changes for v3:
->  - Correct the order between new added nodes.
+> >@Hui: can you please provide a better explanation about pbus-csr usage?
+>
+> 	Pbus-csr (base and mask) is used to determine the address
+> 	range can be access by PCIe bus.
 > 
-> Changes for v4:
->  - Reorder for property 'op-sink-microwatt'.
->  - Fix indentation for 'source-pdos' and 'sink-pdos' nodes.
->  - Correct node 'pin-cmd-dat' with 'pins-vbus'.
->  - Add both Highspeed and Superspeed ports to ssusb0 port.
->  - Set 'role-switch-default-mode' = "peripheral" for ssusb0 port.
->  - Rename endpoint of USB data port to 'mtu3_hs0_role_sw' and
->    'mtu3_ss0_role_sw'.
->  - Drop it5205fn phandle for node typec-mux@48.
->  - Reorder properties of typec-mux@48
->  - Add "Reviewed-by:" tag. Thanks!
-> 
-> Changes for v5:
->  - Squash two patches into one patch and refine commit messages:
->    suggested by reviewer.
->  - Drop 'role-switch-default-mode'
->  - Add altmodes settings
->  - Drop 'Reviewed-by:' tag since the two sub patches has been combined
->    into a new patch.
-> 
+> 1FBE3400 PCIE0_MEM_BASE 32 PCIE0 base address
+> 1FBE3404 PCIE0_MEM_MASK 32 PCIE0 base address mask
+> 1FBE3408 PCIE1_MEM_BASE 32 PCIE1 base address
+> 1FBE340C PCIE1_MEM_MASK 32 PCIE1 base address mask
+> 1FBE3410 PCIE2_MEM_BASE 32 PCIE2 base address
+> 1FBE3414 PCIE2_MEM_MASK 32 PCIE2 base address mask
 
+"Can be accessed by PCIe bus" sounds like DMA.  Is that what you mean?
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+I doubt it, because if you have multiple host bridges, I assume they
+would all be able to handle DMA to all of system memory.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+It would make more sense if this is some sort of description of host
+bridge apertures, e.g., something like this to allow CPU MMIO accesses
+to reach the first 2GB of PCI memory space below any of the pcie0,
+pcie1, pcie2 host bridges:
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+  pcie0 0000:00: root bus resource [mem 0x84000000000-0x8407fffffff] (bus address [0x00000000-0x7fffffff])
+  pcie1 0001:00: root bus resource [mem 0x84100000000-0x8417fffffff] (bus address [0x00000000-0x7fffffff])
+  pcie2 0002:00: root bus resource [mem 0x84200000000-0x8427fffffff] (bus address [0x00000000-0x7fffffff])
 
-  pip3 install dtschema --upgrade
+But I think this would be described via 'ranges' properties.  And I
+think it would make sense if the driver had to learn this address map
+from devicetree and program it into the hardware, so maybe that's
+what Pbus-csr is for?  Total speculation on my part.
 
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250221144941.2844333-1-macpaul.lin@mediatek.com:
-
-arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dtb: usb@11201000: 'ports' does not match any of the regexes: '^usb@[0-9a-f]+$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtu3.yaml#
-
-
-
-
-
+Bjorn
 
