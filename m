@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7AE3C021AA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 08:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DB00C021AA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 08:52:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Lx2PnIoFdh3u3WgeJdYWbjSdw/lfRSDSG42S8SrFNo=; b=EvtCLWv4f8Z4T5lAetBN4yH6d4
-	sk5/Z0Ma9uHtAIbqSLCuPR+WS7+YPCOO/mY66HIaPydyB/2ZhrhYDZbi6Vh+7FOFR7UpGDQfdZhlO
-	cc3VY4RtnotF3ik33n4bH4vJMSi+m2uQx8P1ADk9mclWzCDT2r7uFsvc6Y0IbLOZDh83NsRh6EXuT
-	IiY3b3icpPavT0PbkX9EI5e2eW22Uz10ACmFCTmTkwdzUdipOiVNps7xrqxrPvIPVGUQZXTZya4ef
-	ZiyfGRwfu6/xdZI4T6JBLLFNGKwH3RBGotJnSO63ofEaiT7g3Zj/tOfLhMcCa0UDsqujQCIrETswa
-	T/qgwsJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TK5vzJweSgW33JTnaPCG/BD4PbLJ7pkFD4LK297UYbM=; b=L68Y7t6RwRajNIIULXlR5YqTCM
+	NN3eBlSb5/qHxooWX//XhD8UL0C1p7oCFu/bBtjLo9pSRPJDno0HVeKPl9yrrnH2t43+nVv4blbcB
+	/8rHZuf659VW4UZktcpQJKJc7DfbmwYS5aiURFWMDZcKpgsgPN4VrImAAzG9mIn2lmqHRuArdjWBM
+	VUzcVss7CHyorZhMJ2AWfHFU7ePpglQeDvXYZw37ewAlyzSzdtpcp8kAcQWRdaS/2DjKYcRtLEIiF
+	yTI3+KjEDwLNKJokMALviEcYcMWpZJW/WOeNm7F6nAtJHZSXiuAx4Ye8KwrDLgoMHp/hFiWE7tZj5
+	+2/98lRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlO3A-00000004d59-3fyE;
-	Fri, 21 Feb 2025 08:06:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tlOlp-00000004n3y-37bg;
+	Fri, 21 Feb 2025 08:52:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlNyt-00000004cHv-2rh3;
-	Fri, 21 Feb 2025 08:01:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 19C8C5C5670;
-	Fri, 21 Feb 2025 08:01:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AA1EC4CED6;
-	Fri, 21 Feb 2025 08:01:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740124914;
-	bh=ydI126qNyrfXk69jbLpcK3VubbDbZV/HSA4iho0WmC0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BK1RMUgLpLBNgBGrekqfP34atBUvIBgFKkphxlHOA0GNrzOumWvuJ9OeH9nQM1E8D
-	 ecmYW3BeCRqxx1mCNiZ6gyVsFev55o/zLPrb3TINNL6sCQs/ntmkthqgTjdKxefjrv
-	 f+W4M3Hm/IeIb36H6jnTMoozKhcyy2s2+RbOzCfc83sRFG4JTWDYycQ3017zpsQHDb
-	 h6YUGorpsB62WwuBle9rJXPfucW0x6g82U1S5Ftsot4Yry0YX9g4VVYo8Kq7DijuS0
-	 C+mPX4usw8WBkoVGXTaK6kMD8Een3DLB4+mR4MABh0aNf5KtMbMDw4QX3IQXjf5nrt
-	 f/YTtIB2eTAGw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 21 Feb 2025 09:01:16 +0100
-Subject: [PATCH v3 2/2] arm64: dts: airoha: en7581: Fix clock-controller
- address
+	id 1tlOk0-00000004mTl-02Y2;
+	Fri, 21 Feb 2025 08:50:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740127834;
+	bh=kAmfHxvkLgWR7k83UqfnKWY4sjAmD73vzTZvLCcH7uk=;
+	h=From:Date:Subject:To:Cc:From;
+	b=DaeFTekZoGfEbfMsEmBjPUJb9hcbPpHtowUG65h3wbXAiKimBIoQO03IT7OhsNFG2
+	 pJzxCvCbnhl4dy7/EGUi9KYz4Y0UrQMMkdeobuyc4UUEFE0iS1Yv4/fw3EYr2BOrOp
+	 tTlfdkGcaSvhJzj7AO8IS6B+9lphoU1spy2jfjha4sMwTWOPLLxZWZrXKiXYuc2iqR
+	 W/JRn8uMRdyMAMINLdBA9CAO9tpaSjezK0T9hYXlybfBtgdZpG3evA91oxIoAhyCEH
+	 WO7CcsaaX3s9FKn1gI/fKNHtjtRQwmtd5pIOBk3egeZbAnf9YOSKIJBbJQVjvINAiu
+	 lyBrcMTBNaVUg==
+Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 95D6817E09C0;
+	Fri, 21 Feb 2025 09:50:33 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Fri, 21 Feb 2025 09:49:52 +0100
+Subject: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Fix duplicated
+ regulator name
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250221-en7581-dts-spi-pinctrl-v3-2-4719e2d01555@kernel.org>
-References: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
-In-Reply-To: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+Message-Id: <20250221-fix-mtk8390-genio-common-dup-regulator-name-v1-1-92f7b9f7a414@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAC8+uGcC/zWNQQ6CMBREr0L+2p/UqkG4imFRYMAfbYttMSSEu
+ 9tAXL5J5r2VIoIgUl2sFPCVKN5lOJ8K6p7GjWDpM5NW+qa0VjzIwja97pdK8QgnnjtvrXfczxM
+ HjPPbJB/YGQs2qr0OKFEqVJSNU0C+77VHc3DAZ87RdIzUmohdKKkuHJbE/zA12/YDjFHiva4AA
+ AA=
+X-Change-ID: 20250220-fix-mtk8390-genio-common-dup-regulator-name-a0b4fe7e70e9
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
- Christian Marangi <ansuelsmth@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740127833; l=1267;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=kAmfHxvkLgWR7k83UqfnKWY4sjAmD73vzTZvLCcH7uk=;
+ b=wzn19VohCl90bGUdg4UQ1oIyYlM5PwUBAb5LDiLwlAbpmH9TnJvIQOtiV3Ton8dFgAR/58mNV
+ 253Axf747UuCgLwhypEmgukFtH9uxklEZOBVvTHsv/7lf08qVan9/6R
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_000155_769447_53BA34FA 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250221_005036_217876_3EFD78CB 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +90,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following warning for clock-controller node:
+usb_p2_vbus regulator has the same regulator-name property value as
+sdio_fixed_3v3, so change it to avoid this.
 
-DTC [C] arch/arm64/boot/dts/airoha/en7581-evb.dtb
-arch/arm64/boot/dts/airoha/en7581.dtsi:176.37-181.5: Warning (simple_bus_reg): /soc/clock-controller@1fa20000: simple-bus unit address format error, expected "1fb00000"
-
-Fixes: 7693017580e9 ("arm64: dts: airoha: en7581: Add Clock Controller node")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Fixes: a4fd1943bf9b ("arm64: dts: mediatek: mt8390-genio-700-evk: update regulator names")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/airoha/en7581.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index 9a419796594d3a99e1187dcca622469bf5a888c3..26b13694091735da7af977e42f8f546d7d5cb078 100644
---- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-+++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -173,7 +173,7 @@ spi_nand: nand@0 {
- 			};
- 		};
- 
--		scuclk: clock-controller@1fa20000 {
-+		scuclk: clock-controller@1fb00000 {
- 			compatible = "airoha,en7581-scu";
- 			reg = <0x0 0x1fb00000 0x0 0x970>;
- 			#clock-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index a37cf102a6e928440cc88e7e8fe0225fc28ec962..e828864433a6f4195944ff67bb7bb4808d1fd262 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -213,7 +213,7 @@ usb_p1_vbus: regulator-8 {
+ 	/* used by ssusb2 */
+ 	usb_p2_vbus: regulator-9 {
+ 		compatible = "regulator-fixed";
+-		regulator-name = "wifi_3v3";
++		regulator-name = "vbus_p2";
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+ 		enable-active-high;
 
+---
+base-commit: 964b0ceed00032fa0fa841fd61e5f315880a2d36
+change-id: 20250220-fix-mtk8390-genio-common-dup-regulator-name-a0b4fe7e70e9
+
+Best regards,
 -- 
-2.48.1
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
