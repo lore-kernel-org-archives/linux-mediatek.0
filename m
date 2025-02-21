@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F6CC021B3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 15:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90093C021B3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2025 16:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=evPi6dQiCO3IoUOpjRp0eIR+zPz18r17WDupYoyNt7I=; b=pDhKpJEClMmB5cUj1OujpLR35r
-	khLBx948vMnXWDGEd37RLX84DpOI/V4/MwtF458A2WKAdI/1WEERBxX0Rpgj4dJ6LlcinLtBaAlra
-	TmCTvBSYn/9KKNq2W+fCLNmVB2UfTfHBYiRxHt81K+po522wIga7ohw/Gs11nhr6TWjUwTClNY3pr
-	9+xkOOAgJ5R5hQa3QQsZXzl2u4zxDEmwtEzyiDtOQQQHopiu9MhPpdBueTAvyMz314JXXy/wPloF2
-	enIjvtMtGMjxSFxj4hd2U2v009XrT0KSD5z80lQAw+8sFLjxO3Tnle2igw+N6sF0fCzU7Dk+HFmzm
-	qtQXEZeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1cFf3ZwDxIYx/5yEXExCL4qhSuwo33een15heIA/zVk=; b=SjOLX0v7mdUAc4/w9+wRPwQedT
+	k7gzNo1uHqxTz4EYiA5IVYXe73sZksKRzsul8xNvsyVWVAmzLp0JHb2yJMl0LbtfzaymS0wjBKru3
+	uCqSG7JTjTRSN8ePyYA0WYiKFduA8I7UpkpidFVvlGqAt40y9Xjo50aUQAD9QRAEZW9zTSA4CrUAL
+	INDeRFBc1xfalY229uaWREc3pD9JopiXItj9ZNGSA7+QdNMFUIjzB4vhtjI9u1HMR0q2Cap2kgTE4
+	2ZDEpGFLNRDm0Z4RI7neq/c4YoN5j86fobbLQWzYPXqtN9WDthVC2xVlXCFkkMXoC/x9GISpfuGeI
+	Ze3evsSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlVMb-000000063N3-3qE0;
-	Fri, 21 Feb 2025 15:54:53 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tlWMT-00000006HY1-24ov;
+	Fri, 21 Feb 2025 16:58:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlVL8-00000006319-2sSA;
-	Fri, 21 Feb 2025 15:53:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740153200;
-	bh=DRRk8ySHM7d80jUzaigsI9T4dZ5O56rDrKF/hwqGjjE=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=LGll4wxMdtC9VuU1cqAJl3FPPep48bfwtMgKC4WgcM/G8HMuayRO29U0ZUSgfakeq
-	 tBq1E4kJN6BHNSfXtNb6p1qo7xGOi0P5Xm02uplDWaE7YJtYoKI4NJtea35tD54mcE
-	 EQh2uwfFMkJzmfvwlfUKsPkAlf5epvS3tFqakLDOCamE6Sdlq9rP37BFbCfKYyrvp/
-	 fzQyeBkIvQ7724xVu1CEFsY6H0qyIzQ/RksSUeN9WLwDf5UaDOhynR0AnCpviJISut
-	 uHgqKDSgMMJGaYK64TAfB6Y0mYvYLizMcimTLF8DiQzRgNjr/l3w9GOTH644nscv57
-	 R3kv+iVFRl6sg==
-Received: from [IPv6:2606:6d00:11:e976::5ac] (unknown [IPv6:2606:6d00:11:e976::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1DE1217E0199;
-	Fri, 21 Feb 2025 16:53:19 +0100 (CET)
-Message-ID: <cd8f43a310f771f7db7ae1ab7fb2f8b5d554c2da.camel@collabora.com>
-Subject: Re: [PATCH 0/2] Add support for MT8196 video encoder
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
-	angelogioacchino.delregno@collabora.com, Yunfei Dong
- <yunfei.dong@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Longfei Wang <longfei.wang@mediatek.com>
-Date: Fri, 21 Feb 2025 10:53:17 -0500
-In-Reply-To: <20250221031004.9050-1-irui.wang@mediatek.com>
-References: <20250221031004.9050-1-irui.wang@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
- oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
- zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
- TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
- 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
- 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
- cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
- tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
- bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
- qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
- BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
- tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
- zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
- 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
- s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
- An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
- ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
- AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
- CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
- 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
- BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
- +E7ItOqZEHAs+xabBgknYZIFPU=
-Organization: Collabora Canada
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1tlWL0-00000006HLu-2rZj;
+	Fri, 21 Feb 2025 16:57:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A65C76150C;
+	Fri, 21 Feb 2025 16:57:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB91BC4CEE2;
+	Fri, 21 Feb 2025 16:57:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740157037;
+	bh=Zermek77njNBefiJAHShs4Pi/BmVFoEIkevP8SsNO7c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KjnfJHw4iEGxUc/9qW1y7MXbhibKG8rh7AogVr9UljZJegm57+LQQHRNYxKckJ7CF
+	 FWayh52wKAV7sxOYBy2yRP1kIBucfaUT//Oz6Smay5wM4rX3aDy1XWtHwWW7TEQmw3
+	 SptwbeiWbL/fTdM1HOAih5VwfFervTEScmXCZsx8pEdHzYHE8WrTynaqiBwG4OZ6Ke
+	 vDGpq5FRy5051igtlr0CdoKc2Eih2iIJKMOuJP390ZByyLDQ2pj0Fwqyp9YV6FQXND
+	 O04FwzPPaYC+BJYhF3zEGDLtqIbpBXVRvhPU3jEGlY5r9nvEPOEH4m0Pu+KdL2FdgE
+	 +dM9ARU52UE5A==
+Date: Fri, 21 Feb 2025 16:57:12 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Friday Yang <friday.yang@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Garmin Chang <garmin.chang@mediatek.com>,
+	Yong Wu <yong.wu@mediatek.com>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 1/2] dt-bindings: clock: mediatek: Add SMI LARBs reset
+ for MT8188
+Message-ID: <20250221-cavalier-property-7e7eceba7bc6@spud>
+References: <20250221075058.14180-1-friday.yang@mediatek.com>
+ <20250221075058.14180-2-friday.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_075322_869208_6171AB1B 
-X-CRM114-Status: GOOD (  16.59  )
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="+dgGrOCgl0PEyxI6"
+Content-Disposition: inline
+In-Reply-To: <20250221075058.14180-2-friday.yang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,44 +80,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-Le vendredi 21 février 2025 à 11:10 +0800, Irui Wang a écrit :
-> This patch series adds support for MT8196 video encoder. The changes
-> include introducing a new encoder driver interface and add support
-> for the
-> new encoder driver encoding process.
+--+dgGrOCgl0PEyxI6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-thanks for your contribution. In general, when adding new HW support,
-we would like to see in your cover letter your v4l2-compliance report. 
+On Fri, Feb 21, 2025 at 03:50:53PM +0800, Friday Yang wrote:
+> On the MediaTek platform, some SMI LARBs are directly connected to
+> the SMI Common, while others are connected to the SMI Sub-Common,
+> which in turn is connected to the SMI Common. The hardware block
+> diagram can be described as follows.
+>=20
+>              SMI-Common(Smart Multimedia Interface Common)
+>                  |
+>          +----------------+------------------+
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>        larb0       SMI-Sub-Common0     SMI-Sub-Common1
+>                    |      |     |      |             |
+>                   larb1  larb2 larb3  larb7       larb9
+>=20
+> For previous discussion on the direction of the code modifications,
+> please refer to:
+> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=3D
+> wXpobDWU1CnvkA@mail.gmail.com/
+> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8ey
+> hP+KJ5Fasm2rFg@mail.gmail.com/
+>=20
+> On the MediaTek MT8188 SoC platform, we encountered power-off failures
+> and SMI bus hang issues during camera stress tests. The issue arises
+> because bus glitches are sometimes produced when MTCMOS powers on or
+> off. While this is fairly normal, the software must handle these
+> glitches to avoid mistaking them for transaction signals. What's
+> more, this issue emerged only after the initial upstreaming of this
+> binding. Without these patches, the SMI becomes unstable during camera
+> stress tests.
+>=20
+> The software solutions can be summarized as follows:
+>=20
+> 1. Use CLAMP to disable the SMI sub-common port after turning off the
+>    LARB CG and before turning off the LARB MTCMOS.
+> 2. Use CLAMP to disable/enable the SMI sub-common port.
+> 3. Implement an AXI reset for SMI LARBs.
+>=20
+> This patch add '#reset-cells' for the clock controller located in image,
+> camera and IPE subsystems.
+>=20
+> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
 
-Since this is a firmware based encoder, we also want to know how the
-process with uploading your firmware in linux-firmware is going. We can
-do reviews ahead of this of course, but merging depends on having
-firmware upstream. We did some favours in the past and it worked for
-many SoC, but things seems to have changed lately with the MT8188
-firmware situation. Hope you understand this concern.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-regards,
-Nicolas
+--+dgGrOCgl0PEyxI6
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> 
-> Irui Wang (2):
->   media: mediatek: encoder: Add a new encoder driver interface
->   media: mediatek: encoder: Add support for common driver encode
-> process
-> 
->  .../platform/mediatek/vcodec/encoder/Makefile |   1 +
->  .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +
->  .../vcodec/encoder/mtk_vcodec_enc_drv.h       |   3 +
->  .../vcodec/encoder/venc/venc_common_if.c      | 704
-> ++++++++++++++++++
->  .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
->  .../mediatek/vcodec/encoder/venc_drv_if.h     |   3 +
->  .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
->  .../mediatek/vcodec/encoder/venc_vpu_if.c     |  37 +-
->  8 files changed, 764 insertions(+), 15 deletions(-)
->  create mode 100644
-> drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
-> 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ7iwaAAKCRB4tDGHoIJi
+0uzgAP4v0yoFN7BfxFWWiitccUXoshHXQp4HLPtHW7d1YoN4TAD+IQ2jThGJf4Pc
+L5rsRAnTiFrghIbu/VG+WOs0atI7nAI=
+=soR+
+-----END PGP SIGNATURE-----
+
+--+dgGrOCgl0PEyxI6--
 
