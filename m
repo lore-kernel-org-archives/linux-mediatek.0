@@ -4,77 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F40BAC021B6
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2025 09:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BC0FC021B2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2025 09:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HPsNNs9KKcxnwX5yrPHiFvRJBeS87FY0TR1JfHBnylY=; b=v1xkJWMmpwz0wOjCqZo7P445kN
-	yQnEwX4uyGDpcXjCenZQj6XFgDxXBdvi62OM6VW8vBFTSIQ9Pl6sOomnTc7p/GkqFHgadF0D3uO8c
-	foZhogNj+cJScjWRYSYVYU8SRbA87gUJse6uXih2/giOPCGeb4PE5MCPa6N4S6xq8lEb1J6yIUl87
-	1DHdA+3nN5bRodJasqrJugN3QUWpD/bWoZLnobgmc0h/d4mCfu+luZHOVuWy8UjKojKOWQ+KIpkKN
-	4UQpCsIbikSAoCT4YA0AU32RoyQAqRpmo66zq5r/cUEYCqeM1yw8O8UgpQdDlA5gXOfu9tcoWkQ3y
-	LPpRMUAw==;
+	bh=y7IbiKZDd7lNcNGugMRpMK/HiDlbn0S7hiYRdNAZLgo=; b=A6w8NBBNJODXnLifF6vXgdU97v
+	53pAPgKM78H8rlUiDGVnaKTIuKZ0nPbhovFOsdSzpn+ZesbEqNO7VEd3Pd51z/fKyyafc1euOBCFF
+	ElqGra8a0dePz6al6ZSRqgomFz4c/XO9w/o6l5Z7gCPvybXp6TAH71+2h9zEqBB9rRlPfUkDGKlo1
+	W+6xG1FwOQqDcWm+iWlvx1qhStpd9JtvPge1sIu8qUWmMksSCTH6ijXruiqZyjcFGZU0W23U7zTJ+
+	z7LXXgEoozl26EBCe8gxewoqiHrujWpbwSSPdy3fUTBSkqiCA3PPivgnajLnpQWcKDznYj3p/X6LJ
+	r6u29gNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tllWN-00000007hQA-324I;
-	Sat, 22 Feb 2025 09:10:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tlm7c-00000007lZ0-285p;
+	Sat, 22 Feb 2025 09:48:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tllTs-00000007h5a-0mZ7;
-	Sat, 22 Feb 2025 09:07:29 +0000
-X-UUID: 6d7fb4c0f0fc11ef83f2a1c9db70dae0-20250222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HPsNNs9KKcxnwX5yrPHiFvRJBeS87FY0TR1JfHBnylY=;
-	b=KArh123CRiWU2Mjd2AR0jC0eu0eNLqeTFFiYEdW1SfkR3rKKIx0zA2F3t0l5+1XMqbSN2pgaruO9uV6EDwOb4oRIudwvg5Mkl0pG0kITeV6akQuvNmZfCIUAsFiXV8wS/6vLHPWkdzdGSdpT4a7YmQl0nqLD6fho99jlljpE03g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:0e458cae-0340-47ec-9263-5ab0b55745e8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:60aa074,CLOUDID:1ef070b5-a2a1-4ef3-9ef9-e116773da0a7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 6d7fb4c0f0fc11ef83f2a1c9db70dae0-20250222
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1341659067; Sat, 22 Feb 2025 02:07:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Sat, 22 Feb 2025 17:07:20 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Sat, 22 Feb 2025 17:07:19 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 2/2] phy: mediatek: xsphy: add support to set disconnect threshold
-Date: Sat, 22 Feb 2025 17:07:10 +0800
-Message-ID: <20250222090710.10909-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250222090710.10909-1-chunfeng.yun@mediatek.com>
-References: <20250222090710.10909-1-chunfeng.yun@mediatek.com>
+	id 1tlm4i-00000007lCL-1aO2;
+	Sat, 22 Feb 2025 09:45:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 678AA611AB;
+	Sat, 22 Feb 2025 09:45:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3D91C4CEE6;
+	Sat, 22 Feb 2025 09:45:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740217531;
+	bh=+yD530lOGCPFmwWjgz2XLbqeuEp0ZxyaxcDKhfIMZNA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SQH7rc+Q2YHr28OXGOnaugKDvk7349T3YGrvcH1Z+KVcbFT/IQlhGvGd5pn4io3sT
+	 gFjCciWD9klu2NvJBVU346KNaZpHKsP/oOfY1PozAKQB302scObTcKi2P/oPX1yy/C
+	 7e7q1twgNeUnx0mQqZkYpLzWF2amBgMZRhxIjDWU27749dtNTHus9hHY5xaMgokybm
+	 YEjsQ87hA6IOAg2gTJpkGAVkdRLAikxYHg7lFmsRzfZrtgZSmMFIgcuZCeL1jrykMJ
+	 rejtbai3OSWildxZpQpe+GOXes4kO91A9emkdGk5cG08A/c7X33lJ9oZT2h5izV0E4
+	 YiCNGbzUtGAyQ==
+Date: Sat, 22 Feb 2025 10:45:28 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Friday Yang <friday.yang@mediatek.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 0/2] Add SMI reset and clamp for MediaTek MT8188 SoC
+Message-ID: <20250222-miniature-coral-starling-eda1bc@krzk-bin>
+References: <20250221074846.14105-1-friday.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250222_010728_263356_420C0CB4 
-X-CRM114-Status: GOOD (  10.55  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250221074846.14105-1-friday.yang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,62 +70,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a property to tune usb2 phy's disconnect threshold.
+On Fri, Feb 21, 2025 at 03:48:30PM +0800, Friday Yang wrote:
+> Based on tag: next-20250220, linux-next/master
+> 
+> On the MediaTek MT8188 SoC platform, we encountered power-off failures
+> and SMI bus hang issues during camera stress tests. The issue arises
+> because bus glitches are sometimes produced when MTCMOS powers on or
+> off. While this is fairly normal, the software must handle these
+> glitches to avoid mistaking them for transaction signals. What's
+> more, this issue emerged only after the initial upstreaming of SMI
+> driver.
+> 
+> The software solutions can be summarized as follows:
+> 
+> 1. Use CLAMP to disable the SMI sub-common port after turning off the
+>    LARB CG and before turning off the LARB MTCMOS.
+> 2. Use CLAMP to disable/enable the SMI sub-common port.
+> 3. Implement an AXI reset for SMI LARBs.
+> 
+> Changes v4:
+> - Use 'devm_reset_control_get_optional_exclusive' instead of
+>   'devm_reset_control_get'.
+> 
+> v3:
+> https://lore.kernel.org/lkml/20250121064934.13482-2-
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: change property name
----
- drivers/phy/mediatek/phy-mtk-xsphy.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+That's not a valid link. Fix your email client.
 
-diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
-index 7c248f5cfca5..cac0f008bcb3 100644
---- a/drivers/phy/mediatek/phy-mtk-xsphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
-@@ -59,6 +59,7 @@
- #define XSP_USBPHYACR6		((SSUSB_SIFSLV_U2PHY_COM) + 0x018)
- #define P2A6_RG_BC11_SW_EN	BIT(23)
- #define P2A6_RG_OTG_VBUSCMP_EN	BIT(20)
-+#define PA6_RG_U2_DISCTH	GENMASK(7, 4)
- 
- #define XSP_U2PHYDTM1		((SSUSB_SIFSLV_U2PHY_COM) + 0x06C)
- #define P2D_FORCE_IDDIG		BIT(9)
-@@ -95,6 +96,7 @@ struct xsphy_instance {
- 	int eye_src;
- 	int eye_vrt;
- 	int eye_term;
-+	int discth;
- };
- 
- struct mtk_xsphy {
-@@ -244,9 +246,12 @@ static void phy_parse_property(struct mtk_xsphy *xsphy,
- 					 &inst->eye_vrt);
- 		device_property_read_u32(dev, "mediatek,eye-term",
- 					 &inst->eye_term);
--		dev_dbg(dev, "intr:%d, src:%d, vrt:%d, term:%d\n",
-+		device_property_read_u32(dev, "mediatek,disconnect-threshold",
-+					 &inst->discth);
-+		dev_dbg(dev, "intr:%d, src:%d, vrt:%d, term:%d, discth:%d\n",
- 			inst->efuse_intr, inst->eye_src,
--			inst->eye_vrt, inst->eye_term);
-+			inst->eye_vrt, inst->eye_term,
-+			inst->discth);
- 		break;
- 	case PHY_TYPE_USB3:
- 		device_property_read_u32(dev, "mediatek,efuse-intr",
-@@ -285,6 +290,9 @@ static void u2_phy_props_set(struct mtk_xsphy *xsphy,
- 	if (inst->eye_term)
- 		mtk_phy_update_field(pbase + XSP_USBPHYACR1, P2A1_RG_TERM_SEL,
- 				     inst->eye_term);
-+	if (inst->discth)
-+		mtk_phy_update_field(pbase + XSP_USBPHYACR6, PA6_RG_U2_DISCTH,
-+				     inst->discth);
- }
- 
- static void u3_phy_props_set(struct mtk_xsphy *xsphy,
--- 
-2.46.0
+Best regards,
+Krzysztof
 
 
