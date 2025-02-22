@@ -4,58 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BC0FC021B2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2025 09:48:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BE62C021B2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2025 10:45:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y7IbiKZDd7lNcNGugMRpMK/HiDlbn0S7hiYRdNAZLgo=; b=A6w8NBBNJODXnLifF6vXgdU97v
-	53pAPgKM78H8rlUiDGVnaKTIuKZ0nPbhovFOsdSzpn+ZesbEqNO7VEd3Pd51z/fKyyafc1euOBCFF
-	ElqGra8a0dePz6al6ZSRqgomFz4c/XO9w/o6l5Z7gCPvybXp6TAH71+2h9zEqBB9rRlPfUkDGKlo1
-	W+6xG1FwOQqDcWm+iWlvx1qhStpd9JtvPge1sIu8qUWmMksSCTH6ijXruiqZyjcFGZU0W23U7zTJ+
-	z7LXXgEoozl26EBCe8gxewoqiHrujWpbwSSPdy3fUTBSkqiCA3PPivgnajLnpQWcKDznYj3p/X6LJ
-	r6u29gNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tdmIHdsbzb8umbERSlAF5QUn1kxQ5VRQnjnz4IKcAf4=; b=lYyRaLsBFmnh+B
+	QBwsytGFaqYVODHalCs8K1hDCfSWngAGZYsTXX1taqQA/DeIv80gGoP4OWWSo0iXFRBHHDePpXYAQ
+	tkRqHjz3tLCcqUcbzWHQLgM6ik1yob3InjPe+N7WeYrcoz8VE0Y8Zusi3D2Hv9YiXlF76zTWg3OdY
+	kLsEKqwGMJvIfBVVLwXvidTJQZYfjMtUuBRy5Tiqk0xFEI9CeQ+gAuyuY2/VbEceoO5rpbDSXyX0d
+	R5z72FpL5mBcZXyLXzGlNRj2GjGaKpMG2WVswxxMrQeGPhrRzlvGO0x9IvC+2Q91OlM09z2ImKHoT
+	TJHf9Kt1Lr5uKFGyUyfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlm7c-00000007lZ0-285p;
-	Sat, 22 Feb 2025 09:48:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tln13-00000007qMJ-0jJn;
+	Sat, 22 Feb 2025 10:45:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlm4i-00000007lCL-1aO2;
-	Sat, 22 Feb 2025 09:45:32 +0000
+	id 1tlmzZ-00000007qBg-451v;
+	Sat, 22 Feb 2025 10:44:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 678AA611AB;
-	Sat, 22 Feb 2025 09:45:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3D91C4CEE6;
-	Sat, 22 Feb 2025 09:45:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 310F86113C;
+	Sat, 22 Feb 2025 10:44:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6982FC4CED1;
+	Sat, 22 Feb 2025 10:44:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740217531;
-	bh=+yD530lOGCPFmwWjgz2XLbqeuEp0ZxyaxcDKhfIMZNA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SQH7rc+Q2YHr28OXGOnaugKDvk7349T3YGrvcH1Z+KVcbFT/IQlhGvGd5pn4io3sT
-	 gFjCciWD9klu2NvJBVU346KNaZpHKsP/oOfY1PozAKQB302scObTcKi2P/oPX1yy/C
-	 7e7q1twgNeUnx0mQqZkYpLzWF2amBgMZRhxIjDWU27749dtNTHus9hHY5xaMgokybm
-	 YEjsQ87hA6IOAg2gTJpkGAVkdRLAikxYHg7lFmsRzfZrtgZSmMFIgcuZCeL1jrykMJ
-	 rejtbai3OSWildxZpQpe+GOXes4kO91A9emkdGk5cG08A/c7X33lJ9oZT2h5izV0E4
-	 YiCNGbzUtGAyQ==
-Date: Sat, 22 Feb 2025 10:45:28 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Friday Yang <friday.yang@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 0/2] Add SMI reset and clamp for MediaTek MT8188 SoC
-Message-ID: <20250222-miniature-coral-starling-eda1bc@krzk-bin>
-References: <20250221074846.14105-1-friday.yang@mediatek.com>
+	s=k20201202; t=1740221054;
+	bh=1EgGu4K6OScm1oy60Hd1e93/YxaKGFVdoWrvXutqVW0=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Tut8NhPHV5YQ2j2Cev3+E18p21LBX32h8+hopks7Bc4vtsyFbNqRH4xkbQMBMCJDO
+	 OYeTrgmvjXNISssHiWIxn3wS9rVvd/CTcKgMmiFzDcygh3lltunhat8ucN4l3FD2F/
+	 NDPFknDY/44+wpxk86KxMULtCFu4nGgDYCP361CpWpGTrtSyW4wBbP04fDM+VNqDk8
+	 he1Xu61wRtYpWDS07ojJIXiMYhqHa83hBRDwRG8cSO+9/jnODJGOsM0jIsu5zQFILG
+	 AQmAuEuyA8ULMNzAEWBZkPsZwtd9+g9kT3E9GF8PuvYzH7arvfN+dXYlvqZAlUjYJH
+	 zHCia7a6oIm4A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v3 0/2] PCI: mediatek-gen3: Set PBUS_CSR regs for Airoha
+ EN7581 SoC.
+Date: Sat, 22 Feb 2025 11:43:43 +0100
+Message-Id: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250221074846.14105-1-friday.yang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAF+quWcC/22NQQ6CMBBFr0Jm7ZhSrIIr72FYwDDARNOSqRIN4
+ e5WEncu30/+ewtEVuEI52wB5VmiBJ+g2GVAY+MHRukSgzXWGWtyZH9yZY4TCePUPiNSVOwrOvR
+ lSezaAtJ1Uu7ltWmvdeJR4iPoe6vM9rv+hPa/cLZo8Og6alOTqqa63Fg93/dBB6jXdf0A6iDIO
+ LkAAAA=
+X-Change-ID: 20250201-en7581-pcie-pbus-csr-f9c4f88ce5b3
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 21, 2025 at 03:48:30PM +0800, Friday Yang wrote:
-> Based on tag: next-20250220, linux-next/master
-> 
-> On the MediaTek MT8188 SoC platform, we encountered power-off failures
-> and SMI bus hang issues during camera stress tests. The issue arises
-> because bus glitches are sometimes produced when MTCMOS powers on or
-> off. While this is fairly normal, the software must handle these
-> glitches to avoid mistaking them for transaction signals. What's
-> more, this issue emerged only after the initial upstreaming of SMI
-> driver.
-> 
-> The software solutions can be summarized as follows:
-> 
-> 1. Use CLAMP to disable the SMI sub-common port after turning off the
->    LARB CG and before turning off the LARB MTCMOS.
-> 2. Use CLAMP to disable/enable the SMI sub-common port.
-> 3. Implement an AXI reset for SMI LARBs.
-> 
-> Changes v4:
-> - Use 'devm_reset_control_get_optional_exclusive' instead of
->   'devm_reset_control_get'.
-> 
-> v3:
-> https://lore.kernel.org/lkml/20250121064934.13482-2-
+Configure PBus base address and base address mask to allow the hw
+to detect if a given address is accessible on the PCIe controller.
+Introduce mediatek,pbus-csr phandle array property.
 
-That's not a valid link. Fix your email client.
+Changes in v3:
+- Get base address and base address mask from range property
+- Define mediatek,pbus-csr as phandle array
+- Link to v2: https://lore.kernel.org/r/20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org
+
+Changes in v2:
+- Introduce mediatek,pbus-csr phandle property
+- Drop patch 1/2 in v1
+- Do not hard-code compatible sting in the driver and use phandle
+  instead
+
+---
+Lorenzo Bianconi (2):
+      dt-bindings: PCI: mediatek-gen3: Add mediatek,pbus-csr phandle array property
+      PCI: mediatek-gen3: Configure PBUS_CSR registers for EN7581 SoC
+
+ .../bindings/pci/mediatek-pcie-gen3.yaml           | 17 +++++++++++
+ drivers/pci/controller/pcie-mediatek-gen3.c        | 34 +++++++++++++++++++++-
+ 2 files changed, 50 insertions(+), 1 deletion(-)
+---
+base-commit: b6d7bb0d3bd74b491e2e6fd59c4d5110d06fd63b
+change-id: 20250201-en7581-pcie-pbus-csr-f9c4f88ce5b3
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
