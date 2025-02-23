@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 667E8C021B2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2025 09:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F09AAC021B6
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2025 11:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HakaDQtbNHmC9OTgcAoh2VhG+7+uJ16MZrRld7j6u3w=; b=KDDZsBO97ugV2Y6U08yMUYgzV6
-	hyMA3vuJKE3yr0FDV4ydfa4uf7I51hipM4NvvXtUGdYr/NZr8JljOagpocjgkV9vRbr9wNLWBlKFb
-	vGzLqhqQgzuqQg/5Q4ZB7LsF2AKGb821QumZlhOr4sq+EeCykAdpOS/1XWDxptDb1rFVj+uHGm+yi
-	SE3zEI29plFZ3gyyYVgzzZbiXdadwwH2ULC5uKXzPjGyQowYF/4SuJoWFlcYsbYIYXW8PTHTVbS+U
-	6U7j2kEHTJ5LIqaHMj1S8iX75W/XGprzA1EAQuoN2XmA9CJk/mEDAoyXYpHqdPJevHyLqxYnq0Jxw
-	IWH2aDnQ==;
+	bh=OtBqieGt/Cn1h+7LWRozBaQN0HgUHX71OinBS2J7WKE=; b=MLvqsgk90CRase73T95RMf7B1A
+	uVcetAPlmEwqRD25/RIwKZRiVQXPWebrGH5az8wMaLUbZCCQHxEnzi5soPo7f2EFMgr5w8KHxt71U
+	/X9FxCECtBu94dIJbbK3qhkKh3aKN44EwA2oJKicQFdKowAxtvKrW5oy9Xv4McJGotRjaTMxXo2wb
+	lf7Z4W7YPCI0q8l3aCTGC++nYWNmPod6RYiGvF/jTe0YZ1hm4n/0HkqBxWrdDBJe53SH2dRETt6Z9
+	1SshDVaXruvxWGpE9BN1iK5/H/7JY4dB+Qk/UgYNp9vhJujyaENKvyK4SMs+50N5zI8uy+bF+0CKh
+	s/hDWTEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tm8Xr-0000000AngS-3B81;
-	Sun, 23 Feb 2025 09:45:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tmABc-0000000AyFb-0DqA;
+	Sun, 23 Feb 2025 11:30:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tm8WI-0000000AnWn-2Mrt;
-	Sun, 23 Feb 2025 09:43:31 +0000
+	id 1tmAA7-0000000Ay3U-0rJE;
+	Sun, 23 Feb 2025 11:28:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B860A5C6671;
-	Sun, 23 Feb 2025 09:42:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C96CC4CEDD;
-	Sun, 23 Feb 2025 09:43:28 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3433A5C68E3;
+	Sun, 23 Feb 2025 11:28:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CD15C4CEE8;
+	Sun, 23 Feb 2025 11:28:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740303809;
-	bh=n3VmuDkahaRSXSSONIGxA6K3sJl+bXqC/Tuu5fPag6w=;
+	s=k20201202; t=1740310121;
+	bh=NlJVydL9C+hEsWptR74iKVv9eBDBElH8eho8n1pJeh8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZSUUKBfaBVt20BCaE2r4RGaUbqvbpZAtRTPBl99e3OjmAUd3O/MxP/xt7JwAZVX5K
-	 ASSWS6hMqB4DFthWyh/373e6K4DDXdhdUF4WUjEMUb/q8LIe2+FRc1EBfNNJTCTqga
-	 kau5tCytLK1rOe3QMF3k+LR2E4Z7YuWg0e4BIyV3N+TDFVEjikyzeFCvfoPo6shAZ4
-	 Z7eJuiS0WrYL5I8mtAYgh6DXqjWc2uGRS8pYTsUCO+Nkk+v6A8+PgMvzvR0pRVWXop
-	 VoBn1u6JZksCjMtB4006IMgP3NJfFNikGliU4Grk3Btu3eoYIyVNG0YuvT7K91ibiQ
-	 sqOKU8UXP5XDw==
-Date: Sun, 23 Feb 2025 10:43:25 +0100
+	b=syl/keViV1NJaBjWAYL9EX9JMR1GB7kQbUTbaPtuRJAzfbTpIZej5WEewDE+SsE8U
+	 hhkPpq+SiYaP/Q9k1F2t9bwFIL6s5Jv0wDLnbNe00N3vWyE8ylusy2v8k3ZrbiGXMs
+	 xeO6gMi1JiZKrGz4pFSvA7WhaeZy7LRRKYqP5Zy1Gf0YHBSRgL9GL7p1vl2i7Ed+CG
+	 onJIBC66sM6FX4CSy67VtVmTyZJlMqFNiHV583MbJg/I5qqA8VNCUKc5CPDxredv1X
+	 Hp60WIUIiVFT1EvUPiDEZpqBgj5QJSuh576Rr2iael29FZjRqhsCEeSv7pbaI/0v0P
+	 8l5XLWwhUtuJg==
+Date: Sun, 23 Feb 2025 12:28:37 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add
- mediatek,pbus-csr phandle array property
-Message-ID: <20250223-hulking-goldfish-of-symmetry-cbfed4@krzk-bin>
-References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
- <20250222-en7581-pcie-pbus-csr-v3-1-e0cca1f4d394@kernel.org>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: mediatek,xsphy: add property to
+ set disconnect threshold
+Message-ID: <20250223-benevolent-tacky-emu-f5f1c1@krzk-bin>
+References: <20250222090710.10909-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250222-en7581-pcie-pbus-csr-v3-1-e0cca1f4d394@kernel.org>
+In-Reply-To: <20250222090710.10909-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250223_014330_662787_DE7847E1 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20250223_032843_297312_9D6053E6 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +76,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 22, 2025 at 11:43:44AM +0100, Lorenzo Bianconi wrote:
-> Introduce the mediatek,pbus-csr property for the pbus-csr syscon node
-> available on EN7581 SoC. The airoha pbus-csr block provides a configuration
-> interface for the PBUS controller used to detect if a given address is
-> accessible on PCIe controller.
+On Sat, Feb 22, 2025 at 05:07:09PM +0800, Chunfeng Yun wrote:
+> +      mediatek,disconnect-threshold:
+> +        description:
+> +          The selection of disconnect threshold (U2 phy)
+
+Say something more than just copying property name.
+
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        minimum: 1
+> +        maximum: 15
+
+default: ?
+
+> +
+>        mediatek,efuse-intr:
+>          description:
+>            The selection of Internal Resistor (U2/U3 phy)
+> -- 
+> 2.46.0
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml     | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
-> 
-
-You got review tag, so if you decided to skip it, this should be
-mentioned why.
-
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
 
