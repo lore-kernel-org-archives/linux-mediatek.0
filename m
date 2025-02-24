@@ -4,90 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7A93C021A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 12:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F04DC021A6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 12:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=smR/eUa4Gl7DKY3ovjUaLW1zp0s2Y+hsxe3OpZY3a+I=; b=oox57Zox0feSQjLQfB8ne6kKVL
-	VqxYL7oSyjxli7QNCBssY1dkyBiv4c8OkOErQKzTYFe4/RqA1usKfJbgTa9V4ckYFKo5V1RCiVgR5
-	JcXp/MXCFPX5oxk8xhFVe3VFZyoWP6+Bkyw4MZCDHuRnp2mxcTjwyOumo8q1I5INLpAPI1dMgQoXo
-	YaPwpuwoxz6GAJbq19n5f/pgJazhSoRMrH0O32TSr9apyeums406u8fUAikoaXbtRlNnz2m3stkDN
-	K7k7zBtzXm8mNfgyXOMikzHlPs8zF1gh8rB6cFQeQ0O+HAERnhpQw+30E/v1SZGDgIuTvUL6E/HAT
-	PuQZCf7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1yXoVn4d41rL3z4hjc5R72fder7LjdF+dcCF5p2tEkw=; b=1DsCn8lYemS1JDDRWK6tReAIb3
+	spy63KrmI06AMoGW71FeD+A7X+m+kLbtcmz4Vq2ntViMd7UQMbuQn1x1RstdJianhZb6Kjd6YA59V
+	8DxIoc/rXjDY/0MYCJ4tgl8i8gfrc8CZ/L4uVXtAC2cg1p2kfuGKuU3r0ymioZ+eTTcLOyQHMv+QF
+	W/9Tt13avByUhQYS1S7tKI2meB49yo2UuuydgMsyVGnmrqVk0xDBHgOP+vBhcwLtYZ91KI+Y7cp1U
+	cC0xMGnlxvNlxAWFzeiLfJTshyDMdT4ZeIMhoU+Ghns0GkHyhgu7x8qRagZ8n9+0JEd1t2mtP0z4M
+	WQMl8Jvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmXAT-0000000DaQM-3tRR;
-	Mon, 24 Feb 2025 12:02:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tmXDP-0000000Dbi6-27W9;
+	Mon, 24 Feb 2025 12:05:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmWlG-0000000DRfk-40pn;
-	Mon, 24 Feb 2025 11:36:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740396992;
-	bh=PSYe6R/xPBasga876FmS8mHT9Zoo5UeLL8SBdjJXyYU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=S2h0bWvGZ/wrr74QxKpyYx3qf9WQ0JxBIUIjM4IGAT16YoVeJKx1K4amOuK76OY8o
-	 0R6eNuYkJ3ceb2AQZObzCrHaxfifC9fX9LBuHqEOQbwJxdks9F9siUe9k0qFloe+C7
-	 uF3KlDYg3LvWBCNuRgxDfHblWLHi5JCe7B095xMkFnO8xz2u7wxjYxpcyX64pCu/fI
-	 OidgFXAVvWuyE2CnaBc9j1s8nwYW1sbhRhZKwvgjmc0ZHNYa8zycnvM2rogw46y9gh
-	 nd4QIhnLaSMccsOwjs7RRqk/keKhQI4h7jiAy7QtCib6a+/Rct5zI1AvmIWlSVDaej
-	 biIXz6p58xOCw==
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AD4FD17E019E;
-	Mon, 24 Feb 2025 12:36:31 +0100 (CET)
-Date: Mon, 24 Feb 2025 12:36:28 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, Florent Tomasin
- <florent.tomasin@arm.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Steven Price <steven.price@arm.com>, Liviu Dudau
- <liviu.dudau@arm.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>, Benjamin
- Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey
- <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, Christian =?UTF-8?B?S8O2bmln?=
- <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong
- Wu <yong.wu@mediatek.com>, dmaengine@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, nd@arm.com, Akash Goel
- <akash.goel@arm.com>
-Subject: Re: [RFC PATCH 0/5] drm/panthor: Protected mode support for Mali
- CSF GPUs
-Message-ID: <20250224123628.52d43b84@collabora.com>
-In-Reply-To: <20250220-strict-cobalt-albatross-6f742e@houat>
-References: <3ykaewmjjwkp3y2f3gf5jvqketicd4p2xqyajqtfnsxci36qlm@twidtyj2kgbw>
-	<1a73c3acee34a86010ecd25d76958bca4f16d164.camel@ndufresne.ca>
-	<ppznh3xnfuqrozhrc7juyi3enxc4v3meu4wadkwwzecj7oxex7@moln2fiibbxo>
-	<9d0e381758c0e83882b57102fb09c5d3a36fbf57.camel@ndufresne.ca>
-	<1f436caa-1c27-4bbd-9b43-a94dad0d89d0@arm.com>
-	<20250205-amorphous-nano-agouti-b5baba@houat>
-	<2085fb785095dc5abdac2352adfb3e1e1c8ae549.camel@ndufresne.ca>
-	<20250207160253.42551fb1@collabora.com>
-	<20250211-robust-lush-skink-0dcc5b@houat>
-	<20250211153223.2fef2316@collabora.com>
-	<20250220-strict-cobalt-albatross-6f742e@houat>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1tmWyM-0000000DVqc-494E;
+	Mon, 24 Feb 2025 11:50:08 +0000
+X-UUID: 7b4c8452f2a511efa1e849db4cc18d44-20250224
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1yXoVn4d41rL3z4hjc5R72fder7LjdF+dcCF5p2tEkw=;
+	b=PxbeCiXPMQuB0+w5zWALDbCctmV/PpoPrs9vqW2N/I3kulIjpnx+TehEwMhjJJeHcv8BAerOaNpMSLPbDMIo7KNd1i0y7Ag1goqoQnVrjdX4FLNvl+hrO3wv8/6258GTenJhtM0tZUcgHHFaEW+3QFKVUvXU0xwjR6yijk/kC5Q=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.46,REQID:806a4668-c4a1-4fc6-87f1-fbd2a429f5fa,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:60aa074,CLOUDID:687244dc-d480-4873-806f-0f365159227b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:1|19,IP:
+	nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,L
+	ES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 7b4c8452f2a511efa1e849db4cc18d44-20250224
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 453508341; Mon, 24 Feb 2025 04:50:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Mon, 24 Feb 2025 19:49:59 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Mon, 24 Feb 2025 19:49:59 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: ChiYuan Huang <cy_huang@richtek.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-usb@vger.kernel.org>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>, Yow-Shin Liou
+	<yow-shin.liou@mediatek.com>, Simon Sun <simon.sun@yunjingtech.com>
+Subject: [PATCH v6] arm64: dts: mediatek: mt8395-genio-1200-evk: add support for TCPC port
+Date: Mon, 24 Feb 2025 19:49:34 +0800
+Message-ID: <20250224114934.3583191-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_033635_243103_7210CE10 
-X-CRM114-Status: GOOD (  36.57  )
+X-CRM114-CacheID: sfid-20250224_035007_044459_940D132D 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,80 +92,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+From: Fabien Parent <fparent@baylibre.com>
 
-On Thu, 20 Feb 2025 14:32:14 +0100
-Maxime Ripard <mripard@kernel.org> wrote:
+Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
+configuration for TCPC Port, USB-C connector, MUX IT5205 and related
+settings.
 
-> > > > This approach has two downsides though:
-> > > > 
-> > > > 1. We have no way of checking that the memory we're passed is actually
-> > > > suitable for FW execution in a protected context. If we're passed
-> > > > random memory, this will likely hang the platform as soon as we enter
-> > > > protected mode.    
-> > > 
-> > > It's a current limitation of dma-buf in general, and you'd have the same
-> > > issue right now if someone imports a buffer, or misconfigure the heap
-> > > for a !protected heap.
-> > > 
-> > > I'd really like to have some way to store some metadata in dma_buf, if
-> > > only to tell that the buffer is protected.  
-> > 
-> > The dma_buf has a pointer to its ops, so it should be relatively easy
-> > to add an is_dma_buf_coming_from_this_heap() helper. Of course this
-> > implies linking the consumer driver to the heap it's supposed to take
-> > protected buffers from, which is basically the thing being discussed
-> > here :-).  
-> 
-> I'm not sure looking at the ops would be enough. Like, you can compare
-> that the buffer you allocated come from the heap you got from the DT,
-> but if that heap doesn't allocate protected buffers, you're screwed and
-> you have no way to tell.
+Configure dual role switch capability, set up PD (Power Delivery) profiles,
+and establish endpoints for SS (SuperSpeed) and HS (HighSpeed) USB.
 
-If heap names are unique, the name of the heap should somehow guarantee
-the protected/restricted nature of buffers allocated from this heap
-though. So, from a user perspective, all you have to do is check that
-the buffers you import come from this particular heap you've been
-pointed to. Where we get the heap name from (DT or module param
-passed through a whitelist of protected heap names?) is an
-implementation detail.
+Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
+to "otg" for OTG (On-The-Go) mode operation.
 
-> 
-> It also falls apart if we have a heap driver with multiple instances,
-> which is pretty likely if we ever merge the carveout heap driver.
+Add ITE IT5205 (TYPEC MUX) under I2C2 bus and configure its properties;
+also add references and configurations to 'typec-mux' node.
 
-What I meant here is that checking that a buffer comes from a
-particular heap is something the heap driver itself can easily do. It
-can be a mix of ops+name check (or ops+property check) if there's
-multiple heaps instantiated by a single driver, of course.
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
+Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../dts/mediatek/mt8395-genio-1200-evk.dts    | 102 ++++++++++++++++++
+ 1 file changed, 102 insertions(+)
 
-I guess the other option would be to have a protected property at the
-dma_buf level so we don't have to go all the way back to the dma_heap
-to figure it out.
+Changes for v2:
+ - Drop the no need '1/2' DT Schema update patch in the 1st version.  
+ - Fix indent for 'ports' node, it should under the 'connector' node.
+ - Correct the index for 'port@0' and 'port@1' node.
 
-> 
-> > > 
-> > > I suspect you'd also need that if you do things like do protected video
-> > > playback through a codec, get a protected frame, and want to import that
-> > > into the GPU. Depending on how you allocate it, either the codec or the
-> > > GPU or both will want to make sure it's protected.  
-> > 
-> > If it's all allocated from a central "protected" heap (even if that
-> > goes through the driver calling the dma_heap_alloc_buffer()), it
-> > shouldn't be an issue.  
-> 
-> Right, assuming we have a way to identify the heap the buffer was
-> allocated from somehow. This kind of assumes that you only ever get one
-> source of protected memory, and you'd never allocate a protected buffer
-> from a different one in the codec driver for example.
+Changes for v3:
+ - Correct the order between new added nodes.
 
-Yes, and that's why having the ability to check that a buffer comes
-from a particular heap is key. I mean, we don't necessarily have to
-restrict things to a single heap, it can be a whitelist of heaps we know
-provide protected buffers if we see a value in having multiple
-protected heaps coexisting on a single platform.
+Changes for v4:
+ - Reorder for property 'op-sink-microwatt'.
+ - Fix indentation for 'source-pdos' and 'sink-pdos' nodes.
+ - Correct node 'pin-cmd-dat' with 'pins-vbus'.
+ - Add both Highspeed and Superspeed ports to ssusb0 port.
+ - Set 'role-switch-default-mode' = "peripheral" for ssusb0 port.
+ - Rename endpoint of USB data port to 'mtu3_hs0_role_sw' and
+   'mtu3_ss0_role_sw'.
+ - Drop it5205fn phandle for node typec-mux@48.
+ - Reorder properties of typec-mux@48
+ - Add "Reviewed-by:" tag. Thanks!
 
-Regards,
+Changes for v5:
+ - Squash two patches into one patch and refine commit messages:
+   suggested by reviewer.
+ - Drop 'role-switch-default-mode'
+ - Add altmodes settings
+ - Drop 'Reviewed-by:' tag since the two sub patches has been combined
+   into a new patch.
 
-Boris
+Changes for v6:
+ - Add 'pd-revision' property to 'connector', thanks ChiYuan Huang's help!.
+ - Add 'Reviewed-by' tag. Thanks!
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 5950194c9ccb..f02c32def593 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -229,6 +229,21 @@ &i2c2 {
+ 	pinctrl-0 = <&i2c2_pins>;
+ 	pinctrl-names = "default";
+ 	status = "okay";
++
++	typec-mux@48 {
++		compatible = "ite,it5205";
++		reg = <0x48>;
++		vcc-supply = <&mt6359_vibr_ldo_reg>;
++		mode-switch;
++		orientation-switch;
++		status = "okay";
++
++		port {
++			it5205_sbu_ep: endpoint {
++				remote-endpoint = <&mt6360_ssusb_sbu_ep>;
++			};
++		};
++	};
+ };
+ 
+ &i2c6 {
+@@ -335,6 +350,63 @@ mt6360_ldo7: ldo7 {
+ 				regulator-always-on;
+ 			};
+ 		};
++
++		tcpc {
++			compatible = "mediatek,mt6360-tcpc";
++			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-names = "PD_IRQB";
++
++			connector {
++				compatible = "usb-c-connector";
++				label = "USB-C";
++				data-role = "dual";
++				op-sink-microwatt = <10000000>;
++				power-role = "dual";
++				try-power-role = "sink";
++
++				source-pdos = <PDO_FIXED(5000, 1000,
++							 PDO_FIXED_DUAL_ROLE |
++							 PDO_FIXED_DATA_SWAP)>;
++				sink-pdos = <PDO_FIXED(5000, 2000,
++						       PDO_FIXED_DUAL_ROLE |
++						       PDO_FIXED_DATA_SWAP)>;
++
++				pd-revision = /bits/ 8 <0x03 0x01 0x01 0x06>;
++
++				altmodes {
++					displayport {
++						svid = /bits/ 16 <0xff01>;
++						vdo = <0x00001c46>;
++					};
++				};
++
++				ports {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					port@0 {
++						reg = <0>;
++						typec_con_hs: endpoint {
++							remote-endpoint = <&mtu3_hs0_role_sw>;
++						};
++					};
++
++					port@1 {
++						reg = <1>;
++						typec_con_ss: endpoint {
++							remote-endpoint = <&mtu3_ss0_role_sw>;
++						};
++					};
++
++					port@2 {
++						reg = <2>;
++						mt6360_ssusb_sbu_ep: endpoint {
++							remote-endpoint = <&it5205_sbu_ep>;
++						};
++					};
++				};
++			};
++		};
+ 	};
+ };
+ 
+@@ -770,6 +842,13 @@ pins-reset {
+ 		};
+ 	};
+ 
++	u3_p0_vbus: u3-p0-vbus-default-pins {
++		pins-vbus {
++			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
++			input-enable;
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		pins {
+ 			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
+@@ -898,8 +977,31 @@ &ufsphy {
+ };
+ 
+ &ssusb0 {
++	dr_mode = "otg";
++	pinctrl-names = "default";
++	pinctrl-0 = <&u3_p0_vbus>;
++	usb-role-switch;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	status = "okay";
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			mtu3_hs0_role_sw: endpoint {
++				remote-endpoint = <&typec_con_hs>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			mtu3_ss0_role_sw: endpoint {
++				remote-endpoint = <&typec_con_ss>;
++			};
++		};
++	};
+ };
+ 
+ &ssusb2 {
+-- 
+2.45.2
+
 
