@@ -4,79 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB57AC021BB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA9BAC021B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XYp6nqL/SIf1dkq4IbZ5jeSHZcsYeSObKvTPW+JE3bg=; b=g3LMIyrO4UWzvgjtuXFBvCPkHr
-	UAUaaFPHeInTu4pCvkz/ajktaTRRuTXVpFniyxQwM30CCAPeDt7mXSJ8nW5NMfAwRkg77UTJnrVY4
-	RCt8vMAsKUNNMlLS9XNTfaaAixUN2Ezr40T67vQnBTHg9l4DNl/W4NDIgbxlUwgslPNDSWklXrTwb
-	LDX0K5gAQbW+r1HeHma52IkdILZboLzptioaYZB42asdChoTyVmH0hdbdZxNEJUYdlB265/YOa134
-	LpzQ0yS18YH83EvKfiGP+bXVU85sMaJJ86cN341ROe981EstFESebk34GmuqN1lJ1W808S0zZyTUF
-	sElUXgYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=; b=DzQ0W0m+SVgdGu3PEdBvImk2Mb
+	Ebabkd+MWxApHH1YhuQCnxvdNLkEN9zIwsk0OwnicVdWIlm77EuTQ7R65ZtzxIP7CcoIWnmI+tHBi
+	EcYFUoSXd2fp7Rjimgt5FWHj/itzpMW6RSvPIczGR2WYXTnJYRSh+jFvYaF1K9vioN7XvI8TW/wlq
+	T46Z7PiSOhXSWeH+91cUQVxZ54qH8gsBFPrV9Yf2ik5e64cdwMtINczX11hkSqKB1HSVusIwWFV2L
+	EH4pZHWVsrQgUCk/RqMq+sHOy5FCX48qMBslVJ2xBARDAmwLzDhozK11sHRcgRIxoVm5hmYWw+Ilj
+	ne7drghA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmYIN-0000000Dp9g-3JHu;
-	Mon, 24 Feb 2025 13:14:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tmYNV-0000000DrhP-3X8h;
+	Mon, 24 Feb 2025 13:20:09 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmY9M-0000000Dm1G-1Eas
+	id 1tmYM1-0000000DraN-3Fnf
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Feb 2025 13:05:33 +0000
-X-UUID: 04a22068f2b011ef83f2a1c9db70dae0-20250224
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XYp6nqL/SIf1dkq4IbZ5jeSHZcsYeSObKvTPW+JE3bg=;
-	b=eWt5ocmZnWWfB2zK+oQWqlVwZ71Je1FEDuHrt+XWyR3QADcf2YetGoZFn4YjqlQbj6Aq+rQDrEutyEedx9zKsMZYjfoz+koRyG+uqcscePG5e3ZWnKAMM/4DRMg6hkvOMjhRymoUGQpfMjm0wWz+wIzFs5chjWjw5KWFFuo6CsI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.46,REQID:1da77162-67a4-4fbf-bc4e-49448374baea,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:60aa074,CLOUDID:c0a83029-e0f8-414e-b8c3-b75c08217be8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 04a22068f2b011ef83f2a1c9db70dae0-20250224
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <quan.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1487366621; Mon, 24 Feb 2025 06:05:27 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Mon, 24 Feb 2025 21:05:25 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Mon, 24 Feb 2025 21:05:24 +0800
-From: Quan Zhou <quan.zhou@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
-	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>
-Subject: [patch] wifi: mt76: mt7925: Simplify HIF suspend handling to avoid suspend fail
-Date: Mon, 24 Feb 2025 21:05:14 +0800
-Message-ID: <34208c7280325f57a651363d339399eb1744d3b7.1740400998.git.quan.zhou@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	Mon, 24 Feb 2025 13:18:39 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-220e6028214so92857215ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Feb 2025 05:18:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1740403117; x=1741007917; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=;
+        b=JuSIrC1RlovKo6CsoYOOw9A9AWUuK54q+RcsgtRfF8kWskiLUmRraUouFJykRaHVod
+         yyc66j5JmpZM8pFpJQmC7XRR5ov1cBj9OmDjwZveJXOcm3s9BKDPA8DdGJrq/h60x3ff
+         HZ4DfinIoFSQ6YsOFej/8ZR0AurxZJgufeHLkafOgQMyqZqfbA68uSZ9F56xwvq8aGZg
+         9I8fneoz2yIf4BO3KCie911hUrSEWeQes5LMFE0Vi1Ga7541FT8lMwheQctOuj6Lbdgo
+         GcZcQkPZtQRJuTtUGh7VfohTAb4zN0vMK0n6JOgDE5thI5oUaXRu/O3Hwtd5MdMhasIr
+         yFiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740403117; x=1741007917;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=;
+        b=VH/v5sN+Q57gW1HSscCm71/y6FaCiphGLGjRl0/YCJubBW8nBthq10MSf9lInOk2fV
+         N5R/CyC//Z+i0QT15Oxy2wRiM9MWBsvetemT/yUc/SJ5/wqN1uMuxMJs24ZotTM2m8jR
+         JahpV1z8W5+7WTG2wF1BM/YgBjslsxU/CW5HZerctKoAFplnBvr+TD4iMnIvJGs1y7B7
+         rLhwxZttV2lHpqZ3qMPlfrRP/XOlkCB0sSculBuuqxFWWjBy1hlzhdhg3FW9r4riuexs
+         vtzLIDA5bRWVqFVJkVT+djn54F5JU7V1NzndZfDChgN6j6TIJZqWsbSzVjo580zh/Hig
+         50JQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWSaSTTdVZRqc7cC7PyBMu82qyxSQDTVTqa6k7tizg4JA43Xj/cRV80kEb6ItPPw6B1twlZhX4SaWBvwqsdLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzeODA63ZtCnZCoBJLhPaIbOkPX6jV3mIRTD7r2kb+2VQeIFmJb
+	Y66tlJtEqd0unDXqIn9E1kgQXTO4bTjHE+BWjXY18kQLEsai6RcDZR2jvwEI5Q==
+X-Gm-Gg: ASbGnctGyx3Dv8Rf/+f0BrSiksX/VMiAnEmoo3JzTv3NkqbRDXtrnzHArN2ZAj19vAb
+	hEA0Bz8bm6TzE1NCK82KgqCPKPclsBDjN3+P0ieBAwS7eLCGa2QKYVtYPDfPZ92JwKc2HMOQgJX
+	sPL+SPxN/hxDRj1bXydbDTTheqDkoYiVxfDRnYbbj0SMNrdUZE/ERGlL7X5I5buhKuiFdltxQog
+	CBLXiPnQyno0aMzNl/O+23kxO8Dt4cCyXtI7OKpefkE2EWl/AETUPUf6iFJuSeZKLn8HgDVXY0S
+	eF2AyADt/K4ZMaA9djgYgJ9OOsBD0OFyTJdh
+X-Google-Smtp-Source: AGHT+IGabpVbV+NHEQQXp8goqoKQe7jD7WPvleiiGHZZp7DZfPzcQ3EsMcTqWh3vQp+USwIPD1O+RA==
+X-Received: by 2002:a05:6a21:7882:b0:1ee:cd18:d400 with SMTP id adf61e73a8af0-1eef3c883ecmr24664532637.11.1740403116989;
+        Mon, 24 Feb 2025 05:18:36 -0800 (PST)
+Received: from thinkpad ([36.255.17.202])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7325b03f169sm18621755b3a.63.2025.02.24.05.18.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Feb 2025 05:18:36 -0800 (PST)
+Date: Mon, 24 Feb 2025 18:48:31 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
+Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
+ for EN7581 SoC
+Message-ID: <20250224131831.jqut4hpvv7tf7vzy@thinkpad>
+References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
+ <20250222-en7581-pcie-pbus-csr-v3-2-e0cca1f4d394@kernel.org>
+ <20250224055216.o23dzwimrghbr2ow@thinkpad>
+ <Z7xEZPpWLQjTMnIz@lore-desk>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <Z7xEZPpWLQjTMnIz@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_050532_432577_D42E6C93 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250224_051837_819961_19C98BA1 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +112,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-System suspend failures may occur due to inappropriate
-handling of traffic not idle event by the WiFi driver.
-The WiFi firmware's traffic not idle indication does
-not need to be tied to suspend. Fix the flow to ensuring
-the system can suspend properly.
+On Mon, Feb 24, 2025 at 11:05:24AM +0100, Lorenzo Bianconi wrote:
+> > On Sat, Feb 22, 2025 at 11:43:45AM +0100, Lorenzo Bianconi wrote:
+> 
+> [...]
+> 
+> > > +
+> > > +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+> > > +	if (!entry)
+> > > +		return -EINVAL;
+> > 
+> > -ENODEV or -ENOMEM
+> 
+> ack, I will fix it in v4
+> 
+> > 
+> > > +
+> > > +	addr = entry->res->start - entry->offset;
+> > > +	err = regmap_write(pbus_regmap, args[0], lower_32_bits(addr));
+> > > +	if (err)
+> > 
+> > MMIO write is not supposed to fail.
+> 
+> ack, I will fix it in v4
+> 
+> > 
+> > > +		return err;
+> > > +
+> > > +	size = lower_32_bits(resource_size(entry->res));
+> > > +	mask = size ? GENMASK(31, __fls(size)) : 0;
+> > 
+> > Size of MEM region could be 0?
+> 
+> I added this check since we consider just lower_32_bits().
+> Do you think we should remove it?
+> 
 
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+Yes please.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 04762a8eac51..740e5c62929a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -348,14 +348,10 @@ mt7925_mcu_handle_hif_ctrl_basic(struct mt792x_dev *dev, struct tlv *tlv)
- 	basic = (struct mt7925_mcu_hif_ctrl_basic_tlv *)tlv;
- 
- 	if (basic->hifsuspend) {
--		if (basic->hif_tx_traffic_status == HIF_TRAFFIC_IDLE &&
--		    basic->hif_rx_traffic_status == HIF_TRAFFIC_IDLE)
--			/* success */
--			dev->hif_idle = true;
--		else
--			/* busy */
--			/* invalid */
--			dev->hif_idle = false;
-+		dev->hif_idle = true;
-+		if (!(basic->hif_tx_traffic_status == HIF_TRAFFIC_IDLE &&
-+		      basic->hif_rx_traffic_status == HIF_TRAFFIC_IDLE))
-+			dev_info(dev->mt76.dev, "Hif traffic not idle.\n");
- 	} else {
- 		dev->hif_resumed = true;
- 	}
+> > 
+> > > +	err = regmap_write(pbus_regmap, args[1], mask);
+> > > +	if (err)
+> > 
+> > MMIO write is not supposed to fail.
+> 
+> ack, I will fix it in v4
+> 
+> BTW I will remove your Reviwed-by tag since the patch has changed
+> with respect to the one you added it. Please let me know if you
+> prepfer to keep it.
+> 
+
+Sure, fine with me.
+
+- Mani
+
 -- 
-2.46.0
-
+மணிவண்ணன் சதாசிவம்
 
