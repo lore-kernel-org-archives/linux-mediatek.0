@@ -4,100 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA9BAC021B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF8EC021A6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:37:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=; b=DzQ0W0m+SVgdGu3PEdBvImk2Mb
-	Ebabkd+MWxApHH1YhuQCnxvdNLkEN9zIwsk0OwnicVdWIlm77EuTQ7R65ZtzxIP7CcoIWnmI+tHBi
-	EcYFUoSXd2fp7Rjimgt5FWHj/itzpMW6RSvPIczGR2WYXTnJYRSh+jFvYaF1K9vioN7XvI8TW/wlq
-	T46Z7PiSOhXSWeH+91cUQVxZ54qH8gsBFPrV9Yf2ik5e64cdwMtINczX11hkSqKB1HSVusIwWFV2L
-	EH4pZHWVsrQgUCk/RqMq+sHOy5FCX48qMBslVJ2xBARDAmwLzDhozK11sHRcgRIxoVm5hmYWw+Ilj
-	ne7drghA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j/wogxQyMqJOZw/cKqplRsJOzCs4dyC1i7ioo6SpAes=; b=uHUnWlYSF1i4GmQ2wOYXQvoKiW
+	J01/x8QXkQqJXBpYs8AiIiIyd+CpFFfQuwX7u2mRzVpl+hSoW8jwChP1sukqrF0xli7+0ZzdJSoyG
+	xJ78qelvxL/J8AUxRNqlzebzjnqMDKJtt0TLp4Qdl373ezEi0LDnQIACJbFdZOSPQJMtOdR2ZBOO3
+	kqaGhjKG0LN/Vxfv/2ecAbpgN0R1A6WaCaJO7FlXqaDWLzg/xIA6BTd0X7uICHTsZcd8xBJpp/5PD
+	/BMAmYAyvy83IryXMAiFjCiw6F1wy8aW61B/9Bm/wrzv5dwmqiSUEHPpRlBGF32QXRl9Unc5yPKKP
+	WaYDlXrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmYNV-0000000DrhP-3X8h;
-	Mon, 24 Feb 2025 13:20:09 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1tmYdz-0000000Duiv-0WKh;
+	Mon, 24 Feb 2025 13:37:11 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmYM1-0000000DraN-3Fnf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Feb 2025 13:18:39 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-220e6028214so92857215ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Feb 2025 05:18:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740403117; x=1741007917; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=;
-        b=JuSIrC1RlovKo6CsoYOOw9A9AWUuK54q+RcsgtRfF8kWskiLUmRraUouFJykRaHVod
-         yyc66j5JmpZM8pFpJQmC7XRR5ov1cBj9OmDjwZveJXOcm3s9BKDPA8DdGJrq/h60x3ff
-         HZ4DfinIoFSQ6YsOFej/8ZR0AurxZJgufeHLkafOgQMyqZqfbA68uSZ9F56xwvq8aGZg
-         9I8fneoz2yIf4BO3KCie911hUrSEWeQes5LMFE0Vi1Ga7541FT8lMwheQctOuj6Lbdgo
-         GcZcQkPZtQRJuTtUGh7VfohTAb4zN0vMK0n6JOgDE5thI5oUaXRu/O3Hwtd5MdMhasIr
-         yFiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740403117; x=1741007917;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=k/zBjsZQTLhBnhqIaIhHUuRmEg89TnatJo/+jGRcKh4=;
-        b=VH/v5sN+Q57gW1HSscCm71/y6FaCiphGLGjRl0/YCJubBW8nBthq10MSf9lInOk2fV
-         N5R/CyC//Z+i0QT15Oxy2wRiM9MWBsvetemT/yUc/SJ5/wqN1uMuxMJs24ZotTM2m8jR
-         JahpV1z8W5+7WTG2wF1BM/YgBjslsxU/CW5HZerctKoAFplnBvr+TD4iMnIvJGs1y7B7
-         rLhwxZttV2lHpqZ3qMPlfrRP/XOlkCB0sSculBuuqxFWWjBy1hlzhdhg3FW9r4riuexs
-         vtzLIDA5bRWVqFVJkVT+djn54F5JU7V1NzndZfDChgN6j6TIJZqWsbSzVjo580zh/Hig
-         50JQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWSaSTTdVZRqc7cC7PyBMu82qyxSQDTVTqa6k7tizg4JA43Xj/cRV80kEb6ItPPw6B1twlZhX4SaWBvwqsdLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzeODA63ZtCnZCoBJLhPaIbOkPX6jV3mIRTD7r2kb+2VQeIFmJb
-	Y66tlJtEqd0unDXqIn9E1kgQXTO4bTjHE+BWjXY18kQLEsai6RcDZR2jvwEI5Q==
-X-Gm-Gg: ASbGnctGyx3Dv8Rf/+f0BrSiksX/VMiAnEmoo3JzTv3NkqbRDXtrnzHArN2ZAj19vAb
-	hEA0Bz8bm6TzE1NCK82KgqCPKPclsBDjN3+P0ieBAwS7eLCGa2QKYVtYPDfPZ92JwKc2HMOQgJX
-	sPL+SPxN/hxDRj1bXydbDTTheqDkoYiVxfDRnYbbj0SMNrdUZE/ERGlL7X5I5buhKuiFdltxQog
-	CBLXiPnQyno0aMzNl/O+23kxO8Dt4cCyXtI7OKpefkE2EWl/AETUPUf6iFJuSeZKLn8HgDVXY0S
-	eF2AyADt/K4ZMaA9djgYgJ9OOsBD0OFyTJdh
-X-Google-Smtp-Source: AGHT+IGabpVbV+NHEQQXp8goqoKQe7jD7WPvleiiGHZZp7DZfPzcQ3EsMcTqWh3vQp+USwIPD1O+RA==
-X-Received: by 2002:a05:6a21:7882:b0:1ee:cd18:d400 with SMTP id adf61e73a8af0-1eef3c883ecmr24664532637.11.1740403116989;
-        Mon, 24 Feb 2025 05:18:36 -0800 (PST)
-Received: from thinkpad ([36.255.17.202])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7325b03f169sm18621755b3a.63.2025.02.24.05.18.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Feb 2025 05:18:36 -0800 (PST)
-Date: Mon, 24 Feb 2025 18:48:31 +0530
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
- for EN7581 SoC
-Message-ID: <20250224131831.jqut4hpvv7tf7vzy@thinkpad>
-References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
- <20250222-en7581-pcie-pbus-csr-v3-2-e0cca1f4d394@kernel.org>
- <20250224055216.o23dzwimrghbr2ow@thinkpad>
- <Z7xEZPpWLQjTMnIz@lore-desk>
+	id 1tmYcT-0000000DuTt-0y8k;
+	Mon, 24 Feb 2025 13:35:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740404135;
+	bh=0+SnZnG6TPNZQrP0m+qSvmgEgFuRVE60uINmRg9g9ys=;
+	h=From:Date:Subject:To:Cc:From;
+	b=oLsQveRHjmirSaFKKszubQA9tkVE/oUsNKA5b30Trd7O6jr6D2lnx/wesfMVSc/1/
+	 i7k2Y9EeoyAyvoJ6sGrnTIn08ORB8AxtTCXUc8wvDhyzSHrhQShLl5d9hZFCL0mzyr
+	 rNawY1es6aW9/OTWn+bfqugTlh/rFFAu70LsLPOnmOAE5U6lDtHpXHCmocMNOGKAeV
+	 pXyEkkClcxDNRQfDt/v13C98BjFeTurk2SYasjFNXz/6R6qq4W+tJCjzKN3EwakbZR
+	 B3loXNBZw4G9rNWoo7EwWjUtWKgqEHvaSa6xnGp8mL1J2EtSJWeWm5knLhei+SKpFB
+	 Q3r7EyBi/Kd8Q==
+Received: from yukiji.home (lfbn-tou-1-1147-231.w90-76.abo.wanadoo.fr [90.76.208.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BB2D317E00EC;
+	Mon, 24 Feb 2025 14:35:34 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Mon, 24 Feb 2025 14:34:14 +0100
+Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Add display
+ on DSI0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <Z7xEZPpWLQjTMnIz@lore-desk>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250224-mt8395-genio-1200-evk-enable-dsi-panel-v1-1-74f31cf48a43@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAFV1vGcC/5WPwW6DMAyGXwXlPKMkQJeiadp7VD2Y4FFrIe4SW
+ lWq+u4LZdcddvxs+f9+31WmxJRVX91VoitnlljAvFTKnzBOBDwWVlbbTlurYV5cs+9gosgCxmo
+ NdP0CijgEgjEznDFSANKvjrzFEcmrEnZO9Mm3p+hw3DjR96X4lm2oBswEXuaZl76KdFvg19mu9
+ zPljM82ffW2LUxjVr+ru12zb8HAWjfIxILenzhKPVJINEX58BICDpKwLoL3v/Kcactrtnat3Zn
+ /5B0fjx+6rlVPSQEAAA==
+X-Change-ID: 20250220-mt8395-genio-1200-evk-enable-dsi-panel-e078ec2adaec
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740404134; l=5964;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=0+SnZnG6TPNZQrP0m+qSvmgEgFuRVE60uINmRg9g9ys=;
+ b=AAKAfD3Q5a6mZsY6njOsoX7F6kFlJNNhLg8r85Kp3C0zppdAJKg05NDGDW0Z4EhhS98Zn2sOa
+ /fF61134ShmCZ8XUb+WNZO3QgPIwZ7trOPgtIKu0Mi+txdegTGpvZEV
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_051837_819961_19C98BA1 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20250224_053537_430043_8603E515 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,61 +90,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 24, 2025 at 11:05:24AM +0100, Lorenzo Bianconi wrote:
-> > On Sat, Feb 22, 2025 at 11:43:45AM +0100, Lorenzo Bianconi wrote:
-> 
-> [...]
-> 
-> > > +
-> > > +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
-> > > +	if (!entry)
-> > > +		return -EINVAL;
-> > 
-> > -ENODEV or -ENOMEM
-> 
-> ack, I will fix it in v4
-> 
-> > 
-> > > +
-> > > +	addr = entry->res->start - entry->offset;
-> > > +	err = regmap_write(pbus_regmap, args[0], lower_32_bits(addr));
-> > > +	if (err)
-> > 
-> > MMIO write is not supposed to fail.
-> 
-> ack, I will fix it in v4
-> 
-> > 
-> > > +		return err;
-> > > +
-> > > +	size = lower_32_bits(resource_size(entry->res));
-> > > +	mask = size ? GENMASK(31, __fls(size)) : 0;
-> > 
-> > Size of MEM region could be 0?
-> 
-> I added this check since we consider just lower_32_bits().
-> Do you think we should remove it?
-> 
+This board has a Startek KD070FHFID078 MIPI-DSI panel on the DSI0
+connector, so add and configure the pipeline connecting VDOSYS0
+components to DSI0, with the needed pinctrl and display nodes in
+devicetree.
 
-Yes please.
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+I've tested this patch on a Mediatek Genio 1200 EVK P1V2 board,
+with a kernel based on linux-next (tag: next-20250224) plus the
+following patchsets:
+- MediaTek MT8195/MT8395 Display Controller Graph [1]
+- Add driver for Himax HX8279 DriverIC panels [2]
 
-> > 
-> > > +	err = regmap_write(pbus_regmap, args[1], mask);
-> > > +	if (err)
-> > 
-> > MMIO write is not supposed to fail.
-> 
-> ack, I will fix it in v4
-> 
-> BTW I will remove your Reviwed-by tag since the patch has changed
-> with respect to the one you added it. Please let me know if you
-> prepfer to keep it.
-> 
+[1] https://lore.kernel.org/all/20250213112008.56394-1-angelogioacchino.delregno@collabora.com/
+[2] https://lore.kernel.org/all/20250218143952.84261-1-angelogioacchino.delregno@collabora.com/
+---
+ .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 125 +++++++++++++++++++--
+ 1 file changed, 118 insertions(+), 7 deletions(-)
 
-Sure, fine with me.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 5950194c9ccb2520d826c4d26f6dc0958a5a17fa..2679727bcf07d6b7d5e8aae5b717c2f31bad7947 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -91,13 +91,12 @@ apu_mem: memory@62000000 {
+ 		};
+ 	};
+ 
+-	backlight_lcd0: backlight-lcd0 {
++	backlight_lcm0: backlight-lcm0 {
+ 		compatible = "pwm-backlight";
+-		pwms = <&disp_pwm0 0 500000>;
+-		enable-gpios = <&pio 47 GPIO_ACTIVE_HIGH>;
+ 		brightness-levels = <0 1023>;
+-		num-interpolated-steps = <1023>;
+ 		default-brightness-level = <576>;
++		num-interpolated-steps = <1023>;
++		pwms = <&disp_pwm0 0 500000>;
+ 	};
+ 
+ 	backlight_lcd1: backlight-lcd1 {
+@@ -150,6 +149,24 @@ button-volume-up {
+ 		};
+ 	};
+ 
++	lcm0_iovcc: regulator-vio18-lcm0 {
++		compatible = "regulator-fixed";
++		regulator-name = "vio18_lcm0";
++		enable-active-high;
++		gpio = <&pio 47 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&dsi0_vreg_en_pins>;
++		vin-supply = <&mt6360_ldo2>;
++	};
++
++	lcm0_vddp: regulator-vsys-lcm0 {
++		compatible = "regulator-fixed";
++		regulator-name = "vsys_lcm0";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&mt6360_ldo1>;
++	};
++
+ 	wifi_fixed_3v3: regulator-2 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "wifi_3v3";
+@@ -163,14 +180,65 @@ wifi_fixed_3v3: regulator-2 {
+ 
+ &disp_pwm0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pwm0_default_pins>;
++	pinctrl-0 = <&disp_pwm0_pins>;
+ 	status = "okay";
+ };
+ 
++&dither0_in {
++	remote-endpoint = <&gamma0_out>;
++};
++
++&dither0_out {
++	remote-endpoint = <&dsi0_in>;
++};
++
+ &dmic_codec {
+ 	wakeup-delay-ms = <200>;
+ };
+ 
++&dsi0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	panel@0 {
++		compatible = "startek,kd070fhfid078", "himax,hx8279";
++		reg = <0>;
++		backlight = <&backlight_lcm0>;
++		enable-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 108 GPIO_ACTIVE_HIGH>;
++		iovcc-supply = <&lcm0_iovcc>;
++		vdd-supply = <&lcm0_vddp>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&panel_default_pins>;
++
++		port {
++			dsi_panel_in: endpoint {
++				remote-endpoint = <&dsi0_out>;
++			};
++		};
++	};
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			dsi0_in: endpoint {
++				remote-endpoint = <&dither0_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			dsi0_out: endpoint {
++				remote-endpoint = <&dsi_panel_in>;
++			};
++		};
++	};
++};
++
+ &eth {
+ 	phy-mode ="rgmii-rxid";
+ 	phy-handle = <&eth_phy0>;
+@@ -194,6 +262,10 @@ eth_phy0: ethernet-phy@1 {
+ 	};
+ };
+ 
++&gamma0_out {
++	remote-endpoint = <&dither0_in>;
++};
++
+ &gpu {
+ 	mali-supply = <&mt6315_7_vbuck1>;
+ 	status = "okay";
+@@ -346,6 +418,10 @@ &mfg1 {
+ 	domain-supply = <&mt6359_vsram_others_ldo_reg>;
+ };
+ 
++&mipi_tx0 {
++	status = "okay";
++};
++
+ &mmc0 {
+ 	status = "okay";
+ 	pinctrl-names = "default", "state_uhs";
+@@ -428,6 +504,10 @@ &mt6359codec {
+ 	mediatek,mic-type-2 = <1>; /* ACC */
+ };
+ 
++&ovl0_in {
++	remote-endpoint = <&vdosys0_ep_main>;
++};
++
+ &pcie0 {
+ 	pinctrl-names = "default", "idle";
+ 	pinctrl-0 = <&pcie0_default_pins>;
+@@ -705,6 +785,25 @@ pins {
+ 		};
+ 	};
+ 
++	dsi0_vreg_en_pins: dsi0-vreg-en-pins {
++		pins-pwr-en {
++			pinmux = <PINMUX_GPIO47__FUNC_GPIO47>;
++			output-low;
++		};
++	};
++
++	panel_default_pins: panel-default-pins {
++		pins-rst {
++			pinmux = <PINMUX_GPIO108__FUNC_GPIO108>;
++			output-high;
++		};
++
++		pins-en {
++			pinmux = <PINMUX_GPIO48__FUNC_GPIO48>;
++			output-low;
++		};
++	};
++
+ 	pcie0_default_pins: pcie0-default-pins {
+ 		pins {
+ 			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
+@@ -731,8 +830,8 @@ pins {
+ 		};
+ 	};
+ 
+-	pwm0_default_pins: pwm0-default-pins {
+-		pins-cmd-dat {
++	disp_pwm0_pins: disp-pwm0-pins {
++		pins-disp-pwm {
+ 			pinmux = <PINMUX_GPIO97__FUNC_DISP_PWM0>;
+ 		};
+ 	};
+@@ -912,6 +1011,18 @@ &ssusb3 {
+ 	status = "okay";
+ };
+ 
++&vdosys0 {
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		vdosys0_ep_main: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&ovl0_in>;
++		};
++	};
++};
++
+ &xhci0 {
+ 	status = "okay";
+ };
 
-- Mani
+---
+base-commit: 907011b922144e5818f97d7c5a8d9a3c95a336b1
+change-id: 20250220-mt8395-genio-1200-evk-enable-dsi-panel-e078ec2adaec
+prerequisite-message-id: <20250213112008.56394-1-angelogioacchino.delregno@collabora.com>
+prerequisite-patch-id: dd6662f92d7c58415b7e6ae2c576705457a1d4e2
+prerequisite-patch-id: a86d97f71944c3c7a59376b02bda0901a33ee462
+prerequisite-patch-id: 144478e815c29b03a11e4618bdd537d3576fcb59
+prerequisite-message-id: <20250218143952.84261-1-angelogioacchino.delregno@collabora.com>
+prerequisite-patch-id: 72961446cc5b827faac095c2d11121d045f93398
+prerequisite-patch-id: 8c71dca8b54f1619d13aea34dca06c357abe8511
 
+Best regards,
 -- 
-மணிவண்ணன் சதாசிவம்
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
