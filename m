@@ -4,117 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 170EAC021B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 08:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCA5C021B3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 09:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bn1YH9JHbQVqVcSe/2+rXoP+b7JzDEo76hZfWDYpZlM=; b=COa12yxwRrHz7syoG70eQipCFL
-	UFP34RIH02lCAjqqaDCyCt3DKU7bqZ6ZgJwmgLfn8Zyxtydj4IHdGd0zq6rmET5rysHu5RQx/gq/4
-	IBl9EMtvgZGtzkomcX+/QSbnQiIDvG2lvE6aDwQnid4WhLvoqX6SfEHUPddWzKwUNs0wubeBLi6bI
-	NmWsuLG46n3qFYrcDM5CaxqaZoNAGG06kNJ0W+V3NjjWJHJGKe6efmIHXgctu6CZoyNPQMCKv6+4t
-	glNAESEPCD3unbzUYlwdauw/pi1ottUGpFxCJromeZMNKhbEdoFKEKl9vbY66VFFPu/pPnlmxiqz8
-	Ws3nVlVA==;
+	bh=4wwjwYexqjCrBwyffQvZn+gGcCp8wF2h+Zg5VOGi4t8=; b=vueYSAf1y2KBMjnEpip85caIZg
+	SPZ4BnDF5ltmaNmM/Vm3PZyfko/Neah9x5k1j3cKPZm/JInLuJ60PLNrv4thQ2wTfOyVNq1JTX/e2
+	eMRTcSKw3MR3nwJSs8t9k3Vn04vVS3hPqGJ2hE/+TKAbdynttlWJC7A/t6Y5ep46cZcqd+zoTd+H0
+	DSEEF9Yx247xdgXmL9JsdULFo66fbru9wLgoiTydnctWUReAf/WJbhgLmbg4Io9R6vLjJNdWFvvEu
+	WahLEC46aOCXC1pKc9HdQPIl+iUFq7UFMKIBvMsDc5B3kbmdSH0GBdfB9Bw9sSVgjZ2Z0ncamxIj4
+	HoF28wCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmU36-0000000CkEr-0K2v;
-	Mon, 24 Feb 2025 08:42:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tmUKq-0000000CnhO-0uIR;
+	Mon, 24 Feb 2025 09:01:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmTnT-0000000Cgkv-4BJI;
-	Mon, 24 Feb 2025 08:26:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3ABD45C55FD;
-	Mon, 24 Feb 2025 08:26:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC565C4CED6;
-	Mon, 24 Feb 2025 08:26:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740385598;
-	bh=A6eYd0ZNJiH0U96rIxU40Zocx4BmkNKzj1tkXN/ULnU=;
+	id 1tmU1e-0000000CjmX-0EiY;
+	Mon, 24 Feb 2025 08:41:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740386476;
+	bh=k6UdJhBqTfCBUtBvzFMc13KVp885py0a3yzx22j8SYw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TMrSs3GZpY9XHemkM67oFcNS/QKTxMttd+UqCcEEVNmMEtrCr8VlYRbwv0VaIvPN5
-	 +5YBXQTgnPjoY3p2XQ28oEiBnNdUdkxm3LWmBkIruKuDWjslTQDs/AlK4ejTXtGz5f
-	 D8/F74VcH3v58qB2X3U/0KeJPr4uZe8uWltiqnOV5UBIKOFtZ2LGkmDZ/9mXCm7q8Y
-	 UwmeXQmhwSKxXhDmR4E21EZOR0MgEjCjku09ShTmN2qfsufPz8/6+SXO5vTnqXEW+l
-	 W+HW6N5BikTllpMAoJ87bHgHv0gaUl9ulKs7GyL9wtBeHNbvNyVatu1i1Qd8zgCn/z
-	 dW9iHbeCIr0dg==
-Message-ID: <79809c37-84d4-42d6-ab93-9a9d29c687bf@kernel.org>
-Date: Mon, 24 Feb 2025 09:26:31 +0100
+	b=S2TCOFV/QjHPshv+R9JmKMMzNCVLhoJsJrf163iVleicScFawfo6EpMhrjblaUDFi
+	 2m7GIB1gVyA9WBlB34q0myeJ1s+MWJ2gMmEVvr22t2B1GijARFljWmovA4IwOmQTPQ
+	 vf0qgN+YiEjrhM/JFxBZEMeHaHgac7uBQP9p8sAq0f/y3GTQC7v5pkGkBHuv7ZCVLd
+	 2BH3ONXhKe/BxZmr4/Vc7pVCV4oVvLau5BitRWyus3Hy/8tmD7ybMg5cfL+BK05QGx
+	 1K0GrMmXpRwm+qXrKFIMO5qLTgxlZO+htwJQ0Q/+ehjAg+85WzotyvspFpCoEc9F9w
+	 tzdxZW5Ie7/fA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 462BE17E00A3;
+	Mon, 24 Feb 2025 09:41:15 +0100 (CET)
+Message-ID: <771e1460-2372-4ecd-949b-016c1b91adb3@collabora.com>
+Date: Mon, 24 Feb 2025 09:41:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add
- mediatek,pbus-csr phandle array property
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+Subject: Re: [PATCH v4 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
+ for MT8188
+To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
- <20250222-en7581-pcie-pbus-csr-v3-1-e0cca1f4d394@kernel.org>
- <20250223-hulking-goldfish-of-symmetry-cbfed4@krzk-bin>
- <Z7slEJgCQMqp_I6p@lore-desk>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250221074846.14105-1-friday.yang@mediatek.com>
+ <20250221074846.14105-3-friday.yang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <Z7slEJgCQMqp_I6p@lore-desk>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20250221074846.14105-3-friday.yang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_002640_164281_F165E699 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20250224_004118_377745_D69E7ADB 
+X-CRM114-Status: GOOD (  28.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,38 +80,281 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/02/2025 14:39, Lorenzo Bianconi wrote:
->> On Sat, Feb 22, 2025 at 11:43:44AM +0100, Lorenzo Bianconi wrote:
->>> Introduce the mediatek,pbus-csr property for the pbus-csr syscon node
->>> available on EN7581 SoC. The airoha pbus-csr block provides a configuration
->>> interface for the PBUS controller used to detect if a given address is
->>> accessible on PCIe controller.
->>>
->>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->>> ---
->>>  .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml     | 17 +++++++++++++++++
->>>  1 file changed, 17 insertions(+)
->>>
->>
->> You got review tag, so if you decided to skip it, this should be
->> mentioned why.
->>
->>
->> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Il 21/02/25 08:48, Friday Yang ha scritto:
+> From: "Friday Yang" <friday.yang@mediatek.com>
 > 
-> Since I modified the patch with respect to the previous version, I was thinking
+> To prevent handling glitch signals during MTCMOS on/off transitions,
+> SMI requires clamp and reset operations. Parse the reset settings for
+> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
+> genpd callback for the SMI LARBs located in image, camera and IPE
+> subsystems, and apply reset and clamp operations within the callback.
+> 
+> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> ---
+>   drivers/memory/mtk-smi.c | 141 +++++++++++++++++++++++++++++++++++++--
+>   1 file changed, 137 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 5710348f72f6..51235c2a2081 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -10,11 +10,15 @@
+>   #include <linux/err.h>
+>   #include <linux/io.h>
+>   #include <linux/iopoll.h>
+> +#include <linux/mfd/syscon.h>
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+>   #include <linux/of_platform.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+>   #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+>   #include <linux/soc/mediatek/mtk_sip_svc.h>
+>   #include <soc/mediatek/smi.h>
+>   #include <dt-bindings/memory/mt2701-larb-port.h>
+> @@ -36,6 +40,12 @@
+>   #define SMI_DCM				0x300
+>   #define SMI_DUMMY			0x444
+> 
+> +#define SMI_COMMON_CLAMP_EN		0x3c0
+> +#define SMI_COMMON_CLAMP_EN_SET		0x3c4
+> +#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
+> +
+> +#define SMI_SUB_COMM_INPORT_NR		(8)
+> +
+>   /* SMI LARB */
+>   #define SMI_LARB_SLP_CON                0xc
+>   #define SLP_PROT_EN                     BIT(0)
+> @@ -134,6 +144,7 @@ struct mtk_smi_larb_gen {
+>   	unsigned int			larb_direct_to_common_mask;
+>   	unsigned int			flags_general;
+>   	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
+> +	const u8			*clamp_port;
+>   };
+> 
+>   struct mtk_smi {
+> @@ -150,6 +161,7 @@ struct mtk_smi {
+>   };
+> 
+>   struct mtk_smi_larb { /* larb: local arbiter */
+> +	struct device			*dev;
+>   	struct mtk_smi			smi;
+>   	void __iomem			*base;
+>   	struct device			*smi_common_dev; /* common or sub-common dev */
+> @@ -157,6 +169,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
+>   	int				larbid;
+>   	u32				*mmu;
+>   	unsigned char			*bank;
+> +	struct regmap			*sub_comm_syscon;
+> +	u8				sub_comm_inport;
+> +	struct notifier_block		nb;
+> +	struct reset_control		*rst_con;
+>   };
+> 
+>   static int
+> @@ -377,6 +393,19 @@ static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
+>   	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
+>   };
+> 
+> +static const u8 mtk_smi_larb_clamp_port_mt8188[MTK_LARB_NR_MAX] = {
+> +	[9]	= BIT(1), /* larb10 */
+> +	[10]	= BIT(2), /* larb11a */
+> +	[11]	= BIT(2), /* larb11b */
+> +	[12]	= BIT(3), /* larb11c */
+> +	[13]	= BIT(0), /* larb12 */
+> +	[16]	= BIT(1), /* larb15 */
+> +	[17]	= BIT(2), /* larb16a */
+> +	[18]	= BIT(2), /* larb16b */
+> +	[19]	= BIT(3), /* larb17a */
+> +	[20]	= BIT(3), /* larb17b */
+> +};
+> +
+>   static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
+>   	.port_in_larb = {
+>   		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
+> @@ -423,6 +452,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
+>   	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
+>   				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
+>   	.ostd		            = mtk_smi_larb_mt8188_ostd,
+> +	.clamp_port                 = mtk_smi_larb_clamp_port_mt8188,
+>   };
+> 
+>   static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
+> @@ -472,6 +502,46 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
+>   	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+>   }
+> 
+> +static int mtk_smi_larb_clamp_protect_enable(struct device *dev, bool enable)
+> +{
+> +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> +	u32 reg;
+> +	int ret;
+> +
+> +	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
+> +	if (!larb->sub_comm_syscon)
+> +		return -EINVAL;
+> +
+> +	reg = enable ? SMI_COMMON_CLAMP_EN_SET : SMI_COMMON_CLAMP_EN_CLR;
+> +
+> +	ret = regmap_write(larb->sub_comm_syscon, reg,
+> +			   larb->sub_comm_inport);
+> +	if (ret)
+> +		dev_err(dev, "Unable to %s clamp for input port %d: %d\n",
+> +			enable ? "enable" : "disable",
+> +			larb->sub_comm_inport, ret);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_smi_genpd_callback(struct notifier_block *nb,
+> +				  unsigned long flags, void *data)
+> +{
+> +	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
+> +	struct device *dev = larb->dev;
+> +
+> +	if (flags == GENPD_NOTIFY_PRE_ON || flags == GENPD_NOTIFY_PRE_OFF) {
+> +		/* disable related SMI sub-common port */
+> +		mtk_smi_larb_clamp_protect_enable(dev, true);
+> +	} else if (flags == GENPD_NOTIFY_ON) {
+> +		/* enable related SMI sub-common port */
+> +		reset_control_reset(larb->rst_con);
+> +		mtk_smi_larb_clamp_protect_enable(dev, false);
+> +	}
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+>   static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
+>   {
+>   	struct platform_device *smi_com_pdev;
+> @@ -528,6 +598,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+>   	return ret;
+>   }
+> 
+> +static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev = larb->dev;
+> +	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
+> +	u32 larb_id;
+> +	int ret;
+> +
+> +	/**
+> +	 * Only SMI LARBs in camera, image and IPE subsys need to
+> +	 * apply clamp and reset operations, others can be skipped.
+> +	 */
+> +	ret = of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id);
+> +	if (ret)
+> +		return -EINVAL;
+> +	if (!larb_gen->clamp_port || !larb_gen->clamp_port[larb_id])
+> +		return 0;
+> +
+> +	larb->sub_comm_inport = larb_gen->clamp_port[larb_id];
+> +	larb->sub_comm_syscon = syscon_regmap_lookup_by_phandle(dev->of_node,
+> +								"mediatek,smi");
+> +	if (IS_ERR(larb->sub_comm_syscon)) {
+> +		larb->sub_comm_syscon = NULL;
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "Unknown clamp port for larb %d\n", larb_id);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_smi_larb_parse_reset_optional(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev = larb->dev;
+> +	int ret;
+> +
+> +	larb->rst_con = devm_reset_control_get_optional_exclusive(dev, "larb");
+> +	if (!larb->rst_con)
+> +		return 0;
+> +
+> +	larb->nb.notifier_call = mtk_smi_genpd_callback;
+> +	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
+> +	if (ret)
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "Failed to add genpd callback %d\n", ret);
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_smi_larb *larb;
+> @@ -538,6 +655,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   	if (!larb)
+>   		return -ENOMEM;
+> 
+> +	larb->dev = dev;
+>   	larb->larb_gen = of_device_get_match_data(dev);
+>   	larb->base = devm_platform_ioremap_resource(pdev, 0);
+>   	if (IS_ERR(larb->base))
+> @@ -554,15 +672,24 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   	if (ret < 0)
+>   		return ret;
+> 
+> -	pm_runtime_enable(dev);
+> +	ret = mtk_smi_larb_parse_clamp_optional(larb);
+> +	if (ret)
+> +		goto err_link_remove;
+> +
+> +	ret = mtk_smi_larb_parse_reset_optional(larb);
+> +	if (ret)
+> +		goto err_link_remove;
+> +
 
-I know
+To avoid changing functionality, please call pm_runtime_enable() here, before
+component_add().
 
-> you want to review it again before applying the Reviewed-by tag. Added it now.
-That was not my comment. I commented that you must explicitly say that
-you dropped someone's tag.
+If you want to remove the goto, you could (please do it!) instead call
+devm_pm_runtime_enable() and error check.
 
-And docs clearly ask for that:
+Everything else looks good!
 
-"Usually removal of someone's Tested-by or Reviewed-by tags should be
-mentioned in the patch changelog (after the '---' separator)."
+Cheers,
+Angelo
 
-Best regards,
-Krzysztof
+>   	platform_set_drvdata(pdev, larb);
+>   	ret = component_add(dev, &mtk_smi_larb_component_ops);
+>   	if (ret)
+> -		goto err_pm_disable;
+> +		goto err_link_remove;
+> +
+> +	pm_runtime_enable(dev);
+> +
+>   	return 0;
+> 
+> -err_pm_disable:
+> -	pm_runtime_disable(dev);
+> +err_link_remove:
+>   	device_link_remove(dev, larb->smi_common_dev);
+>   	return ret;
+>   }
+> @@ -686,6 +813,11 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
+>   	.init     = mtk_smi_common_mt8195_init,
+>   };
+> 
+> +static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8188 = {
+> +	.type     = MTK_SMI_GEN2_SUB_COMM,
+> +	.has_gals = true,
+> +};
+> +
+>   static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
+>   	.type     = MTK_SMI_GEN2,
+>   	.has_gals = true,
+> @@ -729,6 +861,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
+>   	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
+>   	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
+>   	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
+> +	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
+>   	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
+>   	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
+>   	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+> --
+> 2.46.0
+> 
+
+
 
