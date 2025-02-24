@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF847C021A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 10:16:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7167C021A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 10:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fS+26Rl3p7nRkB21uVSt1gR8cYHE4RYncr2QkHVX3p0=; b=aVUwyOouA5vZPmFy19G60M3fDb
-	COb/TEivKnPtOVuxywmmD0SPq1tkKoUwQC65edbOpt2hUKBiUH1RfTi9GQ1I557dIDGwjwdTZTHVw
-	bbuqH7EjIwF7JUNkVLzyV5Gve2EUz+Wod0VPJAavUzRZ6sEF3VBQl36Shsn+octpvr/Dh4GDo8Q2A
-	isLor5Y0YT1To1c4X0oxSKtl0eDfvD/47ycc301PKz18GD5I/Y/eghBZR+BF0JBx0LbUAh0G0gvkt
-	IwCi7xT4ovZ4DYeC6YydOEm5spPkY9pt/LxSzhIY02T29xDQncMAXRcC67mMuVZsKCZRS8oN/HgCK
-	T3R9LBMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9+bB6gBEckuYi5FCk/0+mHTSaAah2UOvyiek4Gw+13w=; b=dOSX16Usw9Aa81XWqUdYnRl9NQ
+	xNKKHMq2iLCCv0HeTYPNbktBh7XM3wC0JGaskz9GrU7/gKf8KMPwrIi2ozkJ6+cPK+1HQvBX2lWnD
+	CuLf+JbzWZUob05DiEDUqOynBcuDcKpnnQcQFYDB9PcUe4cEBc++KVAFwJlaFuc6AwcLrnFbqh2nr
+	1OSiBm//dM0QeZenOVaA2PjjqkVnWh0la7NHiavGcE0wczOY2ogPFlALR147vZyKO04ujJK9C9v09
+	AwV+hH6JmwOqgQHyEvCC08K5eQ9OXABfcYelV7FxEafdaDJZC+jEPZ/hsSFCA0EKrhhdJ2Mwjuuft
+	9uT4L3+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmVVf-0000000D5Hl-3boH;
-	Mon, 24 Feb 2025 10:16:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tmVl8-0000000D974-30Uz;
+	Mon, 24 Feb 2025 10:32:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmVLa-0000000D2rp-04FO;
-	Mon, 24 Feb 2025 10:05:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B0DF661189;
-	Mon, 24 Feb 2025 10:05:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 881C1C4CED6;
-	Mon, 24 Feb 2025 10:05:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740391527;
-	bh=wEPIfbmOGYU8PFcnIOPk2XbR2HBdhU31GqS8u7rbNnU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P5Pc+1tmhpkcRZCCeN11NsfalT6DwwEIx2gIyIrWPAeoRIBi2eurs9bxsWgiJ87eX
-	 OVSKflTtnS5ZGxn+6TR7ibhqEe2h337VuaeQ3WzEhoKbvv+8sPSQ6JYezBtZK/1Yda
-	 CicWrE0UKmdulEgb8TNqdjuA7ZGzLy7EHRzSPn7/lY3hd7ukOxVHKvdqY20aqw51kN
-	 4TKQeXN9ysstGViRPBQh+ljrdBWGjlifPXl5K3KuU43t0d/BO0BLgpmNgIpTJzGhpp
-	 GiuO60mVLEpEHeKbc16uSt7U4OWBaGunMfgB1nZSmiJ3BhFUrzfvDDVz3slPQZj/V4
-	 K4CZvSz3lEBCA==
-Date: Mon, 24 Feb 2025 11:05:24 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
- for EN7581 SoC
-Message-ID: <Z7xEZPpWLQjTMnIz@lore-desk>
-References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
- <20250222-en7581-pcie-pbus-csr-v3-2-e0cca1f4d394@kernel.org>
- <20250224055216.o23dzwimrghbr2ow@thinkpad>
+	id 1tmVgS-0000000D7tX-3aEC;
+	Mon, 24 Feb 2025 10:27:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740392850;
+	bh=58mOQSEzO1TyVtwzbSqqgxMRd/iPYGw37WbmD25YxWk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=g5WEDT6ebSXT+N7vc6Re2Ur1ATaIdAxQByD4Atsi5Wp1+AFdnuESgEbgUKJDohOeV
+	 yEevjWJLx29bbZh1KIw+izJt28pYTU8Z9DGNAWAqCHNaATYhn4k9RH/I2di9KN7GlO
+	 regBIXKzP0ebx7TokhwHzNp0u8a7gkJxk6xG0whoQcCok2dBIg6NUOVUro4JluBd8y
+	 72FXW9i3rf89pgPPfKfpdWEBrn9/s99Ze7cP7JduMJfbsZo/dszEB8S1EqTHreC7Yc
+	 OFWQ8Tg3+QFhakC59Tlc49lUUHEPT1dqdb9sr0jw/euLP1VSv9NCoRo7/yc+cmmj2p
+	 NvVs6vPm4beIA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E2BF617E019E;
+	Mon, 24 Feb 2025 11:27:29 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20250221-fix-mtk8390-genio-common-dup-regulator-name-v1-1-92f7b9f7a414@collabora.com>
+References: <20250221-fix-mtk8390-genio-common-dup-regulator-name-v1-1-92f7b9f7a414@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Fix
+ duplicated regulator name
+Message-Id: <174039284983.36653.14029465967864965883.b4-ty@collabora.com>
+Date: Mon, 24 Feb 2025 11:27:29 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9HSvn9LCGzDjJLIz"
-Content-Disposition: inline
-In-Reply-To: <20250224055216.o23dzwimrghbr2ow@thinkpad>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250224_022733_077698_7F5D1DFF 
+X-CRM114-Status: UNSURE (   6.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,79 +80,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 21 Feb 2025 09:49:52 +0100, Louis-Alexis Eyraud wrote:
+> usb_p2_vbus regulator has the same regulator-name property value as
+> sdio_fixed_3v3, so change it to avoid this.
+> 
+> 
 
---9HSvn9LCGzDjJLIz
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to v6.14-next/dts64, thanks!
 
-> On Sat, Feb 22, 2025 at 11:43:45AM +0100, Lorenzo Bianconi wrote:
+[1/1] arm64: dts: mediatek: mt8390-genio-common: Fix duplicated regulator name
+      commit: 8020b233c6f166d703ee1d3b065fee502bccb8f5
 
-[...]
+Cheers,
+Angelo
 
-> > +
-> > +	entry =3D resource_list_first_type(&host->windows, IORESOURCE_MEM);
-> > +	if (!entry)
-> > +		return -EINVAL;
->=20
-> -ENODEV or -ENOMEM
 
-ack, I will fix it in v4
-
->=20
-> > +
-> > +	addr =3D entry->res->start - entry->offset;
-> > +	err =3D regmap_write(pbus_regmap, args[0], lower_32_bits(addr));
-> > +	if (err)
->=20
-> MMIO write is not supposed to fail.
-
-ack, I will fix it in v4
-
->=20
-> > +		return err;
-> > +
-> > +	size =3D lower_32_bits(resource_size(entry->res));
-> > +	mask =3D size ? GENMASK(31, __fls(size)) : 0;
->=20
-> Size of MEM region could be 0?
-
-I added this check since we consider just lower_32_bits().
-Do you think we should remove it?
-
->=20
-> > +	err =3D regmap_write(pbus_regmap, args[1], mask);
-> > +	if (err)
->=20
-> MMIO write is not supposed to fail.
-
-ack, I will fix it in v4
-
-BTW I will remove your Reviwed-by tag since the patch has changed
-with respect to the one you added it. Please let me know if you
-prepfer to keep it.
-
-Regards,
-Lorenzo
-
->=20
-> - Mani
->=20
-> --=20
-> =E0=AE=AE=E0=AE=A3=E0=AE=BF=E0=AE=B5=E0=AE=A3=E0=AF=8D=E0=AE=A3=E0=AE=A9=
-=E0=AF=8D =E0=AE=9A=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AE=BF=E0=AE=B5=E0=AE=AE=
-=E0=AF=8D
-
---9HSvn9LCGzDjJLIz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ7xEZAAKCRA6cBh0uS2t
-rDHbAQCOVe744bx7qYVotAU7cnjssZp8JuF9Yjujz5rxPDkOmQEAiu1GLPn0lTz9
-yCYh9rg8gckaHCPDrNtWImF2kRicoQ8=
-=UbPO
------END PGP SIGNATURE-----
-
---9HSvn9LCGzDjJLIz--
 
