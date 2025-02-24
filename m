@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697E0C021B3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 05:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD25FC021B3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 05:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sqF2oB0fOJ00qITszHytsg//Jw5NU1rfZI3/hzZUwto=; b=zV1Qmz62aD0vRLfhmXS8JsBHva
-	jehfi5KurFKWD1x4g58yt/ifoERaVy8jy5tvvnqkZl9eAOTW4E4amG1bovLzLyaiF6CSMFKDMYjn4
-	mGgbi+nx0wIGUqSXVtqPoSQJWf5XJMQiw7okXCAtmwQesE0n8NqDnwJ0aeOpZDEOfJWPHujSw5jgu
-	76ru7Oc0VD526FSpperaFa84C3+hDcQrMbrRdjUV8fMv9NzUK9cuAlOuRnWuXS+RUWVz+elbMPJkP
-	+xgI5VPwZSTHHHWJegy4nIUVR+TLEX5kZR2ic4Fb0IM2QSj6v1prEbi6mh1qKF5W8R8fvYZlJS04j
-	CleRSvTg==;
+	bh=KMGZVixZMsM1QUrt21MIcd+lH0Pr9ebQZcDM8qRaS2Y=; b=mB6mbd4E5dtdsRJQwpeVneozIE
+	5Z+VdzTqBIHP1OmfBv5REDipHOb0dvuuGJK2Slj8YoS6BFTQmsSFmasEUUgiuF4GZdusuxdHeuxCe
+	NoVOKziRGfjmhz0/b2tmjBEXPCOdGME8tmO7JQSVd9zkXFcPXgRZr8J7P2cZInGLVLDTKxaxewgRd
+	D8yR/9eRE2D8mSCjZLy5TEE4+zGvxZmYq8EQN4e5OnhBCUgaDwW2olInOIxXcFKfFWhigyVxnpr0D
+	f7ERfk+zI4oAnLfW8WzRjnKZ3XozmeVjO2a5OBdLjKYWhHKrsuv8mMjm7XwarikXZ1hyZ1GGeW0XP
+	JM31X/WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmRHd-0000000CNtf-1TUb;
-	Mon, 24 Feb 2025 05:45:37 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1tmRPi-0000000COKs-3kVT;
+	Mon, 24 Feb 2025 05:53:58 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmRG4-0000000CNoE-3DY3
+	id 1tmROA-0000000COE0-3yxt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Feb 2025 05:44:02 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2211acda7f6so85655205ad.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Feb 2025 21:43:59 -0800 (PST)
+	Mon, 24 Feb 2025 05:52:24 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-220c8cf98bbso89433845ad.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 23 Feb 2025 21:52:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740375839; x=1740980639; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1740376342; x=1740981142; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=sqF2oB0fOJ00qITszHytsg//Jw5NU1rfZI3/hzZUwto=;
-        b=apTyROOAUmkoBvayYNbD5xUWBmUqLmVikyV6ybqRvo6NzByzVcyJ2JimVgomXCwjgV
-         AMhYkEfEVodNHnc5/9yqPGNMA6hbBzug4SFsLzlDc42BtFvS9myg8D+jtoHiC+prnRQM
-         iuzKQ6mbYEtQ9kz2x9pbvN71OKB/NdVsp4d/KS10Vhv0DlekbMNk0I9jHWpnZr2W6qyb
-         fWmdMUCa/gfH5YleZTvPHOJrSiVJLFKBkXVH3IzuXVQiFhF9QEFJa1ci0wHJ/5qLgw0G
-         u53eJCcf51SbEjFs1XOTEE3qll3+1DPo/P0peyZXlm9KoOKY7dlqOl9J6voVbiPxZbFq
-         6Mcw==
+        bh=KMGZVixZMsM1QUrt21MIcd+lH0Pr9ebQZcDM8qRaS2Y=;
+        b=WrvzEC4kTxY6xeoIStMf0Wu0QJTNQCuHvBx/LMN3EU6hkmYavelyVf2X93enShULBq
+         zurEZSxF5ajjeIwh8R9TNGgTpSkWtjnWcFGuDSGsldzsBcTmkNFI1NKB/Db+nheh5SyB
+         CjCpyZHlsv/PzGKvz/rwTQachKT6dVdjnTu+UbB8jtL4lxDwdmBcGA+annxgI4yxBrUN
+         FXzoUioDY5+c7Ex1wBr81PCUPUl/WMG3Rm82exaiScIv0CEFPyRRU1ilE9/3/BBX4nNj
+         7XAFaZgX8pJRigP9q4cuDx6iR2qE+BIyFFss1yQ9fyRL3II1fHBO+ByXHwooCZrcKQds
+         uZ8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740375839; x=1740980639;
+        d=1e100.net; s=20230601; t=1740376342; x=1740981142;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sqF2oB0fOJ00qITszHytsg//Jw5NU1rfZI3/hzZUwto=;
-        b=jORYUxxuujymdNy8i1NATkd5zXb/1b0kgo60KzACxV8vDWu9LhiEN2MUqj7W51Yu9Y
-         KnTKVdMi9+oVVamuk01h1BX9bbO44w2K+TpcMfYPC2HPO0WDqv+4Q5gvZ7M9JYaMLALw
-         oRj336XlAIqGERQoT8KEYGiYKouCExQwzi6/gAQXebiacHMazVep0AvSqzDhXqaB4Pt8
-         QwLLQop+rItVymzngIIgWixevK/QDhwQ545k2QKsGMAY07R7MrKJRFOBVtDa2rEFwPGU
-         Cd0ZyUL++T+4YGg0KIsscpL3wwGE6ygTLyV6pxIAXnktcYrBszGcebl0ZbSzTUV1Vc0B
-         JLcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVh+Cc/926CTz84ZxTfJi19+ea1samP9PRpUQRAWxXGVGVRKZW7IqU2C3VUDtL1a2nqBkvcI9dBy9+uBEbfPw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxcu7wKUu1EoESjoRuuNRGX9oT0XwUhUBAh+UZiRaldyGVXuyrL
-	p4W8lUQgCdt6GH3QcQJ6DTHQRmCw5Z/gAi993UDQ/TCxEyQP54i/UeNmpG91JQ==
-X-Gm-Gg: ASbGncvJ0nmux8SRr3H0skgzH/LOK9pYKcuXG/JIa0eS6+KVlusIIPCoNYOtpPoOFEG
-	irhKCFVcyfThAzR2VVRFvnd0KCdweR/0MexFkh5k55jg10Z1LG6zoSwplw6BTg8mo++R61ShCSW
-	6fgKWkYqhpsqhGEHRZ+gMahdN5o59ZkDUdfoN8znQnlDsmS3wWZkaOpnmjvY64/Rm7nztmq3Rwr
-	FPgg4Sh72wWAhkKqzUpbPTZCcjcmMOPBfrO3DdwNO5jcXNb9Avd6lXADRl32MWFlqAyE81ee0Nr
-	NSYHx/3Vy7/6FVKJ0WTMpecQ7keDDdxOFFOH
-X-Google-Smtp-Source: AGHT+IEiXXDmNWiIoyS4g/sMa+CHtSKXB9iHnryoV5l5+xYp1a39XIVItxTv64eAI9cSRTAKN1SUlg==
-X-Received: by 2002:a05:6a20:6a0b:b0:1e1:ad39:cc5c with SMTP id adf61e73a8af0-1eef3c7718dmr22630530637.14.1740375839448;
-        Sun, 23 Feb 2025 21:43:59 -0800 (PST)
+        bh=KMGZVixZMsM1QUrt21MIcd+lH0Pr9ebQZcDM8qRaS2Y=;
+        b=bxRnkegs0WNWkksKvDRd72rjqfx0YDCEo8FR8uTbGAGfcSKBlGFmtQADUSbI7VEVpq
+         KrZrlmTi03t7PfkBUfOGtSZmuzRAemPZ9FAeqRzAumatreUHBjBtzV+QayNmpnZhSWlp
+         sjmFhgB79lImuWU06qJjn7+abUPIDi37jJ3mn4Kc31hShagYp1BfcMtIPrSrx9QKDht3
+         WpIN3QD8wvlESKY79/2Ofgk3TmMU8cRWVF1CulTdBMNYZvzlusPr4cAP8SGHo9R6vPkG
+         OdHjtkeojCMbXO8PZfwMEygWwoC4vwkIZ2YdIRw/5lFnvB40z8nM1eT2PSinD3WGojys
+         RDzg==
+X-Forwarded-Encrypted: i=1; AJvYcCWwD4WND173gRnuhOt50RQK7xUUNAdSflF5IjBy35jbvJA0CfGWiW3cyEbMXMVQ0cL1/vTb/vuXUh+MlUB+Hg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIexrvXOPBxGMuLeO5ZDzxNhi4P8r8v5eCzmPN6pXMbCxxLHhD
+	z+gv2MtJu4UiAM0k+j5ITE/Q6MYu/7hFowSmRr1joguCj6kTPL6DvqC+9Z2BoA==
+X-Gm-Gg: ASbGncsKcSw7wVVR0sw0qw6Rcy/c10tlL18xK8iUA1/SGAP88qeRlrqV2AUjkhf1zlS
+	0xdqj/6jjxSK73SrMVuA44qWDVGIL5qp+ZKM1f0fRuyArWaQahhM1lZTeFPH0tES7gY76MmK3SP
+	HhR/vk17SCy8hpUM1rgH8C8CnoHke51HfBtlAF+c3kbY7X4S9qA7IckPYywTEY3MpLwuxkPxRVQ
+	4/dZn9xFMAHuDB9CwJwjM3rLzh+4lVRfFmmPS64CGg2srOnVP33vadPhQyP+Zyx588bRNJyuxLW
+	4wHI6SXcFgzRa3DTjjjXDbQj+x360PcfT41I
+X-Google-Smtp-Source: AGHT+IE2ru4PtjCsPp2tarf/l/cdfK16EG3Qcx2wKj6eAZLOtqSbVpSz/KOi9yvw/uq2s9+oluXICA==
+X-Received: by 2002:a05:6a20:9186:b0:1ee:d8c8:4b7f with SMTP id adf61e73a8af0-1eef530072dmr19652797637.25.1740376341985;
+        Sun, 23 Feb 2025 21:52:21 -0800 (PST)
 Received: from thinkpad ([36.255.17.162])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-adf35fb47c4sm11085874a12.31.2025.02.23.21.43.55
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-adb5870cba6sm18479524a12.42.2025.02.23.21.52.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Feb 2025 21:43:58 -0800 (PST)
-Date: Mon, 24 Feb 2025 11:13:53 +0530
+        Sun, 23 Feb 2025 21:52:21 -0800 (PST)
+Date: Mon, 24 Feb 2025 11:22:16 +0530
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Ryder Lee <ryder.lee@mediatek.com>,
@@ -83,19 +83,19 @@ Cc: Ryder Lee <ryder.lee@mediatek.com>,
 	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add
- mediatek,pbus-csr phandle array property
-Message-ID: <20250224054353.c24rcplzsvskzceq@thinkpad>
+Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Configure PBUS_CSR registers
+ for EN7581 SoC
+Message-ID: <20250224055216.o23dzwimrghbr2ow@thinkpad>
 References: <20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org>
- <20250222-en7581-pcie-pbus-csr-v3-1-e0cca1f4d394@kernel.org>
+ <20250222-en7581-pcie-pbus-csr-v3-2-e0cca1f4d394@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250222-en7581-pcie-pbus-csr-v3-1-e0cca1f4d394@kernel.org>
+In-Reply-To: <20250222-en7581-pcie-pbus-csr-v3-2-e0cca1f4d394@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250223_214400_844206_9CE9C5B8 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20250223_215223_017188_7156707D 
+X-CRM114-Status: GOOD (  21.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,75 +110,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 22, 2025 at 11:43:44AM +0100, Lorenzo Bianconi wrote:
-> Introduce the mediatek,pbus-csr property for the pbus-csr syscon node
-> available on EN7581 SoC. The airoha pbus-csr block provides a configuration
-> interface for the PBUS controller used to detect if a given address is
-> accessible on PCIe controller.
+On Sat, Feb 22, 2025 at 11:43:45AM +0100, Lorenzo Bianconi wrote:
+> Configure PBus base address and address mask to allow the hw
+> to detect if a given address is accessible on PCIe controller.
 > 
+> Fixes: f6ab898356dd ("PCI: mediatek-gen3: Add Airoha EN7581 support")
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 34 ++++++++++++++++++++++++++++-
+>  1 file changed, 33 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 0f64e76e2111468e6a453889ead7fbc75804faf7..51103b7624c09ca957c22a25536dc9da25428e48 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/irqchip/chained_irq.h>
+>  #include <linux/irqdomain.h>
+>  #include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/msi.h>
+>  #include <linux/of_device.h>
+> @@ -24,6 +25,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <linux/reset.h>
+>  
+>  #include "../pci.h"
+> @@ -930,9 +932,13 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+>  
+>  static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  {
+> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+>  	struct device *dev = pcie->dev;
+> +	struct resource_entry *entry;
+> +	u32 val, args[2], size, mask;
+> +	struct regmap *pbus_regmap;
+> +	resource_size_t addr;
+>  	int err;
+> -	u32 val;
+>  
+>  	/*
+>  	 * The controller may have been left out of reset by the bootloader
+> @@ -944,6 +950,32 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	/* Wait for the time needed to complete the reset lines assert. */
+>  	msleep(PCIE_EN7581_RESET_TIME_MS);
+>  
+> +	/*
+> +	 * Configure PBus base address and base address mask to allow the
+> +	 * hw to detect if a given address is accessible on PCIe controller.
+> +	 */
+> +	pbus_regmap = syscon_regmap_lookup_by_phandle_args(dev->of_node,
+> +							   "mediatek,pbus-csr",
+> +							   ARRAY_SIZE(args),
+> +							   args);
+> +	if (IS_ERR(pbus_regmap))
+> +		return PTR_ERR(pbus_regmap);
+> +
+> +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+> +	if (!entry)
+> +		return -EINVAL;
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+-ENODEV or -ENOMEM
+
+> +
+> +	addr = entry->res->start - entry->offset;
+> +	err = regmap_write(pbus_regmap, args[0], lower_32_bits(addr));
+> +	if (err)
+
+MMIO write is not supposed to fail.
+
+> +		return err;
+> +
+> +	size = lower_32_bits(resource_size(entry->res));
+> +	mask = size ? GENMASK(31, __fls(size)) : 0;
+
+Size of MEM region could be 0?
+
+> +	err = regmap_write(pbus_regmap, args[1], mask);
+> +	if (err)
+
+MMIO write is not supposed to fail.
 
 - Mani
-
-> ---
->  .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml     | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> index f05aab2b1addcac91d4685d7d94f421814822b92..162406e0691a81044406aa8f9e60605d0d917811 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -109,6 +109,17 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  mediatek,pbus-csr:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      - items:
-> +          - description: phandle to pbus-csr syscon
-> +          - description: offset of pbus-csr base address register
-> +          - description: offset of pbus-csr base address mask register
-> +    description:
-> +      Phandle with two arguments to the syscon node used to detect if
-> +      a given address is accessible on PCIe controller.
-> +
->    '#interrupt-cells':
->      const: 1
->  
-> @@ -168,6 +179,8 @@ allOf:
->            minItems: 1
->            maxItems: 2
->  
-> +        mediatek,pbus-csr: false
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -197,6 +210,8 @@ allOf:
->            minItems: 1
->            maxItems: 2
->  
-> +        mediatek,pbus-csr: false
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -224,6 +239,8 @@ allOf:
->            minItems: 1
->            maxItems: 2
->  
-> +        mediatek,pbus-csr: false
-> +
->    - if:
->        properties:
->          compatible:
-> 
-> -- 
-> 2.48.1
-> 
 
 -- 
 மணிவண்ணன் சதாசிவம்
