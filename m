@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FAFC021A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 10:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1370EC021A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 10:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=33I10h+7nHN9WWkfMc3v+GlsOaYaEyXk/K9NAesnYxA=; b=sqAq+YT7LMDdLbx/p6PxSnEjIv
-	OQaiWcRQX6Y9pXxqqEtIXQIqaHP7TmdC3t9mAcyiKIYRbb4aADLd6IrXLvWtK7q5S4kNAa/AQCEEE
-	gGD6KmBOB2yOM865+bQ/GuEYMIuGUW2kPImbxs5JxSYXyWoHzIXbV1A2jW3nfHyrZSiupNP74WgjB
-	Gs04XShOgBa8N/+k+7snh8bvFk0NTHb0rLXADThi+76x9T3V3+23ml1bsm9sgm8TWpiMeNfR3Mcb4
-	W0HIqpqTz+OJete4eLPG+0uNJC8NUKpgJNolIEwdE5LyYLr7r76A6k3qJ09qJgnFTf+DjiSsIQ2YJ
-	NY45kjjg==;
+	bh=j9ewN9UcK/O8IjxS4nzCWkIr6XMGt3xZkhfiGiwkBrw=; b=nMd6VFYs+KP3qTdXAfkuLMS4xI
+	/zxTiYAAKH7dnf4Fza3CYfea/hnQczeNdLCTstoIhxdNLDK0x9mrmxmjGHNIweAK54kL07h0etkrA
+	lC0gbBhRPWpE4DTOqmZFLZGzChed6decpUvvNeCCRZSvCANo7nCGNWWiKZoxmj2QRyNb6v4vpkAeR
+	ztbonlB+Dsp+W6HR/ORyoiV7O6FEhg6YFCWmjVooQPi2SGHNlVIuEANz2WmGbgMMxZsyUM/ASksqT
+	C6oEYTCgcjvZ9JqnVVYLWfIekC0d8dU2z9Sjkg9Exnv4Nww46fOKo068h7RlsPNr/HCnI3aFH1Z9v
+	dABPhpHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmW5V-0000000DDuA-11Bd;
-	Mon, 24 Feb 2025 10:53:25 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1tmW6x-0000000DELi-1E9y;
+	Mon, 24 Feb 2025 10:54:55 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmW34-0000000DD28-3rss
+	id 1tmW3I-0000000DD8y-0nE4
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Feb 2025 10:50:56 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-3072f8dc069so44673631fa.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Feb 2025 02:50:54 -0800 (PST)
+	Mon, 24 Feb 2025 10:51:09 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-54524740032so4466098e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Feb 2025 02:51:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1740394253; x=1740999053; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1740394266; x=1740999066; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=33I10h+7nHN9WWkfMc3v+GlsOaYaEyXk/K9NAesnYxA=;
-        b=O9EwDsoRETUTm1ev5ZQ7HQ/Fknky8INDmJJW+qhrFDVMPFBbPJ2OfL4R9Gs1+dvMiU
-         dCAU82kmDEQA1ZHADUa73AmxQ/82BtzkcX/9fCNBzyRhPlOx0Pox799sgS/D2bdFikAp
-         XB3jKEp/xhG3+8ZFhvCB3hKtREkrG2GcUdVPc=
+        bh=j9ewN9UcK/O8IjxS4nzCWkIr6XMGt3xZkhfiGiwkBrw=;
+        b=YFWua4ZURvROpAXbHSfcn+cOQY3Ib5nepMcOjwZPobvKAo2uTuJnkiIpsLtcsmear6
+         Redf3hfx+/9vLPWVi+mbD7SK1GcdhpTwnLfrHQQ50Iz59fSnX2GXtKX9lZPKsRE1ZOUG
+         apSmx0BqujtzorxPbmyuQYAWbafFXdsL2xgHM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740394253; x=1740999053;
+        d=1e100.net; s=20230601; t=1740394266; x=1740999066;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=33I10h+7nHN9WWkfMc3v+GlsOaYaEyXk/K9NAesnYxA=;
-        b=eBLeqGg+EUyeduafGK2uc6FUOG99H4n/gTyhd5teSrOeHZ0nc4AKlegbAv1bkvWaJ4
-         8WNmbqfrUwetj7U9hrh1cacH1nh1Ec108KpqR1fHzNWoPW5gMLBMR9Gbzr7YxJG0Gk2v
-         ZHyFsHX6hm1Qi7vRmmlvNDwgx3bzjQKkHaF/2J7qujvlteU3gzPUoNpufILkiA5eQB91
-         cmEoF2OjyL+5esbZDqnLZdZsZLjOr3oObk7ykPAjM+Kc6jbkypNBT0YBinUVMgie/CAr
-         yIYB/Jcg07GTsTQJzmGYYRuLTXtR1mlxuDhgLtTsOMABzOhoDnvFbA+HrNHSontKMXy2
-         9Yng==
-X-Gm-Message-State: AOJu0Yxe78feWsW/cRwoyuXI8Jp5Qt1C5mIr6nK5mTys/9QMKjEl/scD
-	TOIbPo0P24O9mbydYx/RnR15EV/OcAIT91rXU2hfcC6KZqytZbCVxLX/ot2JxBF2gUvDCWCA+yK
-	SuH98DZiiP2ruAM3RUX6uaB6rOI1JMC0j3j4c
-X-Gm-Gg: ASbGncvIf6hIxshfY6anhosY3q8rOmnKZAQNqhFGPMoltbMf1NppDJoXz/QMiPgvgt/
-	FGWCtFys/+q/pYHEBnaT7PsojDPKRvpC+1N6dA8bRf86+ct1kHahIO7BGKI/cOsh/meMoHoPhBh
-	Oart1w6cj+HU9Pn4LutAb8MK1X7NLbqmNYPcA=
-X-Google-Smtp-Source: AGHT+IHNRMFdVG+U7OWDssiE+FdC7MFPSlPh3k/wUhdWTrMt1I2HXTRNphSxg61+hQ7uwUEjQWDTi1xNW22wWxWU8i0=
-X-Received: by 2002:a2e:8197:0:b0:308:f3f7:49bc with SMTP id
- 38308e7fff4ca-30a59895e21mr41620201fa.16.1740394253010; Mon, 24 Feb 2025
- 02:50:53 -0800 (PST)
+        bh=j9ewN9UcK/O8IjxS4nzCWkIr6XMGt3xZkhfiGiwkBrw=;
+        b=wcayg6EyUEHzMG+sDoWLb524xBtiQauu4e/obHJpG76ugH5v9VeKeCqTYULQ+yYVc2
+         PwPUHNpkUARQK2TOP7gBjeFuo2XQ1g9czzum/f8ji5av9AjUZdmeh06ERjIuBhovOH48
+         EljG7SEEOhOQzirHkGsCt8vZE7PHuyRA831eVjln9X/FJXyc9x7zXCPsS4UvkZNmzeIw
+         1rzNDvGhLmDmB5I4Hi7r3DzaD0MN8n93IJVtXmMnN2+su1vxLvreGDroJGMBKxdI+gwu
+         up10oZLRR7TxTkN5fCckZvPpl0rZpgVjEB6N2nDV5/2Rt4WzG36UGkXJ0E/xfciXj9bt
+         DyXA==
+X-Gm-Message-State: AOJu0YwCabcGmowv3IgfScyLJmeVOUngztqaEO258D65fnu7oveGZ8og
+	rzTF3hXd+l0qpmplB9fUSzg0iTESy5PnMFEkYecaDdn+DLQ06C/mUMpfgu/56cNtHCdgAZMwN64
+	5SA95McGBVs44fuDSmAo5gjeVDmp/RcJytNtg
+X-Gm-Gg: ASbGncvIvd/EQZuH5xk1T8AIg8qaXzNgffziE6VyLqvcatIAYo6pxgKFWd4R7oUIqcn
+	K8KF7QDpP8/NiJTclzwMoO55NhNbaxvCVh5bZAZHxdWPY0IjOMPpeu7h0GFEod8RKQQPeJ4xhC9
+	yrK1k+3fAKVfcXmw79UCEv7+6OqV7GqHXd9dY=
+X-Google-Smtp-Source: AGHT+IHt7LwH1FhfjAD5OKjp2mvKbAZ/8l+aQ1Ipxz03xtQO7zWSEdSFIHFgBDAxXVoiGz8lGaTL7HUC1kS6yhy7A7E=
+X-Received: by 2002:a05:6512:3e08:b0:545:1d25:4604 with SMTP id
+ 2adb3069b0e04-54838ef07c7mr5016745e87.13.1740394266393; Mon, 24 Feb 2025
+ 02:51:06 -0800 (PST)
 MIME-Version: 1.0
-References: <20250220110948.45596-1-angelogioacchino.delregno@collabora.com> <20250220110948.45596-2-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250220110948.45596-2-angelogioacchino.delregno@collabora.com>
+References: <20250220110948.45596-1-angelogioacchino.delregno@collabora.com> <20250220110948.45596-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250220110948.45596-4-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 24 Feb 2025 18:50:41 +0800
-X-Gm-Features: AWEUYZm0UHtGw-8b7DN3edPwKb-1ZcVXmj8EE7bXKkQWur4lNuL40yg5sa6u8YU
-Message-ID: <CAGXv+5EBiYwjNeocGh0ZjWi5mzOZr_CfS6H+7au5vgQgeigUfg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/4] arm64: dts: mediatek: mt8188: Add base display
- controller graph
+Date: Mon, 24 Feb 2025 18:50:55 +0800
+X-Gm-Features: AWEUYZkS0SprGNFPq1iPBVTH9fxdvLxcztVS14fJMBAWX6iv5wuTONgtw46vcv0
+Message-ID: <CAGXv+5GwY28s3m5jXX_CqKfK6iehJRhrwbEvd2=7Qn3u=L=mLQ@mail.gmail.com>
+Subject: Re: [PATCH v1 3/4] arm64: dts: mediatek: mt8188-geralt: Add graph for
+ DSI and DP displays
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org, 
 	conor+dt@kernel.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, 
@@ -77,8 +77,9 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_025054_993122_B20C8894 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20250224_025108_226363_9DF6AFE1 
+X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,266 +94,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 20, 2025 at 7:13=E2=80=AFPM AngeloGioacchino Del Regno
+On Thu, Feb 20, 2025 at 7:16=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The display related IPs in MT8188 are flexible and support being
-> interconnected with different instances of DDP IPs and/or with
-> different DDP IPs, forming a full Display Data Path that ends
-> with an actual display output, which is board specific.
->
-> Add a common graph in the main mt8188.dtsi devicetree, which is
-> shared between all of the currently supported boards.
-> All boards featuring any display functionality will extend this
-> common graph to hook the display controller of the SoC to their
-> specific output port(s).
+> The base SoC devicetree now defines a display controller graph:
+> connect the board specific outputs (eDP internal display, DP
+> external display) to fully migrate Cherry and make it finally
+> possible to make Chromebooks and other board types to coexist
+> without per-board driver modifications.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 
 Tested-by: Chen-Yu Tsai <wenst@chromium.org> # On MT8188 Ciri (int. and ext=
 .)
-
-> ---
->  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 140 +++++++++++++++++++++++
->  1 file changed, 140 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8188.dtsi
-> index c226998b7e47..4437b1820f26 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> @@ -2868,6 +2868,23 @@ ovl0: ovl@1c000000 {
->                         iommus =3D <&vdo_iommu M4U_PORT_L0_DISP_OVL0_RDMA=
-0>;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x0000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       ovl0_in: endpoint { };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       ovl0_out: endpoint {
-> +                                               remote-endpoint =3D <&rdm=
-a0_in>;
-> +                                       };
-> +                               };
-> +                       };
->                 };
->
->                 rdma0: rdma@1c002000 {
-> @@ -2878,6 +2895,25 @@ rdma0: rdma@1c002000 {
->                         iommus =3D <&vdo_iommu M4U_PORT_L1_DISP_RDMA0>;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x2000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       rdma0_in: endpoint {
-> +                                               remote-endpoint =3D <&ovl=
-0_out>;
-> +                                       };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       rdma0_out: endpoint {
-> +                                               remote-endpoint =3D <&col=
-or0_in>;
-> +                                       };
-> +                               };
-> +                       };
->                 };
->
->                 color0: color@1c003000 {
-> @@ -2887,6 +2923,25 @@ color0: color@1c003000 {
->                         interrupts =3D <GIC_SPI 639 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x3000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       color0_in: endpoint {
-> +                                               remote-endpoint =3D <&rdm=
-a0_out>;
-> +                                       };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       color0_out: endpoint {
-> +                                               remote-endpoint =3D <&cco=
-rr0_in>;
-> +                                       };
-> +                               };
-> +                       };
->                 };
->
->                 ccorr0: ccorr@1c004000 {
-> @@ -2896,6 +2951,25 @@ ccorr0: ccorr@1c004000 {
->                         interrupts =3D <GIC_SPI 640 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x4000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       ccorr0_in: endpoint {
-> +                                               remote-endpoint =3D <&col=
-or0_out>;
-> +                                       };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       ccorr0_out: endpoint {
-> +                                               remote-endpoint =3D <&aal=
-0_in>;
-> +                                       };
-> +                               };
-> +                       };
->                 };
->
->                 aal0: aal@1c005000 {
-> @@ -2905,6 +2979,25 @@ aal0: aal@1c005000 {
->                         interrupts =3D <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x5000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       aal0_in: endpoint {
-> +                                               remote-endpoint =3D <&cco=
-rr0_out>;
-> +                                       };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       aal0_out: endpoint {
-> +                                               remote-endpoint =3D <&gam=
-ma0_in>;
-> +                                       };
-> +                               };
-> +                       };
->                 };
->
->                 gamma0: gamma@1c006000 {
-> @@ -2914,6 +3007,23 @@ gamma0: gamma@1c006000 {
->                         interrupts =3D <GIC_SPI 642 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x6000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       gamma0_in: endpoint {
-> +                                               remote-endpoint =3D <&aal=
-0_out>;
-> +                                       };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       gamma0_out: endpoint { };
-> +                               };
-> +                       };
->                 };
->
->                 dither0: dither@1c007000 {
-> @@ -2923,6 +3033,21 @@ dither0: dither@1c007000 {
->                         interrupts =3D <GIC_SPI 643 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c00XXX=
-X 0x7000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       dither0_in: endpoint { };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       dither0_out: endpoint { };
-> +                               };
-> +                       };
->                 };
->
->                 disp_dsi0: dsi@1c008000 {
-> @@ -3005,6 +3130,21 @@ postmask0: postmask@1c01a000 {
->                         interrupts =3D <GIC_SPI 661 IRQ_TYPE_LEVEL_HIGH 0=
->;
->                         power-domains =3D <&spm MT8188_POWER_DOMAIN_VDOSY=
-S0>;
->                         mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c01XXX=
-X 0xa000 0x1000>;
-> +
-> +                       ports {
-> +                               #address-cells =3D <1>;
-> +                               #size-cells =3D <0>;
-> +
-> +                               port@0 {
-> +                                       reg =3D <0>;
-> +                                       postmask0_in: endpoint { };
-> +                               };
-> +
-> +                               port@1 {
-> +                                       reg =3D <1>;
-> +                                       postmask0_out: endpoint { };
-> +                               };
-> +                       };
->                 };
->
->                 vdosys0: syscon@1c01d000 {
-> --
-> 2.48.1
->
->
 
