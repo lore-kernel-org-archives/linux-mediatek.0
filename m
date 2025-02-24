@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50867C021A6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18F8C18E7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 13:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsnpX7ZG8E+xuFUY2LX35Pw705pmLN+GGBMsbonMzF8=; b=isWVyZHzAX3miezNvzZZR53N+W
-	iNTpqJcwF1buPUjO92HFixFyZ4pXUYoCPy4nH3GcAwMub8I0042Vdg3YSy2kNxsW5tl48AqDh00hL
-	TeQTYhu4a/3aoFGYUTbf0iDejQK8Zow4NDYv9dS3vXKfKE6nTpngt0GLENmGzRtolc152dkGrgs38
-	ZuSuWm/PrOKiAls5EmGOERbThabqjwb6wbFNh8TmjGV6z4Slu6gD8tv7GXwOglSKETv/HLstlDmco
-	FS+dHQruD5ea1zn21jopWT9QetM1eLbQu1BPPgjmtZOuX/RRuV1PD1/l8OxM+3cRaYBUcm2Kxy7ki
-	2GdY+Nxg==;
+	bh=VdW0tWfY4r0IzjvsCg6sibnvid2sKq0Iz/aZQqfoDaM=; b=kkpZKbrBFeZPGAl/KkV3/kZWRm
+	EXFEmggwZoGLEESKhOyZUhFZbObjG4vuZdxgViMmsxBCmhiTWmWmM7yTD/ZbhAmrrdDHaK6w+gGFf
+	mXTnqnjQQViofLdUAsqHm9Anr98D3qmzlObYKkTzO2UzznxnYeiEXKFzW/3A3z27B0MG6AAsmEdZR
+	QfESajPeFFxE+NwsthNzSD720XSR/g94qD5byXsUAceHwscdTYXWwlpjzCcjOJdC/+WVX2KciM3gG
+	EAIkaDtPKCrD396pA3WtiRuqmnhOkJc5lMKE1PRTEIfOeqfv+03RVwQlXqNZmzxX34XuyZ+M5FI7b
+	5YfREzSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmYHJ-0000000Dn1d-3ff8;
-	Mon, 24 Feb 2025 13:13:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tmYHX-0000000DnIf-1oNN;
+	Mon, 24 Feb 2025 13:13:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmWb7-0000000DMuC-0mQS;
-	Mon, 24 Feb 2025 11:26:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 98EA45C3E0A;
-	Mon, 24 Feb 2025 11:25:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9E17C4CED6;
-	Mon, 24 Feb 2025 11:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740396364;
-	bh=Syook/k3osDoz8HpkUWZ96mxKRz3XOL/uBmVWEWdJH4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UQU63wKMx5jvpBSX5mmQogA49hFIr4TOLS3diWKxKo2wZB1T9A1b1vK1IC7zL2MOq
-	 UdPGPaQaOVjnS4JGm5wFcDaSt0xvXzaOThFYs41k0O0M/CD3gqZvQpZzpHYCXLmvaW
-	 kOFxqsV4G7fu7bx8gX+rRqgN3IbC4X10UIsRhEBh4AkEe8hzl9NlKkuOm2ky+kJ/Qk
-	 Os8k8BFTJF3Dr0xT/BDesl/sHycxZsULtxv2BDOzMGjialJV95vDeIoiwjglgmsu5h
-	 YAb9+vWxVi7Qvn6ojT0BpoeAloBwam1+aTW+sZsMbLNO1AzsYHHZd7bK0WSfaJngNO
-	 itf4ZkC99aJ/w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 24 Feb 2025 12:25:26 +0100
-Subject: [PATCH net-next v7 06/15] net: dsa: mt7530: Enable Rx sptag for
- EN7581 SoC
+	id 1tmXOI-0000000Df3R-2g0K;
+	Mon, 24 Feb 2025 12:16:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740399412;
+	bh=Y15ZhHu7iJ6ibqKhdC9DV8IKCHSBdZW414wrmaSvjaw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Z/8RGydiMIaU4nW0aucQVnOld8I6EDs6fJF5nbrLaiDbJ6y/7rjkEsVSm4uAWLmiB
+	 QnkDqiA73KIG9bqh7Mo7hqY5uMYmh9r6xvbAfh2NG/XeG/B6djdCwc7KfPQ4xHT/TC
+	 127MIVYEkRtBccJhFirtGLPi1rE9oyssDPtIXPl/DIZ2+fUHcZMP6HTNZvhfRQTMOi
+	 KjusILL3zxuCLLoWcnJt1/R9aAFeQ29boM0W3BllfYRzmw1uehpP89yNYNa+PE8GjT
+	 nmMZhBuX5UwIVhYFwfBgNhiHORSU8APTKLmCJjtWGsbkzfXHZvvkejx5hDgaJqiHDQ
+	 bAmQIbXHd5DFg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 289C517E0DE7;
+	Mon, 24 Feb 2025 13:16:52 +0100 (CET)
+Message-ID: <faba9d7a-077d-4372-b4de-0f2da06d3418@collabora.com>
+Date: Mon, 24 Feb 2025 13:16:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250224-airoha-en7581-flowtable-offload-v7-6-b4a22ad8364e@kernel.org>
-References: <20250224-airoha-en7581-flowtable-offload-v7-0-b4a22ad8364e@kernel.org>
-In-Reply-To: <20250224-airoha-en7581-flowtable-offload-v7-0-b4a22ad8364e@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- "Chester A. Unal" <chester.a.unal@arinc9.com>, 
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- upstream@airoha.com
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/4] usb: mtk-xhci: add support remote wakeup of mt8196
+To: =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "mathias.nyman@intel.com" <mathias.nyman@intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+References: <20250215100615.808-1-chunfeng.yun@mediatek.com>
+ <20250215100615.808-3-chunfeng.yun@mediatek.com>
+ <7804ef70-efe7-476b-ae5e-bf665bfb4a47@collabora.com>
+ <91de8a46de1f41462ea8aab138e47d75f11e17b9.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <91de8a46de1f41462ea8aab138e47d75f11e17b9.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_032605_336706_69C7C744 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250224_041654_825306_ADA9464E 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,52 +88,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Packet Processor Engine (PPE) module used for hw acceleration on EN7581
-mac block, in order to properly parse packets, requires DSA untagged
-packets on TX side and read DSA tag from DMA descriptor on RX side.
-For this reason, enable RX Special Tag (SPTAG) for EN7581 SoC.
-This is a preliminary patch to enable netfilter flowtable hw offloading
-on EN7581 SoC.
+Il 22/02/25 09:33, Chunfeng Yun (云春峰) ha scritto:
+> On Tue, 2025-02-18 at 09:57 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 15/02/25 11:06, Chunfeng Yun ha scritto:
+>>> There are three USB controllers on mt8196, each controller's wakeup
+>>> control is different, add some specific versions for them.
+>>>
+>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>
+>> Since all of the USB controllers of the MT8196 SoC are behind MTU3,
+>> and
+>> since the wakeup control for all of them will be handled by the MTU3
+>> driver
+>> and *not* by the xhci-mtk driver....
+>>
+>> NACK!
+>>
+>> Please drop this commit.
+> Please help to pick up these patches, I also hate to add these specific
+> wakeup ways, but our haredware designer do not follow the hwip rules
+> sometimes.
+> 
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/dsa/mt7530.c | 5 +++++
- drivers/net/dsa/mt7530.h | 4 ++++
- 2 files changed, 9 insertions(+)
+That makes this commit have sense, then.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8422262febaf73821887e660c4db77047a91cffb..aaa36c27b0f9f6543db810a135b371bf1d326fa8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2586,6 +2586,11 @@ mt7531_setup_common(struct dsa_switch *ds)
- 	/* Allow mirroring frames received on the local port (monitor port). */
- 	mt7530_set(priv, MT753X_AGC, LOCAL_EN);
- 
-+	/* Enable Special Tag for rx frames */
-+	if (priv->id == ID_EN7581)
-+		mt7530_write(priv, MT753X_CPORT_SPTAG_CFG,
-+			     CPORT_SW2FE_STAG_EN | CPORT_FE2SW_STAG_EN);
-+
- 	/* Flush the FDB table */
- 	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, NULL);
- 	if (ret < 0)
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 448200689f492dcb73ef056d7284090c1c662e67..349d72a35771f35d478244ab29be1801b3466a5f 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -627,6 +627,10 @@ enum mt7531_xtal_fsel {
- #define  MT7531_GPIO12_RG_RXD3_MASK	GENMASK(19, 16)
- #define  MT7531_EXT_P_MDIO_12		(2 << 16)
- 
-+#define MT753X_CPORT_SPTAG_CFG		0x7c10
-+#define  CPORT_SW2FE_STAG_EN		BIT(1)
-+#define  CPORT_FE2SW_STAG_EN		BIT(0)
-+
- /* Registers for LED GPIO control (MT7530 only)
-  * All registers follow this pattern:
-  * [ 2: 0]  port 0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-2.48.1
-
+> Thank you.
+> 
+>>
+>> Cheers,
+>> Angelo
+>>
+>>> ---
+>>> v3: no changes
+>>> v2: modify marcos name
+>>> ---
+>>>    drivers/usb/host/xhci-mtk.c | 26 ++++++++++++++++++++++++++
+>>>    1 file changed, 26 insertions(+)
+>>>
+>>> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
+>>> mtk.c
+>>> index 904831344440..3f8e37b25322 100644
+>>> --- a/drivers/usb/host/xhci-mtk.c
+>>> +++ b/drivers/usb/host/xhci-mtk.c
+>>> @@ -113,6 +113,14 @@
+>>>    #define WC1_IS_P_95         BIT(12)
+>>>    #define WC1_IS_EN_P0_95             BIT(6)
+>>>
+>>> +/* mt8196 */
+>>> +#define PERI_WK_CTRL0_8196   0x08
+>>> +#define WC0_IS_EN_P0_96              BIT(0)
+>>> +#define WC0_IS_EN_P1_96              BIT(7)
+>>> +
+>>> +#define PERI_WK_CTRL1_8196   0x10
+>>> +#define WC1_IS_EN_P2_96              BIT(0)
+>>> +
+>>>    /* mt2712 etc */
+>>>    #define PERI_SSUSB_SPM_CTRL 0x0
+>>>    #define SSC_IP_SLEEP_EN     BIT(4)
+>>> @@ -129,6 +137,9 @@ enum ssusb_uwk_vers {
+>>>        SSUSB_UWK_V1_4,         /* mt8195 IP1 */
+>>>        SSUSB_UWK_V1_5,         /* mt8195 IP2 */
+>>>        SSUSB_UWK_V1_6,         /* mt8195 IP3 */
+>>> +     SSUSB_UWK_V1_7,         /* mt8196 IP0 */
+>>> +     SSUSB_UWK_V1_8,         /* mt8196 IP1 */
+>>> +     SSUSB_UWK_V1_9,         /* mt8196 IP2 */
+>>>    };
+>>>
+>>>    /*
+>>> @@ -381,6 +392,21 @@ static void usb_wakeup_ip_sleep_set(struct
+>>> xhci_hcd_mtk *mtk, bool enable)
+>>>                msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) |
+>>> WC0_IS_P_95;
+>>>                val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) :
+>>> 0;
+>>>                break;
+>>> +     case SSUSB_UWK_V1_7:
+>>> +             reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
+>>> +             msk = WC0_IS_EN_P0_96;
+>>> +             val = enable ? msk : 0;
+>>> +             break;
+>>> +     case SSUSB_UWK_V1_8:
+>>> +             reg = mtk->uwk_reg_base + PERI_WK_CTRL0_8196;
+>>> +             msk = WC0_IS_EN_P1_96;
+>>> +             val = enable ? msk : 0;
+>>> +             break;
+>>> +     case SSUSB_UWK_V1_9:
+>>> +             reg = mtk->uwk_reg_base + PERI_WK_CTRL1_8196;
+>>> +             msk = WC1_IS_EN_P2_96;
+>>> +             val = enable ? msk : 0;
+>>> +             break;
+>>>        case SSUSB_UWK_V2:
+>>>                reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
+>>>                msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
+>>
+>>
+>>
 
