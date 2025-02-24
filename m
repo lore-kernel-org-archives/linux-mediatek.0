@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F6EC021B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 09:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69CEC021B3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 09:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jOuZPCStwfD1O+RI8GQPdvosH3lkT+V03FIAVC/43cw=; b=rKd74Yn25SFJblQ2DCWRdJMzdR
-	tVGMTLXgTNpNv8mso4W26Q+JZv38buE1qrtj3EZvr9aYYzvHyWaDwyXc4gqWazaHhRLAe6y9aGhf/
-	7j7tRbNb+FPuubfryOEr3UlSBGZTTn0jg5Xu8y9MgFylbHt7Kt1Xsgvs5M2QRbHxT8YzOidm4JUwt
-	on3e0KMgyFW98klGCxhpLo87hn6Jz6hEOHeP0j6ysJvabWy693NmonDZtpE0/6OEKH2pnz5TLPf2b
-	b5qrj/WXpz8Z4Enja3z4/5wPnZSYHygITEC9qi4Rjki2Xbia0Gpheiha0WZ5T1HrgZ/f57igeAjxo
-	hUFIoVXg==;
+	bh=S4ufy+pdH/kfJz3W/Sq+mTTbQ/D8XrkXggTWUdePvjU=; b=jBW4p3dTMBqSS1xiiJ/X+E9qEZ
+	OfObEn2txmwc0XVgGxz0mQgEXCb6qRM3rhSbGDwMIbuCRBqIxk9qpkrp0mWG+0WF9DgXJH2gMt0M/
+	dm1HpNftJH5gAU5/79B8h/UaAs6+xqK0tA4f+35w74VAclwI7RRU5n/mczYGLYOqMmT7NqH0CsRkd
+	8y4w20wG6q7e8c8sFuO/R6TV3TJ/9Ui+rT0O7t1hlesgchqmVcPg4b26+KMEYiLXDoONnBPhvQw9K
+	2zzRxevMlleUqO22/fp+dJVPB+R3D4Hu9KfU44W1TXlW4KqvMdPy0u62lXJQDpsra4y8PF2nqZvui
+	MWe2xFzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUU6-0000000CqBp-39QD;
-	Mon, 24 Feb 2025 09:10:42 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tmUYQ-0000000CrL1-3CwW;
+	Mon, 24 Feb 2025 09:15:10 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUAR-0000000Clap-2W5q;
-	Mon, 24 Feb 2025 08:50:25 +0000
+	id 1tmUE5-0000000CmIu-3iPj;
+	Mon, 24 Feb 2025 08:54:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740387022;
-	bh=ImnSkDvCyNzWrsxhRq8yrR/K/8hCkVqMMnOSMPJSgKI=;
+	s=mail; t=1740387248;
+	bh=6bOy9KlYLQyrPSIjTKd8+I20FV1jUat1LPHJT2fj0CA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oHtW+b+yNkL+q1CHUWFn0ieZHUza/61O+G4CcpW1+kGwZUKbRuylTrG1l/CQl9Y4n
-	 EAbSEPdPGp2XDLmJLGbPR1NO2Y48alxQ6QJVFPqfTosGHpp2AckGElZBRbg4UBAfiJ
-	 2CqRV8RmGsLlv8gxKaydQvvJeeNMvKo2FFIGEVK7xZbmO0RfotU/MvW8fbUlhf0PXq
-	 jaAYtMim1zopKUeYWiwlMh06TwY76HEwRytSBH5koZu4XL3uD8d+1E3Jm4WiAz/Bdd
-	 wFNwzuI+pNaQUKIjIT6TVgRUeFJQxOu0Wp0IfkKMGwGI9NPP2F06SFjj/+SyTqZC1c
-	 RtoPpVsL5w/zA==
+	b=IOM2g64PkCwY3bMfCSfg7CSfBu84lFzLss4S42gqmJlCwkEhycqrjpG30bm248nDv
+	 N2eBYf/mT745k7zVqwGMRyDXwGEw5CCSPpFa7Wt1+0gV85jkKdhZD/KWJR8FZwkYCi
+	 nRwbtChVaYQXkMCggjYwZDLUYgdTGozDnrxe1cjfFzW4UzpRh7BzcF2fK9XIC5m0Mz
+	 ZlMM7E11sm5//N0lJl4+Jpmfv0vqLQXKZd7S3JX/Jk3pIuD/hDI9S284Sz+fdtBQJG
+	 hTWr6ZUQwsj61oViQd+y2+7kyCwwWBpUTWRunsaonBSuiXM+BKmDH1QwJNQopQ5mUP
+	 GVuMcIR0KIA6A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5727617E001F;
-	Mon, 24 Feb 2025 09:50:21 +0100 (CET)
-Message-ID: <b37788f6-7aa6-46c6-993c-fa30fcaba4c9@collabora.com>
-Date: Mon, 24 Feb 2025 09:50:20 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6949E17E001F;
+	Mon, 24 Feb 2025 09:54:07 +0100 (CET)
+Message-ID: <5d10f630-57a4-427d-a14e-e4058d4fdffe@collabora.com>
+Date: Mon, 24 Feb 2025 09:54:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/3] MediaTek MT8188 MTU3 USB and Genio 510/700 TypeC
-To: =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
-Cc: =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+Subject: Re: [PATCH v4 1/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add
+ support for TCPC port
+To: ChiYuan Huang <cy_huang@richtek.com>,
+ =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
  "robh@kernel.org" <robh@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
  "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-References: <20250220105514.43107-1-angelogioacchino.delregno@collabora.com>
- <790ebe87fdaa8d785813a46269036562c405fb01.camel@mediatek.com>
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ "fparent@baylibre.com" <fparent@baylibre.com>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "macpaul@gmail.com" <macpaul@gmail.com>,
+ =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ "simon.sun@yunjingtech.com" <simon.sun@yunjingtech.com>,
+ =?UTF-8?B?WW93LXNoaW4gTGlvdSAo5YqJ56WQ54KYKQ==?=
+ <yow-shin.liou@mediatek.com>,
+ =?UTF-8?B?Q2hyaXMtcWogQ2hlbiAo6Zmz5aWH6YCyKQ==?= <Chris-qj.Chen@mediatek.com>
+References: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
+ <cb392432-e452-4460-ace6-54b3649aed52@collabora.com>
+ <f09f880b7f9b642140109f17ed3f89aa44195b99.camel@mediatek.com>
+ <Z7vRUmETQaYRbEyZ@git-send.richtek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <790ebe87fdaa8d785813a46269036562c405fb01.camel@mediatek.com>
+In-Reply-To: <Z7vRUmETQaYRbEyZ@git-send.richtek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_005023_785761_207D6FEE 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20250224_005410_067557_5CFC007B 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +99,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/02/25 09:45, Chunfeng Yun (云春峰) ha scritto:
-> Hi Angelo
-> On Thu, 2025-02-20 at 11:55 +0100, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+Il 24/02/25 02:54, ChiYuan Huang ha scritto:
+> On Fri, Feb 21, 2025 at 11:39:09AM +0000, Macpaul Lin (林智斌) wrote:
+>> On Thu, 2025-02-20 at 16:58 +0100, AngeloGioacchino Del Regno wrote:
+>>>
+>>>
 >>
+>> [snip]
 >>
->> This series adds MTU3 nodes to the MT8188 base devicetree, fixes the
->> Geralt Chromebooks to use it, and adds support for all of the USB
->> ports, including TypeC Power Delivery, Alternate Modes, etc, found
->> on the MediaTek Genio 510 and Genio 700 Evaluation Kits.
+>>>> +             tcpc {
+>>>> +                     compatible = "mediatek,mt6360-tcpc";
+>>>> +                     interrupts-extended = <&pio 17
+>>>> IRQ_TYPE_LEVEL_LOW>;
+>>>> +                     interrupt-names = "PD_IRQB";
+>>>> +
+>>>> +                     connector {
+>>>> +                             compatible = "usb-c-connector";
+>>>> +                             label = "USB-C";
+>>>> +                             data-role = "dual";
+>>>> +                             op-sink-microwatt = <10000000>;
+>>>> +                             power-role = "dual";
+>>>> +                             try-power-role = "sink";
+>>>
+>>> Would be appreciated if you could also complete the node by adding
+>>> the pd-revision
+>>> property, enabling full USBC Power Delivery for the MT6360 PMIC.
+>>>
 >>
->> This also adds the missing SuperSpeed port to the mtk-xhci binding.
+>> Well, I have no idea about the pd-revision of MT6360.
+>> I could found MT6360 supports PD 3.0 according to the datasheet,
+>> however, I have no idea about the other fields like major and minor
+>> values. Dear ChiYuan, could you help to provide the value of pd-
+>> revision? The property has been defined in
+>> Documentation/devicetree/bindings/connector/usb-connector.yaml.
 >>
->> AngeloGioacchino Del Regno (3):
->>    dt-bindings: usb: mediatek,mtk-xhci: Add port for SuperSpeed EP
->>    arm64: dts: mediatek: mt8188: Add MTU3 nodes and correctly describe
->>      USB
->>    arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller,
->> MUX
->>
->>   .../bindings/usb/mediatek,mtk-xhci.yaml       |   4 +
->>   .../boot/dts/mediatek/mt8188-geralt.dtsi      |  18 +++
->>   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 121 +++++++++-----
->>   .../dts/mediatek/mt8390-genio-common.dtsi     | 151
->> +++++++++++++++++-
->>   4 files changed, 251 insertions(+), 43 deletions(-)
-> Do these patch have also changed the chromebook's dts?
-
-Yes
-
+> Hi, Macpaul:
 > 
-> if changed it, do test it on chromebook?
+> You can specify the version information to 3.1 version 1.6.
+> Just add the below property into the 'connector' node.
+> 
+> pd-revision = /bits/ 8 <0x03 0x01 0x01 0x06>;
+> 
+> Regards,
+> ChiYuan
 
-Yes, and there's no need to hide the MTU3 hardware on Chromebooks,
-as I already mentioned multiple times.
+Thanks ChiYuan, that's great to know.
 
-Just lock it to host mode and it's always fine :-)
+With this - all boards relying on MT6360 can charge use the full set of supported
+USB Power Delivery capabilities (that, since the PD revision is specific to the
+MT6360 TCPC, and not board specific!).
 
-Cheers,
+Macpaul, please add the pd-revision as suggested, and for v6, please add my:
+
+Reviewed-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers!
 Angelo
 
-> 
-> Thanks
-> 
-> 
->>
->> --
->> 2.48.1
->>
+
 
 
