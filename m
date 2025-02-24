@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF21CC021B2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2025 23:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 993B5C021B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 01:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZXsjCNy4V+kCyFuif8XWdLqtmoN0EswAxYS9Q53oLPQ=; b=efk4LzK9g5Je5O8T3aPdQrVau2
-	f0p7G1h0MhbSgD6fgA6Y95EuXUDKNPGnmQs//gHSbyHtjGyXNSOw4+Os8la+QjovkO8ikXZNKA4zF
-	I/GggDZgEjdKJxV3o/loPrnSJ2Jhm9QRQkIPyHc+ASJ1bsv8ce5kookAxqMWkd7BrwM+WBiI9F4+y
-	5igQYDnKA73Pfg2wMHoPx8NdN0PqXUfngyaACmCGj70mjB8nKRdJ5Ws7CwcDykJD+z83Fy9kcUPkg
-	d1Dgkmct2UGJlWM3rF7WDGkOFOGJhxnV8xIlIjGZDpLCa6O3sYypsYMGhXefEIptimb1JPVh5XfLb
-	WtFb0RxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O4XcWHCpu3h5aG5qDaO09ZjwT9M3Yei0zyY4/p0jwJk=; b=YMmKVjINSGXHb/l2EWyZwm9j/R
+	66xcMT70hXJcuTr6Kvkajdnhk4/j10TGlUZquGerKO4jtcBGS+hIpepDAVtuhZ5c5YIVOmpfg+KHd
+	AcEm9fIW5I9N8WuCKYbkivFroBlqyCSlSdKr6+wJI+Bj6HVXTvWmLgx9tnflVvpJQN0Nu0DdvSyu7
+	Wv6jb968DXD8OCDbdCmtDHU3W4kzIcsYTuEK5A2x9OXa8c4Pz5Rf+7MhQkruw8zLpa5Wnl5QHU6kA
+	cN9Na8+16To4fPi/ruBBYuKv3mUxtbDdykaPVv9b1kXnm+KOb/L04d2cggjJ707IvNAxWvbIAmIM8
+	PIj/upbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmLL4-0000000Bxpi-2yZy;
-	Sun, 23 Feb 2025 23:24:46 +0000
-Received: from out-171.mta1.migadu.com ([2001:41d0:203:375::ab])
+	id 1tmNhV-0000000C6MA-3NPw;
+	Mon, 24 Feb 2025 01:56:06 +0000
+Received: from mg.richtek.com ([220.130.44.152])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmLJa-0000000Bxk8-1vuf
-	for linux-mediatek@lists.infradead.org;
-	Sun, 23 Feb 2025 23:23:16 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1740352981;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=ZXsjCNy4V+kCyFuif8XWdLqtmoN0EswAxYS9Q53oLPQ=;
-	b=NhM4NRdr+vfHRpfKDz22u8xvKhUui2K8mcLNioPcSxfF7v5JjqpR0/ERdZSgFG2uDTT5hD
-	tlFGWAu1i1X8Kg/Nn60k4bs2QHbmmaVu1fd1IOdGJhAEHRmRBUM/aMHkqvwEjuh0E0DDKm
-	DNuClbuZB9unk0HeYhqZroEoNVzxhdo=
-From: Thorsten Blum <thorsten.blum@linux.dev>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>
-Cc: Thorsten Blum <thorsten.blum@linux.dev>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH wireless-next] wifi: mt76: mt7925: Remove unnecessary if-check
-Date: Mon, 24 Feb 2025 00:21:24 +0100
-Message-ID: <20250223232127.99357-2-thorsten.blum@linux.dev>
+	id 1tmNfn-0000000C63M-3vGh;
+	Mon, 24 Feb 2025 01:54:21 +0000
+X-MailGates: (SIP:2,PASS,NONE)(compute_score:DELIVER,40,3)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=richtek.com;
+	s=richtek; t=1740362043;
+	bh=O4XcWHCpu3h5aG5qDaO09ZjwT9M3Yei0zyY4/p0jwJk=; l=1858;
+	h=Date:From:To:Subject:Message-ID:MIME-Version;
+	b=iapxtGG+h+9UxAoIlecoA1rk0y1WgPGtg2zggAGok5nkYH6Ywt3u4tmFEvLNkcet1
+	 glw32wLsZDc5/yykcrYsJy+vHb2ne7SIcx97cLnESw3vVTwizcpETwBbuyUoU/h1bC
+	 KCIAtlaTYcRxcBk6Gi6gA6h/MCZMOBzNPGeV/o8O/nRcrEDyL9gRi4fUjDDRZHDSsx
+	 JguxNkXc1UfkLxgYNFvGIXTcNNpnc2Q7ToffgYrlr52dZtRcQ+kURK3Sfl0ox9PtLT
+	 l+QdwVbIn92F9Dkh2BtcC3K657mFnZgN/6fIyD7mXI7DvJmDFSG2sutDrO+2+ezsNQ
+	 c7BvfXi3WkKbA==
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTPS Server V6.0(3140694:0:AUTH_RELAY)
+	(envelope-from <cy_huang@richtek.com>)
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256/256); Mon, 24 Feb 2025 09:53:29 +0800 (CST)
+Received: from ex3.rt.l (192.168.10.46) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 24 Feb
+ 2025 09:53:28 +0800
+Received: from git-send.richtek.com (192.168.10.154) by ex3.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1544.11 via Frontend
+ Transport; Mon, 24 Feb 2025 09:53:28 +0800
+Date: Mon, 24 Feb 2025 09:54:26 +0800
+From: ChiYuan Huang <cy_huang@richtek.com>
+To: Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "robh@kernel.org"
+	<robh@kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>, "fparent@baylibre.com"
+	<fparent@baylibre.com>, Bear Wang =?utf-8?B?KOiQqeWOn+aDn+W+tyk=?=
+	<bear.wang@mediatek.com>, "linux-usb@vger.kernel.org"
+	<linux-usb@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "macpaul@gmail.com"
+	<macpaul@gmail.com>, Pablo Sun =?utf-8?B?KOWtq+avk+e/lCk=?=
+	<pablo.sun@mediatek.com>, "simon.sun@yunjingtech.com"
+	<simon.sun@yunjingtech.com>, Yow-shin Liou =?utf-8?B?KOWKieelkOeCmCk=?=
+	<yow-shin.liou@mediatek.com>, Chris-qj Chen =?utf-8?B?KOmZs+Wlh+mAsik=?=
+	<Chris-qj.Chen@mediatek.com>
+Subject: Re: [PATCH v4 1/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add
+ support for TCPC port
+Message-ID: <Z7vRUmETQaYRbEyZ@git-send.richtek.com>
+References: <20250220143354.2532448-1-macpaul.lin@mediatek.com>
+ <cb392432-e452-4460-ace6-54b3649aed52@collabora.com>
+ <f09f880b7f9b642140109f17ed3f89aa44195b99.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+In-Reply-To: <f09f880b7f9b642140109f17ed3f89aa44195b99.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250223_152315_044358_0B0AE48B 
-X-CRM114-Status: UNSURE (   6.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250223_175420_592833_534FF89B 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +97,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The if and else branches implement the same logic. Remove the
-unnecessary if-check and simplify the code.
+On Fri, Feb 21, 2025 at 11:39:09AM +0000, Macpaul Lin (林智斌) wrote:
+> On Thu, 2025-02-20 at 16:58 +0100, AngeloGioacchino Del Regno wrote:
+> > 
+> > 
+> 
+> [snip]
+> 
+> > > +             tcpc {
+> > > +                     compatible = "mediatek,mt6360-tcpc";
+> > > +                     interrupts-extended = <&pio 17
+> > > IRQ_TYPE_LEVEL_LOW>;
+> > > +                     interrupt-names = "PD_IRQB";
+> > > +
+> > > +                     connector {
+> > > +                             compatible = "usb-c-connector";
+> > > +                             label = "USB-C";
+> > > +                             data-role = "dual";
+> > > +                             op-sink-microwatt = <10000000>;
+> > > +                             power-role = "dual";
+> > > +                             try-power-role = "sink";
+> > 
+> > Would be appreciated if you could also complete the node by adding
+> > the pd-revision
+> > property, enabling full USBC Power Delivery for the MT6360 PMIC.
+> > 
+> 
+> Well, I have no idea about the pd-revision of MT6360.
+> I could found MT6360 supports PD 3.0 according to the datasheet,
+> however, I have no idea about the other fields like major and minor
+> values. Dear ChiYuan, could you help to provide the value of pd-
+> revision? The property has been defined in 
+> Documentation/devicetree/bindings/connector/usb-connector.yaml.
+> 
+Hi, Macpaul:
 
-Signed-off-by: Thorsten Blum <thorsten.blum@linux.dev>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+You can specify the version information to 3.1 version 1.6.
+Just add the below property into the 'connector' node.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 15815ad84713..7e4935965d35 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1983,11 +1983,7 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
- 		mlink = mt792x_sta_to_link(msta, link_sta->link_id);
- 	}
- 	info.wcid = link_sta ? &mlink->wcid : &mvif->sta.deflink.wcid;
--
--	if (link_sta)
--		info.newly = state != MT76_STA_INFO_STATE_ASSOC;
--	else
--		info.newly = state == MT76_STA_INFO_STATE_ASSOC ? false : true;
-+	info.newly = state != MT76_STA_INFO_STATE_ASSOC;
- 
- 	if (ieee80211_vif_is_mld(vif))
- 		err = mt7925_mcu_mlo_sta_cmd(&dev->mphy, &info);
--- 
-2.48.1
+pd-revision = /bits/ 8 <0x03 0x01 0x01 0x06>;
 
+Regards,
+ChiYuan
+......
 
