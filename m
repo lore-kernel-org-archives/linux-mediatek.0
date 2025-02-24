@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A40FC021BB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 14:28:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 366FFC021A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Feb 2025 14:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6FfDREsi3mNWIRIpqGWEiUTSXvr2L7Np1B2V7LTx2MY=; b=v+ol08xguqu2I/
-	qVz94bqGtWZK25Zr+JyvpKsJuBF6Do0CJkkXJ8MDwNybqPiWf7AVTvnxi9BNnT9ht1nA2RFo+tNhH
-	zdcdOUlN5tU/nfZVa0TJa/lcCu2T9Mjh0uXPo0A0tvLyqKqNTNj2bM1gAyFoF1ODFIe3nZYC9YZyd
-	WeQ1jLo/VxqSP2YJOa3Kz8QTGamCtNMiEQDIzCRedFkGniad3R3Jd8FGkDf162EU0WQJlDjQliHBk
-	XLKEOYxsE8f1a+lwpp/68t7oLx7ihiAyy5K61B+Zb+o6aOZgXFwL03Ma9dCM5od7Hu/evCJZzUCSA
-	umy2H5hgKPGbPrcXHKWQ==;
+	List-Owner; bh=7FcfdZAXTLXvcHgZD//PibXN7xW8sVKwsd4qd15t5hw=; b=MlLqB9990rvyJn
+	/KYabFnejfHUDt3dXTdTleXEE6ZCGgu/aoTix0JbWDWhfRmAW4A3NErFc7hMtcOqLRspTPZgP9ppE
+	JRlNyjgv3hL9VYClMdM0bjsq6Uh2SUpPaxAgul0z7b9EnafXhApVVmwyQv3EmtATdbEZGBuZzgtnE
+	+wQ+YFh+R2G9pBxkj0nz3jy//vPs2AoFgdwp5dAscaUKYystL30NW0KADOTPY9v7q1JUeg5SFHiFT
+	lbtjPxaK9x5EcfOi6Gmig9ZBRmejg7II4ErFaMv2VHEgy80wyy/dbJuqBIiTzXTmq0Xx/RIx4syaL
+	FMsu+/37vWpU2d4xWsyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmZRO-0000000E5zV-1dQq;
-	Mon, 24 Feb 2025 14:28:14 +0000
+	id 1tmZUI-0000000E6Vx-46fn;
+	Mon, 24 Feb 2025 14:31:14 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmZ16-0000000E0Au-0UyE;
-	Mon, 24 Feb 2025 14:01:07 +0000
+	id 1tmZ2d-0000000E0Ut-0SaE;
+	Mon, 24 Feb 2025 14:02:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740405662;
-	bh=dbw6dXg5TQeVowkeoYcRgmEHG8zpRcSKiLa7Cj4uv/E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M1GG7ZIv7rz7MMMQd7tgm39CzSeYcobCtvKgXQKcjGYpZvW6Vx7EjKpZqjbfa1oo7
-	 cmDcS9wSJMxNz+GekADGFyfAS6s+p7ksVtm7nn9L9fw3PbkRSKH8MvLiPk1VqjxWTZ
-	 nxIRVhlWiwhG79GGEYgn2wKaJliYaJZYXIWgrDh2wHA1tzRTdC4u7D/Gm0LI1l9vUI
-	 Z41UoW8xIACcsKDa18+jjKpPo2S9ldrSVj/iPKUBy37eqQnBW+3882xcqYJELo//Cx
-	 VGFsAaHfERb/OHLKTmNdVscSwxwc8efuE49Uc7/mm7T+apJQQ86FkPlYy3CB35KGC+
-	 3zHOq3n3fQ3Vg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1740405757;
+	bh=NtQ8UJ5HySKPPmQnEnNNQwk1UmdTw09FLFYUk5geJ0s=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=lmYWGnuVgm+KmTD5YIxehDk+tVlRC1vDVfK3HtWmF4+Xq4+qBxIDwOjpAaJvHPift
+	 Iui0tPLrBtCwaPZFe1Y0gbWZIrnAXC10sAKWIMuEnQs3olEYWEDjRCysz/YtqhkcYH
+	 lWyzHOV4kXH761x7If9uEk2Ps2sjc7XQNhouXivC3kLAogKB4Fj1QFoIWUjp28UJIW
+	 VwWMp6/+QipGW+jONwhGszvac4z5tVDFcVG86uo2VvwY+0EjwCVhO4/kTG+8wgKlRP
+	 QNzimmhM4cg2etTnbrfvkeV0PvBbGwLAEkIuJjOqVK/BRTREvZESd7DV3lvUAh0NU8
+	 CAzRrDrDeB5rA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A97B17E0DFB;
-	Mon, 24 Feb 2025 15:01:01 +0100 (CET)
-Message-ID: <7dfa6548-c2ad-4492-832d-87dea1ececf5@collabora.com>
-Date: Mon, 24 Feb 2025 15:01:00 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-References: <20250224105414.3576243-1-jason-jh.lin@mediatek.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B74F517E00F6;
+	Mon, 24 Feb 2025 15:02:36 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
 In-Reply-To: <20250224105414.3576243-1-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+References: <20250224105414.3576243-1-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH v2] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
+Message-Id: <174040575668.71176.5895162308675381424.b4-ty@collabora.com>
+Date: Mon, 24 Feb 2025 15:02:36 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_060104_350642_CC9D9B1E 
-X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-CacheID: sfid-20250224_060239_316269_98C10071 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,7 +74,7 @@ Cc: Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, l
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/02/25 11:50, Jason-JH Lin ha scritto:
+On Mon, 24 Feb 2025 18:50:13 +0800, Jason-JH Lin wrote:
 > Add cmdq_gctl_value_toggle() to configure GCE_CTRL_BY_SW and GCE_DDR_EN
 > together in the same GCE_GCTL_VALUE register.
 > 
@@ -85,10 +84,15 @@ Il 24/02/25 11:50, Jason-JH Lin ha scritto:
 > Move this function into cmdq_runtime_resume() and cmdq_runtime_suspend()
 > to ensure it is called when the GCE clock is enabled.
 > 
-> Fixes: 7abd037aa581 ("mailbox: mtk-cmdq: add gce ddr enable support flow")
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> [...]
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to v6.14-next/soc, thanks!
+
+[1/1] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
+      commit: 6b9a5fc65a7880f7ac6a981a0a30b5ecba7bd5ae
+
+Cheers,
+Angelo
 
 
 
