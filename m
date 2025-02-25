@@ -4,110 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999D5C021BC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 09:37:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB3A7C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 09:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S591plOfEwfaOHN3Xnpi7xyHchggR3YCpZ+xHYAC31Y=; b=Z8Z6yDxIy+sBoKvOvz7p8xx1kg
-	jnbaEwkx1kT5F+hXR00hEqk+awJwqy800RFNY4FdpRtv33KGh+XSicILas14KAOO73KYbf7mCXVeg
-	DGq1yq0p4XsxOvivJfP6Q5x5lcF66kmQUUk8wOw36SuDbG1fDbgPcXWq2os8Lx1whI5milMNQGtoU
-	7XX65YnzU+czdQRjqDGpOjJCIM+a31eKi1FKL1qg7r9lp8uWxz0hDjoNy6rbpXgHusuEuWHCSig63
-	yvLIbAI8BJtT0J8y54CKGv0ESWdB/B03tlfmttBZiMYdq+amyYF/gO9QVQcJdR8fvQfRs75mcRJH9
-	zHpWjlMw==;
+	bh=RgJc19BHIb1laW7RRmQKMgjNWHVEciBYtzbK/hOpNzM=; b=el+wYJfcKYYcItU2dBE4QlNbxu
+	Yt9A8CR1mgoD+13Kpv/KtMF5rkbphiIa5L5HHSR+ymKN2eCMtnHqvo8BLTKO5jVaS8vRhCT98IJdK
+	dMn4RyO30wAMR+X8ANqtHDTAGuXj0e52ByLbvNWa1TW3Sl9QqMrLdd38RKKDeTZ8QsWEdJStEUovh
+	2n3y5ZZ6vgeZSNSb65f0HueBIUb/xBkFu1CNouV2cKXD2kKqOjz/GRWCrKLKnddySV847tch1dEPv
+	KzOY3O5/wGiAHX0SSe1pPgjKiJNSbn3FUFv7lSbi/zYAFHosH3sFhT/S45BjSeRD42Jw9GKp9inQt
+	Ru3VR4Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrNi-0000000GcKq-2xzI;
-	Tue, 25 Feb 2025 09:37:38 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1tmrOD-0000000Gd21-23mI;
+	Tue, 25 Feb 2025 09:38:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmqsh-0000000GVZg-2shb
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Feb 2025 09:05:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1740474333;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S591plOfEwfaOHN3Xnpi7xyHchggR3YCpZ+xHYAC31Y=;
-	b=JBZICcGtgIaGT2NEayXsTfcbb9ZtlutP8JW/GpdJNce9O/ThZc4x+XuW9jxYBz3gryB8J1
-	MoOt1MMVM1C1cwzpzFiXP8Il2QqJK7/WUCus26nkT28sdXEE8V7oHDsB1Hq0vH5wMvHO2E
-	q9snZt+Ayh5ExzIv+AlghkzjVSzca8U=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-121-ELR9J8E2Mbm1tRqyCIlOsQ-1; Tue, 25 Feb 2025 04:05:30 -0500
-X-MC-Unique: ELR9J8E2Mbm1tRqyCIlOsQ-1
-X-Mimecast-MFC-AGG-ID: ELR9J8E2Mbm1tRqyCIlOsQ_1740474330
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-38f2f438fb6so6519454f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2025 01:05:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740474330; x=1741079130;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=S591plOfEwfaOHN3Xnpi7xyHchggR3YCpZ+xHYAC31Y=;
-        b=rcCaTE+Z2hYqipBsG64OtAgcHSwq4CcMuP21aJ0SGc1Uzwr6EhGB9Fhd9W5tYRKjSK
-         UJnsFxWUorhffKZF/KFPB6goIWgpbfzPQGPRNhUmWL2P3npSLJKh/ouq5U0AMfZF7Jia
-         j1xRJ6OzzfDjhC9s4f8MEfWzqFIL/fzEuoDdYXn9zhJCjlCIXafcz0yWP5ByEB1rD2QD
-         n2LPGRADf5pLukqB1fAsG2GBzLwkvccsjaLU7m93G/hbMGzp4fW8RmN8LQpIIHJqCMhp
-         D++iv34bIFX19M5q+nnD+hN9fYhbmEOdrFBwnGpKbqMKMc66XwnO6xAAGD06Mb8tjeTz
-         N3OQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWMDs9vrWtFqhBxmKlxbx24lp9CAxSASHr7n/mLxdaVntZA1XFiZUupTgBoKY9+xniZoMFYJnlK+HK481tgEg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/T0PgI77vLx6LSBLWwAxHNG54ZUlJt6ugJ1OIYKezNYWYyqOH
-	xCscAJdAI10obzFW1ztu86E2GlvCoYNk2sdQqWOKR8IIvjgDhHfDGYl90siWyh/UWtUgJHmmRPP
-	c57XgQOMmgsR+4LL0HVLM556/O7Cr4RCZYNZb31phpp/SrqOPLZQHDjMzZ6p+BMpr3sMUHA==
-X-Gm-Gg: ASbGncuLp3iXPPAy7voM23FUvp1sxriwKQYO7SkaAfUtotblQQ39dRX/v2+jGdvFAO6
-	AuFYroKz/k7xUP7t6/ulS5pJmkUJsEaT86OtcbitQkDYBi5OOAyzsuGBMMqV9ak1Q5k6HnFgu4r
-	R3k7om8qYNUAx8UHY5unMF1c9rnxa2zQarafr1gjr0RVBEBo+gUs4l6UBRhF/grvOOc4rEw6XWz
-	yKPUCpDb8P8ROk2ZOcnkvGF1632/IsqIPD6P9Z+NFUIvpVGvZ3Cf3g0y7YfHmcJ2wWYrVX/7wYN
-	SbNHahGwvC3x0XMyTwA0Qe1vCJaUs0U7CZl6c/BJ9KY=
-X-Received: by 2002:a05:6000:1373:b0:38f:43c8:f766 with SMTP id ffacd0b85a97d-390cc60bb96mr1820184f8f.31.1740474329760;
-        Tue, 25 Feb 2025 01:05:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG2nbkYE5xIsvX6L4EeMqJ6/+oXvSP9U6WXPFvJdl0X9vmutLnfED9guiz2H/dEmk1Doe3+9w==
-X-Received: by 2002:a05:6000:1373:b0:38f:43c8:f766 with SMTP id ffacd0b85a97d-390cc60bb96mr1820153f8f.31.1740474329454;
-        Tue, 25 Feb 2025 01:05:29 -0800 (PST)
-Received: from [192.168.88.253] (146-241-59-53.dyn.eolo.it. [146.241.59.53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-390cd86cc26sm1620849f8f.30.2025.02.25.01.05.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Feb 2025 01:05:29 -0800 (PST)
-Message-ID: <0c50738e-2469-4404-8a9c-a5221c4412b7@redhat.com>
-Date: Tue, 25 Feb 2025 10:05:27 +0100
+	id 1tmqv8-0000000GWDY-1Zyb;
+	Tue, 25 Feb 2025 09:08:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740474484;
+	bh=G/+50M2fvc66Y6BosMkvmFsG4ouSWiq1zH7ZcGOkJb8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BfWMXTa9I0TI8XsW6I94eEtr8qilAfLD++57kbY1w9ZKR4LDa4bmOsgr4vUnQFVpe
+	 a2SSZiEPVnTLtmq9aV5b2RgfArs87tvJG2Qf8x89aPecaaHY5rEA575jJVsBGQBbDU
+	 SQKIQo2dkuojNJdI2i+WWj5WcMbWEHQSzT8vExkFIcvlt1FJbxJqE8sM0pllZNXZNX
+	 R05meTHsy7Rr1Z8Pypj9vNKNHANyZGXZ9JwP5/SHG9lY/QsZGw+MpZQ9ZU1TtiRxy4
+	 Rczhhb59qMOaVKj9O/o8h9wvB9BSEmaF3QCfKRt7N4Go1KpfRBWJJ2Ky3GD/kW7u3w
+	 FeOKvyaCZFXDg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B97317E0866;
+	Tue, 25 Feb 2025 10:08:04 +0100 (CET)
+Message-ID: <e278b16f-565c-43e5-ae15-863c9ef3f8fb@collabora.com>
+Date: Tue, 25 Feb 2025 10:08:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 2/8] net: phy: move PHY package related code from
- phy.h to phy_package.c
-To: Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: Russell King - ARM Linux <linux@armlinux.org.uk>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- David Miller <davem@davemloft.net>, Daniel Golle <daniel@makrotopia.org>,
- Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
- <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard Cochran <richardcochran@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
- <ea0f203b-ee9a-4769-a27a-8dfa6a11ff01@gmail.com>
- <e8ced800-6ee3-4ee6-9b6c-228f04c15f41@lunn.ch>
- <944941ec-d897-4306-9cd8-e39de833749c@gmail.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <944941ec-d897-4306-9cd8-e39de833749c@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GCn2bgWHmoQ-V3Dpi72R-DavJPgADBZjzv9-kA72eNc_1740474330
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3 2/2] arm64: dts: airoha: en7581: Fix clock-controller
+ address
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
+ <20250221-en7581-dts-spi-pinctrl-v3-2-4719e2d01555@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20250221-en7581-dts-spi-pinctrl-v3-2-4719e2d01555@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_010535_801246_43CCF432 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20250225_010806_562725_918163BE 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,30 +79,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/21/25 8:21 AM, Heiner Kallweit wrote:
-> On 21.02.2025 02:56, Andrew Lunn wrote:
->> On Wed, Feb 19, 2025 at 10:03:50PM +0100, Heiner Kallweit wrote:
->>> Move PHY package related inline functions from phy.h to phy_package.c.
->>> While doing so remove locked versions phy_package_read() and
->>> phy_package_write() which have no user.
->>
->> What combination of builtin and modules have you tried? Code like this
->> is often in the header because we get linker errors in some
->> configurations. It might be worth checking the versions of the
->> original patches from Christian to see if there was such issues.
->>
-> The PHY package functions are used by PHY drivers only, all of them
-> have a Kconfig dependency on PHYLIB. I don't see a scenario where we
-> could have the problem you're mentioning. But right, the PHY package
-> function declarations are a candidate for a new header file not to
-> be used outside drivers/net/phy.
+Il 21/02/25 09:01, Lorenzo Bianconi ha scritto:
+> Fix the following warning for clock-controller node:
+> 
+> DTC [C] arch/arm64/boot/dts/airoha/en7581-evb.dtb
+> arch/arm64/boot/dts/airoha/en7581.dtsi:176.37-181.5: Warning (simple_bus_reg): /soc/clock-controller@1fa20000: simple-bus unit address format error, expected "1fb00000"
+> 
+> Fixes: 7693017580e9 ("arm64: dts: airoha: en7581: Add Clock Controller node")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-IMHO it's easy that some corner case will pass unnoticed until some
-build breakage is reported. I suggest to keep such functions in a
-(private) header from the start.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Thanks,
-
-Paolo
+> ---
+>   arch/arm64/boot/dts/airoha/en7581.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+> index 9a419796594d3a99e1187dcca622469bf5a888c3..26b13694091735da7af977e42f8f546d7d5cb078 100644
+> --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
+> +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+> @@ -173,7 +173,7 @@ spi_nand: nand@0 {
+>   			};
+>   		};
+>   
+> -		scuclk: clock-controller@1fa20000 {
+> +		scuclk: clock-controller@1fb00000 {
+>   			compatible = "airoha,en7581-scu";
+>   			reg = <0x0 0x1fb00000 0x0 0x970>;
+>   			#clock-cells = <1>;
+> 
 
 
