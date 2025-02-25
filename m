@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB88FC021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 13:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61B0C021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 13:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kkk/FgdftM2MhGRlmFyqTkvBZSFZ3iHMrGj8aazN+qc=; b=m9y8i/dUeNrblmT60s2nnRt1lG
-	+uWkJohGuRon12+G5EG8G0Ve2s5OE/IAkorerW6JDyQh+TEe8LyEL6r8TvkqZzKho1eMDkl7+RGvS
-	POtdw34gJEOdYql6hvCwhdJgakEt3HB8cNox/JwTvOoSrIWeGy/hyZGVSlOqKtGHnhyjLaZkoktnF
-	H8G//va16/Mi0aQ79SVkdUvnfHo6FagbPXi4PI/6fWATx2esY42qtDUYJlBzV20/aNgg218QQvRsI
-	aghsXEiJY4ARMoOkfNIeIllURvx1WJVbPIty6evChV2QO3inl8Zkv8Zl7y2G5KDJelalNh5mkRdQO
-	oFpe9poQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZHQM5nbhbJNlP1js89/REC9STfmQ5XsLFUJcFanIvMs=; b=1pc337i19Df0jOWgsay42vxd31
+	Km2lV7FVwPMa05KCRJMl1bKfoULfOsdfJk1+68c3K5iOLKGssoFaZspN7Z2r9itYun9z53WIoAiha
+	C0cjc8bOVo8uf0RmKM6N/pfFzA2KJVFArrAkNfZ25ndVq+MgIfAsCH0tI6gHuy6LLEB7Ruv653M5e
+	durrBvZoq/1QW8/zeYiXMWuIUz3xQoubLq1149uau+eMfDCcGU95pKTSQbiE2Cf4qIgalRnCE2klt
+	W7QB4O8Dx6wUkLRbxo48+3m6U59n4k8rc8tNMlZBQJZIjv9LuDjGTo2xrFKqqHDOytHl/qTvdG8r7
+	6Hj6iRPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmuit-0000000HJso-44km;
-	Tue, 25 Feb 2025 13:11:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tmv6J-0000000HOVO-3LBA;
+	Tue, 25 Feb 2025 13:35:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmuPb-0000000HGGU-1qnB;
-	Tue, 25 Feb 2025 12:51:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740487905;
-	bh=qAdn74AM2lDhY895TRkOgxqgadKZ6yY5aB9zQuiKRWk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=N3fqnP1A91Pwh/37qfY91FmNkzrXy1pFCEdedry+ney7WVFo04hjr6aWUaGs3qnue
-	 Ozh+Z3hBpBUMxwnyDIiFI1qkr07tovoRo7FLKtW75no3QTXg9GAzUdHk2XjDMxlNdh
-	 nmTXT4uYlTp8VwYOWfRMbpHo1bfRpp4kSJVeHghKwgnlMYTfDX1CySUI5zoZoXsg7B
-	 qqKnQSyYB8FsxyZJhWYKed9/8XJS2tmRfAzaSH5Th8xUj7rKyyaky2mULAivfbCmod
-	 BPJTiiViwNyF0b2xIHQwTqrqYmXs3gKvG/5930W2YNttnTg7vgfyDRE0yqbFix+k3W
-	 sm8GqTcEZnZqg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE45717E09E7;
-	Tue, 25 Feb 2025 13:51:44 +0100 (CET)
-Message-ID: <ec6c3ade-cb08-46cf-b8e0-bcc64d3f7d78@collabora.com>
-Date: Tue, 25 Feb 2025 13:51:44 +0100
+	id 1tmueP-0000000HJ1l-3TYU;
+	Tue, 25 Feb 2025 13:07:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7856B61248;
+	Tue, 25 Feb 2025 13:06:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C95AC4CEDD;
+	Tue, 25 Feb 2025 13:07:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740488824;
+	bh=NmQ9nWH8XrnjebLyNSQHDNt1Aovq1Uzq7YSBPo1HXwI=;
+	h=From:Date:Subject:To:Cc:From;
+	b=coLausKWPcqpdqi5p+N8gT30FJzaSSwnHbZYR4g9yuD6kv/R9KzzYPnhEAywIeOEx
+	 OVwj3sYc3G2tJqz+M91M1WPUlbQ5C8XnIYuDStxULNZUqoddEoD7DW2J7Ag49oMDZe
+	 mzz6ugjplEw2VFiF08Q5Ll5mh44uhOkmFnlhBm0hjaiqxUd9rTi6dO3jXGWywo6OSn
+	 FwVlcTTxLop9BqYI7ir+ajgVOUN/KA5XaS5mzuLHlVgVz0DDumiXjkB53DgBVpPLjy
+	 0n1bI1hbwShguvYrt0uyXXSpOCgvyNQTuw6rFDcwhSo869HrX2lnK5bvqovZSg5X2N
+	 q3PGJ31F7ajmQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 25 Feb 2025 14:07:02 +0100
+Subject: [PATCH v2] arm64: dts: airoha: en7581: Enable spi nand controller
+ for EN7581 EVB
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: airoha: en7581: Enable spi controller for
- EN7581 evaluation board
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20250225-en7581-snfi-probe-fix-v1-1-77e4769574e4@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250225-en7581-snfi-probe-fix-v1-1-77e4769574e4@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_045147_631828_1EFD3290 
-X-CRM114-Status: GOOD (  13.68  )
+Message-Id: <20250225-en7581-snfi-probe-fix-v2-1-92e35add701b@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAHXAvWcC/4WNQQ6CMBBFr0K6dgyt1Aor72FYCP3ARNOSqSEaw
+ t2tXMDle8l/f1UJwkiqKVYlWDhxDBnMoVD9dA8jiH1mZUpjS2MsITh70ZTCwDRL7EADv6k/Gdv
+ Be/gaKm9nQdZ799Zmnji9onz2m0X/7L/iokmTc6jcubauQnV9QAKexyijardt+wLJ1yKGuwAAA
+ A==
+X-Change-ID: 20250225-en7581-snfi-probe-fix-c325bedded9e
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +76,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/02/25 13:47, Lorenzo Bianconi ha scritto:
-> Enable spi controller used for snand memory device for EN7581 SoC
-> evaluation board.
-> 
+Enable spi controller used for snand memory device for EN7581 evaluation
+board.
 
-Please clarify the commit title:
-
-arm64: dts: airoha: en7581: Enable spi nand controller for EN7581 EVB
-
-After which...
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Clarify the commit title
+- Link to v1: https://lore.kernel.org/r/20250225-en7581-snfi-probe-fix-v1-1-77e4769574e4@kernel.org
+---
+ arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-Cheers,
-Angelo
+diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+index d53b72d18242e3cee8b37c7b1b719d662fd6db8d..cc69f698c27b804953b1bb671e128d4401744bf5 100644
+--- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
++++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+@@ -25,6 +25,10 @@ memory@80000000 {
+ 	};
+ };
+ 
++&snfi {
++	status = "okay";
++};
++
+ &spi_nand {
+ 	partitions {
+ 		compatible = "fixed-partitions";
+diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+index 26b13694091735da7af977e42f8f546d7d5cb078..49c061d38d7860b3b416610723791a7a91edcb69 100644
+--- a/arch/arm64/boot/dts/airoha/en7581.dtsi
++++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+@@ -150,7 +150,7 @@ gic: interrupt-controller@9000000 {
+ 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+ 		};
+ 
+-		spi@1fa10000 {
++		snfi: spi@1fa10000 {
+ 			compatible = "airoha,en7581-snand";
+ 			reg = <0x0 0x1fa10000 0x0 0x140>,
+ 			      <0x0 0x1fa11000 0x0 0x160>;
 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->   arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
->   arch/arm64/boot/dts/airoha/en7581.dtsi    | 2 +-
->   2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> index d53b72d18242e3cee8b37c7b1b719d662fd6db8d..cc69f698c27b804953b1bb671e128d4401744bf5 100644
-> --- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> +++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> @@ -25,6 +25,10 @@ memory@80000000 {
->   	};
->   };
->   
-> +&snfi {
-> +	status = "okay";
-> +};
-> +
->   &spi_nand {
->   	partitions {
->   		compatible = "fixed-partitions";
-> diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-> index 26b13694091735da7af977e42f8f546d7d5cb078..49c061d38d7860b3b416610723791a7a91edcb69 100644
-> --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-> +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-> @@ -150,7 +150,7 @@ gic: interrupt-controller@9000000 {
->   			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
->   		};
->   
-> -		spi@1fa10000 {
-> +		snfi: spi@1fa10000 {
->   			compatible = "airoha,en7581-snand";
->   			reg = <0x0 0x1fa10000 0x0 0x140>,
->   			      <0x0 0x1fa11000 0x0 0x160>;
-> 
-> ---
-> base-commit: 0092294492fafe79a537915e486576a3d69c9a7c
-> change-id: 20250225-en7581-snfi-probe-fix-c325bedded9e
-> 
-> Best regards,
+---
+base-commit: 0092294492fafe79a537915e486576a3d69c9a7c
+change-id: 20250225-en7581-snfi-probe-fix-c325bedded9e
 
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
