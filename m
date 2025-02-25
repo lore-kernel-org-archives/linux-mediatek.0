@@ -4,92 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC5AC021A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 00:33:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00621C021A4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 02:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9rhjYcVXQZupgyG31N9S6xdQy/eIyTiHVZxCjl50oL0=; b=3Cw4USK2+0Y78AeUJXN9i41KUW
-	b94phoiPEbMEKOxPRhm+S9UoaavbZAu4rqxhXP4uAbsB9liwCBERmyNsHYLyZkNpS6d2g554fDIjU
-	m9YSwkbq96iNZH/we6VlSSpKWI+t1krBWFOl5/SOKJB7UtiEJNy/hdFoizCHCP2KcHazNo2wwEHeP
-	x2IuoGT+ImVV5/XiMUR9nmwm4lAqir/Vf7CN8Z+eD8d0aOufRtkLc0X/YqZ8jUnOcTFvupXHiHfHB
-	RJXDnFQJOkfwdjtdEsdyfsGAr8ZzN97Y1KVlfciwi4UMsREwdkUYcMFMO9tPfW/FqxqxeF3b16OWA
-	HlyV4xVA==;
+	bh=24jiysXyB/JxeRxXGrThD+4qS8hUsrobbYzYvxv5lPA=; b=PYNYfrf5Z5etOkv8JO1ieYzY2G
+	WGYczkqoimpcAEnnUDOus05u0RykcfTl26WphGZyvXmizyizhrGIv1YaPmErl1RgbJ14SWZqkOXz/
+	Y2JZeY4e7Rhc3TF2pFP/JpOLX7RyOhoVDcJu+kNwRvI1SVwSszVa7+ufoTu0nIWt99TsOUo+uIQ9j
+	KpXPLCQYhohlu0wHSC2iZWwBDMImT657VzntbV0JwXsi0q6/xXiQbIWKjPutC1Iph1kNSnLlxrHdT
+	L1mpdjd8/yS2QpifVmFNEya7qTEN4Ttwcidqn3mq+Qpku/T/vdh5d0zI1uBCxzv8+zWTo2U/PdrUV
+	nZDIlV+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmitL-0000000Fcob-1XHx;
-	Tue, 25 Feb 2025 00:33:43 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1tmkIB-0000000FlHB-49gV;
+	Tue, 25 Feb 2025 02:03:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmitI-0000000FcnR-10H5;
-	Tue, 25 Feb 2025 00:33:41 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 51OMK4A2025220;
-	Tue, 25 Feb 2025 00:33:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2023-11-20; bh=9rhjYcVXQZupgyG31N9S6xdQy/eIyTiHVZxCjl50oL0=; b=
-	ahfSHd+ee39+/n2jkR581gq4cakz8SZgHscMySx2Z4p0Vu2Pb7APelbGO+eZdDwb
-	U1EtRmPWDp+AA5AMshLCTHyl2pSnQuK4rL7kVFJrfA6N2eYVPh89A66S4f6O2pXF
-	JwgEq7tBlTEQGsorFAUOokZrBZ2gnrN8bkS7qJibSdk1DYnlcZThKTL51j5JiRDi
-	vhnyD3z33Cv98HhYxHCxRIoQWW5JNby3FH6lWINP8UIDwN1/kIm1yCJdHp5ECsi0
-	HHL2JW4a9JzR6ZVez71NLrINHPPdxfkeLAqL8NriZJBShOJeBbgQ6oHoyibtikY3
-	xf7JKIDNlJuSjdZt9Cy0+w==
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 44y50bkwek-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 25 Feb 2025 00:33:21 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 51P0UE09025437;
-	Tue, 25 Feb 2025 00:33:21 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 44y51f0q94-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 25 Feb 2025 00:33:21 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 51P0XI1x025171;
-	Tue, 25 Feb 2025 00:33:20 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 44y51f0q87-4;
-	Tue, 25 Feb 2025 00:33:20 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
-        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
-        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
-        peter.wang@mediatek.com, quic_rampraka@quicinc.com,
-        Ziqi Chen <quic_ziqichen@quicinc.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 0/8] Support Multi-frequency scale for UFS
-Date: Mon, 24 Feb 2025 19:32:49 -0500
-Message-ID: <174044345145.2973737.15116992944360697674.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250213080008.2984807-1-quic_ziqichen@quicinc.com>
-References: <20250213080008.2984807-1-quic_ziqichen@quicinc.com>
+	id 1tmkGg-0000000FlC9-1ju6;
+	Tue, 25 Feb 2025 02:01:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9C5A1611CA;
+	Tue, 25 Feb 2025 02:01:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10831C4CED6;
+	Tue, 25 Feb 2025 02:01:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740448913;
+	bh=24jiysXyB/JxeRxXGrThD+4qS8hUsrobbYzYvxv5lPA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=m0YNl8hVNoFUnLUYdBUeOSUQqFi/NzUh2IxX88Qn1nBbE8mqcAfiNoOZbZwaLzQtf
+	 l5x0F7/7X7AcH+mJypeRs0RJbWk4GKBbY6AIO6jl0HVx/lGfxwRb30J6dV8DSNTUvL
+	 /dihr4AzMzwMmM7oQm30NB9WTrJB9oexReCzvF7N3e7Un4tS79Mu+aSy7P+/j92cGv
+	 8dJ9bzyXYG9dQZ9gsOmhikj9CAM0VpjeM8U104aFyOe8Ev3Xy0pRGKBGbLE93lTSpY
+	 AzYZISjHKGN3lsKJytI6kyyO3+zdvpZTnws4MYR2waLZtXO1kt2P3TxW5IxtgXXCiD
+	 EYgsGn4O28c3g==
+Date: Mon, 24 Feb 2025 18:01:52 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>,
+ David Miller <davem@davemloft.net>, Daniel Golle <daniel@makrotopia.org>,
+ Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+ <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Richard Cochran <richardcochran@gmail.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH net-next 3/8] net: phy: add getters for public members
+ of struct phy_package_shared
+Message-ID: <20250224180152.6e0d3a8b@kernel.org>
+In-Reply-To: <b505ed6a-533d-42ad-82d0-93315ce27e7f@gmail.com>
+References: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
+	<b505ed6a-533d-42ad-82d0-93315ce27e7f@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-02-24_11,2025-02-24_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 spamscore=0 mlxlogscore=955
- phishscore=0 mlxscore=0 suspectscore=0 adultscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2502100000
- definitions=main-2502250001
-X-Proofpoint-ORIG-GUID: 7ty-sRKwHsNKQL1Xn1bsKeyU2f8-As33
-X-Proofpoint-GUID: 7ty-sRKwHsNKQL1Xn1bsKeyU2f8-As33
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_163340_392322_76A8654D 
-X-CRM114-Status: GOOD (  11.22  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,40 +77,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Feb 2025 16:00:00 +0800, Ziqi Chen wrote:
+On Wed, 19 Feb 2025 22:04:47 +0100 Heiner Kallweit wrote:
+> +struct device_node *phy_package_shared_get_node(struct phy_device *phydev);
+> +void *phy_package_shared_get_priv(struct phy_device *phydev);
 
-> With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
-> plans. However, the gear speed is only toggled between min and max during
-> clock scaling. Enable multi-level gear scaling by mapping clock frequencies
-> to gear speeds, so that when devfreq scales clock frequencies we can put
-> the UFS link at the appropraite gear speeds accordingly.
-> 
-> This series has been tested on below platforms -
-> sm8550 mtp + UFS3.1
-> SM8650 MTP + UFS3.1
-> SM8750 MTP + UFS4.0
-> 
-> [...]
-
-Applied to 6.15/scsi-queue, thanks!
-
-[1/8] scsi: ufs: core: Pass target_freq to clk_scale_notify() vop
-      https://git.kernel.org/mkp/scsi/c/5e011fcc7d16
-[2/8] scsi: ufs: qcom: Pass target_freq to clk scale pre and post change
-      https://git.kernel.org/mkp/scsi/c/367a0f017c61
-[3/8] scsi: ufs: core: Add a vop to map clock frequency to gear speed
-      https://git.kernel.org/mkp/scsi/c/d7bead60b08e
-[4/8] scsi: ufs: qcom: Implement the freq_to_gear_speed() vop
-      https://git.kernel.org/mkp/scsi/c/c02fe9e222d1
-[5/8] scsi: ufs: core: Enable multi-level gear scaling
-      https://git.kernel.org/mkp/scsi/c/129b44c27c8a
-[6/8] scsi: ufs: core: Check if scaling up is required when disable clkscale
-      https://git.kernel.org/mkp/scsi/c/eff26ad4c34f
-[7/8] scsi: ufs: core: Toggle Write Booster during clock scaling base on gear speed
-      https://git.kernel.org/mkp/scsi/c/2a25cbaa81d2
-[8/8] ABI: sysfs-driver-ufs: Add missing UFS sysfs attributes
-      https://git.kernel.org/mkp/scsi/c/6d7696b4d447
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+A bit sad that none of the users can fit in a line with this naming.
+Isn't "shared" implied by "package" here ?
+How would you feel about phy_package_get_priv() ?
 
