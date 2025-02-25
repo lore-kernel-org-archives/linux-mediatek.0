@@ -4,111 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF06C021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 21:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94FD8C021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 22:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=; b=lrN2POMpfSeXEFbzS4+P+CzQAG
-	ygazvsofUf+t+1uvIHxBibZ7kyf/XwwY5Hl5NG8blPJQICzZuwRi7dOds2jFEJRtgzNTVvRdDHnF/
-	/6VCrk5Y1kn7XaKKBCEnjMQZq0/TXvCks8SWAuIc6CVDa6HmtvJLbfwSTlD0GJIr5qlkEoTQxb4+y
-	JZzyIWM2isDZqWw3TgT1682HXFtffze7udLd/bBZb6cdBcuFahoBU+cZ0UhlaYFpNsND4qbqB+Qp7
-	Qo2tI3ZlgYN94mLc9s0UJr57lMc34T1dS8NtXy8Gw+1GIHqbDLQNHfeOdgm9VfiFAilkKPzR1Mmm7
-	d3z5dxgA==;
+	Content-Type:Cc:To:MIME-Version:Message-Id:Date:Subject:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HmdS/AlEx+8JlcqZ5mtM6o9rE+VmGN6xnAqIajbGwQA=; b=GF0bC39gIuW9KSE4S2j3cz6+7c
+	TRrY8idp52CVGfVa0LReQCgMxpBELVQsSw/7dJxRGoxofSsktMILfvj1hocMCZxGEhxqzKk/TkiHj
+	JKBJyS7yBBO7UQZSYfDrDCxTwtPm5mTn0PE6GvDtzus22Ly2FhCO1W9ztA11j9gbB+ZR9fpFXxjnh
+	NejpYvhUG2WKWrnp6jg0lcLjrwuqSAImtCSeJttKpnH4c1+WTl8LDXdanx2toJvDMxtFw/x3561Xq
+	YKuJAph+WW7jq/oMxgQvJCkqic1AsUlsFD2QjoMO3bXqltnUaVX+2lmOBs+q8BFrJvvjpvOt1nNGs
+	IWZirjlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn275-00000001TX6-2oj4;
-	Tue, 25 Feb 2025 21:05:11 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1tn3Ii-00000001fOJ-2v24;
+	Tue, 25 Feb 2025 22:21:16 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn1MB-00000001Kih-1u2y;
-	Tue, 25 Feb 2025 20:16:44 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-ab744d5e567so32159166b.1;
-        Tue, 25 Feb 2025 12:16:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740514602; x=1741119402; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=;
-        b=kEz6AnqnSR8tvG6atPUaxmbHfOTowQCVf5thmVQSZ6kIjRxbeK48Q1ia40L2wyNjOs
-         t1LGIdJrDvNqVFEDDIUWQAf+HtOMj4/ZQiya+t6DuQCNestYAOAhhHwmO2woJ2XBIrLC
-         VFR4CM3GYPeI0qEhMekJyizZb94zGZDe9wGuwdOvjCEulaYtPedqmA/nTkWG3BtQtlg2
-         y9R6ZVnPkHz1+F3jXr643CADxuxT6jpEOinnabQIA4bVQ/H/R7B0sdU6BZoafSpEtjyT
-         dYVWRjiGEGmqVlxUcZ29SoM+FELbXiz9qwN2dcv1WKjN//qyrx5/R11BqHgfZUW8EIsM
-         Cnug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740514602; x=1741119402;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=E8P5h61gnv0DfF0R+vjh2CpjgGHUfjM4UjNVV+Pbc34=;
-        b=AL7GD/Wcv2ReTpUvjFbVmmcZqBRp2bwCIH2YDq0fIOr4wLdp6HLM3uA+G+RJ/hGHel
-         +ANZMmEB8B43KFl+wZjlJQiKI7VbYcWaxgnO9uIfo3YkxIVCirlyingXOveh5VfSBXKI
-         DmP8ZclCaqIVTFjLS5NUUMtnTvYXCxbkRw1QZgT1VgQcD9GcpzkfrDkQKTv6wpCtJ0sr
-         aWrZqcMax0tuAxrUF0ZuSQR6SfwfBZu4s35UZTJnzaHHq/CxKzkUqAWekAlGIfqgUy37
-         D3Lg/yi9J8z+E6dM9ZQ5GAiHoBEGJE/rqgVroQPxAaq/LePkJvp+g4BMUIfr5LltKX/f
-         yuLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXJSm7RaJBA3/vlVVZGUx8Tm+8E+u7vcTjUIPdlEiAQwvYTJUVHh6OpCS4woW3Sbwssb6cm/YgP/bEEB7i3QvM=@lists.infradead.org, AJvYcCXhHfUOqaox62AlV4DVgVnokKR+VB0NF4zM6oe1QkqJ+LWRzHqUvc3/nmuUQGJzSFVllFS1zLdmdCP9/Grlgw67@lists.infradead.org
-X-Gm-Message-State: AOJu0YxfF7PMh7MsvrfkJYELeaGHMtea5PgLEnN6irYVVRkVLSsDeJY6
-	43l3ZsGKRpe6n5uxUrfZLAJEj+lphnapEBMMlb1WwUztjrvMDOzn
-X-Gm-Gg: ASbGncuKeD0XDiw9IPSf/lHGK0ut4/VWSan9naeBOspoYqUwUVS1qN+Rc1mmUFJI3xv
-	En0epTuNawkIIIm1Ehc6Sy5QAinYKlDHEYJJn4uhuBrP6skO7G+A8SsiFmK1rNtJDb8VqxgH0g8
-	R4QA9/IhN5DqpTSCXyIOM8gOLf3ndMhHg31nL76A9lCh5RTPzomLCAPkSV2GyVA8FnfDOBqOBZy
-	D0Oa6p87hpmAijkflfwLQnHZ12bpXqVzjHMY8LhfLwUqSQ1AfQtT3J5KpBjuGU6DZponP17pAVy
-	v89w890WsKAc3pMsJafkIi2c0t1HSDt941SGP+R4yZNVp7MgFcM8qnPr1BEnX5lbWIn1faTCbXe
-	D5aYzuCRQxTAvs9AEdwV2YA/hvuBHp1TXvC8UCuz5n/c=
-X-Google-Smtp-Source: AGHT+IErCNHvUEetSRKi2Fz/dRzAsZ4C8dWcnPsAPVqwFDmd0GWTebWBy4vbvP5wLftQ4Gc/RXx2yA==
-X-Received: by 2002:a17:907:7fa4:b0:aba:e1eb:1a90 with SMTP id a640c23a62f3a-abc0abb3bb2mr2093020566b.0.1740514601742;
-        Tue, 25 Feb 2025 12:16:41 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abed201218fsm194319666b.104.2025.02.25.12.16.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Feb 2025 12:16:41 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Joe Damato <jdamato@fastly.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v7 net-next 14/14] netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
-Date: Tue, 25 Feb 2025 21:16:16 +0100
-Message-ID: <20250225201616.21114-15-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250225201616.21114-1-ericwouds@gmail.com>
-References: <20250225201616.21114-1-ericwouds@gmail.com>
+	id 1tn3If-00000001fMg-18jI
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Feb 2025 22:21:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1740522071;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=HmdS/AlEx+8JlcqZ5mtM6o9rE+VmGN6xnAqIajbGwQA=;
+	b=SEOwyBL2JiogcH302apskT2FoB49V3UEi2SYtJDpeZ64QKwb5vTgWfUDcEo0IO4654qr6b
+	nJb6YZIhoNKBC0VjB3uaR0sw4pI3Fpn00XzQEy94fIU1mgGDVxzAMUgxzBUwDBCfvpBV7A
+	MU6Hz8ufjLHhPj72TdhzZ3+Q/TLzOzA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-bEt8P_VWOeaeQWGLKOdHDg-1; Tue,
+ 25 Feb 2025 17:21:08 -0500
+X-MC-Unique: bEt8P_VWOeaeQWGLKOdHDg-1
+X-Mimecast-MFC-AGG-ID: bEt8P_VWOeaeQWGLKOdHDg_1740522063
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A699A1800874;
+	Tue, 25 Feb 2025 22:20:59 +0000 (UTC)
+Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.79])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 8BC6E1800359;
+	Tue, 25 Feb 2025 22:20:46 +0000 (UTC)
+From: Anusha Srivatsa <asrivats@redhat.com>
+Subject: [PATCH RESEND 00/12] drm: Move to using
+ devm_platform_ioremap_resource
+Date: Tue, 25 Feb 2025 17:20:41 -0500
+Message-Id: <20250225-memory-drm-misc-next-v1-0-9d0e8761107a@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIADlCvmcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDIyNT3dzU3PyiSt2Uolzd3MziZN281IoS3SQjExOTJBMLi5QkIyWg1oK
+ i1LTMCrCx0UpBrsGufi5KsbW1AGMd+zJuAAAA
+X-Change-ID: 20250225-memory-drm-misc-next-b2444b488db2
+To: Joel Stanley <joel@jms.id.au>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
+ Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>, 
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Alexey Brodkin <abrodkin@synopsys.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Jonathan Corbet <corbet@lwn.net>
+Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>, 
+ CK Hu <ck.hu@mediatek.com>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740522045; l=4600;
+ i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
+ bh=VRew4thqjNNr9Bhh7XZ9CycetampVVfLEpViJv98lrg=;
+ b=ECHxTPhmX8SH8mJXx2ad9sYUXYHscl1DXpCA8GXt5zVBerbXI/IktA9aaJ7pdl+ts3xeDePFN
+ 9Ct46KCSVgmCxQFFFX9oDZfk9E0JAYbrP432VYqTJmou2zlqrmetjZp
+X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
+ pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vkERKK29YeeF7PFmMIzfAPa5f4Rnrxm8Mqc-uViAxr0_1740522063
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_121643_491594_15B02101 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20250225_142113_379333_ECF1D1D2 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,197 +133,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Edit nft_flow_offload_eval() to make it possible to handle a flowtable of
-the nft bridge family.
+Start replacing the below occurences with the newer API:
+- (devm_)platform_get_resource + devm_ioremap_resource
+- (devm_)platform_get_resource + (devm_)ioremap
+- platform_get_resource_byname + devm_ioremap
+Move all these occurences to uses devm_platform_ioremap_resource
+instead.
 
-Use nft_flow_offload_bridge_init() to fill the flow tuples. It uses
-nft_dev_fill_bridge_path() in each direction.
+This is a resend of v3 of the series. Sending this from drm-misc-next.
+Changes from v2 [1]:
+- Keep the old snippet of documentation and add further
+clarification (Thomas)
+- change in vc4 driver for the a resource is not needed.
+Add a comment to clarify why that is left behind (Maxime)
 
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+[1] - https://patchwork.freedesktop.org/series/144073/
+
+Used Coccinelle to make the code changes.Semantic patch:
+
+//First Case
+//rule s/platform_get_resource + devm_ioremap_resource/devm_platform_ioremap_resource
+@rule_1@
+identifier res;
+expression ioremap_res;
+identifier pdev;
+@@
+-struct resource *res;
+...
+-res = platform_get_resource(pdev,...);
+-ioremap_res = devm_ioremap_resource(...);
++ioremap_res = devm_platform_ioremap_resource(pdev,0);
+
+//Second case
+//rule s/(devm_)platform_get_resource + (devm_)ioremap/devm_platform_ioremap_resource.
+@rule_2@
+identifier res;
+expression ioremap;
+identifier pdev;
+@@
+-struct resource *res;
+...
+-res = platform_get_resource(pdev,...);
+<...
+-if (!res) {
+-...
+-}
+...>
+-ioremap = devm_ioremap(...);
++ioremap = devm_platform_ioremap_resource(pdev,0);
+
+//Third case
+//rule s/(devm_)platform_get_resource_byname + (devm_)ioremap/devm_platform_ioremap_resource_byname.
+@rule_3@
+identifier res;
+expression ioremap;
+identifier pdev;
+constant mem;
+expression name;
+@@
+-struct resource *res;
+<+...
+-res = platform_get_resource_byname(pdev,mem,name);
+<...
+-if (!res) {
+-...
+-}
+...>
+-ioremap = devm_ioremap(...);
++ioremap = devm_platform_ioremap_resource_byname(pdev,name);
+...+>
+
+Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 ---
- net/netfilter/nft_flow_offload.c | 142 +++++++++++++++++++++++++++++--
- 1 file changed, 137 insertions(+), 5 deletions(-)
+Anusha Srivatsa (12):
+      drm/aspeed: move to devm_platform_ioremap_resource() usage
+      drm/fsl-dcu: move to devm_platform_ioremap_resource() usage
+      drm/hisilicon: move to devm_platform_ioremap_resource() usage
+      drm/mediatek: move to devm_platform_ioremap_resource() usage
+      drm/mxsfb: move to devm_platform_ioremap_resource() usage
+      drm/sprd: move to devm_platform_ioremap_resource() usage
+      drm/sti: move to devm_platform_ioremap_resource() usage
+      drm/stm: move to devm_platform_ioremap_resource() usage
+      drm/tegra: move to devm_platform_ioremap_resource() usage
+      drm/tiny: move to devm_platform_ioremap_resource() usage
+      drm/vc4: move to devm_platform_ioremap_resource() usage
+      Documentation: Update the todo
 
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index c0c310c569cd..03a0b5f7e8d2 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -193,6 +193,128 @@ static bool nft_flowtable_find_dev(const struct net_device *dev,
- 	return found;
- }
- 
-+static int nft_dev_fill_bridge_path(struct flow_offload *flow,
-+				    struct nft_flowtable *ft,
-+				    enum ip_conntrack_dir dir,
-+				    const struct net_device *src_dev,
-+				    const struct net_device *dst_dev,
-+				    unsigned char *src_ha,
-+				    unsigned char *dst_ha)
-+{
-+	struct flow_offload_tuple_rhash *th = flow->tuplehash;
-+	struct net_device_path_ctx ctx = {};
-+	struct net_device_path_stack stack;
-+	struct nft_forward_info info = {};
-+	int i, j = 0;
-+
-+	for (i = th[dir].tuple.encap_num - 1; i >= 0 ; i--) {
-+		if (info.num_encaps >= NF_FLOW_TABLE_ENCAP_MAX)
-+			return -1;
-+
-+		if (th[dir].tuple.in_vlan_ingress & BIT(i))
-+			continue;
-+
-+		info.encap[info.num_encaps].id = th[dir].tuple.encap[i].id;
-+		info.encap[info.num_encaps].proto = th[dir].tuple.encap[i].proto;
-+		info.num_encaps++;
-+
-+		if (th[dir].tuple.encap[i].proto == htons(ETH_P_PPP_SES))
-+			continue;
-+
-+		if (ctx.num_vlans >= NET_DEVICE_PATH_VLAN_MAX)
-+			return -1;
-+		ctx.vlan[ctx.num_vlans].id = th[dir].tuple.encap[i].id;
-+		ctx.vlan[ctx.num_vlans].proto = th[dir].tuple.encap[i].proto;
-+		ctx.num_vlans++;
-+	}
-+	ctx.dev = src_dev;
-+	ether_addr_copy(ctx.daddr, dst_ha);
-+
-+	if (dev_fill_bridge_path(&ctx, &stack) < 0)
-+		return -1;
-+
-+	nft_dev_path_info(&stack, &info, dst_ha, &ft->data);
-+
-+	if (!info.indev || info.indev != dst_dev)
-+		return -1;
-+
-+	th[!dir].tuple.iifidx = info.indev->ifindex;
-+	for (i = info.num_encaps - 1; i >= 0; i--) {
-+		th[!dir].tuple.encap[j].id = info.encap[i].id;
-+		th[!dir].tuple.encap[j].proto = info.encap[i].proto;
-+		if (info.ingress_vlans & BIT(i))
-+			th[!dir].tuple.in_vlan_ingress |= BIT(j);
-+		j++;
-+	}
-+	th[!dir].tuple.encap_num = info.num_encaps;
-+
-+	th[dir].tuple.mtu = dst_dev->mtu;
-+	ether_addr_copy(th[dir].tuple.out.h_source, src_ha);
-+	ether_addr_copy(th[dir].tuple.out.h_dest, dst_ha);
-+	th[dir].tuple.out.ifidx = info.outdev->ifindex;
-+	th[dir].tuple.xmit_type = FLOW_OFFLOAD_XMIT_DIRECT;
-+
-+	return 0;
-+}
-+
-+static int nft_flow_offload_bridge_init(struct flow_offload *flow,
-+					const struct nft_pktinfo *pkt,
-+					enum ip_conntrack_dir dir,
-+					struct nft_flowtable *ft)
-+{
-+	const struct net_device *in_dev, *out_dev;
-+	struct ethhdr *eth = eth_hdr(pkt->skb);
-+	struct flow_offload_tuple *tuple;
-+	struct pppoe_hdr *phdr;
-+	struct vlan_hdr *vhdr;
-+	int err, i = 0;
-+
-+	in_dev = nft_in(pkt);
-+	if (!in_dev || !nft_flowtable_find_dev(in_dev, ft))
-+		return -1;
-+
-+	out_dev = nft_out(pkt);
-+	if (!out_dev || !nft_flowtable_find_dev(out_dev, ft))
-+		return -1;
-+
-+	tuple =  &flow->tuplehash[!dir].tuple;
-+
-+	if (skb_vlan_tag_present(pkt->skb)) {
-+		tuple->encap[i].id = skb_vlan_tag_get(pkt->skb);
-+		tuple->encap[i].proto = pkt->skb->vlan_proto;
-+		i++;
-+	}
-+	switch (pkt->skb->protocol) {
-+	case htons(ETH_P_8021Q):
-+		vhdr = (struct vlan_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(vhdr->h_vlan_TCI);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	case htons(ETH_P_PPP_SES):
-+		phdr = (struct pppoe_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(phdr->sid);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	}
-+	tuple->encap_num = i;
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, !dir, out_dev, in_dev,
-+				       eth->h_dest, eth->h_source);
-+	if (err < 0)
-+		return err;
-+
-+	memset(tuple->encap, 0, sizeof(tuple->encap));
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, dir, in_dev, out_dev,
-+				       eth->h_source, eth->h_dest);
-+	if (err < 0)
-+		return err;
-+
-+	return 0;
-+}
-+
- static void nft_dev_forward_path(struct nf_flow_route *route,
- 				 const struct nf_conn *ct,
- 				 enum ip_conntrack_dir dir,
-@@ -311,6 +433,7 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- {
- 	struct nft_flow_offload *priv = nft_expr_priv(expr);
- 	struct nf_flowtable *flowtable = &priv->flowtable->data;
-+	bool routing = flowtable->type->family != NFPROTO_BRIDGE;
- 	struct tcphdr _tcph, *tcph = NULL;
- 	struct nf_flow_route route = {};
- 	enum ip_conntrack_info ctinfo;
-@@ -364,14 +487,21 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 		goto out;
- 
- 	dir = CTINFO2DIR(ctinfo);
--	if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
--		goto err_flow_route;
-+	if (routing) {
-+		if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
-+	}
- 
- 	flow = flow_offload_alloc(ct);
- 	if (!flow)
- 		goto err_flow_alloc;
- 
--	flow_offload_route_init(flow, &route);
-+	if (routing)
-+		flow_offload_route_init(flow, &route);
-+	else
-+		if (nft_flow_offload_bridge_init(flow, pkt, dir, priv->flowtable) < 0)
-+			goto err_flow_add;
-+
- 	if (tcph)
- 		flow_offload_ct_tcp(ct);
- 
-@@ -419,8 +549,10 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- err_flow_add:
- 	flow_offload_free(flow);
- err_flow_alloc:
--	dst_release(route.tuple[dir].dst);
--	dst_release(route.tuple[!dir].dst);
-+	if (routing) {
-+		dst_release(route.tuple[dir].dst);
-+		dst_release(route.tuple[!dir].dst);
-+	}
- err_flow_route:
- 	clear_bit(IPS_OFFLOAD_BIT, &ct->status);
- out:
+ Documentation/gpu/todo.rst                      | 13 +++---
+ drivers/gpu/drm/aspeed/aspeed_gfx_drv.c         |  4 +-
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c       |  4 +-
+ drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c    |  4 +-
+ drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_color.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c        |  4 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c              |  4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c             |  4 +-
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         |  4 +-
+ drivers/gpu/drm/mxsfb/lcdif_drv.c               |  4 +-
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c               |  4 +-
+ drivers/gpu/drm/sprd/sprd_dpu.c                 |  9 +----
+ drivers/gpu/drm/sprd/sprd_dsi.c                 |  9 +----
+ drivers/gpu/drm/sti/sti_compositor.c            | 10 +----
+ drivers/gpu/drm/sti/sti_dvo.c                   | 10 +----
+ drivers/gpu/drm/sti/sti_hda.c                   |  9 +----
+ drivers/gpu/drm/sti/sti_hdmi.c                  | 11 +----
+ drivers/gpu/drm/sti/sti_hqvdp.c                 | 10 +----
+ drivers/gpu/drm/sti/sti_tvout.c                 | 10 +----
+ drivers/gpu/drm/sti/sti_vtg.c                   | 10 +----
+ drivers/gpu/drm/stm/ltdc.c                      |  4 +-
+ drivers/gpu/drm/tegra/dsi.c                     |  4 +-
+ drivers/gpu/drm/tiny/arcpgu.c                   |  4 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.c                  | 53 +++++++++----------------
+ 28 files changed, 51 insertions(+), 171 deletions(-)
+---
+base-commit: 27d4815149ba0c80ef2db2a82f0512f647e76d62
+change-id: 20250225-memory-drm-misc-next-b2444b488db2
+
+Best regards,
 -- 
-2.47.1
+Anusha Srivatsa <asrivats@redhat.com>
 
 
