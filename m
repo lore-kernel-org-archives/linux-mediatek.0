@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F474C021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:39:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70FBCC021BB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:40:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ym8J5YeB/cx8XpyueGVGaKEAT64ttbdOlL9OEe3dmkE=; b=fhpsWi1aKWR/YT5aGmIE+6PDdF
-	8txbmXB5NsGoiFlIH7AjYoqcEUYDZX0BKuwqd32wAGv6ZMGgRxCEnb7fHEdhWpDDcv4KaiHMiJAa7
-	Du0BOtwxuRfQ0hevRIeTQ+w1Aht7HJvrw32r2j3zq3SYzXDOhLI4t+N4kghgySIqJ8vNXeZgaHQLp
-	lk4huIi9HoNkyWxTxqn+MlsyK6bYjirIx/6tA7aL5syu/i4iIGezpVlEChT/ApxBnLatoCR28VEAE
-	rHV4bm6Q4XV4PV4pUbe8Q62NXfOKIyvaAcVGP/HcV/wkYkjC8AtBp/XcWi0kcLx5cYEJ71MJpB9Ld
-	i46dxqqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OCqaPLwCBbPGacddWjtRWhsNvlVpHVJUUCrvPxyqut8=; b=t0NoOvjNHHN/9f
+	vpUK0G3F9YEpr2YYA97upx218Pvb6VRFJPvTrFwM9uS704sU9XoaE87ASHYlsaxHSVljD1tZ+wzjv
+	kE7m8fPAw4cX4H5h2dN5/SHduXkgUVT8yXZf6pMZYMmgKlbl5LPQU2x4YpqT4EoxTFHT1xfE2ZpW0
+	PUX8qHFxpofh4otq5/s3m5NFgDmdjaujygoXsKKS/tHYaxzghvxOtnFUZqfe6aAidHFKR+3zD9gpG
+	olGpIW74DZ2iiDyLYXCnuTt5CyCctZEha6dkK2xynN33zK4u1DFUiYzd4hgDzhV8iourfdswvSoWW
+	5bS9+kU3E4lQomc9Fy5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmxyL-00000000Hol-0EYb;
-	Tue, 25 Feb 2025 16:39:53 +0000
+	id 1tmxzI-00000000J62-0aEc;
+	Tue, 25 Feb 2025 16:40:52 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmvbM-0000000HTP8-1Wfi;
-	Tue, 25 Feb 2025 14:08:01 +0000
+	id 1tmw1X-0000000HXi7-1hRm;
+	Tue, 25 Feb 2025 14:35:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740492478;
-	bh=OV9F9KqPwKQyiJmD+vFaweQLR+YT46dDjh77TsIN4zI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hMt8TiqyYmncuyjgIQjcxwYxCWnpKDcC+iLbY8xREGK5ksBPnGIm9BBUtn2GPh/h6
-	 0dmf4eY6wieIZR6Hx/0SzGeH7azbu8lD7hL+usIe8VMCY5LiJ809XHyBTENCNLI7Uh
-	 Gv7md7aiNzD7uehvg3K0stqu+uxr7IUTnmVDsPY+0AljivHEh7RyeB970XmngeYHbl
-	 aMRT3w3hT4uIQMQIiZgqAzbApIybx71eU8gBOvCHf+/cqVZUzqq091+64BsYEL6tVl
-	 2Esi2q/LastZwWcoqcL2gxAegAHK+y4W/OhSXPUP/4jkKQzKduse5/nTcs4HoTfKaE
-	 sqSbJasRTvWWg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	s=mail; t=1740494101;
+	bh=rqlDudHnuYgq9wewNcojaTJbeYRPypypRFN8oxFuEys=;
+	h=From:Subject:Date:To:Cc:From;
+	b=mieflFWpfr41xUm3kcgFxounly6rCgJ9vy95rvSTvxSxGuyZImksH2Ck3cNtX7Itg
+	 I8MMTy/+7qkiMtnDKbUh92Jx5nZiGIvkJaG4O47Kz/+xYP9b60Hv6Epl32gbxmh069
+	 ykIri/kV9y5eBIf/gTPgUXi0kl6LNz2x0ewG9Hrt1xPA14ODF9JmvbRlNoKOSKzGNA
+	 8m8pr7l76ZkD41bpb+be72pfdIPs6QQcARVymDGVTG5Qaqgm29TitexDj9WuCw84h6
+	 OeS+gMihRBIY9UIUtHZWN4oPXgR1N5oolrAk+O6zEv30kqX6XOgDOlLlcL0vMDzYZT
+	 RKXODWXBcc6+Q==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1004])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 16CF617E087E;
-	Tue, 25 Feb 2025 15:07:58 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- kernel@collabora.com, pablo.sun@mediatek.com
-In-Reply-To: <20250213112008.56394-1-angelogioacchino.delregno@collabora.com>
-References: <20250213112008.56394-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 0/3] MediaTek MT8195/MT8395 Display Controller Graph
-Message-Id: <174049247800.77227.18410008304398234380.b4-ty@collabora.com>
-Date: Tue, 25 Feb 2025 15:07:58 +0100
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F277B17E0DB7;
+	Tue, 25 Feb 2025 15:34:56 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2 0/8] Enable DMIC for Genio 700/510 EVK
+Date: Tue, 25 Feb 2025 11:33:46 -0300
+Message-Id: <20250225-genio700-dmic-v2-0-3076f5b50ef7@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAMrUvWcC/3XMQQqDMBCF4avIrJsyRoy2q96juIiTUQfUSFJCi
+ 3j3pu67/B+8b4fIQTjCvdghcJIofs2hLwXQZNeRlbjcoFHXqMtWjbyKbxCVW4SUI8N8c4SmaiF
+ /tsCDvE/v2eWeJL58+Jx8Kn/rPymVCpXpydSVswaH5kF+nm3vg72SX6A7juMLnKzYQK4AAAA=
+X-Change-ID: 20250218-genio700-dmic-dc6ee9dc0638
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ parkeryang <Parker.Yang@mediatek.com>, Zoran Zhan <zoran.zhan@mediatek.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_060800_553651_87A0917A 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250225_063503_602843_DA46950A 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,27 +83,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Feb 2025 12:20:05 +0100, AngeloGioacchino Del Regno wrote:
-> This series adds a full OF Graph for the Display Controller in the
-> MT8195 dtsi, and configures the MT8195 Cherry devices to use it.
-> 
-> This was mainly done to allow different display controller paths
-> for the Radxa NIO 12L board (compared to Chromebooks), and this
-> series contains a preconfiguration for the DSI0 pipeline.
-> 
-> [...]
+This series enables the dual digital microphones present on the Genio
+700 and 510 EVK boards.
 
-Applied to v6.14-next/dts64, thanks!
+Patches 1 and 2 add some required clocks, patch 3 changes volatility
+handling of some registers to prevent issues, patch 3 adds the DMIC DAI
+driver for MT8188 and updates the AFE with its routes, patch 4 adds the
+DMIC backend and widget to the mt8188-6359 machine sound driver, patch 5
+adds the audio routes for the DMIC to the Devicetree, patch 6 adds
+DMIC_BE in the dt-binding and patch 6 assigns a wakeup-delay-ms to the
+DMIC DAI.
 
-[1/3] arm64: dts: mediatek: mt8195: Add base display controller graph
-      commit: f49708b18c7d5f3720499141eed326697afec3a9
-[2/3] arm64: mediatek: mt8195-cherry: Add graph for eDP and DP displays
-      commit: 44d18b4497b335b0e9044dbebd2a2371363a0d77
-[3/3] arm64: dts: mediatek: mt8395-nio-12l: Preconfigure DSI0 pipeline
-      commit: eb5a199a44f866d5de707f11d579b6517c060185
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v2:
+- Reordered clocks in patches 1 & 2
+- Split DMIC_GAINx_CUR volatile configuration into its own patch (3)
+- Squashed patch "ASoC: mediatek: mt8188: Support DMIC in AFE" into
+  "ASoC: mediatek: mt8188-mt6359: Add DMIC"
+- Patch 4 ("ASoC: mediatek: mt8188: Add support for DMIC"):
+  - Performed the many cleanups suggested on v1 for code style and
+    removing redundancy
+- Added patches 5 and 6 to add wakeup-delay-ms to the dmic
+- Link to v1: https://lore.kernel.org/r/20250218-genio700-dmic-v1-0-6bc653da60f7@collabora.com
 
-Cheers,
-Angelo
+---
+Nícolas F. R. A. Prado (7):
+      ASoC: mediatek: mt8188: Add audsys hires clocks
+      ASoC: mediatek: mt8188: Add reference for dmic clocks
+      ASoC: mediatek: mt8188: Treat DMIC_GAINx_CUR as non-volatile
+      ASoC: mediatek: mt8188-mt6359: Add DMIC support
+      arm64: dts: mediatek: mt8390-genio-common: Add routes for DMIC
+      ASoC: dt-bindings: mediatek,mt8188-mt6359: Add DMIC backend to dai-link
+      arm64: dts: mediatek: mt8390-genio-common: Add delay codec for DMIC
 
+parkeryang (1):
+      ASoC: mediatek: mt8188: Add support for DMIC
+
+ .../bindings/sound/mediatek,mt8188-mt6359.yaml     |   1 +
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     |  21 +-
+ sound/soc/mediatek/mt8188/Makefile                 |   1 +
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.c         |   8 +
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.h         |   8 +
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h      |   1 +
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c         |  28 +-
+ sound/soc/mediatek/mt8188/mt8188-audsys-clk.c      |   4 +
+ sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h    |   4 +
+ sound/soc/mediatek/mt8188/mt8188-dai-dmic.c        | 682 +++++++++++++++++++++
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c          |  14 +
+ sound/soc/mediatek/mt8188/mt8188-reg.h             |  17 +-
+ 12 files changed, 782 insertions(+), 7 deletions(-)
+---
+base-commit: 253c82b3a2cec22bf9db65645f934fbe095899a3
+change-id: 20250218-genio700-dmic-dc6ee9dc0638
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
