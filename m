@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E668DC021A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 03:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF59C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 08:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=z5VRiD5JLAcpSx9vHUDMWUCgVwOeSG9sc7D4P5DNZL8=; b=vO4qbWBngMMyL33NvANw+uyg1x
-	ZqGw/A5Ey/kOY6bczsHdb9EonBt0opg1yCxNZqKniAaN1aSFK1/ySIrG9qx74sA4CkO+1xkru3gNV
-	lYPRLdYHqzm8jtBaEzOLm3aXcEvo2jde5rF9K7eUKuB0JqG7ejzkCfF1BMg+QFTcx9mOkPOcoE0RI
-	6BtLHk3JLow3+FSXPtKxEqBbKsn1dsMfktngJSJNv4FI2j+/fP1BsnQyhFS5ioLW6/p6BKxnNOEI5
-	eAQX7L6RZYPkMaBUXJPBFUg4RTxxLtiaA2YH396yLnVt2vYiNnoICc1YnCAcqbe6Jt2wZTrjHxI2q
-	ZOflpqTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fKWX/emIPow0hH6vlh3Hb0EBxDSD6Jc60BBXE7N0te0=; b=i30FQWVdYgitnp
+	FOVtQTg6zO/sGRTGrWZBORMbaYSDfIjb1G0444cqJRPjakqRwrgnRxfAINHXTDBEo0/qZu+5wKnle
+	15DfllJu+ZlzpVQ1Q4feJhfobSJCoDqkjkzeY3JmG3Ht3cU2gdV6pL1u6XDrjucmhr0BOQCt8rMJt
+	RmL849sTqmKxLaEQnm9Tc8+Ega3rJppoZm+4fF2sWX2yFWpaLlCEwfTABPKmOX7qfiXzAFGj3XYR0
+	dnP5iyFMvI/vQcuKFHBySNmlJZ+ZafsE+nY7lh05mPk9/45eD1NwGuGTSysPHPavFPsAMYCzNsSII
+	ITkT3U+VUUv4qwW+1/zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmlJk-0000000FqOK-091f;
-	Tue, 25 Feb 2025 03:09:08 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tmq5H-0000000GL16-3h9M;
+	Tue, 25 Feb 2025 08:14:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmlJi-0000000FqO7-1n0n;
-	Tue, 25 Feb 2025 03:09:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=z5VRiD5JLAcpSx9vHUDMWUCgVwOeSG9sc7D4P5DNZL8=; b=U4Ra2WvNI7Dtg7AJ2KC8f0UFUj
-	biKVVVXBTt0Ckly2oXB8LBPPSEO/I1WVLyXxkzazNL5AL9kk8AQPBL/eoTlpMQ8K1LOT4lMIeo4fL
-	qXGa1WxNoPYDPoOfNbCvtkFXF49brNI0qFTPz9um+phzbU3daI7Y+Z0WD4somIt2+nKA33SXTpYRI
-	PhKAKj90/ajwHCXpMLk5YnIII7ZcW7GLZMWo7Do2vXmxMctgppmtuGdZRKE4OCVMhQFA166aOSssJ
-	zFJBj+l+SpPsqd5tt/97BBTSCYzmZ/1YbBfZAgDg3EIak/406KHPZKXc92Fm5l0h2fzvfyjiA3Ev2
-	JsLOXTmw==;
-Received: from mx0a-0064b401.pphosted.com ([205.220.166.238])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmlJd-00000003Hf4-40H4;
-	Tue, 25 Feb 2025 03:09:05 +0000
-Received: from pps.filterd (m0250810.ppops.net [127.0.0.1])
-	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 51P2DuUF002099;
-	Mon, 24 Feb 2025 19:08:52 -0800
-Received: from ala-exchng01.corp.ad.wrs.com (ala-exchng01.wrs.com [147.11.82.252])
-	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 44yar7juc7-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Mon, 24 Feb 2025 19:08:52 -0800 (PST)
-Received: from ala-exchng01.corp.ad.wrs.com (147.11.82.252) by
- ala-exchng01.corp.ad.wrs.com (147.11.82.252) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.43; Mon, 24 Feb 2025 19:08:51 -0800
-Received: from pek-lpg-core1.wrs.com (147.11.136.210) by
- ala-exchng01.corp.ad.wrs.com (147.11.82.252) with Microsoft SMTP Server id
- 15.1.2507.43 via Frontend Transport; Mon, 24 Feb 2025 19:08:48 -0800
-From: <jianqi.ren.cn@windriver.com>
-To: <stable@vger.kernel.org>
-CC: <patches@lists.linux.dev>, <mchehab@kernel.org>, <fullwaywang@outlook.com>,
-        <gregkh@linuxfoundation.org>, <linux-kernel@vger.kernel.org>,
-        <tiffany.lin@mediatek.com>, <andrew-ct.chen@mediatek.com>,
-        <yunfei.dong@mediatek.com>, <matthias.bgg@gmail.com>,
-        <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 6.1.y] media: mtk-vcodec: potential null pointer deference in SCP
-Date: Tue, 25 Feb 2025 11:08:47 +0800
-Message-ID: <20250225030847.3829454-1-jianqi.ren.cn@windriver.com>
-X-Mailer: git-send-email 2.25.1
+	id 1tmpvG-0000000GJYr-3TCs;
+	Tue, 25 Feb 2025 08:04:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2FFCB5C6521;
+	Tue, 25 Feb 2025 08:03:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 476AAC4CEDD;
+	Tue, 25 Feb 2025 08:04:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740470649;
+	bh=Q/hlg5DJCs52keNQavSLTdyq9yKobf8eiX9XyuPCwnU=;
+	h=From:Subject:Date:To:Cc:From;
+	b=u0L7W7NN+Gcdq5skWKb/rmQjvQQxRAgXuBHzglJePGY9PCA5LDnb41LfRExJaoVx8
+	 dDGqHtKBy3V5+Av0GAgJneNKWAJCtcfk3toOtx0aizsgzGLostLVRoFf3BP3i8UpGp
+	 8UupDTXWBiu/Mol0DvAYsrbs6QtrZPjf/vVWeo0qIKwezteMQIbGhi2al8ajpAYRIx
+	 tDv8m1F5qMT9MNvTqRMVqbmS39GUEcHajfL+5jqmqN946b72qpxwYICwAS47IzExpZ
+	 z7zwhjh7bi4SLTLnGhU3PPEmyfgfLvHJRZgj/jeRU7c9oqHKhocl1uNiSTpUkzqSLp
+	 sxSH5NKJAPl9w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v4 0/2] PCI: mediatek-gen3: Set PBUS_CSR regs for Airoha
+ EN7581 SoC.
+Date: Tue, 25 Feb 2025 09:04:05 +0100
+Message-Id: <20250225-en7581-pcie-pbus-csr-v4-0-24324382424a@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: jbfNddqTegbxnga7WbzmBe77Awe98qSA
-X-Authority-Analysis: v=2.4 cv=Be0i0qt2 c=1 sm=1 tr=0 ts=67bd3444 cx=c_pps a=/ZJR302f846pc/tyiSlYyQ==:117 a=/ZJR302f846pc/tyiSlYyQ==:17 a=T2h4t0Lz3GQA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
-X-Proofpoint-GUID: jbfNddqTegbxnga7WbzmBe77Awe98qSA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-02-24_12,2025-02-24_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 mlxlogscore=999
- phishscore=0 suspectscore=0 spamscore=0 impostorscore=0 mlxscore=0
- malwarescore=0 priorityscore=1501 lowpriorityscore=0 clxscore=1011
- bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.21.0-2502100000
- definitions=main-2502250020
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAHZ5vWcC/3XNTQrCMBCG4auUrB1J86ONK+8hLtrppA1KWhINS
+ undTQuCgi7fgXm+iUUKjiI7FBMLlFx0g8+hNgXDvvYdgWtzM8GF5oKXQH6vqxJGdARjc4+AMYA
+ 1qGxVIelGsvw6BrLusbKnc+7exdsQnutKEsv1DYrfYBLAYadbbPImmtocLxQ8XbdD6NgiJvmhi
+ H+KzApxxLq0qpVGfSnzPL8AyRLbgP8AAAA=
+X-Change-ID: 20250201-en7581-pcie-pbus-csr-f9c4f88ce5b3
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_030902_681488_A907F82F 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20250225_000410_912564_D7A100E5 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +88,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fullway Wang <fullwaywang@outlook.com>
+Configure PBus base address and base address mask to allow the hw
+to detect if a given address is accessible on the PCIe controller.
+Introduce mediatek,pbus-csr phandle array property.
 
-[ Upstream commit 53dbe08504442dc7ba4865c09b3bbf5fe849681b ]
+Changes in v4:
+- Remove check on resource size
+- Remove checks on regmap_write()
+- Link to v3: https://lore.kernel.org/r/20250222-en7581-pcie-pbus-csr-v3-0-e0cca1f4d394@kernel.org
 
-The return value of devm_kzalloc() needs to be checked to avoid
-NULL pointer deference. This is similar to CVE-2022-3113.
+Changes in v3:
+- Get base address and base address mask from range property
+- Define mediatek,pbus-csr as phandle array
+- Link to v2: https://lore.kernel.org/r/20250202-en7581-pcie-pbus-csr-v2-0-65dcb201c9a9@kernel.org
 
-Link: https://lore.kernel.org/linux-media/PH7PR20MB5925094DAE3FD750C7E39E01BF712@PH7PR20MB5925.namprd20.prod.outlook.com
-Signed-off-by: Fullway Wang <fullwaywang@outlook.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-[ To fix CVE-2024-40973, change the file path from drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
- to drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c and minor conflict resolution ]
-Signed-off-by: Jianqi Ren <jianqi.ren.cn@windriver.com>
-Signed-off-by: He Zhe <zhe.he@windriver.com>
+Changes in v2:
+- Introduce mediatek,pbus-csr phandle property
+- Drop patch 1/2 in v1
+- Do not hard-code compatible sting in the driver and use phandle
+  instead
+
 ---
-Verified the build test.
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c | 2 ++
- 1 file changed, 2 insertions(+)
+Lorenzo Bianconi (2):
+      dt-bindings: PCI: mediatek-gen3: Add mediatek,pbus-csr phandle array property
+      PCI: mediatek-gen3: Configure PBUS_CSR registers for EN7581 SoC
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-index d8e66b645bd8..27f08b1d34d1 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-@@ -65,6 +65,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
- 	}
- 
- 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-+	if (!fw)
-+		return ERR_PTR(-ENOMEM);
- 	fw->type = SCP;
- 	fw->ops = &mtk_vcodec_rproc_msg;
- 	fw->scp = scp;
+ .../bindings/pci/mediatek-pcie-gen3.yaml           | 17 +++++++++++++
+ drivers/pci/controller/pcie-mediatek-gen3.c        | 28 +++++++++++++++++++++-
+ 2 files changed, 44 insertions(+), 1 deletion(-)
+---
+base-commit: b6d7bb0d3bd74b491e2e6fd59c4d5110d06fd63b
+change-id: 20250201-en7581-pcie-pbus-csr-f9c4f88ce5b3
+
+Best regards,
 -- 
-2.25.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
