@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12DEC021A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 00:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC5AC021A4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 00:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mzxasuy+e4bRJryQPZfFxX9fVGPe0gdt9N4OvhNBSuM=; b=i0flUJmLMaONEL4yNr9BOdwO/b
-	R2MdBfe/SH7HuEEgwkJ1wLR6lVjQLr3X8AvYyLrjYnbMisw6GmjShfli9yE8mx8In6yYIv387iwWr
-	gcXmqZsdSPjHEc3hbERKJRC/Z1f/9Vue227qK51QDdKtS4UvT7xfG67n/+uJOt4BWmyubLjA0Lz5E
-	ooSkGIyfmrx9Hw7BpfbmW7q9BjdnIBaJkBbhM1PlWTOVcCBs2FSHZHNVzdWBVa5oD19+oF7RjQqKY
-	PInfNgqi+KQim/AbQNQM13/4pRLCLsoneljX6jvMruPHk03w3RVdgzJTuRXXqNRp2zoaeDT8qad2Z
-	jKFjb40w==;
+	bh=9rhjYcVXQZupgyG31N9S6xdQy/eIyTiHVZxCjl50oL0=; b=3Cw4USK2+0Y78AeUJXN9i41KUW
+	b94phoiPEbMEKOxPRhm+S9UoaavbZAu4rqxhXP4uAbsB9liwCBERmyNsHYLyZkNpS6d2g554fDIjU
+	m9YSwkbq96iNZH/we6VlSSpKWI+t1krBWFOl5/SOKJB7UtiEJNy/hdFoizCHCP2KcHazNo2wwEHeP
+	x2IuoGT+ImVV5/XiMUR9nmwm4lAqir/Vf7CN8Z+eD8d0aOufRtkLc0X/YqZ8jUnOcTFvupXHiHfHB
+	RJXDnFQJOkfwdjtdEsdyfsGAr8ZzN97Y1KVlfciwi4UMsREwdkUYcMFMO9tPfW/FqxqxeF3b16OWA
+	HlyV4xVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmitI-0000000FcnS-0DLW;
-	Tue, 25 Feb 2025 00:33:40 +0000
+	id 1tmitL-0000000Fcob-1XHx;
+	Tue, 25 Feb 2025 00:33:43 +0000
 Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmitF-0000000Fcmv-1fPw
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Feb 2025 00:33:39 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 51OMK0JS012484;
-	Tue, 25 Feb 2025 00:33:21 GMT
+	id 1tmitI-0000000FcnR-10H5;
+	Tue, 25 Feb 2025 00:33:41 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 51OMK4A2025220;
+	Tue, 25 Feb 2025 00:33:22 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
 	:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=
-	corp-2023-11-20; bh=Mzxasuy+e4bRJryQPZfFxX9fVGPe0gdt9N4OvhNBSuM=; b=
-	i0CMgggUaeLt0x8x4WYW4OBZ/ciLe7YMSRYs6qY9kOmv2McZGAhgNJ9jRfQ6myBA
-	PlL9MWu0AqyJuw0lAm1H0V9VxuMqlHwwqh3tlqFTslOX81yN/bslysRD0X0Samea
-	f3sNvwzM25gOVztmZK2qQxRdpnFizF9noD1ZQdVu0twzaxkM3fK0U9KW517D0nHl
-	xiwcpypYJpf3CcXS4yKy/0cRNpUgBg5uHmF7yremga3zPQb8XmkCvU/VWCg6M5oy
-	Kom/06zV1foPZLKYQeDmCuh/vk3irJbNHPJl/47QN3YbtN+OIZivWPV7YtUSE83C
-	QqJQ8LpCtL32vf9nGKNldg==
+	corp-2023-11-20; bh=9rhjYcVXQZupgyG31N9S6xdQy/eIyTiHVZxCjl50oL0=; b=
+	ahfSHd+ee39+/n2jkR581gq4cakz8SZgHscMySx2Z4p0Vu2Pb7APelbGO+eZdDwb
+	U1EtRmPWDp+AA5AMshLCTHyl2pSnQuK4rL7kVFJrfA6N2eYVPh89A66S4f6O2pXF
+	JwgEq7tBlTEQGsorFAUOokZrBZ2gnrN8bkS7qJibSdk1DYnlcZThKTL51j5JiRDi
+	vhnyD3z33Cv98HhYxHCxRIoQWW5JNby3FH6lWINP8UIDwN1/kIm1yCJdHp5ECsi0
+	HHL2JW4a9JzR6ZVez71NLrINHPPdxfkeLAqL8NriZJBShOJeBbgQ6oHoyibtikY3
+	xf7JKIDNlJuSjdZt9Cy0+w==
 Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 44y6mbkxks-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 44y50bkwek-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
 	Tue, 25 Feb 2025 00:33:21 +0000 (GMT)
 Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 51P0UE08025437;
-	Tue, 25 Feb 2025 00:33:20 GMT
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 51P0UE09025437;
+	Tue, 25 Feb 2025 00:33:21 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 44y51f0q8r-1
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 44y51f0q94-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 25 Feb 2025 00:33:20 +0000
+	Tue, 25 Feb 2025 00:33:21 +0000
 Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 51P0XI1t025171;
-	Tue, 25 Feb 2025 00:33:19 GMT
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 51P0XI1x025171;
+	Tue, 25 Feb 2025 00:33:20 GMT
 Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 44y51f0q87-2;
-	Tue, 25 Feb 2025 00:33:19 +0000
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 44y51f0q87-4;
+	Tue, 25 Feb 2025 00:33:20 +0000
 From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, avri.altman@wdc.com, alim.akhtar@samsung.com,
-        jejb@linux.ibm.com, peter.wang@mediatek.com
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
+        peter.wang@mediatek.com, quic_rampraka@quicinc.com,
+        Ziqi Chen <quic_ziqichen@quicinc.com>
 Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-        jiajie.hao@mediatek.com, yi-fan.peng@mediatek.com,
-        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
-        eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
-        bvanassche@acm.org
-Subject: Re: [PATCH v3] ufs: core: add hba parameter to trace events
-Date: Mon, 24 Feb 2025 19:32:47 -0500
-Message-ID: <174044345131.2973737.3696488766957573194.b4-ty@oracle.com>
+        linux-arm-msm@vger.kernel.org, linux-scsi@vger.kernel.org,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 0/8] Support Multi-frequency scale for UFS
+Date: Mon, 24 Feb 2025 19:32:49 -0500
+Message-ID: <174044345145.2973737.15116992944360697674.b4-ty@oracle.com>
 X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250214083026.1177880-1-peter.wang@mediatek.com>
-References: <20250214083026.1177880-1-peter.wang@mediatek.com>
+In-Reply-To: <20250213080008.2984807-1-quic_ziqichen@quicinc.com>
+References: <20250213080008.2984807-1-quic_ziqichen@quicinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
  definitions=2025-02-24_11,2025-02-24_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 spamscore=0 mlxlogscore=999
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 spamscore=0 mlxlogscore=955
  phishscore=0 mlxscore=0 suspectscore=0 adultscore=0 malwarescore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2502100000
  definitions=main-2502250001
-X-Proofpoint-ORIG-GUID: Q1gmIuWKgbbt0rPGSaGicO8IobcucQFk
-X-Proofpoint-GUID: Q1gmIuWKgbbt0rPGSaGicO8IobcucQFk
+X-Proofpoint-ORIG-GUID: 7ty-sRKwHsNKQL1Xn1bsKeyU2f8-As33
+X-Proofpoint-GUID: 7ty-sRKwHsNKQL1Xn1bsKeyU2f8-As33
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_163337_551778_B7BB8437 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250224_163340_392322_76A8654D 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,21 +104,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Feb 2025 16:29:36 +0800, peter.wang@mediatek.com wrote:
+On Thu, 13 Feb 2025 16:00:00 +0800, Ziqi Chen wrote:
 
-> Included the ufs_hba structure as a parameter in various trace events
-> to provide more context and improve debugging capabilities.
-> Also remove dev_name which can replace by dev_name(hba->dev).
+> With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
+> plans. However, the gear speed is only toggled between min and max during
+> clock scaling. Enable multi-level gear scaling by mapping clock frequencies
+> to gear speeds, so that when devfreq scales clock frequencies we can put
+> the UFS link at the appropraite gear speeds accordingly.
 > 
-> V3:
->  - Remove dev_name entry form TP_STRUCT__entry() to reduce the size.
+> This series has been tested on below platforms -
+> sm8550 mtp + UFS3.1
+> SM8650 MTP + UFS3.1
+> SM8750 MTP + UFS4.0
 > 
 > [...]
 
 Applied to 6.15/scsi-queue, thanks!
 
-[1/1] ufs: core: add hba parameter to trace events
-      https://git.kernel.org/mkp/scsi/c/583e518e7100
+[1/8] scsi: ufs: core: Pass target_freq to clk_scale_notify() vop
+      https://git.kernel.org/mkp/scsi/c/5e011fcc7d16
+[2/8] scsi: ufs: qcom: Pass target_freq to clk scale pre and post change
+      https://git.kernel.org/mkp/scsi/c/367a0f017c61
+[3/8] scsi: ufs: core: Add a vop to map clock frequency to gear speed
+      https://git.kernel.org/mkp/scsi/c/d7bead60b08e
+[4/8] scsi: ufs: qcom: Implement the freq_to_gear_speed() vop
+      https://git.kernel.org/mkp/scsi/c/c02fe9e222d1
+[5/8] scsi: ufs: core: Enable multi-level gear scaling
+      https://git.kernel.org/mkp/scsi/c/129b44c27c8a
+[6/8] scsi: ufs: core: Check if scaling up is required when disable clkscale
+      https://git.kernel.org/mkp/scsi/c/eff26ad4c34f
+[7/8] scsi: ufs: core: Toggle Write Booster during clock scaling base on gear speed
+      https://git.kernel.org/mkp/scsi/c/2a25cbaa81d2
+[8/8] ABI: sysfs-driver-ufs: Add missing UFS sysfs attributes
+      https://git.kernel.org/mkp/scsi/c/6d7696b4d447
 
 -- 
 Martin K. Petersen	Oracle Linux Engineering
