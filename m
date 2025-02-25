@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D208C021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 09:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA3FC021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 09:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZHRy52bGmNjppAKIKN7VBsH4+tXKv5hwh477dIVZ2+k=; b=DkOfJCuxjKsOow9Nr+a0CisbD+
-	iuL6FaZbf03pKA3NgXoc5rH0uQKRPdeHzgUwm4YSX8j6kVqb5lv2Ehw+/7ePZmmt6T1IXtEd/MXHi
-	Iq6u4kUnV3oaneBFxIAO8vhT8imdptzuq2poY/T8nusbHA1kJ78mXkVewAEsvp1VoCUeaooP8Uymu
-	0gAyhw274DNzZJRG4Og+NqWn6yxpH/bd73mQrK4OLDEx50triZqk5n/ABO99gZ9g2CFxMD7iqVAJ5
-	ObUHqQawijHQGEIY0znCDdC4I2YcikxKYrwyX5CFlF09fKsoiHAYZ2PU40o+ozRRYrUDo6hPO7FN3
-	HZWyfpgA==;
+	bh=s/Eq+aT3YfTNg049lj44wHdY4UeAZzrUom+F8W56GCI=; b=n8Y60JMQacD7QEz55o2Tj8www/
+	5blInLFPqGgdYH+A1OMloqJvN7Ti8Ipnzvl13nXTFHQxqyV+nasm6kfDT34Fikgf7QTfgpLmgEqzZ
+	vlrXWWEjWk2GBwwqc0VImGrznwpJ3CDtt8/HwMHsHmLpl86MzpA4D2Uv1+6iKQmH4870hAzHr9cWm
+	U2loPl3nGj9qfi20ZuEXpPIO5V/siAbwjZzFvHiyMbiDOuphxm39scgfs9O1gBawyf8JTim3RGGKo
+	50DVN9tBxGO7qmr+LfiU9a89l6aW1gGgelbFzxVUaBFKUcH1XACoXaR7ti10ejcIVkYWlyTvr7WCz
+	JnMENGzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrPr-0000000Gdm8-0vIM;
-	Tue, 25 Feb 2025 09:39:51 +0000
+	id 1tmrSv-0000000Gf22-3yqi;
+	Tue, 25 Feb 2025 09:43:01 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmqvK-0000000GWHC-24QG;
-	Tue, 25 Feb 2025 09:08:19 +0000
+	id 1tmqxG-0000000GWeH-0peV;
+	Tue, 25 Feb 2025 09:10:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740474496;
-	bh=Rt19i2+WPrjhMWw0L7ggO+RczbXHL+wWVPfQJj2MLi0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FI0EFlj/DR6juAC8nxHr1jZWYOEnevyDTD5na0IxQCrUVQ7qXDy1sFxoKOEn+WyMn
-	 QtB6pnmsMSFQM/eKLdZiruSvlyhgRhtaDen2iTW2HihNaE20nfMQy7ujX1aH0pbZKL
-	 lfBBCGNn6iq+ADOBciGLXU2jvCfrw5gziqG40xVBdF32OPaMH0omkx7WNGv83p0S3q
-	 BVPlKL72RwAZlHRoES1vdwXzxFQbbQEGlCgRaNFcUii60wQVwAm+SXJvsMs9MKvMh0
-	 0c/A8dmdqR5WC6nuvraTygQqIiu2TqSc6Y1I1HsdUt7iAj4PNp2O5aeN8td1M9vbjO
-	 1Ycmm3lHTWZCQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1740474616;
+	bh=Yk3HPQ8hjDp5/Q7XGX7XJygCR0BU1iRK53Y6ONED5MM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=qOwLBGbkPYdP8OGXqU0X8bD/QVR/zCE8oDnt5gFjO1GFsD2rjWZJr9gl8LTQlYFa5
+	 I+XY1waFiZp8SlWpgDcnrPkVfvTW6ZHwKAz8soh0rc48og6L2WrBdS0mZH+96pKtdW
+	 d0sQPHvTbYMa+wqA4ZYiv1zGLbUaLVyQrvzzkWcXjfb0AvA9OIekxC7n/PyN7LuvxL
+	 EfXrIl7l5dRLMW0wmt/jsAN0AOrvwt/YALCSOdCN40GLywPYZqt/j1CldCsROkunfY
+	 zI5CGMBTGW0XoBX3jWsxYpnfUP2oiDE9n9iJIHITlc51Pdc4bq0Hd6z0kEH6LQ6ahJ
+	 a65yFCUeDhy1w==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 741A517E0866;
-	Tue, 25 Feb 2025 10:08:16 +0100 (CET)
-Message-ID: <9ba03e42-71a3-4443-be16-7ba82f76fa40@collabora.com>
-Date: Tue, 25 Feb 2025 10:08:15 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] arm64: dts: airoha: en7581: Add more nodes to
- EN7581 SoC evaluation board
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
- <20250221-en7581-dts-spi-pinctrl-v3-1-4719e2d01555@kernel.org>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F9C717E0B59;
+	Tue, 25 Feb 2025 10:10:16 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250221-en7581-dts-spi-pinctrl-v3-1-4719e2d01555@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Christian Marangi <ansuelsmth@gmail.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
+References: <20250221-en7581-dts-spi-pinctrl-v3-0-4719e2d01555@kernel.org>
+Subject: Re: [PATCH v3 0/2] Add more nodes to EN7581 SoC evaluation board
+Message-Id: <174047461618.21523.9112201674582810132.b4-ty@collabora.com>
+Date: Tue, 25 Feb 2025 10:10:16 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_010818_682434_5D294277 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20250225_011018_383166_C8C92875 
+X-CRM114-Status: UNSURE (   6.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,119 +78,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/02/25 09:01, Lorenzo Bianconi ha scritto:
-> Introduce the following nodes to EN7581 SoC and EN7581 evaluation board:
-> - rng controller
+On Fri, 21 Feb 2025 09:01:14 +0100, Lorenzo Bianconi wrote:
+> Add the following nodes to EN7581 SoC and EN7581 evaluation board:
+> - rng-controller
 > - pinctrl
-> - i2c controllers
+> - i2c-controllers
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   arch/arm64/boot/dts/airoha/en7581-evb.dts |  4 +++
->   arch/arm64/boot/dts/airoha/en7581.dtsi    | 60 +++++++++++++++++++++++++++++++
->   2 files changed, 64 insertions(+)
+> Fix a compilation warning for clock-controller
 > 
-> diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> index a4cdcadd1ae547cfc79553208f991767602705fd..d53b72d18242e3cee8b37c7b1b719d662fd6db8d 100644
-> --- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> +++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> @@ -64,3 +64,7 @@ reserved_bmt@7e00000 {
->   		};
->   	};
->   };
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-> index dbd296b049f99721186ab435d6e6b8dff73b73af..9a419796594d3a99e1187dcca622469bf5a888c3 100644
-> --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-> +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-> @@ -3,6 +3,7 @@
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
->   #include <dt-bindings/clock/en7523-clk.h>
-> +#include <dt-bindings/reset/airoha,en7581-reset.h>
->   
->   / {
->   	interrupt-parent = <&gic>;
-> @@ -123,6 +124,12 @@ timer {
->   			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
->   	};
->   
-> +	clk20m: clock-20000000 {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <20000000>;
-> +	};
-> +
->   	soc {
->   		compatible = "simple-bus";
->   		#address-cells = <2>;
-> @@ -181,5 +188,58 @@ uart1: serial@1fbf0000 {
->   			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
->   			clock-frequency = <1843200>;
->   		};
-> +
-> +		rng@1faa1000 {
-> +			compatible = "airoha,en7581-trng";
-> +			reg = <0x0 0x1faa1000 0x0 0xc04>;
-> +			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +
-> +		system-controller@1fbf0200 {
-> +			compatible = "airoha,en7581-gpio-sysctl", "syscon",
-> +				     "simple-mfd";
-> +			reg = <0x0 0x1fbf0200 0x0 0xc0>;
-> +
-> +			en7581_pinctrl: pinctrl {
-> +				compatible = "airoha,en7581-pinctrl";
-> +
-> +				interrupt-parent = <&gic>;
-> +				interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +				gpio-controller;
-> +				#gpio-cells = <2>;
-> +
-> +				interrupt-controller;
-> +				#interrupt-cells = <2>;
-> +			};
-> +		};
-> +
-> +		i2c0: i2c@1fbf8000 {
-> +			compatible = "mediatek,mt7621-i2c";
-> +			reg = <0x0 0x1fbf8000 0x0 0x100>;
-> +
-> +			resets = <&scuclk EN7581_I2C2_RST>;
-> +
-> +			clocks = <&clk20m>;
-> +			clock-frequency = <100000>;
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			status = "disabled";
-> +		};
-> +
-> +		i2c1: i2c@1fbf8100 {
-> +			compatible = "mediatek,mt7621-i2c";
-> +			reg = <0x0 0x1fbf8100 0x0 0x100>;
-> +
-> +			resets = <&scuclk EN7581_I2C_MASTER_RST>;
-> +
-> +			clocks = <&clk20m>;
-> +			clock-frequency = <100000>;
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			status = "disabled";
-> +		};
->   	};
->   };
-> 
+> [...]
 
+Applied to v6.14-next/dts64, thanks!
+
+[1/2] arm64: dts: airoha: en7581: Add more nodes to EN7581 SoC evaluation board
+      commit: 3032e3b87ec218f82f5c60aba0c94ab2fc00a261
+[2/2] arm64: dts: airoha: en7581: Fix clock-controller address
+      commit: 0092294492fafe79a537915e486576a3d69c9a7c
+
+Cheers,
+Angelo
 
 
 
