@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE01C021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4738FC021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:41:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pGJSRmgQRhD/vAURW3zd5P/JOlKtOZiz4tKRljMEGkE=; b=wlzNvvC0+CYVHNCw0roDY0Dmx+
-	YG/MbWAN5LJM6pD0LJ90fjfiy+RO4sjVaFeiBX6raH4FhTTa2HV6j2bHcovyAuXnNYai7lAbGKatf
-	n0xyLL1LSHi+fOBe3EHFBFLs7ikjyXKYOqx4z95ahlx9OPZ1nIb2ks96iLrEy0UyMkYUpFNKrlDoy
-	lJCdogrpkviU/c8kfGcc+/VwOiNyKk0dG5UfbFN6VjJRKvGGrF9CXEPt0EIFTIo753il7X33sfKRw
-	941uT4MJth90VpRU1GIrAYbTzGgRNH2vLX/tWXDKatfAoZqLtSJ4LeK7ESDkDddJztMlem51O5wr4
-	ukjXQlfQ==;
+	bh=q736DHMB6Vt/C1yDeSwvodhbjC94EuBUF51gxitZ+iM=; b=jRQhi9RgWlr9jC954Kl394oNdA
+	CfmQ9sjzqV+s/uBXjssLCYalLrXlxO/mA90/Zzr3frPZWACl0s+FBaNzbVPFdW47onwuLVuvF+7eM
+	oWrtRDIQSEXrxBv3+Q0xVFpJFpdVZkqOIrNxLWnS8oQYYXZQE2tYcwH71FGk+QZaySsK8exYsCUq9
+	ONcYlEWEHUidqK58ZEQgjm00TO0+onigrYiQbNnCa/BideO5tmsXRXw0EWJd90dO8gz0E7qnX7FzQ
+	iXV8TNtX9qOog4PVa67RNysH58NTwKLOJrGxYSw3eWmdka/MrsmSw28v/q+7jOt/5ti3bLA2doogl
+	6f3AlQkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmy07-00000000KHx-0fSZ;
-	Tue, 25 Feb 2025 16:41:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tmy0C-00000000KO0-0FKH;
+	Tue, 25 Feb 2025 16:41:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmw89-0000000HYxT-3mqb;
+	id 1tmw8A-0000000HYxv-1Es8;
 	Tue, 25 Feb 2025 14:41:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740494511;
-	bh=U2rDAp2I+pEhncHzmJrv7C++lv1LF8quvUr6u9b2A/o=;
+	s=mail; t=1740494512;
+	bh=OsoerhI9WsLOOMY2Rdt3PJVqOYEEm1V/Bo7XmSxoDl0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=czpa0L6fN4pM3gs0K9KagK4E7nG3OeMJE7PRBuQY3Vng84irHlgvSuRKIlHEb/kYe
-	 EIjk9P8PwWmbYs4lxFwUgzxRJtepol3TGS/yYHnqHdvqNLcV1WWXxtAsVMb6yu9Wk/
-	 5KLSCQWoOzOi6jJ+HowDKh8MLp0MhGHA/iNJUt9zzRZCd9Aq8uQQINwOr57I3af7Kn
-	 eFwGZRvzDMbcFuh+UoNlk1meTdg85U1OpeoO4nCEzzRlLPUskT7TCbb8bCQLodNriM
-	 KjuwUNS9SUG2smReJP1TpbWsed0+ep9lJnVSe7moF5savq0IT5PnLdpRyGVVvow7pJ
-	 MOqy7paOSaJUQ==
+	b=SZSM4FTn4mzwb8jnHbzHxD27ZuvtKTfJeoWas36wv0trYGAcQQry6OLoR3ukrKvTz
+	 C35YVDkqeqzBQeTKdVD6uVQgbLBx0nF8klvV5quXrPp+07K/bUAeh/IMzZNBovkgIy
+	 0zBYXGivfbiPPAQH3Hm199kjEhIgXtYbzI9hyk9crZQ5KgnqtKgueXQm+5ipi+uSad
+	 Snbjv1nYHLoExx0pJ5hSxShigQZrNG1Ob8zmAK1bibWfKUX4ArK8meWksdjmZdvfk3
+	 akgSlERNrscerfXhy6KqRntqwCc93FX1NG3i7N/ivcuqgX2Mdc/aEymKpjMF6wKrYg
+	 aiMd9Zq1V0gQA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C29EC17E0DD7;
-	Tue, 25 Feb 2025 15:41:50 +0100 (CET)
-Message-ID: <d3b65950-23cf-4f7f-95e1-dcdc54d15bd2@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E99D717E0E91;
+	Tue, 25 Feb 2025 15:41:51 +0100 (CET)
+Message-ID: <c25f36c1-04ab-4681-89c9-6dea7cd26ea4@collabora.com>
 Date: Tue, 25 Feb 2025 15:41:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 8/8] arm64: dts: mediatek: mt8390-genio-common: Add
- delay codec for DMIC
+Subject: Re: [PATCH v2 7/8] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
+ DMIC backend to dai-link
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
@@ -57,18 +57,17 @@ To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
 Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- Zoran Zhan <zoran.zhan@mediatek.com>
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 References: <20250225-genio700-dmic-v2-0-3076f5b50ef7@collabora.com>
- <20250225-genio700-dmic-v2-8-3076f5b50ef7@collabora.com>
+ <20250225-genio700-dmic-v2-7-3076f5b50ef7@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250225-genio700-dmic-v2-8-3076f5b50ef7@collabora.com>
+In-Reply-To: <20250225-genio700-dmic-v2-7-3076f5b50ef7@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_064154_113531_9A19761F 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20250225_064154_477078_94CEBEB5 
+X-CRM114-Status: UNSURE (   6.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,13 +84,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/02/25 15:33, Nícolas F. R. A. Prado ha scritto:
-> The signal from the dual digital microphones connected to the DMIC_BE
-> takes 30ms to settle after being enabled. Add a dmic-codec with
-> corresponding wakeup-delay-ms to prevent an initial "pop" sound when
-> recording with the microphones.
+> MT8188 platforms also have DMIC DAIs, which were previously undescribed.
+> Add DMIC_BE as a possible backend for the dai-link property.
 > 
-> Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
-> Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
