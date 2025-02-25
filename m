@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00621C021A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 02:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E668DC021A4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 03:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=24jiysXyB/JxeRxXGrThD+4qS8hUsrobbYzYvxv5lPA=; b=PYNYfrf5Z5etOkv8JO1ieYzY2G
-	WGYczkqoimpcAEnnUDOus05u0RykcfTl26WphGZyvXmizyizhrGIv1YaPmErl1RgbJ14SWZqkOXz/
-	Y2JZeY4e7Rhc3TF2pFP/JpOLX7RyOhoVDcJu+kNwRvI1SVwSszVa7+ufoTu0nIWt99TsOUo+uIQ9j
-	KpXPLCQYhohlu0wHSC2iZWwBDMImT657VzntbV0JwXsi0q6/xXiQbIWKjPutC1Iph1kNSnLlxrHdT
-	L1mpdjd8/yS2QpifVmFNEya7qTEN4Ttwcidqn3mq+Qpku/T/vdh5d0zI1uBCxzv8+zWTo2U/PdrUV
-	nZDIlV+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=z5VRiD5JLAcpSx9vHUDMWUCgVwOeSG9sc7D4P5DNZL8=; b=vO4qbWBngMMyL33NvANw+uyg1x
+	ZqGw/A5Ey/kOY6bczsHdb9EonBt0opg1yCxNZqKniAaN1aSFK1/ySIrG9qx74sA4CkO+1xkru3gNV
+	lYPRLdYHqzm8jtBaEzOLm3aXcEvo2jde5rF9K7eUKuB0JqG7ejzkCfF1BMg+QFTcx9mOkPOcoE0RI
+	6BtLHk3JLow3+FSXPtKxEqBbKsn1dsMfktngJSJNv4FI2j+/fP1BsnQyhFS5ioLW6/p6BKxnNOEI5
+	eAQX7L6RZYPkMaBUXJPBFUg4RTxxLtiaA2YH396yLnVt2vYiNnoICc1YnCAcqbe6Jt2wZTrjHxI2q
+	ZOflpqTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmkIB-0000000FlHB-49gV;
-	Tue, 25 Feb 2025 02:03:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tmlJk-0000000FqOK-091f;
+	Tue, 25 Feb 2025 03:09:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmkGg-0000000FlC9-1ju6;
-	Tue, 25 Feb 2025 02:01:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9C5A1611CA;
-	Tue, 25 Feb 2025 02:01:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10831C4CED6;
-	Tue, 25 Feb 2025 02:01:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740448913;
-	bh=24jiysXyB/JxeRxXGrThD+4qS8hUsrobbYzYvxv5lPA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=m0YNl8hVNoFUnLUYdBUeOSUQqFi/NzUh2IxX88Qn1nBbE8mqcAfiNoOZbZwaLzQtf
-	 l5x0F7/7X7AcH+mJypeRs0RJbWk4GKBbY6AIO6jl0HVx/lGfxwRb30J6dV8DSNTUvL
-	 /dihr4AzMzwMmM7oQm30NB9WTrJB9oexReCzvF7N3e7Un4tS79Mu+aSy7P+/j92cGv
-	 8dJ9bzyXYG9dQZ9gsOmhikj9CAM0VpjeM8U104aFyOe8Ev3Xy0pRGKBGbLE93lTSpY
-	 AzYZISjHKGN3lsKJytI6kyyO3+zdvpZTnws4MYR2waLZtXO1kt2P3TxW5IxtgXXCiD
-	 EYgsGn4O28c3g==
-Date: Mon, 24 Feb 2025 18:01:52 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>,
- David Miller <davem@davemloft.net>, Daniel Golle <daniel@makrotopia.org>,
- Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
- <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard Cochran <richardcochran@gmail.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH net-next 3/8] net: phy: add getters for public members
- of struct phy_package_shared
-Message-ID: <20250224180152.6e0d3a8b@kernel.org>
-In-Reply-To: <b505ed6a-533d-42ad-82d0-93315ce27e7f@gmail.com>
-References: <c02c50ab-da01-4cfa-af72-4bed109fa8e2@gmail.com>
-	<b505ed6a-533d-42ad-82d0-93315ce27e7f@gmail.com>
+	id 1tmlJi-0000000FqO7-1n0n;
+	Tue, 25 Feb 2025 03:09:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=z5VRiD5JLAcpSx9vHUDMWUCgVwOeSG9sc7D4P5DNZL8=; b=U4Ra2WvNI7Dtg7AJ2KC8f0UFUj
+	biKVVVXBTt0Ckly2oXB8LBPPSEO/I1WVLyXxkzazNL5AL9kk8AQPBL/eoTlpMQ8K1LOT4lMIeo4fL
+	qXGa1WxNoPYDPoOfNbCvtkFXF49brNI0qFTPz9um+phzbU3daI7Y+Z0WD4somIt2+nKA33SXTpYRI
+	PhKAKj90/ajwHCXpMLk5YnIII7ZcW7GLZMWo7Do2vXmxMctgppmtuGdZRKE4OCVMhQFA166aOSssJ
+	zFJBj+l+SpPsqd5tt/97BBTSCYzmZ/1YbBfZAgDg3EIak/406KHPZKXc92Fm5l0h2fzvfyjiA3Ev2
+	JsLOXTmw==;
+Received: from mx0a-0064b401.pphosted.com ([205.220.166.238])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tmlJd-00000003Hf4-40H4;
+	Tue, 25 Feb 2025 03:09:05 +0000
+Received: from pps.filterd (m0250810.ppops.net [127.0.0.1])
+	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 51P2DuUF002099;
+	Mon, 24 Feb 2025 19:08:52 -0800
+Received: from ala-exchng01.corp.ad.wrs.com (ala-exchng01.wrs.com [147.11.82.252])
+	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 44yar7juc7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+	Mon, 24 Feb 2025 19:08:52 -0800 (PST)
+Received: from ala-exchng01.corp.ad.wrs.com (147.11.82.252) by
+ ala-exchng01.corp.ad.wrs.com (147.11.82.252) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.43; Mon, 24 Feb 2025 19:08:51 -0800
+Received: from pek-lpg-core1.wrs.com (147.11.136.210) by
+ ala-exchng01.corp.ad.wrs.com (147.11.82.252) with Microsoft SMTP Server id
+ 15.1.2507.43 via Frontend Transport; Mon, 24 Feb 2025 19:08:48 -0800
+From: <jianqi.ren.cn@windriver.com>
+To: <stable@vger.kernel.org>
+CC: <patches@lists.linux.dev>, <mchehab@kernel.org>, <fullwaywang@outlook.com>,
+        <gregkh@linuxfoundation.org>, <linux-kernel@vger.kernel.org>,
+        <tiffany.lin@mediatek.com>, <andrew-ct.chen@mediatek.com>,
+        <yunfei.dong@mediatek.com>, <matthias.bgg@gmail.com>,
+        <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 6.1.y] media: mtk-vcodec: potential null pointer deference in SCP
+Date: Tue, 25 Feb 2025 11:08:47 +0800
+Message-ID: <20250225030847.3829454-1-jianqi.ren.cn@windriver.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Proofpoint-ORIG-GUID: jbfNddqTegbxnga7WbzmBe77Awe98qSA
+X-Authority-Analysis: v=2.4 cv=Be0i0qt2 c=1 sm=1 tr=0 ts=67bd3444 cx=c_pps a=/ZJR302f846pc/tyiSlYyQ==:117 a=/ZJR302f846pc/tyiSlYyQ==:17 a=T2h4t0Lz3GQA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
+X-Proofpoint-GUID: jbfNddqTegbxnga7WbzmBe77Awe98qSA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-02-24_12,2025-02-24_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 mlxlogscore=999
+ phishscore=0 suspectscore=0 spamscore=0 impostorscore=0 mlxscore=0
+ malwarescore=0 priorityscore=1501 lowpriorityscore=0 clxscore=1011
+ bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.21.0-2502100000
+ definitions=main-2502250020
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250225_030902_681488_A907F82F 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,11 +98,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 Feb 2025 22:04:47 +0100 Heiner Kallweit wrote:
-> +struct device_node *phy_package_shared_get_node(struct phy_device *phydev);
-> +void *phy_package_shared_get_priv(struct phy_device *phydev);
+From: Fullway Wang <fullwaywang@outlook.com>
 
-A bit sad that none of the users can fit in a line with this naming.
-Isn't "shared" implied by "package" here ?
-How would you feel about phy_package_get_priv() ?
+[ Upstream commit 53dbe08504442dc7ba4865c09b3bbf5fe849681b ]
+
+The return value of devm_kzalloc() needs to be checked to avoid
+NULL pointer deference. This is similar to CVE-2022-3113.
+
+Link: https://lore.kernel.org/linux-media/PH7PR20MB5925094DAE3FD750C7E39E01BF712@PH7PR20MB5925.namprd20.prod.outlook.com
+Signed-off-by: Fullway Wang <fullwaywang@outlook.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+[ To fix CVE-2024-40973, change the file path from drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+ to drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c and minor conflict resolution ]
+Signed-off-by: Jianqi Ren <jianqi.ren.cn@windriver.com>
+Signed-off-by: He Zhe <zhe.he@windriver.com>
+---
+Verified the build test.
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+index d8e66b645bd8..27f08b1d34d1 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+@@ -65,6 +65,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
+ 	}
+ 
+ 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	if (!fw)
++		return ERR_PTR(-ENOMEM);
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
+-- 
+2.25.1
+
 
