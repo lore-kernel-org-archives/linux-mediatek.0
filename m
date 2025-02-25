@@ -4,110 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4952C021B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 20:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D68EC021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 20:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=j2BBGmbLI1nr/65Z65ONI0gv2HpVmeamawdFIgGF+JQ=; b=sqxIAgtQW/DG+8/tvQWnURAl0V
-	G51joWWj1AxRBdkOwLyT4a34hNI47GCZefKjDWv+nnSAY6mdpWu8EmuoMWuOcbxyz+VI7AlQo7gs0
-	H6uiCJ6IrF94XYeuGONDT0O6tN2gvyQ5PjL0nOXAxg3vT1iACOkqx5iyOVJQMHO/x40IvDJ8lzFDM
-	93GlVMPFCacphAZeQYPvmbnKm6sBDBd73CETvYP1JJ371IXGK3s+JmDfg0d9kNScB6xjnSmIpbb2h
-	038wn0SdcWTIu9WwJT363yGO8+slpkni3pq1/0jHhyNBbiFIJcOS9UIkBRxik61dyGg/D6/9nmPjm
-	lM4YegUA==;
+	bh=dgOJudjo2uOucFYhoM4hQWtoWfshdP4oya60L27AXlM=; b=xEFtkivwQfNq673w3DYT7M+Xlc
+	SrUSuEjS4aTSp4lHsgY/pulDW4VqkviaZ7tjrjj7cBQTuXvbIIyynVnhmgh40NvVfltxtd+e3vrTH
+	N3mDdx+khnlHNrPPmp8MXnzV1M5Gqm0QENMuDj8csGqCUtWEvryutIzyIPqOirX9C0XIHgRyRd9Un
+	UeV3AIeDYi3SIJaR6ElTkep8kc2EJvJR3zSpD7rFBOeelri8rUrP28sPXMTcq+oDByHEfwsVmyKFa
+	Rx21Q2rb0i3xZKXMMg/LP0gyBaMPA4WX1/ULDYmm8K4KlMUoo8kH+EhDfZpsYAa2BIj34ezPkKS6X
+	XKGpgNcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn1d5-00000001Ntg-1ufc;
-	Tue, 25 Feb 2025 20:34:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tn1m6-00000001Q1s-3cjd;
+	Tue, 25 Feb 2025 20:43:30 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn1Kv-00000001KQl-1qfX;
-	Tue, 25 Feb 2025 20:15:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=j2BBGmbLI1nr/65Z65ONI0gv2HpVmeamawdFIgGF+JQ=; b=cBHp2KGcg55lw2D/3wtSouXX24
-	W5UDWSPttPIY9kqt983LEmSyFQYrWgsn6TWd+0hCYFzSiwWs2oEenZrgZkcMAu7TzWfvGFwRWdFyb
-	DqU9SZvbeTNP+wfV9CYabGgxO2bUIvDkv3opJmKOShxqQwf5VP1EggZ8MjpCDii3RkKfrR4517lrT
-	CMEq6TvvYtcHVaDkwNscUpBo1vSa4uNNkC+ruQYYCFHW+S9xwTAeSwQblNUCR5LyERsH/sZ3G6qT8
-	4JE/pGonDZ6lTJuHctbveVvyjxnOVHypPf7dJCbJ/dXRqvhuiqOJ5tSfrusYfuXPu42Z0Q7v1c2R8
-	Ej7rG2sA==;
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn1Kr-00000003PEv-12ir;
-	Tue, 25 Feb 2025 20:15:24 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-aaedd529ba1so700048666b.1;
-        Tue, 25 Feb 2025 12:15:19 -0800 (PST)
+	id 1tn1Lu-00000001KbI-3aXq;
+	Tue, 25 Feb 2025 20:16:28 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-abbdf897503so36667666b.0;
+        Tue, 25 Feb 2025 12:16:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740514518; x=1741119318; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1740514585; x=1741119385; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=j2BBGmbLI1nr/65Z65ONI0gv2HpVmeamawdFIgGF+JQ=;
-        b=O6DqQkPm+vJlH77UzlW9Xckhh+Nr/Guo3fp7zE8DpWUIsAKZUQo/VKGEe+fbTnLr33
-         c4kNgKSLXy/wNIsk3DMKSewctPKKapGbJH+Msz65bt5Oeh8iStZMCdRWgY78FwQ8+S80
-         70V9LN/tTxqP93JEtgSwBIz/UevuOlBD0CTlI17Zz2Jy0m/WlaJd9czdAh/OtBPsB/6y
-         e/0cR8BGuueevU2VhkBKqy7nXrIDhflHCx9ggoUCzw87MxapZygMyNBuiRX+YDBof45i
-         WVqZL++UX0oAuCBmRSBtL/Rpja4eZVoDyEIq0jiNR3ctvdtn5ICM7hG0yTF4GXIOyMsN
-         Belg==
+        bh=dgOJudjo2uOucFYhoM4hQWtoWfshdP4oya60L27AXlM=;
+        b=ONV8Hm4bSsrBcHy9/0cpds3A6sbyN6gyguKcH4f+C6clwCKZiILhYaXykkrmfvA2ga
+         gkdeUaDtBI1KeyowLFIyM/giv9J+bRIM5lWk5+Oio9bjXSy4sZH9PFd3Qm6BgB8FlklV
+         71joYmkBE3xtpA5rKEe5Qtik9RTZvtwgfe4Z03rhpr2KDZzs0us61hPpvZyHjC+AWfiT
+         3YjrFHvHVTTVteXoBMX0laGeFZ4P1KMrKpMxcmpXaCY6hq1Lng0O9fG69VRckXjvK7Ov
+         3KLY4C8q/GnF8rb9TaTmvUbQQuYEmROyQPFhajXHoJIDmIpk3Byabmpz1nXl4znBWhhn
+         YJZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740514518; x=1741119318;
+        d=1e100.net; s=20230601; t=1740514585; x=1741119385;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=j2BBGmbLI1nr/65Z65ONI0gv2HpVmeamawdFIgGF+JQ=;
-        b=GkdIBuvEmiUtMrhmw4OVtQGxkpTVQKBwsXKOAPXPLfS67kdbQrIWpe5cbUPlvEuBJV
-         DBFcNGPLUT3/lm9gUN0WVxrQb0ONkMPdwSiv/ZDB0yK2T3djgi32RB0sMAJaNAOTDjAE
-         l0HHLHhY7/Imft+UyYUYhf0LeQDwsGadd22LSsCThLKOEoWGxy5iFFZJxSqNoY0giLn/
-         U6uxkbf1I8AE0XLe0AaFBJi34G673EvQ+//tZCo/WudCZ6mM8GWFQM0p+9PJXrrPW/In
-         Mb76g39DoJ33zlqcX6IUNd46iQPXtkuwj3UBdc7U/87cGnX2N0XQYqzCbVnEKiRM+pWJ
-         ko3g==
-X-Forwarded-Encrypted: i=1; AJvYcCU0yVLtFMiSCHSQQ3M4zkOka7wu2URKtzmbLx1Ify/iV/0Oa0qOsDgJKeTpBFExwCfewt/dGk7VF+sUNZepCkw=@lists.infradead.org, AJvYcCVhBL71vgygaFQpB3GJ0R4KFDIgSFJBG2RDDCYP4O3C9USUNoWT63D2SSqyTU0Ek4EPurta+Rfu1jXUE1RhkYTF@lists.infradead.org
-X-Gm-Message-State: AOJu0YwoT+nCnhfHqvlR9JgycZ+hQW8jOusV4wUbX7Sxxxu6PEw8ORUp
-	EW6+sUsek5nPTj9/U0WATxJ87cgLcCXkIxgoIasTwioVeYXoUAxZ
-X-Gm-Gg: ASbGncuRHqWeBBxqx4jkGDiWXdD99/ER7LjvL5LZ2J+2idWPMm2vQamaFaOLWlyV++y
-	BN4ukgOaJup70bTTnXfTmWWoR166qNZT7X9yCVHtBeF3JniXDG6ET6lAMUKf7dXUyEjbLIUjJJT
-	OSGqVSBhrfUm5+fAf0vx3LdpSGEsoH1x4L2iRTVedp+P00ympTMMJhTrKhGaklhRHGEZgZHlSSU
-	ZgC7X2B0o65udWz2tqVg66a/kuxpGH10/YvdE58YWp2Ddmz1lfDVkov09yU65dqf2MHwVj8gyfl
-	BNVA8eNYPHA0gtkIc4wTTKZbBeu8mx+gcoCoxP8rGLnpBKL8mE8r6t7Wu9kyZhJ2XyOpvoC/Z+U
-	nlHd7MU5tXwbbduK0oF/OrQjq2/uMBOES2bcPexfmAFM=
-X-Google-Smtp-Source: AGHT+IHroxxCR3JqcHk3B/BB2QKboxFSx/yXhrjGWREQjGgy7ImL6JVfDRnn1C0NlLFmeDqy09etbw==
-X-Received: by 2002:a05:6402:4604:b0:5e0:8b68:e2c3 with SMTP id 4fb4d7f45d1cf-5e44bb369d9mr9617140a12.29.1740514518140;
-        Tue, 25 Feb 2025 12:15:18 -0800 (PST)
+        bh=dgOJudjo2uOucFYhoM4hQWtoWfshdP4oya60L27AXlM=;
+        b=lyKgdLQXpfUVwWfuti4P+kPyXDYKCb+hbjWOeZMCh/Fgucl3ulj208vzz8Z1biqsBS
+         8qhn6JmQezjO4tGKB8aZzZkxl7DZsgk1lvXPGRnph0NTPfgphqzOBQHAfiQ+5GtlGN8i
+         PPADzXxzE4TPlpjtHS2uaDbu/yc2r5XtytAjW4M5tRpPHydk7+s4gjbCPfJQlGcvG7xa
+         hwO+2EBFMmzIViOkHxmlszxeTZuqdT7ldRKD6GOXshXhYX121CRCa15sJ1EGIEXGSAOI
+         lLDIiFGL/6A6lxgPMGnq0fpm+fcHZoonAvnyYQxIGtzknxIqmM5RfeBRbS+8ogGJSaO5
+         f4jw==
+X-Forwarded-Encrypted: i=1; AJvYcCURsAvGQf9do3O1Qbfwf5gCkb9x0AGnoUVM5Y79oJ/gTdR04HNbSJkherlDaGmEC6MjlCsQNFdNVog22paFLbE=@lists.infradead.org, AJvYcCWEKjdlRQz/weLWuyfuqRHKAnKJ+wF9Y3XsYE8oS+MFPOEPvwSsOA1LMtvFY56ec9BE1cGo/v4HgSWTLgR/4Xyi@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw25rRHhdPe7ynKJIih0/l1yfXrK/IinovzgBIZD4Iyy/Z3NzSg
+	kAV6BM3x4gIPdepyXb31ev+zaClltGT90vE/wFHdQLpMM8LUrJn3
+X-Gm-Gg: ASbGncuf4dDRGjEhfzTv6cRfDAuuHgRWxrX/GO6YLqaHvLWJjyHX8mfodqRytT96mNX
+	HqMaQlfif1V/OtS7QsZ3i3T4op+Ca2hfOdkwE82rf0GuFgjLAMUd8qUFxW8ZPBptCeGtGVanHE7
+	jpFYCSLglo6DJhjNZqeFUMrwubGoJE7wqrdbySA7BQj7d0cyuIbetcKXs2HvIF+5V8xLGBFZmtJ
+	aS7KCof1PACBTMaSwHipHOF8+ejrhH6PT6el0C4LKRW/qpO/0Q+d/pmqvM3yOv1xBxg+tNUcJkw
+	6WG0C0A8XrAi5kRm9c4N2zphd2KsZbfoqqMB5WLT+tprcvt9cTd4Tv63ffM6utqNZekBC1YIUk3
+	J20Gg17J9GHCE66GPvmr2oH6STkNa+zzQHfwRv4AeLCw=
+X-Google-Smtp-Source: AGHT+IFLN9wJGg7Kz7VIeM5ANhYWZnPmhPngWoXUfJixIMnl5RoCQ3QTOOySOedPp/0SLOk0Nsh+hA==
+X-Received: by 2002:a17:906:110e:b0:abe:cc65:8721 with SMTP id a640c23a62f3a-abecc6587dbmr435392466b.17.1740514584774;
+        Tue, 25 Feb 2025 12:16:24 -0800 (PST)
 Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e461c61e97sm1721710a12.65.2025.02.25.12.15.16
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abed201218fsm194319666b.104.2025.02.25.12.16.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Feb 2025 12:15:17 -0800 (PST)
+        Tue, 25 Feb 2025 12:16:24 -0800 (PST)
 From: Eric Woudstra <ericwouds@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@netfilter.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Kuniyuki Iwashima <kuniyu@amazon.com>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Joe Damato <jdamato@fastly.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
 	"Frank Wunderlich" <frank-w@public-files.de>,
 	Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v4 net-next] net: ethernet: mtk_ppe_offload: Allow QinQ, double ETH_P_8021Q only
-Date: Tue, 25 Feb 2025 21:15:09 +0100
-Message-ID: <20250225201509.20843-1-ericwouds@gmail.com>
+Subject: [PATCH v7 net-next 00/14] bridge-fastpath and related improvements
+Date: Tue, 25 Feb 2025 21:16:02 +0100
+Message-ID: <20250225201616.21114-1-ericwouds@gmail.com>
 X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_201521_379321_2BF80BD2 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20250225_121626_898260_3E53605C 
+X-CRM114-Status: GOOD (  25.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,91 +120,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_foe_entry_set_vlan() in mtk_ppe.c already supports double vlan
-tagging, but mtk_flow_offload_replace() in mtk_ppe_offload.c only allows
-for 1 vlan tag, optionally in combination with pppoe and dsa tags.
+This patchset makes it possible to set up a software fastpath between
+bridged interfaces. One patch adds the flow rule for the hardware
+fastpath. This creates the possibility to have a hardware offloaded
+fastpath between bridged interfaces. More patches are added to solve
+issues found with the existing code.
 
-However, mtk_foe_entry_set_vlan() only allows for setting the vlan id.
-The protocol cannot be set, it is always ETH_P_8021Q, for inner and outer
-tag. This patch adds QinQ support to mtk_flow_offload_replace(), only in
-the case that both inner and outer tags are ETH_P_8021Q.
+To set up the fastpath with offloading, add this extra flowtable:
 
-Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
-of PPPoE and Q-in-Q is not allowed.
+table bridge filter {
+        flowtable fb {
+                hook ingress priority filter
+                devices = { lan0, lan1, lan2, lan3, lan4, wlan0, wlan1 }
+                flags offload
+        }
+        chain forward {
+                type filter hook forward priority filter; policy accept;
+		ct state established flow add @fb
+        }
+}
 
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
+Creating a separate fastpath for bridges.
+
+         forward fastpath bypass
+ .----------------------------------------.
+/                                          \
+|                        IP - forwarding    |
+|                       /                \  v
+|                      /                  wan ...
+|                     /
+|                     |
+|                     |
+|                   brlan.1
+|                     |
+|    +-------------------------------+
+|    |           vlan 1              |
+|    |                               |
+|    |     brlan (vlan-filtering)    |
+|    +---------------+               |
+|    |  DSA-SWITCH   |               |
+|    |               |    vlan 1     |
+|    |               |      to       |
+|    |   vlan 1      |   untagged    |
+|    +---------------+---------------+
+.         /                   \
+ ------>lan0                 wlan1
+        .  ^                 ^
+        .  |                 |
+        .  \_________________/
+        .  bridge fastpath bypass
+        .
+        ^
+     vlan 1 tagged packets
+
+To have the ability to handle xmit direct with outgoing encaps in the
+bridge fastpass bypass, we need to be able to handle them without going
+through vlan/pppoe devices. So I've applied, amended and squashed wenxu's
+patchset. This patch also makes it possible to egress from vlan-filtering
+brlan to lan0 with vlan tagged packets, if the bridge master port is doing
+the vlan tagging, instead of the vlan-device. Without this patch, this is
+not possible in the bridge-fastpath and also not in the forward-fastpath,
+as seen in the figure above.
+
+There are also some more fixes for filling in the forward path. These
+fixes also apply to for the forward-fastpath. They include handling
+DEV_PATH_MTK_WDMA in nft_dev_path_info(). There are now 2 patches for
+avoiding ingress_vlans bit set for bridged dsa user ports and foreign
+(dsa) ports.
+
+Another patch introduces DEV_PATH_BR_VLAN_KEEP_HW, needed for the
+bridge-fastpath only.
+
+Conntrack bridge only tracks untagged and 802.1q. To make the bridge
+fastpath experience more similar to the forward fastpath experience,
+I've added double vlan, pppoe and pppoe-in-q tagged packets to bridge
+conntrack and to bridge filter chain.
+
+Note: While testing direct transmit in the software forward-fastpath,
+without the capability of setting the offload flag, it is sometimes useful
+to enslave the wan interface to another bridge, brwan. This will make
+sure both directions of the software forward-fastpath use direct transmit,
+which also happens when the offload flag is set.
+
+I have send RFC v2 as I previously only owned a dsa device. I now have
+obtained a switchdev supporting SWITCHDEV_OBJ_ID_PORT_VLAN, and found
+there was more to do to handle the ingress_vlans bit and corresponding
+vlan encap.
+
+I send v4 and above as non-RFC as the previous 2 RFC's did not get any
+comment.
+
+Changes in v7:
+- Inside br_vlan_fill_forward_path_pvid(), replaced usage of
+   br_vlan_group() with br_vlan_group_rcu() and
+   nbp_vlan_group() with nbp_vlan_group_rcu().
+
+Changes in v6:
+- Conntrack double vlan and pppoe patch: Set ph and vhdr after the calls
+   to pskb_may_pull().
+
+Changes in v5:
+- Conntrack double vlan and pppoe patch: Moved pskb_may_pull() up to the
+   first switch statement, to the start of the cases. Removed the second
+   switch statement. Replaced 0xffffffff with U32_MAX.
+- Added patch removing hw_outdev, out.hw_ifindex and out.hw_ifidx members.
+- Fix error path returned from nft_flow_offload_bridge_init().
+- Cosmetics.
 
 Changes in v4:
-- Describe in commit title and message it is for double ETH_P_8021Q only.
+- Added !CONFIG_NET_SWITCHDEV version of
+   br_switchdev_port_vlan_no_foreign_add().
 
 Changes in v3:
-- Removed unnecessary second check for ETH_P_8021Q.
+- Squashed the two 'port to port' patches to avoid build errors when only
+   one of the two commits is applied.
 
 Changes in v2:
-- Unchanged, only RFC to PATCH.
+- Introduce DEV_PATH_BR_VLAN_KEEP_HW for use in the bridge-fastpath only.
+   It is needed for switchdevs supporting SWITCHDEV_OBJ_ID_PORT_VLAN.
+- Different approach for handling BR_VLFLAG_ADDED_BY_SWITCHDEV in
+   br_vlan_fill_forward_path_mode() for foreign devices. Introduce
+   SWITCHDEV_F_NO_FOREIGN, BR_VLFLAG_TAGGING_BY_SWITCHDEV and
+   br_switchdev_port_vlan_no_foreign_add(). The latter function can be
+   used to make sure the vlan was added to a switchdev native device.
+   When that fails, adding the vlan with br_switchdev_port_vlan_add()
+   means it was added to a switchdev foreign device.
+- Clear ingress_vlans bit and corresponding encap for dsa user ports.
+- Add check for ingress_vlans bit to nft_dev_fill_bridge_path().
+- Adapted cover letter description to make clear the patches apply
+   to software fastpath, making hardware-offloaded fastpath possible.
+- Fixed clang error for vlan_hdr * and struct ppp_hdr * by adding block.
+- Updated !CONFIG_BRIDGE_VLAN_FILTERING version of
+   br_vlan_fill_forward_path_pvid().
+- Removed erroneous check netif_is_bridge_master(ctx->dev) from
+   dev_fill_bridge_path().
+- Cosmetic changes.
 
-Tested on the BPI-R3(mini), on non-dsa-ports and dsa-ports.
+Eric Woudstra (14):
+  netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit
+    direct
+  netfilter: flow: remove hw_outdev, out.hw_ifindex and out.hw_ifidx
+  netfilter: bridge: Add conntrack double vlan and pppoe
+  netfilter: nft_chain_filter: Add bridge double vlan and pppoe
+  bridge: Add filling forward path from port to port
+  net: core: dev: Add dev_fill_bridge_path()
+  netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
+  netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
+  netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
+  netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to
+    nft_dev_path_info()
+  netfilter: nft_flow_offload: No ingress_vlan forward info for dsa user
+    port
+  bridge: No DEV_PATH_BR_VLAN_UNTAG_HW for dsa foreign
+  bridge: Introduce DEV_PATH_BR_VLAN_KEEP_HW for bridge-fastpath
+  netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
 
- .../net/ethernet/mediatek/mtk_ppe_offload.c   | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ include/linux/netdevice.h                  |   3 +
+ include/net/netfilter/nf_flow_table.h      |   5 +-
+ include/net/switchdev.h                    |   1 +
+ net/bridge/br_device.c                     |  23 ++-
+ net/bridge/br_private.h                    |  12 ++
+ net/bridge/br_switchdev.c                  |  15 ++
+ net/bridge/br_vlan.c                       |  29 +++-
+ net/bridge/netfilter/nf_conntrack_bridge.c |  83 ++++++++--
+ net/core/dev.c                             |  66 ++++++--
+ net/netfilter/nf_flow_table_core.c         |   1 -
+ net/netfilter/nf_flow_table_inet.c         |  13 ++
+ net/netfilter/nf_flow_table_ip.c           |  96 +++++++++++-
+ net/netfilter/nf_flow_table_offload.c      |  15 +-
+ net/netfilter/nft_chain_filter.c           |  20 ++-
+ net/netfilter/nft_flow_offload.c           | 168 +++++++++++++++++++--
+ net/switchdev/switchdev.c                  |   2 +-
+ 16 files changed, 492 insertions(+), 60 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index f20bb390df3a..c855fb799ce1 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -34,8 +34,10 @@ struct mtk_flow_data {
- 	u16 vlan_in;
- 
- 	struct {
--		u16 id;
--		__be16 proto;
-+		struct {
-+			u16 id;
-+			__be16 proto;
-+		} vlans[2];
- 		u8 num;
- 	} vlan;
- 	struct {
-@@ -349,18 +351,19 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
--			if (data.vlan.num == 1 ||
-+			if (data.vlan.num + data.pppoe.num == 2 ||
- 			    act->vlan.proto != htons(ETH_P_8021Q))
- 				return -EOPNOTSUPP;
- 
--			data.vlan.id = act->vlan.vid;
--			data.vlan.proto = act->vlan.proto;
-+			data.vlan.vlans[data.vlan.num].id = act->vlan.vid;
-+			data.vlan.vlans[data.vlan.num].proto = act->vlan.proto;
- 			data.vlan.num++;
- 			break;
- 		case FLOW_ACTION_VLAN_POP:
- 			break;
- 		case FLOW_ACTION_PPPOE_PUSH:
--			if (data.pppoe.num == 1)
-+			if (data.pppoe.num == 1 ||
-+			    data.vlan.num == 2)
- 				return -EOPNOTSUPP;
- 
- 			data.pppoe.sid = act->pppoe.sid;
-@@ -450,12 +453,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
- 		foe.bridge.vlan = data.vlan_in;
- 
--	if (data.vlan.num == 1) {
--		if (data.vlan.proto != htons(ETH_P_8021Q))
--			return -EOPNOTSUPP;
-+	for (i = 0; i < data.vlan.num; i++)
-+		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.vlans[i].id);
- 
--		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
--	}
- 	if (data.pppoe.num == 1)
- 		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
- 
 -- 
 2.47.1
 
