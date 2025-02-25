@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34FC2C021BB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3BC1C021B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2025 16:41:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CSoZbiaDenttkX68cdfjE6RD9kBry30nYoPpwyMZq1c=; b=vqgoW9P1EPJ+K2iFxx1a0Zlz90
-	R2b42HIkyY9sRHQBGp3UlK4agPpyGcG2pG7HtIRQICUcS3eRabX2Ha9ZtZg3XJTVJAJAUVU0rWtDy
-	PLOoI+WFR378WO+laN7IU3ALGw75YPBS5ZfIQ5HUhIQ0IWIrBz6/8TxN7oAP+9NqYlgTc+6bWyGai
-	BKQt2HXIoOnEsmKO0IL6JyWxLxWwJAPPRDyu6j1VdoGy4U0SHEm6Fg3hF361IB4YmioS6r+roEWXl
-	XHBu2nRwU+0H/quAKxVnkTLHf+zO7B73PZiv3D2yisECTPQqUvtKeRylCYB4p7GIxJCzhJdkaVrdT
-	bBhWZWQw==;
+	bh=AWRWRMZEMSQfcLMYtLYdaShOnc/DckJ8Wo2cAw6Q2nQ=; b=UnvA0EaCY+r5vKDEVmleXKNa/G
+	pXXsoywOQQfZ/ReoooBb7XG2IQ6eDqoiglWL1YqQNOvu8vlv7EQ0M+J7h7QMkCjX5gjjuMVva5NzV
+	Y+Pd6vqpQMXzLLWrIiN7rCJMuNXEWb/gQSQ6TvepchaCCvNjKobLZKXQNeWrfrCGhEQzdgO3ORYcz
+	azSgm1xtE3lVED6VRpaAWj+4Wqeerl6fOsnZUSPnaXH05CONvkh3+ULgJkugRHy3kcGIYLI1OSEuE
+	b/XBFUauvKogC4w/fFoES5faUCKZvT3UVEgMseVNQAqfod3cTsMF2yHS+e9ZUEakTKQKwSlWKN0gA
+	aiFuJDvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmxzL-00000000JBG-37ar;
-	Tue, 25 Feb 2025 16:40:55 +0000
+	id 1tmxzP-00000000JGP-1bOZ;
+	Tue, 25 Feb 2025 16:40:59 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmw1f-0000000HXjE-1S7W;
-	Tue, 25 Feb 2025 14:35:12 +0000
+	id 1tmw1j-0000000HXkM-3qT2;
+	Tue, 25 Feb 2025 14:35:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740494109;
-	bh=2FVz/MmQJw35JVL8AhLj7sbkYBDTN69thgnUg6dUQvk=;
+	s=mail; t=1740494114;
+	bh=75CPx/W8hj86reRTn/xz1CjoIDFFQn6l8ybKVRcg3Og=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=PcrDgfQWxKG+M2AEM3AIEYXrcWeslQ1Z+wY4m1CDOjbSXh208NnWhDt/Y6JyXc4Nc
-	 xE3TjxsnOra43Sn7pTpcr5ragRS8Y+Q5iEFAC2lqKzsCgpL9g3pRPCJruYQcFRk8M6
-	 zbjk91++VVECDQ+o1tj4jWeLzkCYak6XgJu4gMQqfFtGzgx73lREj8zz+wY3Tx6VGl
-	 LO4Z1xYT7vTk19ZXLUhDvMakU6d0qOxJWOalLr0m6ZjTCue0+5kcT5u2/NKKfoEBNI
-	 Y3kNqbmlrAk4el71NqHYfDQFIqCZBanke+cEYNDhWba/Mv/TAsZAbcpsP/nPyRNlW1
-	 +VsBn+0tOWUwg==
+	b=kviw7DnX2ELsWI9A1nNID19qHwdc0ciFFQAwgHraUjm47PUm3QxozPxTJkQdEeI+F
+	 iGjxWIe3zFUX7eUpbJmULEkgtRgDOxPB53A6hmHREBSiOoyxTkmL3c10IoMH0mZh5Y
+	 85H4Aal9N1yNqVLb7KcNpu8ncEexJt7yAlkT8lfBPcCHOg3OvDFRAUv2At5gWtR1r8
+	 irTBYrtPpO+Lx/a0GfRrGSsvGo2iSblOMX6QCPrEJxJkDpfvHcJmJ8KHqYMD/mOis5
+	 wOTBy1MxlgjK9Ghhhvbm63dHmtyhgbboIMsu2Pqy95e/p/HE/CORyJuVDqdD0sw9ib
+	 IV4XPaDjhx8zA==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1004])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 265E717E0E91;
-	Tue, 25 Feb 2025 15:35:05 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7147517E0DD7;
+	Tue, 25 Feb 2025 15:35:10 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 25 Feb 2025 11:33:48 -0300
-Subject: [PATCH v2 2/8] ASoC: mediatek: mt8188: Add reference for dmic
- clocks
+Date: Tue, 25 Feb 2025 11:33:49 -0300
+Subject: [PATCH v2 3/8] ASoC: mediatek: mt8188: Treat DMIC_GAINx_CUR as
+ non-volatile
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250225-genio700-dmic-v2-2-3076f5b50ef7@collabora.com>
+Message-Id: <20250225-genio700-dmic-v2-3-3076f5b50ef7@collabora.com>
 References: <20250225-genio700-dmic-v2-0-3076f5b50ef7@collabora.com>
 In-Reply-To: <20250225-genio700-dmic-v2-0-3076f5b50ef7@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -65,9 +65,8 @@ Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_063511_526866_8DFFFDBC 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250225_063516_104541_21F37D66 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +81,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the names for the dmic clocks, aud_afe_dmic* and aud_dmic_hires*, so
-they can be acquired and enabled by the platform driver.
+The DMIC_GAINx_CUR registers contain the current (as in present) gain of
+each DMIC. During capture, this gain will ramp up until a target value
+is reached, and therefore the register is volatile since it is updated
+automatically by hardware.
+
+However, after capture the register's value returns to the value that
+was written to it. So reading these registers returns the current gain,
+and writing configures the initial gain for every capture.
+
+From an audio configuration perspective, reading the instantaneous gain
+is not really useful. Instead, reading back the initial gain that was
+configured is the desired behavior. For that reason, consider the
+DMIC_GAINx_CUR registers as non-volatile, so the regmap's cache can be
+used to retrieve the values, rather than requiring pm runtime resuming
+the device.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-afe-clk.c | 8 ++++++++
- sound/soc/mediatek/mt8188/mt8188-afe-clk.h | 8 ++++++++
- 2 files changed, 16 insertions(+)
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-index e69c1bb2cb239596dee50b166c20192d5408be10..7f411b857782375ba16702543295a5ae4b774f47 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-@@ -58,7 +58,15 @@ static const char *aud_clks[MT8188_CLK_NUM] = {
- 	[MT8188_CLK_AUD_ADC] = "aud_adc",
- 	[MT8188_CLK_AUD_DAC_HIRES] = "aud_dac_hires",
- 	[MT8188_CLK_AUD_A1SYS_HP] = "aud_a1sys_hp",
-+	[MT8188_CLK_AUD_AFE_DMIC1] = "aud_afe_dmic1",
-+	[MT8188_CLK_AUD_AFE_DMIC2] = "aud_afe_dmic2",
-+	[MT8188_CLK_AUD_AFE_DMIC3] = "aud_afe_dmic3",
-+	[MT8188_CLK_AUD_AFE_DMIC4] = "aud_afe_dmic4",
- 	[MT8188_CLK_AUD_ADC_HIRES] = "aud_adc_hires",
-+	[MT8188_CLK_AUD_DMIC_HIRES1] = "aud_dmic_hires1",
-+	[MT8188_CLK_AUD_DMIC_HIRES2] = "aud_dmic_hires2",
-+	[MT8188_CLK_AUD_DMIC_HIRES3] = "aud_dmic_hires3",
-+	[MT8188_CLK_AUD_DMIC_HIRES4] = "aud_dmic_hires4",
- 	[MT8188_CLK_AUD_I2SIN] = "aud_i2sin",
- 	[MT8188_CLK_AUD_TDM_IN] = "aud_tdm_in",
- 	[MT8188_CLK_AUD_I2S_OUT] = "aud_i2s_out",
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-index ec53c171c170a8b4b47900e63ef79d53641e9b12..c6c78d684f3ee11ce79f2fac45cc5f1abdc97147 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-@@ -54,7 +54,15 @@ enum {
- 	MT8188_CLK_AUD_ADC,
- 	MT8188_CLK_AUD_DAC_HIRES,
- 	MT8188_CLK_AUD_A1SYS_HP,
-+	MT8188_CLK_AUD_AFE_DMIC1,
-+	MT8188_CLK_AUD_AFE_DMIC2,
-+	MT8188_CLK_AUD_AFE_DMIC3,
-+	MT8188_CLK_AUD_AFE_DMIC4,
- 	MT8188_CLK_AUD_ADC_HIRES,
-+	MT8188_CLK_AUD_DMIC_HIRES1,
-+	MT8188_CLK_AUD_DMIC_HIRES2,
-+	MT8188_CLK_AUD_DMIC_HIRES3,
-+	MT8188_CLK_AUD_DMIC_HIRES4,
- 	MT8188_CLK_AUD_I2SIN,
- 	MT8188_CLK_AUD_TDM_IN,
- 	MT8188_CLK_AUD_I2S_OUT,
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index 73e5c63aeec8783905d656af225c42cd95069049..d36520c6272dd8c8302bc3f59da33f82f273f366 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -2855,10 +2855,6 @@ static bool mt8188_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	case AFE_DMIC3_SRC_DEBUG_MON0:
+ 	case AFE_DMIC3_UL_SRC_MON0:
+ 	case AFE_DMIC3_UL_SRC_MON1:
+-	case DMIC_GAIN1_CUR:
+-	case DMIC_GAIN2_CUR:
+-	case DMIC_GAIN3_CUR:
+-	case DMIC_GAIN4_CUR:
+ 	case ETDM_IN1_MONITOR:
+ 	case ETDM_IN2_MONITOR:
+ 	case ETDM_OUT1_MONITOR:
 
 -- 
 2.48.1
