@@ -4,67 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 558D6C19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3264C021B8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=57yd6XbIpVqci1GHfDC7jyDmUXWvLlCDBBFGmPHarQ0=; b=CdRKW5AbA3d+NCRTl1WgJHJePL
-	n3czTfKkjErDFoGNZvY8XKMCKjruffHx8siG42+/5XXkfDMPOlvB1fmNrFTOTN1oLd+wO3yB37nKl
-	ctaRCu83CCQKDduQFXJo2nQH4QQ96anxGtpnUjyYEYu+JYdaCN0h9EJcUxbQCet+B9YY48jgcgHpH
-	VoNAijLZs44p2NQLKQ4UwrTXaazWj22BDZzsvnLpLJdCS9aOfwwHARzLh3FpIVAL6dm4eujVLcxwq
-	Eify6pDu+uzV2nEDk0idikF5573H6pSM2/xQR43XJky74KfdmQuaHAUd5RY1wKw624wUHRjtElLNw
-	WTWPDcbw==;
+	bh=z3b7IO6UUGRXACgooMkPXl8HV31QOqDPJ9tLsrdWigk=; b=fRtkguvZF2L0NGJTwKyl5I/vr8
+	x+0EwcSi7VCv5znkexBtI77VeaD+DOG65ZV5GWhfH/nSBz52aXgTI76yq3UctBuj9CwkFMcpEbfXq
+	lH3Z8V9PS5muZIhuiawdreHukJnmicxormGwHSjO6jayWm68W7ER46nRvrXjNhMyqPGltt+Jw9dq1
+	zm1OQW/SEcGytXo4ryPpEjIcCWM+/qG0fPzLNGNOgge7U/YXibMRnYciYnE8e1wKvI7O0n0E5FHC9
+	ag6lnKNgFexVCX7m/RsD0q6xeMxJwL9VF9K2F1RPyiTTBFRtdp8UGDaEOGaKdqkAGO3FPW2+nG5Pz
+	GWLTd+MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnJFA-00000004Fwu-15ul;
-	Wed, 26 Feb 2025 15:22:40 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tnJFI-00000004GH3-34Ez;
+	Wed, 26 Feb 2025 15:22:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIVu-000000046tT-2a86;
-	Wed, 26 Feb 2025 14:35:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740580552;
-	bh=h68gsh2XEk8LO4IEBYVLcCuerDrPBhtD2D2GRTB8yzM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SvrskYHZYjMsocmKfAxUKmqMkvx05rKHkcpXkK4y1Hb0BSIomRFS9wcKjLK/FfDzW
-	 SRJGnKnMNSd3vnCySTQ74kp0ZhLKJQpX/4j8fh5fmEScfcVicULdLqGy1Ri9YtQ34G
-	 3pBEVQmaHakN8XAZ3gq1CFCAuGlnQ/U0ZdRDeeWGdU76wwHaPfnS64S/2EmtaFytAi
-	 kT56/ixj77tgiWqDjG8VQSeoMAkd2BS2PPGRp35qcOiCsBzEJpQcJ1PW0HqJ/KkNNj
-	 65KUxpSWJOePnVIsT+vcJ41/jgMF5V1Sm+mle9V336TAM8r9PEUTXIPzXxz8BtOnXH
-	 98xZh49YNX3qw==
-Received: from apertis-1.home (2a01cb088CcA73006086F5F072c6a07a.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:8cca:7300:6086:f5f0:72c6:a07a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BA22017E066F;
-	Wed, 26 Feb 2025 15:35:51 +0100 (CET)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Wed, 26 Feb 2025 15:35:28 +0100
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8395-radxa-nio-12l: Add Radxa
- 8 HD panel
+	id 1tnIhm-00000004AH0-2NU0;
+	Wed, 26 Feb 2025 14:48:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7AF5E5C67EA;
+	Wed, 26 Feb 2025 14:47:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 611C8C4CED6;
+	Wed, 26 Feb 2025 14:48:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740581289;
+	bh=xd3neVQnKKxta6h/dkB0x1HKr/mwp+2cJLoVDQVsKqc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=nHrrOgkRXHnaJloFeHcTWFMBS6+Fcuy0rjgphJAHpsvi2mcRgDXskJXRe9cOWAM/E
+	 qWcdyAlnrIYnU/YXtzy91y/uCmVTRbC6NG2k3edfTHzrU0+t85qoTgvzMqQdmexUYg
+	 mr9+yn7QMTIuQ88tg2bhQ62xsrJfU6xRQvlCCwiO3nCH6Sp5x5WkpK+wcLPpsNxp3R
+	 gS82Bdf0KbW3RpECZNRxtrhyFtVe7JQB012Bpz4dzC0cXAH40wvOdCLVF5zAkIZ+Yo
+	 VFILJ39/Ko+fJCQJPSn30MYVJgydxJQdZaL3EdvHCHu7HYo2T4UGp0ZOASwU4xCu75
+	 P2Wgfmk+Jlr2g==
+From: Maxime Ripard <mripard@kernel.org>
+To: Joel Stanley <joel@jms.id.au>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Stefan Agner <stefan@agner.ch>,
+	Alison Wang <alison.wang@nxp.com>,
+	Xinliang Liu <xinliang.liu@linaro.org>,
+	Tian Tao <tiantao6@hisilicon.com>,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Marek Vasut <marex@denx.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Yannick Fertre <yannick.fertre@foss.st.com>,
+	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
+	Philippe Cornu <philippe.cornu@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Anusha Srivatsa <asrivats@redhat.com>
+Cc: Maxime Ripard <mripard@kernel.org>,
+	linux-aspeed@lists.ozlabs.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org,
+	linux-doc@vger.kernel.org
+Subject: Re: (subset) [PATCH RESEND 01/12] drm/aspeed: move to devm_platform_ioremap_resource() usage
+Date: Wed, 26 Feb 2025 15:47:53 +0100
+Message-ID: <174058126145.2737122.17862276006786077975.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250225-memory-drm-misc-next-v1-1-9d0e8761107a@redhat.com>
+References: <20250225-memory-drm-misc-next-v1-0-9d0e8761107a@redhat.com> <20250225-memory-drm-misc-next-v1-1-9d0e8761107a@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250226-radxa-panel-overlay-v1-2-9e8938dfbead@collabora.com>
-References: <20250226-radxa-panel-overlay-v1-0-9e8938dfbead@collabora.com>
-In-Reply-To: <20250226-radxa-panel-overlay-v1-0-9e8938dfbead@collabora.com>
-To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- kernel@collabora.com, Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_063554_805119_6D03D575 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20250226_064810_715924_066473EB 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,105 +121,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Radxa 8 HD touchscreen can be used with various Radxa board
-and is sold appart from the Radxa NIO 12L development kit.
+On Tue, 25 Feb 2025 17:20:42 -0500, Anusha Srivatsa wrote:
+> Replace platform_get_resource + devm_ioremap_resource
+> with just devm_platform_ioremap_resource()
+> 
+> Used Coccinelle to do this change. SmPl patch:
+> @rule_1@
+> identifier res;
+> expression ioremap_res;
+> identifier pdev;
+> @@
+> -struct resource *res;
+> ...
+> -res = platform_get_resource(pdev,...);
+> -ioremap_res = devm_ioremap_resource(...);
+> +ioremap_res = devm_platform_ioremap_resource(pdev,0);
+> 
+> [...]
 
-Add a DTS overlay for this panel.
+Applied to misc/kernel.git (drm-misc-next).
 
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- arch/arm64/boot/dts/mediatek/Makefile              |  2 +
- .../mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso  | 64 ++++++++++++++++++++++
- 2 files changed, 66 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index ae1147eca9a915f117487101e2ad4acead97adfe..58484e8300632edbdef24bbda33ccf00db9df937 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -100,9 +100,11 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l-8-hd-panel.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
- 
- # Device tree overlays support
- DTC_FLAGS_mt7986a-bananapi-bpi-r3 := -@
- DTC_FLAGS_mt7986a-bananapi-bpi-r3-mini := -@
- DTC_FLAGS_mt7988a-bananapi-bpi-r4 := -@
-+DTC_FLAGS_mt8395-radxa-nio-12l := -@
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso
-new file mode 100644
-index 0000000000000000000000000000000000000000..5d633f61a62c3175fbfa133f3ea5b1a6a0b0fec5
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso
-@@ -0,0 +1,64 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Radxa Display 8 HD touchscreen module
-+ * Copyright (C) 2025 Collabora Ltd.
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+
-+&dsi0 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "radxa,display-8hd-ad002", "jadard,jd9365da-h3";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+		vccio-supply = <&mt6360_ldo2>;
-+		reset-gpios = <&pio 108 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&panel_default_pins>;
-+
-+		port {
-+			dsi_panel_in: endpoint {
-+				remote-endpoint = <&dsi0_out>;
-+			};
-+		};
-+	};
-+};
-+
-+&disp_pwm0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm0_default_pins>;
-+	status = "okay";
-+};
-+
-+&dsi0_out {
-+	remote-endpoint = <&dsi_panel_in>;
-+};
-+
-+&mipi_tx0 {
-+	status = "okay";
-+};
-+
-+&i2c4 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	touchscreen@14 {
-+		compatible = "goodix,gt911";
-+		reg = <0x14>;
-+		interrupts-extended = <&pio 132 IRQ_TYPE_EDGE_RISING>;
-+		irq-gpios = <&pio 132 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 133 GPIO_ACTIVE_HIGH>;
-+		VDDIO-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touch_pins>;
-+	};
-+};
-
--- 
-2.48.1
-
+Thanks!
+Maxime
 
