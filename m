@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0889CC021B2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 00:36:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F71DC021BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 00:36:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ayoJc34UIWYK6NpCJGDdzAahc3IY6eGe3fENEO1SMvY=; b=aFHuBuz5okApc6x2+TEjJVj2tU
-	Qq627RpmnFsGAgQEc115uRDb33tR6J/+InHN0pQpVFOX2FZrk4sTMhxs4ciWGRRB68U5LB//wU5G2
-	XtG1GypUKc75hLtiocDgyIB0Wq5C3N3XwWE+FH77QHJXt7qLr+a2wTwNAsc7wrJtlEGgJtl9lZQNM
-	mQ7UyfRsrFIpg6DeuKRP4Ad7sbHCZNZuFJLIvlx+snp8TC/IDXGK09e4xLYlyZL5Aeydp/enmcdxN
-	7nzB1ocO2otdqimcKoANfZ9EeQoN1u7eu5DoBZZ5ZzHhsddtQkEwPJgC93qgt0HQJ2oVavHtLawwZ
-	om4yl1gA==;
+	bh=/1XBpgqtT7Jisq7gLwkmRDRZc9Mx4bguTuo9qD7Avjc=; b=jIlqtujFLTFxDJExTRwnbE1DHu
+	Xx1Sne/tHsNcq/AQevlxVcjm6Sg+O0GKCS0HUPXR+CAbK1Bl3vQtu96hoqgeSbQw+9xBPGAiOZyTh
+	Z2y3edAvxHBb9qlAJAEsaonVbqygNnwyEZlSf/Mc8IM76UPKFK8HAP4Z76C6unVu7sc/Q8iDdXI1z
+	NLPW25Wk5DkbX7ecpovM/KPG33rkB0JakH45kcWLW/0G9t9+kV2NH2zCPBq+dOiO7W7ws4Wr084wQ
+	PcBDv5LkGLZ17PIuts2GWkwdGzMG/QJ7tAVVvJ2cfaRkO5DjFp4vH2asN54CWf4k3yV6Ly/zIJkwQ
+	9hs6mOXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn5PZ-00000001szp-0URr;
-	Wed, 26 Feb 2025 00:36:29 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1tn5Ph-00000001t1k-1t6i;
+	Wed, 26 Feb 2025 00:36:37 +0000
+Received: from mail-oa1-f43.google.com ([209.85.160.43])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn5PW-00000001syT-3EEr
+	id 1tn5Pe-00000001t0u-1ZzI
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Feb 2025 00:36:27 +0000
-Received: by mail-ot1-f52.google.com with SMTP id 46e09a7af769-72732ef2d9cso237507a34.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2025 16:36:26 -0800 (PST)
+	Wed, 26 Feb 2025 00:36:35 +0000
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-2b1a9cbfc8dso1257814fac.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2025 16:36:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740530186; x=1741134986;
+        d=1e100.net; s=20230601; t=1740530193; x=1741134993;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ayoJc34UIWYK6NpCJGDdzAahc3IY6eGe3fENEO1SMvY=;
-        b=eEdmBTNjOLv8BLF3PGiD7iUznQcdW73Z2C5mDjMfgSjrbvrdioAS/Q2dPgp/JIcloL
-         TJn5IBN5puXucR7NaJTvN+FhiVDFgbe6Tf0BjsAAcC0XkU23JBhtfYHSDrFgN0oF2FNJ
-         hMJ/ZtFEf9rgLScY+BTw3ozBqj4nmYUNRCBTQpOppqDwkYGKyDCVkbEEHeum4oxoZd7e
-         sVs0Zmobm/tMM2iJigyWpfNSU3mckIc11i8MrEAdob+ePDYMFubJ+1aD/jG7yfhH/Y9C
-         D8EfewphY/VrYgeRMSIkSBmlz/BHGrY9SjpOklvgC7lPPitIJDzbkNT/rCHHr61IJIZb
-         yLuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWLL2Z6XxLYzGmCnATk/kOqvCyJkkUHzDJxXDWcRYuwOWq4z7WKTDzoYCQT9XA2I9XF9J9AnMmkZVilquO9TA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyrpoBYWK0rc8mZVhjp4I47scQAjW8tVdl1ltPHXUn0XsP6981P
-	XVOlhZ6W/q/ZcdUWSPc/Rkd5NAWWyRI/LIrsK3Xfakf3yJM4i7OX7M+Zbpps
-X-Gm-Gg: ASbGncuGg0YAQzNGzzs5DR7zSva3k6/5tACaYUshZNPjayKQgFqM6QTldgkS3s+r5sB
-	6KtYWDWM4BhwIPcK8tDORMnR0LbS505Y5HfDCtBV5GoCb/yqecrP4BzDcLBdPDp+NBqMu26UZc4
-	o5uiGCNRjrEab9jIZc0b1QVGKA3MEDgVF+6cuYqjMe1RDQ1phmSTTn9U7wxhoeIxxLP0UwmSukt
-	XiGacYMoCF+awDSCM74T0XSUolbOrZSZz/bN2RDyj1XEVeyMxSgDEd8ileiozUUQ3ro6pufpZj8
-	nbc4wGpYTHZN5Ox4zMAvxuSOdPEThsONAU2plXCgCbQ=
-X-Google-Smtp-Source: AGHT+IF9Q3Wtccm0vIiquLaIV2JCZFN8QqcgomXkW2A+AmAXU11HEtu0EQ8MdBNN82ZRLpq9VKc3cg==
-X-Received: by 2002:a05:6830:4858:b0:728:a42c:a503 with SMTP id 46e09a7af769-728a42ca9a5mr1149633a34.14.1740530185762;
-        Tue, 25 Feb 2025 16:36:25 -0800 (PST)
+        bh=/1XBpgqtT7Jisq7gLwkmRDRZc9Mx4bguTuo9qD7Avjc=;
+        b=X38n4BaqeNyNE2OCf1l7zyLklg+mxP7W5ZO/liwbUpCV8bgPWjDbNkFkCNBCdUCIFg
+         jDKayocGCpP8usp4HOtbN5Z1gzxzI577HbgDe1iuVSB3GyJLTOF+9DGGSQIu7A7IvIpd
+         mBOg2B5xBLwSFqOFeSFgx/aLlvhR7zNPmhH4kF+PZrDuj2xY6lO8mLyHpRPyvKh4+SA9
+         9SyV8opeFdOpKQzGctm4uL4KTM/tHZwBfArY60D3f4TdTdIMpvRyiBmKvPubv8e+vk5j
+         E5Z1ks15zkHKeD14GDP6LssnAF+RjXqYUtHSDsrAynPIgbjmH5bg1E/KaaQHqNnpL/qf
+         rVDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUV0ehNrdb8Lh20Lgt2guCreAvrW2pEUyiF/I0K3ZkVocN/xfkV7jFQ6q6SxSTyhX/bsgy/HyzRwrlfmOEqyQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxcGO+GTwZE7eFwyFh8LFw2a+ILMiL7ivBPeRdeNv2bOY5l+EQ+
+	uS7zLy6bnJFoAA4GQ7MkSUHBXp8Gk3NLa79AJKDSLaLoOaDarZH8
+X-Gm-Gg: ASbGncvf+4IFsuADBopajNB1QMfD5+YpstPvNxnsTUsT3xFTidNpox7p4Aq1ILjwD2C
+	zn+0iVbFmTh/iKHCVxt20wr8c+hk4ODuyp1HF5JP1tWLk/0KvkGz2JaWJNWb8jolIq6NZSoeKsk
+	4Rbhk0ID1un1/KaQKpQpDPb95LxkCOp3caGwDbR98Emnte49DxFu2y7Kvr9U+IvSuN6tCvI85tI
+	6O0+Zodt9NHXOTIpFl57dfIiO8tDftRw3CplflIcWkFbV+DnIAQhncImK8NaCQ7qPd1F8iv72oH
+	ssBUySUpD0pmBZumMQUL0HGmm3mv0lT5hhlMGQQfl2o=
+X-Google-Smtp-Source: AGHT+IHQd94LMGWgRxKw5KrTvuxsUUJxnmjSeo3lNBOjf2cJcBcupyo6xLqDI9An5k+L2lz6Ru1pTQ==
+X-Received: by 2002:a05:6871:5317:b0:2bc:9116:8856 with SMTP id 586e51a60fabf-2bd5187e0f5mr14532741fac.36.1740530193497;
+        Tue, 25 Feb 2025 16:36:33 -0800 (PST)
 Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7289dedfcd8sm507149a34.16.2025.02.25.16.36.24
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7289dedfcd8sm507149a34.16.2025.02.25.16.36.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Feb 2025 16:36:25 -0800 (PST)
+        Tue, 25 Feb 2025 16:36:32 -0800 (PST)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -65,17 +65,17 @@ Cc: sean.wang@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	stable@vger.kernel.org
-Subject: [PATCH v3 4/6] wifi: mt76: mt7925: adjust rm BSS flow to prevent next connection failure
-Date: Tue, 25 Feb 2025 16:35:54 -0800
-Message-Id: <20250226003556.82644-4-sean.wang@kernel.org>
+Subject: [PATCH v3 5/6] wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd
+Date: Tue, 25 Feb 2025 16:35:55 -0800
+Message-Id: <20250226003556.82644-5-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250226003556.82644-1-sean.wang@kernel.org>
 References: <20250226003556.82644-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_163626_811223_CB33BCC7 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20250225_163634_419379_B2F8A5BB 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,96 +92,266 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Removing BSS without removing STAREC first will cause firmware
-abnormal and next connection fail.
+Integrate *mlo_sta_cmd and *sta_cmd for the MLO firmware.
 
-Fixes: f8797298565e ("wifi: mt76: mt7925: Cleanup MLO settings post-disconnection")
+Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabling MLO when the firmware supports it")
 Cc: stable@vger.kernel.org
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v2, v3: generate the patch based on the latest mt76 tree
+v2: generate the patch based on the latest mt76 tree
+v3: fixed merge error
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 45 +++++++++++++++----
- 1 file changed, 36 insertions(+), 9 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  64 +--------
+ .../wireless/mediatek/mt76/mt7925/mcu.c.rej   | 131 +++++++++++++-----
+ 2 files changed, 104 insertions(+), 91 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 604f771af68e..4a9f393b45ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1155,7 +1155,12 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 		struct mt792x_bss_conf *mconf;
- 
- 		mconf = mt792x_link_conf_to_mconf(link_conf);
--		mt792x_mac_link_bss_remove(dev, mconf, mlink);
-+
-+		if (ieee80211_vif_is_mld(vif))
-+			mt792x_mac_link_bss_remove(dev, mconf, mlink);
-+		else
-+			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx, link_conf,
-+						link_sta, false);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 4c133200c70b..34e7165d1a0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1820,49 +1820,6 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
  	}
+ }
  
- 	spin_lock_bh(&mdev->sta_poll_lock);
-@@ -1175,6 +1180,31 @@ mt7925_mac_sta_remove_links(struct mt792x_dev *dev, struct ieee80211_vif *vif,
- 	struct mt76_wcid *wcid;
- 	unsigned int link_id;
- 
-+	/* clean up bss before starec */
-+	for_each_set_bit(link_id, &old_links, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		struct ieee80211_link_sta *link_sta;
-+		struct ieee80211_bss_conf *link_conf;
-+		struct mt792x_bss_conf *mconf;
-+		struct mt792x_link_sta *mlink;
-+
-+		link_sta = mt792x_sta_to_link_sta(vif, sta, link_id);
-+		if (!link_sta)
-+			continue;
-+
-+		mlink = mt792x_sta_to_link(msta, link_id);
-+		if (!mlink)
-+			continue;
-+
-+		link_conf = mt792x_vif_to_bss_conf(vif, link_id);
-+		if (!link_conf)
-+			continue;
-+
-+		mconf = mt792x_link_conf_to_mconf(link_conf);
-+
-+		mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx, link_conf,
-+					link_sta, false);
-+	}
-+
- 	for_each_set_bit(link_id, &old_links, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		struct ieee80211_link_sta *link_sta;
- 		struct mt792x_link_sta *mlink;
-@@ -1212,6 +1242,7 @@ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- {
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct {
- 		struct {
- 			u8 omac_idx;
-@@ -1242,14 +1273,10 @@ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 
- 	mt7925_mac_sta_remove_links(dev, vif, sta, rem);
- 
--	if (ieee80211_vif_is_mld(vif)) {
--		mt7925_mcu_set_dbdc(&dev->mphy, false);
+-static int
+-mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+-		   struct mt76_sta_cmd_info *info)
+-{
+-	struct mt76_vif_link *mvif = (struct mt76_vif_link *)info->vif->drv_priv;
+-	struct mt76_dev *dev = phy->dev;
+-	struct sk_buff *skb;
+-	int conn_state;
 -
--		/* recovery omac address for the legacy interface */
--		memcpy(dev_req.tlv.omac_addr, vif->addr, ETH_ALEN);
--		mt76_mcu_send_msg(mdev, MCU_UNI_CMD(DEV_INFO_UPDATE),
--				  &dev_req, sizeof(dev_req), true);
+-	skb = __mt76_connac_mcu_alloc_sta_req(dev, mvif, info->wcid,
+-					      MT7925_STA_UPDATE_MAX_SIZE);
+-	if (IS_ERR(skb))
+-		return PTR_ERR(skb);
+-
+-	conn_state = info->enable ? CONN_STATE_PORT_SECURE :
+-				    CONN_STATE_DISCONNECT;
+-	if (info->link_sta)
+-		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->link_conf,
+-					      info->link_sta,
+-					      conn_state, info->newly);
+-	if (info->link_sta && info->enable) {
+-		mt7925_mcu_sta_phy_tlv(skb, info->vif, info->link_sta);
+-		mt7925_mcu_sta_ht_tlv(skb, info->link_sta);
+-		mt7925_mcu_sta_vht_tlv(skb, info->link_sta);
+-		mt76_connac_mcu_sta_uapsd(skb, info->vif, info->link_sta->sta);
+-		mt7925_mcu_sta_amsdu_tlv(skb, info->vif, info->link_sta);
+-		mt7925_mcu_sta_he_tlv(skb, info->link_sta);
+-		mt7925_mcu_sta_he_6g_tlv(skb, info->link_sta);
+-		mt7925_mcu_sta_eht_tlv(skb, info->link_sta);
+-		mt7925_mcu_sta_rate_ctrl_tlv(skb, info->vif,
+-					     info->link_sta);
+-		mt7925_mcu_sta_state_v2_tlv(phy, skb, info->link_sta,
+-					    info->vif, info->rcpi,
+-					    info->state);
+-		mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
 -	}
-+	/* recovery omac address for the legacy interface */
-+	memcpy(dev_req.tlv.omac_addr, vif->addr, ETH_ALEN);
-+	mt76_mcu_send_msg(mdev, MCU_UNI_CMD(DEV_INFO_UPDATE),
-+			  &dev_req, sizeof(dev_req), true);
+-
+-	if (info->enable)
+-		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+-
+-	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+-}
+-
+ static void
+ mt7925_mcu_sta_remove_tlv(struct sk_buff *skb)
+ {
+@@ -1875,8 +1832,8 @@ mt7925_mcu_sta_remove_tlv(struct sk_buff *skb)
+ }
  
- 	if (vif->type == NL80211_IFTYPE_STATION) {
- 		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ static int
+-mt7925_mcu_mlo_sta_cmd(struct mt76_phy *phy,
+-		       struct mt76_sta_cmd_info *info)
++mt7925_mcu_sta_cmd(struct mt76_phy *phy,
++		   struct mt76_sta_cmd_info *info)
+ {
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)info->vif->drv_priv;
+ 	struct mt76_dev *dev = phy->dev;
+@@ -1890,12 +1847,10 @@ mt7925_mcu_mlo_sta_cmd(struct mt76_phy *phy,
+ 	if (IS_ERR(skb))
+ 		return PTR_ERR(skb);
+ 
+-	if (info->enable)
++	if (info->enable && info->link_sta) {
+ 		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->link_conf,
+ 					      info->link_sta,
+ 					      info->enable, info->newly);
+-
+-	if (info->enable && info->link_sta) {
+ 		mt7925_mcu_sta_phy_tlv(skb, info->vif, info->link_sta);
+ 		mt7925_mcu_sta_ht_tlv(skb, info->link_sta);
+ 		mt7925_mcu_sta_vht_tlv(skb, info->link_sta);
+@@ -1946,7 +1901,6 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
+ 	};
+ 	struct mt792x_sta *msta;
+ 	struct mt792x_link_sta *mlink;
+-	int err;
+ 
+ 	if (link_sta) {
+ 		msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
+@@ -1954,17 +1908,7 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
+ 	}
+ 	info.wcid = link_sta ? &mlink->wcid : &mvif->sta.deflink.wcid;
+ 
+-	if (link_sta)
+-		info.newly = state != MT76_STA_INFO_STATE_ASSOC;
+-	else
+-		info.newly = state == MT76_STA_INFO_STATE_ASSOC ? false : true;
+-
+-	if (ieee80211_vif_is_mld(vif))
+-		err = mt7925_mcu_mlo_sta_cmd(&dev->mphy, &info);
+-	else
+-		err = mt7925_mcu_sta_cmd(&dev->mphy, &info);
+-
+-	return err;
++	return mt7925_mcu_sta_cmd(&dev->mphy, &info);
+ }
+ 
+ int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c.rej b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c.rej
+index 3cdfc4e9a45f..dea7e7b3755a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c.rej
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c.rej
+@@ -1,35 +1,104 @@
+ --- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+ +++ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+-@@ -2176,13 +2178,26 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
++@@ -1771,49 +1771,6 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
++ 	}
++ }
+  
+- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_RLM, sizeof(*req));
+- 	req = (struct bss_rlm_tlv *)tlv;
+--	req->control_channel = chandef->chan->hw_value,
+--	req->center_chan = ieee80211_frequency_to_channel(freq1),
+--	req->center_chan2 = ieee80211_frequency_to_channel(freq2),
+--	req->tx_streams = hweight8(phy->antenna_mask),
+-+	req->control_channel = chandef->chan->hw_value;
+-+	req->center_chan = ieee80211_frequency_to_channel(freq1);
+-+	req->center_chan2 = 0;
+-+	req->tx_streams = hweight8(phy->antenna_mask);
+- 	req->ht_op_info = 4, /* set HT 40M allowed */
+--	req->rx_streams = hweight8(phy->antenna_mask),
+--	req->band = band;
+-+	req->rx_streams = hweight8(phy->antenna_mask);
+-+	req->center_chan2 = 0;
+-+	req->sco = 0;
+-+
+-+	switch (band) {
+-+	case NL80211_BAND_2GHZ:
+-+		req->band = 1;
+-+		break;
+-+	case NL80211_BAND_5GHZ:
+-+		req->band = 2;
+-+		break;
+-+	case NL80211_BAND_6GHZ:
+-+		req->band = 3;
+-+		break;
+-+	}
++-static int
++-mt7925_mcu_sta_cmd(struct mt76_phy *phy,
++-		   struct mt76_sta_cmd_info *info)
++-{
++-	struct mt76_vif *mvif = (struct mt76_vif *)info->vif->drv_priv;
++-	struct mt76_dev *dev = phy->dev;
++-	struct sk_buff *skb;
++-	int conn_state;
++-
++-	skb = __mt76_connac_mcu_alloc_sta_req(dev, mvif, info->wcid,
++-					      MT7925_STA_UPDATE_MAX_SIZE);
++-	if (IS_ERR(skb))
++-		return PTR_ERR(skb);
++-
++-	conn_state = info->enable ? CONN_STATE_PORT_SECURE :
++-				    CONN_STATE_DISCONNECT;
++-	if (info->link_sta)
++-		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->vif,
++-					      info->link_sta,
++-					      conn_state, info->newly);
++-	if (info->link_sta && info->enable) {
++-		mt7925_mcu_sta_phy_tlv(skb, info->vif, info->link_sta);
++-		mt7925_mcu_sta_ht_tlv(skb, info->link_sta);
++-		mt7925_mcu_sta_vht_tlv(skb, info->link_sta);
++-		mt76_connac_mcu_sta_uapsd(skb, info->vif, info->link_sta->sta);
++-		mt7925_mcu_sta_amsdu_tlv(skb, info->vif, info->link_sta);
++-		mt7925_mcu_sta_he_tlv(skb, info->link_sta);
++-		mt7925_mcu_sta_he_6g_tlv(skb, info->link_sta);
++-		mt7925_mcu_sta_eht_tlv(skb, info->link_sta);
++-		mt7925_mcu_sta_rate_ctrl_tlv(skb, info->vif,
++-					     info->link_sta);
++-		mt7925_mcu_sta_state_v2_tlv(phy, skb, info->link_sta,
++-					    info->vif, info->rcpi,
++-					    info->state);
++-		mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
++-	}
++-
++-	if (info->enable)
++-		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
++-
++-	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
++-}
++-
++ static void
++ mt7925_mcu_sta_remove_tlv(struct sk_buff *skb)
++ {
++@@ -1826,8 +1783,8 @@ mt7925_mcu_sta_remove_tlv(struct sk_buff *skb)
++ }
+  
+- 	switch (chandef->width) {
+- 	case NL80211_CHAN_WIDTH_40:
++ static int
++-mt7925_mcu_mlo_sta_cmd(struct mt76_phy *phy,
++-		       struct mt76_sta_cmd_info *info)
+++mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+++		  struct mt76_sta_cmd_info *info)
++ {
++ 	struct mt792x_vif *mvif = (struct mt792x_vif *)info->vif->drv_priv;
++ 	struct mt76_dev *dev = phy->dev;
++@@ -1841,12 +1798,10 @@ mt7925_mcu_mlo_sta_cmd(struct mt76_phy *phy,
++ 	if (IS_ERR(skb))
++ 		return PTR_ERR(skb);
++ 
++-	if (info->enable)
+++	if (info->enable && info->link_sta) {
++ 		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->vif,
++ 					      info->link_sta,
++ 					      info->enable, info->newly);
++-
++-	if (info->enable && info->link_sta) {
++ 		mt7925_mcu_sta_phy_tlv(skb, info->vif, info->link_sta);
++ 		mt7925_mcu_sta_ht_tlv(skb, info->link_sta);
++ 		mt7925_mcu_sta_vht_tlv(skb, info->link_sta);
++@@ -1896,7 +1851,6 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
++ 	};
++ 	struct mt792x_sta *msta;
++ 	struct mt792x_link_sta *mlink;
++-	int err;
++ 
++ 	if (link_sta) {
++ 		msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
++@@ -1904,17 +1858,7 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
++ 	}
++ 	info.wcid = link_sta ? &mlink->wcid : &mvif->sta.deflink.wcid;
++ 
++-	if (link_sta)
++-		info.newly = state != MT76_STA_INFO_STATE_ASSOC;
++-	else
++-		info.newly = state == MT76_STA_INFO_STATE_ASSOC ? false : true;
++-
++-	if (ieee80211_vif_is_mld(vif))
++-		err = mt7925_mcu_mlo_sta_cmd(&dev->mphy, &info);
++-	else
++-		err = mt7925_mcu_sta_cmd(&dev->mphy, &info);
++-
++-	return err;
+++	return mt7925_mcu_sta_cmd(&dev->mphy, &info);
++ }
++ 
++ int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
 -- 
 2.25.1
 
