@@ -4,84 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA565C021BC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 09:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 752A6C021BC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 10:35:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AWAnLAcd4Ax9L2XjpW/XTk1Vc6xaPxRyyPPHRuN7d+0=; b=XhnXp8dNtthGRW3wiiSfWfVPjI
-	Qu09xIaMeGaB2Bqw/YNovmDl5XNuoS1bxwq+/IHiYmGzR4Xv09Z+iqFLB6bo9o5eg7hskxS/XcFOF
-	ZvzeqTyIaJiqYVwmNpaaHm+fQxbg5umce3HiN8ZjXUhKjTmgk8KtB8kf3Ly1/dhXk1sQhK7jszRth
-	hVQY0VSooon9k8ObcFYKPVZ/AbyQMHIGbTVgCSbHT4vZsJv8Uwy5cBHF19as1wru/eoyxSMbjJYZU
-	F4I/oVCsxHrFUL2JnwESVuztRoleSHmvWKrhoo1kZU9oipuI7cdbzjEmxGQFPnFZUDVEu37TeHw1Q
-	kZokuAaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W7huWkA+q4tRzFzbc4OooKbD6jGNlYW/aDI0Z6LcjV8=; b=dV7XNkP04941268bXkPHcq5sCn
+	mcuyRNlegk6+jVfoKvZjlkGe6k+OW24N/I6sh5wPnB6qDhuAZLWGo+1hmLH/6SiWirdaK3PXBLaam
+	XrdZahMyFN++0wuvqYRcpivac1xJBnWqHy96K4eneAOT7Bwkhev3C7jJSw2MqkgqGSTDO/rkrV+gT
+	7WfTmvpUpqt4WU/1DZ70Oe4o564QkbTov8qVbfT4C43rFUiZ4XMOZb9PKAuGzVUGbCJO058uyLdSp
+	PVu+s3FQepFf2XfLXbpP7GeAiwv5A0INKyNM6021tS7E5ZSJIBTo4FuAyZcJpjJmWPYQQJtztlTPc
+	4tHC4Law==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnE6w-00000003Adx-3oY6;
-	Wed, 26 Feb 2025 09:53:50 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tnElZ-00000003Jhy-1syP;
+	Wed, 26 Feb 2025 10:35:49 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnE6A-00000003ASe-3kyC;
-	Wed, 26 Feb 2025 09:53:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=AWAnLAcd4Ax9L2XjpW/XTk1Vc6xaPxRyyPPHRuN7d+0=; b=OPGZ5Uw8vm2+odS8tBnxh6bn5y
-	bMKasJwtYxa0VWmFmqzAohjow9oPWH5b8OMTZQvCa9wo09JRu6bE/sDd73lDgAh47se8VFabVThHr
-	ZEiE8aZTIDBA0m1Wve/02buldgj1FI8v2SRhJYXiIzAoIf97cT4DyazORIRNjwBOF5DDRK9WBnV6K
-	Y4qMJE77GtOgbxK8usYH4b2LD27i8CGjtu97MKuJ0UoVx1PTybavKFR98wAiyQwrFulF1ibmMLeIc
-	iMKwl7NTa38QBqSY5ibw8JS1Knpd3qKga8UVNrgiF8xTXt8mdyUx154pmR0LA3lBt6bYao0tocNRe
-	ymF8xUhQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51782)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tnE63-0003om-0c;
-	Wed, 26 Feb 2025 09:52:55 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tnE5y-0006xe-26;
-	Wed, 26 Feb 2025 09:52:50 +0000
-Date: Wed, 26 Feb 2025 09:52:50 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: "andrew@lunn.ch" <andrew@lunn.ch>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"horms@kernel.org" <horms@kernel.org>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH net-next v2 3/3] net: phy: mediatek: add driver for
- built-in 2.5G ethernet PHY on MT7988
-Message-ID: <Z77kcqzmCqdT6lE0@shell.armlinux.org.uk>
-References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
- <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
- <Z7WleP9v6Igx2MjC@shell.armlinux.org.uk>
- <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
+	id 1tnET0-00000003GDB-19vq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Feb 2025 10:16:40 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id B800B1F388;
+	Wed, 26 Feb 2025 10:16:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1740564996; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=W7huWkA+q4tRzFzbc4OooKbD6jGNlYW/aDI0Z6LcjV8=;
+	b=CYhMLnp7q0zfIxH8iu3DNheOYB4NL+Nf+4CwGTh2xeQ6XaiMe2y/w5C4nc6bW9xz7RbgAw
+	8ryL8T8ngv+vFjbcTTbAftFmRhYB2lclHddKns9vVCLWfBZDzJSvvQlUKLgV5Wmz5BH8cQ
+	v3TWwB2RQtT2+I3JBCLYix3NLqlliWA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1740564996;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=W7huWkA+q4tRzFzbc4OooKbD6jGNlYW/aDI0Z6LcjV8=;
+	b=py/wyHhesHkF3t5R/Yc8G+Nte20Q0gW31h5UiRetlboW695aUKEXNBzADKuVjVvPuLRL9V
+	oWrCKyFxSZ0u4RBQ==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1740564996; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=W7huWkA+q4tRzFzbc4OooKbD6jGNlYW/aDI0Z6LcjV8=;
+	b=CYhMLnp7q0zfIxH8iu3DNheOYB4NL+Nf+4CwGTh2xeQ6XaiMe2y/w5C4nc6bW9xz7RbgAw
+	8ryL8T8ngv+vFjbcTTbAftFmRhYB2lclHddKns9vVCLWfBZDzJSvvQlUKLgV5Wmz5BH8cQ
+	v3TWwB2RQtT2+I3JBCLYix3NLqlliWA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1740564996;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=W7huWkA+q4tRzFzbc4OooKbD6jGNlYW/aDI0Z6LcjV8=;
+	b=py/wyHhesHkF3t5R/Yc8G+Nte20Q0gW31h5UiRetlboW695aUKEXNBzADKuVjVvPuLRL9V
+	oWrCKyFxSZ0u4RBQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3ED391377F;
+	Wed, 26 Feb 2025 10:16:36 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 8GvYDQTqvmfDagAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Wed, 26 Feb 2025 10:16:36 +0000
+Message-ID: <97832f2b-ea2f-4fec-990b-bbd5ccaa9a91@suse.de>
+Date: Wed, 26 Feb 2025 11:16:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 02/25] drm/dumb-buffers: Provide helper to set pitch
+ and size
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+References: <20250218142542.438557-1-tzimmermann@suse.de>
+ <20250218142542.438557-3-tzimmermann@suse.de>
+ <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com>
+ <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
+ <596b960e-71f8-4c2c-9abe-058206df1dfb@ideasonboard.com>
+ <87ca2b81-a67a-468b-ae2b-30d02a3a64bc@suse.de>
+ <f74af5cc-bca8-45c1-9204-b362fcd6f998@ideasonboard.com>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <f74af5cc-bca8-45c1-9204-b362fcd6f998@ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-0.990];
+	MIME_GOOD(-0.10)[text/plain];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FREEMAIL_TO(0.00)[ideasonboard.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCVD_TLS_ALL(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_015302_944655_2CBE43CA 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20250226_021638_619260_11E7A865 
+X-CRM114-Status: GOOD (  44.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +173,192 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2025 at 06:48:34AM +0000, SkyLake Huang (黃啟澤) wrote:
-> On Wed, 2025-02-19 at 09:33 +0000, Russell King (Oracle) wrote:
-> > 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> > 
-> > 
-> > On Wed, Feb 19, 2025 at 04:39:10PM +0800, Sky Huang wrote:
-> > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-> > > +{
-> > > +     struct pinctrl *pinctrl;
-> > > +     int ret;
-> > > +
-> > > +     /* Check if PHY interface type is compatible */
-> > > +     if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-> > > +             return -ENODEV;
-> > > +
-> > > +     ret = mt798x_2p5ge_phy_load_fw(phydev);
-> > > +     if (ret < 0)
-> > > +             return ret;
-> > 
-> > Firmware should not be loaded in the .config_init method. The above
-> > call will block while holding the RTNL which will prevent all other
-> > network configuration until the firmware has been loaded or the load
-> > fails.
-> > 
-> > Thanks.
-> > 
-> > --
-> > RMK's Patch system:
-> > https://urldefense.com/v3/__https://www.armlinux.org.uk/developer/patches/__;!!CTRNKA9wMg0ARbw!iV-1ViPFsUV-lLj7aIycan8nery6sQO3t6mkpdlb_GW8hswhxc4ejJozxqkU3s2WzxSizs4kfdC77yr7HGGRIuU$
-> > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
-> Hi Russell,
-> mt798x_p5ge_phy_load_fw() will only load firmware once after driver is
-> probed through priv->fw_loaded. And actually, firmware loading
-> procedure only takes about 11ms. This was discussed earlier in:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25856462
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25857174
+Hi
 
-1. Wouldn't it be a good idea to include the loading time in the patch
-   description or a comment in the patch?
+Am 25.02.25 um 14:45 schrieb Tomi Valkeinen:
+> Hi,
+>
+> On 21/02/2025 11:19, Thomas Zimmermann wrote:
+>> Hi
+>>
+>> Am 20.02.25 um 11:53 schrieb Tomi Valkeinen:
+>>> Hi,
+>>>
+>>> On 20/02/2025 12:05, Thomas Zimmermann wrote:
+>>>> Hi
+>>>>
+>>>> Am 20.02.25 um 10:18 schrieb Tomi Valkeinen:
+>>>> [...]
+>>>>>> + * Color modes of 10, 12, 15, 30 and 64 are only supported for 
+>>>>>> use by
+>>>>>> + * legacy user space. Please don't use them in new code. Other 
+>>>>>> modes
+>>>>>> + * are not support.
+>>>>>> + *
+>>>>>> + * Do not attempt to allocate anything but linear framebuffer 
+>>>>>> memory
+>>>>>> + * with single-plane RGB data. Allocation of other framebuffer
+>>>>>> + * layouts requires dedicated ioctls in the respective DRM driver.
+>>>>>
+>>>>> According to this, every driver that supports, say, NV12, should 
+>>>>> implement their own custom ioctl to do the exact same thing? And, 
+>>>>> of course, every userspace app that uses, say, NV12, should then 
+>>>>> add code for all these platforms to call the custom ioctls?
+>>>>
+>>>> Yes, that's exactly the current status.
+>>>>
+>>>> There has been discussion about a new dumb-create ioctl that takes 
+>>>> a DRM format as parameter. I'm all for it, but it's out of the 
+>>>> scope for this series.
+>>>>
+>>>>>
+>>>>> As libdrm's modetest currently supports YUV formats with dumb 
+>>>>> buffers, should we remove that code, as it's not correct and I'm 
+>>>>> sure people use libdrm code as a reference?
+>>>>
+>>>> Of course not.
+>>>>
+>>>>>
+>>>>> Well, I'm not serious above, but I think all my points from the 
+>>>>> earlier version are still valid. I don't like this. It changes the 
+>>>>> parameters of the ioctl (bpp used to be bits-per-pixel, not it's 
+>>>>> "color mode"), and the behavior of the ioctl, behavior that we've 
+>>>>> had for a very long time, and we have no idea how many users there 
+>>>>> are that will break (could be none, of course). And the 
+>>>>> documentation changes make the current behavior and uses wrong or 
+>>>>> legacy.
+>>>>
+>>>> Before I go into details about this statement, what use case 
+>>>> exactly are you referring to when you say that behavior changes?
+>>>
+>>> For every dumb_buffer allocation with bpp that is not divisible by 
+>>> 8, the result is different, i.e. instead of DIV_ROUND_UP(width * 
+>>> bpp, 8), we now have width * DIV_ROUND_UP(bpp, 8). This, of course, 
+>>> depends on the driver implementation. Some already do the latter.
+>>
+>> The current dumb-buffer code does a stride computation at [1], which 
+>> is correct for all cases; although over-allocates sometimes. It's the 
+>> one you describe as "width * DIV_ROUND_UP(bpp, 8)". It's in the ioctl 
+>> entry point, so it's somewhat authoritative for all driver's 
+>> implementations. It's also used by several drivers.
+>>
+>> The other variant, "DIV_ROUND_UP(width * bpp, 8)", is used by 
+>> gem-dma, gem-shmem and others. It can give incorrect results and 
+>> possibly OOBs. To give a simple example, let's allocate 15-bit 
+>> XRGB1555. Bpp is 15. With a width of 1024, that would result in 1920 
+>> bytes per scanline. But because XRGB1555 has a filler bit, so the 
+>> pixel is actually 16 bit and a scanline needs to be 2048 bytes. The 
+>> new code fixes that. This is not just a hypothetical scenario: we do 
+>> have drivers that support XRGB1555 and some of them also export a 
+>> preferred_depth of 15 to userspace. [2] In the nearby comment, you'll 
+>> see that this value is meant for dumb buffers.
+>>
+>> Rounding up the depth value in user space is possible for RGB, but 
+>> not for YUV. Here different pixel planes have a different number of 
+>> bits. Sometimes pixels are sharing bits. The value of bits-per-pixel 
+>> becomes meaningless. That's why it's also deprecated in struct 
+>> drm_format_info. The struct instead uses a more complicated per-plane 
+>> calculation to compute the number of bits per plane. [3] The 
+>> user-space code currently doing YUV on dumb buffers simply got lucky.
+>>
+>> [1] https://elixir.bootlin.com/linux/v6.13.3/source/drivers/gpu/drm/ 
+>> drm_dumb_buffers.c#L77
+>> [2] https://elixir.bootlin.com/linux/v6.13.3/source/include/drm/ 
+>> drm_mode_config.h#L885
+>> [3] https://elixir.bootlin.com/linux/v6.13.3/source/include/drm/ 
+>> drm_fourcc.h#L83
+>>
+>>>
+>>> This change also first calls the drm_driver_color_mode_format(), 
+>>> which could change the behavior even more, but afaics at the moment 
+>>> does not. 
+>>
+>> Because currently each driver does its own thing, it can be hard to 
+>> write user space that reliably allocates on all drivers. That's why 
+>> it's important that parameters are not just raw numbers, but have 
+>> well- defined semantics. The raw bpp is meaningless; it's also 
+>> important to know which formats are associated with each value. 
+>> Otherwise, you might get a dumb buffer with a bpp of 15, but it will 
+>> be displayed incorrectly. This patch series finally implements this 
+>> and clearly documents the assumptions behind the interfaces. The 
+>> assumptions themselves have always existed.
+>
+> This is perhaps where the biggest gap in understanding/view is: I have 
+> always thought dumb-buffer's "bpp" to mean bits-per-pixel, where, for 
+> more complex formats, "pixel" is not necessarily a visible pixel but a 
+> container unit of some kind. So bpp * width = stride.
+>
+> It would not occur to me to allocate XRGB1555 dumb-buffer with 15 bpp, 
+> but 16 bpp, as that's what a pixel takes. I have never seen the 
+> dumb-buffer bpp connected directly to the pixel format (that's what 
+> the ADDFB brings in).
+>
+> I may be alone with that thinking, but afaics the documentation leans 
+> a bit on my interpretation (instead of considering bpp as a "color 
+> mode"), although admittedly the docs also don't really say much so 
+> this may be fully just my interpretation:
+>
+> https://man.archlinux.org/man/drm-memory.7.en
 
-2. What about the time it takes for request_firmware() uses the sysfs
-   fallback, which essentially passes the firmware request to userspace
-   to deal with? That can block for an indeterminate amount of time.
+Agreed, this could be read in the way you do. Is this being generated 
+from source somehow? The information is not incorrect, but how did they 
+get to this interpretation? It would definitely need an update with this 
+patch series applied. Citing from the man page:
+
+   "/bpp/ is the number of bits-per-pixel and must be a multiple of 8."
+
+That's what currently works on all drivers. But nothing enforces that it 
+"must by a multiple of 8". Doing so would prevent C1/C2/etc pixel 
+formats without over-allocation.  OR bpp is not bits-per-pixel but just 
+some factor that controls the buffer size. This is how you use it for 
+YUV formats.
+
+   "You most commonly want to pass 32 here."
+
+That's also just semi-true. 32 is simply what mostly works in practice 
+IFF you interpret it as XRGB8888. Userspace should read the formats from 
+the primary plane, or at least look at the driver-provided 
+preferred_depth field.
+
+>
+> https://cgit.freedesktop.org/drm/libdrm/tree/include/drm/drm_mode.h#n1055
+
+This one doesn't say anything specific AFAICT. Bpp is somewhat pointless 
+information without a known pixel and framebuffer layout, as I've 
+outlined before.
+
+>
+> I (mostly) understand all the complexities around here, thanks to your 
+> replies, and I think I'm ok with the series as it doesn't break 
+> anything (need to test the v3, though).
+
+Thank you so much.
+
+>
+> I still don't like it though =). And I would be happier with the 
+> simpler "bpp" interpretation that I mentioned above, instead of it 
+> being a color mode. But we can't have it both ways, and perhaps it's 
+> better to unify the code and have the behavior explained explicitly as 
+> you do in this series, even if the explanation only covers some RGB 
+> formats.
+
+No worries. The intention is not to break anything and existing code 
+will continue to work.
+
+Best regards
+Thomas
+
+>
+>  Tomi
+>
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
+
 
