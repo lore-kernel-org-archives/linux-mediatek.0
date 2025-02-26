@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADD5C021B8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 13:25:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9742BC021B8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 13:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=29L7mZshvCvcvFGKuaKQCCAvetgF+qutA7SaHdSw6xU=; b=KLVc8bGYSkNqaFBWIugO3BxJlh
-	j6bPi0xORAfBmFSN2avoLE/3vQkBnx2tecsh2Tw0+rFcHXCuTTjb78gkinEV6sjstEXbf2XKFADYf
-	5Fm8eZmz98Y7nLBhIwzjYbMfMzyut7RltT7JMGu3D3MnPNrQALjqys5Z4AaSIBRy+cpzsyPRUaMfS
-	DfVzbkw02vdPDKJa91545OaZ/6TnAyCljwJaPu9LYZ6Pd6LEdLRW0CxviLJQQY5EVkgs5rjCKLCRs
-	aZsxGE9f7Bu8kfysc4Akp/JqJHlFQx2sV3HB2J5kfAXPycaEYOeIctaiXDCpz8eo1Ih4yWGmQYdA2
-	0iJrH5qw==;
+	bh=XyGWUsGmmMXuycniQmQU3U27HdDjiM33H6bPM9ezJPs=; b=rO9gYxnPgkRti0vCWTqFkcqwd6
+	Ype8QfPkTqS2dtijhunbo9MOj7l4GHIXFPTrBtngI/m3qlso2255WYxQCqIb9MefgumXVT28b3KwU
+	KkqppPWzwZn/icyc5H9eAX0xNp2jy+vya8Z6HgPmZgPPUO3vr3UVX58oQ/WIxrDNw+rq1/MV87skZ
+	nNgeA8P2iTzzWSeSQyB//3/93qkmtgVMsp7/DDbtbyvQk65Z1pYN+HpsVI8NkhjbwzWzh7DL7udNa
+	mfbhSfXHbryL8MIYvXT/IaWkiTT/fG8oxLHDQ+4L4w/87r8jVUzzN7BsOWGmhqlltrz7yEZUYoQ/o
+	x3SgSsvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHPo-00000003qdk-2sf8;
-	Wed, 26 Feb 2025 13:25:32 +0000
+	id 1tnHRC-00000003sR6-229b;
+	Wed, 26 Feb 2025 13:26:58 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnFrN-00000003Wic-2Ir8;
-	Wed, 26 Feb 2025 11:45:55 +0000
+	id 1tnGIu-00000003dOy-10yf;
+	Wed, 26 Feb 2025 12:14:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740570351;
-	bh=zuDQtknTvVdF2ZgtKWCQkBEadEohQseRtbIm+TZ42II=;
+	s=mail; t=1740572058;
+	bh=rqCCBNqXwX4V8aDAu9AF4qY0OGm7CseWGja67coCy5c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=c6IURImbp3KCNPOXFqy/b6TUhD6r6DZYgxKIeCAGg7D8+LlPKf7XzU2cGsy+oKS9Z
-	 8GT8GVmWOkCPxrTBLFR3F+TfZJgI6Xwko6eiu6Bz2d/BDAatb5HIZ3hGOZ0NSYpcIN
-	 DEWkzB2FF6Vf+hwAURRZhY6pPQByQtkVwj/vtHFnXls+kkCP3jAjrBfc3tZnGiZOpE
-	 WsRwsZcFKKMVnjizZA6i8Gn/IFm41fWyeeceJL+EE+sHY3cAFIqcBTCg/E5DX6SPCA
-	 OiYFmkguld2n2q6v67dYHd4hYE+oaSRaeZ0+vRQOPqNIv7bQZrFMKDZECDO751geVT
-	 CJCxipnCBdbvw==
+	b=GKis/B3gCV2Up4PlhYkjHwnXjxI4wulD5+R8haxATHmM1XWM5j3pG1Oo5ecM+L7BY
+	 SeGBHRjt5DN7jdPAaFVvszr5Op7oi8IYYybFHxmcg2enbtntBGBJzShX8T6t1sGOKb
+	 oPcHLF1XDTcL3OPr6jlFfUVuQXX62MhQOa8JWGoDYxTjGBpzzXduhmsKQGtJpAkct+
+	 ZDdyw35Sv+uw5zvIWJB5MMf0yeRyUVLsoqHIyLHtwrrNcF2KGaNguFHV7Xb9tnO6zU
+	 /R6qn5KWHpBXVGPHV+T7iGG35R7UbkCdg681ly6oWWIRiuqEAIlqiaH1QU3KthG9f2
+	 jKDdpN7GJIHfw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0BF317E001E;
-	Wed, 26 Feb 2025 12:45:49 +0100 (CET)
-Message-ID: <c2154240-efa1-4c73-aabe-74e938a75af1@collabora.com>
-Date: Wed, 26 Feb 2025 12:45:49 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D8AE17E0649;
+	Wed, 26 Feb 2025 13:14:17 +0100 (CET)
+Message-ID: <cfb97821-d202-4bd6-99d6-059178b6ad00@collabora.com>
+Date: Wed, 26 Feb 2025 13:14:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/6] drm/mediatek: dsi: Improves the DSI lane setup
- robustness
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+Subject: Re: [PATCH 1/7] drm/mediatek: Add CCORR component support for MT8196
+To: =?UTF-8?B?SmF5IExpdSAo5YiY5Y2aKQ==?= <Jay.Liu@mediatek.com>,
+ =?UTF-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?=
+ <yongqiang.niu@mediatek.com>,
  "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "simona.vetter@ffwll.ch" <simona.vetter@ffwll.ch>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "will@kernel.org" <will@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
  "simona@ffwll.ch" <simona@ffwll.ch>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>
-References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
- <20231023-display-support-v7-2-6703f3e26831@baylibre.com>
- <ab3bd050c873bb6cecc00b615b938eabc157cb49.camel@mediatek.com>
- <79477810-00a9-47f1-8282-f8077ea082bb@baylibre.com>
- <3310b6f9-df7a-4769-a221-4a93cc3ec035@collabora.com>
- <0863ee2e-25ed-43b7-a896-e380de828d58@baylibre.com>
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250219092040.11227-1-jay.liu@mediatek.com>
+ <20250219092040.11227-2-jay.liu@mediatek.com>
+ <779b0915-f0fa-46b6-8c5b-57745114252f@collabora.com>
+ <18ea04bde26b9cbc22609d621eea1cd65a0f1109.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <0863ee2e-25ed-43b7-a896-e380de828d58@baylibre.com>
+In-Reply-To: <18ea04bde26b9cbc22609d621eea1cd65a0f1109.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_034553_940524_680A86D4 
-X-CRM114-Status: GOOD (  25.37  )
+X-CRM114-CacheID: sfid-20250226_041420_578282_62D17223 
+X-CRM114-Status: GOOD (  29.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,132 +98,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/25 12:35, Alexandre Mergnat ha scritto:
+Il 26/02/25 12:36, Jay Liu (刘博) ha scritto:
+> On Wed, 2025-02-19 at 13:49 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 19/02/25 10:20, Jay Liu ha scritto:
+>>> Add CCORR component support for MT8196.
+>>>
+>>> CCORR is a hardware module that optimizes the visual effects of
+>>> images by adjusting the color matrix, enabling features such as
+>>> night light.
+>>>
+>>> The 8196 hardware platform includes two CCORR (Color Correction)
+>>> units.
+>>> However, the `mtk_ccorr_ctm_set` API only utilizes one of these
+>>> units.
+>>> To prevent the unused CCORR unit from inadvertently taking effect,
+>>> we need to block it by adding mandatory_ccorr flag in the
+>>> driver_data.
+>>>
+>>> Signed-off-by: Jay Liu <jay.liu@mediatek.com>
+>>
+>> This is yet another thing that can be resolved by using OF Graph for
+>> defining the
+>> display pipeline: by using that, I don't see how can CCORR1 be used
+>> instead of
+>> CCORR0, if the latter is in the pipeline, but not the former.
+>>
+>> NACK.
+>>
+>> Regards,
+>> Angelo
+>>
+> hi Angelo, thank you for your review,
 > 
-> 
-> On 18/02/2025 09:52, AngeloGioacchino Del Regno wrote:
->> Il 17/02/25 16:03, Alexandre Mergnat ha scritto:
->>> Hi CK.
->>>
->>> On 17/02/2025 08:56, CK Hu (胡俊光) wrote:
->>>> On Fri, 2025-01-10 at 14:31 +0100, Alexandre Mergnat wrote:
->>>>> External email : Please do not click links or open attachments until you have 
->>>>> verified the sender or the content.
->>>>>
->>>>>
->>>>> Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
->>>>> before mtk_dsi_poweron. lanes_ready flag toggle to true during
->>>>> mtk_dsi_lane_ready function, and the DSI module is set up during
->>>>> mtk_dsi_poweron.
->>>>>
->>>>> Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
->>>>> nothing because lanes are considered ready. Unfortunately, when the panel
->>>>> driver try to communicate, the DSI returns a timeout.
->>>>>
->>>>> The solution found here is to put lanes_ready flag to false after the DSI
->>>>> module setup into mtk_dsi_poweron to init the DSI lanes after the power /
->>>>> setup of the DSI module.
->>>>
->>>> I'm not clear about what happen.
->>>> I think this DSI flow has worked for a long time.
->>>> So only some panel has problem?
->>>
->>> I don't know if it's related to a specific panel or not.
->>>
->>>>
->>>> And another question.
->>>> Do you mean mtk_dsi_lane_ready() do some setting to hardware, but lane is not 
->>>> actually ready?
->>>
->>> The workflow should be:
->>> ... | dsi->lanes_ready = false | Power-on | setup dsi lanes | dsi->lanes_ready = 
->>> true (to avoid re-do dsi lanes setup) | ...
->>>
->>> I observe (print function name called + dsi->lanes_ready value):
->>
->> Alex, the first poweron is called by mtk_dsi_ddp_start() - and the start callback
->> is internal to the mediatek-drm driver.
->>
->> That callback is called by mtk_crtc during setup and during bridge enable(), and
->> there we go with suboptimal code design backfiring - instead of using what the
->> DRM APIs provide, this driver uses something custom *and* the DRM APIs, giving
->> this issue.
->>
->> Part of what mtk_crtc does is duplicated with what the DRM APIs want to do, so
->> there you go, that's your problem here :-)
->>
->> Should I go on with describing the next step(s), or is that obvious for everyone?
->>
->> :-)
->>
->> Cheers,
-> 
-> Ok thanks Angelo.
-> Can you let me know if you agree with this change please ? This should be better:
-> 
+> The 8196 IC has two CCORRs, and they must be chained together in a
+> fixed order, for example: MDP_RSZ0->DISP_TDSHP0->DISP_CCORR0-
+>> DISP_CC0RR1->DISP_GAMMA0->DISP_POSTMASK0->DISP_DITHER0. Among them,
+> DISP_CCORR0 is used for ctm_set, and DISP_CCORR1 was originally for PQ
+> functions, but the current project does not have PQ functions, so relay
+> can be used. Moreover, ctm_set only needs to configure one CCORR, so
+> currently, mandatory_ccorr is set. Considering that previous ICs, such
+> as 8195, only have one CCORR, so mandatory_ccorr is set to DISP_CCORR0.
+> This is the current practice. Do you have any other suggestions to
+> achieve similar things? For example, adding a property in the dts to
 
-No, no, I'm saying that we should do the exact opposite of what you're doing here!
+Really, just use OF graphs to set the display controller path, you can like that
+guarantee that the exact path that you define will be respected.
 
-We should drop the MediaTek custom stuff that duplicates the DRM APIs behavior(s),
-and conform to what the DRM APIs provide and want us to do.
+This means that you can simply:
+- Point the output endpoint of TDSHP0 to the input endpoint of CCORR0
+- Point the input endpoint of CCORR0 to TDSHP0
+- Point the output endpoint of CCORR0 to CCORR1
+- etc
 
-To be really really clear - I'm saying to delete and avoid using:
-- mtk_dsi_ddp_start()
-- mtk_dsi_ddp_stop()
-
-The spirit here should be to use kernel provided APIs, and to make custom stuff
-to disappear as much as possible (again, that mtk_crtc .start/.stop).
-
-I'm not saying that literally all of the start/stop callbacks for all of the
-MTK DRM drivers should disappear *all at once* but... gradually, one by one,
-these should get lost (where/if possible).
-
-Just one more mention: that custom handling also backfired on me while writing
-the hdmiv2/dpi drivers... and now backfires on dsi, and in the future it will
-backfire again on something else. It's there only to give problems in the end,
-not to solve them :-)
+Check the upstream bindings, and also check MT8195 and MT8188 device trees on
+the current linux-next (starting from next-20250226).
 
 Cheers,
 Angelo
 
-> @@ -843,25 +843,6 @@ static void mtk_dsi_bridge_atomic_enable(struct drm_bridge 
-> *bridge,
->       mtk_output_dsi_enable(dsi);
->   }
+> set mandatory_ccorr, but this will inevitably change the dts of past
+> ICs, and we are worried that such changes will be significant.
 > 
-> -static void mtk_dsi_bridge_atomic_pre_enable(struct drm_bridge *bridge,
-> -                         struct drm_bridge_state *old_bridge_state)
-> -{
-> -    struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> -    int ret;
-> -
-> -    ret = mtk_dsi_poweron(dsi);
-> -    if (ret < 0)
-> -        DRM_ERROR("failed to power on dsi\n");
-> -}
-> -
-> -static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
-> -                           struct drm_bridge_state *old_bridge_state)
-> -{
-> -    struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> -
-> -    mtk_dsi_poweroff(dsi);
-> -}
-> -
->   static enum drm_mode_status
->   mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
->                 const struct drm_display_info *info,
-> @@ -886,8 +867,6 @@ static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
->       .atomic_disable = mtk_dsi_bridge_atomic_disable,
->       .atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
->       .atomic_enable = mtk_dsi_bridge_atomic_enable,
-> -    .atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
-> -    .atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
->       .atomic_reset = drm_atomic_helper_bridge_reset,
->       .mode_valid = mtk_dsi_bridge_mode_valid,
->       .mode_set = mtk_dsi_bridge_mode_set,
+> Thanks a lot
+> JAY
 > 
 > 
-
+>>> ---
+>>>    drivers/gpu/drm/mediatek/mtk_ddp_comp.c   |  3 ++-
+>>>    drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 16 ++++++++++++++++
+>>>    2 files changed, 18 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+>>> b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+>>> index edc6417639e6..d7e230bac53e 100644
+>>> --- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+>>> +++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+>>> @@ -457,7 +457,8 @@ static const struct mtk_ddp_comp_match
+>>> mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
+>>>        [DDP_COMPONENT_AAL0]            = {
+>>> MTK_DISP_AAL,               0, &ddp_aal },
+>>>        [DDP_COMPONENT_AAL1]            = {
+>>> MTK_DISP_AAL,               1, &ddp_aal },
+>>>        [DDP_COMPONENT_BLS]             = {
+>>> MTK_DISP_BLS,               0, NULL },
+>>> -     [DDP_COMPONENT_CCORR]           = {
+>>> MTK_DISP_CCORR,             0, &ddp_ccorr },
+>>> +     [DDP_COMPONENT_CCORR0]          = {
+>>> MTK_DISP_CCORR,             0, &ddp_ccorr },
+>>> +     [DDP_COMPONENT_CCORR1]          = {
+>>> MTK_DISP_CCORR,             1, &ddp_ccorr },
+>>>        [DDP_COMPONENT_COLOR0]          = {
+>>> MTK_DISP_COLOR,             0, &ddp_color },
+>>>        [DDP_COMPONENT_COLOR1]          = {
+>>> MTK_DISP_COLOR,             1, &ddp_color },
+>>>        [DDP_COMPONENT_DITHER0]         = {
+>>> MTK_DISP_DITHER,            0, &ddp_dither },
+>>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+>>> b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+>>> index 10d60d2c2a56..94e82b3fa2d8 100644
+>>> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+>>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+>>> @@ -31,11 +31,13 @@
+>>>
+>>>    struct mtk_disp_ccorr_data {
+>>>        u32 matrix_bits;
+>>> +     enum mtk_ddp_comp_id mandatory_ccorr;
+>>>    };
+>>>
+>>>    struct mtk_disp_ccorr {
+>>>        struct clk *clk;
+>>>        void __iomem *regs;
+>>> +     enum mtk_ddp_comp_id comp_id;
+>>>        struct cmdq_client_reg cmdq_reg;
+>>>        const struct mtk_disp_ccorr_data        *data;
+>>>    };
+>>> @@ -115,6 +117,9 @@ void mtk_ccorr_ctm_set(struct device *dev,
+>>> struct drm_crtc_state *state)
+>>>        if (!blob)
+>>>                return;
+>>>
+>>> +     if (ccorr->comp_id != ccorr->data->mandatory_ccorr)
+>>> +             return;
+>>> +
+>>>        ctm = (struct drm_color_ctm *)blob->data;
+>>>        input = ctm->matrix;
+>>>
+>>> @@ -154,6 +159,7 @@ static int mtk_disp_ccorr_probe(struct
+>>> platform_device *pdev)
+>>>        struct device *dev = &pdev->dev;
+>>>        struct mtk_disp_ccorr *priv;
+>>>        int ret;
+>>> +     enum mtk_ddp_comp_id comp_id;
+>>>
+>>>        priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+>>>        if (!priv)
+>>> @@ -169,6 +175,14 @@ static int mtk_disp_ccorr_probe(struct
+>>> platform_device *pdev)
+>>>                return dev_err_probe(dev, PTR_ERR(priv->regs),
+>>>                                     "failed to ioremap ccorr\n");
+>>>
+>>> +     comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_CCORR);
+>>> +     if (comp_id < 0) {
+>>> +             dev_err(dev, "Failed to identify by alias: %d\n",
+>>> comp_id);
+>>> +             return comp_id;
+>>> +     }
+>>> +
+>>> +     priv->comp_id = comp_id;
+>>> +
+>>>    #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>>>        ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
+>>>        if (ret)
+>>> @@ -192,10 +206,12 @@ static void mtk_disp_ccorr_remove(struct
+>>> platform_device *pdev)
+>>>
+>>>    static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data
+>>> = {
+>>>        .matrix_bits = 10,
+>>> +     .mandatory_ccorr = DDP_COMPONENT_CCORR0,
+>>>    };
+>>>
+>>>    static const struct mtk_disp_ccorr_data mt8192_ccorr_driver_data
+>>> = {
+>>>        .matrix_bits = 11,
+>>> +     .mandatory_ccorr = DDP_COMPONENT_CCORR0,
+>>>    };
+>>>
+>>>    static const struct of_device_id mtk_disp_ccorr_driver_dt_match[]
+>>> = {
+>>
+>>
 
 
