@@ -4,99 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7A74C18E7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 14:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551D5C021B8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ch3NGv37NcB7K7eYD5lO4gl3z19aKzb9mYBAeq/Ppzk=; b=p45befVdp2oAgbuTYeO1Ue/Btu
-	Yf5ocfo30crTSOjjhewN0iQV/taoC3Rfw8M+ZxIoBnMI7cQfoYtAB3AgwJ1ZgTKrmC1jpwXavZd0A
-	OdGgu6w0eGqwNonMzKVGAjQ8UOUB4inaBVSHliEN0afhlUCHMk//xPZZMQ9hFRCOaRxGmghiYruNQ
-	ZtMxao7rHOAaO2e60gAbc35pbF80ldW7JGFkAnVMF4DMMLn4jzqKIUmDifaVvHqxCVvd3jdmGNxmd
-	lf5eSmsWphyH6nbGgTFfn+1ziSUTTkKdZ86nWaSM8T26MwfYYMLHynK1VMPTw2WMXblFvbjCpwNss
-	FKwa7GXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=13xQ3n+oubA15lk/CNsaWwpQDF
+	svS5fFEswMAj+/B17qkLXB2vevHwsz/HXWXqjOfxMNoYupC/ixVLnYWFmuBboNrQc5ipN3SMVqOge
+	sH7dBcBBlm+Vmb4xUUvpjDZyFT9xC5H4K/TYK/KAsX2ELaLtAetsA6XwH46MF9SyZ+RIgrBHYS0DM
+	QaSiegQ+iJX0yImrggwvRhl4zgQB9FMvrQ1oGbS1UNiGiEXLLLdR/u+Ms8diOdf7VIudPgRMsKnXe
+	wHOGkwwNvCO2PGsb09pwjonYNN3GDMQoYs23RZEFzJ7aikkJn6E/YORnEPLUCyL1fullsyMIHf5TJ
+	XZuY82BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIY5-000000047lL-2mBD;
-	Wed, 26 Feb 2025 14:38:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tnJEi-00000004FCQ-3liQ;
+	Wed, 26 Feb 2025 15:22:12 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnGgx-00000003ikx-0Zva;
-	Wed, 26 Feb 2025 12:39:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740573548;
-	bh=Be98U+3nuuSPxPyag9P+ADgagKKSNdsCQD96gtP6QyM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TVokcpGW6T6rlNiHJ1PBSVs/Pu4XLYWfDKUY+5a+lNzwgyVZKfI/QCuF08TxawQfT
-	 aNZnWSolzvrl8qXzo8n8PL0+VSi+EnT6bxaksECCHNGLx0cWH9+KR4CuiSYs5u3Y+M
-	 etDWL3yql/ZsVhAWgBLlNQkrHvjZ5J1oOJurmjb3OjJD3fQSJOcZWfZVQpKndBHpWc
-	 6EX/eg7UgJaPWjMuXc80TkOXXBqVEVXK3BHf9Cq/m+x5o+534iaQSaO47Ixp4nBdlU
-	 kpp3ucNWUGGxM2lTo8EeQqXoLeUxmNbKL2YHzNBLCdjpKsYINxdNjxH5URJGHQ7P1E
-	 D3LFh4MbhRc5Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 44AF317E061D;
-	Wed, 26 Feb 2025 13:39:06 +0100 (CET)
-Message-ID: <17850817-123d-41d9-9b1c-41ded05e2be1@collabora.com>
-Date: Wed, 26 Feb 2025 13:39:05 +0100
+	id 1tnHQz-00000003sG1-2Lb6;
+	Wed, 26 Feb 2025 13:26:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=eV9qskFPoKZwRN+6N9JVTjm8Q3
+	FxkH4U7nFEa/cppjdADbfqmE5BAWWrEBgfpAn2clA45USjUaq+7Zj7y57DZMJ1NdZHm4ZsnnXhusu
+	eHeZE0k0jV8c9girbgPy0GgkwvO3vJbemnADb8tV3EqrwD91w+qUgZWPC5bCwn5Rt5OOEH1p/Xxfj
+	+gQSDljgywYEBC6cE5/rxrEzWHH2mRGjGQvH+AOGfoYqz55k1+vuTTYK0MNe3v+I5BrmNLFQKA2K0
+	yr2SVts4CZMDs0D9zAo9jCwTTr11aO6D5iMGrP54fFPwTj0ZNvu/ni61/oZTMpJfZAyiEIvdxSG8z
+	QNP3OjLg==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tnHQw-0000000FPiQ-0uoK;
+	Wed, 26 Feb 2025 13:26:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=M+EF2Q0a0WRuAPx96YN4gdGAGD
+	cJUEFVSoVUXpcau6Rel+vg9J8OcLm3W6FCG3VX49WlwcmMK+wDwM5029xr9hVdseTQlMBv03A/9c6
+	Ra8Y8UvoFAx2/26RJRc/TNFA4IE7Sv4X42AgVaTgv8D9VZm6l33vh2vPiIqBo8ug1Skg=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tnHQW-000GS9-6o; Wed, 26 Feb 2025 14:26:16 +0100
+Date: Wed, 26 Feb 2025 14:26:16 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"horms@kernel.org" <horms@kernel.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: [PATCH net-next v2 1/3] net: phy: mediatek: Add 2.5Gphy firmware
+ dt-bindings and dts node
+Message-ID: <8bc68f1a-5abd-478c-9b9d-2c8baa6bb36a@lunn.ch>
+References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
+ <20250219083910.2255981-2-SkyLake.Huang@mediatek.com>
+ <a15cfd5d-7c1a-45b2-af14-aa4e8761111f@lunn.ch>
+ <Z7X5Dta3oUgmhnmk@makrotopia.org>
+ <ff96f5d38e089fdd76294265f33d7230c573ba69.camel@mediatek.com>
+ <176f8fe1-f4cf-4bbd-9aea-5f407cef8ac5@lunn.ch>
+ <c5728ec30db963c97b6e292b51e73e2c075d1757.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND 04/12] drm/mediatek: move to
- devm_platform_ioremap_resource() usage
-To: Anusha Srivatsa <asrivats@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Stefan Agner
- <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
- Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu
- <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Marek Vasut <marex@denx.de>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat
- <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>,
- Yannick Fertre <yannick.fertre@foss.st.com>,
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
- Philippe Cornu <philippe.cornu@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Mikko Perttunen <mperttunen@nvidia.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Alexey Brodkin <abrodkin@synopsys.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Jonathan Corbet <corbet@lwn.net>
-Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
- linux-doc@vger.kernel.org, CK Hu <ck.hu@mediatek.com>
-References: <20250225-memory-drm-misc-next-v1-0-9d0e8761107a@redhat.com>
- <20250225-memory-drm-misc-next-v1-4-9d0e8761107a@redhat.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250225-memory-drm-misc-next-v1-4-9d0e8761107a@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c5728ec30db963c97b6e292b51e73e2c075d1757.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_043911_329477_6F4D3ACF 
-X-CRM114-Status: UNSURE (   7.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250226_132642_282597_316AAF59 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,29 +101,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/02/25 23:20, Anusha Srivatsa ha scritto:
-> Replace platform_get_resource + devm_ioremap_resource
-> with just devm_platform_ioremap_resource()
+> So I guess I can do the following according to the previous discussion:
+> 1) Reserve a memory region in mt7988.dtsi
+> reserved-memory {
+> 	#address-cells = <2>;
+> 	#size-celss = <2>;
+> 	ranges;
 > 
-> Used Coccinelle to do this change. SmPl patch:
-> @rule_1@
-> identifier res;
-> expression ioremap_res;
-> identifier pdev;
-> @@
-> -struct resource *res;
+> 	/* 0x0f0100000~0x0f1f0024 are specific for built-in 2.5Gphy.
+> 	 * In this range, it includes "PMB_FW_BASE"(0x0f100000)
+> 	 * and "MCU_CSR_BASE"(0x0f0f0000)
+> 	 */
+> 	i2p5g: i2p5g@0f100000 {
+> 		reg = <0 0x0f010000 0 0x1e0024>;
+> 		no-map;
+> 	};
+> };
+
+Do you even need these? I assume this is in the IO space, not DRAM. So
+the kernel is not going to use it by default. That is why you need to
+specifically ioremap() it.
+
+> 2) Since PHYs don't use compatibles, hardcode address in mtk-2p5ge.c:
+> /* MTK_ prefix means that the macro is used for both MT7988 & MT7987*/
+> #define MTK_2P5GPHY_PMB_FW_BASE		(0x0f100000)
+> #define MT7988_2P5GE_PMB_FW_LEN		(0x20000)
+> #define MT7987_2P5GE_PMB_FW_LEN		(0x18000)
+> #define MTK_2P5GPHY_MCU_CSR_BASE	(0x0f0f0000)
+> #define MTK_2P5GPHY_MCU_CSR_LEN		(0x20)
+> 
+> /* On MT7987, we separate firmware bin to 2 files and total size
+>  * is decreased from 128KB(mediatek/mt7988/i2p5ge-phy-pmb.bin) to
+>  * 96KB(mediatek/mt7987/i2p5ge-phy-pmb.bin)+
+>  * 28KB(mediatek/mt7987/i2p5ge-phy-DSPBitTb.bin)
+>  * And i2p5ge-phy-DSPBitTb.bin will be loaded to
+>  * MT7987_2P5GE_XBZ_PMA_RX_BASE
+>  */
+> #define MT7987_2P5GE_XBZ_PMA_RX_BASE	(0x0f080000)
+> #define MT7987_2P5GE_XBZ_PMA_RX_LEN	(0x5228)
+> #define MT7987_2P5GE_DSPBITTB_SIZE	(0x7000)
+> 
+> /* MT7987 requires these base addresses to manipulate some
+>  * registers before loading firmware.
+>  */
+> #define MT7987_2P5GE_APB_BASE		(0x11c30000)
+> #define MT7987_2P5GE_APB_LEN		(0x9c)
+> #define MT7987_2P5GE_PMD_REG_BASE	(0x0f010000)
+> #define MT7987_2P5GE_PMD_REG_LEN	(0x210)
+> #define MT7987_2P5GE_XBZ_PCS_REG_BASE	(0x0f030000)
+> #define MT7987_2P5GE_XBZ_PCS_REG_LEN	(0x844)
+
+Should the PCS registers actually be in the PCS driver, not the PHY
+driver? Hard to say until we know what these registers actually are.
+
+> #define MT7987_2P5GE_CHIP_SCU_BASE	(0x0f0cf800)
+> #define MT7987_2P5GE_CHIP_SCU_LEN	(0x12c)
+> 
+> static int mt7988_2p5ge_phy_load_fw(struct phy_device *phydev)
+> {
+> 	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
+> 	void __iomem *mcu_csr_base, *pmb_addr;
+> 	struct device *dev = &phydev->mdio.dev;
+> 	const struct firmware *fw;
+> 	int ret, i;
+> 	u32 reg;
+> 
+> 	if (priv->fw_loaded)
+> 		return 0;
+> 
+> 	pmb_addr = ioremap(MTK_2P5GPHY_PMB_FW_BASE,
+> 			   MT7988_2P5GE_PMB_FW_LEN);
+> 	if (!pmb_addr)
+> 		return -ENOMEM;
+> 	mcu_csr_base = ioremap(MTK_2P5GPHY_MCU_CSR_BASE,
+> 			       MTK_2P5GPHY_MCU_CSR_LEN);
+> 	if (!mcu_csr_base) {
+> 		ret = -ENOMEM;
+> 		goto free_pmb;
+> 	}
 > ...
-> -res = platform_get_resource(pdev,...);
-> -ioremap_res = devm_ioremap_resource(...);
-> +ioremap_res = devm_platform_ioremap_resource(pdev,0);
-> 
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+> free:
+> 	iounmap(mcu_csr_base);
+> free_pmb:
+> 	iounmap(pmb_addr);
+> ...
+> }
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This looks O.K. It is basically what we did before device tree was
+used.
 
-
+	Andrew
 
