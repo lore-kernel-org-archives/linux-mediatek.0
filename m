@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE6DC021B8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 09:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA565C021BC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 09:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Cc:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=COdPtwS8QwqUzQLrq2HiLnQlQGjwzK2ydg7fmTJeyKg=; b=EJPTq8f+nmo7RHaMkENGP9ik74
-	JcJqeFhYoPiNbqGnTEVPJtacBqMjPEIpUEEIZqNm5d2MmRpIz9QJudt/6j4I7acYqgpoLjT7ZvYwn
-	q8z8affdClk98d56+VV4cjxa6I4h8IRnAX6IT8vUA6H90Rl507mIDRfiULIfqgxgY1Kajum1u7M92
-	c0VeYEL8ACyf9s/Y41Jy34e39FhAeFNz2iLReXjd124ff1yEtcg7uVs7beP/fTJaOg7la1kGbOfTz
-	2RUz9I8NiPtBuiL0nR0uoVlyzVKFUAmPzEXZVcDUSjnb5iHhbLqVqQSNE9czuH9ZL1iAHsFXu36af
-	UQeuYhLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AWAnLAcd4Ax9L2XjpW/XTk1Vc6xaPxRyyPPHRuN7d+0=; b=XhnXp8dNtthGRW3wiiSfWfVPjI
+	Qu09xIaMeGaB2Bqw/YNovmDl5XNuoS1bxwq+/IHiYmGzR4Xv09Z+iqFLB6bo9o5eg7hskxS/XcFOF
+	ZvzeqTyIaJiqYVwmNpaaHm+fQxbg5umce3HiN8ZjXUhKjTmgk8KtB8kf3Ly1/dhXk1sQhK7jszRth
+	hVQY0VSooon9k8ObcFYKPVZ/AbyQMHIGbTVgCSbHT4vZsJv8Uwy5cBHF19as1wru/eoyxSMbjJYZU
+	F4I/oVCsxHrFUL2JnwESVuztRoleSHmvWKrhoo1kZU9oipuI7cdbzjEmxGQFPnFZUDVEu37TeHw1Q
+	kZokuAaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnE23-000000039Rj-2j9v;
-	Wed, 26 Feb 2025 09:48:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tnE6w-00000003Adx-3oY6;
+	Wed, 26 Feb 2025 09:53:50 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnDzR-0000000392R-0zfo;
-	Wed, 26 Feb 2025 09:46:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740563163;
-	bh=4JZL08t7KG0UOC6HcBU5zxjetitwgkZ1Di1DC2VPPN8=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=k5n6OxUv508uzhg0BzGhZ+WDRVvHmEiNyP6gg4N460Q909yqbnMxMDKv3F76dybTx
-	 91fj04sQwP4hcEIEibt5qS2aAPyEAM9kHjsRocnfL2uKAtzMN2SN/7jQgFK2CQpzXO
-	 zu6B7X7CLTJ4f/6vIJPpwAypYz+ARL15ci/Kzk0bb7Wpf8X/XToW+CAWqEdEVwWDJQ
-	 2Z9pvusDBUfiUx7KwJasmBwOTJ0pW59Hl+2hqFt4KJjBC7DNlsmqRz7CxJPeUl8Q8Z
-	 wwzPx2ni5VhdrsiBYY55gCK2kaqVHkqtPfvtv8A5UrKeFn2W/ql1YJfmSLlhkEab/y
-	 iMIhdoGRy44Tg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0C6A217E0663;
-	Wed, 26 Feb 2025 10:46:03 +0100 (CET)
-Message-ID: <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
-Date: Wed, 26 Feb 2025 10:46:02 +0100
+	id 1tnE6A-00000003ASe-3kyC;
+	Wed, 26 Feb 2025 09:53:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=AWAnLAcd4Ax9L2XjpW/XTk1Vc6xaPxRyyPPHRuN7d+0=; b=OPGZ5Uw8vm2+odS8tBnxh6bn5y
+	bMKasJwtYxa0VWmFmqzAohjow9oPWH5b8OMTZQvCa9wo09JRu6bE/sDd73lDgAh47se8VFabVThHr
+	ZEiE8aZTIDBA0m1Wve/02buldgj1FI8v2SRhJYXiIzAoIf97cT4DyazORIRNjwBOF5DDRK9WBnV6K
+	Y4qMJE77GtOgbxK8usYH4b2LD27i8CGjtu97MKuJ0UoVx1PTybavKFR98wAiyQwrFulF1ibmMLeIc
+	iMKwl7NTa38QBqSY5ibw8JS1Knpd3qKga8UVNrgiF8xTXt8mdyUx154pmR0LA3lBt6bYao0tocNRe
+	ymF8xUhQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51782)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1tnE63-0003om-0c;
+	Wed, 26 Feb 2025 09:52:55 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1tnE5y-0006xe-26;
+	Wed, 26 Feb 2025 09:52:50 +0000
+Date: Wed, 26 Feb 2025 09:52:50 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: "andrew@lunn.ch" <andrew@lunn.ch>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"horms@kernel.org" <horms@kernel.org>,
+	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: [PATCH net-next v2 3/3] net: phy: mediatek: add driver for
+ built-in 2.5G ethernet PHY on MT7988
+Message-ID: <Z77kcqzmCqdT6lE0@shell.armlinux.org.uk>
+References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
+ <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
+ <Z7WleP9v6Igx2MjC@shell.armlinux.org.uk>
+ <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan
- settings for sinovoip bpi-r3 board
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Daniel Golle <daniel@makrotopia.org>
-References: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-In-Reply-To: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_014605_491193_94514CFE 
-X-CRM114-Status: GOOD (  31.49  )
+X-CRM114-CacheID: sfid-20250226_015302_944655_2CBE43CA 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,121 +96,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/25 06:01, Mikhail Kshevetskiy ha scritto:
+On Wed, Feb 26, 2025 at 06:48:34AM +0000, SkyLake Huang (黃啟澤) wrote:
+> On Wed, 2025-02-19 at 09:33 +0000, Russell King (Oracle) wrote:
+> > 
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> > 
+> > 
+> > On Wed, Feb 19, 2025 at 04:39:10PM +0800, Sky Huang wrote:
+> > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
+> > > +{
+> > > +     struct pinctrl *pinctrl;
+> > > +     int ret;
+> > > +
+> > > +     /* Check if PHY interface type is compatible */
+> > > +     if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
+> > > +             return -ENODEV;
+> > > +
+> > > +     ret = mt798x_2p5ge_phy_load_fw(phydev);
+> > > +     if (ret < 0)
+> > > +             return ret;
+> > 
+> > Firmware should not be loaded in the .config_init method. The above
+> > call will block while holding the RTNL which will prevent all other
+> > network configuration until the firmware has been loaded or the load
+> > fails.
+> > 
+> > Thanks.
+> > 
+> > --
+> > RMK's Patch system:
+> > https://urldefense.com/v3/__https://www.armlinux.org.uk/developer/patches/__;!!CTRNKA9wMg0ARbw!iV-1ViPFsUV-lLj7aIycan8nery6sQO3t6mkpdlb_GW8hswhxc4ejJozxqkU3s2WzxSizs4kfdC77yr7HGGRIuU$
+> > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> Hi Russell,
+> mt798x_p5ge_phy_load_fw() will only load firmware once after driver is
+> probed through priv->fw_loaded. And actually, firmware loading
+> procedure only takes about 11ms. This was discussed earlier in:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25856462
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25857174
 
-Please reformat the title...
+1. Wouldn't it be a good idea to include the loading time in the patch
+   description or a comment in the patch?
 
-arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
+2. What about the time it takes for request_firmware() uses the sysfs
+   fallback, which essentially passes the firmware request to userspace
+   to deal with? That can block for an indeterminate amount of time.
 
-> Popular bpi-r3 pwm fans like this one
-> 
->    https://www.amazon.com/youyeetoo-Barebone-Fan-BPI-R3-Integrated/dp/B0CCCTY8PS
-
-Such links to products do expire over time, so this commit will eventually have
-missing info in the future.
-
-"Popular cheap PWM fans for this machine, like the ones coming in heatsink+fan
-combos will not work properly at the currently defined medium speed"
-
-> 
-> will not work properly. Trying different pwm setting using a command
-> 
->    echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
-> 
-> I found:
-> 
->    pwm1 value     fan rotation speed   cpu temperature     notes
->    -----------------------------------------------------------------
->      0            maximal              31.5 Celsius        too noisy
->     40            optimal              35.2 Celsius        no noise hearable
->     95            minimal
->     above 95      does not rotate      55.5 Celsius
->    -----------------------------------------------------------------
-> 
-> At the moment we have following cooling levels defined:
-> 
->    cooling-levels = <255 96 0>;
-
-Yes, we can see that in the actual DT, not necessary to repeat in the description.
-
-"The current cooling levels define a PWM value of 96 for the cpu-active-medium
-step..."
-
-> 
-> for cpu-active-low, cpu-active-medium and cpu-active-high modes
-> correspondingly. Thus only cpu-active-high and cpu-active-low are usable.
-> I think this is wrong.
-> 
-> This patch fixes cpu-active-medium settings for bpi-r3 board.
-> 
-> PS: I know, the patch is not ideal as it can break pwm fan for some users.
->      There are some peoples that use handmade cooling solutions, but:
->        * discussed cooler is the only 'official' pwm cooler for bpi-r3
->          available on the market.
->        * most peoples will use passive cooling available on the market or
->          the discussed cooler.
->        * the pwm-fan dts section was added before the official cooler
->          appears on the market.
->      Thus it should not be a lot of harm from this fix.
-
-I get that the cheapest fans you can get are not working correctly with the current
-mid pwm setting, but you can't break things.
-
-This devicetree should, at this point, hold default values that would generally
-make the vast majority of fans to actually spin, because it's impossible to have
-something perfectly (or vaguely, sometimes) optimized for each fan on the market.
-
-Of course this means that you need to properly configure your fans in userspace
-if you want to reach the sweet spot.
-
-I added Frank and Daniel to this thread, as they are the ones who originally did
-upstream this device.
-
-Frank, Daniel, any suggestion regarding the PWM values here?
-
-P.S.: Remember that the fan will still spin to HIGH when temperature gets high,
-so the SoC is still thermally protected until users start tuning their fan speed
-in userspace.
-
-> 
-> This patch may not be enough. Users may wants to tweak their thermal_zone0
-> trip points, thus tuning fan rotation speed depending on cpu temperature.
-> That can be done on the base of the folloving example:
-
-P.P.S.: Fix typos please.
-
-Thanks,
-Angelo
-
-
-> 
->    === example =========
->    # cpu temterature below 25 Celsius degrees, no rotation
->    echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
->    # cpu temperature in [25..32] Celsius degrees, normal rotation speed
->    echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
->    # cpu temperature above 50 Celsius degrees, max rotation speed
->    echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
->    =====================
-> 
-> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-> ---
->   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index ed79ad1ae871..b0cc0cbdff0f 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -42,7 +42,7 @@ fan: pwm-fan {
->   		compatible = "pwm-fan";
->   		#cooling-cells = <2>;
->   		/* cooling level (0, 1, 2) - pwm inverted */
-> -		cooling-levels = <255 96 0>;
-> +		cooling-levels = <255 40 0>;
->   		pwms = <&pwm 0 10000>;
->   		status = "okay";
->   	};
-
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
