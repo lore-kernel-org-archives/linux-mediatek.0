@@ -4,67 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A593C021BF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 13:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12E25C021BF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 13:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GAGhHyGJLN+JCuK2Mu2hR5pw8IVNGvGU8jKyiUjY0Us=; b=b7bZOQI7FWfs3GZ168R6CMSCEj
-	STiXunjbzbbMT/o3gdAWUNqem6kFScis7sfug2UjKOXjwnIrfXfPK7rvbdsjdI00RTn2a8quss7k6
-	zNTW0khaOGQA1+bbWq2FdGzbj7V5uLsSWdp68LACCRcVzVPD4i90Rxo/1P5t8lcJMYk2FBOQFrrzT
-	RClDyeWR6ANND9ra+O/VtXWJ2Oxstz2FwQRBOHy9O/RbxckjDBMW95TbJHM5Kly3ix+6hRwtUyoFB
-	rkog43MaNgm3jr+mOGDLvXr2qU16FriClCLJj/4Fun44Qs9677v9M+SQ/vFcIs2A7tV7PO/r0DPzN
-	RdoYP2pw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=alBmJLHqLeak0MrBEaiF+GvOpgs6GCrussWTD7ASuFg=; b=Wx2Hmg2vtqWc+//xqAw3nEvTPl
+	Epne9HmUs4Y3fFlpkqWYQdYilNVIrv6bJsQZnq6VhccGL50mqJ6x6tGqoAZmDcxG//piSDRrssHtK
+	C1ezs9OwvS53rnXoUyKdORuwxuPGob6VK9GZzno93l2xuIQPkyHYpireMCjaUarkyZf55X6cASnDL
+	Dvr7VTC0vBwv3VpmRDeO2wmKrd5BWB5NYc96/XahrNb0eNtkpC+rgMYMEeTUUNDRwPMpq7NiSTthO
+	ttuzvmPyws4OMWG7rTbwHNZSZqa7QdEAmg715tjkMFQfns9yomAXwWy1PzoUgPk3/jska8yRwuJmL
+	T+uUyyMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHPD-00000003pbp-2NGo;
-	Wed, 26 Feb 2025 13:24:55 +0000
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+	id 1tnHPd-00000003qIq-09rh;
+	Wed, 26 Feb 2025 13:25:21 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnFJs-00000003RAd-2Y2l;
-	Wed, 26 Feb 2025 11:11:18 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.163])
-	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Z2s9y354mzJ1Fl;
-	Wed, 26 Feb 2025 19:07:02 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id BEBBB18001B;
-	Wed, 26 Feb 2025 19:11:06 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 26 Feb 2025 19:11:06 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
- Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
-	Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Gaurav Batra <gbatra@linux.ibm.com>, Matthew
- Rosato <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>, MM
-	<linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
-	<daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
- Fastabend <john.fastabend@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v10 0/4] fix the DMA API misuse problem for page_pool
-Date: Wed, 26 Feb 2025 19:03:35 +0800
-Message-ID: <20250226110340.2671366-1-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
+	id 1tnFhb-00000003UkN-0jNx
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Feb 2025 11:35:49 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-439a331d981so58222535e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Feb 2025 03:35:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1740569745; x=1741174545; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=alBmJLHqLeak0MrBEaiF+GvOpgs6GCrussWTD7ASuFg=;
+        b=HjQRW7r+y/lk9rrJlR5Ik3BNNUV1cyKQGcX7pmIkO3cTUrn7NDAgGNf7auTKKbBxBi
+         qmAEZLTxRZNFejxWM5EygYIlkqC/zKpe0boT9YNWuyNgRGn2ydy7kYR0dwo4bdswacUQ
+         aIiLtP7vOsjbJvoUR2Ap1m5qdBteEGLhqZV7DyhkGwqujjQfcDfH5+BmAqgwzM82U97C
+         /7JW+tYiP99wvJZPxQYNr7Qf+sJBkOyVk0sSJyUu901xom/C0R4eFKdt4Up0+AKttWFA
+         WS2afMlf/MoQUh6cLm8fWkflqQW4RyhHNdtkkhaTyWcEE/pO1WUXgFozxEsY8EofkV+/
+         1ScQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740569745; x=1741174545;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=alBmJLHqLeak0MrBEaiF+GvOpgs6GCrussWTD7ASuFg=;
+        b=HninnKUq3PmGaJ6Y2stTYotGD2yb5fhaFn06wa2eBkHwilXCTb3AcxmcdZ+RTh6WiT
+         hWwcNQ/HrqxHo0TeNq5bn8yzoZyE4e49lcetvOzPkEILR42NMPjnajzmvFw08sq842v9
+         A7IxB8sV+6pw5IK+Ie8gy3ZYxv/HOI/Hl5pQq0Y4KnjtRRC/MYc1EKKAG4yTq6EjOfCE
+         wh8G5vtZPbkb8omLLHfmb8v/vXZiudNOhBL3yi1mxMhoFo9WfweYHJGmgVz0NpfQqPTU
+         m57FUkE6vtiFKld9xrwawsrea5/twMwfveIFd82pFguzqKorA+zQCNcq0IGwIPYCLY4F
+         7ZoA==
+X-Forwarded-Encrypted: i=1; AJvYcCWmKHIjQQvgoy/qZ27qBFSWwXPmd4KL6/ne13BAZsuLgQgKme9Z32nPUjc1PNzdkX2mECcOplxernCd3VZB7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwT7M/rErlWOgy+/3lkuHn4BMI8S2GYy8vhGXa5YvGAXnRvFx1C
+	jZnaz0xniAxpxnECQ4dRuhc0BWcSCNaiwe+j30DPmloT00cIFUripK77gCc7Z3M=
+X-Gm-Gg: ASbGncsQjfdrV9cRlRL4BWl3iqxPY63pEMdW/71efyh043SnuxRQcIr9MmiUbABBqFC
+	XHpsx0My2Ksc3/iQXqVX/X2jmkER4Z6YxkePiVAX1s/5cag5Q1Yh5jtYojWHkjetuufoC9bEJkf
+	5Q47uxcHxNnWfIurhWV7Prgkc3RvTp6XalJryQMEMj8kqTzW5zbTEB7gA2yV2mycaSqrNPre8/R
+	7nIbB7nmetHfn4lalAeBe6Oq/ATRFbS9Y887bopYy7iEM7SHfLHXpm1kTh8fWgHiAe3tyGp21Lf
+	d9k0IEPlz6XBqre+vbxzHd0PWCC3EtjTz/nr0rHnZz0zB3WunXYVmIdBQ8Bg7fiQTg==
+X-Google-Smtp-Source: AGHT+IFDxhZDh0OTrZqQRYhLB3t0W3PSVkeDzir54VORaU0Ul7AQg6j84zQMQRzUVA7uut0cfrh6Pw==
+X-Received: by 2002:a05:600c:4f86:b0:439:967b:46fc with SMTP id 5b1f17b1804b1-43ab8fd73f2mr24567335e9.8.1740569745142;
+        Wed, 26 Feb 2025 03:35:45 -0800 (PST)
+Received: from [192.168.0.172] (88-127-185-231.subs.proxad.net. [88.127.185.231])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43aba5442c0sm18103605e9.32.2025.02.26.03.35.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 26 Feb 2025 03:35:44 -0800 (PST)
+Message-ID: <0863ee2e-25ed-43b7-a896-e380de828d58@baylibre.com>
+Date: Wed, 26 Feb 2025 12:35:42 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 2/6] drm/mediatek: dsi: Improves the DSI lane setup
+ robustness
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+Cc: "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "simona.vetter@ffwll.ch" <simona.vetter@ffwll.ch>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "will@kernel.org" <will@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>
+References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com>
+ <20231023-display-support-v7-2-6703f3e26831@baylibre.com>
+ <ab3bd050c873bb6cecc00b615b938eabc157cb49.camel@mediatek.com>
+ <79477810-00a9-47f1-8282-f8077ea082bb@baylibre.com>
+ <3310b6f9-df7a-4769-a221-4a93cc3ec035@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <3310b6f9-df7a-4769-a221-4a93cc3ec035@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_031117_023024_7425F0DD 
-X-CRM114-Status: GOOD (  25.72  )
+X-CRM114-CacheID: sfid-20250226_033547_471613_C9F009EF 
+X-CRM114-Status: GOOD (  21.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,166 +124,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset fix the dma API misuse problem as below:
-Networking driver with page_pool support may hand over page
-still with dma mapping to network stack and try to reuse that
-page after network stack is done with it and passes it back
-to page_pool to avoid the penalty of dma mapping/unmapping.
-With all the caching in the network stack, some pages may be
-held in the network stack without returning to the page_pool
-soon enough, and with VF disable causing the driver unbound,
-the page_pool does not stop the driver from doing it's
-unbounding work, instead page_pool uses workqueue to check
-if there is some pages coming back from the network stack
-periodically, if there is any, it will do the dma unmmapping
-related cleanup work.
 
-As mentioned in [1], attempting DMA unmaps after the driver
-has already unbound may leak resources or at worst corrupt
-memory. Fundamentally, the page pool code cannot allow DMA
-mappings to outlive the driver they belong to.
 
-By using the 'struct page_pool_item' referenced by page->pp_item,
-page_pool is not only able to keep track of the inflight page to
-do dma unmmaping if some pages are still handled in networking
-stack when page_pool_destroy() is called, and networking stack is
-also able to find the page_pool owning the page when returning
-pages back into page_pool:
-1. When a page is added to the page_pool, an item is deleted from
-   pool->hold_items and set the 'pp_netmem' pointing to that page
-   and set item->state and item->pp_netmem accordingly in order to
-   keep track of that page, refill from pool->release_items when
-   pool->hold_items is empty or use the item from pool->slow_items
-   when fast items run out.
-2. When a page is released from the page_pool, it is able to tell
-   which page_pool this page belongs to by masking off the lower
-   bits of the pointer to page_pool_item *item, as the 'struct
-   page_pool_item_block' is stored in the top of a struct page.
-   And after clearing the pp_item->state', the item for the
-   released page is added back to pool->release_items so that it
-   can be reused for new pages or just free it when it is from the
-   pool->slow_items.
-3. When page_pool_destroy() is called, item->state is used to tell
-   if a specific item is being used/dma mapped or not by scanning
-   all the item blocks in pool->item_blocks, then item->netmem can
-   be used to do the dma unmmaping if the corresponding inflight
-   page is dma mapped.
+On 18/02/2025 09:52, AngeloGioacchino Del Regno wrote:
+> Il 17/02/25 16:03, Alexandre Mergnat ha scritto:
+>> Hi CK.
+>>
+>> On 17/02/2025 08:56, CK Hu (胡俊光) wrote:
+>>> On Fri, 2025-01-10 at 14:31 +0100, Alexandre Mergnat wrote:
+>>>> External email : Please do not click links or open attachments until you have verified the 
+>>>> sender or the content.
+>>>>
+>>>>
+>>>> Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
+>>>> before mtk_dsi_poweron. lanes_ready flag toggle to true during
+>>>> mtk_dsi_lane_ready function, and the DSI module is set up during
+>>>> mtk_dsi_poweron.
+>>>>
+>>>> Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
+>>>> nothing because lanes are considered ready. Unfortunately, when the panel
+>>>> driver try to communicate, the DSI returns a timeout.
+>>>>
+>>>> The solution found here is to put lanes_ready flag to false after the DSI
+>>>> module setup into mtk_dsi_poweron to init the DSI lanes after the power /
+>>>> setup of the DSI module.
+>>>
+>>> I'm not clear about what happen.
+>>> I think this DSI flow has worked for a long time.
+>>> So only some panel has problem?
+>>
+>> I don't know if it's related to a specific panel or not.
+>>
+>>>
+>>> And another question.
+>>> Do you mean mtk_dsi_lane_ready() do some setting to hardware, but lane is not actually ready?
+>>
+>> The workflow should be:
+>> ... | dsi->lanes_ready = false | Power-on | setup dsi lanes | dsi->lanes_ready = true (to avoid 
+>> re-do dsi lanes setup) | ...
+>>
+>> I observe (print function name called + dsi->lanes_ready value):
+> 
+> Alex, the first poweron is called by mtk_dsi_ddp_start() - and the start callback
+> is internal to the mediatek-drm driver.
+> 
+> That callback is called by mtk_crtc during setup and during bridge enable(), and
+> there we go with suboptimal code design backfiring - instead of using what the
+> DRM APIs provide, this driver uses something custom *and* the DRM APIs, giving
+> this issue.
+> 
+> Part of what mtk_crtc does is duplicated with what the DRM APIs want to do, so
+> there you go, that's your problem here :-)
+> 
+> Should I go on with describing the next step(s), or is that obvious for everyone?
+> 
+> :-)
+> 
+> Cheers,
 
-From the below performance data, the overhead is not so obvious
-due to performance variations in arm64 server and less than 1
-ns in x86 server for time_bench_page_pool01_fast_path() and
-time_bench_page_pool02_ptr_ring, and there is about 10~20ns
-overhead for time_bench_page_pool03_slow(), see more detail in
-[2].
+Ok thanks Angelo.
+Can you let me know if you agree with this change please ? This should be better:
 
-arm64 server:
-Before this patchset:
-              fast_path              ptr_ring            slow
-1.         31.171 ns               60.980 ns          164.917 ns
-2.         28.824 ns               60.891 ns          170.241 ns
-3.         14.236 ns               60.583 ns          164.355 ns
+@@ -843,25 +843,6 @@ static void mtk_dsi_bridge_atomic_enable(struct drm_bridge *bridge,
+  	mtk_output_dsi_enable(dsi);
+  }
 
-With patchset:
-6.         26.163 ns               53.781 ns          189.450 ns
-7.         26.189 ns               53.798 ns          189.466 ns
+-static void mtk_dsi_bridge_atomic_pre_enable(struct drm_bridge *bridge,
+-					     struct drm_bridge_state *old_bridge_state)
+-{
+-	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+-	int ret;
+-
+-	ret = mtk_dsi_poweron(dsi);
+-	if (ret < 0)
+-		DRM_ERROR("failed to power on dsi\n");
+-}
+-
+-static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
+-					       struct drm_bridge_state *old_bridge_state)
+-{
+-	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+-
+-	mtk_dsi_poweroff(dsi);
+-}
+-
+  static enum drm_mode_status
+  mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
+  			  const struct drm_display_info *info,
+@@ -886,8 +867,6 @@ static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+  	.atomic_disable = mtk_dsi_bridge_atomic_disable,
+  	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+  	.atomic_enable = mtk_dsi_bridge_atomic_enable,
+-	.atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
+-	.atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
+  	.atomic_reset = drm_atomic_helper_bridge_reset,
+  	.mode_valid = mtk_dsi_bridge_mode_valid,
+  	.mode_set = mtk_dsi_bridge_mode_set,
 
-X86 server:
-| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
-| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
-|------------+-------+-------+----+---------+--------+--------+--------|
-| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
-| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
-| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
-
-And about 16 bytes of memory is also needed for each page_pool owned
-page to fix the dma API misuse problem
-
-1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
-2. https://lore.kernel.org/all/f558df7a-d983-4fc5-8358-faf251994d23@kernel.org/
-
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
-CC: Robin Murphy <robin.murphy@arm.com>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Andrew Morton <akpm@linux-foundation.org>
-CC: Gaurav Batra <gbatra@linux.ibm.com>
-CC: Matthew Rosato <mjrosato@linux.ibm.com>
-CC: IOMMU <iommu@lists.linux.dev>
-CC: MM <linux-mm@kvack.org>
-
-Change log:
-V10:
-  1. Add nl API to dump item memory usage.
-  2. Use __acquires() and __releases() to avoid 'context imbalance'
-     warning.
-
-V9.
-  1. Drop the fix of a possible time window problem for NPAI recycling.
-  2. Add design description for the fix in patch 2.
-
-V8:
-  1. Drop last 3 patch as it causes observable performance degradation
-     for x86 system.
-  2. Remove rcu read lock in page_pool_napi_local().
-  3. Renaming item function more consistently.
-
-V7:
-  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
-  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
-     by Simon.
-
-V6:
-  1. Repost based on latest net-next.
-  2. Rename page_pool_to_pp() to page_pool_get_pp().
-
-V5:
-  1. Support unlimit inflight pages.
-  2. Add some optimization to avoid the overhead of fixing bug.
-
-V4:
-  1. use scanning to do the unmapping
-  2. spilt dma sync skipping into separate patch
-
-V3:
-  1. Target net-next tree instead of net tree.
-  2. Narrow the rcu lock as the discussion in v2.
-  3. Check the ummapping cnt against the inflight cnt.
-
-V2:
-  1. Add a item_full stat.
-  2. Use container_of() for page_pool_to_pp().
-
-Yunsheng Lin (4):
-  page_pool: introduce page_pool_get_pp() API
-  page_pool: fix IOMMU crash when driver has already unbound
-  page_pool: support unlimited number of inflight pages
-  page_pool: skip dma sync operation for inflight pages
-
- Documentation/netlink/specs/netdev.yaml       |  16 +
- drivers/net/ethernet/freescale/fec_main.c     |   8 +-
- .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
- drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
- drivers/net/netdevsim/netdev.c                |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
- include/linux/mm_types.h                      |   2 +-
- include/linux/skbuff.h                        |   1 +
- include/net/libeth/rx.h                       |   3 +-
- include/net/netmem.h                          |  31 +-
- include/net/page_pool/helpers.h               |  15 +
- include/net/page_pool/memory_provider.h       |   2 +-
- include/net/page_pool/types.h                 |  46 +-
- include/uapi/linux/netdev.h                   |   2 +
- net/core/devmem.c                             |   6 +-
- net/core/netmem_priv.h                        |   5 +-
- net/core/page_pool.c                          | 423 ++++++++++++++++--
- net/core/page_pool_priv.h                     |  12 +-
- net/core/page_pool_user.c                     |  39 +-
- tools/net/ynl/samples/page-pool.c             |  11 +
- 23 files changed, 570 insertions(+), 87 deletions(-)
 
 -- 
-2.33.0
-
+Regards,
+Alexandre
 
