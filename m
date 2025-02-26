@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2A3C021B8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E474C18E7C
 	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,80 +12,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=NQ2slPZYZ3N0pVGAtQNwrwiFMx
-	3+RTJ3DP5qYnwubB5B4U2C+H9MszTXjN3VMai5KsUvM29DjDQXcPmVvNcazruqRiMUi4aEree7fEO
-	QKQElA0AADVzRhkBaaS3hzgaVqhapnVNgpGA7pDiY9NAiLMR8TBNwTiX/zYSSArqqE24aMn2od78c
-	BHdTk0Uv3vdmpfsSaphXvyBjNJ8oKpO+a086s3KEk5frcS3P8KZafh3GDPteh0ym4GZhBfdT/XxHc
-	9TF+rpK6VHHBQAR8hMg3T4U/qPONq2Pnx4pX3Uhrlavfj27h9EhuSHiA091Aardxe/KSbAuP8ja9R
-	PT/Wbi9A==;
+	bh=YNEWasKX43FkPqigUC2R6O6uFHOMN2J6gXRtqFUQ4yc=; b=FiiL4zi1MwiS6pFqsMheMJY0yJ
+	F3J4GYsf1JwAJYinIWGQyN990NedZFB0fgEq1iGCmdHmdZBbFl9me3Cnvf75LudtSbND8ALP432mC
+	ivwM19M/VfYhLzOpahW9D5/sognjkuRJ4Mjny1OHNEI5vza5iV4S5Qlar2sdj/JIWlOMMlF8opOHh
+	1W3p9gxyxSB8J7sTQbdvdIXwKWoXdnqCdJ6eJiCaEQFQ81U7cSngABlSJRpkCzuVmEWflMmsXvLeP
+	xVkMTbqLZEbH67pKxWvuXcrLfjhIWFogLZnoJ3TEfLhMaf0QjTqETd04NmdwrNXQYHoGFTmtRtIt4
+	bJRWYuOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnJEn-00000004FGE-109A;
-	Wed, 26 Feb 2025 15:22:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tnJEm-00000004FFo-3rIR;
+	Wed, 26 Feb 2025 15:22:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHX6-00000003wYs-2Y5z;
-	Wed, 26 Feb 2025 13:33:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=E/Z1C+k/NoPj7THng4u33LCJ9M
-	CVTP7fWEBhNNW+qgDu6gUCX78/n7wQ1kBucpZbPr0HrUD15MmPak2J7m9YMr3nZBvELtsoxw0lL/N
-	f5dgYy1+GIsBJe8jwsjKCGwUr8ihSLnoZxcR+4p/bQwY5xWSC8WGrgJaj/szwr6G+ZdUH4INwKsX7
-	6HlafCUl+cY78I5OSRpfE0XGJKjI89rKJRcGXe3Ti/Qc8hxdOZXrF/AyXA9VEAEj1+U4H1gbKjXtl
-	ZQq7j2tdJypMfUTC4Orc7MsN7KvpSbQ9cnly54I1Q8qCCFohCN03n7dKbvSfTXkvk94LsFw6taBRI
-	R5PraF/g==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHX3-00000003bAL-0NOU;
-	Wed, 26 Feb 2025 13:33:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=Sf
-	7PASKbSARFMMzrBB16abt6ui8Mz+VjlV/9TgFn5nQ1/ot9dLG9/IiBhRy5tNn/0KlqJI5eAepClnp
-	Ng+aVxSzmSK4iFHL4U0LW6d83GKunPs6JIsR1TNWKk8teFU99kFRf75MZ+Zu1e0AIqsAToa0d4UCu
-	TnLTqsRbvcmPaZY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tnHWm-000Ggy-NL; Wed, 26 Feb 2025 14:32:44 +0100
-Date: Wed, 26 Feb 2025 14:32:44 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
+	id 1tnHUJ-00000003wCH-2Ekr;
+	Wed, 26 Feb 2025 13:30:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740576609;
+	bh=sCJ6jojoxc5SezhVGVdeO6sZxq4gq9c05ziXwDfmpkc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B24RGItMUUWDCFWd7lymvY6aJ7jX/Le5eCguhwra3Hjc/FnVrPoKrsceMDm0N5tw7
+	 tsvF10smahGg4io7pJeXc6UcfoWhp78IA+OAJbzE0pzHhwG7bMDKWkm1Dm22+szeyi
+	 cnGxha5uPB4hLJSHPJiS4C1tJPx43dkfsP9n0cLCBUhtP71P68LUf88l3998f8TFPe
+	 Lxdgeq/lwoRc4L4q/JtOrnY655lYdR+xIky/IJ5KN10q/QjPjGT7F1NCGL2IacQCce
+	 vUgtIR+LpTT9PjS/SDrAMIxstCaiG1Pah6P2LaD9g/XAIA3MoXHo9gUORhFNw4Hdjf
+	 qO8qW0rZmaBIQ==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1003])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A072317E05C1;
+	Wed, 26 Feb 2025 14:30:05 +0100 (CET)
+Date: Wed, 26 Feb 2025 10:30:03 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"horms@kernel.org" <horms@kernel.org>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH net-next v2 3/3] net: phy: mediatek: add driver for
- built-in 2.5G ethernet PHY on MT7988
-Message-ID: <73080f10-5077-4165-9fe8-e2ccca497feb@lunn.ch>
-References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
- <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
- <Z7WleP9v6Igx2MjC@shell.armlinux.org.uk>
- <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Trevor Wu <trevor.wu@mediatek.com>, kernel@collabora.com,
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 7/8] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
+ DMIC backend to dai-link
+Message-ID: <9240905b-29af-4ea7-8ff9-a0cb2233da72@notapiano>
+References: <20250225-genio700-dmic-v2-0-3076f5b50ef7@collabora.com>
+ <20250225-genio700-dmic-v2-7-3076f5b50ef7@collabora.com>
+ <20250226-ludicrous-seagull-of-music-a40daf@krzk-bin>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
+In-Reply-To: <20250226-ludicrous-seagull-of-music-a40daf@krzk-bin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_133301_219712_5D91158A 
-X-CRM114-Status: GOOD (  17.73  )
+X-CRM114-CacheID: sfid-20250226_053011_720231_A7C4BEE1 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,49 +85,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2025 at 06:48:34AM +0000, SkyLake Huang (黃啟澤) wrote:
-> On Wed, 2025-02-19 at 09:33 +0000, Russell King (Oracle) wrote:
+On Wed, Feb 26, 2025 at 09:22:29AM +0100, Krzysztof Kozlowski wrote:
+> On Tue, Feb 25, 2025 at 11:33:53AM -0300, N�colas F. R. A. Prado wrote:
+> > MT8188 platforms also have DMIC DAIs, which were previously undescribed.
+> > Add DMIC_BE as a possible backend for the dai-link property.
 > > 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
+> > Signed-off-by: N�colas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >  Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml | 1 +
+> >  1 file changed, 1 insertion(+)
 > > 
-> > 
-> > On Wed, Feb 19, 2025 at 04:39:10PM +0800, Sky Huang wrote:
-> > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-> > > +{
-> > > +     struct pinctrl *pinctrl;
-> > > +     int ret;
-> > > +
-> > > +     /* Check if PHY interface type is compatible */
-> > > +     if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-> > > +             return -ENODEV;
-> > > +
-> > > +     ret = mt798x_2p5ge_phy_load_fw(phydev);
-> > > +     if (ret < 0)
-> > > +             return ret;
-> > 
-> > Firmware should not be loaded in the .config_init method. The above
-> > call will block while holding the RTNL which will prevent all other
-> > network configuration until the firmware has been loaded or the load
-> > fails.
-> > 
-> > Thanks.
-> > 
-> > --
-> > RMK's Patch system:
-> > https://urldefense.com/v3/__https://www.armlinux.org.uk/developer/patches/__;!!CTRNKA9wMg0ARbw!iV-1ViPFsUV-lLj7aIycan8nery6sQO3t6mkpdlb_GW8hswhxc4ejJozxqkU3s2WzxSizs4kfdC77yr7HGGRIuU$
-> > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
-> Hi Russell,
-> mt798x_p5ge_phy_load_fw() will only load firmware once after driver is
-> probed through priv->fw_loaded. And actually, firmware loading
-> procedure only takes about 11ms. This was discussed earlier in:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25856462
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25857174
+> > diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+> > index 362e729b51b43ec16716aee70ad736420def81f3..8c77e7f68ad7b6f5b88b53cedccb291139a2eeea 100644
+> > --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+> > +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+> > @@ -62,6 +62,7 @@ patternProperties:
+> >              - PCM1_BE
+> >              - DL_SRC_BE
+> >              - UL_SRC_BE
+> > +            - DMIC_BE
+> 
+> Any reason why you keep adding to the end of the lists but not
+> alphabetically sorted? It's enum, so it's expected to be sorted which
+> reduces conflicts between edits. Last commit already broke sorting :/
 
-Ideally, all PHY drivers should look like each other. That makes
-maintenance simpler. Currently, air_en8811h.c, aquantia_main.c, and
-qt2025.rs load firmware in there probe function. Is there a good
-reason this driver needs to be different?
+Well, I wasn't aware enums were supposed to be sorted. That doesn't seem to be
+documented anywhere. In fact, in example-schema.yaml the enum is not sorted [1].
+So it'd be great to update that example to follow that rule as well as
+explicitly document it. Maybe even a dt-binding check that checks for this?
+That'll make it much easier to learn about and follow this rule :).
 
-       Andrew
+I don't think it'd be worth it to send another patch just to fix sorting in
+this case as it's already been merged, but I'll keep this in mind whenever I
+send future dt-binding patches.
+
+Thanks,
+N�colas
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/example-schema.yaml#n52
 
