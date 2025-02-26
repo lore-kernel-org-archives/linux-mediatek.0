@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551D5C021B8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2A3C021B8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=13xQ3n+oubA15lk/CNsaWwpQDF
-	svS5fFEswMAj+/B17qkLXB2vevHwsz/HXWXqjOfxMNoYupC/ixVLnYWFmuBboNrQc5ipN3SMVqOge
-	sH7dBcBBlm+Vmb4xUUvpjDZyFT9xC5H4K/TYK/KAsX2ELaLtAetsA6XwH46MF9SyZ+RIgrBHYS0DM
-	QaSiegQ+iJX0yImrggwvRhl4zgQB9FMvrQ1oGbS1UNiGiEXLLLdR/u+Ms8diOdf7VIudPgRMsKnXe
-	wHOGkwwNvCO2PGsb09pwjonYNN3GDMQoYs23RZEFzJ7aikkJn6E/YORnEPLUCyL1fullsyMIHf5TJ
-	XZuY82BQ==;
+	bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=NQ2slPZYZ3N0pVGAtQNwrwiFMx
+	3+RTJ3DP5qYnwubB5B4U2C+H9MszTXjN3VMai5KsUvM29DjDQXcPmVvNcazruqRiMUi4aEree7fEO
+	QKQElA0AADVzRhkBaaS3hzgaVqhapnVNgpGA7pDiY9NAiLMR8TBNwTiX/zYSSArqqE24aMn2od78c
+	BHdTk0Uv3vdmpfsSaphXvyBjNJ8oKpO+a086s3KEk5frcS3P8KZafh3GDPteh0ym4GZhBfdT/XxHc
+	9TF+rpK6VHHBQAR8hMg3T4U/qPONq2Pnx4pX3Uhrlavfj27h9EhuSHiA091Aardxe/KSbAuP8ja9R
+	PT/Wbi9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnJEi-00000004FCQ-3liQ;
-	Wed, 26 Feb 2025 15:22:12 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1tnJEn-00000004FGE-109A;
+	Wed, 26 Feb 2025 15:22:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHQz-00000003sG1-2Lb6;
-	Wed, 26 Feb 2025 13:26:45 +0000
+	id 1tnHX6-00000003wYs-2Y5z;
+	Wed, 26 Feb 2025 13:33:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=eV9qskFPoKZwRN+6N9JVTjm8Q3
-	FxkH4U7nFEa/cppjdADbfqmE5BAWWrEBgfpAn2clA45USjUaq+7Zj7y57DZMJ1NdZHm4ZsnnXhusu
-	eHeZE0k0jV8c9girbgPy0GgkwvO3vJbemnADb8tV3EqrwD91w+qUgZWPC5bCwn5Rt5OOEH1p/Xxfj
-	+gQSDljgywYEBC6cE5/rxrEzWHH2mRGjGQvH+AOGfoYqz55k1+vuTTYK0MNe3v+I5BrmNLFQKA2K0
-	yr2SVts4CZMDs0D9zAo9jCwTTr11aO6D5iMGrP54fFPwTj0ZNvu/ni61/oZTMpJfZAyiEIvdxSG8z
-	QNP3OjLg==;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=E/Z1C+k/NoPj7THng4u33LCJ9M
+	CVTP7fWEBhNNW+qgDu6gUCX78/n7wQ1kBucpZbPr0HrUD15MmPak2J7m9YMr3nZBvELtsoxw0lL/N
+	f5dgYy1+GIsBJe8jwsjKCGwUr8ihSLnoZxcR+4p/bQwY5xWSC8WGrgJaj/szwr6G+ZdUH4INwKsX7
+	6HlafCUl+cY78I5OSRpfE0XGJKjI89rKJRcGXe3Ti/Qc8hxdOZXrF/AyXA9VEAEj1+U4H1gbKjXtl
+	ZQq7j2tdJypMfUTC4Orc7MsN7KvpSbQ9cnly54I1Q8qCCFohCN03n7dKbvSfTXkvk94LsFw6taBRI
+	R5PraF/g==;
 Received: from vps0.lunn.ch ([156.67.10.101])
-	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHQw-0000000FPiQ-0uoK;
-	Wed, 26 Feb 2025 13:26:44 +0000
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tnHX3-00000003bAL-0NOU;
+	Wed, 26 Feb 2025 13:33:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=4Ozf+7Q+exXjohkxtJs5vNdrBo5Sdnc0Ag2Lz0YxhzU=; b=M+EF2Q0a0WRuAPx96YN4gdGAGD
-	cJUEFVSoVUXpcau6Rel+vg9J8OcLm3W6FCG3VX49WlwcmMK+wDwM5029xr9hVdseTQlMBv03A/9c6
-	Ra8Y8UvoFAx2/26RJRc/TNFA4IE7Sv4X42AgVaTgv8D9VZm6l33vh2vPiIqBo8ug1Skg=;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=tm7hO41JOQlTWPC9THQAbEe0/tlBt69JLz+IlowK45s=; b=Sf
+	7PASKbSARFMMzrBB16abt6ui8Mz+VjlV/9TgFn5nQ1/ot9dLG9/IiBhRy5tNn/0KlqJI5eAepClnp
+	Ng+aVxSzmSK4iFHL4U0LW6d83GKunPs6JIsR1TNWKk8teFU99kFRf75MZ+Zu1e0AIqsAToa0d4UCu
+	TnLTqsRbvcmPaZY=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1tnHQW-000GS9-6o; Wed, 26 Feb 2025 14:26:16 +0100
-Date: Wed, 26 Feb 2025 14:26:16 +0100
+	id 1tnHWm-000Ggy-NL; Wed, 26 Feb 2025 14:32:44 +0100
+Date: Wed, 26 Feb 2025 14:32:44 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+Cc: "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
 	"dqfext@gmail.com" <dqfext@gmail.com>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
 	"davem@davemloft.net" <davem@davemloft.net>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
 	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
 	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
 	"horms@kernel.org" <horms@kernel.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
 	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
 	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
 	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
 	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH net-next v2 1/3] net: phy: mediatek: Add 2.5Gphy firmware
- dt-bindings and dts node
-Message-ID: <8bc68f1a-5abd-478c-9b9d-2c8baa6bb36a@lunn.ch>
+Subject: Re: [PATCH net-next v2 3/3] net: phy: mediatek: add driver for
+ built-in 2.5G ethernet PHY on MT7988
+Message-ID: <73080f10-5077-4165-9fe8-e2ccca497feb@lunn.ch>
 References: <20250219083910.2255981-1-SkyLake.Huang@mediatek.com>
- <20250219083910.2255981-2-SkyLake.Huang@mediatek.com>
- <a15cfd5d-7c1a-45b2-af14-aa4e8761111f@lunn.ch>
- <Z7X5Dta3oUgmhnmk@makrotopia.org>
- <ff96f5d38e089fdd76294265f33d7230c573ba69.camel@mediatek.com>
- <176f8fe1-f4cf-4bbd-9aea-5f407cef8ac5@lunn.ch>
- <c5728ec30db963c97b6e292b51e73e2c075d1757.camel@mediatek.com>
+ <20250219083910.2255981-4-SkyLake.Huang@mediatek.com>
+ <Z7WleP9v6Igx2MjC@shell.armlinux.org.uk>
+ <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <c5728ec30db963c97b6e292b51e73e2c075d1757.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5fae9c69a09320b0b24f25a178137bd0256a72d8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_132642_282597_316AAF59 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20250226_133301_219712_5D91158A 
+X-CRM114-Status: GOOD (  17.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,94 +100,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> So I guess I can do the following according to the previous discussion:
-> 1) Reserve a memory region in mt7988.dtsi
-> reserved-memory {
-> 	#address-cells = <2>;
-> 	#size-celss = <2>;
-> 	ranges;
-> 
-> 	/* 0x0f0100000~0x0f1f0024 are specific for built-in 2.5Gphy.
-> 	 * In this range, it includes "PMB_FW_BASE"(0x0f100000)
-> 	 * and "MCU_CSR_BASE"(0x0f0f0000)
-> 	 */
-> 	i2p5g: i2p5g@0f100000 {
-> 		reg = <0 0x0f010000 0 0x1e0024>;
-> 		no-map;
-> 	};
-> };
+On Wed, Feb 26, 2025 at 06:48:34AM +0000, SkyLake Huang (黃啟澤) wrote:
+> On Wed, 2025-02-19 at 09:33 +0000, Russell King (Oracle) wrote:
+> > 
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> > 
+> > 
+> > On Wed, Feb 19, 2025 at 04:39:10PM +0800, Sky Huang wrote:
+> > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
+> > > +{
+> > > +     struct pinctrl *pinctrl;
+> > > +     int ret;
+> > > +
+> > > +     /* Check if PHY interface type is compatible */
+> > > +     if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
+> > > +             return -ENODEV;
+> > > +
+> > > +     ret = mt798x_2p5ge_phy_load_fw(phydev);
+> > > +     if (ret < 0)
+> > > +             return ret;
+> > 
+> > Firmware should not be loaded in the .config_init method. The above
+> > call will block while holding the RTNL which will prevent all other
+> > network configuration until the firmware has been loaded or the load
+> > fails.
+> > 
+> > Thanks.
+> > 
+> > --
+> > RMK's Patch system:
+> > https://urldefense.com/v3/__https://www.armlinux.org.uk/developer/patches/__;!!CTRNKA9wMg0ARbw!iV-1ViPFsUV-lLj7aIycan8nery6sQO3t6mkpdlb_GW8hswhxc4ejJozxqkU3s2WzxSizs4kfdC77yr7HGGRIuU$
+> > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> Hi Russell,
+> mt798x_p5ge_phy_load_fw() will only load firmware once after driver is
+> probed through priv->fw_loaded. And actually, firmware loading
+> procedure only takes about 11ms. This was discussed earlier in:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25856462
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240520113456.21675-6-SkyLake.Huang@mediatek.com/#25857174
 
-Do you even need these? I assume this is in the IO space, not DRAM. So
-the kernel is not going to use it by default. That is why you need to
-specifically ioremap() it.
+Ideally, all PHY drivers should look like each other. That makes
+maintenance simpler. Currently, air_en8811h.c, aquantia_main.c, and
+qt2025.rs load firmware in there probe function. Is there a good
+reason this driver needs to be different?
 
-> 2) Since PHYs don't use compatibles, hardcode address in mtk-2p5ge.c:
-> /* MTK_ prefix means that the macro is used for both MT7988 & MT7987*/
-> #define MTK_2P5GPHY_PMB_FW_BASE		(0x0f100000)
-> #define MT7988_2P5GE_PMB_FW_LEN		(0x20000)
-> #define MT7987_2P5GE_PMB_FW_LEN		(0x18000)
-> #define MTK_2P5GPHY_MCU_CSR_BASE	(0x0f0f0000)
-> #define MTK_2P5GPHY_MCU_CSR_LEN		(0x20)
-> 
-> /* On MT7987, we separate firmware bin to 2 files and total size
->  * is decreased from 128KB(mediatek/mt7988/i2p5ge-phy-pmb.bin) to
->  * 96KB(mediatek/mt7987/i2p5ge-phy-pmb.bin)+
->  * 28KB(mediatek/mt7987/i2p5ge-phy-DSPBitTb.bin)
->  * And i2p5ge-phy-DSPBitTb.bin will be loaded to
->  * MT7987_2P5GE_XBZ_PMA_RX_BASE
->  */
-> #define MT7987_2P5GE_XBZ_PMA_RX_BASE	(0x0f080000)
-> #define MT7987_2P5GE_XBZ_PMA_RX_LEN	(0x5228)
-> #define MT7987_2P5GE_DSPBITTB_SIZE	(0x7000)
-> 
-> /* MT7987 requires these base addresses to manipulate some
->  * registers before loading firmware.
->  */
-> #define MT7987_2P5GE_APB_BASE		(0x11c30000)
-> #define MT7987_2P5GE_APB_LEN		(0x9c)
-> #define MT7987_2P5GE_PMD_REG_BASE	(0x0f010000)
-> #define MT7987_2P5GE_PMD_REG_LEN	(0x210)
-> #define MT7987_2P5GE_XBZ_PCS_REG_BASE	(0x0f030000)
-> #define MT7987_2P5GE_XBZ_PCS_REG_LEN	(0x844)
-
-Should the PCS registers actually be in the PCS driver, not the PHY
-driver? Hard to say until we know what these registers actually are.
-
-> #define MT7987_2P5GE_CHIP_SCU_BASE	(0x0f0cf800)
-> #define MT7987_2P5GE_CHIP_SCU_LEN	(0x12c)
-> 
-> static int mt7988_2p5ge_phy_load_fw(struct phy_device *phydev)
-> {
-> 	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-> 	void __iomem *mcu_csr_base, *pmb_addr;
-> 	struct device *dev = &phydev->mdio.dev;
-> 	const struct firmware *fw;
-> 	int ret, i;
-> 	u32 reg;
-> 
-> 	if (priv->fw_loaded)
-> 		return 0;
-> 
-> 	pmb_addr = ioremap(MTK_2P5GPHY_PMB_FW_BASE,
-> 			   MT7988_2P5GE_PMB_FW_LEN);
-> 	if (!pmb_addr)
-> 		return -ENOMEM;
-> 	mcu_csr_base = ioremap(MTK_2P5GPHY_MCU_CSR_BASE,
-> 			       MTK_2P5GPHY_MCU_CSR_LEN);
-> 	if (!mcu_csr_base) {
-> 		ret = -ENOMEM;
-> 		goto free_pmb;
-> 	}
-> ...
-> free:
-> 	iounmap(mcu_csr_base);
-> free_pmb:
-> 	iounmap(pmb_addr);
-> ...
-> }
-
-This looks O.K. It is basically what we did before device tree was
-used.
-
-	Andrew
+       Andrew
 
