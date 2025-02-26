@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D28C021B8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 09:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE6DC021B8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 09:48:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n2WAbQXSXaGvM32JXh/SdBxTvg3DTs4VP0FUGSg+rI4=; b=MTMUB3k+pMo1YzjljxvvJrWn2w
-	6tVHcaKbUkTpqy2/EiH4NHmUIsI1fx90rmR6SB+bWyR8pZmCMcj3GtWfZTA5dAGFOVbZZ+EwlFbLh
-	8F7jGVDB8bdl1HvNv00Xfr42q8pp0eixuI5GJrwmRZN4u6GA+tBpLV+ARpNTEviqxyvQbtXJnslRj
-	vrjBIW3G/DlwoQOTk15KtyCgI7Iu4YHNevIOGh88Zb+tPiUTHaJE/0IASF3u0mXjaP3sIlpmP0psx
-	y99fWIp4WUKTOoT/MrN8POVhRXD628nHuroN/UBEygi3E0fdo/O38VdF5y6JOvNIKUHL0HcgTYCMw
-	dWsUdNhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Cc:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=COdPtwS8QwqUzQLrq2HiLnQlQGjwzK2ydg7fmTJeyKg=; b=EJPTq8f+nmo7RHaMkENGP9ik74
+	JcJqeFhYoPiNbqGnTEVPJtacBqMjPEIpUEEIZqNm5d2MmRpIz9QJudt/6j4I7acYqgpoLjT7ZvYwn
+	q8z8affdClk98d56+VV4cjxa6I4h8IRnAX6IT8vUA6H90Rl507mIDRfiULIfqgxgY1Kajum1u7M92
+	c0VeYEL8ACyf9s/Y41Jy34e39FhAeFNz2iLReXjd124ff1yEtcg7uVs7beP/fTJaOg7la1kGbOfTz
+	2RUz9I8NiPtBuiL0nR0uoVlyzVKFUAmPzEXZVcDUSjnb5iHhbLqVqQSNE9czuH9ZL1iAHsFXu36af
+	UQeuYhLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnDqR-000000037HR-3dci;
-	Wed, 26 Feb 2025 09:36:47 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1tnE23-000000039Rj-2j9v;
+	Wed, 26 Feb 2025 09:48:47 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnDqO-000000037GD-2Vf2
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Feb 2025 09:36:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=n2WAbQXSXaGvM32JXh/SdBxTvg3DTs4VP0FUGSg+rI4=;
-	t=1740562604; x=1741772204; b=gh53jl+/7uX+24ZDrQe2l+IQzgIMHiknaLglWZpiisWrBuy
-	+bWvXX2oZcc5OJyDWth3HNXBRXeo+NxC/Wna5WehChKHd81ypL0PHcjEULmz/7feWPBq2i4VpXBQu
-	wkQn1jhuBXs9ElqWUQPj4HPGT4NwyoU11jf/cY6Cp7Y4oAbVJmq1JyVzgqI2OEmqXr1QfqByBf/zV
-	7iAp4L54ELh0ttNVNakOS/Z+baHtioBp9U47qRBFP9JGf1y1/hTIn6x6cq39GmkQvYaPzsNTEZc6/
-	SrrbdxdhZohpduh2/ENoJEFMyXobBEnNy+6fPVtcYEKvLFZMPBtVQbTDNsTTYVmQ==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1tnDqH-0000000BLoK-3nhb;
-	Wed, 26 Feb 2025 10:36:38 +0100
-Message-ID: <cb87ed76c1cd85611f0a7c1ce1f248bbe0e2d978.camel@sipsolutions.net>
-Subject: Re: [PATCH v4 1/6] Revert "wifi: mt76: mt7925: Update
- mt7925_mcu_uni_[tx,rx]_ba for MLO"
-From: Johannes Berg <johannes@sipsolutions.net>
-To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
- mingyen.hsieh@mediatek.com, 	linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, 	stable@vger.kernel.org, Caleb Jorden
- <cjorden@gmail.com>
-Date: Wed, 26 Feb 2025 10:36:36 +0100
-In-Reply-To: <20250226025647.102904-1-sean.wang@kernel.org>
-References: <20250226025647.102904-1-sean.wang@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1tnDzR-0000000392R-0zfo;
+	Wed, 26 Feb 2025 09:46:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740563163;
+	bh=4JZL08t7KG0UOC6HcBU5zxjetitwgkZ1Di1DC2VPPN8=;
+	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
+	b=k5n6OxUv508uzhg0BzGhZ+WDRVvHmEiNyP6gg4N460Q909yqbnMxMDKv3F76dybTx
+	 91fj04sQwP4hcEIEibt5qS2aAPyEAM9kHjsRocnfL2uKAtzMN2SN/7jQgFK2CQpzXO
+	 zu6B7X7CLTJ4f/6vIJPpwAypYz+ARL15ci/Kzk0bb7Wpf8X/XToW+CAWqEdEVwWDJQ
+	 2Z9pvusDBUfiUx7KwJasmBwOTJ0pW59Hl+2hqFt4KJjBC7DNlsmqRz7CxJPeUl8Q8Z
+	 wwzPx2ni5VhdrsiBYY55gCK2kaqVHkqtPfvtv8A5UrKeFn2W/ql1YJfmSLlhkEab/y
+	 iMIhdoGRy44Tg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0C6A217E0663;
+	Wed, 26 Feb 2025 10:46:03 +0100 (CET)
+Message-ID: <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
+Date: Wed, 26 Feb 2025 10:46:02 +0100
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan
+ settings for sinovoip bpi-r3 board
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Daniel Golle <daniel@makrotopia.org>
+References: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+In-Reply-To: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_013644_927845_7174C547 
-X-CRM114-Status: UNSURE (   4.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250226_014605_491193_94514CFE 
+X-CRM114-Status: GOOD (  31.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,11 +80,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dunno if this is because of the tree it got applied to (Felix please
-send me your tree info!), or something else, but check out the automatic
-checks here:
+Il 26/02/25 06:01, Mikhail Kshevetskiy ha scritto:
 
-https://patchwork.kernel.org/project/linux-wireless/list/?series=3D937821
+Please reformat the title...
 
-johannes
+arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
+
+> Popular bpi-r3 pwm fans like this one
+> 
+>    https://www.amazon.com/youyeetoo-Barebone-Fan-BPI-R3-Integrated/dp/B0CCCTY8PS
+
+Such links to products do expire over time, so this commit will eventually have
+missing info in the future.
+
+"Popular cheap PWM fans for this machine, like the ones coming in heatsink+fan
+combos will not work properly at the currently defined medium speed"
+
+> 
+> will not work properly. Trying different pwm setting using a command
+> 
+>    echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
+> 
+> I found:
+> 
+>    pwm1 value     fan rotation speed   cpu temperature     notes
+>    -----------------------------------------------------------------
+>      0            maximal              31.5 Celsius        too noisy
+>     40            optimal              35.2 Celsius        no noise hearable
+>     95            minimal
+>     above 95      does not rotate      55.5 Celsius
+>    -----------------------------------------------------------------
+> 
+> At the moment we have following cooling levels defined:
+> 
+>    cooling-levels = <255 96 0>;
+
+Yes, we can see that in the actual DT, not necessary to repeat in the description.
+
+"The current cooling levels define a PWM value of 96 for the cpu-active-medium
+step..."
+
+> 
+> for cpu-active-low, cpu-active-medium and cpu-active-high modes
+> correspondingly. Thus only cpu-active-high and cpu-active-low are usable.
+> I think this is wrong.
+> 
+> This patch fixes cpu-active-medium settings for bpi-r3 board.
+> 
+> PS: I know, the patch is not ideal as it can break pwm fan for some users.
+>      There are some peoples that use handmade cooling solutions, but:
+>        * discussed cooler is the only 'official' pwm cooler for bpi-r3
+>          available on the market.
+>        * most peoples will use passive cooling available on the market or
+>          the discussed cooler.
+>        * the pwm-fan dts section was added before the official cooler
+>          appears on the market.
+>      Thus it should not be a lot of harm from this fix.
+
+I get that the cheapest fans you can get are not working correctly with the current
+mid pwm setting, but you can't break things.
+
+This devicetree should, at this point, hold default values that would generally
+make the vast majority of fans to actually spin, because it's impossible to have
+something perfectly (or vaguely, sometimes) optimized for each fan on the market.
+
+Of course this means that you need to properly configure your fans in userspace
+if you want to reach the sweet spot.
+
+I added Frank and Daniel to this thread, as they are the ones who originally did
+upstream this device.
+
+Frank, Daniel, any suggestion regarding the PWM values here?
+
+P.S.: Remember that the fan will still spin to HIGH when temperature gets high,
+so the SoC is still thermally protected until users start tuning their fan speed
+in userspace.
+
+> 
+> This patch may not be enough. Users may wants to tweak their thermal_zone0
+> trip points, thus tuning fan rotation speed depending on cpu temperature.
+> That can be done on the base of the folloving example:
+
+P.P.S.: Fix typos please.
+
+Thanks,
+Angelo
+
+
+> 
+>    === example =========
+>    # cpu temterature below 25 Celsius degrees, no rotation
+>    echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+>    # cpu temperature in [25..32] Celsius degrees, normal rotation speed
+>    echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+>    # cpu temperature above 50 Celsius degrees, max rotation speed
+>    echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+>    =====================
+> 
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> index ed79ad1ae871..b0cc0cbdff0f 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> @@ -42,7 +42,7 @@ fan: pwm-fan {
+>   		compatible = "pwm-fan";
+>   		#cooling-cells = <2>;
+>   		/* cooling level (0, 1, 2) - pwm inverted */
+> -		cooling-levels = <255 96 0>;
+> +		cooling-levels = <255 40 0>;
+>   		pwms = <&pwm 0 10000>;
+>   		status = "okay";
+>   	};
+
+
 
