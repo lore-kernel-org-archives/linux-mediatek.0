@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F09C19F2E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 13:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F1BC021BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 13:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WF+WnuoEAmqiMqKkWFSdlb/we8IR4F2IFUrpx+PjxVw=; b=RRUCNLfyhsdswe8fl+uzcltB9t
-	RU/p8Gq0YNvar7Tn6ASmSekN1ROwGw23Z+RvWpouRR/QndR7vHv84PcutoW2sUQeDa1BNB0n/0tJx
-	TRgaCMwpRoVXL3XN/71d6/HtW+lttw6jrFG349rnm+uAmFvXPKUzRCtXR7Rkp3Pxaqw4RYUmPedBF
-	UpeytduGsvhY/YS7iR+XuuLsUkXHlWpuR668M3w+2/WyDpw8ccyP0i7xvT4N1qnapyb1bxY+qgb4r
-	brb1jqwD9rZfmSLjkyh2WTpKG6djeX1fWcr8M9lUBStK6xlSv/VCrMEaNMoQz8wiXPgbbJ6Bo2FJI
-	BoEtj/1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M58RpA4bCeeCl3AORbGOjEIwjSHSeOh6hGZ/du2O3yI=; b=JoXffl3IKJqe4EhnRThHApWbuQ
+	gRShbi3J6XTDOjeBbmsHzSCjph50mWgGFwyW18g2TdInuyUaHOQS2fqIIZp8421V+kYcbCGkC+3mh
+	p6rIjjZZZKyIhheAXx1x4zp3u2dYlKnZw6ANXR1HPSc4lVNc5McY3ytSqGMdrRNNxHNEFeNUdMRI5
+	caWa0Qe0InBsoMYvl5dr+6h1nxNwVDV3ylg7D5RUkRvQkK7JoUVXt17zssvPj5SADHHXOCleu3t4t
+	mqHs9Z0HhGYwaJywTEzvYjOZi5EcdviJxJdLWcL3gkTBc9jXxyBpPTQtGh52jQqRHfuPROS60n0YO
+	MQhKnIeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndwG-00000007X8n-3Gxu;
-	Thu, 27 Feb 2025 13:28:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tndzH-00000007Xpn-2ZUP;
+	Thu, 27 Feb 2025 13:31:39 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndnm-00000007UzP-47Q0;
-	Thu, 27 Feb 2025 13:19:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 772255C5884;
-	Thu, 27 Feb 2025 13:19:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C302C4CEE7;
-	Thu, 27 Feb 2025 13:19:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740662386;
-	bh=nW5BiIn0YY0mTP99cWvGx5b/yVrftP8IeddADOYqBGs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=YUzIF0swFxoup6z6QOJJrcJn1JjDsL6QInSriI61Pf/0VegFMk6tDcJT1zJEJkTFo
-	 ed+CujGahHYepR+8jK4o/1IVlTdEpgpbAlhQRFfixz0Hr4zLaWVBQre3YrbPqO85Aj
-	 HS9TjEuWpdL8aKMDXb5kdlTGtxqdVUMRFTFr2a2frvxby8vNaDhkgzDVHFeM7YGiUg
-	 F4hlXpVB2bS/GOhqUPYp5iRjDqzaoYPwfx97C9GyFYYxoNRtSoGag4QxCvHsmVnAm4
-	 CAX20iulNsI/YyQ1JgXYr7OBm8eNDQjuhs5VIufCY8tx9buHuA2jvZz+Baxfd4EY4G
-	 /KXk10eol7QCw==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>,
+	id 1tndsr-00000007WWK-2juT;
+	Thu, 27 Feb 2025 13:25:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=M58RpA4bCeeCl3AORbGOjEIwjSHSeOh6hGZ/du2O3yI=; b=RC2kRLg5QXYW/pNaLYGNM8YFUa
+	89kmtLgjEtoWL5PNpA7p57TVC85FBvooUHcyy0BbHvsLlnh6wA66T1NvnKuU41EIvbCXWcfXLGh0X
+	/XoHdaZmlBWlKt8CwHK9oKiU4k6hp7CiLG69FUDH5+YXyQBGdxJA+X8LIr/fGyLjNfHuM8Bqrt8Xg
+	HTydLqRJxLp1UOybjNp8KPRxGPIBWhp2eE8ZVMd/GnA0ywAPuU4jTz2jFvIz9ty+9eHxo13HEiUld
+	Q3OD0rYkwV3ldOVbynkWL9i3MOsRcErbwwmfmxQwDGoIsNcopelW3pG+JhtVo/XNgXO4W7Wmn13E0
+	VEgs0+OA==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tndso-00000003mls-2G9V;
+	Thu, 27 Feb 2025 13:25:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740662693;
+	bh=AJjwwKgwMjC0SHvP8uGYEB65jk8pzela6cd/RTnaqyI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=f0QoHOnX0vfIw3O2gfZkLHAuREA7zqlhfAXRUqRTnz3tMmR/P6bX01jtVhZhiSNsb
+	 KTMNTR1tfU2FzIvyQqXfXlCtiViHA2xQpirTrCZasgyrGvdKZe5VP1H7H5QZcOx4HJ
+	 qj4S4fh5MzByO2uVP/AZyX0b/VihXBMYEfYMfhMmGi/oSFuTszR36M2WAYkjGeWBHO
+	 xddc5dHCgX1E2TaUKfH3JVOLFbsBUXNmMNbgIlNXkSpCEKvs64nGWwgq0QvrUI0Uh5
+	 sXITq27v9U+ngQ2VQ4Ry3NHafY+G5CHE39/9I3E0ijvX33261CBk7246U5tf21hAWv
+	 lpAppYbIn3Ijw==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1003])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E41517E0880;
+	Thu, 27 Feb 2025 14:24:48 +0100 (CET)
+Date: Thu, 27 Feb 2025 10:24:46 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
 	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	parkeryang <Parker.Yang@mediatek.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	parkeryang <Parker.Yang@mediatek.com>, linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: mediatek: mt8188: avoid uninitialized variable use
-Date: Thu, 27 Feb 2025 14:19:01 +0100
-Message-Id: <20250227131939.1040168-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+Subject: Re: [PATCH] ASoC: mediatek: mt8188: avoid uninitialized variable use
+Message-ID: <34a4f185-f4a8-4055-bfe6-68be9a3a7a89@notapiano>
+References: <20250227131939.1040168-1-arnd@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250227131939.1040168-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_051947_072393_1983F212 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250227_132458_828309_FD2E01E4 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +93,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Thu, Feb 27, 2025 at 02:19:01PM +0100, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> The 'msk' variable has no initialization:
+> 
+> sound/soc/mediatek/mt8188/mt8188-dai-dmic.c:311:4: error: variable 'msk' is uninitialized when used here [-Werror,-Wuninitialized]
+>   311 |                         msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
+>       |                         ^~~
+> 
+> Set it to zero before the loop.
+> 
+> Fixes: c1e42ec04197 ("ASoC: mediatek: mt8188: Add support for DMIC")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-The 'msk' variable has no initialization:
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-sound/soc/mediatek/mt8188/mt8188-dai-dmic.c:311:4: error: variable 'msk' is uninitialized when used here [-Werror,-Wuninitialized]
-  311 |                         msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
-      |                         ^~~
+Sorry about the delay, I was about to send this myself.
 
-Set it to zero before the loop.
-
-Fixes: c1e42ec04197 ("ASoC: mediatek: mt8188: Add support for DMIC")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- sound/soc/mediatek/mt8188/mt8188-dai-dmic.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-dmic.c b/sound/soc/mediatek/mt8188/mt8188-dai-dmic.c
-index 4cfbcb71d2d9..adcea7818be2 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-dmic.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-dmic.c
-@@ -307,6 +307,7 @@ static int mtk_dmic_event(struct snd_soc_dapm_widget *w,
- 	switch (event) {
- 	case SND_SOC_DAPM_PRE_PMU:
- 		/* request fifo soft rst */
-+		msk = 0;
- 		for (i = dmic_num; i >= DMIC0; i--)
- 			msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
- 
--- 
-2.39.5
-
+Thanks,
+Nícolas
 
