@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00D1C19F32
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C0E6C282C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlO+h5s1Zy7GWUa9wjsUqRXyREiZA4sRNDEoMB9ruZQ=; b=l+er/AS8A6UnamRonhLIZJSSV2
-	xS1hLHyj1d0t7m7eyrT3xZfFatpyFoG/EvR4VCv7sI7jAR7uSBwRwk0kGMpEaG9rGGLEph1Hm8C5B
-	BvDYHHSXj6ehMCs7R5+sKq4vN8G3AVCQB9hVePnl+ZzD3pgO0/0WGdJ2p6GRotj8AdOUqOi5MuBFf
-	Y/94A1JO+ErBJRNQ9BNnJF58lfoLYa1o1/ceuc5n5ZODBCB/2Co2DvHcguqtr2E/yPWdSzI/tLK4K
-	u1nZa+DwusluKalwZ0dNWOt/lv67zCy/QKPJOgk3ZNqSzkJXa8MMHaMP9RCYbffgPnghrJ7ItkpCs
-	4ZKHr04A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RRnIfNbxhhx5Tqb5oQsAhaefaRDojIjIkjiXQZ+CMZU=; b=B8H401Gbts1I9RAQ8gfvx7/UY7
+	q0cfPs+3M1Mk/9bAow9WMjQvxy1i4aY5KZDx2Up/utEZiRP2D1OFgwQQFLgUnyo3nIEOCHyqQGBlI
+	nrs/Tsw7ZvQg6sVER5RPogSl+IUo4Uf614YoJMX4d2258TVuiQeAk0Sv29QpYBrtaD3LvEtM3JD8K
+	T5EnwIvmJP3iQVrRfTWUsC5GEwTz+KNU2rXo7oYNyVkc4c6RDQkmob+SKwKBU/ViUeay0r6Kh2JIe
+	vLthKcGSUjcWAb3RllvGRZ2jkc/zbP5AAWMkeaKO1aXWiszZHxXL2orzCom4+lNZT3lxILAvuEQ9T
+	TrF484jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjhB-00000008TpW-2uDt;
-	Thu, 27 Feb 2025 19:37:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tnji6-00000008Vbx-0YN5;
+	Thu, 27 Feb 2025 19:38:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnf5l-00000007n9V-1YmV;
-	Thu, 27 Feb 2025 14:42:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740667342;
-	bh=gw3yhjaD34XHxfwtco/3BRJayc9o3DLXMMEhaJRahdk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=izF4xcrCafDcNBAziKL40z+O24j05bpv7QQCpr1mlk78Prem1x3LczV3gTWAL7eN7
-	 HhP+R9Z2pl3w8KIkEqQjhZc2NkU9pZM9O76ENRFuTqmF0FkP/q4Q2Ed2ohSufJT7VP
-	 PP1KxeY6rZpxCogyjKSJs8EU4iGzu2ZQWSXOWESz9XpGgDaeX+8AioxzOXWDfhed/g
-	 CNeURodYDSoaf82rHOFTcjrORQlR8dpPr0gYJMeu+geM67KX9OnE2ME29goZeTqDnp
-	 vitS9KvVdBuFz/u9xsSVZMx0oowaCuEI3Xpj2Rm34u1aXbKMJTwrb4kCQW40+G2dsn
-	 lCXKMK+0OcoYw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA0B517E05A6;
-	Thu, 27 Feb 2025 15:42:21 +0100 (CET)
-Message-ID: <06563381-faea-48de-86f1-4db174de394b@collabora.com>
-Date: Thu, 27 Feb 2025 15:42:20 +0100
+	id 1tng7v-00000007xKB-0njE;
+	Thu, 27 Feb 2025 15:48:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4D75A5C1980;
+	Thu, 27 Feb 2025 15:48:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86C62C4CEDD;
+	Thu, 27 Feb 2025 15:48:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740671320;
+	bh=CLYYqdvqAO/1n/BWxTVd5NjOz2LQ7O10iJ3SeN8ieto=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ig5dzZ8TAwZWWEUogbZOP0QgD1qHUzsLdbmSun7YoUzDjsEP0GthlUE9htneHutDB
+	 VaGxjs5Zrax/HT0PddHlA1xYxsrIoWEPVMGSvtKu8iX8aetP+G/BehmXtmd3VEr4jk
+	 emRqbvQnnJCENiFdXXZsm+8WqTtKpKvlCx8o47TyAoMyuHPGBQYtSqE1aKJZq9RpZ/
+	 WcONZgDt4qBH8kT6NwAjrNzLFHRzpsp4BVFzb/zg/yQf5adlkKhmXNshvNnNtYLZSO
+	 wdn7F9NnUAv9M0iagr6jCpFuQkB1xfD2XJ2VPQrTppcC3fOjc3M70M9VrFwyTk58oY
+	 wxL5i48eqfGSA==
+Date: Thu, 27 Feb 2025 15:48:33 +0000
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+Subject: Re: (subset) [PATCH 4/9] mfd: mt6397: Add support for MT6392 pmic
+Message-ID: <20250227154833.GF824852@google.com>
+References: <20241226050205.30241-1-val@packett.cool>
+ <20241226050205.30241-5-val@packett.cool>
+ <173920541986.1887800.1972669785800121190.b4-ty@kernel.org>
+ <CAL_Jsq+PPYeFxr=utwZLemUVCzk5iabtMckOJmNy1-LO39cqeQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: avoid uninitialized variable use
-To: Arnd Bergmann <arnd@kernel.org>, Mark Brown <broonie@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- parkeryang <Parker.Yang@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250227131939.1040168-1-arnd@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250227131939.1040168-1-arnd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL_Jsq+PPYeFxr=utwZLemUVCzk5iabtMckOJmNy1-LO39cqeQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_064225_591216_A22F2B76 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250227_074843_271402_3F906023 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +90,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/02/25 14:19, Arnd Bergmann ha scritto:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> The 'msk' variable has no initialization:
-> 
-> sound/soc/mediatek/mt8188/mt8188-dai-dmic.c:311:4: error: variable 'msk' is uninitialized when used here [-Werror,-Wuninitialized]
->    311 |                         msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
->        |                         ^~~
-> 
-> Set it to zero before the loop.
-> 
-> Fixes: c1e42ec04197 ("ASoC: mediatek: mt8188: Add support for DMIC")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+On Tue, 25 Feb 2025, Rob Herring wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> On Mon, Feb 10, 2025 at 10:37 AM Lee Jones <lee@kernel.org> wrote:
+> >
+> > On Thu, 26 Dec 2024 01:58:04 -0300, Val Packett wrote:
+> > > Update the MT6397 MFD driver to support the MT6392 PMIC.
+> > >
+> > >
+> >
+> > Applied, thanks!
+> >
+> > [4/9] mfd: mt6397: Add support for MT6392 pmic
+> >       commit: 896b1eb4ca771b37ea50feb4d90a78dd4e9cb388
+> 
+> This should be dropped. Missing the sender's S-o-b and the rest of the
+> series has issues still.
 
+Are you sure you're commenting on the correct patch?
 
+> Signed-off-by: Fabien Parent <parent.f@gmail.com>
+
+-- 
+Lee Jones [李琼斯]
 
