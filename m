@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F1BC021BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 13:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE29C19F2E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 13:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M58RpA4bCeeCl3AORbGOjEIwjSHSeOh6hGZ/du2O3yI=; b=JoXffl3IKJqe4EhnRThHApWbuQ
-	gRShbi3J6XTDOjeBbmsHzSCjph50mWgGFwyW18g2TdInuyUaHOQS2fqIIZp8421V+kYcbCGkC+3mh
-	p6rIjjZZZKyIhheAXx1x4zp3u2dYlKnZw6ANXR1HPSc4lVNc5McY3ytSqGMdrRNNxHNEFeNUdMRI5
-	caWa0Qe0InBsoMYvl5dr+6h1nxNwVDV3ylg7D5RUkRvQkK7JoUVXt17zssvPj5SADHHXOCleu3t4t
-	mqHs9Z0HhGYwaJywTEzvYjOZi5EcdviJxJdLWcL3gkTBc9jXxyBpPTQtGh52jQqRHfuPROS60n0YO
-	MQhKnIeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d4MoQ9cEAhkqGNwSMRKP2vAO1WBCM7nRNILdvnioR+M=; b=eLoTp+IXFJPZi3YCg8cParIL/H
+	KECie345Os9X8yzFCCvdP8E0R25Ac3yRSwTtj/I0rFe9aMhwiemBRt2Q01nOuyW3yf9wVYWz18uDh
+	pJ/Hswoo95P3yQGSsJzLzssSCcqykvQetiJTnfO6mz8sEbhmV6UByzUoqQMMVyNT3+vb6acFm0g5J
+	0bbbHrUa38/0coAU+0Vn36tWFD8TRn2hG2SscxcGaZWP/QWLGMeliRFZh5fABDAiZ7Lu87TbOGWBY
+	IHIONJPvCSKbdHOnRHOncqhSrHQfzT3NyiHoeEDsc7JfR/p0VTttN1jjsPlKoXUkq4w+vzNoUg1lE
+	FngrV1Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndzH-00000007Xpn-2ZUP;
-	Thu, 27 Feb 2025 13:31:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tneB9-00000007a5Z-470T;
+	Thu, 27 Feb 2025 13:43:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndsr-00000007WWK-2juT;
-	Thu, 27 Feb 2025 13:25:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=M58RpA4bCeeCl3AORbGOjEIwjSHSeOh6hGZ/du2O3yI=; b=RC2kRLg5QXYW/pNaLYGNM8YFUa
-	89kmtLgjEtoWL5PNpA7p57TVC85FBvooUHcyy0BbHvsLlnh6wA66T1NvnKuU41EIvbCXWcfXLGh0X
-	/XoHdaZmlBWlKt8CwHK9oKiU4k6hp7CiLG69FUDH5+YXyQBGdxJA+X8LIr/fGyLjNfHuM8Bqrt8Xg
-	HTydLqRJxLp1UOybjNp8KPRxGPIBWhp2eE8ZVMd/GnA0ywAPuU4jTz2jFvIz9ty+9eHxo13HEiUld
-	Q3OD0rYkwV3ldOVbynkWL9i3MOsRcErbwwmfmxQwDGoIsNcopelW3pG+JhtVo/XNgXO4W7Wmn13E0
-	VEgs0+OA==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndso-00000003mls-2G9V;
-	Thu, 27 Feb 2025 13:25:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740662693;
-	bh=AJjwwKgwMjC0SHvP8uGYEB65jk8pzela6cd/RTnaqyI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f0QoHOnX0vfIw3O2gfZkLHAuREA7zqlhfAXRUqRTnz3tMmR/P6bX01jtVhZhiSNsb
-	 KTMNTR1tfU2FzIvyQqXfXlCtiViHA2xQpirTrCZasgyrGvdKZe5VP1H7H5QZcOx4HJ
-	 qj4S4fh5MzByO2uVP/AZyX0b/VihXBMYEfYMfhMmGi/oSFuTszR36M2WAYkjGeWBHO
-	 xddc5dHCgX1E2TaUKfH3JVOLFbsBUXNmMNbgIlNXkSpCEKvs64nGWwgq0QvrUI0Uh5
-	 sXITq27v9U+ngQ2VQ4Ry3NHafY+G5CHE39/9I3E0ijvX33261CBk7246U5tf21hAWv
-	 lpAppYbIn3Ijw==
-Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1003])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E41517E0880;
-	Thu, 27 Feb 2025 14:24:48 +0100 (CET)
-Date: Thu, 27 Feb 2025 10:24:46 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Mark Brown <broonie@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	parkeryang <Parker.Yang@mediatek.com>, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: avoid uninitialized variable use
-Message-ID: <34a4f185-f4a8-4055-bfe6-68be9a3a7a89@notapiano>
-References: <20250227131939.1040168-1-arnd@kernel.org>
+	id 1tne7L-00000007Z4C-2D9i;
+	Thu, 27 Feb 2025 13:40:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B69645C584A;
+	Thu, 27 Feb 2025 13:39:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36E04C4CEDD;
+	Thu, 27 Feb 2025 13:39:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740663598;
+	bh=cHUQXYpMECA1CrjD2oF3utlXd4IOvTws7zBps4QG/YU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=IUdi2pHsnjtC3+oCFGu6yr3FYLbI3gp7NuuthL2YRkCo7aVzirJzZhkujCiXeQETp
+	 9XTt5Rgej4zUn5LYmcH6/guD1uS4xm0ggMl0rwSO5v6ybcuf0hMgM/54K3NGl+EVRx
+	 qmbKwkeclEETmkS5opO3f10HRN8zOd7RGgNHbgWAUx00KW78XxQXFIM5+VqIE4GSl6
+	 R3/rrDP0JOZW51rh273W9yDcHM+uF2/gz3evgGulQP066tiHOCMPoqh/NQCv/Q1lZQ
+	 HUP3/dt9ej9u0nKc1kRzz3nBMTIc82I+7XlRwpuPaBMkUL+bLHnKC7VvRGSA/Ajj4K
+	 ts9cEsAGnJDJw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C61380AA7F;
+	Thu, 27 Feb 2025 13:40:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250227131939.1040168-1-arnd@kernel.org>
+Subject: Re: [PATCH v4 net-next] net: ethernet: mtk_ppe_offload: Allow QinQ,
+ double ETH_P_8021Q only
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174066363025.1432096.10317097850381047661.git-patchwork-notify@kernel.org>
+Date: Thu, 27 Feb 2025 13:40:30 +0000
+References: <20250225201509.20843-1-ericwouds@gmail.com>
+In-Reply-To: <20250225201509.20843-1-ericwouds@gmail.com>
+To: Eric Woudstra <ericwouds@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_132458_828309_FD2E01E4 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20250227_053959_612797_6B05B388 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,27 +69,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org, sean.wang@mediatek.com, daniel@makrotopia.org, linux-kernel@vger.kernel.org, andrew+netdev@lunn.ch, edumazet@google.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 27, 2025 at 02:19:01PM +0100, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> The 'msk' variable has no initialization:
-> 
-> sound/soc/mediatek/mt8188/mt8188-dai-dmic.c:311:4: error: variable 'msk' is uninitialized when used here [-Werror,-Wuninitialized]
->   311 |                         msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
->       |                         ^~~
-> 
-> Set it to zero before the loop.
-> 
-> Fixes: c1e42ec04197 ("ASoC: mediatek: mt8188: Add support for DMIC")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Hello:
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Sorry about the delay, I was about to send this myself.
+On Tue, 25 Feb 2025 21:15:09 +0100 you wrote:
+> mtk_foe_entry_set_vlan() in mtk_ppe.c already supports double vlan
+> tagging, but mtk_flow_offload_replace() in mtk_ppe_offload.c only allows
+> for 1 vlan tag, optionally in combination with pppoe and dsa tags.
+> 
+> However, mtk_foe_entry_set_vlan() only allows for setting the vlan id.
+> The protocol cannot be set, it is always ETH_P_8021Q, for inner and outer
+> tag. This patch adds QinQ support to mtk_flow_offload_replace(), only in
+> the case that both inner and outer tags are ETH_P_8021Q.
+> 
+> [...]
 
-Thanks,
-Nícolas
+Here is the summary with links:
+  - [v4,net-next] net: ethernet: mtk_ppe_offload: Allow QinQ, double ETH_P_8021Q only
+    https://git.kernel.org/netdev/net-next/c/7fe0353606d7
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
