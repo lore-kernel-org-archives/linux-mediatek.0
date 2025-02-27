@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628E7C19F32
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F03C19F32
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x5tyE6WU6tuQw4iUe4dELeef6mDUsSz+oxDjfFcObus=; b=Yp7GOxYsZXwvMQbkBMAhkNTqkJ
-	rx3sI++lBw0q8r5SrUpjKREaozEA5f45gFCdX+tEWdDogSwCJXFv4hPL/aIrxcFey+bxJDeW7Gzbq
-	+A/C9ceAT6dvJbb/JO1aYczwlGj0zmQPC36DhS8thzuPlHZmjs5PqjEPFlUZNJg7kRInMSmPQQF2R
-	elKgZWollqgepcZeaY70axe9mun2yZuF9AL4m+7FRmXsB7BOXf1djjS3FLSXVQ6vtjMSJ8hFxPBIe
-	gWo2G/M/hpNfgrtwMZ4tIwcuylOB4k4GOcNkuvTbIk3c3dFUzqEnlmnZwlq9w2V4ub9Y5cJBVpnlI
-	2ee4EUNw==;
+	bh=WPNXK7KQ5MpRRYWq0KLtF7TwN/rOCRuz8TuoIYjdjVY=; b=Cz7jpREpB+71OvSFLAmZ2Wg5iX
+	9B9vYPOMNB84UBrYKpbsaijPYtcXEAyRNFhnvHuf5ZgfR5IUwY+WKBw5mSQ5JxMqUppTduj16AeoH
+	bsDqmlwkRUpj2NtmdUr91y/Ej4n6nR+pQGG8JZ7ZUXN4RmIWEzQXSryQx9V/tNKoKjP6S18NfWM8E
+	/QTGu4avkZSsFJt5V+5AzZCVwNrMxLujv/L86SKKJt4hu2v9LmuGIYba46yMFqaQljrLy8c/S6zbJ
+	cZuLuw3OjjZOB+JEXzWmB71B/Ptt5O6whRBMHYZOBEu0i7H0cWMvnHcv+CjpycacVpvq0KKoPQm/F
+	aWvdemJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjkw-00000008aoL-0YYr;
-	Thu, 27 Feb 2025 19:41:14 +0000
+	id 1tnjlN-00000008bZg-3DVr;
+	Thu, 27 Feb 2025 19:41:41 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnhd6-00000008Ck1-2Akg;
-	Thu, 27 Feb 2025 17:25:00 +0000
+	id 1tnhx9-00000008EwR-2zse;
+	Thu, 27 Feb 2025 17:45:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5D5FE61F3D;
-	Thu, 27 Feb 2025 17:24:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54550C4CEDD;
-	Thu, 27 Feb 2025 17:24:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0000D6111F;
+	Thu, 27 Feb 2025 17:45:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9685C4CEDD;
+	Thu, 27 Feb 2025 17:45:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740677099;
-	bh=30fEOChuXPuQizgWsKYGoHZgd3JOsgWYZ6vexdohouU=;
+	s=k20201202; t=1740678342;
+	bh=axlj6OwJVLYwr+IYJL39G4o+MqL7DKsYZuPxTQMr9eE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UttddZXUoRgNyM8txwGs+X+ABYWRG4HdDn/zgOU5eY7vezx1Vng7djeduqijLBROR
-	 0YWT2HQsDV5cHRCTcAaLz9Ur8Mtb/EXog1TLUN7MevgZIL0cYzCIOAwYaBPM468gqy
-	 7GQe4dWy351dHtODgJn19HHh57Css70hxKz0BCXbzTSUB22hLnGsobPKsO2QxkgCbS
-	 gKI93a75t/k5qdPBoqgR9qK46m1ED6ftk/p9YHcnMyS71MERHiDMlnLUz2M3GOvYGi
-	 6bFo4TJ71uMXHGDPLYc1+0DbMqu9vmqaaLlm6mgwbrolIqx9rFTGNgbH8Etkn8J/2I
-	 kOjDwsM8byO2g==
-Date: Thu, 27 Feb 2025 11:24:57 -0600
-From: Rob Herring <robh@kernel.org>
-To: Lee Jones <lee@kernel.org>
+	b=Itq4eoKtNVNpeFYQ7F357k3WR+YxDtrfU/WrLbn773ZYNI9GB1aPTUGoFWFTPxK1s
+	 ZPRPgYSCBXlEQQYxeeA184qAcY+WqsJUXllKK+DG5A1S+iTbcnxf08pqIG80X9whzu
+	 8Keuii1YTeNMBU54jhF7Leb0TuETm/Nr5ngiNPyjMN9kiRfW3+xakpRGAE6IT5vIvk
+	 du7MXtbCYIbfuCLkdgF9p1TwiFue1ekqKjL7YM/wWeZEpTMrDhnZzySqX7Fqv7+K4+
+	 2y71/+2T8whsUxscXC74/WzJzU2a2XC8kFsnYkP2itqPEPn1f6T+0GeqBTUi9PPnP1
+	 u/cy38V0JG4qw==
+Date: Thu, 27 Feb 2025 17:45:35 +0000
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
 Cc: Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
 	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -63,17 +63,18 @@ Cc: Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
 	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
 Subject: Re: (subset) [PATCH 4/9] mfd: mt6397: Add support for MT6392 pmic
-Message-ID: <20250227172457.GA3415187-robh@kernel.org>
+Message-ID: <20250227174535.GI824852@google.com>
 References: <20241226050205.30241-1-val@packett.cool>
  <20241226050205.30241-5-val@packett.cool>
  <173920541986.1887800.1972669785800121190.b4-ty@kernel.org>
  <CAL_Jsq+PPYeFxr=utwZLemUVCzk5iabtMckOJmNy1-LO39cqeQ@mail.gmail.com>
  <20250227154833.GF824852@google.com>
+ <20250227172457.GA3415187-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250227154833.GF824852@google.com>
+In-Reply-To: <20250227172457.GA3415187-robh@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +89,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 27, 2025 at 03:48:33PM +0000, Lee Jones wrote:
-> On Tue, 25 Feb 2025, Rob Herring wrote:
-> 
-> > On Mon, Feb 10, 2025 at 10:37 AM Lee Jones <lee@kernel.org> wrote:
-> > >
-> > > On Thu, 26 Dec 2024 01:58:04 -0300, Val Packett wrote:
-> > > > Update the MT6397 MFD driver to support the MT6392 PMIC.
-> > > >
-> > > >
-> > >
-> > > Applied, thanks!
-> > >
-> > > [4/9] mfd: mt6397: Add support for MT6392 pmic
-> > >       commit: 896b1eb4ca771b37ea50feb4d90a78dd4e9cb388
+On Thu, 27 Feb 2025, Rob Herring wrote:
+
+> On Thu, Feb 27, 2025 at 03:48:33PM +0000, Lee Jones wrote:
+> > On Tue, 25 Feb 2025, Rob Herring wrote:
 > > 
-> > This should be dropped. Missing the sender's S-o-b and the rest of the
-> > series has issues still.
+> > > On Mon, Feb 10, 2025 at 10:37 AM Lee Jones <lee@kernel.org> wrote:
+> > > >
+> > > > On Thu, 26 Dec 2024 01:58:04 -0300, Val Packett wrote:
+> > > > > Update the MT6397 MFD driver to support the MT6392 PMIC.
+> > > > >
+> > > > >
+> > > >
+> > > > Applied, thanks!
+> > > >
+> > > > [4/9] mfd: mt6397: Add support for MT6392 pmic
+> > > >       commit: 896b1eb4ca771b37ea50feb4d90a78dd4e9cb388
+> > > 
+> > > This should be dropped. Missing the sender's S-o-b and the rest of the
+> > > series has issues still.
+> > 
+> > Are you sure you're commenting on the correct patch?
 > 
-> Are you sure you're commenting on the correct patch?
+> Yes.
+> 
+> > > Signed-off-by: Fabien Parent <parent.f@gmail.com>
+> 
+> It was sent by Val and is missing their S-o-b. If you send another 
+> author's patch, it needs your S-o-b.
 
-Yes.
+Ah, gotcha.  Yes, that's fair.
 
-> > Signed-off-by: Fabien Parent <parent.f@gmail.com>
+I'll pull the patch.
 
-It was sent by Val and is missing their S-o-b. If you send another 
-author's patch, it needs your S-o-b.
-
-Rob
+-- 
+Lee Jones [李琼斯]
 
