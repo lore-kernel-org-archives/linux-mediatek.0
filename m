@@ -4,90 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2DAC021B8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2025 22:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88213C021B8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 01:05:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eq8gRk4XBu+/hRpz+bqnE1JgXk2J9JWrinMC3/G5BEY=; b=NZkVg5UwRCT6sXKWt49MX6hh0X
-	6AK6akpzAvzFTZfnWKubUutlDGnBDIzXBVcW2ykiupFOU4xb0j9KV3wu+DD4Xk4ZjVdFbxNXLdjEi
-	k/ePht4fH9fk9SraItYleO7o18tz+Q1OGvBPZqAUkVGc9WlUJP3bzJNDajdANBQ7bsDwny0lVTHIJ
-	oNMDzLj6XyqJrGdSH5F/2nuOKcpYtheFxtP3HiipqSkt/z4rVqby/m+JRnNqG46qYYaGnsdztkF3B
-	Nx7+azJRZhO9Kaf2SStPLmKw+FLJi0mGSAxo2wB4uBEf9Q7/IXk1Phbi7DliKrKqZNg8EPGMAsJGz
-	MLvHf94w==;
+	bh=UmvSJoA4V9widGtTEXST3uDxkbKiOKmRYCx2G+QD7wc=; b=b/bZ5u5uxTL90uv2DDXKTLMnUv
+	EOKRRkl8uugrbpe6kzW0Ayh+j1thG9KV7w/XIeSj2ULXMsu2I7K1UqLHTsWQGnHy3yhHRuPNJB0bt
+	8vkwoqVwbUd+13GN7JEtk3iRRbDYCT6V4Fy18sR7fCEspxbcZM442aODzzrPPRfR9AiVs3rgX5VUU
+	BS0U3qY3Ajt1sUxXaNd3qtnGI0x/fdlBJTISK+PE+OYN/6nR6JclfqBWBaoCkU9m4+27j9fktBpXy
+	efZUMUfETWl21fCKJpuh3+xxncHdXCE0gwIM8PUGqISIcj7/tS460NRhoPNdYfyszr3PF6vRJp3Ho
+	pXJ3pmvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnPSH-00000005Xcu-0iX7;
-	Wed, 26 Feb 2025 22:00:37 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1tnSKi-00000005sWs-1ndd;
+	Thu, 27 Feb 2025 01:05:00 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnPMh-00000005X4d-2Gdf
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Feb 2025 21:54:52 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43948021a45so2679825e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Feb 2025 13:54:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1740606889; x=1741211689; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=eq8gRk4XBu+/hRpz+bqnE1JgXk2J9JWrinMC3/G5BEY=;
-        b=qjggtQ5YA+TseqFbqY+J7/cMC7qkDNJNRNeW3u2IIhJvsW2avMDAD75Trugo1AI/PC
-         ByQ9aluvMPt+cZ2XYyaYcwArZt5MxJYcoBn7RduZQQGPo6udwoZ/IPGHNAZW1LDpdZHj
-         1T1vNbbcl/gKQPL4haEcMF06Zpl3E5ZEVv+ivz3cvqbBgRkMkVEVkcZlGcz98ZjrrtJy
-         X8F+fnvBmfWqMD7oqxyLi80ZltSABp7DG1SDGljQ36Nmfen/JB7t+WjXQiKbtxG2ioHI
-         2eQhRhmZSq5tZlZ+yyWmc9COFQWC28PCTKB+wesA6ouhg72CbYOyXIOAo0RdbsfR+elM
-         mkGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740606889; x=1741211689;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=eq8gRk4XBu+/hRpz+bqnE1JgXk2J9JWrinMC3/G5BEY=;
-        b=Qk4CISq1sDwXp5f/ojcP9jeVy1xYhLhRID1/nsxSYdX6HTRI5R3f7ZY8+US/HdlUPp
-         8cZzbhOD2umavy05u6POebPFfV+J6SMr1hCHEQr90tRJB1Qj+6NM6Xc/YOTtIEIj5/xJ
-         KjwNRmQBIO4ejXNgCPUEpTJZaQP041DcZZPwgDYvOPr1/KeYa/WUJcvnfpct8ZjR6Fj+
-         CkA/9/xD5v2A3AjNKzx1OiuccqAixgVA/q9RfuKCmjKOQa4oLIVxyFQcZPZ+Cf09CO/l
-         UUAxg/auwE01gO1KgvuLAbqhlRjXcRJuVHGWA73P4d7sgQtFkK/kMDKdrgmEb9UzUhxg
-         qTPw==
-X-Forwarded-Encrypted: i=1; AJvYcCWvp7YAboRot2h26J6MYGNQ1jQX2aFeoTPQrWhExRDZSFgb1UVB+xHw8Ubr9vM7GbhKCORO8QjEMSapV2Q71A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYg4TZBwucX6QBNcMAOs4+4ljV4u0Vh9zMBwCtPKF9fQTh/fiX
-	hfTF+YuUBzgrayQFjGxVvkaSuYoKEK0mwp2vDzflQ1zyNqeMmkXkxSJx9dv6U/g=
-X-Gm-Gg: ASbGnctKB4uOkwWuZ6JbhjGQUrHyqRUbstTLG51MtrCUqCl5O8aj+gXfYsKV4GZn7Yt
-	rJL4OCqpR57evrCep0nD7U5f1goX5XDLn0PgUP9zSTcuApOPE135z1JxbgA/kAtTOQHR/E585OG
-	soMoShmlX/zw9FjI0Jm/hSMYpImK69TFu3s0i7HJ/KZ0yQS4vvFOmNMY3NXxeMxLMC3H97ocFCd
-	70bEQz7QMyA7+ud0eEzfwcaEk3DH8O4VJRV/4lXqkjUgmR5vBp7a8mUSOiqw/YsfbyVAi6stNVh
-	i8YIevsIF9idBFaD9WmqSdosxJQ49oVpNUZAcj6eS9uAf5gfLGWVwPxIA+eImqsEpg==
-X-Google-Smtp-Source: AGHT+IHhsFL+pj6OMWN3D2F6NIOmEF1QIihEQmaH+QhUH5bAqp8gOxbsoe/yEiSSRrYlfkmP/mngBQ==
-X-Received: by 2002:a5d:5886:0:b0:390:d62c:ecd8 with SMTP id ffacd0b85a97d-390d62cf1d8mr3926088f8f.29.1740606889502;
-        Wed, 26 Feb 2025 13:54:49 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-390e47a6a5esm93410f8f.35.2025.02.26.13.54.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Feb 2025 13:54:49 -0800 (PST)
-Message-ID: <5e75ed4a-4aeb-45ab-a41b-4498f364a57f@linaro.org>
-Date: Wed, 26 Feb 2025 22:54:47 +0100
+	id 1tnSJA-00000005sFx-3GLo;
+	Thu, 27 Feb 2025 01:03:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E169E61223;
+	Thu, 27 Feb 2025 01:03:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D6D4C4CED6;
+	Thu, 27 Feb 2025 01:03:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740618203;
+	bh=UmvSJoA4V9widGtTEXST3uDxkbKiOKmRYCx2G+QD7wc=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=sSUlTSt1fdw9WDJk1UX25ffpH2sRCJeklA71dTRCMs7h07iGQ8N/dSx5B42GmA5Kr
+	 orkaTDL3g8nJWkp8W5eaCBKh1vrDWfv6I9o3ODk88d2gCrEaKQUYRxoI6hRxXM5NdG
+	 zBMP6U7mU+C4Kd0nnlky6+HJu6J+mU/NsLfx7vfQOBFgnbHL2BrXKgbl7SGWJ1GKOh
+	 SyvzT1zLSiQzR9Kl2KMA1dfCV/3HkiscWmy2Q/lwETVD8tc6xkxQakfFGI0C8w+qEc
+	 TRk7+mr3NWbm+xD/gA28rgZ8fcHVoNCGFNmlEcbIQbZeS54ltjSvjgP/PPTar+EE0g
+	 0IZl2YcueDiwQ==
+Message-ID: <714808f633d097b96082e1e418ad2205.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip
- points
-To: Nicolas Pitre <nico@fluxnic.net>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Nicolas Pitre <npitre@baylibre.com>
-References: <696pn9r7-63r9-r2pp-rq18-471269pss1nr@syhkavp.arg>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <696pn9r7-63r9-r2pp-rq18-471269pss1nr@syhkavp.arg>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_135451_586840_B55DD903 
-X-CRM114-Status: GOOD (  11.54  )
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
+References: <20250212100342.33618-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek,mt8188: Add VDO1_DPI1_HDMI clock
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, geert+renesas@glider.be, u.kleine-koenig@baylibre.com, amergnat@baylibre.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com, macpaul.lin@mediatek.com, pablo.sun@mediatek.com
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Wed, 26 Feb 2025 17:03:21 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,111 +67,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Quoting AngeloGioacchino Del Regno (2025-02-12 02:03:41)
+> Add binding for the HDMI TX clock found in the VDO1 controller.
+> While at it, also remove the unused CLK_VDO1_NR_CLK.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
 
-Hi Matthias, Angelo,
-
-I noticed Nicolas sent this patch but you were not in the recipients.
-
-
-On 07/02/2025 21:31, Nicolas Pitre wrote:
-> From: Nicolas Pitre <npitre@baylibre.com>
-> 
-> Provide the "switch on" thermal trip point to be used by the power
-> allocator governor.
-> 
-> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
-
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> index 338120930b..262eab8fd3 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> @@ -472,6 +472,12 @@ cpu-little0-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
->   
->   			trips {
-> +				cpu_little0_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_little0_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-> @@ -510,6 +516,12 @@ cpu-little1-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
->   
->   			trips {
-> +				cpu_little1_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_little1_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-> @@ -548,6 +560,12 @@ cpu-little2-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
->   
->   			trips {
-> +				cpu_little2_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_little2_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-> @@ -586,6 +604,12 @@ cpu-little3-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
->   
->   			trips {
-> +				cpu_little3_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_little3_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-> @@ -624,6 +648,12 @@ cpu-big0-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
->   
->   			trips {
-> +				cpu_big0_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_big0_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-> @@ -658,6 +688,12 @@ cpu-big1-thermal {
->   			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
->   
->   			trips {
-> +				cpu_big1_switch_on: trip-switch-on {
-> +					temperature = <68000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +
->   				cpu_big1_alert0: trip-alert0 {
->   					temperature = <85000>;
->   					hysteresis = <2000>;
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Applied to clk-next
 
