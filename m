@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3B9C19F32
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:39:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E774AC197BF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2025 19:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jbqQv9mTISgsVsoSLPq0DwlI+escD/wkkpwj8GOQ6IM=; b=HfCjVRP5s0sxWXCpD0NELTRkdg
-	meF7Vyz0UDa+BEn+5tBAYibvWawFQAbsepXeZbjJCtza0nQuVCf+UbPPu948b7vLRsq/AnEvuNdc5
-	bZhmkHcB3Vw6fIicR+QjzX76QuhRz1bPU0MjBY9RR85ktFcxLxAsvSRW21XJE4Pgm6XEkaatOfR1E
-	0YDnRTptxrs9B0CJSsAGG4NLEloO8X+1wXnUIGrbZaVzrNMXs78LZMTaze5ZMLMzcZdYHetlK+CcK
-	ut+qX0yGnbkv7yZDgBfm/JaZkutBm3R3Gv4JWbYXA8x2IAw6/aw6D+n7UIrewD2D8U/n9fnWl0eGx
-	Gj7gZMjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YCYZEqDU29mV/oNhQzvKUezViExGkTYP3v0Ttd1er+E=; b=Pe2uj6mDLLFwrAbRFoiB1riX/5
+	f7QvgejObsQYTLMp7fvkeOzM6z2MaEG78C8jvwKUwR7xGmbb0gawu6R80uLFveWmKJB+PQq0uYL0b
+	Va53PrsHcf52uC7YoGrA/+GQSmPZ/Y7IRtNVYPtkYrK+hDWSl3SDYDrbZHRBaFb0/gjs19G33Vwzl
+	JbeKl0lLrn+jMHxCNpY8hZNC9G2DiKxJU+SZBkLlVCeL2HkEdFy5kSYuQWb1ocEercKpyFiFawzhh
+	UE8MiJrz5S/uF2aly8C+n1soRkALGtUu1Of1fjZ0kyDe6o815zK7k6j2a1FkHQoONKgrq6o1fAR8o
+	wATgbcKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjio-00000008Wwq-2eIW;
-	Thu, 27 Feb 2025 19:39:02 +0000
+	id 1tnjjC-00000008XjA-3bOn;
+	Thu, 27 Feb 2025 19:39:26 +0000
 Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tngC9-00000007y0a-3qjD;
-	Thu, 27 Feb 2025 15:53:05 +0000
+	id 1tngSr-000000081Hc-0CIa;
+	Thu, 27 Feb 2025 16:10:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D2F3461F21;
-	Thu, 27 Feb 2025 15:52:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 908FEC4CEED;
-	Thu, 27 Feb 2025 15:53:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9C1EC61548;
+	Thu, 27 Feb 2025 16:10:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 727BDC4CEE7;
+	Thu, 27 Feb 2025 16:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740671585;
-	bh=TBF7wUkwR5l5SAlFOkV5L7qayuPJGqlI2MqDmi1e2Qg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=cy8dsJl5R0GGYabMm31a4uFGRKRsFfxDV0JxeTwy/T+jLa4Rls9aVmvo9ZR/WQ+5D
-	 L5UAIUySR+ivTBBEiktecSu+8ja+NV9S+XuODphYxQIzh06YTnKgaDwdrHlwhTCpCo
-	 kc0sfT4pcosTadJqQpxMk0qSVpQLocvBZZTiTLGnBXENfvcfHs4bMoQAuyETw4q/2I
-	 w+0hY4OrS7uikMUTjszPLDLiOf0lz7+kjX9+lptK3DayTJ4A8OchnIT3HMmNQn5bOO
-	 owKGVkvrHForNoID6Yn2elgqZ/H3GiRQZnO3F6Ua7CR0B/eThfOVp5QuSxpudr4rrQ
-	 dc75GWBzG50NA==
+	s=k20201202; t=1740672619;
+	bh=YCYZEqDU29mV/oNhQzvKUezViExGkTYP3v0Ttd1er+E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=j9jgtNv2TfNW57fbo62ipO3IfdMDTIdaY+Q2mzg4eQ8YdQsp0h/yXw3FkSA8Myfmi
+	 V6d7RW0ZzMYMlsAwg6z3dlyUaiIdZCwtyw3yLiD/au7CHcZTSMl9HP1Ager722NGzk
+	 B3jIc9TGXbZ3SgNkr1tU0bobTT1MwYTyQk+/ABjjOdbdnE4DzqNZOSQpaWJfNlPfii
+	 UheFk+CcWHIroX7zRZOT7vM/PoPJEJ8N0Gyw4ddK6rK2/xzLQ/IOwd+AyuppJeNWKG
+	 2h0UF/GQJLHjn1KsDMfHs96xZT2QERoEWPJ2TfanTIbmAa7dig1BdnJHPPKvmZfUd5
+	 NeNRRvg4anqOw==
+Date: Thu, 27 Feb 2025 16:10:14 +0000
 From: Mark Brown <broonie@kernel.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- parkeryang <Parker.Yang@mediatek.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20250227131939.1040168-1-arnd@kernel.org>
-References: <20250227131939.1040168-1-arnd@kernel.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: avoid uninitialized variable
- use
-Message-Id: <174067158231.70060.14955037927245786834.b4-ty@kernel.org>
-Date: Thu, 27 Feb 2025 15:53:02 +0000
+To: Colin Ian King <colin.i.king@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH][next] ASoC: mediatek: mt8188: Fix uninitialized variable
+ msk
+Message-ID: <7e26d6f8-a920-4933-9f27-52f08a975acf@sirena.org.uk>
+References: <20250226161847.567160-1-colin.i.king@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pWySIzzNsqHTGnmF"
+Content-Disposition: inline
+In-Reply-To: <20250226161847.567160-1-colin.i.king@gmail.com>
+X-Cookie: Swim at your own risk.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,43 +75,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Feb 2025 14:19:01 +0100, Arnd Bergmann wrote:
-> The 'msk' variable has no initialization:
-> 
-> sound/soc/mediatek/mt8188/mt8188-dai-dmic.c:311:4: error: variable 'msk' is uninitialized when used here [-Werror,-Wuninitialized]
->   311 |                         msk |= PWR2_TOP_CON1_DMIC_FIFO_SOFT_RST_EN(i);
->       |                         ^~~
-> 
-> Set it to zero before the loop.
-> 
-> [...]
 
-Applied to
+--pWySIzzNsqHTGnmF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+On Wed, Feb 26, 2025 at 04:18:47PM +0000, Colin Ian King wrote:
+> The variable msk not initialized and is being bit-wise or'd with values
+> in a for-loop, leading to an undefined result. Fix this by initializing
+> msk to zero before the for-loop.
 
-Thanks!
+Arnd sent a version of this that picked up reviews from the Mediatek
+people so I applied that one, should be fixed in tomorrow's -next.
 
-[1/1] ASoC: mediatek: mt8188: avoid uninitialized variable use
-      commit: 79ed408b2402e8113aa5a298f3bb9088ede58f6c
+--pWySIzzNsqHTGnmF
+Content-Type: application/pgp-signature; name="signature.asc"
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+-----BEGIN PGP SIGNATURE-----
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfAjmUACgkQJNaLcl1U
+h9Cs1Af+MSLOz0trHITEydA1HvWLS0Wo5bVckllFyYx804ML5J1ygfDeFai7jkCg
+xvv6G4/0iIDehHzjt6Dgx9QchR7zs1jYHqYB18VHczyC1FmDxAZqsJP8BiLdiZAc
+LmJqP7Ja/AKV38HZ7PRzNumF6+wleFdUFGSFUjTVPeQhY3gBBA6m+/yzt9OsBmnq
+vFaxQQO7gi0K1o/FGNtYrFVvd9M/daCguvavPfHWUFA4CRTc/sMKCEfmxPwTcqQl
+4Qy2pG9lptEg0Z2NWfDyk7eS9lXPZgMae4Ce9OXhQFR8UnLprTGz9xXoQjvGQ7qm
+UhKi612TSq9alxvM1gAim+feYjpyTg==
+=YEY3
+-----END PGP SIGNATURE-----
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+--pWySIzzNsqHTGnmF--
 
