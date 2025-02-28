@@ -4,68 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68258C19776
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 13:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66100C282C1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 15:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=trYA0HLMxP/9HUv7jNZRroSssvWuXd7Q6GJW/fSp/Kc=; b=eEzsZQNzUwudy5hhgitNz35o1C
-	jHqjqAMxAsXnxGhSWGvBUKuamg1ML8KHn3gUgr10wZyj+kzJ2wPZxcqf9BFKhC84u8a83mzTdWdzt
-	8+SEDca+MEAQAcmWZ+yqmZbYZN9XY1C30x3vlfhNo6B40exSxHlRU9y6R+OOsj0KzwImFeKXIVg+g
-	MynaA3j77FzqIR0yHNcXCyVMFBdlK7M/gu0Xd2FwwFL9Vzmp3CGxovgtLqCHuJA3sku6dl0laQyt1
-	1/Et50JJY6t5beIwEUdJQbbujBW8z+xlweASAG4RL6GEcgvWgvnAMkEf5T4e4nSMGGbiYSMSS+FIX
-	wWDQauDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bm77GiaKy4B5E8U7E3Q8p7UvT2yl7qRHpaz9uX0zrNM=; b=W4Wo3gAMDjR/km0PhyLLdyyLvN
+	9XqPJgeJfuCxEjB3TVvPxeem6IgrKY7jOtNJdILse0loI/LKl7CvALxuRNVUoqdfXJcUBzC4dQZct
+	Tns3Zx7cHZaHH8D2dP6AZsDaJaSOBONGNm7rD1ABnDleEkGczySjjEXMVeDkHyopO2jq1DOqZO2vj
+	UXekN0uRzHv+fg81nRAY59Ju+hwrVXhvoJDQjuUykfEJz2v07C4VMGJrpa/FbLfAkB3mcDFObuoVc
+	wnpFovwXp1TuQoMKjihhPmihWO9KHSkMM/Yw/cW3zHdOZclhXxxH9hDG++sQcNs1v3CtjG6Hyb4cI
+	NqycLQ+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0DW-0000000B2s0-2Lwa;
-	Fri, 28 Feb 2025 13:15:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1to2Pi-0000000BUeX-3H3M;
+	Fri, 28 Feb 2025 15:36:34 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0Bw-0000000B2UX-3YPx;
-	Fri, 28 Feb 2025 13:14:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740748450;
-	bh=21m3In4wCH+q/UoEDYx7ymPFrvABWf4Rd32gUSleQA4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eNabF+okts2wj5dvZqEBsxkC50bHNM+f5w4lqa7moXIz4uTrl2Dwht6hOqGiod1MK
-	 yrrwclkFsnIodC7SDWabOXUO3KABtHYviBa3il6GwIrYgwLH1s/hT7ISUti/D3SMy2
-	 I+fy4+hm4Sg/qB4K5PCskuRuHDn2TNybZUYToHnYwKxd/1QU0ldBXskBiTgmqL0Ipg
-	 mKxcYEzHxnzBDfv+RguYfrrK7hCZU09YDF3GPxBBGxVMOJcXbQGd2bHXiFKEGKMWKH
-	 bAhOirJHBRJ8C00gWbsqCRO83L4G0d4KGf2d7+IJgDWSEEMdUhkN/fV2iypTRhWoaJ
-	 azj0xU0CSrUkw==
-Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1003])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 733C217E087E;
-	Fri, 28 Feb 2025 14:14:07 +0100 (CET)
-Date: Fri, 28 Feb 2025 10:14:05 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, kernel@collabora.com,
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] ASoC: mediatek: mt6359: Fix DT parse error due to wrong
- child node name
-Message-ID: <59f79e0a-c99f-4b30-b0dd-81c4889c7807@notapiano>
-References: <20250228-mt6359-fix-probe-failed-v1-1-64941d387b2c@collabora.com>
+	id 1to24U-0000000BPwS-0Hh4
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Feb 2025 15:14:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.net;
+	s=s31663417; t=1740755662; x=1741360462; i=ps.report@gmx.net;
+	bh=Bm77GiaKy4B5E8U7E3Q8p7UvT2yl7qRHpaz9uX0zrNM=;
+	h=X-UI-Sender-Class:Date:From:To:Cc:Subject:Message-ID:In-Reply-To:
+	 References:MIME-Version:Content-Type:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=KZJgsuSY7KBn5JLzAhrB/Z2J97PkcmTio/JMwanPF9Abq3Fv6zLEtg/ImvVBHh0/
+	 +gcW8iw8+rQ9XlxttEnXAINtZFEFoCfdtFm8ZjjpHrBCG9CRRU1e1VPqu7JhwDh4o
+	 QCPU328PDvFYZYxd6/E1qqFTRVzLfW4lWE4pTUAjFaHt6aVqiRuAOSapV2/Qe8XQy
+	 DF/wHuvsddWy7O/X5TLvDJ8ldWFavzAeit80V5mhmULhGbezTy2L3ZjON9JsKpt6V
+	 PX6dlVc411+eHCWzU3Yb/xBZEEQnscyafKsGUetzfiV3XO5RF7gZ9pSIFwx/PHaUT
+	 PMVQKYNVWsgCGg0gaw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from localhost ([82.135.81.95]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MzQkK-1t1PYs0Z9M-00zhNV; Fri, 28
+ Feb 2025 16:14:22 +0100
+Date: Fri, 28 Feb 2025 16:14:20 +0100
+From: Peter Seiderer <ps.report@gmx.net>
+To: Christian Heusel <christian@heusel.eu>
+Cc: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, stable@vger.kernel.org,
+ Benjamin Xiao <fossben@pm.me>, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-wireless@vger.kernel.org
+Subject: Re: [REGRESSION][BISECTED][STABLE] MT7925 wifi throughput halved
+ with 6.13.2
+Message-ID: <20250228161420.11ac4696@gmx.net>
+In-Reply-To: <b994a256-ee2f-4831-ad61-288ae7bc864b@heusel.eu>
+References: <b994a256-ee2f-4831-ad61-288ae7bc864b@heusel.eu>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250228-mt6359-fix-probe-failed-v1-1-64941d387b2c@collabora.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:i4T6/EbgFwr0KfP3Z8OoxJOOCwMntS0pNgUxOQPDz3qE9Yunna5
+ yYQNNRVMcrb1ujz1h5zgD4pXfZ1i8xNE7W6i+TJ0OO33ufyZIGS1/nhLPDOIe23ricKukSR
+ 1qDvL/xABENHxxZA8JvW6kqQSRqQuPsXVMpycxZsHxxFH8UwvS9sguMgMBlKmJ3Fz4sIJ3d
+ fQ7K0RFosbpTR+RpA0zBQ==
+UI-OutboundReport: notjunk:1;M01:P0:vn2tnnWN6Fo=;Rtv/w94WvvtCQ5op19orjFAa30U
+ 3/hYOSUd6X+HGBVZrfzjiABuAhXF6qPtrF7qCQ4WvrTat3V1//t2hbwAj3iD23Pxd2WqFLrRG
+ xoinsfikG+HgqUs3BquPocL8a/BlAUI4qmApFf+pqv2b9kQnL5FCUk8HCwoV6FenpgV8Tujdf
+ EecoSvicsKHLt2A3sPGxevdSahVvaNXpBRnv4Rwcn7Ch0VJ02l0VjyanHBtAzm9JmNspPM7om
+ KR4YCw8QsHKwfeEbVzTchIwfIwA3BBMO54dyszZ/tLA/dLqH+AU0ouKMSkvR+/YOSM85wT3x8
+ byv4nAVRXcL66DbuvXRLH8bLiYvjE3jOyZ1NW+xVq3eblxeg2kDlphTgSttQIojwKCblneQKi
+ pe6vWpIVKIR59k8SLq16WoPqf+18xazwe76/N8n2IDv7TkcetZ0EuoxWtOv9jNPCOe3FgUI1g
+ gH9GNM9ASR2fcBuSXrrUldLU04Oz6/awgmUM28TkEZH5wVLU6DKT/4jSBogjwcFIrXcgHxyF8
+ 8LaV6GBRpinx7LD7NxZ+dSwgu4nj09EI9wztMitlwaGkT3w5sFVqLpsNejdqZnPlu6Cs0l6Pf
+ RyhMm8uExhL+TOcpakXGe5Zxj6KwYEnUDJaT6aDy5TCZnjrbEjjzTz1rosbDNvl/Ri3xAGkHH
+ JEmA0JJdD3G3ixtc13a7iJSQ8rkOEsYifUEmvgtfb5z84xXzJXC9HTPgsvldqIev7stf371YL
+ mPzojRhlRZaKZV+LRv6dRJrHGJIIstipNcKKv2uwe5BIusoL6BGUG1uN42jxB6maPuNByfGnU
+ 28jtym+mo5B/8+2NE6OU1OhVVNSro9Obqnxpi794YSjwBIUwqYhv2u0UD8MhYWYWV32oGJTtS
+ CtDxm9jn5e1y0lEgjWc+UZKOi0CmMtVf/BAgX7sk5WQfGFimoLAPvXe2PiZ7oMg04fwk5NaeQ
+ mVxJWc0WkFNQSb8X4vsFWwIX4O6dODzElS96VPJJsKWonUoX6Fb+GcMbBggtRwPk9zKzKvW2m
+ f2zQePbJ3iOWdis6GfHhvS9ecVtFfqDVKjAwjSphKlt1zIoLqe1JryFtMI9lakiEyzfDZaLhb
+ dQxy171z/vBuJfMESu9MyColPywNTxGs4KVnI/vvsZKF+MySy3HSRoLy5Ez5Du+tKfzFywlsv
+ l8ubZmCtN5hoES/U6gNi6uL5mYuM22btrEncBUb/S/bAHAWuQLM8MKW/XY3XX97cYcsTHI5bk
+ Nsh4HQfehWur5ZWEypRwdAEqs9fNnYymj11l+46BJ4O/RoAup3acw32SFfYbdlG6aGl6TQRA5
+ hEA9U4qSbNPzh3OlHE95RXquWq0CuKIHoBvGUsDePwvdFkuSqCp4F9cleyyd3EPDZxzC2rlmI
+ +v9nMhumKfB+ikfrEzGLfVp4593hU/CfwsiTREyc3Yohche+bXp5kDhiEZ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_051413_041241_9A991554 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20250228_071438_417693_4B9C204E 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,24 +102,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 28, 2025 at 11:32:19AM +0100, Louis-Alexis Eyraud wrote:
-> A recent dtbs_check error fix in mt6359.dtsi file changed a node name
-> (from "mt6359codec" to "audio-codec") without modifying the mt6539
-> codec code that uses it.
-> It leads to a probe failure after devicetree parsing returns in error:
-> ```
-> [    1.354025] mt6359-sound mt6359-sound: mt6359_platform_driver_probe() failed to parse dts
-> [    1.355066] mt6359-sound mt6359-sound: probe with driver mt6359-sound failed with error -22
-> ```
-> 
-> So, add the child node retrieval with the new name and if not found,
-> try with the older one for backward compatibility.
-> 
-> Fixes: 76b35f59bbe6 ("arm64: dts: mediatek: mt6359: fix dtbs_check error for audio-codec")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Hello Christian,
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+On Fri, 28 Feb 2025 11:19:52 +0100, Christian Heusel <christian@heusel.eu>=
+ wrote:
 
-Thanks,
-Nícolas
+> Hello everyone,
+>
+> on the Arch Linux Bugtracker[1] Benjamin (also added in CC) reported
+> that his MT7925 wifi card has halved it's throughput when updating from
+> the v6.13.1 to the v6.13.2 stable kernel. The problem is still present
+> in the 6.13.5 stable kernel.
+>
+> We have bisected this issue together and found the backporting of the
+> following commit responsible for this issue:
+>
+>     4cf9f08632c0 ("wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba =
+for MLO")
+
+Seems there is already a suggested revert of the mentioned commit, see
+
+	[PATCH v4 1/6] Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_=
+ba for MLO"
+	https://lore.kernel.org/linux-wireless/20250226025647.102904-1-sean.wang@=
+kernel.org/#r
+
+Regards,
+Peter
+
+
+>
+> We unfortunately didn't have a chance to test the mainline releases as
+> the reporter uses the (out of tree) nvidia modules that were not
+> compatible with mainline release at the time of testing. We will soon
+> test against Mainline aswell.
+>
+> I have attached dmesg outputs of a good and a bad boot aswell as his
+> other hardware specs and will be available to debug this further.
+>
+> Cheers,
+> Christian
+>
+> [1]: https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/i=
+ssues/112
+
 
