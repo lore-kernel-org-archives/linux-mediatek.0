@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B8EC282C5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 21:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA943C282C5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 21:53:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rbOxg+2NOcU8S02BJzsCpuBN1u0Nv4BgUhVkmfXa+II=; b=1LA4N1UTG9NeK6+RSyJ2kkGe5e
-	rmcEwrqoHVtfZyDk/udzSjYdtk7+T09hjhM9ho2vp1tKUmjcR9BuIWvegw6zrFr3sqSYhEtmhcdFT
-	r8k+MMbHwDdGF0eZdi47pfx1p4SyuroCpIMmrOyihCHrz5Wey23Ooxy7ePzr0VZMl+x9P5GYRXLZE
-	laGa+HQ3G9XAcHlBroFrdMy1i7jTRSu+irLol0IdxQdSln8w+V/sX2XH9pBtuxtUxkP74yHLR4Byz
-	S2SDMre4iqerlD0L0QT/4D+3uy96I4eqR+z4+WQOTBuBrlC9Uy/BcC366W+Q2PgfxGs5ZYt9+D3VJ
-	vGs0acyA==;
+	bh=G8CwhEspY1ms4dX4C4Y0HnOr+QSQfhHDkdgewsp42Pk=; b=rj1U+KdD+gt6guhllKtpLOYHBm
+	8wPWr0ZiIK1kDFCiFlyPrCv16pw2qqZpx0IDV9h9kubNHjSXyHc55t4UwokLOBOldYVadkKRpsZID
+	B0lpurhaDnAjHGxFEMhVgHpnjOqYYOmK5/VNcaAcy2Or8AIukYykfhjilqM7wZa0Dt76pNLDlYC2B
+	eldmVWUOli9cAr7dOl01gW4UiJFtuoc6JR4zykYZUpMNEN2W8qD0CIWW6wSAw1YWx+JO2JAB9kLiD
+	374fuXThN63NyI8CJQg6WpJSfM7i0JwNanSlI56+awT7HbtH1sdHxOH2hS6k6NWDVSIJkiGBGSo4p
+	qgEtisyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to8FF-0000000Cm8r-13oR;
-	Fri, 28 Feb 2025 21:50:09 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1to8IG-0000000CmVm-46sC;
+	Fri, 28 Feb 2025 21:53:16 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to8CF-0000000ClRl-2tHO;
-	Fri, 28 Feb 2025 21:47:04 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5ded1395213so4207417a12.2;
-        Fri, 28 Feb 2025 13:47:03 -0800 (PST)
+	id 1to8Cz-0000000Cleu-1kAM;
+	Fri, 28 Feb 2025 21:47:50 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-abf4b376f2fso50078466b.3;
+        Fri, 28 Feb 2025 13:47:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740779222; x=1741384022; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1740779268; x=1741384068; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=rbOxg+2NOcU8S02BJzsCpuBN1u0Nv4BgUhVkmfXa+II=;
-        b=nfeG4ZE+RQe/yPLaNDru/SywJBia9o4f7X2A53tpeahzGGG+jIDQRNqGU/qXrltHZY
-         GkhIDZto/wqxmxBd/fH27F0Tvgy9sYZZKKl6hebiYsgfiJo3UdpjIQOUIBTjOMe3PEwS
-         ELYXGnoV29oVyvQexIuywvIxtDQiTaKrD5EFJGMEnEegehjC73R+IzrwqkDPTAOawag/
-         Lsrf/dS8KPvD3uYRztBQeUfVccOZTUyhVNIkhhkmj5YnLI3OjJZalWfbgu4DLlSjRpeu
-         mGFE37Vatvq/VVzZLUj6abgzvSBgVFqsmWd0+oAZcRmrQ/fwoTE7RT6taoxv6Bihc8c2
-         KPuA==
+        bh=G8CwhEspY1ms4dX4C4Y0HnOr+QSQfhHDkdgewsp42Pk=;
+        b=dlcl+UPFLLEobJhsuWYBLN0OrVYJBxomnvxEiZ/09tg02m3tzjFKKTXscvzS3RGxbO
+         Hv/FWepI7F1XIBkB7QM30YXCxygRG4Hk58oKRuWKs7tWd6RwvoqjL/Sq45zdEB8NLqe8
+         8MFNAbRdPqu0nKEtoQGEDmjl42MOweVl9msAQ+tr01XzchZx19W453nMOfO/EeNFxtbx
+         1HIqdMxm6s9B+2tfOhvoAdguCA6hCNyaZpkBXjDxWe7RmbqSN3crbyQVkqvCqR6mDNHf
+         Iv3S4RLXf0LGpf+ZIvwK+kuD09VlWeVmU5mwbqq9BqYTYH4n8meknzAB5B7o82hFXMCZ
+         0oEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740779222; x=1741384022;
+        d=1e100.net; s=20230601; t=1740779268; x=1741384068;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :references:cc:to:from:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=rbOxg+2NOcU8S02BJzsCpuBN1u0Nv4BgUhVkmfXa+II=;
-        b=Wc38/CjutdNSuIJ3yeLDW7TIeZ/IdojUDrBgtek0vYKK78IImZ6xAbH8HJhxOc2D2H
-         XWYT7qdVLz5rIuxr1ZFya3+ZnEUO/T4ihFAY0BzfCK6NSAoCRYGZ1LFWydorbqMfEctU
-         xYxSbllT6j7KNMBpE6PoVFjF2YDPRxrSa3fUy7fzXk1M8/c0A1MQxJAi9BfCmHMzOHTx
-         lCxzdlSgbXOFPqBJtWAF80ZlnYTi57Eu65tOXVJYsl19pe1nQ9nOQQ9whVvjQtPNiYUM
-         94H+8qa/0h4qIKgMyBxYda+mpqD+8vfpwFFq3YmH+oGwbWuJMrjBOo/dmEd8t88LSg7b
-         3SDg==
-X-Forwarded-Encrypted: i=1; AJvYcCWdaX8mdV+DMPz4aq7xr6rmyVkTcG4zGWiFA9AoxDoaE9LgYxmcYLexzyLJc6K1nFPhkGhv+VU783cWBH6jP5c=@lists.infradead.org, AJvYcCXkCuXAn+Cgupw+CIxg6c1vctSbDeHp/VXxMR46Thx9v8DMpB1/um9viBqHuDj8lyXAgjunUK3kFr93WYydtQbZ@lists.infradead.org
-X-Gm-Message-State: AOJu0YyHYsGzbOCIdnmOh/HdvaMVcKIBljAEfCeeV1AJMRRW1wbgCRP0
-	h2WMeICJtIqdCnxn2yQ5PG8n6ngueQXdnSraxrmmKi9+y/ydtZXB
-X-Gm-Gg: ASbGncv6Loo4ubKZ0Y18/u13CtVJx/CgHE59WUiUZLFAU2nm9FE0z8H33cXtg4kA240
-	62xUrVPOC2JBzIbqTIhc+I/uXv3ZL99WNHrBk3vtFE4WFTjeWtMOWCJQUY/fUidsrSIJvwDoabg
-	0jGdxOhDbPnBPgL9zS0r0vJw0TCZBd/cuecCQfrdxTbdGLDVHZD9kezI2iIEgf/KF80PIwMJbvx
-	PUfmN93P6i/MPBALfiWSmcJWoPt6c+JxT5LkN72Cl007x19mE3DeXIWvyzoRVbqP85WjKz79LHE
-	Jk5tyOXDEXn3IkzzNA5eIHqgr+2euPrI57T3VCeAMpdFhyng+bGVCDkQKXXun9Cfuvxkl0W6UJr
-	1OlQixHL4iNRx0D8ni07mB63plf3WNtTAMDlZ7TsBRarNtzUY06vXorgP5Khz4/Ex6Ky9AKC/hv
-	xJdCNoulBB3npzciuH5w==
-X-Google-Smtp-Source: AGHT+IExl1j4pHBwdTbidpfyZFj4T5YmQ4QIQxv+UwSzRsUopoj7fPWFY6xPxbeL8P2l/qxJQ1aoCA==
-X-Received: by 2002:a17:907:96a2:b0:abe:eebf:ae54 with SMTP id a640c23a62f3a-abf25fdbdb3mr501157666b.20.1740779221688;
-        Fri, 28 Feb 2025 13:47:01 -0800 (PST)
+        bh=G8CwhEspY1ms4dX4C4Y0HnOr+QSQfhHDkdgewsp42Pk=;
+        b=l4AbNQKLg93H7woJKgOh36BqQ5sNtYLAa7iL8dpKqTE5DNKHkwuTf+5YjVEpSucaMS
+         UDfPCn26FyqJuptx1xd12s6qRdU9K1Y1FqO31NPuKbbFpH90iuMmtxt+B7wpBRFsztBU
+         oDYQhCyUhAz8DauTkKYRVaMbillL/uYV0XQ4OnfNZ1y+qVHS0hRZlA5ow5IOR4uVaUKH
+         GvN+jaDP7POT6PXip9LWkpMDA4yKUDFj8RU1UDZ9A4qe8LmNemRfhvB8A+CcCftgTCq7
+         S9P/3+cVK7zpBFvBCsw89plwG8LvTCJ5ZUKBsU/owAzYfkq6EyABQYXO50LNvOjPjqwg
+         5dmg==
+X-Forwarded-Encrypted: i=1; AJvYcCVtY7dN+9kOZxq/BNQcyfqB6ALhI8h+41ngWkNKCDjRxVjreeWUfGvua920ww/Y+go+DmV4GNJWKj35zCvpKiv7@lists.infradead.org, AJvYcCVw+gISXH8kBt9aywCd9xR/XlnUzYi+IuR70s4WK6gBpjW2NJvfao+ZvBlYyWSEIHiFEoTPid44Jql3yNyOR+I=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJYC+U1CKRHG+WIag0K4N5GRjLjG8yjrFIllIlG3AGSpmKcHMC
+	dXPLo7yGSFvfPA3IyfyHlJAKegQ5hxhA3W14huHidfgSzfJbcv1e
+X-Gm-Gg: ASbGnctCJo5KETFvcYvShfFBdWi57qI+f37ixxeM+/hxWl2a+ia1nFwTZiQE6duEVxf
+	Fc6hZs6hA954bpnb3pp8ATjD7p2ZHhW/d4zZYL1leCQuW9phgbvgLlAwDmXeJbxH+wFt/XSgaGg
+	VEIb74i6Bl82LZm33H2NQ/zDRuPaXp6jlG9VtX/B6SfsAa4tS4TJiX3iU72dE9796NqjjESyN4P
+	c8XEJ5KmC2yngaoFJ+bQ1pRPMchBVySckAVrJnsQTMGFtRFZmloeu2LW4tPdMpRKluj/L5iEUPM
+	eGgBGs+GQ+vrtJOxHOur2FGMYPxzF7tOnAzD5CkkfWcl3YSYW68YSwIIGBkRhBrCAYU5PZCch4U
+	nJvM0UP9QsSMfpKn4WxVD+emlesU9yDN1realHeDuMldAvViD7+ZnUv/ba/0asEflFJjDcDZg09
+	hPrLjULTWcDLxvHc4j3Q==
+X-Google-Smtp-Source: AGHT+IF+h/Li1VyE9OxDse2QjEcQlAaMcRq8CKJSdNUVXrvqPL44/VoyPNWybJjCTgD/lHb/PQPcVw==
+X-Received: by 2002:a17:907:d8a:b0:ab7:b072:8481 with SMTP id a640c23a62f3a-abf265ce47bmr488214866b.45.1740779267725;
+        Fri, 28 Feb 2025 13:47:47 -0800 (PST)
 Received: from ?IPV6:2a02:3100:af43:5200:e57d:90a4:e6b5:1175? (dynamic-2a02-3100-af43-5200-e57d-90a4-e6b5-1175.310.pool.telefonica.de. [2a02:3100:af43:5200:e57d:90a4:e6b5:1175])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-abf0c6ee486sm356284766b.90.2025.02.28.13.47.00
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-abf0c0b91dcsm351095766b.21.2025.02.28.13.47.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Feb 2025 13:47:01 -0800 (PST)
-Message-ID: <fbdf85ea-81d4-4a87-9560-262edeb97468@gmail.com>
-Date: Fri, 28 Feb 2025 22:48:03 +0100
+        Fri, 28 Feb 2025 13:47:47 -0800 (PST)
+Message-ID: <2a197fb0-322d-45bb-8fb5-0ec8d93a47f7@gmail.com>
+Date: Fri, 28 Feb 2025 22:48:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: [PATCH net-next v2 3/8] net: phy: qca807x: use new phy_package_shared
+Subject: [PATCH net-next v2 4/8] net: phy: micrel: use new phy_package_shared
  getters
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>,
@@ -140,8 +140,8 @@ In-Reply-To: <8b290ccf-ca0c-422f-b853-6fc7af045f99@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_134703_734402_F0B89627 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20250228_134749_457104_FCC2E4C0 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,75 +160,50 @@ Use the new getters for members of struct phy_package_shared.
 
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
- drivers/net/phy/qcom/qca807x.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
+ drivers/net/phy/micrel.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/phy/qcom/qca807x.c b/drivers/net/phy/qcom/qca807x.c
-index 2ad8c2586..1af6b5ead 100644
---- a/drivers/net/phy/qcom/qca807x.c
-+++ b/drivers/net/phy/qcom/qca807x.c
-@@ -15,6 +15,7 @@
- #include <linux/gpio/driver.h>
- #include <linux/sfp.h>
+diff --git a/drivers/net/phy/micrel.c b/drivers/net/phy/micrel.c
+index 9c0b1c229..289e1d56a 100644
+--- a/drivers/net/phy/micrel.c
++++ b/drivers/net/phy/micrel.c
+@@ -34,6 +34,8 @@
+ #include <linux/net_tstamp.h>
+ #include <linux/gpio/consumer.h>
  
-+#include "../phylib.h"
- #include "qcom.h"
- 
- #define QCA807X_CHIP_CONFIGURATION				0x1f
-@@ -486,13 +487,13 @@ static int qca807x_read_status(struct phy_device *phydev)
- 
- static int qca807x_phy_package_probe_once(struct phy_device *phydev)
++#include "phylib.h"
++
+ /* Operation Mode Strap Override */
+ #define MII_KSZPHY_OMSO				0x16
+ #define KSZPHY_OMSO_FACTORY_TEST		BIT(15)
+@@ -2631,8 +2633,7 @@ static void lan8814_ptp_tx_ts_get(struct phy_device *phydev,
+ static int lan8814_ts_info(struct mii_timestamper *mii_ts, struct kernel_ethtool_ts_info *info)
  {
--	struct phy_package_shared *shared = phydev->shared;
--	struct qca807x_shared_priv *priv = shared->priv;
-+	struct qca807x_shared_priv *priv = phy_package_get_priv(phydev);
-+	struct device_node *np = phy_package_get_node(phydev);
- 	unsigned int tx_drive_strength;
- 	const char *package_mode_name;
+ 	struct kszphy_ptp_priv *ptp_priv = container_of(mii_ts, struct kszphy_ptp_priv, mii_ts);
+-	struct phy_device *phydev = ptp_priv->phydev;
+-	struct lan8814_shared_priv *shared = phydev->shared->priv;
++	struct lan8814_shared_priv *shared = phy_package_get_priv(ptp_priv->phydev);
  
- 	/* Default to 600mw if not defined */
--	if (of_property_read_u32(shared->np, "qcom,tx-drive-strength-milliwatt",
-+	if (of_property_read_u32(np, "qcom,tx-drive-strength-milliwatt",
- 				 &tx_drive_strength))
- 		tx_drive_strength = 600;
+ 	info->so_timestamping = SOF_TIMESTAMPING_TX_HARDWARE |
+ 				SOF_TIMESTAMPING_RX_HARDWARE |
+@@ -3653,7 +3654,7 @@ static int lan8814_gpio_process_cap(struct lan8814_shared_priv *shared)
  
-@@ -541,7 +542,7 @@ static int qca807x_phy_package_probe_once(struct phy_device *phydev)
- 	}
- 
- 	priv->package_mode = PHY_INTERFACE_MODE_NA;
--	if (!of_property_read_string(shared->np, "qcom,package-mode",
-+	if (!of_property_read_string(np, "qcom,package-mode",
- 				     &package_mode_name)) {
- 		if (!strcasecmp(package_mode_name,
- 				phy_modes(PHY_INTERFACE_MODE_PSGMII)))
-@@ -558,8 +559,7 @@ static int qca807x_phy_package_probe_once(struct phy_device *phydev)
- 
- static int qca807x_phy_package_config_init_once(struct phy_device *phydev)
+ static int lan8814_handle_gpio_interrupt(struct phy_device *phydev, u16 status)
  {
--	struct phy_package_shared *shared = phydev->shared;
--	struct qca807x_shared_priv *priv = shared->priv;
-+	struct qca807x_shared_priv *priv = phy_package_get_priv(phydev);
- 	int val, ret;
- 
- 	/* Make sure PHY follow PHY package mode if enforced */
-@@ -708,7 +708,6 @@ static int qca807x_probe(struct phy_device *phydev)
- 	struct device_node *node = phydev->mdio.dev.of_node;
- 	struct qca807x_shared_priv *shared_priv;
- 	struct device *dev = &phydev->mdio.dev;
--	struct phy_package_shared *shared;
- 	struct qca807x_priv *priv;
+-	struct lan8814_shared_priv *shared = phydev->shared->priv;
++	struct lan8814_shared_priv *shared = phy_package_get_priv(phydev);
  	int ret;
  
-@@ -722,8 +721,7 @@ static int qca807x_probe(struct phy_device *phydev)
- 			return ret;
- 	}
+ 	mutex_lock(&shared->shared_lock);
+@@ -3864,7 +3865,7 @@ static void lan8814_ptp_init(struct phy_device *phydev)
  
--	shared = phydev->shared;
--	shared_priv = shared->priv;
-+	shared_priv = phy_package_get_priv(phydev);
+ static int lan8814_ptp_probe_once(struct phy_device *phydev)
+ {
+-	struct lan8814_shared_priv *shared = phydev->shared->priv;
++	struct lan8814_shared_priv *shared = phy_package_get_priv(phydev);
  
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
+ 	/* Initialise shared lock for clock*/
+ 	mutex_init(&shared->shared_lock);
 -- 
 2.48.1
 
