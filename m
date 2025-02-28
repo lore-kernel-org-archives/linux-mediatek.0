@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8D4C282C5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 20:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4356C282C6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 20:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ukwtTV0ExXBJKM7v4LhbJXSMG6hQJqW8GgzzDxNF23M=; b=RqsczCfXMK4xSv4UjAHHItNBAy
-	P0mA/h9MHrQ4oXHVXQzMC4VyU2o+R62igz8OVH7oJv0kobn55Mh1L0/dVCd4teOaj/9H0PfaZCaAi
-	8ZBczJSMKxTUVvCMKAtyFe/tHvDQGefIHYE42CYeC4Ko2/oB0ZfT4WWsgmbWKeXwcHhOUO33tTyKB
-	1rUsuQZWpNpStmGGdm8Kaq9lcGwhiudt6Y8jO4nZVHD8TUZmzizM6zqJEhBwacPbtsbfWXE0Zz2CR
-	XDP58JwSTicJtcgBgkFJXhGtk1BnIeYe40yjHnpxsGwwStLhNBA4FasvkmmzX9RmqBQXkJKoMsijz
-	uea/XNlw==;
+	bh=glD7coNk2GO9/l1adKLN+uo1Xfh2D3YWudU7CjoMsSA=; b=cjUrS13gnAPovKnwdAsKZ8Mtck
+	KNepGJnctpGD1x+j1AVfJDYzibyIjpuYHAjKXQaFdP+GRUWH64A5XxZLnoyrr3ke0om+wNNandpA+
+	WNCvrJdzWpfDgE8Ec1LqKfCwyWT94r9FoM9mui0NKpIkdYq175N419+CqTbdf6Bqw5n6uTHZKU+GY
+	QCOEEn3vBlxM/olKCkKhiRu9xvghrG8dpQuk5IAcGF1+151IoET25/ZxYxbFZftosrm/f1X0kPE9F
+	fW4n3lA6NcP6mBIs8cNiwgKg8AacEriEba6kC1FRg8BMjHbfu2+dMEUXnhT+zHJ0qo4GYgcuHinDt
+	dbBkcwZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6yL-0000000Cbhk-1X4R;
-	Fri, 28 Feb 2025 20:28:37 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1to6yg-0000000Cblc-05BW;
+	Fri, 28 Feb 2025 20:28:58 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6mW-0000000CYJ6-2lL9;
-	Fri, 28 Feb 2025 20:16:25 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-aaec61d0f65so517565966b.1;
-        Fri, 28 Feb 2025 12:16:24 -0800 (PST)
+	id 1to6mX-0000000CYJg-3waD;
+	Fri, 28 Feb 2025 20:16:27 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-aaecf50578eso481652366b.2;
+        Fri, 28 Feb 2025 12:16:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740773783; x=1741378583; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1740773784; x=1741378584; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ukwtTV0ExXBJKM7v4LhbJXSMG6hQJqW8GgzzDxNF23M=;
-        b=cs8rBBJCyy2XQpW7n0rhXTpWskepqRMOSzcj90mvduVWdgr67Eud3nkBsknP7IAwnh
-         c6FH6LmF32j2QUqkF1oe3ihqUzyKQxOYKm5H7oXuyEDhGbbvrSqGHFzJW8bcW40OYWl8
-         U5kitEKHbnCUMp1lmIqmUEtrGzpn5QQnz1zzpcBlWlAwNbnQKLF/BRLo5I+VhTJ2ec9E
-         3o0A3ffwOc9kReEKQroZHt1lJfFcIzl1At2QcpSDFve9QUq0KCUvsfr38Y1KZnawAbgx
-         95X04D+HBE1HW5UxO90dBv8GLVC8PiyL2EMHYjui6PRc1Ad7mmOtzLqE/h8pUH/dJWV+
-         t9kw==
+        bh=glD7coNk2GO9/l1adKLN+uo1Xfh2D3YWudU7CjoMsSA=;
+        b=W2DJw3C0FKfg6dadBoiwvVUCnY4VYmX2SUn4+32/roD2pXdczqSv4Omr1DtLLTDT/F
+         36agXKuw2DltPYYEf6DYnLumSV2xJxcZvwdeVMZq/cyLzap6MyfJ6nQRnmorgJff+ycH
+         nmfy6xUTgVx3se5YcDae5EVK9F08ES0jABvUHusSX5FstVeBO/b23k9wqQ4RIwD6Rcsx
+         /QUvc5T8p1U+vxB8Fab3o/PnX3h+X971sPwNIXrEAvkv0s3DIjimGqQoOSF4c4UYxYxy
+         XWo+YSFdvZ6+QFJq+4HvoD3X0NjPYX4PFYmDRqWJft4Z5KZIsKHnMIrpvNXs0KBGsLbN
+         +RiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740773783; x=1741378583;
+        d=1e100.net; s=20230601; t=1740773784; x=1741378584;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ukwtTV0ExXBJKM7v4LhbJXSMG6hQJqW8GgzzDxNF23M=;
-        b=CNPtvFt4NF+oNuegmhlcEkBD9O3fDOgYftrujTWH+e541HIm/4I0xHTzBbzerifo2u
-         JUNEvsJqfyiY4o6Ip17CzN1lZzhADLPgQXz9bmDINTP1ya3/dn4/cazVBchda0CAfHvI
-         U+J8TpE1zEbTipoV4+/uKjTEi3irEHCX3RfiSS97L9vHzfdl0ZeTTOsotouJhYXvhUS3
-         TC1C93nNUO6c5jj17JJc0jJQtOFPt1e4uMJP/YzJvjWRibPwKF/7X7YXKipEnee5pwIG
-         RIhc4NnTS5LkkNvkNWAHlqYy8k4D4lMm8t8huUGzubWnXnWiYwcQZICdujnMhy7I3DB1
-         4nUw==
-X-Forwarded-Encrypted: i=1; AJvYcCWnA7QOj2G1oV4BrxwuuZD4GZMnb+UXyAIxb6EVRhX2oAUo9AmXqjYcRJWPO4LOnqRqXvH18/1G8uQ4TxuWeZKT@lists.infradead.org, AJvYcCXbsgd0V3vbe2dEeGDuD+mZN2LneWbEcLYq+F5xQhU5zeBcRgf+0HJVK4eIixgPpMbHi9tWb5F25NmDTtQ5ISM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZsTrfjbxXeW5ImTAa5+UvcTSXPnYXzScKIWM3debvOClqU4+R
-	Om+5gnc6jFCJIryQiDd1SPvHhBmB5PGxW5PWp1LqwZy+xjygF83U
-X-Gm-Gg: ASbGnctj5NlqwydE1HUOx9ZQILX14qGxMo+Yw2blhwWDLC0pBetSFeV2bD6t/3cAr9v
-	svGeFZnanh4Ecwdhy9gfa+Ol4HjnH7tPk09Vmr0ZFsaZ7sn3HAMZD4K7gT1c/eCDNYc+C7KqCzi
-	BeT38rqm56m9EHcH/4kpbKoBtk1ncVtjyY3aBwmUWfcsgu21ELEzOGafqkdpQd44/varvS9fbCn
-	MDW8mNQqC2hjajaE8UBrPo+ktibgBmxL2hTHUVIJzBWPRDCiBznLYaLKBs9ita/rLM1zUfo8ON1
-	ghsfKWee5FqgsZijKOhl+UntBPl8qzypfgi1XUgtp8S8Llwg1q4iBSFeRguyJ30e9B7oDUGWiZr
-	4YnSpJRvMrH+mymSYa+IEEdOzSsSVrszl4OclA3XkA4I=
-X-Google-Smtp-Source: AGHT+IFuUzdbgaD/IFSs5QLipx4iHpbTunJtFdHt4pWJCQ/QSyvZEmN8DMfkaEXDfQkozt/2Pfk6qg==
-X-Received: by 2002:a17:906:6a05:b0:abf:16f8:5190 with SMTP id a640c23a62f3a-abf26822611mr449155566b.44.1740773782957;
-        Fri, 28 Feb 2025 12:16:22 -0800 (PST)
+        bh=glD7coNk2GO9/l1adKLN+uo1Xfh2D3YWudU7CjoMsSA=;
+        b=QoVnbWlqpa4vnxbUJ+bLwwi6tBdiqlvTuEEFa3sB+7YIDhE+E0puFtGyyBxC2/W7kV
+         7hvHiI529gIIlZGxjFUc/NLSxJhtWa+NTtlJpEoOED+sbBxM0VVShMu5hIqyUZlfe2sn
+         0W1yi6rX0AOe1oi/a6cqXEbUHdlcnvs1ErHz7+TG32N3wG/IGhIEwMTXwwyRy5my3xYk
+         /kKdaRRW2rAmGXlVx4aifMm3u+hUds6XjDBdI25FHlf5RWFmsOvNGkCBKBFjExn7G0+B
+         ACTH5z3mFtVYQehxFEIgVDaVNmVWPDRzOje3duwA4n5Ju4xCXOcY0KflgyLoJLIXn1Pd
+         IT3g==
+X-Forwarded-Encrypted: i=1; AJvYcCWHbzyDR7DDH0loDA/CbglfBgkr7k3x1QezHuJXzwfMOykXKlqI5iP35eppO8oB/yGZ4W4bunzjpstjSNtsZqw=@lists.infradead.org, AJvYcCXicJSvslCtJ9gFLw7Un2z9pqTxGKsK9f2vMuPRmpYFEYGqVZjW2NEQU7dbRZ9fns60sIK003GRhV1XXdpXxctj@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGFRcGwEQvj7/HXFgVc1Y+FDejwPyWhn/ispH5inOCN7A5uB7m
+	Vd5J4r2GUQzwEnWA0SaIuuDx0aOExCHYFLXqO+0ySLKwAG4ZQ+Ur
+X-Gm-Gg: ASbGnctBA3hAWm4+VjXrl0JFsrQyZF/m4Qrx8Cz9xIJIubRjseMZ4KEAeRhUQJa4BL8
+	BNZ2CdhzLttZ6igh22lfFhO2ET9N3onZyoqXU8qq/OrV4WenIbyhSSNc/f+tgFpVfqU8/73SGAF
+	TspR4iMKQ2ZEhVKV+jBq9K/c8HotpLIV1H8DAGqxddcOL1UsICsJ167jpFOy5ZcpQpAebAZSnxa
+	PH6w6lQrZAKYLkZldS+T9xNS+B1abe1eqp2sb6lIgnSm7Sbbb+tm6vNFBFxZjIhJ9EnsbNPJtme
+	9X1RPzp47JqKsA6VfCo+/whzE7Y/4RzcxRIeY9FLZVgAKkalzr7NxKgBPOLhPSiLGLVua6ugqVi
+	1g8B2VOdR3QTMzOnZN55Xf7GcKwfjkDHTyFeAdHqlCa0=
+X-Google-Smtp-Source: AGHT+IEkD4+S63CdkvFhMcDqcuwDe3gQEzkaBi0DoNz6EL4MylQGJKFnzY2Wc6+ZXTl1u9JBQtGaYA==
+X-Received: by 2002:a17:907:7f27:b0:abe:fa17:12e0 with SMTP id a640c23a62f3a-abf25f8dd1dmr472704766b.11.1740773784160;
+        Fri, 28 Feb 2025 12:16:24 -0800 (PST)
 Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf0c755c66sm340812666b.136.2025.02.28.12.16.21
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf0c755c66sm340812666b.136.2025.02.28.12.16.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Feb 2025 12:16:22 -0800 (PST)
+        Fri, 28 Feb 2025 12:16:23 -0800 (PST)
 From: Eric Woudstra <ericwouds@gmail.com>
 To: Michal Ostrowski <mostrows@earthlink.net>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -102,17 +102,17 @@ Cc: netdev@vger.kernel.org,
 	Kees Cook <kees@kernel.org>,
 	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
 	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v8 net-next 05/15] netfilter: nft_chain_filter: Add bridge double vlan and pppoe
-Date: Fri, 28 Feb 2025 21:15:23 +0100
-Message-ID: <20250228201533.23836-6-ericwouds@gmail.com>
+Subject: [PATCH v8 net-next 06/15] bridge: Add filling forward path from port to port
+Date: Fri, 28 Feb 2025 21:15:24 +0100
+Message-ID: <20250228201533.23836-7-ericwouds@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250228201533.23836-1-ericwouds@gmail.com>
 References: <20250228201533.23836-1-ericwouds@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_121624_700350_25BDC263 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20250228_121625_978502_FBE462E5 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,57 +127,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds the capability to evaluate 802.1ad, QinQ, PPPoE and PPPoE-in-Q
-packets in the bridge filter chain.
+If a port is passed as argument instead of the master, then:
 
-Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
+At br_fill_forward_path(): find the master and use it to fill the
+forward path.
+
+At br_vlan_fill_forward_path_pvid(): lookup vlan group from port
+instead.
+
+Changed call to br_vlan_group() into br_vlan_group_rcu() while at it.
+
+Acked-by: Nikolay Aleksandrov <razor@blackwall.org>
 Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 ---
- net/netfilter/nft_chain_filter.c | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ net/bridge/br_device.c  | 19 ++++++++++++++-----
+ net/bridge/br_private.h |  2 ++
+ net/bridge/br_vlan.c    |  6 +++++-
+ 3 files changed, 21 insertions(+), 6 deletions(-)
 
-diff --git a/net/netfilter/nft_chain_filter.c b/net/netfilter/nft_chain_filter.c
-index 19a553550c76..7c7080c1a67d 100644
---- a/net/netfilter/nft_chain_filter.c
-+++ b/net/netfilter/nft_chain_filter.c
-@@ -232,11 +232,27 @@ nft_do_chain_bridge(void *priv,
- 		    struct sk_buff *skb,
- 		    const struct nf_hook_state *state)
+diff --git a/net/bridge/br_device.c b/net/bridge/br_device.c
+index 0ab4613aa07a..c7646afc8b96 100644
+--- a/net/bridge/br_device.c
++++ b/net/bridge/br_device.c
+@@ -383,16 +383,25 @@ static int br_del_slave(struct net_device *dev, struct net_device *slave_dev)
+ static int br_fill_forward_path(struct net_device_path_ctx *ctx,
+ 				struct net_device_path *path)
  {
-+	struct ethhdr *ethh = eth_hdr(skb);
- 	struct nft_pktinfo pkt;
-+	int thoff;
++	struct net_bridge_port *src, *dst;
+ 	struct net_bridge_fdb_entry *f;
+-	struct net_bridge_port *dst;
+ 	struct net_bridge *br;
  
- 	nft_set_pktinfo(&pkt, skb, state);
+-	if (netif_is_bridge_port(ctx->dev))
+-		return -1;
++	if (netif_is_bridge_port(ctx->dev)) {
++		struct net_device *br_dev;
++
++		br_dev = netdev_master_upper_dev_get_rcu((struct net_device *)ctx->dev);
++		if (!br_dev)
++			return -1;
  
--	switch (eth_hdr(skb)->h_proto) {
-+	switch (ethh->h_proto) {
-+	case htons(ETH_P_PPP_SES):
-+		thoff = PPPOE_SES_HLEN;
-+		ethh += thoff;
-+		break;
-+	case htons(ETH_P_8021Q):
-+		thoff = VLAN_HLEN;
-+		ethh += thoff;
-+		break;
-+	default:
-+		thoff = 0;
-+		break;
+-	br = netdev_priv(ctx->dev);
++		src = br_port_get_rcu(ctx->dev);
++		br = netdev_priv(br_dev);
++	} else {
++		src = NULL;
++		br = netdev_priv(ctx->dev);
 +	}
-+
-+	switch (ethh->h_proto) {
- 	case htons(ETH_P_IP):
- 		nft_set_pktinfo_ipv4_validate(&pkt);
- 		break;
-@@ -248,6 +264,8 @@ nft_do_chain_bridge(void *priv,
- 		break;
- 	}
  
-+	pkt.thoff += thoff;
-+
- 	return nft_do_chain(&pkt, priv);
+-	br_vlan_fill_forward_path_pvid(br, ctx, path);
++	br_vlan_fill_forward_path_pvid(br, src, ctx, path);
+ 
+ 	f = br_fdb_find_rcu(br, ctx->daddr, path->bridge.vlan_id);
+ 	if (!f)
+diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
+index 1054b8a88edc..a0b950390a16 100644
+--- a/net/bridge/br_private.h
++++ b/net/bridge/br_private.h
+@@ -1584,6 +1584,7 @@ bool br_vlan_can_enter_range(const struct net_bridge_vlan *v_curr,
+ 			     const struct net_bridge_vlan *range_end);
+ 
+ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
++				    struct net_bridge_port *p,
+ 				    struct net_device_path_ctx *ctx,
+ 				    struct net_device_path *path);
+ int br_vlan_fill_forward_path_mode(struct net_bridge *br,
+@@ -1753,6 +1754,7 @@ static inline int nbp_get_num_vlan_infos(struct net_bridge_port *p,
  }
  
+ static inline void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
++						  struct net_bridge_port *p,
+ 						  struct net_device_path_ctx *ctx,
+ 						  struct net_device_path *path)
+ {
+diff --git a/net/bridge/br_vlan.c b/net/bridge/br_vlan.c
+index d9a69ec9affe..a18c7da12ebd 100644
+--- a/net/bridge/br_vlan.c
++++ b/net/bridge/br_vlan.c
+@@ -1441,6 +1441,7 @@ int br_vlan_get_pvid_rcu(const struct net_device *dev, u16 *p_pvid)
+ EXPORT_SYMBOL_GPL(br_vlan_get_pvid_rcu);
+ 
+ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
++				    struct net_bridge_port *p,
+ 				    struct net_device_path_ctx *ctx,
+ 				    struct net_device_path *path)
+ {
+@@ -1453,7 +1454,10 @@ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
+ 	if (!br_opt_get(br, BROPT_VLAN_ENABLED))
+ 		return;
+ 
+-	vg = br_vlan_group(br);
++	if (p)
++		vg = nbp_vlan_group_rcu(p);
++	else
++		vg = br_vlan_group_rcu(br);
+ 
+ 	if (idx >= 0 &&
+ 	    ctx->vlan[idx].proto == br->vlan_proto) {
 -- 
 2.47.1
 
