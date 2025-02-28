@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 456C2C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 02:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC58C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 02:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JO19ZBibRl5Dbek15Jjj5QI3hOqKQ5lfbE+tqwKDH60=; b=YBX/MzaCjL3A3v
-	zF3uL2jiRTlEHbNuVRSX7idlXT06mTA5VQ4pdQlzI/F6e4vhqv27/kqANoS8qugssEMkEfYf3VWv7
-	lNzPo8DmNqNcy89+9qbehVI+W/Sp3mEvYP+4/ItuTc2pjDHnuNTyA9q+zWiwJLbgzHu6TaE0Ls4bi
-	PkTkhoX8ccXzmZuFO6LPk3avCcq+gFPm5hIWucjSn6bQGPzWiiMiKo0Xm7eE06I3pET5c0Jmwrb/5
-	eZTMqQS1C7p8e6R/YD5LKHnTgfLJ2KmzqOkjYnBMDJ2EyeXq9AYTC9kLxjfuVNfC+ytxTrUZo1skD
-	89fZn5qZ87a0Ov+bEmyQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=L/8qHgKndnRCg+l1rR3FIQgCsBzufxgADqV68wRU2Ec=; b=FjC3Sd/XpSmWN/p5JwmxiUagko
+	p7zeQxEdK2KZZxRXAop2LpdG6ULfoKGL+nlhqNm0keeIwuKqBTj6JiqjUnJmavXxr5AfOiVzpwRZx
+	nWHoSui4lxMUk3hDFiVlo2eFCFpubGsxrAkb2MqxLG3U2GPZ+jJ8T2Dvje9Ph6glecbPfKRDBYRS9
+	tEb7j2Zj+25rRAl66Cws3ycyieq+neeyTppWqoebu7nsZeQv6tN8vIjTDhtOD9upLfmxbyanR9twI
+	fws3HQwNFRkmKv7QPqa+vpQRPjtOv0rR28blHrKDiXTz/+xmTfaOeVHwgUUhXmUBxaB0Au7srBmc/
+	UpT/Rb2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnpsM-00000009SS0-0sf0;
-	Fri, 28 Feb 2025 02:13:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tnpvo-00000009T4S-3ryL;
+	Fri, 28 Feb 2025 02:16:52 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnpoS-00000009S32-0FLX;
-	Fri, 28 Feb 2025 02:09:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9F71B5C4360;
-	Fri, 28 Feb 2025 02:06:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDFDDC4CEDD;
-	Fri, 28 Feb 2025 02:09:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740708555;
-	bh=7aXQGxqBnGBVomTgWjndFPyhUKxp6YcF8yQM4y03MzE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=L0th/sWWHGU3L3ZB4L4y9cOzD8ByR6pb7+el6BvGsXLUQ8iqm6AEhKVmCMM0SSSbk
-	 yxRLSqd/t3znZTsdxXcUSj3O1jq9dUnMd1m/OcuNnJ3Ke107rfyH8mwXjNpJoIcV7W
-	 Iml0gPtdfeIFLn9DFnTYhtlj+UsFUcezC77UgAQ12XwIZOzmL7TG/KQfGrJVv+MS/T
-	 CUWT8KIb6lSF7c+Uc2JF3DugJOodiS/lWvBJXFxpza2vn5ZXDMb9xszU4d58GZPuTN
-	 FAepguvrmXrScWdc3m25CSbbATulrU+oy5Gd0w9ngI3XOqjq+uvIR4O8xV4AjXuzID
-	 Dym3U7UP3jeGA==
-Date: Thu, 27 Feb 2025 18:09:13 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v7 net-next 03/14] netfilter: bridge: Add conntrack
- double vlan and pppoe
-Message-ID: <20250227180913.6248bbd3@kernel.org>
-In-Reply-To: <20250225201616.21114-4-ericwouds@gmail.com>
-References: <20250225201616.21114-1-ericwouds@gmail.com>
-	<20250225201616.21114-4-ericwouds@gmail.com>
+	id 1tnpuF-00000009Sni-1YbC;
+	Fri, 28 Feb 2025 02:15:16 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1tnptw-000000006iu-3YZk;
+	Fri, 28 Feb 2025 02:14:56 +0000
+Date: Fri, 28 Feb 2025 02:14:48 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	John Crispin <john@phrozen.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: dsa: mt7530: make use of REGMAP_IRQ
+Message-ID: <0d50a1437c6d298b13fb19db546a20d10b643cc3.1740708525.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_180916_182178_E71186E2 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20250227_181515_563706_B2116C25 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,65 +69,371 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Ivan Vecera <ivecera@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Pablo Neira Ayuso <pablo@netfilter.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Joe Damato <jdamato@fastly.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Lobakin <aleksander.lobakin@intel.com>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Feb 2025 21:16:05 +0100 Eric Woudstra wrote:
-> +		struct ppp_hdr {
-> +			struct pppoe_hdr hdr;
-> +			__be16 proto;
-> +		} *ph;
+Use REGMAP_IRQ instead of open-coding irq chip handler and mask/unmask.
+This greatly simplifies the code and allows to remove (almost) all
+interrupt related functions from mt7530.c.
 
-W=1 C=1 GCC build gives us:
+Tested on MT7988A built-in switch as well as MT7531AE IC.
 
-net/bridge/netfilter/nf_conntrack_bridge.c: note: in included file (through ../include/linux/if_pppox.h, ../include/uapi/linux/netfilter_bridge.h, ../include/linux/netfilter_bridge.h):
-include/uapi/linux/if_pppox.h:153:29: warning: array of flexible structures
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/Kconfig  |   1 +
+ drivers/net/dsa/mt7530.c | 235 +++++++++------------------------------
+ drivers/net/dsa/mt7530.h |   4 -
+ 3 files changed, 56 insertions(+), 184 deletions(-)
 
-I'm guessing it doesn't like that hdr has a zero-length array which
-overlaps proto.
-
-Looks like kernel code doesn't current need those arrays.
-Could you submit something like the diff below first, and then rebase on top?
-CC hardening folks on the submission.
-
-diff --git a/drivers/net/ppp/pppoe.c b/drivers/net/ppp/pppoe.c
-index 2ea4f4890d23..3a800af4e987 100644
---- a/drivers/net/ppp/pppoe.c
-+++ b/drivers/net/ppp/pppoe.c
-@@ -881,7 +881,7 @@ static int pppoe_sendmsg(struct socket *sock, struct msghdr *m,
-        skb->protocol = cpu_to_be16(ETH_P_PPP_SES);
+diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
+index 2d10b4d6cfbb..bb9812b3b0e8 100644
+--- a/drivers/net/dsa/Kconfig
++++ b/drivers/net/dsa/Kconfig
+@@ -37,6 +37,7 @@ config NET_DSA_LANTIQ_GSWIP
+ config NET_DSA_MT7530
+ 	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
+ 	select NET_DSA_TAG_MTK
++	select REGMAP_IRQ
+ 	imply NET_DSA_MT7530_MDIO
+ 	imply NET_DSA_MT7530_MMIO
+ 	help
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 8422262febaf..a62a6d3d3a59 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2050,131 +2050,6 @@ mt7530_setup_gpio(struct mt7530_priv *priv)
+ }
+ #endif /* CONFIG_GPIOLIB */
  
-        ph = skb_put(skb, total_len + sizeof(struct pppoe_hdr));
--       start = (char *)&ph->tag[0];
-+       start = (char *)ph + sizeof(*ph);
+-static irqreturn_t
+-mt7530_irq_thread_fn(int irq, void *dev_id)
+-{
+-	struct mt7530_priv *priv = dev_id;
+-	bool handled = false;
+-	u32 val;
+-	int p;
+-
+-	mt7530_mutex_lock(priv);
+-	val = mt7530_mii_read(priv, MT7530_SYS_INT_STS);
+-	mt7530_mii_write(priv, MT7530_SYS_INT_STS, val);
+-	mt7530_mutex_unlock(priv);
+-
+-	for (p = 0; p < MT7530_NUM_PHYS; p++) {
+-		if (BIT(p) & val) {
+-			unsigned int irq;
+-
+-			irq = irq_find_mapping(priv->irq_domain, p);
+-			handle_nested_irq(irq);
+-			handled = true;
+-		}
+-	}
+-
+-	return IRQ_RETVAL(handled);
+-}
+-
+-static void
+-mt7530_irq_mask(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	priv->irq_enable &= ~BIT(d->hwirq);
+-}
+-
+-static void
+-mt7530_irq_unmask(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	priv->irq_enable |= BIT(d->hwirq);
+-}
+-
+-static void
+-mt7530_irq_bus_lock(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	mt7530_mutex_lock(priv);
+-}
+-
+-static void
+-mt7530_irq_bus_sync_unlock(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
+-	mt7530_mutex_unlock(priv);
+-}
+-
+-static struct irq_chip mt7530_irq_chip = {
+-	.name = KBUILD_MODNAME,
+-	.irq_mask = mt7530_irq_mask,
+-	.irq_unmask = mt7530_irq_unmask,
+-	.irq_bus_lock = mt7530_irq_bus_lock,
+-	.irq_bus_sync_unlock = mt7530_irq_bus_sync_unlock,
+-};
+-
+-static int
+-mt7530_irq_map(struct irq_domain *domain, unsigned int irq,
+-	       irq_hw_number_t hwirq)
+-{
+-	irq_set_chip_data(irq, domain->host_data);
+-	irq_set_chip_and_handler(irq, &mt7530_irq_chip, handle_simple_irq);
+-	irq_set_nested_thread(irq, true);
+-	irq_set_noprobe(irq);
+-
+-	return 0;
+-}
+-
+-static const struct irq_domain_ops mt7530_irq_domain_ops = {
+-	.map = mt7530_irq_map,
+-	.xlate = irq_domain_xlate_onecell,
+-};
+-
+-static void
+-mt7988_irq_mask(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	priv->irq_enable &= ~BIT(d->hwirq);
+-	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
+-}
+-
+-static void
+-mt7988_irq_unmask(struct irq_data *d)
+-{
+-	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+-
+-	priv->irq_enable |= BIT(d->hwirq);
+-	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
+-}
+-
+-static struct irq_chip mt7988_irq_chip = {
+-	.name = KBUILD_MODNAME,
+-	.irq_mask = mt7988_irq_mask,
+-	.irq_unmask = mt7988_irq_unmask,
+-};
+-
+-static int
+-mt7988_irq_map(struct irq_domain *domain, unsigned int irq,
+-	       irq_hw_number_t hwirq)
+-{
+-	irq_set_chip_data(irq, domain->host_data);
+-	irq_set_chip_and_handler(irq, &mt7988_irq_chip, handle_simple_irq);
+-	irq_set_nested_thread(irq, true);
+-	irq_set_noprobe(irq);
+-
+-	return 0;
+-}
+-
+-static const struct irq_domain_ops mt7988_irq_domain_ops = {
+-	.map = mt7988_irq_map,
+-	.xlate = irq_domain_xlate_onecell,
+-};
+-
+ static void
+ mt7530_setup_mdio_irq(struct mt7530_priv *priv)
+ {
+@@ -2191,49 +2066,71 @@ mt7530_setup_mdio_irq(struct mt7530_priv *priv)
+ 	}
+ }
  
-        error = memcpy_from_msg(start, m, total_len);
-        if (error < 0) {
-diff --git a/include/uapi/linux/if_pppox.h b/include/uapi/linux/if_pppox.h
-index 9abd80dcc46f..29b804aa7474 100644
---- a/include/uapi/linux/if_pppox.h
-+++ b/include/uapi/linux/if_pppox.h
-@@ -122,7 +122,9 @@ struct sockaddr_pppol2tpv3in6 {
- struct pppoe_tag {
-        __be16 tag_type;
-        __be16 tag_len;
-+#ifndef __KERNEL__
-        char tag_data[];
-+#endif
- } __attribute__ ((packed));
++static const struct regmap_irq mt7530_irqs[] = {
++	REGMAP_IRQ_REG_LINE(0, 32), /* PHY 0 */
++	REGMAP_IRQ_REG_LINE(1, 32), /* PHY 1 */
++	REGMAP_IRQ_REG_LINE(2, 32), /* PHY 2 */
++	REGMAP_IRQ_REG_LINE(3, 32), /* PHY 3 */
++	REGMAP_IRQ_REG_LINE(4, 32), /* PHY 4 */
++	REGMAP_IRQ_REG_LINE(5, 32), /* PHY 5 */
++	REGMAP_IRQ_REG_LINE(6, 82), /* PHY 6 */
++	REGMAP_IRQ_REG_LINE(16, 32), /* MAC */
++	REGMAP_IRQ_REG_LINE(17, 32), /* BMU */
++	REGMAP_IRQ_REG_LINE(18, 32), /* MIB */
++	REGMAP_IRQ_REG_LINE(22, 32), /* ARL_COL_FULL_COL */
++	REGMAP_IRQ_REG_LINE(23, 32), /* ARL_COL_FULL */
++	REGMAP_IRQ_REG_LINE(24, 32), /* ARL_TLB_ERR */
++	REGMAP_IRQ_REG_LINE(25, 32), /* ARL_PKT_QERR */
++	REGMAP_IRQ_REG_LINE(26, 32), /* ARL_EQ_ERR */
++	REGMAP_IRQ_REG_LINE(27, 32), /* ARL_PKT_BC */
++	REGMAP_IRQ_REG_LINE(28, 32), /* ARL_SEC_IG1X */
++	REGMAP_IRQ_REG_LINE(29, 32), /* ARL_SEC_VLAN */
++	REGMAP_IRQ_REG_LINE(30, 32), /* ARL_SEC_TAG */
++	REGMAP_IRQ_REG_LINE(31, 32), /* ACL */
++};
++
++static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
++	.name = KBUILD_MODNAME,
++	.status_base = MT7530_SYS_INT_STS,
++	.unmask_base = MT7530_SYS_INT_EN,
++	.ack_base = MT7530_SYS_INT_STS,
++	.init_ack_masked = true,
++	.irqs = mt7530_irqs,
++	.num_irqs = ARRAY_SIZE(mt7530_irqs),
++	.num_regs = 1,
++};
++
+ static int
+ mt7530_setup_irq(struct mt7530_priv *priv)
+ {
++	struct regmap_irq_chip_data *irq_data;
+ 	struct device *dev = priv->dev;
+ 	struct device_node *np = dev->of_node;
+-	int ret;
++	int irq, ret;
  
- /* Tag identifiers */
-@@ -150,7 +152,9 @@ struct pppoe_hdr {
-        __u8 code;
-        __be16 sid;
-        __be16 length;
-+#ifndef __KERNEL__
-        struct pppoe_tag tag[];
-+#endif
- } __packed;
+ 	if (!of_property_read_bool(np, "interrupt-controller")) {
+ 		dev_info(dev, "no interrupt support\n");
+ 		return 0;
+ 	}
  
- /* Length of entire PPPoE + PPP header */
+-	priv->irq = of_irq_get(np, 0);
+-	if (priv->irq <= 0) {
+-		dev_err(dev, "failed to get parent IRQ: %d\n", priv->irq);
+-		return priv->irq ? : -EINVAL;
+-	}
+-
+-	if (priv->id == ID_MT7988 || priv->id == ID_EN7581)
+-		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
+-							 &mt7988_irq_domain_ops,
+-							 priv);
+-	else
+-		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
+-							 &mt7530_irq_domain_ops,
+-							 priv);
+-
+-	if (!priv->irq_domain) {
+-		dev_err(dev, "failed to create IRQ domain\n");
+-		return -ENOMEM;
++	irq = of_irq_get(np, 0);
++	if (irq <= 0) {
++		dev_err(dev, "failed to get parent IRQ: %d\n", irq);
++		return irq ? : -EINVAL;
+ 	}
+ 
+ 	/* This register must be set for MT7530 to properly fire interrupts */
+ 	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
+ 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
+ 
+-	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
+-				   IRQF_ONESHOT, KBUILD_MODNAME, priv);
+-	if (ret) {
+-		irq_domain_remove(priv->irq_domain);
+-		dev_err(dev, "failed to request IRQ: %d\n", ret);
++	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
++					      priv->regmap, irq,
++					      IRQF_ONESHOT,
++					      0, &mt7530_regmap_irq_chip, &irq_data);
++	if (ret)
+ 		return ret;
+-	}
++
++	priv->irq_domain = regmap_irq_get_domain(irq_data);
+ 
+ 	return 0;
+ }
+@@ -2253,26 +2150,6 @@ mt7530_free_mdio_irq(struct mt7530_priv *priv)
+ 	}
+ }
+ 
+-static void
+-mt7530_free_irq_common(struct mt7530_priv *priv)
+-{
+-	free_irq(priv->irq, priv);
+-	irq_domain_remove(priv->irq_domain);
+-}
+-
+-static void
+-mt7530_free_irq(struct mt7530_priv *priv)
+-{
+-	struct device_node *mnp, *np = priv->dev->of_node;
+-
+-	mnp = of_get_child_by_name(np, "mdio");
+-	if (!mnp)
+-		mt7530_free_mdio_irq(priv);
+-	of_node_put(mnp);
+-
+-	mt7530_free_irq_common(priv);
+-}
+-
+ static int
+ mt7530_setup_mdio(struct mt7530_priv *priv)
+ {
+@@ -2307,13 +2184,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	bus->parent = dev;
+ 	bus->phy_mask = ~ds->phys_mii_mask;
+ 
+-	if (priv->irq && !mnp)
++	if (priv->irq_domain && !mnp)
+ 		mt7530_setup_mdio_irq(priv);
+ 
+ 	ret = devm_of_mdiobus_register(dev, bus, mnp);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+-		if (priv->irq && !mnp)
++		if (priv->irq_domain && !mnp)
+ 			mt7530_free_mdio_irq(priv);
+ 	}
+ 
+@@ -3096,8 +2973,6 @@ mt753x_setup(struct dsa_switch *ds)
+ 		return ret;
+ 
+ 	ret = mt7530_setup_mdio(priv);
+-	if (ret && priv->irq)
+-		mt7530_free_irq_common(priv);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -3108,11 +2983,11 @@ mt753x_setup(struct dsa_switch *ds)
+ 		priv->pcs[i].port = i;
+ 	}
+ 
+-	if (priv->create_sgmii) {
++	if (priv->create_sgmii)
+ 		ret = priv->create_sgmii(priv);
+-		if (ret && priv->irq)
+-			mt7530_free_irq(priv);
+-	}
++
++	if (ret && priv->irq_domain)
++		mt7530_free_mdio_irq(priv);
+ 
+ 	return ret;
+ }
+@@ -3356,8 +3231,8 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
+ void
+ mt7530_remove_common(struct mt7530_priv *priv)
+ {
+-	if (priv->irq)
+-		mt7530_free_irq(priv);
++	if (priv->irq_domain)
++		mt7530_free_mdio_irq(priv);
+ 
+ 	dsa_unregister_switch(priv->ds);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 448200689f49..747ad2f9cd2b 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -815,9 +815,7 @@ struct mt753x_info {
+  * @p5_mode:		Holding the current mode of port 5 of the MT7530 switch
+  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
+  *			has got SGMII
+- * @irq:		IRQ number of the switch
+  * @irq_domain:		IRQ domain of the switch irq_chip
+- * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
+  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
+  * @active_cpu_ports:	Holding the active CPU ports
+  * @mdiodev:		The pointer to the MDIO device structure
+@@ -842,9 +840,7 @@ struct mt7530_priv {
+ 	struct mt753x_pcs	pcs[MT7530_NUM_PORTS];
+ 	/* protect among processes for registers access*/
+ 	struct mutex reg_mutex;
+-	int irq;
+ 	struct irq_domain *irq_domain;
+-	u32 irq_enable;
+ 	int (*create_sgmii)(struct mt7530_priv *priv);
+ 	u8 active_cpu_ports;
+ 	struct mdio_device *mdiodev;
 -- 
-pw-bot: cr
+2.48.1
+
 
