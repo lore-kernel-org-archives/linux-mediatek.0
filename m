@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E7E2C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 02:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E630C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2025 02:29:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CcizMs+R0pKGnc/qFO+OFYBqIuEkN/W42irsONigdMY=; b=3k5Sb8M3Nf/n7t3POUIjbDXvfq
-	OMrq7QczlSazGZOXouWIT86oOPiHblvA58/sh82rGFcZaR1mYKzPBtu1HragSgHHJ6hXOttEeQFvK
-	+WGO9+GzeKN8xYgFtbUnB5YRFwsPjA3W0U6vS1K9SwVnB5NQzp3mflAqq0fdq66Rrsu0ro664nDO8
-	EnaJyigo5Zv72PBfLs2O/8NnW53n9w87Fby7AF0K6NeXhsJrvF0D3H16YGQa9lAlI72j1D/3tIU9Z
-	4eYMfL//MVeuNweCnwfDE1rDrEGnRps+zJEgJ8+FMCOTRUv0OBFN+bpb8W7qAgE8F1X4K4LoS+1R+
-	EhxIi0ZQ==;
+	bh=aKVkZLXRtJ0H1yDIkyGrgPYNFEgO/XKza3g9lf0wDtE=; b=KGlUXRfPKtRpJewkhXDVhFMH6i
+	VGzTjsFoN+oM7NZwW0DjKpxZQTwpbabtVv7WjbjmTWBmy42NvGspy7rxzP/DUOVyalFK/jyqhq976
+	feC9hdVYJQU51vaDcergyGmwv3CdMIBy19lpzcnZ5WRGGsbC+yDnCcfvm94HS8LRuK6lUxHN6hQxt
+	1MOA4r0eftc6m4H1UKgXVjybIMFMj31H4atJTYia9nWo7uaK9c1q7eLMM8zXjAyk2frdwUVzoXk+t
+	VPsnqsJckb3BaVssZP3iORTG3n7W4ZVxEttbyaDaNUGc21BCeV0dJxu5CL3g1ZO06KFtdBsA9hyRi
+	6+pZhB+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnq58-00000009UN0-1XHN;
-	Fri, 28 Feb 2025 02:26:30 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1tnq8B-00000009UlF-19EY;
+	Fri, 28 Feb 2025 02:29:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnq3Y-00000009U6T-3A5E;
-	Fri, 28 Feb 2025 02:24:54 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1tnq3P-000000006qa-1HNs;
-	Fri, 28 Feb 2025 02:24:43 +0000
-Date: Fri, 28 Feb 2025 02:22:38 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	John Crispin <john@phrozen.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: make use of REGMAP_IRQ
-Message-ID: <Z8Ed7uVT4rV3PnVf@makrotopia.org>
-References: <0d50a1437c6d298b13fb19db546a20d10b643cc3.1740708525.git.daniel@makrotopia.org>
+	id 1tnq4w-00000009UKw-09xT;
+	Fri, 28 Feb 2025 02:26:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B22D45C61DD;
+	Fri, 28 Feb 2025 02:24:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AEC2C4CEDD;
+	Fri, 28 Feb 2025 02:26:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740709577;
+	bh=4XXZ9I7t+Z962ZjSI+scZzu97ELOgs2wjrA6GJcuow0=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=KCFy01YvCZ614Qe+4DKOYJYaFXRvq2OU8rY7p+/81nMc6UTkuJsKfqka27v7s+sLO
+	 lhxbRyTDODwe+79/khyCtu1J8DIdJre/1LR/1U84VYGIC83q4Z34WjJo08WKpS+xxE
+	 7UXTMPaxfXCp2Bhp91NYhnYZp9SK1MMEb+7U9W3qfS6zZ/KE4EkFjaLRBrB/lwb/qn
+	 f88qaT2IFYfmWxCZ6QmgPht+Nti1vWwOuEEoGhSGuaA1NthTcnAoc2mHTMOYy41DIV
+	 L88Zy5gbns1HRCe64kLWI7yHYJslvwfrr+D+YbZWexeOv5duApkKoLdaBS5mawDm6T
+	 Vn3POcEwigSFw==
+Date: Thu, 27 Feb 2025 20:26:15 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0d50a1437c6d298b13fb19db546a20d10b643cc3.1740708525.git.daniel@makrotopia.org>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Conor Dooley <conor+dt@kernel.org>, Yong Mao <yong.mao@mediatek.com>, 
+ Axe Yang <axe.yang@mediatek.com>, linux-kernel@vger.kernel.org, 
+ Sean Wang <sean.wang@kernel.org>, Lei Xue <lei.xue@mediatek.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Guodong Liu <guodong.liu@mediatek.com>, 
+ Wenbin Mei <wenbin.mei@mediatek.com>, linux-mediatek@lists.infradead.org
+To: Cathy Xu <ot_cathy.xu@mediatek.com>
+In-Reply-To: <20250228011702.16493-2-ot_cathy.xu@mediatek.com>
+References: <20250228011702.16493-1-ot_cathy.xu@mediatek.com>
+ <20250228011702.16493-2-ot_cathy.xu@mediatek.com>
+Message-Id: <174070957527.867625.13463640154036333781.robh@kernel.org>
+Subject: Re: [PATCH v4 1/3] dt-bindings: pinctrl: mediatek: Add support for
+ mt8196
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_182452_944574_C007248B 
-X-CRM114-Status: GOOD (  29.43  )
+X-CRM114-CacheID: sfid-20250227_182618_118296_0B94D477 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,374 +80,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 28, 2025 at 02:14:48AM +0000, Daniel Golle wrote:
-> Use REGMAP_IRQ instead of open-coding irq chip handler and mask/unmask.
-> This greatly simplifies the code and allows to remove (almost) all
-> interrupt related functions from mt7530.c.
-> 
-> Tested on MT7988A built-in switch as well as MT7531AE IC.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/dsa/Kconfig  |   1 +
->  drivers/net/dsa/mt7530.c | 235 +++++++++------------------------------
->  drivers/net/dsa/mt7530.h |   4 -
->  3 files changed, 56 insertions(+), 184 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
-> index 2d10b4d6cfbb..bb9812b3b0e8 100644
-> --- a/drivers/net/dsa/Kconfig
-> +++ b/drivers/net/dsa/Kconfig
-> @@ -37,6 +37,7 @@ config NET_DSA_LANTIQ_GSWIP
->  config NET_DSA_MT7530
->  	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
->  	select NET_DSA_TAG_MTK
-> +	select REGMAP_IRQ
->  	imply NET_DSA_MT7530_MDIO
->  	imply NET_DSA_MT7530_MMIO
->  	help
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 8422262febaf..a62a6d3d3a59 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2050,131 +2050,6 @@ mt7530_setup_gpio(struct mt7530_priv *priv)
->  }
->  #endif /* CONFIG_GPIOLIB */
->  
-> -static irqreturn_t
-> -mt7530_irq_thread_fn(int irq, void *dev_id)
-> -{
-> -	struct mt7530_priv *priv = dev_id;
-> -	bool handled = false;
-> -	u32 val;
-> -	int p;
-> -
-> -	mt7530_mutex_lock(priv);
-> -	val = mt7530_mii_read(priv, MT7530_SYS_INT_STS);
-> -	mt7530_mii_write(priv, MT7530_SYS_INT_STS, val);
-> -	mt7530_mutex_unlock(priv);
-> -
-> -	for (p = 0; p < MT7530_NUM_PHYS; p++) {
-> -		if (BIT(p) & val) {
-> -			unsigned int irq;
-> -
-> -			irq = irq_find_mapping(priv->irq_domain, p);
-> -			handle_nested_irq(irq);
-> -			handled = true;
-> -		}
-> -	}
-> -
-> -	return IRQ_RETVAL(handled);
-> -}
-> -
-> -static void
-> -mt7530_irq_mask(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	priv->irq_enable &= ~BIT(d->hwirq);
-> -}
-> -
-> -static void
-> -mt7530_irq_unmask(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	priv->irq_enable |= BIT(d->hwirq);
-> -}
-> -
-> -static void
-> -mt7530_irq_bus_lock(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	mt7530_mutex_lock(priv);
-> -}
-> -
-> -static void
-> -mt7530_irq_bus_sync_unlock(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
-> -	mt7530_mutex_unlock(priv);
-> -}
-> -
-> -static struct irq_chip mt7530_irq_chip = {
-> -	.name = KBUILD_MODNAME,
-> -	.irq_mask = mt7530_irq_mask,
-> -	.irq_unmask = mt7530_irq_unmask,
-> -	.irq_bus_lock = mt7530_irq_bus_lock,
-> -	.irq_bus_sync_unlock = mt7530_irq_bus_sync_unlock,
-> -};
-> -
-> -static int
-> -mt7530_irq_map(struct irq_domain *domain, unsigned int irq,
-> -	       irq_hw_number_t hwirq)
-> -{
-> -	irq_set_chip_data(irq, domain->host_data);
-> -	irq_set_chip_and_handler(irq, &mt7530_irq_chip, handle_simple_irq);
-> -	irq_set_nested_thread(irq, true);
-> -	irq_set_noprobe(irq);
-> -
-> -	return 0;
-> -}
-> -
-> -static const struct irq_domain_ops mt7530_irq_domain_ops = {
-> -	.map = mt7530_irq_map,
-> -	.xlate = irq_domain_xlate_onecell,
-> -};
-> -
-> -static void
-> -mt7988_irq_mask(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	priv->irq_enable &= ~BIT(d->hwirq);
-> -	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
-> -}
-> -
-> -static void
-> -mt7988_irq_unmask(struct irq_data *d)
-> -{
-> -	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-> -
-> -	priv->irq_enable |= BIT(d->hwirq);
-> -	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
-> -}
-> -
-> -static struct irq_chip mt7988_irq_chip = {
-> -	.name = KBUILD_MODNAME,
-> -	.irq_mask = mt7988_irq_mask,
-> -	.irq_unmask = mt7988_irq_unmask,
-> -};
-> -
-> -static int
-> -mt7988_irq_map(struct irq_domain *domain, unsigned int irq,
-> -	       irq_hw_number_t hwirq)
-> -{
-> -	irq_set_chip_data(irq, domain->host_data);
-> -	irq_set_chip_and_handler(irq, &mt7988_irq_chip, handle_simple_irq);
-> -	irq_set_nested_thread(irq, true);
-> -	irq_set_noprobe(irq);
-> -
-> -	return 0;
-> -}
-> -
-> -static const struct irq_domain_ops mt7988_irq_domain_ops = {
-> -	.map = mt7988_irq_map,
-> -	.xlate = irq_domain_xlate_onecell,
-> -};
-> -
->  static void
->  mt7530_setup_mdio_irq(struct mt7530_priv *priv)
->  {
-> @@ -2191,49 +2066,71 @@ mt7530_setup_mdio_irq(struct mt7530_priv *priv)
->  	}
->  }
->  
-> +static const struct regmap_irq mt7530_irqs[] = {
-> +	REGMAP_IRQ_REG_LINE(0, 32), /* PHY 0 */
-> +	REGMAP_IRQ_REG_LINE(1, 32), /* PHY 1 */
-> +	REGMAP_IRQ_REG_LINE(2, 32), /* PHY 2 */
-> +	REGMAP_IRQ_REG_LINE(3, 32), /* PHY 3 */
-> +	REGMAP_IRQ_REG_LINE(4, 32), /* PHY 4 */
-> +	REGMAP_IRQ_REG_LINE(5, 32), /* PHY 5 */
-> +	REGMAP_IRQ_REG_LINE(6, 82), /* PHY 6 */
-                              ^^^
-                            nasty typo
-will fix in v2 after more time for comments.
 
-> +	REGMAP_IRQ_REG_LINE(16, 32), /* MAC */
-> +	REGMAP_IRQ_REG_LINE(17, 32), /* BMU */
-> +	REGMAP_IRQ_REG_LINE(18, 32), /* MIB */
-> +	REGMAP_IRQ_REG_LINE(22, 32), /* ARL_COL_FULL_COL */
-> +	REGMAP_IRQ_REG_LINE(23, 32), /* ARL_COL_FULL */
-> +	REGMAP_IRQ_REG_LINE(24, 32), /* ARL_TLB_ERR */
-> +	REGMAP_IRQ_REG_LINE(25, 32), /* ARL_PKT_QERR */
-> +	REGMAP_IRQ_REG_LINE(26, 32), /* ARL_EQ_ERR */
-> +	REGMAP_IRQ_REG_LINE(27, 32), /* ARL_PKT_BC */
-> +	REGMAP_IRQ_REG_LINE(28, 32), /* ARL_SEC_IG1X */
-> +	REGMAP_IRQ_REG_LINE(29, 32), /* ARL_SEC_VLAN */
-> +	REGMAP_IRQ_REG_LINE(30, 32), /* ARL_SEC_TAG */
-> +	REGMAP_IRQ_REG_LINE(31, 32), /* ACL */
-> +};
-> +
-> +static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
-> +	.name = KBUILD_MODNAME,
-> +	.status_base = MT7530_SYS_INT_STS,
-> +	.unmask_base = MT7530_SYS_INT_EN,
-> +	.ack_base = MT7530_SYS_INT_STS,
-> +	.init_ack_masked = true,
-> +	.irqs = mt7530_irqs,
-> +	.num_irqs = ARRAY_SIZE(mt7530_irqs),
-> +	.num_regs = 1,
-> +};
-> +
->  static int
->  mt7530_setup_irq(struct mt7530_priv *priv)
->  {
-> +	struct regmap_irq_chip_data *irq_data;
->  	struct device *dev = priv->dev;
->  	struct device_node *np = dev->of_node;
-> -	int ret;
-> +	int irq, ret;
->  
->  	if (!of_property_read_bool(np, "interrupt-controller")) {
->  		dev_info(dev, "no interrupt support\n");
->  		return 0;
->  	}
->  
-> -	priv->irq = of_irq_get(np, 0);
-> -	if (priv->irq <= 0) {
-> -		dev_err(dev, "failed to get parent IRQ: %d\n", priv->irq);
-> -		return priv->irq ? : -EINVAL;
-> -	}
-> -
-> -	if (priv->id == ID_MT7988 || priv->id == ID_EN7581)
-> -		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
-> -							 &mt7988_irq_domain_ops,
-> -							 priv);
-> -	else
-> -		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
-> -							 &mt7530_irq_domain_ops,
-> -							 priv);
-> -
-> -	if (!priv->irq_domain) {
-> -		dev_err(dev, "failed to create IRQ domain\n");
-> -		return -ENOMEM;
-> +	irq = of_irq_get(np, 0);
-> +	if (irq <= 0) {
-> +		dev_err(dev, "failed to get parent IRQ: %d\n", irq);
-> +		return irq ? : -EINVAL;
->  	}
->  
->  	/* This register must be set for MT7530 to properly fire interrupts */
->  	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
->  		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
->  
-> -	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
-> -				   IRQF_ONESHOT, KBUILD_MODNAME, priv);
-> -	if (ret) {
-> -		irq_domain_remove(priv->irq_domain);
-> -		dev_err(dev, "failed to request IRQ: %d\n", ret);
-> +	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
-> +					      priv->regmap, irq,
-> +					      IRQF_ONESHOT,
-> +					      0, &mt7530_regmap_irq_chip, &irq_data);
-> +	if (ret)
->  		return ret;
-> -	}
-> +
-> +	priv->irq_domain = regmap_irq_get_domain(irq_data);
->  
->  	return 0;
->  }
-> @@ -2253,26 +2150,6 @@ mt7530_free_mdio_irq(struct mt7530_priv *priv)
->  	}
->  }
->  
-> -static void
-> -mt7530_free_irq_common(struct mt7530_priv *priv)
-> -{
-> -	free_irq(priv->irq, priv);
-> -	irq_domain_remove(priv->irq_domain);
-> -}
-> -
-> -static void
-> -mt7530_free_irq(struct mt7530_priv *priv)
-> -{
-> -	struct device_node *mnp, *np = priv->dev->of_node;
-> -
-> -	mnp = of_get_child_by_name(np, "mdio");
-> -	if (!mnp)
-> -		mt7530_free_mdio_irq(priv);
-> -	of_node_put(mnp);
-> -
-> -	mt7530_free_irq_common(priv);
-> -}
-> -
->  static int
->  mt7530_setup_mdio(struct mt7530_priv *priv)
->  {
-> @@ -2307,13 +2184,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
->  	bus->parent = dev;
->  	bus->phy_mask = ~ds->phys_mii_mask;
->  
-> -	if (priv->irq && !mnp)
-> +	if (priv->irq_domain && !mnp)
->  		mt7530_setup_mdio_irq(priv);
->  
->  	ret = devm_of_mdiobus_register(dev, bus, mnp);
->  	if (ret) {
->  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
-> -		if (priv->irq && !mnp)
-> +		if (priv->irq_domain && !mnp)
->  			mt7530_free_mdio_irq(priv);
->  	}
->  
-> @@ -3096,8 +2973,6 @@ mt753x_setup(struct dsa_switch *ds)
->  		return ret;
->  
->  	ret = mt7530_setup_mdio(priv);
-> -	if (ret && priv->irq)
-> -		mt7530_free_irq_common(priv);
->  	if (ret)
->  		return ret;
->  
-> @@ -3108,11 +2983,11 @@ mt753x_setup(struct dsa_switch *ds)
->  		priv->pcs[i].port = i;
->  	}
->  
-> -	if (priv->create_sgmii) {
-> +	if (priv->create_sgmii)
->  		ret = priv->create_sgmii(priv);
-> -		if (ret && priv->irq)
-> -			mt7530_free_irq(priv);
-> -	}
-> +
-> +	if (ret && priv->irq_domain)
-> +		mt7530_free_mdio_irq(priv);
->  
->  	return ret;
->  }
-> @@ -3356,8 +3231,8 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
->  void
->  mt7530_remove_common(struct mt7530_priv *priv)
->  {
-> -	if (priv->irq)
-> -		mt7530_free_irq(priv);
-> +	if (priv->irq_domain)
-> +		mt7530_free_mdio_irq(priv);
->  
->  	dsa_unregister_switch(priv->ds);
->  
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 448200689f49..747ad2f9cd2b 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -815,9 +815,7 @@ struct mt753x_info {
->   * @p5_mode:		Holding the current mode of port 5 of the MT7530 switch
->   * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
->   *			has got SGMII
-> - * @irq:		IRQ number of the switch
->   * @irq_domain:		IRQ domain of the switch irq_chip
-> - * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
->   * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
->   * @active_cpu_ports:	Holding the active CPU ports
->   * @mdiodev:		The pointer to the MDIO device structure
-> @@ -842,9 +840,7 @@ struct mt7530_priv {
->  	struct mt753x_pcs	pcs[MT7530_NUM_PORTS];
->  	/* protect among processes for registers access*/
->  	struct mutex reg_mutex;
-> -	int irq;
->  	struct irq_domain *irq_domain;
-> -	u32 irq_enable;
->  	int (*create_sgmii)(struct mt7530_priv *priv);
->  	u8 active_cpu_ports;
->  	struct mdio_device *mdiodev;
-> -- 
-> 2.48.1
+On Fri, 28 Feb 2025 09:16:25 +0800, Cathy Xu wrote:
+> Add the new binding document for pinctrl on MediaTek mt8196.
 > 
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+> ---
+>  .../pinctrl/mediatek,mt8196-pinctrl.yaml      | 241 ++++++++++++++++++
+>  1 file changed, 241 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml
 > 
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.example.dts:24:18: fatal error: ../../../../arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h: No such file or directory
+   24 |         #include "../../../../arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h"
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1511: dt_binding_check] Error 2
+make: *** [Makefile:251: __sub-make] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250228011702.16493-2-ot_cathy.xu@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
