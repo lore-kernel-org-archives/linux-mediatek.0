@@ -4,110 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9168DC021B8
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Mar 2025 15:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C0EC021B8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Mar 2025 19:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pvcp/Ow9PKUt0GAoY+iQqvy3UdZ1k/popr5tmmzvjdw=; b=oJsgc0Akvjvo6MJ+il9xOFUGNk
-	HA6ABL61PiLSncsIoJaQIe+W9uhwrWBZR9HiCc8pGHMVFPmwQSlajzjqWRRwolRz3veQo+UxTR45k
-	nTfjmTzo0uSa9HKsyKDYtA3xrddDmoeCo6xjm9R2l7+8LpM/ly7ZzxW4IAAB9POhOCapDg1Z/2O0G
-	QMnkPcyfm9DCU5uwwmsbliLud6tguoe+nJxKePSgMGNGc0K5UWEwaVUnOiuwryZS0kzyhNGmRYeDz
-	Ra+b548hHlGJ4tKnaXzrzFZXNXjkTo5E/guIBtSrF8urS+a2NG8ouAglWjFZUl5zvv9FZlhdv22sG
-	tunYXKfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TojYZU5Lq9Ptstf3WmLFqMQkOTbmth19ZsyImu1WtMU=; b=Ed8RiclWvNJHb6jUXG9wIxo6hI
+	zMOmcQnD50HXEo/rKfBAWkOsyhGWmISBVicCjiBOEr5KSocA2Gr/KZQ4Meq7CWoKdsH0buxHp2Rlt
+	pHpvG9PKcOsjHp7aAezyxfCvYQmzzNsuL1PzlvqPqpOcl+tMjhDz88kpq3YQPSYDQ9N18cejfrI/w
+	SiFjIlYvfRVs3HhxDWFkVZ6vgFlmJ4yLK8cOonyEn9PchckdxwMm7J8Vke64dDATMB6oGupSUhQb6
+	LiAOF47BfRyDYfJ9KvrzSPXYIKIogiThIzaqkhnJlStfVV9mxXoDBcPTvkpTRpyDm82kD4vPoM55G
+	HVERwjJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toP5Z-0000000EZez-19Hw;
-	Sat, 01 Mar 2025 15:49:17 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1toSHi-0000000Ep0Y-349t;
+	Sat, 01 Mar 2025 19:14:02 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toP3z-0000000EZV5-0MaR;
-	Sat, 01 Mar 2025 15:47:40 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-abf5f4e82caso46818366b.1;
-        Sat, 01 Mar 2025 07:47:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740844057; x=1741448857; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pvcp/Ow9PKUt0GAoY+iQqvy3UdZ1k/popr5tmmzvjdw=;
-        b=N5m6UPJylhCy65B06MVKVYxjTqQqw9ZDnzaXMoXdMDlR2OK3hDt9H94yCw4VsPGRFl
-         nipI4gXaXrZI7sYn+/GUq6ta0Cpf86AQ1hazgzE6OGOls4eI8SXRAPdyzJ8EMVlIcuZN
-         HQjS+mbd3p2GTSEfbBfWNKaEEuEhBcrZ5XkYPtrLPxtmGbTXAVxUuYuGJRHzev5rvilB
-         E9sRQ5fHsln+0PwUjgr5A6BlxDDhCEVyJQ2vR6oc9UmxdnN7up/dhjpwHjzXnlDIE0/N
-         9xQ57NW4zktZAAkKyGAGFJ0xb9kodza9bt6d0zU6FGwEAGpDh1GDicALxAQ5AoC6AIE6
-         rpAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740844057; x=1741448857;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pvcp/Ow9PKUt0GAoY+iQqvy3UdZ1k/popr5tmmzvjdw=;
-        b=q2P10DLNENsSwEvJDJzBvIQwibXRu2d9feDuJT0cZyQ7H8KhsWaEfsa0YWV1ZZHSFR
-         yEbTh9ER7HBa+TrBNjgBWoAMhl6dSyGGg7qP51/VXXY6hbsm13eNfGWItVdWyIKG7t9z
-         qrgTblAxm9ouGCXKtdRlx2j0P3k5KJn2HrYpplZkDPYgyXzUi8pjBNhx0frRjZHH3Yf7
-         3svZUCBrsLxUuK8UyUzezcuoUqws1d7q0INLgapitth+8Kd8+pbtOdaV1NbKaUJp49pu
-         CLKANXDbVMkYzoRoLTWrVWdZB28VIKZSpqk2AyDMTE/pWMu097PKiO79RyD+p0ZlENH0
-         wU5A==
-X-Forwarded-Encrypted: i=1; AJvYcCUFUZoInPqb2xu2oHuL/ZrBMEVgjRwXYKDlIGSH/w8ZWTUEKJX5qKzZEUWbUIXo/dEIbf3ZDZhLM+d3UWeQ0bko@lists.infradead.org, AJvYcCXlzKT8q1oXXeQQxE2Oe8yPXz0c/WulPqamMGmLJGqJdBNPr8GTW1ZSgH6O4/n8Njg3OCWlaJ0Pnu/UlLiwdJY=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywuzueg5pLz8jPvs3Y8ZRjYi/WwEMaMliGZU1uD+cpE2RGsVmHO
-	TJAgDsxzVX9zb+UUh0aFkiPOhvLtpynZz3f6vtGUyNJz0sAo6OEA
-X-Gm-Gg: ASbGncu8I0OiHlj8nZy0H6BNNlt2IWlsr9ZGlHVWVOTCqfMCjp2IFM+gj8iqn2VyuKV
-	P8IGQJoLdv1ex15uJT/f1pw/dGYIAJ1d2olwTLutyPLzgq0lpOLCguMVDhXcS97SO31QadaCwQL
-	puB71M3X0VBeLh142r/UBFXDo0NU9YvbrfCYre18o3HDn1FiRx46zPFqU1g+mYfAw6gg+/8lSoE
-	DXGtwOMyWWtfg17yTWocVKyfxgVUAsGc06rfhaAUjwf5tYmM3nGj3D6xKweA51HaAlzQVYOnDuG
-	v3e+7L0fd+pttpt5GPRQNAfTUhcRhZ0p4md07mtnMbmYBtUBsT1GKOmuMkQxlQw4qtLndfm/rs3
-	OFLu+c1/IGidVWSPHp7BM1YqcvTjg3GoBtGZgLc0TKZfCAYHMzUrpwcm9zsgJXmC5AP4bBOxm3+
-	5gxYrLzqHVZMhjvsR+Ukg=
-X-Google-Smtp-Source: AGHT+IG+eqrFeyO3A7KDD2S5BrzG0fkxCUE3rRFtAlmdPlWrBAor9q1vffWfk9dSAf3TW6qzlDGFvA==
-X-Received: by 2002:a17:907:2d8c:b0:abf:4c5f:7546 with SMTP id a640c23a62f3a-abf4c5f7590mr317216866b.38.1740844057241;
-        Sat, 01 Mar 2025 07:47:37 -0800 (PST)
-Received: from ?IPV6:2001:1c00:20d:1300:1b1c:4449:176a:89ea? (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e4c3b6d252sm4287355a12.26.2025.03.01.07.47.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 01 Mar 2025 07:47:36 -0800 (PST)
-Message-ID: <fc5129dd-35a8-4bcc-8e54-b8facda2cbc4@gmail.com>
-Date: Sat, 1 Mar 2025 16:47:32 +0100
+	id 1toSG9-0000000Eonx-1Yqi;
+	Sat, 01 Mar 2025 19:12:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740856345; x=1772392345;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=DyVqMDTjFOtdYjGsdKm+c9WKb6UulDm2pWWftGGsFWw=;
+  b=epzjBDxXwK30MnfPJLAKnFFCGClVii2Z86/Rt9vU+XvY3nZFgjVPULsm
+   IX8JGMx9sulZw6wqdxx3Ps/qCMcvd6TXKefkyaIj8cCiGcwF7BBjUcqPN
+   McA3FWmgeux4Ccli5NtCAz22720ii/o5qIJpn812bgS6qboeejLp5sGoV
+   QacPSICddRn2yyAhMBjGk+n0aeUi6HrBaJXIaYbSJ94XKOkQc0NWcIcPy
+   3csmKGeAW52rGJop3fyYWAJtTo1EEiR76AM8eKbnE0Fl+ubLVoHZOwnoV
+   qZ7Ur2XqNI/GFvCnpDrWuuyWMKA0ysinBPpXAbwJ7jpX31HcSaCkHNDhG
+   Q==;
+X-CSE-ConnectionGUID: YZ9YMKERSheVWPSURqAgfA==
+X-CSE-MsgGUID: ZYAL+mXcTd2AQBQpHZ1ziA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11360"; a="59312164"
+X-IronPort-AV: E=Sophos;i="6.13,326,1732608000"; 
+   d="scan'208";a="59312164"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Mar 2025 11:12:23 -0800
+X-CSE-ConnectionGUID: ZKwj2oENQ26kcnYX2VV9KA==
+X-CSE-MsgGUID: GIqMLBn7SBWjMx3cSMshMg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="117494432"
+Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
+  by orviesa010.jf.intel.com with ESMTP; 01 Mar 2025 11:12:18 -0800
+Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1toSFo-000Gb8-0a;
+	Sat, 01 Mar 2025 19:12:06 +0000
+Date: Sun, 2 Mar 2025 03:10:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+	Russell King - ARM Linux <linux@armlinux.org.uk>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Eric Dumazet <edumazet@google.com>,
+	David Miller <davem@davemloft.net>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Richard Cochran <richardcochran@gmail.com>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	Robert Marko <robimarko@gmail.com>,
+	=?iso-8859-1?Q?K=F6ry?= Maincent <kory.maincent@bootlin.com>
+Subject: Re: [PATCH net-next v2 7/8] net: phy: move PHY package related code
+ from phy.h to phy_package.c
+Message-ID: <202503020223.C2TbkgPv-lkp@intel.com>
+References: <edba99c5-0f95-40bd-8398-98d811068369@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 net-next 01/15] net: pppoe: avoid zero-length arrays in
- struct pppoe_hdr
-To: Michal Ostrowski <mostrows@earthlink.net>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Pablo Neira Ayuso <pablo@netfilter.org>,
- Jozsef Kadlecsik <kadlec@netfilter.org>, Jiri Pirko <jiri@resnulli.us>,
- Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>,
- Nikolay Aleksandrov <razor@blackwall.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Kuniyuki Iwashima <kuniyu@amazon.com>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Ahmed Zaki <ahmed.zaki@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
- bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>
-References: <20250228201533.23836-1-ericwouds@gmail.com>
- <20250228201533.23836-2-ericwouds@gmail.com>
-From: Eric Woudstra <ericwouds@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20250228201533.23836-2-ericwouds@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <edba99c5-0f95-40bd-8398-98d811068369@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_074739_135098_A457A58A 
-X-CRM114-Status: UNSURE (   8.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250301_111225_453489_D377165E 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,13 +100,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Heiner,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on net-next/main]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Heiner-Kallweit/net-phy-move-PHY-package-code-from-phy_device-c-to-own-source-file/20250301-055302
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/edba99c5-0f95-40bd-8398-98d811068369%40gmail.com
+patch subject: [PATCH net-next v2 7/8] net: phy: move PHY package related code from phy.h to phy_package.c
+config: arc-randconfig-001-20250302 (https://download.01.org/0day-ci/archive/20250302/202503020223.C2TbkgPv-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250302/202503020223.C2TbkgPv-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503020223.C2TbkgPv-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/net/phy/bcm54140.c: In function 'bcm54140_base_read_rdb':
+>> drivers/net/phy/bcm54140.c:436:15: error: implicit declaration of function '__phy_package_write'; did you mean '__phy_package_write_mmd'? [-Werror=implicit-function-declaration]
+     436 |         ret = __phy_package_write(phydev, BCM54140_BASE_ADDR,
+         |               ^~~~~~~~~~~~~~~~~~~
+         |               __phy_package_write_mmd
+>> drivers/net/phy/bcm54140.c:441:15: error: implicit declaration of function '__phy_package_read'; did you mean '__phy_package_read_mmd'? [-Werror=implicit-function-declaration]
+     441 |         ret = __phy_package_read(phydev, BCM54140_BASE_ADDR,
+         |               ^~~~~~~~~~~~~~~~~~
+         |               __phy_package_read_mmd
+   cc1: some warnings being treated as errors
 
 
-On 2/28/25 9:15 PM, Eric Woudstra wrote:
->  drivers/net/ppp/pppoe.c       | 2 +-
->  include/uapi/linux/if_pppox.h | 4 ++++
->  2 files changed, 5 insertions(+), 1 deletion(-)
+vim +436 drivers/net/phy/bcm54140.c
 
-The maintainers email: Michal Ostrowski <mostrows@earthlink.net>
-Returns 403: 550 5.5.1 Recipient rejected. This mailbox does not exist here.
+4406d36dfdf1fb Michael Walle     2020-04-20  430  
+6937602ed3f9eb Michael Walle     2020-04-20  431  static int bcm54140_base_read_rdb(struct phy_device *phydev, u16 rdb)
+6937602ed3f9eb Michael Walle     2020-04-20  432  {
+6937602ed3f9eb Michael Walle     2020-04-20  433  	int ret;
+6937602ed3f9eb Michael Walle     2020-04-20  434  
+dc9989f173289f Michael Walle     2020-05-06  435  	phy_lock_mdio_bus(phydev);
+9eea577eb1155f Christian Marangi 2023-12-15 @436  	ret = __phy_package_write(phydev, BCM54140_BASE_ADDR,
+9eea577eb1155f Christian Marangi 2023-12-15  437  				  MII_BCM54XX_RDB_ADDR, rdb);
+6937602ed3f9eb Michael Walle     2020-04-20  438  	if (ret < 0)
+6937602ed3f9eb Michael Walle     2020-04-20  439  		goto out;
+6937602ed3f9eb Michael Walle     2020-04-20  440  
+9eea577eb1155f Christian Marangi 2023-12-15 @441  	ret = __phy_package_read(phydev, BCM54140_BASE_ADDR,
+9eea577eb1155f Christian Marangi 2023-12-15  442  				 MII_BCM54XX_RDB_DATA);
+6937602ed3f9eb Michael Walle     2020-04-20  443  
+6937602ed3f9eb Michael Walle     2020-04-20  444  out:
+dc9989f173289f Michael Walle     2020-05-06  445  	phy_unlock_mdio_bus(phydev);
+6937602ed3f9eb Michael Walle     2020-04-20  446  	return ret;
+6937602ed3f9eb Michael Walle     2020-04-20  447  }
+6937602ed3f9eb Michael Walle     2020-04-20  448  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
