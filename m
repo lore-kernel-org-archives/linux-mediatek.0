@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DACCC282C5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Mar 2025 01:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AEC7C021B8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Mar 2025 08:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/cxZQXDwADuOn4rLzqKDRPi2wwNYSlt4dHTHnPDA6x0=; b=gYUrzI5z7RB5hR4wEcomcesTD3
-	p3CVb+RWBQzWy+N05iqWKUMNo6hQ4LPbPWgkKz5OF/uzPAub0LiXTIYZt1IJ0MDxN9Hy+2KkZ0WJS
-	nOU5aU/2KSLVifDLi61lPofVjjuFfMP07KoZ3db1eWt19aX52R/15Hdsr9x1Nlf1GqvG+984KsYNu
-	RxtzLdFb2Y2eOi0S49xzmr0FefWszkJELcelLEedMoOWGTTxpTTOI3oxo0Ssrp1Tk6L5GB72ZW+Bs
-	6sxARQDNR0Ny1DLXYiJsEAiRc7L3rRXbRND6H3rxoMFHiyYUjuM5FC3BLqc5EynHXbQoX+hZoRrY6
-	XitWu9GA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O7izUeP2YC9l7TJ5vmUkCE8D+CfcT0bRMFZU6BBOdZw=; b=cd5cQbW09dM+pYOk+AykiMTioa
+	rU2WmG38775vOrHa1ZRrh+1fekESZ4t8L//rd6Fpl4avmpz22XWrW1M/oaWLLaLWku4F9+up4+JgC
+	8fDmChzxdxrhds1aUcPnaKZ9im5QcFE1pqpxYJ12KBPVsE9sXKKYJ3i7RmTjN3AllQ2tsO7X8zBup
+	QOprN5MHfTcB5//QRU+4OM4sjBgoWhhYLA3fkEs70ZkcfZ6PFHgRyWikr6WjyAectrjp5uw2xytiv
+	hA4Pw3qliKG7nQdCk451KlRlm7aIqKjYZOTx780A7HrM562kjB8CGEpZjyraWknsAK11WyLU1WnED
+	mBYuSJxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toBsu-0000000DC3r-0oPU;
-	Sat, 01 Mar 2025 01:43:20 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1toIMs-0000000DdZb-3Rg1;
+	Sat, 01 Mar 2025 08:38:42 +0000
+Received: from [192.198.163.17] (helo=mgamail.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toBrL-0000000DBrg-3iYM;
-	Sat, 01 Mar 2025 01:41:45 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1toBr4-000000006C7-1JR2;
-	Sat, 01 Mar 2025 01:41:26 +0000
-Date: Sat, 1 Mar 2025 01:41:18 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
+	id 1toILJ-0000000DdTa-2uEi;
+	Sat, 01 Mar 2025 08:37:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740818225; x=1772354225;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ILiRyf+7LGFCo6GR2fvwMOED+UnCtYqI6Fm7BMRzSQ0=;
+  b=nsz/nQpwowcMmZxI4Ii4D6s32UiELqtDsryS45CMLaIknYG0oO6fcV5O
+   pnldyUMBJe42dEVZwl/K0ruG1rLAY+fcWPXBUw3ATc4bqAPqWLjvleo6S
+   JBhniG83SRq74oqG4+3udzmoL3Md59G4Nu/hYtpyPKKX6T9f3hwNAYdvl
+   JY7V/r+oNKBI34vybctwRPWW+M32MM+xwc8UwjofE1m/XF8yEZ77mwseq
+   2FHFQ5pX9IbYLTygLyJ4ljCanx3wFRbX9G2u32TcP+VX/IdHnV8w7SETM
+   Y6iXxiXz5UZ88vjwlkesqF3oEvF+5xkR8ztVlgPnadHJmAeM5hGzFA7tF
+   A==;
+X-CSE-ConnectionGUID: CrAgH6G2S6Wl/aNn22fBfQ==
+X-CSE-MsgGUID: Wf1vVLn1SouPdZe1GonYtw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11359"; a="41632188"
+X-IronPort-AV: E=Sophos;i="6.13,324,1732608000"; 
+   d="scan'208";a="41632188"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Mar 2025 00:36:59 -0800
+X-CSE-ConnectionGUID: lW8G4db8QjWNavqxlTHDNg==
+X-CSE-MsgGUID: 48i6mZFCSCmI1LJ6hl7Sqg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="148458821"
+Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
+  by fmviesa001.fm.intel.com with ESMTP; 01 Mar 2025 00:36:57 -0800
+Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1toIL8-000G3C-2o;
+	Sat, 01 Mar 2025 08:36:54 +0000
+Date: Sat, 1 Mar 2025 16:36:51 +0800
+From: kernel test robot <lkp@intel.com>
+To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, Rob Herring <robh+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	John Crispin <john@phrozen.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v2] dsa: mt7530: Utilize REGMAP_IRQ for interrupt
- handling
-Message-ID: <221013c3530b61504599e285c341a993f6188f00.1740792674.git.daniel@makrotopia.org>
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Leilk Liu <leilk.liu@mediatek.com>
+Subject: Re: [PATCH v1] spi: mt65xx: add PM QoS support
+Message-ID: <202503011637.9HYajsft-lkp@intel.com>
+References: <20250228062246.24186-1-leilk.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20250228062246.24186-1-leilk.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_174144_078460_5BD4F743 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20250301_003705_756580_CC410044 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,371 +90,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace the custom IRQ chip handler and mask/unmask functions with
-REGMAP_IRQ. This significantly simplifies the code and allows for the
-removal of almost all interrupt-related functions from mt7530.c.
+Hi Leilk,
 
-Tested on MT7988A built-in switch (MMIO) as well as MT7531AE IC (MDIO).
+kernel test robot noticed the following build warnings:
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: fix typo, improve commit message, name IRQs like in the datasheet
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on linus/master v6.14-rc4 next-20250228]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
- drivers/net/dsa/Kconfig  |   1 +
- drivers/net/dsa/mt7530.c | 236 ++++++++++-----------------------------
- drivers/net/dsa/mt7530.h |   4 -
- 3 files changed, 57 insertions(+), 184 deletions(-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Leilk-Liu/spi-mt65xx-add-PM-QoS-support/20250228-142359
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+patch link:    https://lore.kernel.org/r/20250228062246.24186-1-leilk.liu%40mediatek.com
+patch subject: [PATCH v1] spi: mt65xx: add PM QoS support
+config: sh-randconfig-002-20250301 (https://download.01.org/0day-ci/archive/20250301/202503011637.9HYajsft-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250301/202503011637.9HYajsft-lkp@intel.com/reproduce)
 
-diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
-index 2d10b4d6cfbb..bb9812b3b0e8 100644
---- a/drivers/net/dsa/Kconfig
-+++ b/drivers/net/dsa/Kconfig
-@@ -37,6 +37,7 @@ config NET_DSA_LANTIQ_GSWIP
- config NET_DSA_MT7530
- 	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
- 	select NET_DSA_TAG_MTK
-+	select REGMAP_IRQ
- 	imply NET_DSA_MT7530_MDIO
- 	imply NET_DSA_MT7530_MMIO
- 	help
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8422262febaf..ceadb0acff14 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2050,131 +2050,6 @@ mt7530_setup_gpio(struct mt7530_priv *priv)
- }
- #endif /* CONFIG_GPIOLIB */
- 
--static irqreturn_t
--mt7530_irq_thread_fn(int irq, void *dev_id)
--{
--	struct mt7530_priv *priv = dev_id;
--	bool handled = false;
--	u32 val;
--	int p;
--
--	mt7530_mutex_lock(priv);
--	val = mt7530_mii_read(priv, MT7530_SYS_INT_STS);
--	mt7530_mii_write(priv, MT7530_SYS_INT_STS, val);
--	mt7530_mutex_unlock(priv);
--
--	for (p = 0; p < MT7530_NUM_PHYS; p++) {
--		if (BIT(p) & val) {
--			unsigned int irq;
--
--			irq = irq_find_mapping(priv->irq_domain, p);
--			handle_nested_irq(irq);
--			handled = true;
--		}
--	}
--
--	return IRQ_RETVAL(handled);
--}
--
--static void
--mt7530_irq_mask(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	priv->irq_enable &= ~BIT(d->hwirq);
--}
--
--static void
--mt7530_irq_unmask(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	priv->irq_enable |= BIT(d->hwirq);
--}
--
--static void
--mt7530_irq_bus_lock(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	mt7530_mutex_lock(priv);
--}
--
--static void
--mt7530_irq_bus_sync_unlock(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
--	mt7530_mutex_unlock(priv);
--}
--
--static struct irq_chip mt7530_irq_chip = {
--	.name = KBUILD_MODNAME,
--	.irq_mask = mt7530_irq_mask,
--	.irq_unmask = mt7530_irq_unmask,
--	.irq_bus_lock = mt7530_irq_bus_lock,
--	.irq_bus_sync_unlock = mt7530_irq_bus_sync_unlock,
--};
--
--static int
--mt7530_irq_map(struct irq_domain *domain, unsigned int irq,
--	       irq_hw_number_t hwirq)
--{
--	irq_set_chip_data(irq, domain->host_data);
--	irq_set_chip_and_handler(irq, &mt7530_irq_chip, handle_simple_irq);
--	irq_set_nested_thread(irq, true);
--	irq_set_noprobe(irq);
--
--	return 0;
--}
--
--static const struct irq_domain_ops mt7530_irq_domain_ops = {
--	.map = mt7530_irq_map,
--	.xlate = irq_domain_xlate_onecell,
--};
--
--static void
--mt7988_irq_mask(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	priv->irq_enable &= ~BIT(d->hwirq);
--	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
--}
--
--static void
--mt7988_irq_unmask(struct irq_data *d)
--{
--	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
--
--	priv->irq_enable |= BIT(d->hwirq);
--	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
--}
--
--static struct irq_chip mt7988_irq_chip = {
--	.name = KBUILD_MODNAME,
--	.irq_mask = mt7988_irq_mask,
--	.irq_unmask = mt7988_irq_unmask,
--};
--
--static int
--mt7988_irq_map(struct irq_domain *domain, unsigned int irq,
--	       irq_hw_number_t hwirq)
--{
--	irq_set_chip_data(irq, domain->host_data);
--	irq_set_chip_and_handler(irq, &mt7988_irq_chip, handle_simple_irq);
--	irq_set_nested_thread(irq, true);
--	irq_set_noprobe(irq);
--
--	return 0;
--}
--
--static const struct irq_domain_ops mt7988_irq_domain_ops = {
--	.map = mt7988_irq_map,
--	.xlate = irq_domain_xlate_onecell,
--};
--
- static void
- mt7530_setup_mdio_irq(struct mt7530_priv *priv)
- {
-@@ -2191,49 +2066,72 @@ mt7530_setup_mdio_irq(struct mt7530_priv *priv)
- 	}
- }
- 
-+static const struct regmap_irq mt7530_irqs[] = {
-+	REGMAP_IRQ_REG_LINE(0, 32),  /* PHY0_LC */
-+	REGMAP_IRQ_REG_LINE(1, 32),  /* PHY1_LC */
-+	REGMAP_IRQ_REG_LINE(2, 32),  /* PHY2_LC */
-+	REGMAP_IRQ_REG_LINE(3, 32),  /* PHY3_LC */
-+	REGMAP_IRQ_REG_LINE(4, 32),  /* PHY4_LC */
-+	REGMAP_IRQ_REG_LINE(5, 32),  /* PHY5_LC */
-+	REGMAP_IRQ_REG_LINE(6, 32),  /* PHY6_LC */
-+	REGMAP_IRQ_REG_LINE(16, 32), /* MAC_PC */
-+	REGMAP_IRQ_REG_LINE(17, 32), /* BMU */
-+	REGMAP_IRQ_REG_LINE(18, 32), /* MIB */
-+	REGMAP_IRQ_REG_LINE(22, 32), /* ARL_COL_FULL_COL */
-+	REGMAP_IRQ_REG_LINE(23, 32), /* ARL_COL_FULL */
-+	REGMAP_IRQ_REG_LINE(24, 32), /* ARL_TBL_ERR */
-+	REGMAP_IRQ_REG_LINE(25, 32), /* ARL_PKT_QERR */
-+	REGMAP_IRQ_REG_LINE(26, 32), /* ARL_EQ_ERR */
-+	REGMAP_IRQ_REG_LINE(27, 32), /* ARL_PKT_BC */
-+	REGMAP_IRQ_REG_LINE(28, 32), /* ARL_SEC_IG1X */
-+	REGMAP_IRQ_REG_LINE(29, 32), /* ARL_SEC_VLAN */
-+	REGMAP_IRQ_REG_LINE(30, 32), /* ARL_SEC_TAG */
-+	REGMAP_IRQ_REG_LINE(31, 32), /* ACL */
-+};
-+
-+static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
-+	.name = KBUILD_MODNAME,
-+	.status_base = MT7530_SYS_INT_STS,
-+	.unmask_base = MT7530_SYS_INT_EN,
-+	.ack_base = MT7530_SYS_INT_STS,
-+	.init_ack_masked = true,
-+	.irqs = mt7530_irqs,
-+	.num_irqs = ARRAY_SIZE(mt7530_irqs),
-+	.num_regs = 1,
-+};
-+
- static int
- mt7530_setup_irq(struct mt7530_priv *priv)
- {
-+	struct regmap_irq_chip_data *irq_data;
- 	struct device *dev = priv->dev;
- 	struct device_node *np = dev->of_node;
--	int ret;
-+	int irq, ret;
- 
- 	if (!of_property_read_bool(np, "interrupt-controller")) {
- 		dev_info(dev, "no interrupt support\n");
- 		return 0;
- 	}
- 
--	priv->irq = of_irq_get(np, 0);
--	if (priv->irq <= 0) {
--		dev_err(dev, "failed to get parent IRQ: %d\n", priv->irq);
--		return priv->irq ? : -EINVAL;
--	}
--
--	if (priv->id == ID_MT7988 || priv->id == ID_EN7581)
--		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
--							 &mt7988_irq_domain_ops,
--							 priv);
--	else
--		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
--							 &mt7530_irq_domain_ops,
--							 priv);
--
--	if (!priv->irq_domain) {
--		dev_err(dev, "failed to create IRQ domain\n");
--		return -ENOMEM;
-+	irq = of_irq_get(np, 0);
-+	if (irq <= 0) {
-+		dev_err(dev, "failed to get parent IRQ: %d\n", irq);
-+		return irq ? : -EINVAL;
- 	}
- 
- 	/* This register must be set for MT7530 to properly fire interrupts */
- 	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
- 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
- 
--	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
--				   IRQF_ONESHOT, KBUILD_MODNAME, priv);
--	if (ret) {
--		irq_domain_remove(priv->irq_domain);
--		dev_err(dev, "failed to request IRQ: %d\n", ret);
-+	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
-+					      priv->regmap, irq,
-+					      IRQF_ONESHOT,
-+					      0, &mt7530_regmap_irq_chip,
-+					      &irq_data);
-+	if (ret)
- 		return ret;
--	}
-+
-+	priv->irq_domain = regmap_irq_get_domain(irq_data);
- 
- 	return 0;
- }
-@@ -2253,26 +2151,6 @@ mt7530_free_mdio_irq(struct mt7530_priv *priv)
- 	}
- }
- 
--static void
--mt7530_free_irq_common(struct mt7530_priv *priv)
--{
--	free_irq(priv->irq, priv);
--	irq_domain_remove(priv->irq_domain);
--}
--
--static void
--mt7530_free_irq(struct mt7530_priv *priv)
--{
--	struct device_node *mnp, *np = priv->dev->of_node;
--
--	mnp = of_get_child_by_name(np, "mdio");
--	if (!mnp)
--		mt7530_free_mdio_irq(priv);
--	of_node_put(mnp);
--
--	mt7530_free_irq_common(priv);
--}
--
- static int
- mt7530_setup_mdio(struct mt7530_priv *priv)
- {
-@@ -2307,13 +2185,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
- 	bus->parent = dev;
- 	bus->phy_mask = ~ds->phys_mii_mask;
- 
--	if (priv->irq && !mnp)
-+	if (priv->irq_domain && !mnp)
- 		mt7530_setup_mdio_irq(priv);
- 
- 	ret = devm_of_mdiobus_register(dev, bus, mnp);
- 	if (ret) {
- 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
--		if (priv->irq && !mnp)
-+		if (priv->irq_domain && !mnp)
- 			mt7530_free_mdio_irq(priv);
- 	}
- 
-@@ -3096,8 +2974,6 @@ mt753x_setup(struct dsa_switch *ds)
- 		return ret;
- 
- 	ret = mt7530_setup_mdio(priv);
--	if (ret && priv->irq)
--		mt7530_free_irq_common(priv);
- 	if (ret)
- 		return ret;
- 
-@@ -3108,11 +2984,11 @@ mt753x_setup(struct dsa_switch *ds)
- 		priv->pcs[i].port = i;
- 	}
- 
--	if (priv->create_sgmii) {
-+	if (priv->create_sgmii)
- 		ret = priv->create_sgmii(priv);
--		if (ret && priv->irq)
--			mt7530_free_irq(priv);
--	}
-+
-+	if (ret && priv->irq_domain)
-+		mt7530_free_mdio_irq(priv);
- 
- 	return ret;
- }
-@@ -3356,8 +3232,8 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
- void
- mt7530_remove_common(struct mt7530_priv *priv)
- {
--	if (priv->irq)
--		mt7530_free_irq(priv);
-+	if (priv->irq_domain)
-+		mt7530_free_mdio_irq(priv);
- 
- 	dsa_unregister_switch(priv->ds);
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 448200689f49..747ad2f9cd2b 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -815,9 +815,7 @@ struct mt753x_info {
-  * @p5_mode:		Holding the current mode of port 5 of the MT7530 switch
-  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
-  *			has got SGMII
-- * @irq:		IRQ number of the switch
-  * @irq_domain:		IRQ domain of the switch irq_chip
-- * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
-  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
-  * @active_cpu_ports:	Holding the active CPU ports
-  * @mdiodev:		The pointer to the MDIO device structure
-@@ -842,9 +840,7 @@ struct mt7530_priv {
- 	struct mt753x_pcs	pcs[MT7530_NUM_PORTS];
- 	/* protect among processes for registers access*/
- 	struct mutex reg_mutex;
--	int irq;
- 	struct irq_domain *irq_domain;
--	u32 irq_enable;
- 	int (*create_sgmii)(struct mt7530_priv *priv);
- 	u8 active_cpu_ports;
- 	struct mdio_device *mdiodev;
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503011637.9HYajsft-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/spi/spi-mt65xx.c:177: warning: Function parameter or struct member 'qos_request' not described in 'mtk_spi'
+
+
+vim +177 drivers/spi/spi-mt65xx.c
+
+a568231f463225 Leilk Liu                  2015-08-07  132  
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  133  /**
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  134   * struct mtk_spi - SPI driver instance
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  135   * @base:		Start address of the SPI controller registers
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  136   * @state:		SPI controller state
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  137   * @pad_num:		Number of pad_sel entries
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  138   * @pad_sel:		Groups of pins to select
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  139   * @parent_clk:		Parent of sel_clk
+cae1578847e60a Yang Yingliang             2023-08-23  140   * @sel_clk:		SPI host mux clock
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  141   * @spi_clk:		Peripheral clock
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  142   * @spi_hclk:		AHB bus clock
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  143   * @cur_transfer:	Currently processed SPI transfer
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  144   * @xfer_len:		Number of bytes to transfer
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  145   * @num_xfered:		Number of transferred bytes
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  146   * @tx_sgl:		TX transfer scatterlist
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  147   * @rx_sgl:		RX transfer scatterlist
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  148   * @tx_sgl_len:		Size of TX DMA transfer
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  149   * @rx_sgl_len:		Size of RX DMA transfer
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  150   * @dev_comp:		Device data structure
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  151   * @spi_clk_hz:		Current SPI clock in Hz
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  152   * @spimem_done:	SPI-MEM operation completion
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  153   * @use_spimem:		Enables SPI-MEM
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  154   * @dev:		Device pointer
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  155   * @tx_dma:		DMA start for SPI-MEM TX
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  156   * @rx_dma:		DMA start for SPI-MEM RX
+3c5cd2e23fe4c8 AngeloGioacchino Del Regno 2022-04-07  157   */
+a568231f463225 Leilk Liu                  2015-08-07  158  struct mtk_spi {
+a568231f463225 Leilk Liu                  2015-08-07  159  	void __iomem *base;
+a568231f463225 Leilk Liu                  2015-08-07  160  	u32 state;
+37457607ecaffe Leilk Liu                  2015-10-26  161  	int pad_num;
+37457607ecaffe Leilk Liu                  2015-10-26  162  	u32 *pad_sel;
+a740f4e684c020 Leilk Liu                  2022-03-21  163  	struct clk *parent_clk, *sel_clk, *spi_clk, *spi_hclk;
+a568231f463225 Leilk Liu                  2015-08-07  164  	struct spi_transfer *cur_transfer;
+a568231f463225 Leilk Liu                  2015-08-07  165  	u32 xfer_len;
+00bca73bfca4fb Peter Shih                 2018-09-10  166  	u32 num_xfered;
+a568231f463225 Leilk Liu                  2015-08-07  167  	struct scatterlist *tx_sgl, *rx_sgl;
+a568231f463225 Leilk Liu                  2015-08-07  168  	u32 tx_sgl_len, rx_sgl_len;
+a568231f463225 Leilk Liu                  2015-08-07  169  	const struct mtk_spi_compatible *dev_comp;
+b0677bc0b5f41e Leilk Liu                  2025-02-28  170  	struct pm_qos_request qos_request;
+162a31effc4182 Mason Zhang                2021-06-29  171  	u32 spi_clk_hz;
+9f763fd20da7d8 Leilk Liu                  2022-03-21  172  	struct completion spimem_done;
+9f763fd20da7d8 Leilk Liu                  2022-03-21  173  	bool use_spimem;
+9f763fd20da7d8 Leilk Liu                  2022-03-21  174  	struct device *dev;
+9f763fd20da7d8 Leilk Liu                  2022-03-21  175  	dma_addr_t tx_dma;
+9f763fd20da7d8 Leilk Liu                  2022-03-21  176  	dma_addr_t rx_dma;
+a568231f463225 Leilk Liu                  2015-08-07 @177  };
+a568231f463225 Leilk Liu                  2015-08-07  178  
+
 -- 
-2.48.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
