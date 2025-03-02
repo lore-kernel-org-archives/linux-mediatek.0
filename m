@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 760B1C19F32
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Mar 2025 10:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBC9C19F32
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Mar 2025 11:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vL1yRn8MBxb2gp/KNlUsfVMOeRhDEIgTVkRo/NePJ2k=; b=e7CEQ/waiMdUXjm/pUOrh4vypE
-	Fqt6Q/ZeSVO3vtTKv4xOlXM7ZmDX+qj9EOLa9nNtznd2jt2GvuiewdhLLF5SsJTVvqJRBwRsfIgfZ
-	fdsN55JzCHb41hdDSYuXEeSJH/gGXQVnZOGpRNtHk/DJjs2ANpbkZS497H9J69nptaQMNTAMtruvC
-	+ZsbJVcP2NbNYtojHCwXf9Ea3whPPu0m/1UrFo45/NKjNaA2VigP9XegvvAoPK89YPF5KOjWVmv7S
-	723RLskqC25XlHzjmhSAgWtKu+srZC1L1cnJPfQHCJN4WEeKgbn7ogEW1eWQosaWTm87j4vv7gd17
-	GxXSvxwQ==;
+	bh=52g/glg7NT0z7wXh+1AGaeQ8us2Hz1vc7u/frasZWfQ=; b=d3XFZBuzmoUGwUpQ7RmZMnJG8G
+	WCy87s4sZvgS7yN/NCO7iVO2cvHZQEQOhGlfg2XxxsNoBs8vy14FVPIyg3DCe8+SZ2cyVA+aPg0Rh
+	SCQYKqEQeSHWooiHTIHVf5IWSxYmAJ+XDS17t6H3kQU6Ediiys3Vc19LUx+GVR6T2hsnv8VO3L3hv
+	/DVIsvt563Md5OGrmdRgnTvDjHtRIH8zNkk8yGUOvAOTxo45WokKNXXFenvkiPGqpxQTHoDHJ5uqf
+	RT1RKKaUsGwXBTg2hZYNTDqfwm88Hr0lbS2JlCi7Layy3NxXpZP0AIpMf1Pah0PNpk0EFB5KT78RV
+	w0+PdAxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1togxd-0000000FrcB-1qb4;
-	Sun, 02 Mar 2025 10:54:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1toh7z-0000000FsUr-1Vd6;
+	Sun, 02 Mar 2025 11:04:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1togw5-0000000FrVl-2gds;
-	Sun, 02 Mar 2025 10:52:41 +0000
+	id 1toh5V-0000000FsCC-2Lrk;
+	Sun, 02 Mar 2025 11:02:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C39BC611C2;
-	Sun,  2 Mar 2025 10:52:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4E2DC4CEED;
-	Sun,  2 Mar 2025 10:52:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B2F12611B2;
+	Sun,  2 Mar 2025 11:02:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57C23C4CEEA;
+	Sun,  2 Mar 2025 11:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740912759;
-	bh=L6vzNNhxmQqFNHiJKjZnyLTkOupTCwtG+9t7ypvjb0A=;
+	s=k20201202; t=1740913343;
+	bh=0dYRopgj7MY9Fono+yLkck1yirLmhq10431jfhctt4M=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=r4V5gwnto8CpFK5ArrwDkkKkSTz3mKb0QPswSkQA9AASsw6jc8LyXtnnz0oBzOx6k
-	 62t8im88syweB4l8dxVwfm57Fp+SoZSNZSyI47ECufCgVEc0lTh1Yk9zK/fNKUWlEr
-	 Q4P3DpGoxV2mhrJ62ytVjzvkiAdKrlpq2v2RHE8JfTCx4LX/2pPq2BYhgoqWieHmks
-	 4Wv86ycHkBf5gx0onr/wqI4dkXsChnFVDcvfCjy4ogYkVCNAfLOGg7GUyJGoYXrHvc
-	 kvu0R5eK9Nh1eqjJhTO/8c3tvhrp3C5Zvs0HGesByxV5BvLQaEbBBkIw+64NKLoUyf
-	 jjdm0b/OK7W+w==
-Received: by mail-pj1-f43.google.com with SMTP id 98e67ed59e1d1-2fee05829edso1621062a91.3;
-        Sun, 02 Mar 2025 02:52:39 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWVA6CuWJnBcXIFsCAlLvzFbeG05eYkro5Xo1bqQFBJjtXmJYYEwd8fsaOZ14sOLqfhfwD8pBZw/mHvbXWtGVNf@lists.infradead.org, AJvYcCXTi8wPm0cIrf3lygiL4kSrSHy1yG/uDTqG3zliCTOvPyvtzk0AANh1NzZc5wBydjfYykCVeSwgEm7UoNz+HaQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzpDHmNu0iUf3pgz9Cu2hnSwtG2+aFh8bqnTNEuc+lBNf/j4ZmW
-	N77Y92WRrHUpkv0WMOqlnrmFkPclq+1mbcKXHXn4A3CkxMInUwP2BfWdtwq4hPVL2UpL5saiJBq
-	O7H6Rdu+t5VFjCBeywqNq8d3V8g==
-X-Google-Smtp-Source: AGHT+IFr0JxiHOLXjlsSslQCDKpP7+qH21b5sizYcPxUilNNHlN/637COD/xsyczcRFpKdal6JWqc5TIwge0h2N6mRI=
-X-Received: by 2002:a17:90b:4fd0:b0:2ee:aed6:9ec2 with SMTP id
- 98e67ed59e1d1-2febab5e11dmr16532631a91.14.1740912759320; Sun, 02 Mar 2025
- 02:52:39 -0800 (PST)
+	b=dI/jUzxoVB0jnsLae/FQlzvjQ7CYnYsIB3MwnXWvGhhR3jBsOy9Lne55sQfA2mJ3+
+	 PbIU6YS43nQwBKgXeh48GADc9RgU6+S623HOQWg/Vddyswo0yiw5y5eKK2daBf+UN8
+	 Hb938BynaEL8+4HPJwafxhEfLIpvhWmkQ2wgLW9YADDFMxHEOAAGIsI6c9MEdqdVTD
+	 m574t5Se7YXMPz7iXVTCH460eyXEdF+elO9Qz4AoT8Wsmm+I5AzZ+sr0GE33j0yLa5
+	 tjZs5yYHkBB+bR7Z4gom2yJLZO+gDrwnu2Jfx5bJTIqO34/RpHp29Xx2F8PvTM0tzk
+	 eham8rPTPCdgA==
+Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-2feb1d7a68fso5854032a91.1;
+        Sun, 02 Mar 2025 03:02:23 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVLFBJSqRaAvHUHizTL97IRvhNeqee9KUGgL0WnUmTAwJRRWgPDEbXIfCIxQzlzq2XELJROzKJBeTNZMeramGw=@lists.infradead.org, AJvYcCXzOq3ZMldP1TfbXkH6dbYTGzPL9eZnDpAoOT1sLnZjDZtj4XKC3od8O5Kv7fb+Gio4R8gIrXoKLclc/IpVY3at@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB3H6/vzmbsYa+/+VXbLnV92L1zet2p1YdOvVRl1Yo0xcuCC0k
+	lce5z+FznwnITiCQcYWrxyV/749EI1u3Rk7qZBoGlhIW0U0JcCe/KJtWDfqHD9dH33uxk6t/61G
+	CAMx7TSDQVWZFGVwQOg6YhTtdDg==
+X-Google-Smtp-Source: AGHT+IGXak0wWZcnO2fYe/U4V7W9M9ejGxSMKy2z27wcwQtCwsLxiJAGJVNg9RMSEfsiEk3SDeQMvuh7fJRecjo++dU=
+X-Received: by 2002:a17:90b:5745:b0:2f2:a664:df1a with SMTP id
+ 98e67ed59e1d1-2febab2e065mr15533413a91.2.1740913342866; Sun, 02 Mar 2025
+ 03:02:22 -0800 (PST)
 MIME-Version: 1.0
 References: <20250217154836.108895-1-angelogioacchino.delregno@collabora.com> <20250217154836.108895-4-angelogioacchino.delregno@collabora.com>
 In-Reply-To: <20250217154836.108895-4-angelogioacchino.delregno@collabora.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 2 Mar 2025 18:53:26 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_97vGqWn93-esp3H-41Z4bHoBXoBOmKRnOFCCOU8LXnqA@mail.gmail.com>
-X-Gm-Features: AQ5f1Joi7NG6PI75qSK41aTo_9uAi-C384Ig7I_HASZnBhU-eUquttae1Ga-uVI
-Message-ID: <CAAOTY_97vGqWn93-esp3H-41Z4bHoBXoBOmKRnOFCCOU8LXnqA@mail.gmail.com>
+Date: Sun, 2 Mar 2025 19:03:09 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8KFgSQEYC7v+6Asi_KdYjdsj==fOt6LR1FnOvFF+-BvA@mail.gmail.com>
+X-Gm-Features: AQ5f1JrgOeeHmf3p3iP0Zim-UptMlcZ6hRTIjGx7ZXATj_NZLe_or-pJTLaht-g
+Message-ID: <CAAOTY_8KFgSQEYC7v+6Asi_KdYjdsj==fOt6LR1FnOvFF+-BvA@mail.gmail.com>
 Subject: Re: [PATCH v7 03/43] drm/mediatek: mtk_dpi: Use an array for pixclk
  factor calculation
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -124,7 +124,7 @@ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
 >
 > This commit brings no functional change.
 
-After fix build error, applied to mediatek-drm-next [1], thanks.
+After fix conflicts, applied to mediatek-drm-next [1], thanks.
 
 [1] https://web.git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.=
 git/log/?h=3Dmediatek-drm-next
