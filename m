@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403CAC282CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 13:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C97AC282D1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 13:51:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z7HaqtWWyuFzFnOJ20NGJ/FsNpK67oSNX57atoEk7Hw=; b=0Ys9HrUBnwiZua2L+EftZ4XmYF
-	mM+9WIR1F7MKOx2ABNcgUX6UGJT52QUyPfGcx4r8969PptvLHEx8GZMwBkGKJAP5hbZiHYa3YyoM7
-	PnoEiGtvz2x1Fm6S05ZhM0YGU96vaNb4n5wruOOH710CSPMEqDD8ttuVhqVCkpFfVTYzpEUSBuuVv
-	WF+JiEeZkmPtB4dkHj4OifsO7v+GMcPdTIdyVFis/e/fBtNJwGf1EnP5X8MuKLls3hars5N8I8Wk0
-	A24Ci0ajR4FGai5si3nw+BZbf+9Btrqp73xT7KI9EEPngNI3QJJ2uIydhxMzO8hCS2R39il606RdF
-	q/05Nn4A==;
+	bh=xymxijNAB4kPnYy2+51xfQ78DYkQAFFvh1BybSjX8uM=; b=hH4whTFbpn23TbO8Y8jTKIfUED
+	ClcquGUTdCTT0qX5zSxsbuW3XdUM8pd+ceLw5LR2bzVFLtzNlmU3bNgmKnXlJvqVo2f14QZsyTJjy
+	eLcPvQae5B63NI7CLGnT4ZNxhRje+yt6gg3FBrZmzEzFC7x8dY2to3M5x4W554kSt1N4e0rdAj2UT
+	2b/6B6zGPafMM1LetghT8OZHNvtowf7ZmEy1N+wEGWbO4Q5fyOh5XiYaAQ5W+iCRXVuYal8Qey+bY
+	fWGJ21dv2ooX9SQoNZztCqfHknIXQuxxOkWEIPetaLs6++YPaBYVuD35Y9HfYNVAm8WQHO7C5OmFu
+	KPa6aWBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp699-00000000ycT-1NBv;
-	Mon, 03 Mar 2025 13:47:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tp6CE-00000000z6I-2Jpi;
+	Mon, 03 Mar 2025 13:51:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5kJ-00000000tYu-2R8Q;
-	Mon, 03 Mar 2025 13:22:11 +0000
+	id 1tp5qr-00000000v0f-2ZKH;
+	Mon, 03 Mar 2025 13:28:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 28A4C611E3;
-	Mon,  3 Mar 2025 13:22:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56406C4CEED;
-	Mon,  3 Mar 2025 13:22:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 352145C598E;
+	Mon,  3 Mar 2025 13:26:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8F0FC4CEE8;
+	Mon,  3 Mar 2025 13:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741008130;
-	bh=cyAIDvH42HlK42zH1AZZ7W0u8yvqehARnSYevut+Mvw=;
+	s=k20201202; t=1741008536;
+	bh=pU75ZWR55ytSqTfFyBXoZ15CdXjjZybmf3hZAq7hNZA=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=c/AhB5qEabaK+aGFMVK/mFIuucVYjGzZAk7HdUEOEz2mZCuWZRzB9TmVLCrERWDN5
-	 OC3uJ8TorONGnXWfIFQmcnQmo1J+tPz7jKCiWTOrHgzEzM6TjKgawRn5EjTjpfa+Vd
-	 hQbJAAo8DaI/V4nFvyoBVzOlg2VyPBFMczw0uHOJF4cvkb3FC2jgJWI9k3gCwACoBT
-	 QyXng99JRn6+4oOBzcoxgc+0yF81Wre66HialtHEmysgApJfX9TYc/pCrPFm0+nEWV
-	 YlKl7U1UpJaE6vvS5QoHCrEsqQCKCMysMl4JglksrOiXPPCibfyukuN5ukmr78zUnS
-	 SCd6ppVo7A+6g==
-Received: by mail-pj1-f41.google.com with SMTP id 98e67ed59e1d1-2feb9076a1cso6824203a91.0;
-        Mon, 03 Mar 2025 05:22:10 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCULaMUfW66/OtgmzSPMWPv1fpx1klUTkt7rfUVdspwIeT+4p95zREAbLWSGofGJ9bYf7FtCKv3ZExzCKJTOAeY=@lists.infradead.org, AJvYcCVlVHJ1AUVGp+/4I8JEZmtUntl+p1F1VUwLzVEEh/KVIKmzfkFcxkNYdJ06kX5F6KdhbZU1TCeQ9yqhv6dQQbi7@lists.infradead.org
-X-Gm-Message-State: AOJu0YylxvhdUuyzJLoryAKqOfKBAbiFUjZEa3NWnuP/S6xl401eB2QR
-	Tz8/nRIP7RTxsNVqVgL8I+iWWcBIOb/5+9rgw6/C3u7JgZSryI1t5Ssc2nNAlRterkERY96dpzP
-	99NTqA4L++IaYA5PcnkR6GmTFMw==
-X-Google-Smtp-Source: AGHT+IHQLK7la/7RxxVx5xQub2rrCyzIXTBwqCYNHPZA1L5Z+HvrKvHgKF1EVP50ng2pCoNbxnqwqT1ThMWF+DeLMfM=
-X-Received: by 2002:a17:90b:1cc6:b0:2fc:3264:3657 with SMTP id
- 98e67ed59e1d1-2febaa92594mr25361600a91.0.1741008129875; Mon, 03 Mar 2025
- 05:22:09 -0800 (PST)
+	b=fvovLgDuT8SSv3WCPvLaVtJ0pBNwyRk6mFp31yKWnf+m8GRu7OhSOpELYlOpzrLNN
+	 sqdAotELtlVNYxz7k6QnZtcBAlyXprLJPPsSicGaETkDSeNYREsV4LGPuE+zQwUzJU
+	 vJeo0lTRXJn33MqW9GSE1LA10t2CBcSeWWF/JJxdzVejirlmdmXYvnfYsJ3fudmtQ9
+	 7K9jdg92q+5e6jsT3P3a5357wIHHlB6QY+ZKso/Q1+ndSWBnoPz83uRD/qG8ERufGH
+	 tPdnoGpo5d5sWXgFI4mByp/QiN7oufWU1SvpUPzn8zcBQhD/Ssc50B2bSIWu3/5php
+	 wpKCziGZrfnaw==
+Received: by mail-pj1-f46.google.com with SMTP id 98e67ed59e1d1-2fee4d9c2efso2362168a91.3;
+        Mon, 03 Mar 2025 05:28:56 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWVg1Jx91o0O0dsYjXKxyLA3B2N+JonbCleGOKcysWmy/P/fh+u1RTSc403NWp9maagvbj3VQ7Neb6XsKuvlzs=@lists.infradead.org, AJvYcCX5if5HAK28tCKfkW/FQP33dnJLnE1wJ8IJ5JXA0bj3kcEzGK5jIYRNfV4gwS0DbhlOjycPANtQIj4Daxqb+ht5@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywvam2+tIA6Oid3S6XtGx0i3AAmxs2dOjhOoFQ7L5SZpOL+K+s3
+	s80zbml4ATPO6ZUpGf3T2X82tt+aUmSw1wf9k8GPtYD2wqbpsphYFR3PTOTbuX5vW38BUR2XfrL
+	Vgrof6H1RK9CIazUIMY3D+GaEOg==
+X-Google-Smtp-Source: AGHT+IHEdNW1OchHMbLS1cCfwrEs+3MwI78VEpSMNYRCH8bFSj4YHOZdW6AmaLLo8nvW04MvVqNc2fV4NRzXAOPbwh8=
+X-Received: by 2002:a17:90b:3d4e:b0:2fe:b9a2:fd3b with SMTP id
+ 98e67ed59e1d1-2febabf8336mr20713936a91.30.1741008536294; Mon, 03 Mar 2025
+ 05:28:56 -0800 (PST)
 MIME-Version: 1.0
-References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com> <20231023-display-support-v7-1-6703f3e26831@baylibre.com>
-In-Reply-To: <20231023-display-support-v7-1-6703f3e26831@baylibre.com>
+References: <b754a408-4f39-4e37-b52d-7706c132e27f@stanley.mountain>
+In-Reply-To: <b754a408-4f39-4e37-b52d-7706c132e27f@stanley.mountain>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 3 Mar 2025 21:22:55 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8c4xeE=c4MTGopenORaP-PL66exLG+erKSV1fpoGJU+g@mail.gmail.com>
-X-Gm-Features: AQ5f1JrckMOh9P4yJQbwlfuWcX_03D8O22eeIcknRD2YAlMiCLxngtVQQLy-TeY
-Message-ID: <CAAOTY_8c4xeE=c4MTGopenORaP-PL66exLG+erKSV1fpoGJU+g@mail.gmail.com>
-Subject: Re: [PATCH v7 1/6] dt-bindings: display: mediatek: dpi: add
- power-domains example
-To: amergnat@baylibre.com
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
+Date: Mon, 3 Mar 2025 21:29:43 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__KF=9Pp=3PAnXG5WCPX4Hxkfd391eBu0dfhO-wz9dWqw@mail.gmail.com>
+X-Gm-Features: AQ5f1JoEyaQUFZqrdcQEIsbOBWMKKKZ_mrsKmQyi0xWBpqur_M_EISNLxHKjU88
+Message-ID: <CAAOTY__KF=9Pp=3PAnXG5WCPX4Hxkfd391eBu0dfhO-wz9dWqw@mail.gmail.com>
+Subject: Re: [PATCH RESEND] drm/mediatek: dsi: fix error codes in mtk_dsi_host_transfer()
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Julien STEPHAN <jstephan@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250303_052857_764832_72A82BD7 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,16 +87,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Amergnat:
+Hi, Dan:
 
-<amergnat@baylibre.com> =E6=96=BC 2025=E5=B9=B41=E6=9C=8810=E6=97=A5 =E9=80=
-=B1=E4=BA=94 =E4=B8=8B=E5=8D=889:31=E5=AF=AB=E9=81=93=EF=BC=9A
+Dan Carpenter <dan.carpenter@linaro.org> =E6=96=BC 2025=E5=B9=B41=E6=9C=888=
+=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=885:36=E5=AF=AB=E9=81=93=EF=BC=
+=9A
 >
-> From: Fabien Parent <fparent@baylibre.com>
+> There is a type bug because the return statement:
 >
-> DPI is part of the display / multimedia block in MediaTek SoCs, and
-> always have a power-domain (at least in the upstream device-trees).
-> Add the power-domains property to the binding example.
+>         return ret < 0 ? ret : recv_cnt;
+>
+> The issue is that ret is an int, recv_cnt is a u32 and the function
+> returns ssize_t, which is a signed long.  The way that the type promotion
+> works is that the negative error codes are first cast to u32 and then
+> to signed long.  The error codes end up being positive instead of
+> negative and the callers treat them as success.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -110,43 +112,55 @@ Regards,
 Chun-Kuang.
 
 >
-> Fixes: 9273cf7d3942 ("dt-bindings: display: mediatek: convert the dpi bin=
-dings to yaml")
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Fixes: 81cc7e51c4f1 ("drm/mediatek: Allow commands to be sent during vide=
+o mode")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/r/202412210801.iADw0oIH-lkp@intel.com/
+> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
 ora.com>
-> Acked-by: Rob Herring (Arm) <robh@kernel.org>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 2=
- ++
->  1 file changed, 2 insertions(+)
+> I sent this patch earlier:
+> https://lore.kernel.org/all/Y%2FyBC4yxTs+Po0TG@kili/
+> but it wasn't applied.  I've changed the commit message a bit and added
+> new tags.
 >
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
-yaml
-> index 0f1e556dc8ef..d5ee52ea479b 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
-l
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
-l
-> @@ -116,11 +116,13 @@ examples:
->    - |
->      #include <dt-bindings/interrupt-controller/arm-gic.h>
->      #include <dt-bindings/clock/mt8173-clk.h>
-> +    #include <dt-bindings/power/mt8173-power.h>
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >
->      dpi: dpi@1401d000 {
->          compatible =3D "mediatek,mt8173-dpi";
->          reg =3D <0x1401d000 0x1000>;
->          interrupts =3D <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-> +        power-domains =3D <&spm MT8173_POWER_DOMAIN_MM>;
->          clocks =3D <&mmsys CLK_MM_DPI_PIXEL>,
->               <&mmsys CLK_MM_DPI_ENGINE>,
->               <&apmixedsys CLK_APMIXED_TVDPLL>;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index d871b1dba083..0acfda47f002 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -1015,12 +1015,12 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_=
+dsi_host *host,
+>                                      const struct mipi_dsi_msg *msg)
+>  {
+>         struct mtk_dsi *dsi =3D host_to_dsi(host);
+> -       u32 recv_cnt, i;
+> +       ssize_t recv_cnt;
+>         u8 read_data[16];
+>         void *src_addr;
+>         u8 irq_flag =3D CMD_DONE_INT_FLAG;
+>         u32 dsi_mode;
+> -       int ret;
+> +       int ret, i;
 >
+>         dsi_mode =3D readl(dsi->regs + DSI_MODE_CTRL);
+>         if (dsi_mode & MODE) {
+> @@ -1069,7 +1069,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_ds=
+i_host *host,
+>         if (recv_cnt)
+>                 memcpy(msg->rx_buf, src_addr, recv_cnt);
+>
+> -       DRM_INFO("dsi get %d byte data from the panel address(0x%x)\n",
+> +       DRM_INFO("dsi get %zd byte data from the panel address(0x%x)\n",
+>                  recv_cnt, *((u8 *)(msg->tx_buf)));
+>
+>  restore_dsi_mode:
 > --
-> 2.25.1
+> 2.45.2
 >
 
