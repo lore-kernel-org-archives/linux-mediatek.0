@@ -4,85 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 813FEC282C6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 19:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC366C282C6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 20:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kMdhomqR4u6eFz7EL0HdhdFWnLeoGWNJPxOHYDhbRLs=; b=dDe6crMvfj3wAciCmFQGougyku
-	M19fGjvHkajEwDxqHlhHuDJG3Npp+jmuS4SBpk0q/L2wOIZjVUV/u2kYVclZk6ak3J/MBWXI+puWR
-	ms7rvyNTlGfcQMLrDu/fEeSZgIwh4WyxPJTl38yv5Ilv8HgpsFBP52DRJmPQR9RcQ+g1fgcT9fKVw
-	CJLs+FfOkY9Y34Lz5dagKTX1aDFBzvusHTwU8fIIVfoQLAF6jjlO0TTyEuLysksI4tNE8rE0+GYEZ
-	DGYAN28QjEGVLSkZKCcWLmo+vDGAAyDsGpaY2J6VEvUmqvREJErDXcf3EyjnwP7t9FoVpTOLSfgpP
-	1rlxF7Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uWxfPZ9Q9PKdspux27aAUMfhltwVPuv3Rq9ADQuniAM=; b=4JBHv16M/PXyQmwskYnQNqx/7v
+	y3Sser3cVzs49zF+5DtBahDqCBkbMerqeQo5tPS67gTU0t2Ah6FjPfpaXOsvz/+Ad4AYj1Eez+HTz
+	owx9CjMXEzWv3zAej57pTC/KX/JYJGBbAU40atPo81SNLWyIE4pLrUffgIcp2SdtqhFwpKDZxZ6xF
+	QPmASl9YmpP51T2cNOhEy2618TVZOVIR+8s6A0mjYL1fn8TbrM/Nh7wmsAOz9VOrvpRcmKViY5z3K
+	eharDfM3HCwVDBgGsckmTzAhth5yTbDWf1dA6qNzzaSIpRvTQU54rnrovJ+laRwDvA8F4zYjnhDvM
+	V7/vooKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpBE8-000000021x9-1qHr;
-	Mon, 03 Mar 2025 19:13:20 +0000
-Received: from mail-pl1-f174.google.com ([209.85.214.174])
+	id 1tpCAV-00000002AV8-0nh0;
+	Mon, 03 Mar 2025 20:13:39 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpBE5-000000021wN-312T;
-	Mon, 03 Mar 2025 19:13:19 +0000
-Received: by mail-pl1-f174.google.com with SMTP id d9443c01a7336-223cc017ef5so14649555ad.0;
-        Mon, 03 Mar 2025 11:13:17 -0800 (PST)
+	id 1tpC8u-000000029oq-2d1w;
+	Mon, 03 Mar 2025 20:12:01 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4393dc02b78so31227075e9.3;
+        Mon, 03 Mar 2025 12:12:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741032719; x=1741637519; darn=lists.infradead.org;
+        h=content-transfer-encoding:autocrypt:content-language:cc:to:subject
+         :from:user-agent:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=uWxfPZ9Q9PKdspux27aAUMfhltwVPuv3Rq9ADQuniAM=;
+        b=YwonZOfM3zXqRNmvZlSQjPTJ1wRe8BZhd7aNV3RtilZFtrUXdQJF4D1bGa6ch4dG1O
+         j3zL/8cFrTZnmM4OrsIfch1tn/bAd0WQOsE5h9tOtVPvbRzY1okyTF2Abe2p28r/0if3
+         b4d/T4LND9Z2womdP0g78DjfWqNNBl2+qsoHjDnlPNIyhLVEqK2lRWOx87ZdKBq6J6vQ
+         g6uwuTIgk9iZY0hJ6/HBY4VKyqt+e8M2IdbO4vI4ROsS4wY8Wy5GepYpCcC6anNt31UB
+         PIB5kBihPJEpwubsk/QTTFQEQuNbwJwyI1Qrvs55ZK6l5MYdkNJHx/oddsQu/l7LezTU
+         K+QA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741029196; x=1741633996;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kMdhomqR4u6eFz7EL0HdhdFWnLeoGWNJPxOHYDhbRLs=;
-        b=jAl7Bsmd7hPG52rWcNdnIZSmESIorVdXFomOWISOc0wf8B+sVDdnf251aWVpH5GiOo
-         NFZ72x0+TvJUks+e1wA9Je/6q28McyishdY+xW6F4XH4i1aKWkukBvcWbSVetF7rRa62
-         +/vbHBJhwoJ7fssqT06C32TenRzgmyat/QQgTa6uWHi/RncnlLLRjyE3RatKr1F6cefN
-         wDx3v1x73cTqi4VhKcd3siBwjtgpjIVEteSf9z8fE78Dupi3Si+ISnU2qIrZSnCIeLUk
-         CAmDXqLbaUH2e1cBJM7IeVpwzPcNVcm2u3gQtryLKPJ4M0QqjYfF1ALjCnQHEvQgj3rL
-         Y0BA==
-X-Forwarded-Encrypted: i=1; AJvYcCV8btncNEtI+tcjszqRjtLXy36G/yGa+lwzDpLBrA7LN4O3eYW1ELL439ixPrjRuFD+L0uXCFSjf22mZkx6GjI=@lists.infradead.org, AJvYcCX/jiRoGxJKG5o6/TxM2qhraVwhN9XvWTpypAxBf4oy3pn8Cikvv/LcA3JYZaSn+++8XWrIXRH1GMxIgdYJeHlI@lists.infradead.org
-X-Gm-Message-State: AOJu0YxizN3lPOQiJgprA99J1pJOyBSBOt+fz46SUBpsyyxg+dL+WEqP
-	RZhnvQzHT8V3Qv06CoyO+QdWexdc1ppEDOD+MbvdFcNP+hGJb9Bh
-X-Gm-Gg: ASbGncuswVid3qiSEo5mafNyQ3gkofEegUiQqYZiLOdM7tTWtEUegp3XxMsnEQ5aQHA
-	jVsYlHkCMC699exxRsAQJeVF6qtpHL+bKxmLTW6kFtfKaazpXaujeN/xIibjCu3hX1wxLVrBMJl
-	PJSABRZJYf4Bxh5mBo60aSW0eM89G5tGlnVHBu3lpHdymAVKsX7Do8Nt1ttIGgSVRRBStRfiLaA
-	YvqcgnJ5Vg/4K4uplfV5ZELul8P0rF2yhRhEGJtBtyYGEJgJZ8WlvqQnLCT7y9iZhsE+keBN4wl
-	aW8fqTH9hX7bT3v3TTX9AyDkKUEHFz5hJhfmqY/r/Zkvu4SO5/z6S5Kk0PJ222KPgkmyomFxQvG
-	wA90=
-X-Google-Smtp-Source: AGHT+IFWuOdDCIbzb+NPKXQr/vDDylShl9+ZLJtMDPzgxZSjAC8yWUsr6ofw3AFRZJpI4pkui7tCgw==
-X-Received: by 2002:a17:903:1c3:b0:223:33cb:335f with SMTP id d9443c01a7336-22368fa17fbmr210787435ad.3.1741029196546;
-        Mon, 03 Mar 2025 11:13:16 -0800 (PST)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-223504c7efcsm81587665ad.154.2025.03.03.11.13.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Mar 2025 11:13:16 -0800 (PST)
-Date: Tue, 4 Mar 2025 04:13:14 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v4 0/2] PCI: mediatek-gen3: Set PBUS_CSR regs for Airoha
- EN7581 SoC.
-Message-ID: <20250303191314.GA1552306@rocinante>
-References: <20250225-en7581-pcie-pbus-csr-v4-0-24324382424a@kernel.org>
+        d=1e100.net; s=20230601; t=1741032719; x=1741637519;
+        h=content-transfer-encoding:autocrypt:content-language:cc:to:subject
+         :from:user-agent:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uWxfPZ9Q9PKdspux27aAUMfhltwVPuv3Rq9ADQuniAM=;
+        b=UF4ThNY/TbmdT39R8jG0HOjRyWrqNS2VCXuDZ14UGBFSJDx//y7cV+TEqElHs2RvjK
+         xwNFlDy5X9Mb6t+1tTnZz4mL5uIDxb/I4kGueJPmUMJ2d9rNm3bGxrSHFkV5rv2wkdc9
+         wuAuwHPc2h+Xq5tARBxjwNHjo3/qc3OF+V0/ea0lfFWmBLa6ehrh0mVMUoVo91ktsSDX
+         NXACl1+g/vZoxOrfLwIbSwJfwJQuGOy/46dZMY1ZU7UWCOnKH+q9LZhGYIGugiRGyJiz
+         RFst8qFE2ueBKpm3ybmneq+eP2KE3YYMeDANacDuhpxChcTlqyXudg/uAUyHQ3DU8bcv
+         QyKg==
+X-Forwarded-Encrypted: i=1; AJvYcCX8RqSmGRRuE0h4WWJFt7k0/53bmXgEcQ3/xFdVp8vaxBrLb6YOmsb3+YntxTrnfdXN8VReVlEtdLRKgolPQBUq@lists.infradead.org, AJvYcCXnuxFXuzpY/wgn0OnAk91Dcp0Vpz0ggI2KWLnz8PFaY4QwsmhKbnE3vGv1Kf+0gvyoSBAdfISEsUfoQdencuk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyK6O1fpBwqrWCQaiEGiGRPAsexJp7wJUdvTtI3OrHoCMLHcmT6
+	fpYXven4gphYZgjb/GHXCdW3pw+499jLuvg2xaQ2aDYOpGY+I/Ou
+X-Gm-Gg: ASbGncszX+wwGz8jHo4RbAXyA8DND0ESAPZ2s1BFkOT6g75Nt/ppfInbKN3/peYrTwH
+	AWDQOcaRdc4darkeBtMDTJFTwbQWF+shjVpvUP1wD/WCU+IOBOptz9rliO4VAoP/aToOegBLHmq
+	1B+Bmohj0LeY7fV0n8GtsWDdK++lHZlXJYkyFTaJjN33cvCQ457GUvKc9bZdDkFFuzpmMQHZiUt
+	BrlLDGdWLGtB4e5ElEuDjMKVTIZ8SKA+Ruby0ASqd2ZDPWifSTeEHKKmx8i3R+4Flt7nsFqShYl
+	7svQrKcDvX7BAJRJiVt2dDYwQKICl7Y4DrMpcHYl/9DNAny7OzshJ4A+Y7//GMHX4DFVH0Slign
+	s6CohqJBtqdd9kXUFMsLKNCOwBPmbjJmPclTFSTHgS3y6LknTgGpBRxi9SwJh9y3q6WjofP/cSC
+	AvYsr1ohAo9j0txZkOEJDXxYwUUD4V1/uRZHVs
+X-Google-Smtp-Source: AGHT+IGrliRmZWsiNQ1SKtuhzNkpQ2g/Wj6wuMuWur5bf49+A4+rdLUGngy6KWs9s/OHdhPuU7bzng==
+X-Received: by 2002:a05:6000:18ac:b0:391:454:5eb8 with SMTP id ffacd0b85a97d-3910454634cmr6485950f8f.48.1741032718374;
+        Mon, 03 Mar 2025 12:11:58 -0800 (PST)
+Received: from ?IPV6:2a02:3100:af60:7000:f08c:4f29:ab35:752a? (dynamic-2a02-3100-af60-7000-f08c-4f29-ab35-752a.310.pool.telefonica.de. [2a02:3100:af60:7000:f08c:4f29:ab35:752a])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-43b736f75c6sm169721715e9.1.2025.03.03.12.11.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Mar 2025 12:11:57 -0800 (PST)
+Message-ID: <5c5e60b3-0378-4960-8cf0-07ce0e219c68@gmail.com>
+Date: Mon, 3 Mar 2025 21:13:05 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250225-en7581-pcie-pbus-csr-v4-0-24324382424a@kernel.org>
+User-Agent: Mozilla Thunderbird
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next v3 0/8] net: phy: move PHY package code to its own
+ source file
+To: Andrew Lunn <andrew@lunn.ch>,
+ Russell King - ARM Linux <linux@armlinux.org.uk>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ David Miller <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Richard Cochran <richardcochran@gmail.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, Robert Marko <robimarko@gmail.com>,
+ =?UTF-8?Q?K=C3=B6ry_Maincent?= <kory.maincent@bootlin.com>,
+ Rosen Penev <rosenp@gmail.com>
+Content-Language: en-US
+Autocrypt: addr=hkallweit1@gmail.com; keydata=
+ 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
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_111317_752906_DA17F3C3 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250303_121200_673368_F83DC26C 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,13 +154,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+This series contributes to cleaning up phylib by moving PHY package
+related code to its own source file.
 
-> Configure PBus base address and base address mask to allow the hw
-> to detect if a given address is accessible on the PCIe controller.
-> Introduce mediatek,pbus-csr phandle array property.
+v2:
+- rename the getters
+- add a new header file phylib.h, which is used by PHY drivers only
+v3:
+- include phylib.h in bcm54140.c
 
-Applied to controller/mediatek, thank you!
+Heiner Kallweit (8):
+  net: phy: move PHY package code from phy_device.c to own source file
+  net: phy: add getters for public members in struct phy_package_shared
+  net: phy: qca807x: use new phy_package_shared getters
+  net: phy: micrel: use new phy_package_shared getters
+  net: phy: mediatek: use new phy_package_shared getters
+  net: phy: mscc: use new phy_package_shared getters
+  net: phy: move PHY package related code from phy.h to phy_package.c
+  net: phy: remove remaining PHY package related definitions from phy.h
 
-	Krzysztof
+ drivers/net/phy/Makefile              |   3 +-
+ drivers/net/phy/bcm54140.c            |   1 +
+ drivers/net/phy/mediatek/mtk-ge-soc.c |   7 +-
+ drivers/net/phy/micrel.c              |   9 +-
+ drivers/net/phy/mscc/mscc_main.c      |   2 +
+ drivers/net/phy/mscc/mscc_ptp.c       |  14 +-
+ drivers/net/phy/phy-core.c            |   1 +
+ drivers/net/phy/phy_device.c          | 237 -----------------
+ drivers/net/phy/phy_package.c         | 350 ++++++++++++++++++++++++++
+ drivers/net/phy/phylib-internal.h     |   2 +
+ drivers/net/phy/phylib.h              |  28 +++
+ drivers/net/phy/qcom/qca807x.c        |  16 +-
+ include/linux/phy.h                   | 124 ---------
+ 13 files changed, 410 insertions(+), 384 deletions(-)
+ create mode 100644 drivers/net/phy/phy_package.c
+ create mode 100644 drivers/net/phy/phylib.h
+
+-- 
+2.48.1
+
 
