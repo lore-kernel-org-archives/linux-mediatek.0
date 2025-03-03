@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55ECAC282C5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 11:11:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53FF1C282C5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 11:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lX1RGmg1uBds2wwvzOo6gkglItDyZNfsrf0D9qOYQ7s=; b=wtsw+fB+5v99Xl+m3U+ycBtNIc
-	R9YUbsStlAorFsa9q6DUMMvkcuj5SLi3TylRJCGi2i8U5W+6Zw8xe5ghMXyRBh5waksdZWt8nQag1
-	Qv/EuplnirpigYasdQbTkLTZGyTj/laQIdV1Z7GgPUi0avhk7vV4daQGPJCIQdmBcEqwUS4X2ciDW
-	P2S8/U8Zzd7/7+8z1yJj0y/CkxR2Gm0oBenggvOPTNaEGHK5XoAeSev1f3BeIE5hSBBpEDS97ntyv
-	eSeOUbatI+6zF1noVm+6gGs7194b+8b2tW9UL/PPtNQ9K0HohT1iD1aMUy+Mamu0GMrQ29xCU5YDo
-	vgP7YwbA==;
+	bh=z3X+SeoTjAXlgqca/HAI2vRHsJMCwVVLxr6PRLlhP5s=; b=KiBT+ZaoatDCDbWpGr54tWTJR3
+	yC7bo7DaKPvIzHWEzub0P+XXkOd0RNnJy0zXJ64jpCQs5qyTG5pRpp3H/4a6+J514AWAuDrb/7PAV
+	EZITK1YZCIddqmuSyUPW2/PvLb5QTlapArYxzgGHZSl/0Jv66Stm+yKY8UddV/Q18zRtZlgwz1L+o
+	d7HcMz20aXfYee3GYU5v3VnOb96q64tbGsPTfrCTkBklmcYbM5cxkf64KHvqLntfA94s6hQQpJoD2
+	Ou2eHrfWUfgmpw2bt2NYOXv2bCw0yUsqq4mF/bvyTZKlxgXlWsSOfB1K5HdjFMlwCJpriu5qAj1bU
+	VBcT3zkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp3i8-00000000U3w-2Hm4;
-	Mon, 03 Mar 2025 11:11:48 +0000
+	id 1tp3jg-00000000UjO-25DI;
+	Mon, 03 Mar 2025 11:13:24 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp3dU-00000000Sbv-1Jc8;
-	Mon, 03 Mar 2025 11:07:01 +0000
+	id 1tp3dW-00000000ScU-1kF0;
+	Mon, 03 Mar 2025 11:07:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741000018;
-	bh=b3+Xdqb81IiwLAoh7b8p9zmgG4Hhtw3o80AXe+lcmaE=;
+	s=mail; t=1741000021;
+	bh=CuLBO8WEfBYQo9g1568escIyXpzN1KWlf5T5E7ZWKe0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Oa72sakPA+mY6MuNMvym/Ulzf+1mMz2H2MhjVi4CmH7uXN8cEhwtxBa6zF8cEKwwu
-	 L04nLgulUTfSEmz9eQc8BAz95oJUYoD83IJq901oUwch4eRe+gVKtPb2/F0DMPaCtN
-	 Porxm168SjeUtFnJDHn1OP1+G/r4lj8/D9iw8cwL76A2Ov5UEGrMlaV8JYvZFosigE
-	 r0v252gRC7hhqm+pFQjJM8ZbAnNxKsaafwsIQfhE+2m0Ykucry/ZU0CWSkRzekk1CV
-	 DptyICCuMskSCb4/o2YH8oYlOusbWsnC9IsX5hCAoH2SL0GiTK3Tn/KmoiMlXPvqHZ
-	 APcWLj3q5oq1g==
+	b=KNt5cB6E3tkRk+KKq5J3Wa/5X0IpYAsoezW4HlQh4DGPzZv5msphj0aJ25cZ+FC42
+	 YfXxZ8N/aZEyhL2QCYB8Q4seia6L1TOdC7Hx+jjukIAjt84SKAMOLXUWsTjEeJjVNe
+	 GV2exr4OBpRnWotJOqs7uTK9mULIc3wigF3uxPtpJyluKe5FlVz10Sb2olWnpyWY1z
+	 05DBQ83fmv2tQg1JBVhqDWfWGohD5PRTbASI31pfFcLZPFeh0cy/wgTTbZcsGV3rWc
+	 DrpNZnK7pPLCiv7uaKXpqzm8DwiTN8T7oHHJxE2+UcfJ63UaVjIGj5Fq/2ErIru1h+
+	 aVvnltR/+o4Ag==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A549617E0E91;
-	Mon,  3 Mar 2025 12:06:56 +0100 (CET)
-Message-ID: <d9b64bb7-d4b1-4817-8d14-14ebabf40e88@collabora.com>
-Date: Mon, 3 Mar 2025 12:06:54 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D3BDC17E0F3D;
+	Mon,  3 Mar 2025 12:06:59 +0100 (CET)
+Message-ID: <8af68114-82cd-45b3-a0a9-baa46d64c936@collabora.com>
+Date: Mon, 3 Mar 2025 12:06:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/20] ASoC: mediatek: mt6359-accdet: Always set
- micbias1 to 2.8V
+Subject: Re: [PATCH v2 12/20] ASoC: mediatek: mt6359-accdet: Always use
+ internal resistor
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -63,15 +63,15 @@ Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-pm@vger.kernel.org
 References: <20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com>
- <20250302-mt6359-accdet-dts-v2-15-5bd633ee0d47@collabora.com>
+ <20250302-mt6359-accdet-dts-v2-12-5bd633ee0d47@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250302-mt6359-accdet-dts-v2-15-5bd633ee0d47@collabora.com>
+In-Reply-To: <20250302-mt6359-accdet-dts-v2-12-5bd633ee0d47@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_030700_523757_73FAE965 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20250303_030702_598230_4B8467F1 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,15 +87,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/03/25 17:30, Nícolas F. R. A. Prado ha scritto:
-> The driver currently reads a mediatek,mic-vol property from DT to
-> determine the micbias1 setting to configure in hardware. Since there are
-> no current users of the property and the default value (2.8V) is known
-> to work on multiple boards, remove the code handling this property and
-> instead always configure the micbias1 to 2.8V. The property can be
-> properly introduced in the binding in the future if it really turns out
-> that different boards need different configurations.
+> The code currently reads a property mediatek,eint-use-ext-res with
+> values ranging between 0 and 4. Not only should this be a boolean
+> property, but there's no need for it to even be a DT property, seeing as
+> all current boards will use the internal resistor anyway. Since there's
+> no current dt-binding or Devicetree user of this property, remove its
+> handling and make the driver always configure the internal resistor.
 > 
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Adding up to this - I even checked a few downstream smartphone devicetrees, and
+not even those are ever using external resistor. This won't ever be needed.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
