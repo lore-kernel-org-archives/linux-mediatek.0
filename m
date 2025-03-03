@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD06C282CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8777DC282CD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 13:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1+tcNGEhQOnpEDMIcSl/nrIJvRxlWcNhIkRhXAkv+8s=; b=nShhduu8fkhGL8
-	b0JJKVrVZPxSo2uiczZO7CoH0oJngkDO8WuS6q/f4zH+DAb9e+JU5arFNhug9MokwtdBoQ7L/fyeg
-	lk6IVCHqzmOWKKvL5dodq6IAv/h8/TWdaTFMtkdFGXtv3/BL52iiPTUs/y28/GYD0mNbGJgn2r4Im
-	eYwGjgJs9D8lQim1s/m43/GXqYpJHIDswG4Vd4LkihGUQuEVbL9M7pdjBH02HkINVumkGYVvNCD2B
-	ImJgn8kyIIlc8Nu4uigebX9sziATZDgWaksnWQhCtNcR8pOD1DpM5dqZezMc39aVmo7+s1HPYxsey
-	0upQqSQ+d/5xC5pRqQdg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sP/t3tmqr6JMO2GSBV0+LLksYt7zR4DhEc5XGpybdow=; b=2tKPN96MuI3Iw5e2zj6i+B1z0Q
+	p1d+RJ0UZn65/fVG+zVOvDF+c56dkVHNsZEtU/lZNU93jpsLreb443bV2RwcLA2JCj7iBIrhCX2yX
+	/RgkCnl/cF7aWDnU3e3xx6VUCUUreq47CApBOdvVYgFjb6G8Uu8Em9lbwSKt++RF6xmHV+6iYpXqt
+	VhYkweddVvgLCTaIfnE8QfdyhYafg6wbwrqUbcQiiIPWsJ6xfABKNy1d6T63XAlwUKU2xrFj2nKg9
+	JYmm+nvJHTlPEMvFgfaXcmVAp95VGraJqm2dyAa1Ds1XC924Yt5aFBh3oJoZG464wvVy9jU20NvZ3
+	DAM/5KWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5NH-00000000pTs-0Qqe;
-	Mon, 03 Mar 2025 12:58:23 +0000
+	id 1tp5VB-00000000qdd-29ID;
+	Mon, 03 Mar 2025 13:06:33 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5Lg-00000000p8q-1j9d;
-	Mon, 03 Mar 2025 12:56:45 +0000
+	id 1tp5Tb-00000000qQo-0AdU;
+	Mon, 03 Mar 2025 13:04:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 19FAC5C596A;
-	Mon,  3 Mar 2025 12:54:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D7B1C4CEEB;
-	Mon,  3 Mar 2025 12:56:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6959C5C5885;
+	Mon,  3 Mar 2025 13:02:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1B19C4CEEC;
+	Mon,  3 Mar 2025 13:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741006602;
-	bh=UX3HfbY9NrbOd9tpd2P7hFNQCeHdeWclU4P4j4yWbwI=;
+	s=k20201202; t=1741007093;
+	bh=Kc67sUpClxemt8Xxy2aFwoflyMsGfUhh3kfftx68WzA=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=FV9xelpTeEOVh2F9LLHt7cZEamR97RqTHhg+X8WoBEYkAdzKYDoMPFGtFf8M90C3D
-	 TKgWlwqQHfV9WGMud0bBw2UL2qbO5ucIGnrIH98qUmbbmVpcNd09anXw7cMKWrYT9C
-	 xgsT0eOnRDvogmt97w/5hTiDGDBb4QDrgD0AcjuZD2W2vQV8Zt5itjsBOfSVnOEkDz
-	 u1V0SEBZvaUbFO0watcpspU5ainokC0giq5omDV1ZcV20THn1iLL/F1LeXjaAyJt+M
-	 8VCklBlAsyFYjeFHSOAowTLy2dqy+W20cxyVfJkhIw1AKmlvdPpprIuf32RtQgeEJB
-	 MXlpfnsRQml6A==
-Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-2232aead377so83581775ad.0;
-        Mon, 03 Mar 2025 04:56:42 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUe79OO8t2S/ShqbLKlUc4aFKKnYWCYWuVAx2D7+EPDC1Zoaa91WpCShywPZgQ1dBSiOihsLNm1CQnKeRXpnOU=@lists.infradead.org, AJvYcCWMBzupurcr6jlfCbrEaUS5WkGyBakcdNG1vbiYFdQRfuKQW6DEmwSVY2OJLG3m1+CUFUh+Xvalrj1BTsNEMdDe@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJDKIOYyIAWF1iQnAeGwjj9bThDfmwuRsmct7oJtfcBlEAx4hl
-	77o9fGpfPrVKmbsL4r78BdiebcSza3kq9+8VkwU1wkAnS4JjGXdt//5Y1bHaklOkwQ2PC0NJabo
-	ykJ7g4HbdvkH0kwHL87o05gMqXQ==
-X-Google-Smtp-Source: AGHT+IGSSgSzh55HSnQ1lVjwMdzp28MHDOUOnEh8kdGeJHmMnwiYf8Q6NzYRnemJliLplJUfJXLVhNNZXMjP1z0RvT8=
-X-Received: by 2002:a17:90b:3511:b0:2ee:8427:4b02 with SMTP id
- 98e67ed59e1d1-2febabd9c82mr19809852a91.28.1741006602131; Mon, 03 Mar 2025
- 04:56:42 -0800 (PST)
+	b=YDRHU65A1Zoh3hw1p3HsOJsSkqBvhXSHfah9Wlq5+a88AV942SLRoCzZy0pmV6NXf
+	 Qu7+Iac3vuoEI7P/cuKNYGcVIEqg3Rp1KpCKtdDnkDqhwdisDWSRtAeIa468AbqBT2
+	 48epWenhmUO9x3U1IjuiI1eJxV5x5CKAWo8hqcux0/VFCdgciN9DY6QMcsZEfsOGB9
+	 Wx7NYPSdS/UDjgCcdsw4fwQPDfEbbBRCe7Nr5BZH0o2AbckyTQhxBeIJHSNVHgGFE0
+	 k94UiVDiMOmX2TLm5hsXZnk4OsBX5zV21tYr6zL2Mlbx6AdB/GrQsAwMqj3FbxSUgm
+	 0/MeS2k4ccSgQ==
+Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-2fea795bafeso6521438a91.1;
+        Mon, 03 Mar 2025 05:04:53 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWkh7rlJhCMQxxN5pVfUeOLHGWCSJCTEeSdgXxEgL6YgVDLngquFZ7f+oLdPpzdUAoLoQ5z3wWnNVnoDKowbtCo@lists.infradead.org, AJvYcCWswgQM7EWhC13vEMj+mvsaW49quuYuoOkIz8kpj5D/STfSV5eFNI9l63dEWFkTZsFojxnbz/9jTB2oe4IbmDY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMugHllrUban1YuvtNUyeZMGarLb3eDBFhzhHKGUQdrpK/PrVo
+	+MD968xfX0E55ReQwVZmR1gSJ3sNmq1CW6jOKt8klZjWK/J3maHhO7KvkYCOWnPb2dCSBnF0+OA
+	NLgHsPVup+fg4xQkk0Ds8Bjt2GA==
+X-Google-Smtp-Source: AGHT+IH02/n0X6E1gCWCCjIwiDiMBCCog908/wSy8glvpxrUWG7zl9UbjAuOmobw7eTHtsiFGSu1wTms11iI4ft0D/Q=
+X-Received: by 2002:a17:90a:d408:b0:2fa:603e:905c with SMTP id
+ 98e67ed59e1d1-2fea12683b9mr27834691a91.2.1741007093217; Mon, 03 Mar 2025
+ 05:04:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20250224051301.3538484-1-jason-jh.lin@mediatek.com>
-In-Reply-To: <20250224051301.3538484-1-jason-jh.lin@mediatek.com>
+References: <20250116094249.1.I29b0b621abb613ddc70ab4996426a3909e1aa75f@changeid>
+In-Reply-To: <20250116094249.1.I29b0b621abb613ddc70ab4996426a3909e1aa75f@changeid>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 3 Mar 2025 20:57:29 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8cGVEYV2v6oAHHnVqfjk3jp_a1QtaYJRqDf1Hg4vY0UA@mail.gmail.com>
-X-Gm-Features: AQ5f1Jred4c1pw-7JgOxVG6xQG08SC8yxuC59gWdugp16YcFov8bdecIzf41xyo
-Message-ID: <CAAOTY_8cGVEYV2v6oAHHnVqfjk3jp_a1QtaYJRqDf1Hg4vY0UA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Fix config_updating flag never false when
- no mbox channel
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Date: Mon, 3 Mar 2025 21:05:40 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__Ka-RD1=XmaAuEjrhkQMQQ7Mg+rgXaNe8ka-VGeRZ4JQ@mail.gmail.com>
+X-Gm-Features: AQ5f1JoCI49gG24ADeeYR9aiQBSlqnUG9YwDaVyfJzTrVZzFPkF3TWLMSnf3T2w
+Message-ID: <CAAOTY__Ka-RD1=XmaAuEjrhkQMQQ7Mg+rgXaNe8ka-VGeRZ4JQ@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dp: drm_err => dev_err in HPD path to avoid
+ NULL ptr
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	David Airlie <airlied@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_045644_570400_A1F98AEE 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20250303_050455_189558_B445A136 
+X-CRM114-Status: GOOD (  25.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +85,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
+Hi, Douglas:
 
-Jason-JH Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2025=E5=B9=B42=E6=9C=882=
-4=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=881:13=E5=AF=AB=E9=81=93=EF=
+Douglas Anderson <dianders@chromium.org> =E6=96=BC 2025=E5=B9=B41=E6=9C=881=
+7=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=881:43=E5=AF=AB=E9=81=93=EF=
 =BC=9A
 >
-> When CONFIG_MTK_CMDQ is enabled, if the display is controlled by the CPU
-> while other hardware is controlled by the GCE, the display will encounter
-> a mbox request channel failure.
-> However, it will still enter the CONFIG_MTK_CMDQ statement, causing the
-> config_updating flag to never be set to false. As a result, no page flip
-> event is sent back to user space, and the screen does not update.
+> The function mtk_dp_wait_hpd_asserted() may be called before the
+> `mtk_dp->drm_dev` pointer is assigned in mtk_dp_bridge_attach().
+> Specifically it can be called via this callpath:
+>  - mtk_edp_wait_hpd_asserted
+>  - [panel probe]
+>  - dp_aux_ep_probe
+>
+> Using "drm" level prints anywhere in this callpath causes a NULL
+> pointer dereference. Change the error message directly in
+> mtk_dp_wait_hpd_asserted() to dev_err() to avoid this. Also change the
+> error messages in mtk_dp_parse_capabilities(), which is called by
+> mtk_dp_wait_hpd_asserted().
+>
+> While touching these prints, also add the error code to them to make
+> future debugging easier.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -104,38 +119,67 @@ Regards,
 Chun-Kuang.
 
 >
-> Fixes: da03801ad08f ("drm/mediatek: Move mtk_crtc_finish_page_flip() to d=
-dp_cmdq_cb()")
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> Fixes: 7eacba9a083b ("drm/mediatek: dp: Add .wait_hpd_asserted() for AUX =
+bus")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
->  drivers/gpu/drm/mediatek/mtk_crtc.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+> Unfortunately, I have only been able to compile-time test this code. I
+> hit the NULL pointer dereference on a device that's nowhere near
+> upstream and it was running (sigh) a heavily modified copy of this
+> code where the eDP stuff has been forked out of DP. Specifically, you
+> can see <https://crrev.com/c/6073744>. It's pretty easy to understand
+> that the same problem affects both codebases though, so I'm posting
+> this "blind" in the hopes to at least fix upstream.
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediat=
-ek/mtk_crtc.c
-> index 5674f5707cca..cfc4867296b8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-> @@ -620,13 +620,14 @@ static void mtk_crtc_update_config(struct mtk_crtc =
-*mtk_crtc, bool needs_vblank)
+> I'll also note that the fact that mtk_edp_wait_hpd_asserted() calls
+> mtk_dp_parse_capabilities() feels weird/wrong to me based on other eDP
+> code I've worked on, but I've only barely looked at the Mediatek
+> driver and perhaps others have already debated this. In any case,
+> that's not directly related to this patch.
 >
->                 mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle=
-);
->                 mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
-> +               goto update_config_out;
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index 0687672f0e52..ccd104d8851f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -1763,7 +1763,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp =
+*mtk_dp)
+>
+>         ret =3D drm_dp_dpcd_readb(&mtk_dp->aux, DP_MSTM_CAP, &val);
+>         if (ret < 1) {
+> -               drm_err(mtk_dp->drm_dev, "Read mstm cap failed\n");
+> +               dev_err(mtk_dp->dev, "Read mstm cap failed: %zd\n", ret);
+>                 return ret =3D=3D 0 ? -EIO : ret;
 >         }
-> -#else
-> +#endif
->         spin_lock_irqsave(&mtk_crtc->config_lock, flags);
->         mtk_crtc->config_updating =3D false;
->         spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
-> -#endif
 >
-> +update_config_out:
->         mutex_unlock(&mtk_crtc->hw_lock);
->  }
+> @@ -1773,7 +1773,7 @@ static int mtk_dp_parse_capabilities(struct mtk_dp =
+*mtk_dp)
+>                                         DP_DEVICE_SERVICE_IRQ_VECTOR_ESI0=
+,
+>                                         &val);
+>                 if (ret < 1) {
+> -                       drm_err(mtk_dp->drm_dev, "Read irq vector failed\=
+n");
+> +                       dev_err(mtk_dp->dev, "Read irq vector failed: %zd=
+\n", ret);
+>                         return ret =3D=3D 0 ? -EIO : ret;
+>                 }
+>
+> @@ -2056,7 +2056,7 @@ static int mtk_dp_wait_hpd_asserted(struct drm_dp_a=
+ux *mtk_aux, unsigned long wa
+>
+>         ret =3D mtk_dp_parse_capabilities(mtk_dp);
+>         if (ret) {
+> -               drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+> +               dev_err(mtk_dp->dev, "Can't parse capabilities: %d\n", re=
+t);
+>                 return ret;
+>         }
 >
 > --
-> 2.43.0
+> 2.48.0.rc2.279.g1de40edade-goog
 >
 
