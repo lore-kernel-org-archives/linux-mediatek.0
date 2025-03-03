@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBF9DC282C5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 11:31:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69153C282C5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sfNwGEebCzi4P+YubCzpRa+dGakIpTAv+r26R0B8N9I=; b=ebDhnZ/H3ZHltkRLyHUvS3BGQy
-	IuVBC8aWw4hFht1XUoELiVYoUMaBmsIIiBLOoDFPT6bxzvGr1LreJyOz+EOxyI1pymzwKlkXyLNw+
-	CccZn20iOCmd5F2n3UfbWd0Uqz6XPRszQfvHnIbA4zqVHxjp0Tmjxnh/KQEbVewtVLAVtnDaCIrCw
-	sdciLpowLx1qp+mxZVuU/PKZzs62gP6puDh91XhQb9+eD5IyzVrgEUO9T5WoOxdfzPKSayYXx8KPW
-	USfEp3Nnbds/FU2mziRQ7ABj/uOS/CrcAYItKuG1QIhxxtn6hS/4aqWrDQuI5bvjbhZ1ZiU3VL/Zt
-	y9p0NlZw==;
+	bh=d3QcYj98GppX9R6DiIt5WpkKZT7XTOxSK0evEieL2wg=; b=1GmtNYNka2nW80ojsK3xUISKKK
+	o7x6GieFb6zi16m9e1kvZKW47RB9ERpSjzDo7SXFFP+oFZZrzRhszrY50kzlhWQrHfhkUmaJYAszk
+	IOiu8Pqv45/gffGrh2NBtuS5XzpncedSNTzyypvtYil+1OsjQtIIwBH1IWsiaqS2KpQ3NtBpDt/O5
+	EYtwQYv2d6loqd8KaiE9uK5WfM5f6Xq2JIuS4yGnGJBNbkK+xJ3i3bWoXuFEKoQYCG8Gv6pd8IfXl
+	y+90d75JrSFEw8BZ13NfnUngdDIqfHIzYyuVrGlgLBErQGI3l/m4wZ0FEgdmC/3jLJSfjwJgWjSa/
+	nB1cpUDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp40m-00000000ZU9-0EXU;
-	Mon, 03 Mar 2025 11:31:04 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tp4X7-00000000fxR-3WPq;
+	Mon, 03 Mar 2025 12:04:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp3fr-00000000TNG-0bI4;
-	Mon, 03 Mar 2025 11:09:28 +0000
+	id 1tp3js-00000000UoP-1C73;
+	Mon, 03 Mar 2025 11:13:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741000165;
-	bh=UlYDQTcQHBFCTW4vDwKseNxVoKFZraiVmwlJtLTanV0=;
+	s=mail; t=1741000414;
+	bh=cKliQVSyA9HiccVc5AaYvxTkqdes1M5wnZBsjWWCr68=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qpfo1opYNbKxaBM0tLBtIm92R21KRGzSajcyvY7e7PDCArZlL2NRYjiLvLfggs/wJ
-	 kdCpUbbMisG4C/XISDP2x3ZBTU5zXexEts3gJO0HVsTUl0XzVKVOgef7t0XOwaIZ0H
-	 CDKzpHrTA9ceWzo+iTyJcYbWSxKT5I42qOL6q4DXEq3Ysz0sxNt9uxWNS13bltN7KE
-	 ToYaayPfGwK4lkjmTdq17elmoOQDprYmiSkqHAf2WOKrceTnvZ692ojJIdHyyu13eJ
-	 2aUGmNbl8MIy+pkbuWNVQRA2fZycSY3jejECB09xG7EdMCzr/lKJ9DCiiZVMm7/VlD
-	 +T8JgG7xbuWpw==
+	b=MuQbYTgVnLgFLb0e4IYfEAvR1BPOArpOWEbF/8jFQ/g82TOECRFoQsrFBHmnu3y9U
+	 zFJLm9RRtRqReIOjxhayQ2lof7rJvUbTUuX3Bdyk8RZM+/XOf88UsiZH3ilZLQZqzj
+	 nxEi/aDg5AGYDIpKebJJHKVW9pxNr9HZBQZ613cTQsxS+fg4ayNuRvNtMJoujzj+mS
+	 mQRrtLFIRVJnt9nbLhtaHk+wJhWlIwuVKAlKa7p342WQU2rrZM3ztQaQ2LE/Yelgfi
+	 vghOPThQ5UioJgTVMlPib5ORs3tfe22O3heQqmFdFp+062xg/VaqQ8XYtQmL76SpuR
+	 oUh4ste8JvaEA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECA1317E068F;
-	Mon,  3 Mar 2025 12:09:23 +0100 (CET)
-Message-ID: <746eaa07-6682-4088-ab20-f1536e4cb106@collabora.com>
-Date: Mon, 3 Mar 2025 12:09:23 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 61B8217E0881;
+	Mon,  3 Mar 2025 12:13:33 +0100 (CET)
+Message-ID: <32d41fc8-1855-4078-a5df-a0f3a7cbd423@collabora.com>
+Date: Mon, 3 Mar 2025 12:13:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 20/20] arm64: defconfig: Enable MT6359 ACCDET
+Subject: Re: [PATCH v2 03/20] mfd: mt6397-core: Add mfd_cell for mt6359-accdet
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -60,17 +60,17 @@ To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
 Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
+ linux-pm@vger.kernel.org, Andrew Perepech <andrew.perepech@mediatek.com>
 References: <20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com>
- <20250302-mt6359-accdet-dts-v2-20-5bd633ee0d47@collabora.com>
+ <20250302-mt6359-accdet-dts-v2-3-5bd633ee0d47@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250302-mt6359-accdet-dts-v2-20-5bd633ee0d47@collabora.com>
+In-Reply-To: <20250302-mt6359-accdet-dts-v2-3-5bd633ee0d47@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_030927_353117_6B5B2A76 
-X-CRM114-Status: UNSURE (   6.90  )
+X-CRM114-CacheID: sfid-20250303_031336_463424_476A20D6 
+X-CRM114-Status: UNSURE (   7.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,9 +87,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/03/25 17:30, Nícolas F. R. A. Prado ha scritto:
-> Enable support for the ACCDET block in the MT6359 PMIC, which provides
-> jack detection capabilities to MediaTek platforms.
+> From: Andrew Perepech <andrew.perepech@mediatek.com>
 > 
+> Add an mfd_cell for mt6359-accdet and describe its IRQ resources to
+> allow the mt6359-accdet driver to probe.
+> 
+> Signed-off-by: Andrew Perepech <andrew.perepech@mediatek.com>
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
