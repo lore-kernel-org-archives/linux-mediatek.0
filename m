@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54BAAC282CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 16:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 813FEC282C6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 19:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n0Dt2xssf1GoPTu8GDcN/Kk7cyOwV56Bbq6Wt1Q3WzU=; b=Y3CSpMUn2bgIZzIQIL7gUOGWkD
-	JqUXsiHaS6sLOpsKmggbIrIwIbAOPYm9OqPeGIVdiSiG3Py3PMvli59m0b3w0f7tzLvtambGf74iu
-	4eIXWMuih80i1zfqCku/ZbzLQ4AIgmjzncFmgjJd/J4wsWNYGfUuSvdUdjc0OlbeEGRFdTsRAvRQS
-	xs42zK+t4oJ1sMTuNsv8600pU8+of+ZSjAfYKAtX20lkRbmbYiDzF9axZlys0v/1qA5Vjey2otfkx
-	ARTz7qTzeR1buIZljmWEZ10QASVBH4DszwUMuaHLIGXlwisKSx0JOm50ysk0w//A6fZEP255PsnLd
-	4645at2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kMdhomqR4u6eFz7EL0HdhdFWnLeoGWNJPxOHYDhbRLs=; b=dDe6crMvfj3wAciCmFQGougyku
+	M19fGjvHkajEwDxqHlhHuDJG3Npp+jmuS4SBpk0q/L2wOIZjVUV/u2kYVclZk6ak3J/MBWXI+puWR
+	ms7rvyNTlGfcQMLrDu/fEeSZgIwh4WyxPJTl38yv5Ilv8HgpsFBP52DRJmPQR9RcQ+g1fgcT9fKVw
+	CJLs+FfOkY9Y34Lz5dagKTX1aDFBzvusHTwU8fIIVfoQLAF6jjlO0TTyEuLysksI4tNE8rE0+GYEZ
+	DGYAN28QjEGVLSkZKCcWLmo+vDGAAyDsGpaY2J6VEvUmqvREJErDXcf3EyjnwP7t9FoVpTOLSfgpP
+	1rlxF7Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp8Kr-00000001RIl-1lIy;
-	Mon, 03 Mar 2025 16:08:05 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpBE8-000000021x9-1qHr;
+	Mon, 03 Mar 2025 19:13:20 +0000
+Received: from mail-pl1-f174.google.com ([209.85.214.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp7nk-00000001Kk3-3pZi;
-	Mon, 03 Mar 2025 15:33:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741016030;
-	bh=jI58B/1xW047HSrQ6NfVLx7fR7HzmQWZHI4E46AshJA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LtM/BmdP/EpF5iPUTB3zizv0GxX/OyA8rb1G/dB0OPmMYpvTnCr1l8kIEOOPvH6i5
-	 9kdIM2i3T1IZOSNTDEY4Hqgq3BTy2wQJZ5RUilr0N8wIkFuHomPYLRM5aMLA9pHJuO
-	 e18FZpjrukpQN0QaIorVdzzO4wMP22z8vQnsUhf1rNcO71r5NIvXj5q9JheDgGe3Vu
-	 S5eUrMd01cA07FX5hJXwpFgMkDRPaX7d12BLWFYDpKFbwI+PaLjkjPtcCl+Ybgkib/
-	 eaWcrV7iD3Cw/rHY06IMD9Hb6odEvJMryQVMcgP4jAc6K7gFPfXo/+xObfo1vpOVYZ
-	 pzCiV3L8+wI0Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 94A0517E05A6;
-	Mon,  3 Mar 2025 16:33:49 +0100 (CET)
-Message-ID: <24d3713c-026a-4ef7-bb7f-19150e06f395@collabora.com>
-Date: Mon, 3 Mar 2025 16:33:49 +0100
+	id 1tpBE5-000000021wN-312T;
+	Mon, 03 Mar 2025 19:13:19 +0000
+Received: by mail-pl1-f174.google.com with SMTP id d9443c01a7336-223cc017ef5so14649555ad.0;
+        Mon, 03 Mar 2025 11:13:17 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741029196; x=1741633996;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kMdhomqR4u6eFz7EL0HdhdFWnLeoGWNJPxOHYDhbRLs=;
+        b=jAl7Bsmd7hPG52rWcNdnIZSmESIorVdXFomOWISOc0wf8B+sVDdnf251aWVpH5GiOo
+         NFZ72x0+TvJUks+e1wA9Je/6q28McyishdY+xW6F4XH4i1aKWkukBvcWbSVetF7rRa62
+         +/vbHBJhwoJ7fssqT06C32TenRzgmyat/QQgTa6uWHi/RncnlLLRjyE3RatKr1F6cefN
+         wDx3v1x73cTqi4VhKcd3siBwjtgpjIVEteSf9z8fE78Dupi3Si+ISnU2qIrZSnCIeLUk
+         CAmDXqLbaUH2e1cBJM7IeVpwzPcNVcm2u3gQtryLKPJ4M0QqjYfF1ALjCnQHEvQgj3rL
+         Y0BA==
+X-Forwarded-Encrypted: i=1; AJvYcCV8btncNEtI+tcjszqRjtLXy36G/yGa+lwzDpLBrA7LN4O3eYW1ELL439ixPrjRuFD+L0uXCFSjf22mZkx6GjI=@lists.infradead.org, AJvYcCX/jiRoGxJKG5o6/TxM2qhraVwhN9XvWTpypAxBf4oy3pn8Cikvv/LcA3JYZaSn+++8XWrIXRH1GMxIgdYJeHlI@lists.infradead.org
+X-Gm-Message-State: AOJu0YxizN3lPOQiJgprA99J1pJOyBSBOt+fz46SUBpsyyxg+dL+WEqP
+	RZhnvQzHT8V3Qv06CoyO+QdWexdc1ppEDOD+MbvdFcNP+hGJb9Bh
+X-Gm-Gg: ASbGncuswVid3qiSEo5mafNyQ3gkofEegUiQqYZiLOdM7tTWtEUegp3XxMsnEQ5aQHA
+	jVsYlHkCMC699exxRsAQJeVF6qtpHL+bKxmLTW6kFtfKaazpXaujeN/xIibjCu3hX1wxLVrBMJl
+	PJSABRZJYf4Bxh5mBo60aSW0eM89G5tGlnVHBu3lpHdymAVKsX7Do8Nt1ttIGgSVRRBStRfiLaA
+	YvqcgnJ5Vg/4K4uplfV5ZELul8P0rF2yhRhEGJtBtyYGEJgJZ8WlvqQnLCT7y9iZhsE+keBN4wl
+	aW8fqTH9hX7bT3v3TTX9AyDkKUEHFz5hJhfmqY/r/Zkvu4SO5/z6S5Kk0PJ222KPgkmyomFxQvG
+	wA90=
+X-Google-Smtp-Source: AGHT+IFWuOdDCIbzb+NPKXQr/vDDylShl9+ZLJtMDPzgxZSjAC8yWUsr6ofw3AFRZJpI4pkui7tCgw==
+X-Received: by 2002:a17:903:1c3:b0:223:33cb:335f with SMTP id d9443c01a7336-22368fa17fbmr210787435ad.3.1741029196546;
+        Mon, 03 Mar 2025 11:13:16 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-223504c7efcsm81587665ad.154.2025.03.03.11.13.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Mar 2025 11:13:16 -0800 (PST)
+Date: Tue, 4 Mar 2025 04:13:14 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 0/2] PCI: mediatek-gen3: Set PBUS_CSR regs for Airoha
+ EN7581 SoC.
+Message-ID: <20250303191314.GA1552306@rocinante>
+References: <20250225-en7581-pcie-pbus-csr-v4-0-24324382424a@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/20] ASoC: dt-bindings: Add document for
- mt6359-accdet
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Lee Jones <lee@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, kernel@collabora.com,
- linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com>
- <20250302-mt6359-accdet-dts-v2-1-5bd633ee0d47@collabora.com>
- <628a81c5-b9f1-4be9-84ec-90022a3526da@collabora.com>
- <0120fe30-43c4-4fec-8b5e-fdb6b382fc2a@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <0120fe30-43c4-4fec-8b5e-fdb6b382fc2a@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250225-en7581-pcie-pbus-csr-v4-0-24324382424a@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_073353_128052_401F1FF4 
-X-CRM114-Status: GOOD (  19.79  )
+X-CRM114-CacheID: sfid-20250303_111317_752906_DA17F3C3 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,69 +97,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/03/25 15:45, Nícolas F. R. A. Prado ha scritto:
-> On Mon, Mar 03, 2025 at 12:14:51PM +0100, AngeloGioacchino Del Regno wrote:
->> Il 02/03/25 17:30, Nícolas F. R. A. Prado ha scritto:
->>> Add dt-binding for the MT6359 ACCDET hardware block.
->>>
->>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>> ---
->>>    .../bindings/sound/mediatek,mt6359-accdet.yaml     | 42 ++++++++++++++++++++++
->>>    1 file changed, 42 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
->>> new file mode 100644
->>> index 0000000000000000000000000000000000000000..d08a79301409374714c76135b061e20e8e8acfaf
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt6359-accdet.yaml
->>> @@ -0,0 +1,42 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/sound/mediatek,mt6359-accdet.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MT6359 Accessory Detection
->>> +
->>> +maintainers:
->>> +  - Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>> +
->>> +description: |
->>> +  The MT6359 Accessory Detection block is part of the MT6359 PMIC and allows
->>> +  detecting audio jack insertion and removal, as well as identifying the type of
->>> +  events connected to the jack.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    const: mediatek,mt6359-accdet
->>> +
->>> +  mediatek,hp-eint-high:
->>> +    type: boolean
->>> +    description:
->>> +      By default, the HP_EINT pin is assumed to be pulled high and connected to
->>
->> Just to be clearer about this pin being an internal one and not externally sourced,
->> so, *not* a SoC GPIO, but somehing that is completely provided and handled by the
->> accdet IP...
->>
->> "By default, the accdet IP's internal HP_EINT pin is assumed to be pulled ..."
-> 
-> The HP_EINT is an external, not internal, pin of the MT6359 PMIC. It is an input
-> pin of the MT6359 IC that gets wired to the tip (left channel) of a 3.5mm audio
-> jack to allow for detecting when a plug is connected.
-> 
-> Since this dt-binding is about an IP in the MT6359 PMIC, I think when saying
-> "HP_EINT pin" it is already clear that the pin is on the MT6359 IC, but if you
-> think it's necessary I could make it "MT6359's HP_EINT pin".
-> 
+Hello,
 
-Eh I should've better clarified - I was meaning that the pin is managed internally,
-so we're not managing an external SoC pin.
+> Configure PBus base address and base address mask to allow the hw
+> to detect if a given address is accessible on the PCIe controller.
+> Introduce mediatek,pbus-csr phandle array property.
 
-"MT6359's HP_EINT pin" looks good to me, btw.
+Applied to controller/mediatek, thank you!
 
-Cheers!
-Angelo
-
-
+	Krzysztof
 
