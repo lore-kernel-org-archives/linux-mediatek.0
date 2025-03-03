@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 309DAC282C5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD06C282CD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VGtV8bSTSxWJLobjXTfer0pbpczhF1xLoAXWif7ULao=; b=Vn309u6SE3Jx0N9JY8TugEVYQk
-	4oSfUHVmQCnRdKijR1ExQiOhGn6lA/GfYp3GFq2Eew4fHiA14hIPpPkn2P/Sfve1KeOQkZmiKT7+S
-	LnfCb53ijvgf6SO5SNtjw14AgzNSG4eEm3o0EVZfSRjSd4VxJecj5Cbc0S6nJQ2TvNo9pdR/YDikt
-	1cJNed8ZL9R+HQkTXKAYmOlFCtc/gnarzQSl/cIN14aTwXsEb8OTfTda8CIkpDOMxxaZrTtrLfXPE
-	LNBhVBeLUE+FnLXgV0Rvlxb4EVAiw0GQAWgoawbBjF9+twYwk8LG6WDlJGpcI8g5n2rzdkYmgXxXr
-	9WBp1bGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1+tcNGEhQOnpEDMIcSl/nrIJvRxlWcNhIkRhXAkv+8s=; b=nShhduu8fkhGL8
+	b0JJKVrVZPxSo2uiczZO7CoH0oJngkDO8WuS6q/f4zH+DAb9e+JU5arFNhug9MokwtdBoQ7L/fyeg
+	lk6IVCHqzmOWKKvL5dodq6IAv/h8/TWdaTFMtkdFGXtv3/BL52iiPTUs/y28/GYD0mNbGJgn2r4Im
+	eYwGjgJs9D8lQim1s/m43/GXqYpJHIDswG4Vd4LkihGUQuEVbL9M7pdjBH02HkINVumkGYVvNCD2B
+	ImJgn8kyIIlc8Nu4uigebX9sziATZDgWaksnWQhCtNcR8pOD1DpM5dqZezMc39aVmo7+s1HPYxsey
+	0upQqSQ+d/5xC5pRqQdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5BD-00000000nQ7-0wbo;
-	Mon, 03 Mar 2025 12:45:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tp5NH-00000000pTs-0Qqe;
+	Mon, 03 Mar 2025 12:58:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp50B-00000000lLE-2j4n;
-	Mon, 03 Mar 2025 12:34:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741005270;
-	bh=JHN5XUVVnQv9cvYemNLq5jso/MbQRX5go/vqQODxWS0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ED/TNXm+3mmkw04O9PxoovNVGMKrA5Fe9qigZQWTOY+bD7MGMhkPtlbh0/YWyyzNQ
-	 LypOt+jOFhvs37SITmauEnXctcDbJymnsiI6BeagOjVN4a3pPOWezQf1zgfTY3mxtD
-	 y2aBDM1c6fr3+n6XQlD4nWyJFT89Pw1DcpqvxKB/28yrXjyDfmO6kVRgh6SQQjWh3c
-	 Pdj7SIsufBMNaes6Z2v1NdIUz+/UJ3T2Eh8NRHcYyQOFIFOvnY0L6KnEl7wxIPEUST
-	 ROIXu9NdBJNlXqKUMTnyjj5dF2KUAsloaCUvepT1sL6IlddaQVVdPFbp1cw/dqP7sk
-	 eZ/Qf0JmTsvCA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81DC417E0607;
-	Mon,  3 Mar 2025 13:34:29 +0100 (CET)
-Message-ID: <12c5ba3e-a151-44a8-ace7-3d944a09ae5e@collabora.com>
-Date: Mon, 3 Mar 2025 13:34:29 +0100
+	id 1tp5Lg-00000000p8q-1j9d;
+	Mon, 03 Mar 2025 12:56:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 19FAC5C596A;
+	Mon,  3 Mar 2025 12:54:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D7B1C4CEEB;
+	Mon,  3 Mar 2025 12:56:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741006602;
+	bh=UX3HfbY9NrbOd9tpd2P7hFNQCeHdeWclU4P4j4yWbwI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=FV9xelpTeEOVh2F9LLHt7cZEamR97RqTHhg+X8WoBEYkAdzKYDoMPFGtFf8M90C3D
+	 TKgWlwqQHfV9WGMud0bBw2UL2qbO5ucIGnrIH98qUmbbmVpcNd09anXw7cMKWrYT9C
+	 xgsT0eOnRDvogmt97w/5hTiDGDBb4QDrgD0AcjuZD2W2vQV8Zt5itjsBOfSVnOEkDz
+	 u1V0SEBZvaUbFO0watcpspU5ainokC0giq5omDV1ZcV20THn1iLL/F1LeXjaAyJt+M
+	 8VCklBlAsyFYjeFHSOAowTLy2dqy+W20cxyVfJkhIw1AKmlvdPpprIuf32RtQgeEJB
+	 MXlpfnsRQml6A==
+Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-2232aead377so83581775ad.0;
+        Mon, 03 Mar 2025 04:56:42 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUe79OO8t2S/ShqbLKlUc4aFKKnYWCYWuVAx2D7+EPDC1Zoaa91WpCShywPZgQ1dBSiOihsLNm1CQnKeRXpnOU=@lists.infradead.org, AJvYcCWMBzupurcr6jlfCbrEaUS5WkGyBakcdNG1vbiYFdQRfuKQW6DEmwSVY2OJLG3m1+CUFUh+Xvalrj1BTsNEMdDe@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJDKIOYyIAWF1iQnAeGwjj9bThDfmwuRsmct7oJtfcBlEAx4hl
+	77o9fGpfPrVKmbsL4r78BdiebcSza3kq9+8VkwU1wkAnS4JjGXdt//5Y1bHaklOkwQ2PC0NJabo
+	ykJ7g4HbdvkH0kwHL87o05gMqXQ==
+X-Google-Smtp-Source: AGHT+IGSSgSzh55HSnQ1lVjwMdzp28MHDOUOnEh8kdGeJHmMnwiYf8Q6NzYRnemJliLplJUfJXLVhNNZXMjP1z0RvT8=
+X-Received: by 2002:a17:90b:3511:b0:2ee:8427:4b02 with SMTP id
+ 98e67ed59e1d1-2febabd9c82mr19809852a91.28.1741006602131; Mon, 03 Mar 2025
+ 04:56:42 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v2] spi: spi-mtk-nor: Modify the clock architecture of nor
- controller
-To: mtk22730 <Cloud.Zhang@mediatek.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250303114540.1617-1-Cloud.Zhang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250303114540.1617-1-Cloud.Zhang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250224051301.3538484-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20250224051301.3538484-1-jason-jh.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 3 Mar 2025 20:57:29 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8cGVEYV2v6oAHHnVqfjk3jp_a1QtaYJRqDf1Hg4vY0UA@mail.gmail.com>
+X-Gm-Features: AQ5f1Jred4c1pw-7JgOxVG6xQG08SC8yxuC59gWdugp16YcFov8bdecIzf41xyo
+Message-ID: <CAAOTY_8cGVEYV2v6oAHHnVqfjk3jp_a1QtaYJRqDf1Hg4vY0UA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Fix config_updating flag never false when
+ no mbox channel
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_043431_848508_D91BCAE2 
-X-CRM114-Status: GOOD (  26.81  )
+X-CRM114-CacheID: sfid-20250303_045644_570400_A1F98AEE 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,189 +78,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/03/25 12:45, mtk22730 ha scritto:
-> The clocks used by different platforms are not same. So it is
-> necessary to modify the clock architecture to be adaptable to more
-> platforms.
-> 
-> Signed-off-by: Cloud Zhang <cloud.zhang@mediatek.com>
+Hi, Jason:
 
-You really shall fix your identity on outgoing emails: your name appears as
-"mtk22730", that's not right.
+Jason-JH Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2025=E5=B9=B42=E6=9C=882=
+4=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=881:13=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> When CONFIG_MTK_CMDQ is enabled, if the display is controlled by the CPU
+> while other hardware is controlled by the GCE, the display will encounter
+> a mbox request channel failure.
+> However, it will still enter the CONFIG_MTK_CMDQ statement, causing the
+> config_updating flag to never be set to false. As a result, no page flip
+> event is sent back to user space, and the screen does not update.
 
-Also, the title could be clarified a bit...
+Applied to mediatek-drm-next [1], thanks.
 
-spi: spi-mtk-nor: Migrate to clk_bulk API
+[1] https://web.git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.=
+git/log/?h=3Dmediatek-drm-next
 
-...and then: this should be a series, and the first commit shall be adjusting
-the dt-binding for this driver accordigly, otherwise whatever you're doing here
-will turn out to be unusable.
+Regards,
+Chun-Kuang.
 
+>
+> Fixes: da03801ad08f ("drm/mediatek: Move mtk_crtc_finish_page_flip() to d=
+dp_cmdq_cb()")
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 > ---
-> Changes in v2:
->    -Use clk_bulk_xxx related functions to enable/disable clocks.
-> 
-> Changes in v1:
->    -Add new function mtk_nor_parse_clk() to parse nor clock parameters.
-> ---
-> ---
->   drivers/spi/spi-mtk-nor.c | 103 ++++++++++++++++++++------------------
->   1 file changed, 54 insertions(+), 49 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-> index 85ab5ce96c4d..4863b9cb2706 100644
-> --- a/drivers/spi/spi-mtk-nor.c
-> +++ b/drivers/spi/spi-mtk-nor.c
-> @@ -99,6 +99,8 @@
->   
->   #define CLK_TO_US(sp, clkcnt)		DIV_ROUND_UP(clkcnt, sp->spi_freq / 1000000)
->   
-> +#define MAX_CLOCK_CNT		6
-> +
->   struct mtk_nor_caps {
->   	u8 dma_bits;
->   
-> @@ -116,10 +118,8 @@ struct mtk_nor {
->   	void __iomem *base;
->   	u8 *buffer;
->   	dma_addr_t buffer_dma;
-> -	struct clk *spi_clk;
-> -	struct clk *ctlr_clk;
-> -	struct clk *axi_clk;
-> -	struct clk *axi_s_clk;
-> +	struct clk_bulk_data clocks[MAX_CLOCK_CNT];
-
-What about having this as a pointer?
-
-	struct clk_bulk_data *clks;
-
-...Then you count the clocks, and devm allocate the number of clks that you need.
-
-> +	int clock_cnt;
-
-u8 clock_cnt;
-
->   	unsigned int spi_freq;
->   	bool wbuf_en;
->   	bool has_irq;
-> @@ -703,44 +703,68 @@ static int mtk_nor_transfer_one_message(struct spi_controller *host,
->   
->   static void mtk_nor_disable_clk(struct mtk_nor *sp)
-
-A function with one call means that you don't need a function at all.
-
->   {
-> -	clk_disable_unprepare(sp->spi_clk);
-> -	clk_disable_unprepare(sp->ctlr_clk);
-> -	clk_disable_unprepare(sp->axi_clk);
-> -	clk_disable_unprepare(sp->axi_s_clk);
-> +	clk_bulk_disable_unprepare(sp->clock_cnt, sp->clocks);
->   }
->   
->   static int mtk_nor_enable_clk(struct mtk_nor *sp)
->   {
-
-You can also remove this function and transfer the contents into mtk_nor_probe():
-it's just something like 6 lines and even called only once, so... :-)
-
->   	int ret;
-> +	int i;
->   
-> -	ret = clk_prepare_enable(sp->spi_clk);
-> -	if (ret)
-> -		return ret;
-> -
-> -	ret = clk_prepare_enable(sp->ctlr_clk);
-> +	ret = clk_bulk_prepare_enable(sp->clock_cnt, sp->clocks);
->   	if (ret) {
-> -		clk_disable_unprepare(sp->spi_clk);
-> +		dev_err(sp->dev, "enable clk failed\n");
->   		return ret;
->   	}
->   
-> -	ret = clk_prepare_enable(sp->axi_clk);
-> -	if (ret) {
-> -		clk_disable_unprepare(sp->spi_clk);
-> -		clk_disable_unprepare(sp->ctlr_clk);
-> -		return ret;
-> -	}
-> +	for (i = 0; i < sp->clock_cnt; i++) {
-> +		if (IS_ERR(sp->clocks[i].clk)) {
-> +			dev_err(sp->dev, "get %s fail\n", sp->clocks[i].id);
-> +			return PTR_ERR(sp->clocks[i].clk);
-> +		}
->   
-> -	ret = clk_prepare_enable(sp->axi_s_clk);
-> -	if (ret) {
-> -		clk_disable_unprepare(sp->spi_clk);
-> -		clk_disable_unprepare(sp->ctlr_clk);
-> -		clk_disable_unprepare(sp->axi_clk);
-> -		return ret;
-> +		if (!strcmp(sp->clocks[i].id, "spi"))
-> +			sp->spi_freq = clk_get_rate(sp->clocks[i].clk);
->   	}
->   
->   	return 0;
->   }
->   
-> +static int mtk_nor_parse_clk(struct device *dev, struct mtk_nor *sp)
-> +{
-> +	struct device_node *np = dev->of_node;
-> +	int ret;
-> +	const char *name;
-> +	int cnt, i;
-
-	struct device_node *np = dev->of_node;
-	const char *name;
-	int cnt, i, ret;
-
-
-> +
-> +	cnt = of_property_count_strings(np, "clock-names");
-> +	if (!cnt || (cnt == -EINVAL)) {
-> +		dev_err(dev, "Unable to find clocks\n");
-
-return -EINVAL;
-
-> +		ret = -EINVAL;
-> +		goto out;
-> +	} else if (cnt < 0) {
-> +		dev_err(dev, "Count clock strings failed, err %d\n", cnt);
-
-return cnt;
-
-> +		ret = cnt;
-> +		goto out;
-> +	}
-> +
-> +	sp->clock_cnt = cnt;
-> +	for (i = 0; i < cnt; i++) {
-> +		ret = of_property_read_string_index(np, "clock-names", i, &name);
-> +		if (ret) {
-> +			dev_err(dev, "failed to get clock string\n");
-> +			return ret;
-> +		}
-> +
-> +		sp->clocks[i].id = name;
-> +	}
-> +
-> +	ret = devm_clk_bulk_get(dev, sp->clock_cnt, sp->clocks);
-
-	if (ret)
-		return ret;
-
-	return 0;
-
-> +
-> +out:
-> +	return ret;
-> +}
-> +
-
-Cheers,
-Angelo
-
+>  drivers/gpu/drm/mediatek/mtk_crtc.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediat=
+ek/mtk_crtc.c
+> index 5674f5707cca..cfc4867296b8 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+> @@ -620,13 +620,14 @@ static void mtk_crtc_update_config(struct mtk_crtc =
+*mtk_crtc, bool needs_vblank)
+>
+>                 mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle=
+);
+>                 mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
+> +               goto update_config_out;
+>         }
+> -#else
+> +#endif
+>         spin_lock_irqsave(&mtk_crtc->config_lock, flags);
+>         mtk_crtc->config_updating =3D false;
+>         spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
+> -#endif
+>
+> +update_config_out:
+>         mutex_unlock(&mtk_crtc->hw_lock);
+>  }
+>
+> --
+> 2.43.0
+>
 
