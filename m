@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7531C282C5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B08C282C5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 12:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xj1ondHkUDB4kusQaE47ncftB8bHAQQvSz6m4h0Jvy4=; b=fDR8/YveI9TEx/kpsh1dBGsRDA
-	gw+Ox70IR4WzFm/XSEmEobcIgxpeh0RPkr0FrilR2S2hRrWxcd0tMxrsWJ020Q5UERssDpsjB2Dhw
-	HT/eSfmntzhlo+MNzXH8FdQUaaKxbjG2NblGXsr3k9fqP1uv0TeJlAaBKSgF4mQOYI3dYzummH4c5
-	CfyTYolbm8JLdcBn94AYWtMHOwYbHHf+MV+zr2cm2+Rk3b+pvWg5O7g55W443R1jbwzXzwOnQ3Fky
-	SeAgwadG2wKBNTJgDrBKPEY22l2kJJ8ORp5fhxTvs7uDifapd7P7MA/TrfBxnGrTODy+p46fRaN34
-	1EhX3Ytw==;
+	bh=KMjrPT3L+/86EEodzD4BqzwXmz/Fyg900Uiu1GgDoFw=; b=jl+vc5Nf7L/egCC2xfRJpFX79F
+	R9XAMMVyAN2Lj/UvWfCeWoMj4A0IuRictVuLwGXlsn7Jtdzjf13ANSyonzOpjbi/QtWt+GdFhBpnF
+	2eakBXWKChqotyofY2vReuQAQeiloDH00j/89X9So6j7zOT1mRTSPj5nseAO/NhiZ9wJ5xepPUvSv
+	Cv1YSP0WMpq0dtVqcQDTl6CG0wF70lueMogQC27kb99zPeY5o4j7U8P6NlM6fCaKK1T0VUw94zYjA
+	SEIGLWliC4jw8G0xAneqVTuGjW902qHZ9Uo8dOdAUKWtgk6NkS/G/2ZZiiUHuJmc4E4vckcKOHLr3
+	6JDX9D6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp4aC-00000000gbh-3oFr;
-	Mon, 03 Mar 2025 12:07:40 +0000
+	id 1tp4l0-00000000ihr-0YpO;
+	Mon, 03 Mar 2025 12:18:50 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp3lf-00000000VGA-0d2t;
-	Mon, 03 Mar 2025 11:15:28 +0000
+	id 1tp42C-00000000ZkS-0v5v;
+	Mon, 03 Mar 2025 11:32:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741000525;
-	bh=zHGCADU56T7A224lF133oGjwzLj/Y9hZrXbv8NOAx1U=;
+	s=mail; t=1741001550;
+	bh=A1dmoEW25l3ZJd4LiRioYAuKRWE98O7QHIl4r9uDJ1Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zp/H58vJ9rjRaEthdrCDdcQWdjaAb1mvE/B2PKHjamT9xW01devW47qz6T+qEtx6b
-	 M3E0H2siHWMutWk60bE3BnHGzRW5Eim8AOm7eBhMdBAln/VMk4Dd1OHZ/2MlPGZ+Qc
-	 lSfZ4gtN4+f6C/GCTf69DojqEueBPedXBGKiourDxcDKScxW3TnCK7US7PZ/wfq8jA
-	 0rGL0bUZkC19Jr6yWljZK6j9C5NpLmhWh1quFmZ3vosaz6I4szPUqLbOl2kFgnYtId
-	 SH4Q2ocYXq72C6WtD8FKYVuKSV7P1TeZ8/O75g86GPmSEBk4QVOEsvHyRyWdOEjMov
-	 NFjeojr1ZOgBQ==
+	b=HQcsNYUppNKgXqrJbXZmI8caBOH/CvXKfBkBRkoeSGjs3hCmBwwrCvJKHmTjD8Ltz
+	 cOJOAdlO08oMAZxFvd5g1dgTWiHu6zIymywJ9i5Dmf9GReBYMoWgtNpcI+o/tBXrnM
+	 6hbmgr7i+hI56tix5dsElSTaS3ZOdB1J9OTcDq135T58BnMRDRdKlSovz0j6nDDTsG
+	 yeXh3roUTLRdlSR/eH5D77oUDhUTY4nIHfkm4wpYRL7fZtnAUMqC7vBDorRYyV3Q8L
+	 wOC7oLSKjVsltBEryM9ukfhnsjAQo+Nex8rnbp7u1xiKTw6pLBJvx3DkT5O45tJfKH
+	 wH4N+4ARMvJMA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7517517E086B;
-	Mon,  3 Mar 2025 12:15:24 +0100 (CET)
-Message-ID: <ea3cfb5c-bcba-4530-8bd4-6738acfaad90@collabora.com>
-Date: Mon, 3 Mar 2025 12:15:24 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D566D17E0607;
+	Mon,  3 Mar 2025 12:32:29 +0100 (CET)
+Message-ID: <fc0a9471-da47-4f4f-a471-1b20f344ad22@collabora.com>
+Date: Mon, 3 Mar 2025 12:32:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/20] ASoC: mediatek: mt6359-accdet: Implement HP_EINT
- polarity configuration
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt8395-nio-12l: Prepare MIPI
+ DSI port
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Lee Jones <lee@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, Andrew Perepech <andrew.perepech@mediatek.com>
-References: <20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com>
- <20250302-mt6359-accdet-dts-v2-6-5bd633ee0d47@collabora.com>
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250226-radxa-panel-overlay-v1-0-9e8938dfbead@collabora.com>
+ <20250226-radxa-panel-overlay-v1-1-9e8938dfbead@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250302-mt6359-accdet-dts-v2-6-5bd633ee0d47@collabora.com>
+In-Reply-To: <20250226-radxa-panel-overlay-v1-1-9e8938dfbead@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_031527_355415_91E4C9A0 
-X-CRM114-Status: UNSURE (   8.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250303_033232_407599_33FA74D0 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,18 +78,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/03/25 17:30, Nícolas F. R. A. Prado ha scritto:
-> From: Andrew Perepech <andrew.perepech@mediatek.com>
+Il 26/02/25 15:35, Julien Massot ha scritto:
+> This board can use a MIPI-DSI panel on the DSI0 connector: in
+> preparation for adding an overlay for the Radxa Display 8HD,
+> add a pipeline connecting VDOSYS0 components to DSI0.
 > 
-> The driver currently reads the HP_EINT polarity from the Devicetree but
-> never actually configures the hardware accordingly.
+> Also add the backlight, and some pin definitions available
+> through the DSI0 port.
 > 
-> Implement the polarity configuration in hardware.
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> ---
+>   .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 60 ++++++++++++++++++++++
+>   1 file changed, 60 insertions(+)
 > 
-> Signed-off-by: Andrew Perepech <andrew.perepech@mediatek.com>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> index 7184dc99296c7f5d749c7e6d378722677970b3b7..65c77e43d1cd4913b6741e25130febd746ff753c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> @@ -48,6 +48,17 @@ memory@40000000 {
+>   		reg = <0 0x40000000 0x1 0x0>;
+>   	};
+>   
+> +	backlight: backlight {
+> +		compatible = "pwm-backlight";
+> +		brightness-levels = <0 1023>;
+> +		default-brightness-level = <576>;
+> +		enable-gpios = <&pio 107 GPIO_ACTIVE_HIGH>;
+> +		num-interpolated-steps = <1023>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&dsi0_backlight_pins>;
+> +		pwms = <&disp_pwm0 0 500000>;
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This should be disabled, unless there is a display connected to the DSI connector.
 
+If there's no display, there's no point in enabling any backlight, as that pin
+may be reused somehow (with hardware hacks, maybe, yes, but still configuring
+the PWM IP and the pin as PWM while unused is at least a waste of energy).
+
+> +	};
+> +
+>   	wifi_vreg: regulator-wifi-3v3-en {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "wifi_3v3_en";
+> @@ -499,9 +510,20 @@ &mt6359_vsram_others_ldo_reg {
+>   	regulator-max-microvolt = <750000>;
+>   };
+>   
+> +&ovl0_in {
+> +	remote-endpoint = <&vdosys0_ep_main>;
+> +};
+> +
+
+This goes to the overlay that enables the DSI display.
+
+> @@ -912,6 +960,18 @@ &ssusb2 {
+>   	status = "okay";
+>   };
+>   
+> +&vdosys0 {
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		vdosys0_ep_main: endpoint@0 {
+> +			reg = <0>;
+> +			remote-endpoint = <&ovl0_in>;
+> +		};
+> +	};
+> +};
+
+If you enable this path, in the event that the DSI display overlay is not added,
+the mediatek-drm driver will fail probing: even if a second path is enabled and
+that will succeed regardless of the first one failing, I don't see a reason why
+whoever doesn't have a DSI display attached should see a miserable failure in the
+kernel log :-)
+
+Besides, mediatek-drm failing will also slow down boot for no reason.... etc etc.
+
+Please move the display path setup to the DSI display overlay.
+
+Thanks,
+Angelo
+
+> +
+>   &xhci0 {
+>   	vbus-supply = <&otg_vbus_regulator>;
+>   	status = "okay";
+> 
 
 
