@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EDEC282CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 13:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403CAC282CD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Mar 2025 13:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sOVfAtbvZNxNCwgHpSyQRSngRcaBGZ7H2zzyJ3wS2ig=; b=4H80WBmlUwepSOu4VECvcfbqr5
-	Isc0D6FVtmm+cuW1WI6d4tIIZGg4t8X2GjyquqqU9v19cs5fiH9c3+3bIIaFeXeHDJaLqTlFZJmHy
-	NR+JMT3wpEb8soiZqZVL8GWZ0M888RWbwTPyw3jpseLoby+2+iiB+nmDArl19cdTu4wI4SQbwnX3g
-	E/mj0v16EfauXgQU9DAoQkmKd0DJiQ7SoDHLN+k8Vi1kB8Z9QoN/ml+soFcIHaTAV8nqeYPwXE3ny
-	ath47PlubHK5fzqKdyF0hNdu0dToLuXx1E/rH4Pf+JX/uYZLW9ou2ug7faT5iakCIEoIOTeo6qiXJ
-	kPsEyXZA==;
+	bh=Z7HaqtWWyuFzFnOJ20NGJ/FsNpK67oSNX57atoEk7Hw=; b=0Ys9HrUBnwiZua2L+EftZ4XmYF
+	mM+9WIR1F7MKOx2ABNcgUX6UGJT52QUyPfGcx4r8969PptvLHEx8GZMwBkGKJAP5hbZiHYa3YyoM7
+	PnoEiGtvz2x1Fm6S05ZhM0YGU96vaNb4n5wruOOH710CSPMEqDD8ttuVhqVCkpFfVTYzpEUSBuuVv
+	WF+JiEeZkmPtB4dkHj4OifsO7v+GMcPdTIdyVFis/e/fBtNJwGf1EnP5X8MuKLls3hars5N8I8Wk0
+	A24Ci0ajR4FGai5si3nw+BZbf+9Btrqp73xT7KI9EEPngNI3QJJ2uIydhxMzO8hCS2R39il606RdF
+	q/05Nn4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5iw-00000000t3J-06wq;
-	Mon, 03 Mar 2025 13:20:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tp699-00000000ycT-1NBv;
+	Mon, 03 Mar 2025 13:47:51 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5dP-00000000s9Z-3Jss;
-	Mon, 03 Mar 2025 13:15:06 +0000
+	id 1tp5kJ-00000000tYu-2R8Q;
+	Mon, 03 Mar 2025 13:22:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 41D595C596B;
-	Mon,  3 Mar 2025 13:12:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5463C4CEE8;
-	Mon,  3 Mar 2025 13:15:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 28A4C611E3;
+	Mon,  3 Mar 2025 13:22:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56406C4CEED;
+	Mon,  3 Mar 2025 13:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741007702;
-	bh=nwrY5mTBKsH0VrIlw0M+a6qAcq9/UvmEmo3JfFgzxI8=;
+	s=k20201202; t=1741008130;
+	bh=cyAIDvH42HlK42zH1AZZ7W0u8yvqehARnSYevut+Mvw=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ckAWY6ydEYES7IYxghoebGnlP5Hw44gzxvtzcBTYXWJD7h1D/ZFFdoE21onxb4qr9
-	 wOEmpbDpjBnTYSYj7FB2P3sP0957DntKshxe4U1Si6ofwrNHu8s5fmTD1hDjFzW9qm
-	 6VxrrffeSayrkbyHr6trQbkHvqaBKTA73rnG6yyQylko+hLrVJO3IqnNLhxynFzC4o
-	 vi5D6Kvkq3Hdj8nAF1DWy/ZdYwUBjJescwR38hv9Sc1MUNWRbPMzDGBxD9KB1R0G99
-	 sWoGq3f9fWNtf1FmlhGszXMh0jYbZsjz2Yexm7cQAKECTD+XyCni2siFzPQh0OxuP7
-	 lafJyce5Gnrmg==
-Received: by mail-pj1-f41.google.com with SMTP id 98e67ed59e1d1-2fe821570e4so6253324a91.0;
-        Mon, 03 Mar 2025 05:15:02 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUHUOX0Cdvap5o16MHgkQQuBiGrHiS70YaTvHvL++HEj0lx2DXbRXQxsgwWV3S4kyB3M35eTchRLadqL2xl9/g=@lists.infradead.org, AJvYcCXKU3xdtOzev9zkpM0GihkGeasN/4mHCURCdarz71TkU7ioYO9gMRpM117u2w8TFidTjM8MJWnhIX6GK3EHsR4x@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw1yX3JpYXawcVtao/JiYwVj7Nt+n7TLnlA/m4XZ2/hEyo8SHJr
-	TjFH8H8E/2zFBwFQbAfYIRvFAQRijv2gDBcsajfNMX2SEwBmP+El7LcUS/+jqs3n3YpmKMYm9Iz
-	P34BXEGUL4kFCSSfLu8HWkGouFQ==
-X-Google-Smtp-Source: AGHT+IEdq6TIp16hKhBlDO4xfda53D7O9rz6s7IDZPVAapB9apF5VJ70jX9N1Qnsx75v9OLYhq9X6ox1YKUJZiNS6WQ=
-X-Received: by 2002:a17:90b:4ac6:b0:2fe:b9be:216 with SMTP id
- 98e67ed59e1d1-2febac10927mr18112467a91.31.1741007702343; Mon, 03 Mar 2025
- 05:15:02 -0800 (PST)
+	b=c/AhB5qEabaK+aGFMVK/mFIuucVYjGzZAk7HdUEOEz2mZCuWZRzB9TmVLCrERWDN5
+	 OC3uJ8TorONGnXWfIFQmcnQmo1J+tPz7jKCiWTOrHgzEzM6TjKgawRn5EjTjpfa+Vd
+	 hQbJAAo8DaI/V4nFvyoBVzOlg2VyPBFMczw0uHOJF4cvkb3FC2jgJWI9k3gCwACoBT
+	 QyXng99JRn6+4oOBzcoxgc+0yF81Wre66HialtHEmysgApJfX9TYc/pCrPFm0+nEWV
+	 YlKl7U1UpJaE6vvS5QoHCrEsqQCKCMysMl4JglksrOiXPPCibfyukuN5ukmr78zUnS
+	 SCd6ppVo7A+6g==
+Received: by mail-pj1-f41.google.com with SMTP id 98e67ed59e1d1-2feb9076a1cso6824203a91.0;
+        Mon, 03 Mar 2025 05:22:10 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCULaMUfW66/OtgmzSPMWPv1fpx1klUTkt7rfUVdspwIeT+4p95zREAbLWSGofGJ9bYf7FtCKv3ZExzCKJTOAeY=@lists.infradead.org, AJvYcCVlVHJ1AUVGp+/4I8JEZmtUntl+p1F1VUwLzVEEh/KVIKmzfkFcxkNYdJ06kX5F6KdhbZU1TCeQ9yqhv6dQQbi7@lists.infradead.org
+X-Gm-Message-State: AOJu0YylxvhdUuyzJLoryAKqOfKBAbiFUjZEa3NWnuP/S6xl401eB2QR
+	Tz8/nRIP7RTxsNVqVgL8I+iWWcBIOb/5+9rgw6/C3u7JgZSryI1t5Ssc2nNAlRterkERY96dpzP
+	99NTqA4L++IaYA5PcnkR6GmTFMw==
+X-Google-Smtp-Source: AGHT+IHQLK7la/7RxxVx5xQub2rrCyzIXTBwqCYNHPZA1L5Z+HvrKvHgKF1EVP50ng2pCoNbxnqwqT1ThMWF+DeLMfM=
+X-Received: by 2002:a17:90b:1cc6:b0:2fc:3264:3657 with SMTP id
+ 98e67ed59e1d1-2febaa92594mr25361600a91.0.1741008129875; Mon, 03 Mar 2025
+ 05:22:09 -0800 (PST)
 MIME-Version: 1.0
-References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com> <20231023-display-support-v7-3-6703f3e26831@baylibre.com>
-In-Reply-To: <20231023-display-support-v7-3-6703f3e26831@baylibre.com>
+References: <20231023-display-support-v7-0-6703f3e26831@baylibre.com> <20231023-display-support-v7-1-6703f3e26831@baylibre.com>
+In-Reply-To: <20231023-display-support-v7-1-6703f3e26831@baylibre.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 3 Mar 2025 21:15:50 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__qg1R4JQDssy1bDDJMea8Ud7OsPXjek20cHV8S=jfNbA@mail.gmail.com>
-X-Gm-Features: AQ5f1JqYD6WJcU1BIk0mtXtCrxuXqvikkqhcdhVAAsXT4MVrnLil5ua2eCNjEcM
-Message-ID: <CAAOTY__qg1R4JQDssy1bDDJMea8Ud7OsPXjek20cHV8S=jfNbA@mail.gmail.com>
-Subject: Re: [PATCH v7 3/6] drm/mediatek: add MT8365 SoC support
+Date: Mon, 3 Mar 2025 21:22:55 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8c4xeE=c4MTGopenORaP-PL66exLG+erKSV1fpoGJU+g@mail.gmail.com>
+X-Gm-Features: AQ5f1JrckMOh9P4yJQbwlfuWcX_03D8O22eeIcknRD2YAlMiCLxngtVQQLy-TeY
+Message-ID: <CAAOTY_8c4xeE=c4MTGopenORaP-PL66exLG+erKSV1fpoGJU+g@mail.gmail.com>
+Subject: Re: [PATCH v7 1/6] dt-bindings: display: mediatek: dpi: add
+ power-domains example
 To: amergnat@baylibre.com
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
@@ -75,9 +76,6 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.
 	linux-arm-kernel@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_051503_914728_F2C9D742 
-X-CRM114-Status: GOOD (  14.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,11 +97,9 @@ Hi, Amergnat:
 >
 > From: Fabien Parent <fparent@baylibre.com>
 >
-> Add DRM support for MT8365 SoC.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+> DPI is part of the display / multimedia block in MediaTek SoCs, and
+> always have a power-domain (at least in the upstream device-trees).
+> Add the power-domains property to the binding example.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -113,48 +109,42 @@ git/log/?h=3Dmediatek-drm-next
 Regards,
 Chun-Kuang.
 
+>
+> Fixes: 9273cf7d3942 ("dt-bindings: display: mediatek: convert the dpi bin=
+dings to yaml")
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 2=
+ ++
+>  1 file changed, 2 insertions(+)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
-iatek/mtk_drm_drv.c
-> index 0829ceb9967c..5471ef744cc1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -328,6 +328,10 @@ static const struct mtk_mmsys_driver_data mt8195_vdo=
-sys1_driver_data =3D {
->         .min_height =3D 1,
->  };
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
+yaml
+> index 0f1e556dc8ef..d5ee52ea479b 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> @@ -116,11 +116,13 @@ examples:
+>    - |
+>      #include <dt-bindings/interrupt-controller/arm-gic.h>
+>      #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/power/mt8173-power.h>
 >
-> +static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data =3D {
-> +       .mmsys_dev_num =3D 1,
-> +};
-> +
->  static const struct of_device_id mtk_drm_of_ids[] =3D {
->         { .compatible =3D "mediatek,mt2701-mmsys",
->           .data =3D &mt2701_mmsys_driver_data},
-> @@ -355,6 +359,8 @@ static const struct of_device_id mtk_drm_of_ids[] =3D=
- {
->           .data =3D &mt8195_vdosys0_driver_data},
->         { .compatible =3D "mediatek,mt8195-vdosys1",
->           .data =3D &mt8195_vdosys1_driver_data},
-> +       { .compatible =3D "mediatek,mt8365-mmsys",
-> +         .data =3D &mt8365_mmsys_driver_data},
->         { }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
-> @@ -751,6 +757,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[=
-] =3D {
->           .data =3D (void *)MTK_DISP_MUTEX },
->         { .compatible =3D "mediatek,mt8195-disp-mutex",
->           .data =3D (void *)MTK_DISP_MUTEX },
-> +       { .compatible =3D "mediatek,mt8365-disp-mutex",
-> +         .data =3D (void *)MTK_DISP_MUTEX },
->         { .compatible =3D "mediatek,mt8173-disp-od",
->           .data =3D (void *)MTK_DISP_OD },
->         { .compatible =3D "mediatek,mt2701-disp-ovl",
+>      dpi: dpi@1401d000 {
+>          compatible =3D "mediatek,mt8173-dpi";
+>          reg =3D <0x1401d000 0x1000>;
+>          interrupts =3D <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+> +        power-domains =3D <&spm MT8173_POWER_DOMAIN_MM>;
+>          clocks =3D <&mmsys CLK_MM_DPI_PIXEL>,
+>               <&mmsys CLK_MM_DPI_ENGINE>,
+>               <&apmixedsys CLK_APMIXED_TVDPLL>;
 >
 > --
 > 2.25.1
