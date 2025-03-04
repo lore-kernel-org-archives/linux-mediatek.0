@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C87C282C6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 02:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B09EC021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 06:46:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VuDDSS2TpvJo7nDZRzY/l5K5AxDqiIJ6WylpydtfNxc=; b=uuP36Q6300JpfED0khg1SCf/4j
-	IX42gOYevkftJ1mEmZksmloPgK3kNdO78Ic/lYGQtzmIzV0wHaXN82aMiA+SpZvbygePTJtWbjHhu
-	loHHvJhmmgS0e6JYg9g/trsdzmaHFbw/RK9hsiovi5mmBwFfQAFsS81T4RLkMahDzvcqRl2Y+uB9h
-	W91qlBEbVLe8F2CTYswECKVaCupULnpWF28pX4plJKaoEk3QC+O7xNMclpnvJyuwIoR9LyHDl4sV3
-	Yh+Wb4oSxXAk0DEXx3DTYaoPh+K+xGy3Gl7jqweV8OURwL6Hu24XkF2qA22Al5M1Yisdy4MNVvUX5
-	5pUTD34A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XM8U4LA3x2aJnZkttxX8Qk5zIDrSgDUxCsycih5eebU=; b=M0iCT7EKl0nGQ3kPvs6ltWZQlw
+	Bz2PjR+tPQb0zGE3TZoNQvzF2XsBtljQKLLMJU7cJu2i5dfE2W4XAxtmQuiGnN6ABzK5E8XXBpP+1
+	19YbGYro/BQtkLr7cLHkhG6DmlCRXJdsOAZiYAkUaKzIrFz8yeiE4w/GhwHusfVRDUXfcle6hZfN4
+	6eHmZyeHPq62R5oIqp+0839yPMWl8pNfGdlSGTe4byeGKx8xznRL9psdqCI1SmlpFeQdHdgkWCI+S
+	IlYLV6i8Fy8euuyYx/lGgp+K/BqZvPJdo4akCd+jR2n+LDI/PZCc0eVHWbMPzXqzE4Qk/v+esnxlq
+	Svz766bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpIDW-00000002vFa-1SCI;
-	Tue, 04 Mar 2025 02:41:10 +0000
+	id 1tpM2q-00000003Kp6-0sSz;
+	Tue, 04 Mar 2025 06:46:24 +0000
 Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpIDP-00000002vEu-3AKK;
-	Tue, 04 Mar 2025 02:41:09 +0000
-X-UUID: 19add20cf8a211efa1e849db4cc18d44-20250303
+	id 1tpLmP-00000003HKN-2LmR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Mar 2025 06:29:26 +0000
+X-UUID: 004a09b4f8c211efa1e849db4cc18d44-20250303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VuDDSS2TpvJo7nDZRzY/l5K5AxDqiIJ6WylpydtfNxc=;
-	b=MA+Ag9qNkGkrry0Ityxme4csEIdmgE9KedGZcR/aP18Vm/53ZjmnD7EGSIKlUh3AF8GL+N/vLzJp8UfSZ1gzGBNFIQg00sINSxJpe4l8rytZ9cG7Fn9etWnd72wyOYalDWvIA3uwvoaYak2vb2BkIJreB82wyFpI88R8s+OuLnw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XM8U4LA3x2aJnZkttxX8Qk5zIDrSgDUxCsycih5eebU=;
+	b=VbW3DC4BSh6RaPdgR0S81vgG3NQcIZI5rA6shZ4pAJdeA7OcpHKfwr2g//mh6tkXvpour7P/QJxGbdmw+OID9JRJugQleNt3w4xq+FSgR0fMKLYLo8wY8OI16/4ZHYrKMUy0dfyd2siKXBfcw2MnU/4ejRYwFThhQu2k3HTT3+g=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:b36f6914-2648-411f-9e55-1145935271f8,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:39e71b03-a373-400e-87fc-32443f153737,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.2.1,REQID:5d62daf7-2a45-455f-9bd5-df99da9eac7b,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:533f7f29-e0f8-414e-b8c3-b75c08217be8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 19add20cf8a211efa1e849db4cc18d44-20250303
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <leilk.liu@mediatek.com>)
+X-UUID: 004a09b4f8c211efa1e849db4cc18d44-20250303
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 807032393; Mon, 03 Mar 2025 19:40:57 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1296952816; Mon, 03 Mar 2025 23:29:18 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 4 Mar 2025 10:40:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 4 Mar 2025 10:40:53 +0800
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<fparent@baylibre.com>, Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v2] spi: mt65xx: add PM QoS support
-Date: Tue, 4 Mar 2025 10:37:15 +0800
-Message-ID: <20250304024045.7788-1-leilk.liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+ 15.2.1258.28; Tue, 4 Mar 2025 14:29:15 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 4 Mar 2025 14:29:15 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH v2 2/6] wifi: mt76: mt7925: add EHT control support based on the CLC data
+Date: Tue, 4 Mar 2025 14:28:50 +0800
+Message-ID: <20250304062854.829194-2-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250304062854.829194-1-mingyen.hsieh@mediatek.com>
+References: <20250304062854.829194-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_184103_797582_B7688932 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20250303_222925_607438_AFBD2E11 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,99 +89,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable Quality of Service(QoS) support to speed up interrupt service
-routine handle. Sometimes, a gic interrupt will be generated after
-SPI transmission, but at this time the CPU is in an idle state and the
-processing handler will be very slow. It takes time to exit the idle state
-and then become active. This will cause the SPI handler to execute slowly
-and cause SPI transfer timeouts.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
-v2: 
- 1. add qos_request description in mtk_spi
----
- drivers/spi/spi-mt65xx.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Some countries do not support EHT modulation for now. To prevent violating
+regulations, the MT7925 chipset should control the EHT capabilities.
+Therefore, when a regulatory domain change is detected during scanning,
+the `mt7925_regd_be_ctrl` will process the CLC data to update the EHT
+capabilities.
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 197bf2dbe5de..4b0a1c0db041 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -20,6 +20,7 @@
- #include <linux/spi/spi.h>
- #include <linux/spi/spi-mem.h>
- #include <linux/dma-mapping.h>
-+#include <linux/pm_qos.h>
- 
- #define SPI_CFG0_REG			0x0000
- #define SPI_CFG1_REG			0x0004
-@@ -147,6 +148,7 @@ struct mtk_spi_compatible {
-  * @tx_sgl_len:		Size of TX DMA transfer
-  * @rx_sgl_len:		Size of RX DMA transfer
-  * @dev_comp:		Device data structure
-+ * @qos_request:	QoS request
-  * @spi_clk_hz:		Current SPI clock in Hz
-  * @spimem_done:	SPI-MEM operation completion
-  * @use_spimem:		Enables SPI-MEM
-@@ -166,6 +168,7 @@ struct mtk_spi {
- 	struct scatterlist *tx_sgl, *rx_sgl;
- 	u32 tx_sgl_len, rx_sgl_len;
- 	const struct mtk_spi_compatible *dev_comp;
-+	struct pm_qos_request qos_request;
- 	u32 spi_clk_hz;
- 	struct completion spimem_done;
- 	bool use_spimem;
-@@ -356,6 +359,7 @@ static int mtk_spi_hw_init(struct spi_controller *host,
- 	struct mtk_chip_config *chip_config = spi->controller_data;
- 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
- 
-+	cpu_latency_qos_update_request(&mdata->qos_request, 500);
- 	cpha = spi->mode & SPI_CPHA ? 1 : 0;
- 	cpol = spi->mode & SPI_CPOL ? 1 : 0;
- 
-@@ -459,6 +463,15 @@ static int mtk_spi_prepare_message(struct spi_controller *host,
- 	return mtk_spi_hw_init(host, msg->spi);
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2: no change
+---
+ .../net/wireless/mediatek/mt76/mt7925/init.c  | 38 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/main.c  |  3 ++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 10 +++--
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    | 27 +++++++++++--
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  1 +
+ 5 files changed, 72 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index b40d979f1b65..94d7b762fe40 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -58,6 +58,44 @@ static int mt7925_thermal_init(struct mt792x_phy *phy)
+ 	return PTR_ERR_OR_ZERO(hwmon);
  }
  
-+static int mtk_spi_unprepare_message(struct spi_controller *host,
-+				     struct spi_message *message)
++void mt7925_regd_be_ctrl(struct mt792x_dev *dev, u8 *alpha2)
 +{
-+	struct mtk_spi *mdata = spi_controller_get_devdata(host);
++	struct mt792x_phy *phy = &dev->phy;
++	struct mt7925_clc_rule_v2 *rule;
++	struct mt7925_clc *clc;
++	bool old = dev->has_eht, new = true;
++	u8 *pos;
 +
-+	cpu_latency_qos_update_request(&mdata->qos_request, PM_QOS_DEFAULT_VALUE);
-+	return 0;
++	if (!phy->clc[MT792x_CLC_BE_CTRL])
++		goto out;
++
++	clc = (struct mt7925_clc *)phy->clc[MT792x_CLC_BE_CTRL];
++	pos = clc->data;
++
++	while (1) {
++		rule = (struct mt7925_clc_rule_v2 *)pos;
++
++		if (rule->alpha2[0] == alpha2[0] &&
++		    rule->alpha2[1] == alpha2[1]) {
++			new = false;
++			break;
++		}
++
++		/* Check the last one */
++		if (rule->flag && BIT(0))
++			break;
++
++		pos += sizeof(*rule);
++	}
++
++out:
++	if (old == new)
++		return;
++
++	dev->has_eht = new;
++	mt7925_set_stream_he_eht_caps(phy);
 +}
 +
- static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
+ void mt7925_regd_update(struct mt792x_dev *dev)
  {
- 	u32 reg_val;
-@@ -1143,6 +1156,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 	struct mt76_dev *mdev = &dev->mt76;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index cefb9068fa72..80aa7f329cf8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1449,6 +1449,9 @@ void mt7925_scan_work(struct work_struct *work)
+ 				if (!is_valid_alpha2(evt->alpha2))
+ 					break;
  
- 	host->set_cs = mtk_spi_set_cs;
- 	host->prepare_message = mtk_spi_prepare_message;
-+	host->unprepare_message = mtk_spi_unprepare_message;
- 	host->transfer_one = mtk_spi_transfer_one;
- 	host->can_dma = mtk_spi_can_dma;
- 	host->setup = mtk_spi_setup;
-@@ -1249,6 +1263,8 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 		clk_disable_unprepare(mdata->spi_hclk);
- 	}
- 
-+	cpu_latency_qos_add_request(&mdata->qos_request, PM_QOS_DEFAULT_VALUE);
++				if (memcmp(evt->alpha2, mdev->alpha2, 2))
++					mt7925_regd_be_ctrl(phy->dev, evt->alpha2);
 +
- 	if (mdata->dev_comp->need_pad_sel) {
- 		if (mdata->pad_num != host->num_chipselect)
- 			return dev_err_probe(dev, -EINVAL,
-@@ -1292,6 +1308,7 @@ static void mtk_spi_remove(struct platform_device *pdev)
- 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
- 	int ret;
+ 				if (mdev->alpha2[0] != '0' && mdev->alpha2[1] != '0')
+ 					break;
  
-+	cpu_latency_qos_remove_request(&mdata->qos_request);
- 	if (mdata->use_spimem && !completion_done(&mdata->spimem_done))
- 		complete(&mdata->spimem_done);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 505a6467f147..e73320c5d8c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -915,7 +915,9 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 			continue;
+ 
+ 		/* header content sanity */
+-		if (u8_get_bits(clc->type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
++		if ((clc->idx == MT792x_CLC_BE_CTRL &&
++		     u8_get_bits(clc->t2.type, MT_EE_HW_TYPE_ENCAP) != hw_encap) ||
++		    u8_get_bits(clc->t0.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
+ 			continue;
+ 
+ 		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
+@@ -1024,7 +1026,6 @@ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
+ 	mdev->phy.chainmask = mdev->phy.antenna_mask;
+ 	mdev->phy.cap.has_2ghz = cap->hw_path & BIT(WF0_24G);
+ 	mdev->phy.cap.has_5ghz = cap->hw_path & BIT(WF0_5G);
+-	dev->has_eht = cap->eht;
+ }
+ 
+ static void
+@@ -3427,7 +3428,7 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 	if (!clc)
+ 		return 0;
+ 
+-	pos = clc->data + sizeof(*seg) * clc->nr_seg;
++	pos = clc->data + sizeof(*seg) * clc->t0.nr_seg;
+ 	last_pos = clc->data + le32_to_cpu(*(__le32 *)(clc->data + 4));
+ 	while (pos < last_pos) {
+ 		struct mt7925_clc_rule *rule = (struct mt7925_clc_rule *)pos;
+@@ -3473,6 +3474,9 @@ int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 
+ 	/* submit all clc config */
+ 	for (i = 0; i < ARRAY_SIZE(phy->clc); i++) {
++		if (i == MT792x_CLC_BE_CTRL)
++			continue;
++
+ 		ret = __mt7925_mcu_set_clc(dev, alpha2, env_cap,
+ 					   phy->clc[i], i);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index abecaf897159..e6ca9021f487 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -137,6 +137,12 @@ enum {
+ 	MT7925_CLC_MAX_NUM,
+ };
+ 
++struct mt7925_clc_rule_v2 {
++	u32 flag;
++	u8 alpha2[2];
++	u8 rsv[10];
++} __packed;
++
+ struct mt7925_clc_rule {
+ 	u8 alpha2[2];
+ 	u8 type[2];
+@@ -152,14 +158,26 @@ struct mt7925_clc_segment {
+ 	u8 rsv2[4];
+ } __packed;
+ 
+-struct mt7925_clc {
+-	__le32 len;
+-	u8 idx;
+-	u8 ver;
++struct mt7925_clc_type0 {
+ 	u8 nr_country;
+ 	u8 type;
+ 	u8 nr_seg;
+ 	u8 rsv[7];
++} __packed;
++
++struct mt7925_clc_type2 {
++	u8 type;
++	u8 rsv[9];
++} __packed;
++
++struct mt7925_clc {
++	__le32 len;
++	u8 idx;
++	u8 ver;
++	union {
++		struct mt7925_clc_type0 t0;
++		struct mt7925_clc_type2 t2;
++	};
+ 	u8 data[];
+ } __packed;
+ 
+@@ -239,6 +257,7 @@ int mt7925_mcu_chip_configv2(struct mt792x_dev *dev, const char *cmd);
+ int mt7925_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
+ 			    u8 bit_op, u32 bit_map);
+ 
++void mt7925_regd_be_ctrl(struct mt792x_dev *dev, u8 *alpha2);
+ void mt7925_regd_update(struct mt792x_dev *dev);
+ int mt7925_mac_init(struct mt792x_dev *dev);
+ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 281df43d9060..85f07f936be5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -71,6 +71,7 @@ struct mt792x_fw_features {
+ enum {
+ 	MT792x_CLC_POWER,
+ 	MT792x_CLC_POWER_EXT,
++	MT792x_CLC_BE_CTRL,
+ 	MT792x_CLC_MAX_NUM,
+ };
  
 -- 
-2.46.0
+2.34.1
 
 
