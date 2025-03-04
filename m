@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3CACC282D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 17:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B225EC021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 17:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JiTb+asUUCMpg2G5cuZKZ2+VdFpb4I2J3EOF5uTEW7c=; b=Y8aPhpre6tbVg1y+Qj8ueZSF92
-	+b5qcFmtxG54ZhDhLoaoGePnRTU5kVktPJ+RDwv+pyRyaSwzPaYp7ta2cFP8YJYtQ6Ye2gFtQrKei
-	a07cCaQpdL59+1eZRb9JVzSd5yfQRsNh60eR4HMzU9tZ6MNO6OLfvin879QcfEGuHtgVUKgYXQmrk
-	PxFuIFzLR1NR/kCURLw/3CEw7bD8mveCyVJsIXoimfjEi9RJiOxFT8kZA7pQAoLtRBT42wfhwv20h
-	bZ/heHZ4jjiFPaGYqLkSikMKdZeIIwwiAdqlcC/wTTT208PzK9pyAc/aevLc6FGFyx9vgM4aXJFib
-	oVAxnzZw==;
+	bh=b3Jr1ifBgAUOTlSFImIY854lPBEJ8Tg18l+oA7ulQUw=; b=uaE/jPsd04cxAHWqROMraT5TvF
+	LMt3EY8QIQbYkj27iASah8t5N0hAD4Y7qls4yuVTbcu0DtPhs4eXkTSO+dnUb0SG5Qzs7zrbTYtXt
+	bGUAa6uKDM7w3yO6q7SqqVt6de9MXtxncHYdSQj+o99ANRNUY1MAVtCeH6T6NcWApdSVPKGxWZOv/
+	ywbLA0eWs2Ea786AtwFI3iRdD7cDNLfd07MOzyLPI0vmSUo7r+Ui06ZeidDho9ob+pq15BDmbeTg/
+	vvGTjk1d6ojLgdlsQsNtuXsEqut9/YN39IqDSZR331WMcr7rQy9u5yebSIFY7UJwPUEQaujgBOY76
+	LczkMMhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpVqw-00000005a1c-34ax;
-	Tue, 04 Mar 2025 17:14:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tpW5R-00000005dAn-1yBr;
+	Tue, 04 Mar 2025 17:29:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpU1D-00000005AIU-1n6G;
-	Tue, 04 Mar 2025 15:17:16 +0000
+	id 1tpU1a-00000005AOf-0DSZ;
+	Tue, 04 Mar 2025 15:17:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741101434;
-	bh=Vr2iMt1JwvPbsT2boRLW+AKpWeiECbyHNYOMDVwTEG4=;
+	s=mail; t=1741101456;
+	bh=rBci4f69I/d/dQvGhQC94bd2AW9ZiKT0dsBk2rxvf9k=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Gn35RUFYre4goK7wAmCgB0JVr0YL26SRouOxY/8hlQOFyO9TLSTOQSCmP/M2Sq74p
-	 TvuXpkUZEEhkVBMh7C7gsoSg+YuzHOSfoyc3H/40ijUomlG64V6dMFMK2Ynd3xjnkv
-	 12Stb/ylR7M05X4ntqzCdT6ORR0/Uk8SCdXSusOvml8MK6IE9QClKgiX2wGiJlGHAT
-	 7lv8xjxGHooLedsx+bnmEDJk8ggNBY/jIJhcuFWcaKdzZLrdL3kLy0myLyS5GyYThG
-	 ZNER7Wz/heAW5SyDirqK6B32hbSpO9tXRayBZmkbx9COwSRvupMLEgaI+vnHqrlNyD
-	 YOENSHXkqpCdQ==
+	b=Inzks9Mhv1iMCQ3p9MrvMcYWBdpfIaJdhf8iMX+Gf+yyhHcHW1VKGh+91ONxkiLtS
+	 lHAQfgqxt9ZHjidpXd28ba/gKIp/0sx4Zgu7+mdyj2KErN7cWmnOa68se6kufbiuH7
+	 3IA5yA1wJeLr/HJ6PMwoIl2RiemhNCysXuQHd/GI9Pi4clynPxnzwdnWRf+jhtwTF2
+	 hBCQd+4xtUi0EHThhEh5hV310T4lD/5YBDEivhg6DzguksJExCb3vdkhqU9yLKqRCQ
+	 YrJKluc5nck6jKrkklOxl0nfshmbelcwsbU9CtE2IzLVcSgUZfYlystfOp7v3059Fo
+	 ieY1vA8yNzohg==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 194D617E07F8;
-	Tue,  4 Mar 2025 16:17:08 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81A3717E0630;
+	Tue,  4 Mar 2025 16:17:31 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 04 Mar 2025 12:15:53 -0300
-Subject: [PATCH v3 12/20] ASoC: mediatek: mt6359-accdet: Always use
- internal resistor
+Date: Tue, 04 Mar 2025 12:15:57 -0300
+Subject: [PATCH v3 16/20] ASoC: mediatek: mt6359-accdet: Always configure
+ hardware as mic-mode 2
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250304-mt6359-accdet-dts-v3-12-5b0eafc29f5b@collabora.com>
+Message-Id: <20250304-mt6359-accdet-dts-v3-16-5b0eafc29f5b@collabora.com>
 References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
 In-Reply-To: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -69,8 +69,8 @@ Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_071715_617736_D64B7A41 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20250304_071738_233991_E3344BCF 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,110 +85,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The code currently reads a property mediatek,eint-use-ext-res with
-values ranging between 0 and 4. Not only should this be a boolean
-property, but there's no need for it to even be a DT property, seeing as
-all current boards will use the internal resistor anyway. Since there's
-no current dt-binding or Devicetree user of this property, remove its
-handling and make the driver always configure the internal resistor.
+The driver currently reads a mediatek,mic-mode property from DT to
+determine certain register configurations. Since there are no current
+users of the property, the property doesn't directly reflect the
+hardware  and the default value (2) is known to work on
+multiple boards, remove the code handling this property and instead
+always configure the hardware according to the known to work default.
+This property can be properly introduced in the binding in the future
+if it really turns out that different boards need different
+configurations.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- sound/soc/codecs/mt6359-accdet.c | 53 +++++++++++-----------------------------
- sound/soc/codecs/mt6359-accdet.h |  1 -
- 2 files changed, 14 insertions(+), 40 deletions(-)
+ sound/soc/codecs/mt6359-accdet.c | 43 ++++++----------------------------------
+ sound/soc/codecs/mt6359-accdet.h |  5 -----
+ 2 files changed, 6 insertions(+), 42 deletions(-)
 
 diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index d78d7516342a5c2273b1c2962c0346646aa6390f..e04cfb9a607aa5d38d46329eb1387545fda37ccc 100644
+index a31e084560c7643b14fb71871699e3167075d9d9..12697b02faff1be39317116cd7d8ffa359f2cd4e 100644
 --- a/sound/soc/codecs/mt6359-accdet.c
 +++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -82,14 +82,10 @@ static unsigned int adjust_eint_analog_setting(struct mt6359_accdet *priv)
- 					   RG_EINT1CONFIGACCDET_MASK_SFT,
- 					   BIT(RG_EINT1CONFIGACCDET_SFT));
- 		}
--		if (priv->data->eint_use_ext_res == 0x3 ||
--		    priv->data->eint_use_ext_res == 0x4) {
--			/*select 500k, use internal resistor */
--			regmap_update_bits(priv->regmap,
--					   RG_EINT0HIRENB_ADDR,
--					   RG_EINT0HIRENB_MASK_SFT,
--					   BIT(RG_EINT0HIRENB_SFT));
--		}
-+		/*select 500k, use internal resistor */
-+		regmap_update_bits(priv->regmap, RG_EINT0HIRENB_ADDR,
-+				   RG_EINT0HIRENB_MASK_SFT,
-+				   BIT(RG_EINT0HIRENB_SFT));
- 	}
- 	return 0;
- }
-@@ -543,13 +539,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
- 	else if (tmp == 2)
- 		priv->caps |= ACCDET_PMIC_BI_EINT;
+@@ -494,11 +494,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
+ 	if (!node)
+ 		return -EINVAL;
  
--	ret = of_property_read_u32(node, "mediatek,eint-use-ext-res",
--				   &priv->data->eint_use_ext_res);
--	if (ret) {
--		/* eint use internal resister */
--		priv->data->eint_use_ext_res = 0x0;
--	}
+-	ret = of_property_read_u32(node, "mediatek,mic-mode",
+-				   &priv->data->mic_mode);
+-	if (ret)
+-		priv->data->mic_mode = 2;
 -
- 	ret = of_property_read_u32(node, "mediatek,eint-comp-vth",
- 				   &priv->data->eint_comp_vth);
- 	if (ret)
-@@ -651,30 +640,16 @@ static void config_eint_init_by_mode(struct mt6359_accdet *priv)
- 	if (priv->data->eint_detect_mode == 0x1 ||
- 	    priv->data->eint_detect_mode == 0x2 ||
- 	    priv->data->eint_detect_mode == 0x3) {
--		if (priv->data->eint_use_ext_res == 0x1) {
--			if (priv->caps & ACCDET_PMIC_EINT0) {
--				regmap_update_bits(priv->regmap,
--						   RG_EINT0CONFIGACCDET_ADDR,
--						   RG_EINT0CONFIGACCDET_MASK_SFT,
--						   0);
--			} else if (priv->caps & ACCDET_PMIC_EINT1) {
--				regmap_update_bits(priv->regmap,
--						   RG_EINT1CONFIGACCDET_ADDR,
--						   RG_EINT1CONFIGACCDET_MASK_SFT,
--						   0);
--			}
--		} else {
--			if (priv->caps & ACCDET_PMIC_EINT0) {
--				regmap_update_bits(priv->regmap,
--						   RG_EINT0CONFIGACCDET_ADDR,
--						   RG_EINT0CONFIGACCDET_MASK_SFT,
--						   BIT(RG_EINT0CONFIGACCDET_SFT));
--			} else if (priv->caps & ACCDET_PMIC_EINT1) {
--				regmap_update_bits(priv->regmap,
--						   RG_EINT1CONFIGACCDET_ADDR,
--						   RG_EINT1CONFIGACCDET_MASK_SFT,
--						   BIT(RG_EINT1CONFIGACCDET_SFT));
--			}
-+		if (priv->caps & ACCDET_PMIC_EINT0) {
-+			regmap_update_bits(priv->regmap,
-+					   RG_EINT0CONFIGACCDET_ADDR,
-+					   RG_EINT0CONFIGACCDET_MASK_SFT,
-+					   BIT(RG_EINT0CONFIGACCDET_SFT));
-+		} else if (priv->caps & ACCDET_PMIC_EINT1) {
-+			regmap_update_bits(priv->regmap,
-+					   RG_EINT1CONFIGACCDET_ADDR,
-+					   RG_EINT1CONFIGACCDET_MASK_SFT,
-+					   BIT(RG_EINT1CONFIGACCDET_SFT));
- 		}
- 	}
+ 	priv->data->hp_eint_high = of_property_read_bool(node, "mediatek,hp-eint-high");
  
+ 	ret = of_property_read_u32(node, "mediatek,eint-num", &tmp);
+@@ -658,38 +653,12 @@ static void mt6359_accdet_init(struct mt6359_accdet *priv)
+ 			     RG_AUDMICBIAS1LOWPEN_MASK_SFT);
+ 	/* mic mode setting */
+ 	regmap_read(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR, &reg);
+-	if (priv->data->mic_mode == HEADSET_MODE_1) {
+-		/* ACC mode*/
+-		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
+-			     reg | RG_ACCDET_MODE_ANA11_MODE1);
+-		/* enable analog fast discharge */
+-		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
+-				   RG_ANALOGFDEN_MASK_SFT,
+-				   BIT(RG_ANALOGFDEN_SFT));
+-		regmap_update_bits(priv->regmap, RG_ACCDETSPARE_ADDR,
+-				   0x3 << 11, 0x3 << 11);
+-	} else if (priv->data->mic_mode == HEADSET_MODE_2) {
+-		/* DCC mode Low cost mode without internal bias */
+-		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
+-			     reg | RG_ACCDET_MODE_ANA11_MODE2);
+-		/* enable analog fast discharge */
+-		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
+-				   0x3 << RG_ANALOGFDEN_SFT,
+-				   0x3 << RG_ANALOGFDEN_SFT);
+-	} else if (priv->data->mic_mode == HEADSET_MODE_6) {
+-		/* DCC mode Low cost mode with internal bias,
+-		 * bit8 = 1 to use internal bias
+-		 */
+-		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
+-			     reg | RG_ACCDET_MODE_ANA11_MODE6);
+-		regmap_update_bits(priv->regmap, RG_AUDPWDBMICBIAS1_ADDR,
+-				   RG_AUDMICBIAS1DCSW1PEN_MASK_SFT,
+-				   BIT(RG_AUDMICBIAS1DCSW1PEN_SFT));
+-		/* enable analog fast discharge */
+-		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
+-				   0x3 << RG_ANALOGFDEN_SFT,
+-				   0x3 << RG_ANALOGFDEN_SFT);
+-	}
++	/* DCC mode Low cost mode without internal bias */
++	regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
++		     reg | RG_ACCDET_MODE_ANA11_MODE2);
++	/* enable analog fast discharge */
++	regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
++			   0x3 << RG_ANALOGFDEN_SFT, 0x3 << RG_ANALOGFDEN_SFT);
+ 
+ 	config_eint_init_by_mode(priv);
+ 	config_digital_init_by_mode(priv);
 diff --git a/sound/soc/codecs/mt6359-accdet.h b/sound/soc/codecs/mt6359-accdet.h
-index 38c36d59b9cc68bd90e16137a05a62b521b75ac1..99de5037a2294b62cb8535fc45dbf4c6fafb5c7f 100644
+index 46dcd4759230a5190434b9b7c785e8b9ed12fd3d..579373807c414130b2a7384db4978e01cf1d046c 100644
 --- a/sound/soc/codecs/mt6359-accdet.h
 +++ b/sound/soc/codecs/mt6359-accdet.h
-@@ -75,7 +75,6 @@ struct dts_data {
- 	bool hp_eint_high;
- 	struct pwm_deb_settings *pwm_deb;
- 	unsigned int eint_detect_mode;
--	unsigned int eint_use_ext_res;
- 	unsigned int eint_comp_vth;
+@@ -12,10 +12,6 @@
+ 
+ #define ACCDET_DEVNAME "accdet"
+ 
+-#define HEADSET_MODE_1		(1)
+-#define HEADSET_MODE_2		(2)
+-#define HEADSET_MODE_6		(6)
+-
+ #define MT6359_ACCDET_NUM_BUTTONS 4
+ #define MT6359_ACCDET_JACK_MASK (SND_JACK_HEADPHONE | \
+ 				SND_JACK_HEADSET | \
+@@ -51,7 +47,6 @@ enum {
  };
  
+ struct dts_data {
+-	unsigned int mic_mode;
+ 	bool hp_eint_high;
+ 	unsigned int eint_comp_vth;
+ };
 
 -- 
 2.48.1
