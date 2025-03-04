@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B225EC021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 17:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B9BEC282DC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 18:59:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b3Jr1ifBgAUOTlSFImIY854lPBEJ8Tg18l+oA7ulQUw=; b=uaE/jPsd04cxAHWqROMraT5TvF
-	LMt3EY8QIQbYkj27iASah8t5N0hAD4Y7qls4yuVTbcu0DtPhs4eXkTSO+dnUb0SG5Qzs7zrbTYtXt
-	bGUAa6uKDM7w3yO6q7SqqVt6de9MXtxncHYdSQj+o99ANRNUY1MAVtCeH6T6NcWApdSVPKGxWZOv/
-	ywbLA0eWs2Ea786AtwFI3iRdD7cDNLfd07MOzyLPI0vmSUo7r+Ui06ZeidDho9ob+pq15BDmbeTg/
-	vvGTjk1d6ojLgdlsQsNtuXsEqut9/YN39IqDSZR331WMcr7rQy9u5yebSIFY7UJwPUEQaujgBOY76
-	LczkMMhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=; b=KGmwKCLcbC4eZHW5I3HIbNOtPC
+	x0XEzmXWrMhbWu0btpaz0se+TrXfFgxvOQb11bf4jCI9nPVHqRordQk/USSGcWzitsDrzxqZ4zZ9k
+	yx+jpIUXaklnBjRBzo/24z0kV8HmDOJOVL7jHilPhXg2Ie7MiF7SOF4fqsBXjBnhv8YKit3dGBdwT
+	yCo7RHACh08LiBVlFpS/CGK6L8IDMSJRWYTVjLyiuDjDANSG/Xcre7ZGAvJVUce3Y7Nn1LPoYolgi
+	+UsKNNrvhRCqPIW8aFFZMHVlfyUF4dtvU4RZ1n8+XJMfeUEAkKnf6t4oz6ye/N7zYj13lmb45pY9R
+	MtC2ME1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpW5R-00000005dAn-1yBr;
-	Tue, 04 Mar 2025 17:29:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpXUY-00000005w3X-3z1E;
+	Tue, 04 Mar 2025 18:59:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpU1a-00000005AOf-0DSZ;
-	Tue, 04 Mar 2025 15:17:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741101456;
-	bh=rBci4f69I/d/dQvGhQC94bd2AW9ZiKT0dsBk2rxvf9k=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Inzks9Mhv1iMCQ3p9MrvMcYWBdpfIaJdhf8iMX+Gf+yyhHcHW1VKGh+91ONxkiLtS
-	 lHAQfgqxt9ZHjidpXd28ba/gKIp/0sx4Zgu7+mdyj2KErN7cWmnOa68se6kufbiuH7
-	 3IA5yA1wJeLr/HJ6PMwoIl2RiemhNCysXuQHd/GI9Pi4clynPxnzwdnWRf+jhtwTF2
-	 hBCQd+4xtUi0EHThhEh5hV310T4lD/5YBDEivhg6DzguksJExCb3vdkhqU9yLKqRCQ
-	 YrJKluc5nck6jKrkklOxl0nfshmbelcwsbU9CtE2IzLVcSgUZfYlystfOp7v3059Fo
-	 ieY1vA8yNzohg==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81A3717E0630;
-	Tue,  4 Mar 2025 16:17:31 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 04 Mar 2025 12:15:57 -0300
-Subject: [PATCH v3 16/20] ASoC: mediatek: mt6359-accdet: Always configure
- hardware as mic-mode 2
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250304-mt6359-accdet-dts-v3-16-5b0eafc29f5b@collabora.com>
+	id 1tpV2i-00000005PYf-0aLF;
+	Tue, 04 Mar 2025 16:22:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=; b=Gi+/XFf+EFtOdyUiRsMuNx+cSS
+	9y0saL9m2XyZz54ItrS+vgCODmLfO1t6ovQP8Z5bRLN8VJ+L7gfuUFZFiDyKofZZLOQJSU4o7CvCo
+	Om12OTXDdrujHtYVN75o+kaKNuzJcRTVbPdEn5wyKYBrPPOVdyQX8bJPrZxqXjDU0nqDni1MEruK+
+	SW2U2mipZNRX7rKwwK0Dg56bjMyZB1rFwYOz2sbFqthmFF7aNFNBqG/F2okUlKCVi/XqJV5kI+xN1
+	Vmwv7EDteOqxu2fSJaSNswn9juWNKiXUV1XuEsYHIzfod+b2MaWIKE0Vx6GP1HvIPDjp3kVlkzITJ
+	3K1LTnHQ==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpV2e-000000005kW-1GCl;
+	Tue, 04 Mar 2025 16:22:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1032EA45921;
+	Tue,  4 Mar 2025 16:17:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47A2AC4CEE5;
+	Tue,  4 Mar 2025 16:22:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741105366;
+	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iXSPILMiDbG1+OfL9Hg/8K3LiBibffVc9koiFnM2f4SjX85WZqd/35e3hGmJFVart
+	 EZIXyoz0VDyoF/0hTkc0OrscHyyAXkZ9jow3TbRh25hxg7YJXDa19/gDb1Nqz+J39Y
+	 wr033y/xY+yvcEKNMbjabpzp6KWPy1+I41dskudD8nPLC/OTlAuW+gKf3tFdZbZfpl
+	 30wIoXqtQvy6jYHh8Z+1ytEScE0DHg1+05nRc64K8sHDeZh9BxZoty17lTAw0VwKhg
+	 H4jjg4Q0AlTNPvhFbKe79qzLoe8wqXzZVZAkQcqXHXuKNjyDCogQ+/06uEqKQryvZB
+	 MP8nJPK4HxjXA==
+Date: Tue, 4 Mar 2025 16:22:39 +0000
+From: Mark Brown <broonie@kernel.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, kernel@collabora.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Andrew Perepech <andrew.perepech@mediatek.com>
+Subject: Re: [PATCH v3 03/20] mfd: mt6397-core: Add mfd_cell for mt6359-accdet
+Message-ID: <a8fbb536-a246-4650-8085-d576652b0301@sirena.org.uk>
 References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
-In-Reply-To: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-pm@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+ <20250304-mt6359-accdet-dts-v3-3-5b0eafc29f5b@collabora.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="OLmxqaxv809+84Iy"
+Content-Disposition: inline
+In-Reply-To: <20250304-mt6359-accdet-dts-v3-3-5b0eafc29f5b@collabora.com>
+X-Cookie: Do not disturb.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_071738_233991_E3344BCF 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20250304_162248_694885_D5AAEADE 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +99,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver currently reads a mediatek,mic-mode property from DT to
-determine certain register configurations. Since there are no current
-users of the property, the property doesn't directly reflect the
-hardware  and the default value (2) is known to work on
-multiple boards, remove the code handling this property and instead
-always configure the hardware according to the known to work default.
-This property can be properly introduced in the binding in the future
-if it really turns out that different boards need different
-configurations.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- sound/soc/codecs/mt6359-accdet.c | 43 ++++++----------------------------------
- sound/soc/codecs/mt6359-accdet.h |  5 -----
- 2 files changed, 6 insertions(+), 42 deletions(-)
+--OLmxqaxv809+84Iy
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index a31e084560c7643b14fb71871699e3167075d9d9..12697b02faff1be39317116cd7d8ffa359f2cd4e 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -494,11 +494,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
- 	if (!node)
- 		return -EINVAL;
- 
--	ret = of_property_read_u32(node, "mediatek,mic-mode",
--				   &priv->data->mic_mode);
--	if (ret)
--		priv->data->mic_mode = 2;
--
- 	priv->data->hp_eint_high = of_property_read_bool(node, "mediatek,hp-eint-high");
- 
- 	ret = of_property_read_u32(node, "mediatek,eint-num", &tmp);
-@@ -658,38 +653,12 @@ static void mt6359_accdet_init(struct mt6359_accdet *priv)
- 			     RG_AUDMICBIAS1LOWPEN_MASK_SFT);
- 	/* mic mode setting */
- 	regmap_read(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR, &reg);
--	if (priv->data->mic_mode == HEADSET_MODE_1) {
--		/* ACC mode*/
--		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
--			     reg | RG_ACCDET_MODE_ANA11_MODE1);
--		/* enable analog fast discharge */
--		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
--				   RG_ANALOGFDEN_MASK_SFT,
--				   BIT(RG_ANALOGFDEN_SFT));
--		regmap_update_bits(priv->regmap, RG_ACCDETSPARE_ADDR,
--				   0x3 << 11, 0x3 << 11);
--	} else if (priv->data->mic_mode == HEADSET_MODE_2) {
--		/* DCC mode Low cost mode without internal bias */
--		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
--			     reg | RG_ACCDET_MODE_ANA11_MODE2);
--		/* enable analog fast discharge */
--		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
--				   0x3 << RG_ANALOGFDEN_SFT,
--				   0x3 << RG_ANALOGFDEN_SFT);
--	} else if (priv->data->mic_mode == HEADSET_MODE_6) {
--		/* DCC mode Low cost mode with internal bias,
--		 * bit8 = 1 to use internal bias
--		 */
--		regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
--			     reg | RG_ACCDET_MODE_ANA11_MODE6);
--		regmap_update_bits(priv->regmap, RG_AUDPWDBMICBIAS1_ADDR,
--				   RG_AUDMICBIAS1DCSW1PEN_MASK_SFT,
--				   BIT(RG_AUDMICBIAS1DCSW1PEN_SFT));
--		/* enable analog fast discharge */
--		regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
--				   0x3 << RG_ANALOGFDEN_SFT,
--				   0x3 << RG_ANALOGFDEN_SFT);
--	}
-+	/* DCC mode Low cost mode without internal bias */
-+	regmap_write(priv->regmap, RG_AUDACCDETMICBIAS0PULLLOW_ADDR,
-+		     reg | RG_ACCDET_MODE_ANA11_MODE2);
-+	/* enable analog fast discharge */
-+	regmap_update_bits(priv->regmap, RG_ANALOGFDEN_ADDR,
-+			   0x3 << RG_ANALOGFDEN_SFT, 0x3 << RG_ANALOGFDEN_SFT);
- 
- 	config_eint_init_by_mode(priv);
- 	config_digital_init_by_mode(priv);
-diff --git a/sound/soc/codecs/mt6359-accdet.h b/sound/soc/codecs/mt6359-accdet.h
-index 46dcd4759230a5190434b9b7c785e8b9ed12fd3d..579373807c414130b2a7384db4978e01cf1d046c 100644
---- a/sound/soc/codecs/mt6359-accdet.h
-+++ b/sound/soc/codecs/mt6359-accdet.h
-@@ -12,10 +12,6 @@
- 
- #define ACCDET_DEVNAME "accdet"
- 
--#define HEADSET_MODE_1		(1)
--#define HEADSET_MODE_2		(2)
--#define HEADSET_MODE_6		(6)
--
- #define MT6359_ACCDET_NUM_BUTTONS 4
- #define MT6359_ACCDET_JACK_MASK (SND_JACK_HEADPHONE | \
- 				SND_JACK_HEADSET | \
-@@ -51,7 +47,6 @@ enum {
- };
- 
- struct dts_data {
--	unsigned int mic_mode;
- 	bool hp_eint_high;
- 	unsigned int eint_comp_vth;
- };
+On Tue, Mar 04, 2025 at 12:15:44PM -0300, N=EDcolas F. R. A. Prado wrote:
+> From: Andrew Perepech <andrew.perepech@mediatek.com>
+>=20
+> Add an mfd_cell for mt6359-accdet and describe its IRQ resources to
+> allow the mt6359-accdet driver to probe.
 
--- 
-2.48.1
+Lee, is this OK to merge via ASoC?
 
+--OLmxqaxv809+84Iy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfHKM4ACgkQJNaLcl1U
+h9AGawf+Krbqa+Vm4jfRJRkHk1Bz74IQ/DHedsnpuELy2Rv59vOzi/ONHxJ/Vsq8
+03MvfgczYs8uzSrfII7fto16qxrsRaVGeTkSaanOAZHhFT32ytipNw7CIa03tchc
+8NtyjnLXMDyBqeEuzKVUTmzp5DgA57934vPFsBXP+jix8i0IYKthA2mFxcIVk8AJ
+npoP45KaBxueBRiIbQ88nbeEWMk2zpCYaqDQxeBCROSqF+j+VlV2V9/LFr9nmGla
+fXrY4hD9vRT7RUs7od+v2zpfnn6M4dMqA1gEIoZq5b+NQ3BlVHug4uHInjm7QUqN
+XR/caFRH1sjlz1NMYvElHtzG4TDjtQ==
+=ZRYJ
+-----END PGP SIGNATURE-----
+
+--OLmxqaxv809+84Iy--
 
