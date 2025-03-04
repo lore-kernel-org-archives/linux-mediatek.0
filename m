@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4115C021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 16:24:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1FDC021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 16:49:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OgMGcp+HjUdCgRcwzw/J4Z9KEsYdTvfTKvKs5jeKhg8=; b=2HZxpe5EhLx5KvrTClvX9h0VaP
-	Mv/Ye2L/T0rB1YIquyhcASwtk4nfrkmi4oL7gixIT/lDCQK3vay6YnbXSijAhJ6sqQq5evmqzHtcH
-	WMAzN/oF3PI7yH/2U9oowCI/KE0ig6t5dlkdIGEdkt2Ljw5GVS6WH1UFl4FVvMrP21OQvCpz9sU/g
-	kJRytRIk6C6MnXkxPYp/77ZnWXIJTMt5gvenx535+cmD9zB3zxdUX0Pz3fZEJTwiFsejM1TSS06eG
-	lonyvyprH9W3/8rnQ2fLfYyfLxcPm+AIsQLCfeLHNbwgMDdBiuKRtbZKm44Tq4Y7gWJHzATMT+fy1
-	O91ehOdg==;
+	bh=BMQ9BUWaRZ3pRUDD9tIzkeY7S/4jMOmVHbhMaiqCNAs=; b=t+nYFaV94i/cob7ZCb5nEUWxgg
+	r5aPyOxG4car5BISq6zkHu+KYzEeGdGLo3qM6zyzhocwuV2myoDdm3irSHNUW6ZE2KGznJ9lkO8N4
+	1Yo3JWEYIHE+twm90NSfxoWOPGnHNfwpgjR6FlHK3mzwCT5KFPLj4X2tNDWBnFGjk1P6jucGqkNHl
+	EjhdGXa2DkIUGgJazO3WsR21mMNmtS3zlVMMxQjUtKbLTl7pCwJEJhUVJrb7hp081m9WOIFEREvvf
+	HPm8CeQAgvQ3xYsj6muJb2T9EXrjXhKc4iMinpFVYxS3Ycu3UqIcszXQh3TQhY+IOpHRkNqsvnple
+	Ajst+cgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpV4V-00000005Q2a-0M8g;
-	Tue, 04 Mar 2025 16:24:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpVSG-00000005Uqn-3Llj;
+	Tue, 04 Mar 2025 16:49:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpU1w-00000005AVz-1vcX;
-	Tue, 04 Mar 2025 15:18:01 +0000
+	id 1tpUMX-00000005Fb1-36F3;
+	Tue, 04 Mar 2025 15:39:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741101478;
-	bh=SY9RMAoowz8kStVuJuN4tunjUBmeihKNe9Rk0kme8RY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Z92SAcY4bic4+jlPkfFqmNjnKibjpBU0DigE/n68ef/7y9WT+bCz6sx9EDbPCkOJU
-	 fv8QYjViZjbkVMhhkNTwAlvmoSZcId47Jupzoqc1Ue0vipUGxLsM4XONcAwg9nzI1k
-	 o1ALC0v3scMS+1EIxeZH7r5p1+bzZ03z+0eJqF26VkgCtI0zVRCRf04jU2mER7l6p+
-	 d4Vqtn0L+cKOBRTW0SMPLQbJYG2ElfhVSrF+d7sngpFaj9owqUACff5xP09WuPEJ1Y
-	 SF40cvUZSujhFrYJbJX1iKeT9d7aCc5y4iYbJwv+rexx4EivLPhifwtyi6Gvu3dsqw
-	 ozOOGYTM/E2BQ==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1741102755;
+	bh=fako38hVX0LVYpZs9xYEYP4PjzxUntB/52NIfIBrRh8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=i+bPLmCgsg5dZ8m8Hes7HFpiiXY8n5V4CAEfPSV9S4rI9D5jpRFMikKSA1/bWF+Zt
+	 vSbg638lj/IPGdaJpSEBpFh2AEVdtjeuIPLXWB3CX1hpjvb4QldcbNrUL59GaqrOO8
+	 pS1+uLVG9qkuvSZB+5+WWjCgIuWU7vEIwztDZzDpDF9+91MgGGZueZb+XML7JUwgp2
+	 Nxt4Q4nX3b4qxRtdSEl/lPnmmiy6kwSrMWMkWUSze7/eC78g5/DYYAterNdfJIOz+k
+	 xmBHZjdpW8DHayRH80VvnMSRI2IxO6zajf1YOv4kmCexm4LYCeWewDcB8BzEKlXvd7
+	 h7d+B3Jbh0uVg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D0A0D17E0630;
-	Tue,  4 Mar 2025 16:17:53 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 04 Mar 2025 12:16:01 -0300
-Subject: [PATCH v3 20/20] arm64: defconfig: Enable MT6359 ACCDET
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B52C317E087E;
+	Tue,  4 Mar 2025 16:39:14 +0100 (CET)
+Message-ID: <58528744-4afc-46e8-81a1-ff0704751b41@collabora.com>
+Date: Tue, 4 Mar 2025 16:39:14 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
+ mediatek,accdet
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com>
+ <20250214-mt8188-accdet-v1-1-6bbd5483855b@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250214-mt8188-accdet-v1-1-6bbd5483855b@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250304-mt6359-accdet-dts-v3-20-5b0eafc29f5b@collabora.com>
-References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
-In-Reply-To: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-pm@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_071800_668979_A2A5DAE9 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20250304_073917_919177_1094AC65 
+X-CRM114-Status: UNSURE (   7.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,29 +83,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable support for the ACCDET block in the MT6359 PMIC, which provides
-jack detection capabilities to MediaTek platforms.
+Il 14/02/25 16:14, Nícolas F. R. A. Prado ha scritto:
+> Add a mediatek,accdet phandle property to allow getting a reference to
+> the MT6359 ACCDET block, which is responsible for detecting jack
+> insertion/removal.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 3a3706db29822036d25a7228f8936e2ad613b208..d4a6eeec8ba0db110dd831e146716a0e50cc294f 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1066,6 +1066,7 @@ CONFIG_SND_SOC_WM8978=m
- CONFIG_SND_SOC_WSA881X=m
- CONFIG_SND_SOC_WSA883X=m
- CONFIG_SND_SOC_WSA884X=m
-+CONFIG_SND_SOC_MT6359_ACCDET=m
- CONFIG_SND_SOC_NAU8822=m
- CONFIG_SND_SOC_LPASS_WSA_MACRO=m
- CONFIG_SND_SOC_LPASS_VA_MACRO=m
-
--- 
-2.48.1
 
 
