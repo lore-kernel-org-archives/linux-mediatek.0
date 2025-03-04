@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B9BEC282DC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 18:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78F5EC282D9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 19:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=; b=KGmwKCLcbC4eZHW5I3HIbNOtPC
-	x0XEzmXWrMhbWu0btpaz0se+TrXfFgxvOQb11bf4jCI9nPVHqRordQk/USSGcWzitsDrzxqZ4zZ9k
-	yx+jpIUXaklnBjRBzo/24z0kV8HmDOJOVL7jHilPhXg2Ie7MiF7SOF4fqsBXjBnhv8YKit3dGBdwT
-	yCo7RHACh08LiBVlFpS/CGK6L8IDMSJRWYTVjLyiuDjDANSG/Xcre7ZGAvJVUce3Y7Nn1LPoYolgi
-	+UsKNNrvhRCqPIW8aFFZMHVlfyUF4dtvU4RZ1n8+XJMfeUEAkKnf6t4oz6ye/N7zYj13lmb45pY9R
-	MtC2ME1g==;
+	bh=4z7H9csckGqLSufOJUp9XXvgfTc9ZOxQQQ6azPlLWDI=; b=WkYYj0S56gb9ZGi9TpNQF0xfmH
+	MIY0eT9NV+qmKdqxe1bCb6Z0/b4lhWBmsj/IBYs5Tb6xeIAPb1/Nw2nDWzP3zUXFM0X92nYuhIdK4
+	1I7sreNiQ/RnBQQUG0KYlHPMdJJubmNQA+1roTK/UqlViekFSaqriaAD7wJ0f0+0bQBtKFnUYnGLx
+	JabeHhkyE3SIqKaKeBgDHMm8NJmhcEPGs6tcxbGIK5OXZCQ/dCXctGpDX3Bs9fGjF3tnSfgYBTfOD
+	4Mxv4DJQ/Uop+Zye7aw+o4kst30q1nXyH99HX2LpY+0LE7o9bMLHchfG0W7C0yRiL/7FuP2C1RDse
+	5wlD6zrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpXUY-00000005w3X-3z1E;
-	Tue, 04 Mar 2025 18:59:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpV2i-00000005PYf-0aLF;
-	Tue, 04 Mar 2025 16:22:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=; b=Gi+/XFf+EFtOdyUiRsMuNx+cSS
-	9y0saL9m2XyZz54ItrS+vgCODmLfO1t6ovQP8Z5bRLN8VJ+L7gfuUFZFiDyKofZZLOQJSU4o7CvCo
-	Om12OTXDdrujHtYVN75o+kaKNuzJcRTVbPdEn5wyKYBrPPOVdyQX8bJPrZxqXjDU0nqDni1MEruK+
-	SW2U2mipZNRX7rKwwK0Dg56bjMyZB1rFwYOz2sbFqthmFF7aNFNBqG/F2okUlKCVi/XqJV5kI+xN1
-	Vmwv7EDteOqxu2fSJaSNswn9juWNKiXUV1XuEsYHIzfod+b2MaWIKE0Vx6GP1HvIPDjp3kVlkzITJ
-	3K1LTnHQ==;
+	id 1tpXXX-00000005waR-2NsS;
+	Tue, 04 Mar 2025 19:02:51 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpV2e-000000005kW-1GCl;
-	Tue, 04 Mar 2025 16:22:50 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpVte-00000005alc-25ky;
+	Tue, 04 Mar 2025 17:17:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1032EA45921;
-	Tue,  4 Mar 2025 16:17:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47A2AC4CEE5;
-	Tue,  4 Mar 2025 16:22:42 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E273EA45A38;
+	Tue,  4 Mar 2025 17:12:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25F3EC4CEE7;
+	Tue,  4 Mar 2025 17:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741105366;
-	bh=EV+N2rbqXYmmMk/YyAnKxUxPZrcUg+1PniBKpcv0qKo=;
+	s=k20201202; t=1741108653;
+	bh=4z7H9csckGqLSufOJUp9XXvgfTc9ZOxQQQ6azPlLWDI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iXSPILMiDbG1+OfL9Hg/8K3LiBibffVc9koiFnM2f4SjX85WZqd/35e3hGmJFVart
-	 EZIXyoz0VDyoF/0hTkc0OrscHyyAXkZ9jow3TbRh25hxg7YJXDa19/gDb1Nqz+J39Y
-	 wr033y/xY+yvcEKNMbjabpzp6KWPy1+I41dskudD8nPLC/OTlAuW+gKf3tFdZbZfpl
-	 30wIoXqtQvy6jYHh8Z+1ytEScE0DHg1+05nRc64K8sHDeZh9BxZoty17lTAw0VwKhg
-	 H4jjg4Q0AlTNPvhFbKe79qzLoe8wqXzZVZAkQcqXHXuKNjyDCogQ+/06uEqKQryvZB
-	 MP8nJPK4HxjXA==
-Date: Tue, 4 Mar 2025 16:22:39 +0000
+	b=XAkkJIy29QnQjVEgSpSYNLm2gsMIuLzqzehYykZ1wUQES+pa8gxoV87KPfcoe80bZ
+	 tYx0igDYoUPO9aoc1Jt5H609W7iXn8yHMs+nELJ1AONXDfICRo8fqyFNhDPyZrE+RI
+	 NJGYelL8lgORMnm8sNpYm/duk6MWrAbNx6fUlsGua+OMxh9wsNRnc+vT/NpQ4FXvKI
+	 Y9hB+p0WfsklwIPoTG4EpkvhGUKhU069cY4d+aexHtKBbmzskFKuv7XFUIeeYOAipi
+	 Ipgi51cn0ijIj1yTPtsOhVmLhslvT9XOrmdoMVRvB78f0mUqFQl2NgfB3KjfT8/DDM
+	 vPtG4ydTU2oQA==
+Date: Tue, 4 Mar 2025 17:17:27 +0000
 From: Mark Brown <broonie@kernel.org>
 To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
 Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
@@ -63,28 +49,27 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Trevor Wu <trevor.wu@mediatek.com>,
 	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, kernel@collabora.com,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	Andrew Perepech <andrew.perepech@mediatek.com>
-Subject: Re: [PATCH v3 03/20] mfd: mt6397-core: Add mfd_cell for mt6359-accdet
-Message-ID: <a8fbb536-a246-4650-8085-d576652b0301@sirena.org.uk>
-References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
- <20250304-mt6359-accdet-dts-v3-3-5b0eafc29f5b@collabora.com>
+	kernel@collabora.com, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Zoran Zhan <zoran.zhan@mediatek.com>
+Subject: Re: [PATCH 3/3] ASoC: mediatek: mt8188-mt6359: Add headset jack
+ detect support
+Message-ID: <e544340c-af89-4ba5-b22c-a1fbe1bc18c9@sirena.org.uk>
+References: <20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com>
+ <20250214-mt8188-accdet-v1-3-6bbd5483855b@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OLmxqaxv809+84Iy"
+	protocol="application/pgp-signature"; boundary="sQxBYpJeSEONvwho"
 Content-Disposition: inline
-In-Reply-To: <20250304-mt6359-accdet-dts-v3-3-5b0eafc29f5b@collabora.com>
-X-Cookie: Do not disturb.
+In-Reply-To: <20250214-mt8188-accdet-v1-3-6bbd5483855b@collabora.com>
+X-Cookie: No campfires allowed.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_162248_694885_D5AAEADE 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20250304_091734_602016_CDCFAFBE 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,33 +85,34 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---OLmxqaxv809+84Iy
+--sQxBYpJeSEONvwho
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Mar 04, 2025 at 12:15:44PM -0300, N=EDcolas F. R. A. Prado wrote:
-> From: Andrew Perepech <andrew.perepech@mediatek.com>
->=20
-> Add an mfd_cell for mt6359-accdet and describe its IRQ resources to
-> allow the mt6359-accdet driver to probe.
+On Fri, Feb 14, 2025 at 12:14:31PM -0300, N=EDcolas F. R. A. Prado wrote:
+> Enable headset jack detection for MT8188 platforms using the MT6359
+> ACCDET block for it.
 
-Lee, is this OK to merge via ASoC?
+This breaks an arm64 defconfig build:
 
---OLmxqaxv809+84Iy
+ERROR: modpost: "mt6359_accdet_enable_jack_detect" [sound/soc/mediatek/mt81=
+88/mt8188-mt6359.ko] undefined!
+
+--sQxBYpJeSEONvwho
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfHKM4ACgkQJNaLcl1U
-h9AGawf+Krbqa+Vm4jfRJRkHk1Bz74IQ/DHedsnpuELy2Rv59vOzi/ONHxJ/Vsq8
-03MvfgczYs8uzSrfII7fto16qxrsRaVGeTkSaanOAZHhFT32ytipNw7CIa03tchc
-8NtyjnLXMDyBqeEuzKVUTmzp5DgA57934vPFsBXP+jix8i0IYKthA2mFxcIVk8AJ
-npoP45KaBxueBRiIbQ88nbeEWMk2zpCYaqDQxeBCROSqF+j+VlV2V9/LFr9nmGla
-fXrY4hD9vRT7RUs7od+v2zpfnn6M4dMqA1gEIoZq5b+NQ3BlVHug4uHInjm7QUqN
-XR/caFRH1sjlz1NMYvElHtzG4TDjtQ==
-=ZRYJ
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfHNaYACgkQJNaLcl1U
+h9CVcwf/cEXGyYbJzY/LG/gtq4RQ3+3Nbsi7YBj19yJ+wFTX/nkro1+oCXhFm/My
+qNPYIfWKzJzREoLN1uolpyWB3ffXgf8K6YMH5gJDSSwBngo3qycJ+Q14OfwoK5PX
+MAHUIulHOADCpMQEtODRPXwtEklB5jlpXyf8trwGIJyIXBFCm1NGw8vNq7XWB0cn
+12wjTmq0Nr2bA7E0LaU4j2pryPCXLkFv3dg6mbrS79GiwQRYUBaURz8saWqj56Oy
+D2k78AJbhycmDKbDKI8pDV34O3VsC/J6/rgYZefvKtDVOia7C89hqSleSTt13fUC
+HTW7JbCtS9/S1+wHTAPb02BP45QAnQ==
+=lfm3
 -----END PGP SIGNATURE-----
 
---OLmxqaxv809+84Iy--
+--sQxBYpJeSEONvwho--
 
