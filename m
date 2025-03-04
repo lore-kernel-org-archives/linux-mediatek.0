@@ -4,66 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3668BC021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E06CC021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:50:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NbnVY7+Zsu39EMT080TGvDgHKBs34s5s+lS6ya9Rggs=; b=Gav8gOtBnVCAAM
-	rJL2HyztZODvkxSrO4rBSEd5mO6+8WmORzCWAX6iOo06Ym3uopfzEwfh+tqGuaJhmSxpmlk+233i2
-	azx0Id7mcVLaPFw3SEv9yqE2B4cnbQeMv2AedllnUhFGXc6VM8UKroynVDBD22dW8K0gJ/0QHs4oa
-	DEzW0BDIv9CgGFVYWliMFXPaalhLl8wU9SbMS8F9RbPDlaz+mxnpIAunSgXkZ6h4hyIhQ+nYDe2ut
-	i3rImql+hf9pPavJ8SGGeK/BKuTmmhnWEQm2RkgNE2aAWzY4RaEfEVDt5bB3ps9DQsU/aOsyYRrjP
-	pEDsBDE6bLTBDI0MRLhA==;
+	List-Owner; bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=; b=W8LwD37WQnElgc
+	RbSu0gG9IlZnzmkwm+f2UjaDexyvuLEX7I9h8iXkRNeuQAcTl/Qka3qacToXu2Y3jlXyzxK72+bRJ
+	+kqwPCRXaszaCw0jD3WJMDiNl3c7J4HJcGNQ/D2midRWPw1uhhc/BxSbUC5O3FPz+bw3UQNMW/wrA
+	/HsbHrOiJye04+jrncHlZWuzyTWpuLTexFrj0JJvjgXcsBJ1yabDH3EFD0YwjbcVVaMSXCFtSEG4v
+	eCIrHBLHrpnVOzxqVM0J9WCIv+NDp1dKgJCc0YCQsMQwGtRC4uIK0ABf9kmbaU/HytejeMGFCb6Y1
+	FVB9pcGHDj8HRINGR+DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOpv-00000003xmC-3vAb;
-	Tue, 04 Mar 2025 09:45:15 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tpOub-00000003zUi-2Bc1;
+	Tue, 04 Mar 2025 09:50:05 +0000
+Received: from cockroach.aspen.relay.mailchannels.net ([23.83.221.37])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOmZ-00000003waI-10Q5;
-	Tue, 04 Mar 2025 09:41:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741081305;
-	bh=V4CnTDDJt6NGOGhGQPS8FC6bzc1LOyrks5JjjZ6wzOQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GKMDyYchTQRfBI32tSx1RcUARGgdtMy+exmv+qg0+7lEZCz8pU7SvRBil6cC8qK19
-	 1d/019YaI/311Wosb2lYFvlb1AMHl8V91mpgHWWZX7I9ChFdOm3Q0NcpEru7wwjtZh
-	 oZDxPWwQExqFox7dC0VQaFe0/yFNpwwYvuoGBEVjRZVUcuQ8vtg0FAKNhNj8IVCK8x
-	 tIiAK1leEEM/Fs9gfiGUseX5HQti7AUDjjYggRL0EPiNahhOWxmXRnNbNOYzTn3nh4
-	 i/KATrUmS4CbfT2dTHc5t9KzEBt4b6kO05iRCSjjGF61j5CwBSmIk5Bfs/XwWMwlDL
-	 chmjovx/CDYeg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5612617E087F;
-	Tue,  4 Mar 2025 10:41:44 +0100 (CET)
-Message-ID: <c52b132b-fc08-4d1c-8276-1771f7457014@collabora.com>
-Date: Tue, 4 Mar 2025 10:41:43 +0100
+	id 1tpOre-00000003yQb-1Ppl;
+	Tue, 04 Mar 2025 09:47:03 +0000
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 1B9A78C3E29;
+	Tue,  4 Mar 2025 09:46:57 +0000 (UTC)
+Received: from nl-srv-smtpout1.hostinger.io (trex-8.trex.outbound.svc.cluster.local [100.101.191.136])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id E7C588C3ACC;
+	Tue,  4 Mar 2025 09:46:53 +0000 (UTC)
+ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1741081616; a=rsa-sha256;
+	cv=none;
+	b=af7eV8eu4Ky/VzUdDADBUxjgxKKKs7u3q1Ev7az2ONYZp4OxvPhkZo6tgrdIRJd2itYF0h
+	zrPfYU4JGa9mxZneKMiCPXRlWWtEowsV6wH5Si0VGLw+oZi3ot6njAU15PiHufC0VB3FtT
+	CGaPVd/WJS6koZnsxf/xUIASrxiJf/+dWTK8OaQtu7mR6vx7DM9wfO2KfZDoYvH1v4A3Up
+	/9oMWljF+mmEFKPrTA+ApQHX9ORnLDQDRBWMhjGdM/Nj91Oe6hFssniYCG6IjYPwnGraWb
+	itnZqmA1/OyXlms4EQfS2aBktOWTzdwlWvDmeBLyMy2OllmPfIHM7p1uTLbjlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1741081616;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:dkim-signature;
+	bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=;
+	b=GiAtfS43kFwoJr/tRcZ9Zn8Pz6XjVCRaYleWaTx2nTh0ioce/VASeJBkMXIWwtcNX9c1tF
+	vl8L1WEnDQuedsCyjqTv9cInWgcUbOI8k+jkuJaxabNhxKBOKUtDHWFu5SN3a1LzORLcVS
+	3B5Rpu8xmYavOQmb2Hhq1dXqdjHebCJHaDedcM0rDOgNK8FIfU+2bVB2fJ81Uz2wcGHbY2
+	MOz/fWFXHp9eFhvmv5khRrJBUNhIziGHOwk86F2ewRbT2okKv3aQAlrPOVNBHHEguDeh9A
+	kliPmYOC9yQKc2Yiuxe4I2mjciRPRxjwV0z25+ZNMb0M5ouB5a7gM7qjadpMjg==
+ARC-Authentication-Results: i=1;
+	rspamd-58748c789d-w6rjb;
+	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MC-Relay: Bad
+X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Slimy-Shoe: 19d76dbe66a13cec_1741081616908_3888167419
+X-MC-Loop-Signature: 1741081616908:8098079
+X-MC-Ingress-Time: 1741081616908
+Received: from nl-srv-smtpout1.hostinger.io (nl-srv-smtpout1.hostinger.io
+ [145.14.150.87])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.101.191.136 (trex/7.0.2);
+	Tue, 04 Mar 2025 09:46:56 +0000
+Received: from [10.9.32.97] (unknown [185.182.236.36])
+	(Authenticated sender: chester.a.unal@arinc9.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4Z6W6D2wtsz35BH3;
+	Tue, 04 Mar 2025 09:46:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
+	s=hostingermail-a; t=1741081590;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=;
+	b=O3QbHPIru7AnlxKZ0j2JcvM0aDko5YyybmfATwJ7W6Uyy0cYcrQ0Ay3i69qGkiy1nlWaYc
+	1hWpE1a3EaybroRWRfsrOnJnL6kBJ6z5gCnUTJHTMxKVrs9DSkj0iBLAG6y/MkrZuhftMJ
+	R++VBdvY03avb4Esfcfg4EWVS0Nn2MnBWTT9KcJruUXjzKOwRs6863OXMnuPxIeELxq0J0
+	ZuyG6OlYYkt8NLFn3abG5liwj1OZXhB6AGl2oZgaPbYXoVwpo8/YhNSXLrv/Fg1wtRf7pP
+	V8vuI1Pvaxpb3sOMYi/9mm1f2h85PsbKQa10PHLAk6fSnYDG31414GFXiFez+w==
+Message-ID: <b63fcbaa-ef27-48a9-885c-7962bd92a8b9@arinc9.com>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 6/8] soc: mediatek: Add programming flow for
- unsupported subsys ID hardware
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
- <20250218054405.2017918-7-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net] net: dsa: mt7530: Fix traffic flooding for MMIO
+ devices
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
 Content-Language: en-US
-In-Reply-To: <20250218054405.2017918-7-jason-jh.lin@mediatek.com>
+From: "Chester A. Unal" <chester.a.unal@arinc9.com>
+In-Reply-To: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+Date: Tue, 04 Mar 2025 09:46:28 +0000 (UTC)
+X-CM-Envelope: MS4xfAak46EaWbKlaQAOOnK1fi3wYW/2+4l5aFepSvjx8uGgOA14qId//toYZLzeR8I+fViXYRlIlNrSjhVYMS07D3LEvzQpZSwyrxo5G9Gty/xvDUy3QReb 81z8mlUhj8RTJim8GAvhYmM6/pF4WuB98DsIwesDXLY0yHpEm/E4voVX2sYx/kRelHjE5ZBFitzVbCH6SbiW/rCQx6pIvy7WNTLecRcB4gK5PUnSvp6bgpI5 Vp8PZG773xMy9cwJSctfC0mHiuA7qSvV+toWfGyhQLx+BXpppAfLFYedocznA8KwlosasXFjoGihBHj2golKcOv0nfcU2dXferx/0xfaoGPlOcIKt7iabktN iA1sFATs9WZO9x3kSxeA8u0HpQbsPUk8JwvXAz/4qP7BTX5Kr6VPd7QoCEyK4d4jZfNG0kpgp9o9ch5t7YboX4IuSr2wCc7FVXkHFFM9wOnRdkfCqygd7Nes qmYirDGRadJL+OcTKysDx4Lkurf/dh8sR6T8eOa4D+633H0+QKjbxlbzKZyIzmaupWPgrbUydGKr3k0sgbv3j5wXbcJRhsyLqW/MOEHYH9wtACwUpPEkJCzM 0lOjmmauEwkKUWVjJhNGMxlojrEdw/Ov4DaRFHwbM0JHZmROfNaKWCZGkZae/Ku8PGSFRroLVy2cTdn+llFe4d+Ok3ttmbSFd85rV+z4OsljPg==
+X-CM-Analysis: v=2.4 cv=F4sFdbhN c=1 sm=1 tr=0 ts=67c6cbf6 a=jLKKKTx0pIsUXH9Z8yxYVg==:117 a=jLKKKTx0pIsUXH9Z8yxYVg==:17 a=IkcTkHD0fZMA:10 a=VwQbUJbxAAAA:8 a=GvHEsTVZAAAA:8 a=oMYzIxOzatuwx5kPrsYA:9 a=QEXdDO2ut3YA:10 a=aajZ2D0djhd3YR65f-bR:22
+X-AuthUser: chester.a.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_014147_426759_8E50CF62 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20250304_014702_775596_C4476BDE 
+X-CRM114-Status: UNSURE (   6.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,90 +125,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/25 06:41, Jason-JH Lin ha scritto:
-> To support hardware without subsys IDs on new SoCs, add a programming
-> flow that checks whether the subsys ID is valid. If the subsys ID is
-> invalid, the flow will call 2 alternative CMDQ APIs:
-> cmdq_pkt_assign() and cmdq_pkt_write_s_value() to achieve the same
-> functionality.
+On 04/03/2025 08:50, Lorenzo Bianconi wrote:
+> On MMIO devices (e.g. MT7988 or EN7581) unicast traffic received on lanX
+> port is flooded on all other user ports if the DSA switch is configured
+> without VLAN support since PORT_MATRIX in PCR regs contains all user
+> ports. Similar to MDIO devices (e.g. MT7530 and MT7531) fix the issue
+> defining default VLAN-ID 0 for MT7530 MMIO devices.
 > 
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-mmsys.c | 14 +++++++++++---
->   drivers/soc/mediatek/mtk-mutex.c | 11 +++++++++--
->   2 files changed, 20 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index bb4639ca0b8c..ce949b863b05 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -167,9 +167,17 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
->   	u32 tmp;
->   
->   	if (mmsys->cmdq_base.size && cmdq_pkt) {
-> -		ret = cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
-> -					  mmsys->cmdq_base.offset + offset, val,
-> -					  mask);
-> +		offset += mmsys->cmdq_base.offset;
-> +		if (mmsys->cmdq_base.subsys != CMDQ_SUBSYS_INVALID) {
+> Fixes: 110c18bfed414 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-You're still anyway passing the subsys to cmdq_pkt_write_mask(), right?!
-Why don't you just handle this in cmdq_pkt_write_mask() then? ;-)
+I was suspecting of this for a while. Thanks for addressing it.
 
-I can see this pattern being repeated over and over in both drm/mediatek and MDP3
-drivers, and it's not necessary to duplicate this many times when you can write it
-just once.
+Reviewed-by: Chester A. Unal <chester.a.unal@arinc9.com>
 
-Would've also been faster for you to implement... :-D
-
-Cheers,
-Angelo
-
-> +			ret = cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
-> +						  offset, val, mask);
-> +		} else {
-> +			/* only MMIO access, no need to check mminfro_offset */
-> +			ret = cmdq_pkt_assign(cmdq_pkt, CMDQ_THR_SPR_IDX0,
-> +					      CMDQ_ADDR_HIGH(mmsys->cmdq_base.pa_base));
-> +			ret |= cmdq_pkt_write_s_mask_value(cmdq_pkt, CMDQ_THR_SPR_IDX0,
-> +							   CMDQ_ADDR_LOW(offset), val, mask);
-> +		}
->   		if (ret)
->   			pr_debug("CMDQ unavailable: using CPU write\n");
->   		else
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-> index 5250c1d702eb..3788b16efbf4 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -963,6 +963,7 @@ int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
->   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
->   						 mutex[mutex->id]);
->   	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
-> +	dma_addr_t en_addr = mtx->addr + DISP_REG_MUTEX_EN(mutex->id);
->   
->   	WARN_ON(&mtx->mutex[mutex->id] != mutex);
->   
-> @@ -971,8 +972,14 @@ int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
->   		return -ENODEV;
->   	}
->   
-> -	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
-> -		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id), 1);
-> +	if (mtx->cmdq_reg.subsys != CMDQ_SUBSYS_INVALID) {
-> +		cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys, en_addr, 1);
-> +	} else {
-> +		/* only MMIO access, no need to check mminfro_offset */
-> +		cmdq_pkt_assign(cmdq_pkt, CMDQ_THR_SPR_IDX0, CMDQ_ADDR_HIGH(en_addr));
-> +		cmdq_pkt_write_s_value(cmdq_pkt, CMDQ_THR_SPR_IDX0, CMDQ_ADDR_LOW(en_addr), 1);
-> +	}
-> +
->   	return 0;
->   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
-
-
+Chester A.
 
