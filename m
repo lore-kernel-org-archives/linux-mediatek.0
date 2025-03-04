@@ -4,93 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA18C282D0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 380E5C282D3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:40:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qAOUbI/BEbZDvaPix7eWz3Zl3lsDI9E9B/i/XFncmrE=; b=nigU4RDuM/muFwIus9zU4oy3tN
-	kdzn1vdMzHND3MKtZhFbhbxctW1B4zAqZpvF/4nmE+heOF05q8fiQ5Siq4QJRE7M31NivDfR4fNZx
-	SSBENGnU7Jmp71XnEe1fXzhECpuh1ehLvkJa2tIQkbenY8tNKcLSRNSQISP8124OcESpl5p5CxWFq
-	v1QO2igfRWVou6mCgtoE08oj1D49TYvyBKR1qabGTM4a080XXi+PGtFlWS5CE8snPAayma7gEv3U3
-	vzzhYDQYW2rtN1kkK/M+8HNICD6w3B+GxdAZAOnNUUazWcg95cZjFlGN9M8qGFgcmPGhCt9mlPTTi
-	Y5xosg1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iLlIr27ERdb1a68MEwfGPMS/QklWgMZ71LNCaIURE5I=; b=xokUxINrKsjyHE
+	eU08LEmUh0m//v7Lv6lHBvrUKfz/CuoU+/sFky08z+upQu2eH5/IW83Wv9RivYoqH6u8+xXJsNVs8
+	xw13V7qtXKxMYi1GQa/ansHgrhgFrwfVa+V+qRaeFwZheI/VmZkQ4sonPqm5snlmU4/jFmTNsJppm
+	jION8liJDKJ4ACrkRgAGNFSzMHw/YFsojlU0iJYqYeRvtqzoeQV+G3sbhHIMzVM3NepFv0PQwIR2A
+	O+myoxphkGyo9d3MzFMszJRbzYWcLleWyCQnq1bbD2IhOe2pkRH/5qBahv8ohSRwuwnf7HN3UXSN+
+	M1EsRPRUy0Epe5VJ7LVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOVl-00000003roh-3cPM;
-	Tue, 04 Mar 2025 09:24:25 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1tpOlI-00000003wBf-0Bgh;
+	Tue, 04 Mar 2025 09:40:28 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOVj-00000003rmY-32L6;
-	Tue, 04 Mar 2025 09:24:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1741080239; x=1741685039; i=frank-w@public-files.de;
-	bh=qAOUbI/BEbZDvaPix7eWz3Zl3lsDI9E9B/i/XFncmrE=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:In-Reply-To:References:Date:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=AR4OKWdvdxDkf5DnYJm79Y0Sc4ijHsQWiPWZt9Jxh7CXEcy3rWXJVsRT3FEsY5V1
-	 arkL5I0mVS06IXKJzsJ6EL5n7OKgaBfXEQm07zyx8teMKZPBkyv58BVwCX77qkXCQ
-	 NDyyNdNY/TzgHHzji5S/hJZJy4mqeoR2iv215vEIaPL1z0imelNWTr4s3+YySLAKZ
-	 kMuP8puk2OI5D8aFIvk0WW7eZ7SGGJyQBSygnqxp4jm38b1dnVeejUK4uk2AcXg5v
-	 cteS8a02dNP5iJ5E2PNoKFJmYCsDacJJrVdAHcjiOica9LInOsX2vgvIdAP0tAdkb
-	 nnngzLRRmEEKWDArhA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [194.15.84.185] ([194.15.84.185]) by
- trinity-msg-rest-gmx-gmx-live-5779db864f-7hl68 (via HTTP); Tue, 4 Mar 2025
- 09:23:59 +0000
+	id 1tpOe6-00000003uNA-2jsf;
+	Tue, 04 Mar 2025 09:33:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741080780;
+	bh=JF9sxbEEccR/pwV4UWR6bRzWcVi7LBjHmtUPbTE7LOg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qjoOe41TanW4TxwLEeCxJSMLuyej+aEG/K2EWazvTSV+2UZgG50JfJiJNtqJCwsY4
+	 l3TLqRS1ZSpZtnZPtNYQGpbhJFD0XXoAQE3jeC84LdiMxZZ1WsGcEieBCKdChIglWf
+	 aH9lS8ka0ynZjepKUvLtKeuHB2zUh2AdC33uV4Fq47LC3SZs9dFv97Z1+rk/TUngMh
+	 JX1sNGvPV099kGdv4HiBCMNPAqjRDjtbtIT+DVJ+yqy6mxevk78rNkMbXTYd/kmTwv
+	 vDbz0hIprjf2A5y7Si0+YUiqcC+MrcZVEubjxJAyPOC8QAN3DV2ll879Lz5YIhEe9J
+	 K1y4rNxCd5lbA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8808917E065A;
+	Tue,  4 Mar 2025 10:32:59 +0100 (CET)
+Message-ID: <652e435c-563b-496a-a4c3-c2e2b665abcf@collabora.com>
+Date: Tue, 4 Mar 2025 10:32:58 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-a81b2adf-df25-4888-9490-cc33257061b2-1741080239272@trinity-msg-rest-gmx-gmx-live-5779db864f-7hl68>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: angelogioacchino.delregno@collabora.com, mikhail.kshevetskiy@iopsys.eu,
- matthias.bgg@gmail.com, daniel@makrotopia.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Aw: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan
- settings for sinovoip bpi-r3 board
-Content-Type: text/plain; charset=UTF-8
-In-Reply-To: <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
-Importance: normal
-References: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
- <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
-Date: Tue, 4 Mar 2025 09:23:59 +0000
-Sensitivity: Normal
-X-Priority: 3
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:KFILJolE/lIPpZ7AIJtQRhRvi++wI/bcQ2lgkUKddOMA3Q7Xb/PEi20XCxNzINqPUzkHm
- r7bRg3aTVEVsMlCFezAHQpCfZIo0rmfInJ2+KshK3/HnsDZVQyToDOfIq7Yg8TUITj56FlSD79uJ
- au2duhPJe/A8BywlmkG/zages3nOVMXUZpRudMTyhvgo9ASG9EMq7pUL7v5YnA7dBXvdqCXeAygt
- hZbvoECRr1DoZaOcqaJQxu8MG07dfNHknBdI7vF/3G+J8lWUMPq46r5DYZ+ogOorGIrIxlfNjHDD
- NE2eaCL+j9qRs6ulzEcIxr0a1XQpGMGixNQ8jBP66Lvlx+cYXMiL3KDNoM8gKzEbI0=
-UI-OutboundReport: notjunk:1;M01:P0:AxtGf+C3hYI=;FsXk14KBPKOyZP9J+CXltFfvtq2
- dkwYcHX+hPt9iTQqnJndWDKtrP2/oQun9cOggieklZuBgtwYaKW49tHL+CuHemzdlUDGJVpDu
- vwbfyYwXvWuk653PnMYvro0nqq4iuyzAJrauVKriQoApj6IJzvfEYSe7rJn20docf0vk6vRSa
- Ox6uLXiFB6rd4dW0u32lqFrnSJZMSxrU3a2pZQKniOBP23BhtFUBzHi1+Lx067uHyDSlD1ZsI
- xIJHauw41xHXmRE6e6xJ6Ddowzdm12er5T4+wx45slQjZPXBYwChWpOqwtC9wZSLa/Xj/q03a
- 3Ttf8GMDTWZBOz0GIZPMhBhm/yTooJJBnyo/R7DXoj1Gxf0waCuQU6gp8/28gmEanPQl5EkwR
- wGtUPwl2fkJ+Hkr6QewmizRuh7ssrIEfGRZHcFxRYJVPLYzwyK6HwTiW6yaJPyj9vm2544pFv
- zyxbFRqMnW0lj8SjmtOqhyZinC5HQnnrTUcLs8S/piCBg9FyxSVNQwbto+Adg03sQM+5mjf3r
- zKMU2Yi5JdFdH9M+L6JJptDGHZz26P+7Wh5ckfF+EQZ23bfBFtlEqGlDZf73dA5IYSQfhk+Gw
- F0xKm2lMp9U9u2oc5hwtiIeMtbVX2FKM0UbaW87jreVzAljQlCNFCRHJpwNn8c8O+jdkgvp5v
- N80nE+vcDiIMwkXew8goRl999b0yfe3HCy4qZvpG3unhfkINIAv9+X1x6LAn9BgQghSEdbe5P
- EqKVsc35uCYrI/ksr6s1LXj/aTJk8ndZe1g2m78eTc/5k7ORl+SoavD3IWn3GGi984p78vxNT
- +yLpCYBNeab8R+jelpy4Ptnq0iW/v6WptYRSfilS+ucN6+6I+adWjtuE8K/MLt/wH1iG3c9Jo
- T6sIfnmXl4JkTa2kF8ZNVufhUMY1phc2syJBy7xbjvEaslVIPc8HV31jr7M1P/J+27Xh/FDce
- y/6pn/wrrPSdqmputgAQzGAoBajxhAhVW2pjWobo/6jVhRz/ui/3Po6fHi2lTYex3DTq7T9p4
- Y4QW2jnluSWJEJ3pJgjwNGSBn0znCFLWkO3vXtM+ti38NhYuDf5apyjM1d1GtbnVwLUIe8fe3
- x/HoX9uQtV9Yho7DH9h+InsuuEoS8z6SlOAZ5k7q7C8lIiYJXYTIao25kc16kCneD4FLqeGS8
- u16NW7a097nFzsjtWWs8Pyh4XdB+H7iLafDpXOUCimWo213NtkMTsKvl3FRVPVDkLWV9oXfaA
- vdfFMJv3KA12sFRTPLWFeRSD1uElb0l7Bj1wv+kf9f6hnGFBMauN8gk=
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/8] mailbox: mtk-cmdq: Add driver data to support for
+ MT8196
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
+ <20250218054405.2017918-4-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250218054405.2017918-4-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_012423_915752_65B2B21A 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20250304_013302_881568_C4E62AD2 
+X-CRM114-Status: GOOD (  44.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +75,294 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Mittwoch, 26. Februar 2025 um 10:46
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
-om>
-> Betreff: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan s=
-ettings for sinovoip bpi-r3 board
+Il 18/02/25 06:41, Jason-JH Lin ha scritto:
+> MT8196 has 3 new hardware configuration compared with the previous SoC,
+> which correspond to the 3 new driver data:
+> 
+> 1. mminfra_offset: For GCE data plane control
+>     Since GCE has been moved into mminfra, GCE needs to append the
+>     mminfra offset to the DRAM address when accessing the DRAM.
+> 
+> 2. gce_vm: For GCE hardware virtualization
+>     Currently, the first version of the mt8196 mailbox controller only
+>     requires setting the VM-related registers to enable the permissions
+>     of a host VM.
 
-> I get that the cheapest fans you can get are not working correctly with =
-the current
-> mid pwm setting, but you can't break things.
->
-> This devicetree should, at this point, hold default values that would ge=
-nerally
-> make the vast majority of fans to actually spin, because it's impossible=
- to have
-> something perfectly (or vaguely, sometimes) optimized for each fan on th=
-e market.
->
-> Of course this means that you need to properly configure your fans in us=
-erspace
-> if you want to reach the sweet spot.
->
-> I added Frank and Daniel to this thread, as they are the ones who origin=
-ally did
-> upstream this device.
->
-> Frank, Daniel, any suggestion regarding the PWM values here?
+I think that the GCE VM changes should go to a different commit, as that
+looks like being something not critical for basic functionality of the
+MMINFRA GCE.
 
-Hi,
+I really like seeing support for that, but please split the basic stuff
+from the extra functionality :-)
 
-sorry for delay
+> 
+> 3. dma_mask_bit: For dma address bit control
+>     In order to avoid the hardware limitations of MT8196 accessing DRAM,
+>     GCE needs to configure the DMA address to be less than 35 bits.
+> 
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c       | 90 +++++++++++++++++++++---
+>   include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
+>   2 files changed, 84 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index d186865b8dce..0abe10a7fef9 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -43,6 +43,17 @@
+>   #define GCE_CTRL_BY_SW				GENMASK(2, 0)
+>   #define GCE_DDR_EN				GENMASK(18, 16)
+>   
+> +#define GCE_VM_ID_MAP0			0x5018
+> +#define GCE_VM_MAP0_ALL_HOST			GENMASK(29, 0)
+> +#define GCE_VM_ID_MAP1			0x501c
+> +#define GCE_VM_MAP1_ALL_HOST			GENMASK(29, 0)
+> +#define GCE_VM_ID_MAP2			0x5020
+> +#define GCE_VM_MAP2_ALL_HOST			GENMASK(29, 0)
+> +#define GCE_VM_ID_MAP3			0x5024
+> +#define GCE_VM_MAP3_ALL_HOST			GENMASK(5, 0)
+> +#define GCE_VM_CPR_GSIZE		0x50c4
+> +#define GCE_VM_CPR_GSIZE_HSOT			GENMASK(3, 0)
 
-i have the fan from sinovoip and that was working for me, but if your fan =
-only works with new values, i have no point against this change.
+typo: GSIZE_HOST....
 
-btw. angelo, how is state for my r4-dtsi change?
+...but also, if you could add some brief description of what the VMIDs are used for
+and what the GSIZE is... that'd be very much appreciated from whoever is reading
+this.
 
-regards Frank
+The GCE stuff isn't even properly described in datasheets - I do (probably!)
+understand what those are for, but asking people to get years of experience on
+MediaTek to understand what's going on would be a bit rude, wouldn't it? :-D
+
+> +
+>   #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
+>   #define CMDQ_THR_ENABLED		0x1
+>   #define CMDQ_THR_DISABLED		0x0
+> @@ -87,11 +98,24 @@ struct cmdq {
+>   struct gce_plat {
+>   	u32 thread_nr;
+>   	u8 shift;
+> +	dma_addr_t mminfra_offset;
+
+It looks like this is exactly the DRAM's iostart... at least, I can see that in the
+downstream devicetree that's where it starts.
+
+	memory: memory@80000000 {
+		device_type = "memory";
+		reg = <0 0x80000000 0 0x40000000>;
+	};
+
+It doesn't really look like being a coincidence, but, for the sake of asking:
+is this just a coincidence? :-)
+
+>   	bool control_by_sw;
+>   	bool sw_ddr_en;
+> +	bool gce_vm;
+> +	u32 dma_mask_bit;
+>   	u32 gce_num;
+>   };
+>   
+> +static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const struct gce_plat *pdata)
+> +{
+> +	return ((addr + pdata->mminfra_offset) >> pdata->shift);
+> +}
+> +
+> +static inline u32 cmdq_reg_revert_addr(dma_addr_t addr, const struct gce_plat *pdata)
+> +{
+> +	return ((addr << pdata->shift) - pdata->mminfra_offset);
+> +}
+
+I'm not sure that you really need those two functions... probably it's simply
+cleaner and easier to just write that single line every time... and I'm
+saying that especially for how you're using those functions, with some readl()
+passed directly as param, decreasing human readability by "a whole lot" :-)
+
+> +
+>   static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
+>   {
+>   	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+> @@ -112,6 +136,30 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+>   }
+>   EXPORT_SYMBOL(cmdq_get_shift_pa);
+>   
+> +dma_addr_t cmdq_get_offset_pa(struct mbox_chan *chan)
+> +{
+> +	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+> +
+> +	return cmdq->pdata->mminfra_offset;
+> +}
+> +EXPORT_SYMBOL(cmdq_get_offset_pa);
+
+I think I remember this get_offset_pa from the old times, then CK removed it (and I
+was really happy about that disappearing), or am I confusing this with something
+else?
+
+(of course, this wasn't used for mminfra, but for something else!)
+
+> +
+> +bool cmdq_addr_need_offset(struct mbox_chan *chan, dma_addr_t addr)
+> +{
+> +	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+> +
+> +	if (cmdq->pdata->mminfra_offset == 0)
+> +		return false;
+> +
+> +	/*
+> +	 * mminfra will recognize the addr that greater than the mminfra_offset
+> +	 * as a transaction to DRAM.
+> +	 * So the caller needs to append mminfra_offset for the true case.
+> +	 */
+> +	return (addr >= cmdq->pdata->mminfra_offset);
+
+
+/**
+  * cmdq_is_mminfra_gce() - Brief description
+  * @args.....
+  *
+  * The MMINFRA GCE will recognize an address greater than DRAM iostart as a
+  * DRAM transaction instead of ....xyz
+  *
+  * In order for callers to perform (xyz) transactions through the CMDQ, those
+  * need to know if they are using a GCE located in MMINFRA.
+  */
+bool cmdq_is_mminfra_gce(...)
+{
+	return cmdq->pdata->mminfra_offset &&
+	       (addr >= cmdq->pdata->mminfra_offset)
+
+> +}
+> +EXPORT_SYMBOL(cmdq_addr_need_offset);
+> +
+
+...but then, is there really no way of just handling the GCE being in MMINFRA
+transparently from the callers? Do the callers really *need* to know that they're
+using a new GCE?!
+
+Another way of saying: can't we just handle the address translation in here instead
+of instructing each and every driver about how to communicate with the new GCE?!
+
+
+Cheers,
+Angelo
+
+>   static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
+>   {
+>   	u32 status;
+> @@ -143,6 +191,17 @@ static void cmdq_init(struct cmdq *cmdq)
+>   	u32 gctl_regval = 0;
+>   
+>   	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+> +
+> +	if (cmdq->pdata->gce_vm) {
+> +		/* config cpr size for host vm */
+> +		writel(GCE_VM_CPR_GSIZE_HSOT, cmdq->base + GCE_VM_CPR_GSIZE);
+> +		/* config CPR_GSIZE before setting VM_ID_MAP to avoid data leakage */
+> +		writel(GCE_VM_MAP0_ALL_HOST, cmdq->base + GCE_VM_ID_MAP0);
+> +		writel(GCE_VM_MAP1_ALL_HOST, cmdq->base + GCE_VM_ID_MAP1);
+> +		writel(GCE_VM_MAP2_ALL_HOST, cmdq->base + GCE_VM_ID_MAP2);
+> +		writel(GCE_VM_MAP3_ALL_HOST, cmdq->base + GCE_VM_ID_MAP3);
+> +	}
+> +
+>   	if (cmdq->pdata->control_by_sw)
+>   		gctl_regval = GCE_CTRL_BY_SW;
+>   	if (cmdq->pdata->sw_ddr_en)
+> @@ -199,7 +258,7 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+>   				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+>   	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+>   		(u64)CMDQ_JUMP_BY_PA << 32 |
+> -		(task->pa_base >> task->cmdq->pdata->shift);
+> +		cmdq_reg_shift_addr(task->pa_base, task->cmdq->pdata);
+>   	dma_sync_single_for_device(dev, prev_task->pa_base,
+>   				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+>   
+> @@ -264,7 +323,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+>   	else
+>   		return;
+>   
+> -	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
+> +	curr_pa = cmdq_reg_shift_addr(readl(thread->base + CMDQ_THR_CURR_ADDR), cmdq->pdata);
+>   
+>   	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+>   				 list_entry) {
+> @@ -416,9 +475,9 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   		 */
+>   		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+>   
+> -		writel(task->pa_base >> cmdq->pdata->shift,
+> +		writel(cmdq_reg_shift_addr(task->pa_base, cmdq->pdata),
+>   		       thread->base + CMDQ_THR_CURR_ADDR);
+> -		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
+> +		writel(cmdq_reg_shift_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata),
+>   		       thread->base + CMDQ_THR_END_ADDR);
+>   
+>   		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+> @@ -426,10 +485,10 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+>   	} else {
+>   		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+> -			cmdq->pdata->shift;
+> -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
+> -			cmdq->pdata->shift;
+> +		curr_pa = cmdq_reg_revert_addr(readl(thread->base + CMDQ_THR_CURR_ADDR),
+> +					       cmdq->pdata);
+> +		end_pa = cmdq_reg_revert_addr(readl(thread->base + CMDQ_THR_END_ADDR),
+> +					      cmdq->pdata);
+>   		/* check boundary */
+>   		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+>   		    curr_pa == end_pa) {
+> @@ -663,6 +722,9 @@ static int cmdq_probe(struct platform_device *pdev)
+>   	if (err)
+>   		return err;
+>   
+> +	if (cmdq->pdata->dma_mask_bit)
+> +		dma_set_coherent_mask(dev, DMA_BIT_MASK(cmdq->pdata->dma_mask_bit));
+> +
+>   	cmdq->mbox.dev = dev;
+>   	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->pdata->thread_nr,
+>   					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
+> @@ -782,6 +844,17 @@ static const struct gce_plat gce_plat_mt8195 = {
+>   	.gce_num = 2
+>   };
+>   
+> +static const struct gce_plat gce_plat_mt8196 = {
+> +	.thread_nr = 32,
+> +	.shift = 3,
+> +	.mminfra_offset = 0x80000000, /* 2GB */
+> +	.control_by_sw = true,
+> +	.sw_ddr_en = true,
+> +	.gce_vm = true,
+> +	.dma_mask_bit = 35,
+> +	.gce_num = 2
+> +};
+> +
+>   static const struct of_device_id cmdq_of_ids[] = {
+>   	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_mt6779},
+>   	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_mt8173},
+> @@ -790,6 +863,7 @@ static const struct of_device_id cmdq_of_ids[] = {
+>   	{.compatible = "mediatek,mt8188-gce", .data = (void *)&gce_plat_mt8188},
+>   	{.compatible = "mediatek,mt8192-gce", .data = (void *)&gce_plat_mt8192},
+>   	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_mt8195},
+> +	{.compatible = "mediatek,mt8196-gce", .data = (void *)&gce_plat_mt8196},
+>   	{}
+>   };
+>   MODULE_DEVICE_TABLE(of, cmdq_of_ids);
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index a8f0070c7aa9..79398bf95f8d 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -79,5 +79,7 @@ struct cmdq_pkt {
+>   };
+>   
+>   u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+> +dma_addr_t cmdq_get_offset_pa(struct mbox_chan *chan);
+> +bool cmdq_addr_need_offset(struct mbox_chan *chan, dma_addr_t addr);
+>   
+>   #endif /* __MTK_CMDQ_MAILBOX_H__ */
+
 
