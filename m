@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B77C282D3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 12:10:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55F7C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 12:33:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NQMFjcm4VUhiP4hXC2Yuyp97jklP/ngPF9YTygdOBvE=; b=yo54EGHc/cmgwA/CWrp4/hAbam
-	8mS4ejIUYGr3MYrGqziZUfFLscyBxlK+FDlsm1ZwuhU5lFcUPgcmKNV+9NRt3ffam0J9ODwQqSDub
-	NyMCfff7cSTuaNDhkGf+S1EwbUhJpQz2g1w4snakIuMRqpkNHNh+FwPTkwh7uOHzbLlqyJizm+84Z
-	num6kEKunkQ/2BAf51dBDagmmf7Xht7Lz24RHEmVDwblvYbUnnrKprTgNe40RvtkVIIHuFlB4/HMc
-	aIc881lnlHd9PXm36rqzrY75bwb0fhJpPVg66RyrKM7FzAa8Ru+R2qBHdPfFYGaSfpAA+5VLi9gHs
-	2HivwRfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xPnJSvOpXFl9Gvkycauini8xBrYy98lKMs5zuJB99Oo=; b=H6fy4X7TfeOgOVIdpKgcY1bZZS
+	NbTog0LDqnPdiPES126Z9o4cU3ump5V8Xc8Whjq6wAzFFBm39f2OxqS6jaBpe8WJ0RQXPUKOB+Xa1
+	sOp+f40lWq5RF/Tj3PHyXmXMzjpHZobuYf784z8yXecOZl7zfNHRx+9b5zITH8kpExOH1MikZtN8+
+	as4WUAclQCB1SeUQ3RExrZTfhbGmenVjBddiZMP4B724qy836LRSin46O8LPBxdGJ+Y52bTgART7G
+	/rPxeNZYqlMlUqkgYEFn7j5u2UZJH8aV+mnFOFoSkoYs/YyOm7wFQtqHH4W5dWxKWoMnHxk+b+mI0
+	p1gaUOtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpR6I-00000004YvS-2tJV;
-	Tue, 04 Mar 2025 12:10:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tpRSj-00000004eFj-3evk;
+	Tue, 04 Mar 2025 12:33:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpQa5-00000004QdQ-2Mks
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Mar 2025 11:37:02 +0000
-X-UUID: fa0b03fcf8ec11efa1e849db4cc18d44-20250304
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NQMFjcm4VUhiP4hXC2Yuyp97jklP/ngPF9YTygdOBvE=;
-	b=AIRequDjYxSE742p5ztywZwrI86e246LeEh989REdEwEmT+ABuZgBW+pvmcQG3Yf8x8cmBDIOIHGfFbtuwDfJhfsaW29mv50Yt78gXfGNwI7L2e1TkokYUSxyYbxRc1hRlFxhzS9653m/DAd7hpd10/tq77lA9BpTt/w8q7eFdU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:9857580f-c47d-4f21-abf8-5f2acbb44689,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:51cd8229-e0f8-414e-b8c3-b75c08217be8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: fa0b03fcf8ec11efa1e849db4cc18d44-20250304
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 904349881; Tue, 04 Mar 2025 04:36:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 4 Mar 2025 19:36:53 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 4 Mar 2025 19:36:53 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH v3 6/6] wifi: mt76: mt7925: add MTCL support to enhance the reulatory compliance
-Date: Tue, 4 Mar 2025 19:36:49 +0800
-Message-ID: <20250304113649.867387-6-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250304113649.867387-1-mingyen.hsieh@mediatek.com>
-References: <20250304113649.867387-1-mingyen.hsieh@mediatek.com>
+	id 1tpRPO-00000004dqS-3m55;
+	Tue, 04 Mar 2025 12:30:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 41F675C5BB0;
+	Tue,  4 Mar 2025 12:27:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3EC3C4CEE5;
+	Tue,  4 Mar 2025 12:30:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741091401;
+	bh=rJKGNfM/s8QAQjXFzZnxlWs2DFKcY9YmiOImWJPI/GQ=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=TMo2Q3EpOctKaoJW9GG7S6AMYjIDFGNjCQj4bJsSZCI9aqh/qYV4ejHAlDb9RLKnP
+	 M1csSwvOvpyYuoLzNbdiOSskin8i1N64VgsfpIBdZmAAbz5+TRZLfil0G9953jUhUh
+	 IFBtS/SB89C0+avIAkVA0DnGt0g5t9Bsk0D0NsgrRUIV2lK5TuG7+WKG7B7fyHSfcl
+	 9n8w8hSOw7iZiEvXgMHZmcmUgNFVj73T4Zci4/koyKbeOkbKt4nDC/VRHbkEgdelGK
+	 10XmL2sNZ9QGlY4ENh2ChRmU+IHBOqKWhqvmeYlTGseMDIoQQAwGaAdyzoqN/AOD5c
+	 ewoyaowLH8P+w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADE2D380AA7F;
+	Tue,  4 Mar 2025 12:30:35 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Subject: Re: [PATCH net-next v8 00/15] Introduce flowtable hw offloading in
+ airoha_eth driver
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174109143450.124302.2708662777154071510.git-patchwork-notify@kernel.org>
+Date: Tue, 04 Mar 2025 12:30:34 +0000
+References: <20250228-airoha-en7581-flowtable-offload-v8-0-01dc1653f46e@kernel.org>
+In-Reply-To: <20250228-airoha-en7581-flowtable-offload-v8-0-01dc1653f46e@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, nbd@nbd.name, sean.wang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ p.zabel@pengutronix.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
+ dqfext@gmail.com, andrew@lunn.ch, olteanv@gmail.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, upstream@airoha.com, sayantan.nandy@airoha.com,
+ ansuelsmth@gmail.com, krzysztof.kozlowski@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_033701_625162_2A602107 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250304_043003_030059_7CDAC438 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,61 +81,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Hello:
 
-Apply the MTCL configuration to improving channel availability and
-regulatory compliance if MTCL table is supported.
+This series was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2-v3: no change
----
- .../net/wireless/mediatek/mt76/mt7925/init.c    | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+On Fri, 28 Feb 2025 11:54:08 +0100 you wrote:
+> Introduce netfilter flowtable integration in airoha_eth driver to
+> offload 5-tuple flower rules learned by the PPE module if the user
+> accelerates them using a nft configuration similar to the one reported
+> below:
+> 
+> table inet filter {
+> 	flowtable ft {
+> 		hook ingress priority filter
+> 		devices = { lan1, lan2, lan3, lan4, eth1 }
+> 		flags offload;
+> 	}
+> 	chain forward {
+> 		type filter hook forward priority filter; policy accept;
+> 		meta l4proto { tcp, udp } flow add @ft
+> 	}
+> }
+> 
+> [...]
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index fa8d051a66d7..6ca3bde01f46 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -64,8 +64,15 @@ void mt7925_regd_be_ctrl(struct mt792x_dev *dev, u8 *alpha2)
- 	struct mt7925_clc_rule_v2 *rule;
- 	struct mt7925_clc *clc;
- 	bool old = dev->has_eht, new = true;
-+	u32 mtcl_conf = mt792x_acpi_get_mtcl_conf(&dev->phy, alpha2);
- 	u8 *pos;
- 
-+	if (mtcl_conf != MT792X_ACPI_MTCL_INVALID &&
-+	    (((mtcl_conf >> 4) & 0x3) == 0)) {
-+		new = false;
-+		goto out;
-+	}
-+
- 	if (!phy->clc[MT792x_CLC_BE_CTRL])
- 		goto out;
- 
-@@ -101,11 +108,21 @@ mt7925_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
- {
- #define IS_UNII_INVALID(idx, sfreq, efreq, cfreq) \
- 	(!(dev->phy.clc_chan_conf & BIT(idx)) && (cfreq) >= (sfreq) && (cfreq) <= (efreq))
-+#define MT7925_UNII_59G_IS_VALID	0x1
-+#define MT7925_UNII_6G_IS_VALID	0x1e
- 	struct ieee80211_supported_band *sband;
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct ieee80211_channel *ch;
-+	u32 mtcl_conf = mt792x_acpi_get_mtcl_conf(&dev->phy, mdev->alpha2);
- 	int i;
- 
-+	if (mtcl_conf != MT792X_ACPI_MTCL_INVALID) {
-+		if ((mtcl_conf & 0x3) == 0)
-+			dev->phy.clc_chan_conf &= ~MT7925_UNII_59G_IS_VALID;
-+		if (((mtcl_conf >> 2) & 0x3) == 0)
-+			dev->phy.clc_chan_conf &= ~MT7925_UNII_6G_IS_VALID;
-+	}
-+
- 	sband = wiphy->bands[NL80211_BAND_5GHZ];
- 	if (!sband)
- 		return;
+Here is the summary with links:
+  - [net-next,v8,01/15] net: airoha: Move airoha_eth driver in a dedicated folder
+    https://git.kernel.org/netdev/net-next/c/fb3dda82fd38
+  - [net-next,v8,02/15] net: airoha: Move definitions in airoha_eth.h
+    https://git.kernel.org/netdev/net-next/c/b38f4ff0ceac
+  - [net-next,v8,03/15] net: airoha: Move reg/write utility routines in airoha_eth.h
+    https://git.kernel.org/netdev/net-next/c/e0758a8694fb
+  - [net-next,v8,04/15] net: airoha: Move register definitions in airoha_regs.h
+    https://git.kernel.org/netdev/net-next/c/ec663d9a82bf
+  - [net-next,v8,05/15] net: airoha: Move DSA tag in DMA descriptor
+    https://git.kernel.org/netdev/net-next/c/af3cf757d5c9
+  - [net-next,v8,06/15] net: dsa: mt7530: Enable Rx sptag for EN7581 SoC
+    https://git.kernel.org/netdev/net-next/c/ab667db1e601
+  - [net-next,v8,07/15] net: airoha: Enable support for multiple net_devices
+    https://git.kernel.org/netdev/net-next/c/80369686737f
+  - [net-next,v8,08/15] net: airoha: Move REG_GDM_FWD_CFG() initialization in airoha_dev_init()
+    https://git.kernel.org/netdev/net-next/c/67fde5d58cd4
+  - [net-next,v8,09/15] net: airoha: Rename airoha_set_gdm_port_fwd_cfg() in airoha_set_vip_for_gdm_port()
+    https://git.kernel.org/netdev/net-next/c/c28b8375f6d0
+  - [net-next,v8,10/15] dt-bindings: net: airoha: Add the NPU node for EN7581 SoC
+    https://git.kernel.org/netdev/net-next/c/266f7a0f81c0
+  - [net-next,v8,11/15] dt-bindings: net: airoha: Add airoha,npu phandle property
+    https://git.kernel.org/netdev/net-next/c/9b1a0b72264c
+  - [net-next,v8,12/15] net: airoha: Introduce Airoha NPU support
+    https://git.kernel.org/netdev/net-next/c/23290c7bc190
+  - [net-next,v8,13/15] net: airoha: Introduce flowtable offload support
+    https://git.kernel.org/netdev/net-next/c/00a7678310fe
+  - [net-next,v8,14/15] net: airoha: Add loopback support for GDM2
+    https://git.kernel.org/netdev/net-next/c/9cd451d414f6
+  - [net-next,v8,15/15] net: airoha: Introduce PPE debugfs support
+    https://git.kernel.org/netdev/net-next/c/3fe15c640f38
+
+You are awesome, thank you!
 -- 
-2.34.1
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
