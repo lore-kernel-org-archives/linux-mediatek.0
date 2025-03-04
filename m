@@ -4,116 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E06CC021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D84C282D0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 12:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=; b=W8LwD37WQnElgc
-	RbSu0gG9IlZnzmkwm+f2UjaDexyvuLEX7I9h8iXkRNeuQAcTl/Qka3qacToXu2Y3jlXyzxK72+bRJ
-	+kqwPCRXaszaCw0jD3WJMDiNl3c7J4HJcGNQ/D2midRWPw1uhhc/BxSbUC5O3FPz+bw3UQNMW/wrA
-	/HsbHrOiJye04+jrncHlZWuzyTWpuLTexFrj0JJvjgXcsBJ1yabDH3EFD0YwjbcVVaMSXCFtSEG4v
-	eCIrHBLHrpnVOzxqVM0J9WCIv+NDp1dKgJCc0YCQsMQwGtRC4uIK0ABf9kmbaU/HytejeMGFCb6Y1
-	FVB9pcGHDj8HRINGR+DA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Y5MztexKnc2jfacW5/m7S9fajAe3Mx5T/kXfkSqqol0=; b=cOhheyKHssX2XzCC0WqsE/uShU
+	U1MWq4E/AMyik/NpU77J+9RRsZTx3KY3PtSRzs3yikia/ahYwG+4tD1CqC5hd8vn7D0I/Ccv5a49f
+	D2IYFivm1p+NcwjTZseAE8e3P9tkPSqa2ZLF8Y9ZsEGlXrrEY94N1yT8houw7Pnhvq/rFGxYszi36
+	B2Qrc5D+DcZllnW6G82ZZ+7S/23GgHkOtiH1pQ5yonNRKZ5HhkIisGAFLKeFQpBPi7HqVdKx6JmHk
+	CNxg+YYwr9UjpQQQzmaMZQTqdjXzQsmNwA8Kp9XGNePnUMoCMWHaXxc7V6JNjvtnZQyjV9crJ2TqQ
+	P5S2t87g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOub-00000003zUi-2Bc1;
-	Tue, 04 Mar 2025 09:50:05 +0000
-Received: from cockroach.aspen.relay.mailchannels.net ([23.83.221.37])
+	id 1tpR66-00000004YdW-3UYw;
+	Tue, 04 Mar 2025 12:10:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOre-00000003yQb-1Ppl;
-	Tue, 04 Mar 2025 09:47:03 +0000
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 1B9A78C3E29;
-	Tue,  4 Mar 2025 09:46:57 +0000 (UTC)
-Received: from nl-srv-smtpout1.hostinger.io (trex-8.trex.outbound.svc.cluster.local [100.101.191.136])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id E7C588C3ACC;
-	Tue,  4 Mar 2025 09:46:53 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1741081616; a=rsa-sha256;
-	cv=none;
-	b=af7eV8eu4Ky/VzUdDADBUxjgxKKKs7u3q1Ev7az2ONYZp4OxvPhkZo6tgrdIRJd2itYF0h
-	zrPfYU4JGa9mxZneKMiCPXRlWWtEowsV6wH5Si0VGLw+oZi3ot6njAU15PiHufC0VB3FtT
-	CGaPVd/WJS6koZnsxf/xUIASrxiJf/+dWTK8OaQtu7mR6vx7DM9wfO2KfZDoYvH1v4A3Up
-	/9oMWljF+mmEFKPrTA+ApQHX9ORnLDQDRBWMhjGdM/Nj91Oe6hFssniYCG6IjYPwnGraWb
-	itnZqmA1/OyXlms4EQfS2aBktOWTzdwlWvDmeBLyMy2OllmPfIHM7p1uTLbjlg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1741081616;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=;
-	b=GiAtfS43kFwoJr/tRcZ9Zn8Pz6XjVCRaYleWaTx2nTh0ioce/VASeJBkMXIWwtcNX9c1tF
-	vl8L1WEnDQuedsCyjqTv9cInWgcUbOI8k+jkuJaxabNhxKBOKUtDHWFu5SN3a1LzORLcVS
-	3B5Rpu8xmYavOQmb2Hhq1dXqdjHebCJHaDedcM0rDOgNK8FIfU+2bVB2fJ81Uz2wcGHbY2
-	MOz/fWFXHp9eFhvmv5khRrJBUNhIziGHOwk86F2ewRbT2okKv3aQAlrPOVNBHHEguDeh9A
-	kliPmYOC9yQKc2Yiuxe4I2mjciRPRxjwV0z25+ZNMb0M5ouB5a7gM7qjadpMjg==
-ARC-Authentication-Results: i=1;
-	rspamd-58748c789d-w6rjb;
-	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MC-Relay: Bad
-X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Slimy-Shoe: 19d76dbe66a13cec_1741081616908_3888167419
-X-MC-Loop-Signature: 1741081616908:8098079
-X-MC-Ingress-Time: 1741081616908
-Received: from nl-srv-smtpout1.hostinger.io (nl-srv-smtpout1.hostinger.io
- [145.14.150.87])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.101.191.136 (trex/7.0.2);
-	Tue, 04 Mar 2025 09:46:56 +0000
-Received: from [10.9.32.97] (unknown [185.182.236.36])
-	(Authenticated sender: chester.a.unal@arinc9.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4Z6W6D2wtsz35BH3;
-	Tue, 04 Mar 2025 09:46:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1741081590;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D5t4LO5iZc4495dyi2ppzMU1jd7cqzfUiUSRCJpWlCU=;
-	b=O3QbHPIru7AnlxKZ0j2JcvM0aDko5YyybmfATwJ7W6Uyy0cYcrQ0Ay3i69qGkiy1nlWaYc
-	1hWpE1a3EaybroRWRfsrOnJnL6kBJ6z5gCnUTJHTMxKVrs9DSkj0iBLAG6y/MkrZuhftMJ
-	R++VBdvY03avb4Esfcfg4EWVS0Nn2MnBWTT9KcJruUXjzKOwRs6863OXMnuPxIeELxq0J0
-	ZuyG6OlYYkt8NLFn3abG5liwj1OZXhB6AGl2oZgaPbYXoVwpo8/YhNSXLrv/Fg1wtRf7pP
-	V8vuI1Pvaxpb3sOMYi/9mm1f2h85PsbKQa10PHLAk6fSnYDG31414GFXiFez+w==
-Message-ID: <b63fcbaa-ef27-48a9-885c-7962bd92a8b9@arinc9.com>
+	id 1tpQa3-00000004QcC-4Ay5
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Mar 2025 11:37:01 +0000
+X-UUID: f9979f98f8ec11efa1e849db4cc18d44-20250304
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Y5MztexKnc2jfacW5/m7S9fajAe3Mx5T/kXfkSqqol0=;
+	b=N4ykHHAMJN6kmJADbx46Dddz84AFZ13T67A5HLonBeUg8dkKmy5Tq6MImBvwHE/m6OukxfpoVpZwYJVex6E7NXa4PTQ2A32D48B4wHXAEWlFtFhTWw+nWN6zxJnozzfycanWIR2fKu0gSoJ66FuxQmHvtOVDME2FQZ4RJ4iAFo4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:7b7b250f-74bf-4833-999d-1bb9230bf34c,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:a62a2203-a373-400e-87fc-32443f153737,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f9979f98f8ec11efa1e849db4cc18d44-20250304
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 751139656; Tue, 04 Mar 2025 04:36:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Tue, 4 Mar 2025 19:36:53 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 4 Mar 2025 19:36:53 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH v3 1/6] wifi: mt76: mt7925: load the appropriate CLC data based on hardware type
+Date: Tue, 4 Mar 2025 19:36:44 +0800
+Message-ID: <20250304113649.867387-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: dsa: mt7530: Fix traffic flooding for MMIO
- devices
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
-Content-Language: en-US
-From: "Chester A. Unal" <chester.a.unal@arinc9.com>
-In-Reply-To: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Tue, 04 Mar 2025 09:46:28 +0000 (UTC)
-X-CM-Envelope: MS4xfAak46EaWbKlaQAOOnK1fi3wYW/2+4l5aFepSvjx8uGgOA14qId//toYZLzeR8I+fViXYRlIlNrSjhVYMS07D3LEvzQpZSwyrxo5G9Gty/xvDUy3QReb 81z8mlUhj8RTJim8GAvhYmM6/pF4WuB98DsIwesDXLY0yHpEm/E4voVX2sYx/kRelHjE5ZBFitzVbCH6SbiW/rCQx6pIvy7WNTLecRcB4gK5PUnSvp6bgpI5 Vp8PZG773xMy9cwJSctfC0mHiuA7qSvV+toWfGyhQLx+BXpppAfLFYedocznA8KwlosasXFjoGihBHj2golKcOv0nfcU2dXferx/0xfaoGPlOcIKt7iabktN iA1sFATs9WZO9x3kSxeA8u0HpQbsPUk8JwvXAz/4qP7BTX5Kr6VPd7QoCEyK4d4jZfNG0kpgp9o9ch5t7YboX4IuSr2wCc7FVXkHFFM9wOnRdkfCqygd7Nes qmYirDGRadJL+OcTKysDx4Lkurf/dh8sR6T8eOa4D+633H0+QKjbxlbzKZyIzmaupWPgrbUydGKr3k0sgbv3j5wXbcJRhsyLqW/MOEHYH9wtACwUpPEkJCzM 0lOjmmauEwkKUWVjJhNGMxlojrEdw/Ov4DaRFHwbM0JHZmROfNaKWCZGkZae/Ku8PGSFRroLVy2cTdn+llFe4d+Ok3ttmbSFd85rV+z4OsljPg==
-X-CM-Analysis: v=2.4 cv=F4sFdbhN c=1 sm=1 tr=0 ts=67c6cbf6 a=jLKKKTx0pIsUXH9Z8yxYVg==:117 a=jLKKKTx0pIsUXH9Z8yxYVg==:17 a=IkcTkHD0fZMA:10 a=VwQbUJbxAAAA:8 a=GvHEsTVZAAAA:8 a=oMYzIxOzatuwx5kPrsYA:9 a=QEXdDO2ut3YA:10 a=aajZ2D0djhd3YR65f-bR:22
-X-AuthUser: chester.a.unal@arinc9.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_014702_775596_C4476BDE 
-X-CRM114-Status: UNSURE (   6.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250304_033700_044400_91AF9282 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,19 +87,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/03/2025 08:50, Lorenzo Bianconi wrote:
-> On MMIO devices (e.g. MT7988 or EN7581) unicast traffic received on lanX
-> port is flooded on all other user ports if the DSA switch is configured
-> without VLAN support since PORT_MATRIX in PCR regs contains all user
-> ports. Similar to MDIO devices (e.g. MT7530 and MT7531) fix the issue
-> defining default VLAN-ID 0 for MT7530 MMIO devices.
-> 
-> Fixes: 110c18bfed414 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-I was suspecting of this for a while. Thanks for addressing it.
+Read the EEPROM to determine the hardware type and uses this to load the
+correct CLC data.
 
-Reviewed-by: Chester A. Unal <chester.a.unal@arinc9.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2: no change
+v3:
+  - change "__packed *res" from "__packed * res"
+  - reorder the local variables in X'mas tree order
+---
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 61 ++++++++++++++++++-
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  3 +
+ 2 files changed, 63 insertions(+), 1 deletion(-)
 
-Chester A.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index d4fac7c2d0e6..fe789e7978fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -800,6 +800,54 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 				 enable, false);
+ }
+ 
++static int mt7925_mcu_read_eeprom(struct mt792x_dev *dev, u32 offset, u8 *val)
++{
++	struct {
++		u8 rsv[4];
++
++		__le16 tag;
++		__le16 len;
++
++		__le32 addr;
++		__le32 valid;
++		u8 data[MT7925_EEPROM_BLOCK_SIZE];
++	} __packed req = {
++		.tag = cpu_to_le16(1),
++		.len = cpu_to_le16(sizeof(req) - 4),
++		.addr = cpu_to_le32(round_down(offset,
++				    MT7925_EEPROM_BLOCK_SIZE)),
++	};
++	struct evt {
++		u8 rsv[4];
++
++		__le16 tag;
++		__le16 len;
++
++		__le32 ver;
++		__le32 addr;
++		__le32 valid;
++		__le32 size;
++		__le32 magic_num;
++		__le32 type;
++		__le32 rsv1[4];
++		u8 data[32];
++	} __packed *res;
++	struct sk_buff *skb;
++	int ret;
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_WM_UNI_CMD_QUERY(EFUSE_CTRL),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	res = (struct evt *)skb->data;
++	*val = res->data[offset % MT7925_EEPROM_BLOCK_SIZE];
++
++	dev_kfree_skb(skb);
++
++	return 0;
++}
++
+ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ {
+ 	const struct mt76_connac2_fw_trailer *hdr;
+@@ -808,13 +856,20 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	struct mt792x_phy *phy = &dev->phy;
+ 	const struct firmware *fw;
++	u8 *clc_base = NULL, hw_encap = 0;
+ 	int ret, i, len, offset = 0;
+-	u8 *clc_base = NULL;
+ 
+ 	if (mt7925_disable_clc ||
+ 	    mt76_is_usb(&dev->mt76))
+ 		return 0;
+ 
++	if (mt76_is_mmio(&dev->mt76)) {
++		ret = mt7925_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
++		if (ret)
++			return ret;
++		hw_encap = u8_get_bits(hw_encap, MT_EE_HW_TYPE_ENCAP);
++	}
++
+ 	ret = request_firmware(&fw, fw_name, mdev->dev);
+ 	if (ret)
+ 		return ret;
+@@ -859,6 +914,10 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 		if (phy->clc[clc->idx])
+ 			continue;
+ 
++		/* header content sanity */
++		if (u8_get_bits(clc->type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
++			continue;
++
+ 		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
+ 						  le32_to_cpu(clc->len),
+ 						  GFP_KERNEL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 3f7187309513..abecaf897159 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -167,9 +167,12 @@ enum mt7925_eeprom_field {
+ 	MT_EE_CHIP_ID =		0x000,
+ 	MT_EE_VERSION =		0x002,
+ 	MT_EE_MAC_ADDR =	0x004,
++	MT_EE_HW_TYPE =		0xa71,
+ 	__MT_EE_MAX =		0x9ff
+ };
+ 
++#define MT_EE_HW_TYPE_ENCAP     GENMASK(1, 0)
++
+ enum {
+ 	TXPWR_USER,
+ 	TXPWR_EEPROM,
+-- 
+2.34.1
+
 
