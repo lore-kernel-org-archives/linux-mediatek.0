@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD4AC021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 16:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B316AC021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 16:01:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0r41c5vW1t6txIvh8fXSv3uc3lwlvw+Uq+X3LX6zcDg=; b=XAwBHS7zqaPXowl//bnusf9BxZ
-	Hs4tK2Yds6vJqSCSeK28jQ5odlNi/y1VdOyQfynnDd+xGAXe077KrnCMOM1bZQFig7shz0lf5LSwD
-	46+c+MucX9CJyCqhyBZbOmCGTZ1C2h5CnOhi/tTrgRlGI7Qkwq90tyHf7bImcZPuhP01z12BIzZCB
-	4hjbgEBJv+BKgDSQE1gNjzlL9DHPaQVFuyty00FfKJKGQIJYkaEJQgCmSqq+V/chddgEStshLIrPa
-	4K2Y2Q1cLT81NDpkRqYEE229KntkqhEIl55j4MIst3poqf6GIdWAYLho3pzRc7l4aY1YT6eVT1Esq
-	2LjKDKhw==;
+	bh=6H+V4x7uHeq/HJk0dDgNt5bXZ+Akgq6rofFNm1ylbII=; b=Fg/urcctj1NnRGyf+ZFg4OVSqY
+	l7qaapE9datcpzpoFSqA+uwLiXL+8Hfnz2eN8iOc69mXWAAq1GiGVr0sYRPq+BFJJ//xDCMPZy8Lr
+	Xm4/33hRZtYsNmGam37b9EtQ2OPDxjqzQTsmcblUd8i8nyTRzAJaP7LVbJcLJY7f6FrFFLXsl1H1j
+	jMh1Lk49wLGpEIJrP7vgxOKC294A9S7pKLr7L1xjNXcYxH0DEY6t7WKmf4QWKTS0SuefNoZRILFAY
+	S7RS89dgPHKt4uzIrBYJQ/KExFR//wdA3EV50O/8tKZlKp7swQlYqTJJCr8PCdD+SE2SNIdvh1Bhy
+	VSkzjXOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpUgg-00000005KNB-4A3Y;
-	Tue, 04 Mar 2025 16:00:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpUiG-00000005KqH-3j5J;
+	Tue, 04 Mar 2025 16:01:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpU0r-00000005ADb-2ClQ;
-	Tue, 04 Mar 2025 15:16:54 +0000
+	id 1tpU0v-00000005AF7-3A0i;
+	Tue, 04 Mar 2025 15:16:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=6H+V4x7uHeq/HJk0dDgNt5bXZ+Akgq6rofFNm1ylbII=; b=pwsV8kLUBFa/R0Fn96AhQGnPUa
+	T4/qv6XmlJX4CYRJQVIKK+Q1uP6Y5OvLi8Vp3QjHGrGzI6JcQC1jYlVBaOlUdTG+jAHVLxoYcfPk5
+	UxFvefNTNzF2yHT9yBgPpNp8WgOEkhi/RKwHl8Rtw5x4Yg+ZkGK3P2tW4tPmOPVGUnNrjtD0DYIZK
+	M/qkDFOhMRZV2VgFtXn0hxOAefCI/YGmTTF7G7Puas7yG+0pEJUl3ne7JN6SrdILWA3tx1f14gaQT
+	T3VtIEJlxCPtStGnySxJxxzxKugigAemBP36X+2cZXUPMoig4QCXeJw9A9dhIAeAZtaxzJ75+a2Fb
+	bmDAtiHA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpU0s-000000003hp-0DMq;
+	Tue, 04 Mar 2025 15:16:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741101412;
-	bh=ew/lKKPHiRKrKA2kFSoKnjYv5WzKBHZsXi8V5xGuf2g=;
+	s=mail; t=1741101406;
+	bh=pxGZiXC6za5vFQ3V/0fw9IlCjpRVWVwiCZ21S4dEkDI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FYOIyJweYYKINnMYJPP9wB494LAj4xFh2nrerDSid0E5+E9vMi3tHRreJTdrb5g4y
-	 wPEYPU9kUx8JhKgB9xlmjR9X/A4VquiAuKK5VCPPv6FUIXvYkzMO/r5gky7bKxZx0J
-	 wSNsWeFyEgNOw31XyNISLK3UcjEOHjeq/FbxSjwb75slmxi0mdx/PjdTHssPF8fZS/
-	 NwvGeuQR0CBlmLADB0bf/lHGIci9w0A8MWVK5djhJrFW86B975Etb2y9BMncV809rV
-	 ajRfmcuUu9gIpOTNMYRsnwbNLLhn10aLcwSckpbhTzOjcHLhSrURcYfcz9hRR+h0ER
-	 c1QVmfaASAn/w==
+	b=obk45PT1hiFCwR4gOShJURghXzyJM+ZaDykUZb+JuDXWEwxjv2z5kNky2Acb68W6W
+	 x5kqfPgxPrGUUyX8UYsFTFR5YC0LYdKXAqTBHVrlj1nwhBMwqx9wKES+jAuuSmTm85
+	 Q+7B6MSyl/rsClN8FoRGDbJGjgrp2ttBMkWr0QwZY26CfXDbTzY1ZoVc13M3uZKl8V
+	 c8JeCJKv+9G8NagN8krC0H6+rwdNNg2D6xVT4elSQs+hP6nHdL7lH2srzDG0tnx6CD
+	 fw4HA+/I1EEBGq1G+W3TOO3ipEgx1ewsFTrMOGo4uc6HLo5CpmE5gPNG57G/IrdOAs
+	 8w7xdUWinObWw==
 Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 152F217E0A4E;
-	Tue,  4 Mar 2025 16:16:46 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A1DEC17E07F8;
+	Tue,  4 Mar 2025 16:16:41 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 04 Mar 2025 12:15:49 -0300
-Subject: [PATCH v3 08/20] ASoC: mediatek: mt6359-accdet: Drop dead code for
- EINT trigger setting
+Date: Tue, 04 Mar 2025 12:15:48 -0300
+Subject: [PATCH v3 07/20] ASoC: mediatek: mt6359-accdet: Drop dead code for
+ EINT/GPIO IRQ handling
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250304-mt6359-accdet-dts-v3-8-5b0eafc29f5b@collabora.com>
+Message-Id: <20250304-mt6359-accdet-dts-v3-7-5b0eafc29f5b@collabora.com>
 References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
 In-Reply-To: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -69,8 +83,8 @@ Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_071653_732444_B84DDE8B 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20250304_151654_684271_B10EF27B 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +99,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-None of the EINT trigger options are implemented and the DT property is
-not described in the binding. Remove the unused code.
+The ACCDET supports two modes for IRQ generation: PMIC EINT or AP GPIO,
+which in principle could be configured through a DT property. However
+this DT property has no user nor is documented in a binding, and the
+driver only implements the PMIC EINT case, so drop the unused code
+intended to handle both cases.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- sound/soc/codecs/mt6359-accdet.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ sound/soc/codecs/mt6359-accdet.c | 20 +++-----------------
+ 1 file changed, 3 insertions(+), 17 deletions(-)
 
 diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index ce8a5e64e0b9ca508124043ca1f93aaa3cc5f9a0..a21c6544174517e3eebc8cf25d1ea3029ba014f6 100644
+index 1d4481109f6e4f473610e0797c9d3c636bdf12cf..ce8a5e64e0b9ca508124043ca1f93aaa3cc5f9a0 100644
 --- a/sound/soc/codecs/mt6359-accdet.c
 +++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -35,8 +35,6 @@
+@@ -31,9 +31,6 @@
+ #define REGISTER_VAL(x)	((x) - 1)
+ 
+ /* mt6359 accdet capability */
+-#define ACCDET_PMIC_EINT_IRQ		BIT(0)
+-#define ACCDET_AP_GPIO_EINT		BIT(1)
+-
+ #define ACCDET_PMIC_EINT0		BIT(2)
  #define ACCDET_PMIC_EINT1		BIT(3)
  #define ACCDET_PMIC_BI_EINT		BIT(4)
+@@ -448,8 +445,7 @@ static void mt6359_accdet_jd_work(struct work_struct *work)
+ 		mt6359_accdet_recover_jd_setting(priv);
+ 	}
  
--#define ACCDET_PMIC_GPIO_TRIG_EINT	BIT(5)
--#define ACCDET_PMIC_INVERTER_TRIG_EINT	BIT(6)
- #define ACCDET_PMIC_RSV_EINT		BIT(7)
+-	if (priv->caps & ACCDET_PMIC_EINT_IRQ)
+-		recover_eint_setting(priv);
++	recover_eint_setting(priv);
+ 	mutex_unlock(&priv->res_lock);
+ }
  
- #define ACCDET_THREE_KEY		BIT(8)
-@@ -593,15 +591,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
- 	else if (tmp == 2)
- 		priv->caps |= ACCDET_PMIC_BI_EINT;
+@@ -580,14 +576,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
  
--	ret = of_property_read_u32(node, "mediatek,eint-trig-mode",
--				   &tmp);
+ 	priv->data->hp_eint_high = of_property_read_bool(node, "mediatek,hp-eint-high");
+ 
+-	ret = of_property_read_u32(node, "mediatek,eint-use-ap", &tmp);
 -	if (ret)
 -		tmp = 0;
 -	if (tmp == 0)
--		priv->caps |= ACCDET_PMIC_GPIO_TRIG_EINT;
+-		priv->caps |= ACCDET_PMIC_EINT_IRQ;
 -	else if (tmp == 1)
--		priv->caps |= ACCDET_PMIC_INVERTER_TRIG_EINT;
+-		priv->caps |= ACCDET_AP_GPIO_EINT;
 -
- 	ret = of_property_read_u32(node, "mediatek,eint-use-ext-res",
- 				   &priv->data->eint_use_ext_res);
+ 	ret = of_property_read_u32(node, "mediatek,eint-detect-mode",
+ 				   &priv->data->eint_detect_mode);
  	if (ret) {
+@@ -902,10 +890,8 @@ static void mt6359_accdet_init(struct mt6359_accdet *priv)
+ 				   0x3 << RG_ANALOGFDEN_SFT);
+ 	}
+ 
+-	if (priv->caps & ACCDET_PMIC_EINT_IRQ) {
+-		config_eint_init_by_mode(priv);
+-		config_digital_init_by_mode(priv);
+-	}
++	config_eint_init_by_mode(priv);
++	config_digital_init_by_mode(priv);
+ }
+ 
+ int mt6359_accdet_enable_jack_detect(struct snd_soc_component *component,
 
 -- 
 2.48.1
