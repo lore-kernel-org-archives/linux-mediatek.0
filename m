@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 594A5C021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 14:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C656C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 14:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GY3r7CJQBLU0+p+5wiwGL8QESm0o9ed0D65vO+ZpmWI=; b=No5uqKVADuH3YX7mHFOnvNqqeM
-	Rw09tnDMhhPii5BFjiGOXawHaztW5Gid0iWpOTBLS1RVoeEWya64KV/WbMH1+3DzNkfRuSIzW8ZkU
-	RVbFp3C0qRWyx3AaOwHzze1nkvmciF531QdtCywRPGo9TmhxMM1sk8OUWq43ourzjHdVUIXy3UIfi
-	2OThK/O85WiFzRu4+YLAOWB2oKZqtF35IqtKM8yR9TavZvdOi5Ip6Hy5frtvQpTy65k5Mm/or9MjY
-	HX45qHQ+nEnoPklqXvvF8QcJ2Q9YwQQXybnqt+KRJlL1FsPbEsudhQgayZaXdj/UTQk7pGKyCsGRZ
-	dZ/EDRuA==;
+	bh=myUgTPjkOQjiKaCrTOc1vFYqE39f6Kq/aKoq9TyAcTw=; b=J1OcxDE8bpUIpIql2pWxrSlt/E
+	EI4bNQL1lF9aFXbz2uw4pfBQ/cgauaseBd48mETjsUfla3tqzWJoWvF8g0U8NkcvlP5yTZ/Cd2iEs
+	B/Xua6Z94DihhyeMjMW/9IeXjjqInl2s/eMI1Au6mAF0LP7t3wTbC1m4hSgF/2EyG6rSJ1lwJjtsg
+	6LaRVNXs+g4YnPIpM9H45uQJe7te0iEy2euuMJjO847uh3COBZx36a5bTgvtefoxZdtkPSBfvlpyD
+	fXeA1b1+csKnsAUvYbtyyk4zUqdbaiBSzXbLAI/kEVDMs3MM/XTnPWjE21YGG43B2ii/fubvoqkOs
+	KA2pJsQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpSzi-00000004vip-47Fu;
-	Tue, 04 Mar 2025 14:11:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tpTAa-00000004y55-1laz;
+	Tue, 04 Mar 2025 14:22:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpSvm-00000004uax-3KKQ;
-	Tue, 04 Mar 2025 14:07:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741097253;
-	bh=H2V9OGuEsacGbkebJ+L8iqFHNFhIyiawTQ3qvmC+JxU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TgHe7cWF4ZowDICncSBL7gZhxAw7+I2E0Vc4SZuP4JAhGtmfRVGJVcvYVcniBfM/p
-	 eNB4x3Wg2TgJMpuRkokRMOtMeXiOLcaA8GYCZBUGFFkcz28DPxCZDcmayZs5TyQDOH
-	 79gIvUVmRG3Te0i4IpcQfbH6COFYkCkJSuL9yRkvrq8umuICc0YzLrZfUqe/OnPybK
-	 PysDUYk56qvzUwD/1q0qVBwBlRi1fpFLYQPE0zh3wVlsa0Amc5mMiFvxHiLbe8/KXM
-	 GqEaw0HyxQV+Uq9J+Cw6KaqNR9uCkxixpoCJnC2Ui2v84l8KI5RvS2JfXZfkV1zT9n
-	 Z9Bw2YAeaoubw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A02C517E0FD1;
-	Tue,  4 Mar 2025 15:07:32 +0100 (CET)
-Message-ID: <c2580ca2-2999-43cd-a1bd-ab660bbc8953@collabora.com>
-Date: Tue, 4 Mar 2025 15:07:32 +0100
+	id 1tpT8c-00000004xjQ-0WpL;
+	Tue, 04 Mar 2025 14:20:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B31455C4D01;
+	Tue,  4 Mar 2025 14:18:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE699C4CEE5;
+	Tue,  4 Mar 2025 14:20:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741098049;
+	bh=WsLsXCtD+Dlf0AZ4MInt08fRHGyplcvRXe4mxn6hA9o=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=YqCdb9clAq+xJVXfnR8BdKp4nNTMz1YJWpKQM463sXS1cw2Cj6suON0yS3QpsRSKZ
+	 uJayxcXLLRMx1UCjUwG386QaFW4cXyX+TqicMkGmjeBFy8t/9IxMhRgr8oeZLYSwvW
+	 asiDUJc9sFP5VP6y6AmfikTBb8/j4zmIdKCZo0CF5O7RiiVxmxk+Mh+yJxPDZWcKm3
+	 talKqXDCol4K8TgB1y3125eLg1OT86kBfzVM8iIy3guvuhfNrKBdi7tY13xJd+IJQO
+	 NqBsvE19xDMGkgfq9EmPdDO427ig7L6ZFh1Ouui61OUYEFwVUBjge+jK+ROA57MoRR
+	 AeCog20VFuaGQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20250228-mt6359-fix-probe-failed-v1-1-64941d387b2c@collabora.com>
+References: <20250228-mt6359-fix-probe-failed-v1-1-64941d387b2c@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt6359: Fix DT parse error due to
+ wrong child node name
+Message-Id: <174109804670.69310.9373110369182366922.b4-ty@kernel.org>
+Date: Tue, 04 Mar 2025 14:20:46 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8395-nio-12l: Prepare MIPI
- DSI port
-To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250304-radxa-panel-overlay-v2-0-3ee6797d3f86@collabora.com>
- <20250304-radxa-panel-overlay-v2-1-3ee6797d3f86@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250304-radxa-panel-overlay-v2-1-3ee6797d3f86@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_060734_977403_6945EC61 
-X-CRM114-Status: UNSURE (   8.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250304_062050_210756_08D5FB89 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,15 +77,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/03/25 15:01, Julien Massot ha scritto:
-> This board can use a MIPI-DSI panel on the DSI0 connector: in
-> preparation for adding an overlay for the Radxa Display 8HD,
-> add the backlight, and some definitions for pins available
-> through the DSI0 port.
+On Fri, 28 Feb 2025 11:32:19 +0100, Louis-Alexis Eyraud wrote:
+> A recent dtbs_check error fix in mt6359.dtsi file changed a node name
+> (from "mt6359codec" to "audio-codec") without modifying the mt6539
+> codec code that uses it.
+> It leads to a probe failure after devicetree parsing returns in error:
+> ```
+> [    1.354025] mt6359-sound mt6359-sound: mt6359_platform_driver_probe() failed to parse dts
+> [    1.355066] mt6359-sound mt6359-sound: probe with driver mt6359-sound failed with error -22
+> ```
 > 
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> [...]
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt6359: Fix DT parse error due to wrong child node name
+      commit: 79c080c75cdd0a5ba38be039f6f9bb66ec53b0c4
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
