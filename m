@@ -4,85 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB2FC021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA18C282D0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 09:24:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TfhW4dwpgrUF8A3XTnsZo52SIIqBepXuTOwv8Zqk2Qg=; b=jBmJfJ0/k0cvAnNHF0cPGAc4mr
-	YpztqADgIzK8POaFujiojdIUN1G1HY1veIthTN0uRWCFeqmTpIxQGZrhQo/x+h7nLIJ0mIVydPPzy
-	V3xUPxSk79Y74o77LE3xCZ//41c0ZlxzWY2OqD+Tne3Bztdfd4+y1UMqBcwimm8D7xtbFCh2PjrYb
-	mFiD2d0RY8pcjh/pe0kbiODh4WWh50YunHPEFaPMGeATvX7KCEP2ZS1e6nRhA8hinVMDIsL1qQQjX
-	mg+WFTl4hugGX0WM2bMEcdAQ6zdgEQcN1vrsJi5Y4cTXM3IgMlNw0mc+oedCGdLznI1BV6FEz9Fz2
-	pJ3eKGoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qAOUbI/BEbZDvaPix7eWz3Zl3lsDI9E9B/i/XFncmrE=; b=nigU4RDuM/muFwIus9zU4oy3tN
+	kdzn1vdMzHND3MKtZhFbhbxctW1B4zAqZpvF/4nmE+heOF05q8fiQ5Siq4QJRE7M31NivDfR4fNZx
+	SSBENGnU7Jmp71XnEe1fXzhECpuh1ehLvkJa2tIQkbenY8tNKcLSRNSQISP8124OcESpl5p5CxWFq
+	v1QO2igfRWVou6mCgtoE08oj1D49TYvyBKR1qabGTM4a080XXi+PGtFlWS5CE8snPAayma7gEv3U3
+	vzzhYDQYW2rtN1kkK/M+8HNICD6w3B+GxdAZAOnNUUazWcg95cZjFlGN9M8qGFgcmPGhCt9mlPTTi
+	Y5xosg1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpOMM-00000003pJv-2OqG;
-	Tue, 04 Mar 2025 09:14:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tpOVl-00000003roh-3cPM;
+	Tue, 04 Mar 2025 09:24:25 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpNGo-00000003Yzt-207C;
-	Tue, 04 Mar 2025 08:04:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 52D5EA45302;
-	Tue,  4 Mar 2025 07:59:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DCBEC4CEE5;
-	Tue,  4 Mar 2025 08:04:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741075492;
-	bh=vIjLPcUzgSKENXMFoyq8MSR3rL6XCeonIPvrarBTHfI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MTMooLPO8Bbb2GKqdM1BuZCtLRVMLpPUiZewyqhTUOANTZEdA7zKLpNVpc2b4+pde
-	 qLxD1GPfTrr2crKHjmFBRkbsQhLcZE/wIdMSn7xP+K7vJd7ZRJEAH9qDQUxuZcs5kx
-	 PTy2NgT0nWNSVjrgvdi0A9uofQ0NxTbml1X58f1jrN3deGiad5mCcW/u5Oh/f1kNxH
-	 WkgVk5ns/TvPqpAEbTVtWOTQmUYqzcBtq42vbowT/RyyDgHhCJdC0cKAvbzxnmEotI
-	 4k4ylvc9gwaqMoZC+TRzV16b9VRVTbQY41zF+zC/l+py0e6GMwaWsk+QqwNP9zvG1O
-	 WP0yWgzyy+/YA==
-Date: Tue, 4 Mar 2025 09:04:50 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Anusha Srivatsa <asrivats@redhat.com>
-Cc: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
-	Joel Stanley <joel@jms.id.au>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
-	Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>, 
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Yannick Fertre <yannick.fertre@foss.st.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jonathan Corbet <corbet@lwn.net>, linux-aspeed@lists.ozlabs.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH RESEND 07/12] drm/sti: move to
- devm_platform_ioremap_resource() usage
-Message-ID: <20250304-astute-curvy-ladybug-f9ff15@houat>
-References: <20250225-memory-drm-misc-next-v1-0-9d0e8761107a@redhat.com>
- <20250225-memory-drm-misc-next-v1-7-9d0e8761107a@redhat.com>
- <24958ae8-6153-4798-abeb-e770d66ca8e4@foss.st.com>
- <CAN9Xe3Q8=_Tz51i6gxNM6445p-rhNiK7B5Ljcga8g_Nn676dCQ@mail.gmail.com>
+	id 1tpOVj-00000003rmY-32L6;
+	Tue, 04 Mar 2025 09:24:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1741080239; x=1741685039; i=frank-w@public-files.de;
+	bh=qAOUbI/BEbZDvaPix7eWz3Zl3lsDI9E9B/i/XFncmrE=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:In-Reply-To:References:Date:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=AR4OKWdvdxDkf5DnYJm79Y0Sc4ijHsQWiPWZt9Jxh7CXEcy3rWXJVsRT3FEsY5V1
+	 arkL5I0mVS06IXKJzsJ6EL5n7OKgaBfXEQm07zyx8teMKZPBkyv58BVwCX77qkXCQ
+	 NDyyNdNY/TzgHHzji5S/hJZJy4mqeoR2iv215vEIaPL1z0imelNWTr4s3+YySLAKZ
+	 kMuP8puk2OI5D8aFIvk0WW7eZ7SGGJyQBSygnqxp4jm38b1dnVeejUK4uk2AcXg5v
+	 cteS8a02dNP5iJ5E2PNoKFJmYCsDacJJrVdAHcjiOica9LInOsX2vgvIdAP0tAdkb
+	 nnngzLRRmEEKWDArhA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [194.15.84.185] ([194.15.84.185]) by
+ trinity-msg-rest-gmx-gmx-live-5779db864f-7hl68 (via HTTP); Tue, 4 Mar 2025
+ 09:23:59 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="3cvx2hh6lak7gb3g"
-Content-Disposition: inline
-In-Reply-To: <CAN9Xe3Q8=_Tz51i6gxNM6445p-rhNiK7B5Ljcga8g_Nn676dCQ@mail.gmail.com>
+Message-ID: <trinity-a81b2adf-df25-4888-9490-cc33257061b2-1741080239272@trinity-msg-rest-gmx-gmx-live-5779db864f-7hl68>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: angelogioacchino.delregno@collabora.com, mikhail.kshevetskiy@iopsys.eu,
+ matthias.bgg@gmail.com, daniel@makrotopia.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Aw: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan
+ settings for sinovoip bpi-r3 board
+Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
+Importance: normal
+References: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
+ <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
+Date: Tue, 4 Mar 2025 09:23:59 +0000
+Sensitivity: Normal
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:KFILJolE/lIPpZ7AIJtQRhRvi++wI/bcQ2lgkUKddOMA3Q7Xb/PEi20XCxNzINqPUzkHm
+ r7bRg3aTVEVsMlCFezAHQpCfZIo0rmfInJ2+KshK3/HnsDZVQyToDOfIq7Yg8TUITj56FlSD79uJ
+ au2duhPJe/A8BywlmkG/zages3nOVMXUZpRudMTyhvgo9ASG9EMq7pUL7v5YnA7dBXvdqCXeAygt
+ hZbvoECRr1DoZaOcqaJQxu8MG07dfNHknBdI7vF/3G+J8lWUMPq46r5DYZ+ogOorGIrIxlfNjHDD
+ NE2eaCL+j9qRs6ulzEcIxr0a1XQpGMGixNQ8jBP66Lvlx+cYXMiL3KDNoM8gKzEbI0=
+UI-OutboundReport: notjunk:1;M01:P0:AxtGf+C3hYI=;FsXk14KBPKOyZP9J+CXltFfvtq2
+ dkwYcHX+hPt9iTQqnJndWDKtrP2/oQun9cOggieklZuBgtwYaKW49tHL+CuHemzdlUDGJVpDu
+ vwbfyYwXvWuk653PnMYvro0nqq4iuyzAJrauVKriQoApj6IJzvfEYSe7rJn20docf0vk6vRSa
+ Ox6uLXiFB6rd4dW0u32lqFrnSJZMSxrU3a2pZQKniOBP23BhtFUBzHi1+Lx067uHyDSlD1ZsI
+ xIJHauw41xHXmRE6e6xJ6Ddowzdm12er5T4+wx45slQjZPXBYwChWpOqwtC9wZSLa/Xj/q03a
+ 3Ttf8GMDTWZBOz0GIZPMhBhm/yTooJJBnyo/R7DXoj1Gxf0waCuQU6gp8/28gmEanPQl5EkwR
+ wGtUPwl2fkJ+Hkr6QewmizRuh7ssrIEfGRZHcFxRYJVPLYzwyK6HwTiW6yaJPyj9vm2544pFv
+ zyxbFRqMnW0lj8SjmtOqhyZinC5HQnnrTUcLs8S/piCBg9FyxSVNQwbto+Adg03sQM+5mjf3r
+ zKMU2Yi5JdFdH9M+L6JJptDGHZz26P+7Wh5ckfF+EQZ23bfBFtlEqGlDZf73dA5IYSQfhk+Gw
+ F0xKm2lMp9U9u2oc5hwtiIeMtbVX2FKM0UbaW87jreVzAljQlCNFCRHJpwNn8c8O+jdkgvp5v
+ N80nE+vcDiIMwkXew8goRl999b0yfe3HCy4qZvpG3unhfkINIAv9+X1x6LAn9BgQghSEdbe5P
+ EqKVsc35uCYrI/ksr6s1LXj/aTJk8ndZe1g2m78eTc/5k7ORl+SoavD3IWn3GGi984p78vxNT
+ +yLpCYBNeab8R+jelpy4Ptnq0iW/v6WptYRSfilS+ucN6+6I+adWjtuE8K/MLt/wH1iG3c9Jo
+ T6sIfnmXl4JkTa2kF8ZNVufhUMY1phc2syJBy7xbjvEaslVIPc8HV31jr7M1P/J+27Xh/FDce
+ y/6pn/wrrPSdqmputgAQzGAoBajxhAhVW2pjWobo/6jVhRz/ui/3Po6fHi2lTYex3DTq7T9p4
+ Y4QW2jnluSWJEJ3pJgjwNGSBn0znCFLWkO3vXtM+ti38NhYuDf5apyjM1d1GtbnVwLUIe8fe3
+ x/HoX9uQtV9Yho7DH9h+InsuuEoS8z6SlOAZ5k7q7C8lIiYJXYTIao25kc16kCneD4FLqeGS8
+ u16NW7a097nFzsjtWWs8Pyh4XdB+H7iLafDpXOUCimWo213NtkMTsKvl3FRVPVDkLWV9oXfaA
+ vdfFMJv3KA12sFRTPLWFeRSD1uElb0l7Bj1wv+kf9f6hnGFBMauN8gk=
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_000454_655375_93B92132 
-X-CRM114-Status: GOOD (  27.90  )
+X-CRM114-CacheID: sfid-20250304_012423_915752_65B2B21A 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,109 +105,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> Gesendet: Mittwoch, 26. Februar 2025 um 10:46
+> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
+om>
+> Betreff: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan s=
+ettings for sinovoip bpi-r3 board
 
---3cvx2hh6lak7gb3g
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH RESEND 07/12] drm/sti: move to
- devm_platform_ioremap_resource() usage
-MIME-Version: 1.0
+> I get that the cheapest fans you can get are not working correctly with =
+the current
+> mid pwm setting, but you can't break things.
+>
+> This devicetree should, at this point, hold default values that would ge=
+nerally
+> make the vast majority of fans to actually spin, because it's impossible=
+ to have
+> something perfectly (or vaguely, sometimes) optimized for each fan on th=
+e market.
+>
+> Of course this means that you need to properly configure your fans in us=
+erspace
+> if you want to reach the sweet spot.
+>
+> I added Frank and Daniel to this thread, as they are the ones who origin=
+ally did
+> upstream this device.
+>
+> Frank, Daniel, any suggestion regarding the PWM values here?
 
-On Mon, Mar 03, 2025 at 12:29:19PM -0500, Anusha Srivatsa wrote:
-> On Wed, Feb 26, 2025 at 5:19=E2=80=AFAM Raphael Gallais-Pou <
-> raphael.gallais-pou@foss.st.com> wrote:
->=20
-> >
-> > On 2/25/25 23:20, Anusha Srivatsa wrote:
-> > > Replace platform_get_resource/_byname + devm_ioremap
-> > > with just devm_platform_ioremap_resource()
-> > >
-> > > Used Coccinelle to do this change. SmPl patch:
-> > >
-> > > @rule@
-> > > identifier res;
-> > > expression ioremap;
-> > > identifier pdev;
-> > > constant mem;
-> > > expression name;
-> > > @@
-> > > -struct resource *res;
-> > > ...
-> > > -res =3D platform_get_resource_byname(pdev,mem,name);
-> > > <...
-> > > -if (!res) {
-> > > -...
-> > > -}
-> > > ...>
-> > > -ioremap =3D devm_ioremap(...);
-> > > +ioremap =3D devm_platform_ioremap_resource_byname(pdev,name);
-> > >
-> > > and
-> > > @rule_2@
-> > > identifier res;
-> > > expression ioremap;
-> > > identifier pdev;
-> > > @@
-> > > -struct resource *res;
-> > > ...
-> > > -res =3D platform_get_resource(pdev,...);
-> > > <...
-> > > -if (!res) {
-> > > -...
-> > > -}
-> > > ...>
-> > > -ioremap =3D devm_ioremap(...);
-> > > +ioremap =3D devm_platform_ioremap_resource(pdev,0);
-> > >
-> > > v2: Fix compilation error.
-> >
-> >
-> > Hi Anusha,
-> >
-> >
-> > You did not take into account my comment regarding the changelog. :-)
-> >
-> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html#=
-commentary
-> >
-> > While the commit summary do not specify the version, this changelog
-> > suggests
-> > that the version of your series as been incremented.
-> > If this is a v2, then a version descriptor should be applied to the
-> > patchset.
-> >
-> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html#=
-subject-line
-> >
-> > Hi  Raphael,
->=20
-> That is correct. While this patch is a v2, there is another patch or two =
-in
-> the same series that is on v4 when it got acked and reviewed. Having
-> patches belonging to the same series with different version prefixes seem=
-ed
-> odd when I sent the series. Hence added what exactly changed in the commit
-> log.
+Hi,
 
-This breaks a lot of tools though. If your series changes, you need to
-increase the version number, no matter how small or insignificant it
-changed compared to the previous one. resend is only meant to be used
-when you send the exact same series.
+sorry for delay
 
-Maxime
+i have the fan from sinovoip and that was working for me, but if your fan =
+only works with new values, i have no point against this change.
 
---3cvx2hh6lak7gb3g
-Content-Type: application/pgp-signature; name="signature.asc"
+btw. angelo, how is state for my r4-dtsi change?
 
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ8a0GwAKCRAnX84Zoj2+
-dvPAAX0T6CB5j6he9IlacsjKLYZXt0M1IhAKVugJHAC1WHuswlCAJSgEyELEpzS1
-ddcuQ7kBf3wXscEAe3lhr3vk0F2KVEj4r8JtBnUwxNM0o1E63auMQV7dNPG5Z5Ku
-4gxKbq/wJQ==
-=hPVI
------END PGP SIGNATURE-----
-
---3cvx2hh6lak7gb3g--
+regards Frank
 
