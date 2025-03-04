@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55F7C021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 12:33:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C81C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 13:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xPnJSvOpXFl9Gvkycauini8xBrYy98lKMs5zuJB99Oo=; b=H6fy4X7TfeOgOVIdpKgcY1bZZS
-	NbTog0LDqnPdiPES126Z9o4cU3ump5V8Xc8Whjq6wAzFFBm39f2OxqS6jaBpe8WJ0RQXPUKOB+Xa1
-	sOp+f40lWq5RF/Tj3PHyXmXMzjpHZobuYf784z8yXecOZl7zfNHRx+9b5zITH8kpExOH1MikZtN8+
-	as4WUAclQCB1SeUQ3RExrZTfhbGmenVjBddiZMP4B724qy836LRSin46O8LPBxdGJ+Y52bTgART7G
-	/rPxeNZYqlMlUqkgYEFn7j5u2UZJH8aV+mnFOFoSkoYs/YyOm7wFQtqHH4W5dWxKWoMnHxk+b+mI0
-	p1gaUOtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c/33P1yXMcEpdsQoJA0FxWJn94KsTH/e4Gm87YEyN1Y=; b=x2n4IA58pYJifm6Kle4idesmsN
+	MZzL8+xIg52fymeLFig/jVq7WutlZMt38haw2Yyj5ZshnieCFcV7JwM4CXeOpiseU7c32ZOz2Yz2B
+	YPMBAVjQ00eX/JcUetowoVO4cI0v8CWnwqgqR/EqFK+Z+h5cSDuQKz0ttfBwfkWr64Rgw21NQ0knn
+	HcFLAwOIHuSxlVpkNepsSMAX3I6yuboteOnArBl1PINzv5mnMbPC1HXxtMoDI8rBWMrlXZ/rCc/e+
+	actSUfL/AzKEUVlMoWm1U6yjX9JunZcW4DzymTK+0W0p5l/v5Y//plZxGJPgATxyXW6uthrEFqnEt
+	drb5FUNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpRSj-00000004eFj-3evk;
-	Tue, 04 Mar 2025 12:33:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tpSmc-00000004sOm-2Aru;
+	Tue, 04 Mar 2025 13:58:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpRPO-00000004dqS-3m55;
-	Tue, 04 Mar 2025 12:30:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 41F675C5BB0;
-	Tue,  4 Mar 2025 12:27:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3EC3C4CEE5;
-	Tue,  4 Mar 2025 12:30:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741091401;
-	bh=rJKGNfM/s8QAQjXFzZnxlWs2DFKcY9YmiOImWJPI/GQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=TMo2Q3EpOctKaoJW9GG7S6AMYjIDFGNjCQj4bJsSZCI9aqh/qYV4ejHAlDb9RLKnP
-	 M1csSwvOvpyYuoLzNbdiOSskin8i1N64VgsfpIBdZmAAbz5+TRZLfil0G9953jUhUh
-	 IFBtS/SB89C0+avIAkVA0DnGt0g5t9Bsk0D0NsgrRUIV2lK5TuG7+WKG7B7fyHSfcl
-	 9n8w8hSOw7iZiEvXgMHZmcmUgNFVj73T4Zci4/koyKbeOkbKt4nDC/VRHbkEgdelGK
-	 10XmL2sNZ9QGlY4ENh2ChRmU+IHBOqKWhqvmeYlTGseMDIoQQAwGaAdyzoqN/AOD5c
-	 ewoyaowLH8P+w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADE2D380AA7F;
-	Tue,  4 Mar 2025 12:30:35 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tpSl1-00000004rtG-1UM9;
+	Tue, 04 Mar 2025 13:56:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741096584;
+	bh=BYE1PMNXLmh6humc1AIGM9TE2xmShRPk4wpB/+IC4Io=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=QxiPpaI1gQj9880lB5GeSnWv9GwWvx/teUExUau16QIQy3E8IMXe8lO3CUGrKPZSb
+	 sT6kj9+chBIcxXE6lH7noxnJNI9fpSMcyWDY8ftrWXqfUWMePf4KpMwCuPS0h5ijZ3
+	 +6AdX+R+qk02CTJ0728+othIa2MD/3gHvbK957DJXY/5BBNqSFsZ7m/jQoK8LAcG0W
+	 U4zu+zm2sfC8zHXMlCH3vL7MsAM1cWpZXSMjmN6J2GDProNFX28/mPwXbJmRMEXJnT
+	 ILO9AkVOAj41TIoqlWK5qnuiQQsTzSRxiHL1D1k9etwNqBqdN8Enfg/uO2KrQrsY9i
+	 KVYwqaSaj+fhw==
+Received: from apertis-1.home (2a01cb0892f2D600C8f85Cf092d4af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0038A17E086B;
+	Tue,  4 Mar 2025 14:56:23 +0100 (CET)
+Message-ID: <3ee575154a95627b7ecaf33b2f52b6fa0ce4a352.camel@collabora.com>
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt8395-nio-12l: Prepare MIPI
+ DSI port
+From: Julien Massot <julien.massot@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	kernel@collabora.com, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	 <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Tue, 04 Mar 2025 14:56:23 +0100
+In-Reply-To: <fc0a9471-da47-4f4f-a471-1b20f344ad22@collabora.com>
+References: <20250226-radxa-panel-overlay-v1-0-9e8938dfbead@collabora.com>
+	 <20250226-radxa-panel-overlay-v1-1-9e8938dfbead@collabora.com>
+	 <fc0a9471-da47-4f4f-a471-1b20f344ad22@collabora.com>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v8 00/15] Introduce flowtable hw offloading in
- airoha_eth driver
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174109143450.124302.2708662777154071510.git-patchwork-notify@kernel.org>
-Date: Tue, 04 Mar 2025 12:30:34 +0000
-References: <20250228-airoha-en7581-flowtable-offload-v8-0-01dc1653f46e@kernel.org>
-In-Reply-To: <20250228-airoha-en7581-flowtable-offload-v8-0-01dc1653f46e@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, nbd@nbd.name, sean.wang@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- p.zabel@pengutronix.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
- dqfext@gmail.com, andrew@lunn.ch, olteanv@gmail.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, upstream@airoha.com, sayantan.nandy@airoha.com,
- ansuelsmth@gmail.com, krzysztof.kozlowski@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_043003_030059_7CDAC438 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20250304_055627_576715_B6505894 
+X-CRM114-Status: GOOD (  24.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,67 +80,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi Angelo,
 
-This series was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+On Mon, 2025-03-03 at 12:32 +0100, AngeloGioacchino Del Regno wrote:
+> Il 26/02/25 15:35, Julien Massot ha scritto:
+> > This board can use a MIPI-DSI panel on the DSI0 connector: in
+> > preparation for adding an overlay for the Radxa Display 8HD,
+> > add a pipeline connecting VDOSYS0 components to DSI0.
+> >=20
+> > Also add the backlight, and some pin definitions available
+> > through the DSI0 port.
+> >=20
+> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
+> > ---
+> > =C2=A0 .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 60 ++++++++++++++++++++++
+> > =C2=A0 1 file changed, 60 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > index 7184dc99296c7f5d749c7e6d378722677970b3b7..65c77e43d1cd4913b6741e2=
+5130febd746ff753c 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> > @@ -48,6 +48,17 @@ memory@40000000 {
+> > =C2=A0=C2=A0		reg =3D <0 0x40000000 0x1 0x0>;
+> > =C2=A0=C2=A0	};
+> > =C2=A0=20
+> > +	backlight: backlight {
+> > +		compatible =3D "pwm-backlight";
+> > +		brightness-levels =3D <0 1023>;
+> > +		default-brightness-level =3D <576>;
+> > +		enable-gpios =3D <&pio 107 GPIO_ACTIVE_HIGH>;
+> > +		num-interpolated-steps =3D <1023>;
+> > +		pinctrl-names =3D "default";
+> > +		pinctrl-0 =3D <&dsi0_backlight_pins>;
+> > +		pwms =3D <&disp_pwm0 0 500000>;
+>=20
+> This should be disabled, unless there is a display connected to the DSI c=
+onnector.
+>=20
+> If there's no display, there's no point in enabling any backlight, as tha=
+t pin
+> may be reused somehow (with hardware hacks, maybe, yes, but still configu=
+ring
+> the PWM IP and the pin as PWM while unused is at least a waste of energy)=
+.
+>=20
+Yes, I will keep it disabled in the board dts.
 
-On Fri, 28 Feb 2025 11:54:08 +0100 you wrote:
-> Introduce netfilter flowtable integration in airoha_eth driver to
-> offload 5-tuple flower rules learned by the PPE module if the user
-> accelerates them using a nft configuration similar to the one reported
-> below:
-> 
-> table inet filter {
-> 	flowtable ft {
-> 		hook ingress priority filter
-> 		devices = { lan1, lan2, lan3, lan4, eth1 }
-> 		flags offload;
-> 	}
-> 	chain forward {
-> 		type filter hook forward priority filter; policy accept;
-> 		meta l4proto { tcp, udp } flow add @ft
-> 	}
-> }
-> 
-> [...]
+> > +	};
+> > +
+> > =C2=A0=C2=A0	wifi_vreg: regulator-wifi-3v3-en {
+> > =C2=A0=C2=A0		compatible =3D "regulator-fixed";
+> > =C2=A0=C2=A0		regulator-name =3D "wifi_3v3_en";
+> > @@ -499,9 +510,20 @@ &mt6359_vsram_others_ldo_reg {
+> > =C2=A0=C2=A0	regulator-max-microvolt =3D <750000>;
+> > =C2=A0 };
+> > =C2=A0=20
+> > +&ovl0_in {
+> > +	remote-endpoint =3D <&vdosys0_ep_main>;
+> > +};
+> > +
+>=20
+> This goes to the overlay that enables the DSI display.
+Ok
 
-Here is the summary with links:
-  - [net-next,v8,01/15] net: airoha: Move airoha_eth driver in a dedicated folder
-    https://git.kernel.org/netdev/net-next/c/fb3dda82fd38
-  - [net-next,v8,02/15] net: airoha: Move definitions in airoha_eth.h
-    https://git.kernel.org/netdev/net-next/c/b38f4ff0ceac
-  - [net-next,v8,03/15] net: airoha: Move reg/write utility routines in airoha_eth.h
-    https://git.kernel.org/netdev/net-next/c/e0758a8694fb
-  - [net-next,v8,04/15] net: airoha: Move register definitions in airoha_regs.h
-    https://git.kernel.org/netdev/net-next/c/ec663d9a82bf
-  - [net-next,v8,05/15] net: airoha: Move DSA tag in DMA descriptor
-    https://git.kernel.org/netdev/net-next/c/af3cf757d5c9
-  - [net-next,v8,06/15] net: dsa: mt7530: Enable Rx sptag for EN7581 SoC
-    https://git.kernel.org/netdev/net-next/c/ab667db1e601
-  - [net-next,v8,07/15] net: airoha: Enable support for multiple net_devices
-    https://git.kernel.org/netdev/net-next/c/80369686737f
-  - [net-next,v8,08/15] net: airoha: Move REG_GDM_FWD_CFG() initialization in airoha_dev_init()
-    https://git.kernel.org/netdev/net-next/c/67fde5d58cd4
-  - [net-next,v8,09/15] net: airoha: Rename airoha_set_gdm_port_fwd_cfg() in airoha_set_vip_for_gdm_port()
-    https://git.kernel.org/netdev/net-next/c/c28b8375f6d0
-  - [net-next,v8,10/15] dt-bindings: net: airoha: Add the NPU node for EN7581 SoC
-    https://git.kernel.org/netdev/net-next/c/266f7a0f81c0
-  - [net-next,v8,11/15] dt-bindings: net: airoha: Add airoha,npu phandle property
-    https://git.kernel.org/netdev/net-next/c/9b1a0b72264c
-  - [net-next,v8,12/15] net: airoha: Introduce Airoha NPU support
-    https://git.kernel.org/netdev/net-next/c/23290c7bc190
-  - [net-next,v8,13/15] net: airoha: Introduce flowtable offload support
-    https://git.kernel.org/netdev/net-next/c/00a7678310fe
-  - [net-next,v8,14/15] net: airoha: Add loopback support for GDM2
-    https://git.kernel.org/netdev/net-next/c/9cd451d414f6
-  - [net-next,v8,15/15] net: airoha: Introduce PPE debugfs support
-    https://git.kernel.org/netdev/net-next/c/3fe15c640f38
+>=20
+> > @@ -912,6 +960,18 @@ &ssusb2 {
+> > =C2=A0=C2=A0	status =3D "okay";
+> > =C2=A0 };
+> > =C2=A0=20
+> > +&vdosys0 {
+> > +	port {
+> > +		#address-cells =3D <1>;
+> > +		#size-cells =3D <0>;
+> > +
+> > +		vdosys0_ep_main: endpoint@0 {
+> > +			reg =3D <0>;
+> > +			remote-endpoint =3D <&ovl0_in>;
+> > +		};
+> > +	};
+> > +};
+>=20
+> If you enable this path, in the event that the DSI display overlay is not=
+ added,
+> the mediatek-drm driver will fail probing: even if a second path is enabl=
+ed and
+> that will succeed regardless of the first one failing, I don't see a reas=
+on why
+> whoever doesn't have a DSI display attached should see a miserable failur=
+e in the
+> kernel log :-)
+>=20
+> Besides, mediatek-drm failing will also slow down boot for no reason.... =
+etc etc.
+>=20
+> Please move the display path setup to the DSI display overlay.
+Sure will move the display path setup to the display overlay.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Thank you,
+Julien
 
