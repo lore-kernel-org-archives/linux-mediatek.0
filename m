@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 080E2C021B8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 15:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F97C021B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Mar 2025 15:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZ9aoCppIsvGEXBhc3cafSnewuyIOdyCk4++oec/tuc=; b=3YKgz1OGqLyGFSB+mc11PygfRu
-	FCRva4nRCbyQYlDREpDZ6MGJ6hYwQ3f/JOJ32z0fCNEbT5pha+UQ32l7Y6YHbtbyIBlWt7q7kY3if
-	sk++pp+FGXblmwHaSqZhUMpDaazySbpguLUkE8dZJ71t/xBgdaChpgKhS3XQhJivV9/y4wEZugdRG
-	QtDOdDvyNqPPKfcUEUitwoz5hVaXJ1vmIsctiDeHhsU8eFHvjY6EKpXPt3PEZyHKt+vWg3pZ851YM
-	gCU/XYuK2bOuFKXi16U/XFI3HHME6LmuRoAhk3vxWV6SMYkTm7eWVLW3NQ0ax38VtU+OVngUcKh94
-	OJhhYrlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=liLbalBwCJBcj8JinxZQyjkZlG5ljBsPba16yoUX+B4=; b=38hTGScv+ZbA8X
+	JB+PfA8vp1QJQAgXrmKQYt6mWdXEssd/HefXQ+JsF/IA009QpW7Q6udal/DpSC0BtjkCIGAvXJlky
+	dgJt7TjXumXTNyP4spUaEK9/tE6SldohEle8U6eyBuMGJp/PWMRD0G/TFBnBYvgyL5ccE/V52TRrN
+	2yM7H6iisce6TE9NYcMv6qAA3DIkTj9hBV2NPoix7SicNfeIB2jgFsRMGdyW5DK5vobjgZsKcLsWY
+	k+4nvAhvLKytdaomYEX3FZ6xFNPFMiOERDp2l3+g8XcYrTVpQ9X/o5LdeS2Yvz8WRHOuDfu31EIlQ
+	tdQW/1dxX53/g8sosqJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpTwp-000000059Gp-0u3W;
-	Tue, 04 Mar 2025 15:12:43 +0000
+	id 1tpUVb-00000005HeF-1aBS;
+	Tue, 04 Mar 2025 15:48:39 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpTk5-000000056Gk-0NX0;
-	Tue, 04 Mar 2025 14:59:34 +0000
+	id 1tpU09-00000005A1I-2R7M;
+	Tue, 04 Mar 2025 15:16:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741100371;
-	bh=9HyvFC1aYme/RE3vNGSw0sgKg28mD1z9kYUKkFIiyxM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BAOf+MdmjNQkuO6XVmZbYvjFtPzDoVUkHmJ1ScRZt5kzyXivP8i9Zp34UBSUCVJfy
-	 lCr2algJccz8KqhxZub5KBIPIOtHFOPEKGJuvDB/GmYeZFfPuWcQ5AU73hNIngyWEW
-	 9uHvEr3MshsNsWznMkgi9/VFJ37wdP4MLuY//CImaB2yyD1sM+/GFOiTfDEWpZdWAw
-	 +5I0nwCU4vlGjY2pJSNwu5wWL/KAjc8zlDCg0FqbU1ZSkxhh0jszO9tAkv71DJ41wr
-	 knC/SRFiaQT/d5YGvgO3xDyVsyz5P7oOpFP0r4SMGSKiuHtmIgGsS++PwvukBKRlGJ
-	 aah2Yh6fcfKNw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1741101367;
+	bh=kRk65fFWGiW9cLrHn6Gq8JEnZaLlDaonyfy1q1fzf8Q=;
+	h=From:Subject:Date:To:Cc:From;
+	b=KY6FOERqCblcMtcMsG1Jo68iIUJRZhzGfDNIRsw0BTcMNCXmDNb2m1j3zcEo4RvAA
+	 4S7+Gwr6uePEDLlKtbtdj/RVOurABGmkx9fwp3yXQqjDouTPSh11yiZivu9fY1jVlN
+	 FnGhPGOiS0LxG0DEH79LUJnsEIlfcb/c45tdRMvwYHg6KA9tKUAEV3FnTVZwLQOsZd
+	 97PWLOlLF2mntA+8Pqg9e9+2oi0YZYWvHs9xJVB9D31sYKrBrnM5tF91uDTC7lkJZq
+	 Ds3fnE8Yd/GyCNhqnmSeN/CrCLGhAf38zLQcbPMcP9PotWGAcSku55fkzh4p2+U7lO
+	 O9k4rMmTYv0aA==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1001])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A37B17E0A4E;
-	Tue,  4 Mar 2025 15:59:30 +0100 (CET)
-Message-ID: <10163a0b-5865-4088-b38b-6c5680548fc4@collabora.com>
-Date: Tue, 4 Mar 2025 15:59:30 +0100
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5615517E065E;
+	Tue,  4 Mar 2025 16:16:02 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v3 00/20] Get mt6359-accdet ready for usage in Devicetree
+Date: Tue, 04 Mar 2025 12:15:41 -0300
+Message-Id: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,1/2] memory/mediatek: Add an interface to get current DDR
- data rate
-To: Crystal Guo <crystal.guo@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- kernel test robot <lkp@intel.com>
-References: <20250207014437.17920-1-crystal.guo@mediatek.com>
- <20250207014437.17920-2-crystal.guo@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250207014437.17920-2-crystal.guo@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAB0Zx2cC/33NSwrCMBSF4a2UjI3k2bSO3Ic4yOPWBlojSQhK6
+ d5NOxFEHP4H7ncXlCB6SOjULChC8cmHew1+aJAd9f0G2LvaiBEmCaMCz7nlssfaWgcZu5wwIYZ
+ 2fSfUwC2qd48Ig3/u5uVae/Qph/jaXxS6rf+0QjHBrVKaSmp6I+zZhmnSJkR9tGFGm1jYR+GE/
+ VJYVaRxLecAxAn1razr+gZ2a2Fy/AAAAA==
+X-Change-ID: 20250214-mt6359-accdet-dts-00b189847f3c
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Andrew Perepech <andrew.perepech@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_065933_312856_EB6CDA08 
-X-CRM114-Status: GOOD (  29.90  )
+X-CRM114-CacheID: sfid-20250304_071609_791372_D33FF0DC 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,336 +88,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/02/25 02:42, Crystal Guo ha scritto:
-> Add MediaTek DRAMC driver to provide an interface that can
-> obtain current DDR data rate.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202412210955.FvO0Pee3-lkp@intel.
-> com/
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> ---
->   drivers/memory/Kconfig              |   1 +
->   drivers/memory/Makefile             |   1 +
->   drivers/memory/mediatek/Kconfig     |  21 +++
->   drivers/memory/mediatek/Makefile    |   2 +
->   drivers/memory/mediatek/mtk-dramc.c | 196 ++++++++++++++++++++++++++++
->   5 files changed, 221 insertions(+)
->   create mode 100644 drivers/memory/mediatek/Kconfig
->   create mode 100644 drivers/memory/mediatek/Makefile
->   create mode 100644 drivers/memory/mediatek/mtk-dramc.c
-> 
-> diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
-> index c82d8d8a16ea..b1698549ff81 100644
-> --- a/drivers/memory/Kconfig
-> +++ b/drivers/memory/Kconfig
-> @@ -227,5 +227,6 @@ config STM32_FMC2_EBI
->   
->   source "drivers/memory/samsung/Kconfig"
->   source "drivers/memory/tegra/Kconfig"
-> +source "drivers/memory/mediatek/Kconfig"
->   
->   endif
-> diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
-> index d2e6ca9abbe0..c0facf529803 100644
-> --- a/drivers/memory/Makefile
-> +++ b/drivers/memory/Makefile
-> @@ -27,6 +27,7 @@ obj-$(CONFIG_STM32_FMC2_EBI)	+= stm32-fmc2-ebi.o
->   
->   obj-$(CONFIG_SAMSUNG_MC)	+= samsung/
->   obj-$(CONFIG_TEGRA_MC)		+= tegra/
-> +obj-$(CONFIG_MEDIATEK_MC)	+= mediatek/
->   obj-$(CONFIG_TI_EMIF_SRAM)	+= ti-emif-sram.o
->   obj-$(CONFIG_FPGA_DFL_EMIF)	+= dfl-emif.o
->   
-> diff --git a/drivers/memory/mediatek/Kconfig b/drivers/memory/mediatek/Kconfig
-> new file mode 100644
-> index 000000000000..3f238e0d9647
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/Kconfig
-> @@ -0,0 +1,21 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config MEDIATEK_MC
-> +	bool "MediaTek Memory Controller support"
-> +	help
-> +	  This option allows to enable MediaTek memory controller drivers,
-> +	  which may include controllers for DRAM or others.
-> +	  Select Y here if you need support for MediaTek memory controller.
-> +	  If you don't need, select N.
-> +
-> +if MEDIATEK_MC
-> +
-> +config MTK_DRAMC
-> +	tristate "MediaTek DRAMC driver"
-> +	default y
-> +	help
-> +	  This option selects the MediaTek DRAMC driver, which provides
-> +	  an interface for reporting the current data rate of DRAM.
-> +	  Select Y here if you need support for the MediaTek DRAMC driver.
-> +	  If you don't need, select N.
-> +
-> +endif
-> diff --git a/drivers/memory/mediatek/Makefile b/drivers/memory/mediatek/Makefile
-> new file mode 100644
-> index 000000000000..a1395fc55b41
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/Makefile
-> @@ -0,0 +1,2 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +obj-$(CONFIG_MTK_DRAMC)		+= mtk-dramc.o
-> diff --git a/drivers/memory/mediatek/mtk-dramc.c b/drivers/memory/mediatek/mtk-dramc.c
-> new file mode 100644
-> index 000000000000..d452483a98ce
-> --- /dev/null
-> +++ b/drivers/memory/mediatek/mtk-dramc.c
-> @@ -0,0 +1,196 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + */
-> +#include <linux/bitops.h>
-> +#include <linux/bitfield.h>
-> +#include <linux/device.h>
-> +#include <linux/io.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/printk.h>
-> +
-> +#define POSDIV_PURIFY	BIT(2)
-> +#define PREDIV		7
-> +#define REF_FREQUENCY	26
+This series prepares the MT6359 ACCDET for actual usage in the
+Devicetree. Patches 1 and 2 add the required DT bindings, patches 3 and
+4 get the mt6359-accdet driver probing, patches 5-18 clean up code
+related to DT property parsing, patch 19 adds the node in the
+Devicetree and patch 20 enables the kconfig for the driver.
 
-REF_FREQUENCY should be platform data, not a definition, as this is
-different in other SoCs.
+Together with the series "Allow retrieving accessory detection reference
+on MT8188" [1], and one extra patch on top enabling it on the
+genio-700-evk DT, this series was tested on the Genio 700 EVK to get
+audio jack detection working on it.
 
-> +#define SHUFFLE_OFFSET	0x700
-> +
-> +/*--------------------------------------------------------------------------*/
-> +/* Register Offset                                                          */
-> +/*--------------------------------------------------------------------------*/
-> +#define DPHY_DVFS_STA		0x0e98
-> +#define APHY_PHYPLL2		0x0908
-> +#define APHY_CLRPLL2		0x0928
-> +#define APHY_PHYPLL3		0x090c
-> +#define APHY_CLRPLL3		0x092c
-> +#define APHY_PHYPLL4		0x0910
-> +#define APHY_ARPI0		0x0d94
-> +#define APHY_CA_ARDLL1		0x0d08
-> +#define APHY_B0_TX0		0x0dc4
+[1] https://lore.kernel.org/all/20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com
 
-Aren't those also SoC-dependant?
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v3:
+- Removed unneeded '|' in mt6359-accdet's dt-binding description
+- Removed unneeded unevaluatedProperties for accdet node in mt6397's
+  dt-binding
+- Clarified HP_EINT pin is on the MT6359 PMIC in mediatek,hp-eint-high's
+  description in the mt6359-accdet dt-binding
+- Link to v2: https://lore.kernel.org/r/20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com
 
-enum mtk_dramc_reg_index {
-	DRAMC_DPHY_DVFS_STA,
-	DRAMC_APHY_SHU_PHYPLL2,
-	....etc
-}
+Changes in v2:
+- Removed all DT-binding properties except for EINT polarity one
+  (mediatek,eint-level-pol / mediatek,hp-eint-high)
+  - Added patches 12-18 to make those settings internal to driver
+- Renamed mediatek,eint-level-pol to mediatek,hp-eint-high and made it
+  bool
+- Added patch 20 to enable the MT6359 ACCDET Kconfig in the defconfig
+- Removed unused btn_type variable as part of "Drop dead code for button
+  detection" patch.
+- Link to v1: https://lore.kernel.org/r/20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com
 
-static const u16 mtk_dramc_regs_mt8195[] = {
-	[DRAMC_DPHY_DVFS_STA] = 0x50c, /* ddrphy_config_NAO */
-	[DRAMC_APHY_SHU_PHYPLL2] = 0x704,
-	[DRAMC_APHY_SHU_CLRPLL2] = 0x724,
-	[DRAMC_APHY_SHU_PHYPLL3] = 0x708,
-	[DRAMC_APHY_SHU_CLRPLL3] = 0x728,
-	[DRAMC_APHY_SHU_PHYPLL4] = 0x70c,
-	...etc
-}
+---
+Andrew Perepech (2):
+      mfd: mt6397-core: Add mfd_cell for mt6359-accdet
+      ASoC: mediatek: mt6359-accdet: Implement HP_EINT polarity configuration
 
-static const u16 mtk_dramc_regs_mt8196[] = {
-	[DRAMC_DPHY_DVFS_STA] = 0xe98, /* ddrphy_config_misc */
-	[DRAMC_APHY_SHU_PHYPLL2] = 0x908,
-	[DRAMC_APHY_SHU_CLRPLL2] = 0x928,
-	.... etc
-}
+Nícolas F. R. A. Prado (18):
+      ASoC: dt-bindings: Add document for mt6359-accdet
+      dt-bindings: mfd: mediatek: mt6397: Add accdet subnode
+      ASoC: mediatek: mt6359-accdet: Add compatible property
+      ASoC: mediatek: mt6359-accdet: Handle hp-eint-high property
+      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT/GPIO IRQ handling
+      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT trigger setting
+      ASoC: mediatek: mt6359-accdet: Drop dead code for button detection
+      ASoC: mediatek: mt6359-accdet: Drop dead code for plugout-debounce
+      ASoC: mediatek: mt6359-accdet: Drop unused moisture variables
+      ASoC: mediatek: mt6359-accdet: Always use internal resistor
+      ASoC: mediatek: mt6359-accdet: Make PWM debounce settings internal
+      ASoC: mediatek: mt6359-accdet: Always use eint detect mode 4
+      ASoC: mediatek: mt6359-accdet: Always set micbias1 to 2.8V
+      ASoC: mediatek: mt6359-accdet: Always configure hardware as mic-mode 2
+      ASoC: mediatek: mt6359-accdet: Always set comp-vth to 1.6V
+      ASoC: mediatek: mt6359-accdet: Always use EINT0 IRQ
+      arm64: dts: mt6359: Add accessory detect node
+      arm64: defconfig: Enable MT6359 ACCDET
 
-> +
-> +/*--------------------------------------------------------------------------*/
-> +/* Register Mask                                                            */
-> +/*--------------------------------------------------------------------------*/
-> +#define DPHY_DVFS_SHU_LV	GENMASK(15, 14)
-> +#define DPHY_DVFS_PLL_SEL	GENMASK(25, 25)
-> +#define APHY_PLL2_SDMPCW	GENMASK(18, 3)
-> +#define APHY_PLL3_POSDIV	GENMASK(13, 11)
-> +#define APHY_PLL4_FBKSEL	GENMASK(6, 6)
-> +#define APHY_ARPI0_SOPEN	GENMASK(26, 26)
-> +#define APHY_ARDLL1_CK_EN	GENMASK(0, 0)
-> +#define APHY_B0_TX0_SER_MODE	GENMASK(4, 3)
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml   |   6 +
+ .../bindings/sound/mediatek,mt6359-accdet.yaml     |  42 ++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi           |   4 +
+ arch/arm64/configs/defconfig                       |   1 +
+ drivers/mfd/mt6397-core.c                          |  12 +
+ sound/soc/codecs/mt6359-accdet.c                   | 599 +++++----------------
+ sound/soc/codecs/mt6359-accdet.h                   |  55 +-
+ 7 files changed, 195 insertions(+), 524 deletions(-)
+---
+base-commit: 20d5c66e1810e6e8805ec0d01373afb2dba9f51a
+change-id: 20250214-mt6359-accdet-dts-00b189847f3c
 
-And those masks should also be platform data, as those are also different
-in other SoCs.
-
-> +
-> +static unsigned int read_reg_field(void __iomem *base, unsigned int offset, unsigned int mask)
-> +{
-> +	unsigned int val = readl(base + offset);
-> +	unsigned int shift = __ffs(mask);
-> +
-> +	return (val & mask) >> shift;
-> +}
-> +
-> +struct mtk_dramc_pdata {
-> +	unsigned int fmeter_version;
-
-u8 fmeter_version;
-u8 ref_freq_mhz;
-const u16 *regs;
-
-...etc etc
-
-
-> +};
-> +
-> +struct mtk_dramc_dev_t {
-> +	void __iomem *anaphy_base;
-> +	void __iomem *ddrphy_base;
-> +	const struct mtk_dramc_pdata *pdata;
-> +};
-> +
-> +static int mtk_dramc_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_dramc_dev_t *dramc;
-> +	const struct mtk_dramc_pdata *pdata;
-> +	int ret;
-> +
-> +	dramc = devm_kzalloc(&pdev->dev, sizeof(struct mtk_dramc_dev_t), GFP_KERNEL);
-> +	if (!dramc)
-> +		return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allocate memory\n");
-> +
-> +	pdata = of_device_get_match_data(&pdev->dev);
-> +	if (!pdata)
-> +		return dev_err_probe(&pdev->dev, -EINVAL, "No platform data available\n");
-> +
-> +	dramc->pdata = pdata;
-> +
-> +	dramc->anaphy_base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(dramc->anaphy_base)) {
-> +		ret = PTR_ERR(dramc->anaphy_base);
-> +		return dev_err_probe(&pdev->dev, ret, "Unable to map DDRPHY NAO base\n");
-> +	}
-> +
-> +	dramc->ddrphy_base = devm_platform_ioremap_resource(pdev, 1);
-> +	if (IS_ERR(dramc->ddrphy_base)) {
-> +		ret = PTR_ERR(dramc->ddrphy_base);
-> +		return dev_err_probe(&pdev->dev, ret, "Unable to map DDRPHY AO base\n");
-> +	}
-> +
-> +	platform_set_drvdata(pdev, dramc);
-> +	return 0;
-> +}
-> +
-> +static unsigned int mtk_fmeter_v1(struct mtk_dramc_dev_t *dramc)
-> +{
-> +	unsigned int shu_level, pll_sel, offset;
-> +	unsigned int sdmpcw, posdiv, ckdiv4, fbksel, sopen, async_ca, ser_mode;
-> +	unsigned int perdiv_freq, posdiv_freq, vco_freq;
-> +	unsigned int final_rate;
-> +
-> +	shu_level = read_reg_field(dramc->ddrphy_base, DPHY_DVFS_STA, DPHY_DVFS_SHU_LV);
-> +	pll_sel = read_reg_field(dramc->ddrphy_base, DPHY_DVFS_STA, DPHY_DVFS_PLL_SEL);
-> +	offset = SHUFFLE_OFFSET * shu_level;
-> +
-> +	sdmpcw = read_reg_field(dramc->anaphy_base,
-> +				((pll_sel == 0) ? APHY_PHYPLL2 : APHY_CLRPLL2) + offset,
-> +				APHY_PLL2_SDMPCW);
-> +	posdiv = read_reg_field(dramc->anaphy_base,
-> +				((pll_sel == 0) ? APHY_PHYPLL3 : APHY_CLRPLL3) + offset,
-> +				APHY_PLL3_POSDIV);
-> +	fbksel = read_reg_field(dramc->anaphy_base, APHY_PHYPLL4 + offset, APHY_PLL4_FBKSEL);
-> +	sopen = read_reg_field(dramc->anaphy_base, APHY_ARPI0 + offset, APHY_ARPI0_SOPEN);
-> +	async_ca = read_reg_field(dramc->anaphy_base, APHY_CA_ARDLL1 + offset, APHY_ARDLL1_CK_EN);
-> +	ser_mode = read_reg_field(dramc->anaphy_base, APHY_B0_TX0 + offset, APHY_B0_TX0_SER_MODE);
-> +
-> +	ckdiv4 = (ser_mode == 1) ? 1 : 0;
-> +	posdiv &= ~(POSDIV_PURIFY);
-> +
-> +	perdiv_freq = REF_FREQUENCY * (sdmpcw >> PREDIV);
-
-s/perdiv/prediv/g
-
-> +	posdiv_freq = (perdiv_freq >> posdiv) >> 1;
-> +	vco_freq = posdiv_freq << fbksel;
-> +	final_rate = vco_freq >> ckdiv4;
-> +
-
-there's also one case in which `final_rate >>= 2`... please check if it is
-applicable to this driver (it should).
-
-Cheers,
-Angelo
-
-> +	if (sopen == 1 && async_ca == 1)
-> +		final_rate >>= 1;
-> +
-> +	return final_rate;
-> +}
-> +
-> +/*
-> + * mtk_dramc_get_data_rate - calculate DRAM data rate
-> + *
-> + * Returns DRAM data rate (MB/s)
-> + */
-> +static unsigned int mtk_dramc_get_data_rate(struct device *dev)
-> +{
-> +	struct mtk_dramc_dev_t *dramc_dev = dev_get_drvdata(dev);
-> +
-> +	if (!dramc_dev) {
-> +		dev_err(dev, "DRAMC device data not found\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (dramc_dev->pdata) {
-> +		if (dramc_dev->pdata->fmeter_version == 1)
-> +			return mtk_fmeter_v1(dramc_dev);
-> +
-> +		dev_err(dev, "Unsupported fmeter version\n");
-> +		return -EINVAL;
-> +	}
-> +	dev_err(dev, "DRAMC platform data not found\n");
-> +	return -EINVAL;
-> +}
-> +
-> +static ssize_t dram_data_rate_show(struct device *dev,
-> +				   struct device_attribute *attr, char *buf)
-> +{
-> +	return snprintf(buf, PAGE_SIZE, "DRAM data rate = %u\n",
-> +			mtk_dramc_get_data_rate(dev));
-> +}
-> +
-> +static DEVICE_ATTR_RO(dram_data_rate);
-> +
-> +static struct attribute *mtk_dramc_attrs[] = {
-> +	&dev_attr_dram_data_rate.attr,
-> +	NULL
-> +};
-> +ATTRIBUTE_GROUPS(mtk_dramc);
-> +
-> +static const struct mtk_dramc_pdata dramc_pdata_mt8196 = {
-> +	.fmeter_version = 1
-> +};
-> +
-> +static const struct of_device_id mtk_dramc_of_ids[] = {
-> +	{ .compatible = "mediatek,mt8196-dramc", .data = &dramc_pdata_mt8196 },
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_dramc_of_ids);
-> +
-> +static struct platform_driver mtk_dramc_driver = {
-> +	.probe = mtk_dramc_probe,
-> +	.driver = {
-> +		.name = "mtk_dramc_drv",
-> +		.of_match_table = mtk_dramc_of_ids,
-> +		.dev_groups = mtk_dramc_groups,
-> +	},
-> +};
-> +
-> +module_platform_driver(mtk_dramc_driver);
-> +
-> +MODULE_AUTHOR("Crystal Guo <crystal.guo@mediatek.com>");
-> +MODULE_DESCRIPTION("MediaTek DRAM Controller Driver");
-> +MODULE_LICENSE("GPL");
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
