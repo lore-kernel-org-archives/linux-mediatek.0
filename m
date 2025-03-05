@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D45EEC282DE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 18:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B90CDC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 19:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lgye2yM77foHws6u8c1JTelfKPLtmebETTQ0OAWFeyg=; b=bIWZy8/YrW+MvA43AXgtP1h4W8
-	v0DpUlGL3LRCJI3eSbwMCOuO75zoF2BSaclJCsPWLCOg8zcxWHEz83V+igCw95ZvKFhX74QEiNmuc
-	e3ibFw5TcJvToGQPJ1cGfSHz7XIK+Az40N77g5gFDyglwmm4P/PeLkEquh44R7ToN6mIduCbNKqgB
-	YNGGdqAO13EZNrscrey6PyYlQpI3tAnFVSZw8uZscBTSaygDuIExiPfjawmqJ+WYfUra4E58aQi6I
-	EIndnqUD4PquamnM9NChs8vq+vQ8zPxyzuh7ylOiEg2LHRcdspti1RcwT4Sc7+gLNjl7R/01+Rg4x
-	HrO0jPoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pnR7kGV20ztpGOtiNskMN7IndMZcW40Rp6o6coAGqIU=; b=UwmKbSjx+8iwwT
+	1Ad8m6p5VbByTE2TUXLDGebL8CFiitlDYyBbxPT4MP0zDwaNeCYH2dxT6CKW0h2+1ZH+/s3zDVNHm
+	g3NP/TQBqVfPySBKpfZp6z+Nb/pJNkZKWozz6WedMsUzu6mfBArc3yf/hggrDfG7r8TNMBjxV4JRk
+	4WFAXhsAwGIvnWTL2FFuJqe/WPGpRv3V1y75SWdjdEUDF/ixlng1QemDSx6NSbETyqBKg+jB23Gi0
+	z/PWAAP5AI5oNHA7hAMl2nPEHbgpVi5FbJfHMfOGKj7o8nQExc5FjTIipkoHm7oRF9ytgYntMAFWH
+	ld8Li/mJj3oyD9EMne+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tptKR-00000008uTR-2cBI;
-	Wed, 05 Mar 2025 18:18:47 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tptzO-000000090cF-3kJD;
+	Wed, 05 Mar 2025 19:01:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpsF5-00000008lNF-3P5G;
-	Wed, 05 Mar 2025 17:09:13 +0000
+	id 1tptxi-00000008zlB-08pb;
+	Wed, 05 Mar 2025 18:59:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741194549;
-	bh=WEjrtOD5SRlKTyy/y4mcSiqWzrehr6/dzujDScRVSXo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JIUlbDIHNioNd7WrpDtDuKtKn8bWX7d+oG8SQ2P2MeP9y5iWDknHOvrKE/09WnNbA
-	 8HE+45oVuLOBSgwZanuL02KBAV1DJ47m1oHlQN6M+nWZoOi2jdUNTVrrFRMgYTmt8g
-	 gWxQGel+PA5OQB/a0xCtVo6HemRRlBgwr2ruk6ZwiGgRsefROFVhmlNSDLH2YYwF87
-	 hkoHuXC4rW0GsXoLOYfSNxbMPg0uAsMNk9pZMas6lS9yy/7DIOOqjcXoDm/nDh5XqI
-	 WU6sj5qJ7VnEqU8r7daNnnI/GTSslVRAMwmGiWQuLW9m2myoALHlsnXSK8oSmaLvQe
-	 64VBNtKkvYiBw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1741201160;
+	bh=u/GQhP1xEopgzVBLmurB5SYuCMPtvKHmpfxo57+s2TE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=MHW65aF5zt1j/P/JBQGhK4Ht+n1SPqCp9rnl7HVPK/MxufyDMnTGiFq+KJU5To5iu
+	 qjqaWvq5FMB2H4Gf2zY1a1Dj9sbP6up5u5ABBQap/J6xIVvaqHp6a5fm1e6dUlRAW4
+	 XD8uj8A1tPbMEZ9m2HwoRLr3Zga6yX6KmCt96gjg+Gbk5t9yVcxBEq170XEyFJWYDM
+	 qMlqFYxdiINU+ie2Dq6WE1/DzYrAimdTNsALBJFAJ9yXZG3HLif69TPKsAVpP+TtRg
+	 yNEMX5JoFuu4mB+FDfZwjN1Ssfs34DmXKRdaRdL67cCeeeuUIo9rncuCiYScq/P2wF
+	 2ExQ+Tk/zupXQ==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1004])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C659917E0599;
-	Wed,  5 Mar 2025 18:09:08 +0100 (CET)
-Message-ID: <dc68cb1c-0304-4ebf-ae38-444817a02f78@collabora.com>
-Date: Wed, 5 Mar 2025 18:09:08 +0100
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DFC6717E0599;
+	Wed,  5 Mar 2025 19:59:14 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v4 00/19] Get mt6359-accdet ready for usage in Devicetree
+Date: Wed, 05 Mar 2025 15:58:15 -0300
+Message-Id: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Add jack
- detection with accdet
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250304-genio700-accdet-dts-v1-1-86d77c5cc745@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250304-genio700-accdet-dts-v1-1-86d77c5cc745@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAMeeyGcC/33OSwrCMBCA4auUrI3k2TSuvIe4yGNqA62RpBSl9
+ O6m3ShSXP4D883MKEMKkNGpmlGCKeQQ7yXEoUKuM/cb4OBLI0aYJIwKPIw1lxob5zyM2I8ZE2J
+ poxuhWu5Q2XskaMNzMy/X0l3IY0yv7cRE1+k/baKY4FopQyW12gp3drHvjY3JHF0c0CpO7KNww
+ vYUVhRpfc05APFC7Sn8W9n9hW8KAdM6pltpf5VlWd73WOlzQgEAAA==
+X-Change-ID: 20250214-mt6359-accdet-dts-00b189847f3c
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Andrew Perepech <andrew.perepech@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_090911_997466_CAEDDA45 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20250305_105922_251148_BC30EBD0 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +88,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/03/25 22:43, Nícolas F. R. A. Prado ha scritto:
-> Enable audio jack detection for the Genio 700 and 510 EVK boards. This
-> is handled by the MT6359 ACCDET block, which on these boards has the
-> HP_EINT pin pulled high and connected to a normally open 3.5mm jack.
-> 
-> Add a phandle to the accdet in the sound card node so the machine sound
-> driver can initialize the accdet.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+This series prepares the MT6359 ACCDET for actual usage in the
+Devicetree. Patch 1 adds the required DT bindings, patches 2 and 3 get
+the mt6359-accdet driver probing, patches 4-17 clean up code related to
+DT property parsing, patch 18 adds the node in the Devicetree and patch
+19 enables the kconfig for the driver.
 
-For the next merge cycle;
+Together with the series "Allow retrieving accessory detection reference
+on MT8188" [1], and one extra patch on top enabling it on the
+genio-700-evk DT, this series was tested on the Genio 700 EVK to get
+audio jack detection working on it.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[1] https://lore.kernel.org/all/20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com
 
-> ---
-> This patch depends on both "Allow retrieving accessory detection
-> reference on MT8188" [1] and "Get mt6359-accdet ready for usage in
-> Devicetree" [2].
-> 
-> [1] https://lore.kernel.org/all/20250304-mt8188-accdet-v2-0-27f496c4aede@collabora.com
-> [2] https://lore.kernel.org/all/20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com
-> ---
->   arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-> 
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v4:
+- Moved DT-binding for accdet from standalone file
+  (sound/mediatek,mt6359-accdet.yaml) to parent mfd's file
+  (mfd/mediatek,mt6397.yaml), squashing patches 1 and 2.
+- Link to v3: https://lore.kernel.org/r/20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com
+
+Changes in v3:
+- Removed unneeded '|' in mt6359-accdet's dt-binding description
+- Removed unneeded unevaluatedProperties for accdet node in mt6397's
+  dt-binding
+- Clarified HP_EINT pin is on the MT6359 PMIC in mediatek,hp-eint-high's
+  description in the mt6359-accdet dt-binding
+- Link to v2: https://lore.kernel.org/r/20250302-mt6359-accdet-dts-v2-0-5bd633ee0d47@collabora.com
+
+Changes in v2:
+- Removed all DT-binding properties except for EINT polarity one
+  (mediatek,eint-level-pol / mediatek,hp-eint-high)
+  - Added patches 12-18 to make those settings internal to driver
+- Renamed mediatek,eint-level-pol to mediatek,hp-eint-high and made it
+  bool
+- Added patch 20 to enable the MT6359 ACCDET Kconfig in the defconfig
+- Removed unused btn_type variable as part of "Drop dead code for button
+  detection" patch.
+- Link to v1: https://lore.kernel.org/r/20250214-mt6359-accdet-dts-v1-0-677a151b9b4c@collabora.com
+
+---
+Andrew Perepech (2):
+      mfd: mt6397-core: Add mfd_cell for mt6359-accdet
+      ASoC: mediatek: mt6359-accdet: Implement HP_EINT polarity configuration
+
+Nícolas F. R. A. Prado (17):
+      dt-bindings: mfd: mediatek: mt6397: Add accdet subnode
+      ASoC: mediatek: mt6359-accdet: Add compatible property
+      ASoC: mediatek: mt6359-accdet: Handle hp-eint-high property
+      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT/GPIO IRQ handling
+      ASoC: mediatek: mt6359-accdet: Drop dead code for EINT trigger setting
+      ASoC: mediatek: mt6359-accdet: Drop dead code for button detection
+      ASoC: mediatek: mt6359-accdet: Drop dead code for plugout-debounce
+      ASoC: mediatek: mt6359-accdet: Drop unused moisture variables
+      ASoC: mediatek: mt6359-accdet: Always use internal resistor
+      ASoC: mediatek: mt6359-accdet: Make PWM debounce settings internal
+      ASoC: mediatek: mt6359-accdet: Always use eint detect mode 4
+      ASoC: mediatek: mt6359-accdet: Always set micbias1 to 2.8V
+      ASoC: mediatek: mt6359-accdet: Always configure hardware as mic-mode 2
+      ASoC: mediatek: mt6359-accdet: Always set comp-vth to 1.6V
+      ASoC: mediatek: mt6359-accdet: Always use EINT0 IRQ
+      arm64: dts: mt6359: Add accessory detect node
+      arm64: defconfig: Enable MT6359 ACCDET
+
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml   |  51 ++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi           |   4 +
+ arch/arm64/configs/defconfig                       |   1 +
+ drivers/mfd/mt6397-core.c                          |  12 +
+ sound/soc/codecs/mt6359-accdet.c                   | 599 +++++----------------
+ sound/soc/codecs/mt6359-accdet.h                   |  55 +-
+ 6 files changed, 198 insertions(+), 524 deletions(-)
+---
+base-commit: 20d5c66e1810e6e8805ec0d01373afb2dba9f51a
+change-id: 20250214-mt6359-accdet-dts-00b189847f3c
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
