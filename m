@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EA8C282DE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 16:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219EDC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QIFdCVcsL4iQx7G5iUzW/N9jrVLeZnqO/8rPT1T8r64=; b=gwf9HnCwi6lIvChy8ZCFkig8Go
-	ypF2d4xwxHzHGYwptqFhVMGGQ7zQIgDOgNMxCx5+2HVaVEhGy0Z5FQnqtN3vQg0NYludWTLuq6SoK
-	5AKCfQe8yL38erq3nB79pLS5fArpxETjXhWO4NQsg+Z+OW3wVSUD18sbJtXYQDYrwD+K+vshXvNFK
-	H0puuQDokLJWcKcpJKfV0awngwG7n+7cWctj56mAt2S5bR2auEZnSVXwdp1rSi9o3elpbzI6Iq6Ee
-	IGXs5lmrV5OE8gzUGduAvMiYM14ir/2kSmQG0toZXIIb5ZYCDwl9DTTW8IrOfdkS4V99yYGDuXdpa
-	xiRWtOGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5kSxBBmXLp5znuvDpyfInXgp33ac9fBkMm+7i47g4Mo=; b=ixs5zjrnz81bo1W4zOqG03EbzC
+	g5Sy74616qPyHMRkNL6H5XCgni42AxEzCisf1Ufu+NLGvZPjFRCWkM1pRHvem/XRTuoSCOIreaKe3
+	t9Rm0wVxoFcL4DAogIIowoN9CKJvWOJJilu32qvW5qvBShBqRSTMe3OSRI8g+1HmxTwdpI8ObUSlg
+	y4C6eTB697xaPkYVBVPo5+fMD3dIuY+r+G3L4DgVGMCwFVJIt6a3ZpnLFUFRVqGx+/YzmXcmAvcN5
+	q0wdIBhwpyHi01Wch72ZAdml2Bpc/PDRVYQs9p+40o8y0pHMcsquBg/C+nyCCqGofba//VFrc8j2E
+	0ujUls8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tprvL-00000008ijU-373r;
-	Wed, 05 Mar 2025 16:48:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tpsQG-00000008mqK-14Ay;
+	Wed, 05 Mar 2025 17:20:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tprt8-00000008iPp-2Wlu;
-	Wed, 05 Mar 2025 16:46:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2943A5C6AC9;
-	Wed,  5 Mar 2025 16:44:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80768C4CED1;
-	Wed,  5 Mar 2025 16:46:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741193189;
-	bh=5R+bfCWSs0CHr+4SSHK1pIvtQQhw4GPWfj0W69fAkXs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tjjbyQHSEB3yA22fSpVSJRaEeGXTbXrmkP5/dCpYJnECMFDRectCzrJEh7nPQgMbJ
-	 /QWKDpAXRo8VKVQvNvwhypmWNoyb5v8Z2WgolFKvD6ULWtEeSOIyrAYb79XorXJtGk
-	 XiOMotXGo5WZO9WZzcA8S8c7D3gbgMFvV2ej1DJW1FF3KOCuld8iLldC1Wrch0M2Vf
-	 kRnb2p4pNr3WYUqbmg/ZmWHmRsGmwUnZmEOiQy7YSAPTuJgemH4vXPXvjfdeB+Eijl
-	 UcNJdISBztpd9R7sw8tuXb6GGIRlYIaOcxtQ/gKvFwn8xqzK/C+DxsvN8R9d4+ps/r
-	 5Z9gQFbpix4gw==
-Date: Wed, 5 Mar 2025 10:46:27 -0600
-From: Rob Herring <robh@kernel.org>
-To: Jjian Zhou <jjian.zhou@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>
-Subject: Re: [PATCH RFC 3/3] dt-bindings: mailbox: mtk,vcp-mbox: add mtk
- vcp-mbox document
-Message-ID: <20250305164627.GA2117924-robh@kernel.org>
-References: <20250305082047.15746-1-jjian.zhou@mediatek.com>
- <20250305082047.15746-4-jjian.zhou@mediatek.com>
+	id 1tpsOK-00000008maW-2sNv;
+	Wed, 05 Mar 2025 17:18:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741195122;
+	bh=VLo1VfKrncc62HR3H2AUBFVFZ8nlgV/Ud1MBfjGjdvc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aTA7ZkljZ0mv/kvuFSL6iNhvjnFmepeIqml6cipt78WQCD8DVBYT4ayvgJNa8bDxZ
+	 9eyAoRiJFFSLFDUWN/eYHS4iFF6gG1x21l6eC4OVpNq/LxPxUV3Kag5RH38TpsPS/D
+	 Tj9X1QpmSv3XQOhFpvb0ppJ+71rYZJYxdGx3fjlIjSJoyRErnnPsUJr4+UABm9pOsV
+	 zvkQTu++r3FyH99pMIh36+wrVRM2D62KYLydeDBpxWVRFPd9abf/Yrr0CpuM1WqXDZ
+	 9TzubIlTg/b9ZFaTPbSF20cGG5fT6j1ItwO37jslD/R4XNdUZWZvBK9rMQE+SSp8PI
+	 FpzVtRGmCqe2w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB02417E0599;
+	Wed,  5 Mar 2025 18:18:41 +0100 (CET)
+Message-ID: <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
+Date: Wed, 5 Mar 2025 18:18:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250305082047.15746-4-jjian.zhou@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] ASoC: mediatek: mt8188-mt6359: Add accdet headset
+ jack detect support
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Zoran Zhan <zoran.zhan@mediatek.com>
+References: <20250304-mt8188-accdet-v2-0-27f496c4aede@collabora.com>
+ <20250304-mt8188-accdet-v2-3-27f496c4aede@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250304-mt8188-accdet-v2-3-27f496c4aede@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_084630_696506_E954D20B 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20250305_091844_880848_00B29DF6 
+X-CRM114-Status: GOOD (  21.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,74 +83,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 05, 2025 at 04:20:40PM +0800, Jjian Zhou wrote:
-> This patch adds document for mediatek vcp mbox.
+Il 04/03/25 22:35, Nícolas F. R. A. Prado ha scritto:
+> Enable headset jack detection for MT8188 platforms that use the MT6359
+> ACCDET block for it, indicated by the mediatek,accdet property in DT.
+> For those platforms, register a jack and initialize the ACCDET block to
+> report jack events through it.
 > 
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
+> Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+We chatted about the issue that I raised before with mt8188_headset_jack_pins[],
+it's fine to have it for now, as whatever we do with that would still duplicate
+things and there's no way around that for now.
+
+The sound card driver should get a bigger cleanup anyway, and it's not really
+possible even because otherwise we'd break UCM2 confs, so it is what it is.
+
 > ---
->  .../bindings/mailbox/mtk,vcp-mbox.yaml        | 49 +++++++++++++++++++
->  1 file changed, 49 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
+>   sound/soc/mediatek/Kconfig                |  1 +
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 43 +++++++++++++++++++++++++++++++
+>   2 files changed, 44 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
-> new file mode 100644
-> index 000000000000..d5afe295af14
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
-> @@ -0,0 +1,49 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mtk,vcp-mbox.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Video Companion Processor (VCP) mailbox
-> +
-> +maintainers:
-> +  - Jjian Zhou <Jjian.Zhou@mediatek.com>
-> +
-> +description: |
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index 3033e2d3fe16840631a465dd967da77f7a6ff43c..64155ea7965a1cc50593fef442ce90761836f328 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -237,6 +237,7 @@ config SND_SOC_MT8188_MT6359
+>   	select SND_SOC_NAU8825
+>   	select SND_SOC_RT5682S
+>   	select SND_SOC_ES8326
+> +	select SND_SOC_MT6359_ACCDET
 
-Don't need '|' if no formatting
+The only remaining complaint that I have is that this driver shouldn't really
+add a select SND_SOC_MT6359_ACCDET.
 
-> +  The MTK VCP mailbox enables the SoC to communicate with the VCP by passing
-> +  messages through 64 32-bit wide registers. It has 32 interrupt vectors in
-> +  either direction for signalling purposes.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8196-vcp-mbox
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  "#mbox-cells":
-> +    const: 0
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - "#mbox-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    vcp_mailbox0: mailbox@31b80000 {
-> +        compatible = "mediatek,mt8196-vcp-mbox";
-> +        reg = <0x31b80000 0x1000>;
-> +        interrupts = <GIC_SPI 789 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        #mbox-cells = <0>;
-> +    };
-> -- 
-> 2.45.2
-> 
+Instead, the mt6359-accdet.h header should be modified to stub-ify the accdet
+driver functions in the case in which it's not built in, or not available as a
+module anyway.
+
+This is because the accdet driver is not *mandatory* for this driver to work,
+and being it an optional peripheral, adding a dependency doesn't really make
+a lot of sense as it'd only force in bloat when not wanted.
+
+So...
+
+Get to that mt6359-accdet.h header and:
+
+#if IS_ENABLED(CONFIG_SND_SOC_MT6359_ACCDET)
+
+function signatures
+
+#else
+
+static .... { return -EINVAL; (or whatever else) }
+
+#endif
+
+That said, for the future v3 of this commit, after removing the select
+SND_SOC_MT6359_ACCDET (and granted that the proposed header fix is in place),
+you can add my
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
+
+
 
