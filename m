@@ -4,114 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FDDC19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 13:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A034C28B22
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 13:33:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6/OfFtkDCpNUsNNnB4udxCcQxzWSEZIHYYoj3YjYWKw=; b=d+RYL66pcV03+dnRjtrSBIzsNG
-	w5TfAHJ3H32+ox/XiuxpQP8Yp0pxzkPvjX1e3yaSI4oREHcDZLY+ai4EzsQe6Ih70Uh/HSEknW1iW
-	PLd7Be7R5Rc/sKMIkgeW9H+diOUnOFe4XlvOxmN2k5SccqZtAqZCRL/TdIfciClVOYAJbKkaisIus
-	QyRl3WlVV6dT7toGdeHNmu8cDKNycEZgxjWlQmkH+4Ay6fiksXOrkjx6bJp6n9zUb6V/fQZ7XZ2Y9
-	B+5RcwU0MtssPeHqxbKqqgVs67E+mV+dgi2H9Yxtr6BTGKfAj2igxwMbQEM1AcYkbhOUggHLZvPEM
-	DUGv4djA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HkPZ51RynLPl8lEDtKqRqmA8X52R+qBALY1AJbD2IuQ=; b=1L3zVdDFgBGk6h
+	PJZAsBr7Ezho5thJhVKRZ/dW7n3cdgPAEkLHzg9KbMUozyLg9O6yqRDyHNQFmzXZf9lkMOVUach9y
+	7v5V2TMZRnfEkq3hJ9C2Ak5yfoAXlbSPzoitcez7ZQR+OjzW6DhoxKH6vtye/ie0FjFh30hvz67/z
+	dDdVjbo+k/qMhV41FyfhGjVhkGEtqb7/we/IbJH/XmHZusLyPwaEkQDBTp9f/W78GuL9dcnFPpLWu
+	qVBmo9N2Ls9PkkY6AtrKFjGOeLo4z0WUX/vMlSAaVf7xiTpTmoqn+ip8qGAD/DAscp4Q6vDW2puCK
+	NGxYGwdVcuapX7gk/DEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tposW-00000008Cat-44Dl;
-	Wed, 05 Mar 2025 13:33:40 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1tposY-00000008Cbv-3EU6;
+	Wed, 05 Mar 2025 13:33:42 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpm12-00000007gTm-2PzZ;
-	Wed, 05 Mar 2025 10:30:17 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-aaec111762bso1221726166b.2;
-        Wed, 05 Mar 2025 02:30:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741170615; x=1741775415; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6/OfFtkDCpNUsNNnB4udxCcQxzWSEZIHYYoj3YjYWKw=;
-        b=faCcyBdykmJnZQX56xtRGrtkdYowMl8J0eN7fDOZOy51wdQga/aNMtcrJjrWgPPirw
-         QAra1ZWtdn2uMyDFJUovE0CUszqfVhFLQNVN6CAhNErOCtRAjmOGJYN5SGTyOvFYNMyl
-         thyuRS/e24/3Wv9G84/NIPFbkZF5K9/wKvqOomRKddsGo6IaRKo22BJk2kXvw9INK/cu
-         zg9qGxs2G5B9ALUoAGLlRLgsZ/nX/wUCImGRDiy8nQbwQrY4Hs0jB00VZvmYJ1ZbHnxV
-         e5fAwYr4aZ6K+M5aXJ2EH35+SDxxhJ5NZBamg1sjH0CC/wGZgsBSox0PtBgZ7rwwwCaA
-         K7vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741170615; x=1741775415;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6/OfFtkDCpNUsNNnB4udxCcQxzWSEZIHYYoj3YjYWKw=;
-        b=fbugmmgbDi2gv6Le5bVW83mEYCRZI/yrdEruJImr+J7SNwWWjx5hOPgPQUMNJWtsLk
-         UNtYPcHRUBjzxwcUc3ko0ExUTh1f7xtF7Xjhh3/E24HX3gHCjffQJckyVhOTd9u7hYYS
-         EjP7xox9mpIUbS+eBQ3yhlTI5ACI49Uj/d3Kx5KGaGzUyDZZCQXkhE6B6XSBFwRV8B5P
-         QOz7IRDC9UWK98l0a8+7i8OHmEhEOIR1KRrmfk8gh6T5eRjpiZBOLEOzK+MASkCR8xH5
-         wtkAeocQJ+DCr5FI74CoJpz5PN4zCfKWHbRHOt4JIgVo2IdTvm0GoyZYLDLthttA+qmD
-         Uj6w==
-X-Forwarded-Encrypted: i=1; AJvYcCVn6v37qDs07q7A3TmDGL5guO6rrUg6g4Hhw5DKcLa+lwKp91s3U0o2vFa9QV9pwv118aOGMPQ+Fpv1CG17iYw=@lists.infradead.org, AJvYcCVy18JRwUYvNz/egR/CoKy00Yx/WZ2s2J4sIG7hfnNLuOxP4ofS8lj9TyzENgx7iNNaxNQxVhgpLbEApqS9pRS9@lists.infradead.org
-X-Gm-Message-State: AOJu0Yya7KNMtQtrfwKtQVpCfDH4gCePVfZlw+o3l2GmA4jmL+Gri2YC
-	TEzHZ/UWfXTgItZlNo8/Xe5xNmn1fVGNxLKY94Ceet4wYtHdYHcl
-X-Gm-Gg: ASbGncu8krKtKyXlT401QVhZ3+MsafoWEpo6adMSPnQ7rWqdPZdLy4lEaw/Z2mjHwSb
-	v91dE1YllmvvgzWkSZSlfUiCIcwCLWtvlnQ3PWhj1T8kuiLa5YnTaMeeCxhMSiGTGKb8l5OlzkO
-	9DNgdAZHg9lkCv5nv9Z2Ru+9achy2GofqWqGd+uvfH0zLDthOZYtIigYG6qGqICf2pW7Z6YdUJb
-	5xazxGqupZw0ZaryMY5dTurdBmnXhuhvo5xLaHKWqymSyiGtTLsd7SMJwnB+Na2b/jsJmxSt4Dk
-	RyVeFn0jl4NXSECuAQZCfSCvR35H4E5vAXRi+fMpQzfX35d2Klj/1MgiqR1mrcMb4J74l3Qo9Ax
-	VtGpgKM44chavsn9OM3Jn4cEdGQTEdkAbg+t59xVQ5nO/MIuSZDcXyX8F3zM7JQ==
-X-Google-Smtp-Source: AGHT+IE4FBEQwtKjza4fXvfpF7ocHLI/77Iaa2ed5/2y+GnUe2UR6+/DugyKaB64GhmbWBt7MA+dgw==
-X-Received: by 2002:a17:907:9726:b0:ac1:da09:5d32 with SMTP id a640c23a62f3a-ac20d84621cmr283526366b.6.1741170614628;
-        Wed, 05 Mar 2025 02:30:14 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1f7161a4esm247154266b.161.2025.03.05.02.30.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Mar 2025 02:30:14 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Ahmed Zaki <ahmed.zaki@intel.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-hardening@vger.kernel.org,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v9 nf 09/15] netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
-Date: Wed,  5 Mar 2025 11:29:43 +0100
-Message-ID: <20250305102949.16370-10-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250305102949.16370-1-ericwouds@gmail.com>
-References: <20250305102949.16370-1-ericwouds@gmail.com>
+	id 1tpnVX-00000007x2v-46pu;
+	Wed, 05 Mar 2025 12:05:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=HkPZ51RynLPl8lEDtKqRqmA8X52R+qBALY1AJbD2IuQ=; b=YalgRf5rCwEhVBVLeK9IraCLjA
+	oRsBRBTvXdUm0FKqbcNDpXEhy4JoOpJcZy0O0izs8HWo6ytlBvR/GeUS3VWqG5lIsP/JOGj/bqWok
+	oTWn74o0Lo4+9IUMxiK7oTCZibLLV9znePFsamvdAl6VLdpflOZwJ7J7fTe+1d51AwHYoFC8Z6SQ9
+	PdEijVpU3AYlKgaSSsMMm6wtWetXg0vu6aJVgyIGp6K7HYkkSGdpqfS4Hdkj5Dk060qVODCc9kssO
+	UrS1BGyDL8tpDF4tdENFI5SJPbFOwNtq2+Bwd+fS58dNbsVESZIO8WU2KB0LtjjpdqBvreONif5ZM
+	k7l6iOvQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpnVU-00000000Vnx-2eI0;
+	Wed, 05 Mar 2025 12:05:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741176343;
+	bh=cv01yWXXEehfnSZMHFpdXl+PqwR5Uk2g28SbDbVbfLA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eGm0NuZpMU0xchw2NZFx8AQArBzYrTRyAKk/tGXp1vW22wICZT5d2zir9X+JoXtnk
+	 u4OIF62gaTJwPG22KEuy8r/fbdqWMKBmS/lBvo6H4K0dPzvzCsDD4KvNzhuWitP2E4
+	 k2y8snNwLWUTlRLsoC/4w3DDK085UxvwyHrBAQmBuUpuZOABGsrebctvCUrjJnIyYw
+	 sho1rA5CSxZLFwElco10AekgBsDUa5Dv+flCQGOYwwu0z8dLIqQ8hx/qAaAzBsN9++
+	 QYE2n7YSw2gGnAG9bXRsz/KYBiB2K/jn7HezVoGztl8Z5PqAI8CH1Gl2YQkLT3o5To
+	 FjStWjMhEYOHQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6E3E017E0343;
+	Wed,  5 Mar 2025 13:05:42 +0100 (CET)
+Message-ID: <9d383fc5-8c64-478c-8aab-6c56bf5b45be@collabora.com>
+Date: Wed, 5 Mar 2025 13:05:41 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/8] mailbox: mtk-cmdq: Add driver data to support for
+ MT8196
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
+References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
+ <20250218054405.2017918-4-jason-jh.lin@mediatek.com>
+ <652e435c-563b-496a-a4c3-c2e2b665abcf@collabora.com>
+ <5aa04ff5fa567468f32921d4014bbae696c6470f.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <5aa04ff5fa567468f32921d4014bbae696c6470f.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_023016_612982_2DEEAC26 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20250305_120548_882954_ABDA132D 
+X-CRM114-Status: GOOD (  60.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,62 +89,399 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, "robh@kernel.org" <robh@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This will allow a flowtable to be added to the nft bridge family.
+Il 05/03/25 09:36, Jason-JH Lin (林睿祥) ha scritto:
+> Hi Angelo,
+> 
+> Thanks for the reviews.
+> 
+> On Tue, 2025-03-04 at 10:32 +0100, AngeloGioacchino Del Regno wrote:
+>>
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 18/02/25 06:41, Jason-JH Lin ha scritto:
+>>> MT8196 has 3 new hardware configuration compared with the previous
+>>> SoC,
+>>> which correspond to the 3 new driver data:
+>>>
+>>> 1. mminfra_offset: For GCE data plane control
+>>>      Since GCE has been moved into mminfra, GCE needs to append the
+>>>      mminfra offset to the DRAM address when accessing the DRAM.
+>>>
+>>> 2. gce_vm: For GCE hardware virtualization
+>>>      Currently, the first version of the mt8196 mailbox controller
+>>> only
+>>>      requires setting the VM-related registers to enable the
+>>> permissions
+>>>      of a host VM.
+>>
+>> I think that the GCE VM changes should go to a different commit, as
+>> that
+>> looks like being something not critical for basic functionality of
+>> the
+>> MMINFRA GCE.
+>>
+>> I really like seeing support for that, but please split the basic
+>> stuff
+>> from the extra functionality :-)
+>>
+> 
+> The VM configuration is the basic configuration for MT8196, so I put it
+> together with other configurations in one patch.
+> But I can understand you want the new function as a independent patch.
+> So I will split the VM related part, mminfra_offset part and dma_mask
+> part to 3 single pathes. Then add them as a driver data for MT8196 in
+> this patch.
+> 
 
-Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- net/netfilter/nf_flow_table_inet.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Yeah, thanks, the log simply gets more readable like that.
 
-diff --git a/net/netfilter/nf_flow_table_inet.c b/net/netfilter/nf_flow_table_inet.c
-index b0f199171932..80b238196f29 100644
---- a/net/netfilter/nf_flow_table_inet.c
-+++ b/net/netfilter/nf_flow_table_inet.c
-@@ -65,6 +65,16 @@ static int nf_flow_rule_route_inet(struct net *net,
- 	return err;
- }
- 
-+static struct nf_flowtable_type flowtable_bridge = {
-+	.family		= NFPROTO_BRIDGE,
-+	.init		= nf_flow_table_init,
-+	.setup		= nf_flow_table_offload_setup,
-+	.action		= nf_flow_rule_bridge,
-+	.free		= nf_flow_table_free,
-+	.hook		= nf_flow_offload_inet_hook,
-+	.owner		= THIS_MODULE,
-+};
-+
- static struct nf_flowtable_type flowtable_inet = {
- 	.family		= NFPROTO_INET,
- 	.init		= nf_flow_table_init,
-@@ -97,6 +107,7 @@ static struct nf_flowtable_type flowtable_ipv6 = {
- 
- static int __init nf_flow_inet_module_init(void)
- {
-+	nft_register_flowtable_type(&flowtable_bridge);
- 	nft_register_flowtable_type(&flowtable_ipv4);
- 	nft_register_flowtable_type(&flowtable_ipv6);
- 	nft_register_flowtable_type(&flowtable_inet);
-@@ -109,6 +120,7 @@ static void __exit nf_flow_inet_module_exit(void)
- 	nft_unregister_flowtable_type(&flowtable_inet);
- 	nft_unregister_flowtable_type(&flowtable_ipv6);
- 	nft_unregister_flowtable_type(&flowtable_ipv4);
-+	nft_unregister_flowtable_type(&flowtable_bridge);
- }
- 
- module_init(nf_flow_inet_module_init);
-@@ -118,5 +130,6 @@ MODULE_LICENSE("GPL");
- MODULE_AUTHOR("Pablo Neira Ayuso <pablo@netfilter.org>");
- MODULE_ALIAS_NF_FLOWTABLE(AF_INET);
- MODULE_ALIAS_NF_FLOWTABLE(AF_INET6);
-+MODULE_ALIAS_NF_FLOWTABLE(AF_BRIDGE);
- MODULE_ALIAS_NF_FLOWTABLE(1); /* NFPROTO_INET */
- MODULE_DESCRIPTION("Netfilter flow table mixed IPv4/IPv6 module");
--- 
-2.47.1
+>>>
+>>> 3. dma_mask_bit: For dma address bit control
+>>>      In order to avoid the hardware limitations of MT8196 accessing
+>>> DRAM,
+>>>      GCE needs to configure the DMA address to be less than 35 bits.
+>>>
+>>> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+>>> ---
+>>>    drivers/mailbox/mtk-cmdq-mailbox.c       | 90
+>>> +++++++++++++++++++++---
+>>>    include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
+>>>    2 files changed, 84 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> index d186865b8dce..0abe10a7fef9 100644
+>>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> @@ -43,6 +43,17 @@
+>>>    #define GCE_CTRL_BY_SW                              GENMASK(2, 0)
+>>>    #define GCE_DDR_EN                          GENMASK(18, 16)
+>>>
+>>> +#define GCE_VM_ID_MAP0                       0x5018
+>>> +#define GCE_VM_MAP0_ALL_HOST                 GENMASK(29, 0)
+>>> +#define GCE_VM_ID_MAP1                       0x501c
+>>> +#define GCE_VM_MAP1_ALL_HOST                 GENMASK(29, 0)
+>>> +#define GCE_VM_ID_MAP2                       0x5020
+>>> +#define GCE_VM_MAP2_ALL_HOST                 GENMASK(29, 0)
+>>> +#define GCE_VM_ID_MAP3                       0x5024
+>>> +#define GCE_VM_MAP3_ALL_HOST                 GENMASK(5, 0)
+>>> +#define GCE_VM_CPR_GSIZE             0x50c4
+>>> +#define GCE_VM_CPR_GSIZE_HSOT                        GENMASK(3, 0)
+>>
+>> typo: GSIZE_HOST....
+>>
+> 
+> Thanks, I'll fix it.
+> 
+>> ...but also, if you could add some brief description of what the
+>> VMIDs are used for
+>> and what the GSIZE is... that'd be very much appreciated from whoever
+>> is reading
+>> this.
+>>
+> VMID_MAP configuration is in the previous reply mail for CK.
+
+Oh, sorry, too many emails - sometimes I lose some :-)
+
+> CPR_GSIZE is the setting for allocating the CPR SRAM size to each VM.
+
+Would be awesome if you could then clarify the comment that you have later in
+the code here, from...
+
+/* config cpr size for host vm */
+
+to
+
+/* Set the amount of CPR SRAM to allocate to each VM */
+
+...that could be a way of more properly describing what the writel there is doing.
+
+> 
+>> The GCE stuff isn't even properly described in datasheets - I do
+>> (probably!)
+>> understand what those are for, but asking people to get years of
+>> experience on
+>> MediaTek to understand what's going on would be a bit rude, wouldn't
+>> it? :-D
+>>
+> 
+> I agree with you :-)
+> I'll put them in the VM patch and add some brief description for them.
+> 
+
+Thanks, much appreciated!
+
+>>> +
+>>>    #define CMDQ_THR_ACTIVE_SLOT_CYCLES 0x3200
+>>>    #define CMDQ_THR_ENABLED            0x1
+>>>    #define CMDQ_THR_DISABLED           0x0
+>>> @@ -87,11 +98,24 @@ struct cmdq {
+>>>    struct gce_plat {
+>>>        u32 thread_nr;
+>>>        u8 shift;
+>>> +     dma_addr_t mminfra_offset;
+>>
+>> It looks like this is exactly the DRAM's iostart... at least, I can
+>> see that in the
+>> downstream devicetree that's where it starts.
+>>
+>>          memory: memory@80000000 {
+>>                  device_type = "memory";
+>>                  reg = <0 0x80000000 0 0x40000000>;
+>>          };
+>>
+>> It doesn't really look like being a coincidence, but, for the sake of
+>> asking:
+>> is this just a coincidence? :-)
+>>
+> 
+> As the confirmation with the hardware designer in previous reply mail
+> for CK:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250218054405.2017918-4-jason-jh.lin@mediatek.com/#26258463
+> 
+
+That explanation was simply wonderful.
+
+> Since the MMINFRA remap subtracting 2G is done in the hardware circuit
+> and cannot be configured by software, the address +2G adjustment is
+> necessary to implement in the CMDQ driver.
+> 
+> So that might not be a coincidence.
+> But even if DRAM start address changes, this mminfra_offset is still
+> subtracting 2G, so I think it is a better choice to define it as the
+> driver data for MT8196.
+> 
+
+....so, this makes me think the following:
+
+1. The DRAM start address cannot *ever* be less than 2G, because otherwise the
+    MMINFRA HW would have a hole in the usable address range;
+    1a. If the start address changes to less than 2G, then also the IOMMU would
+        get limitations, not only the mminfra..!
+    2b. This makes it very very very unlikely for the start address to be changed
+        to less than 0x80000000
+
+2. If the DRAM start address changes to be ABOVE 2G (so more than 0x80000000),
+    there would be no point for MMINFRA to start a "config path" write (or read)
+    in the SMMU DRAM block, would it? ;-)
+
+I get it - if the DRAM moves up, MMINFRA is still at 2G because that's hard baked
+into the hardware, but I foresee that it'll be unlikely to see a platform changing
+the DRAM start address arbitrarily, getting out-of-sync with MMINFRA.
+
+I propose to just get the address from the memory node for now, and to add a nice
+comment in the code that explains that "In at least MT8196, the MMINFRA hardware
+subtracts xyz etc etc" (and that explanation from the previous email is again
+wonderful and shall not be lost: either use that in the comment, or add it to
+the commit description, because it's really that good).
+
+Should a new SoC appear in the future requiring an offset from the DRAM start
+address, we will think about how to make that work in the best possible way: in
+that case we could either reference something else to get the right address or
+we can just change this driver to just use the 2G offset statically for all.
+
+What I'm trying to do here is to reduce the amount of changes that we'd need for
+adding new SoCs: since that 2G MMINFRA offset -> 2G DRAM start is not a coincidence
+I think that, should the DRAM start vary on new SoCs, the MMINFRA offset will
+follow the trend and vary with it.
+
+So what I think is:
+1. If I'm right, adding a new SoC (with different MMINFRA + DRAM offset) will be
+    as easy as adding a compatible string in the bindings, no effort in changing
+    this driver with new pdata offsets;
+2. If I'm wrong, adding a new SoC means adding compat string and adding pdata and
+    one variable in the cmdq struct.
+
+Where N.2 is what we would do anyway if we don't go with my proposed solution...
+
+All this is just to give you my considerations about this topic - you're left
+completely free to disagree with me.
+If you disagree, I will trust your judgement, no problem here.
+
+>>>        bool control_by_sw;
+>>>        bool sw_ddr_en;
+>>> +     bool gce_vm;
+>>> +     u32 dma_mask_bit;
+>>>        u32 gce_num;
+>>>    };
+>>>
+>>> +static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const
+>>> struct gce_plat *pdata)
+>>> +{
+>>> +     return ((addr + pdata->mminfra_offset) >> pdata->shift);
+>>> +}
+>>> +
+>>> +static inline u32 cmdq_reg_revert_addr(dma_addr_t addr, const
+>>> struct gce_plat *pdata)
+>>> +{
+>>> +     return ((addr << pdata->shift) - pdata->mminfra_offset);
+>>> +}
+>>
+>> I'm not sure that you really need those two functions... probably
+>> it's simply
+>> cleaner and easier to just write that single line every time... and
+>> I'm
+>> saying that especially for how you're using those functions, with
+>> some readl()
+>> passed directly as param, decreasing human readability by "a whole
+>> lot" :-)
+>>
+> 
+> The reason why I use API wrapper instead of writing it directly in
+> readl() is to avoid missing the shift or mminfra_offset conversion in
+> some places.
+> This problem is not easy to debug, and I have encountered it at least
+> twice...
+> 
+> I think the advantage of using function is that it can be uniformly
+> modified to all places that need to handle DRAM address conversion.
+> What do you think? :-)
+> 
+
+Eh, if you put it like that... it makes sense, so.. yeah, okay :-)
+
+Still, please cleanup those instances of
+
+`cmdq_reg_revert_addr(readl(something), pdata)`
+
+those might be hard to read, so please just do something like:
+
+regval = readl(something);
+curr_pa = cmdq_revert_addr(regval, pdata);
+
+...reword to your own liking, of course.
+
+>>> +
+>>>    static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
+>>>    {
+>>>        WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>>> @@ -112,6 +136,30 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+>>>    }
+>>>    EXPORT_SYMBOL(cmdq_get_shift_pa);
+>>>
+>>> +dma_addr_t cmdq_get_offset_pa(struct mbox_chan *chan)
+>>> +{
+>>> +     struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
+>>> mbox);
+>>> +
+>>> +     return cmdq->pdata->mminfra_offset;
+>>> +}
+>>> +EXPORT_SYMBOL(cmdq_get_offset_pa);
+>>
+>> I think I remember this get_offset_pa from the old times, then CK
+>> removed it (and I
+>> was really happy about that disappearing), or am I confusing this
+>> with something
+>> else?
+>>
+>> (of course, this wasn't used for mminfra, but for something else!)
+>>
+> 
+> I can't find any remove history in mtk-cmdq-mailbox.c.
+> 
+> Maybe you mean the patch in this series?
+> https://lore.kernel.org/all/171213938049.123698.15573779837703602591.b4-ty@collabora.com/
+> 
+
+Uhm, I think I may have confused something here, but yes I was remembering the
+patch series that you pointed out, definitely.
+
+At the end, that series is doing something else, so nevermind, was just confusion.
+
+>>> +
+>>> +bool cmdq_addr_need_offset(struct mbox_chan *chan, dma_addr_t
+>>> addr)
+>>> +{
+>>> +     struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
+>>> mbox);
+>>> +
+>>> +     if (cmdq->pdata->mminfra_offset == 0)
+>>> +             return false;
+>>> +
+>>> +     /*
+>>> +      * mminfra will recognize the addr that greater than the
+>>> mminfra_offset
+>>> +      * as a transaction to DRAM.
+>>> +      * So the caller needs to append mminfra_offset for the true
+>>> case.
+>>> +      */
+>>> +     return (addr >= cmdq->pdata->mminfra_offset);
+>>
+>>
+>> /**
+>>    * cmdq_is_mminfra_gce() - Brief description
+>>    * @args.....
+>>    *
+>>    * The MMINFRA GCE will recognize an address greater than DRAM
+>> iostart as a
+>>    * DRAM transaction instead of ....xyz
+>>    *
+>>    * In order for callers to perform (xyz) transactions through the
+>> CMDQ, those
+>>    * need to know if they are using a GCE located in MMINFRA.
+>>    */
+>> bool cmdq_is_mminfra_gce(...)
+>> {
+>>          return cmdq->pdata->mminfra_offset &&
+>>                 (addr >= cmdq->pdata->mminfra_offset)
+>>
+>>> +}
+>>> +EXPORT_SYMBOL(cmdq_addr_need_offset);
+>>> +
+>>
+> 
+> OK, I'll modify the API like this.
+> 
+>> ...but then, is there really no way of just handling the GCE being in
+>> MMINFRA
+>> transparently from the callers? Do the callers really *need* to know
+>> that they're
+>> using a new GCE?!
+>>
+> 
+> Since the address subtracting is done in MMINFRA hardware, I think GCE
+> users really need to handle it in driver.
+> 
+
+Since the users of this infrastructure are multimedia related (disp/MDP3),
+I'd also like to get an opinion from MediaTek engineers familiar with that.
+
+CK, Moudy, any opinion on that, please?
+
+>> Another way of saying: can't we just handle the address translation
+>> in here instead
+>> of instructing each and every driver about how to communicate with
+>> the new GCE?!
+>>
+> 
+> The DRAM address may not only be the command buffer to GCE, but also
+> the working buffer provided by CMDQ users and being a part of GCE
+> instruction, so we need to handle the address translation in CMDQ
+> helper driver for the instruction generation.
+> E.g. ISP drivers may use GCE to write a hardware settings to a DRAM as
+> backup buffer. The GCE write instruction will be:
+> WRITE the value of ISP register to DRAM address + mminfra_offset.
+> 
+> But most of the CMDQ users only need to use GCE to write hardware
+> register, so I only keep the translation in cmdq_pkt_mem_move(),
+> cmdq_pkt_poll_addr() and cmdq_pkt_jump_abs() at the latest series.
+
+Yeah you're choosing the best of both worlds in that case, I do agree, but
+still - if there's a way to avoid drivers to have different handling for
+mminfra vs no-mminfra, that'd still be preferred.
+
+Having the handling for something *centralized* somewhere, instead of it
+being sparse here and there, would make maintenance way easier...
+
+...and that's why I'm asking for CK and Moudy's opinion, nothing else :-)
+
+Cheers!
+Angelo
 
 
