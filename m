@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17C8C282DE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B693DC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uo3mWNGatWCN9U9NdsHgYs4FZPyOo5lVBCESSB/+w6k=; b=oTRebaPR8qleqQkgqVOWg4PtVI
-	N8AmJEg5htYVQZR+cyRbXARPHJ9lq5b7gnYbgFyFK2aMNSQR9yBGveYU5JiQPP1Z6QB2btrpYhFde
-	BCpGM1MZxs7N5qJtFJOY6NJA+56lvhdsf0eYJriWcDNBq3T0zldKNjAR7tWfbyr2FieFOkJaaKkJq
-	vu0Jcub/E/D5cinjp3jGcEpeCo1BL1MXKLAZHyJuqt8biYnNOuDtWBuhosQZg9aY8XWozIDjr/mIf
-	n4cZeXHzSIkH6DMxtXc/xoGZUOEKfrn/yXeVBXD4TYj3ye6iVvmRyJGDC6qsfbFhpafk9TAWoS+jd
-	+NWJNN1Q==;
+	bh=vPDi1Ay7jp0BDlAY0A0QECjWaYzMr9Shmsur02Eb9uU=; b=SCmWmXaDY9muPCt7jxr3bvOl31
+	+wV9X8Lipv558yDuFzTI0HJRMDv3N1wf/Gw0pbhlyOyrJF9tlEVdOOeuMh4FQ87I4Pa+bkl3DOYPM
+	iEK/HUPWdZG++UQaGe3VjnNwq9eG2QwLXJg53uYFA8el/ebpZu3CdXOnnRovjOBdKStXHIpVrMBd8
+	4Y7SS9urUHxwqiitzh12aazRZoWHWdsBx3TwwVBAd80leRIdPVRvrHlbRQ4eHp6j9DAz8NmqspdCI
+	Crott9DqoIgL4k1/PFDJgv+eDUR8Kg+8PxH2j6GBd8BY0UscYYNPBW5ZtaOibat+xN0ZbyvgJ0nCJ
+	d9aZuN8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpsVm-00000008nOd-0I1k;
-	Wed, 05 Mar 2025 17:26:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tpscq-00000008o3s-1aLn;
+	Wed, 05 Mar 2025 17:33:44 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpsT3-00000008n5R-1Aej;
-	Wed, 05 Mar 2025 17:23:38 +0000
+	id 1tpreb-00000008frP-20vz;
+	Wed, 05 Mar 2025 16:31:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 46CC65C6B5F;
-	Wed,  5 Mar 2025 17:21:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72558C4CED1;
-	Wed,  5 Mar 2025 17:23:32 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id CFB7DA45B55;
+	Wed,  5 Mar 2025 16:25:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCFF4C4CED1;
+	Wed,  5 Mar 2025 16:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741195415;
-	bh=Uo3mWNGatWCN9U9NdsHgYs4FZPyOo5lVBCESSB/+w6k=;
+	s=k20201202; t=1741192288;
+	bh=mjfercYvHY6XW4hH6LajRSUm1yvoytFiSmictk11u7I=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ri8Ar6n5p2xBm9RoUR7lfLv/IX2/ebTBuDpaaCIcqGbViU7c/W9BiAWxLFXRF1t8I
-	 WzrFyqkvMHHNSXk48gJh8mxR2cSBXtaaNZMoWhdG6c0irXIjWomD+jTcJJG9OptBY6
-	 tM12CgTHcUHN/D1DrarJbIaOe9D9fUGJtZrT2eu0tFX6Re47o4ujUEYkCLIzfV+KI5
-	 3whidGPBut1xFRiGsqHXl6vpPDo6cKVvGtgbRMlaobOuq8xHNncI9ySvGBFasbZGPN
-	 ZZbFpugpS+3MAtNF5RekqT95D7Tee8/rh1FoJleciexP88k3zTO5MYFWV1mT0XkoJp
-	 1Mrl17smqux+A==
-Date: Wed, 5 Mar 2025 17:23:29 +0000
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	b=PdkYWWY56USlcELtkXOwMTB0B7NndvMTFbHWm5Ez1ffZ0OqyMcPXJw/cZOJ7PvwWQ
+	 M7dU8sf4Zuc6QsozhigHmnHDk23XVG4RDTxL+4VJFuNWDjqDgEFxlsC+GDS5cALLVD
+	 VRXXDM6ZHQpf+Nl0iLbwdqs4K9ud2YMqVG8V484AYlfl2Zcs38b4WZtkGI8kx4n8Ex
+	 zttMpJTanbvdpSEmZoTTnnrPD5LcMiTek6zeT18QEJWDSj+XwLSeXK5fgoc97bcv1U
+	 KA9HSh9MhayMoQSl907mwR6zeVrPoSEvAxf0Ove4v0BFWrdq3inptn1Gw+Jjzgbz87
+	 KbLsJf+5Ko0Rg==
+Date: Wed, 5 Mar 2025 16:31:23 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Jjian Zhou <jjian.zhou@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	kernel@collabora.com, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Zoran Zhan <zoran.zhan@mediatek.com>
-Subject: Re: [PATCH v2 3/3] ASoC: mediatek: mt8188-mt6359: Add accdet headset
- jack detect support
-Message-ID: <7661b71a-9d5a-46c4-9639-0fba1b118b52@sirena.org.uk>
-References: <20250304-mt8188-accdet-v2-0-27f496c4aede@collabora.com>
- <20250304-mt8188-accdet-v2-3-27f496c4aede@collabora.com>
- <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>
+Subject: Re: [PATCH RFC 3/3] dt-bindings: mailbox: mtk,vcp-mbox: add mtk
+ vcp-mbox document
+Message-ID: <20250305-chewing-henchman-aea98c18b412@spud>
+References: <20250305082047.15746-1-jjian.zhou@mediatek.com>
+ <20250305082047.15746-4-jjian.zhou@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="A3lZokx9nkSuQ7Eg"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="wpgFucSmUGsB0HoE"
 Content-Disposition: inline
-In-Reply-To: <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
-X-Cookie: Everybody gets free BORSCHT!
+In-Reply-To: <20250305082047.15746-4-jjian.zhou@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_092337_373949_D5CC5111 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20250305_083129_646198_51F69396 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +82,102 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---A3lZokx9nkSuQ7Eg
+--wpgFucSmUGsB0HoE
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Mar 05, 2025 at 06:18:41PM +0100, AngeloGioacchino Del Regno wrote:
+On Wed, Mar 05, 2025 at 04:20:40PM +0800, Jjian Zhou wrote:
+> This patch adds document for mediatek vcp mbox.
+>=20
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> ---
+>  .../bindings/mailbox/mtk,vcp-mbox.yaml        | 49 +++++++++++++++++++
+>  1 file changed, 49 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,vcp-mbo=
+x.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml =
+b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
+> new file mode 100644
+> index 000000000000..d5afe295af14
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
 
-> Get to that mt6359-accdet.h header and:
+When you go !RFC, filename matching compatible please.
 
-> #if IS_ENABLED(CONFIG_SND_SOC_MT6359_ACCDET)
+> @@ -0,0 +1,49 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mailbox/mtk,vcp-mbox.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Video Companion Processor (VCP) mailbox
+> +
+> +maintainers:
+> +  - Jjian Zhou <Jjian.Zhou@mediatek.com>
+> +
+> +description: |
+> +  The MTK VCP mailbox enables the SoC to communicate with the VCP by pas=
+sing
+> +  messages through 64 32-bit wide registers. It has 32 interrupt vectors=
+ in
+> +  either direction for signalling purposes.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8196-vcp-mbox
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  "#mbox-cells":
+> +    const: 0
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#mbox-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    vcp_mailbox0: mailbox@31b80000 {
 
-> function signatures
+label here is unused, please drop it.
 
-> #else
+Cheers,
+Conor.
 
-> static .... { return -EINVAL; (or whatever else) }
-
-> #endif
+> +        compatible =3D "mediatek,mt8196-vcp-mbox";
+> +        reg =3D <0x31b80000 0x1000>;
+> +        interrupts =3D <GIC_SPI 789 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        #mbox-cells =3D <0>;
+> +    };
+> --=20
+> 2.45.2
 >=20
 
-It should probably be return 0 for the registration/unregistration
-functions so the caller doesn't fail if it checks the return code when
-the accessory detection is configured out.
-
---A3lZokx9nkSuQ7Eg
+--wpgFucSmUGsB0HoE
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfIiJAACgkQJNaLcl1U
-h9CMZQf+Ifm+gO7vy+HK8RUWgpgzNwyEaaG9mU1+cZEDRedSC6PkwGHGr6nahS9G
-34+jdkZ/QUiRaiC9wFejUo6yDAxGAmn0vp4U1En2P1lzrjK/aa0mNneVXmN/p7bJ
-hAoLZr4RQ3iKCSqrWdpUVf/uLZ97LMNi7q7Gu13BbWJl0VYdfpcWyMcXWpZr62Is
-F5CSNUwZkvpcy6wzcj5P6Y1PSlR8c5SmygJ1ohNt9ujhNWNSxNqQoKajIgI+3oWK
-6Uw59dXmeWtFsCpcuB6/w2fKw+UdwYpnAbnwtGwlJivbRqa0vgt4Cxzzgflz0V4I
-AU2ee5PAEVtbq/r4fJ5EtqWBRE5yLg==
-=n+jb
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8h8WwAKCRB4tDGHoIJi
+0rmzAQDC6tROpS/C3bfqeRalnd+CJF3nrU5drTadY8j4LSJBswD/SAnH+kW5P5Zz
+1XAoP++vVC0+C1lqWccMOwxtkJk6nwo=
+=N2nw
 -----END PGP SIGNATURE-----
 
---A3lZokx9nkSuQ7Eg--
+--wpgFucSmUGsB0HoE--
 
