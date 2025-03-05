@@ -4,199 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C694C19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 09:48:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE52C282E3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 11:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OucT2r+FzZyV8TZv+G9GuHbneSmJ13WDwS4744v+VUg=; b=tXfB4DQ7iMMTwN/LHgyPrA547L
-	YKKAfNYJ7OKk18rTwb5aV0NJsbhHjjqkvcHfkHpYAAt235lw9IotN68G8c/6ZNCekkirCYFbbTeH3
-	szKANKsm0wx1tgsXqbg2TA/h2XxxIEJa1Y6Z+o9eh17C1j+E0XLZEYB3Jaj6/ZjXlx7kN2Fx/xSju
-	wWYd1+qfit8j8f/Yduhqg5oK3VKWNXa6MEZTCgQYkAy4SD/k7pq/93/NZJfHHmpanxyjjmxGrzfaT
-	uY7713q/2sHIDHnXCIEX88Cn9YBGmAPCJlhOKt2eOLWdhppxyda3r5NBc0LaKje209E7Fv9vnR0Xs
-	GBEOWytA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VGr0DGFtdF9vUQZNuQxbjKzErqMA9pCa8F2vVWAZr6U=; b=Cj8jmoA5y3s9/FI0uwnyChoR2c
+	ZIjVgG+4n+I7NM+IdJ6+tiLno+cTZgZWYcHcy8uSSO5NlJz5oZ2ofe5qR2K7XDsGN8KutLtIgKiPK
+	lNu4+Ialfz5auB1HikB7HlkjHM/oV+6i3DMxaPXGoe1UQTZpxG+PZuXqSnECiGK9F2Nv2IH+KemuE
+	Nndlq1qzzh7Nq76s4CTfeK9P8QRRECOBQcbjNvW/U9bZB4M4lv+KUaMZOxDi5v5zpyBsgAmnnBUeE
+	8ysrXhLUx+FD8K3wLDdUXjii8Zp/OdGBh069uSPhLq1DtnPM/pMvR2GUPlnmLbQHC9xRXJ/wTKqH7
+	3PFoZYQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tplML-00000007Yue-0Q8k;
-	Wed, 05 Mar 2025 09:48:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tpmZ3-00000007nQ1-42hm;
+	Wed, 05 Mar 2025 11:05:25 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tplKj-00000007YjT-0hZW;
-	Wed, 05 Mar 2025 09:46:34 +0000
-X-UUID: b6d564aaf9a611ef83f2a1c9db70dae0-20250305
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=OucT2r+FzZyV8TZv+G9GuHbneSmJ13WDwS4744v+VUg=;
-	b=lFn/NDfexMfo2btJVd4iM8opGLSCFZ87oLnCHCri8mX5QS72Ls5vvvDxwrv/Y7meIM5yRMoJeSNyHzEVygHx52GYM+3Yfp2sUtOP/B5kFb2p9CSFd6fW2QJZMP4/e2+QwY9Tt3QSVp5R0lP1I6q/HuP1NtqHFevegSq0jCJopls=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:9ecad97a-8ba1-44f4-8b9d-5a2691b26edb,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:a37cfb8b-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b6d564aaf9a611ef83f2a1c9db70dae0-20250305
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 69533028; Wed, 05 Mar 2025 02:46:29 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Wed, 5 Mar 2025 17:46:27 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Wed, 5 Mar 2025 17:46:26 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=X08zlugd0CU7+GWFPuzdoBrx2AGaCRV2x+1oeogbtZp0tuLgW0d/RQJfAoZKATkV1BBhpo44cYgngk8CGKjfrsZxPSNrREE0jqja1/S+Hzj27Gdib5M3no61srTbmksjVhLPcTeAYlP8G6DYWe4g2LxzeayVfycdTbpjWw5wEfHgSFAXw6acHGWghax0Y3Fdk8NDqbwafzK2INBaN5xoUaaJHyYw0oJHAdD6Ay941XaNkjwXlwbvCMw8BvObWT+9UdFeolJRDEsvFXJ3E7QfSMNiv3Zrvb2MuIBaAuiLsg4BUYxpVWxnclgU6pwktX5HxteaXBkQ9JS3eGRRD6jwUw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OucT2r+FzZyV8TZv+G9GuHbneSmJ13WDwS4744v+VUg=;
- b=JoPbKHZJoBIrBz5kd11UzavtZnTWWEUNJM7GbiQewzzIEmcpvSxoDcPIcXOcPw5wwaySXa6eqlBXxWFT6MCaQ+SrqBjgx9Rc7lNAQBCr7qiAqXbAyvWBqjpjxMTbKvq135c2JU8iingPOi3vtoN2htFGQ7MUt+LUdW9MMgzpumR/BfVSbsHtltbRHiW+u/hv7X9/SNJR1yWhfJmP9mk4lNMt5khP/l1i284PTAA3otbOwq454ZNAnCWCyxSzvmYa37k2rAOSgDaNHts6Kfi20i+ri5O1gyCUO8atTy3IfKSfAHFnI6oVjOohWl15I7uhpRJ4GhGOPPC2it9wP7zqSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1tpm0t-00000007gQ3-3tET;
+	Wed, 05 Mar 2025 10:30:09 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-abf42913e95so727794166b.2;
+        Wed, 05 Mar 2025 02:30:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OucT2r+FzZyV8TZv+G9GuHbneSmJ13WDwS4744v+VUg=;
- b=o775Z05AdLYOvbEacxnUIA4IU2xD2aZE+cBkRcoafOo2oRREwSpKK9Ybalc3BZQNipmgKfN5cBZnmFnK6p4UEO4KisKLKktIDeWJlBZGpYNn7OtGzMpr2pQozVbGYhxoECkZ/eX1RyxYsapA882kkCB9vbrK+l/caHofIXJfZl4=
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
- by SEZPR03MB7098.apcprd03.prod.outlook.com (2603:1096:101:eb::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.17; Wed, 5 Mar
- 2025 09:46:22 +0000
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::c6cc:cbf7:59cf:62b6]) by SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::c6cc:cbf7:59cf:62b6%3]) with mapi id 15.20.8511.017; Wed, 5 Mar 2025
- 09:46:22 +0000
-From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH v4 4/8] soc: mediatek: mtk-cmdq: Add pa_base parsing for
- unsupported subsys ID hardware
-Thread-Topic: [PATCH v4 4/8] soc: mediatek: mtk-cmdq: Add pa_base parsing for
- unsupported subsys ID hardware
-Thread-Index: AQHbgcg8NOxMJmq6REqrLg4+446/ZrNizfqAgAGVXIA=
-Date: Wed, 5 Mar 2025 09:46:22 +0000
-Message-ID: <03c523e66fd56442f49c38456476cf18be59e8fb.camel@mediatek.com>
-References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
-	 <20250218054405.2017918-5-jason-jh.lin@mediatek.com>
-	 <581fc075-25d8-4104-a4ee-8c97e1a017e6@collabora.com>
-In-Reply-To: <581fc075-25d8-4104-a4ee-8c97e1a017e6@collabora.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|SEZPR03MB7098:EE_
-x-ms-office365-filtering-correlation-id: e660fb51-b3d7-4e19-b21f-08dd5bca965d
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?OW1sN1RRS0hXY091K2tZQnRTU2VUZ2pOOUNvQjhqRW5WT3orOFVsZzRKYzlL?=
- =?utf-8?B?VmZLVTlvdzYzTE9sRi9YQldJd2s5aHpaWDVkUGR1bmNwelVtaTBiNHQ5SHRY?=
- =?utf-8?B?YXU0anRKMFBjL3NPZzFTY3hlbmRFWEc0TEhpaXVQdVBEcmhGdDRUNWYrZCta?=
- =?utf-8?B?SVZrdTNVenRQcG5tSWt5djlLc2VPR0JDUXUvRVFvSjN3b3RVSG5FVUl5V2pZ?=
- =?utf-8?B?V0lPYmhFMzkvTThBOUdiamdRRXltQTJjaXJlcGdhTmg4M2NvYlFKckJJU1U5?=
- =?utf-8?B?ZWs0Mk51bGhmdC9jbnhIMG5OK1R2cTdOOG81cVQvM0o4allmUnRtbW9tcHF1?=
- =?utf-8?B?QXk5NU9kWGU2K3FXMFRHTStDS3lQRm1WTlk4dXJTOS8zUXExSHpya3FKQ1BY?=
- =?utf-8?B?RzhScUxoYzR4MnUyaU1FN05ndGNvRGJta2E2TXE1WmpBYlY3aHRmS2NJakFw?=
- =?utf-8?B?eEVLTEtYNFBxbG1yV1Frd3ZQa3Nla3JVSlJzcWN5N1hGdEV0ellDS0p4Z0d6?=
- =?utf-8?B?eFdnRmg3VWVXbmpFaEtnSisvdGJTUmI5NlE4cU1ZNk5TbFQ4UGI3VmlBZkNZ?=
- =?utf-8?B?VjJXZjFGci84NE5BYTZMUlJJVkUwWEdwQ01lWW4xbEcxbmdhTlFxdWd2azJP?=
- =?utf-8?B?bVJnb3JBV1dteDJLdDdSNEpSNjlRNWZWdEU5UFdtWE0rNnhLR2wzMWdQMExm?=
- =?utf-8?B?SElicVJQTGJSWlpjVkp2OXJJV0hvTzJJd1p1SHQ5bDNZWVUyRGlYTEN2UzEy?=
- =?utf-8?B?Tmpvd2Rqb1FRVzJjNUhLZHk2ak1vTGp1OHc0QksxdmtuaWZsUlBmT1NLWCtC?=
- =?utf-8?B?N0Q0TDNWWWVQeFl3YU1qajRNYWVKdG5UTlpGMndiNjdJS0Nsd1FtYkg1eGk0?=
- =?utf-8?B?WUVEdmxBQ1JBZjJMWUFyY3hTak9ydkZ1eGtNV09jbmozV1ljTW0vM1JSUWJX?=
- =?utf-8?B?bW1qUDlwVnM4Qk5ndElXTFQzb0lPclR5clNjdjVFb0FWdXRtMHdGL2ZIMkpw?=
- =?utf-8?B?cGErQXhpT2g4OXlXRUMyaXE4a09GdFA1Z3N2elRkV1BjakZJQXV1Qmw4Z29G?=
- =?utf-8?B?M29IMlYzN2tyQWdsdVhiRU9SVVlYNGhIZjhYVTBhUVZYYlg0WG1iTkRTWXV0?=
- =?utf-8?B?RnY1Y1Frb3krUndzOGxRc1VLQlRoaGFhNW1kaVduVXRycHN5TVB4YTl4OXZX?=
- =?utf-8?B?VHlqZzlvMVJnZEhnTjhLdzUzSUdldUY4RnFha2NIRjFHb0cwayt4MElJRFE0?=
- =?utf-8?B?UVFpWVpaNXljQ3RucTZ6b3FYZXo2S0pjMGZXVkMyU1duR2ZoUmxBNFlyTEpV?=
- =?utf-8?B?SzNKb2xjTVNwT0I4cTJWbERtRXhud1d1RTBkUi9WbEtyKy84NUJuUDRpcDN6?=
- =?utf-8?B?YVFiQXNNYk9mNFJZWXdBM2gxNHFVdDFFL3ZnOXlUN1M4aWJCR25Uay85ZEVL?=
- =?utf-8?B?SDdhMnVySTB5U3dOZjd1Zk1Sa2UyVkpQcW9qVHN4L0pvTjRPaGJHTFhoNFU3?=
- =?utf-8?B?K3pvTUdyVHlnUC83TVJRMWI3QlprL1pONUdocS9yTUMrUit3Mk9Qa0l1Z1RG?=
- =?utf-8?B?RFQzSDhxWlhNVGRlUEZoY1pqSDhwWW1OeEZ5SUUwQWNYWjN4MWEzNmpiQW44?=
- =?utf-8?B?TXRPU0kzbXdoTEp4VFJvcFdQTk8zMmFCaE9wWDYzTlAzYVZ5VUFsMktWNDd3?=
- =?utf-8?B?SFRFaEdkV1BXZVdxL3YxejNhYitEWHdMYS9sYkttdGhzZWlMVUhaQmpKOXla?=
- =?utf-8?B?WjZiTnFyMkhVc1FKQkROeEk2ZnZ2VjkxQzRvS2lXRWNkVE1tQlM4Lzg3b2M2?=
- =?utf-8?B?Mjh0SEt4M1RhQWZsVUx3dXlUTXZYVkdNdEhvNjM0NDF1bHc1QUZqaTh4VE5q?=
- =?utf-8?B?TG82UGFYdTdmeXp2M3BXUzNEempwcC9yQW8yZEcyejlOZlhSK3pwbzdpT2Vp?=
- =?utf-8?Q?KG2VErmyGrdNqAYDzByIAYbMoDVPvHbu?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aThHREdpR1Nmc0J1K25WNmRMcVlVQ2hKMHl6OGhla2J4V1BvR3RydkRXc2dv?=
- =?utf-8?B?REtiWjY0VTRPYllram1ONllJWkhkNVpjMzFxOTBXcnA0ZWdzakFsWFFjY3px?=
- =?utf-8?B?OTBYanBIT1ZmS3M3Y2FrOXE0ZWt4TTNMaUtvYThYZXlQYnJNb0ZQcDlVakRy?=
- =?utf-8?B?V2wwdTdZYXVzQ3Rxem1OUUNCTkFNbGVHZGJpUWdRTVNZMXdUMEhDRTNkZHFh?=
- =?utf-8?B?RUxBZmJBV3lyeWRTTnVGSmRaRUFyMzF1cTRma01aOFlSOUN2SVNWM3JINFpL?=
- =?utf-8?B?Z1NmTTZxdlpjQXF0Yis3a3ZISlkwR2N2bVRtK2xPMHd4alZRamNGd0R2bWNO?=
- =?utf-8?B?Yk02cmkwYmtoZVBtQWp0UU9Ia2EzYWpCZFUyN2dNQnc0WUNad3VJV21NdzFZ?=
- =?utf-8?B?Q0FZa1JYMjR0WE1mQkFMZEtxcEc3QzBsU2JrQjhXaHQ5aVFUTHdlYjN0bVAr?=
- =?utf-8?B?b2xpWXpNT2JRajdxcVh0cTBSZ0RJMWF4SkRFWWRIQUFONmRETTZjVFpXby9H?=
- =?utf-8?B?ZlZVcHVPaHQ4YS94dmxzb092NHlhOXZQSDhtSVRkbVcydjhhckJzcEZwejVV?=
- =?utf-8?B?MUpzMjkwT2JiSTIrSFY0SDY4bDZRMFJ3cEg3TVEydWt3aE10R3c4cFZyRldJ?=
- =?utf-8?B?eVgyckpNRWpady8weWFybmptNk5TWEd5TFJXNlJ2b1lVWi8vZnd2MWZNSmVK?=
- =?utf-8?B?cWVqVzJVY2JEYjlIeWxJcXlqRlRJakpwRHBPVXNFL3ZhcXJTM0tvM1BmOFdZ?=
- =?utf-8?B?MjcxZTE3ZFVhaEkwVVg3ekwwcFBXZzVUbGNYOC84clErRldrdWlidVhOMXV1?=
- =?utf-8?B?OXlvMWZnYkdZWFhwZ1BscHRRb3VDQzJyVXdtWmh2WnhHNGVtazlpQW5hVEdU?=
- =?utf-8?B?RXJYQlUrQkZLYStDR2x6dGcxZ3NEUlluOEJ5MzRLQ0ZVMVZpaUZCSVVwRGVM?=
- =?utf-8?B?RlhlZmRSU3RZRHpvSEVyY1pKTFFZYlpDb2hrc3hTNDJJZmhjOGUxQ0trdEdQ?=
- =?utf-8?B?bWkzdStWdG9hbWVtK2RBcEIvWW81bld2TVBUQ1dkb2ZNbXNjNTNHcGNjZldM?=
- =?utf-8?B?Q01naG8wMW5GM1NucVpFLzZoQ1lOZ3IrTWU3MmJhS3JMdFhFWmZyaWQzc3lj?=
- =?utf-8?B?Sml0WTlXWUZmVDlkSmp1SUNiUTBYRGRhTVdWTG5VMERHT1JKODJPTUJtQkd1?=
- =?utf-8?B?cXRJMlpMeklxOTluWXVxQklDVlZHemZuZGVYcXNMRnBCWmRNamw4MGdkZ0hR?=
- =?utf-8?B?Y0RvTStZQUNJcnhnSHdxeW4xdk5vcmpGaFBtK0dwSXhweEdWSlA1V1R2aUc0?=
- =?utf-8?B?R1VCMGlINjdQdVV6blNMZjdWKzkwZWlZV3M1bXFoalpnaXNHd1hjZjFGd2Ni?=
- =?utf-8?B?SldEbVVuWXNmNDlDODFDNGIzWTBCU3BpWEpGYWdOcXNHd2ttZVlRam02Smdt?=
- =?utf-8?B?aDIxZlVwc2V5akxYUGNycUtyM1dncldoWDlzdWhwMHpsRTdJaHQyL1NqYVdO?=
- =?utf-8?B?TDlMbUV5RjNscVg0SHJtZHFGK3dVeENOTHdHYlhXS3k4UHJuYmd5QTJIMHpx?=
- =?utf-8?B?Y211eVdJSTZVS1VPVWlBUG8rZWJGQ3p1dHhBUjRDOGdVV3BibzJiSzFuZjNJ?=
- =?utf-8?B?a1JRWWRyanowLzdtYzZ4MThuQnlrYkIyR3pKWkZuUnRoZ3ltUTE1ZmU3Yk1U?=
- =?utf-8?B?cTJOSzZNeWYreWducEhUSFhRaURhVmFobVhGWE1aNjhWRENIU09PQXRGYnV0?=
- =?utf-8?B?OFk5NzEvNEY2a3d4cUR2eHh1ekE4bm1aeExsQ3QrZytwcFdTOXFFVDlobDMy?=
- =?utf-8?B?VkZ6RjZhSGh4Zjdyc05laEpma3dLWTc0dWgweDV3TlZiN2Z2dXcrcmYvQlpL?=
- =?utf-8?B?NGcrNzdRMHRaTnNhQTNxdjhtcWxUSGFhVTRYNEFsWmVybHJFWlZSWlNFbEJY?=
- =?utf-8?B?NDJpb1FDT3BWc0FtVkl6d2RPSzdad25NZkp1WFkwUjNkWXZjTzhUNlFycWF3?=
- =?utf-8?B?QWFYUzhuU3FNSWdXWHlTVEhVTVRYNEEyRkhNMW83WG9IWmdaZTU3VUh3WFoy?=
- =?utf-8?B?SFU0eGdGOTdCaTl3TE1aUnBzTEE0V1p1U3lkRzhjdHZzbFlNUE9SUjBMVVhh?=
- =?utf-8?B?TVUwZVZneW1PeTBwbmJndGNubGNvcHV0cHBvVktUR21XYjRURWFYM3pmSWFy?=
- =?utf-8?B?SVE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <D92C17E37A07C24A9EBE5E1EEC6BB695@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20230601; t=1741170606; x=1741775406; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VGr0DGFtdF9vUQZNuQxbjKzErqMA9pCa8F2vVWAZr6U=;
+        b=Xr4bASO0EHCloGoY2L7EgT/k6Bvbw5liGMbZjyN4ZA+YseE6xY95TAsNrwdaKatBpC
+         WxY//ljUvBdMAhKgmBU2kLuorWIeanelCtxWFmVumZIii39+XkcHs2pNTPpMYBgNulVr
+         GvfXMazJllVZv7SQ3X7BuKXY/2WKjZ2fQSpaiGxik+uDAaiTTzcKvSr+HbfWctGUKrVK
+         t0iGa8ar8H1pVA9Vb2TuGtwZb6mz2e38x4tCh4ygNUMaFqAodBd6N2WpNzgidIlNt2z6
+         Tj9iV0REI7Zm7+mCDXsIv1isezC4XhyGBhpUUqEXuFb7NpTy32wRXDjHx/UoAZ+OrlC2
+         VBxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741170606; x=1741775406;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VGr0DGFtdF9vUQZNuQxbjKzErqMA9pCa8F2vVWAZr6U=;
+        b=N1p0jT4PXQ2bZQLJluG/lHTT4W9hWySFEvkziJDb1DAdt4c8IOkOKYlYk0L1NW/Wej
+         PwE1EJFkf7C0r1iSAW4xhqDOIZxz4ke7R8fIJ6IV3N4zV4pALH2jFMp8yFUOTykUiBI+
+         laR80G2L0ANUlZ4s5R2HoApi53mtsadTnwO0t2rUqc7BNwhLKUo4PtDaJom0Wbn5nf4J
+         cgIxkljlf8G299NyMLzFPDkycj5qkDjYT4e47npOGVujpZ2qzXB2JTNXJUWsqO/9GuFp
+         OFgIar4FQFpcSUm3d0vU/lvFYuLY+h8thipkmbKYjWZjuaqjASl7mLQ4QHjIkXR8qpId
+         Bb4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVxNkZyO87088j80vqFsofBOCIcE6aA1BVXfFsLZBINrX6dwMGeT3hRR/N8APQ3sAQbnSjjrbGLUrulo8PaTX0=@lists.infradead.org, AJvYcCWbAQCGJh1cosNEfW7L1T+lYtKBZevrdjS7gGuV/OFqeHfiKG5HgvkQFox6MZqstrDF3Wnk1yPp9Z7aAy1ytan4@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzt3GubSSilPLvvGivycU24ZUajQu2+PaBvwZUmUYZ39zFv4pz4
+	al3XaFbOjomxttd+K7souIA2g7mfWVGXzySNLUMcENm0bjQ6Q1Ee
+X-Gm-Gg: ASbGncvm2xypXfHTuMdOnjVAo2lE7/gpjuq4KAwRDpJ+zyMWP1Zg9ayVewY2faieUTe
+	bLkM9ec7qhZF9JZo+2lZIGUg9A/5A4UBjh8R0EdOMPSixtZTLyP3CLIBLHnq7J2au6HkHh8sZUC
+	Zg/ynTj9kT9m1qo2hBlFP4L6vXldACwnsAi+VNjFJHcoRHRQebtsPjFchuEcj0ABVMfwNHhYwEu
+	BwhZI69ZugnMQHqRqo+ZZ/DFr1zhK3czuBhL6cNp5A3wW0DuvXawI0HB5i8Lm4FaLaP0Wc5mt4n
+	UnSVzXzH/EmAYLFyTwkxsi+bPcNNxufvuoLJsdXyUSEyQaB5D1U63qh+1W3vlQMvHAdsAvyqS7k
+	STRhL5OIsrRoqcsVEc5kuDdB5QN2PCSd8yahijjhEEy95jkeLjgYRFnuWBr4yUg==
+X-Google-Smtp-Source: AGHT+IHy767DUvvq2GdNzFTZgEtw2mmlhPb8tvwjOW0NV0rTz/8fH6TDIbFvmbmwfZNkQ6dAvscC7w==
+X-Received: by 2002:a17:907:7e8b:b0:ac1:ea5c:8711 with SMTP id a640c23a62f3a-ac20d97e6cfmr241289466b.1.1741170605663;
+        Wed, 05 Mar 2025 02:30:05 -0800 (PST)
+Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1f7161a4esm247154266b.161.2025.03.05.02.30.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Mar 2025 02:30:04 -0800 (PST)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@netfilter.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Kuniyuki Iwashima <kuniyu@amazon.com>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Ahmed Zaki <ahmed.zaki@intel.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Frank Wunderlich" <frank-w@public-files.de>,
+	Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-hardening@vger.kernel.org,
+	Kees Cook <kees@kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Eric Woudstra <ericwouds@gmail.com>
+Subject: [PATCH v9 nf 02/15] netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit direct
+Date: Wed,  5 Mar 2025 11:29:36 +0100
+Message-ID: <20250305102949.16370-3-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250305102949.16370-1-ericwouds@gmail.com>
+References: <20250305102949.16370-1-ericwouds@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e660fb51-b3d7-4e19-b21f-08dd5bca965d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Mar 2025 09:46:22.0305
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cJrwWLBWZYhKNLwINqkrVuGD2dBFf6JKVjmBVhSi7jbWYRePCwLuR5SgplYo4y22z2YloTo7uv31ynTN+8AushIAHDl9yzonBEm06BVLd2c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7098
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_014633_226327_2BB9AF36 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20250305_023007_994969_C41F8ADD 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -208,30 +123,204 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>, =?utf-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?utf-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?utf-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDI1LTAzLTA0IGF0IDEwOjM1ICswMTAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBs
-aW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBz
-ZW5kZXIgb3IgdGhlIGNvbnRlbnQuDQo+IA0KPiANCj4gSWwgMTgvMDIvMjUgMDY6NDEsIEphc29u
-LUpIIExpbiBoYSBzY3JpdHRvOg0KPiA+IFdoZW4gR0NFIGV4ZWN1dGVzIGluc3RydWN0aW9ucywg
-dGhlIGNvcnJlc3BvbmRpbmcgaGFyZHdhcmUgcmVnaXN0ZXINCj4gPiBjYW4gYmUgZm91bmQgdGhy
-b3VnaCB0aGUgc3Vic3lzIElELiBGb3IgaGFyZHdhcmUgdGhhdCBkb2VzIG5vdA0KPiA+IHN1cHBv
-cnQNCj4gPiBzdWJzeXMgSUQsIGl0cyBzdWJzeXMgSUQgd2lsbCBiZSBzZXQgdG8gaW52YWxpZCB2
-YWx1ZSBhbmQgaXRzDQo+ID4gcGh5c2ljYWwNCj4gPiBhZGRyZXNzIG5lZWRzIHRvIGJlIHVzZWQg
-dG8gZ2VuZXJhdGUgR0NFIGluc3RydWN0aW9ucy4NCj4gPiANCj4gPiBUaGlzIGNvbW1pdCBhZGRz
-IGEgcGFfYmFzZSBwYXJzaW5nIGZsb3cgdG8gdGhlIGNtZHFfY2xpZW50X3JlZw0KPiA+IHN0cnVj
-dHVyZQ0KPiA+IGZvciB0aGVzZSB1bnN1cHBvcnRlZCBzdWJzeXMgSUQgaGFyZHdhcmUuDQo+ID4g
-DQo+IA0KPiBEb2VzIHRoaXMgd29yayBvbmx5IGZvciB0aGUgTU1JTkZSQSBsb2NhdGVkIEdDRXMs
-IG9yIGRvZXMgdGhpcyB3b3JrDQo+IGFsc28gZm9yDQo+IHRoZSBsZWdhY3kgb25lcyBpbiBNVDgx
-NzMvODMvODgvOTIvOTUgLy8gTVQ2Nzk1LzY4OTMvZXRjPw0KPiANCj4gSW4gb3JkZXIgdG8gYWN0
-dWFsbHkgcmV2aWV3IGFuZCBkZWNpZGUsIEkgZG8gbmVlZCB0byBrbm93IDotKQ0KPiANCg0KWWVz
-LCBpdCdzIGZvciB0aGUgU29DcyB3aXRob3V0IHN1YnN5cyBJRCwgaXQncyBub3QgcmVsYXRlZCB0
-byB0aGUNCk1NSU5GUkEuDQoNClRoaXMgY2FuIGFsc28gd29yayBvbiBNVDgxNzMvODMvOTIvOTUg
-Ly8gTVQ2Nzk1LzY4OTMvZXRjLg0KWW91IGNhbiByZW1vdmUgdGhlIGBtZWRpYXRlayxnY2UtY2xp
-ZW50LXJlZ2AgcHJvcGVydGllcyBpbiB0aGVpciBkdHNpDQphbmQgY2hlcnJ5LXBpY2sgdGhpcyBz
-ZXJpZXMgdG8gdmVyaWZ5IGl0LiA6LSkNCg0KUmVnYXJkcywNCkphc29uLUpIIExpbg0KDQo+IFRo
-YW5rcywNCj4gQW5nZWxvDQo+IA0KPiANCg0K
+Loosely based on wenxu's patches:
+
+"nf_flow_table_offload: offload the vlan/PPPoE encap in the flowtable".
+
+Fixed double vlan and pppoe packets, almost entirely rewriting the patch.
+
+After this patch, it is possible to transmit packets in the fastpath with
+outgoing encaps, without using vlan- and/or pppoe-devices.
+
+This makes it possible to use more different kinds of network setups.
+For example, when bridge tagging is used to egress vlan tagged
+packets using the forward fastpath. Another example is passing 802.1q
+tagged packets through a bridge using the bridge fastpath.
+
+This also makes the software fastpath process more similar to the
+hardware offloaded fastpath process, where encaps are also pushed.
+
+After applying this patch, always info->outdev = info->hw_outdev,
+so the netfilter code can be further cleaned up by removing:
+ * hw_outdev from struct nft_forward_info
+ * out.hw_ifindex from struct nf_flow_route
+ * out.hw_ifidx from struct flow_offload_tuple
+
+Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+---
+ net/netfilter/nf_flow_table_ip.c | 96 +++++++++++++++++++++++++++++++-
+ net/netfilter/nft_flow_offload.c |  6 +-
+ 2 files changed, 96 insertions(+), 6 deletions(-)
+
+diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_table_ip.c
+index 8cd4cf7ae211..d0c3c459c4d2 100644
+--- a/net/netfilter/nf_flow_table_ip.c
++++ b/net/netfilter/nf_flow_table_ip.c
+@@ -306,6 +306,92 @@ static bool nf_flow_skb_encap_protocol(struct sk_buff *skb, __be16 proto,
+ 	return false;
+ }
+ 
++static int nf_flow_vlan_inner_push(struct sk_buff *skb, __be16 proto, u16 id)
++{
++	struct vlan_hdr *vhdr;
++
++	if (skb_cow_head(skb, VLAN_HLEN))
++		return -1;
++
++	__skb_push(skb, VLAN_HLEN);
++	skb_reset_network_header(skb);
++
++	vhdr = (struct vlan_hdr *)(skb->data);
++	vhdr->h_vlan_TCI = htons(id);
++	vhdr->h_vlan_encapsulated_proto = skb->protocol;
++	skb->protocol = proto;
++
++	return 0;
++}
++
++static int nf_flow_ppoe_push(struct sk_buff *skb, u16 id)
++{
++	struct ppp_hdr {
++		struct pppoe_hdr hdr;
++		__be16 proto;
++	} *ph;
++	int data_len = skb->len + 2;
++	__be16 proto;
++
++	if (skb_cow_head(skb, PPPOE_SES_HLEN))
++		return -1;
++
++	if (skb->protocol == htons(ETH_P_IP))
++		proto = htons(PPP_IP);
++	else if (skb->protocol == htons(ETH_P_IPV6))
++		proto = htons(PPP_IPV6);
++	else
++		return -1;
++
++	__skb_push(skb, PPPOE_SES_HLEN);
++	skb_reset_network_header(skb);
++
++	ph = (struct ppp_hdr *)(skb->data);
++	ph->hdr.ver  = 1;
++	ph->hdr.type = 1;
++	ph->hdr.code = 0;
++	ph->hdr.sid  = htons(id);
++	ph->hdr.length = htons(data_len);
++	ph->proto = proto;
++	skb->protocol = htons(ETH_P_PPP_SES);
++
++	return 0;
++}
++
++static int nf_flow_encap_push(struct sk_buff *skb,
++			      struct flow_offload_tuple_rhash *tuplehash,
++			      unsigned short *type)
++{
++	int i = 0, ret = 0;
++
++	if (!tuplehash->tuple.encap_num)
++		return 0;
++
++	if (tuplehash->tuple.encap[i].proto == htons(ETH_P_8021Q) ||
++	    tuplehash->tuple.encap[i].proto == htons(ETH_P_8021AD)) {
++		__vlan_hwaccel_put_tag(skb, tuplehash->tuple.encap[i].proto,
++				       tuplehash->tuple.encap[i].id);
++		i++;
++		if (i >= tuplehash->tuple.encap_num)
++			return 0;
++	}
++
++	switch (tuplehash->tuple.encap[i].proto) {
++	case htons(ETH_P_8021Q):
++		*type = ETH_P_8021Q;
++		ret = nf_flow_vlan_inner_push(skb,
++					      tuplehash->tuple.encap[i].proto,
++					      tuplehash->tuple.encap[i].id);
++		break;
++	case htons(ETH_P_PPP_SES):
++		*type = ETH_P_PPP_SES;
++		ret = nf_flow_ppoe_push(skb,
++					tuplehash->tuple.encap[i].id);
++		break;
++	}
++	return ret;
++}
++
+ static void nf_flow_encap_pop(struct sk_buff *skb,
+ 			      struct flow_offload_tuple_rhash *tuplehash)
+ {
+@@ -335,6 +421,7 @@ static void nf_flow_encap_pop(struct sk_buff *skb,
+ 
+ static unsigned int nf_flow_queue_xmit(struct net *net, struct sk_buff *skb,
+ 				       const struct flow_offload_tuple_rhash *tuplehash,
++				       struct flow_offload_tuple_rhash *other_tuplehash,
+ 				       unsigned short type)
+ {
+ 	struct net_device *outdev;
+@@ -343,6 +430,9 @@ static unsigned int nf_flow_queue_xmit(struct net *net, struct sk_buff *skb,
+ 	if (!outdev)
+ 		return NF_DROP;
+ 
++	if (nf_flow_encap_push(skb, other_tuplehash, &type) < 0)
++		return NF_DROP;
++
+ 	skb->dev = outdev;
+ 	dev_hard_header(skb, skb->dev, type, tuplehash->tuple.out.h_dest,
+ 			tuplehash->tuple.out.h_source, skb->len);
+@@ -462,7 +552,8 @@ nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
+ 		ret = NF_STOLEN;
+ 		break;
+ 	case FLOW_OFFLOAD_XMIT_DIRECT:
+-		ret = nf_flow_queue_xmit(state->net, skb, tuplehash, ETH_P_IP);
++		ret = nf_flow_queue_xmit(state->net, skb, tuplehash,
++					 &flow->tuplehash[!dir], ETH_P_IP);
+ 		if (ret == NF_DROP)
+ 			flow_offload_teardown(flow);
+ 		break;
+@@ -757,7 +848,8 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_buff *skb,
+ 		ret = NF_STOLEN;
+ 		break;
+ 	case FLOW_OFFLOAD_XMIT_DIRECT:
+-		ret = nf_flow_queue_xmit(state->net, skb, tuplehash, ETH_P_IPV6);
++		ret = nf_flow_queue_xmit(state->net, skb, tuplehash,
++					 &flow->tuplehash[!dir], ETH_P_IPV6);
+ 		if (ret == NF_DROP)
+ 			flow_offload_teardown(flow);
+ 		break;
+diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
+index 46a6d280b09c..b4baee519e18 100644
+--- a/net/netfilter/nft_flow_offload.c
++++ b/net/netfilter/nft_flow_offload.c
+@@ -124,13 +124,12 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+ 				info->indev = NULL;
+ 				break;
+ 			}
+-			if (!info->outdev)
+-				info->outdev = path->dev;
+ 			info->encap[info->num_encaps].id = path->encap.id;
+ 			info->encap[info->num_encaps].proto = path->encap.proto;
+ 			info->num_encaps++;
+ 			if (path->type == DEV_PATH_PPPOE)
+ 				memcpy(info->h_dest, path->encap.h_dest, ETH_ALEN);
++			info->xmit_type = FLOW_OFFLOAD_XMIT_DIRECT;
+ 			break;
+ 		case DEV_PATH_BRIDGE:
+ 			if (is_zero_ether_addr(info->h_source))
+@@ -158,8 +157,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+ 			break;
+ 		}
+ 	}
+-	if (!info->outdev)
+-		info->outdev = info->indev;
++	info->outdev = info->indev;
+ 
+ 	info->hw_outdev = info->indev;
+ 
+-- 
+2.47.1
+
 
