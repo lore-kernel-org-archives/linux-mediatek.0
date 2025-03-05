@@ -4,128 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E82CFC282E3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 11:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75834C19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 11:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KGHKkM4qxKd9EB0pt79Yst8lznP4qD+tbsrDkGhaAL8=; b=CtObTaSe8Q+pUDFFgQr1jznPpN
-	5BNUr7nL8nFNUtcjda/e/Utc7VI6v34Kry4ZobYp3xjCAEvS0ZdzpsnHh+nylR54UbHauhyA4r+lI
-	uK0QPG339WPjhuVkA1ug5wRLcEWAVoz/hRpc3U7ZNLiL8/w2+RifMqHKxs/Y1cHM6LKhSounpXlbT
-	ggz7WDm424EKfkrNR1GiDc0QiDBL3Y0CPqlb6WJc840a+GrHe2Ua7j/Hm3diLiQjTi+K1YgoTklvL
-	NNLQF/r2Hg6GTBIAa5u61mmJp1TF/N8M3NQpTLK7NX0L2dCT7AVEcIdjlW37CvIWZJCKxY2dy4mVB
-	ksYOdimA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4vuFN/jAWUV8oSySeTeSSaiA6Uvm37tEvMJEzOIOIVc=; b=uOhMCte7qrWc16
+	O0dlKURnk9RMh1a7NizaQM3Mua0rpVxDoaC9ajY+rOHKZgewt9twHxMTQhG8fg2Kqc9DPPfio/SC5
+	Di6TbsHjVLoVXGLKQfhaviGFjlZEb2B1YBPzdWi0wUPJ6i/Z08tRmpS6Cj6tJNlrsB1Sm45TEO022
+	CUdjhQ0Xjk4nWiYlFEcf3Qrfe3C2EB1T7HSGQ1/pL5baZzzd+G1ja9YXli2vug+mNlouwhQk9/AP9
+	iquIhvVrpm9aRTHkQF2gBTOYYE9+0kAJC2JrEXChyt1GTmoF1MVV729TGeTk/ayrMpD7XBOdjfxcE
+	kB7fD42IGtulGq1xXVlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpmsV-00000007qkZ-0CFj;
-	Wed, 05 Mar 2025 11:25:31 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tpnJ8-00000007vAC-0HG0;
+	Wed, 05 Mar 2025 11:53:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpm19-00000007gX8-3CEt;
-	Wed, 05 Mar 2025 10:30:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=KGHKkM4qxKd9EB0pt79Yst8lznP4qD+tbsrDkGhaAL8=; b=naJ/Usc4Yrid4dtemwsw1We+Nq
-	IFo2AngbAFd1cvoUQMEDalqu3vPs60ZVRyDlLWFchV7t89dTX1TYxu/Dwbij46gIlNbAueagertxA
-	8mqgm0f4zFcyX9OvvSRwLWHRVkydMVOHKX7IBsVOBf+0xLSbpQPk1iploljStWgthC9wCeRMlhspT
-	gdImShShw+UjgivkSMvHIGHqUdQe2UmNNo6MTVTBU8uWDC0y0raYDEPJQsWvbsGHSgwddeGZc1iOs
-	/EmKQHh+nnk4a49iq1Uf3LQkalX3p6TOrjb9ecGHRVDz9ywsNs6QomFFRes++XJGJoMhy/WWiFWVV
-	WkHMghJA==;
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpm16-00000000TCW-3iMg;
-	Wed, 05 Mar 2025 10:30:22 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-abf518748cbso753690066b.2;
-        Wed, 05 Mar 2025 02:30:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741170619; x=1741775419; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KGHKkM4qxKd9EB0pt79Yst8lznP4qD+tbsrDkGhaAL8=;
-        b=PvqhwzoEyhj7z7nYp+HL15TQC1mtLBAPe6sxMT1mEs1DJuWWaiuMwQpe7DSab52+r/
-         MxftNmc0Skurjos9wTBQ23oUeZ00v9ZehHkAPefWG6FwuZXIdOJuB/OC/0Tp6gBhEWae
-         y9B3Dxd115PKKmzyVWhWrtkAn3gF/nMk6mPdljLY5prDcmqy4f0Z3bZYNh2fvmhLUrX3
-         3a+BUOIghaxh8nT1toDp2uZUoCTRMYXRUzQiU9UvKpCs27qy7fAVB71ikCOmv/xxLybr
-         h02DMVg/uWCmsyOmXfECfYVrGOUeQcLCryeLL2qQiMsFxFo49VboOyT/lnI2PfTo6XSM
-         hSRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741170619; x=1741775419;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KGHKkM4qxKd9EB0pt79Yst8lznP4qD+tbsrDkGhaAL8=;
-        b=GEdpoYch19OCFBTvABimrdn6fmFlqjFh8MPnw0BCst90ytq2lCHMC5HI+x/zs3xHFO
-         gzY/iGmq/7cp9od9eumuWczZreUI6/paOSisy20hbhYgyVUzXdR6zeOpd5/hwMKvTEXH
-         AumZAWFsvNQLYXvouW83k4PLR3p7mzE6dYOvHLI6scR5g4z0X1lGg3LRc8ATty7Sq8ly
-         00zAGWyPNSJqH7uzkdvHSxfxiYSuvO1B7LqWPzonSFELPvedgSbX8FO0DYOi7hD0a/qH
-         vd+o6UATStVviVwc7cw7y6E4Wsx4HbUs1DMNy15kzvJtuD/fPZjY+ZV+dTRgYbAcCQ5C
-         3aUg==
-X-Forwarded-Encrypted: i=1; AJvYcCU1bYtGq9XwNqTSld8EcTlkfH3mrG+8GGAr7qJwVorAP2/W3gLiyMgFpDCj2xzCH1dv4j2b+aEgEA1qlJMXDa4=@lists.infradead.org, AJvYcCU4xCSCBdQ66FfZwUNZJ2s+fazz3lHxMRu3mcGff+haUlfqVCDpKYuWpXAMUz1nhcE73fSz/mOAOttwQDRwiFP0@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwB2FA5KtgyM8FXfKapOLbnGqm102HxqRSMzddzZZb2ph4vxaJ
-	2uZ7hNSW+8PMvPb6ZK48xKG3mXV1n5L8c1ipW8EsQ1nkl4VlliN6
-X-Gm-Gg: ASbGnctWh4iqa1VVu0QXA2bcIykDGv3dnE1MrPL13snIOE5WcqStsbqGUHcnHGK9B8n
-	iYc8Z1Ehfpwt3CBh/AtvpKJYBl3k+NxhFDhSHG77hNNNncILBigjw2KWRpwUVZ5ku3KHEyRegb1
-	p2ec7SiCol5/f1WK+qGzxiiQMX364CyZAIuqFsp8Y3wQ9nBCoSX4+oo1SNqJaBvuBFag6efAR8r
-	5lHMEgbjrlqe2TTaaPmW5YwDgRwhiglSOScT0ISVmXRsjYkUdYm/h92bhqPN9K62O2M9bn93/r+
-	QyDwYMwZKDM8MmbXm4KTvkDRHTjJSpsnh/ERS/ls3gVpR2JhxIA2jC7A3AZEk76jx2ccvOsDm4z
-	nB3NE4eTHvutLwFKnfp3ORvD3UHqlAStzI1JdbwWULIbJaHMK+oEIJOqcM/LZpw==
-X-Google-Smtp-Source: AGHT+IGoN/CtSWTsLPGno4XdCpNX/tKcNpIlnQot0PcYBnAP4+pW8eJWUnu6a4Iy0Es/1rYM255M5w==
-X-Received: by 2002:a17:907:da8:b0:ac1:ebfe:fd90 with SMTP id a640c23a62f3a-ac20d845965mr280745166b.1.1741170619182;
-        Wed, 05 Mar 2025 02:30:19 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1f7161a4esm247154266b.161.2025.03.05.02.30.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Mar 2025 02:30:18 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Ahmed Zaki <ahmed.zaki@intel.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-hardening@vger.kernel.org,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v9 nf 13/15] bridge: No DEV_PATH_BR_VLAN_UNTAG_HW for dsa foreign
-Date: Wed,  5 Mar 2025 11:29:47 +0100
-Message-ID: <20250305102949.16370-14-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250305102949.16370-1-ericwouds@gmail.com>
-References: <20250305102949.16370-1-ericwouds@gmail.com>
+	id 1tpmX5-00000007nAK-27u6;
+	Wed, 05 Mar 2025 11:03:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741172600;
+	bh=RGJcaalCEarW5jwI3J/1uzxBnyofX9WJFnHBzN1I0u4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ca+GaY1NHRG821pXxcN2YgQThJ4wozNyL5ewinAdLGmBBu63gQ4riKGjkQoaXPy1h
+	 eQsSYsnKtxuH2MRuR2tF4y/rz1OBlc8q1pp9rsyBnCFu5jp5LEo3f+0cE7D5AG0PoP
+	 1NqkHaf481Ivk35YPtiZybbVokgSfncR19+jtcHfh8PKwfhCb1dsZnu0j0ELO0QfRx
+	 +U880/O+Uxtq1Rjpz/ef54E3OVaFFjIo3ePswS8+azo/gVyuPNmx4bB7SOTsa3qtLf
+	 5Z6c7ceG9rRTfPt7bRyt90UtUc7SLVunx9GHUUzETVutemstvWn1oDcI8Yh8MXiL6B
+	 C4rVCXAnzNf+Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C09017E0343;
+	Wed,  5 Mar 2025 12:03:19 +0100 (CET)
+Message-ID: <8203317e-7f99-4ea5-bda0-fcd791602a9f@collabora.com>
+Date: Wed, 5 Mar 2025 12:03:18 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/8] soc: mediatek: mtk-cmdq: Add pa_base parsing for
+ unsupported subsys ID hardware
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
+References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
+ <20250218054405.2017918-5-jason-jh.lin@mediatek.com>
+ <581fc075-25d8-4104-a4ee-8c97e1a017e6@collabora.com>
+ <03c523e66fd56442f49c38456476cf18be59e8fb.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <03c523e66fd56442f49c38456476cf18be59e8fb.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_103021_059778_C6238752 
-X-CRM114-Status: GOOD (  21.64  )
+X-CRM114-CacheID: sfid-20250305_030323_725917_EA55AFA7 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,174 +78,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In network setup as below:
+Il 05/03/25 10:46, Jason-JH Lin (林睿祥) ha scritto:
+> On Tue, 2025-03-04 at 10:35 +0100, AngeloGioacchino Del Regno wrote:
+>>
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 18/02/25 06:41, Jason-JH Lin ha scritto:
+>>> When GCE executes instructions, the corresponding hardware register
+>>> can be found through the subsys ID. For hardware that does not
+>>> support
+>>> subsys ID, its subsys ID will be set to invalid value and its
+>>> physical
+>>> address needs to be used to generate GCE instructions.
+>>>
+>>> This commit adds a pa_base parsing flow to the cmdq_client_reg
+>>> structure
+>>> for these unsupported subsys ID hardware.
+>>>
+>>
+>> Does this work only for the MMINFRA located GCEs, or does this work
+>> also for
+>> the legacy ones in MT8173/83/88/92/95 // MT6795/6893/etc?
+>>
+>> In order to actually review and decide, I do need to know :-)
+>>
+> 
+> Yes, it's for the SoCs without subsys ID, it's not related to the
+> MMINFRA.
+> 
+> This can also work on MT8173/83/92/95 // MT6795/6893/etc.
+> You can remove the `mediatek,gce-client-reg` properties in their dtsi
+> and cherry-pick this series to verify it. :-)
+> 
 
-             fastpath bypass
- .----------------------------------------.
-/                                          \
-|                        IP - forwarding    |
-|                       /                \  v
-|                      /                  wan ...
-|                     /
-|                     |
-|                     |
-|                   brlan.1
-|                     |
-|    +-------------------------------+
-|    |           vlan 1              |
-|    |                               |
-|    |     brlan (vlan-filtering)    |
-|    |               +---------------+
-|    |               |  DSA-SWITCH   |
-|    |    vlan 1     |               |
-|    |      to       |               |
-|    |   untagged    1     vlan 1    |
-|    +---------------+---------------+
-.         /                   \
- ----->wlan1                 lan0
-       .                       .
-       .                       ^
-       ^                     vlan 1 tagged packets
-     untagged packets
+This is curious - and that brings more questions to the table (for curiosity
+more than anything else at this point).
 
-br_vlan_fill_forward_path_mode() sets DEV_PATH_BR_VLAN_UNTAG_HW when
-filling in from brlan.1 towards wlan1. But it should be set to
-DEV_PATH_BR_VLAN_UNTAG in this case. Using BR_VLFLAG_ADDED_BY_SWITCHDEV
-is not correct. The dsa switchdev adds it as a foreign port.
+Since this is a way to make use of the CMDQ for address ranges that are not tied
+to any subsys id (hence no gce-client-reg and just physical address parsing for
+generating instructions), do you know what are the performance implications of
+using this, instead of subsys IDs on SoCs that do support them?
 
-The same problem for all foreignly added dsa vlans on the bridge.
+Being clear: if we were to migrate a SoC like MT8195 to using this globally
+instead of using subsys ids, would the performance be degraded?
+And if yes, do you know by how much?
 
-First add the vlan, trying only native devices.
-If this fails, we know this may be a vlan from a foreign device.
+What you're proposing almost looks like being too good to be true - and makes
+me wonder, at this point, why the subsys id was used in the first place :-)
 
-Use BR_VLFLAG_TAGGING_BY_SWITCHDEV to make sure DEV_PATH_BR_VLAN_UNTAG_HW
-is set only when there if no foreign device involved.
+Cheers!
+Angelo
 
-Acked-by: Nikolay Aleksandrov <razor@blackwall.org>
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- include/net/switchdev.h   |  1 +
- net/bridge/br_private.h   | 10 ++++++++++
- net/bridge/br_switchdev.c | 15 +++++++++++++++
- net/bridge/br_vlan.c      |  7 ++++++-
- net/switchdev/switchdev.c |  2 +-
- 5 files changed, 33 insertions(+), 2 deletions(-)
+> Regards,
+> Jason-JH Lin
+> 
+>> Thanks,
+>> Angelo
+>>
+>>
+> 
 
-diff --git a/include/net/switchdev.h b/include/net/switchdev.h
-index 8346b0d29542..ee500706496b 100644
---- a/include/net/switchdev.h
-+++ b/include/net/switchdev.h
-@@ -15,6 +15,7 @@
- #define SWITCHDEV_F_NO_RECURSE		BIT(0)
- #define SWITCHDEV_F_SKIP_EOPNOTSUPP	BIT(1)
- #define SWITCHDEV_F_DEFER		BIT(2)
-+#define SWITCHDEV_F_NO_FOREIGN		BIT(3)
- 
- enum switchdev_attr_id {
- 	SWITCHDEV_ATTR_ID_UNDEFINED,
-diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
-index a0b950390a16..b950db453d8d 100644
---- a/net/bridge/br_private.h
-+++ b/net/bridge/br_private.h
-@@ -180,6 +180,7 @@ enum {
- 	BR_VLFLAG_MCAST_ENABLED = BIT(2),
- 	BR_VLFLAG_GLOBAL_MCAST_ENABLED = BIT(3),
- 	BR_VLFLAG_NEIGH_SUPPRESS_ENABLED = BIT(4),
-+	BR_VLFLAG_TAGGING_BY_SWITCHDEV = BIT(5),
- };
- 
- /**
-@@ -2184,6 +2185,8 @@ void br_switchdev_mdb_notify(struct net_device *dev,
- 			     int type);
- int br_switchdev_port_vlan_add(struct net_device *dev, u16 vid, u16 flags,
- 			       bool changed, struct netlink_ext_ack *extack);
-+int br_switchdev_port_vlan_no_foreign_add(struct net_device *dev, u16 vid, u16 flags,
-+					  bool changed, struct netlink_ext_ack *extack);
- int br_switchdev_port_vlan_del(struct net_device *dev, u16 vid);
- void br_switchdev_init(struct net_bridge *br);
- 
-@@ -2267,6 +2270,13 @@ static inline int br_switchdev_port_vlan_add(struct net_device *dev, u16 vid,
- 	return -EOPNOTSUPP;
- }
- 
-+static inline int br_switchdev_port_vlan_no_foreign_add(struct net_device *dev, u16 vid,
-+							u16 flags, bool changed,
-+							struct netlink_ext_ack *extack)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline int br_switchdev_port_vlan_del(struct net_device *dev, u16 vid)
- {
- 	return -EOPNOTSUPP;
-diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
-index 7b41ee8740cb..efa7a055b8f9 100644
---- a/net/bridge/br_switchdev.c
-+++ b/net/bridge/br_switchdev.c
-@@ -187,6 +187,21 @@ int br_switchdev_port_vlan_add(struct net_device *dev, u16 vid, u16 flags,
- 	return switchdev_port_obj_add(dev, &v.obj, extack);
- }
- 
-+int br_switchdev_port_vlan_no_foreign_add(struct net_device *dev, u16 vid, u16 flags,
-+					  bool changed, struct netlink_ext_ack *extack)
-+{
-+	struct switchdev_obj_port_vlan v = {
-+		.obj.orig_dev = dev,
-+		.obj.id = SWITCHDEV_OBJ_ID_PORT_VLAN,
-+		.obj.flags = SWITCHDEV_F_NO_FOREIGN,
-+		.flags = flags,
-+		.vid = vid,
-+		.changed = changed,
-+	};
-+
-+	return switchdev_port_obj_add(dev, &v.obj, extack);
-+}
-+
- int br_switchdev_port_vlan_del(struct net_device *dev, u16 vid)
- {
- 	struct switchdev_obj_port_vlan v = {
-diff --git a/net/bridge/br_vlan.c b/net/bridge/br_vlan.c
-index a18c7da12ebd..aea94d401a30 100644
---- a/net/bridge/br_vlan.c
-+++ b/net/bridge/br_vlan.c
-@@ -109,6 +109,11 @@ static int __vlan_vid_add(struct net_device *dev, struct net_bridge *br,
- 	/* Try switchdev op first. In case it is not supported, fallback to
- 	 * 8021q add.
- 	 */
-+	err = br_switchdev_port_vlan_no_foreign_add(dev, v->vid, flags, false, extack);
-+	if (err != -EOPNOTSUPP) {
-+		v->priv_flags |= BR_VLFLAG_ADDED_BY_SWITCHDEV | BR_VLFLAG_TAGGING_BY_SWITCHDEV;
-+		return err;
-+	}
- 	err = br_switchdev_port_vlan_add(dev, v->vid, flags, false, extack);
- 	if (err == -EOPNOTSUPP)
- 		return vlan_vid_add(dev, br->vlan_proto, v->vid);
-@@ -1491,7 +1496,7 @@ int br_vlan_fill_forward_path_mode(struct net_bridge *br,
- 
- 	if (path->bridge.vlan_mode == DEV_PATH_BR_VLAN_TAG)
- 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_KEEP;
--	else if (v->priv_flags & BR_VLFLAG_ADDED_BY_SWITCHDEV)
-+	else if (v->priv_flags & BR_VLFLAG_TAGGING_BY_SWITCHDEV)
- 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_UNTAG_HW;
- 	else
- 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_UNTAG;
-diff --git a/net/switchdev/switchdev.c b/net/switchdev/switchdev.c
-index 6488ead9e464..c48f66643e99 100644
---- a/net/switchdev/switchdev.c
-+++ b/net/switchdev/switchdev.c
-@@ -749,7 +749,7 @@ static int __switchdev_handle_port_obj_add(struct net_device *dev,
- 	/* Event is neither on a bridge nor a LAG. Check whether it is on an
- 	 * interface that is in a bridge with us.
- 	 */
--	if (!foreign_dev_check_cb)
-+	if (!foreign_dev_check_cb || port_obj_info->obj->flags & SWITCHDEV_F_NO_FOREIGN)
- 		return err;
- 
- 	br = netdev_master_upper_dev_get(dev);
--- 
-2.47.1
+
 
 
