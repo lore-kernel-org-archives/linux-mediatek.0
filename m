@@ -4,114 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E50C282E3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 12:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38537C282E3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 12:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MAJ1+kbz8lZ4YwPg+OV3VOfAm0Jd01XhEIX1QeYwh3U=; b=IWhGwsxaGeMkQes5Mt1OLdCE6S
-	sos/Bwb7wPvy+WII3AvHD1xbVM/A+Uu3eKUU85QxRLj2IsMm1IeV1dnQsYUak8JeXw+pSbxOUb/vg
-	BjWPIp3EGvczPt2WSWJUoar3GDve0AgBBUQNLbfVuUZFIgcoGLPLoTRYukoP3A4yTh9vzCjQxy8XU
-	cGNgJoCIUP5erHE8QPhyYcMLUnhF4dR5jAfY/+E7TtkwCyxYLBXcoTxVpRQPmgvuO5v3I06wTlw54
-	QVpkwRLdp7iPInwvk68XAgGqPXHcjyPAa+MB1ZSWy7gbfWk8UbDYlyEcnHsd6G7bReZuv3SVpvsuu
-	NJuOd+Lw==;
+	bh=Iqp9ZF6Vni6z7KwsEDPVvSuyoxnjbSc5B2UqD02BCEY=; b=xbPSGEI8XF8TYDyXOENvTxv+rK
+	sw4vr7ZVxBQfaKxnNUtXYOGPDNmx8kVJy2ogSeHS+nKfsgvs7zoVuaIzN3SCbCI6XJyKJ4Z5b15sU
+	oeEos6HlfbZz73TrXBK8jsSV9l2U8M3fdga6esXtR6utYuJIcUFb0HrHB58C27ugXC+ezYZ4Og2L3
+	sRLahv+u9N7q4aPCTj5asrshhdjKeJ2oFMYkbYTnDrznrsdxA1kgg2NVie3GArRMZTomSZ0W/8ton
+	JZk4HSLOeXoBRsYoXyXtXq3OKz8l7BXOcc+Zm8bIxwsRSGLqzuIeiYynCbs47+UKapkVI0VfacS2F
+	xjsbTCmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpnhx-00000007zSJ-49ga;
-	Wed, 05 Mar 2025 12:18:41 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1tpoKX-000000085oZ-1EgS;
+	Wed, 05 Mar 2025 12:58:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpm11-00000007gTJ-10Lp;
-	Wed, 05 Mar 2025 10:30:16 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5e058ca6806so10953167a12.3;
-        Wed, 05 Mar 2025 02:30:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741170613; x=1741775413; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MAJ1+kbz8lZ4YwPg+OV3VOfAm0Jd01XhEIX1QeYwh3U=;
-        b=TwoitJDFWfwqTdJgPuuSejmYk3lSrygONh5QeUrW3ru4hnmLmPzZiTjiH0YreDenrn
-         YFDtCXb0RMU+z9JZIDXBUbh91f1uWcgk47h0+cyshpfmSoKb+66rkjtHulcFXCRjWEVI
-         kAZlEYTp1hXddh+vQuJq6/vzl5+oinUVIGYpIjkRXTC0pKcGqaaw2MKp/itsv6TNRF2g
-         7RODzKScLNx4+019eDbp/zSewoc7HpR/tAS0sXnx8nZJDIyZ5xtyUWi5O8HzGDcayXLu
-         FPpZFFViZVlBzdZHnDGlVZIMQWwUOCBte6SslHNk2mZ3dNRuj3rqSz3DYcIbF5J7F7/8
-         Ejag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741170613; x=1741775413;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MAJ1+kbz8lZ4YwPg+OV3VOfAm0Jd01XhEIX1QeYwh3U=;
-        b=R8IhQwY1S7kW7s91TluhkR7wzJBH0sSCd76zCL0d/SD1hPabYJcTDWNAKUdNHTFtKl
-         0QNgJ02HYIgUyOq5rMAdi/KJET8Q0Euv+qQ0H8Kp3EI0K5y0TDtBCPcZGJELBHmqbBkG
-         iHKCTDdmvHUGHVZOBtbdOJd7Fpz6v72vlMoe5WLmQFiU/GTfyLka6HPlp5ur0Lgrtbog
-         roAtPE2I++IkmydRiom3H4cmAeFLkfMQ6lA7ZQ9WQAD+oeY56ZCZUl6rTXLFGqGb9d/8
-         vEaj3pxPfotq0Y+CaQVz/tup8o4lm98gvDIRuCiCvsdPyl1P9eZtfeYGZLqP2+4IngEK
-         4XTA==
-X-Forwarded-Encrypted: i=1; AJvYcCU5w7yF4jmr1bURaYgtppI0efF9puvNhgOsMY7IqPDzaqW+F0h9fuNRQXFCED+bTHJMzTspoL1fA4ofYEolhMTs@lists.infradead.org, AJvYcCWtQCUFz71Tnc224TRcP1sUOC2wMHTqW5SguAhuJRT7/Xagned9p0ADYLpPUth93XqDukb6kv2NOU3VZA5Lw3k=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGQ8S+vzGNjbiOr6w/wBHrmoWNMnPVxSTMx3sQy4E450H8c53w
-	9Bhp4NaPZvRTu347AyEnAOO9nnfvR6VIdS3DSQ1RH8pfZNr1NP15
-X-Gm-Gg: ASbGncuWIhMF3sMipNLTIUiDEMj7mW+XiuqENh+AdWOLVzc2XWh0zWLsOPaLhq/cmCl
-	2SBCkyfmBCOM0pVFwL6imz3DmJHOs8MQFlgoUJxao9FVRcUcGAyf48+r7ZaqMtXPu7vqgykVkfQ
-	jdw0ceZ84EwvVnmJMk9eiB5ZsWwUjvjxBVRSGbxW1ba93G+CXBSVn0Ngr3k2s9fueYr+gtkbOn+
-	S4fOsRMbKP/onFgr6RTLHQoROFRA2wWaTLjVQnIw23bxcnhiU0Ym6BIlbPGPaWHVFfdvUsrFNOa
-	eK3mYpUFaaP0AEpDTB6LoVRUpw5xiFKPESOunv93uXd3oGFf/ILWicAwr7sOpc6xtQM8d9Rct7Z
-	7K1COFM1as3X72mYrU54xftQHJ/snwL0fAw6G+aSLB26DkdPMTRI79FvFiAM49Q==
-X-Google-Smtp-Source: AGHT+IHkGwcjTfVbXx6eVRlSW1bPJWg7ABfB6LE3pcI1ePV03v0+a0Kiykk4HhykJH2czK6vrMyHQg==
-X-Received: by 2002:a17:907:8b9a:b0:ac2:c1e:dff0 with SMTP id a640c23a62f3a-ac20dac2643mr219805866b.19.1741170613297;
-        Wed, 05 Mar 2025 02:30:13 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1f7161a4esm247154266b.161.2025.03.05.02.30.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Mar 2025 02:30:12 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Ahmed Zaki <ahmed.zaki@intel.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-hardening@vger.kernel.org,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH v9 nf 08/15] netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
-Date: Wed,  5 Mar 2025 11:29:42 +0100
-Message-ID: <20250305102949.16370-9-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250305102949.16370-1-ericwouds@gmail.com>
-References: <20250305102949.16370-1-ericwouds@gmail.com>
+	id 1tpoHf-000000085Rk-2TS2;
+	Wed, 05 Mar 2025 12:55:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741179333;
+	bh=sFMNibeR1PP9vzyBkPzNiXrH8oC4TieWSRzMOJhATcM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ONzOs8t/OJz8nHAr6s+iMVmybBzfZ2UwQVeNxlTabpi5vIGRwX7JB10CUHIpQah29
+	 acyZbxtRKNmbLo/S15+wxDbrVAB3Co0q6PwFZ1LNBkSrp60bHOhaUAH/pJiOAWU0FS
+	 itEm0NNTSxUnmOBCMokwW+SfXuJl3yMu38FCRGv+Igihk4Fy8O8HPlHO6gaIL2OcJl
+	 k+zuGgn4avuWTxdvuy41xICUdDjWME91sgb+tCRxO9YzZpK8WLRBy4o49wfyv6wzqU
+	 RldpUnpHTiohJGYlwuc7zYm9ERyljwh5mhtKHxOXK0T2oOxZg3upJHi3KYaCExR7dj
+	 kZUG8bpA9rkug==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C039D17E0DFD;
+	Wed,  5 Mar 2025 13:55:32 +0100 (CET)
+Message-ID: <d64b11be-b516-46ab-8618-f563075064dd@collabora.com>
+Date: Wed, 5 Mar 2025 13:55:32 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] ASoC: mediatek: mt8188-mt6359: Add headset jack
+ detect support
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Zoran Zhan <zoran.zhan@mediatek.com>
+References: <20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com>
+ <20250214-mt8188-accdet-v1-3-6bbd5483855b@collabora.com>
+ <d976b28d-f44f-4d51-8b61-4c046c571412@collabora.com>
+ <fc9863ef-8781-46a0-ba8c-6dabd9fb6cdf@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <fc9863ef-8781-46a0-ba8c-6dabd9fb6cdf@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_023015_295474_A0CB07B8 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20250305_045535_818502_00B94CEE 
+X-CRM114-Status: GOOD (  45.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,56 +85,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add nf_flow_rule_bridge().
+Il 04/03/25 21:16, Nícolas F. R. A. Prado ha scritto:
+> On Tue, Mar 04, 2025 at 04:39:33PM +0100, AngeloGioacchino Del Regno wrote:
+>> Il 14/02/25 16:14, Nícolas F. R. A. Prado ha scritto:
+>>> Enable headset jack detection for MT8188 platforms using the MT6359
+>>> ACCDET block for it.
+>>>
+>>> Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
+>>> Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
+>>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>> ---
+>>>    sound/soc/mediatek/mt8188/mt8188-mt6359.c | 43 +++++++++++++++++++++++++++++++
+>>>    1 file changed, 43 insertions(+)
+>>>
+>>> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> index 2d0d04e0232da07ba43a030b14853322427d55e7..4e19e6cfad1e1f42863b2e2f27131f880c5883bf 100644
+>>> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> @@ -17,6 +17,7 @@
+>>>    #include "mt8188-afe-common.h"
+>>>    #include "../../codecs/nau8825.h"
+>>>    #include "../../codecs/mt6359.h"
+>>> +#include "../../codecs/mt6359-accdet.h"
+>>>    #include "../../codecs/rt5682.h"
+>>>    #include "../common/mtk-afe-platform-driver.h"
+>>>    #include "../common/mtk-soundcard-driver.h"
+>>> @@ -266,6 +267,17 @@ static struct snd_soc_jack_pin nau8825_jack_pins[] = {
+>>>    	},
+>>>    };
+>>> +static struct snd_soc_jack_pin mt8188_headset_jack_pins[] = {
+>>
+>> This is the same as nau8825_jack_pins... perhaps we could reuse that?
+> 
+> The difference is the pin name: "Headphone Jack", which results in a difference
+> in the widget's name. I remember you wanted to not have the "Jack" in the
+> widget's name to standardize it among other MTK platforms, and we could do that
+> here by dropping it from the nau8825_jack_pins. But since that name is also used
+> on the audio routes in a few DTs, those would need updating as well:
+> 
 
-It only calls the common rule and adds the redirect.
+No it's that "Jack" should be automatically appended if not present in the
+jack name :-)
 
-Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- include/net/netfilter/nf_flow_table.h |  3 +++
- net/netfilter/nf_flow_table_offload.c | 13 +++++++++++++
- 2 files changed, 16 insertions(+)
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dts
+> arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dts
+> 
+> The name is not used in upstream alsa-ucm-conf though, so it should be safe to
+> update.
+> 
+> In any case, I didn't want to expand the scope of this series to that unrelated
+> change, so that's why I introduced this separate struct, thinking we could
+> commonize as a later step.
+> 
 
-diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilter/nf_flow_table.h
-index 4ab32fb61865..a7f5d6166088 100644
---- a/include/net/netfilter/nf_flow_table.h
-+++ b/include/net/netfilter/nf_flow_table.h
-@@ -340,6 +340,9 @@ void nf_flow_table_offload_flush_cleanup(struct nf_flowtable *flowtable);
- int nf_flow_table_offload_setup(struct nf_flowtable *flowtable,
- 				struct net_device *dev,
- 				enum flow_block_command cmd);
-+int nf_flow_rule_bridge(struct net *net, struct flow_offload *flow,
-+			enum flow_offload_tuple_dir dir,
-+			struct nf_flow_rule *flow_rule);
- int nf_flow_rule_route_ipv4(struct net *net, struct flow_offload *flow,
- 			    enum flow_offload_tuple_dir dir,
- 			    struct nf_flow_rule *flow_rule);
-diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flow_table_offload.c
-index d8f7bfd60ac6..3cc30ebfa6ff 100644
---- a/net/netfilter/nf_flow_table_offload.c
-+++ b/net/netfilter/nf_flow_table_offload.c
-@@ -679,6 +679,19 @@ nf_flow_rule_route_common(struct net *net, const struct flow_offload *flow,
- 	return 0;
- }
- 
-+int nf_flow_rule_bridge(struct net *net, struct flow_offload *flow,
-+			enum flow_offload_tuple_dir dir,
-+			struct nf_flow_rule *flow_rule)
-+{
-+	if (nf_flow_rule_route_common(net, flow, dir, flow_rule) < 0)
-+		return -1;
-+
-+	flow_offload_redirect(net, flow, dir, flow_rule);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(nf_flow_rule_bridge);
-+
- int nf_flow_rule_route_ipv4(struct net *net, struct flow_offload *flow,
- 			    enum flow_offload_tuple_dir dir,
- 			    struct nf_flow_rule *flow_rule)
--- 
-2.47.1
+That's fine for me, but are we adding unnecessary duplication?
+
+>>
+>>> +	{
+>>> +		.pin    = "Headphone",
+>>> +		.mask   = SND_JACK_HEADPHONE,
+>>> +	},
+>>> +	{
+>>> +		.pin    = "Headset Mic",
+>>> +		.mask   = SND_JACK_MICROPHONE,
+>>> +	},
+>>> +};
+>>> +
+>>>    static const struct snd_kcontrol_new mt8188_dumb_spk_controls[] = {
+>>>    	SOC_DAPM_PIN_SWITCH("Ext Spk"),
+>>>    };
+>>> @@ -500,6 +512,35 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>    	return 0;
+>>>    }
+>>> +static int mt8188_mt6359_accdet_init(struct snd_soc_pcm_runtime *rtd)
+>>> +{
+>>> +	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(rtd->card);
+>>> +	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8188_JACK_HEADSET];
+>>> +	int ret;
+>>> +
+>>> +	if (!soc_card_data->accdet)
+>>> +		return 0;
+>>
+>> I'm not sure... if we have mediatek,accdet (so accdet is present here), but we also
+>> have a NAU8825, or RT5682S, or ES8326 codec, this function will create a headset
+>> jack for MT6359, but then mt8188_headset_codec_init() will do the same again!
+>>
+>> I think we should find a way to avoid that situation, as I'm mostly sure that this
+>> will give issues in the long run.
+>>
+>> Even if it wouldn't, having two headset jacks exposed, of which one doesn't work
+>> because it doesn't exist on the physical board... would be confusing for the user.
+> 
+> IMO that situation happening would mean the DT is wrong. If the board has the
+> headset jack pins wired to a headset codec, and that's responsible for jack
+> detection, then those pins won't be wired to the ACCDET block, and therefore the
+> board DT shouldn't have the mediatek,accdet property.
+> 
+
+That might make sense.
+
+> I think you're imagining having the mediatek,accdet property always present, and
+> the logic you propose would allow specifying a headset codec to essentially
+> override it (making the mediatek,accdet property useless in this case). But
+> there can also be boards with no jacks at all, and in those cases we don't want
+> jack widgets exposed to userspace, so the mediatek,accdet property should be
+> omitted for those boards, and only present on boards where the ACCDET is
+> actually wired to.
+> 
+
+I am imagining that because ACCDET is something that is always present on the
+MT6359 PMIC, as it is always integrated, physically, into the silicon.
+
+Having that always present in the PMIC DT doesn't mean that the actual sound card
+node would have it, so... okay, I get the point, looks good, but it does only if
+
+.... (scroll down)
+
+>>
+>> I guess that the best option here would be:
+>>   - Let the `for_each_card_prelinks()` loop finish
+>>   - Check if any of the external codecs are providing 3.5mm jack
+>>     - External codec providing jack means that the detection should be performed
+>>       by the external codec, as the jack should not be physically routed to the
+>>       MediaTek ACCDET related PMIC pins (right?)
+>>     - No external codec means that the accessory detection can only be performed
+>>       by the MediaTek ACCDET IP
+>>   - If external codec manages 3.5mm jack: do nothing
+>>   - If no external codec managing 3.5mm jack: check if accdet provided in DT and
+>>     initialize it
+>>
+>> ....unless I'm wrong - and if I am, please explain why (and also add explanation
+>> to the commit description).
+> 
+> I can add to the commit message:
+> 
+> Only boards that have jack detection managed by the MT6359 ACCDET block will
+> have the mediatek,accdet property present.
+
+....only if you add that, because this really makes things clear - and had you
+added that to the commit description in this version, I wouldn't have had this
+question ;-)
+
+So yes, please add it.
+
+On another note, I don't understand what's the problem with using nau8825_jack_pins
+instead of adding a mt8188_headset_jack_pins before you cleanup.
+
+Really, it's just about doing:
+
+/*
+  * nau8825_jack_pins lists the exact same pin names and types as the
+  * MT6359 PMIC: reuse to avoid useless duplication
+  */
+ret = snd_soc_card_jack_new_pins(rtd->card, .... etc etc
+
+Cheers!
+
+> 
+> Thanks,
+> Nícolas
+> 
+>>
+>> Cheers,
+>> Angelo
+>>
+>>> +
+>>> +	ret = snd_soc_card_jack_new_pins(rtd->card, "Headset Jack",
+>>> +				   SND_JACK_HEADSET | SND_JACK_BTN_0 |
+>>> +				   SND_JACK_BTN_1 | SND_JACK_BTN_2 |
+>>> +				   SND_JACK_BTN_3,
+>>> +				   jack, mt8188_headset_jack_pins,
+>>> +				   ARRAY_SIZE(mt8188_headset_jack_pins));
+>>> +	if (ret) {
+>>> +		dev_err(rtd->dev, "Headset Jack create failed: %d\n", ret);
+>>> +		return ret;
+>>> +	}
+>>> +
+>>> +	ret = mt6359_accdet_enable_jack_detect(soc_card_data->accdet, jack);
+>>> +	if (ret) {
+>>> +		dev_err(rtd->dev, "Headset Jack enable failed: %d\n", ret);
+>>> +		return ret;
+>>> +	}
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>>    static int mt8188_mt6359_init(struct snd_soc_pcm_runtime *rtd)
+>>>    {
+>>>    	struct snd_soc_component *cmpnt_codec =
+>>> @@ -512,6 +553,8 @@ static int mt8188_mt6359_init(struct snd_soc_pcm_runtime *rtd)
+>>>    	/* mtkaif calibration */
+>>>    	mt8188_mt6359_mtkaif_calibration(rtd);
+>>> +	mt8188_mt6359_accdet_init(rtd);
+>>> +
+>>>    	return 0;
+>>>    }
+>>>
 
 
