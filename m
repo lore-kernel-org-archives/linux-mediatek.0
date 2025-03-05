@@ -4,154 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F7EC19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 11:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A31EC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 12:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gsnAZ0vv+qJz5NA6QcQgW/Hu9j/0UHudVfcL9jR4gO8=; b=hi+8RSe6EPD3NUPgHi6gfrxnT9
-	tj5yotUzgF6+5cn3NWSNngJSkxW8ZKQc25RlHVNXIR6i+8KauLfeUBLW5K38L054Mt+pOP2bzgpbJ
-	LsWfwBP4fy+8Y0GVVHx0/wP4dE6eo9H9shZzn2QxAj9nqTFB0EBBthuU/CYq7u1/HUIglJxREz6TM
-	UZeL/Q6c1nPNIqGctBP+4AO/VKCNntN5mNzP4DDX9/ZmDnIy+MQvC4tB1P96cgti8DXz619Tbh230
-	g1FhAxcVhUNnISZfGyscF3TxekXVGccmGnMqqN5EI0l1MLz7PtbM2T9ZTDAwr+lI+7LsOCN8p9K75
-	xqDzVdpQ==;
+	bh=6sanML2Dhh94iBJereFlvYHp/47BSYsKw+xHcTZ++gc=; b=qq8FoytbitY1nADne870COIMdV
+	9UvCz2malbSoNUaq36uGD5CTSdg8EcWaLFmdywQ3yazT/gw/tN39QBglE5miONe6oL4MaPzM18e80
+	CLLRhMZlCAtV1gOxF5iM9R6nn+isfJr6eDMH6YMfss0Iz1z7yk103NhzvLdjBFqkTsyqSaWUB7ep3
+	Udu+YdEkFW6eq6728NXOvaxFMwftsXHhaeC7QkbDCK7ZQdiJj/SsD02pSbM+pgEmJovQi8uhJ5qzv
+	eIzUvx0uOYoP0rjc62x2d14AelNgOIsHW+XS6eTpFo4EBdKSLTnkcPGPva4Cj1YaB+uOmZy3Vp2TP
+	JMo7wKww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpnPO-00000007vw0-0V95;
-	Wed, 05 Mar 2025 11:59:30 +0000
-Received: from mail-japanwestazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d406::] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1tpnhw-00000007zQZ-0Add;
+	Wed, 05 Mar 2025 12:18:40 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpmdO-00000007oHs-3NPW;
-	Wed, 05 Mar 2025 11:09:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DOaM0MRyWFHy+sgtBq6vSlSCv2eRkY5chmXnskEyWY03Eyn7V/zLrLsT7SCnpoHumi23L8Nu+usOSbjNoSphEhFM23Jb6Gw+pZeZsOnOxMLWsGwOsen8ahShq847gvkqgMiikJJg6dhQv/wT0K547RF+Y87Bol2LSM6GOO0x2BRGemKP5SgVmUVBWY0rljZIYp55jocmtBcS1E8tkR10stJA0qQPxzcvZ+B+Yh5iglMrnHqNlzvO0apU9gFC4NHM8VD8Qrq9a18G1GmlErs25vhngwQRHAgrEa636+hrYJp6lwcqbXXUZEUFcHYuIlycieMg21Qi7wVezJ/Vtr8Fgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gsnAZ0vv+qJz5NA6QcQgW/Hu9j/0UHudVfcL9jR4gO8=;
- b=h8DVhhSZU0r60tkiDPFc99hfshKYlSvkWhI/vmZpi0zE4RqKhmr3k5a/DtgjrmTvcCzHspTq/wgukmYt+mvlckCFU2f8PjsoH0H2L33BEuNqZfT02UDUHvUglGm7cAjm7l6Y+kY2AmrqRZ+WT7K8KHfRzN1vORtdpuP0s5lrOgxu9SjVMDKMu/04DU6XTXvv1TCw+Doy6rAzfPkejFrF9hgDLB2Lqkk1Dvz3eaxUXq019ZoonxMTYTifkwUIy1OfJERjsTx16FHhAdaojE4dNQsXQ85zgRWx92lqvO287UErKErEB21nIW5dfmXl30CsOZbElykL/VT9HT4Zcn8Zuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gsnAZ0vv+qJz5NA6QcQgW/Hu9j/0UHudVfcL9jR4gO8=;
- b=IH7rDbTBZkaPI7nzJC02B0zBtDG18aVclTAoegl2Ctxb2V7b0Q0vDpt93OUk6SXcSlJ6Qslamp/xiVpnBG2Ye2th/OsoLqBt+D96T/lhPNk9ha9XxDyFXrz7kqBKhdLoBiaEcq/hYFo7LHxf/ah6slUhKM0WzoNbTE+L18jnxaFWOd5EdaFbJY4bYTAOeNWpN31cyk6A/YOYkyfMtKCUBVADs4ayP1TSr8sDcx0PA0KJVcJEZYbmU2zHcVNsGZaBIruyn5gdcZ+veH4+wX9R25tTPWgwjb4eyriea1VHOvmJPbDjvo4OheSKSQhNfvtvD3Oby1vh9TTiYncOLILBiw==
-Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
- by TYRPR01MB13931.jpnprd01.prod.outlook.com (2603:1096:405:217::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8489.29; Wed, 5 Mar
- 2025 11:09:44 +0000
-Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com
- ([fe80::83e7:751f:f3af:768f]) by TYCPR01MB8437.jpnprd01.prod.outlook.com
- ([fe80::83e7:751f:f3af:768f%5]) with mapi id 15.20.8489.028; Wed, 5 Mar 2025
- 11:09:44 +0000
-From: Shengyu Qu <wiagn233@outlook.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	johannes@sipsolutions.net,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	miriam.rachel.korenblit@intel.com,
-	nicolas.cavallari@green-communications.fr,
-	howard-yh.hsu@mediatek.com,
-	greearb@candelatech.com,
-	christophe.jaillet@wanadoo.fr,
-	benjamin-jw.lin@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	quic_adisi@quicinc.com,
-	deren.wu@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	gustavoars@kernel.org,
-	bo.jiao@mediatek.com,
-	sujuan.chen@mediatek.com,
-	linux-wireless@vger.kernel.org,
+	id 1tpm0t-00000007gQ8-4AlL;
+	Wed, 05 Mar 2025 10:30:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=6sanML2Dhh94iBJereFlvYHp/47BSYsKw+xHcTZ++gc=; b=bt3XTKyMTGaLjAae5i3XT9xV24
+	lXKaPIKUSX3UmQD1KumiHOiS2l8Y+VvD4LCSuTu7j0HGlmZWHYIgZOwie9DmnEK4v2VUHVjuIfoSy
+	eb38+pU9k9l7vpjHiM1hGNMjinNCDpR0HLL3mnNvCQ7gFlMnYLPB6xlSPja6/sRzN3eMK8aW4hoEh
+	YpNQTUMFa1MdGffiVmbOouP0kIOc8TQhXhcWjvpZP6ljor/M7hzwDN3e9joJuinkcs8Yi0WGO9dmJ
+	COsssOH2MOCG3wNCwjA1EYblaLl0rUWCz1i8JiEfO7LVeXHBf4jglJdtX12FpDQA/TTa8311W17Q6
+	jRlEorXg==;
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpm0q-00000005IoL-3rTk;
+	Wed, 05 Mar 2025 10:30:06 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-ac21c5d0ea0so33990066b.2;
+        Wed, 05 Mar 2025 02:30:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741170602; x=1741775402; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6sanML2Dhh94iBJereFlvYHp/47BSYsKw+xHcTZ++gc=;
+        b=PX/kUWr9qv0fswhEwYVTExIgAQNfDXhCyK6I4ZiQ0yEy7x0vz883k4+fUco9XnWGNz
+         847G7wilCSHlJpkEBA+YVBM5cYkCacTou6/YzDagjaCT2M+uyA73o0rxdCgy+pwgTv1z
+         Dkkl0JFzstAxll6CAmaLgdySr3LZaHIQtqYKLfz91QKcoZmofJlQyirrQP/R6Ct+pkC/
+         Q0bspc+mUdWFnEe0vB0pTyX1hSah84gWIABnLBfcdaHYrJw2ZzeoZpL67PAljAg+PzuN
+         8P+X8EnZZH4LKytMP6vzxJWgezgCY2zasv4XNrd5wKpitZ30y9ZkvXmGgtiHBfzyJlo+
+         KDHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741170602; x=1741775402;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6sanML2Dhh94iBJereFlvYHp/47BSYsKw+xHcTZ++gc=;
+        b=jdEv9doG6s4f5T9/Cp9M8nzHizjtZqA5K36iaNsdoWzkz79Zikg32adeI7+XOt2Zvn
+         kgppIXIYJy+zpI/Kdhk9svPsFA5LpVh+ctNconOPZ+rltYGxKEQPDiXSw65pswRgg3CR
+         mWS1onxyGAxBXwabhx5eKV9MB2i65hMA+2cOiVM3CCLOCDyvZ2l8hhZDy9pCZRR9Ley2
+         A0Fd6IsQQJAsOuZMxaUIfKMGxjGId8O9YwxKXIRSMHqd7MghTj7zfREK3vv99cza3z/q
+         zWKbm1qi3LO7zcvYkKGHpyQ9nnjXwEXeKaTOH3LcIbrqWx/xc9Q5+8wowppcMN3p9oXY
+         RFqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVKReNYdUKkzJ1kUCT4EB1DU1KHjvqljTBMHwm6R1Ry/ybn4kb3qfxSiyW9KiZ9ByhDgHcREWOj74w2X3Cc3d4t@lists.infradead.org, AJvYcCVLcRscojiEuFxzqrI/G3togEmIrgp4pj2nOUVjKcleyYEvBc0nUnolLm235fwwPTmL7Q/Lkrz9d91gtXFT8+0=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzfi7DOqAR5FMViFIrwB0y44cvZNU389QXNUg3XBQKVmRmaJzlT
+	OEoOetpLR6wSY7POJnD8FqMW9X0DJhYWtDJDWtqvBzWK/XSgkEoy
+X-Gm-Gg: ASbGncu9nMPHUoQniU++Y17wgDy+iVA9R1Ut86bIsBx8XMQwQs7PXYyn/9VvElBk169
+	uIMsksi/4mVnj5JNVU5Z0JRQHB+3GUmtxDyGwDJTFpzg9doFJrH4eCsllCDffrXAWoYz5YXfWiX
+	N9ryQAs9uCYnlIpiX+8ARchORbx1V04Onz2yqmyJnB275Faj/ISniIz3ShJ4Sl39HRQmdGhxFWt
+	K04bPFbq4AhOfwUxyTVTXv6yyeojawf4pfmwTSENQ+2FrzCUVkdxfGiRh1+MFA0CwS9VDwhUhzR
+	z7OWYWjoYAgr3UZto3Tcin74dETVv4vRnnCQUVBuob+o6drRW8CNlDW8Hd+xNpm0o0YmBDQCsVL
+	AKVxTEr2/cUAA1RGFJRUJ/0//ZGTxs8SAZiMV72xSqFWWVVk9AIZfVlCQy4Xw4Q==
+X-Google-Smtp-Source: AGHT+IEquGmXyo0QZO6D8xBnPc2YdJ5ns+5Q/gwbofncoh7rX6vx5H6gyD7FpADTdefnpFFr3FhJMg==
+X-Received: by 2002:a05:6402:2351:b0:5e4:af36:2315 with SMTP id 4fb4d7f45d1cf-5e59f3d4a3dmr6307326a12.12.1741170601891;
+        Wed, 05 Mar 2025 02:30:01 -0800 (PST)
+Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac1f7161a4esm247154266b.161.2025.03.05.02.30.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Mar 2025 02:30:00 -0800 (PST)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@netfilter.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Kuniyuki Iwashima <kuniyu@amazon.com>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Ahmed Zaki <ahmed.zaki@intel.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Frank Wunderlich" <frank-w@public-files.de>,
+	Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Shengyu Qu <wiagn233@outlook.com>
-Subject: [PATCH v8] wifi: mt76: mt7915: add wds support when wed is enabled
-Date: Wed,  5 Mar 2025 19:09:37 +0800
-Message-ID: <TYCPR01MB84374EEAC0DDDA4223B8997298CB2@TYCPR01MB8437.jpnprd01.prod.outlook.com>
-X-Mailer: git-send-email 2.48.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PS2PR02CA0051.apcprd02.prod.outlook.com
- (2603:1096:300:5a::15) To TYCPR01MB8437.jpnprd01.prod.outlook.com
- (2603:1096:400:156::5)
-X-Microsoft-Original-Message-ID: <20250305110937.3516115-1-wiagn233@outlook.com>
+	linux-mediatek@lists.infradead.org,
+	linux-hardening@vger.kernel.org,
+	Kees Cook <kees@kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Eric Woudstra <ericwouds@gmail.com>
+Subject: [PATCH v9 nf 00/15] bridge-fastpath and related improvements
+Date: Wed,  5 Mar 2025 11:29:34 +0100
+Message-ID: <20250305102949.16370-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYCPR01MB8437:EE_|TYRPR01MB13931:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0a714cd2-d3dd-4714-4532-08dd5bd63ba4
-X-MS-Exchange-SLBlob-MailProps: Cq7lScuPrnpFX5gNBgVui9nZ6J+Gucr/JPZtvp8w7FGpkKHiDBOWBq45bWWUVhYJ2WtwyEKK6LkspaBULo20Gb7uy7olpMDV18Yq81EbAJFnHQgk7s0PaZ7fL5EsIiiUqHHazNJPqt4QB3wQR4oDbDNlpmUdhshbiK+cMsXfm7h/XoCde5zLRxMWi6+WfIJUodFg6H+k6VX3QuLu/uairkK8YFoaR3/r3As3pxAM094era6f3YC0Kseno4BE37a9uQGhYakqHXM07RV2R77bfix1JWd2bxO4SLS9U0hErUG486as63CwvZ8RS+gQwtSvws3hyIN1tlNwx+PO23ZI0nYXBC85A3DfcsQAonC+Dxt+dtmdKsmhkL/iyNvrrZjqoS3pULbhogV9K8iVKd5uiwxTa6jksySzEgIw2U/S6GbLiTm+ESZ1crUgtFPZwivB7LiYPEG4n657hY0YiUePXezCwlIujKKNoBTI3btjdOYrA3ODNN8+FUCv7m6oqvtfF95/996I/HjoDLhpkT5qGuH+ypqx2H/jI3gzUvPUMBy/Jkk+C0x57lmIun2pL6/uGMrIFUz0iCGtdIhj068nHzJvH24wJwJVoEDWJnAow1Kh/GIaJt0cq7z6qJStzzH54qh9+/xCt1ETYUx9d4KDcjNwwCG7gPDjcIwlCfQv1QKVuXRmnZxAX/B+akkgdIwjXkMb39lVOYT8RuqCzkLCLRu32HDFDWQDyoZTZjJyEs1c/Bvm+VhxmP3GdLjTCY1nON9/K45EISI=
-X-Microsoft-Antispam: BCL:0;ARA:14566002|15080799006|5062599005|19110799003|5072599009|8060799006|461199028|7092599003|12091999003|19111999003|41001999003|440099028|3412199025|1710799026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TDbH6dqMXTI9AYjGt5wVIGx6xukN/Qwd2DuYn7pB619eK9JkqH+4Soj4ScNY?=
- =?us-ascii?Q?FcAOQCK7RDpK/W10pr8ziM3DdvgeY2L+gQQbnXp2rj4lCP3DXhKTYZ2KMfKx?=
- =?us-ascii?Q?sEXBAD5LGrCxij3fdJRP7KPxb45ilD/xxm0ty9fc6bz9XfJ4QCKubqS1tQu/?=
- =?us-ascii?Q?XV2E8w3FIt3DuEtkvzXFKDpG53OqyfP+bMEGHQeiaI1Ukc5k86rVQTqdanHi?=
- =?us-ascii?Q?eTg+Q3wvwGRwUP1huxfKTWZUBz4SrHkAQDvKnpjeUfFtxk4kmJbt/qtCz7kI?=
- =?us-ascii?Q?hj0Vm9+zvfKMKtBsi1bJ6F6tmuw7aERaDDcCDviUjaJe/IVRGP7orx2b1AWW?=
- =?us-ascii?Q?5QUW3e7V/rO2cHkwtY+PfPvWgCnYPxTHXXcG3XkcKdC1Rjrt4Y7sQ6JhXYTA?=
- =?us-ascii?Q?toZodYBYzveoZxrZQauS71HQGupz4qs25iohf0gvikwhlw+x/BB8KJG6+5eL?=
- =?us-ascii?Q?qW0E/j1o9lg3g/tVM2eSCZF8al39CFZjZBkdHEToJGIUzS4Msc8mO94KuMHv?=
- =?us-ascii?Q?5mSJYiWiTT+y3L3hPyIX647xNvvHJvTaruQm+3hK7alNc681eIwcdv5EJAsZ?=
- =?us-ascii?Q?xSS9cvvUJY/NZ+K52mlxwd4P0TWZhoJGz39xo8HFQW/hh10y8FpA9Qxu5uv8?=
- =?us-ascii?Q?98rzttB+14I9FMVGg921PZ4k0X3uxh1Rkarfjt5GKprTvGtJLFg9ZHT0SBSN?=
- =?us-ascii?Q?Ksx2FTX7JTtD8KU5bH4wppm5TsZo53+Bd5sbj92h3tepEPPxIesvRef6K+W3?=
- =?us-ascii?Q?3VjcK/3FmEZ1YKw/QhmyUn6shxHMmBRE4cE+7Pd1L0mrsoo236vIKEl9V3+i?=
- =?us-ascii?Q?VLoW1tYqLzW+DzZXOvane51qeIm9kJsRJr2NePHeOlTM2lYEjFKFSzNKorOo?=
- =?us-ascii?Q?yxIHNH/S+IJN0mX31854FtC4BbPv14ews9GW1J683gIDE3AphVilmcEOL7uc?=
- =?us-ascii?Q?P2VhIhGw4ZZnjhZeGxFS05WRDLJb/tt2rK7jXSg+6T93l+jBCVioiubKSsaO?=
- =?us-ascii?Q?eevHHqIQo+zKJwMebYafwAt8JEBtPgS0ptRDyOEWDbScFRZOBVcZOh4I4U0x?=
- =?us-ascii?Q?3Mu8RucCmomgPNvznF1bK3sb1GFwk0TzRDm5SBMRc+E+BvDXkY2e+ri+LhlM?=
- =?us-ascii?Q?nMD8y0O/o9+pNHeYRF9S82xVYQIay1IZMx1gKHcQSskFEibGAPW7sfnEMliR?=
- =?us-ascii?Q?XRauwmrKf2Lpp1Qa/US9D4g5XVmwEi8lAavfF0hIFghvnKRjEiN9GxycZNI?=
- =?us-ascii?Q?=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?87AgJEU0mjWHYkfvwz9+H2yAOdTQl/1ROUwN+tFWCEMCEv+37LXs8u9ZgL5J?=
- =?us-ascii?Q?A3+Paj43Ju8W1PRSrXWzqi3Thsc4nASAVbAc5Q5WrzKdqQ7Qb+JVzD013AnF?=
- =?us-ascii?Q?CAYHXgnyV3+wErg7kXcfseQ6erR4Tk6sWk/dalxn0M0tAgkrgkMczpEZkKzH?=
- =?us-ascii?Q?qHv1dsJIMkffw9Cu2hunuPyf8sQ8vj8H7nJ1M8FRHGEtrRe+MrMWeg7QNByX?=
- =?us-ascii?Q?jXwiKarPaevEcyN51symC74fbbn8vUXcnmTh8r6UWPTmKNb2hiaQilu8Pfrr?=
- =?us-ascii?Q?ObqCctxgtudzHIsvzv6bKUZJx1270ui3YDvAla3gFwvcyyWM+TjKWanBYVNM?=
- =?us-ascii?Q?cinJcjKOjXiBbuONtnWiAxLfQCdR/NQUwCnbd5RO7xU5ytE0MJDJaxaeZwzU?=
- =?us-ascii?Q?lBkoHf/YXdlqmNQ//+7gtxQJuLvVjBVjEGoUF1vDZxIAhfVVN/SLBMwhpy7z?=
- =?us-ascii?Q?lV+uH0KsUOw8ZbOFHevdsaty4pywuN+kiHOQ3Xcb8XbL3cdYlwEqFkBIumjS?=
- =?us-ascii?Q?RnH1VUE++2yYOCjmcGleptNwhBFDtsWZZ5vqPsxdEgxMkok4BjCjXIPCOQSG?=
- =?us-ascii?Q?7hV/cTh2IxRYAX0l2q0JA2jWK5cWqJi/5Uqxpd9ibwsGC083YYiIFJjZvfoz?=
- =?us-ascii?Q?GTOEhd9VTOhHyFI8UMPREW2tjLahkfLSe0IU95ba9+1Fv65fp8NZlck8Gvxh?=
- =?us-ascii?Q?TBvPoQDhZka5TPc7/r2L+g6a8u8wKu9Y8IexJX72kaBBcsc0aHHthCluE4+X?=
- =?us-ascii?Q?cETTrjN7iMvVM+DebpTXErtQKQTbZOJasDk49nGxxZ5/hrAQfq8gak5pKOYg?=
- =?us-ascii?Q?AuQX2n1XsAlOs3RtziY5DV8PE27cGsyvfx2N6RQ5fDK1gDq0FSFCSMuTOI5u?=
- =?us-ascii?Q?uYao/KTt7WesgwchN7TTsDbJLYljm+BNHc4AV0iPfkoZkEheRmhtGLTjMPLN?=
- =?us-ascii?Q?30uQZw8bNGHCriGYUlBkL0NGmT0r0gb7D+E7QQVSU17VGa2Ztnud3tx/Ys/B?=
- =?us-ascii?Q?Viy/G6gZ5pi1App+UVNaMyohNQT4M7XQl5bkxKOiHk+PYF1yxHy0bP6bmnbw?=
- =?us-ascii?Q?39WT8hhwfsZJiKtfuo2RjaG0l8EdNFojrebMfPTnEAyeDUF9H7QK++EkPCm0?=
- =?us-ascii?Q?G56YKjAEe6ygdg/4hFShqMsuGB3G5rLiVLWqzqrtNyqhp6bvSo1kB6vpN9IN?=
- =?us-ascii?Q?okKlKI57ZfuO2BeN4pThgv2jNkrJeo5EJN/CIFSCBHHZPaI5PghZbu7KhNKI?=
- =?us-ascii?Q?NxOkDKFcfvd9W3+kTNjeVOovBMEjWrvbj9b5NWOAzSycSh7XFUJMnyeFpcJf?=
- =?us-ascii?Q?CjI=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0a714cd2-d3dd-4714-4532-08dd5bd63ba4
-X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB8437.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Mar 2025 11:09:44.3409
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYRPR01MB13931
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_030955_160086_F1FBD632 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20250305_103004_970181_35C5AFB9 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,289 +137,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current WED only supports 256 wcid, whereas mt7986 can support up to
-512 entries, so firmware provides a rule to get sta_info by DA when wcid
-is set to 0x3ff by txd. Also, WED provides a register to overwrite txd
-wcid, that is, wcid[9:8] can be overwritten by 0x3 and wcid[7:0] is set
-to 0xff by host driver.
+This patchset makes it possible to set up a software fastpath between
+bridged interfaces. One patch adds the flow rule for the hardware
+fastpath. This creates the possibility to have a hardware offloaded
+fastpath between bridged interfaces. More patches are added to solve
+issues found with the existing code.
 
-However, firmware is unable to get sta_info from DA as DA != RA for
-4addr cases, so firmware and wifi host driver both use wcid (256 - 271)
-and (768 ~ 783) for sync up to get correct sta_info.
+To set up the fastpath with offloading, add this extra flowtable:
 
-Currently WDS+WED config is completely broken on MT7986/7981 devices if
-without this patch.
+table bridge filter {
+        flowtable fb {
+                hook ingress priority filter
+                devices = { lan0, lan1, lan2, lan3, lan4, wlan0, wlan1 }
+                flags offload
+        }
+        chain forward {
+                type filter hook forward priority filter; policy accept;
+		ct state established flow add @fb
+        }
+}
 
-Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
-Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
----
-Changes since v1:
- - Drop duplicate setting in mmio
- - Reduce the patch size by redefining mt76_wcid_alloc
-Changes since v2:
- - Rework wds wcid getting flow
-Changes since v3:
- - Rebase to next-20240703
- - Sync with downstream patch
-Changes since v4:
- - Rebase to next-20240802
-Changes since v5:
- - Fixed build test error reported by robot
- - Rebase to next-20240805
-Changes since v6:
- - Fix potential race conditions on tx/rx packets during the transition
- - Rebase to Felix's newest codebase
-Changes since v7:
- - Fix build fail
----
- drivers/net/wireless/mediatek/mt76/mt76.h     |  9 ++++
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 45 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 18 ++++++--
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
- drivers/net/wireless/mediatek/mt76/util.c     | 37 +++++++++++++--
- drivers/net/wireless/mediatek/mt76/util.h     |  7 ++-
- 6 files changed, 106 insertions(+), 11 deletions(-)
+Creating a separate fastpath for bridges.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 132148f7b1070..638ee9fae0c73 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -28,6 +28,9 @@
- 
- #define MT76_TOKEN_FREE_THR	64
- 
-+#define MT76_WED_WDS_MIN    256
-+#define MT76_WED_WDS_MAX    272
-+
- #define MT_QFLAG_WED_RING	GENMASK(1, 0)
- #define MT_QFLAG_WED_TYPE	GENMASK(4, 2)
- #define MT_QFLAG_WED		BIT(5)
-@@ -73,6 +76,12 @@ enum mt76_wed_type {
- 	MT76_WED_RRO_Q_IND,
- };
- 
-+enum mt76_wed_state {
-+	MT76_WED_DEFAULT,
-+	MT76_WED_ACTIVE,
-+	MT76_WED_WDS_ACTIVE,
-+};
-+
- struct mt76_bus_ops {
- 	u32 (*rr)(struct mt76_dev *dev, u32 offset);
- 	void (*wr)(struct mt76_dev *dev, u32 offset, u32 val);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 3aa31c5cefa6a..c489130b6ae2a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -745,8 +745,15 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	bool ext_phy = mvif->phy != &dev->phy;
- 	int idx;
-+	u8 flags = MT76_WED_DEFAULT;
- 
--	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-+	    !is_mt7915(&dev->mt76)) {
-+		flags = test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ?
-+		       MT76_WED_WDS_ACTIVE : MT76_WED_ACTIVE;
-+	}
-+
-+	idx = __mt76_wcid_alloc(mdev->wcid_mask, MT7915_WTBL_STA, flags);
- 	if (idx < 0)
- 		return -ENOSPC;
- 
-@@ -1271,6 +1278,10 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
- {
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	int min = MT76_WED_WDS_MIN, max = MT76_WED_WDS_MAX;
-+	struct ieee80211_sta *pre_sta;
-+	u8 flags = MT76_WED_DEFAULT;
-+	int temp_idx;
- 
- 	if (enabled)
- 		set_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
-@@ -1280,6 +1291,30 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
- 	if (!msta->wcid.sta)
- 		return;
- 
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-+	    !is_mt7915(&dev->mt76) &&
-+	    (msta->wcid.idx < min || msta->wcid.idx > max - 1)) {
-+		pre_sta = kzalloc(sizeof(*sta) + sizeof(*msta), GFP_KERNEL);
-+		memmove(pre_sta, sta, sizeof(*sta) + sizeof(*msta));
-+
-+		flags = test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ?
-+			MT76_WED_WDS_ACTIVE : MT76_WED_ACTIVE;
-+
-+		temp_idx = __mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA, flags);
-+		((struct mt7915_sta *)pre_sta->drv_priv)->wcid.idx = (u16)temp_idx;
-+		mt7915_mac_sta_add(&dev->mt76, vif, pre_sta);
-+		rcu_assign_pointer(dev->mt76.wcid[temp_idx], &msta->wcid);
-+
-+		temp_idx = msta->wcid.idx;
-+		msta->wcid.idx = ((struct mt7915_sta *)pre_sta->drv_priv)->wcid.idx;
-+		((struct mt7915_sta *)pre_sta->drv_priv)->wcid.idx = (u16)temp_idx;
-+		rcu_assign_pointer(dev->mt76.wcid[temp_idx], NULL);
-+
-+		synchronize_rcu();
-+		mt7915_mac_sta_remove(&dev->mt76, vif, pre_sta);
-+		kfree(pre_sta);
-+	}
-+
- 	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
- }
- 
-@@ -1726,15 +1761,19 @@ mt7915_net_fill_forward_path(struct ieee80211_hw *hw,
- 	if (!mtk_wed_device_active(wed))
- 		return -ENODEV;
- 
--	if (msta->wcid.idx > 0xff)
-+	if (msta->wcid.idx > MT7915_WTBL_STA)
- 		return -EIO;
- 
- 	path->type = DEV_PATH_MTK_WDMA;
- 	path->dev = ctx->dev;
- 	path->mtk_wdma.wdma_idx = wed->wdma_idx;
- 	path->mtk_wdma.bss = mvif->mt76.idx;
--	path->mtk_wdma.wcid = is_mt7915(&dev->mt76) ? msta->wcid.idx : 0x3ff;
- 	path->mtk_wdma.queue = phy != &dev->phy;
-+	if (test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ||
-+	    is_mt7915(&dev->mt76))
-+		path->mtk_wdma.wcid = msta->wcid.idx;
-+	else
-+		path->mtk_wdma.wcid = 0x3ff;
- 
- 	ctx->dev = NULL;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 9d790f234e82c..32c5aa1a361e8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2385,10 +2385,20 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
- 
- 	mt76_connac_mcu_del_wtbl_all(&dev->mt76);
- 
--	if ((mtk_wed_device_active(&dev->mt76.mmio.wed) &&
--	     is_mt7915(&dev->mt76)) ||
--	    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
--		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
-+#ifdef CONFIG_NET_MEDIATEK_SOC_WED
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
-+		if (is_mt7915(&dev->mt76) ||
-+		    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
-+			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
-+						0, 0, 0);
-+		else
-+			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
-+						MCU_WA_PARAM_WED_VERSION,
-+						dev->mt76.mmio.wed.rev_id, 0);
-+		if (ret)
-+			return ret;
-+	}
-+#endif
- 
- 	ret = mt7915_mcu_set_mwds(dev, 1);
- 	if (ret)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 49476a4182fd1..c3dd0cb4a5d38 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -278,6 +278,7 @@ enum {
- 	MCU_WA_PARAM_PDMA_RX = 0x04,
- 	MCU_WA_PARAM_CPU_UTIL = 0x0b,
- 	MCU_WA_PARAM_RED = 0x0e,
-+	MCU_WA_PARAM_WED_VERSION = 0x32,
- 	MCU_WA_PARAM_RED_SETTING = 0x40,
- };
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/util.c b/drivers/net/wireless/mediatek/mt76/util.c
-index 95b3dc96e4c45..7fac9c79ebdf3 100644
---- a/drivers/net/wireless/mediatek/mt76/util.c
-+++ b/drivers/net/wireless/mediatek/mt76/util.c
-@@ -42,9 +42,11 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
- }
- EXPORT_SYMBOL_GPL(____mt76_poll_msec);
- 
--int mt76_wcid_alloc(u32 *mask, int size)
-+int __mt76_wcid_alloc(u32 *mask, int size, u8 flag)
- {
- 	int i, idx = 0, cur;
-+	int min = MT76_WED_WDS_MIN;
-+	int max = MT76_WED_WDS_MAX;
- 
- 	for (i = 0; i < DIV_ROUND_UP(size, 32); i++) {
- 		idx = ffs(~mask[i]);
-@@ -53,16 +55,45 @@ int mt76_wcid_alloc(u32 *mask, int size)
- 
- 		idx--;
- 		cur = i * 32 + idx;
--		if (cur >= size)
-+
-+		switch (flag) {
-+		case MT76_WED_ACTIVE:
-+			if (cur >= min && cur < max)
-+				continue;
-+
-+			if (cur >= size) {
-+				u32 end = max - min - 1;
-+
-+				i = min / 32;
-+				idx = ffs(~mask[i] & GENMASK(end, 0));
-+				if (!idx)
-+					goto error;
-+				idx--;
-+				cur = min + idx;
-+			}
-+
- 			break;
-+		case MT76_WED_WDS_ACTIVE:
-+			if (cur < min)
-+				continue;
-+			if (cur >= max)
-+				goto error;
-+
-+			break;
-+		default:
-+			if (cur >= size)
-+				goto error;
-+			break;
-+		}
- 
- 		mask[i] |= BIT(idx);
- 		return cur;
- 	}
- 
-+error:
- 	return -1;
- }
--EXPORT_SYMBOL_GPL(mt76_wcid_alloc);
-+EXPORT_SYMBOL_GPL(__mt76_wcid_alloc);
- 
- int mt76_get_min_avg_rssi(struct mt76_dev *dev, u8 phy_idx)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/util.h b/drivers/net/wireless/mediatek/mt76/util.h
-index 260965dde94cf..99b7263c0a205 100644
---- a/drivers/net/wireless/mediatek/mt76/util.h
-+++ b/drivers/net/wireless/mediatek/mt76/util.h
-@@ -27,7 +27,12 @@ enum {
- #define MT76_INCR(_var, _size) \
- 	(_var = (((_var) + 1) % (_size)))
- 
--int mt76_wcid_alloc(u32 *mask, int size);
-+int __mt76_wcid_alloc(u32 *mask, int size, u8 flags);
-+
-+static inline int mt76_wcid_alloc(u32 *mask, int size)
-+{
-+	return __mt76_wcid_alloc(mask, size, 0);
-+}
- 
- static inline void
- mt76_wcid_mask_set(u32 *mask, int idx)
+         forward fastpath bypass
+ .----------------------------------------.
+/                                          \
+|                        IP - forwarding    |
+|                       /                \  v
+|                      /                  wan ...
+|                     /
+|                     |
+|                     |
+|                   brlan.1
+|                     |
+|    +-------------------------------+
+|    |           vlan 1              |
+|    |                               |
+|    |     brlan (vlan-filtering)    |
+|    +---------------+               |
+|    |  DSA-SWITCH   |               |
+|    |               |    vlan 1     |
+|    |               |      to       |
+|    |   vlan 1      |   untagged    |
+|    +---------------+---------------+
+.         /                   \
+ ------>lan0                 wlan1
+        .  ^                 ^
+        .  |                 |
+        .  \_________________/
+        .  bridge fastpath bypass
+        .
+        ^
+     vlan 1 tagged packets
+
+To have the ability to handle xmit direct with outgoing encaps in the
+bridge fastpass bypass, we need to be able to handle them without going
+through vlan/pppoe devices. So I've applied, amended and squashed wenxu's
+patchset. This patch also makes it possible to egress from vlan-filtering
+brlan to lan0 with vlan tagged packets, if the bridge master port is doing
+the vlan tagging, instead of the vlan-device. Without this patch, this is
+not possible in the bridge-fastpath and also not in the forward-fastpath,
+as seen in the figure above.
+
+There are also some more fixes for filling in the forward path. These
+fixes also apply to for the forward-fastpath. They include handling
+DEV_PATH_MTK_WDMA in nft_dev_path_info(). There are now 2 patches for
+avoiding ingress_vlans bit set for bridged dsa user ports and foreign
+(dsa) ports.
+
+Another patch introduces DEV_PATH_BR_VLAN_KEEP_HW, needed for the
+bridge-fastpath only.
+
+Conntrack bridge only tracks untagged and 802.1q. To make the bridge
+fastpath experience more similar to the forward fastpath experience,
+I've added double vlan, pppoe and pppoe-in-q tagged packets to bridge
+conntrack and to bridge filter chain.
+
+Note: While testing direct transmit in the software forward-fastpath,
+without the capability of setting the offload flag, it is sometimes useful
+to enslave the wan interface to another bridge, brwan. This will make
+sure both directions of the software forward-fastpath use direct transmit,
+which also happens when the offload flag is set.
+
+I have send RFC v2 as I previously only owned a dsa device. I now have
+obtained a switchdev supporting SWITCHDEV_OBJ_ID_PORT_VLAN, and found
+there was more to do to handle the ingress_vlans bit and corresponding
+vlan encap.
+
+I send v4 and above as non-RFC as the previous 2 RFC's did not get any
+comment.
+
+Changes in v9:
+- No changes, resend to netfilter
+
+Changes in v8:
+- Added commit on top: Avoid zero-length arrays in struct pppoe_hdr.
+
+Changes in v7:
+- Inside br_vlan_fill_forward_path_pvid(), replaced usage of
+   br_vlan_group() with br_vlan_group_rcu() and
+   nbp_vlan_group() with nbp_vlan_group_rcu().
+
+Changes in v6:
+- Conntrack double vlan and pppoe patch: Set ph and vhdr after the calls
+   to pskb_may_pull().
+
+Changes in v5:
+- Conntrack double vlan and pppoe patch: Moved pskb_may_pull() up to the
+   first switch statement, to the start of the cases. Removed the second
+   switch statement. Replaced 0xffffffff with U32_MAX.
+- Added patch removing hw_outdev, out.hw_ifindex and out.hw_ifidx members.
+- Fix error path returned from nft_flow_offload_bridge_init().
+- Cosmetics.
+
+Changes in v4:
+- Added !CONFIG_NET_SWITCHDEV version of
+   br_switchdev_port_vlan_no_foreign_add().
+
+Changes in v3:
+- Squashed the two 'port to port' patches to avoid build errors when only
+   one of the two commits is applied.
+
+Changes in v2:
+- Introduce DEV_PATH_BR_VLAN_KEEP_HW for use in the bridge-fastpath only.
+   It is needed for switchdevs supporting SWITCHDEV_OBJ_ID_PORT_VLAN.
+- Different approach for handling BR_VLFLAG_ADDED_BY_SWITCHDEV in
+   br_vlan_fill_forward_path_mode() for foreign devices. Introduce
+   SWITCHDEV_F_NO_FOREIGN, BR_VLFLAG_TAGGING_BY_SWITCHDEV and
+   br_switchdev_port_vlan_no_foreign_add(). The latter function can be
+   used to make sure the vlan was added to a switchdev native device.
+   When that fails, adding the vlan with br_switchdev_port_vlan_add()
+   means it was added to a switchdev foreign device.
+- Clear ingress_vlans bit and corresponding encap for dsa user ports.
+- Add check for ingress_vlans bit to nft_dev_fill_bridge_path().
+- Adapted cover letter description to make clear the patches apply
+   to software fastpath, making hardware-offloaded fastpath possible.
+- Fixed clang error for vlan_hdr * and struct ppp_hdr * by adding block.
+- Updated !CONFIG_BRIDGE_VLAN_FILTERING version of
+   br_vlan_fill_forward_path_pvid().
+- Removed erroneous check netif_is_bridge_master(ctx->dev) from
+   dev_fill_bridge_path().
+- Cosmetic changes.
+
+Eric Woudstra (15):
+  net: pppoe: avoid zero-length arrays in struct pppoe_hdr
+  netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit
+    direct
+  netfilter: flow: remove hw_outdev, out.hw_ifindex and out.hw_ifidx
+  netfilter: bridge: Add conntrack double vlan and pppoe
+  netfilter: nft_chain_filter: Add bridge double vlan and pppoe
+  bridge: Add filling forward path from port to port
+  net: core: dev: Add dev_fill_bridge_path()
+  netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
+  netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
+  netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
+  netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to
+    nft_dev_path_info()
+  netfilter: nft_flow_offload: No ingress_vlan forward info for dsa user
+    port
+  bridge: No DEV_PATH_BR_VLAN_UNTAG_HW for dsa foreign
+  bridge: Introduce DEV_PATH_BR_VLAN_KEEP_HW for bridge-fastpath
+  netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
+
+ drivers/net/ppp/pppoe.c                    |   2 +-
+ include/linux/netdevice.h                  |   3 +
+ include/net/netfilter/nf_flow_table.h      |   5 +-
+ include/net/switchdev.h                    |   1 +
+ include/uapi/linux/if_pppox.h              |   4 +
+ net/bridge/br_device.c                     |  23 ++-
+ net/bridge/br_private.h                    |  12 ++
+ net/bridge/br_switchdev.c                  |  15 ++
+ net/bridge/br_vlan.c                       |  29 +++-
+ net/bridge/netfilter/nf_conntrack_bridge.c |  83 ++++++++--
+ net/core/dev.c                             |  66 ++++++--
+ net/netfilter/nf_flow_table_core.c         |   1 -
+ net/netfilter/nf_flow_table_inet.c         |  13 ++
+ net/netfilter/nf_flow_table_ip.c           |  96 +++++++++++-
+ net/netfilter/nf_flow_table_offload.c      |  15 +-
+ net/netfilter/nft_chain_filter.c           |  20 ++-
+ net/netfilter/nft_flow_offload.c           | 168 +++++++++++++++++++--
+ net/switchdev/switchdev.c                  |   2 +-
+ 18 files changed, 497 insertions(+), 61 deletions(-)
+
 -- 
-2.48.1
+2.47.1
 
 
