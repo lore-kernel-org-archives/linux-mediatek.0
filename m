@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F6BC282D0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 02:00:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97D9CC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 07:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5z84S7ivlAglfpSb9aQUB0kkxZR6u53+OItBvQZoAMI=; b=JGXh2WuPZJ8SHE
-	X6ombjLWEHRpguRTrSY6ZJ+2eo6twT0qxMel/F8IaZRg1nUX8cit3YXN1n8qUXktHFafJzALrbcj7
-	M2le6+EVeBLfDb8RfPFzEy7U5RA8HrlQt05Pif6t5U90uV8mIUzdsa4P/ip8lr2t5n0oJOzt0bpKm
-	xG6N+G4Dy3kmpN832OHNopiXy2ywpKfTUEgd4IWHOnJ8vUtucSC/iQRhqWGsUTxbTmsf+IbKXI9uS
-	8XTjx3dGqDJDFTqR5g0x/z75APzjMCv1aMXkZdj4AwAhsM2UpVMELwz+XZcm1P8rU9dQj4P3VCfdI
-	MS1T0Ax0FPjWN8Xj0Ntw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CKYLhsZYLN6ePRb39dRUwqAfsfIuk96t/k1thexR5Ds=; b=uL5wwcHsNatE2LQJQFVp8J/gb1
+	OGPshn55VTye+zFO3FM2nhpzQFH8exkRMeW/a7vMYpMn7gh9tFNCIKDHmTc/vy0wxxYkq1uMk3xtI
+	lZwj1qxAtcnDMndhhUBhx7bsIxF+RYyY6qvakDI0mqZMfSuSSiJLeBzcYTycQ3K0/hla2gKjGeuqX
+	KRKUGH8QMP8KWRPB0roWaXK1Vbq9Q5rIF91rDczVWNQg/fRE8SvuGQxcOEZcDXaXmr4dZHygJfF7h
+	+LsobMzqjj5T0JckFqagsr4Islcjz3Jr0zBZd5N3Hskz6rNiV6kHv0QgICD9d/zKbDr6dB+qLOWrj
+	54jVoklQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpe3V-00000006lXS-0s6Y;
-	Wed, 05 Mar 2025 02:00:17 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tpikP-00000007CFk-0Wtc;
+	Wed, 05 Mar 2025 07:00:53 +0000
+Received: from unicom145.biz-email.net ([210.51.26.145])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpe1u-00000006lCW-1gNf;
-	Wed, 05 Mar 2025 01:58:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8609CA458F1;
-	Wed,  5 Mar 2025 01:53:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 964B6C4CEE5;
-	Wed,  5 Mar 2025 01:58:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741139917;
-	bh=faPPTc6fEqFkFFgMOn0XiUUr2KwsjokpKxnGBmLUfb4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=BaX8Oa727DhaBLVOvWypoECVFTTcmn6+Wx3yBzMVT6rm7vhjZLt3VJHewLq0r1Y4c
-	 QtFWcquZ/i9LIVonDQaO3cuQsC5t8rWZ1W03jRgIwZFiJ+ZgRtIboC7S2URCj+UaEo
-	 dvOVJCsvqim32rLbUhnX4DbVsM0mu9cAMoqTBdzKDS2a/yHoUY5EQtdmsMVHlEpgQK
-	 Dy/83nzSNqk8XVhbipHuO+T5mHBrMDcHuS6UfPgDmRcx6gpNHqdfle3WBOdIoeMZOA
-	 RyTkq0EAcgIT1eAq7dLfE1itPJlInCwUB/hRAzzwJWV7xN1kpSHVYrr7JFKSeCj/uU
-	 AVTFBSIxa/cvQ==
-Date: Tue, 4 Mar 2025 17:58:34 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v8 net-next 00/15] bridge-fastpath and related
- improvements
-Message-ID: <20250304175834.4306c670@kernel.org>
-In-Reply-To: <20250228201533.23836-1-ericwouds@gmail.com>
-References: <20250228201533.23836-1-ericwouds@gmail.com>
+	id 1tpikL-00000007CDn-3AaC;
+	Wed, 05 Mar 2025 07:00:51 +0000
+Received: from jtjnmail201604.home.langchao.com
+        by unicom145.biz-email.net ((D)) with ASMTP (SSL) id 202503051500254125;
+        Wed, 05 Mar 2025 15:00:25 +0800
+Received: from jtjnmail201607.home.langchao.com (10.100.2.7) by
+ jtjnmail201604.home.langchao.com (10.100.2.4) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Wed, 5 Mar 2025 15:00:24 +0800
+Received: from locahost.localdomain (10.94.3.63) by
+ jtjnmail201607.home.langchao.com (10.100.2.7) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Wed, 5 Mar 2025 15:00:23 +0800
+From: Charles Han <hanchunchao@inspur.com>
+To: <ryder.lee@mediatek.com>, <jianjun.wang@mediatek.com>,
+	<lpieralisi@kernel.org>, <kw@linux.com>, <manivannan.sadhasivam@linaro.org>,
+	<robh@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	Charles Han <hanchunchao@inspur.com>
+Subject: [PATCH] PCI: mediatek-gen3: fix inconsistent indenting warning
+Date: Wed, 5 Mar 2025 15:00:22 +0800
+Message-ID: <20250305070022.4668-1-hanchunchao@inspur.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.94.3.63]
+X-ClientProxiedBy: Jtjnmail201613.home.langchao.com (10.100.2.13) To
+ jtjnmail201607.home.langchao.com (10.100.2.7)
+tUid: 202530515002533dc4868a0a3680aa1f21efe3607861b
+X-Abuse-Reports-To: service@corp-email.com
+Abuse-Reports-To: service@corp-email.com
+X-Complaints-To: service@corp-email.com
+X-Report-Abuse-To: service@corp-email.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_175838_513606_A1F40945 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20250304_230050_072511_D7D7B6CC 
+X-CRM114-Status: UNSURE (   9.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,22 +75,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Gustavo A.
- R. Silva" <gustavoars@kernel.org>, Kees Cook <kees@kernel.org>, Nikolay Aleksandrov <razor@blackwall.org>, Ahmed Zaki <ahmed.zaki@intel.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org, Ivan Vecera <ivecera@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Pablo Neira Ayuso <pablo@netfilter.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Alexander Lobakin <aleksander.lobakin@intel.com>, Michal Ostrowski <mostrows@earthlink.net>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 28 Feb 2025 21:15:18 +0100 Eric Woudstra wrote:
-> This patchset makes it possible to set up a software fastpath between
-> bridged interfaces. One patch adds the flow rule for the hardware
-> fastpath. This creates the possibility to have a hardware offloaded
-> fastpath between bridged interfaces. More patches are added to solve
-> issues found with the existing code.
+Fix below inconsistent indenting smatch warning.
+smatch warnings:
+drivers/pci/controller/pcie-mediatek-gen3.c:922 mtk_pcie_parse_port() warn: inconsistent indenting
 
-For some reason this series didn't get ingested by patchwork correctly.
-Instead of reposting for net-next maybe lets use this opportunity to
-resend to netfilter instead? Looks like we have some acks from Nik but
-none from Pablo.
+Signed-off-by: Charles Han <hanchunchao@inspur.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 3583e5481dc8..2d1675ba496b 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -919,13 +919,13 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+ 		return pcie->num_clks;
+ 	}
+ 
+-       ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
+-       if (ret == 0) {
+-	       if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
++	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
++	if (ret == 0) {
++		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
+ 			dev_warn(dev, "invalid num-lanes, using controller defaults\n");
+-	       else
++		else
+ 			pcie->num_lanes = num_lanes;
+-       }
++	}
+ 
+ 	return 0;
+ }
 -- 
-pw-bot: cr
+2.43.0
+
 
