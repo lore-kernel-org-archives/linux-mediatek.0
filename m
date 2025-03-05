@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97D9CC19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 07:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 581ACC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 07:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CKYLhsZYLN6ePRb39dRUwqAfsfIuk96t/k1thexR5Ds=; b=uL5wwcHsNatE2LQJQFVp8J/gb1
-	OGPshn55VTye+zFO3FM2nhpzQFH8exkRMeW/a7vMYpMn7gh9tFNCIKDHmTc/vy0wxxYkq1uMk3xtI
-	lZwj1qxAtcnDMndhhUBhx7bsIxF+RYyY6qvakDI0mqZMfSuSSiJLeBzcYTycQ3K0/hla2gKjGeuqX
-	KRKUGH8QMP8KWRPB0roWaXK1Vbq9Q5rIF91rDczVWNQg/fRE8SvuGQxcOEZcDXaXmr4dZHygJfF7h
-	+LsobMzqjj5T0JckFqagsr4Islcjz3Jr0zBZd5N3Hskz6rNiV6kHv0QgICD9d/zKbDr6dB+qLOWrj
-	54jVoklQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QUsr/iCnKd/GZUSiPP0qg3YZq8O3ABD8811wmqc6RIE=; b=J29wzhNahTxzn0Jte5+xFOEWx8
+	IsNZa4z3dU/dwrkV/6/oWk8hnipqQ9TC2hli9pbBZUBWqyhXgVh/wG24HQPIqDARSaxBcgz0usfrZ
+	MqC4VUZmsz+o+Vv8zaKcbMWd9po3YVTFSDOayypBE+LOiopiV5IMxJFGk9nlMZ0IwkG535l6SUs1h
+	Hh+Hif7MewpQ6s9bYtF2T+CwdSGb2PpGtCNxb7ZUtShUIT+oOV7vteAPGMAKt/12O4s9RMpO5uJXM
+	Is5v8/qhWA6E9x/XWrfeh01tSMALNmaU1w4Qa+3AFmGQR/rgj/l6oK0gwFD6kZCv0PFXlnKYPafUO
+	zJAc6NAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpikP-00000007CFk-0Wtc;
-	Wed, 05 Mar 2025 07:00:53 +0000
-Received: from unicom145.biz-email.net ([210.51.26.145])
+	id 1tpjcp-00000007IhQ-286p;
+	Wed, 05 Mar 2025 07:57:07 +0000
+Received: from mail-pl1-f180.google.com ([209.85.214.180])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpikL-00000007CDn-3AaC;
-	Wed, 05 Mar 2025 07:00:51 +0000
-Received: from jtjnmail201604.home.langchao.com
-        by unicom145.biz-email.net ((D)) with ASMTP (SSL) id 202503051500254125;
-        Wed, 05 Mar 2025 15:00:25 +0800
-Received: from jtjnmail201607.home.langchao.com (10.100.2.7) by
- jtjnmail201604.home.langchao.com (10.100.2.4) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 5 Mar 2025 15:00:24 +0800
-Received: from locahost.localdomain (10.94.3.63) by
- jtjnmail201607.home.langchao.com (10.100.2.7) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 5 Mar 2025 15:00:23 +0800
-From: Charles Han <hanchunchao@inspur.com>
-To: <ryder.lee@mediatek.com>, <jianjun.wang@mediatek.com>,
-	<lpieralisi@kernel.org>, <kw@linux.com>, <manivannan.sadhasivam@linaro.org>,
-	<robh@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	Charles Han <hanchunchao@inspur.com>
-Subject: [PATCH] PCI: mediatek-gen3: fix inconsistent indenting warning
-Date: Wed, 5 Mar 2025 15:00:22 +0800
-Message-ID: <20250305070022.4668-1-hanchunchao@inspur.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tpjYv-00000007ICa-21qL;
+	Wed, 05 Mar 2025 07:53:06 +0000
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-2239aa5da08so57775285ad.3;
+        Tue, 04 Mar 2025 23:53:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741161185; x=1741765985;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QUsr/iCnKd/GZUSiPP0qg3YZq8O3ABD8811wmqc6RIE=;
+        b=EB+Sk6BuyBmRxTamvVOtpg7UD44LRYoRGBvTrieGK1lDJtjuOwc4MFyv6a1AFFsnY+
+         rS21pn6HKMJdUeMPYQHZPKhmFWVms0kyOubc5XYkXUOA6Ta9z7rgFEx6ZG0PM+5F9qDH
+         1tvLgcVT7Rg5TiyOjT9z/TPplaujPoMBOJMhDVV+yQ2Yu2/ENQ5fOr0/NFWBdsL7RGz+
+         m5aiWtfmQD3B/69J6dHpdAfbpKEy0Gv3RnwUA2mifOZIGNXD3HL6Fd73uNbdJDacLIO+
+         NA5QNUPnWsqrwWmJ1R8LDIDVn5pp7VJ5tIuHYKbO5k9Akl87HJimp3zmZsnVUAIe22nA
+         GirA==
+X-Forwarded-Encrypted: i=1; AJvYcCUNAhDYJfFy9QKWfQNLeG54wqqP6n3uXbWDD+7okDgrhJ5PrYyIC8b6X/SBiqJ/t45HKLOn+8nRIibhcHJNnZQ=@lists.infradead.org, AJvYcCVu9JIwfPkXamElEDPBEsX2S4Y6QYza4gT/5LjzYaVmZV6ZyCZzHDeXvvY6vQEeFDrN/wlbcDprNUzY8MF0vk3v@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPnsJEvnsrplKL/4AMtwZGpAP9jtKdLh1P0BDul9VTmsCEJ71a
+	+J/VH3AJsQALT046k6mxK0uUz88bS3djysAaQiNzKCmVWhCcnzEZ
+X-Gm-Gg: ASbGncvqTS213JCHhA23YSpUycJYiLulU4AKTjrQv/ybFxG8+wxTtNvX6HxG/H7qJXs
+	ZMXD2hjPiilxuRDvu2abAqK25yUo6sIxffpyENDp9OVMAY+4lUgNbKhADHr298hYK2CD7iMETx6
+	i/TtgefD4ToYtSf8jSzoKpnrZCaP5jFVzKeFTyRMR9gnljXO2j3kd3DD8otUE2dhp6g8/1bZ/Gr
+	eRlSnS4gGsvQ7zuT5KNh0FM4VPJle2ToRRKB8+y5i2QWH8KnE0Z9co6X5/rqdpdo4t7v+Lll1kH
+	inevVgWSboqNnW55Kvh+i6mIP/hAlexpHdPAj24JZSH04QAfZX3V83RDAvVT8aP6LQSSyUzO60z
+	guTA=
+X-Google-Smtp-Source: AGHT+IGc/QGITU1VyyG2bR8BE8zXWKg2nLipJcMYsipV+Ey8nHltBSogWbamh50FAZrr7Q2bpkYmww==
+X-Received: by 2002:a17:903:1987:b0:21f:85d0:828 with SMTP id d9443c01a7336-223f1d6cd19mr34190085ad.41.1741161184651;
+        Tue, 04 Mar 2025 23:53:04 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-223501fd276sm107054275ad.104.2025.03.04.23.53.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Mar 2025 23:53:04 -0800 (PST)
+Date: Wed, 5 Mar 2025 16:53:02 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Charles Han <hanchunchao@inspur.com>
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, manivannan.sadhasivam@linaro.org,
+	robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: mediatek-gen3: fix inconsistent indenting warning
+Message-ID: <20250305075302.GD847772@rocinante>
+References: <20250305070022.4668-1-hanchunchao@inspur.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.94.3.63]
-X-ClientProxiedBy: Jtjnmail201613.home.langchao.com (10.100.2.13) To
- jtjnmail201607.home.langchao.com (10.100.2.7)
-tUid: 202530515002533dc4868a0a3680aa1f21efe3607861b
-X-Abuse-Reports-To: service@corp-email.com
-Abuse-Reports-To: service@corp-email.com
-X-Complaints-To: service@corp-email.com
-X-Report-Abuse-To: service@corp-email.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250305070022.4668-1-hanchunchao@inspur.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_230050_072511_D7D7B6CC 
-X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-CacheID: sfid-20250304_235305_545988_B9D720AC 
+X-CRM114-Status: UNSURE (   6.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,39 +90,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix below inconsistent indenting smatch warning.
-smatch warnings:
-drivers/pci/controller/pcie-mediatek-gen3.c:922 mtk_pcie_parse_port() warn: inconsistent indenting
+Hello,
 
-Signed-off-by: Charles Han <hanchunchao@inspur.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+> Fix below inconsistent indenting smatch warning.
+> smatch warnings:
+> drivers/pci/controller/pcie-mediatek-gen3.c:922 mtk_pcie_parse_port() warn: inconsistent indenting
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 3583e5481dc8..2d1675ba496b 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -919,13 +919,13 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 		return pcie->num_clks;
- 	}
- 
--       ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
--       if (ret == 0) {
--	       if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
-+	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
-+	if (ret == 0) {
-+		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
- 			dev_warn(dev, "invalid num-lanes, using controller defaults\n");
--	       else
-+		else
- 			pcie->num_lanes = num_lanes;
--       }
-+	}
- 
- 	return 0;
- }
--- 
-2.43.0
+Applied to controller/mediatek, thank you!
 
+	Krzysztof
 
