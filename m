@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219EDC19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17C8C282DE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:26:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5kSxBBmXLp5znuvDpyfInXgp33ac9fBkMm+7i47g4Mo=; b=ixs5zjrnz81bo1W4zOqG03EbzC
-	g5Sy74616qPyHMRkNL6H5XCgni42AxEzCisf1Ufu+NLGvZPjFRCWkM1pRHvem/XRTuoSCOIreaKe3
-	t9Rm0wVxoFcL4DAogIIowoN9CKJvWOJJilu32qvW5qvBShBqRSTMe3OSRI8g+1HmxTwdpI8ObUSlg
-	y4C6eTB697xaPkYVBVPo5+fMD3dIuY+r+G3L4DgVGMCwFVJIt6a3ZpnLFUFRVqGx+/YzmXcmAvcN5
-	q0wdIBhwpyHi01Wch72ZAdml2Bpc/PDRVYQs9p+40o8y0pHMcsquBg/C+nyCCqGofba//VFrc8j2E
-	0ujUls8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Uo3mWNGatWCN9U9NdsHgYs4FZPyOo5lVBCESSB/+w6k=; b=oTRebaPR8qleqQkgqVOWg4PtVI
+	N8AmJEg5htYVQZR+cyRbXARPHJ9lq5b7gnYbgFyFK2aMNSQR9yBGveYU5JiQPP1Z6QB2btrpYhFde
+	BCpGM1MZxs7N5qJtFJOY6NJA+56lvhdsf0eYJriWcDNBq3T0zldKNjAR7tWfbyr2FieFOkJaaKkJq
+	vu0Jcub/E/D5cinjp3jGcEpeCo1BL1MXKLAZHyJuqt8biYnNOuDtWBuhosQZg9aY8XWozIDjr/mIf
+	n4cZeXHzSIkH6DMxtXc/xoGZUOEKfrn/yXeVBXD4TYj3ye6iVvmRyJGDC6qsfbFhpafk9TAWoS+jd
+	+NWJNN1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpsQG-00000008mqK-14Ay;
-	Wed, 05 Mar 2025 17:20:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tpsVm-00000008nOd-0I1k;
+	Wed, 05 Mar 2025 17:26:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpsOK-00000008maW-2sNv;
-	Wed, 05 Mar 2025 17:18:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741195122;
-	bh=VLo1VfKrncc62HR3H2AUBFVFZ8nlgV/Ud1MBfjGjdvc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aTA7ZkljZ0mv/kvuFSL6iNhvjnFmepeIqml6cipt78WQCD8DVBYT4ayvgJNa8bDxZ
-	 9eyAoRiJFFSLFDUWN/eYHS4iFF6gG1x21l6eC4OVpNq/LxPxUV3Kag5RH38TpsPS/D
-	 Tj9X1QpmSv3XQOhFpvb0ppJ+71rYZJYxdGx3fjlIjSJoyRErnnPsUJr4+UABm9pOsV
-	 zvkQTu++r3FyH99pMIh36+wrVRM2D62KYLydeDBpxWVRFPd9abf/Yrr0CpuM1WqXDZ
-	 9TzubIlTg/b9ZFaTPbSF20cGG5fT6j1ItwO37jslD/R4XNdUZWZvBK9rMQE+SSp8PI
-	 FpzVtRGmCqe2w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB02417E0599;
-	Wed,  5 Mar 2025 18:18:41 +0100 (CET)
-Message-ID: <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
-Date: Wed, 5 Mar 2025 18:18:41 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1tpsT3-00000008n5R-1Aej;
+	Wed, 05 Mar 2025 17:23:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 46CC65C6B5F;
+	Wed,  5 Mar 2025 17:21:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72558C4CED1;
+	Wed,  5 Mar 2025 17:23:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741195415;
+	bh=Uo3mWNGatWCN9U9NdsHgYs4FZPyOo5lVBCESSB/+w6k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ri8Ar6n5p2xBm9RoUR7lfLv/IX2/ebTBuDpaaCIcqGbViU7c/W9BiAWxLFXRF1t8I
+	 WzrFyqkvMHHNSXk48gJh8mxR2cSBXtaaNZMoWhdG6c0irXIjWomD+jTcJJG9OptBY6
+	 tM12CgTHcUHN/D1DrarJbIaOe9D9fUGJtZrT2eu0tFX6Re47o4ujUEYkCLIzfV+KI5
+	 3whidGPBut1xFRiGsqHXl6vpPDo6cKVvGtgbRMlaobOuq8xHNncI9ySvGBFasbZGPN
+	 ZZbFpugpS+3MAtNF5RekqT95D7Tee8/rh1FoJleciexP88k3zTO5MYFWV1mT0XkoJp
+	 1Mrl17smqux+A==
+Date: Wed, 5 Mar 2025 17:23:29 +0000
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Trevor Wu <trevor.wu@mediatek.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	kernel@collabora.com, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Zoran Zhan <zoran.zhan@mediatek.com>
 Subject: Re: [PATCH v2 3/3] ASoC: mediatek: mt8188-mt6359: Add accdet headset
  jack detect support
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Zoran Zhan <zoran.zhan@mediatek.com>
+Message-ID: <7661b71a-9d5a-46c4-9639-0fba1b118b52@sirena.org.uk>
 References: <20250304-mt8188-accdet-v2-0-27f496c4aede@collabora.com>
  <20250304-mt8188-accdet-v2-3-27f496c4aede@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250304-mt8188-accdet-v2-3-27f496c4aede@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="A3lZokx9nkSuQ7Eg"
+Content-Disposition: inline
+In-Reply-To: <59d0d382-1d15-46c4-b9e4-b66c32c188d3@collabora.com>
+X-Cookie: Everybody gets free BORSCHT!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_091844_880848_00B29DF6 
-X-CRM114-Status: GOOD (  21.51  )
+X-CRM114-CacheID: sfid-20250305_092337_373949_D5CC5111 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,71 +85,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/03/25 22:35, Nícolas F. R. A. Prado ha scritto:
-> Enable headset jack detection for MT8188 platforms that use the MT6359
-> ACCDET block for it, indicated by the mediatek,accdet property in DT.
-> For those platforms, register a jack and initialize the ACCDET block to
-> report jack events through it.
-> 
-> Co-developed-by: Zoran Zhan <zoran.zhan@mediatek.com>
-> Signed-off-by: Zoran Zhan <zoran.zhan@mediatek.com>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-We chatted about the issue that I raised before with mt8188_headset_jack_pins[],
-it's fine to have it for now, as whatever we do with that would still duplicate
-things and there's no way around that for now.
+--A3lZokx9nkSuQ7Eg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The sound card driver should get a bigger cleanup anyway, and it's not really
-possible even because otherwise we'd break UCM2 confs, so it is what it is.
+On Wed, Mar 05, 2025 at 06:18:41PM +0100, AngeloGioacchino Del Regno wrote:
 
-> ---
->   sound/soc/mediatek/Kconfig                |  1 +
->   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 43 +++++++++++++++++++++++++++++++
->   2 files changed, 44 insertions(+)
-> 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index 3033e2d3fe16840631a465dd967da77f7a6ff43c..64155ea7965a1cc50593fef442ce90761836f328 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -237,6 +237,7 @@ config SND_SOC_MT8188_MT6359
->   	select SND_SOC_NAU8825
->   	select SND_SOC_RT5682S
->   	select SND_SOC_ES8326
-> +	select SND_SOC_MT6359_ACCDET
+> Get to that mt6359-accdet.h header and:
 
-The only remaining complaint that I have is that this driver shouldn't really
-add a select SND_SOC_MT6359_ACCDET.
+> #if IS_ENABLED(CONFIG_SND_SOC_MT6359_ACCDET)
 
-Instead, the mt6359-accdet.h header should be modified to stub-ify the accdet
-driver functions in the case in which it's not built in, or not available as a
-module anyway.
+> function signatures
 
-This is because the accdet driver is not *mandatory* for this driver to work,
-and being it an optional peripheral, adding a dependency doesn't really make
-a lot of sense as it'd only force in bloat when not wanted.
+> #else
 
-So...
+> static .... { return -EINVAL; (or whatever else) }
 
-Get to that mt6359-accdet.h header and:
+> #endif
+>=20
 
-#if IS_ENABLED(CONFIG_SND_SOC_MT6359_ACCDET)
+It should probably be return 0 for the registration/unregistration
+functions so the caller doesn't fail if it checks the return code when
+the accessory detection is configured out.
 
-function signatures
+--A3lZokx9nkSuQ7Eg
+Content-Type: application/pgp-signature; name="signature.asc"
 
-#else
+-----BEGIN PGP SIGNATURE-----
 
-static .... { return -EINVAL; (or whatever else) }
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfIiJAACgkQJNaLcl1U
+h9CMZQf+Ifm+gO7vy+HK8RUWgpgzNwyEaaG9mU1+cZEDRedSC6PkwGHGr6nahS9G
+34+jdkZ/QUiRaiC9wFejUo6yDAxGAmn0vp4U1En2P1lzrjK/aa0mNneVXmN/p7bJ
+hAoLZr4RQ3iKCSqrWdpUVf/uLZ97LMNi7q7Gu13BbWJl0VYdfpcWyMcXWpZr62Is
+F5CSNUwZkvpcy6wzcj5P6Y1PSlR8c5SmygJ1ohNt9ujhNWNSxNqQoKajIgI+3oWK
+6Uw59dXmeWtFsCpcuB6/w2fKw+UdwYpnAbnwtGwlJivbRqa0vgt4Cxzzgflz0V4I
+AU2ee5PAEVtbq/r4fJ5EtqWBRE5yLg==
+=n+jb
+-----END PGP SIGNATURE-----
 
-#endif
-
-That said, for the future v3 of this commit, after removing the select
-SND_SOC_MT6359_ACCDET (and granted that the proposed header fix is in place),
-you can add my
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
-
+--A3lZokx9nkSuQ7Eg--
 
