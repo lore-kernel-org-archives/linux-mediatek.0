@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B693DC19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:33:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B003DC19F32
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 17:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vPDi1Ay7jp0BDlAY0A0QECjWaYzMr9Shmsur02Eb9uU=; b=SCmWmXaDY9muPCt7jxr3bvOl31
-	+wV9X8Lipv558yDuFzTI0HJRMDv3N1wf/Gw0pbhlyOyrJF9tlEVdOOeuMh4FQ87I4Pa+bkl3DOYPM
-	iEK/HUPWdZG++UQaGe3VjnNwq9eG2QwLXJg53uYFA8el/ebpZu3CdXOnnRovjOBdKStXHIpVrMBd8
-	4Y7SS9urUHxwqiitzh12aazRZoWHWdsBx3TwwVBAd80leRIdPVRvrHlbRQ4eHp6j9DAz8NmqspdCI
-	Crott9DqoIgL4k1/PFDJgv+eDUR8Kg+8PxH2j6GBd8BY0UscYYNPBW5ZtaOibat+xN0ZbyvgJ0nCJ
-	d9aZuN8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QA3n5e4m2nhrgJ7Mbtp/ZkWMjMA2M8GBAT80C2z/1Fc=; b=StUWU9LSe6ce5Q
+	mB2+RsITFrTKDdrwz8Z3wcKW3lMhNpuBajgIritWBlVxYc2mxqWOhLdTedx15DPuZotwumssTh0ua
+	kTNj5BpEd60VP1PRJYKqsB2RxfZGrIGst5yL2eCql9QzkAljtH1LCOESgj36RXxmEEiG1R3nMqr/K
+	LnvODs8vL8FAmoQ8UrWl9x6CVcbCkzSpJDeXYQLW6GfGyHJRs5CLMN8oNWhZvEpsyaLkt6wtR61ib
+	s9Of5w6dwY6SJyIhPOcwQ3uD+SO8Zix2RvwVDmWl/DO0U3Jaixfyw+pNN8m0/o1CalECjy8xNu7P3
+	zLolLw9PIVoUzOk7BqJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpscq-00000008o3s-1aLn;
-	Wed, 05 Mar 2025 17:33:44 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tpsmA-00000008pGA-1uNJ;
+	Wed, 05 Mar 2025 17:43:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpreb-00000008frP-20vz;
-	Wed, 05 Mar 2025 16:31:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CFB7DA45B55;
-	Wed,  5 Mar 2025 16:25:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCFF4C4CED1;
-	Wed,  5 Mar 2025 16:31:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741192288;
-	bh=mjfercYvHY6XW4hH6LajRSUm1yvoytFiSmictk11u7I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PdkYWWY56USlcELtkXOwMTB0B7NndvMTFbHWm5Ez1ffZ0OqyMcPXJw/cZOJ7PvwWQ
-	 M7dU8sf4Zuc6QsozhigHmnHDk23XVG4RDTxL+4VJFuNWDjqDgEFxlsC+GDS5cALLVD
-	 VRXXDM6ZHQpf+Nl0iLbwdqs4K9ud2YMqVG8V484AYlfl2Zcs38b4WZtkGI8kx4n8Ex
-	 zttMpJTanbvdpSEmZoTTnnrPD5LcMiTek6zeT18QEJWDSj+XwLSeXK5fgoc97bcv1U
-	 KA9HSh9MhayMoQSl907mwR6zeVrPoSEvAxf0Ove4v0BFWrdq3inptn1Gw+Jjzgbz87
-	 KbLsJf+5Ko0Rg==
-Date: Wed, 5 Mar 2025 16:31:23 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jjian Zhou <jjian.zhou@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>
-Subject: Re: [PATCH RFC 3/3] dt-bindings: mailbox: mtk,vcp-mbox: add mtk
- vcp-mbox document
-Message-ID: <20250305-chewing-henchman-aea98c18b412@spud>
-References: <20250305082047.15746-1-jjian.zhou@mediatek.com>
- <20250305082047.15746-4-jjian.zhou@mediatek.com>
+	id 1tpsjT-00000008otx-0eak;
+	Wed, 05 Mar 2025 17:40:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741196433;
+	bh=xeU6W8dr+Xx44tYwHCvYEUZQm+N4fX/QzQxV0VbFOsk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RLXmrKGXAheI/WPSgzRwEz2WzIRFcgBxYpDBX74aJUqV1KexEyqvFt/sZmqmk1zXm
+	 l9rrps+gwi0tDOkPcX23wGNh91SuAoNVFUATwSBCT31Wy5ftA4ioHN0punSnOyQ0Yq
+	 NGnn1cemoH48NiNr2OZA1DdiKD+uz7kY7AJoGTGA+YFWISYFPmZS1WCYjroDOjkTWj
+	 IJDFG3Dac5hktsfbV51IFrBrn9gqmJOHJHeInrHif7XXzVK0C3QWfWOuW5ELyYyrgf
+	 AjjPN69aKvN7JXQKKbjx4DOgqqlvq7hgZOtsRm6bCPoP+c5H2jSJBNKXQB4iqSR0kw
+	 NeE/Ee80U3o8w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3831917E0880;
+	Wed,  5 Mar 2025 18:40:32 +0100 (CET)
+Message-ID: <0d929810-1189-41ce-8f8a-3b7230c3b2a9@collabora.com>
+Date: Wed, 5 Mar 2025 18:40:31 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wpgFucSmUGsB0HoE"
-Content-Disposition: inline
-In-Reply-To: <20250305082047.15746-4-jjian.zhou@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/8] soc: mediatek: mtk-cmdq: Add pa_base parsing for
+ unsupported subsys ID hardware
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
+References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
+ <20250218054405.2017918-5-jason-jh.lin@mediatek.com>
+ <581fc075-25d8-4104-a4ee-8c97e1a017e6@collabora.com>
+ <03c523e66fd56442f49c38456476cf18be59e8fb.camel@mediatek.com>
+ <8203317e-7f99-4ea5-bda0-fcd791602a9f@collabora.com>
+ <c27653233ed2ee2ee6eb0d40ad2167721a2b1476.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <c27653233ed2ee2ee6eb0d40ad2167721a2b1476.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_083129_646198_51F69396 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20250305_094035_353390_96C697C7 
+X-CRM114-Status: GOOD (  36.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,106 +80,196 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 05/03/25 16:58, Jason-JH Lin (林睿祥) ha scritto:
+> On Wed, 2025-03-05 at 12:03 +0100, AngeloGioacchino Del Regno wrote:
+>>
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 05/03/25 10:46, Jason-JH Lin (林睿祥) ha scritto:
+>>> On Tue, 2025-03-04 at 10:35 +0100, AngeloGioacchino Del Regno
+>>> wrote:
+>>>>
+>>>> External email : Please do not click links or open attachments
+>>>> until
+>>>> you have verified the sender or the content.
+>>>>
+>>>>
+>>>> Il 18/02/25 06:41, Jason-JH Lin ha scritto:
+>>>>> When GCE executes instructions, the corresponding hardware
+>>>>> register
+>>>>> can be found through the subsys ID. For hardware that does not
+>>>>> support
+>>>>> subsys ID, its subsys ID will be set to invalid value and its
+>>>>> physical
+>>>>> address needs to be used to generate GCE instructions.
+>>>>>
+>>>>> This commit adds a pa_base parsing flow to the cmdq_client_reg
+>>>>> structure
+>>>>> for these unsupported subsys ID hardware.
+>>>>>
+>>>>
+>>>> Does this work only for the MMINFRA located GCEs, or does this
+>>>> work
+>>>> also for
+>>>> the legacy ones in MT8173/83/88/92/95 // MT6795/6893/etc?
+>>>>
+>>>> In order to actually review and decide, I do need to know :-)
+>>>>
+>>>
+>>> Yes, it's for the SoCs without subsys ID, it's not related to the
+>>> MMINFRA.
+>>>
+>>> This can also work on MT8173/83/92/95 // MT6795/6893/etc.
+>>> You can remove the `mediatek,gce-client-reg` properties in their
+>>> dtsi
+>>> and cherry-pick this series to verify it. :-)
+>>>
+>>
+>> This is curious - and that brings more questions to the table (for
+>> curiosity
+>> more than anything else at this point).
+>>
+>> Since this is a way to make use of the CMDQ for address ranges that
+>> are not tied
+>> to any subsys id (hence no gce-client-reg and just physical address
+>> parsing for
+>> generating instructions), do you know what are the performance
+>> implications of
+>> using this, instead of subsys IDs on SoCs that do support them?
+>>
+> 
+> The main advantage of using subsys ID is to reduce the number of
+> instruction.
+> Without subsy ID, you will need one more `ASSIGN` instruction to assign
+> the high bytes of the physical address.
+> 
+> E,g. In mt8195-gce.h: #define SUBSYS_1c00XXXX 3
+> 
+> If you want GCE to write the value 0x0000000f to 0x1c00_002c.
+> 
+> With subsys ID, you can use only one instruction to achieve it:
+> 1. WRITE value: 0x000000f to subsys: 0x3 + offset: 0x0002c
+> - OP code: WRTIE = 0x90
+> - subsys ID: 0x1c00XXXX = 0x03
+> - offset: 0x002c
+> - value: 0x0000000f
+> 
+> Without subsys ID, you will need 2 instructions to achieve it:
+> 1. ASSIGN address high bytes: 0x1c00 to GCE temp register: SPR0
+> - OP code: LOGIC = 0xa0
+> - arg_type: register, value, value = (0x8)
+> - sub OP: ASSIGN = 0x0
+> - register index to store the assign value: SPR0 = 0x0
+> - value to assign: 0x1c00
+> 2. WRITE value: 0x0000000f to temp register: SPR0 + offset:0x002c
+> - OP code: WRITE = 0x90
+> - sub OP(temp register index): SPR0 = 0x0
+> - offset for temp register: 0x002c
+> - value: 0x0000000f
+> 
+>> Being clear: if we were to migrate a SoC like MT8195 to using this
+>> globally
+>> instead of using subsys ids, would the performance be degraded?
+>> And if yes, do you know by how much?
+>>
+> 
+> E,g. If the inst number with subsys ID is N.
+> 1. If CMDQ is implement like this, then inst number will be (N * 2):
+> assign SPR0 = 0x1c00
+> write A to SPR0 + offset: 0x2c
+> assign SPR0 = 0x1c00
+> write B to SPR0 + offset: 0x3c
+> assign SPR0 = 0x1c00
+> write C to SPR0 + offset: 0x4c
+> ...
+> 
+> 2. If CMDQ is implement like this, the inst number will be (N + 1 * n):
+> assign SPR0 = 0x1c00
+> write A to SPR0 + offset: 0x2c
+> write B to SPR0 + offset: 0x3c
+> write C to SPR0 + offset: 0x4c
+> ...
+> 
+> When the same cmd buffer changes the base address for n times:
+> assign SPR0 = 0x1c00
+> write A to SPR0 + offset: 0x2c
+> assign SPR0 = 0x1c01
+> write B to SPR0 + offset: 0x2c
+> assign SPR0 = 0x1c02
+> write C to SPR0 + offset: 0x2c
+> assign SPR0 = 0x1c00
+> write D to SPR0 + offset: 0x3c
+> ...
+> 
+> So you can imagine the performance will increase, but maybe not too
+> much if we use it in the right way...
+> Except the old SoC that didn't support SPR and CPR. The reason will be
+> addressed in the next paragraph.
+> 
+>> What you're proposing almost looks like being too good to be true -
+>> and makes
+>> me wonder, at this point, why the subsys id was used in the first
+>> place :-)
+>>
+> 
+> That's because of the old GCE version in the old SoC only support GPR,
+> it didn't support SPR and CPR.
+> 
+> GPR:
+> All 32 GCE threads share the same GPR0~GPR15, GPR will be affected by
+> other GCE threads if they use it at the same time.
+> 
+> SPR:
+> Each GCE thread has 4 SPR, SPR won't be affected by another GCE thread.
+> 
+> CPR:
+> All 32 GCE threads share the same CPR, there are over 1000 CPR can be
+> used. It need to be managed properly to avoid the resource conflicting.
+> 
+> Due to the GPR resource restriction in the old GCE version, the usage
+> of subsys ID can avoid GPR conflicting issues when multiple GCE threads
+> are using GPR to physical assign high bytes all the time.
+> 
+> 
+> I have simplified some complicate instruction rules, so the description
+> above may not be 100% matched to the CMDQ helper driver code.
+> But I think the main concept is correct.
+> Hope these explanation can help well :-)
+> 
 
---wpgFucSmUGsB0HoE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Jason, that's simply wonderful. Thanks a lot for this precious description.
 
-On Wed, Mar 05, 2025 at 04:20:40PM +0800, Jjian Zhou wrote:
-> This patch adds document for mediatek vcp mbox.
->=20
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
-> ---
->  .../bindings/mailbox/mtk,vcp-mbox.yaml        | 49 +++++++++++++++++++
->  1 file changed, 49 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,vcp-mbo=
-x.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml =
-b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
-> new file mode 100644
-> index 000000000000..d5afe295af14
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk,vcp-mbox.yaml
+Yes, this has clarified even more than I was asking for, and besides,
+yeah I know that there are some rules to follow, some of which I know,
+some of which I imagine - and describing all of that would need lots
+and lots of text - again, I know, and no worries about that! :-D
 
-When you go !RFC, filename matching compatible please.
+Thanks again!
+Angelo
 
-> @@ -0,0 +1,49 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mtk,vcp-mbox.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Video Companion Processor (VCP) mailbox
-> +
-> +maintainers:
-> +  - Jjian Zhou <Jjian.Zhou@mediatek.com>
-> +
-> +description: |
-> +  The MTK VCP mailbox enables the SoC to communicate with the VCP by pas=
-sing
-> +  messages through 64 32-bit wide registers. It has 32 interrupt vectors=
- in
-> +  either direction for signalling purposes.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8196-vcp-mbox
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  "#mbox-cells":
-> +    const: 0
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - "#mbox-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    vcp_mailbox0: mailbox@31b80000 {
+> Regards,
+> Jason-JH Lin
+> 
+>> Cheers!
+>> Angelo
+>>
+>>> Regards,
+>>> Jason-JH Lin
+>>>
+>>>> Thanks,
+>>>> Angelo
+>>>>
+>>>>
+>>>
+>>
+>>
+>>
+> 
 
-label here is unused, please drop it.
-
-Cheers,
-Conor.
-
-> +        compatible =3D "mediatek,mt8196-vcp-mbox";
-> +        reg =3D <0x31b80000 0x1000>;
-> +        interrupts =3D <GIC_SPI 789 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        #mbox-cells =3D <0>;
-> +    };
-> --=20
-> 2.45.2
->=20
-
---wpgFucSmUGsB0HoE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8h8WwAKCRB4tDGHoIJi
-0rmzAQDC6tROpS/C3bfqeRalnd+CJF3nrU5drTadY8j4LSJBswD/SAnH+kW5P5Zz
-1XAoP++vVC0+C1lqWccMOwxtkJk6nwo=
-=N2nw
------END PGP SIGNATURE-----
-
---wpgFucSmUGsB0HoE--
 
