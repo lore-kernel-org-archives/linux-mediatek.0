@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44477C282D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 07:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D72C282D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 08:53:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rd8bbRU/HaxLYa2KQ9Y9JZIfvG97EZlUK3qR7/C2fe8=; b=jk1JAWs4kclpLBDWaqk+Q8tL94
-	8a0d3P7RECxZ8og49f0O1Ma0n2aEEIhsEaW4ScShNwGfy3CXS83Y27VPGLbDqKybHNGFMYC2ePstI
-	Eom3zg35+WfwzSVoWTtsuOU+wiXIESxj5JYjVAOvJdgYYtoPxyVaeBQcT6SBZ8GjZ9coLLKi8P1ek
-	3O9sL1lGErZNyeXTsZy6SWFGlJGbXwZhaGxpTAIjqxQ3LnRDvogyrAPORnBHbtN0OZ+Hnjvg4C9+6
-	uWC36TvmY/S33o6OHxehv0DlnFfXQ6QU4IKO6MjPRKaZP2Pv6+mlW4qDktX9WTi03x7wPhNkgQAxO
-	rs03opmQ==;
+	bh=+L7XbtqDHwNvJUYAa1gSH9tcjYho7+xK58vS0fLoWWw=; b=UtqR5yQ6S6GEnwwxBJ/aYKLVpP
+	222NB4SE2X25LVVEev2X0pozrOK/uNPc9XbDNHGQwVaW4/v3IdX+2sWMG8mRwxbFf0w5J5fccZqPM
+	vsplX31zwJwVAJiQ57ZtsuFvKQC0nQzE2/WvdwguPJYj5Rh825gJdLAJQ9hpRg0UzgWfU959Py6tV
+	CfsHPgEWAQA8IalVLGmtqooWblHeFiye28ChL5XOSJZra6cfqfocnV4ExY1qWuIIdK6PYp7hypH+j
+	V3AovQkAGpqz/zrGcm3paZco87Dof2GcXMdhc9iAJPAwcpRv9BLoJQuu+reLhqh3GnOznhsbEYAbs
+	uEpVE7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq68O-0000000AGoK-0ltY;
-	Thu, 06 Mar 2025 07:59:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tq6z2-0000000AOuJ-326z;
+	Thu, 06 Mar 2025 08:53:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq66l-0000000AGgu-3xKD;
-	Thu, 06 Mar 2025 07:57:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 628D95C5485;
-	Thu,  6 Mar 2025 07:55:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F25FEC4CEE8;
-	Thu,  6 Mar 2025 07:57:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741247850;
-	bh=pH/NwpaMg9Ocf6/GG426eX1DXAWQDLNc+lU1WIH8/QU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DWi8fvt71RfuEChdxeFW1z5xzOV52XkMxEFre9acnh9RpzpbHDygtR55Xq9OnDKTw
-	 yBakukkMrljf/7vLgd7Fd8FY7J9EkTMeDxHCw4CPnqlo62IqBwNZdGRL+jTP00WfHH
-	 hfOHqjHu95VgIIVZtXkaPyiTI5+Z4wNDsQnvTKBrCoc2c646KbXq/ZjXnuF3Loqgkk
-	 waPgyV0wIZ7PpHAqpd7iPcKVHVo+TeEfvYKLt6cQbcbOf0iebhvfb7fDGquXQ4JarN
-	 G/JkFFk1ICN0jZ2eYvkCVNK4jviTojvPs8rAjIdaZRkhzBIeK5ufO67oLokGe6x5V3
-	 sjWY1vIj0RzZg==
-Date: Thu, 6 Mar 2025 08:57:27 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sen Chu <sen.chu@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
-	Lee Jones <lee@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, kernel@collabora.com, 
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v4 01/19] dt-bindings: mfd: mediatek: mt6397: Add accdet
- subnode
-Message-ID: <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
-References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
- <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
+	id 1tq6wF-0000000AOJO-3k2M;
+	Thu, 06 Mar 2025 08:50:45 +0000
+X-UUID: 14509ce6fa6811efa1e849db4cc18d44-20250306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+L7XbtqDHwNvJUYAa1gSH9tcjYho7+xK58vS0fLoWWw=;
+	b=PbHGUyWLkS78neyhusP+36+5eaglCBmiBvkfFR7EIngAe7RuFS/7QohJs6tRm6gD0dA1k6d7dxXLFp41K5dRs1RqQJqdk5c5ihyObwXjAO/ujXjSObtY0S+emqcmYLUBR3YgSO8Hn1zSn7b+LfohNBcXAsUnog427EYAAgjIx0M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:e2c79104-eeec-4312-9867-eeb2ebe9485d,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:b21618ce-23b9-4c94-add0-e827a7999e28,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 14509ce6fa6811efa1e849db4cc18d44-20250306
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <axe.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1291107859; Thu, 06 Mar 2025 01:50:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Thu, 6 Mar 2025 16:50:36 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Thu, 6 Mar 2025 16:50:36 +0800
+From: Axe Yang <axe.yang@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Wenbin Mei
+	<wenbin.mei@mediatek.com>
+CC: <yong.mao@mediatek.com>, <qingliang.li@mediatek.com>,
+	<andy-ld.lu@mediatek.com>, <linux-mmc@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Axe Yang <axe.yang@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
+Date: Thu, 6 Mar 2025 16:48:05 +0800
+Message-ID: <20250306085028.5024-2-axe.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250306085028.5024-1-axe.yang@mediatek.com>
+References: <20250306085028.5024-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_235732_038926_1273A1D8 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20250306_005043_975287_891D8A9C 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +92,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 05, 2025 at 03:58:16PM -0300, N=C3=ADcolas F. R. A. Prado wrote:
-> Describe the accessory detection (accdet) module as a possible subnode
-> of the MT6359 PMIC.
->=20
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 51 ++++++++++++++++=
-++++++
->  1 file changed, 51 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b=
-/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> index 6a89b479d10fad3c8b61cab5a3af1453baca4d1a..51012b8bbfaef3df7bdb619a4=
-f8d828d6f9cc15a 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> @@ -24,6 +24,7 @@ description: |
->    - LED
->    - Keys
->    - Power controller
-> +  - Accessory Detection
-> =20
->    It is interfaced to host controller using SPI interface by a proprieta=
-ry hardware
->    called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of =
-pwrap.
-> @@ -224,6 +225,30 @@ properties:
->      description:
->        Pin controller
-> =20
-> +  accdet:
-> +    type: object
-> +    additionalProperties: false
-> +    description:
-> +      The Accessory Detection module found on the PMIC allows detecting =
-audio
-> +      jack insertion and removal, as well as identifying the type of eve=
-nts
-> +      connected to the jack.
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mt6359-accdet
+Add 'mediatek,disable-single-burst' setting. This property can be
+used to switch bus burst type, from single burst to INCR, which is
+determined by the bus type within the IP. Some versions of the IP
+are using AXI bus, thus this switch is necessary as 'single' is not
+the burst type supported by the bus.
 
-You just removed the other file, no folding happened here. Drop the
-accdet node and fold this into parent.
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 0debccbd6519..6076aff0a689 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -100,6 +100,14 @@ properties:
+     minimum: 0
+     maximum: 0xffffffff
+ 
++  mediatek,disable-single-burst:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      Burst type setting. For some versions of the IP that do not use
++      AHB bus, the burst type need to be switched to INCR.
++      If present, use INCR burst type.
++      If not present, use single burst type.
++
+   mediatek,hs200-cmd-int-delay:
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+-- 
+2.46.0
 
 
