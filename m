@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C517EC282D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 12:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00017C282EC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 13:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5bPmTd2G6iYGW32X9voweHbq8hREhxyF/oHViITDF8w=; b=4+PM42jcV0tR9sbvpPWqvVrGz3
-	8bPRGlNIibzemC3DF32zoFWwnhn4VCQ+nglRlY64JtklYakWbXA2Pj/1rjX3wrzFm2IeraCHYT4Zy
-	oUeSQ1qcASOK6C4VRrhPik7mBMhF/PxPKObDNtDSlKVfZxSTK3SE0WGK6BsazhUauxOr38b/gmGmY
-	G8cAJOxa9U0AvOTx6aqUhyeB1bqp0ZPGov1Vp+eWsSmZHkeRDzqKGbpMgc+xkbmD8CXxsScuma0m5
-	2u2l14aUAeq4Si8M3uss8XXusO5GXvzh9LfhS1rCIsVzyjDGbFwrbDccVFWuSnKMBmbNqxaKHNR6h
-	tJDXVICA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5/WguKCxp0qhjpAyaHl9tRObozilx8BUenSblkEI6HM=; b=cq5mZmJL/bk3jP/qMmJHRXCp/+
+	zPjT3wR2fjIlSdVDd7S/Kkt7CkpH6UwnZFb2/EsAY6GSerb3LJm03+FfFh07NE7/4Qxuw2dyvN07A
+	baPAx2fBWiRwKWL0g1HvNb3srKpoqbaSovylLGv0rkEnUMLp983oUfHslxEmRPfJJFdZH4gqyfeoH
+	idPAJvdsUTx/z5W7eFBR7F/BiBPVILPp2Sr+RE9qs7MTZbq5GBCJFdsoRXh7ZJ9k5q6LZnzom0xM8
+	ZrBlJKAjNspGInOm276sI0o59V5eNQKM1KFMvi/ppF+plxbvgMiNHkHDVyo9W20PyDQwUc/Fo6u7C
+	+c5Epzrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqAFx-0000000AuIO-3M9e;
-	Thu, 06 Mar 2025 12:23:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tqApT-0000000Az6w-478C;
+	Thu, 06 Mar 2025 12:59:59 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq9W1-0000000AnyA-45PK;
-	Thu, 06 Mar 2025 11:35:52 +0000
+	id 1tqACK-0000000Atj1-1Kh2;
+	Thu, 06 Mar 2025 12:19:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741260948;
-	bh=0ZHgv7nRbD8P28kALnuW0vC0/HoWUjGwU/Ooe1oBnu0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eEy4dZMQo3CVN+KP8hz/3SFgSYBv8/zSSzKnLzGTTODAS4QWbPLHmqASyWGSQYDCO
-	 /ro8UzZHJYq5vfzXLmj5FUasZ+K1E13gsP8C2D+ausmWJmgC5lO2cEMQfwc6yjKeS6
-	 6DW5+YjxDt20Aszcb6SfPvhHHaRX2U3X/tmgl58TbUTkcz4bIG7EMQRTW5kl3E0uGS
-	 c9Tz1PLsL9nQdwxuTw/OivsQG+UlG66opi0Au4gcbDJjxR2pDgcEQIdAbtIVPjRtw3
-	 WN6PHkTlG55G6piv9Ov868MaE4uYSIV2jYFWQxnjwm5ub+ccOr4VIqFDcWrvxJmaPS
-	 eT8uv0we1+tRw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	s=mail; t=1741263569;
+	bh=bRmppDD3UR7+vn2dZ4ulwCSuB4hzHfQscGhABBmBL1o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jTAC4v8chbBR5zWYrExx/9feWvRDBAz/LoFBo5IIwdoskEr4r4MBezh1BjF9cWhn+
+	 tjB7pNeZO9E8O5wZ/xWAtARkBL4EenhqpLMpN4Sp66HE4LZy/cnIayknvG3sKTf/ai
+	 np6xd/fWMbxKm90MukAR1sIuNERigRVsSFFop5ejqhGc0Digb+w8PbAGR1fIbfS1Py
+	 P+Y5J87e1U0tGrR+x5Lc4aBMzRGYVBxmsFwm39XSPtjG719uhridTSX2nTINBVrex1
+	 N+P0+LiOw6QYBsUCy8Gwd6bSotIzLjdiNVXEZfU0lhOmHxBx21VBn6l3KVwg1eyxYg
+	 kLxABJhWONk/g==
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:53ee::1002])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3540D17E0649;
-	Thu,  6 Mar 2025 12:35:48 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: matthias.bgg@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,2/2] MediaTek driver updates for v6.15
-Date: Thu,  6 Mar 2025 12:34:53 +0100
-Message-ID: <20250306113540.148342-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250306113540.148342-1-angelogioacchino.delregno@collabora.com>
-References: <20250306113540.148342-1-angelogioacchino.delregno@collabora.com>
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CF14317E09AA;
+	Thu,  6 Mar 2025 13:19:24 +0100 (CET)
+Date: Thu, 6 Mar 2025 09:19:22 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, kernel@collabora.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v4 01/19] dt-bindings: mfd: mediatek: mt6397: Add accdet
+ subnode
+Message-ID: <2fa6037d-b5e9-45b2-a5d5-dbc92fb3434b@notapiano>
+References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
+ <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
+ <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_033550_198281_7F93094D 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20250306_041932_545347_D3298DB4 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,75 +88,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 2014c95afecee3e76ca4a56956a936e23283f05b:
+On Thu, Mar 06, 2025 at 08:57:27AM +0100, Krzysztof Kozlowski wrote:
+> On Wed, Mar 05, 2025 at 03:58:16PM -0300, Nícolas F. R. A. Prado wrote:
+> > Describe the accessory detection (accdet) module as a possible subnode
+> > of the MT6359 PMIC.
+> > 
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >  .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 51 ++++++++++++++++++++++
+> >  1 file changed, 51 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> > index 6a89b479d10fad3c8b61cab5a3af1453baca4d1a..51012b8bbfaef3df7bdb619a4f8d828d6f9cc15a 100644
+> > --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> > +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> > @@ -24,6 +24,7 @@ description: |
+> >    - LED
+> >    - Keys
+> >    - Power controller
+> > +  - Accessory Detection
+> >  
+> >    It is interfaced to host controller using SPI interface by a proprietary hardware
+> >    called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of pwrap.
+> > @@ -224,6 +225,30 @@ properties:
+> >      description:
+> >        Pin controller
+> >  
+> > +  accdet:
+> > +    type: object
+> > +    additionalProperties: false
+> > +    description:
+> > +      The Accessory Detection module found on the PMIC allows detecting audio
+> > +      jack insertion and removal, as well as identifying the type of events
+> > +      connected to the jack.
+> > +
+> > +    properties:
+> > +      compatible:
+> > +        const: mediatek,mt6359-accdet
+> 
+> You just removed the other file, no folding happened here. Drop the
+> accdet node and fold this into parent.
 
-  Linux 6.14-rc1 (2025-02-02 15:39:26 -0800)
+Sorry, I'm still not sure what you mean by folding here then. Right now the
+accdet is a subnode of the PMIC. If you want me to remove the accdet node, where
+would its compatible and property go?
 
-are available in the Git repository at:
+    pmic {
+        compatible = "mediatek,mt6359";
+        interrupt-controller;
+        #interrupt-cells = <2>;
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-soc-for-v6.15
+        accdet {
+            compatible = "mediatek,mt6359-accdet";
+            mediatek,hp-eint-high;
+        };
+    };
 
-for you to fetch changes up to 1e12efbee8f3fe09d23ad75d2e38a6335ca2d159:
-
-  soc: mediatek: mtk-socinfo: Add extra entry for MT8395AV/ZA Genio 1200 (2025-03-06 11:54:21 +0100)
-
-----------------------------------------------------------------
-MediaTek driver	updates for v6.15
-
-This adds entries for new and missing SoCs in the MediaTek SoCInfo
-driver (MT8370AV/AZA, MT8390AV/AZA) and	an extra entry for a new
-revision of the	MT8395AV/ZA SoC.
-
-The MediaTek SoCInfo driver also gets its SoC attribute	information
-restructured: now the family, machine and soc_id fields are correctly
-populated.
-
-MT8188 gains support for the secondary Display Parallel Interface
-used for HDMI, and for the Display Stream Compression component
-routing through mmsys and mutex tables.
-
-All of the MMSYS drivers get an important overhaul: it was found that,
-in multiple cases, the tables contained wrong mask/value pairs, hence
-those were doing either nothing or breaking routings.
-The mmsys tables were converted to use a newly introduced macro that
-will perform a compile time check, making sure that each table entry's
-value fits in the declared register mask.
-
-Thanks to the new macro, multiple MediaTek SoCs got multiple fixes in
-their MMSYS tables, addressing issues that were severely impacting the
-functionality of the display controller pipelines.
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (8):
-      soc: mediatek: mtk-mutex: Add DPI1 SOF/EOF to MT8188 mutex tables
-      soc: mediatek: mtk-mmsys: Fix MT8188 VDO1 DPI1 output selection
-      soc: mediatek: mtk-mmsys: Add compile time check for mmsys routes
-      soc: mediatek: mt8188-mmsys: Migrate to MMSYS_ROUTE() macro
-      soc: mediatek: mt8167-mmsys: Fix missing regval in all entries
-      soc: mediatek: mt8365-mmsys: Fix routing table masks and values
-      soc: mediatek: mmsys: Migrate all tables to MMSYS_ROUTE() macro
-      soc: mediatek: mt8188-mmsys: Add support for DSC on VDO0
-
-Fei Shao (1):
-      soc: mediatek: mtk-socinfo: Restructure SoC attribute information
-
-Louis-Alexis Eyraud (4):
-      soc: mediatek: mtk-socinfo: Add entry for MT8370AV/AZA Genio 510
-      soc: mediatek: mtk-socinfo: Add entry for MT8390AV/AZA Genio 700
-      soc: mediatek: mtk-socinfo: Avoid using machine attribute in SoC detection log
-      soc: mediatek: mtk-socinfo: Add extra entry for MT8395AV/ZA Genio 1200
-
- drivers/soc/mediatek/mt8167-mmsys.h |  31 +++--
- drivers/soc/mediatek/mt8173-mmsys.h |  99 +++++++---------
- drivers/soc/mediatek/mt8183-mmsys.h |  50 ++++----
- drivers/soc/mediatek/mt8186-mmsys.h |  88 ++++++--------
- drivers/soc/mediatek/mt8188-mmsys.h | 266 +++++++++++++++++++------------------------
- drivers/soc/mediatek/mt8192-mmsys.h |  71 +++++-------
- drivers/soc/mediatek/mt8195-mmsys.h | 632 +++++++++++++++++++++++++++++++++++++++++++----------------------------------------------------------
- drivers/soc/mediatek/mt8365-mmsys.h |  84 ++++++--------
- drivers/soc/mediatek/mtk-mmsys.h    |  14 +++
- drivers/soc/mediatek/mtk-mutex.c    |   6 +
- drivers/soc/mediatek/mtk-socinfo.c  |  22 +++-
- 11 files changed, 597 insertions(+), 766 deletions(-)
-
+Thanks,
+Nícolas
 
