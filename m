@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA472C19F32
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Mar 2025 22:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A26DC19F32
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 00:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KF/PaATiK0x9qPF++Y8jAW/yXaoAkToj5SY2XZUl4HE=; b=TQCjcnJHC7cY/5pE6wB5q08JiT
-	D3tVdt/QhFPN+JNQcTiZuBwAia92nNoAw/DChxlaChVKdK7+706CXQefgYs5DgLeTEro9Y2i61k9w
-	p6scgCZa8/MvTtp5gME4qI94tqLVKF3ujTdekM65BcPx77XkLDKx6O7irzBb5zV8UW2AGQVykFxIM
-	X0VW1tsBCHUOHYaSjlDJPLOHfBVXfPoSVLDy+YKRdXtP9hvnnp+Z8WjdPM7ehnNiWNgWgJzJSsKxT
-	8BPxjWL0pnCumue5TTa4zFV/JvDJEOcwp+jy0f8Sc4LiyARjrqpQ0WSBfQ36jKv73BOyZGYb/WZ0b
-	E4KKM95Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z0jexsz4Wxrqqk8gxPBvWplk5xhjM+SjaxN91QcSHFU=; b=ofIcgnmEdkXydRUuEjFJgMHKbO
+	1yBffWn01p9OsVfNoVw7kW7PK/gMW3uG/buSpe5om2gBIm6qwyex0Hl7LSzyWwzUHJyFlWldVN2xP
+	n9QpCAlnJl/+zc55hpMBoh77V5/N1GncO81K3x5R7KhhoPv7HMEeo/IOJDpTrYGJEc6ydzP+dGV69
+	13obhtLVuujqiv12+b0alMVAJ3miWqEAQrBcbu1JgSY+2S4zwCvHjP+J7tcwy6QqWPanORQBC9RWh
+	I2JyPPd7hqHZnroGPJ0tqZhXfMT/JeHtkYvg+AatRhEdrCVjkF1SFE7REhLCjYPOiGK60YtizpLdR
+	bXHRa3bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpxXj-00000009WRR-13mj;
-	Wed, 05 Mar 2025 22:48:47 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpzJU-00000009iUL-0T3s;
+	Thu, 06 Mar 2025 00:42:12 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tptyX-000000090L7-070b;
-	Wed, 05 Mar 2025 19:00:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741201211;
-	bh=25TENqi8q+kBqzrzX/J7Q2+OaNY4swWOeoiOQighkU8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mAhx/i5rvlXXoTH4k9hox7FMCKAQo0dnsBU5AwbFnRPsYlJkD81eXnUFpEMjaJrki
-	 6BLyhmgw0xYYJcQUIqDsOc9EmKW7Z6PIq5NmOftisqQOoju83COFY3iVNWDelejr0B
-	 p4EN8KwYH2tVE5e6Lo/EBvtwR+JNrXAfUKEIXMMqa7/HLGLdz4WE753l8d1MnNDdAu
-	 UOslnmAm2sxcvqIUxwoN2wiqePDZ75cTScFXfmVmOE9Uq+YfPsU3jgXzYnxQRhLLWH
-	 qdsfD1caxsukbwhwc4QLgkWXWUYXRMiUeNu//+8Q4Xd//D6j07uaGwnBRQU7gT2zR3
-	 0FqMvtBUrYsYQ==
-Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1004])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 617F317E0343;
-	Wed,  5 Mar 2025 20:00:06 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 05 Mar 2025 15:58:24 -0300
-Subject: [PATCH v4 09/19] ASoC: mediatek: mt6359-accdet: Drop dead code for
- plugout-debounce
+	id 1tpzHs-00000009iMN-3nEN;
+	Thu, 06 Mar 2025 00:40:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E3D96A463FB;
+	Thu,  6 Mar 2025 00:35:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A35A2C4CED1;
+	Thu,  6 Mar 2025 00:40:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741221631;
+	bh=spSyanY6lDrTp4+hUvjUAceIgKiQRFt9KTi6mE0l0WU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Tu6cTkdvPoLQBKt2y/ctCltQcUs578ttgYaqT+9P8WCOzeCN+KQAdPooLUq0p7ifC
+	 LXmV3wyHRMH73JIqXofxR1Bsr+PbvF6Sk91wUwRr15/yiH1J7d2ZjRXRr9stmi2Y41
+	 4YobdTP7NzBS0yyw99givCjWxqJ1++rAgI+lwSStzhUx67Hoxj/mZhsHwAfo2sXKs+
+	 pGW3nKBh6LX9/LRrJgYubthnI/vWP4Y+AKYCQkDgkeZE0acWx3++QM6y5eaP/BqdUE
+	 ey372jXyHj/pbw+bLkBINGuUvNpxx04Z61baOpcVSAdMFYMT0xN0lixFEhENq9NU8P
+	 /fkWuv57Bd+Hw==
+Date: Wed, 5 Mar 2025 16:40:29 -0800
+From: Lee Jones <lee@kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, kernel@collabora.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Andrew Perepech <andrew.perepech@mediatek.com>
+Subject: Re: [PATCH v3 03/20] mfd: mt6397-core: Add mfd_cell for mt6359-accdet
+Message-ID: <20250306004029.GB8350@google.com>
+References: <20250304-mt6359-accdet-dts-v3-0-5b0eafc29f5b@collabora.com>
+ <20250304-mt6359-accdet-dts-v3-3-5b0eafc29f5b@collabora.com>
+ <a8fbb536-a246-4650-8085-d576652b0301@sirena.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250305-mt6359-accdet-dts-v4-9-e5ffa5ee9991@collabora.com>
-References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
-In-Reply-To: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-pm@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+In-Reply-To: <a8fbb536-a246-4650-8085-d576652b0301@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_110013_246133_22F16B8B 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20250305_164033_005747_79ECAFC2 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,46 +86,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek,plugout-debounce property is undocumented in the binding
-and unhandled by the driver. Remove it.
+On Tue, 04 Mar 2025, Mark Brown wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- sound/soc/codecs/mt6359-accdet.c | 5 -----
- sound/soc/codecs/mt6359-accdet.h | 1 -
- 2 files changed, 6 deletions(-)
+> On Tue, Mar 04, 2025 at 12:15:44PM -0300, Nícolas F. R. A. Prado wrote:
+> > From: Andrew Perepech <andrew.perepech@mediatek.com>
+> > 
+> > Add an mfd_cell for mt6359-accdet and describe its IRQ resources to
+> > allow the mt6359-accdet driver to probe.
+> 
+> Lee, is this OK to merge via ASoC?
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index 6b0178976d91e37c32540991693ebfd8e29c11f5..d78d7516342a5c2273b1c2962c0346646aa6390f 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -513,11 +513,6 @@ static int mt6359_accdet_parse_dt(struct mt6359_accdet *priv)
- 	if (ret)
- 		priv->data->mic_vol = 8;
- 
--	ret = of_property_read_u32(node, "mediatek,plugout-debounce",
--				   &priv->data->plugout_deb);
--	if (ret)
--		priv->data->plugout_deb = 1;
--
- 	ret = of_property_read_u32(node, "mediatek,mic-mode",
- 				   &priv->data->mic_mode);
- 	if (ret)
-diff --git a/sound/soc/codecs/mt6359-accdet.h b/sound/soc/codecs/mt6359-accdet.h
-index 09e1072b61a4c929bf6b764b4fab3c4b26f7cf4a..54a33a0f0e084f80df33386b3df9bba9525fa880 100644
---- a/sound/soc/codecs/mt6359-accdet.h
-+++ b/sound/soc/codecs/mt6359-accdet.h
-@@ -72,7 +72,6 @@ struct pwm_deb_settings {
- struct dts_data {
- 	unsigned int mic_vol;
- 	unsigned int mic_mode;
--	unsigned int plugout_deb;
- 	bool hp_eint_high;
- 	struct pwm_deb_settings *pwm_deb;
- 	unsigned int moisture_detect_enable;
+Yeah, should be okay.
+
+Acked-by: Lee Jones <lee@kernel.org>
 
 -- 
-2.48.1
-
+Lee Jones [李琼斯]
 
