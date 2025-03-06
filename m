@@ -4,93 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3119C28B24
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 19:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E9EC282DE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 19:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=; b=Tx7CZQV4BuZmOhUYS8IQIe3cqT
-	kNiHKsBcLtjm28N9W0Kmh1EAMlqzFD7uxfbcnJZ8zRchMWzFH1HkrKgcbxHAriagaAQI6ZAKpk+xx
-	EAubjQ0tkD0BmgKelIHUOKnpdPSPhWvhyxCHu7Y1KsEmdcHrXGbTf5sAXo25iHYsbmz/p6cCFDPr3
-	bJAo7+wyAPMvTZ6Y3mm+NkTa9rXNXLpUTRAKQaOtOtWuVfnGRWIZNXHzMZCHsD8QtJ5ZZaDMn/SnM
-	pyY8Ou+AsogsCmnUzO07mN/u+6XYvNVifl9K4oVmplKRMiObSeMInodZNkxggQF0/J+JNK2cXnARk
-	2fM+97CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/cNMgmWHAMbLWF0wt7+8kxCmmz4CbTv+7AW80aKdheM=; b=tueRztVqiQipB6
+	l54kfp9fa47ovij6uGKa4oXBX5HdkaMJWqHxpoY8hMHCHSizVq9B5zo/jZVxr2jzlO5VvF/ZFSkCy
+	u8DtuKDrrEFUFDcvMI7mU9Ay2w0WVC6RPc2hgLIJaqVAtcu3na+RT9DNnKI347R5dwsHMXnA4ip4R
+	LjzI+R9sqKHdj9Gpw5ZWDaysuS/5faJAtpVsojTQYFoCYTmWSrncTK2k6/YFo6hVYBtY186QUpTVH
+	o5rM9MCCMAnsQBvREagsNTqURjGRqNlO9c/QBu21/kGyZBI9UM7pff89Uz5gRSVV44sg5H6WN+Gev
+	FbIjOT0aNZIlGEjgzK5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGrh-0000000C0DZ-3w4N;
-	Thu, 06 Mar 2025 19:26:41 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1tqHIq-0000000C3t7-1Z5N;
+	Thu, 06 Mar 2025 19:54:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGrf-0000000C0Cu-3wsq;
-	Thu, 06 Mar 2025 19:26:41 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3912c09be7dso687464f8f.1;
-        Thu, 06 Mar 2025 11:26:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741289198; x=1741893998; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
-        b=iQjwfqplfqA2jXkTJxTgUYfbMTOJsNwoB6gg4G67GGU9yUNEtgLVY+ecmK3QOQYsPo
-         eU5hr39awP3mcgefnFcO4obbBSZ3MZdSxCcuMA3xmXu+1slUU20huhnJOlgWfZcB9AGg
-         DluA2ljJBYAukS7Zudbe2DFajBZNmP5HI0s9qLPVtfj2ePdex9fwXMXWO7v1Muco8fEi
-         AqWrGIIPP/EUmdD9V0Tr64FaEm98owu4dPTOFcdgNsunPwITIBBMF5bZv31Hf14Av9mA
-         KchmxcmS+Cd3ZUz178LkZId4/lFWv82vdGYqRFPh5zdZjc2+HvLy4zy1MF2oYjcVGemf
-         QUWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741289198; x=1741893998;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
-        b=VqESd8WXSghioPD+OdJQ3ViE1RHIU3DNNhrCK/DNcqcIVHvGvWvX3xorqstvDcbYbc
-         DZuthWseo+afL9yJTs04UvVHZJzsIE8ihrorZxPep8z+MSqZIy56fKtWqrx10nVU1Hyh
-         dmnJZKI8Nz7LncmtEAf6UZlhjAmZPigiYpuTdWb7G1bBDelBRQU16HYeRZrEGBxs18ry
-         vb2hA577y7T+m40SD8UoknOwl2+G+PF+yNi9Ujv01GOOqxGQI+dSPgE3gPc9fy7XdM+D
-         Q2PJjD0px5XFuF251trRVrngl4FvDrd1wEHsADZTbVhRQxNjqkU3gcGgPFBP+tf4MZqL
-         bFuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWIEDK0E8SwR/u1C7wZuQOTvlMH02RoR8Alc0+CJoiqvT8mr/fqgyE61MB8rzXqaAt91YX3Na/DrLzppY+5zQ==@lists.infradead.org, AJvYcCXu7brrhgSBbqh4S8/squL4ujT2srKwOs5z6o5GcPelSBZTWaOjT9WntKhj62dVk+VHTzuphQVQHV24uERV8Fs=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXh0cFKVLwxd4c0olUB+5Hl1TGirpSA3O4yQDc4SVLBcMfVQJW
-	Dr1umi3iLnOD43OH23hCuEc4mEp5wxKqStQw/MXjv+DqH6g5VEdsI+DKbA==
-X-Gm-Gg: ASbGncuWTB9jnWq4jh0jn+laooINBXhroMlvSt/SPYaCdn6XTgV7QANUV32VeuhLmVK
-	3uHyTcHwsI8xDUUSErf6iExt3/HjYP7bwk/ehtr0djGPzrY1kDyFrtwFIbYKgEP5YDsgIqRzw9x
-	s7KG/GvHTcGuhYfeHJrZknwaujIIXKo1vI4HONOHUwlQol+3I66OPqGL9zaAB/MTt+ncV7BMtc1
-	uSBdmHJlTjdmkhuV7qF3vITnrCnjINhtuh5B8BG295j3Lte4UEpMMvQh5ROcIQHATqYEspBsPXY
-	B1DYhAH1QEEGCMcMX5Ng1RO0kbYk0nTBnWcnO84Oqiw1v16IYlTXvVUpcPgcXMABaG7wGDRMLt+
-	9K4P1QmY9rgIkrUnRmHEjOG/LGsfPzX8=
-X-Google-Smtp-Source: AGHT+IGse2HrwvQit3ez+Tb+IZmcWPgul6Oz1Of3MncB8IKv5GiNEYehZwUGHa/gmdRGfttFwUyGrw==
-X-Received: by 2002:a5d:5f45:0:b0:390:eebc:6f32 with SMTP id ffacd0b85a97d-39132da8fecmr291664f8f.48.1741289198054;
-        Thu, 06 Mar 2025 11:26:38 -0800 (PST)
-Received: from orome (p200300e41f3a9f00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f3a:9f00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c0e1d67sm2905872f8f.74.2025.03.06.11.26.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Mar 2025 11:26:36 -0800 (PST)
-Date: Thu, 6 Mar 2025 20:26:33 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
-	Mikko Perttunen <mperttunen@nvidia.com>
-Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <mtsi7lohn4nq75y3mdzk7eomloxvswjn4blsmruutpejhppd5i@wexuiu7yfea3>
-References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-21-tzimmermann@suse.de>
+	id 1tqHHD-0000000C3be-2WNc;
+	Thu, 06 Mar 2025 19:53:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741290781;
+	bh=THLL9GRCC/mdZVhYAu4WvqtH//t83+D8LP8VEW2/MCI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ULhzr1vTcKtMjk7jHA5AFs1TaLkRf2ZQ9IO4AWKWTgNhMGZNgAgOu5RCVNkm6MzvI
+	 4MxSvsQkJv1GUtBmdHl2OCwTMe4bzhBT9omt3uU5NgugU2tKmOUsJMiDt+ZnofhhIr
+	 2DvNL4Rrh68HatRAT3krS5gTbQwf6eLv32ldetMiR0KRafwebUWYMry5PeN8kGm0Hm
+	 kMQRo36DjNg2rxrJ/OiD2hZ0f7horZVoh5KrGleizwqMP6/R4R9RwewcHNaF0/dK7B
+	 sgHEYlqp+EgiFwmIczU4TEHJ+DiliEtT3+2lqT7yxjG1kQytDRE5W7C3pNbPLst3tM
+	 8/YXfmLp/0pGA==
+Received: from [192.168.0.47] (unknown [IPv6:2804:14c:1a9:53ee::1002])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B3F717E05F7;
+	Thu,  6 Mar 2025 20:52:57 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v3 0/4] Allow retrieving accessory detection reference on
+ MT8188
+Date: Thu, 06 Mar 2025 16:52:14 -0300
+Message-Id: <20250306-mt8188-accdet-v3-0-7828e835ff4b@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="y6cp6aqkj6w24xiu"
-Content-Disposition: inline
-In-Reply-To: <20250218142542.438557-21-tzimmermann@suse.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAO78yWcC/3XMSwrCMBSF4a3IHRvJs0ZH7kMc5HFrA20jSQlK6
+ d5NOxEUh/+B882QMQXMcN7NkLCEHOJYQ+x34Doz3pEEXxs45YpyJskwaaY1Mc55nIj0aKzVSgn
+ poX4eCdvw3LzrrXYX8hTTa+MLW9d/UmGEksZar6QWFbQXF/ve2JjMwcUBVq3wjyDoj8CrwI+tP
+ DVOGvT4LSzL8gbrITv38AAAAA==
+X-Change-ID: 20250214-mt8188-accdet-4deabb85534d
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Zoran Zhan <zoran.zhan@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_112639_978643_A8221502 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20250306_115303_822069_57891B00 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,47 +86,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series enables the MT8188-MT6359 sound driver to retrieve the
+MT6359 ACCDET sound component from a mediatek,accdet DT property, which
+allows detecting jack insertion/removal.
 
---y6cp6aqkj6w24xiu
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-MIME-Version: 1.0
+Patch 1 describes the new property in the binding. Patch 2 implements
+the sound component retrieval in the common MTK soundcard driver. Patch
+4 updates the MT8188-MT6359 sound driver to register the audio jack and
+initialize the ACCDET driver for detection, if the property is present.
 
-On Tue, Feb 18, 2025 at 03:23:43PM +0100, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch according to hardware requirements.
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: Mikko Perttunen <mperttunen@nvidia.com>
-> ---
->  drivers/gpu/drm/tegra/gem.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+Patch 3 adds a stub to prevent a linker failure in case the
+MT6359-ACCDET config is disabled.
 
-Acked-by: Thierry Reding <treding@nvidia.com>
+Tested on the Genio 700 EVK board.
 
---y6cp6aqkj6w24xiu
-Content-Type: application/pgp-signature; name="signature.asc"
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v3:
+- Removed the config select for CONFIG_SND_SOC_MT6359_ACCDET
+- Added patch 3 with stub for mt6359_accdet_enable_jack_detect()
+- Fixed return checks for mediatek,accdet handling to check for non-null
+  rather than !IS_ERR(), and added error messages
+- Link to v2: https://lore.kernel.org/r/20250304-mt8188-accdet-v2-0-27f496c4aede@collabora.com
 
------BEGIN PGP SIGNATURE-----
+Changes in v2:
+- Added CONFIG_SND_SOC_MT6359_ACCDET select in
+  CONFIG_SND_SOC_MT8188_MT6359 to avoid build failure
+- Clarified in mediatek,accdet dt-binding and commit description that
+  the property should only be present if the accdet is actually used
+- Link to v1: https://lore.kernel.org/r/20250214-mt8188-accdet-v1-0-6bbd5483855b@collabora.com
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmfJ9ukACgkQ3SOs138+
-s6GThw/9F553EWmmWz8ONopI5pY7Fy+Pu8kzqsU5bhKSKO2aqJ8y4PFOQAzaacO8
-2HuvhLXsP6l91B+R49oebJTWnbgcl9ThzcA4njgdKRFc7yZU/EZUEUGdwDkU6qsh
-/rkDnM+a+MzIAd3Z31B0Kvb0tUsl4e0UBueDHmjfP554dbtnMr94eIHuqLVRb1/D
-LB6ddm8DbZVoDKT9Ji2gLQpW84oFuIzRZPOV8JmPe+wE8Xf6A9sLloqJndErnvHg
-B8X2K8PzxkNNJGaZtQMUpiJ+S1oDNZnnKtzt0Wb+b9itJqUgykve29vGBDBImsb5
-8JLFlkdPFdKpFsbAvGyHv8b+F2rDVu4Oelg88WWDUSMc9Ut274u5/a2DTUOwF806
-DtCADAFUOOcIyDZKfPpeQuWDPeScN3/ANW8iQMlyPaNO5fBKlisFjiF1Bh0gS+vQ
-shkKb74wChg/4jgq1+M+I4DPdCQRe0kGIqbNZ4yK71owOjoSE6WIxxEt0UUKxPwh
-XZyf8ZF2O9TCPMigN6Qw2AGUhaC3HsAG9KbhOTSeUAsOwohFtYY+3B6Hkb8SQHEM
-i05OutqXEhtdSZgBK+HuweZtYWCBfy/BcMeD99Rkg01C+aMZcNPGVLpvGqpryNaB
-Ga0hQwFdIjbnMbXxjzyfJfs7GqNyTAJtpiqBO3uDhWH2LxJHZ7M=
-=2m1E
------END PGP SIGNATURE-----
+---
+Nícolas F. R. A. Prado (4):
+      ASoC: dt-bindings: mediatek,mt8188-mt6359: Add mediatek,accdet
+      ASoC: mediatek: common: Handle mediatek,accdet property
+      ASoC: mediatek: mt6359: Add stub for mt6359_accdet_enable_jack_detect
+      ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support
 
---y6cp6aqkj6w24xiu--
+ .../bindings/sound/mediatek,mt8188-mt6359.yaml     |  8 ++++
+ sound/soc/codecs/mt6359-accdet.h                   |  9 +++++
+ sound/soc/mediatek/common/mtk-soc-card.h           |  1 +
+ sound/soc/mediatek/common/mtk-soundcard-driver.c   | 19 +++++++++-
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c          | 43 ++++++++++++++++++++++
+ 5 files changed, 79 insertions(+), 1 deletion(-)
+---
+base-commit: 565351ae7e0cee80e9b5ed84452a5b13644ffc4d
+change-id: 20250214-mt8188-accdet-4deabb85534d
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
