@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC34C282DE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 03:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44477C282D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 07:59:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lDMBwDxj97xV/nWAhZdgtNHpNQPvDCWSobWtw5JIoqs=; b=g9TNbA4ZpftAkJsUiUEz1NAU6r
-	jXTwWQXm2a+H7jWakwe9QHw7FTyGpVqxBYLQbMQK3OjUiLRMywqCXpWfvUoYnCzP5oHNHYIpto7za
-	xjm5VX6vMLJjUT5PmjQ6oqUD58uOkDYdePscqVl0KSnlSfssDuGL8XdsppH3TPxUJ5ah8RNI270by
-	j86aZdrxMChxsLrKZw74Zfjaj4IxozArvsHH8HVnAtFfL8Aj7K38otvIl0OtApl1aJPvDXBcM5s38
-	pMNOPOYoSf3sK/nhUzE6Blh7Vy5m1aHcowbnFAgW626TL2RhPQvWNNZb7v1kj5zKMaUFv027I6ZM+
-	l0/lNzvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rd8bbRU/HaxLYa2KQ9Y9JZIfvG97EZlUK3qR7/C2fe8=; b=jk1JAWs4kclpLBDWaqk+Q8tL94
+	8a0d3P7RECxZ8og49f0O1Ma0n2aEEIhsEaW4ScShNwGfy3CXS83Y27VPGLbDqKybHNGFMYC2ePstI
+	Eom3zg35+WfwzSVoWTtsuOU+wiXIESxj5JYjVAOvJdgYYtoPxyVaeBQcT6SBZ8GjZ9coLLKi8P1ek
+	3O9sL1lGErZNyeXTsZy6SWFGlJGbXwZhaGxpTAIjqxQ3LnRDvogyrAPORnBHbtN0OZ+Hnjvg4C9+6
+	uWC36TvmY/S33o6OHxehv0DlnFfXQ6QU4IKO6MjPRKaZP2Pv6+mlW4qDktX9WTi03x7wPhNkgQAxO
+	rs03opmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq1xU-00000009vjC-1Hl4;
-	Thu, 06 Mar 2025 03:31:40 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tq68O-0000000AGoK-0ltY;
+	Thu, 06 Mar 2025 07:59:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq1vr-00000009vcq-1a5f;
-	Thu, 06 Mar 2025 03:30:00 +0000
+	id 1tq66l-0000000AGgu-3xKD;
+	Thu, 06 Mar 2025 07:57:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BF2E0A45766;
-	Thu,  6 Mar 2025 03:24:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17194C4CED1;
-	Thu,  6 Mar 2025 03:29:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 628D95C5485;
+	Thu,  6 Mar 2025 07:55:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F25FEC4CEE8;
+	Thu,  6 Mar 2025 07:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741231798;
-	bh=DwjSgGJVgef0kI17Lci/NSOLJqNZW6lcGDA3JVs0eN4=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=iR2uE0+SfSnt77476JZXnJN680qkQ/cgSHA59A3DTlSi8ygN62IKie4hn9Kc2xf2t
-	 wzZnWPedXan6eQAbf1y0Wb3pOYpjwdIiAgm4/BL87RPJjVx9WLYDGZNpK4HbkQ/zoR
-	 VIv2ROKc2PxUfpfdrPaDaDsYr651G1ldqAi9pOW1Pr/Dlk9swxR2Fmcmn1Oepdiror
-	 e9We/yar6Xn69T1B8NlA0isfyRyeZRJXHmMebxtOAjcJQznpHygSPxYaExy8WvSU3h
-	 GKS773jmuClkSi0Xan0k+aSy/LYPN1UC1IF+bQxrk/xUhA12UjJaQEzehHLSh+rs6z
-	 Gal35QdNkTK7A==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C5A380CFF3;
-	Thu,  6 Mar 2025 03:30:32 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1741247850;
+	bh=pH/NwpaMg9Ocf6/GG426eX1DXAWQDLNc+lU1WIH8/QU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DWi8fvt71RfuEChdxeFW1z5xzOV52XkMxEFre9acnh9RpzpbHDygtR55Xq9OnDKTw
+	 yBakukkMrljf/7vLgd7Fd8FY7J9EkTMeDxHCw4CPnqlo62IqBwNZdGRL+jTP00WfHH
+	 hfOHqjHu95VgIIVZtXkaPyiTI5+Z4wNDsQnvTKBrCoc2c646KbXq/ZjXnuF3Loqgkk
+	 waPgyV0wIZ7PpHAqpd7iPcKVHVo+TeEfvYKLt6cQbcbOf0iebhvfb7fDGquXQ4JarN
+	 G/JkFFk1ICN0jZ2eYvkCVNK4jviTojvPs8rAjIdaZRkhzBIeK5ufO67oLokGe6x5V3
+	 sjWY1vIj0RzZg==
+Date: Thu, 6 Mar 2025 08:57:27 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, kernel@collabora.com, 
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v4 01/19] dt-bindings: mfd: mediatek: mt6397: Add accdet
+ subnode
+Message-ID: <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
+References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
+ <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: dsa: mt7530: Fix traffic flooding for MMIO
- devices
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174123183127.1114452.4008171486418029850.git-patchwork-notify@kernel.org>
-Date: Thu, 06 Mar 2025 03:30:31 +0000
-References: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
-In-Reply-To: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, dqfext@gmail.com,
- sean.wang@mediatek.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_192959_502044_1B2F6220 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250305_235732_038926_1273A1D8 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +80,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Wed, Mar 05, 2025 at 03:58:16PM -0300, N=C3=ADcolas F. R. A. Prado wrote:
+> Describe the accessory detection (accdet) module as a possible subnode
+> of the MT6359 PMIC.
+>=20
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>  .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 51 ++++++++++++++++=
+++++++
+>  1 file changed, 51 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b=
+/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> index 6a89b479d10fad3c8b61cab5a3af1453baca4d1a..51012b8bbfaef3df7bdb619a4=
+f8d828d6f9cc15a 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -24,6 +24,7 @@ description: |
+>    - LED
+>    - Keys
+>    - Power controller
+> +  - Accessory Detection
+> =20
+>    It is interfaced to host controller using SPI interface by a proprieta=
+ry hardware
+>    called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of =
+pwrap.
+> @@ -224,6 +225,30 @@ properties:
+>      description:
+>        Pin controller
+> =20
+> +  accdet:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      The Accessory Detection module found on the PMIC allows detecting =
+audio
+> +      jack insertion and removal, as well as identifying the type of eve=
+nts
+> +      connected to the jack.
+> +
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt6359-accdet
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+You just removed the other file, no folding happened here. Drop the
+accdet node and fold this into parent.
 
-On Tue, 04 Mar 2025 09:50:23 +0100 you wrote:
-> On MMIO devices (e.g. MT7988 or EN7581) unicast traffic received on lanX
-> port is flooded on all other user ports if the DSA switch is configured
-> without VLAN support since PORT_MATRIX in PCR regs contains all user
-> ports. Similar to MDIO devices (e.g. MT7530 and MT7531) fix the issue
-> defining default VLAN-ID 0 for MT7530 MMIO devices.
-> 
-> Fixes: 110c18bfed414 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
-
-Here is the summary with links:
-  - [net] net: dsa: mt7530: Fix traffic flooding for MMIO devices
-    https://git.kernel.org/netdev/net/c/ccc2f5a436fb
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Best regards,
+Krzysztof
 
 
