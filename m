@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F36C19F32
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 03:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC34C282DE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 03:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y/S9iTTXtmazQs+vYzu3eZBRJwFtVdn7Gq+IQOYW0Qw=; b=VVW4OZ//Bcjw5J2FAM+A8qNbL8
-	SIb/EUlQTIM76hBsyd4RxyV1bSEIXa2H70Pqf9q2QNXTI8q97ZbYMTi7LlfOlRP96BIk1NSvz41EL
-	ShDswqa9nH5tVun85NLievwoDDrib+PwWVz51Vk1S7xhlFysL60OvbKpl/RztU/FU/mE87DPbORau
-	T0zh9Ea9CzR6zf3ATuC9Nk2HEDqVhDwp63uBJD7/JS7qd+n8z/FlyfJ19fxTi2c/Q5pHBBkdaw6gO
-	OtFtj6Jgv/T2tKeTySF8ZPIVvMmJpweDIRQ5ErHXlhbnTwBoFAr8NqlqmtX2qtPzRqPYX9CvflzRk
-	1exQQI0Q==;
+	bh=lDMBwDxj97xV/nWAhZdgtNHpNQPvDCWSobWtw5JIoqs=; b=g9TNbA4ZpftAkJsUiUEz1NAU6r
+	jXTwWQXm2a+H7jWakwe9QHw7FTyGpVqxBYLQbMQK3OjUiLRMywqCXpWfvUoYnCzP5oHNHYIpto7za
+	xjm5VX6vMLJjUT5PmjQ6oqUD58uOkDYdePscqVl0KSnlSfssDuGL8XdsppH3TPxUJ5ah8RNI270by
+	j86aZdrxMChxsLrKZw74Zfjaj4IxozArvsHH8HVnAtFfL8Aj7K38otvIl0OtApl1aJPvDXBcM5s38
+	pMNOPOYoSf3sK/nhUzE6Blh7Vy5m1aHcowbnFAgW626TL2RhPQvWNNZb7v1kj5zKMaUFv027I6ZM+
+	l0/lNzvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq1nr-00000009v1N-28Je;
-	Thu, 06 Mar 2025 03:21:43 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tq1xU-00000009vjC-1Hl4;
+	Thu, 06 Mar 2025 03:31:40 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq1mF-00000009utp-0FHf;
-	Thu, 06 Mar 2025 03:20:04 +0000
+	id 1tq1vr-00000009vcq-1a5f;
+	Thu, 06 Mar 2025 03:30:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BE9ABA45B8A;
-	Thu,  6 Mar 2025 03:14:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AC6FC4CED1;
-	Thu,  6 Mar 2025 03:20:01 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id BF2E0A45766;
+	Thu,  6 Mar 2025 03:24:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17194C4CED1;
+	Thu,  6 Mar 2025 03:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741231201;
-	bh=ldpseiZdwbk12xd//hJkl8SkTToSHiL6VywDH4TCwFs=;
+	s=k20201202; t=1741231798;
+	bh=DwjSgGJVgef0kI17Lci/NSOLJqNZW6lcGDA3JVs0eN4=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=KaxBoBekBiKcBUHabZEgWALw3F8Nh0J2upfew+y2V3QUsiTxcdEA7qE7laE8r3NdC
-	 Z71TwxipZfcyfoeHwawduMzD+HtzyE9Kz9aaujw33rKOSAm9hmLiCYcvg0hAwnjiy+
-	 UCMZ4yVWvFyHBfwhsLEk+oZGXGw3/OYaolfEH2KtKkKj3221/5vN/IuKWZS3XLXtXb
-	 H/dN/11RyUrP+2SIiwA1UCzJsFN3U6SJKgxgfrtTM5+U4qbf0XjERz7IWJnNeeUnJH
-	 7ub25Q7J5GY8V8WPDyMt58J1i9p7Wn4iGPiD5Ull9lbfaCKTmN8NqIPZpNemXi4ljx
-	 EKkXF7nn/WOyQ==
+	b=iR2uE0+SfSnt77476JZXnJN680qkQ/cgSHA59A3DTlSi8ygN62IKie4hn9Kc2xf2t
+	 wzZnWPedXan6eQAbf1y0Wb3pOYpjwdIiAgm4/BL87RPJjVx9WLYDGZNpK4HbkQ/zoR
+	 VIv2ROKc2PxUfpfdrPaDaDsYr651G1ldqAi9pOW1Pr/Dlk9swxR2Fmcmn1Oepdiror
+	 e9We/yar6Xn69T1B8NlA0isfyRyeZRJXHmMebxtOAjcJQznpHygSPxYaExy8WvSU3h
+	 GKS773jmuClkSi0Xan0k+aSy/LYPN1UC1IF+bQxrk/xUhA12UjJaQEzehHLSh+rs6z
+	 Gal35QdNkTK7A==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 71D08380CFF3;
-	Thu,  6 Mar 2025 03:20:35 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C5A380CFF3;
+	Thu,  6 Mar 2025 03:30:32 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3 0/8] net: phy: move PHY package code to its own
- source file
+Subject: Re: [PATCH net] net: dsa: mt7530: Fix traffic flooding for MMIO
+ devices
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174123123425.1112346.6998420178306205592.git-patchwork-notify@kernel.org>
-Date: Thu, 06 Mar 2025 03:20:34 +0000
-References: <5c5e60b3-0378-4960-8cf0-07ce0e219c68@gmail.com>
-In-Reply-To: <5c5e60b3-0378-4960-8cf0-07ce0e219c68@gmail.com>
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: andrew@lunn.ch, linux@armlinux.org.uk, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, edumazet@google.com, daniel@makrotopia.org,
- dqfext@gmail.com, SkyLake.Huang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, richardcochran@gmail.com,
+Message-Id: <174123183127.1114452.4008171486418029850.git-patchwork-notify@kernel.org>
+Date: Thu, 06 Mar 2025 03:30:31 +0000
+References: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
+In-Reply-To: <20250304-mt7988-flooding-fix-v1-1-905523ae83e9@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, dqfext@gmail.com,
+ sean.wang@mediatek.com, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- robimarko@gmail.com, kory.maincent@bootlin.com, rosenp@gmail.com
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_192003_182666_51C4B472 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20250305_192959_502044_1B2F6220 
+X-CRM114-Status: UNSURE (   9.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,38 +81,24 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This series was applied to netdev/net-next.git (main)
+This patch was applied to netdev/net.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Mon, 3 Mar 2025 21:13:05 +0100 you wrote:
-> This series contributes to cleaning up phylib by moving PHY package
-> related code to its own source file.
+On Tue, 04 Mar 2025 09:50:23 +0100 you wrote:
+> On MMIO devices (e.g. MT7988 or EN7581) unicast traffic received on lanX
+> port is flooded on all other user ports if the DSA switch is configured
+> without VLAN support since PORT_MATRIX in PCR regs contains all user
+> ports. Similar to MDIO devices (e.g. MT7530 and MT7531) fix the issue
+> defining default VLAN-ID 0 for MT7530 MMIO devices.
 > 
-> v2:
-> - rename the getters
-> - add a new header file phylib.h, which is used by PHY drivers only
-> v3:
-> - include phylib.h in bcm54140.c
+> Fixes: 110c18bfed414 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > 
 > [...]
 
 Here is the summary with links:
-  - [net-next,v3,1/8] net: phy: move PHY package code from phy_device.c to own source file
-    https://git.kernel.org/netdev/net-next/c/61dc9cae8727
-  - [net-next,v3,2/8] net: phy: add getters for public members in struct phy_package_shared
-    https://git.kernel.org/netdev/net-next/c/2c8cd9783f46
-  - [net-next,v3,3/8] net: phy: qca807x: use new phy_package_shared getters
-    https://git.kernel.org/netdev/net-next/c/947030f3c32b
-  - [net-next,v3,4/8] net: phy: micrel: use new phy_package_shared getters
-    https://git.kernel.org/netdev/net-next/c/890fe6841d81
-  - [net-next,v3,5/8] net: phy: mediatek: use new phy_package_shared getters
-    https://git.kernel.org/netdev/net-next/c/dc5a6164feda
-  - [net-next,v3,6/8] net: phy: mscc: use new phy_package_shared getters
-    https://git.kernel.org/netdev/net-next/c/e0327e9f8597
-  - [net-next,v3,7/8] net: phy: move PHY package related code from phy.h to phy_package.c
-    https://git.kernel.org/netdev/net-next/c/e7f984e925d2
-  - [net-next,v3,8/8] net: phy: remove remaining PHY package related definitions from phy.h
-    https://git.kernel.org/netdev/net-next/c/a40028497769
+  - [net] net: dsa: mt7530: Fix traffic flooding for MMIO devices
+    https://git.kernel.org/netdev/net/c/ccc2f5a436fb
 
 You are awesome, thank you!
 -- 
