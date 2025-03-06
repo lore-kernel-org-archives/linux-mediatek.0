@@ -4,82 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D3FC28B25
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 13:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BD9C282D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 14:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8OynxTZ/zQsobvLJmPMlEXpzeA5UHWpK9wBnvPhjRso=; b=e6ZfdlY4sMT9dw
-	Umy2Wxxr1WcDa7W/nZUGnLUmy7BqLhYjVA5wohDWK7roEO/eJlgyjFEjCJZxPe9kVz0z39mV5beB5
-	FvxxdHVH+nQ8O7zoTgFGoaK+TRnptHoenwxkYrQsd/jvuwk9yGPS/a+IIENMd22ZflygLqDGd9P9I
-	iTov3jdGJowlP66fYMsc5OdqxXpl7zwS9yhFebdRqy9Aahqbg0fl0ZLjFFvE5JTvUpp1T9bDuFhSg
-	NsWzIFkeYyPvHeFBT+tOY/jd0tgThd1HhEpvXC2/v088BmfqEAnN37CXRI6c7fw4wh+Y2n9b/6JCb
-	q8Y+XNQ7RwvGHqQ6u+Rw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iLGHSHCBCCAdSslWU95fQDJHgFFB743rcnGaK5RaWVc=; b=jn/kQSy3HZ4cf/KqmfPkcpC8m0
+	vXecYkr6dFfSxxghYIKZkm8sbcvN5TylPSB3hUoJaZG3fFYVPqnyvTVCRjQN1Q0XA8tP7gOGuhNn0
+	xsxBzNX3HeQ+S9UD+IaheIAD/fZiwF6+452l/B9LZ6Qs7123zNtKTy6kKR+JCqD+U/TdakpuNJpG4
+	mOMVp8JdNzhQ6uHvAgUrMDMvYSN8q+usTaYz1cFqK1zbL5X9zumcwwaLL5rgAiighZkmvMUHUOirH
+	wqDYlj/3kz9J0vNiQkw/+w1hUVo6PSOqAwASk7bd378zUS9Fu6aQeE8H9PM6RRb2TJUxnDkjjdiG1
+	w2jKc59g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBC6-0000000B2fS-1o9i;
-	Thu, 06 Mar 2025 13:23:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tqC3w-0000000BBK7-3eBK;
+	Thu, 06 Mar 2025 14:19:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqAxZ-0000000B0IQ-38Rn;
-	Thu, 06 Mar 2025 13:08:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=8OynxTZ/zQsobvLJmPMlEXpzeA5UHWpK9wBnvPhjRso=; b=IPewqkIGf0d7zj+OTMjvPpyhQt
-	utRVY3Su65l6EwiMGFpcDGBfDZtv86hfdjKVLzQ8m7ptE+usLHKHjqmo7kvhvPgP1arzJMi0eqr9W
-	Iah2MYl8uIeOUWppGpCesoTjbiz0870+DBocTbzXGwb5dhDs8hyEitlBmuKTvjkq6BWy1QM/lJFUQ
-	sJN1K2c6SFxVZOQ4CHCylM55KZMennQZzzORgBgCHp4KJ+6nhw3WSwCQGAoKp5Nrz7kaznP2GG/Rg
-	aG5DwfyFKfpwdiqQR7nrlhD/VvR0Y9a4lghV6+Qv8ZJom3l2WJNrDVeKmcboLMgfqPa16EVWnolMy
-	FpDC5XJQ==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqAxW-000000015Rm-2DYy;
-	Thu, 06 Mar 2025 13:08:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741266489;
-	bh=4VH2tK+QU3YhYZw7s4V3IaHAhAPl5z7BMEjep4f94Hw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DhJjeccorupWWnlH1MUXiZk9Lw59escc4DFZbf19Ksm61faHl/ImsrS+Ir0zq6+FP
-	 c8hOGcpR7U/HnkM3d63ObvE1y7ud8OZPqeIYsa3fWYWCuybM/Nf3bRQlwibtsmY5RP
-	 PEWJ6PmGmwJZFCkx2cAcqwRcyCz06QP5V81+XRw4ek7wirt2M28bmzffJ7HN5hxiWt
-	 /4nqVHaSQ6BohWGTW87I6q1hu8xBZtHv4ijr3qvK8TtvxO5G9QrHlqEtfTZZ1kP7yt
-	 FOTvLCrKJAvhY99RqSukK+TFhqfkCCUHQDCX3AacPFpExrN1K6H0hM6C18YW5jQfvt
-	 LYqIwvdMjczqg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2B70E17E0599;
-	Thu,  6 Mar 2025 14:08:08 +0100 (CET)
-Message-ID: <1f9007ed-c978-431d-aab2-c04237d5d117@collabora.com>
-Date: Thu, 6 Mar 2025 14:08:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/8] mailbox: mtk-cmdq: Add driver data to support for
- MT8196
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-References: <20250218054405.2017918-1-jason-jh.lin@mediatek.com>
- <20250218054405.2017918-4-jason-jh.lin@mediatek.com>
- <652e435c-563b-496a-a4c3-c2e2b665abcf@collabora.com>
- <5aa04ff5fa567468f32921d4014bbae696c6470f.camel@mediatek.com>
- <9d383fc5-8c64-478c-8aab-6c56bf5b45be@collabora.com>
- <0efe42427be4eb619b6ea7db18687b0211d1ec9f.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	id 1tqAbv-0000000AxfS-01Jd;
+	Thu, 06 Mar 2025 12:46:00 +0000
+X-UUID: f1b9bd4afa8811efa1e849db4cc18d44-20250306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=iLGHSHCBCCAdSslWU95fQDJHgFFB743rcnGaK5RaWVc=;
+	b=WNm3XHSvWqfaA5KhIbiYKOOxofaCnMFmajdbhrxG+BDhXz2Mo92Zq3PO09KYheKl3nXKEd1JYJB4phVrnj1dBJheJGhiRkldtDGXDtBA3qYu9sA9iOx4B+E8QHRHt1j/1PtnadecDKHgklUoqY6aV5qhZ6bYooQo+B9lmoFEvOU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:e3d3f981-be9b-4e85-b39b-dc2ccc3a0226,IP:0,UR
+	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:25
+X-CID-META: VersionHash:0ef645f,CLOUDID:0ae8c449-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f1b9bd4afa8811efa1e849db4cc18d44-20250306
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1503106046; Thu, 06 Mar 2025 05:45:54 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Thu, 6 Mar 2025 20:45:52 +0800
+Received: from SEYPR02CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Thu, 6 Mar 2025 20:45:52 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=SqZi3TpQiRalluKi7q0vM/Zt87UFGlO8XwUkKnM+HNyp90iFRkjYgx5vXwD/EBKkIhHG2ttz1KzEfwVShXt+DJv5ngsAntkObPYIxRcBCQQMbNCDUvzj6yrbi30nUiIlBw5ZxU4NIA5lJfiRxDFkFzicaj4MV+jpB11/o9QjN3nAKPyKaFpRhgOLrF/KW8z4KGHhqKg6hqmmnqjZ8i0+jhPn6RVUuUd2MQ++KuuJUShxYCkD7H2VTstTVdgHYpdN5lacG1/dmyd6nFLMq4vXa3ejXbDbDgobI0e2/82kziVP0HnHcEbtUyRmbhSDM0/4/cex0paTHz8TedgQBmVdlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iLGHSHCBCCAdSslWU95fQDJHgFFB743rcnGaK5RaWVc=;
+ b=RVlRHtOBGP1BRQLcb0wsP1W+ATxIVYHq0BB5xdkPD8oMeWnAkGcGJwVlr9E8RQ8TuPWkGdcUob0yQsdkaS6hmklSuVFpZPXgZ2iCBu1VQePCWR6iGuzzPTmmWAshKcbzhtScgyWLcTW3HZE3zmpJlD4zM4kkSaCmZpCCFByxKizmoCC8WkQrGZatW3fj8Z4pzikIiXxX3M4WnXUPEZq+sHGXrI6NNS9baOOpC7wJQYshTaWNEvsuWDaefr5bHMhmf8EP7QhntYG9QFOcSz2TV81tbh9odDav7UNrNqyEI1AUZpqAaBM2/HCcq1YEk35sKKPoW8sUh509z3SZHuEp8Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iLGHSHCBCCAdSslWU95fQDJHgFFB743rcnGaK5RaWVc=;
+ b=cq/WgJ0Q64QXeELcWjVqhdXpvWPo6LtdwVOjaavRdm2YBM27xiUwybsYZ8MqypUJ95YV2YBJU1pg1niT1YHiJuUjvscxM6euSADwBF7Qgfxe0GL8RfCCzliqXi5L6Nj1yIDFsMWJOUwWRCF47ebpmZHSy57U767pgJ2YQ6VX4So=
+Received: from JH0PR03MB7983.apcprd03.prod.outlook.com (2603:1096:990:3d::5)
+ by KL1PR03MB7599.apcprd03.prod.outlook.com (2603:1096:820:cc::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.17; Thu, 6 Mar
+ 2025 12:45:49 +0000
+Received: from JH0PR03MB7983.apcprd03.prod.outlook.com
+ ([fe80::68cc:b424:7a97:b11f]) by JH0PR03MB7983.apcprd03.prod.outlook.com
+ ([fe80::68cc:b424:7a97:b11f%3]) with mapi id 15.20.8511.017; Thu, 6 Mar 2025
+ 12:45:48 +0000
+From: =?utf-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>
+To: "robh@kernel.org" <robh@kernel.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
+	<Yong.Wu@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"krzk@kernel.org" <krzk@kernel.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH v4 1/2] dt-bindings: memory: mediatek: Add SMI reset and
+ clamp for MT8188
+Thread-Topic: [PATCH v4 1/2] dt-bindings: memory: mediatek: Add SMI reset and
+ clamp for MT8188
+Thread-Index: AQHbhDU04J68TaDqUUGrlWTkL0+oIbNWJ1CAgA/7o4A=
+Date: Thu, 6 Mar 2025 12:45:48 +0000
+Message-ID: <264f78c1067e363c69e146543ebb77dbedfbd181.camel@mediatek.com>
+References: <20250221074846.14105-1-friday.yang@mediatek.com>
+	 <20250221074846.14105-2-friday.yang@mediatek.com>
+	 <0dcb2efd-6bbb-4701-960a-74930eb457e4@collabora.com>
+In-Reply-To: <0dcb2efd-6bbb-4701-960a-74930eb457e4@collabora.com>
+Accept-Language: zh-CN, en-US
 Content-Language: en-US
-In-Reply-To: <0efe42427be4eb619b6ea7db18687b0211d1ec9f.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: JH0PR03MB7983:EE_|KL1PR03MB7599:EE_
+x-ms-office365-filtering-correlation-id: 7267dfba-1403-407b-7db5-08dd5cacd22d
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|38070700018|13003099007;
+x-microsoft-antispam-message-info: =?utf-8?B?bVJJWGpkYzhVTy9ydFN2alh1M3NNV2d4TlA1WVpmZmdvMWNBUFRWL1BDcXF1?=
+ =?utf-8?B?U0dhd1BrQlBLbk9ITGVlb1d6cGcyRGxBY0o5aDBTTFhTZnRWYXh0UllSOWEw?=
+ =?utf-8?B?RTNvZS9LR1VGRFFXOEx4YlVmTlhzMFNQSmlGUURKZmQ2U3pMTmM4OFlZZ2lK?=
+ =?utf-8?B?OVNjZVlNUmRhZDRXbHlIdjRkazhQYVU1MTlJYWUrakpsUnZVS3JyZHFPTUQx?=
+ =?utf-8?B?SUxDcVVZWDk5M3hyUHFTUXNHY09XSlJOdUQxanVhWEJqMy92YmVza0RaUVll?=
+ =?utf-8?B?SWpuWWFreXRyMGx3ek1NcHc0a1VlWUdpWTlkenBTaWZsd3dwVlNDa2Uvc1B1?=
+ =?utf-8?B?NWZ3TTgrNytuZ2kwQVNpQ0p4TFRGYU5WR2JRNHlSbXN6TjJFSXByN1dOTnZ1?=
+ =?utf-8?B?SFRsY1ptcjJKSGZGK3NTcWRpSkQ4M3h3TXorN05VbGJZdlpYdlRHWlVtNk1u?=
+ =?utf-8?B?MEFlbjZJZ1FlWm43SS9iUkcvYlNPWVE1ZmEyYkE5NTBEMUNoTFFuSDFaMWVn?=
+ =?utf-8?B?RklYUS9nc3djRW5CYTVBOUpwd2RlRGNsbTlTVmh1R0VmR3NqMDNHMTZVcWdL?=
+ =?utf-8?B?cWhZNnFSa2w2elFjNmo1bDZMZ2hLRHNOYlYwbGk2cFE5QWsySkJtMlcvYmRN?=
+ =?utf-8?B?L0VRQXA1bVpvMExCNUpnSm01Q2xZbWoxcXRSWDlXQ1c3cFRQTnA2ZXVzV0s2?=
+ =?utf-8?B?TTcxKzkvRDNKQmRvTnhlK3p3WjZ0RENUWUNCSTZIOGhUYnJvekVqdU9JM2pr?=
+ =?utf-8?B?c2tuS2lHWnY1QmVUQ2twUmRxRzc3TFBzalowRGxhVFdGZHhrZTBIWlIwY05u?=
+ =?utf-8?B?SzlmS0RRVDlwbUJpT3dLcEdUdzJGbURrUEtHYU55UHdNSnQwZkVFUWNvcEJs?=
+ =?utf-8?B?VVVGcDY1RzRSQmxCd0pCaUdvOGFGNFJUQ1IzUXBoTzkzVXVlTXhXdWxlZy9R?=
+ =?utf-8?B?bkJVZHZLQzBsQzJyMmh2MitUSDR1R0ZYUmJYOUdqeENVWHFiTnE3bEFIb2xl?=
+ =?utf-8?B?SGJJbmdUTFdNT1ByK3Ryd0FNWThsR0RHS1RlQnlIR2dNcEZpU0RpcjluT3Ur?=
+ =?utf-8?B?ZVpQZUErWFFuMmdWRWRzcEx3aW0xTzBHd2QzU0ZxOWlBSFc5RFBJRGpBNG03?=
+ =?utf-8?B?a3BRQ2R4TUZuZHR5NzBzNmRyN3YwV1Erd2N4aWNBcCtLdXlTMnp3WXhPaE5l?=
+ =?utf-8?B?a1huMUdyOXFtYzl5UWVxVkxhSmpkSTkvSVE4dzFZQVdFeUVmY1picTJyMTFG?=
+ =?utf-8?B?L3dTcDA4RWllV1NMaS9IRFdtYkVmTEhJekFoanJDVm4zQ1FGaTFhV3o4ODNy?=
+ =?utf-8?B?MkwxWjRWYWd1bHVyN09NWFhJWkR0TDJqYVB4cTIvYUpkNXFOVFA1NldQa2dh?=
+ =?utf-8?B?dTlNL0ZIM09vQ21nY1h0WmdrK2xVTk9XUGJzdFJTRnNxaTFyU2VmWlY3REdK?=
+ =?utf-8?B?OWk0ejhtL2d5Y2R2bThNUjB2ekRMZnpUWThSVC9wd2JBaXdZZ1VTeG5mZGVH?=
+ =?utf-8?B?WnJFekxXVDBybGRhd0d5UCtMV1YwSGlqWnRJa29jQi9BQ0JqWVF1VzNLWkdG?=
+ =?utf-8?B?Q2UvRHlvWlBjWGpaQkVGdmtuMElhZk5rMUZaVThESEkvVTFyMHhXemJvbXU5?=
+ =?utf-8?B?UlpSRXovSk5CZTVDQUlFN0l6NXVBcDRrQTZWODRlWEl5dFNyVFAraG5xMXVx?=
+ =?utf-8?B?UCtPaDk5QUFyYWtGdDZVeElxMjM1VWg5VVFHZWtKdXJNWWZ6a0xTRjdMZTFF?=
+ =?utf-8?B?Y2tjUnYvQWs4VHJITkZ6eE43WDgyNVVmSWtjYm52Z011Ynd4VTE4RVpEdFpr?=
+ =?utf-8?B?bStoQS9vT0oxUG13TmlJZkRNOFAvdzJOQXpLNWxEZ3Nsb011K1FzeVF0cGdH?=
+ =?utf-8?B?UE1aZlFEZnltcU16Tmlrb2xFZ3ZjcFVNOWNCTi9LS1E2UXc9PQ==?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:JH0PR03MB7983.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018)(13003099007);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a3d0RWFBQ3hXTzJPa0drNml0L1BxMm15d0FndVRJSW1aRHBNeS93OFhDMVdE?=
+ =?utf-8?B?QzlPaENKamdNaWlscCt0dTZqb2ZDZTVKYjdhSFprblA1MmRJT1JoOXJXWjRp?=
+ =?utf-8?B?QmV4cWVxcWV4UDdJWGxXVHVPUFh1ak8xS3cySFpFMWpxVWxrT0JjQTlWZnhW?=
+ =?utf-8?B?MGYycWZlS2t3ZWp1eWJWb0JtL01lbFhYMUpXVDk2NXI4ZDVwNGUwS3dybUZR?=
+ =?utf-8?B?Y2ZWU2RmL0R6MlFyTDMzcHdhcDh3bGNRT25BNm5lRm1jejVkMFJxL2Y3TE9n?=
+ =?utf-8?B?QVdLM0h5c0JBWVphRzBXWlZVekwwS08vM1FLYVZPZjcxeEJxTWM4K01FVUJR?=
+ =?utf-8?B?YlpGQW9ML2R6SmVBbUdJR0hCTmJEWTZ1dlByODdSUHV3eUNvNGpwdjEzVGRq?=
+ =?utf-8?B?bVJkWDRpdjI2K1FWS2Rqa0h6cUZwa0VoNVFVRTJ5RmRLN2FhMHIyY0UyeGJw?=
+ =?utf-8?B?UEQxaksrcEJUb0hDSmxEU2dDQk1TVHE4SXBLMHNjNFo1Y3RFc05YbmxxeTBE?=
+ =?utf-8?B?RGhrYU03eUQ0R3Y5d1pjNWZrRWd1SEdvdmdRR3JlK3V2TXZRK2FXSDg2QkY4?=
+ =?utf-8?B?RW14eHl1RUFUamNQMVExSllpeFZIOTRrblIyVWF3dkp3eGVNdW9WM1NjQTFU?=
+ =?utf-8?B?NDF4RzZSTnp3TEQycDVVMmpRN0JFeFpOdElGTlRIejErNXpWZzREeWwvd1lQ?=
+ =?utf-8?B?NEtwNklCZ1gwQ0RtUHM4YnVxcmxhK0tJaHNJT2t2VUl0TnlKWWhsc0tkWHli?=
+ =?utf-8?B?bHkwdmRlRzNJbTQ3Tm9ld2poVzNuVE0wZGZsTUJWbGVkZ1FhS3h6Q1lrL2V4?=
+ =?utf-8?B?bWRJK3ZXZ2JiUmhxc0g0MktSTjN1UkNTcU1xeGViMWloMHlhNitnVTF0R2xy?=
+ =?utf-8?B?WjdtSVkyQkNQM3BteldkZWZGZklsK1FIVnlPWldZM1VCOVQrS3Z1UWlCLytq?=
+ =?utf-8?B?V2Z5VVFjRVVmbDRqR1kyNzYwSmpxUWc2NUZBMHFoRzd5MVl2ZzZocWViTE9v?=
+ =?utf-8?B?QUxTa28xdXhpOC8zU1NKdi9yT0FXekZlbTg1RkhwbCtIMEVubFBpSEpCRTlP?=
+ =?utf-8?B?OUsyRHBsSFc1T0RmZXM2U3ZKUHNXMFlRb0VSc29DZEtPNis2aGNqZmNUQ3Ra?=
+ =?utf-8?B?WWlMZ0Y4VGVrYXJsbXVNYml3dlZXZDcxSCszU3BOZUc1M0QrYUVyWUY1S1RN?=
+ =?utf-8?B?MHplcmN0Mm8wY3FWMGZ0c3ltQ3pFa0pTalViRUU3SFNJSytxd0c2Tm5nTHl4?=
+ =?utf-8?B?MW0xd2c4eWtqLzREUW91QnJRUFRVQnk1WGdEUVphazloN1R3Rjc3TlBvcXRn?=
+ =?utf-8?B?TVVNSjUvTEtBSkVaOWhHZ2k4Y3hvMVA4aU1sVG5BL1FhakxyTHdSU3JsT1h3?=
+ =?utf-8?B?WFR4UldvZGlzYkFJb2w5dHdrcEtuV043RkliaVVLZkJEUC9BTnNFdDJjMnZO?=
+ =?utf-8?B?cVdRMHczeEFpNG5pcTBYU0lmZnVvWENldmNuUkg3UDMwY1ZGWk1DMDNVd3c4?=
+ =?utf-8?B?RmNrdC8wdGlTWDlPZUFQeElJTXA1T3o3RDRHUU1LbVNORFFPdndmTXQxSEU5?=
+ =?utf-8?B?Y1RrdDJPWkRhckk5RkdCbXpRSjZYbEVpbzhsQU9rNFlaTWl4cE9Cc1lXSlFU?=
+ =?utf-8?B?ako0dnh0MUp6Rm9KeVVNNG5wc0lxSEwyMWgyZVNnWWpBczhVTGphNXdIaDAx?=
+ =?utf-8?B?d1BPQzYzRTZSaHAwYzBOMkM2cW5RQVZqQllwcThGcmVoWUpUQzNYUTdNNWEr?=
+ =?utf-8?B?cDNQVjNPd3ZSN3hzQWdpdlNVV3ROZWJRMEdmRjVmOS9DRWRGWnZoOXRDRk1a?=
+ =?utf-8?B?a1NROXFJekpJRXJzT25nSERoRnQ0enllanh2WjhEQlRjZXJpZ1ZJYlJPUnhx?=
+ =?utf-8?B?bTk4MnJQaG1WeFhRZkg5OWFtTkRRM3ZPS3RDQkNxR3QyeFltSjQxanZTMSta?=
+ =?utf-8?B?MzFqQVB0dksvRjRvbC9EV3VsWDVBVnk4RGs2NVppckxNTXcyNnhzYk0wSXJI?=
+ =?utf-8?B?Rm9GeXkxOGtMSG16Wmd2TS9BTnFFN0lMN2U4Tkh4V1RLN2xnY0hhV0dOWGlU?=
+ =?utf-8?B?OVNLbHdCWUV1NW1nazFacllTdnVsVVpBOUZHS2kyM05oYnl2OFl4Q0NETnlH?=
+ =?utf-8?B?K2VkL1NOM1V0Nkh2RWphczVtbC9CM1ExNU9MV05rK3MyQU45cnlTU0hGSkRs?=
+ =?utf-8?B?aUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <8AEB7194F6BE9A438990F8F27CDE88F5@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: JH0PR03MB7983.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7267dfba-1403-407b-7db5-08dd5cacd22d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Mar 2025 12:45:48.6723
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: TLUuYpVOQz5Qbd3PdIet7BXWyyclf7iB/mW5Mkc+fVLPJQicrMIYXOc/gMhcdc+h2qu17brpiA3mCr21mk9LIsRDDk4PbN8mEytHFYf5i4U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB7599
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_130818_777723_88536487 
-X-CRM114-Status: GOOD (  62.72  )
+X-CRM114-CacheID: sfid-20250306_044559_096152_BBAF3760 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,448 +213,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "robh@kernel.org" <robh@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "treapking@chromium.org" <treapking@chromium.org>, =?UTF-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/03/25 12:00, Jason-JH Lin (林睿祥) ha scritto:
-> [snip]
->>
->>> CPR_GSIZE is the setting for allocating the CPR SRAM size to each
->>> VM.
->>
->> Would be awesome if you could then clarify the comment that you have
->> later in
->> the code here, from...
->>
->> /* config cpr size for host vm */
->>
->> to
->>
->> /* Set the amount of CPR SRAM to allocate to each VM */
->>
->> ...that could be a way of more properly describing what the writel
->> there is doing.
->>
-> 
-> OK, I'll change it.
-> 
->>>
->>>> The GCE stuff isn't even properly described in datasheets - I do
->>>> (probably!)
->>>> understand what those are for, but asking people to get years of
->>>> experience on
->>>> MediaTek to understand what's going on would be a bit rude,
->>>> wouldn't
->>>> it? :-D
->>>>
->>>
->>> I agree with you :-)
->>> I'll put them in the VM patch and add some brief description for
->>> them.
->>>
->>
->> Thanks, much appreciated!
->>
->>>>> +
->>>>>     #define CMDQ_THR_ACTIVE_SLOT_CYCLES 0x3200
->>>>>     #define CMDQ_THR_ENABLED            0x1
->>>>>     #define CMDQ_THR_DISABLED           0x0
->>>>> @@ -87,11 +98,24 @@ struct cmdq {
->>>>>     struct gce_plat {
->>>>>         u32 thread_nr;
->>>>>         u8 shift;
->>>>> +     dma_addr_t mminfra_offset;
->>>>
->>>> It looks like this is exactly the DRAM's iostart... at least, I
->>>> can
->>>> see that in the
->>>> downstream devicetree that's where it starts.
->>>>
->>>>           memory: memory@80000000 {
->>>>                   device_type = "memory";
->>>>                   reg = <0 0x80000000 0 0x40000000>;
->>>>           };
->>>>
->>>> It doesn't really look like being a coincidence, but, for the
->>>> sake of
->>>> asking:
->>>> is this just a coincidence? :-)
->>>>
->>>
->>> As the confirmation with the hardware designer in previous reply
->>> mail
->>> for CK:
->>> https://patchwork.kernel.org/project/linux-mediatek/patch/20250218054405.2017918-4-jason-jh.lin@mediatek.com/*26258463
->>>
->>
->> That explanation was simply wonderful.
->>
->>> Since the MMINFRA remap subtracting 2G is done in the hardware
->>> circuit
->>> and cannot be configured by software, the address +2G adjustment is
->>> necessary to implement in the CMDQ driver.
->>>
->>> So that might not be a coincidence.
->>> But even if DRAM start address changes, this mminfra_offset is
->>> still
->>> subtracting 2G, so I think it is a better choice to define it as
->>> the
->>> driver data for MT8196.
->>>
->>
->> ....so, this makes me think the following:
->>
->> 1. The DRAM start address cannot *ever* be less than 2G, because
->> otherwise the
->>      MMINFRA HW would have a hole in the usable address range;
->>      1a. If the start address changes to less than 2G, then also the
->> IOMMU would
->>          get limitations, not only the mminfra..!
->>      2b. This makes it very very very unlikely for the start address
->> to be changed
->>          to less than 0x80000000
->>
->> 2. If the DRAM start address changes to be ABOVE 2G (so more than
->> 0x80000000),
->>      there would be no point for MMINFRA to start a "config path"
->> write (or read)
->>      in the SMMU DRAM block, would it? ;-)
->>
-> 
-> GCE is using IOMMU in MT8196, so all the address put into the GCE
-> instruction or GCE register for GCE access should be IOVA.
-> 
-> The DRAM start address is 2G(PA=0x80000000, IOVA=0x0) currently, so
-> when GCE want to access the IOVA=0x0, it will need to +2G into the
-> instruction, then the MMINFRA will see it as data path(IOVA > 2G) and
-> subtract 2G for that IOVA, so GCE can finally access the IOVA=0x0.
-> 
-> I'm not sure if I've misunderstood what you mean by ABOVE 2G. :-)
-> If DRAM start address is changed to 3G(PA=0xc0000000) the IOVA is still
-> 0x0, so GCE still need to + 2G to make MMINFRA go to the data path.
-> 
-> But if you mean PA=0x80000000 and IOVA start address is 3G(0xc0000000),
-> then MMINFRA will go to the data path without GCE +2G.
-> However, MMINFRA will -2G when going to the data path and that will
-> cause GCE access the wrong IOVA.
-> So GCE still need to +2G no matter IOVA start address is already can
-> make MMINFRA go to the data path(IOVA > 2G).
-> 
-> We have already complained to our hardware designer that MMINFRA -2G
-> con not be changed, which will make software operation very
-> troublesome.
-> So in the next few generations of SoC will change this MMINFRA -2G to
-> software configurable. Then we can just make IOVA start address to 2G
-> without adding the mminfra_offset to the IOVA for GCE.
-> 
-
-Okay now I got it, the reality is way worse than I was thinking... eww... :-(
-
->> I get it - if the DRAM moves up, MMINFRA is still at 2G because
->> that's hard baked
->> into the hardware, but I foresee that it'll be unlikely to see a
->> platform changing
->> the DRAM start address arbitrarily, getting out-of-sync with MMINFRA.
->>
->> I propose to just get the address from the memory node for now, and
->> to add a nice
->> comment in the code that explains that "In at least MT8196, the
->> MMINFRA hardware
->> subtracts xyz etc etc" (and that explanation from the previous email
->> is again
->> wonderful and shall not be lost: either use that in the comment, or
->> add it to
->> the commit description, because it's really that good).
->>
->> Should a new SoC appear in the future requiring an offset from the
->> DRAM start
->> address, we will think about how to make that work in the best
->> possible way: in
->> that case we could either reference something else to get the right
->> address or
->> we can just change this driver to just use the 2G offset statically
->> for all.
->>
->> What I'm trying to do here is to reduce the amount of changes that
->> we'd need for
->> adding new SoCs: since that 2G MMINFRA offset -> 2G DRAM start is not
->> a coincidence
->> I think that, should the DRAM start vary on new SoCs, the MMINFRA
->> offset will
->> follow the trend and vary with it.
->>
->> So what I think is:
->> 1. If I'm right, adding a new SoC (with different MMINFRA + DRAM
->> offset) will be
->>      as easy as adding a compatible string in the bindings, no effort
->> in changing
->>      this driver with new pdata offsets;
->> 2. If I'm wrong, adding a new SoC means adding compat string and
->> adding pdata and
->>      one variable in the cmdq struct.
->>
->> Where N.2 is what we would do anyway if we don't go with my proposed
->> solution...
->>
->> All this is just to give you my considerations about this topic -
->> you're left
->> completely free to disagree with me.
->> If you disagree, I will trust your judgement, no problem here.
->>
-> 
-> Yes, I think your are right. No matter the IOVA start address changing,
-> MMINFRA will still -2G(the start address of DRAM PA).
-> Do you mean we can get the mminfra_offset from the start address of
-> memory in DTS, rather than defining it in pdata?
-> 
-
-After the last explanation... no, it would be wrong to get the start from
-memory in DTS, because then this will still need hacks.
-I was somehow convinced that the DRAM start address and the MMINFRA offset
-were directly related and that it would've been hard to change the DRAM
-start address with the MMINFRA offset being -2G, but it's not, so doing it
-my way will eventually backfire on us.
-
-So my way is not good, as it's not showing the reality of things.
-
-Just go with your current way, as it's really tied to the hardware and it's
-not restricted to that dram start coincidence in the end. That's a pity.
-
-Just instead of writing 0x80000000, use " SZ_2G " instead... and please
-add a comment in the code that explains in brief that there's this strange
-behavior for which we.. need that, and that's a static subtraction, and is
-tied to the MMINFRA hardware, and cannot be changed :-(
-
-btw, being clear..
-
-#include <linux/sizes.h>
-
-.mminfra_offset = SZ_2G,
-
-..that way you don't even need a comment saying /* 2GB */ ....
-
-Cheers!
-
->>>>>         bool control_by_sw;
->>>>>         bool sw_ddr_en;
->>>>> +     bool gce_vm;
->>>>> +     u32 dma_mask_bit;
->>>>>         u32 gce_num;
->>>>>     };
->>>>>
->>>>> +static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const
->>>>> struct gce_plat *pdata)
->>>>> +{
->>>>> +     return ((addr + pdata->mminfra_offset) >> pdata->shift);
->>>>> +}
->>>>> +
->>>>> +static inline u32 cmdq_reg_revert_addr(dma_addr_t addr, const
->>>>> struct gce_plat *pdata)
->>>>> +{
->>>>> +     return ((addr << pdata->shift) - pdata->mminfra_offset);
->>>>> +}
->>>>
->>>> I'm not sure that you really need those two functions... probably
->>>> it's simply
->>>> cleaner and easier to just write that single line every time...
->>>> and
->>>> I'm
->>>> saying that especially for how you're using those functions, with
->>>> some readl()
->>>> passed directly as param, decreasing human readability by "a
->>>> whole
->>>> lot" :-)
->>>>
->>>
->>> The reason why I use API wrapper instead of writing it directly in
->>> readl() is to avoid missing the shift or mminfra_offset conversion
->>> in
->>> some places.
->>> This problem is not easy to debug, and I have encountered it at
->>> least
->>> twice...
->>>
->>> I think the advantage of using function is that it can be uniformly
->>> modified to all places that need to handle DRAM address conversion.
->>> What do you think? :-)
->>>
->>
->> Eh, if you put it like that... it makes sense, so.. yeah, okay :-)
->>
->> Still, please cleanup those instances of
->>
->> `cmdq_reg_revert_addr(readl(something), pdata)`
->>
->> those might be hard to read, so please just do something like:
->>
->> regval = readl(something);
->> curr_pa = cmdq_revert_addr(regval, pdata);
->>
->> ...reword to your own liking, of course.
->>
-> 
-> OK, I'll refine that. Thanks.
-> 
->>>>> +
->>>>>     static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool
->>>>> enable)
->>>>>     {
->>>>>         WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq-
->>>>>> clocks));
->>>>> @@ -112,6 +136,30 @@ u8 cmdq_get_shift_pa(struct mbox_chan
->>>>> *chan)
->>>>>     }
->>>>>     EXPORT_SYMBOL(cmdq_get_shift_pa);
->>>>>
->>>>> +dma_addr_t cmdq_get_offset_pa(struct mbox_chan *chan)
->>>>> +{
->>>>> +     struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
->>>>> mbox);
->>>>> +
->>>>> +     return cmdq->pdata->mminfra_offset;
->>>>> +}
->>>>> +EXPORT_SYMBOL(cmdq_get_offset_pa);
->>>>
->>>> I think I remember this get_offset_pa from the old times, then CK
->>>> removed it (and I
->>>> was really happy about that disappearing), or am I confusing this
->>>> with something
->>>> else?
->>>>
->>>> (of course, this wasn't used for mminfra, but for something
->>>> else!)
->>>>
->>>
->>> I can't find any remove history in mtk-cmdq-mailbox.c.
->>>
->>> Maybe you mean the patch in this series?
->>> https://lore.kernel.org/all/171213938049.123698.15573779837703602591.b4-ty@collabora.com/
->>>
->>
->> Uhm, I think I may have confused something here, but yes I was
->> remembering the
->> patch series that you pointed out, definitely.
->>
->> At the end, that series is doing something else, so nevermind, was
->> just confusion.
->>
-> 
-> OK, no problem.
-> 
->>>>> +
->>>>> +bool cmdq_addr_need_offset(struct mbox_chan *chan, dma_addr_t
->>>>> addr)
->>>>> +{
->>>>> +     struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
->>>>> mbox);
->>>>> +
->>>>> +     if (cmdq->pdata->mminfra_offset == 0)
->>>>> +             return false;
->>>>> +
->>>>> +     /*
->>>>> +      * mminfra will recognize the addr that greater than the
->>>>> mminfra_offset
->>>>> +      * as a transaction to DRAM.
->>>>> +      * So the caller needs to append mminfra_offset for the
->>>>> true
->>>>> case.
->>>>> +      */
->>>>> +     return (addr >= cmdq->pdata->mminfra_offset);
->>>>
->>>>
->>>> /**
->>>>     * cmdq_is_mminfra_gce() - Brief description
->>>>     * @args.....
->>>>     *
->>>>     * The MMINFRA GCE will recognize an address greater than DRAM
->>>> iostart as a
->>>>     * DRAM transaction instead of ....xyz
->>>>     *
->>>>     * In order for callers to perform (xyz) transactions through
->>>> the
->>>> CMDQ, those
->>>>     * need to know if they are using a GCE located in MMINFRA.
->>>>     */
->>>> bool cmdq_is_mminfra_gce(...)
->>>> {
->>>>           return cmdq->pdata->mminfra_offset &&
->>>>                  (addr >= cmdq->pdata->mminfra_offset)
->>>>
->>>>> +}
->>>>> +EXPORT_SYMBOL(cmdq_addr_need_offset);
->>>>> +
->>>>
->>>
->>> OK, I'll modify the API like this.
->>>
->>>> ...but then, is there really no way of just handling the GCE
->>>> being in
->>>> MMINFRA
->>>> transparently from the callers? Do the callers really *need* to
->>>> know
->>>> that they're
->>>> using a new GCE?!
->>>>
->>>
->>> Since the address subtracting is done in MMINFRA hardware, I think
->>> GCE
->>> users really need to handle it in driver.
->>>
->>
->> Since the users of this infrastructure are multimedia related
->> (disp/MDP3),
->> I'd also like to get an opinion from MediaTek engineers familiar with
->> that.
->>
->> CK, Moudy, any opinion on that, please?
->>
->>>> Another way of saying: can't we just handle the address
->>>> translation
->>>> in here instead
->>>> of instructing each and every driver about how to communicate
->>>> with
->>>> the new GCE?!
->>>>
->>>
->>> The DRAM address may not only be the command buffer to GCE, but
->>> also
->>> the working buffer provided by CMDQ users and being a part of GCE
->>> instruction, so we need to handle the address translation in CMDQ
->>> helper driver for the instruction generation.
->>> E.g. ISP drivers may use GCE to write a hardware settings to a DRAM
->>> as
->>> backup buffer. The GCE write instruction will be:
->>> WRITE the value of ISP register to DRAM address + mminfra_offset.
->>>
->>> But most of the CMDQ users only need to use GCE to write hardware
->>> register, so I only keep the translation in cmdq_pkt_mem_move(),
->>> cmdq_pkt_poll_addr() and cmdq_pkt_jump_abs() at the latest series.
->>
->> Yeah you're choosing the best of both worlds in that case, I do
->> agree, but
->> still - if there's a way to avoid drivers to have different handling
->> for
->> mminfra vs no-mminfra, that'd still be preferred.
->>
->> Having the handling for something *centralized* somewhere, instead of
->> it
->> being sparse here and there, would make maintenance way easier...
->>
->> ...and that's why I'm asking for CK and Moudy's opinion, nothing else
->> :-)
->>
-> 
-> Yes, I totally agree with you. Thanks for the asking!
-> 
-> Regards,
-> Jason-JH.Lin
-> 
->> Cheers!
->> Angelo
->>
-> 
-
-
-
+T24gTW9uLCAyMDI1LTAyLTI0IGF0IDA5OjQxICswMTAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
+IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
+ciBvciB0aGUgY29udGVudC4NCj4gDQo+IA0KPiBJbCAyMS8wMi8yNSAwODo0OCwgRnJpZGF5IFlh
+bmcgaGEgc2NyaXR0bzoNCj4gPiBGcm9tOiAiRnJpZGF5IFlhbmciIDxmcmlkYXkueWFuZ0BtZWRp
+YXRlay5jb20+DQo+ID4gDQo+ID4gT24gdGhlIE1lZGlhVGVrIHBsYXRmb3JtLCBzb21lIFNNSSBM
+QVJCcyBhcmUgZGlyZWN0bHkgY29ubmVjdGVkIHRvDQo+ID4gdGhlIFNNSSBDb21tb24sIHdoaWxl
+IG90aGVycyBhcmUgY29ubmVjdGVkIHRvIHRoZSBTTUkgU3ViLUNvbW1vbiwNCj4gPiB3aGljaCBp
+biB0dXJuIGlzIGNvbm5lY3RlZCB0byB0aGUgU01JIENvbW1vbi4gVGhlIGhhcmR3YXJlIGJsb2Nr
+DQo+ID4gZGlhZ3JhbSBjYW4gYmUgZGVzY3JpYmVkIGFzIGZvbGxvd3MuDQo+ID4gDQo+ID4gICAg
+ICAgICAgICAgICBTTUktQ29tbW9uKFNtYXJ0IE11bHRpbWVkaWEgSW50ZXJmYWNlIENvbW1vbikN
+Cj4gPiAgICAgICAgICAgICAgICAgICB8DQo+ID4gICAgICAgICAgICstLS0tLS0tLS0tLS0tLS0t
+Ky0tLS0tLS0tLS0tLS0tLS0tLSsNCj4gPiAgICAgICAgICAgfCAgICAgICAgICAgICAgICB8ICAg
+ICAgICAgICAgICAgICAgfA0KPiA+ICAgICAgICAgICB8ICAgICAgICAgICAgICAgIHwgICAgICAg
+ICAgICAgICAgICB8DQo+ID4gICAgICAgICAgIHwgICAgICAgICAgICAgICAgfCAgICAgICAgICAg
+ICAgICAgIHwNCj4gPiAgICAgICAgICAgfCAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAg
+ICAgfA0KPiA+ICAgICAgICAgICB8ICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICB8
+DQo+ID4gICAgICAgICBsYXJiMCAgICAgICBTTUktU3ViLUNvbW1vbjAgICAgIFNNSS1TdWItQ29t
+bW9uMQ0KPiA+ICAgICAgICAgICAgICAgICAgICAgfCAgICAgIHwgICAgIHwgICAgICB8ICAgICAg
+ICAgICAgIHwNCj4gPiAgICAgICAgICAgICAgICAgICAgbGFyYjEgIGxhcmIyIGxhcmIzICBsYXJi
+NyAgICAgICBsYXJiOQ0KPiA+IA0KPiA+IEZvciBwcmV2aW91cyBkaXNjdXNzaW9uIG9uIHRoZSBk
+aXJlY3Rpb24gb2YgdGhlIGNvZGUgbW9kaWZpY2F0aW9ucywNCj4gPiBwbGVhc2UgcmVmZXIgdG86
+DQo+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL0NBRkdyZDlxWmhPYlFYdm0yX2FicWFY
+ODN4TUxxeGpRRVRCMj0NCj4gPiB3WHBvYkRXVTFDbnZrQUBtYWlsLmdtYWlsLmNvbS8NCj4gPiBo
+dHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvQ0FQRHlLRnBva1hWMmdKRGdvd2JpeFR2T0hfNVZM
+M0I1SDhleQ0KPiA+IGhQK0tKNUZhc20yckZnQG1haWwuZ21haWwuY29tLw0KPiA+IA0KPiA+IE9u
+IHRoZSBNZWRpYVRlayBNVDgxODggU29DIHBsYXRmb3JtLCB3ZSBlbmNvdW50ZXJlZCBwb3dlci1v
+ZmYNCj4gPiBmYWlsdXJlcw0KPiA+IGFuZCBTTUkgYnVzIGhhbmcgaXNzdWVzIGR1cmluZyBjYW1l
+cmEgc3RyZXNzIHRlc3RzLiBUaGUgaXNzdWUNCj4gPiBhcmlzZXMNCj4gPiBiZWNhdXNlIGJ1cyBn
+bGl0Y2hlcyBhcmUgc29tZXRpbWVzIHByb2R1Y2VkIHdoZW4gTVRDTU9TIHBvd2VycyBvbg0KPiA+
+IG9yDQo+ID4gb2ZmLiBXaGlsZSB0aGlzIGlzIGZhaXJseSBub3JtYWwsIHRoZSBzb2Z0d2FyZSBt
+dXN0IGhhbmRsZSB0aGVzZQ0KPiA+IGdsaXRjaGVzIHRvIGF2b2lkIG1pc3Rha2luZyB0aGVtIGZv
+ciB0cmFuc2FjdGlvbiBzaWduYWxzLiBXaGF0J3MNCj4gPiBtb3JlLCB0aGlzIGlzc3VlIGVtZXJn
+ZWQgb25seSBhZnRlciB0aGUgaW5pdGlhbCB1cHN0cmVhbWluZyBvZiB0aGlzDQo+ID4gYmluZGlu
+Zy4gV2l0aG91dCB0aGVzZSBwYXRjaGVzLCB0aGUgU01JIGJlY29tZXMgdW5zdGFibGUgZHVyaW5n
+DQo+ID4gY2FtZXJhDQo+ID4gc3RyZXNzIHRlc3RzLg0KPiA+IA0KPiA+IFRoZSBzb2Z0d2FyZSBz
+b2x1dGlvbnMgY2FuIGJlIHN1bW1hcml6ZWQgYXMgZm9sbG93czoNCj4gPiANCj4gPiAxLiBVc2Ug
+Q0xBTVAgdG8gZGlzYWJsZSB0aGUgU01JIHN1Yi1jb21tb24gcG9ydCBhZnRlciB0dXJuaW5nIG9m
+Zg0KPiA+IHRoZQ0KPiA+ICAgICBMQVJCIENHIGFuZCBiZWZvcmUgdHVybmluZyBvZmYgdGhlIExB
+UkIgTVRDTU9TLg0KPiA+IDIuIFVzZSBDTEFNUCB0byBkaXNhYmxlL2VuYWJsZSB0aGUgU01JIHN1
+Yi1jb21tb24gcG9ydC4NCj4gPiAzLiBJbXBsZW1lbnQgYW4gQVhJIHJlc2V0IGZvciBTTUkgTEFS
+QnMuDQo+ID4gDQo+ID4gVGhpcyBwYXRjaCBwcmltYXJpbHkgYWRkIHR3byBjaGFuZ2VzOg0KPiA+
+IDEuIEFkZCBjb21wYXRpYmxlIGZvciBTTUkgc3ViLWNvbW1vbiBvbiBNVDgxODggU29DLg0KPiA+
+IDIuIEFkZCAncmVzZXRzJyBhbmQgJ3Jlc2V0LW5hbWVzJyBwcm9wZXJ0aWVzIGZvciBTTUkgTEFS
+QnMgdG8NCj4gPiAgICAgc3VwcG9ydCBTTUkgcmVzZXQgb3BlcmF0aW9ucy4NCj4gPiANCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBGcmlkYXkgWWFuZyA8ZnJpZGF5LnlhbmdAbWVkaWF0ZWsuY29tPg0KPiA+
+IC0tLQ0KPiA+ICAgLi4uL21lZGlhdGVrLHNtaS1jb21tb24ueWFtbCAgICAgICAgICAgICAgICAg
+IHwgIDIgKysNCj4gPiAgIC4uLi9tZW1vcnktY29udHJvbGxlcnMvbWVkaWF0ZWssc21pLWxhcmIu
+eWFtbCB8IDIwDQo+ID4gKysrKysrKysrKysrKysrKysrKw0KPiA+ICAgMiBmaWxlcyBjaGFuZ2Vk
+LCAyMiBpbnNlcnRpb25zKCspDQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9tZW1vcnktDQo+ID4gY29udHJvbGxlcnMvbWVkaWF0ZWssc21p
+LWNvbW1vbi55YW1sDQo+ID4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVt
+b3J5LQ0KPiA+IGNvbnRyb2xsZXJzL21lZGlhdGVrLHNtaS1jb21tb24ueWFtbA0KPiA+IGluZGV4
+IDJmMzZhYzIzNjA0Yy4uNDM5MmQzNDk4NzhjIDEwMDY0NA0KPiA+IC0tLSBhL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZW1vcnktDQo+ID4gY29udHJvbGxlcnMvbWVkaWF0ZWss
+c21pLWNvbW1vbi55YW1sDQo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL21lbW9yeS0NCj4gPiBjb250cm9sbGVycy9tZWRpYXRlayxzbWktY29tbW9uLnlhbWwNCj4g
+PiBAQCAtMzksNiArMzksNyBAQCBwcm9wZXJ0aWVzOg0KPiA+ICAgICAgICAgICAgIC0gbWVkaWF0
+ZWssbXQ4MTg2LXNtaS1jb21tb24NCj4gPiAgICAgICAgICAgICAtIG1lZGlhdGVrLG10ODE4OC1z
+bWktY29tbW9uLXZkbw0KPiA+ICAgICAgICAgICAgIC0gbWVkaWF0ZWssbXQ4MTg4LXNtaS1jb21t
+b24tdnBwDQo+ID4gKyAgICAgICAgICAtIG1lZGlhdGVrLG10ODE4OC1zbWktc3ViLWNvbW1vbg0K
+PiA+ICAgICAgICAgICAgIC0gbWVkaWF0ZWssbXQ4MTkyLXNtaS1jb21tb24NCj4gPiAgICAgICAg
+ICAgICAtIG1lZGlhdGVrLG10ODE5NS1zbWktY29tbW9uLXZkbw0KPiA+ICAgICAgICAgICAgIC0g
+bWVkaWF0ZWssbXQ4MTk1LXNtaS1jb21tb24tdnBwDQo+ID4gQEAgLTEwNyw2ICsxMDgsNyBAQCBh
+bGxPZjoNCj4gPiAgICAgICAgICAgY29tcGF0aWJsZToNCj4gPiAgICAgICAgICAgICBjb250YWlu
+czoNCj4gPiAgICAgICAgICAgICAgIGVudW06DQo+ID4gKyAgICAgICAgICAgICAgLSBtZWRpYXRl
+ayxtdDgxODgtc21pLXN1Yi1jb21tb24NCj4gPiAgICAgICAgICAgICAgICAgLSBtZWRpYXRlayxt
+dDgxOTUtc21pLXN1Yi1jb21tb24NCj4gPiAgICAgICB0aGVuOg0KPiA+ICAgICAgICAgcmVxdWly
+ZWQ6DQo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+ZW1vcnktDQo+ID4gY29udHJvbGxlcnMvbWVkaWF0ZWssc21pLWxhcmIueWFtbA0KPiA+IGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lbW9yeS0NCj4gPiBjb250cm9sbGVycy9t
+ZWRpYXRlayxzbWktbGFyYi55YW1sDQo+ID4gaW5kZXggMjM4MTY2MGIzMjRjLi4yZTg2YmIzNDU1
+ZjkgMTAwNjQ0DQo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
+bW9yeS0NCj4gPiBjb250cm9sbGVycy9tZWRpYXRlayxzbWktbGFyYi55YW1sDQo+ID4gKysrIGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lbW9yeS0NCj4gPiBjb250cm9sbGVy
+cy9tZWRpYXRlayxzbWktbGFyYi55YW1sDQo+ID4gQEAgLTY5LDYgKzY5LDEyIEBAIHByb3BlcnRp
+ZXM6DQo+ID4gICAgICAgZGVzY3JpcHRpb246IHRoZSBoYXJkd2FyZSBpZCBvZiB0aGlzIGxhcmIu
+IEl0J3Mgb25seSByZXF1aXJlZA0KPiA+IHdoZW4gdGhpcw0KPiA+ICAgICAgICAgaGFyZHdhcmUg
+aWQgaXMgbm90IGNvbnNlY3V0aXZlIGZyb20gaXRzIE00VSBwb2ludCBvZiB2aWV3Lg0KPiA+IA0K
+PiA+ICsgIHJlc2V0czoNCj4gPiArICAgIG1heEl0ZW1zOiAxDQo+ID4gKw0KPiA+ICsgIHJlc2V0
+LW5hbWVzOg0KPiA+ICsgICAgY29uc3Q6IGxhcmINCj4gPiArDQo+ID4gICByZXF1aXJlZDoNCj4g
+PiAgICAgLSBjb21wYXRpYmxlDQo+ID4gICAgIC0gcmVnDQo+ID4gQEAgLTEyNSw2ICsxMzEsMjAg
+QEAgYWxsT2Y6DQo+ID4gICAgICAgICByZXF1aXJlZDoNCj4gPiAgICAgICAgICAgLSBtZWRpYXRl
+ayxsYXJiLWlkDQo+ID4gDQo+ID4gKyAgLSBpZjogICMgb25seSBmb3IgaW1hZ2UsIGNhbWVyYSBh
+bmQgaXBlIHN1YnN5cw0KPiA+ICsgICAgICBwcm9wZXJ0aWVzOg0KPiA+ICsgICAgICAgIGNvbXBh
+dGlibGU6DQo+ID4gKyAgICAgICAgICBjb25zdDogbWVkaWF0ZWssbXQ4MTg4LXNtaS1sYXJiDQo+
+ID4gKyAgICAgICAgbWVkaWF0ZWssbGFyYi1pZDoNCj4gPiArICAgICAgICAgIG9uZU9mOg0KPiAN
+Cj4gQXJlIHlvdSByZWFsbHkgc3VyZSB0aGF0IHlvdSBuZWVkICdvbmVPZicgaGVyZT8gOi0pDQo+
+IA0KPiBSZWdhcmRzLA0KPiBBbmdlbG8NCg0KWWVzLCBJIGhhdmUgdGVzdGVkIGl0LiBJZiBJIHRy
+eSB0byBtb2RpZnkgdGhlICdleGFtcGxlcycNCmxpa2UgdGhpcy4gVGhhdCBpczoNCiAgY2hhbmdl
+IHRoZSBjb21wYXRpYmxlIHRvICJtZWRpYXRlayxtdDgxODgtc21pLWxhcmIiLA0KICBhZGQgJ21l
+ZGlhdGVrLGxhcmItaWQgPSA8MTA+OycNCg0KZXhhbXBsZXM6DQogIC0gfCsNCiAgICAjaW5jbHVk
+ZSA8ZHQtYmluZGluZ3MvY2xvY2svbXQ4MTczLWNsay5oPg0KICAgICNpbmNsdWQNCmUgPGR0LWJp
+bmRpbmdzL3Bvd2VyL210ODE3My1wb3dlci5oPg0KDQogICAgbGFyYjE6IGxhcmJAMTYwMTAwMDAg
+ew0KICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODgtc21pLWxhcmIiOw0KICAgICAg
+cmVnID0gPDB4MTYwMTAwMDAgMHgxMDAwPjsNCiAgICAgIG1lZGlhdGVrLHNtaSA9IDwmc21pX2Nv
+bW1vbj47DQogICAgICBtZWRpYXRlayxsYXJiLWlkID0gPDEwPjsNCiAgICAgIHBvd2VyLWRvbWFp
+bnMgPSA8JnNjcHN5cyBNVDgxODhfUE9XRVJfRE9NQUlOX1ZERUM+Ow0KICAgICAgY2xvY2tzID0g
+PCZ2ZGVjc3lzIENMS19WREVDX0NLRU4+LA0KICAgICAgICAgICAgICAgPCZ2ZGVjc3lzIENMS19W
+REVDX0xBUkJfQ0tFTj47DQogICAgICBjbG9jay1uYW1lcyA9ICJhcGIiLCAic21pIjsNCiAgICB9
+Ow0KDQpUaGUgJ2R0X2JpbmRpbmdfY2hlY2snIGNvdWxkIGdpdmUgdGhlIGZvbGxvd2luZw0KZXJy
+b3JzOg0KDQpEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVtb3J5LWNvbnRyb2xs
+ZXJzL21lZGlhdGVrLHNtaS0NCmxhcmIuZXhhbXBsZS5kdGI6IGxhcmJAMTYwMTAwMDA6ICdyZXNl
+dHMnIGlzIGEgcmVxdWlyZWQgcHJvcGVydHkNCmZyb20gc2NoZW1hICRpZDogDQpodHRwOi8vZGV2
+aWNldHJlZS5vcmcvc2NoZW1hcy9tZW1vcnktY29udHJvbGxlcnMvbWVkaWF0ZWssc21pLWxhcmIu
+eWFtbCMNCkRvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZW1vcnktY29udHJvbGxl
+cnMvbWVkaWF0ZWssc21pLQ0KbGFyYi5leGFtcGxlLmR0YjogbGFyYkAxNjAxMDAwMDogJ3Jlc2V0
+LW5hbWVzJyBpcyBhIHJlcXVpcmVkIHByb3BlcnR5DQpmcm9tIHNjaGVtYSAkaWQ6ICANCmh0dHA6
+Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL21lbW9yeS1jb250cm9sbGVycy9tZWRpYXRlayxzbWkt
+bGFyYi55YW1sIw0KDQpBbmQgdGhpcyBpcyB3aGF0IEkgd2FudCB0byBhY2hpZXZlLiBPbiB0aGUg
+TWVkaWFUZWsgTVQ4MTg4IFNvQw0KcGxhdGZvcm0sICdyZXNldHMnIGFuZCAncmVzZXQtbmFtZXMn
+IGFyZSBvbmx5IHJlcXVpcmVkIGZvciBTTUkgTEFSQnMNCmxvY2F0ZWQgaW4gaW1hZ2UsIGNhbWVy
+YSBhbmQgaXBlIHN1YnN5cy4gT3RoZXJzIGNhbiBiZSBpZ25vcmVkLiBBbmQgdGhlDQonbGFyYi1p
+ZCcgb2YgdGhlc2UgU01JIExBUkJzIGFyZSBzaG93biBpbiB0aGlzIGFycmF5OiBbIDksIDEwLCAx
+MSwgMTIsDQoxMywgMTYsIDE3LCAxOCwgMTksIDIwIF0uDQoNClBsZWFzZSBmZWVsIGZyZWUgdG8g
+bGV0IG1lIGtub3cgaWYgeW91IGhhdmUgYW55IGRvdWJ0cy4NCg0KPiANCj4gPiArICAgICAgICAg
+ICAgLSBlbnVtOg0KPiA+ICsgICAgICAgICAgICAgICAgWyA5LCAxMCwgMTEsIDEyLCAxMywgMTYs
+IDE3LCAxOCwgMTksIDIwIF0NCj4gPiArDQo+ID4gKyAgICB0aGVuOg0KPiA+ICsgICAgICByZXF1
+aXJlZDoNCj4gPiArICAgICAgICAtIHJlc2V0cw0KPiA+ICsgICAgICAgIC0gcmVzZXQtbmFtZXMN
+Cj4gPiArDQo+ID4gICBhZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UNCj4gPiANCj4gPiAgIGV4
+YW1wbGVzOg0KPiA+IC0tDQo+ID4gMi40Ni4wDQo+ID4gDQo+IA0KPiANCj4gDQo=
 
