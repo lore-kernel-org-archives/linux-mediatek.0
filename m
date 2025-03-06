@@ -4,80 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37518C282D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 10:11:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEE8C282D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Mar 2025 10:33:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zz2I7BU9rLfHfSph96G/PmbWf/qxl7KFg2teZ6A/Rts=; b=Izc7kS96bUSL5NnlTyPPBOgUAD
-	kK+DgU0VdekcZtF/yCXa3GpwqPqv2cOxQATWyVNbhoghmtBriABDHtJwp1hl97I+1Ybq3u4wT3pOq
-	3XnancDbzO9A0mEtObdFVl04NmDQqP5RWf2JXX2zjwVut533/tNHes+aljht8YS4oItuJBazrIgI4
-	XEtUuT0ag3XccQ5gEIq2j7b96yojERDY6/Y4a7ZEF7l/bDzikNsLpT59QzlUc1onb6D8od6em5lFJ
-	JtcUl38ZDO60XrJk3tPm2wzYwcB/1hQ7DEnC3kiYeevWZHUv/t5k7XgloRCAOcc1fucxdMg6R3xxj
-	CJgqjtkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MxXQkqIhX6I12bQkySYJXAs6hMwqsNTWqZQKU/lujJI=; b=wA1tcVPyOZVk/O5HWor7/IjSd6
+	oSOz1CHlwX7KFWvM68M59CdHyUmJ8YioLbs03uXp8YfdLtQFiIuY3tGkPAdv6ywaPaDGox0hJSj6W
+	EG2noO3IwLVuWQQbL4W+L4+Y8YJ8AVlDpHKcafbvOmuTEpEbsjS72q/c496YL30EVoutIzWC8ELs8
+	l4+yO7vDpnuZzIm7XMyp/3mIO8F5agj1vCNGeSpOtCTJfsr/DLKu3Y/1lmGKtvH98y0jL1CdhAFlK
+	bZizKwPP7c6YVJCwnUZ1hlUVpTA2903aoO7e9NLjpeKDaUcHhizUFu/PQtIMz/qOz+b3XK0AFJC08
+	+X2OxGgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq8CJ-0000000Aabs-3lCq;
-	Thu, 06 Mar 2025 10:11:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tq8Y7-0000000Aep3-0ztW;
+	Thu, 06 Mar 2025 10:33:55 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6wI-0000000AOKb-33dq;
-	Thu, 06 Mar 2025 08:50:47 +0000
-X-UUID: 14e9ca56fa6811ef83f2a1c9db70dae0-20250306
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Zz2I7BU9rLfHfSph96G/PmbWf/qxl7KFg2teZ6A/Rts=;
-	b=llXdhcrmzmOgBHto4nFwlf4lbe7vPxUfWdJd3S31z/Ipa65CSQ4q+XPUIAFDlc2ovfO3qn8fWCEYhW68HQ0wuNQtJaHXVwzbBMS09OnXIUlwa9sY4bBliDnly13/He1FwdCIOKnxpXBSS0CNQWxix+8PQsqtoORvIowGZQE3VOY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:6ec14c51-527a-448c-b15d-d87434bdeaa3,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:998cfec5-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 14e9ca56fa6811ef83f2a1c9db70dae0-20250306
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <axe.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1510840505; Thu, 06 Mar 2025 01:50:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Thu, 6 Mar 2025 16:50:37 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Thu, 6 Mar 2025 16:50:37 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Wenbin Mei
-	<wenbin.mei@mediatek.com>
-CC: <yong.mao@mediatek.com>, <qingliang.li@mediatek.com>,
-	<andy-ld.lu@mediatek.com>, <linux-mmc@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Axe Yang <axe.yang@mediatek.com>
-Subject: [PATCH 2/2] mmc: mtk-sd: add support to disable single burst
-Date: Thu, 6 Mar 2025 16:48:06 +0800
-Message-ID: <20250306085028.5024-3-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250306085028.5024-1-axe.yang@mediatek.com>
-References: <20250306085028.5024-1-axe.yang@mediatek.com>
+	id 1tq7OV-0000000AT9w-1WpE;
+	Thu, 06 Mar 2025 09:19:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741252793;
+	bh=HaJSPixWk9LaPQTM/7v8ziJlqwgqjQtFlWD0716NMgA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YEpxC2nfGB56882Ka73HUj6sruDMJS5dK4rsbbJv3CacywU3xGTS+fkvrsZkHN5ix
+	 JmSBie5uIbZyfaKJlQoIVqh+UzbjQaLGSqTF9DkOKU6nMwUSqZjZhiBzyL5mpUO42Q
+	 +7DXScC4/SVm+y6d1jpa/s3rjPxq3BnifGor7uqhPacQ5WVLt00Ghx0UmtHGLTE/y6
+	 CJcBrCTG8X+XI/GoszYcMqAkTwljE6Qezxbdo+ADxKoAZEYuu3+kvzBXk2TjNroPAz
+	 6cMigYwHRGF+5V5EAV21ybE+9Ah9b2ddxTJ4L9y274KsmskIPFyxmIq0pSUIMkEtJK
+	 RH52QjaWQugFg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C53D17E0599;
+	Thu,  6 Mar 2025 10:19:52 +0100 (CET)
+Message-ID: <3e84fda8-2566-4f18-8ef9-850c84789c34@collabora.com>
+Date: Thu, 6 Mar 2025 10:19:51 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
+To: Axe Yang <axe.yang@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: yong.mao@mediatek.com, qingliang.li@mediatek.com,
+ andy-ld.lu@mediatek.com, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250306085028.5024-1-axe.yang@mediatek.com>
+ <20250306085028.5024-2-axe.yang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250306085028.5024-2-axe.yang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_005046_770734_C3B2DB8B 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20250306_011955_586790_015C8C90 
+X-CRM114-Status: GOOD (  19.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,62 +82,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support to disable 'single' burst type if the bus type is AXI.
-Since the AMBA within some of the legacy and new designed MSDC IP
-is AXI, this switch is necessary.
+Il 06/03/25 09:48, Axe Yang ha scritto:
+> Add 'mediatek,disable-single-burst' setting. This property can be
+> used to switch bus burst type, from single burst to INCR, which is
+> determined by the bus type within the IP. Some versions of the IP
+> are using AXI bus, thus this switch is necessary as 'single' is not
+> the burst type supported by the bus.
+> 
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
 
-The burst type is not IC-specific, but host-specific. So we use a
-devicetree property 'mediatek,disable-single-burst' to switch burst
-type for specific MSDC host.
+I am mostly sure that this is not something to put in devicetree, but as
+platform data for specific SoC(s), as much as I'm mostly sure that all of
+the instances of the MSDC IP in one SoC will be *all* using either single
+or INCR.
 
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+So, I think I know the answer but I'll still ask just to be extremely sure:
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 345ea91629e0..ed46c69def1e 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -249,6 +249,7 @@
- #define MSDC_PATCH_BIT1_CMDTA     GENMASK(5, 3)    /* RW */
- #define MSDC_PB1_BUSY_CHECK_SEL   BIT(7)    /* RW */
- #define MSDC_PATCH_BIT1_STOP_DLY  GENMASK(11, 8)    /* RW */
-+#define MSDC_PB1_SINGLE_BURST     BIT(16)   /* RW */
- 
- #define MSDC_PATCH_BIT2_CFGRESP   BIT(15)   /* RW */
- #define MSDC_PATCH_BIT2_CFGCRCSTS BIT(28)   /* RW */
-@@ -485,6 +486,7 @@ struct msdc_host {
- 	u32 src_clk_freq;	/* source clock frequency */
- 	unsigned char timing;
- 	bool vqmmc_enabled;
-+	bool disable_single_burst;
- 	u32 latch_ck;
- 	u32 hs400_ds_delay;
- 	u32 hs400_ds_dly3;
-@@ -1874,6 +1876,10 @@ static void msdc_init_hw(struct msdc_host *host)
- 	writel(0xffff4089, host->base + MSDC_PATCH_BIT1);
- 	sdr_set_bits(host->base + EMMC50_CFG0, EMMC50_CFG_CFCSTS_SEL);
- 
-+	if (host->disable_single_burst)
-+		sdr_clr_bits(host->base + MSDC_PATCH_BIT1,
-+			     MSDC_PB1_SINGLE_BURST);
-+
- 	if (host->dev_comp->stop_clk_fix) {
- 		if (host->dev_comp->stop_dly_sel)
- 			sdr_set_field(host->base + MSDC_PATCH_BIT1,
-@@ -2820,6 +2826,10 @@ static void msdc_of_property_parse(struct platform_device *pdev,
- 		host->cqhci = true;
- 	else
- 		host->cqhci = false;
-+
-+	host->disable_single_burst =
-+		of_property_read_bool(pdev->dev.of_node,
-+				      "mediatek,disable-single-burst");
- }
- 
- static int msdc_of_clock_parse(struct platform_device *pdev,
--- 
-2.46.0
+is there any MediaTek SoC that has different IP versions for different MSDC
+instances, and that hence require single burst on one instance and INCR on
+another instance?
+
+And if there is - is there a pattern? Is it always SDIO requiring INCR or
+always eMMC/SD requiring it?
+
+Regards,
+Angelo
+
+> ---
+>   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 0debccbd6519..6076aff0a689 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -100,6 +100,14 @@ properties:
+>       minimum: 0
+>       maximum: 0xffffffff
+>   
+> +  mediatek,disable-single-burst:
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description:
+> +      Burst type setting. For some versions of the IP that do not use
+> +      AHB bus, the burst type need to be switched to INCR.
+> +      If present, use INCR burst type.
+> +      If not present, use single burst type.
+> +
+>     mediatek,hs200-cmd-int-delay:
+>       $ref: /schemas/types.yaml#/definitions/uint32
+>       description:
+
+
 
 
