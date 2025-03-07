@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76946C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 09:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836FEC19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 12:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FnL8+d8QIQFJLw758D9eNlIkfTbijiDJ4bP+7joZ1AA=; b=Si3CZTkEqw5Arz3OndTQZCufPB
-	7a4VSL/Rwa1FiO/Aim1bb0a/RfdK0fuPzY4zJq8hRRBAxxEu7FDdzInbnP8HDlMvBycaG3rouPCVm
-	cGmPIfOYirfPiFJDSyh00Qcdy+v2rV+u4pvaul6yrqjCAEcyxIu14UylJlYyTAs771v7Ze2VKvywY
-	E1SZ2lq0qXBXrY0mggh79f+MBWM6ypjeMJJPXVIedv24V2x3lJ+sxw61dmVncOdsydq4XOe9TnhhI
-	59qw86Kh+07gFHdKj3KPww5b+lAZUeVjfb1xH80cv6pvlFzEYbm15GstR//rVW28PB107SiK2aAUk
-	9GKGr11g==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oi/1yul7QoqCYVR3VHpPFv7fpZcX0xh49zK0QqiiehU=; b=UkRDfdZumQ05ljrfkhqWJ51Qwa
+	ZZWnxtzJB8yPOw2ESXVNCegnw3rdy5QX4pB5fMDSAdrEDhaiNPXl3lM0Ogkjx8lZ/tBqtL7zmkn8D
+	IKWcf9eNi0DLRUOVCPPdHr3kJhTIAFr4aY8tspwx+qift9dnyMRkKS9Tii4jRkZhjBY9K65ecskGY
+	KfXofdK/odZL73Yb0tZSU7pyTNVtQP2p8F9MpwfYi/6OcP+4GhqYEQQQIizSryIBjkiqXscsT00No
+	0SC+sQFbpE1luh4wWjh4peqHJEhoG0EVzDKE4K1prdow3kJpB8rR8ZNWOi1sOJI3YotNc/ST/vt68
+	3ZSK1quA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqU6z-0000000DjVK-2Gyx;
-	Fri, 07 Mar 2025 09:35:21 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1tqWTb-0000000E8ZK-2qZ9;
+	Fri, 07 Mar 2025 12:06:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqU3P-0000000Diba-3sxl;
-	Fri, 07 Mar 2025 09:31:41 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Z8LY91mghzvWqv;
-	Fri,  7 Mar 2025 17:27:41 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 9849B140157;
-	Fri,  7 Mar 2025 17:31:29 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+	id 1tqWP4-0000000E7tM-4B4m;
+	Fri, 07 Mar 2025 12:02:12 +0000
+X-UUID: fcd0101cfb4b11efa1e849db4cc18d44-20250307
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Oi/1yul7QoqCYVR3VHpPFv7fpZcX0xh49zK0QqiiehU=;
+	b=AEnGWX8xovgnGX01Gl48h0NnNYIMQZOLuMuEqdBX5eSvwetxP1BaxFubxbsK1nD47uupnsTVsXaijDSS6B9Yc5m9uE0z9+0cuF4iXyXdN8tx37LC/LnxR1YOBLCyud9iB95itFII2xl2AFl/pB+5L0xTd3bOTW7mqxHyw4vLyA8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:8b03097a-411f-4017-bc34-7af2f44f399d,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:0ef645f,CLOUDID:460a168c-f5b8-47d5-8cf3-b68fe7530c9a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1,
+	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
+	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: fcd0101cfb4b11efa1e849db4cc18d44-20250307
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <qun-wei.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 249684098; Fri, 07 Mar 2025 05:02:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 7 Mar 2025 17:31:29 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
-	<fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
- Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
-	Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Gaurav Batra <gbatra@linux.ibm.com>, Matthew
- Rosato <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>, MM
-	<linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
-	<daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
- Fastabend <john.fastabend@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v11 0/4] fix the DMA API misuse problem for page_pool
-Date: Fri, 7 Mar 2025 17:23:51 +0800
-Message-ID: <20250307092356.638242-1-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
+ 15.2.1258.28; Fri, 7 Mar 2025 20:02:01 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 20:02:01 +0800
+From: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+To: Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, Sergey
+ Senozhatsky <senozhatsky@chromium.org>, Vishal Verma
+	<vishal.l.verma@intel.com>, Dan Williams <dan.j.williams@intel.com>, Dave
+ Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>, Andrew Morton
+	<akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris
+ Li <chrisl@kernel.org>, Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying"
+	<ying.huang@intel.com>, Kairui Song <kasong@tencent.com>, Dan Schatzberg
+	<schatzberg.dan@gmail.com>, Barry Song <baohua@kernel.org>, Al Viro
+	<viro@zeniv.linux.org.uk>
+CC: <linux-kernel@vger.kernel.org>, <linux-block@vger.kernel.org>,
+	<nvdimm@lists.linux.dev>, <linux-mm@kvack.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Casper Li <casper.li@mediatek.com>, Chinwen Chang
+	<chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, James
+ Hsu <james.hsu@mediatek.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>
+Subject: [PATCH 1/2] mm: Split BLK_FEAT_SYNCHRONOUS and SWP_SYNCHRONOUS_IO into separate read and write flags
+Date: Fri, 7 Mar 2025 20:01:03 +0800
+Message-ID: <20250307120141.1566673-2-qun-wei.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
+References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_013140_320038_7CDC4E2C 
-X-CRM114-Status: GOOD (  26.83  )
+X-CRM114-CacheID: sfid-20250307_040211_054544_F98444E1 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,174 +97,252 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset fix the dma API misuse problem as below:
-Networking driver with page_pool support may hand over page
-still with dma mapping to network stack and try to reuse that
-page after network stack is done with it and passes it back
-to page_pool to avoid the penalty of dma mapping/unmapping.
-With all the caching in the network stack, some pages may be
-held in the network stack without returning to the page_pool
-soon enough, and with VF disable causing the driver unbound,
-the page_pool does not stop the driver from doing it's
-unbounding work, instead page_pool uses workqueue to check
-if there is some pages coming back from the network stack
-periodically, if there is any, it will do the dma unmmapping
-related cleanup work.
+This patch splits the BLK_FEAT_SYNCHRONOUS feature flag into two
+separate flags: BLK_FEAT_READ_SYNCHRONOUS and
+BLK_FEAT_WRITE_SYNCHRONOUS. Similarly, the SWP_SYNCHRONOUS_IO flag is
+split into SWP_READ_SYNCHRONOUS_IO and SWP_WRITE_SYNCHRONOUS_IO.
 
-As mentioned in [1], attempting DMA unmaps after the driver
-has already unbound may leak resources or at worst corrupt
-memory. Fundamentally, the page pool code cannot allow DMA
-mappings to outlive the driver they belong to.
+These changes are motivated by the need to better accommodate certain
+swap devices that support synchronous read operations but asynchronous write
+operations.
 
-By using the 'struct page_pool_item' referenced by page->pp_item,
-page_pool is not only able to keep track of the inflight page to
-do dma unmmaping if some pages are still handled in networking
-stack when page_pool_destroy() is called, and networking stack is
-also able to find the page_pool owning the page when returning
-pages back into page_pool:
-1. When a page is added to the page_pool, an item is deleted from
-   pool->hold_items and set the 'pp_netmem' pointing to that page
-   and set item->state and item->pp_netmem accordingly in order to
-   keep track of that page, refill from pool->release_items when
-   pool->hold_items is empty or use the item from pool->slow_items
-   when fast items run out.
-2. When a page is released from the page_pool, it is able to tell
-   which page_pool this page belongs to by masking off the lower
-   bits of the pointer to page_pool_item *item, as the 'struct
-   page_pool_item_block' is stored in the top of a struct page.
-   And after clearing the pp_item->state', the item for the
-   released page is added back to pool->release_items so that it
-   can be reused for new pages or just free it when it is from the
-   pool->slow_items.
-3. When page_pool_destroy() is called, item->state is used to tell
-   if a specific item is being used/dma mapped or not by scanning
-   all the item blocks in pool->item_blocks, then item->netmem can
-   be used to do the dma unmmaping if the corresponding inflight
-   page is dma mapped.
+The existing BLK_FEAT_SYNCHRONOUS and SWP_SYNCHRONOUS_IO flags are not
+sufficient for these devices, as they enforce synchronous behavior for
+both read and write operations.
 
-From the below performance data, the overhead is not so obvious
-due to performance variations in arm64 server and less than 1
-ns in x86 server for time_bench_page_pool01_fast_path() and
-time_bench_page_pool02_ptr_ring, and there is about 10~20ns
-overhead for time_bench_page_pool03_slow(), see more detail in
-[2].
+Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+---
+ drivers/block/brd.c           |  3 ++-
+ drivers/block/zram/zram_drv.c |  5 +++--
+ drivers/nvdimm/btt.c          |  3 ++-
+ drivers/nvdimm/pmem.c         |  5 +++--
+ include/linux/blkdev.h        | 24 ++++++++++++++++--------
+ include/linux/swap.h          | 31 ++++++++++++++++---------------
+ mm/memory.c                   |  4 ++--
+ mm/page_io.c                  |  6 +++---
+ mm/swapfile.c                 |  7 +++++--
+ 9 files changed, 52 insertions(+), 36 deletions(-)
 
-arm64 server:
-Before this patchset:
-              fast_path              ptr_ring            slow
-1.         31.171 ns               60.980 ns          164.917 ns
-2.         28.824 ns               60.891 ns          170.241 ns
-3.         14.236 ns               60.583 ns          164.355 ns
-
-With patchset:
-6.         26.163 ns               53.781 ns          189.450 ns
-7.         26.189 ns               53.798 ns          189.466 ns
-
-X86 server:
-| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
-| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
-|------------+-------+-------+----+---------+--------+--------+--------|
-| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
-| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
-| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
-
-And about 16 bytes of memory is also needed for each page_pool owned
-page to fix the dma API misuse problem
-
-1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
-2. https://lore.kernel.org/all/f558df7a-d983-4fc5-8358-faf251994d23@kernel.org/
-
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
-CC: Robin Murphy <robin.murphy@arm.com>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Andrew Morton <akpm@linux-foundation.org>
-CC: Gaurav Batra <gbatra@linux.ibm.com>
-CC: Matthew Rosato <mjrosato@linux.ibm.com>
-CC: IOMMU <iommu@lists.linux.dev>
-CC: MM <linux-mm@kvack.org>
-
-Change log:
-V11:
-  1. Rebase on the latest net-next.
-  2. Fix two compiler errors reported by Jakub and Simon.
-  3. Change to use __acquire() and __release() to avoid 'context
-     imbalance' warning.
-
-V10:
-  1. Add nl API to dump item memory usage.
-  2. Use __acquires() and __releases() to avoid 'context imbalance'
-     warning.
-
-V9.
-  1. Drop the fix of a possible time window problem for NPAI recycling.
-  2. Add design description for the fix in patch 2.
-
-V8:
-  1. Drop last 3 patch as it causes observable performance degradation
-     for x86 system.
-  2. Remove rcu read lock in page_pool_napi_local().
-  3. Renaming item function more consistently.
-
-V7:
-  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
-  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
-     by Simon.
-
-V6:
-  1. Repost based on latest net-next.
-  2. Rename page_pool_to_pp() to page_pool_get_pp().
-
-V5:
-  1. Support unlimit inflight pages.
-  2. Add some optimization to avoid the overhead of fixing bug.
-
-V4:
-  1. use scanning to do the unmapping
-  2. spilt dma sync skipping into separate patch
-
-V3:
-  1. Target net-next tree instead of net tree.
-  2. Narrow the rcu lock as the discussion in v2.
-  3. Check the ummapping cnt against the inflight cnt.
-
-V2:
-  1. Add a item_full stat.
-  2. Use container_of() for page_pool_to_pp().
-
-Yunsheng Lin (4):
-  page_pool: introduce page_pool_get_pp() API
-  page_pool: fix IOMMU crash when driver has already unbound
-  page_pool: support unlimited number of inflight pages
-  page_pool: skip dma sync operation for inflight pages
-
- Documentation/netlink/specs/netdev.yaml       |  16 +
- drivers/net/ethernet/freescale/fec_main.c     |   8 +-
- .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
- drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
- .../marvell/octeontx2/nic/otx2_txrx.c         |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
- drivers/net/netdevsim/netdev.c                |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
- include/linux/mm_types.h                      |   2 +-
- include/linux/skbuff.h                        |   1 +
- include/net/libeth/rx.h                       |   3 +-
- include/net/netmem.h                          |  31 +-
- include/net/page_pool/helpers.h               |  15 +
- include/net/page_pool/memory_provider.h       |   2 +-
- include/net/page_pool/types.h                 |  46 +-
- include/uapi/linux/netdev.h                   |   2 +
- net/core/devmem.c                             |   6 +-
- net/core/netmem_priv.h                        |   5 +-
- net/core/page_pool.c                          | 426 ++++++++++++++++--
- net/core/page_pool_priv.h                     |  12 +-
- net/core/page_pool_user.c                     |  39 +-
- tools/include/uapi/linux/netdev.h             |   2 +
- tools/net/ynl/samples/page-pool.c             |  11 +
- 25 files changed, 576 insertions(+), 88 deletions(-)
-
+diff --git a/drivers/block/brd.c b/drivers/block/brd.c
+index 292f127cae0a..66920b9d4701 100644
+--- a/drivers/block/brd.c
++++ b/drivers/block/brd.c
+@@ -370,7 +370,8 @@ static int brd_alloc(int i)
+ 		.max_hw_discard_sectors	= UINT_MAX,
+ 		.max_discard_segments	= 1,
+ 		.discard_granularity	= PAGE_SIZE,
+-		.features		= BLK_FEAT_SYNCHRONOUS |
++		.features		= BLK_FEAT_READ_SYNCHRONOUS	|
++					  BLK_FEAT_WRITE_SYNCHRONOUS	|
+ 					  BLK_FEAT_NOWAIT,
+ 	};
+ 
+diff --git a/drivers/block/zram/zram_drv.c b/drivers/block/zram/zram_drv.c
+index 3dee026988dc..2e1a70f2f4bd 100644
+--- a/drivers/block/zram/zram_drv.c
++++ b/drivers/block/zram/zram_drv.c
+@@ -2535,8 +2535,9 @@ static int zram_add(void)
+ #if ZRAM_LOGICAL_BLOCK_SIZE == PAGE_SIZE
+ 		.max_write_zeroes_sectors	= UINT_MAX,
+ #endif
+-		.features			= BLK_FEAT_STABLE_WRITES |
+-						  BLK_FEAT_SYNCHRONOUS,
++		.features			= BLK_FEAT_STABLE_WRITES	|
++						  BLK_FEAT_READ_SYNCHRONOUS	|
++						  BLK_FEAT_WRITE_SYNCHRONOUS,
+ 	};
+ 	struct zram *zram;
+ 	int ret, device_id;
+diff --git a/drivers/nvdimm/btt.c b/drivers/nvdimm/btt.c
+index 423dcd190906..1665d98f51af 100644
+--- a/drivers/nvdimm/btt.c
++++ b/drivers/nvdimm/btt.c
+@@ -1501,7 +1501,8 @@ static int btt_blk_init(struct btt *btt)
+ 		.logical_block_size	= btt->sector_size,
+ 		.max_hw_sectors		= UINT_MAX,
+ 		.max_integrity_segments	= 1,
+-		.features		= BLK_FEAT_SYNCHRONOUS,
++		.features		= BLK_FEAT_READ_SYNCHRONOUS |
++					  BLK_FEAT_WRITE_SYNCHRONOUS,
+ 	};
+ 	int rc;
+ 
+diff --git a/drivers/nvdimm/pmem.c b/drivers/nvdimm/pmem.c
+index d81faa9d89c9..81a57d7ca746 100644
+--- a/drivers/nvdimm/pmem.c
++++ b/drivers/nvdimm/pmem.c
+@@ -455,8 +455,9 @@ static int pmem_attach_disk(struct device *dev,
+ 		.logical_block_size	= pmem_sector_size(ndns),
+ 		.physical_block_size	= PAGE_SIZE,
+ 		.max_hw_sectors		= UINT_MAX,
+-		.features		= BLK_FEAT_WRITE_CACHE |
+-					  BLK_FEAT_SYNCHRONOUS,
++		.features		= BLK_FEAT_WRITE_CACHE		|
++					  BLK_FEAT_READ_SYNCHRONOUS	|
++					  BLK_FEAT_WRITE_SYNCHRONOUS,
+ 	};
+ 	int nid = dev_to_node(dev), fua;
+ 	struct resource *res = &nsio->res;
+diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
+index 08a727b40816..3070f2e9d862 100644
+--- a/include/linux/blkdev.h
++++ b/include/linux/blkdev.h
+@@ -305,20 +305,23 @@ typedef unsigned int __bitwise blk_features_t;
+ /* don't modify data until writeback is done */
+ #define BLK_FEAT_STABLE_WRITES		((__force blk_features_t)(1u << 5))
+ 
+-/* always completes in submit context */
+-#define BLK_FEAT_SYNCHRONOUS		((__force blk_features_t)(1u << 6))
++/* read operations always completes in submit context */
++#define BLK_FEAT_READ_SYNCHRONOUS	((__force blk_features_t)(1u << 6))
++
++/* write operations always completes in submit context */
++#define BLK_FEAT_WRITE_SYNCHRONOUS	((__force blk_features_t)(1u << 7))
+ 
+ /* supports REQ_NOWAIT */
+-#define BLK_FEAT_NOWAIT			((__force blk_features_t)(1u << 7))
++#define BLK_FEAT_NOWAIT			((__force blk_features_t)(1u << 8))
+ 
+ /* supports DAX */
+-#define BLK_FEAT_DAX			((__force blk_features_t)(1u << 8))
++#define BLK_FEAT_DAX			((__force blk_features_t)(1u << 9))
+ 
+ /* supports I/O polling */
+-#define BLK_FEAT_POLL			((__force blk_features_t)(1u << 9))
++#define BLK_FEAT_POLL			((__force blk_features_t)(1u << 10))
+ 
+ /* is a zoned device */
+-#define BLK_FEAT_ZONED			((__force blk_features_t)(1u << 10))
++#define BLK_FEAT_ZONED			((__force blk_features_t)(1u << 11))
+ 
+ /* supports PCI(e) p2p requests */
+ #define BLK_FEAT_PCI_P2PDMA		((__force blk_features_t)(1u << 12))
+@@ -1321,9 +1324,14 @@ static inline bool bdev_nonrot(struct block_device *bdev)
+ 	return blk_queue_nonrot(bdev_get_queue(bdev));
+ }
+ 
+-static inline bool bdev_synchronous(struct block_device *bdev)
++static inline bool bdev_read_synchronous(struct block_device *bdev)
++{
++	return bdev->bd_disk->queue->limits.features & BLK_FEAT_READ_SYNCHRONOUS;
++}
++
++static inline bool bdev_write_synchronous(struct block_device *bdev)
+ {
+-	return bdev->bd_disk->queue->limits.features & BLK_FEAT_SYNCHRONOUS;
++	return bdev->bd_disk->queue->limits.features & BLK_FEAT_WRITE_SYNCHRONOUS;
+ }
+ 
+ static inline bool bdev_stable_writes(struct block_device *bdev)
+diff --git a/include/linux/swap.h b/include/linux/swap.h
+index f3e0ac20c2e8..2068b6973648 100644
+--- a/include/linux/swap.h
++++ b/include/linux/swap.h
+@@ -205,21 +205,22 @@ struct swap_extent {
+ 	  offsetof(union swap_header, info.badpages)) / sizeof(int))
+ 
+ enum {
+-	SWP_USED	= (1 << 0),	/* is slot in swap_info[] used? */
+-	SWP_WRITEOK	= (1 << 1),	/* ok to write to this swap?	*/
+-	SWP_DISCARDABLE = (1 << 2),	/* blkdev support discard */
+-	SWP_DISCARDING	= (1 << 3),	/* now discarding a free cluster */
+-	SWP_SOLIDSTATE	= (1 << 4),	/* blkdev seeks are cheap */
+-	SWP_CONTINUED	= (1 << 5),	/* swap_map has count continuation */
+-	SWP_BLKDEV	= (1 << 6),	/* its a block device */
+-	SWP_ACTIVATED	= (1 << 7),	/* set after swap_activate success */
+-	SWP_FS_OPS	= (1 << 8),	/* swapfile operations go through fs */
+-	SWP_AREA_DISCARD = (1 << 9),	/* single-time swap area discards */
+-	SWP_PAGE_DISCARD = (1 << 10),	/* freed swap page-cluster discards */
+-	SWP_STABLE_WRITES = (1 << 11),	/* no overwrite PG_writeback pages */
+-	SWP_SYNCHRONOUS_IO = (1 << 12),	/* synchronous IO is efficient */
+-					/* add others here before... */
+-	SWP_SCANNING	= (1 << 14),	/* refcount in scan_swap_map */
++	SWP_USED	= (1 << 0),		/* is slot in swap_info[] used? */
++	SWP_WRITEOK	= (1 << 1),		/* ok to write to this swap?	*/
++	SWP_DISCARDABLE = (1 << 2),		/* blkdev support discard */
++	SWP_DISCARDING	= (1 << 3),		/* now discarding a free cluster */
++	SWP_SOLIDSTATE	= (1 << 4),		/* blkdev seeks are cheap */
++	SWP_CONTINUED	= (1 << 5),		/* swap_map has count continuation */
++	SWP_BLKDEV	= (1 << 6),		/* its a block device */
++	SWP_ACTIVATED	= (1 << 7),		/* set after swap_activate success */
++	SWP_FS_OPS	= (1 << 8),		/* swapfile operations go through fs */
++	SWP_AREA_DISCARD = (1 << 9),		/* single-time swap area discards */
++	SWP_PAGE_DISCARD = (1 << 10),		/* freed swap page-cluster discards */
++	SWP_STABLE_WRITES = (1 << 11),		/* no overwrite PG_writeback pages */
++	SWP_READ_SYNCHRONOUS_IO = (1 << 12),	/* synchronous read IO is efficient */
++	SWP_WRITE_SYNCHRONOUS_IO = (1 << 13),	/* synchronous write IO is efficient */
++	SWP_SCANNING	= (1 << 14),		/* refcount in scan_swap_map */
++						/* add others here before... */
+ };
+ 
+ #define SWAP_CLUSTER_MAX 32UL
+diff --git a/mm/memory.c b/mm/memory.c
+index 75c2dfd04f72..56c864d5d787 100644
+--- a/mm/memory.c
++++ b/mm/memory.c
+@@ -4293,7 +4293,7 @@ vm_fault_t do_swap_page(struct vm_fault *vmf)
+ 	swapcache = folio;
+ 
+ 	if (!folio) {
+-		if (data_race(si->flags & SWP_SYNCHRONOUS_IO) &&
++		if (data_race(si->flags & SWP_READ_SYNCHRONOUS_IO) &&
+ 		    __swap_count(entry) == 1) {
+ 			/* skip swapcache */
+ 			folio = alloc_swap_folio(vmf);
+@@ -4430,7 +4430,7 @@ vm_fault_t do_swap_page(struct vm_fault *vmf)
+ 		goto out_nomap;
+ 	}
+ 
+-	/* allocated large folios for SWP_SYNCHRONOUS_IO */
++	/* allocated large folios for SWP_READ_SYNCHRONOUS_IO */
+ 	if (folio_test_large(folio) && !folio_test_swapcache(folio)) {
+ 		unsigned long nr = folio_nr_pages(folio);
+ 		unsigned long folio_start = ALIGN_DOWN(vmf->address, nr * PAGE_SIZE);
+diff --git a/mm/page_io.c b/mm/page_io.c
+index 4b4ea8e49cf6..d692eafdd90c 100644
+--- a/mm/page_io.c
++++ b/mm/page_io.c
+@@ -465,10 +465,10 @@ void __swap_writepage(struct folio *folio, struct writeback_control *wbc)
+ 		swap_writepage_fs(folio, wbc);
+ 	/*
+ 	 * ->flags can be updated non-atomicially (scan_swap_map_slots),
+-	 * but that will never affect SWP_SYNCHRONOUS_IO, so the data_race
++	 * but that will never affect SWP_WRITE_SYNCHRONOUS_IO, so the data_race
+ 	 * is safe.
+ 	 */
+-	else if (data_race(sis->flags & SWP_SYNCHRONOUS_IO))
++	else if (data_race(sis->flags & SWP_WRITE_SYNCHRONOUS_IO))
+ 		swap_writepage_bdev_sync(folio, wbc, sis);
+ 	else
+ 		swap_writepage_bdev_async(folio, wbc, sis);
+@@ -616,7 +616,7 @@ static void swap_read_folio_bdev_async(struct folio *folio,
+ void swap_read_folio(struct folio *folio, struct swap_iocb **plug)
+ {
+ 	struct swap_info_struct *sis = swp_swap_info(folio->swap);
+-	bool synchronous = sis->flags & SWP_SYNCHRONOUS_IO;
++	bool synchronous = sis->flags & SWP_READ_SYNCHRONOUS_IO;
+ 	bool workingset = folio_test_workingset(folio);
+ 	unsigned long pflags;
+ 	bool in_thrashing;
+diff --git a/mm/swapfile.c b/mm/swapfile.c
+index b0a9071cfe1d..902e5698af44 100644
+--- a/mm/swapfile.c
++++ b/mm/swapfile.c
+@@ -3488,8 +3488,11 @@ SYSCALL_DEFINE2(swapon, const char __user *, specialfile, int, swap_flags)
+ 	if (si->bdev && bdev_stable_writes(si->bdev))
+ 		si->flags |= SWP_STABLE_WRITES;
+ 
+-	if (si->bdev && bdev_synchronous(si->bdev))
+-		si->flags |= SWP_SYNCHRONOUS_IO;
++	if (si->bdev && bdev_read_synchronous(si->bdev))
++		si->flags |= SWP_READ_SYNCHRONOUS_IO;
++
++	if (si->bdev && bdev_write_synchronous(si->bdev))
++		si->flags |= SWP_WRITE_SYNCHRONOUS_IO;
+ 
+ 	if (si->bdev && bdev_nonrot(si->bdev)) {
+ 		si->flags |= SWP_SOLIDSTATE;
 -- 
-2.33.0
+2.45.2
 
 
