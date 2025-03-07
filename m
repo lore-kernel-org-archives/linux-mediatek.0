@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4C9C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9431C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tJEhgvGQ/tBhoGGvhnVqIYKObOpu2eHYHIpaEY3cHog=; b=w1KVRD1lkSbYGEawvde1jIs7R+
-	yOM+lbAUfbgcN4SPAb4uMnC27b2mz9NivVqjex+Ryo5a2rM5gm6/ogQQtWycGvoVecgV/ygFL8yIH
-	LZmtLZn6hBKosbUiP3E+5EMA7w4KYUBHmCA7zTv4x9a0tFekrbmguyKYCVCU0ZovhnI51Wiio/k2Z
-	F0zRQ5LHL+uuaruT4vw5C/KMWhRcikkt+9Gmk5xB5Z5EnQU4yAjYbtwc64A8+v05yL1k9u3+fBPqV
-	clOI+GUdQ0xX3sLo7JDTwQF8BK1etlQjqP4+G740WwW8vWKd7I4x7GhMuvG8X2mFcZfZeLPIvmjw8
-	hffnQwkA==;
+	bh=MkUGEOCDod7J9evOdfTSkxdj6NmRJIPwWYsEJqhXUbs=; b=y787iLot33LxZnV1kjvNUz8QIk
+	c0j5Pc1jWByakCY6yzDy/cRpuQQbEkK4MX1lrjp1pIsJ4QV5mcFwWT7UzQAg9S/3flWCEqkrPaYge
+	bdV0BbooLjAgh3AQEJNX2tJ3QbcqAt6e8+XR/L4OEfMF78ci+27qLMzlTb3LJBKAdV7fI4KNAbeJ4
+	pJjklXgI0tY8Z0rrvZOsk0FjHkisGhzwltsww9gAEE+VttgVtTEpfqdDPZKpfsIM05vPdG2rw88IU
+	m2/C7nYxVzL9kFCiw7slUdQd9vQc50iHGHMQTdls1YGzJ2QoHVFKE0KyUiul3/YTzpOP4IrFUBk6O
+	9fzcOt5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZUX-0000000Ecac-1nHe;
-	Fri, 07 Mar 2025 15:20:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tqZXk-0000000EdYd-0NWt;
+	Fri, 07 Mar 2025 15:23:20 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZQO-0000000EbZ7-40BF;
-	Fri, 07 Mar 2025 15:15:46 +0000
+	id 1tqZUO-0000000EcWy-2tvB;
+	Fri, 07 Mar 2025 15:19:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5B7835C5B75;
-	Fri,  7 Mar 2025 15:13:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 111A7C4CED1;
-	Fri,  7 Mar 2025 15:15:37 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 16660A45843;
+	Fri,  7 Mar 2025 15:14:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26C9CC4CEEA;
+	Fri,  7 Mar 2025 15:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741360543;
-	bh=H8n13blks6nrv7/hlDAzfpW6fo6pnvJRhIVCn9BJ3jc=;
+	s=k20201202; t=1741360791;
+	bh=DOdxVBJs3FyS/+34Ya6DpUM9aJHN5o1nCo25wqRPjH0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZvVLK8weXD5lfjpk3JJDmKzcgvbIiQEjcP5RhNsRPDcz7HsGDiUO4zB+b46CKJi0h
-	 OHECjDmW+r2aMgu4AawEnbs4hO72yXTLwx7z5oCmYfl5hTz9rb1CKTLS3shdY05R72
-	 q0ii4qENMKF+N+FnLDpGu3IA0qFK6hPU7Bh3IXgu1pVkfwCS3zXReRf1pbbvhMR3UQ
-	 Mg7VdJ/bU5ZiV955EdoO/Gm4d4UL4woEcS4+OEQLd82WlIEEu5hqVU1KBDx5q2IC/s
-	 4uPu3dQoXyJzMBlDbZhEAgXIoNCJmSNOEp7Oyh3RT7SCc73FrKkcPBGOk+ElOYllv6
-	 AQz40N+a2ssyQ==
-Message-ID: <cfd05cd7-4541-476f-aafd-9e3239d88048@kernel.org>
-Date: Fri, 7 Mar 2025 16:15:34 +0100
+	b=JfTi+c85tNklokvWkgSDqfOGVuDbEgw9jDOHTxKhBrOBFiTQ458Vcjr4A8jubHejx
+	 NsheC9d9tcZ0BtKIuVauYs9wiVZPi/fF79hWic/TMOUASeyDA5cESHLs4C2Ur/HHeV
+	 slh4QwLwlLVQlQrhJItNhGQfBzo0FbB/le34tSA0EXNAzekxRRRfVBvY2d6cWHhUWt
+	 YosAXnB2//ynzxAeBmEQaQbsXdL15rAsuHXwDt4urdPjfmntVLbEv9A3/5GIr9p+5G
+	 cFGbh14LV3Wszrnc3xSKs0PxS+2Cu6SUaPd8fSuqSiMtQM8HRUxRb2WNTsgaolRRdb
+	 3NVk6g0Ab+jkw==
+Message-ID: <d795e657-1723-499c-8a0f-d5b2f24c4f92@kernel.org>
+Date: Fri, 7 Mar 2025 16:19:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/14] dt-bindings: mediatek: mt8196: add audio AFE
+Subject: Re: [PATCH 14/14] dt-bindings: mediatek: mt8196: add mt8196-mt6681
  document
 To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -59,7 +59,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 References: <20250307124841.23777-1-darren.ye@mediatek.com>
- <20250307124841.23777-13-darren.ye@mediatek.com>
+ <20250307124841.23777-15-darren.ye@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,12 +105,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250307124841.23777-13-darren.ye@mediatek.com>
+In-Reply-To: <20250307124841.23777-15-darren.ye@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_071545_081487_80B178CC 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20250307_071952_916627_D2A33A8E 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,9 +128,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 07/03/2025 13:47, Darren.Ye wrote:
 > From: Darren Ye <darren.ye@mediatek.com>
 > 
-> Add mt8196 audio AFE document.
-> 
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> Add document for mt8196 board with mt6681.
+
+
+Why do you add bindings after its users? Fix the order (see DT
+submitting patches).
+
 
 Please use subject prefixes matching the subsystem. You can get them for
 example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
@@ -138,242 +141,59 @@ your patch is touching. For bindings, the preferred subjects are
 explained here:
 https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
 
-> ---
->  .../bindings/sound/mediatek,mt8196-afe.yaml   | 259 ++++++++++++++++++
->  1 file changed, 259 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> ---
+>  .../sound/mediatek,mt8196-mt6681.yaml         | 122 ++++++++++++++++++
+>  1 file changed, 122 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml
 > new file mode 100644
-> index 000000000000..59f8fdf3167c
+> index 000000000000..b144ba748c23
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
-> @@ -0,0 +1,259 @@
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml
+> @@ -0,0 +1,122 @@
 > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8196-afe.yaml#
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt8196-mt6681.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek Audio Front End PCM controller for MT8196
+> +title: MediaTek MT8196 ASoC sound card
 > +
 > +maintainers:
 > +  - Darren Ye <darren.ye@mediatek.com>
 > +
+> +allOf:
+> +  - $ref: sound-card-common.yaml#
+> +
 > +properties:
 > +  compatible:
-> +    const: mediatek,mt8196-afe-pcm
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt8196-mt6681-sound
+> +          - mediatek,mt8196-nau8825-sound
+> +          - mediatek,mt8196-rt5682s-sound
+> +          - mediatek,mt8196-rt5650-sound
+
+So this is not compatible with nau8825?
+
+> +      - items:
+> +          - const: mediatek,mt8196-mt6681-sound
+
+This makes no sense. Either it is or it is not compatible with nau8825.
+
+> +          - const: mediatek,mt8196-nau8825-sound
 > +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#sound-dai-cells":
-> +    const: 0
-> +
-> +  clocks:
-> +    items:
-> +      - description: audio hopping clock
-> +      - description: audio f26m clock
-> +      - description: audio ul0 adc clock
-> +      - description: audio ul0 adc hires clock
-> +      - description: audio ul1 adc clock
-> +      - description: audio ul1 adc hires clock
-> +      - description: audio apll1 clock
-> +      - description: audio apll2 clock
-> +      - description: audio apll tuner1 clock
-> +      - description: audio apll tuner2 clock
-> +      - description: vlp mux audio int
-> +      - description: vlp mux aud engen1
-> +      - description: vlp mux aud engen2
-> +      - description: vlp mux audio h
-> +      - description: vlp clock 26m
-> +      - description: ck mainpll d4 d4
-> +      - description: ck mux aud 1
-> +      - description: ck apll1
-> +      - description: ck mux aud 2
-> +      - description: ck apll2
-> +      - description: ck apll1 d4
-> +      - description: ck apll2 d4
-> +      - description: ck i2sin0 m sel
-> +      - description: ck i2sin1 m sel
-> +      - description: ck fmi2s m sel
-> +      - description: ck tdmout m sel
-> +      - description: ck apll12 div i2sin0
-> +      - description: ck apll12 div i2sin1
-> +      - description: ck apll12 div fmi2s
-> +      - description: ck apll12 div tdmout m
-> +      - description: ck apll12 div tdmout b
-> +      - description: ck adsp sel
-> +      - description: ck clock 26m
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aud_hopping_clk
+> +  audio-routing:
+> +    description:
+> +      Valid names could be the input or output widgets of audio components,
+> +      power supplies, MicBias of codec and the software switch.
 
-Look how other bindings call it. s/_clk//
-
-> +      - const: aud_f26m_clk
-> +      - const: aud_ul0_adc_clk
-> +      - const: aud_ul0_adc_hires_clk
-> +      - const: aud_ul1_adc_clk
-> +      - const: aud_ul1_adc_hires_clk
-> +      - const: aud_apll1_clk
-> +      - const: aud_apll2_clk
-> +      - const: aud_apll_tuner1_clk
-> +      - const: aud_apll_tuner2_clk
-> +      - const: vlp_mux_audio_int
-> +      - const: vlp_mux_aud_eng1
-> +      - const: vlp_mux_aud_eng2
-> +      - const: vlp_mux_audio_h
-> +      - const: vlp_clk26m_clk
-> +      - const: ck_mainpll_d4_d4
-
-What does ck stand for? You should name and explain the clocks based on
-this block, not the source.
-
-
-> +      - const: ck_mux_aud_1
-> +      - const: ck_apll1_ck
-> +      - const: ck_mux_aud_2
-> +      - const: ck_apll2_ck
-> +      - const: ck_apll1_d4
-> +      - const: ck_apll2_d4
-> +      - const: ck_i2sin0_m_sel
-> +      - const: ck_i2sin1_m_sel
-> +      - const: ck_fmi2s_m_sel
-> +      - const: ck_tdmout_m_sel
-> +      - const: ck_apll12_div_i2sin0
-> +      - const: ck_apll12_div_i2sin1
-> +      - const: ck_apll12_div_fmi2s
-> +      - const: ck_apll12_div_tdmout_m
-> +      - const: ck_apll12_div_tdmout_b
-> +      - const: ck_adsp_sel
-> +      - const: ck_clk26m_clk
-
-s/ck//
-s/clk// and this goes probably first. Look at other bindings.
+Drop property, not needed.
 
 > +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  cksys:
-
-Again, open existing bindings.
-
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: Phandle to the cksys clock controller.
-
-This tell me not much. Why do you need it?
-
-Drop redundant 'Phandle to' and explain how it is used.
-
-> +
-> +  vlpcksys:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: Phandle to the vlpcksys clock controller.
-
-No, because you keep encoding clock information via non-clock API.
-
-> +
-> +  memory-region:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-
-Drop, see other bindings.
-
-
-> +    description: Phandle to the reserved memory region for AFE DMA.
-> +
-> +  pinctrl-names:
-
-Drop
-
-> +    items:
-> +      - const: default
-> +
-> +  pinctrl-0:
-
-Drop
-
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: Phandle to the pin control group for default state.
-> +
-> +  mediatek,etdm-out-ch:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: Number of ETDM output channels.
-> +    enum: [2]
-
-That's pointless.
-
-> +
-> +  mediatek,etdm-in-ch:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: Number of ETDM input channels.
-> +    enum: [2]
-> +
-> +  mediatek,etdm-out-sync:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: ETDM output synchronization.
-> +    enum: [0, 1]
-> +
-> +  mediatek,etdm-in-sync:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: ETDM input synchronization.
-> +    enum: [0, 1]
-> +
-> +  mediatek,etdm-ip-mode:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: ETDM IP mode.
-> +    enum: [0, 1]
-
-Drop all above properties or explain why they make any sense in the
-terms of board configuration.
-
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - interrupts
-> +  - power-domains
-> +  - cksys
-> +  - vlpcksys
-> +  - memory-region
-
-> +  - pinctrl-names
-> +  - pinctrl-0
-
-Why?
-
-> +  - mediatek,etdm-out-ch
-> +  - mediatek,etdm-in-ch
-> +  - mediatek,etdm-out-sync
-> +  - mediatek,etdm-in-sync
-> +  - mediatek,etdm-ip-mode
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8196-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mt8196-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        afe: mt8196-afe-pcm@1a110000 {
-
-Again... look at other bindings.
-
-
 Best regards,
 Krzysztof
 
