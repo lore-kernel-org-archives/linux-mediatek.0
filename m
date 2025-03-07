@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7506FC28B24
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 19:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38918C282DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 23:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mxADRnTRL5Zf4OanqbxnTYyjpNbUObusM/RVQfon6dU=; b=W9DoOo5LEey5Mmg/Ji88qSt+MN
-	iZBGV406lBmdujgj/NligW+G20on5QOHm9WvIddtXadhKNnSa+yLIMdVhbgpfqr+4JnI+SNJ0cQ3M
-	ZEBjSeXrEc5GOTDyGG759RxW1Rw5GqcOx8PxrjMR2BXm0dHaxJxaqQeb0ISQCmY3raoUUcdRTMqeB
-	vx8y3aT94ZV7KnRGZzrKymyVzXmmKYTuiAi8RdrQUCREikTRIFwoesHvCFIHYLdw2IazffBTyVD+S
-	vooIAGv76PBgEpFcapYl8DWihIkPlGHdnggo+s/1UsyUaImfr0eHctffY/sOOrMoFlCMDN0OgOSFg
-	nqYSETqA==;
+	bh=QTzXTB5/hI3k/tUV1QdjmWKVi1pI+jp0+a6jtCFIsMQ=; b=LKXe58f2d7dTH3BN11BzBfgFuk
+	YvbwnmKQNKds5t/t+z30BX4yRLhB6tyN/Nm80SkgW71qM1TMlxUOkjKRgCmz5gTWYD/3QVfAvBzyM
+	PH0G1W/vnITkhO5DkvG+9X9TiW9mSKmrYCNK5jqEhKz28Bie0BtfbgaZZgS9B71XKmSpboOCpN6En
+	UkliOZPyFLs1qtA/6wDv1cEgkMVv5/j4Zv0t5bPOJ4Lm5agxq4m3YcfR7QxUnQGSytbHllc0MGIH9
+	RR1GxaI+6OKVupDpgbvE+fy0pp5nmWrr749l8m89XqnLACpJZ6mto82iGseXIewtruCufjd6ekZ6l
+	pYOrRhrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqdbD-0000000FOjl-2N9p;
-	Fri, 07 Mar 2025 19:43:11 +0000
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
+	id 1tqgky-0000000Fl25-3W4y;
+	Fri, 07 Mar 2025 23:05:28 +0000
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqdZa-0000000FOPK-0Vjg;
-	Fri, 07 Mar 2025 19:41:31 +0000
-Received: by mail-ua1-x933.google.com with SMTP id a1e0cc1a2514c-86718c2c3b9so851859241.2;
-        Fri, 07 Mar 2025 11:41:29 -0800 (PST)
+	id 1tqgjL-0000000Fklm-2hkw;
+	Fri, 07 Mar 2025 23:03:48 +0000
+Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-6e8fb8ad525so18824086d6.3;
+        Fri, 07 Mar 2025 15:03:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741376488; x=1741981288; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1741388626; x=1741993426; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mxADRnTRL5Zf4OanqbxnTYyjpNbUObusM/RVQfon6dU=;
-        b=m78jWhaCXdQjeOGRuKfE+aurTa4FAN1FX1uoocm0aCSS0g43jrC/qZArQcRktMo9Pn
-         5qFkyiK5qfKnVN4atuuT9wM4BRBALU6xIfO+iB5w3cT5/dewBGZy9RHkt0sjXhmjyDJZ
-         HO2XdqWzjN+pT2SungojySGUQYaQ6//76Vxr2KxqrBed82c6g7LIf1Zkw/T5/Snqqk+N
-         gd2y6LMcU+Mbgq+SlPNf1bfJoFo/wkE66nP5Zg6lbL4PbOYWKYQ0NSTAMtlcGMynObfi
-         d5tuKvEvTlhfL2NOyVbOFR204AqAKpUIhPWcSzZd+lq8FMtrSHtbXBeItJTWhAuFNwXz
-         8A6g==
+        bh=QTzXTB5/hI3k/tUV1QdjmWKVi1pI+jp0+a6jtCFIsMQ=;
+        b=QrB/NDOjKWM2PoOaRPpZwvhqAAT4Mn8dh6mfnl2G2xDGk1JXJRbc2M+hUrl9rGc2jz
+         GA67yo30e2oU8JhmgJm+Npf9F7PefBuisN6jTh/itpQH6JaRqPA43IHzedfdZOrJTAkp
+         etaorUQLsdDXOXFm669JFoZtBY9Kpob0cUtDSuSU2XWGQX9XnkQkwmlJHSFKOuSv9Hzh
+         nFc4w1+SQqEsCpyM4GX39hyymVVw3nnug883QtcFrUUWjdsEMgqBDJdA8OPSEXi22k1G
+         1w5sOmUOlj6g3oaSs/uo2nremKYdQvVK2pcgCKrVIi97Sk+ctKtF0Gfh7tdbyTDpfPru
+         bN8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741376488; x=1741981288;
+        d=1e100.net; s=20230601; t=1741388626; x=1741993426;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mxADRnTRL5Zf4OanqbxnTYyjpNbUObusM/RVQfon6dU=;
-        b=dRWi8KTUShvNNt21XihtNIIXI8h0zzWQntjkxaBPzZzd8tIY+4UuqL/aNDw7X6uGOS
-         rj2M96icnWoBqF41xe/6ablfzeKDaeplj6KxNaGTtBx9Tn2twW8N7MZjZRcsLX1golc7
-         Yh97FfWf7wU5+zX6RFks192qktktuV4pDAL93fOE31xWRVUkktyp3vyJ10mgP2t4Zgak
-         GixP4RxLargLayFrkDl91RCyVNSWaSQ9TXEBy9ohdk3gdX3bJ2cE2Uvj3Xbtt8JSGI8r
-         6hypRZE/VmNy+jBGgEDdlwfIxV8ZNwO2MEc1ZOLi1nwnycqvTY1/nk4ZH859DDYy2rTb
-         03qg==
-X-Forwarded-Encrypted: i=1; AJvYcCUYpM4b5g4IbIK8Q+DYJqeX5QqrHpDPT6BgmXYHmFCrBF/5oyO5do4P7sWt6DAeb3MpW4I51DZdL6kc3s1Cnv7F@lists.infradead.org, AJvYcCUzrLQ8/os2gcgmG0LITIJTJtrUOM5d+qvtjDyds5PTkXb65q34ta3SYEViQb42zoJL/x5wu17FMZ5hr0QCnPA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSO8Am3WRWMg6I/Cij1bPGRZk3rwJFffdG3a8E4wmT0wDPd2EX
-	x7W0IygEgmko8BmAtUpX4VgCSj3bSBbmWVs9lWRk5MI+2wZrGVenmMKF9sAS7btQkWCrZVYbD2p
-	CutmTfRxI3W/N9X3jlHaC+S+q2C4=
-X-Gm-Gg: ASbGncs7ONei/dwLSU1o5hJrcTAOSnpCvtvb4rdfOw9o4q86gwIbbxr9rnSkxC/c8D7
-	t+2cHeZpjbZsFa0CGfs8d1LttAiLB5djYhAIRAtcX1orp+gQrXDcZZ3yG4LZ7WmxmlnuspMRVxc
-	wBIU2bZOZo//TJOcKm2dJxN4+kdw==
-X-Google-Smtp-Source: AGHT+IErC9InPZ9XBRKp6Rom58kBjYYUxu3mePp0BMBXU1RuaBhOiaC4Tj1uk5RWPM1jNhqDuhDOHzIrZjJrW7wbKg4=
-X-Received: by 2002:a05:6102:d8e:b0:4c1:a448:ac7d with SMTP id
- ada2fe7eead31-4c30a54d408mr3032359137.10.1741376488483; Fri, 07 Mar 2025
- 11:41:28 -0800 (PST)
+        bh=QTzXTB5/hI3k/tUV1QdjmWKVi1pI+jp0+a6jtCFIsMQ=;
+        b=j1mF7fSBi28mOk9w3yZ+foGLkXrP+zWx8gSw717FAYJVpai24l4rgy8gg8QFTYCi7I
+         dl7dC1rRX6Q+5/pWDwtB8guHiQ19fVvoGIuTffxV2Kh55P8rKIaQDuEqfu4vSxLQYKtF
+         ONNFBmNG2FzxpjiwgZUCQe3tbyyTjO+bcn4ZZfFfsYTy2cT2+AMAWIaQIlJ2xD0PhEIE
+         ad3zWtN5F7SxqxNoVqc7F1BsIv0I7Iy4nIQ3ONe5gieOVnLXxrFDbIyrr4j3iex6LlkZ
+         4LJmM/VQAYglAzmU95VrE+WKN7k3xNVTDCZiYQbJkDId+0AUELfl/Vf6k5JJTg3SmAc8
+         U5dA==
+X-Forwarded-Encrypted: i=1; AJvYcCWiCPbuxNOlulEoO4MQKnIvmr0fCdNsEFM6T7tMSZiQ3D9erxj3gyMOjMnWtd+J1dd9Ft+WTzg8FPyKrbgF3LtV@lists.infradead.org, AJvYcCXsExnMcgwYp/qwvRz4fWMXYh+u1CUUccKF5awDCuxgi0JBwTXcKM88Uf5tBmFKEsdVKwkyOH94hkXfXTwIkk4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHBc02iyalezKbN7P5vcPKUL2ayi3w+/51M2yAut86Fr11a25I
+	UqmXtj1F5G4wLmVfwJxtSyWs6N2smhsKysdBYBYrppTvPy8TD9G+7FSp4ulplg7qpHiASHcNYdK
+	uZEQyxzdfHJk5m5aayTxOU/EtxnM=
+X-Gm-Gg: ASbGnctRIFtMwXXOvSBlI+MMwtXZS4dL885J9dC7Aw+F7D/Tq/j9wuoA5YUJq7LPLB9
+	DdOdBWWXtmnKo/yE7M4VjDfghs0ZpgM2LMZiu9PesIiLiW/R8jHiKcyzIcRXvRXytly+bQUMLuR
+	8spSc8g5kPpUgmi5lzEYYwAAd0rpnP92BKjwa4WuPMsg==
+X-Google-Smtp-Source: AGHT+IGuZ0NkG/KYo9Dv4g1oyD3XwK6X16DBM6QY/A6W3C/6eEhj7vqNq1AeDarxJvsQFObtM42FXnLLMg29Plyo2bk=
+X-Received: by 2002:a05:6214:2aa7:b0:6e8:9e9c:d20f with SMTP id
+ 6a1803df08f44-6e900621afcmr58352476d6.21.1741388625281; Fri, 07 Mar 2025
+ 15:03:45 -0800 (PST)
 MIME-Version: 1.0
-References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com> <20250307120141.1566673-3-qun-wei.lin@mediatek.com>
-In-Reply-To: <20250307120141.1566673-3-qun-wei.lin@mediatek.com>
-From: Barry Song <21cnbao@gmail.com>
-Date: Sat, 8 Mar 2025 08:41:17 +1300
-X-Gm-Features: AQ5f1Jr_NH_JmxbOO5LScfPMgZlBxT61u6xunECHMLc6vlHdXZJRYzFSi8sd-ig
-Message-ID: <CAGsJ_4xtp9iGPQinu5DOi3R2B47X9o=wS94GdhdY-0JUATf5hw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] kcompressd: Add Kcompressd for accelerated zram compression
+References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
+In-Reply-To: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
+From: Nhat Pham <nphamcs@gmail.com>
+Date: Fri, 7 Mar 2025 15:03:34 -0800
+X-Gm-Features: AQ5f1Jr_FBnz9qk1uNlckq4_7pHKTqldI029tYPnmq326QX8Uckh0mZErYX0PQo
+Message-ID: <CAKEwX=NfKrisQL-DBcNxBwK2ErK-u=MSzHNpETcuWWNBh9s9Bg@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from kswapd
 To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
 Cc: Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, 
 	Sergey Senozhatsky <senozhatsky@chromium.org>, Vishal Verma <vishal.l.verma@intel.com>, 
@@ -80,16 +80,17 @@ Cc: Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris Li <chrisl@kernel.org>, 
 	Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying" <ying.huang@intel.com>, 
 	Kairui Song <kasong@tencent.com>, Dan Schatzberg <schatzberg.dan@gmail.com>, 
-	Al Viro <viro@zeniv.linux.org.uk>, linux-kernel@vger.kernel.org, 
-	linux-block@vger.kernel.org, nvdimm@lists.linux.dev, linux-mm@kvack.org, 
+	Barry Song <baohua@kernel.org>, Al Viro <viro@zeniv.linux.org.uk>, 
+	linux-kernel@vger.kernel.org, linux-block@vger.kernel.org, 
+	nvdimm@lists.linux.dev, linux-mm@kvack.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
 	Casper Li <casper.li@mediatek.com>, Chinwen Chang <chinwen.chang@mediatek.com>, 
 	Andrew Yang <andrew.yang@mediatek.com>, James Hsu <james.hsu@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_114130_169154_143F1198 
-X-CRM114-Status: GOOD (  32.85  )
+X-CRM114-CacheID: sfid-20250307_150347_683402_193250A0 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,548 +105,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 8, 2025 at 1:02=E2=80=AFAM Qun-Wei Lin <qun-wei.lin@mediatek.co=
+On Fri, Mar 7, 2025 at 4:02=E2=80=AFAM Qun-Wei Lin <qun-wei.lin@mediatek.co=
 m> wrote:
 >
-> Introduced Kcompressd to offload zram page compression, improving
-> system efficiency by handling compression separately from memory
-> reclaiming. Added necessary configurations and dependencies.
->
-> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-> ---
->  drivers/block/zram/Kconfig      |  11 ++
->  drivers/block/zram/Makefile     |   3 +-
->  drivers/block/zram/kcompressd.c | 340 ++++++++++++++++++++++++++++++++
->  drivers/block/zram/kcompressd.h |  25 +++
->  drivers/block/zram/zram_drv.c   |  22 ++-
->  5 files changed, 397 insertions(+), 4 deletions(-)
->  create mode 100644 drivers/block/zram/kcompressd.c
->  create mode 100644 drivers/block/zram/kcompressd.h
->
-> diff --git a/drivers/block/zram/Kconfig b/drivers/block/zram/Kconfig
-> index 402b7b175863..f0a1b574f770 100644
-> --- a/drivers/block/zram/Kconfig
-> +++ b/drivers/block/zram/Kconfig
-> @@ -145,3 +145,14 @@ config ZRAM_MULTI_COMP
->           re-compress pages using a potentially slower but more effective
->           compression algorithm. Note, that IDLE page recompression
->           requires ZRAM_TRACK_ENTRY_ACTIME.
-> +
-> +config KCOMPRESSD
-> +       tristate "Kcompressd: Accelerated zram compression"
-> +       depends on ZRAM
-> +       help
-> +         Kcompressd creates multiple daemons to accelerate the compressi=
-on of pages
-> +         in zram, offloading this time-consuming task from the zram driv=
-er.
-> +
-> +         This approach improves system efficiency by handling page compr=
-ession separately,
-> +         which was originally done by kswapd or direct reclaim.
+> This patch series introduces a new mechanism called kcompressd to
+> improve the efficiency of memory reclaiming in the operating system. The
+> main goal is to separate the tasks of page scanning and page compression
+> into distinct processes or threads, thereby reducing the load on the
+> kswapd thread and enhancing overall system performance under high memory
+> pressure conditions.
 
-For direct reclaim, we were previously able to compress using multiple CPUs
-with multi-threading.
-After your patch, it seems that only a single thread/CPU is used for compre=
-ssion
-so it won't necessarily improve direct reclaim performance?
+Please excuse my ignorance, but from your cover letter I still don't
+quite get what is the problem here? And how would decouple compression
+and scanning help?
 
-Even for kswapd, we used to have multiple threads like [kswapd0], [kswapd1]=
-,
-and [kswapd2] for different nodes. Now, are we also limited to just one thr=
-ead?
-I also wonder if this could be handled at the vmscan level instead of the z=
-ram
-level. then it might potentially help other sync devices or even zswap late=
-r.
+>
+> Problem:
+>  In the current system, the kswapd thread is responsible for both
+>  scanning the LRU pages and compressing pages into the ZRAM. This
+>  combined responsibility can lead to significant performance bottlenecks,
 
-But I agree that for phones, modifying zram seems like an easier starting
-point. However, relying on a single thread isn't always the best approach.
+What bottleneck are we talking about? Is one stage slower than the other?
 
+>  especially under high memory pressure. The kswapd thread becomes a
+>  single point of contention, causing delays in memory reclaiming and
+>  overall system performance degradation.
+>
+> Target:
+>  The target of this invention is to improve the efficiency of memory
+>  reclaiming. By separating the tasks of page scanning and page
+>  compression into distinct processes or threads, the system can handle
+>  memory pressure more effectively.
 
-> +
-> diff --git a/drivers/block/zram/Makefile b/drivers/block/zram/Makefile
-> index 0fdefd576691..23baa5dfceb9 100644
-> --- a/drivers/block/zram/Makefile
-> +++ b/drivers/block/zram/Makefile
-> @@ -9,4 +9,5 @@ zram-$(CONFIG_ZRAM_BACKEND_ZSTD)        +=3D backend_zstd=
-.o
->  zram-$(CONFIG_ZRAM_BACKEND_DEFLATE)    +=3D backend_deflate.o
->  zram-$(CONFIG_ZRAM_BACKEND_842)                +=3D backend_842.o
->
-> -obj-$(CONFIG_ZRAM)     +=3D      zram.o
-> +obj-$(CONFIG_ZRAM)             +=3D zram.o
-> +obj-$(CONFIG_KCOMPRESSD)       +=3D kcompressd.o
-> diff --git a/drivers/block/zram/kcompressd.c b/drivers/block/zram/kcompre=
-ssd.c
-> new file mode 100644
-> index 000000000000..195b7e386869
-> --- /dev/null
-> +++ b/drivers/block/zram/kcompressd.c
-> @@ -0,0 +1,340 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2024 MediaTek Inc.
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <linux/kernel.h>
-> +#include <linux/bio.h>
-> +#include <linux/bitops.h>
-> +#include <linux/freezer.h>
-> +#include <linux/kernel.h>
-> +#include <linux/psi.h>
-> +#include <linux/kfifo.h>
-> +#include <linux/swap.h>
-> +#include <linux/delay.h>
-> +
-> +#include "kcompressd.h"
-> +
-> +#define INIT_QUEUE_SIZE                4096
-> +#define DEFAULT_NR_KCOMPRESSD  4
-> +
-> +static atomic_t enable_kcompressd;
-> +static unsigned int nr_kcompressd;
-> +static unsigned int queue_size_per_kcompressd;
-> +static struct kcompress *kcompress;
-> +
-> +enum run_state {
-> +       KCOMPRESSD_NOT_STARTED =3D 0,
-> +       KCOMPRESSD_RUNNING,
-> +       KCOMPRESSD_SLEEPING,
-> +};
-> +
-> +struct kcompressd_para {
-> +       wait_queue_head_t *kcompressd_wait;
-> +       struct kfifo *write_fifo;
-> +       atomic_t *running;
-> +};
-> +
-> +static struct kcompressd_para *kcompressd_para;
-> +static BLOCKING_NOTIFIER_HEAD(kcompressd_notifier_list);
-> +
-> +struct write_work {
-> +       void *mem;
-> +       struct bio *bio;
-> +       compress_callback cb;
-> +};
-> +
-> +int kcompressd_enabled(void)
-> +{
-> +       return likely(atomic_read(&enable_kcompressd));
-> +}
-> +EXPORT_SYMBOL(kcompressd_enabled);
-> +
-> +static void kcompressd_try_to_sleep(struct kcompressd_para *p)
-> +{
-> +       DEFINE_WAIT(wait);
-> +
-> +       if (!kfifo_is_empty(p->write_fifo))
-> +               return;
-> +
-> +       if (freezing(current) || kthread_should_stop())
-> +               return;
-> +
-> +       atomic_set(p->running, KCOMPRESSD_SLEEPING);
-> +       prepare_to_wait(p->kcompressd_wait, &wait, TASK_INTERRUPTIBLE);
-> +
-> +       /*
-> +        * After a short sleep, check if it was a premature sleep. If not=
-, then
-> +        * go fully to sleep until explicitly woken up.
-> +        */
-> +       if (!kthread_should_stop() && kfifo_is_empty(p->write_fifo))
-> +               schedule();
-> +
-> +       finish_wait(p->kcompressd_wait, &wait);
-> +       atomic_set(p->running, KCOMPRESSD_RUNNING);
-> +}
-> +
-> +static int kcompressd(void *para)
-> +{
-> +       struct task_struct *tsk =3D current;
-> +       struct kcompressd_para *p =3D (struct kcompressd_para *)para;
-> +
-> +       tsk->flags |=3D PF_MEMALLOC | PF_KSWAPD;
-> +       set_freezable();
-> +
-> +       while (!kthread_should_stop()) {
-> +               bool ret;
-> +
-> +               kcompressd_try_to_sleep(p);
-> +               ret =3D try_to_freeze();
-> +               if (kthread_should_stop())
-> +                       break;
-> +
-> +               if (ret)
-> +                       continue;
-> +
-> +               while (!kfifo_is_empty(p->write_fifo)) {
-> +                       struct write_work entry;
-> +
-> +                       if (sizeof(struct write_work) =3D=3D kfifo_out(p-=
->write_fifo,
-> +                                               &entry, sizeof(struct wri=
-te_work))) {
-> +                               entry.cb(entry.mem, entry.bio);
-> +                               bio_put(entry.bio);
-> +                       }
-> +               }
-> +
-> +       }
-> +
-> +       tsk->flags &=3D ~(PF_MEMALLOC | PF_KSWAPD);
-> +       atomic_set(p->running, KCOMPRESSD_NOT_STARTED);
-> +       return 0;
-> +}
-> +
-> +static int init_write_queue(void)
-> +{
-> +       int i;
-> +       unsigned int queue_len =3D queue_size_per_kcompressd * sizeof(str=
-uct write_work);
-> +
-> +       for (i =3D 0; i < nr_kcompressd; i++) {
-> +               if (kfifo_alloc(&kcompress[i].write_fifo,
-> +                                       queue_len, GFP_KERNEL)) {
-> +                       pr_err("Failed to alloc kfifo %d\n", i);
-> +                       return -ENOMEM;
-> +               }
-> +       }
-> +       return 0;
-> +}
-> +
-> +static void clean_bio_queue(int idx)
-> +{
-> +       struct write_work entry;
-> +
-> +       while (sizeof(struct write_work) =3D=3D kfifo_out(&kcompress[idx]=
-.write_fifo,
-> +                               &entry, sizeof(struct write_work))) {
-> +               bio_put(entry.bio);
-> +               entry.cb(entry.mem, entry.bio);
-> +       }
-> +       kfifo_free(&kcompress[idx].write_fifo);
-> +}
-> +
-> +static int kcompress_update(void)
-> +{
-> +       int i;
-> +       int ret;
-> +
-> +       kcompress =3D kvmalloc_array(nr_kcompressd, sizeof(struct kcompre=
-ss), GFP_KERNEL);
-> +       if (!kcompress)
-> +               return -ENOMEM;
-> +
-> +       kcompressd_para =3D kvmalloc_array(nr_kcompressd, sizeof(struct k=
-compressd_para), GFP_KERNEL);
-> +       if (!kcompressd_para)
-> +               return -ENOMEM;
-> +
-> +       ret =3D init_write_queue();
-> +       if (ret) {
-> +               pr_err("Initialization of writing to FIFOs failed!!\n");
-> +               return ret;
-> +       }
-> +
-> +       for (i =3D 0; i < nr_kcompressd; i++) {
-> +               init_waitqueue_head(&kcompress[i].kcompressd_wait);
-> +               kcompressd_para[i].kcompressd_wait =3D &kcompress[i].kcom=
-pressd_wait;
-> +               kcompressd_para[i].write_fifo =3D &kcompress[i].write_fif=
-o;
-> +               kcompressd_para[i].running =3D &kcompress[i].running;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static void stop_all_kcompressd_thread(void)
-> +{
-> +       int i;
-> +
-> +       for (i =3D 0; i < nr_kcompressd; i++) {
-> +               kthread_stop(kcompress[i].kcompressd);
-> +               kcompress[i].kcompressd =3D NULL;
-> +               clean_bio_queue(i);
-> +       }
-> +}
-> +
-> +static int do_nr_kcompressd_handler(const char *val,
-> +               const struct kernel_param *kp)
-> +{
-> +       int ret;
-> +
-> +       atomic_set(&enable_kcompressd, false);
-> +
-> +       stop_all_kcompressd_thread();
-> +
-> +       ret =3D param_set_int(val, kp);
-> +       if (!ret) {
-> +               pr_err("Invalid number of kcompressd.\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       ret =3D init_write_queue();
-> +       if (ret) {
-> +               pr_err("Initialization of writing to FIFOs failed!!\n");
-> +               return ret;
-> +       }
-> +
-> +       atomic_set(&enable_kcompressd, true);
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct kernel_param_ops param_ops_change_nr_kcompressd =3D =
-{
-> +       .set =3D &do_nr_kcompressd_handler,
-> +       .get =3D &param_get_uint,
-> +       .free =3D NULL,
-> +};
-> +
-> +module_param_cb(nr_kcompressd, &param_ops_change_nr_kcompressd,
-> +               &nr_kcompressd, 0644);
-> +MODULE_PARM_DESC(nr_kcompressd, "Number of pre-created daemon for page c=
-ompression");
-> +
-> +static int do_queue_size_per_kcompressd_handler(const char *val,
-> +               const struct kernel_param *kp)
-> +{
-> +       int ret;
-> +
-> +       atomic_set(&enable_kcompressd, false);
-> +
-> +       stop_all_kcompressd_thread();
-> +
-> +       ret =3D param_set_int(val, kp);
-> +       if (!ret) {
-> +               pr_err("Invalid queue size for kcompressd.\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       ret =3D init_write_queue();
-> +       if (ret) {
-> +               pr_err("Initialization of writing to FIFOs failed!!\n");
-> +               return ret;
-> +       }
-> +
-> +       pr_info("Queue size for kcompressd was changed: %d\n", queue_size=
-_per_kcompressd);
-> +
-> +       atomic_set(&enable_kcompressd, true);
-> +       return 0;
-> +}
-> +
-> +static const struct kernel_param_ops param_ops_change_queue_size_per_kco=
-mpressd =3D {
-> +       .set =3D &do_queue_size_per_kcompressd_handler,
-> +       .get =3D &param_get_uint,
-> +       .free =3D NULL,
-> +};
-> +
-> +module_param_cb(queue_size_per_kcompressd, &param_ops_change_queue_size_=
-per_kcompressd,
-> +               &queue_size_per_kcompressd, 0644);
-> +MODULE_PARM_DESC(queue_size_per_kcompressd,
-> +               "Size of queue for kcompressd");
-> +
-> +int schedule_bio_write(void *mem, struct bio *bio, compress_callback cb)
-> +{
-> +       int i;
-> +       bool submit_success =3D false;
-> +       size_t sz_work =3D sizeof(struct write_work);
-> +
-> +       struct write_work entry =3D {
-> +               .mem =3D mem,
-> +               .bio =3D bio,
-> +               .cb =3D cb
-> +       };
-> +
-> +       if (unlikely(!atomic_read(&enable_kcompressd)))
-> +               return -EBUSY;
-> +
-> +       if (!nr_kcompressd || !current_is_kswapd())
-> +               return -EBUSY;
-> +
-> +       bio_get(bio);
-> +
-> +       for (i =3D 0; i < nr_kcompressd; i++) {
-> +               submit_success =3D
-> +                       (kfifo_avail(&kcompress[i].write_fifo) >=3D sz_wo=
-rk) &&
-> +                       (sz_work =3D=3D kfifo_in(&kcompress[i].write_fifo=
-, &entry, sz_work));
-> +
-> +               if (submit_success) {
-> +                       switch (atomic_read(&kcompress[i].running)) {
-> +                       case KCOMPRESSD_NOT_STARTED:
-> +                               atomic_set(&kcompress[i].running, KCOMPRE=
-SSD_RUNNING);
-> +                               kcompress[i].kcompressd =3D kthread_run(k=
-compressd,
-> +                                               &kcompressd_para[i], "kco=
-mpressd:%d", i);
-> +                               if (IS_ERR(kcompress[i].kcompressd)) {
-> +                                       atomic_set(&kcompress[i].running,=
- KCOMPRESSD_NOT_STARTED);
-> +                                       pr_warn("Failed to start kcompres=
-sd:%d\n", i);
-> +                                       clean_bio_queue(i);
-> +                               }
-> +                               break;
-> +                       case KCOMPRESSD_RUNNING:
-> +                               break;
-> +                       case KCOMPRESSD_SLEEPING:
-> +                               wake_up_interruptible(&kcompress[i].kcomp=
-ressd_wait);
-> +                               break;
-> +                       }
-> +                       return 0;
-> +               }
-> +       }
-> +
-> +       bio_put(bio);
-> +       return -EBUSY;
-> +}
-> +EXPORT_SYMBOL(schedule_bio_write);
-> +
-> +static int __init kcompressd_init(void)
-> +{
-> +       int ret;
-> +
-> +       nr_kcompressd =3D DEFAULT_NR_KCOMPRESSD;
-> +       queue_size_per_kcompressd =3D INIT_QUEUE_SIZE;
-> +
-> +       ret =3D kcompress_update();
-> +       if (ret) {
-> +               pr_err("Init kcompressd failed!\n");
-> +               return ret;
-> +       }
-> +
-> +       atomic_set(&enable_kcompressd, true);
-> +       blocking_notifier_call_chain(&kcompressd_notifier_list, 0, NULL);
-> +       return 0;
-> +}
-> +
-> +static void __exit kcompressd_exit(void)
-> +{
-> +       atomic_set(&enable_kcompressd, false);
-> +       stop_all_kcompressd_thread();
-> +
-> +       kvfree(kcompress);
-> +       kvfree(kcompressd_para);
-> +}
-> +
-> +module_init(kcompressd_init);
-> +module_exit(kcompressd_exit);
-> +
-> +MODULE_LICENSE("Dual BSD/GPL");
-> +MODULE_AUTHOR("Qun-Wei Lin <qun-wei.lin@mediatek.com>");
-> +MODULE_DESCRIPTION("Separate the page compression from the memory reclai=
-ming");
-> +
-> diff --git a/drivers/block/zram/kcompressd.h b/drivers/block/zram/kcompre=
-ssd.h
-> new file mode 100644
-> index 000000000000..2fe0b424a7af
-> --- /dev/null
-> +++ b/drivers/block/zram/kcompressd.h
-> @@ -0,0 +1,25 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (C) 2024 MediaTek Inc.
-> + */
-> +
-> +#ifndef _KCOMPRESSD_H_
-> +#define _KCOMPRESSD_H_
-> +
-> +#include <linux/rwsem.h>
-> +#include <linux/kfifo.h>
-> +#include <linux/atomic.h>
-> +
-> +typedef void (*compress_callback)(void *mem, struct bio *bio);
-> +
-> +struct kcompress {
-> +       struct task_struct *kcompressd;
-> +       wait_queue_head_t kcompressd_wait;
-> +       struct kfifo write_fifo;
-> +       atomic_t running;
-> +};
-> +
-> +int kcompressd_enabled(void);
-> +int schedule_bio_write(void *mem, struct bio *bio, compress_callback cb)=
-;
-> +#endif
-> +
-> diff --git a/drivers/block/zram/zram_drv.c b/drivers/block/zram/zram_drv.=
-c
-> index 2e1a70f2f4bd..bcd63ecb6ff2 100644
-> --- a/drivers/block/zram/zram_drv.c
-> +++ b/drivers/block/zram/zram_drv.c
-> @@ -35,6 +35,7 @@
->  #include <linux/part_stat.h>
->  #include <linux/kernel_read_file.h>
->
-> +#include "kcompressd.h"
->  #include "zram_drv.h"
->
->  static DEFINE_IDR(zram_index_idr);
-> @@ -2240,6 +2241,15 @@ static void zram_bio_write(struct zram *zram, stru=
-ct bio *bio)
->         bio_endio(bio);
->  }
->
-> +#if IS_ENABLED(CONFIG_KCOMPRESSD)
-> +static void zram_bio_write_callback(void *mem, struct bio *bio)
-> +{
-> +       struct zram *zram =3D (struct zram *)mem;
-> +
-> +       zram_bio_write(zram, bio);
-> +}
-> +#endif
-> +
->  /*
->   * Handler function for all zram I/O requests.
->   */
-> @@ -2252,6 +2262,10 @@ static void zram_submit_bio(struct bio *bio)
->                 zram_bio_read(zram, bio);
->                 break;
->         case REQ_OP_WRITE:
-> +#if IS_ENABLED(CONFIG_KCOMPRESSD)
-> +               if (kcompressd_enabled() && !schedule_bio_write(zram, bio=
-, zram_bio_write_callback))
-> +                       break;
-> +#endif
->                 zram_bio_write(zram, bio);
->                 break;
->         case REQ_OP_DISCARD:
-> @@ -2535,9 +2549,11 @@ static int zram_add(void)
->  #if ZRAM_LOGICAL_BLOCK_SIZE =3D=3D PAGE_SIZE
->                 .max_write_zeroes_sectors       =3D UINT_MAX,
->  #endif
-> -               .features                       =3D BLK_FEAT_STABLE_WRITE=
-S        |
-> -                                                 BLK_FEAT_READ_SYNCHRONO=
-US     |
-> -                                                 BLK_FEAT_WRITE_SYNCHRON=
-OUS,
-> +               .features                       =3D BLK_FEAT_STABLE_WRITE=
-S
-> +                                                 | BLK_FEAT_READ_SYNCHRO=
-NOUS
-> +#if !IS_ENABLED(CONFIG_KCOMPRESSD)
-> +                                                 | BLK_FEAT_WRITE_SYNCHR=
-ONOUS,
-> +#endif
->         };
->         struct zram *zram;
->         int ret, device_id;
-> --
-> 2.45.2
->
-
-Thanks
-Barry
+I'm not a zram maintainer, so I'm definitely not trying to stop this
+patch. But whatever problem zram is facing will likely occur with
+zswap too, so I'd like to learn more :)
 
