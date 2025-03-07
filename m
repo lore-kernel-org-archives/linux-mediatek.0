@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 045A8C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 04:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23778C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 04:18:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7huaaaZ4g40mOCnYbg9wrCZiMZ/ymR6uC6Aj1TFRpaM=; b=ydqcWzdQYfkqe5fbGbcQ3VU1qf
-	eh1JrnG8UVnZbeb5JALQR7y5OBacDWw08azChWBzr/5/xQtHtuamqgrtn2JNXxnHipLZEKqfboxQ1
-	kOtoNGBHz0exY8sWnGiwRK6ZLx2Olo8poP+334CDxCPR3vThw9yJ11rvLlxr+ZoM6ky0EHXvIvZYD
-	5rAnxMy64H2nLe0g0TOyico1L46yzZ1kFNZ4j2IHGr22C9NZOvGK0sm6UG9kgTLXYq655D82zj6QZ
-	LumLOCAF/oaxE6l9OLwmqwxE5uaQskCLm+zmYWVHxLgjO/qBFdkuQzvdVg8T003xlmbflnR6iq6B7
-	egI2gcAw==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bubgnY0zrmF8D2EJUSPC+Gnryw9Y+zgy2Y+PYLhxYXg=; b=StP+cjcG73OAyVA4aRcl2h+7/m
+	tMQwy6zQOkdzveHSFQwhIhr3cGh9Zwp3D+SJBHCrRHai7ln7+y4kIaS1YsfIYXaTiBi4dH4pM3oOt
+	9KGjXYECBcVWzh8ZIDp1GsRXYFvCbn8FB2a5K3yxdQXc5p1HhoAI2/mBBx7hEvKwOhWEHFflhLxlb
+	ubRaWA3vXZRQvcWkwWOs9W+Y1gqmzwe71wW/udW8Xibn9lUPL4APUltTH2ppOJbgnxAlpHp7kDdA7
+	+AlTQ0d0Akr9qqG4fhUh38fTLzTADIQ44eyK2G495vzNaz0gNQ3tKORjcznwkh6VEuoD3WKkeFZQw
+	J2xYEYeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqP5w-0000000D5oy-0Smy;
-	Fri, 07 Mar 2025 04:13:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tqPAi-0000000D6MZ-1ESy;
+	Fri, 07 Mar 2025 04:18:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqOSQ-0000000CzaK-28Lq;
-	Fri, 07 Mar 2025 03:33:08 +0000
-X-UUID: de7fe0a2fb0411ef83f2a1c9db70dae0-20250306
+	id 1tqOdz-0000000D22t-1fsj;
+	Fri, 07 Mar 2025 03:45:04 +0000
+X-UUID: 8b5a6742fb0611efa1e849db4cc18d44-20250306
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7huaaaZ4g40mOCnYbg9wrCZiMZ/ymR6uC6Aj1TFRpaM=;
-	b=meS5ayjF6CCyTIYjpafuSvK6MuMQNuy6CVxZnGaxHENFoyEMc4QHr5OEyU5KGy4iAmQx4ybfxxAZcjc5P73H44xJ5xRp0dKm7kqm/sipqPJd9YXtkNZbpxE4oppXIxU602lAGwXA4K65L7E8qvhvsY+6IN7QwqI4zqbBbUgfw48=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bubgnY0zrmF8D2EJUSPC+Gnryw9Y+zgy2Y+PYLhxYXg=;
+	b=s1YqEYFY2FOwhBBaVlqT8HtPvQSxHcAk0K+91TylI5O4+WStuAYnBRFc3ZJj2Ph5WYcQpDzU2H9RGXP6K4/NN3k5DwRsJxj+Px/Y/JwEWEZRtA1IkMXQ2hOjsKwuMUC6FJ5xC1YnTG/MBtc7oaG9qrB/GbeYw8IA9siZ6AXkdrc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:70228554-a15a-4c13-869b-e7e281c0fb27,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:426f108c-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.2.1,REQID:c3ee578f-e073-49d5-a45f-03559ec907a9,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:e40c08c6-16da-468a-87f7-8ca8d6b3b9f7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: de7fe0a2fb0411ef83f2a1c9db70dae0-20250306
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 8b5a6742fb0611efa1e849db4cc18d44-20250306
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
 	(envelope-from <guangjie.song@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 43114115; Thu, 06 Mar 2025 20:33:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1136243262; Thu, 06 Mar 2025 20:44:59 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 7 Mar 2025 11:32:57 +0800
+ 15.2.1258.28; Fri, 7 Mar 2025 11:44:56 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 11:32:56 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 11:44:56 +0800
 From: Guangjie Song <guangjie.song@mediatek.com>
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Richard Cochran
-	<richardcochran@gmail.com>
-CC: <linux-clk@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>, Guangjie Song
-	<guangjie.song@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-pm@vger.kernel.org>, Guangjie Song <guangjie.song@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 25/26] clk: mediatek: Add MT8196 vdecsys clock support
-Date: Fri, 7 Mar 2025 11:27:21 +0800
-Message-ID: <20250307032942.10447-26-guangjie.song@mediatek.com>
+Subject: [PATCH 00/13] pmdomain: mediatek: Add MT8196 power domain
+Date: Fri, 7 Mar 2025 11:44:24 +0800
+Message-ID: <20250307034454.12243-1-guangjie.song@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250307032942.10447-1-guangjie.song@mediatek.com>
-References: <20250307032942.10447-1-guangjie.song@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_193306_568726_CDB036E8 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20250306_194503_449295_A265E6B9 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,502 +88,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8196 vdecsys clock controller which provides clock gate control
-for video decoder.
+This series is based on linux-next, tag: next-20250306.
 
-Signed-off-by: Guangjie Song <guangjie.song@mediatek.com>
----
- drivers/clk/mediatek/Kconfig           |   7 +
- drivers/clk/mediatek/Makefile          |   1 +
- drivers/clk/mediatek/clk-mt8196-vdec.c | 449 +++++++++++++++++++++++++
- 3 files changed, 457 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8196-vdec.c
+Changes:
+- Update mtk-scpsys driver for MT8196
+- Add MT8196 power domain support
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 5fc24f52762a..0c508a8a9959 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -1066,6 +1066,13 @@ config COMMON_CLK_MT8196_UFSSYS
- 	help
- 	  This driver supports MediaTek MT8196 ufssys clocks.
- 
-+config COMMON_CLK_MT8196_VDECSYS
-+	tristate "Clock driver for MediaTek MT8196 vdecsys"
-+	depends on COMMON_CLK_MT8196
-+	default COMMON_CLK_MT8196
-+	help
-+	  This driver supports MediaTek MT8196 vdecsys clocks.
-+
- config COMMON_CLK_MT8365
- 	tristate "Clock driver for MediaTek MT8365"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index e5b4a3a61ef7..b8bf3f5f8530 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -162,6 +162,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196_MMSYS) += clk-mt8196-disp0.o clk-mt8196-disp1.o c
- 					 clk-mt8196-ovl0.o clk-mt8196-ovl1.o
- obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) += clk-mt8196-pextp.o
- obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) += clk-mt8196-ufs_ao.o
-+obj-$(CONFIG_COMMON_CLK_MT8196_VDECSYS) += clk-mt8196-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-mt8365.o
- obj-$(CONFIG_COMMON_CLK_MT8365_APU) += clk-mt8365-apu.o
- obj-$(CONFIG_COMMON_CLK_MT8365_CAM) += clk-mt8365-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8196-vdec.c b/drivers/clk/mediatek/clk-mt8196-vdec.c
-new file mode 100644
-index 000000000000..52accb5b4fb8
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8196-vdec.c
-@@ -0,0 +1,449 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ * Author: Guangjie Song <guangjie.song@mediatek.com>
-+ */
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+#include <dt-bindings/clock/mt8196-clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+static const struct mtk_gate_regs vde20_cg_regs = {
-+	.set_ofs = 0x0,
-+	.clr_ofs = 0x4,
-+	.sta_ofs = 0x0,
-+};
-+
-+static const struct mtk_gate_regs vde20_vote_regs = {
-+	.set_ofs = 0x0088,
-+	.clr_ofs = 0x008c,
-+	.sta_ofs = 0x2c44,
-+};
-+
-+static const struct mtk_gate_regs vde21_cg_regs = {
-+	.set_ofs = 0x200,
-+	.clr_ofs = 0x204,
-+	.sta_ofs = 0x200,
-+};
-+
-+static const struct mtk_gate_regs vde21_vote_regs = {
-+	.set_ofs = 0x0080,
-+	.clr_ofs = 0x0084,
-+	.sta_ofs = 0x2c40,
-+};
-+
-+static const struct mtk_gate_regs vde22_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0xc,
-+	.sta_ofs = 0x8,
-+};
-+
-+static const struct mtk_gate_regs vde22_vote_regs = {
-+	.set_ofs = 0x0078,
-+	.clr_ofs = 0x007c,
-+	.sta_ofs = 0x2c3c,
-+};
-+
-+#define GATE_VDE20(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde20_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE20_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE20(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde20_cg_regs,			\
-+		.vote_regs = &vde20_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_VDE21(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde21_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE21_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE21(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde21_cg_regs,			\
-+		.vote_regs = &vde21_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_VDE22(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde22_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE22_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE22(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde22_cg_regs,			\
-+		.vote_regs = &vde22_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE |	\
-+			 CLK_IGNORE_UNUSED,		\
-+	}
-+
-+static const struct mtk_gate vde2_clks[] = {
-+	/* VDE20 */
-+	GATE_VOTE_VDE20(CLK_VDE2_VDEC_CKEN, "vde2_vdec_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE20_V(CLK_VDE2_VDEC_CKEN_VDEC, "vde2_vdec_cken_vdec", "vde2_vdec_cken"),
-+	GATE_VOTE_VDE20(CLK_VDE2_VDEC_ACTIVE, "vde2_vdec_active", "ck2_vdec_ck", 4),
-+	GATE_VDE20_V(CLK_VDE2_VDEC_ACTIVE_VDEC, "vde2_vdec_active_vdec", "vde2_vdec_active"),
-+	GATE_VOTE_VDE20(CLK_VDE2_VDEC_CKEN_ENG, "vde2_vdec_cken_eng", "ck2_vdec_ck", 8),
-+	GATE_VDE20_V(CLK_VDE2_VDEC_CKEN_ENG_VDEC, "vde2_vdec_cken_eng_vdec", "vde2_vdec_cken_eng"),
-+	/* VDE21 */
-+	GATE_VOTE_VDE21(CLK_VDE2_LAT_CKEN, "vde2_lat_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE21_V(CLK_VDE2_LAT_CKEN_VDEC, "vde2_lat_cken_vdec", "vde2_lat_cken"),
-+	GATE_VOTE_VDE21(CLK_VDE2_LAT_ACTIVE, "vde2_lat_active", "ck2_vdec_ck", 4),
-+	GATE_VDE21_V(CLK_VDE2_LAT_ACTIVE_VDEC, "vde2_lat_active_vdec", "vde2_lat_active"),
-+	GATE_VOTE_VDE21(CLK_VDE2_LAT_CKEN_ENG, "vde2_lat_cken_eng", "ck2_vdec_ck", 8),
-+	GATE_VDE21_V(CLK_VDE2_LAT_CKEN_ENG_VDEC, "vde2_lat_cken_eng_vdec", "vde2_lat_cken_eng"),
-+	/* VDE22 */
-+	GATE_VOTE_VDE22(CLK_VDE2_LARB1_CKEN, "vde2_larb1_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE22_V(CLK_VDE2_LARB1_CKEN_VDEC, "vde2_larb1_cken_vdec", "vde2_larb1_cken"),
-+	GATE_VDE22_V(CLK_VDE2_LARB1_CKEN_SMI, "vde2_larb1_cken_smi", "vde2_larb1_cken"),
-+};
-+
-+static const struct mtk_clk_desc vde2_mcd = {
-+	.clks = vde2_clks,
-+	.num_clks = ARRAY_SIZE(vde2_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct mtk_gate_regs vde10_cg_regs = {
-+	.set_ofs = 0x0,
-+	.clr_ofs = 0x4,
-+	.sta_ofs = 0x0,
-+};
-+
-+static const struct mtk_gate_regs vde10_vote_regs = {
-+	.set_ofs = 0x00a0,
-+	.clr_ofs = 0x00a4,
-+	.sta_ofs = 0x2c50,
-+};
-+
-+static const struct mtk_gate_regs vde11_cg_regs = {
-+	.set_ofs = 0x1e0,
-+	.clr_ofs = 0x1e0,
-+	.sta_ofs = 0x1e0,
-+};
-+
-+static const struct mtk_gate_regs vde11_vote_regs = {
-+	.set_ofs = 0x00b0,
-+	.clr_ofs = 0x00b4,
-+	.sta_ofs = 0x2c58,
-+};
-+
-+static const struct mtk_gate_regs vde12_cg_regs = {
-+	.set_ofs = 0x1ec,
-+	.clr_ofs = 0x1ec,
-+	.sta_ofs = 0x1ec,
-+};
-+
-+static const struct mtk_gate_regs vde12_vote_regs = {
-+	.set_ofs = 0x00a8,
-+	.clr_ofs = 0x00ac,
-+	.sta_ofs = 0x2c54,
-+};
-+
-+static const struct mtk_gate_regs vde13_cg_regs = {
-+	.set_ofs = 0x200,
-+	.clr_ofs = 0x204,
-+	.sta_ofs = 0x200,
-+};
-+
-+static const struct mtk_gate_regs vde13_vote_regs = {
-+	.set_ofs = 0x0098,
-+	.clr_ofs = 0x009c,
-+	.sta_ofs = 0x2c4c,
-+};
-+
-+static const struct mtk_gate_regs vde14_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0xc,
-+	.sta_ofs = 0x8,
-+};
-+
-+static const struct mtk_gate_regs vde14_vote_regs = {
-+	.set_ofs = 0x0090,
-+	.clr_ofs = 0x0094,
-+	.sta_ofs = 0x2c48,
-+};
-+
-+#define GATE_VDE10(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde10_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE10_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE10(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde10_cg_regs,			\
-+		.vote_regs = &vde10_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_VDE11(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde11_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE		\
-+		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE11_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE11(_id, _name, _parent, _shift) {		\
-+		.id = _id,					\
-+		.name = _name,					\
-+		.parent_name = _parent,				\
-+		.vote_comp = "mm-vote-regmap",			\
-+		.regs = &vde11_cg_regs,				\
-+		.vote_regs = &vde11_vote_regs,			\
-+		.shift = _shift,				\
-+		.ops = &mtk_clk_gate_ops_vote_inv,		\
-+		.dma_ops = &mtk_clk_gate_ops_no_setclr_inv,	\
-+		.flags = CLK_USE_VOTE |				\
-+			 CLK_OPS_PARENT_ENABLE,			\
-+	}
-+
-+#define GATE_VDE12(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde12_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE12_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE12(_id, _name, _parent, _shift) {		\
-+		.id = _id,					\
-+		.name = _name,					\
-+		.parent_name = _parent,				\
-+		.vote_comp = "mm-vote-regmap",			\
-+		.regs = &vde12_cg_regs,				\
-+		.vote_regs = &vde12_vote_regs,			\
-+		.shift = _shift,				\
-+		.ops = &mtk_clk_gate_ops_vote_inv,		\
-+		.dma_ops = &mtk_clk_gate_ops_no_setclr_inv,	\
-+		.flags = CLK_USE_VOTE |				\
-+			 CLK_OPS_PARENT_ENABLE			\
-+	}
-+
-+#define GATE_VDE13(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde13_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE13_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE13(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde13_cg_regs,			\
-+		.vote_regs = &vde13_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE,		\
-+	}
-+
-+#define GATE_VDE14(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vde14_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE		\
-+		.ops = &mtk_clk_gate_ops_setclr_inv,	\
-+	}
-+
-+#define GATE_VDE14_V(_id, _name, _parent) {	\
-+		.id = _id,			\
-+		.name = _name,			\
-+		.parent_name = _parent,		\
-+		.regs = &cg_regs_dummy,		\
-+		.ops = &mtk_clk_dummy_ops,	\
-+	}
-+
-+#define GATE_VOTE_VDE14(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.vote_comp = "mm-vote-regmap",		\
-+		.regs = &vde14_cg_regs,			\
-+		.vote_regs = &vde14_vote_regs,		\
-+		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_vote_inv,	\
-+		.dma_ops = &mtk_clk_gate_ops_setclr_inv,\
-+		.flags = CLK_USE_VOTE |			\
-+			 CLK_OPS_PARENT_ENABLE |	\
-+			 CLK_IGNORE_UNUSED,		\
-+	}
-+
-+static const struct mtk_gate vde1_clks[] = {
-+	/* VDE10 */
-+	GATE_VOTE_VDE10(CLK_VDE1_VDEC_CKEN, "vde1_vdec_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE10_V(CLK_VDE1_VDEC_CKEN_VDEC, "vde1_vdec_cken_vdec", "vde1_vdec_cken"),
-+	GATE_VOTE_VDE10(CLK_VDE1_VDEC_ACTIVE, "vde1_vdec_active", "ck2_vdec_ck", 4),
-+	GATE_VDE10_V(CLK_VDE1_VDEC_ACTIVE_VDEC, "vde1_vdec_active_vdec", "vde1_vdec_active"),
-+	GATE_VOTE_VDE10(CLK_VDE1_VDEC_CKEN_ENG, "vde1_vdec_cken_eng", "ck2_vdec_ck", 8),
-+	GATE_VDE10_V(CLK_VDE1_VDEC_CKEN_ENG_VDEC, "vde1_vdec_cken_eng_vdec", "vde1_vdec_cken_eng"),
-+	/* VDE11 */
-+	GATE_VOTE_VDE11(CLK_VDE1_VDEC_SOC_IPS_EN, "vde1_vdec_soc_ips_en", "ck2_vdec_ck", 0),
-+	GATE_VDE11_V(CLK_VDE1_VDEC_SOC_IPS_EN_VDEC, "vde1_vdec_soc_ips_en_vdec",
-+		     "vde1_vdec_soc_ips_en"),
-+	/* VDE12 */
-+	GATE_VOTE_VDE12(CLK_VDE1_VDEC_SOC_APTV_EN, "vde1_aptv_en", "ck2_avs_vdec_ck", 0),
-+	GATE_VDE12_V(CLK_VDE1_VDEC_SOC_APTV_EN_VDEC, "vde1_aptv_en_vdec", "vde1_aptv_en"),
-+	GATE_VOTE_VDE12(CLK_VDE1_VDEC_SOC_APTV_TOP_EN, "vde1_aptv_topen", "ck2_avs_vdec_ck", 1),
-+	GATE_VDE12_V(CLK_VDE1_VDEC_SOC_APTV_TOP_EN_VDEC, "vde1_aptv_topen_vdec", "vde1_aptv_topen"),
-+	/* VDE13 */
-+	GATE_VOTE_VDE13(CLK_VDE1_LAT_CKEN, "vde1_lat_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE13_V(CLK_VDE1_LAT_CKEN_VDEC, "vde1_lat_cken_vdec", "vde1_lat_cken"),
-+	GATE_VOTE_VDE13(CLK_VDE1_LAT_ACTIVE, "vde1_lat_active", "ck2_vdec_ck", 4),
-+	GATE_VDE13_V(CLK_VDE1_LAT_ACTIVE_VDEC, "vde1_lat_active_vdec", "vde1_lat_active"),
-+	GATE_VOTE_VDE13(CLK_VDE1_LAT_CKEN_ENG, "vde1_lat_cken_eng", "ck2_vdec_ck", 8),
-+	GATE_VDE13_V(CLK_VDE1_LAT_CKEN_ENG_VDEC, "vde1_lat_cken_eng_vdec", "vde1_lat_cken_eng"),
-+	/* VDE14 */
-+	GATE_VOTE_VDE14(CLK_VDE1_LARB1_CKEN, "vde1_larb1_cken", "ck2_vdec_ck", 0),
-+	GATE_VDE14_V(CLK_VDE1_LARB1_CKEN_VDEC, "vde1_larb1_cken_vdec", "vde1_larb1_cken"),
-+	GATE_VDE14_V(CLK_VDE1_LARB1_CKEN_SMI, "vde1_larb1_cken_smi", "vde1_larb1_cken"),
-+};
-+
-+static const struct mtk_clk_desc vde1_mcd = {
-+	.clks = vde1_clks,
-+	.num_clks = ARRAY_SIZE(vde1_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct of_device_id of_match_clk_mt8196_vdec[] = {
-+	{ .compatible = "mediatek,mt8196-vdecsys", .data = &vde2_mcd, },
-+	{ .compatible = "mediatek,mt8196-vdecsys_soc", .data = &vde1_mcd, },
-+	{ /* sentinel */ }
-+};
-+
-+static struct platform_driver clk_mt8196_vdec_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8196-vdec",
-+		.of_match_table = of_match_clk_mt8196_vdec,
-+	},
-+};
-+
-+module_platform_driver(clk_mt8196_vdec_drv);
-+MODULE_LICENSE("GPL");
+Guangjie Song (13):
+  pmdomain: mediatek: Support sram isolation
+  pmdomain: mediatek: Support sram low power
+  pmdomain: mediatek: Support power on bypass
+  pmdomain: mediatek: Support check power on/off ack
+  pmdomain: mediatek: Support voting for power domain
+  pmdomain: mediatek: Support trigger subsys save/restore regesters
+  pmdomain: mediatek: Support power domain irq safe
+  pmdomain: mediatek: Support power domain always on
+  pmdomain: mediatek: Refactor parameters of init_scp
+  pmdomain: mediatek: Support bus protect with table
+  pmdomain: mediatek: Add post init callback
+  dt-bindings: power: mediatek: Add new MT8196 power domain
+  pmdomain: mediatek: Add MT8196 power domain support
+
+ .../mediatek,mt8196-power-controller.yaml     |   74 +
+ drivers/pmdomain/mediatek/mt8196-scpsys.h     |  114 ++
+ drivers/pmdomain/mediatek/mtk-scpsys.c        | 1276 ++++++++++++++++-
+ include/dt-bindings/power/mt8196-power.h      |   57 +
+ 4 files changed, 1483 insertions(+), 38 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt8196-power-controller.yaml
+ create mode 100644 drivers/pmdomain/mediatek/mt8196-scpsys.h
+ create mode 100644 include/dt-bindings/power/mt8196-power.h
+
 -- 
 2.45.2
 
