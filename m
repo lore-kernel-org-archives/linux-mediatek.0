@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB90C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3283C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o0BSSMfAaQeqzTXrExFtpAvyI8G9BtetyHDN3qHaofw=; b=3j8oNf/vdsS+drGE81CNSaVjyC
-	Hsy8T3pDetSRsCOdvCwmfqfPd13782IJWvxmLU3tUBw3j3j/Z+Wv8hdrjfiP15OmM2dVOtPU+64KI
-	mEzWNF/z1/nJ6a1ko07KSQgw8gLAoi2a8iVw6eB8Z/FKzU8RPeujZWqyu2GfAvXx2aT7fBt4rpJ/Z
-	H3twQZSDy06g/QZir5Dri4Diff14/MnkA4sI/TCeOTLArmk7jVkwbZCKWvfRWb8lW3eU8uvJp5j3f
-	zEYMtJpEXiNtcN15u/k/uO3eAbX72zEHmPvwjJFiSh3rZapsMyozK3QJDtpjwth3bnxkprzCXkpJU
-	8XXq/siQ==;
+	bh=/OyMq5l6f62xEEj/VDzykRdqwVjCrsZ5xJ44wbRmU4U=; b=0JPUK136QhehOYDmHa3yYqJEpV
+	gNYGLT9J9zR+LoXz2KRv9uf30BBwEJZGOCgeRHL/uJqbGdc8GYRVyH/JVMXBUwxeIU01/easSUL/F
+	mVZHDuGCnhKrKUD09mhxW+YOd1dMnE4mcq8/nRfNxXo/T8R6ISBbgEq+4xPj4bydUPQr5rEghBa8E
+	J2nLgDXc+YQiG7Ll5nNzvNNjsEsWsJe6ZNCzIQ7UhBpml9gCmwtvBInlS65p63A++vvBPsY2HXzEQ
+	U36B9hWf05yLXwwYMdElvUcsZaUTCU4/3vwLghcGPlBiEBZqLzbPDehpK+2aXk+6JrJu6Ar4KMYam
+	MO08bxJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZZL-0000000EduA-0Wlw;
-	Fri, 07 Mar 2025 15:24:59 +0000
+	id 1tqZcW-0000000Eeh7-44S6;
+	Fri, 07 Mar 2025 15:28:16 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZVT-0000000Ecsj-0LJJ;
-	Fri, 07 Mar 2025 15:21:00 +0000
+	id 1tqZWb-0000000EdEx-2QZg;
+	Fri, 07 Mar 2025 15:22:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6F9B7A45746;
-	Fri,  7 Mar 2025 15:15:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D511C4CED1;
-	Fri,  7 Mar 2025 15:20:51 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1B9F6A45886;
+	Fri,  7 Mar 2025 15:16:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4247FC4CED1;
+	Fri,  7 Mar 2025 15:22:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741360857;
-	bh=lSpJmdxkOwjvYgxpiaJiuRUeELAjADsEF0WUZBUJHm8=;
+	s=k20201202; t=1741360928;
+	bh=YA8C0J31UV/dkU0jT8//MR5vNBHEqT503gqEdmk09E8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=F9ZZrbjwxVX+0fyMl2ACr1OxabTHNVE4hBogasGOhTrYUZT9ks0wFeYWnSznBjQGA
-	 Hy6Gac0a5zqhP60XR8qTMvzURZlU3Wbmt7Q77/NCqaUTfnvBiuMZP4s6OJYFMQGe7e
-	 E5P8zgdd6CM36FaWTDOlYniKM1D0E1dzbceK9R3MgzNJbe2WDXGWx8U5pZSYgy91FV
-	 OHPUwU8SwGOJxwc2QoAhWnnJh/co55nUd9p+DZf0Dr1LnNnl4cEgtI3J74ocxRFWOk
-	 ofLrJ8qWb07t4l7GPeW/AF+xXW1i/z9aSp+VZsvsTC65kGNsgdSaUtD1rHuqZbgUxv
-	 20OLYZQVzPCPQ==
-Message-ID: <8a855e37-b7cf-41ef-8d97-f2ff506a5750@kernel.org>
-Date: Fri, 7 Mar 2025 16:20:48 +0100
+	b=ZRs6WJ19u0ePeh3vRZXfle8qIT3wgqDB51Rj6lq16ZcgPqKwIpbhk4CmXJE6d5MoF
+	 0oiSkVaYjfWUDpOccb1WEcZNJvahIMIcnJ+XBrSDUOofW9/UNcFPxLDuR2A6k9nUIp
+	 2/XcOe0GQ2U1LWIEx8OZvdzKkWkjqbD3AH88EUl8r1boC9deO1ZzTXAYqjtaBMEuUd
+	 EwDuBM6/0lTC+JE1YlPuwkzhOtW3gjFrfFssHfdZW1xVzU9PxiQFEIVzifqiFaijtZ
+	 A5HOsU+r/7U6oqVCBaDFxDPUwxMIOgEVHQL1ZBo43MRPt+7HYbDl9zAmwqqFgtGoP4
+	 D/WCtSChwMonA==
+Message-ID: <7b967651-1368-42f1-af23-adc3c94c88ca@kernel.org>
+Date: Fri, 7 Mar 2025 16:21:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/14] ASoC: mediatek: common: modify mtk afe common
+Subject: Re: [PATCH 02/14] ASoC: mediatek: common: modify mtk afe platform
  driver for mt8196
 To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -59,7 +59,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 References: <20250307124841.23777-1-darren.ye@mediatek.com>
- <20250307124841.23777-2-darren.ye@mediatek.com>
+ <20250307124841.23777-3-darren.ye@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,12 +105,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250307124841.23777-2-darren.ye@mediatek.com>
+In-Reply-To: <20250307124841.23777-3-darren.ye@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_072059_300356_4C7080AE 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20250307_072209_797167_777C7662 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,59 +128,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 07/03/2025 13:47, Darren.Ye wrote:
 > From: Darren Ye <darren.ye@mediatek.com>
 > 
-> Export register read and write interface, add sample reate interface, and
-> update the mtk_memif_set_channel interface for the mt8196 platform.
+> Mofify the pcm pointer interface to support 64-bit address access.
 > 
 > Signed-off-by: Darren Ye <darren.ye@mediatek.com>
 > ---
->  sound/soc/mediatek/common/mtk-afe-fe-dai.c | 30 ++++++++++++++--------
->  sound/soc/mediatek/common/mtk-afe-fe-dai.h |  6 +++++
->  sound/soc/mediatek/common/mtk-base-afe.h   | 13 ++++++++++
->  3 files changed, 38 insertions(+), 11 deletions(-)
+>  .../mediatek/common/mtk-afe-platform-driver.c | 63 ++++++++++++++-----
+>  .../mediatek/common/mtk-afe-platform-driver.h |  5 ++
+>  2 files changed, 52 insertions(+), 16 deletions(-)
 > 
-> diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-> index 3809068f5620..c36dae520f04 100644
-> --- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-> +++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-> @@ -18,7 +18,7 @@
->  
->  #define AFE_BASE_END_OFFSET 8
->  
-> -static int mtk_regmap_update_bits(struct regmap *map, int reg,
-> +int mtk_regmap_update_bits(struct regmap *map, int reg,
-
-You need kerneldoc for all exported functions.
-
->  			   unsigned int mask,
->  			   unsigned int val, int shift)
->  {
-> @@ -26,13 +26,16 @@ static int mtk_regmap_update_bits(struct regmap *map, int reg,
->  		return 0;
->  	return regmap_update_bits(map, reg, mask << shift, val << shift);
+> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> index 6b6330583941..5d8f4421e665 100644
+> --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> @@ -77,6 +77,16 @@ int mtk_afe_add_sub_dai_control(struct snd_soc_component *component)
 >  }
-> +EXPORT_SYMBOL(mtk_regmap_update_bits);
+>  EXPORT_SYMBOL_GPL(mtk_afe_add_sub_dai_control);
+>  
+> +int mtk_afe_pcm_open(struct snd_soc_component *component,
 
-GPL
+How adding this is related with 64-bit addresses? It's not even used here.
 
-
+> +		     struct snd_pcm_substream *substream)
+> +{
+> +	/* set the wait_for_avail to 2 sec*/
+> +	substream->wait_time = msecs_to_jiffies(2 * 1000);
 > +
-> +int mtk_regmap_write(struct regmap *map, int reg, unsigned int val)
->  
-
-Why blank line?
-
-> -static int mtk_regmap_write(struct regmap *map, int reg, unsigned int val)
-
-Missing kerneldoc
-
->  {
->  	if (reg < 0)
->  		return 0;
->  	return regmap_write(map, reg, val);
->  }
-> +EXPORT_SYMBOL(mtk_regmap_write);
-
-GPL
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_afe_pcm_open);
 
 
 Best regards,
