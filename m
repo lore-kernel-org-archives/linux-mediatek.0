@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA63C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 207CAC19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=COWxvRRM9FQI9M7tMkRbwKBPI4VIQ4xnbfy4fXqaTyM=; b=Ecfq99c080lbobWNNdnqpU5IkN
-	+HFQ4+HQYVFaGbrgMA18Ulge7Z8zCB2JPT71+efuckzzbCrMCBCKYGbPyDpcCU28k+hvx09wyO6m+
-	u9gOVTbcgl3jcSY81GJvyWki/B4SlHX/FjRzjgu5Gp121wiElwvLWnVs04Vio8EM8pxk73OpSnfeq
-	wzuzESCgO2tZ9yQ776+hMGHBeNo7UulppDolQJcQGoknX3vrcYIwlc4yYpWCRp9MM3OM4+4yLzjfD
-	o9/LUoZ0mB9a6WWqt8n97aDUQXUgcZCDc+11uIEN4l5a0cJdCq+uvvW8V8HsZkHTtwLqiohKbyW7s
-	IxF3F0Ug==;
+	bh=z4Of7EMEdjwx5Jcu7d2vsHuZPtcn+fQ2lWIF6+BXOzw=; b=fhESDby4K8yFajn3r1o58mEYQ3
+	0whvxVE20fi+GJSPw9xEx2T5dbyEUxhmYdWbV6m/tnSf2nr4af8H9mgmvmdkSh2x8pqBBIdjhQiLR
+	r01o3fbCbd0Na6RaGGUhNJmjjbOHdaBjIPy+f3gv7iM5DkWCe1war2pQJzq3Ido743i7mHqbrwVuh
+	XyOIh/xum6Hab29SY9zk+6ZKC8YDPImxwdRjA6QeKlvfpVKxMohbCfsFfQPssAer+1o4youdKRvlr
+	/g3NUYy7v0cEK3ANQ/KIeYKpw0/8+ly+oUIUy8E+lFIHfrs2Nl9Dt+kLSw97NcGOyRI9iWCcB/49A
+	pJEr+gJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZfk-0000000EffI-0PEW;
-	Fri, 07 Mar 2025 15:31:36 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tqZhL-0000000EgIZ-0th3;
+	Fri, 07 Mar 2025 15:33:15 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZXQ-0000000EdUx-3V76;
-	Fri, 07 Mar 2025 15:23:02 +0000
+	id 1tqZZ9-0000000EdpW-0DuZ;
+	Fri, 07 Mar 2025 15:24:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4BB0BA45886;
-	Fri,  7 Mar 2025 15:17:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B328C4CEE3;
-	Fri,  7 Mar 2025 15:22:53 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7CC78A4587D;
+	Fri,  7 Mar 2025 15:19:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1583C4CED1;
+	Fri,  7 Mar 2025 15:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741360979;
-	bh=nX1/pU7TSCnRWYxhHN5kx+BN0QERdP2/4x697C+DygQ=;
+	s=k20201202; t=1741361085;
+	bh=pWhJRKhRk9JsmnVQA2wV95EPd2i9ZYmV/9+gkiFNv7o=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=vAprxW0h0THyeM0Bo5m9h1wNbDxgVDuV6UuXaRtUXY+CTFxsAymhQe+kIGwB1MxGQ
-	 R5XxDvVT5vuM0UHjDhh2lG8QiP463rflCce4wSBgLZwbXi51F6FLXU+uRaxFSBWk5O
-	 QTtd0s5V8/HOT6h9NTGVcCv8Pc1hrQEw9bj/pxOMNwW3RSW43kk6dY/TKBBTeMKgVt
-	 2PaA4ze+qtFbHiOSFwgMMzro+xuxgAe1iruA32xWhgpafx7FplLRaCxiY5vKUCmI0F
-	 i+wSyCfBgjIBJ+wt0u2s4fn4RK/I0QvmXwC4m9o17RrL1R7EZgMEFhJE2GuoILU8X8
-	 kVafuxQfMUjaQ==
-Message-ID: <a4f94987-90d1-4966-a95d-8a2b15c77996@kernel.org>
-Date: Fri, 7 Mar 2025 16:22:50 +0100
+	b=SgIPCjARLXwNRYDp7Oo4nRQo7X6b+R7QrLx64dQb2ETENjelOaTgHgDpMEyhoSf6J
+	 gAHE7W9u4naMcZnQ4SrXPTpPSCPILj+Wh0N/lztxxZI6VP5D5abdBZ+HEh9Pai2Kkv
+	 XSlMHc8xa2VdzldwdXbie+8WK+fFZhRPa+BLniF7AqGhYjlrycJnj/Pxv/6vjOhxtD
+	 qH6WUASK2vzTQAjyP/he680ahTp2uIu2OdUUyP6s6kSoOUsymv/w3K02ip82KvgBYR
+	 47kyhTvbTZ56KHA5nynE5zXHf8s3jZozY3o4JOW8h/JCbOsr2bRpeGuhJ23jCBfVd7
+	 2VyPBmszljp4w==
+Message-ID: <934d740a-f382-411a-b769-4f9f21a53257@kernel.org>
+Date: Fri, 7 Mar 2025 16:24:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/14] ASoC: mediatek: mt8196: add common interface for
- mt8196 DAI driver
+Subject: Re: [PATCH 08/14] ASoC: mediatek: mt8196: support I2S in platform
+ driver
 To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -59,7 +59,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 References: <20250307124841.23777-1-darren.ye@mediatek.com>
- <20250307124841.23777-5-darren.ye@mediatek.com>
+ <20250307124841.23777-9-darren.ye@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,12 +105,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250307124841.23777-5-darren.ye@mediatek.com>
+In-Reply-To: <20250307124841.23777-9-darren.ye@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_072301_045383_579A1108 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20250307_072447_271126_35CCCCE4 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,36 +126,149 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 07/03/2025 13:47, Darren.Ye wrote:
-> From: Darren Ye <darren.ye@mediatek.com>
-> 
-> Implement sample rate conversion and set private data for mt8196.
-> 
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
-> ---
->  .../soc/mediatek/mt8196/mt8196-afe-control.c  | 109 ++++++++++++++++++
->  1 file changed, 109 insertions(+)
->  create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-control.c
-> 
-> diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-control.c b/sound/soc/mediatek/mt8196/mt8196-afe-control.c
-> new file mode 100644
-> index 000000000000..bb85f4ad8585
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt8196/mt8196-afe-control.c
-> @@ -0,0 +1,109 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + *  MediaTek ALSA SoC Audio Control
-> + *
-> + *  Copyright (c) 2024 MediaTek Inc.
-> + *  Author: Darren Ye <darren.ye@mediatek.com>
-> + */
 > +
-> +#include "mt8196-afe-common.h"
-> +#include <linux/pm_runtime.h>
+> +static int etdm_parse_dt(struct mtk_base_afe *afe)
+> +{
+> +	int ret;
+> +	struct mt8196_afe_private *afe_priv = afe->platform_priv;
+> +	struct mtk_afe_i2s_priv *i2sin4_priv = afe_priv->dai_priv[MT8196_DAI_I2S_IN4];
+> +	struct mtk_afe_i2s_priv *i2sout4_priv = afe_priv->dai_priv[MT8196_DAI_I2S_OUT4];
+> +	unsigned int ch_num_in;
+> +	unsigned int ch_num_out;
+> +	unsigned int sync_in;
+> +	unsigned int sync_out;
+> +	unsigned int ip_mode;
 > +
-> +unsigned int mt8196_general_rate_transform(struct device *dev,
-> +					   unsigned int rate)
-These are not static, so you miss header for all of these changes.
+> +	/* get etdm ch */
+> +	ret = of_property_read_u32(afe->dev->of_node, "mediatek,etdm-out-ch", &ch_num_out);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() failed to read mediatek,etdm-out-ch\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +	i2sout4_priv->ch_num = ch_num_out;
+> +	dev_dbg(afe->dev, "%s() mediatek,etdm-out-ch: %d\n", __func__, ch_num_out);
+> +
+> +	ret = of_property_read_u32(afe->dev->of_node, "mediatek,etdm-in-ch", &ch_num_in);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() failed to read mediatek,etdm-in-ch\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +	i2sin4_priv->ch_num = ch_num_in;
+> +	dev_dbg(afe->dev, "%s() mediatek,etdm-in-ch: %d\n", __func__, ch_num_in);
+> +
+> +	/* get etdm sync */
+> +	ret = of_property_read_u32(afe->dev->of_node, "mediatek,etdm-out-sync", &sync_out);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() failed to read mediatek,etdm-out-sync\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +	i2sout4_priv->sync = sync_out;
+> +	dev_dbg(afe->dev, "%s() mediatek,etdm-out-sync: %d\n", __func__, sync_out);
+> +
+> +	ret = of_property_read_u32(afe->dev->of_node, "mediatek,etdm-in-sync", &sync_in);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() failed to read mediatek,etdm-in-sync\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +	i2sin4_priv->sync = sync_in;
+> +	dev_dbg(afe->dev, "%s() mediatek,etdm-in-sync: %d\n", __func__, sync_in);
+> +
+> +	/* get etdm ip mode */
+> +	ret = of_property_read_u32(afe->dev->of_node, "mediatek,etdm-ip-mode", &ip_mode);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() failed to read mediatek,etdm-ip-mode\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +	i2sin4_priv->ip_mode = ip_mode;
+> +	dev_dbg(afe->dev, "%s() mediatek,etdm-ip-mode: %d\n", __func__, ip_mode);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt8196_dai_i2s_get_share(struct mtk_base_afe *afe)
+> +{
+> +	struct mt8196_afe_private *afe_priv = afe->platform_priv;
+> +	const struct device_node *of_node = afe->dev->of_node;
+> +	const char *of_str;
+> +	const char *property_name;
+> +	struct mtk_afe_i2s_priv *i2s_priv;
+> +	int i;
+> +
+> +	for (i = 0; i < DAI_I2S_NUM; i++) {
+> +		i2s_priv = afe_priv->dai_priv[mt8196_i2s_priv[i].id];
+> +		property_name = mt8196_i2s_priv[i].share_property_name;
+> +		if (of_property_read_string(of_node, property_name, &of_str))
+> +			continue;
+> +		i2s_priv->share_i2s_id = get_i2s_id_by_name(afe, of_str);
+> +	}
+> +	return 0;
+> +}
+> +
+> +static int mt8196_dai_i2s_set_priv(struct mtk_base_afe *afe)
+> +{
+> +	int i;
+> +	int ret;
+> +
+> +	for (i = 0; i < DAI_I2S_NUM; i++) {
+> +		ret = mt8196_dai_set_priv(afe, mt8196_i2s_priv[i].id,
+> +					  sizeof(struct mtk_afe_i2s_priv),
+> +					  &mt8196_i2s_priv[i]);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +	return 0;
+> +}
+> +
+> +int mt8196_dai_i2s_register(struct mtk_base_afe *afe)
+> +{
+> +	struct mtk_base_afe_dai *dai;
+> +	int ret;
+> +
+> +	dev_dbg(afe->dev, "%s() successfully start\n", __func__);
+
+Well, no. Tracing is for debugging entry/exit of functions. Say
+something useful or just drop such entry/exist success messages.
+
+> +
+> +	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
+> +	if (!dai)
+> +		return -ENOMEM;
+> +
+> +	list_add(&dai->list, &afe->sub_dais);
+> +
+> +	dai->dai_drivers = mtk_dai_i2s_driver;
+> +	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_i2s_driver);
+> +
+> +	dai->controls = mtk_dai_i2s_controls;
+> +	dai->num_controls = ARRAY_SIZE(mtk_dai_i2s_controls);
+> +	dai->dapm_widgets = mtk_dai_i2s_widgets;
+> +	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_i2s_widgets);
+> +	dai->dapm_routes = mtk_dai_i2s_routes;
+> +	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_i2s_routes);
+> +
+> +	/* set all dai i2s private data */
+> +	ret = mt8196_dai_i2s_set_priv(afe);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* parse share i2s */
+> +	ret = mt8196_dai_i2s_get_share(afe);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* for customer to change ch_num & sync & ipmode from dts */
+> +	ret = etdm_parse_dt(afe);
+> +	if (ret) {
+> +		dev_info(afe->dev, "%s() fail to parse dts: %d\n", __func__, ret);
+
+Why do you print errors twice?
+
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+
 
 Best regards,
 Krzysztof
