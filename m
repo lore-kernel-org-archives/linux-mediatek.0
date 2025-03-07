@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4AEC19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 04:45:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B71C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 05:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t2lcpX+IlnKiqGflIhoKQBvRKuXdx1/MDcNs/9JevPw=; b=EMdncjLFkbNCfd9/CmEPtDT6Vl
-	TUSq4s1FDZKBzAAt9/yFo5Dffy8JxivrPAtD8Fjobb2rVZQhAmHHGERhGjdNOoCngmSUwVGu9lHmi
-	Vn2ceOoCo8x8lB0vHZ1dbc2viXHbmce3iFGI7evCQsn4l/oB/V4hWLAE1Z67bBEgyVZjVfuM3t1qe
-	t4Ixb3ZG3XC6wSehru0+/16A/VbrYuDsbRut1OR4aUCXivHq0B/nik4ONZ7ZHK4pYeRgslBJqV+Q+
-	See5DlT1874stU7YFTwqA6LCp3yONGMaOzQ9E/PE4oZc1aKpfpF2+xOJJ6uQxdUeiKGmt6qq8TS4q
-	nE19Q2Bg==;
+	bh=kmJaIEI8lsY05cHrE6ubYwsHWbg/zXQVmUY+k7Bf+wo=; b=yx9rPnPgDKdPQwx5CzEpc0F7wW
+	yccAua81PbMMj+dOBkjWQ9S4kB753+aZofgcWn30gPl1kSp+8eV8C98jhaMJcNQD77uVrJySHkBHc
+	udWZqrgTy2gqjDrV0PtpnKYNzpOb0upgDLa5UAxiduMEPc+OEI0JjAfn1N/AySL2Ij6SGffEadoC2
+	bAkcmQWmnDzpCbvZST6Qi8FuVhK41OfDtyBpyjczwspyQIkG4IpzE6/fOXmW0hHFx8AieRMYyOxB+
+	WyvjnCfpIpiDFPMgdpCANemUQ294v6qj/u+k4yCdUf0guLJRQ5mJSvaZ8htpE886OcJbstJKZQ2O6
+	GqdEiRsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqPa6-0000000D9F8-1Doy;
-	Fri, 07 Mar 2025 04:45:06 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tqQVn-0000000DEtB-1nz5;
+	Fri, 07 Mar 2025 05:44:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqP8P-0000000D668-0ulf;
-	Fri, 07 Mar 2025 04:16:30 +0000
+	id 1tqQU9-0000000DEZz-2icc;
+	Fri, 07 Mar 2025 05:43:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 87A8EA45181;
-	Fri,  7 Mar 2025 04:10:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DFD3C4CED1;
-	Fri,  7 Mar 2025 04:16:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0ECF95C57C0;
+	Fri,  7 Mar 2025 05:40:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A4E4C4CEE2;
+	Fri,  7 Mar 2025 05:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741320987;
-	bh=ajKfc7gigb87SKdIwwoyRysY03B56hMMZRp8G59YjxI=;
+	s=k20201202; t=1741326180;
+	bh=d6P3+GeoANuNR+y6EWdLUIcEG+o+je61v4CL1BkvFVc=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=CL8qtgn4sJhzjtBviEMGu4ppipSMtJP1w4YUcCjeddS/TRxWje5+TJIy3dXVaUI6A
-	 u5aFCJGR3DzAofl6XVgrJDurLXP0fkkO5TTHU8VlztHuKM3SnugeseRfiprGsKPt1F
-	 eCHE+DV/OdEbO0DNd0r4S0wjHRkpL2+J66I0jkFNx35ap50y+r1uZTWtaVKHQCuMp/
-	 q0K9I1KC1M0XV2CIWBY9Rx8yXkC18p9jUmC8GgN88p8mByq379KjmUD35A/7QVupeb
-	 iLJ7UW5iJEAlTK3uebsBOKmYokopK1R3yHgo7M2n3WZJD/HSLz3aifEIMGKMQZ5oLT
-	 0jFmn7DGsrUlg==
-Date: Thu, 06 Mar 2025 22:16:26 -0600
+	b=la4OyzAAvaX0xU8H4oPoH4tX6uTSOfYArgPd+EM3TMX6vSxx0dnHyzdAQ3l+Tg00q
+	 riJthLtqHIZltVkxfeUfgLMip24vlO2xaYtIjliAXl8OiwElCwKOV86NYjOYMkZ0kx
+	 4V9Kc/uyKiZNnd4oWNk0HDq8/3v45oypwVJJQeNVuu2CH3R3Iv2C2jc7qlBbdL85Ao
+	 ve/xV/8+EZeFsRhM3/Efl23U32cU38MyJ3igzIdUyslM+O7oOfWa6NaBW+3kVtQ0TN
+	 yo23R7NWCa+trDtUtxKXqBmfzKqVVMWVEQG0Nh8Iw8pXja46OiNu6KReR2VIXpez5C
+	 irF8AcJHYda0Q==
+Date: Thu, 06 Mar 2025 23:42:58 -0600
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, 
- Michael Turquette <mturquette@baylibre.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Conor Dooley <conor+dt@kernel.org>, linux-pm@vger.kernel.org, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Stephen Boyd <sboyd@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Richard Cochran <richardcochran@gmail.com>, linux-clk@vger.kernel.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org
+ devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>
 To: Guangjie Song <guangjie.song@mediatek.com>
-In-Reply-To: <20250307032942.10447-7-guangjie.song@mediatek.com>
-References: <20250307032942.10447-1-guangjie.song@mediatek.com>
- <20250307032942.10447-7-guangjie.song@mediatek.com>
-Message-Id: <174132098632.2770289.10803747794522136743.robh@kernel.org>
-Subject: Re: [PATCH 06/26] dt-bindings: clock: mediatek: Add new MT8196
- clock
+In-Reply-To: <20250307034454.12243-13-guangjie.song@mediatek.com>
+References: <20250307034454.12243-1-guangjie.song@mediatek.com>
+ <20250307034454.12243-13-guangjie.song@mediatek.com>
+Message-Id: <174132617868.2934304.16819918690236058573.robh@kernel.org>
+Subject: Re: [PATCH 12/13] dt-bindings: power: mediatek: Add new MT8196
+ power domain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_201629_342915_FB10C5C3 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20250306_214301_728141_06E20A48 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,19 +79,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 07 Mar 2025 11:27:02 +0800, Guangjie Song wrote:
-> Add the new binding documentation for system clock and functional clock
-> on Mediatek MT8196.
+On Fri, 07 Mar 2025 11:44:36 +0800, Guangjie Song wrote:
+> Add the binding documentation for power domain on MediaTek MT8196.
 > 
 > Signed-off-by: Guangjie Song <guangjie.song@mediatek.com>
 > ---
->  .../bindings/clock/mediatek,mt8196-clock.yaml |   66 +
->  .../clock/mediatek,mt8196-sys-clock.yaml      |   63 +
->  include/dt-bindings/clock/mt8196-clk.h        | 1503 +++++++++++++++++
->  3 files changed, 1632 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
->  create mode 100644 include/dt-bindings/clock/mt8196-clk.h
+>  .../mediatek,mt8196-power-controller.yaml     | 74 +++++++++++++++++++
+>  include/dt-bindings/power/mt8196-power.h      | 57 ++++++++++++++
+>  2 files changed, 131 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt8196-power-controller.yaml
+>  create mode 100644 include/dt-bindings/power/mt8196-power.h
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
@@ -101,12 +96,14 @@ My bot found errors running 'make dt_binding_check' on your patch:
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.example.dtb: clock-controller@10000800: reg: [[0, 268437504], [0, 4096]] is too long
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/power/mediatek,mt8196-power-controller.example.dtb: power-controller@1c004000: compatible: ['mediatek,mt8196-scpsys', 'syscon'] is too long
+	from schema $id: http://devicetree.org/schemas/power/mediatek,mt8196-power-controller.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/power/mediatek,mt8196-power-controller.example.dtb: power-controller@1c004000: reg: [[0, 469778432], [0, 4096]] is too long
 	from schema $id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250307032942.10447-7-guangjie.song@mediatek.com
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250307034454.12243-13-guangjie.song@mediatek.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
