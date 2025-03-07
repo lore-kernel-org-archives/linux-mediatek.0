@@ -4,85 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98CDC282DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 13:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25695C28B23
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 13:04:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eIzA5blZjnn1Za4hHHyhXXOBaYZDr85xHWv+EF326Ts=; b=jZsB152wAHn1nAtwtUDQz52eUs
-	VC8VQ4V4LQ+Y27tr2YlHWi7FRqS/DEzNzV0uJXPMqL4OGYjHIYjE0rPHhKAm2SRofxpapgufn/8//
-	jCj1AFccDk9dcTqH5e9Ec+DoWd70cv8x2cvSLkKyjPLzoC647dTXYXVDq1b8Zgz2QSnbsJkxIw7IA
-	uqEZSzRxliY//jZZ5R1CFfSVeU0tmGFQIoAtktSlKIk9AwpJqiL42E3Dlx3HkGvhDBlQihbsVWGLt
-	fpg1m/HhfByT97vi82RQAt5VbqFV/ZPZU1x3FQ4UsQqKhDayknH5w/epEhRBTMVYJ7b7FzxbnE+/+
-	PxHhdp1g==;
+	bh=EmVWGVqGAI4TJUrJeI78GsI2NoWqQfInVXjGf3G+b4I=; b=YzoZKprF3oysgLTaBIet3ih5g0
+	cZiZxsZwCtm41ZPxtr95ir0rA3LaFckfIf4fPBXZVHasyGWDZc7lJGjHiouM4kgZcRPfL2CEfT09G
+	blNgn7ix9StNsF7KTWhccUIgP5k3IaHAl7fz1Ik7dSCBgKfQXfrByYEJQUse1p70+bR8AXTFgFKxM
+	D0XgbOPixIn4JFiYGtpUbVpiKYkDjNITYhnyBiWh1EBT4oVlqhGHuHBYHQUgosM9xPJ+yIRCTXniq
+	lU0mzzRoOicTh624qIZrIbT0ttCvWW79f/HzE1kuOaeEYvZY6mv6HPjdvoTLFXgxRw0pYLKy00h8B
+	O6MKuYwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqXLl-0000000EFp6-3piM;
-	Fri, 07 Mar 2025 13:02:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqX8f-0000000EDqB-29Vs
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 07 Mar 2025 12:49:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=eIzA5blZjnn1Za4hHHyhXXOBaYZDr85xHWv+EF326Ts=; b=e9HcHzSMmjUzWq1X/2Nw7yNv/i
-	PosSdx1F7nzlAIiElX+qtzV82nkxgQBgSc463rbjA1fhoL5Hd0tlA/DkGawWLv1FCC5Pcib6GIJBd
-	T1HhmJumM5Qdl9yKJulyzYyo9ws+Zs3Q2pWRkRc/m67MJdQ/8OMUYz6gOcnyqnPqwL7gjtjKcAX1v
-	cpVb29U9KRaxtCJzkK5OIru7Ncy+j6RSy0XBfgcFd/ztSmjDEGDUzG8k12aRCdLmZU7RiKlX8PP0k
-	UtdoxKe3et2BhMNM8DpCEiZLs/VdsMMBTP/l/PHrn6/63LDGGJeO4VstypSCnnYXw+jEugJ7x/Kxa
-	NyULHz2w==;
+	id 1tqXNN-0000000EG85-0v3q;
+	Fri, 07 Mar 2025 13:04:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqX8c-00000001Kco-083F
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Mar 2025 12:49:16 +0000
-X-UUID: 84f92504fb5211efa1e849db4cc18d44-20250307
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tqX8i-0000000EDqy-1PEh;
+	Fri, 07 Mar 2025 12:49:21 +0000
+X-UUID: 93ec8a6afb5211efa1e849db4cc18d44-20250307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eIzA5blZjnn1Za4hHHyhXXOBaYZDr85xHWv+EF326Ts=;
-	b=sTSfmRdN4nj8Ckl9jqIQbzsCX8rnOLq7ZV4WW1Y0yHkBPWloj5brN9tUE10z0s5XpHesGKZsf4Up6T1CnABzT7LS8mmQSZsWqxR4JpzBEOSxAyNf405tHgHHwK1cqlHshbPZuC1IAdEYisNiETmZgd3PWabp7ghlSkM0htcTmvU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EmVWGVqGAI4TJUrJeI78GsI2NoWqQfInVXjGf3G+b4I=;
+	b=dxTsgkpSKvefllj9izOFuDNCb+INt1pwVEugG2lOhorqAPdhRZN0zzGENcB68Hz36WjXeTUzShHbQ63ktcR/eKHM0F6u7P1SUk19J0BcIKuRmSoB4hH2xSXpKqZqQnGLhe3Mo3UpbM49TcQn89fzz6MdA5AyO2G2hgMrUEPGONA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:093522e7-964f-4e56-8f77-805d72db3bbc,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:abca0dc6-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1,
-	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.2.1,REQID:906d525d-1116-441f-a096-01afc871c1cd,IP:0,UR
+	L:25,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:624927ce-23b9-4c94-add0-e827a7999e28,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:1|
+	19,IP:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 84f92504fb5211efa1e849db4cc18d44-20250307
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 93ec8a6afb5211efa1e849db4cc18d44-20250307
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <darren.ye@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1108031026; Fri, 07 Mar 2025 05:48:50 -0700
+	with ESMTP id 1943136985; Fri, 07 Mar 2025 05:49:15 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 7 Mar 2025 20:48:47 +0800
+ 15.2.1258.28; Fri, 7 Mar 2025 20:49:12 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 20:48:47 +0800
+ 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 20:49:12 +0800
 From: Darren.Ye <darren.ye@mediatek.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, "Rob
+ Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Linus
- Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, "Linus
+ Walleij" <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
 CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>, Darren Ye
 	<darren.ye@mediatek.com>
-Subject: [PATCH 01/14] ASoC: mediatek: common: modify mtk afe common driver for mt8196
-Date: Fri, 7 Mar 2025 20:47:27 +0800
-Message-ID: <20250307124841.23777-2-darren.ye@mediatek.com>
+Subject: [PATCH 12/14] dt-bindings: mediatek: mt8196: add audio AFE document
+Date: Fri, 7 Mar 2025 20:47:38 +0800
+Message-ID: <20250307124841.23777-13-darren.ye@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250307124841.23777-1-darren.ye@mediatek.com>
 References: <20250307124841.23777-1-darren.ye@mediatek.com>
@@ -91,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_124914_484218_8323C2C9 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20250307_044920_383034_BEDAD069 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,157 +93,279 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Darren Ye <darren.ye@mediatek.com>
 
-Export register read and write interface, add sample reate interface, and
-update the mtk_memif_set_channel interface for the mt8196 platform.
+Add mt8196 audio AFE document.
 
 Signed-off-by: Darren Ye <darren.ye@mediatek.com>
 ---
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 30 ++++++++++++++--------
- sound/soc/mediatek/common/mtk-afe-fe-dai.h |  6 +++++
- sound/soc/mediatek/common/mtk-base-afe.h   | 13 ++++++++++
- 3 files changed, 38 insertions(+), 11 deletions(-)
+ .../bindings/sound/mediatek,mt8196-afe.yaml   | 259 ++++++++++++++++++
+ 1 file changed, 259 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index 3809068f5620..c36dae520f04 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -18,7 +18,7 @@
- 
- #define AFE_BASE_END_OFFSET 8
- 
--static int mtk_regmap_update_bits(struct regmap *map, int reg,
-+int mtk_regmap_update_bits(struct regmap *map, int reg,
- 			   unsigned int mask,
- 			   unsigned int val, int shift)
- {
-@@ -26,13 +26,16 @@ static int mtk_regmap_update_bits(struct regmap *map, int reg,
- 		return 0;
- 	return regmap_update_bits(map, reg, mask << shift, val << shift);
- }
-+EXPORT_SYMBOL(mtk_regmap_update_bits);
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+new file mode 100644
+index 000000000000..59f8fdf3167c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+@@ -0,0 +1,259 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt8196-afe.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+int mtk_regmap_write(struct regmap *map, int reg, unsigned int val)
- 
--static int mtk_regmap_write(struct regmap *map, int reg, unsigned int val)
- {
- 	if (reg < 0)
- 		return 0;
- 	return regmap_write(map, reg, val);
- }
-+EXPORT_SYMBOL(mtk_regmap_write);
- 
- int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
- 		       struct snd_soc_dai *dai)
-@@ -459,8 +462,12 @@ int mtk_memif_set_channel(struct mtk_base_afe *afe,
- 	struct mtk_base_afe_memif *memif = &afe->memif[id];
- 	unsigned int mono;
- 
--	if (memif->data->mono_shift < 0)
--		return 0;
-+	dev_info(afe->dev, "%s(), id: %d, channel: %d\n", __func__, id, channel);
-+	mono = memif->data->mono_invert ^ (channel == 1);
++title: MediaTek Audio Front End PCM controller for MT8196
 +
-+	if (memif->data->mono_shift > 0)
-+		mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
-+				       0x1, mono, memif->data->mono_shift);
- 
- 	if (memif->data->quad_ch_mask) {
- 		unsigned int quad_ch = (channel == 4) ? 1 : 0;
-@@ -470,11 +477,6 @@ int mtk_memif_set_channel(struct mtk_base_afe *afe,
- 				       quad_ch, memif->data->quad_ch_shift);
- 	}
- 
--	if (memif->data->mono_invert)
--		mono = (channel == 1) ? 0 : 1;
--	else
--		mono = (channel == 1) ? 1 : 0;
--
- 	/* for specific configuration of memif mono mode */
- 	if (memif->data->int_odd_flag_reg)
- 		mtk_regmap_update_bits(afe->regmap,
-@@ -482,8 +484,14 @@ int mtk_memif_set_channel(struct mtk_base_afe *afe,
- 				       1, mono,
- 				       memif->data->int_odd_flag_shift);
- 
--	return mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
--				      1, mono, memif->data->mono_shift);
-+	if (memif->data->ch_num_maskbit) {
-+		dev_info(afe->dev, "%s(), set ch num id: %d, channel: %d\n", __func__, id, channel);
-+		mtk_regmap_update_bits(afe->regmap, memif->data->ch_num_reg,
-+				       memif->data->ch_num_maskbit,
-+				       channel, memif->data->ch_num_shift);
-+	}
++maintainers:
++  - Darren Ye <darren.ye@mediatek.com>
 +
-+	return 0;
- }
- EXPORT_SYMBOL_GPL(mtk_memif_set_channel);
- 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-index b6d0f2b27e86..64b10ccba291 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-@@ -12,7 +12,13 @@
- struct snd_soc_dai_ops;
- struct mtk_base_afe;
- struct mtk_base_afe_memif;
-+struct mtk_base_irq_data;
- 
-+int mtk_regmap_update_bits(struct regmap *map, int reg,
-+			   unsigned int mask, unsigned int val,
-+			   int shift);
-+int mtk_regmap_write(struct regmap *map, int reg,
-+		     unsigned int val);
- int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
- 		       struct snd_soc_dai *dai);
- void mtk_afe_fe_shutdown(struct snd_pcm_substream *substream,
-diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
-index f51578b6c50a..01c27fe92e2f 100644
---- a/sound/soc/mediatek/common/mtk-base-afe.h
-+++ b/sound/soc/mediatek/common/mtk-base-afe.h
-@@ -53,9 +53,11 @@ struct mtk_base_memif_data {
- 	int enable_reg;
- 	int enable_shift;
- 	int hd_reg;
-+	int hd_mask;
- 	int hd_shift;
- 	int hd_align_reg;
- 	int hd_align_mshift;
-+	int hd_msb_shift;
- 	int msb_reg;
- 	int msb_shift;
- 	int msb_end_reg;
-@@ -65,6 +67,10 @@ struct mtk_base_memif_data {
- 	int ch_num_reg;
- 	int ch_num_shift;
- 	int ch_num_maskbit;
-+	/* VUL 24~26 only for CM2 */
-+	int out_on_use_reg;
-+	int out_on_use_mask;
-+	int out_on_use_shift;
- 	/* playback memif only */
- 	int pbuf_reg;
- 	int pbuf_mask;
-@@ -72,6 +78,9 @@ struct mtk_base_memif_data {
- 	int minlen_reg;
- 	int minlen_mask;
- 	int minlen_shift;
-+	int maxlen_reg;
-+	int maxlen_mask;
-+	int maxlen_shift;
- };
- 
- struct mtk_base_irq_data {
-@@ -87,6 +96,10 @@ struct mtk_base_irq_data {
- 	int irq_clr_reg;
- 	int irq_clr_shift;
- 	int irq_status_shift;
-+	int irq_ap_en_reg;
-+	int irq_ap_en_shift;
-+	int irq_scp_en_reg;
-+	int irq_scp_en_shift;
- };
- 
- struct device;
++properties:
++  compatible:
++    const: mediatek,mt8196-afe-pcm
++
++  reg:
++    maxItems: 1
++
++  "#sound-dai-cells":
++    const: 0
++
++  clocks:
++    items:
++      - description: audio hopping clock
++      - description: audio f26m clock
++      - description: audio ul0 adc clock
++      - description: audio ul0 adc hires clock
++      - description: audio ul1 adc clock
++      - description: audio ul1 adc hires clock
++      - description: audio apll1 clock
++      - description: audio apll2 clock
++      - description: audio apll tuner1 clock
++      - description: audio apll tuner2 clock
++      - description: vlp mux audio int
++      - description: vlp mux aud engen1
++      - description: vlp mux aud engen2
++      - description: vlp mux audio h
++      - description: vlp clock 26m
++      - description: ck mainpll d4 d4
++      - description: ck mux aud 1
++      - description: ck apll1
++      - description: ck mux aud 2
++      - description: ck apll2
++      - description: ck apll1 d4
++      - description: ck apll2 d4
++      - description: ck i2sin0 m sel
++      - description: ck i2sin1 m sel
++      - description: ck fmi2s m sel
++      - description: ck tdmout m sel
++      - description: ck apll12 div i2sin0
++      - description: ck apll12 div i2sin1
++      - description: ck apll12 div fmi2s
++      - description: ck apll12 div tdmout m
++      - description: ck apll12 div tdmout b
++      - description: ck adsp sel
++      - description: ck clock 26m
++
++  clock-names:
++    items:
++      - const: aud_hopping_clk
++      - const: aud_f26m_clk
++      - const: aud_ul0_adc_clk
++      - const: aud_ul0_adc_hires_clk
++      - const: aud_ul1_adc_clk
++      - const: aud_ul1_adc_hires_clk
++      - const: aud_apll1_clk
++      - const: aud_apll2_clk
++      - const: aud_apll_tuner1_clk
++      - const: aud_apll_tuner2_clk
++      - const: vlp_mux_audio_int
++      - const: vlp_mux_aud_eng1
++      - const: vlp_mux_aud_eng2
++      - const: vlp_mux_audio_h
++      - const: vlp_clk26m_clk
++      - const: ck_mainpll_d4_d4
++      - const: ck_mux_aud_1
++      - const: ck_apll1_ck
++      - const: ck_mux_aud_2
++      - const: ck_apll2_ck
++      - const: ck_apll1_d4
++      - const: ck_apll2_d4
++      - const: ck_i2sin0_m_sel
++      - const: ck_i2sin1_m_sel
++      - const: ck_fmi2s_m_sel
++      - const: ck_tdmout_m_sel
++      - const: ck_apll12_div_i2sin0
++      - const: ck_apll12_div_i2sin1
++      - const: ck_apll12_div_fmi2s
++      - const: ck_apll12_div_tdmout_m
++      - const: ck_apll12_div_tdmout_b
++      - const: ck_adsp_sel
++      - const: ck_clk26m_clk
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  cksys:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the cksys clock controller.
++
++  vlpcksys:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the vlpcksys clock controller.
++
++  memory-region:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the reserved memory region for AFE DMA.
++
++  pinctrl-names:
++    items:
++      - const: default
++
++  pinctrl-0:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the pin control group for default state.
++
++  mediatek,etdm-out-ch:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Number of ETDM output channels.
++    enum: [2]
++
++  mediatek,etdm-in-ch:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Number of ETDM input channels.
++    enum: [2]
++
++  mediatek,etdm-out-sync:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: ETDM output synchronization.
++    enum: [0, 1]
++
++  mediatek,etdm-in-sync:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: ETDM input synchronization.
++    enum: [0, 1]
++
++  mediatek,etdm-ip-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: ETDM IP mode.
++    enum: [0, 1]
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - interrupts
++  - power-domains
++  - cksys
++  - vlpcksys
++  - memory-region
++  - pinctrl-names
++  - pinctrl-0
++  - mediatek,etdm-out-ch
++  - mediatek,etdm-in-ch
++  - mediatek,etdm-out-sync
++  - mediatek,etdm-in-sync
++  - mediatek,etdm-ip-mode
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8196-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt8196-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        afe: mt8196-afe-pcm@1a110000 {
++            compatible = "mediatek,mt8196-afe-pcm";
++            reg = <0 0x1a110000 0 0x9000>;
++            interrupts = <GIC_SPI 351 IRQ_TYPE_LEVEL_HIGH 0>;
++            cksys = <&cksys_clk>;
++            vlpcksys = <&vlp_cksys_clk>;
++            power-domains = <&scpsys MT8196_POWER_DOMAIN_AUDIO>;
++            memory-region = <&afe_dma_mem_reserved>;
++            pinctrl-names = "default";
++            pinctrl-0 = <&aud_pins_default>;
++            /* Only for ETDM in/out 4 */
++            mediatek,etdm-out-ch = <2>;
++            mediatek,etdm-in-ch = <2>;
++            mediatek,etdm-out-sync = <0>;
++            mediatek,etdm-in-sync = <1>;
++            mediatek,etdm-ip-mode = <0>;
++            clocks = <&afe_clk CLK_AFE_AUDIO_HOPPING_AFE>,
++                     <&afe_clk CLK_AFE_AUDIO_F26M_AFE>,
++                     <&afe_clk CLK_AFE_UL0_ADC_AFE>,
++                     <&afe_clk CLK_AFE_UL0_ADC_HIRES_AFE>,
++                     <&afe_clk CLK_AFE_UL1_ADC_AFE>,
++                     <&afe_clk CLK_AFE_UL1_ADC_HIRES_AFE>,
++                     <&afe_clk CLK_AFE_APLL1_AFE>,
++                     <&afe_clk CLK_AFE_APLL2_AFE>,
++                     <&afe_clk CLK_AFE_APLL_TUNER1_AFE>,
++                     <&afe_clk CLK_AFE_APLL_TUNER2_AFE>,
++                     <&vlp_cksys_clk CLK_VLP_CK_AUD_INTBUS_SEL>,
++                     <&vlp_cksys_clk CLK_VLP_CK_AUD_ENGEN1_SEL>,
++                     <&vlp_cksys_clk CLK_VLP_CK_AUD_ENGEN2_SEL>,
++                     <&vlp_cksys_clk CLK_VLP_CK_AUDIO_H_SEL>,
++                     <&vlp_cksys_clk CLK_VLP_CK_CLKSQ>,
++                     <&cksys_clk CLK_CK_MAINPLL_D4_D4>,
++                     <&cksys_clk CLK_CK_AUD_1_SEL>,
++                     <&cksys_clk CLK_CK_APLL1>,
++                     <&cksys_clk CLK_CK_AUD_2_SEL>,
++                     <&cksys_clk CLK_CK_APLL2>,
++                     <&cksys_clk CLK_CK_APLL1_D4>,
++                     <&cksys_clk CLK_CK_APLL2_D4>,
++                     <&cksys_clk CLK_CK_APLL_I2SIN0_MCK_SEL>,
++                     <&cksys_clk CLK_CK_APLL_I2SIN1_MCK_SEL>,
++                     <&cksys_clk CLK_CK_APLL_FMI2S_MCK_SEL>,
++                     <&cksys_clk CLK_CK_APLL_TDMOUT_MCK_SEL>,
++                     <&cksys_clk CLK_CK_APLL12_CK_DIV_I2SIN0>,
++                     <&cksys_clk CLK_CK_APLL12_CK_DIV_I2SIN1>,
++                     <&cksys_clk CLK_CK_APLL12_CK_DIV_FMI2S>,
++                     <&cksys_clk CLK_CK_APLL12_CK_DIV_TDMOUT_M>,
++                     <&cksys_clk CLK_CK_APLL12_CK_DIV_TDMOUT_B>,
++                     <&cksys_clk CLK_CK_ADSP_SEL>,
++                     <&cksys_clk CLK_CK_TCK_26M_MX9>;
++            clock-names = "aud_hopping_clk",
++                          "aud_f26m_clk",
++                          "aud_ul0_adc_clk",
++                          "aud_ul0_adc_hires_clk",
++                          "aud_ul1_adc_clk",
++                          "aud_ul1_adc_hires_clk",
++                          "aud_apll1_clk",
++                          "aud_apll2_clk",
++                          "aud_apll_tuner1_clk",
++                          "aud_apll_tuner2_clk",
++                          "vlp_mux_audio_int",
++                          "vlp_mux_aud_eng1",
++                          "vlp_mux_aud_eng2",
++                          "vlp_mux_audio_h",
++                          "vlp_clk26m_clk",
++                          "ck_mainpll_d4_d4",
++                          "ck_mux_aud_1",
++                          "ck_apll1_ck",
++                          "ck_mux_aud_2",
++                          "ck_apll2_ck",
++                          "ck_apll1_d4",
++                          "ck_apll2_d4",
++                          "ck_i2sin0_m_sel",
++                          "ck_i2sin1_m_sel",
++                          "ck_fmi2s_m_sel",
++                          "ck_tdmout_m_sel",
++                          "ck_apll12_div_i2sin0",
++                          "ck_apll12_div_i2sin1",
++                          "ck_apll12_div_fmi2s",
++                          "ck_apll12_div_tdmout_m",
++                          "ck_apll12_div_tdmout_b",
++                          "ck_adsp_sel",
++                          "ck_clk26m_clk";
++        };
++    };
 -- 
 2.45.2
 
