@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B42C282DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 07:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45FEC19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 07:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5BV8xtKhERQiCHQtsRIMlHA+oAh5S6GP6avYsWR+heA=; b=ph0/hAUcJkAl8NUgpPMd52v+oi
-	HvS/R5FOezGcRS73dLEGszdRkfmqC+g5fKoDELWEFcMHagbnRRrazDoAJ5jGEtqguRLzleV32Xime
-	4J/WWlv3Ep9DFzrEX2bK0pAco/rOdbIfNUZo3Nec42sSDwT8VY7A5FIKAt9zbuCHFDnQ7NTACLc6d
-	lYEi5ql8JRh7oe+hHJ/J6BZAazn/z29dQ/4LsEAxtqCShaYt1vP4iA0CFLxNd0ucN1AHKf05iy6DI
-	kYFKY4jolmQd1W3E4zb5Lj2zDbdU/dwShLFwIlVYavGYsygUOT53v5FxYiR+8ogCL8DaJlNei8Shf
-	F0wXR8AQ==;
+	bh=7+YA+Y8Tg0JnzAQBBGRdaXwy/UvqH8/yFwEodssk8Uo=; b=YPQj3Fa2CQASKhrEOF1KA7ODcd
+	qeuAzQQEfvrNOrQBuHbBSo0yViFd/t5SAttxiy6QdOCuHO1R7Guqm3ctMzfyZeptMipRC2Z6Rw3lJ
+	DvH4EQg28VJq8zq+pfKMLrSJiuXqGpbBowcTEZQ4/2Q6O2gUp+k6qcH38Mn3THuB18LYmH2m+ps2a
+	6XJqg/cmEdWcezW6aVz1z8SgIGaD2RP/0Z/TSAXFCyGjsPCb8Hxw+5DJzX1ZsYcC6gmoTvKsYgyjz
+	Q80HsaGRav7Lo5jktlVpXMVpp+TXawjvi+Q35drVmCL9Azv4NR75xIIzpMwoQdKF5/VjemFm89Vvt
+	1x5FuBhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqRn5-0000000DOTH-2Yqu;
-	Fri, 07 Mar 2025 07:06:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tqRtx-0000000DPlg-46e8;
+	Fri, 07 Mar 2025 07:13:45 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqRlR-0000000DOH9-466I;
-	Fri, 07 Mar 2025 07:04:59 +0000
+	id 1tqRrv-0000000DPYu-1kGt;
+	Fri, 07 Mar 2025 07:11:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4B8035C06A9;
-	Fri,  7 Mar 2025 07:02:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D1DFC4CED1;
-	Fri,  7 Mar 2025 07:04:51 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D01D5A454A8;
+	Fri,  7 Mar 2025 07:06:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7B51C4CED1;
+	Fri,  7 Mar 2025 07:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741331096;
-	bh=5e5MJqakEHjCgRgY1uejLfs+Wy8KtSWOqlKL58qDFPI=;
+	s=k20201202; t=1741331498;
+	bh=bHThK23Ii92GmGLygLItWhYyWiP9FM3nTV3uexprg4A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kySxEx0QFGm/OEDdq6/QsJaUdCjxywWV5uPO1+QreWZnwSJrHoYfIgtSUJQyMWZAS
-	 i3Y0KTwmFM8iB8KN62vj+gWq4xFhvKj3CxDYQyyOo2JQBt8FjGxcYDv6JUMu3W1J2T
-	 RpV7CARznlHW3WfZOYEmgKruraRnGGhDs5xPq2qjnldo2ZgzZ5qz6QOTDE43cUOs2L
-	 A2ISq9LCYZsQK8RCA8Esi863eujw4oFnAxcajjUqtIoFGpOOfYB/ngMYR7tzemhF1v
-	 75kKA/kWb5gWqXq7KlC3wGPE90eADK+Fxym1s9vGe08JzAXtL4a2kHTu2ZihecXYLC
-	 4Fv7JUqpTWiZA==
-Message-ID: <8d90731b-4b5a-45a8-83d1-4351044f59c7@kernel.org>
-Date: Fri, 7 Mar 2025 08:04:49 +0100
+	b=t3Ks4GubR6FMSUALNFwOmNpiJa/FoAiuAqE+PZPHyD5m7N9+Sf37PY0ELHivyKySR
+	 tApGnEIA5bc6d++EGlWuPmsck/399uKdSBQsNVr6jSnJ+G7IQaGuwOFDwsbvX9iwXs
+	 p2jbsbA5MIqhK5ioqsosWzstY3lrAyH8c6leVbCnhxFN31f5RR1Lu2mew3d8LYKdVz
+	 /DWDVSxCCHetPEPDN9V2BAl4ieQuq5SmyZUnvXIIErvm7mZWVGNJJUsAeSdlSW2hzY
+	 CzfGj1PMo0u1jIN06YKmKzFZO5n5uT50DU5snMibS7xw2oaVAk1lnnk1E/A7Ri20+D
+	 djw20M2ZNP/tg==
+Message-ID: <0663e03e-e331-4a06-be95-ce8d9059ed6b@kernel.org>
+Date: Fri, 7 Mar 2025 08:11:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] dt-bindings: memory: mediatek: Add SMI reset and
- clamp for MT8188
-To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+Subject: Re: [PATCH v4 01/19] dt-bindings: mfd: mediatek: mt6397: Add accdet
+ subnode
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250221074846.14105-1-friday.yang@mediatek.com>
- <20250221074846.14105-2-friday.yang@mediatek.com>
- <0dcb2efd-6bbb-4701-960a-74930eb457e4@collabora.com>
- <264f78c1067e363c69e146543ebb77dbedfbd181.camel@mediatek.com>
- <463ca2df-a0ee-4b9e-a988-12f316ae7d1a@kernel.org>
- <9305a4fd6829e5e2ae6c3247d11b9f47ed277f8b.camel@mediatek.com>
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
+ <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
+ <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
+ <2fa6037d-b5e9-45b2-a5d5-dbc92fb3434b@notapiano>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -112,12 +110,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <9305a4fd6829e5e2ae6c3247d11b9f47ed277f8b.camel@mediatek.com>
+In-Reply-To: <2fa6037d-b5e9-45b2-a5d5-dbc92fb3434b@notapiano>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_230458_125682_E82823E0 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20250306_231139_624900_C370FE5A 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,92 +130,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/03/2025 07:38, Friday Yang (杨阳) wrote:
-> On Thu, 2025-03-06 at 13:48 +0100, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+On 06/03/2025 13:19, Nícolas F. R. A. Prado wrote:
+>>>    It is interfaced to host controller using SPI interface by a proprietary hardware
+>>>    called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of pwrap.
+>>> @@ -224,6 +225,30 @@ properties:
+>>>      description:
+>>>        Pin controller
+>>>  
+>>> +  accdet:
+>>> +    type: object
+>>> +    additionalProperties: false
+>>> +    description:
+>>> +      The Accessory Detection module found on the PMIC allows detecting audio
+>>> +      jack insertion and removal, as well as identifying the type of events
+>>> +      connected to the jack.
+>>> +
+>>> +    properties:
+>>> +      compatible:
+>>> +        const: mediatek,mt6359-accdet
 >>
->>
->> On 06/03/2025 13:45, Friday Yang (杨阳) wrote:
->>>>> +          const: mediatek,mt8188-smi-larb
->>>>> +        mediatek,larb-id:
->>>>> +          oneOf:
->>>>
->>>> Are you really sure that you need 'oneOf' here? :-)
->>>>
->>>> Regards,
->>>> Angelo
->>>
->>> Yes, I have tested it. If I try to modify the 'examples'
->>> like this. That is:
->>>   change the compatible to "mediatek,mt8188-smi-larb",
->>>   add 'mediatek,larb-id = <10>;'
->>>
->>> examples:
->>>   - |+
->>>     #include <dt-bindings/clock/mt8173-clk.h>
->>>     #includ
->>> e <dt-bindings/power/mt8173-power.h>
->>>
->>>     larb1: larb@16010000 {
->>>       compatible = "mediatek,mt8188-smi-larb";
->>>       reg = <0x16010000 0x1000>;
->>>       mediatek,smi = <&smi_common>;
->>>       mediatek,larb-id = <10>;
->>>       power-domains = <&scpsys MT8188_POWER_DOMAIN_VDEC>;
->>>       clocks = <&vdecsys CLK_VDEC_CKEN>,
->>>                <&vdecsys CLK_VDEC_LARB_CKEN>;
->>>       clock-names = "apb", "smi";
->>>     };
->>>
->>> The 'dt_binding_check' could give the following
->>> errors:
->>>
->>> Documentation/devicetree/bindings/memory-controllers/mediatek,smi-
->>> larb.example.dtb: larb@16010000: 'resets' is a required property
->>> from schema $id:
->>>
-> https://urldefense.com/v3/__http://devicetree.org/schemas/memory-controllers/mediatek,smi-larb.yaml*__;Iw!!CTRNKA9wMg0ARbw!kEwWhxyfjVtuHKBHazZGRaFdlmrU2bcIsiVDcsUDzEIManMw2XIG9RgOzq773vtmqlR9_sWZDFhU09SV$
->>> Documentation/devicetree/bindings/memory-controllers/mediatek,smi-
->>> larb.example.dtb: larb@16010000: 'reset-names' is a required
->>> property
->>> from schema $id:
->>>
-> https://urldefense.com/v3/__http://devicetree.org/schemas/memory-controllers/mediatek,smi-larb.yaml*__;Iw!!CTRNKA9wMg0ARbw!kEwWhxyfjVtuHKBHazZGRaFdlmrU2bcIsiVDcsUDzEIManMw2XIG9RgOzq773vtmqlR9_sWZDFhU09SV$
->>>
->>> And this is what I want to achieve. On the MediaTek MT8188 SoC
->>> platform, 'resets' and 'reset-names' are only required for SMI
->>> LARBs
->>> located in image, camera and ipe subsys. Others can be ignored. And
->>> the
->>> 'larb-id' of these SMI LARBs are shown in this array: [ 9, 10, 11,
->>> 12,
->>> 13, 16, 17, 18, 19, 20 ].
->>>
->>> Please feel free to let me know if you have any doubts.
->>
->> You did not really answer the question. Where is anything about oneOf
->> in
->> your reply?
->>
->> I am dropping this patchset from my queue.
->>
+>> You just removed the other file, no folding happened here. Drop the
+>> accdet node and fold this into parent.
 > 
-> In this SoC, we encountered power-off failures and SMI bus hang issues
-> during camera stress tests. SMI LARBs located in the image, IPE, and
-> camera subsystems need to implement a reset, while other LARBs do not
-> require it.
-> 
-> The 'mediatek,larb-id' for SMI LARBs in the image, IPE, and camera
-> subsystems are as follows:
-> - image subsystem: 9, 10, 11, 12, 16
-> - IPE subsystem: 13
-> - camera subsystem: 17, 18, 19, 20
-> 
-> Therefore, we believe that 'mediatek,larb-id' should be 'oneOf' the
+> Sorry, I'm still not sure what you mean by folding here then. Right now the
+> accdet is a subnode of the PMIC. If you want me to remove the accdet node, where
 
+Yes
 
-So explain me where is the second condition?
+> would its compatible and property go?
+
+compatible: nowhere, because it is close to redundancy.
+
+property: to the parent pmic node.
+
+    pmic {
+        compatible = "mediatek,mt6359";
+        interrupt-controller;
+        #interrupt-cells = <2>;
+
+        mediatek,hp-eint-high;
+    };
+
 
 Best regards,
 Krzysztof
