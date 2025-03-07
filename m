@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC7DC282DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 12:10:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC96C282DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 12:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=z29LXW8H6j5+YRRi20VzwXPPtbzAx8PDXEJJyuBSweA=; b=DxiCOplJVnaZs/7euRw5bWwWF1
-	CR1Fq7OEo5dtRc7ACzy/HKXmIdruTYTgDbh329Fq+8pGFPG9SlV6DpJNuUDQe9rFVd3EdteZcbm+r
-	GNwLypIfugSmdTrhhtoS21MNTOrkeYK0JOo0U+IAvepe4tG88D0irfo8D+O+B3UVwLbPJvOBWutXH
-	Kpg5nMOJqyhUiC/+lgpMgv2b7fa6LeBtvpZ72VQNQCAcv+d9sApPw/r5eMmkooXUIoQZaKz41BdQQ
-	Gt0H+AjN0+2wPMz3NGcyMDABgEnbuwBjUp+WUZ2UcRy+y5Odym6P9CRGvreSr6qON27aQJftHTRJk
-	GMdLFZtg==;
+	bh=T9Q64H7eOqwbabEl9fMLo/Azsox+IgNpX2vvtqqW2qw=; b=DPRf929yU2ZeKm0ptMhH7gF0UR
+	H+2KkzE6JTNSbx530ptIdbVqNlYkhSQQKos7Js6C5z7m1SjOoKw34JxfWGj9rJtaSiukqpw2UEME1
+	nL+YVdE4lS7XO65c20i9kSxULiRVx1tCuqc6lAFTeXNXh6z0ktxFwDGplLd/pSnutlpl6NgZgLSDB
+	hSzdlE20KzNHCAjWq8XMxDLaFPgYhQlR3DfCD1VA5zWLR83p104NyghE48PF0ZF2RMcFuJV4rH6PF
+	7ljgHsGdmuJ05VTyipjQQnuz0g7dK4NWSZoK2OzixiG0v29K1ZQVMiQ6Cc8A4bSyWce2pIEiaVsRH
+	AA7xRqWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqWWm-0000000E8wz-4BSZ;
-	Fri, 07 Mar 2025 12:10:09 +0000
+	id 1tqXC1-0000000EEYf-118v;
+	Fri, 07 Mar 2025 12:52:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqWP7-0000000E7to-3ysU;
-	Fri, 07 Mar 2025 12:02:15 +0000
-X-UUID: fca379b2fb4b11ef83f2a1c9db70dae0-20250307
+	id 1tqX8I-0000000EDkA-17Aw;
+	Fri, 07 Mar 2025 12:48:55 +0000
+X-UUID: 8339e2f8fb5211ef83f2a1c9db70dae0-20250307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=z29LXW8H6j5+YRRi20VzwXPPtbzAx8PDXEJJyuBSweA=;
-	b=iy8T8atnxWBpiv4K8S5gBAoe6cHhhxTIYMQ0ui2oZyoX3fRif1h37NXcMYc2piKPF3vxAnqvXTULZ+OoaYayrP/Bsm0d8YE4c/WgaRB/aBqmBOaGHMdREBv3hofNtqS9aBiCEbuNeQEDbVjE+J3kg799+swipg86lduTxnsP3hM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=T9Q64H7eOqwbabEl9fMLo/Azsox+IgNpX2vvtqqW2qw=;
+	b=i84q0r2MXPRG68MkBg/YXfM/45iplZe6eYKHIcISNB/VEuz8tFdMJcUQLKTnOgfg3KOMc/gCf6F6XRB+8pLFJX2HuqX1IfqJdz6RljVnOWSSLYBDb7+B6zwHcEJtRawCmjh4S2iypqPPsyk6qGJxXtbGrctlc6Q4lPx0hgVnbgo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:f3829ec8-3043-426c-8809-cf118eeade08,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:c755f913-2bbc-41f9-92fe-9bf14571735f,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:50cad149-a527-43d8-8af6-bc8b32d9f5e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:d152168c-f5b8-47d5-8cf3-b68fe7530c9a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|102,TC:nil,Content:0|50,EDM:-3,IP
+	:nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: fca379b2fb4b11ef83f2a1c9db70dae0-20250307
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <qun-wei.lin@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: 8339e2f8fb5211ef83f2a1c9db70dae0-20250307
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <darren.ye@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 218018552; Fri, 07 Mar 2025 05:02:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 1298808667; Fri, 07 Mar 2025 05:48:47 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 7 Mar 2025 20:02:01 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 20:02:01 +0800
-From: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-To: Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, Sergey
- Senozhatsky <senozhatsky@chromium.org>, Vishal Verma
-	<vishal.l.verma@intel.com>, Dan Williams <dan.j.williams@intel.com>, Dave
- Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris
- Li <chrisl@kernel.org>, Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying"
-	<ying.huang@intel.com>, Kairui Song <kasong@tencent.com>, Dan Schatzberg
-	<schatzberg.dan@gmail.com>, Barry Song <baohua@kernel.org>, Al Viro
-	<viro@zeniv.linux.org.uk>
-CC: <linux-kernel@vger.kernel.org>, <linux-block@vger.kernel.org>,
-	<nvdimm@lists.linux.dev>, <linux-mm@kvack.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Casper Li <casper.li@mediatek.com>, Chinwen Chang
-	<chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, James
- Hsu <james.hsu@mediatek.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Subject: [PATCH 0/2] Improve Zram by separating compression context from kswapd
-Date: Fri, 7 Mar 2025 20:01:02 +0800
-Message-ID: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+ 15.2.1258.28; Fri, 7 Mar 2025 20:48:45 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 7 Mar 2025 20:48:44 +0800
+From: Darren.Ye <darren.ye@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Linus
+ Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
+CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>, Darren Ye
+	<darren.ye@mediatek.com>
+Subject: [PATCH 00/14] ASoC: mediatek: Add support for MT8196 SoC
+Date: Fri, 7 Mar 2025 20:47:26 +0800
+Message-ID: <20250307124841.23777-1-darren.ye@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_040213_989853_F0364D87 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20250307_044854_311470_546C7F0E 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,60 +89,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch series introduces a new mechanism called kcompressd to
-improve the efficiency of memory reclaiming in the operating system. The
-main goal is to separate the tasks of page scanning and page compression
-into distinct processes or threads, thereby reducing the load on the
-kswapd thread and enhancing overall system performance under high memory
-pressure conditions.
+From: Darren Ye <darren.ye@mediatek.com>
 
-Problem:
- In the current system, the kswapd thread is responsible for both
- scanning the LRU pages and compressing pages into the ZRAM. This
- combined responsibility can lead to significant performance bottlenecks,
- especially under high memory pressure. The kswapd thread becomes a
- single point of contention, causing delays in memory reclaiming and
- overall system performance degradation.
+This series of patches adds support for Mediatek AFE of MT8196 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-Target:
- The target of this invention is to improve the efficiency of memory
- reclaiming. By separating the tasks of page scanning and page
- compression into distinct processes or threads, the system can handle
- memory pressure more effectively.
+---
+This series patches dependent on:
+[1]
+https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek.com/
 
-Patch 1:
-- Introduces 2 new feature flags, BLK_FEAT_READ_SYNCHRONOUS and
-  SWP_READ_SYNCHRONOUS_IO.
+Darren Ye (14):
+  ASoC: mediatek: common: modify mtk afe common driver for mt8196
+  ASoC: mediatek: common: modify mtk afe platform driver for mt8196
+  ASoC: mediatek: mt8196: add common header
+  ASoC: mediatek: mt8196: add common interface for mt8196 DAI driver
+  ASoC: mediatek: mt8196: support audio clock control
+  ASoC: mediatek: mt8196: support audio GPIO control
+  ASoC: mediatek: mt8196: support ADDA in platform driver
+  ASoC: mediatek: mt8196: support I2S in platform driver
+  ASoC: mediatek: mt8196: support TDM in platform driver
+  ASoC: mediatek: mt8196: support CM in platform driver
+  ASoC: mediatek: mt8196: add platform driver
+  dt-bindings: mediatek: mt8196: add audio AFE document
+  ASoC: mediatek: mt8196: add machine driver with mt6681
+  dt-bindings: mediatek: mt8196: add mt8196-mt6681 document
 
-Patch 2:
-- Implemented the core functionality of Kcompressd and made necessary
-  modifications to the zram driver to support it.
-
-In our handheld devices, we found that applying this mechanism under high
-memory pressure scenarios can increase the rate of pgsteal_anon per second
-by over 260% compared to the situation with only kswapd.
-
-Qun-Wei Lin (2):
-  mm: Split BLK_FEAT_SYNCHRONOUS and SWP_SYNCHRONOUS_IO into separate
-    read and write flags
-  kcompressd: Add Kcompressd for accelerated zram compression
-
- drivers/block/brd.c             |   3 +-
- drivers/block/zram/Kconfig      |  11 ++
- drivers/block/zram/Makefile     |   3 +-
- drivers/block/zram/kcompressd.c | 340 ++++++++++++++++++++++++++++++++
- drivers/block/zram/kcompressd.h |  25 +++
- drivers/block/zram/zram_drv.c   |  21 +-
- drivers/nvdimm/btt.c            |   3 +-
- drivers/nvdimm/pmem.c           |   5 +-
- include/linux/blkdev.h          |  24 ++-
- include/linux/swap.h            |  31 +--
- mm/memory.c                     |   4 +-
- mm/page_io.c                    |   6 +-
- mm/swapfile.c                   |   7 +-
- 13 files changed, 446 insertions(+), 37 deletions(-)
- create mode 100644 drivers/block/zram/kcompressd.c
- create mode 100644 drivers/block/zram/kcompressd.h
+ .../bindings/sound/mediatek,mt8196-afe.yaml   |   259 +
+ .../sound/mediatek,mt8196-mt6681.yaml         |   122 +
+ sound/soc/mediatek/Kconfig                    |    30 +
+ sound/soc/mediatek/Makefile                   |     1 +
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |    30 +-
+ sound/soc/mediatek/common/mtk-afe-fe-dai.h    |     6 +
+ .../mediatek/common/mtk-afe-platform-driver.c |    63 +-
+ .../mediatek/common/mtk-afe-platform-driver.h |     5 +
+ sound/soc/mediatek/common/mtk-base-afe.h      |    13 +
+ sound/soc/mediatek/mt8196/Makefile            |    19 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.c    |   698 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.h    |   313 +
+ sound/soc/mediatek/mt8196/mt8196-afe-cm.c     |    94 +
+ sound/soc/mediatek/mt8196/mt8196-afe-cm.h     |    23 +
+ sound/soc/mediatek/mt8196/mt8196-afe-common.h |   290 +
+ .../soc/mediatek/mt8196/mt8196-afe-control.c  |   109 +
+ sound/soc/mediatek/mt8196/mt8196-afe-gpio.c   |   239 +
+ sound/soc/mediatek/mt8196/mt8196-afe-gpio.h   |    58 +
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    |  5134 +++++++
+ sound/soc/mediatek/mt8196/mt8196-dai-adda.c   |  2207 +++
+ sound/soc/mediatek/mt8196/mt8196-dai-i2s.c    |  4399 ++++++
+ sound/soc/mediatek/mt8196/mt8196-dai-tdm.c    |   837 ++
+ .../mediatek/mt8196/mt8196-interconnection.h  |   121 +
+ sound/soc/mediatek/mt8196/mt8196-mt6681.c     |   879 ++
+ sound/soc/mediatek/mt8196/mt8196-reg.h        | 12133 ++++++++++++++++
+ 25 files changed, 28055 insertions(+), 27 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml
+ create mode 100644 sound/soc/mediatek/mt8196/Makefile
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-cm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-cm.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-control.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-gpio.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-gpio.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-mt6681.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-reg.h
 
 -- 
 2.45.2
