@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8321C19F32
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 15:54:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5962C19F32
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Mar 2025 17:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G/pss6Ts/AltbDPOKG7yn++cg50XjUxZFa20rR9a5/A=; b=gTh8tFJG/YJF0AJblZsb9SCnhe
-	CjnGFqqBAPG0zthyt61ZLHIVJSN8tZJtaJcp/60/VXhzpicbfCtUjnr3X/ZpSwGso6T0gPgqUThPd
-	c4C86d7LbZSN/FI509j+Izlxi8peX/FGylmDJUm7Ynlt3xbrGZ91n6dlXgcTiHOC4UmJsZLUPzgBs
-	oiyV0LyqsqMhFrgWl++KtFkix0utavprJC+8Yp/BFrcc6MBLfv0AK6Ha63S4+ax6PLOQjpG+dSuZ3
-	AO4bSHJ9R0kEIiV9TMrj8XFBziGnjqgc2dftDi7yqAlCQAnK/U8JTTRBCS5A7O7Zhh0pYNBebqIsu
-	PHXAd01Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2C3Q4X0ItteLgwsYwLeWkV0M/heHOWfCW36IRAvXlAU=; b=ZdFItsbyqcgFpN
+	App0M5SBDfIGW7gh9LK3iv43J0gloryFNNXWaoA/9s5jd6Rzj2vbnd+t74SzdS7YMla5vHEzoTGHG
+	RnLm2B9FhkkL4V3ZAiKusjAE/llfz5VsOAYw43AMaxtwGH/zUCYmCqXmbMNZ2pflbqQYg8GHC664I
+	GEwDdtOiRlSidabGBj2KmuaDDhaPfV0YgF1sHq6DrAc9y15CK9TZiv9fHZYemyo8HeaPvV2/QNyxM
+	0IuCfu6kOVmP8VaB5/719OXx3ZWJokJDXlN/CCzohkqG6gilFQn0+DY6ZA7v8dEGCFanAAITrFlog
+	SA0c8Wia8h5T6SzuPewg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqa2B-0000000Em62-3Tom;
-	Fri, 07 Mar 2025 15:54:47 +0000
+	id 1tqbFz-0000000F1D3-3gkL;
+	Fri, 07 Mar 2025 17:13:07 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZwQ-0000000El9h-2uuC;
-	Fri, 07 Mar 2025 15:48:51 +0000
+	id 1tqbBZ-0000000F0Z4-30Z0;
+	Fri, 07 Mar 2025 17:08:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 321215C5BD2;
-	Fri,  7 Mar 2025 15:46:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 314C7C4CED1;
-	Fri,  7 Mar 2025 15:48:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E86BA5C5944;
+	Fri,  7 Mar 2025 17:06:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1ACEDC4CED1;
+	Fri,  7 Mar 2025 17:08:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741362529;
-	bh=cbQpumLmb4zRxxzXeh/NJGWOgnbL/WBEsGAddfW0Fcc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=N65vVkRX2qnTNsHI/Mryj3yrgzuscpAKf0NbItOKxb932B9Tb+1GNpcL+r80CVzSs
-	 /ueBhWKSiB3bJ7bGUc1946kLvdkvQc9PnKTvdKitZbw9VWvnl/A3JS+AA/JzYA5dXE
-	 PQvQPLjOSpKbNoA4Fyit4SuXtAyX6VeAKycEphJyepBR1hmKfg8MLhwIxbE9HWbtSq
-	 4vjrXvxpZSuGt7YkqB1uZskUNPLxeruSW3me2Zop8Z7Aaf0Yex6KHzNVSCuwlEY9BH
-	 1cJRbxta4F2xG52gXmzZVKXk2/Uk6IOiTaL8dO0oBKAcEDBjcHYQsuPnC9OdxUwiWE
-	 EJq3Hj/sTn2hg==
-Date: Fri, 7 Mar 2025 15:48:44 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Axe Yang =?utf-8?B?KOadqOejiik=?= <Axe.Yang@mediatek.com>
-Cc: Wenbin Mei =?utf-8?B?KOaiheaWh+W9rCk=?= <Wenbin.Mei@mediatek.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	Chaotian Jing =?utf-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
-	Andy-ld Lu =?utf-8?B?KOWNouS4nCk=?= <Andy-ld.Lu@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Yong Mao =?utf-8?B?KOavm+WLhyk=?= <yong.mao@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Qingliang Li =?utf-8?B?KOm7juaZtOS6rik=?= <Qingliang.Li@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
-Message-ID: <20250307-bust-diving-a57644a51543@spud>
-References: <20250306085028.5024-1-axe.yang@mediatek.com>
- <20250306085028.5024-2-axe.yang@mediatek.com>
- <3e84fda8-2566-4f18-8ef9-850c84789c34@collabora.com>
- <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+	s=k20201202; t=1741367312;
+	bh=rDDTdWoW3F3zLKcm1y89ZgAulGu1KIWL3Ub3VEnBd1o=;
+	h=From:Subject:Date:To:Cc:From;
+	b=sz4TdbAYn8qfnLpUX2pMwFYNhjck5ipk/K0NTtOi4DHV78+SLm3CWDoNwth6erWWz
+	 Jd9yPAs/mynFZzCGf2yHr+y6NlBrX7WyH9W5pKSW0K4px0/+TUTk19+s9XuAEVoJsN
+	 /RPRo7/Vf93OgCwzCSaYuoud8SRT/s8F6Lzkl/XaAUFF6HQh7CpD7SYFizvEd0aDVC
+	 eU1N/8xaYKL/+oPxRZxcgBiTEjBXfKE05sYAWaOmwfwRwmvgUJQJRt3G9fnQVPOeab
+	 sv7Sfl7fAgmR66QIIaZDcqFU9AZCW2jgJf16fSSiiDQ5rUIu0Q3TBGPdjO5CwjVt61
+	 vmb9izOLHOavQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH 0/2] Add gpio-ranges property for EN7581 gpio controller
+Date: Fri, 07 Mar 2025 18:08:18 +0100
+Message-Id: <20250307-en7581-gpio-range-v1-0-de1262105428@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="JvgKecrTkt2V/rEI"
-Content-Disposition: inline
-In-Reply-To: <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAIoy2cC/x2MSwqAIBQArxJvneAHsbpKtCh72tuoKEQg3j1xO
+ TAzFQpmwgLbVCHjS4Vi6CDmCexzBo+M7s4gudRcccMwGL0I5hNFlofgLF6KW4PSrtC7lNHRN57
+ 70doPPuGuwGMAAAA=
+X-Change-ID: 20250307-en7581-gpio-range-fceb30c7e2c9
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_074850_845629_CC231EFD 
-X-CRM114-Status: GOOD (  36.36  )
+X-CRM114-CacheID: sfid-20250307_090833_817847_6907E544 
+X-CRM114-Status: UNSURE (   6.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,117 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce missing gpio-ranges property for Airoha EN7581 evaluation
+board
 
---JvgKecrTkt2V/rEI
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Lorenzo Bianconi (2):
+      dt-bindings: pinctrl: airoha: Add missing gpio-ranges property
+      arm64: dts: airoha: en7581: Add gpio-ranges property for gpio controller
 
-On Fri, Mar 07, 2025 at 06:59:03AM +0000, Axe Yang (=E6=9D=A8=E7=A3=8A) wro=
-te:
-> On Thu, 2025-03-06 at 10:19 +0100, AngeloGioacchino Del Regno wrote:
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >=20
-> >=20
-> > Il 06/03/25 09:48, Axe Yang ha scritto:
-> > > Add 'mediatek,disable-single-burst' setting. This property can be
-> > > used to switch bus burst type, from single burst to INCR, which is
-> > > determined by the bus type within the IP. Some versions of the IP
-> > > are using AXI bus, thus this switch is necessary as 'single' is not
-> > > the burst type supported by the bus.
-> > >=20
-> > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> >=20
-> > I am mostly sure that this is not something to put in devicetree, but
-> > as
-> > platform data for specific SoC(s), as much as I'm mostly sure that
-> > all of
-> > the instances of the MSDC IP in one SoC will be *all* using either
-> > single
-> > or INCR.
->=20
-> No, actually MSDC IPs in one SoC are using different versions.
-> Usually MSDC1 (index from 1) is used as eMMC host, the left hosts are
-> used as SD/SDIO hosts. They have similar designs, but there are still
-> difference.
->=20
-> >=20
-> > So, I think I know the answer but I'll still ask just to be extremely
-> > sure:
-> >=20
-> > is there any MediaTek SoC that has different IP versions for
-> > different MSDC
-> > instances, and that hence require single burst on one instance and
-> > INCR on
-> > another instance?
->=20
-> Yes. Actually every SoC has different IP versions for eMMC and SD/SDIO
-> host as I said.
-> e.g. For MT8168, signel burst bit should be set to 1 for eMMC Host, but
-> 0 for SD/SDIO Host.
->=20
+ Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml | 3 +++
+ arch/arm64/boot/dts/airoha/en7581-evb.dts                            | 4 ++++
+ 2 files changed, 7 insertions(+)
+---
+base-commit: a8a297e8bb3dd304cac77f7c435a4983d885a657
+change-id: 20250307-en7581-gpio-range-fceb30c7e2c9
 
-Sounds like two different IPs that really should have different
-compatibles to me...
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-> >=20
-> > And if there is - is there a pattern? Is it always SDIO requiring
-> > INCR or
-> > always eMMC/SD requiring it?
-> >=20
-> >=20
->=20
-> No, there is no pattern. Both eMMC and SD/SDIO hosts need to be
-> configured base on IP version. There is no binding relationship between
-> eMMC/SD/SDIO and the burst type. eMMC burst type might be INCR or
-> single, same as SD/SDIO.
->=20
->=20
-> Regards,
-> Axe
->=20
->=20
-> >=20
-> > > ---
-> > >   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8 ++++++++
-> > >   1 file changed, 8 insertions(+)
-> > >=20
-> > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > index 0debccbd6519..6076aff0a689 100644
-> > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > @@ -100,6 +100,14 @@ properties:
-> > >       minimum: 0
-> > >       maximum: 0xffffffff
-> > >=20
-> > > +  mediatek,disable-single-burst:
-> > > +    $ref: /schemas/types.yaml#/definitions/flag
-> > > +    description:
-> > > +      Burst type setting. For some versions of the IP that do not
-> > > use
-> > > +      AHB bus, the burst type need to be switched to INCR.
-> > > +      If present, use INCR burst type.
-> > > +      If not present, use single burst type.
-> > > +
-> > >     mediatek,hs200-cmd-int-delay:
-> > >       $ref: /schemas/types.yaml#/definitions/uint32
-> > >       description:
-> >=20
-> >=20
-> >=20
-
---JvgKecrTkt2V/rEI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8sVWwAKCRB4tDGHoIJi
-0hRVAP9JFaU0LfHys70qFKw8YsFg94BJakg2ezMs8dUwmp2z1QD/cUINRP2md0VA
-qLxlWwCzLY6tY2JS7ftifR6/W+OfwQg=
-=ZH2G
------END PGP SIGNATURE-----
-
---JvgKecrTkt2V/rEI--
 
