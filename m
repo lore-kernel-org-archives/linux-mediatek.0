@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4896C28B28
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 19:18:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69BA1C28B28
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 19:28:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wGOs3LmheAB5/MRmZQpveixRYXMro9PfIyjH/kaB0yE=; b=wSZLogFkNO7nYLpBRkTxJg83wp
-	31HJU9nXr+njmMRrzXlPdwcSe690H2FaPlvLo6WBrLPOAFe5N1UERHK6mB95Ifi+nVG36Kis7d/VH
-	8mm/H/OPEVTUbq+hZbF/Ob6tNmnDRnj88zmQ34w1DDb3k3GiEEzIWLt5wndh7c0El3A6vwpdzf7A0
-	40NrUeR6vp2aaSSiShVRmxqOur6VFiICcIMVmqyx9uXGl0IL8hE+LfqODKKdkdPaZoopo8jRmk79M
-	QS/Kxo+KjXhAqMSllH35yyOUoxXBjmt0go0T4eAZ2oz00HHI44MKNHMMp4yc9Za5iiJQTYXJWAIOP
-	sp4JFDWg==;
+	bh=3/E2EMOQVZnwI+K3ur/QtYh2u8G3zbMy02Kb2mykmDM=; b=XZamB/L0PH+rSOQBGbedYUKIBY
+	JW6nsceNTOCJkcBxzorMKQMdxQKpBp7Puf3kzRpfrTrqlKqaz3ysVcK8u817W3zVVDnpduyQSWylT
+	hrAuJfYnFSt7nC7Nb8vYZ+ITNcUFxlow/mQ6iIpEMCV239DESIMeitm7DzUfNTiDS+UzwvjU3t/J1
+	nYJ7DMt29Kh3dtcg89bXOtTadk8bDFIG7Vcf+lHD1M1GUw6hy3CV0enQMvPUsU2PPCiGT2qEEDarq
+	lyNDwTOwIP+m6keYQqBmQsEBUOx4XG5rjwL8mOzQ/4i4pHdxjQ1wNsNQSEXTsiYYXH0nGUiAsEHt/
+	N3bYXSrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trMA5-000000012jF-2zQL;
-	Sun, 09 Mar 2025 19:18:09 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1trMKJ-000000013uG-1EbW;
+	Sun, 09 Mar 2025 19:28:43 +0000
+Received: from [192.198.163.17] (helo=mgamail.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trLj0-000000010Ig-1rej;
-	Sun, 09 Mar 2025 18:50:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 070625C4B54;
-	Sun,  9 Mar 2025 18:47:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43868C4CEE3;
-	Sun,  9 Mar 2025 18:50:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741546209;
-	bh=DE7rxV5hRZWbRfzVNpNP3kMmumFkL5JphKjCeeXHOkA=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=mPxiRP5wubFDs2aPs2uofBXSSevfhY1+Vm9j0ECn/EBxpR8GmpdAAS9JN9/M9jiCn
-	 bXAdVXOtQA7TDMrMVZrWkoiOrH8W4VFYUB5+QgedAAAEu0FvBYYh/T/LvJk0Id6dOm
-	 n1TOCKn3vIf+kEI+1+BzugoexCdqS1V8KvM4A8mBrtL6pv+lWRtxIN3LyG4Qik1/F7
-	 T4NqvW5+siU69hRS6SDVjhKPWBjNWPe/EYL5WXGQ6YJAy52g11rbIVCP1cuDSlkk4r
-	 ejdb/+osl4SG2D9m1hJQ6enPOVKfMLZzxGXfkuJjy8uMOPQ7MR/w0bevrgtyLQ1Y+j
-	 bd+1kSKK2B3iw==
-Date: Sun, 09 Mar 2025 13:50:07 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mediatek@lists.infradead.org, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
- upstream@airoha.com, linux-arm-kernel@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
- Russell King <linux@armlinux.org.uk>, devicetree@vger.kernel.org, 
- netdev@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Lee Jones <lee@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-In-Reply-To: <20250309172717.9067-6-ansuelsmth@gmail.com>
-References: <20250309172717.9067-1-ansuelsmth@gmail.com>
- <20250309172717.9067-6-ansuelsmth@gmail.com>
-Message-Id: <174154620758.1888708.16493498235993467665.robh@kernel.org>
+	id 1trMIf-000000013kw-0vnf;
+	Sun, 09 Mar 2025 19:27:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1741548421; x=1773084421;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Dk3dyE0dtJPnVxAV4n6omrRWpps5/OsjqC9n7SUzIAY=;
+  b=Y5g5uFA0rtnnLWUDHwmhQK/H4YRh2Nbo4VdPkQBO/3bc4fAqfV3FAsxN
+   8Nmjb4bBApa8iVAyCMNX4TOY+tY8sGt/yWj7aHWKy6Y+lYI57WBYjalDN
+   9qbPZXdoY+bw2BlWewkhvKXP0ZGEPye8PGAOdybRdWdol6JRwXF7lSK5+
+   ncLRBERRPEfywSHQn/UmQaP/MI1d91V+ESPkPswBP4qUQdVUFKL5EjZ5p
+   WgsZs9rZPBc7Tp93wgpJ7waSzG+Kw7PPZHc2n85GUL5u87Qb3+Uu/1Yst
+   8n4zSHnKJC8dJHwDqsUswm0X6fyapC0lvjukOkSBcBqAIzOi8NtqFsmym
+   g==;
+X-CSE-ConnectionGUID: 9x1NlWf1ToyV6kP/YdJClw==
+X-CSE-MsgGUID: Ng3PMeivQZWnygXykchUqQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11368"; a="42414973"
+X-IronPort-AV: E=Sophos;i="6.14,235,1736841600"; 
+   d="scan'208";a="42414973"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2025 12:26:56 -0700
+X-CSE-ConnectionGUID: UsC/pV4tTLOMuh37iVyUtw==
+X-CSE-MsgGUID: 5kmuBSalTDaAtTsev3gd4A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,234,1736841600"; 
+   d="scan'208";a="120288769"
+Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
+  by fmviesa010.fm.intel.com with ESMTP; 09 Mar 2025 12:26:52 -0700
+Received: from kbuild by a4747d147074 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1trMIT-0003PE-1U;
+	Sun, 09 Mar 2025 19:26:49 +0000
+Date: Mon, 10 Mar 2025 03:26:18 +0800
+From: kernel test robot <lkp@intel.com>
+To: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, upstream@airoha.com
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
 Subject: Re: [net-next PATCH v12 05/13] dt-bindings: mfd: Document support
  for Airoha AN8855 Switch SoC
+Message-ID: <202503100331.nksmBPCd-lkp@intel.com>
+References: <20250309172717.9067-6-ansuelsmth@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250309172717.9067-6-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_115010_601652_1586A5A0 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20250309_122701_304987_BC668B27 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,53 +103,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Christian,
 
-On Sun, 09 Mar 2025 18:26:50 +0100, Christian Marangi wrote:
-> Document support for Airoha AN8855 Switch SoC. This SoC expose various
-> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
-> 
-> It does also support i2c and timers but those are not currently
-> supported/used.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/mfd/airoha,an8855.yaml           | 186 ++++++++++++++++++
->  MAINTAINERS                                   |   1 +
->  2 files changed, 187 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> 
+kernel test robot noticed the following build warnings:
 
-My bot found errors running 'make dt_binding_check' on your patch:
+[auto build test WARNING on net-next/main]
 
-yamllint warnings/errors:
+url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/dt-bindings-nvmem-Document-support-for-Airoha-AN8855-Switch-EFUSE/20250310-013306
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20250309172717.9067-6-ansuelsmth%40gmail.com
+patch subject: [net-next PATCH v12 05/13] dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
+reproduce: (https://download.01.org/0day-ci/archive/20250310/202503100331.nksmBPCd-lkp@intel.com/reproduce)
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: phy@1: $nodename:0: 'phy@1' does not match '^ethernet-phy(@[a-f0-9]+)?$'
-	from schema $id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: phy@1: Unevaluated properties are not allowed ('compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: phy@2: $nodename:0: 'phy@2' does not match '^ethernet-phy(@[a-f0-9]+)?$'
-	from schema $id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/airoha,an8855.example.dtb: phy@2: Unevaluated properties are not allowed ('compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503100331.nksmBPCd-lkp@intel.com/
 
-doc reference errors (make refcheckdocs):
-Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
-MAINTAINERS: Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
+All warnings (new ones prefixed by >>):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250309172717.9067-6-ansuelsmth@gmail.com
+   Warning: Documentation/translations/ja_JP/SubmittingPatches references a file that doesn't exist: linux-2.6.12-vanilla/Documentation/dontdiff
+   Warning: Documentation/translations/zh_CN/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
+   Warning: Documentation/translations/zh_CN/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
+   Warning: Documentation/translations/zh_TW/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
+   Warning: Documentation/translations/zh_TW/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/misc/fsl,qoriq-mc.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/leds/backlight/ti,lp8864.yaml
+   Warning: lib/Kconfig.debug references a file that doesn't exist: Documentation/dev-tools/fault-injection/fault-injection.rst
+   Using alabaster theme
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
