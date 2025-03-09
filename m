@@ -4,91 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69BA1C28B28
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 19:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD974C28B28
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 19:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3/E2EMOQVZnwI+K3ur/QtYh2u8G3zbMy02Kb2mykmDM=; b=XZamB/L0PH+rSOQBGbedYUKIBY
-	JW6nsceNTOCJkcBxzorMKQMdxQKpBp7Puf3kzRpfrTrqlKqaz3ysVcK8u817W3zVVDnpduyQSWylT
-	hrAuJfYnFSt7nC7Nb8vYZ+ITNcUFxlow/mQ6iIpEMCV239DESIMeitm7DzUfNTiDS+UzwvjU3t/J1
-	nYJ7DMt29Kh3dtcg89bXOtTadk8bDFIG7Vcf+lHD1M1GUw6hy3CV0enQMvPUsU2PPCiGT2qEEDarq
-	lyNDwTOwIP+m6keYQqBmQsEBUOx4XG5rjwL8mOzQ/4i4pHdxjQ1wNsNQSEXTsiYYXH0nGUiAsEHt/
-	N3bYXSrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qmS7nqpKiN5EX5M1pPLcoLmn7dsa/ZTSXRmm6zpZCdQ=; b=PiheXXBTvcKBOnwMlPAgDhtWKn
+	0+iE6Adeyeclpzu2j2oYL3BPyw5ItHebP39gANvwLFMD2r8JEX4vsJejLUGXrdeSsqdqS2OLvN3+c
+	Qo5H0lqLBm12goktUC4v6vKSjd1Yq61ikxxePy1au08FdXMz5ejwq7uvvVI5PgFVpD6Vuf2apxLLW
+	HxAJLeHcTCvhkzrUkcaJFya6fwWrtxw6whaTQ0dlaoDj3v/OUzZSQO5p9TefSk2IKcakqSecUjtTf
+	yXwbxCYP1YEop/A/73Dn06wQoltCr0NlZ24cGVEz7BZ/X36bXQsK1pbjMgU7t6Z9PMEGQWiwGCEra
+	uv33XhtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trMKJ-000000013uG-1EbW;
-	Sun, 09 Mar 2025 19:28:43 +0000
-Received: from [192.198.163.17] (helo=mgamail.intel.com)
+	id 1trMiI-0000000167k-3QGF;
+	Sun, 09 Mar 2025 19:53:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trMIf-000000013kw-0vnf;
-	Sun, 09 Mar 2025 19:27:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1741548421; x=1773084421;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Dk3dyE0dtJPnVxAV4n6omrRWpps5/OsjqC9n7SUzIAY=;
-  b=Y5g5uFA0rtnnLWUDHwmhQK/H4YRh2Nbo4VdPkQBO/3bc4fAqfV3FAsxN
-   8Nmjb4bBApa8iVAyCMNX4TOY+tY8sGt/yWj7aHWKy6Y+lYI57WBYjalDN
-   9qbPZXdoY+bw2BlWewkhvKXP0ZGEPye8PGAOdybRdWdol6JRwXF7lSK5+
-   ncLRBERRPEfywSHQn/UmQaP/MI1d91V+ESPkPswBP4qUQdVUFKL5EjZ5p
-   WgsZs9rZPBc7Tp93wgpJ7waSzG+Kw7PPZHc2n85GUL5u87Qb3+Uu/1Yst
-   8n4zSHnKJC8dJHwDqsUswm0X6fyapC0lvjukOkSBcBqAIzOi8NtqFsmym
-   g==;
-X-CSE-ConnectionGUID: 9x1NlWf1ToyV6kP/YdJClw==
-X-CSE-MsgGUID: Ng3PMeivQZWnygXykchUqQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11368"; a="42414973"
-X-IronPort-AV: E=Sophos;i="6.14,235,1736841600"; 
-   d="scan'208";a="42414973"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2025 12:26:56 -0700
-X-CSE-ConnectionGUID: UsC/pV4tTLOMuh37iVyUtw==
-X-CSE-MsgGUID: 5kmuBSalTDaAtTsev3gd4A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,234,1736841600"; 
-   d="scan'208";a="120288769"
-Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
-  by fmviesa010.fm.intel.com with ESMTP; 09 Mar 2025 12:26:52 -0700
-Received: from kbuild by a4747d147074 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1trMIT-0003PE-1U;
-	Sun, 09 Mar 2025 19:26:49 +0000
-Date: Mon, 10 Mar 2025 03:26:18 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, upstream@airoha.com
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [net-next PATCH v12 05/13] dt-bindings: mfd: Document support
- for Airoha AN8855 Switch SoC
-Message-ID: <202503100331.nksmBPCd-lkp@intel.com>
-References: <20250309172717.9067-6-ansuelsmth@gmail.com>
+	id 1trMfj-000000015rG-0chH;
+	Sun, 09 Mar 2025 19:50:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5677F5C295C;
+	Sun,  9 Mar 2025 19:48:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D01DDC4CEED;
+	Sun,  9 Mar 2025 19:50:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741549849;
+	bh=8ySbkKhFRXNuJHrR+dQojieyUf+Le6VlZ6dqAVE1rBA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=vL4uHPJ9xNFvMEfLN4Ec7wuCyQBk4CvGg96VRLiQVjTdErydTSp7ri+PuMR/AqNvE
+	 Kmgts1dW8zJBzTEUubXkXyzukwbGalmCnd/ojq/0vSQE12plU3rrF54+8cge6/zdoz
+	 Bbnjlswtzje1uBkOeg6DHIWLXh07ojZf0+S86fVRH1SplUiVWdh0Rq58oevPcccqC1
+	 tu0B8TVkzt2MJsS4wJjDkZPYnQfIRa1yNK1V7pmaD2/CCmWCK3bbQAdvYACbUdlPqT
+	 Z80aksp2iPxS9LGFWTaCTU8qI5zHnwm9m6z3Fr2E2A8w72C8vFdVyOpUDGr50KAjPO
+	 TaRGpHsWSquBQ==
+Message-ID: <668ada6a-3e53-474d-be81-d69d75277c26@kernel.org>
+Date: Sun, 9 Mar 2025 20:50:39 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250309172717.9067-6-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/19] dt-bindings: mfd: mediatek: mt6397: Add accdet
+ subnode
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ kernel@collabora.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+References: <20250305-mt6359-accdet-dts-v4-0-e5ffa5ee9991@collabora.com>
+ <20250305-mt6359-accdet-dts-v4-1-e5ffa5ee9991@collabora.com>
+ <20250306-certain-jasmine-mastiff-fd67ba@krzk-bin>
+ <2fa6037d-b5e9-45b2-a5d5-dbc92fb3434b@notapiano>
+ <0663e03e-e331-4a06-be95-ce8d9059ed6b@kernel.org>
+ <cb2820d8-84e8-49ca-b497-1ea815679a3d@notapiano>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <cb2820d8-84e8-49ca-b497-1ea815679a3d@notapiano>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_122701_304987_BC668B27 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20250309_125051_277767_1B2B4EC2 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,37 +132,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+On 07/03/2025 14:22, Nícolas F. R. A. Prado wrote:
+> On Fri, Mar 07, 2025 at 08:11:26AM +0100, Krzysztof Kozlowski wrote:
+>> On 06/03/2025 13:19, Nícolas F. R. A. Prado wrote:
+>>>>>    It is interfaced to host controller using SPI interface by a proprietary hardware
+>>>>>    called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of pwrap.
+>>>>> @@ -224,6 +225,30 @@ properties:
+>>>>>      description:
+>>>>>        Pin controller
+>>>>>  
+>>>>> +  accdet:
+>>>>> +    type: object
+>>>>> +    additionalProperties: false
+>>>>> +    description:
+>>>>> +      The Accessory Detection module found on the PMIC allows detecting audio
+>>>>> +      jack insertion and removal, as well as identifying the type of events
+>>>>> +      connected to the jack.
+>>>>> +
+>>>>> +    properties:
+>>>>> +      compatible:
+>>>>> +        const: mediatek,mt6359-accdet
+>>>>
+>>>> You just removed the other file, no folding happened here. Drop the
+>>>> accdet node and fold this into parent.
+>>>
+>>> Sorry, I'm still not sure what you mean by folding here then. Right now the
+>>> accdet is a subnode of the PMIC. If you want me to remove the accdet node, where
+>>
+>> Yes
+>>
+>>> would its compatible and property go?
+>>
+>> compatible: nowhere, because it is close to redundancy.
+>>
+>> property: to the parent pmic node.
+>>
+>>     pmic {
+>>         compatible = "mediatek,mt6359";
+>>         interrupt-controller;
+>>         #interrupt-cells = <2>;
+>>
+>>         mediatek,hp-eint-high;
+>>     };
+> 
+> I'm not sure that's right. The ACCDET submodule does have some resources, IRQs,
+> that it registers in its mfd cell, see patch 2 of this series [1]. It also has
 
-kernel test robot noticed the following build warnings:
+Binding is supposed to be complete, so why suddenly we have here some
+resources which you did not add?
 
-[auto build test WARNING on net-next/main]
+Post complete binding, so you will get proper review.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/dt-bindings-nvmem-Document-support-for-Airoha-AN8855-Switch-EFUSE/20250310-013306
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20250309172717.9067-6-ansuelsmth%40gmail.com
-patch subject: [net-next PATCH v12 05/13] dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
-reproduce: (https://download.01.org/0day-ci/archive/20250310/202503100331.nksmBPCd-lkp@intel.com/reproduce)
+> its own driver (sound/soc/codecs/mt6359-accdet.c) that probes based on this
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503100331.nksmBPCd-lkp@intel.com/
+Drivers do not define bindings.
 
-All warnings (new ones prefixed by >>):
+> compatible and handles those interrupts. Why would it not get its own node like
 
-   Warning: Documentation/translations/ja_JP/SubmittingPatches references a file that doesn't exist: linux-2.6.12-vanilla/Documentation/dontdiff
-   Warning: Documentation/translations/zh_CN/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
-   Warning: Documentation/translations/zh_CN/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
-   Warning: Documentation/translations/zh_TW/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
-   Warning: Documentation/translations/zh_TW/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
->> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/mfd/airoha,an8855-mfd.yaml
-   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/misc/fsl,qoriq-mc.txt
-   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/leds/backlight/ti,lp8864.yaml
-   Warning: lib/Kconfig.debug references a file that doesn't exist: Documentation/dev-tools/fault-injection/fault-injection.rst
-   Using alabaster theme
+Sorry, cannot go. You cannot document binding post factum and claim "I
+have a driver which uses that compatible".
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+This would be a nice way to bypass review.
+
+> the other MFD cells?
+
+I explained why. I gave you the exact reason.
+
+Best regards,
+Krzysztof
 
