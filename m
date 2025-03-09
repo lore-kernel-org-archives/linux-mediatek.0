@@ -4,74 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F22DC28B2E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 17:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1318C28B28
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 18:06:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BrmgUU8m2W+dm6XtC7Lvzp3134bSe6hwOO06zK/FM4M=; b=vtYr+lpiovudsYVqM8K2cO/AZj
-	nMcccgRffOGMl9MkBCRv/pmPDLG1KzJJirhvi6RQMvtPklAGO7bvQvcCcgLOGkbxzXud4FM+cC2BX
-	FKFj3xv2/EQQ2TfMZ+Di8KLZUsQxvRK3btgMTNmAaJt1veI/iRjG+aUPWtcfVENSMfSaEQQ8O4GKA
-	awdXH202bM4zHoySW5BHxAJGXEIxET9V0fSAVEYuFz4TfG4OvLPOrEIJ7Ym0AcPOy99s2f+jQUhgc
-	i8+TB64D1C5crysv1EbLVUUiiekw8pCPlZh1q7gUuEiQj4sYQyblRH1IpznukuA2QftT9qE3PJmXl
-	3KT5NhQQ==;
+	bh=dIhdSeA+sKY04sYaP/yGGu7Uf1h3HX4WesIt7XvRbuE=; b=KqWQlYw1a1G+zmiy/F795vKlv3
+	tAaHvjfF7nWKgjeSrX7qlavZYSWd7QOAY4Cq7+pnmbilc/h98R+XNs+9c/KdHe10bvozWQeMTPP2u
+	4UVQ0ZA/DHHEHZSdaF7kG2VEZ8Gqq9aOr4qA8azc947GucFvKJtaXgTWsveBbYU9uWSEAhCpQd4J9
+	c0z9pdbTKTNyWXljLQc/vLwrKzBez5hpxMFsTWIXZ5Fv5bIJGX/IlGMeKhS/VcwcWK0M1tS20MWpX
+	fNJ2mT6LRAKRe7sNojtb6azMZ/drlkToLcrEG6UOJY1DHqzrTeSnnVqRzipIeLRs7pvdYjXjPWgIX
+	pvverkUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trKvo-00000000uUE-2XqZ;
-	Sun, 09 Mar 2025 17:59:20 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1trL2F-00000000vSW-2llT;
+	Sun, 09 Mar 2025 18:05:59 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trKlR-00000000ssG-3Qvq;
-	Sun, 09 Mar 2025 17:48:38 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43bd5644de8so36413745e9.3;
-        Sun, 09 Mar 2025 10:48:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741542516; x=1742147316; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=BrmgUU8m2W+dm6XtC7Lvzp3134bSe6hwOO06zK/FM4M=;
-        b=fzLUEejCjQVswt8N7BFI6XHFYfnT1sbgnVYwfFGnG+qXUjRE1XUHVVuntX080c8pkt
-         xUNZmcCozheKXO7hhZmmy4Xzu9jyj4JD2/KH5rGps52p21B2Y3mw85zA0W4Wy3rSo1Yb
-         9EeecFselJzAocJOJkw+WLdeKBkf9mlOj+JTjfbbtIVUSkX7kw3hu8go32Xca+ofJGHN
-         WL88s3EzT5MT1wOZkMtkTqExgol+ybqnPy6UIQz+vrorFqCMswp/hAYiXv02SeBVhbNN
-         0aazzlo3uNAUIdRO2AGWunMmqFpMlJpec0gqeDR+tZ/erkII7PoIMd7yKU1/prMfiYPT
-         xo7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741542516; x=1742147316;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BrmgUU8m2W+dm6XtC7Lvzp3134bSe6hwOO06zK/FM4M=;
-        b=FhWPtZfaafSojP2MI/vqi/4neclK9Y9FerCP73OOIl0oE9m7OZ9nenjNZLbC7VvnjQ
-         Om3uRC80EFppeUCdq5brZFIaFCY2SsIKedbnhEPiNyFHIFoimjQh5v9i6Dj8lhZZlT4V
-         N8Nggi9KzRCe45oM0pVhLa3EVqrj84ljDLlD7RSAn0ii57XLk2kwarkjjX/9nSgNZJXG
-         2Y8lmzDdT4eKV1YoqPwhXNQBNcf9A3lCS5zwPrhxHSbdAVlyMSsuLuL4BcUI/yOS9QA1
-         ooMFnWjhFEHanrbOrI9w307x9eMIP5coPHJyMpwFDxvpi9/axt4svXZ+PmAXZxU71uEW
-         PsiA==
-X-Forwarded-Encrypted: i=1; AJvYcCUYOS9av9GPTL2SHIGBtuz24KyvftdUaOhqHSLb3vrkhb4+tAVKFEXDKll+kzfjjyYrTZ6Qw84B4hY3ByTZzNxW@lists.infradead.org, AJvYcCVzlxtxMZ6DkSBMt5kH/lOvZgG+r/6E73BtK+zBKeYKIueoFi+nrMC77KeitNDAGoqoHfeSkYC/w+QVn7xw7js=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwoYckg+tSsrlDFg4PMVDArMMA8wSOgSZfCSM2AHm7OD/wOoPiF
-	fA/ooYgVWildz5ZDTu0WSeq7754TexUop6j9ebM1MKQPpfC9HySj
-X-Gm-Gg: ASbGnctDJ8vR9Hgi47nI7BZqUHoCUdcowEeB+DMvaSidLfLLQJn8vwW1ckc51JvHh2K
-	XBjjNnyikOUIDsw+pMULWe62vQ33/rrs+spYgJdEEEEl8fly9XV9BYoOb3pULLtPf7/H2NqZaMT
-	8aZfFPKzgaxmY2LkGiubwv6avq1v8yN4J2osXdLhlakXT5OH5msXcjpgukz7RoofjyEL7FGYnnM
-	vZx0eRu7OF6CVHmaS7DYPMSIiglzfm6R4n5eHms18ZbTUQvEwTnpUlWP4eJAoOejhI0TQfJ3va7
-	yVcwxXx+i4nw0Rc+3/5mV3E6IX0sr8msOfdhdyMUcal0KnwcKku5pjHIYwlR+s3nkGnLfi3soh6
-	q
-X-Google-Smtp-Source: AGHT+IFqmRVo6FIysacWzJ33TfZtTvUxXtYg7bp/VcB+skW5kxcsz3otvb9dL4N79FYLMYigyzY4bQ==
-X-Received: by 2002:a05:600c:524a:b0:43c:f75a:eb54 with SMTP id 5b1f17b1804b1-43cf75aed5emr10293205e9.13.1741542516005;
-        Sun, 09 Mar 2025 10:48:36 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ce8a493d0sm59519715e9.1.2025.03.09.10.48.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 09 Mar 2025 10:48:35 -0700 (PDT)
-Message-ID: <67cdd473.7b0a0220.170541.e2af@mx.google.com>
-X-Google-Original-Message-ID: <Z83UcX4X2gpPogQs@Ansuel-XPS.>
-Date: Sun, 9 Mar 2025 18:48:33 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1trKuA-00000000tyi-30g8;
+	Sun, 09 Mar 2025 17:57:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=dIhdSeA+sKY04sYaP/yGGu7Uf1h3HX4WesIt7XvRbuE=; b=dc5fL2Pap+D9k82kWKY/cDDfZu
+	iYILHTxmGsAQsiVsrzo8CHuB98dMQ38Jm1ctAkrGymRJnBUth5n79xKv46sDqw8cbEjiLTwXHchW2
+	8+MNISEP1foTylRjLfCrDZeiIjG/ZIPzFJkD/wxtw3V/Lr+oeVeS5XBmIVe2fNMiL4cS4fS1SeDKq
+	d9llRg6SOXq/m0zRSmU0RcSsWHI9Z6K2rlHPWnkyTpQjU6xEtLqzxdKk0SEjeyvZnw+u5B/uOiBSR
+	z6QBRB1XDGGTKcMAac9HTmIGLH9JXDB/eNfVW6dn+K4+cR+NmyAd2UeWAvrs9mS79HZaYGj7Vjl2K
+	rnIil4Ug==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:42970)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1trKtw-0001ar-2h;
+	Sun, 09 Mar 2025 17:57:24 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1trKts-0001dj-36;
+	Sun, 09 Mar 2025 17:57:21 +0000
+Date: Sun, 9 Mar 2025 17:57:20 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -89,17 +68,18 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [net-next PATCH v12 08/13] net: mdio: regmap: add OF support
+Subject: Re: [net-next PATCH v12 12/13] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <Z83WgMeg_IxgbxhO@shell.armlinux.org.uk>
 References: <20250309172717.9067-1-ansuelsmth@gmail.com>
- <20250309172717.9067-9-ansuelsmth@gmail.com>
- <Z83R9qVfGbSc8bJs@shell.armlinux.org.uk>
+ <20250309172717.9067-13-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z83R9qVfGbSc8bJs@shell.armlinux.org.uk>
+In-Reply-To: <20250309172717.9067-13-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_104837_868660_C2F471EE 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20250309_105738_909336_98597539 
+X-CRM114-Status: GOOD (  21.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,29 +94,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 09, 2025 at 05:37:58PM +0000, Russell King (Oracle) wrote:
-> On Sun, Mar 09, 2025 at 06:26:53PM +0100, Christian Marangi wrote:
-> > Permit to pass the device node pointer to mdio regmap config and permit
-> > mdio registration with an OF node to support DT PHY probe.
-> > 
-> > With the device node pointer NULL, the normal mdio registration is used.
-> 
-> Should this be using a device node, or a fwnode?
-> 
-> It depends _why_ you're adding this, and you omit to state that in the
-> commit description (hint - it should say why!)
->
+On Sun, Mar 09, 2025 at 06:26:57PM +0100, Christian Marangi wrote:
+> +static int an8855_port_enable(struct dsa_switch *ds, int port,
+> +			      struct phy_device *phy)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +
+> +	return regmap_set_bits(priv->regmap, AN8855_PMCR_P(port),
+> +			       AN8855_PMCR_TX_EN | AN8855_PMCR_RX_EN);
 
-Ugh totally forgot... It should be a device node. The use of the of_
-variant of mdiobus register permits to autoprobe PHY defined in device
-tree.
+Shouldn't you wait for phylink to call your mac_link_up() method?
 
-The current regmap driver only permit manual probe using the mask value
-so it's problematic for MFD usage with an abstract regmap and PHY
-autoprobe.
+> +}
+> +
+> +static void an8855_port_disable(struct dsa_switch *ds, int port)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +	int ret;
+> +
+> +	ret = regmap_clear_bits(priv->regmap, AN8855_PMCR_P(port),
+> +				AN8855_PMCR_TX_EN | AN8855_PMCR_RX_EN);
+> +	if (ret)
+> +		dev_err(priv->ds->dev, "failed to disable port: %d\n", ret);
 
-Will add additional info in the commit.
+Doesn't the link get set down before this is called? IOW, doesn't
+phylink call your mac_link_down() method first?
+
+...
+
+> +static void an8855_phylink_mac_link_up(struct phylink_config *config,
+> +				       struct phy_device *phydev, unsigned int mode,
+> +				       phy_interface_t interface, int speed,
+> +				       int duplex, bool tx_pause, bool rx_pause)
+> +{
+> +	struct dsa_port *dp = dsa_phylink_to_port(config);
+> +	struct an8855_priv *priv = dp->ds->priv;
+> +	int port = dp->index;
+> +	u32 reg;
+> +
+> +	reg = regmap_read(priv->regmap, AN8855_PMCR_P(port), &reg);
+> +	if (phylink_autoneg_inband(mode)) {
+> +		reg &= ~AN8855_PMCR_FORCE_MODE;
+> +	} else {
+> +		reg |= AN8855_PMCR_FORCE_MODE | AN8855_PMCR_FORCE_LNK;
+> +
+> +		reg &= ~AN8855_PMCR_FORCE_SPEED;
+> +		switch (speed) {
+> +		case SPEED_10:
+> +			reg |= AN8855_PMCR_FORCE_SPEED_10;
+> +			break;
+> +		case SPEED_100:
+> +			reg |= AN8855_PMCR_FORCE_SPEED_100;
+> +			break;
+> +		case SPEED_1000:
+> +			reg |= AN8855_PMCR_FORCE_SPEED_1000;
+> +			break;
+> +		case SPEED_2500:
+> +			reg |= AN8855_PMCR_FORCE_SPEED_2500;
+> +			break;
+> +		case SPEED_5000:
+> +			dev_err(priv->ds->dev, "Missing support for 5G speed. Aborting...\n");
+> +			return;
+> +		}
+> +
+> +		reg &= ~AN8855_PMCR_FORCE_FDX;
+> +		if (duplex == DUPLEX_FULL)
+> +			reg |= AN8855_PMCR_FORCE_FDX;
+> +
+> +		reg &= ~AN8855_PMCR_RX_FC_EN;
+> +		if (rx_pause || dsa_port_is_cpu(dp))
+> +			reg |= AN8855_PMCR_RX_FC_EN;
+> +
+> +		reg &= ~AN8855_PMCR_TX_FC_EN;
+> +		if (rx_pause || dsa_port_is_cpu(dp))
+> +			reg |= AN8855_PMCR_TX_FC_EN;
+> +
+> +		/* Disable any EEE options */
+> +		reg &= ~(AN8855_PMCR_FORCE_EEE5G | AN8855_PMCR_FORCE_EEE2P5G |
+> +			 AN8855_PMCR_FORCE_EEE1G | AN8855_PMCR_FORCE_EEE100);
+
+Why? Maybe consider implementing the phylink tx_lpi functions for EEE
+support.
+
+> +	}
+> +
+> +	reg |= AN8855_PMCR_TX_EN | AN8855_PMCR_RX_EN;
+> +
+> +	regmap_write(priv->regmap, AN8855_PMCR_P(port), reg);
+> +}
+> +
+> +static unsigned int an8855_pcs_inband_caps(struct phylink_pcs *pcs,
+> +					   phy_interface_t interface)
+> +{
+> +	/* SGMII can be configured to use inband with AN result */
+> +	if (interface == PHY_INTERFACE_MODE_SGMII)
+> +		return LINK_INBAND_DISABLE | LINK_INBAND_ENABLE;
+> +
+> +	/* inband is not supported in 2500-baseX and must be disabled */
+> +	return  LINK_INBAND_DISABLE;
+
+Spurious double space.
+
+> +}
+> +
+> +static void an8855_pcs_get_state(struct phylink_pcs *pcs, unsigned int neg_mode,
+> +				 struct phylink_link_state *state)
+> +{
+> +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
+> +	u32 val;
+> +	int ret;
+> +
+> +	ret = regmap_read(priv->regmap, AN8855_PMSR_P(AN8855_CPU_PORT), &val);
+> +	if (ret < 0) {
+> +		state->link = false;
+> +		return;
+> +	}
+> +
+> +	state->link = !!(val & AN8855_PMSR_LNK);
+> +	state->an_complete = state->link;
+> +	state->duplex = (val & AN8855_PMSR_DPX) ? DUPLEX_FULL :
+> +						  DUPLEX_HALF;
+> +
+> +	switch (val & AN8855_PMSR_SPEED) {
+> +	case AN8855_PMSR_SPEED_10:
+> +		state->speed = SPEED_10;
+> +		break;
+> +	case AN8855_PMSR_SPEED_100:
+> +		state->speed = SPEED_100;
+> +		break;
+> +	case AN8855_PMSR_SPEED_1000:
+> +		state->speed = SPEED_1000;
+> +		break;
+> +	case AN8855_PMSR_SPEED_2500:
+> +		state->speed = SPEED_2500;
+> +		break;
+> +	case AN8855_PMSR_SPEED_5000:
+> +		dev_err(priv->ds->dev, "Missing support for 5G speed. Setting Unknown.\n");
+> +		fallthrough;
+
+Which is wrong now, we have SPEED_5000.
+
+> +	default:
+> +		state->speed = SPEED_UNKNOWN;
+> +		break;
+> +	}
+> +
+> +	if (val & AN8855_PMSR_RX_FC)
+> +		state->pause |= MLO_PAUSE_RX;
+> +	if (val & AN8855_PMSR_TX_FC)
+> +		state->pause |= MLO_PAUSE_TX;
+> +}
+> +
+> +static int an8855_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+> +			     phy_interface_t interface,
+> +			     const unsigned long *advertising,
+> +			     bool permit_pause_to_mac)
+> +{
+> +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
+> +	u32 val;
+> +	int ret;
+> +
+> +	/*                   !!! WELCOME TO HELL !!!                   */
+> +
+[... hell ...]
+> +	ret = regmap_write(priv->regmap, AN8855_MSG_RX_LIK_STS_2,
+> +			   AN8855_RG_RXFC_AN_BYPASS_P3 |
+> +			   AN8855_RG_RXFC_AN_BYPASS_P2 |
+> +			   AN8855_RG_RXFC_AN_BYPASS_P1 |
+> +			   AN8855_RG_TXFC_AN_BYPASS_P3 |
+> +			   AN8855_RG_TXFC_AN_BYPASS_P2 |
+> +			   AN8855_RG_TXFC_AN_BYPASS_P1 |
+> +			   AN8855_RG_DPX_AN_BYPASS_P3 |
+> +			   AN8855_RG_DPX_AN_BYPASS_P2 |
+> +			   AN8855_RG_DPX_AN_BYPASS_P1 |
+> +			   AN8855_RG_DPX_AN_BYPASS_P0);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+
+Is this disruptive to the link if the link is up, and this is called
+(e.g. to change the advertisement rather than switch interface mode).
+If so, please do something about that - e.g. only doing the bulk of
+the configuration if the interface mode has changed.
+
+I guess, however, that as you're only using SGMII with in-band, it
+probably doesn't make much difference, but having similar behaviour
+in the various drivers helps with ongoing maintenance.
 
 -- 
-	Ansuel
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
