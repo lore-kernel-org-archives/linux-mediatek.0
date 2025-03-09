@@ -4,119 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4982AC28B25
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 00:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C11C28B30
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Mar 2025 13:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qPD5zeaLyTv7Qy4hdBTQxNRUyG0FnO7mcXkBMLrnQgo=; b=Ki7Oi2fwaSVVEPTe2bOy3KVx2g
-	vgBgd9vPQBCdOjDPCunUKoC3P7LkAS2oHd36m+H3fvOFkvTUFGRmZCfd7LZql+C1fSnyRP5T4/LVF
-	WLGXXvMlqnxOrO9ELeBlhtVQigmC2tLd5WbBaH3e9beIl8Y7na0bjXkfh9tLVAf/z2IYgHcVq9ds+
-	cpBUorLGZ/RKS3ptC/MtJYX/LEmU4SnuMMJ8LjiHEVlnZtjWfD3cyHkZ8X8Rs9bMP5gcENEnloXub
-	boDXktTRt8+OKAHqnoN6kiAYxOaNOYY8tmw/UWLQzGblD0EaI2uUXde9ZvyFVaun9bsjQP06Nf8OK
-	JFnoNMbA==;
+	bh=3IZp5z7nS232anPaIUnFqLxoHjUC4RU66ewstLpUgIU=; b=lICmKBQQNp8vJjPZGgBcUD/iky
+	h6LCAngJ6z2f4b02pRZjUcb8owv324rG8Fye6tE8OPjDKHLJMDTZ4tgcjFxagqJE1CNd7/813sCbu
+	DsuWTu7NvVYgBZgdvhZeGV4TEEqSKpZmL/XPrVI2EJqDyYZKHlx8BhG/rtAoLkDHRoUTH8MoGtlIv
+	yEuvQ1zhBpshIJrixxz57EG8pjPtdTDwkI863w+Yr5o/7VqJTgsxhLj11N/xEDsOf958CRjbR+hyP
+	k+vdZV7KoS0AWdbqEjX3ptuO/vZ4X/0zbI6Yk8VNxxgH2Lz8Qsyq9zM9lQxS4s2SQZdIMXNoLjM9N
+	gx1DsyMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tr4bX-0000000HMlk-3RTo;
-	Sun, 09 Mar 2025 00:33:19 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1trGlV-00000000anN-1zR6;
+	Sun, 09 Mar 2025 13:32:25 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tr4bU-0000000HMl1-3f7a;
-	Sun, 09 Mar 2025 00:33:18 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-43cf257158fso422745e9.2;
-        Sat, 08 Mar 2025 16:33:15 -0800 (PST)
+	id 1trGjr-00000000aQ8-26AN;
+	Sun, 09 Mar 2025 13:30:44 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-390fdaf2897so3213628f8f.0;
+        Sun, 09 Mar 2025 06:30:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741480394; x=1742085194; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qPD5zeaLyTv7Qy4hdBTQxNRUyG0FnO7mcXkBMLrnQgo=;
-        b=btm9VqW5pR7VG/ybkhVY6ZNA5VS7US9B3v3MCe4tZbxV52VQzLYwTu4hsz/6T71V3f
-         38MkwbME7ePXOHAlycGYOFxHGZ35mpduPSyHGGwn5BxA9alfGwbrxoF+iZfxIHSo/brQ
-         kRFXx5E6Lb1melqgWiC/n8wgdkCxj1JZzDe4wqt+wLwfYFl+IPsXb6c3f3CN6iIH/SGP
-         0/WkGafdjKmXNzVfjDVnMkapGR4NvCOwzQh0pbAxxJN+akRTrJ1jGda2vl5/h0HcakhZ
-         a6d3WNVURofPaTZ/gC9fYWtZahjwDiiIluEI6u7KLgoJYkUA6x8IiHzzc4v7dsdgdRyi
-         wlQw==
+        d=gmail.com; s=20230601; t=1741527038; x=1742131838; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3IZp5z7nS232anPaIUnFqLxoHjUC4RU66ewstLpUgIU=;
+        b=gdzzBkz3eWkSUHlf+3o8o4Es3FC3s73Doy8Mewi64X0zn4zXtcH5vc1jNQzKXvVOGT
+         2/kyDBX9viONm1CgenmoIM0i+iU9OZc82PO+xc08ze9h9U5x/6s5m0xcDqEtoDJt6Y3l
+         B8PwTEV2N97FMUY3/rGSdPKQqxnYG3Dole9wP2cLoVrlarIuyYGQS/Uhd8oF2BflF9cC
+         bwnpEpllZqaEPcMi1J/e7OUPL8blIini2BgULj/nn+ey5D2SptaXQ526+7Sb9/0vNOq0
+         Yxcj4wg/CwvHWX1IROZJdXRHUISZCvzojtdI7PvNYuaGvSeCTXKa5e10LHkHRzbGt4Zg
+         vtcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741480394; x=1742085194;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qPD5zeaLyTv7Qy4hdBTQxNRUyG0FnO7mcXkBMLrnQgo=;
-        b=uzUDVxLY4NUZq2INzyIzKgv87E0hV4/BxJuA2l28iyk1a7mWDNaLEaVzSgvkh4fR0X
-         EaC2ciqrVAQ+3/0wedbDhwQdthVs4Of9nuZhd4EtMQaDuQTpb4gEzL9kQwthrvISgrGs
-         HW73irBuTnGMQ1B2/9mjzCjGSmzM48QAZ1YS1A9DzEFj+Xq6dRxvTH3MZI6v1ujWj9Ku
-         /ezlGkRnkjlkIf0nxT2tCBm7qROtQsevzC3tQlos6+ed96Vp5gLS3hsEcPUYoZQ6laSJ
-         YuxsWJAuUY0cVMQQvj5gdmAeSjVfFBlu9kz3ZxPs2lmMr1jeV+SshOXOO34NCie8YBrX
-         AY3g==
-X-Forwarded-Encrypted: i=1; AJvYcCV/Z11ufo8LsCz5ep+H0DqsAUre8cvhHwDVc43Gf0+zKfIoEyfV7Q5yM1U3CMzkO4j40uCTaEXOS+t3RqNnTh0=@lists.infradead.org, AJvYcCW360lsxM7n1JIw28ndOsOzKxdbghiKmNXlzP8ZyITdwxP1babDl0nPW2WYyjNrNiPUMYeEtTTpy0h1iM6H@lists.infradead.org, AJvYcCWjyltNsh3ApTNw+e5JXToxe3T0tGA2ibUNyYH0LVLy7Itu0zhdvVWCKuRvS/yWVhxoUQF/8jlpEGCJtDgtums=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxU9vrbNcpRH2UcRaFhiS7h4c2tIQxOZTKfAhSE9K2k1SrrG2Rh
-	2BFrsELgYEw9D8IKVyjVYE0N+SO9fepAGW/Mh/vkPyVtM3G93/m9
-X-Gm-Gg: ASbGnctK9bbWi37RhxLF5UVZHlVIonvlfwZcJjwe6Q9aE7DlXqNVF6CRSceo9kUEMoL
-	LjfvCA5a0X7PXH9ryHpoqeICsj7RR8evaLx+ITtk5ZHDnIJZpwBdVTKdQAt7ALepj2zxwvBRH6T
-	7DXQc7osMoCJvNv+4VUqGCmCRIvyAcdGHR4mSB4UA2L6PvHyIdQq0G649kr2Qk7qfQJVctV12gi
-	sLixNcm0Gr3OgscNg3q+CpH7Xr0zAJrosHxstQwpEXU0bK2ohvpefW6H5/BtOki/G58MlJR2rhV
-	4d/KWoO6bDIqRVfeEzIzQifvFfgUNh56uXET/qa4shBJ+CQkzfeKkw8yTqn/0tq5HSjmwZNK1w=
-	=
-X-Google-Smtp-Source: AGHT+IH28MQPA+zgYnEC4J5mfzAYw/utosENTHqe/I9TDxz+92mmLwx5LY/MLbLi26Rzp9G7AsQlAA==
-X-Received: by 2002:a5d:584f:0:b0:391:ffc:2413 with SMTP id ffacd0b85a97d-39132da08b4mr5384923f8f.40.1741480393495;
-        Sat, 08 Mar 2025 16:33:13 -0800 (PST)
-Received: from prasmi.Home ([2a06:5906:61b:2d00:238d:d8a2:7f2b:419e])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c1031fdsm9976382f8f.89.2025.03.08.16.33.10
+        d=1e100.net; s=20230601; t=1741527038; x=1742131838;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3IZp5z7nS232anPaIUnFqLxoHjUC4RU66ewstLpUgIU=;
+        b=oZ+kJ1Wv39SeEtBE9epE3SOS9UIcJdXeLWeJ5HwSsCQmuOYNK7b+S3SQgCYsqAZjl+
+         /xmzBONVpvJE1dyuYpHk2gjgKY8903W17fpgFJy33AzhtbnU/8PdLj7/tjOwf7Ui2Uv1
+         +Qbm86qOFzvB1ukRYNwxHz7rfkmLkn9jd2fpV/sHIw1etW9ItYJcgdoPJW68MtnYT6Ty
+         5xtxaesnEvR4Xc7kjIGICzYiRPgg0yZfSbuYvWpbIWCJqYZuAFTzVfv/od8AdAx1+W1o
+         LGy8tuYelxkODXJQSHQLuPgFL0BEAIFnZgS5Ol2Zr1I2zuZU24lf3DXIWEPZye1fazC1
+         Em5w==
+X-Forwarded-Encrypted: i=1; AJvYcCV99W6gErpkYTNZn7mCr0fqYkLK+XJCorXJFiSKaQT0yoYjaDh7HtI0qZGf8LJx9oFjHWVT7RMt+mYY18q4gfU=@lists.infradead.org, AJvYcCVvQ2hc5hq6psCVhkYgoTnd94HlbyArPaulWBZb16hGWDg/oRfi555LjqUQMZ55xsst/RLYzvVERUsa@lists.infradead.org, AJvYcCX9I9Eh5asEuS5oyHZXPEh0DnyhIlS//bYCjNykaMoLU1MCcZ0hE0H1LtHBqDNT/3C00MnnN4LLiW3rbYj80ODo@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3IBBBjgfIR43mgXLr8Xgdsori+Nq6KROvVV1oqCk0fB7gfYMP
+	BhMU719ty0cfYwJWrjRiTnfpZMDG6R86r2869ZpoInxN2a+h9H6b
+X-Gm-Gg: ASbGncumVpezYU74CeFwXv5VG/SaNzHpDCXTXk/v56JOyVNS5nIBMCDJgkL2UzmLy7x
+	aXx8k2QyjsOyVb41qapAYmsnw8U+ngE/Raa/kGgFBn82KNFMc8DpmLusi8NAWQDqUbl6l8F/gv4
+	8WhwCKNE7UppcVxyptngmmVzkQMN+8G1cgUYgFRfxatdYtE2zQDM1bzt9wou5g03OApiU1Ck9ZN
+	IJ3Ji3u8GdSXDGc0keXPFTMTAE83JEnpzBx/6s5XC68YbAiA/PVME7S3zv2y+jLmAuUnKmKNgOE
+	KBDiu3oiRFdb5btouYzn7Ae9Fwd95LXCqS7Gzdn04TZg2oHqsMFdKihXRD1OlMvSNBIWhIuMR2N
+	PeJVMEVeCUHfmhw==
+X-Google-Smtp-Source: AGHT+IEg/pmtwT7lVJCZK8BpVYZB76uZfLQXRI3/kWO/yuj5TZlAaT7OiGF/3WHcicI73lmrX/qPnw==
+X-Received: by 2002:adf:cb01:0:b0:38f:3245:21fc with SMTP id ffacd0b85a97d-39132db1fdamr6602070f8f.50.1741527038019;
+        Sun, 09 Mar 2025 06:30:38 -0700 (PDT)
+Received: from localhost.localdomain (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3912bee262esm11867536f8f.0.2025.03.09.06.30.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Mar 2025 16:33:11 -0800 (PST)
-From: Prabhakar <prabhakar.csengg@gmail.com>
-X-Google-Original-From: Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+        Sun, 09 Mar 2025 06:30:37 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Lee Jones <lee@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	Linux Team <linux-imx@nxp.com>,
-	David Wu <david.wu@rock-chips.com>,
-	Christophe Roullier <christophe.roullier@foss.st.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	netdev@vger.kernel.org
-Cc: devicetree@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Daniel Danzberger <dd@embedd.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nikita Shubin <nikita.shubin@maquefel.me>,
+	Guo Ren <guoren@kernel.org>,
+	Yangyu Chen <cyy@cyyself.name>,
+	Ben Hutchings <ben@decadent.org.uk>,
+	Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Prabhakar <prabhakar.csengg@gmail.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Subject: [PATCH net-next] dt-bindings: net: Define interrupt constraints for DWMAC vendor bindings
-Date: Sun,  9 Mar 2025 00:33:01 +0000
-Message-ID: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-X-Mailer: git-send-email 2.43.0
+	linux-usb@vger.kernel.org,
+	upstream@airoha.com
+Subject: [PATCH 00/13] airoha: en7581: clk cleanup + USB support
+Date: Sun,  9 Mar 2025 14:29:31 +0100
+Message-ID: <20250309132959.19045-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_163316_945889_0AB27183 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20250309_063043_538288_406F383D 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,170 +119,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+This series implement all the changes required to correctly handle
+USB support for the Airoha EN7581 SoC.
 
-The `snps,dwmac.yaml` binding currently sets `maxItems: 3` for the
-`interrupts` and `interrupt-names` properties, but vendor bindings
-selecting `snps,dwmac.yaml` do not impose these limits.
+The first few patch are cleanup for the clock driver and the
+introduction of the SCU SSR SoC driver.
 
-Define constraints for `interrupts` and `interrupt-names` properties in
-various DWMAC vendor bindings to ensure proper validation and consistency.
+The SoC always support USB 2.0 but for USB 3.0 it needs additional
+configuration for the Serdes port. Such port can be either configured
+for USB usage or for PCIe lines or HSGMII and these are configured
+in the SCU space.
 
-Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
----
-Hi All,
+To correctly handle this, the SCU is changed to a simple-mfd
+implemenetation and the clock controller updated to follow this new
+node structure. Both implementation are supported to handle old
+binding.
 
-Based on recent patch [0] which increases the interrupts to 11
-and adds `additionalItems: true` its good to have constraints
-to validate the schema. Ive made the changes based on the DT
-binding doc and the users. Ive ran dt binding checks to ensure
-the constraints are valid. Please let me know if you'd like me
-to split this patch or if any of the constraints are incorrect,
-as I don't have documentation for all of these platforms.
+The xHCI USB is based on the Mediatek implementation but the PHY
+handling although conceptually similar, is indded different compared
+to Mediatek due to SSR checks and different port power up.
 
-https://lore.kernel.org/all/20250308200921.1089980-2-prabhakar.mahadev-lad.rj@bp.renesas.com/
+The SSR driver expose an API to poll the current status of the Serdes
+port and the USB PHY driver validates it. Refer to the specific commit
+for additional info.
 
-Cheers, Prabhakar
----
- .../devicetree/bindings/net/amlogic,meson-dwmac.yaml   |  6 ++++++
- .../devicetree/bindings/net/intel,dwmac-plat.yaml      |  6 ++++++
- .../devicetree/bindings/net/mediatek-dwmac.yaml        |  6 ++++++
- .../devicetree/bindings/net/nxp,dwmac-imx.yaml         |  8 ++++++++
- .../devicetree/bindings/net/rockchip-dwmac.yaml        | 10 ++++++++++
- Documentation/devicetree/bindings/net/stm32-dwmac.yaml | 10 ++++++++++
- .../bindings/net/toshiba,visconti-dwmac.yaml           |  6 ++++++
- 7 files changed, 52 insertions(+)
+Consider that there is currently an inconsistency as AN7581 and
+EN7581 refer to the same thing. This is due to the fact that
+the SoC born under EcoNet but then was acquired by Airoha.
 
-diff --git a/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml b/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
-index 798a4c19f18c..0cd78d71768c 100644
---- a/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
-@@ -152,6 +152,12 @@ properties:
-           The second range is is for the Amlogic specific configuration
-           (for example the PRG_ETHERNET register range on Meson8b and newer)
- 
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    const: macirq
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
-index 42a0bc94312c..62c1da36a2b5 100644
---- a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
-+++ b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
-@@ -41,6 +41,12 @@ properties:
-       - const: ptp_ref
-       - const: tx_clk
- 
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    const: macirq
-+
- required:
-   - compatible
-   - clocks
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index ed9d845f6008..3aab21b8e8de 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -64,6 +64,12 @@ properties:
-       - const: rmii_internal
-       - const: mac_cg
- 
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    const: macirq
-+
-   power-domains:
-     maxItems: 1
- 
-diff --git a/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml b/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
-index 87bc4416eadf..e5db346beca9 100644
---- a/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
-+++ b/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
-@@ -56,6 +56,14 @@ properties:
-         - tx
-         - mem
- 
-+  interrupts:
-+    maxItems: 2
-+
-+  interrupt-names:
-+    items:
-+      - const: macirq
-+      - const: eth_wake_irq
-+
-   intf_mode:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     items:
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-index f8a576611d6c..891396140a7f 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-@@ -58,6 +58,16 @@ properties:
-               - rockchip,rv1126-gmac
-           - const: snps,dwmac-4.20a
- 
-+  interrupts:
-+    minItems: 1
-+    maxItems: 2
-+
-+  interrupt-names:
-+    minItems: 1
-+    items:
-+      - const: macirq
-+      - const: eth_wake_irq
-+
-   clocks:
-     minItems: 5
-     maxItems: 8
-diff --git a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
-index 85cea9966a27..987254900d0d 100644
---- a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
-@@ -54,6 +54,16 @@ properties:
-     items:
-       - const: stmmaceth
- 
-+  interrupts:
-+    minItems: 1
-+    maxItems: 2
-+
-+  interrupt-names:
-+    minItems: 1
-+    items:
-+      - const: macirq
-+      - const: eth_wake_irq
-+
-   clocks:
-     minItems: 3
-     items:
-diff --git a/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml b/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
-index 052f636158b3..f0f32e18fc85 100644
---- a/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
-@@ -42,6 +42,12 @@ properties:
-       - const: stmmaceth
-       - const: phy_ref_clk
- 
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    const: macirq
-+
- required:
-   - compatible
-   - reg
+Christian Marangi (13):
+  clk: en7523: convert driver to regmap API
+  clk: en7523: generalize register clocks function
+  dt-bindings: soc: airoha: add SCU SSR Serdes port binding
+  dt-bindings: soc: airoha: add Documentation for Airoha AN7581 SCU SSR
+  dt-bindings: mfd: add Documentation for Airoha EN7581 SCU
+  dt-bindings: clock: airoha: make reg optional for Airoha EN7581
+  clk: en7523: support getting regmap from parent node for EN7581
+  soc: airoha: add support for configuring SCU SSR Serdes port
+  dt-bindings: phy: Add documentation for Airoha AN7581 USB PHY
+  phy: airoha: Add support for Airoha AN7581 USB PHY
+  usb: host: add ARCH_AIROHA in XHCI MTK dependency
+  arm64: dts: airoha: en7581: convert SCU clock node to MFD
+    implementation
+  arm64: dts: airoha: en7581: add USB and SCU SSR nodes
+
+ .../bindings/clock/airoha,en7523-scu.yaml     |  13 +-
+ .../mfd/airoha,en7581-scu-sysctl.yaml         |  68 +++
+ .../bindings/phy/airoha,an7581-usb-phy.yaml   | 106 ++++
+ .../soc/airoha/airoha,an7581-scu-ssr.yaml     | 106 ++++
+ MAINTAINERS                                   |  15 +
+ arch/arm64/boot/dts/airoha/en7581.dtsi        |  74 ++-
+ drivers/clk/clk-en7523.c                      | 258 ++++----
+ drivers/phy/Kconfig                           |   1 +
+ drivers/phy/Makefile                          |   3 +-
+ drivers/phy/airoha/Kconfig                    |  13 +
+ drivers/phy/airoha/Makefile                   |   3 +
+ drivers/phy/airoha/phy-airoha-usb.c           | 554 ++++++++++++++++++
+ drivers/soc/Kconfig                           |   1 +
+ drivers/soc/Makefile                          |   1 +
+ drivers/soc/airoha/Kconfig                    |  18 +
+ drivers/soc/airoha/Makefile                   |   3 +
+ drivers/soc/airoha/airoha-scu-ssr.c           | 195 ++++++
+ drivers/usb/host/Kconfig                      |   2 +-
+ include/dt-bindings/soc/airoha,scu-ssr.h      |  24 +
+ include/linux/soc/airoha/airoha-scu-ssr.h     |  17 +
+ include/linux/soc/soc/airoha-scu-ssr.h        |  17 +
+ 21 files changed, 1355 insertions(+), 137 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+ create mode 100644 Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/airoha/airoha,an7581-scu-ssr.yaml
+ create mode 100644 drivers/phy/airoha/Kconfig
+ create mode 100644 drivers/phy/airoha/Makefile
+ create mode 100644 drivers/phy/airoha/phy-airoha-usb.c
+ create mode 100644 drivers/soc/airoha/Kconfig
+ create mode 100644 drivers/soc/airoha/Makefile
+ create mode 100644 drivers/soc/airoha/airoha-scu-ssr.c
+ create mode 100644 include/dt-bindings/soc/airoha,scu-ssr.h
+ create mode 100644 include/linux/soc/airoha/airoha-scu-ssr.h
+ create mode 100644 include/linux/soc/soc/airoha-scu-ssr.h
+
 -- 
-2.43.0
+2.48.1
 
 
