@@ -4,104 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B1DC28B30
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:12:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB322C282DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l5DEa09wiscb4LqtVRJpNAy3hWViEqi+/FfXF2zENFo=; b=HBm5YUddVSl1ciKc+VMsw7kltb
-	2uLd00rLrWz1eA/hsWaI4JvN4ZX3Vu56g/UlJFLZESPGe/k9Ci3daKkXkWZOdYQIfmfQCYzMLGwIV
-	0bjWoqh0M5bEjSXrXgfWI+u9fgebstml3iZonzR18S3QuKq0RjtFdT/N5fqD/VnO+xLnkZOWy0MhN
-	Xb8K14Cl8qYOHpd3JF+yYdykXrvbOXK+TmI0cNBPNp7zvF87vyy9x/t/eI1dXw+bLN9SDe2jwO/je
-	ZTK1uhwMbvfoUytxd+9aWIbf1J5WOdT8Sc5ljc0a/Xo5fh908z47et+WLLYNiX1omKdVxMTjZewSW
-	UkeZsrEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=; b=0zZDStiChTu8Y6vg9I97MTJhqR
+	HJhanl5u+jMhoQY+k/6tYVBBUtrbvISp91RhuMozedQdRK7RA4CAXelaiVYUFHqet+x2uzOd3yoa+
+	VdFm9g+fTvHo6CEu7O+mkDBS8RAyzfaipvWhGwKwuzT1JrDTwBxcVUBG9IKXwibsdL9xaCI9sT/Ly
+	iqr+kr+DAY/gKjgwuVWiRJ7C7hp7c4lO4DHH/UxYGDBZTcP+1osz5u2wsimForK0BsymYPXbTqVKQ
+	Nsd3q9L9KBP43tDuAJuq0aSfH9HDrtjrKFhV4+wQGUC7YHyyz0jMCfEVtYdeJ5iTKjJFaO0g8rq43
+	cnM+J16Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trb3I-00000002O58-28qw;
-	Mon, 10 Mar 2025 11:12:08 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1trb4t-00000002OJu-0A6B;
+	Mon, 10 Mar 2025 11:13:47 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1traf5-00000002IdW-0jRB;
-	Mon, 10 Mar 2025 10:47:08 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-5e60cfef9cfso3275666a12.2;
-        Mon, 10 Mar 2025 03:47:06 -0700 (PDT)
+	id 1tragT-00000002IzU-0zsr
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Mar 2025 10:48:34 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4394345e4d5so22865185e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Mar 2025 03:48:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741603625; x=1742208425; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=l5DEa09wiscb4LqtVRJpNAy3hWViEqi+/FfXF2zENFo=;
-        b=Cx5cYPcnCGGMfNcMBtb5XE3jwCyf0u3ODuhUInmhbMWOjUtxgcuXPPs/I9zur0EN/E
-         fGCPZQ2vfJ5BTWwcxgmGCKl1/WMapbGJ+APvHfA7pBHOVHsfvGRIPd5C5B1RZ3+H/Fa+
-         MCC/VU0djcX3wDFc/gYduQppkHpeNL4EeFMNe3rsaRcGRAEVZc/sE8iyQofxU9YdJRGY
-         ykbdTNo5fgsVr99twblkXhw2KOv3I1Ear+Xh0l4wr1+aXOFHrWa/mfoIy32qyD2C785d
-         b5P5RzOvf0Cd1KL9CiO+QdQaw3UUnyj5jjhSlXKZPnms69GoghISHShrfEuCRhLFoCTF
-         Ks+g==
+        d=linaro.org; s=google; t=1741603711; x=1742208511; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=;
+        b=IensH9ow62SsG71YlmazmZUBJ0s6P2573urRNA+4EfPnSWvdYB/7/wxSbjdnGwn2gU
+         TaueRys7cKv/Tl5mwdtaEheTawOuNHcyJ1cBHM/s+e5jT+2r7dHJXVB2WpNOegF+oesd
+         jbvjZyr8XNwWN1eyVHkpZHo+lGr1YhV4lcdY/wTLmim21OZBoKn7TcaapB1JASNuA4Vh
+         u9d2OeVg6nC4+vgFDrH1Mk1juDEPtUH/5/vfqKxix+evb+4E8ahbQOWNGuIz2sywVTz4
+         wmxN+205cyBd/PPUMtoPHLB/As355+j8giAQuzvCZD4BpO2Gf6PtLRASv8lfksRr4l25
+         5eHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741603625; x=1742208425;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=l5DEa09wiscb4LqtVRJpNAy3hWViEqi+/FfXF2zENFo=;
-        b=f9ybJapv8YqNNhKS52fHtSB+60eaehnCcYE30242tn9FBNNms4D24EHC2pjxxp1ATE
-         z/qNvjWha+YMzlJxuOhLJ2UraPrizoTqi25pX0NUrzhNpb/ryeL2fd1FRvWjpFcUq1mf
-         xWsMzweyDWoEOmZk6JVbr5MaL24y7I+ntw4nSoxFSe8vVj0UVSdG6GsEFuIQgjUAmbJS
-         xwvoe7rc93qHbygk40xbz5maN6HFYYzfDtLAM0sKyQh/+MjHkQoigzHUICwE90cKLiNT
-         htiWSSKk+hA1DDTQ8TjFaUzE9D+Wyrrx7XXYP4Yg9wOhx/ospbvKcqxERX6AoVR/6HgU
-         +A0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCV8eE+YVkB7+5AKYaSv4YGBpwiSs5fsuqeXPPsxQpDkLVWgCGTRH0yCH+M7ep4hdpa+ylxGPBBcY020MIMRB0k=@lists.infradead.org, AJvYcCWRRaapixFeNsWsXa8dpD4jujV/wuvvbS531yqL5m0u50CQjIPoqdW+gFXxdUGHAVTnf8KZa3ujJSXf@lists.infradead.org, AJvYcCX+uNrLgeHAi7NzM4XXikBIabLaO/abTeZjjv+jq6AsTaTexqDqewyS8pT7mSIUKd+R0Rmc+kzac+aBhOrXR5gQ@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4sn287jILyat7HG+mE/2zCxutwnHNwJY8hS15MG3Cer2nakE9
-	uNuZcpssRbdolzD5FGJWyAMTbKlpskVFJ0gSTR9p8ulcnTgGZS6K
-X-Gm-Gg: ASbGncu+BvR/DE1EJjnoi2YjtJ04KTwhL+B8opbQyw10z8sM467ucuwbUCTofj8/u9i
-	jYc9v7Oc4pVk0hz1qz7a9uBhQacByZBi+VVbiABYlBiK3INUge8wN9CuKvmXvNAZswDFolmd3rC
-	uFFpZid2yxFNBi72yrSUOWos3+SIIvakCD4Jtog+csjqQ2K+iRgO6Ekf98VEy8EyZQuHzIC8ZAi
-	nBV1BwkQKFbeaNLmsloqFJrVBbHC1rZcg3jlo6OwfZdInPgX181VRqxwyq3UOVQLtdBmE2shLhR
-	HzM/alZSSmNJx11ho0jLltJ77m2v+F6/MgxpA+Ds5g==
-X-Google-Smtp-Source: AGHT+IGY9ZNuN9LrERXjHUYAwL4h4LC1ygOPlOz0b6pfTQ2hSZ2sXX5rhh5cw2fWoVRERYPwHIfVrQ==
-X-Received: by 2002:a17:907:8281:b0:abf:67d7:7816 with SMTP id a640c23a62f3a-ac2525dceb2mr1171265566b.3.1741603625111;
-        Mon, 10 Mar 2025 03:47:05 -0700 (PDT)
-Received: from Ansuel-XPS. ([85.119.46.8])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac23943d8absm742184666b.20.2025.03.10.03.47.02
+        d=1e100.net; s=20230601; t=1741603711; x=1742208511;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=;
+        b=i1rwdgz3D5sJfPYnCMThY8z8fSOpAWupfMktUTc7jPFH1742p/r0J2i8CdIiMgOPuX
+         rXHz2GH5lf4+4dR+Ah7u58SBN+QgNmzvZa1wPc5QUHKKLIOWgMErwTqkyWDe5BIob8CB
+         f3EEdI+avqShOHnSdCX3mfdqQAbpGgq68oSuXkhkzq72xZ856NQpC5m/T+CQYE46yqNR
+         6SMhBK1+/Jjh0kRDEoQmrYAlN5NoqvZpqrtoFPbU7OenAFowZyxFnXnDPkKZVkfyLXtu
+         J6HWvYnXOwp/QWlyHn3ZUoG8M/Ji8nJkfZ1AzxxxeoYnF1mAXQc5+QhhuUWjXlZSIcAG
+         A3GQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUznVNRaazJbxnfZvwHaTiKp8fXF8CGUGqg+JcPRrgO9cdrJGViZRmaoB1OFnsFLRBhWyqVjZumcgl5aq2AKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+VoPUUzIvBLjImhddj++dHQpnq6+VnLg4Nz5kHFI2RBi2yFX9
+	moCK+T0AgHjh+zXstSORXm08uTTH3UU6dy713Mnf1SpYLFqD9qnzqYCP6/bVakA=
+X-Gm-Gg: ASbGnct7Z06g9iqBhnLxFQ5bF+bTA/qPv1r3sxrtKIdy7zGjW//TeftK5q9uCWrjZYu
+	5M6Gp7iMGGHYwzQqdTj1m/40d8AuIvEvt2z7LtgS/MvlAnFRuoG2vzr4k7DUuDsSdxnbqdvjoT0
+	4t5mpa5HK7JFqaOk9bc8aE+TnTuiAGL6bwMl8sgPoGf2fXCAOPMKcn66gQrreeICp4fn9h128mx
+	s4C0vkjtHG9VgMBoW595Lq7AUMMUNMdwAIDQW7WwA88yxPpuBQUkImXhtMZWpfTrV/MrR5H0ab0
+	T+xX55VJtf2jYK/NEqNolQYAzzgkxalmrPC7MgJ1bv+hftLHSQ==
+X-Google-Smtp-Source: AGHT+IEvyQMgaUHnCuYCt+OpJiqkHIstn9Ui2odq4PjFQ9lNSszLbzPKWSr7S0YVwsCBZMsm/36JQg==
+X-Received: by 2002:a05:600c:470d:b0:43c:fab3:4fad with SMTP id 5b1f17b1804b1-43cfab351c6mr15054385e9.16.1741603710881;
+        Mon, 10 Mar 2025 03:48:30 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43cf27f8ef3sm45737585e9.11.2025.03.10.03.48.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Mar 2025 03:47:04 -0700 (PDT)
-Message-ID: <67cec328.170a0220.27ecbc.9c6e@mx.google.com>
-X-Google-Original-Message-ID: <Z87DJANlBejnqJHR@Ansuel-XPS.>
-Date: Mon, 10 Mar 2025 11:47:00 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+        Mon, 10 Mar 2025 03:48:30 -0700 (PDT)
+Date: Mon, 10 Mar 2025 13:48:27 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Nikita Shubin <nikita.shubin@maquefel.me>,
-	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
-	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH 05/13] dt-bindings: mfd: add Documentation for Airoha
- EN7581 SCU
-References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-6-ansuelsmth@gmail.com>
- <c1227083-a4ea-4dac-a9db-d6a5386c0437@kernel.org>
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH net] net: ethernet: mediatek: Fix bit field in
+ mtk_set_queue_speed()
+Message-ID: <eaab1b7b-b33b-458b-a89a-81391bd2e6e8@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <c1227083-a4ea-4dac-a9db-d6a5386c0437@kernel.org>
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_034707_217125_2E241F12 
-X-CRM114-Status: GOOD (  33.49  )
+X-CRM114-CacheID: sfid-20250310_034833_290775_B5AD8E67 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,101 +104,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 10, 2025 at 10:21:45AM +0100, Krzysztof Kozlowski wrote:
-> On 09/03/2025 14:29, Christian Marangi wrote:
-> > Add Documentation for Airoha EN7581 SCU.
-> > 
-> > Airoha EN7581 SoC expose registers to control miscellaneous pheriperals
-> > via the SCU (System Controller Unit).
-> > 
-> > Example of these pheriperals are reset-controller, clock-controller,
-> > PCIe line speed controller and bits to configure different Serdes ports
-> > for USB or Ethernet usage.
-> > 
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> >  .../mfd/airoha,en7581-scu-sysctl.yaml         | 68 +++++++++++++++++++
-> >  1 file changed, 68 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
-> > new file mode 100644
-> > index 000000000000..d7dc66f912c1
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
-> > @@ -0,0 +1,68 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/mfd/airoha,en7581-scu-sysctl.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Airoha EN7581 SCU (System Controller Unit)
-> > +
-> > +maintainers:
-> > +  - Christian Marangi <ansuelsmth@gmail.com>
-> > +
-> > +description:
-> > +  Airoha EN7581 SoC expose registers to control miscellaneous
-> > +  pheriperals via the SCU (System Controller Unit).
-> > +
-> One more comment - there is no such thing as "sysctl" in your hardware.
-> Look at the SCU binding which clearly says that it is the hardware you
-> are duplicating here, so the "System Control Unit".
-> 
-> So you have existing "This node defines the System Control Unit of the
-> EN7523 SoC" and you add one more node which defines the "System Control
-> Unit", so you have two "System Control Unit" device nodes?
-> 
-> Look also what Stephen asked for:
-> 
-> https://lore.kernel.org/all/20220106013100.842FCC36AEB@smtp.kernel.org/
-> 
-> so how system-controller can now became clock-controller? Now, it was
-> the system controller since the beginning.
->
+This was supposed to set "FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1)"
+but there was typo and the | operation was missing and which turned
+it into a no-op.
 
-The main problem here (and we had a similar problem with GPIO and PWM)
-is that the Vendor (Airoha) wasn't so bright in placing the different
-registers for the SoC so we have case where everything is mixed and not
-one after another... 
+Fixes: f63959c7eec3 ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+From static analysis, not tested.
 
-Example we have 
-- CLK register part 1
-- Some bits that configure PCIe
-- CLK register part 2
-- GPIO
-- CLK register part 3
-- ...
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The driver solution for this is syscon and the simple-mfd node
-structure.
-
-Now the main problem is how to modle this in DT. There are lots of case
-where the simple-mfd model is used (like the one proposed) but probably
-this is not accepted anymore. But again this should be clearly stated or
-we have a chicken-egg problem when other devs implement similar thing and
-have to implement simple MFD driver to handle this. (and driver
-maintainers say "Use the simple-mfd model like it was already done)
-
-For this specific case (and to give an answer to the clock patch after
-this) the problem is that this register space was originally used only
-to control the clock and I wasn't aware that it was also used to control
-USB. Now that I'm implementing support for it, the disaster happened.
-
-So In short SCU is lots of thing, both a system-controller, a
-clock-controller and even a reset-controller.
-
-To make it short, 2 different solution:
-1. We can keep the current node structure of the node-controller and add a
-child node for the SSR part (with a dedicated compatible).
-2. Those property need to be be defined in the clock-controller node?
-
-The ideal solution is 1. Does it work for you?
-
-Sorry for the long post and hope you understand why this mess of
-reworking the binding.
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 922330b3f4d7..9efef0e860da 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -757,7 +757,7 @@ static void mtk_set_queue_speed(struct mtk_eth *eth, unsigned int idx,
+ 		case SPEED_100:
+ 			val |= MTK_QTX_SCH_MAX_RATE_EN |
+ 			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 1) |
+-			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5);
++			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5) |
+ 			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
+ 			break;
+ 		case SPEED_1000:
 -- 
-	Ansuel
+2.47.2
+
 
