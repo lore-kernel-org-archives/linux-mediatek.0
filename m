@@ -4,191 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87787C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 15:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3596C282DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 15:18:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7oU7o6+ucZQ/I1gmGdjpyYcBr+AEX2cGpBtjwRsVKqs=; b=MGFY8iClB04p0XfaQgVvZZ+0Be
-	7ABfoeWJ9i/1x8WPVBVgkNPq8uRzytrqj1ZZlKKqlW4SR1bzib+RNMB93HaqK47CPbxCEQYFH2l0t
-	R6IwQD+BtEP27rfOYtwekVALxSLmFTEDZ8XYe0JM6hdyTK9vqFnUka6aogELjPxjyovR9TIds4SYT
-	6k4K5qWywfBaSGHXXDMYvYQmtbdRwrxg+NFAQ/O0ItLTamo4L2FnSl5ilPLMs6CdGcJvI3RK9FA1N
-	GRAoliFU+aONtY01cmhHIzbfJdkGu0Tjav9OCPaWHdn35lYMWRtXV6usrm3EWKxvvohcztSnF66Ji
-	JyTPU3VQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sFt6VJ1SZzCh+5Nreax5Fphv26muPLAuhKS3LWiPdjo=; b=Jsb+VanJfYRaBATEt/weJtmxaI
+	Q6dq1eTK4L8N4N7iKPki8hkKDex57OAMo+4CXEJr7AzUzZ+jThlZHmOD3tNU0aU3YECNKvSxhKMvZ
+	Lkd0uRfG2e9ma4S8ZqgdnKt/TIMjAuC+k/7xDp41dipj3Qz5THnzOAXc9UOoOu6lyaKS8A0pwlpdE
+	plD9elfZDR9O5Ak2UfgLgHxtjO92vX5KB02m1P3EjuH5oxjzVFR/WzXlu1WVIphxcp1AO2Zi8WCRx
+	crdSrgEBXBGubkTLghjU8tdJ2z7KrPJKL+LcCebBHPY4Ihi510qRImLCBkHz86OSkZ6UuAA2iRfKX
+	b8OgvLGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trei0-000000036Gc-2o5m;
-	Mon, 10 Mar 2025 15:06:24 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1tretl-000000039L3-35oV;
+	Mon, 10 Mar 2025 15:18:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trdPj-00000002pUf-2nRv;
-	Mon, 10 Mar 2025 13:43:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1741614207; x=1773150207;
-  h=date:from:to:cc:subject:message-id:references:
-   in-reply-to:mime-version;
-  bh=xFhhZi3d057iC3S7Vm8ag5NDJ9S7hMpaSK8HIW8jUcI=;
-  b=HubLfhvePU+6GIiDgUNY1q15wWtyRq9PT6enm+IJn20/+5coSqlOiwlB
-   7aGPOd6TZ0jH5Uhp8ZiFf9XLVm9nHmsTDGwRkoZj1ShTdLwJSney1WC/Q
-   osxlhN7ufKiPjA67QVwllsJfJu7JCID3YAwsQHOmFlT/Uiy9QufglGoFh
-   jraRDSK55FbX1XBVlLLahX3JxIbuIAGT6ZrsbZUyBMOSgxbFrkpw9lW/t
-   FdXmSvYcsdlSyDlM5Qc+QKXiGk3g3ZCfRlkmVnDN3ev56MYwcNWFVUjzJ
-   xESmUScHkZFAzVm8cjjYSuz2jSJg848VdFaHdmEKdDW8pX0+ha/DUKZ0Z
-   w==;
-X-CSE-ConnectionGUID: XXAykqtHQ3inZPIPMKzRHA==
-X-CSE-MsgGUID: RijHYxW1RH2a7pZjYK/xTA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11369"; a="60159011"
-X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; 
-   d="scan'208";a="60159011"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2025 06:43:22 -0700
-X-CSE-ConnectionGUID: eRJ/g0q5Q4aFXs/1A/Zk+w==
-X-CSE-MsgGUID: KZA3uYnUQay7aVkxwpXdOg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; 
-   d="scan'208";a="157199335"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
-  by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2025 06:43:22 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Mon, 10 Mar 2025 06:43:21 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Mon, 10 Mar 2025 06:43:21 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.175)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Mon, 10 Mar 2025 06:43:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BuKua69m759q6xUAufIVgQG5oPH1ZR5hPvkvs19rHmkDo714VGw8a1iRfVP2H8jtVNdZD1hVCOuRt4y7ZyTmEb0Tp8yJ3bzRG8KvIP0r0g3KGAXl9Z7j327T8k0VvcCOrz9WtAJLjYVhmpK4+yTQ2kKbBq0znk3eUNJ5jEAznBTbzJhVdQ1glwJEw+OzMitrIQfBiCY1c8Qsy86Y3s9kfQGw8mDv2p6hefdBB6LtGvuP8rrk1Xzzu+NcJyCBUaOY1d8IfbMh6QUYQTEopMemNIjld79gS1Gf1NxrzLxOQiaBngjSppDgTLUDQiFqU4zkyA2OrUnEL1NJiRUnedy2WQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7oU7o6+ucZQ/I1gmGdjpyYcBr+AEX2cGpBtjwRsVKqs=;
- b=YBznrVXDaLoyz+Ki3tb/XdGnZ3SifelgmEfIUQ7QBS205MSTf5CDyRaDV1ri3xzTVDm5J0ek8+j5PsYyRQtWuJ7K73eLVQMrntthQvaXGNczr/HdRqgJGj06G+jyWFzO9FOFYi7+B24poF/dZwKxReTxuMtYvf+edH2lZeBmxxPyQxaQMNJTisfGEciJPHi+TxIrv91uxJQ/NcG1m/WWeX6LWD4TnXxS1L2qUhXBy1uEsTovepitlW8IkICwJZ1puq2eTo/5IllrLrHoj9fdCQLS7yKrbGIoVTcV6OkU+jLXCLmohJypLHx+aOmOu+AEkBZF60vsdPqqMO/SXGH7Lg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com (2603:10b6:8:1b8::6) by
- SN7PR11MB7018.namprd11.prod.outlook.com (2603:10b6:806:2ad::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.26; Mon, 10 Mar
- 2025 13:42:50 +0000
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955]) by DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955%4]) with mapi id 15.20.8511.026; Mon, 10 Mar 2025
- 13:42:50 +0000
-Date: Mon, 10 Mar 2025 14:42:37 +0100
-From: Michal Kubiak <michal.kubiak@intel.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-CC: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn
-	<andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@csie.org>,
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
-	<linux-amlogic@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, <netdev@vger.kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Samuel Holland <samuel@sholland.org>, Vinod Koul
-	<vkoul@kernel.org>
-Subject: Re: [PATCH net-next 0/9] net: stmmac: remove unnecessary
- of_get_phy_mode() calls
-Message-ID: <Z87sTf8ZzMIpjXEw@localhost.localdomain>
-References: <Z87WVk0NzMUyaxDj@shell.armlinux.org.uk>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <Z87WVk0NzMUyaxDj@shell.armlinux.org.uk>
-X-ClientProxiedBy: MI2P293CA0014.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:45::13) To DS0PR11MB8665.namprd11.prod.outlook.com
- (2603:10b6:8:1b8::6)
+	id 1trdrj-00000002thP-2QqP;
+	Mon, 10 Mar 2025 14:12:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741615940;
+	bh=VvTbrukqJECgVTvGE9CueOWKZHry7TuKRTj4dDd5LMQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Q7fGuGPDPQQJuuvqwAmmG3YOMdB37C0ASjXgb30wy90gx7lXAsc5rwAnHkoB66KUt
+	 ez18FMdGSvq2oA1gYWklHwyoO4/Egrjat7yUr3NBwkLgh7oPvfzGzSZoGIsdr2IwgD
+	 GeYyjdFXgsk8X9J34l+eXs9DJnFyxCx9JCR0niYPBZZmEDRqIEkSdo99Q3ZxEareA0
+	 8z/bhoA7xanekNn4DVkbLtoyjzYmwGhr3pDw9Oy32aiOCbI5HcMMLzC+qa7AXSB314
+	 rq6/ia07V1BV0upd1PLbPiRk3Jhl0p5elG5jpyxm7KZ+XlnQLrLpyEtkRrNd2vKGM2
+	 BYy25HPKHu/0A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 16B1F17E0649;
+	Mon, 10 Mar 2025 15:12:20 +0100 (CET)
+Message-ID: <cd8bd504-8d91-4420-8053-10ee814417bf@collabora.com>
+Date: Mon, 10 Mar 2025 15:12:19 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8665:EE_|SN7PR11MB7018:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6999b34e-ae5d-401f-2d05-08dd5fd97345
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?lq+mIsSC7D3lWy9aHuGbzMWDD/yIRJes8iRx9D/QFAuR2zEA8jKsAvvJYjj6?=
- =?us-ascii?Q?0dpXkhn5MS00bLSpR/+s2hryEpcrqeyIrcCY+EEH9lTwpcJJAJVvJtW3aXlS?=
- =?us-ascii?Q?pfuvruGnwrsBejJsEqh+YeMUKOOSFgfvgNJxy41bouOXmqq0WCpfQQftrrSa?=
- =?us-ascii?Q?MyOALA1FPktYUwSo7THBhlRMLHj+3ABlFsFwro8UaG6a7rkCt1XHGQziFzyr?=
- =?us-ascii?Q?NZgkBzVN7rmtaPzaJMcNXAPDwc6IeWGGL+IhRagelykFo2X1dNaf91/hZrfd?=
- =?us-ascii?Q?+0cjTk9VEb69L5scd8e4LMq5ucU0pK0CJuDrQOm5tk09kMjleWnkppRRhwcQ?=
- =?us-ascii?Q?kAOf7dsz3VPEcERHXotW88HnPBtANvl9pnoJ4+8tRLTXi09jS/sNqctGa9JK?=
- =?us-ascii?Q?O03U8UT5l1ywb6VvNcraZswhXgWHl3vZ6rl8rAvp9suE74l2U52ZoOUKaOnw?=
- =?us-ascii?Q?o2CSP/ePwUzB3nEyCZJTPJVZNr5E+9vNo/+n/E223TfVLwmDYAazQb5iy0yB?=
- =?us-ascii?Q?gHRPoaMfXDBlaTs6nBjKMT4T9RZmc6BuhhCsJBrhpoblfCxllLVeRnSQJ40r?=
- =?us-ascii?Q?HiYUdH764HZJXJrr+gYZV3KBEuXf64Pr32wFMxtpvfboMavLXaervrTcxYt0?=
- =?us-ascii?Q?wbdNahvChYD9jbnUl2P2pt/n3KLnipv2ZPkRBKANz7QlIQZIhn18NJTdX/PA?=
- =?us-ascii?Q?a9qxwpw9RcqV+kwLOBp21wrea9kWfXoYc/1IrUWQd6uqPM+GM3Q+6uc/ZIVM?=
- =?us-ascii?Q?mtrcXC3A7AQIFdRQ9GQIIPvZcDhC6SuiC3rLg0dndDNVi5dwF4QynOIRUfSl?=
- =?us-ascii?Q?Ve3MZOBfdrfrh5UvScBY9YJ8RY5448dYYDX9uPRiOB3Pqk2acei6chRajGTF?=
- =?us-ascii?Q?odo5YRv2iWFBEicfKWq8mwFlyNyDXU6FiekJ+awenKTrPbKOIPDn7XgG7iR1?=
- =?us-ascii?Q?aSXSiDCLdbQQpZafqqqMeUH8FVpxH92BcC1U6lEtpq3bUxcPtYErGnDPJZmY?=
- =?us-ascii?Q?nZnPeSEcJCqHfHN8HiluPyV0VtP4K7yAnjOSDOtVZ/e+4y/YKjV1z8YBXe7O?=
- =?us-ascii?Q?D2uAfwVx/owYW/1SCSWZyFArcsAWS5KkqT7LxKIDeHmB4SBNLgMjfMYVzKzW?=
- =?us-ascii?Q?mg02fdIMZ/5GLgzy5y3XV8yc8ZAm08DorToQ+o2jVkbElIeM7WYkpJJWwGOX?=
- =?us-ascii?Q?5LPFmneD4Wi9luwU0/IDpgYD8tcBUw/FEiLi2LDXKCrHkpPaBGwDtl7UMPtO?=
- =?us-ascii?Q?kWzbmvT3m7h38PYYczeUCHCT5PzbcMgpsiOvZS5TrZcHGjFA0eJWn0gwhz2Y?=
- =?us-ascii?Q?6cbsDnCOJk1WA4R+1Ue5RjKg/Lp2qyxtk9DbnV8CRAM3LrG0KmpTktH7f51f?=
- =?us-ascii?Q?xFPJxRS37tWMbMyb1S396z0QB521?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8665.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Tm+GYb5W/Al/s3L1EXLkF6CFF+613siYRf3s8wwHp3hrYNbFA6euKCSGDuC4?=
- =?us-ascii?Q?uAm9Db9K8SKYVAEd+JHaip+Z4O7jcYpNMZBD+Z3Tk5UuWN/8lbc/rJMO+p1k?=
- =?us-ascii?Q?GhxRyT/Q/QH9jzC6lrwSEI3NzKVXKF7TOiXkIgDmWlkWdCv4UHuFDrGkM0OM?=
- =?us-ascii?Q?T2J1wQZGW42usCS033ir5Z2W2qw+WjnrRFN/9e316NhEbUWPN3PHRh9QAguz?=
- =?us-ascii?Q?EXeII7PDJ55gacfi0GUHP2lb27ZhE3abkRqQL83nRolBAMKIMsW9sRuA69B/?=
- =?us-ascii?Q?TI9IqakL4ejQ4fdqsAb41oAyG21mg9NpxkLTUfgE9kvMWCLP3i6/YEAS4Lqp?=
- =?us-ascii?Q?cG/Uy/aken/y1mW1fsaEFi3TWfBcflrCH0BEMVHY18JVqReNtDFPyXCPqRgB?=
- =?us-ascii?Q?rudL3KROAWhCQKBEqMUYdHGFy9E7p5CrzDAsU2YTt6jOJEbrDP3whpu51W4H?=
- =?us-ascii?Q?yCt8/gxWJr4PJAeD5LrZsMsqrjb5xt/UKqTpirz9VcBWfJMN2K1ZYQ5OcQnf?=
- =?us-ascii?Q?mpIUn/qsu9YnrHPQWfjQXAj3H1PBNVaoDVOukHsnepyRKQrIH60qBkOIe8Qp?=
- =?us-ascii?Q?/fnaMqKCR7GdfzFObrnpIG2aJ9d9AtKF15e33aovGN615CtA77SX5WQRa9bw?=
- =?us-ascii?Q?fhEDOPbIBuoVZeyHseN//wawITx+jmJekPpYyIBod1UCuRsgKrhgcJkqcIRO?=
- =?us-ascii?Q?K81gnq+yibKFdVxGogvaULaNvjUXjxOBDEJpFvpnG9HOHZ9mCmWajBQVj+oK?=
- =?us-ascii?Q?LYv54gGqWCEYidVjP0L1bsOEH8+jqdy+6uMdJR9jPg+RZ+UKkTVlQoUQaAj6?=
- =?us-ascii?Q?Y623nL1Wbr/lj8AKaQ5gwJ7bGUapx+SrvGwT20Jy4IMdlHqUdddJ4NCpPote?=
- =?us-ascii?Q?JqxsxLSi7dJ7ieMn8LbgA3lNnODhCdKWYQFBYKdyCRUeZv935w5eJbUbq8qN?=
- =?us-ascii?Q?gg0Jki244gpGelVCIOGO0yUhMLtAf2O88PYwm0PleBJ9euO+BPU6mt+CDG+k?=
- =?us-ascii?Q?/wH0vJLERQDUF18U5kiAVR2/J7GAP58XyW95gauSLvM8oZoU8NZ5kdyYvEUS?=
- =?us-ascii?Q?y4S/kIW2O9GWyUj5364wKqFq8fB62vzKwdB010GWCKoZcbyrSdjjC0eRZbqG?=
- =?us-ascii?Q?0CoWQywnZOxIgvnjLamFyjY/HnBC0RioJlz7kbH0hkyAiJiszfAzGPHr9zo0?=
- =?us-ascii?Q?oVK8riqrhH7s8MRnEKt7hQGy5MSGKQ3RV494D16EY4feXJkvQVv8B6Ju+ZIE?=
- =?us-ascii?Q?lxK4rdja5wBUQK4jkV8tUxOu6ChRsJcPSeiXnbYNCeXGIz17iySPh5REkl+u?=
- =?us-ascii?Q?4QAqoV38vwIhudoxNK1hJTvXwLTyQmHB1mIaSp6ThHwDf/cfV2XLaB7bGBuJ?=
- =?us-ascii?Q?76HrRmCvgX6iBTQjRXa+XtMdleuJdf786s5Fc29vCjhTqbqt6kTQlYl/EEz+?=
- =?us-ascii?Q?W8gCbYJ0ukPhKpIfsvAnLU902v2YhcS+MkcxAUpnmii8nlIx/g6QiFxKAT0X?=
- =?us-ascii?Q?oyJ+1/vy5+3788jb4c8tcQ6AkYCGVJtft3wbRwpkWOaOLxFkX0Q5HhHRApl/?=
- =?us-ascii?Q?e8b7N7kEqJB+uL2pypXqwVmpPtFRtpoOVSVNhsi+0QZS8CRNZX74ta5pdNNh?=
- =?us-ascii?Q?CA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6999b34e-ae5d-401f-2d05-08dd5fd97345
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8665.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2025 13:42:50.4561
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: oHwGYexLAKde3deIVsfhEiGM1MxnzFNwu/QMQZf41U3FQ2vOvU1/uoIRFvQ58+ZXmlzaT6Pgh6uWbpF9IrPrUQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7018
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 03/26] clk: mediatek: Support voting for mux
+To: Guangjie Song <guangjie.song@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Richard Cochran <richardcochran@gmail.com>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250307032942.10447-1-guangjie.song@mediatek.com>
+ <20250307032942.10447-4-guangjie.song@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250307032942.10447-4-guangjie.song@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_064327_755872_90EB2EAD 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20250310_071223_810307_B2F71C67 
+X-CRM114-Status: GOOD (  28.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -203,26 +82,341 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 10, 2025 at 12:08:54PM +0000, Russell King (Oracle) wrote:
-> Hi,
-> 
-> This series removes unnecessary of_get_phy_mode() calls from the stmmac
-> glue drivers. stmmac_probe_config_dt() / devm_stmmac_probe_config_dt()
-> already gets the interface mode using device_get_phy_mode() and stores
-> it in plat_dat->phy_interface.
-> 
-> Therefore, glue drivers using of_get_phy_mode() are just duplicating
-> the work that has already been done.
-> 
-> This series adjusts the glue drivers to remove their usage of
-> of_get_phy_mode().
+Il 07/03/25 04:26, Guangjie Song ha scritto:
+> Add data fields, defines and ops to support voting for mux.
 > 
 
-The series looks reasonable.
+The main thing that is missing here is an answer to an obvious question....
 
-Thanks,
-Michal
+...what are the advantages of hardware voting, and why do we need to use
+HW voting instead of the refcount that is already kept by the common clock
+framework?
 
-For the series:
-Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
+As far as I can see here, the only difference is that the enable/disable
+is more complex, losing more time for polling after writes and nothing else?
+
+Is this to synchronize the clock voting between SCP and AP or what?!
+If this is the answer, I don't see why we should use this HW voter for all
+clocks, since it's simply more expensive (so the clock drivers are wrong as
+they enable the voter for all clocks).
+
+
+> Signed-off-by: Guangjie Song <guangjie.song@mediatek.com>
+> ---
+>   drivers/clk/mediatek/clk-mux.c | 198 ++++++++++++++++++++++++++++++++-
+>   drivers/clk/mediatek/clk-mux.h |  79 +++++++++++++
+>   2 files changed, 275 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+> index 60990296450b..8a2c89cb3cd5 100644
+> --- a/drivers/clk/mediatek/clk-mux.c
+> +++ b/drivers/clk/mediatek/clk-mux.c
+> @@ -15,11 +15,13 @@
+>   #include <linux/spinlock.h>
+>   #include <linux/slab.h>
+>   
+> +#include "clk-mtk.h"
+>   #include "clk-mux.h"
+>   
+>   struct mtk_clk_mux {
+>   	struct clk_hw hw;
+>   	struct regmap *regmap;
+> +	struct regmap *vote_regmap;
+>   	const struct mtk_mux *data;
+>   	spinlock_t *lock;
+>   	bool reparent;
+> @@ -30,6 +32,46 @@ static inline struct mtk_clk_mux *to_mtk_clk_mux(struct clk_hw *hw)
+>   	return container_of(hw, struct mtk_clk_mux, hw);
+>   }
+>   
+> +static int mtk_clk_mux_fenc_enable_setclr(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	unsigned long flags = 0;
+> +	u32 val = 0;
+> +	int i = 0;
+> +	int ret = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +	else
+> +		__acquire(mux->lock);
+> +
+> +	regmap_write(mux->regmap, mux->data->clr_ofs, BIT(mux->data->gate_shift));
+> +
+> +	while (1) {
+> +		regmap_read(mux->regmap, mux->data->fenc_sta_mon_ofs, &val);
+
+Why are you reinventing the wheel instead of just using regmap_read_poll_timeout()?
+
+> +
+> +		if ((val & BIT(mux->data->fenc_shift)) != 0)
+> +			break;
+> +
+> +		if (i < MTK_WAIT_FENC_DONE_CNT) {
+> +			udelay(MTK_WAIT_FENC_DONE_US);
+> +		} else {
+> +			pr_err("%s wait fenc done timeout\n", clk_hw_get_name(hw));
+> +			ret = -EBUSY;
+> +			break;
+> +		}
+> +
+> +		i++;
+> +	}
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +	else
+> +		__release(mux->lock);
+> +
+> +	return ret;
+> +}
+> +
+>   static int mtk_clk_mux_enable_setclr(struct clk_hw *hw)
+>   {
+>   	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> @@ -70,6 +112,16 @@ static void mtk_clk_mux_disable_setclr(struct clk_hw *hw)
+>   			BIT(mux->data->gate_shift));
+>   }
+>   
+> +static int mtk_clk_mux_fenc_is_enabled(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val = 0;
+> +
+> +	regmap_read(mux->regmap, mux->data->fenc_sta_mon_ofs, &val);
+> +
+> +	return (val & BIT(mux->data->fenc_shift)) != 0;
+
+That's just `return val & BIT(mux->data->fenc_shift);` ...
+
+> +}
+> +
+>   static int mtk_clk_mux_is_enabled(struct clk_hw *hw)
+>   {
+>   	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> @@ -80,6 +132,106 @@ static int mtk_clk_mux_is_enabled(struct clk_hw *hw)
+>   	return (val & BIT(mux->data->gate_shift)) == 0;
+>   }
+>   
+> +static int mtk_clk_vote_mux_is_enabled(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val = 0;
+> +
+> +	regmap_read(mux->vote_regmap, mux->data->vote_set_ofs, &val);
+> +
+> +	return (val & BIT(mux->data->gate_shift)) != 0;
+
+same
+
+> +}
+> +
+> +static int mtk_clk_vote_mux_is_done(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val = 0;
+> +
+> +	regmap_read(mux->vote_regmap, mux->data->vote_sta_ofs, &val);
+> +
+> +	return (val & BIT(mux->data->gate_shift)) != 0;
+
+ditto
+
+> +}
+> +
+> +static int mtk_clk_mux_vote_fenc_enable(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val = 0, val2 = 0;
+> +	bool is_done = false;
+> +	int i = 0;
+> +
+> +	regmap_write(mux->vote_regmap, mux->data->vote_set_ofs, BIT(mux->data->gate_shift));
+> +
+> +	while (!mtk_clk_vote_mux_is_enabled(hw)) {
+> +		if (i < MTK_WAIT_VOTE_PREPARE_CNT) {
+> +			udelay(MTK_WAIT_VOTE_PREPARE_US);
+
+regmap_readl_poll_timeout().....
+
+> +		} else {
+> +			pr_err("%s mux prepare timeout(%x)\n", clk_hw_get_name(hw), val);
+> +			return -EBUSY;
+> +		}
+> +
+> +		i++;
+> +	}
+> +
+> +	i = 0;
+> +
+> +	while (1) {
+> +		if (!is_done)
+> +			regmap_read(mux->vote_regmap, mux->data->vote_sta_ofs, &val);
+> +
+> +		if (((val & BIT(mux->data->gate_shift)) != 0))
+> +			is_done = true;
+> +
+
+and again - twice.
+
+> +		if (is_done) {
+> +			regmap_read(mux->regmap, mux->data->fenc_sta_mon_ofs, &val2);
+> +			if ((val2 & BIT(mux->data->fenc_shift)) != 0)
+> +				break;
+> +		}
+> +
+> +		if (i < MTK_WAIT_VOTE_DONE_CNT) {
+> +			udelay(MTK_WAIT_VOTE_DONE_US);
+> +		} else {
+> +			pr_err("%s mux enable timeout(%x %x)\n", clk_hw_get_name(hw), val, val2);
+> +			return -EBUSY;
+> +		}
+> +
+> +		i++;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void mtk_clk_mux_vote_disable(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	int i = 0;
+> +
+> +	regmap_write(mux->vote_regmap, mux->data->vote_clr_ofs, BIT(mux->data->gate_shift));
+> +
+> +	while (mtk_clk_vote_mux_is_enabled(hw)) {
+> +		if (i < MTK_WAIT_VOTE_PREPARE_CNT) {
+> +			udelay(MTK_WAIT_VOTE_PREPARE_US);
+> +		} else {
+> +			pr_err("%s mux unprepare timeout\n", clk_hw_get_name(hw));
+> +			return;
+> +		}
+> +
+
+....and again....
+
+> +		i++;
+> +	}
+> +
+> +	i = 0;
+> +
+> +	while (!mtk_clk_vote_mux_is_done(hw)) {
+> +		if (i < MTK_WAIT_VOTE_DONE_CNT) {
+> +			udelay(MTK_WAIT_VOTE_DONE_US);
+> +		} else {
+> +			pr_err("%s mux disable timeout\n", clk_hw_get_name(hw));
+> +			return;
+> +		}
+> +
+> +		i++;
+> +	}
+> +}
+> +
+>   static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
+>   {
+>   	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> @@ -151,6 +303,12 @@ static int mtk_clk_mux_determine_rate(struct clk_hw *hw,
+>   	return clk_mux_determine_rate_flags(hw, req, mux->data->flags);
+>   }
+>   
+> +static void mtk_clk_mux_vote_fenc_disable_unused(struct clk_hw *hw)
+> +{
+> +	mtk_clk_mux_vote_fenc_enable(hw);
+> +	mtk_clk_mux_vote_disable(hw);
+
+Why would you need to enable and disable?
+
+If this is not a mistake... this definitely needs a comment in the code.
+
+> +}
+> +
+>   const struct clk_ops mtk_mux_clr_set_upd_ops = {
+>   	.get_parent = mtk_clk_mux_get_parent,
+>   	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
+> @@ -168,9 +326,31 @@ const struct clk_ops mtk_mux_gate_clr_set_upd_ops  = {
+>   };
+>   EXPORT_SYMBOL_GPL(mtk_mux_gate_clr_set_upd_ops);
+>   
+> +const struct clk_ops mtk_mux_gate_fenc_clr_set_upd_ops = {
+> +	.enable = mtk_clk_mux_fenc_enable_setclr,
+> +	.disable = mtk_clk_mux_disable_setclr,
+> +	.is_enabled = mtk_clk_mux_fenc_is_enabled,
+> +	.get_parent = mtk_clk_mux_get_parent,
+> +	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
+> +	.determine_rate = mtk_clk_mux_determine_rate,
+> +};
+> +EXPORT_SYMBOL_GPL(mtk_mux_gate_fenc_clr_set_upd_ops);
+> +
+> +const struct clk_ops mtk_mux_vote_fenc_ops = {
+> +	.enable = mtk_clk_mux_vote_fenc_enable,
+> +	.disable = mtk_clk_mux_vote_disable,
+> +	.is_enabled = mtk_clk_mux_fenc_is_enabled,
+> +	.get_parent = mtk_clk_mux_get_parent,
+> +	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
+> +	.determine_rate = mtk_clk_mux_determine_rate,
+> +	.disable_unused = mtk_clk_mux_vote_fenc_disable_unused,
+> +};
+> +EXPORT_SYMBOL_GPL(mtk_mux_vote_fenc_ops);
+> +
+>   static struct clk_hw *mtk_clk_register_mux(struct device *dev,
+>   					   const struct mtk_mux *mux,
+>   					   struct regmap *regmap,
+> +					   struct regmap *vote_regmap,
+>   					   spinlock_t *lock)
+>   {
+>   	struct mtk_clk_mux *clk_mux;
+> @@ -185,9 +365,17 @@ static struct clk_hw *mtk_clk_register_mux(struct device *dev,
+>   	init.flags = mux->flags;
+>   	init.parent_names = mux->parent_names;
+>   	init.num_parents = mux->num_parents;
+> -	init.ops = mux->ops;
+> +	if (mux->flags & CLK_USE_VOTE) {
+> +		if (vote_regmap)
+> +			init.ops = mux->ops;
+> +		else
+> +			init.ops = mux->dma_ops;
+
+Sorry why is this called dma_ops?!
+That's at least confusing, if not simply wrong.... please explain.
+
+> +	} else {
+> +		init.ops = mux->ops;
+> +	}
+>   
+>   	clk_mux->regmap = regmap;
+> +	clk_mux->vote_regmap = vote_regmap;
+>   	clk_mux->data = mux;
+>   	clk_mux->lock = lock;
+>   	clk_mux->hw.init = &init;
+> @@ -220,6 +408,7 @@ int mtk_clk_register_muxes(struct device *dev,
+>   			   struct clk_hw_onecell_data *clk_data)
+>   {
+>   	struct regmap *regmap;
+> +	struct regmap *vote_regmap = NULL;
+>   	struct clk_hw *hw;
+>   	int i;
+>   
+> @@ -238,8 +427,13 @@ int mtk_clk_register_muxes(struct device *dev,
+>   			continue;
+>   		}
+>   
+> -		hw = mtk_clk_register_mux(dev, mux, regmap, lock);
+> +		if (mux->vote_comp) {
+> +			vote_regmap = syscon_regmap_lookup_by_phandle(node, mux->vote_comp);
+> +			if (IS_ERR(vote_regmap))
+> +				vote_regmap = NULL;
+> +		}
+>   
+> +		hw = mtk_clk_register_mux(dev, mux, regmap, vote_regmap, lock);
+
+...and this change just breaks each and every MediaTek SoC that is currently
+supported upstream.
+
+Please test your changes on older platforms before submitting upstream.
+
+Regards,
+Angelo
+
 
