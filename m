@@ -4,70 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F8F4C282DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 10:22:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AEEC28B30
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 10:36:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YVgrYAqOmzDomPVWovtiT2BUnSO4CsUu2Ru+cq5kIeM=; b=S6882yWFy1JRG7P2ks0+PDDmOr
-	eEPLOOI8FJdSrgoyXszE30a7PyxtQK8mfdBeRsRLQxh1+Rm1O6G0DXPA8r+tg/HFTg/7IT2zy6t5Q
-	kiNIJHoMGhaQb9P7mHAof0fyf7e8vhxFFMp02eng/mZ1BHWrYmz0M7vEY2FWMyopyPkDJDse0Y6p1
-	ULPkYEqkm2wXJbOo1dvHNHtp8wKOtLLtyBw4paTMEel35ZVFUv+q/a6Kf/b0F9i6bXxyGeXsNdj4S
-	AkEa04CAoaROUgQPnooVFM6hrJCvKrA16CGhnBzImXGnkm9/xX/plJL80YJFJm2mjwOVxmpIatXhb
-	kQ5Y52Xw==;
+	bh=kNhM/0IjcjblchV98Qq8e/1t6zgAbQVQNq8rXKMpriY=; b=K+o83F9M+UOIXjVKHA6yVNSC1d
+	J9is9KtP2GYyrUhr6sQ5Ww1ICRqKSxu+uMhRfIXdqNeAAHcEyhwvkokgikKjmSv2hnYlHElXsiMh8
+	Lm5R2Ov2k/5aeNjlkOXh5w2Wu3288OhKjTEsiFieUa5PGbfeM5IIpbeFY6xakcRwDTUW4qMq6XdzI
+	K0dbpT9ZAtRaKPrCpJAdCxVEGi/0OXJsAhfIc66GJwgk1ZpRKxuFw3b0D5z7vi7GGrcqh9aj3RoXx
+	ezLztW4nP/9eRLTs9Yf6vhk4ovWnkaVcEu9u4JnkZcswRLZEzsW7n9l9lUNGowmJF+DbBCKRldGOI
+	udKHS+1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1traH3-00000002F2k-0eQR;
-	Mon, 10 Mar 2025 10:22:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1traUV-00000002Gu3-0kAk;
+	Mon, 10 Mar 2025 10:36:11 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1traEq-00000002Eqi-01Kd;
-	Mon, 10 Mar 2025 10:20:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=YVgrYAqOmzDomPVWovtiT2BUnSO4CsUu2Ru+cq5kIeM=; b=kvW9cz9v21ig5GGwO+obljcyIG
-	3Dbf0AjA4WiL3kKTqq1bXf4sT2CG5at2sQ31U5gBJcE1lUesX73jySVhhgAC389jffXK3Yxia6+NS
-	DcOppobmwV/9AobgdWMKG7XkySpnuEjXNd5qg3DsLtkR7ulzZBGhpf71H3XuOcZDeYguuSsPQxHbh
-	dLVf/S4I4twQEB3J4DIgpUrXSr2TlLEYJgXkKl9nMtjZR+cSQO31djoaSIaamXC29hc7LlB0MkOf5
-	812bkGSQlA7MqylHQCz40zc6GK0mrcnR8/t10CX7Oona9TNxg8w4koE2ljKO8809BkAL/FNf2k1XX
-	m7h0bYsA==;
-Received: from foss.arm.com ([217.140.110.172])
-	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1traEm-00000001pfx-34lI;
-	Mon, 10 Mar 2025 10:19:58 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5103C153B;
-	Mon, 10 Mar 2025 03:20:05 -0700 (PDT)
-Received: from bogus (e133711.arm.com [10.1.196.55])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0A2573F673;
-	Mon, 10 Mar 2025 03:19:50 -0700 (PDT)
-Date: Mon, 10 Mar 2025 10:19:48 +0000
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Jacky Bai <ping.bai@nxp.com>
-Cc: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <ilia.lin@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>, <tiny.windzz@gmail.com>,
-	<wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-pm@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<imx@lists.linux.dev>
-Subject: Re: [PATCH] cpufreq: Init cpufreq only for present CPUs
-Message-ID: <Z868xB3_3NhMsa7R@bogus>
-References: <20250310071640.3140435-1-ping.bai@nxp.com>
+	id 1traPP-00000002GHZ-43Kj;
+	Mon, 10 Mar 2025 10:30:57 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5e64700a38cso2342585a12.1;
+        Mon, 10 Mar 2025 03:30:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741602654; x=1742207454; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=kNhM/0IjcjblchV98Qq8e/1t6zgAbQVQNq8rXKMpriY=;
+        b=NobVWoEQFtaH7euzHJERsGdoASUG8e9CsWTzepk7g2SuYqocjiFwT1A9TvPhUet9hP
+         srvh4utlRJ6jYz0EYsmN9k5l7shq0yye2KQCsEEWAEs9jf7zLlD6DzcYYsLigJJMIsg7
+         rUnIqjDPci11hbaI1XdTmXVBgESr2wovXzXXI9rwL0zz8EvQGL6eOhO9a8pSEuohCA1C
+         lqR1tlRQ2RgQW7OpE9ahySHSXTg7zvw3bpyzn2BR8G260kam7QitST6xd8NLW7ycFARs
+         4nThpTVDAGKY/7AQ+VElpTHv5kKcmYLwljQlJaW2mRpkOXqqwmXDxtkeN9+emyIozf0w
+         dTfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741602654; x=1742207454;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kNhM/0IjcjblchV98Qq8e/1t6zgAbQVQNq8rXKMpriY=;
+        b=AP4pJTaDA9LvdKIjZji5mgd1Y9uC0Omn6ofpQDJAElzNrTcn//rV7zxaRSplQB8laZ
+         5g5p4rS8EX+X5XxgLH/jmomvkUKhMzAAfj/Z/JWYbvzbKp5g84URfJqe7sdu2BHmt1wl
+         K+LHq8fklzdjce1sV+TC9/nkq7YexBLWRXWndn4bTU39+NUxhXtV6ZxZ0/v3NaJsECSd
+         xsLqqyOYdzslAyUDTHx2Ely6Mi8CkNecgIeqk1MJUny4aziKQnF/t3jtBYQ7XPcW9ywA
+         OMVB+XqTy6NBlBdMHN3sdS5nAbN7WlZVRFyInR+TiUD+W9wYePdRtqX5mwnJs0TiJ+PU
+         3wow==
+X-Forwarded-Encrypted: i=1; AJvYcCUz/kP2ykPzc+QsyaOEAyUVDhw4ouQLiEaPTNAeme1RAJdGVJKpAa5I8yNILB+vn+FnAE8eiXO7FrdGtpzN+zc=@lists.infradead.org, AJvYcCVz4cZsuyTiTR3S/vCuSAormbMqm1bD6dCDgHgQi8/p7nuOxp/Sx9g7bhyvouTeXv8oBPZUoAC/y0X5@lists.infradead.org, AJvYcCX4KsfErzI7QEVNt6UwwYYiHV4CKDUYnSy5AWzEjxXUy00ViCPYG1UgWSOUA9nGHi5TT2dMoBSuMhy1znKbveQK@lists.infradead.org
+X-Gm-Message-State: AOJu0YxdyH8cxwfP0VIUL7Bh3+KwUKjPZRYhDfMYoMkteC8qEuGK57I7
+	8mm502o48gjJU/XkJPmwUYcHPDFFd5w1XvWFXw3uJmULPX54XNkW
+X-Gm-Gg: ASbGnct46DLZc7IOh5PCLxqY2Pb0H7gMhSpwKtvHCM3jO8zBJoFYLkP9pKS+SJouuQL
+	+B7RItAzKmXEj9V0/Zp0wXLg7ZTaXFGxo4voTRrkuho1bl1bATQAZ2D4YRTEpqy+EUuLEzqGKW6
+	KZz6cJ53SCmiU5QzH74nYazHn8tvFpOpDoko4YvTcw+hInULBQfNqvugJtINo+B0C9ICrA4JWR0
+	Nj3J7Z7tkEXuoDPJoGNALZLYCtZZAG40ZtGtFHo8ivLNUXAg+WC81aV/sKE+L6tVEr1/VSdqZrM
+	Ep8luzW4niXrCs7RMt6b8VdJ5ZQI70RjoUr3eNgnKA==
+X-Google-Smtp-Source: AGHT+IHOgY/2k2K6r8nbyooLCIqhLZNyi8g28UASQ2a6eAtRtlwzSxaLJolXF0bJ1EZNYwNFw8sjfA==
+X-Received: by 2002:a05:6402:518a:b0:5d9:82bc:ad06 with SMTP id 4fb4d7f45d1cf-5e5e22bf16amr15660909a12.3.1741602653855;
+        Mon, 10 Mar 2025 03:30:53 -0700 (PDT)
+Received: from Ansuel-XPS. ([85.119.46.8])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e5c733f9d4sm6630840a12.10.2025.03.10.03.30.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Mar 2025 03:30:53 -0700 (PDT)
+Message-ID: <67cebf5d.a70a0220.fe6c9.6ad3@mx.google.com>
+X-Google-Original-Message-ID: <Z86_WkfgZk_HLWuy@Ansuel-XPS.>
+Date: Mon, 10 Mar 2025 11:30:50 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nikita Shubin <nikita.shubin@maquefel.me>,
+	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
+	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH 03/13] dt-bindings: soc: airoha: add SCU SSR Serdes port
+ binding
+References: <20250309132959.19045-1-ansuelsmth@gmail.com>
+ <20250309132959.19045-4-ansuelsmth@gmail.com>
+ <20250310-ultraviolet-earthworm-of-honor-df114b@krzk-bin>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250310071640.3140435-1-ping.bai@nxp.com>
+In-Reply-To: <20250310-ultraviolet-earthworm-of-honor-df114b@krzk-bin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_101956_925721_861671AC 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250310_033056_002080_9CDE17D9 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +116,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 10, 2025 at 03:16:40PM +0800, Jacky Bai wrote:
-> for_each_possible_cpu() is currently used to initialize cpufreq
-> in below cpufreq drivers:
->   drivers/cpufreq/cpufreq-dt.c
->   drivers/cpufreq/mediatek-cpufreq-hw.c
->   drivers/cpufreq/mediatek-cpufreq.c
->   drivers/cpufreq/qcom-cpufreq-nvmem.c
->   drivers/cpufreq/sun50i-cpufreq-nvmem.c
+On Mon, Mar 10, 2025 at 08:54:14AM +0100, Krzysztof Kozlowski wrote:
+> On Sun, Mar 09, 2025 at 02:29:34PM +0100, Christian Marangi wrote:
+> > Add Airoha AN7581 SCU SSR Serdes port binding to define what mode is
+> > supported by each Serdes port. These special binding are needed to
+> > identify and provide the port mode from any user driver.
+> > 
+> > These modes are mutually exclusive and driver needs to correctly
+> > validate the current mode for the Serdes port in use.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  MAINTAINERS                              |  6 ++++++
+> >  include/dt-bindings/soc/airoha,scu-ssr.h | 24 ++++++++++++++++++++++++
+> 
+> This should be squashed with the binding for the device.
 >
 
-Again how did you just narrow down to the list above ? Is that just a
-random pick ? As I suggested with corresponding cpuidle changes, please
-look into the details in side the for_each_possible_cpu() loop and then
-decide if it applies or not.
+I split them to mute checkpatch warning
 
-For me, it applied to the below files as well at the least.
+"DT binding docs and includes should be a separate patch. See:
+Documentation/devicetree/bindings/submitting-patches.rst"
 
-drivers/cpufreq/mvebu-cpufreq.c
-drivers/cpufreq/qcom-cpufreq-hw.c
-drivers/cpufreq/scmi-cpufreq.c
-drivers/cpufreq/scpi-cpufreq.c
-drivers/cpufreq/virtual-cpufreq.c
+But I think I always took it wrong and with "docs and includes" it's
+intended in a single patch.
 
-Please check everything thoroughly as I just looked at these briefly.
+Ok will squash!
 
---
-Regards,
-Sudeep
+-- 
+	Ansuel
 
