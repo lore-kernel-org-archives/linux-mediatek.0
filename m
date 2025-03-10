@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D925C282DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 07:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706FDC28B30
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 08:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H2/foQcyGg17zdbQh7oHp2efHSIFYAn/SlsZpuP7wXc=; b=fgI5Y2QMzlVm4cFhPwBihCy7Oy
-	6bTRK2T2+cJg0GS1jjG2Vq6a6Klg4hiTlT56TaA5wVTd7oOn1YDOJqHlsOfHv0BqBl7KJe2QHtUTI
-	TiKEcqCDUbDgpLwr7ltjCVxZYtPCEBcYhasJWjDhnY86nMhEn8Td/X8gukWhi/GZby4xV/72aKeSS
-	+J+7j8OElxqxvyOLhVu/Wvz8bsy3lxKcOerIpsk7W9NsWB3sGB5zaq+AQQMzeGQCdFJ5fiqRzt/cC
-	NjiUI7HzKYntfM7IsWG6iJNBeLgY6pWvc0A0GtwtbBWtHe0mT/Nf5pK5QW9jlbsH882dNpsSKPmpH
-	roJVyb3A==;
+	bh=+18SRPMXTHEGVTw7LXJnbiMrmO1TfAf2bnPhjnkOZug=; b=QQvo8oZ5bRSesTlLlXBUz9poG9
+	wuN3Zy53gra786sd5U4QPafqNcceQnuLI3r8ohEwzhA4YHIJnFKQSyYnDy52qagI1X+dFvG5Z0H/y
+	UbnDJa6rH+9+mu4nAq+xZta9p3NTjComIiBaa/Jg2UuUE95pUwsUtgs5KspUugjCWbsU+vB/YsE0T
+	RziRFBHoHM42Ogj4AhVipbtWFQApKtfaiZzVwnlw/cNihSXQknW6rmk3dQ9LXHvDQV70VMONRYTGF
+	3+m7SbBq0j6jCFIHbOVXxlOTOWD0OfqOghR8Yip0AnJvbW2SEbsUISmv3tvRcQ5i0T6jBI53eRHW0
+	s2cEEwKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trXzV-00000001ozv-31DZ;
-	Mon, 10 Mar 2025 07:56:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1trY5k-00000001pxz-1qqY;
+	Mon, 10 Mar 2025 08:02:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trXxq-00000001oOh-3IUs;
-	Mon, 10 Mar 2025 07:54:20 +0000
+	id 1trY44-00000001pkY-3srq;
+	Mon, 10 Mar 2025 08:00:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 477045C5945;
-	Mon, 10 Mar 2025 07:52:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0263C4CEE5;
-	Mon, 10 Mar 2025 07:54:16 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2324D5C420D;
+	Mon, 10 Mar 2025 07:58:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8967C4CEE5;
+	Mon, 10 Mar 2025 08:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741593257;
-	bh=IxPWphu3F+xLc4GiSypSOK76zaVHnRzhR45Z6VPd2NA=;
+	s=k20201202; t=1741593643;
+	bh=5pb18jHnC9oIYuysg+/rVDZqxx+VuW6N1Fk5JOZi52Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vQkIKmyFW93JJq+SgIA7Kse9XO9YgQMLKEKIqMmNnJSQgaZQ3nXDievCakMRQjSg4
-	 z3hShvH+sQJGvYnAmuIrM1a3q6k2kop5itpDaYBvhABLaKfd4LXUaGU6UEiZf8uWIn
-	 18W+/DjHirhmrCHl6zXDOZpoRmWfC1Tx4bgobW2s9J+04wO6DR6aztFTpOxOyTMpVf
-	 KP2OQLwmA8Flik0e5pfZZj/QkkZ+v4XkeHamrJJupxPXofgO1Kkt0IRTnXpk4pZUUF
-	 Ti4HK/VcgbT9uKGsxiFGRrwIRmzxZetqXTWEKsDBQatp+DDi4SNgEssK5pJf8FTZ+D
-	 Vx+Zxv1IOq4rw==
-Date: Mon, 10 Mar 2025 08:54:14 +0100
+	b=LuCX5OSxtvek+3jpeLGGivDX9bH5syZEQoh3fo7lIu2tSrUfzV1OSaBB+3YTJxt0i
+	 XruzWeoeQam7CCtEEnyjDL4Ygz3VqYrPrJiJ7Np0TGF/EGCnkyUQoLY3X3JadalAy1
+	 rOP/GHb6ALOJNzOOgNcC2cA3GUjWfSlDV4MGx4CpH+jBP+PdzHcGs57g/l9kxSK2k5
+	 lFbrR25L7gee4y5RYyw8vmQVUSZhLdCxwn14Czzkfv2pobA9Lx7Bw12DUL0itcAoV9
+	 pS2rWV4p74DN6Pe06y/fJw0WvemJiOBhpYR7o4y5zp8LpI8OvLCZZubb88iFxqeYVE
+	 yukd9Ws74Pg3g==
+Date: Mon, 10 Mar 2025 09:00:40 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Michael Turquette <mturquette@baylibre.com>, 
@@ -57,18 +57,18 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH 03/13] dt-bindings: soc: airoha: add SCU SSR Serdes port
- binding
-Message-ID: <20250310-ultraviolet-earthworm-of-honor-df114b@krzk-bin>
+Subject: Re: [PATCH 04/13] dt-bindings: soc: airoha: add Documentation for
+ Airoha AN7581 SCU SSR
+Message-ID: <20250310-aromatic-chihuahua-of-priority-4ee73b@krzk-bin>
 References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-4-ansuelsmth@gmail.com>
+ <20250309132959.19045-5-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250309132959.19045-4-ansuelsmth@gmail.com>
+In-Reply-To: <20250309132959.19045-5-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_005418_886102_94C9AC70 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20250310_010045_077134_C9756C95 
+X-CRM114-Status: GOOD (  23.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,20 +83,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 09, 2025 at 02:29:34PM +0100, Christian Marangi wrote:
-> Add Airoha AN7581 SCU SSR Serdes port binding to define what mode is
-> supported by each Serdes port. These special binding are needed to
-> identify and provide the port mode from any user driver.
+On Sun, Mar 09, 2025 at 02:29:35PM +0100, Christian Marangi wrote:
+> The Airoha AN7581 SoC have in the SCU register space particular
+> address that control how some peripheral are configured.
 > 
-> These modes are mutually exclusive and driver needs to correctly
-> validate the current mode for the Serdes port in use.
+> These are toggeled in the System Status Register and are used to
+> toggle Serdes port for USB 3.0 mode or HSGMII, USB 3.0 mode or PCIe2
+> or setup port for PCIe mode or Ethrnet mode (HSGMII/USXGMII).
+> 
+> Modes are mutually exclusive and selecting one mode cause the
+> other feature to not work (example a mode in USB 3.0 cause PCIe
+> port 2 to not work) This depends also on what is physically
+> connected to the Hardware and needs to correctly reflect the
+> System Status Register bits.
+> 
+> Special care is needed for PCIe port 0 in 2 line mode that
+> requires both WiFi1 and WiFi2 Serdes port set to PCIe0 2 Line
+> mode.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  MAINTAINERS                              |  6 ++++++
->  include/dt-bindings/soc/airoha,scu-ssr.h | 24 ++++++++++++++++++++++++
+>  .../soc/airoha/airoha,an7581-scu-ssr.yaml     | 106 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 107 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/airoha/airoha,an7581-scu-ssr.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/airoha/airoha,an7581-scu-ssr.yaml b/Documentation/devicetree/bindings/soc/airoha/airoha,an7581-scu-ssr.yaml
+> new file mode 100644
+> index 000000000000..4bbf6e3b79a4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/airoha/airoha,an7581-scu-ssr.yaml
+> @@ -0,0 +1,106 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/soc/airoha/airoha,an7581-scu-ssr.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha AN7581 SCU System Status Register
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description: >
+> +  The Airoha AN7581 SoC have in the SCU register space particular
+> +  address that control how some peripheral are configured.
+> +
+> +  These are toggeled in the System Status Register and are used to
+> +  toggle Serdes port for USB 3.0 mode or HSGMII, USB 3.0 mode or PCIe2
+> +  or setup port for PCIe mode or Ethrnet mode (HSGMII/USXGMII).
 
-This should be squashed with the binding for the device.
+typo, Ethernet
+
+> +
+> +  Modes are mutually exclusive and selecting one mode cause the
+> +  other feature to not work (example a mode in USB 3.0 cause PCIe
+> +  port 2 to not work) This depends also on what is physically
+> +  connected to the Hardware and needs to correctly reflect the
+> +  System Status Register bits.
+> +
+> +  Special care is needed for PCIe port 0 in 2 line mode that
+> +  requires both WiFi1 and WiFi2 Serdes port set to PCIe0 2 Line
+> +  mode.
+> +
+> +properties:
+> +  compatible:
+> +    const: airoha,an7581-scu-ssr
+
+That's not a separate device, but part of the SCU.
+
+But more important - such definition of choice of serial engines is
+really not flexible, not reabable and not helping integrating into DTS.
+Are you going to grow this for next chip airoha,serdes-wifi20, then
+airoha,serdes-wifi21, 22... ? And then how the if:then: would look like?
+
+Assuming you do not have here child-parent relationship, like usually
+for serial engines, so then this should be somehow list of devices
+(strings) you want to run.
 
 Best regards,
 Krzysztof
