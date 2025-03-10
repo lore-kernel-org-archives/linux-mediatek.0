@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C38F8C28B2E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 14:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB82C282DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 15:03:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=t6Spuac881Inag0aUJmGjCotgA2Pw1yY+cr3ZssQZig=; b=lhNPrl/e/OQt6VsT9JBdiFPn7L
-	X0+S7s2o7HfCGn6zZXF2FcxDSrLqvbEhpVsXo2vDnN5HrP3AxZSp22T7IVVskylLTzGGoa47nUU8D
-	m+RrEGtGbujmAC3Hm1KLgiu+0w07mrGQbl+OG0h+Y1fHDmYKmPy/dU+XGIj7VoqUHHs5WJ4gx+ooq
-	embtK0zt27ZCnQPMWOnhEpYGmjtlp2e5Y+kEWeg6Eu+ET7zNVNouf59WfnUw7LYbzV+idYwoU33v5
-	tn/3LN4xine2WbFz++WU+TyneRB0WZENwo9EZtg5G2el6tti5BYSjydtUEd4IaGD8Dff2ulvpQJAa
-	lD3fyytQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KQuR/lW2fD056yaFz+cdGCbU2iac7ABcYUONw7CuAGQ=; b=W3tKb5TsCcWRzMc5lKgZvToHWk
+	6JLiyuh4nN5TnShaOxx7tOWth53qjRdLWKRDtuid3qGoXfrpvV93ltqGoZWhj7zH/Rn7BzNDhjqO7
+	jwq0akGtMDcwMQcwnqWUKO6iulBNP0oaos2U755hqSfrSyTzf7owHeKcRUzG8XwSIMqS0pI+PfGWw
+	5jvSm6YqEkF45wl/sH+KjmHD5kAJfZW33HgaKDU61FcOOENnkEcHtqPQx/WjTqU7myvu67g8n2/5J
+	otz9h+ALMqDhNKarfcHr+GIFhPFOtBBSCFBnPz17Ife1QGFzfVcQdgzF3n6a+EJQNp1tvydImuHEA
+	oh27fRoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1treZe-000000033Vi-3vyj;
-	Mon, 10 Mar 2025 14:57:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trdAs-00000002nMr-2EZK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Mar 2025 13:28:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DA42B5C5DA8;
-	Mon, 10 Mar 2025 13:25:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FF8DC4CEE5;
-	Mon, 10 Mar 2025 13:28:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741613284;
-	bh=1zUZf3B5y0uC+TWU4CEsCftkbi7r8iw0T6Vz28WKS+4=;
-	h=From:To:Subject:Date:From;
-	b=mhAr3KhZn4So+W/voBy9tOvXrwo61lxJtZEOYW0wE/r2P+4cVI35R0qzdoxf5Adkv
-	 PV2xBT+0kQ0LsxEOglVmQn+tMeRPZBxzKwUzGboMmOvN1yOB1SJvZRHsn6etvaCu0t
-	 E28lmBda5Qm0/09YOeN+Wkag8YInJQzq29vCsn4Y8Ysc+Kk7UrLDBXmrG7rwa7XQdl
-	 vjR2zCclVeAL7cZmjRDGRrxgugvyi1MEeTIpI6xFbLrEaphi2syLmyxptZrjo2dtN4
-	 wN/vqQsHaegeBNHZm5ALCLrobbxZSOxsrcJr+E2i9CSUpk/jQCCEs+By1zN/yExLGp
-	 +u8MkvaPv6dFQ==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Anusha Srivatsa <asrivats@redhat.com>,
-	Jason-JH Lin <jason-jh.lin@mediatek.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Fabien Parent <fparent@baylibre.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>
-Subject: [GIT PULL] mediatek drm next for 6.15
-Date: Mon, 10 Mar 2025 13:27:59 +0000
-Message-Id: <20250310132759.3345-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	id 1treeo-000000035cg-0Fwe;
+	Mon, 10 Mar 2025 15:03:06 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1trdKs-00000002ojc-1nrd;
+	Mon, 10 Mar 2025 13:38:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D6784153B;
+	Mon, 10 Mar 2025 06:38:36 -0700 (PDT)
+Received: from donnerap.manchester.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1E9E63F673;
+	Mon, 10 Mar 2025 06:38:22 -0700 (PDT)
+Date: Mon, 10 Mar 2025 13:38:19 +0000
+From: Andre Przywara <andre.przywara@arm.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@csie.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Kevin
+ Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org, Paolo Abeni
+ <pabeni@redhat.com>, Samuel Holland <samuel@sholland.org>, Vinod Koul
+ <vkoul@kernel.org>
+Subject: Re: [PATCH net-next 8/9] net: stmmac: sun8i: remove
+ of_get_phy_mode()
+Message-ID: <20250310133819.7c2204a6@donnerap.manchester.arm.com>
+In-Reply-To: <E1trbyA-005qYf-Hb@rmk-PC.armlinux.org.uk>
+References: <Z87WVk0NzMUyaxDj@shell.armlinux.org.uk>
+	<E1trbyA-005qYf-Hb@rmk-PC.armlinux.org.uk>
+Organization: ARM
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_062806_650673_3B56A9D2 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250310_063826_559700_FE2BC816 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,99 +79,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On Mon, 10 Mar 2025 12:10:54 +0000
+"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
 
-This includes:
-1. HDMI fixup and refinement
-2. Move to devm_platform_ioremap_resource() usage
-3. Add MT8188 dsc compatible
-4. Fix config_updating flag never false when no mbox channel
-5. dp: drm_err => dev_err in HPD path to avoid NULL ptr
-6. Add dpi power-domains example
-7. Add MT8365 SoC support
-8. Fix error codes in mtk_dsi_host_transfer()
+Hi,
 
-Regards,
-Chun-Kuang.
+> devm_stmmac_probe_config_dt() already gets the PHY mode from firmware,
+> which is stored in plat_dat->phy_interface. Therefore, we don't need to
+> get it in platform code.
+> 
+> sun8i was using of_get_phy_mode() to set plat_dat->mac_interface, which
+> defaults to plat_dat->phy_interface when the mac-mode DT property is
+> not present. As nothing in arch/*/boot/dts sets the mac-mode property,
+> it is highly likely that these two will be identical, and thus there
+> is no need for this glue driver to set plat_dat->mac_interface.
 
-The following changes since commit 2014c95afecee3e76ca4a56956a936e23283f05b:
+Well, the current sun8i code wouldn't help anyway, because the driver
+would set mac_interface to the value of "phy-mode", not "mac-mode", which
+is strictly speaking a bug.
+But in any case this is indeed redundant, so:
 
-  Linux 6.14-rc1 (2025-02-02 15:39:26 -0800)
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-are available in the Git repository at:
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.15
+Cheers,
+Andre
 
-for you to fetch changes up to 8c9d519aa138aa36c0c3f201ff336b17b0ba32b2:
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+> index 4b7b2582a120..85723a78793a 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+> @@ -1155,11 +1155,10 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
+>  	struct stmmac_resources stmmac_res;
+>  	struct sunxi_priv_data *gmac;
+>  	struct device *dev = &pdev->dev;
+> -	phy_interface_t interface;
+> -	int ret;
+>  	struct stmmac_priv *priv;
+>  	struct net_device *ndev;
+>  	struct regmap *regmap;
+> +	int ret;
+>  
+>  	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+>  	if (ret)
+> @@ -1219,10 +1218,6 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	ret = of_get_phy_mode(dev->of_node, &interface);
+> -	if (ret)
+> -		return -EINVAL;
+> -
+>  	plat_dat = devm_stmmac_probe_config_dt(pdev, stmmac_res.mac);
+>  	if (IS_ERR(plat_dat))
+>  		return PTR_ERR(plat_dat);
+> @@ -1230,7 +1225,6 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
+>  	/* platform data specifying hardware features and callbacks.
+>  	 * hardware features were copied from Allwinner drivers.
+>  	 */
+> -	plat_dat->mac_interface = interface;
+>  	plat_dat->rx_coe = STMMAC_RX_COE_TYPE2;
+>  	plat_dat->tx_coe = 1;
+>  	plat_dat->flags |= STMMAC_FLAG_HAS_SUN8I;
 
-  drm/mediatek: dsi: fix error codes in mtk_dsi_host_transfer() (2025-03-03 13:26:03 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 6.15
-
-1. HDMI fixup and refinement
-2. Move to devm_platform_ioremap_resource() usage
-3. Add MT8188 dsc compatible
-4. Fix config_updating flag never false when no mbox channel
-5. dp: drm_err => dev_err in HPD path to avoid NULL ptr
-6. Add dpi power-domains example
-7. Add MT8365 SoC support
-8. Fix error codes in mtk_dsi_host_transfer()
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (21):
-      drm/mediatek: mtk_hdmi: Unregister audio platform device on failure
-      drm/mediatek: mtk_hdmi: Fix typo for aud_sampe_size member
-      drm/mediatek: mtk_hdmi: Compress of_device_id array entries
-      drm/mediatek: mtk_hdmi: Move vendor/product strings to drm_bridge
-      drm/mediatek: mtk_hdmi: Remove unused members of struct mtk_hdmi
-      drm/mediatek: mtk_hdmi: Use devm managed version of drm_bridge_add
-      drm/mediatek: mtk_hdmi: Remove ifdef for CONFIG_PM_SLEEP
-      drm/mediatek: mtk_hdmi: Remove goto in mtk_hdmi_clk_enable_audio()
-      drm/mediatek: mtk_hdmi: Remove driver bound to HDMI print
-      drm/mediatek: mtk_hdmi: Cleanup function mtk_hdmi_resume()
-      dt-bindings: display: mediatek: dpi: Add MT8195 and MT8188 compat
-      drm/mediatek: mtk_dpi: Add support for Pattern Generator in debugfs
-      drm/mediatek: mtk_dpi: Use an array for pixclk factor calculation
-      drm/mediatek: mtk_dpi: Move pixel clock setting flow to function
-      drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
-      drm/mediatek: mtk_dpi: Move the input_2p_en bit to platform data
-      drm/mediatek: mtk_dpi: Add support for DPI input clock from HDMI
-      drm/mediatek: mtk_dpi: Support AFIFO 1T1P output and conversion
-      drm/mediatek: mtk_dpi: Explicitly manage TVD clock in power on/off
-      drm/mediatek: Add support for MT8195 Digital Parallel Interface
-      dt-bindings: display: mediatek: dsc: Add MT8188 compatible
-
-Anusha Srivatsa (1):
-      drm/mediatek: Move to devm_platform_ioremap_resource() usage
-
-Dan Carpenter (1):
-      drm/mediatek: dsi: fix error codes in mtk_dsi_host_transfer()
-
-Douglas Anderson (1):
-      drm/mediatek: dp: drm_err => dev_err in HPD path to avoid NULL ptr
-
-Fabien Parent (2):
-      dt-bindings: display: mediatek: dpi: add power-domains example
-      drm/mediatek: add MT8365 SoC support
-
-Jason-JH Lin (1):
-      drm/mediatek: Fix config_updating flag never false when no mbox channel
-
- .../bindings/display/mediatek/mediatek,dpi.yaml    |   7 +
- .../bindings/display/mediatek/mediatek,dsc.yaml    |   3 +
- drivers/gpu/drm/mediatek/mtk_crtc.c                |   5 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c          |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c          |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_merge.c          |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |   4 +-
- drivers/gpu/drm/mediatek/mtk_dp.c                  |   6 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c                 | 323 +++++++++++++++------
- drivers/gpu/drm/mediatek/mtk_dpi_regs.h            |   9 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  10 +
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  10 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c                | 108 +++----
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c            |   4 +-
- 15 files changed, 334 insertions(+), 171 deletions(-)
 
