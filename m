@@ -4,101 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7201DC35FF2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 17:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 756E4C282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 18:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1sBzCrcWxCos2ucPDzOy8rSIoDUK4uuBb9IVbzpXf6Y=; b=VbsMk18rhxalTFLJytT/N+KWHD
-	6LN48wRaqTXnVLtj+S8OyZmiPI1ITK5fzr+AA6TgxIxAQqXwzIbWbD6+EUPdKsS/Um1qFLv90fAfJ
-	Nf2KI+iP5CH5W+rZGXH8M3bCAImbwxtzT9M4aJ0wIvDnoVRJ7Fcx/oBKqFKxt6aWmHW7AtnTssTYo
-	n3HIKRb6kx/dSB5hvtJ5oppXPQHgVLXf22eYa26CoZr1XtLmpKz7kg0MiDM8SP+7UrnTb56LC3PuD
-	mxSu8D3wWIrM9Q4fzY5u2IikBz+sjbF3PEpJgHMXChbTiuGgPFVSPV+H9bX95eYCbmy+FA0fkP8Vx
-	0X2CNA9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AMV6rv+aSlw40sjoVUxv8b1B0fBB7V5bX7dyIX3uzx8=; b=ZqyHmuruT/zzoeFOxzU+/0TI4o
+	YYIqElgI/Tnx427Od6efQmcDnaqtDNH23QDNiKlaYbLJm5Yb9ec2PaHLIKhgHszKEYb3aUs7VBcQG
+	dgBeYNjANf1tr4f7tSDybR6Jyz/XuwBMlwGBPoBVAi3bTb2Y34bTh8smv1i8Yx5rD2acD7Fh+gF0J
+	/aJi5Z6E+d2tz7fgcOzyPKiWtrJAkDfKqhSWosgt36riy2UtMzbDtlqwQ0Bc5hbI19KATLiqg5H9k
+	LsJ/jkoH18GOjJIIvRSfZp0mKDox//wGBzMsMIxya89dPm0zUNF67fIHkWbQ+lUdwWWxibU14EqS4
+	naVQBjLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trhGy-00000003X1N-0jsy;
-	Mon, 10 Mar 2025 17:50:40 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1trhVM-00000003YsA-055n;
+	Mon, 10 Mar 2025 18:05:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trfdX-00000003JNY-0bNo;
-	Mon, 10 Mar 2025 16:05:52 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-43690d4605dso27094435e9.0;
-        Mon, 10 Mar 2025 09:05:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741622748; x=1742227548; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1sBzCrcWxCos2ucPDzOy8rSIoDUK4uuBb9IVbzpXf6Y=;
-        b=SezteRQpgEw7Nln4T+tRrf1dIXWO8hRl9pnnkIh5nFySK0sL/Ik1LH99n0xEEQuDVa
-         WzXrULpmWmlfEE5ucqYS+PdcnD1tYMtSfH9Q+e/6qvF676H+ozG7o/4sFx0sqBbMKKA/
-         JJ4BJHb0Qh6vAmSwCY424Y3Gb2FvSjVA76UlqGFM9EzizKqR5F7ycsb77Al/tB/RJ7xf
-         RTbAh7qHfMVB7j9njY3mI2TFuu2EhjcyRpGSDT9f76Y6fKc2akHL8Sxl3XQd9qKHiOEb
-         XaEXBgbabUjDpT5V9jMAwgBmm+5rcUTydmL6WI7vrhoyCz9R9BpoGgHImXQ+cObS+x1V
-         0V4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741622748; x=1742227548;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1sBzCrcWxCos2ucPDzOy8rSIoDUK4uuBb9IVbzpXf6Y=;
-        b=BTTCJlpeUtX3SWN0btvXW445NQEDIAxiIkK48VdPsVL8QujH28Ec8D4+iKo1bBMQFH
-         Affs6pTU0xhc7hPRflBf0ySvGB2kPg+4F1SY7akAR0WIrOjAkVhAVtkuOyfAxN4kl6IN
-         UdrQmP+skUKKNMP9GORe89JEIlOSiSM0FXlLgzk3yYIUzWU8sjEGblb1zzuF/DEzFHh+
-         Pkg7wLnVkmlDYdD8AvAMVP0wOUqLMC7kKg2GSLpOvmNJiTEl991tptsPKhTo5xrgovkO
-         7xgTUHH2vMVgSa5qr3R1Bbu3FfDXYfzfOabOCHEe2HxEMqjYOkE5Z9BFuxpUUcvFxrcF
-         JE0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVBKBYEM/nGWHD/9adJgeeigNXupDnEN6/PysKDhKtg0XGP9B0HHqRmEb10YvdPBHnjN0w7lqQVzgpXYm62Stw=@lists.infradead.org, AJvYcCVmCE7ZiBCHuLA9IZ9wVIc8KCH0/USSHK9U8Cyc4pRJjRx6CQFkI2JXK3ANzQUokRL51VFcGWYdaAOUfifJz6d4zA==@lists.infradead.org, AJvYcCWzImukpmGJsq6OzaCe8u+NyLx8ucU+ZROAV/xu2ZiXycTmTFatmzM4ZnXjhLUqZ1ZmOp3BpyoRKAMVUW4o@lists.infradead.org
-X-Gm-Message-State: AOJu0YyxyW7SydRXzf5ecTfsz84D4ZKZAHa2huCdyFwMm79IIdfr+J+t
-	wEATxEcbFAqoPAEyu/OrJ4Dl/Yw3uh/JQZR51vb6G7hDKc1iIGJY
-X-Gm-Gg: ASbGncvdBxSOZmS2FXjXpEGQeu6kGZuV4DFBUSf6TCTf2UPGnswHTgzk/USSoyFMyUn
-	N+MlvSdlcDOavh68TBTAR6XBNwpydY7TqnTW61ObGns0KoJVJjRMiwRYcxx/St/E29ihKma3vwR
-	4xyViDZuH53/jiHXT+jonxciAN1BINEYtc7YLmrfxNC4iSCWIbLin7so9RCy5YQ9ySc+1TMU5ZU
-	Iz5CXgWr9n/00y3lW1PnvXQmQZ331As3vASYZ5lV4tuiaOx6MG3vtvpsK0mt7CqwbjJe60EbFCq
-	GWJDz0sSQySsV/iWuI+xAvTjmakuA1Nrp+XrC/7VBTirHwHxnReCFRWQYYbLbTWZubbZYxhM2nl
-	5bGtj258M7NDiTGe+fsYp
-X-Google-Smtp-Source: AGHT+IH1HHf+1OpwkvFsYArfklWxYPjgWRGPYO6MW19aTR4oUCtXkTsxgz2AKwy1itY/6jY/cI2jWA==
-X-Received: by 2002:a05:6000:410a:b0:391:4559:8761 with SMTP id ffacd0b85a97d-39145598929mr2906294f8f.36.1741622747749;
-        Mon, 10 Mar 2025 09:05:47 -0700 (PDT)
-Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43cfa0723c9sm34686035e9.6.2025.03.10.09.05.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Mar 2025 09:05:47 -0700 (PDT)
-From: Jernej =?UTF-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wens@csie.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, Samuel Holland <samuel@sholland.org>,
- Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH net-next 9/9] net: stmmac: sunxi: remove of_get_phy_mode()
-Date: Mon, 10 Mar 2025 17:05:45 +0100
-Message-ID: <2774218.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <E1trbyF-005qYl-Lu@rmk-PC.armlinux.org.uk>
-References: <Z87WVk0NzMUyaxDj@shell.armlinux.org.uk>
- <E1trbyF-005qYl-Lu@rmk-PC.armlinux.org.uk>
+	id 1treyL-00000003AEa-2G76;
+	Mon, 10 Mar 2025 15:23:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741620196;
+	bh=VYbY9rIbQJQUZihr7MBQ0+PYIh42KLO/D4PgPe54Uxs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PUog0SG76zNzOvlevM9N30C0xe+8NOsE9gTz6GVbGf2rJKtGhTr5/JE3fNIRmPW3T
+	 zErGRWxFE4dNsS/s/Ln2jF0R/b9yX5egA4FMToakgHKnXZw42JWFPrm6pACEyg1Z2u
+	 olcvSsxBG/1RNNi6SWAZ3nWQHcs5kMml3qxedktabQtUF45J1XzWLrina508rjYRZ4
+	 rxdnJX/CQKT6YUyyVcaKmyjpOePusZZqUi//drGXLsExEwIJ3UPsMC2PJ1n502lt11
+	 syWoOoqU8pS0bs6mBf23X/LmC1JbrYoMo3oE4QLCwMmaplEyil0DbxIAcVWBdktBO6
+	 fk/i8Uql6NzKg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3327017E0630;
+	Mon, 10 Mar 2025 16:23:15 +0100 (CET)
+Message-ID: <5983252e-22b6-4150-a770-a6b64031daf5@collabora.com>
+Date: Mon, 10 Mar 2025 16:23:14 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/14] ASoC: mediatek: mt8196: add common interface for
+ mt8196 DAI driver
+To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+References: <20250307124841.23777-1-darren.ye@mediatek.com>
+ <20250307124841.23777-5-darren.ye@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250307124841.23777-5-darren.ye@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_090551_178603_0E0FBE74 
-X-CRM114-Status: UNSURE (   7.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250310_082317_745829_B93AFFA6 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,20 +83,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne ponedeljek, 10. marec 2025 ob 13:10:59 Srednjeevropski standardni =C4=
-=8Das je Russell King (Oracle) napisal(a):
-> devm_stmmac_probe_config_dt() already gets the PHY mode from firmware,
-> which is stored in plat_dat->phy_interface. Therefore, we don't need to
-> get it in platform code.
->=20
-> Set gmac->interface from plat_dat->phy_interface.
->=20
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Il 07/03/25 13:47, Darren.Ye ha scritto:
+> From: Darren Ye <darren.ye@mediatek.com>
+> 
+> Implement sample rate conversion and set private data for mt8196.
+> 
+> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> ---
+>   .../soc/mediatek/mt8196/mt8196-afe-control.c  | 109 ++++++++++++++++++
+>   1 file changed, 109 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-control.c
+> 
+> diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-control.c b/sound/soc/mediatek/mt8196/mt8196-afe-control.c
+> new file mode 100644
+> index 000000000000..bb85f4ad8585
+> --- /dev/null
+> +++ b/sound/soc/mediatek/mt8196/mt8196-afe-control.c
+> @@ -0,0 +1,109 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + *  MediaTek ALSA SoC Audio Control
+> + *
+> + *  Copyright (c) 2024 MediaTek Inc.
+> + *  Author: Darren Ye <darren.ye@mediatek.com>
+> + */
+> +
+> +#include "mt8196-afe-common.h"
+> +#include <linux/pm_runtime.h>
+> +
+> +unsigned int mt8196_general_rate_transform(struct device *dev,
+> +					   unsigned int rate)
+> +{
+> +	switch (rate) {
+> +	case 8000:
+> +		return MTK_AFE_IPM2P0_RATE_8K;
+> +	case 11025:
+> +		return MTK_AFE_IPM2P0_RATE_11K;
+> +	case 12000:
+> +		return MTK_AFE_IPM2P0_RATE_12K;
+> +	case 16000:
+> +		return MTK_AFE_IPM2P0_RATE_16K;
+> +	case 22050:
+> +		return MTK_AFE_IPM2P0_RATE_22K;
+> +	case 24000:
+> +		return MTK_AFE_IPM2P0_RATE_24K;
+> +	case 32000:
+> +		return MTK_AFE_IPM2P0_RATE_32K;
+> +	case 44100:
+> +		return MTK_AFE_IPM2P0_RATE_44K;
+> +	case 48000:
+> +		return MTK_AFE_IPM2P0_RATE_48K;
+> +	case 88200:
+> +		return MTK_AFE_IPM2P0_RATE_88K;
+> +	case 96000:
+> +		return MTK_AFE_IPM2P0_RATE_96K;
+> +	case 176400:
+> +		return MTK_AFE_IPM2P0_RATE_176K;
+> +	case 192000:
+> +		return MTK_AFE_IPM2P0_RATE_192K;
+> +	/* not support 260K */
+> +	case 352800:
+> +		return MTK_AFE_IPM2P0_RATE_352K;
+> +	case 384000:
+> +		return MTK_AFE_IPM2P0_RATE_384K;
+> +	default:
+> +		dev_info(dev, "%s(), rate %u invalid, use %d!!!\n",
+> +			 __func__,
+> +			 rate, MTK_AFE_IPM2P0_RATE_48K);
+> +		return MTK_AFE_IPM2P0_RATE_48K;
+> +	}
+> +}
+> +
+> +static unsigned int pcm_rate_transform(struct device *dev,
+> +				       unsigned int rate)
+> +{
 
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+You have this function in mt8186-afe-control.c and mt8192-afe-control.c, with
+the only difference being the default case.
 
-Best regards,
-Jernej
+Please commonize this function and handle the default case for each SoC (if needed)
+in each SoC-specific driver.
+
+While at it, please do the same with mt8196_general_rate_transform, as this IPM2.0
+will be in other MediaTek SoCs, and this function will otherwise be commonized next
+time anyway.
+
+Possible names could be mtk_afe_pcm_rate_transform() for one, and probably
+mtk_ipm20_general_rate_transform() for the other.
+
+> +	switch (rate) {
+> +	case 8000:
+> +		return MTK_AFE_PCM_RATE_8K;
+> +	case 16000:
+> +		return MTK_AFE_PCM_RATE_16K;
+> +	case 32000:
+> +		return MTK_AFE_PCM_RATE_32K;
+> +	case 48000:
+> +		return MTK_AFE_PCM_RATE_48K;
+> +	default:
+> +		dev_info(dev, "%s(), rate %u invalid, use %d!!!\n",
+> +			 __func__,
+> +			 rate, MTK_AFE_PCM_RATE_32K);
+> +		return MTK_AFE_PCM_RATE_32K;
+> +	}
+> +}
+> +
+> +unsigned int mt8196_rate_transform(struct device *dev,
+> +				   unsigned int rate, int aud_blk)
+> +{
+> +	switch (aud_blk) {
+> +	case MT8196_DAI_PCM_0:
+> +	case MT8196_DAI_PCM_1:
+> +		return pcm_rate_transform(dev, rate);
+> +	default:
+> +		return mt8196_general_rate_transform(dev, rate);
+> +	}
+> +}
+> +
+> +int mt8196_dai_set_priv(struct mtk_base_afe *afe, int id,
+> +			int priv_size, const void *priv_data)
+> +{
+> +	struct mt8196_afe_private *afe_priv = afe->platform_priv;
+> +	void *temp_data;
+> +
+> +	temp_data = devm_kzalloc(afe->dev,
+> +				 priv_size,
+> +				 GFP_KERNEL);
+> +	if (!temp_data)
+> +		return -ENOMEM;
+> +
+> +	if (priv_data)
+> +		memcpy(temp_data, priv_data, priv_size);
+> +
+> +	if (id >= MT8196_DAI_NUM || id < 0)
+> +		return -EINVAL;
+> +
+> +	afe_priv->dai_priv[id] = temp_data;
+> +
+> +	return 0;
+> +}
+> +
 
 
 
