@@ -4,92 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB322C282DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 325FAC28B2E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:34:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=; b=0zZDStiChTu8Y6vg9I97MTJhqR
-	HJhanl5u+jMhoQY+k/6tYVBBUtrbvISp91RhuMozedQdRK7RA4CAXelaiVYUFHqet+x2uzOd3yoa+
-	VdFm9g+fTvHo6CEu7O+mkDBS8RAyzfaipvWhGwKwuzT1JrDTwBxcVUBG9IKXwibsdL9xaCI9sT/Ly
-	iqr+kr+DAY/gKjgwuVWiRJ7C7hp7c4lO4DHH/UxYGDBZTcP+1osz5u2wsimForK0BsymYPXbTqVKQ
-	Nsd3q9L9KBP43tDuAJuq0aSfH9HDrtjrKFhV4+wQGUC7YHyyz0jMCfEVtYdeJ5iTKjJFaO0g8rq43
-	cnM+J16Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V8QCEbidivs62TNVVeNI8FCktNvGNzYTPMl8RvvfpgQ=; b=uGKZWzmlLxgry3gTUZjVqNrrvd
+	0Cu/cweg348PGlk41pagGyeKMcHxtm/1a6inyY+PWfj/jYGxeHq5zz6zD5FP/ZwPcC6TUVdvIDz9o
+	YstdOrm5my01MJzrX+KYLCuZuJC10wfMcNgLb0DFBn+kuLPzWL3WkL2HOqsqR93+D/mPmFF0oJbkJ
+	aUsYpBXwl0YVt50wqMzkdiBLDZltFPaFJs4z1dcMyTRy3r5k/hGhbdjfIUi9CZvptfVUBal/34roh
+	vqCWZ+O/4VuX64fcgWMwL8DPxvmVuhvOO053UVS+OOOCvEJU/1ApbXqQYDWH1ObbCga/2SmkUtcWo
+	6SNQ8tJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trb4t-00000002OJu-0A6B;
-	Mon, 10 Mar 2025 11:13:47 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1trbOi-00000002RNn-0oGy;
+	Mon, 10 Mar 2025 11:34:16 +0000
+Received: from mail-northeuropeazlp170110001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tragT-00000002IzU-0zsr
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Mar 2025 10:48:34 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4394345e4d5so22865185e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Mar 2025 03:48:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741603711; x=1742208511; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=;
-        b=IensH9ow62SsG71YlmazmZUBJ0s6P2573urRNA+4EfPnSWvdYB/7/wxSbjdnGwn2gU
-         TaueRys7cKv/Tl5mwdtaEheTawOuNHcyJ1cBHM/s+e5jT+2r7dHJXVB2WpNOegF+oesd
-         jbvjZyr8XNwWN1eyVHkpZHo+lGr1YhV4lcdY/wTLmim21OZBoKn7TcaapB1JASNuA4Vh
-         u9d2OeVg6nC4+vgFDrH1Mk1juDEPtUH/5/vfqKxix+evb+4E8ahbQOWNGuIz2sywVTz4
-         wmxN+205cyBd/PPUMtoPHLB/As355+j8giAQuzvCZD4BpO2Gf6PtLRASv8lfksRr4l25
-         5eHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741603711; x=1742208511;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RcnXFhBJsspPY81aHKEpyHgRpt8kbK5A2y07Uh+g33g=;
-        b=i1rwdgz3D5sJfPYnCMThY8z8fSOpAWupfMktUTc7jPFH1742p/r0J2i8CdIiMgOPuX
-         rXHz2GH5lf4+4dR+Ah7u58SBN+QgNmzvZa1wPc5QUHKKLIOWgMErwTqkyWDe5BIob8CB
-         f3EEdI+avqShOHnSdCX3mfdqQAbpGgq68oSuXkhkzq72xZ856NQpC5m/T+CQYE46yqNR
-         6SMhBK1+/Jjh0kRDEoQmrYAlN5NoqvZpqrtoFPbU7OenAFowZyxFnXnDPkKZVkfyLXtu
-         J6HWvYnXOwp/QWlyHn3ZUoG8M/Ji8nJkfZ1AzxxxeoYnF1mAXQc5+QhhuUWjXlZSIcAG
-         A3GQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUznVNRaazJbxnfZvwHaTiKp8fXF8CGUGqg+JcPRrgO9cdrJGViZRmaoB1OFnsFLRBhWyqVjZumcgl5aq2AKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+VoPUUzIvBLjImhddj++dHQpnq6+VnLg4Nz5kHFI2RBi2yFX9
-	moCK+T0AgHjh+zXstSORXm08uTTH3UU6dy713Mnf1SpYLFqD9qnzqYCP6/bVakA=
-X-Gm-Gg: ASbGnct7Z06g9iqBhnLxFQ5bF+bTA/qPv1r3sxrtKIdy7zGjW//TeftK5q9uCWrjZYu
-	5M6Gp7iMGGHYwzQqdTj1m/40d8AuIvEvt2z7LtgS/MvlAnFRuoG2vzr4k7DUuDsSdxnbqdvjoT0
-	4t5mpa5HK7JFqaOk9bc8aE+TnTuiAGL6bwMl8sgPoGf2fXCAOPMKcn66gQrreeICp4fn9h128mx
-	s4C0vkjtHG9VgMBoW595Lq7AUMMUNMdwAIDQW7WwA88yxPpuBQUkImXhtMZWpfTrV/MrR5H0ab0
-	T+xX55VJtf2jYK/NEqNolQYAzzgkxalmrPC7MgJ1bv+hftLHSQ==
-X-Google-Smtp-Source: AGHT+IEvyQMgaUHnCuYCt+OpJiqkHIstn9Ui2odq4PjFQ9lNSszLbzPKWSr7S0YVwsCBZMsm/36JQg==
-X-Received: by 2002:a05:600c:470d:b0:43c:fab3:4fad with SMTP id 5b1f17b1804b1-43cfab351c6mr15054385e9.16.1741603710881;
-        Mon, 10 Mar 2025 03:48:30 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43cf27f8ef3sm45737585e9.11.2025.03.10.03.48.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Mar 2025 03:48:30 -0700 (PDT)
-Date: Mon, 10 Mar 2025 13:48:27 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH net] net: ethernet: mediatek: Fix bit field in
- mtk_set_queue_speed()
-Message-ID: <eaab1b7b-b33b-458b-a89a-81391bd2e6e8@stanley.mountain>
+	id 1traom-00000002LY7-3KWD;
+	Mon, 10 Mar 2025 10:57:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=sla51hORuYDw4G0yZFubGq+kzeq5w8c7HBJRrW22jbHiY0XQzxLnbXJPd2CFn1+oGWLEh29pkj/bevzIGlzGsXOzqhPZzn8xbzuMMhWUEcy9mrnJmYWPCsnOa7hlUaF4covBMiIS5ApfZDKcoAU9/HXxNQ03/alXoobMCoRvGf4dVJvNfn5OnUuq7A30gfvbZNJXd4uphriMjXPXS37wsreIGh8dVZIBTOilqY5J7lDp7VMnXN2z5znDdT9eIhJGLSgkVQm/On0QIJcB3UK/qG6NOd5uHcpmsuADkjjiASqBnPdm7vKxzYlmReTm3u6bm9zc5NRl1Ns2VBPhMhn53A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=V8QCEbidivs62TNVVeNI8FCktNvGNzYTPMl8RvvfpgQ=;
+ b=UrP4+l/yQ7UpSRD9J1bDnv6/QN9n2gGJIRfToRVBw9vnaDpYh8LTurtKXIAfc/P3Ye51pLgS5cjIeMmRyNZL4FSnIGtWbtpv+QHWU/v/OlzIdHFkOBFhNvRpR/MDOZEdiat11WbySldK4lZvHpAwXEpRZDnE0k3YIG6lVerv3sCh7FejO6ECU+Cwfna4jpxGvp9WS5Bu9ZU8013Y2JwZ53Hjsi/AsUHvF7I02tBDmANLxUL+DMkny6xZtOg4v9nQhrOjynf/Nv0zcWhkNFj5dX9tsgpJBmmiw0F6Es/2W5FV580thBZ2YDNhpBc2xnIFNGPKdnCBL3j3NyCMk0iufA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=V8QCEbidivs62TNVVeNI8FCktNvGNzYTPMl8RvvfpgQ=;
+ b=S/Tfn9tgYWhLDlH5r8ZQKJ4t4ulaKD9xmoIMWArO+Y63hbpjdZB4G1D5dNUQh7Bf8EVFz3PfpM/UlF/zSk8iiMmgBDzA4jzxRSxtGaxIY3qjlOCLuydFf1XcmL7K29Rj0BbHbeeHH4U25C8zPMqGobdg3XFF2e2aYFCwJT5UWTNu5r+kK2c9/am7TcWjuUm/h6D4E/vRjrOn0ZhxaYcRtnVkVkZqJaqKeR2h4tabwC3GsJ1AQgBD+HddOEk9VwpltLNHp9RvJ1/Pre1sL6mS2IEQTM40KWLZNJYy80tgWC3WVrnEVE9QwTraOPseADzCCmbe5O+RSrmcyM7S7hKLcg==
+Received: from AS8PR04MB8642.eurprd04.prod.outlook.com (2603:10a6:20b:429::24)
+ by VI0PR04MB10343.eurprd04.prod.outlook.com (2603:10a6:800:237::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.26; Mon, 10 Mar
+ 2025 10:56:51 +0000
+Received: from AS8PR04MB8642.eurprd04.prod.outlook.com
+ ([fe80::50d3:c32a:2a83:34bb]) by AS8PR04MB8642.eurprd04.prod.outlook.com
+ ([fe80::50d3:c32a:2a83:34bb%7]) with mapi id 15.20.8511.026; Mon, 10 Mar 2025
+ 10:56:51 +0000
+From: Jacky Bai <ping.bai@nxp.com>
+To: Sudeep Holla <sudeep.holla@arm.com>
+CC: "rafael@kernel.org" <rafael@kernel.org>, "viresh.kumar@linaro.org"
+	<viresh.kumar@linaro.org>, "ilia.lin@kernel.org" <ilia.lin@kernel.org>,
+	"tiny.windzz@gmail.com" <tiny.windzz@gmail.com>, "wens@csie.org"
+	<wens@csie.org>, "jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"samuel@sholland.org" <samuel@sholland.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "linux-pm@vger.kernel.org"
+	<linux-pm@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "imx@lists.linux.dev"
+	<imx@lists.linux.dev>
+Subject: RE: [PATCH] cpufreq: Init cpufreq only for present CPUs
+Thread-Topic: [PATCH] cpufreq: Init cpufreq only for present CPUs
+Thread-Index: AQHbkYw2ZuQIz/pnWU+zV3EzH4MMb7NsKM4AgAADc8A=
+Date: Mon, 10 Mar 2025 10:56:51 +0000
+Message-ID: <AS8PR04MB864253339F818E0FC0D9982287D62@AS8PR04MB8642.eurprd04.prod.outlook.com>
+References: <20250310071640.3140435-1-ping.bai@nxp.com>
+ <Z868xB3_3NhMsa7R@bogus>
+In-Reply-To: <Z868xB3_3NhMsa7R@bogus>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AS8PR04MB8642:EE_|VI0PR04MB10343:EE_
+x-ms-office365-filtering-correlation-id: 26d77d62-1fb4-4065-8ffd-08dd5fc2433b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?hqCEDC+1iNzBjK1OQpfwOL6B2HRed3kV6UmA75B89gU44RBcC04IhU2W9vv9?=
+ =?us-ascii?Q?PvEu+FwPmL8YZrGnmfSFOFkgss7n6qvX67Ug4M8EQB2b5QU+Q/nCZVtmF9Pg?=
+ =?us-ascii?Q?COZcujnxDyBSqU08d7Y+kMzSSdWg2d/v4g7xUz92G0vMseFkoXMsahhbqDik?=
+ =?us-ascii?Q?dXeBu/bIoTBWzkV815CHD0BBbOjwogw4M4Z6N21g/i66yDTD/oiBaa0FB+6C?=
+ =?us-ascii?Q?x2nZiJ2LpgvwqEKy9tJlcleG+7VXULZaZrEN3AxDDL/cH5jnJAaXUGKQawB2?=
+ =?us-ascii?Q?KV8qWvIZrbLjE7vw6KnHCai44Hct8jvjhlTmfybBfoNNTJwIJdWNrQuCTYhl?=
+ =?us-ascii?Q?E2GfTe/Wm8Fna/j0hP03BYH5htLJVCNw9uFAZD0wvzukpLpXyn1Uq0LPUUvj?=
+ =?us-ascii?Q?GNq7lmLdJJBi+Dpw7qnLkbKixYRPkDf9hXhU8IL77lPXNisDWfDB/uUk0U23?=
+ =?us-ascii?Q?nYh2IHKT3rzMF/ZxgrFMPpl0ZICC/1wMdTKZLhzJ+9GEAvM80NADwoAItcZH?=
+ =?us-ascii?Q?9UiBELyC7tBCUOKBAf00/5f2cF7YQ+qRczUrTv/gOqkRxhtZr+Z+hwaVIzy3?=
+ =?us-ascii?Q?dgTL/Np34hBtCQC98aaVbQQ87mzft7tVJVGEobkunfm37NZojte0cJXFkvzA?=
+ =?us-ascii?Q?spH7n6BkPq1I/uU1dx2SWM5K9bRezstzq5W02b1S1dQSEUYPBZsWWQCg38QG?=
+ =?us-ascii?Q?rLTgS02zr86k2sGSfvCFB+EI+rSx5W1XQirbf5THMTluUSZ0is72fO3afriu?=
+ =?us-ascii?Q?SvnLaiho+DSIaCE8UejArFveBQcyop+jUuAju6TprUcz74atP/uO/NX1CsTL?=
+ =?us-ascii?Q?VL/3+FfEhBL6B/DVcLm69ZmdUewvvw2f41AjG1q3UdfDcZ4trnDH9mGLwhov?=
+ =?us-ascii?Q?jr1+qZOPJVb/R+bBXh0VQ2HTsqUTQ0YZbXbjM1od4/6GVOw7cgq+2aKKa0AF?=
+ =?us-ascii?Q?ep0XBabLNzi3sdUu3WEo27Dzyf/f8QBw5gOwK+svU38Yr0PlrDvy1MerXNLy?=
+ =?us-ascii?Q?PyRePAe10HqDQX7rG3MmtUtAe2E27amnnWeGwtUwIGN0lJScEmAmzKmQfC4W?=
+ =?us-ascii?Q?GyAOEdIQHnlrgFprMUqGdtDiy7F3t6nj8DV0z7HfXMWY/4YhWIPRm24YIaXB?=
+ =?us-ascii?Q?s9KzisAfQgOM9c/a7fnGZY5nnFAdkJvrLtMJrG0RUvDjVwxcbjSTQTzHxAeL?=
+ =?us-ascii?Q?sbOh5crg01NDY/pahvM20j6Uyw8oSK+N4nXcTRGhKw/hLs6CjoiUyWhDh/ku?=
+ =?us-ascii?Q?+3Pwuei+sxUQ4cksA23zA97i4PQwYqeSkPfrkryVQBdbvSBfe4u2ySWi/cua?=
+ =?us-ascii?Q?acA2cEDkQGUpPonkn7XpeFQRXdtfDvm7EteuSG5/kNh+RitQmkQhbZjVQAzz?=
+ =?us-ascii?Q?W0zVNjohrCwBwDV+vhUcLcE9Qm0EGJinsXFDZ0BqMMf3qYJw5yknypwS+HCn?=
+ =?us-ascii?Q?noBUz/HIPB618iV2Dn+ZCc/hmnRvA16x?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?PKhw45c8R/wIjAI07C84GnRMclAQ1wcEzPuDFZP63eDchybFj6KDfliZ4Ca5?=
+ =?us-ascii?Q?GCbhxbGHpPO04L8V9DxyqjpzHdHYQpfVLKXqvGNRqja0YMeOLv0HUJXRREwz?=
+ =?us-ascii?Q?8bB1jtXq5zSgU/ApkAdnqryh0cU8ZMPwGXDx5I+5Z4JdrfbiO8vLVL+F8WfU?=
+ =?us-ascii?Q?z36g5xWNUddk87c+Z4LgS2xmeJKDJzXSdbTa/iLEl5Hr3EcpLDPTUAYYf+q1?=
+ =?us-ascii?Q?b3ZvJqIn9ny7J7LAYVBV7vW5nVWhxgIkyXnw44BUnKdieWoar1Oter87l9+R?=
+ =?us-ascii?Q?D9vSQRoKxbTsBwW9YuttgiTA7r5HrjOnDD3yDbyGyL/FilLVSbwnCLehnyKI?=
+ =?us-ascii?Q?Fcjw2RMeZJwlNCbvsTYQl7dbM+5EMwfzW7FjKMio/ztPm8iaZyZeqwRmlk9v?=
+ =?us-ascii?Q?Riu9qcyeU8ijnGM0q7khb9TrHfckTH2O3ybjYwakvtAbFgPTfgibPtE8uNyf?=
+ =?us-ascii?Q?CRqfRXhoLWFAxgcBcoe2E9RrgfHobjc0a5jQ6dF6reToBNjdOPO1FNeC91pj?=
+ =?us-ascii?Q?ZsjrhEfZDx6ATEa5lRK17LYFkcAvQbxqjAks92RZ68lnIhE44ZhBQzbjHxnQ?=
+ =?us-ascii?Q?kFE/KbhPoBP/xiau8c5uz2SS3HcmkClduVXP+OZsXXgMig21VXx+57jVp667?=
+ =?us-ascii?Q?OvLm1/px7s6kjlHMjYHp+PsvjfCzQK8dDC6IK/Bouvs30bcX7diMJ4ORVqby?=
+ =?us-ascii?Q?1IpSzukGtnjClBWlv3ED+UWAdMq90cTJRc1wkqDwXO8jJzw7+zYKc3Ws+teO?=
+ =?us-ascii?Q?WMg6CUJw4FZEyt2Kot88jCgQdodJpmAYY+awtHWdEtrrVczyiSP2tlauZDSD?=
+ =?us-ascii?Q?bOd+u/AkEMIUhxN+KZ7YMzL1W94XkXH0Dy9IUuoyY4duYBJ31bXjmMg6No93?=
+ =?us-ascii?Q?P1IkPL00SMzG8UIVa49J1pmj97ZSze4E4iXqNyERQ2WeS4JVs40KJUpTh3pb?=
+ =?us-ascii?Q?lfTP4dSSiT9tZt5URECCYFvmajkQacqC9iPoqJ0V1rMqFuOJQ58rlApigTOo?=
+ =?us-ascii?Q?VTfv81ivWdmT/WYwv8rfUT6PDX8rHEXxSCVPqcoLZzE13uygSR2zYZP57zTn?=
+ =?us-ascii?Q?+uPf8muu60qgcv6TaFixO+HbFejug5uG0RlWid1P+Y5r068jjimzta4Hi2og?=
+ =?us-ascii?Q?rc++Jo79hXoE1Ti/m4pE1SRuWGNdeHYB3kOesmHLjz5MQn1cMM0Hpjjmp03X?=
+ =?us-ascii?Q?+9tBrGhkJvWYV2llbSVVMmwHlbkmDrw5H3KFxshZ6j8Vq9bxjoWIJeP789HS?=
+ =?us-ascii?Q?N+qNJcjDXoWGQk65B7MoNSS2/Ka3rE9H21/laWmfFAFJ4srjLKJW/qSfz1G0?=
+ =?us-ascii?Q?ytQzlQNo0pr08xRfVJ8fPq7GRjzW6URQRnvSrhPZXWlT+JK/93slEL0OzBEC?=
+ =?us-ascii?Q?RkKWSE2dg+yenze+4qtuz0KGxjE9NBC+x7Rhx5mYNkKFETp4YzH6DuqdOGx0?=
+ =?us-ascii?Q?foiVisJc+e9XXMZTzaGLxSPNE/DQ6Jcvtw//leQoCXGV1bBnRPjNrVXe0b7G?=
+ =?us-ascii?Q?YYhh22WdaKjiEKEPXW+1tQIjR8qZorKGL8Cv3O9q26xwmvr3f8aZ0ZXnnQ5G?=
+ =?us-ascii?Q?P6sbAgq4uz/j85njM+g=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8642.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26d77d62-1fb4-4065-8ffd-08dd5fc2433b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Mar 2025 10:56:51.2539
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hIOfBDqoiM/NBqri35Qq8p+Vw19UFp/kF6hqe+4hP6I3zx9KjYqxLANNpAGlhUBmC/tPUKFFXwzjs4vtalRjGA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10343
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_034833_290775_B5AD8E67 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20250310_035708_838374_DF33A60B 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +169,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This was supposed to set "FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1)"
-but there was typo and the | operation was missing and which turned
-it into a no-op.
+Hi Sudeep,
 
-Fixes: f63959c7eec3 ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
----
-From static analysis, not tested.
+> Subject: Re: [PATCH] cpufreq: Init cpufreq only for present CPUs
+>=20
+> On Mon, Mar 10, 2025 at 03:16:40PM +0800, Jacky Bai wrote:
+> > for_each_possible_cpu() is currently used to initialize cpufreq in
+> > below cpufreq drivers:
+> >   drivers/cpufreq/cpufreq-dt.c
+> >   drivers/cpufreq/mediatek-cpufreq-hw.c
+> >   drivers/cpufreq/mediatek-cpufreq.c
+> >   drivers/cpufreq/qcom-cpufreq-nvmem.c
+> >   drivers/cpufreq/sun50i-cpufreq-nvmem.c
+> >
+>=20
+> Again how did you just narrow down to the list above ? Is that just a ran=
+dom
+> pick ? As I suggested with corresponding cpuidle changes, please look int=
+o the
+> details in side the for_each_possible_cpu() loop and then decide if it ap=
+plies
+> or not.
+>=20
+> For me, it applied to the below files as well at the least.
+>=20
+> drivers/cpufreq/mvebu-cpufreq.c
+> drivers/cpufreq/qcom-cpufreq-hw.c
+> drivers/cpufreq/scmi-cpufreq.c
+> drivers/cpufreq/scpi-cpufreq.c
+> drivers/cpufreq/virtual-cpufreq.c
+>=20
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I checked these drivers before, these drivers has logic to check
+if the cpu device is available, then skip the not present cpu.
+From my understanding, using 'for_each_possible_cpu' will not
+cause the cpufreq driver failed to register for nosmp case, so I skipped.
+For those I just changed in the patch, the cpufreq will be failed to regist=
+er totally.
+I can changes all of them together as you suggested if no other guys object=
+.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 922330b3f4d7..9efef0e860da 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -757,7 +757,7 @@ static void mtk_set_queue_speed(struct mtk_eth *eth, unsigned int idx,
- 		case SPEED_100:
- 			val |= MTK_QTX_SCH_MAX_RATE_EN |
- 			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 1) |
--			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5);
-+			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5) |
- 			       FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
- 			break;
- 		case SPEED_1000:
--- 
-2.47.2
+Thank you for your comments. :)
 
+BR
+Jacky Bai
+> Please check everything thoroughly as I just looked at these briefly.
+>=20
+> --
+> Regards,
+> Sudeep
 
