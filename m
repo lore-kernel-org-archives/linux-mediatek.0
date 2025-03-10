@@ -4,84 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A612C282DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10311C28B2E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Mar 2025 11:54:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iw/s6OMG43ULsx4UXStKq7FqeOmxKAHk2WEArxE2pKc=; b=OanTxgJIY69jVJCx9QiTrvGNEl
-	Em5+M/uAhAT8RGC1yncWbM5sMi6FMiRdfevMQWUxumwCqUnnn15Vz/YB62imh95gokaplWGZTAqsB
-	0ER5W3qSADcmMiJxwJ6Nca5TrQf1E0PpTRpgiGuwSyj6r7jjmBvNkcinK1lExbR5Yr87M5MLWR9Ua
-	2Zf312xVMiRD4sd36E0mIw8gMUiZZPB5K8K2oxmM0+QhQZOS+FlCcMK5g4+e9JLcfeI7b8vLohdeG
-	TWPY+I6748eLY4zFjNA2+v6bG4t6kLWCNiM6UA2JF7fyiuLlLekimT7VzcZHlUrVQZB6Gj6TqN/en
-	b84bwCbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5nrjoakSV+aXyp9FtF2QEGa9iPOTgpE6PinOBCHA/Nc=; b=cEiWkORZfQgHKJMvz8aYBSZTf/
+	OLCwu0jz8E6NehjnMeVDN0Oi4cTPp6xb0C4CX6Hhk8Bs3xbmnSit8y0WoFWaw3c9CQyxkj3p4lmX4
+	5O+MtDIqg/QDFhXXX7d5nAYY7XF04EJ8LHIXA/az8zCEEJT40KfXdjW+YQAbCL82XlMi2B1IovVJr
+	UdbolYC01A7Pto9LUsoSAuxxo+iyBCCmp/b24bNFookU6C3/ZYcoxiMljUa3ihKvQ107EkdT+0ULS
+	1L3pXTl+gU7L7zj4jsELaBWDEkoUqwfeBLJZ3131QEB95124u0sf8KTySRW4c/l++paYUWxCnVdJv
+	5J21+O0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trbWi-00000002SsV-3Gjc;
-	Mon, 10 Mar 2025 11:42:32 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1trbiR-00000002USO-0jMI;
+	Mon, 10 Mar 2025 11:54:39 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1traxb-00000002N4M-07ph;
-	Mon, 10 Mar 2025 11:06:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Iw/s6OMG43ULsx4UXStKq7FqeOmxKAHk2WEArxE2pKc=; b=EORwAhbX8xg68mKTCSZ8Cd4emp
-	72FX7gvakjH7BgEDp4dCeBtZPaJNNudFmrcMoRorA8RboAINJFMXRmz18BuRI6UJOfG6NlXKAnStJ
-	U1Bnz8sje/QPQhE/CsOk8XVVF2PoXdiQRWlXF9NWW22HVFvkHssgad2+BiCfQll4YgFMwGm8R+fXm
-	VaFTmKi+Me65kz+CCSq7Qw6IgNgT2YUC11negNR3qvEFMmsdhU1LzWuRLB4SjEEIElcFl+iS+J8UB
-	yQO4ntjt19o3zayOgCKopfjtDFP7Zdg/LozF+SZ6mkUBHm/Poj9rXthJJLKwvw0NzzvM9yqbfC9sf
-	k8tjv3Ow==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:47598)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1traxJ-0002RJ-11;
-	Mon, 10 Mar 2025 11:05:57 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1traxF-0002PQ-1W;
-	Mon, 10 Mar 2025 11:05:53 +0000
-Date: Mon, 10 Mar 2025 11:05:53 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v12 12/13] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <Z87HkcdK2QTjooDK@shell.armlinux.org.uk>
-References: <20250309172717.9067-1-ansuelsmth@gmail.com>
- <20250309172717.9067-13-ansuelsmth@gmail.com>
- <Z83WgMeg_IxgbxhO@shell.armlinux.org.uk>
- <67cec5a9.170a0220.93f86.9dcf@mx.google.com>
+	id 1trbVZ-00000002Sma-1hRK;
+	Mon, 10 Mar 2025 11:41:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 71510A44945;
+	Mon, 10 Mar 2025 11:35:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B986C4CEE5;
+	Mon, 10 Mar 2025 11:41:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741606880;
+	bh=baohKrHUnm8F0gCGlhMlMZHHLAAXGDAnlAu9F2b27x0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Bb1rVcHODTTepAe2xtV9cg9zhjo7Gtb/OcDWaMECFAMc2aU2bzCWklhW4EP1LEM4k
+	 fHAFRnpxf/EImdd5ML0W3fZkubfXqUJOHGc9SJ2ve+HKdyEKdFKS79qOfE8X+KPoxP
+	 zheGIkLwsrYx5pGIR3G3Eu31Ts1u2dbgGGwn8Oh1y28V99CexsPZW9NVEt0XC6pngk
+	 z0kIXD5pFZd2Up8z14U5doOmKsuUeVxXjibhUnVGGb6ekcYBrFbeKnTdMHfgahfC2J
+	 4++nwajOCndh9jhY9XmjDx9bYZaHPd/zH+/3+yPlS6IXvd0xK73hAmNIhvoX/jnBoA
+	 iZxnW8rp0BSgg==
+Message-ID: <026296c8-a460-43ca-a423-0fa38269fbc2@kernel.org>
+Date: Mon, 10 Mar 2025 12:41:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <67cec5a9.170a0220.93f86.9dcf@mx.google.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/13] dt-bindings: mfd: add Documentation for Airoha
+ EN7581 SCU
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Daniel Danzberger <dd@embedd.com>,
+ Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Nikita Shubin <nikita.shubin@maquefel.me>, Guo Ren <guoren@kernel.org>,
+ Yangyu Chen <cyy@cyyself.name>, Ben Hutchings <ben@decadent.org.uk>,
+ Felix Fietkau <nbd@nbd.name>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
+ upstream@airoha.com
+References: <20250309132959.19045-1-ansuelsmth@gmail.com>
+ <20250309132959.19045-6-ansuelsmth@gmail.com>
+ <c1227083-a4ea-4dac-a9db-d6a5386c0437@kernel.org>
+ <67cec328.170a0220.27ecbc.9c6e@mx.google.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <67cec328.170a0220.27ecbc.9c6e@mx.google.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_040615_070427_255AF387 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20250310_044121_591049_A7D5F1C0 
+X-CRM114-Status: GOOD (  36.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,43 +134,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 10, 2025 at 11:57:41AM +0100, Christian Marangi wrote:
-> > > +static int an8855_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
-> > > +			     phy_interface_t interface,
-> > > +			     const unsigned long *advertising,
-> > > +			     bool permit_pause_to_mac)
-> > > +{
-> > > +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
-> > > +	u32 val;
-> > > +	int ret;
-> > > +
-> > > +	/*                   !!! WELCOME TO HELL !!!                   */
-> > > +
-> > [... hell ...]
+On 10/03/2025 11:47, Christian Marangi wrote:
+> On Mon, Mar 10, 2025 at 10:21:45AM +0100, Krzysztof Kozlowski wrote:
+>> On 09/03/2025 14:29, Christian Marangi wrote:
+>>> Add Documentation for Airoha EN7581 SCU.
+>>>
+>>> Airoha EN7581 SoC expose registers to control miscellaneous pheriperals
+>>> via the SCU (System Controller Unit).
+>>>
+>>> Example of these pheriperals are reset-controller, clock-controller,
+>>> PCIe line speed controller and bits to configure different Serdes ports
+>>> for USB or Ethernet usage.
+>>>
+>>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+>>> ---
+>>>  .../mfd/airoha,en7581-scu-sysctl.yaml         | 68 +++++++++++++++++++
+>>>  1 file changed, 68 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+>>> new file mode 100644
+>>> index 000000000000..d7dc66f912c1
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+>>> @@ -0,0 +1,68 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/mfd/airoha,en7581-scu-sysctl.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Airoha EN7581 SCU (System Controller Unit)
+>>> +
+>>> +maintainers:
+>>> +  - Christian Marangi <ansuelsmth@gmail.com>
+>>> +
+>>> +description:
+>>> +  Airoha EN7581 SoC expose registers to control miscellaneous
+>>> +  pheriperals via the SCU (System Controller Unit).
+>>> +
+>> One more comment - there is no such thing as "sysctl" in your hardware.
+>> Look at the SCU binding which clearly says that it is the hardware you
+>> are duplicating here, so the "System Control Unit".
+>>
+>> So you have existing "This node defines the System Control Unit of the
+>> EN7523 SoC" and you add one more node which defines the "System Control
+>> Unit", so you have two "System Control Unit" device nodes?
+>>
+>> Look also what Stephen asked for:
+>>
+>> https://lore.kernel.org/all/20220106013100.842FCC36AEB@smtp.kernel.org/
+>>
+>> so how system-controller can now became clock-controller? Now, it was
+>> the system controller since the beginning.
+>>
 > 
-> Will drop :( It was an easter egg for the 300 lines to configure PCS.
-
-That wasn't a request to drop the comment, just that I didn't want to
-include all that in my reply.
-
-> > I guess, however, that as you're only using SGMII with in-band, it
-> > probably doesn't make much difference, but having similar behaviour
-> > in the various drivers helps with ongoing maintenance.
+> The main problem here (and we had a similar problem with GPIO and PWM)
+> is that the Vendor (Airoha) wasn't so bright in placing the different
+> registers for the SoC so we have case where everything is mixed and not
+> one after another... 
 > 
-> Do we have some driver that implement the logic of skipping the bulk of
-> configuration if the mode doesn't change?
+> Example we have 
+> - CLK register part 1
+> - Some bits that configure PCIe
+> - CLK register part 2
+> - GPIO
+> - CLK register part 3
+> - ...
 
-For many, it doesn't matter, but for e.g. xpcs, there may be a reset
-of the XPCS when the mode changes, and there's workarounds for the
-TXGBE - both of those only happen when the interface mode actually
-changes.
+This does not explain that binding said "This node defines the System
+Control Unit".
 
-Re-reading my .pcs_config() documentation, I really ought to mention
-that .pcs_config() will be called for both interface mode changes and
-for advertisement changes, and should not disrupt the link when
-nothing has changed.
+So what are you adding here if not SCU?
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> 
+> The driver solution for this is syscon and the simple-mfd node
+> structure.
+
+Let's keep driver entirely separate, we don't talk about them and mixing
+arguments won't make it easier.
+
+> 
+> Now the main problem is how to modle this in DT. There are lots of case
+> where the simple-mfd model is used (like the one proposed) but probably
+> this is not accepted anymore. But again this should be clearly stated or
+> we have a chicken-egg problem when other devs implement similar thing and
+> have to implement simple MFD driver to handle this. (and driver
+> maintainers say "Use the simple-mfd model like it was already done)
+
+simple-mfd has nothing to do here. Describe the hardware - what is the SCU?
+
+
+> 
+> For this specific case (and to give an answer to the clock patch after
+> this) the problem is that this register space was originally used only
+> to control the clock and I wasn't aware that it was also used to control
+> USB. Now that I'm implementing support for it, the disaster happened.
+> 
+> So In short SCU is lots of thing, both a system-controller, a
+> clock-controller and even a reset-controller.
+
+And you have bindings for that already. Done.
+
+> 
+> To make it short, 2 different solution:
+> 1. We can keep the current node structure of the node-controller and add a
+> child node for the SSR part (with a dedicated compatible).
+
+No, you do not add child nodes just because you want some drivers.
+
+What is SSR? How is it a device?
+
+> 2. Those property need to be be defined in the clock-controller node?
+
+In the SCU node. Do you have only one SCU or more?
+
+> 
+> The ideal solution is 1. Does it work for you?
+> 
+> Sorry for the long post and hope you understand why this mess of
+> reworking the binding.
+> 
+
+
+Best regards,
+Krzysztof
 
