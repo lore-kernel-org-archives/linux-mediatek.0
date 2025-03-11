@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A654BC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 19:27:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A116C2BA1B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 19:53:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cZeEjkRBUIchrC12RwZ+rU3pBKpusXB6nWtGSbGqMAI=; b=iG5QFLICdkzi2+gXPNu0LFEaby
-	1x6PxCvwk/VCTEL7w9awN/kjN/NmIWg82XqfIVm4AWp9BH+27HLtT0wGtuT9UNYCwi9hNDhnzBXuq
-	x2fOorve7mI2rcPseApSIeXQSH9Oq5pLCqlpZgcid2D+AjPd2TqHJSFcs1YPpXbTujotZumrl1aN0
-	EYBzFbtrUOa2p+8qAZXOXymLPF8oJVjxxmaafyD+LY3uq4a6JpNzC3KUXgcHChaMpICTgTw3vc+u6
-	8IyLwiY/TuYXwpWcLkFlaG1D5IDKY9/lPiQn7BIdynbmkQW7o68t3oft8i19LgIHLIsb1/nUrrzzr
-	ursNEEZg==;
+	bh=xOHZW6P7sV9pynXufGquMHort9ucvXfujgqP+0H7RWg=; b=oDHEIGWKE2IkeEsQ5mcY8/6ZjX
+	SNX1PqUM2nOQF7GSGLzvuaJoNoC43XSFoY7XAb2H6vcVsQIxIol23UQYE3xq0ZUVH1T45hr/x4xBL
+	ORjEQJmWXXnY2lOwyrC8VsNicraq6S1Ap/brfsLAjjEG2jHDojK5Bpm0f5S7+sQNffsEP5H0RLtZT
+	1zPupy07jMFgllaJZcMmKrQdjgCS2c0HUJSTz5Nr+b7Hrrc2W2GVxeu+Sh1KKqzwunyosXJxLFAf5
+	eEaOe6ioB+02YskHF4x0F4FsAmqJSi/RxBZhgUPCZ9CQMe1stRbc+zLQttRJyPmDCmJEfc5tPLuO7
+	LGDyMGxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts5Fl-00000006lmH-027E;
-	Tue, 11 Mar 2025 19:27:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ts5fo-00000006qOO-2xpe;
+	Tue, 11 Mar 2025 19:53:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts5E6-00000006laX-2kZQ;
-	Tue, 11 Mar 2025 19:25:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3FB855C5606;
-	Tue, 11 Mar 2025 19:23:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E9D2C4CEEA;
-	Tue, 11 Mar 2025 19:25:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741721117;
-	bh=vD3EacD3StgEcdCEuMUQ5gzplQWLkIqq1FTPEZvPzfg=;
+	id 1ts5XK-00000006oDp-3fel
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Mar 2025 19:45:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741722307;
+	bh=2QZ5+1hf2x2oRIQkI4em1zNoU9lY+dMrOoGs/Ctv6KA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mBM4xUAkTUSoMvHUEAgRz6yN/W5RI7I4V2p83akIVmnAM7QsIcAQaLXlHr1vNn+QI
-	 5ETwOeuCX4I/89nK2A3vphN/bUIz+tf2148c+5xZ3vXPv6lgLe5v+vHHHDmsBwj3si
-	 WoVutHIgmQxZJY4o1F7Csp/tbW73xacT4HqG/1aCzmKtHyOp+KUJ/ZVwun/V1yNyIw
-	 QtJygu4ryRR69VbveplcuNR3T4RwYAuI8Eu/J5EIRDoBt1I03+2WF5O2z88ny9J4iB
-	 7vKswfiVOdbxC0slpftaFCpGE7eYEI9pqM7AUQtJ86jQsD0xpcSZQ8cvUZiTvbTNGf
-	 mGuBLNFZmp07g==
-Date: Tue, 11 Mar 2025 14:25:16 -0500
-From: Rob Herring <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v12 04/13] dt-bindings: net: Document support
- for AN8855 Switch Internal PHY
-Message-ID: <20250311192516.GA4115176-robh@kernel.org>
-References: <20250309172717.9067-1-ansuelsmth@gmail.com>
- <20250309172717.9067-5-ansuelsmth@gmail.com>
+	b=IYROV39306iQpZ4v7jOCgFeyCc1GFXFQBy2yLxFlWEoez5cAFOULJHrEJOqbF8HA6
+	 ALAt8IwHH+o484vtVn9kZHKGKT4KTARY1Z6dboZQZq96T6uq8CYG7NN9WriNMC1Qvn
+	 7+dGXWWxSWhKGdYWo2TjKez8ESCpXdIg17CgPb218DJ/cdOGYMSKHIjN+ATD+kbzae
+	 mPXhpaQDycGyvmrraSBljBoX5HfmVmlHqNwTyBtCoaY6Pmqa/8xBWC72+dd57eHVdB
+	 ohi0C3fp9QKn+41M/S1ICKIYBygzEAQSA3v8RkhptaHkQwQ+e5Si7nce8unz9A2kkp
+	 S6nUGrf/paXsA==
+Received: from notapiano (unknown [70.107.117.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A80C817E1540;
+	Tue, 11 Mar 2025 20:45:05 +0100 (CET)
+Date: Tue, 11 Mar 2025 16:45:03 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-mediatek@lists.infradead.org, chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
+	daniels@collabora.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] arm64: defconfig: mediatek: enable PHY drivers
+Message-ID: <717b84da-f307-41e9-9dc3-67ea653cac5f@notapiano>
+References: <20250311061703.16850-1-vignesh.raman@collabora.com>
+ <dc659e19-c1ae-42d8-84c9-0d2aafa81fe2@kernel.org>
+ <daa0733c-14e3-44df-8374-33aba6662813@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20250309172717.9067-5-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <daa0733c-14e3-44df-8374-33aba6662813@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_122518_806159_4A547018 
-X-CRM114-Status: GOOD (  20.65  )
+X-CRM114-CacheID: sfid-20250311_124511_101358_B106ADA5 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,142 +80,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 09, 2025 at 06:26:49PM +0100, Christian Marangi wrote:
-> Document support for AN8855 Switch Internal PHY.
+On Tue, Mar 11, 2025 at 05:26:37PM +0530, Vignesh Raman wrote:
+> Hi Krzysztof,
 > 
-> Airoha AN8855 is a 5-port Gigabit Switch that expose the Internal
-> PHYs on the MDIO bus.
+> On 11/03/25 12:54, Krzysztof Kozlowski wrote:
+> > On 11/03/2025 07:16, Vignesh Raman wrote:
+> > > The mediatek display driver fails to probe on mt8173 and mt8183 in
+> > > v6.14-rc4, with the following errors:
+> > 
+> > Which boards?
 > 
-> Each PHY might need to be calibrated to correctly work with the
-> use of the eFUSE provided by the Switch SoC. This can be enabled by
-> defining in the PHY node the "airoha,ext-surge" property.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/net/airoha,an8855-phy.yaml       | 93 +++++++++++++++++++
->  MAINTAINERS                                   |  1 +
->  2 files changed, 94 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
-> new file mode 100644
-> index 000000000000..301c46f84904
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
-> @@ -0,0 +1,93 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 Switch Internal PHY
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description: >
-> +  Airoha AN8855 is a 5-port Gigabit Switch that expose the Internal
-> +  PHYs on the MDIO bus.
-> +
-> +  Each PHY might need to be calibrated to correctly work with the
-> +  use of the eFUSE provided by the Switch SoC.
-> +
-> +allOf:
-> +  - $ref: ethernet-phy.yaml#
-> +
-> +select:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        enum:
-> +          - ethernet-phy-idc0ff.0410
-> +  required:
-> +    - compatible
-> +
-> +properties:
-> +  reg:
-> +    maxItems: 1
-> +
-> +  airoha,ext-surge:
-> +    description: enable PHY calibration with the use of SoC eFUSE.
+> These are the boards,
+> https://lava.pages.collabora.com/docs/boards/chromebooks/boards/hana/
+> https://lava.pages.collabora.com/docs/boards/chromebooks/boards/jacuzzi/
 
-Wouldn't nvmem-cells presence enable this?
+You can use the Devicetree name to identify them in a way that's meaningful for
+the kernel:
 
-> +
-> +  nvmem-cells:
-> +    items:
-> +      - description: phandle to SoC eFUSE tx_a
-> +      - description: phandle to SoC eFUSE tx_b
-> +      - description: phandle to SoC eFUSE tx_c
-> +      - description: phandle to SoC eFUSE tx_d
-> +
-> +  nvmem-cell-names:
-> +    items:
-> +      - const: tx_a
-> +      - const: tx_b
-> +      - const: tx_c
-> +      - const: tx_d
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +if:
-> +  required:
-> +    - airoha,ext-surge
-> +then:
-> +  required:
-> +    - nvmem-cells
-> +    - nvmem-cell-names
+mt8173-elm-hana
+mt8183-kukui-jacuzzi-juniper-sku16
 
-dependentRequired:
-  airoha,ext-surge: [ nvmem-cells, nvmem-cell-names ]
-
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    mdio {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        ethernet-phy@1 {
-> +            compatible = "ethernet-phy-idc0ff.0410",
-> +                         "ethernet-phy-ieee802.3-c45";
-> +
-> +            reg = <1>;
-> +        };
-> +
-> +        ethernet-phy@2 {
-> +            compatible = "ethernet-phy-idc0ff.0410",
-> +                         "ethernet-phy-ieee802.3-c45";
-> +
-> +            reg = <2>;
-> +
-> +            airoha,ext-surge;
-> +
-> +            nvmem-cells = <&shift_sel_port0_tx_a>,
-> +                <&shift_sel_port0_tx_b>,
-> +                <&shift_sel_port0_tx_c>,
-> +                <&shift_sel_port0_tx_d>;
-> +            nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +        };
-> +    };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 696ad8465ea8..45f4bb8deb0d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -726,6 +726,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
->  L:	netdev@vger.kernel.org
->  S:	Maintained
->  F:	Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
-> +F:	Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
->  F:	Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
->  F:	Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
->  
-> -- 
-> 2.48.1
-> 
+Thanks,
+Nícolas
 
