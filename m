@@ -4,105 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA49EC28B2F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAFD2C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 19:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=; b=BkjT7zc9o6dByZQ8HBHM5/EESO
-	Tyci19/X3u5fwKV7aO8/asychcjKQxPRIQeqVg4kD34J4Bd+Jo/rHaVwWRvZMBgVBaWdX3O912b69
-	J8kxIDx3UkgpNFNnGC3wmcqiiaBCTMGTmPIEW0aEHvQ+aqECz63YhwbzPo/ykG0b6HVTYKBMFZkTt
-	kJxEcksx3RZMBK8mN3LYxKanV/JCbVjyw3c/V5NWlvHwm1FaIivcCcZ42WvKgJ7FAwhkS5e9rYpHA
-	AJNULsRKMN8iWHdlXA01eC/f8QGRksYgqU9KGNeyxBvn5vXvbSHpwzd/oWA6jX2+wZBLQVJNjkVTd
-	753GrHig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UpD7IfzNAmvF03/c5DMQRuG3uY+LkykF0tbWG1s1BSM=; b=A65UxBgchLA+rAxuPvnUbvnwM0
+	6uSTbk8ax+PzrkggXg75heSsBqbZrcizEbjHCfGLQc15CKz83Q37EszMC+y922KeTm/lHeQSzZmSD
+	5+aE5WDm24C1e7eg0L6AtsK7BYmUpRY4R8SGe7xXaBTF8KwBSzZD2ATA26f6ic9v+pa3qUwDT2gBZ
+	FMt7FF02a3dStGSAyk9cYUI7iwP3CpO0syQj7bu60tB5v3uZH6Bw1mDjbeTvZclrfdzZkwviHANiZ
+	XV0h9Nr0wECNwQngWUkeK097U4/kleNsHhTUYrBZqqWS8jVkhx5ibObwchloIrv4s/Dt+4Clg4SLI
+	mlS/BXbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts4lI-00000006gyY-08K0;
-	Tue, 11 Mar 2025 18:55:32 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1ts4v6-00000006iuG-2qvu;
+	Tue, 11 Mar 2025 19:05:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts4hO-00000006gQ5-1gyj;
-	Tue, 11 Mar 2025 18:51:31 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43948f77f1aso35524395e9.0;
-        Tue, 11 Mar 2025 11:51:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741719089; x=1742323889; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=;
-        b=i1XWfypdM5e57Rj+rLDRWXJbZEUmt/jVN7LQjwgyzM7Fd68K+qc0NeRfV3CAawYXQJ
-         u8721Um7yZbi3djmVLzSRBt6XOfBfIhzbsE+X+1CH76FzNC4nlwwDm13VUISmY+tEsJW
-         Olgu/UXbXbo/KJWHe4DbZIKLUfrsILe/SFddW4WuLclNtSOd1VPyhV4nSf7KVfd6C1+3
-         rO+6+3voT96YEorReHYSIvWcA85/xzTGnr6UYhulslLN+1csoDJKesgeS69dDvko6i/L
-         9rnOjBGRBnhg6qpEL80kDBy/AcxCl6BkUPSwHIrcPKwnHw10JyBFEbj6sOghVHxuREjK
-         eiUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741719089; x=1742323889;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=;
-        b=hNcR31HnvnpL1fJ7sLT2sg7Fv2ecdSO7CtdDiSH8nB/fNVRUfoj1lD4ymZOfUn5ubs
-         JV6jv5xKnyIVaDp5XvdDXzVJCPZ63Kl5shcOC53QR+OzfySHU9PWK8UrKBjKNEe8CkKo
-         dQWxHApoK7TQFeq3rUJHylt6sOY2zuNYvs/ojPB2+AWETb6NLVzG4Zv8dPoP6vJnXyB5
-         yGx9GyweViYn7VQ6YG4auJuEm+DJj6vkc2BqhtJDhtwws85Eux+1+KzKPpYAFufxzPjV
-         zV+4wyxUfBu/bpkGE6AxLpsgMPqONJl/O/+mnb2+hX0pT5Y1pWi6/M8cgIuCTy6OC/f1
-         U2Vg==
-X-Forwarded-Encrypted: i=1; AJvYcCUD9kyuLlUZLgEA0ww2TieUYzs3q0K2WekXcwgBv45nDLRH+AP8Z0WOrFpn+FUH/Y2Uyp9EytgtBW/N@lists.infradead.org, AJvYcCVrlte1iw6qcDQBB6+Y36znZWCGcFFwxkHe4YhS1z5OCev/CzsaHHoZRvzZ1U3DXB55Mm7lgfdbYQrszLb7MQM=@lists.infradead.org, AJvYcCW3Iv0rpvDBotkV8zVQwFDWi03MlZJ1KSVnFvfKoemC5CxBcJDwirghF7pGWYaN9EGIvdrAlEFBdL/Xdga2ZKZg@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywb6MtXOsSFrFRuxWubqUqKuyy8gJXD/E2jmdY0ocuYsvq0y3MM
-	9vRE802Od+5BI4rLaXzONXM/4qP9nYa46ocfU+C9ueAt8ErgYWfv
-X-Gm-Gg: ASbGncuQSImzNjVbVkKJ1MCStHj4UR4ZlOl7V0FKEtveMH4p+xhktjnCdhSuFprw+Do
-	yRmgLNiuWzVh9uKv7yoPTVmuffOvRGxfMbT2sgVuvmqKafCaekBV25iPgNL8brDbusvR3TVz6O8
-	C2vF1SnnelSnFId3KAZcA9zTxYsZIdLwgfAztSw2JmmqapiBoNtQP4Ybsm0qwClzlwolj0KrZk5
-	unaMzS3+LNBZcRABn6VS2mumJAoElvkF+1tV8p0avl3uS7zaCXPWEyJ7IkP4iTyctXUHRbdPXDa
-	EoOTzy6WLppkBQuJwjvRJMaLQiH+Ky2Qg7wF3FFWqCeANCLhtCMcjc+IA4AIB83Agg7+0eHN8kI
-	N9WnYB1t2S2Jc
-X-Google-Smtp-Source: AGHT+IHJ/p0rUk7K02/5PSbIuVcXhRWrqa5T/F5SFDgcDHsDiUclOdluiyUTfuiGgPWpQC5GN31lBQ==
-X-Received: by 2002:a05:600c:4710:b0:43c:f47a:ab5f with SMTP id 5b1f17b1804b1-43cf47aac65mr90360605e9.20.1741719088409;
-        Tue, 11 Mar 2025 11:51:28 -0700 (PDT)
-Received: from Ansuel-XPS. (58.43.196.178.dynamic.cust.swisscom.net. [178.196.43.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912bfe0004sm18406539f8f.40.2025.03.11.11.51.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Mar 2025 11:51:27 -0700 (PDT)
-Message-ID: <67d0862f.df0a0220.375bd.6b15@mx.google.com>
-X-Google-Original-Message-ID: <Z9CGLcR4ZRwYcWKW@Ansuel-XPS.>
-Date: Tue, 11 Mar 2025 19:51:25 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Nikita Shubin <nikita.shubin@maquefel.me>,
-	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
-	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH 09/13] dt-bindings: phy: Add documentation for Airoha
- AN7581 USB PHY
-References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-10-ansuelsmth@gmail.com>
- <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
+	id 1ts3fR-00000006VB2-1r8h;
+	Tue, 11 Mar 2025 17:45:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 11C055C683F;
+	Tue, 11 Mar 2025 17:43:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EABCC4CEEA;
+	Tue, 11 Mar 2025 17:45:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741715124;
+	bh=yMGvzqosXKLOg9r7y8NE7dLNPaEiAHvwtMOrKej2gDM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=UOvNErM86huTmpVRVXTsFHd3gq/GhF0LLFJLFNh9lEIga3OHhvWdOolRKdKDn3MQs
+	 UUTvVHOk6QzOUbVDSeuY+V8xmzoXwcDuv/Zio4EPYDS7lA2ahdFdl6lY8A2WfFn/Lt
+	 r79pU2+9MVn9oEdk4Px4STQC8KFlPiXuhEqiMvtigwg19vNXcQt7pnN3Qbksn1LqIe
+	 n/hO4j2QUkvvf9I0W7MSBvg+QvrUJYvg/31NPns9RDLGgAHoqztCkTL+eJtsYGypW6
+	 Or7OP+yGWNCkgzrRx4akTDOp6YL6qJIZiwoyaoc/rbsFsQ7c1wfgZwKmkirdv+NDEM
+	 L/EK99ryY2MtQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 11 Mar 2025 18:45:02 +0100
+Subject: [PATCH v2 03/13] wifi: mt76: mt7996: Add mt7996_sta_link struct in
+ mt7996_vif_link
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250311-mt7996-mlo-v2-3-31df6972519b@kernel.org>
+References: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
+In-Reply-To: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_115130_445774_8FF22703 
-X-CRM114-Status: GOOD (  27.70  )
+X-CRM114-CacheID: sfid-20250311_104525_600551_756CA8E6 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,143 +77,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 10, 2025 at 05:34:56PM +0100, Krzysztof Kozlowski wrote:
-> On 09/03/2025 14:29, Christian Marangi wrote:
-> > Add documentation for Airoha AN7581 USB PHY that describe the USB PHY
-> > for the USB controller.
-> > 
-> > Airoha AN7581 SoC support a maximum of 2 USB port. The USB 2.0 mode is
-> > always supported. The USB 3.0 mode is optional and depends on the Serdes
-> > mode currently configured on the system for the USB port. If USB 3.0 node
-> > is defined, then airoha,scu-ssr property is required for Serdes mode
-> > validation.
-> > 
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> >  .../bindings/phy/airoha,an7581-usb-phy.yaml   | 106 ++++++++++++++++++
-> >  MAINTAINERS                                   |   6 +
-> >  2 files changed, 112 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml b/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
-> > new file mode 100644
-> > index 000000000000..39127cfb63a7
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
-> > @@ -0,0 +1,106 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/phy/airoha,an7581-usb-phy.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Airoha AN7581 SoC USB PHY
-> > +
-> > +maintainers:
-> > +  - Christian Marangi <ansuelsmth@gmail.com>
-> > +
-> > +description: >
-> > +  The Airoha AN7581 SoC USB PHY describes the USB PHY for the USB controller.
-> > +
-> > +  Airoha AN7581 SoC support a maximum of 2 USB port. The USB 2.0 mode is
-> > +  always supported. The USB 3.0 mode is optional and depends on the Serdes
-> > +  mode currently configured on the system for the USB port. If USB 3.0 node
-> > +  is defined, then airoha,scu-ssr property is required for Serdes mode
-> > +  validation.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: airoha,an7581-usb-phy
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  airoha,port-id:
-> > +    description: Describe the physical port this USB PHY refer to. A dedicated
-> > +      osciallator is used for each port for the USB 2.0 Slew Rate calibration.
-> 
-> typo
-> 
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    enum: [0, 1]
-> 
-> I don't understand why do you need index property here (which are
-> usually not allowed).
->
+Introduce mt7996_sta_link field in mt7996_vif_link structure instead of
+mt7996_sta. This is a preliminary patch to support MLO in MT7996 driver.
 
-Eh... As said in the description this is really to differentiate the 2
-different physical port...
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    |  6 +++---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 24 ++++++++++++----------
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 10 ++++-----
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  2 +-
+ 4 files changed, 22 insertions(+), 20 deletions(-)
 
-Each port have a dedicated oscillator for calibration and these
-calibration are identified by an offset (all placed one after another in
-a separate register space).
-
-Oscillator 0 for physical port 0
-Oscillator 1 for physcial port 1
-
-And model this is a bit problematic without an additional property, any
-hint for this?
-
-> > +
-> > +  airoha,scu-ssr:
-> > +    description: Phandle to the SCU SSR node for USB 3.0 Serdes mode validation.
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +
-> > +  usb2-phy:
-> > +    type: object
-> > +
-> > +    properties:
-> > +      '#phy-cells':
-> > +        const: 1
-> > +
-> > +    required:
-> > +      - '#phy-cells'
-> > +
-> > +    additionalProperties: false
-> 
-> Also no resources in usb[23]-phy, so this goes to the parent level and
-> you have phy-cells=2. Your DTS gives some hint that devices actually
-> differ but the commit msg contradicts it, so I don't get. Do you have
-> same IP block here or two different?
-> 
-
-SoC have 2 physical USB port.
-
-Physical port 0 on address: 0x1fab0000
-Physcial port 1 on address: 0x1fad0000
-
-In those space there are registers to configure USB 2.0 mode and USB 3.0
-mode for each physical port.
-
-So yes no child node, phy-cells 2 and reference with phys = <&usb_phy 0
-PHY_TYPE_USB2>, <&usb_phy 1 PHY_TYPE_USB3>; that totally works and hope
-now the HW is more clear.
-
-The real problematic part is the one above with identify the 2 physical
-port.
-
-> > +
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index fe34c80b8d52..c2dd385e9165 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -753,6 +753,12 @@ S:	Maintained
-> >  F:	Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml
-> >  F:	drivers/spi/spi-airoha-snfi.c
-> >  
-> > +AIROHA USB PHY DRIVER
-> > +M:	Christian Marangi <ansuelsmth@gmail.com>
-> > +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-> > +S:	Maintained
-> > +F:	Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yam
-> 
-> Typo in extension/missing l.
-> 
-> 
-> 
-> Best regards,
-> Krzysztof
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 754f8e520f52f6abf70daa148bf4289f68b1252b..456666eb7080c50493dcde61c5399adc6a987d2d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -72,10 +72,10 @@ static struct mt76_wcid *mt7996_rx_get_wcid(struct mt7996_dev *dev,
+ 	msta_link = container_of(wcid, struct mt7996_sta_link, wcid);
+ 	msta = msta_link->sta;
+ 
+-	if (!msta->vif)
++	if (!msta || !msta->vif)
+ 		return NULL;
+ 
+-	return &msta->vif->deflink.sta.deflink.wcid;
++	return &msta->vif->deflink.msta_link.wcid;
+ }
+ 
+ bool mt7996_mac_wtbl_update(struct mt7996_dev *dev, int idx, u32 mask)
+@@ -202,7 +202,7 @@ void mt7996_mac_enable_rtscts(struct mt7996_dev *dev,
+ 			      struct ieee80211_vif *vif, bool enable)
+ {
+ 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+-	struct mt7996_sta_link *msta_link = &mvif->deflink.sta.deflink;
++	struct mt7996_sta_link *msta_link = &mvif->deflink.msta_link;
+ 	u32 addr;
+ 
+ 	addr = mt7996_mac_wtbl_lmac_addr(dev, msta_link->wcid.idx, 5);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 0cd011619fd3fc6f6994e4a8a896668340969cf5..34f984387c00714fbe72af5220ec067760510bb8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -161,19 +161,23 @@ mt7996_set_hw_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		  struct mt7996_vif_link *mlink, struct ieee80211_key_conf *key)
+ {
+ 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
+-	struct mt7996_sta *msta = sta ? (struct mt7996_sta *)sta->drv_priv :
+-				  &mlink->sta;
+-	struct mt76_wcid *wcid = &msta->deflink.wcid;
+-	u8 *wcid_keyidx = &wcid->hw_key_idx;
++	struct mt76_wcid *wcid = &mlink->msta_link.wcid;
+ 	struct mt7996_phy *phy;
+ 	int idx = key->keyidx;
++	u8 *wcid_keyidx;
+ 
+ 	phy = mt7996_vif_link_phy(mlink);
+ 	if (!phy)
+ 		return -EINVAL;
+ 
+-	if (sta && !wcid->sta)
+-		return -EOPNOTSUPP;
++	if (sta) {
++		struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
++
++		wcid = &msta->deflink.wcid;
++		if (!wcid->sta)
++			return -EOPNOTSUPP;
++	}
++	wcid_keyidx = &wcid->hw_key_idx;
+ 
+ 	switch (key->cipher) {
+ 	case WLAN_CIPHER_SUITE_AES_CMAC:
+@@ -229,7 +233,7 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 			struct mt76_vif_link *mlink)
+ {
+ 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
+-	struct mt7996_sta_link *msta_link = &link->sta.deflink;
++	struct mt7996_sta_link *msta_link = &link->msta_link;
+ 	struct mt7996_phy *phy = mphy->priv;
+ 	struct mt7996_dev *dev = phy->dev;
+ 	u8 band_idx = phy->mt76->band_idx;
+@@ -261,7 +265,6 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 	idx = MT7996_WTBL_RESERVED - mlink->idx;
+ 
+ 	INIT_LIST_HEAD(&msta_link->rc_list);
+-	msta_link->sta = &link->sta;
+ 	msta_link->wcid.idx = idx;
+ 	msta_link->wcid.tx_info |= MT_WCID_TX_INFO_SET;
+ 	mt76_wcid_init(&msta_link->wcid, band_idx);
+@@ -303,10 +306,9 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 			    struct mt76_vif_link *mlink)
+ {
+ 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
++	struct mt7996_sta_link *msta_link = &link->msta_link;
+ 	struct mt7996_phy *phy = mphy->priv;
+ 	struct mt7996_dev *dev = phy->dev;
+-	struct mt7996_sta *msta = &link->sta;
+-	struct mt7996_sta_link *msta_link = &msta->deflink;
+ 	int idx = msta_link->wcid.idx;
+ 
+ 	mt7996_mcu_add_sta(dev, vif, mlink, NULL, CONN_STATE_DISCONNECT, false);
+@@ -892,7 +894,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
+ 		struct mt7996_vif *mvif;
+ 
+ 		mvif = (struct mt7996_vif *)vif->drv_priv;
+-		wcid = &mvif->deflink.sta.deflink.wcid;
++		wcid = &mvif->deflink.msta_link.wcid;
+ 
+ 		if (mvif->mt76.roc_phy &&
+ 		    (info->flags & IEEE80211_TX_CTL_TX_OFFCHAN)) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index b0ddc2af1516995fc11f030ef8360bae4ea3be3b..9018ede6efed49241205ddc042f3df149cd58530 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -2171,8 +2171,8 @@ mt7996_mcu_add_group(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 		.val = cpu_to_le32(mvif->deflink.mt76.idx % 16),
+ 	};
+ 
+-	msta = sta ? (struct mt7996_sta *)sta->drv_priv : &mvif->deflink.sta;
+-	msta_link = &msta->deflink;
++	msta = sta ? (struct mt7996_sta *)sta->drv_priv : NULL;
++	msta_link = msta ? &msta->deflink : &mvif->deflink.msta_link;
+ 	req.wlan_idx = cpu_to_le16(msta_link->wcid.idx);
+ 
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(VOW), &req,
+@@ -2319,7 +2319,7 @@ static int mt7996_mcu_get_pn(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ {
+ #define TSC_TYPE_BIGTK_PN 2
+ 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+-	struct mt7996_sta_link *msta_link = &mvif->deflink.sta.deflink;
++	struct mt7996_sta_link *msta_link = &mvif->deflink.msta_link;
+ 	struct sta_rec_pn_info *pn_info;
+ 	struct sk_buff *skb, *rskb;
+ 	struct tlv *tlv;
+@@ -4357,8 +4357,8 @@ int mt7996_mcu_wtbl_update_hdr_trans(struct mt7996_dev *dev,
+ 	struct mt7996_sta *msta;
+ 	struct sk_buff *skb;
+ 
+-	msta = sta ? (struct mt7996_sta *)sta->drv_priv : &mvif->deflink.sta;
+-	msta_link = &msta->deflink;
++	msta = sta ? (struct mt7996_sta *)sta->drv_priv : NULL;
++	msta_link = msta ? &msta->deflink : &mvif->deflink.msta_link;
+ 
+ 	skb = __mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->deflink.mt76,
+ 					      &msta_link->wcid,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index d0a4240f12a482895659e3a359daadcdca7bf7c9..ac5b94e1315ec610f5182563e3fb9d504a67c16f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -215,7 +215,7 @@ struct mt7996_sta {
+ struct mt7996_vif_link {
+ 	struct mt76_vif_link mt76; /* must be first */
+ 
+-	struct mt7996_sta sta;
++	struct mt7996_sta_link msta_link;
+ 	struct mt7996_phy *phy;
+ 
+ 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
 
 -- 
-	Ansuel
+2.48.1
+
 
