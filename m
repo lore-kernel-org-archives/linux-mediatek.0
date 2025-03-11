@@ -4,77 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60846C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 12:41:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C27C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 13:12:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aMtduRpiFVLqz9xv6KqnLEpWlWfi3sYaaNhlF8Qg/TA=; b=hGfUPia9JdfK6gHoZ1vIVZV00m
-	qbLU62nlWHUemcI7CL+9Aa6jVvyZpTBj614QnU5PxLuKDUkieO7mhfE+13WRq/X7TtkkATGN7ZHKS
-	YPhka0digkaKO0/7+mBjc7/oFjkIOc1mtiiVCC7ZkwxKLxf6k3kOS/XzHuSB+l/go2++OOuE3l9oj
-	9jH1DNOUWoivu8sg0cEqhtz1SQNzkbjf9GmCGNM3WPqKoUJ4GfnNuH5xIuniDjI/bjZqSFSBv5jMl
-	16sGN98PC+vF/IDN9+kshmCRjN+7fshq4mCnj6O17DvJC2cyLmhv7mtwN40/onjnsPLhnO3/ZmPcw
-	BBov0rCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=; b=OsbtVnMyNO9XZT/afPvII3/+R1
+	2hrEDBPTZAtr8N5ujWHntVuf8gZuoUBail/3kKiyEFE4DsXoBLhuomzT/uOp+rK4h7xmizZG7JeP+
+	FvbV4qs79RQkNZC3ZBd6ASA1XSMmsF2ZV18ylaZ4KWRe+SXW0LtpRMtuHjFoIaZWeZm++Kg9A/lek
+	O3JY5JV57xJeeAxEGg2ZA3d3HxT0Qm2NoKbUvfEGesKpt7dGezNEgbulDvERBFLRTieMkXI7jNaKq
+	g+eaCXmGNe2ZJlaX0lcdgSUv5pqroSwGTSgNsSzn3G5ss+6aI7DwX2rw75FDpIcvnnTbYlLoNCbVL
+	4W2lRuuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tryvS-00000005gse-3mU9;
-	Tue, 11 Mar 2025 12:41:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1trzOv-00000005mXT-101y;
+	Tue, 11 Mar 2025 13:12:05 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trye2-00000005cd9-2yL5;
-	Tue, 11 Mar 2025 12:23:40 +0000
-X-UUID: a67a030afe7311ef83f2a1c9db70dae0-20250311
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=aMtduRpiFVLqz9xv6KqnLEpWlWfi3sYaaNhlF8Qg/TA=;
-	b=AUdY6qNePpdJa9arurQd1V/HzwhoUdvZqjU/XoLneWee3B9AODOel/3xb5teb3Zw4zPAOxq+dmD8aytV2AyOf+eDfOGc1fmcjp9alxA0Klb6U/zugIqNKxUw1zzW4ZonQ7toMqVls8zsmZGox9LaY7hFjcKfADIlBh7EFPVYFSk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:cb50314b-8322-40de-b492-2c1794312bc4,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:c0024dce-23b9-4c94-add0-e827a7999e28,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a67a030afe7311ef83f2a1c9db70dae0-20250311
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <friday.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 622081041; Tue, 11 Mar 2025 05:23:33 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 11 Mar 2025 20:23:31 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Tue, 11 Mar 2025 20:23:30 +0800
-From: Friday Yang <friday.yang@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>,
-	"Rob Herring" <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
-	<p.zabel@pengutronix.de>
-CC: Friday Yang <friday.yang@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp for MT8188
-Date: Tue, 11 Mar 2025 20:23:22 +0800
-Message-ID: <20250311122327.20685-3-friday.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250311122327.20685-1-friday.yang@mediatek.com>
-References: <20250311122327.20685-1-friday.yang@mediatek.com>
+	id 1trzOs-00000005mVu-2sPj
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Mar 2025 13:12:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1741698721;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=;
+	b=AuxcVmX5L98J6CV1pP70CYL/5e/gCcKr0I7DA366OzwOQlQvYF5eCmLzSOZH5VBNFXCQBv
+	nXGFLtunYLNMPiBn9I78iepk/+FrexDiRgF9PUjSLraE3LpBrFE5leIKhkcHpNu27ozV+1
+	3C8EXiy6oiN0t8KNsqmfBnXEGplL8KA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-662-J-YM1hcbM2qJ1k09NlrITg-1; Tue, 11 Mar 2025 09:08:50 -0400
+X-MC-Unique: J-YM1hcbM2qJ1k09NlrITg-1
+X-Mimecast-MFC-AGG-ID: J-YM1hcbM2qJ1k09NlrITg_1741698529
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-43cf5196c25so12822715e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Mar 2025 06:08:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741698529; x=1742303329;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=;
+        b=XBxPX+gCrL7XnEW8dcP+itUID2lG5FjHeScptkjIsmvb67QOCp+YjX/Wi33b/iHMG0
+         8TV9MtgoBXbpkQYCnZLKDIblpI4u1AFzUwfetHW7GKzjRsRFyHFIVgUM8XlyAUa6PUCi
+         sk67zcnAHb17GiCC8h3jKAmy8a7NMTNsCGCsfuMVX+2ENKAL/sGh+SBuybsdvWSck5Rr
+         CAWsFZXbZU7HvKBr4TUTogC+Y7ZRtrBPeWf/OjAhoqrs8HPEZlXoODyOnLwMQhY43vVY
+         TVgKIVF5Sk3WQrE55Ko/UOs3mpoqEwDuJZYu0FbEoC4Wnsknnn+gvHPqXfaCFnqFqUgz
+         WWHA==
+X-Forwarded-Encrypted: i=1; AJvYcCWADpCXUds2yenn9FiechQgYjLP/TDwsvEHi2MBcZ1Ouu7edABWqko/qlYlEeGgPQELYg2QYgyTSi6RIAlUPg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyO9iwTjsXkvDG68NsC3hRLbwl03pnsH2e85/N4nJBU92kvWRTy
+	wFZgYOOBrt1/gTT7138nelXZofxXhr/bPDJxpSXrw18ec2csVpuRiVz8LeMYK/64zFiKVdowyj6
+	A+hldHaPcB9Pl1afDweJH8LlxHnSW7qM70gchCsaD9RjvzCsdnA0AkOqBZ7/XN656om+1ew==
+X-Gm-Gg: ASbGncurBqsFngf6hhMtTZhpShlYeAX/gRshWCXdULxFmDk7Ge2VllAvb4W/t8CuXA3
+	USV0qB+eZWRsgPqRqE9g0yDuhX44E8tqLBIRquziNwg4aWsU6ZrmTK3TUXN2gXpWGW3i0h3Whd9
+	8A8wJwBHY82mASHZAZL4ToZO4Jv1Ve6VcCrmmUKG/QWB2kYMF80Qkl4EtVBIZt3K5BfA/aIcDqV
+	VNFgRb/gCMW4plyuQH9sU/Cf/7vxHRPZS541OcvlHbapFyuQWRJgtZ3c2lIlTes77VIi0ysZNd2
+	n2AcpKmScLO7xPEuQtVuLe/JoWXjae5ZeqW1vCJcCXGsIA==
+X-Received: by 2002:a05:600c:3b04:b0:43c:f44c:72b7 with SMTP id 5b1f17b1804b1-43cf44c7703mr98399015e9.14.1741698528863;
+        Tue, 11 Mar 2025 06:08:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGHg2xJEtdcFy90P2VzdKFh3p/fCZJcgu7H/volTSsPrNEA8I4PMuG+4jYjYdTWL3xOUsvL7A==
+X-Received: by 2002:a05:600c:3b04:b0:43c:f44c:72b7 with SMTP id 5b1f17b1804b1-43cf44c7703mr98398315e9.14.1741698528418;
+        Tue, 11 Mar 2025 06:08:48 -0700 (PDT)
+Received: from [192.168.88.253] (146-241-12-146.dyn.eolo.it. [146.241.12.146])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43cf3ca4f5asm82801875e9.12.2025.03.11.06.08.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Mar 2025 06:08:47 -0700 (PDT)
+Message-ID: <72cd7f5a-ab92-494c-b7f8-4696d23ed4b1@redhat.com>
+Date: Tue, 11 Mar 2025 14:08:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [Intel-wired-lan] [PATCH net-next v11 0/4] fix the DMA API misuse
+ problem for page_pool
+To: =?UTF-8?Q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
+ Yunsheng Lin <yunshenglin0825@gmail.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, kuba@kernel.org
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Gaurav Batra <gbatra@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Eric Dumazet <edumazet@google.com>
+References: <20250307092356.638242-1-linyunsheng@huawei.com>
+ <87v7slvsed.fsf@toke.dk> <40b33879-509a-4c4a-873b-b5d3573b6e14@gmail.com>
+ <875xkj1t70.fsf@toke.dk>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <875xkj1t70.fsf@toke.dk>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vQgezpF3ht6qq9Q9odyx0kQDiF03XRIqSy6Dc1Fusmc_1741698529
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_052338_755602_5F0AAE1B 
-X-CRM114-Status: GOOD (  21.14  )
+X-CRM114-CacheID: sfid-20250311_061202_789829_5606A285 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,296 +129,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Friday Yang" <friday.yang@mediatek.com>
+On 3/8/25 3:40 PM, Toke Høiland-Jørgensen wrote:
+> Yunsheng Lin <yunshenglin0825@gmail.com> writes:
+>> I only took a glance at git code above, it seems reusing the
+>> _pp_mapping_pad for pp_dma_index seems like a wrong direction
+>> as mentioned in discussion with Ilias above as the field might
+>> be used when a page is mmap'ed to user space, and reusing that
+>> field in 'struct page' seems to disable the tcp_zerocopy feature,
+>> see the below commit from Eric:
+>> https://github.com/torvalds/linux/commit/577e4432f3ac810049cb7e6b71f4d96ec7c6e894
+>>
+>> Also, I am not sure if a page_pool owned page can be spliced into the fs
+>> subsystem yet, but if it does, I am not sure how is reusing the
+>> page->mapping possible if that page is called in __filemap_add_folio()?
+>>
+>> https://elixir.bootlin.com/linux/v6.14-rc5/source/mm/filemap.c#L882
+> 
+> Hmm, so I did look at the mapping field, but concluded using it wouldn't
+> interfere with anything relevant as long as it's reset back to zero
+> before the page is returned to the page allocator. However, I definitely
+> missed the TCP zero-copy thing, and other things as well, it would seem
+> (cf the discussion you referred to above).
+> 
+> However, I did consider alternatives: AFAICT there should be space in
+> the pp_magic field (used for the PP_SIGNATURE), so that with a bit of
+> care we can stick an ID into the upper bits and still avoid ending up
+> with a value that could look like a valid pointer.
+> 
+> I didn't implement that initially because I wasn't sure it was
+> necessary, but seeing as it is, I will take another look at it. I have
+> one or two other ideas if this turns out not to pan out.
 
-To prevent handling glitch signals during MTCMOS on/off transitions,
-SMI requires clamp and reset operations. Parse the reset settings for
-SMI LARBs and the clamp settings for the SMI Sub-Common. Register
-genpd callback for the SMI LARBs located in image, camera and IPE
-subsystems, and apply reset and clamp operations within the callback.
+Another dumb option would be storing directly the page address in the
+xarray, and avoid entirely going through an ID. I guess it will use more
+memory (the array will be more sparse) and will have more overhead, but
+could be possibly simpler?
 
-Signed-off-by: Friday Yang <friday.yang@mediatek.com>
----
- drivers/memory/mtk-smi.c | 150 +++++++++++++++++++++++++++++++++++++--
- 1 file changed, 143 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 5710348f72f6..300d01d47c89 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -10,11 +10,15 @@
- #include <linux/err.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
- #include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <soc/mediatek/smi.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
-@@ -36,6 +40,12 @@
- #define SMI_DCM				0x300
- #define SMI_DUMMY			0x444
-
-+#define SMI_COMMON_CLAMP_EN		0x3c0
-+#define SMI_COMMON_CLAMP_EN_SET		0x3c4
-+#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
-+
-+#define SMI_SUB_COMM_INPORT_NR		(8)
-+
- /* SMI LARB */
- #define SMI_LARB_SLP_CON                0xc
- #define SLP_PROT_EN                     BIT(0)
-@@ -134,6 +144,7 @@ struct mtk_smi_larb_gen {
- 	unsigned int			larb_direct_to_common_mask;
- 	unsigned int			flags_general;
- 	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
-+	const u8			*clamp_port;
- };
-
- struct mtk_smi {
-@@ -150,6 +161,7 @@ struct mtk_smi {
- };
-
- struct mtk_smi_larb { /* larb: local arbiter */
-+	struct device			*dev;
- 	struct mtk_smi			smi;
- 	void __iomem			*base;
- 	struct device			*smi_common_dev; /* common or sub-common dev */
-@@ -157,6 +169,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
- 	int				larbid;
- 	u32				*mmu;
- 	unsigned char			*bank;
-+	struct regmap			*sub_comm_syscon;
-+	u8				sub_comm_inport;
-+	struct notifier_block		nb;
-+	struct reset_control		*rst_con;
- };
-
- static int
-@@ -377,6 +393,19 @@ static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
- 	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
- };
-
-+static const u8 mtk_smi_larb_clamp_port_mt8188[MTK_LARB_NR_MAX] = {
-+	[9]	= BIT(1), /* larb10 */
-+	[10]	= BIT(2), /* larb11a */
-+	[11]	= BIT(2), /* larb11b */
-+	[12]	= BIT(3), /* larb11c */
-+	[13]	= BIT(0), /* larb12 */
-+	[16]	= BIT(1), /* larb15 */
-+	[17]	= BIT(2), /* larb16a */
-+	[18]	= BIT(2), /* larb16b */
-+	[19]	= BIT(3), /* larb17a */
-+	[20]	= BIT(3), /* larb17b */
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
- 	.port_in_larb = {
- 		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
-@@ -423,6 +452,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
- 	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
- 				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
- 	.ostd		            = mtk_smi_larb_mt8188_ostd,
-+	.clamp_port                 = mtk_smi_larb_clamp_port_mt8188,
- };
-
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
-@@ -472,6 +502,46 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
- 	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
- }
-
-+static int mtk_smi_larb_clamp_protect_enable(struct device *dev, bool enable)
-+{
-+	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-+	u32 reg;
-+	int ret;
-+
-+	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
-+	if (!larb->sub_comm_syscon)
-+		return -EINVAL;
-+
-+	reg = enable ? SMI_COMMON_CLAMP_EN_SET : SMI_COMMON_CLAMP_EN_CLR;
-+
-+	ret = regmap_write(larb->sub_comm_syscon, reg,
-+			   larb->sub_comm_inport);
-+	if (ret)
-+		dev_err(dev, "Unable to %s clamp for input port %d: %d\n",
-+			enable ? "enable" : "disable",
-+			larb->sub_comm_inport, ret);
-+
-+	return ret;
-+}
-+
-+static int mtk_smi_genpd_callback(struct notifier_block *nb,
-+				  unsigned long flags, void *data)
-+{
-+	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
-+	struct device *dev = larb->dev;
-+
-+	if (flags == GENPD_NOTIFY_PRE_ON || flags == GENPD_NOTIFY_PRE_OFF) {
-+		/* disable related SMI sub-common port */
-+		mtk_smi_larb_clamp_protect_enable(dev, true);
-+	} else if (flags == GENPD_NOTIFY_ON) {
-+		/* enable related SMI sub-common port */
-+		reset_control_reset(larb->rst_con);
-+		mtk_smi_larb_clamp_protect_enable(dev, false);
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
- static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
- {
- 	struct platform_device *smi_com_pdev;
-@@ -528,6 +598,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
- 	return ret;
- }
-
-+static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
-+{
-+	struct device *dev = larb->dev;
-+	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
-+	u32 larb_id;
-+	int ret;
-+
-+	/**
-+	 * Only SMI LARBs in camera, image and IPE subsys need to
-+	 * apply clamp and reset operations, others can be skipped.
-+	 */
-+	ret = of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id);
-+	if (ret)
-+		return -EINVAL;
-+	if (!larb_gen->clamp_port || !larb_gen->clamp_port[larb_id])
-+		return 0;
-+
-+	larb->sub_comm_inport = larb_gen->clamp_port[larb_id];
-+	larb->sub_comm_syscon = syscon_regmap_lookup_by_phandle(dev->of_node,
-+								"mediatek,smi");
-+	if (IS_ERR(larb->sub_comm_syscon)) {
-+		larb->sub_comm_syscon = NULL;
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Unknown clamp port for larb %d\n", larb_id);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_smi_larb_parse_reset_optional(struct mtk_smi_larb *larb)
-+{
-+	struct device *dev = larb->dev;
-+	int ret;
-+
-+	larb->rst_con = devm_reset_control_get_optional_exclusive(dev, "larb");
-+	if (!larb->rst_con)
-+		return 0;
-+
-+	larb->nb.notifier_call = mtk_smi_genpd_callback;
-+	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
-+	if (ret)
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Failed to add genpd callback %d\n", ret);
-+
-+	return 0;
-+}
-+
- static int mtk_smi_larb_probe(struct platform_device *pdev)
- {
- 	struct mtk_smi_larb *larb;
-@@ -538,6 +655,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 	if (!larb)
- 		return -ENOMEM;
-
-+	larb->dev = dev;
- 	larb->larb_gen = of_device_get_match_data(dev);
- 	larb->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(larb->base))
-@@ -554,15 +672,26 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 	if (ret < 0)
- 		return ret;
-
--	pm_runtime_enable(dev);
-+	ret = mtk_smi_larb_parse_clamp_optional(larb);
-+	if (ret)
-+		goto err_link_remove;
-+
-+	ret = mtk_smi_larb_parse_reset_optional(larb);
-+	if (ret)
-+		goto err_link_remove;
-+
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		goto err_link_remove;
-+
- 	platform_set_drvdata(pdev, larb);
- 	ret = component_add(dev, &mtk_smi_larb_component_ops);
- 	if (ret)
--		goto err_pm_disable;
-+		goto err_link_remove;
-+
- 	return 0;
-
--err_pm_disable:
--	pm_runtime_disable(dev);
-+err_link_remove:
- 	device_link_remove(dev, larb->smi_common_dev);
- 	return ret;
- }
-@@ -572,7 +701,6 @@ static void mtk_smi_larb_remove(struct platform_device *pdev)
- 	struct mtk_smi_larb *larb = platform_get_drvdata(pdev);
-
- 	device_link_remove(&pdev->dev, larb->smi_common_dev);
--	pm_runtime_disable(&pdev->dev);
- 	component_del(&pdev->dev, &mtk_smi_larb_component_ops);
- }
-
-@@ -686,6 +814,11 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
- 	.init     = mtk_smi_common_mt8195_init,
- };
-
-+static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8188 = {
-+	.type     = MTK_SMI_GEN2_SUB_COMM,
-+	.has_gals = true,
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -729,6 +862,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
- 	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
- 	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
-+	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
- 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
- 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
-@@ -787,7 +921,10 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
- 			return ret;
- 	}
-
--	pm_runtime_enable(dev);
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return ret;
-+
- 	platform_set_drvdata(pdev, common);
- 	return 0;
- }
-@@ -798,7 +935,6 @@ static void mtk_smi_common_remove(struct platform_device *pdev)
-
- 	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
- 		device_link_remove(&pdev->dev, common->smi_common_dev);
--	pm_runtime_disable(&pdev->dev);
- }
-
- static int __maybe_unused mtk_smi_common_resume(struct device *dev)
---
-2.46.0
+/P
 
 
