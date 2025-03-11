@@ -4,65 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAFD2C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 19:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7468CC28B2F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 19:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpD7IfzNAmvF03/c5DMQRuG3uY+LkykF0tbWG1s1BSM=; b=A65UxBgchLA+rAxuPvnUbvnwM0
-	6uSTbk8ax+PzrkggXg75heSsBqbZrcizEbjHCfGLQc15CKz83Q37EszMC+y922KeTm/lHeQSzZmSD
-	5+aE5WDm24C1e7eg0L6AtsK7BYmUpRY4R8SGe7xXaBTF8KwBSzZD2ATA26f6ic9v+pa3qUwDT2gBZ
-	FMt7FF02a3dStGSAyk9cYUI7iwP3CpO0syQj7bu60tB5v3uZH6Bw1mDjbeTvZclrfdzZkwviHANiZ
-	XV0h9Nr0wECNwQngWUkeK097U4/kleNsHhTUYrBZqqWS8jVkhx5ibObwchloIrv4s/Dt+4Clg4SLI
-	mlS/BXbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QBYt0BHsxul+nTaYflhpms2js1nZoTfEFczz9ZKES00=; b=NLqITixSiN9nbR7KRFi/eDtyyT
+	Nb3iGgfdV7MVwAiztVfuE8i25ZFCV3yCpH95cQF66isO3d9HCSYG1pyeWtL1nApelxKqWzGI8S7FR
+	cqDOEXh0WNQ5CIsEwBks6xwb14IrpUlZObjROt2HRu0YR66SqJMcaV6PxFRJzH/eZESJ6Nw6b6VoW
+	LGz3ewWOGIBPBKalYhjnNMJ8/jsJvvsWS6JzN3fiM+t0QO3O5Nd8fhPLOdi6V4KSVv+yeQ7pCWPt4
+	5qZ2A0yeJgFklkqlYUOr3GvCY8Z7LumS5F+ONwmSCEd7O0zAc5Uu2oGv8LQ5dqKHeNlpHvO9pwO6b
+	mMpqLDpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts4v6-00000006iuG-2qvu;
-	Tue, 11 Mar 2025 19:05:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ts51V-00000006kFW-3oL6;
+	Tue, 11 Mar 2025 19:12:17 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3fR-00000006VB2-1r8h;
-	Tue, 11 Mar 2025 17:45:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 11C055C683F;
-	Tue, 11 Mar 2025 17:43:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EABCC4CEEA;
-	Tue, 11 Mar 2025 17:45:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741715124;
-	bh=yMGvzqosXKLOg9r7y8NE7dLNPaEiAHvwtMOrKej2gDM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UOvNErM86huTmpVRVXTsFHd3gq/GhF0LLFJLFNh9lEIga3OHhvWdOolRKdKDn3MQs
-	 UUTvVHOk6QzOUbVDSeuY+V8xmzoXwcDuv/Zio4EPYDS7lA2ahdFdl6lY8A2WfFn/Lt
-	 r79pU2+9MVn9oEdk4Px4STQC8KFlPiXuhEqiMvtigwg19vNXcQt7pnN3Qbksn1LqIe
-	 n/hO4j2QUkvvf9I0W7MSBvg+QvrUJYvg/31NPns9RDLGgAHoqztCkTL+eJtsYGypW6
-	 Or7OP+yGWNCkgzrRx4akTDOp6YL6qJIZiwoyaoc/rbsFsQ7c1wfgZwKmkirdv+NDEM
-	 L/EK99ryY2MtQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 11 Mar 2025 18:45:02 +0100
-Subject: [PATCH v2 03/13] wifi: mt76: mt7996: Add mt7996_sta_link struct in
- mt7996_vif_link
+	id 1ts4yQ-00000006jkE-1QCo;
+	Tue, 11 Mar 2025 19:09:07 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43cfb6e9031so28177225e9.0;
+        Tue, 11 Mar 2025 12:09:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741720144; x=1742324944; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=QBYt0BHsxul+nTaYflhpms2js1nZoTfEFczz9ZKES00=;
+        b=HG2JOsojHKTy6obaiyCsNrhfRJxp/6d8S4KVQYWy6teC9UtxISdY9CEeG/C/Or1gOG
+         j0Mu9z05svFcmjJyQbI3HSubZGNj1WWFw0wuBG63BHYugu93T1a3iTpugeJMyzkw9fqG
+         pYVypnyGciYrY83jg0NKjT3omq3g0DaP3eCIeRsGKStXtD+n7VwEESVoksNrHs4d3DZK
+         4gTX9naGI+wdaZwv6Aw1XJK/PcJ6jRAzfjiYttLHCtwwIbwNRBvVxZ+12Enk1hI7onOl
+         bgNO465YXUc0mZdj5FHlhW8YDU4DN1U80/wyUqBTeX130WNUpTT0/N40Iz6kERdtbRS4
+         XJcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741720144; x=1742324944;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QBYt0BHsxul+nTaYflhpms2js1nZoTfEFczz9ZKES00=;
+        b=RoYv/mQ9Gpbv+GfGsI5fKB0mFM5n7pxM5fz1xfTpErHyRPRpw8/9NCSb9JLB72qjSo
+         CDbA5tAG3BLJdQtt7jzMUYnZndw6MCxu6RYwZwgB6bWj9tyrauS5ENHjc6OZKlU0FhcS
+         C98Z62fYYrQqiQI2/a+NL6Dc+USHYBcseVNVsdjAyvVRrK+k/ECrHGysmFOKL/zZcWe4
+         29Zyr05NC0YtrlbIunpPc20pHDU2v8wNSXRHor8PrHv/xqkaRhqivNfSayz3LkczgsSV
+         yjEDxtSM4u0pC7uo/OPDNuvuA+AQot+sVq3Ot5HS/QQl0K3iXUP4cmQNnR90b73D83sV
+         xR9A==
+X-Forwarded-Encrypted: i=1; AJvYcCUjFrGidooe4v9slQnG0i65va0JKaeqIs0/li4nRqav4KR8accMGNZjrLHfDq4Ey7HzELSkM7+/Tf8R@lists.infradead.org, AJvYcCVJ15VbGGWaocU6LwTM8IYnKSKhtQ4vwHLXrNb/QDDrfGuOv4qQ5LlYGL1FSiO4ndfkV3mYOzn61GXBhyD6/rM=@lists.infradead.org, AJvYcCXuoA8+YQwV6ZnpUp2777ILBHF8qAcwQYf8Oq37KcFKSEpJMyTFxAnMnWgjrYcgZ5vLvuo87mmMMldj+pTf22X4@lists.infradead.org
+X-Gm-Message-State: AOJu0YwylrupkSkzdcGlaDpSxLbEufOR6FxIzVBPsIZNIco7IvIgpqFw
+	FWQkw1+/Td/KE51fNEWYSVZkDzsuTL6P8Vvvf/IPQRBqzia0dQyA
+X-Gm-Gg: ASbGncvCJurJM9eovoZRc8ejCP1/ZrgscPJhMJzfPtHXwmr7spjoUcmy5pXsIUDc1KH
+	sHVzVK0ZYqiwEb+yBNrYwk442OTuRzxdp8ZRDCv7JJrgoTz5Q6Ir0qicPlrD0bBAJEo9adW5vbi
+	auk2ytUH00c4IksWpRn2u1MtSrbeTU3lN8cjWoGsDVBhdgRHlcNaEize4GpDnjK5Qf/QmTPBH5b
+	hEeTm5ANz7npuqYJ9jnGlUU+/c5QDDFBEX/iqPnmj9MXfC1nnKOqM59hzHGDUPsIfpoFMPIAIEt
+	XZlsZV055nfQoCA1mp6MUd5huItLeqQsI5d4EB8362ZXaQaP/GLliSvcqWhPGrIg078hFCulg4b
+	yUPlqCPVOyzSh
+X-Google-Smtp-Source: AGHT+IEVvLB1J5PdZXBMZwLdi5Sfx5U8w2F5CDI5YD3a5o/Tqdo42jSaYp7CF55JMp1UKEuKA0N/8w==
+X-Received: by 2002:a05:600c:5618:b0:439:9a40:aa0b with SMTP id 5b1f17b1804b1-43cdfb7e4b1mr144023345e9.25.1741720144407;
+        Tue, 11 Mar 2025 12:09:04 -0700 (PDT)
+Received: from Ansuel-XPS. (58.43.196.178.dynamic.cust.swisscom.net. [178.196.43.58])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43cf7c8249bsm81906155e9.7.2025.03.11.12.09.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Mar 2025 12:09:03 -0700 (PDT)
+Message-ID: <67d08a4f.7b0a0220.8fe9e.44fd@mx.google.com>
+X-Google-Original-Message-ID: <Z9CKTrERYllmbczJ@Ansuel-XPS.>
+Date: Tue, 11 Mar 2025 20:09:02 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nikita Shubin <nikita.shubin@maquefel.me>,
+	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
+	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH 05/13] dt-bindings: mfd: add Documentation for Airoha
+ EN7581 SCU
+References: <20250309132959.19045-1-ansuelsmth@gmail.com>
+ <20250309132959.19045-6-ansuelsmth@gmail.com>
+ <c1227083-a4ea-4dac-a9db-d6a5386c0437@kernel.org>
+ <67cec328.170a0220.27ecbc.9c6e@mx.google.com>
+ <026296c8-a460-43ca-a423-0fa38269fbc2@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250311-mt7996-mlo-v2-3-31df6972519b@kernel.org>
-References: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
-In-Reply-To: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, 
- Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <026296c8-a460-43ca-a423-0fa38269fbc2@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_104525_600551_756CA8E6 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20250311_120906_379461_98135464 
+X-CRM114-Status: GOOD (  53.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,165 +119,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce mt7996_sta_link field in mt7996_vif_link structure instead of
-mt7996_sta. This is a preliminary patch to support MLO in MT7996 driver.
+On Mon, Mar 10, 2025 at 12:41:06PM +0100, Krzysztof Kozlowski wrote:
+> On 10/03/2025 11:47, Christian Marangi wrote:
+> > On Mon, Mar 10, 2025 at 10:21:45AM +0100, Krzysztof Kozlowski wrote:
+> >> On 09/03/2025 14:29, Christian Marangi wrote:
+> >>> Add Documentation for Airoha EN7581 SCU.
+> >>>
+> >>> Airoha EN7581 SoC expose registers to control miscellaneous pheriperals
+> >>> via the SCU (System Controller Unit).
+> >>>
+> >>> Example of these pheriperals are reset-controller, clock-controller,
+> >>> PCIe line speed controller and bits to configure different Serdes ports
+> >>> for USB or Ethernet usage.
+> >>>
+> >>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> >>> ---
+> >>>  .../mfd/airoha,en7581-scu-sysctl.yaml         | 68 +++++++++++++++++++
+> >>>  1 file changed, 68 insertions(+)
+> >>>  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+> >>> new file mode 100644
+> >>> index 000000000000..d7dc66f912c1
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-scu-sysctl.yaml
+> >>> @@ -0,0 +1,68 @@
+> >>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> >>> +%YAML 1.2
+> >>> +---
+> >>> +$id: http://devicetree.org/schemas/mfd/airoha,en7581-scu-sysctl.yaml#
+> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>> +
+> >>> +title: Airoha EN7581 SCU (System Controller Unit)
+> >>> +
+> >>> +maintainers:
+> >>> +  - Christian Marangi <ansuelsmth@gmail.com>
+> >>> +
+> >>> +description:
+> >>> +  Airoha EN7581 SoC expose registers to control miscellaneous
+> >>> +  pheriperals via the SCU (System Controller Unit).
+> >>> +
+> >> One more comment - there is no such thing as "sysctl" in your hardware.
+> >> Look at the SCU binding which clearly says that it is the hardware you
+> >> are duplicating here, so the "System Control Unit".
+> >>
+> >> So you have existing "This node defines the System Control Unit of the
+> >> EN7523 SoC" and you add one more node which defines the "System Control
+> >> Unit", so you have two "System Control Unit" device nodes?
+> >>
+> >> Look also what Stephen asked for:
+> >>
+> >> https://lore.kernel.org/all/20220106013100.842FCC36AEB@smtp.kernel.org/
+> >>
+> >> so how system-controller can now became clock-controller? Now, it was
+> >> the system controller since the beginning.
+> >>
+> > 
+> > The main problem here (and we had a similar problem with GPIO and PWM)
+> > is that the Vendor (Airoha) wasn't so bright in placing the different
+> > registers for the SoC so we have case where everything is mixed and not
+> > one after another... 
+> > 
+> > Example we have 
+> > - CLK register part 1
+> > - Some bits that configure PCIe
+> > - CLK register part 2
+> > - GPIO
+> > - CLK register part 3
+> > - ...
+> 
+> This does not explain that binding said "This node defines the System
+> Control Unit".
+> 
+> So what are you adding here if not SCU?
+>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    |  6 +++---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 24 ++++++++++++----------
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 10 ++++-----
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  2 +-
- 4 files changed, 22 insertions(+), 20 deletions(-)
+With "This node defines the System Control Unit" I mean, the entire
+register space of the IP block is defined and each child specifically
+define each part of the IP block.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 754f8e520f52f6abf70daa148bf4289f68b1252b..456666eb7080c50493dcde61c5399adc6a987d2d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -72,10 +72,10 @@ static struct mt76_wcid *mt7996_rx_get_wcid(struct mt7996_dev *dev,
- 	msta_link = container_of(wcid, struct mt7996_sta_link, wcid);
- 	msta = msta_link->sta;
- 
--	if (!msta->vif)
-+	if (!msta || !msta->vif)
- 		return NULL;
- 
--	return &msta->vif->deflink.sta.deflink.wcid;
-+	return &msta->vif->deflink.msta_link.wcid;
- }
- 
- bool mt7996_mac_wtbl_update(struct mt7996_dev *dev, int idx, u32 mask)
-@@ -202,7 +202,7 @@ void mt7996_mac_enable_rtscts(struct mt7996_dev *dev,
- 			      struct ieee80211_vif *vif, bool enable)
- {
- 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
--	struct mt7996_sta_link *msta_link = &mvif->deflink.sta.deflink;
-+	struct mt7996_sta_link *msta_link = &mvif->deflink.msta_link;
- 	u32 addr;
- 
- 	addr = mt7996_mac_wtbl_lmac_addr(dev, msta_link->wcid.idx, 5);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 0cd011619fd3fc6f6994e4a8a896668340969cf5..34f984387c00714fbe72af5220ec067760510bb8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -161,19 +161,23 @@ mt7996_set_hw_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 		  struct mt7996_vif_link *mlink, struct ieee80211_key_conf *key)
- {
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
--	struct mt7996_sta *msta = sta ? (struct mt7996_sta *)sta->drv_priv :
--				  &mlink->sta;
--	struct mt76_wcid *wcid = &msta->deflink.wcid;
--	u8 *wcid_keyidx = &wcid->hw_key_idx;
-+	struct mt76_wcid *wcid = &mlink->msta_link.wcid;
- 	struct mt7996_phy *phy;
- 	int idx = key->keyidx;
-+	u8 *wcid_keyidx;
- 
- 	phy = mt7996_vif_link_phy(mlink);
- 	if (!phy)
- 		return -EINVAL;
- 
--	if (sta && !wcid->sta)
--		return -EOPNOTSUPP;
-+	if (sta) {
-+		struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-+
-+		wcid = &msta->deflink.wcid;
-+		if (!wcid->sta)
-+			return -EOPNOTSUPP;
-+	}
-+	wcid_keyidx = &wcid->hw_key_idx;
- 
- 	switch (key->cipher) {
- 	case WLAN_CIPHER_SUITE_AES_CMAC:
-@@ -229,7 +233,7 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 			struct mt76_vif_link *mlink)
- {
- 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
--	struct mt7996_sta_link *msta_link = &link->sta.deflink;
-+	struct mt7996_sta_link *msta_link = &link->msta_link;
- 	struct mt7996_phy *phy = mphy->priv;
- 	struct mt7996_dev *dev = phy->dev;
- 	u8 band_idx = phy->mt76->band_idx;
-@@ -261,7 +265,6 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 	idx = MT7996_WTBL_RESERVED - mlink->idx;
- 
- 	INIT_LIST_HEAD(&msta_link->rc_list);
--	msta_link->sta = &link->sta;
- 	msta_link->wcid.idx = idx;
- 	msta_link->wcid.tx_info |= MT_WCID_TX_INFO_SET;
- 	mt76_wcid_init(&msta_link->wcid, band_idx);
-@@ -303,10 +306,9 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 			    struct mt76_vif_link *mlink)
- {
- 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
-+	struct mt7996_sta_link *msta_link = &link->msta_link;
- 	struct mt7996_phy *phy = mphy->priv;
- 	struct mt7996_dev *dev = phy->dev;
--	struct mt7996_sta *msta = &link->sta;
--	struct mt7996_sta_link *msta_link = &msta->deflink;
- 	int idx = msta_link->wcid.idx;
- 
- 	mt7996_mcu_add_sta(dev, vif, mlink, NULL, CONN_STATE_DISCONNECT, false);
-@@ -892,7 +894,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
- 		struct mt7996_vif *mvif;
- 
- 		mvif = (struct mt7996_vif *)vif->drv_priv;
--		wcid = &mvif->deflink.sta.deflink.wcid;
-+		wcid = &mvif->deflink.msta_link.wcid;
- 
- 		if (mvif->mt76.roc_phy &&
- 		    (info->flags & IEEE80211_TX_CTL_TX_OFFCHAN)) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index b0ddc2af1516995fc11f030ef8360bae4ea3be3b..9018ede6efed49241205ddc042f3df149cd58530 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -2171,8 +2171,8 @@ mt7996_mcu_add_group(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		.val = cpu_to_le32(mvif->deflink.mt76.idx % 16),
- 	};
- 
--	msta = sta ? (struct mt7996_sta *)sta->drv_priv : &mvif->deflink.sta;
--	msta_link = &msta->deflink;
-+	msta = sta ? (struct mt7996_sta *)sta->drv_priv : NULL;
-+	msta_link = msta ? &msta->deflink : &mvif->deflink.msta_link;
- 	req.wlan_idx = cpu_to_le16(msta_link->wcid.idx);
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(VOW), &req,
-@@ -2319,7 +2319,7 @@ static int mt7996_mcu_get_pn(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- {
- #define TSC_TYPE_BIGTK_PN 2
- 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
--	struct mt7996_sta_link *msta_link = &mvif->deflink.sta.deflink;
-+	struct mt7996_sta_link *msta_link = &mvif->deflink.msta_link;
- 	struct sta_rec_pn_info *pn_info;
- 	struct sk_buff *skb, *rskb;
- 	struct tlv *tlv;
-@@ -4357,8 +4357,8 @@ int mt7996_mcu_wtbl_update_hdr_trans(struct mt7996_dev *dev,
- 	struct mt7996_sta *msta;
- 	struct sk_buff *skb;
- 
--	msta = sta ? (struct mt7996_sta *)sta->drv_priv : &mvif->deflink.sta;
--	msta_link = &msta->deflink;
-+	msta = sta ? (struct mt7996_sta *)sta->drv_priv : NULL;
-+	msta_link = msta ? &msta->deflink : &mvif->deflink.msta_link;
- 
- 	skb = __mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->deflink.mt76,
- 					      &msta_link->wcid,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index d0a4240f12a482895659e3a359daadcdca7bf7c9..ac5b94e1315ec610f5182563e3fb9d504a67c16f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -215,7 +215,7 @@ struct mt7996_sta {
- struct mt7996_vif_link {
- 	struct mt76_vif_link mt76; /* must be first */
- 
--	struct mt7996_sta sta;
-+	struct mt7996_sta_link msta_link;
- 	struct mt7996_phy *phy;
- 
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
+> > 
+> > The driver solution for this is syscon and the simple-mfd node
+> > structure.
+> 
+> Let's keep driver entirely separate, we don't talk about them and mixing
+> arguments won't make it easier.
+> 
+
+Ok.
+
+> > 
+> > Now the main problem is how to modle this in DT. There are lots of case
+> > where the simple-mfd model is used (like the one proposed) but probably
+> > this is not accepted anymore. But again this should be clearly stated or
+> > we have a chicken-egg problem when other devs implement similar thing and
+> > have to implement simple MFD driver to handle this. (and driver
+> > maintainers say "Use the simple-mfd model like it was already done)
+> 
+> simple-mfd has nothing to do here. Describe the hardware - what is the SCU?
+> 
+> 
+
+As I said below, SCU is just the name used in Airoha Documentation for
+this IP block. In this register space there are multiple things so it's
+not strictly a clock-controller (as it's currently defined)
+
+It was proposed as clock-controller previously as we weren't aware this
+IP block was used also for other usage that a strict clock controller.
+
+> > 
+> > For this specific case (and to give an answer to the clock patch after
+> > this) the problem is that this register space was originally used only
+> > to control the clock and I wasn't aware that it was also used to control
+> > USB. Now that I'm implementing support for it, the disaster happened.
+> > 
+> > So In short SCU is lots of thing, both a system-controller, a
+> > clock-controller and even a reset-controller.
+> 
+> And you have bindings for that already. Done.
+> 
+
+It's currently defined in DTS as clock-controller, should we change it
+to system-controller to make it more clear?
+
+> > 
+> > To make it short, 2 different solution:
+> > 1. We can keep the current node structure of the node-controller and add a
+> > child node for the SSR part (with a dedicated compatible).
+> 
+> No, you do not add child nodes just because you want some drivers.
+> 
+> What is SSR? How is it a device?
+
+SSR is the name used in Documentation for the register used to configure
+the Serdes and PCIe port.
+
+> 
+> > 2. Those property need to be be defined in the clock-controller node?
+> 
+> In the SCU node. Do you have only one SCU or more?
+
+Strictly speaking it's one register space. One clock-controller, one
+reset-controller and one set of SSR registers, and from what I can
+understand it's ALWAYS "One device/compatible for Register space"
+
+The simple-mfd pattern can't really work for case like this where in one
+register space there are multiple stuff.
+
+Is everything clear now?
+
+To summarize:
+- no child nodes
+- add additional property for SSR in the SCU .yaml
+
+> 
+> > 
+> > The ideal solution is 1. Does it work for you?
+> > 
+> > Sorry for the long post and hope you understand why this mess of
+> > reworking the binding.
+> > 
+> 
+> 
+> Best regards,
+> Krzysztof
 
 -- 
-2.48.1
-
+	Ansuel
 
