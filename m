@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E48C28B2F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 17:27:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9A7C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 17:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KVoxeLQkfzwKnTHV3TyhWKqb/0b4HCsW0fAznoR2qHE=; b=sEvJwZsriplO/tQF6bm08roVfb
-	yziyqZzNleXK0JIJdWMGbrAjeV2uOaUAL3GymeNZvVDR9iZSZ30qjobtCW17Vq4DBY5oQzmequBGo
-	2xKk3cyAdgeVk8RUisxLwPWhuL6jGVyirOXAuLjhmf9RnzEGBbB3JQuX+9Tz045fSa34S3xiHAq9r
-	ptBqw/K/9d+Vk2TNqyi5eeWwn3RR1DaCltIqAb+haEkgGwRiF0GK+3JDNo43lHQRi3yZ9jzfop/ar
-	Vyn24J2Xu2tWgZsPLm1M2GpHKsf8K6ve5LLKArnW2iQf+SqM+yqMIoQkZnMQYTPCBTLNCG8n+6JTJ
-	T/Z1m5Vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ttIgMNTb4dG5byDUKz4gre67W79KuvKjJZCdEXHRqEE=; b=ttDZKhSiyzyau7
+	mkXYixe8cyg1o1iR52lLUAqf6pxBAMQYqvOwsixVV9So7zRNi3zM0BMgzL0T9o7YFFNC2UyV9TvJN
+	bii4AdUsea6rbbtJikJCF5yPp/FQQZ8OMPf916PNla49L7YyjSIhpaHtlgqjWiKfhgzCCTrdtc0tL
+	jI4Y35eGWfRBEkiHhDvOI7iBviZ3njSb26hATIHgIkC/SUKWYjNMeei7Gy7TwDG97yDz9m9me+Mxm
+	cxCop5kXB0TM/sTmTY8+MnmQ8bnm3VraAYy0BBE9b0gy97FHX0iGt9q5hXB6qi2oJCVPqCG+kpzaa
+	YFSD7BIv3xSH+sUnWKjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3Nt-00000006SLz-2vQL;
-	Tue, 11 Mar 2025 17:27:17 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ts3gy-00000006VSx-2jgL;
+	Tue, 11 Mar 2025 17:47:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3EP-00000006QwO-45XK;
-	Tue, 11 Mar 2025 17:17:31 +0000
+	id 1ts3fJ-00000006V92-0FqQ;
+	Tue, 11 Mar 2025 17:45:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 778BCA46076;
-	Tue, 11 Mar 2025 17:11:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91835C4CEEA;
-	Tue, 11 Mar 2025 17:17:26 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8B24A5C65F9;
+	Tue, 11 Mar 2025 17:42:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AF06C4CEEC;
+	Tue, 11 Mar 2025 17:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741713448;
-	bh=qymAbbIdLchqAtQBBL+pqPrr3X7OBh13PkUPlVUStBs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Y+KELLa+knvBq8Y6mOU+ZaIu7WLEGPkUTLOIifEoLx07A7YpymGP0EZ6RUaaNcqCo
-	 3k856Xxx9mvWBtD/kW1hpH8z5UicEuGryGX30wmmSHiELQpagjfqaS1agU6u+Ormzd
-	 H13ylecD0RyKi1f6lDHHyTw5SNprB9ReQRFALFQOf50T5hCqx8I/BLFZvKoOPgiFWb
-	 P9ZsWCFH5nLDGwZAdVzP6/CgAlYeJxf09jwL55/v2cRksfU8G5OAxxeW+m/CsF2CxO
-	 rtF6kcxMyfgI0v5VfXCYgJEublnndzXB34xpUffIw0lnOZfkJyTfhcCp14pIApgvAE
-	 Pp7+Yg2hJJ1MA==
-From: Mark Brown <broonie@kernel.org>
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- fparent@baylibre.com
-In-Reply-To: <20250304024045.7788-1-leilk.liu@mediatek.com>
-References: <20250304024045.7788-1-leilk.liu@mediatek.com>
-Subject: Re: [PATCH v2] spi: mt65xx: add PM QoS support
-Message-Id: <174171344631.214660.9058567324727633834.b4-ty@kernel.org>
-Date: Tue, 11 Mar 2025 17:17:26 +0000
+	s=k20201202; t=1741715116;
+	bh=HsotVx6KpH1JEpP3CAmCRSuWKsczS3BnfeLb6xjVxBY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=G5kssCRwzyB4/FViiPUYdFPYz46vIbGGPS1cA0pcwICqWGv1D7qAVe3/J8okR2QYi
+	 8RvdI6AmRI4tPCk2FCsmFCKQcWon2c6+hLrnOo0Hr+GAzt/EbU5FrIiAH3q4UGKPsg
+	 asXrvoLsr8RqLyQGdMs7HEjx+1RjWaE4A0gsyDlRt4K9+upUhkp3of22lhCmnkwKta
+	 wPFuo3MQeD7jYDEp11gnF64mxeTmE2v4UgB12e9a75d9CX/15b0bzQu8W+k5lQAxUF
+	 MNI5fzvw8bkhgTwJfrBPW3MOAn9PfTygbyFWFCI3SBUZwHTFOlOInxuYwWvpO+QGOm
+	 6AHzdy/ng9w2g==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v2 00/13] wifi: mt76: mt7996: Preliminary work to support
+ MLO
+Date: Tue, 11 Mar 2025 18:44:59 +0100
+Message-Id: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+X-B4-Tracking: v=1; b=H4sIAJt20GcC/23MSw6CMBSF4a2QO7amDyqWkfswDApeoBFac0saD
+ enerYwd/ic53w4RyWGEttqBMLnogi8hTxUMs/UTMvcoDZJLzaXkbN0aYy5sXQIzGs2IiluDHMr
+ hRTi694Hdu9Kzi1ugz2En8Vv/MkkwzlQ91LbvVSP09fZE8ricA03Q5Zy/xCM45qUAAAA=
+X-Change-ID: 20250220-mt7996-mlo-95e9fe30a9e0
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Bo Jiao <Bo.Jiao@mediatek.com>, 
+ Peter Chiu <chui-hao.chiu@mediatek.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_101730_088556_C43D01DB 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20250311_104517_215307_F51C3E6F 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +81,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 04 Mar 2025 10:37:15 +0800, Leilk Liu wrote:
-> Enable Quality of Service(QoS) support to speed up interrupt service
-> routine handle. Sometimes, a gic interrupt will be generated after
-> SPI transmission, but at this time the CPU is in an idle state and the
-> processing handler will be very slow. It takes time to exit the idle state
-> and then become active. This will cause the SPI handler to execute slowly
-> and cause SPI transfer timeouts.
-> 
-> [...]
+This series is the first preliminary work needed to support MLO in
+MT7996 driver.
 
-Applied to
+---
+Changes in v2:
+- Rebase on top of mt76 master branch
+- get rid of mt76_sta_common_init utility routine and introduce
+  mt7996_sta_state routine
+- Link to v1: https://lore.kernel.org/r/20250220-mt7996-mlo-v1-0-34c4abb37158@kernel.org
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+---
+Lorenzo Bianconi (9):
+      wifi: mt76: mt7996: Add chage_vif_links stub
+      wifi: mt76: mt7996: Introduce mt7996_sta_link container
+      wifi: mt76: mt7996: Add mt7996_sta_link struct in mt7996_vif_link
+      wifi: mt76: mt7996: Add vif_cfg_changed callback
+      wifi: mt76: mt7996: Add link_info_changed callback
+      wifi: mt76: mt7996: Add mt7996_sta_state routine
+      wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks
+      wifi: mt76: mt7996: Support MLO in mt7996_mac_sta_event()
+      wifi: mt76: mt7996: Rely on mt7996_vif_link and mt7996_sta_link in mt7996_mac_twt_teardown_flow signature
 
-Thanks!
+Shayne Chen (4):
+      wifi: mt76: mt7996: Add mt7996_mac_sta_change_links callback
+      wifi: mt76: Check link_conf pointer in mt76_connac_mcu_sta_basic_tlv()
+      wifi: mt76: mt7996: Update mt7996_mcu_add_sta to MLO support
+      wifi: mt76: mt7996: Rely on mt7996_vif_link in mt7996_mcu_twt_agrt_update signature
 
-[1/1] spi: mt65xx: add PM QoS support
-      commit: 632556d5799a2b3e87dd5594a59245523b39cf31
+ drivers/net/wireless/mediatek/mt76/mac80211.c      |   5 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |   2 +
+ .../net/wireless/mediatek/mt76/mt76_connac_mcu.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7996/debugfs.c    |  12 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 125 +++--
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 527 ++++++++++++++++-----
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 335 +++++++------
+ drivers/net/wireless/mediatek/mt76/mt7996/mmio.c   |   3 -
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  36 +-
+ 9 files changed, 689 insertions(+), 358 deletions(-)
+---
+base-commit: 33584256a5f38ffb9e8829d08302a3021f2a8475
+change-id: 20250220-mt7996-mlo-95e9fe30a9e0
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
