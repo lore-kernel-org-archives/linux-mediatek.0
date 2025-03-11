@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5605C35FF2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 15:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC352C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 15:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jozy/v8NT0GN5TxtUOTLrsyJUrXwxRJ95fyMlLjn2VI=; b=hbLsFQU6q9C++14nqm8WgBOrIA
-	d+Vgg9yKWNBTMHXwundM+HdY+frz7Z2NckxK/hBR09yRS52ABEA48/faEcPBNcI9/Uk4cA1s0DdL6
-	XDn9Xuu1v41+J69Xgi9zcIyQGLN2zCllJyrIFPHx+fNqmv5L1TDtNFhjU+rIusaj86oZXUZldE99f
-	p7pTYe8zzVqaTULGKDmFNaJDTSVQGdO9IBwMMrG0xmGDSWmVeKquqt4WSp+flkgHZvJMJ5s88Qj7R
-	nccNQTYaSym16PcqehN4ymOsGOT7f0yKPi62PGqZTRAuwJ65R5kKc1H5UhtVfYj5snKctX2LlpYAl
-	L2Ik7CeQ==;
+	bh=bQvxtHW//eoogfjKKEKKkC38s4D6U/hg24arM25nRWk=; b=DuXI9zqfR5QS9t4zRlsM1GDut2
+	fTXR7jJtRGA+ebOT63gBSHmWTzL65/5G4qs9VcyRL/dPA+hUjN+LYv8Ioo3uCwvRfNCD33MEYgZBU
+	pGrJyVdpx3d0sOabbbzwpSmGZsw9+n+LG45JixSQDsTdsWVlNghgl39lF9zQL8nkzrncmFhpEeb8d
+	1W3s5SBz+Frm2md23blpDUItIGkOMwA/C+4OuS1yeSkTvstZwftGs5qHrZ73Ks5F8PwkjgmtfHpQp
+	C/3UeYUaWuASLygGXfJXFnaGyE3BuMI3NOjx0JgGEDbr/aHy7v/TTe/VlhJwQOI2q8gsmdygi0mcS
+	4DqKRUbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1yJ-00000006Erw-3YLs;
-	Tue, 11 Mar 2025 15:56:47 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1ts1yL-00000006EvV-3xZ5;
+	Tue, 11 Mar 2025 15:56:49 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1wm-00000006Dpu-2rlV
+	id 1ts1wq-00000006DtL-06rM
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Mar 2025 15:55:13 +0000
+	Tue, 11 Mar 2025 15:55:18 +0000
 Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C792E21184;
-	Tue, 11 Mar 2025 15:54:51 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 1755A1F443;
+	Tue, 11 Mar 2025 15:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708491; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1741708494; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jozy/v8NT0GN5TxtUOTLrsyJUrXwxRJ95fyMlLjn2VI=;
-	b=g3Ls7I7FIen1uaVcHU6Rsl2I9tR6aOsR13j9ny3LzmW0NHUyY5EvlGe7WKYLhgYh9RSvaZ
-	LAO/0T3TDe8DZMaLIVSF8IN6NnHYUWe9TEOGNaw6mte20cOrXjuMxqApyY3u5yX71a9ppp
-	AgRFS18s6Nn6AxjzWPb5mSzigNwllvA=
+	bh=bQvxtHW//eoogfjKKEKKkC38s4D6U/hg24arM25nRWk=;
+	b=oZOuqrYPSVVM9VvFxsTMXUZyj85FErY9iYGF5Lsz6PAQ3zJocOf9J6O8uXpl6iNBVBoTvX
+	mrKZO1LMGVKfarIb7O3wWYqkRLJE1Fcdr+W/UE5/1Clq9jWGEV5yuXOJOgYdEW07ZKXYAS
+	fO44Oq58Y/QeHZm+yO+vaBqcQM4TN5U=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708491;
+	s=susede2_ed25519; t=1741708494;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jozy/v8NT0GN5TxtUOTLrsyJUrXwxRJ95fyMlLjn2VI=;
-	b=E9IoQL8K20XcmhzjBZW2qloGWQRLqH4KojwlEzry2bwUyJ81B1BkD2ne3tzqrQttpI16tr
-	65djfHE6LlZRuaBQ==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=g3Ls7I7F;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=E9IoQL8K
+	bh=bQvxtHW//eoogfjKKEKKkC38s4D6U/hg24arM25nRWk=;
+	b=7XB6KMRoTaRLV/ooyrNK8EgyNY6/OaB9L9XyH0wGeesybuyOSAPpM5X6qSTwOUzIleh5kv
+	1LTjdnzBxMTMr4DA==
+Authentication-Results: smtp-out2.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b="qAiQ+/xv";
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=a0oqtpx2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708491; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1741708493; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jozy/v8NT0GN5TxtUOTLrsyJUrXwxRJ95fyMlLjn2VI=;
-	b=g3Ls7I7FIen1uaVcHU6Rsl2I9tR6aOsR13j9ny3LzmW0NHUyY5EvlGe7WKYLhgYh9RSvaZ
-	LAO/0T3TDe8DZMaLIVSF8IN6NnHYUWe9TEOGNaw6mte20cOrXjuMxqApyY3u5yX71a9ppp
-	AgRFS18s6Nn6AxjzWPb5mSzigNwllvA=
+	bh=bQvxtHW//eoogfjKKEKKkC38s4D6U/hg24arM25nRWk=;
+	b=qAiQ+/xvMTwufmeSnKIpIj59G3KotmnnvXYY+381HT3A1szboyWhNzScXEb4YplhbAdsWr
+	52j6tEZZ+yRpDGylLAyPNrBqgeTzK3vJS+hI7irK44we8oulDWSASH0e7TzoNRbCuLt3/9
+	McU0nA4hE2zwkNG7MDkH5WjlLwmm38s=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708491;
+	s=susede2_ed25519; t=1741708493;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jozy/v8NT0GN5TxtUOTLrsyJUrXwxRJ95fyMlLjn2VI=;
-	b=E9IoQL8K20XcmhzjBZW2qloGWQRLqH4KojwlEzry2bwUyJ81B1BkD2ne3tzqrQttpI16tr
-	65djfHE6LlZRuaBQ==
+	bh=bQvxtHW//eoogfjKKEKKkC38s4D6U/hg24arM25nRWk=;
+	b=a0oqtpx2gAGAVOEIftO2shSS1sEkvpJBwQjtP+w4lBZ6yrZtR5driQRJFB6GREiFVg4p/+
+	/m18E4LqKR5YqRAg==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 26F0213AB8;
-	Tue, 11 Mar 2025 15:54:51 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 694BE13AB8;
+	Tue, 11 Mar 2025 15:54:52 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id INg2CMtc0GdUdQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:54:51 +0000
+	id sJFGGMxc0GdUdQAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:54:52 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: simona@ffwll.ch,
 	airlied@gmail.com,
@@ -104,20 +104,21 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>
-Subject: [PATCH v4 07/25] drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Tue, 11 Mar 2025 16:47:11 +0100
-Message-ID: <20250311155120.442633-8-tzimmermann@suse.de>
+	Xinliang Liu <xinliang.liu@linaro.org>,
+	Tian Tao <tiantao6@hisilicon.com>,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: [PATCH v4 09/25] drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Tue, 11 Mar 2025 16:47:13 +0100
+Message-ID: <20250311155120.442633-10-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
 References: <20250311155120.442633-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: C792E21184
+X-Rspamd-Queue-Id: 1755A1F443
 X-Spamd-Result: default: False [-1.51 / 50.00];
 	BAYES_HAM(-3.00)[100.00%];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -135,8 +136,8 @@ X-Spamd-Result: default: False [-1.51 / 50.00];
 	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_TWELVE(0.00)[26];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[samsung.com:email,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:email,suse.de:dkim,suse.de:mid];
+	RCPT_COUNT_TWELVE(0.00)[27];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,linaro.org:email,suse.de:email,suse.de:dkim,suse.de:mid];
 	TO_MATCH_ENVRCPT_ALL(0.00)[];
 	FROM_HAS_DN(0.00)[];
 	R_RATELIMIT(0.00)[to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
@@ -151,8 +152,8 @@ X-Spamd-Result: default: False [-1.51 / 50.00];
 X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
 X-Rspamd-Action: no action
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_085512_893098_39B1061D 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20250311_085516_231282_435DB8C0 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,50 +169,165 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. No alignment required.
+buffer size. Align the pitch to a multiple of 128.
+
+The hibmc driver's new hibmc_dumb_create() is similar to the one
+in GEM VRAM helpers. The driver was the only caller of
+drm_gem_vram_fill_create_dumb(). Remove the now unused helper.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Inki Dae <inki.dae@samsung.com>
-Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
-Cc: Kyungmin Park <kyungmin.park@samsung.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>
+Cc: Xinliang Liu <xinliang.liu@linaro.org>
+Cc: Tian Tao <tiantao6@hisilicon.com>
+Cc: Xinwei Kong <kong.kongxinwei@hisilicon.com>
+Cc: Sumit Semwal <sumit.semwal@linaro.org>
+Cc: Yongqin Liu <yongqin.liu@linaro.org>
+Cc: John Stultz <jstultz@google.com>
 ---
- drivers/gpu/drm/exynos/exynos_drm_gem.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/drm_gem_vram_helper.c         | 65 -------------------
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   | 25 ++++++-
+ include/drm/drm_gem_vram_helper.h             |  6 --
+ 3 files changed, 24 insertions(+), 72 deletions(-)
 
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-index 4787fee4696f..ffa1c02b4b1e 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
-+++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-@@ -11,6 +11,7 @@
- #include <linux/shmem_fs.h>
- #include <linux/module.h>
+diff --git a/drivers/gpu/drm/drm_gem_vram_helper.c b/drivers/gpu/drm/drm_gem_vram_helper.c
+index 15cd564cbeac..b4cf8134df6d 100644
+--- a/drivers/gpu/drm/drm_gem_vram_helper.c
++++ b/drivers/gpu/drm/drm_gem_vram_helper.c
+@@ -444,71 +444,6 @@ void drm_gem_vram_vunmap(struct drm_gem_vram_object *gbo,
+ }
+ EXPORT_SYMBOL(drm_gem_vram_vunmap);
  
+-/**
+- * drm_gem_vram_fill_create_dumb() - Helper for implementing
+- *				     &struct drm_driver.dumb_create
+- *
+- * @file:		the DRM file
+- * @dev:		the DRM device
+- * @pg_align:		the buffer's alignment in multiples of the page size
+- * @pitch_align:	the scanline's alignment in powers of 2
+- * @args:		the arguments as provided to
+- *			&struct drm_driver.dumb_create
+- *
+- * This helper function fills &struct drm_mode_create_dumb, which is used
+- * by &struct drm_driver.dumb_create. Implementations of this interface
+- * should forwards their arguments to this helper, plus the driver-specific
+- * parameters.
+- *
+- * Returns:
+- * 0 on success, or
+- * a negative error code otherwise.
+- */
+-int drm_gem_vram_fill_create_dumb(struct drm_file *file,
+-				  struct drm_device *dev,
+-				  unsigned long pg_align,
+-				  unsigned long pitch_align,
+-				  struct drm_mode_create_dumb *args)
+-{
+-	size_t pitch, size;
+-	struct drm_gem_vram_object *gbo;
+-	int ret;
+-	u32 handle;
+-
+-	pitch = args->width * DIV_ROUND_UP(args->bpp, 8);
+-	if (pitch_align) {
+-		if (WARN_ON_ONCE(!is_power_of_2(pitch_align)))
+-			return -EINVAL;
+-		pitch = ALIGN(pitch, pitch_align);
+-	}
+-	size = pitch * args->height;
+-
+-	size = roundup(size, PAGE_SIZE);
+-	if (!size)
+-		return -EINVAL;
+-
+-	gbo = drm_gem_vram_create(dev, size, pg_align);
+-	if (IS_ERR(gbo))
+-		return PTR_ERR(gbo);
+-
+-	ret = drm_gem_handle_create(file, &gbo->bo.base, &handle);
+-	if (ret)
+-		goto err_drm_gem_object_put;
+-
+-	drm_gem_object_put(&gbo->bo.base);
+-
+-	args->pitch = pitch;
+-	args->size = size;
+-	args->handle = handle;
+-
+-	return 0;
+-
+-err_drm_gem_object_put:
+-	drm_gem_object_put(&gbo->bo.base);
+-	return ret;
+-}
+-EXPORT_SYMBOL(drm_gem_vram_fill_create_dumb);
+-
+ /*
+  * Helpers for struct ttm_device_funcs
+  */
+diff --git a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
+index e6de6d5edf6b..81768577871f 100644
+--- a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
++++ b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
+@@ -18,10 +18,12 @@
+ #include <drm/clients/drm_client_setup.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_drv.h>
 +#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_prime.h>
- #include <drm/drm_vma_manager.h>
- #include <drm/exynos_drm.h>
-@@ -330,15 +331,16 @@ int exynos_drm_gem_dumb_create(struct drm_file *file_priv,
- 	unsigned int flags;
- 	int ret;
+ #include <drm/drm_fbdev_ttm.h>
+ #include <drm/drm_gem_framebuffer_helper.h>
+ #include <drm/drm_gem_vram_helper.h>
+ #include <drm/drm_managed.h>
++#include <drm/drm_mode.h>
+ #include <drm/drm_module.h>
+ #include <drm/drm_vblank.h>
  
-+	ret = drm_mode_size_dumb(dev, args, 0, 0);
+@@ -54,7 +56,28 @@ static irqreturn_t hibmc_interrupt(int irq, void *arg)
+ static int hibmc_dumb_create(struct drm_file *file, struct drm_device *dev,
+ 			     struct drm_mode_create_dumb *args)
+ {
+-	return drm_gem_vram_fill_create_dumb(file, dev, 0, 128, args);
++	struct drm_gem_vram_object *gbo;
++	int ret;
++
++	ret = drm_mode_size_dumb(dev, args, SZ_128, 0);
 +	if (ret)
 +		return ret;
 +
- 	/*
- 	 * allocate memory to be used for framebuffer.
- 	 * - this callback would be called by user application
- 	 *	with DRM_IOCTL_MODE_CREATE_DUMB command.
- 	 */
++	gbo = drm_gem_vram_create(dev, args->size, 0);
++	if (IS_ERR(gbo))
++		return PTR_ERR(gbo);
++
++	ret = drm_gem_handle_create(file, &gbo->bo.base, &args->handle);
++	if (ret)
++		goto err_drm_gem_object_put;
++
++	drm_gem_object_put(&gbo->bo.base);
++
++	return 0;
++
++err_drm_gem_object_put:
++	drm_gem_object_put(&gbo->bo.base);
++	return ret;
+ }
  
--	args->pitch = args->width * ((args->bpp + 7) / 8);
--	args->size = args->pitch * args->height;
+ static const struct drm_driver hibmc_driver = {
+diff --git a/include/drm/drm_gem_vram_helper.h b/include/drm/drm_gem_vram_helper.h
+index 00830b49a3ff..b6e821f5dd03 100644
+--- a/include/drm/drm_gem_vram_helper.h
++++ b/include/drm/drm_gem_vram_helper.h
+@@ -100,12 +100,6 @@ int drm_gem_vram_vmap(struct drm_gem_vram_object *gbo, struct iosys_map *map);
+ void drm_gem_vram_vunmap(struct drm_gem_vram_object *gbo,
+ 			 struct iosys_map *map);
+ 
+-int drm_gem_vram_fill_create_dumb(struct drm_file *file,
+-				  struct drm_device *dev,
+-				  unsigned long pg_align,
+-				  unsigned long pitch_align,
+-				  struct drm_mode_create_dumb *args);
 -
- 	if (is_drm_iommu_supported(dev))
- 		flags = EXYNOS_BO_NONCONTIG | EXYNOS_BO_WC;
- 	else
+ /*
+  * Helpers for struct drm_driver
+  */
 -- 
 2.48.1
 
