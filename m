@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E221EC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 12:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A251C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 12:38:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FZNSOqhjH+LIe1kk8GB+MhWSjys2pSWPfdEwgKXbnxA=; b=tOhclteyonaWvJj3yLmHJ83Nbw
-	yUC2mbip09FIcpk0l4UtR0XyY+09I8rnVpNrA1BG9F5Yxjvui+/VZ93BBoEkd+Q472okbnzXp1lup
-	ll7XAR6bVSnnpDSWUdHSRTIuR9qiuEixmmrNpmV2a4kmf7E8Lu3BfPD9/i1KGKBB+PsAkYryIYXvC
-	jbXm3rR+OkjKKQq/cAPYA2vR1L1rGqKrXoetN3BujPWTQS959WPfn60f6nerISo+WYZakB2IOlC2D
-	CSvM0teYidMp8CjeVATlnnPI79aS3PWsyqYL06BU2p3McmsqHV9NZiJd77bq9BzsC59B5PwiRSqZf
-	wGuWtyPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KK+/RmR1fDa/48B6jmY4n1J//yOw/sjpmxW9roLWxqI=; b=ZmiZJEN8RzwL3jV0hugPHuRrFD
+	jeJLFvBcM5cLPCQk3n9gCT5EdKXrJfG6hkP6bwY82OgiF/LItYhMPtUuxRwF3Kusy+Wcg6x2o5yOp
+	3LXLBmdclUm36cFdlt6MHXDxF8kdy42kT5ved1kn6zu43fku6qc1aSSJTxj7PVZYGyMRUyEcc9duz
+	TrSc9hqXiKwbl4K2mQxKcegCtrOhaGZT7d6hGiC0u0D0K9GEqFAckqx/Y8Lu1uM862gt0A1Fv+Zh9
+	SyFSNeE6k15CPmscpKJgCSmKYl29u0//ypCMkJnkdOTQ51eByW4xjeZbtKJg8qqXeJgG97MppRSLq
+	eVhyHTaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trynN-00000005f3i-1N8B;
-	Tue, 11 Mar 2025 12:33:17 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1trysE-00000005g97-2mEH;
+	Tue, 11 Mar 2025 12:38:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tryZq-00000005beC-1zF8;
-	Tue, 11 Mar 2025 12:19:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9515BA46BD1;
-	Tue, 11 Mar 2025 12:13:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7E9AC4CEE9;
-	Tue, 11 Mar 2025 12:19:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741695557;
-	bh=MLsMpE992zK7c/rp7wDJ8MLFrQZSgP8o8puAp87Eh7g=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=eVaZnxYrJmme1pRqmXuM0b7KlF/OsCyV+/1WVsamjyn0u1n98t+jSvcvDwE2PHdXo
-	 PeVg0AA7+PE2eWEIBt7YlT6EaBDzyHSwJX4/sJOX7We3veteDkIGBpYL+lfkidUtm7
-	 6yxYSzKnThSg1nLR9QIZ8A3+r1GinXUhXsRUfZW67Ro29egFW2uB04XOYrnwUHmmoJ
-	 EI5iTq4Cyuk7wnoqTohDTwPaZdCbXNPmrLirmjt+s9OZ80yiPtugXvanuD964AXVE8
-	 gutE3VOjt2KYzmtgfgaW6TgR5btcKlKKiX+MGgjailwJ855zg68zCeZI0IPtYMKiWn
-	 j8uhqOxX7IfWQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 11 Mar 2025 13:18:39 +0100
-Subject: [PATCH net-next 7/7] net: ti: cpsw: Add metadata support for xdp
- mode
+	id 1trye1-00000005ccS-2ar2;
+	Tue, 11 Mar 2025 12:23:38 +0000
+X-UUID: a509c244fe7311ef83f2a1c9db70dae0-20250311
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KK+/RmR1fDa/48B6jmY4n1J//yOw/sjpmxW9roLWxqI=;
+	b=c/KoERW244gwPXkPELVTdOrKW92IIrut58Yxv7soknudOx8Cn4y4zrjPkVTBvKdnqiZ9Mzd2OoxqylRdKoAAv14OMni92DC1FcooMUrju966l5RdQyeY+CDHXbx6IkAgtqbaij5EIPiCVvvMuXHm+3CHTYne/zJ4T3HO5BFS2Xo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:4864b544-ccac-4afb-8506-0a10cd5c8097,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:a6024dce-23b9-4c94-add0-e827a7999e28,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: a509c244fe7311ef83f2a1c9db70dae0-20250311
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1618321730; Tue, 11 Mar 2025 05:23:31 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Tue, 11 Mar 2025 20:23:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Tue, 11 Mar 2025 20:23:27 +0800
+From: Friday Yang <friday.yang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: Friday Yang <friday.yang@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5 0/2] Add SMI reset and clamp for MediaTek MT8188 SoC
+Date: Tue, 11 Mar 2025 20:23:20 +0800
+Message-ID: <20250311122327.20685-1-friday.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250311-mvneta-xdp-meta-v1-7-36cf1c99790e@kernel.org>
-References: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org>
-In-Reply-To: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org>
-To: Marcin Wojtas <marcin.s.wojtas@gmail.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
- Jesper Dangaard Brouer <hawk@kernel.org>, 
- John Fastabend <john.fastabend@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
- Masahisa Kojima <kojima.masahisa@socionext.com>, 
- Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
- Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
- Bharat Bhushan <bbhushan2@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- "K. Y. Srinivasan" <kys@microsoft.com>, 
- Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
- Dexuan Cui <decui@microsoft.com>, Siddharth Vadapalli <s-vadapalli@ti.com>, 
- Roger Quadros <rogerq@kernel.org>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-hyperv@vger.kernel.org, linux-omap@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_051918_653752_8F2852CC 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20250311_052337_660745_85738F1A 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,92 +88,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set metadata size building the skb from xdp_buff in cpsw/cpsw_new
-drivers
+Based on tag: next-20250307, linux-next/master
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/ti/cpsw.c     | 6 +++++-
- drivers/net/ethernet/ti/cpsw_new.c | 6 +++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
+On the MediaTek MT8188 SoC platform, we encountered power-off failures
+and SMI bus hang issues during camera stress tests. The issue arises
+because bus glitches are sometimes produced when MTCMOS powers on or
+off. While this is fairly normal, the software must handle these
+glitches to avoid mistaking them for transaction signals. What's
+more, this issue emerged only after the initial upstreaming of SMI
+driver.
 
-diff --git a/drivers/net/ethernet/ti/cpsw.c b/drivers/net/ethernet/ti/cpsw.c
-index 0cb6fa6e5b7d4fb9703633f0d67a7e95e6e7d8aa..a984b7d84e5e5917b83547c862924ccd30d83601 100644
---- a/drivers/net/ethernet/ti/cpsw.c
-+++ b/drivers/net/ethernet/ti/cpsw.c
-@@ -351,6 +351,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	int			ret = 0, port, ch = xmeta->ch;
- 	int			headroom = CPSW_HEADROOM_NA;
- 	struct net_device	*ndev = xmeta->ndev;
-+	u32			metasize = 0;
- 	struct cpsw_priv	*priv;
- 	struct page_pool	*pool;
- 	struct sk_buff		*skb;
-@@ -400,7 +401,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			size -= CPSW_RX_VLAN_ENCAP_HDR_SIZE;
- 		}
- 
--		xdp_prepare_buff(&xdp, pa, headroom, size, false);
-+		xdp_prepare_buff(&xdp, pa, headroom, size, true);
- 
- 		port = priv->emac_port + cpsw->data.dual_emac;
- 		ret = cpsw_run_xdp(priv, ch, &xdp, page, port, &len);
-@@ -408,6 +409,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			goto requeue;
- 
- 		headroom = xdp.data - xdp.data_hard_start;
-+		metasize = xdp.data - xdp.data_meta;
- 
- 		/* XDP prog can modify vlan tag, so can't use encap header */
- 		status &= ~CPDMA_RX_VLAN_ENCAP;
-@@ -423,6 +425,8 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 
- 	skb_reserve(skb, headroom);
- 	skb_put(skb, len);
-+	if (metasize)
-+		skb_metadata_set(skb, metasize);
- 	skb->dev = ndev;
- 	if (status & CPDMA_RX_VLAN_ENCAP)
- 		cpsw_rx_vlan_encap(skb);
-diff --git a/drivers/net/ethernet/ti/cpsw_new.c b/drivers/net/ethernet/ti/cpsw_new.c
-index 3da1c131335df1ff79b32ce0e3ea5200a2e53f4b..5b5b52e4e7a757a14965fe6df41935aed547111f 100644
---- a/drivers/net/ethernet/ti/cpsw_new.c
-+++ b/drivers/net/ethernet/ti/cpsw_new.c
-@@ -293,6 +293,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	struct page_pool *pool;
- 	struct sk_buff *skb;
- 	struct xdp_buff xdp;
-+	u32 metasize = 0;
- 	int ret = 0;
- 	dma_addr_t dma;
- 
-@@ -345,13 +346,14 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			size -= CPSW_RX_VLAN_ENCAP_HDR_SIZE;
- 		}
- 
--		xdp_prepare_buff(&xdp, pa, headroom, size, false);
-+		xdp_prepare_buff(&xdp, pa, headroom, size, true);
- 
- 		ret = cpsw_run_xdp(priv, ch, &xdp, page, priv->emac_port, &len);
- 		if (ret != CPSW_XDP_PASS)
- 			goto requeue;
- 
- 		headroom = xdp.data - xdp.data_hard_start;
-+		metasize = xdp.data - xdp.data_meta;
- 
- 		/* XDP prog can modify vlan tag, so can't use encap header */
- 		status &= ~CPDMA_RX_VLAN_ENCAP;
-@@ -368,6 +370,8 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	skb->offload_fwd_mark = priv->offload_fwd_mark;
- 	skb_reserve(skb, headroom);
- 	skb_put(skb, len);
-+	if (metasize)
-+		skb_metadata_set(skb, metasize);
- 	skb->dev = ndev;
- 	if (status & CPDMA_RX_VLAN_ENCAP)
- 		cpsw_rx_vlan_encap(skb);
+The software solutions can be summarized as follows:
 
--- 
-2.48.1
+1. Use CLAMP to disable the SMI sub-common port after turning off the
+   LARB CG and before turning off the LARB MTCMOS.
+2. Use CLAMP to disable/enable the SMI sub-common port.
+3. Implement an AXI reset for SMI LARBs.
+
+Changes v5:
+- Use 'devm_pm_runtime_enable' instead of 'pm_runtime_enable'.
+- Remove 'pm_runtime_disable' in 'mtk_smi_common_remove' and
+  'mtk_smi_larb_remove'.
+
+v4:
+https://lore.kernel.org/lkml/20250221074846.14105-2-friday.yang@mediatek.com/
+https://lore.kernel.org/lkml/20250221074846.14105-3-friday.yang@mediatek.com/
+
+friday.yang (2):
+  dt-bindings: memory: mediatek: Add SMI reset and clamp for MT8188
+  memory: mtk-smi: mt8188: Add SMI reset and clamp for MT8188
+
+ .../mediatek,smi-common.yaml                  |   2 +
+ .../memory-controllers/mediatek,smi-larb.yaml |  19 +++
+ drivers/memory/mtk-smi.c                      | 150 +++++++++++++++++-
+ 3 files changed, 164 insertions(+), 7 deletions(-)
+
+--
+2.46.0
 
 
