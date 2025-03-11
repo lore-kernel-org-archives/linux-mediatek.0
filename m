@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9032C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62C0C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PclUyHsK2/65if5U9sGLJ+XjH10GG+5GDmvnIOfCUPE=; b=jtyN9a2aj6K7BakG5VjlpOisB5
-	XVZA7uJQJFSngZU6Odsws2Vn7mlcbwoBHxCfXdvvIsmEN3x0y0/qLJTU0GNoGCAR/qwnOyVbF1EWo
-	LCzD22xRZWU/S994JzuCwhkKMb7u2sKKZ5kPv1/6RzgibQnGQQBJHI/a2YvC6ddugln+vCRZVwviK
-	cOVmD+bKIgIkGdmp/cjZ6TI4CGcB34O2wKuTnjJUgmlg1X7Zo7g5l/OlUSCukOp/vsSZCNANKRMeX
-	JZA1DO5VR3Wxa7Mz8To14Nqf/1+mxeYIId9dmBslSjUQ7xZo85dfYAAdYNlmcV8Byd1PxPu8/v/Gw
-	tquTE5qQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CZ1+8rKJVNBJLNn4WW6hgTofKUADmOpTxiWQXRVpyTY=; b=d7h8loUg2pT07sb52jd68U6etV
+	ZNPQOldhIrc0UkmKz0BjwnyXyLdTQBkdh6l841j7CbL8DP5P8bxHNCJOD315V+7bmvSC31NNaWV9X
+	FbTH6XrXZgiUehgOU2B6VKl+DDVFT9s09Z0RRNxTD5oL7B1nhlnwFx1CKq9ZLDihGRMlP5ValMpSS
+	ZWd5PZcT2Ju67LjET7jBu/Nv2n7aUB8l5TuJIrQJ61qITOUgdlYQA46tjCeFRNv0SCjKFX1+3J+fc
+	eJVyJ7ElAPmEhUxR2wIEgnMruNrFVFl42fihOMAheVcz9Byi3IW2FnydVEu6mMztnpKhKSNL71DL+
+	05yxzfoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts41y-00000006ZDq-0ofx;
-	Tue, 11 Mar 2025 18:08:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ts48S-00000006av8-0iVJ;
+	Tue, 11 Mar 2025 18:15:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3fr-00000006VK2-1jyc;
-	Tue, 11 Mar 2025 17:45:52 +0000
+	id 1ts3u0-00000006XdX-0W0G;
+	Tue, 11 Mar 2025 18:00:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2626F5C6554;
-	Tue, 11 Mar 2025 17:43:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43210C4CEEA;
-	Tue, 11 Mar 2025 17:45:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9B8A55C6864;
+	Tue, 11 Mar 2025 17:58:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09A57C4CEE9;
+	Tue, 11 Mar 2025 18:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741715150;
-	bh=JIhU6JAVFL/APQj30jcuDhgBR6k5qvCBmItYlZMcFKk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HYcGBZpQ8Wjl+SydLan7w9Kx9t/CN5dObhPKM4VAT69WmSPv8Q4Zhl7Pgu70SHEmZ
-	 RuIiIQNLHpEFiJmyBjvi7DJ9/lo2PHdKqd22cW9KHn+wNjpIWMk7STjhrRKzzuvNqX
-	 7sXobGglfDYN9uoEX/VXXhiqAV3o/PIrj3cc5Xw6qjv2VQ9J6ZP3c1LQ3PZTeJ9/A8
-	 RlAKWIIEp/enJdRSGr+d+KK21ft1LJWXPUeVlbU8vbk5Px/5hFbr2lavrYn6qXDas+
-	 yztZGR2IBYcaYQU/bwYuQJ47pVSMQ7DRpb57jN2IgObsVJV5A46+iMD2nsjSk716EI
-	 Qcj4p59QLnu6Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 11 Mar 2025 18:45:12 +0100
-Subject: [PATCH v2 13/13] wifi: mt76: mt7996: Rely on mt7996_vif_link and
- mt7996_sta_link in mt7996_mac_twt_teardown_flow signature
+	s=k20201202; t=1741716027;
+	bh=L1Cb7EESZgqFczyBEHcCr+eebvdU5d0Tk4r2MQmfBX0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Rzo9hpQVVuTQrj2ul6guqj4v7EgzwsUuP+2HHaQphifFX5nbJ15MWW3uZAGzOHxL6
+	 oP8Ulrp+ueyCnMb4IJK+2xWIh1ea3fnFBG/zpkMzlZZN8egGOC7MA5wuJgoI3UDSKL
+	 R/1670wr6YDhsM4DkjSvo1mzBEQNmyZKsmY0X7twN9QqSMwa3S4FTvZWSR7dyCAF1c
+	 AGnXrZVUpGpy1s8e8xeOe5yG3b+1qLCYeaLZfNM1j3m0CD35+JhtJBIn+s3zBARQu1
+	 v8L1kOyNYDpOwXGdWcuKnp8EO1UMTIun1VXfuq9Snpi/TsgmUhns4EQ1NIlHAbMTSh
+	 rW1ZpgL4rkSsQ==
+Date: Tue, 11 Mar 2025 13:00:25 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add missing
+ gpio-ranges property
+Message-ID: <174171602460.3890634.5672219037612779159.robh@kernel.org>
+References: <20250307-en7581-gpio-range-v1-0-de1262105428@kernel.org>
+ <20250307-en7581-gpio-range-v1-1-de1262105428@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250311-mt7996-mlo-v2-13-31df6972519b@kernel.org>
-References: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
-In-Reply-To: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, 
- Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250307-en7581-gpio-range-v1-1-de1262105428@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_104551_549166_E04EABBE 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20250311_110028_219096_020C0A79 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,86 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch to enable MLO for MT7996 driver
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 7 +++----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 7 +++++--
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 3 ++-
- 3 files changed, 10 insertions(+), 7 deletions(-)
+On Fri, 07 Mar 2025 18:08:19 +0100, Lorenzo Bianconi wrote:
+> Introduce leftover gpio-ranges property for Airoha EN7581 pinctrl binding
+> 
+> Fixes: d0c15cb96b74 ("dt-bindings: pinctrl: airoha: Add EN7581 pinctrl")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 4a7f6fd9025297f0ffa8ea7e91efd34164a26196..7ddd4b0cadf5d1983379a93ba56da461748ca60e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2691,10 +2691,10 @@ void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- }
- 
- void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
--				  struct mt7996_sta *msta,
-+				  struct mt7996_vif_link *link,
-+				  struct mt7996_sta_link *msta_link,
- 				  u8 flowid)
- {
--	struct mt7996_sta_link *msta_link = &msta->deflink;
- 	struct mt7996_twt_flow *flow;
- 
- 	lockdep_assert_held(&dev->mt76.mutex);
-@@ -2706,8 +2706,7 @@ void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
- 		return;
- 
- 	flow = &msta_link->twt.flow[flowid];
--	if (mt7996_mcu_twt_agrt_update(dev, &msta->vif->deflink, flow,
--				       MCU_TWT_AGRT_DELETE))
-+	if (mt7996_mcu_twt_agrt_update(dev, link, flow, MCU_TWT_AGRT_DELETE))
- 		return;
- 
- 	list_del_init(&flow->list);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 5ab4f08dba06fdf95ee4e6bc0261749016f07e6a..11ad95e05b94857c95375cdf877518e7ee89f08e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1062,7 +1062,8 @@ mt7996_mac_sta_event(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 			break;
- 		case MT76_STA_EVENT_DISASSOC:
- 			for (i = 0; i < ARRAY_SIZE(msta_link->twt.flow); i++)
--				mt7996_mac_twt_teardown_flow(dev, msta, i);
-+				mt7996_mac_twt_teardown_flow(dev, link,
-+							     msta_link, i);
- 
- 			mt7996_mcu_add_sta(dev, link_conf, link_sta, link,
- 					   msta_link, CONN_STATE_DISCONNECT,
-@@ -1804,10 +1805,12 @@ mt7996_twt_teardown_request(struct ieee80211_hw *hw,
- 			    u8 flowid)
- {
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-+	struct mt7996_sta_link *msta_link = &msta->deflink;
-+	struct mt7996_vif_link *link = &msta->vif->deflink;
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
- 
- 	mutex_lock(&dev->mt76.mutex);
--	mt7996_mac_twt_teardown_flow(dev, msta, flowid);
-+	mt7996_mac_twt_teardown_flow(dev, link, msta_link, flowid);
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 962022c7eec9fd82ebba8e0d5aa6b6eae769ee32..84b9ff707d56501d212932a9fa6a3037259a1077 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -709,7 +709,8 @@ void mt7996_mac_dump_work(struct work_struct *work);
- void mt7996_mac_sta_rc_work(struct work_struct *work);
- void mt7996_mac_update_stats(struct mt7996_phy *phy);
- void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
--				  struct mt7996_sta *msta,
-+				  struct mt7996_vif_link *link,
-+				  struct mt7996_sta_link *msta_link,
- 				  u8 flowid);
- void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- 			      struct ieee80211_sta *sta,
-
--- 
-2.48.1
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
