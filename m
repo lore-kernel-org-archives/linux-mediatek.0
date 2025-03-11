@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61B4C2BA1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:28:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA49EC28B2F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:55:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w7YliLuH4qlV/MO/+JH2L4UcYmketDeTxX5I8TCDYu0=; b=noXuifsrKu7z8jnD82BAPFjEub
-	zMVh+C2apDcmNn6/N9rGbxn4zcuTCC133PnRZh5D1kXxJXSJnN0T4gR8nQPpanKniXHIVgR7+MN4M
-	6SVK4eDOIzKzON7JxFyZ+bUX5ZV7tBHXILM6nhvhMnMcKQ2XWuuG355+6o+gQXjU7JE2Szh62XJ8I
-	l/QEP1WFYfUR8vaRBNzoNVcQW2TyMu+OYYoBiH0XjTgGoX2GGuDbfp6v3psBdZV390/xQ1SnPdSUy
-	gc4Y9Oe/p9/BrzfANG1BSpabj8V0VmZGPi+EUirnrWB7ltk8omuYp8o2lI/HiiC9wqqhU6JJxU/dk
-	oRDYv6uw==;
+	bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=; b=BkjT7zc9o6dByZQ8HBHM5/EESO
+	Tyci19/X3u5fwKV7aO8/asychcjKQxPRIQeqVg4kD34J4Bd+Jo/rHaVwWRvZMBgVBaWdX3O912b69
+	J8kxIDx3UkgpNFNnGC3wmcqiiaBCTMGTmPIEW0aEHvQ+aqECz63YhwbzPo/ykG0b6HVTYKBMFZkTt
+	kJxEcksx3RZMBK8mN3LYxKanV/JCbVjyw3c/V5NWlvHwm1FaIivcCcZ42WvKgJ7FAwhkS5e9rYpHA
+	AJNULsRKMN8iWHdlXA01eC/f8QGRksYgqU9KGNeyxBvn5vXvbSHpwzd/oWA6jX2+wZBLQVJNjkVTd
+	753GrHig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts4LO-00000006coO-0mEw;
-	Tue, 11 Mar 2025 18:28:46 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1ts4lI-00000006gyY-08K0;
+	Tue, 11 Mar 2025 18:55:32 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts432-00000006ZNm-1DB5;
-	Tue, 11 Mar 2025 18:09:49 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-ac2a81e41e3so446622366b.1;
-        Tue, 11 Mar 2025 11:09:47 -0700 (PDT)
+	id 1ts4hO-00000006gQ5-1gyj;
+	Tue, 11 Mar 2025 18:51:31 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43948f77f1aso35524395e9.0;
+        Tue, 11 Mar 2025 11:51:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741716586; x=1742321386; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1741719089; x=1742323889; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=w7YliLuH4qlV/MO/+JH2L4UcYmketDeTxX5I8TCDYu0=;
-        b=bbb8VFxTSv9TnzHe4YN4H4iIIglQEkSkx9sgXJeD2p96qAQxwuIv2UASJu4LnG+iwP
-         BbqimsPhRVKvqSiBa5mvWWc8qEaw9cLtp27RKvyNxHQ/MhosZsOGhWQMSfUJMbRjuIbe
-         P+JHnw6rB9wmSmtWQrQGS5tPQXzszE5v9R6DKN9KIat8j/9w/o/Ild4e5vce75K1jz+0
-         2xzhWvp3zNirVEVfLsY9T6Qe0ioUGSkaWcZYkSO9HIjEg5yZz7LnAClO9oegLTZLF5PA
-         1v78Kf5ry12kuGe+FmDcesF3fdGSHXDh+yhnByUUY7Aw9yC575t6wQEUI1Dd4FVkA4CL
-         OF9g==
+        bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=;
+        b=i1XWfypdM5e57Rj+rLDRWXJbZEUmt/jVN7LQjwgyzM7Fd68K+qc0NeRfV3CAawYXQJ
+         u8721Um7yZbi3djmVLzSRBt6XOfBfIhzbsE+X+1CH76FzNC4nlwwDm13VUISmY+tEsJW
+         Olgu/UXbXbo/KJWHe4DbZIKLUfrsILe/SFddW4WuLclNtSOd1VPyhV4nSf7KVfd6C1+3
+         rO+6+3voT96YEorReHYSIvWcA85/xzTGnr6UYhulslLN+1csoDJKesgeS69dDvko6i/L
+         9rnOjBGRBnhg6qpEL80kDBy/AcxCl6BkUPSwHIrcPKwnHw10JyBFEbj6sOghVHxuREjK
+         eiUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741716586; x=1742321386;
+        d=1e100.net; s=20230601; t=1741719089; x=1742323889;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=w7YliLuH4qlV/MO/+JH2L4UcYmketDeTxX5I8TCDYu0=;
-        b=cm3bqb/FluaPZFHZh9cY9lqSDAI0OhiV+p2CyBlHSYoqor3o6/RMGiw5Rbg3leuzNV
-         id355/OwIhOW/LmMSpqP/fF9JSTzM/wj35hkM1l2gHpN7lcYBLqHDQ7/xtrRjhWnx9/W
-         hd4cfLUxxKAWkQ+v7chy4Z2jOhMpBe2LEU+9rmy/emDDzTDyLlxIH+7wlz+jYP0hUzYV
-         7NmNqtTVbtPo1lJCmQZG/ZmYm4nH8Oq+iJDI1P8TBoJ0FKLNoxhZkdTMYSg9XMBsWX8L
-         YAmYSZrVnHFs2XFvoXEV0A08xNXoGfTpk1+fHdQVeNqZC+QPGrZVOPMsuIcIzRlLel7s
-         aOag==
-X-Forwarded-Encrypted: i=1; AJvYcCUvhko5IgpLwuFwuMJ+bFzdygU0MEDHB4BvV7FNBw2yCNQT0jE9FFcsilyBeu8niMjMw3nZsGtefzbeIYzvKfhs@lists.infradead.org, AJvYcCVJ3oFQ9XADRv0E0PTFC4ofLd18Lv1Dvfkq4ixg+4qHpP35oiXPINzN40+X6xeXUC9fNCMKc5PhT15D@lists.infradead.org, AJvYcCWY6w7WTlsBMKYyjKHwKNZsFqTSehM4dM6yhvQ0qdS+PSGHqI+VdNS2phA4XGsu4sncXXKzoRELumsAnsv4RbI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzmDTJLf0WIOaEKIy+No8pY1fLXxz9wzR5PmGqFXzJHCf0mIl37
-	Ko2XtfPy8IyFGdQyjMcPasEEOujvZqObfUhvb8MKLXMH/wnaLcpV
-X-Gm-Gg: ASbGncuTS7IFBpEcDSq9bEE2TFg5K1G8ewbupKmNSPjHAmvE+vX3CHCzpo/k63KTG4P
-	Sq3OGbPH4Z1yxXI16XSVznvMQfDqKT8Xb7LNHbfUCDgRQ3UOtujPGv6140kP6JfgXj5gn/5FcRL
-	ZorOwPy+nnGB2TEHgc8F1j2LsyO4bOXpc1As8sBMoLJAJpsdqOex7ocnUJL+gjy28UQuhOU6wnI
-	j1VLVqxWLUYXR0TYst/QzAerxXdqUBXksitlO9ln1ZyKgjc92X9FwZ3GNzev6QPODiVTxipR9AM
-	5pF4afslKVBCA4ZwLMXCP31X3/obwUqTihUALe/yyxeOiWRSnPTwo6y1qGuC68EG3mxgb5+n/d3
-	eQfopWFNqgNBh+vvoSCN9xvc=
-X-Google-Smtp-Source: AGHT+IFGoeMKh+SV9Aw9aLOSeklw6RYQlLlVxQgOHzKR34XV8RHNJXBdNm+Xa03GkQRMHVbvPeRAPw==
-X-Received: by 2002:a17:906:180d:b0:ac2:5d24:1fcf with SMTP id a640c23a62f3a-ac25d2423fdmr1538965666b.26.1741716585443;
-        Tue, 11 Mar 2025 11:09:45 -0700 (PDT)
+        bh=A+odMspnKCTRijFn9P3g8Rcr1t0EreI5zprwmnUHlKY=;
+        b=hNcR31HnvnpL1fJ7sLT2sg7Fv2ecdSO7CtdDiSH8nB/fNVRUfoj1lD4ymZOfUn5ubs
+         JV6jv5xKnyIVaDp5XvdDXzVJCPZ63Kl5shcOC53QR+OzfySHU9PWK8UrKBjKNEe8CkKo
+         dQWxHApoK7TQFeq3rUJHylt6sOY2zuNYvs/ojPB2+AWETb6NLVzG4Zv8dPoP6vJnXyB5
+         yGx9GyweViYn7VQ6YG4auJuEm+DJj6vkc2BqhtJDhtwws85Eux+1+KzKPpYAFufxzPjV
+         zV+4wyxUfBu/bpkGE6AxLpsgMPqONJl/O/+mnb2+hX0pT5Y1pWi6/M8cgIuCTy6OC/f1
+         U2Vg==
+X-Forwarded-Encrypted: i=1; AJvYcCUD9kyuLlUZLgEA0ww2TieUYzs3q0K2WekXcwgBv45nDLRH+AP8Z0WOrFpn+FUH/Y2Uyp9EytgtBW/N@lists.infradead.org, AJvYcCVrlte1iw6qcDQBB6+Y36znZWCGcFFwxkHe4YhS1z5OCev/CzsaHHoZRvzZ1U3DXB55Mm7lgfdbYQrszLb7MQM=@lists.infradead.org, AJvYcCW3Iv0rpvDBotkV8zVQwFDWi03MlZJ1KSVnFvfKoemC5CxBcJDwirghF7pGWYaN9EGIvdrAlEFBdL/Xdga2ZKZg@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywb6MtXOsSFrFRuxWubqUqKuyy8gJXD/E2jmdY0ocuYsvq0y3MM
+	9vRE802Od+5BI4rLaXzONXM/4qP9nYa46ocfU+C9ueAt8ErgYWfv
+X-Gm-Gg: ASbGncuQSImzNjVbVkKJ1MCStHj4UR4ZlOl7V0FKEtveMH4p+xhktjnCdhSuFprw+Do
+	yRmgLNiuWzVh9uKv7yoPTVmuffOvRGxfMbT2sgVuvmqKafCaekBV25iPgNL8brDbusvR3TVz6O8
+	C2vF1SnnelSnFId3KAZcA9zTxYsZIdLwgfAztSw2JmmqapiBoNtQP4Ybsm0qwClzlwolj0KrZk5
+	unaMzS3+LNBZcRABn6VS2mumJAoElvkF+1tV8p0avl3uS7zaCXPWEyJ7IkP4iTyctXUHRbdPXDa
+	EoOTzy6WLppkBQuJwjvRJMaLQiH+Ky2Qg7wF3FFWqCeANCLhtCMcjc+IA4AIB83Agg7+0eHN8kI
+	N9WnYB1t2S2Jc
+X-Google-Smtp-Source: AGHT+IHJ/p0rUk7K02/5PSbIuVcXhRWrqa5T/F5SFDgcDHsDiUclOdluiyUTfuiGgPWpQC5GN31lBQ==
+X-Received: by 2002:a05:600c:4710:b0:43c:f47a:ab5f with SMTP id 5b1f17b1804b1-43cf47aac65mr90360605e9.20.1741719088409;
+        Tue, 11 Mar 2025 11:51:28 -0700 (PDT)
 Received: from Ansuel-XPS. (58.43.196.178.dynamic.cust.swisscom.net. [178.196.43.58])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac2895e7e6asm511088166b.54.2025.03.11.11.09.43
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912bfe0004sm18406539f8f.40.2025.03.11.11.51.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Mar 2025 11:09:44 -0700 (PDT)
-Message-ID: <67d07c68.170a0220.3fa05.2c8e@mx.google.com>
-X-Google-Original-Message-ID: <Z9B8Z2aA3MfCBBLG@Ansuel-XPS.>
-Date: Tue, 11 Mar 2025 19:09:43 +0100
+        Tue, 11 Mar 2025 11:51:27 -0700 (PDT)
+Message-ID: <67d0862f.df0a0220.375bd.6b15@mx.google.com>
+X-Google-Original-Message-ID: <Z9CGLcR4ZRwYcWKW@Ansuel-XPS.>
+Date: Tue, 11 Mar 2025 19:51:25 +0100
 From: Christian Marangi <ansuelsmth@gmail.com>
-To: Vinod Koul <vkoul@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -90,18 +91,18 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
 	linux-usb@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH 10/13] phy: airoha: Add support for Airoha AN7581 USB PHY
+Subject: Re: [PATCH 09/13] dt-bindings: phy: Add documentation for Airoha
+ AN7581 USB PHY
 References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-11-ansuelsmth@gmail.com>
- <Z9AhN9T8s1oogCUn@vaman>
- <Z9AhkByegWQgC9YE@vaman>
+ <20250309132959.19045-10-ansuelsmth@gmail.com>
+ <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z9AhkByegWQgC9YE@vaman>
+In-Reply-To: <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_110948_325525_A231ABBA 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20250311_115130_445774_8FF22703 
+X-CRM114-Status: GOOD (  27.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,31 +117,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 11, 2025 at 12:42:08PM +0100, Vinod Koul wrote:
-> On 11-03-25, 12:40, Vinod Koul wrote:
-> > On 09-03-25, 14:29, Christian Marangi wrote:
-> > > Add support for Airoha AN7581 USB PHY driver. AN7581 supports up to 2
-> > > USB port with USB 2.0 mode always supported and USB 3.0 mode available
-> > > only if the Serdes port is correctly configured for USB 3.0.
-> > > 
-> > > On xLate probe, the Serdes mode is validated and the driver return error
-> > > if the Serdes mode doesn't reflect the expected mode. This is required
-> > > as Serdes mode are controlled by the SCU SSR bits and can be either USB
-> > > 3.0 mode or HSGMII or PCIe 2. In such case USB 3.0 won't work.
-> > > 
-> > > If the USB 3.0 mode is not supported, the modes needs to be also
-> > > disabled in the xHCI node or the driver will report unsable clock and
-> > > fail probe.
+On Mon, Mar 10, 2025 at 05:34:56PM +0100, Krzysztof Kozlowski wrote:
+> On 09/03/2025 14:29, Christian Marangi wrote:
+> > Add documentation for Airoha AN7581 USB PHY that describe the USB PHY
+> > for the USB controller.
+> > 
+> > Airoha AN7581 SoC support a maximum of 2 USB port. The USB 2.0 mode is
+> > always supported. The USB 3.0 mode is optional and depends on the Serdes
+> > mode currently configured on the system for the USB port. If USB 3.0 node
+> > is defined, then airoha,scu-ssr property is required for Serdes mode
+> > validation.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  .../bindings/phy/airoha,an7581-usb-phy.yaml   | 106 ++++++++++++++++++
+> >  MAINTAINERS                                   |   6 +
+> >  2 files changed, 112 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml b/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
+> > new file mode 100644
+> > index 000000000000..39127cfb63a7
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
+> > @@ -0,0 +1,106 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/phy/airoha,an7581-usb-phy.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Airoha AN7581 SoC USB PHY
+> > +
+> > +maintainers:
+> > +  - Christian Marangi <ansuelsmth@gmail.com>
+> > +
+> > +description: >
+> > +  The Airoha AN7581 SoC USB PHY describes the USB PHY for the USB controller.
+> > +
+> > +  Airoha AN7581 SoC support a maximum of 2 USB port. The USB 2.0 mode is
+> > +  always supported. The USB 3.0 mode is optional and depends on the Serdes
+> > +  mode currently configured on the system for the USB port. If USB 3.0 node
+> > +  is defined, then airoha,scu-ssr property is required for Serdes mode
+> > +  validation.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: airoha,an7581-usb-phy
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  airoha,port-id:
+> > +    description: Describe the physical port this USB PHY refer to. A dedicated
+> > +      osciallator is used for each port for the USB 2.0 Slew Rate calibration.
 > 
-> Also I dont see phy depends on rest. Please split this and post phy bits
-> separately at least..
-
-Well USB doesn't work without this driver so they are indirectly
-dependent. Will split and address all the other comments.
-
+> typo
 > 
-> -- 
-> ~Vinod
+> > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > +    enum: [0, 1]
+> 
+> I don't understand why do you need index property here (which are
+> usually not allowed).
+>
+
+Eh... As said in the description this is really to differentiate the 2
+different physical port...
+
+Each port have a dedicated oscillator for calibration and these
+calibration are identified by an offset (all placed one after another in
+a separate register space).
+
+Oscillator 0 for physical port 0
+Oscillator 1 for physcial port 1
+
+And model this is a bit problematic without an additional property, any
+hint for this?
+
+> > +
+> > +  airoha,scu-ssr:
+> > +    description: Phandle to the SCU SSR node for USB 3.0 Serdes mode validation.
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +
+> > +  usb2-phy:
+> > +    type: object
+> > +
+> > +    properties:
+> > +      '#phy-cells':
+> > +        const: 1
+> > +
+> > +    required:
+> > +      - '#phy-cells'
+> > +
+> > +    additionalProperties: false
+> 
+> Also no resources in usb[23]-phy, so this goes to the parent level and
+> you have phy-cells=2. Your DTS gives some hint that devices actually
+> differ but the commit msg contradicts it, so I don't get. Do you have
+> same IP block here or two different?
+> 
+
+SoC have 2 physical USB port.
+
+Physical port 0 on address: 0x1fab0000
+Physcial port 1 on address: 0x1fad0000
+
+In those space there are registers to configure USB 2.0 mode and USB 3.0
+mode for each physical port.
+
+So yes no child node, phy-cells 2 and reference with phys = <&usb_phy 0
+PHY_TYPE_USB2>, <&usb_phy 1 PHY_TYPE_USB3>; that totally works and hope
+now the HW is more clear.
+
+The real problematic part is the one above with identify the 2 physical
+port.
+
+> > +
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index fe34c80b8d52..c2dd385e9165 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -753,6 +753,12 @@ S:	Maintained
+> >  F:	Documentation/devicetree/bindings/spi/airoha,en7581-snand.yaml
+> >  F:	drivers/spi/spi-airoha-snfi.c
+> >  
+> > +AIROHA USB PHY DRIVER
+> > +M:	Christian Marangi <ansuelsmth@gmail.com>
+> > +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+> > +S:	Maintained
+> > +F:	Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yam
+> 
+> Typo in extension/missing l.
+> 
+> 
+> 
+> Best regards,
+> Krzysztof
 
 -- 
 	Ansuel
