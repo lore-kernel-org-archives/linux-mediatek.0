@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16A3C28B30
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 10:07:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A034C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 11:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rIPQb4fbhkY2qzR+ATp8Y+MsaxwezJ9KnhfftucF8rI=; b=wmH2IedvXWpxZJSqOwJoqmRC/9
-	4OlLxbmaF7VhAjNt5Yx1bKx8pJu9jeQ5Bcz3gwUIRns/OEqFyy1kD0NijHP6MpOwJ9KaMg2CsXG/e
-	ZxQMGUQqjs6/3Lhw1XtOvnjlbzOd4Qvb9/gO8uwK+GwE3fUxf29hN+06/G8/RRxrDcvALtQTO5yr1
-	Jd2ZUUQOxUsRXuEhRGWVHxNst6lIMOROwp5F0Kw/IL9o2saj7YUNLCTrklo2dpklt+GzhfSN0oT5h
-	DCKXHLYCTMMUWtSvdnR7eoUvw0WAznnO0CPIsg2ChhGQGiMWKhFjkzihqkehojcyoQnfTrvil/Nhf
-	YZSRpBNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Nr3a6S1UZO01+kaL4CYnN2kap3jBya1c4TJGxgfo2V8=; b=ASyHYhtlXC2PZnDDccvpem0O0L
+	zx7ULuCI/6a7WgeuBcWmFg+O+lm+CyAcGWPpCeUOYTj+l0poccu4O4kUb47R3y6bqLMda5v3hXMYz
+	KLxcsUwgVPY3EWpbIurqLor66GH2KG51JQgfqZOHjW17obEmGDxLn/jQkjEDrXc3AiUprrJFfcQ44
+	eQ4m+L/0EEUC8MZ6SQvF9Ik9Nwwz9W2eil/V2e6KLfwedtM94h2tnjbjvTHmKYCHY4Sx70r2pPi7r
+	qMjElSj6XmX8w102polfLoeM3YiU+k5hp1JtiRsWKlDumCFZrDKIrHoL2M7serYDgPILuigGadbkC
+	faoaS+jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trwW1-00000005FND-1szw;
-	Tue, 11 Mar 2025 10:07:13 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1try1h-00000005Vxz-1X3d;
+	Tue, 11 Mar 2025 11:44:01 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trwUL-00000005F7v-40Q4;
-	Tue, 11 Mar 2025 10:05:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741687528;
-	bh=cj3zWPnkW2ekNrOvCr+j0WVhEmNfZMjuNHLNg0V+U/c=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=L/IHBDqmX6ZexWlMn41GpV0SlREfNRW7euROQ15Gb+dJ39GSjEBKSqNipJBFhIihF
-	 i1iIJJA36tWo1NaoxCkP5o63/iLh9N3RamPqdFNp+52Sct5MwO7yXaRDJIaRm3dhdx
-	 2kmpJRrD5Rslw/ZmVjq7Lor2OrcxczYQ65waMhRFgcfXy9/5wH1At0XbpTPLW2QoQX
-	 0bQVw4mMSfJdo6yIDP8J4E7H11ztCUCHRR/pnkRS4rWPNoCMPPqbDMW9VRDfqsNKMq
-	 oLxFulJnypGlRE0dv6XiI1NG97e79DYy4zevXtMgZmY71tSlKj5ZGuh64SNi+ncXZo
-	 ldLqDUjNLsyBw==
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BCABF17E0B25;
-	Tue, 11 Mar 2025 11:05:27 +0100 (CET)
-Date: Tue, 11 Mar 2025 11:05:20 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
- simona@ffwll.ch, kernel@collabora.com, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com
-Subject: Re: [PATCH v1 4/6] drm/panfrost: Add support for AARCH64_4K page
- table format
-Message-ID: <20250311110520.6b79e090@collabora.com>
-In-Reply-To: <16f6a6e2-4dce-4af9-bc0a-61c4d6213f02@collabora.com>
-References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
-	<20250310195921.157511-5-ariel.dalessandro@collabora.com>
-	<20250311090545.3b941567@collabora.com>
-	<16f6a6e2-4dce-4af9-bc0a-61c4d6213f02@collabora.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1trxyX-00000005VF7-2JK5;
+	Tue, 11 Mar 2025 11:40:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A73C8A46A4C;
+	Tue, 11 Mar 2025 11:35:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A75AC4CEED;
+	Tue, 11 Mar 2025 11:40:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741693244;
+	bh=+uJX8/966KEhOX1GBFyKHP+XMrltWM13u4aR/id8BsQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jy0iq12AnsMIgVe3uUuG2Vb0J1re8F3/OPHbboZBhVadT+d8LLPyVgPu3+OPvq8Cs
+	 JLxIDkLqdb9IaWCLu+m70qK2fUSL2bq4/txnb06XLgcDdPGPV+O7BOLA0x79LM0fYl
+	 AzHVzTCeyZIqvaaVIAkJunkvu6dDI/mfdTDdNKex/rmoCViOgLp6srdnigbmG7THZt
+	 lw4NJHxo8tUIJcaUWDryzc6uxC5pVF4idsCDkLi1cDn3metAYhcDT7hh4ZBSpV0c7n
+	 fHLlfkNymGAQ9RbRujaTRa3EVVxmdL3aZE3s3hQx2W5zNELFvGGujbXEOLm4NeoWM4
+	 tON/JZFSkpOfA==
+Date: Tue, 11 Mar 2025 12:40:39 +0100
+From: Vinod Koul <vkoul@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nikita Shubin <nikita.shubin@maquefel.me>,
+	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
+	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH 10/13] phy: airoha: Add support for Airoha AN7581 USB PHY
+Message-ID: <Z9AhN9T8s1oogCUn@vaman>
+References: <20250309132959.19045-1-ansuelsmth@gmail.com>
+ <20250309132959.19045-11-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250309132959.19045-11-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_030530_156716_B683BAA7 
-X-CRM114-Status: GOOD (  26.00  )
+X-CRM114-CacheID: sfid-20250311_044045_718841_D5D6AEE3 
+X-CRM114-Status: GOOD (  30.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,89 +87,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 11 Mar 2025 10:14:44 +0100
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-wrote:
-
-> Il 11/03/25 09:05, Boris Brezillon ha scritto:
-> > On Mon, 10 Mar 2025 16:59:19 -0300
-> > Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
-> >   
-> >> Currently, Panfrost only supports MMU configuration in "LEGACY" (as
-> >> Bifrost calls it) mode, a (modified) version of LPAE "Large Physical
-> >> Address Extension", which in Linux we've called "mali_lpae".
-> >>
-> >> This commit adds support for conditionally enabling AARCH64_4K page
-> >> table format. To achieve that, a "GPU optional configurations" field was
-> >> added to `struct panfrost_features` with the related flag.
-> >>
-> >> Note that, in order to enable AARCH64_4K mode, the GPU variant must have
-> >> the HW_FEATURE_AARCH64_MMU feature flag present.
-> >>
-> >> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> >> ---
-> >>   drivers/gpu/drm/panfrost/panfrost_device.h |  16 +++
-> >>   drivers/gpu/drm/panfrost/panfrost_mmu.c    | 132 +++++++++++++++++++--
-> >>   drivers/gpu/drm/panfrost/panfrost_regs.h   |  34 ++++++
-> >>   3 files changed, 169 insertions(+), 13 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-> >> index cffcb0ac7c111..0385702aa43c7 100644
-> >> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
-> >> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-> >> @@ -42,6 +42,14 @@ enum panfrost_gpu_pm {
-> >>   	GPU_PM_VREG_OFF,
-> >>   };
-> >>   
-> >> +/**
-> >> + * enum panfrost_gpu_config - GPU optional configurations
-> >> + * @GPU_CONFIG_AARCH64_4K: Use AARCH64_4K page table format
-> >> + */
-> >> +enum panfrost_gpu_config {
-> >> +	GPU_CONFIG_AARCH64_4K,
-> >> +};
-> >> +
-> >>   struct panfrost_features {
-> >>   	u16 id;
-> >>   	u16 revision;
-> >> @@ -95,6 +103,9 @@ struct panfrost_compatible {
-> >>   
-> >>   	/* Allowed PM features */
-> >>   	u8 pm_features;
-> >> +
-> >> +	/* GPU features */
-> >> +	u8 gpu_configs;  
-> > 
-> > I would probably name this gpu_quirks, with the GPU_CONFIG_AARCH64_4K
-> > flag renamed GPU_QUIRK_FORCE_AARCH64_PAGE_TABLE.
-> >   
+On 09-03-25, 14:29, Christian Marangi wrote:
+> Add support for Airoha AN7581 USB PHY driver. AN7581 supports up to 2
+> USB port with USB 2.0 mode always supported and USB 3.0 mode available
+> only if the Serdes port is correctly configured for USB 3.0.
 > 
-> Boris, at this point the quirk should be LPAE, not AARCH64_4K, because the
-> former is legacy...
-
-It's legacy, but it's also the default in this driver. And just because
-it's legacy doesn't mean it's broken :P. As Steve mentioned, there are
-perf considerations to take into account, and on some platforms (most?),
-it's preferable to use the legacy format because of that.
-
+> On xLate probe, the Serdes mode is validated and the driver return error
+> if the Serdes mode doesn't reflect the expected mode. This is required
+> as Serdes mode are controlled by the SCU SSR bits and can be either USB
+> 3.0 mode or HSGMII or PCIe 2. In such case USB 3.0 won't work.
 > 
-> I think that Ariel is right in this, as in, that's a capability of the GPU
-> MMU, so if anything I would rather rename it to gpu_capabilities,
+> If the USB 3.0 mode is not supported, the modes needs to be also
+> disabled in the xHCI node or the driver will report unsable clock and
+> fail probe.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  MAINTAINERS                         |   1 +
+>  drivers/phy/Kconfig                 |   1 +
+>  drivers/phy/Makefile                |   3 +-
+>  drivers/phy/airoha/Kconfig          |  13 +
+>  drivers/phy/airoha/Makefile         |   3 +
+>  drivers/phy/airoha/phy-airoha-usb.c | 554 ++++++++++++++++++++++++++++
+>  6 files changed, 574 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/phy/airoha/Kconfig
+>  create mode 100644 drivers/phy/airoha/Makefile
+>  create mode 100644 drivers/phy/airoha/phy-airoha-usb.c
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index c2dd385e9165..1835e488ccaa 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -758,6 +758,7 @@ M:	Christian Marangi <ansuelsmth@gmail.com>
+>  L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+>  S:	Maintained
+>  F:	Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yam
+> +F:	drivers/phy/airoha/phy-airoha-usb.c
+>  
+>  AIRSPY MEDIA DRIVER
+>  L:	linux-media@vger.kernel.org
+> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+> index 8d58efe998ec..19c9c518fc3d 100644
+> --- a/drivers/phy/Kconfig
+> +++ b/drivers/phy/Kconfig
+> @@ -93,6 +93,7 @@ config PHY_NXP_PTN3222
+>  	  schemes. It supports all three USB 2.0 data rates: Low Speed, Full
+>  	  Speed and High Speed.
+>  
+> +source "drivers/phy/airoha/Kconfig"
+>  source "drivers/phy/allwinner/Kconfig"
+>  source "drivers/phy/amlogic/Kconfig"
+>  source "drivers/phy/broadcom/Kconfig"
+> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+> index e281442acc75..71708c6865b8 100644
+> --- a/drivers/phy/Makefile
+> +++ b/drivers/phy/Makefile
+> @@ -12,7 +12,8 @@ obj-$(CONFIG_PHY_PISTACHIO_USB)		+= phy-pistachio-usb.o
+>  obj-$(CONFIG_USB_LGM_PHY)		+= phy-lgm-usb.o
+>  obj-$(CONFIG_PHY_AIROHA_PCIE)		+= phy-airoha-pcie.o
+>  obj-$(CONFIG_PHY_NXP_PTN3222)		+= phy-nxp-ptn3222.o
+> -obj-y					+= allwinner/	\
+> +obj-y					+= airoha/	\
 
-No, GPU capabilities are extracted from he GPU ID, and all Bifrost GPUs
-support the aarch64 page table format. But what matters here is GPUs
-that can't use the legacy page table format because it's to limited to
-express the cacheability/shareability properties.
+Directory for a single driver? Also move the PCIe driver in, if you
+really want to do this
 
-> but then
-> that'd be confusing for other stuff - which means that gpu_configs is most
-> probably the least confusing and/or most appropriate name for this.
+> +struct airoha_usb_phy_priv {
+> +	struct device *dev;
+> +
+> +	struct regmap *regmap;
+> +
+> +	unsigned int id;
+> +
+> +	struct airoha_usb_phy_instance *phys[AIROHA_USB_PHY_MAX_INSTANCE];
 
-Again, it's not a random configuration decision, it's something we do
-because the default (legacy page table format) doesn't work, so I keep
-thinking quirk is an appropriate name in this context.
+No need for empty lines here?
 
-Regards,
+> +static int airoha_usb_phy_u2_slew_rate_calibration(struct airoha_usb_phy_priv *priv)
+> +{
+> +	u32 fm_out;
+> +	u32 srctrl;
+> +
+> +	/* Enable HS TX SR calibration */
+> +	regmap_set_bits(priv->regmap, AIROHA_USB_PHY_USBPHYACR5,
+> +			AIROHA_USB_PHY_USB20_HSTX_SRCAL_EN);
+> +
+> +	usleep_range(1000, 1500);
+> +
+> +	/* Enable Free run clock */
+> +	regmap_set_bits(priv->regmap, AIROHA_USB_PHY_FMMONR1,
+> +			AIROHA_USB_PHY_FRCK_EN);
+> +
+> +	/* Select Monitor Clock */
+> +	regmap_update_bits(priv->regmap, AIROHA_USB_PHY_FMCR0,
+> +			   AIROHA_USB_PHY_MONCLK_SEL,
+> +			   priv->id == 0 ? AIROHA_USB_PHY_MONCLK_SEL0 :
+> +					   AIROHA_USB_PHY_MONCLK_SEL1);
+> +
+> +	/* Set cyclecnt */
+> +	regmap_update_bits(priv->regmap, AIROHA_USB_PHY_FMCR0,
+> +			   AIROHA_USB_PHY_CYCLECNT,
+> +			   FIELD_PREP(AIROHA_USB_PHY_CYCLECNT,
+> +				      AIROHA_USB_PHY_U2_FM_DET_CYCLE_CNT));
+> +
+> +	/* Enable Frequency meter */
+> +	regmap_set_bits(priv->regmap, AIROHA_USB_PHY_FMCR0,
+> +			AIROHA_USB_PHY_FREQDET_EN);
+> +
+> +	/* Timeout can happen and we will apply workaround at the end */
+> +	regmap_read_poll_timeout(priv->regmap, AIROHA_USB_PHY_FMMONR0, fm_out,
+> +				 fm_out, AIROHA_USB_PHY_FREQDET_SLEEP,
+> +				 AIROHA_USB_PHY_FREQDET_TIMEOUT);
+> +
+> +	/* Disable Frequency meter */
+> +	regmap_clear_bits(priv->regmap, AIROHA_USB_PHY_FMCR0,
+> +			  AIROHA_USB_PHY_FREQDET_EN);
+> +
+> +	/* Disable Free run clock */
+> +	regmap_clear_bits(priv->regmap, AIROHA_USB_PHY_FMMONR1,
+> +			  AIROHA_USB_PHY_FRCK_EN);
+> +
+> +	/* Disable HS TX SR calibration */
+> +	regmap_clear_bits(priv->regmap, AIROHA_USB_PHY_USBPHYACR5,
+> +			  AIROHA_USB_PHY_USB20_HSTX_SRCAL_EN);
+> +
+> +	usleep_range(1000, 1500);
+> +
+> +	/* Frequency was not detected, use default SR calibration value */
+> +	if (!fm_out) {
+> +		srctrl = 0x5;
 
-Boris
+magic?
+
+> +		dev_err(priv->dev, "Frequency not detected, using default SR calibration.\n");
+> +	/* (1024 / FM_OUT) * REF_CK * U2_SR_COEF (round to the nearest digits) */
+> +	} else {
+> +		srctrl = AIROHA_USB_PHY_REF_CK * AIROHA_USB_PHY_U2_SR_COEF;
+> +		srctrl = (srctrl * AIROHA_USB_PHY_U2_FM_DET_CYCLE_CNT) / fm_out;
+> +		srctrl = DIV_ROUND_CLOSEST(srctrl, AIROHA_USB_PHY_U2_SR_COEF_DIVISOR);
+> +		dev_dbg(priv->dev, "SR calibration applied: %x\n", srctrl);
+> +	}
+> +
+> +	regmap_update_bits(priv->regmap, AIROHA_USB_PHY_USBPHYACR5,
+> +			   AIROHA_USB_PHY_USB20_HSTX_SRCTRL,
+> +			   FIELD_PREP(AIROHA_USB_PHY_USB20_HSTX_SRCTRL, srctrl));
+> +
+> +	return 0;
+
+This is the only return... consider making it void return then?
+Here and other places
+
+> +static int airoha_usb_phy_exit(struct phy *phy)
+> +{
+> +	return 0;
+> +}
+
+you can drop this
+
+> +static int airoha_usb_phy_power_on(struct phy *phy)
+> +{
+> +	struct airoha_usb_phy_instance *instance = phy_get_drvdata(phy);
+> +	struct airoha_usb_phy_priv *priv = dev_get_drvdata(phy->dev.parent);
+> +
+> +	if (instance->type == PHY_TYPE_USB2)
+> +		return airoha_usb_phy_u2_power_on(priv);
+> +
+> +	return airoha_usb_phy_u3_power_on(priv);
+
+for non USB2, you power both why?
+
+> +static int airoha_usb_phy_u2_set_mode(struct airoha_usb_phy_priv *priv,
+> +				      enum phy_mode mode)
+> +{
+> +	u32 val = 0;
+> +
+> +	/*
+> +	 * For Device and Host mode, enable force IDDIG.
+> +	 * For Device set IDDIG, for Host clear IDDIG.
+> +	 * For OTG disable force and clear IDDIG bit while at it.
+> +	 */
+> +	switch (mode) {
+> +	case PHY_MODE_USB_DEVICE:
+> +		val |= AIROHA_USB_PHY_IDDIG;
+> +		fallthrough;
+> +	case PHY_MODE_USB_HOST:
+> +		val |= AIROHA_USB_PHY_FORCE_IDDIG;
+> +		break;
+> +	case PHY_MODE_USB_OTG:
+> +		break;
+
+Not expecting to set this?
+-- 
+~Vinod
 
