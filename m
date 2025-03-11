@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C50C28B2E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 05:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BAAC2BA1B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 05:02:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=; b=4RQs56Awm64KPNnR9c3B8ZXQfo
-	vKRF8I0yh4WxsPGZllEDPEBoNWzMc//LgFYmHKQ6S9pFtXaIto9Rhc3zpEsykZhcu9HqDz6KfzzBU
-	DhczHd7VMgicIy0VTXXw7M7VTG8M8BjYGEzDUv66vYYJD4qFCgp0urd1sZs7ngSZR4T713uPbS6Qv
-	f4J5yI6ktdYfpZvO4o6qY3j2FxUfwzXgcKk/jb0XizbFkDKW9oafJ8Z8UVTvZMBKFOHkSQQEcpXDO
-	YlqDRTIKh24mlUq8yWBzklXhGB9DBzEGC2NS5uWCL3G3lWdlHAxJWz5iZqagoeYuZtXmqsA5RkALD
-	Mnbk/Z9A==;
+	bh=YsL06UvFaIQXEiahdE6DhBRWjwB8pb861e5j/ftXC1c=; b=FtryKW2hXfHi5R2WNC8kwH4kWt
+	Fa286tK3YsgG4qQNqaMAjhuXueXlHhtbBxiWcwfjFl5cN9/d3gX49ALMKa/e2x1imtCbc5gTmxi3D
+	uM/U60CqRlqbO/DRasmJZf57jabvR4RDXhLbK+VDTUmTSx/K52YNDkP3FTEeXeAgFCa+zD1qbuJdk
+	ttrG6GPwjomtpdzHkXsKnkj5K0IjeNOObCsuE4WPtT0D/JEVOJJA1Cjam0tlRsQIHYMYcCig6nRPx
+	mpblq6yPa+DVnCF5wM0WWSAXqhkEfJ/pBPiGOxZ38KAQmx7Z+mQ5HHksMCIaYTiYzQHpc/0Vx8oAy
+	oToHGCzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trrjP-00000004cPx-2yGN;
-	Tue, 11 Mar 2025 05:00:43 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1trrlW-00000004ccg-24sj;
+	Tue, 11 Mar 2025 05:02:54 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trrhK-00000004cEo-3Ows
+	id 1trrlT-00000004cbz-2L3W
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Mar 2025 04:58:36 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-223a7065ff8so20983665ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Mar 2025 21:58:34 -0700 (PDT)
+	Tue, 11 Mar 2025 05:02:53 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-22113560c57so92958745ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Mar 2025 22:02:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1741669114; x=1742273914; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=;
-        b=lDy0O0RAaUZYGsXlvWTL8C0XyGqrVSTtHCU/QRUQmZDF3lubpIiOTbsnxy1T6DgM++
-         Z2Z62GgY2I8JQr4pH1ZzKPAe05kKvub4LMicTL01lzZGme6uigQjNyDJYlHHpHMKBVLx
-         IiB8Ra3gGTvQxGPgVQflAbvkQC1E5osNTd/eA=
+        d=chromium.org; s=google; t=1741669371; x=1742274171; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YsL06UvFaIQXEiahdE6DhBRWjwB8pb861e5j/ftXC1c=;
+        b=S8J1D8P3jVPGe+JMNkOS5NrHK/AK1sUFvNlO3lqUG7hIj/oyqyqsD45ZinC3mCRQOL
+         Y2dDvTqGvkiPrs4pCmkC8p4w25nJJMOxsKFvUrIYfX+e8kxTirCogMQ09JUQBrHW5Iy9
+         OmnQmJfzLehaTtel1Y0k2h27c1MU0NoIrMtXE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741669114; x=1742273914;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=;
-        b=FY06gh3eIwnZOyrzKC0iksK7tONEs69R8W1Q5CjWPWBVWyIMsNR9UTP/otQw+RYUo3
-         1+BupYlZ3J31k98Z5PpnRqus7fV8TPzgBK42De2p/9uK93FF1EhEUT3spjaX8dcM6wQT
-         kSmSv25FJEp46WaoCGQdAqebpIBSU2ui2YfyWFpsgT0tn+O+sl1yfxBHsoUI7emAFcdL
-         +qqbglfKaXSL8fQkdf6xYrrmBmHJgPYopeob8BvLb+1z9CWupebQ99J/eWJ2M8fQZ7f9
-         1hOHS2HglDhRDXjBRrRcgNmSm2wQ/DziTcsZpyUYE2B5Ru0QKJtJIcMPpeqXWg8Dfl3l
-         STEg==
-X-Forwarded-Encrypted: i=1; AJvYcCVwUI2iX6i1MiQxrvpW2P2gsActhTWZ2fm3zXaPTRinjq9U30q0vGBkjW78yMZSQ4nzWHcpmgIpBbnO7pSHnA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwAOOTanhTVCdc/DJ85ji4YoGEFqg/tWsJdgrFtBbuhX90DIf15
-	omDtbrWenfCZxr7FTpIb8SzdIkm4XrkD29bPElCqlrfLCA17kBXXxOLrMuZ9zA==
-X-Gm-Gg: ASbGncse6RIAGqrNy0CJZTq7tAkA8+6cvFiAidKy7oyGeeYxM99hxkoJK4C55uvXCU8
-	QwkNdfeURhhEmEAUVONIp1Pi55zdAIN+N0/iLd/Soc8QRMyBoqD+kHPwor4yduq30qMfEvh5Fnw
-	g4wUTqjhC/35GimGJDB43ssB5NteGnM+GBGZpIJjeN53IclBSuYkha1St6tU+DnEqALvYYXD1+e
-	PrIu/iwf0NuZbab7uHCzlQx8V1rUWAzEf3wLGCdQbw0Ov7iR45ijAmysCjiJx8etGRkXIAYY1YH
-	c/hpGywF9r1SHy1CiXFtMZc3hzDcQ/Hor5pFYyAACkMVa1UHfAwIYKF4f7I=
-X-Google-Smtp-Source: AGHT+IEy+/UJdnWSvGMFpDegWU6yxUJzFshmjVJEwVUQ1vPxzmyvb0Te8hk0DkXqfdh84yZ0kk8jEg==
-X-Received: by 2002:a05:6a00:b84:b0:736:3d7c:236c with SMTP id d2e1a72fcca58-736aaa00c36mr22819900b3a.14.1741669113611;
-        Mon, 10 Mar 2025 21:58:33 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1741669371; x=1742274171;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YsL06UvFaIQXEiahdE6DhBRWjwB8pb861e5j/ftXC1c=;
+        b=kiDH0TuvfrVz/sy9JH17AihH7hrU2lHxRahMFgJ51kAeBNp78bUWsjlKgdufRwxdV+
+         HV3j0EqAHTNlJWdIyU3K7PWEQTjESXn5G/0K5H2Fv+SN/BlN8jxnwDkCbgLFMUjuvCqP
+         d1wUaYJPZwdzpM78aKsJajACqu5wZdJ3VS7d9Lxc23KHxW0M5nkReyrTlbw8dPBGkfQv
+         1PsHl6yGyKTxGqcqpM8C4faRRy8m7tNfnqHD43J5Go5iBms0KgtBswFvZigrHm9YGR+A
+         lV1NNYYhOFfUj9W14Mc/8aMZCMtqYA/FFpKlZNmi3T4YOzI+mHAR1j7csXzUfqYmIgsi
+         2NSg==
+X-Forwarded-Encrypted: i=1; AJvYcCVKHMDyeSaSH3ucOMZkLbyWBBX81PnqDiAYqf21QgmPAmmUBloLcRIAk7Y6Mn4aGbJo0isQYO+mE9b09Yls0g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7t8fKS7tQpkqL2MZXLZk2DoeWlrmak86mp3mVRZVo5twKPr9T
+	sz4r3w2x+rUAHtuZtIGTd3ECB+zaW88j6O5EsUT1HFhAXSqMklTqdcaLpoebVQ==
+X-Gm-Gg: ASbGncuafZlQZfFRfXPdCNSh3Ka5Mh1kc3ZocXYOoG6lbDybS4lEmmCRQjARM9AJOnY
+	as7nS54baJYaLU9OC7uzRAEos+vy3AdS1OyLtpbwJi3tV7+HmYRjdIqnlY3MPpFviyrHKlGK7Ew
+	aFxTHVvdhcLu+xCcc3dkSCiPP+ChX2s0WJwX2n/C++WHFGawpJkS6fY9ww9vZz/iTJdxFjBFf2w
+	F9+JR50DIMDLeqIfVhYs5kVhS+yFT4uaPwL8uGuMMBRJdxN4Hd7sOQgxcEwiKL0IYOJRdpjbjZS
+	cQesHE9kNIWhJ5b1nfod8X6uYu6wT1TA4XlaDEaZZyxgwZnr
+X-Google-Smtp-Source: AGHT+IFKfiFQm8ms/qPRi+wcBaiWNYQfbAZZRcHY4n0zNhnBnJ9IpLaSuc9kTChF2fwrDmR2pqJfNQ==
+X-Received: by 2002:a17:903:40cb:b0:223:6744:bfb9 with SMTP id d9443c01a7336-22428ab7691mr283789275ad.41.1741669370601;
+        Mon, 10 Mar 2025 22:02:50 -0700 (PDT)
 Received: from google.com ([2401:fa00:8f:203:cce8:82e2:587d:db6a])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af281287d9esm8542757a12.75.2025.03.10.21.58.27
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-224109ddca2sm87480825ad.13.2025.03.10.22.02.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Mar 2025 21:58:33 -0700 (PDT)
-Date: Tue, 11 Mar 2025 13:58:24 +0900
+        Mon, 10 Mar 2025 22:02:50 -0700 (PDT)
+Date: Tue, 11 Mar 2025 14:02:42 +0900
 From: Sergey Senozhatsky <senozhatsky@chromium.org>
-To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Cc: Nhat Pham <nphamcs@gmail.com>, Barry Song <21cnbao@gmail.com>, 
+To: Nhat Pham <nphamcs@gmail.com>
+Cc: Barry Song <21cnbao@gmail.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>, 
 	Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, 
 	Sergey Senozhatsky <senozhatsky@chromium.org>, Vishal Verma <vishal.l.verma@intel.com>, 
 	Dan Williams <dan.j.williams@intel.com>, Dave Jiang <dave.jiang@intel.com>, 
@@ -82,20 +81,20 @@ Cc: Nhat Pham <nphamcs@gmail.com>, Barry Song <21cnbao@gmail.com>,
 	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
 	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
 	James Hsu <james.hsu@mediatek.com>
-Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from
- kswapd
-Message-ID: <dubgo2s3xafoitc2olyjqmkmroiowxbpbswefhdioaeupxoqs2@z3s4uuvojvyu>
+Subject: Re: [PATCH 2/2] kcompressd: Add Kcompressd for accelerated zram
+ compression
+Message-ID: <mzythwqmi22gmuunmqcyyn7eiggevvrzkpqmjkoxsj4q4jc46s@64jdco5s6spa>
 References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
- <CAKEwX=NfKrisQL-DBcNxBwK2ErK-u=MSzHNpETcuWWNBh9s9Bg@mail.gmail.com>
- <CAGsJ_4ysL1xV=902oNM3vBfianF6F_iqDgyck6DGzFrZCtOprw@mail.gmail.com>
+ <20250307120141.1566673-3-qun-wei.lin@mediatek.com>
+ <CAGsJ_4xtp9iGPQinu5DOi3R2B47X9o=wS94GdhdY-0JUATf5hw@mail.gmail.com>
+ <CAKEwX=OP9PJ9YeUvy3ZMQPByH7ELHLDfeLuuYKvPy3aCQCAJwQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGsJ_4ysL1xV=902oNM3vBfianF6F_iqDgyck6DGzFrZCtOprw@mail.gmail.com>
+In-Reply-To: <CAKEwX=OP9PJ9YeUvy3ZMQPByH7ELHLDfeLuuYKvPy3aCQCAJwQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_215834_879583_A2BFFA7D 
-X-CRM114-Status: GOOD (  21.99  )
+X-CRM114-CacheID: sfid-20250310_220251_593942_DF79B482 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,46 +109,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On (25/03/08 18:41), Barry Song wrote:
-> On Sat, Mar 8, 2025 at 12:03 PM Nhat Pham <nphamcs@gmail.com> wrote:
+On (25/03/07 15:13), Nhat Pham wrote:
+> > > +config KCOMPRESSD
+> > > +       tristate "Kcompressd: Accelerated zram compression"
+> > > +       depends on ZRAM
+> > > +       help
+> > > +         Kcompressd creates multiple daemons to accelerate the compression of pages
+> > > +         in zram, offloading this time-consuming task from the zram driver.
+> > > +
+> > > +         This approach improves system efficiency by handling page compression separately,
+> > > +         which was originally done by kswapd or direct reclaim.
 > >
-> > On Fri, Mar 7, 2025 at 4:02 AM Qun-Wei Lin <qun-wei.lin@mediatek.com> wrote:
-> > >
-> > > This patch series introduces a new mechanism called kcompressd to
-> > > improve the efficiency of memory reclaiming in the operating system. The
-> > > main goal is to separate the tasks of page scanning and page compression
-> > > into distinct processes or threads, thereby reducing the load on the
-> > > kswapd thread and enhancing overall system performance under high memory
-> > > pressure conditions.
+> > For direct reclaim, we were previously able to compress using multiple CPUs
+> > with multi-threading.
+> > After your patch, it seems that only a single thread/CPU is used for compression
+> > so it won't necessarily improve direct reclaim performance?
 > >
-> > Please excuse my ignorance, but from your cover letter I still don't
-> > quite get what is the problem here? And how would decouple compression
-> > and scanning help?
+> > Even for kswapd, we used to have multiple threads like [kswapd0], [kswapd1],
+> > and [kswapd2] for different nodes. Now, are we also limited to just one thread?
+> > I also wonder if this could be handled at the vmscan level instead of the zram
+> > level. then it might potentially help other sync devices or even zswap later.
 > 
-> My understanding is as follows:
-> 
-> When kswapd attempts to reclaim M anonymous folios and N file folios,
-> the process involves the following steps:
-> 
-> * t1: Time to scan and unmap anonymous folios
-> * t2: Time to compress anonymous folios
-> * t3: Time to reclaim file folios
-> 
-> Currently, these steps are executed sequentially, meaning the total time
-> required to reclaim M + N folios is t1 + t2 + t3.
-> 
-> However, Qun-Wei's patch enables t1 + t3 and t2 to run in parallel,
-> reducing the total time to max(t1 + t3, t2). This likely improves the
-> reclamation speed, potentially reducing allocation stalls.
+> Agree. A shared solution would be much appreciated. We can keep the
+> kcompressd idea, but have it accept IO work from multiple sources
+> (zram, zswap, whatever) through a shared API.
 
-If compression kthread-s can run (have CPUs to be scheduled on).
-This looks a bit like a bottleneck.  Is there anything that
-guarantees forward progress?  Also, if compression kthreads
-constantly preempt kswapd, then it might not be worth it to
-have compression kthreads, I assume?
-
-If we have a pagefault and need to map a page that is still in
-the compression queue (not compressed and stored in zram yet, e.g.
-dut to scheduling latency + slow compression algorithm) then what
-happens?
+I guess it also need to take swapoff into consideration (especially
+if it takes I/O from multiple sources)?
 
