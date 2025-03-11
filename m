@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9459C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C78DCC282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 18:03:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tJiU9QBRilFPZgakuc6csm79chJpwvoiI/+QYm/64x4=; b=Vy5D9LaTDUeDexB8fnqWXdFNns
-	pGL3azGky9USbJFO6qAfS1s5xCmoCHZ1EEICSfLtuUVOFsTnHHsHgo5PWstHGz4EYNCWCNyK+iVvg
-	UCZNjEG1/Mf6RmsjfN7eYYQbURr3D30L/1gayhX72owm/Ly4g5IcvFWsDuL/KDVGrtmhEfaYSGziG
-	WpdRCWei0BKjyAib0V7VWr2hwBOrMCqTm2I4T8xMFKTHvII6t43ikokwKRSqlATXO2f4OUZqKMcpI
-	4PNquiPbv8dc0Li1D7WmVP8TeDgPQISl4mxF3uR4b8QFiLOCppLI2x4b35Npxm5et/T+8pBwVxukZ
-	wavQuShg==;
+	bh=j0stVGTOp2A7iOdrNEMnFBm64FAGWEdBv8PkE1TGF6o=; b=GYfOJHn29FDD8fKXVccMbGFhcG
+	k6w9XcmVNLqes4uF/EY4ge3N9Ulzxr+iVVf774frd4gpk8MEwBbsFCWWOQKtcCIjuBhBV4LbRVEzf
+	pbcOMe9mpb2jVqSPtW0JMqcciVYHlemRfo6712vY9+Fd0dsF5S1Nk3Bn56vJ4/wThxIYEtsfts9QC
+	oHeoHtYRfJKfiJXnK3t39MgmQeDOUcUtbNfLFkjndnPrfWeg32R6oA9IwdMg/X1qNNLcznNYGlEep
+	+bhhidNDI3dk1ovCnTW5WMKWtEt0lEGyQmDxwDAlFjFy5hEGZUzyWQoe5hjk2iKUiahPGYgvmSHRc
+	zuLVwrGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3vV-00000006Y2Z-1VgA;
-	Tue, 11 Mar 2025 18:02:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ts3x8-00000006YMc-1RcC;
+	Tue, 11 Mar 2025 18:03:42 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts3fh-00000006VGF-10wC;
-	Tue, 11 Mar 2025 17:45:42 +0000
+	id 1ts3fj-00000006VHV-3wuX;
+	Tue, 11 Mar 2025 17:45:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CFA135C67FA;
-	Tue, 11 Mar 2025 17:43:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5247C4CEE9;
-	Tue, 11 Mar 2025 17:45:39 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21D8CA459A8;
+	Tue, 11 Mar 2025 17:40:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78EB0C4CEE9;
+	Tue, 11 Mar 2025 17:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741715140;
-	bh=R6gtg/TQgZku/lKJqB18xCV0J8UOG6HPluWCjQVyBro=;
+	s=k20201202; t=1741715142;
+	bh=GfQP+e9/FOkiyZ4CffiuWj+w7zarlndvdcfCxYmuIDs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mYDikKAR2jNfzHfGL/PSDYSCJCpSiliCotsLvB91EjDjDgVVftrJYUUh8mg2FPJLf
-	 ZxSaNXjYYJzwLaRxIXd8w3ckJQ2EsWiG1pt1X2qKk9tA4HmCzaBq9WKX/YrGqRgeuN
-	 DXerEjDgu1mMLsQ3sJJJfRo+UHrvK0T6iCNYpFFOx9kzuRdp/3NdINXAMu7Dl7FiF3
-	 7bM5v0LU76iRzQaBQHj2mbXRItScgXpLd0QDUIJyj9eXT7JuTlgWiVlIArb/mW3jNy
-	 NuGZPfb52r5t47qaATo0rcM2MKSqZvFdhIKywqjhvI8fJTtVwWTopte6e8JKlDWkMf
-	 G0spAbPJNSVTg==
+	b=TPpE0dJXm/592JDWkQcW8CyoEIpLbdNDMFunMGBG74L2TsdDGvFPMAwWjKawXcBTo
+	 lGZ1tmZy+TGuyfwbV25S0Wvo28RFOx/201pVu/JFXc+5bRzmeQV/+jVJ+1v7ij/pzW
+	 Q6tQ1evL2v6/aX2lzBFDRyGY3csC8fPGvIsyEyiHC3h9kKZxzkBZe8a4JWGGtdxT+c
+	 IkyuIW9eiBk5749CTScDz7wucc//FujACUpytIjckMDo5xnuC5OQvikOYe2K9vYuYS
+	 cikVkBNMlxY+QXfl6SHu/OgEdxmsJI8rhojdL0pOfe5IilqUN2SN6dXX+xTUcz9vlB
+	 /GEvlVv/GN0Ug==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 11 Mar 2025 18:45:08 +0100
-Subject: [PATCH v2 09/13] wifi: mt76: mt7996: Support MLO in
- mt7996_mac_sta_event()
+Date: Tue, 11 Mar 2025 18:45:09 +0100
+Subject: [PATCH v2 10/13] wifi: mt76: Check link_conf pointer in
+ mt76_connac_mcu_sta_basic_tlv()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250311-mt7996-mlo-v2-9-31df6972519b@kernel.org>
+Message-Id: <20250311-mt7996-mlo-v2-10-31df6972519b@kernel.org>
 References: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
 In-Reply-To: <20250311-mt7996-mlo-v2-0-31df6972519b@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -58,12 +58,11 @@ To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
  Lorenzo Bianconi <lorenzo@kernel.org>, 
  Johannes Berg <johannes@sipsolutions.net>
 Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Bo Jiao <Bo.Jiao@mediatek.com>, 
- Peter Chiu <chui-hao.chiu@mediatek.com>
+ linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_104541_398651_EAA2FCAB 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20250311_104544_054763_E16A07C8 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,107 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to mt7996_mac_sta_add() adn mt7996_mac_sta_remove(), update
-mt7996_mac_sta_event routine to take into account MLO support.
-Please note mcu routines does not support MLO yet.
+From: Shayne Chen <shayne.chen@mediatek.com>
 
-Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
+This is a preliminary patch to introduce MLO support for MT7996 driver.
+
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 69 ++++++++++++++----------
- 1 file changed, 40 insertions(+), 29 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 307c68c6b0cd7c3acdbfd7be78a007a66d3183bf..6d323b5e4e8076ca963e585c12dc656dc5ec3fdb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1001,41 +1001,52 @@ mt7996_mac_sta_event(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		     struct ieee80211_sta *sta, enum mt76_sta_event ev)
- {
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
--	struct mt7996_sta_link *msta_link = &msta->deflink;
--	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
--	struct mt7996_vif_link *link = &mvif->deflink;
--	int i, ret;
--
--	switch (ev) {
--	case MT76_STA_EVENT_ASSOC:
--		ret = mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
--					 CONN_STATE_CONNECT, true);
--		if (ret)
--			return ret;
--
--		ret = mt7996_mcu_add_rate_ctrl(dev, vif, sta, false);
--		if (ret)
--			return ret;
-+	struct ieee80211_link_sta *link_sta;
-+	unsigned int link_id;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index d0e49d68c5dbf0ed4eab084d9c6f1cad230bed93..bafcf5a279e23ff007d9052301cd2f6b899c491e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -391,7 +391,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 		basic->conn_type = cpu_to_le32(CONNECTION_INFRA_BC);
  
--		msta_link->wcid.tx_info |= MT_WCID_TX_INFO_SET;
--		msta_link->wcid.sta = 1;
-+	for_each_sta_active_link(vif, sta, link_sta, link_id) {
-+		struct mt7996_sta_link *msta_link;
-+		struct mt7996_vif_link *link;
-+		int i, err;
- 
--		return 0;
-+		link = mt7996_vif_link(dev, vif, link_id);
-+		if (!link)
-+			continue;
- 
--	case MT76_STA_EVENT_AUTHORIZE:
--		return mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
--					  CONN_STATE_PORT_SECURE, false);
-+		msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
-+		if (!msta_link)
-+			continue;
- 
--	case MT76_STA_EVENT_DISASSOC:
--		for (i = 0; i < ARRAY_SIZE(msta_link->twt.flow); i++)
--			mt7996_mac_twt_teardown_flow(dev, msta, i);
-+		switch (ev) {
-+		case MT76_STA_EVENT_ASSOC:
-+			err = mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
-+						 CONN_STATE_CONNECT, true);
-+			if (err)
-+				return err;
- 
--		mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
--				   CONN_STATE_DISCONNECT, false);
--		msta_link->wcid.sta_disabled = 1;
--		msta_link->wcid.sta = 0;
-+			err = mt7996_mcu_add_rate_ctrl(dev, vif, sta, false);
-+			if (err)
-+				return err;
- 
--		return 0;
-+			msta_link->wcid.tx_info |= MT_WCID_TX_INFO_SET;
-+			msta_link->wcid.sta = 1;
-+			break;
-+		case MT76_STA_EVENT_AUTHORIZE:
-+			err = mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
-+						 CONN_STATE_PORT_SECURE, false);
-+			if (err)
-+				return err;
-+			break;
-+		case MT76_STA_EVENT_DISASSOC:
-+			for (i = 0; i < ARRAY_SIZE(msta_link->twt.flow); i++)
-+				mt7996_mac_twt_teardown_flow(dev, msta, i);
-+
-+			mt7996_mcu_add_sta(dev, vif, &link->mt76, sta,
-+					   CONN_STATE_DISCONNECT, false);
-+			msta_link->wcid.sta_disabled = 1;
-+			msta_link->wcid.sta = 0;
-+			break;
-+		}
- 	}
- 
- 	return 0;
+ 		if (vif->type == NL80211_IFTYPE_STATION &&
+-		    !is_zero_ether_addr(link_conf->bssid)) {
++		    link_conf && !is_zero_ether_addr(link_conf->bssid)) {
+ 			memcpy(basic->peer_addr, link_conf->bssid, ETH_ALEN);
+ 			basic->aid = cpu_to_le16(vif->cfg.aid);
+ 		} else {
 
 -- 
 2.48.1
