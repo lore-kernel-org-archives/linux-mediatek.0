@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D12E7C28B30
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 11:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 782A4C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 11:57:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3zH3vbpcEhsaA2sff1rBOlB+R5fEXLW/Q8ws1zWzAhE=; b=glekv4xDtJwfC3elJwdlsB6zXT
-	rYtXLG8lNPOhbtduRSjhNvLFedosboo5f9mOF89geXkWuWuxWBjjiJCKJzdWFWtyFSei1DuSDZakq
-	F2zLbbyvL6BBQ+7bt00+CU2q6iLIrYXllCN7GhTEBcekbRuZS2gf+gWW4SYiqCeZm1EXBASY1GGwt
-	cxrrvsvj/L1XRmhO7dMWIaVAAN9JqOqA8HK5+b1Sh7y4vfXpZrL8Nndmy9/ie59wtaXnruj7u4kdW
-	9vc1m1f90aH4YsS6KCyoJhqxMIXjISsPfkXB785ONhAqNKAM1kIQibVtUvSD9Qu2yrzPHotdKSd1i
-	x1IgjCPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VebOt7eakeM7O5EFjZv36HAailZE14Ug6tWVf26nsyY=; b=JxOKwA7RtYG1d/skyypyOd5MHS
+	ujJhc1ssgaNEKq2IMTsASyiMoElfr9kxmEoq/8+5vVmrZU1fHqwo5nm3vwrF/Mym3s27KCDIYLu4l
+	zcVPA7T/j17tV2GnMr5CpF96CaCho0GnCW3M5rXFpNLJJZLWiZ9dk+b3Ih9cg3vu+n8BuU/jSkBOz
+	bBWg65V+KZWohsGU8L1zVy33Wtj9vrQU1kAXnu8F1amLqA72W797Tr8TVoycZCEaMVgDftfOaGibM
+	eSg7pszxqX9MOB7k8X3vADNl3An/qNVhBZHfQEqjzbfQ64n3S6U9/kfqq5xDhoyIAl/Zyi/Zc+zcS
+	41/rqrGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1try3K-00000005WFY-1iYe;
-	Tue, 11 Mar 2025 11:45:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tryEy-00000005Xmr-3z5n;
+	Tue, 11 Mar 2025 11:57:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trxzx-00000005VVQ-1vZ3;
-	Tue, 11 Mar 2025 11:42:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EF5BF5C5C4C;
-	Tue, 11 Mar 2025 11:39:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AE5DC4CEEB;
-	Tue, 11 Mar 2025 11:42:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741693332;
-	bh=0cT+g/6WFHRo97S8MzNd/drxoZXKifddanz+n4Uem64=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gUXhwXQLYpC885YJdW2TRx7RUjZm5rSn13EHYURan6o2jQC3pgD+e2hKRnYvENUev
-	 IoPstSAUq6ZbXhledQeIrrlmuOGplzdFM1g8h52AMbNS2RN6NK66yvHRSlMg8wX8FO
-	 FCPl/kZqLxUF+z1+oPfxJRZo6aRMd0lLFbbrHDqeWeBS5jYgku6BK34y1E8ambTZfo
-	 OM2Cy1Z5ZJ8VAZce1vPKhK2/JbXCBZPNeoLJQJ2V7+WW2ethWoFp5rqjolTGskUcSm
-	 TQOzVOGlkbYV9Ho9jsztzeW4fkWX8mLb5QS4yKdedn86e7qDzpe615WK+R8unxCa1d
-	 RsALeUlcGrUBA==
-Date: Tue, 11 Mar 2025 12:42:08 +0100
-From: Vinod Koul <vkoul@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Nikita Shubin <nikita.shubin@maquefel.me>,
-	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
-	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org, upstream@airoha.com
-Subject: Re: [PATCH 10/13] phy: airoha: Add support for Airoha AN7581 USB PHY
-Message-ID: <Z9AhkByegWQgC9YE@vaman>
-References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-11-ansuelsmth@gmail.com>
- <Z9AhN9T8s1oogCUn@vaman>
+	id 1tryE1-00000005Xe0-1Bdl
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Mar 2025 11:56:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741694202;
+	bh=oJdU3+ooCjDHVuYhhwqBKzx0i6eCKL9c3ARobA2BNDA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RZErmzD5hR6eBaNCp3Ra952zZqHpfdYpxB/QT515Jm1n74Cay6gDxrhgE9emAwaz/
+	 6FdGJ0YWE9p6DkYmdCEvgCj286rMwe3kGuOLX89U7nx5H6+8VuEyu+UT394erUfgVu
+	 DZxDk03R2UYg44KbWMsa7vmHMecYtOXtkos9XzuJXAEpEVJqWWpE3WbjEUucwZvqHn
+	 llWloNx5Pt/RZfTgSKcusiTV4n5y/gu0MHVqiNDVIBMjIkf2UmJmA2cmVPuUfdYlrM
+	 4LEIrWnEfRhuD1vjaoVmmIO8mZYVW/0vHFatGw3tVFHP/ZjiQo2tVv2hP6r8aIUyHJ
+	 yp0STOd+W5xAA==
+Received: from [10.20.66.114] (unknown [103.163.65.90])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2368717E0B25;
+	Tue, 11 Mar 2025 12:56:39 +0100 (CET)
+Message-ID: <daa0733c-14e3-44df-8374-33aba6662813@collabora.com>
+Date: Tue, 11 Mar 2025 17:26:37 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z9AhN9T8s1oogCUn@vaman>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] arm64: defconfig: mediatek: enable PHY drivers
+To: Krzysztof Kozlowski <krzk@kernel.org>, linux-mediatek@lists.infradead.org
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, nfraprado@collabora.com,
+ angelogioacchino.delregno@collabora.com, daniels@collabora.com,
+ airlied@gmail.com, simona.vetter@ffwll.ch, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+References: <20250311061703.16850-1-vignesh.raman@collabora.com>
+ <dc659e19-c1ae-42d8-84c9-0d2aafa81fe2@kernel.org>
+Content-Language: en-US
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <dc659e19-c1ae-42d8-84c9-0d2aafa81fe2@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_044213_550727_F6A5E9D7 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20250311_045645_477635_839EF0A8 
+X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,24 +79,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11-03-25, 12:40, Vinod Koul wrote:
-> On 09-03-25, 14:29, Christian Marangi wrote:
-> > Add support for Airoha AN7581 USB PHY driver. AN7581 supports up to 2
-> > USB port with USB 2.0 mode always supported and USB 3.0 mode available
-> > only if the Serdes port is correctly configured for USB 3.0.
-> > 
-> > On xLate probe, the Serdes mode is validated and the driver return error
-> > if the Serdes mode doesn't reflect the expected mode. This is required
-> > as Serdes mode are controlled by the SCU SSR bits and can be either USB
-> > 3.0 mode or HSGMII or PCIe 2. In such case USB 3.0 won't work.
-> > 
-> > If the USB 3.0 mode is not supported, the modes needs to be also
-> > disabled in the xHCI node or the driver will report unsable clock and
-> > fail probe.
+Hi Krzysztof,
 
-Also I dont see phy depends on rest. Please split this and post phy bits
-separately at least..
+On 11/03/25 12:54, Krzysztof Kozlowski wrote:
+> On 11/03/2025 07:16, Vignesh Raman wrote:
+>> The mediatek display driver fails to probe on mt8173 and mt8183 in
+>> v6.14-rc4, with the following errors:
+> 
+> Which boards?
 
--- 
-~Vinod
+These are the boards,
+https://lava.pages.collabora.com/docs/boards/chromebooks/boards/hana/
+https://lava.pages.collabora.com/docs/boards/chromebooks/boards/jacuzzi/
+
+> 
+>>
+>> mt8173:
+>> platform 1401b000.dsi: deferred probe pending: mtk-dsi: Failed to get hs clock
+>> platform 14025000.hdmi: deferred probe pending: (reason unknown)
+>> i2c 1-0008: deferred probe pending: (reason unknown)
+>>
+>> mt8183:
+>> platform 14014000.dsi: deferred probe pending: mtk-dsi: Failed to get hs clock
+>> i2c 4-0058: deferred probe pending: anx7625: fail to find dsi host.
+>>
+>> Enabling CONFIG_PHY_MTK_MIPI_DSI=y in drm-ci resolves this error,
+>> but mt8173 still fails with,
+>>
+>> [drm:mtk_dsi_host_attach] *ERROR* failed to add dsi_host component: -517
+>> panel-simple-dp-aux aux-1-0008: DP AUX done_probing() can't defer
+>> panel-simple-dp-aux aux-1-0008: probe with driver panel-simple-dp-aux failed with error -22
+>>
+>> Enabling CONFIG_PHY_MTK_XSPHY=y and CONFIG_PHY_MTK_HDMI=y in drm-ci
+>> resolves this issue for mt8173.
+>>
+>> So enable these PHY configs for mediatek platforms.
+> 
+> Just say which boards need it for which functionality/features. Three
+> sentences are enough.
+
+Sure, will update the commit message. Thanks.
+
+Regards,
+Vignesh
+
+> 
+> Best regards,
+> Krzysztof
+
 
