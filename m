@@ -4,94 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A028C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 09:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CB8C28B30
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 09:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oci9eEq+toTA4eT0HbbNQG595NfpjyU1+E2PAns3Nzg=; b=sRxzBm1tRxE2AlO9oaZExaBPBV
-	oF4m9PCG9XEkiTmmKSqtJapbzPczT4drjIkNjmOyPgeop4Y6YNYTzwPJHeyR0QJlXqm382JMS65oo
-	frMyS2D8j+YC91NKEXgELdvtAIGuFs102hO2SyGwM346zjMzY7swzwd7zc3PlOoSRLJ8kn7G6xyUY
-	fZBrWtjShtt1TfHY70C/Q5wlAU+dwUC5S0i+nC6fzrTLXxhQ9oxSz9J5GVinVwuCQXiOzhKw93JL9
-	tPqcQeNwc8iDG4lFEcGL1NXcL/ECOF63REHtzZsidfyD3f0g+dkb/2Se5qzUH13KYt+eDL+dSyQRP
-	7AoQLWfg==;
+	bh=SQWx5VAm++Mg4qFGTmxWsxcgqpsvyWAr2kViVxw69SQ=; b=euXu7eujIYoIhU6zscJKdInz3u
+	Pr6J7VqH7Iku0uaSGLSO9IuDdI1Kmdmd1aZq00iSBwbfva+eBj5EsfgnCXi7rSvbXDWMBp0VPoW0H
+	/5Rx3Ndj0v2vVuO1LDjpqAZZS5oTnONlk7wQmc5njaLDbXTT9JF/OAljqZ5sk85TSnZvahaKvPspl
+	Ltu8cRO9+fA4VP6Sd6H7Fymh0LwCF+UvzYQmP3QjI85y10l3r2Nz8hItj5uTRhEYQD9TQVJhDICzk
+	UQyh0G5kcUjGMV9ol42lAeYzgq0MiRdOxa3AsfZaA7jRR1zrXG4hlHcdLh7NqxKjprogFKc+F2sT8
+	VMfaMVkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trw0p-00000005AVk-3Da8;
-	Tue, 11 Mar 2025 09:34:59 +0000
-Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
+	id 1trwFy-00000005Ccn-0UMr;
+	Tue, 11 Mar 2025 09:50:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trvzB-00000005AJw-1MKq;
-	Tue, 11 Mar 2025 09:33:18 +0000
-Received: by mail-ua1-x930.google.com with SMTP id a1e0cc1a2514c-86d6ac4d5a9so806165241.1;
-        Tue, 11 Mar 2025 02:33:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741685596; x=1742290396; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Oci9eEq+toTA4eT0HbbNQG595NfpjyU1+E2PAns3Nzg=;
-        b=RV8uA3rxpXLcrruszI/VkNnFxZXiYf4CcnK9NCefATq+c3cSOQ2ZlyUdN6ALVirzX4
-         8/8ONqL4qep/uWGlHFYnuOW6r9o8bv2ZnC2Lt9CkyvU9k3h3y+KGhWCCR75wRXqGWMH5
-         TdRXo+n97MQmgYsh2+Md/5ExhT9b1pEkjgTc0S07VcDqbcysvrTBxKZHSVB6Xbpvp7Kd
-         Z4YFUfvvGJY8/DKkV53SUkvXnkhpAeG83NuVTzBbtSMcLl1iZEmj5sJHz3zEQEyaCv27
-         evz9I441C3fdWju71eEeiUPbvpsrUK+mu8WF9/RjkI65Dgc+c/a1hH3PhlbsrAK6CwbV
-         Axhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741685596; x=1742290396;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Oci9eEq+toTA4eT0HbbNQG595NfpjyU1+E2PAns3Nzg=;
-        b=S56Ijopr02AHIeptSIHXsmUfq7sKKw7Sv6AnwZP2irhg3xOgnGHjDxedfgqGMys//f
-         itZsJUjvaFrFV6phd0LIvMLyqUeCJcM8Iqp4Vxiia+3nBFj6ivnkBxU5nJKHe/2kHdAR
-         2/iBPt/DfbtbA/id5f3qbqkqJ5Gxg2y5I2FCmj4iKPqqdifbUs8I9Hw/uETGz1YDRt67
-         ZFoFn7wKN6K+0Ge7MAxmLg63mA0RmJulS/ZfVhENA2R23ZI8s6+2CdUHXDt3wPiS+UVD
-         2EQjPT+WNEL9Uw13CFzuHj6zCzqg3JWwn9R7nKogLBR63A9DFfW4UPqd2e4iOoTNm1JY
-         DD+w==
-X-Forwarded-Encrypted: i=1; AJvYcCV4FYBkdGgWgbRXZSSM6PzXsJAVn5479Awc9yXTOA4lXQEk1YHBOAJ3HfllPRdgRoLaSk6/62h+CPVluxy4uMY=@lists.infradead.org, AJvYcCViZU9h83laFrgbku0cCRUOmcJXKwLT1cteDt3+HoU0CiHfHEEoUFicD5SSKC6oF4tkwZAHqiFdXrx3BTB2ZIIH@lists.infradead.org
-X-Gm-Message-State: AOJu0YxCivxbJn9QkMfKNFnmzPh+sU5yBoNeBnsJYenm4OCxg3nKhv/n
-	006SySyj3Ct7yGZMKS73/iUL3fWoX7QxAhj7Mlnl2nYcQ+m9Lu+9nkkoxs839IfwTcJVzALdGZn
-	Y7PxxEURlpCQgRjBx34v9BOPDdBI=
-X-Gm-Gg: ASbGncvt7yopzG6NYS3qFxgxnSfX6+6y5vHtvlyvP7iVc3LXOYcJNjo0h+o5mnudnC0
-	Z0zsuEud3xkDF5lgfw57CN+wvWQR3QSqOwtdAlo35gOXPKc+pfnQyhYtCrgacvEs+/2x2K9/TC6
-	5hlHf5TtPpO36dCiHgw1fP5Gdlt+JZoaRDFbDM
-X-Google-Smtp-Source: AGHT+IFjbF2BT/V8wuSBTDQZbf6t/hT/Znk/xR8O11b3YilMHbEGP/m6CvuSuPbsGl833OZDuyeAqkTBH4Ybr+MgCeE=
-X-Received: by 2002:a05:6102:509f:b0:4c1:9e65:f904 with SMTP id
- ada2fe7eead31-4c30a718b91mr8809313137.23.1741685595784; Tue, 11 Mar 2025
- 02:33:15 -0700 (PDT)
+	id 1trwCs-00000005C32-3V3A;
+	Tue, 11 Mar 2025 09:47:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741686444;
+	bh=2y0BgM8k6LyEGSxamKC+4zLWW/hmmLsnmqOuELJkL3w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JN9I+Z/QGiPLB+q1sP4gpy2p3ZCdttcYv8IsfYhNTL/EoCqIQT3gyLvfbCYrbAUa+
+	 4pxYhYBjMBqh7SjGxUr5ROj8CLxkfjFLGx7iF0Nyu4XLxdYuPlz76tpODlFgHX9q3v
+	 kvaVvC6OW73QT/o9NFKnN/1tWxhuiMgRco+1VxjWIuF9LTeCO0y/agCAtcjFGP4YeQ
+	 Nnk5eOpYVjerhu3bxGXXqDWsbkYvmlVTztt0F3P2WVRTCtEVaEaeNTtqMzO61GUcKc
+	 gbb1CZTjPPw9g8V/WpWKJgJG3amwSRv9rQRTUhQ29aozCWFNJc8i7H3CtrgJoXZg0g
+	 xHCnFSLjMoNqg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A443317E0FB8;
+	Tue, 11 Mar 2025 10:47:23 +0100 (CET)
+Message-ID: <b09f618a-eaf9-4258-ae2d-67eff1cb249f@collabora.com>
+Date: Tue, 11 Mar 2025 10:47:23 +0100
 MIME-Version: 1.0
-References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
- <CAKEwX=NfKrisQL-DBcNxBwK2ErK-u=MSzHNpETcuWWNBh9s9Bg@mail.gmail.com>
- <CAGsJ_4ysL1xV=902oNM3vBfianF6F_iqDgyck6DGzFrZCtOprw@mail.gmail.com> <dubgo2s3xafoitc2olyjqmkmroiowxbpbswefhdioaeupxoqs2@z3s4uuvojvyu>
-In-Reply-To: <dubgo2s3xafoitc2olyjqmkmroiowxbpbswefhdioaeupxoqs2@z3s4uuvojvyu>
-From: Barry Song <21cnbao@gmail.com>
-Date: Tue, 11 Mar 2025 22:33:04 +1300
-X-Gm-Features: AQ5f1JpaKY-TJruiEfKLncijqOvg19zgNrZm_fVI7uamNPGD1sBBaPT6nlX2PNg
-Message-ID: <CAGsJ_4wbgEGKDdUqa8Kpw952qiM_H5V-3X+BH6SboJMh8k2sRg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from kswapd
-To: Sergey Senozhatsky <senozhatsky@chromium.org>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>, Nhat Pham <nphamcs@gmail.com>, 
-	Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, 
-	Vishal Verma <vishal.l.verma@intel.com>, Dan Williams <dan.j.williams@intel.com>, 
-	Dave Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris Li <chrisl@kernel.org>, 
-	Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying" <ying.huang@intel.com>, 
-	Kairui Song <kasong@tencent.com>, Dan Schatzberg <schatzberg.dan@gmail.com>, 
-	Al Viro <viro@zeniv.linux.org.uk>, linux-kernel@vger.kernel.org, 
-	linux-block@vger.kernel.org, nvdimm@lists.linux.dev, linux-mm@kvack.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Casper Li <casper.li@mediatek.com>, Chinwen Chang <chinwen.chang@mediatek.com>, 
-	Andrew Yang <andrew.yang@mediatek.com>, James Hsu <james.hsu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
+To: =?UTF-8?B?QXhlIFlhbmcgKOadqOejiik=?= <Axe.Yang@mediatek.com>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ =?UTF-8?B?QW5keS1sZCBMdSAo5Y2i5LicKQ==?= <Andy-ld.Lu@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?WW9uZyBNYW8gKOavm+WLhyk=?= <yong.mao@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?UWluZ2xpYW5nIExpICjpu47mmbTkuq4p?= <Qingliang.Li@mediatek.com>
+References: <20250306085028.5024-1-axe.yang@mediatek.com>
+ <20250306085028.5024-2-axe.yang@mediatek.com>
+ <3e84fda8-2566-4f18-8ef9-850c84789c34@collabora.com>
+ <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_023317_365182_BD93AE83 
-X-CRM114-Status: GOOD (  31.29  )
+X-CRM114-CacheID: sfid-20250311_024727_025041_55F7F57B 
+X-CRM114-Status: GOOD (  24.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,95 +91,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 11, 2025 at 5:58=E2=80=AFPM Sergey Senozhatsky
-<senozhatsky@chromium.org> wrote:
->
-> On (25/03/08 18:41), Barry Song wrote:
-> > On Sat, Mar 8, 2025 at 12:03=E2=80=AFPM Nhat Pham <nphamcs@gmail.com> w=
-rote:
-> > >
-> > > On Fri, Mar 7, 2025 at 4:02=E2=80=AFAM Qun-Wei Lin <qun-wei.lin@media=
-tek.com> wrote:
-> > > >
-> > > > This patch series introduces a new mechanism called kcompressd to
-> > > > improve the efficiency of memory reclaiming in the operating system=
-. The
-> > > > main goal is to separate the tasks of page scanning and page compre=
-ssion
-> > > > into distinct processes or threads, thereby reducing the load on th=
-e
-> > > > kswapd thread and enhancing overall system performance under high m=
-emory
-> > > > pressure conditions.
-> > >
-> > > Please excuse my ignorance, but from your cover letter I still don't
-> > > quite get what is the problem here? And how would decouple compressio=
-n
-> > > and scanning help?
-> >
-> > My understanding is as follows:
-> >
-> > When kswapd attempts to reclaim M anonymous folios and N file folios,
-> > the process involves the following steps:
-> >
-> > * t1: Time to scan and unmap anonymous folios
-> > * t2: Time to compress anonymous folios
-> > * t3: Time to reclaim file folios
-> >
-> > Currently, these steps are executed sequentially, meaning the total tim=
-e
-> > required to reclaim M + N folios is t1 + t2 + t3.
-> >
-> > However, Qun-Wei's patch enables t1 + t3 and t2 to run in parallel,
-> > reducing the total time to max(t1 + t3, t2). This likely improves the
-> > reclamation speed, potentially reducing allocation stalls.
->
-> If compression kthread-s can run (have CPUs to be scheduled on).
-> This looks a bit like a bottleneck.  Is there anything that
-> guarantees forward progress?  Also, if compression kthreads
-> constantly preempt kswapd, then it might not be worth it to
-> have compression kthreads, I assume?
+Il 07/03/25 07:59, Axe Yang (杨磊) ha scritto:
+> On Thu, 2025-03-06 at 10:19 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 06/03/25 09:48, Axe Yang ha scritto:
+>>> Add 'mediatek,disable-single-burst' setting. This property can be
+>>> used to switch bus burst type, from single burst to INCR, which is
+>>> determined by the bus type within the IP. Some versions of the IP
+>>> are using AXI bus, thus this switch is necessary as 'single' is not
+>>> the burst type supported by the bus.
+>>>
+>>> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+>>
+>> I am mostly sure that this is not something to put in devicetree, but
+>> as
+>> platform data for specific SoC(s), as much as I'm mostly sure that
+>> all of
+>> the instances of the MSDC IP in one SoC will be *all* using either
+>> single
+>> or INCR.
+> 
+> No, actually MSDC IPs in one SoC are using different versions.
+> Usually MSDC1 (index from 1) is used as eMMC host, the left hosts are
+> used as SD/SDIO hosts. They have similar designs, but there are still
+> difference.
+> 
+>>
+>> So, I think I know the answer but I'll still ask just to be extremely
+>> sure:
+>>
+>> is there any MediaTek SoC that has different IP versions for
+>> different MSDC
+>> instances, and that hence require single burst on one instance and
+>> INCR on
+>> another instance?
+> 
+> Yes. Actually every SoC has different IP versions for eMMC and SD/SDIO
+> host as I said.
+> e.g. For MT8168, signel burst bit should be set to 1 for eMMC Host, but
+> 0 for SD/SDIO Host.
+> 
+>>
+>> And if there is - is there a pattern? Is it always SDIO requiring
+>> INCR or
+>> always eMMC/SD requiring it?
+>>
+>>
+> 
+> No, there is no pattern. Both eMMC and SD/SDIO hosts need to be
+> configured base on IP version. There is no binding relationship between
+> eMMC/SD/SDIO and the burst type. eMMC burst type might be INCR or
+> single, same as SD/SDIO.
+> 
 
-Thanks for your critical insights, all of which are valuable.
+Okay but if there are different IP versions, and AXI/AHB is determined
+by the IP version, why aren't you parsing the MAIN_VER/ECO_VER registers of
+the MSDC IP to check whether to use INCR or SINGLE?
 
-Qun-Wei is likely working on an Android case where the CPU is
-relatively idle in many scenarios (though there are certainly cases
-where all CPUs are busy), but free memory is quite limited.
-We may soon see benefits for these types of use cases. I expect
-Android might have the opportunity to adopt it before it's fully
-ready upstream.
+Cheers,
+Angelo
 
-If the workload keeps all CPUs busy, I suppose this async thread
-won=E2=80=99t help, but at least we might find a way to mitigate regression=
-.
+> 
+> Regards,
+> Axe
+> 
+> 
+>>
+>>> ---
+>>>    Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8 ++++++++
+>>>    1 file changed, 8 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> index 0debccbd6519..6076aff0a689 100644
+>>> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> @@ -100,6 +100,14 @@ properties:
+>>>        minimum: 0
+>>>        maximum: 0xffffffff
+>>>
+>>> +  mediatek,disable-single-burst:
+>>> +    $ref: /schemas/types.yaml#/definitions/flag
+>>> +    description:
+>>> +      Burst type setting. For some versions of the IP that do not
+>>> use
+>>> +      AHB bus, the burst type need to be switched to INCR.
+>>> +      If present, use INCR burst type.
+>>> +      If not present, use single burst type.
+>>> +
+>>>      mediatek,hs200-cmd-int-delay:
+>>>        $ref: /schemas/types.yaml#/definitions/uint32
+>>>        description:
+>>
+>>
+>>
 
-We likely need to collect more data on various scenarios=E2=80=94when
-CPUs are relatively idle and when all CPUs are busy=E2=80=94and
-determine the proper approach based on the data, which we
-currently lack :-)
-
->
-> If we have a pagefault and need to map a page that is still in
-> the compression queue (not compressed and stored in zram yet, e.g.
-> dut to scheduling latency + slow compression algorithm) then what
-> happens?
-
-This is happening now even without the patch?  Right now we are
-having 4 steps:
-1. add_to_swap: The folio is added to the swapcache.
-2. try_to_unmap: PTEs are converted to swap entries.
-3. pageout: The folio is written back.
-4. Swapcache is cleared.
-
-If a swap-in occurs between 2 and 4, doesn't that mean
-we've already encountered the case where we hit
-the swapcache for a folio undergoing compression?
-
-It seems we might have an opportunity to terminate
-compression if the request is still in the queue and
-compression hasn=E2=80=99t started for a folio yet? seems
-quite difficult to do?
-
-Thanks
-Barry
 
