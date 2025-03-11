@@ -4,196 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF0FC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 15:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506CFC28B2F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 15:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2CbuRr5uOqznDRhEOJutfqvfHUJ3x+ysoDYfgWJUqWo=; b=XhI/PZL448U5jg8GNz8LEQWL7A
-	AlV+UK9Ei07mmhKBq+T/jZc7iSU9dJrgr38WKI5Y5ezdY5WFNXSi4h50lyxh9YTRtn521yGuLlzsO
-	yY+z9+gPWRieNBmjxWdpLVGFjXuJzvtfnIZWa4O/JFEoUVUJL9lCjfJZcDQ19QRNHAvDUkEXoDmkb
-	SRTG1y1Q8kaOD1dJjjGSc2TgsF2op+lFcp66g4imHPj3QF/DzLuefbRpJGO3/6JwicfmDzKk7lxj0
-	MD94zcdI77tOiewrPK4t4sLrKEKYESQhxeDmBuuPhDRZMvKwKKmPG+3sDRieXEELWGjUrgRq2OW6b
-	Ik08FFfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gtRbDS6fDgM8XxC/AJXySQKuvpMlmaYYWC0kn/IkeIg=; b=AV5geiZ6MOLYxDnvkaVldLREN2
+	AmVZrUSouu/R6G9lB34ZGAomETAqAg5XeYSjNXlRW4AHrnUXp6a91RqwYi5bxmu59hDdpyRYGNAAf
+	qeZefwGiG6dHom7kl48b3ESzO9SMb20SfFn5Z5eW0ml1jshd8jEfTn6TcisdJNEBBRlFNlKGVWsia
+	9sF7+Kh0i/qNv8NIqjejE2byXKEXQb0wvju9987c33GHTWVB4xmd2N1zjkjS9bMvwLNlHyodYQ18m
+	gqKxghmaQIFbK1DsrA4MVRrFaOMirlTlxC8IEc62u9ZPbEsMX8VlU4v0eEDZ8psEe+DVwfUR6vir+
+	ajXZ20PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1h7-00000006B8m-1JZ6;
-	Tue, 11 Mar 2025 15:39:01 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1ts1wT-00000006DUk-2E0W;
+	Tue, 11 Mar 2025 15:54:53 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1du-00000006Acc-17vF;
-	Tue, 11 Mar 2025 15:35:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1741707342; x=1773243342;
-  h=date:from:to:cc:subject:message-id:references:
-   in-reply-to:mime-version;
-  bh=t3NcgmB8P5s8TL36glcMfuDDEIINp1d6znIgfHNAf4c=;
-  b=b0SWP0S2OcryKXfudoes2jCvQ+MnfFWa2ctYSOiJ4dXP3kELncx6Jk4r
-   yfnHAjFTVjMFyZfw18LuIrwdvLJqSxNrAsZuFpgvYP55lHgnLkolz0wq1
-   pD4BLlTKhNsmYXkdZaXnJDMA6C3qq1yUJgCuNW/HsFeUM3Gh4tHRA0AKT
-   YcGhb2kxY9hcqF8idaceEU1zf0AxyrkJmr/AtcAdrcnplr9IERA19kHUt
-   SwzhzxUiU0f0RHxaZssCfqUXQa+Ty3CP2xg0Z6W+mSC+PHHjSgU4wxaRv
-   OapXHxZsomr67Awx7ukkob4JOTOEzeVZJE4WrHeGLdvFr/CncPgB3TPp/
-   g==;
-X-CSE-ConnectionGUID: 0Pze97yqRF+O0jjfyoQCyA==
-X-CSE-MsgGUID: 38RDmxZbSkKkk3y9GXhoeQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="46665088"
-X-IronPort-AV: E=Sophos;i="6.14,239,1736841600"; 
-   d="scan'208";a="46665088"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2025 08:35:39 -0700
-X-CSE-ConnectionGUID: HnF7985UQCyFbhVmnyaybw==
-X-CSE-MsgGUID: Hdl+SZIRS5KFAY6SKDo3Dw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,239,1736841600"; 
-   d="scan'208";a="120301643"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2025 08:35:39 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Tue, 11 Mar 2025 08:35:37 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Tue, 11 Mar 2025 08:35:37 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 11 Mar 2025 08:35:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kG7l4ea5rPV4MOisu1JAgR2WK7X1dFSq+CNk2itgW6V+rCMgBXz6bmDWHKSCLP+0fVvZpSQBA1kmSlucKzhw74acYvjlo01M2TsGUpnZ9ElwxibS6PBw+L1ORtgDlRE1mZva5QpbPsiOYm+z9E8gLkvF58lIprvS014Ks//z0HYreEyfsM86b8J5HNIeR8O+iA3YCISS6hU26Cr7cd70yWGv83Sk+luDNuVJJrT3hieHtNy74stQs4fIkxu767WzmgDBC319nKwFZXjeVJ37gF224NHKk/OdM+hT6jz3vh38080umltWwWZk5GioHzUf/7mClGCkd256SRUrasab8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2CbuRr5uOqznDRhEOJutfqvfHUJ3x+ysoDYfgWJUqWo=;
- b=VbYD3bQOdypnazL59qLbyi7RqjP12T29p/pjI8NpUWODYZENyVdQB5FP92QlkvIuKxnHMZyiF68SmOGtoeuKqKysHQuEFSZgGHSMhSLNxVe2wtmTRQ8ZLQCjg5xKYVPB1Qku+7yEVIRzyhEOjqIks7DvVhXjm8Ys8ju5ycDZqXFTEaFhK7MT+gl1bcvV1WWIUuvPxDe6AsBegVl3fGtO3P27O5jOKodRuIcqnw8Dg+X2YkN45fKke4uEsZHZj4+xteCuPHGMHcumJ39UGimJWTNiAVMaBwm3UZLtDatZ8WGM/tr26pzqtcANm9in8v+HrOX2+bovTzORs7TP9FM0RQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com (2603:10b6:8:1b8::6) by
- BL1PR11MB5978.namprd11.prod.outlook.com (2603:10b6:208:385::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.26; Tue, 11 Mar
- 2025 15:35:31 +0000
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955]) by DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955%4]) with mapi id 15.20.8511.026; Tue, 11 Mar 2025
- 15:35:31 +0000
-Date: Tue, 11 Mar 2025 16:35:16 +0100
-From: Michal Kubiak <michal.kubiak@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Marcin Wojtas <marcin.s.wojtas@gmail.com>, Andrew Lunn
-	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
-	<daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, "John
- Fastabend" <john.fastabend@gmail.com>, Russell King <linux@armlinux.org.uk>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>, Masahisa Kojima
-	<kojima.masahisa@socionext.com>, Sunil Goutham <sgoutham@marvell.com>,
-	"Geetha sowjanya" <gakula@marvell.com>, Subbaraya Sundeep
-	<sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, Bharat Bhushan
-	<bbhushan2@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "K. Y.
- Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei
- Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>, Siddharth
- Vadapalli <s-vadapalli@ti.com>, Roger Quadros <rogerq@kernel.org>,
-	<netdev@vger.kernel.org>, <bpf@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-hyperv@vger.kernel.org>, <linux-omap@vger.kernel.org>
-Subject: Re: [PATCH net-next 0/7] net: xdp: Add missing metadata support for
- some xdp drvs
-Message-ID: <Z9BYNBaAGZbtbfa4@localhost.localdomain>
-References: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org>
-X-ClientProxiedBy: MI2P293CA0014.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:45::13) To DS0PR11MB8665.namprd11.prod.outlook.com
- (2603:10b6:8:1b8::6)
+	id 1ts1wQ-00000006DT8-34u0
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Mar 2025 15:54:51 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id B15E8210F4;
+	Tue, 11 Mar 2025 15:54:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1741708487; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=gtRbDS6fDgM8XxC/AJXySQKuvpMlmaYYWC0kn/IkeIg=;
+	b=BGoZODh98b6GhN3Bz2SpP/ZKwjqeurg03noBYn8Gctwq4S8uceZjTxlXC5lxNyRSowPPWu
+	FsF/N5qS6BciXPxaHIooDQdLnT7sSETAvN27PeFZxjpfO6TeyZatwDabYXWYOiOiPnOSNq
+	gsDCmYcCN4VFuBXQieJpP6iz/cbIy7E=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1741708487;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=gtRbDS6fDgM8XxC/AJXySQKuvpMlmaYYWC0kn/IkeIg=;
+	b=/2RlqKuG8buhgFxNjGATCt4+IrPiXxDTF9ghcLzNxss9u3SJFmzGKghROw7/HyPi4svMiE
+	rIRSxbQoH+g78ZAA==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=BGoZODh9;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b="/2RlqKuG"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1741708487; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=gtRbDS6fDgM8XxC/AJXySQKuvpMlmaYYWC0kn/IkeIg=;
+	b=BGoZODh98b6GhN3Bz2SpP/ZKwjqeurg03noBYn8Gctwq4S8uceZjTxlXC5lxNyRSowPPWu
+	FsF/N5qS6BciXPxaHIooDQdLnT7sSETAvN27PeFZxjpfO6TeyZatwDabYXWYOiOiPnOSNq
+	gsDCmYcCN4VFuBXQieJpP6iz/cbIy7E=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1741708487;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=gtRbDS6fDgM8XxC/AJXySQKuvpMlmaYYWC0kn/IkeIg=;
+	b=/2RlqKuG8buhgFxNjGATCt4+IrPiXxDTF9ghcLzNxss9u3SJFmzGKghROw7/HyPi4svMiE
+	rIRSxbQoH+g78ZAA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 22E68134A0;
+	Tue, 11 Mar 2025 15:54:47 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id P6cZB8dc0GdUdQAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:54:47 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: simona@ffwll.ch,
+	airlied@gmail.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	geert@linux-m68k.org,
+	tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v4 00/25] drm/dumb-buffers: Fix and improve buffer-size calculation
+Date: Tue, 11 Mar 2025 16:47:04 +0100
+Message-ID: <20250311155120.442633-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8665:EE_|BL1PR11MB5978:EE_
-X-MS-Office365-Filtering-Correlation-Id: 50fc82ca-0905-4a42-6cef-08dd60b25ba9
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CLjj6Dc6Ga1wF166lr+Ybdr3XbWq+F+An5HZgBHqa2Awfu5nPnome8zNFDQT?=
- =?us-ascii?Q?mzGviN9LJ6VdynCcEzclNFbX7Hce0ZQz4hNq1RA7KFr6Ak1JZbaf1dUGmQ/L?=
- =?us-ascii?Q?lzRRpMwjnvB5rvIIP79ioobXtBYpWcornETqkaBLH3YLtT6k5usKUfKRalrd?=
- =?us-ascii?Q?mhrlRPfHbEABCSfVdD1lhr48eGFKWorpSZA5ZjCyypsaF7gTbQphNy+w0/i4?=
- =?us-ascii?Q?6mFHWY1Aa2pdZxldOBbJ2L+33dyfc7qil+X2icEj7ZYkqo4QA/6qBqx8o3Z7?=
- =?us-ascii?Q?r86qSN+1wfPaIzb9tky4guf2GI2huL/dD4pJoy+Es922dq/TBiLm4KgMqAVe?=
- =?us-ascii?Q?jSeFq2qV3gRNS9LUO4V0pGGWpB87EazZwVJ4umV3y+nTs6T3cs0S1pRi6xiW?=
- =?us-ascii?Q?xRI3K913a7oFRcByGRdsGTUFl+wFsk+8UbHYl7mAmuTwIhDgv5txbfxunM0T?=
- =?us-ascii?Q?6D5aMQpa3RorVEJMRte87Po11wurbE3lh82YkmFClnCZPmy/3rH9f82EvOLK?=
- =?us-ascii?Q?pUrls4+YQsKCwaEn5OHkZNmuUVBDxLXN8aMRVveldtPP3/mJyDh8Nh+uqevL?=
- =?us-ascii?Q?cVrh538CDoQhz8NrHXS8t4VYsejicy+uc3ZUQqEYFXJVIti8nq17PrAHiYUA?=
- =?us-ascii?Q?w91YpkfM+7k9TMLCdNtimnysW3HbnLNIcoQFlg78YvEnhz4Wnc5n1jMgc+Ry?=
- =?us-ascii?Q?XPbL2LRIQx7KWZcrapBFStB3X2/7rcPFRBcEwSb2dF9mMESXilI5wDvbHOb/?=
- =?us-ascii?Q?BBoXoofnTeAOU/+zV0FxUNakOHbPfUO/P6ONUATMeXgHX3miqyLyqsgK54mt?=
- =?us-ascii?Q?xjzjnj+vgXxBjp5/ngqbhdVxHB5s34hlJcAtE0CJGOLVBNcNPLoSNn4LfDaS?=
- =?us-ascii?Q?1clBUo48e8BK+uVHWSBTeSpK9R7XPxsf6wJGl29cCxfEO1kAKdbkWf7E6ta5?=
- =?us-ascii?Q?9dAFDn8fODMy93W5Q4kwi3mCzefGq1uWcFCSlDRSO4kwZKqxKL1gzDBl5+BF?=
- =?us-ascii?Q?M5IDv4MowIW8T+Ympq+V73u0BwRLr5ak/9HQyDyv00sTZ1/2HYTHsHfX+zpC?=
- =?us-ascii?Q?BfdZy8qP8Rc8IyCF+cdbUtCdAptK638tD2LAAABBWVDobTxotMEPYX2cWNN+?=
- =?us-ascii?Q?HlFydg9kGBAa8DhFg/WDrsdrgMbJALeQ5vg76ZubGj/Y11GHr26edf14hZTp?=
- =?us-ascii?Q?LYwW4DQD4egjnYAQVv27rGq8Zp4Q45J4mlye33+LBF9QmX32qH2IaqhXx1Rc?=
- =?us-ascii?Q?6F935UVb8yKAa/lrs+DSFuz2euijAW787M9bJZxn2I3FddlTMBmtFcufrstE?=
- =?us-ascii?Q?GFU2X32UrBD516JrIpy/q+ksG2YZrCy8PU0eilmP3z7f2qb4p0cXBkgKc595?=
- =?us-ascii?Q?PBX8rxpOtqTtPOiZqT9uj4LxrSCE?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8665.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vBpvgWOrtZPOVNVdGUQ+xVVxVVwDjgfJpJF0qV0jq/kGB4V/jhJFNxlCVmdS?=
- =?us-ascii?Q?s00yWBO41gziaZClknqNmc0FCT2bmG7f8+Z7AgpoBrVzpiu1l+Pxus6WBRAY?=
- =?us-ascii?Q?+w0bWdvUzNNOAqB0vJWXEbBPFNqteQIf6aMpNxZF1ObSLV8jQwm6RpKO6yvh?=
- =?us-ascii?Q?BxBQXFYlupKoNutHmCU+KQ4cZt3I3VUpHFfMhgZ8AF358s6tLP1RMS5wJ0m0?=
- =?us-ascii?Q?cxqlR9ZXmYPQ4bud1V1eDo3Nxl9+Qa9UKbTjXSvnP/bHD2kDlVZP/PqVsuNb?=
- =?us-ascii?Q?SbBsAkYGzjW9i03qNGedRDPEP6h9yJF5OlOnn9785XEZYltIDXCsGAtFlmqn?=
- =?us-ascii?Q?FUyLtmcqB6PY0wChHv9bMkCodI+Oh6mQ5j18dNE3cqiSaYtqQB9YP/jgZ+6g?=
- =?us-ascii?Q?yJH6c3XB4ta+uFSv/2ihqoRWCTJJiMr/s0YYWLPo6LQuSnE3NUnV7tGW+LfJ?=
- =?us-ascii?Q?s618a0SnxDTFAQFccpx1mH9+AoELcembZp3GxJcfQICXWn7w9OJvwEI5obLs?=
- =?us-ascii?Q?Qt9b6w8x2KYMJuzeYI4m1Vsz5OwTzk5RleF3IrI4X1jrW0VZhFkkRgX3O0Mv?=
- =?us-ascii?Q?hoPINEZAqnRiwsQ2y3w+bKp69i6JawaNHcBUuY1iRYH2PJeUCgNiuQ4gCvtL?=
- =?us-ascii?Q?ISoedNxu6CkPLQ8XnHqhN5ZR7AK8s5dG8d0gfxvWfGnBGD2AOjYlBuYsKNzp?=
- =?us-ascii?Q?VRE+ycsv3kpfGh9KZZNoM3hms/eXVpeIidS/G+CWS091lUxB7N45D1bDmGM2?=
- =?us-ascii?Q?LNNSJ4nfe7zL8hjK4vQGEfadcTJak9rZZlCc3nT6r+W6+Q5vDxNL7aZpnY7e?=
- =?us-ascii?Q?LzeC963czubwD1GuLAO7JvNxLRc511YV0V21kj/WEBkxYYsOGR+o+33FQGKs?=
- =?us-ascii?Q?jmSmgyLuq7AIryrxxXXd4gni7tyWTaeT53RMnz0pi2/Sc8JJoTpygzOoQ/CN?=
- =?us-ascii?Q?XqiRUKMRo4OW5FxeBB3QsntrQvoecPm32EJwSS/RGYmQgSKRW54pFf/50yjL?=
- =?us-ascii?Q?uXYfVyEFxUePg6hnJMT5PYgGE/Gzt4w/dwiX08meWiMrHOWfqDVtb4Jin1zc?=
- =?us-ascii?Q?8h8vTCqiGw0IruR2VL936oygCm8FsPm5U+SkbGmQNV7eKo8tcTo0EGAAj1Jf?=
- =?us-ascii?Q?9xgwh06QlPMmsVD3kboDYsiONr/FUBoRRHZb348JFPZZ3CvORt/Z7TK1OOni?=
- =?us-ascii?Q?Cg52FmCFdXLncTlNAxQ73GbMhjfHLK9RdSe3fMDAKrAGA5TkIZuaaDTOA39T?=
- =?us-ascii?Q?jPgM16PMLap2qAYHLMET+KOeo7Zamw3LNSZjhLmVppyanI77ijmJNtp5Rxy/?=
- =?us-ascii?Q?f08gpIfuJZUTVC9BqjcX8i4Qj4tLvDe2LoyUglC7cSQNfdhTPsHnJWF1s8zi?=
- =?us-ascii?Q?xYyHCCnI+SESbOEkahFYCBLyTk/bzaKRaG9vH6c8dx563nW/gOmcGoJHXw/R?=
- =?us-ascii?Q?DLzg+4PLZTlE0Z2KGJYoFlKvFuFrvKGkJsRyLYbZberuBF58BxW7Au5EKF4y?=
- =?us-ascii?Q?hl7ytWdJZxOobwwDpn9P2vn6oPEZ0wCRk56vkOZ9rwq/b3BUbiDFkYonpSfv?=
- =?us-ascii?Q?5rs/REI289piV0kqaadrrtQ83ianz0A91sjlV2Wu7sL4Smcz7iAWtF/rS77l?=
- =?us-ascii?Q?WA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 50fc82ca-0905-4a42-6cef-08dd60b25ba9
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8665.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Mar 2025 15:35:31.6183
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wwj5tEVl74AeBerd+4hB7Pg9UDDSwEsb1JBDPdW8JnpX3SKqTRz8RxtBbY8uvCQaXARzyav2CkSSoakp0Hj28A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5978
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Queue-Id: B15E8210F4
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-2.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
+	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:mid,suse.de:dkim];
+	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from]
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_083542_337074_B90E7C66 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20250311_085450_923042_132489C3 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -208,49 +155,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 11, 2025 at 01:18:32PM +0100, Lorenzo Bianconi wrote:
-> Introduce missing metadata support for some xdp drivers setting metadata
-> size building the skb from xdp_buff.
-> Please note most of the drivers are just compile tested.
-> 
-> ---
-> Lorenzo Bianconi (7):
->       net: mvneta: Add metadata support for xdp mode
->       net: mvpp2: Add metadata support for xdp mode
->       net: netsec: Add metadata support for xdp mode
->       net: octeontx2: Add metadata support for xdp mode
->       net: ethernet: mediatek: Add metadata support for xdp mode
->       net: mana: Add metadata support for xdp mode
->       net: ti: cpsw: Add metadata support for xdp mode
-> 
->  drivers/net/ethernet/marvell/mvneta.c                  |  5 ++++-
->  drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c        |  8 ++++++--
->  drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c | 13 +++++++++----
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c            |  7 +++++--
->  drivers/net/ethernet/microsoft/mana/mana_bpf.c         |  2 +-
->  drivers/net/ethernet/microsoft/mana/mana_en.c          |  4 ++++
->  drivers/net/ethernet/socionext/netsec.c                |  7 +++++--
->  drivers/net/ethernet/ti/cpsw.c                         |  6 +++++-
->  drivers/net/ethernet/ti/cpsw_new.c                     |  6 +++++-
->  9 files changed, 44 insertions(+), 14 deletions(-)
-> ---
-> base-commit: 8ef890df4031121a94407c84659125cbccd3fdbe
-> change-id: 20250310-mvneta-xdp-meta-3e0da8ef4498
-> 
-> Best regards,
-> -- 
-> Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> 
+Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
+plus various hardware-specific alignments. The calculation of these
+values is inconsistent and duplicated among drivers. The results for
+formats with bpp < 8 are sometimes incorrect.
 
-As far as I checked, all modified drivers use the Page Pool and set the XDP
-headroom. So, a necessary space for metadata seems to be assured for all
-of the drivers.
-In summary, the series looks OK.
+This series fixes this for most drivers. Default scanline pitch and
+buffer size are now calculated with the existing 4CC helpers. There is
+a new helper drm_mode_size_dumb() that calculates scanline pitch and
+buffer size according to driver requirements.
 
-Thanks,
-Michal
+The series fixes the common GEM implementations for DMA, SHMEM and
+VRAM. It further changes most implementations of dumb_create to use
+the new helper. A small number of drivers has more complicated
+calculations and will be updated by a later patches.
 
-For the series:
-Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
+v4:
+- improve UAPI documentation
+- document bpp special cases
+- use drm_warn_once()
+- add TODO lists
+- armada: fix pitch alignment
+v3:
+- document UAPI semantics
+- fall back to bpp-based allocation for unknown color modes
+- cleanups
+v2:
+- rewrite series
+- convert many individual drivers besides the shared GEM helpers
+
+Thomas Zimmermann (25):
+  drm/dumb-buffers: Sanitize output on errors
+  drm/dumb-buffers: Provide helper to set pitch and size
+  drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/renesas/rcar-du: Compute dumb-buffer sizes with
+    drm_mode_size_dumb()
+  drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
+  drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+
+ Documentation/gpu/todo.rst                    |  28 +++
+ drivers/gpu/drm/armada/armada_gem.c           |  16 +-
+ drivers/gpu/drm/drm_dumb_buffers.c            | 172 ++++++++++++++++--
+ drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
+ drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
+ drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
+ drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
+ drivers/gpu/drm/gma500/gem.c                  |  21 +--
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
+ drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
+ drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
+ drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
+ drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
+ drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
+ drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
+ drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
+ drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   7 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
+ drivers/gpu/drm/tegra/gem.c                   |   8 +-
+ drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
+ drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
+ drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
+ drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
+ include/drm/drm_dumb_buffers.h                |  14 ++
+ include/drm/drm_gem_vram_helper.h             |   6 -
+ include/uapi/drm/drm_mode.h                   |  50 ++++-
+ 28 files changed, 449 insertions(+), 228 deletions(-)
+ create mode 100644 include/drm/drm_dumb_buffers.h
+
+-- 
+2.48.1
+
 
