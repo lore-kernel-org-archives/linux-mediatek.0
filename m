@@ -4,192 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5ABCC282DE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 02:53:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C50C28B2E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 05:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ecrAQ0g+Q+kzOINfhj9FoHm6E+mIMSLrB4OWo0S6es=; b=fOezaA+wVg+1bLQxUbQ4B0mujq
-	aE5Z2OOFoyfnofeSSh2gBay3qvwClY2RluMiQH/18x/iDKqlcTVWRhAOkwuGLd8QN3z5timu6e//S
-	AZLqXDWzpTuu6FM6r4hPGtfhMhURayVjU+a6maOkfN4OeS57bN+zGejOGIcpjn1JhGZWOR9q0/dp1
-	mzqeu6aD9XXaJCyPPUT6Ps+hs9YDDwobvauJ7cJfhvXoP9SDxo3Gxclee5bR2+hYkku3zyLJlEZkD
-	+rlTHhDRB2wPz0EboKyK2bY+xdM/+XCoERGTwaat7pCDZwPurDwpIC3r+9pLCTOqEgryG/6R/j+0K
-	pEEuYwOg==;
+	bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=; b=4RQs56Awm64KPNnR9c3B8ZXQfo
+	vKRF8I0yh4WxsPGZllEDPEBoNWzMc//LgFYmHKQ6S9pFtXaIto9Rhc3zpEsykZhcu9HqDz6KfzzBU
+	DhczHd7VMgicIy0VTXXw7M7VTG8M8BjYGEzDUv66vYYJD4qFCgp0urd1sZs7ngSZR4T713uPbS6Qv
+	f4J5yI6ktdYfpZvO4o6qY3j2FxUfwzXgcKk/jb0XizbFkDKW9oafJ8Z8UVTvZMBKFOHkSQQEcpXDO
+	YlqDRTIKh24mlUq8yWBzklXhGB9DBzEGC2NS5uWCL3G3lWdlHAxJWz5iZqagoeYuZtXmqsA5RkALD
+	Mnbk/Z9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trpjo-00000004SyK-2j4I;
-	Tue, 11 Mar 2025 02:53:00 +0000
-Received: from mo-csw1802.securemx.jp ([210.130.202.152] helo=mo-csw.securemx.jp)
+	id 1trrjP-00000004cPx-2yGN;
+	Tue, 11 Mar 2025 05:00:43 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trpjj-00000004Swt-1pA7;
-	Tue, 11 Mar 2025 02:52:59 +0000
-DKIM-Signature: v=1;a=rsa-sha256;c=relaxed/simple;d=toshiba.co.jp;h=From:To:CC
-	:Subject:Date:Message-ID:References:In-Reply-To:Content-Type:
-	Content-Transfer-Encoding:MIME-Version;i=nobuhiro1.iwamatsu@toshiba.co.jp;s=
-	key3.smx;t=1741661511;x=1742871111;bh=kOyMXra9tx1tiz15mH5EirzFVKukx7gMLdH5u3d
-	YsNE=;b=CepyYV5+aTHQ8hfuYC2XupdKKlftNwn5kYKg5jWfqwdBBPXHSrLViwwO1TLUp6Yox4iv2
-	+4TZtv7DBDPMi/ycEPtGChyYhk1QVGhvxSPti8KUuT9xD4ahs698RjzddLIFeA84OKCq0iujxUM2m
-	0yKM0RqV9ov/y3H9jjYKSDYWSTca7PzlrJjGDWOC1HCP/UrBSi1f/+uH4wNz2KByTlEI9PqlT7YNf
-	lqlBUqrLrqrglhiBpkenVdG7JcLaXH/B6zzwg8z2Qf0avE6lexxqECPWnuXOujb/DLeDWBHUjJbpA
-	Xm2lbVll4qqUD+75dSVT+J4tE1hJqOcME3SNvoSNIw==;
-Received: by mo-csw.securemx.jp (mx-mo-csw1802) id 52B2pmaD2906371; Tue, 11 Mar 2025 11:51:48 +0900
-X-Iguazu-Qid: 2yAbuzQy1XRZSQHHOT
-X-Iguazu-QSIG: v=2; s=0; t=1741661507; q=2yAbuzQy1XRZSQHHOT; m=nSx6m3gyVmsSceJkTgkJU4th1Rq2yCpeQUqzRA80AgI=
-Received: from imx12-a.toshiba.co.jp ([38.106.60.135])
-	by relay.securemx.jp (mx-mr1802) id 52B2pfFw1419632
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Tue, 11 Mar 2025 11:51:43 +0900
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eE5fK+hYesmD2Ef2aPUuVw7upfU5gRF/P2qMsmxJhSGE7Bwr3w1XcF85N66SXBXhgBj++Fwe+XZYA2Vd8AXZ6kWG/uEaw5aLwT0jhKbeDkVWEGFD8Xr1klqpgGfZS+M7l0LJs1BHNb25lZRluPrZETa73oB7rchrxU2KrVzdoZzf3q+uEfu+3C4yUc+tblnmSGVg/zws68f3NCJl4jYr+30VmyJCW67/yqUFdjCM4PWY6vlQkj+ceYleak7ub9dke9UZMWH/2NnZ5GfNOt1JAAta4M5XQBEc1XHAGtL/Dug7ZmYxcyM73tdu083NjOAmpGbyQCvG0s7KYuqWL6aVhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/ecrAQ0g+Q+kzOINfhj9FoHm6E+mIMSLrB4OWo0S6es=;
- b=ZaKxlW0W5HH54bPyjX1EVqV+sotu2YWU6cGXl4joa3+8hSPaZy2PWgaMR953Ui2WZkRz28UO76XiMdHqYizf8clrDlLRU28OVFfydH77Z43u/AGwSdOdtzEdJpZlMLEbVKwW7cwJzpDSXFHikt1RkB7Wi2/qWxXLiVMhu96Ib+tQSdWAe/nk1Z1DmPlHuR5PwAKiMK482Cu7FavRhiZ84btQ1ibJY9BTfC7T4VsCg72X4U3gkMp0F91hqzahKTqvcXzIJmgt9cMfX/k+TZILNtTItU8p/IArk01bb7mvkLIHn3jA3ureYPOAWBRZQUZ+C+SR4qdXAr1tMkCqWhOTiw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=toshiba.co.jp; dmarc=pass action=none
- header.from=toshiba.co.jp; dkim=pass header.d=toshiba.co.jp; arc=none
-From: <nobuhiro1.iwamatsu@toshiba.co.jp>
-To: <prabhakar.csengg@gmail.com>, <andrew+netdev@lunn.ch>,
-        <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-        <pabeni@redhat.com>, <robh@kernel.org>, <krzk+dt@kernel.org>,
-        <conor+dt@kernel.org>, <neil.armstrong@linaro.org>,
-        <khilman@baylibre.com>, <jbrunet@baylibre.com>,
-        <martin.blumenstingl@googlemail.com>, <shawnguo@kernel.org>,
-        <s.hauer@pengutronix.de>, <kernel@pengutronix.de>,
-        <festevam@gmail.com>, <heiko@sntech.de>, <mcoquelin.stm32@gmail.com>,
-        <alexandre.torgue@foss.st.com>, <matthias.bgg@gmail.com>,
-        <angelogioacchino.delregno@collabora.com>,
-        <vineetha.g.jaya.kumaran@intel.com>, <biao.huang@mediatek.com>,
-        <xiaoning.wang@nxp.com>, <linux-imx@nxp.com>,
-        <david.wu@rock-chips.com>, <christophe.roullier@foss.st.com>,
-        <rmk+kernel@armlinux.org.uk>, <netdev@vger.kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
-        <linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-mediatek@lists.infradead.org>,
-        <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Subject: RE: [PATCH net-next] dt-bindings: net: Define interrupt constraints
- for DWMAC vendor bindings
-Thread-Topic: [PATCH net-next] dt-bindings: net: Define interrupt constraints
- for DWMAC vendor bindings
-Thread-Index: AQHbkIrfy9b5BBS/D0ihD4P7fHbQtbNtPxyg
-Date: Tue, 11 Mar 2025 02:51:37 +0000
-X-TSB-HOP2: ON
-Message-ID: <TY7PR01MB148181E9FA1336D0D3CE9275A92D12@TY7PR01MB14818.jpnprd01.prod.outlook.com>
-References: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-In-Reply-To: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Accept-Language: ja-JP, en-US
-Content-Language: ja-JP
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=toshiba.co.jp;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY7PR01MB14818:EE_|TY3PR01MB11931:EE_
-x-ms-office365-filtering-correlation-id: 301f50ff-8626-44e8-ccfa-08dd6047a45f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|38070700018|921020|95630200002;
-x-microsoft-antispam-message-info: =?iso-2022-jp?B?Mkt5WjdHa2dPa0tLNTZYdThxNzJvVjhlQ1MzQ1dTek00ajU3aHI5d0V3?=
- =?iso-2022-jp?B?ZHFNakxuK2l1bzJ3blVrV2pCTmU5Z1NHZHJlSFlNV0Q2a21lK3QxZ0s3?=
- =?iso-2022-jp?B?OE54cWFiTmtmYklIc0FFSWVOK1cwWWhrWkFwcHNzT1NKQnJwa08wcVRy?=
- =?iso-2022-jp?B?bHZuT2hXbEFFb3FGK2FBT0YxQkQ1dmFNWlZ2N0FYVmptWGVZdHN2S0hO?=
- =?iso-2022-jp?B?aEI4UXNvaWQ4ejZnRndIV0F2OUt0S1hHTlB0ZWx4SVIxZVR4NzNiTExE?=
- =?iso-2022-jp?B?RzErRUhzVU1UQmNXKzRxMlZBeTNZQlUzU3psWWo1NElCY0IwTGZMWGxs?=
- =?iso-2022-jp?B?VUcxRWN4NnRMV1pxQ283cVE5N3dWS2dKa1NuYVlnU2JUZFNJUTBCRVN1?=
- =?iso-2022-jp?B?VzVQSzhjUmhydEVkcXNQU2NaUk9Hb0ZMVTZVUUlGa2UrcUt6MTNZTHJ6?=
- =?iso-2022-jp?B?ZFBxZHF6bnVLbSt0TkhDR0lVd3lGSTk3Rll2dTNkZlFlekRWbkxVUU1X?=
- =?iso-2022-jp?B?VlZNeWZsTDBsRWFqMmtXM0NwY0huYVFEL2NJTmxXWkc1SXMzbVViMExO?=
- =?iso-2022-jp?B?bHQ5UTQwRkNZQlpOZTFaOVpGM3IwV2txVGRUYWJEVm95Z3oxMUlReENj?=
- =?iso-2022-jp?B?Y3V1QXN2cnB4aGYvYVAxdFBPVkxITUxZQjJOZDRtU25YZzAvWVJiR2xD?=
- =?iso-2022-jp?B?QnRZMzBRWTVma3JFVFZFcXdoWkJqSzRjNmkvaU5DSFFTN1Z3S3Q1N080?=
- =?iso-2022-jp?B?Zm85SCtZdXo1Rk1wc1hhbmpPcEFtdVdBVXBNREtQMGdWTWJxeXdwVndL?=
- =?iso-2022-jp?B?SEltbG9vaU9DSGVlN2lSTVo3RmlBTklOWnFGRFlWRXVtS0JhSU5kUnpN?=
- =?iso-2022-jp?B?ejc0MUh6NVBmSHdMUEZleUw5bTBNeVkrbFRudGgzVnBrZEZZbWhBVzFs?=
- =?iso-2022-jp?B?YnBkbHptbmp1ZEpVVDI4RjgyQzQ5K0U4N0ZnWjJyS2haWUpJYTRXN0Uy?=
- =?iso-2022-jp?B?MjlEZ1A5Q1I1c3VJU3oxQWlLYnFjQUVjcHBlZER4ZFNZSkd0cTE1Q1FK?=
- =?iso-2022-jp?B?ajF4elNSYWlBYmNwa29ieEdoNjVFU2FwNUlUeDhuejZRa2hiTzdkbkVX?=
- =?iso-2022-jp?B?bUxDeS9XUFlURytGSWM1Uis3dXhsTzV6TE9BNEdSRmJiWFh0cTZkekx1?=
- =?iso-2022-jp?B?dlNPbUVEZU9ibTFKU1FBeWViVEZlMStnSHNqNkRjRVRiYVpteEhWcGMr?=
- =?iso-2022-jp?B?VmpTWTdaU2RFbGN4dTFuNFcyM2lwQ2pLYVJmd2NPL0oxd2FLVWlERUhC?=
- =?iso-2022-jp?B?YmxiUEIrUlM2OWpJN2lTV2MzUGY1dHhPVVd4VFFReTNYc2Q1ak8xdjg3?=
- =?iso-2022-jp?B?SWdwNlZlVVhnZFpMVzNaNTFKc2ZUYkVrdWlHUmFRKzlsK3U3bkxwRWdy?=
- =?iso-2022-jp?B?emFyV3Z5cEY2a25wQ2lKSGF3MjhpaEhBbVpPUncrT3RKYU1WWlBObzZl?=
- =?iso-2022-jp?B?S1dYVUgrcVdMbGVKUW9WcDlzUm9RekdyWStia1doUVNhNTR6VnZRYmx3?=
- =?iso-2022-jp?B?UmE1aXhqd3NOOWo4Z0pnRjN2bTNRNmsrZUFOY0hjU0lsbEN6MHM0SVUx?=
- =?iso-2022-jp?B?byt3R0FHdmxIRzE3U1g1dVBzOStzYUVVUVVmaUVRa0VPd3RRK1loZXVa?=
- =?iso-2022-jp?B?L2QvMmlZejBXcUx2OXJnODZvS1hSeklYVy93eUpYTldxS2NxcVl2bFFy?=
- =?iso-2022-jp?B?emJjRDNMeEEvTVdBc3pjT1dlRm8rS3FubHdROG9PUDFWVnkrWGpNMWc4?=
- =?iso-2022-jp?B?OGdOWHIxVk8zV29Fa2xuKzk0OFp4QVIwMGZnSldJNm44dDhOS2dHcW1E?=
- =?iso-2022-jp?B?SHl6NkI1NzNySkx2dzliRVdtblVydTNtbnpmRzZNU2FKTDJVb3AyaXFz?=
- =?iso-2022-jp?B?RUM1ai91OUk3dUZUL290TnYzV2pEbGZOaUh3d1pHUkJ2bTNta2hWMllp?=
- =?iso-2022-jp?B?M1Bzb1J1Sy9EREFnRWFaaEhHblpRZFZuUzdlc1lMb3ZseCtPc3l5cEJx?=
- =?iso-2022-jp?B?bnlSRlFVcVNWblNvRG45RXl5T1p5V1A2cWw5MW96dlZlSnFZNHF0WkYx?=
- =?iso-2022-jp?B?RzlJWTNEMWZobDBFRlFLNG5DV3lOL1VmcURIeTlGOU96bVpUWXlSd1N3?=
- =?iso-2022-jp?B?RHJJPQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:ja;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7PR01MB14818.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018)(921020)(95630200002);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-2022-jp?B?NmthQTJyT003Y3ZFS1BIckwwTVJJRWtYZXovVytBUXU1N1FnVDRlZWow?=
- =?iso-2022-jp?B?enUyTHRkSFppeVFORkE2blBLWUNNUTlkNWRSM1I2TFMxajZiVXFTc0hl?=
- =?iso-2022-jp?B?N3htYnMzTEduRmdpQ21VQkQvUzFHV3Y1TS9aQ1ZuVld6Z1U0WVRadTcr?=
- =?iso-2022-jp?B?QTZhVS8wOFc5bStTY2NXb0ZQQjJZSXJkNW9MaGs3RXBiOUtBU2pnd01z?=
- =?iso-2022-jp?B?NzJFMndJcXpTTlBRWnUrbHRweG5IN0dCR3Q2VS9jOVhDU0lhSUNIamVv?=
- =?iso-2022-jp?B?R3dGWVE3UllPMTR4U05aK2FUS3E3MVVqKzdTWlp0V1ZsbTNOR0pVZWZ4?=
- =?iso-2022-jp?B?UGl4d0RNS0tqdDdwakRCMXdtZERrbDBIOXpvNDBKTTVsaDc0cG9Jam1h?=
- =?iso-2022-jp?B?UlhVMzBRVmFmcnU2aXhnMktIVkVvNjc3WGtyUGFZaG5zLzNIakhYUHZt?=
- =?iso-2022-jp?B?SkZQN3ZUYnNMWEU0LzV1WExkcjMySEtjRUpOUTZWcjZxRzJsK0dtZFRO?=
- =?iso-2022-jp?B?enFVblZHVjlqTmJteGFLeDYyZzkzMkY2RjcrK3N4SnJoRVhjUkk1bUIv?=
- =?iso-2022-jp?B?bU0zMXRVS2VpUHdlalE2ZWw5TGlESVJiQktoY2JIRkNlRXIzWFBJemQz?=
- =?iso-2022-jp?B?T2Q1SDBDZDEwemkrcmgvaHVPSXhFOUxuZGJzM3luTjVGZTZaMzhQS1oy?=
- =?iso-2022-jp?B?YlZOL2p3UVI1VHhiV2J4U05Ja2Q5YXd5V1lMVUxhMktrK0hscjJWNity?=
- =?iso-2022-jp?B?S3dCY0RtT2FuVzlEWFpXL1cvazFCelV5QW8rWXREMlUrUm1YT0ZsbmFR?=
- =?iso-2022-jp?B?Y2EyZlJGNGVySTA2dyt4ZDd6QlA0STZIVi9LNUdTekZ6VVQ4b2pXRnZN?=
- =?iso-2022-jp?B?NHdFeVF2YkZaWW1sVjFlWE92ZjVaVkpVdERhVWpUS0NHdGg3Q1JGaXBH?=
- =?iso-2022-jp?B?dy9HUWFKeHQxY1dQYmpwczNYVmZuZitJODJ2UjFnU0JNVTJDdjd6N1ZS?=
- =?iso-2022-jp?B?QzhqQVNiM2ZaUGZlUVF3MVZBeWQ4YTNKWFVJY001Wmt3WnhGMm8zemlt?=
- =?iso-2022-jp?B?K1VkakdGWWx3cVZtYzNzTWxjaHhaOHdXL2JnOTF1U3JJRklpMDBCRVh0?=
- =?iso-2022-jp?B?WDZuN09EMzc2YnJ0S2U0WEtHeXJsNk95V1NrTVlRa2Q0aXp5WVZ4TjNh?=
- =?iso-2022-jp?B?QjVGL0tudGdoUldscVRCV1dtSEVyay9NbUY1RjBiaW5GWVBMdW1adXFU?=
- =?iso-2022-jp?B?Nml4UTJyQlFKQ2NLUzljOThrUW0wRzJJb1djNDBoUWFGb3BqQ2pUNGV3?=
- =?iso-2022-jp?B?UG9aMXI0eXl6TVpUUjJkcy9DQWw0V0Y2TXV4VXZ3azZkaVoyL3lwTEp3?=
- =?iso-2022-jp?B?SVNlODR5R2FYNG9RQ2xPL1VlcG8zb05xSjFNWjcxcmg4RUlBL3BqR2Ju?=
- =?iso-2022-jp?B?cXhrcDNmUWZDWU9vZEpJOWtsTHJTV2Zrd2ZjUjg3UzhxTmNpZW5HMGxE?=
- =?iso-2022-jp?B?ZGozYnJJcXJCWGpiQldYVWVqeWRSK2tJT2psMDFvSUpaSG9teDZqS3pE?=
- =?iso-2022-jp?B?WVhiYmJUWG5ZZGNrcDlSanl2NjdiMVNpSXV1VlR1aEZqbmRaWGowcVBI?=
- =?iso-2022-jp?B?OU5wQ2htbUZtdWJPekdvNlUvcTBELzJTNGZzUUEzUW1VZmJ2SVV3RXU1?=
- =?iso-2022-jp?B?UGVPVi91QzdROUU2ZVc1MlhUZDhLdDE5N1RzZTJqRzJVbG9Ba3MvSjZn?=
- =?iso-2022-jp?B?Vm1reGd5TmlVcmVreW5JYW55NEU0Y1FRRHhoQ25JVXlYUzV1emRKNEFT?=
- =?iso-2022-jp?B?OVpSUmJaeWo1bmUyblRqTjRscFovRnJVVStZTm5kc3ErZ04xTEhJL3Jh?=
- =?iso-2022-jp?B?Q0g5bEU5WUdVc3hpb0dmdExMdVYxMCtsTk1XYXFJcVFidmkzbnN6MzBH?=
- =?iso-2022-jp?B?MjhaT1F4OTZpWkY2emY5MHZLMDEzOThtU0JhQ1RqL1paN2tOTUJ6NEw3?=
- =?iso-2022-jp?B?eUVCVzRLUEhwTWJGQ1I1clVWMjR6T0NlSTdJTmkzT1IwbVNPaFBUM2cz?=
- =?iso-2022-jp?B?OWJtdVhzcGZjbys0NzJSM1RGdVpVUXNKeWN1eWM4SlJHblVEZXViVDk0?=
- =?iso-2022-jp?B?VzZRZWhTeUtrRkFtZ2JTdHl5YmJIbU5aN3pWRmRvQWRhVjd0aXpubGU0?=
- =?iso-2022-jp?B?L242OUMvWVhPWGlwTGVudkNpVWREUDg5ZFJxazNqeWZKaVRJckN1VzlQ?=
- =?iso-2022-jp?B?SzN5UlNEK2NBTVh5Y3ltSS9abUhZMDQyYmZ0REhTS284TWFML09uUkZV?=
- =?iso-2022-jp?B?aWtOdFgwd1ZoZmljWDFNYkJST0lGRHArMUE9PQ==?=
-Content-Type: text/plain; charset="iso-2022-jp"
-Content-Transfer-Encoding: quoted-printable
+	id 1trrhK-00000004cEo-3Ows
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Mar 2025 04:58:36 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-223a7065ff8so20983665ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Mar 2025 21:58:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1741669114; x=1742273914; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=;
+        b=lDy0O0RAaUZYGsXlvWTL8C0XyGqrVSTtHCU/QRUQmZDF3lubpIiOTbsnxy1T6DgM++
+         Z2Z62GgY2I8JQr4pH1ZzKPAe05kKvub4LMicTL01lzZGme6uigQjNyDJYlHHpHMKBVLx
+         IiB8Ra3gGTvQxGPgVQflAbvkQC1E5osNTd/eA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741669114; x=1742273914;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8USPBO/MC/ax4XcIyiJLB9/BI0M0mqSA7MMjrt59Uto=;
+        b=FY06gh3eIwnZOyrzKC0iksK7tONEs69R8W1Q5CjWPWBVWyIMsNR9UTP/otQw+RYUo3
+         1+BupYlZ3J31k98Z5PpnRqus7fV8TPzgBK42De2p/9uK93FF1EhEUT3spjaX8dcM6wQT
+         kSmSv25FJEp46WaoCGQdAqebpIBSU2ui2YfyWFpsgT0tn+O+sl1yfxBHsoUI7emAFcdL
+         +qqbglfKaXSL8fQkdf6xYrrmBmHJgPYopeob8BvLb+1z9CWupebQ99J/eWJ2M8fQZ7f9
+         1hOHS2HglDhRDXjBRrRcgNmSm2wQ/DziTcsZpyUYE2B5Ru0QKJtJIcMPpeqXWg8Dfl3l
+         STEg==
+X-Forwarded-Encrypted: i=1; AJvYcCVwUI2iX6i1MiQxrvpW2P2gsActhTWZ2fm3zXaPTRinjq9U30q0vGBkjW78yMZSQ4nzWHcpmgIpBbnO7pSHnA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwAOOTanhTVCdc/DJ85ji4YoGEFqg/tWsJdgrFtBbuhX90DIf15
+	omDtbrWenfCZxr7FTpIb8SzdIkm4XrkD29bPElCqlrfLCA17kBXXxOLrMuZ9zA==
+X-Gm-Gg: ASbGncse6RIAGqrNy0CJZTq7tAkA8+6cvFiAidKy7oyGeeYxM99hxkoJK4C55uvXCU8
+	QwkNdfeURhhEmEAUVONIp1Pi55zdAIN+N0/iLd/Soc8QRMyBoqD+kHPwor4yduq30qMfEvh5Fnw
+	g4wUTqjhC/35GimGJDB43ssB5NteGnM+GBGZpIJjeN53IclBSuYkha1St6tU+DnEqALvYYXD1+e
+	PrIu/iwf0NuZbab7uHCzlQx8V1rUWAzEf3wLGCdQbw0Ov7iR45ijAmysCjiJx8etGRkXIAYY1YH
+	c/hpGywF9r1SHy1CiXFtMZc3hzDcQ/Hor5pFYyAACkMVa1UHfAwIYKF4f7I=
+X-Google-Smtp-Source: AGHT+IEy+/UJdnWSvGMFpDegWU6yxUJzFshmjVJEwVUQ1vPxzmyvb0Te8hk0DkXqfdh84yZ0kk8jEg==
+X-Received: by 2002:a05:6a00:b84:b0:736:3d7c:236c with SMTP id d2e1a72fcca58-736aaa00c36mr22819900b3a.14.1741669113611;
+        Mon, 10 Mar 2025 21:58:33 -0700 (PDT)
+Received: from google.com ([2401:fa00:8f:203:cce8:82e2:587d:db6a])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af281287d9esm8542757a12.75.2025.03.10.21.58.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Mar 2025 21:58:33 -0700 (PDT)
+Date: Tue, 11 Mar 2025 13:58:24 +0900
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+Cc: Nhat Pham <nphamcs@gmail.com>, Barry Song <21cnbao@gmail.com>, 
+	Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>, 
+	Sergey Senozhatsky <senozhatsky@chromium.org>, Vishal Verma <vishal.l.verma@intel.com>, 
+	Dan Williams <dan.j.williams@intel.com>, Dave Jiang <dave.jiang@intel.com>, 
+	Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris Li <chrisl@kernel.org>, 
+	Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying" <ying.huang@intel.com>, 
+	Kairui Song <kasong@tencent.com>, Dan Schatzberg <schatzberg.dan@gmail.com>, 
+	Al Viro <viro@zeniv.linux.org.uk>, linux-kernel@vger.kernel.org, linux-block@vger.kernel.org, 
+	nvdimm@lists.linux.dev, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
+	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
+	James Hsu <james.hsu@mediatek.com>
+Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from
+ kswapd
+Message-ID: <dubgo2s3xafoitc2olyjqmkmroiowxbpbswefhdioaeupxoqs2@z3s4uuvojvyu>
+References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
+ <CAKEwX=NfKrisQL-DBcNxBwK2ErK-u=MSzHNpETcuWWNBh9s9Bg@mail.gmail.com>
+ <CAGsJ_4ysL1xV=902oNM3vBfianF6F_iqDgyck6DGzFrZCtOprw@mail.gmail.com>
 MIME-Version: 1.0
-X-OriginatorOrg: toshiba.co.jp
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY7PR01MB14818.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 301f50ff-8626-44e8-ccfa-08dd6047a45f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2025 02:51:37.2972
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: f109924e-fb71-4ba0-b2cc-65dcdf6fbe4f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: LJkWU0SXAJ01J31i0RVe49Fed6AkGM9zbgO1L1qUvXxW3KzKbnYQDJhBuoLtounV8zRx5hvnGNf3wSG7lFypCehKjCiTG9mxh4wa23DhFQkjIu9bdqnKnJYzLRy3v+xT
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY3PR01MB11931
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGsJ_4ysL1xV=902oNM3vBfianF6F_iqDgyck6DGzFrZCtOprw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_195256_136423_9BF0B7FE 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20250310_215834_879583_A2BFFA7D 
+X-CRM114-Status: GOOD (  21.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -204,81 +110,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On (25/03/08 18:41), Barry Song wrote:
+> On Sat, Mar 8, 2025 at 12:03 PM Nhat Pham <nphamcs@gmail.com> wrote:
+> >
+> > On Fri, Mar 7, 2025 at 4:02 AM Qun-Wei Lin <qun-wei.lin@mediatek.com> wrote:
+> > >
+> > > This patch series introduces a new mechanism called kcompressd to
+> > > improve the efficiency of memory reclaiming in the operating system. The
+> > > main goal is to separate the tasks of page scanning and page compression
+> > > into distinct processes or threads, thereby reducing the load on the
+> > > kswapd thread and enhancing overall system performance under high memory
+> > > pressure conditions.
+> >
+> > Please excuse my ignorance, but from your cover letter I still don't
+> > quite get what is the problem here? And how would decouple compression
+> > and scanning help?
+> 
+> My understanding is as follows:
+> 
+> When kswapd attempts to reclaim M anonymous folios and N file folios,
+> the process involves the following steps:
+> 
+> * t1: Time to scan and unmap anonymous folios
+> * t2: Time to compress anonymous folios
+> * t3: Time to reclaim file folios
+> 
+> Currently, these steps are executed sequentially, meaning the total time
+> required to reclaim M + N folios is t1 + t2 + t3.
+> 
+> However, Qun-Wei's patch enables t1 + t3 and t2 to run in parallel,
+> reducing the total time to max(t1 + t3, t2). This likely improves the
+> reclamation speed, potentially reducing allocation stalls.
 
-> -----Original Message-----
-> From: Prabhakar <prabhakar.csengg@gmail.com>
-> Sent: Sunday, March 9, 2025 9:33 AM
-> To: Andrew Lunn <andrew+netdev@lunn.ch>; David S. Miller
-> <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub
-> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Rob Herring
-> <robh@kernel.org>; Krzysztof Kozlowski <krzk+dt@kernel.org>; Conor Dooley
-> <conor+dt@kernel.org>; Neil Armstrong <neil.armstrong@linaro.org>; Kevin
-> Hilman <khilman@baylibre.com>; Jerome Brunet <jbrunet@baylibre.com>;
-> Martin Blumenstingl <martin.blumenstingl@googlemail.com>; Shawn Guo
-> <shawnguo@kernel.org>; Sascha Hauer <s.hauer@pengutronix.de>;
-> Pengutronix Kernel Team <kernel@pengutronix.de>; Fabio Estevam
-> <festevam@gmail.com>; Heiko Stuebner <heiko@sntech.de>; Maxime
-> Coquelin <mcoquelin.stm32@gmail.com>; Alexandre Torgue
-> <alexandre.torgue@foss.st.com>; iwamatsu nobuhiro(=1B$B4d>>=1B(B =1B$B?.M=
-N=1B(B =1B$B!{#D#I#T#C=1B(B
-> =1B$B""#D#I#T!{#O#S#T=1B(B) <nobuhiro1.iwamatsu@toshiba.co.jp>; Matthias =
-Brugger
-> <matthias.bgg@gmail.com>; AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com>; G. Jaya Kumaran
-> <vineetha.g.jaya.kumaran@intel.com>; Biao Huang
-> <biao.huang@mediatek.com>; Clark Wang <xiaoning.wang@nxp.com>; Linux
-> Team <linux-imx@nxp.com>; David Wu <david.wu@rock-chips.com>;
-> Christophe Roullier <christophe.roullier@foss.st.com>; Russell King (Orac=
-le)
-> <rmk+kernel@armlinux.org.uk>; netdev@vger.kernel.org
-> Cc: devicetree@vger.kernel.org; linux-amlogic@lists.infradead.org;
-> linux-kernel@vger.kernel.org; imx@lists.linux.dev;
-> linux-rockchip@lists.infradead.org;
-> linux-stm32@st-md-mailman.stormreply.com;
-> linux-mediatek@lists.infradead.org; Prabhakar
-> <prabhakar.csengg@gmail.com>; Lad Prabhakar
-> <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> Subject: [PATCH net-next] dt-bindings: net: Define interrupt constraints =
-for
-> DWMAC vendor bindings
->=20
-> From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
->=20
-> The `snps,dwmac.yaml` binding currently sets `maxItems: 3` for the
-> `interrupts` and `interrupt-names` properties, but vendor bindings select=
-ing
-> `snps,dwmac.yaml` do not impose these limits.
->=20
-> Define constraints for `interrupts` and `interrupt-names` properties in
-> various DWMAC vendor bindings to ensure proper validation and consistency=
-.
->=20
-> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> ---
-> Hi All,
->=20
-> Based on recent patch [0] which increases the interrupts to 11 and adds
-> `additionalItems: true` its good to have constraints to validate the sche=
-ma. Ive
-> made the changes based on the DT binding doc and the users. Ive ran dt
-> binding checks to ensure the constraints are valid. Please let me know if=
- you'd
-> like me to split this patch or if any of the constraints are incorrect, a=
-s I don't
-> have documentation for all of these platforms.
->=20
-> https://lore.kernel.org/all/20250308200921.1089980-2-prabhakar.mahadev-la
-> d.rj@bp.renesas.com/
->=20
-> Cheers, Prabhakar
-> ---
+If compression kthread-s can run (have CPUs to be scheduled on).
+This looks a bit like a bottleneck.  Is there anything that
+guarantees forward progress?  Also, if compression kthreads
+constantly preempt kswapd, then it might not be worth it to
+have compression kthreads, I assume?
 
->  .../bindings/net/toshiba,visconti-dwmac.yaml           |  6 ++++++
-
-Acked-by: Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
-
-Best regards,
-  Nobuhiro
-
+If we have a pagefault and need to map a page that is still in
+the compression queue (not compressed and stored in zram yet, e.g.
+dut to scheduling latency + slow compression algorithm) then what
+happens?
 
