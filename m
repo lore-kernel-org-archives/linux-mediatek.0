@@ -4,141 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB5B7C35FF3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 15:57:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F25C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 17:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rf5dFpikKn5c3GIrBSRRcQu3Wk8DqddBNdtAqBZYLZM=; b=496MF8d6ISjjOH8dTTYH0RF/e3
-	YiZPLmWhkbHtDMgxIRHiM+Lpf1rbz8MDmCJH5lAOvfcXJ6upm7Qoedq1Qi0j90M0/E/VC/zSUQFZK
-	wYFxAE77QfriGtTcS0FW3XyvRzuVHkZlHcPuqkCuYf9Jn3wOFuSp71GyZLa2yyv7Xeg3idOdXl1WY
-	8dWJKlnss6bu1XJ57T2zoshxu0JW94S+HTb3JqLhY6Wb6MdmBlHvgc4cjiDMywuQzH5xmnEjehiP1
-	fmkg4Ax6GNk7EHHQfAHRVtFfgfu6dVHdlUmYC7hCfnWq/giT6ID08SVWl50kqxg7KmAQPeyZTjon3
-	NO5b7WTg==;
+	bh=695GR/KZLkHZ1WKu8d8I3wFJq7e0VRh8DjOiryU8o1I=; b=XvmKAjCVat/QbAQ1BWU1+Z2Wd9
+	GxVJA72gfoVKScnYp1GCCz8P5mac6gMJnlCUpHeOxXjJsiDxMgZl1T3RZteH+NgHMC1+SLXd35YNm
+	uXOc0TiVvUspAoDepKIBnzYinupFvIsMS+jg0DHiYxMSCAD3Jrv9EQCuqsmSPFEsvqEx7XmilBN/I
+	1IDDd2/6EHyr2ZsmAzVyQJyNei5lcHQLyoiqtz6Ea6LeKrDFDWtP0zgQLQN9koklE4EDsmM1VB5Ob
+	d4IJ14tHoxtaPKdR5FVZFmKvfdzOhM7boiWL4ILRGeR27hXhBajbeY1mxdaz5BVX7Ccgm46eQ1SIB
+	VVp6czhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1yi-00000006FXM-4564;
-	Tue, 11 Mar 2025 15:57:12 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	id 1ts37j-00000006Psz-44pj;
+	Tue, 11 Mar 2025 17:10:35 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1xc-00000006EXy-0v9r
+	id 1ts32p-00000006OW7-3Hpv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Mar 2025 15:56:05 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 23CC02118B;
-	Tue, 11 Mar 2025 15:55:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708503; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Rf5dFpikKn5c3GIrBSRRcQu3Wk8DqddBNdtAqBZYLZM=;
-	b=t1dpIHSnrqZECTpEd+UQCMQ3F/48i/4XO5nRl9ubGbks3GPoT/Eeiba3sq2UK9xMKJoB1l
-	U/abKclaN4reyQImvyg1rfFVn/qKr4cmSi2kDE1+zx5W7qLNGMsJGc3SoKF0p5gCo4nqEn
-	CjQfFTRd21RBnVgqGuUd8Lpngff7ZpM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708503;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Rf5dFpikKn5c3GIrBSRRcQu3Wk8DqddBNdtAqBZYLZM=;
-	b=5ktR/K8D6OHZhut2hSWsmTlNgnHxixVaGxtP1u5MUSk7TW4N4mKLSiIIL/wzS6N/ePsrlr
-	ZW5ElZzsmr8tGbCA==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708503; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Rf5dFpikKn5c3GIrBSRRcQu3Wk8DqddBNdtAqBZYLZM=;
-	b=t1dpIHSnrqZECTpEd+UQCMQ3F/48i/4XO5nRl9ubGbks3GPoT/Eeiba3sq2UK9xMKJoB1l
-	U/abKclaN4reyQImvyg1rfFVn/qKr4cmSi2kDE1+zx5W7qLNGMsJGc3SoKF0p5gCo4nqEn
-	CjQfFTRd21RBnVgqGuUd8Lpngff7ZpM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708503;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Rf5dFpikKn5c3GIrBSRRcQu3Wk8DqddBNdtAqBZYLZM=;
-	b=5ktR/K8D6OHZhut2hSWsmTlNgnHxixVaGxtP1u5MUSk7TW4N4mKLSiIIL/wzS6N/ePsrlr
-	ZW5ElZzsmr8tGbCA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 8533F13AB8;
-	Tue, 11 Mar 2025 15:55:02 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id qCY1H9Zc0GdUdQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:55:02 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: simona@ffwll.ch,
-	airlied@gmail.com,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	geert@linux-m68k.org,
-	tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	xen-devel@lists.xenproject.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v4 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Tue, 11 Mar 2025 16:47:29 +0100
-Message-ID: <20250311155120.442633-26-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
-References: <20250311155120.442633-1-tzimmermann@suse.de>
+	Tue, 11 Mar 2025 17:05:33 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52BGjKBP031435
+	for <linux-mediatek@lists.infradead.org>; Tue, 11 Mar 2025 17:05:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	695GR/KZLkHZ1WKu8d8I3wFJq7e0VRh8DjOiryU8o1I=; b=Fr9Y2VbKb77uybHC
+	SsjKJrzPBcGaari0g6jOfZG9ym0t8sY6Dqvh83l8nq/eF2482GASQmd3zklKQudH
+	u7WehTizAFyh9I/RbYG6LgLtlKB5SCa1lNKiXIMMdBAESZ1JwKmpWsd0rsUB4WRT
+	vSP0eCnRheAANu6kzK6gvxYn/47JdM/ioIcE9mC3iE9G25z5No4yKhCnt3RHQbrR
+	pzDCn/kuBNvf6gLtK8gULvirstcFrX52MzSG5toVSLxJJG/MRJPRUb7jcpdZ0TrR
+	ri4JjGtu7dNZ0sZknlLIWi3zaWeKZHb3gC+O7Suh7OulvYjpYGtEwn1GUd24ALeR
+	49I/jg==
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com [209.85.214.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 458f0q1b4a-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 11 Mar 2025 17:05:30 +0000 (GMT)
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-2242ade807fso125795745ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Mar 2025 10:05:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741712729; x=1742317529;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=695GR/KZLkHZ1WKu8d8I3wFJq7e0VRh8DjOiryU8o1I=;
+        b=GCUo7SmQnq0KsDUxXhJ5MniX24nRTCVXr2m+RjfqdnNd+Ima6Ixs9qlRE7pOn5w9zA
+         7utBd0jdOZduJ/5PpWER4zNyeE8s1knHOsrQOtSCman5dZXHCgR8HV1vtg27EV2Sx0Jk
+         rUSbYF5/nDgOb/YYT0frvGWdkVIUHr7uGDcIkdMf8D3WMaE5cAcHanyoSRKvmy1iiD76
+         xyNSYgjBK/QFhOVr54vbdxEjEKuRPUDxx6OOgiY456cKvKcbjS8NbWyUGT8c2hW4KJGu
+         v7he6FxSjO0YIizGOsjlpAWEzXuhv47b9Z9vFd0RO2ckhUwAZKw1blV2ieKUr88S/Q/Y
+         uFFA==
+X-Forwarded-Encrypted: i=1; AJvYcCVUu3HsEq7DzIJO7+8hSaRNpduFEm1+vYap1l6En+1MamNlVKNLw1fTC/sN/6eArvESGNY1Zf1nmZvb/k/jGw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz7zqL/0PmZjzbZKEOnhtCuPCSKJZ84+OfQuNbE8iZ/azG991a1
+	00L7GVe77D2nrL4BsCJ0QV/+vqzVUmiiqBhe+zI/+pHdmflr2MKOXdfYzsKLbgA8Cr0gVqXoCeo
+	yJMTBL9I88gBwafULDa5LUAmHIsu678dYUJEw0kRZy6i1WNxNJ9rq6vozWO7c6Z1apVaawCk=
+X-Gm-Gg: ASbGncu22ZZGzEypW/KhfN4KTuWNYRAJ5w3Mec/UF2iNJisApPhInSGprj+X9zneGX1
+	WvefR4ngWm353b+mHwUfJDpuhrzIgzOHs5nePJE5I8CeLnxJSLjntVcLrZoP0RNgaaDWAbS68G2
+	s4ShXuguScUg0jdNNwj478zWNiZVTfpNAKY4odrBnr3iywy4oeUIgVH8wrAyoSaN21C4Dv7Agsm
+	Fh8yqhl8IVl2BL9JWPEaIu+wBwN+wlxqd6jfawcdxpATG9ByDqzbNNI1tNx0LJn9LQxz+uFdewr
+	CQYi863LG0HvezvxGyxroHkJId8T7m/IZMExycuy+l1BiGWmkHmC
+X-Received: by 2002:a17:902:ce8f:b0:224:1c41:a4bc with SMTP id d9443c01a7336-224288951edmr291368195ad.12.1741712729214;
+        Tue, 11 Mar 2025 10:05:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNmYfTMSW/XGFFejAsebRCu/XXSDKUCbe/u23gMVpwPCacZeb0zlctyyAvyI50SfrBGmgbZg==
+X-Received: by 2002:a17:902:ce8f:b0:224:1c41:a4bc with SMTP id d9443c01a7336-224288951edmr291367805ad.12.1741712728800;
+        Tue, 11 Mar 2025 10:05:28 -0700 (PDT)
+Received: from [10.81.24.74] (Global_NAT1.qualcomm.com. [129.46.96.20])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22410abb088sm100321875ad.256.2025.03.11.10.05.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Mar 2025 10:05:28 -0700 (PDT)
+Message-ID: <7dc00288-1e12-4524-97e7-a427ee24d984@oss.qualcomm.com>
+Date: Tue, 11 Mar 2025 10:05:26 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Spamd-Result: default: False [-1.30 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_MISSING_CHARSET(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid,imap1.dmz-prg2.suse.org:helo];
-	RCPT_COUNT_TWELVE(0.00)[22];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_SOME(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	FROM_EQ_ENVFROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	R_RATELIMIT(0.00)[to_ip_from(RLqirfcw6gnbcr9a9yhi49fhi6),to(RLbwen1niosrcqbxsafh1)];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com]
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 07/26] clk: mediatek: Add MT8196 apmixedsys clock support
+To: Guangjie Song <guangjie.song@mediatek.com>,
+        Michael Turquette <mturquette@baylibre.com>,
+        Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley
+ <conor+dt@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Richard Cochran <richardcochran@gmail.com>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+        Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250307032942.10447-1-guangjie.song@mediatek.com>
+ <20250307032942.10447-8-guangjie.song@mediatek.com>
+From: Jeff Johnson <jeff.johnson@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20250307032942.10447-8-guangjie.song@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: b4-HxKXVtEEuqLVbS3KUWMrS8lZa2GKO
+X-Authority-Analysis: v=2.4 cv=KK2gDEFo c=1 sm=1 tr=0 ts=67d06d5a cx=c_pps a=cmESyDAEBpBGqyK7t0alAg==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17 a=IkcTkHD0fZMA:10 a=Vs1iUdzkB0EA:10 a=xSbqf6NU4cea1KmgExsA:9 a=QEXdDO2ut3YA:10 a=zZCYzV9kfG8A:10
+ a=1OuFwYUASf3TG4hYMiVC:22
+X-Proofpoint-ORIG-GUID: b4-HxKXVtEEuqLVbS3KUWMrS8lZa2GKO
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-11_04,2025-03-11_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxlogscore=986
+ clxscore=1011 malwarescore=0 adultscore=0 impostorscore=0 mlxscore=0
+ lowpriorityscore=0 priorityscore=1501 bulkscore=0 spamscore=0
+ suspectscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502100000
+ definitions=main-2503110108
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_085604_421030_F3FCC179 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20250311_100531_946096_D7A7F80C 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,44 +133,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch according to hardware requirements.
+On 3/6/25 19:27, Guangjie Song wrote:
+> +module_platform_driver(clk_mt8196_apmixed_drv);
+> +MODULE_LICENSE("GPL");
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
----
- drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Since commit 1fffe7a34c89 ("script: modpost: emit a warning when the
+description is missing"), a module without a MODULE_DESCRIPTION() will
+result in a warning with make W=1. Please add a MODULE_DESCRIPTION()
+to avoid this warning.
 
-diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-index b47463473472..7ea0cd4f71d3 100644
---- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
-+++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-@@ -19,6 +19,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_device.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_fbdev_dma.h>
- #include <drm/drm_fourcc.h>
-@@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
- 				    struct drm_mode_create_dumb *args)
- {
- 	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
--	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-+	int ret;
- 
- 	/* Enforce the alignment constraints of the DMA engine. */
--	args->pitch = ALIGN(pitch, dpsub->dma_align);
-+	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
-+	if (ret)
-+		return ret;
- 
- 	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
- }
--- 
-2.48.1
+This is a canned review based upon finding a MODULE_LICENSE without a
+MODULE_DESCRIPTION.
 
+Note this issue appears in multiple patches in this series, so please
+fix all instances.
 
