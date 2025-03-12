@@ -4,68 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15DD2C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 10:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EDEBC28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 10:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WOQcoLa0TeXfQqDpPcuJqNfnBVUBPwCoam5guNlX7xU=; b=BOoxITxRb8wVKRw7Iefa3DxXtC
-	tHGIdaV1Fxm2Rs055xWQEI7zJrE66QtRDm55yfbQ5o8wiFfvBE+tmzzRSF2kxGF9exgaHL2r1F7Nn
-	y1XPtbUNO+bfFv5nOdjTMBdnH0NR53yNWDKhiX9qG2sUrB8ay5I3pn5mcgAPK5+DPo5XmL7n6o8Do
-	yTDvAfOg32gpZXeI9+oVqDWLjum0dwenGGq+tPvf1uIuz1drGOnYvzBeNXWLc02MGOGYCc0IYxTDP
-	aSXo57I8HVth1KZVr1w+KQgP3Zu+4Yn1zNDZH4rtiHt9yqBE1Zff2/P7mPcyM8Le/b5vZgKfoFDkR
-	4Nsv8stQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=L51FLDBP/NVINxb14cO3l0go6Z1l639IzpDfowui3bI=; b=a7sqd99jSSHv0QB2XpPcK7RTKD
+	Ok53tJiLdX0DvqaxESJxVVhPe4dLgGk8erKP88Vcr6AKYqL1ysNANXQdEVq1VuJXySPdVkVYduT1x
+	YyKOBD9gV/2zQdlu0zVcX0G9IbytqN+MUnkO3nC4sGDnWLMBVrfAqD2Ji7VXbPh3tv6IKv0yUk8xs
+	oJyQIwn+E+u65aWps22rOCeLl6NwomcKmihyzwE68ChDtXKfPuZVMB/+tsxdXQa8OQgag1eouRUIy
+	iu8EsB4XOTieDAKwZguDividESandso8cNUoF/85vBmS+vgYlj4/uoz1cgENMpLqaP/LLRcti8ayk
+	zRtAntTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJUs-0000000886X-2smr;
-	Wed, 12 Mar 2025 10:39:34 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tsJmi-00000008Brl-3Tem;
+	Wed, 12 Mar 2025 10:58:00 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJQZ-000000087Vl-0cTG;
-	Wed, 12 Mar 2025 10:35:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741775704;
-	bh=DaNSPhjsIutc4H0j8tAHVR2G8WRt9pYokVOYxoyiDd4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I3s6/PP1ZINlZ2BzZTd6ikvg+HjxK/0CB+7Tkq4fcW8Nxi2shCqyNEfCLnqoXadQu
-	 GoymC5Ab9D6iB55hp3nnJr5CcIgg7/E9ka0CujN8hGtginUuphL6DUYZ4dza7WAOGb
-	 YUlTMMnAGGUkfoe/z3gMqf+ltnxSdvTKQfybiFEleeg2UgS4biTttuGi5i8iR0X4ar
-	 6tpgJ33Wev7vQ8Ol/unn9yTiCR4y7sC2AS+Ik4AkaAsqguRZO+WSeKClhLQTOfydZm
-	 lh+txk4jN1GMEpumdnN9TiRItQoED1A/VBwQnF2O6Hd/aoMCOuf7reWK/mEZR00/9M
-	 weOaSzZC8WAtQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 13D7B17E0B12;
-	Wed, 12 Mar 2025 11:35:04 +0100 (CET)
-Message-ID: <16a54f79-2c0c-49b5-82af-9538ef43abd5@collabora.com>
-Date: Wed, 12 Mar 2025 11:35:03 +0100
+	id 1tsJZ4-000000088eW-1SNP
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Mar 2025 10:43:56 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3012885752dso224050a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Mar 2025 03:43:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1741776232; x=1742381032; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=L51FLDBP/NVINxb14cO3l0go6Z1l639IzpDfowui3bI=;
+        b=K98Oh5/gRl8ULQTaW24uJVmQrRB++pe7Z0cnl1CxUnJzMtRLVBU8eyEeji5sW/OKyR
+         CqgRbZCeRR2QwI8imWKSH8Fuf5mSwoTi6T34NEXAnwPrrSoyxU5LKKLoOrcGujODk4qM
+         7b928RE0WtP81/eUV0CGff33YuMPkfTiaEW8s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741776232; x=1742381032;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=L51FLDBP/NVINxb14cO3l0go6Z1l639IzpDfowui3bI=;
+        b=hINNb3jf3iKdpEPfSPShVm8empacn5UnY8r/8UH8oUp38/c23OtJ1I/nZ0sD44k45c
+         SWFVaGX/r84jlx1qyk+GIewxX/8EIII/IhteVcFeqbV7babq5aGoqqsSfvQg0ACPcJc8
+         WZKHeIl4tTDCJgYpY5mSjWgJJRrU/uxkG9N6MyhP3NWr5gx27joJ6qW0eO+5gtl34rNt
+         MPifyW9ZgZjbgATvL+nBgFvxbllKVQtnTgCDVFc0CoS2mM0DxZGow9AHHb1R3D+qqDIP
+         AFrDRb7/sdzpziXpGiI7EBnWg/+c4CcXqcUdZi1bJhJ8iMVIcfT5AAF2/VpSDizN/y/x
+         k8pg==
+X-Forwarded-Encrypted: i=1; AJvYcCVQWCEz7/JgyQfIgxqCt1SwJM7jkjBOeRKTFSAhOmnB6MXDJIy6mkBbP7LpSVNo5mhK4AeOcGLKiDhp+79BPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwGkZ9ZlDUmNe9zQPPY2UII2iz9N2SZwPjhmjnJO/vQEGL2jOZe
+	lFnyNARaJKv7RnqQoILacejmx+x071sF1b6jciwSkSdm0XjEKeYz5tczRkohQQ==
+X-Gm-Gg: ASbGncvmeI3R5DBIZqzHj9RgLGJKV4D6hEL5+DeafZbs+fHAzNyaD5EsZTYOH9scqT7
+	iUWXpfswD7ivcG7AvdVAmwM8ur8L0WBZ6SpY+iUQ9lFSKlp/3M5rDyPx6jHmtINSzqL+bz5NMHf
+	h4Q4K95ESaD21+NwrwvNofdr9OSwYK+gQviJMjrwrWsSQCLu6ddt6L2d+ltsgY8EvVeJS3Nfxi9
+	Q2DFs3WcF09rcKalEqJSlVlOrqu+iYrnvc2awZhx5mMv4Sq4uQ3Q1gnvjiQrOKmXZcE32Qe9veE
+	men14o1VlSax+LxgeYBTOPAZX70KaRnhUeuJ7T0KPKa7Cvv+lOV1NO0qtPKd78s=
+X-Google-Smtp-Source: AGHT+IFwYKsuYFk05Yb2ZLG7oOnOSu3sTQBXUECA3daxKB2RdxKe0gDbN37+1iCGZOUpVOTrPKRIXQ==
+X-Received: by 2002:a17:90b:4f87:b0:2fe:b774:3ec8 with SMTP id 98e67ed59e1d1-2ff7cf13a91mr25942847a91.23.1741776232319;
+        Wed, 12 Mar 2025 03:43:52 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:b5ed:b71c:fb14:a696])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3011926599csm1405675a91.35.2025.03.12.03.43.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 03:43:51 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-input@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 0/8] arm64: mediatek: mt8186-corsola: Consolidate and add new devices
+Date: Wed, 12 Mar 2025 18:43:34 +0800
+Message-ID: <20250312104344.3084425-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.rc0.332.g42c0ae87b1-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/2] dt-bindings: memory: mediatek: Add SMI reset and
- clamp for MT8188
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250311122327.20685-1-friday.yang@mediatek.com>
- <20250311122327.20685-2-friday.yang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250311122327.20685-2-friday.yang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_033507_353103_A23F3C47 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20250312_034354_410072_DD636B31 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +104,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/03/25 13:23, Friday Yang ha scritto:
-> From: "Friday Yang" <friday.yang@mediatek.com>
-> 
-> On the MediaTek platform, some SMI LARBs are directly connected to
-> the SMI Common, while others are connected to the SMI Sub-Common,
-> which in turn is connected to the SMI Common. The hardware block
-> diagram can be described as follows.
-> 
->               SMI-Common(Smart Multimedia Interface Common)
->                   |
->           +----------------+------------------+
->           |                |                  |
->           |                |                  |
->           |                |                  |
->           |                |                  |
->           |                |                  |
->         larb0       SMI-Sub-Common0     SMI-Sub-Common1
->                     |      |     |      |             |
->                    larb1  larb2 larb3  larb7       larb9
-> 
-> For previous discussion on the direction of the code modifications,
-> please refer to:
-> https://lore.kernel.org/all/CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com/
-> https://lore.kernel.org/all/CAPDyKFpokXV2gJDgowbixTvOH_5VL3B5H8eyhP+KJ5Fasm2rFg@mail.gmail.com/
-> 
-> On the MediaTek MT8188 SoC platform, we encountered power-off failures
-> and SMI bus hang issues during camera stress tests. The issue arises
-> because bus glitches are sometimes produced when MTCMOS powers on or
-> off. While this is fairly normal, the software must handle these
-> glitches to avoid mistaking them for transaction signals. What's
-> more, this issue emerged only after the initial upstreaming of this
-> binding. Without these patches, the SMI becomes unstable during camera
-> stress tests.
-> 
-> The software solutions can be summarized as follows:
-> 
-> 1. Use CLAMP to disable the SMI sub-common port after turning off the
->     LARB CG and before turning off the LARB MTCMOS.
-> 2. Use CLAMP to disable/enable the SMI sub-common port.
-> 3. Implement an AXI reset for SMI LARBs.
-> 
-> This patch primarily add two changes:
-> 1. Add compatible for SMI sub-common on MT8188 SoC.
-> 2. Add 'resets' and 'reset-names' properties for SMI LARBs to
->     support SMI reset operations.
-> 
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+Hi everyone,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Here's a follow up series of the I2C component probers for Chromebooks.
+This series enables the component prober for the Corsola series of
+devices, combines the two existing Voltorb SKUs, and adds a new
+device, codename Squirtle.
+
+Patch 1 adds a new HID-over-I2C touchscreen from Elan.
+
+Patch 2 merges the Voltorb entries in the device tree bindings into one.
+
+Patch 3 adds a new entry for the Squirtle device to the bindings.
+
+Patch 4 fixes up the existing device trees for the component prober to
+be active.
+
+Patch 5 merges the device trees for the Voltorb device.
+
+Patch 6 adds a device tree file for the Squirtle device, with I2C
+components ready to be probed by the prober.
+
+Patch 7 enables the prober to probe trackpads on some devices in the
+Corsola family.
+
+Patch 8 enables the prober to probe touchscreens on Squirtle.
+
+Please take a look.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (8):
+  dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
+  dt-bindings: arm: mediatek: Merge MT8186 Voltorb entries
+  dt-bindings: arm: mediatek: Add MT8186 Squirtle Chromebooks
+  arm64: dts: mediatek: mt8186-steelix: Mark second source components
+    for probing
+  arm64: dts: mediatek: mt8186: Merge Voltorb device trees
+  arm64: dts: mediatek: mt8186: Add Squirtle Chromebooks
+  platform/chrome: of_hw_prober: Support trackpad probing on Corsola
+    family
+  platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   7 +-
+ .../bindings/input/elan,ekth6915.yaml         |  29 ++++-
+ arch/arm64/boot/dts/mediatek/Makefile         |   4 +-
+ .../dts/mediatek/mt8186-corsola-squirtle.dts  | 107 ++++++++++++++++++
+ .../dts/mediatek/mt8186-corsola-steelix.dtsi  |   9 +-
+ .../mt8186-corsola-tentacool-sku327683.dts    |   2 +
+ .../mt8186-corsola-tentacruel-sku262148.dts   |   2 +
+ .../mt8186-corsola-voltorb-sku589824.dts      |  13 ---
+ ...u589825.dts => mt8186-corsola-voltorb.dts} |   5 +-
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     |  10 +-
+ .../platform/chrome/chromeos_of_hw_prober.c   |  29 +++++
+ 11 files changed, 185 insertions(+), 32 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts
+ delete mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb-sku589824.dts
+ rename arch/arm64/boot/dts/mediatek/{mt8186-corsola-voltorb-sku589825.dts => mt8186-corsola-voltorb.dts} (76%)
+
+-- 
+2.49.0.rc0.332.g42c0ae87b1-goog
 
 
