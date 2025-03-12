@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69143C28B2E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF96C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GkBvpr/SngGCWtv1PXkTyFn1iDpIt/0G9/bWPpaHvdk=; b=gB5eZf8t10q1yb769agP0B+Gtw
-	1cpX78BcsyymOfkslobHxe8KyrsTSvzjwzaedAvRCbhhB0H+EKL+PfKCbn82oQ8PpsjHpQg8LvzYZ
-	jdibNkUFTVQTd4jOz0aQkb2gu24IBosQuHDIryyuMLaFQaAx9N0TEPH5yPvzpwsYtwYZT9FE5Ny77
-	UZncgS7R+CEBgwFRoieaoQJmcMR8jAMFD/eRHUTx14ee/i3vUaCwIPqtiWFnBPjaP/lEZQusjKkTK
-	bIdZcofUFmQqqyIOZ+iY8C2rO0LZySRWaoiHirTSR9eGOxDThCe5ESQt7yLwgIq+BO5gPXmFjB224
-	xmdeDd3w==;
+	bh=KNEx5jzwPvwr7ykDlaOKF6gqglD3Hpy85JFTNBLEoE0=; b=GZbRpc2w1TbXhKIedfvxI0YEg9
+	RTqNhzcRgU7RkrPtFNVntzeAMJNJWuj6Zmm3PwjE3ZqTvI+y+na6jOnkvrTzJQlW6eB/tCALXdx7k
+	zkaV8ejgV5aiqncgbJVIGvZ9RG5LdZ32ux+llbw3N+h8M6yyrrZpqfMI46bmEN145/AP4h1DhVWry
+	OYqmVijFBrZzsFYind5Abcjr5GGMhYnvykMdnSPxm5PwFs/nS7vBu0Z5g8KA/V1DtGKpLyiv/9JWA
+	BLaqKkdOhE9kwEtFtvwpatmQp4AQS5mV6jb3+argB5iMWy8EVduGcTVGQoRK6UCDhzBmbl88gQelU
+	A9sk/9Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIWJ-00000007zpI-07Re;
-	Wed, 12 Mar 2025 09:36:59 +0000
+	id 1tsIXv-0000000807z-2r1S;
+	Wed, 12 Mar 2025 09:38:39 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIIn-00000007wDT-1ftQ;
-	Wed, 12 Mar 2025 09:23:02 +0000
+	id 1tsIIr-00000007wDy-2smi;
+	Wed, 12 Mar 2025 09:23:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GkBvpr/SngGCWtv1PXkTyFn1iDpIt/0G9/bWPpaHvdk=; b=o05M9UlWcBESr2cW67HjMWICWH
-	hNOZffwcs4q4KTfAVFQapgjgie99++gaoM+nvg1b636ehz/Kg5AUFgf0fo3F6bUncjJqt0EkP6Fxt
-	/pNV4W6mcqJCFsKgQtEON/2x+XKbI8DjHKqLCUsku1KWrH5xLWtK/7T2ywFRIGTQvj3gUyyFrRGZz
-	jM5g3eHi+QCnVXOR+fBT+e21dDzFz/0UuECjNaVvJFgNJ3b9/5arHrQlFD2UQM8Ryh9oTKaeSAH/E
-	s8YOmmyMDW5brysOgBMdDbpRAesMMLt9diAISKxdwKs1sQdmr4YCkShSW1vPtag8+YxEIgOFoQGVw
-	ztFg2CEw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:41078 helo=rmk-PC.armlinux.org.uk)
+	bh=KNEx5jzwPvwr7ykDlaOKF6gqglD3Hpy85JFTNBLEoE0=; b=jBcSywxCqB/W8XhBRI64/ZCifq
+	/E7pDVm/9rG1Cpvnsgantc1dpBTFBrWYn3ANxeT+QhpW3qyMw+ctpcXtIF1aDkpX8gXwYFuKeebog
+	aK1XXzHiGeKOmoRb4BE5E7U+lvdjSGi9A/c0liJgX5EuUdjTE6Vd6f5udnpRI/wtW9YYYe8S24816
+	L9WeRPGM/qhUADHV1ZypzvrjURk3Mc6bJjWvHtWQZ+aZbd+redGf6rTAKIn11JmZPUVjSXB1q1hbe
+	uZXWmn4FX/0xOmB09NukpAYNIKBaY1W4RZBLubRe7xcjRRqUyk1zsn7V7CK6dVYZ7RnIYTp4qo9QW
+	y+/SYyGQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:39526 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tsIGc-0005BH-35;
-	Wed, 12 Mar 2025 09:20:47 +0000
+	id 1tsIGi-0005BT-2O;
+	Wed, 12 Mar 2025 09:20:52 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tsIGI-005uzT-KB; Wed, 12 Mar 2025 09:20:26 +0000
+	id 1tsIGN-005uzZ-NG; Wed, 12 Mar 2025 09:20:31 +0000
 In-Reply-To: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
 References: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -76,17 +76,17 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Samuel Holland <samuel@sholland.org>,
 	Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH net-next v2 1/9] net: stmmac: qcom-ethqos: remove
+Subject: [PATCH net-next v2 2/9] net: stmmac: mediatek: remove
  of_get_phy_mode()
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tsIGI-005uzT-KB@rmk-PC.armlinux.org.uk>
-Date: Wed, 12 Mar 2025 09:20:26 +0000
+Message-Id: <E1tsIGN-005uzZ-NG@rmk-PC.armlinux.org.uk>
+Date: Wed, 12 Mar 2025 09:20:31 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_022301_428658_C1C872A4 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20250312_022305_718248_16F78C18 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,30 +103,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 devm_stmmac_probe_config_dt() already gets the PHY mode from firmware,
 which is stored in plat_dat->phy_interface. Therefore, we don't need to
-get it a second time in qcom_ethqos_probe(). Use
-plat_dat->phy_interface to initialise ethqos->phy_mode.
+get it in platform code.
+
+Initialise priv_plat->phy_mode from plat->phy_interface
+inmediatek_dwmac_common_data().
 
 Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index eafe637540b6..0e4da216f942 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -794,9 +794,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	if (!ethqos)
- 		return -ENOMEM;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index c9636832a570..d178d5ddc7c7 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -456,7 +456,6 @@ static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
+ {
+ 	struct mac_delay_struct *mac_delay = &plat->mac_delay;
+ 	u32 tx_delay_ps, rx_delay_ps;
+-	int err;
  
--	ret = of_get_phy_mode(np, &ethqos->phy_mode);
--	if (ret)
--		return dev_err_probe(dev, ret, "Failed to get phy mode\n");
-+	ethqos->phy_mode = plat_dat->phy_interface;
- 	switch (ethqos->phy_mode) {
- 	case PHY_INTERFACE_MODE_RGMII:
- 	case PHY_INTERFACE_MODE_RGMII_ID:
+ 	plat->peri_regmap = syscon_regmap_lookup_by_phandle(plat->np, "mediatek,pericfg");
+ 	if (IS_ERR(plat->peri_regmap)) {
+@@ -464,12 +463,6 @@ static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
+ 		return PTR_ERR(plat->peri_regmap);
+ 	}
+ 
+-	err = of_get_phy_mode(plat->np, &plat->phy_mode);
+-	if (err) {
+-		dev_err(plat->dev, "not find phy-mode\n");
+-		return err;
+-	}
+-
+ 	if (!of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps)) {
+ 		if (tx_delay_ps < plat->variant->tx_delay_max) {
+ 			mac_delay->tx_delay = tx_delay_ps;
+@@ -587,6 +580,7 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
+ {
+ 	int i;
+ 
++	priv_plat->phy_mode = plat->phy_interface;
+ 	plat->mac_interface = priv_plat->phy_mode;
+ 	if (priv_plat->mac_wol)
+ 		plat->flags &= ~STMMAC_FLAG_USE_PHY_WOL;
 -- 
 2.30.2
 
