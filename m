@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025D4C28B2F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Mar 2025 23:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 215C0C282EC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 01:25:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zy4H9Jv5YfvsQEUnC9uG0DhMz5JfwXq9yCcEHqiTgoA=; b=l8M78K4eB9fzuXlSA/PB64Vh6y
-	aD4wlm8WAWCzyQWQgVOX9jYWwCMmRMr1YkN6p8ODmJ4HyvVWCBdvN4cH5+VREs699P3lZnB3zmsM4
-	o+6Jrt0YFu1XSkYnl/9biCduL04LxXv3mV3YDDExaJfT0qrkjQqg67QIT/PHHINCfXb3lscGz0+rU
-	kuYvj3vFKLLhlD9uVWDvrICTDuwDfAaE1aa8CZVrBRCp8BpJw0zK1BeA1iDmw/qARwlrQJ041pSf/
-	BNh7ntkhtQqwgvA+gUE8R4OyCm4PwHWWjxIo+8Dw+J+OeYXM1BlRUJOfnUC8bK9O6AeDxLyR6PPwP
-	d0J2qVPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hlQ8zGSiXC2UMWrLxIq5J480S5wYp1oqhkE9P9/QTxY=; b=QIRaUO61JCE8Kodsn+2DiFyU3A
+	f/XHQZMsbW2aH2aXIonkkUHx4tOClfFhNRobnI9oReG6cnKimDX8z4KFlEW0xGkOhAeogA8QNEQt2
+	0SJXPbypC6+IX0ros4tTto5G4Z+y1JyAk02NaHAit6WSxn5Hc/5Dydx7ryoVX7WrifWwPWnre7Ebz
+	VrkIkUbDiv8esdi/6PKWLf8aR0hC88WqfGB9HKoMiaKT9o3WDaIsCfJPv8pYxmvvQ/GVb/pxRUEIL
+	/y20Z/pbYA3SKzrwUEL3WE5h4gFWq7rzV+6G4RcWCYo1VweTyFQWMifmnElSyo9Y07l0oACH40HNW
+	luiFWwZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts9IR-00000007D1F-1b8d;
-	Tue, 11 Mar 2025 23:46:03 +0000
-Received: from mail.netfilter.org ([217.70.190.124])
+	id 1tsAqf-00000007JXS-1b3O;
+	Wed, 12 Mar 2025 01:25:29 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts9Gl-00000007Cmc-0Wyg;
-	Tue, 11 Mar 2025 23:44:20 +0000
-Received: by mail.netfilter.org (Postfix, from userid 109)
-	id 9867D60290; Wed, 12 Mar 2025 00:44:11 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netfilter.org;
-	s=2025; t=1741736651;
-	bh=Zy4H9Jv5YfvsQEUnC9uG0DhMz5JfwXq9yCcEHqiTgoA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=a8t80WlrGYFY9oyQX3S86Ogn9ifXUjpMtYaXir/VnMuMWejrcyWrdT2MZ2UFI6Eo2
-	 7qsNBbeB+KiWFpXrYGzzrRPMPsPm3M/LE12BTGeObmLfV4xGfxMKOeVnfXLuHs+f6I
-	 oco67Tvuc79DAy4t/JCmw6SPfqMP3FXgCoQq7/pPe7BYJioQ8AdiXx+unSbnybDzHx
-	 TlZi4UML/13y3h+GZLEerM6BAPXU/DTqIQuGm8Mqm5U0dLr+7C4n8OXD6BORAgjHeq
-	 NKgQoBT0DPvWcs+M0oaprv6llWWPVxh4HtE3mjNtRrcPSzk1R77u3S9f2rILyP8arN
-	 I70Z8bqQRkyaw==
-Received: from netfilter.org (mail-agni [217.70.190.124])
-	by mail.netfilter.org (Postfix) with ESMTPSA id F13DD60281;
-	Wed, 12 Mar 2025 00:44:07 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netfilter.org;
-	s=2025; t=1741736648;
-	bh=Zy4H9Jv5YfvsQEUnC9uG0DhMz5JfwXq9yCcEHqiTgoA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kLBL1Hzar1cmkrQuKybLF66CTNES1VcZwNNIMmceAZVUWG5+PeM/BvDuffpu85yec
-	 wSCdNGmitWR2/y3qO93O7m5UoYNKtgV+UMNE3RSCZLEtC3QrrCx5Ui7dzYI58OpWlx
-	 NwubfakCqFL6Je9par6JdWhDjcNJFmritUaP6eC06ocENmPzpiec0y8GuyB+7RNRpX
-	 yhqSCf2339YL33+0nTwjf5i1QZ20gGgH7fTS6Lw5NjdHN+qVQ+1exZ2T3tciJq/8kh
-	 KqPz2aZ2hTBXT2boxpytoDg2qPdtF3KzUcG9KrRXHFunP2n1vk46/9Q2OKi2SN/ESu
-	 yNF8SeDIdPDXQ==
-Date: Wed, 12 Mar 2025 00:44:04 +0100
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v9 nf 00/15] bridge-fastpath and related improvements
-Message-ID: <Z9DKxOnxr1fSv0On@calendula>
-References: <20250305102949.16370-1-ericwouds@gmail.com>
- <897ade0e-a4d0-47d0-8bf7-e5888ef45a61@gmail.com>
+	id 1tsAqd-00000007JWy-2s2w
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Mar 2025 01:25:28 +0000
+Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3f6a92f2328so218487b6e.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Mar 2025 18:25:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741742726; x=1742347526;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hlQ8zGSiXC2UMWrLxIq5J480S5wYp1oqhkE9P9/QTxY=;
+        b=SQxAv7WEtpmB1p1ypKmVV2iRR/X7btOrHFCU9YvddLK0sDk52LkFzSehp/vxM9vCD3
+         MeH2VqoqSPn7H03kg+KpyVhVQft4mFY9puaSpvkgjcir7I4FsLfUSfc4g7cB/o3h1Pum
+         DBfI8iHR3Y54Ul4mwBSAv3ohHe93TlcZg+lzlwsBafUYscGZv4gZ/dDZEqxjPVJ02TGk
+         en/JwE3Lq3BIcbMcwKEXnv3Lu+bIisoLkKH0jlJ5qY3vPsF6ZQ2WmnbBRDUG0TMck0IV
+         z7lEMlCRMXgWmx8JUa41Hf1pRyHeHZuPr7rezKPEI8TEUDhqdtH5HbpHsBiX8CR7mhWD
+         EJFQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWocYCQx5SHnoLTZXVToFIwBW40PIxMyAMIBwURzptKyoUcFMed3VzQGbn+1hPCZI3VUOqM/QgAiZtfvqVobQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJZEMO6FhNgTa/py8XUsKdK2Et95DlkAgDC1RjaETBGbGTXRSR
+	kc/kKYeOalc9i4wMnXEYvoDlu9UbwGRbXCoFH1VzuS9cq3elyO/G4/K3Rw==
+X-Gm-Gg: ASbGnctYpJ4lKzV8KagRx6XBYRvjh+ivHEH71J80itHYAV9SHQK50y4xhBTIENGfwMw
+	Wf0Jl6tCDm8orUNNao+Ci1Lt9xge1XGVcpoiPBv8il9y7Fc6YbNhXq1y07mluWEt/ddRgcT/Uqe
+	uqkVzxqbl+/DrG05UMbrbloiqHxmP1lgggqDT6iQDiyqHiMIqmHcVRx1wy8PxWl1p6ynZscxun0
+	lKQndhq1QnW7/QxsqCL0J55omtpAwVDvFR/chmImTOxKo+LVvCwW1kJLXlhAF395pVoqrpu3KcR
+	Fys8kxOq4s/QNcK7mygMva9SWRnJaXpKxBpDQqvMzJNqXyJg3TsEzz12+MhSOA==
+X-Google-Smtp-Source: AGHT+IHUHVqGRHi1FiHDLSZpilZtJwCnpP7CO+C8rk9WvHyA0Y80iswmxtal4O25p0GjBlCr+YNcJw==
+X-Received: by 2002:a05:6808:38c6:b0:3f8:7727:88cd with SMTP id 5614622812f47-3fa2b7eda13mr3313051b6e.7.1741742726566;
+        Tue, 11 Mar 2025 18:25:26 -0700 (PDT)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3f9ff1c6696sm650888b6e.42.2025.03.11.18.25.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Mar 2025 18:25:25 -0700 (PDT)
+From: sean.wang@kernel.org
+To: marcel@holtmann.org,
+	johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	Pedro Tsai <pedro.tsai@mediatek.com>,
+	Felix Freimann <felix.freimann@mediatek.com>
+Subject: [PATCH] Bluetooth: btmtksdio: Prevent enabling interrupts after IRQ handler removal
+Date: Tue, 11 Mar 2025 18:25:22 -0700
+Message-Id: <20250312012522.53604-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <897ade0e-a4d0-47d0-8bf7-e5888ef45a61@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_164419_604519_568B1A14 
-X-CRM114-Status: GOOD (  23.45  )
+X-CRM114-CacheID: sfid-20250311_182527_723549_4B63627B 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,56 +87,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kees Cook <kees@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Ahmed Zaki <ahmed.zaki@intel.com>, "Gustavo A. R. Silva" <gustavoars@kernel.org>, Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org, Ivan Vecera <ivecera@redhat.com>, Alexander Lobakin <aleksander.lobakin@intel.com>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Nikolay Aleksandrov <razor@blackwall.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Tue, Mar 11, 2025 at 09:22:35AM +0100, Eric Woudstra wrote:
-> 
-> 
-> On 3/5/25 11:29 AM, Eric Woudstra wrote:
-> > This patchset makes it possible to set up a software fastpath between
-> > bridged interfaces. One patch adds the flow rule for the hardware
-> > fastpath. This creates the possibility to have a hardware offloaded
-> > fastpath between bridged interfaces. More patches are added to solve
-> > issues found with the existing code.
-> 
-> 
-> > Changes in v9:
-> > - No changes, resend to netfilter
-> 
-> Hi Pablo,
-> 
-> I've changed tag [net-next] to [nf], hopefully you can have a look at
-> this patch-set. But, after some days, I was in doubt if this way I have
-> brought it to your attention. Perhaps I need to do something different
-> to ask the netfilter maintainer have a look at it?
+Ensure interrupts are not re-enabled when the IRQ handler has already been
+removed. This prevents unexpected IRQ handler execution due to stale or
+unhandled interrupts.
 
-Apologies, this maintainance service is best effort.
+Modify btmtksdio_txrx_work to check if bdev->func->irq_handler exists
+before calling sdio_writel to enable interrupts.
 
-I am also going to be very busy until April to complete a few more
-deliverables, I cannot afford more cancelled projects. I will try to
-collect what is left for net-next and wait for the next merge window.
+Co-developed-by: Pedro Tsai <pedro.tsai@mediatek.com>
+Signed-off-by: Pedro Tsai <pedro.tsai@mediatek.com>
+Co-developed-by: Felix Freimann <felix.freimann@mediatek.com>
+Signed-off-by: Felix Freimann <felix.freimann@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Therefore, I suggest you start with a much smaller series with a
-carefully selected subset including preparatory patches. I suggest you
-start with the software enhancements only. Please, add datapath tests.
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index bd5464bde174..edd5eead1e93 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -610,7 +610,8 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	} while (int_status || time_is_before_jiffies(txrx_timeout));
+ 
+ 	/* Enable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
++	if (bdev->func->irq_handler)
++		sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
+ 
+ 	sdio_release_host(bdev->func);
+ 
+-- 
+2.25.1
 
-As for the hardware offload part, I have a board that I received 4.5
-ago years as a engineering sample that maybe I can use to test this,
-but no idea, really.
-
-You are a passer-by (ahem, "contributor"), this will get merged
-upstream at some point and we will have to maintain all this new code
-without your help maybe ... (people change bussiness units...), I have
-to understand what is going on here. The throughput available is
-limited, I am afraid we can only go _slow and careful_.
-
-Thanks.
-
-P.S: You work is important, very important, but maybe there is no need
-to Cc so many mailing lists and people, maybe netdev@,
-netfilter-devel@ and bridge@ is sufficient.
 
