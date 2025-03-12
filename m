@@ -4,97 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EFD3C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5117C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pHuCru4QHXqB2mgYvDq44oAwbOQyDAtraRq+g+1pboI=; b=bjpfvFcR7lcVKe8dEkpj+ScFSf
-	b+e7uMWnQUH3rD/Y6T9rSnc5Z91zj83eB5RPGSEn235orv//VKFH22nFtzrwfyY0uwzE4zcSkHc3d
-	SAZtONjdccYVJHFdCvx12dor0h2OksC6t6OD075GwdHrLrLlVbHZPIirN0xBOnpSyFBrechBtRr9T
-	dKGUH+qGtvrTcdFKKdPBJNd/qW0TWcWZ4gFQG3BxmJnNI4sXDk+BheF2uRYLy1l/2w7YMUlmZfsfP
-	lbLdzBGWoM+ePMcCnjUEc2drotG3zRkXSTBf10o8Pkiyv/Vs2Q2WGke+JuS2+l/YzXiFn0kppgH3A
-	kD6+vAYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p31Bv5bN7BNGVI00vNLy7V8oFDJbaK09raJJcaYlMWI=; b=jR3ZrHVZ4A1kebhBpzZLofVCQ+
+	SVSMWlhUmuLZG7yrRIPb/iQ6gwiP6yh5jWrlKL2aVmbJfdU88mLsQGArfqbbdiDNUCY2p9wPaajPt
+	Wq1NlkpDxS44ddE7RYKjUVrIAFlfP7F5Z9X0Qjya2tH51GJqgDAsRk4aB6GGdWcgbyskyWFfJOUmP
+	tObVOCfSVJjfczEfU490j3vSzLEe+Gq+tVIE2fkFCkDUAs2Ti1a5xhgIqxIJTsS2K+lcZTtPRu/Dz
+	GEGMLjQMB72xL9JMFgEKya1mQxdtJELD7zqto0ugLfTJgVSTOzQDe7RUZLx9WO/ApL5FkX3WRBLj8
+	KBff2Wzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsI7u-00000007uY8-0KNL;
-	Wed, 12 Mar 2025 09:11:46 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1tsI9X-00000007uxA-1i77;
+	Wed, 12 Mar 2025 09:13:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsI6E-00000007uHl-339f;
-	Wed, 12 Mar 2025 09:10:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pHuCru4QHXqB2mgYvDq44oAwbOQyDAtraRq+g+1pboI=; b=ERTwtiOCIj3j9CarcXXRXrdwuP
-	EpNIw145j2Xe+T2gXM5n0PMpASp9n12VZF6X7wZBRwaERBwYvVbVsR9AylP1Aex+H35rLaz2abJu6
-	O7ri+i6hJ6mSNxxm9XPtGzCwxYKM34GM8SKyaMoKXH03heHl8VdwDcQWSot+mI5p0CNA=;
-Received: from p5b206ef1.dip0.t-ipconnect.de ([91.32.110.241] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1tsI60-00GAxl-2Z;
-	Wed, 12 Mar 2025 10:09:48 +0100
-Message-ID: <1c46870f-965b-4f70-a01b-adbcd60c2876@nbd.name>
-Date: Wed, 12 Mar 2025 10:09:48 +0100
+	id 1tsI7M-00000007uQ8-3lc5
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Mar 2025 09:11:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9035F5C5658;
+	Wed, 12 Mar 2025 09:08:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D392C4CEE3;
+	Wed, 12 Mar 2025 09:11:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741770672;
+	bh=R5u/MPwOptPXQ8G4otFzQXBnW5BpSZsw4xZ1ZzVhQl8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SOVVbM/qeqV9cw8tj8qoRsAo3juv41+N10Po3L/8vRmUfyhydmiamNOFThvZ9xUXw
+	 frRARDGSGHpBgUXQ6YtjdBQWUJAxZgmppYg0WSU7Lbm+o9x65aV7tugbLukkPRocrj
+	 7yNEFzi3qkSHN0exUG/tSf5CgsNJ7vtIHzHQBAYzZIE5gP/4HgkjR3/TLzItI+1ejD
+	 MACY0tO5ied/+zWdCBN/C8xylrr2wD5gK+M/bNS4lJJadHk9eSKaeiI4buUmEI0rrx
+	 /CRj+YxjUtpGa/YOLha17Q2IFr1SF9gQQgJyn9nWgZz1Zs0HhvlnQql1uwVleBhPsB
+	 t0JwYVe73srgA==
+Date: Wed, 12 Mar 2025 10:11:08 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-pci@vger.kernel.org
+Subject: Re: [PATCH v3] dt-bindings: mfd: syscon: Add the pbus-csr node for
+ Airoha EN7581 SoC
+Message-ID: <20250312-amigurumi-chamois-of-virtuosity-1ed2a7@krzk-bin>
+References: <20250312-en7581-pbus_csr-binding-v3-1-7bd9f00a25a4@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] mt76: mt7915: wed: find rx token by physical address
-To: Ping-Ke Shih <pkshih@realtek.com>, Shengyu Qu <wiagn233@outlook.com>,
- "lorenzo@kernel.org" <lorenzo@kernel.org>,
- "ryder.lee@mediatek.com" <ryder.lee@mediatek.com>,
- "shayne.chen@mediatek.com" <shayne.chen@mediatek.com>,
- "sean.wang@mediatek.com" <sean.wang@mediatek.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Cc: "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>
-References: <TYCPR01MB8437EE1595CD4AB581C006E898C62@TYCPR01MB8437.jpnprd01.prod.outlook.com>
- <TYCPR01MB843726907C170CFE2D3EB7BE98D12@TYCPR01MB8437.jpnprd01.prod.outlook.com>
- <e144d2ffe9924d81a7b60f38cdcf516a@realtek.com>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <e144d2ffe9924d81a7b60f38cdcf516a@realtek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250312-en7581-pbus_csr-binding-v3-1-7bd9f00a25a4@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_021002_842363_526D5A43 
-X-CRM114-Status: GOOD (  24.70  )
+X-CRM114-CacheID: sfid-20250312_021112_974819_A53BF10A 
+X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,69 +75,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.03.25 02:41, Ping-Ke Shih wrote:
-> Shengyu Qu <wiagn233@outlook.com> wrote:
->> 
->> Hi Shih,
->> 
->> Can you also give this patch a review? Seems I also need to convert to
->> reverse Xmas tree order for this patch, will do it in next version.
+On Wed, Mar 12, 2025 at 09:32:15AM +0100, Lorenzo Bianconi wrote:
+> Introduce pbus-csr document bindings in syscon.yaml for EN7581 SoC.
+> The airoha pbus-csr block provides a configuration interface for the PBUS
+> controller used to detect if a given address is accessible on PCIe
+> controller.
 > 
-> Yes. Please do it.
-> 
->> 
->> Best regards,
->> Shengyu
->> 
->> 在 2025/2/22 19:38, Shengyu Qu 写道:
->> > The token id in RxDMAD may be incorrect when it is not the last frame
->> > due to WED HW bug. Lookup correct token id by physical address in sdp0.
->> >
->> > Downstream patch link:
->> https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/737340322ab22b138fd200e02
->> 0d61ffdbe3e36a9/autobuild/autobuild_5.4_mac80211_release/mt7988_wifi7_mac80211_mlo/package/kernel/mt76
->> /patches/0062-mtk-wifi-mt76-mt7915-wed-find-rx-token-by-physical-a.patch
->> >
->> > Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
->> > Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
->> > ---
->> >   drivers/net/wireless/mediatek/mt76/dma.c | 25 +++++++++++++++++++++++-
->> >   1 file changed, 24 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
->> > index 844af16ee551..5bf63014263c 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/dma.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/dma.c
->> > @@ -444,9 +444,32 @@ mt76_dma_get_buf(struct mt76_dev *dev, struct mt76_queue *q, int idx,
->> >   	mt76_dma_should_drop_buf(drop, ctrl, buf1, desc_info);
->> >
->> >   	if (mt76_queue_is_wed_rx(q)) {
->> > +		u32 id, find = 0;
->> >   		u32 token = FIELD_GET(MT_DMA_CTL_TOKEN, buf1);
->> > -		struct mt76_txwi_cache *t = mt76_rx_token_release(dev, token);
->> > +		struct mt76_txwi_cache *t;
->> > +
->> > +		if (*more) {
-> 
-> Because of scope, should define 'find' (or 'found'?) as bool here.
-> 
->> > +			spin_lock_bh(&dev->rx_token_lock);
->> > +
->> > +			idr_for_each_entry(&dev->rx_token, t, id) {
-> 
-> idr_find() can only get a pointer associated with the ID. Not sure if it can
-> have a reverse way -- get ID from pointer. With sequential search in data path,
-> cost is higher.
-> 
-> Maybe you can consider to build association between argument 'idx' and
-> pointer/token by another patch.
-> 
-> But logic is okay to me.
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v3:
 
-Adding to that, it matters how frequently the token ID is incorrect. If 
-the token ID is correct most of the time, then it's worth optimizing for 
-that as the default case. In that case you should avoid the extra idr 
-scan if the pointer for the provided token id already matches.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-- Felix
+Best regards,
+Krzysztof
+
 
