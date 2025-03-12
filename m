@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D60FC28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:40:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A391BC28B2E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:43:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4S96UeyUjDKZ2gcPjL0631o3GuvsA+cY/IBcIb/qND4=; b=I4kmBvHWL/NAG1Is5pj6la1FyM
-	Phghtq5i3Atzq/8i/b5xSKp31r5MBxiQrXv9HF5BlcPgOX1hXoXkJd/evG+tpZTYRDQu4qJw/tb/o
-	Y4auKbkVSdJiYLVM30O2ZdBEy9NxNnqE07VNPx0eFfjXK3CVC72doYMYaBxQ0hYV3JYgq8uhLEzr8
-	XyV1c6sIJtw1aB1/vvGQpXUUPMz0RFgzl6aBv9Lieu9fVEsGdrEGJrR+L6qQv9XO+hMLCWyn2FHs2
-	t6i94IcfM8YH3ffLA1W1MV2XLMXPt+4gSlx+FS4RNfo5KTSsvXhkK1/usR0H2V+fKiCMrNzTEtYOu
-	LCOioYaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UpIEAogTxkzLpfUfozeqm0pCsw4RE6yWXZ5KmK2i4rQ=; b=uFVp1G/mx1bXQdDEsx900L+pyU
+	NJJQ3Pkp8P2r/MzBdY9qgItXgONfu82kQ1Cd3Xot+jyxCnem1rgvS5k21JA+9I7VyIGLlE+RmcPpN
+	jrRpI7QiamPETXd5KqCBoSG0LEeT2xnLXzWP8WcG1uHFxZMNliww+wCAI1gxryiPh/pRPBrOahBKD
+	zcMh5XCh+JKdk/2RnnArVoFPgobCDtkWmo+Kb2AV8F4hvJTyd4v/4G6LPHjrk6I3PI8XddlmsMYhl
+	eSS1mznlGWlztcgO0Yn+TowsJphvnQmTTRwNRwYqp8B4ebBULNgfNY1cI5vYXgWNIxSRKjZTvchDx
+	4bk9Us6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIZY-000000080NM-0HrI;
-	Wed, 12 Mar 2025 09:40:20 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tsIcu-0000000810f-0KSj;
+	Wed, 12 Mar 2025 09:43:48 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIIz-00000007wF2-0qs4;
-	Wed, 12 Mar 2025 09:23:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4S96UeyUjDKZ2gcPjL0631o3GuvsA+cY/IBcIb/qND4=; b=q+sOhdSqLe/dpNAUW0J4VXJK0a
-	3eXL/CVXt+wVgP9INLP7RhJUCzKtpJYrBdsVhV4BhPPYHsXnvJrwFW/hu9hc2Yoe379yvPDBof1vu
-	WZ1hYJwu8W8bhj+UXSG9qrS+E91+6HPa1B7oJHYtQ5dTm88H5hKEVuhTxBlNCotKZVASouBhBi6R4
-	uQR7au1BAQchwdhFVPcHFLy6Bhp9SjJzfvYvyOPiO1muPb1E0tUjKYRuEEMyLogR91IAyYwarRtIj
-	/4nHWx5AOHHgttnor5cMNVg2r1iY+x51BZIqgIA9FE4beWUglHxxWgNpmxMpLM81TvNWrwM02UYP2
-	y+R4LExA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:39538 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1tsIGn-0005Bo-2S;
-	Wed, 12 Mar 2025 09:20:57 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1tsIGS-005uzf-QE; Wed, 12 Mar 2025 09:20:36 +0000
-In-Reply-To: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
-References: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-amlogic@lists.infradead.org,
+	id 1tsITG-00000007zCI-1f1P;
+	Wed, 12 Mar 2025 09:33:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1741772030; x=1773308030;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qJVq2tQ/uqY4XgxZm+blhtdxS7KyEDaz44nIhBoEgwc=;
+  b=aNYEos6bPTxk4wOpNw/OcGYhhzWGtDLLeDU7Xp9WC/EQq58dvlp8d924
+   0U/1OJBEEI7ZO6kBgUKxzwClIx3kSb6B3aHtCDDHRkdWB6NSdg0u8BvxR
+   p2twdeeNEV0Msx7BO33ZSJeDmZv+dstpSUCunSl8pFUbmhftBaOC4zq3F
+   7KEbmwJDtqjJxTwJJ9x7eoyzeDSM7ZrovQY9ksLv2ifvxyA8WVGptHFG9
+   irZWPfK7GcxihUcAnoF1Tx5jufh9f2GOsHW9lZPOlDxiTkrQoAyeV9mNy
+   ul0knmsIRhdb09xl6YvkDUqZq9vdmRLRAB6JTimtdnoWEO3bOLpTXAltH
+   A==;
+X-CSE-ConnectionGUID: YWMirI3NQzCCHX5gxCrkyw==
+X-CSE-MsgGUID: 5bLkoJ7CQaiVm16PYmbNaw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="68201245"
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; 
+   d="scan'208";a="68201245"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2025 02:33:17 -0700
+X-CSE-ConnectionGUID: hykDrp8ETOaBdw7dlJJbsg==
+X-CSE-MsgGUID: IHLO9H3oTJWrBK/Y6SLyeA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; 
+   d="scan'208";a="120611799"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2025 02:32:36 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1tsIS1-00000001oYn-14Yf;
+	Wed, 12 Mar 2025 11:32:33 +0200
+Date: Wed, 12 Mar 2025 11:32:32 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andi Shyti <andi.shyti@kernel.org>
+Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-renesas-soc@vger.kernel.org,
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Kamal Dasu <kamal.dasu@broadcom.com>, Stefan Roese <sr@denx.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH net-next v2 3/9] net: stmmac: anarion: remove
- of_get_phy_mode()
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gregory CLEMENT <gregory.clement@bootlin.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: Re: [PATCH v2 00/10] i2c: busses: Introduce and use
+ i2c_10bit_addr_*_from_msg()
+Message-ID: <Z9FUsLC0TcglJZN_@smile.fi.intel.com>
+References: <20250213141045.2716943-1-andriy.shevchenko@linux.intel.com>
+ <c6xszdhx5ztexlqlmhvdn4dyz5ilzxsm7c62cvkmnwy2y3gaqc@owk2ani2emys>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1tsIGS-005uzf-QE@rmk-PC.armlinux.org.uk>
-Date: Wed, 12 Mar 2025 09:20:36 +0000
+In-Reply-To: <c6xszdhx5ztexlqlmhvdn4dyz5ilzxsm7c62cvkmnwy2y3gaqc@owk2ani2emys>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_022313_232936_B9822849 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20250312_023350_468948_0B03B166 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,79 +102,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-devm_stmmac_probe_config_dt() already gets the PHY mode from firmware,
-which is stored in plat_dat->phy_interface. Therefore, we don't need to
-get it in platform code.
+On Tue, Mar 11, 2025 at 02:12:03AM +0100, Andi Shyti wrote:
+> Hi Andy,
+> 
+> > Andy Shevchenko (10):
+> >   i2c: Introduce i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: axxia: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: bcm-kona: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: brcmstb: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: eg20t: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: kempld: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: mt7621: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: rzv2m: Use i2c_10bit_addr_*_from_msg() helpers
+> >   i2c: ibm_iic: Use i2c_*bit_addr*_from_msg() helpers
+> >   i2c: mv64xxx: Use i2c_*bit_addr*_from_msg() helpers
+> 
+> merged to i2c/i2c-host.
 
-Rearrange the initialisation order so we can pass plat_dat into
-anarion_config_dt(), thereby providing plat_dat->phy_interface as
-necessary there.
+Thank you!
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- .../ethernet/stmicro/stmmac/dwmac-anarion.c   | 21 ++++++++-----------
- 1 file changed, 9 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c
-index ef99ef3f1ab4..37fe7c288878 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c
-@@ -59,10 +59,11 @@ static void anarion_gmac_exit(struct platform_device *pdev, void *priv)
- 	gmac_write_reg(gmac, GMAC_RESET_CONTROL_REG, 1);
- }
- 
--static struct anarion_gmac *anarion_config_dt(struct platform_device *pdev)
-+static struct anarion_gmac *
-+anarion_config_dt(struct platform_device *pdev,
-+		  struct plat_stmmacenet_data *plat_dat)
- {
- 	struct anarion_gmac *gmac;
--	phy_interface_t phy_mode;
- 	void __iomem *ctl_block;
- 	int err;
- 
-@@ -79,11 +80,7 @@ static struct anarion_gmac *anarion_config_dt(struct platform_device *pdev)
- 
- 	gmac->ctl_block = ctl_block;
- 
--	err = of_get_phy_mode(pdev->dev.of_node, &phy_mode);
--	if (err)
--		return ERR_PTR(err);
--
--	switch (phy_mode) {
-+	switch (plat_dat->phy_interface) {
- 	case PHY_INTERFACE_MODE_RGMII:
- 		fallthrough;
- 	case PHY_INTERFACE_MODE_RGMII_ID:
-@@ -93,7 +90,7 @@ static struct anarion_gmac *anarion_config_dt(struct platform_device *pdev)
- 		break;
- 	default:
- 		dev_err(&pdev->dev, "Unsupported phy-mode (%d)\n",
--			phy_mode);
-+			plat_dat->phy_interface);
- 		return ERR_PTR(-ENOTSUPP);
- 	}
- 
-@@ -111,14 +108,14 @@ static int anarion_dwmac_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	gmac = anarion_config_dt(pdev);
--	if (IS_ERR(gmac))
--		return PTR_ERR(gmac);
--
- 	plat_dat = devm_stmmac_probe_config_dt(pdev, stmmac_res.mac);
- 	if (IS_ERR(plat_dat))
- 		return PTR_ERR(plat_dat);
- 
-+	gmac = anarion_config_dt(pdev, plat_dat);
-+	if (IS_ERR(gmac))
-+		return PTR_ERR(gmac);
-+
- 	plat_dat->init = anarion_gmac_init;
- 	plat_dat->exit = anarion_gmac_exit;
- 	anarion_gmac_init(pdev, gmac);
 -- 
-2.30.2
+With Best Regards,
+Andy Shevchenko
+
 
 
