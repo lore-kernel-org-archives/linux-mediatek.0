@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B11C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 10:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBE7C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 11:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jq9hWTh28AULQZLwRWR4IEZNtznQ77t9F1aproSHTVY=; b=JVPf6ChdHuaymHT16TDuRlVCqM
-	IOKc7e3urmeD0ZvOPPUxegsYRZLltjoUcKxNGTc82NTb3tgUnX+z9E3ZdRu4nvPPTbmtT1/TzcZKh
-	gYi404qLB4jiCsF1/IICN/pR/UDBd8mB81USB+CHAS+ZCXdI8u8HIWOuxS5Dj8m69pzA2+Aq6KEbw
-	dEm/bR+PZ1UEpEkUStRT0Inm+rVcfSjKbrs13pafWR6PzKNTrE3hQjV7Bi6pApDh7F63RaUdrOPdg
-	LlDTFMJ+iql02AZn+79rDK1qcSggv8TaDUhGAjFwEKAkesvHgecdKGcXKC4mu1qihn8afHogWnuuH
-	nMn5N/wQ==;
+	bh=mxzmWWsaWRiq45r0L/zxKeyJjU9fd3lt4WjlEGIOB28=; b=EAkBr4NsESGeemQducB3lMbYSM
+	2/FPBf591qbs00Tx1I5MK1H1a3ZCrkVwjeNc9q57++gH51Ry5yJKhcHqAb6MnFTFJBHEfSyvTXv9n
+	gab0vWP2Mdlf6F+h6qFhnZZucjoDL0xSU9jup5eXGSKUC2f6mzPvaf27aRSMkSuj8s7bjT7/tudGX
+	gCxiIzw2QEPz7w92LG4ysP72Axqw/veYY2iFYyESVnY/wk7XJ2rIY9x1H+0hKXeGRQ0ld228uquhb
+	2zyx54cINnL2HVLouKCCEFXNMLNJm6ss0GvnABcXGEFpYBFBTA21aYsnD8dS94i03qiwy4x5GxWkX
+	/2nMKLbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJoM-00000008C5Z-0Kxz;
-	Wed, 12 Mar 2025 10:59:42 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1tsJtE-00000008Ch6-23no;
+	Wed, 12 Mar 2025 11:04:44 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJZ9-000000088gh-0ay0
+	id 1tsJZC-000000088iA-1GZh
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Mar 2025 10:44:00 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-22359001f1aso153868035ad.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Mar 2025 03:43:58 -0700 (PDT)
+	Wed, 12 Mar 2025 10:44:03 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-2ff85fec403so1284704a91.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Mar 2025 03:44:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1741776238; x=1742381038; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1741776241; x=1742381041; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jq9hWTh28AULQZLwRWR4IEZNtznQ77t9F1aproSHTVY=;
-        b=d0NfefxDy5x4FIGOzFp0S2vQWleNSAEFgGTa4hG2+9SMxhS8USNySCekEMm8fSWK5B
-         CXlV0elRCpu2t60Fm1Sp68erZT2bTLTq6cNhV77LS9fl2AUkPB+bR1SGlOMPwUdDMHkP
-         UyrdJxXM0OcabV4oenwC6hD8uWeSqXor/yr8c=
+        bh=mxzmWWsaWRiq45r0L/zxKeyJjU9fd3lt4WjlEGIOB28=;
+        b=Eu5ajO95WMUDPf9L0BlqmBC2c/lJ8HiwthivDLX1Y798tK+2L2dvJpk6yAjv4XTQV+
+         masCNyddVguZiVA3vQQ9ZXGB3gA1GwWOZETatxZkNoO/zezZKqjwmFFDhyQbo+GRnyws
+         ZQQpJ1elcNeO/tyxJfH799eoSNhqlugq56fmM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741776238; x=1742381038;
+        d=1e100.net; s=20230601; t=1741776241; x=1742381041;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jq9hWTh28AULQZLwRWR4IEZNtznQ77t9F1aproSHTVY=;
-        b=pFf1mm9MSIxl1PExQ+yHBw8fmygz9vdJJeJRgRlHCsZDiyA/QbCBKoS3j42RNbHAcs
-         IaETYvoEcqADUy7ixv028ny8MYWERZ/Mhwf57ApipleBXZcY70NX47vNIMHQHSwfGfWA
-         WBgKyn4m8Fmeha3j3/aWTV0amYXXrkoryX7jZMQuMe6kHINUiwO9hg/O0RfjoIq+RmQV
-         Nenu4jMQ9hzfrUP3Ee9xVADAUMEUrJd5x25fkNK4WhpKnPzD4KAG6BVZWCDrxqwxTI9R
-         CkwRrNi1k9LRLmanTz1UsE9EGLNscDouiYXkgbkPafgbZF5ZDFyXnmfn0zpth+MyR3mW
-         PGMw==
-X-Forwarded-Encrypted: i=1; AJvYcCV2Dccu7EPCz3s2fbRTCw80vvejGLCMeohAZbZIm9h7JcD+t5o046vCspBBGVdkyhIIOhczdo9ijxrC13QfeA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTipq6HRdWrcROsMh9izF9b/SgFi/FQ+4Emp+ABRq7OD4NfqWJ
-	oZffDCWXSTpc9uDwQW/lISUrT4reC/oY3NbymLgd7diIh0teNvsLD/8O4XJcHQ==
-X-Gm-Gg: ASbGncsYd2kmIkcz9I8p9nHVZR/jsZD3+MEH+yW/8kHI5cR7ioTDrzPbKQ8XnVS2Ihn
-	3svRZ5um2fW2g6oKZYzXgYQfLUdxRwDlj+feGT1Jo7w01f/0C2xaoqgT9dvpEmkgTs/thDwqU1L
-	YMCHF434ICx7b56qx2pmUykE2fgSYAYhuxysoxpqsJ77o0I4Z3olbzfGbuBEQMEvSpPhx2xpqwy
-	EUknnAApBHMsSdGMIyy+Ac2cIj1rPkVQDIyDIVchPFZ73mpks1/nxFt9IAiienrrxeiOpeuSehn
-	CF3e2R3VUcsbngD+vFWZLJUFq1I5ScucZZh3jrxDDn4jsuu+CUhHbM30U8BMqzw=
-X-Google-Smtp-Source: AGHT+IEi3t/oRgH4tgJIjV7dZt0tXAW1XWislifFGuRCmj9fEunpdxZYOlzBA/knNfUOTDyGKEKM4w==
-X-Received: by 2002:a17:903:2445:b0:21f:52e:939e with SMTP id d9443c01a7336-2242899465emr387459965ad.28.1741776238354;
-        Wed, 12 Mar 2025 03:43:58 -0700 (PDT)
+        bh=mxzmWWsaWRiq45r0L/zxKeyJjU9fd3lt4WjlEGIOB28=;
+        b=A7ih/cl92zaqG3PZrCXF/0C8V5QvIww7WlzPpwDI1akrUWjbBYRKGbnQbMJcrTAfHP
+         8rMBJRUDAq7LJFkcqV7spIRlipRzvpFbZqkCvAdFc7rbOXCURs7q6b/snpvfqzGKL4BR
+         ZA8vwV4dovca16po0lWcyLFlisvEFG+7+DRF9P3oCXGOzKZnxBeIU4kNtoqVz6oVLGCE
+         H7qMetgkO15dTxSA8c5duZ/yEvFlZSV/K6caSrI0SUDKfTJuvF+I29j33oOwi+lEVla1
+         iqwqOYWCMv6EgsA1PXmBNiuePCvKcsGYucA3JEnLhYvr8+W4ZYgyXc0mIUpqbBCpgUKN
+         G8IA==
+X-Forwarded-Encrypted: i=1; AJvYcCX5kdi9e4kzvS7qTGe2f/5FQawqb6kTEU8nvDibIeMCdO0qsREfrsn0xP/fZXwzLptJKB+8MCz09HbYxS9cLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyZhjyOcnllBhsAi2XS9ZRMlumJ0cDY6i8maGpTyluRuEXIN5vM
+	XtDUCTtKI+ypGB0/lmtukmpRtLUJkpH1MsBX4KEL0obn2CHb1ZADziFxMJbE+A==
+X-Gm-Gg: ASbGnct4GxJLKrMQx5Bx50aY3HPkBNZDFtJLJ2Cd7BM//2AhTDyJoxNtn5e5GCZXbdj
+	nCIDC935LB7a8ksEDYH4grtlpF0qcI0e7zTZ49g0sQgSti5pwsPazJfuCbzEm5IloEJvmz7ZBbm
+	Hi3XZswAGZCzyjGih43PgeBIyUB359CXIKkA8kh+pHJKfiQ8xct4HSi2szL/FA42woGJHlvLuKo
+	mCYKPJYjIryXWgkEtAVqbpS0+kouDS3QlPrtQTQK6iDH1W+L2r9i0dAQnJIYYPKcfta/YaZ38Vm
+	Bfpw9nT/Z6tkjCa9MHoIXtOXpcMGM61U2W/Vh6X5aspkfVvOUQZOVhlL7ya155w=
+X-Google-Smtp-Source: AGHT+IFVcVkyWzasFzgLcXK9na9pqX5Q0hBXH6KQUhneK1y88uS9e76oMaG5HptT/l+HGn/E0FP3lQ==
+X-Received: by 2002:a17:90b:384a:b0:2ee:9661:eafb with SMTP id 98e67ed59e1d1-30100546828mr9403835a91.12.1741776241373;
+        Wed, 12 Mar 2025 03:44:01 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:b5ed:b71c:fb14:a696])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3011926599csm1405675a91.35.2025.03.12.03.43.55
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3011926599csm1405675a91.35.2025.03.12.03.43.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Mar 2025 03:43:58 -0700 (PDT)
+        Wed, 12 Mar 2025 03:44:00 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -82,17 +82,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	chrome-platform@lists.linux.dev,
 	linux-input@vger.kernel.org,
 	Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 2/8] dt-bindings: arm: mediatek: Merge MT8186 Voltorb entries
-Date: Wed, 12 Mar 2025 18:43:36 +0800
-Message-ID: <20250312104344.3084425-3-wenst@chromium.org>
+Subject: [PATCH 3/8] dt-bindings: arm: mediatek: Add MT8186 Squirtle Chromebooks
+Date: Wed, 12 Mar 2025 18:43:37 +0800
+Message-ID: <20250312104344.3084425-4-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.rc0.332.g42c0ae87b1-goog
 In-Reply-To: <20250312104344.3084425-1-wenst@chromium.org>
 References: <20250312104344.3084425-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_034359_187911_1AD54D39 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20250312_034402_337106_9791D8CB 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,33 +108,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are only two different SKUs of Voltorb, and the only difference
-between them is whether a touchscreen is present or not. This can be
-detected by a simple I2C transfer to the address, instead of having
-separate compatible strings and device trees.
-
-Drop the SKU-specific compatible strings and just keep the generic
-"google,voltorb" one.
+Add an entry for the MT8186 based Squirtle Chromebooks, also known as the
+Acer Chromebook Spin 311 (R724T). The device is a 2-in-1 convertible.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 3 ---
- 1 file changed, 3 deletions(-)
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 108ae5e0185d..49ddc504c160 100644
+index 49ddc504c160..f0b4ccd81c4d 100644
 --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
 +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -339,9 +339,6 @@ properties:
+@@ -291,6 +291,10 @@ properties:
+           - const: google,steelix-sku196608
+           - const: google,steelix
            - const: mediatek,mt8186
-       - description: Google Voltorb (Acer Chromebook 311 C723/C732T)
++      - description: Google Squirtle (Acer Chromebook Spin 311 (R724T)
++        items:
++          - const: google,squirtle
++          - const: mediatek,mt8186
+       - description: Google Starmie (ASUS Chromebook Enterprise CM30 (CM3001))
          items:
--          - enum:
--              - google,voltorb-sku589824
--              - google,voltorb-sku589825
-           - const: google,voltorb
-           - const: mediatek,mt8186
-       - items:
+           - const: google,starmie-sku0
 -- 
 2.49.0.rc0.332.g42c0ae87b1-goog
 
