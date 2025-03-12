@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C83C28B30
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 14:26:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821A9C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 14:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tpuLCscWJ4qgGgaNgt9rKZJTdCZhl33TV3dP6EeCHWs=; b=qiw26UsNdTfrhR8/uVY60DMYQE
-	bDJfmXP8nUqXm+Tqlujm8JEj9+mb6N197ZOKl6HscF+9MNZIzhiTMQFWdnM4imdMGQ0iF3ZI5t2+Q
-	O/IBX6XMnFeK83n1VKT4lFJraGE4YbD/FjALQOHbEmvti6KUh9x3azrQ3dhTAQi6n80woZVCAivsU
-	YfIhihecupQYwcNQnus6sJYgAqhnMABpZD2jo/JWieRWvY9PZFtjZpYrEZbp4GAE2aaEoIC8kUFuj
-	PcLmEOHMIzQLChygvmduVxOCI7DOIPlAAYujhS55jAqH/PGMT2bnsbsDUcN40FaATgWJOkjg0M8eU
-	iem7l40w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zATmQj0XyB7/VoZzjPmz0V+W644epir4Rl4IGnvK18o=; b=AtkV0PjH5uUjKB8hui1IUK3yk7
+	oX7FhygevTSZIVierXHlhg1WA0lVs05CFmK5El/sVI/ppkCbK4ryXLZbxYLAShiAsLbPodDJo8onm
+	QY/XvMMM/5JNHCUFpeJKVOb9hfP9Zc0DHFramACxx50q8dexH9FNmtguG/Fa/g6hUt+zo72UGU8eY
+	dVNo8t1WuYZOYylc4xlE49FxTSMvvKL4ourVxYzQ1M92274eh83u5X25V/jIpBWk37xtifLjulblh
+	f7aTy/pS5eYS6GFWVwX84F/4B7YYH0rbNGAy87wFaMtibbIlYsJkVlrPha4f6wceodFxEmr3xhu14
+	r2+pWncA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsN28-00000008gz9-116f;
-	Wed, 12 Mar 2025 14:26:08 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tsNQ1-00000008kcM-169i;
+	Wed, 12 Mar 2025 14:50:49 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsN27-00000008gyo-3AA7
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 12 Mar 2025 14:26:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=tpuLCscWJ4qgGgaNgt9rKZJTdCZhl33TV3dP6EeCHWs=; b=QKR1VuZhIbmLiOKUik1mYb8A8q
-	o8A+7FkQJbFESQkONMN6CxYfLRsW1macd6yYlq+S4vqbr9bsdXYUPGkP97lriq8p/ZwK9TQoG8ZCa
-	Wnb/PCwYJD+l4pBXQwpDBHEpg4E/iRg9kPcJ9OWI+JFs0KydWfJBfvEhgnlEl6hVrYABtgwjLiFt9
-	rrhLd0tRRerCjHKoAt2fyzzU0+3lUQOvbIQUsZfI8pvEnvgjSIYLWZK/kQD3bwcgPmFCLbf6uBVzn
-	rOs4pWmww5i05RbIGELwga4Rg4ZEhax+j8oHuCfg+dHZ+lMN54fA7XDPd+b1ENEa2LUQTowrNeCa9
-	Kje8v1nw==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsN24-00000002PaP-1IEH
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Mar 2025 14:26:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741789559;
-	bh=D30yYcLGzCKJP0xV33q/0S+ufxFtV0zBn7R8mUrRc9M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Tl3nEoNdxDokHqsqyV8dCb3k39ooik8vJ4denOVETXReAYKWE06x+vVqe32mEGkyM
-	 /dnJqbP4i//hctFThaVzNPfIFYkRpQhWFaIeAI5izl173G5cPZu9QCFq9cPgmwXaPZ
-	 WwXb+tH+xvAlia5PWDVFrKenP3JkcdafO5U4j3/7HRcAi0bHYfLD38zfiqpXXylWTf
-	 sRzFBu6uOYskRDnQadlKCPhDsII0MsENDzj6AbhfeOLYGkw2G2u++8Jq1XCGlaEugP
-	 Msl6PAhIu4WTkNN8nn2Yx9DsCrskwlLCttJc4S/p+BrGS9sonRFgt9Lvr3OStHraEY
-	 YZywoGLxZ0/ng==
-Received: from notapiano (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8F59517E1134;
-	Wed, 12 Mar 2025 15:25:57 +0100 (CET)
-Date: Wed, 12 Mar 2025 11:25:54 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
-	krzk@kernel.org, daniels@collabora.com, airlied@gmail.com,
-	simona.vetter@ffwll.ch, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: defconfig: mediatek: enable PHY drivers
-Message-ID: <5706c76e-7558-4405-a4c6-cab9cb5ddf65@notapiano>
-References: <20250312041943.25676-1-vignesh.raman@collabora.com>
+	id 1tsM4s-00000008YtD-0uY0;
+	Wed, 12 Mar 2025 13:24:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741785874; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=KQ2P/C6BtkYsueq4akRJPsp2naRHaM7GZ9RL9q/HknxMqsZ/t5EvSXen297LmjxH4CUXZHk7qFgYS0Q2NIGXE2V5uMsCi7o5G3kZuOQ43ORA71hSJJLHp4vgfH3mDCh2oIVbkOSE/JPvQ/P3NThah7EoXKW4HKltNqtwVClsc5E=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741785874; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=zATmQj0XyB7/VoZzjPmz0V+W644epir4Rl4IGnvK18o=; 
+	b=BXsSNOEqCeOufLJNWTjNcx3/6+LmMi2c3f59FFUK7kSGQQyDsVqVKD8CU04rMN2uSt2kgvrui/1WgqHpOF/jnVGpMkwy/GE0vCbkRETpaeFgpuQcrgFiV9LvpHRaRcD6QxhcGneqmXcb+G9tY2lP1e80YuEdXjjV5KAsgJ+rvNo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741785874;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=zATmQj0XyB7/VoZzjPmz0V+W644epir4Rl4IGnvK18o=;
+	b=D/UFUKhGVuHLpq0HvEd/liwgMeVn13FHRlBLaLu7IOARHB62GAz0tEKwquyBZfNx
+	rJ2Vw+kG2SEajG9072z1u05X2ZmvLxXX/A+92OmcHrofUcR9mGZjrAMwUUpYXYKHSHz
+	nb7bowQoGRkqA24ygY9kQEUESaft6X0CN82kJ1A8=
+Received: by mx.zohomail.com with SMTPS id 1741785871899734.2310655484773;
+	Wed, 12 Mar 2025 06:24:31 -0700 (PDT)
+Message-ID: <3aca6477-6014-4c24-8aa6-6c601fc54a32@collabora.com>
+Date: Wed, 12 Mar 2025 10:24:24 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250312041943.25676-1-vignesh.raman@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/6] drm/panfrost: Unify panfrost_mmu_enable/disable
+ common code
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com
+References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
+ <20250310195921.157511-4-ariel.dalessandro@collabora.com>
+ <20250311085158.37329b0c@collabora.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <20250311085158.37329b0c@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_142604_499572_38F99180 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20250312_062454_347353_2B0159DA 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,46 +84,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 12, 2025 at 09:49:26AM +0530, Vignesh Raman wrote:
-> The mediatek display driver fails to probe on mt8173-elm-hana and
-> mt8183-kukui-jacuzzi-juniper-sku16 in v6.14-rc4 due to missing PHY
-> configurations.
-> 
-> Enable the following PHY drivers for MediaTek platforms:
-> - CONFIG_PHY_MTK_HDMI=m for HDMI display
-> - CONFIG_PHY_MTK_MIPI_DSI=m for DSI display
-> - CONFIG_PHY_MTK_XSPHY=m for USB
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
->   - Include board details in the commit message.  
->   - Sort newly added PHY configs in defconfig.
-> 
-> ---
->  arch/arm64/configs/defconfig | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index 1f25423de383..87e8cbd3fd26 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -1572,7 +1572,10 @@ CONFIG_PHY_HI6220_USB=y
->  CONFIG_PHY_HISTB_COMBPHY=y
->  CONFIG_PHY_HISI_INNO_USB2=y
->  CONFIG_PHY_MVEBU_CP110_COMPHY=y
-> +CONFIG_PHY_MTK_HDMI=m
-> +CONFIG_PHY_MTK_MIPI_DSI=m
+Boris,
 
-This isn't the expected ordering. I imagine you manually added these configs in
-the defconfig.
+On 3/11/25 4:51 AM, Boris Brezillon wrote:
+> On Mon, 10 Mar 2025 16:59:18 -0300
+> Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
+> 
+>> Both these functions write to MMU_AS_CONTROL register in the same way.
+>> Define a common _panfrost_mmu_as_control_write function with the shared
+>> code.
+>>
+>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>> ---
+>>   drivers/gpu/drm/panfrost/panfrost_mmu.c | 33 ++++++++++++-------------
+>>   1 file changed, 16 insertions(+), 17 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> index 294f86b3c25e7..31df3a96f89bd 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> @@ -121,38 +121,37 @@ static int mmu_hw_do_operation(struct panfrost_device *pfdev,
+>>   	return ret;
+>>   }
+>>   
+>> -static void panfrost_mmu_enable(struct panfrost_device *pfdev, struct panfrost_mmu *mmu)
+>> +static void
+>> +_panfrost_mmu_as_control_write(struct panfrost_device *pfdev, u32 as_nr,
+>> +			       u64 transtab, u64 memattr)
+> 
+> I'm honestly not convinced this is needed. Let's just stick to
+> panfrost_mmu_enable/disable().
 
-To get the right ordering, after you've added the configs anywhere in this
-defconfig, do a 'make defconfig', then a 'make savedefconfig', and copy the
-generated 'defconfig' file at the root to this location, then you can add just
-this hunk to the commit, and it'll be in the correct order.
+Ok, will drop in v2.
 
-Thanks,
-Nícolas
+Thanks!
+
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
