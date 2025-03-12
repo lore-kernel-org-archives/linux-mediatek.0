@@ -4,110 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07847C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 14:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770AAC28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 14:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V9deP4meAaw3fsHXwNjSWygikDpr+E671OV8SJI+r1I=; b=A6AL1HsV+PHgjZnq1oY7/+uEQ8
-	+FBsfPnsa+pC4elvMJQWGiZpw834PNgnFgVrMpCaKeGPFT/PC3jVtbkvZvlwwbXEbitl+hBZne2zK
-	5q4wxFryYNgZtwYJCcniFRSmhnFx6ldBGCxwEJNzt1pfpvxPwdkTvHlsvR6I10ZdZFagIFyAi60qE
-	6l+XyKj027rGo+Mu3bc2hyfoJBT5MW1tLl9Vg+oqaaWD4lKSagX4eOpPWLHDXla1/fYPXT1mWAzW6
-	fB0IQ4+2uthcZr0xqRmnCNfTsZh1mnUjnubHhcrkKTAOiMcx6t2XAytNvTJB6ardELH+ZaEeaIlPy
-	HlX8/ouA==;
+	bh=Lr9QZU/bvI8GMhShiHoF7m3aAfwgiT4ZYtZzTBsdWHI=; b=VPJb1QbRrEIRZM2NxaN6VWM/cK
+	nAneimoyJUJ1B1yc7ADZrEV/+o3wnAqNUTNSZar19JayP6M8SALvaoyzzRNwuZKX/NhsqRWyFKB/H
+	CRMut1bT4DEF9xUWWNPxuB08ixlUEC8HxvzOWBbxTz8bxegw0VqUz/i7FsyjiR/A2izrD4LYLxTL0
+	pPOJTOr3gxokqeoZ2MmGqqgL5rmkocTbXvZWbn2PRYvQihPto0M/k8mlFychy8gYZd1lEIw9BP9rI
+	gwmPdrjZgu1xA/0EoLNqeXM8Gxy4Zc/5D9bBrcVJwoU4UTTpUsMj4AaJcPZJOZ0w0WfudOtcqnmlo
+	p2T5M95w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsMiR-00000008eOg-45Fm;
-	Wed, 12 Mar 2025 14:05:47 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tsMxC-00000008ftD-3UfL;
+	Wed, 12 Mar 2025 14:21:02 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsKms-00000008LLp-19c9;
-	Wed, 12 Mar 2025 12:02:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8B23AA47076;
-	Wed, 12 Mar 2025 11:56:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B077C4CEE3;
-	Wed, 12 Mar 2025 12:02:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741780933;
-	bh=mBta4yElsv6IkElPbyvpc1LNA04llRkz48NEQsZEkOo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=r+YprDABMOqcT3Cm5b+oCRMbfmFsBTLIrQX0UhXo1K23s6+RTUooZ3c93Gn+z+X2/
-	 a46XUrqgyGRvbUjP1RrBVfxwskPHTvVWhQa4AzqS3Kf17Ij7m6LT9yCb3+8CrutkH7
-	 8agHLBqRYorQ07sB4vBXCiJOHBxIPnqc1dvEpcofZZvk777KUuLIvX3/HT+ge3M8LE
-	 jd805lFpgZsuzclzB36UIuLLCtgjo55YNyWHbvf7Y8kpvM7UFyvOd1O2p5VaRyWh0q
-	 XH4ZFtiRmYvjfukdro1pN3ktUpH0KHBYPIrrEjilu5yhBt9fKbTXKSk1b707kpmo7F
-	 HkqoTfmndO7ig==
-Message-ID: <6008832c-e175-4b02-90a6-f790dacd1d09@kernel.org>
-Date: Wed, 12 Mar 2025 13:02:05 +0100
+	id 1tsMxA-00000008frJ-1sh7;
+	Wed, 12 Mar 2025 14:21:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741789241; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=AmmAx8zhvqOgEriWIg3TJZ/eYdtxX9PCy6ZmTadMSJYjAgixhbollceHi3mKg/7oFug+mG5roQOaMYB8wrrbSk0AIxiBMJXtT/n/I4WophxszsLyJRcN+5Nxc1SdHCoWGPscyDdidlzwkDvvYit0rg3eFjmE5Jmpbam2egWw6ak=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741789241; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Lr9QZU/bvI8GMhShiHoF7m3aAfwgiT4ZYtZzTBsdWHI=; 
+	b=Zx9kKVijTQMLRQ0p47XY3emFrNcG1mhTRjh182Mbx2zGh/H1t/bgiLT2VxW6+AJhGAr6Yh4Jg2KLhTvUg1+khHxEpxLMp6qleYDA9h8lqHxcyCROMtfMKVZ9gdCkPTHiOmBtkGfM6gPul/JOHdnlBknfKcvZ9kID+9C4TwNSRn0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741789241;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Lr9QZU/bvI8GMhShiHoF7m3aAfwgiT4ZYtZzTBsdWHI=;
+	b=MjBhGQ5krNUbylNTnTWgJZHxsI2lu5fkeWB8gFoRzDJVpbEUIp2vA/cMZ+49UzH4
+	XwZjhlBKSwu0GIqUzZwRUUZYPiIRmIGvLmzYLlwHwW3wqiK6LyS+bZfI0oOhtNroeH0
+	+FcgML0nUt4txxMwwMMg/vl0wZ2PCzL+7u+UU/3c=
+Received: by mx.zohomail.com with SMTPS id 1741789239857600.4648741596387;
+	Wed, 12 Mar 2025 07:20:39 -0700 (PDT)
+Message-ID: <d2ec6fe3-db78-4e8b-ac81-fd4c631a599b@collabora.com>
+Date: Wed, 12 Mar 2025 11:20:33 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250311122327.20685-1-friday.yang@mediatek.com>
- <20250311122327.20685-3-friday.yang@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v1 4/6] drm/panfrost: Add support for AARCH64_4K page
+ table format
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: boris.brezillon@collabora.com, robh@kernel.org, steven.price@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, kernel@collabora.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ sjoerd@collabora.com
+References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
+ <20250310195921.157511-5-ariel.dalessandro@collabora.com>
+ <760e3112-0433-41ab-ab39-faaf0463fbe8@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250311122327.20685-3-friday.yang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <760e3112-0433-41ab-ab39-faaf0463fbe8@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_050214_449332_E47E915B 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20250312_072100_570677_335F765A 
+X-CRM114-Status: GOOD (  28.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,64 +85,266 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/03/2025 13:23, Friday Yang wrote:
->  static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
->  {
->  	struct platform_device *smi_com_pdev;
-> @@ -528,6 +598,53 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
->  	return ret;
->  }
+Angelo,
+
+On 3/11/25 6:10 AM, AngeloGioacchino Del Regno wrote:
+> Il 10/03/25 20:59, Ariel D'Alessandro ha scritto:
+>> Currently, Panfrost only supports MMU configuration in "LEGACY" (as
+>> Bifrost calls it) mode, a (modified) version of LPAE "Large Physical
+>> Address Extension", which in Linux we've called "mali_lpae".
+>>
+>> This commit adds support for conditionally enabling AARCH64_4K page
+>> table format. To achieve that, a "GPU optional configurations" field was
+>> added to `struct panfrost_features` with the related flag.
+
+[snip]
+
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/ 
+>> drm/panfrost/panfrost_mmu.c
+>> index 31df3a96f89bd..4a9b8de2ff987 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+
+[snip]
+
+>> +static void panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
+>> +                  enum io_pgtable_fmt fmt)
+>> +{
+>> +    struct panfrost_device *pfdev = mmu->pfdev;
+>> +
+>> +    switch (fmt) {
+>> +    case ARM_64_LPAE_S1:
+>> +        mmu_cfg_init_aarch64_4k(mmu);
+>> +        break;
+>> +    case ARM_MALI_LPAE:
+>> +        mmu_cfg_init_mali_lpae(mmu);
+>> +        break;
+>> +    default:
 > 
-> +static int mtk_smi_larb_parse_clamp_optional(struct mtk_smi_larb *larb)
-> +{
-> +	struct device *dev = larb->dev;
-> +	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
-> +	u32 larb_id;
-> +	int ret;
-> +
-> +	/**
-
-Not a kerneldoc
-
-> +	 * Only SMI LARBs in camera, image and IPE subsys need to
-> +	 * apply clamp and reset operations, others can be skipped.
-> +	 */
-> +	ret = of_property_read_u32(dev->of_node, "mediatek,larb-id", &larb_id);
-
-
-...
-
-
->  static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
->  	.type     = MTK_SMI_GEN2,
->  	.has_gals = true,
-> @@ -729,6 +862,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
->  	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
->  	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
->  	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
-> +	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
->  	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
->  	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
->  	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
-> @@ -787,7 +921,10 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
->  			return ret;
->  	}
+> If you add a
+>          /* That should never happen */
 > 
-> -	pm_runtime_enable(dev);
-> +	ret = devm_pm_runtime_enable(dev);
-> +	if (ret)
-> +		return ret;
-> +
->  	platform_set_drvdata(pdev, common);
->  	return 0;
->  }
-> @@ -798,7 +935,6 @@ static void mtk_smi_common_remove(struct platform_device *pdev)
-> 
->  	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
->  		device_link_remove(&pdev->dev, common->smi_common_dev);
-> -	pm_runtime_disable(&pdev->dev);
-Does not look related to this patch. Is it some sort of cleanup to devm?
+> ...it's clear-er why this function doesn't fail (but still raises some 
+> eyebrows,
+> because if the `default` case is not reachable, why does it even have a 
+> print?).
 
-Best regards,
-Krzysztof
+Makes sense. In that case, makes sense to just simplify it as:
+
+         default:
+                 /* This should never happen */
+                 WARN_ON(1);
+                 break;
+
+>> +        dev_WARN_ONCE(pfdev->dev, 1, "Unhandled page table format\n");
+>> +        break;
+>> +    }
+>> +}
+>> +
+>>   static void
+>>   _panfrost_mmu_as_control_write(struct panfrost_device *pfdev, u32 
+>> as_nr,
+>> -                   u64 transtab, u64 memattr)
+>> +                   u64 transtab, u64 memattr, u64 transcfg)
+>>   {
+>>       mmu_hw_do_operation_locked(pfdev, as_nr, 0, ~0ULL, 
+>> AS_COMMAND_FLUSH_MEM);
+>> @@ -133,25 +223,28 @@ _panfrost_mmu_as_control_write(struct 
+>> panfrost_device *pfdev, u32 as_nr,
+>>       mmu_write(pfdev, AS_MEMATTR_LO(as_nr), lower_32_bits(memattr));
+>>       mmu_write(pfdev, AS_MEMATTR_HI(as_nr), upper_32_bits(memattr));
+>> +    mmu_write(pfdev, AS_TRANSCFG_LO(as_nr), lower_32_bits(transcfg));
+>> +    mmu_write(pfdev, AS_TRANSCFG_HI(as_nr), upper_32_bits(transcfg));
+>> +
+>>       write_cmd(pfdev, as_nr, AS_COMMAND_UPDATE);
+>> +
+>> +    dev_dbg(pfdev->dev, "mmu_as_control: as=%d, transtab=0x%016llx, 
+>> memattr=0x%016llx, transcfg=0x%016llx",
+>> +        as_nr, transtab, memattr, transcfg);
+>>   }
+>>   static void panfrost_mmu_enable(struct panfrost_device *pfdev, 
+>> struct panfrost_mmu *mmu)
+>>   {
+>> -    int as_nr = mmu->as;
+>> -    struct io_pgtable_cfg *cfg = &mmu->pgtbl_cfg;
+>> -    u64 transtab = cfg->arm_mali_lpae_cfg.transtab;
+>> -    u64 memattr = cfg->arm_mali_lpae_cfg.memattr;
+>> -
+>>       /* Need to revisit mem attrs.
+>>        * NC is the default, Mali driver is inner WT.
+>>        */
+>> -    _panfrost_mmu_as_control_write(pfdev, as_nr, transtab, memattr);
+>> +    _panfrost_mmu_as_control_write(pfdev, mmu->as, mmu->cfg.transtab,
+>> +                       mmu->cfg.memattr, mmu->cfg.transcfg);
+>>   }
+>>   static void panfrost_mmu_disable(struct panfrost_device *pfdev, u32 
+>> as_nr)
+>>   {
+>> -    _panfrost_mmu_as_control_write(pfdev, as_nr, 0, 0);
+>> +    _panfrost_mmu_as_control_write(pfdev, as_nr, 0, 0,
+>> +                       AS_TRANSCFG_ADRMODE_UNMAPPED);
+>>   }
+>>   u32 panfrost_mmu_as_get(struct panfrost_device *pfdev, struct 
+>> panfrost_mmu *mmu)
+>> @@ -616,6 +709,7 @@ struct panfrost_mmu 
+>> *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
+>>   {
+>>       u32 va_bits = GPU_MMU_FEATURES_VA_BITS(pfdev- 
+>> >features.mmu_features);
+>>       u32 pa_bits = GPU_MMU_FEATURES_PA_BITS(pfdev- 
+>> >features.mmu_features);
+>> +    enum io_pgtable_fmt fmt = ARM_MALI_LPAE;
+> 
+> Double initialization! :-)
+
+Will fix in v2.
+
+>>       struct panfrost_mmu *mmu;
+>>       mmu = kzalloc(sizeof(*mmu), GFP_KERNEL);
+>> @@ -641,16 +735,28 @@ struct panfrost_mmu 
+>> *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
+>>           .iommu_dev    = pfdev->dev,
+>>       };
+>> -    mmu->pgtbl_ops = alloc_io_pgtable_ops(ARM_MALI_LPAE, &mmu- 
+>> >pgtbl_cfg,
+>> -                          mmu);
+>> -    if (!mmu->pgtbl_ops) {
+>> -        kfree(mmu);
+>> -        return ERR_PTR(-EINVAL);
+>> +    if (pfdev->comp->gpu_configs & BIT(GPU_CONFIG_AARCH64_4K)) {
+> 
+> Why aren't you performing this check before kzalloc?
+> 
+> If you do so, you will be able to avoid having a goto, because this 
+> check will
+> simply return an error (struct not allocated yet, nothing to kfree).
+> This also means that you won't have to modify anything about the error 
+> handling
+> of the alloc_io_pgtable_ops below....
+
+Yup, definitely agreed. Thanks!
+
+>> +        if (!panfrost_has_hw_feature(pfdev, HW_FEATURE_AARCH64_MMU)) {
+>> +            dev_err_once(pfdev->dev,
+>> +                     "AARCH64_4K page table not supported\n");
+>> +            goto err_free_mmu;
+>> +        }
+>> +        fmt = ARM_64_LPAE_S1;
+>>       }
+> 
+> } else {
+>      fmt = ARM_MALI_LPAE;
+> }
+
+Ack. Will fix in v2.
+
+> 
+>> +    mmu->pgtbl_ops = alloc_io_pgtable_ops(fmt, &mmu->pgtbl_cfg, mmu);
+>> +    if (!mmu->pgtbl_ops)
+>> +        goto err_free_mmu;
+>> +
+>> +    panfrost_mmu_cfg_init(mmu, fmt);
+>> +
+>>       kref_init(&mmu->refcount);
+>>       return mmu;
+>> +
+>> +err_free_mmu:
+>> +    kfree(mmu);
+>> +    return ERR_PTR(-EINVAL);
+>>   }
+>>   static const char *access_type_name(struct panfrost_device *pfdev,
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_regs.h b/drivers/gpu/ 
+>> drm/panfrost/panfrost_regs.h
+>> index b5f279a19a084..2b8f1617b8369 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_regs.h
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_regs.h
+>> @@ -301,6 +301,17 @@
+>>   #define AS_TRANSTAB_HI(as)        (MMU_AS(as) + 0x04) /* (RW) 
+>> Translation Table Base Address for address space n, high word */
+>>   #define AS_MEMATTR_LO(as)        (MMU_AS(as) + 0x08) /* (RW) Memory 
+>> attributes for address space n, low word. */
+>>   #define AS_MEMATTR_HI(as)        (MMU_AS(as) + 0x0C) /* (RW) Memory 
+>> attributes for address space n, high word. */
+>> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_IMPL        (2 << 2)
+>> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(w, r)    ((3 << 2) | \
+>> +                             ((w) ? BIT(0) : 0) | \
+>> +                             ((r) ? BIT(1) : 0))
+>> +#define   AS_MEMATTR_AARCH64_SH_MIDGARD_INNER        (0 << 4)
+>> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER        (1 << 4)
+>> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER_SHADER_COH    (2 << 4)
+>> +#define   AS_MEMATTR_AARCH64_SHARED            (0 << 6)
+>> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_NC        (1 << 6)
+>> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_WB        (2 << 6)
+>> +#define   AS_MEMATTR_AARCH64_FAULT            (3 << 6)
+>>   #define AS_LOCKADDR_LO(as)        (MMU_AS(as) + 0x10) /* (RW) Lock 
+>> region address for address space n, low word */
+>>   #define AS_LOCKADDR_HI(as)        (MMU_AS(as) + 0x14) /* (RW) Lock 
+>> region address for address space n, high word */
+>>   #define AS_COMMAND(as)            (MMU_AS(as) + 0x18) /* (WO) MMU 
+>> command register for address space n */
+>> @@ -311,6 +322,24 @@
+>>   /* Additional Bifrost AS registers */
+>>   #define AS_TRANSCFG_LO(as)        (MMU_AS(as) + 0x30) /* (RW) 
+>> Translation table configuration for address space n, low word */
+>>   #define AS_TRANSCFG_HI(as)        (MMU_AS(as) + 0x34) /* (RW) 
+>> Translation table configuration for address space n, high word */
+>> +#define   AS_TRANSCFG_ADRMODE_LEGACY            (0 << 0)
+>> +#define   AS_TRANSCFG_ADRMODE_UNMAPPED            (1 << 0)
+>> +#define   AS_TRANSCFG_ADRMODE_IDENTITY            (2 << 0)
+>> +#define   AS_TRANSCFG_ADRMODE_AARCH64_4K        (6 << 0)
+>> +#define   AS_TRANSCFG_ADRMODE_AARCH64_64K        (8 << 0)
+> 
+> "Anything" shifted in any direction by 0 is equal to the same 
+> "anything" :-)
+> 
+> Those are just 0,1,2,6,8
+
+Well, I agree... However, I'm copying this from panthor as-is. As these 
+are similar drivers, I just kept all the macro definitions.
+
+> 
+>> +#define   AS_TRANSCFG_INA_BITS(x)            ((x) << 6)
+>> +#define   AS_TRANSCFG_OUTA_BITS(x)            ((x) << 14)
+>> +#define   AS_TRANSCFG_SL_CONCAT                BIT(22)
+>> +#define   AS_TRANSCFG_PTW_MEMATTR_NC            (1 << 24)
+> 
+> BIT(24)
+> 
+>> +#define   AS_TRANSCFG_PTW_MEMATTR_WB            (2 << 24)
+> 
+> BIT(25)
+> 
+>> +#define   AS_TRANSCFG_PTW_SH_NS                (0 << 28)
+> 
+> 0
+> 
+>> +#define   AS_TRANSCFG_PTW_SH_OS                (2 << 28)
+> 
+> BIT(29)
+> 
+>> +#define   AS_TRANSCFG_PTW_SH_IS                (3 << 28)
+> 
+> GENMASK(29, 28) or BIT(28) | BIT(29)
+> 
+> (btw, rinse and repeat for the memattrs)
+
+I think the criteria used in panfrost/panthor for these definitions is:
+* if the register field is 1 bit, use BIT()
+* if the register field is >1 bit, use the value (as defined in the 
+datasheet) an shift it.
+* and -be super explicit- do this even if the value is 0.
+
+I don't really have a strong opinion, but I'd attach to the 
+subsystem/driver criteria used as much as possible :)
+
+Thanks!
+
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
