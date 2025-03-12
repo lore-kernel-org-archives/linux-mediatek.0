@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8DB4C28B2F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 12:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507E5C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 12:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/9uocZIZisIjThKD+9nTSHQVi9teok8ybwPCt46AxsY=; b=dORDWWRSu5pXmDhRdlHcDOkZGu
-	73hQEKc25uECVj/9rjzasQljoqabVUbACIOuI+Db8c1X+F7SpwDyXALWJMedPuAAqX23oQkjo30bP
-	E9t0cL21tL7koJO6HgiClsJKXRsdZjLUYyCLFJTSqymGces+1m2vxec5kdK7fuuSPIrUiG7FQrcGB
-	Fmnvxz48XGwsO0mzBaCHzjxoGIuKBj4nwFms6hQqvhgAz/LsjqQqLWFPXHuRAyD4nmCGQAl3scEo0
-	ziWLPwLRRJKc0BzE2B1+NVQzPCHxcZIIZCnUIqvniB9joDrI88O4z6T3m9YvdD/VHUFbrobvs7Vya
-	R99xetHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fVm/D280GJEYENNPlv6whCksWJdmpr5CYr/oEEx4lPI=; b=10/h8gbNGoxIhzmRfYfbjkb5PZ
+	l11/JuJ+NBFP0hMDuBlkpkT9zDFSnso5JndUX3nCn8aVrfdS7DeaXoEwPy7/3HTCiYhL/Yugk5vHv
+	qkH9fgbJ8MN3vZZ3KZ84MonHlGrpyt1jplK/p9O/y/iR1FBu6Kx5Q+44r6QfPqqCsaAOWxx4AmC0g
+	3Ywq1pD+K5Dv71Otppc63CgHKLas1tY8cZ+jhPWL5+TUppHOr3yq7Clc3WaaKakiHDZKKsLPntYGL
+	YOVwZRjPCdlONsuljdkTuqwzWlsyf+OtOxpXFTST9v0dlS7M3QZnjak7bAQIHD0w/FT7DY9PegTef
+	TZPPJWzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsLDm-00000008PCp-3nFS;
-	Wed, 12 Mar 2025 12:30:02 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tsLXq-00000008Sq6-0JOr;
+	Wed, 12 Mar 2025 12:50:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsKJf-00000008Gza-0WQv;
-	Wed, 12 Mar 2025 11:32:04 +0000
+	id 1tsK2y-00000008E2s-0TDS;
+	Wed, 12 Mar 2025 11:14:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 47641A470A0;
-	Wed, 12 Mar 2025 11:26:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89F34C4CEE3;
-	Wed, 12 Mar 2025 11:32:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CE3305C545B;
+	Wed, 12 Mar 2025 11:12:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F04B2C4CEE3;
+	Wed, 12 Mar 2025 11:14:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741779121;
-	bh=D3v3yytTbbs+yU51Jxf4nyG7ShAl3dX1uUoabj+U+LA=;
-	h=From:Date:Subject:To:Cc:From;
-	b=pWUzYEGUh06oatgmiAHIbECuuVV8fofSwQuEE5jcXGXrJpLJHSEBJpaHIVDxy388N
-	 jKLyXp6Lw0GEa8Bt1mHslL8URNFZaKgRN3jOJHhICti1E5fJIwbudHwz0ObRG1168R
-	 MhAd1CjRBHysqKuIH1WTuy6qW6tbhjZp8yBV6luJo6pFN5wdhBdW+Pvllgt5hUoGXc
-	 givGYgwjMXNaoSAr5Jel3BNiRiHE6TKeJaQTyB+bSrt8OvEcE4ZiwFMAWIpqpMYvw8
-	 PCNihgu0K4ZLuX8H/NAPjHc0cF2RPOtH9Vp4gCzFtQsCHfgL6gkAJMY2EfGPJERQhW
-	 9Um8UFrXMlEFw==
+	s=k20201202; t=1741778087;
+	bh=4ZaNPtKmjehzI82M7KLgZa7FjF1q/x0G0f5lQ/Nm54w=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=VC+TH0LI7DoJxVsbEomdR9CDlxCi3ukZUEs+F3MY9l5s4IxdsrvBkmXxEMa+l7ckA
+	 L7QY+MwkGORAu2kbffdbwd/AHDR/CGO/kQ71A+30QfVaTlGwqkGcALQ5Vm1vTdAduc
+	 Tq8oeM4e5dgk/2E3VTsyGC9VHJTGGAtbDVjlQiErZe9vyBmpCA4bW/x+YWXys8HEpy
+	 oxu342EZCyiWVaQ8oOWmv6mnLo6YUhC5+qqzHGXdska4HjyqO8WyrjlkJZv2uvwH7N
+	 gnNUisWlvhlzuAn/Fcx0D/egbBtNE6wH+15ahHqw3KV5WSxi+oBgEBx2Ru28dmand2
+	 2MBHF0Fpx75sw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 12 Mar 2025 12:31:46 +0100
-Subject: [PATCH net-next] net: airoha: Validate egress gdm port in
- airoha_ppe_foe_entry_prepare()
+Date: Wed, 12 Mar 2025 12:14:02 +0100
+Subject: [PATCH 18/21] wifi: mt76: mt7996: set vif default link_id
+ adding/removing vif links
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250312-airoha-flowtable-null-ptr-fix-v1-1-6363fab884d0@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAKFw0WcC/x3MQQqDMBBA0avIrDuQpCYLryIupnWiAyGRidWCe
- PeGLt9f/Asqq3CFobtA+ZAqJTfYRwfvlfLCKHMzOOO8eVqHJFpWwpjKudMrMeZPSrjtilG+SH3
- wYbbO94GgPTbllv//cbrvH5foQ61vAAAA
-X-Change-ID: 20250312-airoha-flowtable-null-ptr-fix-a4656d12546a
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Message-Id: <20250312-b4-mt7996-mlo-p2-v1-18-015b3d6fd928@kernel.org>
+References: <20250312-b4-mt7996-mlo-p2-v1-0-015b3d6fd928@kernel.org>
+In-Reply-To: <20250312-b4-mt7996-mlo-p2-v1-0-015b3d6fd928@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_043203_306172_DC4557AE 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20250312_041448_238547_1D50391F 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,152 +77,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The system occasionally crashes dereferencing a NULL pointer when it is
-forwarding constant, high load bidirectional traffic.
+This info will be consumed by subsequent patches (e.g. in set/get tsf
+routines).
 
-[ 2149.913414] Unable to handle kernel read from unreadable memory at virtual address 0000000000000000
-[ 2149.925812] Mem abort info:
-[ 2149.928713]   ESR = 0x0000000096000005
-[ 2149.932762]   EC = 0x25: DABT (current EL), IL = 32 bits
-[ 2149.938429]   SET = 0, FnV = 0
-[ 2149.941814]   EA = 0, S1PTW = 0
-[ 2149.945187]   FSC = 0x05: level 1 translation fault
-[ 2149.950348] Data abort info:
-[ 2149.953472]   ISV = 0, ISS = 0x00000005, ISS2 = 0x00000000
-[ 2149.959243]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-[ 2149.964593]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-[ 2149.970243] user pgtable: 4k pages, 39-bit VAs, pgdp=000000008b507000
-[ 2149.977068] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000, pud=0000000000000000
-[ 2149.986062] Internal error: Oops: 0000000096000005 [#1] SMP
-[ 2150.082282]  arht_wrapper(O) i2c_core arht_hook(O) crc32_generic
-[ 2150.177623] CPU: 0 PID: 38 Comm: kworker/u9:1 Tainted: G           O       6.6.73 #0
-[ 2150.185362] Hardware name: Airoha AN7581 Evaluation Board (DT)
-[ 2150.191189] Workqueue: nf_ft_offload_add nf_flow_rule_route_ipv6 [nf_flow_table]
-[ 2150.198653] pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[ 2150.205615] pc : airoha_ppe_flow_offload_replace.isra.0+0x6dc/0xc54
-[ 2150.211882] lr : airoha_ppe_flow_offload_replace.isra.0+0x6cc/0xc54
-[ 2150.218149] sp : ffffffc080e8ba10
-[ 2150.221456] x29: ffffffc080e8bae0 x28: ffffff80080b0000 x27: 0000000000000000
-[ 2150.228591] x26: ffffff8001c70020 x25: 0000000000000002 x24: 0000000000000000
-[ 2150.235727] x23: 0000000061000000 x22: 00000000ffffffed x21: ffffffc080e8bbb0
-[ 2150.242862] x20: ffffff8001c70000 x19: 0000000000000008 x18: 0000000000000000
-[ 2150.249998] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
-[ 2150.257133] x14: 0000000000000001 x13: 0000000000000008 x12: 0101010101010101
-[ 2150.264268] x11: 7f7f7f7f7f7f7f7f x10: 0000000000000041 x9 : 0000000000000000
-[ 2150.271404] x8 : ffffffc080e8bad8 x7 : 0000000000000000 x6 : 0000000000000015
-[ 2150.278540] x5 : ffffffc080e8ba4e x4 : 0000000000000004 x3 : 0000000000000000
-[ 2150.285675] x2 : 0000000000000008 x1 : 00000000080b0000 x0 : 0000000000000000
-[ 2150.292811] Call trace:
-[ 2150.295250]  airoha_ppe_flow_offload_replace.isra.0+0x6dc/0xc54
-[ 2150.301171]  airoha_ppe_setup_tc_block_cb+0x7c/0x8b4
-[ 2150.306135]  nf_flow_offload_ip_hook+0x710/0x874 [nf_flow_table]
-[ 2150.312168]  nf_flow_rule_route_ipv6+0x53c/0x580 [nf_flow_table]
-[ 2150.318200]  process_one_work+0x178/0x2f0
-[ 2150.322211]  worker_thread+0x2e4/0x4cc
-[ 2150.325953]  kthread+0xd8/0xdc
-[ 2150.329008]  ret_from_fork+0x10/0x20
-[ 2150.332589] Code: b9007bf7 b4001e9c f9448380 b9491381 (f9400000)
-[ 2150.338681] ---[ end trace 0000000000000000 ]---
-[ 2150.343298] Kernel panic - not syncing: Oops: Fatal exception
-[ 2150.349035] SMP: stopping secondary CPUs
-[ 2150.352954] Kernel Offset: disabled
-[ 2150.356438] CPU features: 0x0,00000000,00000000,1000400b
-[ 2150.361743] Memory Limit: none
-
-Fix the issue validating egress gdm port in airoha_ppe_foe_entry_prepare
-routine.
-
-Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 16 ++++++++++++++++
- drivers/net/ethernet/airoha/airoha_eth.h |  3 +++
- drivers/net/ethernet/airoha/airoha_ppe.c | 10 ++++++++--
- 3 files changed, 27 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c0a642568ac115ea9df6fbaf7133627a4405a36c..776222595b84e4fba6ae5943420e0edf0d0ecf8f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2454,6 +2454,22 @@ static void airoha_metadata_dst_free(struct airoha_gdm_port *port)
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index bcca1850d471bc43390c2f9e2ffecf6d9a05f377..40efba5bcaac364f8aa1ebf528e283494178616b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -271,6 +271,7 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 			struct mt76_vif_link *mlink)
+ {
+ 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+ 	struct mt7996_sta_link *msta_link = &link->msta_link;
+ 	struct mt7996_phy *phy = mphy->priv;
+ 	struct mt7996_dev *dev = phy->dev;
+@@ -338,6 +339,9 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 
+ 	ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, NULL);
+ 
++	if (mvif->mt76.deflink_id == IEEE80211_LINK_UNSPECIFIED)
++		mvif->mt76.deflink_id = link_conf->link_id;
++
+ 	return 0;
  }
  
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port)
-+{
-+	int i;
+@@ -346,6 +350,7 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 			    struct mt76_vif_link *mlink)
+ {
+ 	struct mt7996_vif_link *link = container_of(mlink, struct mt7996_vif_link, mt76);
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+ 	struct mt7996_sta_link *msta_link = &link->msta_link;
+ 	struct mt7996_phy *phy = mphy->priv;
+ 	struct mt7996_dev *dev = phy->dev;
+@@ -359,6 +364,19 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 
+ 	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 
++	if (mvif->mt76.deflink_id == link_conf->link_id) {
++		struct ieee80211_bss_conf *iter;
++		unsigned int link_id;
 +
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		if (!eth->ports[i])
-+			continue;
-+
-+		if (eth->ports[i] == port)
-+			return 0;
++		mvif->mt76.deflink_id = IEEE80211_LINK_UNSPECIFIED;
++		for_each_vif_active_link(vif, iter, link_id) {
++			if (link_id != IEEE80211_LINK_UNSPECIFIED) {
++				mvif->mt76.deflink_id = link_id;
++				break;
++			}
++		}
 +	}
 +
-+	return -EINVAL;
-+}
-+
- static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 				 struct device_node *np, int index)
- {
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index f66b9b736b9447b31afc036eb906d0a1c617e132..c7d4f124d11481cd31c1566936cd47e3446877c0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -532,6 +532,9 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- #define airoha_qdma_clear(qdma, offset, val)			\
- 	airoha_rmw((qdma)->regs, (offset), (val), 0)
+ 	dev->mt76.vif_mask &= ~BIT_ULL(mlink->idx);
+ 	phy->omac_mask &= ~BIT_ULL(mlink->omac_idx);
  
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port);
-+
- void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
- int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 8b55e871352d359fa692c253d3f3315c619472b3..65833e2058194a64569eafec08b80df8190bba6c 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -197,7 +197,8 @@ static int airoha_get_dsa_port(struct net_device **dev)
- #endif
- }
+@@ -443,6 +461,7 @@ static int mt7996_add_interface(struct ieee80211_hw *hw,
+ 	mt76_vif_init(vif, &mvif->mt76);
  
--static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
-+static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
-+					struct airoha_foe_entry *hwe,
- 					struct net_device *dev, int type,
- 					struct airoha_flow_data *data,
- 					int l4proto)
-@@ -224,6 +225,11 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
- 	if (dev) {
- 		struct airoha_gdm_port *port = netdev_priv(dev);
- 		u8 pse_port;
-+		int err;
-+
-+		err = airoha_is_valid_gdm_port(eth, port);
-+		if (err)
-+			return err;
+ 	vif->offload_flags |= IEEE80211_OFFLOAD_ENCAP_4ADDR;
++	mvif->mt76.deflink_id = IEEE80211_LINK_UNSPECIFIED;
  
- 		if (dsa_port >= 0)
- 			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-@@ -633,7 +639,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
- 	    !is_valid_ether_addr(data.eth.h_dest))
- 		return -EINVAL;
- 
--	err = airoha_ppe_foe_entry_prepare(&hwe, odev, offload_type,
-+	err = airoha_ppe_foe_entry_prepare(eth, &hwe, odev, offload_type,
- 					   &data, l4proto);
- 	if (err)
- 		return err;
+ out:
+ 	mutex_unlock(&dev->mt76.mutex);
 
----
-base-commit: 0ea09cbf8350b70ad44d67a1dcb379008a356034
-change-id: 20250312-airoha-flowtable-null-ptr-fix-a4656d12546a
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.48.1
 
 
