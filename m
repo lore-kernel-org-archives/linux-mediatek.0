@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E508C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 23:13:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF00C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 23:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PQSKrOlMPfzl9nwDmSr8qh4iamX82LLyOlMFMg/9c7E=; b=sKFQ3GaigND1gGrwSQ9hkoScGs
-	aG9kZxL39pp2Ocrt8icxLXW4sian/5HTg71+oPZqWarobvd/c9DWY1kVmOvF9ZbZt7/6u2nVmdgTI
-	YR3axpPNeBIAWTFknlQPiBNa90fHXV+zkTj6Mrxz4B0EYSAK/NWLv69S5n3VcNhsiK9z96bcdcffA
-	C8o+D+StbrcDKydXL0JIwqkmDDY5Q+ArHbsj0Y4J5EtL5iauThleUFEcwZoA5HxGvVd3RpCrFRK8s
-	ZX4e1mxahfyBqT/7RFHs1k0uemsgLw1jH/GITXWb9RMaPpbqK25KRlf77mFJNEFOhw5g6CZ39yMhQ
-	QBjbo2dA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bIsH1iLH3iJLNxbDzTupE1Y7KPlVT6jjMyCRNL01ZWI=; b=xctudTucKRoeJcBBP3le+J+5U0
+	9jY/4NwUaoa6K0w8KL/eq3DjhhBo+eAfMOpvTg4zLJr7deo7R8a2cEygtuI/ivUw2nMav8iTjLtrl
+	Lw8gv2OffS1AogGGyoqzj9vUDCQDnn6mozduO5CtMoDmQiFco5cLWdneeaO5uZPS9IgRJAebvOey+
+	hPqwAraqYxSgE5L8iViY3CKU9VJnry5YyBXBTue559bhzMk5K82swtNJO9wwbl7/PySIRRfOlieNG
+	WexsenVyh4DTJwBi/1Ts5bDITPxcT2tuPXQNGHP1LcFxIK/WiZKRIAlN/2soCuws7VCWvdz31laFk
+	eDm4FWfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsVGW-00000009hBh-0XiM;
-	Wed, 12 Mar 2025 23:13:32 +0000
-Received: from mail.netfilter.org ([217.70.190.124])
+	id 1tsVVl-00000009igP-2NHr;
+	Wed, 12 Mar 2025 23:29:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsVEr-00000009h0A-2KAI;
-	Wed, 12 Mar 2025 23:11:50 +0000
-Received: by mail.netfilter.org (Postfix, from userid 109)
-	id C7D02602A9; Thu, 13 Mar 2025 00:11:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netfilter.org;
-	s=2025; t=1741821105;
-	bh=PQSKrOlMPfzl9nwDmSr8qh4iamX82LLyOlMFMg/9c7E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BgVlscR0bPKC2X7R3pSjdNhFWP4KMQsM+aoW1Tr19RecQ38KdHVUMdbJLxZgSp0tS
-	 Gnj7eeOeX9DWSAnDxE5AJ6ZLoAOm7gyGGIT0+yZ4z9dPlHpZlB6HMvPmIjfzY529J7
-	 ccCIzen5Laej81DL62cQhF9fSNF9HFsvEn0YCw6CI4JzYhFzTzYVYfTOxbOatr7ez7
-	 3f6r4MdHeEYuNIiQVYsbQMVQVFBK67r6VZAzQ91RJpdRjo0imU4EhnubJTzsxVZnW/
-	 p/sPgj74aUGaHc948Na17hMZDIee1NUWnBf8BiJvThoraKA1ZQqggKTnhA92NkYjHq
-	 uGttitNTKMf6g==
-Received: from netfilter.org (mail-agni [217.70.190.124])
-	by mail.netfilter.org (Postfix) with ESMTPSA id 49BB3602A4;
-	Thu, 13 Mar 2025 00:11:42 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netfilter.org;
-	s=2025; t=1741821102;
-	bh=PQSKrOlMPfzl9nwDmSr8qh4iamX82LLyOlMFMg/9c7E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qbeolRdzmWfAU19cU0ccSVcMVP9Fk4SSQN9BVqHZ8FLRhk39ZK03WcEJ+WQOmOxZF
-	 cy23JB5bF5+aVpudZJXvgQrTaeLjetLivZIvhEEDf9Re9Itl0VnGNk2tB0s4w2+kXT
-	 talIeV1XAVKL25ykSMxM5fUeXwDlOLPo7r2V1/53tyLuKpyHDKpWW+c4oRWWG6CHax
-	 4zIHURnVcKBNHgV75Bd3agsDnngcIvT3lvGyOfj2Ddp/CejMNpCEnvtz+qkgNMldVY
-	 o5hT/rRHam+N+4/Lhradu4N5nlIXFhpj14jDpnuYxuEfASgXrzhghIOpCK4MXyAr4O
-	 CBArB71yfg7xQ==
-Date: Thu, 13 Mar 2025 00:11:40 +0100
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH v9 nf 00/15] bridge-fastpath and related improvements
-Message-ID: <Z9IUrL0IHTKQMUvC@calendula>
-References: <20250305102949.16370-1-ericwouds@gmail.com>
- <897ade0e-a4d0-47d0-8bf7-e5888ef45a61@gmail.com>
- <Z9DKxOnxr1fSv0On@calendula>
- <58cbe875-80e7-4a44-950b-b836b97f3259@gmail.com>
+	id 1tsVVj-00000009ig5-2U76
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Mar 2025 23:29:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7F2835C3478;
+	Wed, 12 Mar 2025 23:26:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13CC7C4CEDD;
+	Wed, 12 Mar 2025 23:29:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741822154;
+	bh=x62sbzA5ZGFY6Vpx4VKtlq3SQzLkZlbRve7cNBb0oWU=;
+	h=From:To:Subject:Date:From;
+	b=kseCjW2Tq4Ugz8JV7IfKJEKkTCrp3D9G6oktITPUad7QBX82kKdRfBWTx1QYRq+ke
+	 YXcbgW7ngVzWCJ5Jmy/QDxYmb89kSLoM0A/Ff+WmnTdC2spJi4o6sB0Mw4myv41qfF
+	 q/mAC7HxNsVEmLECqr1ndkQGBs8mf3l2I0yevhqHlSCi12BRUPtmUu8til9a1Ydjfb
+	 c6SdP5U2VjMwSSR6ps/ii4soOv1MoSWHU/zKSIiQTVjsmFRQhjam7kNtUL1b7hFx/8
+	 Bi9cL8Rqrxr3YNtiwmrxNlR/2IzILq3D3xzQ4F1E4WtUXTBmVnzcz+xXYvZDiaFwWH
+	 1cdAPLUFq1Zeg==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Anusha Srivatsa <asrivats@redhat.com>,
+	Jason-JH Lin <jason-jh.lin@mediatek.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Fabien Parent <fparent@baylibre.com>,
+	Dan Carpenter <dan.carpenter@linaro.org>
+Subject: [GIT PULL v2] mediatek drm next for 6.15
+Date: Wed, 12 Mar 2025 23:29:09 +0000
+Message-Id: <20250312232909.9304-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <58cbe875-80e7-4a44-950b-b836b97f3259@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_161149_722762_AD9DC49E 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20250312_162915_716617_6ECE90FF 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +74,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kees Cook <kees@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Ahmed Zaki <ahmed.zaki@intel.com>, "Gustavo A. R. Silva" <gustavoars@kernel.org>, Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org, Ivan Vecera <ivecera@redhat.com>, Alexander Lobakin <aleksander.lobakin@intel.com>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Nikolay Aleksandrov <razor@blackwall.org>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, Kuniyuki Iwashima <kuniyu@amazon.com>, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, netfilter-devel@vger.kernel.org, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 12, 2025 at 05:21:29PM +0100, Eric Woudstra wrote:
-> 
-> 
-> On 3/12/25 12:44 AM, Pablo Neira Ayuso wrote:
-> > Therefore, I suggest you start with a much smaller series with a
-> > carefully selected subset including preparatory patches. I suggest you
-> > start with the software enhancements only. Please, add datapath tests.
-> 
-> Then I will split it in:
-> 1. Separate preparatory patches and small patch-sets that apply
->      to the forward-fastpath already.
-> 2. One patch-set that brings the bridge-fastpath with datapath tests.
-> 
-> > P.S: You work is important, very important, but maybe there is no need
-> > to Cc so many mailing lists and people, maybe netdev@,
-> > netfilter-devel@ and bridge@ is sufficient.
-> 
-> Ok, but my main question then is which tree should I work in, and
-> therefore which tag should I give my patches, [nf] or [net-next].
-> I think it will get more complicated if I split my patch-set and half of
-> the patches go to [nf] and another half to [net-next].
+Hi, Dave & Daniel:
 
-Use [nf-next].
+This includes:
+1. HDMI fixup and refinement
+2. Move to devm_platform_ioremap_resource() usage
+3. Add MT8188 dsc compatible
+4. Fix config_updating flag never false when no mbox channel
+5. dp: drm_err => dev_err in HPD path to avoid NULL ptr
+6. Add dpi power-domains example
+7. Add MT8365 SoC support
+8. Fix error codes in mtk_dsi_host_transfer()
 
-> What do you suggest?
+---
+Change from v1: Fix build warning.
 
-Probably I can collect 4/15 and 5/15 from this series to be included
-in the next pull request, let me take a look. But it would be good to
-have tests for these two patches.
+Regards,
+Chun-Kuang.
 
-I would suggest you continue by making a series to add bridge support
-for the flowtable, software only, including tests.
+The following changes since commit 2014c95afecee3e76ca4a56956a936e23283f05b:
 
-Once this gets merged, then follow up with the hardware offload code.
+  Linux 6.14-rc1 (2025-02-02 15:39:26 -0800)
 
-Thanks.
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.15-v2
+
+for you to fetch changes up to dcb166ee43c3d594e7b73a24f6e8cf5663eeff2c:
+
+  drm/mediatek: dsi: fix error codes in mtk_dsi_host_transfer() (2025-03-12 23:17:22 +0000)
+
+----------------------------------------------------------------
+Mediatek DRM Next for Linux 6.15
+
+1. HDMI fixup and refinement
+2. Move to devm_platform_ioremap_resource() usage
+3. Add MT8188 dsc compatible
+4. Fix config_updating flag never false when no mbox channel
+5. dp: drm_err => dev_err in HPD path to avoid NULL ptr
+6. Add dpi power-domains example
+7. Add MT8365 SoC support
+8. Fix error codes in mtk_dsi_host_transfer()
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (21):
+      drm/mediatek: mtk_hdmi: Unregister audio platform device on failure
+      drm/mediatek: mtk_hdmi: Fix typo for aud_sampe_size member
+      drm/mediatek: mtk_hdmi: Compress of_device_id array entries
+      drm/mediatek: mtk_hdmi: Move vendor/product strings to drm_bridge
+      drm/mediatek: mtk_hdmi: Remove unused members of struct mtk_hdmi
+      drm/mediatek: mtk_hdmi: Use devm managed version of drm_bridge_add
+      drm/mediatek: mtk_hdmi: Remove ifdef for CONFIG_PM_SLEEP
+      drm/mediatek: mtk_hdmi: Remove goto in mtk_hdmi_clk_enable_audio()
+      drm/mediatek: mtk_hdmi: Remove driver bound to HDMI print
+      drm/mediatek: mtk_hdmi: Cleanup function mtk_hdmi_resume()
+      dt-bindings: display: mediatek: dpi: Add MT8195 and MT8188 compat
+      drm/mediatek: mtk_dpi: Add support for Pattern Generator in debugfs
+      drm/mediatek: mtk_dpi: Use an array for pixclk factor calculation
+      drm/mediatek: mtk_dpi: Move pixel clock setting flow to function
+      drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
+      drm/mediatek: mtk_dpi: Move the input_2p_en bit to platform data
+      drm/mediatek: mtk_dpi: Add support for DPI input clock from HDMI
+      drm/mediatek: mtk_dpi: Support AFIFO 1T1P output and conversion
+      drm/mediatek: mtk_dpi: Explicitly manage TVD clock in power on/off
+      drm/mediatek: Add support for MT8195 Digital Parallel Interface
+      dt-bindings: display: mediatek: dsc: Add MT8188 compatible
+
+Anusha Srivatsa (1):
+      drm/mediatek: Move to devm_platform_ioremap_resource() usage
+
+Dan Carpenter (1):
+      drm/mediatek: dsi: fix error codes in mtk_dsi_host_transfer()
+
+Douglas Anderson (1):
+      drm/mediatek: dp: drm_err => dev_err in HPD path to avoid NULL ptr
+
+Fabien Parent (2):
+      dt-bindings: display: mediatek: dpi: add power-domains example
+      drm/mediatek: add MT8365 SoC support
+
+Jason-JH Lin (1):
+      drm/mediatek: Fix config_updating flag never false when no mbox channel
+
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |   7 +
+ .../bindings/display/mediatek/mediatek,dsc.yaml    |   3 +
+ drivers/gpu/drm/mediatek/mtk_crtc.c                |   7 +-
+ drivers/gpu/drm/mediatek/mtk_disp_color.c          |   4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c          |   4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c          |   4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |   4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |   4 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |   6 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 | 323 +++++++++++++++------
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h            |   9 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  10 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 |  10 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                | 108 +++----
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c            |   4 +-
+ 15 files changed, 336 insertions(+), 171 deletions(-)
 
