@@ -4,83 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C251C28B28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A668C2BA1B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GLIba+q4BDE9qdzTgPLlPQOlp5Vu1/gYQkbg2o8SPf4=; b=j2AVnmoVflD/Krc526pKapWJkU
-	FhQqrAJHJQnu0BK/SvQC+60urCgZIFhc3zWUE/CzVSdyXMyZYZZTviwuy5aR0ClyKw3EJ5CGWafbt
-	gb6YvkS6S/dtb73nNko4b5q77AoPeOx7QBh6Sm3aEFO7LPdClOp8LDBC9gg7TaUNJ26mWD15BgTIA
-	o0u0+QbZrd4XAR9Wzf1Gu8Js703kM6xQoK/sBs1oPJUxEvuHMutZr+ae3nz03ZH0+ot81Atn4/udM
-	HvUnlQiR7tewUUKn81/RdKAR2i5cdiy1TZnLrwvdnv4GDgxs0FjA/FSK8PhnD/mXKBT5jSPYqu2YO
-	0K2BcQ3A==;
+	bh=C6L3HHo29AD7EhEgKSzsEghpyqJqAdv8Rupc8YaUwX0=; b=ixJujMaNZcWcHeQJCVRqwCuj33
+	mNQ+ZJbVLq+Ptf1f+uvMcNOMUgSSbHfQUlO81CUJ3pppRxb9UDgHdC1Ki5Z+bdg3h7/IsM26m9kUC
+	Vu7u4A0GskAzlx6zKgDF1UhyuqKghV4shoJbSS8C10uwtsGkFLsVOqPl/n7ytAv4gXvWJkVg0XEkn
+	oYJcZhbCNCcgDUL/qlIZzqTK01oNGv5URHe3hi2zsFRoE58a6H02L9FcpL9TIDCKX5kgpLg1jnjHR
+	+jMbaoMEWfIf+gfwnJBxblSDF46tCi3FU4BQvTT+JPNXtZusZ8bOA7yP1ylul2k0/vUG0Rd2BERNF
+	WTviBN8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsICw-00000007va6-4APb;
-	Wed, 12 Mar 2025 09:16:58 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1tsIJF-00000007wnS-2ot6;
+	Wed, 12 Mar 2025 09:23:29 +0000
+Received: from mail.ventrazo.pl ([162.19.155.125])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIBH-00000007vM1-0A9b;
-	Wed, 12 Mar 2025 09:15:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GLIba+q4BDE9qdzTgPLlPQOlp5Vu1/gYQkbg2o8SPf4=; b=F6P8O9yMyitUkFBMj+62u1Wxx1
-	8tFlx/t5XL1sRU3psd0hU/hHxFYJJ3qA6cgX6fDUir0PJq0sN38pxNZlkOD9gBDQ42J+X36nhC6pg
-	eBwJv5WTwJ+FyAKjSVpPua8pcVcCMlAgTKNjuvr2JrVdikixn/gR8Fwp/IHDYeCzT40KqXW1y8Z4d
-	d6gdNon8uIGCgflq0cbdeTWJmKceAsN+ngdhOoTOziNmf7bHkdM8ynDjB/gXvEFHxAVqSFOHEXmTK
-	4d950rgkvRVZMtdhHwYQYW2BvttkhHrF+vRiXzKGYcIhpBirIaMRNj0RzaNjl00e5FPMhAPtQ6nd8
-	1y6QEqdQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:39976)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1tsIB1-0005A4-2C;
-	Wed, 12 Mar 2025 09:14:59 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1tsIAv-0004PY-1F;
-	Wed, 12 Mar 2025 09:14:53 +0000
-Date: Wed, 12 Mar 2025 09:14:53 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Samuel Holland <samuel@sholland.org>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH net-next v2 0/9] net: stmmac: remove unnecessary
- of_get_phy_mode() calls
-Message-ID: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
+	id 1tsIGe-00000007wCE-3bW6
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Mar 2025 09:20:50 +0000
+Received: by mail.ventrazo.pl (Postfix, from userid 1002)
+	id D4C4C2653A; Wed, 12 Mar 2025 10:16:31 +0100 (CET)
+Received: by mail.ventrazo.pl for <linux-mediatek@lists.infradead.org>; Wed, 12 Mar 2025 09:15:49 GMT
+Message-ID: <20250312084500-0.1.he.3pfmm.0.qti6hlbje9@OriginatePro.pl>
+Date: Wed, 12 Mar 2025 09:15:49 GMT
+From: "Marcin Wojciechowski" <marcin.wojciechowski@ventrazo.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Zapytanie ofertowe 
+X-Mailer: mail.OriginatePro.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_021515_079065_5281F756 
-X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-CacheID: sfid-20250312_022049_042494_997DA2A1 
+X-CRM114-Status: UNSURE (   0.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,36 +57,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Dzie=C5=84 dobry,
 
-This series removes unnecessary of_get_phy_mode() calls from the stmmac
-glue drivers. stmmac_probe_config_dt() / devm_stmmac_probe_config_dt()
-already gets the interface mode using device_get_phy_mode() and stores
-it in plat_dat->phy_interface.
+Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
+yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
 
-Therefore, glue drivers using of_get_phy_mode() are just duplicating
-the work that has already been done.
+Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
 
-This series adjusts the glue drivers to remove their usage of
-of_get_phy_mode().
+Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
+owych informacji?=20
+=20
 
-Changes in v2:
-- correct subject for patch 3
-- fix build error in patch 3
-- add attributations
-
- drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c | 21 +++++++++------------
- drivers/net/ethernet/stmicro/stmmac/dwmac-ipq806x.c | 12 ++++--------
- .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c    |  8 +-------
- drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c |  6 +-----
- .../net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c |  4 +---
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c      |  2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c     | 12 ++++--------
- drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c   |  8 +-------
- drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c   |  6 +-----
- 9 files changed, 23 insertions(+), 56 deletions(-)
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Pozdrawiam serdecznie
+Marcin Wojciechowski
 
