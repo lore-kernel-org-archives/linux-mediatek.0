@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A391BC28B2E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 09:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A1CDC28B2E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Mar 2025 10:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpIEAogTxkzLpfUfozeqm0pCsw4RE6yWXZ5KmK2i4rQ=; b=uFVp1G/mx1bXQdDEsx900L+pyU
-	NJJQ3Pkp8P2r/MzBdY9qgItXgONfu82kQ1Cd3Xot+jyxCnem1rgvS5k21JA+9I7VyIGLlE+RmcPpN
-	jrRpI7QiamPETXd5KqCBoSG0LEeT2xnLXzWP8WcG1uHFxZMNliww+wCAI1gxryiPh/pRPBrOahBKD
-	zcMh5XCh+JKdk/2RnnArVoFPgobCDtkWmo+Kb2AV8F4hvJTyd4v/4G6LPHjrk6I3PI8XddlmsMYhl
-	eSS1mznlGWlztcgO0Yn+TowsJphvnQmTTRwNRwYqp8B4ebBULNgfNY1cI5vYXgWNIxSRKjZTvchDx
-	4bk9Us6g==;
+	bh=LkHVkPYAPctKnJFf5zHVrTCUXN4akXnCeDNP0qIbopY=; b=gXPjuMaBdbeMM3IKGhVZrgPCy/
+	rwQosyhVcNJ16xD90o+xgZW/ysuzEf0cHREWuR9b8puxxhydPlb1tHbhuvhGmxgUUbXPs9UWcdq/6
+	m1seyxmKR19uXzTdT+LZrdfn3tYfi90SG2OqPTZDtlRBflSh+aspRA4BuGTSyltSseFmTuYP+2lMh
+	n/PVDXTCmUbuzY4uv0vQdilE5+C6S+sLya56LsEJ8/HUOtofxrAAuLteVXrwC66rft+o8AgUAmf7Z
+	WXQnr3TkXfrRyeo5dY/IbP4LvFreKRjevgimzhnpsHM4DEfchRTTtE6vMfupjSgjbEbMEt8vvuG9/
+	/zy5bb6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsIcu-0000000810f-0KSj;
-	Wed, 12 Mar 2025 09:43:48 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1tsIt8-000000083eT-22ZT;
+	Wed, 12 Mar 2025 10:00:34 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsITG-00000007zCI-1f1P;
-	Wed, 12 Mar 2025 09:33:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1741772030; x=1773308030;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qJVq2tQ/uqY4XgxZm+blhtdxS7KyEDaz44nIhBoEgwc=;
-  b=aNYEos6bPTxk4wOpNw/OcGYhhzWGtDLLeDU7Xp9WC/EQq58dvlp8d924
-   0U/1OJBEEI7ZO6kBgUKxzwClIx3kSb6B3aHtCDDHRkdWB6NSdg0u8BvxR
-   p2twdeeNEV0Msx7BO33ZSJeDmZv+dstpSUCunSl8pFUbmhftBaOC4zq3F
-   7KEbmwJDtqjJxTwJJ9x7eoyzeDSM7ZrovQY9ksLv2ifvxyA8WVGptHFG9
-   irZWPfK7GcxihUcAnoF1Tx5jufh9f2GOsHW9lZPOlDxiTkrQoAyeV9mNy
-   ul0knmsIRhdb09xl6YvkDUqZq9vdmRLRAB6JTimtdnoWEO3bOLpTXAltH
-   A==;
-X-CSE-ConnectionGUID: YWMirI3NQzCCHX5gxCrkyw==
-X-CSE-MsgGUID: 5bLkoJ7CQaiVm16PYmbNaw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="68201245"
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; 
-   d="scan'208";a="68201245"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2025 02:33:17 -0700
-X-CSE-ConnectionGUID: hykDrp8ETOaBdw7dlJJbsg==
-X-CSE-MsgGUID: IHLO9H3oTJWrBK/Y6SLyeA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; 
-   d="scan'208";a="120611799"
-Received: from smile.fi.intel.com ([10.237.72.58])
-  by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2025 02:32:36 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1tsIS1-00000001oYn-14Yf;
-	Wed, 12 Mar 2025 11:32:33 +0200
-Date: Wed, 12 Mar 2025 11:32:32 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andi Shyti <andi.shyti@kernel.org>
-Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Kamal Dasu <kamal.dasu@broadcom.com>, Stefan Roese <sr@denx.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gregory CLEMENT <gregory.clement@bootlin.com>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Subject: Re: [PATCH v2 00/10] i2c: busses: Introduce and use
- i2c_10bit_addr_*_from_msg()
-Message-ID: <Z9FUsLC0TcglJZN_@smile.fi.intel.com>
-References: <20250213141045.2716943-1-andriy.shevchenko@linux.intel.com>
- <c6xszdhx5ztexlqlmhvdn4dyz5ilzxsm7c62cvkmnwy2y3gaqc@owk2ani2emys>
+	id 1tsIjt-000000082AL-1WAH;
+	Wed, 12 Mar 2025 09:51:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=LkHVkPYAPctKnJFf5zHVrTCUXN4akXnCeDNP0qIbopY=; b=BiVF5+95B+N8ntk5RSMW0bpb6R
+	aHSUVGg3kgIyEecmyXXSBuY0ce2m0SlhKqqN3fs42umUgZrnqFsA/zAdaH7A4LE2+BPu4ctiIsBFz
+	Nh47CJsZkRUjEjB9di4oqZ6RcOz9KapT1V2MwPTMG6mDeCfUUPm17HF3YX/RaUGi8I0rJYB13KxEN
+	tLRitlOXXEgBSplQD124vzyrEpXC44k8cfH1bYVQUKOHKBgZL31tYfVmLbj5IjIM30xDs0a8y/u9H
+	i96PjXb/WZZj7a6g9KlLiEAsD52u4jZsNdB6T9KsfyAtFDDQKBIu+ygoGgVIgaeEeE9hg702XXlt2
+	tEHV/TXA==;
+Received: from foss.arm.com ([217.140.110.172])
+	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tsIjp-00000002LWL-3Qnv;
+	Wed, 12 Mar 2025 09:51:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 47C97152B;
+	Wed, 12 Mar 2025 02:51:05 -0700 (PDT)
+Received: from bogus (e133711.arm.com [10.1.196.55])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D4E443F5A1;
+	Wed, 12 Mar 2025 02:50:51 -0700 (PDT)
+Date: Wed, 12 Mar 2025 09:50:49 +0000
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Jacky Bai <ping.bai@nxp.com>
+Cc: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <ilia.lin@kernel.org>,
+	<tiny.windzz@gmail.com>, <wens@csie.org>,
+	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<linux-pm@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<imx@lists.linux.dev>
+Subject: Re: [PATCH v2] cpufreq: Init cpufreq only for present CPUs
+Message-ID: <Z9FY-Uu-7R9eWEQ7@bogus>
+References: <20250312092127.357316-1-ping.bai@nxp.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <c6xszdhx5ztexlqlmhvdn4dyz5ilzxsm7c62cvkmnwy2y3gaqc@owk2ani2emys>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20250312092127.357316-1-ping.bai@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_023350_468948_0B03B166 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250312_095058_195554_1C96237D 
+X-CRM114-Status: GOOD (  28.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,28 +81,248 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 11, 2025 at 02:12:03AM +0100, Andi Shyti wrote:
-> Hi Andy,
-> 
-> > Andy Shevchenko (10):
-> >   i2c: Introduce i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: axxia: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: bcm-kona: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: brcmstb: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: eg20t: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: kempld: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: mt7621: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: rzv2m: Use i2c_10bit_addr_*_from_msg() helpers
-> >   i2c: ibm_iic: Use i2c_*bit_addr*_from_msg() helpers
-> >   i2c: mv64xxx: Use i2c_*bit_addr*_from_msg() helpers
-> 
-> merged to i2c/i2c-host.
+On Wed, Mar 12, 2025 at 05:21:27PM +0800, Jacky Bai wrote:
+> for_each_possible_cpu() is currently used to initialize cpufreq
+> in below cpufreq drivers:
+>   drivers/cpufreq/cpufreq-dt.c
+>   drivers/cpufreq/mediatek-cpufreq-hw.c
+>   drivers/cpufreq/mediatek-cpufreq.c
+>   drivers/cpufreq/qcom-cpufreq-nvmem.c
+>   drivers/cpufreq/sun50i-cpufreq-nvmem.c
+>
 
-Thank you!
+Just drop this list, totally redundant as diffstat must give that anyways.
+You have already made it stale as it doesn't match the diffstat.
+
+With that fixed:
+
+Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
+
+> However, in cpu_dev_register_generic(), for_each_present_cpu()
+> is used to register CPU devices which means the CPU devices are
+> only registered for present CPUs and not all possible CPUs.
+> 
+> With nosmp or maxcpus=0, only the boot CPU is present, lead
+> to the cpufreq probe failure or defer probe due to no cpu device
+> available for not present CPUs.
+> 
+> Change for_each_possible_cpu() to for_each_present_cpu() in the
+> above cpufreq drivers to ensure it only registers cpufreq for
+> CPUs that are actually present.
+> 
+> Fixes: b0c69e1214bc ("drivers: base: Use present CPUs in GENERIC_CPU_DEVICES")
+> Signed-off-by: Jacky Bai <ping.bai@nxp.com>
+> ---
+>  - v2 changes:
+>   - Add changes for armada-8k-cpufreq, mvebu-cpfureq, qcome-cpufreq-hw,
+>     scmi-cpufreq, scpi-cpufreq, virtual-cpufreq.
+> ---
+>  drivers/cpufreq/armada-8k-cpufreq.c    | 2 +-
+>  drivers/cpufreq/cpufreq-dt.c           | 2 +-
+>  drivers/cpufreq/mediatek-cpufreq-hw.c  | 2 +-
+>  drivers/cpufreq/mediatek-cpufreq.c     | 2 +-
+>  drivers/cpufreq/mvebu-cpufreq.c        | 2 +-
+>  drivers/cpufreq/qcom-cpufreq-hw.c      | 2 +-
+>  drivers/cpufreq/qcom-cpufreq-nvmem.c   | 8 ++++----
+>  drivers/cpufreq/scmi-cpufreq.c         | 2 +-
+>  drivers/cpufreq/scpi-cpufreq.c         | 2 +-
+>  drivers/cpufreq/sun50i-cpufreq-nvmem.c | 6 +++---
+>  drivers/cpufreq/virtual-cpufreq.c      | 2 +-
+>  11 files changed, 16 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/cpufreq/armada-8k-cpufreq.c b/drivers/cpufreq/armada-8k-cpufreq.c
+> index 7a979db81f09..5a3545bd0d8d 100644
+> --- a/drivers/cpufreq/armada-8k-cpufreq.c
+> +++ b/drivers/cpufreq/armada-8k-cpufreq.c
+> @@ -47,7 +47,7 @@ static void __init armada_8k_get_sharing_cpus(struct clk *cur_clk,
+>  {
+>  	int cpu;
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		struct device *cpu_dev;
+>  		struct clk *clk;
+>  
+> diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
+> index 778916f89a51..e80dd982a3e2 100644
+> --- a/drivers/cpufreq/cpufreq-dt.c
+> +++ b/drivers/cpufreq/cpufreq-dt.c
+> @@ -283,7 +283,7 @@ static int dt_cpufreq_probe(struct platform_device *pdev)
+>  	int ret, cpu;
+>  
+>  	/* Request resources early so we can return in case of -EPROBE_DEFER */
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		ret = dt_cpufreq_early_init(&pdev->dev, cpu);
+>  		if (ret)
+>  			goto err;
+> diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+> index aa209f5527dc..74f1b4c796e4 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+> @@ -303,7 +303,7 @@ static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
+>  	struct regulator *cpu_reg;
+>  
+>  	/* Make sure that all CPU supplies are available before proceeding. */
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		cpu_dev = get_cpu_device(cpu);
+>  		if (!cpu_dev)
+>  			return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index 2656b88db378..f3f02c4b6888 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -631,7 +631,7 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+>  		return dev_err_probe(&pdev->dev, -ENODEV,
+>  				     "failed to get mtk cpufreq platform data\n");
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		info = mtk_cpu_dvfs_info_lookup(cpu);
+>  		if (info)
+>  			continue;
+> diff --git a/drivers/cpufreq/mvebu-cpufreq.c b/drivers/cpufreq/mvebu-cpufreq.c
+> index 7f3cfe668f30..2aad4c04673c 100644
+> --- a/drivers/cpufreq/mvebu-cpufreq.c
+> +++ b/drivers/cpufreq/mvebu-cpufreq.c
+> @@ -56,7 +56,7 @@ static int __init armada_xp_pmsu_cpufreq_init(void)
+>  	 * it), and registers the clock notifier that will take care
+>  	 * of doing the PMSU part of a frequency transition.
+>  	 */
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		struct device *cpu_dev;
+>  		struct clk *clk;
+>  		int ret;
+> diff --git a/drivers/cpufreq/qcom-cpufreq-hw.c b/drivers/cpufreq/qcom-cpufreq-hw.c
+> index 4b3b3dbc7d38..8422704a3b10 100644
+> --- a/drivers/cpufreq/qcom-cpufreq-hw.c
+> +++ b/drivers/cpufreq/qcom-cpufreq-hw.c
+> @@ -306,7 +306,7 @@ static void qcom_get_related_cpus(int index, struct cpumask *m)
+>  	struct of_phandle_args args;
+>  	int cpu, ret;
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		cpu_np = of_cpu_device_node_get(cpu);
+>  		if (!cpu_np)
+>  			continue;
+> diff --git a/drivers/cpufreq/qcom-cpufreq-nvmem.c b/drivers/cpufreq/qcom-cpufreq-nvmem.c
+> index 3a8ed723a23e..54f8117103c8 100644
+> --- a/drivers/cpufreq/qcom-cpufreq-nvmem.c
+> +++ b/drivers/cpufreq/qcom-cpufreq-nvmem.c
+> @@ -489,7 +489,7 @@ static int qcom_cpufreq_probe(struct platform_device *pdev)
+>  		nvmem_cell_put(speedbin_nvmem);
+>  	}
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		struct dev_pm_opp_config config = {
+>  			.supported_hw = NULL,
+>  		};
+> @@ -543,7 +543,7 @@ static int qcom_cpufreq_probe(struct platform_device *pdev)
+>  	dev_err(cpu_dev, "Failed to register platform device\n");
+>  
+>  free_opp:
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		dev_pm_domain_detach_list(drv->cpus[cpu].pd_list);
+>  		dev_pm_opp_clear_config(drv->cpus[cpu].opp_token);
+>  	}
+> @@ -557,7 +557,7 @@ static void qcom_cpufreq_remove(struct platform_device *pdev)
+>  
+>  	platform_device_unregister(cpufreq_dt_pdev);
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		dev_pm_domain_detach_list(drv->cpus[cpu].pd_list);
+>  		dev_pm_opp_clear_config(drv->cpus[cpu].opp_token);
+>  	}
+> @@ -568,7 +568,7 @@ static int qcom_cpufreq_suspend(struct device *dev)
+>  	struct qcom_cpufreq_drv *drv = dev_get_drvdata(dev);
+>  	unsigned int cpu;
+>  
+> -	for_each_possible_cpu(cpu)
+> +	for_each_present_cpu(cpu)
+>  		qcom_cpufreq_suspend_pd_devs(drv, cpu);
+>  
+>  	return 0;
+> diff --git a/drivers/cpufreq/scmi-cpufreq.c b/drivers/cpufreq/scmi-cpufreq.c
+> index ff2897789797..c310aeebc8f3 100644
+> --- a/drivers/cpufreq/scmi-cpufreq.c
+> +++ b/drivers/cpufreq/scmi-cpufreq.c
+> @@ -104,7 +104,7 @@ scmi_get_sharing_cpus(struct device *cpu_dev, int domain,
+>  	int cpu, tdomain;
+>  	struct device *tcpu_dev;
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		if (cpu == cpu_dev->id)
+>  			continue;
+>  
+> diff --git a/drivers/cpufreq/scpi-cpufreq.c b/drivers/cpufreq/scpi-cpufreq.c
+> index 048dc43a9997..17cda84f00df 100644
+> --- a/drivers/cpufreq/scpi-cpufreq.c
+> +++ b/drivers/cpufreq/scpi-cpufreq.c
+> @@ -65,7 +65,7 @@ scpi_get_sharing_cpus(struct device *cpu_dev, struct cpumask *cpumask)
+>  	if (domain < 0)
+>  		return domain;
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		if (cpu == cpu_dev->id)
+>  			continue;
+>  
+> diff --git a/drivers/cpufreq/sun50i-cpufreq-nvmem.c b/drivers/cpufreq/sun50i-cpufreq-nvmem.c
+> index 17d6a149f580..47d6840b3489 100644
+> --- a/drivers/cpufreq/sun50i-cpufreq-nvmem.c
+> +++ b/drivers/cpufreq/sun50i-cpufreq-nvmem.c
+> @@ -262,7 +262,7 @@ static int sun50i_cpufreq_nvmem_probe(struct platform_device *pdev)
+>  	snprintf(name, sizeof(name), "speed%d", speed);
+>  	config.prop_name = name;
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		struct device *cpu_dev = get_cpu_device(cpu);
+>  
+>  		if (!cpu_dev) {
+> @@ -288,7 +288,7 @@ static int sun50i_cpufreq_nvmem_probe(struct platform_device *pdev)
+>  	pr_err("Failed to register platform device\n");
+>  
+>  free_opp:
+> -	for_each_possible_cpu(cpu)
+> +	for_each_present_cpu(cpu)
+>  		dev_pm_opp_clear_config(opp_tokens[cpu]);
+>  	kfree(opp_tokens);
+>  
+> @@ -302,7 +302,7 @@ static void sun50i_cpufreq_nvmem_remove(struct platform_device *pdev)
+>  
+>  	platform_device_unregister(cpufreq_dt_pdev);
+>  
+> -	for_each_possible_cpu(cpu)
+> +	for_each_present_cpu(cpu)
+>  		dev_pm_opp_clear_config(opp_tokens[cpu]);
+>  
+>  	kfree(opp_tokens);
+> diff --git a/drivers/cpufreq/virtual-cpufreq.c b/drivers/cpufreq/virtual-cpufreq.c
+> index 45becb92aa4a..7dd1b0c263c7 100644
+> --- a/drivers/cpufreq/virtual-cpufreq.c
+> +++ b/drivers/cpufreq/virtual-cpufreq.c
+> @@ -138,7 +138,7 @@ static int virt_cpufreq_get_sharing_cpus(struct cpufreq_policy *policy)
+>  	cur_perf_domain = readl_relaxed(base + policy->cpu *
+>  					PER_CPU_OFFSET + REG_PERF_DOMAIN_OFFSET);
+>  
+> -	for_each_possible_cpu(cpu) {
+> +	for_each_present_cpu(cpu) {
+>  		cpu_dev = get_cpu_device(cpu);
+>  		if (!cpu_dev)
+>  			continue;
+> -- 
+> 2.34.1
+> 
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Regards,
+Sudeep
 
