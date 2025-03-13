@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56AAC282EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 16:01:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C00C282DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 16:13:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=; b=ncvYUegzu8w8nOx0GWa/2q8b8W
-	X3dfVPSFM1dX/s7Zw0dhVed2RPsf0OPUqB2AGVQ+7jAOYO0bvYejPu5EyfQFR/NygC5/+/0S4InHl
-	H++4JS9OHRpzzl7f5sUk5FrkrOlzJpUsW6RePKEbFlF7Ds7s6KGxQmpzC9eJMGnntQJ5mzjZll9qm
-	pEuz8tZoc0jfTY79wAHvDzy4F/DFuVtZU5NbxmDX1YI5x5eYEy5q2nrLwH1D5gbVFYS076we0RRNS
-	rtfL9/EiRTwncmk2rp3S83SWyS1jR6xcE108tdDD1VcVgag4gX4pDRORVEUZyaTJ2BdnWG6B8GFn8
-	i3cw7jxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MKQlPBogcw52MPx0HPf6gTPAdV2ZIbKmRy+k7i7XGCU=; b=bt0PBK0WOMrGuhdZy/TmUa8fVz
+	q11Nq+ihBH6yw3CP+L+F5XuTayZ8kyB6LGh0btw5d2zhTAmb6VFzU1ppat4kyNDBKKXSBpDHfc5/J
+	2zvvh+QcBufU6xMYDqddkESNmqEvJoNqNdZTWUke4fOs8yYrojkN3E3bTsizi55tSqFh8uf/Pi6/F
+	woyFk2q4WrEPHOFrZG0v+NLCGo8mwdNuxVxEdZxn3xUSyGoxnjJLoHayYU+hyN5q5hkY9T3xr9u5U
+	GiKppAZk3JxyoRmXf9x9DX5peEhEW92/Ev6oLyacxWl5jPKbQPNLOG8/Vn6yEQ8e1EHOQNC0H3tSW
+	E055YwFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tskzY-0000000BjWz-3SFV;
-	Thu, 13 Mar 2025 16:01:04 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1tslB9-0000000BmBl-3U5R;
+	Thu, 13 Mar 2025 16:13:03 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tskiC-0000000BhJg-1CQY
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Mar 2025 15:43:10 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-7c08f9d0ef3so64043185a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Mar 2025 08:43:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1741880586; x=1742485386; darn=lists.infradead.org;
-        h=mime-version:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=;
-        b=KhnbsBVF1uvPYbFa+yS/MOVtrT5l/Pz+dnIKFPAEYZHwEzyyLlR6qps1ePEcxwgPgI
-         2AtRDkZF8sx//eNK9EQxWHbZHsn9HUm86AUrtTbyzA2Z8obfeLy/iI6t96ceIcTYlpGu
-         iOVUH037Inp7Mb0lr5KpURv3CLJuW0hFcAp1GjvUlQR64VhizoY21IZ+ZL+gG9jk8pmM
-         riSw/4CxbGry1qYeyzMdjzRYDny50sVtLiB95LIzulzzBPIyt7tJQ0OTOmLCV45qg5mf
-         y1rUG3q3p8eMk8e9hktkhq6YZwsHaDz/WIZy92OgzAIAvamOtKxW6/yu5K9e1gvWmT8t
-         JZQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741880586; x=1742485386;
-        h=mime-version:message-id:subject:cc:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=;
-        b=dChNJT3BFAUizFr6S/lPA/wDyuyt6RF5QLY04OZWBnlnjk7dsmmL4xSOhXmXKxXrOx
-         xQYWi2S8M14dAA8KGarRnGzA2hPjvfe49lYCnR6+NRKIzS0BGjvJw9dSINJkO3CZ9FoD
-         BqGz1I63E4BdZS+PiIdIejMKsBsrSqWg5/j3g9zGSwVkxJof1tO2uXqWM2c3fKTUML0a
-         lVR64N9AxI3UmWDgXARW2+dP+uTk3huvZi9IEwqXHRwtGmVzkUZXNA4Z/xOws2uU3QLa
-         8fxIdheOwL5JVv19KIjozf+lajDHaIrb+RDkcJ/ZOfPq+OgyixPXEKn4pRyzIx47ihqg
-         TaVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV8zBBwQ4C0WcagdpPXugaInxMpBtDfdJ114GP44RidPgzxmIsMhpymBCYZ4IMKleG+vw9KvY8OKiMY31tJmA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQCU0C9g8aC0KYUTiOpK1Z3vZKsyINwCjjRCzdjyr2g7nmZ2T4
-	iyoj3MpUOENpynF0tz5i34/NxXCr+ktJJSgldpYUZJfXa2u4gseEPqsgM57XPxRnqUXg/cN0Wc3
-	X
-X-Gm-Gg: ASbGncueVbr+zKlacvrBnHMO7sePKH67sdx8PrM2MNexVzaHoHzi9Sjuh4YFazMDcfu
-	44pcl9X0zxUBxdkClaOzkQnYuVDk2Ohgj2nOk2mtBNADfF4E/7rHNRGTx+UnCOf4aj5i8dss5ko
-	8zsTQ2jAp8SRlxT8Ua4paR0hQOOHXfOLpnNKiq7H5nTqjJbrBpBMptxczBj5P52Jf73OxEjS2O0
-	DcRFrGZt4FSVVN2miYCuIezaRO0ekQHd+07POAqGlDGQC/bIw60WbktRFQScWibYxIGgYFCYTZU
-	7eQ5j5QJdIrx0KUPkcoi5KLi5U9G5AIBj4VmNA6JeAJDEAbFEhdtoCMB/H5gFyD/5HucCdYQPXD
-	5xAwq0QE=
-X-Google-Smtp-Source: AGHT+IG7DGBV7fS0OgNdV+jRDvbbHKYP9sJW8CMWzee0priMRP+NjaycF9KaDGtlbGEG0pwVFVd4tw==
-X-Received: by 2002:a05:620a:6085:b0:7c5:4278:d151 with SMTP id af79cd13be357-7c579fb4c26mr20945085a.43.1741880586574;
-        Thu, 13 Mar 2025 08:43:06 -0700 (PDT)
-Received: from xanadu (modemcable179.17-162-184.mc.videotron.ca. [184.162.17.179])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c573c7854asm112540985a.38.2025.03.13.08.43.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Mar 2025 08:43:06 -0700 (PDT)
-Date: Thu, 13 Mar 2025 11:43:05 -0400 (EDT)
-From: Nicolas Pitre <npitre@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-    Daniel Lezcano <daniel.lezcano@linaro.org>
-cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip points
-Message-ID: <s2sp5o57-o534-qso0-2733-o0prs6028por@onlyvoer.pbz>
+	id 1tsl5o-0000000Bl49-2N3r;
+	Thu, 13 Mar 2025 16:07:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CCF8AA476CC;
+	Thu, 13 Mar 2025 16:02:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A13F2C4CEDD;
+	Thu, 13 Mar 2025 16:07:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741882051;
+	bh=BQXFOxNso8FIR8jzDbLHKPtOvTBzr+ixEF9OdVlcvsU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UjKy5MzqzIf+Yh8yvIA5cYhQvCRvJOMZGRgCouhY4XQbqEPhgnpvqfobojD4k3n12
+	 wPZl/IJFvxCMgknbhUHC+PUev3Ir7M5Nui+VNqJaWgxmhq8wH6oM576OYZdo8TCy3r
+	 8jyrewO1JtE5lPWCVMoJCbFdZPhfzDPFlU5DxzBUq2kVXaupL89bbPA/R7b7owqkcP
+	 9Xo/T9lSdTEOGxVaomzVn47eKegUTlGozpbyswaqQH7fTy1maVjz7LnbGNj+lF3JE9
+	 A3L76Vy6ZidOs89C/z2g+3iPgSIemcEcrtz7AsPycCV8qmThcg/FZuqazBQ7P5ckJO
+	 TOm/z9TRq2JZQ==
+Date: Thu, 13 Mar 2025 09:07:29 -0700
+From: Minchan Kim <minchan@kernel.org>
+To: Barry Song <baohua@kernel.org>
+Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
+	Qun-Wei Lin <qun-wei.lin@mediatek.com>,
+	Jens Axboe <axboe@kernel.dk>,
+	Vishal Verma <vishal.l.verma@intel.com>,
+	Dan Williams <dan.j.williams@intel.com>,
+	Dave Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chris Li <chrisl@kernel.org>, Ryan Roberts <ryan.roberts@arm.com>,
+	"Huang, Ying" <ying.huang@intel.com>,
+	Kairui Song <kasong@tencent.com>,
+	Dan Schatzberg <schatzberg.dan@gmail.com>,
+	Al Viro <viro@zeniv.linux.org.uk>, linux-kernel@vger.kernel.org,
+	linux-block@vger.kernel.org, nvdimm@lists.linux.dev,
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Casper Li <casper.li@mediatek.com>,
+	Chinwen Chang <chinwen.chang@mediatek.com>,
+	Andrew Yang <andrew.yang@mediatek.com>,
+	James Hsu <james.hsu@mediatek.com>
+Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from
+ kswapd
+Message-ID: <Z9MCwXzYDRJoTiIr@google.com>
+References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
+ <Z9HOavSkFf01K9xh@google.com>
+ <5gqqbq67th4xiufiw6j3ewih6htdepa4u5lfirdeffrui7hcdn@ly3re3vgez2g>
+ <CAGsJ_4xwnVxn1odj=j+z0VXm1DRUmnhugnwCH-coqBLJweDu9Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGsJ_4xwnVxn1odj=j+z0VXm1DRUmnhugnwCH-coqBLJweDu9Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_084308_524644_F7BF9F0B 
-X-CRM114-Status: UNSURE (   7.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250313_090732_733313_3F73E45B 
+X-CRM114-Status: GOOD (  24.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,92 +94,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Provide the "switch on" thermal trip point to be used by the power
-allocator governor.
+On Thu, Mar 13, 2025 at 04:45:54PM +1300, Barry Song wrote:
+> On Thu, Mar 13, 2025 at 4:09 PM Sergey Senozhatsky
+> <senozhatsky@chromium.org> wrote:
+> >
+> > On (25/03/12 11:11), Minchan Kim wrote:
+> > > On Fri, Mar 07, 2025 at 08:01:02PM +0800, Qun-Wei Lin wrote:
+> > > > This patch series introduces a new mechanism called kcompressd to
+> > > > improve the efficiency of memory reclaiming in the operating system. The
+> > > > main goal is to separate the tasks of page scanning and page compression
+> > > > into distinct processes or threads, thereby reducing the load on the
+> > > > kswapd thread and enhancing overall system performance under high memory
+> > > > pressure conditions.
+> > > >
+> > > > Problem:
+> > > >  In the current system, the kswapd thread is responsible for both
+> > > >  scanning the LRU pages and compressing pages into the ZRAM. This
+> > > >  combined responsibility can lead to significant performance bottlenecks,
+> > > >  especially under high memory pressure. The kswapd thread becomes a
+> > > >  single point of contention, causing delays in memory reclaiming and
+> > > >  overall system performance degradation.
+> > >
+> > > Isn't it general problem if backend for swap is slow(but synchronous)?
+> > > I think zram need to support asynchrnous IO(can do introduce multiple
+> > > threads to compress batched pages) and doesn't declare it's
+> > > synchrnous device for the case.
+> >
+> > The current conclusion is that kcompressd will sit above zram,
+> > because zram is not the only compressing swap backend we have.
 
-Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Then, how handles the file IO case?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 338120930b..262eab8fd3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -472,6 +472,12 @@ cpu-little0-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
- 
- 			trips {
-+				cpu_little0_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_little0_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -510,6 +516,12 @@ cpu-little1-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
- 
- 			trips {
-+				cpu_little1_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_little1_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -548,6 +560,12 @@ cpu-little2-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
- 
- 			trips {
-+				cpu_little2_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_little2_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -586,6 +604,12 @@ cpu-little3-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
- 
- 			trips {
-+				cpu_little3_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_little3_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -624,6 +648,12 @@ cpu-big0-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
- 
- 			trips {
-+				cpu_big0_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_big0_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -658,6 +688,12 @@ cpu-big1-thermal {
- 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
- 
- 			trips {
-+				cpu_big1_switch_on: trip-switch-on {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				cpu_big1_alert0: trip-alert0 {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
+> 
+> also. it is not good to hack zram to be aware of if it is kswapd
+> , direct reclaim , proactive reclaim and block device with
+> mounted filesystem.
+
+Why shouldn't zram be aware of that instead of just introducing
+queues in the zram with multiple compression threads?
+
+> 
+> so i am thinking sth as below
+> 
+> page_io.c
+> 
+> if (sync_device or zswap_enabled())
+>    schedule swap_writepage to a separate per-node thread
+
+I am not sure that's a good idea to mix a feature to solve different
+layers. That wouldn't be only swap problem. Such an parallelism under
+device  is common technique these days and it would help file IO cases.
+
+Furthermore, it would open the chance for zram to try compress
+multiple pages at once.
 
