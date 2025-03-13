@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85A06C28B2E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 09:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B57C28B2E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 09:51:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=woIyGXy5LPXv8mj8+Mmg2FmYtY5pGV74aG04xv5+X+U=; b=aGQq+sHLnhfBw2RUIgEJOxDrH1
-	n9kCB33WLqtTQLui2QE/K4sxsYBXJ+oeRED3w1tHNd+Hma5tRUUkFkql6FS2VKdAnFlgtDXcdXdWa
-	rB12A9y49h/ZZegwQWrszllSITM4lEfMjUD/zgRPjF/t8ebjDfQ8N2VDa8tCJsG8UE+zkp98qmg7v
-	fce3Yi2g8IuQU2HjrNjyf+0MMWdzj/hh7AvQgM6wewoWakrAQRrcYgJPd0J53qkg8rNyDuPS4xCC7
-	THeOt41RRiZKZDCeEcSV8OY5LWRtQFCBLqmovNcqGxVp6wK22f1zzNiRqtxt1vkudB7Pqj37x1X+3
-	LZV1rxyA==;
+	bh=HpN5nmp/wX9zReh8XIAOw9IdgQPpqBOfgkjamDYZbRE=; b=I792QkvsHRYeGAsELPkQ6SyjvY
+	1qEQrPdN5ewL8eElHlwG121L2yVAxx54H6qwzhdCG3PMbRlDLvRl5qhKbht9YNvhFkFDbsfhx7MZP
+	UGyskrw1DxrpltxjXHskmbkWl2aasb0IEMm190fPNcAVu1CH0BOUovaXh+FWwLEQfq7b0z5MN427u
+	CCS7tz/X8XXF9ky7mOn+8JMpUgogegeWz/uduzU/v4aJHK7wGDK4Z03R//sQtHHFIHV8vB6KwpmyH
+	TklVLcdQsQ2CFDl3vFCEev953O5h/rmBVL56XTYbEZ05vjcfWmcPO6vysCO1AIi/dLZI3phm4xzhF
+	iMvSbF+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsf7n-0000000AlOA-2bqA;
-	Thu, 13 Mar 2025 09:45:11 +0000
+	id 1tsfE4-0000000AmP6-3m7c;
+	Thu, 13 Mar 2025 09:51:40 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsf7k-0000000AlNX-3wxX
+	id 1tsfE1-0000000AmOm-3YmD
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Mar 2025 09:45:10 +0000
+	Thu, 13 Mar 2025 09:51:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741859107;
-	bh=eeJj6LLjaF+n03RauCPhH26PXKrw1GrC28xYDvKKI9I=;
+	s=mail; t=1741859496;
+	bh=G03i3yWZ7xfzmfzyZ8JKQ66XI+EdINYMI+Wzm/+gZwk=;
 	h=Date:To:Cc:From:Subject:From;
-	b=Rv4L4ay+GRdBKtSw+dzxAGNDoVVEQHA6igBuG6DJBNLQqHvTWTodqRTw1H5B19z+7
-	 SzgoK1VM1ZHsaLq/r9ASZDtNna/9bk1z13fHvKftrNCyFgKzgoZpzdBO1foyjvwU8C
-	 xQC8nLgK/baL62LturB3iV9lLa/4A5TjyL1mABUVOabO9PFcF5EQ2GjpHyjllEVt/V
-	 ZdxeyXdb37Spyicko6WwRQ3pCgxbHKcdnNMRrGJzYcKPjqs1TscwzBOS/OWjddaLBG
-	 ClldSxKoorSfTf+SkGoWnpeKVziHkAKeJf3PVklG6T/e0VkTqkPa2aQhF50TTjMWQg
-	 xBYHRpfxLMQ+A==
+	b=iwRsFqgf8oZTPPdmiwJ8SZ4Tu907ypd3aaudzs7JDofd8OKzrUT86piOES8YMaEAm
+	 TcOFup0OLn3s35/4Mt3I66ULtzj2nwpmiosk2vZwYy3dIcSiX2/s+atofgRNnHZXBW
+	 WCGiyYc1kDCo8Q80SNwCogxH6MFPKCv+eMfXiZT+XAnG1D9y3HBOzsBujN4/4QWLEg
+	 JzIxpuWwlAVJUILctZIPlgtXckG0POnNv/zR8BSAfIA0LuXsuGAvQtc/5NUlX7MYa0
+	 qTBtFtIXtWVQxKuDlOTyNuDoAcAolvBSWGs3Tp4XMvQrhaR0f0fbYusqZtSO4XvnRm
+	 jr4aJjLZETZHg==
 Received: from [192.168.50.250] (unknown [171.76.87.92])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E727417E0147;
-	Thu, 13 Mar 2025 10:45:04 +0100 (CET)
-Message-ID: <a520d1d6-95b3-4573-b8f2-689f05bc2230@collabora.com>
-Date: Thu, 13 Mar 2025 15:15:03 +0530
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 515B817E0ECA;
+	Thu, 13 Mar 2025 10:51:33 +0100 (CET)
+Message-ID: <ca960a82-00fc-4183-b983-998f7ac2fbb5@collabora.com>
+Date: Thu, 13 Mar 2025 15:21:26 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
@@ -58,12 +58,13 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
  Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>,
  Helen Mae Koike Fornazier <helen.fornazier@gmail.com>
 From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: mediatek: kms_flip@basic-flip-vs-modeset flake
+Subject: drm-ci: mediatek:
+ kms_atomic_transition@plane-all-modeset-transition-internal-panels flake
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_024509_136583_81BDF1EF 
-X-CRM114-Status: UNSURE (   2.88  )
+X-CRM114-CacheID: sfid-20250313_025138_226083_FACCCBEE 
+X-CRM114-Status: UNSURE (   2.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,83 +88,462 @@ There are some flake test reported for mediatek driver testing in drm-ci.
 # Failure Rate: 20
 # IGT Version: 1.30-g04bedb923
 # Linux Version: 6.14.0-rc4
-kms_flip@basic-flip-vs-modeset
+kms_atomic_transition@plane-all-modeset-transition-internal-panels
 
-09:59:50.792: DEBUG - Begin test kms_flip@basic-flip-vs-modeset
-09:59:50.792: ERROR - Igt error: (kms_flip:1339) CRITICAL: Test 
-assertion failure function __run_test_on_crtc_set, file 
-../tests/kms_flip.c:1648:
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) CRITICAL: Failed 
-assertion: do_page_flip(o, o->fb_ids[1], 1) == 0
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) CRITICAL: Last errno: 
-16, Device or resource busy
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) CRITICAL: error: -16 != 0
-09:59:55.859: ERROR - Igt error: Dynamic subtest A-eDP1 failed.
-09:59:55.859: ERROR - Igt error: **** DEBUG ****
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(width=1366, height=768, 
-format=XR24(0x34325258), modifier=0x0, size=0)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(handle=1, pitch=5464)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) ioctl_wrappers-DEBUG: 
-Test requirement passed: igt_has_fb_modifiers(fd)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(width=1366, height=768, 
-format=XR24(0x34325258), modifier=0x0, size=0)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(handle=2, pitch=5464)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) ioctl_wrappers-DEBUG: 
-Test requirement passed: igt_has_fb_modifiers(fd)
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: Test 
-requirement passed: cairo_surface_status(fb->cairo_surface) == 
-CAIRO_STATUS_SUCCESS
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_fb-DEBUG: Test 
-requirement passed: cairo_surface_status(fb->cairo_surface) == 
-CAIRO_STATUS_SUCCESS
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) igt_kms-INFO: 
-1366x768: 60 76300 1366 1414 1446 1600 768 772 778 794 0x48 0xa
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) DEBUG: No stale events 
-found
-09:59:55.859: ERROR - Igt error: (kms_flip:1339) CRITICAL: Test 
-assertion failure function __run_test_on_crtc_set, file 
-../tests/kms_flip.c:1648:
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) CRITICAL: Failed 
-assertion: do_page_flip(o, o->fb_ids[1], 1) == 0
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) CRITICAL: Last errno: 
-16, Device or resource busy
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) CRITICAL: error: -16 != 0
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO: Stack trace:
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #0 
-../lib/igt_core.c:2055 __igt_fail_assert()
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #1 
-../tests/kms_flip.c:428 run_test_on_crtc_set.constprop.0()
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #2 
-../tests/kms_flip.c:1829 run_test()
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #3 
-../tests/kms_flip.c:2078 __igt_unique____real_main2001()
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #4 
-../tests/kms_flip.c:2001 main()
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #5 
-[__libc_init_first+0x80]
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #6 
-[__libc_start_main+0x98]
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_core-INFO:   #7 
-[_start+0x30]
-09:59:55.860: ERROR - Igt error: ****  END  ****
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_kms-CRITICAL: Test 
-assertion failure function kmstest_set_connector_dpms, file 
-../lib/igt_kms.c:2246:
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_kms-CRITICAL: 
-Failed assertion: found_it
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_kms-CRITICAL: Last 
-errno: 9, Bad file descriptor
-09:59:55.860: ERROR - Igt error: (kms_flip:1339) igt_kms-CRITICAL: DPMS 
-property not found on 33
-09:59:55.860: ERROR - Test kms_flip@basic-flip-vs-modeset: Fail: See 
-"/results/igt.kms_flip@basic-flip-vs-modeset.log"
-09:59:55.860: DEBUG - End test kms_flip@basic-flip-vs-modeset
+11:34:51.896: DEBUG - Begin test 
+kms_atomic_transition@plane-all-modeset-transition-internal-panels
+11:34:56.978: [  356.928738] [IGT] kms_bw: finished subtest 
+linear-tiling-13-displays-3840x2160p, SKIP
+11:34:56.978: [  356.937111] [IGT] kms_bw: exiting, ret=77
+11:34:56.978: [  356.942557] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.978: [  357.125173] Console: switching to colour dummy device 80x25
+11:34:56.978: [  357.131172] [IGT] kms_bw: executing
+11:34:56.978: [  357.142820] [IGT] kms_bw: starting subtest 
+linear-tiling-2-displays-2560x1440p
+11:34:56.978: [  357.150596] [IGT] kms_bw: finished subtest 
+linear-tiling-2-displays-2560x1440p, SKIP
+11:34:56.978: [  357.158858] [IGT] kms_bw: exiting, ret=77
+11:34:56.978: [  357.164180] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.978: [  357.318688] Console: switching to colour dummy device 80x25
+11:34:56.978: [  357.324648] [IGT] kms_bw: executing
+11:34:56.978: [  357.333681] [IGT] kms_bw: starting subtest 
+linear-tiling-6-displays-2160x1440p
+11:34:56.979: [  357.341401] [IGT] kms_bw: finished subtest 
+linear-tiling-6-displays-2160x1440p, SKIP
+11:34:56.979: [  357.349597] [IGT] kms_bw: exiting, ret=77
+11:34:56.979: [  357.354845] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  357.505411] Console: switching to colour dummy device 80x25
+11:34:56.979: [  357.511255] [IGT] kms_plane_scaling: executing
+11:34:56.979: [  357.522411] [IGT] kms_plane_scaling: starting subtest 
+plane-downscale-factor-0-25-with-modifiers
+11:34:56.979: [  357.531718] [IGT] kms_plane_scaling: starting dynamic 
+subtest pipe-A
+11:34:56.979: [  357.539109] [IGT] kms_plane_scaling: finished subtest 
+pipe-A, SKIP
+11:34:56.979: [  357.545910] [IGT] kms_plane_scaling: finished subtest 
+plane-downscale-factor-0-25-with-modifiers, SKIP
+11:34:56.979: [  357.572515] [IGT] kms_plane_scaling: exiting, ret=77
+11:34:56.979: [  357.578308] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  357.727532] Console: switching to colour dummy device 80x25
+11:34:56.979: [  357.733486] [IGT] kms_selftest: executing
+11:34:56.979: [  357.745874] [IGT] kms_selftest: starting subtest 
+drm_cmdline_parser
+11:34:56.979: [  357.752866] [IGT] kms_selftest: finished subtest 
+drm_cmdline_parser, SKIP
+11:34:56.979: [  357.763629] [IGT] kms_selftest: exiting, ret=77
+11:34:56.979: [  357.769361] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  357.939908] Console: switching to colour dummy device 80x25
+11:34:56.979: [  357.945870] [IGT] syncobj_timeline: executing
+11:34:56.979: [  357.953079] [IGT] syncobj_timeline: exiting, ret=77
+11:34:56.979: [  357.959018] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  358.090580] Console: switching to colour dummy device 80x25
+11:34:56.979: [  358.096444] [IGT] kms_frontbuffer_tracking: executing
+11:34:56.979: [  358.140292] [IGT] kms_frontbuffer_tracking: exiting, ret=77
+11:34:56.979: [  358.147183] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  358.309815] Console: switching to colour dummy device 80x25
+11:34:56.979: [  358.315957] [IGT] kms_frontbuffer_tracking: executing
+11:34:56.979: [  358.356383] [IGT] kms_frontbuffer_tracking: exiting, ret=77
+11:34:56.979: [  358.363247] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  358.526047] Console: switching to colour dummy device 80x25
+11:34:56.979: [  358.531928] [IGT] kms_frontbuffer_tracking: executing
+11:34:56.979: [  358.589328] [IGT] kms_frontbuffer_tracking: exiting, ret=77
+11:34:56.979: [  358.596300] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  358.754092] Console: switching to colour dummy device 80x25
+11:34:56.979: [  358.760000] [IGT] kms_draw_crc: executing
+11:34:56.979: [  358.803687] [IGT] kms_draw_crc: exiting, ret=77
+11:34:56.979: [  358.809585] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  358.971580] Console: switching to colour dummy device 80x25
+11:34:56.979: [  358.977535] [IGT] prime_self_import: executing
+11:34:56.979: [  358.983703] [IGT] prime_self_import: starting subtest 
+basic-with_one_bo_two_files
+11:34:56.979: [  359.019495] [IGT] prime_self_import: finished subtest 
+basic-with_one_bo_two_files, SKIP
+11:34:56.979: [  359.028121] [IGT] prime_self_import: exiting, ret=77
+11:34:56.979: [  359.034326] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.979: [  359.165297] Console: switching to colour dummy device 80x25
+11:34:56.979: [  359.171219] [IGT] kms_pm_rpm: executing
+11:34:56.980: [  359.201837] [IGT] kms_pm_rpm: exiting, ret=77
+11:34:56.980: [  359.207087] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.980: [  359.364546] Console: switching to colour dummy device 80x25
+11:34:56.980: [  359.370469] [IGT] prime_nv_pcopy: executing
+11:34:56.980: [  359.376547] [IGT] prime_nv_pcopy: exiting, ret=77
+11:34:56.980: [  359.382284] Console: switching to colour frame buffer 
+device 170x48
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) CRITICAL: 
+Test assertion failure function wait_for_transition, file 
+../tests/kms_atomic_transition.c:540:
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) CRITICAL: 
+Failed assertion: fd_completed(data->drm_fd)
+11:34:56.986: ERROR - Igt error: Dynamic subtest pipe-A-eDP-1 failed.
+11:34:56.986: ERROR - Igt error: **** DEBUG ****
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "CRTC_H" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "FB_ID" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "CRTC_ID" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19343 on unk
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: plane_set_fb(70)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: plane_set_size (1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: fb_set_position(0,0)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: fb_set_size(1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: fb_set_size(1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: plane_set_size (1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: plane_set_fb(70)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: plane_set_size (1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: fb_set_position(0,0)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: fb_set_size(1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: fb_set_size(1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: plane_set_size (1024x768)
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x41/65
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.1, fb 70
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_W" to 0x4000000/67108864
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_H" to 0x3000000/50331648
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_W" to 0x400/1024
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_H" to 0x300/768
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "FB_ID" to 0x46/70
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_ID" to 0x40/64
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.2, fb 70
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_W" to 0x4000000/67108864
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_H" to 0x3000000/50331648
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_W" to 0x400/1024
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_H" to 0x300/768
+11:34:56.986: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "FB_ID" to 0x46/70
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_ID" to 0x40/64
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19347 on unk
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: plane_set_fb(0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: plane_set_size (0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: fb_set_position(0,0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.1: fb_set_size(0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: plane_set_fb(0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: plane_set_size (0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: fb_set_position(0,0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.2: fb_set_size(0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x47/71
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.1, fb 0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "SRC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "FB_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.1: Setting property "CRTC_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.2, fb 0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "SRC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "FB_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.2: Setting property "CRTC_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19352 on unk
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: plane_set_fb(69)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: plane_set_size (512x512)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: fb_set_position(0,0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: fb_set_size(512x512)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: fb_set_size(512x512)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: plane_set_size (512x512)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x41/65
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.5, fb 69
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_X" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_Y" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_W" to 0x2000000/33554432
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_H" to 0x2000000/33554432
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_W" to 0x200/512
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_H" to 0x200/512
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "FB_ID" to 0x45/69
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_ID" to 0x40/64
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19357 on unk
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: plane_set_fb(0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: plane_set_size (0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: fb_set_position(0,0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.5: fb_set_size(0x0)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x47/71
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.5, fb 0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_X" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_Y" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "SRC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_W" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_H" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "FB_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.5: Setting property "CRTC_ID" to 0x0/0
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19362 on unk
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: eDP-1: set_pipe(A)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: eDP-1: Selecting pipe A
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: plane_set_fb(67)
+11:34:56.987: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: plane_set_size (1366x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: fb_set_position(0,0)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: fb_set_size(1366x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: fb_set_size(1366x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.0: plane_set_size (1366x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x41/65
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "ACTIVE" to 0x1/1
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.0, fb 67
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "SRC_X" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "SRC_Y" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "SRC_W" to 0x5560000/89522176
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "SRC_H" to 0x3000000/50331648
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "CRTC_W" to 0x556/1366
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "CRTC_H" to 0x300/768
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "FB_ID" to 0x43/67
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.0: Setting property "CRTC_ID" to 0x40/64
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     eDP-1: preparing atomic, pipe: A
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: eDP-1: Setting property "CRTC_ID" to 0x40/64
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) DEBUG: 
+Retrieved vblank seq: 19364 on unk
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: plane_set_fb(70)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: plane_set_size (1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: fb_set_position(0,0)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: fb_set_size(1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: fb_set_size(1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.3: plane_set_size (1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: plane_set_fb(70)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: plane_set_size (1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: fb_set_position(0,0)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: fb_set_size(1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: fb_set_size(1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: A.4: plane_set_size (1024x768)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: commit {
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x47/71
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.3, fb 70
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "SRC_W" to 0x4000000/67108864
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "SRC_H" to 0x3000000/50331648
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "CRTC_W" to 0x400/1024
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "CRTC_H" to 0x300/768
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "FB_ID" to 0x46/70
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.3: Setting property "CRTC_ID" to 0x40/64
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display:     populating plane data: A.4, fb 70
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "SRC_X" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "SRC_Y" to 0x0/0
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "SRC_W" to 0x4000000/67108864
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "SRC_H" to 0x3000000/50331648
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "CRTC_W" to 0x400/1024
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "CRTC_H" to 0x300/768
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "FB_ID" to 0x46/70
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: plane A.4: Setting property "CRTC_ID" to 0x40/64
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_kms-DEBUG: display: }
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) CRITICAL: 
+Test assertion failure function wait_for_transition, file 
+../tests/kms_atomic_transition.c:540:
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) CRITICAL: 
+Failed assertion: fd_completed(data->drm_fd)
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO: Stack trace:
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #0 ../lib/igt_core.c:2055 __igt_fail_assert()
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #1 ../tests/kms_atomic_transition.c:537 
+wait_for_transition.constprop.0()
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #2 ../tests/kms_atomic_transition.c:716 
+__igt_unique____real_main1123()
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #3 ../tests/kms_atomic_transition.c:1123 main()
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #4 [__libc_init_first+0x80]
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #5 [__libc_start_main+0x98]
+11:34:56.988: ERROR - Igt error: (kms_atomic_transition:1171) 
+igt_core-INFO:   #6 [_start+0x30]
+11:34:56.988: ERROR - Igt error: ****  END  ****
+11:34:56.988: ERROR - Test 
+kms_atomic_transition@plane-all-modeset-transition-internal-panels: 
+Fail: See 
+"/results/igt.kms_atomic_transition@plane-all-modeset-transition-internal-panels.log"
+11:34:56.988: DEBUG - End test 
+kms_atomic_transition@plane-all-modeset-transition-internal-panels
 
-Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/72646441
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/72651180
 
 Please could you have a look at these test results and let us know if 
 you need more information. Thank you.
