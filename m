@@ -4,143 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF192C282EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 14:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56AAC282EC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 16:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=coUtwsGeOyeiVNBV1R58PGVsckk+fK/0iBXL0lL/O/M=; b=zRIJ5EeHApCrnPlBGCDaZr4vLO
-	xZGthKNn6AtJmEMvSAl7SSRGXjxjq+hxYGC/aHTQA34OrQJ0Y9QBO6uX76T34HyfyQ8SV4uJ4Esq9
-	S1kX3j7dMOG6rhd387Ha1P8q/Cn3MM96kvF82kbJqD041u/623rXmaDUOuc6kvetNfc1OC72o4+kF
-	RxLo1u+4QuKI89lUoxbhQakry70LOuAgiMZwPRXzV5VyHZJWIDdLQj+UNYFjfZ7gNGjHw1D3zjMXp
-	S5gh9bEnmGsv0JUSHbnhUkxW+Vik09hArvyOnnmxkUigMABr1zkV3P5EKPw7r80XcuZzV7EMPAsu5
-	oZ0MIaSg==;
+	bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=; b=ncvYUegzu8w8nOx0GWa/2q8b8W
+	X3dfVPSFM1dX/s7Zw0dhVed2RPsf0OPUqB2AGVQ+7jAOYO0bvYejPu5EyfQFR/NygC5/+/0S4InHl
+	H++4JS9OHRpzzl7f5sUk5FrkrOlzJpUsW6RePKEbFlF7Ds7s6KGxQmpzC9eJMGnntQJ5mzjZll9qm
+	pEuz8tZoc0jfTY79wAHvDzy4F/DFuVtZU5NbxmDX1YI5x5eYEy5q2nrLwH1D5gbVFYS076we0RRNS
+	rtfL9/EiRTwncmk2rp3S83SWyS1jR6xcE108tdDD1VcVgag4gX4pDRORVEUZyaTJ2BdnWG6B8GFn8
+	i3cw7jxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsjQj-0000000BViA-2Mwm;
-	Thu, 13 Mar 2025 14:21:01 +0000
-Received: from mail-japanwestazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d406::] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1tskzY-0000000BjWz-3SFV;
+	Thu, 13 Mar 2025 16:01:04 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsiM9-0000000BLtH-1FVN;
-	Thu, 13 Mar 2025 13:12:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=cVUlpxOxv7w5dDypCtJtfS7zG0Zg1Kk9LNekVNRzoOeI9upr/LbJLIFpx83D3Zped9KcKoapcrEmll3qk2s0VZ/of0wfUCE88lDWgPUJiyAa9O9xNmnP54HtOXHJl2X0Efq4UmfEiKUDFYc8vAzf8rA7ITDaUXw9RtD0++NkCmw62Wa/xAZ4RTjshynhlbwiZnGYket63C10pLm0qaimgQa3VQdQ4f0jvtK/OeGaIJf++x2UDoIgmXQbJEjRDsq8NJ0eClElpuuo1W8Hb+pSoqITgvF0x/qWLGsjukobg+czV6PRRhK+xGJcAwSRNwC7dASmg6RlLy006pVeK9pNsw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=coUtwsGeOyeiVNBV1R58PGVsckk+fK/0iBXL0lL/O/M=;
- b=RTuddb6EWO61xj3AO1ECxksLWme5eyaTd+5eiVpWL/jwiwGFIloE5T319esE9JO+BqcPgqNQTPmmdpqoV9SkI9KWi3IAeLV+gYdAlamWE5N16SWgWdyr1Q51p5A3CwgnGeDH5BXR60WofGkiSOlJtf/d0Sf1sbEaWSnpOIfYZ/QxuaQq9h/lJUpQm2CmG2qnpONR7N6PGUlHg79KAk9JmVgVmpztYRJAvQuPb6TzME+YeD7+7Fk5BsqRUaRatf/CNRNfRy5CANvfhUsejSSqkv+34PAbTe5Z8qG9lH3royr1zK+eUSk43RXcG3Jr3jhdlraGFb7KwseZRryEKog8Kw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=coUtwsGeOyeiVNBV1R58PGVsckk+fK/0iBXL0lL/O/M=;
- b=QRP05isHIBe/JP0A931lxgfK3wAJHn1hXOri0asDQeGN/UQzwRGzG52Xppc+QKKzk2UU8HKCt2bXA427aXczncxJpeVwl7fe7JaptwSFJQEy/zQZynmI9DehmmcJ9mh8tyu2Ie725EzSt1LXV/APfajpMy+SPqCettoGHLy9rKY+y6oJY3jXkjK3Izw4GJ3YPUPjXSAJUCkqNCvjdrC/1jPYLgDC+gBHE2MNSHI+/1melXfQt6YcYS+/hSrQ6fxeTb9oTAiTTdb0HlvX7oQVWj44iAnTNTWxMvEnMcVLpYXdecx5t/zVIidPt9VnSZc6wsNmOSpDvb4afcLNV3wSzQ==
-Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
- by OS3PR01MB9802.jpnprd01.prod.outlook.com (2603:1096:604:1ec::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.28; Thu, 13 Mar
- 2025 13:12:04 +0000
-Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com
- ([fe80::83e7:751f:f3af:768f]) by TYCPR01MB8437.jpnprd01.prod.outlook.com
- ([fe80::83e7:751f:f3af:768f%3]) with mapi id 15.20.8511.026; Thu, 13 Mar 2025
- 13:12:04 +0000
-From: Shengyu Qu <wiagn233@outlook.com>
-To: nbd@nbd.name,
-	pkshih@realtek.com,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	johannes@sipsolutions.net,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Shengyu Qu <wiagn233@outlook.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v2] mt76: mt7915: wed: find rx token by physical address
-Date: Thu, 13 Mar 2025 21:11:54 +0800
-Message-ID: <TYCPR01MB843753CE1DBAF4FAEF76B17698D32@TYCPR01MB8437.jpnprd01.prod.outlook.com>
-X-Mailer: git-send-email 2.48.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PSBPR02CA0001.apcprd02.prod.outlook.com (2603:1096:301::11)
- To TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
-X-Microsoft-Original-Message-ID: <20250313131154.109012-1-wiagn233@outlook.com>
+	id 1tskiC-0000000BhJg-1CQY
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Mar 2025 15:43:10 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-7c08f9d0ef3so64043185a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Mar 2025 08:43:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1741880586; x=1742485386; darn=lists.infradead.org;
+        h=mime-version:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=;
+        b=KhnbsBVF1uvPYbFa+yS/MOVtrT5l/Pz+dnIKFPAEYZHwEzyyLlR6qps1ePEcxwgPgI
+         2AtRDkZF8sx//eNK9EQxWHbZHsn9HUm86AUrtTbyzA2Z8obfeLy/iI6t96ceIcTYlpGu
+         iOVUH037Inp7Mb0lr5KpURv3CLJuW0hFcAp1GjvUlQR64VhizoY21IZ+ZL+gG9jk8pmM
+         riSw/4CxbGry1qYeyzMdjzRYDny50sVtLiB95LIzulzzBPIyt7tJQ0OTOmLCV45qg5mf
+         y1rUG3q3p8eMk8e9hktkhq6YZwsHaDz/WIZy92OgzAIAvamOtKxW6/yu5K9e1gvWmT8t
+         JZQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741880586; x=1742485386;
+        h=mime-version:message-id:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HP3mNRFDa3oXlhU0cv5qzQmJ+uKrJehpMIxVwkO9Fc8=;
+        b=dChNJT3BFAUizFr6S/lPA/wDyuyt6RF5QLY04OZWBnlnjk7dsmmL4xSOhXmXKxXrOx
+         xQYWi2S8M14dAA8KGarRnGzA2hPjvfe49lYCnR6+NRKIzS0BGjvJw9dSINJkO3CZ9FoD
+         BqGz1I63E4BdZS+PiIdIejMKsBsrSqWg5/j3g9zGSwVkxJof1tO2uXqWM2c3fKTUML0a
+         lVR64N9AxI3UmWDgXARW2+dP+uTk3huvZi9IEwqXHRwtGmVzkUZXNA4Z/xOws2uU3QLa
+         8fxIdheOwL5JVv19KIjozf+lajDHaIrb+RDkcJ/ZOfPq+OgyixPXEKn4pRyzIx47ihqg
+         TaVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV8zBBwQ4C0WcagdpPXugaInxMpBtDfdJ114GP44RidPgzxmIsMhpymBCYZ4IMKleG+vw9KvY8OKiMY31tJmA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwQCU0C9g8aC0KYUTiOpK1Z3vZKsyINwCjjRCzdjyr2g7nmZ2T4
+	iyoj3MpUOENpynF0tz5i34/NxXCr+ktJJSgldpYUZJfXa2u4gseEPqsgM57XPxRnqUXg/cN0Wc3
+	X
+X-Gm-Gg: ASbGncueVbr+zKlacvrBnHMO7sePKH67sdx8PrM2MNexVzaHoHzi9Sjuh4YFazMDcfu
+	44pcl9X0zxUBxdkClaOzkQnYuVDk2Ohgj2nOk2mtBNADfF4E/7rHNRGTx+UnCOf4aj5i8dss5ko
+	8zsTQ2jAp8SRlxT8Ua4paR0hQOOHXfOLpnNKiq7H5nTqjJbrBpBMptxczBj5P52Jf73OxEjS2O0
+	DcRFrGZt4FSVVN2miYCuIezaRO0ekQHd+07POAqGlDGQC/bIw60WbktRFQScWibYxIGgYFCYTZU
+	7eQ5j5QJdIrx0KUPkcoi5KLi5U9G5AIBj4VmNA6JeAJDEAbFEhdtoCMB/H5gFyD/5HucCdYQPXD
+	5xAwq0QE=
+X-Google-Smtp-Source: AGHT+IG7DGBV7fS0OgNdV+jRDvbbHKYP9sJW8CMWzee0priMRP+NjaycF9KaDGtlbGEG0pwVFVd4tw==
+X-Received: by 2002:a05:620a:6085:b0:7c5:4278:d151 with SMTP id af79cd13be357-7c579fb4c26mr20945085a.43.1741880586574;
+        Thu, 13 Mar 2025 08:43:06 -0700 (PDT)
+Received: from xanadu (modemcable179.17-162-184.mc.videotron.ca. [184.162.17.179])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c573c7854asm112540985a.38.2025.03.13.08.43.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 08:43:06 -0700 (PDT)
+Date: Thu, 13 Mar 2025 11:43:05 -0400 (EDT)
+From: Nicolas Pitre <npitre@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+    Daniel Lezcano <daniel.lezcano@linaro.org>
+cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip points
+Message-ID: <s2sp5o57-o534-qso0-2733-o0prs6028por@onlyvoer.pbz>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYCPR01MB8437:EE_|OS3PR01MB9802:EE_
-X-MS-Office365-Filtering-Correlation-Id: e4743880-1240-4528-d266-08dd6230a5f7
-X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|15080799006|19110799003|5062599005|7092599003|8060799006|461199028|41001999003|19111999003|14041999003|1602099012|10035399004|13041999003|440099028|4302099013|3412199025|1710799026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?WjIi0VFgEcXl7VF48G5at67SixuakCZXaTTKdy9M3zbgKhyWY+29tjj2mYNh?=
- =?us-ascii?Q?3GW86bPmenJGojyPiRMVce54/euaKYGzrJUHORbHeFbjHg17HJNOXU4vmZ5E?=
- =?us-ascii?Q?Z38q7l7tsmrBCQvtp1/Tjtu2EhCdzrn6X8Qp8J+uX33n4bVjvTcPW7QPhXV/?=
- =?us-ascii?Q?xvpAYJzftb6oRni0g4ZGSx4Tn4x1FCIO459somjHWvmCPS+2mgkFwt4NxfXy?=
- =?us-ascii?Q?aSiaBqMvf71dfPenhXsC6P3P6DRJsOi79jk8tHkbUzadVHM2SU58LKXN8la0?=
- =?us-ascii?Q?FulciyhNicp9TLwZkm04QwAl8nxFL4qpSZ+jhFgeOFWA5ezav2/V2rMZjwP7?=
- =?us-ascii?Q?ZePczjnQZzfoMsrE1bM6Rl7K3UK7Sw+tIwmwO37KtJP1/jmByRtx10H7NniO?=
- =?us-ascii?Q?eEAMCq2gwCpcSnCzAFUCRUrn9zSOVm6ssKAYN7AiD+M/SGYrUBGuIKQsLeuP?=
- =?us-ascii?Q?cBQr7ZH3pLmNGOFnXnxFiPjrTM4QW984YX7RzGVAYSEqIg1TLDY71fUq9M/8?=
- =?us-ascii?Q?sUKhE7K7pRLnKe1g2/kKsIYzMfgp7hjdBCKW3BYSrX0dzrmAIybGctV/acyI?=
- =?us-ascii?Q?tfUDbwyBjJP+k7xmcTkZbo/XtJtWC6hn/ToVGEjt7+SMXUV7MtF/Ujfk3v4l?=
- =?us-ascii?Q?P/q9JERomDTF326fSlE4sGzG2+gChueAqKfSDGfJtpPX/QSFb16MELMhyWsK?=
- =?us-ascii?Q?C42dqYWw4HP988ZpPJQBNLnriePc1i1+VpPLpEWyClMJsiv/WUWeyqFnQJ7c?=
- =?us-ascii?Q?npMuBo/fpvstdJzm93igx3+JsaQxqmzehaID0BsZTmgKYTRJBYJ7D5AGBEDk?=
- =?us-ascii?Q?gjCauGAWz1mY0oRrLrK4lhUsB3qZANmqiSfsD6gUfoLN2qMPwGF7tperzVQy?=
- =?us-ascii?Q?I2hbIyN7ocRrGIdM5Q2mvifprrk9W2+fuhjQQwYjVTK8iQ5jzEXU8v5ofZAw?=
- =?us-ascii?Q?AVZdj5UzijbTGgYhr2x0iFfNbVgxAefjGPYcxscwn2nd3nwqtem6mrO6VpW6?=
- =?us-ascii?Q?0lB/9cl7OjVS7shK6OelGLw3HddQho8/GpC/kbGcqQhNR3y6rL7sTc0PhtJZ?=
- =?us-ascii?Q?h7N+WTXlFVYThMm/FOsxVoUrkNMdrr2vLKOUgXs/u10f4a6FGtaf4qvLPV+H?=
- =?us-ascii?Q?d3n09Tvwcf+U6/3x7dX6ELNS44wn3whR+XTJR8mIBN0PM+kmiX2sin3YfmMW?=
- =?us-ascii?Q?1NP0emYxXfpH6PDqPpkoev+kldfrYxbwUDaKYq+HKg5SGyogb9shRGcQ7ooo?=
- =?us-ascii?Q?Wt5gG2pOOgAyE7C2zuqxWPJbzJk/SGC6udTvxKf4iioxLBV52OIaGwv06P2D?=
- =?us-ascii?Q?kMXlUJzaQ0Kd27YaPPgxFCTPacz5915zPOusJR57JyQOYnVxgCvlplWadQXR?=
- =?us-ascii?Q?F6kmq2wYKcgHTIYgm8qpsy9XsJNv?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TyQYh82RCkCr7BRUaXOQc22Ls2EYi9bs9XnEo1/2t2lZbcp/UI7snsOwX5/E?=
- =?us-ascii?Q?zcCA8bu//Sl27cg3OfKNVuH0rBOIyV0Ze99EQooPTsuhQnOmjmWRVfQ5CKg+?=
- =?us-ascii?Q?9ZTRgbhSE9UYumxb2IDaYHm1t2SSICCPh92qyn/8SYPGw02GHn4MZ7uQmnpI?=
- =?us-ascii?Q?U7f7BAPLe7Kpc2T8py/gXBKe3GNbDly7g9Cub6TrcWUEzltEcsAxDH9IrvkA?=
- =?us-ascii?Q?OaidVShCHv0wkWnynlDudjE3slHwX1SNZ8e6SKkPIcKoNNQPtiHkw8ahXGg6?=
- =?us-ascii?Q?BRTFw7yH1k820GHX4kX6Gx1dN1pn1leFxOsLRaBPsuT9DbSpsY8NvrgTD/Ai?=
- =?us-ascii?Q?LuDndM+hVC55ZbYb7ahL7L3a2rdYQUM5TRqBh+LwW/NuPYMifEBoaDj0mOQ3?=
- =?us-ascii?Q?vopc69MzVqz3Dht8cfSxMwD/9tsyX0zbhzMfRtlgy/PQpIt+1hyQ7/xtbZjR?=
- =?us-ascii?Q?o28Ar1D7TJ88JMF41Wd4TrEBOrM500CrPC/2jBspY+obpGz8mY/HZxHu2+Bl?=
- =?us-ascii?Q?mHgk3ZNRNmNmBdaSNQDLkUtGHINCMkZoq1f/uqopBu23BXZmsqkW9123Tp6a?=
- =?us-ascii?Q?eFsUxMnA6GzBwHxTM9EygELC8bkKdx3pPfcx63H+uaj3/3nXlrKvT0OLNz+v?=
- =?us-ascii?Q?xTXGUdZ5wX5OI0x1XuiGgUmeTd0GUm3MDUoYfEENJkCwLurTh15TZele1Nj/?=
- =?us-ascii?Q?D8YRcYK/yEkwx2y+m1jPDO88vEeQ26Zgi1l8v1wXq1HMjit4mNKXvF4lS0ZV?=
- =?us-ascii?Q?4uGpAl6T3ThaKSXb/L74TjN4OA6g9GsqkGayaAinHCCAHZmXvvkZghj96ZKP?=
- =?us-ascii?Q?ed7KOCwwlDieDUd9ZQechJWzW4ahAuCW68/wwIdClpdXDM3BBQVajRrvdpqm?=
- =?us-ascii?Q?L0tugkJ+Qq719Ekbp088LQbjk7O6BAcUEachYL0XGf5atguSgzIwN3ZCOMAk?=
- =?us-ascii?Q?TF121eGTMwd++ll8/5AvWLxxDavHCVwWZXJmwlBHjIt6T+zH4ncwB8rg8kI3?=
- =?us-ascii?Q?/KzJfNISFtZ5+jTLu0GxZWtZ/2wf2gYU1CjvN8OHew6TBu42yyRLI7SuETVu?=
- =?us-ascii?Q?//YNJxEXHn1rfvqXFZEoDu0bXDiVf8S5pdsIRtFDoQmEFx0aRUsw1qcGg9Fa?=
- =?us-ascii?Q?zCu0T2vQq+nG1JBlmaz69dxxsP6Sdw8iIP9hROomAuVkjk7lvAiaCjx5KojD?=
- =?us-ascii?Q?RQCxlnrq0zQgYbM1KeNKA0mR8NrfslCsimzHM0WYHtceMi/9lh4BgO+FLpxv?=
- =?us-ascii?Q?KAhauc1qRQuRxXEhO64hku7ZeIcaFzCMH1XQLIPK1VjmhzezF/mn4V8R+4N0?=
- =?us-ascii?Q?1y4=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4743880-1240-4528-d266-08dd6230a5f7
-X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB8437.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2025 13:12:04.2102
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS3PR01MB9802
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_061213_353212_38102A52 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20250313_084308_524644_F7BF9F0B 
+X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,60 +96,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The token id in RxDMAD may be incorrect when it is not the last frame
-due to WED HW bug. Lookup correct token id by physical address in sdp0.
+Provide the "switch on" thermal trip point to be used by the power
+allocator governor.
 
-Downstream patch link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/737340322ab22b138fd200e020d61ffdbe3e36a9/autobuild/autobuild_5.4_mac80211_release/mt7988_wifi7_mac80211_mlo/package/kernel/mt76/patches/0062-mtk-wifi-mt76-mt7915-wed-find-rx-token-by-physical-a.patch
+Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
+Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
----
-Changes since v1:
- - Reordered code sequence to reversed Xmas tree order
- - Renamed some variables
----
- drivers/net/wireless/mediatek/mt76/dma.c | 26 +++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 844af16ee5513..25893686cbe85 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -445,8 +445,32 @@ mt76_dma_get_buf(struct mt76_dev *dev, struct mt76_queue *q, int idx,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index 338120930b..262eab8fd3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -472,6 +472,12 @@ cpu-little0-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
  
- 	if (mt76_queue_is_wed_rx(q)) {
- 		u32 token = FIELD_GET(MT_DMA_CTL_TOKEN, buf1);
--		struct mt76_txwi_cache *t = mt76_rx_token_release(dev, token);
-+		struct mt76_txwi_cache *t;
-+		bool found = false;
-+		u32 id;
+ 			trips {
++				cpu_little0_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
 +
-+		if (*more) {
-+			spin_lock_bh(&dev->rx_token_lock);
-+
-+			idr_for_each_entry(&dev->rx_token, t, id) {
-+				if (t->dma_addr == le32_to_cpu(desc->buf0)) {
-+					token = id;
-+					found = 1;
-+
-+					/* Write correct id back to DMA*/
-+					u32p_replace_bits(&buf1, id,
-+							  MT_DMA_CTL_TOKEN);
-+					WRITE_ONCE(desc->buf1, cpu_to_le32(buf1));
-+					break;
-+				}
-+			}
-+
-+			spin_unlock_bh(&dev->rx_token_lock);
-+			if (!found)
-+				return NULL;
-+		}
+ 				cpu_little0_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -510,6 +516,12 @@ cpu-little1-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
  
-+		t = mt76_rx_token_release(dev, token);
- 		if (!t)
- 			return NULL;
+ 			trips {
++				cpu_little1_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little1_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -548,6 +560,12 @@ cpu-little2-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
  
--- 
-2.48.1
-
+ 			trips {
++				cpu_little2_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little2_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -586,6 +604,12 @@ cpu-little3-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
+ 
+ 			trips {
++				cpu_little3_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_little3_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -624,6 +648,12 @@ cpu-big0-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
+ 
+ 			trips {
++				cpu_big0_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_big0_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -658,6 +688,12 @@ cpu-big1-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
+ 
+ 			trips {
++				cpu_big1_switch_on: trip-switch-on {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
+ 				cpu_big1_alert0: trip-alert0 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
 
