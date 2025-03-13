@@ -4,96 +4,211 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A536C282DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 20:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45676C282DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 22:49:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dqu3z7xLiOSf+mcYINqf8wHjgnmfkNcGWDDBMVjmjy8=; b=xatojNGkMnX8H46TkGeFt5Y62A
-	7W8ngJ+9bAhjitBauOsLl7bxsb9fSpy6eI8d0Pk1KoJKd8CDJzmtHzoWV9+sayahENAcSLeuiRqrg
-	qtAr9BCGLC6yCX4Oz/Eb2HMg2Em1UHUEaYWi86m7wYSsNmaZexr+aLFbJNJrvnmyLKi3ROBIsqgfU
-	Z/VFbhmSdjnVSKnCETXgYFVPdS0aQEC963EzBet0c5QxS2WXEa/IvUif3cnWqI8k/3X28qcnKiKTf
-	n1AXp6HBVbl93ozIVlJRf4li/DpByVlqD89ZJmkfFmgqlsWyLfgoDylboVo2jPzoIV/oq71l/M1Qe
-	h8GILWFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LBmo/gQO8PClUSMB01qIXzIgpY1sEahNMtr7xEBke50=; b=AoTY0v48w6WlQ19Us0Tg1AT4V8
+	xfPr3z//nuBXmULdmiU2zefX1PMULFwbM9Rqszu4ojF3zKmWY7SCTF3pwwg6XwAY4ESetFrRbQqwL
+	CUR+N+2CxPY+S9AXp1GTZ7jE2+ML2cburq0QDCb/xLlDdLWiQNOigt7LQ7JHkfm30m8aAIWVxhmoQ
+	QeTkXc7TFt0ud+HuKygJlNMUFqIsSHkmpi6KAMqAoTGjI7dRpdo48WBj0KoI6yWBqwEN4CNahQFDj
+	cFdA8Zy3KdKu21oVvzZ4i7+Hk/pHvdtWzf+Saqikf7I/9Brg+5ai5Iq+yaUq5Yzh8jEx/gw7bAVMo
+	Jn9RCqxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tspKX-0000000CSHE-0WQ8;
-	Thu, 13 Mar 2025 20:39:01 +0000
-Received: from mail-vk1-xa32.google.com ([2607:f8b0:4864:20::a32])
+	id 1tsrN2-0000000CeXP-1UYN;
+	Thu, 13 Mar 2025 22:49:44 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tspIr-0000000CS7Z-1ISr;
-	Thu, 13 Mar 2025 20:37:18 +0000
-Received: by mail-vk1-xa32.google.com with SMTP id 71dfb90a1353d-524038ba657so1189629e0c.0;
-        Thu, 13 Mar 2025 13:37:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741898236; x=1742503036; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Dqu3z7xLiOSf+mcYINqf8wHjgnmfkNcGWDDBMVjmjy8=;
-        b=Q6ens7XMw1MhnfO/JXKeohEO1cAUg/PbKyTkefolDkAcPKoLX6P7/AXuzzuvmtZcwj
-         zlQb91cmQY5yxKMtU1Hl8VjTvK1xDOr9/zCzRcxGGWeqT2knUP0CoOvuwHKYAP4Shlbo
-         RRC2w3Z+fD7mCn7nt4BRR43oJ0P2qNHplA8bmoANrkPP95Gi8XF/CACGJjWKzHIdlGDO
-         bBOksesNYOmnz21n8kriK+ye4iCNmb1aFAVyzG5rbb5F9rOpcWcskxYUXEA53+bfTk/Y
-         ypk1bMd7yuDegnbJ6OiL9yxW9e/822UVggfKGfcsGcl7fCps5prnfVtZfUlB9qvYODh4
-         rNYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741898236; x=1742503036;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Dqu3z7xLiOSf+mcYINqf8wHjgnmfkNcGWDDBMVjmjy8=;
-        b=g6Y9jA8zpj46AKt0rp9t6AsxBIbocBhIzJ2qwK9dACxzKEVu8GFI0Jh+zEFy3sqJ+p
-         i3JlRHTfiHjDp8zA/NYGuEpPHHMb/ZoqWlLsSdzjNKNU0qjjptDl1edkiShO2AuT2ZLT
-         Kf/63qia86N3cLddOdgRe9frk6AEwEx2JfDMfQPjpe+Gz6FOXQmkBMdUOKMj7dF+QgIL
-         u1I1TXczs5j46OwqpI0YH4w3YSGSAWbTJ8Exc7yAHHPXOwX6uYMEXvP/p4I+4uWeI3Yw
-         MQTLD5fM86865xfW+Bh6PuL2MUR4Mq7mKujproT8LR73ItlXLY8DzSgdCqA9DENeitB9
-         Wkbg==
-X-Forwarded-Encrypted: i=1; AJvYcCX7I3/KC8u/EELGKjmS3qBfUZZFUzvCG/D49jlSMG/xGbJFySIH2Y1sCGIGLOXCu5QlkCHwfYrtKTwop29h2tM=@lists.infradead.org, AJvYcCXveppYuabSdJPTu2GNnhpp4fTnCyHYmlxXqwquISB5HGzr7Q/FEE9vQy3vDkd874XjZs7XuerhHfwb30vmv4iP@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDNWOynhXWJwP3rxElWNJA5lArh+cc4DeSs1tYcCwsR3ZAatOd
-	aYZ2mRlW3og1GRUTR0Qb55xhwMRdFhPQ5AJI9U6cKwsukRO/TAOo7i7kEzxLpNPHsOag9aTdzdM
-	3lVOfYWGpix/t3TYdmeTbDsD+08M=
-X-Gm-Gg: ASbGncs0Kd8CwRdbiaFE/B0WpnUR+TMCHa/QBpjjOQ6e7zLw6OhRjySXJKbafU7XLTf
-	2UOKynXSJC5rRqVgZKWv0/artyXW9r2DxV7wnSNzLx+mPNe5LG4I0+9Nv/vVXT/gBRZeclfQG6u
-	SyFDnPCzADkObM2CdUZmYpjua/4A==
-X-Google-Smtp-Source: AGHT+IGhWPno/cBlLy5i4JFgfTgN4go/KloyhLNpBTEj6UkmZZkGZMKDNDN1ix3of11Oz/UJSScIn1QWnKmOTjaulGI=
-X-Received: by 2002:a05:6122:3115:b0:523:6eef:af62 with SMTP id
- 71dfb90a1353d-5243a4082e2mr4188850e0c.4.1741898235977; Thu, 13 Mar 2025
- 13:37:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250307120141.1566673-1-qun-wei.lin@mediatek.com>
- <Z9HOavSkFf01K9xh@google.com> <5gqqbq67th4xiufiw6j3ewih6htdepa4u5lfirdeffrui7hcdn@ly3re3vgez2g>
- <CAGsJ_4xwnVxn1odj=j+z0VXm1DRUmnhugnwCH-coqBLJweDu9Q@mail.gmail.com>
- <Z9MCwXzYDRJoTiIr@google.com> <CAGsJ_4yaSx1vEiZdCouBveeH3D-bQDdvrhRpz=Kbvqn30Eh-nA@mail.gmail.com>
- <Z9MWzDUxUigJrZXt@google.com>
-In-Reply-To: <Z9MWzDUxUigJrZXt@google.com>
-From: Barry Song <21cnbao@gmail.com>
-Date: Fri, 14 Mar 2025 09:37:04 +1300
-X-Gm-Features: AQ5f1JogIHzZmp31Tn9SRX0wI-8utb1OhKH-ruNw33einw0Y1Le7Sq_FlEtZGgo
-Message-ID: <CAGsJ_4z9pSt=LdfDUmQ7YhNocE6CJGxEwighSygGZrDFSyKU+A@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Improve Zram by separating compression context from kswapd
-To: Minchan Kim <minchan@kernel.org>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>, Qun-Wei Lin <qun-wei.lin@mediatek.com>, 
-	Jens Axboe <axboe@kernel.dk>, Vishal Verma <vishal.l.verma@intel.com>, 
-	Dan Williams <dan.j.williams@intel.com>, Dave Jiang <dave.jiang@intel.com>, 
-	Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris Li <chrisl@kernel.org>, 
-	Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying" <ying.huang@intel.com>, 
-	Kairui Song <kasong@tencent.com>, Dan Schatzberg <schatzberg.dan@gmail.com>, 
-	Al Viro <viro@zeniv.linux.org.uk>, linux-kernel@vger.kernel.org, 
-	linux-block@vger.kernel.org, nvdimm@lists.linux.dev, linux-mm@kvack.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Casper Li <casper.li@mediatek.com>, Chinwen Chang <chinwen.chang@mediatek.com>, 
-	Andrew Yang <andrew.yang@mediatek.com>, James Hsu <james.hsu@mediatek.com>
+	id 1tsrMT-0000000CeSB-28rq;
+	Thu, 13 Mar 2025 22:49:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1741906150; x=1773442150;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=yoxEJng0RV9gYbaqg8jScDodQxGzmdC8+crJjcHgTPk=;
+  b=AYGMQSgFzK2YCOmZHDORBQR0y/FSXsw5GbrVmb69gUz52ffFeungzorw
+   iMxDdfUVdsU0eSA5Urj2bnCebIBtF3BWJvjmHEnFNb1UiKiuRjrvOr42B
+   1gnqPTKKJTslFJbksdpj8xCHJUCU353mfM/TAJLe54fpp9fTGkc8IMFKI
+   apJEabsikOkD8oGyT+7I1REDUfa0m43v6p43UckJv2+BtOub3VqWApSs+
+   +BS2EoVJhZYuagEBvOmgPLzULavfDAtTNUDW08CPAwTN9Y0rSKW1IISKF
+   guC5+swjzFbTQY0AHjddGRnXOmnAl1NnsuPKbAXQmbC8LEl3XumKtqfRj
+   g==;
+X-CSE-ConnectionGUID: 11CR2GR/TZqwnBaK0mxiWg==
+X-CSE-MsgGUID: H/v496xbRFSC2KCJ45FNvw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="54040151"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; 
+   d="scan'208";a="54040151"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2025 15:49:07 -0700
+X-CSE-ConnectionGUID: jD1UwVtEQFSaIX1IQLBC9A==
+X-CSE-MsgGUID: 74PZ2c/wQJuAulSotiLW4g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; 
+   d="scan'208";a="121085124"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2025 15:49:06 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.2.1544.14; Thu, 13 Mar 2025 15:49:05 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Thu, 13 Mar 2025 15:49:05 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.49) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Thu, 13 Mar 2025 15:49:03 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=zWQECOvj8ZBf2nMWmLbykr+s+Vn16xqrs/FOB4G3vWIDKnc7p59FHwdr3ezPeoO1dxNtTmX4UoXfvcffJLSE5F+IosbrjL13gqJT2rqsGIyE501ooFrRinU3wvNqrMAcPsCq76yhb+RgmnTUFqxGeHBn/lZD9EW8Jz2XW1o/NYUWvm9e/tzfsBogn6eerPoHXB4f52Wjw5aOXHegdPf/XQn+w3UyFI7aTQKt213OE7Prvi3Dkgj0TyRAzt+ZDFH9rIcbmEIxVX8FepK5sPh5eH6DM5E7dHgg9glkZI30Tb0GJ7lw/OzWv72BTAynzLorwzn0VcP8c/5ofm9HSNwv8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LBmo/gQO8PClUSMB01qIXzIgpY1sEahNMtr7xEBke50=;
+ b=Gea+y4xreCWcYFObvV0/OYPBZug8dV0977odSVmyr82IK5jQEfV5KC5hCg6a1OCkN+JuSou9kzG5lX9Rp8Geq4wH1OAuAcw+M5SQlCbOUr22pzzW4+6qYSay2NxoOkLA3jv37qdxB/G7b9IIKOz+22j6WVz827JVG8iMHGCyG84BddDmE7qhvsYS41vJTcidKE2VXtRlhmgRAumDzU+NQwZxgQArFLZGNu9Ij6lkMVkFfK55AQDahsI7qOu81wGmC5/b1mzIwrp03jr6tVW/5Y2yG0Xf4o/PX+ilAt3UyiQXfvMefCZ2+saxLOxqXndRtEM2GtLkHu94d5DgKh40dw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by IA1PR11MB6492.namprd11.prod.outlook.com (2603:10b6:208:3a4::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8489.33; Thu, 13 Mar
+ 2025 22:48:42 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%4]) with mapi id 15.20.8511.026; Thu, 13 Mar 2025
+ 22:48:42 +0000
+Message-ID: <73e82f1f-e0cc-4b1e-8436-727a268933f6@intel.com>
+Date: Thu, 13 Mar 2025 15:48:39 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 0/9] net: stmmac: remove unnecessary
+ of_get_phy_mode() calls
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>, Andrew Lunn
+	<andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+CC: Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn
+	<andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@csie.org>,
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+	<linux-amlogic@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Neil
+ Armstrong" <neil.armstrong@linaro.org>, <netdev@vger.kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Samuel Holland <samuel@sholland.org>, Vinod Koul
+	<vkoul@kernel.org>
+References: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4P221CA0021.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:303:8b::26) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|IA1PR11MB6492:EE_
+X-MS-Office365-Filtering-Correlation-Id: 86246485-f3a7-45a7-ef70-08dd628133cc
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Vk5kOVRHb0M4WGg1NWhsZDlvd0NRb0g2Y015NHNSUzFXdUxvaGtRNWQxcENs?=
+ =?utf-8?B?UXZhc1FMSjNIQVE2akw2VG15bU9qUEZ1cSt0WGlVTkpZdjNMc01kYnZuUTJj?=
+ =?utf-8?B?LzBqby80SFY3L1dxNUVXWTIzbk8vcklrTFZEamVSTUY4aDdWcXF2dDd4SkFK?=
+ =?utf-8?B?R0ZEK2I1RkFwMWswSjNRaVBKQk5hVjQwZkllR3l1enFxRkZ2d0E4QU95MENn?=
+ =?utf-8?B?SldicWVxaVhXNHhJdXQvdVdjS0Y1ZWl0bWlWTjRueHJUYVFHZWNzaVVhV1BL?=
+ =?utf-8?B?am9qcElTVFJDTlQwZTE0eERtdEdYQWJnNE9FZHU2WmlkVnFBY2JUY0w0bWlt?=
+ =?utf-8?B?dVFad0FKOXVmeDl6OWJTbGZFeFBjeHZENFQvOEZoUHNpelJQMTIvY0EyYXdL?=
+ =?utf-8?B?RlA5MGNWejlTSEZNY2FYYk1adERKSkVMUkZud0lPemVpaXY2VVVBQzFZa0s1?=
+ =?utf-8?B?NjdTdXlqKzVpcWVCSEVYdHVJZkk5M0FkU2Uveko0NnZ0elZxU2FwU084QUxY?=
+ =?utf-8?B?QUJVZEhHd042Ny9iL2ZySVRESGFRTUU3dGRkTjhLaTQzS1pqWlU0N0laMGkr?=
+ =?utf-8?B?MS9UZmltYWkzKzRtandmaEQ5TkF5dVlKTGE4SWJGQUNURno5RnUxaW41RjJU?=
+ =?utf-8?B?d1QwQzZDZmg0WXN3Tkx4SzQ1VXh3Q05BS2lnNDZ1ZVZPWG1JWDBKakMwakZs?=
+ =?utf-8?B?djNIQnhCVGtYVWFFK3BpelFkY1BQazRvZDBTbG05b2pIcVNFVXhoSkdDYVcw?=
+ =?utf-8?B?OWRhbldTazVwVUR4bXVPcm1McGhkMm5oRGxIeTZ6bDhMbWZ3M1FWZ2N5TWMr?=
+ =?utf-8?B?Z2Q1VHdGeWsvWWIwY1lxeGh2ZzZZaDZuT2ozL3JCYlNQZVlVZkZoOFhhTlVF?=
+ =?utf-8?B?aEJHYlYyZkQzczB6bnhySjEwK3NPWkdtR1ZZdXpoL1pWbFJKQ3NyNE5WRysy?=
+ =?utf-8?B?YXkyRlpGNW12Nk5CUTVUNElnTnpZTExxSUV3SlNtVXJ5d096d3hrdnMrbWl4?=
+ =?utf-8?B?b0JySGQ2cXh5bmdUVG53a1ZqcEIzczhRNC80a2pkb01EQS95RlI3TFp2bURk?=
+ =?utf-8?B?eGtuYnRqeWlkYStTTzE2WGs1anBVM0c1T2c4ZFVhcFlwUnd4d3M0cTE4MUtm?=
+ =?utf-8?B?SEk3Z3I4WDU4NVl2NXJNZXY5ZkhrSlJmRmUzN3FjUEhJa0dzUEszRUFvTDRB?=
+ =?utf-8?B?SGtuK1duZW5ZZzd0bFZZSkNRYnJ6ajBMdlhkZ3RhbTJYVXBiMm42VEhPSm4y?=
+ =?utf-8?B?dDlNV1ZlNFZQa01uMXN1VlNybzVOaDZKOHhYenNxL29SNTV1cEVqdSs5M0li?=
+ =?utf-8?B?OWIxNm9RVm5lMnMzTWFBZWNRanIvak9RUVJtSThSQmdYNi90Mk1IUlBYWVVx?=
+ =?utf-8?B?TDZkWER5ejFtaXJKcEF4VmtNVUhpQzRrSmFaTmV3Nmo3cTdVWDRMaXMxK2Jh?=
+ =?utf-8?B?c05yTGFuTG5CNzJISGRRbVNOTkxlRVJUa0l1WlJVT216d3UzUS9iR2NnTjZB?=
+ =?utf-8?B?dndWMFEwUVR6K0hBNE9FSU5PY0RDUTcwY3cyVFJLMEtzN25WYzA0a2VUSmtC?=
+ =?utf-8?B?Rmp3djAvUWZReEdTUS9rYjhPUWpLT0YzWkVEeTE5aDZhVi9CMVdmcFA0RS85?=
+ =?utf-8?B?dHlYaUVqMSsrN1dHRUNiTEhrVzJuRGNaeElQblhpdkxpK2ZGQVo5eGJDemdh?=
+ =?utf-8?B?QllYUkQrN09ReVIvamt3c2tjVmU0M044aStkc0p5VDNVMDREejNLN21GZEpM?=
+ =?utf-8?B?MzFuSVZZbWttVFl0bnJ4Mmc3Mm9KT0tiMHU2ZnduNnRwV3E1VXpjMmtFV2ZO?=
+ =?utf-8?B?V3RzdnpwL0xjUHVwanBjdWd3bGZrOWdOb0FLQUZFaFEvSFF2ZGhLdTdiRi8r?=
+ =?utf-8?Q?DsKUqDSQGSJLR?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB5089.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aG9yVGR6Z2VPUGxXWTB4OGtPWmhhSGhoVERXOS9iSnljb2FvallacmlLaHNM?=
+ =?utf-8?B?aU84U0F4ZFlmM1A5bC82TzZMNVFLVnVwTk9uNFI3YVpwRnc0T3B1eHpqdUw0?=
+ =?utf-8?B?SmtoU0QxY2dwNkV1NXBhVEtKWjlMOHA3WStOYVo1TG5QdzNpUWNVRGJ5M1dM?=
+ =?utf-8?B?MVJLUmFCeGZNc3BSUSswazNxM0dmSU9XY2FqcXVLc0NQRldHeTE3YVZDV2RS?=
+ =?utf-8?B?bE9mMjhhWGRUOXJwNUsvVjRwdkFFZmh1SlhiUkI4UlFRYkl3Sm1zRmVDb1Bq?=
+ =?utf-8?B?S3lZb0s4bzcrcDg3ZGlHalg5bC96RldCcmVIa0wvaW5KNU9CM1l3YWZGdU1i?=
+ =?utf-8?B?QUM1TThJMm45dThEemNJdnA4L2NXVURpKzUzWk9MeFZod3czb0FnczVxa1Jt?=
+ =?utf-8?B?RUxkN1ZqR3V6aTIvbThOMk16TGE2N3cyeUFhYkhNaHp0VHZqWUlGeFdmbWhs?=
+ =?utf-8?B?YUZHUFIwa2t2SWRqUXdPSFAxZzlPT0xlYTRNWXpqU2V1ZXRsajI5VkFFNVM4?=
+ =?utf-8?B?eDJUQ3JOc295L2tNZFk2TllQU3ZyK1hsZVBWb1pXRFRRZ0JpR3k0RXJsSkZl?=
+ =?utf-8?B?QkM4akt3cVZrdXVCdmhESEoyWU9iQS9EL3U0aVNtendSOTByQmFpSm8rMjZR?=
+ =?utf-8?B?MzRMRGFTeHMwQmtQcmQrNXUzOHhoZm9SdEowWUZIWVgrRWFOajJqY2t6QmNr?=
+ =?utf-8?B?Mjl0dXB6ZDR0MG5PUVFHcU9wKzJubVl0LyswT1JDY1REbDRRZnZ2aE1MRlUy?=
+ =?utf-8?B?OVhid0RlNnBKMDhPbFAxem5JcENpM1dtR0k0SThweThTUWRSUHhja0xaQ3cx?=
+ =?utf-8?B?SXBtRGtyejRCQlFUeVpXbE1sWEhYcTZPZEVycmZ5bUErWFY5QmJKdjVSc0pO?=
+ =?utf-8?B?bXVwRDlEOXZsTy9LWlowd1MwbWJ2cjFTRlVhSHRoNXgveksxVUFzVFNVSStG?=
+ =?utf-8?B?TG1zakhURlpncDVqQm9GMDN3M05LOXM3Rk0vbHZBNUM0ZTNJcFFSc2xXQzZT?=
+ =?utf-8?B?d0ZWbkF1eEwvYktGMHBzdVVvZ2RHbVd1K3FOcGxwQ3F3dzNVSWN5cHBjT3hx?=
+ =?utf-8?B?SUQyVWtFM0VrbHZ5eS9KQzhseUxqbUJoazJBMnd0aVhpWG5Tak9EUUNrTUt3?=
+ =?utf-8?B?YWZWVndzTHh4S1hNdkwxWDI1UFNPM0Y3cEM2VnBxalVkYVEzMGVQWHJZQkIr?=
+ =?utf-8?B?aERzMkdZaE9tRmxhQ1FEb3VDV2VSeStpYnY5MFJ1Vis1QWQ4R3M5Y1pWQXhQ?=
+ =?utf-8?B?VUhlNVpRbmNCdFk4VXJ6N2FWZ1l4aHFVanBYYUpKMWkrNW5zVHVBOTZCaTNU?=
+ =?utf-8?B?bE95aWxTODRucTJYYzQ3ZytRejR1ZytwaFZhWExrb2V2SUVyazJsMjVWM3Qx?=
+ =?utf-8?B?L0s5YkZjRFBEL3NHVHZGSnZwWUd4YktBY3c1SGhNamQrTFA2T3pBdEloU0ll?=
+ =?utf-8?B?ektTUDVGWDBxMmNoYm5BYzdVUmNKV1pqOW8weFd3UzJTSkRLRnJ6RzQyM01Z?=
+ =?utf-8?B?RTl3Qm1TdW5HamgrYXFvdTBQb2kvYjdWeEQxc3pJNVF4S2E0SjIydUk4dVlH?=
+ =?utf-8?B?MGZLNmZDR3hEZTBGaVdjTFB1aUxlWUNtcjYwQ3lkZXQxQkMza3R1VmVDZ2s5?=
+ =?utf-8?B?eVJabzJINWxIVVN1SGNRdEtmVDUwV1ZaVFYvNXNyenA1UmZ3M0dJVnZCWXNj?=
+ =?utf-8?B?YnZEWUx4ekJpbkhRUXg5dFRWUmZoUjZiZzlWOG5Xclk4VFQwS3EreVBORXkv?=
+ =?utf-8?B?UkQ2dFphRWJPcVdYc3hkVXdoRFJKdDdMSXBSRE1tTURTQTBxSEN6c1RQTnpO?=
+ =?utf-8?B?U3hIcnd0NmZPYXk5ZmtnWFpDeTFIeXlQWG8xZXRRZENjNGFzZ2MvTnVKREVz?=
+ =?utf-8?B?TG5EVTJRaCt2NXozUEdndmNrTjhPamFGbWxiYXY2S1grMGJDdFpDcFk0bUgw?=
+ =?utf-8?B?M2wvODEzZFpNbWZJbFMyZmlGOXJ0QnpjNVNBeU1nUUhTQkVvSUloeEcwRFVC?=
+ =?utf-8?B?L2R4ODFUWU1rNHJsMVdQZnZySXFCNFNyTnNxRWZDQ0ZBeEttWXM5TE9ldE5F?=
+ =?utf-8?B?dDBYa3UvZHhhU3JXSXludVJFRURzRkxvMEpyQlI1K09WMWUwVjFFN2VMQXFv?=
+ =?utf-8?B?b3laaEN6eUxwbWl1UUdsM0tXR2RDYjd5TEI5MEpuL29xczNjOWZhYnlYZzhi?=
+ =?utf-8?B?Q1E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 86246485-f3a7-45a7-ef70-08dd628133cc
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2025 22:48:41.9312
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: nBRnSciGCp3m6ecPTQ8cUZY9GmNEbhRyPcmhqS4hgPaRRly91OTrwz9Xm1MUVaSBSzYLGSICsl3Q0/92eXvixrh0T7mlW2+UUMd7UmdnfgU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6492
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_133717_353481_EEF2327F 
-X-CRM114-Status: GOOD (  58.03  )
+X-CRM114-CacheID: sfid-20250313_154909_653654_C1263666 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,224 +223,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 14, 2025 at 6:33=E2=80=AFAM Minchan Kim <minchan@kernel.org> wr=
-ote:
->
-> On Fri, Mar 14, 2025 at 05:58:00AM +1300, Barry Song wrote:
-> > On Fri, Mar 14, 2025 at 5:07=E2=80=AFAM Minchan Kim <minchan@kernel.org=
-> wrote:
-> > >
-> > > On Thu, Mar 13, 2025 at 04:45:54PM +1300, Barry Song wrote:
-> > > > On Thu, Mar 13, 2025 at 4:09=E2=80=AFPM Sergey Senozhatsky
-> > > > <senozhatsky@chromium.org> wrote:
-> > > > >
-> > > > > On (25/03/12 11:11), Minchan Kim wrote:
-> > > > > > On Fri, Mar 07, 2025 at 08:01:02PM +0800, Qun-Wei Lin wrote:
-> > > > > > > This patch series introduces a new mechanism called kcompress=
-d to
-> > > > > > > improve the efficiency of memory reclaiming in the operating =
-system. The
-> > > > > > > main goal is to separate the tasks of page scanning and page =
-compression
-> > > > > > > into distinct processes or threads, thereby reducing the load=
- on the
-> > > > > > > kswapd thread and enhancing overall system performance under =
-high memory
-> > > > > > > pressure conditions.
-> > > > > > >
-> > > > > > > Problem:
-> > > > > > >  In the current system, the kswapd thread is responsible for =
-both
-> > > > > > >  scanning the LRU pages and compressing pages into the ZRAM. =
-This
-> > > > > > >  combined responsibility can lead to significant performance =
-bottlenecks,
-> > > > > > >  especially under high memory pressure. The kswapd thread bec=
-omes a
-> > > > > > >  single point of contention, causing delays in memory reclaim=
-ing and
-> > > > > > >  overall system performance degradation.
-> > > > > >
-> > > > > > Isn't it general problem if backend for swap is slow(but synchr=
-onous)?
-> > > > > > I think zram need to support asynchrnous IO(can do introduce mu=
-ltiple
-> > > > > > threads to compress batched pages) and doesn't declare it's
-> > > > > > synchrnous device for the case.
-> > > > >
-> > > > > The current conclusion is that kcompressd will sit above zram,
-> > > > > because zram is not the only compressing swap backend we have.
-> > >
-> > > Then, how handles the file IO case?
-> >
-> > I didn't quite catch your question :-)
->
-> Sorry for not clear.
->
-> What I meant was zram is also used for fs backend storage, not only
-> for swapbackend. The multiple simultaneous compression can help the case,
-> too.
 
-I agree that multiple asynchronous threads might transparently improve
-userspace read/write performance with just one thread or a very few threads=
-.
-However, it's unclear how genuine the requirement is. On the other hand,
-in such cases, userspace can always optimize read/write bandwidth, for
-example, by using aio_write() or similar methods if they do care about
-the read/write bandwidth.
 
-Once the user has multiple threads (close to the number of CPU cores),
-asynchronous multi-threading won't offer any benefit and will only result
-in increased context switching. I guess that is caused by the fundamental
-difference between zram and other real devices with hardware offloads -
-that zram always relies on the CPU and operates synchronously(no
-offload, no interrupt from HW to notify the completion of compression).
+On 3/12/2025 2:14 AM, Russell King (Oracle) wrote:
+> Hi,
+> 
+> This series removes unnecessary of_get_phy_mode() calls from the stmmac
+> glue drivers. stmmac_probe_config_dt() / devm_stmmac_probe_config_dt()
+> already gets the interface mode using device_get_phy_mode() and stores
+> it in plat_dat->phy_interface.
+> 
+> Therefore, glue drivers using of_get_phy_mode() are just duplicating
+> the work that has already been done.
+> 
+> This series adjusts the glue drivers to remove their usage of
+> of_get_phy_mode().
+> 
+> Changes in v2:
+> - correct subject for patch 3
+> - fix build error in patch 3
+> - add attributations
+> 
 
->
-> >
-> > >
-> > > >
-> > > > also. it is not good to hack zram to be aware of if it is kswapd
-> > > > , direct reclaim , proactive reclaim and block device with
-> > > > mounted filesystem.
-> > >
-> > > Why shouldn't zram be aware of that instead of just introducing
-> > > queues in the zram with multiple compression threads?
-> > >
-> >
-> > My view is the opposite of yours :-)
-> >
-> > Integrating kswapd, direct reclaim, etc., into the zram driver
-> > would violate layering principles. zram is purely a block device
->
-> That's the my question. What's the reason zram need to know about
-> kswapd, direct_reclaim and so on? I didn't understand your input.
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 
-Qun-Wei's patch 2/2, which modifies the zram driver, contains the following
-code within the zram driver:
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c | 21 +++++++++------------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-ipq806x.c | 12 ++++--------
+>  .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c    |  8 +-------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c |  6 +-----
+>  .../net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c |  4 +---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c      |  2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c     | 12 ++++--------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c   |  8 +-------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c   |  6 +-----
+>  9 files changed, 23 insertions(+), 56 deletions(-)
+> 
 
-+int schedule_bio_write(void *mem, struct bio *bio, compress_callback cb)
-+{
-+ ...
-+
-+        if (!nr_kcompressd || !current_is_kswapd())
-+                 return -EBUSY;
-+
-+}
-
-It's clear that Qun-Wei decided to disable asynchronous threading unless
-the user is kswapd. Qun-Wei might be able to provide more insight on this
-decision.
-
-My guess is:
-
-1. Determining the optimal number of threads is challenging due to varying
-CPU topologies and software workloads. For example, if there are 8 threads
-writing to zram, the default 4 threads might be slower than using all 8 thr=
-eads
-synchronously. For servers, we could have hundreds of CPUs.
-On the other hand, if there is only one thread writing to zram, using 4 thr=
-eads
-might interfere with other workloads too much and cause the phone to heat u=
-p
-quickly.
-
-2. kswapd is the user that truly benefits from asynchronous threads. Since
-it handles asynchronous memory reclamation, speeding up its process
-reduces the likelihood of entering slowpath / direct reclamation. This is
-where it has the greatest potential to make a positive impact.
-
->
-> > driver, and how it is used should be handled separately. Callers have
-> > greater flexibility to determine its usage, similar to how different
-> > I/O models exist in user space.
-> >
-> > Currently, Qun-Wei's patch checks whether the current thread is kswapd.
-> > If it is, compression is performed asynchronously by threads;
-> > otherwise, it is done in the current thread. In the future, we may
->
-> Okay, then, why should we do that without following normal asynchrnous
-> disk storage? VM justs put the IO request and sometimes congestion
-> control. Why is other logic needed for the case?
-
-It seems there is still some uncertainty about why current_is_kswapd()
-is necessary, so let's get input from Qun-Wei as well.
-
-Despite all the discussions, one important point remains: zswap might
-also need this asynchronous thread. For months, Yosry and Nhat have
-been urging the zram and zswap teams to collaborate on those shared
-requirements. Having one per-node thread for each kswapd could be the
-low-hanging fruit for both zswap and zram.
-
-Additionally, I don't see how the prototype I proposed here [1] would confl=
-ict
-with potential future optimizations in zram, particularly those aimed at
-improving filesystem read/write performance through multiple asynchronous
-threads, if that is indeed a valid requirement.
-
-[1] https://lore.kernel.org/lkml/20250313093005.13998-1-21cnbao@gmail.com/
-
->
-> > have additional reclaim threads, such as for damon or
-> > madv_pageout, etc.
-> >
-> > > >
-> > > > so i am thinking sth as below
-> > > >
-> > > > page_io.c
-> > > >
-> > > > if (sync_device or zswap_enabled())
-> > > >    schedule swap_writepage to a separate per-node thread
-> > >
-> > > I am not sure that's a good idea to mix a feature to solve different
-> > > layers. That wouldn't be only swap problem. Such an parallelism under
-> > > device  is common technique these days and it would help file IO case=
-s.
-> > >
-> >
-> > zswap and zram share the same needs, and handling this in page_io
-> > can benefit both through common code. It is up to the callers to decide
-> > the I/O model.
-> >
-> > I agree that "parallelism under the device" is a common technique,
-> > but our case is different=E2=80=94the device achieves parallelism with
-> > offload hardware, whereas we rely on CPUs, which can be scarce.
-> > These threads may also preempt CPUs that are critically needed
-> > by other non-compression tasks, and burst power consumption
-> > can sometimes be difficult to control.
->
-> That's general problem for common resources in the system and always
-> trace-off domain in the workload areas. Eng folks has tried to tune
-> them statically/dynamically depending on system behavior considering
-> what they priorites.
-
-Right, but haven't we yet taken on the task of tuning multi-threaded zram?
-
->
-> >
-> > > Furthermore, it would open the chance for zram to try compress
-> > > multiple pages at once.
-> >
-> > We are already in this situation when multiple callers use zram simulta=
-neously,
-> > such as during direct reclaim or with a mounted filesystem.
-> >
-> > Of course, this allows multiple pages to be compressed simultaneously,
-> > even if the user is single-threaded. However, determining when to enabl=
-e
-> > these threads and whether they will be effective is challenging, as it
-> > depends on system load. For example, Qun-Wei's patch chose not to use
-> > threads for direct reclaim as, I guess,  it might be harmful.
->
-> Direct reclaim is already harmful and that's why VM has the logic
-> to throttle writeback or other special logics for kswapd or direct
-> reclaim path for th IO, which could be applied into the zram, too.
-
-I'm not entirely sure that the existing congestion or throttled writeback
-can automatically tune itself effectively with non-offload resources. For
-offload resources, the number of queues and the bandwidth remain stable,
-but for CPUs, they fluctuate based on changes in system workloads.
-
-Thanks
-Barry
 
