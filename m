@@ -4,85 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C208C35FF4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 18:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB4C7C35FF1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Mar 2025 19:05:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AoTnsd8iHVdgBepKxF/OkxysUaYLk1//1WxCqfRtAH0=; b=GRVIFibabtaJnlNlkhGNWCAqSt
-	Wh/b7ErQGIAOvpSOrGxFwsYtBJxYC8oHXvNSKFlmJ8T7cnP8lhqsRbdMQFEOHIrmoI4He//IXY/5P
-	MpJeEX+Hw/g+ZWFBOMmEUDV9cIrlIeG6bWDPanvkNIR//95cYT4mZYQmEeHo++MLLDqXywY7YXX82
-	hcFmCMdan5rnWejZ/RpuZiXV322F91JPF73Mqb50WIhoaNH6sBEdwifwEQIs3Km6UHA2VCO0WU8EZ
-	vU+cPjkmwL9ngIlz+1nh8hA04SJlpnCM6yNA4nSX1O/n48hjJRJb+AglUv4DhgO3GjWPffwciW3gj
-	NzimykbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0oIWPDRciLqWE5onPVwFJiWQ7qoNl5vDCFa0WS9jdh4=; b=pHpyKSwLKcT8+RvJ9dw1FQbgh8
+	ZDUR7w+YC/fG1yqbBMnzmqa1Uz/dAbZkyFdkvAIDpN08D9FvtZCBf5rFWegMf6FE2fA656Th/9cG4
+	t7xlyoJZiYG4CsaQGDvAI6/KFQUKtFZXeoQYw99cdSM+02/tBc8ToNsHfXEmV5J+t14yz5P4kYHhd
+	/sKaY+oJ/3Afqq+NZFeu1w+HFd68+tmPytcqpPJu4CooFYjmjTtNujMV534wYrWdp0LdS1s7VAIc9
+	WP2NoL0/tGq8f50ApxhO+0keBNEm40S9aVSlHsaWsyivaTToePccdv4vBO4UAIq2bMG+x00ZBZUMJ
+	fTJj+tlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsng1-0000000CEkS-3qHF;
-	Thu, 13 Mar 2025 18:53:05 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1tsnrp-0000000CH5P-3yaS;
+	Thu, 13 Mar 2025 19:05:17 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsnJz-0000000CCLr-2CYY
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Mar 2025 18:30:21 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-7c0892e4b19so142280685a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Mar 2025 11:30:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1741890618; x=1742495418; darn=lists.infradead.org;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=AoTnsd8iHVdgBepKxF/OkxysUaYLk1//1WxCqfRtAH0=;
-        b=eZWIXrcbGB4kx7Oed1yWpGUJ1ynHAFUK8N5RgaNn6VPzskof15YVOYFpd63VZcS9us
-         cdiIUs4bkVKFnzaJs0FtBRR5PIi780f36H4/4cdPnlCE0jyg9mO2bKPXWVtdxhVxU+Wo
-         gMKBE8CUqT6JGZDadURtsZYgW1i1EJeW4sYYyoMEubLD1OwFjgAP+BxuihStjhgeV8ik
-         RKgewIaYnWi6wEDWBQ/J21Fm5+1voF9MZSs1IfSIBckQnrj7jHRqiiDz3NKBnfrRct8c
-         s4vm1yT9Coxhw6j4TGq5D1ycRRLaUJqwv+r6XE632AJR33BKt/NY0yiKbid+M8UUxd2v
-         OJig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741890618; x=1742495418;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AoTnsd8iHVdgBepKxF/OkxysUaYLk1//1WxCqfRtAH0=;
-        b=Uxi4mka6hxYjvBvAtkNk7iKzuw3jdj2Xeg83h37xHI46HGm43PNR9Bf3N83+LNLV1/
-         PXfGF2Q5WzSBPIn7vNRj6I8XMDqwP701RZQMyHRejSzh7pA1HBqhTdu1ftOqgqZI+SIm
-         kOB0TRr/ZhkgM9dImvymS++NARumdo7R2LzZ90LDxz9iBrR/jR2gFpwajYG7efEgJ0Ot
-         tgnOK0qF5Du9PRMRgiEQgddjC9Em0uwVIbTaTMTRBj65lx/Upbs/CkQfACgKd7jCv2+8
-         6foDoin7psWtIzFUyXLh27gbDvD/8dH7l3Zc7cRLw6vqO/2M/DNAbyo7oXn/CpN9MFn2
-         X7jg==
-X-Forwarded-Encrypted: i=1; AJvYcCWAWnzUAU1LKhvtIjOLDJrwjPdj0GvoqJGa9o3kjXW9pXRboc6CUm8vpMkX9ZkwC5FUjwx8MrjAN4HNJlDx5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywd2D/LV25RL+PgS0xVttkmPLhd2Onn91onfgNyKk4l/qlGyl6Z
-	I00fKm/pDxtjvhHsvjZL9eDR1a5cnDe5JXnB/r3IZfunjCyah4nNaI2ErTYKpuQ=
-X-Gm-Gg: ASbGncvJ+kwoQ3C6CtO897/f3zyrqGkszlkJ9lUQmsv5mzCsnAcfEr0ZU4QqpY2xT7y
-	1V+CknO5I6+B/A+nz9NNDgqMMTMZwKTXhMwqz8HAeoEaKlp/YjS6AXx4DKjX5m+RU5tSxFjp4h1
-	v1vqCW7c+NIE4BHmFz9jHKRUsm7+fI9KPgcNF5bJNEIpTrEgfxmsxsqucx4zqE54wKW0M3J6psm
-	4rxL4aODlSVpoEgdGaL48+A0g+arrryxpWaiBYhWBxZt0dCWDGPmV78mJ35YBlazaESC1SNWbFi
-	G+9ek6tvcvLK4J3phhDKsAAMFf4QlBwdSaInybEdL3MFSp3RAi6oNMhcqrPwMuDA2nfYrlIIcB5
-	EVflKuXU=
-X-Google-Smtp-Source: AGHT+IEi+OIJZ2CCHX/QDN3TCc9Ssw9n2ip3mNRDZzcn/kMPCoNhGIFe17eJ+clCONEScKD+6PgNAQ==
-X-Received: by 2002:a05:620a:8083:b0:7c0:6419:8bd3 with SMTP id af79cd13be357-7c579f46d76mr116800685a.22.1741890618305;
-        Thu, 13 Mar 2025 11:30:18 -0700 (PDT)
-Received: from xanadu (modemcable179.17-162-184.mc.videotron.ca. [184.162.17.179])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c573c4f53csm128517685a.22.2025.03.13.11.30.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Mar 2025 11:30:17 -0700 (PDT)
-Date: Thu, 13 Mar 2025 14:30:16 -0400 (EDT)
-From: Nicolas Pitre <npitre@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-    Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip
- points
-In-Reply-To: <dcc62684-0579-4d03-a430-d4a276153ca1@collabora.com>
-Message-ID: <85710oso-p1pp-647q-498p-23583s7nnn45@onlyvoer.pbz>
-References: <s2sp5o57-o534-qso0-2733-o0prs6028por@onlyvoer.pbz> <dcc62684-0579-4d03-a430-d4a276153ca1@collabora.com>
+	id 1tsnrJ-0000000CGvs-2jWg;
+	Thu, 13 Mar 2025 19:04:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741892667; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IDai2uCPeDltdnQDWMLspcg/wpWhfJjWrHiFe0Oxud8trPkbuItbTwPuFtBu2bKWZP5HQ1jy6RRWDZo0r+8GsE8DXHALA0KEoVM149PtwDyn8m3zvn9cfUF3NGPOMhmJGYBaAtYFNZeDzE2QQetK0Ueo04up/jXQuEMWEVHLz98=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741892667; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=0oIWPDRciLqWE5onPVwFJiWQ7qoNl5vDCFa0WS9jdh4=; 
+	b=DTujC8IarYC+WlMIUIA3V0dfkynhjraTTMeFsnB2KEqbUu/k3LXGKBkjdIs0fOtxrcMjuBJlTpGBIfK7T+54EpBTiRMzZ7opNtbGbrabZe6zfoBEY0AbYuobq32eCHgF92H/Fm+Ew1iaLsLH5OQspxGxoqHpn4yvbfOrRpWc5KU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741892667;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=0oIWPDRciLqWE5onPVwFJiWQ7qoNl5vDCFa0WS9jdh4=;
+	b=ABhqq4BjNTKf0mQ2n2Hu4xIa+Uv0npWPfJe4cdjtmkAbYQRP0OMUUrxvxZ70q2Cc
+	Hs54FPNtEfwy1R3Gei2dh/xKBnyV7eTBO2jSGseJgJu8+a+2RONFS68nZwm7e5PeapU
+	lHVS1KkEufwpimWodvMlv4XaWdzfcHP76NqFvYws=
+Received: by mx.zohomail.com with SMTPS id 17418926658661000.7935840965962;
+	Thu, 13 Mar 2025 12:04:25 -0700 (PDT)
+Message-ID: <fa5ff28c-ffa0-47d7-9498-ef8b297c7afb@collabora.com>
+Date: Thu, 13 Mar 2025 16:04:18 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 5/6] drm/panfrost: Enable AARCH64_4K page table format
+ on mediatek_mt8188
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com
+References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
+ <20250310195921.157511-6-ariel.dalessandro@collabora.com>
+ <20250311090649.0d15d74d@collabora.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <20250311090649.0d15d74d@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_113019_759431_78CC29CB 
-X-CRM114-Status: GOOD (  19.76  )
+X-CRM114-CacheID: sfid-20250313_120445_730023_3C218A69 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,120 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Mar 2025, AngeloGioacchino Del Regno wrote:
+Boris,
 
-> Il 13/03/25 16:43, Nicolas Pitre ha scritto:
-> > Provide the "switch on" thermal trip point to be used by the power
-> > allocator governor.
-> > 
+On 3/11/25 5:06 AM, Boris Brezillon wrote:
+> On Mon, 10 Mar 2025 16:59:20 -0300
+> Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
 > 
-> As far as I know, the power allocation is not supposed to be 
-> SoC-global, as that does play with sustainable power values...
+>> Now that Panfrost supports AARCH64_4K page table format, let's enable it
+>> on Mediatek MT8188.
 > 
-> Sustainable power depends on multiple factors - besides the power that 
-> is actually sustainable by intrinsic properties of the silicon, this 
-> mostly depends on the PCB that it is soldered to.
-> 
-> Translated, this depends on the heat capacity of the copper layer(s) 
-> and of the eventual additional passive heatsink, which is a physical 
-> property relative to a board and not to the SoC by itself.
-> 
-> ....which means.... that those nodes shall go to board specific devicetrees
-> and
-> not to the SoC devicetree :-)
-> 
-> Unless I'm wrong - but if I am, please explain why :-)
+> Can you maybe give more details on why this is needed
+> (legacy shareability/cacheability not suitable for this GPU?)?
 
-I agree with everything you wrote above.
+Ack, will expand in v2.
 
-But this patch isn't about power allocation. This is about temperature 
-thresholds. And temperature tolerance is rather SOC specific, no?
+Thanks!
 
+-- 
+Ariel D'Alessandro
+Software Engineer
 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > index 338120930b..262eab8fd3 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > @@ -472,6 +472,12 @@ cpu-little0-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
-> >   
-> >   			trips {
-> > +				cpu_little0_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_little0_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> > @@ -510,6 +516,12 @@ cpu-little1-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
-> >   
-> >   			trips {
-> > +				cpu_little1_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_little1_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> > @@ -548,6 +560,12 @@ cpu-little2-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
-> >   
-> >   			trips {
-> > +				cpu_little2_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_little2_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> > @@ -586,6 +604,12 @@ cpu-little3-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
-> >   
-> >   			trips {
-> > +				cpu_little3_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_little3_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> > @@ -624,6 +648,12 @@ cpu-big0-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
-> >   
-> >   			trips {
-> > +				cpu_big0_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_big0_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> > @@ -658,6 +688,12 @@ cpu-big1-thermal {
-> >      thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
-> >   
-> >   			trips {
-> > +				cpu_big1_switch_on: trip-switch-on {
-> > +					temperature = <68000>;
-> > +					hysteresis = <2000>;
-> > +					type = "passive";
-> > +				};
-> > +
-> >       cpu_big1_alert0: trip-alert0 {
-> >        temperature = <85000>;
-> >        hysteresis = <2000>;
-> 
-> 
-> 
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
