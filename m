@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7022CC28B2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 19:19:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F79C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 19:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=14q1zuoC/RYgpg42ycjqCS4ie1FHZTJiWO21vFg6qTk=; b=Et0vlPgSmvVewjN1JEg4opg4A7
-	QX2gL0HpV/cYruH/P8G/XWuJWs+pg7X8Y1JSRnm/Gv3rhEj26Xz3N2+DdMUH51aGwPYQWB/ScZX/5
-	iVEjxHnw1avNTK0N/iURi3WC40//6xeysI+nA2y+3jyoIL4h/wEgENg7YRVlYlMCWHB5/EzeG4mw5
-	P06XPkY4pHEP1iqcowog6piylQFebWt61j4AgWlI3NiyVsDBcIB5MfRdtBKn1+TIcET3YTE9g/IkR
-	V+QxJqKtJpMcjxdeBsv99JZO0uOCSdy10Jain1beRZ3zG20ouRvZC0Guo4VI/0E8z8NXXLyH0y6KH
-	pO8Bm/Rg==;
+	bh=g9UiPlgUHg/BOEsx5e3OD0q6bWRlSXKycrwmYgrT/Zs=; b=avQ1VZaloDOs/fMVR0N/7RQB5+
+	8GO7Y2GLBLznaDHrRdTftoirZH0QYTXOY1kUfu0UE5GxMbRmzCr2FmxuTv+n9GJgT9V/u8au8rWed
+	4UCPHs3mYoUzFJgYx1N3r7dZdFapQ1jRItVLhEuvdgd3frl68/uRZMhF8f5AammHvf9MzazetV0yK
+	ursPiFJ+SLEx9R1cQnOMh1SUiwfUnn03v5uWCnPBLdih5C1hb9tH3G+y+hpa2BeJ2ZhsIweML7l4F
+	s1mFbpUGxpsFCIcOULNS9uITKGMq3VAorUeeRfTSWfjRN8TcMR1j9SP4XwnL/G8AbgLu9/KB6C+PJ
+	WJPdvmGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttAYf-0000000F6Ln-2N0J;
-	Fri, 14 Mar 2025 19:19:01 +0000
+	id 1ttB0s-0000000F9Xt-0XK7;
+	Fri, 14 Mar 2025 19:48:10 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttAWz-0000000F6Eb-0w2w;
-	Fri, 14 Mar 2025 19:17:18 +0000
+	id 1ttAoI-0000000F8Pn-0GbY;
+	Fri, 14 Mar 2025 19:35:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=14q1zuoC/RYgpg42ycjqCS4ie1FHZTJiWO21vFg6qTk=; b=Axg7LZJgdNjewBL3JmJdJjRst/
-	x+jKPP3zJ0C+xYYh9xUgnBH1pROTkSJ0lR28U4q6kclRSU7gfyGVxoJEzNWkYluenQIkMYN/tHsEs
-	jwlKbjzT8MOPsstAZgrAr7deVqqDqD2BHYSVuejuSKEG/zgHZE3gFV9+gIuUwKuX9gtA=;
+	bh=g9UiPlgUHg/BOEsx5e3OD0q6bWRlSXKycrwmYgrT/Zs=; b=pQoRp/7P+Sr7BTNSui6T0CDG8p
+	jN222Pv7h5IjEgKbvugzirzqLvVNQUI9zxKCuJIeyOnNOM4SE0lQy1k1Zc8iKo83nf1vgblKfhqrR
+	96eHsQOxH+/mIY+dWa/H8z+bNST8C3BjfhE2kQhKlbB4jiUFe6KMtd9B3Kh7wvibDh68=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1ttAWg-005Nnw-Nm; Fri, 14 Mar 2025 20:16:58 +0100
-Date: Fri, 14 Mar 2025 20:16:58 +0100
+	id 1ttAo6-005O1r-Na; Fri, 14 Mar 2025 20:34:58 +0100
+Date: Fri, 14 Mar 2025 20:34:58 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+To: Lee Jones <lee@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -60,16 +60,17 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	upstream@airoha.com
 Subject: Re: [net-next PATCH v12 09/13] mfd: an8855: Add support for Airoha
  AN8855 Switch MFD
-Message-ID: <2253e19b-2115-441e-b78a-3c10d61f2fad@lunn.ch>
+Message-ID: <49d2cfed-cb31-438d-9736-6d8e0bb24041@lunn.ch>
 References: <20250309172717.9067-1-ansuelsmth@gmail.com>
  <20250309172717.9067-10-ansuelsmth@gmail.com>
+ <20250314113551.GK3890718@google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250309172717.9067-10-ansuelsmth@gmail.com>
+In-Reply-To: <20250314113551.GK3890718@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_121717_262993_E18F860B 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20250314_123510_100127_430FCC6B 
+X-CRM114-Status: GOOD (  17.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +85,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +static int an8855_mii_set_page(struct an8855_mfd_priv *priv, u8 phy_id,
+> > +static int an8855_mii_set_page(struct an8855_mfd_priv *priv, u8 phy_id,
+> > +			       u8 page) __must_hold(&priv->bus->mdio_lock)
+> > +{
+> > +	struct mii_bus *bus = priv->bus;
+> > +	int ret;
+> > +
+> > +	ret = __mdiobus_write(bus, phy_id, AN8855_PHY_SELECT_PAGE, page);
+> 
+> Calling functions with '__' is a red flag.
 
-phy_id is a bit of an odd name. __mdiobus_write() expects addr, since
-at this level, it is just a device on a bus. We have no idea if it is
-a PHY, or an Ethernet switch, or anything else.
+In this case, it is correct. It was probably a bad decision to call
+this __mdiobus_write() in the first place, but we were not expecting
+it to be used in real driver code, just in core code, where calls to
+it are wrapped with a mutex lock/unlock.
 
-> +			       u8 page) __must_hold(&priv->bus->mdio_lock)
-> +{
-> +	struct mii_bus *bus = priv->bus;
-> +	int ret;
-> +
-> +	ret = __mdiobus_write(bus, phy_id, AN8855_PHY_SELECT_PAGE, page);
-> +	if (ret < 0)
-> +		dev_err_ratelimited(&bus->dev,
-> +				    "failed to set an8855 mii page\n");
-> +
-> +	/* Cache current page if next mii read/write is for switch */
-> +	priv->current_page = page;
-> +	return ret < 0 ? ret : 0;
+But drivers started to need to perform multiple read/write operations
+in an atomic sequence, so they started doing there own taking of the
+lock, and using these unlocked low level helpers.
 
-__mdiobus_write() should only return -ve error code, or 0. So you
-don't need this.
+We should probably rename __mdiobus_write() to _mdiobus_write() to
+avoid compiler namespace issues.
+
+> > +	if (ret < 0)
+> > +		dev_err_ratelimited(&bus->dev,
+> > +				    "failed to set an8855 mii page\n");
+> 
+> Use 100-chars if it avoids these kind of line breaks.
+
+I _guess_ the code is following networking coding style, even though
+it is outside of normal networking directories. netdev keeps with the
+old 80 limit.
+
+> > +static int an8855_regmap_read(void *ctx, uint32_t reg, uint32_t *val)
+> > +{
+> > +	struct an8855_mfd_priv *priv = ctx;
+> > +	struct mii_bus *bus = priv->bus;
+> > +	u16 addr = priv->switch_addr;
+> > +	int ret;
+> > +
+> > +	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
+> 
+> guard()?
+
+netdev people consider guard() too magical. scoped_guard() is however
+O.K.
+
+> > +	return ret < 0 ? ret : 0;
+> 
+> Doesn't the caller already expect possible >0 results?
+
+It should not happen. Networking has a very small number of functions
+which do return 1 on a different sort of success. Such functions are
+generally called foo_changed(), e.g. mdiobus_modify_changed(). This
+will do a read/modify/write. If it did not need to modify anything,
+because of the current value, it will return 0. If something did
+actually change, it returns 1. If something did actually change, you
+sometimes need to take further actions. But many callers don't care,
+so we have wrappers e.g. mdiobus_modify() calls
+mdiobus_modify_changed() and then converts 0 or 1 to just 0. I'm
+guessing this code copied such a helper when it should not of done.
 
 	Andrew
 
