@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C81CC35FF9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 15:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 707D0C35FF3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 15:58:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=f5vPhuIo2SHslsd7MapcfHU+4gnO9e2kMXfZOPlqC5Q=; b=iactdIh8pDMH5b+ZczDQunw0y6
-	St8r4MuyVv3i8H4WWfSV3w+fur10aIGxezVi6PDu9CijK/t+FvpdqryqckqGmIu+wJCvOmoBj0QRx
-	U4Xc1TapLVk+MhijXRNZGNKJ8wpG/z0fhAX+TkBY0gCxHwRcx+EfdbrB1+MDD4jvy7twQcsxnsINM
-	dcSkiJmat6qyaP/hZf4sIHLhg77GzqxjoCprIP/TUm/9TaWVOrSiCreEaA13JH7U5l3pbRGFaNUu9
-	YWrd6vjhgVyfYC06xmLoAaoolclE6DE54kNck99oWVVhAd+Clm+ELuZwXxMnzHkbxdkLURcGfLXrR
-	/24FCZfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LMqofPFDcyqhG61A/bg/258DYQEfnbCliJvm6jSXtLM=; b=d3CTftk25r8nGP
+	O+hDZ8EywS4R1ZTDN0GozIU8SAQpAG/8Sg0A8mp8AccuDx6Nm7GXFTRyWodo5qh4jsQadxPCldI3F
+	FOekH7u74Ae9iqkmUtm1xxTBXAAzmH2Nbs1IAPTMRs2Yq4no1whwZ+2VkuH/kVcPvknPcxFfXJFeO
+	UzlWAgDz878WerdyMLTBpokge/ZW4+2xCRiGoT9f1MtfsBy96RXAs3JSExLErbezBLGCBcEjTFFUx
+	mGi/jXCobOP6rGtGt7lBiyS7jVQ0izG7drg1H4KahoFZSvJID9rKp4Y7YzqJeQo9/D1vkQG80cGTq
+	fE7O1Kq5hjwZZdToPYfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7Kn-0000000EdBk-1WOA;
-	Fri, 14 Mar 2025 15:52:29 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tt7QB-0000000EeGj-1s4L;
+	Fri, 14 Mar 2025 15:58:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7Ie-0000000EckH-0jKE;
-	Fri, 14 Mar 2025 15:50:17 +0000
+	id 1tt7LR-0000000EdPX-27Tu;
+	Fri, 14 Mar 2025 15:53:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A28C5A47738;
-	Fri, 14 Mar 2025 15:44:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99CDFC4CEE3;
-	Fri, 14 Mar 2025 15:50:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 16CA25C46EC;
+	Fri, 14 Mar 2025 15:50:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32AC1C4CEEF;
+	Fri, 14 Mar 2025 15:53:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741967415;
-	bh=yd6hd/BIcy+u7PxvBdVNuloLY1tbTq52bYWAIn5DalA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=RcyzSwVfNUARNiBeEW1oLINmdQnOb3bKeLpd+DiRptcO3R8BSB2uMDYYrxqcBdSEz
-	 9hSbhEUg2dCFoKOQPs3NXhS2EJAfQMxXZcMgKGWCi8MtSEP0cNpi4HUN7jCLYRggNj
-	 xVr5Vz6GH995FIValA497TwC9j1ZpcLqH7Ud0tZhK35Ysa+zIHMp4yE8FCzaWVBDwf
-	 o4qBSg2eQdF4HxTGUhGqPumQQpU7mf4np2DK9Qf6aoot/HTyhihVga1isV4UdKQCWe
-	 sJsqzB67HopEghFtRaFz2C3mBJnqqxdZqB5XDEYlm6d5gRTbrwU/mDrfZ0Q1fDQh4w
-	 FG19YajDekBdg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Simon Horman <horms@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] net: airoha: fix CONFIG_DEBUG_FS check
-Date: Fri, 14 Mar 2025 16:49:59 +0100
-Message-Id: <20250314155009.4114308-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	s=k20201202; t=1741967588;
+	bh=WcvIaJXZSoQm0ADUQKO1KQ8SqfP3MvACY1Lsy7BpMHg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=dofsPJ08AKOVendj+CorudDO9G7YbrV1zXO3rRb7uUd9rBH6/RWSfbaTVChz7dODZ
+	 z+HdzXzspsWrJRZAhDHsCpxjywdztIG6ENN9DamoP1gyX/AWShTwzIxsjpHGF/FPIA
+	 uhBjkQmMlIFUCtRtokf5SQHRWvOrGA35NqXMzdzpalPwzJaMnPK66MsuQpchWRtwF3
+	 9Mb/fzveJKlz9AqGzRmLxaErnrEj/wG42q6/VsqeWJjyZc2kECnlOaa7WMMg2PbUQB
+	 KXM4DmfInYTcvsAu+IBXPX38hH/m47xafcz29v/xNwotkGdbOU40k1lu4eAuYj3icL
+	 iaeJEkNRYWeOw==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Frank Wunderlich <linux@fw-web.de>
+In-Reply-To: <20241109105029.52748-1-linux@fw-web.de>
+References: <20241109105029.52748-1-linux@fw-web.de>
+Subject: Re: [PATCH] dt-bindings: spi: add compatibles for mt7988
+Message-Id: <174196758592.19958.17138223278523726564.b4-ty@kernel.org>
+Date: Fri, 14 Mar 2025 15:53:05 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_085016_279781_729F1160 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20250314_085309_589267_F4568E8F 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,41 +71,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Leilk Liu <leilk.liu@mediatek.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Sat, 09 Nov 2024 11:50:28 +0100, Frank Wunderlich wrote:
+> MT7988 has 2 different spi controllers. Add their compatibles.
+> 
+> 
 
-The #if check causes a build failure when CONFIG_DEBUG_FS is turned
-off:
+Applied to
 
-In file included from drivers/net/ethernet/airoha/airoha_eth.c:17:
-drivers/net/ethernet/airoha/airoha_eth.h:543:5: error: "CONFIG_DEBUG_FS" is not defined, evaluates to 0 [-Werror=undef]
-  543 | #if CONFIG_DEBUG_FS
-      |     ^~~~~~~~~~~~~~~
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Replace it with the correct #ifdef.
+Thanks!
 
-Fixes: 3fe15c640f38 ("net: airoha: Introduce PPE debugfs support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+[1/1] dt-bindings: spi: add compatibles for mt7988
+      commit: 3b2e1b87ad0870ad37ee8f2ca0ea6ede19a29795
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index f66b9b736b94..60690b685710 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -540,7 +540,7 @@ void airoha_ppe_deinit(struct airoha_eth *eth);
- struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
- 						  u32 hash);
- 
--#if CONFIG_DEBUG_FS
-+#ifdef CONFIG_DEBUG_FS
- int airoha_ppe_debugfs_init(struct airoha_ppe *ppe);
- #else
- static inline int airoha_ppe_debugfs_init(struct airoha_ppe *ppe)
--- 
-2.39.5
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
