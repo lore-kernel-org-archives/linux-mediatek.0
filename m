@@ -4,73 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C4B2C282EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 16:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84101C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 16:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=; b=s4aXL0DAx0STn1pKPfZjjxw6j0
-	79qaRPdiTukRqPx+q0StwZQaM+4yHXR9i9jsonyS0YHxQZbu+VUqOoWGSoFMaTl0RjlAP2V6Oh1Y7
-	vgoIijRgfPgnY7d8gKoNrwX2FU2FW5S9ZrMC2+b+jDa08atwvdzKKgdO7GrOJBEeDt7cR/udnE8HL
-	6Bp0KZWNHFcyJY/wBC+N1nF+HSISwa3TA1FnMJB9eymirF7NqKx02cS9WguWVhcbRvetRC2pFnVs4
-	LSDQeujFanRWxPf5cGDlXEyZr1EaSEpRDBaiuRD7w+VLQvAe0DUvKJ0ToYO4NBGk6pu45QDOADNAq
-	46ZHVamg==;
+	bh=SigUrqWkAASojD1HQZ6B+lZB5xINySj4sc3ETzaend4=; b=E0lvp/qT8Q39gDQyl45COArCro
+	MqPvUArjALBPDSreNvJeZe6y7EH2xViHA5xi8iIbVRuwiCv/2+E4Vsi6UmKpSThJq83WKOB/17Mik
+	2F0iESBt9qSTcaae0s6C4ec9c7dQSPYwOjZepP4WpQljlotY3/7qCaY5T2KlGT/64sj5j1mgtaAZZ
+	BCRit8NGvFEC3C1FXt9CKq0l/E6rjcgU7AN0xI7MypPyGuBeTRJ1kPxYDiH7h6Kxgws/wAeUC2VDF
+	hPiggss80hsFSMYKbCkOlau9209Sg6OgQ7nSP4wy2COOzTfOkNdtBTKAKXI/Ki0YOud/Q4x2vFr9t
+	+ima0q8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7gi-0000000EiC2-0hoQ;
-	Fri, 14 Mar 2025 16:15:08 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7bX-0000000Egj4-3u2w;
-	Fri, 14 Mar 2025 16:09:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741968568; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LMIiKlEFRL7N9+/imfQ/ARMtn9JFru4merPBSfWzCSvqgh21dPEhUykHGsEGxqLoaPEQnWgmX+iOoG4VbSBjUuR+YmRtQ5aFe+F/3EZKX+rZqFP4CH3pzdtJnDJ0+Y1FMUUpY+yFt99yXwRHxVeJbUCvFgQHdk7mW7u0xp3bK+I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741968568; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=; 
-	b=JO5QXbBXLKDMz+mJxUHm1HnQjcNm3DIiNTk4C2rtLXrYkvAEXu6a9fxhTKJxCFmW2hnyczWiQxE8zzBwAfSQaNakleoXRwgnXMbAuACsamFtSshk1OBYDyTcz8Hr53f6zsBQRgr6u1DlBNteFWjUSRPDNxQKPG4ABfRkHUAM2xE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741968568;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=;
-	b=c/I5hwSlMs2R24pybQ1fYH9SEpXp07ix8hd3P/fSCBH4OZSnqcisjn4WP4DvTcTF
-	006odrCwTyuofuinr5ZjX8JfjURc32Hs9PWHYCi29olNVWIGitlSpAeynEdpVwWC2Ya
-	ssASjlNX9w4uW5TbZwLqO02ZAj5zw/xIVw5Ld/vA=
-Received: by mx.zohomail.com with SMTPS id 1741968564767949.3760976982635;
-	Fri, 14 Mar 2025 09:09:24 -0700 (PDT)
-Message-ID: <2c82edc7-fd39-4e81-95b5-f43467fd166f@collabora.com>
-Date: Fri, 14 Mar 2025 13:09:17 -0300
+	id 1tt7lh-0000000Ejdo-2Fqn;
+	Fri, 14 Mar 2025 16:20:17 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tt7j6-0000000Ej5e-2KHS;
+	Fri, 14 Mar 2025 16:17:38 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B0C4713D5;
+	Fri, 14 Mar 2025 09:17:43 -0700 (PDT)
+Received: from [10.1.26.16] (e122027.cambridge.arm.com [10.1.26.16])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 09ECF3F5A1;
+	Fri, 14 Mar 2025 09:17:30 -0700 (PDT)
+Message-ID: <25408ea8-475a-424e-8fb4-8c6772de63bb@arm.com>
+Date: Fri, 14 Mar 2025 16:17:28 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 5/6] drm/panfrost: Enable AARCH64_4K page table format
- on mediatek_mt8188
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Subject: Re: [PATCH v1 1/6] drm/panfrost: Set IOMMU_CACHE flag
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Cc: boris.brezillon@collabora.com, robh@kernel.org, steven.price@arm.com,
+Cc: boris.brezillon@collabora.com, robh@kernel.org,
  maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
  airlied@gmail.com, simona@ffwll.ch, kernel@collabora.com,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  sjoerd@collabora.com
 References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
- <20250310195921.157511-6-ariel.dalessandro@collabora.com>
- <55b8bc40-0a29-46c2-ba5d-c7cc7742cf5f@collabora.com>
-Content-Language: en-US
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-In-Reply-To: <55b8bc40-0a29-46c2-ba5d-c7cc7742cf5f@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+ <20250310195921.157511-2-ariel.dalessandro@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250310195921.157511-2-ariel.dalessandro@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_090948_035615_4B92470E 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20250314_091736_632776_67332002 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,66 +68,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Angelo,
+On 10/03/2025 19:59, Ariel D'Alessandro wrote:
+> Panfrost does not support uncached mappings, so flag them properly. Also
+> flag the pages that are mapped as response to a page fault as cached.
 
-On 3/11/25 6:09 AM, AngeloGioacchino Del Regno wrote:
-> Il 10/03/25 20:59, Ariel D'Alessandro ha scritto:
->> Now that Panfrost supports AARCH64_4K page table format, let's enable it
->> on Mediatek MT8188.
->>
->> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
->> ---
->>   drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/ 
->> drm/panfrost/panfrost_drv.c
->> index 0f3935556ac76..d7b8bded6d784 100644
->> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
->> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
->> @@ -824,6 +824,7 @@ static const struct panfrost_compatible 
->> mediatek_mt8188_data = {
->>       .num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
->>       .pm_domain_names = mediatek_mt8183_pm_domains,
->>       .pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->> +    .gpu_configs = BIT(GPU_CONFIG_AARCH64_4K),
->>   };
->>   static const char * const mediatek_mt8192_supplies[] = { "mali", 
->> NULL };
+As I understand it the hardware only sort-of supports uncached mappings.
+The legacy page table format has two options: cached, or "implementation
+defined" (ARM_MALI_LPAE_MEMATTR_IMP_DEF). When selecting IMP_DEF that
+means that the internal units signal to the cache whether a particular
+access should be cached or not. I believe the theory is that they can
+decide whether it makes sense to store in the cache or not.
+
+Having said all that, I have never observed any actual performance
+difference and I suspect it won't make any actual difference. And of
+course the AArch64 page tables need this to be set. I just thought I
+should explain the background and that this wasn't wrong for the legacy
+page tables.
+
+Reviewed-by: Steven Price <steven.price@arm.com>
+
+Steve
+
+> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>  drivers/gpu/drm/panfrost/panfrost_mmu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> Didn't that work on MT8195/8395 as well? I also recall hearing that it 
-> was somewhat
-> giving ever-so-slightly better performance?
-
-Running glmark2-es2-drm [0] benchmark, reported the same performance 
-("glmark2 Score") on both configurations, before and after this 
-patchset. Tested on a Mediatek Genio 1200 EVK board.
-
-To avoid holding this longer, I'll add it to patchset v2, and let's 
-continue discussion there in any case.
-
-[0] https://github.com/glmark2/glmark2
-
-> 
-> If it does, please enable it on 8195 as well :-)
-> 
-> also s/mediatek_mt8188/MediaTek MT8188/g
-
-Ack.
-
-> 
-> ...and btw
-> Reviewed-by: AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com>
-
-Thanks!
-
--- 
-Ariel D'Alessandro
-Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
-Registered in England & Wales, no. 5513718
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> index b91019cd5acb1..9e6f198ef5c1b 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> @@ -327,7 +327,7 @@ int panfrost_mmu_map(struct panfrost_gem_mapping *mapping)
+>  	struct drm_gem_object *obj = &shmem->base;
+>  	struct panfrost_device *pfdev = to_panfrost_device(obj->dev);
+>  	struct sg_table *sgt;
+> -	int prot = IOMMU_READ | IOMMU_WRITE;
+> +	int prot = IOMMU_READ | IOMMU_WRITE | IOMMU_CACHE;
+>  
+>  	if (WARN_ON(mapping->active))
+>  		return 0;
+> @@ -528,7 +528,7 @@ static int panfrost_mmu_map_fault_addr(struct panfrost_device *pfdev, int as,
+>  		goto err_map;
+>  
+>  	mmu_map_sg(pfdev, bomapping->mmu, addr,
+> -		   IOMMU_WRITE | IOMMU_READ | IOMMU_NOEXEC, sgt);
+> +		   IOMMU_WRITE | IOMMU_READ | IOMMU_CACHE | IOMMU_NOEXEC, sgt);
+>  
+>  	bomapping->active = true;
+>  	bo->heap_rss_size += SZ_2M;
 
 
