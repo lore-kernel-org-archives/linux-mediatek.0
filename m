@@ -4,114 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF1E6C282EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 22:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 334CEC28B2F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 22:27:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q+G1znUUY7rtTf9DzLNl5P+qD4jbuh64Bw3HveeQEA0=; b=GYyZ0R3xF8OWZXzUar2+NRHVM1
-	UyJlzzQTHPSjF+KWbF2nfJZnsNTa6kRbL7vKoiriqr37whi3t8a/h2cEIIo82wx/ypeT+y5lsrbtH
-	eAHuNPhpoOA5z0f4WVc6yraE9nMTpTjeXZDlFwVgIaegciBqznDaOv7Qh5CfJ2r0rEIC1CfqbuGnc
-	h7ny7vIzDQ+L7UErLymXt9WqLtDDrRQ8dy6nUKZDYp5AIalZJz+hL2fuLEFlF74Si6VD/s8n4WlvK
-	CXJg6ZjdvGYPah7TpUFF7KOiVbIn1HHc6Ybn2F2Xf4rYtqjigfCAyc8NJiPO1+s4xKi1KFH+pLT1E
-	4nnLnhDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lPaccfJ0sEBvFjPYyS8PLhimTq5kEa5pqJCwOZtsTeE=; b=kBxWvlTfCJmJRnH9n9YANywq9Y
+	5q/ud/BKwzVGhMROV0BUeHnPKg0u3oUG5k3Uo1g1zU0UtAJJrQpoYpAcdB1tL5kGeFF/e19kCssxt
+	gGYMk3HktLZdqd5U0YlBIO+YD8PyxcZ+7SfyxOq/kjCBYKp0LcjTVAObjpO4TCZF+Db88n36WI/pg
+	bHuOK1BDaHe+wzBrY+Xxsv2K8G9ZT66nQuQHyyP668REKR6ETDk57QiQ7+l96fS3yXTql8yDx5jhW
+	BYSJzN41bXaDscpuxcEzfNTvaTxAqUYv+PL88CtdyxbI1V4TmWyhVTHAJC2PFkwjdaz1VjYk4KRSW
+	LgSuh5Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttD5K-0000000FP9j-1lKP;
-	Fri, 14 Mar 2025 22:00:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ttDV7-0000000FRJC-1Ujn;
+	Fri, 14 Mar 2025 22:27:33 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttD3e-0000000FOqe-2sqB
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 14 Mar 2025 21:59:10 +0000
+	id 1ttDTQ-0000000FR7f-44AY;
+	Fri, 14 Mar 2025 22:25:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Q+G1znUUY7rtTf9DzLNl5P+qD4jbuh64Bw3HveeQEA0=; b=hJR3qs9Fo8kfFOa4l9CFYEB68s
-	9BaSvbcXZTDbYQ7USikrQvzSc1JE2QaDGAwr2A8+J8pVB/BYTXhrDGjJW9ebLIrPfONZi/BMmMDkb
-	EHkVSSvcdvpFmt2OZF1KnpGuVuGF+2ScLgsb2tS6yjIcSiysgktWv4IY8oMJVxFtJMHjAnQW2eFMr
-	leOjO2FY++8jEJQOUYbhVoJiFvR1LXSjvxJ1PTzOGyjk6NtD+c/fJWwOIqj9RFWuIFbbePm+bSJAO
-	RA557+gGFuztSYpCGSctMmEO+Z3iblBBaq7fWC5IVGUhMBEUO49Rr+C3KbfE5ozlkaayil5hhbG+6
-	d2CRfd6w==;
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttD3T-00000002z04-3uLx
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Mar 2025 21:59:09 +0000
-Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-30bf251025aso21979971fa.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 14:58:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1741989533; x=1742594333; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Q+G1znUUY7rtTf9DzLNl5P+qD4jbuh64Bw3HveeQEA0=;
-        b=GM1BCOJ8i4mrnjJocQKpohPIa8hgFmNXAiqbkPkJHbZqzFRaaagC6Mk08b9fZ0vGaS
-         aZh13IoWover+kX71sYYPnat2iaSGdUBqADKRm+sVWy71+gjAtRo5cjx3wa71f2Dxa75
-         Dq+lSKtCv30yrvViZj+hUjjqEdtdROpk5mJng=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741989533; x=1742594333;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Q+G1znUUY7rtTf9DzLNl5P+qD4jbuh64Bw3HveeQEA0=;
-        b=cWWznVe60az3KR6Hkf4OLuVoEGMrIYZcDCYYmAGYV9gD6y2o4bcCDSDXxBLAPnbsNf
-         vSvMvGbs5lBntSBOdsih/LGzE7f397bhl5gFlSPXvPweWDd0xKgnIV9edyzmtwqIZJyy
-         s6goHkjvbOlfwP+MnI9wLo1vDsKZZ3RSVwvAAgH7eSvWAj9dv3pin5q6QTok2xQ9Jauy
-         U9ITI+5d0doRB/oXrh0IGFhd+x92udIo+yTveviAaGVwtOBB4W4ZvW/v8Clsw+xrF+Tw
-         fU3Kpc9gMkY13NzvTntFmLj1867el3En9rg9wE21VimLyGD9ru7g/Gwn28XBwLt/XnNV
-         f6Dg==
-X-Forwarded-Encrypted: i=1; AJvYcCWGgtOt0dJq1m2zIVOVR7Ys1/L3Pclq4h8oXVR38qrmG3kEqS8Dsa7YA9/MC5JnGE9kuAamkF/sKDTWw8k5Pw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx27YK231sbrKjJ0w+iLEbQyoQxJT6gpnZ6qDaRvo+bKWIdLlZP
-	8spysSAjqGt0F3dP5YsRSFXo0+AfsB0phIkklvAxgA5YhfuGLVWOLMBPOc+EyRPBPKkHfenVvSX
-	h0lKO
-X-Gm-Gg: ASbGncuf6SjAW+2ICZ+XOeVihgaofKvU1UWmSpiovAuKadcsd/n39s4rT4LwGHpF/Yj
-	sJGqQFOx37uBcAiGammqD8BXtST8qjeE0wPDnNKPyFptB4WEwzmqJ1aiaO4M75MFavQwwQiNJpd
-	X88t+Rkzzm+8cnLvDvNxKrjConoErETOgR52sUGe9s2U05bqwz5UVbt7OsF7B710VgTcGA/Tu6g
-	HuXMMuBuc2LN7MZm+aHlDjmGiue0Pn5EcCbxxKHCo8c07605UsYhWx6WEgReTpY6+4rckFcouqz
-	Os/ggUS87L3BLgUfcGemAQsuZxZSk2zja1Dr+X7tpcKO1uuAdVl6cDAnDiKZ06gU5pKmqpdNeaI
-	ktnbkbcjJ
-X-Google-Smtp-Source: AGHT+IFVnI0/bIu3CytGSBBT7dWqLQP5c5YAzbFdRG0zbsbVdfRYo3hKdLUG/1XxLuyNnTxhBBKLig==
-X-Received: by 2002:a05:6512:6cc:b0:545:746:f36a with SMTP id 2adb3069b0e04-549c396ee10mr1548554e87.34.1741989533151;
-        Fri, 14 Mar 2025 14:58:53 -0700 (PDT)
-Received: from mail-lf1-f46.google.com (mail-lf1-f46.google.com. [209.85.167.46])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-549ba87a450sm628095e87.166.2025.03.14.14.58.48
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Mar 2025 14:58:49 -0700 (PDT)
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5499c5d9691so2750814e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 14:58:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVvXJ+BqXap+ymB4+6ehTBCIf0Y6GyCjph4f5LbHNcpn8i2RkAUR/PUfTz5D4KXU3zlWfzxGAP9697HD4joag==@lists.infradead.org
-X-Received: by 2002:a05:6512:3d02:b0:545:c7d:1784 with SMTP id
- 2adb3069b0e04-549c3988b84mr1398468e87.43.1741989528244; Fri, 14 Mar 2025
- 14:58:48 -0700 (PDT)
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=lPaccfJ0sEBvFjPYyS8PLhimTq5kEa5pqJCwOZtsTeE=; b=0305XuJAFlMgsafcUGGQRfctCU
+	JdAoUkijrDOjSzQwqYtd9RcxWlj5Y9YLXBkmtaDZ1l3s/RQ64+yA3wQX4f+Zq5iBPQqb8ZdSG8xO+
+	WWmljz5V6MrKGxY7vHEI9iQO9bsYiy2f2amyKmrZAurAeIzyaCgVv2RLe7ly1hTyizB62imBvfLKD
+	BEWNlBDS6qyVnlY7GKB4eLnF7DtGuDWd/rC9TAd8dZkhGn3oxbsYkTncbLIT3jPpUec8j5/Ew3wUo
+	kZ8jAKbm+tqiptaY41cVEf9FS28l4G3rFBwGNOFRZewEfCVRJJySpiptptcwEwYVSoiVwZUiGy+9h
+	2WQQ5baw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:41742)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1ttDT7-0000vY-0X;
+	Fri, 14 Mar 2025 22:25:29 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1ttDT0-0006x5-2r;
+	Fri, 14 Mar 2025 22:25:22 +0000
+Date: Fri, 14 Mar 2025 22:25:22 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v12 07/13] net: mdio: regmap: add support for
+ multiple valid addr
+Message-ID: <Z9Ss0qrxCcEbyJY7@shell.armlinux.org.uk>
+References: <20250309172717.9067-1-ansuelsmth@gmail.com>
+ <20250309172717.9067-8-ansuelsmth@gmail.com>
+ <Z83RsW1_bzoEWheo@shell.armlinux.org.uk>
+ <67cdd3c9.df0a0220.1c827e.b244@mx.google.com>
+ <0c6cb801-5592-4449-b776-a337161b3326@lunn.ch>
+ <Z9SZRDykbTwvGW6S@shell.armlinux.org.uk>
+ <67d49d64.050a0220.35694d.b7ab@mx.google.com>
 MIME-Version: 1.0
-References: <20250312104344.3084425-1-wenst@chromium.org> <20250312104344.3084425-2-wenst@chromium.org>
-In-Reply-To: <20250312104344.3084425-2-wenst@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 14 Mar 2025 14:58:36 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=X14XEdikE3hP4y53uZec12O_ZPtU+GyJ+Tf8R3DK89AA@mail.gmail.com>
-X-Gm-Features: AQ5f1Jqp4S31G39Rg1NsczcQY3Hb3QPTaquvIuzNNpiFQjs9eAjzZVdMi2mJRe0
-Message-ID: <CAD=FV=X14XEdikE3hP4y53uZec12O_ZPtU+GyJ+Tf8R3DK89AA@mail.gmail.com>
-Subject: Re: [PATCH 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
-	linux-input@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <67d49d64.050a0220.35694d.b7ab@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_215900_943431_3E4A8E64 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20250314_152549_015833_646ADEA8 
+X-CRM114-Status: GOOD (  25.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,79 +100,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Mar 14, 2025 at 10:19:29PM +0100, Christian Marangi wrote:
+> On Fri, Mar 14, 2025 at 09:01:56PM +0000, Russell King (Oracle) wrote:
+> > I'd prefer we didn't bring that abomination back. The detail about how
+> > things are stored in regmap should be internal within regmap, and I
+> > think it would be better to have an API presented that takes sensible
+> > parameters, rather than something that's been encoded.
+> 
+> Well problem is that regmap_write and regmap_read will take max 2 value
+> at the very end (reg and value) so it's really a matter of making the
+> encoding part internal but encoding it can't be skipped.
+> 
+> You are suggesting to introduce additional API like
+> 
+> mdio_regmap_write(regmap, phy, addr, val);
+> mdio_mmd_regmap_write(regmap, phy, mmd, addr, val);
+> 
+> And the encoding is done internally?
 
+Yes, because littering drivers with the details of the conversion is
+unreasonable.
 
-On Wed, Mar 12, 2025 at 3:43=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
-> longer boot-up time. Power sequence timing wise it is compatible with
-> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
-> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
-> enumeration. Enumeration and subsequent operation follows the I2C HID
-> standard. The eKTH6A12NAY requires longer times for both parts.
+> My concern is the decoding part from the .write/read_bits regmap OPs.
+> I guess for that also some helper should be exposed (to keep the
+> decoding/encoding internal to the driver and not expose the
+> _abomination_)
 
-Somehow the last sentence above confused me. Can it just be dropped?
-All you care about is that the new trackpad matches the timings for
-"eKTH6A12NAY". Not sure what you mean by "eKTH6A12NAY" needing
-"longer" timings.
+Sadly, I don't think that's something we can get away from, but we
+should make it _easy_ for people to get it right.
 
+From what I remember from the days of shoe-horning C45 into the C22
+MDIO API, encoding and/or decoding addresses was buggy because people
+would use the wrong encoders and decoders.
 
-> Add a compatible string for it with the ekth6a12nay one as a fallback.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  .../bindings/input/elan,ekth6915.yaml         | 29 ++++++++++++++++---
->  1 file changed, 25 insertions(+), 4 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/input/elan,ekth6915.yaml b=
-/Documentation/devicetree/bindings/input/elan,ekth6915.yaml
-> index cb3e1801b0d3..81c391952ccc 100644
-> --- a/Documentation/devicetree/bindings/input/elan,ekth6915.yaml
-> +++ b/Documentation/devicetree/bindings/input/elan,ekth6915.yaml
-> @@ -4,14 +4,14 @@
->  $id: http://devicetree.org/schemas/input/elan,ekth6915.yaml#
->  $schema: http://devicetree.org/meta-schemas/core.yaml#
->
-> -title: Elan eKTH6915 touchscreen controller
-> +title: Elan I2C-HID touchscreen controllers
->
->  maintainers:
->    - Douglas Anderson <dianders@chromium.org>
->
->  description:
-> -  Supports the Elan eKTH6915 touchscreen controller.
-> -  This touchscreen controller uses the i2c-hid protocol with a reset GPI=
-O.
-> +  Supports the Elan eKTH6915 and other I2C-HID touchscreen controllers.
-> +  These touchscreen controller use the i2c-hid protocol with a reset GPI=
-O.
->
->  allOf:
->    - $ref: /schemas/input/touchscreen/touchscreen.yaml#
-> @@ -23,12 +23,18 @@ properties:
->            - enum:
->                - elan,ekth5015m
->            - const: elan,ekth6915
-> +      - items:
-> +          - enum:
-> +              - elan,ekth8d18
-> +          - const: elan,ekth6a12nay
+For example, we had MDIO drivers using mdio_phy_id_is_c45() to test
+whether the access being requested was C45 - mdio_phy_id_is_c45() is
+for the _userspace_ MII API encoding (struct mii_ioctl_data), not the
+kernel space. Kernel space used:
 
-The "enum" above is weird, but it matches what we did for
-"elan,ekth5015m" so I guess it's fine? I'd leave it up to bindings
-maintainers. I guess the assumption is that we might add additional
-touchscreens to the list...
+-#define MII_ADDR_C45 (1<<30)
+-#define MII_DEVADDR_C45_SHIFT  16
+-#define MII_REGADDR_C45_MASK   GENMASK(15, 0)
 
+to encode into the register number argument vs the userspace encoding
+into the phy_id member of struct mii_ioctl_data:
 
->    reg:
-> -    const: 0x10
-> +    enum:
-> +      - 0x10
-> +      - 0x16
+#define MDIO_PHY_ID_C45                 0x8000
+#define MDIO_PHY_ID_PRTAD               0x03e0
+#define MDIO_PHY_ID_DEVAD               0x001f
 
-Again happy to leave it to the bindings maintainers, but _maybe_ just
-drop the "reg" parts here and below. It doesn't really have to be part
-of the bindings.
+which is what the mdio_phy_id_*() accessors are using. The two
+approaches are incompatible, and using the userspace one in a MDIO
+driver wasn't going to work correctly - but people did it.
+
+This is one of the reasons I hated the old MDIO API, and why we now
+have separate C22 and C45 interfaces in the driver code.
+
+This is exactly why I don't like reintroducing a new set of "massage
+the package, mmd and address into some single integer representation"
+and "decode a single integer into their respective parts" - we've
+been here before, it's lead to problems because driver authors can't
+grasp what the right approach is, and it results in bugs.
+
+Given the history here, my personal opinion would be... if regmap can't
+cope with MDIO devices having a three-part address without requiring
+callers to flatten it first, and then have various regmap drivers
+unflatten it, then regmap is unsuitable to be used with MDIO and ought
+not be used.
+
+So, this encoding/decoding is a problem that should be solved entirely
+within regmap, and not spread out into users of regmap and drivers
+behind regmap. Anything else is, IMHO, insane.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
