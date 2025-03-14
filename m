@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 707D0C35FF3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 15:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C4B2C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 16:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LMqofPFDcyqhG61A/bg/258DYQEfnbCliJvm6jSXtLM=; b=d3CTftk25r8nGP
-	O+hDZ8EywS4R1ZTDN0GozIU8SAQpAG/8Sg0A8mp8AccuDx6Nm7GXFTRyWodo5qh4jsQadxPCldI3F
-	FOekH7u74Ae9iqkmUtm1xxTBXAAzmH2Nbs1IAPTMRs2Yq4no1whwZ+2VkuH/kVcPvknPcxFfXJFeO
-	UzlWAgDz878WerdyMLTBpokge/ZW4+2xCRiGoT9f1MtfsBy96RXAs3JSExLErbezBLGCBcEjTFFUx
-	mGi/jXCobOP6rGtGt7lBiyS7jVQ0izG7drg1H4KahoFZSvJID9rKp4Y7YzqJeQo9/D1vkQG80cGTq
-	fE7O1Kq5hjwZZdToPYfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=; b=s4aXL0DAx0STn1pKPfZjjxw6j0
+	79qaRPdiTukRqPx+q0StwZQaM+4yHXR9i9jsonyS0YHxQZbu+VUqOoWGSoFMaTl0RjlAP2V6Oh1Y7
+	vgoIijRgfPgnY7d8gKoNrwX2FU2FW5S9ZrMC2+b+jDa08atwvdzKKgdO7GrOJBEeDt7cR/udnE8HL
+	6Bp0KZWNHFcyJY/wBC+N1nF+HSISwa3TA1FnMJB9eymirF7NqKx02cS9WguWVhcbRvetRC2pFnVs4
+	LSDQeujFanRWxPf5cGDlXEyZr1EaSEpRDBaiuRD7w+VLQvAe0DUvKJ0ToYO4NBGk6pu45QDOADNAq
+	46ZHVamg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7QB-0000000EeGj-1s4L;
-	Fri, 14 Mar 2025 15:58:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tt7gi-0000000EiC2-0hoQ;
+	Fri, 14 Mar 2025 16:15:08 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt7LR-0000000EdPX-27Tu;
-	Fri, 14 Mar 2025 15:53:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 16CA25C46EC;
-	Fri, 14 Mar 2025 15:50:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32AC1C4CEEF;
-	Fri, 14 Mar 2025 15:53:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741967588;
-	bh=WcvIaJXZSoQm0ADUQKO1KQ8SqfP3MvACY1Lsy7BpMHg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=dofsPJ08AKOVendj+CorudDO9G7YbrV1zXO3rRb7uUd9rBH6/RWSfbaTVChz7dODZ
-	 z+HdzXzspsWrJRZAhDHsCpxjywdztIG6ENN9DamoP1gyX/AWShTwzIxsjpHGF/FPIA
-	 uhBjkQmMlIFUCtRtokf5SQHRWvOrGA35NqXMzdzpalPwzJaMnPK66MsuQpchWRtwF3
-	 9Mb/fzveJKlz9AqGzRmLxaErnrEj/wG42q6/VsqeWJjyZc2kECnlOaa7WMMg2PbUQB
-	 KXM4DmfInYTcvsAu+IBXPX38hH/m47xafcz29v/xNwotkGdbOU40k1lu4eAuYj3icL
-	 iaeJEkNRYWeOw==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20241109105029.52748-1-linux@fw-web.de>
-References: <20241109105029.52748-1-linux@fw-web.de>
-Subject: Re: [PATCH] dt-bindings: spi: add compatibles for mt7988
-Message-Id: <174196758592.19958.17138223278523726564.b4-ty@kernel.org>
-Date: Fri, 14 Mar 2025 15:53:05 +0000
+	id 1tt7bX-0000000Egj4-3u2w;
+	Fri, 14 Mar 2025 16:09:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741968568; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LMIiKlEFRL7N9+/imfQ/ARMtn9JFru4merPBSfWzCSvqgh21dPEhUykHGsEGxqLoaPEQnWgmX+iOoG4VbSBjUuR+YmRtQ5aFe+F/3EZKX+rZqFP4CH3pzdtJnDJ0+Y1FMUUpY+yFt99yXwRHxVeJbUCvFgQHdk7mW7u0xp3bK+I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741968568; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=; 
+	b=JO5QXbBXLKDMz+mJxUHm1HnQjcNm3DIiNTk4C2rtLXrYkvAEXu6a9fxhTKJxCFmW2hnyczWiQxE8zzBwAfSQaNakleoXRwgnXMbAuACsamFtSshk1OBYDyTcz8Hr53f6zsBQRgr6u1DlBNteFWjUSRPDNxQKPG4ABfRkHUAM2xE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741968568;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=rsYUkunEA14LX5hAkIEL3nskHcxyQjfpTSg9UpldL1Y=;
+	b=c/I5hwSlMs2R24pybQ1fYH9SEpXp07ix8hd3P/fSCBH4OZSnqcisjn4WP4DvTcTF
+	006odrCwTyuofuinr5ZjX8JfjURc32Hs9PWHYCi29olNVWIGitlSpAeynEdpVwWC2Ya
+	ssASjlNX9w4uW5TbZwLqO02ZAj5zw/xIVw5Ld/vA=
+Received: by mx.zohomail.com with SMTPS id 1741968564767949.3760976982635;
+	Fri, 14 Mar 2025 09:09:24 -0700 (PDT)
+Message-ID: <2c82edc7-fd39-4e81-95b5-f43467fd166f@collabora.com>
+Date: Fri, 14 Mar 2025 13:09:17 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 5/6] drm/panfrost: Enable AARCH64_4K page table format
+ on mediatek_mt8188
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: boris.brezillon@collabora.com, robh@kernel.org, steven.price@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, kernel@collabora.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ sjoerd@collabora.com
+References: <20250310195921.157511-1-ariel.dalessandro@collabora.com>
+ <20250310195921.157511-6-ariel.dalessandro@collabora.com>
+ <55b8bc40-0a29-46c2-ba5d-c7cc7742cf5f@collabora.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <55b8bc40-0a29-46c2-ba5d-c7cc7742cf5f@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_085309_589267_F4568E8F 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250314_090948_035615_4B92470E 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,41 +82,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Leilk Liu <leilk.liu@mediatek.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 09 Nov 2024 11:50:28 +0100, Frank Wunderlich wrote:
-> MT7988 has 2 different spi controllers. Add their compatibles.
-> 
-> 
+Angelo,
 
-Applied to
+On 3/11/25 6:09 AM, AngeloGioacchino Del Regno wrote:
+> Il 10/03/25 20:59, Ariel D'Alessandro ha scritto:
+>> Now that Panfrost supports AARCH64_4K page table format, let's enable it
+>> on Mediatek MT8188.
+>>
+>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>> ---
+>>   drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/ 
+>> drm/panfrost/panfrost_drv.c
+>> index 0f3935556ac76..d7b8bded6d784 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+>> @@ -824,6 +824,7 @@ static const struct panfrost_compatible 
+>> mediatek_mt8188_data = {
+>>       .num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>>       .pm_domain_names = mediatek_mt8183_pm_domains,
+>>       .pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>> +    .gpu_configs = BIT(GPU_CONFIG_AARCH64_4K),
+>>   };
+>>   static const char * const mediatek_mt8192_supplies[] = { "mali", 
+>> NULL };
+> 
+> Didn't that work on MT8195/8395 as well? I also recall hearing that it 
+> was somewhat
+> giving ever-so-slightly better performance?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Running glmark2-es2-drm [0] benchmark, reported the same performance 
+("glmark2 Score") on both configurations, before and after this 
+patchset. Tested on a Mediatek Genio 1200 EVK board.
+
+To avoid holding this longer, I'll add it to patchset v2, and let's 
+continue discussion there in any case.
+
+[0] https://github.com/glmark2/glmark2
+
+> 
+> If it does, please enable it on 8195 as well :-)
+> 
+> also s/mediatek_mt8188/MediaTek MT8188/g
+
+Ack.
+
+> 
+> ...and btw
+> Reviewed-by: AngeloGioacchino Del Regno 
+> <angelogioacchino.delregno@collabora.com>
 
 Thanks!
 
-[1/1] dt-bindings: spi: add compatibles for mt7988
-      commit: 3b2e1b87ad0870ad37ee8f2ca0ea6ede19a29795
+-- 
+Ariel D'Alessandro
+Software Engineer
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
 
 
