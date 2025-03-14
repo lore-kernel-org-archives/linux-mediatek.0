@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC305C282EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 10:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64493C28B2F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 11:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NyeLesu/6qOxsTAaXie5nFM1At2JPy33BMSuqodw/Vc=; b=MNuJ66sy8G+MzXZi5dEcYS2RQ7
-	RVPUCZBI2fihC2PBYhD5DUy/uQjaR3iyURLj15W4HTQipZHZDtLKMsbhSf0pVSoMIL3l7gwk0BmiM
-	PgYdyqbrK7UJtGJBCKzz7ifeqk+pO8NG/YvrpbV9BwP9+izFdw/7MLBsSWzw05YlM7URNDLo0SEzl
-	LOYO7T2Xz+bd+E9prlBdXh4NuNBKst/RWHFXbFRtCVOEtJpVESAyEMDS6hmz/rfHfP4SdBLwtvZZD
-	sssbEioSYYcoR7BXg+GEzhPNCNYw4wsTHlKEDpQZ3i13JuyWVW6zA/XNaEuBRiSxIJ0vCWkB1DO3c
-	AYIoqWKQ==;
+	bh=7Tabw9Z4bIh3i478fwUir3sqjYhIhXJXxI7g2bFV4tk=; b=EI1GR2RLWs+C0cvNQ84eZBVhPj
+	ud1Axmbjk+Q6EcSfrR/tD+uIL9pKyybreuqgDvafq0m7crOxY2V+8/KTcA+Nh4mNseDVNf7tQE+sB
+	/tfKZcgTmJxtrRMNVGro+6q3hGJN3krw+lKOpfj7W6AjVjl1ZKxahm/oQjXHdv3qFqSJzJEtHWLMQ
+	zEnjjm4bl3QYTa3nrOKvFmjZ7pj7JMS+2m41kY8D2t/lo4NxHqRRfjbFgCw8rk5wLPObZ11Envhh/
+	ERoyeihQDBoDBku741BrSEbax0aLcPRGjKvoxCfWzp5AQOX3lgdNX0NBOkp+kf9BT91cc240QEx9a
+	BIyxJfzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt2kf-0000000DvUP-3hqz;
-	Fri, 14 Mar 2025 10:58:53 +0000
+	id 1tt2ny-0000000DvpO-2QnC;
+	Fri, 14 Mar 2025 11:02:18 +0000
 Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt2RP-0000000DsSp-3REw
+	id 1tt2TI-0000000Dsoj-47Hx
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Mar 2025 10:39:01 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-548409cd2a8so2218292e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 03:38:59 -0700 (PDT)
+	Fri, 14 Mar 2025 10:40:58 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5499e3ec54dso2045986e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 03:40:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741948738; x=1742553538; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1741948855; x=1742553655; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NyeLesu/6qOxsTAaXie5nFM1At2JPy33BMSuqodw/Vc=;
-        b=zr/hGP4QLhE22oKMsJ6i37fkaJhwdGEHmbP1+JJIeDH8k0KvSdueMSD/Aq/OjcbFa0
-         9DswKnRGEazOe35MS4tSicGNghiEd26Mgl4n7sOVMDidsqdwH6aNNU2wJGAgzfOAW8i8
-         74Uup9M7lug3wiB+ENBwvBnDI4JFh0qT8r7AeUuwVY0pH8iHOlJLvhgbSiMR7zStyB99
-         r6336d+CJrIJtDd5ZTfSLOI3qngymPHS+WR/7bJIKHva9OYLpGkqC1yaq1oM4hgfM6KE
-         +3qHDORhv+sDLksFzLloHdZm1sfWvBo+FgoQncQq84PwtZMcyPlmV5Oec6SnTuI3Q0kZ
-         dHjQ==
+        bh=7Tabw9Z4bIh3i478fwUir3sqjYhIhXJXxI7g2bFV4tk=;
+        b=mgGQoNNFMBSFlGX7zKJIai6Vz5TIGkC3+i39V+cPP5nWtf+h5g/dbwsMrxaP36sBmm
+         WlLuNqnz2ORQNELlITIgNfsi316gpOZav4QECoTcTocmIhFSF0xdF8hPCg9F+vhdpyw7
+         J8fklW6hTSL8dXXpfI5GTQWwgcpSTyBRtj/dNPa7r/BUJsQtREUMDvhMbNHK/VmvK64J
+         IdJVo02dI6lrCBrvJ2hiZQpRF7rstnroq2Cwr0ZdPYEoCwK/4+S5kgqK5MRTWwoKPV0w
+         sjcS60g3qbwhNvXVY2fnKxcIvj50g66l4SdOX+kd3dwFCeMsunrxJuzXe4YDouyz4ndr
+         ogBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741948738; x=1742553538;
+        d=1e100.net; s=20230601; t=1741948855; x=1742553655;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NyeLesu/6qOxsTAaXie5nFM1At2JPy33BMSuqodw/Vc=;
-        b=KXIw08CoM4+YOkNOJiErG7QKbRUweyb2wkZFzljb9b6VtXIgfpkWp9prRb1Hs4j9+7
-         LzoAVzUyL8PtBrjWaNHXQcv5u1roflIRoF6mLbpfITI8Bk3BuErs4qDMvMg+VvM86SX7
-         p3nxKcotN0kYwGGQ0NcK2Zg0G5vTPu8FTz4tln1fBS28G9jwoPyxt55Q4P/HEprvBlXN
-         kGNuSEvWeiBBbgAEyDPb7910mXt8GGF0rcd6zrNPlFmVp4Eh8wYARtULoa5UX/j7ZvQX
-         5HZFhwfH1QsRUoBhhtcb4kco3OYapnvNIrEDjdWVrT874GTQLOtjViq8djdLDUVGXorE
-         gwAg==
-X-Forwarded-Encrypted: i=1; AJvYcCWn/5SviEqTlfA7xkH3a7lVYidpTyJex20cqeueCvQLpaDKpb4CCdMGrsJuhxK3mCMaIo6/7tNVUYrmum06Ng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzoMaar9+FVY/csDSQTpnE8QJ4I0ey5bx5uDlMbx2oHyeYRuYsM
-	pvawsP38IbeT6NNApbYPpvgKYpOJS2kaXSMg0M8rXXiIqJAt0hFBRdHZIIIFtmCArwWcL23PHFx
-	JuObTUS+oG5nq3cFf39K1dX0T3FIV3aoLqZ5CfsaoM0BdU+WS
-X-Gm-Gg: ASbGnculenUNp6Hr37Mt8hClya3KYh1KveFnR+uK2FY4a7OrFoVnl6vwuC1/boI08eZ
-	/A/t5dxddP/lqUAAHp+E5A6uAtUf/c2hFQckj1pkeCcIDd2TWBwIPMYO07kj1RGXQw7aiYTi1rA
-	UcvLxXP7bmyNcybzY+K4XWn8U=
-X-Google-Smtp-Source: AGHT+IHxhAnR8E+RwasBnU+EVae5M55GP8ujY0PhZJ8YjGHRbmG1lTmcDhu2uwV0HMJdLPp8ZnEwtoKmC+WIjWFCG9k=
-X-Received: by 2002:a05:6512:2343:b0:549:4de9:22df with SMTP id
- 2adb3069b0e04-549c3612160mr635995e87.0.1741948738199; Fri, 14 Mar 2025
- 03:38:58 -0700 (PDT)
+        bh=7Tabw9Z4bIh3i478fwUir3sqjYhIhXJXxI7g2bFV4tk=;
+        b=UnmjDWpUjVTEGCTy3iJ5LWBVtgqw1k2wljcoHy/fTVu43LQ5in2jJ7k3UwH2wm2LRi
+         vkX42zf4mSMX8GNFNPSxepiREFc8qCe2ITChyOIE+IpxxJHF5Jnj5UKoscU27a5GfKNF
+         o5vSlYMk1YX9DEXjZE8IqkhC5V2HORafuZKJAn65Jd+EW1qW06ZBkhRgN9YD1uBTDn2O
+         PUINKBwZe1g9GyJ3sOYqJzBpq7r3en1FSpyWnntSmOFgAwxeSL6ABtmh1KtYAD6XYE+G
+         TfZUiPZytil2divy9YUUMyO7imZ5k2l290uMOyRHDqRZRL0YOaxgUxnxOWZ5nxHH4MIg
+         J+rg==
+X-Forwarded-Encrypted: i=1; AJvYcCXYUZQmzMIFT3dQDrhJKgZxTUFUsv1dSqwcA38UjEwjJKmwedZXW4gq0IYMX50zCDm/jMzG/nS9decvCbpX1Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywq/DI5/qZs1Dd7edoZ9NwuvFgrdr69KsSKsfNWtbdiJWlBWQXK
+	rigIbzSa6KotyGvE8sSnpzU9cUj7YmEtDQrVXQzcHX19u2UMh9Ul/YZ7gXFaMaV+HDZcvtYg7Pr
+	4BiZk3OX+Rat67A6W+N1e4HaLxj0K5m74ljDqkQ==
+X-Gm-Gg: ASbGncu//Q2dLGeJxwF1O+jSdsgZ99z/NOJAlW/BNqyqNqQrG/wjyP4MbC5JIEneh4O
+	1XWUVnYPIfx3CZusftl0B5HdJLalQqWf7wweHW1GNYy1Z5bDFKzaKO3NmPEobcJPsf8lKYpuOni
+	L0a+TosvlObHCFu1rC8ZY1iiM=
+X-Google-Smtp-Source: AGHT+IGA8lu4+YUGRbMGDeqXVRC8S3Eh82gixaqk7ULSw2GQfS2l/K24FNsAjmYoMd/QI6TcqRWxeO06lBY+iwQoWKM=
+X-Received: by 2002:a05:6512:b0d:b0:545:154:52b0 with SMTP id
+ 2adb3069b0e04-549c3911fdamr634456e87.22.1741948855425; Fri, 14 Mar 2025
+ 03:40:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250307-en7581-gpio-range-v1-0-de1262105428@kernel.org> <20250307-en7581-gpio-range-v1-1-de1262105428@kernel.org>
-In-Reply-To: <20250307-en7581-gpio-range-v1-1-de1262105428@kernel.org>
+References: <20250307-en7581-gpio-range-v1-0-de1262105428@kernel.org> <Z9CYEZloamPhVdBS@lore-desk>
+In-Reply-To: <Z9CYEZloamPhVdBS@lore-desk>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 14 Mar 2025 11:38:47 +0100
-X-Gm-Features: AQ5f1Jo9_mqBFukwygbuTda_hEtN2V8hjFmv1KBkHq8fVH1jsyHNXjQJZyWyfVk
-Message-ID: <CACRpkdZpj9q+yH7VEQJ=tOjpR6S3GTeHbyYpqaTYxCOJgGd7+w@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add missing gpio-ranges property
+Date: Fri, 14 Mar 2025 11:40:43 +0100
+X-Gm-Features: AQ5f1Jrsfi01k9a9ZZG_NbGUIuQtjx3Ff3ESsGiVH3198fMHG_n5Ix8wLorhDCk
+Message-ID: <CACRpkdagLPe8Mt1imjeBhMuxn5rUMMgsF0KceQpGyQE9ECoJGg@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Add gpio-ranges property for EN7581 gpio controller
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -81,8 +81,8 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_033859_860121_26E74D99 
-X-CRM114-Status: UNSURE (   6.62  )
+X-CRM114-CacheID: sfid-20250314_034057_022265_40681621 
+X-CRM114-Status: UNSURE (   7.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,17 +98,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 7, 2025 at 6:08=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.org=
-> wrote:
+On Tue, Mar 11, 2025 at 9:07=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.or=
+g> wrote:
 
-> Introduce leftover gpio-ranges property for Airoha EN7581 pinctrl binding
->
-> Fixes: d0c15cb96b74 ("dt-bindings: pinctrl: airoha: Add EN7581 pinctrl")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> is it fine if this series goes via linux-mediatek tree?
+> en7581_pinctrl node is only defined there for the moment.
 
-This patch 1/2 applied to the pinctrl tree.
+I applied 1/2 to the pinctrl tree.
 
-Please funnel 2/2 through the SoC tree.
+Take 2/2 through the mediatek tree.
+
+It will all land nicely upstream and works in linux-next.
 
 Yours,
 Linus Walleij
