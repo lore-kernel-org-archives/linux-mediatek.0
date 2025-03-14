@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3386EC28B2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 03:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB51C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 07:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5YO6JT9Owz46Wak+ATtxlJW/uW7tBVDBMw1YltgissM=; b=KoWllfrPxXq7Fa3Rof8dbyVOqo
-	hMRA0jIFMvYsR7i0UISGOtvr7G9/IsF7DekvTYB53ZbtvVptu7v0Vi0Wt1RDBRV9s86Cku2HNDtDL
-	GNIWeoXL1Y4owvObd6MkEqGV51BmORowSip7tCc73VsdufyiNPfM1Ydl53o6poTX1R9UBc/V84FT9
-	RPqCUzwmZMa3cUOWq1ib3eLIs2VKkZNe3pjXKQ/SrJqilLOHR+T8HecVlFKVuWVRoWOooXiGvpKhq
-	jEDQ+0drZJuCOJFfoVTeqi+3FYgvPOx4aShY4cPES2a2qCkK+bqtk2r2KIussGZzUw4+uoICAYUPU
-	AzRISnzw==;
+	bh=QB5LQt7bpy+JzNLqAPOMyuAUrCHcw7EYGy1OQwsiSpg=; b=vQ4Y2ahytpEH2Q42Ztfq3Cnk/Y
+	jdi4yViqXC9EJa/yJV2rSY7FFHPTOyayszQashQFwpLXBIXTqBPYVG44c21FzHp7ForHcJ+grEyLC
+	HNsT2IANgLEzI0OG16+jDhbPccJ79jNlF19P/N7Y8TTaOku51vsVozvK6AlA0w89T1XN6D9WXyX26
+	p9oYbfbEFsD0GkiUVC/12v8IpkGZp1WX4g28as7tPTIlCF1+K9GZVPsWTquhmYFxtI+Ld4ROAax8e
+	GC/dHVpUrU+/g7a/Owsk2D85L/h3clZrhk0FgHi25aBn+PwVTAsqwjVcl1LLeAXQk/spvWlTxNE7a
+	c/ShltUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tswBF-0000000D2Ud-0krs;
-	Fri, 14 Mar 2025 03:57:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tszub-0000000DMmB-1W58;
+	Fri, 14 Mar 2025 07:56:57 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tswBD-0000000D2UL-044G
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Mar 2025 03:57:52 +0000
-X-UUID: 7c09ac44008811f083f2a1c9db70dae0-20250313
+	id 1tszsv-0000000DMUP-0OLi;
+	Fri, 14 Mar 2025 07:55:14 +0000
+X-UUID: a45c77be00a911f0a1e849db4cc18d44-20250314
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5YO6JT9Owz46Wak+ATtxlJW/uW7tBVDBMw1YltgissM=;
-	b=CJ8psoZ8yFwXu7MOqe+Sk6zPdUGp/iUm6UaSnPdgH2pASvehjlB7xj2Sy5BCzC0Ru02FqLsh7sYmYmVhaaQ/gPC32x5UC88Mpg3D8jmVvClbA8ql4q3z50bxMrT0FlALHL4okUoodXP8nB6qxWhcnFHnY9O4bw8ncYbaOGwlJnI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QB5LQt7bpy+JzNLqAPOMyuAUrCHcw7EYGy1OQwsiSpg=;
+	b=hy20dZ12n6HxyTDC8HNU+Izo+m6Fm3uMa6gjFBmAdBPOgjyXiWR+v/mGLvKcYRrjGMuRKhlzzufy+npPEK/z6ZZ3lGfzjiBPYE6MLBZZOe7rBk6g9yNZ/sw2F8pnHmuTbLMPiHYxpnrmy0qZFQebLukqZcn0Uut0U1f/tQarTiY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:a433038f-31fd-4e65-891b-1c0c0e98e5f7,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:7aa45b8c-f5b8-47d5-8cf3-b68fe7530c9a,B
+X-CID-O-INFO: VERSION:1.2.1,REQID:12404639-51e8-4888-bed6-1bb9efc3c95c,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:d2be55c6-16da-468a-87f7-8ca8d6b3b9f7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
 	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 7c09ac44008811f083f2a1c9db70dae0-20250313
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
+X-UUID: a45c77be00a911f0a1e849db4cc18d44-20250314
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <lu.tang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1992915151; Thu, 13 Mar 2025 20:57:44 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1155081101; Fri, 14 Mar 2025 00:55:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Fri, 14 Mar 2025 11:57:42 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Fri, 14 Mar 2025 11:57:42 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7925: fix the incomplete revert
-Date: Fri, 14 Mar 2025 11:57:40 +0800
-Message-ID: <20250314035741.2808863-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+ 15.2.1258.28; Fri, 14 Mar 2025 15:55:02 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.28 via Frontend Transport; Fri, 14 Mar 2025 15:55:01 +0800
+From: Lu.Tang <Lu.Tang@mediatek.com>
+To: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Dmitry Torokhov
+	<dmitry.torokhov@gmail.com>, Lee Jones <lee@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>, Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Stephen Boyd
+	<sboyd@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>, Sen Chu
+	<shen.chu@mediatek.com>
+CC: <linux-iio@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-input@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-gpio@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Lu.Tang
+	<Lu.Tang@mediatek.com>
+Subject: [PATCH 0/5] Add PMIC and SPMI driver for mt8196
+Date: Fri, 14 Mar 2025 15:32:26 +0800
+Message-ID: <20250314073307.25092-1-Lu.Tang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_205751_062032_8FE30D37 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250314_005513_136848_06035BB1 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,64 +94,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+This series is based on linux-next.
 
-Since the `Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO"`
-was not completely clean, submit this patch to fully clean it up.
+Changes in v0:
+- Modify SPMI driver for mt8196
+- Add SPMI PMIC mfd driver
+- Add PMIC regulator driver for mt8196
 
-Cc: stable@vger.kernel.org
-Fixes: 73915469c55a ("Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO"")
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+*** BLURB HERE ***
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 1ecba46d770d..1bdc313844c4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -572,10 +572,10 @@ void mt7925_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 
- static int
- mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
--		  struct mt76_wcid *wcid,
- 		  struct ieee80211_ampdu_params *params,
- 		  bool enable, bool tx)
- {
-+	struct mt76_wcid *wcid = (struct mt76_wcid *)params->sta->drv_priv;
- 	struct sta_rec_ba_uni *ba;
- 	struct sk_buff *skb;
- 	struct tlv *tlv;
-@@ -608,13 +608,12 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
- {
- 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
- 	struct mt792x_vif *mvif = msta->vif;
--	struct mt76_wcid *wcid = &mvif->sta.deflink.wcid;
- 
- 	if (enable && !params->amsdu)
- 		msta->deflink.wcid.amsdu = false;
- 
--	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, wcid,
--				 params, enable, true);
-+	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
-+				 enable, true);
- }
- 
- int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
-@@ -623,10 +622,9 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
- {
- 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
- 	struct mt792x_vif *mvif = msta->vif;
--	struct mt76_wcid *wcid = &mvif->sta.deflink.wcid;
- 
--	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, wcid,
--				 params, enable, false);
-+	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
-+				 enable, false);
- }
- 
- static int mt7925_mcu_read_eeprom(struct mt792x_dev *dev, u32 offset, u8 *val)
+Lu.Tang (5):
+  pmic: mediatek: Add pmic auxadc driver
+  pmic: mediatek: Add pmic regulator driver
+  pmic: mediatek: Add spmi pmic mfd driver
+  spmi: mediatek: modify spmi dirver for mt8196
+  dt-bindings: pmic: mediatek: Add pmic documents
+
+ .../iio/adc/mediatek,spmi-pmic-auxadc.yaml    |   31 +
+ .../bindings/input/mediatek,pmic-keys.yaml    |    1 +
+ .../bindings/mfd/mediatek,mt6685.yaml         |   50 +
+ .../bindings/mfd/mediatek,spmi-pmic.yaml      |  173 +++
+ .../pinctrl/mediatek,mt65xx-pinctrl.yaml      |    1 +
+ drivers/iio/adc/Kconfig                       |   10 +
+ drivers/iio/adc/Makefile                      |    1 +
+ drivers/iio/adc/mtk-spmi-pmic-adc.c           |  576 +++++++++
+ drivers/mfd/Kconfig                           |   26 +
+ drivers/mfd/Makefile                          |    2 +
+ drivers/mfd/mt6685-core.c                     |   83 ++
+ drivers/mfd/mtk-spmi-pmic.c                   |  518 ++++++++
+ drivers/regulator/Kconfig                     |   34 +
+ drivers/regulator/Makefile                    |    3 +
+ drivers/regulator/mt6316-regulator.c          |  381 ++++++
+ drivers/regulator/mt6363-regulator.c          | 1106 +++++++++++++++++
+ drivers/regulator/mt6373-regulator.c          |  826 ++++++++++++
+ drivers/spmi/spmi-mtk-pmif.c                  | 1040 +++++++++++++++-
+ include/linux/mfd/mt6363/core.h               |  134 ++
+ include/linux/mfd/mt6363/registers.h          |  168 +++
+ include/linux/mfd/mt6373/core.h               |   94 ++
+ include/linux/mfd/mt6373/registers.h          |   53 +
+ include/linux/regulator/mt6316-regulator.h    |   48 +
+ include/linux/regulator/mt6363-regulator.h    |  424 +++++++
+ include/linux/regulator/mt6373-regulator.h    |  318 +++++
+ 25 files changed, 6037 insertions(+), 64 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,spmi-pmic-auxadc.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6685.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,spmi-pmic.yaml
+ create mode 100644 drivers/iio/adc/mtk-spmi-pmic-adc.c
+ create mode 100644 drivers/mfd/mt6685-core.c
+ create mode 100644 drivers/mfd/mtk-spmi-pmic.c
+ create mode 100644 drivers/regulator/mt6316-regulator.c
+ create mode 100644 drivers/regulator/mt6363-regulator.c
+ create mode 100644 drivers/regulator/mt6373-regulator.c
+ create mode 100644 include/linux/mfd/mt6363/core.h
+ create mode 100644 include/linux/mfd/mt6363/registers.h
+ create mode 100644 include/linux/mfd/mt6373/core.h
+ create mode 100644 include/linux/mfd/mt6373/registers.h
+ create mode 100644 include/linux/regulator/mt6316-regulator.h
+ create mode 100644 include/linux/regulator/mt6363-regulator.h
+ create mode 100644 include/linux/regulator/mt6373-regulator.h
+
 -- 
-2.45.2
+2.46.0
 
 
