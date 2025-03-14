@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C58C35FF1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 18:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9F6C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 19:04:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8buXX1p3SURBMsTZcHdbZSaeDVkNSZ0ppj4rFscaaHQ=; b=IDQbduIs0DOJNFOxhKow3GCqLl
-	zGM58IYQCp+bVXjQH04Eg0Ozf4upusuxtINj4sbxGNTV304n++WMciHd7eys+Vga508AkAM20tqQ+
-	/V016wAobHjgK9TGEpnl3P/ox560o6RbldrZVBgo8T2M8RDqvK6xFjVkB7vCPsGAscfq8lNODUSpS
-	15rNTonrC9Jo/+OopF6wQ2NUDPxB4/R2adob8Wkf0ajK298drg4k2LB8081H7w9p6aPIZlSw/4Bsc
-	G+oE+HFGJw0cAV0u5+kHGKfWhPy+qFVd8s010zb8mE4PJKvF012OkY6M6gFBLkfwTfu7ktb5/btW/
-	W5Z6CjMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xhGL/5dP+r7ugB7Q7VSeJZ/+Dft2bf2TUcqfmLnrLYA=; b=w/n1ytzlQMDCDPcv8tp1dZ04Db
+	5LMUREs/X0/+KJuTUFw5dHIG7FHaGQ/aIo0nVnOe5IFTunGrkwvikgKxUkIo4SlWOxvsU7J8K1oil
+	MqmxgpogMQTHqfQMNBDDzl90LivWkM8njw/JDcO91Sun3yAzLuEKBgKTu0Jr/ve4E3dXFwzFYH5Vh
+	u7vPbTuugVZW16cTFbwzmb68GSuslOGoENevFEY9/Bxjhemr5C7+HBdRm3gr3QwnX2VYmftS9XP5N
+	2JOljZYARctCv6vEkJ76LdX+Y8mcDhZRB3fN8IlNGPD/qrMuoEgzn8Go76bkJ/IyJAHfai/rNMM4F
+	eS5BqIoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt9Nu-0000000EyRA-0a24;
-	Fri, 14 Mar 2025 18:03:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1ttAKB-0000000F5G6-1smH;
+	Fri, 14 Mar 2025 19:04:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt91Y-0000000EufI-1fz8;
-	Fri, 14 Mar 2025 17:40:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741974029; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RNfoLYrPcM5k+wBec+Ms/i559bYXoXcUmmz1PNU5mjFxjHmbsphVyTukDQBetPUpXWTT0v5mAc1q63mq3RFdn92Yd4JRiOkJKmVQWhzSy6pd4zSmew00j14JVbxBzawC6fQtNIm0cQ7Erg2fL0QT6nqh+gU+SejTVgxLPqK09Dg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741974029; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8buXX1p3SURBMsTZcHdbZSaeDVkNSZ0ppj4rFscaaHQ=; 
-	b=DOCwy5MrXkFSoLugFoUydcHQU/JPbVHOe9XWTSkRq8PkBpogPYe8CREedZJz5HYRmNWQ12q4New14Si8IZLRWpV5ASsPPdFcnrY8vkVA7AuE4yy8W0QqE6nwYZtdRKjGjZIGTik3H2/zBW+PlQYpR/AOGFy+idQyYGPs6iChwBY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741974029;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=8buXX1p3SURBMsTZcHdbZSaeDVkNSZ0ppj4rFscaaHQ=;
-	b=AMkNsEAWcF7JhcLYqecczRzn9fdLEf+3Eo0YksMngnTWgXanMox8HPLGbV7w0No4
-	zzqcH5J2U/s5DYzDQqBEdtbYgkdIIkk1LSdOKeaTh5DHUpt1F7TyZBJHbZPF2RLikjQ
-	TvAfwEpwQpeuxVzOtUlMCjBieFNpUCHnHLMYTnas=
-Received: by mx.zohomail.com with SMTPS id 1741974027158733.9448801872073;
-	Fri, 14 Mar 2025 10:40:27 -0700 (PDT)
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-To: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Cc: boris.brezillon@collabora.com,
-	robh@kernel.org,
-	steven.price@arm.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	kernel@collabora.com,
-	linux-mediatek@lists.infradead.org,
+	id 1ttAIV-0000000F51R-0fQ2;
+	Fri, 14 Mar 2025 19:02:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0EA865C4341;
+	Fri, 14 Mar 2025 19:00:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 355A6C4CEE3;
+	Fri, 14 Mar 2025 19:02:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741978937;
+	bh=6FXnnEH09QAZ8cazzLfIiksMA3P3FtrJqIeAvTlUtZw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ug4sIOBCu/atbRHws0kDAWy+P5JRCWkjk10Zl3FLpFAtgKe9A5Uem7BJTId/TGUOU
+	 j7vwrcb4rZJcwex9/ELOavYmCYBdGo5p0vvWxXrM0E1G4siGrk+myBlWzNZy5umxmq
+	 PEBcZtM8OxpuaFmiPPVS10CjJFTLgFWfMofJK86xa31Ki67vsNJDHlZtIrVCx04EjD
+	 0fGaMIt3VpbtboLeO/oQzxgqVc+vf9FAsjOLzCZcdgiHpF/YYFofa1zJQhV4gU3Cn/
+	 dRqzB5ucYs9eEA2Ohfxd5/tzmh5ky4yShDRLraFXOHwAY8JSO7Hm5x8US02JVWHtEM
+	 bN+S6ZWSr8APg==
+Date: Fri, 14 Mar 2025 20:02:15 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Arnd Bergmann <arnd@arndb.de>, Simon Horman <horms@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	sjoerd@collabora.com,
-	angelogioacchino.delregno@collabora.com,
-	Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Subject: [PATCH v2 6/6] drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8192
-Date: Fri, 14 Mar 2025 14:38:58 -0300
-Message-ID: <20250314173858.212264-7-ariel.dalessandro@collabora.com>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250314173858.212264-1-ariel.dalessandro@collabora.com>
-References: <20250314173858.212264-1-ariel.dalessandro@collabora.com>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] net: airoha: fix CONFIG_DEBUG_FS check
+Message-ID: <Z9R9NxIsMAyUZFYf@lore-desk>
+References: <20250314155009.4114308-1-arnd@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FZYNFFCFDJf0hCka"
+Content-Disposition: inline
+In-Reply-To: <20250314155009.4114308-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_104044_498944_84A642AB 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250314_120219_253125_42DDF2CC 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +78,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT8192 SoC has an ARM Mali-G57 MC5 GPU (Valhall-JM). Now that
-Panfrost supports AARCH64_4K page table format, let's enable it on this
-SoC.
 
-Running glmark2-es2-drm [0] benchmark, reported the same performance
-score on both modes Mali LPAE (LEGACY) vs. AARCH64_4K, before and after
-this commit. Tested on a Mediatek (MT8395) Genio 1200 EVK board.
+--FZYNFFCFDJf0hCka
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[0] https://github.com/glmark2/glmark2
+> From: Arnd Bergmann <arnd@arndb.de>
+>=20
+> The #if check causes a build failure when CONFIG_DEBUG_FS is turned
+> off:
+>=20
+> In file included from drivers/net/ethernet/airoha/airoha_eth.c:17:
+> drivers/net/ethernet/airoha/airoha_eth.h:543:5: error: "CONFIG_DEBUG_FS" =
+is not defined, evaluates to 0 [-Werror=3Dundef]
+>   543 | #if CONFIG_DEBUG_FS
+>       |     ^~~~~~~~~~~~~~~
+>=20
+> Replace it with the correct #ifdef.
+>=20
+> Fixes: 3fe15c640f38 ("net: airoha: Introduce PPE debugfs support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
----
- drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
- 1 file changed, 1 insertion(+)
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index e854f290858f9..ef30d314b2281 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -836,6 +836,7 @@ static const struct panfrost_compatible mediatek_mt8192_data = {
- 	.num_pm_domains = ARRAY_SIZE(mediatek_mt8192_pm_domains),
- 	.pm_domain_names = mediatek_mt8192_pm_domains,
- 	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
-+	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
- };
- 
- static const struct of_device_id dt_match[] = {
--- 
-2.47.2
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index f66b9b736b94..60690b685710 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -540,7 +540,7 @@ void airoha_ppe_deinit(struct airoha_eth *eth);
+>  struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+>  						  u32 hash);
+> =20
+> -#if CONFIG_DEBUG_FS
+> +#ifdef CONFIG_DEBUG_FS
+>  int airoha_ppe_debugfs_init(struct airoha_ppe *ppe);
+>  #else
+>  static inline int airoha_ppe_debugfs_init(struct airoha_ppe *ppe)
+> --=20
+> 2.39.5
+>=20
 
+--FZYNFFCFDJf0hCka
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ9R9NgAKCRA6cBh0uS2t
+rEjOAP9PNYodICfGjmIM6RqqwfDUTqlRvi1GK0wpap1X8ufqJgEAl2iP+EBO7tAb
+SxEklWiXoPTNumH+pUYGDB1aGt621wE=
+=8zdq
+-----END PGP SIGNATURE-----
+
+--FZYNFFCFDJf0hCka--
 
