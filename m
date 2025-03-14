@@ -4,88 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FC4C282EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 10:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABE2C282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 10:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xTpZTX6AMxu3+qazJFqKIwM9kTorD9hdWCEh54oD/yY=; b=cnu3RbdKfxPbRkFOlHc0TsBO6Q
-	mtDJjTTShfhxhN67eSNNLcHIpc3oat/LgzjVju+N3v6eD1UWH5Gc3/hsq02QW1CwVcqx7E9nxYZGE
-	Z/Oc55eMA+cKas3H3gDU2ykNUkLJdMO6SUtak59KFSRGMRp85ow0Z0HitqeyxJg8RUe4xl08QSU6V
-	Il9jfNrsz2xJYI/oB5T1Sfv/mEG51Ou+oeylK8BfLi3clE+eqgjb24Z6gbHkTjim8F8uGuP15525O
-	2i5Ny6GZoAALtyMEvJKvo1FEB1ebvO0McKCnsOYRjTPjMOuqraMyw58Xytx7fUfbRtWpOoyxeA2xu
-	w+SaNN5w==;
+	bh=2ku1DsPZ+JRAHmMFKc2X0Q+SuZg2TwwtqR+7wXSSn8c=; b=rzOrtpFpULETg98EutgWG8oN9o
+	fml654ZDdHfPIvwWa9GvP6Hj8oUNN/CRINMqum16SvpO6MTQ3rO//U9U+czkGMeOhMhuUQqAdYJFe
+	1pXqCYd3uN2D3bfOsd263jD+YfJap+XO/oJnnHECI1OVJShBDxHVsNJye0kgt3fXIprfckCtePKL0
+	DmuVLsMkVzSg9a1uzjS2q2P5PjNtgYZwO79O5+2Zae3VSj0PKeXcr0DklzslgcJ0PgznLDB3iVMw2
+	JeF+UduMSqJN6IqeOZG3amJ8s2c1CrMc1oEKKHpAtkb00uSjptuz8QsFb+JMX5hs4WyCF/rlt+llQ
+	8/kyrh6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt2Du-0000000Dpji-0U9p;
-	Fri, 14 Mar 2025 10:25:02 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1tt2fj-0000000DuMU-09mE;
+	Fri, 14 Mar 2025 10:53:47 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt2Au-0000000DpBY-3lCB
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Mar 2025 10:21:58 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5499d2134e8so2314036e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 03:21:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741947715; x=1742552515; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xTpZTX6AMxu3+qazJFqKIwM9kTorD9hdWCEh54oD/yY=;
-        b=Pioy3K0TSPkJQWpvnEMwdoWUiQ+aM5yk/0fmMobEDkPfU4KD4I6Z86/fulc7wzQQnT
-         2v2sDJAzA6LHDmJTGUDLXnwG950lXf8Uk6hIHZboePPuC/bVZXxZe3MLtY80q42MAQEK
-         wpQbVU3q7dU3to0UQ7OE9r2cNgWjoLJQYwW3uagh3rGFCHeGrTU0q+0T5DUVWEnUwSms
-         ABA6mMEPCuabnXzbRAmaM61TuGmv/wrQHpdn8HVtyatqaoSvy1TKMycfLbWhqtO9vy+c
-         K+jZI/PH6II6Atot6xw6qm2USN14iDqTXnLK1mzaRNjf/RTmfB5+a5VXaqQTZN2fciWs
-         TyKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741947715; x=1742552515;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xTpZTX6AMxu3+qazJFqKIwM9kTorD9hdWCEh54oD/yY=;
-        b=cFUVa0QY3E750RE/C/jKTl0OCVfB5uKDjM18D/H2xuhluSzrBX4nOUezb3myXRbkmb
-         Or7n9S6FFiYaVCCRJrmKMy5aahT1s/T2Tdr4A8tiHJdyMkIhx+1hxtYMTLlNMDn9wYJQ
-         Iwbz52lb95/jpCu8T9AohmV4vEslU1jPquOLF8Rssot7Ifb0ldUrd6qkXpjasu8NiDMP
-         6eBH4pZxz1Tlvl1X3WAz/apBHBHUQIFY5fYKFIogiLhncspoPHilCLhRr9nWm3agE6RB
-         xa/NOXGHJea6Z+nVOpvWgFWXpe0rV6I24K9gsMNeOcOWZpI1oylAwG60wpKvCZlIFuN1
-         3WlA==
-X-Forwarded-Encrypted: i=1; AJvYcCVUyKiTAxjl/40z/DtkGY/ucGPwLDaARQ3zLVucLaWnCka4sA3aECef/0oud0HJUT1o9WI/b+IfpHPkYLH5KQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz92Tff3jBPVhNYWemChMDf2h40YrADJeryJOD4WJaOH92aCgph
-	tha+AzcBcWs0/IMoaDKZ+sqvmvubwoIKvNv1OjhDfL8+Sy3xrtfPtFO+ZQReOvfpheq9FisrS5u
-	srJvFd0O1AwV2ID2Qq2Yv6H1yL05EAksT/OHRpg==
-X-Gm-Gg: ASbGncu7L+wCLNM2fMqsJHCf94dbRIfZg/OxtFvkqbgsLi2Xkz6kH5dgOhvAEPtI1Lo
-	1MbTesK5zQ5gGvxiyJW6LdfTRHCi0P+pkslKv/f9IgDJum03ILPcVUUmUkfGOPa/52uPQmG8Ub5
-	HSwJ7lm2awGpaI50+bDHsGBPVwluGRllILUQ==
-X-Google-Smtp-Source: AGHT+IEUDgH4hKI/VlqsNxuCaInPD1IYUYUxnK5o+/fyx5ELv/o0sS9qDolaum2DK5go96TmMf3VW3HeNPG9uPpiEA8=
-X-Received: by 2002:a05:6512:b94:b0:545:c1e:65fb with SMTP id
- 2adb3069b0e04-549c38fbccdmr686124e87.18.1741947715080; Fri, 14 Mar 2025
- 03:21:55 -0700 (PDT)
+	id 1tt2L4-0000000DrDJ-1aS4;
+	Fri, 14 Mar 2025 10:32:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E0A255C6236;
+	Fri, 14 Mar 2025 10:30:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA27CC4CEE3;
+	Fri, 14 Mar 2025 10:32:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741948345;
+	bh=fNvNDqVEbRp/SUOH8DN2J2EdftYPKxBHy32M6zxTM9I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=naYBomTgPGZbIg5N19AAYOb4jjzvS+OurVkqTiN/o2E46M+WWwbK0wxDrB+w0AaP6
+	 dCQS3tL9/Pi68+rBvn4AsggnZgUvPpvuZzwZUpI6zGeUrq4EUbKfRFl9T4P2HAwBW5
+	 1C6425kADzUzfterlxQMykmGE6TAJCzwzoR+SFw4Ia9u6ztyjq2/lcgZoth6SNNpPR
+	 gNwcnWZ/Fh6MvKLIecXyoJsh7YrncAol26Hi2GCBdZQJOMQ5OQ7FknBUJJmos43YL7
+	 rHVuaG6/0EC0u2Y61LYPUl8EBLhoV1/u8XjYm5bBA3jQOYY/zrQJbf5gAGB7TX/PVi
+	 OaqO+q556XM0g==
+Message-ID: <19ddb133-7f11-4c1b-b0e1-91523d42040c@kernel.org>
+Date: Fri, 14 Mar 2025 11:32:13 +0100
 MIME-Version: 1.0
-References: <20250307124841.23777-1-darren.ye@mediatek.com> <20250307124841.23777-7-darren.ye@mediatek.com>
-In-Reply-To: <20250307124841.23777-7-darren.ye@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 14 Mar 2025 11:21:44 +0100
-X-Gm-Features: AQ5f1JoRI9uPFODrP-kekoqBVTf1T6TLHgkeo343GHaQMulDksI11fRwjUXLOnA
-Message-ID: <CACRpkdZ=a0mbir=D3dCSPns1TC_OVWMMTXJKcTYOJeNy7aQ7NQ@mail.gmail.com>
-Subject: Re: [PATCH 06/14] ASoC: mediatek: mt8196: support audio GPIO control
-To: "Darren.Ye" <darren.ye@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Bartosz Golaszewski <brgl@bgdev.pl>, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/5] dt-bindings: pmic: mediatek: Add pmic documents
+To: "Lu.Tang" <Lu.Tang@mediatek.com>, Jonathan Cameron <jic23@kernel.org>,
+ Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>,
+ Sen Chu <shen.chu@mediatek.com>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250314073307.25092-1-Lu.Tang@mediatek.com>
+ <20250314073307.25092-6-Lu.Tang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250314073307.25092-6-Lu.Tang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_032156_947992_8BF9ED9F 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20250314_033226_538297_D9573913 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +127,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Darren,
+On 14/03/2025 08:32, Lu.Tang wrote:
 
-thanks for your patch!
+Please use subject prefixes matching the subsystem. You can get them for
+example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
 
-On Fri, Mar 7, 2025 at 1:49=E2=80=AFPM Darren.Ye <darren.ye@mediatek.com> w=
-rote:
+There is no subsystem "pmic".
 
-> From: Darren Ye <darren.ye@mediatek.com>
->
-> Implement mode switching for audio GPIO.
->
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> Add new pmic mfd and adc documents for mt8196
+> 
+> Signed-off-by: Lu.Tang <Lu.Tang@mediatek.com>
 
-> +#include <linux/gpio.h>
+Are you sure Latin transcription of your name includes '.' or you just
+copy-paste email address?
 
-Please don't include this legacy header. I don't think you even need it,
-you are not using any gpio_ symbols at all.
 
-> +#include <linux/pinctrl/consumer.h>
+...
 
-You don't seem to use anything from this include either.
+> +  - Lu Tang <lu.tang@mediatek.com>
+> +
+> +description:
+> +  The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
+> +  in some MediaTek PMICs, performing various PMIC related measurements
+> +  such as battery and PMIC internal voltage regulators temperatures,
+> +  other than voltages for various PMIC internal components.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6363-auxadc
+> +      - mediatek,mt6373-auxadc
 
-Find more specific headers if you need the code to compile.
+Just fold the device to the parent node.
 
-I think you should drop both, the name "GPIO" in this file is a bit confusi=
-ng
-because it's not very generic but dealing with audio IO routing. But I gues=
-s
-it is what Mediatek calls it.
 
-Yours,
-Linus Walleij
+
+..
+
+
+
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,spmi-pmic.yaml b/Documentation/devicetree/bindings/mfd/mediatek,spmi-pmic.yaml
+> new file mode 100644
+> index 000000000000..a8f1231623cf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,spmi-pmic.yaml
+
+Filename matching one of the compatibles, e.g. the oldest one.
+
+> @@ -0,0 +1,173 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/mediatek,spmi-pmic.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek SPMI PMICs multi-function device
+> +
+> +maintainers:
+> +  - Lu Tang <lu.tang@mediatek.com>
+> +
+> +description: |
+> +  Some Mediatek PMICs are interfaced to the chip via the SPMI (System Power
+> +  Management Interface) bus.
+> +
+> +  The Mediatek SPMI series includes the MT6363, MT6373, MT6316 and other
+> +  PMICs.Please see the sub-modules below for supported features.
+> +
+> +   MT6363/MT6373 is a multifunction device with the following sub modules:
+> +  - Regulators
+> +  - ADC
+> +  - GPIO
+> +  - Keys
+> +   MT6316 is a multifunction device with the following sub modules:
+> +  - Regulators
+
+I don't get why they are in the same schema. It would result in
+unnecessary big if:then with half of children not applicable for other
+variants.
+
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt6363
+> +          - mediatek,mt6373
+> +          - mediatek,mt6316
+Sort these with alphanumeric order.
+
+Best regards,
+Krzysztof
 
