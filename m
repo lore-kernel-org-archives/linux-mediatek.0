@@ -4,93 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78CA4C28B2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 12:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C466EC282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 12:17:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwJmXPh0UZn8nk0X5v3R0BkMm6bGB9ygKP2kfBs4kzg=; b=ciguIpxwn5uW7y8Q9+K1fu+SoN
-	RjpLgzikUabqQakTlR28gztj2itdjU0XxinpprbUTmCp4OLCK+rH4H+/ddzNosiJyXNyCTleA2I07
-	WqBUNp4gfy5C7VSOMfRjwl/ZEbk21NDRGB3Y3AkPjqFx0mKP1A0svDMSjcpxKCMibWmWWb9cmdX2q
-	Woi7l5mYHA6DpaN7MAN/1Nf0dV+xERyCx3lPMOP3UK52636Hri0ruouj+DwyV/fUZkW7G0qUmOhHm
-	0Ffj2UnugnP0QIc2Sl174KqHUEKXbBkswxWNIh8qWe1nXcL/5NvKEykG+uGn15h6OAA9UwsfJQ4nW
-	tA90R1oQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=un+HUtkysff+yfRSKidLsG2FZKrPmSS6m1fAdoGXos8=; b=O4CqUFkvCPqq1mfV9LEhbkl92A
+	tTuAH8OtFy7Xcm6RAZ+BIG8BDVKTZjj51A+LqWU6KXg1wWxYCoxfeMgveS7bZ+zocKfQpZWRsd/KN
+	iAuE5iAZEzXVKwtpJ/KpOah1myvk6+dsKX5HNZ2OBAbCwPW7o/L1WOYTDjgzP0SapEa+awcKAcp0I
+	6bGkUnjDgvbNU+fc9zBNNi+nAGhA3p41QXzBfJo6HkWlZF48Tlbpss5y56H0X3Ti3JLEf/z3kXvGx
+	kAIeDkgvjqztUwNJWcMFGFMVKyGDrR17Mmsm/7+h31qw2JAFdqIaCgRFkc9Q9yl6aHqAq1X6N0Bdu
+	bPPCje1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt3j0-0000000E5WM-233f;
-	Fri, 14 Mar 2025 12:01:14 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1tt3yy-0000000E7k2-3uEH;
+	Fri, 14 Mar 2025 12:17:44 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt3ix-0000000E5U6-3KZL
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Mar 2025 12:01:13 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-6fedf6aaed2so19152927b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 05:01:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741953670; x=1742558470; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=dwJmXPh0UZn8nk0X5v3R0BkMm6bGB9ygKP2kfBs4kzg=;
-        b=SRd7gW1mxd1JtVXeiJbn7tlJwBGrPLMVglvYR6xdkCAFAu7tOCOrr15l8HWdNhF0Md
-         mLquWR9KAh55D/2NPPe+GM3v457+3+OsVVClssFDjw7MremGfY0g3bigMz7et+Wv4+5P
-         L81oHqtCG3Qg2EWWeZ+gksEzSVEkaTK49EhLui8dsEZfQPPLR1QMIqmnXfrEFe/HKiDx
-         zoCc0oiNC1rym6zYL52V45xQkeXtg5RFcX1bcHgXWRFEelQ1OcYZq2pCF5T2C9wqWSEQ
-         Vqe/6SdJI569hIX1MezgwlIpoAspsjRCACQUG92I96R+x3o9I+o+W5Rrxc/eibFnVuX9
-         h/SQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741953670; x=1742558470;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dwJmXPh0UZn8nk0X5v3R0BkMm6bGB9ygKP2kfBs4kzg=;
-        b=MqgRM0Bef8vzwV7W1zcU7dDIgbLw7Ln782eGjvHN+86gdAIvIPzjGiOqZF7gKFGc/O
-         13U2lbW1uKvWDzs+4B5ee/DFzIEjp1QMiUNoqOd6H5CTVNxJXKd1S05qtXtRgL/8dDzX
-         1EWEgNQuQXN3UWLDe/3ZghjRUuNosmOVs+2IFxdNNmUsLISDHepeE3oOCw92pmeSW0W4
-         vnBGVicftLnFqivqY5PRt0UOvFUE5tKFwfm5TJuyjBj8aCchU9LOg5QfsrMle69PUUBZ
-         XPHwCwls7w8guf5q6ty8u8Mpwgh0U//WgajMyUA52bBf3ZyyDj7q2AWmOh2Os+oxWp1P
-         Rn/g==
-X-Forwarded-Encrypted: i=1; AJvYcCWYcq9dL+OYm0IzGjk56+gcJnYF9HJLRU2SJ90eKx16hbkpcDcAV6EBZlcZfzxFzTKRZNYlPt9qog3ksS4GJA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz+taP+pXIqhsu5ht9VP/jGUdGpkcVaYfhgwi0WR+5hKHTAVk1b
-	pnsUflj3pulxVEsnijn4JpTqpsgLdZAVbmksTczIu4BN4yqtd+NR7Y9YckKHIkPcEqLxlZWF5sc
-	x7e0aQM/+ZDESrfIz9pvv+QlnBd2iPtMWkBMnYg==
-X-Gm-Gg: ASbGnct+CYSB+GcMSt7NEGVR+rkx0UaZzuOCarybcpTSAqffDlOm/1mkt7ExPtxJH4S
-	1UMxvEEdEfOs8jCsLkPkISI0hODDE5X423HJThowfYUKWTstQOH/1z8iKa6/1SCmxBw7QDz0vjt
-	b3ltYcDdpjcCTExJHEJ/1D5yr0d/g=
-X-Google-Smtp-Source: AGHT+IGZZCcwY5/1JbZjTo0RWJ2K/xyqiqYRIB+WoabIYLpe9OvKoQa822klhbBDtTeF2wPU+BJ9g+hqI+KNvuehlJ8=
-X-Received: by 2002:a05:690c:4c0a:b0:6f9:47ad:f5f1 with SMTP id
- 00721157ae682-6ff4641f8cfmr21140237b3.17.1741953670170; Fri, 14 Mar 2025
- 05:01:10 -0700 (PDT)
+	id 1tt3xI-0000000E7X2-0vs9;
+	Fri, 14 Mar 2025 12:16:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B1416A46A0B;
+	Fri, 14 Mar 2025 12:10:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B097C4CEE3;
+	Fri, 14 Mar 2025 12:15:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741954559;
+	bh=syyfjmm1ILVSuq9iD+2uDPwICAchoBLMuHILst+2s14=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Pichpc16VJLp7OPpMBWAS8J28BjePgu2HLwegUy/x8qaj0zQoI7iMfZ5uHB4pbWsN
+	 t3sB9Tk49VClQtqKyFiLiFEk/GsIqJuyXYr36qp/O2d/eMk4nbyFf6zKtQFhmrVklP
+	 72kbKSYocc8g30uDviLAgkF8KVTWG7YI+2KiHCs4VPP+HHbjoAKZCMYVRI5fLKQHqO
+	 9IEyRlVYIVfrrKcoTU2LmoiaxDnOwxAbcFQvGTFQf/Ney/v/fjj/JznEV9Ll7XQoQj
+	 Hdkpr+/z5LcbVmC3lqLhua4Bonmd6srD+0fMOhzzJ8SB1qw+nIa+eGxyg8clf8Gv9e
+	 p8fsxvtddMwdw==
+Message-ID: <b4318673-f2b6-4740-ba80-32bb33e91f3f@kernel.org>
+Date: Fri, 14 Mar 2025 13:15:52 +0100
 MIME-Version: 1.0
-References: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org> <20250311-mvneta-xdp-meta-v1-3-36cf1c99790e@kernel.org>
-In-Reply-To: <20250311-mvneta-xdp-meta-v1-3-36cf1c99790e@kernel.org>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Fri, 14 Mar 2025 14:00:33 +0200
-X-Gm-Features: AQ5f1JqD4PpWF9sD-c3WrV8oOlJztNLgYA2GJMvNudQfJQpIo6DpWKsJUUlKuVc
-Message-ID: <CAC_iWjKRLs4POP3TQ0XrXUiBmW0D5qD0JYh=UxqAytXjPvRmGw@mail.gmail.com>
-Subject: Re: [PATCH net-next 3/7] net: netsec: Add metadata support for xdp mode
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Marcin Wojtas <marcin.s.wojtas@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Masahisa Kojima <kojima.masahisa@socionext.com>, Sunil Goutham <sgoutham@marvell.com>, 
-	Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, 
-	hariprasad <hkelam@marvell.com>, Bharat Bhushan <bbhushan2@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
-	Dexuan Cui <decui@microsoft.com>, Siddharth Vadapalli <s-vadapalli@ti.com>, 
-	Roger Quadros <rogerq@kernel.org>, netdev@vger.kernel.org, bpf@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-hyperv@vger.kernel.org, linux-omap@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: =?UTF-8?B?UmU6IOWbnuWkjTogW1BBVENIIDEvNV0gcG1pYzogbWVkaWF0ZWs6IEFk?=
+ =?UTF-8?Q?d_pmic_auxadc_driver?=
+To: =?UTF-8?B?THUgVGFuZyAo5rGk55KQKQ==?= <Lu.Tang@mediatek.com>,
+ =?UTF-8?B?Q2hlbiBaaG9uZyAo6ZKf6L6wKQ==?= <Chen.Zhong@mediatek.com>,
+ =?UTF-8?B?U2VuIENodSAo5YKo5qOuKQ==?= <Sen.Chu@mediatek.com>
+Cc: "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250314073307.25092-1-Lu.Tang@mediatek.com>
+ <20250314073307.25092-2-Lu.Tang@mediatek.com>
+ <90d1c0f2-b037-482e-a569-f75b713e3a71@collabora.com>
+ <SEZPR03MB68910F9B60DAF0060440503980D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <SEZPR03MB68910F9B60DAF0060440503980D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_050111_826695_73669863 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20250314_051600_384309_0A30A52E 
+X-CRM114-Status: UNSURE (   4.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,51 +130,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 11 Mar 2025 at 14:19, Lorenzo Bianconi <lorenzo@kernel.org> wrote:
->
-> Set metadata size building the skb from xdp_buff in netsec driver
->
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/socionext/netsec.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/ethernet/socionext/netsec.c b/drivers/net/ethernet/socionext/netsec.c
-> index dc99821c6226fbaece65c8ade23899f610b44a9a..ee890de69ffe795dbdcc5331e36be86769f0d9a6 100644
-> --- a/drivers/net/ethernet/socionext/netsec.c
-> +++ b/drivers/net/ethernet/socionext/netsec.c
-> @@ -970,7 +970,7 @@ static int netsec_process_rx(struct netsec_priv *priv, int budget)
->                 struct netsec_de *de = dring->vaddr + (DESC_SZ * idx);
->                 struct netsec_desc *desc = &dring->desc[idx];
->                 struct page *page = virt_to_page(desc->addr);
-> -               u32 xdp_result = NETSEC_XDP_PASS;
-> +               u32 metasize, xdp_result = NETSEC_XDP_PASS;
->                 struct sk_buff *skb = NULL;
->                 u16 pkt_len, desc_len;
->                 dma_addr_t dma_handle;
-> @@ -1019,7 +1019,7 @@ static int netsec_process_rx(struct netsec_priv *priv, int budget)
->                 prefetch(desc->addr);
->
->                 xdp_prepare_buff(&xdp, desc->addr, NETSEC_RXBUF_HEADROOM,
-> -                                pkt_len, false);
-> +                                pkt_len, true);
->
->                 if (xdp_prog) {
->                         xdp_result = netsec_run_xdp(priv, xdp_prog, &xdp);
-> @@ -1048,6 +1048,9 @@ static int netsec_process_rx(struct netsec_priv *priv, int budget)
->
->                 skb_reserve(skb, xdp.data - xdp.data_hard_start);
->                 skb_put(skb, xdp.data_end - xdp.data);
-> +               metasize = xdp.data - xdp.data_meta;
-> +               if (metasize)
-> +                       skb_metadata_set(skb, metasize);
->                 skb->protocol = eth_type_trans(skb, priv->ndev);
->
->                 if (priv->rx_cksum_offload_flag &&
->
-> --
-> 2.48.1
->
+On 14/03/2025 10:21, Lu Tang (汤璐) wrote:
+> Update email
+> 
+You just sent 10 emails like this to everyone. This is pointless, don't.
 
-Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Best regards,
+Krzysztof
 
