@@ -4,81 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290C2C28B2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 09:49:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC22DC282EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Mar 2025 10:00:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xv83JusTsGcRgffFR57rgLNiHErt3O8p5Ayy+ye4/ZM=; b=aY1flRRITVq4KIil9ABfZ6I4HP
-	ZJ7Nd/lPVC/TXUd5iETNvLgCwDlJ1gZxOLZ2038CHjwLl5QnQX9uq9GyP3+CHKVTDeTdilp37znOV
-	dCawk5qWMQbF3tBRsh3FvhfAXSAY2S6aHSZBlW6TO4t/Rusaxb6WXa5E+nPAu9UGH3IJSUXicxAuf
-	gMFyUyUqDPyB7NA9QWaIPvxD2w8XiqJ6Sm3zKWrzQQplcjHlcjqBg/j6QaEWkepSJPOl57CSWt+ji
-	VQ6raT6yQKhExgTH1MKzdOze/Qf9mklfKKZh2Uiu1bGrYTB0A5QGIGPe72sqpQH0G/ZVUx+RChzrN
-	rFc6sv+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3R/xMW1KRHZ8whxH1MaliizhE8y6irqdOv62B/5CbE0=; b=Oi8rCuEZvrta3kjs7r8kpGfpfl
+	sZyD90g3v5PBN6HCFRBCazU11yXvyocbylth8yLMABo/O/6JYl9Jb2uddeu8xqqZ6JPWKC4FS6MP5
+	ujQZ9UvVPK1J5uQvD/Czg2jRFSy3PNKcZqTQyd9gcDyVLatkglhTNGpYtVxt81056fGYOYY3lYkCZ
+	w5CiEyIpJSuCRhwvg74VgNk8WEHvELYQoP3MXXoQl1BfluQ2WwJ23GDj3pKkKV9PKp2VjqldWCeD0
+	7wV194hlseZND1AElE57Zhhej5yRWzW+sjbmWwCUn+lUz8F/F8p/9/B1XGGYr76k0wugspzKicbqC
+	xGNEcrYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt1fP-0000000Dj83-46V9;
-	Fri, 14 Mar 2025 09:49:23 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tt1q6-0000000DktR-3VXB;
+	Fri, 14 Mar 2025 10:00:26 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt1dj-0000000Dinu-1GKC;
-	Fri, 14 Mar 2025 09:47:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AB496A42A07;
-	Fri, 14 Mar 2025 09:42:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBD2AC4CEE3;
-	Fri, 14 Mar 2025 09:47:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741945658;
-	bh=GiqhQYgwNaCAQ86P7jRzLoUtt/6XmyAbfRPrIv6/4/U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pqWbMK3I8GlUQbAG7hEG6Hq4IeCZA+8ts7oj147BauszkdwI+h11xzROAPJ+9jT+e
-	 9Xf4r7T5SBwV1UvsaiAYMsp7s3d2NleLznfpfhmcyE8ocT7jLUgUwJkgAsQ3pQXave
-	 OK85ozDXGsmtZlNF2HyUtSLf44VszdJuvYUKg+qp8/6JBi+Yzp39qNt/caKfjRHh9u
-	 z+tEmcQIpJv+r3NoE66YplPYJWcEfDpmT0tyQYlNEi/B7jV/lx/Gf8pv4ivSVqGE85
-	 aJr3EXiVrSbf3XniXSvqEowF25cs3wquigGpYsL4OsqZPcohUmFTRzHEme98dgrMOJ
-	 JSUPHqE9Bo5kg==
-Date: Fri, 14 Mar 2025 09:47:31 +0000
-From: Lee Jones <lee@kernel.org>
-To: Lu Tang =?utf-8?B?KOaxpOeSkCk=?= <Lu.Tang@mediatek.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
-	Chen Zhong =?utf-8?B?KOmSn+i+sCk=?= <Chen.Zhong@mediatek.com>,
-	Sen Chu =?utf-8?B?KOWCqOajrik=?= <Sen.Chu@mediatek.com>,
-	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-input@vger.kernel.org" <linux-input@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: =?utf-8?B?5Zue5aSN?= =?utf-8?Q?=3A?= [PATCH 3/5] pmic: mediatek:
- Add spmi pmic mfd driver
-Message-ID: <20250314094731.GA3890718@google.com>
-References: <20250314073307.25092-1-Lu.Tang@mediatek.com>
- <20250314073307.25092-4-Lu.Tang@mediatek.com>
- <SEZPR03MB6891D404A7AA2BC5244A992A80D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
+	id 1tt1oR-0000000Dkem-2uhX
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Mar 2025 09:58:44 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-549946c5346so1998716e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Mar 2025 02:58:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1741946321; x=1742551121; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3R/xMW1KRHZ8whxH1MaliizhE8y6irqdOv62B/5CbE0=;
+        b=add0PYZVoCHg1PPN3WRsurP8PRzgCbeIlryy1Fi5vhHOJPux9yNVNP/6lTh2nVuMH8
+         VHedmFnrhIENnNGki+UGEvHZsIxQeGxQP2iydwzwow/sIKaGWqdzPJBk6sPo3/jddkTW
+         2OWTpGK+EHxMbDYyMQO4ZqHuTEuyuJBM5TSk3wGtJwG/NVs07Dg9T4qqJ2H7AqCTPU6n
+         GkA+9xdd61SRIgy1yMIsyF6j+N1jsVw1cv8bx99nFYPf81kPxQo8AKB4+uFeGoynQ047
+         TDb6pzkynN+uL3RG3jvDL3ZkNWK48NKExbA3Q+gmOd/nnFqzMX3zY1bVWqMbrPckI5vF
+         Ys8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741946321; x=1742551121;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3R/xMW1KRHZ8whxH1MaliizhE8y6irqdOv62B/5CbE0=;
+        b=lCEM5urdR4+/+Uqp5gbDCyqLEbryGZJUb5N84suPUgJvLiwT+3RP1lJUPN4TkOeS59
+         6yrDmbNJqmSOdmOxO+qTan4O/hLXU3TnJTR/d7rKR2o/7YrhwQqszjSy4HIZ3n/R5UDL
+         zhVvzb6BRydYhkgZi6Rl6LfVnWYpEZr7qu0KpEWdh2HlUJdciBbKPqvKvhxn9cxr6Wu0
+         MrwBJC3pOEa/8Ckpju8rY3Q3qk99e1HVAk0dhrskDX84KpzA0dk7punVHFjB0QTNoNhh
+         sXyokPoX2hl8NodL8FrFYdDFvkxUWK1MvlbWMdG4vVtsurx7UCvqRdmdotcyLJEBh5kw
+         f7Kg==
+X-Forwarded-Encrypted: i=1; AJvYcCVR+3PQK8DpFEmq20R+OVtu9Tfr8mw6vETebF+ndlK4uQ/Dp2xJmJwqEVOsNPo4by3NtwPfHkLcaMc7tuCnFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqiEw+kx0UqPTQJuryymzqzSZvMUTsN0ppMQDkiQ00vDS75bcd
+	zC5pt/CtWYEUdObzGppI+2ZgcOtpgGf5UQ1SuD8v9yowRtM1Akxb+ZTaU3YYuUzhVql+/0jqMq9
+	LWYjpiZENWshdPwemuvcHpDzT7zVlewa2t5i0UQ==
+X-Gm-Gg: ASbGnctMp/0gao0UrEAgyA/7BLxAINiX0BrzztuqrvP4CHi6xvmDyCQCBL/Ha2Z2KVa
+	ObEyTXMzyqRCdpnQBovYhoa5MR6l3DLrkkugCflWUcy4gWGLhecbFOHmWfo0YSL0DJ8TTnO/vl4
+	JpFPaBY+XhITVQ4L4dzQORnc8=
+X-Google-Smtp-Source: AGHT+IGc3omYZ/PigNb3EELyzJBtPU76XiDZ8/lpHySnqIua+3ffxwK9HjrgiuZD5ypFcw6v7zL4wYHXWwqXE5nGVqQ=
+X-Received: by 2002:a05:6512:158a:b0:549:8f21:bc07 with SMTP id
+ 2adb3069b0e04-549c38f1fbemr588651e87.26.1741946321224; Fri, 14 Mar 2025
+ 02:58:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <SEZPR03MB6891D404A7AA2BC5244A992A80D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
+References: <20250225140732.21557-1-ot_chhao.chang@mediatek.com>
+In-Reply-To: <20250225140732.21557-1-ot_chhao.chang@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 14 Mar 2025 10:58:29 +0100
+X-Gm-Features: AQ5f1JoobXwU1DJzGtfpxiI6KI8sg3dxeI7nlvijJlOYjKzE2Ra7o1u5ZIyffXY
+Message-ID: <CACRpkdYSNMV2jymbHaxRp-PmzbbkEJ_eUcT20whYw3gdhEGOGg@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] Add EINT support for multiple addresses
+To: Hao Chang <ot_chhao.chang@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>, 
+	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>, 
+	Chunhui Li <chunhui.li@mediatek.com>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_024739_469215_E7E1E7B5 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20250314_025843_741823_CF61DE90 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,49 +99,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Mar 2025, Lu Tang (汤璐) wrote:
+Hi Hao,
 
-> Update email address
+thanks for your patches!
 
-What is this?
+On Tue, Feb 25, 2025 at 3:07=E2=80=AFPM Hao Chang <ot_chhao.chang@mediatek.=
+com> wrote:
 
-Please refrain from top-posting.
+> This patch depends on
+> [v3,2/2] pinctrl: mediatek: add mt8196 driver
+> [v3,1/2] dt-bindings: pinctrl: mediatek: add support for mt8196
+>
+> Please also accept this patch together with [1]
+> to avoid build and dt binding check error.
+> [1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D&su=
+bmitter=3D215008&state=3D&q=3Dv3&archive=3D&delegate=3D
 
-> -----邮件原件-----
-> 发件人: Lu.Tang <Lu.Tang@mediatek.com> 
-> 发送时间: 2025年3月14日 15:32
-> 收件人: Jonathan Cameron <jic23@kernel.org>; Lars-Peter Clausen <lars@metafoo.de>; Rob Herring <robh@kernel.org>; Krzysztof Kozlowski <krzk+dt@kernel.org>; Conor Dooley <conor+dt@kernel.org>; Dmitry Torokhov <dmitry.torokhov@gmail.com>; Lee Jones <lee@kernel.org>; Matthias Brugger <matthias.bgg@gmail.com>; AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>; Sean Wang <sean.wang@kernel.org>; Linus Walleij <linus.walleij@linaro.org>; Liam Girdwood <lgirdwood@gmail.com>; Mark Brown <broonie@kernel.org>; Stephen Boyd <sboyd@kernel.org>; Chen Zhong (钟辰) <Chen.Zhong@mediatek.com>; Sen Chu <shen.chu@mediatek.com>
-> 抄送: linux-iio@vger.kernel.org; devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-input@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org; linux-gpio@vger.kernel.org; Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>; Lu Tang (汤璐) <Lu.Tang@mediatek.com>
-> 主题: [PATCH 3/5] pmic: mediatek: Add spmi pmic mfd driver
+Since the dependence series is not finished I can't apply these
+patches either, do you want to send an independent version of these
+patches so we merge them *first* since they seem finished?
 
-Fix your mailer.  Headers have no place in the body of an email.
+Then the mt8196 series can rebase on your patches in v6.15-rc1
+instead.
 
-> From: "Lu.Tang" <lu.tang@mediatek.com>
-> 
-> Add spmi pmic mfd driver for mt8196
+Just send a version based on v6.14-rc1 and I will apply it.
 
-7 words for a 900 line change is not going to fly.
-
-What is this device?  What does it provide?  What are its dependencies?
-
-Etc.
-
-> Signed-off-by: Lu Tang <lu.tang@mediatek.com>
-> ---
->  drivers/mfd/Kconfig                  |  26 ++
->  drivers/mfd/Makefile                 |   2 +
->  drivers/mfd/mt6685-core.c            |  83 +++++
->  drivers/mfd/mtk-spmi-pmic.c          | 518 +++++++++++++++++++++++++++
->  include/linux/mfd/mt6363/core.h      | 134 +++++++
->  include/linux/mfd/mt6363/registers.h | 168 +++++++++
->  include/linux/mfd/mt6373/core.h      |  94 +++++
->  include/linux/mfd/mt6373/registers.h |  53 +++
->  8 files changed, 1078 insertions(+)
->  create mode 100644 drivers/mfd/mt6685-core.c  create mode 100644 drivers/mfd/mtk-spmi-pmic.c  create mode 100644 include/linux/mfd/mt6363/core.h  create mode 100644 include/linux/mfd/mt6363/registers.h
->  create mode 100644 include/linux/mfd/mt6373/core.h  create mode 100644 include/linux/mfd/mt6373/registers.h
-
-Please try again.
-
--- 
-Lee Jones [李琼斯]
+Yours,
+Linus Walleij
 
