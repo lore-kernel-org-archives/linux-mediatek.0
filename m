@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5BD5C28B28
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 08:50:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D02C28B28
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 10:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xoAXBMZMFdzI1bxx8xlOt+7qXGb/M8aMLz7dtBNMqJY=; b=sVKQDLj5JG2G1MP8/4mn3D9s9T
-	OKNfkHlB9DAqZCPuql6ieqORvLBisY2UiezDfq6XKr35xikWHMaI76L2x+de7SXlS+2k0faBytgLT
-	YXnJrtBUDyTNIaTYkPgpCskCof3QAEI+g8LjuCQ/52c6ylJ3cFJtOo0BD/IjhB/Q6KVkQu72n6rbt
-	C3LfeqkeUs3QBgAm8yLczuyZrDUSSTUInBnrelRFYlSxK4Rb9kkUirQqlO7nQ/xHxpn7DFnoX4M3N
-	Hjcou3Vazhyx+eFK+03gmBIasnWLJf3d0EeQ1waserbsMAK0PnsB06CjGuiDyfS4nh/Lbn11kNMrC
-	ueSS2GTg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Oi98ZwxkXO6Jx8VTzcNwX2z0Wuokb3ss3AkwMKz14J0=; b=QG1SqSpI3jGeeIES6XXiAWtC7/
+	kntQ6gzcUXFDeAl6oGLdr6Zcv7kuOjseHaZANtH6gZMrD+B5MBXcdEYYYgVnI7M5o7pa+NhIrnBeQ
+	ne04h/5MUZjzbW4cHFH0HkQWhI8PpjKC5PHNf5yu/cVrn3DoJgJalrP2o5KI4JhngBS9PCruWUubI
+	3hsdU/DktwxqOpAnUSH6zzTTI6FI3yHQUQSC1y5EWHX+YeBJJlhj8CgECix2GDPP4Qg6pCswEneog
+	+VzsEcwzTudNn8hhxCMPt27/cEgXUbmKGPxt6gAtNYxPisPvOXj60npA0XPlYlhz3TFWehaO05zLR
+	f6s/aHPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttNE0-0000000G3mD-0Tao;
-	Sat, 15 Mar 2025 08:50:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ttOnr-0000000GDCM-4C53;
+	Sat, 15 Mar 2025 10:31:40 +0000
+Received: from mail.nppct.ru ([195.133.245.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttNB4-0000000G34t-1N9l;
-	Sat, 15 Mar 2025 08:47:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742028448;
-	bh=G8uYSrifhqywqfMO1IBBhasEEunS+Y3jrko3Aki/XA0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=LQO04r4q3Sevfv8mmADPojqCSJcQxUVqr4wr2MLx8Y89UPKMJ/9MVD3Ka68IF5d2V
-	 fYWoNfuPE/yl6yzB4kFEUFU5qHLrhdKhuBuFwd1RfDrwkkbACsdMEBPxSty6ki57Qv
-	 hwdp7lNTn0Bit7z2HUoapOazm5azakK1LwI0jFXyxelzE5e/0z3uO+SkZnOLl8x9m2
-	 FPIaialuC/Wp1qsgs/2EiYwo5CYKPsf/VkuTaDuUC8zbgYfWp+0LH7vtssH5L+PWpw
-	 7pu4dbwDbgizk1/LFSBduf/h4FFXinQyo+bIydoS5dF9tqeLGWIDNMQ7ruU9xJHH7z
-	 bLG9gUCBi32qA==
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CCFF117E05C8;
-	Sat, 15 Mar 2025 09:47:27 +0100 (CET)
-Date: Sat, 15 Mar 2025 09:47:22 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
- simona@ffwll.ch, kernel@collabora.com, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com,
- angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v2 6/6] drm/panfrost: Force AARCH64_4K page table format
- on MediaTek MT8192
-Message-ID: <20250315094722.4c4804c6@collabora.com>
-In-Reply-To: <20250314173858.212264-7-ariel.dalessandro@collabora.com>
-References: <20250314173858.212264-1-ariel.dalessandro@collabora.com>
-	<20250314173858.212264-7-ariel.dalessandro@collabora.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1ttOm8-0000000GCt6-2IKG
+	for linux-mediatek@lists.infradead.org;
+	Sat, 15 Mar 2025 10:29:55 +0000
+Received: from mail.nppct.ru (localhost [127.0.0.1])
+	by mail.nppct.ru (Postfix) with ESMTP id A8C261C2430
+	for <linux-mediatek@lists.infradead.org>; Sat, 15 Mar 2025 13:29:35 +0300 (MSK)
+Authentication-Results: mail.nppct.ru (amavisd-new); dkim=pass (1024-bit key)
+	reason="pass (just generated, assumed good)" header.d=nppct.ru
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nppct.ru; h=
+	content-transfer-encoding:mime-version:x-mailer:message-id:date
+	:date:subject:subject:to:from:from; s=dkim; t=1742034574; x=
+	1742898575; bh=3BroxUqixAB8gXUImb1vjnpxBW+vzrQRIfMr2CxrOfo=; b=D
+	VaCmVgb8jMMwQ4Equ8S8ziqnQd0rOya7xfQsNGlIgbSjf+0GD9RdZ4jx20p6gLvf
+	6L77hhdmEIQ6SdX80/sCUzotay7L+ELiQJ7LjZvjigUOu88Lu46skRzw4HgRG+Zr
+	9sRqmAZdHuhhLWtq0W1YVFhxl7ze/kuGkOPvZw7U+M=
+X-Virus-Scanned: Debian amavisd-new at mail.nppct.ru
+Received: from mail.nppct.ru ([127.0.0.1])
+	by mail.nppct.ru (mail.nppct.ru [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id IYkEPSPkgF7G for <linux-mediatek@lists.infradead.org>;
+	Sat, 15 Mar 2025 13:29:34 +0300 (MSK)
+Received: from localhost.localdomain (unknown [87.249.24.51])
+	by mail.nppct.ru (Postfix) with ESMTPSA id CFB551C0879;
+	Sat, 15 Mar 2025 13:29:29 +0300 (MSK)
+From: Alexey Nepomnyashih <sdl@nppct.ru>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Alexey Nepomnyashih <sdl@nppct.ru>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	lvc-project@linuxtesting.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>
+Subject: [PATCH 6.1] media: mediatek: vcodec: Fix VP8 stateless decoder smatch warning
+Date: Sat, 15 Mar 2025 10:29:01 +0000
+Message-ID: <20250315102903.3634639-1-sdl@nppct.ru>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250315_014730_557364_487021BB 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20250315_032953_965210_D8F81364 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +84,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Mar 2025 14:38:58 -0300
-Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-> MediaTek MT8192 SoC has an ARM Mali-G57 MC5 GPU (Valhall-JM). Now that
-> Panfrost supports AARCH64_4K page table format, let's enable it on this
-> SoC.
-> 
-> Running glmark2-es2-drm [0] benchmark, reported the same performance
-> score on both modes Mali LPAE (LEGACY) vs. AARCH64_4K, before and after
-> this commit. Tested on a Mediatek (MT8395) Genio 1200 EVK board.
-> 
-> [0] https://github.com/glmark2/glmark2
-> 
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+commit b113bc7c0e83b32f4dd2d291a2b6c4803e0a2c44 upstream.
 
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
+Fix a smatch static checker warning on vdec_vp8_req_if.c.
+Which leads to a kernel crash when fb is NULL.
 
-> ---
->  drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index e854f290858f9..ef30d314b2281 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -836,6 +836,7 @@ static const struct panfrost_compatible mediatek_mt8192_data = {
->  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8192_pm_domains),
->  	.pm_domain_names = mediatek_mt8192_pm_domains,
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
-> +	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
->  };
->  
->  static const struct of_device_id dt_match[] = {
+Fixes: 7a7ae26fd458 ("media: mediatek: vcodec: support stateless VP8 decoding")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+[ Alexey Nepomnyashih: changed mtk_vdec_err() to mtk_vcodec_err. ]
+Signed-off-by: Alexey Nepomnyashih <sdl@nppct.ru>
+---
+ .../platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c    | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
+index e1fe2603e92e..22d8f178b04d 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
+@@ -336,14 +336,18 @@ static int vdec_vp8_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
+ 
+ 	fb = inst->ctx->dev->vdec_pdata->get_cap_buffer(inst->ctx);
+-	dst_buf_info = container_of(fb, struct mtk_video_dec_buf, frame_buffer);
++	if (!fb) {
++		mtk_vcodec_err(inst, "fb buffer is NULL");
++		return -ENOMEM;
++	}
+ 
+-	y_fb_dma = fb ? (u64)fb->base_y.dma_addr : 0;
++	dst_buf_info = container_of(fb, struct mtk_video_dec_buf, frame_buffer);
++	y_fb_dma = fb->base_y.dma_addr;
+ 	if (inst->ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
+ 		c_fb_dma = y_fb_dma +
+ 			inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
+ 	else
+-		c_fb_dma = fb ? (u64)fb->base_c.dma_addr : 0;
++		c_fb_dma = fb->base_c.dma_addr;
+ 
+ 	inst->vsi->dec.bs_dma = (u64)bs->dma_addr;
+ 	inst->vsi->dec.bs_sz = bs->size;
+-- 
+2.43.0
 
 
