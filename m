@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 412E2C28B28
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 08:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D4DCC28B28
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 08:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=glAtyP4dUnz0l0KiAvV4ANow7G2hB+arbAc9Pjp2TVs=; b=Gpt0iZUzjIzgl7eNkbYyXD8vYi
-	YL585eDvgVUoy2QXtEZxGk3gulw70+OmHSUj/caKZ/oAThkvZQX2eu5qWpF/16mjMQr7zFOAbC1dl
-	dfCTy/wObzGnpd9tu0/8MOjVp2dwtPbCYlfxpHxOxR/tmtcfOReZHDONhcHbsVI69cotzs3+po5Ll
-	flmplOj0iiyK+2Xm4ReKFpqhabUND6CkGeQ7u91mfL2EMavEL7xTkhNIMc9WRq3F2MI3DfHj6Vpj8
-	bGz1jsfC7EfVmDrHuTs/dwb/xuApcv8nakugzUzcfZS/BRKy9tI6wQAGyrfA9zMK7zo44wKPPfP9X
-	RSokEQgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xCQkDznQgfbooy56wRwdXEl6idT1aXSmOhxYwRmnD18=; b=Ek9R4+ggNeLzHGUkxJp9G3vpQ8
+	VN1f1hOP3HHHnBJNlrK+wEdTJa9JysC7Javb3Y5p0fpY+A2kjB80qMucmPVqBJr07L2F0v070y59C
+	ZyFkXOJK3yPRTph/RerCFdE+LEDl1Q9lK7wQF49N4NJxZI4tmXXi+y13t/vNHhxOzV/LsjU/VjWhj
+	/GhSL99+10npPLvdikMehuq54E4qAVzi84RIpgVyYdTsT+7vpMIc1gOej9SshmFFRtq6+f4ot0OVg
+	MMBjsxKfjNVydBV+9G5a89m1DpT0gSXKhL6K8TWEzgEBzPkfo0BCRriTL+o6VGhKsAPJ5yrYjEh3T
+	IGtwSUtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttMry-0000000G1m4-3DT5;
-	Sat, 15 Mar 2025 08:27:46 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1ttN99-0000000G2ss-22u9;
+	Sat, 15 Mar 2025 08:45:31 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttMqH-0000000G1dj-2hGu;
-	Sat, 15 Mar 2025 08:26:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1742027161; x=1773563161;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=VkdKPwJSbXuVY/GWIxtpTxYdiXqy9fUXpxwA7ilNpuc=;
-  b=D4ZWLzniqBnvLwMex3E8iLG+DR5fMIfEWarzts4mIfJszhsvHzt6C+n4
-   JAftHmdfaRxzLNTJbfWJlU4Wbyztwuuw41CzHol3kBVkt7A/yhZMW8cU+
-   op9m3BDopVuwh8ZBPOzwcStql/c/4/53XJdgfsZ6EAQ40bqT8Ua1ebrIh
-   D4of0vMRupKCoOFi1GY+PaAl7KIzgYs0urW9pPgBkAes1xl9p+DCEGdwV
-   1o9zI8KGAWmM60VTiHPfBNjizmcpdUdYzZJdUeIv4JImlS29M/7Tw2/Y7
-   hZez0cHtxPjyHfky4TvA8xW+nbZh+gP3jeH94lVSry21VGgLV2wBSlBKG
-   w==;
-X-CSE-ConnectionGUID: MRkLZTLKSgmJW2tyCO2QjQ==
-X-CSE-MsgGUID: G/wEx4AuTjOrGFK7tXZP1Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11373"; a="43388360"
-X-IronPort-AV: E=Sophos;i="6.14,249,1736841600"; 
-   d="scan'208";a="43388360"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2025 01:25:54 -0700
-X-CSE-ConnectionGUID: UBbR/qeyT+uAlIeUlwwv7A==
-X-CSE-MsgGUID: uIYkhi5mSoij1+dwF9nXrw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,249,1736841600"; 
-   d="scan'208";a="125691055"
-Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
-  by fmviesa003.fm.intel.com with ESMTP; 15 Mar 2025 01:25:50 -0700
-Received: from kbuild by a4747d147074 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ttMq4-000B9v-1M;
-	Sat, 15 Mar 2025 08:25:48 +0000
-Date: Sat, 15 Mar 2025 16:24:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	Sebastian Fricke <sebastian.fricke@collabora.com>
-Subject: Re: [PATCH 4/5] media: vcodec: Implement manual request completion
-Message-ID: <202503151605.1d1dDLuM-lkp@intel.com>
-References: <20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b@collabora.com>
+	id 1ttN7T-0000000G2mt-2Vkk;
+	Sat, 15 Mar 2025 08:43:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742028224;
+	bh=EoAJEPQoa4R1YvqYxYTfIBN6xbWtnGFX7qOrXBtc0fg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=WcK9x1GInVZ5HZsrIEO/Q2MfZcCsWddRuTcoPD0m4s8PSRRmOt118NMT0Gy1oNDtQ
+	 WcLLmPFqQthrwCvdbQTzd1RN4n+DkEBpQ+NyT1DS1CB96lMYYPbzJJDSgeqonke6cb
+	 Cb8bcji5VkGeRjxItqohhb6X1SnCg+P+Gj4Uydzh/2WbFnCls/TX8rcsEoUUsAem94
+	 LFr6LtCpsTaDYWxKIx+/XjVcssGax+i3xVU2AD7BWihdhVUCXUkyvazw+kxK78vNpS
+	 kM7NLsWPhzhAHUceaEAJLFp7s5s/RMtI3dPOH9ZpL12nsPtBrDgr5kIxDOUur29jTT
+	 GEuACZ/2NHQyg==
+Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E416917E09AC;
+	Sat, 15 Mar 2025 09:43:43 +0100 (CET)
+Date: Sat, 15 Mar 2025 09:43:38 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
+ simona@ffwll.ch, kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com,
+ angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH v2 4/6] drm/panfrost: Add support for AARCH64_4K page
+ table format
+Message-ID: <20250315094338.5f402426@collabora.com>
+In-Reply-To: <20250314173858.212264-5-ariel.dalessandro@collabora.com>
+References: <20250314173858.212264-1-ariel.dalessandro@collabora.com>
+	<20250314173858.212264-5-ariel.dalessandro@collabora.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b@collabora.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250315_012601_692545_E7EEC003 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20250315_014347_973050_ECE74CDE 
+X-CRM114-Status: GOOD (  35.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,57 +80,324 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+On Fri, 14 Mar 2025 14:38:56 -0300
+Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
 
-kernel test robot noticed the following build warnings:
+> Currently, Panfrost only supports MMU configuration in "LEGACY" (as
+> Bifrost calls it) mode, a (modified) version of LPAE "Large Physical
+> Address Extension", which in Linux we've called "mali_lpae".
+> 
+> This commit adds support for conditionally enabling AARCH64_4K page
+> table format. To achieve that, a "GPU optional quirks" field was added
+> to `struct panfrost_features` with the related flag.
+> 
+> Note that, in order to enable AARCH64_4K mode, the GPU variant must have
+> the HW_FEATURE_AARCH64_MMU feature flag present.
+> 
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>  drivers/gpu/drm/panfrost/panfrost_device.h |  16 +++
+>  drivers/gpu/drm/panfrost/panfrost_mmu.c    | 136 +++++++++++++++++++--
+>  drivers/gpu/drm/panfrost/panfrost_regs.h   |  34 ++++++
+>  3 files changed, 177 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
+> index cffcb0ac7c111..ad95f2ed31d9a 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
+> @@ -42,6 +42,14 @@ enum panfrost_gpu_pm {
+>  	GPU_PM_VREG_OFF,
+>  };
+>  
+> +/**
+> + * enum panfrost_gpu_quirks - GPU optional quirks
+> + * @GPU_QUIRK_FORCE_AARCH64_PGTABLE: Use AARCH64_4K page table format
+> + */
+> +enum panfrost_gpu_quirks {
+> +	GPU_QUIRK_FORCE_AARCH64_PGTABLE,
+> +};
+> +
+>  struct panfrost_features {
+>  	u16 id;
+>  	u16 revision;
+> @@ -95,6 +103,9 @@ struct panfrost_compatible {
+>  
+>  	/* Allowed PM features */
+>  	u8 pm_features;
+> +
+> +	/* GPU configuration quirks */
+> +	u8 gpu_quirks;
+>  };
+>  
+>  struct panfrost_device {
+> @@ -162,6 +173,11 @@ struct panfrost_mmu {
+>  	int as;
+>  	atomic_t as_count;
+>  	struct list_head list;
+> +	struct {
+> +		u64 transtab;
+> +		u64 memattr;
+> +		u64 transcfg;
+> +	} cfg;
+>  };
+>  
+>  struct panfrost_engine_usage {
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> index 294f86b3c25e7..f24c23e1f67b8 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+> @@ -26,6 +26,48 @@
+>  #define mmu_write(dev, reg, data) writel(data, dev->iomem + reg)
+>  #define mmu_read(dev, reg) readl(dev->iomem + reg)
+>  
+> +static u64 mair_to_memattr(u64 mair, bool coherent)
+> +{
+> +	u64 memattr = 0;
+> +	u32 i;
+> +
+> +	for (i = 0; i < 8; i++) {
+> +		u8 in_attr = mair >> (8 * i), out_attr;
+> +		u8 outer = in_attr >> 4, inner = in_attr & 0xf;
+> +
+> +		/* For caching to be enabled, inner and outer caching policy
+> +		 * have to be both write-back, if one of them is write-through
+> +		 * or non-cacheable, we just choose non-cacheable. Device
+> +		 * memory is also translated to non-cacheable.
+> +		 */
+> +		if (!(outer & 3) || !(outer & 4) || !(inner & 4)) {
+> +			out_attr = AS_MEMATTR_AARCH64_INNER_OUTER_NC |
+> +				   AS_MEMATTR_AARCH64_SH_MIDGARD_INNER |
+> +				   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(false, false);
+> +		} else {
+> +			out_attr = AS_MEMATTR_AARCH64_INNER_OUTER_WB |
+> +				   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(inner & 1, inner & 2);
+> +			/* Use SH_MIDGARD_INNER mode when device isn't coherent,
+> +			 * so SH_IS, which is used when IOMMU_CACHE is set, maps
+> +			 * to Mali's internal-shareable mode. As per the Mali
+> +			 * Spec, inner and outer-shareable modes aren't allowed
+> +			 * for WB memory when coherency is disabled.
+> +			 * Use SH_CPU_INNER mode when coherency is enabled, so
+> +			 * that SH_IS actually maps to the standard definition of
+> +			 * inner-shareable.
+> +			 */
+> +			if (!coherent)
+> +				out_attr |= AS_MEMATTR_AARCH64_SH_MIDGARD_INNER;
+> +			else
+> +				out_attr |= AS_MEMATTR_AARCH64_SH_CPU_INNER;
+> +		}
+> +
+> +		memattr |= (u64)out_attr << (8 * i);
+> +	}
+> +
+> +	return memattr;
+> +}
+> +
+>  static int wait_ready(struct panfrost_device *pfdev, u32 as_nr)
+>  {
+>  	int ret;
+> @@ -124,9 +166,9 @@ static int mmu_hw_do_operation(struct panfrost_device *pfdev,
+>  static void panfrost_mmu_enable(struct panfrost_device *pfdev, struct panfrost_mmu *mmu)
+>  {
+>  	int as_nr = mmu->as;
+> -	struct io_pgtable_cfg *cfg = &mmu->pgtbl_cfg;
+> -	u64 transtab = cfg->arm_mali_lpae_cfg.transtab;
+> -	u64 memattr = cfg->arm_mali_lpae_cfg.memattr;
+> +	u64 transtab = mmu->cfg.transtab;
+> +	u64 memattr = mmu->cfg.memattr;
+> +	u64 transcfg = mmu->cfg.transcfg;
+>  
+>  	mmu_hw_do_operation_locked(pfdev, as_nr, 0, ~0ULL, AS_COMMAND_FLUSH_MEM);
+>  
+> @@ -139,6 +181,9 @@ static void panfrost_mmu_enable(struct panfrost_device *pfdev, struct panfrost_m
+>  	mmu_write(pfdev, AS_MEMATTR_LO(as_nr), lower_32_bits(memattr));
+>  	mmu_write(pfdev, AS_MEMATTR_HI(as_nr), upper_32_bits(memattr));
+>  
+> +	mmu_write(pfdev, AS_TRANSCFG_LO(as_nr), lower_32_bits(transcfg));
+> +	mmu_write(pfdev, AS_TRANSCFG_HI(as_nr), upper_32_bits(transcfg));
+> +
+>  	write_cmd(pfdev, as_nr, AS_COMMAND_UPDATE);
+>  }
+>  
+> @@ -152,9 +197,66 @@ static void panfrost_mmu_disable(struct panfrost_device *pfdev, u32 as_nr)
+>  	mmu_write(pfdev, AS_MEMATTR_LO(as_nr), 0);
+>  	mmu_write(pfdev, AS_MEMATTR_HI(as_nr), 0);
+>  
+> +	mmu_write(pfdev, AS_TRANSCFG_LO(as_nr), AS_TRANSCFG_ADRMODE_UNMAPPED);
+> +	mmu_write(pfdev, AS_TRANSCFG_HI(as_nr), 0);
+> +
+>  	write_cmd(pfdev, as_nr, AS_COMMAND_UPDATE);
+>  }
+>  
+> +static int mmu_cfg_init_mali_lpae(struct panfrost_mmu *mmu)
+> +{
+> +	struct io_pgtable_cfg *pgtbl_cfg = &mmu->pgtbl_cfg;
+> +
+> +	/* TODO: The following fields are duplicated between the MMU and Page
+> +	 * Table config structs. Ideally, should be kept in one place.
+> +	 */
+> +	mmu->cfg.transtab = pgtbl_cfg->arm_mali_lpae_cfg.transtab;
+> +	mmu->cfg.memattr = pgtbl_cfg->arm_mali_lpae_cfg.memattr;
+> +	mmu->cfg.transcfg = AS_TRANSCFG_ADRMODE_LEGACY;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mmu_cfg_init_aarch64_4k(struct panfrost_mmu *mmu)
+> +{
+> +	struct io_pgtable_cfg *pgtbl_cfg = &mmu->pgtbl_cfg;
+> +	struct panfrost_device *pfdev = mmu->pfdev;
+> +
+> +	if (drm_WARN_ON(pfdev->ddev, pgtbl_cfg->arm_lpae_s1_cfg.ttbr &
+> +				     ~AS_TRANSTAB_AARCH64_4K_ADDR_MASK))
+> +		return -EINVAL;
+> +
+> +	mmu->cfg.transtab = pgtbl_cfg->arm_lpae_s1_cfg.ttbr;
+> +
+> +	mmu->cfg.memattr = mair_to_memattr(pgtbl_cfg->arm_lpae_s1_cfg.mair,
+> +					   pgtbl_cfg->coherent_walk);
+> +
+> +	mmu->cfg.transcfg = AS_TRANSCFG_PTW_MEMATTR_WB |
+> +			    AS_TRANSCFG_PTW_RA |
+> +			    AS_TRANSCFG_ADRMODE_AARCH64_4K |
+> +			    AS_TRANSCFG_INA_BITS(55 - pgtbl_cfg->ias);
+> +	if (pgtbl_cfg->coherent_walk)
+> +		mmu->cfg.transcfg |= AS_TRANSCFG_PTW_SH_OS;
+> +
+> +	return 0;
+> +}
+> +
+> +static int panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
+> +				  enum io_pgtable_fmt fmt)
+> +{
+> +	struct panfrost_device *pfdev = mmu->pfdev;
+> +
+> +	switch (fmt) {
+> +	case ARM_64_LPAE_S1:
+> +		return mmu_cfg_init_aarch64_4k(mmu);
+> +	case ARM_MALI_LPAE:
+> +		return mmu_cfg_init_mali_lpae(mmu);
+> +	default:
+> +		/* This should never happen */
+> +		return drm_WARN_ON(pfdev->ddev, -EINVAL);
+> +	}
+> +}
+> +
+>  u32 panfrost_mmu_as_get(struct panfrost_device *pfdev, struct panfrost_mmu *mmu)
+>  {
+>  	int as;
+> @@ -618,6 +720,18 @@ struct panfrost_mmu *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
+>  	u32 va_bits = GPU_MMU_FEATURES_VA_BITS(pfdev->features.mmu_features);
+>  	u32 pa_bits = GPU_MMU_FEATURES_PA_BITS(pfdev->features.mmu_features);
+>  	struct panfrost_mmu *mmu;
+> +	enum io_pgtable_fmt fmt;
+> +
+> +	if (pfdev->comp->gpu_quirks & BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE)) {
+> +		if (!panfrost_has_hw_feature(pfdev, HW_FEATURE_AARCH64_MMU)) {
+> +			dev_err_once(pfdev->dev,
+> +				     "AARCH64_4K page table not supported\n");
+> +			return ERR_PTR(-EINVAL);
+> +		}
+> +		fmt = ARM_64_LPAE_S1;
+> +	} else {
+> +		fmt = ARM_MALI_LPAE;
+> +	}
+>  
+>  	mmu = kzalloc(sizeof(*mmu), GFP_KERNEL);
+>  	if (!mmu)
+> @@ -642,16 +756,20 @@ struct panfrost_mmu *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
+>  		.iommu_dev	= pfdev->dev,
+>  	};
+>  
+> -	mmu->pgtbl_ops = alloc_io_pgtable_ops(ARM_MALI_LPAE, &mmu->pgtbl_cfg,
+> -					      mmu);
+> -	if (!mmu->pgtbl_ops) {
+> -		kfree(mmu);
+> -		return ERR_PTR(-EINVAL);
+> -	}
+> +	mmu->pgtbl_ops = alloc_io_pgtable_ops(fmt, &mmu->pgtbl_cfg, mmu);
+> +	if (!mmu->pgtbl_ops)
+> +		goto err_free_mmu;
+> +
+> +	if (panfrost_mmu_cfg_init(mmu, fmt))
+> +		goto err_free_mmu;
 
-[auto build test WARNING on f2151613e040973c868d28c8b00885dfab69eb75]
+How about propagating the error returned by panfrost_mmu_cfg_init()
+instead of assuming it's always -EINVAL on failure? Oh, and you need to
+call free_io_pgtable_ops(), not just kfree().
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Fricke/media-mc-add-manual-request-completion/20250314-213005
-base:   f2151613e040973c868d28c8b00885dfab69eb75
-patch link:    https://lore.kernel.org/r/20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b%40collabora.com
-patch subject: [PATCH 4/5] media: vcodec: Implement manual request completion
-config: x86_64-buildonly-randconfig-003-20250315 (https://download.01.org/0day-ci/archive/20250315/202503151605.1d1dDLuM-lkp@intel.com/config)
-compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
-rustc: rustc 1.78.0 (9b00956e5 2024-04-29)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250315/202503151605.1d1dDLuM-lkp@intel.com/reproduce)
+With this addressed, this is
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503151605.1d1dDLuM-lkp@intel.com/
+Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
 
-All warnings (new ones prefixed by >>):
+>  
+>  	kref_init(&mmu->refcount);
+>  
+>  	return mmu;
+> +
+> +err_free_mmu:
+> +	kfree(mmu);
+> +	return ERR_PTR(-EINVAL);
+>  }
+>  
+>  static const char *access_type_name(struct panfrost_device *pfdev,
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_regs.h b/drivers/gpu/drm/panfrost/panfrost_regs.h
+> index b5f279a19a084..2b8f1617b8369 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_regs.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_regs.h
+> @@ -301,6 +301,17 @@
+>  #define AS_TRANSTAB_HI(as)		(MMU_AS(as) + 0x04) /* (RW) Translation Table Base Address for address space n, high word */
+>  #define AS_MEMATTR_LO(as)		(MMU_AS(as) + 0x08) /* (RW) Memory attributes for address space n, low word. */
+>  #define AS_MEMATTR_HI(as)		(MMU_AS(as) + 0x0C) /* (RW) Memory attributes for address space n, high word. */
+> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_IMPL		(2 << 2)
+> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(w, r)	((3 << 2) | \
+> +							 ((w) ? BIT(0) : 0) | \
+> +							 ((r) ? BIT(1) : 0))
+> +#define   AS_MEMATTR_AARCH64_SH_MIDGARD_INNER		(0 << 4)
+> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER		(1 << 4)
+> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER_SHADER_COH	(2 << 4)
+> +#define   AS_MEMATTR_AARCH64_SHARED			(0 << 6)
+> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_NC		(1 << 6)
+> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_WB		(2 << 6)
+> +#define   AS_MEMATTR_AARCH64_FAULT			(3 << 6)
+>  #define AS_LOCKADDR_LO(as)		(MMU_AS(as) + 0x10) /* (RW) Lock region address for address space n, low word */
+>  #define AS_LOCKADDR_HI(as)		(MMU_AS(as) + 0x14) /* (RW) Lock region address for address space n, high word */
+>  #define AS_COMMAND(as)			(MMU_AS(as) + 0x18) /* (WO) MMU command register for address space n */
+> @@ -311,6 +322,24 @@
+>  /* Additional Bifrost AS registers */
+>  #define AS_TRANSCFG_LO(as)		(MMU_AS(as) + 0x30) /* (RW) Translation table configuration for address space n, low word */
+>  #define AS_TRANSCFG_HI(as)		(MMU_AS(as) + 0x34) /* (RW) Translation table configuration for address space n, high word */
+> +#define   AS_TRANSCFG_ADRMODE_LEGACY			(0 << 0)
+> +#define   AS_TRANSCFG_ADRMODE_UNMAPPED			(1 << 0)
+> +#define   AS_TRANSCFG_ADRMODE_IDENTITY			(2 << 0)
+> +#define   AS_TRANSCFG_ADRMODE_AARCH64_4K		(6 << 0)
+> +#define   AS_TRANSCFG_ADRMODE_AARCH64_64K		(8 << 0)
+> +#define   AS_TRANSCFG_INA_BITS(x)			((x) << 6)
+> +#define   AS_TRANSCFG_OUTA_BITS(x)			((x) << 14)
+> +#define   AS_TRANSCFG_SL_CONCAT				BIT(22)
+> +#define   AS_TRANSCFG_PTW_MEMATTR_NC			(1 << 24)
+> +#define   AS_TRANSCFG_PTW_MEMATTR_WB			(2 << 24)
+> +#define   AS_TRANSCFG_PTW_SH_NS				(0 << 28)
+> +#define   AS_TRANSCFG_PTW_SH_OS				(2 << 28)
+> +#define   AS_TRANSCFG_PTW_SH_IS				(3 << 28)
+> +#define   AS_TRANSCFG_PTW_RA				BIT(30)
+> +#define   AS_TRANSCFG_DISABLE_HIER_AP			BIT(33)
+> +#define   AS_TRANSCFG_DISABLE_AF_FAULT			BIT(34)
+> +#define   AS_TRANSCFG_WXN				BIT(35)
+> +#define   AS_TRANSCFG_XREADABLE				BIT(36)
+>  #define AS_FAULTEXTRA_LO(as)		(MMU_AS(as) + 0x38) /* (RO) Secondary fault address for address space n, low word */
+>  #define AS_FAULTEXTRA_HI(as)		(MMU_AS(as) + 0x3C) /* (RO) Secondary fault address for address space n, high word */
+>  
+> @@ -326,6 +355,11 @@
+>  #define AS_TRANSTAB_LPAE_READ_INNER		BIT(2)
+>  #define AS_TRANSTAB_LPAE_SHARE_OUTER		BIT(4)
+>  
+> +/*
+> + * Begin AARCH64_4K MMU TRANSTAB register values
+> + */
+> +#define AS_TRANSTAB_AARCH64_4K_ADDR_MASK	0xfffffffffffffff0
+> +
+>  #define AS_STATUS_AS_ACTIVE			0x01
+>  
+>  #define AS_FAULTSTATUS_ACCESS_TYPE_MASK		(0x3 << 8)
 
->> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:29:13: warning: no previous prototype for function 'state_to_str' [-Wmissing-prototypes]
-      29 | const char *state_to_str(enum mtk_request_state state)
-         |             ^
-   drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:29:7: note: declare 'static' if the function is not intended to be used outside of this translation unit
-      29 | const char *state_to_str(enum mtk_request_state state)
-         |       ^
-         | static 
-   1 warning generated.
-
-
-vim +/state_to_str +29 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-
-    28	
-  > 29	const char *state_to_str(enum mtk_request_state state)
-    30	{
-    31		switch (state) {
-    32		case MTK_REQUEST_RECEIVED:
-    33			return "RECEIVED";
-    34		case MTK_REQUEST_LAT_DONE:
-    35			return "LAT_DONE";
-    36		case MTK_REQUEST_CORE_DONE:
-    37			return "CORE_DONE";
-    38		default:
-    39			return "UNKNOWN";
-    40		}
-    41	}
-    42	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
