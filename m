@@ -4,75 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD03C282EC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 02:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 412E2C28B28
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 08:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oVEwhJkMaE1c0ZR1x2qKeUmBI3T/Dv0dIlW9rft+UUI=; b=csiZG1hOfYwuRyJEuWckMBT9TZ
-	p65O3nd4qsPOEkdVw5AsZI432Ow1DL8Xfc/y6B+IiqKaWPylXW38cRhyQ8GQAHN8N+vuS7sUGVPZA
-	TlN5c5Qi0WVLfcg+gxsZIpD4bezG0zAwSq7o7ny/BGE0OnBklry0o8P/bdxi2YrUUrWGgCpe36iuL
-	6ZuhfrnrrAGfRqVPsbPXRfMQ8cTlzdFO1c4AfbZW2fD4VhK3yBzvaGAW9t2SdgccY9n2IpAFcxDu1
-	1zMoq9cp/P1ax844hTc3eRORCZt8JjofV0q22xSJbOrCps9StIqpatghPDixnwctbsFa0MMvMUe0S
-	Ors9piPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=glAtyP4dUnz0l0KiAvV4ANow7G2hB+arbAc9Pjp2TVs=; b=Gpt0iZUzjIzgl7eNkbYyXD8vYi
+	YL585eDvgVUoy2QXtEZxGk3gulw70+OmHSUj/caKZ/oAThkvZQX2eu5qWpF/16mjMQr7zFOAbC1dl
+	dfCTy/wObzGnpd9tu0/8MOjVp2dwtPbCYlfxpHxOxR/tmtcfOReZHDONhcHbsVI69cotzs3+po5Ll
+	flmplOj0iiyK+2Xm4ReKFpqhabUND6CkGeQ7u91mfL2EMavEL7xTkhNIMc9WRq3F2MI3DfHj6Vpj8
+	bGz1jsfC7EfVmDrHuTs/dwb/xuApcv8nakugzUzcfZS/BRKy9tI6wQAGyrfA9zMK7zo44wKPPfP9X
+	RSokEQgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttHFx-0000000FhSE-2BV1;
-	Sat, 15 Mar 2025 02:28:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ttMry-0000000G1m4-3DT5;
+	Sat, 15 Mar 2025 08:27:46 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttHFv-0000000FhRp-0nQA
-	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Mar 2025 02:28:08 +0000
-X-UUID: 1d64c382014511f083f2a1c9db70dae0-20250314
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oVEwhJkMaE1c0ZR1x2qKeUmBI3T/Dv0dIlW9rft+UUI=;
-	b=qtmfM4qshtKdsRRu9eZaqu4aoAEuKckhW6LuE4p1kRYkVF32ukRTuFGyUiVCBdo8O10FFDLnsvmSQFSn8mm7bm9Buy0xIFIlCbmOA2i6vF/rCc4ldzTmRAO7Q3pcTB7HN28qV6sXv/B5N1swkNDjT1d4NqD3T8pbnFn4MH30PVM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:37af2207-4e33-4466-91e9-dc800fb56ed4,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:5f0b214a-a527-43d8-8af6-bc8b32d9f5e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1d64c382014511f083f2a1c9db70dae0-20250314
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <hao.qin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 525673167; Fri, 14 Mar 2025 19:28:00 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Sat, 15 Mar 2025 10:27:58 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.28 via Frontend Transport; Sat, 15 Mar 2025 10:27:57 +0800
-From: Hao Qin <hao.qin@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, "Steve
- Lee" <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Hao Qin <hao.qin@mediatek.com>
-Subject: [PATCH] Bluetooth: btmtk: Remove the resetting step before downloading the fw
-Date: Sat, 15 Mar 2025 10:27:30 +0800
-Message-ID: <20250315022730.11071-1-hao.qin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ttMqH-0000000G1dj-2hGu;
+	Sat, 15 Mar 2025 08:26:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1742027161; x=1773563161;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=VkdKPwJSbXuVY/GWIxtpTxYdiXqy9fUXpxwA7ilNpuc=;
+  b=D4ZWLzniqBnvLwMex3E8iLG+DR5fMIfEWarzts4mIfJszhsvHzt6C+n4
+   JAftHmdfaRxzLNTJbfWJlU4Wbyztwuuw41CzHol3kBVkt7A/yhZMW8cU+
+   op9m3BDopVuwh8ZBPOzwcStql/c/4/53XJdgfsZ6EAQ40bqT8Ua1ebrIh
+   D4of0vMRupKCoOFi1GY+PaAl7KIzgYs0urW9pPgBkAes1xl9p+DCEGdwV
+   1o9zI8KGAWmM60VTiHPfBNjizmcpdUdYzZJdUeIv4JImlS29M/7Tw2/Y7
+   hZez0cHtxPjyHfky4TvA8xW+nbZh+gP3jeH94lVSry21VGgLV2wBSlBKG
+   w==;
+X-CSE-ConnectionGUID: MRkLZTLKSgmJW2tyCO2QjQ==
+X-CSE-MsgGUID: G/wEx4AuTjOrGFK7tXZP1Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11373"; a="43388360"
+X-IronPort-AV: E=Sophos;i="6.14,249,1736841600"; 
+   d="scan'208";a="43388360"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2025 01:25:54 -0700
+X-CSE-ConnectionGUID: UBbR/qeyT+uAlIeUlwwv7A==
+X-CSE-MsgGUID: uIYkhi5mSoij1+dwF9nXrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,249,1736841600"; 
+   d="scan'208";a="125691055"
+Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
+  by fmviesa003.fm.intel.com with ESMTP; 15 Mar 2025 01:25:50 -0700
+Received: from kbuild by a4747d147074 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ttMq4-000B9v-1M;
+	Sat, 15 Mar 2025 08:25:48 +0000
+Date: Sat, 15 Mar 2025 16:24:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	Sebastian Fricke <sebastian.fricke@collabora.com>
+Subject: Re: [PATCH 4/5] media: vcodec: Implement manual request completion
+Message-ID: <202503151605.1d1dDLuM-lkp@intel.com>
+References: <20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_192807_232667_657C907E 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250315_012601_692545_E7EEC003 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,47 +98,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the resetting step before downloading the fw, as it may cause
-other usb devices to fail to initialise when connected during boot
-on kernels 6.11 and newer.
+Hi Sebastian,
 
-Signed-off-by: Hao Qin <hao.qin@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 10 ----------
- 1 file changed, 10 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 68846c5bd4f7..4390fd571dbd 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1330,13 +1330,6 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		break;
- 	case 0x7922:
- 	case 0x7925:
--		/* Reset the device to ensure it's in the initial state before
--		 * downloading the firmware to ensure.
--		 */
--
--		if (!test_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags))
--			btmtk_usb_subsys_reset(hdev, dev_id);
--		fallthrough;
- 	case 0x7961:
- 		btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), dev_id,
- 				      fw_version, fw_flavor);
-@@ -1345,12 +1338,9 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 						btmtk_usb_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
--			clear_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags);
- 			return err;
- 		}
- 
--		set_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags);
--
- 		/* It's Device EndPoint Reset Option Register */
- 		err = btmtk_usb_uhw_reg_write(hdev, MTK_EP_RST_OPT,
- 					      MTK_EP_RST_IN_OUT_OPT);
+[auto build test WARNING on f2151613e040973c868d28c8b00885dfab69eb75]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Fricke/media-mc-add-manual-request-completion/20250314-213005
+base:   f2151613e040973c868d28c8b00885dfab69eb75
+patch link:    https://lore.kernel.org/r/20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-4-5e277a3d695b%40collabora.com
+patch subject: [PATCH 4/5] media: vcodec: Implement manual request completion
+config: x86_64-buildonly-randconfig-003-20250315 (https://download.01.org/0day-ci/archive/20250315/202503151605.1d1dDLuM-lkp@intel.com/config)
+compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
+rustc: rustc 1.78.0 (9b00956e5 2024-04-29)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250315/202503151605.1d1dDLuM-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503151605.1d1dDLuM-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:29:13: warning: no previous prototype for function 'state_to_str' [-Wmissing-prototypes]
+      29 | const char *state_to_str(enum mtk_request_state state)
+         |             ^
+   drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:29:7: note: declare 'static' if the function is not intended to be used outside of this translation unit
+      29 | const char *state_to_str(enum mtk_request_state state)
+         |       ^
+         | static 
+   1 warning generated.
+
+
+vim +/state_to_str +29 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+
+    28	
+  > 29	const char *state_to_str(enum mtk_request_state state)
+    30	{
+    31		switch (state) {
+    32		case MTK_REQUEST_RECEIVED:
+    33			return "RECEIVED";
+    34		case MTK_REQUEST_LAT_DONE:
+    35			return "LAT_DONE";
+    36		case MTK_REQUEST_CORE_DONE:
+    37			return "CORE_DONE";
+    38		default:
+    39			return "UNKNOWN";
+    40		}
+    41	}
+    42	
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
