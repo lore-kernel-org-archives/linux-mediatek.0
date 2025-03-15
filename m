@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E13CAC28B28
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 12:06:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7BEAC28B28
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Mar 2025 12:52:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xJXr6WgMx8n3fKTnlnR1Gv5ViijHn8UWDqEVLGt99ZQ=; b=2vvHUD6kzJNaiCvz3YbRTo+ShT
-	5PC6yDTx6yJJdC5lC3Cvfm76XA0zcYpQsKUUjJqrmyIZt67BHSRBY47WMCgvgtZIJVhxCPKGRexwG
-	ZOnwl6dk2TBPMhTAen0MKbvxILC50KXAVh/RST+05V0fCx8E3eDPwW0KQk+q66jsOQLIs81xMVSYN
-	ph8yn7CBwcHTfj1Wk3uWzBotfgHYyaRC4gzHa8LJ5wSE6sqZa8DQ8JXA2dpXwTs3KXH3MK7u3IIoe
-	V+1deYHGefEP+e8YHJ92Gt4S/J3ipoPWxaoId+vlffvtyO1FDYxLsBmJpg6hn9JRYAqHk35LoS5Xa
-	inUNV+OA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nMNjB2ks2cEnHnU3jh3pgdZDDJBu5nBHeTMEX28SppE=; b=OCj8l85Musj7tZ4SzO1qvOhWuS
+	MWnCz1AxfLQl7/Ex3o3bAZQcixvl+nHVxWP7dCK/YzeMaOlCuPTmf+GRJTewQeC9TgQsBigCA4Rb0
+	4pFR97gaBU2AlQI2PEmTL5mSd4W+AJICa8LSbJ0kwrdPHtcW3Hr4GjdiI1MDKHc04uBdS+rCkVSxd
+	c9xDHg+pe1ru4h521NOIHRgWqdRpayUjLwXY1JAtwVTSgp5bulrrE232KjcC1iA42iL6ujjex0YBn
+	9BNNooHNuK67FRpcaUJafVIdCOxlnE97Nagkxh247AB9/lo3il7WnKPezUL/0DvPcNu76Mzjnhy0p
+	CQssP81w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttQHa-0000000GIxq-2O6q;
-	Sat, 15 Mar 2025 12:06:26 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ttR08-0000000GMOc-2rqO;
+	Sat, 15 Mar 2025 12:52:28 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttQFs-0000000GIiT-2Z8x;
-	Sat, 15 Mar 2025 12:04:42 +0000
+	id 1ttQyS-0000000GMIY-0SuH;
+	Sat, 15 Mar 2025 12:50:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0F4275C2DAE;
-	Sat, 15 Mar 2025 12:02:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBD87C4CEE5;
-	Sat, 15 Mar 2025 12:04:38 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id CFC33A48A46;
+	Sat, 15 Mar 2025 12:45:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4547C4CEE5;
+	Sat, 15 Mar 2025 12:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742040279;
-	bh=Q6YX4RfHkj91q3Dip9aHj/as/+GLl3Xew2ywTJYh+2A=;
-	h=From:Date:Subject:To:Cc:From;
-	b=U39fyKuekTfBHLvZY24aOSCyeQBGiZlnNB0yhKBqhK/PZg1FwzzK3/gOIK7k6EEXM
-	 jiHLpxXlNiBkdp4cPKN/UuWx5BlDzPDym9AYNtarwk+Xs4lfpQyQqBXYrfIVC0a+Bs
-	 7wdNYsivLfpX6re+1ENOgIfPa1EkIiBEQvErmQ+segZ7d9cgn4Pu/l7yVea4YvgIjt
-	 /d5ye/imNkEakUsvVdSwSxJjI4yE8PAGAC5jtvCz7tdl/CfwQI4PUWp3jaUhOrxd8a
-	 n5lnldPbDq7ktVT3yIsxaPQngVPdgupypDUkh1H0UNwKecoqpTcKFkEtrTT/5s0JJx
-	 3ypYJbDdoDJtg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 15 Mar 2025 13:04:20 +0100
-Subject: [PATCH net-next v2] net: airoha: Validate egress gdm port in
- airoha_ppe_foe_entry_prepare()
+	s=k20201202; t=1742043042;
+	bh=EOB596Kg39pWo9it64zOXJBRApV/K8/djVobuAhtFJ0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lps6mPH4T3p+8I7CrgfSf3S/rDk6jMZuIjsDXVjl8fGKQc2ArrRZmFrsS68GBUEaS
+	 yd1CvnBa1dqZF4eaBXDglKWZ+WGTYTVNId18L1ujMqtl1dRkPNG+LWGv8V08PV98p9
+	 lhWML1RL2g/uQ9jF5CMB8KPmezO2Z/9JdcPn3cfobzYCoopiByHKxePJHxsRd7KQZP
+	 rY2LnOF8UTtY6xpFtBHhm1bsLLyFp0CxMDA7nou+qUAwQyMjlhB5PdkOGuUR5iz7zi
+	 rlwIx2WuJBNUwe/D9+LkGX3WEjum4oAWhLvY71IeeTqg4+rk73LqVjtIfVjISTZa+Z
+	 lnrS1zAj6x/zg==
+Date: Sat, 15 Mar 2025 12:50:28 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: "Lu.Tang" <Lu.Tang@mediatek.com>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee
+ Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean
+ Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Stephen
+ Boyd <sboyd@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>, Sen Chu
+ <shen.chu@mediatek.com>, <linux-iio@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-input@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH 1/5] pmic: mediatek: Add pmic auxadc driver
+Message-ID: <20250315125028.038fc488@jic23-huawei>
+In-Reply-To: <20250314073307.25092-2-Lu.Tang@mediatek.com>
+References: <20250314073307.25092-1-Lu.Tang@mediatek.com>
+	<20250314073307.25092-2-Lu.Tang@mediatek.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250315-airoha-flowtable-null-ptr-fix-v2-1-94b923d30234@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAMRs1WcC/42NQQ6CMBAAv0L27BpaoCGe/IfhsMgCjU1Ltoga0
- r9beYHHmcPMDpHFcoRLsYPwZqMNPoM+FXCfyU+MdsgMutRNWSmNZCXMhKMLr5V6x+ifzuGyCo7
- 2jVSbxgxKN7UhyI1FOOujf+syzzauQT7HblM/+295U6jQVKYaqW/beiivDxbP7hxkgi6l9AW/J
- 0jlywAAAA==
-X-Change-ID: 20250312-airoha-flowtable-null-ptr-fix-a4656d12546a
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250315_050440_784555_C47F8316 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20250315_055044_319141_8918D04E 
+X-CRM114-Status: GOOD (  48.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,153 +83,760 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The system occasionally crashes dereferencing a NULL pointer when it is
-forwarding constant, high load bidirectional traffic.
+On Fri, 14 Mar 2025 15:32:27 +0800
+Lu.Tang <Lu.Tang@mediatek.com> wrote:
 
-[ 2149.913414] Unable to handle kernel read from unreadable memory at virtual address 0000000000000000
-[ 2149.925812] Mem abort info:
-[ 2149.928713]   ESR = 0x0000000096000005
-[ 2149.932762]   EC = 0x25: DABT (current EL), IL = 32 bits
-[ 2149.938429]   SET = 0, FnV = 0
-[ 2149.941814]   EA = 0, S1PTW = 0
-[ 2149.945187]   FSC = 0x05: level 1 translation fault
-[ 2149.950348] Data abort info:
-[ 2149.953472]   ISV = 0, ISS = 0x00000005, ISS2 = 0x00000000
-[ 2149.959243]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-[ 2149.964593]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-[ 2149.970243] user pgtable: 4k pages, 39-bit VAs, pgdp=000000008b507000
-[ 2149.977068] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000, pud=0000000000000000
-[ 2149.986062] Internal error: Oops: 0000000096000005 [#1] SMP
-[ 2150.082282]  arht_wrapper(O) i2c_core arht_hook(O) crc32_generic
-[ 2150.177623] CPU: 0 PID: 38 Comm: kworker/u9:1 Tainted: G           O       6.6.73 #0
-[ 2150.185362] Hardware name: Airoha AN7581 Evaluation Board (DT)
-[ 2150.191189] Workqueue: nf_ft_offload_add nf_flow_rule_route_ipv6 [nf_flow_table]
-[ 2150.198653] pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[ 2150.205615] pc : airoha_ppe_flow_offload_replace.isra.0+0x6dc/0xc54
-[ 2150.211882] lr : airoha_ppe_flow_offload_replace.isra.0+0x6cc/0xc54
-[ 2150.218149] sp : ffffffc080e8ba10
-[ 2150.221456] x29: ffffffc080e8bae0 x28: ffffff80080b0000 x27: 0000000000000000
-[ 2150.228591] x26: ffffff8001c70020 x25: 0000000000000002 x24: 0000000000000000
-[ 2150.235727] x23: 0000000061000000 x22: 00000000ffffffed x21: ffffffc080e8bbb0
-[ 2150.242862] x20: ffffff8001c70000 x19: 0000000000000008 x18: 0000000000000000
-[ 2150.249998] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
-[ 2150.257133] x14: 0000000000000001 x13: 0000000000000008 x12: 0101010101010101
-[ 2150.264268] x11: 7f7f7f7f7f7f7f7f x10: 0000000000000041 x9 : 0000000000000000
-[ 2150.271404] x8 : ffffffc080e8bad8 x7 : 0000000000000000 x6 : 0000000000000015
-[ 2150.278540] x5 : ffffffc080e8ba4e x4 : 0000000000000004 x3 : 0000000000000000
-[ 2150.285675] x2 : 0000000000000008 x1 : 00000000080b0000 x0 : 0000000000000000
-[ 2150.292811] Call trace:
-[ 2150.295250]  airoha_ppe_flow_offload_replace.isra.0+0x6dc/0xc54
-[ 2150.301171]  airoha_ppe_setup_tc_block_cb+0x7c/0x8b4
-[ 2150.306135]  nf_flow_offload_ip_hook+0x710/0x874 [nf_flow_table]
-[ 2150.312168]  nf_flow_rule_route_ipv6+0x53c/0x580 [nf_flow_table]
-[ 2150.318200]  process_one_work+0x178/0x2f0
-[ 2150.322211]  worker_thread+0x2e4/0x4cc
-[ 2150.325953]  kthread+0xd8/0xdc
-[ 2150.329008]  ret_from_fork+0x10/0x20
-[ 2150.332589] Code: b9007bf7 b4001e9c f9448380 b9491381 (f9400000)
-[ 2150.338681] ---[ end trace 0000000000000000 ]---
-[ 2150.343298] Kernel panic - not syncing: Oops: Fatal exception
-[ 2150.349035] SMP: stopping secondary CPUs
-[ 2150.352954] Kernel Offset: disabled
-[ 2150.356438] CPU features: 0x0,00000000,00000000,1000400b
-[ 2150.361743] Memory Limit: none
+> From: "Lu.Tang" <lu.tang@mediatek.com>
+> 
+> Add pmic mt6363 and mt6373 auxadc driver
 
-Fix the issue validating egress gdm port in airoha_ppe_foe_entry_prepare
-routine.
+On assumption that there is good reason to not combine this with existing
+driver I'll give it a quick review.  Definitely confirm why this can't
+be combined with existing driver though before looking at this.
 
-Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Avoid checking netdev_priv pointer since it is always not NULL
-- Link to v1: https://lore.kernel.org/r/20250312-airoha-flowtable-null-ptr-fix-v1-1-6363fab884d0@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 13 +++++++++++++
- drivers/net/ethernet/airoha/airoha_eth.h |  3 +++
- drivers/net/ethernet/airoha/airoha_ppe.c | 10 ++++++++--
- 3 files changed, 24 insertions(+), 2 deletions(-)
+Jonathan
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c0a642568ac115ea9df6fbaf7133627a4405a36c..bf9c882e9c8b087dbf5e907636547a0117d1b96a 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2454,6 +2454,19 @@ static void airoha_metadata_dst_free(struct airoha_gdm_port *port)
- 	}
- }
- 
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		if (eth->ports[i] == port)
-+			return 0;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 				 struct device_node *np, int index)
- {
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index f66b9b736b9447b31afc036eb906d0a1c617e132..c7d4f124d11481cd31c1566936cd47e3446877c0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -532,6 +532,9 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- #define airoha_qdma_clear(qdma, offset, val)			\
- 	airoha_rmw((qdma)->regs, (offset), (val), 0)
- 
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port);
-+
- void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
- int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 8b55e871352d359fa692c253d3f3315c619472b3..65833e2058194a64569eafec08b80df8190bba6c 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -197,7 +197,8 @@ static int airoha_get_dsa_port(struct net_device **dev)
- #endif
- }
- 
--static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
-+static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
-+					struct airoha_foe_entry *hwe,
- 					struct net_device *dev, int type,
- 					struct airoha_flow_data *data,
- 					int l4proto)
-@@ -224,6 +225,11 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
- 	if (dev) {
- 		struct airoha_gdm_port *port = netdev_priv(dev);
- 		u8 pse_port;
-+		int err;
-+
-+		err = airoha_is_valid_gdm_port(eth, port);
-+		if (err)
-+			return err;
- 
- 		if (dsa_port >= 0)
- 			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-@@ -633,7 +639,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
- 	    !is_valid_ether_addr(data.eth.h_dest))
- 		return -EINVAL;
- 
--	err = airoha_ppe_foe_entry_prepare(&hwe, odev, offload_type,
-+	err = airoha_ppe_foe_entry_prepare(eth, &hwe, odev, offload_type,
- 					   &data, l4proto);
- 	if (err)
- 		return err;
 
----
-base-commit: bfc6c67ec2d64d0ca4e5cc3e1ac84298a10b8d62
-change-id: 20250312-airoha-flowtable-null-ptr-fix-a4656d12546a
+> 
+> Signed-off-by: Lu Tang <lu.tang@mediatek.com>
+> ---
+>  drivers/iio/adc/Kconfig             |  10 +
+>  drivers/iio/adc/Makefile            |   1 +
+>  drivers/iio/adc/mtk-spmi-pmic-adc.c | 576 ++++++++++++++++++++++++++++
+>  3 files changed, 587 insertions(+)
+>  create mode 100644 drivers/iio/adc/mtk-spmi-pmic-adc.c
+> 
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index 27413516216c..7c4b5f8f7209 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -1039,6 +1039,16 @@ config MEDIATEK_MT6577_AUXADC
+>  	  This driver can also be built as a module. If so, the module will be
+>  	  called mt6577_auxadc.
+>  
+> +config MEDIATEK_SPMI_PMIC_ADC
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Clearly a history of non compatible mediatek parts so it is probably better
+to just name this after one of the supported parts than it is to use
+a generic name.
+
+> +	tristate "MediaTek SPMI PMIC ADC Support"
+> +	depends on MFD_MTK_SPMI_PMIC
+> +	help
+> +	  Say yes here to enable support for MediaTek SPMI PMIC ADC.
+> +	  The driver supports multiple channels read.
+> +
+> +	  This driver can also be built as a module. If so, the module will be
+> +	  called mtk-spmi-pmic-adc.
+> +
+
+> diff --git a/drivers/iio/adc/mtk-spmi-pmic-adc.c b/drivers/iio/adc/mtk-spmi-pmic-adc.c
+> new file mode 100644
+> index 000000000000..61e062bc8cf5
+> --- /dev/null
+> +++ b/drivers/iio/adc/mtk-spmi-pmic-adc.c
+> @@ -0,0 +1,576 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2024 MediaTek Inc.
+
+Update?
+
+> + */
+> +
+> +#include <linux/completion.h>
+> +#include <linux/delay.h>
+> +#include <linux/err.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/mt6363/registers.h>
+> +#include <linux/mfd/mt6373/registers.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+These shouldn't be used.
+> +#include <linux/property.h>
+only this should be so the of includes should be dropped.
+> +#include <linux/platform_device.h>
+> +#include <linux/power_supply.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/syscore_ops.h>
+> +
+> +#include <dt-bindings/iio/mt635x-auxadc.h>
+
+
+> +
+> +#define AUXADC_RDY_BIT			BIT(15)
+> +
+> +#define AUXADC_DEF_R_RATIO		1
+> +#define AUXADC_DEF_AVG_NUM		32
+> +
+> +#define AUXADC_AVG_TIME_US		10
+> +#define AUXADC_POLL_DELAY_US		100
+> +#define AUXADC_TIMEOUT_US		32000
+These aren't really magic values so the only benefit in a define
+would be to put a comment giving a spec reference next to them.
+If not consider just putting the values inline.
+
+> +#define VOLT_FULL			1840
+
+Prefix all defines with something related to the driver.
+MT8195_AUXADC_xx
+That avoid potential aliasing that can occur with generic names.
+
+> +
+> +#define IMP_VOLT_FULL			18400
+> +#define IMIX_R_MIN_MOHM			100
+> +#define IMIX_R_CALI_CNT			2
+> +
+> +#define EXT_THR_PURES_SHIFT		3
+> +#define EXT_THR_SEL_MASK		0x1F
+> +
+> +#define DT_CHANNEL_CONVERT(val)		((val) & 0xFF)
+> +#define DT_PURES_CONVERT(val)		(((val) & 0xFF00) >> 8)
+> +
+> +struct pmic_adc_device {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	struct mutex lock;
+All locks must have comment describing the scope of data they protect.
+> +	struct iio_chan_spec *iio_chans;
+
+Looks like some of these only exist to avoid passing more variables
+into the dt parsing function.  Make them local to the caller of that
+and pass them in.  We should not have them in here.
+
+> +	unsigned int nchannels;
+> +	const struct auxadc_info *info;
+> +	struct regulator *isink_load;
+> +	int imix_r;
+> +	int imp_curr;
+> +	int pre_uisoc;
+> +};
+> +
+> +static struct pmic_adc_device *imix_r_dev;
+> +
+> +/*
+
+Make this correct kernel-doc. It nearly is already!
+
+> + * @ch_name:	HW channel name
+> + * @res:	ADC resolution
+> + * @r_ratio:	resistance ratio, represented by r_ratio[0] / r_ratio[1]
+> + * @avg_num:	sampling times of AUXADC measurements then average it
+> + * @regs:	request and data output registers for this channel
+> + */
+> +struct auxadc_channels {
+> +	enum iio_chan_type type;
+
+Random things aren't documented. Document all structure elements.
+
+> +	long info_mask;
+> +	/* AUXADC channel attribute */
+> +	const char *ch_name;
+> +	unsigned char res;
+> +	unsigned char r_ratio[2];
+> +	unsigned short avg_num;
+> +	const struct auxadc_regs *regs;
+> +};
+> +
+> +#define AUXADC_CHANNEL(_ch_name, _res)	\
+> +	[AUXADC_##_ch_name] = {				\
+> +		.type = IIO_VOLTAGE,			\
+> +		.info_mask = BIT(IIO_CHAN_INFO_RAW) |		\
+> +			     BIT(IIO_CHAN_INFO_PROCESSED),	\
+
+We almost never allow both raw and processed. There are a few exceptions
+to that rule though. Why does it make sense here?
+
+> +		.ch_name = __stringify(_ch_name),	\
+> +		.res = _res,				\
+> +	}
+> +
+> +/*
+> + * The array represents all possible AUXADC channels found
+> + * in the supported PMICs.
+> + */
+> +static struct auxadc_channels auxadc_chans[] = {
+> +	AUXADC_CHANNEL(BATADC, 15),
+> +	AUXADC_CHANNEL(VCDT, 12),
+> +	AUXADC_CHANNEL(BAT_TEMP, 12),
+> +	AUXADC_CHANNEL(CHIP_TEMP, 12),
+> +	AUXADC_CHANNEL(VCORE_TEMP, 12),
+> +	AUXADC_CHANNEL(VPROC_TEMP, 12),
+> +	AUXADC_CHANNEL(VGPU_TEMP, 12),
+> +	AUXADC_CHANNEL(ACCDET, 12),
+> +	AUXADC_CHANNEL(HPOFS_CAL, 15),
+> +	AUXADC_CHANNEL(VTREF, 12),
+> +	AUXADC_CHANNEL(VBIF, 12),
+> +	AUXADC_CHANNEL(IMP, 15),
+> +	[AUXADC_IMIX_R] = {
+> +		.type = IIO_RESISTANCE,
+> +		.info_mask = BIT(IIO_CHAN_INFO_RAW),
+> +		.ch_name = "IMIX_R",
+> +	},
+> +	AUXADC_CHANNEL(VSYSSNS, 15),
+> +	AUXADC_CHANNEL(VIN1, 15),
+> +	AUXADC_CHANNEL(VIN2, 15),
+> +	AUXADC_CHANNEL(VIN3, 15),
+> +	AUXADC_CHANNEL(VIN4, 15),
+> +	AUXADC_CHANNEL(VIN5, 15),
+> +	AUXADC_CHANNEL(VIN6, 15),
+> +	AUXADC_CHANNEL(VIN7, 15),
+> +};
+> +
+> +struct auxadc_regs {
+> +	unsigned int enable_reg;
+> +	unsigned int enable_mask;
+> +	unsigned int ready_reg;
+> +	unsigned int ready_mask;
+> +	unsigned int value_reg;
+> +	unsigned int ext_thr_sel;
+> +	u8 src_sel;
+> +};
+> +
+> +#define AUXADC_REG(_ch_name, _chip, _enable_reg, _enable_mask, _value_reg) \
+> +	[AUXADC_##_ch_name] = {				\
+> +		.enable_reg = _chip##_##_enable_reg,	\
+> +		.enable_mask = _enable_mask,		\
+> +		.ready_reg = _chip##_##_value_reg,	\
+> +		.ready_mask = AUXADC_RDY_BIT,		\
+> +		.value_reg = _chip##_##_value_reg,	\
+> +	}						\
+Should be no \ on last line.
+
+> +
+> +#define TIA_ADC_REG(_src_sel, _chip)	\
+> +	[AUXADC_VIN##_src_sel] = {			\
+> +		.enable_reg = _chip##_AUXADC_RQST1,	\
+> +		.enable_mask = BIT(4),			\
+> +		.ready_reg = _chip##_AUXADC_ADC_CH12_L,	\
+> +		.ready_mask = AUXADC_RDY_BIT,		\
+> +		.value_reg = _chip##_AUXADC_ADC_CH12_L,	\
+> +		.ext_thr_sel = _chip##_SDMADC_CON0,	\
+> +		.src_sel = _src_sel,			\
+> +	}						\
+same here.
+
+> +
+> +static const struct auxadc_regs mt6363_auxadc_regs_tbl[] = {
+> +	AUXADC_REG(BATADC, MT6363, AUXADC_RQST0, BIT(0), AUXADC_ADC0_L),
+> +	AUXADC_REG(BAT_TEMP, MT6363, AUXADC_RQST0, BIT(3), AUXADC_ADC3_L),
+> +	AUXADC_REG(CHIP_TEMP, MT6363, AUXADC_RQST0, BIT(4), AUXADC_ADC4_L),
+> +	AUXADC_REG(VCORE_TEMP, MT6363, AUXADC_RQST3, BIT(0), AUXADC_ADC38_L),
+> +	AUXADC_REG(VPROC_TEMP, MT6363, AUXADC_RQST3, BIT(1), AUXADC_ADC39_L),
+> +	AUXADC_REG(VGPU_TEMP, MT6363, AUXADC_RQST3, BIT(2), AUXADC_ADC40_L),
+> +	AUXADC_REG(VTREF, MT6363, AUXADC_RQST1, BIT(3), AUXADC_ADC11_L),
+> +	[AUXADC_IMP] = {
+> +		.enable_reg = MT6363_AUXADC_IMP0,
+> +		.enable_mask = BIT(0),
+> +		.ready_reg = MT6363_AUXADC_IMP1,
+> +		.ready_mask = BIT(7),
+> +		.value_reg = MT6363_AUXADC_ADC42_L,
+> +	},
+> +	AUXADC_REG(VSYSSNS, MT6363, AUXADC_RQST1, BIT(6), AUXADC_ADC_CH14_L),
+> +	TIA_ADC_REG(1, MT6363),
+> +	TIA_ADC_REG(2, MT6363),
+> +	TIA_ADC_REG(3, MT6363),
+> +	TIA_ADC_REG(4, MT6363),
+> +	TIA_ADC_REG(5, MT6363),
+> +	TIA_ADC_REG(6, MT6363),
+> +	TIA_ADC_REG(7, MT6363),
+> +};
+> +
+> +static const struct auxadc_regs mt6373_auxadc_regs_tbl[] = {
+> +	AUXADC_REG(CHIP_TEMP, MT6373, AUXADC_RQST0, BIT(4), AUXADC_ADC4_L),
+> +	AUXADC_REG(VCORE_TEMP, MT6373, AUXADC_RQST3, BIT(0), AUXADC_ADC38_L),
+> +	AUXADC_REG(VPROC_TEMP, MT6373, AUXADC_RQST3, BIT(1), AUXADC_ADC39_L),
+> +	AUXADC_REG(VGPU_TEMP, MT6373, AUXADC_RQST3, BIT(2), AUXADC_ADC40_L),
+> +	TIA_ADC_REG(1, MT6373),
+> +	TIA_ADC_REG(2, MT6373),
+> +	TIA_ADC_REG(3, MT6373),
+> +	TIA_ADC_REG(4, MT6373),
+> +	TIA_ADC_REG(5, MT6373),
+> +};
+> +
+> +struct auxadc_info {
+> +	const struct auxadc_regs *regs_tbl;
+> +};
+> +
+> +static const struct auxadc_info mt6363_info = {
+> +	.regs_tbl = mt6363_auxadc_regs_tbl,
+> +};
+> +
+> +static const struct auxadc_info mt6373_info = {
+> +	.regs_tbl = mt6373_auxadc_regs_tbl,
+> +};
+> +
+> +#define regmap_bulk_read_poll_timeout(map, addr, val, val_count, cond, sleep_us, timeout_us) \
+
+This looks generic so shouldn't be in a driver.  Either propose it
+for the regmap core, or give it a non generic driver specific name.
+
+> +({ \
+> +	u64 __timeout_us = (timeout_us); \
+> +	unsigned long __sleep_us = (sleep_us); \
+> +	ktime_t __timeout = ktime_add_us(ktime_get(), __timeout_us); \
+> +	int __ret; \
+> +	might_sleep_if(__sleep_us); \
+> +	for (;;) { \
+> +		__ret = regmap_bulk_read((map), (addr), (u8 *) &(val), val_count); \
+> +		if (__ret) \
+> +			break; \
+> +		if (cond) \
+> +			break; \
+> +		if ((__timeout_us) && \
+> +		    ktime_compare(ktime_get(), __timeout) > 0) { \
+> +			__ret = regmap_bulk_read((map), (addr), (u8 *) &(val), val_count); \
+> +			break; \
+> +		} \
+> +		if (__sleep_us) \
+> +			usleep_range((__sleep_us >> 2) + 1, __sleep_us); \
+> +	} \
+> +	__ret ?: ((cond) ? 0 : -ETIMEDOUT); \
+> +})
+> +
+> +/*
+For this sort of text make it all kernel-doc style and run the script
+on the file to make sure no warnings / errors.
+
+> + * @adc_dev:	 pointer to the struct pmic_adc_device
+> + * @auxadc_chan: pointer to the struct auxadc_channels, it represents specific
+> +		 auxadc channel
+> + * @val:	 pointer to output value
+> + */
+> +static int get_auxadc_out(struct pmic_adc_device *adc_dev,
+> +			  int channel, int channel2, int *val)
+
+For example these parameters are different from the docs and
+the kernel-doc script would point that out for you.
+
+> +{
+> +	int ret;
+> +	u16 buf = 0;
+> +	const struct auxadc_channels *auxadc_chan = &auxadc_chans[channel];
+> +
+> +	if (!auxadc_chan->regs)
+> +		return -EINVAL;
+
+Why would that happen?  Don't defend against things that can't occur.
+
+> +
+> +	if (auxadc_chan->regs->ext_thr_sel) {
+> +		buf = (channel2 << EXT_THR_PURES_SHIFT)
+> +			| auxadc_chan->regs->src_sel;
+
+FIELD_PREP plus use appropriate mask not shift.  Also apply
+FIELD_PREP() for the src_sel.
+
+Avoids anyone needing to check values are in range or where the
+various register fields are.
+
+> +		ret = regmap_update_bits(adc_dev->regmap,
+> +					 auxadc_chan->regs->ext_thr_sel,
+> +					 EXT_THR_SEL_MASK, buf);
+> +		if (ret < 0)
+> +			return ret;
+> +	}
+> +	regmap_write(adc_dev->regmap,
+Check for errors.
+
+> +		     auxadc_chan->regs->enable_reg,
+> +		     auxadc_chan->regs->enable_mask);
+> +	usleep_range(auxadc_chan->avg_num * AUXADC_AVG_TIME_US,
+> +		     (auxadc_chan->avg_num + 1) * AUXADC_AVG_TIME_US);
+> +
+> +	ret = regmap_bulk_read_poll_timeout(adc_dev->regmap,
+> +					    auxadc_chan->regs->value_reg,
+> +					    buf, 2,
+
+buf should be u16 and use sizeof(buf) for that 2.
+
+> +					    (buf & AUXADC_RDY_BIT),
+brackets add nothing.
+> +					    AUXADC_POLL_DELAY_US,
+> +					    AUXADC_TIMEOUT_US);
+> +	*val = buf & (BIT(auxadc_chan->res) - 1);
+> +	if (ret)
+> +		dev_err(adc_dev->dev, "%s ret error code:%d!\n", auxadc_chan->ch_name, ret);
+> +
+> +	/* set PURES to OPEN after measuring done */
+> +	if (auxadc_chan->regs->ext_thr_sel) {
+> +		buf = (ADC_PURES_OPEN << EXT_THR_PURES_SHIFT)
+> +			| auxadc_chan->regs->src_sel;
+FIELD_PREP() for both of those.
+
+> +		ret = regmap_update_bits(adc_dev->regmap,
+> +					 auxadc_chan->regs->ext_thr_sel,
+> +					 EXT_THR_SEL_MASK, buf);
+
+Overwrite the earlier error potentially which is not something we normally
+want to do as can make debugging harder.
+
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int gauge_get_imp_ibat(void)
+> +{
+> +	struct power_supply *psy;
+> +	union power_supply_propval prop;
+> +	int ret;
+> +
+> +	psy = power_supply_get_by_name("mtk-gauge");
+> +	if (!psy)
+> +		return 0;
+> +
+> +	ret = power_supply_get_property(psy, POWER_SUPPLY_PROP_CURRENT_NOW, &prop);
+> +	if (ret)
+> +		return ret;
+> +
+> +	power_supply_put(psy);
+> +	return prop.intval;
+> +}
+> +
+> +static int get_imp_out(struct pmic_adc_device *adc_dev, int *val)
+> +{
+> +	int ret;
+> +	unsigned int buf = 0;
+> +	const struct auxadc_channels *auxadc_chan = &auxadc_chans[AUXADC_IMP];
+> +
+> +	if (!auxadc_chan->regs)
+> +		return -EINVAL;
+> +
+> +	regmap_write(adc_dev->regmap,
+
+Probably worth a local variable for the regmap to shorten some lines.
+
+> +		     auxadc_chan->regs->enable_reg,
+> +		     auxadc_chan->regs->enable_mask);
+
+Check for errors.
+
+> +	ret = regmap_read_poll_timeout(adc_dev->regmap, auxadc_chan->regs->ready_reg,
+> +					   buf, buf & auxadc_chan->regs->ready_mask,
+> +					   AUXADC_POLL_DELAY_US,
+> +					   AUXADC_TIMEOUT_US);
+> +	if (ret) {
+> +		dev_err(adc_dev->dev, "%s %s ret error code:%d!\n",
+> +			__func__, auxadc_chan->ch_name, ret);
+No need for the __func__ in here.  Say what failed in the error message.
+> +		return ret;
+> +	}
+> +
+> +	ret = regmap_bulk_read(adc_dev->regmap, auxadc_chan->regs->value_reg, (u8 *) &buf, 2);
+
+Why cast to u8 *?  It takes a void * and you never need to cast to that.
+However, you also shouldn't be doing a 2 byte read into a integer.  Use a u16
+and get the size with appropriate sizeof()
+
+
+
+> +	if (ret)
+> +		return ret;
+> +	*val = buf & (BIT(auxadc_chan->res) - 1);
+> +	adc_dev->imp_curr = gauge_get_imp_ibat();
+> +
+> +	regmap_write(adc_dev->regmap,
+> +		     auxadc_chan->regs->enable_reg, 0);
+
+Check for errors.
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int pmic_adc_read_raw(struct iio_dev *indio_dev,
+
+All functions should be prefixed with driver name. Avoids
+potential clashes if generic stuff ends up in headers later.
+
+> +			     struct iio_chan_spec const *chan,
+> +			     int *val, int *val2, long mask)
+> +{
+> +	struct pmic_adc_device *adc_dev = iio_priv(indio_dev);
+> +	const struct auxadc_channels *auxadc_chan;
+> +	int auxadc_out = 0;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&adc_dev->lock);
+consider pushing the lock down into the various implementations.
+> +	switch (chan->channel) {
+> +	case AUXADC_IMP:
+> +		ret = get_imp_out(adc_dev, &auxadc_out);
+> +		break;
+> +	case AUXADC_IMIX_R:
+> +		auxadc_out = adc_dev->imix_r;
+> +		break;
+> +	default:
+> +		ret = get_auxadc_out(adc_dev,
+> +				     chan->channel, chan->channel2,
+> +				     &auxadc_out);
+> +		break;
+> +	}
+> +	mutex_unlock(&adc_dev->lock);
+> +
+> +	if (ret && ret != -ETIMEDOUT)
+> +		return ret;
+
+Why would you carry on if it timed out?
+
+> +
+> +	switch (mask) {
+> +	case IIO_CHAN_INFO_PROCESSED:
+> +		auxadc_chan = &auxadc_chans[chan->channel];
+> +		*val = auxadc_out * auxadc_chan->r_ratio[0] * VOLT_FULL;
+> +		*val = (*val / auxadc_chan->r_ratio[1]) >> auxadc_chan->res;
+This looks linear - in which case why not leave the maths to userspace
+and provide IIO_CHAN_INFO_SCALE + _RAW
+
+> +		ret = IIO_VAL_INT;
+> +		break;
+> +	case IIO_CHAN_INFO_RAW:
+
+Why provide this at all if you are providing processed output.
+
+> +		*val = auxadc_out;
+> +		ret = IIO_VAL_INT;
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +	if (chan->channel == AUXADC_IMP) {
+> +		*val2 = adc_dev->imp_curr;
+> +		ret = IIO_VAL_INT_MULTIPLE;
+> +	}
+> +
+> +	return ret;
+> +}
+
+> +
+> +static const struct iio_info pmic_adc_info = {
+> +	.read_raw = &pmic_adc_read_raw,
+> +	.fwnode_xlate = &pmic_adc_fwnode_xlate,
+> +};
+> +
+> +static int auxadc_init_imix_r(struct pmic_adc_device *adc_dev,
+> +			      struct device_node *imix_r_node)
+> +{
+> +	unsigned int val = 0;
+> +	int ret;
+> +
+> +	if (!adc_dev)
+> +		return -EINVAL;
+> +
+> +	adc_dev->isink_load = devm_regulator_get_exclusive(adc_dev->dev, "isink_load");
+> +	if (IS_ERR(adc_dev->isink_load)) {
+> +		dev_err(adc_dev->dev, "Failed to get isink_load regulator, ret=%d\n",
+> +			(int)PTR_ERR(adc_dev->isink_load));
+> +		return PTR_ERR(adc_dev->isink_load);
+
+Use dev_err_probe() which will also pretty print the return value so remember to
+drop that bit.
+
+> +	}
+> +
+> +	imix_r_dev = adc_dev;
+> +	if (imix_r_dev->imix_r)
+> +		return 0;
+> +
+> +	ret = of_property_read_u32(imix_r_node, "val", &val);
+> +	if (ret)
+> +		dev_notice(imix_r_dev->dev, "no imix_r, ret=%d\n", ret);
+> +	imix_r_dev->imix_r = (int)val;
+> +	imix_r_dev->pre_uisoc = 101;
+> +	return 0;
+> +}
+> +
+> +static int auxadc_get_data_from_dt(struct pmic_adc_device *adc_dev,
+
+from_fw() and use the generic property.h accessors, not the dt specific ones.
+
+> +				   struct iio_chan_spec *iio_chan,
+> +				   struct device_node *node)
+> +{
+> +	struct auxadc_channels *auxadc_chan;
+> +	unsigned int channel = 0;
+> +	unsigned int value = 0;
+> +	unsigned int val_arr[2] = {0};
+> +	int ret;
+> +
+> +	ret = of_property_read_u32(node, "channel", &channel);
+
+That doesn't looks like a standard dt binding. why do you need it
+vs what is in adc.yaml?  Probably just reg is enough.
+
+
+> +	if (ret) {
+> +		dev_err(adc_dev->dev, "invalid channel in node:%s\n",
+> +			   node->name);
+
+use return dev_err_probe() for all error prints that are part of probe.
+Gives prettier printing and other benefits in some cases.
+
+> +		return ret;
+> +	}
+> +	if (channel > AUXADC_CHAN_MAX) {
+> +		dev_err(adc_dev->dev, "invalid channel number %d in node:%s\n",
+> +			   channel, node->name);
+> +		return -EINVAL;
+> +	}
+> +	if (channel >= ARRAY_SIZE(auxadc_chans)) {
+> +		dev_err(adc_dev->dev, "channel number %d in node:%s not exists\n",
+> +			   channel, node->name);
+> +		return -EINVAL;
+> +	}
+> +	iio_chan->channel = channel;
+> +	iio_chan->datasheet_name = auxadc_chans[channel].ch_name;
+> +	iio_chan->info_mask_separate = auxadc_chans[channel].info_mask;
+> +	iio_chan->type = auxadc_chans[channel].type;
+> +	iio_chan->extend_name = node->name;
+
+No. This is almost never used in a modern driver as it makes for really nasty
+userspace ABI.  Use label if you need to mark a channel as something specific.
+
+> +	ret = of_property_read_u32(node, "pures", &value);
+
+I have no idea what this one is or why you'd put anything in channel2 for
+a single ended ADC channel with no modifier.
+
+
+> +	if (!ret)
+> +		iio_chan->channel2 = value;
+> +
+> +	if (channel == AUXADC_IMIX_R)
+> +		return auxadc_init_imix_r(adc_dev, node);
+> +
+> +	auxadc_chan = &auxadc_chans[channel];
+> +	auxadc_chan->regs = &adc_dev->info->regs_tbl[channel];
+> +
+> +	ret = of_property_read_u32_array(node, "resistance-ratio", val_arr, 2);
+
+Interesting but not standard DT binding. In general this seems to have no connect
+to the dt bindings in this seris.
+
+> +	if (!ret) {
+> +		auxadc_chan->r_ratio[0] = val_arr[0];
+> +		auxadc_chan->r_ratio[1] = val_arr[1];
+> +	} else {
+> +		auxadc_chan->r_ratio[0] = AUXADC_DEF_R_RATIO;
+> +		auxadc_chan->r_ratio[1] = 1;
+> +	}
+> +
+> +	ret = of_property_read_u32(node, "avg-num", &value);
+
+Also not a standing binding and rarely found in DT because it
+is usually a policy decision on noise vs sampling rate and exposed as
+oversampling control to userspace.
+
+> +	if (!ret)
+> +		auxadc_chan->avg_num = value;
+> +	else
+> +		auxadc_chan->avg_num = AUXADC_DEF_AVG_NUM;
+> +
+> +	return 0;
+> +}
+> +
+> +static int auxadc_parse_dt(struct pmic_adc_device *adc_dev,
+
+parse_fw() as you'll be using generic accessors thoughout.
+
+> +			   struct device_node *node)
+> +{
+> +	struct iio_chan_spec *iio_chan;
+> +	struct device_node *child;
+> +	unsigned int index = 0;
+> +	int ret;
+> +
+> +	adc_dev->nchannels = of_get_available_child_count(node);
+
+Use generic property accessors, not of specific ones (property.h)
+
+> +	if (!adc_dev->nchannels)
+> +		return -EINVAL;
+> +
+> +	adc_dev->iio_chans = devm_kcalloc(adc_dev->dev, adc_dev->nchannels,
+> +		sizeof(*adc_dev->iio_chans), GFP_KERNEL);
+> +	if (!adc_dev->iio_chans)
+> +		return -ENOMEM;
+> +	iio_chan = adc_dev->iio_chans;
+> +
+> +	for_each_available_child_of_node(node, child) {
+> +		ret = auxadc_get_data_from_dt(adc_dev, iio_chan, child);
+> +		if (ret < 0) {
+> +			of_node_put(child);
+> +			return ret;
+> +		}
+> +		iio_chan->indexed = 1;
+> +		iio_chan->address = index++;
+> +		iio_chan++;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int pmic_adc_probe(struct platform_device *pdev)
+> +{
+> +	struct device_node *node = pdev->dev.of_node;
+> +	struct pmic_adc_device *adc_dev;
+> +	struct iio_dev *indio_dev;
+> +	int ret;
+> +
+> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
+> +	if (!indio_dev)
+> +		return -ENOMEM;
+> +
+> +	adc_dev = iio_priv(indio_dev);
+> +	adc_dev->dev = &pdev->dev;
+> +	adc_dev->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+> +	mutex_init(&adc_dev->lock);
+In new drivers I prefer to see
+	ret = devm_mutex_init()
+	if (ret)
+		return ret;
+
+Brings only a minor debug benefit, but the cost of getting that is
+low so it is a nice thing to have!
+
+> +	adc_dev->info = of_device_get_match_data(&pdev->dev);
+> +
+> +	ret = auxadc_parse_dt(adc_dev, node);
+> +	if (ret) {
+> +		dev_notice(&pdev->dev, "auxadc_parse_dt fail, ret=%d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	indio_dev->dev.parent = &pdev->dev;
+
+No need for that - it's done the IIO core.
+
+> +	indio_dev->name = dev_name(&pdev->dev);
+
+This needs to be the part number, not come from the device name which can
+be very different depending on how the device is created etc.
+So just hard code the part number in the info structure and set it here.
+
+
+> +	indio_dev->info = &pmic_adc_info;
+> +	indio_dev->modes = INDIO_DIRECT_MODE;
+> +	indio_dev->channels = adc_dev->iio_chans;
+> +	indio_dev->num_channels = adc_dev->nchannels;
+> +
+> +	ret = devm_iio_device_register(&pdev->dev, indio_dev);
+> +	if (ret < 0) {
+> +		dev_notice(&pdev->dev, "failed to register iio device!\n");
+dev_err() given if you manage to hit here you definitely have an error.
+Same for other error paths.
+
+> +		return ret;
+> +	}
+> +
+> +	dev_dbg(&pdev->dev, "probe done\n");
+No purpose in this one.  It is very easy to see if probe succeeded without it.
+> +
+> +	return 0;
+> +}
 
 
