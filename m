@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA2EAC35FF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 12:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B9B6C282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 12:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o7Ke/PtTF507QOYDaffaUn8HJGoCZ9xCEB7AZ16IaAs=; b=gzIKrsdumioDenh/SGQ+OjglD/
-	1hDPGTd1gpkxIhd4+jQ/SaFV8XUFBmmjuGEH1Ho0bQ2gPU/asFw9gdAwaeEBhC4ZHg6nXwaRRjVf/
-	dqsXMB6KbDIjSA2S10AMLdXjTscAXGHsR5ZGwcU0ejzYN/ZnBj92WUoFqQFj4U4z2CpHNHjDA4hu0
-	/n+GQBh0dtHNDXXvfXBRZA0A+0MqqGblsP7O5Tm2tGZEz5rnyVGCyNQdP2gRTxy9va0n6HL+ziB/J
-	cboeqvmY2EJKmrL+Sl/W52cvMX/HHzMH5FXvztrTH8UOv9Qg/ugLcwhk2rKjJ3gz6iCvFu6Lqx2NL
-	KMgJzDhQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ghqsESCSlYDpPWVp7MysrBKDg3K0+nOb0GO49Q1Vkh8=; b=w8Olxmjw+TCUzYH5khJ2A0Cvls
+	fM3lQpWdPSpSQwiZ0F2Ip6hIePGf+E18UQb+v6Fj7l/3vLpWiiXrbO6eGO3tzOAckX1NXXcOVJDnp
+	PzSAYKYFhSiMQ8062UmbbzHXjFnaohRn23SJIVAkpi90wcA5TdPTS03Y6CgIPf/sa9hbxHqzJrT7h
+	XBZUqNyneOPp3xWXQ+zF/L/BLkf9dozs+EynarIl5bvfCDnSZxSYm05d75u+PUhS4ZF3xnTi+krqh
+	OMo+9rhYS02lYwYTYq4nd9DR4mZ8LldgrrNwanKlNyxo4jK2YR3y7DfSnNlQdQzGxAPTIGu4Y+cUb
+	SCc3jwNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu9o3-00000002bdR-2q5j;
-	Mon, 17 Mar 2025 12:42:59 +0000
+	id 1tu9pl-00000002c2e-3r9n;
+	Mon, 17 Mar 2025 12:44:45 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu9o1-00000002bc3-0vsy;
-	Mon, 17 Mar 2025 12:42:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742215361; cv=none; 
+	id 1tu9o1-00000002bcD-2Qxx;
+	Mon, 17 Mar 2025 12:42:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742215365; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=cLG0gX3qkhY04f6ELwnN4x5YxcG7ZYzXCBCwayDVHS9QTZxAlsRdkc4AEWwyMFdslVcWSXoyfEjTOGX+T/V/H76MpRXsT25DAHtB3TMt/L4W7NFCYfQ4JamhA+qISzR3LsTp6U/1MElHmZ2es8MQt95RJKmcmcQAn9sQWq7NWwo=
+	b=UtHINESV9YTxkr2/+vQCTAHdO++gSSJqmLPXPlChJocg7K4mPsmNo+YchOX0/sOv6tafgqypUTd85z8PaSrKJ2ZKqo85eUmD+dsjaB2jEQX6cZzO4LFb6cIwCJKssGeEW6trgH4JgsEaTTOnX7/Fg8wsJiOlIo5/G8t/t3IAocw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742215361; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=o7Ke/PtTF507QOYDaffaUn8HJGoCZ9xCEB7AZ16IaAs=; 
-	b=Vx5bZjIPgr+xXXJt3VT5svjFY8IZRJZtdJ0Tbk/Nb+rKb21EaulpdAB0lplLQZ387lAMaNeokX6nTwDVl8U3ihwZCg1cLt4ssDI74npPFYwMoZzJKURDWHXazYlIfvlGhrDi7y/A+bMACxHVY8EF28x0lG/p2ozTlQp+nvY0ju0=
+	t=1742215365; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ghqsESCSlYDpPWVp7MysrBKDg3K0+nOb0GO49Q1Vkh8=; 
+	b=e8hbFK0BobAV181EI8/EYUCHTnPIcEXROL4Wweo/5RrY6yey2t92I1c2DeJrw4pL/6evsBlunxNsykHfa1KCpx5uaPob6D5rZQGxdere786IsWXvrxUNHK/H1iNE+4qiw0ff2Jgbmn6BY1R92bNVz5P1TKI2ByNYguaE2+8+gg0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
 	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742215361;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742215365;
 	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=o7Ke/PtTF507QOYDaffaUn8HJGoCZ9xCEB7AZ16IaAs=;
-	b=Ze6ZGo/pFBeOjCvyS1Q5SSjVxWO3tYp2hoG2Awmv3Ryk6cTBbwIT6QSlmWRol2vT
-	8QMnozxuhyiU+fruB4/FounajJrunZXdOcUINlLpzUkwQMpcvBvLdcSjvF22mzdMW9T
-	PQY98f6J0QP+TM8Yr7ae/1eAy7sTuIPMc4hLHbL4=
-Received: by mx.zohomail.com with SMTPS id 1742215358157185.8146892272224;
-	Mon, 17 Mar 2025 05:42:38 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ghqsESCSlYDpPWVp7MysrBKDg3K0+nOb0GO49Q1Vkh8=;
+	b=dacbRXwo2UICmQD7zrje2dDVP8xDaUYCZgquBXUUIRxpoOrbT0RCWx7jDWyD4jXz
+	uXcARvBD1xL88K8qyAO4qYMLfSgAdTdrzdwoA4zSZMVgmVWqQfzHqjtg4cQusYBvIQD
+	pI3t9IBDdPD2RPWZUGi6AuD8Hu1s0jsjZ/wyhZNA=
+Received: by mx.zohomail.com with SMTPS id 1742215364198105.23374534580853;
+	Mon, 17 Mar 2025 05:42:44 -0700 (PDT)
 From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 To: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org
@@ -63,17 +63,18 @@ Cc: boris.brezillon@collabora.com,
 	sjoerd@collabora.com,
 	angelogioacchino.delregno@collabora.com,
 	Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Subject: [PATCH v3 0/6] drm/panfrost: Add support for AARCH64_4K page table format
-Date: Mon, 17 Mar 2025 09:40:38 -0300
-Message-ID: <20250317124044.16257-1-ariel.dalessandro@collabora.com>
+Subject: [PATCH v3 1/6] drm/panfrost: Set IOMMU_CACHE flag
+Date: Mon, 17 Mar 2025 09:40:39 -0300
+Message-ID: <20250317124044.16257-2-ariel.dalessandro@collabora.com>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250317124044.16257-1-ariel.dalessandro@collabora.com>
+References: <20250317124044.16257-1-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_054257_310965_F73FB17A 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250317_054257_657083_59A0E9B6 
+X-CRM114-Status: GOOD (  10.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,65 +89,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Panfrost does not support uncached mappings, so flag them properly. Also
+flag the pages that are mapped as response to a page fault as cached.
 
-This is a new iteration on Panfrost support for AARCH64_4K page table
-format. The main reason behind this patchset is that MediaTek MT8188 SoC
-(ARM Mali-G57 MC3 GPU) constantly faults due to the actual Panfrost cache
-configuration.
+Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steven Price <steven.price@arm.com>
+---
+ drivers/gpu/drm/panfrost/panfrost_mmu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Currently, Panfrost only supports MMU configuration in "LEGACY" (as Bifrost
-calls it) mode, a (modified) version of LPAE "Large Physical Address
-Extension", which in Linux we've called "mali_lpae".
-
-This patchset adds support for conditionally enabling AARCH64_4K page table
-format. To achieve that, a "GPU optional quirks" field was added to
-`struct panfrost_features` with the related flag.
-
-Note that, in order to enable AARCH64_4K mode, the GPU variant must have
-the HW_FEATURE_AARCH64_MMU feature flag present.
-
-The patchset only enables the new format on Mediatek MT8188 and MT8192,
-which have been tested on a Mediatek Genio 700 EVK (MT8390) and Mediatek
-Genio 1200 EVK (MT8395) boards respectively.
-
-Thanks!
-
-Changes in v3:
-* Fixed error handling in panfrost_mmu_ctx_create().
-
-Changes in v2:
-* Dropped panfrost_mmu_enable/disable unification.
-* Rename gpu_configs as gpu_quirks.
-* Added error handling on page table not properly aligned.
-* Enabled AARCH64_4K format on MediaTek MT8192 as well.
-* Minor fixes.
-
-Changes in v1:
-* Added "Set IOMMU_CACHE flag" patch.
-* Replaced `panfrost_mmu->enable()` function pointer by `cfg` struct
-prepared during init time.
-* Made mali_lpae/aarch64_4k name more clear.
-* Added GPU_CONFIG_AARCH64_4K flag to enable AARCH64_4K page table
-  format.
-* Enabled AARCH64_4K mode only on mediatek-mt8188.
-
-Ariel D'Alessandro (6):
-  drm/panfrost: Set IOMMU_CACHE flag
-  drm/panfrost: Use GPU_MMU_FEATURES_VA_BITS/PA_BITS macros
-  drm/panfrost: Set HW_FEATURE_AARCH64_MMU feature flag on Bifrost
-    models
-  drm/panfrost: Add support for AARCH64_4K page table format
-  drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8188
-  drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8192
-
- drivers/gpu/drm/panfrost/panfrost_device.h   |  16 ++
- drivers/gpu/drm/panfrost/panfrost_drv.c      |   2 +
- drivers/gpu/drm/panfrost/panfrost_features.h |   3 +
- drivers/gpu/drm/panfrost/panfrost_mmu.c      | 149 +++++++++++++++++--
- drivers/gpu/drm/panfrost/panfrost_regs.h     |  36 +++++
- 5 files changed, 195 insertions(+), 11 deletions(-)
-
+diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+index b91019cd5acb1..9e6f198ef5c1b 100644
+--- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
++++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+@@ -327,7 +327,7 @@ int panfrost_mmu_map(struct panfrost_gem_mapping *mapping)
+ 	struct drm_gem_object *obj = &shmem->base;
+ 	struct panfrost_device *pfdev = to_panfrost_device(obj->dev);
+ 	struct sg_table *sgt;
+-	int prot = IOMMU_READ | IOMMU_WRITE;
++	int prot = IOMMU_READ | IOMMU_WRITE | IOMMU_CACHE;
+ 
+ 	if (WARN_ON(mapping->active))
+ 		return 0;
+@@ -528,7 +528,7 @@ static int panfrost_mmu_map_fault_addr(struct panfrost_device *pfdev, int as,
+ 		goto err_map;
+ 
+ 	mmu_map_sg(pfdev, bomapping->mmu, addr,
+-		   IOMMU_WRITE | IOMMU_READ | IOMMU_NOEXEC, sgt);
++		   IOMMU_WRITE | IOMMU_READ | IOMMU_CACHE | IOMMU_NOEXEC, sgt);
+ 
+ 	bomapping->active = true;
+ 	bo->heap_rss_size += SZ_2M;
 -- 
 2.47.2
 
