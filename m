@@ -4,50 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25DA1C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 17:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB94C282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 17:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ESUDf4Ar7R5DEfPDqOgLCLGkTBzv0v1Fv7Cgvb6b06Y=; b=lqA+mLFTgitYguLc9FOqFCcWqz
-	jwBAwMJkVUMLUbzbg8nGD/Kv5T7XhrqFTaeRykoCsqZ55zXWTDJoeyPvil4XDu00XqW9m4iKYZ0TY
-	DScPxV7X55txpxib1Kuxej4Chhw2M8EcFBzCv7umWiRJiNg6nNRok0TXi6HuW9JenoB5UI6N+8677
-	VMFKE3ZCkKutBAtmc8HvYecN8f1ys7xNrRhet55VnmZgMTJrU/s+oQkQxo7+B6qjT6DzRe10y884p
-	ItbdgqkHqEcQIeAQJTWZDWxOjLircN/7eQjx2uOuq6Db8ZVodCU1M8wnGDD7qXRMw1hr+pT24ZZnf
-	LH8TyNRw==;
+	bh=jBwNQ4EyvI4AnvojAEE0SXQz6wmtZ95HttfR008RdNo=; b=TLnTGTnYRenj7mt0Y7nV8IYc3w
+	g45+fM+d84j+TNR6TZtrTuX5E1AdBS4kzkap/aXdqZVWrNtJNHkTLCc1496nXIRjjvkAJlpgp6JzN
+	7zK6fQXoZUrBZXWwmmzI1QfehCgE0tbVo5ZwVB7PSX6/ItLqLUn9hTCk9A5SiPsxEo+HlR9gEaCrI
+	MCwlSTLbzo+X8PlsoCZUIBNlfiqEDEARXzGVy5PSsWuUO56SFXx0iuM3L9uvBuxZoTYUO7NH9HwgZ
+	45RdB1+sYeLC6YlPLRcJzV6IOpszpH8CpuNcuC2lhXXnXvqHciFQApyytu/ivMRG4i+RldsYzpdb1
+	ROpQfkBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuE34-00000003Wh0-0vES;
-	Mon, 17 Mar 2025 17:14:46 +0000
+	id 1tuE83-00000003XfY-0kq8;
+	Mon, 17 Mar 2025 17:19:55 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuDxI-00000003Tk6-12lI;
-	Mon, 17 Mar 2025 17:08:49 +0000
+	id 1tuE41-00000003Wtb-0WTl;
+	Mon, 17 Mar 2025 17:15:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id EAF70A41929;
-	Mon, 17 Mar 2025 17:03:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19F06C4CEE3;
-	Mon, 17 Mar 2025 17:08:42 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id ABF87A48B54;
+	Mon, 17 Mar 2025 17:10:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9642DC4CEE3;
+	Mon, 17 Mar 2025 17:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742231327;
-	bh=g1JD5OdPZsjGZGzzlO5NQkR37BtnmLev6F758Rih9A8=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=j4JoXbxzwB00a49cdeJx5ixQ94CP+fPr7NiuKKBVIhjO1jW+2NA68AhViqPPvkJ6S
-	 hfc9CZxB7jSMbNI8eaN4LyU1y86X3mNVa40Nd4N5iHbK/HMQpqmPiDpbsBAlkT1mVT
-	 lAdKqMKQL1WHBg3m9G3X4oiDann6KqNuhwuqdAJ9d693PE49FfCsUBspEpPSoR2t+1
-	 4YDiqq+M+8lIItTgaK+CR46bMY/2PykbwG13t1lf8JepaDaPO2fi7LE9EkB6eQAhkT
-	 aDuGgfNy+l7ZlPQeSv7y8KxkhWA0ro1ryGknoYcepBnNqC2rB4F6Eq9XPsx37D6nDn
-	 8K6SmPA93czAg==
-Message-ID: <e5d2f827-9edb-4d0b-952d-24eadf8dfeb7@kernel.org>
-Date: Mon, 17 Mar 2025 18:08:40 +0100
+	s=k20201202; t=1742231744;
+	bh=L48xQS+OgtpCGK9cx4xbKHFu/b6Vporp+ZX31pCJ1iA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=l0ga5W5SKa/yYbD17g1NzXtbUDO4jaT2ohbAWu6A1mndy4AYH/HL4L96AKOxa/mZJ
+	 WaeE8/+Kibnri6qfyEIS5Mx1TUkSROJXBUwgsaZEXpiIAW6MQGHVaJP9zGQmQxgCxB
+	 +qD6h7WrQ1RN0XtWz2Cp8o0BmIFfAf+lQbZfUE3/e2dT2dnWx1DTEe0ivFJ7hzFGby
+	 8Cpt2rzfFDpP9upkv5IAETUzuVKCUdxYzHwt4XScAgWw9lTSoJmrFyH7XHdXPycfzL
+	 dViKgacdjFvWb59f8agS0FsH32TQ9UYP+4mnu99umZGimj/SnTm6bBPiS6mPrTHv6r
+	 xSPI/WISC68IA==
+Message-ID: <ade7ab48-c4f1-4ac0-ab1b-997e95b9c689@kernel.org>
+Date: Mon, 17 Mar 2025 18:15:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 3/3] dt-bindings: mailbox: mtk,vcp-mbox: add mtk
- vcp-mbox document
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH RFC v3 1/3] mailbox: mediatek: Add mtk-vcp-mailbox driver
 To: Jjian Zhou <jjian.zhou@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -57,9 +55,9 @@ Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>
-References: <20250317083822.891-1-jjian.zhou@mediatek.com>
- <20250317083822.891-4-jjian.zhou@mediatek.com>
- <df592920-cdf3-40fe-8357-2fbdfc0afd78@kernel.org>
+References: <20250317110331.2776-1-jjian.zhou@mediatek.com>
+ <20250317110331.2776-2-jjian.zhou@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -104,12 +102,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <df592920-cdf3-40fe-8357-2fbdfc0afd78@kernel.org>
+In-Reply-To: <20250317110331.2776-2-jjian.zhou@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_100848_425305_A51BC33E 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20250317_101545_304307_1DB60F12 
+X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,35 +123,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/03/2025 10:00, Krzysztof Kozlowski wrote:
-> On 17/03/2025 09:38, Jjian Zhou wrote:
->> This patch adds document for mediatek vcp mbox.
->>
->> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
->> ---
->>  .../bindings/mailbox/mtk,mt8196-vcp-mbox.yaml | 49 +++++++++++++++++++
-> 
-> Please use subject prefixes matching the subsystem. You can get them for
-> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-> your patch is touching. For bindings, the preferred subjects are
-> explained here:
-> https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
-> 
->>  1 file changed, 49 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,mt8196-vcp-mbox.yaml
-> 
-> Filename based on compatible. You already got this comment. Copy paste
-> your filename here:
-> 
-> <here goes filename>
-> 
-> and here your compatible:
-> 
-> <here goes compatible>
-> 
-> Are the the same?
+On 17/03/2025 12:03, Jjian Zhou wrote:
+> +
+> +	ret = devm_request_threaded_irq(dev, irq, NULL,
+> +					mtk_vcp_mbox_irq_thread, IRQF_ONESHOT,
+> +					dev_name(dev), mbox->chans);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	platform_set_drvdata(pdev, priv);
+> +
+> +	dev_dbg(dev, "MTK VCP mailbox initialized\n");
 
-Can you do this exercise here, instead of sending next versions?
+Drop
+
+
 
 Best regards,
 Krzysztof
