@@ -4,111 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD367C35FF8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 09:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B65DBC282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 09:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H7t7YylDfQ+sX922tfXt+mLXdwCmvufbUwYxF/bosqI=; b=t+AG9o2T5QF0IxBnGf8pjVsK9E
-	Qm/DeKOZvULpjGcWEAMM2bwZjEptU93L06PEVmYtcbiDZieBVUMvO0xTBHYZaGlJWooF7Qv/pQbgt
-	1XX55nUN+gd1CLDuHvjPms1pi14hp9G5a3Pg3+YGxj/U9DXlzurxkybvA2635QCgH1V1shW1o+MeU
-	fL2G+8DNu/xeB50LM8hWzC7M7IgtYoW/u64Bj2vxnVZIUWzE68zgEfbHCcd2Qav3Fs1hWFrZYZWE1
-	RuDUkc9XzbbROwojZ3Pp/ItSlf/Hf/vSSM8WV7euqoVV4dDCoQ//2m9VThlo+iAhHpp0SEIndIsAU
-	udZ9p4hQ==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nU0fzD5wnLwbt9yoUSBeMInFHzMm7DGirLXtUO2ZpV8=; b=H30YmsetAYkszSY84VuUwjzgkh
+	gT6GLmpDAXJjfKu7ZXz32EjhDyL3hVSMIGiVy6yhDzfryV7OfT2zVcsawTGXVPStdmAjRAOx/7ASZ
+	i1BlWomeRhsFi1e81C8pwsPg4vrl6dslfxDBBgfl/3le1jDzESGOe1C8q2px2KXkeCrb2kD01e/mf
+	ZsijZY/JoZDDxL3jwNA2AzqaOXFPgEzuAWRNj2vg318i6HDWnI7su+LipQ7a3SlRFt1JSsXb4jvWu
+	5hisivpoyANioyhDTACem23teR8YHcjiIaknatoxh2FdL0Zn0pmsw/H69TN3bRJqBOjQ/93NWaYXH
+	1l92lNpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu6Od-00000001r1J-45Lz;
-	Mon, 17 Mar 2025 09:04:31 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tu6eg-00000001tlJ-3ts8;
+	Mon, 17 Mar 2025 09:21:06 +0000
+Received: from mail.growdeal.pl ([141.95.55.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu6Kh-00000001qCw-3gpK;
-	Mon, 17 Mar 2025 09:00:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 57F7BA46D29;
-	Mon, 17 Mar 2025 08:54:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB69CC4CEE3;
-	Mon, 17 Mar 2025 09:00:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742202026;
-	bh=W3D20CMMDeTVehzFoOsspP1Xy3fZIs1JN+w4F2wuzL0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tkaO8/yjry0qQlrMCfP3KBKh3c6fbLV44Qk/aD37apAwhxmCpmwnSzy4TGcBaNMUM
-	 2Pk90jQtZnxhS02R2faTN31pPgsEWZEqpoewaQq3BUzsKn3fHHaeYJekvp52Rhlszl
-	 g7Xt4IC8Kxa5Je2Tp/7MWanJ45Ga7H1kAatP3v3d92lCvjMIbJMIFRBflVu/RVk2MX
-	 bXF5/QbcjFjzRGnnqsCY67R7CSYNtE2zw/sX6pWudxHgvfks5dSKCyUAM3k4BHhiwj
-	 ms4oxsUSeiXVJfvBTfUQaiVzF1i/uwPBCNrWJlSN01RB8i0R+5WxEeKopP8vr4RwGF
-	 CHUL19Fi+3ZiQ==
-Message-ID: <df592920-cdf3-40fe-8357-2fbdfc0afd78@kernel.org>
-Date: Mon, 17 Mar 2025 10:00:19 +0100
+	id 1tu6ee-00000001tjx-3lAW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Mar 2025 09:21:06 +0000
+Received: by mail.growdeal.pl (Postfix, from userid 1002)
+	id CEE20238AC; Mon, 17 Mar 2025 09:10:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=growdeal.pl; s=mail;
+	t=1742202660; bh=nU0fzD5wnLwbt9yoUSBeMInFHzMm7DGirLXtUO2ZpV8=;
+	h=Date:From:To:Subject:From;
+	b=E9ChYhQTgIGYh8fK77wU7s3o4NKhBRe17S/8fooi2qPjO7PuOAVRo0cygdEBMcrTA
+	 bzmmqj4cH8WT5e1wi+zuFnW/jw4qSMkzQTXhxwYXWtDmylulMzYjswfV3J8JFLyY9X
+	 eHKNKkbh9vG9U1z/QaHgg4NSLbV5BDosbwGX65LLzUylnBrCufZBgIu6qaJizdqqHe
+	 k1fAWn4M1dhz/MjY1DcWNFYIZdDeqobZ/yf4SbKKCcKeQiYgDkHrnnZ35gumHe8U39
+	 AZR9orRx70j/Z7mOIAJESfuM8RwN907jApKpxktcEEzCxr4UqPuBMG6s0ePCF5CnIE
+	 VCsGLNam/aWOw==
+Received: by mail.growdeal.pl for <linux-mediatek@lists.infradead.org>; Mon, 17 Mar 2025 09:10:52 GMT
+Message-ID: <20250317074500-0.1.17.h9qt.0.jpi599cik9@growdeal.pl>
+Date: Mon, 17 Mar 2025 09:10:52 GMT
+From: =?UTF-8?Q?"Pawe=C5=82_Zajdlicz"?= <pawel.zajdlicz@growdeal.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Rekrutacja handlowca 
+X-Mailer: mail.growdeal.pl
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 3/3] dt-bindings: mailbox: mtk,vcp-mbox: add mtk
- vcp-mbox document
-To: Jjian Zhou <jjian.zhou@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20250317083822.891-1-jjian.zhou@mediatek.com>
- <20250317083822.891-4-jjian.zhou@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250317083822.891-4-jjian.zhou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_020028_065377_C449E0F5 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20250317_022105_076980_83ED1F56 
+X-CRM114-Status: UNSURE (   1.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,33 +66,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/03/2025 09:38, Jjian Zhou wrote:
-> This patch adds document for mediatek vcp mbox.
-> 
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
-> ---
->  .../bindings/mailbox/mtk,mt8196-vcp-mbox.yaml | 49 +++++++++++++++++++
+Witam,
 
-Please use subject prefixes matching the subsystem. You can get them for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching. For bindings, the preferred subjects are
-explained here:
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+Czy maj=C4=85 Pa=C5=84stwa aktualnie potrzeby z zakresu rekrutacji os=C3=B3=
+b do dzia=C5=82u handlowego?=20
 
->  1 file changed, 49 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,mt8196-vcp-mbox.yaml
+Pomagamy skutecznie rekrutowa=C4=87 osoby na stanowiska Przedstawiciela H=
+andlowego, Sales Managera, a tak=C5=BCe Kadry Managerskiej w obszarze spr=
+zeda=C5=BCy.
 
-Filename based on compatible. You already got this comment. Copy paste
-your filename here:
+Czy mo=C5=BCemy porozmawia=C4=87?
 
-<here goes filename>
 
-and here your compatible:
-
-<here goes compatible>
-
-Are the the same?
-
-Best regards,
-Krzysztof
+Pozdrawiam
+Pawe=C5=82 Zajdlicz
 
