@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB94C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 17:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DC23C282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 18:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jBwNQ4EyvI4AnvojAEE0SXQz6wmtZ95HttfR008RdNo=; b=TLnTGTnYRenj7mt0Y7nV8IYc3w
-	g45+fM+d84j+TNR6TZtrTuX5E1AdBS4kzkap/aXdqZVWrNtJNHkTLCc1496nXIRjjvkAJlpgp6JzN
-	7zK6fQXoZUrBZXWwmmzI1QfehCgE0tbVo5ZwVB7PSX6/ItLqLUn9hTCk9A5SiPsxEo+HlR9gEaCrI
-	MCwlSTLbzo+X8PlsoCZUIBNlfiqEDEARXzGVy5PSsWuUO56SFXx0iuM3L9uvBuxZoTYUO7NH9HwgZ
-	45RdB1+sYeLC6YlPLRcJzV6IOpszpH8CpuNcuC2lhXXnXvqHciFQApyytu/ivMRG4i+RldsYzpdb1
-	ROpQfkBQ==;
+	bh=e/UDwJyBvZkYq2OC/91HAneIjJnzaFyXx5qP1exSwFE=; b=sDSR0hDV8HIsUFaLVI5R8IV+UZ
+	f5uQ5bEWCh/VZ+jaRdzfJoB/mhCmivlqc9YPXCrVWSB/RLvKMkIZwYzE1h22ZORC01bV5ywtltrQu
+	P3rXrjNFbZuWYYtDIAupF9YKuNPmhApqy7V3GksCGMxZZ8a5k3xeazumUZ0BSuxw4LCXuCpyUGdsu
+	gDyKkgp1SfevDObVDlbqyi5JSBug3qTz2tN531siOFn9pBFnFnrHmL+TQfjRq0oZ3z9vpkqiVSPMW
+	xStOb35quYtt9BUpfataDOuOON0aImqP4Pt4SVFsRyYlsk+EXdqZfjbDHoSvU1C7cHdddZoelMKl5
+	T5mDbTUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuE83-00000003XfY-0kq8;
-	Mon, 17 Mar 2025 17:19:55 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tuFHi-00000003haZ-0rBM;
+	Mon, 17 Mar 2025 18:33:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuE41-00000003Wtb-0WTl;
-	Mon, 17 Mar 2025 17:15:46 +0000
+	id 1tuE4X-00000003X1F-21BC;
+	Mon, 17 Mar 2025 17:16:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ABF87A48B54;
-	Mon, 17 Mar 2025 17:10:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9642DC4CEE3;
-	Mon, 17 Mar 2025 17:15:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id DA2785C463E;
+	Mon, 17 Mar 2025 17:13:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB8C9C4CEE3;
+	Mon, 17 Mar 2025 17:16:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742231744;
-	bh=L48xQS+OgtpCGK9cx4xbKHFu/b6Vporp+ZX31pCJ1iA=;
+	s=k20201202; t=1742231776;
+	bh=q9IbR+SPXKPwKHG0WRLenj1Bv3UPy2ku6dZrRsHDh4A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=l0ga5W5SKa/yYbD17g1NzXtbUDO4jaT2ohbAWu6A1mndy4AYH/HL4L96AKOxa/mZJ
-	 WaeE8/+Kibnri6qfyEIS5Mx1TUkSROJXBUwgsaZEXpiIAW6MQGHVaJP9zGQmQxgCxB
-	 +qD6h7WrQ1RN0XtWz2Cp8o0BmIFfAf+lQbZfUE3/e2dT2dnWx1DTEe0ivFJ7hzFGby
-	 8Cpt2rzfFDpP9upkv5IAETUzuVKCUdxYzHwt4XScAgWw9lTSoJmrFyH7XHdXPycfzL
-	 dViKgacdjFvWb59f8agS0FsH32TQ9UYP+4mnu99umZGimj/SnTm6bBPiS6mPrTHv6r
-	 xSPI/WISC68IA==
-Message-ID: <ade7ab48-c4f1-4ac0-ab1b-997e95b9c689@kernel.org>
-Date: Mon, 17 Mar 2025 18:15:37 +0100
+	b=SHxVWMeWe6PiwaWbEPnSxfwdepGEdOFxCyj2MK1VUTKvJxlAfXzp5JU0nLArAOBuB
+	 ldw6bkNCxBAkdDAPeIrgJmwLPPDNNoEeruBCUIcbTDAto+E1Swuo7DRgl8TRgyB+Ev
+	 FiQwYlEuAmfWbJRtaDv8l0wxX0ayjptIIUB8oR7hRfAvC++YJU+43bNDg7RKXawEty
+	 kKnuLA45G+wI2kJLSAbV0uTdh53RYh1uf/Vddv5dsmSBJ8LB3UBS6oVCMY2rsgYcv/
+	 NvfDPtIj91SthydyLrxI75ADfDfKrBa/4P3OTUD4dUgtGNNs21o/tOgFSarxlW5tVk
+	 JsqZYTriXtbmA==
+Message-ID: <d3f8fbe3-c061-4d34-a5a3-09cbf676bc4c@kernel.org>
+Date: Mon, 17 Mar 2025 18:16:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 1/3] mailbox: mediatek: Add mtk-vcp-mailbox driver
+Subject: Re: [PATCH RFC v3 2/3] firmware: mediatek: Add vcp ipc protocol
+ interface
 To: Jjian Zhou <jjian.zhou@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -56,7 +57,7 @@ Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>
 References: <20250317110331.2776-1-jjian.zhou@mediatek.com>
- <20250317110331.2776-2-jjian.zhou@mediatek.com>
+ <20250317110331.2776-3-jjian.zhou@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,13 +103,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250317110331.2776-2-jjian.zhou@mediatek.com>
+In-Reply-To: <20250317110331.2776-3-jjian.zhou@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_101545_304307_1DB60F12 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250317_101617_617696_6518E4BC 
+X-CRM114-Status: GOOD (  28.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,19 +124,397 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 17/03/2025 12:03, Jjian Zhou wrote:
-> +
-> +	ret = devm_request_threaded_irq(dev, irq, NULL,
-> +					mtk_vcp_mbox_irq_thread, IRQF_ONESHOT,
-> +					dev_name(dev), mbox->chans);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	platform_set_drvdata(pdev, priv);
-> +
-> +	dev_dbg(dev, "MTK VCP mailbox initialized\n");
+> Some of mediatek processors contain the Risc-V coprocessor.
+> 
+> The communication between Host CPU and vcp firmware is
+> taking place using a shared memory area for message passing.
+> 
+> VCP IPC protocol offers (send/recv) interfaces using
+> mediatek-mailbox APIs.
+> 
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> ---
+>  drivers/firmware/Kconfig                      |   9 +
+>  drivers/firmware/Makefile                     |   1 +
+>  drivers/firmware/mtk-vcp-ipc.c                | 481 ++++++++++++++++++
+>  include/linux/firmware/mediatek/mtk-vcp-ipc.h | 151 ++++++
+>  4 files changed, 642 insertions(+)
+>  create mode 100644 drivers/firmware/mtk-vcp-ipc.c
+>  create mode 100644 include/linux/firmware/mediatek/mtk-vcp-ipc.h
 
-Drop
+Do not send new versions while previous discussion is still going.
 
+You still did not respond to previous feedback and you already sent two
+versions repeating the same mistake.
+
+> 
+> diff --git a/drivers/firmware/Kconfig b/drivers/firmware/Kconfig
+> index 37e43f287e78..98c4ff667836 100644
+> --- a/drivers/firmware/Kconfig
+> +++ b/drivers/firmware/Kconfig
+> @@ -179,6 +179,15 @@ config MTK_ADSP_IPC
+>  	  ADSP exists on some mtk processors.
+>  	  Client might use shared memory to exchange information with ADSP.
+>  
+
+..
+
+> +
+> +/*
+> + * mtk_vcp_ipc_send - send ipc command to MTK VCP
+> + *
+> + * @ipidev: VCP struct mtk_ipi_device handle
+> + * @id: id of the feature IPI
+> + * @data: message address
+> + * @len: message length
+> + *
+> + * Return: Zero for success from mbox_send_message
+> + *         negative value for error
+> + */
+> +int mtk_vcp_ipc_send(struct mtk_ipi_device *ipidev, u32 id, void *data, u32 len)
+> +{
+> +	struct device *dev;
+> +	struct mtk_mbox_info *minfo;
+> +	struct mtk_ipi_chan_table *table;
+> +	struct mtk_vcp_ipc *vcp_ipc;
+> +	int ret;
+> +
+> +	if (!ipidev || !ipidev->ipi_inited || !data)
+> +		return IPI_UNAVAILABLE;
+> +	vcp_ipc = ipidev->vcp_ipc;
+> +	if (!vcp_ipc)
+> +		return IPI_UNAVAILABLE;
+> +
+> +	table = ipidev->table;
+> +	dev = ipidev->vcp_ipc->dev;
+> +	minfo = &ipidev->vcp_ipc->info_table[table[id].mbox];
+> +	if (!minfo) {
+> +		dev_err(dev, "%s IPI%d minfo is invalid.\n", ipidev->name, id);
+> +		return IPI_UNAVAILABLE;
+> +	}
+> +
+> +	if (len > table[id].msg_size)
+> +		return IPI_MSG_TOO_BIG;
+> +	else if (!len)
+> +		len = table[id].msg_size;
+> +
+> +	mutex_lock(&table[id].mutex_send);
+> +
+> +	minfo->ipi_info.msg = data;
+> +	minfo->ipi_info.len = len;
+> +	minfo->ipi_info.id = id;
+> +	minfo->ipi_info.index = table[id].send_index;
+> +	minfo->ipi_info.slot_ofs = table[id].send_ofs * MBOX_SLOT_SIZE;
+> +
+> +	ret = mbox_send_message(minfo->ch, &minfo->ipi_info);
+> +	mutex_unlock(&table[id].mutex_send);
+> +	if (ret < 0) {
+> +		dev_err(dev, "%s IPI%d send failed.\n", ipidev->name, id);
+> +		return IPI_MBOX_ERR;
+> +	}
+> +
+> +	return IPI_ACTION_DONE;
+> +}
+> +EXPORT_SYMBOL(mtk_vcp_ipc_send);
+
+Drop export - no users
+
+Anyway, every export must be GPL.
+
+> +
+> +/*
+> + * mtk_vcp_ipc_send_compl - send ipc command to MTK VCP
+> + *
+> + * @ipidev: VCP struct mtk_ipi_device handle
+> + * @id: id of the feature IPI
+> + * @data: message address
+> + * @len: message length
+> + * @timeout_ms:
+> + *
+> + * Return: Zero for success from mbox_send_message
+> + *         negative value for error
+> + */
+> +int mtk_vcp_ipc_send_compl(struct mtk_ipi_device *ipidev, u32 id,
+> +			   void *data, u32 len, u32 timeout_ms)
+> +{
+> +	struct device *dev;
+> +	struct mtk_mbox_info *minfo;
+> +	struct mtk_ipi_chan_table *table;
+> +	struct mtk_vcp_ipc *vcp_ipc;
+> +	int ret;
+> +
+> +	if (!ipidev || !ipidev->ipi_inited || !data)
+> +		return IPI_UNAVAILABLE;
+> +	vcp_ipc = ipidev->vcp_ipc;
+> +	if (!vcp_ipc)
+> +		return IPI_UNAVAILABLE;
+> +
+> +	table = ipidev->table;
+> +	dev = ipidev->vcp_ipc->dev;
+> +	minfo = &ipidev->vcp_ipc->info_table[table[id].mbox];
+> +	if (!minfo) {
+> +		dev_err(dev, "%s IPI%d minfo is invalid.\n", ipidev->name, id);
+> +		return IPI_UNAVAILABLE;
+> +	}
+> +
+> +	if (len > table[id].msg_size)
+> +		return IPI_MSG_TOO_BIG;
+> +	else if (!len)
+> +		len = table[id].msg_size;
+> +
+> +	mutex_lock(&table[id].mutex_send);
+> +
+> +	minfo->ipi_info.msg = data;
+> +	minfo->ipi_info.len = len;
+> +	minfo->ipi_info.id = id;
+> +	minfo->ipi_info.index = table[id].send_index;
+> +	minfo->ipi_info.slot_ofs = table[id].send_ofs * MBOX_SLOT_SIZE;
+> +
+> +	atomic_inc(&table[id].holder);
+> +
+> +	ret = mbox_send_message(minfo->ch, &minfo->ipi_info);
+> +	if (ret < 0) {
+> +		atomic_set(&table[id].holder, 0);
+> +		mutex_unlock(&table[id].mutex_send);
+> +		dev_err(dev, "%s IPI%d send failed.\n", ipidev->name, id);
+> +		return IPI_MBOX_ERR;
+> +	}
+> +
+> +	/* wait for completion */
+> +	ret = wait_for_completion_timeout(&table[id].notify,
+> +					  msecs_to_jiffies(timeout_ms));
+> +	atomic_set(&table[id].holder, 0);
+> +	if (ret > 0)
+> +		ret = IPI_ACTION_DONE;
+> +
+> +	mutex_unlock(&table[id].mutex_send);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(mtk_vcp_ipc_send_compl);
+
+NAK, no users.
+
+> +
+> +int mtk_vcp_mbox_ipc_register(struct mtk_ipi_device *ipidev, int id,
+> +			      mbox_pin_cb_t cb, void *prdata, void *msg)
+> +{
+> +	if (!ipidev || !ipidev->ipi_inited)
+> +		return IPI_DEV_ILLEGAL;
+> +	if (!msg)
+> +		return IPI_NO_MSGBUF;
+> +
+> +	if (ipidev->table[id].pin_buf)
+> +		return IPI_ALREADY_USED;
+> +	ipidev->table[id].mbox_pin_cb = cb;
+> +	ipidev->table[id].pin_buf = msg;
+> +	ipidev->table[id].prdata = prdata;
+> +
+> +	return IPI_ACTION_DONE;
+> +}
+> +EXPORT_SYMBOL(mtk_vcp_mbox_ipc_register);
+
+NAK, no users.
+
+
+> +
+> +int mtk_vcp_mbox_ipc_unregister(struct mtk_ipi_device *ipidev, int id)
+> +{
+> +	if (!ipidev || !ipidev->ipi_inited)
+> +		return IPI_DEV_ILLEGAL;
+> +
+> +	/* Drop the ipi and reset the record */
+> +	complete(&ipidev->table[id].notify);
+> +
+> +	ipidev->table[id].mbox_pin_cb = NULL;
+> +	ipidev->table[id].pin_buf = NULL;
+> +	ipidev->table[id].prdata = NULL;
+> +
+> +	return IPI_ACTION_DONE;
+> +}
+> +EXPORT_SYMBOL(mtk_vcp_mbox_ipc_unregister);
+
+NAK, no users.
+
+
+> +
+> +static void mtk_fill_in_entry(struct mtk_ipi_chan_table *entry, const u32 ipi_id,
+> +			      const struct mtk_mbox_table *mbdev)
+> +{
+> +	const struct mtk_mbox_send_table *mbox_send = mbdev->send_table;
+> +	u32 index;
+> +
+> +	for (index = 0; index < mbdev->send_count; index++) {
+> +		if (ipi_id != mbox_send[index].ipi_id)
+> +			continue;
+> +
+> +		entry->send_ofs = mbox_send[index].offset;
+> +		entry->send_index = mbox_send[index].pin_index;
+> +		entry->msg_size = mbox_send[index].msg_size;
+> +		entry->mbox = mbox_send[index].mbox_id;
+> +		return;
+> +	}
+> +
+> +	entry->mbox = -ENOENT;
+> +}
+> +
+> +int mtk_vcp_ipc_device_register(struct mtk_ipi_device *ipidev,
+> +				u32 ipi_chan_count, struct mtk_vcp_ipc *vcp_ipc)
+> +{
+> +	struct mtk_ipi_chan_table *ipi_chan_table;
+> +	struct mtk_mbox_table *mbdev;
+> +	u32 index;
+> +
+> +	if (!vcp_ipc || !ipidev)
+> +		return -EINVAL;
+> +
+> +	ipi_chan_table = kcalloc(ipi_chan_count,
+> +				 sizeof(struct mtk_ipi_chan_table), GFP_KERNEL);
+> +	if (!ipi_chan_table)
+> +		return -ENOMEM;
+> +
+> +	mbdev = vcp_ipc->mbdev;
+> +	vcp_ipc->ipi_priv = (void *)ipidev;
+> +	ipidev->table = ipi_chan_table;
+> +	ipidev->vcp_ipc = vcp_ipc;
+> +
+> +	for (index = 0; index < ipi_chan_count; index++) {
+> +		atomic_set(&ipi_chan_table[index].holder, 0);
+> +		mutex_init(&ipi_chan_table[index].mutex_send);
+> +		init_completion(&ipi_chan_table[index].notify);
+> +		mtk_fill_in_entry(&ipi_chan_table[index], index, mbdev);
+> +	}
+> +
+> +	ipidev->ipi_inited = 1;
+> +
+> +	dev_dbg(vcp_ipc->dev, "%s (with %d IPI) has registered.\n",
+> +		ipidev->name, ipi_chan_count);
+> +
+> +	return IPI_ACTION_DONE;
+> +}
+> +EXPORT_SYMBOL(mtk_vcp_ipc_device_register);
+
+NAK, no users.
+
+
+> +
+> +static int setup_mbox_table(struct mtk_mbox_table *mbdev, u32 mbox)
+> +{
+> +	struct mtk_mbox_send_table *mbox_send = &mbdev->send_table[0];
+> +	struct mtk_mbox_recv_table *mbox_recv = &mbdev->recv_table[0];
+> +	u32 i, last_ofs = 0, last_idx = 0, last_slot = 0, last_sz = 0;
+> +
+> +	for (i = 0; i < mbdev->send_count; i++) {
+> +		if (mbox == mbox_send[i].mbox_id) {
+> +			mbox_send[i].offset = last_ofs + last_slot;
+> +			mbox_send[i].pin_index = last_idx + last_sz;
+> +			last_idx = mbox_send[i].pin_index;
+> +			last_sz = DIV_ROUND_UP(mbox_send[i].msg_size, MBOX_SLOT_ALIGN);
+> +			last_ofs = last_sz * MBOX_SLOT_ALIGN;
+> +			last_slot = last_idx * MBOX_SLOT_ALIGN;
+> +		} else if (mbox < mbox_send[i].mbox_id) {
+> +			/* no need to search the rest id */
+> +			break;
+> +		}
+> +	}
+> +
+> +	for (i = 0; i < mbdev->recv_count; i++) {
+> +		if (mbox == mbox_recv[i].mbox_id) {
+> +			mbox_recv[i].offset = last_ofs + last_slot;
+> +			mbox_recv[i].pin_index = last_idx + last_sz;
+> +			last_idx = mbox_recv[i].pin_index;
+> +			last_sz = DIV_ROUND_UP(mbox_recv[i].msg_size, MBOX_SLOT_ALIGN);
+> +			last_ofs = last_sz * MBOX_SLOT_ALIGN;
+> +			last_slot = last_idx * MBOX_SLOT_ALIGN;
+> +		} else if (mbox < mbox_recv[i].mbox_id) {
+> +			/* no need to search the rest id */
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (last_idx > MBOX_MAX_PIN || (last_ofs + last_slot) > MAX_SLOT_NUM)
+> +		return -EINVAL;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_vcp_ipc_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_vcp_ipc *vcp_ipc;
+> +	struct mbox_client *cl;
+> +	struct mtk_mbox_info *minfo;
+> +	int ret;
+> +	u32 mbox, i;
+> +	struct mtk_mbox_table *mbox_data = dev_get_platdata(dev);
+> +
+> +	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
+> +
+> +	vcp_ipc = devm_kzalloc(dev, sizeof(*vcp_ipc), GFP_KERNEL);
+> +	if (!vcp_ipc)
+> +		return -ENOMEM;
+> +
+> +	if (!mbox_data) {
+
+Check goes immediately after declaration. I doubt it is useful in the
+first place as this cannot even happen...
+
+
+> +		dev_err(dev, "No platform data available\n");
+
+No, drop. Cannot happen or fix your drivers. Who provides the platdata here?
+
+> +		return -EINVAL;
+> +	}
+> +	vcp_ipc->mbdev = mbox_data;
+> +
+> +	/* alloc and init mmup_mbox_info */
+> +	vcp_ipc->info_table = vzalloc(sizeof(*vcp_ipc->info_table) * VCP_MBOX_NUM);
+> +	if (!vcp_ipc->info_table)
+> +		return -ENOMEM;
+> +
+> +	/* create mbox dev */
+> +	for (mbox = 0; mbox < VCP_MBOX_NUM; mbox++) {
+> +		minfo = &vcp_ipc->info_table[mbox];
+> +		minfo->mbox_id = mbox;
+> +		minfo->vcp_ipc = vcp_ipc;
+> +		spin_lock_init(&minfo->mbox_lock);
+> +
+> +		ret = setup_mbox_table(vcp_ipc->mbdev, mbox);
+> +		if (ret)
+> +			return ret;
+> +
+> +		cl = &minfo->cl;
+> +		cl->dev = &pdev->dev;
+> +		cl->tx_block = false;
+> +		cl->knows_txdone = false;
+> +		cl->tx_prepare = NULL;
+> +		cl->rx_callback = mtk_vcp_ipc_recv;
+> +		minfo->ch = mbox_request_channel_byname(cl, mbox_names[mbox]);
+> +		if (IS_ERR(minfo->ch)) {
+> +			ret = PTR_ERR(minfo->ch);
+> +			if (ret != -EPROBE_DEFER)
+> +				dev_err(dev, "Failed to request mbox channel %s ret %d\n",
+> +					mbox_names[mbox], ret);
+
+Do not open code dev_err_probe.
+
+> +
+> +			for (i = 0; i < mbox; i++) {
+> +				minfo = &vcp_ipc->info_table[i];
+> +				mbox_free_channel(minfo->ch);
+> +			}
+> +
+> +			vfree(vcp_ipc->info_table);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	vcp_ipc->dev = dev;
+> +	dev_set_drvdata(dev, vcp_ipc);
+> +	dev_dbg(dev, "MTK VCP IPC initialized\n");
+
+No, drop
 
 
 Best regards,
