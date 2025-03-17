@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A6D7C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 14:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FCCC28B30
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 14:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tc5fmW49DrIEHDEe+iWLNAYvhS+sEljANBQpTnG0J8I=; b=rXdw9Fg7+rysN19HqsNvbZgnLA
-	Ks5HB+77tjI+e9//yVRibOIAvfVb6xaWCbe+AyeRjNpiRhRlW/Nbut12E0TQ/NG+EygmVJdyxP9rX
-	ekzaFjEPnHd6eGl4YRA5aUY4Tj5hTwz2wPsbzy3qLQijIfR5ZhFLjkO98g1++K737MBsukXcDQa5W
-	isNzIW4TfzHhaEjJEXqdBs5XERY/gk3VUOc5kwh+2H9cS5TJGEOJbYA53/iYcRZxHYCd8I/jmTpUh
-	aIHiTC5dvvC+rB2YJ24FJ6BUaAe4VYHLetlt6hL3su06bmuiYMluKlynyDFjJUQ+Vu2uOwtg8y7kG
-	Z/Nh7XHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=w2PUHcSecse+pehFOqz8LoEZY+5oNJsWhoVGSb9IYhM=; b=sZK+IAuDlmQ/4ym70H/uAygtf4
+	4yS7coJZZaN6LxiNn9Fl/N0qIWoO4lPkmtqy5Uo1TFzWWEjInn9DXF00MFbjwCI8TuUoGNPAWw2P6
+	NqAkcwvk5vjPhUzRpMNAWSZtZg4PXOIiLIAwbg+6ESvEM/V/iZwkWudVfQrev1tW4DqeQIb9HtKpW
+	D7wOnIOYqjvfoK87WR2WPyEKQ5KFp6qg+JbtZ+sPg/spqnU8NTF9OtCqYAknVwrQDkwtwwVbUSq65
+	P7BfmmlCBrAekuMLwdM9JOY5JRfTbSFW7Z3r6S9bnTWlvCw1IVMh7XYYdwVpKsIyKVx7FeZF7QX2e
+	c//gN15Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuBj3-000000031D6-1Llu;
-	Mon, 17 Mar 2025 14:45:57 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuBrg-000000032bg-3Hva;
+	Mon, 17 Mar 2025 14:54:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuBSF-00000002wsH-1sb8;
-	Mon, 17 Mar 2025 14:28:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 07D7FA4419F;
-	Mon, 17 Mar 2025 14:23:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13C08C4CEE3;
-	Mon, 17 Mar 2025 14:28:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742221714;
-	bh=icj7nB3bxRTzLn+Ln71aWFZgRw7kuWe4zA5Mo+qp1Wg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=M67Ms5tRtJqZNjr4HpbUvBavc5Q4oDs6jmFypIre7oRXBHxSlAr+Ij/96AkfPIy/k
-	 x3XKqTWIt5StT89G2yFALXMp5n0Dc2R9d1XGVmIYjb8obSfGtSL9i5zA8rIbfwo86j
-	 Hn3twjfJj7Lw4RRZyu7iC4/sPmt8VFW26lvCec+S3Qqy+DafKkfinjfO+E6iAXte1H
-	 w+06FBgdTb+o42RcpsUV2/jVRV3RE0mvvBIqVls1VFsRXhpIzNwBW/qbSuE4pyUyf1
-	 OEd6vE30XljVHM23pWPS1rZpl/UJpX8OyVtdeiP0tZHCPLt0oC6A1AMkT5ogO+2g/D
-	 kFhsg8FMePZbA==
-Date: Mon, 17 Mar 2025 09:28:32 -0500
-From: Rob Herring <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1tuBre-000000032Zq-2STM;
+	Mon, 17 Mar 2025 14:54:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742223275; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=M1VNdrAj5oc9FpRE6pFNkZ4u0JB4zbIPDuYhAuq7Ix2zKDlpOp3dHgrw4FiBPhcnOGf6Wz9GzkA9s5IyFOpjIuyBGac6DFi5cVGptceqMa0lUmHB7++DlPY6md3ac12/C2P0kLpRtju91o7KeRL835xWGQQffDODqIcTiichgpE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742223275; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=w2PUHcSecse+pehFOqz8LoEZY+5oNJsWhoVGSb9IYhM=; 
+	b=kTrKYomtic4qkvQ27g5u/wSJv60IzY8NWyZisxqxCo1s5gXeo7Lz7maGNq2oAQKDwqnB0VvNPV2V8+bpERJozMwQOwbKjs0PfPkuVpsIqozq7Odt7+LhdTopGZaBPVJXIynr9dva9sZcoh3DjkeOI9qpFVoZKA1Yz2nS/rRVHVE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742223275;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=w2PUHcSecse+pehFOqz8LoEZY+5oNJsWhoVGSb9IYhM=;
+	b=Lm6le1K+gNlNVDiix2eq3N357e3nBMmoZy+how0rlLpqnYfRfCoJDavOZAnZZUWI
+	P0oFPC9Ko0Xui9Y5iY3KGnbCso3xn85Do5l+e4UsBMFZ3dFNFZ4opzuhTFOWSTLwwMR
+	1pL9gYJ1bM9PHh89QsdFkMpCbcU9J1a+ek+8Vv3g=
+Received: by mx.zohomail.com with SMTPS id 1742223273794544.7426387763203;
+	Mon, 17 Mar 2025 07:54:33 -0700 (PDT)
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+To: dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org
+Cc: boris.brezillon@collabora.com,
+	robh@kernel.org,
+	steven.price@arm.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	kernel@collabora.com,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v13 05/14] dt-bindings: mfd: Document support
- for Airoha AN8855 Switch SoC
-Message-ID: <20250317142832.GA4116523-robh@kernel.org>
-References: <20250315154407.26304-1-ansuelsmth@gmail.com>
- <20250315154407.26304-6-ansuelsmth@gmail.com>
+	sjoerd@collabora.com,
+	angelogioacchino.delregno@collabora.com,
+	Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Subject: [PATCH v4 0/6] drm/panfrost: Add support for AARCH64_4K page table format
+Date: Mon, 17 Mar 2025 11:52:39 -0300
+Message-ID: <20250317145245.910566-1-ariel.dalessandro@collabora.com>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250315154407.26304-6-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_072835_624544_EB41CF98 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20250317_075450_676423_62C8A532 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,233 +88,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 15, 2025 at 04:43:45PM +0100, Christian Marangi wrote:
-> Document support for Airoha AN8855 Switch SoC. This SoC expose various
-> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
-> 
-> It does also support i2c and timers but those are not currently
-> supported/used.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/mfd/airoha,an8855.yaml           | 182 ++++++++++++++++++
->  MAINTAINERS                                   |   1 +
->  2 files changed, 183 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> new file mode 100644
-> index 000000000000..a59a23056b3a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> @@ -0,0 +1,182 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 Switch SoC
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description: >
-> +  Airoha AN8855 Switch is a SoC that expose various peripherals like an
-> +  Ethernet Switch, a NVMEM provider and Ethernet PHYs.
-> +
-> +  It does also support i2c and timers but those are not currently
-> +  supported/used.
-> +
-> +properties:
-> +  compatible:
-> +    const: airoha,an8855
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  reset-gpios: true
-> +
-> +  efuse:
-> +    type: object
-> +    $ref: /schemas/nvmem/airoha,an8855-efuse.yaml
-> +    description:
-> +      EFUSE exposed by the Airoha AN8855 Switch. This child node definition
-> +      should follow the bindings specified in
-> +      Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+Hi all,
 
-No need to list the schema twice. Drop the 2nd sentence.
+This is a new iteration on Panfrost support for AARCH64_4K page table
+format. The main reason behind this patchset is that MediaTek MT8188 SoC
+(ARM Mali-G57 MC3 GPU) constantly faults due to the actual Panfrost cache
+configuration.
 
-> +
-> +  ethernet-switch:
-> +    type: object
-> +    $ref: /schemas/net/dsa/airoha,an8855-switch.yaml
-> +    description:
-> +      Switch exposed by the Airoha AN8855 Switch. This child node definition
-> +      should follow the bindings specified in
-> +      Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+Currently, Panfrost only supports MMU configuration in "LEGACY" (as Bifrost
+calls it) mode, a (modified) version of LPAE "Large Physical Address
+Extension", which in Linux we've called "mali_lpae".
 
-ditto
+This patchset adds support for conditionally enabling AARCH64_4K page table
+format. To achieve that, a "GPU optional quirks" field was added to
+`struct panfrost_features` with the related flag.
 
-> +
-> +  mdio:
-> +    type: object
-> +    $ref: /schemas/net/airoha,an8855-mdio.yaml
-> +    description:
-> +      MDIO exposed by the Airoha AN8855 Switch. This child node definition
-> +      should follow the bindings specified in
-> +      Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+Note that, in order to enable AARCH64_4K mode, the GPU variant must have
+the HW_FEATURE_AARCH64_MMU feature flag present.
 
-ditto
+The patchset only enables the new format on Mediatek MT8188 and MT8192,
+which have been tested on a Mediatek Genio 700 EVK (MT8390) and Mediatek
+Genio 1200 EVK (MT8395) boards respectively.
 
-> +
-> +required:
-> +  - compatible
-> +  - reg
+Thanks!
 
-The child nodes are optional?
+Changes in v4:
+* Fixed panfrost_mmu_cfg_init() return value on warning.
 
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +
-> +    mdio {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        soc@1 {
-> +            compatible = "airoha,an8855";
-> +            reg = <1>;
-> +
-> +            reset-gpios = <&pio 39 0>;
-> +
-> +            efuse {
-> +                compatible = "airoha,an8855-efuse";
-> +
-> +                #nvmem-cell-cells = <0>;
-> +
-> +                nvmem-layout {
-> +                    compatible = "fixed-layout";
-> +                    #address-cells = <1>;
-> +                    #size-cells = <1>;
-> +
-> +                    shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
-> +                       reg = <0xc 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
-> +                        reg = <0x10 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
-> +                        reg = <0x14 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
-> +                       reg = <0x18 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
-> +                        reg = <0x1c 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
-> +                        reg = <0x20 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
-> +                       reg = <0x24 0x4>;
-> +                    };
-> +
-> +                    shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
-> +                        reg = <0x28 0x4>;
-> +                    };
-> +                };
-> +            };
-> +
-> +            ethernet-switch {
-> +                compatible = "airoha,an8855-switch";
-> +
-> +                ports {
-> +                    #address-cells = <1>;
-> +                    #size-cells = <0>;
-> +
-> +                    port@0 {
-> +                        reg = <0>;
-> +                        label = "lan1";
-> +                        phy-mode = "internal";
-> +                        phy-handle = <&internal_phy1>;
-> +                    };
-> +
-> +                    port@1 {
-> +                        reg = <1>;
-> +                        label = "lan2";
-> +                        phy-mode = "internal";
-> +                        phy-handle = <&internal_phy2>;
-> +                    };
-> +
-> +                    port@5 {
-> +                        reg = <5>;
-> +                        label = "cpu";
-> +                        ethernet = <&gmac0>;
-> +                        phy-mode = "2500base-x";
-> +
-> +                        fixed-link {
-> +                            speed = <2500>;
-> +                            full-duplex;
-> +                            pause;
-> +                        };
-> +                    };
-> +                };
-> +            };
-> +
-> +            mdio {
-> +                compatible = "airoha,an8855-mdio";
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                internal_phy1: phy@1 {
-> +                  compatible = "ethernet-phy-idc0ff.0410",
-> +                               "ethernet-phy-ieee802.3-c45";
-> +                  reg = <1>;
-> +
-> +                  nvmem-cells = <&shift_sel_port0_tx_a>,
-> +                      <&shift_sel_port0_tx_b>,
-> +                      <&shift_sel_port0_tx_c>,
-> +                      <&shift_sel_port0_tx_d>;
-> +                  nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +
-> +                internal_phy2: phy@2 {
-> +                  compatible = "ethernet-phy-idc0ff.0410",
-> +                               "ethernet-phy-ieee802.3-c45";
-> +                  reg = <2>;
-> +
-> +                  nvmem-cells = <&shift_sel_port1_tx_a>,
-> +                      <&shift_sel_port1_tx_b>,
-> +                      <&shift_sel_port1_tx_c>,
-> +                      <&shift_sel_port1_tx_d>;
-> +                  nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +            };
-> +        };
-> +    };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 45f4bb8deb0d..65709e47adc7 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -725,6 +725,7 @@ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
->  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
->  L:	netdev@vger.kernel.org
->  S:	Maintained
-> +F:	Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
->  F:	Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
->  F:	Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
->  F:	Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> -- 
-> 2.48.1
-> 
+Changes in v3:
+* Fixed error handling in panfrost_mmu_ctx_create().
+
+Changes in v2:
+* Dropped panfrost_mmu_enable/disable unification.
+* Rename gpu_configs as gpu_quirks.
+* Added error handling on page table not properly aligned.
+* Enabled AARCH64_4K format on MediaTek MT8192 as well.
+* Minor fixes.
+
+Changes in v1:
+* Added "Set IOMMU_CACHE flag" patch.
+* Replaced `panfrost_mmu->enable()` function pointer by `cfg` struct
+prepared during init time.
+* Made mali_lpae/aarch64_4k name more clear.
+* Added GPU_CONFIG_AARCH64_4K flag to enable AARCH64_4K page table
+  format.
+* Enabled AARCH64_4K mode only on mediatek-mt8188.
+
+Ariel D'Alessandro (6):
+  drm/panfrost: Set IOMMU_CACHE flag
+  drm/panfrost: Use GPU_MMU_FEATURES_VA_BITS/PA_BITS macros
+  drm/panfrost: Set HW_FEATURE_AARCH64_MMU feature flag on Bifrost
+    models
+  drm/panfrost: Add support for AARCH64_4K page table format
+  drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8188
+  drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8192
+
+ drivers/gpu/drm/panfrost/panfrost_device.h   |  16 ++
+ drivers/gpu/drm/panfrost/panfrost_drv.c      |   2 +
+ drivers/gpu/drm/panfrost/panfrost_features.h |   3 +
+ drivers/gpu/drm/panfrost/panfrost_mmu.c      | 150 +++++++++++++++++--
+ drivers/gpu/drm/panfrost/panfrost_regs.h     |  36 +++++
+ 5 files changed, 196 insertions(+), 11 deletions(-)
+
+-- 
+2.47.2
+
 
