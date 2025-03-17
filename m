@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE18C35FF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 10:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A6C7C282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 10:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y741dWcvCY6nAM6VzGo7rDnzA56dLYDjkgr+XSQ3oqY=; b=hIXKJe9dJX4X/JmUPe/NXhiy7M
-	JF1XtDmtrIgErw54OyIWGHuMg3c3kiKIWWJduEJPP4J/UyvES4KUtJ5XOgV0nefSRjHqRQfCPjwp5
-	L1sVBAbpgfxCSKWQo4vqBp+gOgqZxKfC5C2Im/hbpNk60/a4aEST5/s4kEeX/GVOGEZbWa/MHtca/
-	M7p6J8D342MtBFplqP2McgkmKofmX6cuqNSBH6CKQrzTZYHcraji1yaWNFoHIpbTDJF3tbcqpUVVd
-	h1EePXOyQd5U4DUcr5SCgNTCl7fYyKEN9pbS8m6abpFU0K0LgpuoniocSBNozcKj9MHCptxzEIaHj
-	+anMR8YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DHLKtqKokb5/ORaPjnoa21RvlOzXzzI+TwJQN4jKmm8=; b=bAWu2U9ZvN3qqKMqH6bW2jnIRy
+	y5N8qbJdRfMqgdqVeJipy0BwfEVoYizJNuD3Mf/E0lwgqaN6uDBBlXGmlRXog0sBOhpXUHxME4JZP
+	S5msfuEH41tA/5tsaZ2bSHc7ypB0sjKhvf5evVjh0DrqkBS8ArchvnbyQ+PIvkb9R96kAoYS8JaXz
+	IuRudfdolv375PHwdxEu8N0u6N7EoUqsXZLXdXvOcIsMDPjXx5aasU3N3dRuaWKdDqAK47FatLnc6
+	JeXeLyjLf6Cu66LlXX2galFQCvvbY2fzE6CQRKOOu53ArjR6J/lnd7k9uKoRuzKcxA55QXJBttrLX
+	1Q2dqSDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu7gE-000000028uB-0BNb;
-	Mon, 17 Mar 2025 10:26:46 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tu85W-00000002GCY-1mQi;
+	Mon, 17 Mar 2025 10:52:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu7XN-000000026GG-48A9;
-	Mon, 17 Mar 2025 10:17:39 +0000
+	id 1tu82E-00000002FPF-1KE8;
+	Mon, 17 Mar 2025 10:49:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B64DEA489BE;
-	Mon, 17 Mar 2025 10:12:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EABBDC4CEE3;
-	Mon, 17 Mar 2025 10:17:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B01E75C54E5;
+	Mon, 17 Mar 2025 10:47:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62BD1C4CEE3;
+	Mon, 17 Mar 2025 10:49:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742206656;
-	bh=0h+XlZja1L0Hzx3E+PGSZyubLgYa+1MEZ5jOyeF2nFY=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=SQQd7VAp97n+EP2wnT7EhjnjSQYMqPggqRuKwocLOXd4I5bP+xFBTTUFaPGOfE5eF
-	 YwYoZrchZ/RrDX/Gxs5SvEqk8W0kzi0kaetDdptZ2bOrqdfqGl6gLcKl4BBgftL2F6
-	 KjuBRH4H7ApRz69XnWSmeU7boPakb18YeLqtRQHjJF4M2m4mdjLOFfBVfXzNRB43b4
-	 Cyupa7TPcaUOErZG4fU1KboYM28OAba2Dew+dunNgzt7SUI0dTsvegWtRGXg2+9x45
-	 kQXyuse2Je3cDFQGLPJxgdI55b5Q3jKZfNxdprMDc5MDQgwgeacAqOXwh0A2RaUvIN
-	 wkOFHAJThJiwg==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- amergnat@baylibre.com, linux-sound@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Chen Ni <nichen@iscas.ac.cn>
-In-Reply-To: <20250312032600.1235158-1-nichen@iscas.ac.cn>
-References: <20250312032600.1235158-1-nichen@iscas.ac.cn>
-Subject: Re: [PATCH] ASoC: mt8365: remove unnecessary NULL check before
- clk_disable_unprepare()
-Message-Id: <174220665367.86423.10873134642092088398.b4-ty@kernel.org>
-Date: Mon, 17 Mar 2025 10:17:33 +0000
+	s=k20201202; t=1742208569;
+	bh=DHLKtqKokb5/ORaPjnoa21RvlOzXzzI+TwJQN4jKmm8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FTMTEiayCOljtv8GLrylo8HGHweUsQRLbmaUiKxoofC4/CYB8N2vxqCoTaE1F5Z6D
+	 A2k5slyoogC1NQGauUeuQTMSB4yYKO+KrpsOJqfiHJLQDZBfQdlJJCwcGRiwGzMuN/
+	 Hy3m/rCrQPwnptuswFLkxHEzWN2b4U+hha7f8aEn9/uT4elbWZYqcjGej2yWiDPskr
+	 WfJuU8/qfKryhJoH3KcgN5y2dWHwn7x02FTiz6DXznKfslnJBwlQwxCEw2mWVWmMT9
+	 7dF9xr3GXqRs+0Na8zNmlP5ny5KLkY+VRdQ5fHl0TaTdbRdRI3msX75tfZo8dahRl7
+	 bM+FkVf599Q3Q==
+Date: Mon, 17 Mar 2025 11:49:24 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Lu Tang =?utf-8?B?KOaxpOeSkCk=?= <Lu.Tang@mediatek.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, 
+	Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	Linus Walleij <linus.walleij@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Stephen Boyd <sboyd@kernel.org>, 
+	Chen Zhong =?utf-8?B?KOmSn+i+sCk=?= <Chen.Zhong@mediatek.com>, Sen Chu =?utf-8?B?KOWCqOajrik=?= <Sen.Chu@mediatek.com>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: =?utf-8?B?5Zue5aSN?= =?utf-8?Q?=3A?= [PATCH 5/5] dt-bindings:
+ pmic: mediatek: Add pmic documents
+Message-ID: <20250317-mighty-dolphin-of-downpour-e7a9f5@krzk-bin>
+References: <20250314073307.25092-1-Lu.Tang@mediatek.com>
+ <20250314073307.25092-6-Lu.Tang@mediatek.com>
+ <SEZPR03MB6891E21CD04880AB1AC91BFC80D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <SEZPR03MB6891E21CD04880AB1AC91BFC80D22@SEZPR03MB6891.apcprd03.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_031738_105985_D9EECB55 
-X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-CacheID: sfid-20250317_034930_472078_D09D5E15 
+X-CRM114-Status: UNSURE (   6.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,38 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 12 Mar 2025 11:26:00 +0800, Chen Ni wrote:
-> clk_disable_unprepare() already checks NULL by using IS_ERR_OR_NULL.
-> Remove unneeded NULL check for clk here.
-> 
-> 
+On Fri, Mar 14, 2025 at 09:01:11AM +0000, Lu Tang (=E6=B1=A4=E7=92=90) wrot=
+e:
+> Update email
+>=20
+> -----=E9=82=AE=E4=BB=B6=E5=8E=9F=E4=BB=B6-----
+> =E5=8F=91=E4=BB=B6=E4=BA=BA: Lu.Tang <Lu.Tang@mediatek.com>=20
+> =E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2025=E5=B9=B43=E6=9C=8814=E6=97=A5 =
+15:33
+> =E6=94=B6=E4=BB=B6=E4=BA=BA: Jonathan Cameron <jic23@kernel.org>; Lars-Pe=
+ter Clausen <lars@metafoo.de>; Rob Herring <robh@kernel.org>; Krzysztof Koz=
+lowski <krzk+dt@kernel.org>; Conor Dooley <conor+dt@kernel.org>; Dmitry Tor=
+okhov <dmitry.torokhov@gmail.com>; Lee Jones <lee@kernel.org>; Matthias Bru=
+gger <matthias.bgg@gmail.com>; AngeloGioacchino Del Regno <angelogioacchino=
+=2Edelregno@collabora.com>; Sean Wang <sean.wang@kernel.org>; Linus Walleij=
+ <linus.walleij@linaro.org>; Liam Girdwood <lgirdwood@gmail.com>; Mark Brow=
+n <broonie@kernel.org>; Stephen Boyd <sboyd@kernel.org>; Chen Zhong (=E9=92=
+=9F=E8=BE=B0) <Chen.Zhong@mediatek.com>; Sen Chu <shen.chu@mediatek.com>
+> =E6=8A=84=E9=80=81: linux-iio@vger.kernel.org; devicetree@vger.kernel.org=
+; linux-kernel@vger.kernel.org; linux-input@vger.kernel.org; linux-arm-kern=
+el@lists.infradead.org; linux-mediatek@lists.infradead.org; linux-gpio@vger=
+=2Ekernel.org; Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_=
+Upstream_Group@mediatek.com>; Lu Tang (=E6=B1=A4=E7=92=90) <Lu.Tang@mediate=
+k.com>
+> =E4=B8=BB=E9=A2=98: [PATCH 5/5] dt-bindings: pmic: mediatek: Add pmic doc=
+uments
 
-Applied to
+The amount of errors shown by checkpatch on this is just shocking.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: mt8365: remove unnecessary NULL check before clk_disable_unprepare()
-      commit: f37ab219a3336ef787ce4babd20510f060f6f48d
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Best regards,
+Krzysztof
 
 
