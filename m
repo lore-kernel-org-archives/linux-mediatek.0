@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BBD7C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 14:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD4EC28B30
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 14:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DYCdGIX6UIZ2mXOZfI22r/coPeU9+PWBzhiqF45CHNI=; b=k7mMds1smQWK+r5iJnHtAMsxLN
-	MMGqbaCa+QswVqUwwMLQ+hQjW3buSrpofTqMOn+NTtZQdcwUgNH0LOj7xLVp7i/Wr8ZbLJ8Rbq7UX
-	mZW4xIZ4MSHF149sercO51S9RuM+ibQbDBdVclSenNEJAm8mnibgVZYKPuj0qXG3DfrE+iODJbUeS
-	qBnXMAC9EzAvwOpsAui9DH8SVL2AwHl+w503zYxElmA2kB6Ark9EYtHPLc3pedtOeDX33pbnQeOqn
-	gd5+ydVxf4oWNXFqtjuks+4vHZShvbQDSF/WlYEEwvTISLONWtZ55kXnPDija/SxbMr9xln6ODWjY
-	EeWCbl9Q==;
+	bh=juhBGFrnJEtXmwmWUkOgurD4ow1+cM0JUbcI3gD4F48=; b=BCU6erpVmrxoAnDWSifCR81g85
+	ykjkbpn7t5CXVu2iDX91lk3mnVzGnfZym4H3LeHK9Hw5AehuwkwtTHWQtaNWHFwFYU7kTlcWjxaFA
+	anOQK6kvDuMyQb6T2S8U2ecAO96xoh65E9b2Ga6dHY1hjFmD1z32/5H7w9kRxz0diwXv9wRluWzaH
+	r5931g/eTV/eZprISz8XpjVRBENs1rfGyNj9TACfJbEWbLlSBZM7U4S4QUvV2MsrlK7A2GiB2n+7/
+	LWexjIQ5I1SHXy72rR1l1m/UqWCJdqvy7oTokhEkXQXkMyse4b2w3zqpqDNgXNJ2S595KeuNil86P
+	WlhC+oqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuB8h-00000002r0U-11Lr;
-	Mon, 17 Mar 2025 14:08:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tuBj3-000000031DF-2fpP;
+	Mon, 17 Mar 2025 14:45:57 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuAlt-00000002mp4-1l0P;
-	Mon, 17 Mar 2025 13:44:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742219087;
-	bh=JVmdQyfU6VNsa3dSvwc3s1VX9bvBvzsEOdDC3T1SiXg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=hym0kP32VXeZ9Y8swpAitB2ywPMwWIR5TMF0ZqbdOKyF5ZCGo/j69C8vFQo1klT9a
-	 KZHEs1A4efzgf8ekooXaM3aeUER2GS/vKf1xtfCMyT8gLn2hyi1XhAi8Uysd0tUVT2
-	 rVeECek1J5hB+k0sg3QHTjhhpOuuRu3bTfbVAMPPYFoPRsv9x1J37Wu9wDPQQr5Jpe
-	 z+c73PZyXXL/SkZyTRx0vxSLu0QzAOt9xqM1toDpL1KMUnFhiKD4nh3QXhsSk+aFmh
-	 joKJC3NpkTf0DWN0JcVyed1m9YzGiY7avd49Vu1INRQ+CtF+ZuFK/l5k+kPP83q1Us
-	 enqrkhPs5W1KQ==
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 91ADA17E0899;
-	Mon, 17 Mar 2025 14:44:46 +0100 (CET)
-Date: Mon, 17 Mar 2025 14:44:36 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
- simona@ffwll.ch, kernel@collabora.com, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com,
- angelogioacchino.delregno@collabora.com
+	id 1tuBV4-00000002xjs-0Vtj;
+	Mon, 17 Mar 2025 14:31:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742221868; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=BJpEgdkNOnSiwPrSUBLBl5lYM+9hFEOctSz9K9PKKQtT5xnLZulbT4jKlx5w5CyrA7bRjPfUchYlYQNkDIwJ3I8ppedq7Dv1VUg5TyTlG2+HY/vwjLnveGsb3+E7+EoKkbk06OmOsrqbOGSgrmMMWNGes0MRf19ZxaeGjSmMx2U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742221868; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=juhBGFrnJEtXmwmWUkOgurD4ow1+cM0JUbcI3gD4F48=; 
+	b=ecgMK9cayVciXKLAu5E0ZSdMZjVvZf7lm927GcnIz1VU3UBjjcCpsJr6CrO7K2f9wtg5uRocgz3DxeRYM18tgoBdiZTywAnL0hqyXDt7roYcgzXKcBYO7FVAEnXnxnPBUWt3hueS0tglURSEXOwtsGM2mod3r3cMkKSr9mVwDrU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742221868;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=juhBGFrnJEtXmwmWUkOgurD4ow1+cM0JUbcI3gD4F48=;
+	b=CiAXpq8Nrl/AHbcs52PL//215ZsdMXGiJpd1bLL0pvgHIbsjUTw4dPW6Xg9FdhHh
+	VyKaKpzY/kQP6q94ru+oCbZfFGzK9UMFu98OW0CsHa8T49RsZCBg6kxjO7W9/aGUXG1
+	zrh0Fz3mtauDQ+mUb70hAcN9IV4RZYToVMNZEumQ=
+Received: by mx.zohomail.com with SMTPS id 1742221866050461.80081265142326;
+	Mon, 17 Mar 2025 07:31:06 -0700 (PDT)
+Message-ID: <992360e3-632c-4a0e-bb84-a72be7d7cd37@collabora.com>
+Date: Mon, 17 Mar 2025 11:30:59 -0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 4/6] drm/panfrost: Add support for AARCH64_4K page
  table format
-Message-ID: <20250317144436.2bcc17ed@collabora.com>
-In-Reply-To: <20250317124044.16257-5-ariel.dalessandro@collabora.com>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ robh@kernel.org, steven.price@arm.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com,
+ angelogioacchino.delregno@collabora.com
 References: <20250317124044.16257-1-ariel.dalessandro@collabora.com>
-	<20250317124044.16257-5-ariel.dalessandro@collabora.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+ <20250317124044.16257-5-ariel.dalessandro@collabora.com>
+ <20250317144436.2bcc17ed@collabora.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <20250317144436.2bcc17ed@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_064449_642667_2E3AD208 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250317_073130_224941_8C3C1860 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +85,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Mar 2025 09:40:42 -0300
-Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
+Boris,
 
-> +static int panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
-> +				  enum io_pgtable_fmt fmt)
-> +{
-> +	struct panfrost_device *pfdev = mmu->pfdev;
-> +
-> +	switch (fmt) {
-> +	case ARM_64_LPAE_S1:
-> +		return mmu_cfg_init_aarch64_4k(mmu);
-> +	case ARM_MALI_LPAE:
-> +		return mmu_cfg_init_mali_lpae(mmu);
-> +	default:
-> +		/* This should never happen */
-> +		return drm_WARN_ON(pfdev->ddev, -EINVAL);
+On 3/17/25 10:44 AM, Boris Brezillon wrote:
+> On Mon, 17 Mar 2025 09:40:42 -0300
+> Ariel D'Alessandro <ariel.dalessandro@collabora.com> wrote:
+> 
+>> +static int panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
+>> +				  enum io_pgtable_fmt fmt)
+>> +{
+>> +	struct panfrost_device *pfdev = mmu->pfdev;
+>> +
+>> +	switch (fmt) {
+>> +	case ARM_64_LPAE_S1:
+>> +		return mmu_cfg_init_aarch64_4k(mmu);
+>> +	case ARM_MALI_LPAE:
+>> +		return mmu_cfg_init_mali_lpae(mmu);
+>> +	default:
+>> +		/* This should never happen */
+>> +		return drm_WARN_ON(pfdev->ddev, -EINVAL);
+> 
+> This won't return -EINVAL, but !!(-EINVAL), AKA true. We should do
+> 
+> 	default:
+> 		drm_WARN(ptdev->ddev, "Invalid pgtable format");
+> 		return -EINVAL;
+> 
+> instead.
 
-This won't return -EINVAL, but !!(-EINVAL), AKA true. We should do
+Ah, good catch. I missed that from the WARN_ON definition:
 
-	default:
-		drm_WARN(ptdev->ddev, "Invalid pgtable format");
-		return -EINVAL;
+         int __ret_warn_on = !!(condition);
 
-instead.
+Thanks, will fix in v4.
 
-> +	}
-> +}
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
