@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2CD3C282EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 18:50:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7F5DC282EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 21:48:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wtudna5zSAodN/OgEPlADtyXBWCbThURo2yxyL7blUU=; b=hXb/oToDBZMAbAiAnX8/4As+4z
-	EweyT8EYj0NNeljliJvkkzelMyU6GN9TpdePjBfjasQ+Wv//2Afi7ZLKx1Jhasko4NXmSTJlO8u95
-	8zvTifw1xIGw/bImHWO/9MjoZ21j8CcDvuk0lJa2oc8MbhFvyEsdr0vGyP5TWUruacpmmenuuKubE
-	OVYP0CRGWEuZBhv+A1hFXLtIuBg/KTrIfNTCNe3Da2HAdmLp6zFpsoZmR/8YHzuLEAsTCpjxC7V7P
-	cBgNLAkiJFzaTx5xufn/LD/chk4Ct2wmovkdI2miA82pmYmAv6WPaHDaxbS1i0pj+aI0KyMzMbmgS
-	r3ACaV2A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ewpKNshFBS1pGdHpPMbo/Sgtgy9vH2MjEKkjJzB9Ygk=; b=EcpQK9tCEC4ZrNCg5J/4aOSbsr
+	+ZSZrcsoL0hYHLSjYMkdqm5yxyXV1WWLJGPiP53q0cHCWNWj97xsk3VGqEykLD0zl4Lk/rpurWFga
+	mPFWlMZ8UkTYRaYOIgYSnu52eFoy9//kNtqEgFLQzHDN0u1e1tYm6awWxkGjC5EECXepkfvyzS+zd
+	pFleqOflfR1dQKtDp6au1VfLUwOWC1cJD8Ta/7tBJt8LGI6nMu+EvvZJAZKZdekAUzTvp0/V7pOuN
+	PoskUfc4T1EBeB6tkcpTLUNsMH4uiQTJ7to7bJpwE/AP+XKRldfn/VCxtJdMPEYEUah7pFFuloOKC
+	Jhl+tcAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuFXi-00000003k4s-3ZH7;
-	Mon, 17 Mar 2025 18:50:30 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuIJh-000000044FG-0DRp;
+	Mon, 17 Mar 2025 21:48:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuFUQ-00000003jZo-0fDN;
-	Mon, 17 Mar 2025 18:47:07 +0000
+	id 1tuIHz-00000004474-1MJv;
+	Mon, 17 Mar 2025 21:46:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DDFC0A48CD0;
-	Mon, 17 Mar 2025 18:41:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27C0CC4CEEE;
-	Mon, 17 Mar 2025 18:47:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B34FE5C5729;
+	Mon, 17 Mar 2025 21:44:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1062BC4CEE3;
+	Mon, 17 Mar 2025 21:46:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742237225;
-	bh=yMXt4xcTxN/VyZY3CTEhTkaSSfPWNnhgA4XwK0Qdz0o=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=pe5pmIowVqnFyhsjicNpxuognAsoaR7yhu2CjQTxJDQhH5rZgSwCkuZKgK0Jn6PzT
-	 1bbgkITMyBSDF+HorSBmfYxZ4maeZ82Q7Pxdimav2c5k8i/qdQRZlI7HxNtW/p5ICi
-	 r5kEpRmsWP0pCc5BlroEaHkqIvW7Sy8W9HQoHivs/vWrsVNGLlUfeQ1HKnMzmN+FW0
-	 HRUefCWsFVNu2rFEtsCviAIgjyXUTY8eW3g3gnWmxAm7mEu/EBy1EmXyom5tmEWrww
-	 uiytVOaEYDSHttXMrRS9UU3zL3UUtaAedidPzM3K3j7lOXwmkJPqSvJqSaM59MJNeu
-	 +UqQfOdpd3C9g==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Trevor Wu <trevor.wu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Zoran Zhan <zoran.zhan@mediatek.com>
-In-Reply-To: <20250306-mt8188-accdet-v3-0-7828e835ff4b@collabora.com>
-References: <20250306-mt8188-accdet-v3-0-7828e835ff4b@collabora.com>
-Subject: Re: [PATCH v3 0/4] Allow retrieving accessory detection reference
- on MT8188
-Message-Id: <174223722189.287878.14772373895585128225.b4-ty@kernel.org>
-Date: Mon, 17 Mar 2025 18:47:01 +0000
+	s=k20201202; t=1742247986;
+	bh=0accdJFRM4wuKrCBKOEVJXqhkfwUSg1V628c8C8UWIQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=F9FWQx+R1+a3U7blCqh9czAaCATGyXzaqFTDP4g7fsXwNs+voCN7aea68gmBqXxFh
+	 RdgerCAYsM9gyIzuj70E0/Eje5jb6vsQeOfCmlJxRIsF1iYjT+TVEYvRG8UFIYamMk
+	 SbxUlahQ3qTQyp4jUi8ErTaF0whBgCR7rl1qfbLVvMiSTOuGTBwpYRe6WqnAzyK7Ui
+	 Dm4GRXl2Ko6ZrCqBvi9tc70BDTbZg95PCguKmRXm9kMeVcoW/iIt3B1A0TTpqufCtw
+	 XRTFP3G11drz7jQBC8LUrmFLWMyxsSHkF7LLqk7kqVEVJ44khmr7ZABYszDVQRboCU
+	 PCn57/m6S5s4w==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: dt-bindings: mediatek,vcodec-encoder: Drop assigned-clock properties
+Date: Mon, 17 Mar 2025 16:46:20 -0500
+Message-ID: <20250317214621.794674-1-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_114706_265891_F8D8DD5A 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20250317_144627_417307_F00BFEA8 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,50 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 06 Mar 2025 16:52:14 -0300, Nícolas F. R. A. Prado wrote:
-> This series enables the MT8188-MT6359 sound driver to retrieve the
-> MT6359 ACCDET sound component from a mediatek,accdet DT property, which
-> allows detecting jack insertion/removal.
-> 
-> Patch 1 describes the new property in the binding. Patch 2 implements
-> the sound component retrieval in the common MTK soundcard driver. Patch
-> 4 updates the MT8188-MT6359 sound driver to register the audio jack and
-> initialize the ACCDET driver for detection, if the property is present.
-> 
-> [...]
+The assigned-clock properties are always allowed on nodes with
+'clocks' and generally not required. Additionally the mt8183 doesn't
+define them, so they must not be required in that case.
 
-Applied to
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml  | 6 ------
+ 1 file changed, 6 deletions(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/4] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add mediatek,accdet
-      commit: 3fec903f2cb18805b1ef22a0e310498020c1f15e
-[2/4] ASoC: mediatek: common: Handle mediatek,accdet property
-      commit: cf536e2622e2b0a60c99e799995b6e9acf539c17
-[3/4] ASoC: mediatek: mt6359: Add stub for mt6359_accdet_enable_jack_detect
-      commit: 0116a7d84b32537a10d9bea1fd1bfc06577ef527
-[4/4] ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support
-      commit: f35d834d67adbbf121ee4397376d9eac21d99a85
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+index 110e8f5f1f9e..ebc615584f92 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+@@ -41,10 +41,6 @@ properties:
+     minItems: 1
+     maxItems: 5
+ 
+-  assigned-clocks: true
+-
+-  assigned-clock-parents: true
+-
+   iommus:
+     minItems: 1
+     maxItems: 32
+@@ -78,8 +74,6 @@ required:
+   - clocks
+   - clock-names
+   - iommus
+-  - assigned-clocks
+-  - assigned-clock-parents
+ 
+ allOf:
+   - if:
+-- 
+2.47.2
 
 
