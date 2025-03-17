@@ -4,124 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA8E8C282DE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Mar 2025 17:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C06FC28B2F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Mar 2025 01:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJpMOiLhTxRImQWn/D1+7CXAZcbHPD0pJlBX7gaqh0Y=; b=KP0e0/3iZGfm9N14GlRPA/tRc5
-	cuVDj0+sjpzkMhuX3i4Bb0I0WuIm6Ff0VQZ0Hbj6Y4RczfVoG3fpjLPEkbkw9zhy/THqAWX1j1/Gs
-	Na+XgE/5EqfvzJKFCPR2CR0gJMUY93s+1VUU8QqDt8wyZIXd+aFbiCNddt/Saf4MytTPTnrMEShhy
-	bwChPV/VjvxGG5sVVsL/3Pzr1Ua1AywR7lHU4n2Z1FHqTFmZ/6hky+Nvdn8fTY+i655HOpTntSKv/
-	SbohHm3e0zo2Ib3tdTrQqaR6GJqhdA6I3twvnlelEBCvZ45Sb5ukFctyf8XNqj5Nk7DDdswBHYg/+
-	mZXh5FMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8f3O8+Vo5Qr0rRuYESppba9QH9iD9l4PD8gsXyGmArc=; b=VZwNjxUCKuIF7iPzdhvt7Iq+nr
+	G0t0lvoFEaYsvRqu/vHdENI6UPqv4CDL/QJMjK479AoHxnl8w18TK4soy16yIhq6gHzEN7ng2mITz
+	FJe4fYjB9VjpQFuG1JSQYztD4uZvbxvhN1hZupHSTes8xQp4flJqmLam6umuIiM71ZP3LLi4Y5bjY
+	Q+HsxSrWBl3berFQ7m4HPTbYrWQvCz+6+vQ9L96/yMgDPM3+SbdlB0krbHoA0rcnKeRC2m7z06RK8
+	B7OHaYhwnYyLntlyn1xU2u2r/cnwMLFW7kjQ59H3U04M4yrx9IRKxqVcYPS+sLBf3091xsdDIQzk5
+	W7SgOSdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttrYI-00000000PBm-2Vqt;
-	Sun, 16 Mar 2025 17:13:30 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ttz6o-00000000pSh-1IwX;
+	Mon, 17 Mar 2025 01:17:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttrWb-00000000P0o-2xNM;
-	Sun, 16 Mar 2025 17:11:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2E2FCA48C13;
-	Sun, 16 Mar 2025 17:06:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2BEFC4CEDD;
-	Sun, 16 Mar 2025 17:11:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742145104;
-	bh=pBOXP9pYA3O6uFYcjDfSczaFkD/coBq7CLtlKYidPVw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DKO6/R2i+0uPxfrE0bC5bWtqlyhxbR8CXmymQuqkE792tEoYsvT3/txKv4yDFS+l2
-	 qRoFSq5lxjfo2IVYtnfAh3l14MlZyzt01ezdsPYdsSB/dStA3PhtkiWZVHJT1iPlqr
-	 fYWe/uM2E535lbqeyUSgaYPpCcg1YvK4affPjQWk23NBVc9fBfNAPdWGYnoKedzXYu
-	 TQ9d2n19bhYsXsyZOA76xs7eIQLr6cFb38RtAL+V6f8qKeacwwx031y51H7n1sXyCd
-	 OjXLawhoLJZrORq4wADwhuCu9OMLmQgIcMTB9ei5uoeUK15A6+ccy/8j2yhB2wO118
-	 nysbjCSnqAB2w==
-Message-ID: <2a5e25ad-92a6-4e25-a2b7-198b3ad84d2f@kernel.org>
-Date: Sun, 16 Mar 2025 18:11:31 +0100
+	id 1ttz6l-00000000pRm-0SXH
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Mar 2025 01:17:36 +0000
+X-UUID: 97737b3a02cd11f0a1e849db4cc18d44-20250316
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8f3O8+Vo5Qr0rRuYESppba9QH9iD9l4PD8gsXyGmArc=;
+	b=l3SlpSEZlbo41hrVem6rlpYpEOhV6GmtUfwqoKTDvjkIRacY8APWyPdOnKdJlWAY3SsV0VqxdIJXo9drYgrpRACMcLqbUerZWFtbdmwkf/fkX9qyi9rz97dKzyaVbYbrx2bbC73Igr7hicQISHiXqNU9JWjWL68M4DQNf/FXU7Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:bf0bb8cc-eac9-42df-9c2a-e782c4824620,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:f34c3be1-3561-4519-9a12-e2c881788b70,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 97737b3a02cd11f0a1e849db4cc18d44-20250316
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 110200769; Sun, 16 Mar 2025 18:17:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 17 Mar 2025 09:17:25 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 17 Mar 2025 09:17:25 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH v3] wifi: mt76: mt7925: fix the incomplete revert of [tx,rx]_ba for MLO
+Date: Mon, 17 Mar 2025 09:17:24 +0800
+Message-ID: <20250317011724.3326979-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/13] dt-bindings: mfd: add Documentation for Airoha
- EN7581 SCU
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Daniel Danzberger <dd@embedd.com>,
- Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>,
- Nikita Shubin <nikita.shubin@maquefel.me>, Guo Ren <guoren@kernel.org>,
- Yangyu Chen <cyy@cyyself.name>, Ben Hutchings <ben@decadent.org.uk>,
- Felix Fietkau <nbd@nbd.name>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
- upstream@airoha.com
-References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-6-ansuelsmth@gmail.com>
- <c1227083-a4ea-4dac-a9db-d6a5386c0437@kernel.org>
- <67cec328.170a0220.27ecbc.9c6e@mx.google.com>
- <026296c8-a460-43ca-a423-0fa38269fbc2@kernel.org>
- <67d08a4f.7b0a0220.8fe9e.44fd@mx.google.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <67d08a4f.7b0a0220.8fe9e.44fd@mx.google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250316_101145_903350_0E76A31E 
-X-CRM114-Status: GOOD (  35.62  )
+X-CRM114-CacheID: sfid-20250316_181735_176234_092B875C 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,132 +88,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/03/2025 20:09, Christian Marangi wrote:
->>
->> This does not explain that binding said "This node defines the System
->> Control Unit".
->>
->> So what are you adding here if not SCU?
->>
-> 
-> With "This node defines the System Control Unit" I mean, the entire
-> register space of the IP block is defined and each child specifically
-> define each part of the IP block.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-And the binding said - "this is the SCU". Now you claim that the binding
-which said "this is the SCU" is not the SCU but a part of it.
+Since the `Revert wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO`
+was not completely clean, submit this patch to fully clean it up.
 
+Cc: stable@vger.kernel.org
+Fixes: 73915469c55a ("Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO"")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2: rewrite the subject
+v3: remove the change-Id
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-> 
->>>
->>> The driver solution for this is syscon and the simple-mfd node
->>> structure.
->>
->> Let's keep driver entirely separate, we don't talk about them and mixing
->> arguments won't make it easier.
->>
-> 
-> Ok.
-> 
->>>
->>> Now the main problem is how to modle this in DT. There are lots of case
->>> where the simple-mfd model is used (like the one proposed) but probably
->>> this is not accepted anymore. But again this should be clearly stated or
->>> we have a chicken-egg problem when other devs implement similar thing and
->>> have to implement simple MFD driver to handle this. (and driver
->>> maintainers say "Use the simple-mfd model like it was already done)
->>
->> simple-mfd has nothing to do here. Describe the hardware - what is the SCU?
->>
->>
-> 
-> As I said below, SCU is just the name used in Airoha Documentation for
-> this IP block. In this register space there are multiple things so it's
-> not strictly a clock-controller (as it's currently defined)
-> 
-> It was proposed as clock-controller previously as we weren't aware this
-> IP block was used also for other usage that a strict clock controller.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 1ecba46d770d..1bdc313844c4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -572,10 +572,10 @@ void mt7925_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 
+ static int
+ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+-		  struct mt76_wcid *wcid,
+ 		  struct ieee80211_ampdu_params *params,
+ 		  bool enable, bool tx)
+ {
++	struct mt76_wcid *wcid = (struct mt76_wcid *)params->sta->drv_priv;
+ 	struct sta_rec_ba_uni *ba;
+ 	struct sk_buff *skb;
+ 	struct tlv *tlv;
+@@ -608,13 +608,12 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ {
+ 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+ 	struct mt792x_vif *mvif = msta->vif;
+-	struct mt76_wcid *wcid = &mvif->sta.deflink.wcid;
+ 
+ 	if (enable && !params->amsdu)
+ 		msta->deflink.wcid.amsdu = false;
+ 
+-	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, wcid,
+-				 params, enable, true);
++	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 enable, true);
+ }
+ 
+ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+@@ -623,10 +622,9 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ {
+ 	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+ 	struct mt792x_vif *mvif = msta->vif;
+-	struct mt76_wcid *wcid = &mvif->sta.deflink.wcid;
+ 
+-	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, wcid,
+-				 params, enable, false);
++	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 enable, false);
+ }
+ 
+ static int mt7925_mcu_read_eeprom(struct mt792x_dev *dev, u32 offset, u8 *val)
+-- 
+2.45.2
 
-
-I am pretty sure everyone was, just drivers were developed for current
-needs and then binding was adjusted to match drivers.
-
-> 
->>>
->>> For this specific case (and to give an answer to the clock patch after
->>> this) the problem is that this register space was originally used only
->>> to control the clock and I wasn't aware that it was also used to control
->>> USB. Now that I'm implementing support for it, the disaster happened.
->>>
->>> So In short SCU is lots of thing, both a system-controller, a
->>> clock-controller and even a reset-controller.
->>
->> And you have bindings for that already. Done.
->>
-> 
-> It's currently defined in DTS as clock-controller, should we change it
-> to system-controller to make it more clear?
-
-It does not matter for this discussion about bindings, it is just a
-name. You can rename it, sure, although also a bit of a churn since this
-device has a "clock controller" as one of its main features. And "system
-controller" is also way generic.
-
-BTW, it is frequent (e.g. all Qcom platforms, many Allwiner and
-Mediatek) that clock controller is also reset or power domain controllers.
-
-
-> 
->>>
->>> To make it short, 2 different solution:
->>> 1. We can keep the current node structure of the node-controller and add a
->>> child node for the SSR part (with a dedicated compatible).
->>
->> No, you do not add child nodes just because you want some drivers.
->>
->> What is SSR? How is it a device?
-> 
-> SSR is the name used in Documentation for the register used to configure
-> the Serdes and PCIe port.
-
-Register(s) for configuring something is not a device.
-
-> 
->>
->>> 2. Those property need to be be defined in the clock-controller node?
->>
->> In the SCU node. Do you have only one SCU or more?
-> 
-> Strictly speaking it's one register space. One clock-controller, one
-> reset-controller and one set of SSR registers, and from what I can
-> understand it's ALWAYS "One device/compatible for Register space"
-
-No, it's not the reason. You define children if they are distinctive. By
-distinction I mean some sort of controllable resources which they need
-independently of parent. No resources here, except address space, which
-seems superficial choice.
-
-
-
-> 
-> The simple-mfd pattern can't really work for case like this where in one
-> register space there are multiple stuff.
-
-We agreed not to talk about simple-mfd, but answering this: yes, but
-because your split is neither necessary nor really accurate.
-
-> 
-> Is everything clear now?
-> 
-> To summarize:
-> - no child nodes
-> - add additional property for SSR in the SCU .yaml
-
-Yes.
-
-Unless I made mistake here in the judgement, but that will be easier to
-spot after seeing entire binding/DTS for this device.
-
-Best regards,
-Krzysztof
 
