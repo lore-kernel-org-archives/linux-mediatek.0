@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C1AC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 14:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C00BC282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 15:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Uux13IgspT+alznO48iV1IYcYe60S35fw20xoq9QFw=; b=wBiLrlrwYdwxre3Q2ly/qt5Twj
-	ynP+RD2Wqy7Ba9PYmVdgnj4uybYQP2nMR50fik6r2X0AW2EfooAT4zJu56kIi4UfqbMvdm+rxS4Aw
-	dpuDc/bkWDyJjU6+q2R6Eu+hh5ohX10DVc+29CaEKpoopV4BbFWBWq08aBMPjISA59IGtaa1d9Pom
-	lY0/QIMfebswLTj2qefKqzyygGxa4xj05wK4yoV43Dai0dI47DQuWq1kuLWS6E0kWV5007rXNCwhA
-	vPO/jQYZ+k7pPvCrZfVxfRgmd+mvOmMq8imw3T+uP/sI7r4IO7omv5Hn3oHO7NCiki6Ft49iqlPgy
-	WZfcT9yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+r9/FyBsy8/jgfY/gOegZKB/ya2zFVA1MGqKZ4aNDJg=; b=X6Wxrn1CFPHwJjQ9flQ3BQR+fg
+	p6PpyXiPH8b6H1MTMnNesWlO39c3uj95CKx2x8PxQt/OgCVKPTioPdBcQQSHTKPbw6Xgb8YCgrZ7+
+	8WGwg8l1Nw6yRh+7xqQyDRAFYPkSmk5RlzsJYPaaMEEblhXuHNQhp0jOkcyz08cw3SWn3FdPeoMiN
+	VVM9bzOwMLbiC5evCbzarn63dqgyZutUSbcVET3QCU+xfAERr8BTKiLrcdu5s9OZ2ZShVDh31OjGJ
+	S+PwKv2Pvg95TgXdLxVh/9vDcY5mtbEy2PRciCb6Z7xIY9gXwPuhABLPc8BENGN3jZJ5iDPX/Y7oy
+	6OFNxwuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuYDO-00000006E1n-3lvs;
-	Tue, 18 Mar 2025 14:46:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tuYRv-00000006Hdq-1yfx;
+	Tue, 18 Mar 2025 15:01:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuY6C-00000006CyE-2L7Q;
-	Tue, 18 Mar 2025 14:39:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742308759;
-	bh=GisOJD1TXdv+jG24Ahwf9nT6eMF5RJa4fPp5r1uc6Xc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WoE14fUJZ6fME93bMNeZXwEKFpbI5E49q1n+St6f/Yv66ougqdVwgdLF45oIe1c1Y
-	 UOL1s95gHnX5wxp39zjsATuqXfQkMW1BBoD84kULqDhESIvsKE9J4VaJRb1hgfmHs2
-	 iBiNTrHBkx3ssyJ9fRXkUt8xm5ryvqBFcy50EByUrdcnLWnfC5LRuP2N328cGBNHtN
-	 1bC5jGezSBj+e8anturw7+FEE0kDKnncPzdGXeLyjLrhuHRoYp8AhcRClT6YhsJSBw
-	 +CmzTxwoO1jwwVCaSWq35V4e2SzXhUS5niGApmorJSMrtoMeR8umoeuD6SsyS1twXo
-	 DWUELs2Ci2Swg==
-Received: from notapiano (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BCF7817E0B25;
-	Tue, 18 Mar 2025 15:39:16 +0100 (CET)
-Date: Tue, 18 Mar 2025 11:39:14 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Laura Nao <laura.nao@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	bleung@chromium.org, tzungbi@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8192-asurada-spherion: Mark
- trackpads as fail-needs-probe
-Message-ID: <f80dfa43-74f4-431b-934c-e103b8204276@notapiano>
-References: <20250318102259.189289-1-laura.nao@collabora.com>
- <20250318102259.189289-3-laura.nao@collabora.com>
+	id 1tuYQB-00000006HF4-2eGS;
+	Tue, 18 Mar 2025 15:00:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EB62A5C58BF;
+	Tue, 18 Mar 2025 14:57:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8457EC4CEE3;
+	Tue, 18 Mar 2025 14:59:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742309998;
+	bh=r0NrzcNDxEAo6t+Xoz4A+ZsjzVa5mHQEjDvSbM8+ItM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Y7BIYDHM86vWww2amj46/mLjgIS9Pd+7uQlOXialHBqRDb8TRbN8eHCTUEXr44qjw
+	 aOIsxiBVjuJYca07fp8YJLOmvV2xbFRNjwOTK8w5dGpjOC458+667lzGFnKd2sgF/1
+	 MEqYnxpu7gk3iP8HTvN1PWsLX0tL2Uj55mHuE+F3f28JLUTnj9Z4g7dyNsZ3F+4/H6
+	 R50JhgxMv4KAL7casbv0AMtCC8Z+tM+JYOUVRCDLWi9HIqN1ZRbUBrCJxUCMly60Ol
+	 WGvhYD4LhyMINquvspNJGrgYwK7dKnt2Dl9H9NLPMMwWUBPcz/3jkWkeTnNeNlWhPd
+	 3mvxeqCe3WO5Q==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33FFB380DBE8;
+	Tue, 18 Mar 2025 15:00:35 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250318102259.189289-3-laura.nao@collabora.com>
+Subject: Re: [PATCH net-next v2 0/9] net: stmmac: remove unnecessary
+ of_get_phy_mode() calls
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174231003400.344268.9977818669398853411.git-patchwork-notify@kernel.org>
+Date: Tue, 18 Mar 2025 15:00:34 +0000
+References: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
+In-Reply-To: <Z9FQjQZb0IMaQJ9H@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
+ andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ wens@csie.org, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ jernej.skrabec@gmail.com, jbrunet@baylibre.com, khilman@baylibre.com,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com,
+ mcoquelin.stm32@gmail.com, neil.armstrong@linaro.org, netdev@vger.kernel.org,
+ pabeni@redhat.com, samuel@sholland.org, vkoul@kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_073920_736642_DF3EA6DD 
-X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-CacheID: sfid-20250318_075959_709932_4B2541FF 
+X-CRM114-Status: UNSURE (   9.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,23 +83,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 18, 2025 at 11:22:59AM +0100, Laura Nao wrote:
-> Different Spherion variants use different trackpads on the same I2C2
-> bus. Instead of enabling all of them by default, mark them as
-> "fail-needs-probe" and let the implementation determine which one is
-> actually present.
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
+
+On Wed, 12 Mar 2025 09:14:53 +0000 you wrote:
+> Hi,
 > 
-> Additionally, move the trackpad pinctrl entry back to the individual
-> trackpad nodes.
+> This series removes unnecessary of_get_phy_mode() calls from the stmmac
+> glue drivers. stmmac_probe_config_dt() / devm_stmmac_probe_config_dt()
+> already gets the interface mode using device_get_phy_mode() and stores
+> it in plat_dat->phy_interface.
 > 
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> [...]
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Here is the summary with links:
+  - [net-next,v2,1/9] net: stmmac: qcom-ethqos: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/8ee1c926f31e
+  - [net-next,v2,2/9] net: stmmac: mediatek: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/46f84d700cb8
+  - [net-next,v2,3/9] net: stmmac: anarion: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/e3ef12172a83
+  - [net-next,v2,4/9] net: stmmac: ipq806x: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/f07cb4b4b481
+  - [net-next,v2,5/9] net: stmmac: meson8b: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/3e5833060efb
+  - [net-next,v2,6/9] net: stmmac: rk: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/9886718ad1c5
+  - [net-next,v2,7/9] net: stmmac: sti: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/3e2858bb3f59
+  - [net-next,v2,8/9] net: stmmac: sun8i: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/3d9e9dfce04c
+  - [net-next,v2,9/9] net: stmmac: sunxi: remove of_get_phy_mode()
+    https://git.kernel.org/netdev/net-next/c/00d2c3c07124
 
-With these patches only the right trackpad is enabled on my Spherion and it
-works as expected.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Thanks,
-Nícolas
+
 
