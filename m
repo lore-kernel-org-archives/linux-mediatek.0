@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0ECC28B28
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D485DC35FF3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zpMoor3dBxgu172XtLCnpvR9tyAyuKLKTcHfjZ0A4I4=; b=YRl6eRblgQ8+aaheAxbhva1oq5
-	mvXOU85jMtg5tevGk/wslToC+y+j8EXDx+wdV/hUw1LdLbYM2cSMFm0gTMOlLRXnlyJ3kiafxkX+h
-	AnhX9pOZkXL8JwPgS+Utq4bVxF7tD95vOS4bcaEt6yrnDwoaA4g1JqAZSwUSC42hsp827lLNPh1D+
-	2RhtoXxc+dZ5MJjFiEzQGzqePgs0ddyBmrfnsEzaUxsYrOr3p5PQdzluV10GqfZPmafrlEfrEx5Kj
-	NFxAZLnhP5x9oIWiRiwTP4VEBCf2e4XzneRjOdxJgx8/yIpCA02wvD4c/RM7F5BnX6y2WeB229VnR
-	Nz5KYxPw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fwp4pPphQ44qgUkj50Coyiqf/mBkbRlu/qCRtdImr6c=; b=lTjlVpYtuGOrD2KABEydXoWiy0
+	LPtb95339etNOpQj0IKuWqDTNFwQHxP4C9F3Pe7kaF54p25P+3F9tFmMW6urWZ95PqX3l1T9FIrEe
+	9iTEbKkH3f9P3uD79+GUyrVpzs+B7hPFTEEkDrVt3ghhHrs/E02XDlUlSMbxq6D4uS0gdSFU9bGu3
+	LFsAZCc0LQRlkrSe0ZEWSkZ9zw/Kqy6AzMg4jy1yl1N5Ho6yYPZNerovDrBmRRvGJQi5bWjcH5R7J
+	ewHTC5tloB+KgzPtMj8H7bL4guwgMU8S2pIF7sSygLXKDQ15Wu2/pag1dj1nTnePYz80n2BiS2mhL
+	tHUp9+DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuUuh-00000005fo9-1XrT;
-	Tue, 18 Mar 2025 11:15:15 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1tuV57-00000005ilG-467w;
+	Tue, 18 Mar 2025 11:26:01 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuUlq-00000005dw7-2aIZ;
-	Tue, 18 Mar 2025 11:06:07 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-2ff187f027fso5683220a91.1;
-        Tue, 18 Mar 2025 04:06:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742295965; x=1742900765; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zpMoor3dBxgu172XtLCnpvR9tyAyuKLKTcHfjZ0A4I4=;
-        b=ESLQnkYDvKxdLFsHDsPd1os0llDS6a5uk/JANz7ZsRgriTFGf3ss5BcEtiZ7ZRxntC
-         pxgEo+4oi7nTekEPtnSa886m61MAP84QETywJL9Zl737IVexteizST8DpNxhlSadS9Tr
-         sCFGp83UpR0e5DM4xWOREQSuYbsux/tPScGF2jtIk0/TZefBdOXfVW1cD5YeB+GXwLRZ
-         7uvwbJlVQD9ILntXx2JCSvxfNK+8Eu6AlTxjWQJsEu8iZT1ulfBlqzoLaIlLBEfr9OUs
-         wCsIuF+QqjbBQuGae4eB9ifcqiw/IYR6WEoy+emwuib6dkVXvfnxssmPzTFwiJ8iwfHR
-         iaew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742295965; x=1742900765;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zpMoor3dBxgu172XtLCnpvR9tyAyuKLKTcHfjZ0A4I4=;
-        b=qvqDLsabB3uwRG3lzWGuSmJfH/ZxZXqVD9aUuwE3nvVd77vtf1xM+Zgj8CmZi0V5h7
-         hD5nWfAXAOZgEhQJEDPWmQ7h02cIZW/fWw1xo/F8511svHMP/eCMD/Dw3yHv0Ne6jmm1
-         2Cqto3o+DGec3EelTRBpyjEPRo5tUzh70VzUkY92IgIrKeCPIsKPwHphZ02q0E4JAkeG
-         Y3ced3FXUfZLG1MZ50cLy+xrERfZIGamR8rtmAdWsS0IqBmI0UtILjxzjyNZCzKlPuAw
-         8TnzgHRLxRrSMJpUj+6JcTYZRG9h9L14abO96+0OGDeRJJ5hyNd/ZVw0WMoZOs3bO1wZ
-         tcIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVCLrfqoUz/K7umC7qYIj5NUg0XnnLSyEJTdHBUn2ivNMKXKu7lCWHa0CbucUInmVayfAdGe+KJGzyz+6UcIUFb@lists.infradead.org, AJvYcCVnU+O59MLsHdrS2Vp9AlQ5y7bdtLmTK8HK29ZS3wlnDwiT7Eel+zBjWi3SWZ+gtmu4YzozOKRNwXNd5aVahFw=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJR78hpBgrRxq/Kgu5csTZP9h2EJBg6LPDeVcf1IrWm9P8Zb8b
-	/pSDng882CvxWcwKDxCU0Hbas5kMEiVhzWxwD+YR0TqJKF0dyxKr
-X-Gm-Gg: ASbGncsNeKPn3BCn6RdEtKxQLzBqlGpDu68jbirW+XE4P28wyG0yCLBuVGOiL0XyG1e
-	o8DjtCfW/u0gdcT7pyhwJsLRlhbnnPrXR6VBsiqqYx8H18Nnbi9RPDByPtRRLurPBRS+qLLu9ac
-	DocI4xhtue7axLyp2DpNLPWpSqjwScNgyrcjUeWFttNzDUzP5v0tz8C7eq88n3/sccXYOTqNi39
-	/+R/xFI/pMcvc1/AI6d0FkGcRUZ3F/3CD0XAfyYMIh/xbBu4mwc5kFDa7NuNaVuzw+6Mm0lknX7
-	cQvWRbAK5E9jKtF9W5Cu4fSjk2OsDMRf0+y1nmnbXlPfbiSZ2h01ZuZPZ0XVfiSvYcg4Md2B9eD
-	SLrM=
-X-Google-Smtp-Source: AGHT+IERa90JABWCDbih4/KSJyahmNphPCQsBv4vNHzGIf8QKc+5jhhkS4+jqZA/ZsgnGvidqB83cA==
-X-Received: by 2002:a17:90a:e7c4:b0:2ff:53d6:2b82 with SMTP id 98e67ed59e1d1-301a5bde7f8mr2666252a91.11.1742295965236;
-        Tue, 18 Mar 2025 04:06:05 -0700 (PDT)
-Received: from localhost.localdomain ([183.242.254.176])
-        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-301539ed283sm8775205a91.18.2025.03.18.04.06.00
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 18 Mar 2025 04:06:04 -0700 (PDT)
-From: Miaoqian Lin <linmq006@gmail.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fullway Wang <fullwaywang@outlook.com>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: linmq006@gmail.com
-Subject: [PATCH] media: mtk-vcodec: Fix reference count leak in mtk_vcodec_fw_scp_init
-Date: Tue, 18 Mar 2025 19:05:53 +0800
-Message-Id: <20250318110556.903-1-linmq006@gmail.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+	id 1tuV4o-00000005iih-1oO1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Mar 2025 11:25:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C1C26A48F5C
+	for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 11:20:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AC74C4CEDD
+	for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 11:25:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742297141;
+	bh=u53d10t3OzeD/76udFZ8KW80lLIlg3g9Ceg46PStDkI=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=TjJcS/uDmZnPdgcH8OC53ZeYnHsnp95IHARlGyjR3fdPUhpTNo/QtXF4aIrGpzMe6
+	 iaIa/d6XOO+HXxP5qWbaV7qQhFxfWKanRLyCFznfsoSTAUGGuJnIvgNiwuqX4Xz/QP
+	 DuDpDsmS8ph8N5iytM45ZiZ1pjitl9+GeFxOhxy9BCgEcCKqGXBEjlSECIpr8tqNus
+	 uZX1mqwuM6MmCGwbMaQjeAdAAmYdxTv2Qg14+5ltQ4/9O7ygLFJAF17jWiBqW4+nwG
+	 Ws+/2pFna3PTn6QrhRO3swcKBcBJ96V01Vg3GM1DVm9tjpHoompKPmS93W1jFH6rIa
+	 2BeXor20SiCGw==
+Received: by mail-yb1-f174.google.com with SMTP id 3f1490d57ef6-e643f234e08so1003542276.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 04:25:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXlsoGywRkpcWPgka2/HK0szEMsAGM7pQf1LPWuloom1nHGsawwZG0JpvPmgEdQ5rZHhNb+yMHEhzmdSoFA4A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5QQgzGJ+97jmvsjF+FhK4CvsFO5Nd8sp+l9DQUCNJL9vb+8sr
+	W08riDggax6tkcyJTOKFU1RNsjRP5EpAzXr7+LN+l39S1mXOWXwO/WRXndY0v799cGNtXLW6+dj
+	q7ie2sZi6cEH/gB8srHeOZ/LUT4A=
+X-Google-Smtp-Source: AGHT+IEeK0EOLtzAVTltSAKfLyC9B/LB33cn5tKuSRUf1SUjNodydd5ksWB+YJ/3hXV4HmCmSiIF+ZYIjLVExZ/eyUg=
+X-Received: by 2002:a05:6902:98d:b0:e5d:cc41:767 with SMTP id
+ 3f1490d57ef6-e63f65b45f5mr21357253276.33.1742297140292; Tue, 18 Mar 2025
+ 04:25:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20250318094809.3540043-1-moudy.ho@mediatek.com>
+In-Reply-To: <20250318094809.3540043-1-moudy.ho@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Tue, 18 Mar 2025 07:25:29 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA5wS-sxRpp6eKXNd+UY_j0t2BSeX+cfMjCKAAZ7oxnMoA@mail.gmail.com>
+X-Gm-Features: AQ5f1JorTuQpqKyolMyCoIfauTYZB7EI5AUpzZk-e-gH1QBD7Up1bYof-3yVuv4
+Message-ID: <CA+5PVA5wS-sxRpp6eKXNd+UY_j0t2BSeX+cfMjCKAAZ7oxnMoA@mail.gmail.com>
+Subject: Re: pull request: linux-firmware: Create MediaTek MT8188 SCP firmware
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Nicolas Prado <nfraprado@collabora.com>, Jason Chen <Jason-ch.Chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_040606_651279_4C281901 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250318_042542_542277_1FA76A76 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,40 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-scp_get() returns a reference that needs to be released with scp_put().
-Add missing scp_put() before returning error in mtk_vcodec_fw_scp_init().
+On Tue, Mar 18, 2025 at 5:48=E2=80=AFAM Moudy Ho <moudy.ho@mediatek.com> wr=
+ote:
+>
+> The following changes since commit 588505068c48fe07b1cfa32c5f3acd4395ec94=
+82:
+>
+>   Merge branch 'copy-firmware' into 'main' (2025-03-18 00:45:21 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/MoudyHo/linux_fw_scp v27749
 
-Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deference in SCP")
-Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
----
- .../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c      | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+This fails check_whence.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-index ff23b225db70..11ab3bc60217 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-@@ -71,7 +71,6 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
- 		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
- 		return ERR_PTR(-EINVAL);
- 	}
--
- 	scp = scp_get(plat_dev);
- 	if (!scp) {
- 		dev_err(&plat_dev->dev, "could not get vdec scp handle");
-@@ -79,8 +78,10 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
- 	}
- 
- 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
--	if (!fw)
-+	if (!fw) {
-+		scp_put(scp);
- 		return ERR_PTR(-ENOMEM);
-+	}
- 	fw->type = SCP;
- 	fw->ops = &mtk_vcodec_rproc_msg;
- 	fw->scp = scp;
--- 
-2.39.5 (Apple Git-154)
+E: mediatek/mt8188/scp.img not listed in WHENCE
 
+Please add an entry into WHENCE with the appropriate license noted.
+
+josh
+
+> for you to fetch changes up to a39712f2c8c9a520b889a45cbbdd2fa36d249cc3:
+>
+>   mediatek: Add MT8188 SCP firmware (3035-03-18 16:49:53 +0800)
+>
 
