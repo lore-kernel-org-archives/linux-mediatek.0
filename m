@@ -4,72 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CB3C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 10:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73CC3C35FF3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o/kMEtnLyb8AyAlIdR8Vfey/k/x3qRsK7DrvrL59MMs=; b=itZ4eCQ3/QJGqUWCjnBplyg1tm
-	C17jwE50CYICuYfNYbW4B/yzbcOvuE7XKmVJZEodjBRqZ2hGPhY33cybV8zDEg3uu+/FkUElOf8Lo
-	QGzJmJf+GyUODSwVZ6CJKKGFJPaES141NveUR7+9vTXWi6MBU61eCun8CVYF1yaJ48LeMrVQpg7Uc
-	xc0TqhPy3K9DANgXnI9uaG8TUi0yDQZeLMOeylXQhuNt6XwT99q7MMMfGiTpxH09lNGcroF8yj1Jk
-	++5V2d38X2PPoWF1JkcouDaUE1jMSETHq3nVgMGDolzicnQTICUn9ZlbFT2IRC9itL1T71rJTk84w
-	Y7TLpV3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+6eRMsycQCwnvUIb7YBuRBaRFSAMCS6WfElJU0fnob0=; b=1hGzcgnK2WsWpQ6ZZ3oc//h0gd
+	ga4Jup3YP3VX1e8abRKWvnNTikawCZbi91QNgry2b/vzzdrVwtEc/DdIK9hY5zPnR7OeFNeolDlyt
+	RmSl9P5xGsFxJO0/XCaeixuzfqeMW5buOkSoLpJzcMl/mpSc2AoYlOBV4KJF3SqZQYeFRheUYfuRr
+	fXMlhvROQ0b9R8tsRB5gF3ooi6gLjDC4KAn0h97q1p3ROgwi5MWv1q20k6Epjah/K/5bw9ZmzbkFL
+	KkocufOEcckwEeYWRTFQkUxCiurl/ehHbAiaoBvGkJRlHSvZkLRog+jzrHQVjGqTzufCLZMXeLDiN
+	IZHQIpIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuUBZ-00000005VX6-2q7e;
-	Tue, 18 Mar 2025 10:28:37 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tuUt2-00000005fZz-1Ebk;
+	Tue, 18 Mar 2025 11:13:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuU6Z-00000005UKE-29t4;
-	Tue, 18 Mar 2025 10:23:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742293404;
-	bh=+wbnDO1Pqe10oOmycZARCAUSDWGZz6dvqzpBhlHSIvg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mY6PtpEjVeZ8GPVcNf/GEFUg+ElLuY0lhio+IPbUtzIMkQL0i32Bc86SdIXKG5L6P
-	 5T9vJvNFnRwtOqGGxRT6Egi3BQWwDmaSPjCCw/aOf+PGK9+EuzClWiYyIVC9UzrWHH
-	 mkziT0mvvGqcCVoqt3IR+wTLkGfbNm51ET8GgvoGGbLde/9KHK8UAQW4YHuEm5F5L1
-	 1xYDkw8s+l8+K6yq4Bv8DvlWbBfgkHESxFJR5IA+fRKbQl3QRNQVFG0ShLtZ6ZAXry
-	 8qBbH5XLVd3Hpa7s7JMEEsV3BZcug8z1C7OeWSvZLjF2JX8ihLRJUsV1B7gD4RF2kf
-	 Y+iP2JUsRfSbw==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:79a1:e959:3816:993])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E960017E05A6;
-	Tue, 18 Mar 2025 11:23:23 +0100 (CET)
-From: Laura Nao <laura.nao@collabora.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	bleung@chromium.org,
-	tzungbi@kernel.org
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	nfraprado@collabora.com,
-	kernel@collabora.com,
-	Laura Nao <laura.nao@collabora.com>
-Subject: [PATCH 1/2] platform/chrome: Add support for Google Spherion in HW prober
-Date: Tue, 18 Mar 2025 11:22:58 +0100
-Message-Id: <20250318102259.189289-2-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250318102259.189289-1-laura.nao@collabora.com>
-References: <20250318102259.189289-1-laura.nao@collabora.com>
+	id 1tuUlq-00000005dw5-0uzR;
+	Tue, 18 Mar 2025 11:06:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 085515C4A1D;
+	Tue, 18 Mar 2025 11:03:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D9C8C4CEDD;
+	Tue, 18 Mar 2025 11:06:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742295964;
+	bh=+6eRMsycQCwnvUIb7YBuRBaRFSAMCS6WfElJU0fnob0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FZYeGP3ChLjFgxxPhXwyrzj+8hdudeUK9TYlMtJjGSLAVE9l7b23fy6AlOGY3cXco
+	 JxmfMzVCnaC8910yJDVJNyWc9cVokzjiSUhLJ9Nwbn3O0bxJNoUovv6P8rxYZkGqUW
+	 8vxI26ywb35jSaW/zqOold5OFSPC3VgWsJPF46QKs3hueJrNGXj/MHgxylHyWs/90j
+	 gcF0O9bB1CgoEohptMg4SEViZ5T3Sa50+WsOO+APy9ZU2ApxdGL0RC3xjifQ7u/F5s
+	 60UVEROqpuCVkYO1fQXx5oetwtG8O03iJJf3018VZ4xMcN/cI+pX2Ms/28vDZz3R1V
+	 2DKF4AiY4dA2A==
+Date: Tue, 18 Mar 2025 12:06:01 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	Masahisa Kojima <kojima.masahisa@socionext.com>,
+	Sunil Goutham <sgoutham@marvell.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>,
+	Bharat Bhushan <bbhushan2@marvell.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"K. Y. Srinivasan" <kys@microsoft.com>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Roger Quadros <rogerq@kernel.org>, netdev@vger.kernel.org,
+	bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-hyperv@vger.kernel.org,
+	linux-omap@vger.kernel.org
+Subject: Re: [PATCH net-next 0/7] net: xdp: Add missing metadata support for
+ some xdp drvs
+Message-ID: <Z9lTmfyUsY3lqr1m@lore-desk>
+References: <20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org>
+ <6259af5f-f518-4f88-ada9-31c3425ce6ed@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7FKbPnYNhz7Z7bep"
+Content-Disposition: inline
+In-Reply-To: <6259af5f-f518-4f88-ada9-31c3425ce6ed@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_032327_726688_08A03ACE 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20250318_040606_312573_E93F9F94 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,31 +99,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible entry for "google,spherion" to the hardware prober
-platform list, using the same I2C component prober and trackpad data as
-"google,hana".
 
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- drivers/platform/chrome/chromeos_of_hw_prober.c | 4 ++++
- 1 file changed, 4 insertions(+)
+--7FKbPnYNhz7Z7bep
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/platform/chrome/chromeos_of_hw_prober.c b/drivers/platform/chrome/chromeos_of_hw_prober.c
-index c6992f5cdc76..019578bc7ad0 100644
---- a/drivers/platform/chrome/chromeos_of_hw_prober.c
-+++ b/drivers/platform/chrome/chromeos_of_hw_prober.c
-@@ -84,6 +84,10 @@ static const struct hw_prober_entry hw_prober_platforms[] = {
- 		.compatible = "google,hana",
- 		.prober = chromeos_i2c_component_prober,
- 		.data = &chromeos_i2c_probe_hana_trackpad,
-+	}, {
-+		.compatible = "google,spherion",
-+		.prober = chromeos_i2c_component_prober,
-+		.data = &chromeos_i2c_probe_hana_trackpad,
- 	},
- };
- 
--- 
-2.39.5
+> On 3/11/25 1:18 PM, Lorenzo Bianconi wrote:
+> > Introduce missing metadata support for some xdp drivers setting metadata
+> > size building the skb from xdp_buff.
+> > Please note most of the drivers are just compile tested.
+>=20
+> I'm sorry, but you should at very least report explicitly on per patch
+> basis which ones have been compile tested.
+>=20
+> Even better, please additionally document in each patch why/how the
+> current headroom is large enough.
 
+ack, I will do in v2.
+
+Regards,
+Lorenzo
+
+>=20
+> Thanks,
+>=20
+> Paolo
+>=20
+
+--7FKbPnYNhz7Z7bep
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ9lTmQAKCRA6cBh0uS2t
+rDqfAQDOJNpxheA0LSnvOCTN+kPvwHBu5AGV2ArPeTAp70kJ3QD/apFRSAbfIcY1
+1f9jJDVDMRYLq6bmd+WcgF6DA0c7JwE=
+=n3M4
+-----END PGP SIGNATURE-----
+
+--7FKbPnYNhz7Z7bep--
 
