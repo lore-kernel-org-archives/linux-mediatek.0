@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F253EC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 22:33:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0154C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 22:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IL4ph+nMApQKiG0jjdYDwg3HmV59NomY3yqhCM575c4=; b=Bb2wjRGbtk54eLwT9Plv7Ncd8+
-	t4BhGJt+UqF+u4be48oK2SthLXBWF5/PWeHakMkW74pT1nG75vFY4p3BoKahA6v5qsASmNFfHbBx1
-	XqDA3NkEEghjqWmKA5NXrYE46vt4GSY9BkcUbI3CDtxvfWlCM8NfEgM6QyL5GwmsvmG2ylfBwohzU
-	8eEr9uyBT60bpWOhenKidrXJFyNnk4WVuvZ8znDzPUVUXq5Ma+rozLe2fUC7LxsK99+vggJr2lY1K
-	X5ZJ08L3ttswHHD+h5ZoCQ8ErutquYGfmH2vXV+GUtaB7rYHc9XnDTMnKSVxWuATfirahsjHz7Xmv
-	uCpvFn5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xoiB0OKzQ2IpugVfhu9Zqd80FxTVvUiXPucC5eFwf0w=; b=WNIbqbHsam3fWsr8on3ShZzWaZ
+	Pb1Q5yvKS68j9DimBp5mBm0Uw3K8Qxs9JOOlyLPB1nyPfNNMH6ynr9kzgELCCwiMH2GlY1eUWiw9j
+	yYUgrWi02eAYG/1D57/TSJzrXTW9s/C8GtvP8m5PB03LfW5kV5b6WN1CL3vDH+4iJ9hnFwMrKtQg/
+	yr3Q+yZzcrE6nvdkIDYXD409yDRkbX2kbHinEZcba22NHH2Uh7eDkCn+eYhKaPqm6s6JV+0tqLW+V
+	/tjMPPeEHWLqqTFxIfazG74KTMaDniOj5YnzfxnRK7h1OWrk9tt5TAbQQQIXxb0M88I7ioiFckkar
+	aa8End9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tufUp-00000007GMP-0gxP;
-	Tue, 18 Mar 2025 22:33:15 +0000
+	id 1tufWU-00000007GUv-0c6V;
+	Tue, 18 Mar 2025 22:34:58 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tufMe-00000007FBh-10Sh;
-	Tue, 18 Mar 2025 22:24:49 +0000
+	id 1tufOz-00000007Fh1-0Pyb
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Mar 2025 22:27:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742336686;
-	bh=P1vtmk+9u5G+Zjiu2jlC44IrlzgRmSDtGJusM9LFedk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aJatjFct7ueDLUvYjXrczWUQf/Kjw0f9PhAE4Er+3AZ7E6nfd+0SdMGwfK60GtHCD
-	 /Cr97lnTp3Vlv/K+l6dvmsNpajw5+uOYadyUQGeDy539Tbm6bFjB1czcXIq49wGWWn
-	 vJp7BspKP9GtRYJ1eQtaUwEv49Fyjk4Y2xAC9gy8IUvmYL5IPBknNfuz1aEbuyOlDS
-	 3BXhJdLYDH9wIroXA2B2Ds8izBS6OI+wTMvDg/RPsmnsqgAdy9iA7PNHuvpyDdy2/l
-	 /KTyCRXm6LwIzBh4dE+qrGw5iHGr5Luy5lUVDG/cTX/jv5gUaKadzB6GcjSizELErK
-	 cUyNzfRZGC4/w==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
+	s=mail; t=1742336831;
+	bh=AkpgKvUarThusXyGYaY2RATeVpD4WCSAnra8Rvx0+NU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KRiR6TtUG1HRk8lhBBofJc6fOCxRIHWmsChLfwIDvYl7Fcz1L05wxxs4pRoLl4MGA
+	 4m5+AbHq3uBpP7qbuULHm7tma0K1PwyJsdTWU2LFVas08ulPYl9VXIi77iJJ9UEfWY
+	 vpXEUPq0BH4A2Y60sv3O5j+r6UVI+A0sA4VcLC7qlM3XVpzjIlZBEj8brtVITMjhVf
+	 pyfZ1KqFdQs6bYT0uc7lZploQJ6t1ZRafNAcvGlcnEr7pA7BsoGKOhhD/1vQUkLaeZ
+	 3qgVUPMTmHwwRmpuuc3WlstAg3B9S2Dr6BrHfdIB/3aeyEw6rA8383Rl2WmM9U/wKA
+	 L0c31YkDq5+kA==
+Received: from notapiano (unknown [70.107.117.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80A1017E0B25;
-	Tue, 18 Mar 2025 23:24:44 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 18 Mar 2025 18:22:18 -0400
-Subject: [PATCH 4/4] arm64: dts: mediatek: mt8390-genio-common: Add
- firmware-name for scp0
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3168617E0FCC;
+	Tue, 18 Mar 2025 23:27:09 +0100 (CET)
+Date: Tue, 18 Mar 2025 19:27:07 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jason Chen <Jason-ch.Chen@mediatek.com>
+Subject: Re: [PATCH] mediatek: Add MT8188 SCP firmware
+Message-ID: <2f7b538f-c868-4f7b-8fe5-cec2227996a5@notapiano>
+References: <20250318094809.3540043-1-moudy.ho@mediatek.com>
+ <20250318094809.3540043-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250318-scp-dual-core-mt8390-v1-4-8733e192cc73@collabora.com>
-References: <20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com>
-In-Reply-To: <20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com>
-To: Bjorn Andersson <andersson@kernel.org>, 
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>, 
- Olivia Wen <olivia.wen@mediatek.com>
-Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+In-Reply-To: <20250318094809.3540043-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_152448_420415_A140D121 
-X-CRM114-Status: UNSURE (   8.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250318_152713_311153_6CF0FA68 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +76,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the firmware-name property for SCP core0 so the firmware can be
-loaded from its canonical location in the linux-firmware repository.
+On Tue, Mar 18, 2025 at 05:47:19PM +0800, Moudy Ho wrote:
+> System Control Processor is an RISC-V processor in MediaTek MT8188 SoC.
+> It supports vedio encode/decode, MDP and CrOS EC host command.
+> 
+> Internal version: geralt_scp_v2.0.27749-b012b17bb
+> Release version: v2.0.27749
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  mediatek/mt8188/scp.img | Bin 0 -> 636548 bytes
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  create mode 100644 mediatek/mt8188/scp.img
+> 
+> diff --git a/mediatek/mt8188/scp.img b/mediatek/mt8188/scp.img
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..d7d7b1818b76b599fafbfc53e05dc3016e1cbb28
 
-Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Hi Moudy,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index 65952bcf5d03e3b22984dd3e997e7107e74dac72..53951817df468ee27d20db1f1028c21a1832b880 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -1060,6 +1060,7 @@ &scp_cluster {
- };
- 
- &scp_c0 {
-+	firmware-name = "mediatek/mt8188/scp.img";
- 	memory-region = <&scp_mem>;
- 	status = "okay";
- };
+This firmware fails to load when using the dual core SCP DT description [1]:
 
--- 
-2.49.0
+  [   79.494105] remoteproc remoteproc0: powering up scp
+  [   79.496217] remoteproc remoteproc0: Booting fw image mediatek/mt8188/scp.img, size 636548
+  [   79.497298] platform 10500000.scp: IPI buf addr 0x000ffb40
+  [   79.498013] platform 10500000.scp: IPI buffer does not fit in SRAM.
 
+Please submit the firmware that works with the dual-core SCP description.
+
+Thanks,
+Nícolas
+
+[1] https://lore.kernel.org/all/20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com
 
