@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A05C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 13:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C07DC282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 14:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=exq48y4UDS4CNhrlQI3l6HQBS5ES5ynXCCbVCpH1UyY=; b=wBphsxwzq0op8r31qz31Q+VCja
-	LTUxk+0qQGjni+RDHRUCdYDslnu0VJ2hHL8mNZSOrEH642reSjXtNu/0v0DW9Qc+ZOH9pz41dX948
-	H6G/7dnEynrAChMdlZOlIBY0sgJuCIIdYeo8qaBU2R8kvMN4Zp+6piaLh2a/rD21rE7BoZ56IrfJX
-	0vGi86TuW5uvVpIS4E7QJU+YVtLxYH8gviTDt3ffb3xf87DbCDFQcEUUBno1hcoNQhEagzZMNgb8o
-	BkOqwm7F3wHUlF1JuPlF1VH+TdL0NO+U9u4/8j/bW9zsOm83hjwgLfWkTycWishiXXK1hi4MYgagC
-	PqJTQh2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9L3QuRg7qq4jIR4VvfIWIj1a6A5KXUIfQeOYZvj+5jY=; b=3ELDhvML8lyDo5Hh+akdtjiiF6
+	7UWMz0YSe3+bTTKwH+2kA1RROeSjmTjGC6OKI0B9TtOkBUtkRxhU61ThrZn6xEjoUOC+WiN0livoO
+	RphTgZopVUch05LVNIjYpY/sSxOg6IDYEKnl8PU2VUNBcUqJeBlsJGfq0y4a8ijq/+LVjOPA40866
+	24Q1gJ6DmORww+Z5FiROMjJE72GBGw9BbWm7xWKXQxwH/DLs1I6hGAcgxKxS6FqQIxzozJWPRgQbe
+	DCpeE0ta57bTF4PnH3TSJn6ASFM7EP3GjGc8JTz2wJE/OXz7cX4Var26S6AdUAHSYTea9ZX7IRdIx
+	2AQIQ7Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuXT1-000000066MM-2RL0;
-	Tue, 18 Mar 2025 13:58:51 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuXZi-000000067sP-2PvW;
+	Tue, 18 Mar 2025 14:05:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuXOK-000000065X6-0n2C;
-	Tue, 18 Mar 2025 13:54:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9A41EA474B8;
-	Tue, 18 Mar 2025 13:48:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 806C0C4CEDD;
-	Tue, 18 Mar 2025 13:53:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742306038;
-	bh=exq48y4UDS4CNhrlQI3l6HQBS5ES5ynXCCbVCpH1UyY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rwCpccxayKhI6ckfPXN6x2rcwonxpo92h9X4bC4cvlC35rhylaDyY4NQHQiaLxKN3
-	 yFzyP0lKkKbhofrJk7A4HkI4snl8WCIrvztZozLJs+rbxe1jIyjBPgA3ochiQIuBvp
-	 Y7groGmsKyrQt3EyPm5FigdyxV7AAeEgXM9Hs7lZYXaMwZDRMTa6W80+rylxldEWXw
-	 ZArzQIr2MOYq7t6fhMSJG2UoGYsBCDqvi5ZRBybbY/B99Mgad37tDwolPLmco7OCKP
-	 TAWNxQXCizYbiLoTzG5qp7F63by/HcmOpTXt2NJ2IMwrPCejd+xAfXOSvdotAkZ8OY
-	 7CJzAUJqrsSQg==
-Date: Tue, 18 Mar 2025 14:53:56 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 20/21] wifi: mt76: mt7996: rework mt7996_ampdu_action to
- support MLO
-Message-ID: <Z9l69EeSm3ZemucG@lore-desk>
-References: <20250312-b4-mt7996-mlo-p2-v1-0-015b3d6fd928@kernel.org>
- <20250312-b4-mt7996-mlo-p2-v1-20-015b3d6fd928@kernel.org>
- <38ab11261debaf7e0884080031412808396eea5b.camel@mediatek.com>
- <d584cae48470cf08b1029e0fef1383f92444970b.camel@mediatek.com>
+	id 1tuXWx-000000067CP-49YM;
+	Tue, 18 Mar 2025 14:02:57 +0000
+X-UUID: aeef5a92040111f0a1e849db4cc18d44-20250318
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9L3QuRg7qq4jIR4VvfIWIj1a6A5KXUIfQeOYZvj+5jY=;
+	b=VlsfvZpmzdg7JIMW2j+qA9NAlvKdVqzdR8asSOFcONlRLDJzuXabeqENeJXfLAOGWNa9jkps76r7FE/2nCijAVN/FKMeaJmPgIW0VSNZvCB75T19noa6nWUYJDF8NqRXbT8LjG76ketNwMT5ktuvZNgJt2BLBf9fC4FS80yXuvE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:42e57f66-c50c-410f-b09b-142812454012,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:563c7fc6-16da-468a-87f7-8ca8d6b3b9f7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: aeef5a92040111f0a1e849db4cc18d44-20250318
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1878895898; Tue, 18 Mar 2025 07:02:52 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 18 Mar 2025 22:02:49 +0800
+Received: from mszsdclx1211.gcn.mediatek.inc (10.16.7.31) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 18 Mar 2025 22:02:49 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>,
+	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>,
+	<liankun.yang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v3 0/1] *** SUBJECT HERE ***
+Date: Tue, 18 Mar 2025 22:02:20 +0800
+Message-ID: <20250318140236.13650-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="QC7bqY7jvMPKDwHq"
-Content-Disposition: inline
-In-Reply-To: <d584cae48470cf08b1029e0fef1383f92444970b.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_065400_294536_40784E95 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20250318_070256_041763_E3503B1C 
+X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +88,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+*** BLURB HERE ***
 
---QC7bqY7jvMPKDwHq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Liankun Yang (1):
+  drm/mediatek: Adjust bandwidth limit for DP
 
-> Hi Lorenzo,
->=20
-> Sorry, please ignore the previous mail.
-> I just aware that the deflink is now used as the primary/assoc link, so
-> it should work.
->=20
-> Regards,
-> Shayne
->=20
-> On Tue, 2025-03-18 at 14:28 +0800, Shayne Chen wrote:
-> > Hi Lorenzo,
-> >=20
-> > On Wed, 2025-03-12 at 12:14 +0100, Lorenzo Bianconi wrote:
-> > >=20
-> >=20
-> > Regards,
-> > Shayne
->=20
+Applied to mediatek-drm-fixes [1]
+  drm/mediatek: Fix mode valid issue for dp.
+  drm/mediatek: Fix YCbCr422 color format issue for DP.
 
-ack, no worries.
+ drivers/gpu/drm/mediatek/mtk_dp.c | 39 ++++++++++++++++---------------
+ 1 file changed, 20 insertions(+), 19 deletions(-)
 
-Regards,
-Lorenzo
+-- 
+2.45.2
 
---QC7bqY7jvMPKDwHq
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ9l69AAKCRA6cBh0uS2t
-rLYuAQDn1Wm9sdM1JI8LKfHpJi4eZ8Zos8g9Ky74NpQinqvEpAD+I9Fm1rnMWZ4Q
-MzfC7A+Fb6MjgxEprXxdEli05QGIbwg=
-=E1zp
------END PGP SIGNATURE-----
-
---QC7bqY7jvMPKDwHq--
 
