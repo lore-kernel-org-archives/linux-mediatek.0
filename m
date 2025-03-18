@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B30AC282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21CFCC282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:58:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s//yCSwzuJxCyaujFqCk41pWPJtNKfJ15rMKFZYWtoA=; b=RFOsUiwu4td3BamAOCRtf4OIJO
-	r+Va4sb6eHeVEbqS3+0kbFR2BcFkjISrlithHrwtCqP3jPLilcuQ4AEgjqWavjaCvfwie4nxclU2q
-	KsgY3g6guGd9L4e0FPG/AY4VZM7orTt6B1zbq3QCrP/WeAhqzrfhymZJBYeoTcwKTwmsw5UpjYaGJ
-	uMNXFu1XFQkg5bnWrE9qbGjS9MPP/qIZL0gu4K8AjEOMvXQwuw7a5+lpIgXo4pKDRk5rqVnSiBbJf
-	TJU+avcz/5FkEJ99vtiwTcSCMHu6qQUzi2btUQpClaDbP+Yy40+XCgal3RVAIxLxv12yaHM3uYxdS
-	222YIx1w==;
+	bh=5LjGT+0g9DBkHyIRREem1p9vsk1tbzvZptw7HNRAz1k=; b=pKYCnW2hOHI0fR2Wy7wVrmBOr3
+	Em5bQn1MF5B8tWyyDDHP8UiVcOk9nHkLYp+cvL0rHbmnOfX7zbPGggA2v9IkIztc2Lm1X07xgdmGK
+	XAZLbYPwns3BM/MKMqS/tij9Tyy0ktt/v1p3ds0gVlqxJqjYx1kwFTZJlqLgNi/QSxr6GHS6Ofm2z
+	sohrYoKcEtti4jEta7sJlOE1NElbZbxMnejWUPFAmA0D8Tsq2JAP/TCf87dVT9EcDbDHH+qXfP/rI
+	M9a/+4C7CuqX7qBQelZwG/SMk7XqAoYvuQkt6xXZbjph/iHTNrNYTEupMKyhun+L5ZW5bMUUJ75q+
+	0Lkxm11w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVZI-00000005nia-1EvN;
-	Tue, 18 Mar 2025 11:57:12 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tuVaw-00000005nzK-1IS0;
+	Tue, 18 Mar 2025 11:58:54 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVOu-00000005lqG-3KhW;
-	Tue, 18 Mar 2025 11:46:30 +0000
+	id 1tuVOx-00000005lr9-1RWr;
+	Tue, 18 Mar 2025 11:46:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 876FCA48F32;
-	Tue, 18 Mar 2025 11:40:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46396C4CEDD;
-	Tue, 18 Mar 2025 11:46:27 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1992FA48E7A;
+	Tue, 18 Mar 2025 11:41:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD104C4CEEF;
+	Tue, 18 Mar 2025 11:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742298387;
-	bh=rCs+UrDUnktbdcw/dcYq2H0+m4LMlYoRtzFBUJPS9mM=;
+	s=k20201202; t=1742298390;
+	bh=iVv9lKsgzc7NHnkM2bif0jCWiz/F21PHpCbC8MzU9us=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FO+/WkVRAwmPbiaKbNXqxIgsH2lu0e7EGaDmOohEAp6ewe9UFMMUwgjNDkfMecZ67
-	 t9+bexBKdKF4l2aRqPMjh5ysoV+mZtkicBTHdlfSG75EdgGgzG+ItywjjiOtkw6b8N
-	 dAYaGJ6SPV2LZpZ+5Rk8DFxcLxBupSWV2NwUc3kapEbEq0a6RucKe88aM5x0+5rX5f
-	 MDcE5aBBEV8VgWLuD9H63kl32IOsSAfSc3lFlJUB2tHzP5DS6Q7SfSuehU5Dmhjrc3
-	 OzXNn8hf54A9OmcPdrHmD/gfQAz9dgYJr6mNeK+Zwiuu48WrpzLS/O8kxYyy51EEDj
-	 F6vSBpkJdvccQ==
+	b=KBECqMmdeZ8yKJyBVe2cc8UUyMS4dTq73V1W4rI1ZwPqcLZwmIXMDoHrHFAPjGY6V
+	 EGzq4181p57fxkBYmMZ1SWAWgtOZkClekmig7OhdkIylg8nNRu8wuMZzPuv5M2BkR7
+	 deXdnJJ2sa5MoHsANTfBX6GJTsx/idultdZVL5WVvrFiontRDeS3yaXy0vAu4SfDB9
+	 5lsel9aY6VHkt5gHBBUw3nYKoG+N6J/tykrk0H65Yw0jBAUbcIImaCjGmjJvHFECGz
+	 Z9IeXXzwxfXB/y60Chk+vUhjYGM4kd5xkW2dWHi5E4jFnMbDGIcdsE6tNdqoGUFgn3
+	 Okyr8lWvlENLQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 18 Mar 2025 12:46:09 +0100
-Subject: [PATCH net-next v2 5/7] net: ethernet: mediatek: Add metadata
- support for xdp mode
+Date: Tue, 18 Mar 2025 12:46:10 +0100
+Subject: [PATCH net-next v2 6/7] net: mana: Add metadata support for xdp
+ mode
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250318-mvneta-xdp-meta-v2-5-b6075778f61f@kernel.org>
+Message-Id: <20250318-mvneta-xdp-meta-v2-6-b6075778f61f@kernel.org>
 References: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
 In-Reply-To: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
 To: Marcin Wojtas <marcin.s.wojtas@gmail.com>, 
@@ -77,8 +77,8 @@ Cc: netdev@vger.kernel.org, bpf@vger.kernel.org,
  Michal Kubiak <michal.kubiak@intel.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_044628_963971_B31C9FCD 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20250318_044631_519062_E4A4A892 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,49 +93,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set metadata size building the skb from xdp_buff in mediatek driver.
-mtk_eth_soc driver sets xdp headroom to XDP_PACKET_HEADROOM so the
-headroom is large enough to contain xdp_frame and xdp metadata.
+Set metadata size building the skb from xdp_buff in mana driver.
+mana driver sets xdp headroom to XDP_PACKET_HEADROOM so the headroom is
+large enough to contain xdp_frame and xdp metadata.
 Please note this patch is just compiled tested.
 
 Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/microsoft/mana/mana_bpf.c | 2 +-
+ drivers/net/ethernet/microsoft/mana/mana_en.c  | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 922330b3f4d70421276ecd3f4ab175b3ae263f71..43197b28b3e745319e974c6022a6a51b6953f60a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2122,7 +2122,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		if (ring->page_pool) {
- 			struct page *page = virt_to_head_page(data);
- 			struct xdp_buff xdp;
--			u32 ret;
-+			u32 ret, metasize;
+diff --git a/drivers/net/ethernet/microsoft/mana/mana_bpf.c b/drivers/net/ethernet/microsoft/mana/mana_bpf.c
+index 23b1521c0df96e7fd595daad8b49fa9be935090c..d30721d4516fc60cf8883f2b35cc561559082ccc 100644
+--- a/drivers/net/ethernet/microsoft/mana/mana_bpf.c
++++ b/drivers/net/ethernet/microsoft/mana/mana_bpf.c
+@@ -91,7 +91,7 @@ u32 mana_run_xdp(struct net_device *ndev, struct mana_rxq *rxq,
+ 		goto out;
  
- 			new_data = mtk_page_pool_get_buff(ring->page_pool,
- 							  &dma_addr,
-@@ -2138,7 +2138,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 	xdp_init_buff(xdp, PAGE_SIZE, &rxq->xdp_rxq);
+-	xdp_prepare_buff(xdp, buf_va, XDP_PACKET_HEADROOM, pkt_len, false);
++	xdp_prepare_buff(xdp, buf_va, XDP_PACKET_HEADROOM, pkt_len, true);
  
- 			xdp_init_buff(&xdp, PAGE_SIZE, &ring->xdp_q);
- 			xdp_prepare_buff(&xdp, data, MTK_PP_HEADROOM, pktlen,
--					 false);
-+					 true);
- 			xdp_buff_clear_frags_flag(&xdp);
+ 	act = bpf_prog_run_xdp(prog, xdp);
  
- 			ret = mtk_xdp_run(eth, ring, &xdp, netdev);
-@@ -2158,6 +2158,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+diff --git a/drivers/net/ethernet/microsoft/mana/mana_en.c b/drivers/net/ethernet/microsoft/mana/mana_en.c
+index 9a8171f099b63c6a1a6415f12718d46d5d835f97..e190d5ee51544090a703c14c76abdc23797f864a 100644
+--- a/drivers/net/ethernet/microsoft/mana/mana_en.c
++++ b/drivers/net/ethernet/microsoft/mana/mana_en.c
+@@ -1559,8 +1559,12 @@ static struct sk_buff *mana_build_skb(struct mana_rxq *rxq, void *buf_va,
+ 		return NULL;
  
- 			skb_reserve(skb, xdp.data - xdp.data_hard_start);
- 			skb_put(skb, xdp.data_end - xdp.data);
-+			metasize = xdp.data - xdp.data_meta;
-+			if (metasize)
-+				skb_metadata_set(skb, metasize);
- 			skb_mark_for_recycle(skb);
- 		} else {
- 			if (ring->frag_size <= PAGE_SIZE)
+ 	if (xdp->data_hard_start) {
++		u32 metasize = xdp->data - xdp->data_meta;
++
+ 		skb_reserve(skb, xdp->data - xdp->data_hard_start);
+ 		skb_put(skb, xdp->data_end - xdp->data);
++		if (metasize)
++			skb_metadata_set(skb, metasize);
+ 		return skb;
+ 	}
+ 
 
 -- 
 2.48.1
