@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8752C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 06:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063F2C28B28
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 07:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S5rIXPKjT0J3lgf0BS0jHMM4NvolR3cT6jE20jRhzP0=; b=Fvei8lsS9yaVdqlUNMdZH8houX
-	gVv/T3H2jXhF7zH7CfLI81+oRXccnEhb7m15lcNc1099+bt1gq8TSsQG4QAkEfc5/dV6UnqsPSBxa
-	GCOwWb5DEikFlWW4ZGfWqmR06PvKk+WpEEp6V+1NsYHQQkSuKoeF/zSmov6kMwldT2V91bkbU5m+6
-	RS6pW4BForgRkY40Jhd6MfPWXuxE3hTwUHXZ7+l79MnYLyC3RRY54sKQgzjKEN6sHH7xqt7SY9iOF
-	/C2E7NZBItiDLW+daZg/JzfQF332WXAD/86ENlfKgocKSZidwF9W59u+rkC/bkR6HfCfQwlNyUi9S
-	chMJuGZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AY4nrcK+Zp55l8IKfUmGd4cDhlQMOGx6qxnOrnPzDs0=; b=eMEkl2p0CdGV+xEweympjHqsIk
+	MCjshGmcerbK2Bd1yueGctsEm4XTrXnpBtXVbIxm2+xY28f1QVOdqcqrtWwoxbR8z0JAHPfhK29IN
+	GdZh1pX3xM1+UTzGYzfpNnxg4YyAmRvPyioEjKfdABKYoRgAH0EIr4ByCFkKDLdSz6YbfeYucgA2J
+	vTbTdh+9RO68W4TzIDKRx+c0cearSVEJl/dQqA4nCdJgOJWPFLRCWpMGnYUN+iSB1hOOBOH+wClbF
+	KQO8B8ki98vmPW0Y6Em0vOfMmmRTkVvTSh+QtuDOTAESp4UsTK9zkCVEIC/DhRa1LelC3/TLX8hdy
+	yuqlEpZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuQRq-00000004pKh-2rJd;
-	Tue, 18 Mar 2025 06:29:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tuRca-00000004zFW-3rKb;
+	Tue, 18 Mar 2025 07:44:20 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuQRo-00000004pJ1-3hnz;
-	Tue, 18 Mar 2025 06:29:10 +0000
-X-UUID: 4702ab2603c211f0a1e849db4cc18d44-20250317
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=S5rIXPKjT0J3lgf0BS0jHMM4NvolR3cT6jE20jRhzP0=;
-	b=L7MT/mfblKp5RXZ7Fcvcz/Q2MNh9HxaBO+qyV/FzHHBgNf7Rv4r4mL0KvhTykjhZmIUu6iFOGeVGzLrixQ0LYK4ysF0FZthKTYk4nIesnCdaFCi2o1Ityc2xlUi0wuYERqY5VyyUNGDtBzC/+dSsHy2m6sLBelsgAhB/Y9f74js=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:97db00c0-a628-4628-a120-3315a04c0da4,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:2e813e4a-a527-43d8-8af6-bc8b32d9f5e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 4702ab2603c211f0a1e849db4cc18d44-20250317
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1959756673; Mon, 17 Mar 2025 23:28:59 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 18 Mar 2025 14:28:57 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
- Transport; Tue, 18 Mar 2025 14:28:57 +0800
-Message-ID: <38ab11261debaf7e0884080031412808396eea5b.camel@mediatek.com>
-Subject: Re: [PATCH 20/21] wifi: mt76: mt7996: rework mt7996_ampdu_action to
- support MLO
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, Ryder
- Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Johannes
- Berg <johannes@sipsolutions.net>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Date: Tue, 18 Mar 2025 14:28:57 +0800
-In-Reply-To: <20250312-b4-mt7996-mlo-p2-v1-20-015b3d6fd928@kernel.org>
-References: <20250312-b4-mt7996-mlo-p2-v1-0-015b3d6fd928@kernel.org>
-	 <20250312-b4-mt7996-mlo-p2-v1-20-015b3d6fd928@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1tuRcU-00000004z7y-1wXT
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Mar 2025 07:44:17 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-307c13298eeso60509811fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 00:44:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1742283852; x=1742888652; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AY4nrcK+Zp55l8IKfUmGd4cDhlQMOGx6qxnOrnPzDs0=;
+        b=UFTNRMDTEGRx8VcvQBGcgxj8eZ62uh0L5DMarQjteWRfUCSAMzEEGS7fRC1c+W46Mx
+         DatoafNQpobsFwIE0Ezra2cJ9HU9UMmc98G8jpvITIcKzgOkxkU4hx0P+XGImjq0ffu4
+         d5T9GFfnAp0TgQCnUeW8dODGCdq4PYnCLAsg0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742283852; x=1742888652;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AY4nrcK+Zp55l8IKfUmGd4cDhlQMOGx6qxnOrnPzDs0=;
+        b=M7Kv0a6EcqKo05os+pGTl+NXDa4ic08yTcAjvlh+dKjR/dFOhduQnDqIDt/ULSV9Bz
+         oPqqPlqW84wjwpqND7A4VxIq3T7i5w1o61+n3sWBzVNOdlLtC6tQ1rHfmLPL6fyLT2He
+         UgFTn+e6W4IvQDlHhtVfJfXOHvsBPugUNmNGho+WyvMKT56U0eih1TOY+lwAyVxz8+1Q
+         TXbnU+ii4icfbmfkkB/Ay+DNG7s2bb1W2mQZcZlD2DZVTybKgDIpHqRXMm4f9FO+cdN/
+         N7ZW9fU7xC/BCF0mYSuLlu+mCmQbrS4RtyEc1qeLlmDkKlo5biZNP8XKic6n7pG+yIZA
+         Meog==
+X-Forwarded-Encrypted: i=1; AJvYcCW5+Dg75JdSWGfAU94+gj2Pwlow2YGOxeYgv46fBLpwjT17ldRaD2WXe+f+4/qusV2a3yAvcgyDBWswzuXoOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2W2/B0iGHu5nHsjJwiUHqeNiz8whZjBd7cmg1+1MhhSgNFVBV
+	EC6LrYsGEEBFd3M1zzMKN/D1FnHVt2T77ZhajF4Tq43HGulgyRDd4OopqsHFOirrM6AQyoKotXa
+	Z2XY8YNJC6XrT3P+5qm9Pjb1LQ8wsGWG8UFyS
+X-Gm-Gg: ASbGnctrVPJNsSvOvLYwS5HARA3sTVPhruDM0mj/eNVNkUL/JwVqefQIvCVOP8PbebJ
+	n8gHAxSLFrlHRhC+HjRgZx7v1csGQ63xjJDKz3Yl1bNylKBrWKuzkbfbrKj60c/7CLzYiC4gSI7
+	IWtnrH2wNHW73Jm2oSYwP3uKwppIMsJ2TyJ7s2tXJ+cqNcOY+nS2R4IA==
+X-Google-Smtp-Source: AGHT+IF+773ci4UoV+sGzHQYu4ESZ9jtnDsvpdSF2LHhzTO4GxyVaJ4Tz3KvEFLSLVW7uYN+ywJG4Jl3VDfydU66Nlg=
+X-Received: by 2002:a05:651c:1a0a:b0:308:ee65:7f44 with SMTP id
+ 38308e7fff4ca-30cd95ccf10mr18564791fa.8.1742283851907; Tue, 18 Mar 2025
+ 00:44:11 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250317083822.891-1-jjian.zhou@mediatek.com> <375d5281-41f5-49e8-ac20-d58931c0c1f9@collabora.com>
+In-Reply-To: <375d5281-41f5-49e8-ac20-d58931c0c1f9@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 18 Mar 2025 15:44:00 +0800
+X-Gm-Features: AQ5f1JoL_4-3vsBbckwxOs1U7jI_JX94-Mf3iV6qaZp6QY7f8KVlHZilsseLfY4
+Message-ID: <CAGXv+5G4KRbv=qcKurn5u300XPp4KNovmUD9OBfX7mKk57tucg@mail.gmail.com>
+Subject: Re: [PATCH RFC v2 0/3] add VCP mailbox and IPC driver
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jjian Zhou <jjian.zhou@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_232908_928907_041C31B6 
-X-CRM114-Status: GOOD (  18.01  )
+X-CRM114-CacheID: sfid-20250318_004414_522013_D26950CE 
+X-CRM114-Status: GOOD (  36.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,204 +95,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTG9yZW56bywKCk9uIFdlZCwgMjAyNS0wMy0xMiBhdCAxMjoxNCArMDEwMCwgTG9yZW56byBC
-aWFuY29uaSB3cm90ZToKPiAKPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sg
-bGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bnRpbAo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBz
-ZW5kZXIgb3IgdGhlIGNvbnRlbnQuCj4gCj4gCj4gQWN0aXZlL2RlLWFjdGl2ZSBUWC9SWCBCQSBz
-ZXNzc3Npb24gZm9yIGVhY2ggYWN0aXZlIGxpbmtzIHJ1bm5pbmcKPiBtdDc5OTZfYW1wZHVfYWN0
-aW9uIHJvdXRpbmUuCj4gCj4gU2lnbmVkLW9mZi1ieTogTG9yZW56byBCaWFuY29uaSA8bG9yZW56
-b0BrZXJuZWwub3JnPgo+IC0tLQo+IMKgZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
-Ni9tdDc5OTYvbWFpbi5jwqDCoCB8IDg5Cj4gKysrKysrKysrKysrKystLS0tLS0tLQo+IMKgZHJp
-dmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5OTYvbWN1LmPCoMKgwqAgfCAxNiAr
-Ky0tCj4gwqBkcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210Nzk5Ni9tdDc5OTYu
-aCB8wqAgNSArLQo+IMKgMyBmaWxlcyBjaGFuZ2VkLCA2NCBpbnNlcnRpb25zKCspLCA0NiBkZWxl
-dGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
-bXQ3Ni9tdDc5OTYvbWFpbi5jCj4gYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2
-L210Nzk5Ni9tYWluLmMKPiBpbmRleAo+IDhiY2I0YjhlM2VmNThjMjMyOTRjMTZjMTBkMzgzODRi
-ZmJhODdlMzAuLmFkZWIyNjdiMjgwMTg5NDU5MGY5MGQwMmU5MAo+IDJlYmVjNjAyZGU5OGEgMTAw
-NjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5OTYvbWFp
-bi5jCj4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5OTYvbWFp
-bi5jCj4gQEAgLTEyNTksMTIgKzEyNTksMTMgQEAgbXQ3OTk2X2FtcGR1X2FjdGlvbihzdHJ1Y3Qg
-aWVlZTgwMjExX2h3ICpodywKPiBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLAo+IMKgwqDCoMKg
-wqDCoMKgIGVudW0gaWVlZTgwMjExX2FtcGR1X21sbWVfYWN0aW9uIGFjdGlvbiA9IHBhcmFtcy0+
-YWN0aW9uOwo+IMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZfZGV2ICpkZXYgPSBtdDc5OTZf
-aHdfZGV2KGh3KTsKPiDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhID0g
-cGFyYW1zLT5zdGE7Cj4gLcKgwqDCoMKgwqDCoCBzdHJ1Y3QgaWVlZTgwMjExX3R4cSAqdHhxID0g
-c3RhLT50eHFbcGFyYW1zLT50aWRdOwo+IMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZfc3Rh
-ICptc3RhID0gKHN0cnVjdCBtdDc5OTZfc3RhICopc3RhLT5kcnZfcHJpdjsKPiAtwqDCoMKgwqDC
-oMKgIHN0cnVjdCBtdDc5OTZfc3RhX2xpbmsgKm1zdGFfbGluayA9ICZtc3RhLT5kZWZsaW5rOwo+
-ICvCoMKgwqDCoMKgwqAgc3RydWN0IGllZWU4MDIxMV90eHEgKnR4cSA9IHN0YS0+dHhxW3BhcmFt
-cy0+dGlkXTsKPiArwqDCoMKgwqDCoMKgIHN0cnVjdCBpZWVlODAyMTFfbGlua19zdGEgKmxpbmtf
-c3RhOwo+IMKgwqDCoMKgwqDCoMKgIHUxNiB0aWQgPSBwYXJhbXMtPnRpZDsKPiDCoMKgwqDCoMKg
-wqDCoCB1MTYgc3NuID0gcGFyYW1zLT5zc247Cj4gwqDCoMKgwqDCoMKgwqAgc3RydWN0IG10NzZf
-dHhxICptdHhxOwo+ICvCoMKgwqDCoMKgwqAgdW5zaWduZWQgaW50IGxpbmtfaWQ7Cj4gwqDCoMKg
-wqDCoMKgwqAgaW50IHJldCA9IDA7Cj4gCj4gwqDCoMKgwqDCoMKgwqAgaWYgKCF0eHEpCj4gQEAg
-LTEyNzQsMzggKzEyNzUsNjAgQEAgbXQ3OTk2X2FtcGR1X2FjdGlvbihzdHJ1Y3QgaWVlZTgwMjEx
-X2h3ICpodywKPiBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLAo+IAo+IMKgwqDCoMKgwqDCoMKg
-IG11dGV4X2xvY2soJmRldi0+bXQ3Ni5tdXRleCk7Cj4gCj4gLcKgwqDCoMKgwqDCoCBzd2l0Y2gg
-KGFjdGlvbikgewo+IC3CoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVfUlhfU1RBUlQ6
-Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXQ3Nl9yeF9hZ2dyX3N0YXJ0KCZkZXYt
-Pm10NzYsICZtc3RhX2xpbmstPndjaWQsIHRpZCwKPiBzc24sCj4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwYXJhbXMt
-PmJ1Zl9zaXplKTsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQgPSBtdDc5OTZf
-bWN1X2FkZF9yeF9iYShkZXYsIHBhcmFtcywgdHJ1ZSk7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgYnJlYWs7Cj4gLcKgwqDCoMKgwqDCoCBjYXNlIElFRUU4MDIxMV9BTVBEVV9SWF9T
-VE9QOgo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10NzZfcnhfYWdncl9zdG9wKCZk
-ZXYtPm10NzYsICZtc3RhX2xpbmstPndjaWQsIHRpZCk7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgcmV0ID0gbXQ3OTk2X21jdV9hZGRfcnhfYmEoZGV2LCBwYXJhbXMsIGZhbHNlKTsK
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPiAtwqDCoMKgwqDCoMKgIGNh
-c2UgSUVFRTgwMjExX0FNUERVX1RYX09QRVJBVElPTkFMOgo+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIG10eHEtPmFnZ3IgPSB0cnVlOwo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIG10eHEtPnNlbmRfYmFyID0gZmFsc2U7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgcmV0ID0gbXQ3OTk2X21jdV9hZGRfdHhfYmEoZGV2LCBwYXJhbXMsIHRydWUpOwo+IC3CoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+IC3CoMKgwqDCoMKgwqAgY2FzZSBJRUVF
-ODAyMTFfQU1QRFVfVFhfU1RPUF9GTFVTSDoKPiAtwqDCoMKgwqDCoMKgIGNhc2UgSUVFRTgwMjEx
-X0FNUERVX1RYX1NUT1BfRkxVU0hfQ09OVDoKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBtdHhxLT5hZ2dyID0gZmFsc2U7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2xl
-YXJfYml0KHRpZCwgJm1zdGFfbGluay0+d2NpZC5hbXBkdV9zdGF0ZSk7Cj4gLcKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgcmV0ID0gbXQ3OTk2X21jdV9hZGRfdHhfYmEoZGV2LCBwYXJhbXMs
-IGZhbHNlKTsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPiAtwqDCoMKg
-wqDCoMKgIGNhc2UgSUVFRTgwMjExX0FNUERVX1RYX1NUQVJUOgo+IC3CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHNldF9iaXQodGlkLCAmbXN0YV9saW5rLT53Y2lkLmFtcGR1X3N0YXRlKTsK
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQgPSBJRUVFODAyMTFfQU1QRFVfVFhf
-U1RBUlRfSU1NRURJQVRFOwo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+
-IC3CoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVfVFhfU1RPUF9DT05UOgo+IC3CoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10eHEtPmFnZ3IgPSBmYWxzZTsKPiAtwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBjbGVhcl9iaXQodGlkLCAmbXN0YV9saW5rLT53Y2lkLmFtcGR1
-X3N0YXRlKTsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQgPSBtdDc5OTZfbWN1
-X2FkZF90eF9iYShkZXYsIHBhcmFtcywgZmFsc2UpOwo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIGllZWU4MDIxMV9zdG9wX3R4X2JhX2NiX2lycXNhZmUodmlmLCBzdGEtPmFkZHIsIHRp
-ZCk7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKgwqDC
-oCBmb3JfZWFjaF9zdGFfYWN0aXZlX2xpbmsodmlmLCBzdGEsIGxpbmtfc3RhLCBsaW5rX2lkKSB7
-Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IG10Nzk5Nl9zdGFfbGluayAq
-bXN0YV9saW5rOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZf
-dmlmX2xpbmsgKmxpbms7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG1zdGFf
-bGluayA9IG10NzZfZGVyZWZlcmVuY2UobXN0YS0+bGlua1tsaW5rX2lkXSwKPiAmZGV2LT5tdDc2
-KTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoIW1zdGFfbGluaykKPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGludWU7Cj4gKwo+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxpbmsgPSBtdDc5OTZfdmlmX2xpbmsoZGV2
-LCB2aWYsIGxpbmtfaWQpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmICghbGlu
-aykKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGlu
-dWU7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN3aXRjaCAoYWN0aW9uKSB7
-Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVfUlhf
-U1RBUlQ6Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10
-NzZfcnhfYWdncl9zdGFydCgmZGV2LT5tdDc2LCAmbXN0YV9saW5rLQo+ID53Y2lkLCB0aWQsCj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3NuLCBwYXJhbXMtPmJ1Zl9zaXplKTsKPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0ID0gbXQ3OTk2X21j
-dV9hZGRfcnhfYmEoZGV2LCBwYXJhbXMsIGxpbmssCj4gdHJ1ZSk7Cj4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIGNhc2UgSUVFRTgwMjExX0FNUERVX1JYX1NUT1A6Cj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10NzZfcnhfYWdncl9zdG9wKCZkZXYt
-Pm10NzYsICZtc3RhX2xpbmstCj4gPndjaWQsIHRpZCk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldCA9IG10Nzk5Nl9tY3VfYWRkX3J4X2JhKGRldiwg
-cGFyYW1zLCBsaW5rLAo+IGZhbHNlKTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2Fz
-ZSBJRUVFODAyMTFfQU1QRFVfVFhfT1BFUkFUSU9OQUw6Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10eHEtPmFnZ3IgPSB0cnVlOwo+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdHhxLT5zZW5kX2JhciA9IGZhbHNl
-Owo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQgPSBt
-dDc5OTZfbWN1X2FkZF90eF9iYShkZXYsIHBhcmFtcywgbGluaywKPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXN0YV9saW5rLCB0cnVlKTsKPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVfVFhfU1RPUF9GTFVTSDoKPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjYXNlIElFRUU4MDIxMV9BTVBEVV9UWF9TVE9Q
-X0ZMVVNIX0NPTlQ6Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIG10eHEtPmFnZ3IgPSBmYWxzZTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgY2xlYXJfYml0KHRpZCwgJm1zdGFfbGluay0+d2NpZC5hbXBkdV9zdGF0
-ZSk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldCA9
-IG10Nzk5Nl9tY3VfYWRkX3R4X2JhKGRldiwgcGFyYW1zLCBsaW5rLAo+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtc3RhX2xpbmssIGZhbHNlKTsKPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVfVFhfU1RBUlQ6Cj4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHNldF9iaXQodGlkLCAm
-bXN0YV9saW5rLT53Y2lkLmFtcGR1X3N0YXRlKTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0ID0gSUVFRTgwMjExX0FNUERVX1RYX1NUQVJUX0lNTUVE
-SUFURTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJl
-YWs7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FzZSBJRUVFODAyMTFfQU1QRFVf
-VFhfU1RPUF9DT05UOgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBtdHhxLT5hZ2dyID0gZmFsc2U7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIGNsZWFyX2JpdCh0aWQsICZtc3RhX2xpbmstPndjaWQuYW1wZHVfc3Rh
-dGUpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQg
-PSBtdDc5OTZfbWN1X2FkZF90eF9iYShkZXYsIHBhcmFtcywgbGluaywKPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXN0YV9saW5rLCBmYWxzZSk7Cj4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIH0KPiArCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgaWYgKHJldCkKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgYnJlYWs7Cj4gwqDCoMKgwqDCoMKgwqAgfQo+ICsKPiArwqDCoMKgwqDCoMKgIGlmIChhY3Rp
-b24gPT0gSUVFRTgwMjExX0FNUERVX1RYX1NUT1BfQ09OVCkKPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBpZWVlODAyMTFfc3RvcF90eF9iYV9jYl9pcnFzYWZlKHZpZiwgc3RhLT5hZGRy
-LCB0aWQpOwo+ICsKPiDCoMKgwqDCoMKgwqDCoCBtdXRleF91bmxvY2soJmRldi0+bXQ3Ni5tdXRl
-eCk7Cj4gCj4gwqDCoMKgwqDCoMKgwqAgcmV0dXJuIHJldDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5OTYvbWN1LmMKPiBiL2RyaXZlcnMvbmV0
-L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTk2L21jdS5jCj4gaW5kZXgKPiA4NTYwMmE4NTk0
-ZTBjOWFiM2EwMDU1ZTA0Y2YxY2E4MzZkNjJiNmI5Li44OWU0ZjBlODg1ODMyMmI2MzY2NTBhMjdk
-OWEKPiBiMDg3Mjk4N2I3MDExIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21l
-ZGlhdGVrL210NzYvbXQ3OTk2L21jdS5jCj4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVk
-aWF0ZWsvbXQ3Ni9tdDc5OTYvbWN1LmMKPiBAQCAtMTE2MCwyNiArMTE2MCwyMCBAQCBtdDc5OTZf
-bWN1X3N0YV9iYShzdHJ1Y3QgbXQ3OTk2X2RldiAqZGV2LAo+IHN0cnVjdCBtdDc2X3ZpZl9saW5r
-ICptdmlmLAo+IMKgLyoqIHN0YXJlYyAmIHd0YmwgKiovCj4gwqBpbnQgbXQ3OTk2X21jdV9hZGRf
-dHhfYmEoc3RydWN0IG10Nzk5Nl9kZXYgKmRldiwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IGllZWU4MDIxMV9hbXBkdV9wYXJhbXMgKnBh
-cmFtcywKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBi
-b29sIGVuYWJsZSkKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBzdHJ1Y3QgbXQ3OTk2X3ZpZl9saW5rICpsaW5rLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZfc3RhX2xpbmsgKm1zdGFf
-bGluaywgYm9vbAo+IGVuYWJsZSkKPiDCoHsKPiAtwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZf
-c3RhICptc3RhID0gKHN0cnVjdCBtdDc5OTZfc3RhICopcGFyYW1zLT5zdGEtCj4gPmRydl9wcml2
-Owo+IC3CoMKgwqDCoMKgwqAgc3RydWN0IG10Nzk5Nl9zdGFfbGluayAqbXN0YV9saW5rID0gJm1z
-dGEtPmRlZmxpbms7Cj4gLcKgwqDCoMKgwqDCoCBzdHJ1Y3QgbXQ3OTk2X3ZpZiAqbXZpZiA9IG1z
-dGEtPnZpZjsKPiAtCj4gwqDCoMKgwqDCoMKgwqAgaWYgKGVuYWJsZSAmJiAhcGFyYW1zLT5hbXNk
-dSkKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXN0YV9saW5rLT53Y2lkLmFtc2R1
-ID0gZmFsc2U7Cj4gCj4gLcKgwqDCoMKgwqDCoCByZXR1cm4gbXQ3OTk2X21jdV9zdGFfYmEoZGV2
-LCAmbXZpZi0+ZGVmbGluay5tdDc2LCBwYXJhbXMsCj4gZW5hYmxlLCB0cnVlKTsKPiArwqDCoMKg
-wqDCoMKgIHJldHVybiBtdDc5OTZfbWN1X3N0YV9iYShkZXYsICZsaW5rLT5tdDc2LCBwYXJhbXMs
-IGVuYWJsZSwKPiB0cnVlKTsKClBlci1saW5rLWJzcyBzZXR0aW5nIGlzIG5vdyByZWFkeSBmb3Ig
-bXQ3OTk2X21jdV9zdGFfYmEoKSwgd2hpbGUgZm9yCnBlci1saW5rLXN0YSwgdGhlIHdjaWQgaXMg
-c3RpbGwgcmV0cmlldmVkIGZyb20gZGVmbGluayB0aHJvdWdoIHRoZQpmb2xsb3dpbmcgbGluZToK
-CnN0cnVjdCBtdDc2X3djaWQgKndjaWQgPSAoc3RydWN0IG10NzZfd2NpZCAqKXBhcmFtcy0+c3Rh
-LT5kcnZfcHJpdgoKV2UgbWF5IGFsc28gbmVlZCB0byBwYXNzIG1zdGFfbGluay0+d2NpZCB0byBt
-dDc5OTZfbWN1X3N0YV9iYSgpLgo+IMKgfQo+IAo+IMKgaW50IG10Nzk5Nl9tY3VfYWRkX3J4X2Jh
-KHN0cnVjdCBtdDc5OTZfZGV2ICpkZXYsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBpZWVlODAyMTFfYW1wZHVfcGFyYW1zICpwYXJhbXMs
-Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYm9vbCBl
-bmFibGUpCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-c3RydWN0IG10Nzk5Nl92aWZfbGluayAqbGluaywgYm9vbCBlbmFibGUpCj4gwqB7Cj4gLcKgwqDC
-oMKgwqDCoCBzdHJ1Y3QgbXQ3OTk2X3N0YSAqbXN0YSA9IChzdHJ1Y3QgbXQ3OTk2X3N0YSAqKXBh
-cmFtcy0+c3RhLQo+ID5kcnZfcHJpdjsKPiAtwqDCoMKgwqDCoMKgIHN0cnVjdCBtdDc5OTZfdmlm
-ICptdmlmID0gbXN0YS0+dmlmOwo+IC0KPiAtwqDCoMKgwqDCoMKgIHJldHVybiBtdDc5OTZfbWN1
-X3N0YV9iYShkZXYsICZtdmlmLT5kZWZsaW5rLm10NzYsIHBhcmFtcywKPiBlbmFibGUsIGZhbHNl
-KTsKPiArwqDCoMKgwqDCoMKgIHJldHVybiBtdDc5OTZfbWN1X3N0YV9iYShkZXYsICZsaW5rLT5t
-dDc2LCBwYXJhbXMsIGVuYWJsZSwKPiBmYWxzZSk7CgpTYW1lIGhlcmUuCj4gwqB9Cj4gCj4gwqBz
-dGF0aWMgdm9pZAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9t
-dDc2L210Nzk5Ni9tdDc5OTYuaAo+IGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
-Ni9tdDc5OTYvbXQ3OTk2LmgKPiBpbmRleAo+IDgxNWEzYzY4Yjg3MjM0NjllMzJlNzRiODU5Nzll
-YWY3NWMxYjE3NmEuLjQzZTY0NmVkNjA5NGNiN2ZiNzhkMjAxZmMzZQo+IGU4NDQ2YWQyYTE2YTEg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5OTYv
-bXQ3OTk2LmgKPiArKysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210Nzk5
-Ni9tdDc5OTYuaAo+IEBAIC01ODQsMTAgKzU4NCwxMSBAQCBpbnQgbXQ3OTk2X21jdV90ZWFyZG93
-bl9tbGRfc3RhKHN0cnVjdAo+IG10Nzk5Nl9kZXYgKmRldiwKPiDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbXQ3OTk2
-X3N0YV9saW5rICptc3RhX2xpbmspOwo+IMKgaW50IG10Nzk5Nl9tY3VfYWRkX3R4X2JhKHN0cnVj
-dCBtdDc5OTZfZGV2ICpkZXYsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHN0cnVjdCBpZWVlODAyMTFfYW1wZHVfcGFyYW1zICpwYXJhbXMsCj4gLcKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYm9vbCBhZGQpOwo+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBt
-dDc5OTZfdmlmX2xpbmsgKmxpbmssCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgc3RydWN0IG10Nzk5Nl9zdGFfbGluayAqbXN0YV9saW5rLCBib29sCj4g
-ZW5hYmxlKTsKPiDCoGludCBtdDc5OTZfbWN1X2FkZF9yeF9iYShzdHJ1Y3QgbXQ3OTk2X2RldiAq
-ZGV2LAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBz
-dHJ1Y3QgaWVlZTgwMjExX2FtcGR1X3BhcmFtcyAqcGFyYW1zLAo+IC3CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJvb2wgYWRkKTsKPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbXQ3OTk2X3ZpZl9saW5r
-ICpsaW5rLCBib29sIGVuYWJsZSk7Cj4gwqBpbnQgbXQ3OTk2X21jdV91cGRhdGVfYnNzX2NvbG9y
-KHN0cnVjdCBtdDc5OTZfZGV2ICpkZXYsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IG10NzZfdmlmX2xpbmsgKm1s
-aW5rLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHN0cnVjdCBjZmc4MDIxMV9oZV9ic3NfY29sb3IKPiAqaGVfYnNzX2NvbG9y
-KTsKPiAKPiAtLQo+IDIuNDguMQo+IAoKUmVnYXJkcywKU2hheW5lCg==
+On Mon, Mar 17, 2025 at 6:07=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 17/03/25 09:38, Jjian Zhou ha scritto:
+> > The VCP mailbox has 5 groups. Each group has corresponding interrupts,
+> > registers, and 64 slots (each slot is 4 bytes). Since different feature=
+s
+> > share one of the mailbox groups, the VCP mailbox needs to establish a
+> > send table and a receive table. The send table is used to record the
+> > feature ID, mailbox ID, and the number of slots occupied. The receive t=
+able
+> > is used to record the feature ID, mailbox ID, the number of slots occup=
+ied,
+> > and the receive options. The API setup_mbox_table in mtk-vcp-ipc.c calc=
+ulates
+> > the slot offset and pin index for each feature ID based on the mailbox =
+ID and
+> > slot number in the send and receive tables (several slots form a pin, a=
+nd
+> > each pin can trigger an interrupt). These descriptions are written in t=
+he
+> > mtk-vcp-ipc.c file -- we call it the IPC layer.
+> >
+> > We have two questions:
+> > How should we describe the mailbox and IPI?
+> > Can the intermediate IPC layer be rewritten as a virtual mailbox layer?
+> >
+>
+> So, for this remote processor messaging system you have:
+>   - Dynamic channel allocation
+>     - Each channel has its own endpoint
 
+The rpmsg model has:
+
+- device -> the remote processor
+- channel
+- endpoint
+
+However here for the VCP and possibly all the coprocessors using the
+tinysys model, channel and endpoint are basically the same. If we
+consider the "channel" to be the storage plus the interrupt vector,
+and the "endpoint" to be the function running on the remote processor
+servicing a given IPI ID, then it's always one endpoint per channel.
+
+IMHO rpmsg gives too much latitude to make things confusing here.
+
+rpmsg also requires the remote processor to support name service
+announcements, which really doesn't exist. The endpoints and how
+they map to the various hardware mailbox interrupt vectors and
+storage is statically allocated, and thus needs to be described
+in the driver.
+
+>     - Each channel has its own interrupt
+>   - Data send operation
+>     - Both with and without ACK indication from the remote processor
+>     - To channel -> endpoint
+>   - Data receive operation
+>     - From channel <- endpoint
+>     - When interrupt fires
+>     - Could use polling to avoid blocking in a few cases
+>   - A custom message structure not adhering to any standard
+>
+> Check drivers/rpmsg/ :-)
+
+While discussing this internally, I felt like that wasn't a really
+correct model. IIUC rpmsg was first created to allow userspace to
+pass messages to the remote processor. Then somehow devices were
+being created on top of those channels.
+
+Also, the existing mtk_rpmsg driver seemed a bit weird, like requiring
+a DT node for each rpmsg endpoint.
+
+That's why I thought mailboxes made more sense, as the terminology mapped
+better. As a result I never brought up rpmsg in the discussion.
+
+Perhaps that could be improved with better documentation for the MediaTek
+specific implementation.
+
+> On MediaTek platforms, there are many IPI to handle in many subsystems fo=
+r
+> all of the remote processors that are integrated in the SoC and, at this
+> point, you might as well just aggregate all of the inter processor commun=
+ication
+> stuff in one place, having an API that is made just exactly for that, ins=
+tead
+> of keeping to duplicate the IPI stuff over and over (and yes I know that =
+for each
+> remote processor the TX/RX is slightly different).
+>
+> If you aggregate the IPI messaging in one place, maintenance is going to =
+be easier,
+> and we stop getting duplication... more or less like it was done with the=
+ mtk_scp
+> IPI and mtk-vcodec .. and that's also something that is partially handled=
+ as RPMSG
+> because, well, it is a remote processor messaging driver.
+>
+> Just to make people understand *how heavily* MediaTek SoCs rely on IPI, t=
+here's
+> a *partial* list of SoC IPs that use IPI communcation:
+>
+> thermal, ccu, ccd, tinysys, vcp, atsp, sspm, slbc, mcupm, npu, mvpu, aps,=
+ mdla,
+> qos, audio, cm_mgr.... and... again, it's a partial list!
+
+Indeed, the newest chip has become quite complicated.
+
+> That said... any other opinion from anyone else?
+
+I tried to describe why I thought a virtual mailbox was better.
+
+
+Thanks
+ChenYu
+
+> Cheers,
+> Angelo
+>
+> > Example of send and recve table:
+> > Operation | mbox_id | ipi_id | msg_size | align_size | slot_ofs | pin_i=
+ndex |  notes
+> > send          0          0       18          18           0          0
+> > recv          0          1       18          18          18          9
+> > send          1         15        8           8           0          0
+> > send          1         16       18          18           8          4
+> > send          1          9        2           2          26         13
+> > recv          1         15        8           8          28         14 =
+      ack of send ipi_id=3D15
+> > recv          1         17       18          18          36         18
+> > recv          1         10        2           2          54         27 =
+      ack of send ipi_id=3D2
+> > send          2         11       18          18           0          0
+> > send          2          2        2           2          18          9
+> > send          2          3        3           4          20         10
+> > send          2         32        2           2          24         12
+> > recv          2         12       18          18          26         13
+> > recv          2          5        1           2          44         22
+> > recv          2          2        1           2          46         23
+> >
+> > Recv ipi_id=3D2 is the ack of send ipi_id=3D2(The ipi_id=3D15 is the sa=
+me.)
+> >
+> > Jjian Zhou (3):
+> >    mailbox: mediatek: Add mtk-vcp-mailbox driver
+> >    firmware: mediatek: Add vcp ipc protocol interface
+> >    dt-bindings: mailbox: mtk,vcp-mbox: add mtk vcp-mbox document
+> >
+> >   .../bindings/mailbox/mtk,mt8196-vcp-mbox.yaml |  49 ++
+> >   drivers/firmware/Kconfig                      |   9 +
+> >   drivers/firmware/Makefile                     |   1 +
+> >   drivers/firmware/mtk-vcp-ipc.c                | 481 +++++++++++++++++=
++
+> >   drivers/mailbox/Kconfig                       |   9 +
+> >   drivers/mailbox/Makefile                      |   2 +
+> >   drivers/mailbox/mtk-vcp-mailbox.c             | 179 +++++++
+> >   include/linux/firmware/mediatek/mtk-vcp-ipc.h | 151 ++++++
+> >   include/linux/mailbox/mtk-vcp-mailbox.h       |  34 ++
+> >   9 files changed, 915 insertions(+)
+> >   create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,mt81=
+96-vcp-mbox.yaml
+> >   create mode 100644 drivers/firmware/mtk-vcp-ipc.c
+> >   create mode 100644 drivers/mailbox/mtk-vcp-mailbox.c
+> >   create mode 100644 include/linux/firmware/mediatek/mtk-vcp-ipc.h
+> >   create mode 100644 include/linux/mailbox/mtk-vcp-mailbox.h
+> >
+>
+>
+>
 
