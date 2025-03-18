@@ -4,118 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF4B4C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 09:07:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82602C28B28
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 09:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nq/kIeUvsYchRSsvL9vFcgKb/afGEMrUOIv8NQ6uWoc=; b=e2NlUGlpJ3UlT5cod6f4uRWYAq
-	MzGsPB+imhLuB1qLhj4A1ndEi2IRlsMqQHt6bWfhxkQDVFVQNNg2mZBkv3GCzK69vwalnfH96gmPR
-	Hefq7DorsqkfOk3YRk8EUKFFMQ2KJ4Z+mobyPt7GvjgSBvgdQzQsWb+d7HiN5oZUlndXvqJ31CSSk
-	yLF0GFzeK81f3hquLfHoNh92gi0UBUjtKdpKuKPGrrr1Y86M18ixJa5EfuWQTyAw0TLqMO8B2Mt+z
-	BIhEu1VL/59Ew/8MYbSnHR4VatXrkVkCvPy2ajmu1khF+P/04TTIgXNWtwBq5eakOZ1DSAdyBNBSH
-	4/z6nt9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ufAMNSodGm9ge3E2WCpTSSPB33/FyVtMvyoT7WBWCps=; b=vE+47Dy1kTNG9JuPRdtNTTOKgV
+	rUOALWwIhWbb5sKXAfgCt0IYfrHjlupod8+mAK5FdpBU9r9v+LFknGRI21fdcSE0Lm10z6l/bfKFt
+	Wq/BZmG23bXjgcP4FW2wn+gsWS/fyH6E9l7F5QB29D6sq87AckNkinO2VURqvB3FJmVv7IuLu/+oO
+	DfOCyYFoakvbgIYDbVg9egeHcZsRQOTeJeRPLNJYJohudApVNN348DzgPXGXAmd/lHMCq951ABMkb
+	DhZT9dP/5NVeT2Xa8Cs763sCDLjdS5S1eilk1zXaUei1wdQpHgDovK3gWUg2hvWU6+Z0h2hCBxOXI
+	o97TGoWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuSua-00000005H5q-0MgN;
-	Tue, 18 Mar 2025 09:07:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tuTTo-00000005MRY-30Tj;
+	Tue, 18 Mar 2025 09:43:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuSo2-00000005Fen-32si;
-	Tue, 18 Mar 2025 09:00:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 26CD65C4067;
-	Tue, 18 Mar 2025 08:57:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39682C4CEDD;
-	Tue, 18 Mar 2025 09:00:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742288413;
-	bh=o20ut9XPOkaNXkg3oPkImXLLeuOtRdZe6gxpLMXe7nA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nUC1aYqxE32yuLQiBOfJVqeep+n0p9I13eIjpcTPMX1841y0vGtwbi0lT5VIOO43a
-	 M6ESSv8Hdod1/nLKxga/OQwSyC7kpF3TIBwme+H4x/f6RzX3b/ogVo1ZUxacYEINRL
-	 dCVqJ0QfEDjsMaC2Vh6w8zdrg7f1d0Y1z2cxAxxrzyws1QUNV1G/f1RvuN+Hc4wc5Q
-	 BxxaCQ9N6tAEO31vyglnKwnV8+KrveFohxYByeAJ4qsbvMV+CTBTe7Y3WCh56nlfdN
-	 YEwUPDDPjfMU/XTjMsnrIENfRA9FaH4+a3b6sfIkXvcGvLAlv1cGoz6pnRTAq4IY8+
-	 mgVOjISfgYozQ==
-Message-ID: <12f5049d-02e1-4c80-9289-b2dfb1e136a8@kernel.org>
-Date: Tue, 18 Mar 2025 10:00:07 +0100
+	id 1tuTTm-00000005MQX-1BOP
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Mar 2025 09:43:23 +0000
+X-UUID: 6ba6310803dd11f0a1e849db4cc18d44-20250318
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ufAMNSodGm9ge3E2WCpTSSPB33/FyVtMvyoT7WBWCps=;
+	b=V9SC8L7ms5sbpwKgghzAIwMTBtyb3//6BHzYV8AI4HHkuSOrWrYLM4c74DsA9okps7CbBlNGUlu2yIpwXFiUCZ+SaNUEskqF+9HGr4wGofh4xZxtuYNeYVlO3R4DaY+DWuQZWhVT/wWZ7nIvkbYsaZ5vkukQTQkF+fkjiU7nTzo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:a203589e-7946-4a86-9222-832be26ff1d7,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:cd03414a-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 6ba6310803dd11f0a1e849db4cc18d44-20250318
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 453836627; Tue, 18 Mar 2025 02:43:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 18 Mar 2025 17:43:15 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 18 Mar 2025 17:43:15 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Nicolas Prado
+	<nfraprado@collabora.com>, Jason Chen <Jason-ch.Chen@mediatek.com>
+Subject: pull request: linux-firmware: Create MediaTek MT8188 SCP firmware
+Date: Tue, 18 Mar 2025 17:40:01 +0800
+Message-ID: <20250318094255.3538621-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 2/3] firmware: mediatek: Add vcp ipc protocol
- interface
-To: =?UTF-8?B?SmppYW4gWmhvdSAo5ZGo5bu6KQ==?= <Jjian.Zhou@mediatek.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20250317110331.2776-1-jjian.zhou@mediatek.com>
- <20250317110331.2776-3-jjian.zhou@mediatek.com>
- <d3f8fbe3-c061-4d34-a5a3-09cbf676bc4c@kernel.org>
- <f3b6a690f73e8f5a5370a587d0b1671e96e8b5b2.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <f3b6a690f73e8f5a5370a587d0b1671e96e8b5b2.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_020014_885162_B678C17B 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20250318_024322_325312_3AC09D75 
+X-CRM114-Status: UNSURE (   4.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,43 +85,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/03/2025 09:32, Jjian Zhou (周建) wrote:
->>> +
->>> +     return IPI_ACTION_DONE;
->>> +}
->>> +EXPORT_SYMBOL(mtk_vcp_ipc_send);
->>
->> Drop export - no users
->>
->> Anyway, every export must be GPL.
-> 
-> The Video Companion Processor (VCP) driver (currently being prepared
-> for submission to the community) will call it.
-> 
+The following changes since commit 588505068c48fe07b1cfa32c5f3acd4395ec9482:
 
-It does not work like that. You must post the users NOW.
+  Merge branch 'copy-firmware' into 'main' (2025-03-18 00:45:21 +0000)
 
-NAK
+are available in the Git repository at:
 
+  https://github.com/MoudyHo/linux_fw_scp v27749
 
-...
+for you to fetch changes up to a39712f2c8c9a520b889a45cbbdd2fa36d249cc3:
 
->> Check goes immediately after declaration. I doubt it is useful in the
->> first place as this cannot even happen...
->>
->>
->>> +             dev_err(dev, "No platform data available\n");
->>
->> No, drop. Cannot happen or fix your drivers. Who provides the
->> platdata here?
-> 
-> The VCP driver will call platform_device_register_data to register the
-> structure data. mtk_vcp_ipc_probe will be triggered by vcp_probe. This
-> structure data is the structure we described in the cover letter.
+  mediatek: Add MT8188 SCP firmware (2025-03-18 16:49:53 +0800)
 
-
-Comment is still valid.
-
-Best regards,
-Krzysztof
 
