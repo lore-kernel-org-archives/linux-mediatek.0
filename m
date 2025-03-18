@@ -4,73 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D485DC35FF3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:26:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ACE9C35FF3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 11:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fwp4pPphQ44qgUkj50Coyiqf/mBkbRlu/qCRtdImr6c=; b=lTjlVpYtuGOrD2KABEydXoWiy0
-	LPtb95339etNOpQj0IKuWqDTNFwQHxP4C9F3Pe7kaF54p25P+3F9tFmMW6urWZ95PqX3l1T9FIrEe
-	9iTEbKkH3f9P3uD79+GUyrVpzs+B7hPFTEEkDrVt3ghhHrs/E02XDlUlSMbxq6D4uS0gdSFU9bGu3
-	LFsAZCc0LQRlkrSe0ZEWSkZ9zw/Kqy6AzMg4jy1yl1N5Ho6yYPZNerovDrBmRRvGJQi5bWjcH5R7J
-	ewHTC5tloB+KgzPtMj8H7bL4guwgMU8S2pIF7sSygLXKDQ15Wu2/pag1dj1nTnePYz80n2BiS2mhL
-	tHUp9+DA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oeWK8KnE02poaU2apmgZYe7NYIk2mK6ZRM9x7EecA0A=; b=YTan6R8XsH6rEzUce7ae5bKg6U
+	jpPWj5dM5Vl1w4Wt7jVC0TdWQNlBECbR8euw1X+2+m1/QfcFKQx6lm6kERW0qdYVdXtYPcZTxLfBy
+	YHPttbgMz0K1Lw95O55vYHdixMkMDXjvkZOIQ6ka9JR0CNvctpypuMLpShSvAYpErnM3vLtuPmxUf
+	1BOe4MtvJ/VJyHuODPITFq96fUD4V0zc8HsgHMeijw1e/j+fU0YfENUyyCl/8E8CBYYkbknIZibQi
+	n1xy358YI7b+vgIHgo+C4VepMboVMv79C9DDZALBlUvphE4oZDJ/E9hXsG+Z1xk+6dHyBEOb1DJ0e
+	t1I4+r5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuV57-00000005ilG-467w;
-	Tue, 18 Mar 2025 11:26:01 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuVBm-00000005jf9-0M0f;
+	Tue, 18 Mar 2025 11:32:54 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuV4o-00000005iih-1oO1
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Mar 2025 11:25:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C1C26A48F5C
-	for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 11:20:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AC74C4CEDD
-	for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 11:25:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742297141;
-	bh=u53d10t3OzeD/76udFZ8KW80lLIlg3g9Ceg46PStDkI=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=TjJcS/uDmZnPdgcH8OC53ZeYnHsnp95IHARlGyjR3fdPUhpTNo/QtXF4aIrGpzMe6
-	 iaIa/d6XOO+HXxP5qWbaV7qQhFxfWKanRLyCFznfsoSTAUGGuJnIvgNiwuqX4Xz/QP
-	 DuDpDsmS8ph8N5iytM45ZiZ1pjitl9+GeFxOhxy9BCgEcCKqGXBEjlSECIpr8tqNus
-	 uZX1mqwuM6MmCGwbMaQjeAdAAmYdxTv2Qg14+5ltQ4/9O7ygLFJAF17jWiBqW4+nwG
-	 Ws+/2pFna3PTn6QrhRO3swcKBcBJ96V01Vg3GM1DVm9tjpHoompKPmS93W1jFH6rIa
-	 2BeXor20SiCGw==
-Received: by mail-yb1-f174.google.com with SMTP id 3f1490d57ef6-e643f234e08so1003542276.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 04:25:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXlsoGywRkpcWPgka2/HK0szEMsAGM7pQf1LPWuloom1nHGsawwZG0JpvPmgEdQ5rZHhNb+yMHEhzmdSoFA4A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5QQgzGJ+97jmvsjF+FhK4CvsFO5Nd8sp+l9DQUCNJL9vb+8sr
-	W08riDggax6tkcyJTOKFU1RNsjRP5EpAzXr7+LN+l39S1mXOWXwO/WRXndY0v799cGNtXLW6+dj
-	q7ie2sZi6cEH/gB8srHeOZ/LUT4A=
-X-Google-Smtp-Source: AGHT+IEeK0EOLtzAVTltSAKfLyC9B/LB33cn5tKuSRUf1SUjNodydd5ksWB+YJ/3hXV4HmCmSiIF+ZYIjLVExZ/eyUg=
-X-Received: by 2002:a05:6902:98d:b0:e5d:cc41:767 with SMTP id
- 3f1490d57ef6-e63f65b45f5mr21357253276.33.1742297140292; Tue, 18 Mar 2025
- 04:25:40 -0700 (PDT)
+	id 1tuVA4-00000005jW7-0dfT;
+	Tue, 18 Mar 2025 11:31:09 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-391342fc1f6so4545379f8f.1;
+        Tue, 18 Mar 2025 04:31:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742297466; x=1742902266; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=oeWK8KnE02poaU2apmgZYe7NYIk2mK6ZRM9x7EecA0A=;
+        b=U7bkBf1twgH+kVjx4h4MRP03LGKi7B9+ptHkb9ik1s7I69CPXn5HZymnJDOy26dVzN
+         GY8egev2y82Gjlyio7oukAsn6zCWgWyLe3DD5zU3QWsAMDbhKa+sBhFQNXnWUlhUp8Gk
+         ZbWP7I5iEP23l3rOAq6NQertyou7wDV6xt5oUVzFEXgEVKeWoLd6IfwWIqXIhc5z8W/b
+         3K9T3JjasH2p49wJV0VvcLPytRS0UwHVvZCArsQm+/2C0h0mVbXbXM98RUw8anI6R7MX
+         pFfW3aUSTCDqew7JN+mrR4LbBrO79Lut+VIn8g7US+zyAb8sMfULlSJW/vSg7PduNV3V
+         n/VQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742297466; x=1742902266;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oeWK8KnE02poaU2apmgZYe7NYIk2mK6ZRM9x7EecA0A=;
+        b=U54PcZNoJEVLOdhawkvM8WtvGQPJ2bQkSS1RZWFKJq2AA2+reMqVBNAf/okjFHpxdg
+         NGEhAbskeWplpS0bh2/JF0Enizc16r7n3jLcKRBA1LmpB9EzVUqfHb2/KXnq25r6fsO6
+         FCrn/hPTgjALkuUPy2C/HqMeXfjXBusjl0yupsXN1KnurxbofbpkkQeGHWlX1qixnLLw
+         dsmfPuiH4IazjpOovdVZ06yr3PzfRmKJGaDpGpyfGs5J4KK6KgndFvsxGJSaIVcZ1V23
+         0aEBZVg7WootRNNcNEoYbp/Z2KWKTRAYm3r+1KsgOZigv5hIyLqdz/NXagZdDq7uci7K
+         uamw==
+X-Forwarded-Encrypted: i=1; AJvYcCUVEr3oCayTWGS9cAPewuisOMf2LaS94N4AGfrc4P+klZBwQSk9vHIrH/sEzvHWxKLhKpQJxnny175X@lists.infradead.org, AJvYcCWFBl7rYtgaWfwGbktsYBSDtKY5/3vn1OOdGNrSQ0UeptzkTwcTmhW2yO6VyAry8xtstsQO+sdG9MccImYgqpY=@lists.infradead.org, AJvYcCXgdPAAuZ3lxUYla7qNwasUmSXGdmJPLXI+XIveziXqsMpW9vImwXhbCVLt8IgtOKCTac3MTo4ugotsTUmAtwDe@lists.infradead.org
+X-Gm-Message-State: AOJu0YxsC7FY+dVoutIN2v2NTDM5i2uSR+JQ2WiOU+Y5pVsdsMPnZjGL
+	E5LXMxWsaySw+RkIdDYtA8RZ9oUY8bGckYnEmw4Pl+tDs38kT2ED
+X-Gm-Gg: ASbGncvZT6ORR1MRQNHUCYdMy5go4zocoQidy7CILP1XwBDhsqEeQeyhG8kA/lvoVGl
+	16U3bNSTIN9O+P6fBWN2BI/0A6kC9bcZOQLBzIsyyf3IKHzy+owQnerVa96OEv6OKO0ouujRqyC
+	f8ZWUW69lx3oV+G/W3rwbNvGJxsy7sM/TZiHV43lwkZ2e63tobvzQlyxwq1hHKKaaMybExOUMQF
+	D2Hl5eCtiFCCppfv5ONX7sN3YSe5tiIZZlQEOT2L++adZ3lTfBjEbspnOV94xG+MnktQCqgBgwI
+	nrbIMN5p3EpRknV8hpseOLbyE14Jnx5hauuS/Hkd9XGliIJiklgUciRFzkj3QM7zUsc6DVceTf2
+	Y
+X-Google-Smtp-Source: AGHT+IFpi+zFuJ8XXOnGn4TOSQKOE+/3yFEH37sz6LbTqTOZGYuC+54cInlqBrHl+fxwxahe/rNImA==
+X-Received: by 2002:a5d:47c9:0:b0:390:e311:a8c7 with SMTP id ffacd0b85a97d-3971cd57eb0mr15913025f8f.5.1742297465853;
+        Tue, 18 Mar 2025 04:31:05 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395c8881187sm17594872f8f.41.2025.03.18.04.31.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Mar 2025 04:31:05 -0700 (PDT)
+Message-ID: <67d95979.050a0220.166852.25e6@mx.google.com>
+X-Google-Original-Message-ID: <Z9lZdFMUpqWwpsA2@Ansuel-XPS.>
+Date: Tue, 18 Mar 2025 12:31:00 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Daniel Danzberger <dd@embedd.com>, Arnd Bergmann <arnd@arndb.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nikita Shubin <nikita.shubin@maquefel.me>,
+	Guo Ren <guoren@kernel.org>, Yangyu Chen <cyy@cyyself.name>,
+	Ben Hutchings <ben@decadent.org.uk>, Felix Fietkau <nbd@nbd.name>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH 09/13] dt-bindings: phy: Add documentation for Airoha
+ AN7581 USB PHY
+References: <20250309132959.19045-1-ansuelsmth@gmail.com>
+ <20250309132959.19045-10-ansuelsmth@gmail.com>
+ <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
+ <67d0862f.df0a0220.375bd.6b15@mx.google.com>
+ <4a9ac302-dfbe-4d76-a634-a445957c313c@kernel.org>
 MIME-Version: 1.0
-References: <20250318094809.3540043-1-moudy.ho@mediatek.com>
-In-Reply-To: <20250318094809.3540043-1-moudy.ho@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Tue, 18 Mar 2025 07:25:29 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA5wS-sxRpp6eKXNd+UY_j0t2BSeX+cfMjCKAAZ7oxnMoA@mail.gmail.com>
-X-Gm-Features: AQ5f1JorTuQpqKyolMyCoIfauTYZB7EI5AUpzZk-e-gH1QBD7Up1bYof-3yVuv4
-Message-ID: <CA+5PVA5wS-sxRpp6eKXNd+UY_j0t2BSeX+cfMjCKAAZ7oxnMoA@mail.gmail.com>
-Subject: Re: pull request: linux-firmware: Create MediaTek MT8188 SCP firmware
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Nicolas Prado <nfraprado@collabora.com>, Jason Chen <Jason-ch.Chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4a9ac302-dfbe-4d76-a634-a445957c313c@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_042542_542277_1FA76A76 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250318_043108_190937_FB768341 
+X-CRM114-Status: GOOD (  26.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +119,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 18, 2025 at 5:48=E2=80=AFAM Moudy Ho <moudy.ho@mediatek.com> wr=
-ote:
+On Sun, Mar 16, 2025 at 06:01:02PM +0100, Krzysztof Kozlowski wrote:
+> On 11/03/2025 19:51, Christian Marangi wrote:
+> >>
+> >>> +    $ref: /schemas/types.yaml#/definitions/uint32
+> >>> +    enum: [0, 1]
+> >>
+> >> I don't understand why do you need index property here (which are
+> >> usually not allowed).
+> >>
+> > 
+> > Eh... As said in the description this is really to differentiate the 2
+> > different physical port...
+> > 
+> > Each port have a dedicated oscillator for calibration and these
+> > calibration are identified by an offset (all placed one after another in
+> > a separate register space).
+> 
+> So different oscillators? Then describe the oscillator and its differences.
+> 
+> Different programing model? Different compatible.
+> 
+> Other difference? Depending what is the difference.
+> 
+> But there is no such thing as "different port ID" based on your
+> description above. You just claimed that they are different, but you do
+> not put that difference to hardware description. Instead you encode that
+> difference in the drivers and it should be opposite. The DTS, so the
+> hardware description, should tell you the difference. And I am sorry,
+> but in 99% of cases "I am the first phy" and "I am the second" is not
+> the actual difference we are interested in.
 >
-> The following changes since commit 588505068c48fe07b1cfa32c5f3acd4395ec94=
-82:
->
->   Merge branch 'copy-firmware' into 'main' (2025-03-18 00:45:21 +0000)
->
-> are available in the Git repository at:
->
->   https://github.com/MoudyHo/linux_fw_scp v27749
 
-This fails check_whence.
+Ok to make it as clear as possible. (hope I don't contraddict with the
+previous statement) (actually yes the "separate register space statement
+was wrong and sorry for the confusion")
 
-E: mediatek/mt8188/scp.img not listed in WHENCE
+- 2 USB port
+- USB 2.0 needs to be calibrated with an oscillator
+- Each USB port have his own dedicated oscillator somewhere in the HW
+- Each USB port have at the same offset a register to SELECT the
+  oscillator. This register refer to the same oscillator selection in
+  the HW.
+  
+  Example:
+  reg 0x1fac0100 MASK 27:26 can be set to source out of oscillator 0,1,2
+  reg 0x1fae0100 MASK 27:26 can be set to source out of oscillator 0,1,2
 
-Please add an entry into WHENCE with the appropriate license noted.
+  Both register refer to the same oscillators in hardware (hence each
+  port should select the correct one)
+  Selecting oscillator 0 for both USB port is problematic.
 
-josh
+With this in mind is it ok if I describe this with something like
 
-> for you to fetch changes up to a39712f2c8c9a520b889a45cbbdd2fa36d249cc3:
->
->   mediatek: Add MT8188 SCP firmware (3035-03-18 16:49:53 +0800)
->
+airoha,usb2-monitor-clk-sel = <AIROHA_USB2_MONCLK_SEL0>;
+
+and some dt-bindings include
+
+#define AIROHA_USB2_MONCLK_SEL0 0
+#define AIROHA_USB2_MONCLK_SEL1 1
+#define AIROHA_USB2_MONCLK_SEL2 2
+#define AIROHA_USB2_MONCLK_SEL3 3
+
+Or an enum of string like "osc0", "osc1", "osc2"...?
+
+> > 
+> > Oscillator 0 for physical port 0
+> > Oscillator 1 for physcial port 1
+> > 
+> > And model this is a bit problematic without an additional property, any
+> > hint for this?
+> > 
+> Best regards,
+> Krzysztof
+
+-- 
+	Ansuel
 
