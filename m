@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBC8C282EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 12:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA966C282EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Mar 2025 13:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LF0sGt9EDJCDjiIIHIH3LVrPZZWzR7DEzbi0LwhJr4s=; b=2OP0dY66NdRGdxvtnNxFZtM/+M
-	/ZaWw8EVsllYBI1ig8ex08FZ/sYohhwo6ifBeqQOuvLRjX5RLUzqy6KOiVgbexp+MJe1ofVEFOzb6
-	dE2neJHaklou81KNLmdkQLXYdK4GZmqvuAz6gP3QwWZaLpInNo+KU2HDQn93VvSaq1z2GfZDv27mH
-	zCDmW3v0ukV1qi6J42gvo6J3basJj1HUCO3S/l0yfy3QIfYURzV5oeynr2hCj+2HDTfNC/Qz+6sse
-	zOBVsQEGz/iwPIhmEnHsQOvCTf1tkL9RQbZydZ+t8o3xLmlwFayorXMBRzLy7qMX+VFFSjctuS1uj
-	Y5KS7p+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wMDKkTfkJ0wKCc7/gnzhaycZkLn3ynm1HthZlvBwHJw=; b=0hLnioPSh5mD0r9hsGZzKuuCz/
+	4ijH2I3Y8vrT0wbqjGTPCjXYDrOf7h63StcBrkOszRYZsBwUo5RvNFVd+8TtLeBEt7Xbz0VXUaUGE
+	UVJ8L7zEsr+rAAORWnsSiQvzt+BY2j5ohs/xWMxU21Xzyde+hlo/WJ4hs6mUY4utaSS4EtW/Fw0cT
+	6lhiEb4Svu3ZPPQDBoSF00Q6DbG9FBQ+9v1ntZ8ZMkTYU2XDv7vs4J77b7jIhCws9DBgRIkLtWHm3
+	odE2lP0lILd2nMaQJqroUaLq4GncYbcipvc0i846FjDdKK+p4Fx+2hYfjbnN42wTPy0c9STtrL9Dl
+	MFJTTjCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVcc-00000005oFe-1jq3;
-	Tue, 18 Mar 2025 12:00:38 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuXRM-0000000661g-2HHX;
+	Tue, 18 Mar 2025 13:57:08 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVOz-00000005lri-3bct;
-	Tue, 18 Mar 2025 11:46:35 +0000
+	id 1tuXNV-000000065OL-2p2j;
+	Tue, 18 Mar 2025 13:53:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 99A64A48F8A;
-	Tue, 18 Mar 2025 11:41:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A68BC4CEDD;
-	Tue, 18 Mar 2025 11:46:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D3A895C57BA;
+	Tue, 18 Mar 2025 13:50:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13131C4CEF1;
+	Tue, 18 Mar 2025 13:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742298392;
-	bh=tn+hq/0Bcb87RovOeP5Bt+IfR0Zp29EmcXvKf0cZpUk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qjjG1njZTUG9rTBF7/APH6lBgtwgCIYSgX0FQiQLgna6AbPIzk+CTTlZZSa1gerVt
-	 Rp/KCVp7JDwwYy504ZHF+lk8Wu+9lzNNTYVo04k8zZKdBZ+JIa/YjbKycMcjpuNqz6
-	 iJCeFzES9xKg7DgrNR2Z884Lhz4irjZHKm4KorN1QgF+iIO2TmK2MCbzrwoTIRIzrp
-	 nnVxKIPAmMV3tJjqP42kQPoUI3rlLapeeJaWXuYs0oSfUpnEgAPl7E6wwkpW6Ku8/0
-	 EoklRCPx8CWC4gJmymjnaLAx1yUNE/tVzSdImFL0iKRYWWFOeOP7bYHT4XCHXqZ+Jv
-	 BAiaHx489kSFg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 18 Mar 2025 12:46:11 +0100
-Subject: [PATCH net-next v2 7/7] net: ti: cpsw: Add metadata support for
- xdp mode
+	s=k20201202; t=1742305988;
+	bh=JPDR0w/YOEw1Llnb5VuhVxqbXWyVgpVHr44qHu0QbSg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gwm1AgIt9fYXFQOGLZbDqLKc0zA7MQmSCDZfYZSv66mjMeVIOUmgQvR7ELKU9mjkT
+	 PJNlhF6ICeEMz5rbCgzcfqtSW0MrlfTcFj2Z/hfLajg4NobWokz7XnNQekteaOaphS
+	 n8WyWgoOnIvv4ikITjfp79lQcj5mLy4wYeDgSuRvG2o+guBNTg6DzAfsWdmSqoTOfY
+	 motBfd9/kTwCRklxwgdJAy3XfZBBUtspRGo2qKW/VOiPoSltM/bCtO8HOF/q5jxSg3
+	 dV6WbTurGrFtnDbuRaMKd6Pi4nUNHwGrYmSrqx7klo5UZjBTdFcdzOIvgK8bY8kKZ5
+	 o7Hn5i+QayETg==
+Date: Tue, 18 Mar 2025 14:53:06 +0100
+From: "lorenzo@kernel.org" <lorenzo@kernel.org>
+To: Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>
+Cc: Sean Wang <Sean.Wang@mediatek.com>, "nbd@nbd.name" <nbd@nbd.name>,
+	Ryder Lee <Ryder.Lee@mediatek.com>,
+	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
+	Chui-hao Chiu =?utf-8?B?KOmCseWegua1qSk=?= <Chui-hao.Chiu@mediatek.com>
+Subject: Re: [PATCH 02/21] wifi: mt76: mt7996: Add
+ mt7996_mcu_sta_mld_setup_tlv() and mt7996_mcu_sta_eht_mld_tlv()
+Message-ID: <Z9l6woY4TYKe2olT@lore-desk>
+References: <20250312-b4-mt7996-mlo-p2-v1-0-015b3d6fd928@kernel.org>
+ <20250312-b4-mt7996-mlo-p2-v1-2-015b3d6fd928@kernel.org>
+ <9efb42f0948b23cc127dc5c5d9e31791f80219ef.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250318-mvneta-xdp-meta-v2-7-b6075778f61f@kernel.org>
-References: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
-In-Reply-To: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
-To: Marcin Wojtas <marcin.s.wojtas@gmail.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
- Jesper Dangaard Brouer <hawk@kernel.org>, 
- John Fastabend <john.fastabend@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
- Masahisa Kojima <kojima.masahisa@socionext.com>, 
- Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
- Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
- Bharat Bhushan <bbhushan2@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- "K. Y. Srinivasan" <kys@microsoft.com>, 
- Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
- Dexuan Cui <decui@microsoft.com>, Siddharth Vadapalli <s-vadapalli@ti.com>, 
- Roger Quadros <rogerq@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-hyperv@vger.kernel.org, linux-omap@vger.kernel.org, 
- Michal Kubiak <michal.kubiak@intel.com>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="S+U/CWieHPnttq0l"
+Content-Disposition: inline
+In-Reply-To: <9efb42f0948b23cc127dc5c5d9e31791f80219ef.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_044634_034718_00952879 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20250318_065309_768129_9564FA8B 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,99 +83,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set metadata size building the skb from xdp_buff in cpsw/cpsw_new
-drivers. ti cpsw and cpsw_new drivers set xdp headroom at least to
-CPSW_HEADROOM_NA:
 
-CPSW_HEADROOM_NA max(XDP_PACKET_HEADROOM, NET_SKB_PAD) + NET_IP_ALIGN
+--S+U/CWieHPnttq0l
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-so the headroom is large enough to contain xdp_frame and xdp metadata.
-Please note this patch is just compiled tested.
+[...]
+> > link_sta);
+> > +
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (sta->mlo && conn_state =
+!=3D CONN_STATE_DISCONNECT)
+>=20
+> The latter check seems already to be handled by:
+> if (conn_state =3D=3D CONN_STATE_DISCONNECT)
+>     goto out;
 
-Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/ti/cpsw.c     | 6 +++++-
- drivers/net/ethernet/ti/cpsw_new.c | 6 +++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ack, I will fix it.
 
-diff --git a/drivers/net/ethernet/ti/cpsw.c b/drivers/net/ethernet/ti/cpsw.c
-index 0cb6fa6e5b7d4fb9703633f0d67a7e95e6e7d8aa..a984b7d84e5e5917b83547c862924ccd30d83601 100644
---- a/drivers/net/ethernet/ti/cpsw.c
-+++ b/drivers/net/ethernet/ti/cpsw.c
-@@ -351,6 +351,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	int			ret = 0, port, ch = xmeta->ch;
- 	int			headroom = CPSW_HEADROOM_NA;
- 	struct net_device	*ndev = xmeta->ndev;
-+	u32			metasize = 0;
- 	struct cpsw_priv	*priv;
- 	struct page_pool	*pool;
- 	struct sk_buff		*skb;
-@@ -400,7 +401,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			size -= CPSW_RX_VLAN_ENCAP_HDR_SIZE;
- 		}
- 
--		xdp_prepare_buff(&xdp, pa, headroom, size, false);
-+		xdp_prepare_buff(&xdp, pa, headroom, size, true);
- 
- 		port = priv->emac_port + cpsw->data.dual_emac;
- 		ret = cpsw_run_xdp(priv, ch, &xdp, page, port, &len);
-@@ -408,6 +409,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			goto requeue;
- 
- 		headroom = xdp.data - xdp.data_hard_start;
-+		metasize = xdp.data - xdp.data_meta;
- 
- 		/* XDP prog can modify vlan tag, so can't use encap header */
- 		status &= ~CPDMA_RX_VLAN_ENCAP;
-@@ -423,6 +425,8 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 
- 	skb_reserve(skb, headroom);
- 	skb_put(skb, len);
-+	if (metasize)
-+		skb_metadata_set(skb, metasize);
- 	skb->dev = ndev;
- 	if (status & CPDMA_RX_VLAN_ENCAP)
- 		cpsw_rx_vlan_encap(skb);
-diff --git a/drivers/net/ethernet/ti/cpsw_new.c b/drivers/net/ethernet/ti/cpsw_new.c
-index 3da1c131335df1ff79b32ce0e3ea5200a2e53f4b..5b5b52e4e7a757a14965fe6df41935aed547111f 100644
---- a/drivers/net/ethernet/ti/cpsw_new.c
-+++ b/drivers/net/ethernet/ti/cpsw_new.c
-@@ -293,6 +293,7 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	struct page_pool *pool;
- 	struct sk_buff *skb;
- 	struct xdp_buff xdp;
-+	u32 metasize = 0;
- 	int ret = 0;
- 	dma_addr_t dma;
- 
-@@ -345,13 +346,14 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 			size -= CPSW_RX_VLAN_ENCAP_HDR_SIZE;
- 		}
- 
--		xdp_prepare_buff(&xdp, pa, headroom, size, false);
-+		xdp_prepare_buff(&xdp, pa, headroom, size, true);
- 
- 		ret = cpsw_run_xdp(priv, ch, &xdp, page, priv->emac_port, &len);
- 		if (ret != CPSW_XDP_PASS)
- 			goto requeue;
- 
- 		headroom = xdp.data - xdp.data_hard_start;
-+		metasize = xdp.data - xdp.data_meta;
- 
- 		/* XDP prog can modify vlan tag, so can't use encap header */
- 		status &= ~CPDMA_RX_VLAN_ENCAP;
-@@ -368,6 +370,8 @@ static void cpsw_rx_handler(void *token, int len, int status)
- 	skb->offload_fwd_mark = priv->offload_fwd_mark;
- 	skb_reserve(skb, headroom);
- 	skb_put(skb, len);
-+	if (metasize)
-+		skb_metadata_set(skb, metasize);
- 	skb->dev = ndev;
- 	if (status & CPDMA_RX_VLAN_ENCAP)
- 		cpsw_rx_vlan_encap(skb);
+Regards,
+Lorenzo
 
--- 
-2.48.1
+>=20
+> > {
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 mt7=
+996_mcu_sta_mld_setup_tlv(dev, skb, sta);
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 mt7=
+996_mcu_sta_eht_mld_tlv(dev, skb, sta);
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
+> > =A0=A0=A0=A0=A0=A0=A0 }
+> >=20
+> > =A0=A0=A0=A0=A0=A0=A0 ret =3D mt7996_mcu_add_group(dev, link_conf->vif,=
+ sta);
+> >=20
+>=20
 
+--S+U/CWieHPnttq0l
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ9l6wgAKCRA6cBh0uS2t
+rPt9AQDihoHV63IGKsFzYLkd0lQwgYU6Bnkt/voMu9V/EK0mAAEArLSYGDDloAlr
+f1S4dgIRZVeLcDjQ4bfrWoXfBjaBvQI=
+=+rQ0
+-----END PGP SIGNATURE-----
+
+--S+U/CWieHPnttq0l--
 
