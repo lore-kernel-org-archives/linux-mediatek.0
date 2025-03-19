@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B41DCC35FF1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F252DC35FFC
 	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 04:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bZnm8PUwSbbaRIS2I4Y7DkEdXZ5o/1IW7fPXlQxrNvg=; b=j0hR3jSRFhQn8d9noUEtUEI3IE
-	N29k0CPrHwJ+dQiZ9YKRXzprdlXTxQy6ApiK0YMmWWwWMK0w3bJksL578ycsCYXCUqkcUD5nZBVbG
-	39A7FRlNuoRr9Vbv21tYHG+nyj+UUQexLZ/Yluqaex0dhOq3IubJ+H63AfCfAZxkZ6mpj1rueKDBU
-	MQqFCjCNYMlMrcEDRpJX/3ZRwxFu1gRAvcSlqs2/wYGAdWY4M/3DzEvdTi3MxcoxlUoJrmKoMS5s2
-	srzYxhlH3g55Gcyxu3nBx2YRzUWFlOqrsfWwDomQR1IZWQLabrUMI2m17QjGhQxtNOLFqIiWl3aDh
-	v66EZCow==;
+	bh=a2qNyugN9w/uB1pJA1qv4/kcNutyjnqoIx8nMHelY60=; b=aaFobMwIxIEq+OLOpZEMppg78b
+	Tc8YpY0Ja6/51ct2NSEY+enavCLBVAg9fWa5I047cBGUdFx5h8NlWTnkXZPD6Be8zAL8r7RMmXhl3
+	h28yeMCYPTDES42XyBBkyeH56BnvgaQISBKb+65IKz23DEKbrzlOsAGdsYzbV2TH6Kp0mzqzlpzsS
+	tPZTRJe4KbnH5X58u5E0Ze/iEC+zdH78pluuOW2WgSzrgdYbWF5u/NKKENeO6uQw3/WfYm6wH01fG
+	jP/rmyK3QUE9YlttZwX13Oy1Y4xhnVszRKs4xW3kXc9Oai4OWmDdJYD7UOr0VdBYOC5K/VaxgSUrG
+	yL09Yd7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tukze-00000007yMx-2iXY;
+	id 1tukze-00000007yN8-46d7;
 	Wed, 19 Mar 2025 04:25:26 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tukxx-00000007yAR-0TUq
+	id 1tukyO-00000007yEF-0lMg
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Mar 2025 04:23:42 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-30762598511so66257121fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 21:23:40 -0700 (PDT)
+	Wed, 19 Mar 2025 04:24:09 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-30bfd4d4c63so62653251fa.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Mar 2025 21:24:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1742358219; x=1742963019; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1742358246; x=1742963046; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=bZnm8PUwSbbaRIS2I4Y7DkEdXZ5o/1IW7fPXlQxrNvg=;
-        b=XCdCBTOxJiqubOa85+9P3M+K7KP5jxrGz+PF+y3whlKhfVgiwDPnsgl6jTk5XO5eGJ
-         cPI+Pkx7ejETJbV3dHjsw9BXzJZGG7kTZhHCPLvoli6XS8q/OEYgd/xb+YRu1RxMQE26
-         b8+LgwE9G8GhV5lYM1O8PANkrDxfccux2lGsQ=
+        bh=a2qNyugN9w/uB1pJA1qv4/kcNutyjnqoIx8nMHelY60=;
+        b=JTmGfPqkx59eOME/EhrctoN393BdIsZKBaBaAFnfv1lzxVKK5RIAdRciCeoCt1PvGL
+         hS/IrHN62gmIlhuVAvevcAGHblGyw+tTkCRLtLHJjXJeTcY8JpmACpyor2C080R+FXu9
+         erzFyHXuMW7vKahK9zxfFNWqjAwp6QZAlQfxg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742358219; x=1742963019;
+        d=1e100.net; s=20230601; t=1742358246; x=1742963046;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=bZnm8PUwSbbaRIS2I4Y7DkEdXZ5o/1IW7fPXlQxrNvg=;
-        b=nAnPan7sB2rqGAdn4Ust1xh6WNVpQfOrb+XWHq75JAHdD4u6EwfJ3eSu5HTp+r4zfe
-         +urvh83i4ruQjxiu7GHIj5rxvy+6S8M7rHzOyhKjZBFEMNGAjqAeD6bd9DWo6ByeoxGo
-         xg5Pb0oRd8IQbS6AWmSp3/Hs7rnSTmCw+8jy7O95XmfDGvuITij5ebSDIVva5yUOaCbW
-         TLCy1tlzVUe5vehK7blbycDdinGaT8q70uLO3tUApeJNi6N34Kex5KkUtRHxYyfpZ3oN
-         VUc4HJByvieegIrhXJrQrdwl6nw58slmDbO1T3laxvRz7fGn57z0wM1VCP3fHuqYAuaY
-         ahOA==
-X-Forwarded-Encrypted: i=1; AJvYcCXP/FvLVVfqHnc9YGvB0TYR8LdJ74RQcxyUM/onm/e50kYZT+vG5wnJ8yItnFt7T8ozi0IeceduRt8025u5Jw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxX2qIZOx5yHvStQn5moHdId8SqI9lOyuOvDiMV0Ask7iefH3Y1
-	JWthIVPQYi47C7DqViymVCKtWakIpVrI3Ls3x0PiUlQTU/mxW85KkYMw8SGyoQ5HO8zuLLMXOv3
-	6nV/pdvzweU9ZRv76fX87cfwuHltY52Ix6ayJ
-X-Gm-Gg: ASbGncteJotmcRqZBSU2YM7v+vq5hyB7LqRKlF14hClxdhBxbtoF0JKr8RPa/OAtZ3m
-	BYsyc6itRh+UIjK/NTPd9Q11mp3hjNn21vuauZpoiUPNLxu2CgQrGmTVRIKh03WyfOMWCxW5WR5
-	clgJDx0kjmyJOZS6eHbChj7RTkxNqX64iK1im6H5K3+MbhyOqo5ZFZ9A==
-X-Google-Smtp-Source: AGHT+IFHjBg03r/3RVZ9aaB5Mk4M+GMF/ZItUsDYbR7cSHqYL8Hm2MnfjLcQTNBGrm46WGoX9JDBGpNCtwc078vB7uE=
-X-Received: by 2002:a05:6512:2507:b0:549:3b4f:4b39 with SMTP id
- 2adb3069b0e04-54acb195bd5mr361603e87.10.1742358219093; Tue, 18 Mar 2025
- 21:23:39 -0700 (PDT)
+        bh=a2qNyugN9w/uB1pJA1qv4/kcNutyjnqoIx8nMHelY60=;
+        b=V+C1W7ZyR+5Gw8QE44RCPCcIloncIj998i1m7NT+rGcpl88ew1LZWpadexi3sGFssm
+         S1roV2R1XyXWGk1/Ndydej4a+W8r58rQQ2z2uSRbZ8OJpdM/YDUCMkVvsa8QPhVXTmm2
+         /NQ0xdXJYWvK4w5pl8W/jtJ0R7LJUfeDI7PJ2eYxnIK0AhK/cAgMB1ZbE2XD9N7BfXZk
+         2jYuPptK1vNRiHZWoUJzBDJfA6QxD5K0z97QWKte3beiLH4vIoM2U3L/5Ypzwi7/XpKQ
+         mUSRSOyzBCr7GCCIrRX1bc05aff5aRYqL44Cqbk22a5ufelCDneNu4DEis9LepLtFK5u
+         37gg==
+X-Forwarded-Encrypted: i=1; AJvYcCVVu6n9vUZY9qtBc9+Wfj5E4LoT/1+BjLV4AlMMD9Iz8CmVgskqdceceNJz3zQq4xNgKedKBkVur55bDJMWNw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDmlx4lIS23A5tiVvowHubaWuiHEGN/f2BMuqqOrf22TGp1n8R
+	tuHh6GbwftkCdBM4Ojs3Mv4k6IPAlghD7RqZpjVE4naPSs7YDejKJKtBNSBvKriwaWGQd1ngAUF
+	OPM244469tKjodoj2xNsPVMblM3xMSct3MTlq
+X-Gm-Gg: ASbGnctgwHR8fCbo8eOqemJluKrbKQdxpv4h3Ijpl21NHrnPQ0c7Z/zIjWvbGPiuK0j
+	aG/cGf+yBfZqUOjeHetTB2Z87BVZMTnfS4y9tECHGIStR7N9YMgMgyWYagJIGTsGp4YJzkNvtfT
+	Rk7HfoiVIrsMTWhDUCWxv6wCbgoe6JVyZj6R8xv59r6jJh893dpSGScg==
+X-Google-Smtp-Source: AGHT+IEWZEscaVFUOUAsNjIprCbhq625oZrV53qjtBJsRwdVvGNmpIniSb7MX6P22AGKIV1DoFhBcxyYIRqcNBKHkLw=
+X-Received: by 2002:a05:6512:2342:b0:549:8cc9:67d1 with SMTP id
+ 2adb3069b0e04-54acb2050cemr276298e87.38.1742358246305; Tue, 18 Mar 2025
+ 21:24:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250318102259.189289-1-laura.nao@collabora.com> <20250318102259.189289-2-laura.nao@collabora.com>
-In-Reply-To: <20250318102259.189289-2-laura.nao@collabora.com>
+References: <20250318102259.189289-1-laura.nao@collabora.com> <20250318102259.189289-3-laura.nao@collabora.com>
+In-Reply-To: <20250318102259.189289-3-laura.nao@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 19 Mar 2025 12:23:27 +0800
-X-Gm-Features: AQ5f1Jos7SspTJtPnVw7V5hzjUHHfb4ilgg6YTkdTM2SmwYmpJB2tPacgIw_Nsk
-Message-ID: <CAGXv+5HZBS-L=BSPcy+QJAwJE--wB1AvG-xnxu+sf1FttYtV=g@mail.gmail.com>
-Subject: Re: [PATCH 1/2] platform/chrome: Add support for Google Spherion in
- HW prober
+Date: Wed, 19 Mar 2025 12:23:55 +0800
+X-Gm-Features: AQ5f1JpqtWWWC0q87IWTa2_visyDIAAE7HlagkjknGbBQwFRTMIurzAoihaTquM
+Message-ID: <CAGXv+5E-G0BY5q_EsxOkEEJvqXaX5=Y9PWqNbwysLEFfU-UmAg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8192-asurada-spherion: Mark
+ trackpads as fail-needs-probe
 To: Laura Nao <laura.nao@collabora.com>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
 	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
@@ -80,8 +80,9 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_212341_176727_19E2E74F 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20250318_212408_225452_020A3C76 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +97,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 18, 2025 at 6:28=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
+On Tue, Mar 18, 2025 at 6:26=E2=80=AFPM Laura Nao <laura.nao@collabora.com>=
  wrote:
 >
-> Add a new compatible entry for "google,spherion" to the hardware prober
-> platform list, using the same I2C component prober and trackpad data as
-> "google,hana".
+> Different Spherion variants use different trackpads on the same I2C2
+> bus. Instead of enabling all of them by default, mark them as
+> "fail-needs-probe" and let the implementation determine which one is
+> actually present.
+>
+> Additionally, move the trackpad pinctrl entry back to the individual
+> trackpad nodes.
 >
 > Signed-off-by: Laura Nao <laura.nao@collabora.com>
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-> ---
->  drivers/platform/chrome/chromeos_of_hw_prober.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/platform/chrome/chromeos_of_hw_prober.c b/drivers/pl=
-atform/chrome/chromeos_of_hw_prober.c
-> index c6992f5cdc76..019578bc7ad0 100644
-> --- a/drivers/platform/chrome/chromeos_of_hw_prober.c
-> +++ b/drivers/platform/chrome/chromeos_of_hw_prober.c
-> @@ -84,6 +84,10 @@ static const struct hw_prober_entry hw_prober_platform=
-s[] =3D {
->                 .compatible =3D "google,hana",
->                 .prober =3D chromeos_i2c_component_prober,
->                 .data =3D &chromeos_i2c_probe_hana_trackpad,
-> +       }, {
-> +               .compatible =3D "google,spherion",
-> +               .prober =3D chromeos_i2c_component_prober,
-> +               .data =3D &chromeos_i2c_probe_hana_trackpad,
->         },
->  };
->
-> --
-> 2.39.5
->
->
 
