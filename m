@@ -4,143 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828CDC35FFA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 07:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71EA7C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 07:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2t1e8lDHeeC+VhrMMM1rV8xRnNEpcJgqStNn0Vw4SWI=; b=2bIROdimPD9QkNm+7eRcoDg/zt
-	ft33WmE2NCmSO0oyEMNLxnNSLYKDX/xDj0h0bpKKHR1G7OCL/L0KJ986OYTl4nMk1+3pNO17+F2gx
-	1ceihE3XZ6S8/fucDXKb4R1vaPyMobwL86nT4KFNH0AQHwnh4ScxDCM/ip+e/GO65YmCeLBrE6AYP
-	Am4+4q3GrqGXwUSWzU3/fMXfXDphgE3YEF6/c2c51VfPvmD6qczGrMgh1XYAoo0BcbFG8TVF4jvpZ
-	UBbpV0HKeOsKP65pBJvom9ESmxXgSTBJnsz8Hbu7aPxiaHvb4sa6Gh2GiIkTOGiYE7Z05saGd0IV4
-	0TGIpxhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XDjpxOJZM1EOF9vpn7+ybNe5SgMoSN9gTtg0XUDzI9s=; b=t+neaLlE38oMpv+5rglziBmudi
+	qJeXd+Qmnm/sO7MQqZ7rC1UECP7MwdSmvK1bp9cHvzBjgtT4Sg7p75o2pEt5Bpw7F0KRrUizLvnbp
+	/RviaBVNmZKuhYx32rQ2KVOOtOJkxHTgL+B8u4dF1+KEdBm0OC1420WBNgqdSir/pwIeGgAAhJmu+
+	9Xfef08cbgXbJbxgXJzk0sdhj8EQ5SsbynGMjFRCUz9Tbd4EGjHIuW0otiJi7D2LrSBqOkFlTHmDB
+	ScBnOswnsGXfzGHSSVg4p3DgPHnHLsnvxwhHYc4QX47wiX5S9iUb1ioWfU9r8M6ccx38trzLLuu0U
+	K723u34Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tunhj-00000008D9h-2WOt;
-	Wed, 19 Mar 2025 07:19:07 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1tunuF-00000008ECE-27GU;
+	Wed, 19 Mar 2025 07:32:03 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tunh1-00000008D2n-3d4A
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Mar 2025 07:18:25 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-43bc21f831bso1680065e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Mar 2025 00:18:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742368702; x=1742973502; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=2t1e8lDHeeC+VhrMMM1rV8xRnNEpcJgqStNn0Vw4SWI=;
-        b=j27X2VEIbZzF3VcsE18enz0vxY24Dim9GIC2HWKZlmzZOZbYTeev9yOzVla3sisPHV
-         igVi3tR3cxVHSk02W0h9SMwg8pPFQQSnwS6igKeeMy0IplbC7oomDahhbTGx8RKFCfvT
-         ZWoorPBsuzIyCyhRpRwodLVv4o3LgmuLO3uBAyqGJH1zr88s2bXYJJXms6U8tJXb9oU/
-         WVz0GMHoxbVvCZcpPgbWTSh6gFxFmnrWE0qH7gBV/U7PrTqYXHiMwkGITIQ892qnp90a
-         HRnJ4hROD1c8La/tPoJEdK5Nf8tQnZXF1JL0hmOMCoHyfTHXJgpjdU6N3s6S8895tARR
-         G4cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742368702; x=1742973502;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2t1e8lDHeeC+VhrMMM1rV8xRnNEpcJgqStNn0Vw4SWI=;
-        b=HKexeCl5KGNduXpG9xBGCBoelxqCbbd10XcJ3Ws7I2EOdjlJVWQUf4T0OISnOUamT6
-         RohPPivBqsCvXiawVUP/ZYXoXBBVZd2yp7F336+qqz+73/W/fzY9/TU6uB6Q0B0nclSO
-         7wU758pS0ZQ4t7ung7ezy5ICyMWi80gv3B/wmEfG/Jfy55RY/dT0RNlPZXdlibat5rXV
-         uxa3cyq934QVTmnnOIHz2QQdyokVamrXIvf7p+RkMQFZtdYE/J8eFo0aN+mDyL9dqxc7
-         C3wSP75oxhsUEMyWpCmBFGxzaLZGH8gpF14yU9YMT0JVkbogMDZph/IMA21K6rlN0pDw
-         c/rw==
-X-Forwarded-Encrypted: i=1; AJvYcCXdmerMN2hvu0VibbGiNeoD4WgbHRYY68Pyw6Zaf5iS3mvDJzKTIaUHrsbRF7niltc7ijMvP6hZA1RHk97Mpw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5tIWrJSDQPP5FcSuH4k0LlGRjSSzXj+8/7m0VSABaVurzCgAm
-	M9aK3+WyabOJdLl7r1RDNDWMeH2QVPqqQr/tdPgtmAdNLH2iK+s4HoUVttsTxlw=
-X-Gm-Gg: ASbGncuJSy126bP6+MNdi0cbXVUce4kkh5Ydl1OutsB75IGiAAOGpOSNSDgggvSeW5Z
-	OwmsLTNidjBNo793UGZQc4pMe8Yo01QEdHZdbjugGNmNAfK9XrtfS/z+79jMsgd5uwmfnuDZOXV
-	Lus0pDQe+KVHWHeQv0BLJfpYQFWC4D3CcdZaJ/kaVynf1qBE0heXfLsooBa/iOJ/8u8yPhp7GmR
-	DlpwZBAaqZyZsLJN2lm/tVjH7bIn5/eJP1x7F9AYj56aw/wlWJyOn3WHKisG3UNrmzOgei5WL2r
-	AzQ/o3M1NPoRL8jcqia56JM/82zzqUOKS8KlRR/DybLXXDjjvZ7R0Pw9kZifYw4=
-X-Google-Smtp-Source: AGHT+IE8IxeWFwFlKpP8Jw2vDUuTM92MTiYoo+wRg9VD1zFAykda6SI5zvDb5BcQatEeBZe+hwdHQA==
-X-Received: by 2002:a05:600c:1553:b0:439:9fde:da76 with SMTP id 5b1f17b1804b1-43d44bd7e25mr2942125e9.0.1742368702376;
-        Wed, 19 Mar 2025 00:18:22 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.198.86])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-395cb7eb876sm20048778f8f.83.2025.03.19.00.18.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Mar 2025 00:18:21 -0700 (PDT)
-Message-ID: <3f147dbd-c4a7-4cf5-911c-1d9263f5067c@linaro.org>
-Date: Wed, 19 Mar 2025 08:18:19 +0100
+	id 1tunsX-00000008Dt5-11HA;
+	Wed, 19 Mar 2025 07:30:18 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52J4lmKD001868;
+	Wed, 19 Mar 2025 07:29:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-type:date:from:message-id:mime-version:subject:to; s=
+	qcppdkim1; bh=XDjpxOJZM1EOF9vpn7+ybNe5SgMoSN9gTtg0XUDzI9s=; b=Cd
+	t2DdFt7i6gkXU+FmmH0QJclljLtJoPYKODv1jCiXW9n2lL0OnKb8sfG6FfpOQwt4
+	SsNgOTIqYnPkcF/mZjDrL+NiHby6fQ24n6GnyZA2t7dRnBPV0QW2DlwMhHofzbwS
+	d4Oev4cJpgxFOGI/pDhZR+aiFQbQsQPHMQVhvGfVyidFvpZPLKSEvwaVGPHNnAgh
+	FfA6OtT6pVJGGWO5QT4+zadLR4CYXXcM1YGGjr4cNF1RMTYhjLeg0jlvEFLj5Jdc
+	2B8ZfBQvisUXJKODzPdhUZJdOlan71KUJgj+qFbkavNur8Aoajx725gb1incDuOm
+	sFUPfSqxWLxxf+zMVbSQ==
+Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45etmbw20k-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Mar 2025 07:29:55 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 52J7Ts1T011972
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Mar 2025 07:29:54 GMT
+Received: from stor-berry.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.9; Wed, 19 Mar 2025 00:29:53 -0700
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+To: <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>, <bvanassche@acm.org>,
+        <avri.altman@wdc.com>, <peter.wang@mediatek.com>,
+        <manivannan.sadhasivam@linaro.org>, <minwoo.im@samsung.com>,
+        <adrian.hunter@intel.com>, <martin.petersen@oracle.com>
+CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        "James E.J. Bottomley"
+	<James.Bottomley@HansenPartnership.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Bean Huo <beanhuo@micron.com>, Ziqi Chen <quic_ziqichen@quicinc.com>,
+        Keoseong Park
+	<keosung.park@samsung.com>,
+        Gwendal Grignou <gwendal@chromium.org>,
+        Al Viro
+	<viro@zeniv.linux.org.uk>, Eric Biggers <ebiggers@google.com>,
+        open list
+	<linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 1/1] scsi: ufs: core: add device level exception support
+Date: Wed, 19 Mar 2025 00:29:30 -0700
+Message-ID: <6109425449ac4d18249ce7254e4fa1252138a94a.1742369183.git.quic_nguyenb@quicinc.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: remoteproc: mediatek: Remove l1tcm for
- dual-core MT8188 SCP
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- Olivia Wen <olivia.wen@mediatek.com>
-Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com>
- <20250318-scp-dual-core-mt8390-v1-2-8733e192cc73@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
- m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
- HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
- XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
- mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
- v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
- cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
- rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
- qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
- aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
- gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
- dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
- NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
- hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
- oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
- H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
- yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
- 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
- 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
- +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
- FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
- 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
- DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
- oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
- 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
- Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
- qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
- /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
- qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
- EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
- KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
- fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20250318-scp-dual-core-mt8390-v1-2-8733e192cc73@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: AdW9AjD1xapFs3n7P1qc-1QpXizhRUKk
+X-Proofpoint-GUID: AdW9AjD1xapFs3n7P1qc-1QpXizhRUKk
+X-Authority-Analysis: v=2.4 cv=aMLwqa9m c=1 sm=1 tr=0 ts=67da7273 cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=Vs1iUdzkB0EA:10 a=COk6AnOGAAAA:8 a=mpaa-ttXAAAA:8 a=_c5fG4JWzXF7GHI2WLAA:9
+ a=TjNXssC_j7lpFel5tvFf:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-19_02,2025-03-17_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
+ priorityscore=1501 spamscore=0 clxscore=1011 phishscore=0 mlxscore=0
+ suspectscore=0 malwarescore=0 mlxlogscore=999 bulkscore=0 adultscore=0
+ lowpriorityscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2503190050
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_001823_936180_DFAB3772 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250319_003017_506161_CDEE6058 
+X-CRM114-Status: GOOD (  29.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,18 +117,353 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/03/2025 23:22, Nícolas F. R. A. Prado wrote:
-> The SCP present on MT8188 does not have an L1TCM memory region, but the
-> binding incorrectly requires one for the dual-core description of the
-> MT8188 SCP. Remove that requirement. Also update the minimum number of
-> reg and reg-names to 1, since as this is a multi-core SCP with no
-> L1TCM memory, only the CFG memory region is present in the parent node.
-> 
-> Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+The ufs device JEDEC specification version 4.1 adds support for the
+device level exception events. To support this new device level
+exception feature, expose two new sysfs nodes below to provide
+the user space access to the device level exception information.
+/sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_count
+/sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_id
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+The device_lvl_exception_count sysfs node reports the number of
+device level exceptions that have occurred since the last time
+this variable is reset. Writing a value of 0 will reset it.
+The device_lvl_exception_id reports the exception ID which is the
+qDeviceLevelExceptionID attribute of the device JEDEC specifications
+version 4.1 and later. The user space application can query these
+sysfs nodes to get more information about the device level exception.
 
-Best regards,
-Krzysztof
+Signed-off-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+---
+Changes in v3:
+1. Add protection for hba->dev_lvl_exception_count accesses in different
+contexts (Bart's comment).
+
+Changes in v2:
+1. Addressed Mani's comments:
+   - Update the documentation of dev_lvl_exception_count to read/write.
+   - Rephrase the description of the Documentation and commit text.
+   - Remove the export of ufshcd_read_device_lvl_exception_id().
+2. Addressed Bart's comments:
+   - Rename dev_lvl_exception sysfs node to dev_lvl_exception_count.
+   - Update the documentation of the sysfs nodes.
+   - Skip comment about sysfs_notify() being used in interrupt
+     context because Avri already addressed it.
+---
+ Documentation/ABI/testing/sysfs-driver-ufs | 27 +++++++++++++
+ drivers/ufs/core/ufs-sysfs.c               | 57 +++++++++++++++++++++++++++
+ drivers/ufs/core/ufshcd-priv.h             |  1 +
+ drivers/ufs/core/ufshcd.c                  | 63 ++++++++++++++++++++++++++++++
+ include/uapi/scsi/scsi_bsg_ufs.h           |  9 +++++
+ include/ufs/ufs.h                          |  5 ++-
+ include/ufs/ufshcd.h                       |  5 +++
+ 7 files changed, 166 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/ABI/testing/sysfs-driver-ufs b/Documentation/ABI/testing/sysfs-driver-ufs
+index ae01912..6a6c35a 100644
+--- a/Documentation/ABI/testing/sysfs-driver-ufs
++++ b/Documentation/ABI/testing/sysfs-driver-ufs
+@@ -1604,3 +1604,30 @@ Description:
+ 		prevent the UFS from frequently performing clock gating/ungating.
+ 
+ 		The attribute is read/write.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_count
++What:		/sys/bus/platform/devices/*.ufs/device_lvl_exception_count
++Date:		March 2025
++Contact:	Bao D. Nguyen <quic_nguyenb@quicinc.com>
++Description:
++		This attribute is applicable to ufs devices compliant to the JEDEC
++		specifications version 4.1 or later. The device_lvl_exception_count
++		is a counter indicating the number of times the device level exceptions
++		have occurred since the last time this variable is reset.
++		Writing a 0 value to this attribute will reset the device_lvl_exception_count.
++		If the device_lvl_exception_count reads a positive value, the user
++		application should read the device_lvl_exception_id attribute to know more
++		information about the exception.
++		This attribute is read/write.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_id
++What:		/sys/bus/platform/devices/*.ufs/device_lvl_exception_id
++Date:		March 2025
++Contact:	Bao D. Nguyen <quic_nguyenb@quicinc.com>
++Description:
++		Reading the device_lvl_exception_id returns the qDeviceLevelExceptionID
++		attribute of the ufs device JEDEC specification version 4.1. The definition
++		of the qDeviceLevelExceptionID is the ufs device vendor specific implementation.
++		Refer to the device manufacturer datasheet for more information
++		on the meaning of the qDeviceLevelExceptionID attribute value.
++		The attribute is read only.
+diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
+index 90b5ab6..4cd2e0b 100644
+--- a/drivers/ufs/core/ufs-sysfs.c
++++ b/drivers/ufs/core/ufs-sysfs.c
+@@ -466,6 +466,59 @@ static ssize_t critical_health_show(struct device *dev,
+ 	return sysfs_emit(buf, "%d\n", hba->critical_health_count);
+ }
+ 
++static ssize_t device_lvl_exception_count_show(struct device *dev,
++					       struct device_attribute *attr,
++					       char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++
++	if (hba->dev_info.wspecversion < 0x410)
++		return -EOPNOTSUPP;
++
++	return sysfs_emit(buf, "%u\n", hba->dev_lvl_exception_count);
++}
++
++static ssize_t device_lvl_exception_count_store(struct device *dev,
++						struct device_attribute *attr,
++						const char *buf, size_t count)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	unsigned long flags;
++	unsigned int value;
++
++	if (kstrtouint(buf, 0, &value))
++		return -EINVAL;
++
++	/* the only supported usecase is to reset the dev_lvl_exception_count */
++	if (value)
++		return -EINVAL;
++
++	spin_lock_irqsave(hba->host->host_lock, flags);
++	hba->dev_lvl_exception_count = 0;
++	spin_unlock_irqrestore(hba->host->host_lock, flags);
++
++	return count;
++}
++
++static ssize_t device_lvl_exception_id_show(struct device *dev,
++					    struct device_attribute *attr,
++					    char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u64 exception_id;
++	int err;
++
++	ufshcd_rpm_get_sync(hba);
++	err = ufshcd_read_device_lvl_exception_id(hba, &exception_id);
++	ufshcd_rpm_put_sync(hba);
++
++	if (err)
++		return err;
++
++	hba->dev_lvl_exception_id = exception_id;
++	return sysfs_emit(buf, "%llu\n", exception_id);
++}
++
+ static DEVICE_ATTR_RW(rpm_lvl);
+ static DEVICE_ATTR_RO(rpm_target_dev_state);
+ static DEVICE_ATTR_RO(rpm_target_link_state);
+@@ -479,6 +532,8 @@ static DEVICE_ATTR_RW(wb_flush_threshold);
+ static DEVICE_ATTR_RW(rtc_update_ms);
+ static DEVICE_ATTR_RW(pm_qos_enable);
+ static DEVICE_ATTR_RO(critical_health);
++static DEVICE_ATTR_RW(device_lvl_exception_count);
++static DEVICE_ATTR_RO(device_lvl_exception_id);
+ 
+ static struct attribute *ufs_sysfs_ufshcd_attrs[] = {
+ 	&dev_attr_rpm_lvl.attr,
+@@ -494,6 +549,8 @@ static struct attribute *ufs_sysfs_ufshcd_attrs[] = {
+ 	&dev_attr_rtc_update_ms.attr,
+ 	&dev_attr_pm_qos_enable.attr,
+ 	&dev_attr_critical_health.attr,
++	&dev_attr_device_lvl_exception_count.attr,
++	&dev_attr_device_lvl_exception_id.attr,
+ 	NULL
+ };
+ 
+diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+index 10b4a19..d0a2c96 100644
+--- a/drivers/ufs/core/ufshcd-priv.h
++++ b/drivers/ufs/core/ufshcd-priv.h
+@@ -94,6 +94,7 @@ int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba,
+ 			     enum query_opcode desc_op);
+ 
+ int ufshcd_wb_toggle(struct ufs_hba *hba, bool enable);
++int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id);
+ 
+ /* Wrapper functions for safely calling variant operations */
+ static inline const char *ufshcd_get_var_name(struct ufs_hba *hba)
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 4e1e214..5674f4a 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -6013,6 +6013,43 @@ static void ufshcd_bkops_exception_event_handler(struct ufs_hba *hba)
+ 				__func__, err);
+ }
+ 
++int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id)
++{
++	struct utp_upiu_query_response_v4_0 *upiu_resp;
++	struct ufs_query_req *request = NULL;
++	struct ufs_query_res *response = NULL;
++	int err;
++
++	if (hba->dev_info.wspecversion < 0x410)
++		return -EOPNOTSUPP;
++
++	ufshcd_hold(hba);
++	mutex_lock(&hba->dev_cmd.lock);
++
++	ufshcd_init_query(hba, &request, &response,
++			  UPIU_QUERY_OPCODE_READ_ATTR,
++			  QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID, 0, 0);
++
++	request->query_func = UPIU_QUERY_FUNC_STANDARD_READ_REQUEST;
++
++	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, QUERY_REQ_TIMEOUT);
++
++	if (err) {
++		dev_err(hba->dev, "%s: failed to read device level exception %d\n",
++			__func__, err);
++		goto out;
++	}
++
++	upiu_resp = (struct utp_upiu_query_response_v4_0 *)response;
++	*exception_id = get_unaligned_be64(&upiu_resp->value);
++
++out:
++	mutex_unlock(&hba->dev_cmd.lock);
++	ufshcd_release(hba);
++
++	return err;
++}
++
+ static int __ufshcd_wb_toggle(struct ufs_hba *hba, bool set, enum flag_idn idn)
+ {
+ 	u8 index;
+@@ -6215,6 +6252,7 @@ static void ufshcd_rpm_dev_flush_recheck_work(struct work_struct *work)
+  */
+ static void ufshcd_exception_event_handler(struct work_struct *work)
+ {
++	unsigned long flags;
+ 	struct ufs_hba *hba;
+ 	int err;
+ 	u32 status = 0;
+@@ -6240,6 +6278,13 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
+ 		sysfs_notify(&hba->dev->kobj, NULL, "critical_health");
+ 	}
+ 
++	if (status & hba->ee_drv_mask & MASK_EE_DEV_LVL_EXCEPTION) {
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		hba->dev_lvl_exception_count++;
++		spin_unlock_irqrestore(hba->host->host_lock, flags);
++		sysfs_notify(&hba->dev->kobj, NULL, "device_lvl_exception_count");
++	}
++
+ 	ufs_debugfs_exception_event(hba, status);
+ }
+ 
+@@ -8139,6 +8184,22 @@ static void ufshcd_temp_notif_probe(struct ufs_hba *hba, const u8 *desc_buf)
+ 	}
+ }
+ 
++static void ufshcd_device_lvl_exception_probe(struct ufs_hba *hba, u8 *desc_buf)
++{
++	u32 ext_ufs_feature;
++
++	if (hba->dev_info.wspecversion < 0x410)
++		return;
++
++	ext_ufs_feature = get_unaligned_be32(desc_buf +
++				DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++	if (!(ext_ufs_feature & UFS_DEV_LVL_EXCEPTION_SUP))
++		return;
++
++	hba->dev_lvl_exception_count = 0;
++	ufshcd_enable_ee(hba, MASK_EE_DEV_LVL_EXCEPTION);
++}
++
+ static void ufshcd_set_rtt(struct ufs_hba *hba)
+ {
+ 	struct ufs_dev_info *dev_info = &hba->dev_info;
+@@ -8339,6 +8400,8 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+ 
+ 	ufs_init_rtc(hba, desc_buf);
+ 
++	ufshcd_device_lvl_exception_probe(hba, desc_buf);
++
+ 	/*
+ 	 * ufshcd_read_string_desc returns size of the string
+ 	 * reset the error value
+diff --git a/include/uapi/scsi/scsi_bsg_ufs.h b/include/uapi/scsi/scsi_bsg_ufs.h
+index 8c29e49..8b61dff 100644
+--- a/include/uapi/scsi/scsi_bsg_ufs.h
++++ b/include/uapi/scsi/scsi_bsg_ufs.h
+@@ -143,6 +143,15 @@ struct utp_upiu_query_v4_0 {
+ 	__be32 reserved;
+ };
+ 
++struct utp_upiu_query_response_v4_0 {
++	__u8 opcode;
++	__u8 idn;
++	__u8 index;
++	__u8 selector;
++	__be64 value;
++	__be32 reserved;
++} __attribute__((__packed__));
++
+ /**
+  * struct utp_upiu_cmd - Command UPIU structure
+  * @exp_data_transfer_len: Data Transfer Length DW-3
+diff --git a/include/ufs/ufs.h b/include/ufs/ufs.h
+index 8a24ed5..1c47136 100644
+--- a/include/ufs/ufs.h
++++ b/include/ufs/ufs.h
+@@ -180,7 +180,8 @@ enum attr_idn {
+ 	QUERY_ATTR_IDN_AVAIL_WB_BUFF_SIZE       = 0x1D,
+ 	QUERY_ATTR_IDN_WB_BUFF_LIFE_TIME_EST    = 0x1E,
+ 	QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE        = 0x1F,
+-	QUERY_ATTR_IDN_TIMESTAMP		= 0x30
++	QUERY_ATTR_IDN_TIMESTAMP		= 0x30,
++	QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID     = 0x34,
+ };
+ 
+ /* Descriptor idn for Query requests */
+@@ -390,6 +391,7 @@ enum {
+ 	UFS_DEV_EXT_TEMP_NOTIF		= BIT(6),
+ 	UFS_DEV_HPB_SUPPORT		= BIT(7),
+ 	UFS_DEV_WRITE_BOOSTER_SUP	= BIT(8),
++	UFS_DEV_LVL_EXCEPTION_SUP       = BIT(12),
+ };
+ #define UFS_DEV_HPB_SUPPORT_VERSION		0x310
+ 
+@@ -419,6 +421,7 @@ enum {
+ 	MASK_EE_TOO_LOW_TEMP		= BIT(4),
+ 	MASK_EE_WRITEBOOSTER_EVENT	= BIT(5),
+ 	MASK_EE_PERFORMANCE_THROTTLING	= BIT(6),
++	MASK_EE_DEV_LVL_EXCEPTION       = BIT(7),
+ 	MASK_EE_HEALTH_CRITICAL		= BIT(9),
+ };
+ #define MASK_EE_URGENT_TEMP (MASK_EE_TOO_HIGH_TEMP | MASK_EE_TOO_LOW_TEMP)
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index e3909cc..ad90a43 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -968,6 +968,9 @@ enum ufshcd_mcq_opr {
+  * @pm_qos_req: PM QoS request handle
+  * @pm_qos_enabled: flag to check if pm qos is enabled
+  * @critical_health_count: count of critical health exceptions
++ * @dev_lvl_exception_count: count of device level exceptions since last reset
++ * @dev_lvl_exception_id: vendor specific information about the
++ * device level exception event.
+  */
+ struct ufs_hba {
+ 	void __iomem *mmio_base;
+@@ -1138,6 +1141,8 @@ struct ufs_hba {
+ 	bool pm_qos_enabled;
+ 
+ 	int critical_health_count;
++	u32 dev_lvl_exception_count;
++	u64 dev_lvl_exception_id;
+ };
+ 
+ /**
+-- 
+2.7.4
+
 
