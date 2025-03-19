@@ -4,88 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A1F9C369D1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 13:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BEFC369D8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 13:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6id9f3WgauE77b1ncdI98pPy6plVxIz+rqbVv+3POCU=; b=jLfDLWCPekJOprwRSH0exd9+m/
-	KjxionStuUbQG7bDG8DEBB+QCV/auiI0GQKa7IHzyyuG+T5lY56TGfIOazQhqY0o2lx/dBmQFQN11
-	htQt/abZlayRhfXmzotCf5TTZTxwsQnTsp2dmFmhd1+1VWCvhrlxO30JOJEet7z27OGNZpN77yNj8
-	6al7F8qkuWqS1jjGY/vIHZCiAqZsMqfAemVPNAUKhUBPpol/SADX1BEcRZ2P3lYi67NrLxxP6fc8N
-	VCPkmV1oRWOvgNplssi81r28W687mZtg5YBE2ydAqOaEQ0nECvuOEk35Lakh6ooUFwUscMcWa1yzW
-	Ld9VDDtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BHWaO5BIxa7Di4JcRl5cfNO9WzsUcS96OpBbw5VGen4=; b=uaiUWUKrflqAKfRvgjWP4Po2jf
+	UxFYXTWiNK77laApUYlrYPCv0EoTtY5rSwf3lEAcptm2mgmq8FoAtJduES7AK001EBcZHpBWdla8/
+	uF3SiLBXfy22d7jZJOlEGj62R0nLW6BWDJpLZvqAGLLGNlZAPAmn1hnxK1uj2roZopWJWjVEB/l/v
+	eulpRntEnN720ZTpSodLHQK390F3i+vyOPssW1mzP6V3GLoFnKz5RPTticQE+Av0jPJyAUe8RutJC
+	CTkcyy8b0RZWa9XXfAS/drGao0wdslwAQj/tlPFRneo8Sd+v7L4C6WjJfeACJ/C+Ij+0EE2WnA6wP
+	JMRDPqAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Zmv-0000000AWu3-0Ro9;
-	Wed, 23 Apr 2025 13:05:17 +0000
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+	id 1u7Zmx-0000000AWve-0Njp;
+	Wed, 23 Apr 2025 13:05:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcVjN-00000003DKP-0PrB
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jan 2025 20:29:14 +0000
-Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-6dcdf23b4edso45277846d6.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jan 2025 12:29:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1738009751; x=1738614551; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=6id9f3WgauE77b1ncdI98pPy6plVxIz+rqbVv+3POCU=;
-        b=kWA1RnFjhQPl8FTHKtatjIUq19vLBbD8INsGicRZOIZKq4SNplxBFl4J+y4ELKuwWG
-         ms1slEb1BIS8y9zPyGJBHGo/7FQD6y5q8kyGlPROv755jkeekyJw2hsQZWlzUMhmhJXB
-         oIHqiv07hRzFHsbpc3ewf5mcJV1dpAX8QQh5EvHczp3mJWt8/DmZWqU4UU5VzZxDiAdE
-         gGjNw5+EHWjQorAj87a7mKYcRG2tp1TSxuSo/mEgTbNSWEZ5vWg6nUkOLd6VTp9sB+yd
-         Y5yvlxTWv2W6qXTlPCPbPQYFIFQ306lD4ke0nNN45GvVio2VcdnYGRrJ/sUXkOasDJRm
-         lyAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738009751; x=1738614551;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6id9f3WgauE77b1ncdI98pPy6plVxIz+rqbVv+3POCU=;
-        b=wp4e3B/L5bsRK0EW2+ZoWUQiBuxTRonZ54+7LRfkQVFzYVfBdwopcrofjJoWi1pbTF
-         Q3enCm/8KYtedZTYv9ZEPEPgOYwsAXjUW4gtiKPrnBUNle11PtFTFV2O25HI3WHkt5GN
-         KHYRGMlropBPDq/ztoQZsILsWGOCVjESnfC1i40bv6D0PmL9QBQTfL5XvBxrthHKwUjX
-         1gmWBWIilfdk45mVez+pCaLr81AY5TNXidpCHD2yCoO6rXqtnYiCTY/zcJ+X5nT9mg3L
-         LC7ngnTu43dTkJKfU+zhVkHOUNyN6VlC4dexDxYv7Ewf2q0Auazxx5EftWlWLqcSznHt
-         XMKw==
-X-Forwarded-Encrypted: i=1; AJvYcCV5EulCJ/P6qPMvCVX8Al5/x3ZyU2G3JXQSOVOHCUJ8eCMxKskYOSwum7l+a9XXjvDJmIWfLrKfRhzC4v/N8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzkNklbsxc0pRhqE76d1XBZRvijnlKaj3+JGBic9Vlm1R/XIa1R
-	F0mbTtr4tn4lTy56CDtQVruEWyoo2sapCnsePbFOwfiKqivzT8P/
-X-Gm-Gg: ASbGncuxjVRYoew0azvDe0rEfidm13EbdgT14SOeK/UlBEcykDvF50qWH2aG0TRMsdl
-	r82xU8Q7p8nLa6u2L0VL11qS+jjjzASVpzx2ts5uyrdyZLkY5yx5chzKWaDNmfQ9YgAglAXWpWa
-	7/YB04JuWo7/qiXIbnxnSYI0wr3ZXBDZY0rDnS42WYndbMCu5UeX+kD6qCcNBzkeUHzNUmHP2HN
-	iVnfF2KTAu3c0/QTf1TVCZjNihsIgCossKZEuJBZVejVJFmpzw+7eFYcnEX/vI4an9qqYLKu7dx
-	dRGHu6B3bXQPYITOV+dVRZRvkK7YY/mZ7KM4Sez8IXRhwbROygn2UbKvYHa9islYdmPfjRvP
-X-Google-Smtp-Source: AGHT+IFBvJKB9/271x7EC/HbpLXtXmNS0EldRKCcWmYXWl2xmcN9HQj8IOMAWLBYzZocdoSnhtC2Fw==
-X-Received: by 2002:a05:6214:4988:b0:6dd:5f90:16bd with SMTP id 6a1803df08f44-6e1b22349dbmr623768666d6.41.1738009751330;
-        Mon, 27 Jan 2025 12:29:11 -0800 (PST)
-Received: from ?IPv6:2600:4041:5b0d:f100:fec2:7085:7ce5:711c? ([2600:4041:5b0d:f100:fec2:7085:7ce5:711c])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e2051369a1sm37908016d6.3.2025.01.27.12.29.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jan 2025 12:29:10 -0800 (PST)
-Message-ID: <77358eda94737ae3b98cfb40e96d40a829712b2b.camel@gmail.com>
-Subject: Follow-Up: mt7915e card fails to init on Linux 6.3 and newer
-From: Jared Van Bortel <jared.e.vb@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Mon, 27 Jan 2025 15:29:10 -0500
-In-Reply-To: <3600f032dc921e44459c266aab76806428267c5e.camel@gmail.com>
-References: <3600f032dc921e44459c266aab76806428267c5e.camel@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 
+	id 1tuqjT-00000008fev-3x91;
+	Wed, 19 Mar 2025 10:33:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 245236157D;
+	Wed, 19 Mar 2025 10:33:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2206C4CEE9;
+	Wed, 19 Mar 2025 10:32:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742380385;
+	bh=KTVZmxYEY9/X4XUGplthzwW5QE4s2FoLVrK4Bg1g8Xc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Q6H8MCNB9+XNx6Y7c8ikrYtqP8fzOBFPUUqnxiYkXmEAgXYLn3B+SNK3TG26SZD0Q
+	 y+WzYBNZRZ0g89sjwzNg0IAcVkA0Q+Zavbk2zRstRSRqe+WKJXpltb7PPY6aN7zClM
+	 7S1hX0QKrIGhaRA6EsZfDike8krXTSHXmazMBJiYrU3VmO7PZJx23uulj6Yq125axa
+	 vJhxK950AQa1FJHEBNKkJDITMBjjfrWOa3OJFqLy6YLQuvdOSmqeyAAc4cytF6G0pl
+	 /7kocjkf4Hkye9ybkod5C0h+Uw1Dcnnmgx+SL7WpCOaDzFc6SRf837mhbIzgXvOqGJ
+	 FdTv5bZw0HjKw==
+Message-ID: <4bc0e1ca-a523-424a-8759-59e353317fba@kernel.org>
+Date: Wed, 19 Mar 2025 11:32:18 +0100
 MIME-Version: 1.0
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250127_122913_139986_F453E253 
-X-CRM114-Status: GOOD (  21.14  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/57] irqdomain: Cleanups and Documentation
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: tglx@linutronix.de, maz@kernel.org, linux-kernel@vger.kernel.org, Aaro Koskinen <aaro.koskinen@iki.fi>, Abhinav Kumar <quic_abhinavk@quicinc.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Ghiti <alex@ghiti.fr>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alex Deucher <alexander.deucher@amd.com>, Alex Shi <alexs@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, amd-gfx@lists.freedesktop.org, Amit Kucheria <amitk@kernel.org>, Anatolij Gustschin <agust@denx.de>, Andi Shyti <andi.shyti@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Andreas Kemnade <andreas@kemnade.info>, Andrew Jeffery <andrew@codeconstruct.com.au>, Andrew Lunn <andrew@lunn.ch>, Andy Shevchenko <andy@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Antoine Tenart <atenart@kernel.org>, Anton Ivanov <anton.ivanov@cambridgegreys.com>, Anup Patel <anup@brainfault.org>, Arnd Bergmann <arnd@arndb.de>, asahi@lists.linux.dev, Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Bjorn Andersson <andersson@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Borislav Petkov <bp@alien8.de>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Corentin Chary <corentin.chary@gmail.com>, Daire McNamara <daire.mcnamara@microchip.com>, Daniel Golle <daniel@makrotopia.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Daniel Mack <daniel@zonque.org>, Daniel Palmer <daniel@thingy.jp>, Dave Hansen <dave.hansen@linux.intel.com>, David Airlie <airlied@gmail.com>, "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Dinh Nguyen <dinguyen@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Dongliang Mu <dzm91@hust.edu.cn>, Doug Berger <opendmb@gmail.com>, dri-devel@lists.freedesktop.org, Eddie James <eajames@linux.ibm.com>, Eric Dumazet <edumazet@google.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Geoff Levand <geoff@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Gregory Clement <gregory.clement@bootlin.com>, Guo Ren <guoren@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Haojian Zhuang <haojian.zhuang@gmail.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Herve Codina <herve.codina@bootlin.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, "H. Peter Anvin" <hpa@zytor.com>, Huacai Chen <chenhuacai@kernel.org>, Changhuang Liang <changhuang.liang@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Chris Zankel <chris@zankel.net>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Imre Kaloz <kaloz@openwrt.org>, Ingo Molnar <mingo@redhat.com>, Jakub Kicinski <kuba@kernel.org>, James Morse <james.morse@arm.com>, Janne Grunau <j@jannau.net>, Janusz Krzysztofik <jmkrzyszt@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Jassi Brar <jassisinghbrar@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Jiawen Wu <jiawenwu@trustnetic.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Jim Quinlan <jim2101024@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Joel Stanley <joel@jms.id.au>, Johannes Berg <johannes@sipsolutions.net>, John Crispin <john@phrozen.org>, John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>, Jonas Bonn <jonas@southpole.se>, Jonathan Cameron <jic23@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Jonathan Hunter <jonathanh@nvidia.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Joyce Ooi <joyce.ooi@intel.com>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Keerthy
+ <j-keerthy@ti.com>, Kevin Hilman <khilman@baylibre.com>, Konrad Dybcio <konradybcio@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Linus Walleij <linusw@kernel.org>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-doc@vger.kernel.org, linux-edac@vger.kernel.org, linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-remoteproc@vger.kernel.org, linux-riscv@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-sh@vger.kernel.org, linux-snps-arc@lists.infradead.org, linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-um@lists.infradead.org, linux-wireless@vger.kernel.org, loongarch@lists.linux.dev, Lorenzo Pieralisi <lpieralisi@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, Lukasz Luba <lukasz.luba@arm.com>, "Luke D. Jones" <luke@ljones.dev>, Madhavan Srinivasan <maddy@linux.ibm.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, =?UTF-8?Q?Marek_Beh=C3=BAn?= <kabel@kernel.org>, Marijn Suijten <marijn.suijten@somainline.org>, Mark Brown <broonie@kernel.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, Michael Buesch <m@bues.ch>, Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@amd.com>, Miodrag Dinic <miodrag.dinic@mips.com>, Naveen N Rao <naveen@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, Nicholas Piggin <npiggin@gmail.com>, Nikhil Agarwal <nikhil.agarwal@amd.com>, Nipun Gupta <nipun.gupta@amd.com>, Nishanth Menon <nm@ti.com>, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Paolo Abeni <pabeni@redhat.com>, Paul Cercueil <paul@crapouillou.net>, Paul Walmsley <paul.walmsley@sifive.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Peter Rosin <peda@axentia.se>, Philipp Zabel <p.zabel@pengutronix.de>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, platform-driver-x86@vger.kernel.org, Prasad Kumpatla <quic_pkumpatl@quicinc.com>, Qiang Zhao <qiang.zhao@nxp.com>, Qin Jian <qinjian@cqplus1.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Ray Jui <rjui@broadcom.com>, Rengarajan Sundararajan <Rengarajan.S@microchip.com>, Richard Cochran <richardcochran@gmail.com>, Richard Weinberger <richard@nod.at>, Rich Felker <dalias@libc.org>, Rob Clark <robdclark@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Robert Richter <rric@kernel.org>, Rob Herring <robh@kernel.org>, Roger Quadros <rogerq@kernel.org>, Russell King <linux@armlinux.org.uk>, Ryan Chen <ryan_chen@aspeedtech.com>, Ryder Lee <ryder.lee@mediatek.com>, Samuel Holland <samuel@sholland.org>, Santosh Shilimkar <ssantosh@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Scott Branden <sbranden@broadcom.com>, Scott Wood <oss@buserror.net>, Sean Paul <sean@poorly.run>, Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Siddharth Vadapalli <s-vadapalli@ti.com>, Simona Vetter <simona@ffwll.ch>,
+ Stafford Horne <shorne@gmail.com>, Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>, Stephen Boyd <sboyd@kernel.org>, Sven Peter <sven@svenpeter.dev>, Takashi Iwai <tiwai@suse.com>, Talel Shenhar <talel@amazon.com>, Tero Kristo <kristo@kernel.org>, Thangaraj Samynathan <Thangaraj.S@microchip.com>, Thara Gopinath <thara.gopinath@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Tony Lindgren <tony@atomide.com>, Tony Luck <tony.luck@intel.com>, UNGLinuxDriver@microchip.com, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Vignesh Raghavendra <vigneshr@ti.com>, Vineet Gupta <vgupta@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, WANG Xuerui <kernel@xen0n.name>, Woojung Huh <woojung.huh@microchip.com>, x86@kernel.org, Yanteng Si <si.yanteng@linux.dev>, Yoshinori Sato <ysato@users.sourceforge.jp>, Zhang Rui <rui.zhang@intel.com>
+References: <20250319092951.37667-1-jirislaby@kernel.org>
+ <CAHp75VfJPgaGyERBaSxSGap+Daeuy8kOjyjg+QkCtzxUydzHiQ@mail.gmail.com>
+Content-Language: en-US
+From: Jiri Slaby <jirislaby@kernel.org>
+Autocrypt: addr=jirislaby@kernel.org; keydata=
+ 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
+In-Reply-To: <CAHp75VfJPgaGyERBaSxSGap+Daeuy8kOjyjg+QkCtzxUydzHiQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Approved-At: Wed, 23 Apr 2025 04:25:00 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,230 +114,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi. Just following up since I haven't seen a reply yet. The original e-
-mail follows. I would like to get the eyes of a maintainer on this.
+On 19. 03. 25, 11:21, Andy Shevchenko wrote:
+> I am all to support the idea, but in some cases I would think of a bit
+> more work to be done to get rid of the of_fwnode_handle(np) in favour
+> of dev_fwnode(dev). Note, this is based on a brief look, I haven't any
+> example at hand right now.
 
-On Sun, 2025-01-19 at 21:24 -0500, Jared Van Bortel wrote:
-> Hi all,
->=20
-> I recently purchased a WallysTech DR7915 mPCIe Wi-Fi card (PCI ID
-> 14c3:7915) for my ThinkPad W500. It is ostensibly based on the MT7915
-> and MT7975 chips, using the mt7915e driver. I tried it on linux-stable
-> 6.12.10 and was unable to get it to work. But it works fine on 6.1
-> LTS.
->=20
-> (As an aside - why is the latest firmware provided by mainline Linux
-> version 20220929104113a, while OpenWRT is providing 20240429200502?)
->=20
-> I bisected the issue to commit
-> 9e81c2c7b9af6a5f160e0a9a7f009c37910402ee
-> ("wifi: mt76: mt7915: enable per-phy led support"), which is included
-> in
-> kernel 6.3. This is what I get in dmesg before this commit (good
-> behavior):
->=20
-> [=C2=A0=C2=A0 34.976575] mt7915e 0000:03:00.0: HW/SW Version: 0x8a108a10,=
- Build
-> Time: 20220929104113a
-> [=C2=A0=C2=A0 34.990089] mt7915e 0000:03:00.0: WM Firmware Version: ____0=
-00000,
-> Build Time: 20220929104145
-> [=C2=A0=C2=A0 35.012664] mt7915e 0000:03:00.0: WA Firmware Version: DEV_0=
-00000,
-> Build Time: 20220929104205
-> [=C2=A0=C2=A0 35.178619] mt7915e 0000:03:00.0 wlp3s0: renamed from wlan0
-> [=C2=A0=C2=A0 44.588223] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-> [=C2=A0=C2=A0 44.598831] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-> [=C2=A0=C2=A0 44.601589] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-> [=C2=A0=C2=A0 44.601594] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-> [=C2=A0=C2=A0 44.611058] wlan0: authenticate with XX:XX:XX:XX:XX:XX
-> [=C2=A0=C2=A0 44.611064] wlan0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
-> [=C2=A0=C2=A0 44.612714] wlan0: authenticated
->=20
-> This is what I get after that commit (bad behavior):
->=20
-> [=C2=A0=C2=A0 37.507795] mt7915e 0000:03:00.0: HW/SW Version: 0x8a108a10,=
- Build
-> Time: 20220929104113a
-> [=C2=A0=C2=A0 37.521157] mt7915e 0000:03:00.0: WM Firmware Version: ____0=
-00000,
-> Build Time: 20220929104145
-> [=C2=A0=C2=A0 37.541817] mt7915e 0000:03:00.0: WA Firmware Version: DEV_0=
-00000,
-> Build Time: 20220929104205
-> [=C2=A0=C2=A0 37.707782] mt7915e 0000:03:00.0 wlp3s0: renamed from wlan0
-> [=C2=A0=C2=A0 42.984991] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Link D=
-own
-> [=C2=A0=C2=A0 42.984999] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card n=
-ot
-> present
-> [=C2=A0=C2=A0 64.651072] mt7915e 0000:03:00.0: Message 00001eed (seq 9) t=
-imeout
-> [=C2=A0=C2=A0 85.131081] mt7915e 0000:03:00.0: Message 000007ed (seq 11) =
-timeout
-> [=C2=A0=C2=A0 85.132693] mt7915e 0000:03:00.0 wlp3s0f0: renamed from wlan=
-0
-> [=C2=A0 105.614421] mt7915e 0000:03:00.0: Message 000007ed (seq 1) timeou=
-t
-> [=C2=A0 107.701101] mt7915e 0000:03:00.0: Timeout for initializing firmwa=
-re
-> [=C2=A0 107.701154] mt7915e 0000:03:00.0: Failed to exit mcu
-> [=C2=A0 107.844646] pci 0000:03:00.0: Removing from iommu group 6
-> [=C2=A0 107.844679] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card presen=
-t
-> [=C2=A0 109.541013] pcieport 0000:00:1c.1: pciehp: Slot(1-2): No link
-> [=C2=A0 109.541024] pcieport 0000:00:1c.1: pciehp: Slot(1-2): Card presen=
-t
-> [=C2=A0 111.234338] pcieport 0000:00:1c.1: pciehp: Slot(1-2): No link
->=20
-> On kernel 6.12.10, this failure leads to a page fault, sometimes
-> immediately:
->=20
-> [=C2=A0 127.807503] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] mt7915e 0000:03:00.0: =
-Message 00001eed (seq
-> 7) timeout
-> [=C2=A0 127.914244] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] BUG: unable to handle =
-page fault for
-> address: ffffabc5c0628ff0
-> [=C2=A0 127.914294] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] #PF: supervisor write =
-access in kernel mode
-> [=C2=A0 127.914329] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] #PF: error_code(0x0002=
-) - not-present page
-> [=C2=A0 127.914363] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] PGD 100000067 P4D 1000=
-00067 PUD 100209067
-> PMD 103e7f067 PTE 0
-> [=C2=A0 127.914406] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Oops: Oops: 0002 [#1] =
-PREEMPT SMP NOPTI
-> [=C2=A0 127.914429] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] CPU: 0 UID: 0 PID: 73 =
-Comm: kworker/u16:6
-> Kdump: loaded Tainted: G=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 I=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 6.12.10-arch1-1 #1
-> ac0cff2c6581af0a10f6e278cbc98026cc1e3dec
-> [=C2=A0 127.914489] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Tainted: [I]=3DFIRMWAR=
-E_WORKAROUND
-> [=C2=A0 127.914510] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Hardware name: LENOVO =
-40612ZU/40612ZU, BIOS
-> 6FET93WW (3.23 ) 10/12/2012
-> [=C2=A0 127.914538] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Workqueue: mt76 mt7915=
-_mac_reset_work
-> [mt7915e]
-> [=C2=A0 127.914578] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] RIP: 0010:mt76_dma_rx_=
-fill+0x157/0x4c0
-> [mt76]
-> [=C2=A0 127.914615] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Code: 8b 54 24 40 85 c=
-0 4c 8b 44 24 18 4c 8b
-> 4c 24 20 4c 8b 5c 24 28 0f 88 2a 03 00 00 c1 e0 10 44 89 ce 44 09 d8
-> 81 ce 00 01 00 00 <45> 89 34 24 41 89 44 24 08 41 89 74 24 04 41 c7 44
-> 24 0c 00 00 00
-> [=C2=A0 127.914677] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] RSP: 0018:ffffabc5c03a=
-fcf8 EFLAGS: 00010246
-> [=C2=A0 127.914699] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] RAX: 0000000000000000 =
-RBX: ffff9b694630d800
-> RCX: 0000000000000000
-> [=C2=A0 127.914726] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] RDX: 0000000000000000 =
-RSI: 0000000006c00000
-> RDI: 0000000000000000
-> [=C2=A0 127.914753] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] RBP: ffff9b6947ef45d8 =
-R08: ffff9b6948210000
-> R09: 0000000006c00000
-> [=C2=A0 127.914779] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] R10: 00000000000006c0 =
-R11: 0000000000000000
-> R12: ffffabc5c0628ff0
-> [=C2=A0 127.914806] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] R13: ffff9b69c630d800 =
-R14: 00000000ffd15800
-> R15: 0000000000000000
-> [=C2=A0 127.914833] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] FS:=C2=A0 000000000000=
-0000(0000)
-> GS:ffff9b6a77c00000(0000) knlGS:0000000000000000
-> [=C2=A0 127.914868] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] CS:=C2=A0 0010 DS: 000=
-0 ES: 0000 CR0:
-> 0000000080050033
-> [=C2=A0 127.914891] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] CR2: ffffabc5c0628ff0 =
-CR3: 000000004b622000
-> CR4: 00000000000426f0
-> [=C2=A0 127.914918] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Call Trace:
-> [=C2=A0 127.914930] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 <TASK>
-> [=C2=A0 127.914942] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? __die_body.col=
-d+0x19/0x27
-> [=C2=A0 127.914967] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? page_fault_oop=
-s+0x15a/0x2d0
-> [=C2=A0 127.914992] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? search_bpf_ext=
-ables+0x5f/0x80
-> [=C2=A0 127.915016] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? exc_page_fault=
-+0x18a/0x190
-> [=C2=A0 127.915035] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? asm_exc_page_f=
-ault+0x26/0x30
-> [=C2=A0 127.915056] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? mt76_dma_rx_fi=
-ll+0x157/0x4c0 [mt76
-> 8ebc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-> [=C2=A0 127.915096] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? mt76_dma_rx_fi=
-ll+0x1ef/0x4c0 [mt76
-> 8ebc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-> [=C2=A0 127.915137] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? mt76_dma_rx_cl=
-eanup.part.0+0x5e/0x160
-> [mt76 8ebc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-> [=C2=A0 127.915185] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? mt76_dma_rx_cl=
-eanup.part.0+0x6c/0x160
-> [mt76 8ebc1f1034fdcf4b82c21f7f79b6854fd3dd0e30]
-> [=C2=A0 127.915233] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 mt7915_dma_reset=
-+0x1e1/0x230 [mt7915e
-> 7945e3c7bfde237a78fef4a04127eb6221537724]
-> [=C2=A0 127.915280] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 mt7915_mac_reset=
-_work+0x67e/0xcd0 [mt7915e
-> 7945e3c7bfde237a78fef4a04127eb6221537724]
-> [=C2=A0 127.915323] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 process_one_work=
-+0x17b/0x330
-> [=C2=A0 127.915343] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 worker_thread+0x=
-2ce/0x3f0
-> [=C2=A0 127.915365] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? __pfx_worker_t=
-hread+0x10/0x10
-> [=C2=A0 127.915389] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 kthread+0xcf/0x1=
-00
-> [=C2=A0 127.915406] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? __pfx_kthread+=
-0x10/0x10
-> [=C2=A0 127.915428] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ret_from_fork+0x=
-31/0x50
-> [=C2=A0 127.915449] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ? __pfx_kthread+=
-0x10/0x10
-> [=C2=A0 127.915470] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 ret_from_fork_as=
-m+0x1a/0x30
-> [=C2=A0 127.915494] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 </TASK>
-> [=C2=A0 127.915507] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] Modules linked in: mt7=
-915e mt76_connac_lib
-> mt76 mac80211 libarc4 cfg80211 snd_seq_dummy snd_hrtimer snd_seq
-> snd_seq_device ip6t_REJECT nf_reject_ipv6 ipt_REJECT xt_multiport
-> xt_cgroup xt_mark xt_owner xt_tcpudp nft_compat amdgpu amdxcp drm_exec
-> gpu_sched nft_masq drm_buddy nft_ct nft_reject_ipv4 nf_reject_ipv4
-> nft_reject act_csum cls_u32 sch_htb nft_chain_nat nf_nat nf_conntrack
-> nf_defrag_ipv6 nf_defrag_ipv4 nf_tables bridge stp llc btusb btrtl
-> btintel btbcm btmtk bluetooth crc16 joydev mousedev snd_hda_codec_hdmi
-> snd_hda_codec_conexant kvm_intel iTCO_wdt snd_hda_codec_generic
-> intel_pmc_bxt radeon snd_hda_intel mei_wdt iTCO_vendor_support
-> snd_intel_dspcfg kvm i2c_algo_bit snd_intel_sdw_acpi pcmcia i2c_i801
-> drm_suballoc_helper snd_hda_codec drm_ttm_helper i2c_smbus
-> snd_hda_core sha512_ssse3 ttm i2c_mux sha1_ssse3 snd_hwdep
-> yenta_socket psmouse acpi_cpufreq pcspkr e1000e r592 pcmcia_rsrc
-> pktcdvd mei_me snd_pcm memstick ptp drm_display_helper pcmcia_core
-> lpc_ich intel_agp snd_timer mei pps_core cec intel_gtt
-> [=C2=A0 127.915596] [=C2=A0=C2=A0=C2=A0=C2=A0 T73]=C2=A0 think_lmi mac_hi=
-d firmware_attributes_class
-> wmi_bmof coretemp thinkpad_acpi platform_profile sparse_keymap rfkill
-> snd soundcore video wmi sg crypto_user dm_mod loop nfnetlink ip_tables
-> x_tables btrfs blake2b_generic libcrc32c crc32c_generic serio_raw
-> sdhci_pci xor atkbd raid6_pq libps2 vivaldi_fmap firewire_ohci cqhci
-> sr_mod sdhci firewire_core sha256_ssse3 mmc_core cdrom i8042 crc_itu_t
-> serio
-> [=C2=A0 127.916035] [=C2=A0=C2=A0=C2=A0=C2=A0 T73] CR2: ffffabc5c0628ff0
->=20
->=20
-> It would be nice to be able to use this card on a more recent kernel.
-> I
-> can assist with debugging and testing, assuming I haven't somehow
-> gotten
-> a defective unit - but I don't think that would really explain why I
-> can
-> use it just fine on 6.1 LTS.
->=20
-> Thanks,
-> Jared Van Bortel
+Aah, that's the helper I was looking for!
+
+I was about to use dev->fwnode directly (see the commit log for the 
+Switch to irq_domain_create_*()), but that is not guaranteed to be 
+always properly set.
+
+Will use this instead in v3.
+
+thanks,
+-- 
+js
+suse labs
 
