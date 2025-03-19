@@ -4,95 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F46C35FFA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 17:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F68C35FFB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 20:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vnKqjR9JwiMkcJdLBO0YQ2PXhwRkyodQC5yK8DhOnu0=; b=LIOo4TjW4gX2SzgUimRiNwhXdU
-	UXyMQvmrCLq5I899Yht2LsNNWU37s9mnujc21kz1q8vSOEtB9eokGyH/MrOELXA1c+FRyFrru7fcx
-	dbMHMIWIsuYMYGH5gh9IYZBDxbY3cufg2L9LCy5E2D7ndMsJoniTx+BwnnN6Gs6WpcIHq4EgSctUB
-	adFsKiNFn6HO0bU+9u7Uca6sOut4CPOI3RWBW/ApHIivJWcHOGaDuOf/eG28cY8FnaSYRAEpHFq1P
-	5mOJN4tLCzo/aw1jY+IaiDtBcHLE+0SHENe9509K0bTbB3JPOl6LTCe+9w7UMKSOqevakZAHSiuht
-	1Ixrgnag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kvoI88amUV+xRQVe583X4SdWMaeA6WhkypywOswnqf4=; b=1E0qg5MdpvAtVRvJq6ONOBOdyd
+	GBVschwXZ9/LhrgXk22H2/FCAaHfZWUQX0R4puSw6xwuU1S6f1Lh+VqyIzLFPAEyvoxYibitsmuW0
+	Sc7LOw1mbCSjuTPeZRiZ/sMXyXJXiKfLeMPlk88xFBeWyN6rjsixjbKMJdGvwW2irjWazJTCAXzLI
+	3GifX6qooz2m1iJCMCgBJNGmD8BGNaUR+5Dpdj5mBQIVKnt6slDB+poseS2D+xm8fVOsJ58EcCiOz
+	gSYPYdcxwnBD2tfB2AQL2I2isLHrVU6AdLFin3ZHECtrt69f8E+c9MvX0tuE26MpFBw42KjYyqeR8
+	/zc3Do8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuxW0-00000009kmD-0LQN;
-	Wed, 19 Mar 2025 17:47:40 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1tuzcH-0000000A2Gg-3k1o;
+	Wed, 19 Mar 2025 20:02:17 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuxUI-00000009kYY-0BeY;
-	Wed, 19 Mar 2025 17:45:55 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4ZHx2D5z5Zzm1HcY;
-	Wed, 19 Mar 2025 17:45:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1742406337; x=1744998338; bh=vnKqjR9JwiMkcJdLBO0YQ2PX
-	hwRkyodQC5yK8DhOnu0=; b=pSw89JlpU9tpPTNFBo2dWkCShpP7Kdkv0x2OlbXg
-	HRGpQDEdMhkapBtR1Pqszi2sh5urUanYLjBfU7U+IYyGr8jBPdnMM4HOEo5D5KRZ
-	qFECApPjBmKD2Lg4JsAx+ZSv4NO7WUNNwKKrckRlbPhpcnGeDgBqYeOuuWtJKsQ7
-	uBQ2/OOVoDK4/NixKNeZqAEgNd1C4iiKzncuNFrxajLHSkd3mYxRcnswnyaZUOe9
-	oEA2FjDBsWrDoD6s4IiFKWa8Za9ErwqNlG81dRNQtl7zgIeT/cCaTwwWmTLw/r6c
-	u1l4BcVnlHJ5J6rXZc3UtfH7zArz2tDs0dHRtCHMk+91KQ==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id kLNnn_BtxJA1; Wed, 19 Mar 2025 17:45:37 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4ZHx1t3WPMzm0XCB;
-	Wed, 19 Mar 2025 17:45:21 +0000 (UTC)
-Message-ID: <d82ce6c4-ae17-4ac6-9bb9-59759f8a185d@acm.org>
-Date: Wed, 19 Mar 2025 10:45:20 -0700
+	id 1tuzaW-0000000A26j-0kH2;
+	Wed, 19 Mar 2025 20:00:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 71436A49317;
+	Wed, 19 Mar 2025 19:54:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A385C4CEE4;
+	Wed, 19 Mar 2025 20:00:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742414425;
+	bh=kvoI88amUV+xRQVe583X4SdWMaeA6WhkypywOswnqf4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mxFh5poViDzonov3bqtwSZczfyVmPZc4ZtVjBkjdMg2kWZ2jhP/7DiDr9I74fsIqL
+	 2vGOFc/yiYEP1vSib4nL/ZsSObNw6nnzlArcjwL+oavUbM4DDibdienY7IbY+MiKed
+	 EP2HA9zalA5zNExD52ZqdrudbRRf9zSPlZxjYOWW/SHHnqhkjQBu3/gfJTH+cIsYF1
+	 IJh2sZo6SM3UCUS+qvh5gyhBb5MXTpFqXi/kFbO4iQOlC5I4w8hL/Moq+LUNYpOhUC
+	 EcQMMvjtic7T2IxiilyYJSXtBeagiSSxbuNRXDFZvHoS9qm9q/9MrmFl2Z3CKAAHTq
+	 /jkKzOmFBoosg==
+Date: Wed, 19 Mar 2025 20:00:19 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Sunny Shen =?utf-8?B?KOayiOWnjeWnjSk=?= <Sunny.Shen@mediatek.com>
+Subject: Re: [PATCH 1/5] dt-bindings: display: mediatek: mdp-rsz: Add rules
+ for MT8196
+Message-ID: <20250319-footnote-trusting-230e509bed07@spud>
+References: <20250211025317.399534-1-sunny.shen@mediatek.com>
+ <20250211025317.399534-2-sunny.shen@mediatek.com>
+ <20250211-feed-shed-4b32f146cc54@spud>
+ <029f9fd7ab898769a7ae627b160e1dce446ccc9e.camel@mediatek.com>
+ <20250224-dreamland-tactile-bdb58daf6060@spud>
+ <76a6fc25a09dfddb55fdaf0a9d7dcf9a6129b00f.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/1] scsi: ufs: core: add device level exception
- support
-To: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
- "quic_nitirawa@quicinc.com" <quic_nitirawa@quicinc.com>,
- "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
- "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
- "minwoo.im@samsung.com" <minwoo.im@samsung.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "beanhuo@micron.com" <beanhuo@micron.com>,
- "ebiggers@google.com" <ebiggers@google.com>,
- "gwendal@chromium.org" <gwendal@chromium.org>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "quic_ziqichen@quicinc.com" <quic_ziqichen@quicinc.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "keosung.park@samsung.com" <keosung.park@samsung.com>,
- "viro@zeniv.linux.org.uk" <viro@zeniv.linux.org.uk>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <6109425449ac4d18249ce7254e4fa1252138a94a.1742369183.git.quic_nguyenb@quicinc.com>
- <61570104d58cef22716fefe459c0c45670108aad.camel@mediatek.com>
- <9cf88cda-cf9c-9dbd-d586-5463ce2a0cfc@quicinc.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <9cf88cda-cf9c-9dbd-d586-5463ce2a0cfc@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="YDfFiUDQR01e6m8O"
+Content-Disposition: inline
+In-Reply-To: <76a6fc25a09dfddb55fdaf0a9d7dcf9a6129b00f.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_104554_169798_5127F954 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250319_130028_353845_1895C51F 
+X-CRM114-Status: GOOD (  20.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,25 +72,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "robh@kernel.org" <robh@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, Paul-pl Chen =?utf-8?B?KOmZs+afj+mclik=?= <Paul-pl.Chen@mediatek.com>, Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "treapking@chromium.org" <treapking@chromium.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/19/25 2:01 AM, Bao D. Nguyen wrote:
-> On 3/19/2025 12:56 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
->> Could use atomic_t for counter protect?
->
-> Are you suggesting to convert the dev_lvl_exception_count type from u32=
-=20
-> to atomic_t type? Because the value of dev_lvl_exception_count is=20
-> returned to the user space via the device_lvl_exception_count_show()=20
-> using the sysfs_emit() function, keeping the dev_lvl_exception_count as=
-=20
-> u32 data type probably works better in terms of the format.
 
-I like the suggestion to use atomic_t. atomic_read() can be used in the
-sysfs show method.
+--YDfFiUDQR01e6m8O
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
+On Tue, Mar 18, 2025 at 03:14:07AM +0000, Sunny Shen (=E6=B2=88=E5=A7=8D=E5=
+=A7=8D) wrote:
+> On Mon, 2025-02-24 at 19:01 +0000, Conor Dooley wrote:
+> > On Sun, Feb 23, 2025 at 05:49:45PM +0000, Sunny Shen (=E6=B2=88=E5=A7=
+=8D=E5=A7=8D) wrote:
+> > > On Tue, 2025-02-11 at 17:54 +0000, Conor Dooley wrote:
+> > > > On Tue, Feb 11, 2025 at 10:52:50AM +0800, Sunny Shen wrote:
+> > > > > Add MDP-RSZ hardware description for MediaTek MT8196 SoC
+> >=20
+> > > > > +examples:
+> > > > > +=C2=A0 - |
+> > > > > +=C2=A0=C2=A0=C2=A0 soc {
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 #address-cells =3D <2=
+>;
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 #size-cells =3D <2>;
+> > > > > +
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 disp_mdp_rsz0: disp-m=
+dp-rsz0@321a0000 {
+> > > >=20
+> > > > And "disp-mdp-rsz0" isn't anything close to a generic node name.
+> > >=20
+> > > Will modify "disp-mdp-rsz0@321a0000" to "mdp-rsz@321a0000"
+> >=20
+> > I don't think that's an improvement. Hint: full words would be a good
+> > place to start
+>=20
+> =C2=A0
+> Hi Conor,
+>=20
+> About full words,=C2=A0
+> Do you mean words like this?=C2=A0
+> multimedia-display-path-resizer?
+> or mdp-resizer?
 
-Bart.
+These are both improvements on what you've got right now.
+
+> We found that "mdp-rsz" this kind of word is used at
+> https://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/mediate=
+k/mt8183.dtsi
+>=20
+> I'm not sure what will be better.
+> Can you provide more detailed suggestion about this naming?
+
+--YDfFiUDQR01e6m8O
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ9siUwAKCRB4tDGHoIJi
+0qM6AP9QHiOJ1JZ8DbtI6sWT9DS41P7u5He+sMBB04jH28AtPgD9E9HooK6Of1XJ
++RkppxwWFhpzQPVFfQGxAiZm0J9taQo=
+=bzKn
+-----END PGP SIGNATURE-----
+
+--YDfFiUDQR01e6m8O--
 
