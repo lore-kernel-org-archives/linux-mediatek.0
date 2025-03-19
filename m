@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18A7C35FFA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 09:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A667C35FFA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 09:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cNNsH8YJkaU4tWXBotss9uymN4ai74bOO9e/rgkqFlE=; b=hEcdnWYXbVp/+8WhNkJziT4wCb
-	ZznZHer5GdHlo9gEVJ+aILozVyrj+nRRN9DTUVwzEEgOrTPePgcvuHd0MdtBaEIooq8KrZBpT45VZ
-	PhXWHYcfoXk6ZtSUHEJFRLct77jJF0AyBjnFbcEHaf5eqQyy6mHnDL0wIGnWq94FEoNbDcD2P9Z/z
-	KETe4JahNLAR/tkk3UIBeZV/kU13LnQO9dAC9xli+g3g5R+3QPQPPJhSSBnmY3Jk4nc1DitagRCOS
-	6azgL0pXE88/AUEnuoCiyG23hfkipvtbRCIK7zD1IB+zxmqI/gsgzXUW/jEWwwtDYH8FlahSgQjra
-	HagoX1Vw==;
+	bh=sh7AJaNWcNOd1yFftuO6nezPa9E+9YkAr7Oq2b1ue6M=; b=H8ViRMuUSIEkl/mBAMmS4/I31n
+	9zdEw6mLeHsIPiYfhMUu12jpQOjsRRHRfOSp2EQOsSDgJXgP8a+XvnC+x0rPJn8K8oQ9z+qbt2Bk4
+	AX6slfmBjLgxaSFQWYqsJHF4iApAi65bCUR4SPHejW23JbvISGV8TGZaVGl8CoYCn/NFrDNn5Pu+x
+	Mxq4MH9Gr03vBPUydygdmdNuok/oe5gmlh2X1P3nQ6AifShMxnXBm/GitoxuJFRV1/7GbMbov/Evb
+	Ec0XeWBAOBvXE+JjjOu+PvektxNBBG0hOJLAqkH2A1SBW/TM0mU3Af2MOLPIU5iD7V4d90BcwVp1q
+	F66vzHnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tupol-00000008VKJ-3vGK;
-	Wed, 19 Mar 2025 09:34:31 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1tupxE-00000008XQE-2Lvw;
+	Wed, 19 Mar 2025 09:43:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuplU-00000008UOw-1kf1;
-	Wed, 19 Mar 2025 09:31:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 960AD615D6;
-	Wed, 19 Mar 2025 09:31:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19EC1C4CEF2;
-	Wed, 19 Mar 2025 09:31:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742376667;
-	bh=C0EwI2qvaoCL5JQRyTMhv6szHa2gBhAxP5puHY4y+yY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OWDYzsHVjW+SKCwKZUiCBbm9xI2NSyNzywY6ZTgSd4I2UBHIIJKqNypdPGOp9/kz4
-	 pQTvaVcRjWHORZ8rnk4P3URxqEq//bzrKSITS7W8hDcS4BUqzGZDKKGUzypKujDDLG
-	 rnyjvt8M4MenNKYIXu6yXjy0HtbN4NBgjtLb3a+4awl6iHv4t/ugVbtR2SAgW6GurN
-	 rR9avJoN1oOhLYTetGQE12F/PnQHG1ukJqr72v+Rws6gQ6gyjcM0PDHV2GSI+8+XNE
-	 Dlz15Ao37GAi9q+WEB7+bENeKNHz2sx8azwzhRNQhaVVSGRIJG2PyLtM9Lsk1maU4X
-	 BLL5ZtGwbhdjg==
-From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
-To: tglx@linutronix.de
-Cc: maz@kernel.org,
-	linux-kernel@vger.kernel.org,
-	"Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Joyce Ooi <joyce.ooi@intel.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 07/57] irqdomain: pci: Switch to of_fwnode_handle()
-Date: Wed, 19 Mar 2025 10:29:00 +0100
-Message-ID: <20250319092951.37667-8-jirislaby@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250319092951.37667-1-jirislaby@kernel.org>
-References: <20250319092951.37667-1-jirislaby@kernel.org>
+	id 1tupp4-00000008VPA-12On;
+	Wed, 19 Mar 2025 09:34:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742376888;
+	bh=srUPQaoIT1eUxODIcp9G8q+P3AERhlCZzGqJ5NwwctY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ahXaX6zGlXiBq77NwXPNWqOMkalJx7KwK2ftYjFCRCXuLWBM4tanG2A9RImzZN3NE
+	 uuZZSmoE4oLFnjjFCadB1Rc5JTeSvw8ULfA5HYyQdlQj7hzH+ns+iVsOvajakgRk1k
+	 KQmVeSKibWyJdGmso5lG8pcf5D7BrloRFCTF4CGEscMmUogPWIU95ytZvi+VDbk8G+
+	 EuzjomDCoTxKvC0NePvTckMEVEj71k/F0BKjxywVE7bmuKmKmiRJYIXUoL5RZkXPjV
+	 uODrCu8lxMaJWmyUiLk1XsoJIGqEjZ3WsbrIM1xw5aCmMQxuQ2dy5Q/6pc1B49wVYl
+	 bRy61TDStiBPA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 91CF717E0385;
+	Wed, 19 Mar 2025 10:34:47 +0100 (CET)
+Message-ID: <70c10764-121b-43f5-931e-84ffd666c594@collabora.com>
+Date: Wed, 19 Mar 2025 10:34:46 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: remoteproc: mediatek: Remove l1tcm for
+ dual-core MT8188 SCP
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>,
+ Olivia Wen <olivia.wen@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>
+Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com>
+ <20250318-scp-dual-core-mt8390-v1-2-8733e192cc73@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250318-scp-dual-core-mt8390-v1-2-8733e192cc73@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250319_023450_439963_15290EB4 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,179 +84,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
-defined of_fwnode_handle(). The former is in the process of being
-removed, so use the latter instead.
+Il 18/03/25 23:22, Nícolas F. R. A. Prado ha scritto:
+> The SCP present on MT8188 does not have an L1TCM memory region, but the
+> binding incorrectly requires one for the dual-core description of the
+> MT8188 SCP. Remove that requirement. Also update the minimum number of
+> reg and reg-names to 1, since as this is a multi-core SCP with no
+> L1TCM memory, only the CFG memory region is present in the parent node.
+> 
+> Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>
-Cc: "Krzysztof Wilczyński" <kw@linux.com>
-Cc: Rob Herring <robh@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
-Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
-Cc: Toan Le <toan@os.amperecomputing.com>
-Cc: Joyce Ooi <joyce.ooi@intel.com>
-Cc: Jim Quinlan <jim2101024@gmail.com>
-Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>
-Cc: Florian Fainelli <florian.fainelli@broadcom.com>
-Cc: Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
-Cc: Ray Jui <rjui@broadcom.com>
-Cc: Scott Branden <sbranden@broadcom.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Michal Simek <michal.simek@amd.com>
-Cc: Daire McNamara <daire.mcnamara@microchip.com>
-Cc: linux-pci@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rpi-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
----
- drivers/pci/controller/dwc/pcie-designware-host.c    | 2 +-
- drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 2 +-
- drivers/pci/controller/pci-xgene-msi.c               | 2 +-
- drivers/pci/controller/pcie-altera-msi.c             | 2 +-
- drivers/pci/controller/pcie-brcmstb.c                | 2 +-
- drivers/pci/controller/pcie-iproc-msi.c              | 2 +-
- drivers/pci/controller/pcie-mediatek.c               | 2 +-
- drivers/pci/controller/pcie-xilinx-dma-pl.c          | 2 +-
- drivers/pci/controller/pcie-xilinx-nwl.c             | 2 +-
- drivers/pci/controller/plda/pcie-plda-host.c         | 2 +-
- 10 files changed, 10 insertions(+), 10 deletions(-)
+As far as I know, the L1TCM is present on MT8188, and it's at 0x1070000 len 0x8000
+exactly like MT8195.
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-index ecc33f6789e3..d1cd48efad43 100644
---- a/drivers/pci/controller/dwc/pcie-designware-host.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-@@ -227,7 +227,7 @@ static const struct irq_domain_ops dw_pcie_msi_domain_ops = {
- int dw_pcie_allocate_domains(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
--	struct fwnode_handle *fwnode = of_node_to_fwnode(pci->dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(pci->dev->of_node);
- 
- 	pp->irq_domain = irq_domain_create_linear(fwnode, pp->num_vectors,
- 					       &dw_pcie_msi_domain_ops, pp);
-diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-index 0e088e74155d..6628eed9d26e 100644
---- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-+++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-@@ -435,7 +435,7 @@ static const struct irq_domain_ops msi_domain_ops = {
- static int mobiveil_allocate_msi_domains(struct mobiveil_pcie *pcie)
- {
- 	struct device *dev = &pcie->pdev->dev;
--	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
- 	struct mobiveil_msi *msi = &pcie->rp.msi;
- 
- 	mutex_init(&msi->lock);
-diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
-index 7bce327897c9..69a9c0a87639 100644
---- a/drivers/pci/controller/pci-xgene-msi.c
-+++ b/drivers/pci/controller/pci-xgene-msi.c
-@@ -247,7 +247,7 @@ static int xgene_allocate_domains(struct xgene_msi *msi)
- 	if (!msi->inner_domain)
- 		return -ENOMEM;
- 
--	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(msi->node),
-+	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(msi->node),
- 						    &xgene_msi_domain_info,
- 						    msi->inner_domain);
- 
-diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
-index e1cee3c0575f..5fb3a2e0017e 100644
---- a/drivers/pci/controller/pcie-altera-msi.c
-+++ b/drivers/pci/controller/pcie-altera-msi.c
-@@ -164,7 +164,7 @@ static const struct irq_domain_ops msi_domain_ops = {
- 
- static int altera_allocate_domains(struct altera_msi *msi)
- {
--	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->pdev->dev.of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(msi->pdev->dev.of_node);
- 
- 	msi->inner_domain = irq_domain_add_linear(NULL, msi->num_of_vectors,
- 					     &msi_domain_ops, msi);
-diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
-index 8b2b099e81eb..1f356fca07a2 100644
---- a/drivers/pci/controller/pcie-brcmstb.c
-+++ b/drivers/pci/controller/pcie-brcmstb.c
-@@ -581,7 +581,7 @@ static const struct irq_domain_ops msi_domain_ops = {
- 
- static int brcm_allocate_domains(struct brcm_msi *msi)
- {
--	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->np);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(msi->np);
- 	struct device *dev = msi->dev;
- 
- 	msi->inner_domain = irq_domain_add_linear(NULL, msi->nr, &msi_domain_ops, msi);
-diff --git a/drivers/pci/controller/pcie-iproc-msi.c b/drivers/pci/controller/pcie-iproc-msi.c
-index 649fcb449f34..804b3a5787c5 100644
---- a/drivers/pci/controller/pcie-iproc-msi.c
-+++ b/drivers/pci/controller/pcie-iproc-msi.c
-@@ -451,7 +451,7 @@ static int iproc_msi_alloc_domains(struct device_node *node,
- 	if (!msi->inner_domain)
- 		return -ENOMEM;
- 
--	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(node),
-+	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(node),
- 						    &iproc_msi_domain_info,
- 						    msi->inner_domain);
- 	if (!msi->msi_domain) {
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 811a8b4acd50..efcc4a7c17be 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -485,7 +485,7 @@ static struct msi_domain_info mtk_msi_domain_info = {
- 
- static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- {
--	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(port->pcie->dev->of_node);
- 
- 	mutex_init(&port->lock);
- 
-diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
-index dd117f07fc95..71cf13ae51c7 100644
---- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
-+++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
-@@ -470,7 +470,7 @@ static int xilinx_pl_dma_pcie_init_msi_irq_domain(struct pl_dma_pcie *port)
- 	struct device *dev = port->dev;
- 	struct xilinx_msi *msi = &port->msi;
- 	int size = BITS_TO_LONGS(XILINX_NUM_MSI_IRQS) * sizeof(long);
--	struct fwnode_handle *fwnode = of_node_to_fwnode(port->dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(port->dev->of_node);
- 
- 	msi->dev_domain = irq_domain_add_linear(NULL, XILINX_NUM_MSI_IRQS,
- 						&dev_msi_domain_ops, port);
-diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
-index 8d6e2a89b067..9cf8a96f7bc4 100644
---- a/drivers/pci/controller/pcie-xilinx-nwl.c
-+++ b/drivers/pci/controller/pcie-xilinx-nwl.c
-@@ -495,7 +495,7 @@ static int nwl_pcie_init_msi_irq_domain(struct nwl_pcie *pcie)
- {
- #ifdef CONFIG_PCI_MSI
- 	struct device *dev = pcie->dev;
--	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
- 	struct nwl_msi *msi = &pcie->msi;
- 
- 	msi->dev_domain = irq_domain_add_linear(NULL, INT_PCI_MSI_NR,
-diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
-index 4153214ca410..4c7a9fa311e3 100644
---- a/drivers/pci/controller/plda/pcie-plda-host.c
-+++ b/drivers/pci/controller/plda/pcie-plda-host.c
-@@ -150,7 +150,7 @@ static struct msi_domain_info plda_msi_domain_info = {
- static int plda_allocate_msi_domains(struct plda_pcie_rp *port)
- {
- 	struct device *dev = port->dev;
--	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-+	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
- 	struct plda_msi *msi = &port->msi;
- 
- 	mutex_init(&port->msi.lock);
--- 
-2.49.0
+Moudy, are you able to please confirm or deny that?
+
+Cheers,
+Angelo
+
 
 
