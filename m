@@ -4,124 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332AEC35FFF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 07:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDD89C28B28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 07:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OReKKcfOJkNp0kmi489WA/dv8ioDXf0PJNSDqJ933OM=; b=MUFpvPsOI5Pge6H3DI0XPzY0BZ
-	hm8/1P+PWGyD7A5VBVwTepdGUiHZjhATd8HzwKAP2RpsWLG13Fz9xy8kXtOXQWqmBvDCwk5+2wIrm
-	BiZn2zCFYTYtDadFzRVHTI4n6BLejWVeQegqu0cihvwjuU1nYgCcLSE2LU4fcvmCScDhmo9HBTPCF
-	ieVRHhvgGMf853U5XotQof0Beu7vIAnt2BcKyh+PRJ5nJdYknXWY4LfUSdasbm4PzHANFOZtIqdNd
-	73EpkON/3zxrUQ5AxItyPRSHlSroyV0YNKTbHx6YSiyT0V4nplgsVB6d65OrNt1+RF1MYn1OA53dU
-	vDECDZXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2gyZ8dTDMLYrhbdwhG6wGf4ZKTkdbgImwNwmoxmwBAU=; b=s5+M/duTx9NiBwHSzC3z+RnFNM
+	BRaEN9OI/qv8AUT/ih2zimD6zCNQj1uJoCRPGfITDYTsfSQh1KkA8eYBSMzcPf9R071Fu1qWHTtfu
+	++JfV1TlNzFy7D/0Q+DXpQ0ECiUMQqjjHrbIfqlAEDLVQTRDPDbbzfxcHGJefE/n0W0YHA0Ev8w0f
+	ucXpWD4oOBaN//gAAc6ebVFfcKuDSKQsx7bIbJt1Wov3kh4DTISgJbEz0/ZOCC+IIdBQBYcTVp5N0
+	LBZgipsdXdfwZQGVKFFm1v+UMALp8q5N7t3VZiGuxUZmRT9CGkemaOGTALxf0gr6ATKcwkKEVhb3U
+	qZIQi96A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuo4R-00000008FXy-0NkW;
-	Wed, 19 Mar 2025 07:42:35 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tuo8B-00000008GAr-3NoV;
+	Wed, 19 Mar 2025 07:46:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuo22-00000008F9v-2kMc;
-	Wed, 19 Mar 2025 07:40:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 3BBF7A48FC8;
-	Wed, 19 Mar 2025 07:34:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B4F4C4CEE9;
-	Wed, 19 Mar 2025 07:39:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742370005;
-	bh=tKIbx2+7UEC6SU/Ci8glYFwYES+rjaNTdcbdH+R6TS4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iTC2J7vI9gdw4qI2bdHDiMSymEqGhCe2EaCZpTpfQ2DERnFKR7kQs4qTvHQnTr7Tf
-	 Ng+DPcHm19bSxSO0miPkBpWLO9gbiq1xESNFLalNDHqTCSKQCmbd3l20qsrxk52w7E
-	 1h+0v7377B0cpcqmfluYlpWf/kC4rT5P6xGzjjlq9e/M9/O33V9w2INM76kL2Cdj/P
-	 BfD+wdg8rSDUGHcoR4q3cB/LF3zf9aViOVfjBrvSYFhbuZWGQRR9UO2pkjT8JYGzm5
-	 f2jqjFYo3VhcjJWuf2wRJ3A6viyEJjxq4lLg20lqwORpgH2hKficXCrNhSLVw+6SiB
-	 w0dToPGlDelcA==
-Message-ID: <cd445f29-ea01-4e57-b1b7-4e9c3bfbcc8f@kernel.org>
-Date: Wed, 19 Mar 2025 08:39:52 +0100
+	id 1tuo6V-00000008Frz-1DSh
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Mar 2025 07:44:44 +0000
+X-UUID: 01b71c80049611f0a1e849db4cc18d44-20250319
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2gyZ8dTDMLYrhbdwhG6wGf4ZKTkdbgImwNwmoxmwBAU=;
+	b=Uw42rdVa/p1yrU/UWNRte3g4DeuABkCxG94PZpmvGoSzvZLwkziE6VGYBiN9dl9+WMyU8ujbNi759h/a0Jys667/u93L0SEBg4u9Tj/EqYyRUF9TJnhhNn/FYenyeKhRsHcKQZhhbzlw6PfKqYLyvP/WK3mAn8lcboaeQiP1Yjs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:59132869-3f9c-42e9-afc6-3f1e95bfbdf4,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:44c3908c-f5b8-47d5-8cf3-b68fe7530c9a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 01b71c80049611f0a1e849db4cc18d44-20250319
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1055894560; Wed, 19 Mar 2025 00:44:36 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 19 Mar 2025 15:44:34 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 19 Mar 2025 15:44:34 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH 1/2] wifi: mt76: add mt76_connac_mcu_build_rnr_scan_param routine
+Date: Wed, 19 Mar 2025 15:44:25 +0800
+Message-ID: <20250319074426.3782102-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/13] dt-bindings: phy: Add documentation for Airoha
- AN7581 USB PHY
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Daniel Danzberger <dd@embedd.com>,
- Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>,
- Nikita Shubin <nikita.shubin@maquefel.me>, Guo Ren <guoren@kernel.org>,
- Yangyu Chen <cyy@cyyself.name>, Ben Hutchings <ben@decadent.org.uk>,
- Felix Fietkau <nbd@nbd.name>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
- upstream@airoha.com
-References: <20250309132959.19045-1-ansuelsmth@gmail.com>
- <20250309132959.19045-10-ansuelsmth@gmail.com>
- <4f16d239-f540-45d5-b67a-767b09f1c70c@kernel.org>
- <67d0862f.df0a0220.375bd.6b15@mx.google.com>
- <4a9ac302-dfbe-4d76-a634-a445957c313c@kernel.org>
- <67d95979.050a0220.166852.25e6@mx.google.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <67d95979.050a0220.166852.25e6@mx.google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_004006_832904_8099F2F0 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20250319_004443_343572_A70E17D1 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,76 +87,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/03/2025 12:31, Christian Marangi wrote:
-> On Sun, Mar 16, 2025 at 06:01:02PM +0100, Krzysztof Kozlowski wrote:
->> On 11/03/2025 19:51, Christian Marangi wrote:
->>>>
->>>>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>>>> +    enum: [0, 1]
->>>>
->>>> I don't understand why do you need index property here (which are
->>>> usually not allowed).
->>>>
->>>
->>> Eh... As said in the description this is really to differentiate the 2
->>> different physical port...
->>>
->>> Each port have a dedicated oscillator for calibration and these
->>> calibration are identified by an offset (all placed one after another in
->>> a separate register space).
->>
->> So different oscillators? Then describe the oscillator and its differences.
->>
->> Different programing model? Different compatible.
->>
->> Other difference? Depending what is the difference.
->>
->> But there is no such thing as "different port ID" based on your
->> description above. You just claimed that they are different, but you do
->> not put that difference to hardware description. Instead you encode that
->> difference in the drivers and it should be opposite. The DTS, so the
->> hardware description, should tell you the difference. And I am sorry,
->> but in 99% of cases "I am the first phy" and "I am the second" is not
->> the actual difference we are interested in.
->>
-> 
-> Ok to make it as clear as possible. (hope I don't contraddict with the
-> previous statement) (actually yes the "separate register space statement
-> was wrong and sorry for the confusion")
-> 
-> - 2 USB port
-> - USB 2.0 needs to be calibrated with an oscillator
-> - Each USB port have his own dedicated oscillator somewhere in the HW
-> - Each USB port have at the same offset a register to SELECT the
->   oscillator. This register refer to the same oscillator selection in
->   the HW.
->   
->   Example:
->   reg 0x1fac0100 MASK 27:26 can be set to source out of oscillator 0,1,2
->   reg 0x1fae0100 MASK 27:26 can be set to source out of oscillator 0,1,2
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-So that's your difference between devices - you choose the oscillator.
+Introduce mt76_connac_mcu_build_rnr_scan_param routine for handling
+RNR scan. This is a preliminary patch to enable RNR scan in mt7921 and
+mt7925 driver.
 
-> 
->   Both register refer to the same oscillators in hardware (hence each
->   port should select the correct one)
->   Selecting oscillator 0 for both USB port is problematic.
-> 
-> With this in mind is it ok if I describe this with something like
-> 
-> airoha,usb2-monitor-clk-sel = <AIROHA_USB2_MONCLK_SEL0>;
-> 
-> and some dt-bindings include
-> 
-> #define AIROHA_USB2_MONCLK_SEL0 0
-> #define AIROHA_USB2_MONCLK_SEL1 1
-> #define AIROHA_USB2_MONCLK_SEL2 2
-> #define AIROHA_USB2_MONCLK_SEL3 3
-> 
-> Or an enum of string like "osc0", "osc1", "osc2"...?
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 12 ++++++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 38 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  3 ++
+ 3 files changed, 53 insertions(+)
 
-Both are fine.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 2331097bccee..2095a7b04cee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -162,6 +162,16 @@ enum mt76_dfs_state {
+ 	MT_DFS_STATE_ACTIVE,
+ };
+ 
++#define MT76_RNR_SCAN_MAX_BSSIDS       16
++struct mt76_scan_rnr_param {
++	u8 bssid[MT76_RNR_SCAN_MAX_BSSIDS][ETH_ALEN];
++	u8 channel[MT76_RNR_SCAN_MAX_BSSIDS];
++	u8 random_mac[ETH_ALEN];
++	u8 seq_num;
++	u8 bssid_num;
++	u32 sreq_flag;
++};
++
+ struct mt76_queue_buf {
+ 	dma_addr_t addr;
+ 	u16 len:15,
+@@ -941,6 +951,8 @@ struct mt76_dev {
+ 	char alpha2[3];
+ 	enum nl80211_dfs_regions region;
+ 
++	struct mt76_scan_rnr_param rnr;
++
+ 	u32 debugfs_reg;
+ 
+ 	u8 csa_complete;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2276ef1b4370..97acb10d1eff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1667,6 +1667,44 @@ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_uni_add_bss);
+ 
++void mt76_connac_mcu_build_rnr_scan_param(struct mt76_dev *mdev,
++					  struct cfg80211_scan_request *sreq)
++{
++	struct ieee80211_channel **scan_list = sreq->channels;
++	int i, bssid_index = 0;
++
++	/* clear 6G active Scan BSSID table */
++	memset(&mdev->rnr, 0, sizeof(mdev->rnr));
++
++	for (i = 0; i < sreq->n_6ghz_params; i++) {
++		u8 ch_idx = sreq->scan_6ghz_params[i].channel_idx;
++		int k = 0;
++
++		/* Remove the duplicated BSSID */
++		for (k = 0; k < bssid_index; k++) {
++			if (!memcmp(&mdev->rnr.bssid[k],
++				    sreq->scan_6ghz_params[i].bssid,
++				    ETH_ALEN))
++				break;
++		}
++
++		if (k == bssid_index &&
++		    bssid_index < MT76_RNR_SCAN_MAX_BSSIDS) {
++			memcpy(&mdev->rnr.bssid[bssid_index++],
++			       sreq->scan_6ghz_params[i].bssid, ETH_ALEN);
++			mdev->rnr.channel[k] = scan_list[ch_idx]->hw_value;
++		}
++	}
++
++	mdev->rnr.bssid_num = bssid_index;
++
++	if (sreq->flags & NL80211_SCAN_FLAG_RANDOM_ADDR) {
++		memcpy(mdev->rnr.random_mac, sreq->mac_addr, ETH_ALEN);
++		mdev->rnr.sreq_flag = sreq->flags;
++	}
++}
++EXPORT_SYMBOL_GPL(mt76_connac_mcu_build_rnr_scan_param);
++
+ #define MT76_CONNAC_SCAN_CHANNEL_TIME		60
+ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 			    struct ieee80211_scan_request *scan_req)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 2e865a731d05..34636cd4b42e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -869,6 +869,7 @@ enum {
+ #define NETWORK_WDS			BIT(21)
+ 
+ #define SCAN_FUNC_RANDOM_MAC		BIT(0)
++#define SCAN_FUNC_RNR_SCAN		BIT(3)
+ #define SCAN_FUNC_SPLIT_SCAN		BIT(5)
+ 
+ #define CONNECTION_INFRA_STA		(STA_TYPE_STA | NETWORK_INFRA)
+@@ -1974,6 +1975,8 @@ int mt76_connac_mcu_start_patch(struct mt76_dev *dev);
+ int mt76_connac_mcu_patch_sem_ctrl(struct mt76_dev *dev, bool get);
+ int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option);
+ 
++void mt76_connac_mcu_build_rnr_scan_param(struct mt76_dev *mdev,
++					  struct cfg80211_scan_request *sreq);
+ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 			    struct ieee80211_scan_request *scan_req);
+ int mt76_connac_mcu_cancel_hw_scan(struct mt76_phy *phy,
+-- 
+2.34.1
 
-Best regards,
-Krzysztof
 
