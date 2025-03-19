@@ -4,123 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1591CC35FFA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 09:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18A7C35FFA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 09:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oZJFFFU75xnAfcL8zLuM4V6jHSfHq6sIXUl/50bulpc=; b=Y/W9a1yEMHGy9Gjw1dgnFvck7c
-	Xxtr6hbmZZj7ROUpoxlkUPMmFKDowAXUYZVUHLdsye3/wuYyqNm/Lfm7Nb0MLVJYzwb4qhPSIhix6
-	MyHDsRzlnGJqbPJXjDIK/963ZOBhM14Ch7hGkcUCiL8n2mC83i6KRnJ7n+fvwnwGccFwCpkUpDQXd
-	W0cP7l7J4feVl52SBR+EKLLKHhxkNgh91TZ9S5b5Ru3Xw6jDg5WPLhI9gLAKNKcz+tvEDcTOqXYYk
-	vrZsOKKVCLyuOA6/BQS6O5aG3B8AyaKXrNG4zXPBfFIIt3sVQZo+aNpxxyPu9SQ2bVuN7x4jG5mB6
-	SCYQs9oA==;
+	bh=cNNsH8YJkaU4tWXBotss9uymN4ai74bOO9e/rgkqFlE=; b=hEcdnWYXbVp/+8WhNkJziT4wCb
+	ZznZHer5GdHlo9gEVJ+aILozVyrj+nRRN9DTUVwzEEgOrTPePgcvuHd0MdtBaEIooq8KrZBpT45VZ
+	PhXWHYcfoXk6ZtSUHEJFRLct77jJF0AyBjnFbcEHaf5eqQyy6mHnDL0wIGnWq94FEoNbDcD2P9Z/z
+	KETe4JahNLAR/tkk3UIBeZV/kU13LnQO9dAC9xli+g3g5R+3QPQPPJhSSBnmY3Jk4nc1DitagRCOS
+	6azgL0pXE88/AUEnuoCiyG23hfkipvtbRCIK7zD1IB+zxmqI/gsgzXUW/jEWwwtDYH8FlahSgQjra
+	HagoX1Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tupIp-00000008PvU-2VAr;
-	Wed, 19 Mar 2025 09:01:31 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tupol-00000008VKJ-3vGK;
+	Wed, 19 Mar 2025 09:34:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tupIn-00000008PuL-0qoH;
-	Wed, 19 Mar 2025 09:01:30 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52J4lfPp013111;
-	Wed, 19 Mar 2025 09:01:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	oZJFFFU75xnAfcL8zLuM4V6jHSfHq6sIXUl/50bulpc=; b=jPK/w8GxtQuXHbR/
-	THyDFV+bjrPVEyCfjqnsr6kVT6Qb8xvw1dkTqSVcw54F+9D5EdKroUBYLswzFReX
-	qcIG4oHmI8Chq2+eYPDqPi7iRT0e7/2QWdR2Zq+dEa59eceEb8tFbml1PBZB1oSq
-	PiBAYrAcwVCcI4hGavpNQUW555lyNfOcZmeLxJrTJ679/7pb4KhoQ5VglYpWEjBo
-	mtJ49UR8FdAuWUbmnFi38PYunzDCSlrV3EAUfUETHF6a8kR1Ea5y1nKyhhpj9ilB
-	KZh5DZDcXO1/K11k68vKRxaol1zdp/qGuOJp3k63g00hKWc2ihfV71nJUXSKVtTC
-	UdYSgA==
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45exwtmtb3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Mar 2025 09:01:08 +0000 (GMT)
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 52J918qf015779
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Mar 2025 09:01:08 GMT
-Received: from [10.46.162.103] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 19 Mar
- 2025 02:01:07 -0700
-Message-ID: <9cf88cda-cf9c-9dbd-d586-5463ce2a0cfc@quicinc.com>
-Date: Wed, 19 Mar 2025 02:01:07 -0700
+	id 1tuplU-00000008UOw-1kf1;
+	Wed, 19 Mar 2025 09:31:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 960AD615D6;
+	Wed, 19 Mar 2025 09:31:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19EC1C4CEF2;
+	Wed, 19 Mar 2025 09:31:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742376667;
+	bh=C0EwI2qvaoCL5JQRyTMhv6szHa2gBhAxP5puHY4y+yY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OWDYzsHVjW+SKCwKZUiCBbm9xI2NSyNzywY6ZTgSd4I2UBHIIJKqNypdPGOp9/kz4
+	 pQTvaVcRjWHORZ8rnk4P3URxqEq//bzrKSITS7W8hDcS4BUqzGZDKKGUzypKujDDLG
+	 rnyjvt8M4MenNKYIXu6yXjy0HtbN4NBgjtLb3a+4awl6iHv4t/ugVbtR2SAgW6GurN
+	 rR9avJoN1oOhLYTetGQE12F/PnQHG1ukJqr72v+Rws6gQ6gyjcM0PDHV2GSI+8+XNE
+	 Dlz15Ao37GAi9q+WEB7+bENeKNHz2sx8azwzhRNQhaVVSGRIJG2PyLtM9Lsk1maU4X
+	 BLL5ZtGwbhdjg==
+From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+To: tglx@linutronix.de
+Cc: maz@kernel.org,
+	linux-kernel@vger.kernel.org,
+	"Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Toan Le <toan@os.amperecomputing.com>,
+	Joyce Ooi <joyce.ooi@intel.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 07/57] irqdomain: pci: Switch to of_fwnode_handle()
+Date: Wed, 19 Mar 2025 10:29:00 +0100
+Message-ID: <20250319092951.37667-8-jirislaby@kernel.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250319092951.37667-1-jirislaby@kernel.org>
+References: <20250319092951.37667-1-jirislaby@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v3 1/1] scsi: ufs: core: add device level exception
- support
-Content-Language: en-US
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
-        "avri.altman@wdc.com" <avri.altman@wdc.com>,
-        "quic_cang@quicinc.com"
-	<quic_cang@quicinc.com>,
-        "quic_nitirawa@quicinc.com"
-	<quic_nitirawa@quicinc.com>,
-        "manivannan.sadhasivam@linaro.org"
-	<manivannan.sadhasivam@linaro.org>,
-        "bvanassche@acm.org"
-	<bvanassche@acm.org>,
-        "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
-        "minwoo.im@samsung.com" <minwoo.im@samsung.com>,
-        "martin.petersen@oracle.com"
-	<martin.petersen@oracle.com>
-CC: "beanhuo@micron.com" <beanhuo@micron.com>,
-        "ebiggers@google.com"
-	<ebiggers@google.com>,
-        "gwendal@chromium.org" <gwendal@chromium.org>,
-        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-        "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>,
-        "quic_ziqichen@quicinc.com" <quic_ziqichen@quicinc.com>,
-        "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-        "keosung.park@samsung.com" <keosung.park@samsung.com>,
-        "viro@zeniv.linux.org.uk" <viro@zeniv.linux.org.uk>,
-        "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>,
-        "James.Bottomley@HansenPartnership.com"
-	<James.Bottomley@HansenPartnership.com>,
-        "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>,
-        "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>
-References: <6109425449ac4d18249ce7254e4fa1252138a94a.1742369183.git.quic_nguyenb@quicinc.com>
- <61570104d58cef22716fefe459c0c45670108aad.camel@mediatek.com>
-From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
-In-Reply-To: <61570104d58cef22716fefe459c0c45670108aad.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: vr39mJyDo-GZa-ntTDHhauSuOWF0_4ug
-X-Proofpoint-ORIG-GUID: vr39mJyDo-GZa-ntTDHhauSuOWF0_4ug
-X-Authority-Analysis: v=2.4 cv=UoJjN/wB c=1 sm=1 tr=0 ts=67da87d4 cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=Vs1iUdzkB0EA:10 a=RWTcRH6CgHNVpisSJ_IA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-03-19_03,2025-03-17_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 malwarescore=0
- impostorscore=0 bulkscore=0 priorityscore=1501 mlxlogscore=999
- phishscore=0 adultscore=0 clxscore=1015 spamscore=0 suspectscore=0
- lowpriorityscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2503190061
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_020129_253639_77A9186E 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,16 +93,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/19/2025 12:56 AM, Peter Wang (王信友) wrote:
-> Hi Bao,
-> 
-> Could use atomic_t for counter protect?
-Hi Peter,
-Are you suggesting to convert the dev_lvl_exception_count type from u32 
-to atomic_t type? Because the value of dev_lvl_exception_count is 
-returned to the user space via the device_lvl_exception_count_show() 
-using the sysfs_emit() function, keeping the dev_lvl_exception_count as 
-u32 data type probably works better in terms of the format.
+of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
+defined of_fwnode_handle(). The former is in the process of being
+removed, so use the latter instead.
 
-Thanks, Bao
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>
+Cc: "Krzysztof Wilczyński" <kw@linux.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+Cc: Toan Le <toan@os.amperecomputing.com>
+Cc: Joyce Ooi <joyce.ooi@intel.com>
+Cc: Jim Quinlan <jim2101024@gmail.com>
+Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>
+Cc: Florian Fainelli <florian.fainelli@broadcom.com>
+Cc: Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
+Cc: Ray Jui <rjui@broadcom.com>
+Cc: Scott Branden <sbranden@broadcom.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Michal Simek <michal.simek@amd.com>
+Cc: Daire McNamara <daire.mcnamara@microchip.com>
+Cc: linux-pci@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rpi-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+ drivers/pci/controller/dwc/pcie-designware-host.c    | 2 +-
+ drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 2 +-
+ drivers/pci/controller/pci-xgene-msi.c               | 2 +-
+ drivers/pci/controller/pcie-altera-msi.c             | 2 +-
+ drivers/pci/controller/pcie-brcmstb.c                | 2 +-
+ drivers/pci/controller/pcie-iproc-msi.c              | 2 +-
+ drivers/pci/controller/pcie-mediatek.c               | 2 +-
+ drivers/pci/controller/pcie-xilinx-dma-pl.c          | 2 +-
+ drivers/pci/controller/pcie-xilinx-nwl.c             | 2 +-
+ drivers/pci/controller/plda/pcie-plda-host.c         | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index ecc33f6789e3..d1cd48efad43 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -227,7 +227,7 @@ static const struct irq_domain_ops dw_pcie_msi_domain_ops = {
+ int dw_pcie_allocate_domains(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(pci->dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(pci->dev->of_node);
+ 
+ 	pp->irq_domain = irq_domain_create_linear(fwnode, pp->num_vectors,
+ 					       &dw_pcie_msi_domain_ops, pp);
+diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+index 0e088e74155d..6628eed9d26e 100644
+--- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
++++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+@@ -435,7 +435,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+ static int mobiveil_allocate_msi_domains(struct mobiveil_pcie *pcie)
+ {
+ 	struct device *dev = &pcie->pdev->dev;
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+ 	struct mobiveil_msi *msi = &pcie->rp.msi;
+ 
+ 	mutex_init(&msi->lock);
+diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
+index 7bce327897c9..69a9c0a87639 100644
+--- a/drivers/pci/controller/pci-xgene-msi.c
++++ b/drivers/pci/controller/pci-xgene-msi.c
+@@ -247,7 +247,7 @@ static int xgene_allocate_domains(struct xgene_msi *msi)
+ 	if (!msi->inner_domain)
+ 		return -ENOMEM;
+ 
+-	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(msi->node),
++	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(msi->node),
+ 						    &xgene_msi_domain_info,
+ 						    msi->inner_domain);
+ 
+diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
+index e1cee3c0575f..5fb3a2e0017e 100644
+--- a/drivers/pci/controller/pcie-altera-msi.c
++++ b/drivers/pci/controller/pcie-altera-msi.c
+@@ -164,7 +164,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+ 
+ static int altera_allocate_domains(struct altera_msi *msi)
+ {
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->pdev->dev.of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(msi->pdev->dev.of_node);
+ 
+ 	msi->inner_domain = irq_domain_add_linear(NULL, msi->num_of_vectors,
+ 					     &msi_domain_ops, msi);
+diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
+index 8b2b099e81eb..1f356fca07a2 100644
+--- a/drivers/pci/controller/pcie-brcmstb.c
++++ b/drivers/pci/controller/pcie-brcmstb.c
+@@ -581,7 +581,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+ 
+ static int brcm_allocate_domains(struct brcm_msi *msi)
+ {
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->np);
++	struct fwnode_handle *fwnode = of_fwnode_handle(msi->np);
+ 	struct device *dev = msi->dev;
+ 
+ 	msi->inner_domain = irq_domain_add_linear(NULL, msi->nr, &msi_domain_ops, msi);
+diff --git a/drivers/pci/controller/pcie-iproc-msi.c b/drivers/pci/controller/pcie-iproc-msi.c
+index 649fcb449f34..804b3a5787c5 100644
+--- a/drivers/pci/controller/pcie-iproc-msi.c
++++ b/drivers/pci/controller/pcie-iproc-msi.c
+@@ -451,7 +451,7 @@ static int iproc_msi_alloc_domains(struct device_node *node,
+ 	if (!msi->inner_domain)
+ 		return -ENOMEM;
+ 
+-	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(node),
++	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(node),
+ 						    &iproc_msi_domain_info,
+ 						    msi->inner_domain);
+ 	if (!msi->msi_domain) {
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 811a8b4acd50..efcc4a7c17be 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -485,7 +485,7 @@ static struct msi_domain_info mtk_msi_domain_info = {
+ 
+ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+ {
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(port->pcie->dev->of_node);
+ 
+ 	mutex_init(&port->lock);
+ 
+diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+index dd117f07fc95..71cf13ae51c7 100644
+--- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
++++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+@@ -470,7 +470,7 @@ static int xilinx_pl_dma_pcie_init_msi_irq_domain(struct pl_dma_pcie *port)
+ 	struct device *dev = port->dev;
+ 	struct xilinx_msi *msi = &port->msi;
+ 	int size = BITS_TO_LONGS(XILINX_NUM_MSI_IRQS) * sizeof(long);
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(port->dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(port->dev->of_node);
+ 
+ 	msi->dev_domain = irq_domain_add_linear(NULL, XILINX_NUM_MSI_IRQS,
+ 						&dev_msi_domain_ops, port);
+diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+index 8d6e2a89b067..9cf8a96f7bc4 100644
+--- a/drivers/pci/controller/pcie-xilinx-nwl.c
++++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+@@ -495,7 +495,7 @@ static int nwl_pcie_init_msi_irq_domain(struct nwl_pcie *pcie)
+ {
+ #ifdef CONFIG_PCI_MSI
+ 	struct device *dev = pcie->dev;
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+ 	struct nwl_msi *msi = &pcie->msi;
+ 
+ 	msi->dev_domain = irq_domain_add_linear(NULL, INT_PCI_MSI_NR,
+diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
+index 4153214ca410..4c7a9fa311e3 100644
+--- a/drivers/pci/controller/plda/pcie-plda-host.c
++++ b/drivers/pci/controller/plda/pcie-plda-host.c
+@@ -150,7 +150,7 @@ static struct msi_domain_info plda_msi_domain_info = {
+ static int plda_allocate_msi_domains(struct plda_pcie_rp *port)
+ {
+ 	struct device *dev = port->dev;
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
++	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+ 	struct plda_msi *msi = &port->msi;
+ 
+ 	mutex_init(&port->msi.lock);
+-- 
+2.49.0
+
 
