@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F68C35FFB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 20:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD800C35FFA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Mar 2025 23:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kvoI88amUV+xRQVe583X4SdWMaeA6WhkypywOswnqf4=; b=1E0qg5MdpvAtVRvJq6ONOBOdyd
-	GBVschwXZ9/LhrgXk22H2/FCAaHfZWUQX0R4puSw6xwuU1S6f1Lh+VqyIzLFPAEyvoxYibitsmuW0
-	Sc7LOw1mbCSjuTPeZRiZ/sMXyXJXiKfLeMPlk88xFBeWyN6rjsixjbKMJdGvwW2irjWazJTCAXzLI
-	3GifX6qooz2m1iJCMCgBJNGmD8BGNaUR+5Dpdj5mBQIVKnt6slDB+poseS2D+xm8fVOsJ58EcCiOz
-	gSYPYdcxwnBD2tfB2AQL2I2isLHrVU6AdLFin3ZHECtrt69f8E+c9MvX0tuE26MpFBw42KjYyqeR8
-	/zc3Do8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WKlXKZtfh+uTRH8fTklVVRhTwhTpAog5CHSTPWg92Es=; b=Rfw072TaG2SXuyWV6ITvBZYM+e
+	qrYHELTu3AdmG2HTKEE3+NEdKMSfaDTbKK6GDao3smlLUT2fTanuheeacrEMblvSdqHKQ+1nnkzzx
+	f5qBTUfYL52OPJXCU5BvUwWOVW4tB/6h2T/UxYJEuwoxLtlwTNrzxqY4Mz2Hubmv8SFXB3RGfLPPv
+	xaQWnDvDXAx5gv1caYBEHOiJfkKYQIhPITSvGp08nyuVm4fVsQ5keW7eo7IQLo64L3KgkxNwGV0GK
+	s+4B+3Vmkw077fG8koUXdKIuK46ihJFnqSgFX66H9ZZ+T1/P9czoPf/Z4vRNJbQfNkzfw3uBYGEPi
+	g0KwQB2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuzcH-0000000A2Gg-3k1o;
-	Wed, 19 Mar 2025 20:02:17 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tv2c3-0000000AP7t-3DP3;
+	Wed, 19 Mar 2025 23:14:15 +0000
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuzaW-0000000A26j-0kH2;
-	Wed, 19 Mar 2025 20:00:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 71436A49317;
-	Wed, 19 Mar 2025 19:54:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A385C4CEE4;
-	Wed, 19 Mar 2025 20:00:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742414425;
-	bh=kvoI88amUV+xRQVe583X4SdWMaeA6WhkypywOswnqf4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mxFh5poViDzonov3bqtwSZczfyVmPZc4ZtVjBkjdMg2kWZ2jhP/7DiDr9I74fsIqL
-	 2vGOFc/yiYEP1vSib4nL/ZsSObNw6nnzlArcjwL+oavUbM4DDibdienY7IbY+MiKed
-	 EP2HA9zalA5zNExD52ZqdrudbRRf9zSPlZxjYOWW/SHHnqhkjQBu3/gfJTH+cIsYF1
-	 IJh2sZo6SM3UCUS+qvh5gyhBb5MXTpFqXi/kFbO4iQOlC5I4w8hL/Moq+LUNYpOhUC
-	 EcQMMvjtic7T2IxiilyYJSXtBeagiSSxbuNRXDFZvHoS9qm9q/9MrmFl2Z3CKAAHTq
-	 /jkKzOmFBoosg==
-Date: Wed, 19 Mar 2025 20:00:19 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Sunny Shen =?utf-8?B?KOayiOWnjeWnjSk=?= <Sunny.Shen@mediatek.com>
-Subject: Re: [PATCH 1/5] dt-bindings: display: mediatek: mdp-rsz: Add rules
- for MT8196
-Message-ID: <20250319-footnote-trusting-230e509bed07@spud>
-References: <20250211025317.399534-1-sunny.shen@mediatek.com>
- <20250211025317.399534-2-sunny.shen@mediatek.com>
- <20250211-feed-shed-4b32f146cc54@spud>
- <029f9fd7ab898769a7ae627b160e1dce446ccc9e.camel@mediatek.com>
- <20250224-dreamland-tactile-bdb58daf6060@spud>
- <76a6fc25a09dfddb55fdaf0a9d7dcf9a6129b00f.camel@mediatek.com>
+	id 1tv2aW-0000000AOiM-2Qzu
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Mar 2025 23:12:41 +0000
+Received: by mail-ot1-f51.google.com with SMTP id 46e09a7af769-72c03d237a7so111804a34.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Mar 2025 16:12:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742425959; x=1743030759;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WKlXKZtfh+uTRH8fTklVVRhTwhTpAog5CHSTPWg92Es=;
+        b=LaOB7p02+TFSj+JgIkQ0F2rDf0cGt6tEiplJ0GJotvc4TqMx2ZiD2G/35TQFFiuB9E
+         gAUdHXMk+d30S3tfyYQcdOn4yj5RWCIWRx8bqzvpUVBqQZkVFYwNsd1Tj32/cjWOkozc
+         TJj1Ymw5F4iIi6zix+T+J4sSRrNbZj0iqeZqJUxQ/ozS2QmC90qt6VUlru2vibqr3YId
+         rjZL862pRCwT0U4+DTsqk/igTKd6EOnyrxsg3FUDR5qru7TkTFJ25ClrJSl+ixFXcY8L
+         v0Mjs9eLazsSsr/uBE7GvTyx/3NAVZ2oselAP2PkD3Bj1LTp6XDUI5twgfpISXPCovXw
+         qzQw==
+X-Forwarded-Encrypted: i=1; AJvYcCUsUwzmK6A2hlxpmdYfsIVGh1GNAIpgEP5cAJ9Gm0gZaIyE2U7gaq6zR7nEzPOn1e0Wu0uptmEe7l+3aLBL+g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyz8sXeGQV1fh/9o3fP32OjuASXd/833W8eV2vQQC3+TAbviyYL
+	UgMTDwNGrKSTsMFoPqDo5EreAl4bCosNd64vFJRjE76UNKFOqH4Z
+X-Gm-Gg: ASbGncs78uR/pZ/if4OacYgqxtKO1nErcdVnExVeLaZi3hO7aLwZ6TKuGQpHrTsPz5m
+	mrNVTuZLwqnzs2SNX2D5dt34r7FXRt8HYGnJvj0E56fijANjQIrlEyuBezjBY+kaeMeOdF20aRW
+	Y0G4M209EYxWbwyVlXyBs3LIQWY32giDh7mcK7CfLXBVup4hCVD4hZr0SGqb7zp+L1eq1uyIbOg
+	w4Dw03eCKakprOQ2lLmkbtvQkmRNRoYJaqiwzPUtgAv6e2N2GEzP1Z7jPF08gQ0gW3N1bJ5prM1
+	AMFMGdg8dciz02WHc8LDcbhEIwGqT7d3SoUKRI9Wx20ovCkDQuJgNIYrtX8k7A==
+X-Google-Smtp-Source: AGHT+IGMcnuShI9r2n5jMm4bysoWLa4SeT4RJoNs1Q1Zu6ZafknXGWanWoen/4zNNHoLqX3qtvk0dg==
+X-Received: by 2002:a05:6830:640a:b0:72b:9bac:c044 with SMTP id 46e09a7af769-72c02d6e351mr1163983a34.0.1742425958916;
+        Wed, 19 Mar 2025 16:12:38 -0700 (PDT)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-601db7a2a17sm2749735eaf.25.2025.03.19.16.12.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Mar 2025 16:12:37 -0700 (PDT)
+From: sean.wang@kernel.org
+To: marcel@holtmann.org,
+	johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	Wentao Guan <guanwentao@uniontech.com>,
+	Yake Yang <yake.yang@mediatek.com>
+Subject: [PATCH v2] Bluetooth: btmtk: delay usb_autopm_put_interface until WMT event received
+Date: Wed, 19 Mar 2025 16:12:35 -0700
+Message-Id: <20250319231235.812700-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="YDfFiUDQR01e6m8O"
-Content-Disposition: inline
-In-Reply-To: <76a6fc25a09dfddb55fdaf0a9d7dcf9a6129b00f.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_130028_353845_1895C51F 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20250319_161240_622768_7FE7308D 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,69 +86,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "robh@kernel.org" <robh@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, Paul-pl Chen =?utf-8?B?KOmZs+afj+mclik=?= <Paul-pl.Chen@mediatek.com>, Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "treapking@chromium.org" <treapking@chromium.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
---YDfFiUDQR01e6m8O
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Delay calling usb_autopm_put_interface until the WMT event response is
+received to ensure proper synchronization and prevent premature power
+management actions.
 
-On Tue, Mar 18, 2025 at 03:14:07AM +0000, Sunny Shen (=E6=B2=88=E5=A7=8D=E5=
-=A7=8D) wrote:
-> On Mon, 2025-02-24 at 19:01 +0000, Conor Dooley wrote:
-> > On Sun, Feb 23, 2025 at 05:49:45PM +0000, Sunny Shen (=E6=B2=88=E5=A7=
-=8D=E5=A7=8D) wrote:
-> > > On Tue, 2025-02-11 at 17:54 +0000, Conor Dooley wrote:
-> > > > On Tue, Feb 11, 2025 at 10:52:50AM +0800, Sunny Shen wrote:
-> > > > > Add MDP-RSZ hardware description for MediaTek MT8196 SoC
-> >=20
-> > > > > +examples:
-> > > > > +=C2=A0 - |
-> > > > > +=C2=A0=C2=A0=C2=A0 soc {
-> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 #address-cells =3D <2=
->;
-> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 #size-cells =3D <2>;
-> > > > > +
-> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 disp_mdp_rsz0: disp-m=
-dp-rsz0@321a0000 {
-> > > >=20
-> > > > And "disp-mdp-rsz0" isn't anything close to a generic node name.
-> > >=20
-> > > Will modify "disp-mdp-rsz0@321a0000" to "mdp-rsz@321a0000"
-> >=20
-> > I don't think that's an improvement. Hint: full words would be a good
-> > place to start
->=20
-> =C2=A0
-> Hi Conor,
->=20
-> About full words,=C2=A0
-> Do you mean words like this?=C2=A0
-> multimedia-display-path-resizer?
-> or mdp-resizer?
+No public link for the reported-by tag available, the report was sent via
+private email.
 
-These are both improvements on what you've got right now.
+Reported-by: Wentao Guan <guanwentao@uniontech.com>
+Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: add a reported-by tag and mention it was reported in private email.
+---
+ drivers/bluetooth/btmtk.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-> We found that "mdp-rsz" this kind of word is used at
-> https://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/mediate=
-k/mt8183.dtsi
->=20
-> I'm not sure what will be better.
-> Can you provide more detailed suggestion about this naming?
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 68846c5bd4f7..01832bc6a259 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -620,17 +620,14 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 
+ 	if (err < 0) {
+ 		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+-		usb_autopm_put_interface(data->intf);
+-		goto err_free_wc;
++		goto err_pm_put;
+ 	}
+ 
+ 	/* Submit control IN URB on demand to process the WMT event */
+ 	err = btmtk_usb_submit_wmt_recv_urb(hdev);
+ 
+-	usb_autopm_put_interface(data->intf);
+-
+ 	if (err < 0)
+-		goto err_free_wc;
++		goto err_pm_put;
+ 
+ 	/* The vendor specific WMT commands are all answered by a vendor
+ 	 * specific event and will have the Command Status or Command
+@@ -646,18 +643,18 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 	if (err == -EINTR) {
+ 		bt_dev_err(hdev, "Execution of wmt command interrupted");
+ 		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+-		goto err_free_wc;
++		goto err_pm_put;
+ 	}
+ 
+ 	if (err) {
+ 		bt_dev_err(hdev, "Execution of wmt command timed out");
+ 		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+ 		err = -ETIMEDOUT;
+-		goto err_free_wc;
++		goto err_pm_put;
+ 	}
+ 
+ 	if (data->evt_skb == NULL)
+-		goto err_free_wc;
++		goto err_pm_put;
+ 
+ 	/* Parse and handle the return WMT event */
+ 	wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
+@@ -700,6 +697,8 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ err_free_skb:
+ 	kfree_skb(data->evt_skb);
+ 	data->evt_skb = NULL;
++err_pm_put:
++	usb_autopm_put_interface(data->intf);
+ err_free_wc:
+ 	kfree(wc);
+ 	return err;
+-- 
+2.25.1
 
---YDfFiUDQR01e6m8O
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ9siUwAKCRB4tDGHoIJi
-0qM6AP9QHiOJ1JZ8DbtI6sWT9DS41P7u5He+sMBB04jH28AtPgD9E9HooK6Of1XJ
-+RkppxwWFhpzQPVFfQGxAiZm0J9taQo=
-=bzKn
------END PGP SIGNATURE-----
-
---YDfFiUDQR01e6m8O--
 
