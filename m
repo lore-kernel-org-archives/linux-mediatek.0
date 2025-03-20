@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F95C36000
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 13:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA48CC36000
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 13:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GjXZXNCMR7AMS8CMSFsXOaQrfC4KYnxI7xnrEz3bVbs=; b=uY+sooqDKMYj/DFMjb2B2Ct2Fp
-	gyCq2Siyv6W209nmEQfGTFsAclgYc6eDziDE3ITPH9LUbqbpT5sqMjWkpLemwlme80dV4Axz6WYbw
-	9cmKoaHNEfzA5uu6GHxPwFMgDtCE+G43bSEkJTW8mEcqLL2hHKRQgMIQ/jfK9OMfBUqNOgqJWSlzN
-	LfFNvaB6RTuRSrKF7I8NjunVDGwamj7aVKlO8AO33J/+WFjuC/EPP01ZTr4RquZ5pbYFfX9Oq06dL
-	P07fQBfzGju4fcveoJPI6tA9FOJX7dlx0XBgFKikwUbxnDWvbyKfYF+9dMTWyYphqjFSN01UUPoef
-	VyuGbl8g==;
+	bh=1i3DRbTdyzbpnAKiDfDQZ1mLdcscqRmuPns+JX+LUjs=; b=CuATIE+0TEuML+kkoJyKr94bkW
+	JyanMKG+KnYS+/PqprUwuR8my6Ls6fc/aMysBnRfhPaYFkBufuD2W/C28HEl6MRoa1vJeAPashyo9
+	VgDUQ9in+fGAm93coKYennYwva58p18prZDJ0UDweXJB6WZ0hCb5rvGV+ox8tJdPeRJ1jXM9LZKXF
+	WcwZJAly+FDxkhCP6zKt2iSMKsMtXi2presKAvgdnYhLhZxlSS9aotNJKQYkX1oAZznzsFnfD4kDv
+	RPgR5JeXS/L01c8ZNus7bYEAr1Fjm/JnfXGlUvNzelH+LN56suIqZXb2/AMsU7hIARvO/MvFMMiyU
+	1s/Uvw3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvFfF-0000000CC7h-36iF;
-	Thu, 20 Mar 2025 13:10:25 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1tvFh7-0000000CCFa-08gs;
+	Thu, 20 Mar 2025 13:12:21 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvFWn-0000000CAdg-19ar;
-	Thu, 20 Mar 2025 13:01:42 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4393dc02b78so4531255e9.3;
-        Thu, 20 Mar 2025 06:01:40 -0700 (PDT)
+	id 1tvFWo-0000000CAeE-3DgK;
+	Thu, 20 Mar 2025 13:01:44 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-3912baafc58so630460f8f.1;
+        Thu, 20 Mar 2025 06:01:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742475699; x=1743080499; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1742475701; x=1743080501; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=GjXZXNCMR7AMS8CMSFsXOaQrfC4KYnxI7xnrEz3bVbs=;
-        b=DApH5j6GCF3U4HyXypErJkJ84L5zaurbPinbOWMm6ItHQB2bvvhq6EedjZDUbKGEVN
-         AD/db2csFkpkM940ot8k0C43lNQAaQJe8fxX4ygN6KZoUEsxM8n+di7+0aTY3nfANArx
-         nuiwDR4isWRU1Vp2gNZMwtKbqqsQjU1BhPRAZadOem5ZeJw6cX93fs+hHhRaJUJYQex9
-         NEZvspZfCrXd5JL6g9GIaCQr5ml9qK/UaA5XFIV5o0BGizkxmCJDBpsI2Uh4hv3L6Smf
-         +bcHg3HFOWEws55H31PQ/mPTkTZybbTceloX2i0zRXH5clM+49SiW8YSBplRFBqJWyef
-         5RQQ==
+        bh=1i3DRbTdyzbpnAKiDfDQZ1mLdcscqRmuPns+JX+LUjs=;
+        b=nYWHyQm94Jxl2s2XH8oBtnsOxBKBFrzARo2U1u68sZver3yQjk88Nb6Zcb/tvbD9My
+         YhahQcPS71Ux7XmatlJzydWVu63hp2oaBpuvex2+yjxKEpmzuBchMThsdED5/4OtdU0z
+         +4FD5wlaaRXsKHhLo15fLbpbB//9bS8uep1IAAIENzNVuTJfy56ZRJ9qT0Snubna17UO
+         dybnxgzJF2L9KsYRpy5urABv/Xktdy/diDs5pQ5xUCGiDpeIQm+Py9kEvgiFxhbb5d06
+         /oL1Vwt3kNruXHUqodjmRsZtAtZWLDaJVH2v0fiRj78qNnIdsZpIcIeyvdWSQ8qhHOE3
+         6aRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742475699; x=1743080499;
+        d=1e100.net; s=20230601; t=1742475701; x=1743080501;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GjXZXNCMR7AMS8CMSFsXOaQrfC4KYnxI7xnrEz3bVbs=;
-        b=oXaHct9KG7pvhGYp7USgcgtEwDAQBYBtQeARzfeZs2d0u5jyhWDpCfNq82deFhhcHM
-         CDZrUlPU7y56I7M/QcnjKBsmR8bdmySyBMGfwHNQ0kxxQH1CZFTQR3QOjT9BBAZ+APUj
-         oMgG0Qhyk8j1mc1cL3mlMnRiitSwfRGZ8mDhRu8i6xEmJtkQ5fWhr286PDuuSjhSh81p
-         EXedz0NPnsMS+9InUdEbLJd/S6LuB1Ugmi7lcg9Py7zHTLhMXGzNKNXDUQZMmfh13cSk
-         x5W5ZKkDsZmQyIuyL/8iSHEk84S2Ygb7dt6kvU+k4YyRhXu9WOwlY2XRwWXH8RYG8ZSb
-         m1cQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWqITBAyOsYzzAocbRB/El5uwlf2TjLxufpbQt4YqdVuy7zh2EIgaBs2aQC37pq6ldpIXo/dMh2iSZMOV/U/b0=@lists.infradead.org, AJvYcCXZFTCKtMhB+Fh1TEvbt/ybr7lqZWbREfUwgBG3480nanj8Fv/BasYdz2RBXCTXdkM6EM2IcAqcqm02TxbbDjiL@lists.infradead.org, AJvYcCXmkAfHrwHt7sEIy7HFBMm+l4pLRzFrHDC5n17kXpy2j9pxdbz22STGjDRHIg4Ra7iV28e5T4GuQGp9@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNZRht9GH4Ot5RYskY5vuKHtA9Af1IHFNKPmcFin6NgVhSdI/Z
-	2C2oXF7niML6B45ISBdDKmojUQLrKuIAableKC8S4v7WeDk6R6j5
-X-Gm-Gg: ASbGnct1VWKiee31vRhxQVL5w7J3VU2MZjnOAEsbmfTL69Hl4KPw632FKwZo5rs8cR1
-	FVVmZ4OdZZbY04KQ7fmX5WO0IlAyXKk2G731DbCDGu/6JVDIcJ/jseXBl49BEttw/JHPppGB6+1
-	jlbtaNSgOYRFq4WYNOW+i90uURCBs4agqn4gRo/buC6w3JSQyo6gHblNFr5gSX7rgYJEBXuMH6w
-	Eht7RBKPtpFHUZWmwaPVs8I0ZI/9x2eK7jDYBx5l4WUZmmloSMVaY+y1QIuV1iGiomywXCCBEbC
-	GHP6+Han//+gmmxMBFIp71cPXAfMm7o8U1q1HKne+8CNA2Od0SAr9tCemkPeYBvbPWqFEBgvCDr
-	2XhXiaj2nBjVVs9HLE63aYwat
-X-Google-Smtp-Source: AGHT+IGmkDnnkoASLNKc7beCB36KTynfhE5+lNlk/tMYqhdW/dQRvuIWvPUsIp9fafc4LTtsm02Xxg==
-X-Received: by 2002:a05:6000:186b:b0:391:2a9f:2fcb with SMTP id ffacd0b85a97d-39973b028a9mr4710707f8f.36.1742475697214;
-        Thu, 20 Mar 2025 06:01:37 -0700 (PDT)
+        bh=1i3DRbTdyzbpnAKiDfDQZ1mLdcscqRmuPns+JX+LUjs=;
+        b=NtAzYExjpdOzfZFXf2uQS961bFZ9m2g+i6EKYnojV61iHZ41FCJQQvjUwDbIFV8N0+
+         Te7SC36xM5giQpS//UaivZUuBrVhPqfPMPzTMk0XcXQHWVaN9UhFFyG8mGD/cJwtaR/k
+         rGt2isN4wd80blFANhElxR2/iQELojYA2r90Hil1URmQQ2in0izOEmd/u665+tquKqYL
+         u3ChFnxhiQi6O3T7xEv3t0uYIvfm46sgLSjMdl+a0WvQcOP1otI023Bgc1/MC4UETbuI
+         QBoGERBmd2WOnSONxHF8MjKM+1WMUpTAUM6jnbbDXSk8EYy/4sxL+E3Ur52WrBS4EDqI
+         Ldug==
+X-Forwarded-Encrypted: i=1; AJvYcCVO7+36KXZPoktN3NQ4pucDXAHIouGYrssMC8lbL23a/2iIQvNPfcYxH49pFq0LHUc2QT/v7keexixq@lists.infradead.org, AJvYcCVeVJTTCgcRf/8rFlD2NHtse0xnYO0a49B6aOKstKeK42BVSY2aGgJmo0kOH/hygCpgOiB+NGtiiNly1aQPL/U=@lists.infradead.org, AJvYcCWg44lvqKWVMhSXcCnMTZ7mX+/6oUePBimwzPivBJ0h2EuKLmlVkenh+MnxKlX27hoHtV7MIsyn95YMfzTQj/DQ@lists.infradead.org
+X-Gm-Message-State: AOJu0YyO318Smoi9cByh3wpb9g4SIHFBNLNE9MNbzpdGKypRqFEi0OLi
+	4oGMaNQR01OaYYFe2xpIciQuPknpCsJTYivBZpFP6R5BMOQmbsHt
+X-Gm-Gg: ASbGncuXzFioPXdTc4bmuVTWTdQVhphUHRQ5ysvTYIvsiXZpqNBDbj+daPkrB1iwMpT
+	JiTFq+A7JB/cDdD20dKrD6WJF81A2BXeXcJ9yVbU77V0VcE1NJ2M17VfFnrE7XQiX8e1XE2q8ih
+	vqcpNbHT98uOxZTLonoseoaa9uTMa5t2V3KwbrloN61IvpEIDc9mwNTnywLJfk3zpejCHZorEjo
+	/uBJ5dihXa6n10f+UufH0iSnbBIu7fjPasKU2liy7KGD8nCNU3POtIpn0K3DUNyAktSNHArBAlE
+	zK9abZBJf43DMqXmlGFNZ5bu6Q64wGA8xNGj5+bdSI+QauBdEb3dc/FEa4g2uK0XEZKuN9qfin1
+	sgsfqS3JC8g2qGQ==
+X-Google-Smtp-Source: AGHT+IEQRynyz9JGzu+Wy/hCcpiQtdW/bJaEM9RuaZOW49I93OxOlyiURvahKTtdmPXSEWXajsfaYQ==
+X-Received: by 2002:a5d:6c6a:0:b0:391:4559:876a with SMTP id ffacd0b85a97d-399795e77d5mr3094168f8f.46.1742475699266;
+        Thu, 20 Mar 2025 06:01:39 -0700 (PDT)
 Received: from localhost.localdomain (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-397f2837e61sm18492328f8f.97.2025.03.20.06.01.34
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-397f2837e61sm18492328f8f.97.2025.03.20.06.01.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 06:01:36 -0700 (PDT)
+        Thu, 20 Mar 2025 06:01:38 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -97,17 +97,17 @@ To: Michael Turquette <mturquette@baylibre.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-usb@vger.kernel.org,
 	upstream@airoha.com
-Subject: [PATCH v2 05/11] clk: en7523: define and register SoC SCU SSR driver for EN7581
-Date: Thu, 20 Mar 2025 14:00:28 +0100
-Message-ID: <20250320130054.4804-6-ansuelsmth@gmail.com>
+Subject: [PATCH v2 06/11] soc: airoha: scu-ssr: expose API to read current Serdes Port mode
+Date: Thu, 20 Mar 2025 14:00:29 +0100
+Message-ID: <20250320130054.4804-7-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250320130054.4804-1-ansuelsmth@gmail.com>
 References: <20250320130054.4804-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_060141_314604_DFB63E83 
-X-CRM114-Status: GOOD (  24.37  )
+X-CRM114-CacheID: sfid-20250320_060142_822573_A8B9CCEE 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,218 +122,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Define all the possible interface modes and register the SoC SCU SSR
-platform driver for EN7581.
+Expose an API to read the current Serdes Port mode. This is needed for
+pheriperal attached to the Serdes mode to validate the Serdes port is in
+the correct mode.
 
-Failing to register the SCU SSR driver is not a critical error (example
-the SoC driver is not enable) but will prevent PCIe or USB port to
-function correctly.
+Each driver will have to define in DT the phandle airoha,scu
+pointing to the SCU node to make use of this API.
 
-Reference to the SSR pdev are stored in the new en7523 priv struct.
+Function airoha_scu_ssr_get_serdes_mode() will then parse the phandle,
+and extract tha Serdes Port state from the SCU SSR driver priv.
+
+Driver will use the new API airoha_scu_ssr_get_serdes_mode() by passing
+the dev and the serdes mode reference from dt-bindings header.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/clk/clk-en7523.c       | 99 ++++++++++++++++++++++++++++++++--
- include/linux/clk/clk-en7523.h | 10 ++++
- 2 files changed, 106 insertions(+), 3 deletions(-)
- create mode 100644 include/linux/clk/clk-en7523.h
+ drivers/soc/airoha/airoha-scu-ssr.c       | 50 +++++++++++++++++++++++
+ include/linux/soc/airoha/airoha-scu-ssr.h | 11 +++++
+ 2 files changed, 61 insertions(+)
 
-diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-index 2a74bc8fed24..1f11fa769090 100644
---- a/drivers/clk/clk-en7523.c
-+++ b/drivers/clk/clk-en7523.c
-@@ -3,14 +3,17 @@
+diff --git a/drivers/soc/airoha/airoha-scu-ssr.c b/drivers/soc/airoha/airoha-scu-ssr.c
+index 29e17577e9a4..3fbc36f793d0 100644
+--- a/drivers/soc/airoha/airoha-scu-ssr.c
++++ b/drivers/soc/airoha/airoha-scu-ssr.c
+@@ -5,6 +5,7 @@
+ 
+ #include <dt-bindings/soc/airoha,scu-ssr.h>
  #include <linux/bitfield.h>
- #include <linux/delay.h>
- #include <linux/clk-provider.h>
 +#include <linux/clk/clk-en7523.h>
- #include <linux/io.h>
- #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+ #include <linux/of_platform.h>
  #include <linux/platform_device.h>
- #include <linux/property.h>
- #include <linux/regmap.h>
- #include <linux/reset-controller.h>
-+#include <linux/soc/airoha/airoha-scu-ssr.h>
- #include <dt-bindings/clock/en7523-clk.h>
- #include <dt-bindings/reset/airoha,en7581-reset.h>
-+#include <dt-bindings/soc/airoha,scu-ssr.h>
- 
- #define RST_NR_PER_BANK			32
- 
-@@ -81,6 +84,7 @@ struct en_clk_soc_data {
- 	const struct en_clk_desc *base_clks;
- 	const struct clk_ops pcie_ops;
- 	int (*hw_init)(struct platform_device *pdev,
-+		       struct en_clk_priv *priv,
- 		       const struct en_clk_soc_data *soc_data,
- 		       struct clk_hw_onecell_data *clk_data);
- };
-@@ -361,6 +365,51 @@ static const u16 en7581_rst_map[] = {
- 	[EN7581_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
- };
- 
-+static unsigned int an7581_serdes_wifi1_possible_modes[] = {
-+	AIROHA_SCU_SERDES_MODE_PCIE0_X1,
-+	AIROHA_SCU_SERDES_MODE_PCIE0_X2,
-+	AIROHA_SCU_SERDES_MODE_ETHERNET,
-+};
-+
-+static unsigned int an7581_serdes_wifi2_possible_modes[] = {
-+	AIROHA_SCU_SERDES_MODE_PCIE1_X1,
-+	AIROHA_SCU_SERDES_MODE_PCIE0_X2,
-+	AIROHA_SCU_SERDES_MODE_ETHERNET,
-+};
-+
-+static unsigned int an7581_serdes_usb1_possible_modes[] = {
-+	AIROHA_SCU_SERDES_MODE_USB3,
-+	AIROHA_SCU_SERDES_MODE_ETHERNET,
-+};
-+
-+static unsigned int an7581_serdes_usb2_possible_modes[] = {
-+	AIROHA_SCU_SERDES_MODE_PCIE2_X1,
-+	AIROHA_SCU_SERDES_MODE_ETHERNET,
-+};
-+
-+static const struct airoha_scu_ssr_serdes_info an7581_ports_info[] = {
-+	[AIROHA_SCU_SERDES_WIFI1] = {
-+		.possible_modes = an7581_serdes_wifi1_possible_modes,
-+		.num_modes = ARRAY_SIZE(an7581_serdes_wifi1_possible_modes),
-+	},
-+	[AIROHA_SCU_SERDES_WIFI2] = {
-+		.possible_modes = an7581_serdes_wifi2_possible_modes,
-+		.num_modes = ARRAY_SIZE(an7581_serdes_wifi2_possible_modes),
-+	},
-+	[AIROHA_SCU_SERDES_USB1] = {
-+		.possible_modes = an7581_serdes_usb1_possible_modes,
-+		.num_modes = ARRAY_SIZE(an7581_serdes_usb1_possible_modes),
-+	},
-+	[AIROHA_SCU_SERDES_USB2] = {
-+		.possible_modes = an7581_serdes_usb2_possible_modes,
-+		.num_modes = ARRAY_SIZE(an7581_serdes_usb2_possible_modes),
-+	},
-+};
-+
-+static const struct airoha_scu_ssr_data an7581_scu_ssr_data = {
-+	.ports_info = an7581_ports_info,
-+};
-+
- static u32 en7523_get_base_rate(const struct en_clk_desc *desc, u32 val)
- {
- 	if (!desc->base_bits)
-@@ -557,6 +606,7 @@ static const struct regmap_config en7523_clk_regmap_config = {
- };
- 
- static int en7523_clk_hw_init(struct platform_device *pdev,
-+			      struct en_clk_priv *priv,
- 			      const struct en_clk_soc_data *soc_data,
- 			      struct clk_hw_onecell_data *clk_data)
- {
-@@ -661,12 +711,38 @@ static int en7581_reset_register(struct device *dev, struct regmap *map)
- 	return devm_reset_controller_register(dev, &rst_data->rcdev);
+@@ -54,6 +55,55 @@ static int airoha_scu_serdes_str_to_mode(const char *serdes_str)
+ 	return -EINVAL;
  }
  
-+static void en7581_clk_register_ssr(struct platform_device *pdev,
-+				    struct en_clk_priv *priv)
++/**
++ * airoha_scu_ssr_get_serdes_mode - Get current Mode for Serdes Port
++ * @dev: Device pointer of the Serdes Port peripheral
++ * @port: Reference number of the Serdes Port
++ *
++ * Parse the phandle pointed by the Device Node property
++ * "airoha,scu" present in Devide Node of dev and get
++ * the current Mode of the Serdes Port reference by port
++ *
++ * Return the mode or a negative error code. If the pdev
++ * or the driver data for the SCU can't be found,
++ * -EPROBE_DEFER is returned.
++ */
++int airoha_scu_ssr_get_serdes_mode(struct device *dev,
++				   unsigned int port)
 +{
-+	struct platform_device_info pinfo = { };
-+	struct platform_device *ssr_pdev;
++	struct airoha_scu_ssr_priv *priv;
++	struct en_clk_priv *clk_priv;
++	struct platform_device *pdev;
++	struct device_node *np;
 +
-+	pinfo.name = "airoha-scu-ssr";
-+	pinfo.parent = &pdev->dev;
-+	pinfo.id = PLATFORM_DEVID_AUTO;
-+	pinfo.fwnode = of_fwnode_handle(pdev->dev.of_node);
-+	pinfo.of_node_reused = true;
-+	pinfo.data = &an7581_scu_ssr_data;
-+	pinfo.size_data = sizeof(an7581_scu_ssr_data);
++	np = of_parse_phandle(dev->of_node, "airoha,scu", 0);
++	if (!np)
++		return -ENODEV;
 +
-+	ssr_pdev = platform_device_register_data(&pdev->dev, "airoha-scu-ssr",
-+						 PLATFORM_DEVID_AUTO,
-+						 &an7581_scu_ssr_data,
-+						 sizeof(an7581_scu_ssr_data));
-+	if (IS_ERR(ssr_pdev))
-+		dev_warn_probe(&pdev->dev, PTR_ERR(ssr_pdev), "failed to register SCU SSR driver.\n");
++	if (!of_device_is_available(np)) {
++		of_node_put(np);
++		return -ENODEV;
++	}
 +
-+	priv->ssr_pdev = ssr_pdev;
++	pdev = of_find_device_by_node(np);
++	of_node_put(np);
++	if (!pdev || !platform_get_drvdata(pdev)) {
++		if (pdev)
++			put_device(&pdev->dev);
++		return -EPROBE_DEFER;
++	}
++
++	/*
++	 * Get pdev from clk priv. Clock driver register
++	 * SSR driver hence it can be assumed present.
++	 */
++	clk_priv = platform_get_drvdata(pdev);
++	priv = platform_get_drvdata(clk_priv->ssr_pdev);
++
++	return priv->serdes_port[port];
 +}
++EXPORT_SYMBOL_GPL(airoha_scu_ssr_get_serdes_mode);
 +
- static int en7581_clk_hw_init(struct platform_device *pdev,
-+			      struct en_clk_priv *priv,
- 			      const struct en_clk_soc_data *soc_data,
- 			      struct clk_hw_onecell_data *clk_data)
+ static int airoha_scu_ssr_apply_modes(struct airoha_scu_ssr_priv *priv)
  {
- 	struct regmap *map, *clk_map;
- 	void __iomem *base;
-+	int ret;
+ 	int ret;
+diff --git a/include/linux/soc/airoha/airoha-scu-ssr.h b/include/linux/soc/airoha/airoha-scu-ssr.h
+index 0224c0340b6d..81f2c1b57889 100644
+--- a/include/linux/soc/airoha/airoha-scu-ssr.h
++++ b/include/linux/soc/airoha/airoha-scu-ssr.h
+@@ -20,4 +20,15 @@ struct airoha_scu_ssr_data {
+ 	const struct airoha_scu_ssr_serdes_info *ports_info;
+ };
  
- 	map = syscon_regmap_lookup_by_compatible("airoha,en7581-chip-scu");
- 	if (IS_ERR(map))
-@@ -687,7 +763,13 @@ static int en7581_clk_hw_init(struct platform_device *pdev,
- 	regmap_update_bits(clk_map, REG_NP_SCU_PCIC, REG_PCIE_CTRL,
- 			   FIELD_PREP(REG_PCIE_CTRL, 3));
- 
--	return en7581_reset_register(&pdev->dev, clk_map);
-+	ret = en7581_reset_register(&pdev->dev, clk_map);
-+	if (ret)
-+		return ret;
-+
-+	en7581_clk_register_ssr(pdev, priv);
-+
-+	return 0;
- }
- 
- static int en7523_clk_probe(struct platform_device *pdev)
-@@ -695,10 +777,15 @@ static int en7523_clk_probe(struct platform_device *pdev)
- 	struct device_node *node = pdev->dev.of_node;
- 	const struct en_clk_soc_data *soc_data;
- 	struct clk_hw_onecell_data *clk_data;
-+	struct en_clk_priv *priv;
- 	int r;
- 
- 	soc_data = device_get_match_data(&pdev->dev);
- 
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
- 	clk_data = devm_kzalloc(&pdev->dev,
- 				struct_size(clk_data, hws, soc_data->num_clocks),
- 				GFP_KERNEL);
-@@ -706,11 +793,17 @@ static int en7523_clk_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	clk_data->num = soc_data->num_clocks;
--	r = soc_data->hw_init(pdev, soc_data, clk_data);
-+	r = soc_data->hw_init(pdev, priv, soc_data, clk_data);
- 	if (r)
- 		return r;
- 
--	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (r)
-+		return r;
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	return 0;
- }
- 
- static const struct en_clk_soc_data en7523_data = {
-diff --git a/include/linux/clk/clk-en7523.h b/include/linux/clk/clk-en7523.h
-new file mode 100644
-index 000000000000..fc3b320dc7e9
---- /dev/null
-+++ b/include/linux/clk/clk-en7523.h
-@@ -0,0 +1,10 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#ifndef __LINUX_CLK_EN7523_H_
-+#define __LINUX_CLK_EN7523_H_
-+
-+struct en_clk_priv {
-+	struct platform_device *ssr_pdev;
-+};
-+
++#if IS_ENABLED(CONFIG_AIROHA_SCU_SSR)
++int airoha_scu_ssr_get_serdes_mode(struct device *dev,
++				   unsigned int port);
++#else
++static inline int airoha_scu_ssr_get_serdes_mode(struct device *dev,
++						 unsigned int port);
++{
++	return -EOPNOTSUPP;
++}
 +#endif
++
+ #endif
 -- 
 2.48.1
 
