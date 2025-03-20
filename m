@@ -4,65 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9E9C36002
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 19:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46CDC28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 20:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZvDFGa0AiC4mciFUVZshqlfDKr+59gJqRmAfgNgMOCw=; b=2CDzduy9uc3uP4EV0IPE0GfNzD
-	RzTbQAuv1OAMRvprxau8vJOZ5es8yA5ODIXVLiYj8xJDzIEFOOEgrHKs5ZP5U7scr7iOATb4GiVD0
-	tyJCdU9O6ct8wbc92a8IwliYRhPOPkn5sN594G8zQ0cvAvif19lQfiwbwB3wSRXfkdYewFHDqrnj6
-	piqIPp/pgrec1NiBfcjKa7Whob+tx8k7TkeGdvj9srgvRqBkx4wvA52q2eWkPO+18eC3PticOdwDb
-	jUd3pGNxKnDRA0s/7/qzolPQUqkj+R4H2km29dEuX7Erfup3uXishmxnUzH/CHUwgRuVmeYcJNO1l
-	kyyXHLqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=; b=smr4rdYV+kR+zvEKYzYFEuWa53
+	9YP99fytLm16RoE+3UxTCiMDdPDxjaceDdskfJ4wJt8CTcQ2ZYm9hdwicnWNbj2JXx+F3A7SaeMI5
+	wT9jI3aZ9rR8daVLo5i8jaInM+HmZKPFr0X8ITOwRvJLT0IqwXnIPK91FQ1Hx83NpP7kRFRP6IqST
+	1iCEwGUgiAmQPexbyIiooktplxsF9weq/tpPnoobB3KWL2fjFqQe3O5eilC4GOz0tH90p+TGN1pq5
+	UooLNHJy3o/RvdqMoy2NpIUoquQoNO83YBcVym4YlU+jDl5pIRo1AIIK47BARDso4qVBTvTfH/0BD
+	iTbzXEUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvL7l-0000000D0Zd-0LTb;
-	Thu, 20 Mar 2025 19:00:13 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tvMOZ-0000000D9pB-01AH;
+	Thu, 20 Mar 2025 20:21:39 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvL7i-0000000D0Xf-3Fi2
-	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Mar 2025 19:00:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 175F2A4965B;
-	Thu, 20 Mar 2025 18:54:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 194D4C4CEDD;
-	Thu, 20 Mar 2025 19:00:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742497209;
-	bh=6fanAW7Ye2sXSBOuAm9kPC3g0KEELfp9nEJRpCc3foA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=Tq5wk36++F0UVn4WlaOwBP9t5bSKS9tPuAXNLKMTwWeV1/LdCtr5wM/2nA0ItFmMB
-	 fWN7gRkymKE8O4tMtvAlscQjSj974pHJknpLxSaCA70JdkrIWKplewWvf32hrwVT1e
-	 04r6rCNAc5wth33x+miWdzM8uXlndBxMsZ+pSLtSx+F927NmKv54rr0WvWADt935yx
-	 zeTaAScGB3TXq5vH+2uspg9VsyD0KGavNhUV4KWaDHjrQ86Xrdkzj50UUfmhO7jiNi
-	 XP8ueedyXyrJmH58W7Kx5zeJFOpyCzKs2BDZilKpqGcCPA1CyzgrwOIgSlopvhYYRu
-	 uugDkP+lCoQXQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 34C183806654;
-	Thu, 20 Mar 2025 19:00:46 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1tvMMp-0000000D9kH-3Yxm;
+	Thu, 20 Mar 2025 20:19:52 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-394780e98easo784202f8f.1;
+        Thu, 20 Mar 2025 13:19:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742501989; x=1743106789; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=;
+        b=hkDeTnfaaAG6Y9Bg5Aw1wk0b/P83DsZ0cV6/iCl/vLUQjZ6udi5IIl7Q5H+YFcSDL9
+         H2KyzxNp9oknc1BwF+Zis1P0cnl4aSJGSOAEi2gb4tUtMJpP45JnV/8XMkQy0+H4nflg
+         0E1l45sfdWbzOEMcCOHXxzZ3f62D3HQSjOrXj7je0ZoYzu3WFxY2V78arFsIjVEFAY+m
+         PQBjFtu2dniAPgAUxLOEljFx7rbsWzwFfTcMD27ZpmAWB0INLbLoPocprTlK+0Nri/YG
+         1W8+frDZH6riPVhZI5n1PTzjhuhH7k/yhhEIRdQnrHqMqZn+CR2qhPym4GyI54Z45ZPc
+         C8rg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742501989; x=1743106789;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=;
+        b=cYYbXOEsSShEZPrYC+nYw/dxn/EHGI9B4CVFpe9aN4KkQsmXCEE3fM01QSF4gX5P4p
+         qvgRlQ9QpVN/tOpvqjMqa9cCk4efRIhAEmpdelNS9qq4LkMEE/zfLQW7ng+yJLWkv78a
+         CrgOeIpF0A/Lw2EsvaV0NLeHcSx4H068Udp1eJDKVXYiDIfBcbIyPxgy1l9YUOKNohlF
+         m+po9ueOaT+HG4CFy28XXKD9aCgcVIWAEIPkWwqSCEKo0HQ1et2GqQU1ykXuqLWhOrMF
+         2Uv5zHXZwbM+Swzlk1kKE2dOGfyA34YVAyicoj37Za1KkR2PgAVhnJ1GBFmHb3hrVtj7
+         lSWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU785joEcqPWzK0fV+jNX3Yy54SmPhDRzfjUGUPQyt3sUNGDafu5vtJ8qcUb/fEBF9PHl5fBS+V6P7ixbXOzIP2@lists.infradead.org, AJvYcCV+kcvnhoriX6bPAMaT017JPqcVP4Rkh1HzTBs5n2TvncMJVydPD8T9YhsTowZr0JFtrn/airDpg2KHC2htlso=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzMsZvRPdM4TtvSoUVK1CCOYhPJZsUw3QOKOlpHpzLeAr7Mok28
+	rdAGxJ9xI2ae4jEAXqh7AJF9H2WvAnMJRZ9nAaR/aMYjQY/xv7Gi
+X-Gm-Gg: ASbGncuRHKzMJn9PXN2RmpAUlobdpCsrysFRu6PQgNPHRv3aLPuqcQWhkdFbSKH28fm
+	HFX0DCGtlos6ZfCeY1sZL+BtM53Jrwgvc+AHRsAkzAI1ClyAy6DUROaxCuYjqYuBtSzNkvCCLqV
+	SsMBeQsvVFBeQCRFfaA0+MwzWWe5advZtCY7ZZxWH9JhYGnTTuuwaVnQ0oW4wp5MNgwVkAcX+72
+	g9a7hFBYBe2B6uh/VXsaUm8rH0FiRuI07p69q5rronyGbe8f8nuFnkBERJKVR6CGIaeN4SOHgri
+	SF1kYaGQ/YEo7Qe5tU8Gb7TU25xWLEjkOTOBmrMsnxppAQ==
+X-Google-Smtp-Source: AGHT+IE/btzueE8JU/eAqEkp1q9M1cbr7FO2mpWZMkpMLSmIZhDdqe7dSjJh7OehvrSNgBvLJbC84A==
+X-Received: by 2002:a05:6000:1566:b0:38f:451b:653c with SMTP id ffacd0b85a97d-3997f8edadamr632159f8f.7.1742501989262;
+        Thu, 20 Mar 2025 13:19:49 -0700 (PDT)
+Received: from qasdev.Home ([2a02:c7c:6696:8300:a534:f4c9:f77d:6a2e])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fdbd1c7sm6948465e9.40.2025.03.20.13.19.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Mar 2025 13:19:48 -0700 (PDT)
+From: Qasim Ijaz <qasdev00@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com,
+	Bo.Jiao@mediatek.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Qasim Ijaz <qasdev00@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7996: prevent uninit return in mt7996_mac_sta_add_links
+Date: Thu, 20 Mar 2025 20:19:14 +0000
+Message-Id: <20250320201914.48159-1-qasdev00@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btmtksdio: Prevent enabling interrupts after IRQ
- handler removal
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <174249724504.1878155.13264790532381616265.git-patchwork-notify@kernel.org>
-Date: Thu, 20 Mar 2025 19:00:45 +0000
-References: <20250312012522.53604-1-sean.wang@kernel.org>
-In-Reply-To: <20250312012522.53604-1-sean.wang@kernel.org>
-To: Sean Wang <sean.wang@kernel.org>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, sean.wang@mediatek.com,
- pedro.tsai@mediatek.com, felix.freimann@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_120010_895515_063A4907 
-X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-CacheID: sfid-20250320_131951_888190_83117344 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,31 +105,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+If link_conf_dereference_protected() or mt7996_vif_link() 
+or link_sta_dereference_protected() fail the code jumps to
+the error_unlink label and returns ret which is uninitialised.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Fix this by setting err before jumping to error_unlink.
 
-On Tue, 11 Mar 2025 18:25:22 -0700 you wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Ensure interrupts are not re-enabled when the IRQ handler has already been
-> removed. This prevents unexpected IRQ handler execution due to stale or
-> unhandled interrupts.
-> 
-> Modify btmtksdio_txrx_work to check if bdev->func->irq_handler exists
-> before calling sdio_writel to enable interrupts.
-> 
-> [...]
+Fixes: c7e4fc362443 ("wifi: mt76: mt7996: Update mt7996_mcu_add_sta to MLO support")
+Fixes: dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
+Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-Here is the summary with links:
-  - Bluetooth: btmtksdio: Prevent enabling interrupts after IRQ handler removal
-    https://git.kernel.org/bluetooth/bluetooth-next/c/01c13f057bb7
-
-You are awesome, thank you!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 91c64e3a0860..78f7f1fc867e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -998,16 +998,22 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 			continue;
+ 
+ 		link_conf = link_conf_dereference_protected(vif, link_id);
+-		if (!link_conf)
++		if (!link_conf) {
++			err = -EINVAL;
+ 			goto error_unlink;
++		}
+ 
+ 		link = mt7996_vif_link(dev, vif, link_id);
+-		if (!link)
++		if (!link) {
++			err = -EINVAL;
+ 			goto error_unlink;
++		}
+ 
+ 		link_sta = link_sta_dereference_protected(sta, link_id);
+-		if (!link_sta)
++		if (!link_sta) {
++			err = -EINVAL
+ 			goto error_unlink;
++		}
+ 
+ 		err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
+ 					       link_id);
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.39.5
 
 
