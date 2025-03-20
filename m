@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A81C28B30
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 17:35:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED61C36001
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 18:28:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UY7Ms7lEBSkCG5mErulGDCKla38uoYZ4/MW/jdzan2I=; b=Lt/vm4TXYTIGmEwQryFLZMU+O/
-	ZYe94EXMYueiEXQYE8qDNT8R5N4GVTQCmf9HxsLaekzGIBKflI7OgLYed/wOnfFgSM91LUgPFdMAO
-	PpLWzZh3SXvAlriE4AedYM0kzNwUdFvMkt5zMBUWQeeLCzp0dJSARRhxq586p1frHs/UsSJZWCISB
-	41l0Hqi550J9O5wlIhsMA0s9h/7ZGG0JFsY/9TrAIri1+bywd7JztANVlNCTDUqE073u8ieGJick6
-	Ay11xGyrPESr6smBA+LCFquj6D1bpH2zHe9ZGmmrzcuVY4w09wFQFjNQq5XxslfvzXztHEmkuIZHx
-	r0q3w6qQ==;
+	bh=eduoFTZN5Pk/vcTpAqpS2KvclbCG/PrXXMojnsOilW8=; b=1JbOxh+y6WVKUzZ8HG6mDwx+CN
+	/WQaaiz2p28XSelrVziTcde6qyMhr9yes8r7tC3QzwMhX3W1zM4blvW4IwfNItbd6PhFlDupZq25a
+	XNKN0O/enaaZsgNubCjNigxWUHJzkwZwPaGRga/OhDTLk3nnJ6JRDuCji83PqqqR5DdFNWT5cSe2x
+	93ZR0osPeQV7sP+yyG7b4QqUvGKFttclHy7AqB2+HyytnmwFPPAmEygiD9M3NVSf+46uA0tjNBu/P
+	r1+mQTDoSiWqvDIS8fEDXYBVIawxiTG33CMlf/SpjFHDap8tzRQmTY3QV+tGS1CIoUv/uW+1NCFa8
+	AjQQKBUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvJnm-0000000CpIc-43oL;
-	Thu, 20 Mar 2025 17:35:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tvKcc-0000000Cwax-0DCP;
+	Thu, 20 Mar 2025 18:28:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvJl6-0000000CotI-1dM9;
-	Thu, 20 Mar 2025 17:32:45 +0000
+	id 1tvKat-0000000CwOH-25zP;
+	Thu, 20 Mar 2025 18:26:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 41CD5A495A3;
-	Thu, 20 Mar 2025 17:27:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24AAEC4CEE7;
-	Thu, 20 Mar 2025 17:32:38 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4EA1644382;
+	Thu, 20 Mar 2025 18:26:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 691C4C4CEDD;
+	Thu, 20 Mar 2025 18:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742491963;
-	bh=wG7BsaeKNGbyCw5L43qSPMAOuphQk4aDqrVD5NjljnQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Je3cn27I8cR31QVl3tlbPWi186cbHPZMuc8Svbsv6BdtwW3e/UrXvSow5KsXd4C35
-	 fljScj/5DZu4xwqS3RYGO4D3+QsD3ttmMosL++OxZ5lp2MDM1Gf1mAyTxLQPWKcTHK
-	 KeHDgJZhwS2tWE7ZTMHeMl56fhBA6AspbDTRdN/wgQV0HvrKR7I0LL8cELIPGORUmt
-	 63tpbJqLCXkZQ5RpCg8rkqsDffg0wHp8ZuNfNa8sY1D5Jws6dKiESsuYO5tcmYfubM
-	 N9y1fbEcdPCX86QEackOjokrCnCO3G2efarEhkjlz3x0+PJ6aAmuWiidlEt9rwiNsw
-	 FDSat4Utb1z7w==
-Date: Thu, 20 Mar 2025 17:32:37 +0000
-From: Simon Horman <horms@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v12 03/13] dt-bindings: net: dsa: Document
- support for Airoha AN8855 DSA Switch
-Message-ID: <20250320173237.GF892515@horms.kernel.org>
-References: <20250309172717.9067-1-ansuelsmth@gmail.com>
- <20250309172717.9067-4-ansuelsmth@gmail.com>
+	s=k20201202; t=1742495174;
+	bh=WqjD83gS59KXnxcWN0xrv2Qy66XqwIZlhcsvnHNzlD0=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=JYloGAYRUHZ9s4ndZMNiZ/YXTnxxxYiyDHj0Hp2VzGq3o+btOYbamd9ZiuFhWFMet
+	 ie3338Y/XRLdUCpjJyC3jborHQ/CXIIcVuOUVVK9U/rgIm5/VFx7Y1YS4wkFLVCDtw
+	 NxtFT5PZepI7IN/DrIOQSmiiHzyZN6y4L/goZn/FeHhICSNh+acqedzYpPcX+zCvRz
+	 zhiyJ8Z6cpsyttti+B/CqOcRvhgWw3QnIpYjK0Go3Z+AU3KMHdGzRyH2j6HzO8MXH/
+	 AjBZ8JDhSha0K3F92CqtjR4pU4dQ8OkZTVExZRrdd4MLrd7BZtl3cpcRusyzQ7ISi7
+	 Mu66NbJSYYULA==
+Date: Thu, 20 Mar 2025 13:26:13 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250309172717.9067-4-ansuelsmth@gmail.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Yangyu Chen <cyy@cyyself.name>, Conor Dooley <conor+dt@kernel.org>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Alexander Sverdlin <alexander.sverdlin@gmail.com>, 
+ Felix Fietkau <nbd@nbd.name>, devicetree@vger.kernel.org, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Michael Turquette <mturquette@baylibre.com>, Arnd Bergmann <arnd@arndb.de>, 
+ linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
+ linux-clk@vger.kernel.org, Nikita Shubin <nikita.shubin@maquefel.me>, 
+ upstream@airoha.com, linux-mediatek@lists.infradead.org, 
+ Ben Hutchings <ben@decadent.org.uk>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Daniel Danzberger <dd@embedd.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-phy@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>, 
+ linux-kernel@vger.kernel.org
+To: Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20250320130054.4804-1-ansuelsmth@gmail.com>
+References: <20250320130054.4804-1-ansuelsmth@gmail.com>
+Message-Id: <174249492019.658064.14719387276656076364.robh@kernel.org>
+Subject: Re: [PATCH v2 00/11] airoha: en7581: clk cleanup + USB support
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_103244_489865_3CF775BE 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20250320_112615_580850_91D82002 
+X-CRM114-Status: GOOD (  25.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +85,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 09, 2025 at 06:26:48PM +0100, Christian Marangi wrote:
-> Document support for Airoha AN8855 5-port Gigabit Switch.
+
+On Thu, 20 Mar 2025 14:00:23 +0100, Christian Marangi wrote:
+> This series implement all the changes required to correctly handle
+> USB support for the Airoha EN7581 SoC.
 > 
-> It does expose the 5 Internal PHYs on the MDIO bus and each port
-> can access the Switch register space by configurting the PHY page.
-
-nit: configuring
-
+> The first few patch are cleanup for the clock driver and the
+> introduction of the SCU SSR SoC driver.
 > 
-> Each internal PHY might require calibration with the fused EFUSE on
-> the switch exposed by the Airoha AN8855 SoC NVMEM.
+> The SoC always support USB 2.0 but for USB 3.0 it needs additional
+> configuration for the Serdes port. Such port can be either configured
+> for USB usage or for PCIe lines or HSGMII and these are configured
+> in the SCU space.
 > 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../net/dsa/airoha,an8855-switch.yaml         | 105 ++++++++++++++++++
->  MAINTAINERS                                   |   1 +
->  2 files changed, 106 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+> The xHCI USB is based on the Mediatek implementation but the PHY
+> handling although conceptually similar, is indded different compared
+> to Mediatek due to SSR checks and different port power up.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> new file mode 100644
-> index 000000000000..63bcbebd6a29
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> @@ -0,0 +1,105 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/dsa/airoha,an8855-switch.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 Gigabit Switch
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description: >
-> +  Airoha AN8855 is a 5-port Gigabit Switch.
-> +
-> +  It does expose the 5 Internal PHYs on the MDIO bus and each port
-> +  can access the Switch register space by configurting the PHY page.
+> The SSR driver expose an API to poll the current status of the Serdes
+> port and the USB PHY driver validates it. Refer to the specific commit
+> for additional info.
+> 
+> Consider that there is currently an inconsistency as AN7581 and
+> EN7581 refer to the same thing. This is due to the fact that
+> the SoC born under EcoNet but then was acquired by Airoha.
+> 
+> Changes v2:
+> - Drop changes for simple-mfd
+> - Rework PHY node structure to single node
+> - Drop port-id property in favor of serdes-port and
+>   usb2-monitor-clock-sel
+> - Make the SSR driver probe from the clock driver
+> 
+> Christian Marangi (11):
+>   clk: en7523: convert driver to regmap API
+>   clk: en7523: generalize register clocks function
+>   dt-bindings: clock: en7523: add Documentation for Airoha AN7581 SCU
+>     SSR
+>   soc: airoha: add support for configuring SCU SSR Serdes port
+>   clk: en7523: define and register SoC SCU SSR driver for EN7581
+>   soc: airoha: scu-ssr: expose API to read current Serdes Port mode
+>   dt-bindings: phy: Add documentation for Airoha AN7581 USB PHY
+>   phy: move Airoha PCIe PHY driver to dedicated directory
+>   phy: airoha: Add support for Airoha AN7581 USB PHY
+>   usb: host: add ARCH_AIROHA in XHCI MTK dependency
+>   arm64: dts: airoha: en7581: add USB nodes
+> 
+>  .../bindings/clock/airoha,en7523-scu.yaml     |  101 +-
+>  .../bindings/phy/airoha,an7581-usb-phy.yaml   |   83 ++
+>  MAINTAINERS                                   |   21 +-
+>  arch/arm64/boot/dts/airoha/en7581.dtsi        |   49 +
+>  drivers/clk/clk-en7523.c                      |  340 +++--
+>  drivers/phy/Kconfig                           |   11 +-
+>  drivers/phy/Makefile                          |    5 +-
+>  drivers/phy/airoha/Kconfig                    |   23 +
+>  drivers/phy/airoha/Makefile                   |    4 +
+>  drivers/phy/airoha/phy-airoha-pcie-regs.h     |  494 +++++++
+>  drivers/phy/airoha/phy-airoha-pcie.c          | 1290 +++++++++++++++++
+>  drivers/phy/airoha/phy-airoha-usb.c           |  571 ++++++++
+>  drivers/soc/Kconfig                           |    1 +
+>  drivers/soc/Makefile                          |    1 +
+>  drivers/soc/airoha/Kconfig                    |   18 +
+>  drivers/soc/airoha/Makefile                   |    3 +
+>  drivers/soc/airoha/airoha-scu-ssr.c           |  271 ++++
+>  drivers/usb/host/Kconfig                      |    2 +-
+>  .../dt-bindings/phy/airoha,an7581-usb-phy.h   |   11 +
+>  include/dt-bindings/soc/airoha,scu-ssr.h      |   11 +
+>  include/linux/clk/clk-en7523.h                |   10 +
+>  include/linux/soc/airoha/airoha-scu-ssr.h     |   34 +
+>  22 files changed, 3202 insertions(+), 152 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
+>  create mode 100644 drivers/phy/airoha/Kconfig
+>  create mode 100644 drivers/phy/airoha/Makefile
+>  create mode 100644 drivers/phy/airoha/phy-airoha-pcie-regs.h
+>  create mode 100644 drivers/phy/airoha/phy-airoha-pcie.c
+>  create mode 100644 drivers/phy/airoha/phy-airoha-usb.c
+>  create mode 100644 drivers/soc/airoha/Kconfig
+>  create mode 100644 drivers/soc/airoha/Makefile
+>  create mode 100644 drivers/soc/airoha/airoha-scu-ssr.c
+>  create mode 100644 include/dt-bindings/phy/airoha,an7581-usb-phy.h
+>  create mode 100644 include/dt-bindings/soc/airoha,scu-ssr.h
+>  create mode 100644 include/linux/clk/clk-en7523.h
+>  create mode 100644 include/linux/soc/airoha/airoha-scu-ssr.h
+> 
+> --
+> 2.48.1
+> 
+> 
+> 
 
-Ditto.
 
-> +
-> +  Each internal PHY might require calibration with the fused EFUSE on
-> +  the switch exposed by the Airoha AN8855 SoC NVMEM.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-...
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/airoha/' for 20250320130054.4804-1-ansuelsmth@gmail.com:
+
+arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fab0000: compatible:0: 'mediatek,mtk-xhci' is not one of ['mediatek,mt2701-xhci', 'mediatek,mt2712-xhci', 'mediatek,mt7622-xhci', 'mediatek,mt7623-xhci', 'mediatek,mt7629-xhci', 'mediatek,mt7986-xhci', 'mediatek,mt7988-xhci', 'mediatek,mt8173-xhci', 'mediatek,mt8183-xhci', 'mediatek,mt8186-xhci', 'mediatek,mt8188-xhci', 'mediatek,mt8192-xhci', 'mediatek,mt8195-xhci', 'mediatek,mt8365-xhci']
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
+arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fab0000: compatible: ['mediatek,mtk-xhci'] is too short
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
+arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fad0000: compatible:0: 'mediatek,mtk-xhci' is not one of ['mediatek,mt2701-xhci', 'mediatek,mt2712-xhci', 'mediatek,mt7622-xhci', 'mediatek,mt7623-xhci', 'mediatek,mt7629-xhci', 'mediatek,mt7986-xhci', 'mediatek,mt7988-xhci', 'mediatek,mt8173-xhci', 'mediatek,mt8183-xhci', 'mediatek,mt8186-xhci', 'mediatek,mt8188-xhci', 'mediatek,mt8192-xhci', 'mediatek,mt8195-xhci', 'mediatek,mt8365-xhci']
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
+arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fad0000: compatible: ['mediatek,mtk-xhci'] is too short
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
+
+
+
+
+
 
