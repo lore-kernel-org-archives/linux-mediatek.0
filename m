@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A05C35FFF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 04:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7E7C28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 07:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PTWurHkUIfaDk4NnS/vHF84XrTUC3Ml9SjuPXNvLTuM=; b=gCw1LwaYD8WAxDIjObY+O+aybZ
-	eVHLvhuaLnpWbgERpgjxPZ2hdb06F/mLw+zGEW/ze08TfIBpdUQg/WNf0934CIAfgHn9aes0zF4DB
-	FE2JI1A9MDY93X/OWDSKB9Vbx3WTpDHG/o9MAhqMQ7Veg0zXceCfPYMGWK8DHyVfCabDYrk0Qn/kz
-	+MRvJz2aSed3lyY3mjkHNRi6B/626Z8J2z/XFPcZDnOE6qzsUsznp/3Z930015C74IksEnw41LrkM
-	1HNQeiCvmre6En6RpzCGMbL9o3qvPzJ8jIJKO7Q01f1d/6YyXkXQpSMK/psgyqbnvE82n+dnux/xO
-	OW0AHRBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QZXUJ4VH3AfP2WjMQih2vKgtDXB87pmd/jXX3007I+c=; b=csRsJgknU1/HoHanGtSe3pa85P
+	41hB5I7kDDNeF5bj6o9yYoGnFEDser/qROT16f5iiraFwluErP/PHsrNyaX3dkbiWhmz33bW7bCZv
+	+qcNgUorzQOKRhBybU2QDjm+wnI7u5BNoJFb8U6MpyxkauKVGphooC5Rl5BP4Mw+9l2AYok6URRU/
+	56U4JyiIUmzlqf3YkjksTwVM1n2/ig/Ao/qZPmrbMjH7+9OibMPkUehO6eGf6m/EDhArX5WWMHPun
+	W9XA/XAWRVFLq+7wNDlEURfbCw4Q5fWyOsxB1Vd+FtvMnBdXkrPo8UrSUWFc2bouPbUACTH2iU7uA
+	Ismc3zgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv7Xe-0000000B703-0jbL;
-	Thu, 20 Mar 2025 04:30:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1tvAUE-0000000BQRc-47xk;
+	Thu, 20 Mar 2025 07:38:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv7Vv-0000000B6eJ-1MCh;
-	Thu, 20 Mar 2025 04:28:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 41A9643769;
-	Thu, 20 Mar 2025 04:28:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51EDCC4CEDD;
-	Thu, 20 Mar 2025 04:28:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742444893;
-	bh=aPxXWfMVVlCrz1Tsr1dm7hBdMh7cE/iDLBs/zpr0aQ0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=oCk9eEcJgai12daLGbvcg0HJkOWBEYwzhsn1ivhE/1lPXZp3Sdpey/TBGyPoXuvKJ
-	 70CDvY7zr40/gcyyAW1qzHX6fjrPnEKLvSiUlZm9NZgKsieNYtqhyqNFZp03uJl1SO
-	 hgYLYSug8wCz/wjRTzEpBNn3XfE2Keth0XlFdxX5Pccr5gWZpDzDgeOJUkHySlw/rr
-	 0tV0Ey1gSGXkpGjHZLLSeIlLMULyUW4ar08zl5ofYJk6BVWb8ezhtD4oEA7ZAw/97L
-	 +1MsXSkELbwJVYmxsMLu6dyWxNNmJcD9KKXCMOERm3wRSn831JYpJDqN5rH032Fnr2
-	 W4Kc5wBAPsCAQ==
-Date: Wed, 19 Mar 2025 23:28:12 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tvASV-0000000BQAT-2qbS;
+	Thu, 20 Mar 2025 07:36:56 +0000
+X-UUID: 167372fe055e11f083f2a1c9db70dae0-20250320
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QZXUJ4VH3AfP2WjMQih2vKgtDXB87pmd/jXX3007I+c=;
+	b=Ra7/F6i7QgLfWOnYZ2vFL03qL1+EQL2VQRAzcLBY7UXKoCTnurgd3Qt8cn+GYanholW7fZiGVwazA5P5TwXY0yqYZThhHO05LcxMl1E/ABxMU4KektBOiwDjP0R3GoNNVKOZX0oMscyZNBT32H6zgVK8NC5JPGqlLyRWrP5tziQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:738553b9-e7b7-41a0-8b2a-35422eb66680,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:a81194c6-16da-468a-87f7-8ca8d6b3b9f7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 167372fe055e11f083f2a1c9db70dae0-20250320
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <xueqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1283954900; Thu, 20 Mar 2025 00:36:51 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 20 Mar 2025 15:36:48 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 20 Mar 2025 15:36:47 +0800
+From: Xueqi Zhang <xueqi.zhang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Wendy-st Lin <wendy-st.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<iommu@lists.linux.dev>, Xueqi Zhang <xueqi.zhang@mediatek.com>
+Subject: [PATCH 0/3] Add mt8196 SMI support
+Date: Thu, 20 Mar 2025 15:36:15 +0800
+Message-ID: <20250320073625.25225-1-xueqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Daniel Baluta <daniel.baluta@nxp.com>, 
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- Takashi Iwai <tiwai@suse.com>, Conor Dooley <conor+dt@kernel.org>, 
- Xiangzhi.Tang@mediatek.com, Liam Girdwood <lgirdwood@gmail.com>, 
- linux-sound@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>, 
- Jjian.Zhou@mediatek.com, linux-arm-kernel@lists.infradead.org, 
- Bard Liao <yung-chuan.liao@linux.intel.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
- linux-kernel@vger.kernel.org, sound-open-firmware@alsa-project.org, 
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org
-To: "hailong.fan" <hailong.fan@mediatek.com>
-In-Reply-To: <20250320031753.13669-3-hailong.fan@mediatek.com>
-References: <20250320031753.13669-1-hailong.fan@mediatek.com>
- <20250320031753.13669-3-hailong.fan@mediatek.com>
-Message-Id: <174244489218.3285851.2715414657089059683.robh@kernel.org>
-Subject: Re: [PATCH 2/2] dt-bindings: dsp: mediatek: add mt8196 dsp
- document
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_212815_405368_216DDE38 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20250320_003655_733074_A81A0F00 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +88,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add mt8196 SMI support
 
-On Thu, 20 Mar 2025 11:17:25 +0800, hailong.fan wrote:
-> This patch adds mt8196 dsp document. The dsp is used for Sound Open
-> Firmware driver node. It includes registers,  clocks, memory regions,
-> and mailbox for dsp.
-> 
-> Signed-off-by: hailong.fan <hailong.fan@mediatek.com>
-> ---
->  .../bindings/dsp/mediatek,mt8196-dsp.yaml     | 96 +++++++++++++++++++
->  1 file changed, 96 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8196-dsp.yaml
-> 
+This patchset add mt8196 SMI support. 8196 SMI has several differences
+compared to previous ICs. MT8196 SMI has more than 32 SMI larbs.
+It connects with SMMUv3, rather than MTK_IOMMU.MT8196 SMI commons is
+backed up/restored by RTFF HW.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Xueqi Zhang (3):
+  dt-bindings: memory: mediatek: Add mt8196 support
+  memory: mtk-smi: Add a flag skip_rpm
+  memory: mtk-smi: mt8196: Add smi support
 
-yamllint warnings/errors:
+ .../mediatek,smi-common.yaml                  |   4 +-
+ .../memory-controllers/mediatek,smi-larb.yaml |   4 +-
+ drivers/memory/mtk-smi.c                      | 145 +++++-
+ .../dt-bindings/memory/mt8196-memory-port.h   | 460 ++++++++++++++++++
+ include/dt-bindings/memory/mtk-memory-port.h  |   4 +-
+ 5 files changed, 609 insertions(+), 8 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt8196-memory-port.h
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/dsp/mediatek,mt8196-dsp.example.dts:18:18: fatal error: dt-bindings/clock/mt8196-clk.h: No such file or directory
-   18 |         #include <dt-bindings/clock/mt8196-clk.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/dsp/mediatek,mt8196-dsp.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1522: dt_binding_check] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250320031753.13669-3-hailong.fan@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+-- 
+2.46.0
 
 
