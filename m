@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11656C28B30
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 12:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CC7C28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 12:39:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zCjUOo6f4f2aKtsFcj76bOGdnL6cLXXHgqxOtND+w7Q=; b=L+D1Nu0RxcSTXlNHPTi2gF1Og0
-	2o+gQKu6+Co2f09z3x4t5k7brT21ZkAKYOLWAbezmj/7jvvMTc3ivZQA3fbNVtItZwiqAbUF2MTBh
-	f7ycud5fkc5xFApILATzAtc1SSelZv1EGJL68NGAW93PGlahiL/LU5nLn/GC4BgGh449x/lv9KXD4
-	//zZHj8MXXWRCcEf5CyRHgA+xoic8L5zsXh13/Js5UiP+hNe2e0kWTboomVB/NpbVfxv45T/dPbwF
-	qpujz4h9dP2jMAXAZQw4xenk/yY+I1TWzvF4F5L+1joyDrhAhIVGyXNH5/o7HzUWvUUlFQphfnGj2
-	V10VZVyg==;
+	bh=pQZEMk5uxu2RnQeRtrGHw5qeWTKppv7vX5kitaP2+/A=; b=qUcHnNeZGzWt4mzso2QMH5JkT0
+	Z4ZxlESr7rKi/tEqzd258cy3MHJF873e5dwLewjmwSMf23zB0vYoCq9v7cUh6Y+acayY9FFiI05ky
+	pBMsz+xu0Ah68poP/b8byDzYRSKlOmDCON+uQ15XgtP+GCUjVnULR090PZozWcdBLfKfNPmztWnxZ
+	mO7PuuZ2Gk9uDzcFgoRRhlBRM+U+TWeAsKBm20wloRAarUNNQaW5Dxv2f9M923bRH1V6a+pe6LPhq
+	MKWterz+6Q6lUoJ5GUgjFH1C6oRbVgkj/tky1WCB+ETXOo7DuFCDiPnl5w7Ug+4LEgNgpoQ5k1jHQ
+	cehwg0Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvEx5-0000000C6dk-0i3u;
-	Thu, 20 Mar 2025 12:24:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tvFBT-0000000C8Mi-1O8E;
+	Thu, 20 Mar 2025 12:39:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvEkh-0000000C4d0-2Lke;
-	Thu, 20 Mar 2025 12:12:00 +0000
+	id 1tvF9k-0000000C8GH-2kEQ;
+	Thu, 20 Mar 2025 12:37:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742472718;
-	bh=G3JcQ/BlgiQc0S/ReTq/dq8fSXnz9sfijl/eiZ8CcP8=;
+	s=mail; t=1742474270;
+	bh=2v6ILyqttbXUiv4liYlyocig8g6a+R2OPkWZP9wB3lI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FffAY59isVRHorZrbhXD+n65VxxVz63oUb0XIQRTjRlee6CWGE+r42VpQhlM1ylq6
-	 /szAIG3T8mtS3pVeLHYE7Y7gOkeW5fzMECbCdvo2EwMhsRucGnIYMh660i0K9VHubV
-	 AAbH2F7u57j+nI98KomtsbGkemVqS+DwThJVrMiHNmNd8CI/jhYIG14bBS5g+aotEx
-	 wCeKeO7T9n9cM8WzC6+a86Itp7Z3eOnRSfu1iKjs7SA+Uz+pV0cIvANNHs6fqxMUO6
-	 ew/rWmHaUgRZDGlXAUEmynRp1ajG4k/sjYtdfhCPEB5Q9S5m1ef4JaCpEbXUFz1nbu
-	 kHuS9cYcgEnkA==
+	b=jtWiv98fy9Al8vyV+M3JtrUh8RqEfqnXvhgoQmp8Prasqxqk4yqLbL1+t/HhBCNBT
+	 mMuwSiumysP9A9M0EdPDnKyJ4x3/BS++C5CD+35NvDyJc/iCeHg5dvaUuuOvYF2MFu
+	 8LLI5LdW6Jp12cSTwjwUmWCIUrIZor0i/KzZRPXtLAzfv2X3O4v2MJXhDMeGuHe47I
+	 DjJmyPmSqGRN1FchXbNK/kaQo21EC6EQlYS6U3/p7XAcEpeRN6IswL8Wmb+xItvsi8
+	 Wx+IoPNfaF7jNdTUkoegxHKdHO+qQifLIkRfiiC5KnsmHfjFhSfgj6Cm7JU8HXHen8
+	 gJ4MNiTOhPkDw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F1DD17E0607;
-	Thu, 20 Mar 2025 13:11:57 +0100 (CET)
-Message-ID: <46e0e1f1-e094-40f9-99f9-22678bb40d39@collabora.com>
-Date: Thu, 20 Mar 2025 13:11:56 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E874F17E02AF;
+	Thu, 20 Mar 2025 13:37:49 +0100 (CET)
+Message-ID: <d70b62f8-e24e-4a10-8c6b-18d2e19f1337@collabora.com>
+Date: Thu, 20 Mar 2025 13:37:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] memory: mtk-smi: Add a flag skip_rpm
-To: Xueqi Zhang <xueqi.zhang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Wendy-st Lin <wendy-st.lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- iommu@lists.linux.dev
-References: <20250320073625.25225-1-xueqi.zhang@mediatek.com>
- <20250320073625.25225-3-xueqi.zhang@mediatek.com>
+Subject: Re: [PATCH v8 2/3] drm/panel: startek-kd070fhfid015: add another init
+ step
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <quic_jesszhan@quicinc.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+References: <20231023-display-support-v8-0-c2dd7b0fb2bd@baylibre.com>
+ <20231023-display-support-v8-2-c2dd7b0fb2bd@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250320073625.25225-3-xueqi.zhang@mediatek.com>
+In-Reply-To: <20231023-display-support-v8-2-c2dd7b0fb2bd@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_051159_749982_40B666A8 
-X-CRM114-Status: GOOD (  21.90  )
+X-CRM114-CacheID: sfid-20250320_053752_885348_1DE70091 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,77 +85,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/03/25 08:36, Xueqi Zhang ha scritto:
-> MT8196 SMI commons is backed up/restored by RTFF HW.
-> It doesn't need SW control the register backup/store
-> in the runtime callback.Therefore, add a flag skip_rpm
-> to help skip RPM operations for SMI commons.
+Il 20/03/25 09:48, Alexandre Mergnat ha scritto:
+> Currently, the panel set power, set gpio and enable the display link
+> in stk_panel_prepare, pointed by drm_panel_funcs.prepare, called by
+> panel_bridge_atomic_pre_enable, pointed by
+> drm_bridge_funcs.atomic_pre_enable. According to the drm_bridge.h,
+> atomic_pre_enable must not enable the display link
 > 
-> Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
+> Since the DSI driver is properly inited by the DRM, the panel try to
+> communicate with the panel before DSI is powered on.
+> 
 
-So the MT8196 SMI common doesn't require any clocks?
+The panel driver shall still be able to send commands in the .prepare() callback
+and if this is not happening anymore... well, there's a problem!
 
-That's fine for me, but this looks bloody similar to MT6989's SMI common, which
-is SMI GEN3 and not GEN2....
+> To solve that, use stk_panel_enable to enable the display link because
+> it's called after the mtk_dsi_bridge_atomic_pre_enable which is power
+> on the DSI.
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>   .../gpu/drm/panel/panel-startek-kd070fhfid015.c    | 25 +++++++++++++---------
+>   1 file changed, 15 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c b/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
+> index c0c95355b7435..bc3c4038bf4f5 100644
+> --- a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
+> +++ b/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
+> @@ -135,19 +135,9 @@ static int stk_panel_prepare(struct drm_panel *panel)
+>   	gpiod_set_value(stk->enable_gpio, 1);
+>   	mdelay(20);
+>   	gpiod_set_value(stk->reset_gpio, 1);
+> -	mdelay(10);
+> -	ret = stk_panel_init(stk);
+> -	if (ret < 0)
+> -		goto poweroff;
 
-....so, are you sure that you need a `skip_rpm` flag and not new MTK_SMI_GEN3 and
-MTK_SMI_GEN3_SUB_COMM types? :-)
+Also, you're moving both init and set_display_on to the enable callback...
+this is suboptimal.
 
-Regards,
+You should do the DrIC setup in .prepare() (can include SLEEP OUT), and then you
+should have a .enable() callback that calls DISP ON, a .disable() callback that
+calls DISP OFF, and .unprepare() that turns everything off.
+
+Cheers,
 Angelo
 
-> ---
->   drivers/memory/mtk-smi.c | 11 ++++++++---
->   1 file changed, 8 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index a8f5467d6b31..b9affa3c3185 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -123,6 +123,7 @@ static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1
->   struct mtk_smi_common_plat {
->   	enum mtk_smi_type	type;
->   	bool			has_gals;
-> +	bool			skip_rpm;
->   	u32			bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
+> -
+> -	ret = stk_panel_on(stk);
+> -	if (ret < 0)
+> -		goto poweroff;
 >   
->   	const struct mtk_smi_reg_pair	*init;
-> @@ -547,6 +548,9 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
->   {
->   	int i, ret;
->   
-> +	if (smi->plat->skip_rpm)
-> +		return 0;
-> +
->   	for (i = 0; i < clk_nr_required; i++)
->   		smi->clks[i].id = clks[i];
->   	ret = devm_clk_bulk_get(dev, clk_nr_required, smi->clks);
-> @@ -783,7 +787,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
->   	common->dev = dev;
->   	common->plat = of_device_get_match_data(dev);
->   
-> -	if (common->plat->has_gals) {
-> +	if (!common->plat->skip_rpm && common->plat->has_gals) {
->   		if (common->plat->type == MTK_SMI_GEN2)
->   			clk_required = MTK_SMI_COM_GALS_REQ_CLK_NR;
->   		else if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
-> @@ -814,13 +818,14 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
->   	}
->   
->   	/* link its smi-common if this is smi-sub-common */
-> -	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM) {
-> +	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM && !common->plat->skip_rpm) {
->   		ret = mtk_smi_device_link_common(dev, &common->smi_common_dev);
->   		if (ret < 0)
->   			return ret;
->   	}
->   
-> -	pm_runtime_enable(dev);
-> +	if (!common->plat->skip_rpm)
-> +		pm_runtime_enable(dev);
->   	platform_set_drvdata(pdev, common);
 >   	return 0;
+>   
+> -poweroff:
+> -	regulator_disable(stk->supplies[POWER].consumer);
+>   iovccoff:
+>   	regulator_disable(stk->supplies[IOVCC].consumer);
+>   	gpiod_set_value(stk->reset_gpio, 0);
+> @@ -156,6 +146,20 @@ static int stk_panel_prepare(struct drm_panel *panel)
+>   	return ret;
 >   }
+>   
+> +static int stk_panel_enable(struct drm_panel *panel)
+> +{
+> +	struct stk_panel *stk = to_stk_panel(panel);
+> +	int ret;
+> +
+> +	ret = stk_panel_init(stk);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	ret = stk_panel_on(stk);
+> +
+> +	return ret;
+> +}
+> +
+>   static const struct drm_display_mode default_mode = {
+>   		.clock = 163204,
+>   		.hdisplay = 1200,
+> @@ -239,6 +243,7 @@ drm_panel_create_dsi_backlight(struct mipi_dsi_device *dsi)
+>   }
+>   
+>   static const struct drm_panel_funcs stk_panel_funcs = {
+> +	.enable = stk_panel_enable,
+>   	.unprepare = stk_panel_unprepare,
+>   	.prepare = stk_panel_prepare,
+>   	.get_modes = stk_panel_get_modes,
+> 
+
 
 
 
