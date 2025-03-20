@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329D1C28B30
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 10:37:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF939C36000
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 12:09:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OrpCQ53D7OxCMh2IYIqWxT+mJxUXQdsEbpSrt2VKJpo=; b=JecaY61zBPe7LxOejMyL5sQN3s
-	QSOG9NJcDPBRGrnkcUs+xhHLVC9o4f7Fp3T/H7iV6Ebiw33kWsGMPvKWQvsfL2/CrGW/tu5Gak7Eo
-	7gvtCLkQSw9PKixUiASM5Yig16Rg/0nbwqpchcJhZ2+dVZUDP7seaJvgHkvRHwHJNwNkGIFzXQKEF
-	Iayk/SyZvZ549J6mqkb/uINN02oalfjErnxgPfWA3HzFwHZtytXJPzWWiwKhTy/DolsRHq1123CcO
-	bZ52EmD3wtY5hHHjdgb9ezsTERsMaD/H9llbsdZeTizsttuDIWfciBObA5s/Oy/TGCBUkLweNNwI5
-	DOvDpc6Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eEOqTJko+oTOUSj3V0YGDkeup7b8mCcQ6XKvJkNydSY=; b=cBwvFFKDP68sD/CedrsGLSUl6o
+	mHxwiX7eWcuS2sBzZjXRJfodfnvO2hj//h4gmvI41j3j32EIjwg927nV3VI+ib+jaA9UmS7Vc7hlQ
+	mXUkY38P/pm9y4TysVK+GGbq9en9meoVquSQRV58aa1uy8pSGjOpTAS4u2PK/II9NmBRRyWtTY4O+
+	wHNCwo5x7bhLsWdjyqJEZuL3exTtrD/17BLr1evWY531hfIhk6u2R/+ODr9zapErxdU23P8iWpjBw
+	Kp8qlg5vsopvQUSFJ2FcwxbUHY93cI6Cbz40uvp27WVkMUcV0VqMpR1FEIWP6cgYtnk0AV+wGzPgm
+	5hGFM7Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvDH2-0000000Bphg-2LY8;
-	Thu, 20 Mar 2025 10:37:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tvEi1-0000000C3tl-0emc;
+	Thu, 20 Mar 2025 12:09:13 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvDDi-0000000BpIx-0j5C;
-	Thu, 20 Mar 2025 10:33:51 +0000
+	id 1tvESP-0000000C0aD-45Dy;
+	Thu, 20 Mar 2025 11:53:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742466826;
-	bh=B9Ki//9iYq86oCfYqOWVMz9KXkrveoc2XfDUrCHNllQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ldQ15eiJXcEsRMalSLnsahQv69s8e8pN3qsq9WHFWXn19xqHqaQ3fCQTdDdFoz737
-	 qMRwdWerbkjoOoE40e9hXTQ3K1+Uzl65qR4VnM4E7HSyn5aDWa5yp650QohTGcWdLe
-	 u8bt0u7X01Etjfy4J9PHJRNMjcMJjqhcET0tiJ+BOMm3RLKoFXm52ZiDZ28v61OdY9
-	 FnHShgeoRUWg0hK1jLLhSqL0CqNbmzf+zTsOqMfjpevqI2NAbHlNmRMG1PQpPzhnPe
-	 i1j/ApT8t8C5Vs5ScJMi2chBF85OW5PBtr7VvOdjuQZ0kw7d6X7zZ936PoTJddgQxL
-	 YuPJig8zspprA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1742471584;
+	bh=DFmnp1QXbp1zbNyOMComr+3s6U/bXRD/s4yTBs1ypYc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=R5GlhjY+u51qyjEOA6bkO0AHVE5C3U61OEgOqFcm8Dsf/4GLoP+DdkoICRcu7dese
+	 N40VkYjRidSNb/DYxkRXDPnRaIvhKzLH7/hD2Vui+SVqSoelC7n5L9pQBoPJ7UlJ0/
+	 GVz1ZjPfn3x/FcrIg9aC8PSNCFT69meE2YHWhUErSh4VRzXKdVGfqvE0NwchbXpqAL
+	 5xmxlK5Y37C5tCDjZKccNoIndYvqj2Loih9kFhiUD/PHq6Ak/0ZTEaGKKFUHugrrrj
+	 tg0D5PJM6Er2ogsxcJj60gkaOTqwJJ23cLj+qZiwd+l3+Ldfog8zOtsdOpkaJQkitB
+	 1C2NUEiUOAPfg==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 011D917E0D66;
-	Thu, 20 Mar 2025 11:33:45 +0100 (CET)
-Message-ID: <be4af783-3b98-439b-be3d-30d6ff520d2e@collabora.com>
-Date: Thu, 20 Mar 2025 11:33:45 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: remoteproc: mediatek: Remove l1tcm for
- dual-core MT8188 SCP
-To: =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "andersson@kernel.org" <andersson@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
- "mathieu.poirier@linaro.org" <mathieu.poirier@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Nicolas Prado <nfraprado@collabora.com>,
- =?UTF-8?B?T2xpdmlhIFdlbiAo5rip5YCp6IuTKQ==?= <Olivia.Wen@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>
-Cc: "linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>
-References: <20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com>
- <20250318-scp-dual-core-mt8390-v1-2-8733e192cc73@collabora.com>
- <70c10764-121b-43f5-931e-84ffd666c594@collabora.com>
- <b0872ee008c3c6a2731f949d8c2be77aa49341f7.camel@mediatek.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BBC6D17E017D;
+	Thu, 20 Mar 2025 12:53:02 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <b0872ee008c3c6a2731f949d8c2be77aa49341f7.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: lgirdwood@gmail.com
+Cc: peter.ujfalusi@linux.intel.com,
+	yung-chuan.liao@linux.intel.com,
+	ranjani.sridharan@linux.intel.com,
+	daniel.baluta@nxp.com,
+	kai.vehmanen@linux.intel.com,
+	pierre-louis.bossart@linux.dev,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	christophe.jaillet@wanadoo.fr,
+	gregkh@linuxfoundation.org,
+	peterz@infradead.org,
+	krzk@kernel.org,
+	lee.lockhey@gmail.com,
+	u.kleine-koenig@baylibre.com,
+	cujomalainey@chromium.org,
+	jakiela@google.com,
+	sound-open-firmware@alsa-project.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] ASoC: SOF: mediatek: Commonize duplicated functions
+Date: Thu, 20 Mar 2025 12:53:00 +0100
+Message-ID: <20250320115300.137410-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.48.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_033350_366117_A59447E1 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20250320_045306_325676_F3C3E54F 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,50 +93,484 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/03/25 02:28, Moudy Ho (何宗原) ha scritto:
-> On Wed, 2025-03-19 at 10:34 +0100, AngeloGioacchino Del Regno wrote:
->>
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> Il 18/03/25 23:22, Nícolas F. R. A. Prado ha scritto:
->>> The SCP present on MT8188 does not have an L1TCM memory region, but
->>> the
->>> binding incorrectly requires one for the dual-core description of
->>> the
->>> MT8188 SCP. Remove that requirement. Also update the minimum number
->>> of
->>> reg and reg-names to 1, since as this is a multi-core SCP with no
->>> L1TCM memory, only the CFG memory region is present in the parent
->>> node.
->>>
->>> Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support
->>> MT8188 dual-core SCP")
->>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>
->> As far as I know, the L1TCM is present on MT8188, and it's at
->> 0x1070000 len 0x8000
->> exactly like MT8195.
->>
->> Moudy, are you able to please confirm or deny that?
->>
->> Cheers,
->> Angelo
->>
->>
-> 
-> Hi Angelo,
-> 
-> Unfortunately, during the transition from MT8195 to MT8188, the SCP
-> removed the L1TCM, retaining only the SRAM and config register.
-> For detailed hardware changes, you can refer to Tinghan's previous
-> description at the following link.
-> 
-> ref:
-> https://lore.kernel.org/all/20220715051821.30707-3-tinghan.shen@mediatek.com/
-> 
-Thanks Moudy!
+In order to reduce duplication, move the ADSP mailbox callbacks
+handle_reply(), handle_request(), and other common SOF callbacks
+send_msg(), get_bar_index(), pcm_hw_params() and pcm_pointer()
+to the mtk-adsp-common.c file.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This cleanup brings no functional differences.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ sound/soc/sof/mediatek/mt8186/mt8186.c   | 105 ++----------------
+ sound/soc/sof/mediatek/mt8195/mt8195.c   | 105 ++----------------
+ sound/soc/sof/mediatek/mtk-adsp-common.c | 130 +++++++++++++++++++++++
+ sound/soc/sof/mediatek/mtk-adsp-common.h |  10 ++
+ 4 files changed, 152 insertions(+), 198 deletions(-)
+
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 31437fdd4e92..a5291099493e 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -22,7 +22,6 @@
+ #include <sound/sof/xtensa.h>
+ #include "../../ops.h"
+ #include "../../sof-of-dev.h"
+-#include "../../sof-audio.h"
+ #include "../adsp_helper.h"
+ #include "../mtk-adsp-common.h"
+ #include "mt8186.h"
+@@ -38,53 +37,9 @@ static int mt8186_get_window_offset(struct snd_sof_dev *sdev, u32 id)
+ 	return MBOX_OFFSET;
+ }
+ 
+-static int mt8186_send_msg(struct snd_sof_dev *sdev,
+-			   struct snd_sof_ipc_msg *msg)
+-{
+-	struct adsp_priv *priv = sdev->pdata->hw_pdata;
+-
+-	sof_mailbox_write(sdev, sdev->host_box.offset, msg->msg_data,
+-			  msg->msg_size);
+-
+-	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
+-}
+-
+-static void mt8186_dsp_handle_reply(struct mtk_adsp_ipc *ipc)
+-{
+-	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
+-	unsigned long flags;
+-
+-	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
+-	snd_sof_ipc_process_reply(priv->sdev, 0);
+-	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
+-}
+-
+-static void mt8186_dsp_handle_request(struct mtk_adsp_ipc *ipc)
+-{
+-	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
+-	u32 p; /* panic code */
+-	int ret;
+-
+-	/* Read the message from the debug box. */
+-	sof_mailbox_read(priv->sdev, priv->sdev->debug_box.offset + 4,
+-			 &p, sizeof(p));
+-
+-	/* Check to see if the message is a panic code 0x0dead*** */
+-	if ((p & SOF_IPC_PANIC_MAGIC_MASK) == SOF_IPC_PANIC_MAGIC) {
+-		snd_sof_dsp_panic(priv->sdev, p, true);
+-	} else {
+-		snd_sof_ipc_msgs_rx(priv->sdev);
+-
+-		/* tell DSP cmd is done */
+-		ret = mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_RSP, MTK_ADSP_IPC_OP_RSP);
+-		if (ret)
+-			dev_err(priv->dev, "request send ipc failed");
+-	}
+-}
+-
+ static const struct mtk_adsp_ipc_ops dsp_ops = {
+-	.handle_reply		= mt8186_dsp_handle_reply,
+-	.handle_request		= mt8186_dsp_handle_request,
++	.handle_reply		= mtk_adsp_handle_reply,
++	.handle_request		= mtk_adsp_handle_request,
+ };
+ 
+ static int platform_parse_resource(struct platform_device *pdev, void *data)
+@@ -381,54 +336,6 @@ static int mt8186_dsp_resume(struct snd_sof_dev *sdev)
+ 	return ret;
+ }
+ 
+-/* on mt8186 there is 1 to 1 match between type and BAR idx */
+-static int mt8186_get_bar_index(struct snd_sof_dev *sdev, u32 type)
+-{
+-	return type;
+-}
+-
+-static int mt8186_pcm_hw_params(struct snd_sof_dev *sdev,
+-				struct snd_pcm_substream *substream,
+-				struct snd_pcm_hw_params *params,
+-				struct snd_sof_platform_stream_params *platform_params)
+-{
+-	platform_params->cont_update_posn = 1;
+-
+-	return 0;
+-}
+-
+-static snd_pcm_uframes_t mt8186_pcm_pointer(struct snd_sof_dev *sdev,
+-					    struct snd_pcm_substream *substream)
+-{
+-	int ret;
+-	snd_pcm_uframes_t pos;
+-	struct snd_sof_pcm *spcm;
+-	struct sof_ipc_stream_posn posn;
+-	struct snd_sof_pcm_stream *stream;
+-	struct snd_soc_component *scomp = sdev->component;
+-	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
+-
+-	spcm = snd_sof_find_spcm_dai(scomp, rtd);
+-	if (!spcm) {
+-		dev_warn_ratelimited(sdev->dev, "warn: can't find PCM with DAI ID %d\n",
+-				     rtd->dai_link->id);
+-		return 0;
+-	}
+-
+-	stream = &spcm->stream[substream->stream];
+-	ret = snd_sof_ipc_msg_data(sdev, stream, &posn, sizeof(posn));
+-	if (ret < 0) {
+-		dev_warn(sdev->dev, "failed to read stream position: %d\n", ret);
+-		return 0;
+-	}
+-
+-	memcpy(&stream->posn, &posn, sizeof(posn));
+-	pos = spcm->stream[substream->stream].posn.host_posn;
+-	pos = bytes_to_frames(substream->runtime, pos);
+-
+-	return pos;
+-}
+-
+ static void mt8186_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
+ {
+ 	u32 dbg_pc, dbg_data, dbg_inst, dbg_ls0stat, dbg_status, faultinfo;
+@@ -505,19 +412,19 @@ static const struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	.read64		= sof_io_read64,
+ 
+ 	/* ipc */
+-	.send_msg		= mt8186_send_msg,
++	.send_msg		= mtk_adsp_send_msg,
+ 	.get_mailbox_offset	= mt8186_get_mailbox_offset,
+ 	.get_window_offset	= mt8186_get_window_offset,
+ 	.ipc_msg_data		= sof_ipc_msg_data,
+ 	.set_stream_data_offset = sof_set_stream_data_offset,
+ 
+ 	/* misc */
+-	.get_bar_index	= mt8186_get_bar_index,
++	.get_bar_index	= mtk_adsp_get_bar_index,
+ 
+ 	/* stream callbacks */
+ 	.pcm_open	= sof_stream_pcm_open,
+-	.pcm_hw_params	= mt8186_pcm_hw_params,
+-	.pcm_pointer	= mt8186_pcm_pointer,
++	.pcm_hw_params	= mtk_adsp_stream_pcm_hw_params,
++	.pcm_pointer	= mtk_adsp_stream_pcm_pointer,
+ 	.pcm_close	= sof_stream_pcm_close,
+ 
+ 	/* firmware loading */
+diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
+index 371563d7ce79..498d417e2829 100644
+--- a/sound/soc/sof/mediatek/mt8195/mt8195.c
++++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
+@@ -22,7 +22,6 @@
+ #include <sound/sof/xtensa.h>
+ #include "../../ops.h"
+ #include "../../sof-of-dev.h"
+-#include "../../sof-audio.h"
+ #include "../adsp_helper.h"
+ #include "../mtk-adsp-common.h"
+ #include "mt8195.h"
+@@ -38,53 +37,9 @@ static int mt8195_get_window_offset(struct snd_sof_dev *sdev, u32 id)
+ 	return MBOX_OFFSET;
+ }
+ 
+-static int mt8195_send_msg(struct snd_sof_dev *sdev,
+-			   struct snd_sof_ipc_msg *msg)
+-{
+-	struct adsp_priv *priv = sdev->pdata->hw_pdata;
+-
+-	sof_mailbox_write(sdev, sdev->host_box.offset, msg->msg_data,
+-			  msg->msg_size);
+-
+-	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
+-}
+-
+-static void mt8195_dsp_handle_reply(struct mtk_adsp_ipc *ipc)
+-{
+-	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
+-	unsigned long flags;
+-
+-	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
+-	snd_sof_ipc_process_reply(priv->sdev, 0);
+-	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
+-}
+-
+-static void mt8195_dsp_handle_request(struct mtk_adsp_ipc *ipc)
+-{
+-	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
+-	u32 p; /* panic code */
+-	int ret;
+-
+-	/* Read the message from the debug box. */
+-	sof_mailbox_read(priv->sdev, priv->sdev->debug_box.offset + 4,
+-			 &p, sizeof(p));
+-
+-	/* Check to see if the message is a panic code 0x0dead*** */
+-	if ((p & SOF_IPC_PANIC_MAGIC_MASK) == SOF_IPC_PANIC_MAGIC) {
+-		snd_sof_dsp_panic(priv->sdev, p, true);
+-	} else {
+-		snd_sof_ipc_msgs_rx(priv->sdev);
+-
+-		/* tell DSP cmd is done */
+-		ret = mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_RSP, MTK_ADSP_IPC_OP_RSP);
+-		if (ret)
+-			dev_err(priv->dev, "request send ipc failed");
+-	}
+-}
+-
+ static const struct mtk_adsp_ipc_ops dsp_ops = {
+-	.handle_reply		= mt8195_dsp_handle_reply,
+-	.handle_request		= mt8195_dsp_handle_request,
++	.handle_reply		= mtk_adsp_handle_reply,
++	.handle_request		= mtk_adsp_handle_request,
+ };
+ 
+ static int platform_parse_resource(struct platform_device *pdev, void *data)
+@@ -400,54 +355,6 @@ static int mt8195_dsp_resume(struct snd_sof_dev *sdev)
+ 	return ret;
+ }
+ 
+-/* on mt8195 there is 1 to 1 match between type and BAR idx */
+-static int mt8195_get_bar_index(struct snd_sof_dev *sdev, u32 type)
+-{
+-	return type;
+-}
+-
+-static int mt8195_pcm_hw_params(struct snd_sof_dev *sdev,
+-				struct snd_pcm_substream *substream,
+-				struct snd_pcm_hw_params *params,
+-				struct snd_sof_platform_stream_params *platform_params)
+-{
+-	platform_params->cont_update_posn = 1;
+-
+-	return 0;
+-}
+-
+-static snd_pcm_uframes_t mt8195_pcm_pointer(struct snd_sof_dev *sdev,
+-					    struct snd_pcm_substream *substream)
+-{
+-	int ret;
+-	snd_pcm_uframes_t pos;
+-	struct snd_sof_pcm *spcm;
+-	struct sof_ipc_stream_posn posn;
+-	struct snd_sof_pcm_stream *stream;
+-	struct snd_soc_component *scomp = sdev->component;
+-	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
+-
+-	spcm = snd_sof_find_spcm_dai(scomp, rtd);
+-	if (!spcm) {
+-		dev_warn_ratelimited(sdev->dev, "warn: can't find PCM with DAI ID %d\n",
+-				     rtd->dai_link->id);
+-		return 0;
+-	}
+-
+-	stream = &spcm->stream[substream->stream];
+-	ret = snd_sof_ipc_msg_data(sdev, stream, &posn, sizeof(posn));
+-	if (ret < 0) {
+-		dev_warn(sdev->dev, "failed to read stream position: %d\n", ret);
+-		return 0;
+-	}
+-
+-	memcpy(&stream->posn, &posn, sizeof(posn));
+-	pos = spcm->stream[substream->stream].posn.host_posn;
+-	pos = bytes_to_frames(substream->runtime, pos);
+-
+-	return pos;
+-}
+-
+ static void mt8195_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
+ {
+ 	u32 dbg_pc, dbg_data, dbg_bus0, dbg_bus1, dbg_inst;
+@@ -529,19 +436,19 @@ static const struct snd_sof_dsp_ops sof_mt8195_ops = {
+ 	.read64		= sof_io_read64,
+ 
+ 	/* ipc */
+-	.send_msg		= mt8195_send_msg,
++	.send_msg		= mtk_adsp_send_msg,
+ 	.get_mailbox_offset	= mt8195_get_mailbox_offset,
+ 	.get_window_offset	= mt8195_get_window_offset,
+ 	.ipc_msg_data		= sof_ipc_msg_data,
+ 	.set_stream_data_offset = sof_set_stream_data_offset,
+ 
+ 	/* misc */
+-	.get_bar_index	= mt8195_get_bar_index,
++	.get_bar_index	= mtk_adsp_get_bar_index,
+ 
+ 	/* stream callbacks */
+ 	.pcm_open	= sof_stream_pcm_open,
+-	.pcm_hw_params	= mt8195_pcm_hw_params,
+-	.pcm_pointer	= mt8195_pcm_pointer,
++	.pcm_hw_params	= mtk_adsp_stream_pcm_hw_params,
++	.pcm_pointer	= mtk_adsp_stream_pcm_pointer,
+ 	.pcm_close	= sof_stream_pcm_close,
+ 
+ 	/* firmware loading */
+diff --git a/sound/soc/sof/mediatek/mtk-adsp-common.c b/sound/soc/sof/mediatek/mtk-adsp-common.c
+index 20bcf5590eb8..01bbadb160ff 100644
+--- a/sound/soc/sof/mediatek/mtk-adsp-common.c
++++ b/sound/soc/sof/mediatek/mtk-adsp-common.c
+@@ -12,8 +12,11 @@
+  */
+ 
+ #include <linux/module.h>
++#include <sound/asound.h>
+ #include <sound/sof/xtensa.h>
+ #include "../ops.h"
++#include "../sof-audio.h"
++#include "adsp_helper.h"
+ #include "mtk-adsp-common.h"
+ 
+ /**
+@@ -81,5 +84,132 @@ void mtk_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
+ }
+ EXPORT_SYMBOL(mtk_adsp_dump);
+ 
++/**
++ * mtk_adsp_send_msg - Send message to Audio DSP
++ * @sdev: SOF device
++ * @msg: SOF IPC Message to send
++ */
++int mtk_adsp_send_msg(struct snd_sof_dev *sdev, struct snd_sof_ipc_msg *msg)
++{
++	struct adsp_priv *priv = sdev->pdata->hw_pdata;
++
++	sof_mailbox_write(sdev, sdev->host_box.offset, msg->msg_data,
++			  msg->msg_size);
++
++	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
++}
++EXPORT_SYMBOL(mtk_adsp_send_msg);
++
++/**
++ * mtk_adsp_handle_reply - Handle reply from the Audio DSP through Mailbox
++ * @ipc: ADSP IPC handle
++ */
++void mtk_adsp_handle_reply(struct mtk_adsp_ipc *ipc)
++{
++	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
++	unsigned long flags;
++
++	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
++	snd_sof_ipc_process_reply(priv->sdev, 0);
++	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
++}
++EXPORT_SYMBOL(mtk_adsp_handle_reply);
++
++/**
++ * mtk_adsp_handle_request - Handle request from the Audio DSP through Mailbox
++ * @ipc: ADSP IPC handle
++ */
++void mtk_adsp_handle_request(struct mtk_adsp_ipc *ipc)
++{
++	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
++	u32 panic_code;
++	int ret;
++
++	/* Read the message from the debug box. */
++	sof_mailbox_read(priv->sdev, priv->sdev->debug_box.offset + 4,
++			 &panic_code, sizeof(panic_code));
++
++	/* Check to see if the message is a panic code 0x0dead*** */
++	if ((panic_code & SOF_IPC_PANIC_MAGIC_MASK) == SOF_IPC_PANIC_MAGIC) {
++		snd_sof_dsp_panic(priv->sdev, panic_code, true);
++	} else {
++		snd_sof_ipc_msgs_rx(priv->sdev);
++
++		/* Tell DSP cmd is done */
++		ret = mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_RSP, MTK_ADSP_IPC_OP_RSP);
++		if (ret)
++			dev_err(priv->dev, "request send ipc failed");
++	}
++}
++EXPORT_SYMBOL(mtk_adsp_handle_request);
++
++/**
++ * mtk_adsp_get_bar_index - Map section type with BAR idx
++ * @sdev: SOF device
++ * @type: Section type as described by snd_sof_fw_blk_type
++ *
++ * MediaTek Audio DSPs have a 1:1 match between type and BAR idx
++ */
++int mtk_adsp_get_bar_index(struct snd_sof_dev *sdev, u32 type)
++{
++	return type;
++}
++EXPORT_SYMBOL(mtk_adsp_get_bar_index);
++
++/**
++ * mtk_adsp_stream_pcm_hw_params - Platform specific host stream hw params
++ * @sdev: SOF device
++ * @substream: PCM Substream
++ * @params: hw params
++ * @platform_params: Platform specific SOF stream parameters
++ */
++int mtk_adsp_stream_pcm_hw_params(struct snd_sof_dev *sdev,
++				  struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params,
++				  struct snd_sof_platform_stream_params *platform_params)
++{
++	platform_params->cont_update_posn = 1;
++	return 0;
++}
++EXPORT_SYMBOL(mtk_adsp_stream_pcm_hw_params);
++
++/**
++ * mtk_adsp_stream_pcm_pointer - Get host stream pointer
++ * @sdev: SOF device
++ * @substream: PCM substream
++ */
++snd_pcm_uframes_t mtk_adsp_stream_pcm_pointer(struct snd_sof_dev *sdev,
++					      struct snd_pcm_substream *substream)
++{
++	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
++	struct snd_soc_component *scomp = sdev->component;
++	struct snd_sof_pcm_stream *stream;
++	struct sof_ipc_stream_posn posn;
++	struct snd_sof_pcm *spcm;
++	snd_pcm_uframes_t pos;
++	int ret;
++
++	spcm = snd_sof_find_spcm_dai(scomp, rtd);
++	if (!spcm) {
++		dev_warn_ratelimited(sdev->dev, "warn: can't find PCM with DAI ID %d\n",
++				     rtd->dai_link->id);
++		return 0;
++	}
++
++	stream = &spcm->stream[substream->stream];
++	ret = snd_sof_ipc_msg_data(sdev, stream, &posn, sizeof(posn));
++	if (ret < 0) {
++		dev_warn(sdev->dev, "failed to read stream position: %d\n", ret);
++		return 0;
++	}
++
++	memcpy(&stream->posn, &posn, sizeof(posn));
++	pos = spcm->stream[substream->stream].posn.host_posn;
++	pos = bytes_to_frames(substream->runtime, pos);
++
++	return pos;
++}
++EXPORT_SYMBOL(mtk_adsp_stream_pcm_pointer);
++
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_DESCRIPTION("SOF helpers for MTK ADSP platforms");
+diff --git a/sound/soc/sof/mediatek/mtk-adsp-common.h b/sound/soc/sof/mediatek/mtk-adsp-common.h
+index 612cff1f38f7..dc36b91d6779 100644
+--- a/sound/soc/sof/mediatek/mtk-adsp-common.h
++++ b/sound/soc/sof/mediatek/mtk-adsp-common.h
+@@ -7,4 +7,14 @@
+ #define MTK_ADSP_STACK_DUMP_SIZE 32
+ 
+ void mtk_adsp_dump(struct snd_sof_dev *sdev, u32 flags);
++int mtk_adsp_send_msg(struct snd_sof_dev *sdev, struct snd_sof_ipc_msg *msg);
++void mtk_adsp_handle_reply(struct mtk_adsp_ipc *ipc);
++void mtk_adsp_handle_request(struct mtk_adsp_ipc *ipc);
++int mtk_adsp_get_bar_index(struct snd_sof_dev *sdev, u32 type);
++int mtk_adsp_stream_pcm_hw_params(struct snd_sof_dev *sdev,
++				  struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params,
++				  struct snd_sof_platform_stream_params *platform_params);
++snd_pcm_uframes_t mtk_adsp_stream_pcm_pointer(struct snd_sof_dev *sdev,
++					      struct snd_pcm_substream *substream);
+ #endif
+-- 
+2.48.1
+
 
