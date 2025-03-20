@@ -4,93 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46CDC28B30
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 20:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B101EC36000
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 22:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=; b=smr4rdYV+kR+zvEKYzYFEuWa53
-	9YP99fytLm16RoE+3UxTCiMDdPDxjaceDdskfJ4wJt8CTcQ2ZYm9hdwicnWNbj2JXx+F3A7SaeMI5
-	wT9jI3aZ9rR8daVLo5i8jaInM+HmZKPFr0X8ITOwRvJLT0IqwXnIPK91FQ1Hx83NpP7kRFRP6IqST
-	1iCEwGUgiAmQPexbyIiooktplxsF9weq/tpPnoobB3KWL2fjFqQe3O5eilC4GOz0tH90p+TGN1pq5
-	UooLNHJy3o/RvdqMoy2NpIUoquQoNO83YBcVym4YlU+jDl5pIRo1AIIK47BARDso4qVBTvTfH/0BD
-	iTbzXEUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+vyO/loypVAXfgbXfiAs9fDtNIAFBajvuLmXxHlNeQQ=; b=lnC5dYyWoARk3bRgNOIvzauPpu
+	BCd+VzaqwDaslNywq2k2RL8DtouNK3kQ2//5Ruj6JTb424CgGP+0iUbYZqlrv9Dw4F9n8dFNQRMUp
+	oQrpgwh3F4hDxdI9zYY80FVs4XNbUE/YdptPI9hPhZhMTEO6/BMjEPXaePCYfkgZHElaGtZNv1Yht
+	6E4O+SFo4uWuPXAIlzUD9VPqtQ4tVsuWgzD4unJvdg+uPXAueAcS+vYePD0T9yxw/h45ZI/eB0LHO
+	JHj1HMQTKrRrPcUNX1Z47WpuAB0cWwH7PA5BvBxB4D0EuoqUgs3RQUBF50tW7obI+Q5Lt6vkkyvgL
+	+SLSs7Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvMOZ-0000000D9pB-01AH;
-	Thu, 20 Mar 2025 20:21:39 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1tvO7a-0000000DKSp-2X1N;
+	Thu, 20 Mar 2025 22:12:14 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvMMp-0000000D9kH-3Yxm;
-	Thu, 20 Mar 2025 20:19:52 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-394780e98easo784202f8f.1;
-        Thu, 20 Mar 2025 13:19:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742501989; x=1743106789; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=;
-        b=hkDeTnfaaAG6Y9Bg5Aw1wk0b/P83DsZ0cV6/iCl/vLUQjZ6udi5IIl7Q5H+YFcSDL9
-         H2KyzxNp9oknc1BwF+Zis1P0cnl4aSJGSOAEi2gb4tUtMJpP45JnV/8XMkQy0+H4nflg
-         0E1l45sfdWbzOEMcCOHXxzZ3f62D3HQSjOrXj7je0ZoYzu3WFxY2V78arFsIjVEFAY+m
-         PQBjFtu2dniAPgAUxLOEljFx7rbsWzwFfTcMD27ZpmAWB0INLbLoPocprTlK+0Nri/YG
-         1W8+frDZH6riPVhZI5n1PTzjhuhH7k/yhhEIRdQnrHqMqZn+CR2qhPym4GyI54Z45ZPc
-         C8rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742501989; x=1743106789;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Dhyguxhy3QF6ssQ6N4HmtB46ru/Kl2lPpRXSHmaJ/rA=;
-        b=cYYbXOEsSShEZPrYC+nYw/dxn/EHGI9B4CVFpe9aN4KkQsmXCEE3fM01QSF4gX5P4p
-         qvgRlQ9QpVN/tOpvqjMqa9cCk4efRIhAEmpdelNS9qq4LkMEE/zfLQW7ng+yJLWkv78a
-         CrgOeIpF0A/Lw2EsvaV0NLeHcSx4H068Udp1eJDKVXYiDIfBcbIyPxgy1l9YUOKNohlF
-         m+po9ueOaT+HG4CFy28XXKD9aCgcVIWAEIPkWwqSCEKo0HQ1et2GqQU1ykXuqLWhOrMF
-         2Uv5zHXZwbM+Swzlk1kKE2dOGfyA34YVAyicoj37Za1KkR2PgAVhnJ1GBFmHb3hrVtj7
-         lSWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU785joEcqPWzK0fV+jNX3Yy54SmPhDRzfjUGUPQyt3sUNGDafu5vtJ8qcUb/fEBF9PHl5fBS+V6P7ixbXOzIP2@lists.infradead.org, AJvYcCV+kcvnhoriX6bPAMaT017JPqcVP4Rkh1HzTBs5n2TvncMJVydPD8T9YhsTowZr0JFtrn/airDpg2KHC2htlso=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMsZvRPdM4TtvSoUVK1CCOYhPJZsUw3QOKOlpHpzLeAr7Mok28
-	rdAGxJ9xI2ae4jEAXqh7AJF9H2WvAnMJRZ9nAaR/aMYjQY/xv7Gi
-X-Gm-Gg: ASbGncuRHKzMJn9PXN2RmpAUlobdpCsrysFRu6PQgNPHRv3aLPuqcQWhkdFbSKH28fm
-	HFX0DCGtlos6ZfCeY1sZL+BtM53Jrwgvc+AHRsAkzAI1ClyAy6DUROaxCuYjqYuBtSzNkvCCLqV
-	SsMBeQsvVFBeQCRFfaA0+MwzWWe5advZtCY7ZZxWH9JhYGnTTuuwaVnQ0oW4wp5MNgwVkAcX+72
-	g9a7hFBYBe2B6uh/VXsaUm8rH0FiRuI07p69q5rronyGbe8f8nuFnkBERJKVR6CGIaeN4SOHgri
-	SF1kYaGQ/YEo7Qe5tU8Gb7TU25xWLEjkOTOBmrMsnxppAQ==
-X-Google-Smtp-Source: AGHT+IE/btzueE8JU/eAqEkp1q9M1cbr7FO2mpWZMkpMLSmIZhDdqe7dSjJh7OehvrSNgBvLJbC84A==
-X-Received: by 2002:a05:6000:1566:b0:38f:451b:653c with SMTP id ffacd0b85a97d-3997f8edadamr632159f8f.7.1742501989262;
-        Thu, 20 Mar 2025 13:19:49 -0700 (PDT)
-Received: from qasdev.Home ([2a02:c7c:6696:8300:a534:f4c9:f77d:6a2e])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fdbd1c7sm6948465e9.40.2025.03.20.13.19.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 13:19:48 -0700 (PDT)
-From: Qasim Ijaz <qasdev00@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1tvO4L-0000000DJnO-23xN;
+	Thu, 20 Mar 2025 22:08:54 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1tvO4D-000000004Q0-2b5q;
+	Thu, 20 Mar 2025 22:08:45 +0000
+Date: Thu, 20 Mar 2025 22:08:42 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andi Shyti <andi.shyti@kernel.org>
+Cc: Zoie Lin <zoie.lin@mediatek.com>, Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Qasim Ijaz <qasdev00@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7996: prevent uninit return in mt7996_mac_sta_add_links
-Date: Thu, 20 Mar 2025 20:19:14 +0000
-Message-Id: <20250320201914.48159-1-qasdev00@gmail.com>
-X-Mailer: git-send-email 2.39.5
+	linux-mediatek@lists.infradead.org, teddy.chen@mediatek.com,
+	joseph-cc.chang@mediatek.com, leilk.liu@mediatek.com,
+	John Crispin <john@phrozen.org>
+Subject: Re: [PATCH v5 1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+Message-ID: <Z9yR6pyg1mtqKynh@makrotopia.org>
+References: <20250314145407.2900190-1-zoie.lin@mediatek.com>
+ <fqicrglyug7gmkmysok7hilhmkyhxmnkztzv4iffgry6xce6t3@2i6b2ihfu4rb>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <fqicrglyug7gmkmysok7hilhmkyhxmnkztzv4iffgry6xce6t3@2i6b2ihfu4rb>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_131951_888190_83117344 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250320_150853_679711_43325388 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,50 +70,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If link_conf_dereference_protected() or mt7996_vif_link() 
-or link_sta_dereference_protected() fail the code jumps to
-the error_unlink label and returns ret which is uninitialised.
+Hi Andi,
+Hi Zoie,
 
-Fix this by setting err before jumping to error_unlink.
+On Wed, Mar 19, 2025 at 12:34:53AM +0100, Andi Shyti wrote:
+> Hi Zoie,
+> 
+> On Fri, Mar 14, 2025 at 10:53:43PM +0800, Zoie Lin wrote:
+> > Introduce support for runtime PM operations in
+> > the I2C driver, enabling runtime suspend and resume functionality.
+> > 
+> > Although in most platforms, the bus power of i2c is always
+> > on, some platforms disable the i2c bus power in order to meet
+> > low power request.
+> > 
+> > This implementation includes bus regulator control to facilitate
+> > proper handling of the bus power based on platform requirements.
+> > 
+> > Signed-off-by: Zoie Lin <zoie.lin@mediatek.com>
+> 
+> merged to i2c/i2c-host.
 
-Fixes: c7e4fc362443 ("wifi: mt76: mt7996: Update mt7996_mcu_add_sta to MLO support")
-Fixes: dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
-Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+the change causes a crash during boot on MT7988 which typically uses
+one of its I2C busses to connect a Richtek RT5190A PMIC.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 91c64e3a0860..78f7f1fc867e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -998,16 +998,22 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 			continue;
- 
- 		link_conf = link_conf_dereference_protected(vif, link_id);
--		if (!link_conf)
-+		if (!link_conf) {
-+			err = -EINVAL;
- 			goto error_unlink;
-+		}
- 
- 		link = mt7996_vif_link(dev, vif, link_id);
--		if (!link)
-+		if (!link) {
-+			err = -EINVAL;
- 			goto error_unlink;
-+		}
- 
- 		link_sta = link_sta_dereference_protected(sta, link_id);
--		if (!link_sta)
-+		if (!link_sta) {
-+			err = -EINVAL
- 			goto error_unlink;
-+		}
- 
- 		err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
- 					       link_id);
--- 
-2.39.5
+[    1.465158] SError Interrupt on CPU3, code 0x00000000bf000002 -- SError
+[    1.465170] CPU: 3 UID: 0 PID: 40 Comm: kworker/u16:1 Not tainted 6.14.0-rc7-next-20250320+ #0 NONE 
+[    1.465178] Hardware name: SmartRG SDG-9000 (DT)
+[    1.465180] Workqueue: async async_run_entry_fn
+[    1.465194] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.465199] pc : mtk_i2c_transfer+0x27c/0x1108
+[    1.465208] lr : mtk_i2c_transfer+0x224/0x1108
+[    1.465212] sp : ffffffc0821538e0
+[    1.465213] x29: ffffffc0821538e0 x28: 0000000000000000 x27: ffffffc082153a00
+[    1.465220] x26: 00000000ffff8b62 x25: ffffffc080f3b000 x24: 0000000000000000
+[    1.465225] x23: 0000000000000001 x22: ffffff80c0ba7810 x21: 000000000000000f
+[    1.465230] x20: ffffffc082153a10 x19: ffffff80c9620080 x18: 0000000000000014
+[    1.465236] x17: 000000005f52c058 x16: 00000000c071d659 x15: 0000000013b9e9aa
+[    1.465241] x14: 00000000305bde35 x13: ffffff80c5f222e8 x12: ffffff80c5f222b0
+[    1.465246] x11: 0000000000001e20 x10: ffffffc0811097d8 x9 : 0000000000000001
+[    1.465251] x8 : ffffffc082153830 x7 : ffffffc0821538a0 x6 : ffffffc082153840
+[    1.465256] x5 : 000000000000ffed x4 : 0000000000000003 x3 : ffffffc080b798b0
+[    1.465260] x2 : 0000000000000000 x1 : ffffffc080b797d8 x0 : 0000000000000064
+[    1.465267] Kernel panic - not syncing: Asynchronous SError Interrupt
+[    1.465269] SMP: stopping secondary CPUs
+[    1.465281] Kernel Offset: disabled
+[    1.465282] CPU features: 0x0000,00000040,00000000,8200400b
+[    1.465286] Memory Limit: none
+[    1.466353] 
+[    1.466355] ================================
+[    1.466356] WARNING: inconsistent lock state
+[    1.466357] 6.14.0-rc7-next-20250320+ #0 Not tainted
+[    1.466360] --------------------------------
+[    1.466361] inconsistent {INITIAL USE} -> {IN-NMI} usage.
+[    1.466364] kworker/u16:1/40 [HC1[1]:SC0[0]:HE0:SE1] takes:
+[    1.466369] ffffff80c0357940 (&prz->buffer_lock){....}-{2:2}, at: buffer_size_add+0x68/0x84
+[    1.466384] {INITIAL USE} state was registered at:
+[    1.466386]   lock_acquire+0xf4/0x2d8
+[    1.466391]   _raw_spin_lock_irqsave+0x5c/0x80
+[    1.466399]   buffer_size_add+0x68/0x84
+[    1.466404]   persistent_ram_write+0x44/0x11c
+[    1.466410]   ramoops_pstore_write+0x150/0x1c4
+[    1.466415]   pstore_console_write+0x4c/0x5c
+[    1.466420]   console_flush_all+0x2ac/0x490
+[    1.466425]   console_unlock+0x68/0x144
+[    1.466430]   vprintk_emit+0x168/0x3ac
+[    1.466434]   vprintk_default+0x34/0x3c
+[    1.466439]   vprintk+0x24/0x2c
+[    1.466444]   _printk+0x48/0x50
+[    1.466448]   register_console+0x370/0x4c4
+[    1.466453]   pstore_register+0x18c/0x37c
+[    1.466457]   ramoops_probe+0x2e8/0x5c4
+[    1.466461]   platform_probe+0x64/0xbc
+[    1.466467]   really_probe+0xbc/0x388
+[    1.466470]   __driver_probe_device+0x78/0x154
+[    1.466474]   driver_probe_device+0x3c/0xd4
+[    1.466477]   __device_attach_driver+0xb0/0x144
+[    1.466480]   bus_for_each_drv+0x6c/0xb0
+[    1.466486]   __device_attach+0x9c/0x19c
+[    1.466489]   device_initial_probe+0x10/0x18
+[    1.466493]   bus_probe_device+0xa8/0xac
+[    1.466495]   device_add+0x58c/0x790
+[    1.466500]   of_device_add+0x4c/0x58
+[    1.466507]   of_platform_device_create_pdata+0x9c/0x118
+[    1.466512]   of_platform_default_populate_init+0x4c/0xf0
+[    1.466519]   do_one_initcall+0x64/0x324
+[    1.466524]   kernel_init_freeable+0x298/0x4f0
+[    1.466530]   kernel_init+0x1c/0x1c8
+[    1.466534]   ret_from_fork+0x10/0x20
+[    1.466538] irq event stamp: 3498
+[    1.466539] hardirqs last  enabled at (3497): [<ffffffc080ac0b78>] _raw_spin_unlock_irqrestore+0x54/0x74
+[    1.466546] hardirqs last disabled at (3498): [<ffffffc080ab43c4>] el1h_64_error_handler+0x20/0x48
+[    1.466551] softirqs last  enabled at (3392): [<ffffffc08004af28>] handle_softirqs+0x46c/0x484
+[    1.466558] softirqs last disabled at (3381): [<ffffffc080010170>] __do_softirq+0x10/0x18
+[    1.466562] 
+[    1.466562] other info that might help us debug this:
+[    1.466564]  Possible unsafe locking scenario:
+[    1.466564] 
+[    1.466565]        CPU0
+[    1.466566]        ----
+[    1.466567]   lock(&prz->buffer_lock);
+[    1.466570]   <Interrupt>
+[    1.466571]     lock(&prz->buffer_lock);
+[    1.466573] 
+[    1.466573]  *** DEADLOCK ***
+[    1.466573] 
+[    1.466575] 5 locks held by kworker/u16:1/40:
+[    1.466578]  #0: ffffff80c01b2148 ((wq_completion)async){+.+.}-{0:0}, at: process_one_work+0x1a8/0x610
+[    1.466588]  #1: ffffffc082153dd8 ((work_completion)(&entry->work)){+.+.}-{0:0}, at: process_one_work+0x1d0/0x610
+[    1.466598]  #2: ffffff80c7b3f908 (&dev->mutex){....}-{4:4}, at: __device_attach_async_helper+0x28/0xec
+[    1.466606]  #3: ffffff80c5f22068 (rt5190a_regulator:443:(&rt5190a_regmap_config)->lock){+.+.}-{4:4}, at: regmap_lock_mutex+0x10/0x18
+[    1.466617]  #4: ffffff80c9620100 (i2c_register_adapter){+.+.}-{4:4}, at: i2c_adapter_lock_bus+0x20/0x2c
+[    1.466629] 
+[    1.466629] stack backtrace:
+[    1.466630] CPU: 3 UID: 0 PID: 40 Comm: kworker/u16:1 Not tainted 6.14.0-rc7-next-20250320+ #0 NONE 
+[    1.466635] Hardware name: SmartRG SDG-9000 (DT)
+[    1.466637] Workqueue: async async_run_entry_fn
+[    1.466643] Call trace:
+[    1.466645]  show_stack+0x14/0x1c (C)
+[    1.466653]  dump_stack_lvl+0x30/0xc0
+[    1.466657]  dump_stack+0x14/0x1c
+[    1.466661]  print_usage_bug.part.0+0x26c/0x318
+[    1.466665]  lock_acquire+0x280/0x2d8
+[    1.466669]  _raw_spin_lock_irqsave+0x5c/0x80
+[    1.466676]  buffer_size_add+0x68/0x84
+[    1.466681]  persistent_ram_write+0x44/0x11c
+[    1.466687]  ramoops_pstore_write+0xc8/0x1c4
+[    1.466692]  pstore_dump+0x16c/0x300
+[    1.466697]  kmsg_dump_desc+0xc0/0x194
+[    1.466703]  panic+0x170/0x38c
+[    1.466708]  nmi_panic+0x50/0x64
+[    1.466712]  arm64_serror_panic+0x60/0x70
+[    1.466715]  do_serror+0x38/0x68
+[    1.466719]  el1h_64_error_handler+0x34/0x48
+[    1.466723]  el1h_64_error+0x70/0x74
+[    1.466727]  mtk_i2c_transfer+0x27c/0x1108 (P)
+[    1.466732]  __i2c_transfer+0x1f8/0x948
+[    1.466736]  i2c_transfer+0x90/0xe8
+[    1.466739]  regmap_i2c_read+0x48/0x70
+[    1.466744]  _regmap_raw_read+0x110/0x328
+[    1.466750]  regmap_raw_read+0x130/0x240
+[    1.466755]  rt5190a_probe+0x88/0x53c
+[    1.466761]  i2c_device_probe+0x154/0x2ec
+[    1.466764]  really_probe+0xbc/0x388
+[    1.466768]  __driver_probe_device+0x78/0x154
+[    1.466772]  driver_probe_device+0x3c/0xd4
+[    1.466776]  __device_attach_driver+0xb0/0x144
+[    1.466780]  bus_for_each_drv+0x6c/0xb0
+[    1.466785]  __device_attach_async_helper+0x80/0xec
+[    1.466790]  async_run_entry_fn+0x34/0x17c
+[    1.466794]  process_one_work+0x224/0x610
+[    1.466799]  worker_thread+0x1b4/0x348
+[    1.466804]  kthread+0x108/0x1d4
+[    1.466808]  ret_from_fork+0x10/0x20
 
+Reverting commit 4b60b1b58696 (i2c: mediatek: add runtime PM operations
+and bus regulator control") fixes the issue.
 
