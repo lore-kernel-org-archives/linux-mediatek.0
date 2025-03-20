@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7E7C28B30
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 07:38:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 326CEC28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 07:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QZXUJ4VH3AfP2WjMQih2vKgtDXB87pmd/jXX3007I+c=; b=csRsJgknU1/HoHanGtSe3pa85P
-	41hB5I7kDDNeF5bj6o9yYoGnFEDser/qROT16f5iiraFwluErP/PHsrNyaX3dkbiWhmz33bW7bCZv
-	+qcNgUorzQOKRhBybU2QDjm+wnI7u5BNoJFb8U6MpyxkauKVGphooC5Rl5BP4Mw+9l2AYok6URRU/
-	56U4JyiIUmzlqf3YkjksTwVM1n2/ig/Ao/qZPmrbMjH7+9OibMPkUehO6eGf6m/EDhArX5WWMHPun
-	W9XA/XAWRVFLq+7wNDlEURfbCw4Q5fWyOsxB1Vd+FtvMnBdXkrPo8UrSUWFc2bouPbUACTH2iU7uA
-	Ismc3zgA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KzsI2dcH77WIYuzMov1WZY4sjPCFu5uSEpq9ji+VCkM=; b=b5SZkrKXSEIfRuToCBi3Wv5zBI
+	e1O1GzDvruK37xmC2wQqyjzxdpqk8WR1ew39gMOrxew6lZLKEGZe0PgyIY+YlAZUsBiVHZosYYPdK
+	ysG51J5wm+y/J4dqEHBuDJvxQIrimaMEaWVU0z7R0ERXKHPqWgpq5J+KrkzL5GqicZCxCNAnDkUte
+	B3EbXQmINHzQQRXb75WYnT/rYMKFkH7FL/DRSHBm/zqSOyxQA7k6FYrpcXiVbbJkZaTXTTA1S5vC4
+	1epaMYz7m1VvkKYgsh476ZR291d0vd4hemZC/joUlnku7ISha4OFSscGPYlyrTYTQaCRB4BIlsQGk
+	+4s9kNJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvAUE-0000000BQRc-47xk;
-	Thu, 20 Mar 2025 07:38:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tvAVu-0000000BQfn-0zQC;
+	Thu, 20 Mar 2025 07:40:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvASV-0000000BQAT-2qbS;
-	Thu, 20 Mar 2025 07:36:56 +0000
-X-UUID: 167372fe055e11f083f2a1c9db70dae0-20250320
+	id 1tvASa-0000000BQB1-18PZ;
+	Thu, 20 Mar 2025 07:37:01 +0000
+X-UUID: 19cb4b48055e11f0a1e849db4cc18d44-20250320
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QZXUJ4VH3AfP2WjMQih2vKgtDXB87pmd/jXX3007I+c=;
-	b=Ra7/F6i7QgLfWOnYZ2vFL03qL1+EQL2VQRAzcLBY7UXKoCTnurgd3Qt8cn+GYanholW7fZiGVwazA5P5TwXY0yqYZThhHO05LcxMl1E/ABxMU4KektBOiwDjP0R3GoNNVKOZX0oMscyZNBT32H6zgVK8NC5JPGqlLyRWrP5tziQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KzsI2dcH77WIYuzMov1WZY4sjPCFu5uSEpq9ji+VCkM=;
+	b=k5cxgUnRiA0GQN4I4WMIGQSx5diKIpkGreWF4G7Z3LyORyq7d4p3thfvxr1ZOJ1k+4zFBIM3PBjdHNyryd+YhdGZH9jZ1MdNYsxYj3ONeil90CtErDl9m3SkDw/AUJ/URtXpSNJHkL926CVDmFuWKjYL2YzgtNMOR+C5eMgbAxI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:738553b9-e7b7-41a0-8b2a-35422eb66680,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:7ad52262-c361-42d2-aacb-293398dc69cb,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:a81194c6-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-META: VersionHash:0ef645f,CLOUDID:918ddbfd-c03c-4d2b-a585-04cfa9287728,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 167372fe055e11f083f2a1c9db70dae0-20250320
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 19cb4b48055e11f0a1e849db4cc18d44-20250320
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <xueqi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1283954900; Thu, 20 Mar 2025 00:36:51 -0700
+	with ESMTP id 823442336; Thu, 20 Mar 2025 00:36:56 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 20 Mar 2025 15:36:48 +0800
+ 15.2.1258.39; Thu, 20 Mar 2025 15:36:55 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 20 Mar 2025 15:36:47 +0800
+ 15.2.1258.39 via Frontend Transport; Thu, 20 Mar 2025 15:36:54 +0800
 From: Xueqi Zhang <xueqi.zhang@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
  Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
@@ -63,17 +63,18 @@ CC: Wendy-st Lin <wendy-st.lin@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>,
 	<iommu@lists.linux.dev>, Xueqi Zhang <xueqi.zhang@mediatek.com>
-Subject: [PATCH 0/3] Add mt8196 SMI support
-Date: Thu, 20 Mar 2025 15:36:15 +0800
-Message-ID: <20250320073625.25225-1-xueqi.zhang@mediatek.com>
+Subject: [PATCH 2/3] memory: mtk-smi: Add a flag skip_rpm
+Date: Thu, 20 Mar 2025 15:36:17 +0800
+Message-ID: <20250320073625.25225-3-xueqi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250320073625.25225-1-xueqi.zhang@mediatek.com>
+References: <20250320073625.25225-1-xueqi.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_003655_733074_A81A0F00 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250320_003700_312366_463D626A 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +89,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8196 SMI support
+MT8196 SMI commons is backed up/restored by RTFF HW.
+It doesn't need SW control the register backup/store
+in the runtime callback.Therefore, add a flag skip_rpm
+to help skip RPM operations for SMI commons.
 
-This patchset add mt8196 SMI support. 8196 SMI has several differences
-compared to previous ICs. MT8196 SMI has more than 32 SMI larbs.
-It connects with SMMUv3, rather than MTK_IOMMU.MT8196 SMI commons is
-backed up/restored by RTFF HW.
+Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
+---
+ drivers/memory/mtk-smi.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-Xueqi Zhang (3):
-  dt-bindings: memory: mediatek: Add mt8196 support
-  memory: mtk-smi: Add a flag skip_rpm
-  memory: mtk-smi: mt8196: Add smi support
-
- .../mediatek,smi-common.yaml                  |   4 +-
- .../memory-controllers/mediatek,smi-larb.yaml |   4 +-
- drivers/memory/mtk-smi.c                      | 145 +++++-
- .../dt-bindings/memory/mt8196-memory-port.h   | 460 ++++++++++++++++++
- include/dt-bindings/memory/mtk-memory-port.h  |   4 +-
- 5 files changed, 609 insertions(+), 8 deletions(-)
- create mode 100644 include/dt-bindings/memory/mt8196-memory-port.h
-
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index a8f5467d6b31..b9affa3c3185 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -123,6 +123,7 @@ static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1
+ struct mtk_smi_common_plat {
+ 	enum mtk_smi_type	type;
+ 	bool			has_gals;
++	bool			skip_rpm;
+ 	u32			bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
+ 
+ 	const struct mtk_smi_reg_pair	*init;
+@@ -547,6 +548,9 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+ {
+ 	int i, ret;
+ 
++	if (smi->plat->skip_rpm)
++		return 0;
++
+ 	for (i = 0; i < clk_nr_required; i++)
+ 		smi->clks[i].id = clks[i];
+ 	ret = devm_clk_bulk_get(dev, clk_nr_required, smi->clks);
+@@ -783,7 +787,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	common->dev = dev;
+ 	common->plat = of_device_get_match_data(dev);
+ 
+-	if (common->plat->has_gals) {
++	if (!common->plat->skip_rpm && common->plat->has_gals) {
+ 		if (common->plat->type == MTK_SMI_GEN2)
+ 			clk_required = MTK_SMI_COM_GALS_REQ_CLK_NR;
+ 		else if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
+@@ -814,13 +818,14 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* link its smi-common if this is smi-sub-common */
+-	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM) {
++	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM && !common->plat->skip_rpm) {
+ 		ret = mtk_smi_device_link_common(dev, &common->smi_common_dev);
+ 		if (ret < 0)
+ 			return ret;
+ 	}
+ 
+-	pm_runtime_enable(dev);
++	if (!common->plat->skip_rpm)
++		pm_runtime_enable(dev);
+ 	platform_set_drvdata(pdev, common);
+ 	return 0;
+ }
 -- 
 2.46.0
 
