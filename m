@@ -4,105 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C8DC36001
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 15:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C60C28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 17:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9MXWVPiHsl/ybfeX0fVWWFkRY/xYzUHOKzudQkSQFpg=; b=GQP3Q2UBQz2JQRNu7pehpS/bcU
-	2bTKiqaXSIdykrMKc3ZMMdce27DxYDrAZlX+UkZ4TDdh54LTTXfBEjLZdvmYNX8Vt+vwxFUHNW0hG
-	T4MqjkNU8Im1Hf5nB/OWd4DG/Jh1sma0kgQyNBivxOmfGKdG4J30Ac/lDQnL+YXEENbzfzwp/nvkC
-	5ZXCKGMufW+yDiC3XXKqw58GzQOdReG1TGKlq6sr8cZhVvDHaDHb3DPSeGFqCeGA7MysEfYXfw2yl
-	acA8XJJOEXY/FrATb4bWtLrcSqwFKU36WFnow3aLaY6CyVsMMBAwyODzriDbj5HIDdc+getSWoMaC
-	EVF1wlYQ==;
+	bh=CcSKEWRQis2X2p4aHN9kdg4dWvAn4zZB4MthGt9aAs0=; b=SZbWHpdwaUoKVNmvqFjXiuzz48
+	Y03jAySg7BHcAt8SctUAnj+dQRuzJwHSS4XV709u4tFlIY9lZ2iUHAnf+GQLT1OZNBUtjd0Bxddke
+	Ee8DO4VyhqtyjPu11nGHlWxcLhS6uTDx39ti6GoPsp60BHgUoUYC8yZJ2jYARxiubcSfDhgOE3btD
+	PPWLa2BkoBPLSms+rw6rLTeWChkFEv0rImP2u6EZr3JnPc3Rn9qFkCISbdEOlvAyopTQVIUQI3LIu
+	YVRTMM907Y20jBY0tjir6P+Zg022csBhQ+lZ7ilkMRznnPqh1MCBlKcdUusvaHgfBDVe0so7s0Usu
+	I35ycY+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvHOG-0000000CSxY-0uaE;
-	Thu, 20 Mar 2025 15:01:00 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1tvJm7-0000000Cp0W-2ive;
+	Thu, 20 Mar 2025 17:33:47 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvHMW-0000000CSfV-36GZ;
-	Thu, 20 Mar 2025 14:59:13 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3913d129c1aso670314f8f.0;
-        Thu, 20 Mar 2025 07:59:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742482751; x=1743087551; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=9MXWVPiHsl/ybfeX0fVWWFkRY/xYzUHOKzudQkSQFpg=;
-        b=ZZpNYaVMAqdOTENoaxUs98mCgt6ei12/YxlfLtQrYE6oyzjdeI60L0idhK3+vHMo1U
-         1ILnCRwPMAp08XmnJ+yvklDF7Evrr7CssJ25MHfRkSVF6ImrHbObvNUjuV2f6AiEpkkj
-         9T5L7lqetuoDfzZ91H/rlRsMQRXLlBX5TlJMFDshrX0JY+/OnvU+5yQ0f3yZ4CYBPG+4
-         DjHMEUs3Ry+leuYlBz0RsH8FSRT7FY0KWlK21FA6FkuQeTrd1UEM7+ls43liFyHVsCTC
-         jkUJncl5TTo26auixKLxpYPE2y0sP+6ftMq5AC51V6Mr/UTiz51m6kzt2Be6EuXJnB5x
-         hynA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742482751; x=1743087551;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9MXWVPiHsl/ybfeX0fVWWFkRY/xYzUHOKzudQkSQFpg=;
-        b=jG4LoEQ+JZ3WabNDUyP3EL6wIwgzLUaCeY5qjZtMO8OiQ0m4tSsJP0s8roZ6mxPaXP
-         nsJpHMJp/p/EGZXgUhC0yMcsc3xCZ3GKTNOqDR2m1AZBJK+30J6iO/MRk6PTwhx3A3TV
-         Z66B426XmcMKA8E1YFWfob86VINGZEN+NnUPS3UGISMgKMu4xPrzRBX94R8r3D4G6O4V
-         1oxrYf+kCwss4kNzrlORG94yQcg/ZAq/ZB5nUd0u8JExoSOqy+B4Lbd28GZnlxeTC/0A
-         FYPrmZ8QM12HG8zT7lWniYIVOX+bKzbZ3XG1ZfYwsdvVVKm/NbM/c+/kOskUiDRsq3ji
-         7Tgg==
-X-Forwarded-Encrypted: i=1; AJvYcCU/ycUZx7lzoAJRur+Sv3RsIucltD0kaaflhKqvBYyWR8AlTdT6uUSBTCtlvewpxkfOlPEsLJwHN2+E8cdda/M=@lists.infradead.org, AJvYcCUVKHk6uz1LpW8n0qrk22b3pB/EXf9TAQ2etaEH6s/qefQO979dYv0uUOoK55EEYmXqurBUvsfP6/Qp@lists.infradead.org, AJvYcCXabvfeuwj2hNl8sYFsYqqfAGS5dJe1AVAHS6/u7x8IELK0XpdAqB50iGxdmwEeK7S3NFK3fdlXrOTkxyri1ImQ@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUf5tjjxt3onPyDAnFspF+gRV5W+yn0P5ACe4duOP/sCwcrHjh
-	id5qSqnnomclT28CwhrudzxcFU6hVIq09LIP4SaNhg6uN82h38Eg
-X-Gm-Gg: ASbGncuWkzePYkm5ryUijjTeD7WvbMRuAgNCdyjAIX3+9cwzyq+JJUl26+VtP9iQAKw
-	wtg59qNOboMtWj6eKX6nxftu8ylPDuqPgfrB2N4nbBJ7aJxbmq0+6T3Wbfoqa952aHhYgytGbci
-	aFGOpv1bDw7MF0BDEq3swWMddTB1teSHRZDCxqhVWhvpFqxsUgEaCEDlqhI688w7e9XFk8kUzcS
-	QZE4HiQQUwgha5ku1/UUfc33QjRuBSHueOEmpscdM+O5nreNAHu/p5eFJtL6mJEEHgBYoU2CN3R
-	V/xKAXzuRrgjq/bWL4p9e9tGqKW0QGIi/gx4iOUG7BLZQhnV50L7n40TMmH3mPxxV5x0tEUgqMs
-	u
-X-Google-Smtp-Source: AGHT+IFSmo8fFuEqajq9aZA55RF0/kNYRGkGPQelDDCd7p8x/2z2TYhPjj6gPq4JZPeYBBnh3Gq1Ag==
-X-Received: by 2002:a5d:64a8:0:b0:390:ff84:532b with SMTP id ffacd0b85a97d-3997955cc22mr2933292f8f.7.1742482750791;
-        Thu, 20 Mar 2025 07:59:10 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d43f43e35sm51134405e9.14.2025.03.20.07.59.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 07:59:10 -0700 (PDT)
-Message-ID: <67dc2d3e.050a0220.2e39a4.c3f0@mx.google.com>
-X-Google-Original-Message-ID: <Z9wtOv-ttPCY-Lpg@Ansuel-XPS.>
-Date: Thu, 20 Mar 2025 15:59:06 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	id 1tvJkP-0000000Cocu-3yRc;
+	Thu, 20 Mar 2025 17:32:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7507C61145;
+	Thu, 20 Mar 2025 17:31:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6CE7C4CEE7;
+	Thu, 20 Mar 2025 17:31:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742491920;
+	bh=3HOTPhubQPxetyMqoktnFvF63Tzt8GgfFAKqGmDS3xw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L60tobDYIbX0us2wQjzggEFQMCohxpSUt5d48FIZ6+R4ieavMitBq05mXTA4yrtvC
+	 DKO7zbZc+tNrMOAU6seLeunDoYbbJWRW7ThKQMWnvfpFLtnrilpL1VKz290J5GJLOB
+	 WHO6Y/EDPfX0Axxf8x4ljDRo+2Oa2DD6GrLL9JDK/ps4YnFsZcne1EMPpuiQRjSmwl
+	 am/zcQZyNiDoO1EuYKuXNHfmaVVEhyvzm2VjiRAEkD8X5ee2YKN/k3R/nXARfi2sJa
+	 ekEBzjTVTt64hgJEy+pFYujcywwSTHdX1SKfygy7KhAczBGGBdtr98QU6JtANpdBBN
+	 6q9VN2uvlWBEg==
+Date: Thu, 20 Mar 2025 17:31:54 +0000
+From: Simon Horman <horms@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Danzberger <dd@embedd.com>,
-	Alexander Sverdlin <alexander.sverdlin@gmail.com>,
-	Nikita Shubin <nikita.shubin@maquefel.me>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Yangyu Chen <cyy@cyyself.name>, Ben Hutchings <ben@decadent.org.uk>,
-	Felix Fietkau <nbd@nbd.name>, linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [PATCH v2 04/11] soc: airoha: add support for configuring SCU
- SSR Serdes port
-References: <20250320130054.4804-1-ansuelsmth@gmail.com>
- <20250320130054.4804-5-ansuelsmth@gmail.com>
- <d6e27266-dc5b-4ef8-b708-21cedd06621e@app.fastmail.com>
+Subject: Re: [net-next PATCH v12 02/13] dt-bindings: net: Document support
+ for Airoha AN8855 Switch Virtual MDIO
+Message-ID: <20250320173154.GE892515@horms.kernel.org>
+References: <20250309172717.9067-1-ansuelsmth@gmail.com>
+ <20250309172717.9067-3-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <d6e27266-dc5b-4ef8-b708-21cedd06621e@app.fastmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_075912_779566_C1818E2D 
-X-CRM114-Status: GOOD (  28.44  )
+In-Reply-To: <20250309172717.9067-3-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,64 +85,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 20, 2025 at 03:49:08PM +0100, Arnd Bergmann wrote:
-> On Thu, Mar 20, 2025, at 14:00, Christian Marangi wrote:
-> > Add support for configuring SCU SSR Serdes port. Airoha AN7581 SoC can
-> > configure the different Serdes port by toggling bits in the SCU register
-> > space.
-> >
-> > Port Serdes mode are mutually exclusive, force example the USB2 Serdes port
-> > can either used for USB 3.0 or PCIe 2 port. Enabling USB 3.0 makes the
-> > PCIe 2 to not work.
-> >
-> > The current supported Serdes port are:
-> > - WiFi 1 and defaults to PCIe0 1 line mode
-> > - Wifi 2 and defaults to PCIe1 1 line mode
-> > - USB 1 and defaults to USB 3.0 mode
-> > - USB 2 and defaults to USB 3.0 mode
-> >
-> > WiFi 1, WiFi 2 and USB 1 also support a particular Ethernet mode that
-> > can toggle between USXGMII or HSGMII mode (USB 1 only to HSGMII)
-> > Such mode doesn't configure bits as specific Ethernet PCS driver will
-> > take care of configuring the Serdes mode based on what is required.
-> >
-> > This driver is to correctly setup these bits.
-> > Single driver can't independently set the Serdes port mode as that
-> > would cause a conflict if someone declare, for example, in DT
-> > (and enable) PCIe 2 port and USB2 3.0 port.
-> >
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+On Sun, Mar 09, 2025 at 06:26:47PM +0100, Christian Marangi wrote:
+> Document support for Airoha AN8855 Virtual MDIO Passtrough. This is needed
+
+nit: passthrough
+
+> as AN8855 require special handling as the same address on the MDIO bus is
+> shared for both Switch and PHY and special handling for the page
+> configuration is needed to switch accessing to Switch address space
+> or PHY.
 > 
-> I think serdes drivers are usually implement in the drivers/phy
-> layer, and I see there is already a drivers/phy/phy-airoha-pcie.c,
-> which may or may not overlap with this one (I have not looked at
-> the details).
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>  .../bindings/net/airoha,an8855-mdio.yaml      | 56 +++++++++++++++++++
+>  MAINTAINERS                                   |  1 +
+>  2 files changed, 57 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
 > 
-> Have you tried to use the phy subsystem interface here instead
-> of creating a custom in-kernel interface?
->
+> diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+> new file mode 100644
+> index 000000000000..3078277bf478
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
+> @@ -0,0 +1,56 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/airoha,an8855-mdio.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha AN8855 MDIO Passtrough
 
-These really set 1-2 bit and I think PHY can't describe PCIe in x2 mode
-or in x1. Also I think PHY is used for more advanced stuff and usually
-have dedicated register/maps. This is really to configure 1-2 bit and
-provide the mode, nothing else... no enable, no power up.
+Ditto.
 
-Do you think a it's possible to implement a ""read-only"" PHY driver?
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description:
+> +  Airoha AN8855 Virtual MDIO Passtrough. This is needed as AN8855
 
-The PCIe x2 mode maybe can be modelled with
-phy-cells = <2> and adding a extra entry to enforce x2 line mode?
+Ditto.
 
-But I feel it would be wrong to say that the SCU expose PHY as it won't
-be true.
+> +  require special handling as the same address on the MDIO bus is
+> +  shared for both Switch and PHY and special handling for the page
+> +  configuration is needed to switch accessing to Switch address space
+> +  or PHY.
 
-Honestly we should really consider starting to implement a generic
-provider for these stuff... it's not the first time we have bit that
-configure part of the entire system.
-
-For example this is very common for QCOM with TCSR and also for Mediatek
-with the TPHY. (but TPHY is at least more realistic as it can enable and
-disable serdes port... here it's just 1 bit)
-
--- 
-	Ansuel
+...
 
