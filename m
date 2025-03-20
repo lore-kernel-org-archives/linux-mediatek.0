@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED61C36001
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 18:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA28C28B30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 19:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eduoFTZN5Pk/vcTpAqpS2KvclbCG/PrXXMojnsOilW8=; b=1JbOxh+y6WVKUzZ8HG6mDwx+CN
-	/WQaaiz2p28XSelrVziTcde6qyMhr9yes8r7tC3QzwMhX3W1zM4blvW4IwfNItbd6PhFlDupZq25a
-	XNKN0O/enaaZsgNubCjNigxWUHJzkwZwPaGRga/OhDTLk3nnJ6JRDuCji83PqqqR5DdFNWT5cSe2x
-	93ZR0osPeQV7sP+yyG7b4QqUvGKFttclHy7AqB2+HyytnmwFPPAmEygiD9M3NVSf+46uA0tjNBu/P
-	r1+mQTDoSiWqvDIS8fEDXYBVIawxiTG33CMlf/SpjFHDap8tzRQmTY3QV+tGS1CIoUv/uW+1NCFa8
-	AjQQKBUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6vXgmYO6jAESBk/+0eG5q1NE+gBOXDy0zHCkzyh71bY=; b=FLPBVrZzMwjybWx31Nvnu4XX3P
+	CXZ0JmMAkoFB+HVdbwWb9ZtMeeQBnXXv4C82dw4E3LGra3arAgqtYeN8usEmRPlsqhsjCrbl7/ot9
+	bLIJ66nSbJ8HOwLR+xQKciwOihjXDYwkzlZKRTS6JltRq9RHDNjjvHANTZ2tHYkEKVZqMUzMxLjKy
+	0lnPT6fgnYVd1frtYD74trg/NRY3VJCNRsB5b070Bad5gM/lGF+rWhZdlF+o9FLx6lpBtD/aJXwIl
+	OL8QKeQdzlk/xZBdO/zYgS8RB8YPBjsQY1lI+guFWisaCgxI8ToPO+zECfduTQboaktfhEJ05quxG
+	9Pf5oJgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvKcc-0000000Cwax-0DCP;
-	Thu, 20 Mar 2025 18:28:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1tvL7l-0000000D0Zq-1gmH;
+	Thu, 20 Mar 2025 19:00:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvKat-0000000CwOH-25zP;
-	Thu, 20 Mar 2025 18:26:16 +0000
+	id 1tvL7j-0000000D0Y5-0hjz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Mar 2025 19:00:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4EA1644382;
-	Thu, 20 Mar 2025 18:26:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 691C4C4CEDD;
-	Thu, 20 Mar 2025 18:26:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 52CFB44D79;
+	Thu, 20 Mar 2025 19:00:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D753C4CEF2;
+	Thu, 20 Mar 2025 19:00:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742495174;
-	bh=WqjD83gS59KXnxcWN0xrv2Qy66XqwIZlhcsvnHNzlD0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=JYloGAYRUHZ9s4ndZMNiZ/YXTnxxxYiyDHj0Hp2VzGq3o+btOYbamd9ZiuFhWFMet
-	 ie3338Y/XRLdUCpjJyC3jborHQ/CXIIcVuOUVVK9U/rgIm5/VFx7Y1YS4wkFLVCDtw
-	 NxtFT5PZepI7IN/DrIOQSmiiHzyZN6y4L/goZn/FeHhICSNh+acqedzYpPcX+zCvRz
-	 zhiyJ8Z6cpsyttti+B/CqOcRvhgWw3QnIpYjK0Go3Z+AU3KMHdGzRyH2j6HzO8MXH/
-	 AjBZ8JDhSha0K3F92CqtjR4pU4dQ8OkZTVExZRrdd4MLrd7BZtl3cpcRusyzQ7ISi7
-	 Mu66NbJSYYULA==
-Date: Thu, 20 Mar 2025 13:26:13 -0500
+	s=k20201202; t=1742497210;
+	bh=0xn17N6DJYWebRRn/jGVYxuRuDM3bLIVEkKZ0yC1gSk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=dK/8lUE0pIBRM1oes/UzSveRKsx48zKR1OhoGrXEP3EEJKy9VHS7LkDGnWDtT6BIn
+	 6OWtqTer6kGgr2tvFa/++YgwhlhpWZFS6Ca79XLgujVJv4jzncCKiafILc2+ITPaEd
+	 +sOxjn7YswZEpbI7mujcnPW6w33q30lqgrPhAIJBk8JpGrCrb9WMKN9fm+32h/kHi8
+	 r9izj9p1agWYw8AwcEyVCqECw2iqkQQh4ZqotAUUg4MeT3WrOwfBG2E5opO9mMV4Dn
+	 OKwIE3YTomr3l7XmUBUgOK599Lrqjn+pbWAI25xMp7ej9AovcYNpo5IvT7cmEbqL5I
+	 3dOdf5ZypjPcw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AF0683806654;
+	Thu, 20 Mar 2025 19:00:47 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Yangyu Chen <cyy@cyyself.name>, Conor Dooley <conor+dt@kernel.org>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, 
- Alexander Sverdlin <alexander.sverdlin@gmail.com>, 
- Felix Fietkau <nbd@nbd.name>, devicetree@vger.kernel.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Michael Turquette <mturquette@baylibre.com>, Arnd Bergmann <arnd@arndb.de>, 
- linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
- linux-clk@vger.kernel.org, Nikita Shubin <nikita.shubin@maquefel.me>, 
- upstream@airoha.com, linux-mediatek@lists.infradead.org, 
- Ben Hutchings <ben@decadent.org.uk>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Daniel Danzberger <dd@embedd.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-phy@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>, 
- linux-kernel@vger.kernel.org
-To: Christian Marangi <ansuelsmth@gmail.com>
-In-Reply-To: <20250320130054.4804-1-ansuelsmth@gmail.com>
-References: <20250320130054.4804-1-ansuelsmth@gmail.com>
-Message-Id: <174249492019.658064.14719387276656076364.robh@kernel.org>
-Subject: Re: [PATCH v2 00/11] airoha: en7581: clk cleanup + USB support
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btmtk: Remove the resetting step before
+ downloading the fw
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <174249724626.1878155.10663828087577774363.git-patchwork-notify@kernel.org>
+Date: Thu, 20 Mar 2025 19:00:46 +0000
+References: <20250315022730.11071-1-hao.qin@mediatek.com>
+In-Reply-To: <20250315022730.11071-1-hao.qin@mediatek.com>
+To: Hao Qin <hao.qin@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, deren.Wu@mediatek.com, aaron.hou@mediatek.com,
+ chris.lu@mediatek.com, steve.lee@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_112615_580850_91D82002 
-X-CRM114-Status: GOOD (  25.86  )
+X-CRM114-CacheID: sfid-20250320_120011_227050_ECF8B8E2 
+X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,123 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Thu, 20 Mar 2025 14:00:23 +0100, Christian Marangi wrote:
-> This series implement all the changes required to correctly handle
-> USB support for the Airoha EN7581 SoC.
-> 
-> The first few patch are cleanup for the clock driver and the
-> introduction of the SCU SSR SoC driver.
-> 
-> The SoC always support USB 2.0 but for USB 3.0 it needs additional
-> configuration for the Serdes port. Such port can be either configured
-> for USB usage or for PCIe lines or HSGMII and these are configured
-> in the SCU space.
-> 
-> The xHCI USB is based on the Mediatek implementation but the PHY
-> handling although conceptually similar, is indded different compared
-> to Mediatek due to SSR checks and different port power up.
-> 
-> The SSR driver expose an API to poll the current status of the Serdes
-> port and the USB PHY driver validates it. Refer to the specific commit
-> for additional info.
-> 
-> Consider that there is currently an inconsistency as AN7581 and
-> EN7581 refer to the same thing. This is due to the fact that
-> the SoC born under EcoNet but then was acquired by Airoha.
-> 
-> Changes v2:
-> - Drop changes for simple-mfd
-> - Rework PHY node structure to single node
-> - Drop port-id property in favor of serdes-port and
->   usb2-monitor-clock-sel
-> - Make the SSR driver probe from the clock driver
-> 
-> Christian Marangi (11):
->   clk: en7523: convert driver to regmap API
->   clk: en7523: generalize register clocks function
->   dt-bindings: clock: en7523: add Documentation for Airoha AN7581 SCU
->     SSR
->   soc: airoha: add support for configuring SCU SSR Serdes port
->   clk: en7523: define and register SoC SCU SSR driver for EN7581
->   soc: airoha: scu-ssr: expose API to read current Serdes Port mode
->   dt-bindings: phy: Add documentation for Airoha AN7581 USB PHY
->   phy: move Airoha PCIe PHY driver to dedicated directory
->   phy: airoha: Add support for Airoha AN7581 USB PHY
->   usb: host: add ARCH_AIROHA in XHCI MTK dependency
->   arm64: dts: airoha: en7581: add USB nodes
-> 
->  .../bindings/clock/airoha,en7523-scu.yaml     |  101 +-
->  .../bindings/phy/airoha,an7581-usb-phy.yaml   |   83 ++
->  MAINTAINERS                                   |   21 +-
->  arch/arm64/boot/dts/airoha/en7581.dtsi        |   49 +
->  drivers/clk/clk-en7523.c                      |  340 +++--
->  drivers/phy/Kconfig                           |   11 +-
->  drivers/phy/Makefile                          |    5 +-
->  drivers/phy/airoha/Kconfig                    |   23 +
->  drivers/phy/airoha/Makefile                   |    4 +
->  drivers/phy/airoha/phy-airoha-pcie-regs.h     |  494 +++++++
->  drivers/phy/airoha/phy-airoha-pcie.c          | 1290 +++++++++++++++++
->  drivers/phy/airoha/phy-airoha-usb.c           |  571 ++++++++
->  drivers/soc/Kconfig                           |    1 +
->  drivers/soc/Makefile                          |    1 +
->  drivers/soc/airoha/Kconfig                    |   18 +
->  drivers/soc/airoha/Makefile                   |    3 +
->  drivers/soc/airoha/airoha-scu-ssr.c           |  271 ++++
->  drivers/usb/host/Kconfig                      |    2 +-
->  .../dt-bindings/phy/airoha,an7581-usb-phy.h   |   11 +
->  include/dt-bindings/soc/airoha,scu-ssr.h      |   11 +
->  include/linux/clk/clk-en7523.h                |   10 +
->  include/linux/soc/airoha/airoha-scu-ssr.h     |   34 +
->  22 files changed, 3202 insertions(+), 152 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/phy/airoha,an7581-usb-phy.yaml
->  create mode 100644 drivers/phy/airoha/Kconfig
->  create mode 100644 drivers/phy/airoha/Makefile
->  create mode 100644 drivers/phy/airoha/phy-airoha-pcie-regs.h
->  create mode 100644 drivers/phy/airoha/phy-airoha-pcie.c
->  create mode 100644 drivers/phy/airoha/phy-airoha-usb.c
->  create mode 100644 drivers/soc/airoha/Kconfig
->  create mode 100644 drivers/soc/airoha/Makefile
->  create mode 100644 drivers/soc/airoha/airoha-scu-ssr.c
->  create mode 100644 include/dt-bindings/phy/airoha,an7581-usb-phy.h
->  create mode 100644 include/dt-bindings/soc/airoha,scu-ssr.h
->  create mode 100644 include/linux/clk/clk-en7523.h
->  create mode 100644 include/linux/soc/airoha/airoha-scu-ssr.h
-> 
-> --
-> 2.48.1
-> 
-> 
-> 
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
+On Sat, 15 Mar 2025 10:27:30 +0800 you wrote:
+> Remove the resetting step before downloading the fw, as it may cause
+> other usb devices to fail to initialise when connected during boot
+> on kernels 6.11 and newer.
+> 
+> Signed-off-by: Hao Qin <hao.qin@mediatek.com>
+> ---
+>  drivers/bluetooth/btmtk.c | 10 ----------
+>  1 file changed, 10 deletions(-)
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Here is the summary with links:
+  - Bluetooth: btmtk: Remove the resetting step before downloading the fw
+    https://git.kernel.org/bluetooth/bluetooth-next/c/aca3e8a5c46f
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/airoha/' for 20250320130054.4804-1-ansuelsmth@gmail.com:
-
-arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fab0000: compatible:0: 'mediatek,mtk-xhci' is not one of ['mediatek,mt2701-xhci', 'mediatek,mt2712-xhci', 'mediatek,mt7622-xhci', 'mediatek,mt7623-xhci', 'mediatek,mt7629-xhci', 'mediatek,mt7986-xhci', 'mediatek,mt7988-xhci', 'mediatek,mt8173-xhci', 'mediatek,mt8183-xhci', 'mediatek,mt8186-xhci', 'mediatek,mt8188-xhci', 'mediatek,mt8192-xhci', 'mediatek,mt8195-xhci', 'mediatek,mt8365-xhci']
-	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
-arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fab0000: compatible: ['mediatek,mtk-xhci'] is too short
-	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
-arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fad0000: compatible:0: 'mediatek,mtk-xhci' is not one of ['mediatek,mt2701-xhci', 'mediatek,mt2712-xhci', 'mediatek,mt7622-xhci', 'mediatek,mt7623-xhci', 'mediatek,mt7629-xhci', 'mediatek,mt7986-xhci', 'mediatek,mt7988-xhci', 'mediatek,mt8173-xhci', 'mediatek,mt8183-xhci', 'mediatek,mt8186-xhci', 'mediatek,mt8188-xhci', 'mediatek,mt8192-xhci', 'mediatek,mt8195-xhci', 'mediatek,mt8365-xhci']
-	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
-arch/arm64/boot/dts/airoha/en7581-evb.dtb: usb@1fad0000: compatible: ['mediatek,mtk-xhci'] is too short
-	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
-
-
-
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
