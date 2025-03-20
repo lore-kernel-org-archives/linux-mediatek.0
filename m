@@ -4,110 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69264C36000
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 13:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58229C36001
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Mar 2025 14:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/2i/cLqH70rFIGQEh0as4tKq9BI5pDp8ooCRLadLuPs=; b=OO8CpAXq+7sf3SRFMm0h+l053h
-	RlyZ7o7hDZut4+8yxz7BI4PHVU/Mtju9A7YJVQrKW+YeuVpma5M/ZC8xzmW8EtsbEkqa4vBcdo+mu
-	JJ9RbDWKc0MdCk85r//0pgbmOwCR3kKeQ9xxG7m7eZHNpQNINYFbe2sN+D1HIhM5+F1KRF564BS9V
-	5ZHsrZNQ6e2d/ATTebyo/9vzyt2h2aXAXu/WkmEEuCzEvF8+02SDP7i9pkmJz8CmAa0dS+KfoXyTC
-	kCetlw4ka8qFWn0tSPWCVLiu+HTOHr6bV27cDkmiYGeRhMNs7IXWArv9Cn6CMATrjYpJMfUasBaBE
-	6cpUzcrw==;
+	Content-Type:Subject:References:In-Reply-To:Message-Id:To:From:Date:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9DLyOHmoAVb5Kjp+6FlYdojTGuwaxjtqiw9xkYFjrks=; b=jUyFSX7dxerpByXYHIYkboi6ls
+	0UWgM82vpxBuc3AvZu2bK55VoUSQLx7ioTxe8YPGF9GMIZsQLLc+NyRrpNhE6mtCvnDadu33ai3U+
+	C91HzlIKwIlLTUYS2rcyO6NpwZbM28YLvFRnVOfXiTCRLiS9t9xWBb5pT4IDLOfbtG5O3N0qH7q0K
+	c9TuPPqGoQNWxnczRYgfbDBVb6bENRS75lDflYWg8BtjV7nhr9pWkY8r/faRNrzsCn8hSJLm4mtNm
+	DuyUQLttkcnxfcRAPCQub3DAhPbQ42ra+Ud9yP1cvMuDMqrf1DvjZBJEu7jaTnxtjer5qkZe+Snro
+	pfD/nNkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvFpS-0000000CDKn-1GXr;
-	Thu, 20 Mar 2025 13:20:58 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1tvHHh-0000000CSAC-1agg;
+	Thu, 20 Mar 2025 14:54:13 +0000
+Received: from flow-b2-smtp.messagingengine.com ([202.12.124.137])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvFWy-0000000CAiQ-2fEy;
-	Thu, 20 Mar 2025 13:01:53 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-399744f74e9so458029f8f.1;
-        Thu, 20 Mar 2025 06:01:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742475711; x=1743080511; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/2i/cLqH70rFIGQEh0as4tKq9BI5pDp8ooCRLadLuPs=;
-        b=UNWPclpawWJ3w+F3KFoSRSOnOOJZSEMyl5eDTmcLUKZCil7X79wgDrv+BjL0WjPqa9
-         ykU5y811GsUY/ATdBWK0vnN6qcYlEc1EtSFag/fstwoBe4IN9ArLcCxrQEl7ziNTwVaG
-         LMpjmQ8Yc7CXh5FWhgvJqDj33JH3BNo/ZdNGO1G9JPZnoTGZQj9pDede6wKUqwmkcB+k
-         fYdT5H+qxXUE8aL74T5sURbEszmQTSbF+MnbD4VCECLODxINCVeKP5+Grs/ciAx2F3oX
-         lo/2Z1GSfwpPUH4WCrbRYEdro4Gj8YJtgetzl7Wxl4NkVQdLlWtomQhBWuAjC+pg2Eru
-         kEQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742475711; x=1743080511;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/2i/cLqH70rFIGQEh0as4tKq9BI5pDp8ooCRLadLuPs=;
-        b=nfuI5WEU2ScUHuUBNCtGTcWkScxr4l87wBKFYUKpLtQUvpdOU2wU6B0A/YKReKDBqL
-         FteE8uhpSBrr+26sVBXeAnLTAtTrcY8sQv5GRLnJ4NBQa9nffBOOmVDkdQ2XH0PJlnTg
-         RXAOByA/3I+BbR0rmLq+xDZGyULlL3dzuTPY+Oe5Rh09LnHtYE6glPuGvSmsiy/WOhtn
-         UCpoi16xPAUObw68HRLZn8K/h8OjZY4W1hGyf9TDCEMxviQNkAhvW4pv6YFpcjOervS+
-         3hNbcAhKfufKimP4SldAXi3O0ZCgRh5gN0cg1mR1dEAEuq3U53UN1ou5dBPyNeMoed4L
-         jrLA==
-X-Forwarded-Encrypted: i=1; AJvYcCUxcwdjIRGIb9TiQeg6VET3MQqnbMD89r2yyjVNVa2nI3DZ9UhEVl5Yx9rPETx5xPaw3eal3pLsvwa4I69s5Wh2@lists.infradead.org, AJvYcCWhEzRNpDPBZDpRkD8zqzJKU4tH3Qh5y3NfEIrj57CkjTiJjSIp69KmLK3vV5iTQxXjYBDyW7to/ev7@lists.infradead.org, AJvYcCXG9ndxBqfSXie13z2XWIwiry4kJjSfvGJy8sLy+QsQJ3eb9ujGpuxECTaWcnjaCJubmRGHh/5TdTpb/21iPGA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YztAb9aMAl0Yx48Qg7oZQSNW+2iWY8Q25ZEw+IIEO76UXJ+cvK1
-	iuH6NwRBJORR15lEJKgSs6K+h+L6FcEuggNUFHPaYuZZNXS1AVOC
-X-Gm-Gg: ASbGnctTTgweoq+BmWAnQuhFrV+mwfpwu4HH7hKcFjfuRejz3b0yHQkA+/czbnwBw+P
-	flokxZqNc632JmkbQnLXosfV8pKA7ETREWB8KxoZgjrxLAOPWy2Z42CJJZMf+Q5Pzyu4Pa/heqx
-	/iUUwEJTqZlzYnmZsPwRaVwcVJe9wd5a7kHLzxF8UKy8O1BKX9j3cxKpLCW4ErlWGwk4J7aOJzG
-	OLPdU8/gREygyQSODruZPQ6+gETGsvIwsls06UySiYFvoiSB7Tmf+WuxyCESa1NESnUcGI5QH2N
-	aPAhWQa9ZRmopMZvslYOc5U2LgvtHoWn30iazjJPTrfJMkElGHBk1hdMsJLEn9c3ZHrxQQdJDBZ
-	qlRsgtWqcVFiruA==
-X-Google-Smtp-Source: AGHT+IGPoVf9Gxeq+Z6YkgZOF9dLEtuHhARuJ5TNPwOSxmTqplkNjLTuQh6kUIXQk8Ui4saz4dpBhQ==
-X-Received: by 2002:a05:6000:1564:b0:391:4095:49b7 with SMTP id ffacd0b85a97d-399739c8f6dmr6626914f8f.25.1742475709979;
-        Thu, 20 Mar 2025 06:01:49 -0700 (PDT)
-Received: from localhost.localdomain (93-34-90-129.ip49.fastwebnet.it. [93.34.90.129])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-397f2837e61sm18492328f8f.97.2025.03.20.06.01.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 06:01:49 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Danzberger <dd@embedd.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Alexander Sverdlin <alexander.sverdlin@gmail.com>,
-	Nikita Shubin <nikita.shubin@maquefel.me>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Yangyu Chen <cyy@cyyself.name>,
-	Ben Hutchings <ben@decadent.org.uk>,
-	Felix Fietkau <nbd@nbd.name>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org,
-	upstream@airoha.com
-Subject: [PATCH v2 11/11] arm64: dts: airoha: en7581: add USB nodes
-Date: Thu, 20 Mar 2025 14:00:34 +0100
-Message-ID: <20250320130054.4804-12-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250320130054.4804-1-ansuelsmth@gmail.com>
-References: <20250320130054.4804-1-ansuelsmth@gmail.com>
+	id 1tvHDA-0000000CRW2-3klO;
+	Thu, 20 Mar 2025 14:49:35 +0000
+Received: from phl-compute-07.internal (phl-compute-07.phl.internal [10.202.2.47])
+	by mailflow.stl.internal (Postfix) with ESMTP id AEE401D416BB;
+	Thu, 20 Mar 2025 10:49:30 -0400 (EDT)
+Received: from phl-imap-11 ([10.202.2.101])
+  by phl-compute-07.internal (MEProxy); Thu, 20 Mar 2025 10:49:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:content-transfer-encoding:content-type:content-type:date:date
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1742482170;
+	 x=1742489370; bh=9DLyOHmoAVb5Kjp+6FlYdojTGuwaxjtqiw9xkYFjrks=; b=
+	Bw3lXaOmvk9EdHs1fHI4ePb/4my5fKxj/IMehz35ln/GbxTb2yfCvVNDmPag0Iyc
+	6U4DAcH8l8GGqWTL/f+oEJeQwE2vg9NLGJjKJA56zHtY+rLW7mwDSGbyr5+p5XM9
+	JCCrRvfUg8U9Ay9Equz57Dwz1WcN465IOEnw52kZ1BygBzU2OSdFKNAmAlWz1mAa
+	FCAYffC5LmTTVMZFFSQLceuZN0f5ZPmPgd+JE4ytjReoN4stZJTs7zhSBTdzr9V3
+	pPny3DzuG5icuFEqINH8fHGHXQ9PJLpj9cpXsRhS8AcpIVTbUyPQVl3J30MBzF1n
+	X7rb7bbbVqo5z/rdkGcDTg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; t=1742482170; x=1742489370; bh=9
+	DLyOHmoAVb5Kjp+6FlYdojTGuwaxjtqiw9xkYFjrks=; b=Y0x9aWYb2wIAQmaSl
+	Pq6kfxvFZ+vMSk4mUZVMwOCYQXFhwo4FJthV1YOsfpEAc5r56MQs00MWNWQ0JNDX
+	BeT2gaYmcUUtXFUpth1PV9wPGsIz06xj9QEOolTvT2f3WnwVVP1ZBCYav2jRKaKv
+	JGphU67eMFJd/qbRt0RbNP2aPRcqsGRMK+PLas0r1J3nRoQ21uqRPpGUL1iI2NVS
+	FebfzaJxE+l3slXKq9Zx6IGVg+a9jxn/YDtEIn7PDb/xAnScxQ2sczmw0mug+qgD
+	84PKh+sqX8mlDjlR5HIzegh2buZJErBnJqLHFtImfWvmvwlvJbFl2pDGiPe7CEeT
+	1YNkQ==
+X-ME-Sender: <xms:-CrcZyd9GW8HoH0R3IH91GtQzQt0CEr8OyRwG1O-nnJkeMuRCvK6Zg>
+    <xme:-CrcZ8NvNa45BKatbeA4B1wgGCMT93ZcGxk0DSOqDPRgKGUn0zpZUmNESobrm7HKP
+    to6wCniosQHayzwSCo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddugeekgeelucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvffkjghfufgtgfesthejredtredt
+    tdenucfhrhhomhepfdetrhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusg
+    druggvqeenucggtffrrghtthgvrhhnpefhkeeltdfffefhgffhteetheeuhffgteeghfdt
+    ueefudeuleetgfehtdejieffhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
+    epmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgtphhtthhopedv
+    jedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepuhhpshhtrhgvrghmsegrihhroh
+    hhrgdrtghomhdprhgtphhtthhopehmthhurhhquhgvthhtvgessggrhihlihgsrhgvrdgt
+    ohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnoh
+    estgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopegthiihsegthiihshgvlhhfrdhn
+    rghmvgdprhgtphhtthhopegsvghnseguvggtrgguvghnthdrohhrghdruhhkpdhrtghpth
+    htohepuggusegvmhgsvgguugdrtghomhdprhgtphhtthhopegrlhgvgigrnhguvghrrdhs
+    vhgvrhgulhhinhesghhmrghilhdrtghomhdprhgtphhtthhopegrnhhsuhgvlhhsmhhthh
+    esghhmrghilhdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghi
+    lhdrtghomh
+X-ME-Proxy: <xmx:-CrcZzggTkjaKKMcIlgevkAvwlYjG5PkKJgdClNOo099WbN16OSVsA>
+    <xmx:-CrcZ_9zuYJuN_HLg3rJNKPuHPA9shltG7CLzwdMTeYtvKj7bZxlGA>
+    <xmx:-CrcZ-tBhZRJUgt6KbRsVeBxevJWA7uQVq4pldXImlnOXd_tXaUkew>
+    <xmx:-CrcZ2HPgAWXYC_-FTq__I9R22-H0xsP9vJ2kl_t3HMh2-otp4xiig>
+    <xmx:-ircZzt99E-ok_aWCfAWKBZl4vRai5AHEGnkM81fK97NzSmAflzBFw3S>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 660AA2220073; Thu, 20 Mar 2025 10:49:28 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ThreadId: T0b2bddcaf378cae8
+Date: Thu, 20 Mar 2025 15:49:08 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Christian Marangi" <ansuelsmth@gmail.com>,
+ "Michael Turquette" <mturquette@baylibre.com>,
+ "Stephen Boyd" <sboyd@kernel.org>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ "Conor Dooley" <conor+dt@kernel.org>, "Vinod Koul" <vkoul@kernel.org>,
+ "Kishon Vijay Abraham I" <kishon@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Lorenzo Bianconi" <lorenzo@kernel.org>,
+ "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
+ "Daniel Danzberger" <dd@embedd.com>,
+ "Alexander Sverdlin" <alexander.sverdlin@gmail.com>,
+ "Nikita Shubin" <nikita.shubin@maquefel.me>,
+ "Linus Walleij" <linus.walleij@linaro.org>,
+ "Yangyu Chen" <cyy@cyyself.name>, "Ben Hutchings" <ben@decadent.org.uk>,
+ "Felix Fietkau" <nbd@nbd.name>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
+ upstream@airoha.com
+Message-Id: <d6e27266-dc5b-4ef8-b708-21cedd06621e@app.fastmail.com>
+In-Reply-To: <20250320130054.4804-5-ansuelsmth@gmail.com>
+References: <20250320130054.4804-1-ansuelsmth@gmail.com>
+ <20250320130054.4804-5-ansuelsmth@gmail.com>
+Subject: Re: [PATCH v2 04/11] soc: airoha: add support for configuring SCU SSR Serdes
+ port
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_060152_673008_D2855AB0 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20250320_074933_270629_CE5DC85D 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,83 +133,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add USB nodes required for USB support of Airoha EN7581 with the correct
-define of Serdes Port and Monitor Clock for USB 2.0 calibration.
+On Thu, Mar 20, 2025, at 14:00, Christian Marangi wrote:
+> Add support for configuring SCU SSR Serdes port. Airoha AN7581 SoC can
+> configure the different Serdes port by toggling bits in the SCU register
+> space.
+>
+> Port Serdes mode are mutually exclusive, force example the USB2 Serdes port
+> can either used for USB 3.0 or PCIe 2 port. Enabling USB 3.0 makes the
+> PCIe 2 to not work.
+>
+> The current supported Serdes port are:
+> - WiFi 1 and defaults to PCIe0 1 line mode
+> - Wifi 2 and defaults to PCIe1 1 line mode
+> - USB 1 and defaults to USB 3.0 mode
+> - USB 2 and defaults to USB 3.0 mode
+>
+> WiFi 1, WiFi 2 and USB 1 also support a particular Ethernet mode that
+> can toggle between USXGMII or HSGMII mode (USB 1 only to HSGMII)
+> Such mode doesn't configure bits as specific Ethernet PCS driver will
+> take care of configuring the Serdes mode based on what is required.
+>
+> This driver is to correctly setup these bits.
+> Single driver can't independently set the Serdes port mode as that
+> would cause a conflict if someone declare, for example, in DT
+> (and enable) PCIe 2 port and USB2 3.0 port.
+>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- arch/arm64/boot/dts/airoha/en7581.dtsi | 49 ++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+I think serdes drivers are usually implement in the drivers/phy
+layer, and I see there is already a drivers/phy/phy-airoha-pcie.c,
+which may or may not overlap with this one (I have not looked at
+the details).
 
-diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index 26b136940917..d1cec63bb77f 100644
---- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-+++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -3,7 +3,10 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/clock/en7523-clk.h>
-+#include <dt-bindings/phy/phy.h>
-+#include <dt-bindings/phy/airoha,an7581-usb-phy.h>
- #include <dt-bindings/reset/airoha,en7581-reset.h>
-+#include <dt-bindings/soc/airoha,scu-ssr.h>
- 
- / {
- 	interrupt-parent = <&gic>;
-@@ -195,6 +198,52 @@ rng@1faa1000 {
- 			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
- 		};
- 
-+		usb0: usb@1fab0000 {
-+			compatible = "mediatek,mtk-xhci";
-+			reg = <0x0 0x1fab0000 0x0 0x3e00>,
-+				<0x0 0x1fab3e00 0x0 0x100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			phys = <&usb0_phy PHY_TYPE_USB2>, <&usb0_phy PHY_TYPE_USB3>;
-+
-+			status = "disabled";
-+		};
-+
-+		usb0_phy: phy@1fac0000 {
-+			compatible = "airoha,an7581-usb-phy";
-+			reg = <0x0 0x1fac0000 0x0 0x10000>;
-+
-+			airoha,scu = <&scuclk>;
-+			airoha,usb2-monitor-clk-sel = <AIROHA_USB2_MONCLK_SEL1>;
-+			airoha,serdes-port = <AIROHA_SCU_SERDES_USB1>;
-+
-+			#phy-cells = <1>;
-+		};
-+
-+		usb1: usb@1fad0000 {
-+			compatible = "mediatek,mtk-xhci";
-+			reg = <0x0 0x1fad0000 0x0 0x3e00>,
-+				<0x0 0x1fad3e00 0x0 0x100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			phys = <&usb1_phy PHY_TYPE_USB2>, <&usb1_phy PHY_TYPE_USB3>;
-+
-+			status = "disabled";
-+		};
-+
-+		usb1_phy: phy@1fae0000 {
-+			compatible = "airoha,an7581-usb-phy";
-+			reg = <0x0 0x1fae0000 0x0 0x10000>;
-+
-+			airoha,scu = <&scuclk>;
-+			airoha,usb2-monitor-clk-sel = <AIROHA_USB2_MONCLK_SEL2>;
-+			airoha,serdes-port = <AIROHA_SCU_SERDES_USB2>;
-+
-+			#phy-cells = <1>;
-+		};
-+
- 		system-controller@1fbf0200 {
- 			compatible = "airoha,en7581-gpio-sysctl", "syscon",
- 				     "simple-mfd";
--- 
-2.48.1
+Have you tried to use the phy subsystem interface here instead
+of creating a custom in-kernel interface?
 
+      Arnd
 
