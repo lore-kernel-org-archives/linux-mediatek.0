@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CF6C36000
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 15:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE23DC36000
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 15:54:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lH2U2G8Gz+Xy1V3LOetq1Y+BXZZfWfVYayeHBZ6YCgc=; b=Ch3rxt/jBAlimgYcQgL0Rp3o7V
-	gG/FSR/+V5dH/nFIbthRi70i+vk1JeDJdIXhCM0Srwbur0+nzxcGs7SOASWQCXsPoSM1E9NlNt1nv
-	7/7CYHTFILo0PpfJlzorUiPzvkl+TPxSezWNYMu+2NUJ4GEMSrv8tOt4/u9iPwzbJ0qMAqzj52lqt
-	JvX6x0a0n0wiW9D7w5/4Vix31oKIw1gCscX3WAiMPtg1OIdBujlbwcqVvb7+HfwvLXNUxZGzsfeWo
-	mRjEyNUd/LzRKgZEZmmzu+Uk6K43TThuG52E00jUKdu0T7s4sEVsNclae0psoZqrA3w639QkSE3nd
-	Kj2FPGuw==;
+	bh=RTwA+1K2fXH71E3l+IMbOPL1xmKtfNCzEKk8E1QgUlY=; b=uppARFHueE2b3/d3nKnFDs3jxY
+	nq6iNwTXGr833mIbdqZtoZ5dfj+34tQspB8j5XOOSqH4e048PpgT9+GEudFyZyemTzEqmN3UDvHUB
+	+b+kThTzt6jaJTQEvoatstrz3eLojvxqyYEO/BNB5AkRG0BM8hT9ohqFHJ8ToeY/ghlVjQC0AFBSU
+	8/d39rA9Tp4s7xHE/SfAyedps+9cJVK7g2d0r5dPTJ0wUmUV58bTr1Drx3aHjbeVphlBlE4KFJzDR
+	NtitO7Lw+voMI7F7tHi+Sq8Maqec2RlZVZHt17W3iKKqGGZM4y5GrXCdsiK10nBmKKJDHnOT0mwxS
+	GzKxCJxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvedC-0000000FMDs-1e3k;
-	Fri, 21 Mar 2025 15:49:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1tvehT-0000000FNGc-3b82;
+	Fri, 21 Mar 2025 15:54:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvebW-0000000FLnH-2hHc
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Mar 2025 15:48:15 +0000
+	id 1tvefo-0000000FMqZ-05ZB;
+	Fri, 21 Mar 2025 15:52:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 98A6643DC8;
-	Fri, 21 Mar 2025 15:48:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 533E5C4CEED;
-	Fri, 21 Mar 2025 15:48:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E86DD6113B;
+	Fri, 21 Mar 2025 15:52:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A45AEC4CEE3;
+	Fri, 21 Mar 2025 15:52:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742572093;
-	bh=DU5u7zzqxk8b3LOzHKAd92FrOH93E891MIYgL+Z1eac=;
+	s=k20201202; t=1742572359;
+	bh=aeT+zeWm5jrgZt8DkAFo7mZSthufAM7MHXrkbF6C8sU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RSsqN3XNrfb16zXuntT1jMfUhCBZLAQFG96m5MK28imTXVzybiRv/4Re31lgHRydo
-	 Be6miDqEeyMPR+3K/T8q5nYmteXWy0B58FDtxuq4aoWoq5I/0YxG3K5EfL0/2FLHJO
-	 2sbAHp5kldh3zjfs6/6mBZrdW93AFuJxUBAzYF6Qva0NV60gLPv/eRoU2WWZOeuzOY
-	 aiFI03QCrDzuDTd/JJYLsZlBy39+QxTFUdMZhHlgIkfzMpslX3zNMkZ0WA2XfYoc+M
-	 j6dcZFtdGqu1PhEj5NPoTZFy0l7KZU6BdvtYncqv8cnkrxNDocj/zLEdraJ6+Ek4K1
-	 wZGMMkcjn94gQ==
-Date: Fri, 21 Mar 2025 16:48:11 +0100
+	b=p/MQddbmitNGpDQe4XEcNSY1zRtCllgV3IqfjF4T9B8KJj7J0xtemZkjDS8iVnuex
+	 HWn1A6bUWJDVuQLcDtOFSz36KEZ98qOpkwhG283VT6NgKRs3XqPBnHP3p+dRgMOUNi
+	 KBOxZJftX4vGpllF73+5ldrSO0sXLZQCzPMxRG0ATXYgnvBW0SVKTIJ1eaJoSbBKQU
+	 ICAPo/lVWAYuNNzVgiwqa/ZJ0mI/uJRJPAHWeo17WzIk8vf7MBSdHdBazvfUHTYxNN
+	 J+eLbuos/Ap6o5+lYkYbVBUkiZ0s2qKvxkk5w3dZPgn7NTnIChDFH3he9W7afjIBqo
+	 Nkp+FkkBX6CKw==
+Date: Fri, 21 Mar 2025 16:52:36 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [bug report] wifi: mt76: mt7996: Rely on mt7996_sta_link in
- sta_add/sta_remove callbacks
-Message-ID: <Z92KO68zKlqKcF1W@lore-desk>
-References: <f335328d-8554-401b-83c2-36e8d7668a62@stanley.mountain>
+Cc: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH] wifi: mt76: mt7996: remove duplicate check in
+ mt7996_mcu_sta_mld_setup_tlv()
+Message-ID: <Z92LRBMxyz4pS7my@lore-desk>
+References: <fde7246b-08a2-4c2f-b2dc-c3fd0e6b300b@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="EHUAeOz4fd75awZd"
+	protocol="application/pgp-signature"; boundary="Her0ThDAq1KdRV1x"
 Content-Disposition: inline
-In-Reply-To: <f335328d-8554-401b-83c2-36e8d7668a62@stanley.mountain>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_084814_719687_01972EB9 
-X-CRM114-Status: GOOD (  10.56  )
+In-Reply-To: <fde7246b-08a2-4c2f-b2dc-c3fd0e6b300b@stanley.mountain>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,107 +79,51 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---EHUAeOz4fd75awZd
+--Her0ThDAq1KdRV1x
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> Hello Lorenzo Bianconi,
+> The "msta_link" pointer has two NULL checks.  Delete the second check.
+>=20
+> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 ---
+>  1 file changed, 3 deletions(-)
+>=20
 
-Hi Dan,
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-this issue is already fixed by the following patch:
-https://lore.kernel.org/linux-wireless/20250320201914.48159-1-qasdev00@gmai=
-l.com/T/#u
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7996/mcu.c
+> index ddd555942c73..03539e20f5c5 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> @@ -2242,9 +2242,6 @@ mt7996_mcu_sta_mld_setup_tlv(struct mt7996_dev *dev=
+, struct sk_buff *skb,
+>  		if (!link)
+>  			continue;
+> =20
+> -		if (!msta_link)
+> -			continue;
+> -
+>  		mld_setup_link->wcid =3D cpu_to_le16(msta_link->wcid.idx);
+>  		mld_setup_link->bss_idx =3D link->mt76.idx;
+>  		mld_setup_link++;
+> --=20
+> 2.47.2
+>=20
 
-Regards,
-Lorenzo
-
->=20
-> Commit dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in
-> sta_add/sta_remove callbacks") from Mar 11, 2025 (linux-next), leads
-> to the following Smatch static checker warning:
->=20
-> 	drivers/net/wireless/mediatek/mt76/mt7996/main.c:1023 mt7996_mac_sta_add=
-_links()
-> 	error: uninitialized symbol 'err'.
->=20
-> drivers/net/wireless/mediatek/mt76/mt7996/main.c
->     984 static int
->     985 mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211=
-_vif *vif,
->     986                          struct ieee80211_sta *sta, unsigned long=
- new_links)
->     987 {
->     988         struct mt7996_sta *msta =3D (struct mt7996_sta *)sta->drv=
-_priv;
->     989         unsigned int link_id;
->     990         int err;
->     991=20
->     992         for_each_set_bit(link_id, &new_links, IEEE80211_MLD_MAX_N=
-UM_LINKS) {
->     993                 struct ieee80211_bss_conf *link_conf;
->     994                 struct ieee80211_link_sta *link_sta;
->     995                 struct mt7996_vif_link *link;
->     996=20
->     997                 if (rcu_access_pointer(msta->link[link_id]))
->     998                         continue;
->=20
-> What about if there are no new links or we hit the continue on every
-> iteration.
->=20
->     999=20
->     1000                 link_conf =3D link_conf_dereference_protected(vi=
-f, link_id);
->     1001                 if (!link_conf)
->     1002                         goto error_unlink;
->=20
-> error code?
->=20
->     1003=20
->     1004                 link =3D mt7996_vif_link(dev, vif, link_id);
->     1005                 if (!link)
->     1006                         goto error_unlink;
->=20
-> error code?
->=20
->     1007=20
->     1008                 link_sta =3D link_sta_dereference_protected(sta,=
- link_id);
->     1009                 if (!link_sta)
->     1010                         goto error_unlink;
->=20
-> error code?
->=20
->     1011=20
->     1012                 err =3D mt7996_mac_sta_init_link(dev, link_conf,=
- link_sta, link,
->     1013                                                link_id);
->     1014                 if (err)
->     1015                         goto error_unlink;
->     1016         }
->     1017=20
->     1018         return 0;
->     1019=20
->     1020 error_unlink:
->     1021         mt7996_mac_sta_remove_links(dev, sta, new_links);
->     1022=20
-> --> 1023         return err;
->     1024 }
->=20
-> regards,
-> dan carpenter
-
---EHUAeOz4fd75awZd
+--Her0ThDAq1KdRV1x
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ92KOwAKCRA6cBh0uS2t
-rG5cAQDphmP9K6IfiUhNPlSlfzsCq2U+tHPbt379ElB7baJv3QD/WpT91hM+ML6V
-f3ep0hi29dXXuvRt8mNx0qUiRB4WXgE=
-=PyZM
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ92LRAAKCRA6cBh0uS2t
+rAFkAQC83L5e/zLFrvnAgbWpDtlXGRVM8ylbCJX2fob5kYoqKAEA8J5Y+3FQYsGq
+Hs5nRCUHXyiZQ44fs7zXOIdYRSjk1As=
+=DzY1
 -----END PGP SIGNATURE-----
 
---EHUAeOz4fd75awZd--
+--Her0ThDAq1KdRV1x--
 
