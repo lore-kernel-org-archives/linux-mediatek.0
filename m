@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC00C35FFF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 09:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7081EC36000
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 09:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5syZdBd1owRAm5PFPeWjVnHtHFq5EbDnkkIfl2ZC53M=; b=dq/akdTHMi4ggU1kAYUFMrN7Rj
-	cB/28qw4UpgDE+QWRSC9LKIuC0HpYf0dTlGtUuF35gxozw40R2RFQb8Vi4LPVwao8Bm+3rUVzt4Ri
-	jqo0eGFYMaPKsrqztwrLbUyTVYcFnLP2P0M5Rs4qxaAyy9zkkRNAc0PljiesREsOiHYqej//wXMmL
-	rfHgz05o+OdVzsvA+bucekS0CRNBfmMyATfN0YRS3z/vX0JeISemcTkqNDEBrTnLXtQH4OTkO3J9J
-	jA2CNbCmzz796wFAzIJOwVGaFuQW0g/qrW8NiNSN0On4Uwo1cblHQ3Avm6sbx+YkvvXYEaPwZ2oC7
-	tnfn6THw==;
+	bh=goXx0bw5S/4pcmZaDRo/lhBcOym7XT9NAEh4tbj1ZQs=; b=Rm/6kaG0A9KWyqonzONob2lbA+
+	0rWUJknWcVb2l2l6H4C2tfbVtnfmEnaUe2BSzb1LDVJaZyPg3dSdQ50JazA911RS89m6PkHKIYJas
+	nlXVuYtsswsyn5ktLPGELu2JkFjvsF03XnEcYkEFuDGgS+mDFHHAYhAXgDUit+DKO3Uxpuia8TKRj
+	qiks8Fay9ip501j7KiDisikJEBSjwArSsms5mPOrQ1AJZhi/vkF6mc1cGwZCvMQNMer8IM1FWnnB0
+	O8AoqAqtqIUWyZ58ehlRUgBWH0L/YGS+TiqVnTRsqvygfgNpTsSBaeijubmyghO2o0dhdOb7kzC4O
+	Ps5TDhwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvZ7Q-0000000ES3z-11X3;
-	Fri, 21 Mar 2025 09:56:48 +0000
+	id 1tvZ94-0000000ESK2-0pPH;
+	Fri, 21 Mar 2025 09:58:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvYmi-0000000ENeM-1o7q;
-	Fri, 21 Mar 2025 09:35:25 +0000
-X-UUID: cfc2b164063711f0a1e849db4cc18d44-20250321
+	id 1tvYmo-0000000ENgM-1qrZ;
+	Fri, 21 Mar 2025 09:35:31 +0000
+X-UUID: d223f10c063711f0a1e849db4cc18d44-20250321
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5syZdBd1owRAm5PFPeWjVnHtHFq5EbDnkkIfl2ZC53M=;
-	b=bJjPuu1KfEdlVyoQeRx6xI3xIl2VwcSsB4EIEIUgBQCCVDPKLS2kERGY29xW30HFlCrLjbPm0R6s1UFp2PKkWGgxc0lCgsBkhFj+VYsO1nGkVZG67OV5i9XvL5MzguMEaIGJ9yUjAxMJ9wvlGD3WFD+ozGbGX1UGI7ErPPc5zJI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=goXx0bw5S/4pcmZaDRo/lhBcOym7XT9NAEh4tbj1ZQs=;
+	b=MAVD6chp+/g/ssU5XddmE2z2JosWSLI7KSdXZXSrNHDC9d9HR0WgUw3g5nBv7UI7mzKEx3+VNIJqgi9/tkSVMEpVbf/kNzTZpeb6qflcOh692SVsbS8Fhz+coKXaYxKU5SBj6g5sHCJi1FAAFKpAIhprWx9g5eVz9Vh3YKOUrzM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:b1c629a1-0de8-4c86-9fd0-0a7689aad7e4,IP:0,UR
-	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:25
-X-CID-META: VersionHash:0ef645f,CLOUDID:657aa1c6-16da-468a-87f7-8ca8d6b3b9f7,B
+X-CID-O-INFO: VERSION:1.2.1,REQID:2217bc77-16a8-4e4d-9524-fc53bcc20516,IP:0,UR
+	L:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:b57aa1c6-16da-468a-87f7-8ca8d6b3b9f7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:11|83|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: cfc2b164063711f0a1e849db4cc18d44-20250321
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-UUID: d223f10c063711f0a1e849db4cc18d44-20250321
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <paul-pl.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1657379820; Fri, 21 Mar 2025 02:35:22 -0700
+	with ESMTP id 1078889300; Fri, 21 Mar 2025 02:35:26 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 21 Mar 2025 17:35:19 +0800
+ 15.2.1258.39; Fri, 21 Mar 2025 17:35:23 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 21 Mar 2025 17:35:19 +0800
+ 15.2.1258.39 via Frontend Transport; Fri, 21 Mar 2025 17:35:23 +0800
 From: paul-pl.chen <paul-pl.chen@mediatek.com>
 To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
 	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 04/15] dt-bindings: display: mediatek: add BLENDER yaml for MT8196
-Date: Fri, 21 Mar 2025 17:33:33 +0800
-Message-ID: <20250321093435.94835-5-paul-pl.chen@mediatek.com>
+Subject: [PATCH v2 05/15] dt-bindings: display: mediatek: add OUTPROC yaml for MT8196
+Date: Fri, 21 Mar 2025 17:33:34 +0800
+Message-ID: <20250321093435.94835-6-paul-pl.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
 References: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
@@ -66,8 +66,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_023524_470355_0F5BDABA 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20250321_023530_481657_C2093527 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +85,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Paul-pl Chen <paul-pl.chen@mediatek.com>
 
-Add mediatek,blender.yaml to support BLENDER for MT8196.
-MediaTek display overlap blender, namely OVL_BLENDER or BLENDER,
-executes the alpha blending function for overlapping layers
-from different sources.
+Add mediate,outproc.yaml to support OUTPROC for MT8196.
+MediaTek display overlap output processor, namely OVL_OUTPROC
+or OUTPROC,handles the post-stage of pixel processing in the
+overlapping procedure.
 
 Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
 ---
- .../display/mediatek/mediatek,blender.yaml    | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+ .../display/mediatek/mediatek,outproc.yaml    | 54 +++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
 new file mode 100644
-index 000000000000..23e274a49228
+index 000000000000..f42e9abc1436
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
-@@ -0,0 +1,48 @@
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
+@@ -0,0 +1,54 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,blender.yaml#
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,outproc.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek Display Overlap Blender
++title: MediaTek display overlap output processor
 +
 +maintainers:
 +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
 +  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+description:
-+  MediaTek display overlap blender, namely OVL_BLENDER or BLENDER,
-+  executes the alpha blending function for overlapping layers
-+  from different sources. This is the primary function of the
-+  overlapping system.
++description: |
++  MediaTek display overlap output processor, namely OVL_OUTPROC or OUTPROC,
++  handles the post-stage of pixel processing in the overlapping procedure.
++  OVL_OUTPROC manages pixels for gamma correction and ensures that pixel
++  values are within the correct range.
 +
 +properties:
 +  compatible:
-+    const: mediatek,mt8196-blender
++    const: mediatek,mt8196-outproc
 +
 +  reg:
 +    maxItems: 1
 +
 +  clocks:
++    maxItems: 1
++
++  interrupts:
 +    maxItems: 1
 +
 +required:
@@ -139,15 +142,18 @@ index 000000000000..23e274a49228
 +
 +examples:
 +  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
 +
 +    soc {
 +        #address-cells = <2>;
 +        #size-cells = <2>;
 +
-+        disp_ovl0_blender0: blender@328d0000 {
-+            compatible = "mediatek,mt8196-blender";
-+            reg = <0 0x328d0000 0 0x1000>;
-+            clocks = <&ovlsys_config_clk 29>;
++        disp_ovl0_outproc0: outproc@32970000 {
++            compatible = "mediatek,mt8196-outproc";
++            reg = <0 0x32970000 0 0x1000>;
++            clocks = <&ovlsys_config_clk 49>;
++            interrupts = <GIC_SPI 450 IRQ_TYPE_LEVEL_HIGH 0>;
 +        };
 +    };
 -- 
