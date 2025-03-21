@@ -4,88 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75739C36000
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 10:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA777C36000
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 14:38:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C6XBFDQAIe6jgF6F40xRB15uQkrbHzlxj9SySg4AP08=; b=kRMPrsE0YPdXdapbtcSDkuWtxp
-	NJWe9cpuL+yLbHPFVzkdtAU8r9INugNi41TmZcr8jLHjDaAEna6dQbCmYGtkbdvRiz3X6cXjZFXc3
-	yFUVJMe/sEuv7ux2sshbvow25i/3lUnx651P+IFe2XeiEQPUGxP/GgVJLoXaplo7YGgNRNkSQUaYp
-	2h4QzDgxj8sAbksRhkgDYDM2u6b3d8gxElvMgk4UURJkqz+XVbfqV04VTfh8PPzq3zlJR1ukvmNPx
-	mimaS2IarwA08LDaU+wUvvlKsIPOsqFgP1iJj2TGQVN1SlqX+0vb3CgM8QLOfTu9aOzFkR4KKI+A+
-	JR/BCNNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dCM/0pxY2Et0ZhXNOx5M/rBqqFuiIGPsmpAIcE+cA+0=; b=JBu242yGFVrBnVNkqXDTWdfaRW
+	blL0Xzejs3f3EtQkAwxfhTp3zg/b3cDu2/79VuM0fVSnaqIGZihqpQzYvlxMI3uVeuAtO7t/WUTsl
+	akB7pXzj33i4HuaibGRSHhvBXXajLOR+Sufwv94hQFD8Fu+C48MEcD8e5kVJJD/AUG3jSXH9WaSvA
+	PzStdXB0UcFr0XByJ1NQUpo9xKABDZWRWvD5l24wXPAP+mVTw620h6oBDmzbp8pBpyyJjvYx+LoKG
+	DtNP4zNJO7hTzGQ41M30orEu8jkbksJsEYsP2ALrATwhm09d7EPJKpPtnJE0qjr2o6tMwc7gYpR8B
+	lPW6MjVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvZmr-0000000EYFk-23dR;
-	Fri, 21 Mar 2025 10:39:37 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1tvdVu-0000000F964-3JZN;
+	Fri, 21 Mar 2025 14:38:22 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvZai-0000000EWLK-3w4h
+	id 1tvdR7-0000000F7oL-2a5N
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Mar 2025 10:27:06 +0000
-Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-7c53b9d66fdso244303685a.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Mar 2025 03:27:04 -0700 (PDT)
+	Fri, 21 Mar 2025 14:33:26 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43d04dc73b7so21672205e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Mar 2025 07:33:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1742552823; x=1743157623; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=C6XBFDQAIe6jgF6F40xRB15uQkrbHzlxj9SySg4AP08=;
-        b=LmNfEBZZml1EDYYkD0nWv72zHMf49uMTytRkxAVxsm27xEadylgYHZy/3AivwuscFY
-         IEbKRWTKqPcSHUdnHRUPNGQuLPxA3mELcnV3ZMSjpMKKX85hzF/dpFwkFlfd79FBgN41
-         9MX+kYT2KGA2iVSgB5Ogn7wkkAoEidsKzjMnVmTs3yDR/7ACTRtkKEu2AcR2gxQUSNQS
-         6juEvxgpOyRN6dZENP5Rt17a/F7LFwKJMOkmGLm57/8twHdwgG+Rhxwzi+hZqLMmwy4u
-         i1QUQFboZ70HOOCv3OP9Pd1WHmY+CTPF+U+6htpt2rizcPbNEXHYwaejyvUqkdIs7kBr
-         myPw==
+        d=linaro.org; s=google; t=1742567604; x=1743172404; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dCM/0pxY2Et0ZhXNOx5M/rBqqFuiIGPsmpAIcE+cA+0=;
+        b=RDZk/iRBIR5YW64pc+BU96W0Sx766UVOIVD9Is7R2XVjT5c9Q4m1cqTqKoFpWyIHkW
+         8brp+mmNyTaGl3yk0DiSWaFrOyxv2gwZLVA139yjkJXt5P6B9p1/nDNDNogP/A4JvKf2
+         HHGQJ/6VOVZYTq8kCJaiebNw1aD+pqf2QbyAU690MSfWbnzFTYLo+0S2Lcyoc3Ye6exM
+         2/Jah1VDvxrVD+VCqHTT0MhkoFWr2MdLmlNaTisSTaraPscZ0Ivex3/CSv345itfK5dw
+         a9tI9ouW8Q+g3eTdYLFFW5Hx2VsIQcEl8DSOgI2XWRbT8iZh3DvdaErgMnpEbAVH+qUn
+         rHkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742552823; x=1743157623;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=C6XBFDQAIe6jgF6F40xRB15uQkrbHzlxj9SySg4AP08=;
-        b=Io+Gy3KrIlSAVPaJMfKDOtPB2iKTPkhxGV9da1aC5PvW1WWe4v5LteVKNUpZp/H4hf
-         i/lEaV2KHUOYA4pKn/PuAhhwJZ+pGIQ2/F9mU+d1ZsBP2cm/IttVqjG7KG/FJ4G4CQQ3
-         cduhhwvuj+KhN6SBIJvptmxzD63NiRTUuDXYC34L7Mbb75wqszsaFEYI87xLmWASYE0J
-         Wr5tiWtyaKmXx9BP25KLWYRJp7xbMaPJhH2w0LGcRvLyIDr0oMJdUUV2w3OvYt3lli0C
-         dLox89tgX5bIJnijUbFGpHChXBI6lozJ/vIap8pCIWTv8TYeO9fBQcxKDHhkKFCQ+wo7
-         QG2A==
-X-Forwarded-Encrypted: i=1; AJvYcCUwyY2sAGDWzBfrwmMn2SfoTSlu37YdNDdionuLebgbcMSusGoSY5dhua6yhIegqR2G90Es7ua9twBTFWGTlA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJGCgsEAZCeXQk23IbepGnr8yuzESCEJnEv+FjzLBjNOinr0Ii
-	JK/+JnuWdRUr/ObblclbGJvASoiFT0FtORoQZa+lbHnwgV9fnYpXd5ahaiN3G1s4tkJVlXVxWqx
-	mEIh2jcIWJPs19grkzreCg8PH7E8+eYDzKy+8+Q==
-X-Gm-Gg: ASbGncvv+Xl1+ShYODIT/sgMcakqdHuGjZ2HERlYpKMQVoCr983DjlsjGJhz0wItVYD
-	6fTHjf2PXPs98ElYJB1uH8ZjDyyxupQSkrHEZsRndwTZpcVhLDSDNvhNLR5M6ikiT2vuj4N+2KE
-	Cwc+HFqS3tS/+1X/CtuuwyBEAo
-X-Google-Smtp-Source: AGHT+IGtKZxKAoZgtR0aBlIVmyFJdz4vLgELnLl5z6u4LuYLjXNoyuq0UVrTF+CIIc7xPDTVRmAHZ+SRVPvG/7TyZXI=
-X-Received: by 2002:a05:620a:4055:b0:7c5:a423:f5b0 with SMTP id
- af79cd13be357-7c5ba13361dmr406693385a.7.1742552823192; Fri, 21 Mar 2025
- 03:27:03 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742567604; x=1743172404;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dCM/0pxY2Et0ZhXNOx5M/rBqqFuiIGPsmpAIcE+cA+0=;
+        b=uVU/CFLTLm0pTxBV+JJlnld8hN1hAlfOiz97Sn0/YqY8KHTyAu34te9nG7z6N8BBaR
+         IFGd6In4ao738881jamYSa3atuSb0VQQSnuYz6WTUkezgy+HT2bTBzMEcKoGbt1I778W
+         uMoWvCepguzmMaYxEEaDDqMUn7Vpl2fjYtcPT0Za5FFapj6GwZGQfimZjXrHGnY8bbHc
+         YfT5PWafkjFwmnKoNCYQ7/ymiPuWtgYv5WNhmsqznTUKirTYAwdvBFEW87wtxmU0Ej//
+         302esRlDaWKhPjNmHaT2EGc0DP9qDH79Ph99/0vMuprKrmUj2alwI9TZdVjFsEgffQek
+         eGwg==
+X-Forwarded-Encrypted: i=1; AJvYcCWWxKBLnpTrrLO+7qvezbqxitYBOP95CyiLzqUn6K6Ik94iDVDHgNp8whBDjIGcDRvGYSNMptEWgGujCsDJ5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXLS3pd00LubX5/1DA2FtvPFToonRbtMRHqDcEQoV4gWbz3gzb
+	vR8olQXBJmADjzAATUDaUjyHo7XDkv4KyNE9bSnVeFyw7ARgRCS+US/eZWygjCI=
+X-Gm-Gg: ASbGncu+yRIWWpG9Qbn21D/0QRv4XXutmvcV/UNJx3p8HQxpPOxN4cwAKnveaDPebNr
+	IXkET1Mvj/OjtvJIn5p3yZOYI3BXRb7gN3gRc4lfLDWI2r3F6pa/C2xdKuQdAnUGnI6mdjwNxtU
+	cjk5Qfjz1h/fFXEAd9gDj7tdzzlNfTNgtr26ASi26FtC1+zINn6Oy2AMKl/DJFAuvuCuYV9sJyk
+	PTNG767DVHvmKreBgKLW3Sd6CUpkflLKbxNvcEpMfu33YrCURFR6Xi3GJHRJPPtRIRkZR1k5dCU
+	5y4Q1EUzO9IR3OqvrDybq7G8gkCHXSrNRKb2oahufqBaFRocnA==
+X-Google-Smtp-Source: AGHT+IGWV/p7m8S7xqGZKFR3zF2W6QjG0ha40UpvzvNsYp/rwN5LamAAHEDfsFE/TVOy2+owapxVnQ==
+X-Received: by 2002:a5d:47a5:0:b0:390:f699:8c27 with SMTP id ffacd0b85a97d-3997f902e3dmr3289351f8f.12.1742567604149;
+        Fri, 21 Mar 2025 07:33:24 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3997f9efd61sm2542776f8f.91.2025.03.21.07.33.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Mar 2025 07:33:23 -0700 (PDT)
+Date: Fri, 21 Mar 2025 17:33:21 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [bug report] wifi: mt76: scan: set vif offchannel link for
+ scanning/roc
+Message-ID: <2f5c3a3c-89d9-407a-b163-4b5cc81da319@stanley.mountain>
 MIME-Version: 1.0
-References: <20250314085858.39328-1-vignesh.raman@collabora.com> <20250314085858.39328-2-vignesh.raman@collabora.com>
-In-Reply-To: <20250314085858.39328-2-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 21 Mar 2025 10:26:52 +0000
-X-Gm-Features: AQ5f1JpymW7UP78_0g_Z-sNByprYGBFX-xYqr_OlbVrsK0-Hob7Zk88vIu6Znbc
-Message-ID: <CAPj87rMjF84yyPqBshuGu=8qx6Xhq9Z-HgEnQe=tRtbu3E8OtQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] drm/ci: uprev mesa
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch, 
-	robdclark@gmail.com, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, valentine.burley@collabora.com, 
-	lumag@kernel.org, quic_abhinavk@quicinc.com, mripard@kernel.org, 
-	jani.nikula@linux.intel.com, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_032705_135411_41B1AB42 
-X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-CacheID: sfid-20250321_073325_654975_88FF8D4C 
+X-CRM114-Status: UNSURE (   4.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,16 +94,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vignesh,
+Hello Felix Fietkau,
 
-On Fri, 14 Mar 2025 at 08:59, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> LAVA was recently patched [1] with a fix on how parameters are parsed in
-> `lava-test-case`, so we don't need to repeat quotes to send the
-> arguments properly to it. Uprev mesa to fix this issue.
+This is a semi-automatic email about new static checker warnings.
 
-Thanks a lot; the series is:
-Acked-by: Daniel Stone <daniels@collabora.com>
+Commit 3ba20af886d1 ("wifi: mt76: scan: set vif offchannel link for
+scanning/roc") from Mar 11, 2025, leads to the following Smatch
+complaint:
 
-Cheers,
-Daniel
+    drivers/net/wireless/mediatek/mt76/channel.c:307 mt76_put_vif_phy_link()
+    warn: variable dereferenced before IS_ERR check 'mlink' (see line 305)
+
+drivers/net/wireless/mediatek/mt76/channel.c
+   304		struct mt76_dev *dev = phy->dev;
+   305		struct mt76_vif_data *mvif = mlink->mvif;
+                                             ^^^^^^^^^^^
+The patch adds a dereference
+
+   306	
+   307		if (IS_ERR_OR_NULL(mlink) || !mlink->offchannel)
+                                   ^^^^^
+Checked too late.
+
+   308			return;
+   309	
+
+regards,
+dan carpenter
 
