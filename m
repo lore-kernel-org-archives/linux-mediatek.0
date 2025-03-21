@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB20C35FF3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 04:56:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6337C35FF3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 05:01:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ozUpcCEWntr3v7+jvGD7rSS3mGlFfqxCVTsgZ2wgtA=; b=SKUywTl4/psd1y+1+VzpuVMwyK
-	IVOGo60fH/PKqOAoQaWIGY0VH3nLjBvxHXY+VT4v3Z8ZJ9l2BGlssdbrhSNZmCYjCZKbfHG1I+xdP
-	SxF1GlCF4Uw1H3WM0qbsZYxDlLtv9MacWpgUWqnkoOq4G8Ws81Gsmtp5svSYc7nSU1N6g8C/H2Aq/
-	tgQhP4CjvA4NNU6ed1Osx7f2EgAR+X2ajOEGfh7aq7cUTluo48g6VX7oegQY4POC1AWGwT4OWgrqH
-	Bjfpof1FrmrkRpTTN0T59I1Ic89HiyhdxacFop4LJEMpwgl2hxLLClwAHZiWnFUvsJ48CVHQi654i
-	A0F8FqEA==;
+	bh=jU1uq3ftdFeUBHBrd4FxFBQmvi/x+JX/MfO5OssoYEQ=; b=PEBPbNnRywHlXVnIE62WMw0QDQ
+	viXFvopUKfZCZ0xO20rY1IdiNvY4zciAp/UeIeDL9esMY78x9X5LP5gcpPM3q8yazKC/El226TdGl
+	L54R+w5VRE7eUk6V2ApxPOAuV7BiScItq+z79mDf9J58CNnu2z2AbMBDz4SxX8NftGsqh6cOWR+1o
+	TLSp04UE2d0EbxWYH4cnDDZUroe2lxvkcIJwrK0muFbOEQElmVjMttgM8GQ07oUFxCEXPY7jnXkj1
+	jbgUuymLfpApANgI/vj/BZ3HpM5mQoO7jRsdyB2UQcPrdN87YfkwvnyH5KgmVvQoamzJB+TG7sf6+
+	eWKG0q0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvUQo-0000000DqRP-3to7;
-	Fri, 21 Mar 2025 04:56:30 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1tvUVd-0000000Dr8S-2tDm;
+	Fri, 21 Mar 2025 05:01:29 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvUQm-0000000DqQK-2yi7
+	id 1tvUTt-0000000Dqqd-2fbX
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Mar 2025 04:56:29 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2235189adaeso29582785ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Mar 2025 21:56:27 -0700 (PDT)
+	Fri, 21 Mar 2025 04:59:42 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-3014678689aso2309022a91.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Mar 2025 21:59:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742532987; x=1743137787; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1742533181; x=1743137981; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=7ozUpcCEWntr3v7+jvGD7rSS3mGlFfqxCVTsgZ2wgtA=;
-        b=y+ggMIIA02TPGvHXq5SwK7nM5LDZ4he5Zz6yajzu6hvbmuken4/uFnJT6nmw71ky3A
-         2tWbIR3atZ1kOds8nWy1+Xj9sFRFypl0gR4FxpN9xjvjb2hyz6E5RT0p9rwkUAMTfOAi
-         //u5mMdttwaQylAm24xLPU6faC1uXVHXmBhHnj5XdJ7LIgnT/N9JoHANo2snqGAR+qx9
-         TVVgAfHOhfxWn4QtcKGs0ysX3+SOK6lN8D2kf3sd9eWvA7dl16BZDLCTeD0M+DkEvrrz
-         0N9xm2pf0In71Xj9zgt+eUrnl4MFxoGsbZYkfRxTINhlgj4snEma4+IsIaqnTJjJ2K4f
-         NLvw==
+        bh=jU1uq3ftdFeUBHBrd4FxFBQmvi/x+JX/MfO5OssoYEQ=;
+        b=g3LdDs0nt7QSk6qCXm+fJQ+1xH0VEHT7ifls4Px1hcX5R7swzViOuP+K9Ek5mFD4Nn
+         I/97/AmTK6DnEC+jQLkIoQ+HEYGSQDhg23CdWvJUZj73OCOKFdTqy7U0RV6EfPkbMJbc
+         BTLbah1zLhVeOPO5sOZ8rMJiTj3x3YJhvi3FDZNQZm5oh6iAtq7xpBPwbpjRY+VgpJfy
+         uXlZQmGPeIrSblNKWhlML8slcpMjja4ggJy8oo9PAdzAKk8sSOsNNhI+85DudoMXruW8
+         7QMYDTDstGtkEEmz3QAAI2L+hhhce8M1RQ2A7AdXvwg3GjRM9/x/SfXxmPFI/R0jY+vz
+         rhoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742532987; x=1743137787;
+        d=1e100.net; s=20230601; t=1742533181; x=1743137981;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7ozUpcCEWntr3v7+jvGD7rSS3mGlFfqxCVTsgZ2wgtA=;
-        b=pSgq5pFh9GN2nAheUmlOI2iDP7LX7QHtDQJNLNF1lS0asj9YWjxcLX3Gp5xmNUniWU
-         fbauh6rhK57QoHwSAqk8Msq1LjkYg6/bOo/qZrC6Xl5a/LC+PF8RR5O5YOkP1dU8mY0s
-         1TQEb7ZJAu36y5GB690xxL0pdb/KdjadRoLRDIB+KHhRtWsRAWUvFx9s9/5fIxduJS1N
-         G11EAqFMxju0mdsczF8OiuiUKh+9+gK3glvFYFnFgvrsRjuiGILBOaKk2G7AY+5wbJDz
-         pN8EVF7sQ4k6PCLMVFer4kmsUxMDGQXMWdawG2y7yTuPYtTPRbT8G5EptKjeJLED0kAG
-         69gg==
-X-Forwarded-Encrypted: i=1; AJvYcCX+LcafZsrJWhS0jlF3oKG+CHyaPoQlZCEwnzYsJP/CDCFn+/OXuYLOQHYR5Fxv1uC5ouK3f2ry0G6iUA8Qyg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YylmSWxH6c7YCux6l0ATaghY1utNtAI6uG4EYkIJbF+oprvwDij
-	UgiYMsQIpiRqKwwduyL6VUeFHv2XJXAmEvNoLvxmm/HY1di+G1xuLuyyXq2zjWk=
-X-Gm-Gg: ASbGnctUNnjYh7O8OvQOQxW2Y90laZKJIgx7TgfGl0llnWgIH6ELjQFTqgNSyQ8RFru
-	VzIcoa3dY/uljmB9JL0+HzIp2ptKaBaEpBvJ5DdKEc+57zhkIpTJQte/ExshQNpwRHaQH/pTLBo
-	5VHcC8EtN1K2bqQnjR4CZem7oxw80WDio90Knh5wTPoERPWMMQp/ovO8dhKFvGSM4B3KUNaxWOH
-	1QwkZZaOUSIx88d1WvhHZXJTzC927xof8xQajKg6u7pYo1ZKPA5J96dP4IcxIEoQ5ZPNR5kiDaH
-	7PyMG5XQ4HHD36Evu1Bz4hoR/7tS31GDKtR/G7dNyfJiDA==
-X-Google-Smtp-Source: AGHT+IEfZE88rs+io7iiRT/X8wJSM3aPVySwMLCiKFphdme5Nr2cI1Z/rOArrzthb1zZgjhHnKW+8w==
-X-Received: by 2002:a17:902:f646:b0:223:807f:7f92 with SMTP id d9443c01a7336-2265e743880mr104023345ad.20.1742532987264;
-        Thu, 20 Mar 2025 21:56:27 -0700 (PDT)
+        bh=jU1uq3ftdFeUBHBrd4FxFBQmvi/x+JX/MfO5OssoYEQ=;
+        b=HJyw+8qn/46y02pyajEA3ze1jvJmsMsB96gb/GhorqJNX5P7QgRsF3VLcQwFJDQmk+
+         gi17mFOQ8OBEyuc+DsCpMDqeZvEb+bc2D71kU22HS5HKGdHgy3sBhswP/1mNVq3ltYQv
+         IW4VBQrcCU1Eb4Z1IHKoIn6nlKCir9rYgoxiD0zNhhCb/1bIXuQvkBK1FrpOLD7NcS1o
+         2AlLoLZvT/i641ko9pLPrIidnKZ9AT8TVxr5RXo0uu+zf2gZvrgdXiBafVlNBY8Qivc/
+         e0dy0ebVP5R+4xErC9MLs03yi1FrpnzIcS/uwUpE+RHjQiAd1EkgtxnKwGgGbTs+rpG7
+         WWYw==
+X-Forwarded-Encrypted: i=1; AJvYcCVoJhWKwyki9XJnxbC6O8tWiarqY1uVZFj4PhExlEGngvJrVFjXMzf5SRaxN9IQ6WaV/yICI64khuPXqQVSmQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxV+Fz83tV2n6urDyPUsED537kcnZcwtfT/x66By+xVbcdpxZ7m
+	Sk3qXDqBn/AQacNy9HnAQk/XlkWzYfl6NV96cY0pg1BVGe7PAN8Ov9kYulMjpFc=
+X-Gm-Gg: ASbGncve3LMH1mqHpaB+KCyzs6WmxepT4ffCyeiQXD19IOfbVURs5WaoUpdP+crX0A5
+	Sm/ctAH/i4xtdDHRdwJimzAt67vroFdTA022eRrNzata5jtIwde89UP217MaZpTDxV8MuQ74Ym3
+	l5wHwdetQ99GfPdY6leKA5oNxrQ9bKmQ8/o5s9DINoLsX+V3tdie139o81560QxwB5v6t5mOjYl
+	1TvSRL+nE1EZqUHIjD0r+XKiI2JiAdn8PjAqG0cPHwV/eSBxWOWFmdbi9aOJdHgAdUvMZyAEMp9
+	k7fxQOPCVPHcNX5oJ6ryE8qdBlEGE/AmIkuRO9ACAp7+Mg==
+X-Google-Smtp-Source: AGHT+IE1MkhF+eIlYdPjXH6Mh2gvQg0KSwaX+hGGWKTe/5F0qYgaHVHgqtmttCIIq/1Wqtv32WWi0A==
+X-Received: by 2002:a17:90b:3912:b0:2fa:e9b:33b3 with SMTP id 98e67ed59e1d1-3030fe56ae6mr2439451a91.6.1742533180745;
+        Thu, 20 Mar 2025 21:59:40 -0700 (PDT)
 Received: from localhost ([122.172.83.32])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22780f4d5f5sm7225665ad.79.2025.03.20.21.56.26
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301bf59e2desm4949374a91.23.2025.03.20.21.59.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Mar 2025 21:56:26 -0700 (PDT)
-Date: Fri, 21 Mar 2025 10:26:24 +0530
+        Thu, 20 Mar 2025 21:59:40 -0700 (PDT)
+Date: Fri, 21 Mar 2025 10:29:38 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Chun-Jen Tseng =?utf-8?B?KOabvuS/iuS7gSk=?= <Chun-Jen.Tseng@mediatek.com>
 Cc: "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
@@ -82,21 +82,21 @@ Cc: "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
 	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
 	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
 	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3 1/3] cpufreq: mediatek: using global lock avoid race
- condition
-Message-ID: <20250321045624.mwm2mnkqeow5uids@vireshk-i7>
+Subject: Re: [PATCH v3 2/3] cpufreq: mediatek: Add CPUFREQ_ASYNC_NOTIFICATION
+ flag
+Message-ID: <20250321045938.6gnmtlbdcx2i6gmw@vireshk-i7>
 References: <20250214074353.1169864-1-chun-jen.tseng@mediatek.com>
- <20250214074353.1169864-2-chun-jen.tseng@mediatek.com>
- <20250219054209.erwfp7sgzchaiuds@vireshk-i7>
- <e8337c5eee0cadb797bacf26b00f1ca303c5147f.camel@mediatek.com>
+ <20250214074353.1169864-3-chun-jen.tseng@mediatek.com>
+ <20250219054543.4xt4tixsauwoqpst@vireshk-i7>
+ <21e1b622c2968a5549b2ff37e4ba329a557968b6.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <e8337c5eee0cadb797bacf26b00f1ca303c5147f.camel@mediatek.com>
+In-Reply-To: <21e1b622c2968a5549b2ff37e4ba329a557968b6.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_215628_737771_0E88EC47 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20250320_215941_674629_52BE1339 
+X-CRM114-Status: UNSURE (   7.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,16 +112,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20-03-25, 08:22, Chun-Jen Tseng (曾俊仁) wrote:
-> The struct mtk_cpu_dvfs_info instance is per-policy and the reg_lock is
-> also in this structure. when I have two "policy-0" and "policy-6" use
-> the same mtk_cpufreq_set_target() function but the info->reg_lock 
-> is from 2 instance(policy-0 and policy-6). when the policy-0 and
-> policy-6 call set_target target, the mutex_lock is locked by per-
-> policy. So, I change to global lock avoid per-policy lock.
+On 20-03-25, 08:34, Chun-Jen Tseng (曾俊仁) wrote:
+> For CCI and ARMPLL in different driver, I need to change ARMPLL first
+> then use cpufreq notify CCI driver. it can avoid CCI driver get wrong
+> ARMPLL frequency and choose WRONG frequency.
 
-Yes, that's what you are doing. I am asking why a global lock is required here ?
-I think the per-policy lock is all you need.
+That flag is only required if mtk_cpufreq_set_target() isn't able to complete
+the freq transition. Which isn't the case here. I don't think your patch is
+correct.
 
 -- 
 viresh
