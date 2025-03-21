@@ -4,100 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA233C36000
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 09:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AF5C36000
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 09:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iWnR5bCtS2OFl6qMZ2T0dze3z5cvO0emTkA11CaAm0I=; b=g2ZHrp3fGxLR2BzqS7uCcpkIZo
-	XB3o+EhBU2Vh5nJzdZ8YLnk+KHU9qKyUBpQvfT/gsClBcYjOP5rmpnqwSjf+yzRG0OfyK1kkMKRei
-	uDLomloEIXyadRcoqBHOa2T4MzB8JAM0taYTWTknXdUN8ctXnbsvzGH9MOlI42wlhEiaSVeRADSwq
-	/O20E7bVvtchfAhumxWDYsW0RDePCMb2vppc0y2N0OfJyiOpvYUkIPoYB/WyXaOo1V2YNJVF1EEmN
-	ilDN57yrMmUUAkePpjAIK5ryXwE7q//d9QGedNrfQdnvUgXIwI7OxpevC3A/wotUPd5ujUKJbIzpc
-	KN4Fx5yw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XyPNRArIQHbZFMHDFDMsDCGvKqnXw9QJroLE3H0ZOeU=; b=BlTjXiVNjkhX1HqoO470Vdz6IP
+	u2QHZ1X9zpUW20k/WF4ijbxkFgGaxY0mj9Hjqf8ZWSbEFGuhHv3eDDfkq0vTbBKJ2ThbeMR3K5QGB
+	dj9Rr0DgBMQE8zVXMrqzR628qSmzsozjbyY3vByrXwgLgBsW5+V+xPCXgHr08n1zNucZEW7jzD4gD
+	9dnYtvEXBxh2O7lAohNuSVPwWSl+B8mOt9u/8rEsbYjINLYA5oR7rw6gbU9xg21pD5PFtDkfvEnaU
+	POdqZf9r6iViS4Ih1rbD7N96EKKu86mkw+8a/RnRvquAhh5hg6opShTz4KAXvZs6IL/tGYnFTXzWB
+	yIE1iF+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvYXd-0000000ELpq-3G6J;
-	Fri, 21 Mar 2025 09:19:49 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1tvZ0o-0000000EQp8-1Tyr;
+	Fri, 21 Mar 2025 09:49:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvYXZ-0000000ELoZ-3vG3
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Mar 2025 09:19:48 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-43d0618746bso11673295e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Mar 2025 02:19:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1742548784; x=1743153584; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=iWnR5bCtS2OFl6qMZ2T0dze3z5cvO0emTkA11CaAm0I=;
-        b=tmcLyIn85/VkIeIhfpvZoRL2Q7lo7l3+HHwBEcDmh8EPYvbnvfo7G3/Ssp56vBXmwE
-         NHnXtgBdUy+yt5aOMgrr4F99I29wnp7mVL5CXCOGd0URXW/FCzSzmeDiZATqcao2CDHG
-         ys9VGogMx/QyOiVKDn/XADzkl4kjicrH8Q221OYigIe7mvLqdUicMrzSmq1qKr7R3Xaz
-         JwpulB8UY251jkXo90dCXnwnIzH9cdfhJJ0Ww3v/kQpOpagRx+pKXXBMxe3muK3UAC3d
-         TLDtCc8AsSC947ItEXMc+H7PQ3HXvbha3siJNdx2slWzg2WFewnEguEdRVPSsuSlWT4K
-         QUBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742548784; x=1743153584;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iWnR5bCtS2OFl6qMZ2T0dze3z5cvO0emTkA11CaAm0I=;
-        b=ed1buo9i28qO9aIYMUeHJ45Tv7Qcs6VTCy50DMzD3ujEXTSc1yxNpfM/EX3adi/MHg
-         o3cZiPxiESju4K5v6xs77qTfXUJEHxho1e0OMEB5D4igvaklDTJGyuB1ZQdGBuh68y4e
-         nb/2BYYGUjME3QNPeFOJMMNdkT9uztyzc3i2Ggmv1T5deCUTp069uBB5HlG8OlrbOHSR
-         qFsJ0MHZXQPdoWW7egRDRNQxktW91ybY306QFh5S0M0desS6Ju258bx5NL+3TgKMSZIG
-         xOO/tKwJbXRI0/iXWk6QvcbN2MAjjPNcMM7/uq6w6GbebI1f5VihKlHjdIabCDWeZ9is
-         t8tw==
-X-Forwarded-Encrypted: i=1; AJvYcCWjv/jyMofr8wUAr/b7oZNLCz6mxerJYl5uFXx0PdNfLShtaW1UbGhQvdVaQKzIzMAu+7NN91OyNDeGCR/grA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy0YEvtHAAzgoHNeyfcNntpZjkpiUlpf5Ea++axGuKLGat/erBO
-	Oxq6+XGu8OAqgL4cuKUsQ3eMrezPPs729VmdakYzX+GpSOuFP2Ow36t7rZtf3uU=
-X-Gm-Gg: ASbGnctTw85VFHPh1OG+tUheplfc2y8BAl/VTPhKG1fM0l2ZxoYus3/qaKx1hBq8SV3
-	vGHpMyraPuXdsE4Q5a5TdyXnwlMDV9VqIEhZ3RfQeXtjDiRflF3ol6iQ2NitoFe2yrA0oX/Temh
-	F/uqKnq7ONx8F/QqDgiWHoLPwDfRniBQOrz82UUKp3HFqMtvSCu7nVX77I1aqF/KlgNADn4UGzh
-	bQt4jbiApauGXQJo7XnqLfghJ9pAYuvQ6jaF8b6UaiYAkMLy6hv4kujthUdoxbcVlRwksFKUNKY
-	E+fAe6/xENaSf5+/FUufbgwJKiqgPypvFZGLZA2O39EnKAnFZScCmszCk6kE8FjcwQBTf40LTLG
-	mc8Ot6Hha9xTVcFIj
-X-Google-Smtp-Source: AGHT+IGb4qaiD8zveCmbngoPFmfN9WpLcjDxkx7ItZuEiKJ1uCoRacXpzZp0WPeOAWRPRphRbr45pg==
-X-Received: by 2002:a05:600c:1e18:b0:43c:eea9:f45d with SMTP id 5b1f17b1804b1-43d509f64b8mr23766545e9.18.1742548783913;
-        Fri, 21 Mar 2025 02:19:43 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:5ee:79d0:2756:9ecd:3e82:43c7? ([2a01:e0a:5ee:79d0:2756:9ecd:3e82:43c7])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fceae03sm21916245e9.8.2025.03.21.02.19.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Mar 2025 02:19:43 -0700 (PDT)
-Message-ID: <fb72f1f5-dc94-4e33-a20c-d46a081091bc@baylibre.com>
-Date: Fri, 21 Mar 2025 10:19:41 +0100
+	id 1tvYmM-0000000ENVs-0hlI;
+	Fri, 21 Mar 2025 09:35:03 +0000
+X-UUID: bf48294a063711f083f2a1c9db70dae0-20250321
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XyPNRArIQHbZFMHDFDMsDCGvKqnXw9QJroLE3H0ZOeU=;
+	b=pJYSvMk+hFxURwYD6ONfnLVnnneXRI2HNDD1QfSPzKFjSYXiFVZDGmR4GVOX9Uar9REfZNLmMq7uipKPYEKMU3qPCR58JYCC3vEGswtO++cUgBDJI8boy5CTs0PqFg2lrjcUuZAtE3YQfMyg3lwFfSTuE4Xff+UthGLVZNamF+A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:c18e1ab1-bd2b-4da4-ac4f-33309045a359,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:2316664a-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: bf48294a063711f083f2a1c9db70dae0-20250321
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <paul-pl.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1369409984; Fri, 21 Mar 2025 02:34:55 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 21 Mar 2025 17:34:52 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 21 Mar 2025 17:34:52 +0800
+From: paul-pl.chen <paul-pl.chen@mediatek.com>
+To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 00/15] Add MediaTek SoC DRM support for MT8196
+Date: Fri, 21 Mar 2025 17:33:29 +0800
+Message-ID: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/3] drm/panel: startek-kd070fhfid015: add another init
- step
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Jessica Zhang <quic_jesszhan@quicinc.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-References: <20231023-display-support-v8-0-c2dd7b0fb2bd@baylibre.com>
- <20231023-display-support-v8-2-c2dd7b0fb2bd@baylibre.com>
- <d70b62f8-e24e-4a10-8c6b-18d2e19f1337@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <d70b62f8-e24e-4a10-8c6b-18d2e19f1337@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_021946_205686_A86BBF74 
-X-CRM114-Status: GOOD (  26.98  )
+X-CRM114-CacheID: sfid-20250321_023502_220708_D979A567 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,176 +77,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
-Thanks for the fast feedback :)
+From: Paul-pl Chen <paul-pl.chen@mediatek.com>
 
-On 20/03/2025 13:37, AngeloGioacchino Del Regno wrote:
-> Il 20/03/25 09:48, Alexandre Mergnat ha scritto:
->> Currently, the panel set power, set gpio and enable the display link
->> in stk_panel_prepare, pointed by drm_panel_funcs.prepare, called by
->> panel_bridge_atomic_pre_enable, pointed by
->> drm_bridge_funcs.atomic_pre_enable. According to the drm_bridge.h,
->> atomic_pre_enable must not enable the display link
->>
->> Since the DSI driver is properly inited by the DRM, the panel try to
->> communicate with the panel before DSI is powered on.
->>
-> 
-> The panel driver shall still be able to send commands in the .prepare() callback
-> and if this is not happening anymore... well, there's a problem!
+This patch series adds support for the MediaTek MT8196 SoC's display
+subsystem in the DRM driver.
 
-Sorry I don't think so, according to that def:
-	/**
-	 * @pre_enable:
-	 *
-	 * This callback should enable the bridge. It is called right before
-	 * the preceding element in the display pipe is enabled. If the
-	 * preceding element is a bridge this means it's called before that
-	 * bridge's @pre_enable function. If the preceding element is a
-	 * &drm_encoder it's called right before the encoder's
-	 * &drm_encoder_helper_funcs.enable, &drm_encoder_helper_funcs.commit or
-	 * &drm_encoder_helper_funcs.dpms hook.
-	 *
-	 * The display pipe (i.e. clocks and timing signals) feeding this bridge
-	 * will not yet be running when this callback is called. The bridge must
-	 * not enable the display link feeding the next bridge in the chain (if
-	 * there is one) when this callback is called.
-	 *
-	 * The @pre_enable callback is optional.
-	 *
-	 * NOTE:
-	 *
-	 * This is deprecated, do not use!
-	 * New drivers shall use &drm_bridge_funcs.atomic_pre_enable.
-	 */
-	void (*pre_enable)(struct drm_bridge *bridge);
+Changes in v2:
+- add support for MT8196's new hardware components (EXDMA, BLENDER, 
+  OUTPROC) following the previous MTK OVL software architecture.
+- reuse mtk_ovl drivers in MediaTek DRM display to support the new 
+  MT8196 SoC.
+- implement support for multiple mmsys instances within a single 
+  mediatek-drm driver, improving flexibility and scalability.
+- refactor existing components (mutex, OVL) to accommodate the new 
+  architecture and improve code reusability.
+- update component matching, binding logic, and data structures to 
+  support the new multi-mmsys design.
 
-	/**
-	 * @enable:
-	 *
-	 * This callback should enable the bridge. It is called right after
-	 * the preceding element in the display pipe is enabled. If the
-	 * preceding element is a bridge this means it's called after that
-	 * bridge's @enable function. If the preceding element is a
-	 * &drm_encoder it's called right after the encoder's
-	 * &drm_encoder_helper_funcs.enable, &drm_encoder_helper_funcs.commit or
-	 * &drm_encoder_helper_funcs.dpms hook.
-	 *
-	 * The bridge can assume that the display pipe (i.e. clocks and timing
-	 * signals) feeding it is running when this callback is called. This
-	 * callback must enable the display link feeding the next bridge in the
-	 * chain if there is one.
-	 *
-	 * The @enable callback is optional.
-	 *
-	 * NOTE:
-	 *
-	 * This is deprecated, do not use!
-	 * New drivers shall use &drm_bridge_funcs.atomic_enable.
-	 */
-	void (*enable)(struct drm_bridge *bridge);
+Nancy Lin (10):
+  soc: mediatek: add mmsys support for MT8196
+  soc: mediatek: mutex: refactor SOF settings for output components
+  soc: mediatek: mutex: add mutex support for MT8196
+  drm/mediatek: Refine OVL format convert API and export to public
+  drm/mediatek: add EXDMA support for MT8196
+  drm/mediatek: add BLENDER support for MT8196
+  drm/mediatek: add OUTPROC support for MT8196
+  drm/mediatek: add ovlsys_adaptor support for MT8196
+  drm/mediatek: Add support for multiple mmsys in the one mediatek-drm
+    driver
+  drm/mediatek: Add support for MT8196 multiple mmsys
 
-=> "The bridge must not enable the display link feeding the next bridge in the
-=> chain (if there is one) when this callback is called."
+Paul-pl Chen (5):
+  dt-bindings: arm: mediatek: mmsys: add compatible for MT8196
+  dt-bindings: soc: mediatek: add mutex yaml for MT8196
+  dt-bindings: display: mediatek: add EXDMA yaml for MT8196
+  dt-bindings: display: mediatek: add BLENDER yaml for MT8196
+  dt-bindings: display: mediatek: add OUTPROC yaml for MT8196
 
-Additionally, you ask for something impossible because here is the init order
-fixed by the framework:
-
-[   10.753139] panel_bridge_atomic_pre_enable
-[   10.963505] mtk_dsi_bridge_atomic_pre_enable
-[   10.963518] mtk_dsi_bridge_atomic_enable
-[   10.963527] panel_bridge_atomic_enable
-[   10.963532] drm_panel_enable
-
-If panel want to use the DSI link in panel_bridge_atomic_pre_enable, nothing
-will happen and  you will get a timeout.
-
-So, IMHO, this patch make sense.
-
-> 
->> To solve that, use stk_panel_enable to enable the display link because
->> it's called after the mtk_dsi_bridge_atomic_pre_enable which is power
->> on the DSI.
->>
->> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
->> ---
->>   .../gpu/drm/panel/panel-startek-kd070fhfid015.c    | 25 +++++++++++++---------
->>   1 file changed, 15 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c 
->> b/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
->> index c0c95355b7435..bc3c4038bf4f5 100644
->> --- a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
->> +++ b/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
->> @@ -135,19 +135,9 @@ static int stk_panel_prepare(struct drm_panel *panel)
->>       gpiod_set_value(stk->enable_gpio, 1);
->>       mdelay(20);
->>       gpiod_set_value(stk->reset_gpio, 1);
->> -    mdelay(10);
->> -    ret = stk_panel_init(stk);
->> -    if (ret < 0)
->> -        goto poweroff;
-> 
-> Also, you're moving both init and set_display_on to the enable callback...
-> this is suboptimal.
-> 
-> You should do the DrIC setup in .prepare() (can include SLEEP OUT), and then you
-> should have a .enable() callback that calls DISP ON, a .disable() callback that
-> calls DISP OFF, and .unprepare() that turns everything off.
-
-This is not what I understand from the pre_enable's definition above, and also
-the function call order by the framework. :)
-
-> 
-> Cheers,
-> Angelo
-> 
->> -
->> -    ret = stk_panel_on(stk);
->> -    if (ret < 0)
->> -        goto poweroff;
->>       return 0;
->> -poweroff:
->> -    regulator_disable(stk->supplies[POWER].consumer);
->>   iovccoff:
->>       regulator_disable(stk->supplies[IOVCC].consumer);
->>       gpiod_set_value(stk->reset_gpio, 0);
->> @@ -156,6 +146,20 @@ static int stk_panel_prepare(struct drm_panel *panel)
->>       return ret;
->>   }
->> +static int stk_panel_enable(struct drm_panel *panel)
->> +{
->> +    struct stk_panel *stk = to_stk_panel(panel);
->> +    int ret;
->> +
->> +    ret = stk_panel_init(stk);
->> +    if (ret < 0)
->> +        return ret;
->> +
->> +    ret = stk_panel_on(stk);
->> +
->> +    return ret;
->> +}
->> +
->>   static const struct drm_display_mode default_mode = {
->>           .clock = 163204,
->>           .hdisplay = 1200,
->> @@ -239,6 +243,7 @@ drm_panel_create_dsi_backlight(struct mipi_dsi_device *dsi)
->>   }
->>   static const struct drm_panel_funcs stk_panel_funcs = {
->> +    .enable = stk_panel_enable,
->>       .unprepare = stk_panel_unprepare,
->>       .prepare = stk_panel_prepare,
->>       .get_modes = stk_panel_get_modes,
->>
-> 
-> 
-> 
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |   5 +
+ .../display/mediatek/mediatek,blender.yaml    |  48 ++
+ .../display/mediatek/mediatek,outproc.yaml    |  54 ++
+ .../bindings/dma/mediatek,exdma.yaml          |  70 ++
+ .../bindings/soc/mediatek/mediatek,mutex.yaml |   2 +
+ drivers/gpu/drm/mediatek/Makefile             |   4 +
+ drivers/gpu/drm/mediatek/mtk_crtc.c           | 342 ++++++--
+ drivers/gpu/drm/mediatek/mtk_crtc.h           |   6 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 133 +--
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   6 +
+ drivers/gpu/drm/mediatek/mtk_disp_blender.c   | 276 ++++++
+ drivers/gpu/drm/mediatek/mtk_disp_blender.h   |  18 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  67 ++
+ drivers/gpu/drm/mediatek/mtk_disp_exdma.c     | 372 ++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_outproc.c   | 242 ++++++
+ drivers/gpu/drm/mediatek/mtk_disp_outproc.h   |  22 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 158 ++--
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.h       |  16 +
+ .../drm/mediatek/mtk_disp_ovlsys_adaptor.c    | 797 ++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 281 +++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  28 +-
+ drivers/soc/mediatek/mt8196-mmsys.h           | 451 ++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c              | 203 ++++-
+ drivers/soc/mediatek/mtk-mmsys.h              |  18 +
+ drivers/soc/mediatek/mtk-mutex.c              | 257 +++++-
+ include/linux/soc/mediatek/mtk-mmsys.h        |  60 ++
+ include/linux/soc/mediatek/mtk-mutex.h        |   4 +
+ 27 files changed, 3675 insertions(+), 265 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,blender.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
+ create mode 100644 Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_blender.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_blender.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_exdma.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovlsys_adaptor.c
+ create mode 100644 drivers/soc/mediatek/mt8196-mmsys.h
 
 -- 
-Regards,
-Alexandre
+2.45.2
+
 
