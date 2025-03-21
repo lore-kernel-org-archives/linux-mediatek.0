@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE23DC36000
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 15:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B9D7C36000
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 16:29:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RTwA+1K2fXH71E3l+IMbOPL1xmKtfNCzEKk8E1QgUlY=; b=uppARFHueE2b3/d3nKnFDs3jxY
-	nq6iNwTXGr833mIbdqZtoZ5dfj+34tQspB8j5XOOSqH4e048PpgT9+GEudFyZyemTzEqmN3UDvHUB
-	+b+kThTzt6jaJTQEvoatstrz3eLojvxqyYEO/BNB5AkRG0BM8hT9ohqFHJ8ToeY/ghlVjQC0AFBSU
-	8/d39rA9Tp4s7xHE/SfAyedps+9cJVK7g2d0r5dPTJ0wUmUV58bTr1Drx3aHjbeVphlBlE4KFJzDR
-	NtitO7Lw+voMI7F7tHi+Sq8Maqec2RlZVZHt17W3iKKqGGZM4y5GrXCdsiK10nBmKKJDHnOT0mwxS
-	GzKxCJxA==;
+	bh=D/8KTx1eeqEjjebui1d66i/bmflgBbIgoJl2daZ/Id0=; b=cM6cHtZVdT7qGmYJpExIQzN3r+
+	lprsnHJhf5Wj0UhzPJb6KwMKyqZZiTGIJhE+h9/U+g4JnXPGj7ApxcUUEcMFx5YKAe0lacK5G31tq
+	Qv/KmmKn+alwv61kAIW5+eYrmR3aPP5dT6jItBpD9R1hfRtNM4n680tcdGSJnBDjM7QsB1+FFZRJs
+	5kOjv7VN6eoOif4fo6+f8qyTuz8uUZc44IVKPOW6EFj9rVRZBXDnbJaObk3FnNGHbseEsF9CiZYtX
+	ACVQbuZSPQJFI9JT7MVI/oKfwuAPdkCHuincceKNWSIefRJbIP/u0KcfUuSI1jjRi23QwDu+Nn9o9
+	P992xFuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvehT-0000000FNGc-3b82;
-	Fri, 21 Mar 2025 15:54:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tvfFU-0000000FVbK-0zMw;
+	Fri, 21 Mar 2025 16:29:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvefo-0000000FMqZ-05ZB;
-	Fri, 21 Mar 2025 15:52:40 +0000
+	id 1tvfFR-0000000FVaK-30do
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Mar 2025 16:29:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E86DD6113B;
-	Fri, 21 Mar 2025 15:52:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A45AEC4CEE3;
-	Fri, 21 Mar 2025 15:52:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1E7285C5CB6;
+	Fri, 21 Mar 2025 16:27:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46CB4C4CEE3;
+	Fri, 21 Mar 2025 16:29:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742572359;
-	bh=aeT+zeWm5jrgZt8DkAFo7mZSthufAM7MHXrkbF6C8sU=;
+	s=k20201202; t=1742574568;
+	bh=lmEYXsRWnmbpUxKrOWgi5Or9TPBOQ6U6vJbfix6E+zo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p/MQddbmitNGpDQe4XEcNSY1zRtCllgV3IqfjF4T9B8KJj7J0xtemZkjDS8iVnuex
-	 HWn1A6bUWJDVuQLcDtOFSz36KEZ98qOpkwhG283VT6NgKRs3XqPBnHP3p+dRgMOUNi
-	 KBOxZJftX4vGpllF73+5ldrSO0sXLZQCzPMxRG0ATXYgnvBW0SVKTIJ1eaJoSbBKQU
-	 ICAPo/lVWAYuNNzVgiwqa/ZJ0mI/uJRJPAHWeo17WzIk8vf7MBSdHdBazvfUHTYxNN
-	 J+eLbuos/Ap6o5+lYkYbVBUkiZ0s2qKvxkk5w3dZPgn7NTnIChDFH3he9W7afjIBqo
-	 Nkp+FkkBX6CKw==
-Date: Fri, 21 Mar 2025 16:52:36 +0100
+	b=UMN4SOVRtPkZTBpUD3jH+4zGB0ku7JHrFIT+vAQiL/Z4cOxXSTo9fj7afgLG+/9Jc
+	 t7YZOYDkazbo6HeFzPx+9nPSuZgFAnZ9XNSa8Ii79r8wuQWtwQ6+D3hUkzPEVlkYSE
+	 YVfJfnf5q95tqmpV6kQYJMQ05C8dMntDTyumnFexymmWVizlNU0tK0bdIJ6xp0668x
+	 CXSZjgEN62WSJ6JghxbCfNWPuDvgAWzIc+fLj8QGVZWzOz3hsJlVvf/SOk3KoIeGC2
+	 byU4XOms9w8mva5SKn7TMOXVYdr9+/YPlyftLyXU33VPqrqPUEDLkRT+uXhfGVucHc
+	 Mway6Qx+BCg8Q==
+Date: Fri, 21 Mar 2025 17:29:26 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>,
-	Howard Hsu <howard-yh.hsu@mediatek.com>,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] wifi: mt76: mt7996: remove duplicate check in
- mt7996_mcu_sta_mld_setup_tlv()
-Message-ID: <Z92LRBMxyz4pS7my@lore-desk>
-References: <fde7246b-08a2-4c2f-b2dc-c3fd0e6b300b@stanley.mountain>
+Cc: Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [bug report] wifi: mt76: Check link_conf pointer in
+ mt76_connac_mcu_sta_basic_tlv()
+Message-ID: <Z92T5j1zmlvG2ssG@lore-desk>
+References: <868e456f-10db-4b0c-bb29-76e3c0d03cc8@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Her0ThDAq1KdRV1x"
+	protocol="application/pgp-signature"; boundary="hpR/nQwqSRiKRp01"
 Content-Disposition: inline
-In-Reply-To: <fde7246b-08a2-4c2f-b2dc-c3fd0e6b300b@stanley.mountain>
+In-Reply-To: <868e456f-10db-4b0c-bb29-76e3c0d03cc8@stanley.mountain>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250321_092929_810033_F88CCD9C 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,51 +74,77 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Her0ThDAq1KdRV1x
+--hpR/nQwqSRiKRp01
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> The "msta_link" pointer has two NULL checks.  Delete the second check.
+> Hello Shayne Chen,
 >=20
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 ---
->  1 file changed, 3 deletions(-)
+> This is a semi-automatic email about new static checker warnings.
+>=20
+> Commit 9890624c1b39 ("wifi: mt76: Check link_conf pointer in
+> mt76_connac_mcu_sta_basic_tlv()") from Mar 11, 2025, leads to the
+> following Smatch complaint:
+>=20
+>     drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c:394 mt76_connac_=
+mcu_sta_basic_tlv()
+>     warn: variable dereferenced before check 'link_conf' (see line 376)
+>=20
+> drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+>    375	{
+>    376		struct ieee80211_vif *vif =3D link_conf->vif;
+>                                             ^^^^^^^^^^^^^^
+
+Reviewing the codebase, it seems to me it is safe to revert 9890624c1b39 si=
+nce
+link_conf is always not NULL running mt76_connac_mcu_sta_basic_tlv().
+@Shayne Chen: agree?
+
+Regards,
+Lorenzo
+
+> Dereferenced.
+>=20
+>    377		struct sta_rec_basic *basic;
+>    378		struct tlv *tlv;
+>    379		int conn_type;
+>    380=09
+>    381		tlv =3D mt76_connac_mcu_add_tlv(skb, STA_REC_BASIC, sizeof(*basic=
+));
+>    382=09
+>    383		basic =3D (struct sta_rec_basic *)tlv;
+>    384		basic->extra_info =3D cpu_to_le16(EXTRA_INFO_VER);
+>    385=09
+>    386		if (newly && conn_state !=3D CONN_STATE_DISCONNECT)
+>    387			basic->extra_info |=3D cpu_to_le16(EXTRA_INFO_NEW);
+>    388		basic->conn_state =3D conn_state;
+>    389=09
+>    390		if (!link_sta) {
+>    391			basic->conn_type =3D cpu_to_le32(CONNECTION_INFRA_BC);
+>    392=09
+>    393			if (vif->type =3D=3D NL80211_IFTYPE_STATION &&
+>    394			    link_conf && !is_zero_ether_addr(link_conf->bssid)) {
+>                             ^^^^^^^^^
+> The patch adds a NULL dereference but it's too late.
+>=20
+>    395				memcpy(basic->peer_addr, link_conf->bssid, ETH_ALEN);
+>    396				basic->aid =3D cpu_to_le16(vif->cfg.aid);
+>=20
+> regards,
+> dan carpenter
 >=20
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7996/mcu.c
-> index ddd555942c73..03539e20f5c5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> @@ -2242,9 +2242,6 @@ mt7996_mcu_sta_mld_setup_tlv(struct mt7996_dev *dev=
-, struct sk_buff *skb,
->  		if (!link)
->  			continue;
-> =20
-> -		if (!msta_link)
-> -			continue;
-> -
->  		mld_setup_link->wcid =3D cpu_to_le16(msta_link->wcid.idx);
->  		mld_setup_link->bss_idx =3D link->mt76.idx;
->  		mld_setup_link++;
-> --=20
-> 2.47.2
->=20
-
---Her0ThDAq1KdRV1x
+--hpR/nQwqSRiKRp01
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ92LRAAKCRA6cBh0uS2t
-rAFkAQC83L5e/zLFrvnAgbWpDtlXGRVM8ylbCJX2fob5kYoqKAEA8J5Y+3FQYsGq
-Hs5nRCUHXyiZQ44fs7zXOIdYRSjk1As=
-=DzY1
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ92T5gAKCRA6cBh0uS2t
+rLNgAP9tC4J+M4wDG8h4ZEDM1k/jkGmC7PNmQVy7a226Rx2iygD/fxXhKmQHoksW
+nmYHScqg5z/lqKE600x6/UU/2F+y9gI=
+=dwUL
 -----END PGP SIGNATURE-----
 
---Her0ThDAq1KdRV1x--
+--hpR/nQwqSRiKRp01--
 
