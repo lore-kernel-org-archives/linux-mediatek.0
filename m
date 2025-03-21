@@ -4,82 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D717C3600A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 14:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B39C36001
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 14:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=adFZmJLQKFx2XqizsrAQWSoaZBuWMbRGXmjBb8zBkJU=; b=g+Md8zKzswgA1oQM5ps6xdrmZK
-	p010lRtvuoMcuEf4GjHcKzVrUW3QRd+RIGvdxaPUYfHwfHKLywxaAG5J/EbiBsGdQoajOAbwvySHi
-	xWm8/5BmxMFlpy1XLKPy7rL+C5+QUeNjcHt2Fj0jYDwClfN+E4kBVvAJrZ5UQ7Uy+AeNXdlqs/XMP
-	beQOu8ljkBCmXjw/cCzHzQ/AEeMKmJtVFE4CmG6bTCnI6FaKh0nH2wblN+q8s+LjiCRYxTOFkM8Yi
-	nk0RM/u020P5gn+IH3K36rDf011ssVTFAFZOm/OsE6/NL3jClsI6q2N1c/peWKtw6jI+/AJvd+l7q
-	3+ZsCsHg==;
+	bh=3PPRppdrVJ7KjI6wixZGEvPAU+S5utOovE0gqiXmI0c=; b=Av+Fpvkm4jD79zdjLq9b1c+oxH
+	nmg3NTjRB27ne+YCrfHpILmOa7JYg0v6gxHyCKiEXpcl/24Sc1gjzK51MCPOz/6zMFeZUaxQMn8WN
+	r2s23KORDYDDVlluLd93imso1xNHv9jk9LRAIKPIT2++0uW75Sq7X4tHVPQSVlHMDIJNB9YSrnsRs
+	+unn5vz5Uq84EhRvM53HS2uiVQlTpPcCCGyYHEuMXMer2t53waJmZX1hejwmAPcwLNcUg8lBmn6Lg
+	7P2v2CXuXwvLuWB1hN7j2vGrP4T0PPNJ7G/lNSTtG0W9I9wUzVUOOAdfH71T2GQhghmNgrRsjYS9A
+	nirFnp6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvdVv-0000000F96T-1dqs;
-	Fri, 21 Mar 2025 14:38:23 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1tvdZD-0000000F9y4-1faY;
+	Fri, 21 Mar 2025 14:41:47 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvdRH-0000000F7rv-3t9J
+	id 1tvdTI-0000000F8Oi-0caC
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Mar 2025 14:33:37 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-43d0359b1fcso13545905e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Mar 2025 07:33:35 -0700 (PDT)
+	Fri, 21 Mar 2025 14:35:41 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3996af42857so2085092f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Mar 2025 07:35:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742567614; x=1743172414; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1742567739; x=1743172539; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=adFZmJLQKFx2XqizsrAQWSoaZBuWMbRGXmjBb8zBkJU=;
-        b=cdjELvYyRfIluJPdnYnIXjlCWLguVuLWBEqWP/7DL03wMts2KNiDvVRPDNMhO3F9R2
-         wzsAQjvyRpRCc6G1yOdFwT7TqTA6lp9v3EMi1t9dTYodW/bMTwleI0s5HI1hd4L5jwFc
-         cleljA1YyEebPUlQuMkjzGM3wYgzj58OW3Djccg8XvP7hCaWNAMKo9TGDnL/x1Ztb2GZ
-         EWmvi7O7xRaXfnGi1SiPRn9nifxFIxEOP3CSLo6kN763tFEVYchQeCxftPjC06YmKCx4
-         qwyeHxXNtnbJoy2liwXGLBJIHvz/VeT5YUUuKFUEMkFCkqaWff3EzEC35AGFHUohwSif
-         pYog==
+        bh=3PPRppdrVJ7KjI6wixZGEvPAU+S5utOovE0gqiXmI0c=;
+        b=Bo3W+DExYpWbfpLyc+Tz82GyVTvCLnJZbZuJKOw6A6mCOIJ9sPOIGrk6gqMVnWUPML
+         a21DHPq6477/m145DiJeOD9mCaQvVCmDPsciQi6r36RkJUvY96tPUEO6KzjWC9rDDbT8
+         XXoZNIdjkwqMx/IOTceik9mZ2a9cUY4RpFJ7O7O5J/uZS17pdgtwwYEqjdiWMm8YKE7X
+         zp4S/SFnmDoskSnVe4KctOxw0CyeM4bkCI2ZXFn6hAWInBbi+eN3791sVVKG6R8LuCne
+         TqbbT5vd8BC+yEjYVA6K6+kgD8rnsSQeqqYTEX2KbDLr+4nFJHjD0nsoKR4MZNR5Vqll
+         0NjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742567614; x=1743172414;
+        d=1e100.net; s=20230601; t=1742567739; x=1743172539;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=adFZmJLQKFx2XqizsrAQWSoaZBuWMbRGXmjBb8zBkJU=;
-        b=NtYlAfNhpR2eP0vrbtGgfvxl43gjZOIZaWkyezkPUlMtbCgjzAhG3sJo+FpH67YWnD
-         8fl1Ny3VX9cG/6OZdL1lqx2WDJDbFJ6eBcfOOKgt5Rrvoc5nTFkdykNNM0rTt+yqWulJ
-         LhebS7pNaqrcTKQB7w9dGAsqC1X6rvnvKeQGn33hzMAhhqE5k3gZ2UH3aVmiHmqmM5i8
-         AJieXbeaM8QIPXuuODUnZi5cHeHUyL/KYHBaLmsWa8NaDuFiLdLt/fZXn+5estT6nGKK
-         jQI7sesL5e0xCISb9Iyb3eTpQv89liBdltJQu5GaTvAFGk4yvo4ORiW3VjYe8cAJcCMy
-         xm7w==
-X-Forwarded-Encrypted: i=1; AJvYcCWvTCII6RmtTBzFVYXF6ys3c/ra54HMPIfgBuLVSQ9eVwi/sNCh/mqyCXRN727SiLCdIOv8SctKOnSaFQey7g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx64bTHhKO+D1dX1k8xDyCZmXG+XS4dqjgQ/DoDEK3Mrg+/B0b9
-	Ve19jhzOYMheW2zHJrBUw9410v3xt3BOchYU8bHGk898XmVhCd63av/NDCLLxdxcxMb41XoxcAl
-	k
-X-Gm-Gg: ASbGncvT6Ny0NqDQPqkFeS3MZev8tEGTaouoDmuzo2LLMeM6dVXBlqP1Mn4nwJlzG7J
-	fEcA2O6q7zOcMt8a7b/Z3C8aYrwb0yAsyXbS5GZ8e1eNJa2J0DvdNd3eB3QDIIo8iKNiPJhkjHr
-	9tvhjsUqLYrsmrR/6aTJblPAGIQa8ECWv8/kmYMC7zA1H30n4ZP/cG6Eksg1/i7fGuwNQXA4O8P
-	yhiFREfOt/tuPw5Hmox2eRWHxwSw6ce8vNMXXIU0zTqVluooFH9AGsHJt0mzFQyrOQafCpJ6AOW
-	RQI3bRMdTg1Kuc3PUCok378n9G0p1k8bG0rPfCRXsBBBq4T+C3M1wRhY3j+N
-X-Google-Smtp-Source: AGHT+IEQYzpu2so8XX8P3XLbdEYx3pHR0HTy7KQMupXaaPxmsyyZx2ggZsrMFgeKU+LL76EUOG6V2A==
-X-Received: by 2002:a05:600c:3591:b0:43c:f3e1:a729 with SMTP id 5b1f17b1804b1-43d491b708dmr68646465e9.12.1742567614375;
-        Fri, 21 Mar 2025 07:33:34 -0700 (PDT)
+        bh=3PPRppdrVJ7KjI6wixZGEvPAU+S5utOovE0gqiXmI0c=;
+        b=TgJfsEUt/0HbtXzX8gWV9Ve5/4N9vVhfp6mkZ0+QEJ/QSpPeWLbiJ55x0KJF4O+c9f
+         5mSWtMFr6heb5/pfICOMHPFkZHAObbgoN/Uf7+6iclIbndipmlLCugxdulr1F98GZ2sO
+         n/XiPBb940YAysmQyyc/ieZrH7j6TMJ2P3Z9xCjmRMrGZH6NDxLzL+vE3uIEIzuooXVN
+         ZSsny5vD97wli7RoAUGXKgpmQkRz4oigrtqCvamjk7RKZRxPtTKbCHLImr4KDyYDuyEM
+         QM6r9vfz2Z145Z+qpxgOnoRcDNxZNR5h1qbYWArtR8sUzfei5SvX9EnrLlJflTCXZaVR
+         2M5Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWkDld3p/phkkiDsxhjDe1k75+a8MEz2FHe5t+DX8OE1pNEyU+P675MhvyN/9QA5xY9dHCKnnv2y+P7xaNHMQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNQDm5hJr6aA/mnHyTL8Q+iciS2ConZPCFW59ohrEfE53gHhWg
+	xeY2SYFfp0d/oAfqt16nYe3PoHX8yHbsW3K2QBPQaAGZJlKP+KYhSzGeeUGYn5c=
+X-Gm-Gg: ASbGncsIdSzCXB1h1jX6rWMeCuB53HK6V9PdjaZq2zFC4TSgV8B20uuLnGhV57+et8q
+	qZmzgUrZJlkfvwEwT7d9adD0JIZ0btYbkx20aof/ebvzIzF4wsgbBmC5a1+sVO4LjkdTip4w/il
+	d9zKHuDFLauqlwggrtt8QFO1pZXVe8w26rGMDCLfZxT0fbZuxHh2jmYBz/zX8GS0WCYdEDckvKL
+	IzxLK01q/42MMkOHLwGBJ8eAJoozImVBRfoz7y1JXlOdRK1BNVsxnqd0GhB8/GGafUm8PyhJfL5
+	6znNOf/RYR/fKlgKi0ygZg0WFeTsVPVKWxGCTLnoQZPzkeOZEA==
+X-Google-Smtp-Source: AGHT+IF2afE+amq9nc4FEedeUCaZRhGRjLvVfJvTuEgevNOAdUUfdZR/acRzOI2V9GG7bPnUNFsa8Q==
+X-Received: by 2002:a05:6000:1fa9:b0:390:e9ee:f27a with SMTP id ffacd0b85a97d-3997f93e053mr3439159f8f.28.1742567738601;
+        Fri, 21 Mar 2025 07:35:38 -0700 (PDT)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43d4fd2704bsm28339255e9.18.2025.03.21.07.33.33
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3997f9b26a6sm2493540f8f.44.2025.03.21.07.35.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Mar 2025 07:33:34 -0700 (PDT)
-Date: Fri, 21 Mar 2025 17:33:31 +0300
+        Fri, 21 Mar 2025 07:35:38 -0700 (PDT)
+Date: Fri, 21 Mar 2025 17:35:35 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7996: Rely on mt7996_sta_link in
- sta_add/sta_remove callbacks
-Message-ID: <f335328d-8554-401b-83c2-36e8d7668a62@stanley.mountain>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt7996: remove duplicate check in
+ mt7996_mcu_sta_mld_setup_tlv()
+Message-ID: <fde7246b-08a2-4c2f-b2dc-c3fd0e6b300b@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_073335_967844_93E944D4 
-X-CRM114-Status: UNSURE (   4.86  )
+X-CRM114-CacheID: sfid-20250321_073540_189455_0C502335 
+X-CRM114-Status: UNSURE (   7.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,71 +105,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Lorenzo Bianconi,
+The "msta_link" pointer has two NULL checks.  Delete the second check.
 
-Commit dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in
-sta_add/sta_remove callbacks") from Mar 11, 2025 (linux-next), leads
-to the following Smatch static checker warning:
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-	drivers/net/wireless/mediatek/mt76/mt7996/main.c:1023 mt7996_mac_sta_add_links()
-	error: uninitialized symbol 'err'.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index ddd555942c73..03539e20f5c5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -2242,9 +2242,6 @@ mt7996_mcu_sta_mld_setup_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
+ 		if (!link)
+ 			continue;
+ 
+-		if (!msta_link)
+-			continue;
+-
+ 		mld_setup_link->wcid = cpu_to_le16(msta_link->wcid.idx);
+ 		mld_setup_link->bss_idx = link->mt76.idx;
+ 		mld_setup_link++;
+-- 
+2.47.2
 
-drivers/net/wireless/mediatek/mt76/mt7996/main.c
-    984 static int
-    985 mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
-    986                          struct ieee80211_sta *sta, unsigned long new_links)
-    987 {
-    988         struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-    989         unsigned int link_id;
-    990         int err;
-    991 
-    992         for_each_set_bit(link_id, &new_links, IEEE80211_MLD_MAX_NUM_LINKS) {
-    993                 struct ieee80211_bss_conf *link_conf;
-    994                 struct ieee80211_link_sta *link_sta;
-    995                 struct mt7996_vif_link *link;
-    996 
-    997                 if (rcu_access_pointer(msta->link[link_id]))
-    998                         continue;
-
-What about if there are no new links or we hit the continue on every
-iteration.
-
-    999 
-    1000                 link_conf = link_conf_dereference_protected(vif, link_id);
-    1001                 if (!link_conf)
-    1002                         goto error_unlink;
-
-error code?
-
-    1003 
-    1004                 link = mt7996_vif_link(dev, vif, link_id);
-    1005                 if (!link)
-    1006                         goto error_unlink;
-
-error code?
-
-    1007 
-    1008                 link_sta = link_sta_dereference_protected(sta, link_id);
-    1009                 if (!link_sta)
-    1010                         goto error_unlink;
-
-error code?
-
-    1011 
-    1012                 err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
-    1013                                                link_id);
-    1014                 if (err)
-    1015                         goto error_unlink;
-    1016         }
-    1017 
-    1018         return 0;
-    1019 
-    1020 error_unlink:
-    1021         mt7996_mac_sta_remove_links(dev, sta, new_links);
-    1022 
---> 1023         return err;
-    1024 }
-
-regards,
-dan carpenter
 
