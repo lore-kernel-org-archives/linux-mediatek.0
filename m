@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB8B6C35FFF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 10:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC2AC35FFF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Mar 2025 10:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nTSF2h1OnKkWH6HxXI+MAWBmqT+Sba+o9eR7NLazAxQ=; b=SUrjzAdxkpNdE09uItxMZgxVRf
-	0hz8Mqr37jJIQQyqP75Jh9IbnqgsxGFJ8LadylcV0UGuUi1XDvdVkqLbTGIdXHQ+KCJ8pTFdyevxP
-	KY2N4L2X3fcxfaCsNAFw97kjKhUwE4ver2ICqtWql7Zf5anAFznmXZjaAM3LdZyyk9FNg/JVzOXsl
-	emyeJ/AefVx4njW3+B3WBVp2uR8M7jBzEUFvTeFLrF08M6BzhRQmVrydKUGyS6E5lIud2QhHzK/QA
-	UaSAMxUg1aO+g14EfO0i6Gd6exkRKnvmFtTopymu5HqWLgPHaUXX/wuBgDxYa3pStY57ID+nokndW
-	T0O2pxdg==;
+	bh=FSX5wgQpGviIl9j796MwaDns+PlHxhknGnllWqJ5QFo=; b=gn1bRJ4lXBTWh61K84wxUGHhmA
+	+CCvgBPJc4MGHXvwT590susw8VSC6avlbm2YuIr1YMFKuEfHWb9zzn4Vr/vOA9l6xRG9A0nGjo8Ri
+	9/xfXHPsp0ewjKgbmdWUZII3ku1KHcY+DNpOaf9+ZLw8d2wsJFnNtXr1P73YIQhSMqLzvCO18YmVv
+	Eb+LAww1eAm47YRSLVJ18GWb28g499ZMZVOW91CJ5dTvyNFoVzzXu7VOSbEGYPaC5+MQ6jxwwPZQg
+	wXaP0wA6HgcJ91oP3F6DDrb+QQZ8DlS1RLWqHc0BCJ3J346scK+0IKJTEko42nA8eKPtI952J4+TM
+	YSllxiMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvZPe-0000000EUlg-2gU7;
-	Fri, 21 Mar 2025 10:15:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tvZcu-0000000EWbI-1dYj;
+	Fri, 21 Mar 2025 10:29:20 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvYnA-0000000ENrn-0HdU;
-	Fri, 21 Mar 2025 09:35:53 +0000
-X-UUID: ddd5453c063711f083f2a1c9db70dae0-20250321
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nTSF2h1OnKkWH6HxXI+MAWBmqT+Sba+o9eR7NLazAxQ=;
-	b=iEB9WbCeYL6P1EJc5g2hv7I81QWbv7jW5Dkkp3N32cFa9GDMIvUTGFavsru9MydlntnH0bLYyR7lAx6F0B+5uJEPXfTT+EcwXrMfox0eNKpsRnip+BuGytUOPqnm/jF250F0Nl5O+ffl67WeEYGEMZvxbOtz1JfRw8q40HJei7U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:9ea30809-172f-46de-b65d-ce4265ed38fd,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:ce18664a-a527-43d8-8af6-bc8b32d9f5e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ddd5453c063711f083f2a1c9db70dae0-20250321
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <paul-pl.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 177964738; Fri, 21 Mar 2025 02:35:46 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 21 Mar 2025 17:35:43 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 21 Mar 2025 17:35:43 +0800
-From: paul-pl.chen <paul-pl.chen@mediatek.com>
-To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
-	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 15/15] drm/mediatek: Add support for MT8196 multiple mmsys
-Date: Fri, 21 Mar 2025 17:33:44 +0800
-Message-ID: <20250321093435.94835-16-paul-pl.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
-References: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
+	id 1tvYz2-0000000EQYZ-2pBz
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Mar 2025 09:48:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6E1835C6CF4;
+	Fri, 21 Mar 2025 09:45:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97055C4CEE3;
+	Fri, 21 Mar 2025 09:48:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742550487;
+	bh=FSX5wgQpGviIl9j796MwaDns+PlHxhknGnllWqJ5QFo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YC6O89GIBcbRsW6Izy2UHgotEkBbGnaE7WgDaDacZyyegTLmDQPxZK7S3etURRpmF
+	 2UH5HK0hgXJHnTFNougjY4BhmGu/Ig1xTRwBSWKeXxjaxORlBvZR7GYPRU8EfhHTH8
+	 RqpsYyJq9tSpcgr/7Wgc1JxNvoaO3jq+PHw+EQMRtmpi/sck9wm2K2xKhTnsRk9PBv
+	 GTCLPlogntytBZvoc40lVDVWEmtobMORdjfPDB6LFlsf8W0L/TP2ZhxKeklAZ4tPU2
+	 7CBf6zI7sYum3ZCfog82hNbwhzW+ix4AOo85OAviirHqthe58lRSNKfC+Dbu7pVq4A
+	 C1N7G4QGC1TmA==
+Date: Fri, 21 Mar 2025 10:48:04 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Cc: lumag@kernel.org, neil.armstrong@linaro.org, 
+	dri-devel@lists.freedesktop.org, dianders@chromium.org, jani.nikula@intel.com, lyude@redhat.com, 
+	jonathanh@nvidia.com, p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com, 
+	rfoss@kernel.org, chunkuang.hu@kernel.org, cristian.ciocaltea@collabora.com, 
+	Laurent.pinchart@ideasonboard.com, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH 1/1] drm/bridge: Pass down connector to drm bridge detect
+ hook
+Message-ID: <20250321-optimistic-prompt-civet-bdcdba@houat>
+References: <20250321085345.136380-1-andyshrk@163.com>
+ <20250321085345.136380-2-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="psdl227jg277o23m"
+Content-Disposition: inline
+In-Reply-To: <20250321085345.136380-2-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_023552_109828_3279BC15 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20250321_024808_754957_23647C2C 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,172 +76,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nancy Lin <nancy.lin@mediatek.com>
 
-Add code to support MT8196 SOC Multi MMSYS Driver
+--psdl227jg277o23m
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/1] drm/bridge: Pass down connector to drm bridge detect
+ hook
+MIME-Version: 1.0
 
-Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 119 ++++++++++++++++++++++++-
- 1 file changed, 115 insertions(+), 4 deletions(-)
+On Fri, Mar 21, 2025 at 04:53:38PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+>=20
+> In some application scenarios, we hope to get the corresponding
+> connector when the bridge's detect hook is invoked.
+>=20
+> In most cases, we can get the connector by drm_atomic_get_connector_for_e=
+ncoder
+> if the encoder attached to the bridge is enabled, however there will
+> still be some scenarios where the detect hook of the bridge is called
+> but the corresponding encoder has not been enabled yet. For instance,
+> this occurs when the device is hot plug in for the first time.
+>=20
+> Since the call to bridge's detect is initiated by the connector, passing
+> down the corresponding connector directly will make things simpler.
+>=20
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b9c6a2a657ea..70a7e6d06d4f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -193,6 +193,10 @@ static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
- 	{0, DDP_COMPONENT_DSI0},
- };
- 
-+static const struct mtk_drm_route mt8196_mtk_ddp_routes[] = {
-+	{2, DDP_COMPONENT_DSI0},
-+};
-+
- static const unsigned int mt8192_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_OVL_2L0,
-@@ -231,6 +235,50 @@ static const unsigned int mt8195_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DP_INTF1,
- };
- 
-+static const unsigned int mt8196_mtk_ddp_ovl0_main[] = {
-+	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR0,
-+	DDP_COMPONENT_OVL0_DLO_ASYNC5,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp0_main[] = {
-+	DDP_COMPONENT_DLI_ASYNC0,
-+	DDP_COMPONENT_DLO_ASYNC1,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp1_main[] = {
-+	DDP_COMPONENT_DLI_ASYNC21,
-+	DDP_COMPONENT_DVO0,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_ovl0_ext[] = {
-+	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR1,
-+	DDP_COMPONENT_OVL0_DLO_ASYNC6,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp0_ext[] = {
-+	DDP_COMPONENT_DLI_ASYNC1,
-+	DDP_COMPONENT_DLO_ASYNC2,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp1_ext[] = {
-+	DDP_COMPONENT_DLI_ASYNC22,
-+	DDP_COMPONENT_DP_INTF0,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_ovl1_third[] = {
-+	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR2,
-+	DDP_COMPONENT_OVL1_DLO_ASYNC5,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp0_third[] = {
-+	DDP_COMPONENT_DLI_ASYNC8,
-+	DDP_COMPONENT_DLO_ASYNC3,
-+};
-+
-+static const unsigned int mt8196_mtk_ddp_disp1_third[] = {
-+	DDP_COMPONENT_DLI_ASYNC23,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -327,8 +375,65 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
- 	.min_height = 1,
- };
- 
--static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
--	.mmsys_dev_num = 1,
-+static const struct mtk_mmsys_driver_data mt8196_dispsys0_driver_data = {
-+	.main_path = mt8196_mtk_ddp_disp0_main,
-+	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_main),
-+	.main_order = 1,
-+	.ext_path = mt8196_mtk_ddp_disp0_ext,
-+	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_ext),
-+	.ext_order = 1,
-+	.third_path = mt8196_mtk_ddp_disp0_third,
-+	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_third),
-+	.third_order = 1,
-+	.mmsys_id = DISPSYS0,
-+	.mmsys_dev_num = 4,
-+	.max_width = 8191,
-+	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
-+	.min_height = 1,
-+};
-+
-+static const struct mtk_mmsys_driver_data mt8196_dispsys1_driver_data = {
-+	.main_path = mt8196_mtk_ddp_disp1_main,
-+	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_main),
-+	.main_order = 2,
-+	.ext_path = mt8196_mtk_ddp_disp1_ext,
-+	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_ext),
-+	.ext_order = 2,
-+	.third_path = mt8196_mtk_ddp_disp1_third,
-+	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_third),
-+	.conn_routes = mt8196_mtk_ddp_routes,
-+	.num_conn_routes = ARRAY_SIZE(mt8196_mtk_ddp_routes),
-+	.third_order = 2,
-+	.mmsys_id = DISPSYS1,
-+	.mmsys_dev_num = 4,
-+	.max_width = 8191,
-+	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
-+	.min_height = 1,
-+};
-+
-+static const struct mtk_mmsys_driver_data mt8196_ovlsys0_driver_data = {
-+	.main_path = mt8196_mtk_ddp_ovl0_main,
-+	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl0_main),
-+	.main_order = 0,
-+	.ext_path = mt8196_mtk_ddp_ovl0_ext,
-+	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl0_ext),
-+	.ext_order = 0,
-+	.mmsys_id = OVLSYS0,
-+	.mmsys_dev_num = 4,
-+	.max_width = 8191,
-+	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
-+	.min_height = 1,
-+};
-+
-+static const struct mtk_mmsys_driver_data mt8196_ovlsys1_driver_data = {
-+	.third_path = mt8196_mtk_ddp_ovl1_third,
-+	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl1_third),
-+	.third_order = 0,
-+	.mmsys_id = OVLSYS1,
-+	.mmsys_dev_num = 4,
-+	.max_width = 8191,
-+	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
-+	.min_height = 1,
- };
- 
- static const struct of_device_id mtk_drm_of_ids[] = {
-@@ -358,8 +463,14 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8195_vdosys0_driver_data},
- 	{ .compatible = "mediatek,mt8195-vdosys1",
- 	  .data = &mt8195_vdosys1_driver_data},
--	{ .compatible = "mediatek,mt8365-mmsys",
--	  .data = &mt8365_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8196-dispsys0",
-+	  .data = &mt8196_dispsys0_driver_data},
-+	{ .compatible = "mediatek,mt8196-dispsys1",
-+	  .data = &mt8196_dispsys1_driver_data},
-+	{ .compatible = "mediatek,mt8196-ovlsys0",
-+	  .data = &mt8196_ovlsys0_driver_data},
-+	{ .compatible = "mediatek,mt8196-ovlsys1",
-+	  .data = &mt8196_ovlsys1_driver_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
--- 
-2.45.2
+FTR, I'm against it and would have appreciated that you wait for a
+meaningful closure to the discussion we've had on this.
 
+Maxime
+
+--psdl227jg277o23m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ9010wAKCRAnX84Zoj2+
+dpUPAX9qG8wGWX/jIylnSMvlLPoWW5QTzLixBoLyAKtU+LQ4ih9kDaR+T2+Jw3ZK
+sF/MmZQBfivyGBZWnETXE8ErmIijVVrG0Ds9DeKvJyKxigYqbXaEmWDvYU2tYiyP
+IaXj31fvOQ==
+=X15G
+-----END PGP SIGNATURE-----
+
+--psdl227jg277o23m--
 
