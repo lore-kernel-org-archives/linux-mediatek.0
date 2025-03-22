@@ -4,96 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF1CC35FFC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 14:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF15C36005
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 15:54:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KR1XGA5UlrZYB/EE75mcNea8LxdNsuvuyP1JLzY93YI=; b=loVOPqNnd2mh9smLhR9BAKcEjr
-	mrbfSkXgalf6aAhJHuYyycyPu4oBWDVENp/6wyuy03tlpPj08JqSIVseJwTYC3rdCgR6HzeIQzhSz
-	S9Y9xztNKApo2+cSB4NC5Yc5t5evzMP91GBjEbJx9ggORgk1+y1vtWopwi8oaGfxp3DjL1jYOHLxm
-	GFlnBD4Vcl8BuEPFclWbJb8fznejrCGDYnx9/EXLPobkDIBdu11ytmFOIokKMdyZKKzBRg5Tl6Wli
-	y4jNik5rHa+7Or9rdQBN3/U7dBkAEffjAbqPqwE4e0f3ThIbA+WKiY5ApQAGb5qP7URudSuahh+8a
-	Mbg5G86w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mSMXTmA7NHlO+etZYtz5b3FTs1rltNj6XepKrdcM7Vw=; b=ihtqrJy7kBWg1d3fVHFQtuj1R0
+	JjxNKbHYXxDkojkpdggwpgW412T+rZ1ZficRwsNjySM6szLZQRmy6M+gCIN+6PWwpyIg1XBgEHehv
+	p9EeYJAtFYfomL2RAFVX7xXOeLDysee4jph4axtbBC/xmYr1YJu6xL17KUQd2fruzEWzM5bLOot/X
+	hb12iVFgK/01UVsT9ZLoJ0eNNQS7LKHPJxmpWlD2m3kiNTY7VU9iQoKbnNNfpOEoFkgkNEyNim3SV
+	iQPDGEZT8tDTNQeMT1LPKS53lJ/t2QuPy7EsP2xgWwmYWVvJhcB80lvswE7xZeygFa6Qt8s6Wgme9
+	sdwpfwyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tw0I8-0000000HZ6J-35yG;
-	Sat, 22 Mar 2025 14:57:40 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1tw1BQ-000000002tE-3pT2;
+	Sat, 22 Mar 2025 15:54:48 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tw0GQ-0000000HYlC-28Ru;
-	Sat, 22 Mar 2025 14:55:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1742655351; x=1743260151; i=markus.elfring@web.de;
-	bh=KR1XGA5UlrZYB/EE75mcNea8LxdNsuvuyP1JLzY93YI=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=V/yAGRGDhlKct8VpACB6OwOKrXpExfRBs1IQg81eh5OKGLSyvTZzGq/Tjmjmm/xc
-	 aSWwUUFw+g+lJxV2SOEaCKL/ee5egi5HRmGkkzfxH8t5MLuO1qhXY7mtzcwvZczs3
-	 kiC1+n3qvhdXykumd1NPIx+7esq4idCz85Dw0PNBXrUuFBHlYIuuqBcRX1Wj2gvrn
-	 aQQ/AiW+hJeyXmXcwHqMZfTZD28SNGVUGL1etrS39k26TxnUkvqJ/MiFL+GDZ5+Mf
-	 Dp/YG+j/wWpSL/q11JgR4ayuNm40iIm7niFBepqv2k1WVnQABRuHTGvoXAN2pNUZJ
-	 /O4bK9eRevpv9iwZJw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.70.73]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1M59nK-1tutnf1ug0-001Qbn; Sat, 22
- Mar 2025 15:55:51 +0100
-Message-ID: <d1df5d97-4691-40d4-a6cc-416505f35164@web.de>
-Date: Sat, 22 Mar 2025 15:55:49 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Qasim Ijaz <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bo Jiao <bo.jiao@mediatek.com>, Dan Carpenter <dan.carpenter@linaro.org>,
- Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes@sipsolutions.net>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-References: <20250322141910.4461-1-qasdev00@gmail.com>
+	id 1tw1BP-000000002si-1TjK;
+	Sat, 22 Mar 2025 15:54:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=mSMXTmA7NHlO+etZYtz5b3FTs1rltNj6XepKrdcM7Vw=;
+	t=1742658886; x=1743868486; b=Q6TFQaYl5CX/o0vJMOmAUcUk/ZyIdAwU7tLROf9JHibAsH7
+	DvzW1RMKEPsOyVeTzpaO/4sIJodDEE0OAm/zyxVTlG/bQoPzNVokw3cew4h4CQFaaq4qyKluCb4MJ
+	iClZqANzQMzweSvW2FxTW/gFku8padxJwYCTcq3rtP0kP0sgT2rZYYVSpID8NH7IXJ5gFqll+Ub7o
+	d/E2N+fsUxVmOV9r+mkrP1Ya6IYQ9bjAR9RO8+Zueabg6QxwktzYravux2MNBlebgvXO0SrLcJFRD
+	tmMM8LixaLtUsPbG2XSYDIHQh2i5nrAiz2m5WF2Ytn8ucC5uSZW6JqgAoejnBVgQ==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1tw1BK-000000024Ph-3HW4;
+	Sat, 22 Mar 2025 16:54:43 +0100
+Message-ID: <92d1a410788c54facedec033474046dda6a1a2cc.camel@sipsolutions.net>
 Subject: Re: [PATCH] wifi: mt76: mt7996: avoid potential null deref in
  mt7996_get_et_stats()
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20250322141910.4461-1-qasdev00@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Markus Elfring <Markus.Elfring@web.de>, Qasim Ijaz <qasdev00@gmail.com>,
+ 	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>, Angelo Gioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Bo Jiao <bo.jiao@mediatek.com>, 
+ Dan Carpenter <dan.carpenter@linaro.org>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,  Matthias Brugger
+ <matthias.bgg@gmail.com>, Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder
+ Lee <ryder.lee@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Shayne
+ Chen <shayne.chen@mediatek.com>
+Date: Sat, 22 Mar 2025 16:54:41 +0100
+In-Reply-To: <d1df5d97-4691-40d4-a6cc-416505f35164@web.de>
+References: <20250322141910.4461-1-qasdev00@gmail.com>
+	 <d1df5d97-4691-40d4-a6cc-416505f35164@web.de>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:zGgYsMVFMC7gMzLMJMEaOqOzG4KCvD6WdUj5Wr+OkPGAGJatYKZ
- MSyQ3MBAtAciAngF+P2u2paZGglBI3KYJ+Ca7K0VGJCaenqIS9f7Pq7uklBPKxLD1faeh/7
- 3RB8qof/kEEvhVQQ/qetSRlrb1Chy9ljJPPLTtnXRoY5ywmKwgwqgVRKN7zyYDPXGy/lZTy
- LI1yB6/ZhSRvt/TSPSPrA==
-UI-OutboundReport: notjunk:1;M01:P0:6WNxdDY6Ngo=;rgvjXtJMAoHIrEJ2fRmFicKctqo
- nr6njC9l6NX9BsJ/sLJZrR5aB+TGnQsy33Dpy+HDmswmS9/DQ7h/3I7sZTx8LWwQgUBuj53pO
- VzEQeUBFjZREWcp0fJF3QaXVpVHTc4zJ1jNBWN3M4gk1Dav9VekVaBg7GH3gfEIogNUCVdFXm
- jOnhm7OGz7YEAHUSK01/OyQNQoZP/wkXJbWp7KMD98Wuxj1TcP66IiUYBYHUcXGzOBUhTfWpB
- AvN+AKBtg5t6piGCQyJ9M2EZTDo+HAGdi1qOlOUuHLY89NZTOwhSJTWYT1JWqRr7v7QkjZMSs
- dWV3IKlO1yFyIHakpjfySgmxuA6dzICdLpearWp9PcmWYiVdbEN5dfSMVtLzW6Zyr4x6Ls9NV
- B7+ZT3/ehv942+YzTfN0mEIdYeTcEjZhVpAqmkDJ2Kj2NNyf92TgxU+x6VONSP+Uk/sIp/g0v
- NKkCBz/DO4wQjCoSdxt6/jjCD9GCrIsBzcg7KRlcVpS2GHIo21exhqw1cDKyNQatzSe7iZa6y
- CakUlSj0RwPGglZi289WqjrYFMm7bvP7kZ+3cnU7W4TG0cs3TSIIkjzEBpIPKmfq+nCamOOy5
- kCHBi3+NqXEsPpCAnVMSS7qmgKBJtA7CcRUuhvZmhoEYDzCJgL1xSMlcwoHafdb0wJHKLOm0+
- BJ4pydgUfAPzf50FttZozx7KccXgyXpk+1Dv7Fos0hAb861itqtRputaLB0ZdH1hTscJeS49Y
- 5rpL50plO0m1GE8VCu7A6zWH/pPD+slwfU+GP5Vc/hS8j7KB8k8+/s+Iu9RUhygrGEkF4tPje
- oqbtKuk0u3SELsGRzE2w1gxDk9rta3v7gt0iski9TC+ErkGM6yDxl6sKrQ1hHbFGShuxRBOWb
- IO8RlyR6Hoyq7LKLvpQrA8SMtlnryUTabxZwM1LoiVCgciWFfc7mbGwnBXR1fFi27ikAaQfl4
- W8y0p8pekQT4j+Rn93WAl+hDLn4c0TiRBsKwaITXW9yuScr0TX8uDy6PaebH401hwVykxM9Qw
- kbSy50jOBFWLfViZ6/r0o+1ENqKIsBfO/kV3OOLlKuOaTpXnCKfBFWn0/MxaCUYqutxZQU+rG
- c4uExsZKQB2am4TdfOKrowgLP01ergXdIR46T7y7w0JZhwdLHb+b2Rux8LB7f1UppfIWVX76g
- duCUcnJUOV1LsPw3xRYkjbCMdIHVsQszN3wZUSQDSA9NrdpcAyXid+gzgPL/L5ABNSL7B37DL
- rQZ862j/QbZPkHs61XwT/RkeTlwT7ETjmqkHazRYrzYMfrF/jPdEaAGLuZWB0BTD6UzNNH4Zb
- ySHc35e3RhtlDbs7B9pG4AV1olV6yDCJDGCXz615i7YV2a+Zr/wnghstWGMbQ4q2QOf8XgJku
- M4ofFROuDhs/3FhtF6gRsdsv9LkIY/pVFa6W2qxKxbkUQ7DaPYjWsjTV0kZUn4FzdY2YvQXfT
- ETgyk8K8863+6+jtF5E433JlDT0di3gWbk0AwWcsHE7S4PN0l
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+MIME-Version: 1.0
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250322_075554_923216_E6A9D23B 
-X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-CacheID: sfid-20250322_085447_388963_2498E9FF 
+X-CRM114-Status: UNSURE (   8.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,32 +82,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Ensure phy->mib is only accessed after the null sanity check for phy
-> otherwise the code may trigger a potential null deref.
-
-* Would you like to use the term =E2=80=9Cnull pointer dereference=E2=80=
+On Sat, 2025-03-22 at 15:55 +0100, Markus Elfring wrote:
+> > Ensure phy->mib is only accessed after the null sanity check for phy
+> > otherwise the code may trigger a potential null deref.
+>=20
+> * Would you like to use the term =E2=80=9Cnull pointer dereference=E2=80=
 =9D consistently?
+>=20
+> * Were any known source code analysis tools involved also for
+> =C2=A0=C2=A0this software improvement?
+>=20
 
-* Were any known source code analysis tools involved also for
-  this software improvement?
+Do you really have to double down? STOP. You're just wasting everyone's
+time.
 
-
-=E2=80=A6
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-=E2=80=A6
-> @@ -1886,6 +1886,8 @@ void mt7996_get_et_stats(struct ieee80211_hw *hw,
->  	if (!phy)
->  		return;
->
-> +	mib =3D &phy->mib;
-> +
->  	mutex_lock(&dev->mt76.mutex);
->
->  	mt7996_mac_update_stats(phy);
-
-I suggest to move such an assignment statement directly before the place
-where this variable is used finally.
-
-Regards,
-Markus
+johannes
 
