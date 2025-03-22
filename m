@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 146E0C35FFC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 13:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65DBDC35FFC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 13:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xjUf1ryZi1oB5Nn5ayqZmUpZSv1nmZtfvq35vnb/yRU=; b=wibPcOVe1B7bXuoiaA7VefEObE
-	mRsezfHgV4EFPVTYS9kpb+JojOXyUPu4y7bPmesAnZcLwDG/uIkPTL85b6IuUCzoZ0ojPcn/OZTWv
-	ykjjiJJyMOcDHLoqQ2JBGGCroaPFXJmbse6SJxtNO98J9gYlac41gbrw1tCTfOyiJZGXPIms6v1OC
-	GwQeLYZ9ejZdm3NKt9CQkpmCBgwdor/UU8lCuQrDbKPt3j4w9Z6Loj6EZ7Ok5e/DGuR0/FlJOqJaO
-	yA+vcy+6p89ZmIlq8c/aBWmYZ/HG/xLIKrHK1C939qcCYGZcEFDcwhBPo+MJAB6vwNWx3u5rKmjHk
-	toJ4mvzw==;
+	bh=O7Hp1tNsZwhgz/P3of7TrlgazlFotvgvbBxQfbyyEq8=; b=EiHEsCl739UvKvKmtwk8RRWRtA
+	l+NIJa0bre9ib0ys2UHtCmrSeAPlUiKaSFxCmMi0p4nx1VxVIJiZMPoKYhlL2KC9siFaqj82LWfLl
+	t7LG8Yo4V4UNtGAIim6gka57qkRXykMYVfDNaGYZYfWGYz3NIUXqy8B4LU0QQY768ynhh9PVzN0J3
+	OiLCLUAQzKNq8/5IAQUKe3rZ8iw/h2tuxl2EwTHy2zRYayeIZncSAgocmeZFF+9Ds1I0DlNaKDlyr
+	ajUQmpHJthj8Can6t1eVTxA/nu6q04FILdM5tWftgI6vTJobdRb11LcQBvJvlKgVRyPiXh9pMuRNM
+	pVPPxA+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvz5O-0000000HSbP-0ST4;
-	Sat, 22 Mar 2025 13:40:26 +0000
-Received: from mout.web.de ([212.227.17.11])
+	id 1tvzKu-0000000HTJI-0S6L;
+	Sat, 22 Mar 2025 13:56:28 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvz5L-0000000HSad-35Ti;
-	Sat, 22 Mar 2025 13:40:25 +0000
+	id 1tvzJc-0000000HT8W-471n;
+	Sat, 22 Mar 2025 13:55:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1742650807; x=1743255607; i=markus.elfring@web.de;
-	bh=xjUf1ryZi1oB5Nn5ayqZmUpZSv1nmZtfvq35vnb/yRU=;
+	s=s29768273; t=1742651694; x=1743256494; i=markus.elfring@web.de;
+	bh=O7Hp1tNsZwhgz/P3of7TrlgazlFotvgvbBxQfbyyEq8=;
 	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
 	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
 	 cc:content-transfer-encoding:content-type:date:from:message-id:
 	 mime-version:reply-to:subject:to;
-	b=AmAu4Y5siP8bgaxCR/tjJpZDXc4vBtRdtx2dN0LBAxfsBeIOXhj7N1F+R7BdAmA0
-	 8Os3zQURBeGuVmRhotQf81yEbRVonsvgzZmfgjiIasFbjPXaxDwkBx5/khVSmG+MI
-	 x6GXMu3Qfrczs+zLtMCQavjR1FlCGaJkQsdJgsUXNlHvH6v6g8HJ1W5zBvdF46ywo
-	 4ZvXCLOTgPJEHZPgmtByHHiMq+MLz6/MwfwSFCBzWZgvCIoCtrwt0Pj1G8ukqAB5L
-	 8wJ2vDaEQ112v+mRKIaqpt+ZqURlHAfFWGqty+1HnC18PQzUMqzK/kPOdhyogucJK
-	 BaPYzqjYLA6PXNyOJA==
+	b=YiKp52KEUdkpdR2h91Py+7fkEdypXTEXQmZQzBPl67h3S3zIzBFWKdA0sw7J1Nyt
+	 PRvhrrg3cNv56LdspsbIzhWSEi1jkDTPazgqSTYXfGuzo5afhV8RLOfmSkJmwlkzU
+	 v0JeqDZaUeX9Tm//p5lLludy664pFXpcXLiRs0SLSGeAx//FrObAebjn6M7Xsfq4D
+	 9dTDT2GD79CK2uHXlbGXQpxW1BHcD/HEZmK+f6l63iDSwUlKqMrSDeqy21jo2/wpW
+	 NxaljBRcIHiGwZJk/1wIVKdMJ03Mau32xfQJqTsPMAi6zHNN+QF3/T1GMVFPY75WC
+	 R9YDY4DdS9BkjcD8qw==
 X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.70.73]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MwR4R-1t4Hvm3Edp-016Jbe; Sat, 22
- Mar 2025 14:40:07 +0100
-Message-ID: <52071c76-dd06-4b11-bb79-a5e0c28b94ca@web.de>
-Date: Sat, 22 Mar 2025 14:40:05 +0100
+Received: from [192.168.178.29] ([94.31.70.73]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MElV3-1txyRZ1hVL-00FxQ2; Sat, 22
+ Mar 2025 14:54:54 +0100
+Message-ID: <d220d52e-f656-4d4c-bf28-1ab40879c93e@web.de>
+Date: Sat, 22 Mar 2025 14:54:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Qasim Ijaz <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
@@ -57,43 +57,42 @@ Cc: LKML <linux-kernel@vger.kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
  Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-References: <20250322105052.19136-1-qasdev00@gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid NULL pointer dereference in
- mt7996_set_monitor()
+References: <20250322111354.23800-1-qasdev00@gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: avoid null deref in mt7996_stop_phy()
 Content-Language: en-GB
 From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20250322105052.19136-1-qasdev00@gmail.com>
+In-Reply-To: <20250322111354.23800-1-qasdev00@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:hzCFADGYDQPr010FsI8NS36pmqMY5yW3QkMd+OSetiqm5SCom4J
- 7AjbzuRM69zCOx9flAZw0f6Q2kfc9mfXIfyPHQ9dZKyMtyex+p5/HYFXnkSPf5+n2iE2rra
- egN+bJ+bR6yR5s0wg5v/3Lrdi8+A3Yh5+XbtrgbGVlQ49JLjVsnHnME90Mp40SdN2C/3SDa
- /B5nCfICHGfKstaODc0yg==
-UI-OutboundReport: notjunk:1;M01:P0:n8ATnK4I5Oo=;Kxt+BdHKzWc+Hw88z3c4SFWzJd3
- 8Z98fF/4yja44CleXzzt0MBLe5L9ZsvAgg7WznESaEm82dFuC6mLRf8n4h9wXk6XmzzEcgZEl
- dgPnTsgn1eIGnk0MIZqfP2IEYs8BklNiVxIy/zRyu4JsGkjujf1V6z0vQkOf4EoaHI36M7ahV
- 7zjIaf0Rcg6QS508Zk06o8xnga6OstVcrrN89cY3f4uddAomk8yWo/1OJyq1Kxcvaea2GxPCO
- aGzBeTfnqQXETpVj2iGkiS6vA37soRG8zSZhjVRU62n7r0RfgLSd1zc/KUHNNtrNG3B31fZOv
- NzKFO/3AunErQo8qD2Ll+URYFwuuwdMZFr2LLgGswAFNKPoKOxEyrKp4nmCnGH3BpMayZRq8j
- Yj+8fBQmlXWW90yBun8M0XkKCAcXobjfhPl6X2d+87yS+XAH2RwFsPnzCtRPHtVqZPW3eKpkT
- DaCYyxQ5LLUAD2yS6jeki97TaWPG68Su/R45hNUJx/6DH6yqv1GnwChBc9EGlyYqSdzf0J6zq
- jjRstdAUhY6QIQ0iOmOBCGI3rn2mYawx7i6NhUhqZJC3KBxoHgKL0vcaqqAhKQoUm3r+hdkrt
- lTJKLuITpLaDKQWsOxKAN9nbhh6P5cav1Kaap4JGbCfr9uuej0hZ6y3PP8WGRA380Y0kyKhZ1
- 4u6d1ZPnXYasfvwCPPiInGZ4bdxbTP1vzA/iy4sO2of44wQ8zk1NC4A3aoai2RT8OfKl8YCoR
- hqVxPQQ6Koij0nmTklNdgP4nayDjuff2xpQ7B8oTWEV7ghRJoL9904KiXMUuiDARg+/nN0H67
- s3ZrJktIQXThuUSjTflH9ClguGqlI23CwNj9LsqC55CLULowbDqplaoNCEy6nnMYcFicpVjWJ
- fDFivJno7jO9NsepDyaMuyF6s/nyeL1IQCjqNubMdXMjaSC7aQIaFtSiz4/+vJLx/smoQ3Dxv
- MRRPAHCR8URV1D31iBHtedxjIH24y4jkpFvM9j+vPWPD3hnxx2WLVIeDGXtQXlQ2OhoutP+Jt
- G7RImvr3kDPhXGnh7CODBOasOlatCUFf1gt06w76enNXhEiJj66mkoN8KSN3wZHizwEz64yry
- 88SbxFStB1HKHlIZlVbTXflfaiyakSRp8b9WJqQR2b1+IXDFxdhkoGCAomFlp3XP0zlJPd8zX
- L9E1ebeYHUoaRnKdmdJ/GDu9ND+qDLmbliMTBrYOM3gwUJk9h+BzoJep+NxvQUSJNJkdUMVxS
- ZJFCZvYanSbpNMb1wgbGlF0t/s96eS8badeQ5voeJ6k+8Pl0kfI6SboiTs4McugH2O5GtRJ3I
- HJHG987uao+qmMjXMXBGwnJhAtdGp2lnvQV9Hvnnz09/I4cCF5GmFQewrPfao9qMVzs5rPref
- WLdRAD7fpSBZ5gV4zpl6IGdYYdxa8HZlhHGr6TCYVuFSOQLWGL0NsnUjpr1S8VDsu/cQX9LAU
- kLUo7SBH/5eJtXfCYpm94TK4/X/K23ySAeiq52M08xVuSrQq3
+X-Provags-ID: V03:K1:6+6jc3mgaKHdDWSU214w3i+vaNpI+UR6kf62/B56NF7sQSZ0BN7
+ K2+M7vsDBJv+CtuDDJF+E7V/FCmJYgU7dl5+SDuxA5tjoLrTG/Fm0xX4vSpTIvHVyh6/Oqu
+ odH/QN0GhWh0+wLs6KFQoZamz5+bRtWPkOKJe3mYyaSO/DGKxDdga5a67AJY2OgJG1YwHtv
+ RAuPmRE10H+OXtEga1q4A==
+UI-OutboundReport: notjunk:1;M01:P0:rdP+VCTfhI4=;GwHqWqJRzDKtExJFBhXi/Zr4hrO
+ ec6MamJVTbLn1W5cwj1er4s7koPp5kSW2snJ57zI2TCaevDAfpAGfWMs/mkBCHlw5XR3+wGNA
+ XgMPzDSge0j8jiARLaKAlCVUweXmstu6Z16cMSF1uVtu1tYerMyV+8ygh97hIgdDAIwDsDGJH
+ 3tXktmg01RAAEDCYtu5OpjW6vo5U2JD8silK24r+Hgqk8wnpyEArbJvazsRVf6N9yMoOFigkP
+ Zi61x/WnqIT8F60CwY1jLhnRaQe10S6IB0kp7x294d0XMYCf7dvNtLKvMFxmbPSH0bAFVLwz1
+ 0j6xzFr8Ep28Xn68/sxnyTeoQc/jZjRhOpNYN+NBcUlDzKYnJqDtWmsZwS8lfiytpfpKjHteC
+ JRv/kmmLRRHLgkbEoBYUBD3kjmORin7myhnKEyOrJOXsOkhkKlPp97p0lSukQ+c8UcDy3zhza
+ CffZJ0QC3pUMhJCUN5+RTumJFWvW6IWgkVBD1elkglTZj3m6EoQcr5DNxIY+l1QqzANagqUZa
+ Vx0+8j0GjUShsgyDvCqfk/dIEqsoxCsMG0whLmXap8eKhQlHO2uOVHVtLJH9K4txuPfTkIXBf
+ MrcCMaAy3O2HWyO5Df3auccmeEOSxN3m697qkuvDUkUrmv28Ni4+oA6FZl/j5qxaUMq9pChLb
+ tYa4Tg0+EmVgLfqPNDu8Y+wTS4BKUnzY/wx4SS5A7XlxiPCNAUUJf9hQC/Q9EnBjNyUzW7dCf
+ laOQbxxwzNRil0Oc+6IDfGe+S25HQKGa1jQIUJNoUYD5NYItArQryO6h5vqHgBugS5EnVZtnV
+ llb49wyxKJIAu1tDcJf3yDszicEb+DAXOv+1QcHiTDxSyLqWqJ0vfryNb5hRyXWrE2dOYc1Ry
+ S/MbiMwnpPIvcREFGhndkD0R/rIpzEKJJuTCJAIZ/+u7DBVAgBUy54RA93/KLGQEBLfsbjLxG
+ BCfATaUl86PmOXCKQ/k8U6La0tj0Xgfxl9x+O+gt9pi3y1VPmFlJ99ZkWlvx1Y8Qvf7JuemYv
+ +bvXiAqDj0fKsSFN3hOxkw8Ry++qmOUX6i2BFe+jSsyfCSfIpt63Y4djGqHvWJr8No6XzI5CQ
+ lAcup+WSaCHFsXTVtWwpUud5PGCH+tNTRez160rDixg2WRiZ8fE1fimW6ZEDJxuKxUqbHg1S3
+ nNJpZ1Y9Gj9kYjXjHdQslK6oXVRNqzK9dIPyHTJQuNPZmj9eneryfNDQ4ncFWqEPFpeTGVmdr
+ z0VIrwUbczQzd6OehtTZkLmmL9svBjQrxnJWTqXocW2w4FBJircN+bhHzgEt1UNINqxefdj1z
+ bX/LVBT+5woKNFu2mqpnRDzW/yNAqwYi988PXc6wg10xf58Ble6oZ7G/ppz68yJwkU8k30klt
+ E5jp5ggSQnpnX859i16K5r0uOsx3nueQ9u/QX2R1TECmGBzvUkwUBcsp4VEo6AdZAqJXnuHV4
+ jHQULGbvvlK21tM7CpQb+hP9y2ovKXj2dyNQ8YOH36c9kEx4I
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250322_064024_145684_22378B39 
-X-CRM114-Status: UNSURE (   4.56  )
+X-CRM114-CacheID: sfid-20250322_065509_316841_C1EF62D8 
+X-CRM114-Status: UNSURE (   5.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,14 +108,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> The function mt7996_set_monitor() dereferences phy before
-> the NULL sanity check.
+> In mt7996_stop_phy() the mt7996_phy structure is
+> dereferenced before the null sanity check which could
+> lead to a null deref.
 >
-> Fix this to avoid NULL pointer dereference by moving the
-> dereference after the check.
+> Fix by moving the dereference operation after the
+> sanity check.
 
-Were any known source code analysis tools involved for this software impro=
-vement?
+* You may occasionally put more than 53 characters into text lines
+  of such a change description.
+
+* Would you like to use the term =E2=80=9Cnull pointer dereference=E2=80=
+=9D consistently?
+
+* Were any known source code analysis tools involved also for
+  this software improvement?
+
 
 Regards,
 Markus
